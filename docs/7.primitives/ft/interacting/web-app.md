@@ -7,186 +7,30 @@ hide_table_of_contents: false
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This section describes how to interact with NFT contracts from a web app.
+This section describes how to interact with FTs directly from a web app.
 
 :::info
 All the examples are using a `Wallet` object, which comes from our [basic template](https://github.com/near-examples/hello-near-js/blob/master/frontend/near-wallet.js)
 :::
 
-:::tip
-In order to interact with NFT from your Web App you can request data from various APIs from your app (for example, [Marketplaces API](/primitives/nft/querying/marketplaces)).
-:::
-
 ---
 
-## Mint a NFT
+## Get token metadata
 
 <Tabs>
-<TabItem value="NFT Primitive" label="NFT Primitive" default>
+
+<TabItem value="Smart Contract" label="Smart Contract">
 
 ```js
 import { Wallet } from './near-wallet';
 
-const CONTRACT_ADDRESS = "nft.primitives.near";
-const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
+const TOKEN_CONTRACT_ADDRESS = "token.v2.ref-finance.near";
+const wallet = new Wallet({ createAccessKeyFor: TOKEN_CONTRACT_ADDRESS });
  
-await wallet.callMethod({
-  method: 'nft_mint',
-  args: {
-    token_id: "1",
-    receiver_id: "bob.near", 
-    token_metadata: {
-      title: "NFT Primitive Token",
-      description: "Awesome NFT Primitive Token",
-      media: "string", // URL to associated media, preferably to decentralized, content-addressed storage
-    }
-  },
-  contractId: CONTRACT_ADDRESS
-});
-```
-
-</TabItem>
-
-<TabItem value="Paras" label="Paras">
-
-```js
-import { Wallet } from './near-wallet';
-
-const CONTRACT_ADDRESS = "x.paras.near";
-const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
- 
-await wallet.callMethod({
-  method: 'nft_mint',
-  args: {
-    token_series_id: "490641",
-    receiver_id: "bob.near",
-  },
-  contractId: CONTRACT_ADDRESS
-});
-```
-
-:::note
-In order to use `nft_mint` method of the `x.paras.near` contract you have to be a creator of a particular token series.
-:::
-
-</TabItem>
-
-<TabItem value="Mintbase" label="Mintbase">
-
-By using [`near-api-js`](https://docs.near.org/tools/near-api-js/quick-reference)
-
-```js
-import { Wallet } from './near-wallet';
-
-const CONTRACT_ADDRESS = "thomasettorreiv.mintbase1.near";
-const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
- 
-await wallet.callMethod({
-  method: 'nft_batch_mint',
-  args: {
-    num_to_mint: 1,
-    owner_id: "bob.near",
-    metadata: {},
-  },
-  contractId: CONTRACT_ADDRESS,
-  deposit: 1
-});
-```
-
-:::note
-In order to use `nft_batch_mint` method of Mintbase store contract your account have to be a in the contract minters list.
-:::
-
-By using [`Mintbase JS`](https://docs.mintbase.xyz/dev/mintbase-sdk-ref/sdk/mint)
-
-```js
-import { useState } from 'react';
-import { useWallet } from '@mintbase-js/react';
-import { execute, mint, MintArgs } from '@mintbase-js/sdk';
-
-
-export const MintComponent = ({ media, reference, contractAddress, owner }: MintArgs): JSX.Element => {
-
-  const { selector } = useWallet();
-
-  const handleMint = async (): Promise<void> => {
-
-    const wallet = await selector.wallet();
-
-    await execute(
-      mint({ contractAddress: contractAddress, metadata: { media, reference }, ownerId: owner })
-    );
-
-  }
-
-  return (
-    <div>
-      <button onClick={handleMint}>
-        Mint
-      </button>
-    </div>
-  );
-};
-```
-
-</TabItem>
-</Tabs>
-
----
-
-## Buy a NFT
-
-<Tabs>
-<TabItem value="Paras" label="Paras" default>
-
-```js
-import { Wallet } from './near-wallet';
-
-const CONTRACT_ADDRESS = "x.paras.near";
-const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
- 
-await wallet.callMethod({
-  method: 'nft_buy',
-  args: {
-    token_series_id: "299102",
-    receiver_id: "bob.near",
-  },
-  contractId: CONTRACT_ADDRESS,
-  deposit: 205740000000000000000000 // attached deposit in yoctoNEAR, covers NFT price + storage cost
-});
-```
-
-<details>
-<summary>Example response</summary>
-<p>
-
-```json
-"299102:1"
-```
-
-</p>
-</details>
-
-</TabItem>
-
-<TabItem value="Mintbase" label="Mintbase">
-
-By using [`near-api-js`](https://docs.near.org/tools/near-api-js/quick-reference)
-
-```js
-import { Wallet } from './near-wallet';
-
-const CONTRACT_ADDRESS = "simple.market.mintbase1.near";
-const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
- 
-await wallet.callMethod({
-  method: 'buy',
-  args: {
-    nft_contract_id: "rubennnnnnnn.mintbase1.near",
-    token_id: "38"
-  },
-  contractId: CONTRACT_ADDRESS,
-  deposit: 1000000000000000000000 // attached deposit in yoctoNEAR, covers NFT price + storage cost (optional)
+await wallet.viewMethod({
+  method: 'ft_metadata',
+  args: {},
+  contractId: TOKEN_CONTRACT_ADDRESS
 });
 ```
 
@@ -196,97 +40,13 @@ await wallet.callMethod({
 
 ```json
 {
-  "payout": {
-    "rub3n.near": "889200000000000000000",
-    "rubenm4rcus.near": "85800000000000000000"
-  }
-}
-```
-
-</p>
-</details>
-
-By using [`Mintbase JS`](https://docs.mintbase.xyz/dev/mintbase-sdk-ref/sdk/buy)
-
-```js
-import { useState } from 'react';
-import { useWallet } from '@mintbase-js/react';
-import { execute, burn, BuyArgs } from '@mintbase-js/sdk';
-
-
-export const BuyComponent = ({ contractAddress, price, tokenId, affiliateAccount, marketId }:BuyArgs): JSX.Element => {
-
-  const { selector } = useWallet();
-
-  const handleBuy = async (): Promise<void> => {
-
-    const wallet = await selector.wallet();
-
-    const buyArgs = {contractAddress: contractAddress, tokenId: tokenId, affiliateAccount: affiliateAccount , marketId:marketId, price:price }
-
-    await execute(
-      {wallet},
-      buy(buyArgs)
-    );
-
-  }
-
-  return (
-    <div>
-      <button onClick={handleBuy}>
-        Burn provided token array from {contractAddress}
-      </button>
-    </div>
-  );
-};
-```
-
-</TabItem>
-</Tabs>
-
----
-
-## Query NFT data
-
-<Tabs>
-<TabItem value="NFT Primitive" label="NFT Primitive" default>
-
-```js
-import { Wallet } from './near-wallet';
-
-const CONTRACT_ADDRESS = "nft.primitives.near";
-const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
- 
-const response = await wallet.viewMethod({
-  method: 'nft_token',
-  args: {
-    token_id: "1"
-  }
-});
-```
-
-<details>
-<summary>Example response</summary>
-<p>
-
-```json
-{
-  "token_id": "1",
-  "owner_id": "bob.near",
-  "metadata": {
-    "title": "string", // ex. "Arch Nemesis: Mail Carrier" or "Parcel #5055"
-    "description": "string", // free-form description
-    "media": "string", // URL to associated media, preferably to decentralized, content-addressed storage
-    "media_hash": "string", // Base64-encoded sha256 hash of content referenced by the `media` field. Required if `media` is included.
-    "copies": 1, // number of copies of this set of metadata in existence when token was minted.
-    "issued_at": 1642053411068358156, // When token was issued or minted, Unix epoch in milliseconds
-    "expires_at": 1642053411168358156, // When token expires, Unix epoch in milliseconds
-    "starts_at": 1642053411068358156, // When token starts being valid, Unix epoch in milliseconds
-    "updated_at": 1642053411068358156, // When token was last updated, Unix epoch in milliseconds
-    "extra": "string", // anything extra the NFT wants to store on-chain. Can be stringified JSON.
-    "reference": "string", // URL to an off-chain JSON file with more info.
-    "reference_hash": "string" // Base64-encoded sha256 hash of JSON from reference field. Required if `reference` is included.
-  }
+  "spec": "ft-1.0.0",
+  "name": "Ref Finance Token",
+  "symbol": "REF",
+  "icon": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='16 24 248 248' style='background: %23000'%3E%3Cpath d='M164,164v52h52Zm-45-45,20.4,20.4,20.6-20.6V81H119Zm0,18.39V216h41V137.19l-20.6,20.6ZM166.5,81H164v33.81l26.16-26.17A40.29,40.29,0,0,0,166.5,81ZM72,153.19V216h43V133.4l-11.6-11.61Zm0-18.38,31.4-31.4L115,115V81H72ZM207,121.5h0a40.29,40.29,0,0,0-7.64-23.66L164,133.19V162h2.5A40.5,40.5,0,0,0,207,121.5Z' fill='%23fff'/%3E%3Cpath d='M189 72l27 27V72h-27z' fill='%2300c08b'/%3E%3C/svg%3E%0A",
+  "reference": null,
+  "reference_hash": null,
+  "decimals": 18
 }
 ```
 
@@ -295,226 +55,28 @@ const response = await wallet.viewMethod({
 
 </TabItem>
 
-<TabItem value="Paras" label="Paras">
-
-By using [`near-api-js`](https://docs.near.org/tools/near-api-js/quick-reference)
+<TabItem value="RPC Request" label="RPC Request">
 
 ```js
-import { Wallet } from './near-wallet';
-
-const CONTRACT_ADDRESS = "x.paras.near";
-const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
- 
-const response = await wallet.viewMethod({
-  method: 'nft_token',
-  args: {
-    token_id: "84686:1154"
-  }
-});
-```
-
-<details>
-<summary>Example response</summary>
-<p>
-
-```json
-{
-  "token_id": "84686:1154",
-  "owner_id": "bob.near",
-  "metadata": {
-    "title": "Tokenfox Silver Coin #1154",
-    "description": null,
-    "media": "bafkreihpapfu7rzsmejjgl2twllge6pbrfmqaahj2wkz6nq55c6trhhtrq",
-    "media_hash": null,
-    "copies": 4063,
-    "issued_at": "1642053411068358156",
-    "expires_at": null,
-    "starts_at": null,
-    "updated_at": null,
-    "extra": null,
-    "reference": "bafkreib6uj5kxbadfvf6qes5flema7jx6u5dj5zyqcneaoyqqzlm6kpu5a",
-    "reference_hash": null
-  },
-  "approved_account_ids": {}
-}
-```
-
-</p>
-</details>
-
-By calling a Paras API method
-
-```js
-const tokenData = fetch("https://api-v2-mainnet.paras.id/token?token_id=84686:1154");
-```
-
-<details>
-<summary>Example response</summary>
-<p>
-
-```json
-{
-  "status": 1,
-  "data": {
-    "results": [
-      {
-        "_id": "61dfbf27284abc1cc0b87c9d",
-        "contract_id": "x.paras.near",
-        "token_id": "84686:1154",
-        "owner_id": "bob.near",
-        "token_series_id": "84686",
-        "edition_id": "1154",
-        "metadata": {
-          "title": "Tokenfox Silver Coin #1154",
-          "description": "Holding this silver coin in your wallet will bring you health and happiness \uD83D\uDE0A",
-          "media": "bafkreihpapfu7rzsmejjgl2twllge6pbrfmqaahj2wkz6nq55c6trhhtrq",
-          "media_hash": null,
-          "copies": 4063,
-          "issued_at": null,
-          "expires_at": null,
-          "starts_at": null,
-          "updated_at": null,
-          "extra": null,
-          "reference": "bafkreib6uj5kxbadfvf6qes5flema7jx6u5dj5zyqcneaoyqqzlm6kpu5a",
-          "reference_hash": null,
-          "collection": "Tokenfox Collection Cards",
-          "collection_id": "tokenfox-collection-cards-by-tokenfoxnear",
-          "creator_id": "tokenfox.near",
-          "blurhash": "U7F~gc00_3D%00~q4n%M_39F-;RjM{xuWBRj",
-          "score": 0,
-          "mime_type": "image/png"
-        },
-        "royalty": {
-          "tokenfox.near": 1000
-        },
-        "price": null,
-        "approval_id": null,
-        "ft_token_id": null,
-        "has_price": null,
-        "is_creator": true,
-        "total_likes": 8,
-        "likes": null,
-        "categories": [],
-        "view": 4
-      }
-    ],
-    "count": 1,
-    "skip": 0,
-    "limit": 10
-  }
-}
-```
-
-</p>
-</details>
-
-:::info
-See the [Paras API documentation](https://parashq.github.io/) for the full list of methods.
-:::
-
-:::note
-When you call Paras smart contract method it returns data that are stored in the Paras NFT smart contract. It means a response contains only data about NFTs which were minted via Paras NFT contract. 
-
-When you call Paras API methods it returns data from other NFT contracts as well, due to the work of the indexer. It means you might want to pass more parameters like `contract_id` or `owner_id` to make the response more accurate.
-:::
-
-</TabItem>
-
-<TabItem value="Mintbase" label="Mintbase">
-
-By using [`near-api-js`](https://docs.near.org/tools/near-api-js/quick-reference)
-
-```js
-import { Wallet } from './near-wallet';
-
-const CONTRACT_ADDRESS = "anthropocene.mintbase1.near";
-const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
- 
-const response = await wallet.viewMethod({
-  method: 'nft_token',
-  args: {
-    token_id: "17960"
-  }
-});
-```
-
-<details>
-<summary>Example response</summary>
-<p>
-
-```json
-{
-  "token_id": "17960",
-  "owner_id": "876f40299dd919f39252863e2136c4e1922cd5f78759215474cbc8f1fc361e14",
-  "approved_account_ids": {},
-  "metadata": {
-    "title": null,
-    "description": null,
-    "media": null,
-    "media_hash": null,
-    "copies": 1,
-    "issued_at": null,
-    "expires_at": null,
-    "starts_at": null,
-    "updated_at": null,
-    "extra": null,
-    "reference": "F-30s_uQ3ZdAHZClY4DYatDPapaIRNLju41RxfMXC24",
-    "reference_hash": null
-  },
-  "royalty": {
-    "split_between": {
-      "seventhage.near": {
-        "numerator": 10000
-      }
-    },
-    "percentage": {
-      "numerator": 100
-    }
-  },
-  "split_owners": null,
-  "minter": "anthropocene.seventhage.near",
-  "loan": null,
-  "composeable_stats": { "local_depth": 0, "cross_contract_children": 0 },
-  "origin_key": null
-}
-```
-
-</p>
-</details>
-
-:::note
-When someone creates a NFT on Mintbase they need to deploy their own NFT contract using Mintbase factory. Those smart contract are subaccounts of mintbase1.near, e.g. `anthropocene.mintbase1.near`.
-:::
-
-By calling a Mintbase GraphQL API method
-
-```js
-const tokenData = fetch("https://graph.mintbase.xyz", {
-  method: "POST",
-  headers: {
-    "mb-api-key": "anon",
-    "Content-Type": "application/json",
-    "x-hasura-role": "anonymous",
-  },
+const tokenContract = "token.v2.ref-finance.near";
+const args = btoa('{}');
+const tokenBalance = fetch("https://rpc.mainnet.near.org", {
   body: JSON.stringify({
-    query: `
-      query getToken{
-        tokens: nft_tokens(
-          where: {
-            token_id: { _eq: "84686:1154" }
-          }
-        ) {
-          tokenId: token_id
-          ownerId: owner
-          contractId: nft_contract_id
-          reference
-          issuedAt: issued_at
-          copies
-          metadataId: metadata_id
-        }
-      }
-    `,
+    jsonrpc: "2.0",
+    id: "ft_metadata",
+    method: "query",
+    params: {
+      request_type: "call_function",
+      finality: "final",
+      account_id: tokenContract,
+      method_name: "ft_metadata",
+      args_base64: args,
+    },
   }),
+  headers: {
+    "Content-Type": "application/json",
+  },
+  method: "POST",
 });
 ```
 
@@ -528,273 +90,346 @@ const tokenData = fetch("https://graph.mintbase.xyz", {
   "status": 200,
   "contentType": "application/json",
   "body": {
-    "data": {
-      "tokens": [
-        {
-          "tokenId": "84686:1154",
-          "ownerId": "bob.near",
-          "contractId": "x.paras.near",
-          "reference": "bafkreib6uj5kxbadfvf6qes5flema7jx6u5dj5zyqcneaoyqqzlm6kpu5a",
-          "issuedAt": "2022-01-13T05:56:51.068358",
-          "copies": 4063,
-          "metadataId": "x.paras.near:5210047642790498956c9669d6a37b98"
-        }
-      ]
-    }
+    "jsonrpc": "2.0",
+    "result": {
+      "block_hash": "GSffMTnrhVsht6U6dwdHutJxd1YdDyvnvbdHeadgKx6p",
+      "block_height": 104611783,
+      "logs": [],
+      "result": [123,34,115,112,101,99,34,58,34,102,116,45,49,46,48,46,48,34,44,34,110,97,109,101,34,58,34,82,101,102,32,70,105,110,97,110,99,101,32,84,111,107,101,110,34,44,34,115,121,109,98,111,108,34,58,34,82,69,70,34,44,34,105,99,111,110,34,58,34,100,97,116,97,58,105,109,97,103,101,47,115,118,103,43,120,109,108,44,37,51,67,115,118,103,32,120,109,108,110,115,61,39,104,116,116,112,58,47,47,119,119,119,46,119,51,46,111,114,103,47,50,48,48,48,47,115,118,103,39,32,118,105,101,119,66,111,120,61,39,49,54,32,50,52,32,50,52,56,32,50,52,56,39,32,115,116,121,108,101,61,39,98,97,99,107,103,114,111,117,110,100,58,32,37,50,51,48,48,48,39,37,51,69,37,51,67,112,97,116,104,32,100,61,39,77,49,54,52,44,49,54,52,118,53,50,104,53,50,90,109,45,52,53,45,52,53,44,50,48,46,52,44,50,48,46,52,44,50,48,46,54,45,50,48,46,54,86,56,49,72,49,49,57,90,109,48,44,49,56,46,51,57,86,50,49,54,104,52,49,86,49,51,55,46,49,57,108,45,50,48,46,54,44,50,48,46,54,90,77,49,54,54,46,53,44,56,49,72,49,54,52,118,51,51,46,56,49,108,50,54,46,49,54,45,50,54,46,49,55,65,52,48,46,50,57,44,52,48,46,50,57,44,48,44,48,44,48,44,49,54,54,46,53,44,56,49,90,77,55,50,44,49,53,51,46,49,57,86,50,49,54,104,52,51,86,49,51,51,46,52,108,45,49,49,46,54,45,49,49,46,54,49,90,109,48,45,49,56,46,51,56,44,51,49,46,52,45,51,49,46,52,76,49,49,53,44,49,49,53,86,56,49,72,55,50,90,77,50,48,55,44,49,50,49,46,53,104,48,97,52,48,46,50,57,44,52,48,46,50,57,44,48,44,48,44,48,45,55,46,54,52,45,50,51,46,54,54,76,49,54,52,44,49,51,51,46,49,57,86,49,54,50,104,50,46,53,65,52,48,46,53,44,52,48,46,53,44,48,44,48,44,48,44,50,48,55,44,49,50,49,46,53,90,39,32,102,105,108,108,61,39,37,50,51,102,102,102,39,47,37,51,69,37,51,67,112,97,116,104,32,100,61,39,77,49,56,57,32,55,50,108,50,55,32,50,55,86,55,50,104,45,50,55,122,39,32,102,105,108,108,61,39,37,50,51,48,48,99,48,56,98,39,47,37,51,69,37,51,67,47,115,118,103,37,51,69,37,48,65,34,44,34,114,101,102,101,114,101,110,99,101,34,58,110,117,108,108,44,34,114,101,102,101,114,101,110,99,101,95,104,97,115,104,34,58,110,117,108,108,44,34,100,101,99,105,109,97,108,115,34,58,49,56,125]
+    },
+    "id": "ft_metadata"
   }
+}
+```
+
+**Note**: `result` is an array of bytes, you need to serialize the result by yourself.
+
+</p>
+</details>
+
+</TabItem>
+
+</Tabs>
+
+---
+
+## Check token balance
+
+:::info
+Remember about fungible token precision. You may need this value to show a response of balance requests in an understandable-to-user way in your app. How to get precision value (decimals) you may find [above](#get-token-metadata).
+:::
+
+<Tabs>
+
+<TabItem value="Smart Contract" label="Smart Contract">
+
+```js
+import { Wallet } from './near-wallet';
+
+const TOKEN_CONTRACT_ADDRESS = "token.v2.ref-finance.near";
+const wallet = new Wallet({ createAccessKeyFor: TOKEN_CONTRACT_ADDRESS });
+ 
+await wallet.viewMethod({
+  method: 'ft_balance_of',
+  args: {
+    account_id: 'bob.near'
+  },
+  contractId: TOKEN_CONTRACT_ADDRESS
+});
+```
+
+<details>
+<summary>Example response</summary>
+<p>
+
+```json
+"3479615037675962643842"
+```
+
+</p>
+</details>
+
+</TabItem>
+
+<TabItem value="RPC Request" label="RPC Request">
+
+```js
+const tokenContract = "token.v2.ref-finance.near";
+const args = btoa('{"account_id":"bob.near"}');
+const tokenBalance = fetch("https://rpc.mainnet.near.org", {
+  body: JSON.stringify({
+    jsonrpc: "2.0",
+    id: "ftbalance",
+    method: "query",
+    params: {
+      request_type: "call_function",
+      finality: "final",
+      account_id: tokenContract,
+      method_name: "ft_balance_of",
+      args_base64: args,
+    },
+  }),
+  headers: {
+    "Content-Type": "application/json",
+  },
+  method: "POST",
+});
+```
+
+<details>
+<summary>Example response</summary>
+<p>
+
+```json
+{
+  "ok": true,
+  "status": 200,
+  "contentType": "application/json",
+  "body": {
+    "jsonrpc": "2.0",
+    "result": {
+      "block_hash": "BRk4P9psignJsQhEThYw54carctUfnwFuPkHV2ProiXa",
+      "block_height": 104562819,
+      "logs": [],
+      "result": [34, 51, 52, 55, 57, 54, 49, 53, 48, 51, 55, 54, 55, 53, 57, 54, 50, 54, 52, 51, 56, 52, 50, 34]
+    },
+    "id": "ftbalance"
+  }
+}
+```
+
+**Note**: `result` is an array of bytes, you need to serialize the result by yourself.
+
+</p>
+</details>
+
+</TabItem>
+
+</Tabs>
+
+---
+
+## Send tokens
+
+<Tabs>
+
+<TabItem value="Smart Contract" label="Smart Contract">
+
+```js
+import { Wallet } from './near-wallet';
+
+const TOKEN_CONTRACT_ADDRESS = "token.v2.ref-finance.near";
+const wallet = new Wallet({ createAccessKeyFor: TOKEN_CONTRACT_ADDRESS });
+ 
+await wallet.callMethod({
+  method: 'ft_transfer',
+  args: {
+    receiver_id: 'alice.near',
+    amount: '100000000000000000',
+  },
+  contractId: TOKEN_CONTRACT_ADDRESS,
+  deposit: 1
+});
+```
+
+:::info
+In order to transfer FTs to another account receiver account have to be registered in the token contract and make storage deposit. User can register their account or another account can do it for them.
+
+How to check storage balance in contract (you can make requests to RPC in order to call view methods of smart contract as well):
+
+```js
+const balance = await wallet.viewMethod({
+  method: 'storage_balance_of',
+  args: {
+    account_id: 'alice.near'
+  },
+  contractId: TOKEN_CONTRACT_ADDRESS
+});
+```
+
+<details>
+<summary>Example response</summary>
+<p>
+
+It returns `null` if account is not registered.
+
+```json
+{
+  "available": "0",
+  "total": "1250000000000000000000"
 }
 ```
 
 </p>
 </details>
 
-:::note
-In the future, users may be required to register using an api key. For now, simply passing the valueanon for `mb-api-key` will work.
-:::
-
-By using [`Mintbase JS`](https://docs.mintbase.xyz/dev/mintbase-sdk-ref/data/api/tokenbyid)
+How to register another account:
 
 ```js
-import { tokenById } from  '@mintbase-js/data'
-
-const { data, error } = await tokenById( '1','rub3n.testnet');
-
-if (error) {console.log('error', error)}
-
-
-console.log(data.tokenData[0]) // => token metadata
-```
-
-</TabItem>
-</Tabs>
-
----
-
-## Transfer a NFT
-
-<Tabs>
-<TabItem value="NFT Primitive" label="NFT Primitive" default>
-
-```js
-import { Wallet } from './near-wallet';
-
-const CONTRACT_ADDRESS = "nft.primitives.near";
-const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
- 
-await wallet.callMethod({
-  method: 'nft_transfer',
+const newAliceStorageBalance = await wallet.callMethod({
+  method: 'storage_deposit',
   args: {
-    token_id: "1",
-    receiver_id: "bob.near"
+    receiver_id: 'alice.near',
+    amount: '100000000000000000',
   },
-  contractId: CONTRACT_ADDRESS
+  contractId: TOKEN_CONTRACT_ADDRESS,
+  deposit: 1250000000000000000000
 });
 ```
 
-</TabItem>
+If you need to register your own account just pass `{}` as arguments to call.
 
-<TabItem value="Paras" label="Paras">
+<details>
+<summary>Example response</summary>
+<p>
 
-```js
-import { Wallet } from './near-wallet';
-
-const CONTRACT_ADDRESS = "x.paras.near";
-const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
- 
-await wallet.callMethod({
-  method: 'nft_transfer',
-  args: {
-    token_id: "490641",
-    receiver_id: "bob.near"
-  },
-  contractId: CONTRACT_ADDRESS
-});
-```
-
-</TabItem>
-
-<TabItem value="Mintbase" label="Mintbase">
-
-By using [`near-api-js`](https://docs.near.org/tools/near-api-js/quick-reference)
-
-```js
-import { Wallet } from './near-wallet';
-
-const CONTRACT_ADDRESS = "thomasettorreiv.mintbase1.near";
-const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
- 
-await wallet.callMethod({
-  method: 'nft_transfer',
-  args: {
-    token_id: "490641",
-    receiver_id: "bob.near"
-  },
-  contractId: CONTRACT_ADDRESS
-});
-```
-
-By using [`Mintbase JS`](https://docs.mintbase.xyz/dev/mintbase-sdk-ref/sdk/transfer)
-
-```js
-import { useState } from 'react';
-import { useWallet } from '@mintbase-js/react';
-import { execute, transfer, TransferArgs } from '@mintbase-js/sdk';
-
-const TransferComponent = ({ tokenId, contractAddress }: TransferArgs): JSX.Element => {
-  const { selector, activeAccountId } = useWallet();
-
-  const handleTransfer = async (): Promise<void> => {
-    const wallet = await selector.wallet();
-
-    const transferArgs: TransferArgs = {
-        contractAddress: contractAddress,
-        transfers: [{
-          receiverId: 'mb_carol.testnet',
-          tokenId: token.tokenId,
-        }],
-      }
-
-    await execute(
-      { wallet },
-      transfer(transferArgs),
-    );
-  };
-
-  return (
-    <div>
-      <button onClick={handleTransfer}>
-        Transfer {tokenId} of {contractAddress} from {activeAccountId} to Carol
-      </button>
-    </div>
-  );
+```json
+{
+  "available": "0",
+  "total": "1250000000000000000000"
 }
 ```
 
+</p>
+</details>
+:::
+
 </TabItem>
+
 </Tabs>
 
 ---
 
-## List a NFT for sale
+## Swap tokens
 
-Basic NFT contracts following [the NEP-171 and NEP-177 standards](https://nomicon.io/Standards/Tokens/NonFungibleToken) do not implement marketplace functionality.
+We will use [Ref Finance](https://app.ref.finance/) as an AMM contract in this section.
 
-For this purpose, there are ecosystem apps such as [Paras](https://paras.id/) or [Mintbase](https://www.mintbase.xyz/), that use dedicated marketplace contracts.
-
-In order to put a NFT for a sale on a marketplace you need to do two actions: 
-
-1. Cover data storage costs in the marketplace contract. 
-2. Approve the marketplace to sell the NFT in your NFT contract.
+:::warning
+Before initiating any actions related with swapping tokens you must have to check that a wallet has a sufficient storage deposit on a token's smart contract. Otherwise, tokens may be stucked in the contract's "owner" account and you will need to solve this issue via Ref Finance support.
+:::
 
 <Tabs>
 
-<TabItem value="Paras" label="Paras">
+<TabItem value="Smart Contract" label="Smart Contract">
 
 ```js
 import { Wallet } from './near-wallet';
 
-const CONTRACT_ADDRESS = "marketplace.paras.near";
-const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
+const AMM_CONTRACT_ADDRESS = "v2.ref-finance.near";
+const wallet = new Wallet({ createAccessKeyFor: AMM_CONTRACT_ADDRESS });
  
 await wallet.callMethod({
-  method: 'storage_deposit',
+  method: 'swap',
   args: {
-    receiver_id: "bob.near"
+   actions: [
+      {
+        pool_id: 79,
+        token_in: "token.v2.ref-finance.near",
+        token_out: "wrap.near",
+        amount_in: "100000000000000000",
+        min_amount_out: "1",
+      },
+    ],
   },
-  contractId: CONTRACT_ADDRESS,
-  gas: 300000000000000, // attached GAS (optional)
-  deposit: 9390000000000000000 // attached deposit in yoctoNEAR (optional)
-});
-
-await wallet.callMethod({
-  method: 'nft_approve',
-  args: {
-    token_id: "1e95238d266e5497d735eb30",
-    account_id: "marketplace.paras.near",
-    msg: {
-      price: "200000000000000000000000",
-      market_type: "sale",
-      ft_token_id: "near"
-    }
-  },
-  contractId: "nft.primitives.near"
+  contractId: AMM_CONTRACT_ADDRESS,
+  gas: 300000000000000,
+  deposit: 1
 });
 ```
 
-Method `nft_approve` of a NFT contract also calls the `nft_on_approve` method in `marketplace.paras.near` as a callback.
+<details>
+<summary>Example response</summary>
+<p>
+
+```json
+"5019606679394603179450"
+```
+
+</p>
+</details>
+
+:::info
+In order to make swap you need to have enough tokens in deposit on Ref Finance.
+
+Query your deposit balances on Ref Finance
+
+```js
+const AMM_CONTRACT_ADDRESS = "v2.ref-finance.near";
+const wallet = new Wallet({ createAccessKeyFor: AMM_CONTRACT_ADDRESS });
+ 
+await wallet.viewMethod({
+  method: 'get_deposits',
+  args: {
+   account_id: "bob.near"
+  },
+  contractId: AMM_CONTRACT_ADDRESS,
+});
+```
+
+<details>
+<summary>Example response</summary>
+<p>
+
+```json
+{
+  "token.v2.ref-finance.near": "0",
+  "wrap.near": "0"
+}
+```
+
+</p>
+</details>
+
+How to [deposit funds](#attaching-fts-to-a-call--already-exist-here)
+
+:::
 
 </TabItem>
 
-<TabItem value="Mintbase" label="Mintbase">
-
-```js
-import { Wallet } from './near-wallet';
-
-const CONTRACT_ADDRESS = "simple.market.mintbase1.near";
-const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
- 
-await wallet.callMethod({
-  method: 'deposit_storage',
-  args: {
-      autotransfer: true
-    },
-  contractId: CONTRACT_ADDRESS,
-  gas: 300000000000000, // attached GAS (optional)
-  deposit: 9390000000000000000 // attached deposit in yoctoNEAR (optional)
-});
-
-await wallet.callMethod({
-  method: 'nft_approve',
-  args: {
-    args: {
-      token_id: "3c46b76cbd48e65f2fc88473",
-      account_id: "simple.market.mintbase1.near",
-      msg: {
-        price: "200000000000000000000000"
-      }
-    },
-  },
-  contractId: "nft.primitives.near"
-});
-```
-
-Method `nft_approve` of a NFT contract also calls the `nft_on_approve` method in `simple.market.mintbase1.near` as a callback.
-
-By using [`Mintbase JS`](https://docs.mintbase.xyz/dev/mintbase-sdk-ref/sdk/list)
-
-```js
-import { useState } from 'react';
-import { useWallet } from '@mintbase-js/react';
-import { execute, list, ListArgs } from '@mintbase-js/sdk';
-
-
-export const ListComponent = ({ contractAddress, marketAddress , tokenId, price }:ListArgs):JSX.Element => {
-  
-  const { selector } = useWallet();
-
-  const handleList = async (): Promise<void> => {
-    const wallet = await selector.wallet();
-    
-    await execute(
-        {wallet},
-        list({
-         contractAddress: nftContractId, 
-         marketAddress: marketId, 
-         tokenId: tokenId, 
-         price: price
-        })
-      )
-  }
-
-  return (
-    <div>
-      <button onClick={handleList}>
-        DeployContract with name= {name} and owner= {owner}
-      </button>
-    </div>
-  );
-};
-```
-
-</TabItem>
 </Tabs>
+
+---
+
+## Attaching FTs to a Call
+
+Natively, only NEAR tokens (Ⓝ) can be attached to a method calls. However, the FT standard enables to attach fungible tokens in a call by using the FT-contract as intermediary. This means that, instead of you attaching tokens directly to the call, you ask the FT-contract to do both a transfer and a method call in your name.
+
+Let's assume that you need to deposit FTs on Ref Finance.
+
+```js
+import { Wallet } from './near-wallet';
+
+const TOKEN_CONTRACT_ADDRESS = "token.v2.ref-finance.near";
+const wallet = new Wallet({ createAccessKeyFor: TOKEN_CONTRACT_ADDRESS });
+ 
+await wallet.callMethod({
+  method: 'ft_transfer_call',
+  args: {
+    receiver_id: "v2.ref-finance.near",
+    amount: "100000000000000000",
+    msg: "",
+  },
+  contractId: TOKEN_CONTRACT_ADDRESS,
+  gas: 300000000000000,
+  deposit: 1
+});
+```
+
+<details>
+<summary>Example response</summary>
+<p>
+
+```json
+'100000000000000000'
+```
+
+</p>
+</details>
+
+How it works:
+
+1. You call ft_transfer_call in the FT contract passing: the receiver, a message, and the amount.
+2. The FT contract transfers the amount to the receiver.
+3. The FT contract calls receiver.ft_on_transfer(sender, msg, amount)
+4. The FT contract handles errors in the ft_resolve_transfer callback.
+5. The FT contract returns you how much of the attached amount was actually used.
