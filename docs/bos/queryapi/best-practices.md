@@ -61,6 +61,7 @@ This is the recommended workflow when building a new indexer using QueryAPI:
 
 7. Whenever you add any changes to either the database schema or the `indexerLogic`, it’s a good idea to fork and deploy a new indexer. If not, your new indexing logic will re-run on old blocks, and if you don’t handle re-indexing in your `indexingLogic.js`, the same old data will be inserted again into the database, bringing further errors.
 
+<!--
 ## Database design
 
 Designing an optimal database schema depends on the type of indexer that you want to build.
@@ -73,4 +74,4 @@ Focusing on the two most common blockchain indexing use cases, you can consider:
 
 
 ### Schema for interactive UIs
-
+-->
