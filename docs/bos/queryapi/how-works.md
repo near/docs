@@ -39,8 +39,7 @@ An in-depth, detailed overview of the QueryApi components:
 [Pagoda Inc.](https://pagoda.co) runs and manages all the infrastructure of QueryAPI, including NEAR Lake nodes to store the data in JSON format on AWS S3.
 
 - NEAR Lake indexing is hosted on AWS S3 buckets.
-- Coordinator is hosted on GCP.
-- Runners are hosted on AWS SQS and AWS Lambda.
+- Coordinator and Runners are hosted on GCP.
 - Hasura GraphQL API server is hosted on GCP.
 
 :::caution Pricing
