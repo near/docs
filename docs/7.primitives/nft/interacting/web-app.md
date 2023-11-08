@@ -130,6 +130,7 @@ export const MintComponent = ({ media, reference, contractAddress, owner }: Mint
 ```
 
 </TabItem>
+
 </Tabs>
 
 ---
@@ -234,6 +235,7 @@ export const BuyComponent = ({ contractAddress, price, tokenId, affiliateAccount
 ```
 
 </TabItem>
+
 </Tabs>
 
 ---
@@ -538,6 +540,7 @@ console.log(data.tokenData[0]) // => token metadata
 ```
 
 </TabItem>
+
 </Tabs>
 
 ---
@@ -643,6 +646,7 @@ const TransferComponent = ({ tokenId, contractAddress }: TransferArgs): JSX.Elem
 ```
 
 </TabItem>
+
 </Tabs>
 
 ---
@@ -769,4 +773,5 @@ export const ListComponent = ({ contractAddress, marketAddress , tokenId, price 
 ```
 
 </TabItem>
+
 </Tabs>
