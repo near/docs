@@ -33,9 +33,7 @@ const tokenPrice = fetch(
 console.log("refPrice: ", JSON.parse(tokenPrice));
 ```
 
-<details>
-<summary>Example response</summary>
-<p>
+**Example response:**
 
 ```json
 {
@@ -43,9 +41,6 @@ console.log("refPrice: ", JSON.parse(tokenPrice));
   "price": "0.05732698"
 }
 ```
-
-</p>
-</details>
 
 </TabItem>
 
