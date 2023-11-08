@@ -156,16 +156,12 @@ await wallet.callMethod({
 });
 ```
 
-<details>
-<summary>Example response</summary>
-<p>
+**Example response:**
 
 ```json
 "299102:1"
 ```
 
-</p>
-</details>
 
 </TabItem>
 
@@ -190,9 +186,7 @@ await wallet.callMethod({
 });
 ```
 
-<details>
-<summary>Example response</summary>
-<p>
+**Example response:**
 
 ```json
 {
@@ -203,8 +197,6 @@ await wallet.callMethod({
 }
 ```
 
-</p>
-</details>
 
 By using [`Mintbase JS`](https://docs.mintbase.xyz/dev/mintbase-sdk-ref/sdk/buy)
 
@@ -265,9 +257,7 @@ const response = await wallet.viewMethod({
 });
 ```
 
-<details>
-<summary>Example response</summary>
-<p>
+**Example response:**
 
 ```json
 {
@@ -290,8 +280,6 @@ const response = await wallet.viewMethod({
 }
 ```
 
-</p>
-</details>
 
 </TabItem>
 
@@ -313,9 +301,7 @@ const response = await wallet.viewMethod({
 });
 ```
 
-<details>
-<summary>Example response</summary>
-<p>
+**Example response:**
 
 ```json
 {
@@ -339,8 +325,6 @@ const response = await wallet.viewMethod({
 }
 ```
 
-</p>
-</details>
 
 By calling a Paras API method
 
@@ -348,9 +332,7 @@ By calling a Paras API method
 const tokenData = fetch("https://api-v2-mainnet.paras.id/token?token_id=84686:1154");
 ```
 
-<details>
-<summary>Example response</summary>
-<p>
+**Example response:**
 
 ```json
 {
@@ -405,8 +387,6 @@ const tokenData = fetch("https://api-v2-mainnet.paras.id/token?token_id=84686:11
 }
 ```
 
-</p>
-</details>
 
 :::info
 See the [Paras API documentation](https://parashq.github.io/) for the full list of methods.
@@ -438,9 +418,7 @@ const response = await wallet.viewMethod({
 });
 ```
 
-<details>
-<summary>Example response</summary>
-<p>
+**Example response:**
 
 ```json
 {
@@ -479,8 +457,6 @@ const response = await wallet.viewMethod({
 }
 ```
 
-</p>
-</details>
 
 :::note
 When someone creates a NFT on Mintbase they need to deploy their own NFT contract using Mintbase factory. Those smart contract are subaccounts of mintbase1.near, e.g. `anthropocene.mintbase1.near`.
@@ -518,9 +494,7 @@ const tokenData = fetch("https://graph.mintbase.xyz", {
 });
 ```
 
-<details>
-<summary>Example response</summary>
-<p>
+**Example response:**
 
 ```json
 {
@@ -545,8 +519,6 @@ const tokenData = fetch("https://graph.mintbase.xyz", {
 }
 ```
 
-</p>
-</details>
 
 :::note
 In the future, users may be required to register using an api key. For now, simply passing the valueanon for `mb-api-key` will work.
