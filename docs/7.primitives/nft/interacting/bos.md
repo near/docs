@@ -68,6 +68,7 @@ In order to use `nft_batch_mint` method of Mintbase store contract your account 
 :::
 
 </TabItem>
+
 </Tabs>
 
 ---
@@ -130,6 +131,7 @@ const tokenData = Near.call(
 
 
 </TabItem>
+
 </Tabs>
 
 ---
@@ -399,6 +401,7 @@ In the future, users may be required to register using an api key. For now, simp
 :::
 
 </TabItem>
+
 </Tabs>
 
 ---
@@ -440,6 +443,7 @@ const tokenData = Near.call("thomasettorreiv.mintbase1.near", "nft_transfer", {
 ```
 
 </TabItem>
+
 </Tabs>
 
 ---
@@ -519,4 +523,5 @@ Near.call(
 The method `nft_approve` will call `nft_on_approve` in `simple.market.mintbase1.near`.
 
 </TabItem>
+
 </Tabs>

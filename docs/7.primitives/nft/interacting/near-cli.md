@@ -45,6 +45,7 @@ In order to use `nft_batch_mint` method of Mintbase store contract your account 
 :::
 
 </TabItem>
+
 </Tabs>
 
 ---
@@ -86,6 +87,7 @@ near call simple.market.mintbase1.near buy '{"nft_contract_id": "rubennnnnnnn.mi
 
 
 </TabItem>
+
 </Tabs>
 
 ---
@@ -209,6 +211,7 @@ When someone creates a NFT on Mintbase they need to deploy their own NFT contrac
 :::
 
 </TabItem>
+
 </Tabs>
 
 ---
@@ -239,6 +242,7 @@ near call thomasettorreiv.mintbase1.near nft_transfer '{"token_id": "490641" "re
 ```
 
 </TabItem>
+
 </Tabs>
 
 ---
@@ -279,6 +283,7 @@ near call nft.primitives.near nft_approve '{"token_id": "3c46b76cbd48e65f2fc8847
 Method `nft_approve` of a NFT contract also calls the `nft_on_approve` method in `simple.market.mintbase1.near` as a callback.
 
 </TabItem>
+
 </Tabs>
 
 :::info
