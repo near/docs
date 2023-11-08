@@ -8,7 +8,7 @@ We have some proof of concept works for integrating with rollups. We are working
 They are being actively developed, so they are in a state of flux.
 
 - [Optimism](./optimism.md)
-- [Polygon CDK](./polygon-cdk.md)
+- [Polygon CDK](./cdk-integration.md)
 
 ---
 
