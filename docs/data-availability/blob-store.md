@@ -13,7 +13,7 @@ To limit the costs of NEAR storage even more, we don't store the blob data in th
 
 It works by taking advantage of NEAR consensus around receipts.
 When a chunk producer processes a receipt, there is consensus around the receipt.
-However, once the chunk has been processed and included in the block, the receipt is no longer required for consensus and can be pruned. The pruning time is at least 3 NEAR epochs, where each epoch is 12; in practice, this is around five epochs.
+However, once the chunk has been processed and included in the block, the receipt is no longer required for consensus and can be pruned. The pruning time is at least 3 NEAR epochs, where each epoch is 12 hours; in practice, this is around five epochs.
 Once the receipt has been pruned, it is the responsibility of archival nodes to retain the transaction data, and we can even get the data from indexers.
 
 We can validate that the blob was retrieved from ecosystem actors in the format submitted by checking the blob commitment.
