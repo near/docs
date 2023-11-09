@@ -392,3 +392,125 @@ How it works:
 3. The FT contract calls receiver.ft_on_transfer(sender, msg, amount)
 4. The FT contract handles errors in the ft_resolve_transfer callback.
 5. The FT contract returns you how much of the attached amount was actually used.
+
+## Creating FT
+
+For creating our own FT we will use [Token Farm](https://tkn.farm/). You can use it from GUI in your browser, but we will look at how to use its smart contracts to create a token.
+
+First of all, you need to calculate how much creating a token will cost you.
+
+<Tabs>
+
+<TabItem value="Smart Contract" label="Smart Contract">
+
+```js
+const contract = "tkn.near";
+const args = {
+  args: {
+    owner_id: "bob.near",
+    total_supply: "1000000000",
+    metadata: {
+      spec: "ft-1.0.0",
+      name: "Test Token",
+      symbol: "TTTEST",
+      icon: "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      decimals: 18,
+    },
+  },
+  account_id: "bob.near",
+};
+const requiredStorageDeposit = Near.view(
+  contract,
+  "get_required_deposit",
+  args
+);
+```
+
+<details>
+<summary>Example response</summary>
+<p>
+
+```json
+'2234830000000000000000000'
+```
+
+</p>
+</details>
+
+</TabItem>
+
+<TabItem value="RPC Request" label="RPC Request">
+
+```js
+const contract = "tkn.near";
+const args = Buffer.from(
+  '{"args":{"owner_id": "bob.near","total_supply": "1000000000","metadata":{"spec": "ft-1.0.0","name": "Test Token","symbol": "TTTEST","icon": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7","decimals": 18}},"account_id": "bob.near"}'
+).toString("base64");
+const requiredStorageDeposit = fetch("https://rpc.mainnet.near.org", {
+  body: JSON.stringify({
+    jsonrpc: "2.0",
+    id: "get_required_deposit",
+    method: "query",
+    params: {
+      request_type: "call_function",
+      finality: "final",
+      account_id: contract,
+      method_name: "get_required_deposit",
+      args_base64: args,
+    },
+  }),
+  headers: {
+    "Content-Type": "application/json",
+  },
+  method: "POST",
+});
+```
+
+<details>
+<summary>Example response</summary>
+<p>
+
+```json
+{
+  "ok": true,
+  "status": 200,
+  "contentType": "application/json",
+  "body": {
+    "jsonrpc": "2.0",
+    "result": {
+      "block_hash": "6We5sybVQpf1pswyVsf32cGJfsFH8oHUNiB8RDJdVMpT",
+      "block_height": 105246927,
+      "logs": [],
+      "result": [34, 50, 50, 51, 52, 56, 51, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 34]
+    },
+    "id": "get_required_deposit"
+  }
+}
+```
+
+**Note**: `result` is an array of bytes, you need to serialize the result by yourself.
+
+</p>
+</details>
+
+</TabItem>
+
+</Tabs>
+
+And then you can create a token.
+
+<Tabs>
+
+<TabItem value="Smart Contract" label="Smart Contract">
+
+```js
+Near.call(contract, "create_token", args, 300000000000000, requiredStorageDeposit);
+```
+
+</TabItem>
+
+</Tabs>
+
+Contract of your token will have an address which looks like `<your_token_ticker>.tkn.near`.
+
+After creating a token you can [send it](#send-tokens) to anyone.
