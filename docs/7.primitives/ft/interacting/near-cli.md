@@ -245,6 +245,9 @@ near view tkn.near get_required_deposit '{"args":{"owner_id": "bob.near","total_
 '2234830000000000000000000'
 ```
 
+</p>
+</details>
+
 And then you can create a token.
 
 ```bash
