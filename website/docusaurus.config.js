@@ -67,16 +67,6 @@ module.exports = {
     [
       '@docusaurus/plugin-content-docs',
       {
-        id: 'near-api-js',
-        // this path doesn't exit, the versioning mechanism takes docs from website/near-api-js_versioned_docs
-        path: '../__generated/near-api-js',
-        routeBasePath: '/tools/near-api-js/reference',
-        includeCurrentVersion: false,
-      },
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
         id: 'near-sdk-js',
         // this path doesn't exit, the versioning mechanism takes docs from website/near-sdk-js_versioned_docs
         path: '../__generated/near-sdk-js',
