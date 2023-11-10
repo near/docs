@@ -443,8 +443,8 @@
         },
         {
           "type": "link",
-          "label": "Type Docs ↗",
-          "href": "/tools/near-api-js/reference"
+          "label": "Type Docs",
+          "href": "https://near.github.io/near-api-js"
         }
       ]
     },

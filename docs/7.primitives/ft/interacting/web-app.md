@@ -13,10 +13,6 @@ This section describes how to interact with NFT contracts from a web app.
 All the examples are using a `Wallet` object, which comes from our [basic template](https://github.com/near-examples/hello-near-js/blob/master/frontend/near-wallet.js)
 :::
 
-:::tip
-In order to interact with NFT from your Web App you can request data from various APIs from your app (for example, [Marketplaces API](/primitives/nft/querying/marketplaces)).
-:::
-
 ---
 
 ## Mint a NFT
