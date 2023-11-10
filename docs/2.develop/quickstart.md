@@ -25,10 +25,25 @@ Use the interactive menu to set up your first project folder. For this guide we'
 
 Once the folder is ready, check the README. It will show you how to **build** and **deploy** the smart contract.
 
+
+<CodeTabs>
+  <Language value="🌐 JavaScript" language="js">
+
 ```bash 
   npm run build
   npm run deploy
 ```
+
+  </Language>
+  <Language value="🦀 Rust" language="rust">
+
+```bash 
+  ./build.sh
+  ./deploy.sh
+```
+
+  </Language>
+</CodeTabs>
 
 Once the smart contract is deployed, you can set a new greeting using the provided temporary dev account found in `neardev/dev-account` or by using a testnet account. You can [sign up for a testnet account here](https://testnet.mynearwallet.com/create). 
 
