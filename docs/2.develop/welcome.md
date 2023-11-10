@@ -14,7 +14,7 @@ Do not worry if you are new to blockchain technologies, we will get you up to sp
 
 <FeatureList>
   <Column title="Build dApps">
-    <Feature url="/develop/quickstart-guide" title="Quickstart" subtitle="Spin-up your first dApp" image="quickstart.png" highlight="true" />
+    <Feature url="/develop/quickstart-guide" title="Quickstart" subtitle="Spin-up your first smart contract" image="quickstart.png" highlight="true" />
     <Feature url="/tutorials/welcome" title="Tutorials & Examples" subtitle="Check-out a vast library of examples" image="tutorials.png" />
     <Feature url="/develop/contracts/introduction" title="Build a Contract" subtitle="Learn how to write smart contracts" image="smartcontract.png" />
     <Feature url="/develop/testing/introduction" title="Test the Contract" subtitle="Write unit & integration tests" image="test.png" />
