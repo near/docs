@@ -80,7 +80,13 @@ The contract presents 2 methods: `set_greeting` and `get_greeting`. The first on
 ## Testing
 
 When writing smart contracts it is very important to test all methods exhaustively. This
-project has **unit** tests. Before digging in their code, go ahead and execute them using the command `npm run test`.
+project has **integration** tests. It creates a sandbox environment that takes the `.wasm` file for your contract and simulates creating users and running both methods on the contract.
+
+Sandbox testing is important because it allows you test all methods on your contract in a secure and separate environment that imitates real world scenarios.
+
+Before digging in their code, go ahead and execute them using the command `npm run test`.
+
+
 
 ### Unit test
 Unit tests check individual functions in the smart contract. They are written in the
