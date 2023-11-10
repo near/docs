@@ -17,6 +17,8 @@ All the examples are using a `Wallet` object, which comes from our [basic templa
 
 ## Get token metadata
 
+This snippet will enable your users to query FT metadata from smart contract directly or via RPC.
+
 <Tabs>
 
 <TabItem value="Smart Contract" label="Smart Contract">
@@ -115,6 +117,8 @@ const tokenBalance = fetch("https://rpc.mainnet.near.org", {
 
 ## Check token balance
 
+This snippet will enable your users to get their FT balance from smart contract or via RPC.
+
 :::info
 Remember about fungible token precision. You may need this value to show a response of balance requests in an understandable-to-user way in your app. How to get precision value (decimals) you may find [above](#get-token-metadata).
 :::
@@ -211,6 +215,8 @@ const tokenBalance = fetch("https://rpc.mainnet.near.org", {
 
 ## Send tokens
 
+This snippet will enable your users to transfer their FT tokens.
+
 <Tabs>
 
 <TabItem value="Smart Contract" label="Smart Contract">
@@ -302,6 +308,8 @@ If you need to register your own account just pass `{}` as arguments to call.
 
 ## Swap tokens
 
+This snippet will enable your users to swap FTs.
+
 We will use [Ref Finance](https://app.ref.finance/) as an AMM contract in this section.
 
 :::warning
@@ -392,6 +400,8 @@ How to [deposit funds](#attaching-fts-to-a-call--already-exist-here)
 
 ## Attaching FTs to a Call
 
+This snippet will enable your users to attach FT to a call.
+
 Natively, only NEAR tokens (Ⓝ) can be attached to a method calls. However, the FT standard enables to attach fungible tokens in a call by using the FT-contract as intermediary. This means that, instead of you attaching tokens directly to the call, you ask the FT-contract to do both a transfer and a method call in your name.
 
 Let's assume that you need to deposit FTs on Ref Finance.
@@ -435,6 +445,8 @@ How it works:
 5. The FT contract returns you how much of the attached amount was actually used.
 
 ## Creating FT
+
+This snippet will enable your users to create their own FT.
 
 For creating our own FT we will use [Token Farm](https://tkn.farm/). You can use it from GUI in your browser, but we will look at how to use its smart contracts to create a token.
 

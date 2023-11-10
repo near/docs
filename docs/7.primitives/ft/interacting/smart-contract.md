@@ -6,6 +6,8 @@ hide_table_of_contents: false
 
 This section will explain how a smart contract can handle a deposit in FTs, send tokens, swap tokens and attach them to call.
 
+---
+
 ### Base Contract
 
 The examples assume that the contract is defined as follows:
