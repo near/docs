@@ -86,18 +86,11 @@ Sandbox testing is important because it allows you test all methods on your cont
 
 Before digging in their code, go ahead and execute them using the command `npm run test`.
 
-
-
-### Unit test
-Unit tests check individual functions in the smart contract. They are written in the
-same language than the smart contract. If your contract is in Rust you will find the tests at the bottom of
-each `.rs` file.
-
 <CodeTabs>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="🌐 JavaScript" language="js">
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/hello-near-rs/blob/main/contract/src/lib.rs"
-            start="46" end="58" />
+            url="https://github.com/near/create-near-app/blob/master/templates/sandbox-tests/sandbox-ts/src/main.ava.ts"
+            start="33" end="44" />
   </Language>
 </CodeTabs>
 
