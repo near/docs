@@ -1,8 +1,12 @@
 {
+  "_comment": "",
   "recurse": true,
   "directoryListing": true,
-  "concurrency": 100,
-  "silent": true,
+  "retry": true,
+  "timeout": 1000,
+  "concurrency": 10,
+  "silent": false,
+  "verbose": "DEBUG",
   "skip": [
     "https://crates.io/*",
     "https://staking.dokia.cloud/staking/near/validators",
@@ -20,7 +24,7 @@
     "https://ropsten.etherscan.io/*",
     "https://near.org/near/widget/*",
     "https://www.coingecko.com/en/api",
-    "github.com/*",
+    "https://www.coindesk.com/*",
     "/ko/*",
     "/vi/*",
     "/zh-CN/*"
