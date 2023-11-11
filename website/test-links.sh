@@ -57,7 +57,7 @@ check_links() {
     local port=$(cat server.port)
     local base_url="http://localhost:$port"
     echo "Checking for broken links on $base_url..."
-    npx linkinator $base_url --recurse --retry --skip /ko,/vi,/zh-CN,crates.io --concurrency 5 --directoryListing true
+    npx linkinator $base_url --config linkinator.config.json
 }
 
 test() {
