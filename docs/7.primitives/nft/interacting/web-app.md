@@ -13,10 +13,6 @@ This section describes how to interact with NFT contracts from a web app.
 All the examples are using a `Wallet` object, which comes from our [basic template](https://github.com/near-examples/hello-near-js/blob/master/frontend/near-wallet.js)
 :::
 
-:::tip
-In order to interact with NFT from your Web App you can request data from various APIs from your app (for example, [Marketplaces API](/primitives/nft/querying/marketplaces)).
-:::
-
 ---
 
 ## Mint a NFT
@@ -130,6 +126,7 @@ export const MintComponent = ({ media, reference, contractAddress, owner }: Mint
 ```
 
 </TabItem>
+
 </Tabs>
 
 ---
@@ -156,16 +153,12 @@ await wallet.callMethod({
 });
 ```
 
-<details>
-<summary>Example response</summary>
-<p>
+**Example response:**
 
 ```json
 "299102:1"
 ```
 
-</p>
-</details>
 
 </TabItem>
 
@@ -190,9 +183,7 @@ await wallet.callMethod({
 });
 ```
 
-<details>
-<summary>Example response</summary>
-<p>
+**Example response:**
 
 ```json
 {
@@ -203,8 +194,6 @@ await wallet.callMethod({
 }
 ```
 
-</p>
-</details>
 
 By using [`Mintbase JS`](https://docs.mintbase.xyz/dev/mintbase-sdk-ref/sdk/buy)
 
@@ -242,6 +231,7 @@ export const BuyComponent = ({ contractAddress, price, tokenId, affiliateAccount
 ```
 
 </TabItem>
+
 </Tabs>
 
 ---
@@ -265,9 +255,7 @@ const response = await wallet.viewMethod({
 });
 ```
 
-<details>
-<summary>Example response</summary>
-<p>
+**Example response:**
 
 ```json
 {
@@ -290,8 +278,6 @@ const response = await wallet.viewMethod({
 }
 ```
 
-</p>
-</details>
 
 </TabItem>
 
@@ -313,9 +299,7 @@ const response = await wallet.viewMethod({
 });
 ```
 
-<details>
-<summary>Example response</summary>
-<p>
+**Example response:**
 
 ```json
 {
@@ -339,8 +323,6 @@ const response = await wallet.viewMethod({
 }
 ```
 
-</p>
-</details>
 
 By calling a Paras API method
 
@@ -348,9 +330,7 @@ By calling a Paras API method
 const tokenData = fetch("https://api-v2-mainnet.paras.id/token?token_id=84686:1154");
 ```
 
-<details>
-<summary>Example response</summary>
-<p>
+**Example response:**
 
 ```json
 {
@@ -405,8 +385,6 @@ const tokenData = fetch("https://api-v2-mainnet.paras.id/token?token_id=84686:11
 }
 ```
 
-</p>
-</details>
 
 :::info
 See the [Paras API documentation](https://parashq.github.io/) for the full list of methods.
@@ -438,9 +416,7 @@ const response = await wallet.viewMethod({
 });
 ```
 
-<details>
-<summary>Example response</summary>
-<p>
+**Example response:**
 
 ```json
 {
@@ -479,8 +455,6 @@ const response = await wallet.viewMethod({
 }
 ```
 
-</p>
-</details>
 
 :::note
 When someone creates a NFT on Mintbase they need to deploy their own NFT contract using Mintbase factory. Those smart contract are subaccounts of mintbase1.near, e.g. `anthropocene.mintbase1.near`.
@@ -518,9 +492,7 @@ const tokenData = fetch("https://graph.mintbase.xyz", {
 });
 ```
 
-<details>
-<summary>Example response</summary>
-<p>
+**Example response:**
 
 ```json
 {
@@ -545,8 +517,6 @@ const tokenData = fetch("https://graph.mintbase.xyz", {
 }
 ```
 
-</p>
-</details>
 
 :::note
 In the future, users may be required to register using an api key. For now, simply passing the valueanon for `mb-api-key` will work.
@@ -566,6 +536,7 @@ console.log(data.tokenData[0]) // => token metadata
 ```
 
 </TabItem>
+
 </Tabs>
 
 ---
@@ -671,6 +642,7 @@ const TransferComponent = ({ tokenId, contractAddress }: TransferArgs): JSX.Elem
 ```
 
 </TabItem>
+
 </Tabs>
 
 ---
@@ -797,4 +769,5 @@ export const ListComponent = ({ contractAddress, marketAddress , tokenId, price 
 ```
 
 </TabItem>
+
 </Tabs>

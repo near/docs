@@ -328,7 +328,7 @@
     {
       "type": "link",
       "label": "Development Kit (SDK) ↗",
-      "href": "/tools/sdk/welcome"
+      "href": "/sdk/welcome"
     },
     {
       "type": "link",
@@ -443,8 +443,8 @@
         },
         {
           "type": "link",
-          "label": "Type Docs ↗",
-          "href": "/tools/near-api-js/reference"
+          "label": "Type Docs",
+          "href": "https://near.github.io/near-api-js"
         }
       ]
     },
@@ -866,6 +866,27 @@
     "api/rpc/protocol",
     "api/rpc/network",
     "api/rpc/transactions"
+  ],
+  "data-availability": [
+    "data-availability/welcome",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> DA Docs </small></b></span>"
+    },
+    "data-availability/blob-contract",
+    "data-availability/light-client",
+    "data-availability/rpc",
+    {
+      "Integrations": [
+        "data-availability/integrations",
+        "data-availability/optimism",
+        "data-availability/cdk-integration"
+      ]
+    }
   ],
   "exchanges": [
     {

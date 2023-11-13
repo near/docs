@@ -11,9 +11,7 @@ curl -k -L -s --compressed \
   https://indexer.ref.finance/list-token-price
 ```
 
-<details>
-<summary>Example response: </summary>
-<p>
+**Example response:**
 
 ```json
 {
@@ -340,24 +338,26 @@ curl -k -L -s --compressed \
 }
 ```
 
-</p>
-</details>
-
 ## Ref SDK
 
 [Ref Finance](https://www.ref.finance/) provides a SDK with the main functions: swapping tokens, getting tokens metadata, fetching pools details, getting swap estimates.
 
 :::info
+
 [Detailed Ref SDK documentation](https://guide.ref.finance/developers-1/ref-sdk)
+
 :::
 
 ---
 
 ## Ref Swap Widget
+
 [Ref Finance](https://www.ref.finance/) provides the Ref Swap Widget in order to allow any service to access Ref's liquidity. For example, you can allow user swap other tokens (including stablecoins) for your project's token just using the Ref Swap Widget.
 
 :::info
+
 [Detailed Ref Swap Widget documentation](https://github.com/ref-finance/ref-sdk#ref-swap-widget)
+
 :::
 
 ---
@@ -367,7 +367,9 @@ curl -k -L -s --compressed \
 If a project already has a token on Ethereum, there is an opportunity to bridge such token to NEAR using [Rainbow Bridge](https://rainbowbridge.app/).
 
 :::note
+
 Before the bridging a token it needs to deploy that token on NEAR. You can do it by [Rainbow Bridge a tool](https://rainbowbridge.app/deploy).
+
 :::
 
 ---
