@@ -215,27 +215,15 @@ async function handlePostCreation(
     try {
       // Define mutationData object with post data
       const mutationData = {
-        post: {
           account_id: accountId,
           block_height: blockHeight,
           block_timestamp: blockTimestamp,
           content: content,
           receipt_id: receiptId,
-        },
       };
 
       // Call GraphQL mutation to insert a new post
-      await context.graphql(
-        `mutation createPost($post: roshaan_near_feed_indexer_posts_insert_input!){
-          insert_roshaan_near_feed_indexer_posts_one(
-            object: $post
-          ) {
-            account_id
-            block_height
-          }
-        }`,
-        mutationData
-      );
+      await context.db.Posts.insert(mutationData);
 
       console.log(`Post by ${accountId} has been added to the database`);
     } catch (e) {
@@ -297,31 +285,15 @@ async function handleCommentCreation(
       try {
         delete comment["item"];
         const mutationData = {
-          comment: {
             account_id: accountId,
             receipt_id: receiptId,
             block_height: blockHeight,
             block_timestamp: blockTimestamp,
             content: JSON.stringify(comment),
             post_id: post.id,
-          },
         };
         // Call GraphQL mutation to insert a new comment
-        await context.graphql(
-          `mutation createComment($comment: roshaan_near_feed_indexer_comments_insert_input!){
-            insert_roshaan_near_feed_indexer_comments_one(
-              object: $comment
-            ) {
-              account_id
-              receipt_id
-              block_height
-              block_timestamp
-              content
-              post_id
-            }
-          }`,
-          mutationData
-        );
+        await context.Comments.insert(mutationData);
 
         // Update last comment timestamp in Post table
         const currentTimestamp = Date.now();
