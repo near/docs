@@ -1,5 +1,5 @@
 ---
-id: quickstart-guide
+id: quickstart
 title: Hello NEAR 👋
 sidebar_label: ⭐ Quickstart
 ---

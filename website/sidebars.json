@@ -106,7 +106,7 @@
   ],
   "contracts": [
     "develop/contracts/welcome",
-    "develop/quickstart-guide",
+    "develop/contracts/quickstart",
     {
       "type": "html",
       "value": "<hr/>"

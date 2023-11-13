@@ -1,12 +1,12 @@
 ---
 id: welcome
-title: NEAR - The Blockchain Operating System
+title: NEAR - Your gateway to an Open Web
 hide_table_of_contents: true
 ---
 import {FeatureList, Column, Feature} from "@site/components/featurelist"
 import ContactUs from '@site/components/ContactUs.mdx';
 
-Welcome, this is the starting point for all NEAR documentation. Learn to build and publish blockchain applications. Embrace the power of Web3.
+Welcome, this is the starting point for all NEAR documentation. Build and publish open web applications. Embrace the power of Web3.
 
 <div class="container">
   <div class="row">
@@ -17,7 +17,7 @@ Welcome, this is the starting point for all NEAR documentation. Learn to build a
             <img src={require("@site/static/docs/assets/welcome-pages/protocol.png").default} alt="Learn" />
           </div>
           <div class="card__body">
-            <h3>Understanding NEAR</h3>
+            <h3>Understand NEAR</h3>
             Learn what NEAR is and how it works.
           </div>
         </div>
@@ -69,7 +69,7 @@ Welcome, this is the starting point for all NEAR documentation. Learn to build a
             <img src={require("@site/static/docs/assets/welcome-pages/tools.png").default} alt="Tools" />
           </div>
           <div class="card__body">
-            <h3>NEAR Tools</h3>
+            <h3>Discover our Toolkit</h3>
               Info on our SDK, API, CLI, and more.
           </div>
         </div>
@@ -93,23 +93,24 @@ Welcome, this is the starting point for all NEAR documentation. Learn to build a
 
 <hr class="subsection" />
 
-<h1 class="text-center big-title" > Browse the Docs By Topic </h1>
+<h1 class="text-center big-title mt-2" > Browse the Docs By Topic </h1>
 
 <FeatureList>
   <Column title="Understanding NEAR" size="3">
     <Feature url="/concepts/basics/protocol" title="What is NEAR?" subtitle="Learn the Basics about NEAR" image="near-logo.png" />
     <Feature url="/concepts/basics/accounts/account-id" title="Named Accounts" subtitle="NEAR uses human-readable accounts" image="user.png" />
     <Feature url="/concepts/basics/accounts/access-keys" title="Multiple Access Keys" subtitle="More keys means more security" image="key.png" />
-    <Feature url="/concepts/basics/accounts/smartcontract" title="Smart Contracts" subtitle="Learn about our contract technology" image="contract.png" />
-    <Feature url="/concepts/basics/tokens" title="Token" subtitle="Learn about the NEAR token" image="ft.png" />
     <Feature url="/concepts/basics/transactions/overview" title="Transactions" subtitle="Fast and Inexpensive" image="transaction.png" />
     <Feature url="/concepts/basics/validators" title="Validators" subtitle="Learn how the network stays safe" image="validation.png" />
   </Column>
-  <Column title="Developer Docs" size="3">
-    <Feature url="/develop/quickstart-guide" title="Quickstart" subtitle="Spin-up your first dApp" image="quickstart.png" />
+  <Column title="Smart Contracts" size="3">
+    <Feature url="/develop/quickstart-guide" title="Quickstart" subtitle="Create your first contract in minutes" image="smartcontract.png" />
     <Feature url="/tutorials/welcome" title="Tutorials & Examples" subtitle="Check out a vast library of examples" image="tutorials.png" />
-    <Feature url="/develop/contracts/introduction" title="Build a Contract" subtitle="Learn how to write smart contracts" image="smartcontract.png" />
-    <Feature url="/develop/testing/introduction" title="Test the Contract" subtitle="Write unit & integration tests" image="test.png" />
+    <Feature url="/develop/testing/introduction" title="Sandbox Testing" subtitle="Write unit & integration tests" image="test.png" />
+  </Column>
+    <Column title="Web Apps" size="3">
+    <Feature url="/bos/quickstart" title="Quickstart" subtitle="Spin-up your first dApp" image="quickstart.png" />
+    <Feature url="/tutorials/welcome" title="Tutorials & Examples" subtitle="Check out a vast library of examples" image="tutorials.png" />
     <Feature url="/develop/integrate/frontend" title="Build a Web Frontend" subtitle="Learn how to make a web dApp" image="frontend.png" />
     <Feature url="/tools/realtime" title="Monitor your App" subtitle="Learn how to track the Blockchain" image="monitor.png" />
   </Column>
@@ -137,7 +138,7 @@ Here are more sources from our ecosystem that can help you to learn more about N
 
 <div class="container">
   <div class="row cards">
-    <div class="col col--6">
+    <div class="col col--4">
       <a href="https://awesomenear.com">
         <div class="card">
           <div class="card__image">
@@ -148,12 +149,12 @@ Here are more sources from our ecosystem that can help you to learn more about N
             Discover
             <svg width="0.8rem" height="0.8rem" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_node_modules-@docusaurus-theme-classic-lib-theme-Icon-ExternalLink-styles-module"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg>
             </h3>
-            Discover awesome apps in the Near ecosystem.
+            Discover apps in Near.
           </div>
         </div>
       </a>
     </div>
-    <div class="col col--6">
+    <div class="col col--4">
       <a href="https://nomicon.io">
         <div class="card">
           <div class="card__image">
@@ -164,12 +165,12 @@ Here are more sources from our ecosystem that can help you to learn more about N
             Nomicon
             <svg width="0.8rem" height="0.8rem" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_node_modules-@docusaurus-theme-classic-lib-theme-Icon-ExternalLink-styles-module"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg>
             </h3>
-              See how NEAR is implemented in the official protocol specification.
+              Read the protocol specification.
           </div>
         </div>
       </a>
     </div>
-    <div class="col col--6">
+    <div class="col col--4">
       <a href="https://near-nodes.io">
         <div class="card">
           <div class="card__image">
@@ -177,23 +178,10 @@ Here are more sources from our ecosystem that can help you to learn more about N
           </div>
           <div class="card__body">
             <h3>
-            Running a Node
+            Become a Validator
             <svg width="0.8rem" height="0.8rem" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_node_modules-@docusaurus-theme-classic-lib-theme-Icon-ExternalLink-styles-module"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg>
             </h3>
-            Documentation on becoming a validator to help keeping the blockchain safe
-          </div>
-        </div>
-      </a>
-    </div>
-    <div class="col col--6">
-      <a href="/concepts/advanced/indexers">
-        <div class="card">
-          <div class="card__image">
-            <img src={require("@site/static/docs/assets/welcome-pages/indexers.png").default} alt="Indexers" />
-          </div>
-          <div class="card__body">
-            <h3>NEAR Indexers</h3>
-              Indexers help you mine information from the blockchain
+            Help keeping the blockchain safe.
           </div>
         </div>
       </a>
