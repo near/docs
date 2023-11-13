@@ -18,7 +18,7 @@ This indexer creates a new row in a pre-defined `posts` table created by the use
 
 :::tip
 
-This indexer can be found by [following this link](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=somepublicaddress.near/postsexample&view=indexer-status).
+This indexer can be found by [following this link](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=bucanero.near/posts-example&view=editor-window).
 
 :::
 
@@ -118,7 +118,7 @@ The function for this indexer looks like this:
 
   if (nearSocialPosts.length > 0) {
     const blockHeight = block.blockHeight;
-    const blockTimestamp = block.header().timestampNanosec;
+    const blockTimestamp = Number(block.header().timestampNanosec);
     await Promise.all(
       nearSocialPosts.map(async (postAction) => {
         const accountId = Object.keys(postAction.args.data)[0];

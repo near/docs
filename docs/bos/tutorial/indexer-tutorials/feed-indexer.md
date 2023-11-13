@@ -115,17 +115,36 @@ const SOCIAL_DB = "social.near";
       action.operations
         .map((operation) => operation["FunctionCall"])
         .filter((operation) => operation?.methodName === "set")
-        .map((functionCallOperation) => ({
-          ...functionCallOperation,
-          args: base64decode(functionCallOperation.args),
-          receiptId: action.receiptId, // providing receiptId as we need it
-        }))
+        .map((functionCallOperation) => {
+          try {
+            const decodedArgs = base64decode(functionCallOperation.args);
+            return {
+              ...functionCallOperation,
+              args: decodedArgs,
+              receiptId: action.receiptId,
+            };
+          } catch (error) {
+            console.log(
+              "Failed to decode function call args",
+              functionCallOperation,
+              error
+            );
+          }
+        })
         .filter((functionCall) => {
-          const accountId = Object.keys(functionCall.args.data)[0];
-          return (
-            Object.keys(functionCall.args.data[accountId]).includes("post") ||
-            Object.keys(functionCall.args.data[accountId]).includes("index")
-          );
+          try {
+            const accountId = Object.keys(functionCall.args.data)[0];
+            return (
+              Object.keys(functionCall.args.data[accountId]).includes("post") ||
+              Object.keys(functionCall.args.data[accountId]).includes("index")
+            );
+          } catch (error) {
+            console.log(
+              "Failed to parse decoded function call",
+              functionCall,
+              error
+            );
+          }
         })
     );
 ```
@@ -140,6 +159,7 @@ Specifically, `.flatMap()` filters for `FunctionCall` call types, calling the `s
 
 ```jsx
 if (nearSocialPosts.length > 0) {
+    console.log("Found Near Social Posts in Block...");
     const blockHeight = block.blockHeight;
     const blockTimestamp = block.header().timestampNanosec;
     await Promise.all(
@@ -171,6 +191,7 @@ if (nearSocialPosts.length > 0) {
           if (
             Object.keys(postAction.args.data[accountId].index).includes("like")
           ) {
+            console.log("handling like");
             await handleLike(
               ... // arguments required for handleLike
             );
@@ -178,6 +199,7 @@ if (nearSocialPosts.length > 0) {
         }
       })
     );
+  }
 ```
 
 This logic is only entered if there are any `nearSocialPosts`, in which case it first declares the `blockHeight` and `blockTimestamp` variables that will be relevant when handling (transforming and persisting) the data. Then the processing for every transaction (or function call) is chained as a promise for asynchronous execution.
@@ -213,22 +235,21 @@ async function handlePostCreation(
     content
   ) {
     try {
-      // Define mutationData object with post data
-      const mutationData = {
-          account_id: accountId,
-          block_height: blockHeight,
-          block_timestamp: blockTimestamp,
-          content: content,
-          receipt_id: receiptId,
+      const postData = {
+        account_id: accountId,
+        block_height: blockHeight,
+        block_timestamp: blockTimestamp,
+        content: content,
+        receipt_id: receiptId,
       };
 
       // Call GraphQL mutation to insert a new post
-      await context.db.Posts.insert(mutationData);
+      await context.db.Posts.insert(postData);
 
       console.log(`Post by ${accountId} has been added to the database`);
     } catch (e) {
       console.log(
-        `Failed to store post by ${accountId} to the database (perhaps it already stored)`
+        `Failed to store post by ${accountId} to the database (perhaps it is already stored)`
       );
     }
   }
@@ -246,81 +267,57 @@ async function handleCommentCreation(
     receiptId,
     commentString
   ) {
-    const comment = JSON.parse(commentString);
-    const postAuthor = comment.item.path.split("/")[0];
-    const postBlockHeight = comment.item.blockHeight;
-
-    // find post to retrieve Id or print a warning that we don't have it
     try {
-      // Call GraphQL query to fetch posts that match specified criteria
-      const posts = await context.graphql(
-        `query getPosts($accountId: String = "$accountId", $blockHeight: numeric = "$blockHeight"){
-          roshaan_near_feed_indexer_posts(
-            where: {
-              account_id: {_eq: $accountId},
-              block_height: {_eq: $blockHeight}
-            },
-            limit: 1
-          ) {
-            account_id
-            accounts_liked
-            block_height
-            block_timestamp
-            content
-            id
-          }
-        }`,
-        {
-          accountId: postAuthor,
-          blockHeight: postBlockHeight,
-        }
-      );
-      console.log(`posts: ${JSON.stringify(posts)}`);
-      if (posts.roshaan_near_feed_indexer_posts.length === 0) {
-        return;
-      }
+      const comment = JSON.parse(commentString);
+      const postAuthor = comment.item.path.split("/")[0];
+      const postBlockHeight = comment.item.blockHeight;
 
-      const post = posts.roshaan_near_feed_indexer_posts[0];
-
+      // find post to retrieve Id or print a warning that we don't have it
       try {
-        delete comment["item"];
-        const mutationData = {
+        // Call GraphQL query to fetch posts that match specified criteria
+        const posts = await context.db.Posts.select(
+          { account_id: postAuthor, block_height: postBlockHeight },
+          1
+        );
+        console.log(`posts: ${JSON.stringify(posts)}`);
+        if (posts.length === 0) {
+          return;
+        }
+
+        const post = posts[0];
+
+        try {
+          delete comment["item"];
+          const commentData = {
             account_id: accountId,
             receipt_id: receiptId,
             block_height: blockHeight,
             block_timestamp: blockTimestamp,
             content: JSON.stringify(comment),
             post_id: post.id,
-        };
-        // Call GraphQL mutation to insert a new comment
-        await context.Comments.insert(mutationData);
+          };
+          // Call GraphQL mutation to insert a new comment
+          await context.db.Comments.insert(commentData);
 
-        // Update last comment timestamp in Post table
-        const currentTimestamp = Date.now();
-        await context.graphql(
-          `mutation SetLastCommentUpdated {
-          update_roshaan_near_feed_indexer_posts(
-            where: {id: {_eq: ${post.id}}}
-            _set: {last_comment_timestamp: ${currentTimestamp}}
-          )
-          {
-            returning {
-              id
-            }
-          }
-        }`,
-          {}
-        );
-        console.log(`Comment by ${accountId} has been added to the database`);
+          // Update last comment timestamp in Post table
+          const currentTimestamp = Date.now();
+          await context.db.Posts.update(
+            { id: post.id },
+            { last_comment_timestamp: currentTimestamp }
+          );
+          console.log(`Comment by ${accountId} has been added to the database`);
+        } catch (e) {
+          console.log(
+            `Failed to store comment to the post ${postAuthor}/${postBlockHeight} by ${accountId} perhaps it has already been stored. Error ${e}`
+          );
+        }
       } catch (e) {
         console.log(
-          `Failed to store comment to the post ${postAuthor}/${postBlockHeight} by ${accountId} perhaps it has already been stored. Error ${e}`
+          `Failed to store comment to the post ${postAuthor}/${postBlockHeight} as we don't have the post stored.`
         );
       }
-    } catch (e) {
-      console.log(
-        `Failed to store comment to the post ${postAuthor}/${postBlockHeight} as we don't have the post stored.`
-      );
+    } catch (error) {
+      console.log("Failed to parse comment content. Skipping...", error);
     }
   }
 ```
@@ -337,69 +334,55 @@ async function handleLike(
     receiptId,
     likeContent
   ) {
-    const like = JSON.parse(likeContent);
-    const likeAction = like.value.type; // like or unlike
-    const [itemAuthor, _, itemType] = like.key.path.split("/", 3);
-    const itemBlockHeight = like.key.blockHeight;
-    switch (itemType) {
-      case "main":
-        try {
-          const posts = await context.graphql(
-            `query getPosts($accountId: String = "$accountId", $blockHeight: numeric = "$blockHeight"){
-            roshaan_near_feed_indexer_posts(
-              where: {
-                account_id: {_eq: $accountId},
-                block_height: {_eq: $blockHeight}
-              },
-              limit: 1
-            ) {
-              account_id
-              accounts_liked
-              block_height
-              block_timestamp
-              content
-              id
+    try {
+      const like = JSON.parse(likeContent);
+      const likeAction = like.value.type; // like or unlike
+      const [itemAuthor, _, itemType] = like.key.path.split("/", 3);
+      const itemBlockHeight = like.key.blockHeight;
+      console.log("handling like", receiptId, accountId);
+      switch (itemType) {
+        case "main":
+          try {
+            const posts = await context.db.Posts.select(
+              { account_id: itemAuthor, block_height: itemBlockHeight },
+              1
+            );
+            if (posts.length == 0) {
+              return;
             }
-          }`,
-            {
-              accountId: itemAuthor,
-              blockHeight: itemBlockHeight,
-            }
-          );
-          if (posts.roshaan_near_feed_indexer_posts.length == 0) {
-            return;
-          }
 
-          const post = posts.roshaan_near_feed_indexer_posts[0];
-          switch (likeAction) {
-            case "like":
-              await _handlePostLike(
-                post.id,
-                accountId,
-                blockHeight,
-                blockTimestamp,
-                receiptId
-              );
-              break;
-            case "unlike":
-            default:
-              await _handlePostUnlike(post.id, accountId);
-              break;
+            const post = posts[0];
+            switch (likeAction) {
+              case "like":
+                await _handlePostLike(
+                  post.id,
+                  accountId,
+                  blockHeight,
+                  blockTimestamp,
+                  receiptId
+                );
+                break;
+              case "unlike":
+                await _handlePostUnlike(post.id, accountId);
+                break;
+            }
+          } catch (e) {
+            console.log(
+              `Failed to store like to post ${itemAuthor}/${itemBlockHeight} as we don't have it stored in the first place.`
+            );
           }
-        } catch (e) {
-          console.log(
-            `Failed to store like to post ${itemAuthor}/${itemBlockHeight} as we don't have it stored in the first place.`
-          );
-        }
-        break;
-      case "comment":
-        // Comment
-        console.log(`Likes to comments are not supported yet. Skipping`);
-        break;
-      default:
-        // something else
-        console.log(`Got unsupported like type "${itemType}". Skipping...`);
-        break;
+          break;
+        case "comment":
+          // Comment
+          console.log(`Likes to comments are not supported yet. Skipping`);
+          break;
+        default:
+          // something else
+          console.log(`Got unsupported like type "${itemType}". Skipping...`);
+          break;
+      }
+    } catch (error) {
+      console.log("Failed to parse like content. Skipping...", error);
     }
   }
 ```
@@ -417,23 +400,11 @@ async function _handlePostLike(
     receiptId
   ) {
     try {
-      const posts = await context.graphql(
-        `query getPosts($postId: Int!) {
-        roshaan_near_feed_indexer_posts(where: { id: { _eq: $postId } }) {
-          id
-          account_id
-          block_height
-          block_timestamp
-          content
-          accounts_liked
-        }
-      }`,
-        { postId: postId }
-      );
-      if (posts.roshaan_near_feed_indexer_posts.length == 0) {
+      const posts = await context.db.Posts.select({ id: postId });
+      if (posts.length == 0) {
         return;
       }
-      const post = posts.roshaan_near_feed_indexer_posts[0];
+      const post = posts[0];
       let accountsLiked =
         post.accounts_liked.length === 0
           ? post.accounts_liked
@@ -444,41 +415,20 @@ async function _handlePostLike(
       }
 
       // Call GraphQL mutation to update a post's liked accounts list
-      await context.graphql(
-        `mutation updatePost($postId: Int!, $likedAccount: jsonb){
-        update_roshaan_near_feed_indexer_posts(
-          where: {id: {_eq: $postId}}
-          _set: {accounts_liked: $likedAccount}
-        ) {
-          returning {
-          id
-        }
-        }
-      }`,
-        {
-          postId: postId,
-          likedAccount: JSON.stringify(accountsLiked),
-        }
+      await context.db.Posts.update(
+        { id: postId },
+        { accounts_liked: JSON.stringify(accountsLiked) }
       );
 
-      const postLikeMutation = {
-        postLike: {
-          post_id: postId,
-          account_id: likeAuthorAccountId,
-          block_height: likeBlockHeight,
-          block_timestamp: blockTimestamp,
-          receipt_id: receiptId,
-        },
+      const postLikeData = {
+        post_id: postId,
+        account_id: likeAuthorAccountId,
+        block_height: likeBlockHeight,
+        block_timestamp: blockTimestamp,
+        receipt_id: receiptId,
       };
       // Call GraphQL mutation to insert a new like for a post
-      await context.graphql(
-        `mutation InsertLike($postLike: roshaan_near_feed_indexer_post_likes_insert_input!) {
-        insert_roshaan_near_feed_indexer_post_likes_one(object: $postLike) {
-          post_id
-        }
-      }`,
-        postLikeMutation
-      );
+      await context.db.PostLikes.insert(postLikeData);
     } catch (e) {
       console.log(`Failed to store like to in the database: ${e}`);
     }
@@ -492,23 +442,11 @@ As with `handleLike`, the relevant `post` is first sought from the graphQL DB ta
 ```jsx
 async function _handlePostUnlike(postId, likeAuthorAccountId) {
     try {
-      const posts = await context.graphql(
-        `query getPosts($postId: Int!) {
-        roshaan_near_feed_indexer_posts(where: { id: { _eq: $postId } }) {
-          id
-          account_id
-          block_height
-          block_timestamp
-          content
-          accounts_liked
-        }
-      }`,
-        { postId: postId }
-      );
-      if (posts.roshaan_near_feed_indexer_posts.length == 0) {
+      const posts = await context.db.Posts.select({ id: postId });
+      if (posts.length == 0) {
         return;
       }
-      const post = posts.roshaan_near_feed_indexer_posts[0];
+      const post = posts[0];
       let accountsLiked =
         post.accounts_liked.length === 0
           ? post.accounts_liked
@@ -521,45 +459,16 @@ async function _handlePostUnlike(postId, likeAuthorAccountId) {
       if (indexOfLikeAuthorAccountIdInPost > -1) {
         accountsLiked.splice(indexOfLikeAuthorAccountIdInPost, 1);
         // Call GraphQL mutation to update a post's liked accounts list
-        await context.graphql(
-          `mutation updatePost($postId: Int!, $likedAccount: jsonb){
-          update_roshaan_near_feed_indexer_posts(
-            where: {id: {_eq: $postId}}
-            _set: {accounts_liked: $likedAccount}
-          ) {
-            returning {
-            id
-          }
-          }
-        }`,
-          {
-            postId: postId,
-            likedAccount: JSON.stringify(accountsLiked),
-          }
+        await context.db.Posts.update(
+          { id: postId },
+          { accounts_liked: JSON.stringify(accountsLiked) }
         );
       }
       // Call GraphQL mutation to delete a like for a post
-      await context.graphql(
-        `mutation deletePostLike($accountId: String!, $postId: Int!){
-          delete_roshaan_near_feed_indexer_post_likes(
-            where: {
-              _and: [
-                {account_id: {_eq: $accountId}},
-                {post_id: {_eq: $postId}}
-              ]
-            }
-          ) {
-            returning {
-              post_id
-              account_id
-            }
-          }
-        }`,
-        {
-          accountId: likeAuthorAccountId,
-          postId: postId,
-        }
-      );
+      await context.db.PostLikes.delete({
+        account_id: likeAuthorAccountId,
+        post_id: postId,
+      });
     } catch (e) {
       console.log(`Failed to delete like from the database: ${e}`);
     }

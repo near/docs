@@ -18,7 +18,7 @@ This indexer creates a new row in a pre-defined `posts` or `comments` table crea
 
 :::tip
 
-This indexer can be found by [following this link](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=somepublicaddress.near/hypeindexer&view=indexer-status).
+This indexer can be found by [following this link](https://near.org/#/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=bucanero.near/hype-indexer&view=editor-window).
 
 :::
 
@@ -141,7 +141,7 @@ The logic for this looks like:
 
   if (nearSocialPostsComments.length > 0) {
     const blockHeight = block.blockHeight;
-    const blockTimestamp = block.header().timestampNanosec;
+    const blockTimestamp = Number(block.header().timestampNanosec);
     await Promise.all(
       nearSocialPostsComments.map(async (postAction) => {
         const accountId = Object.keys(postAction.args.data)[0];
@@ -203,6 +203,8 @@ The logic for this looks like:
 
 #### `createPost`
 
+Creating a post is done by using the [`context.db.Posts.insert()`](../../queryapi/context.md#insert) function:
+
 ```js
   async function createPost(
     postId,
@@ -230,6 +232,8 @@ The logic for this looks like:
 ```
 
 #### `createComment`
+
+Creating a comment is done by using the [`context.db.Comments.insert()`](../../queryapi/context.md#insert) function:
 
 ```js
   async function createComment(
