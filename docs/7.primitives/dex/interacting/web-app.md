@@ -1,50 +1,17 @@
 ---
-id: bos
-title: NEAR Component
+id: web-app
+title: Web Application
 hide_table_of_contents: false
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This section describes how to interact with DEX directly from a [NEAR Component](../../../bos/components.md)
+This section describes how to interact with FTs directly from a web app.
 
----
-
-## Get token price
-
-<Tabs>
-
-<TabItem value="Ref Finance API" label="Ref Finance API">
-
-```js
-const tokenContract = "token.v2.ref-finance.near";
-const tokenPrice = fetch(
-  "https://indexer.ref.finance/get-token-price?token_id=token.v2.ref-finance.near"
-).body;
-```
-
-<details>
-<summary>Example response</summary>
-<p>
-
-```json
-{
-  "token_contract_id": "token.v2.ref-finance.near",
-  "price": "0.05732698"
-}
-```
-
-</p>
-</details>
-
-:::tip
-Ref Finance API has a method to [get list of prices](https://indexer.ref.finance/list-token-price).
+:::info
+All the examples are using a `Wallet` object, which comes from our [basic template](https://github.com/near-examples/hello-near-js/blob/master/frontend/near-wallet.js)
 :::
-
-</TabItem>
-
-</Tabs>
 
 ---
 
@@ -63,12 +30,15 @@ Before initiating any actions related with swapping tokens you must have to chec
 <TabItem value="Smart Contract" label="Smart Contract">
 
 ```js
-const ammContract = "v2.ref-finance.near";
-const result = Near.call(
-  ammContract,
-  "swap",
-  {
-    actions: [
+import { Wallet } from './near-wallet';
+
+const AMM_CONTRACT_ADDRESS = "v2.ref-finance.near";
+const wallet = new Wallet({ createAccessKeyFor: AMM_CONTRACT_ADDRESS });
+ 
+await wallet.callMethod({
+  method: 'swap',
+  args: {
+   actions: [
       {
         pool_id: 79,
         token_in: "token.v2.ref-finance.near",
@@ -78,9 +48,10 @@ const result = Near.call(
       },
     ],
   },
-  300000000000000,
-  1
-);
+  contractId: AMM_CONTRACT_ADDRESS,
+  gas: 300000000000000,
+  deposit: 1
+});
 ```
 
 <details>
@@ -100,14 +71,16 @@ In order to make swap you need to have enough tokens in deposit on Ref Finance.
 Query your deposit balances on Ref Finance
 
 ```js
-const ammContract = "v2.ref-finance.near";
-const depositBalances = Near.view(
-  ammContract,
-  "get_deposits",
-  {
-    account_id: "bob.near"
-  }
-);
+const AMM_CONTRACT_ADDRESS = "v2.ref-finance.near";
+const wallet = new Wallet({ createAccessKeyFor: AMM_CONTRACT_ADDRESS });
+ 
+await wallet.viewMethod({
+  method: 'get_deposits',
+  args: {
+   account_id: "bob.near"
+  },
+  contractId: AMM_CONTRACT_ADDRESS,
+});
 ```
 
 <details>
@@ -131,5 +104,3 @@ How to [deposit funds](#attaching-fts-to-a-call--already-exist-here)
 </TabItem>
 
 </Tabs>
-
----

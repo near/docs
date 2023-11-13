@@ -59,12 +59,6 @@ enum TokenReceiverMessage {
   },
 }
 
-// Validator interface, for cross-contract calls
-#[ext_contract(ext_amm_contract)]
-trait ExternalAmmContract {
-  fn swap(&self, pool_id: u64, token_in: AccountId, token_out: AccountId, amount_in: u128, min_amount_out: U128) -> Promise;
-}
-
 // Implement the contract structure
 #[near_bindgen]
 impl Contract {}
@@ -154,38 +148,6 @@ impl Contract {
     if call_result.is_err() {
       log!("There was an error contacting external contract");
     }
-  }
-}
-```
-
----
-
-## Swap tokens (a contract is holder of tokens)
-
-```rust
-// Validator interface, for cross-contract calls
-#[ext_contract(ext_amm_contract)]
-trait ExternalAmmContract {
-  fn swap(&self, pool_id: u64, token_in: AccountId, token_out: AccountId, amount_in: u128, min_amount_out: U128) -> Promise;
-}
-
-// Implement the contract structure
-#[near_bindgen]
-impl Contract {
-  #[payable]
-  pub fn swap_tokens(&mut self, pool_id: u64, token_in: AccountId, token_out: AccountId, amount_in: u128, min_amount_out: U128) -> Promise {
-    assert_eq!(env::attached_deposit(), 1, "Requires attached deposit of exactly 1 yoctoNEAR");
-  
-    let promise = ext_amm_contract::ext(self.amm_contract.clone())
-      .with_static_gas(Gas(300*TGAS))
-      .with_attached_deposit(YOCTO_NEAR)
-      .swap(pool_id, token_in, token_out, amount_in, min_amount_out);
-  
-    return promise.then( // Create a promise to callback query_greeting_callback
-      Self::ext(env::current_account_id())
-      .with_static_gas(Gas(30*TGAS))
-      .external_call_callback()
-    )
   }
 }
 ```

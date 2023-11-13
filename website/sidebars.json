@@ -398,12 +398,6 @@
     },
     "primitives/ft/additional-resources",
     {
-      "Drafts": [
-        "primitives/ft/bos",
-        "primitives/ft/dex"
-      ]
-    },
-    {
       "type": "html",
       "value": "<span class='menu__link'><b><small> DAOs </small></b></span>"
     },
