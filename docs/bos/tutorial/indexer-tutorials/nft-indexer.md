@@ -56,8 +56,8 @@ This schema defines one table: `nfts`. The table has these columns:
 
 - `id`: a unique identifier for each row in the table
 - `marketplace`: the marketplace where the NFT was created
-- `block_height`: the height of the block in which the post was created
-- `block_timestamp`: the timestamp of the block in which the post was created
+- `block_height`: the height of the block in which the NFT was created
+- `block_timestamp`: the timestamp of the block in which the NFT was created
 - `receipt_id`: the receipt ID of the transaction that created the NFT
 - `receiver_id`: the receiver ID of the transaction that created the NFT
 - `nft_data`: the content of the minted NFT
