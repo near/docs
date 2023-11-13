@@ -443,8 +443,8 @@
         },
         {
           "type": "link",
-          "label": "Type Docs ↗",
-          "href": "/tools/near-api-js/reference"
+          "label": "Type Docs",
+          "href": "https://near.github.io/near-api-js"
         }
       ]
     },
@@ -765,6 +765,7 @@
       "Tutorials": [
         "bos/tutorial/indexer-tutorials/posts-indexer",
         "bos/tutorial/indexer-tutorials/hype-indexer",
+        "bos/tutorial/indexer-tutorials/nft-indexer",
         "bos/tutorial/indexer-tutorials/feed-indexer"
       ]
     },
