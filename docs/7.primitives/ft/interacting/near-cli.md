@@ -13,11 +13,7 @@ This section shows how to interact with FTs from your shell using [`near-cli`](.
 
 ## Get token metadata
 
-This snippet will enable your users to query FT metadata from smart contract directly or via RPC.
-
-<Tabs>
-
-<TabItem value="Smart Contract" label="Smart Contract">
+This snippet will enable your users to query FT metadata.
 
 ```bash
 near view token.v2.ref-finance.near ft_metadata
@@ -42,19 +38,11 @@ near view token.v2.ref-finance.near ft_metadata
 </p>
 </details>
 
-</TabItem>
-
-</Tabs>
-
 ---
 
 ## Check token balance
 
-This snippet will enable your users to get their FT balance from smart contract or via RPC.
-
-<Tabs>
-
-<TabItem value="Smart Contract" label="Smart Contract">
+This snippet will enable your users to get their FT balance.
 
 ```bash
 near view token.v2.ref-finance.near ft_balance_of '{"account_id": "bob.near"}'
@@ -71,19 +59,11 @@ near view token.v2.ref-finance.near ft_balance_of '{"account_id": "bob.near"}'
 </p>
 </details>
 
-</TabItem>
-
-</Tabs>
-
 ---
 
 ## Send tokens
 
 This snippet will enable your users to transfer their FT tokens.
-
-<Tabs>
-
-<TabItem value="Smart Contract" label="Smart Contract">
 
 ```bash
 near call token.v2.ref-finance.near ft_transfer '{"receiver_id": "alice.near", "amount": "100000000000000000"}' --depositYocto 1 --accountId bob.near
@@ -92,7 +72,7 @@ near call token.v2.ref-finance.near ft_transfer '{"receiver_id": "alice.near", "
 :::info
 In order to transfer FTs to another account receiver account have to be registered in the token contract and make storage deposit. User can register their account or another account can do it for them.
 
-How to check storage balance in contract (you can make requests to RPC in order to call view methods of smart contract as well):
+How to check storage balance:
 
 ```bash
 near view token.v2.ref-finance.near storage_balance_of '{"account_id": "alice.near"}'
@@ -136,10 +116,6 @@ If you need to register your own account just pass `{}` as arguments to call.
 </p>
 </details>
 :::
-
-</TabItem>
-
-</Tabs>
 
 ---
 

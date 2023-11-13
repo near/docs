@@ -17,11 +17,7 @@ All the examples are using a `Wallet` object, which comes from our [basic templa
 
 ## Get token metadata
 
-This snippet will enable your users to query FT metadata from smart contract directly or via RPC.
-
-<Tabs>
-
-<TabItem value="Smart Contract" label="Smart Contract">
+This snippet will enable your users to query FT metadata.
 
 ```js
 import { Wallet } from './near-wallet';
@@ -55,77 +51,15 @@ await wallet.viewMethod({
 </p>
 </details>
 
-</TabItem>
-
-<TabItem value="RPC Request" label="RPC Request">
-
-```js
-const tokenContract = "token.v2.ref-finance.near";
-const args = btoa('{}');
-const tokenBalance = fetch("https://rpc.mainnet.near.org", {
-  body: JSON.stringify({
-    jsonrpc: "2.0",
-    id: "ft_metadata",
-    method: "query",
-    params: {
-      request_type: "call_function",
-      finality: "final",
-      account_id: tokenContract,
-      method_name: "ft_metadata",
-      args_base64: args,
-    },
-  }),
-  headers: {
-    "Content-Type": "application/json",
-  },
-  method: "POST",
-});
-```
-
-<details>
-<summary>Example response</summary>
-<p>
-
-```json
-{
-  "ok": true,
-  "status": 200,
-  "contentType": "application/json",
-  "body": {
-    "jsonrpc": "2.0",
-    "result": {
-      "block_hash": "GSffMTnrhVsht6U6dwdHutJxd1YdDyvnvbdHeadgKx6p",
-      "block_height": 104611783,
-      "logs": [],
-      "result": [123,34,115,112,101,99,34,58,34,102,116,45,49,46,48,46,48,34,44,34,110,97,109,101,34,58,34,82,101,102,32,70,105,110,97,110,99,101,32,84,111,107,101,110,34,44,34,115,121,109,98,111,108,34,58,34,82,69,70,34,44,34,105,99,111,110,34,58,34,100,97,116,97,58,105,109,97,103,101,47,115,118,103,43,120,109,108,44,37,51,67,115,118,103,32,120,109,108,110,115,61,39,104,116,116,112,58,47,47,119,119,119,46,119,51,46,111,114,103,47,50,48,48,48,47,115,118,103,39,32,118,105,101,119,66,111,120,61,39,49,54,32,50,52,32,50,52,56,32,50,52,56,39,32,115,116,121,108,101,61,39,98,97,99,107,103,114,111,117,110,100,58,32,37,50,51,48,48,48,39,37,51,69,37,51,67,112,97,116,104,32,100,61,39,77,49,54,52,44,49,54,52,118,53,50,104,53,50,90,109,45,52,53,45,52,53,44,50,48,46,52,44,50,48,46,52,44,50,48,46,54,45,50,48,46,54,86,56,49,72,49,49,57,90,109,48,44,49,56,46,51,57,86,50,49,54,104,52,49,86,49,51,55,46,49,57,108,45,50,48,46,54,44,50,48,46,54,90,77,49,54,54,46,53,44,56,49,72,49,54,52,118,51,51,46,56,49,108,50,54,46,49,54,45,50,54,46,49,55,65,52,48,46,50,57,44,52,48,46,50,57,44,48,44,48,44,48,44,49,54,54,46,53,44,56,49,90,77,55,50,44,49,53,51,46,49,57,86,50,49,54,104,52,51,86,49,51,51,46,52,108,45,49,49,46,54,45,49,49,46,54,49,90,109,48,45,49,56,46,51,56,44,51,49,46,52,45,51,49,46,52,76,49,49,53,44,49,49,53,86,56,49,72,55,50,90,77,50,48,55,44,49,50,49,46,53,104,48,97,52,48,46,50,57,44,52,48,46,50,57,44,48,44,48,44,48,45,55,46,54,52,45,50,51,46,54,54,76,49,54,52,44,49,51,51,46,49,57,86,49,54,50,104,50,46,53,65,52,48,46,53,44,52,48,46,53,44,48,44,48,44,48,44,50,48,55,44,49,50,49,46,53,90,39,32,102,105,108,108,61,39,37,50,51,102,102,102,39,47,37,51,69,37,51,67,112,97,116,104,32,100,61,39,77,49,56,57,32,55,50,108,50,55,32,50,55,86,55,50,104,45,50,55,122,39,32,102,105,108,108,61,39,37,50,51,48,48,99,48,56,98,39,47,37,51,69,37,51,67,47,115,118,103,37,51,69,37,48,65,34,44,34,114,101,102,101,114,101,110,99,101,34,58,110,117,108,108,44,34,114,101,102,101,114,101,110,99,101,95,104,97,115,104,34,58,110,117,108,108,44,34,100,101,99,105,109,97,108,115,34,58,49,56,125]
-    },
-    "id": "ft_metadata"
-  }
-}
-```
-
-**Note**: `result` is an array of bytes, you need to serialize the result by yourself.
-
-</p>
-</details>
-
-</TabItem>
-
-</Tabs>
-
 ---
 
 ## Check token balance
 
-This snippet will enable your users to get their FT balance from smart contract or via RPC.
+This snippet will enable your users to get their FT balance.
 
 :::info
 Remember about fungible token precision. You may need this value to show a response of balance requests in an understandable-to-user way in your app. How to get precision value (decimals) you may find [above](#get-token-metadata).
 :::
-
-<Tabs>
-
-<TabItem value="Smart Contract" label="Smart Contract">
 
 ```js
 import { Wallet } from './near-wallet';
@@ -153,73 +87,11 @@ await wallet.viewMethod({
 </p>
 </details>
 
-</TabItem>
-
-<TabItem value="RPC Request" label="RPC Request">
-
-```js
-const tokenContract = "token.v2.ref-finance.near";
-const args = btoa('{"account_id":"bob.near"}');
-const tokenBalance = fetch("https://rpc.mainnet.near.org", {
-  body: JSON.stringify({
-    jsonrpc: "2.0",
-    id: "ftbalance",
-    method: "query",
-    params: {
-      request_type: "call_function",
-      finality: "final",
-      account_id: tokenContract,
-      method_name: "ft_balance_of",
-      args_base64: args,
-    },
-  }),
-  headers: {
-    "Content-Type": "application/json",
-  },
-  method: "POST",
-});
-```
-
-<details>
-<summary>Example response</summary>
-<p>
-
-```json
-{
-  "ok": true,
-  "status": 200,
-  "contentType": "application/json",
-  "body": {
-    "jsonrpc": "2.0",
-    "result": {
-      "block_hash": "BRk4P9psignJsQhEThYw54carctUfnwFuPkHV2ProiXa",
-      "block_height": 104562819,
-      "logs": [],
-      "result": [34, 51, 52, 55, 57, 54, 49, 53, 48, 51, 55, 54, 55, 53, 57, 54, 50, 54, 52, 51, 56, 52, 50, 34]
-    },
-    "id": "ftbalance"
-  }
-}
-```
-
-**Note**: `result` is an array of bytes, you need to serialize the result by yourself.
-
-</p>
-</details>
-
-</TabItem>
-
-</Tabs>
-
 ---
 
 ## Send tokens
 
 This snippet will enable your users to transfer their FT tokens.
-
-<Tabs>
-
-<TabItem value="Smart Contract" label="Smart Contract">
 
 ```js
 import { Wallet } from './near-wallet';
@@ -241,7 +113,7 @@ await wallet.callMethod({
 :::info
 In order to transfer FTs to another account receiver account have to be registered in the token contract and make storage deposit. User can register their account or another account can do it for them.
 
-How to check storage balance in contract (you can make requests to RPC in order to call view methods of smart contract as well):
+How to check storage balance:
 
 ```js
 const balance = await wallet.viewMethod({
@@ -299,10 +171,6 @@ If you need to register your own account just pass `{}` as arguments to call.
 </p>
 </details>
 :::
-
-</TabItem>
-
-</Tabs>
 
 ---
 
@@ -452,10 +320,6 @@ For creating our own FT we will use [Token Farm](https://tkn.farm/). You can use
 
 First of all, you need to calculate how much creating a token will cost you.
 
-<Tabs>
-
-<TabItem value="Smart Contract" label="Smart Contract">
-
 ```js
 import { Wallet } from './near-wallet';
 
@@ -495,69 +359,7 @@ const requiredStorageDeposit = await wallet.viewMethod({
 </p>
 </details>
 
-</TabItem>
-
-<TabItem value="RPC Request" label="RPC Request">
-
-```js
-const contract = "tkn.near";
-const args = btoa('{"args":{"owner_id": "bob.near","total_supply": "1000000000","metadata":{"spec": "ft-1.0.0","name": "Test Token","symbol": "TTTEST","icon": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7","decimals": 18}},"account_id": "bob.near"}');
-const requiredStorageDeposit = fetch("https://rpc.mainnet.near.org", {
-  body: JSON.stringify({
-    jsonrpc: "2.0",
-    id: "get_required_deposit",
-    method: "query",
-    params: {
-      request_type: "call_function",
-      finality: "final",
-      account_id: contract,
-      method_name: "get_required_deposit",
-      args_base64: args,
-    },
-  }),
-  headers: {
-    "Content-Type": "application/json",
-  },
-  method: "POST",
-});
-```
-
-<details>
-<summary>Example response</summary>
-<p>
-
-```json
-{
-  "ok": true,
-  "status": 200,
-  "contentType": "application/json",
-  "body": {
-    "jsonrpc": "2.0",
-    "result": {
-      "block_hash": "6We5sybVQpf1pswyVsf32cGJfsFH8oHUNiB8RDJdVMpT",
-      "block_height": 105246927,
-      "logs": [],
-      "result": [34, 50, 50, 51, 52, 56, 51, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 34]
-    },
-    "id": "get_required_deposit"
-  }
-}
-```
-
-**Note**: `result` is an array of bytes, you need to serialize the result by yourself.
-
-</p>
-</details>
-
-</TabItem>
-
-</Tabs>
-
-And then you can create a token.
-
-<Tabs>
-
-<TabItem value="Smart Contract" label="Smart Contract">
+Then you can create a token.
 
 ```js
 await wallet.callMethod({
@@ -568,10 +370,6 @@ await wallet.callMethod({
   deposit: requiredStorageDeposit
 });
 ```
-
-</TabItem>
-
-</Tabs>
 
 Contract of your token will have an address which looks like `<your_token_ticker>.tkn.near`.
 
