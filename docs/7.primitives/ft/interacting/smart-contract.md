@@ -6,6 +6,10 @@ hide_table_of_contents: false
 
 This section will explain how a smart contract can handle a deposit in FTs, send tokens, swap tokens and attach them to call.
 
+:::tip
+If you are looking to create your own FT contract please check the [Example implementation](https://github.com/near-examples/FT) and the [FT Zero to Hero Tutorial](https://docs.near.org/tutorials/fts/introduction)
+:::
+
 ---
 
 ### Base Contract
@@ -22,7 +26,6 @@ use near_sdk::serde::{Deserialize, Serialize};
 use near_sdk::{env, near_bindgen, serde_json, log, Gas, AccountId, Promise, PromiseOrValue, PromiseError};
 
 const FT_CONTRACT: &str = "token-v3.cheddar.testnet";
-const AMM_CONTRACT: &str = "v2.ref-finance.near";
 
 const PRICE: u128 = 100_000_000_000_000_000_000_000;
 const YOCTO_NEAR: u128 = 1;
@@ -33,7 +36,6 @@ const TGAS: u64 = 1_000_000_000_000;
 #[derive(BorshDeserialize, BorshSerialize)]
 pub struct Contract {
   ft_contract: AccountId,
-  amm_contract: AccountId,
   price: U128
 }
 
@@ -42,7 +44,6 @@ impl Default for Contract {
     fn default() -> Self {
         Self {
           ft_contract: FT_CONTRACT.parse().unwrap(),
-          amm_contract: AMM_CONTRACT.parse().unwrap(),
           price: U128(PRICE),
         }
     }
@@ -75,7 +76,7 @@ If you want your contract to handle deposit in FTs you have to implement the `ft
 - How many FT were transferred, since it is a parameter
 - If there are any parameters encoded as a message
 
-The `ft_on_transfer` must return how many FT tokens have to be refunded, so the FT contract gives them back to the sender.
+The `ft_on_transfer` must return how many FT tokens have to **be refunded**, so the FT contract gives them back to the sender.
 
 ```rust
 // Implement the contract structure
@@ -122,7 +123,9 @@ impl FungibleTokenReceiver for Contract {
 
 ---
 
-## Send tokens (a contract is holder of tokens)
+## Send tokens
+
+This snippet assumes that the contract is already holding some FTs and that you want to send them to another account.
 
 ```rust
 #[near_bindgen]
@@ -181,7 +184,7 @@ pub fn call_with_attached_tokens(&mut self, receiver_id: AccountId, amount: U128
 How it works:
 
 1. You call ft_transfer_call in the FT contract passing: the receiver, a message, and the amount.
-2. The FT contract transfers the amount to the receiver.
+2. The FT contract transfers the amount to the receiver (in this case Ref finance).
 3. The FT contract calls receiver.ft_on_transfer(sender, msg, amount)
 4. The FT contract handles errors in the ft_resolve_transfer callback.
 5. The FT contract returns you how much of the attached amount was actually used.
