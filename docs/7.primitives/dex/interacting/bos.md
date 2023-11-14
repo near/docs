@@ -78,6 +78,8 @@ curl -k -L -s --compressed \
 </p>
 </details>
 
+---
+
 ## Swap tokens
 
 This snippet will enable your users to swap FTs.
@@ -190,5 +192,3 @@ If a project already has a token on Ethereum, there is an opportunity to bridge 
 :::note
 Before the bridging a token it needs to deploy that token on NEAR. You can do it by [Rainbow Bridge a tool](https://rainbowbridge.app/deploy).
 :::
-
----

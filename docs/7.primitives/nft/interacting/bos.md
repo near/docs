@@ -68,6 +68,7 @@ In order to use `nft_batch_mint` method of Mintbase store contract your account 
 :::
 
 </TabItem>
+
 </Tabs>
 
 ---
@@ -92,16 +93,12 @@ const tokenData = Near.call(
 );
 ```
 
-<details>
-<summary>Example response</summary>
-<p>
+**Example response:**
 
 ```json
 "299102:1"
 ```
 
-</p>
-</details>
 
 </TabItem>
 
@@ -121,9 +118,7 @@ const tokenData = Near.call(
 );
 ```
 
-<details>
-<summary>Example response</summary>
-<p>
+**Example response:**
 
 ```json
 {
@@ -134,10 +129,9 @@ const tokenData = Near.call(
 }
 ```
 
-</p>
-</details>
 
 </TabItem>
+
 </Tabs>
 
 ---
@@ -155,9 +149,7 @@ const tokenData = Near.view("nft.primitives.near", "nft_token", {
 });
 ```
 
-<details>
-<summary>Example response</summary>
-<p>
+**Example response:**
 
 ```json
 {
@@ -180,8 +172,6 @@ const tokenData = Near.view("nft.primitives.near", "nft_token", {
 }
 ```
 
-</p>
-</details>
 
 </TabItem>
 
@@ -195,9 +185,7 @@ const tokenData = Near.view("x.paras.near", "nft_token", {
 });
 ```
 
-<details>
-<summary>Example response</summary>
-<p>
+**Example response:**
 
 ```json
 {
@@ -221,8 +209,6 @@ const tokenData = Near.view("x.paras.near", "nft_token", {
 }
 ```
 
-</p>
-</details>
 
 By calling a Paras API method
 
@@ -230,9 +216,7 @@ By calling a Paras API method
 const tokenData = fetch("https://api-v2-mainnet.paras.id/token?token_id=84686:1154");
 ```
 
-<details>
-<summary>Example response</summary>
-<p>
+**Example response:**
 
 ```json
 {
@@ -287,8 +271,6 @@ const tokenData = fetch("https://api-v2-mainnet.paras.id/token?token_id=84686:11
 }
 ```
 
-</p>
-</details>
 
 :::info
 See the [Paras API documentation](https://parashq.github.io/) for the full list of methods.
@@ -312,9 +294,7 @@ const tokenData = Near.view("anthropocene.mintbase1.near", "nft_token", {
 });
 ```
 
-<details>
-<summary>Example response</summary>
-<p>
+**Example response:**
 
 ```json
 {
@@ -353,8 +333,6 @@ const tokenData = Near.view("anthropocene.mintbase1.near", "nft_token", {
 }
 ```
 
-</p>
-</details>
 
 :::note
 When someone creates a NFT on Mintbase they need to deploy their own NFT contract using Mintbase factory. Those smart contract are subaccounts of mintbase1.near, e.g. `anthropocene.mintbase1.near`.
@@ -392,9 +370,7 @@ const tokenData = fetch("https://graph.mintbase.xyz", {
 });
 ```
 
-<details>
-<summary>Example response</summary>
-<p>
+**Example response:**
 
 ```json
 {
@@ -419,14 +395,13 @@ const tokenData = fetch("https://graph.mintbase.xyz", {
 }
 ```
 
-</p>
-</details>
 
 :::note
 In the future, users may be required to register using an api key. For now, simply passing the valueanon for `mb-api-key` will work.
 :::
 
 </TabItem>
+
 </Tabs>
 
 ---
@@ -468,6 +443,7 @@ const tokenData = Near.call("thomasettorreiv.mintbase1.near", "nft_transfer", {
 ```
 
 </TabItem>
+
 </Tabs>
 
 ---
@@ -547,4 +523,5 @@ Near.call(
 The method `nft_approve` will call `nft_on_approve` in `simple.market.mintbase1.near`.
 
 </TabItem>
+
 </Tabs>

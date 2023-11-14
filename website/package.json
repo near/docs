@@ -34,6 +34,7 @@
     "@docusaurus/plugin-ideal-image": "^2.1.0",
     "@docusaurus/plugin-sitemap": "^2.1.0",
     "@docusaurus/preset-classic": "^2.1.0",
+    "@docusaurus/theme-mermaid": "^2.1.0",
     "@saucelabs/theme-github-codeblock": "^0.1.1",
     "algoliasearch": "^4.14.2",
     "clsx": "^1.1.1",

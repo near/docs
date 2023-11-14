@@ -45,6 +45,7 @@ In order to use `nft_batch_mint` method of Mintbase store contract your account 
 :::
 
 </TabItem>
+
 </Tabs>
 
 ---
@@ -58,16 +59,12 @@ In order to use `nft_batch_mint` method of Mintbase store contract your account 
 near call x.paras.near buy '{"token_series_id": "299102", "receiver_id": "bob.near"}' --accountId bob.near --deposit 0.20574
 ```
 
-<details>
-<summary>Example response</summary>
-<p>
+**Example response:**
 
 ```json
 "299102:1"
 ```
 
-</p>
-</details>
 
 </TabItem>
 
@@ -77,9 +74,7 @@ near call x.paras.near buy '{"token_series_id": "299102", "receiver_id": "bob.ne
 near call simple.market.mintbase1.near buy '{"nft_contract_id": "rubennnnnnnn.mintbase1.near", "token_id": "38"}' --accountId bob.near --deposit 0.001
 ```
 
-<details>
-<summary>Example response</summary>
-<p>
+**Example response:**
 
 ```json
 {
@@ -90,10 +85,9 @@ near call simple.market.mintbase1.near buy '{"nft_contract_id": "rubennnnnnnn.mi
 }
 ```
 
-</p>
-</details>
 
 </TabItem>
+
 </Tabs>
 
 ---
@@ -107,9 +101,7 @@ near call simple.market.mintbase1.near buy '{"nft_contract_id": "rubennnnnnnn.mi
 near view nft.primitives.near nft_token '{"token_id": "1"}'
 ```
 
-<details>
-<summary>Example response</summary>
-<p>
+**Example response:**
 
 ```json
 {
@@ -132,8 +124,6 @@ near view nft.primitives.near nft_token '{"token_id": "1"}'
 }
 ```
 
-</p>
-</details>
 
 </TabItem>
 
@@ -143,9 +133,7 @@ near view nft.primitives.near nft_token '{"token_id": "1"}'
 near view x.paras.near nft_token '{"token_id": "84686:1154"}'
 ```
 
-<details>
-<summary>Example response</summary>
-<p>
+**Example response:**
 
 ```json
 {
@@ -169,8 +157,6 @@ near view x.paras.near nft_token '{"token_id": "84686:1154"}'
 }
 ```
 
-</p>
-</details>
 
 </TabItem>
 
@@ -180,9 +166,7 @@ near view x.paras.near nft_token '{"token_id": "84686:1154"}'
 near view anthropocene.mintbase1.near nft_token '{"token_id": "17960"}'
 ```
 
-<details>
-<summary>Example response</summary>
-<p>
+**Example response:**
 
 ```json
 {
@@ -221,14 +205,13 @@ near view anthropocene.mintbase1.near nft_token '{"token_id": "17960"}'
 }
 ```
 
-</p>
-</details>
 
 :::note
 When someone creates a NFT on Mintbase they need to deploy their own NFT contract using Mintbase factory. Those smart contract are subaccounts of mintbase1.near, e.g. `anthropocene.mintbase1.near`.
 :::
 
 </TabItem>
+
 </Tabs>
 
 ---
@@ -259,6 +242,7 @@ near call thomasettorreiv.mintbase1.near nft_transfer '{"token_id": "490641" "re
 ```
 
 </TabItem>
+
 </Tabs>
 
 ---
@@ -299,6 +283,7 @@ near call nft.primitives.near nft_approve '{"token_id": "3c46b76cbd48e65f2fc8847
 Method `nft_approve` of a NFT contract also calls the `nft_on_approve` method in `simple.market.mintbase1.near` as a callback.
 
 </TabItem>
+
 </Tabs>
 
 :::info
