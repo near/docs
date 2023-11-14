@@ -128,9 +128,7 @@ const balance = await wallet.viewMethod({
 });
 ```
 
-<details>
-<summary>Example response</summary>
-<p>
+**Example response:**
 
 It returns `null` if account is not registered.
 
@@ -141,8 +139,6 @@ It returns `null` if account is not registered.
 }
 ```
 
-</p>
-</details>
 
 How to register another account:
 

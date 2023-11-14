@@ -103,9 +103,26 @@ async function getBlock(block: Block, context) {
 
 This editor with this code shows the `indexingLogic.js` file that is selected. This logic in particular will perform the filtering of blockchain transactions, transforming and saving the data you specify to a GraphQL database you define in `schema.sql`.
 
-:::info Note
+:::info Saving data
 
-You will likely want to save the data you capture from your indexer to your defined tables in the GraphQL database. You can do this by inserting GraphQL mutation queries in your `indexingLogic.js` file. For example, if you have a table called `transactions` with columns `id`, `sender`, `receiver`, `amount`, `block_height`, you can insert a mutation query for one new element in the table like this:
+You will likely want to save the data you capture from your indexer to your defined tables in the GraphQL database. You can do this easily by using the [`context.db`](../queryapi/context.md#db) object [`insert`](../queryapi/context.md#insert) method.   For example, if you have a table called `transactions` with columns `id`, `sender`, `receiver`, `amount`, `block_height`, you can insert a mutation query for one new element in the table like this:
+
+```js
+const tx = {
+    block_height: h,
+    sender: "senderId",
+    receiver: "receiverId",
+    amount: 100,
+};
+
+await context.db.Transactions.insert(tx);
+```
+
+:::
+
+:::info Using GraphQL mutations
+
+You can also insert elements using GraphQL mutation queries in your `indexingLogic.js` file:
 
 ```js
 await context.graphql(`
@@ -119,9 +136,7 @@ await context.graphql(`
 `);
 ```
 
-Creating these queries within strings can be very difficult, especially considering that the table names vary depending on your indexer name and account ID. An easier way to do this would be by visiting the GraphQL Playground site and creating the queries there. You can then copy and paste them into your `indexingLogic.js` file as shown below:
-
-![Alt Text](/docs/assets/QAPIScreen.gif)
+Creating GraphQL queries within strings can be difficult, especially considering that the table names vary depending on your indexer name and account ID. An easier way to do this would be by visiting the GraphQL Playground site and creating the queries there.
 
 > **Tip:** watch the video on how to [create queries in Playground](https://www.youtube.com/watch?v=VwO6spk8D58&t=1207s).
 
@@ -142,7 +157,7 @@ CREATE TABLE "indexer_storage" (
 
 This is the database schema that will be used to store the data you specify in `indexingLogic.js`. You can add more tables and columns to this schema as you see fit. They will be created as soon as you create the indexer.
 
-Creating this default table will allow you to use the `context.set` helper method to write data. It takes two arguments: a key argument that accepts a string and a value argument,  which will be written to the `key_name` and `value` columns.
+Creating this default table will allow you to use the [`context.set`](../queryapi/context.md#set) helper method to write data. It takes two arguments: a key argument that accepts a string and a value argument,  which will be written to the `key_name` and `value` columns.
 
 :::caution Note on schema migration
 You are able to update `indexingLogic.js` after you have registered/created your indexer, but you are only allowed to specify `schema.sql` once before you submit your indexer. If you want to update your schema, you will have to create a new indexer.

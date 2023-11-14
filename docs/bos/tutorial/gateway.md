@@ -40,7 +40,7 @@ Launching your own NEAR BOS gateway instance is a quick and simple process. In t
 
 Just follow these easy steps:
 
-1. Clone the [`near/bos-gateway`](git@github.com:near-examples/bos-gateway.git) repository
+1. Clone the [`near/bos-gateway`](https://github.com/near-examples/bos-gateway) repository
 2. Sign up on [Vercel](https://vercel.com/) and import the cloned repository
 3. Setup the project:
    - Any team name
