@@ -13,7 +13,7 @@ This section shows how to interact with FTs from your shell using [`near-cli`](.
 
 ## Get token metadata
 
-This snippet will enable your users to query FT metadata.
+This snippet will allow you to query FT metadata.
 
 ```bash
 near view token.v2.ref-finance.near ft_metadata
@@ -42,7 +42,7 @@ near view token.v2.ref-finance.near ft_metadata
 
 ## Check token balance
 
-This snippet will enable your users to get their FT balance.
+This snippet will allow you to get the FT balance of an user.
 
 ```bash
 near view token.v2.ref-finance.near ft_balance_of '{"account_id": "bob.near"}'
@@ -63,7 +63,7 @@ near view token.v2.ref-finance.near ft_balance_of '{"account_id": "bob.near"}'
 
 ## Send tokens
 
-This snippet will enable your users to transfer their FT tokens.
+This snippet will enable you to transfer FT tokens.
 
 ```bash
 near call token.v2.ref-finance.near ft_transfer '{"receiver_id": "alice.near", "amount": "100000000000000000"}' --depositYocto 1 --accountId bob.near
@@ -73,7 +73,7 @@ near call token.v2.ref-finance.near ft_transfer '{"receiver_id": "alice.near", "
 
 ### Register user
 
-In order to transfer FTs to another account receiver account have to be registered in the token contract and make storage deposit. User can register their account or another account can do it for them.
+In order to transfer FTs to another account, the receiver account have to be registered in the token contract and make storage deposit. User can register their account or another account can do it for them.
 
 How to check storage balance:
 
@@ -123,7 +123,7 @@ If you need to register your own account just pass `{}` as arguments to call.
 
 ## Attaching FTs to a Call
 
-This snippet will enable your users to attach FT to a call.
+This snippet will enable you to attach FT to a call.
 
 Natively, only NEAR tokens (Ⓝ) can be attached to a method calls. However, the FT standard enables to attach fungible tokens in a call by using the FT-contract as intermediary. This means that, instead of you attaching tokens directly to the call, you ask the FT-contract to do both a transfer and a method call in your name.
 
@@ -151,6 +151,8 @@ How it works:
 3. The FT contract calls receiver.ft_on_transfer(sender, msg, amount)
 4. The FT contract handles errors in the ft_resolve_transfer callback.
 5. The FT contract returns you how much of the attached amount was actually used.
+
+---
 
 ## Creating FT
 

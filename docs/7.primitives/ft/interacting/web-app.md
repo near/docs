@@ -222,6 +222,8 @@ How it works:
 4. The FT contract handles errors in the ft_resolve_transfer callback.
 5. The FT contract returns you how much of the attached amount was actually used.
 
+---
+
 ## Creating FT
 
 This snippet will enable your users to create their own FT.
@@ -243,7 +245,7 @@ const args = {
     metadata: {
       spec: "ft-1.0.0",
       name: "Test Token",
-      symbol: "TTTEST",
+      symbol: "test",
       icon: "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
       decimals: 18,
     },
@@ -281,6 +283,6 @@ await wallet.callMethod({
 });
 ```
 
-Contract of your token will have an address which looks like `<your_token_ticker>.tkn.near`.
+Contract of your token will have an address which looks like `<your_token_symbol>.tkn.near` (in the case above `test.tkn.near`).
 
 After creating a token you can [send it](#send-tokens) to anyone.
