@@ -328,7 +328,7 @@
     {
       "type": "link",
       "label": "Development Kit (SDK) ↗",
-      "href": "/tools/sdk/welcome"
+      "href": "/sdk/welcome"
     },
     {
       "type": "link",
@@ -445,8 +445,8 @@
         },
         {
           "type": "link",
-          "label": "Type Docs ↗",
-          "href": "/tools/near-api-js/reference"
+          "label": "Type Docs",
+          "href": "https://near.github.io/near-api-js"
         }
       ]
     },
@@ -760,12 +760,14 @@
       "href": "/bos/queryapi/intro#known-limitations"
     },
     "bos/community/indexers",
+    "bos/queryapi/best-practices",
     "bos/queryapi/index-functions",
     "bos/queryapi/context-object",
     {
       "Tutorials": [
         "bos/tutorial/indexer-tutorials/posts-indexer",
         "bos/tutorial/indexer-tutorials/hype-indexer",
+        "bos/tutorial/indexer-tutorials/nft-indexer",
         "bos/tutorial/indexer-tutorials/feed-indexer"
       ]
     },
@@ -866,6 +868,27 @@
     "api/rpc/protocol",
     "api/rpc/network",
     "api/rpc/transactions"
+  ],
+  "data-availability": [
+    "data-availability/welcome",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> DA Docs </small></b></span>"
+    },
+    "data-availability/blob-contract",
+    "data-availability/light-client",
+    "data-availability/rpc",
+    {
+      "Integrations": [
+        "data-availability/integrations",
+        "data-availability/optimism",
+        "data-availability/cdk-integration"
+      ]
+    }
   ],
   "exchanges": [
     {

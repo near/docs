@@ -32,9 +32,7 @@ await wallet.viewMethod({
 });
 ```
 
-<details>
-<summary>Example response</summary>
-<p>
+**Example response:**
 
 ```json
 {
@@ -48,8 +46,6 @@ await wallet.viewMethod({
 }
 ```
 
-</p>
-</details>
 
 ---
 
@@ -76,16 +72,11 @@ await wallet.viewMethod({
 });
 ```
 
-<details>
-<summary>Example response</summary>
-<p>
+**Example response:**
 
 ```json
 "3479615037675962643842"
 ```
-
-</p>
-</details>
 
 ---
 
@@ -128,9 +119,7 @@ const balance = await wallet.viewMethod({
 });
 ```
 
-<details>
-<summary>Example response</summary>
-<p>
+**Example response:**
 
 It returns `null` if account is not registered.
 
@@ -141,8 +130,6 @@ It returns `null` if account is not registered.
 }
 ```
 
-</p>
-</details>
 
 How to register another account:
 
@@ -162,7 +149,6 @@ If you need to register your own account just pass `{}` as arguments to call.
 
 <details>
 <summary>Example response</summary>
-<p>
 
 ```json
 {
@@ -171,7 +157,6 @@ If you need to register your own account just pass `{}` as arguments to call.
 }
 ```
 
-</p>
 </details>
 
 ---
@@ -203,16 +188,12 @@ await wallet.callMethod({
 });
 ```
 
-<details>
-<summary>Example response</summary>
-<p>
+**Example response:**
 
 ```json
 '100000000000000000'
 ```
 
-</p>
-</details>
 
 How it works:
 

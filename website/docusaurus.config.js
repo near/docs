@@ -9,6 +9,9 @@ module.exports = {
   baseUrl: "/",
   organizationName: "near",
   projectName: "docs",
+  markdown: {
+    mermaid: true,
+  },
   scripts: [
     "https://buttons.github.io/buttons.js",
     "https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js",
@@ -29,7 +32,7 @@ module.exports = {
       myFont: ["Inter", "sans-serif"],
     },
   },
-  themes: ["@saucelabs/theme-github-codeblock"],
+  themes: ["@saucelabs/theme-github-codeblock", "@docusaurus/theme-mermaid"],
   onBrokenLinks: "log",
   onBrokenMarkdownLinks: "log",
   presets: [
@@ -61,16 +64,6 @@ module.exports = {
     ],
   ],
   plugins: [
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'near-api-js',
-        // this path doesn't exit, the versioning mechanism takes docs from website/near-api-js_versioned_docs
-        path: '../__generated/near-api-js',
-        routeBasePath: '/tools/near-api-js/reference',
-        includeCurrentVersion: false,
-      },
-    ],
     [
       '@docusaurus/plugin-content-docs',
       {
@@ -123,10 +116,13 @@ module.exports = {
               value: '<hr/>',
             },
             {
+              label: "Data Availability",
+              href: "/data-availability/welcome",
+            },
+            {
               label: "Exchange Integration",
               href: "/integrator/exchange-integration",
             },
-
           ]
         },
         {

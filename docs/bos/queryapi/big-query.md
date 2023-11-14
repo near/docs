@@ -16,7 +16,6 @@ Benefits:
 - **Cost-effective**: eliminate the need to store and process bulk NEAR protocol data; query as little or as much data as preferred.
 - **Easy to use**: no prior experience with blockchain technology is required; bring a general knowledge of SQL to unlock insights.
 
-
 ## Getting started
 
 1. Login into your [Google Cloud Account](https://console.cloud.google.com/).
@@ -27,7 +26,7 @@ Benefits:
 
 :::info
 
-The [NEAR Public Lakehouse repository](https://github.com/near/near-public-lakehouse) contains the source code for ingesting NEAR Protocol data stored as JSON files in AWS S3 by [NEAR Lake Indexer](https://github.com/near/near-lake-indexer). 
+The [NEAR Public Lakehouse repository](https://github.com/near/near-public-lakehouse) contains the source code for ingesting NEAR Protocol data stored as JSON files in AWS S3 by [NEAR Lake Indexer](https://github.com/near/near-lake-indexer).
 
 :::
 
@@ -37,12 +36,13 @@ The [NEAR Public Lakehouse repository](https://github.com/near/near-public-lakeh
 
 ```sql
 SELECT
-  r.block_date collected_for_day,
-  COUNT(DISTINCT r.transaction_signer_account_id)
+  ra.block_date collected_for_day,
+  COUNT(DISTINCT t.signer_account_id) as total
 FROM `bigquery-public-data.crypto_near_mainnet_us.receipt_actions` ra
-  INNER JOIN `bigquery-public-data.crypto_near_mainnet_us.receipts` r ON r.receipt_id = ra.receipt_id
+  JOIN `bigquery-public-data.crypto_near_mainnet_us.receipt_origin_transaction` ro ON ro.receipt_id = ra.receipt_id
+  JOIN `bigquery-public-data.crypto_near_mainnet_us.transactions` t ON ro.originated_from_transaction_hash = t.transaction_hash
 WHERE ra.action_kind = 'FUNCTION_CALL'
-  AND ra.receipt_receiver_account_id = 'near.social' -- change to your contract
+  AND ra.receipt_receiver_account_id = 'social.near' -- change to your contract
 GROUP BY 1
 ORDER BY 1 DESC;
 ```
