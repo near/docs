@@ -1,77 +1,102 @@
 ---
 id: quickstart
-title: Hello NEAR 👋
+title: Hello Contract 
 sidebar_label: ⭐ Quickstart
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/components/codetabs"
 
-Hi! Let us guide you in starting and interacting with your first decentralized app (dApp) in NEAR: Hello NEAR.
+[NEAR accounts](../../1.concepts/basics/accounts/introduction.md) can host programs known as smart contracts. Smart contracts can **store data**, and **expose methods** so other users and contracts interact with them. 
 
-**Hello NEAR** is a friendly dApp composed by two main components:  
-  1. A smart contract that stores and retrieves a greeting message
-  2. A simple web-based frontend that displays the greeting and enables to change it.
+In this quickstart tutorial, we will guide you in creating your first smart contract in the NEAR testnet that **stores** and **retrieves** a greeting.
+
+:::tip
+This tutorial relies on the NEAR testnet, which uses free tokens with **no monetary value**.
+:::
+
+:::caution
+This quickstart only deals with smart contracts, for creating frontends please check the [WebApp Quickstart](../integrate/quickstart.md)
+:::
 
 ---
 
-## Create NEAR App
-If you already have [Node.js](https://nodejs.org/en/download) installed, simply run:
+## Prerequisites
+
+Before starting, make sure you have the following installed:
+ 
+1. [Node.js](https://nodejs.org/en/download), to use our scaffolding tool.
+2. [NEAR CLI](/tools/near-cli#installation), to deploy and interact with the contract.
+3. (optional) [Rust](https://www.Rust-lang.org/tools/install), to create Rust contracts.
+
+:::info NEAR-CLI
+You can easily install the `near-cli` using `npm i -g near-cli`
+:::
+
+---
+
+## Creating the Contract
+
+Create a smart contract by running our `create-near-app` scaffolding tool. 
 
 ```bash 
   npx create-near-app@latest
 ```
 
-Use the interactive menu to set up your first project folder, we recommend you to use `javascript`.
+![img](@site/static/docs/hello-near-contracts.gif)
 
-Once the folder is ready, check the README. It will show you how to **build** and **deploy** the smart contract, and **start** the frontend.
+Use the interactive menu to create a smart contract written in your preferred language (`typescript` or `Rust`).
 
-```bash 
-  npm run build
-  npm start
+<hr class="subsection" />
+
+## Project Structure
+
+The resulting folder structure will change slightly depending on the chosen language. Here is the general structure you can expect to see:
+
+<Tabs>
+  <TabItem value="🌐 JavaScript">
+
+```bash
+├── README.md
+├── src
+│   └── contract.ts # contract's code
+├── sandbox-ts      # sanbox testing
+│   ├── ava.config.cjs
+│   ├── package.json
+│   └── src
+│       └── main.ava.ts
+├── package.json    # package manager
+└── tsconfig.json
 ```
 
-<details>
-<summary>
-Test it online with Gitpod
-</summary>
+  </TabItem>
+  <TabItem value="🦀 Rust">
 
-A new browser window will open automatically with the code, give it a minute and the frontend will pop-up (make sure the pop-up window is not blocked).
+```bash
+├── README.md
+├── src
+│   └── lib.rs # contract's code
+├── sandbox-rs
+│   ├── Cargo.toml
+│   └── src
+│       └── tests.rs
+├── build.sh   # build script
+├── test.sh    # test script
+├── deploy.sh  # deploy script
+├── .cargo
+│   └── config
+└── Cargo.toml # package manager
+```
 
+  </TabItem>
+</Tabs>
 
-| 🌐 JavaScript                                                                                      | 🦀 Rust                                                                                            |
-|----------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
-| <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-js.git">Open in Gitpod</a> | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-rs.git">Open in Gitpod</a> |
+<hr class="subsection" />
 
-</details>
+## The Contract
+Your new smart contract stores a `greeting: string` attribute in their state, and exposes two methods to interact with it (`set_greeting`, `get_greeting`). 
 
----
-
-## Interacting With Hello NEAR
-
-Once the app starts you will see the screen below. Now go ahead and sign in with your NEAR account. If you don't have one, you will be able to create one in the moment.
-
-![img](/docs/assets/examples/hello-near.png)
-*Frontend of Hello NEAR*
-
-Once logged in, change the greeting and see how our Hello NEAR app greets you!
-
-
----
-
-## Structure of a dApp
-
-Now that you understand what the dApp does, let us take a closer look to its structure:
-
-1. The frontend code lives in the `/frontend` folder.
-2. The smart contract code is in the `/contract` folder.
-3. The compiled smart contract can be found in `/out/main.wasm`.
-4. The account's name in which the contract was deployed is in `/neardev/dev-account`.
-
-### Contract
-The contract presents 2 methods: `set_greeting` and `get_greeting`. The first one stores a `String` in the contract's parameter `message`, while the second one retrieves it. By default, the contract returns the message `"Hello"`.
-
-<!-- <CodeTabs>
+<CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
             url="https://github.com/near-examples/hello-near-js/blob/master/contract/src/contract.ts"
@@ -80,53 +105,130 @@ The contract presents 2 methods: `set_greeting` and `get_greeting`. The first on
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/hello-near-rs/blob/main/contract/src/lib.rs"
-            start="9" end="43" />
+            start="4" end="36" />
   </Language>
-</CodeTabs> -->
+</CodeTabs>
+
+There are 3 important things to notice:
+1. The `get_greeting` method is a [`view`](./anatomy.md#public-methods) method, meaning it only reads from the contract and can be called for free by anyone.
+2. By default, the contract is initialized with the `greeting` attribute set to `"Hello"`.
+3. The `set_greeting` method is a [`change`](./anatomy.md#public-methods) method, meaning it modifies the contract's state and requires a user to sign a transaction in order to be executed.
+
+<hr class="subsection" />
+
+## Build and Deploy
+
+The project readily contains scripts to simplify building the contract and deploying it in the NEAR testnet.
+
+<Tabs>
+  <TabItem value="🌐 JavaScript">
+
+  ```bash
+  npm run build
+  npm run deploy
+  ```
+
+  </TabItem>
+  <TabItem value="🦀 Rust">
+
+  ```bash
+  ./build.sh
+  ./deploy.sh
+  ```
+  
+  </TabItem>
+</Tabs>
+
+Behind the scenes, the `deploy` script is calling the `near-cli` tool to create a new random account, and deploying the contract into it.
+
+Once the deploy finishes, you will see a message stating that the contract was deployed into an account of the form `dev-x-y`. Congrats! your contract now lives in the NEAR testnet network.
+
+```bash
+# Example result:
+Done deploying to "dev-1699978612166-73552590363748"
+```
 
 ---
 
-## Testing
+## Interacting with the Contract
 
-When writing smart contracts it is very important to test all methods exhaustively. This
-project has both **unit** and **integration** tests. Before digging in their code,
-go ahead and execute them using the command `npm run test`.
+To interact with your deployed smart contract you can call its methods using the `near-cli` tool.
 
-### Unit test
-Unit tests check individual functions in the smart contract. They are written in the
-same language than the smart contract. If your contract is in Rust you will find the tests at the bottom of
-each `.rs` file.
-<!-- 
-<CodeTabs>
-  <Language value="🦀 Rust" language="rust">
-    <Github fname="lib.rs"
-            url="https://github.com/near-examples/hello-near-rs/blob/main/contract/src/lib.rs"
-            start="46" end="58" />
-  </Language>
-</CodeTabs> -->
+#### Get Greeting
+The `get_greeting` method is a [`view`](./anatomy.md#public-methods) method, meaning it only reads from the contract's state, and thus can be call for **free**.
 
-### Integration test
+```bash
+> near view <account> get_greeting
 
-Integration tests can be written in both Javascript and Rust. They work by deploying the contract in a **sandbox** and executing methods on it.
-In this way, integration tests simulate interactions from users in a realistic scenario.
-You will find the integration tests for `hello-near` in `integration-tests/`.
-<!-- 
+"Hello" # Response
+```
+
+#### Set Greeting
+The `set_greeting` method is a [`change`](./anatomy.md#public-methods) method, meaning it modifies the contract's state, and thus requires a user to sign a transaction in order to be executed.
+
+```bash
+> near call <account> set_greeting '{"greeting": "Hola"}' --accountId <account>
+
+Log: Saving greeting "Hola" # Response
+```
+
+In this case we are asking the account that stores the contract to call its own contract's method (`--accountId <account>`).
+
+---
+
+## SandBox Testing
+
+When writing smart contracts it is very important to test all methods exhaustively. This project includes a **sandbox** in the folder, which helps testing the contract by deploying it in a realistic environment, and simulating calls to its methods.
+
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="main.ava.ts"
             url="https://github.com/near-examples/hello-near-js/blob/master/integration-tests/src/main.ava.ts"
             start="32" end="43" />
   </Language>
-</CodeTabs> -->
+
+  <Language value="🦀 Rust" language="rust">
+    <Github fname="tests.rs"
+            url="https://github.com/near/create-near-app/blob/master/templates/sandbox-tests/sandbox-rs/src/tests.rs"
+            start="30" end="66" />
+  </Language>
+</CodeTabs>
+
+To execute the sandbox testing, simply execute the following command:
+
+<Tabs>
+  <TabItem value="🌐 JavaScript">
+
+  ```bash
+  npm run test
+
+  # Expected:
+  # returns the default greeting ✅
+  # changes the greeting ✅
+  ```
+
+  </TabItem>
+  <TabItem value="🦀 Rust">
+
+  ```bash
+  ./test.sh
+
+  # Expected:
+  # Passed ✅ gets default greeting
+  # Passed ✅ changes the greeting
+  ```
+  
+  </TabItem>
+</Tabs>
 
 ---
 
 ## Moving Forward
 
-That's it for our first quickstart tutorial. You have now seen a fully functional contract with a minimal user interface and testing.
+That's it for the quickstart tutorial. You have now seen a fully functional contract with a minimal user interface and testing.
 
-Go ahead and check other [examples](/tutorials/examples/guest-book) or proceed straight to the [Develop section](./contracts/anatomy.md) to know how to write your own contract.
+Go ahead and check other [examples](/tutorials/examples/guest-book) or proceed straight to the [Develop section](./anatomy.md) to know how to write your own contract.
 
 If you have any questions, do not hesitate in joining us on [Discord](https://near.chat). We regularly host Office Hours, in which you can join our voice channel and ask questions.
 
-Happy coding!
+Happy coding! 🚀

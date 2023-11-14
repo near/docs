@@ -31,7 +31,7 @@ Welcome, this is the starting point for all NEAR documentation. Build and publis
           </div>
           <div class="card__body">
             <h3>Smart Contracts</h3>
-              Learn to build smart contracts in NEAR.
+              Learn to build NEAR smart contracts.
           </div>
         </div>
       </a>
@@ -76,7 +76,7 @@ Welcome, this is the starting point for all NEAR documentation. Build and publis
       </a>
     </div>
     <div class="col col--4">
-      <a href="/bos">
+      <a href="/develop/monitor">
         <div class="card">
           <div class="card__image">
             <img src={require("@site/static/docs/assets/welcome-pages/data-lake.png").default} alt="Data Lake" />
@@ -104,16 +104,24 @@ Welcome, this is the starting point for all NEAR documentation. Build and publis
     <Feature url="/concepts/basics/validators" title="Validators" subtitle="Learn how the network stays safe" image="validation.png" />
   </Column>
   <Column title="Smart Contracts" size="3">
-    <Feature url="/develop/quickstart-guide" title="Quickstart" subtitle="Create your first contract in minutes" image="smartcontract.png" />
+    <Feature url="/develop/contracts/quickstart" title="Contract Quickstart" subtitle="Create your first contract in minutes" image="smartcontract.png" />
     <Feature url="/tutorials/welcome" title="Tutorials & Examples" subtitle="Check out a vast library of examples" image="tutorials.png" />
     <Feature url="/develop/testing/introduction" title="Sandbox Testing" subtitle="Write unit & integration tests" image="test.png" />
   </Column>
     <Column title="Web Apps" size="3">
-    <Feature url="/bos/quickstart" title="Quickstart" subtitle="Spin-up your first dApp" image="quickstart.png" />
+    <Feature url="/bos/quickstart" title="WebApp Quickstart" subtitle="Spin-up your first dApp in minutes" image="quickstart.png" />
     <Feature url="/tutorials/welcome" title="Tutorials & Examples" subtitle="Check out a vast library of examples" image="tutorials.png" />
     <Feature url="/develop/integrate/frontend" title="Build a Web Frontend" subtitle="Learn how to make a web dApp" image="frontend.png" />
     <Feature url="/tools/realtime" title="Monitor your App" subtitle="Learn how to track the Blockchain" image="monitor.png" />
   </Column>
+
+  <Column title="Query the Chain" size="3">
+    <Feature url="/tutorials/indexer/nft-indexer" title="Events (NEAR Lake)" subtitle="Use our Data Lake to listen for events" image="multiple.png" />
+    <Feature url="/bos/queryapi/big-query" title="Google BigQuery" subtitle="Query network data in a cost efficient way" image="experiment.png" />
+    <Feature url="/tools/near-lake" title="Overview" subtitle="Learn about our Data Lake" image="near-logo.png" />
+    <Feature url="/tutorials/indexer/js-lake-indexer" title="JS Tutorial" subtitle="Learn how to consume data from our Lake using JS" image="near-api-js.png" />
+  </Column>
+
 </FeatureList>
 
 ---
@@ -128,7 +136,7 @@ Here are more sources from our ecosystem that can help you to learn more about N
       <a href="https://www.discoverbos.org/">
         <div class="card">
           <div class="card__image">
-            <img src={require("@site/static/docs/assets/welcome-pages/awesomenear.jpg").default} alt="Discover" />
+            <img src={require("@site/static/docs/assets/welcome-pages/awesomenear.png").default} alt="Discover" />
           </div>
           <div class="card__body">
             <h3>
@@ -167,7 +175,7 @@ Here are more sources from our ecosystem that can help you to learn more about N
             Become a Validator
             <svg width="0.8rem" height="0.8rem" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_node_modules-@docusaurus-theme-classic-lib-theme-Icon-ExternalLink-styles-module"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg>
             </h3>
-            Help keeping the blockchain safe.
+            Help keeping NEAR safe.
           </div>
         </div>
       </a>
