@@ -104,3 +104,12 @@ How to [deposit funds](#attaching-fts-to-a-call--already-exist-here)
 </TabItem>
 
 </Tabs>
+
+---
+
+## Ref Swap Widget
+[Ref Finance](https://www.ref.finance/) provides the Ref Swap Widget in order to allow any service to access Ref's liquidity. For example, you can allow user swap other tokens (including stablecoins) for your project's token just using the Ref Swap Widget.
+
+:::info
+[Detailed Ref Swap Widget documentation](https://github.com/ref-finance/ref-sdk#ref-swap-widget)
+:::

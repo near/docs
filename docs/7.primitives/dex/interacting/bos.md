@@ -13,6 +13,8 @@ This section describes how to interact with DEX directly from a [NEAR Component]
 
 ## Get token price
 
+Here is how to obtain the price for different tokens in US dollars from different exchanges.
+
 <Tabs>
 
 <TabItem value="Ref Finance API" label="Ref Finance API">
@@ -39,7 +41,7 @@ const tokenPrice = fetch(
 </details>
 
 :::tip
-Ref Finance API has a method to [get list of prices](https://indexer.ref.finance/list-token-price).
+Ref Finance has a method to [get all token prices at once](https://indexer.ref.finance/list-token-price).
 :::
 
 </TabItem>
@@ -48,49 +50,13 @@ Ref Finance API has a method to [get list of prices](https://indexer.ref.finance
 
 ---
 
-## List of token prices from Ref Finance
-
-```bash
-curl -k -L -s --compressed \
-  https://indexer.ref.finance/list-token-price
-```
-
-<details>
-<summary>Example response: </summary>
-<p>
-
-```json
-{
-  "wrap.near": {
-    "price": "1.011",
-    "decimal": 24,
-    "symbol": "near"
-  },
-  "a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48.factory.bridge.near": {
-    "price": "1.0",
-    "decimal": 6,
-    "symbol": "nUSDC"
-  },
-  ...
-}
-```
-
-</p>
-</details>
-
 ## Swap tokens
 
 This snippet will enable your users to swap FTs.
 
-We will use [Ref Finance](https://app.ref.finance/) as an AMM contract in this section.
-
-:::warning
-Before initiating any actions related with swapping tokens you must have to check that a wallet has a sufficient storage deposit on a token's smart contract. Otherwise, tokens may be stucked in the contract's "owner" account and you will need to solve this issue via Ref Finance support.
-:::
-
 <Tabs>
 
-<TabItem value="Smart Contract" label="Smart Contract">
+<TabItem value="Ref Finance" label="Ref Finance">
 
 ```js
 const ammContract = "v2.ref-finance.near";
@@ -123,6 +89,12 @@ const result = Near.call(
 
 </p>
 </details>
+
+:::warning
+Before initiating any actions related with swapping tokens you must have to check that a wallet has a sufficient storage deposit on a token's smart contract. Otherwise, tokens may be stucked in the contract's "owner" account and you will need to solve this issue via Ref Finance support. [link to ref docs](missing-link).
+:::
+
+
 
 :::info
 In order to make swap you need to have enough tokens in deposit on Ref Finance.
@@ -164,15 +136,6 @@ How to [deposit funds](#attaching-fts-to-a-call--already-exist-here)
 
 ---
 
-## Ref Swap Widget
-[Ref Finance](https://www.ref.finance/) provides the Ref Swap Widget in order to allow any service to access Ref's liquidity. For example, you can allow user swap other tokens (including stablecoins) for your project's token just using the Ref Swap Widget.
-
-:::info
-[Detailed Ref Swap Widget documentation](https://github.com/ref-finance/ref-sdk#ref-swap-widget)
-:::
-
----
-
 ## Ref SDK
 
 [Ref Finance](https://www.ref.finance/) provides a SDK with the main functions: swapping tokens, getting tokens metadata, fetching pools details, getting swap estimates.
@@ -181,14 +144,11 @@ How to [deposit funds](#attaching-fts-to-a-call--already-exist-here)
 [Detailed Ref SDK documentation](https://guide.ref.finance/developers-1/ref-sdk)
 :::
 
----
-
-## Bridge Tokens
-
-If a project already has a token on Ethereum, there is an opportunity to bridge such token to NEAR using [Rainbow Bridge](https://rainbowbridge.app/).
-
-:::note
-Before the bridging a token it needs to deploy that token on NEAR. You can do it by [Rainbow Bridge a tool](https://rainbowbridge.app/deploy).
-:::
 
 ---
+
+## BOS Component
+
+Ref finance offers a widget [ready to be forked](https://near.org/near/widget/ComponentDetailsPage?src=weige.near/widget/ref-swap).
+
+<iframe src="https://near.social/embed/weige.near/widget/ref-swap" width="600" height="800" />
