@@ -142,7 +142,7 @@ How to [deposit funds](#attaching-fts-to-a-call--already-exist-here)
 <TabItem value="Ref Finance" label="Ref Finance">
 
 - [Ref SDK](https://guide.ref.finance/developers-1/ref-sdk): provides functions for: swapping tokens, getting tokens metadata, fetching pools details, getting swap estimates.
-- [BOS Widget]: A widget [ready to be forked](https://near.org/near/widget/ComponentDetailsPage?src=weige.near/widget/ref-swap).
+- [BOS Widget](https://near.org/near/widget/ComponentDetailsPage?src=weige.near/widget/ref-swap): A widget ready to be forked that enables to swap tokens in ref finance.
 
 </TabItem>
 </Tabs>
