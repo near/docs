@@ -137,7 +137,7 @@ This means each time a transaction is processed a small amount of cryptocurrency
 
 At a present day, two consensus mechanisms are commonly used:
 - [Proof-of-work](https://www.investopedia.com/terms/p/proof-work.asp) - original consensus mechanism, which is currently used by Bitcoin and was used by Ethereum. It’s highly criticized for its inefficiency -  processing of new transactions requires “mining”, which is a highly computationally intensive process. Because of this, graphic cards became an endangered species. Another disadvantage - cost of transactions is very high and processing speed is also quite slow.
-- [Proof-of-stake](https://www.investopedia.com/terms/p/proof-stake-pos.asp) - newer consensus mechanism, which doesn’t require significant processing power (and graphic cards). Processing of transactions is usually called “validation”. Newer chains, like NEAR, use it. Ethereum to PoS mechanism in September 2022. Transactions are usually much cheaper and processing speed is faster.
+- [Proof-of-stake](https://www.investopedia.com/terms/p/proof-stake-pos.asp) - newer consensus mechanism, which doesn’t require significant processing power (and graphic cards). Processing of transactions is usually called “validation”. Newer chains, like NEAR, use it. Ethereum switched to Proof-of-stake (PoS) mechanism in September 2022. Transactions are usually much cheaper and processing speed is faster.
 
 At this point, we should have enough knowledge to proceed to the next chapter - choosing the best blockchain to build dApps.
 
