@@ -63,6 +63,7 @@ await wallet.callMethod({
 ```
 
 </p>
+
 </details>
 
 :::info

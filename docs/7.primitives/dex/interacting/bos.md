@@ -124,6 +124,7 @@ const depositBalances = Near.view(
 ```
 
 </p>
+
 </details>
 
 How to [deposit funds](#attaching-fts-to-a-call--already-exist-here)
