@@ -4,7 +4,6 @@ sidebar_label: "Start options"
 
 # Extending Lake indexer with start options
 
-<ProgrammingLanguage lang="rust" />
 
 ## The End
 
