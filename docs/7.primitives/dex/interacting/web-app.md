@@ -15,19 +15,57 @@ All the examples are using a `Wallet` object, which comes from our [basic templa
 
 ---
 
+## Get token price
+
+Here is how to obtain the price for different tokens in US dollars from different exchanges.
+
+<Tabs>
+
+<TabItem value="Ref Finance API" label="Ref Finance API">
+
+```js
+const tokenContract = "token.v2.ref-finance.near";
+const tokenPriceResult = await fetch(
+  `https://indexer.ref.finance/get-token-price?token_id=${tokenContract}`
+);
+const tokenPriceValue = await tokenPriceResult.json();
+```
+
+<details>
+<summary>Example response</summary>
+<p>
+
+```json
+{
+  "token_contract_id": "token.v2.ref-finance.near",
+  "price": "0.08153090"
+}
+```
+
+</p>
+</details>
+
+:::tip
+Ref Finance has a method to [get all token prices at once](https://indexer.ref.finance/list-token-price).
+:::
+
+</TabItem>
+
+</Tabs>
+
+---
+
 ## Swap tokens
 
 This snippet will enable your users to swap FTs.
 
-We will use [Ref Finance](https://app.ref.finance/) as an AMM contract in this section.
-
-:::warning
-Before initiating any actions related with swapping tokens you must have to check that a wallet has a sufficient storage deposit on a token's smart contract. Otherwise, tokens may be stucked in the contract's "owner" account and you will need to solve this issue via Ref Finance support.
-:::
-
 <Tabs>
 
-<TabItem value="Smart Contract" label="Smart Contract">
+<TabItem value="Ref Finance" label="Ref Finance">
+
+:::note
+Please, be careful using third-party contracts. Make sure that your account meets all the requirements of the smart contract if they exist. [Ref Finance docs](https://guide.ref.finance/).
+:::
 
 ```js
 import { Wallet } from './near-wallet';
@@ -65,10 +103,11 @@ await wallet.callMethod({
 </p>
 </details>
 
-:::info
+### Check deposit balances
+
 In order to make swap you need to have enough tokens in deposit on Ref Finance.
 
-Query your deposit balances on Ref Finance
+Query your deposit balances:
 
 ```js
 const AMM_CONTRACT_ADDRESS = "v2.ref-finance.near";
@@ -97,9 +136,9 @@ await wallet.viewMethod({
 </p>
 </details>
 
-How to [deposit funds](#attaching-fts-to-a-call--already-exist-here)
+### Deposit funds
 
-:::
+See how to deposit funds on Ref Finance [here](../../ft/interacting/web-app.md#attaching-fts-to-a-call).
 
 </TabItem>
 
@@ -107,9 +146,13 @@ How to [deposit funds](#attaching-fts-to-a-call--already-exist-here)
 
 ---
 
-## Ref Swap Widget
-[Ref Finance](https://www.ref.finance/) provides the Ref Swap Widget in order to allow any service to access Ref's liquidity. For example, you can allow user swap other tokens (including stablecoins) for your project's token just using the Ref Swap Widget.
+## Additional Resources
 
-:::info
-[Detailed Ref Swap Widget documentation](https://github.com/ref-finance/ref-sdk#ref-swap-widget)
-:::
+<Tabs>
+<TabItem value="Ref Finance" label="Ref Finance">
+
+- [Ref SDK](https://guide.ref.finance/developers-1/ref-sdk): provides functions for: swapping tokens, getting tokens metadata, fetching pools details, getting swap estimates.
+- [Ref Swap Widget](https://github.com/ref-finance/ref-sdk#ref-swap-widget): allows any service to access Ref's liquidity.
+
+</TabItem>
+</Tabs>

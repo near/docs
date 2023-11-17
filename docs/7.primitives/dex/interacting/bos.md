@@ -7,7 +7,7 @@ hide_table_of_contents: false
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This section describes how to interact with DEX directly from a [NEAR Component](../../../bos/components.md)
+This section describes how to interact with DEX directly from a [NEAR Component](../../../bos/components.md).
 
 ---
 
@@ -21,9 +21,10 @@ Here is how to obtain the price for different tokens in US dollars from differen
 
 ```js
 const tokenContract = "token.v2.ref-finance.near";
-const tokenPrice = fetch(
-  "https://indexer.ref.finance/get-token-price?token_id=token.v2.ref-finance.near"
+const tokenPriceResult = fetch(
+  `https://indexer.ref.finance/get-token-price?token_id=${tokenContract}`
 ).body;
+const tokenPriceValue = JSON.parse(tokenPriceResult);
 ```
 
 <details>
@@ -33,7 +34,7 @@ const tokenPrice = fetch(
 ```json
 {
   "token_contract_id": "token.v2.ref-finance.near",
-  "price": "0.05732698"
+  "price": "0.08153090"
 }
 ```
 
@@ -57,6 +58,10 @@ This snippet will enable your users to swap FTs.
 <Tabs>
 
 <TabItem value="Ref Finance" label="Ref Finance">
+
+:::note
+Please, be careful using third-party contracts. Make sure that your account meets all the requirements of the smart contract if they exist. [Ref Finance docs](https://guide.ref.finance/).
+:::
 
 ```js
 const ammContract = "v2.ref-finance.near";
@@ -90,16 +95,11 @@ const result = Near.call(
 </p>
 </details>
 
-:::warning
-Before initiating any actions related with swapping tokens you must have to check that a wallet has a sufficient storage deposit on a token's smart contract. Otherwise, tokens may be stucked in the contract's "owner" account and you will need to solve this issue via Ref Finance support. [link to ref docs](missing-link).
-:::
+### Check deposit balances
 
-
-
-:::info
 In order to make swap you need to have enough tokens in deposit on Ref Finance.
 
-Query your deposit balances on Ref Finance
+Query your deposit balances:
 
 ```js
 const ammContract = "v2.ref-finance.near";
@@ -126,9 +126,9 @@ const depositBalances = Near.view(
 </p>
 </details>
 
-How to [deposit funds](#attaching-fts-to-a-call--already-exist-here)
+### Deposit funds
 
-:::
+See how to deposit funds on Ref Finance [here](../../ft/interacting/bos.md#attaching-fts-to-a-call).
 
 </TabItem>
 
@@ -141,7 +141,6 @@ How to [deposit funds](#attaching-fts-to-a-call--already-exist-here)
 <Tabs>
 <TabItem value="Ref Finance" label="Ref Finance">
 
-- [Ref SDK](https://guide.ref.finance/developers-1/ref-sdk): provides functions for: swapping tokens, getting tokens metadata, fetching pools details, getting swap estimates.
 - [BOS Widget](https://near.org/near/widget/ComponentDetailsPage?src=weige.near/widget/ref-swap): A widget ready to be forked that enables to swap tokens in ref finance.
 
 </TabItem>

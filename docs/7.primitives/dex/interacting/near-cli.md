@@ -15,15 +15,13 @@ This section shows how to interact with FTs from your shell using [`near-cli`](.
 
 This snippet will enable your users to swap FTs.
 
-We will use [Ref Finance](https://app.ref.finance/) as an AMM contract in this section.
-
-:::warning
-Before initiating any actions related with swapping tokens you must have to check that a wallet has a sufficient storage deposit on a token's smart contract. Otherwise, tokens may be stucked in the contract's "owner" account and you will need to solve this issue via Ref Finance support.
-:::
-
 <Tabs>
 
-<TabItem value="Smart Contract" label="Smart Contract">
+<TabItem value="Ref Finance" label="Ref Finance">
+
+:::note
+Please, be careful using third-party contracts. Make sure that your account meets all the requirements of the smart contract if they exist. [Ref Finance docs](https://guide.ref.finance/).
+:::
 
 ```bash
 near call v2.ref-finance.near swap "{\"actions\": [{\"pool_id\": 79, \"token_in\": \"token.v2.ref-finance.near\", \"amount_in\": \"100000000000000000\", \"token_out\": \"wrap.near\", \"min_amount_out\": \"1\"}]}" --gas 300000000000000 --depositYocto 1
@@ -41,10 +39,11 @@ near call v2.ref-finance.near swap "{\"actions\": [{\"pool_id\": 79, \"token_in\
 </p>
 </details>
 
-:::info
+### Check deposit balances
+
 In order to make swap you need to have enough tokens in deposit on Ref Finance.
 
-Query your deposit balances on Ref Finance
+Query your deposit balances:
 
 ```bash
 near view v2.ref-finance.near get_deposits '{"account_id": "bob.near"}'
@@ -64,9 +63,9 @@ near view v2.ref-finance.near get_deposits '{"account_id": "bob.near"}'
 </p>
 </details>
 
-How to [deposit funds](#attaching-fts-to-a-call--already-exist-here)
+### Deposit funds
 
-:::
+See how to deposit funds on Ref Finance [here](../../ft/interacting/near-cli.md#attaching-fts-to-a-call).
 
 </TabItem>
 
