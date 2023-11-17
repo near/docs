@@ -36,6 +36,7 @@ const tokenPrice = fetch(
 ```
 
 </p>
+
 </details>
 
 :::tip
@@ -92,6 +93,7 @@ const result = Near.call(
 ```
 
 </p>
+
 </details>
 
 :::info

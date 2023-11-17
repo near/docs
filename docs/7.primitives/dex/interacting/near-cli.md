@@ -39,6 +39,7 @@ near call v2.ref-finance.near swap "{\"actions\": [{\"pool_id\": 79, \"token_in\
 ```
 
 </p>
+
 </details>
 
 :::info
@@ -62,6 +63,7 @@ near view v2.ref-finance.near get_deposits '{"account_id": "bob.near"}'
 ```
 
 </p>
+
 </details>
 
 How to [deposit funds](#attaching-fts-to-a-call--already-exist-here)

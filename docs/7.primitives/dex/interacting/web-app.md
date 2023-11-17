@@ -95,6 +95,7 @@ await wallet.viewMethod({
 ```
 
 </p>
+
 </details>
 
 How to [deposit funds](#attaching-fts-to-a-call--already-exist-here)
