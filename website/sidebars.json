@@ -387,14 +387,16 @@
       "type": "html",
       "value": "<span class='menu__link'><b><small> Fungible Tokens (FT) </small></b></span>"
     },
+    "primitives/ft/introduction",
     {
-      "type": "html",
-      "value": "<span class='menu__link'>Coming Soon</span>"
+      "Using FTs": [
+        "primitives/ft/interacting/bos",
+        "primitives/ft/interacting/web-app",
+        "primitives/ft/interacting/smart-contract",
+        "primitives/ft/interacting/near-cli"
+      ]
     },
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
+    "primitives/ft/additional-resources",
     {
       "type": "html",
       "value": "<span class='menu__link'><b><small> DAOs </small></b></span>"

@@ -116,7 +116,8 @@ Here is mine for example: https://near.org/gagdiez.near/widget/Greeter?name=Anna
 ## Composing Components
 One of the main advantages of components is that they can be reused and composed with other components.
 
-To use your application inside of another one, simply invoke it using a `<Widget>` primitive. This will fetch the code from the NEAR blockchain, and include it inside of your new application.
+A BOS application is simply a component that puts together multiple components; this outer component acts as the entry point to your application.
+To use your component inside of another one, simply invoke it using a `<Widget>` primitive. This will fetch the code from the NEAR blockchain, and include it inside of your new application.
 
 <WidgetEditor>
 

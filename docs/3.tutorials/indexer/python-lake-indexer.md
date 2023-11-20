@@ -4,7 +4,6 @@ sidebar_label: "Python tutorial"
 
 # NEAR Lake indexer basic tutorial
 
-<ProgrammingLanguage lang="python" />
 
 :::info Source code for the tutorial
 
