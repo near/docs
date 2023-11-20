@@ -615,19 +615,25 @@
     "tools/explorer",
     "tools/indexing"
   ],
-  "integrate": [
-    "develop/integrate/welcome",
-    "develop/integrate/quickstart-frontend",
+  "components": [
+    "bos/welcome",
     {
       "type": "html",
       "value": "<hr/>"
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> BOS Components </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Quickstart </small></b></span>"
+    },
+    "bos/tutorial/quickstart",
+    "develop/integrate/quickstart-frontend",
+    {
+      "type": "html",
+      "value": "<hr/>"
     },
     "bos/overview",
     "bos/tutorial/bos-gateway",
+    "bos/dev/intro",
     {
       "type": "category",
       "label": "Built-in Components",
@@ -668,7 +674,6 @@
     },
     {
       "Examples & Tutorials": [
-        "bos/tutorial/quickstart",
         "bos/dev/bos-loader",
         "bos/tutorial/interaction",
         "bos/tutorial/ds-components",
@@ -681,7 +686,10 @@
         "bos/tutorial/lido"
       ]
     },
-    "bos/queryapi/bos-components",
+    "bos/queryapi/bos-components"
+  ],
+  "integrate": [
+    "develop/integrate/welcome",
     {
       "type": "html",
       "value": "<hr/>"

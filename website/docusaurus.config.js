@@ -108,21 +108,17 @@ module.exports = {
           label: "Build",
           position: "left",
           items: [
+            { label: "Composable Apps", href: "/bos/welcome" },
             { label: "Smart Contracts", href: "/develop/contracts/welcome" },
-            { label: "Web3 Applications", href: "/develop/integrate/welcome" },
-            { label: "Indexing the Chain", href: "/develop/monitor" },
+            { label: "Data Solutions", href: "/develop/monitor" },
             {
               type: 'html',
-              value: '<hr/>',
+              value: '<hr/> <small class="subtitle"> Integrations </small>',
             },
-            {
-              label: "Data Availability",
-              href: "/data-availability/welcome",
-            },
-            {
-              label: "Exchange Integration",
-              href: "/integrator/exchange-integration",
-            },
+            { label: "Frontend", href: "/develop/contracts/welcome" },
+            { label: "Backend", href: "/develop/contracts/welcome" },
+            { label: "Rollups DA", href: "/data-availability/welcome" },
+            { label: "Exchanges", href: "/integrator/exchange-integration" },
           ]
         },
         {
@@ -131,10 +127,25 @@ module.exports = {
           position: "left",
           items: [
             { label: "🧰 All Tools", href: "/tools/welcome" },
-            { label: "NEAR API", href: "/tools/near-api-js/quick-reference" },
+            {
+              type: 'html',
+              value: '<hr/> <small class="subtitle"> Essentials </small>',
+            },
             { label: "NEAR SDK", href: "/sdk/welcome" },
+            { label: "NEAR API", href: "/tools/near-api-js/quick-reference" },
             { label: "NEAR CLI", href: "/tools/near-cli" },
+            {
+              type: 'html',
+              value: '<hr/> <small class="subtitle"> Onboarding </small>',
+            },
             { label: "Wallet Selector", href: "/tools/wallet-selector" },
+            { label: "FastAuth (Email Login)", href: "/tools/fast-auth-sdk" },
+            { label: "Relayers", href: "/develop/relayers/build-relayer" },
+            {
+              type: 'html',
+              value: '<hr/> <small class="subtitle"> IDEs </small>',
+            },
+            { label: "VSCode Extension ", href: "/bos/dev/vscode" },
             { label: "BOS Web IDE (Jutsu)", href: "https://jutsu.ai/editor" },
             { label: "Remix IDE Plugin", href: "https://docs.welldonestudio.io/code/getting-started" },
           ]

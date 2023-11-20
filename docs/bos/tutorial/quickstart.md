@@ -1,9 +1,12 @@
 ---
 id: quickstart
-title: ⭐ Quickstart
+title: Hello Component
+sidebar_label: ⭐ Build a Component
 ---
 
-The Blockchain Operating System (BOS) allows you to quicky develop fullstack decentralized applications by publishing all of its source code on-chain.
+import {WidgetEditor} from "@site/src/components/social-widget"
+
+NEAR enables to create components that can readily talk with the NEAR network as well as multiple EVM compatible chains.
 
 In this quickstart tutorial we will create a simple application that takes a name as input and renders a friendly greeting.
 
@@ -11,23 +14,40 @@ In this quickstart tutorial we will create a simple application that takes a nam
 
 ---
 
-## Development Environment
+## Pre-requisites
+To follow this tutorial you will need a NEAR account. There are two ways to get one:
+1. Go to the [NEAR main page](https://near.org) and create an account using your email. It's free!
+2. Create an account through one of the wallets (e.g. https://mynearwallet.near.com).
 
-There are two pathways to creating components & applications:  
+![img](/docs/near-create-account.png)
+*The simplest way to create a NEAR account is through https://near.org*
 
-- [Online IDE](https://near.org/sandbox) - quickly get started w/ zero setup allowing you to instantly prototype & ship code
-- [Local IDE](https://docs.near.org/bos/dev/intro) - get serious and use our BOS DevTools to setup your local dev environment
+:::tip
+Creating an account through the NEAR main page will allow you to follow this tutorial without acquiring NEAR. If you create an account through a wallet, you will to manually fund it with some NEAR.
+:::
+
+---
+
+## The Online IDE
+
+NEAR `Components` are built using [JSX code](https://legacy.reactjs.org/docs/introducing-jsx.html), which is a mixture of HTML and JS. 
+
+To build the component, we will use the NEAR [online editor](https://near.org/sandbox). Open it, and click in `Create New Component`.
+
+An IDE should appear with buttons to create new components, rename them, preview them, and publish them:
+
+![img](/docs/quickstart-editor-new.png)
+*The NEAR [online editor](https://near.org/sandbox) allows you to create and publish components directly from the browser*
+
+:::info Local Development
+You can also setup your computer to develop [components locally](/bos/dev/intro). Local development is better when you want to collaborate with other people or create multiple components ar the same time.
+:::
 
 ---
 
 ## Creating Your First Component
 
-To create a `widget` you only need to write valid JSX code, i.e. a mixture of HTML and JS. Let's see how simple it is to create and preview your first component.
-
-<hr class="subsection" />
-
-### Create the Component
-In any of the editors, create a new file (`Add` button in the web editors) and name it `Greeter`, then, paste the following code on the editor:
+Copy the following code into the editor:
 
 ```ts
 let greeting = "Have a great day";
@@ -43,39 +63,62 @@ return (
 );
 ```
 
-<hr class="subsection" />
+Notice that the code makes use of a `props` variable. To add a test property, go to the `props` tab and add the following property: `{"name": "Anna"}`.
 
-### Preview
-To preview how your component will work, go first to the `props` tab on your editor (or edit the `props.json` file if you are using Visual Studio Code) and add the following property:
+<details> 
+<summary> What are props? </summary>
 
-```json
-{"name": "Anna"}
+The `props` are a set of input parameters that are passed to the component when it is rendered. In this case, we are expecting a `name` property.
+
+```jsx
+<Component ... props={{name: "Anna"}} />
 ```
 
-After, simply press the `Preview` button to render the preview of your component!
+They will be passed to the component as an JSON object, so you can add as many properties as you want. For example, you could add a `color` property to change the color of the text.
 
-![img](/docs/quickstart-editor.png)
-*Creating a Hello World component using the [NEAR Social Editor](https://near.social/#/edit)*
+</details>
 
-<hr class="subsection" />
+<br />
 
-### Publish
-Click on the `Save Widget` button to store your application in the NEAR Blockchain. If the button is not available, make sure you have signed-in to your [NEAR wallet](https://wallet.near.org) using the `Sign In` button of the editor.
+Now, simply hit the `Preview Render` button and see your component come to life!
+
+![img](/docs/quickstart-editor-preview.png)
+*A simple hello widget saying hi!*
+
+---
+
+## Publish
+Give a name to your component using the `Rename` button, for example `HelloNear`. Then, click on the `Publish` button.
 
 ![img](/docs/quickstart-save.png)
 *The NEAR Social Editor asking if we want to store the component*
 
-Accept the transaction in your NEAR Wallet, so the component gets stored in the NEAR blockchain.
+<details>
+<summary> No Publish Button? </summary>
+ If the button is not available, make sure you have signed-in to your [NEAR wallet](https://wallet.near.org) using the `Sign In` button of the editor.
+</details>
 
-<hr class="subsection" />
+The site will ask you if you want to save the source code of your new component in the SocialDB (currently deployed at social.near). Indeed, all components are stored as plain text in a NEAR smart contract!
 
-## Using Your dApp
-Once your application is published, it will be ready to be combined with other components, or rendered as a standalone application  using the BOS Viewer. 
+Storing code in a smart contract means that your code is publicly available, so everyone can audit it before using it. Don't worry, nobody can mingle with your code, only you have access to your user's storage in the SocialDB contract. 
 
-<hr class="subsection" />
+---
 
-### Composition
-To use your application inside of another one, simply invoke it using a `<Widget>` component. This will fetch the code from the NEAR blockchain, and include it inside of your new application.
+## Using Your Component
+Once your application is published, it will be ready to be combined with other components, or rendered as a standalone application using the BOS Viewer. 
+
+To view your application within [NEAR's main portal](https://near.org) you can enter to `https://near.org/<your-username.near>/widget/<component-name>?name=Anna`.
+
+Here is mine for example: https://near.org/gagdiez.near/widget/Greeter?name=Anna
+
+---
+
+## Composing Components
+One of the main advantages of components is that they can be reused and composed with other components.
+
+To use your application inside of another one, simply invoke it using a `<Widget>` primitive. This will fetch the code from the NEAR blockchain, and include it inside of your new application.
+
+<WidgetEditor>
 
 ```ts
 const user = "gagdiez.near";
@@ -86,30 +129,26 @@ return (
     <p> Components can be composed </p>
     <hr />
 
-    <Widget src={`${user}/widget/Greetings`} props={props} />
+    <Widget src={`${user}/widget/Greeter`} props={{name: "Anna"}} />
   </>
 );
 ```
-
-![img](/docs/quickstart-composition.png)
-*Rendering of the Composition*
+</WidgetEditor>
 
 :::info
-Notice that we are passing the input `props` as an `object` to the `Greetings` component.
+Notice that we are passing the input `props` as an `object` to the `Greeter` component.
 :::
 
-<hr class="subsection" />
+---
 
-### Embedded
-To render your component as a standalone application, go to `https://near.social/#/<your-username>/widget/Greeter?name=Anna`.
+## Embed into your App
 
-You can also embed your component in other websites, for example, here we simply have an iframe which `source` is `https://near.social/#/embed/gagdiez.near/widget/Greeter?name=Anna`:
+Check our [WebApp quickstart guide](develop/integrate/quickstart-frontend) to see how you can create an app that fetch and render Near components in your React application.
 
+#### Using iframes
+Another option is to add the component as an `iframe`, thought this would mean that the component will have limited capabilities (e.g. the user won't be able to save data in the chain).
 
-<iframe style={{"width": "100%", "height":"130px"}} src="https://near.social/#/embed/gagdiez.near/widget/Greeter?name=Anna"></iframe>
+<iframe style={{"width": "100%", "height":"130px"}} src="https://near.org/#/embed/gagdiez.near/widget/Greeter?name=Anna"></iframe>
 <em>This component is being rendered inside an `iframe`</em>
 
-
-:::info
-Notice that we are passing the `props.name` as a `GET` parameter in the `url`.
-:::
+Above we included an iframe with source `https://near.org/#/embed/gagdiez.near/widget/Greeter?name=Anna`.

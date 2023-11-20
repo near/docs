@@ -1,6 +1,6 @@
 ---
 id: welcome
-title: Integrate NEAR into your App
+title: Build Composable Applications
 sidebar_label: Home
 hide_table_of_contents: true
 ---
@@ -8,7 +8,7 @@ import {FeatureList, Column, Feature} from "@site/components/featurelist"
 import ContactUs from '@site/components/ContactUs.mdx';
 
 
-Welcome! Here you will find documentation on how to integrate NEAR into your app. What kind of application do you have?
+Welcome! Here you will find documentation on how to build Web3 applications using NEAR. What are you planning to build?
 
 <div class="container">
   <div class="row">

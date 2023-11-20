@@ -1,19 +1,28 @@
 ---
 id: quickstart-frontend
 title: Hello WebApp
-sidebar_label: ⭐ Quickstart
+sidebar_label: ⭐ Spin up a WebApp
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/components/codetabs"
 
-Hi! Let us guide you in starting and interacting with your first decentralized app (dApp) in NEAR: Hello NEAR Gateway.
+Most interactions with the NEAR ecosystem can be grouped in one of 3 categories: 
+1. Interacting with a [NEAR smart contract](/develop/contracts/quickstart).
+2. Interacting with a [NEAR component](/bos/tutorial/quickstart).
 
-**Hello NEAR Gateway** is a friendly dApp composed by two main components:  
-  1. A simple web-based frontend integration that interacts with a Near smart contract and enables you to change it.
-  2. A basic gateway that uses components that are stored in the BOS.
+In this guide we will show you how to quickly spin-up an application were users can **login** using their wallets and interact with both **contracts** and **components**.
+
+Furthermore, the application readily integrates a `Web3 wallet`, allowing people to login with `Metamask` to use multi-chain components
+
+:::tip Already have an app?
+
+If you already have an app, we recommend you to go through this guide and then see the our documentation on [integrating NEAR to a frontend](./frontend.md)
+:::
 
 ---
+
+
 
 ## Create NEAR App
 If you already have [Node.js](https://nodejs.org/en/download) installed, simply run:
@@ -22,15 +31,28 @@ If you already have [Node.js](https://nodejs.org/en/download) installed, simply 
   npx create-near-app@latest
 ```
 
-Use the interactive menu to set up your first project folder. For this guide we'll be using the ` A Near Gateway (Web App)` option.
+Use the interactive menu to set up:
+1. `A Near Gateway (Web App)`.
+2. `NextJs + React`.
 
-Once the folder is ready, check the README. It will show you how to **run** the development server. The README includes a list of package managers you can use though, for best results, we recommend using `pnpm`.
+:::tip Using pnpm
+While you can use our app with any package manager, we recommend you to skip the installation step and manually install the dependencies using `pnpm i`.
+:::
+
+Once the folder is ready - and all dependencies installed - you can start the development server using `pnpm`. 
 
 ```bash 
 pnpm dev
 ```
 
-Once the development server is running visit `http://localhost:3000` in your browser to view the dApp. Note that since the dApp uses NextJS the app might take longer to load the pages on first visit.
+Visit `http://localhost:3000` in your browser to view the dApp. Note that since the dApp uses NextJS the app might take longer to load the pages on first visit.
+
+<details>
+<summary> The app is not starting? </summary>
+
+Make sure you are using **node >= v18**, you can easily switch versions using `nvm use 18`
+
+</details>
 
 ---
 
@@ -41,7 +63,14 @@ Once the app starts you will see the screen below:
 ![img](/docs/assets/examples/hello-near-landing-page.png)
 *Landing page of Hello NEAR Gateway*
 
-The app is divided into two sections. One that shows an example of how Web3 Components can be used and another that shows how you can build a front end that can interact with smart contracts.
+The app is divided into two sections:
+
+1. Near Integration: which directly communicates with a NEAR smart contract through the user's wallet.
+2. Web3 Components: which embeds 3 components that interact with the NEAR and Ethereum.
+
+<hr class="subsection" />
+
+### Smart Contract Interaction
 
 We'll start by looking at the Near frontend integration. When you click on the Near Integration card you'll be taken to the frontend below: 
 
@@ -50,23 +79,29 @@ We'll start by looking at the Near frontend integration. When you click on the N
 
 Now go ahead and sign in with your NEAR account. If you don't have one, you will be able to create one in the moment.
 
-Once logged in, change the greeting and see how our Hello NEAR app greets you!
+Once logged in, change the greeting and see how the contract greets you!
 
----
+<hr class="subsection" />
 
-## Structure of a NEAR Integration
+#### How does it work?
 
-Now that you understand what the frontend does, let us take a closer look at its structure:
+Now that you understand what the frontend does, let us take a closer look at the `./src/pages/hello-near/page.js` file.
 
-1. The frontend code lives in the `/hello-near/page.js` file.
-2. The smart contract ID is in the `/contract` folder.
+The file defines the main component to be rendered, namely `HelloNear`, which calls the `useWallet` hook to import the methods needed to interact with the smart contract:
+
+```jsx
+  const { signedAccountId, viewMethod, callMethod } = useWallet();
+```
+
+- `signedAccountId`: If defined, means that the user has logged in with their Near wallet.
+- `viewMethod`: Used to make read-only calls to the contract.
+- `callMethod`: Which asks the user to sign a transaction in order to interact with the contract.
 
 Note that the code for the login button is not found along with the frontend code. That is because it is shared by both the Gateway and the Hello Near frontend and can be found all throughout the app. You can find that code in the `components/navigation.js` file.
 
 You can learn more about how the wallet selector are set up in our [tools documentation](../../4.tools/wallet-selector.md). 
 
 ### Frontend
-The frontend is composed by a single JS file (`hello-near/page.js`). This file calls the `useWallet` hook to import the methods we'll need to view and set the greeting.
 
 Those are then used to set the state and set up a helper function that is passed down to the save button.
 
