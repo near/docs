@@ -4,7 +4,6 @@ sidebar_label: "NFT indexer for Python"
 
 # Building an NFT indexer for Python
 
-<ProgrammingLanguage lang="python" />
 
 :::note Source code for the tutorial
 
