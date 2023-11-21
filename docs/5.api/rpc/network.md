@@ -429,12 +429,16 @@ Here is the exhaustive list of the error variants that can be returned by `netwo
 
 ## Validation Status {#validation-status}
 
-> Queries active validators on the network returning details and the state of validation on the blockchain.
+> Queries active validators on the network returning details and the state of 
+validation on the blockchain.
 
 - method: `validators`
-- params: `["block hash"]`, `[block number]`, `{"epoch_id": epoch id}`, `{"block_id": block number}`, `{"block_id": block hash}`, or `[null]` for the latest block
+- params: `["block hash"]`, `[block number]`, `{"epoch_id": "epoch id"}`, `{"block_id": block number}`, `{"block_id": "block hash"}`, or `[null]` for the latest block
 
-**Note:** If you want the latest `block hash`, `block number` and `epoch id`, you will need to query from the last block in an epoch. You can also query validators endpoint for past epochs if you input `block hash`, `block number` or `epoch id` of the past epoch that you want.
+**Note:** If you want the latest `block hash`, `block number` and `epoch id`, 
+you will need to query from the last block in an epoch. You can also query 
+validators endpoint for past epochs if you input `block hash`, `block number` 
+or `epoch id` of the past epoch that you want.
 
 `[block number]`
 
@@ -499,7 +503,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=validators params:='["
 </TabItem>
 </Tabs>
 
-`{"block_id": block hash}`
+`{"block_id": "block hash"}`
 
 <Tabs>
 <TabItem value="json" label="JSON" default>
@@ -573,7 +577,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=validators
 </TabItem>
 </Tabs>
 
-`{"epoch_id": epoch id}`
+`{"epoch_id": "epoch id"}`
 
 <Tabs>
 <TabItem value="json" label="JSON" default>
