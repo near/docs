@@ -4,6 +4,9 @@ title: Smart Contract
 hide_table_of_contents: false
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 This section will explain how a smart contract can deposit funds to DEX and swap tokens there.
 
 ---
@@ -12,7 +15,12 @@ This section will explain how a smart contract can deposit funds to DEX and swap
 
 The examples assume that the contract is defined as follows:
 
+<Tabs>
+<TabItem value="Ref Finance" label="Ref Finance">
+
 ```rust
+use std::collections::HashMap;
+
 use near_sdk::ext_contract;
 use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
 use near_sdk::json_types::U128;
@@ -40,17 +48,22 @@ impl Default for Contract {
     }
 }
 
-// Message parameters to receive via token function call.
-#[derive(Serialize, Deserialize)]
-#[serde(crate = "near_sdk::serde")]
-#[serde(untagged)]
-enum TokenReceiverMessage {
-  Action {
-    // Parameters which you want to get in msg object, e.g. buyer_id
-    buyer_id: Option<AccountId>,
-  },
-}
+// Implement the contract structure
+#[near_bindgen]
+impl Contract {}
+```
 
+</TabItem>
+</Tabs>
+
+---
+
+## Swap tokens
+
+<Tabs>
+<TabItem value="Ref Finance" label="Ref Finance">
+
+```rust
 #[derive(Serialize, Deserialize)]
 #[serde(crate = "near_sdk::serde")]
 pub struct SwapAction {
@@ -76,47 +89,41 @@ trait ExternalAmmContract {
 
 // Implement the contract structure
 #[near_bindgen]
-impl Contract {}
-```
-
----
-
-## Swap tokens
-
-```rust
-#[private] // Public - but only callable by env::current_account_id()
-pub fn external_call_callback(&self, #[callback_result] call_result: Result<String, PromiseError>) {
-  // Check if the promise succeeded
-  if call_result.is_err() {
-    log!("There was an error contacting external contract");
+impl Contract {
+  #[private] // Public - but only callable by env::current_account_id()
+  pub fn external_call_callback(&self, #[callback_result] call_result: Result<String, PromiseError>) {
+    // Check if the promise succeeded
+    if call_result.is_err() {
+      log!("There was an error contacting external contract");
+    }
   }
-}
 
-#[payable]
-pub fn swap_tokens(&mut self, pool_id: u64, token_in: AccountId, token_out: AccountId, amount_in: U128, min_amount_out: U128) -> Promise {
-  assert_eq!(env::attached_deposit(), 1, "Requires attached deposit of exactly 1 yoctoNEAR");
+  #[payable]
+  pub fn swap_tokens(&mut self, pool_id: u64, token_in: AccountId, token_out: AccountId, amount_in: U128, min_amount_out: U128) -> Promise {
+    assert_eq!(env::attached_deposit(), 1, "Requires attached deposit of exactly 1 yoctoNEAR");
 
-  let swap_action = SwapAction {
-    pool_id,
-    token_in,
-    token_out,
-    amount_in: Some(amount_in),
-    min_amount_out
-  };
+    let swap_action = SwapAction {
+      pool_id,
+      token_in,
+      token_out,
+      amount_in: Some(amount_in),
+      min_amount_out
+    };
 
-  let mut actions = Vec::new();
-  actions.push(swap_action);
+    let mut actions = Vec::new();
+    actions.push(swap_action);
 
-  let promise = ext_amm_contract::ext(self.amm_contract.clone())
-    .with_static_gas(Gas(150*TGAS))
-    .with_attached_deposit(YOCTO_NEAR)
-    .swap(actions);
+    let promise = ext_amm_contract::ext(self.amm_contract.clone())
+      .with_static_gas(Gas(150*TGAS))
+      .with_attached_deposit(YOCTO_NEAR)
+      .swap(actions);
 
-  return promise.then( // Create a promise to callback query_greeting_callback
-    Self::ext(env::current_account_id())
-    .with_static_gas(Gas(100*TGAS))
-    .external_call_callback()
-  )
+    return promise.then( // Create a promise to callback query_greeting_callback
+      Self::ext(env::current_account_id())
+      .with_static_gas(Gas(100*TGAS))
+      .external_call_callback()
+    )
+  }
 }
 ```
 
@@ -183,7 +190,7 @@ impl Contract {
 
 ### Check deposit balances
 
-In order to swap tokens on Ref Finance your contract must have enough token balance on Ref Finance.
+In order to swap tokens your contract must have enough token balance.
 
 ```rust
 // Validator interface, for cross-contract calls
@@ -224,4 +231,7 @@ impl Contract {
 
 ### Deposit funds
 
-See how to deposit funds on Ref Finance from smart contract [here](../../ft/interacting/smart-contract.md#attaching-fts-to-a-call).
+See how to transfer funds from smart contract [here](../../ft/interacting/smart-contract.md#attaching-fts-to-a-call).
+
+</TabItem>
+</Tabs>
