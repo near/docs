@@ -76,7 +76,7 @@ Welcome, this is the starting point for all NEAR documentation. Learn to build a
       </a>
     </div>
     <div class="col col--4">
-      <a href="/bos">
+      <a href="/develop/monitor">
         <div class="card">
           <div class="card__image">
             <img src={require("@site/static/docs/assets/welcome-pages/data-lake.png").default} alt="Data Lake" />
