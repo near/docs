@@ -179,6 +179,8 @@ impl Contract {
 }
 ```
 
+<hr class="subsection" />
+
 ### Check deposit balances
 
 In order to swap tokens on Ref Finance your contract must have enough token balance on Ref Finance.
@@ -217,6 +219,8 @@ impl Contract {
   }
 }
 ```
+
+<hr class="subsection" />
 
 ### Deposit funds
 

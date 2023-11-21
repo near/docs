@@ -146,6 +146,8 @@ const result = Near.view(
 </p>
 </details>
 
+<hr class="subsection" />
+
 ### Check deposit balances
 
 In order to make swap you need to have enough tokens in deposit on Ref Finance.
@@ -176,6 +178,8 @@ const depositBalances = Near.view(
 
 </p>
 </details>
+
+<hr class="subsection" />
 
 ### Deposit funds
 

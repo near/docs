@@ -156,6 +156,8 @@ await wallet.viewMethod({
 </p>
 </details>
 
+<hr class="subsection" />
+
 ### Check deposit balances
 
 In order to make swap you need to have enough tokens in deposit on Ref Finance.
@@ -188,6 +190,8 @@ await wallet.viewMethod({
 
 </p>
 </details>
+
+<hr class="subsection" />
 
 ### Deposit funds
 
