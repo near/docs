@@ -109,7 +109,7 @@ This function returns an array of objects that contain the `FunctionCall` operat
 
 ### Saving the Data to the Database
 
-The second part of the logic is to save the data from the filtered transactions to the database. This is done by using the [`context.db.Posts.insert()`](../queryapi/context.md#insert) function. The `context.db.Posts.insert()` function will be called for every filtered transaction as defined by the `.map()` function called on the array of `nearSocialPosts`.
+The second part of the logic is to save the data from the filtered transactions to the database. This is done by using the [`context.db.Posts.insert()`](../../queryapi/context.md#insert) function. The `context.db.Posts.insert()` function will be called for every filtered transaction as defined by the `.map()` function called on the array of `nearSocialPosts`.
 
 The function for this indexer looks like this:
 

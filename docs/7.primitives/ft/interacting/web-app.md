@@ -265,6 +265,7 @@ const requiredStorageDeposit = await wallet.viewMethod({
 ```
 
 </p>
+
 </details>
 
 Then you can create a token.

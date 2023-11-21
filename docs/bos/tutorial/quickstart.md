@@ -75,7 +75,7 @@ Once your application is published, it will be ready to be combined with other c
 <hr class="subsection" />
 
 ### Composition
-To use your application inside of another one, simply invoke it using a `<Widget>` component. This will fetch the code from the NEAR blockchain, and include it inside of your new application.
+A BOS application is simply a component that puts together multiple components; this outer component acts as the entry point to your application. To use your component inside of another, simply invoke it using a `<Widget>` component. This will fetch the code from the NEAR blockchain, and include it inside of your new application.
 
 ```ts
 const user = "gagdiez.near";

@@ -39,6 +39,7 @@ const tokenPriceValue = JSON.parse(tokenPriceResult);
 ```
 
 </p>
+
 </details>
 
 :::tip
@@ -93,6 +94,7 @@ const result = Near.call(
 ```
 
 </p>
+
 </details>
 
 <hr class="subsection" />
@@ -177,6 +179,7 @@ const depositBalances = Near.view(
 ```
 
 </p>
+
 </details>
 
 <hr class="subsection" />

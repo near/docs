@@ -101,6 +101,7 @@ await wallet.callMethod({
 ```
 
 </p>
+
 </details>
 
 <hr class="subsection" />
@@ -189,6 +190,7 @@ await wallet.viewMethod({
 ```
 
 </p>
+
 </details>
 
 <hr class="subsection" />

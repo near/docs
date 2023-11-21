@@ -4,7 +4,6 @@ sidebar_label: Getting started
 
 # NEAR Lake StateChanges indexer tutorial
 
-<ProgrammingLanguage lang="rust" />
 
 :::note Source code for the tutorial
 

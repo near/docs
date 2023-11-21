@@ -37,6 +37,7 @@ const tokenMetadata = Near.view(tokenContract, "ft_metadata", {});
 ```
 
 </p>
+
 </details>
 
 ---
@@ -65,6 +66,7 @@ const userTokenBalance = Near.view(tokenContract, "ft_balance_of", {
 ```
 
 </p>
+
 </details>
 
 ---
@@ -143,6 +145,7 @@ If you need to register your own account just pass `{}` as arguments to call.
 ```
 
 </p>
+
 </details>
 
 ---
@@ -179,6 +182,7 @@ const result = Near.call(
 ```
 
 </p>
+
 </details>
 
 How it works:
@@ -231,6 +235,7 @@ const requiredStorageDeposit = Near.view(
 ```
 
 </p>
+
 </details>
 
 Then you can create a token.

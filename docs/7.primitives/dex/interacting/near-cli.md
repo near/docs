@@ -37,6 +37,7 @@ near call v2.ref-finance.near swap "{\"actions\": [{\"pool_id\": 79, \"token_in\
 ```
 
 </p>
+
 </details>
 
 <hr class="subsection" />
@@ -106,6 +107,7 @@ near view v2.ref-finance.near get_deposits '{"account_id": "bob.near"}'
 ```
 
 </p>
+
 </details>
 
 <hr class="subsection" />
