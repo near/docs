@@ -193,10 +193,4 @@ See how to deposit funds on Ref Finance [here](../../ft/interacting/bos.md#attac
 
 ## Additional Resources
 
-<Tabs>
-<TabItem value="Ref Finance" label="Ref Finance">
-
-- [BOS Widget](https://near.org/near/widget/ComponentDetailsPage?src=weige.near/widget/ref-swap): A widget ready to be forked that enables to swap tokens in ref finance.
-
-</TabItem>
-</Tabs>
+- [Ref Finance Component](https://near.org/near/widget/ComponentDetailsPage?src=weige.near/widget/ref-swap): A widget ready to be forked that enables to swap tokens in ref finance.

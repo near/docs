@@ -205,11 +205,5 @@ See how to deposit funds on Ref Finance [here](../../ft/interacting/web-app.md#a
 
 ## Additional Resources
 
-<Tabs>
-<TabItem value="Ref Finance" label="Ref Finance">
-
 - [Ref SDK](https://guide.ref.finance/developers-1/ref-sdk): provides functions for: swapping tokens, getting tokens metadata, fetching pools details, getting swap estimates.
 - [Ref Swap Widget](https://github.com/ref-finance/ref-sdk#ref-swap-widget): allows any service to access Ref's liquidity.
-
-</TabItem>
-</Tabs>
