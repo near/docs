@@ -7,7 +7,7 @@ hide_table_of_contents: false
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This section describes how to interact with DEX directly from a [NEAR Component](../../../bos/components.md).
+This section describes how to interact with DEXs directly from a [NEAR Component](../../../bos/components.md).
 
 ---
 
@@ -90,6 +90,57 @@ const result = Near.call(
 
 ```json
 "5019606679394603179450"
+```
+
+</p>
+</details>
+
+<hr class="subsection" />
+
+### Get pools
+
+In order to make swap you need to know `pool_id`. The pool index is its id.
+
+Query available pools:
+
+```js
+const ammContract = "v2.ref-finance.near";
+const result = Near.view(
+  ammContract,
+  "get_pools",
+  {
+    from_index: 0,
+    limit: 1000
+  }
+);
+```
+
+<details>
+<summary>Example response</summary>
+<p>
+
+```js
+[
+  {
+    pool_kind: 'SIMPLE_POOL',
+    token_account_ids: [ 'token.skyward.near', 'wrap.near' ],
+    amounts: [ '51865812079751349630100', '6254162663147994789053210138' ],
+    total_fee: 30,
+    shares_total_supply: '1305338644973934698612124055',
+    amp: 0
+  },
+  {
+    pool_kind: 'SIMPLE_POOL',
+    token_account_ids: [
+      'c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2.factory.bridge.near',
+      'wrap.near'
+    ],
+    amounts: [ '783621938569399817', '1100232280852443291118200599' ],
+    total_fee: 30,
+    shares_total_supply: '33923015415693335344747628',
+    amp: 0
+  }
+]
 ```
 
 </p>

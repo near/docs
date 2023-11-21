@@ -4,7 +4,7 @@ title: Smart Contract
 hide_table_of_contents: false
 ---
 
-This section will explain how a smart contract can handle a deposit in FTs, send tokens, swap tokens and attach them to call.
+This section will explain how a smart contract can deposit funds to DEX and swap tokens there.
 
 ---
 

@@ -7,7 +7,7 @@ hide_table_of_contents: false
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This section describes how to interact with FTs directly from a web app.
+This section describes how to interact with DEXs directly from a web app.
 
 :::info
 All the examples are using a `Wallet` object, which comes from our [basic template](https://github.com/near-examples/hello-near-js/blob/master/frontend/near-wallet.js)
@@ -98,6 +98,59 @@ await wallet.callMethod({
 
 ```json
 "5019606679394603179450"
+```
+
+</p>
+</details>
+
+<hr class="subsection" />
+
+### Get pools
+
+In order to make swap you need to know `pool_id`. The pool index is its id.
+
+Query available pools:
+
+```js
+const AMM_CONTRACT_ADDRESS = "v2.ref-finance.near";
+const wallet = new Wallet({ createAccessKeyFor: AMM_CONTRACT_ADDRESS });
+ 
+await wallet.viewMethod({
+  method: 'get_pools',
+  args: {
+    from_index: 0,
+    limit: 1000
+  },
+  contractId: AMM_CONTRACT_ADDRESS,
+});
+```
+
+<details>
+<summary>Example response</summary>
+<p>
+
+```js
+[
+  {
+    pool_kind: 'SIMPLE_POOL',
+    token_account_ids: [ 'token.skyward.near', 'wrap.near' ],
+    amounts: [ '51865812079751349630100', '6254162663147994789053210138' ],
+    total_fee: 30,
+    shares_total_supply: '1305338644973934698612124055',
+    amp: 0
+  },
+  {
+    pool_kind: 'SIMPLE_POOL',
+    token_account_ids: [
+      'c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2.factory.bridge.near',
+      'wrap.near'
+    ],
+    amounts: [ '783621938569399817', '1100232280852443291118200599' ],
+    total_fee: 30,
+    shares_total_supply: '33923015415693335344747628',
+    amp: 0
+  }
+]
 ```
 
 </p>
