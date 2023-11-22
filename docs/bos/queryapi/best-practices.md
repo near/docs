@@ -10,15 +10,17 @@ If you're planning to design a production-ready indexer, please check the recomm
 
 ## Indexing development
 
-This is the recommended workflow when building a new indexer using QueryAPI:
+This section presents a recommended workflow when building a new indexer using QueryAPI.
 
 ### Design APIs for your UIs
 
-User Interfaces
+If your application requires front-end User Interfaces (UIs), your first step should be to define the APIs that will be used by your front-end UI. By defining these APIs, you will have a better overview of the data that you need to index from the blockchain. 
 
 ### Create a Database
 
-When defining your SQL database schema, keep in mind these recommendations:
+Once you have a better idea of the indexed data, you can design the database to store the indexing results.
+
+When defining your SQL database schema, consider these recommendations:
   -  Design for `UPSERT`s, so that indexed data can be replaced if needed
   -  Use foreign keys for GraphQL linking
   -  Think of indexes (e.g. by accounts, by dates, etc.)
@@ -31,10 +33,14 @@ Check the [Database design section](#database-design) to learn how to design opt
 
 ### Find blocks to test on
 
-Using exploring tools such as [NearBlocks](https://nearblocks.io/), you can find a few block heights that contain transactions and events that you want to monitor.
+Using exploring tools such as [NearBlocks](https://nearblocks.io/), you can find a few `block_height`s that contain transactions and events that you want to monitor.
 These example blocks will help you to test and debug while writing your indexer code.
 
 ### Write JS code and debug
+
+1. Start from a simple [`indexingLogic.js`](index-function.md) to get blockchain data dumped in a database, in a raw form. For example, start by getting the [FunctionCall](../../2.develop/contracts/actions.md#function-call)'s arguments from the smart contract that you want to index. Then, use the [GraphQL playground](index-function.md#mutations-in-graphql) to understand the raw dump and further analyze the data.
+
+   ![Playground](/docs/assets/QAPIScreen.gif)
 
 :::tip
 
@@ -43,10 +49,6 @@ These example blocks will help you to test and debug while writing your indexer 
   -  Write logs
 
 :::
-
-1. Start from a simple [`indexingLogic.js`](index-function.md) to get blockchain data dumped in a database, in a raw form. For example, start by getting the [FunctionCall](../../2.develop/contracts/actions.md#function-call)'s arguments from the smart contract that you want to index. Then, use the [GraphQL playground](index-function.md#mutations-in-graphql) to understand the raw dump and further analyze the data.
-
-   ![Playground](/docs/assets/QAPIScreen.gif)
 
 2. Once you have figured out a good logic to process the raw data, test the processing logic by [enabling debug mode](index-function.md#local-debug-mode) in the `indexingLogic.js` editor, and set a list of block heights that contains different cases that your processing logic must handle.
 
