@@ -7,9 +7,42 @@ sidebar_label: Best Practices
 In this article you can find suggested best practices when building blockchain indexers using [QueryAPI](intro.md).
 If you're planning to design a production-ready indexer, please check the recommendations for [indexing development](#indexing-development) and [database design](#database-design).
 
+
 ## Indexing development
 
 This is the recommended workflow when building a new indexer using QueryAPI:
+
+### Design APIs for your UIs
+
+User Interfaces
+
+### Create a Database
+
+When defining your SQL database schema, keep in mind these recommendations:
+  -  Design for `UPSERT`s, so that indexed data can be replaced if needed
+  -  Use foreign keys for GraphQL linking
+  -  Think of indexes (e.g. by accounts, by dates, etc.)
+  -  Use views to generate more GraphQL queries
+
+:::tip
+Check the [Database design section](#database-design) to learn how to design optimal database schemas for your indexer.
+:::
+
+
+### Find blocks to test on
+
+Using exploring tools such as [NearBlocks](https://nearblocks.io/), you can find a few block heights that contain transactions and events that you want to monitor.
+These example blocks will help you to test and debug while writing your indexer code.
+
+### Write JS code and debug
+
+:::tip
+
+  -  Check the [NEAR Lake Primitives](https://near.github.io/near-lake-framework-js/) documentation
+  -  Use `context.db` object to access your database tables
+  -  Write logs
+
+:::
 
 1. Start from a simple [`indexingLogic.js`](index-function.md) to get blockchain data dumped in a database, in a raw form. For example, start by getting the [FunctionCall](../../2.develop/contracts/actions.md#function-call)'s arguments from the smart contract that you want to index. Then, use the [GraphQL playground](index-function.md#mutations-in-graphql) to understand the raw dump and further analyze the data.
 
@@ -19,13 +52,12 @@ This is the recommended workflow when building a new indexer using QueryAPI:
 
    ![QueryAPI Dashboard](/docs/assets/QAPIdebug.png)
 
-3. Once your index logic extracts all data correctly as expected, fork the indexer, create new tables in a schema to organize structured data, and update the indexer logic to process and store structured data.
+3. Once your index logic extracts all data correctly as expected, you might find that you need to create new tables or change your schema to better organize the data. In that case, fork the indexer, change the  SQL schema and update the indexer logic to process and store structured data.
 
-   :::tip
-   Check the [next section](#) to learn how to design optimal database schemas for your indexer.
-   :::
 
-4. Make sure to `try {} catch {}` exceptions while processing each block. In the `catch` section, log exceptional blocks and debug them by enabling debug mode. (set the block `height` of the problematic blocks, and run a local debug)
+### Deploy code and check logs
+
+Make sure to `try { } catch { }` exceptions while processing each block. In the `catch` section, log exceptional blocks and debug them by enabling debug mode. (set the block `height` of the problematic blocks, and run a local debug)
 
 ```js
 try {
@@ -53,11 +85,29 @@ try {
 }
 ```
 
-5. You may have to do several iterations to fix all bugs in your indexer to process all the blocks correctly. In this case, you can fork the indexer, update the schema and `indexingLogic`, and try again. The new indexer can be named `YourIndexName_v2`, `YourIndexerName_v3`, `..._v4`, and so on.
+### Fix bugs and redeploy
 
-6. Remember to clean out old, unused indexers. If you get `YourIndexerName_v8` to work, it’s helpful to delete `..._v7`, `..._v6`, so they can free resources taken from QueryAPI workers.
+You may have to do several iterations to fix all bugs in your indexer to process all the blocks correctly. In this case, you can fork the indexer, update the schema and `indexingLogic`, and try again. The new indexer can be named `YourIndexName_v2`, `YourIndexerName_v3`, `..._v4`, and so on.
 
-7. Whenever you add any changes to either the database schema or the `indexerLogic`, it’s a good idea to fork and deploy a new indexer. If not, your new indexing logic will re-run on old blocks, and if you don’t handle re-indexing in your `indexingLogic.js`, the same old data will be inserted again into the database, bringing further errors.
+Whenever you add any changes to either the database schema or the `indexerLogic`, it’s a good idea to fork and deploy a new indexer. If not, your new indexing logic will re-run on old blocks, and if you don’t handle re-indexing in your `indexingLogic.js`, the same old data will be inserted again into the database, bringing further errors.
+
+:::tip
+
+Remember to clean out old, unused indexers. If you get `YourIndexerName_v8` to work, it’s helpful to delete `..._v7`, `..._v6`, so they can free resources taken from QueryAPI workers.
+
+:::
+
+
+
+### Generate GraphQL queries and export them to BOS
+  -  Use GraphiQL playground
+  -  Click through and debug queries
+  -  Use code exporter to BOS components
+  -  Change `query` to `subscription` for WebSockets
+
+
+
+
 
 ## Database design
 
@@ -97,13 +147,17 @@ DO UPDATE SET
 
 ### Schema for interactive UIs
 
-- Indexing: Add indexes for efficient querying. Example:
+#### Indexing
+
+Add indexes for efficient querying. Example:
 
 ```sql
 CREATE INDEX idx_transactions_signer_account_id ON transactions(signer_account_id);
 ```
 
-- Partitioning: Utilize partitioning for large tables.
+#### Partitioning
+
+Utilize partitioning for large tables.
 
 ```sql
 CREATE TABLE transactions_partitioned_by_account_id (
