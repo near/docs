@@ -24,7 +24,7 @@ When defining your SQL database schema, consider these recommendations:
   -  Design for `UPSERT`s, so that indexed data can be replaced if needed
   -  Use foreign keys for GraphQL linking
   -  Think of indexes (e.g. by accounts, by dates, etc.)
-  -  Use views to generate more GraphQL queries
+  -  Use views to generate more GraphQL queries. (when you `CREATE VIEW`, Hasura generates a GraphQL query for it)
 
 :::tip
 Check the [Database design section](#database-design) to learn how to design optimal database schemas for your indexer.
@@ -45,7 +45,7 @@ These example blocks will help you to test and debug while writing your indexer 
 :::tip
 
   -  Check the [NEAR Lake Primitives](https://near.github.io/near-lake-framework-js/) documentation
-  -  Use `context.db` object to access your database tables
+  -  Use [`context.db`](context.md#db) object to access your database tables
   -  Write logs
 
 :::
@@ -100,15 +100,15 @@ Remember to clean out old, unused indexers. If you get `YourIndexerName_v8` to w
 :::
 
 
+### Generate GraphQL queries and export
 
-### Generate GraphQL queries and export them to BOS
-  -  Use GraphiQL playground
+When your indexer is deployed and ready, you can generate and export GraphQL queries that can be used in your front-end application, BOS component, or any other integration.
+
+To generate GraphQL queries:
+  -  [Use GraphiQL playground](index-function.md#mutations-in-graphql)
   -  Click through and debug queries
-  -  Use code exporter to BOS components
+  -  [Use code exporter to BOS components](index-function.md#create-a-bos-component-from-query)
   -  Change `query` to `subscription` for WebSockets
-
-
-
 
 
 ## Database design
@@ -145,6 +145,39 @@ GROUP BY
 ON CONFLICT (dim_signer_account_id, dim_transaction_date)
 DO UPDATE SET
     metric_total_transactions = EXCLUDED.metric_total_transactions;
+```
+
+- If you want to do a SQL `JOIN` query, use a `VIEW`. For example:
+
+```sql
+CREATE VIEW
+  posts_with_latest_snapshot AS
+SELECT
+  ps.post_id,
+  p.parent_id,
+  p.author_id,
+  ps.block_height,
+  ps.editor_id,
+  ps.labels,
+  ps.post_type,
+  ps.description,
+  ps.name,
+  ps.sponsorship_token,
+  ps.sponsorship_amount,
+  ps.sponsorship_supervisor
+FROM
+  posts p
+  INNER JOIN (
+    SELECT
+      post_id,
+      MAX(block_height) AS max_block_height
+    FROM
+      post_snapshots
+    GROUP BY
+      post_id
+  ) latest_snapshots ON p.id = latest_snapshots.post_id
+  INNER JOIN post_snapshots ps ON latest_snapshots.post_id = ps.post_id
+  AND latest_snapshots.max_block_height = ps.block_height;
 ```
 
 ### Schema for interactive UIs
