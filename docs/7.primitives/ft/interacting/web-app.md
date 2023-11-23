@@ -49,6 +49,7 @@ await wallet.viewMethod({
 ```
 
 </p>
+
 </details>
 
 ---
@@ -85,6 +86,7 @@ await wallet.viewMethod({
 ```
 
 </p>
+
 </details>
 
 ---
@@ -168,6 +170,7 @@ If you need to register your own account just pass `{}` as arguments to call.
 ```
 
 </p>
+
 </details>
 
 ---
@@ -208,6 +211,7 @@ await wallet.callMethod({
 ```
 
 </p>
+
 </details>
 
 How it works:

@@ -117,6 +117,7 @@ It returns `null` if account is not registered.
 ```
 
 </p>
+
 </details>
 
 How to register another account:

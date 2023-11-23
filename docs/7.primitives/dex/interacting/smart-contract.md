@@ -54,6 +54,7 @@ impl Contract {}
 ```
 
 </TabItem>
+
 </Tabs>
 
 ---
@@ -234,4 +235,5 @@ impl Contract {
 See how to transfer funds from smart contract [here](../../ft/interacting/smart-contract.md#attaching-fts-to-a-call).
 
 </TabItem>
+
 </Tabs>

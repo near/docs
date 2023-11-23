@@ -81,6 +81,7 @@ near view v2.ref-finance.near get_pools '{"from_index": 0, "limit": 1000}'
 ```
 
 </p>
+
 </details>
 
 <hr class="subsection" />

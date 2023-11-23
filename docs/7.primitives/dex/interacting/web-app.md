@@ -43,6 +43,7 @@ const tokenPriceValue = await tokenPriceResult.json();
 ```
 
 </p>
+
 </details>
 
 :::tip
@@ -155,6 +156,7 @@ await wallet.viewMethod({
 ```
 
 </p>
+
 </details>
 
 <hr class="subsection" />

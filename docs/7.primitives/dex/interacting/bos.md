@@ -146,6 +146,7 @@ const result = Near.view(
 ```
 
 </p>
+
 </details>
 
 <hr class="subsection" />
