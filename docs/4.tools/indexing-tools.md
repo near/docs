@@ -4,7 +4,7 @@ title: Indexing Solutions on NEAR
 sidebar_label: "Indexing Solutions"
 ---
 
-# Indexing Solutions on NEAR
+## Indexing Solutions on NEAR
 
 Here's a quick overview of Indexer projects on the NEAR ecosystem:
 

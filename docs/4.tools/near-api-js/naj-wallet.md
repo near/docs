@@ -148,6 +148,7 @@ Get the [Account](naj-account.md) your user has signed in with in the Wallet.
 // const walletConnection = new WalletConnection(nearConnection);
 const walletAccountId = walletConnection.getAccountId();
 ```
+
 [<span class="typedoc-icon typedoc-icon-method"></span> Method `WalletConnection.getAccountId`](https://near.github.io/near-api-js/classes/walletAccount.WalletConnection#getaccountid)
 
 #### Get Account Object {#get-authorized-account-object}

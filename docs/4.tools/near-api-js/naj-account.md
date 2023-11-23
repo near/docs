@@ -76,7 +76,6 @@ const transactionOutcome = await account.deployContract(fs.readFileSync('example
 &nbsp;&nbsp;&nbsp;
 [<span class="typedoc-icon typedoc-icon-interface"></span> Interface `FinalExecutionOutcome`](https://near.github.io/near-api-js/interfaces/providers_provider.FinalExecutionOutcome)
 
-
 ### Send Tokens {#send-tokens}
 
 Transfer NEAR tokens between accounts. This returns an object with transaction and receipts outcomes and status.
@@ -92,7 +91,6 @@ await account.sendMoney(
 [<span class="typedoc-icon typedoc-icon-method"></span> Method `Account.sendMoney`](https://near.github.io/near-api-js/classes/account.Account#sendmoney)
 &nbsp;&nbsp;&nbsp;
 [<span class="typedoc-icon typedoc-icon-interface"></span> Interface `FinalExecutionOutcome`](https://near.github.io/near-api-js/interfaces/providers_provider.FinalExecutionOutcome)
-
 
 ### State {#state}
 

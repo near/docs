@@ -101,8 +101,8 @@ npm install -g near-cli
 
 1. Install `WSL` [[click here]](https://docs.microsoft.com/en-us/windows/wsl/install-manual#downloading-distros)
 2. Install `npm` [[click here]](https://www.npmjs.com/get-npm)
-3. Install ` Node.js` [ [ click here ]](https://nodejs.org/en/download/package-manager/)
-4. Change `npm` default directory [ [ click here ] ](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally#manually-change-npms-default-directory)
+3. Install `Node.js` [[ click here ]](https://nodejs.org/en/download/package-manager/)
+4. Change `npm` default directory [[ click here ]](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally#manually-change-npms-default-directory)
    - This is to avoid any permission issues with `WSL`
 5. Open `WSL` and install `near-cli` globally by running:
 
@@ -518,7 +518,7 @@ near delete-key example-acct.testnet Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1
 > Creates an account using a `--masterAccount` that will pay for the account's creation and any initial balance.
 
 - arguments: `accountId` `--masterAccount`
-- options: `--initialBalance` `--publicKey` `--newLedgerKey` 
+- options: `--initialBalance` `--publicKey` `--newLedgerKey`
 
 <blockquote class="warning">
 <strong>heads up</strong><br /><br />
@@ -530,11 +530,13 @@ If you are looking to create a top-level `.testnet` or `.near` account you can d
 </blockquote>
 
 **Implicit account example:**
+
 ```bash
 near create-account 7e094afcfc4eda8a970f6648cdf0dbd6de --masterAccount example-acct.testnet
 ```
 
 **Top level account example:**
+
 ```bash
 near create-account hiiamalongnamedaccountinnearblockchain --masterAccount example-acct.testnet
 ```

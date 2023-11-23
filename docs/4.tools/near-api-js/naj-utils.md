@@ -25,4 +25,3 @@ const amountInNEAR = utils.format.formatNearAmount("1000000000000000000000000");
 ```
 
 [<span class="typedoc-icon typedoc-icon-function"></span> Function `formatNearAmount`](https://near.github.io/near-api-js/modules/utils_format#formatnearamount)
-

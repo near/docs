@@ -19,8 +19,8 @@ This is a separate tool from [near-cli](https://docs.near.org/tools/near-cli), a
 
 Download the pre-compiled version of `near-cli-rs` for your OS from [GitHub Releases Page](https://github.com/near/near-cli-rs/releases/) or install it with [Cargo](https://doc.rust-lang.org/cargo/) (Rust's package manager tool) with the following command:
 
-```
-$ cargo install near-cli-rs
+```bash
+cargo install near-cli-rs
 ```
 
 ## Getting Started
@@ -29,7 +29,7 @@ To utilize the commands that involve transactions, sending tokens, deploying con
 
 Run...
 
-```
+```bash
 near
 ```
 
@@ -78,7 +78,7 @@ Now you can use `near-cli-rs` to it's full capacity.
 To use the `near-cli-rs` simply run the following in your terminal.
 
 ```bash
-$ near
+near
 ```
 
 You should then see the following. Use the arrow keys and hit `enter` or simply type out one of the available options to select an option
@@ -126,10 +126,10 @@ This option allows you to manage and interact with your smart contracts
 
 Operate Transactions
 
-| Option                 | Description                 |
-| ---------------------- | --------------------------- |
-| `view-status`          | View a transaction status   |
-| `construct-tansaction` | Construct a new transaction |
+| Option                    | Description                 |
+| ------------------------- | --------------------------- |
+| `view-status`             | View a transaction status   |
+| `construct-transaction`   | Construct a new transaction |
 
 ### Config
 

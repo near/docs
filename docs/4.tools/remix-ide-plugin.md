@@ -29,11 +29,11 @@ If you click the `Documentation` button, go to WELL DONE Docs, and if you find
 
 ## Install a browser extension wallet
 
-:::info 
+:::info
 Other wallets will be supported soon, and WELLDONE Wallet can be used now.
 :::
 
-After choosing a chain, click the `Connect to WELLDONE` button to connect to the **WELLDONE Wallet.** 
+After choosing a chain, click the `Connect to WELLDONE` button to connect to the **WELLDONE Wallet.**
 
 If you haven't installed the WELLDONE Wallet yet, please follow the following [manual](https://docs.welldonestudio.io/wallet/manual/) to install and create a wallet and create an account for the selected chain. Finally, go into the Setting tab of your wallet and activate Developer Mode.
 
@@ -62,6 +62,7 @@ You can create your own contract projects without using the features above. Howe
 :::
 
 #### 1. Writing Contracts in Rust
+
   ```
   near
   └── <YOUR_PROJECT_NAME>
@@ -71,6 +72,7 @@ You can create your own contract projects without using the features above. Howe
   ```
 
 #### 2. Writing Contracts in TypeScript
+
   ```
   near
   └── <YOUR_PROJECT_NAME>
@@ -82,6 +84,7 @@ You can create your own contract projects without using the features above. Howe
   ```
 
 #### 3. Writing Contracts in JavaScript
+
   ```
   near
   └── <YOUR_PROJECT_NAME>
@@ -133,8 +136,9 @@ Using [`near-sdk-js`](https://github.com/near/near-sdk-js) to compile a smart co
 
 :::note
 If you are using JavaScript or TypeScript compile options, you must write the name of the contract file you want to compile as follows to ensure that the compilation runs without error.
+
 - JavaScript: `contract.js`
-- TypeScript: `contract.ts` 
+- TypeScript: `contract.ts`
 :::
 
 ## Deploy the Contract
@@ -178,7 +182,6 @@ There are two ways to import contracts.
 **Step 4**: Run the method via clicking `View` or `Call` button. If you are sending a transaction, you must sign the transaction by clicking the `Send Tx` button in the **WELLDONE Wallet**.
 
 <img src={require('/docs/assets/remix-ide-plugin/function-call.png').default} alt='function-call' style={{width: '318px'}}/>
-
 
 :::info
 If you deployed the compiled contract using `CARGO-NEAR` or `EMBED-ABI` options, you can execute the contract more easily using the ABI without directly entering the parameters of the method.

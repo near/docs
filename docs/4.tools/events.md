@@ -16,6 +16,7 @@ events are public, a service can then be built to track them in real time throug
 ---
 
 ## NEP-297 - Events
+
 In NEAR, `Events` use the standard logs capability of contracts, since every log is forever stored in the blockchain. In this way,
 Events are normal log entries that start with the `EVENT_JSON:` prefix, followed by a single valid JSON string. The JSON string
 must codify an object with the following interface:
@@ -60,7 +61,7 @@ As first message you will need to pass an object stating the type of events you 
 
 :::caution
 There is no websocket implemented for `testnet`, but you can run your own using this [modified indexer](https://github.com/evgenykuzyakov/indexer-tutorials/tree/master/example-indexer) to
-populate a database with events, and then serve them using the [event-api project](https://github.com/evgenykuzyakov/event-api). 
+populate a database with events, and then serve them using the [event-api project](https://github.com/evgenykuzyakov/event-api).
 :::
 
 :::tip Reference implementation

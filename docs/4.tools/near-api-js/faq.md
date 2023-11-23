@@ -279,6 +279,7 @@ the contract's methods. If you misspell, mismatch, or miss method names - you'll
 receive errors about missing methods.
 
 There are a few cases of missing or wrong methods:
+
 - When you call a method you didn't specify in the constructor.
 - When you call a method that doesn't exist on the blockchain's contract (but you did specify it in the client-side constructor).
 - When you mismatch between `viewMethods` and `changeMethods`.
@@ -306,6 +307,7 @@ class MyContract extends NearContract {
 ##### `TypeError: contract.METHOD_NAME is not a function`
 
 The following contract constructor declares only `method_A_view`, it doesn't declare `method_B_call`
+
 ```js
 const contract = await new nearAPI.Contract(
   walletConnection.account(), 'guest-book.testnet',
@@ -335,6 +337,7 @@ await contract.method_C();
 ##### `wasm execution failed with error: FunctionCallError(MethodResolveError(MethodNotFound))`
 
 In this example we specify and call a method, but this method doesn't exist on the blockchain:
+
 ```js
 const contract = await new nearAPI.Contract(
   // ...
@@ -361,6 +364,7 @@ await contract.method_A_view();
 Last case is when you mismatch `viewMethods` and `changeMethods`.
 
 In the contract above we declared:
+
 - A `@view` method named `method_A_view`
 - A `@call` method named `method_B_call`
 
@@ -369,6 +373,7 @@ and the contract's `@call` method names must be specified under `changeMethods`.
 If we mismatch between the types we will receive errors.
 
 For example:
+
 ```js
 const contract = await new nearAPI.Contract(
   // ...

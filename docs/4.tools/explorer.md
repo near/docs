@@ -26,6 +26,7 @@ Created by NEAR, the [Near Explorer](https://explorer.near.org) enables to check
 <hr class="subsection"/>
 
 ## Stats Gallery
+
 Created by the community, [Stats Gallery](https://stats.gallery) gamifies the experience of looking to an account, adding levels and badges based on the account's activity. One of its
 best features is that it allows you to see the contract's methods.
 

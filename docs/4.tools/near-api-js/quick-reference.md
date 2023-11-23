@@ -21,6 +21,7 @@ import TabItem from '@theme/TabItem';
 
 You'll typically first create a connection to NEAR with [`connect`](#connect) using a [`KeyStore`](#key-store).
 With the connection object you now can:
+
 - Interact with the [Wallet](naj-wallet.md) in a browser.
 - Instantiate an [Account](naj-account.md) object to:
   - Send tokens
@@ -88,7 +89,6 @@ If you sign transactions, you need to create a _Key Store_. In the browser, the 
 const { keyStores } = nearAPI;
 const myKeyStore = new keyStores.BrowserLocalStorageKeyStore();
 ```
-
 
 [<span class="typedoc-icon typedoc-icon-class"></span> Class `BrowserLocalStorageKeyStore`](https://near.github.io/near-api-js/classes/key_stores_browser_local_storage_key_store.BrowserLocalStorageKeyStore)
 

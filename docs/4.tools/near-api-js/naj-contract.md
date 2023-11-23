@@ -10,6 +10,7 @@ import TabItem from '@theme/TabItem';
 When you instantiate an instance of `Contract` you need to specify the names of the functions you have on your smart contract.
 Then the new instance of `Contract` will have methods with the same names as your smart contract functions.
 For example if you deployed a contract with `my_smart_contract_function` function on it, then this will work:
+
 ```js
 const contract = new Contract(account, "example-contract.testnet", {
   changeMethods: ["my_smart_contract_function"], // your smart-contract has a function `my_smart_contract_function`

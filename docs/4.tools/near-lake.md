@@ -48,7 +48,6 @@ The data structure used by Lake Indexer is the following:
 
 `shard_N.json` where N is [`u64`](https://doc.rust-lang.org/std/primitive.u64.html) starting from `0`. Represents the index number of the shard. In order to find out the expected number of shards in the block you can look in `block.json` at `.header.chunks_included`
 
-
 ### How to use it
 
 We have created the [NEAR Lake Framework](/concepts/advanced/near-lake-framework) to have a simple straightforward way to create an indexer on top of the data stored by NEAR Lake itself.

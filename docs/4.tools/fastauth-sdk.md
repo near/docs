@@ -6,7 +6,7 @@ sidebar_label: FastAuth SDK
 
 ## Introduction
 
-FastAuth is a key management system that allows dApp developers to offer an easy and familiar onboarding flow to new users. Users can sign up for an account using just their email address, and they can easily recover access to that account using the same email they used during sign up. Furthermore, dApp developers can also choose to subsidize gas for a certain smart contract, so that users can start interacting with their dApp immediately, without having to fund their account. 
+FastAuth is a key management system that allows dApp developers to offer an easy and familiar onboarding flow to new users. Users can sign up for an account using just their email address, and they can easily recover access to that account using the same email they used during sign up. Furthermore, dApp developers can also choose to subsidize gas for a certain smart contract, so that users can start interacting with their dApp immediately, without having to fund their account.
 
 ### System components
 
@@ -22,7 +22,7 @@ The FastAuth system is comprised of 3 main components:
 
 :::tip
 
-FastAuth is currently on a closed early-access Beta. You can apply to be part of the Beta through [this form](https://forms.gle/pyuW3fXPZwPffYju6). 
+FastAuth is currently on a closed early-access Beta. You can apply to be part of the Beta through [this form](https://forms.gle/pyuW3fXPZwPffYju6).
 
 :::
 
@@ -78,6 +78,7 @@ service cloud.firestore {
 - Under "Your apps", click on the `</>` button
 - Set the app nickname as `issuer-gcp` and hit "Register app"
 - You should see the code needed for initilization and authentication of Firestore, such as:
+
 ```js
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
@@ -130,7 +131,6 @@ To generate an additional key, run the following command:
 ```bash
 near account add-key $FUNDED_ACCOUNT grant-full-access autogenerate-new-keypair save-to-keychain network-config mainnet sign-with-access-key-file ~/.near-credentials/implicit/$FUNDED_ACCOUNT.json send
 ```
-
 
 #### Deploying the relayer
 
