@@ -254,7 +254,7 @@ const onCLick = () => selector.then((selector: any) => selector.wallet('fast-aut
         }),);
 ```
 
-Wehenever the user tries to login, call `onClick`.
+Whenever the user tries to login, call `onClick`.
 
 ### Getting added to the MPC recovery service
 

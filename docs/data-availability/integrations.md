@@ -27,7 +27,6 @@ The complexity arises, depending on how pluggable the commitment data is in the 
 
 If your rollup does anything additional, feel free to hack, and we can try reach the goal of NEAR DA being as modular as possible.
 
-
 ### Getting started
 
 Makefiles are floating around, but here's a rundown of how to start with NEAR DA.
@@ -45,7 +44,7 @@ You can write these down, or query these from `~/.near-credentials/**` later.
 If you didn't clone with submodules, sync them:
 `make submodules`
 
-Note, there are some semantic differences between `near-cli-rs` and `near-cli-js`. Notably, the keys generated with `near-cli-js` used to have and `account_id` key in the json object. But this is omitted in `near-cli-rs` becuse it's already in the filename, but some applications require this object. So you may need to add it back in.
+Note, there are some semantic differences between `near-cli-rs` and `near-cli-js`. Notably, the keys generated with `near-cli-js` used to have and `account_id` key in the json object. But this is omitted in `near-cli-rs` because it's already in the filename, but some applications require this object. So you may need to add it back in.
 
 ### If using your own contract
 

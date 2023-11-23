@@ -80,10 +80,10 @@ export class Contract {
 
 The syntax begins with `NearPromise.new(<someAccountId>)` which initializes the async call to the designated `<someAccountId>`. Subsequent calls to this program in this account are invoked using `.functionCall()`. The `.functionCall()` method takes in the following parameters:
 
-  - `functionName`: the name of the method to call on the contract
-  - `args`: the arguments to pass to the method
-  - `amount`: the amount of Ⓝ to attach to the call
-  - `gas`: the amount of GAS units to attach to the call
+- `functionName`: the name of the method to call on the contract
+- `args`: the arguments to pass to the method
+- `amount`: the amount of Ⓝ to attach to the call
+- `gas`: the amount of GAS units to attach to the call
 
 There are a couple things to note when doing these function calls:
 

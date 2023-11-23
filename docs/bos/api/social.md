@@ -59,7 +59,6 @@ For example, if the path pattern is `mob.near/widget/*`, the `Social.get` will u
 <Tabs>
 <TabItem value="request" label="Request" default>
 
-
 ```js
 const data = Social.get("mob.near/widget/*");
 ```
@@ -77,12 +76,10 @@ const data = Social.get("mob.near/widget/*");
 </TabItem>
 </Tabs>
 
-
 If the path pattern is `mob.near/widget/HelloWorld`, the `Social.get` will unwrap the object and return the actual value:
 
 <Tabs>
 <TabItem value="request" label="Request" default>
-
 
 ```js
 const data = Social.get("mob.near/widget/HelloWorld");
@@ -97,7 +94,6 @@ const data = Social.get("mob.near/widget/HelloWorld");
 
 </TabItem>
 </Tabs>
-
 
 It's helpful that you don't have to manually unwrap object.
 
@@ -127,7 +123,6 @@ For example, if the path pattern is `mob.near/profile`, `Social.getr` will call 
 <Tabs>
 <TabItem value="request" label="Request" default>
 
-
 ```js
 const data = Social.getr("mob.near/profile");
 ```
@@ -141,7 +136,6 @@ const data = Social.getr("mob.near/profile");
 
 </TabItem>
 </Tabs>
-
 
 ---
 
@@ -169,7 +163,7 @@ The keys contract doesn't unwrap the object, so the returned data is the same as
 
 :::tip
 The Social API server supports custom options `return_type: "History"`. For each matching key, it will return an array containing all the block heights when the value was changed in ascending order.
-It can be used for building a feed, where the values are overwritten. 
+It can be used for building a feed, where the values are overwritten.
 :::
 
 #### Examples
@@ -192,7 +186,6 @@ const data = Social.keys(`${accountId}/post/meme`, "final", {
 
 </TabItem>
 </Tabs>
-
 
 ---
 
@@ -310,12 +303,13 @@ permission is given per widget source.
 
 :::note
 Similar data means the same top level keys on the data. Except for the
-4 top level keys: ` graph`, `post`, `index` and `settings`. For these
+4 top level keys: `graph`, `post`, `index` and `settings`. For these
 keys, the second level key will be used. More keys can be added later,
 once new standards added.
 :::
 
 For example the follow button widget uses the following keys:
+
 ```json
 {
     "graph": {
@@ -334,7 +328,6 @@ shown again.
 ![saving data](https://user-images.githubusercontent.com/470453/205456503-7c0db525-7f61-4ead-8591-2b6d86065fa4.png)
 
 </details>
-
 
 #### Examples
 

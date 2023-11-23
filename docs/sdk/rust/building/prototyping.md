@@ -23,7 +23,6 @@ When you're still in the Research & Development phase, building a prototype and 
 
 When you're ready to deploy a more stable contract, there are a couple of [production strategies](../../../2.develop/upgrade.md#migrating-the-state) that will help you update the contract state without deleting it all. And once your contract graduates from "trusted mode" (when maintainers control a [Full Access key](/concepts/basics/accounts/access-keys)) to community-governed mode (no more Full Access keys), you can set up your contract to [upgrade itself](../../../2.develop/upgrade.md#programmatic-update).
 
-
 ## Rapid Prototyping: Delete Everything All The Time
 
 There are two ways to delete all account state:
@@ -118,6 +117,7 @@ When first getting started with a new project, the fastest way to deploy a contr
 ```bash
 near dev-deploy [--wasmFile ./path/to/compiled.wasm]
 ```
+
 </TabItem>
 <TabItem value="near-cli-rs">
 
@@ -127,8 +127,6 @@ near account create-account sponsor-by-faucet-service <my-new-dev-account>.testn
 near contract deploy <my-new-dev-account>.testnet use-file <route_to_wasm> without-init-call network-config testnet sign-with-keychain
 
 ```
-
-
 
 </TabItem>
 </Tabs>
@@ -174,6 +172,7 @@ Then deploy your contract to it:
 ```bash title="Deploy to sub-account"
 near deploy --accountId app-name.you.testnet [--wasmFile ./path/to/compiled.wasm]
 ```
+
 </TabItem>
 <TabItem value="near-cli-rs">
 
@@ -184,9 +183,7 @@ near contract deploy app-name.you.testnet use-file <./path/to/compiled.wasm> wit
 </TabItem>
 </Tabs>
 
-
 In this case, how do you delete all contract state and start again? Delete the sub-account and recreate it.
-
 
 <Tabs className="language-tabs" groupId="code-tabs">
 <TabItem value="near-cli">
@@ -194,12 +191,14 @@ In this case, how do you delete all contract state and start again? Delete the s
 ```bash title="Delete sub-account"
 near delete app-name.you.testnet you.testnet
 ```
+
 </TabItem>
 <TabItem value="near-cli-rs">
 
 ```bash title="Delete sub-account"
 near account delete-account app-name.you.testnet beneficiary you.testnet network-config testnet sign-with-keychain send
 ```
+
 </TabItem>
 </Tabs>
 

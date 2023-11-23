@@ -71,7 +71,7 @@ export class StatusMessage {
 
 Example of `UnorderedMap`:
 
-```javascript 
+```javascript
 import { NearBindgen, call, view, near, UnorderedMap } from "near-sdk-js";
 
 @NearBindgen({})
@@ -136,9 +136,9 @@ assert(m2.get(1), "test");
 ### Functionality
 
 - `UnorderedMap` supports iteration over keys and values, and also supports pagination. Internally, it has the following structures:
-    - a prefix value
-    - a vector of keys
-    - a `LookupMap` of keys and values
+  - a prefix value
+  - a vector of keys
+  - a `LookupMap` of keys and values
 - `LookupMap` only has a prefix, reading values to and from the contract's storage. Without a vector of keys, it doesn't have the ability to iterate over keys.
 
 ### Performance

@@ -22,7 +22,6 @@ The RPC API enables you to query the network and get details about specific bloc
 
 `finality` example:
 
-
 <Tabs>
 <TabItem value="json" label="JSON" default>
 
@@ -61,7 +60,6 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=block \
 
 `[block_id]`
 
-
 <Tabs>
 <TabItem value="json" label="JSON" default>
 
@@ -97,7 +95,6 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=block \
 </Tabs>
 
 `[block_hash]`
-
 
 <Tabs>
 <TabItem value="json" label="JSON" default>
@@ -251,7 +248,6 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=block \
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
-
 ```json
 {
     "error": {
@@ -349,7 +345,6 @@ Here is the exhaustive list of the error variants that can be returned by `block
 
 `finality`
 
-
 <Tabs>
 <TabItem value="json" label="JSON" default>
 
@@ -388,7 +383,6 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 
 `[block_id]`
 
-
 <Tabs>
 <TabItem value="json" label="JSON" default>
 
@@ -426,7 +420,6 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 </Tabs>
 
 `block_hash`
-
 
 <Tabs>
 <TabItem value="json" label="JSON" default>
@@ -495,11 +488,9 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 </p>
 </details>
 
-
 #### What Could Go Wrong?? {#what-could-go-wrong-1}
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
-
 
 ```json
 {
@@ -630,7 +621,6 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=chunk params:='{"chunk
 
 `block_id`, `shard_id` example:
 
-
 <Tabs>
 <TabItem value="json" label="JSON" default>
 
@@ -704,7 +694,6 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=chunk params:='{"block
 #### What Could Go Wrong?? {#what-could-go-wrong-2}
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
-
 
 ```json
 {

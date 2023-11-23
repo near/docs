@@ -63,8 +63,6 @@ near call x.paras.near nft_create_series '{"token_metadata": {"title": "NFT #1",
 
 </details>
 
-
-
 ```rust
 // Validator interface, for cross-contract calls
 #[ext_contract(ext_nft_contract)]
@@ -261,7 +259,6 @@ Check out how to do it from a [NEAR component](/primitives/nft/interacting/bos#l
 ---
 
 ## Additional resources
-
 
 :::info
   Read more about cross contract calls [here](https://docs.near.org/tutorials/examples/xcc).

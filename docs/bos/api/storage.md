@@ -44,7 +44,6 @@ const lastBlockHeight = Storage.get("lastBlockHeight", notificationFeedSrc);
 </TabItem>
 </Tabs>
 
-
 :::tip
 See a full example in the [NotificationButton source code](https://near.social/#/mob.near/widget/WidgetSource?src=mob.near/widget/NotificationButton).
 :::
@@ -59,7 +58,6 @@ See a full example in the [NotificationButton source code](https://near.social/#
  |---------|--------------|--------|----------------------|
  | `key`   | **required** | object | a user-defined key   |
  | `value` | **required** | object | a user-defined value |
-
 
 ### Examples
 

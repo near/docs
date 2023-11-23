@@ -12,7 +12,7 @@ For example, it is very useful to index all "comment" actions, so we can easily 
 
 ---
 
-## Indexing an Retrieving an Action 
+## Indexing an Retrieving an Action
 
 In order to index an action we need to add the `index` key to the data being saved, and set a `key` and `value` inside.
 
@@ -68,7 +68,7 @@ return Social.index("readDocs", "index docs", {
 
 ---
 
-## Like Example 
+## Like Example
 
 In this example, `account.near` is liking a social post, and we are indexing this action so we can find it later.
 

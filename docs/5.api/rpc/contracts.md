@@ -91,7 +91,6 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
-
 ```json
 {
     "error": {
@@ -312,7 +311,6 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
-
 ```json
 {
     "error": {
@@ -475,7 +473,6 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 #### What Could Go Wrong? {#what-could-go-wrong-2}
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
-
 
 ```json
 {
@@ -868,7 +865,6 @@ should accept objects with or without these fields set.
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
-
 ```json
 {
     "error": {
@@ -1107,7 +1103,6 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
-
 ```json
 {
     "error": {
@@ -1281,7 +1276,6 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
-
 ```json
 {
     "error": {
@@ -1368,6 +1362,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
 ---
 
 ## Call a contract function {#call-a-contract-function}
+
 > Allows you to call a contract method as a [view function](../../4.tools/cli.md#near-view-near-view).
 
 - method: `query`
@@ -1505,7 +1500,6 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 #### What Could Go Wrong? {#what-could-go-wrong-6}
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
-
 
 ```json
 {

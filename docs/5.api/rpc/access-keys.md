@@ -23,7 +23,6 @@ If `permission` of the key is `FunctionCall`, it will return more details such a
   - `account_id`: _`"example.testnet"`_
   - `public_key`: _`"example.testnet's public key"`_
 
-
 <Tabs>
 <TabItem value="json" label="JSON" default>
 
@@ -43,7 +42,6 @@ If `permission` of the key is `FunctionCall`, it will return more details such a
 
 </TabItem>
 <TabItem value="🌐 JavaScript" label="JavaScript">
-
 
 ```js
 const response = await near.connection.provider.query({
@@ -99,7 +97,6 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 #### What Could Go Wrong?
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
-
 
 ```json
 {
@@ -416,7 +413,6 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
-
 ```json
 {
     "error": {
@@ -636,7 +632,6 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 #### What Could Go Wrong?{#what-could-go-wrong-2}
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
-
 
 ```json
 {

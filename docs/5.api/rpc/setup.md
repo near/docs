@@ -8,6 +8,7 @@ In order to use the RPC API you will need to setup the correct RPC endpoints.
 <hr class="subsection" />
 
 ## RPC Endpoint Setup
+
 - `POST` for all methods
 - `JSON RPC 2.0`
 - `id: "dontcare"`
@@ -18,11 +19,13 @@ In order to use the RPC API you will need to setup the correct RPC endpoints.
   - localnet `http://localhost:3030`
 
 ### Limits
+
 - Maximum number of requests per IP: 600 req/min
 
 <hr class="subsection" />
 
 ## Querying Historical Data
+
 Querying historical data (older than 5 [epochs](../../1.concepts/basics/epoch.md) or ~2.5 days), you may get responses that the data is not available anymore. In that case, archival RPC nodes will come to your rescue:
 
 - mainnet `https://archival-rpc.mainnet.near.org`
@@ -31,6 +34,7 @@ Querying historical data (older than 5 [epochs](../../1.concepts/basics/epoch.md
 You can see this interface defined in `nearcore` [here](https://github.com/near/nearcore/blob/bf9ae4ce8c680d3408db1935ebd0ca24c4960884/chain/jsonrpc/client/src/lib.rs#L181).
 
 ### Limits
+
 - Maximum number of requests per IP: 600 req/min
 
 ---
@@ -81,5 +85,6 @@ The block IDs of transactions shown in <a href="https://explorer.testnet.near.or
 ## Using `finality` param {#using-finality-param}
 
 The `finality` param has two options: `optimistic` and `final`.
+
 1. `optimistic` uses the latest block recorded on the node that responded to your query _(<1 second delay after the transaction is submitted)_
 2. `final` is for a block that has been validated on at least 66% of the nodes in the network _(usually takes 2 blocks / approx. 2 second delay)_

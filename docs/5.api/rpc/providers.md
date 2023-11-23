@@ -13,7 +13,6 @@ If you want to use a custom RPC provider with NEAR Wallet Selector, [check this 
 
 :::
 
-
 | Provider   | Endpoint Root                           |
 | ---------- | --------------------------------------- |
 | [NEAR](setup.md)      | `https://rpc.mainnet.near.org`                                                |

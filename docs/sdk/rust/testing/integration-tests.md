@@ -8,7 +8,7 @@ sidebar_position: 2
 
 ## Unit Tests vs. Integration Tests
 
-Unit tests are great for ensuring that functionality works as expected at an insolated, functional-level. This might include checking that function `get_nth_fibonacci(n: u8)` works as expected, handles invalid input gracefully, etc. Unit tests in smart contracts might similarly test public functions, but can get unruly if there are several calls between accounts. As mentioned in the [unit tests](unit-tests.md) section, there is a `VMContext` object used by unit tests to mock some aspects of a transaction. One might, for instance, modify the testing context to have the `predecessor_account_id` of `"bob.near"`. The limits of unit tests become obvious with certain interactions, like transferring tokens. Since `"bob.near"` is simply a string and not an account object, there is no way to write a unit test that confirms that Alice sent Bob 6 NEAR (Ⓝ). Furthermore, there is no way to write a unit test that executes cross-contract calls. Additionally, there is no way of profiling gas usage and the execution of the call (or set of calls) on the blockchain.
+Unit tests are great for ensuring that functionality works as expected at an isolated, functional-level. This might include checking that function `get_nth_fibonacci(n: u8)` works as expected, handles invalid input gracefully, etc. Unit tests in smart contracts might similarly test public functions, but can get unruly if there are several calls between accounts. As mentioned in the [unit tests](unit-tests.md) section, there is a `VMContext` object used by unit tests to mock some aspects of a transaction. One might, for instance, modify the testing context to have the `predecessor_account_id` of `"bob.near"`. The limits of unit tests become obvious with certain interactions, like transferring tokens. Since `"bob.near"` is simply a string and not an account object, there is no way to write a unit test that confirms that Alice sent Bob 6 NEAR (Ⓝ). Furthermore, there is no way to write a unit test that executes cross-contract calls. Additionally, there is no way of profiling gas usage and the execution of the call (or set of calls) on the blockchain.
 
 Integration tests provide the ability to have end-to-end testing that includes cross-contract calls, proper user accounts, access to state, structured execution outcomes, and more. In NEAR, we can make use of the `workspaces` libraries in both [Rust](https://github.com/near/workspaces-rs) and [JavaScript](https://github.com/near/workspaces-js) for this type of testing on a locally-run blockchain or testnet.
 
@@ -80,7 +80,9 @@ members = [
 
 The `integration-tests.rs` file above will contain the integration tests. These can be run with the following command from the same level as the test `Cargo.toml` file:
 
-    cargo test --test integration-tests
+```bash
+cargo test --test integration-tests
+```
 
 ## Comparing an Example
 
@@ -128,9 +130,11 @@ https://github.com/near-examples/rust-counter/blob/6a7af5a32c630e0298c09c24eab87
 
 :::note
 You can also create a `dev_account` without having to deploy a contract as follows:
+
 ```rust reference
 https://github.com/near/workspaces-rs/blob/8f12f3dc3b0251ac3f44ddf6ab6fc63003579139/workspaces/tests/create_account.rs#L7-L8
 ```
+
 :::
 
 ### Create Helper Functions

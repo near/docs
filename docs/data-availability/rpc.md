@@ -20,10 +20,9 @@ The `da-rpc-go` crate is the go client bindings for use by non-rust applications
 
 The below diagrams outline how a rollup will interact with DA depending on their architecture.
 
-
 ## Rust
 
-```mermaid 
+```mermaid
 classDiagram 
 class DaRpcClient
 class Blob {
@@ -57,7 +56,7 @@ class L1 {
 L1 >-- Rollup : post frameRef with commitments
 ```
 
-## Golang, or anything CFFI compatible 
+## Golang, or anything CFFI compatible
 
 This diagram outlines how rollups written in golang would interact with the go rpc client.
 

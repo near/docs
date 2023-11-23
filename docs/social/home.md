@@ -17,22 +17,24 @@ Explore Near Social: **[near.social](https://near.social)**
 
 ### Links
 
-Github: https://github.com/NearSocial
+Github: <https://github.com/NearSocial>
 
 Twitter: [@NearSocial_](https://twitter.com/NearSocial_)
 
 Telegram: [@NearSocial](https://t.me/NearSocial)
 
 SocialDB Contract:
-- Source: https://github.com/NearSocial/social-db
+
+- Source: <https://github.com/NearSocial/social-db>
 - Mainnet: `social.near`
 - Testnet: `v1.social08.testnet`
 
-Standards: https://github.com/NearSocial/standards
+Standards: <https://github.com/NearSocial/standards>
 
 Near Social Browser:
-- Source: https://github.com/NearSocial/viewer
-- Mainnet: https://near.social/
-- Testnet: https://test.near.social/
+
+- Source: <https://github.com/NearSocial/viewer>
+- Mainnet: <https://near.social/>
+- Testnet: <https://test.near.social/>
 
 If you are looking for a mastodon based social network for `.near` users, see an article about [mastodon.near.social](#)

@@ -15,7 +15,6 @@ In this page you will find:
 4. Tools to query [past information](indexer4explorer.md) from the blockchain as well as [real time events](events.md).
 5. Developer tools to deploy and interact with contracts such as the [NEAR CLI](cli.md) and [NEAR JavaScript API](/tools/near-api-js/quick-reference).
 
-
 <hr class="subsection" />
 
 <ContactUs />

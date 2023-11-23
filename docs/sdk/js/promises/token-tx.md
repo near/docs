@@ -62,4 +62,3 @@ Using near-cli or near-cli-rs, someone could invoke this function with a call li
 
   </TabItem>
 </Tabs>
-

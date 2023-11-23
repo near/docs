@@ -10,13 +10,11 @@ https://github.com/near/nearcore/tree/master/chain/indexer
 
 :::
 
-
 :::caution You might be looking for NEAR Lake Framework
 
 [NEAR Lake Framework](near-lake-framework.md) is a lightweight alternative to NEAR Indexer Framework that is recommended for use when centralization can be tolerated.
 
 :::
-
 
 ## Description
 

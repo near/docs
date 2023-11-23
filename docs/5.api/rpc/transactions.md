@@ -66,7 +66,6 @@ or [NEAR Explorer](https://explorer.testnet.near.org/) using the above `result` 
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
-
 ```json
 {
     "error": {
@@ -504,7 +503,6 @@ In addition, `tx` endpoint does not provide finality guarantees. To make sure th
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
-
 ```json
 {
     "error": {
@@ -880,7 +878,6 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_tx_status
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
-
 ```json
 {
     "error": {
@@ -1045,7 +1042,6 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_receipt p
 #### What could go wrong? {#what-could-go-wrong-4}
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
-
 
 ```json
 {

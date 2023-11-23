@@ -9,6 +9,7 @@ I recommend reading [The Past, Present, and Future of Near Social](https://thewi
 ## SocialDB
 
 The contract is deployed at the following accounts:
+
 - NEAR mainnet: `social.near`
 - NEAR testnet: `v1.social08.testnet`
 
@@ -22,10 +23,12 @@ Nodes are stored in a `LookupMap` with the key being a `NodeId (u32)`.
 The root node has the index `0` and stored separately in the contract state.
 
 The `Node` structure contains the following fields:
+
 - `block_height` - the block height when the node was last modified
 - `children` - an unordered iterable key-value map.
 
 Keys in the `children` map are strings, with the following restrictions:
+
 - only the following characters are allowed: `a-z`, `A-Z`, `0-9`, `-`, `_`, `.`
 - the key must be at most 256 character long
 
@@ -139,6 +142,7 @@ Each account is represented as a `VAccount` structure (upgradable `Account`).
 Accounts are stored in a `LookupMap` with the key being a `NodeId (u32)` matching the node index from the Root node.
 
 The `Account` structure contains the following fields:
+
 - `storage_balance` - the amount of storage tokens attached to the account
 - `used_bytes` - the number of bytes used by the account for storing data and account information
 - `permissions` - an iterable map of permissions for the account
@@ -181,6 +185,7 @@ pub fn set(&mut self, data: Value);
 ```
 
 Arguments:
+
 - `data` is an object to store. The leaf values should be strings or null values. String values will be added, while null values will be deleted.
 
 Examples:
@@ -219,6 +224,7 @@ Returns the data for a list of given key patterns.
 It takes one or more path patterns as arguments, and returns the matching data.
 The path pattern is a string that can contain wildcards.
 For example:
+
 - `alice.near/profile/**` will match the entire profile data of account `alice.near`.
 - `alice.near/profile/*` will match all the fields of the profile, but not the nested objects.
 - `alice.near/profile/name` will match only the name field of the profile.
@@ -235,10 +241,12 @@ pub fn get(self, keys: Vec<String>, options: Option<GetOptions>) -> Value;
 ```
 
 Arguments:
+
 - `keys` - an array of key patterns to return.
 - `options` - optional argument to specify options.
 
 Options:
+
 - `with_block_height` - if true, for every value and a node will add the block height of the data with the key `:block`.
 - `with_node_id` - if true, for every node will add the node index with the key `:node`.
 - `return_deleted` - if true, will include deleted keys with the value `null`.
@@ -269,6 +277,7 @@ The `keys` method allows to get the list of keys that match the path pattern.
 It's useful for querying the data without reading values.
 It also has an additional `options` field that can be used to specify the return type and whether to return deleted keys.
 For example:
+
 - `alice.near/profile/*` will return the list of all the fields of the profile, but not the nested objects.
 - `*/profile/image/nft` will return the list of all the accounts that have an NFT image in their profile.
 - `alice.near/widget/*` with `return_deleted` option will return the list of all the component names of the account, including the deleted ones.
@@ -291,10 +300,12 @@ pub fn keys(self, keys: Vec<String>, options: Option<KeysOptions>) -> Value;
 ```
 
 Arguments:
+
 - `keys` - an array of key patterns to return.
 - `options` - optional argument to specify options.
 
 Options:
+
 - `return_type` - if `BlockHeight`, will return the block height of the key instead of `true`, if `NodeId`, will return the node index of the key instead of `true`.
 - `return_deleted` - if true, will include deleted keys.
 
@@ -326,6 +337,7 @@ It will help you to understand how to use components better.
 
 Components are like a React functional components, but with omitted function declaration.
 For example, in a React you would write:
+
 ```jsx
 function MyComponent(props) {
   return <div>Hello, {props.username}!</div>;
@@ -333,6 +345,7 @@ function MyComponent(props) {
 ```
 
 But in the Near Social VM you only need to write the body of the function:
+
 ```jsx
 return <div>Hello, {props.username}!</div>;
 ```
@@ -342,6 +355,7 @@ Instead, async operations like `fetch` or `Social.get` are internally handled by
 It's similar to use React's `useEffect` combined with `useState`.
 
 A common read-only component consists of the following parts:
+
 - **Preparing input**. E.g. taking data from passed in properties or getting it from the context (e.g. the signed in account ID).
 - **Fetching data**. E.g. fetching the data from the SocialDB contract.
 - **Processing data**. E.g. filtering the data, sorting it, etc.
@@ -360,6 +374,7 @@ Another object that is available to the component is `context`.
 Currently, it only contains a single field `accountId` that contains the account ID of the signed-in user or `undefined` otherwise.
 
 A common example preparing the input is the following:
+
 ```jsx
 const accountId = props.accountId ?? context.accountId;
 ```
@@ -373,6 +388,7 @@ This will issue all promises in parallel and will update rerender the component 
 
 You can build a component that either fetches the data or renders the given data.
 For example, we want to fetch the profile for the `accountId` or use the given `profile` if it's passed in the props.
+
 ```jsx
 const profile = props.profile ?? Social.getr(`${accountId}/profile`);
 
@@ -407,6 +423,7 @@ But also you can embed other components.
 [near.social](https://near.social) doesn't allow specifying custom CSS classes, but provides a standard [Bootstrap 5](https://getbootstrap.com/docs/5.2/getting-started/introduction/) CSS classes.
 
 We can render the profile object and also include a list of tags:
+
 ```jsx
 return (
   <div className="d-inline-block">
@@ -445,6 +462,7 @@ return (
 ```
 
 You can notice that we use the `Widget` component to embed another component:
+
 ```jsx
 <Widget
   src="mob.near/widget/ProfileImage"
@@ -457,6 +475,7 @@ You can notice that we use the `Widget` component to embed another component:
 ```
 
 The `Widget` component takes the `src` and `props` parameters.
+
 - `src` is the component's name. It should be full path to the component, e.g. `mob.near/widget/ProfileImage`.
 - `props` is the object with the props that will be passed to the component.
 
@@ -485,6 +504,7 @@ For example, you want to have an input to enter an account ID.
 The account ID can only contain certain characters (e.g. no uppercase), so when a user enters an uppercase character, you want to convert it to lowercase and remove all non-valid ones.
 
 So you can create the following component:
+
 ```jsx
 State.init({ accountId: "" });
 
@@ -505,6 +525,7 @@ return (
 
 Another reason why you need the state is to cache the data. For example, you want to fetch an expansive data, the process it, but don't do it on every re-render.
 You can do it like this:
+
 ```jsx
 if (!state) {
   // Fetch the data and process it.
@@ -523,11 +544,13 @@ You can see a more complicated data processing example in [mob.near/widget/TagsE
 The components can commit data to SocialDB. To simplify the process a custom component `CommitButton` is provided.
 
 The `CommitButton` component has three custom props:
+
 - `data` - the data to commit. It can be any valid JSON-serializable object. The data doesn't have to start with the `accountId` prefix, it will be added automatically.
 - `onClick` - the callback that will be called when the user clicks the button, but before the commit dialog is shown.
 - `onCommit` - the callback that will be called when the user commits the data.
 
 For example, we can create a notepad component. It will load the note from the `experimental/note` key, and will allow to edit it and then save it.
+
 ```jsx
 const accountId = context.accountId;
 
@@ -568,6 +591,3 @@ Notes:
 
 - In the future a commit action will be available, so a user doesn't have to click on the `CommitButton` and the data can be committed automatically.
 - Previously the commit action was always redirecting to the wallet for signing, so the cache was completely refreshed. But currently, the commit button doesn't always redirect to the wallet, so the cache is not always refreshed. We're working on the solution to automatically invalidate the affected cache, but it's not yet implemented.
-
-
-

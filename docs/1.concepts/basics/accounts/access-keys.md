@@ -13,9 +13,11 @@ to third-parties.
 ---
 
 ## Benefits of Access Keys
+
 Since the concept of Access Keys is unique to NEAR it is worth to first understand why and how they can be used.
 
 #### Using An App Safely
+
 Imagine that you want to play a web3 game consisting of a web-app and a smart contract. You can create a key that only
 allows to **call specific methods** in the game's contract.
 
@@ -23,10 +25,12 @@ You can safely give the key to the game, so it can sign **game-related transacti
 the gameplay on each transaction.
 
 #### Replacing Keys
+
 If you think any of your keys could be compromised, you can simply remove them or swap them with a new one. Just as how
 you would change your password on any website.
 
 #### Implementing Key Recovery
+
 You could implement a key-recovery [contract](smartcontract.md) in your account, and create a
 "recovery key" for someone you trust. Such key could only be used to start the recovery.
 
@@ -41,7 +45,7 @@ NEAR implements two types of access keys: `FullAccess` keys and `FunctionCall` k
 <hr class="subsection" />
 
 ### Full Access Keys {#full-access-keys}
-As the name suggests, `FullAccess` keys have full control of an account, similar to having administrator privileges on your operating system. 
+As the name suggests, `FullAccess` keys have full control of an account, similar to having administrator privileges on your operating system.
 
 Particularly, Full Access keys can be used to sign transactions doing [any action](https://nomicon.io/RuntimeSpec/Actions) in your account's behalf:
 
@@ -65,6 +69,7 @@ You **add the first** Full Access Key of the account when [the account is create
 `FunctionCall` keys only have permission to call specific methods on a contract (potentially all methods) but do **NOT allow to attach NEAR Ⓝ** to the call.
 
 `FunctionCall` keys are defined by three attributes:
+
 1. `receiver_id`: The **contract** which the key allows to call. No other contract can be called using this key.
 2. `method_names` (Optional): The contract's **methods** the key allows to call. If omitted, all methods can be called.
 3. `allowance` (Optional): The **amount of Ⓝ** allowed to spend on [gas](../transactions/gas.md). If omitted, the key will only be allowed to call view methods (read-only).
@@ -78,10 +83,10 @@ With the `FunctionCall` key, the dApp will then be able to call specific methods
 
 If the dApps requests to transfer **any amount of tokens** with the `FunctionCall` key, the user will be prompted once more by the wallet to **authorize the transaction**.
 
-
 ---
 
 ## Locked Accounts
+
 If you remove all keys from an account, then the account will become **locked**, meaning that no external actor can perform transactions in the
 account's name.
 

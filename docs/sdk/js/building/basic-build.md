@@ -4,6 +4,7 @@ title: "Basic Instructions"
 ---
 
 # Basic instructions
+
 To compile release version of the smart contract you can run a build script (specified in `package.json` for your project as `{ build: near-sdk-js build, ... }`):
 
 ```bash

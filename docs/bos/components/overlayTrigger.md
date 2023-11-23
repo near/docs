@@ -14,7 +14,6 @@ The `OverlayTrigger` is used to display a message or icon when the mouse is over
 
 <WidgetEditor id='1' height="200px">
 
-
 ```javascript
 State.init({
   show: false,
@@ -59,7 +58,6 @@ return (
 ```
 
 </WidgetEditor>
-
 
 The OverlayTrigger component has several props that allow you to customize its behavior:
 

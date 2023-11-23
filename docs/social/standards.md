@@ -21,4 +21,3 @@ Currently, [Standards on Github](https://github.com/NearSocial/standards) is the
 ### Root schema
 
 Each account should follow the **[Root schema](https://github.com/NearSocial/standards/blob/main/types/Root.md#root)**
-

@@ -8,19 +8,23 @@ accounts using local tools.
 ---
 
 ## The NEAR Wallet
+
 The NEAR wallet is our web-based user-friendly wallet. You can readily use it without installing software or add-ons.
 
 #### Testnet
+
 In **testnet** you can directly create [named accounts](account-id.md#named-accounts). Simply go to the [wallet](https://testnet.mynearwallet.com/create),
 pick a name, and you are ready to go. Remember to save somewhere safe the mnemonic phrase.
 
 #### Mainnet
+
 In the **mainnet** [wallet](https://mynearwallet.com/) you will be first given an [implicit account](account-id.md#implicit-accounts-implicit-accounts), which you need to fund. After
 that, you can use your [implicit account](account-id.md#implicit-accounts-implicit-accounts) to create a [named one](account-id.md#named-accounts).
 
 ---
 
 ## Local Implicit Account
+
 Create an implicit account locally takes two steps: first you create a key-pair locally, and then you derive its address.
 
 #### 1. Create a ED25519 key-pair locally using [near cli](../../../4.tools/cli.md)
@@ -33,6 +37,7 @@ near generate-key my-new-account
 A new key-pair will be stored at `~/.near-credentials/testnet/my-new-account.json`.
 
 #### 2. Convert the public_key to an account ID. {#converting-a-public-key-to-an-account-id}
+
 Use [`near-cli`](../../../4.tools/cli.md) once more to convert the `public_key` from the `.json` file to its related NEAR account address.
 
 ```bash

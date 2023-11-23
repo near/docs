@@ -9,11 +9,12 @@ import TabItem from '@theme/TabItem';
 Near Social VM provides a set of custom APIs that can be used by the components.
 
 Standard objects:
+
 - `JSON` - the JSON API.
 - `Object` - the Object API.
 - `Date`
 - `console` - the console API.
-- `Math` 
+- `Math`
 - `Array`
 - `Number`
 - `Buffer`
@@ -28,5 +29,6 @@ Standard objects:
 - `Set`
 
 Imported objects:
+
 - `Big` - the big number API from the `big.js` library.
 - `BN` - the big number API from the `bn.js` library.

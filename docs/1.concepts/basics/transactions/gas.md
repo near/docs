@@ -22,24 +22,29 @@ Gas is a fascinating topic that touches everyone in the NEAR ecosystem, here is 
 ---
 
 ## Introduction
+
 When you send a transaction to the NEAR network different [validators](../validators.md) process it using their own infrastructure.
 
-Maintaining the infrastructure up and running is important to keep the network healthy, but represents a significant cost for the validator. 
+Maintaining the infrastructure up and running is important to keep the network healthy, but represents a significant cost for the validator.
 
 As many other networks, NEAR **pays the validators** for their job. Also like many other networks, users have to pay a small **fee** (aka **gas fee**) on every transaction. But instead of giving the gas fee to the validators, validators receive their reward independent from the gas fees. This topic is discussed in more details in the [validators](../validators.md) section.
 
 In addition, NEAR implements two unique features with respect to gas fees:
+
 1. Sharing fees with developers
 2. Allowing for **free** transactions
 
 ### 1. Gas as a Developer Incentive
+
 Something unique to NEAR is that the GAS is not used to pay validators. In transactions where calling a contract would incur a gas fee, the fee is actually divided as follows:
+
 - 30% goes to the smart contract.
 - 70% is burned.
 
 In this way, NEAR uses the gas to also **incentive development of dApps** in the ecosystem.
 
 ### 2. Free Transactions
+
 Another unique feature of NEAR is that it allows to call `read-only` methods in smart contracts for free, without even needing a NEAR account.
 
 In such case, it is the validators who absorb the gas cost.
@@ -47,12 +52,15 @@ In such case, it is the validators who absorb the gas cost.
 ---
 
 ## Gas Units & Gas Price
+
 On every transaction NEAR users get charged a small $NEAR fee, which has to be paid upfront. However, transaction fees are not computed directly in $NEAR.
 
 ### Gas Units
+
 Internally, the computation is done using **gas units** which are **deterministic**, meaning that a given operation will always cost the **same amount of gas**.
 
 ### Gas Price
+
 To determine the actual $NEAR fee the gas of all operations done by the transaction are added up are multiplied by a **gas price**.
 
 The gas price is not fixed: it is **recalculated each block** depending on network demand. If the previous block is more than half full the price goes up, otherwise it goes down.
@@ -64,6 +72,7 @@ The price cannot change by more than 1% each block and bottoms out at a price th
 ---
 
 ## Translating Gas to Computational Resources {#thinking-in-gas}
+
 Gas units have been carefully calculated to work out to some easy-to-think-in numbers:
 
 - **1 TGas** (10¹² gas units) ≈ **1 millisecond** of "compute" time.
@@ -76,7 +85,6 @@ Via a governance mechanism, system parameters might be tweaked, shifting the map
 :::tip 1s Block Production
 NEAR imposes a [maximum amount of gas](/api/rpc/setup#protocol-config) per block to ensure that a block is generated approx. every second.
 :::
-
 
 ---
 
@@ -113,7 +121,7 @@ When you make a request to transfer funds, NEAR immediately deducts the appropri
       execution:    108059500000
     }
 
-You can query this value by using the [`protocol_config`](/api/rpc/setup#protocol-config) RPC endpoint and search for `action_receipt_creation_config`. 
+You can query this value by using the [`protocol_config`](/api/rpc/setup#protocol-config) RPC endpoint and search for `action_receipt_creation_config`.
 
 The appropriate `send` amount for creating this receipt is also immediately deducted from your account.
 
@@ -157,6 +165,7 @@ What if the gas price is at the minimum during the starting block, but the opera
 ---
 
 ## Attach extra gas; get refunded! {#attach-extra-gas-get-refunded}
+
 The amount of gas required to call a contract depends on the method's complexity and the contract's state. Many times this is **hard to predict** ahead of time.
 
 Because of this, if you attach more tokens than needed to cover the gas, you'll get refunded the unused fee!

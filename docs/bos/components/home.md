@@ -7,13 +7,12 @@ In BOS, you build small apps known as `Components`, that focus on solving a spec
 
 To simplify development, BOS provides a set of built-in components that  you can readily use to build your decentralized frontend.
 
-
 ![widgets](/docs/widgets.jpeg)
 *Decomposing the [near.social](https://near.social) application into its Components*
 
 ---
 
-### Non-Exhaustive List of Built-in Components 
+### Non-Exhaustive List of Built-in Components
 
 - **[Widget](./widget.md)**: The minimum unit of a frontend.
 - **[Markdown](./markdown.md)**: Renders markdown text.

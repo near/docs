@@ -65,7 +65,6 @@ near call x.paras.near buy '{"token_series_id": "299102", "receiver_id": "bob.ne
 "299102:1"
 ```
 
-
 </TabItem>
 
 <TabItem value="Mintbase" label="Mintbase">
@@ -84,7 +83,6 @@ near call simple.market.mintbase1.near buy '{"nft_contract_id": "rubennnnnnnn.mi
   }
 }
 ```
-
 
 </TabItem>
 
@@ -124,7 +122,6 @@ near view nft.primitives.near nft_token '{"token_id": "1"}'
 }
 ```
 
-
 </TabItem>
 
 <TabItem value="Paras" label="Paras">
@@ -156,7 +153,6 @@ near view x.paras.near nft_token '{"token_id": "84686:1154"}'
   "approved_account_ids": {}
 }
 ```
-
 
 </TabItem>
 
@@ -205,7 +201,6 @@ near view anthropocene.mintbase1.near nft_token '{"token_id": "17960"}'
 }
 ```
 
-
 :::note
 When someone creates a NFT on Mintbase they need to deploy their own NFT contract using Mintbase factory. Those smart contract are subaccounts of mintbase1.near, e.g. `anthropocene.mintbase1.near`.
 :::
@@ -253,9 +248,9 @@ Basic NFT contracts following [the NEP-171 and NEP-177 standards](https://nomico
 
 For this purpose, there are ecosystem apps such as [Paras](https://paras.id/) or [Mintbase](https://www.mintbase.xyz/), that use dedicated marketplace contracts.
 
-In order to put a NFT for a sale on a marketplace you need to do two actions: 
+In order to put a NFT for a sale on a marketplace you need to do two actions:
 
-1. Cover data storage costs in the marketplace contract. 
+1. Cover data storage costs in the marketplace contract.
 2. Approve the marketplace to sell the NFT in your NFT contract.
 
 <Tabs>

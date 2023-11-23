@@ -32,7 +32,9 @@ The data is being cached and compared as JSON serialized objects.
 :::
 
 :::note
+
 - `promiseGenerator`: you don't return the promise directly, because it should only be fired once.
+
 :::
 
 ### Examples

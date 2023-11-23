@@ -8,7 +8,6 @@ hide_table_of_contents: false
 import {FeatureList, Column, Feature} from "@site/components/featurelist"
 import ContactUs from '@site/components/ContactUs.mdx';
 
-
 - [What is an NFT?](#what-is-an-nft)
 - [How to create NFT collection](#how-to-create-nft-collection)
 
@@ -39,4 +38,3 @@ The easiest way to create NFT collection is using NFT marketplaces. Let's look a
 1. [Paras](https://paras.id/) - a classic NFT marketplace. Just login with your NEAR account, create collection and share the link with your community or integrate NFT functionality into your app.
 2. [Mintbase](https://www.mintbase.xyz/) - a marketplace allows you not only create your own NFT collection, but buy NFT with credit cards and stablecoins as well.
 3. [Enleap](https://enleap.app/) - a NFT no code launchpad. Provides NFT minting, staking, whitelist managing, tracking functionality.
-   

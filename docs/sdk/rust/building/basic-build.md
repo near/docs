@@ -4,6 +4,7 @@ title: "Basic Instructions"
 ---
 
 # Basic instructions
+
 To compile release version of the smart contract you can run:
 
 ```bash
@@ -26,7 +27,9 @@ Notice that your project directory now has a few additional items:
 │  └── lib.rs
 └── target      ⟵ created during build, holds the compiled wasm
 ```
+
 # Build and Flags
+
 We recommend you to optimize your build artifact with the use of the next flags in your Cargo.toml file. If you are performing a multi-contract build, you should include these settings in the Cargo.toml that is at the root of your project.
 
 ```bash
@@ -51,7 +54,6 @@ If you wish to add custom flags to your build, you can perform this by adding bu
 rustflags = ["-C", "link-arg=-s"]
 ```
 
-A full set of build options can be accessed at https://doc.rust-lang.org/cargo/reference/config.html.
-
+A full set of build options can be accessed at <https://doc.rust-lang.org/cargo/reference/config.html>.
 
 You can find an example [here](https://github.com/near/near-sdk-rs/blob/05e4539a8f3db86dd43b768ee9660dd4c8e7ea5c/examples/fungible-token/.cargo/config.toml).

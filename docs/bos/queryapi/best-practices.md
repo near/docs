@@ -15,11 +15,9 @@ This is the recommended workflow when building a new indexer using QueryAPI:
 
    ![Playground](/docs/assets/QAPIScreen.gif)
 
-
 2. Once you have figured out a good logic to process the raw data, test the processing logic by [enabling debug mode](index-function.md#local-debug-mode) in the `indexingLogic.js` editor, and set a list of block heights that contains different cases that your processing logic must handle.
 
    ![QueryAPI Dashboard](/docs/assets/QAPIdebug.png)
-
 
 3. Once your index logic extracts  all data correctly as expected, fork the indexer, create new tables in a schema to organize structured data, and update the indexer logic to process and store structured data.
 

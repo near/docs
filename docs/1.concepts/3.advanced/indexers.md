@@ -12,7 +12,6 @@ The explanation on this page assumes you have a certain level of understanding o
 
 :::
 
-
 ### Blockchains and their nature
 
 Blockchain data is optimized for serialized **writes**, one block at a time, as the chain is being created. Querying the blockchain for data about a specific block or account is fairly straightforward or a "narrow" query. However, querying data across many blocks can be cumbersome because we have to aggregate results from multiple single-block queries. Therefore, we can consider these *"wide" queries*.
@@ -36,7 +35,6 @@ Instead of abstract explanations let's look at an example.
 Say, we have a smart contract that sells e-books. Once a user buys a book we want to send them a copy via email.
 
 :::
-
 
 The dApp has a helper deployed somewhere off-chain, and this helper has code that can send an email with a copy of an e-book. But how would we trigger the helper?
 

@@ -5,7 +5,7 @@ title: Components
 
 import {WidgetEditor} from "@site/src/components/social-widget"
 
-BOS allows you to create a decentralized frontend by writing and composing small applications known as `Components`. 
+BOS allows you to create a decentralized frontend by writing and composing small applications known as `Components`.
 
 Components are stored in the NEAR blockchain, and execute locally in a custom Virtual Machine, thus ensuring the component can not access local storage or cookies.
 
@@ -38,7 +38,7 @@ return (
 
 ---
 
-## VM context 
+## VM context
 
 You can access the `context` object to get specific information about the VM instance.
 
@@ -76,7 +76,6 @@ return (
   </>
 );
 ```
-
 
 ---
 

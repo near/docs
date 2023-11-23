@@ -15,7 +15,7 @@ The folder [`./op-stack`](https://github.com/near/rollup-data-availability/tree/
 
 ## Diagram for Optimism
 
-```mermaid 
+```mermaid
 C4Container
     title NEAR Data Availability System Containers for Optimism
     

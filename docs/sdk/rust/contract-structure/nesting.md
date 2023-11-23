@@ -105,8 +105,9 @@ impl Contract {
 By extension of the error-prone patterns to avoid mentioned in the [collections section](./collections.md#error-prone-patterns), it is important to keep in mind how these bugs can easily be introduced into a contract when using nested collections.
 
 Some issues for more context:
-- https://github.com/near/near-sdk-rs/issues/560
-- https://github.com/near/near-sdk-rs/issues/703
+
+- <https://github.com/near/near-sdk-rs/issues/560>
+- <https://github.com/near/near-sdk-rs/issues/703>
 
 The following cases are the most commonly encountered bugs that cannot be restricted at the type level:
 

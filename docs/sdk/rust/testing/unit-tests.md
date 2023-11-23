@@ -43,4 +43,4 @@ This `testing_env!` and `VMContext` is only used for testing outside of `wasm` e
 
 To test read-only function calls, set `is_view` to `true` on the `VMContext`. This will test to verify that function calls which just read state do not try to modify state through unit tests. In the above example, `true` should be passed into the `get_context` call, which initializes the context as read-only.
 
-You will want to use `testing_env!` each time you need to update this context, such as mocking the `predecessor_accound_id` to simulate the functions being called by or only allowing view operations as mentioned above. Each time this is done, a new mocked blockchain will be initialized while keeping the existing state.
+You will want to use `testing_env!` each time you need to update this context, such as mocking the `predecessor_account_id` to simulate the functions being called by or only allowing view operations as mentioned above. Each time this is done, a new mocked blockchain will be initialized while keeping the existing state.

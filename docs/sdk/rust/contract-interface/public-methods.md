@@ -37,6 +37,7 @@ pub extern "C" fn some_method() {
     near_sdk::env::state_write(&contract);
 }
 ```
+
 </details>
 
 ## Exposing trait implementations
@@ -74,4 +75,5 @@ pub extern "C" fn trait_method() {
     near_sdk::env::state_write(&contract);
 }
 ```
+
 </details>

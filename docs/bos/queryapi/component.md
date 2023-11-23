@@ -18,11 +18,11 @@ Learn more about QueryAPI in this [QueryAPI Overview](intro.md) article.
 
 For a technical implementation deep-dive, check these QueryAPI tutorials:
 
-  - [Posts Indexer tutorial](../tutorial/indexer-tutorials/posts-indexer.md): this indexer creates a new row in a pre-defined database for every new BOS post found on the blockchain.
-  - [Hype Indexer tutorial](../tutorial/indexer-tutorials/hype-indexer.md): this indexer creates a new row in a pre-defined database for every new BOS post or comment found on the blockchain that contains either `PEPE` or `DOGE` in the contents.
-  - [BOS Feed Indexer tutorial](../tutorial/indexer-tutorials/feed-indexer.md): this indexer keeps track of new posts, comments, and likes on BOS, so a social feed can be rendered quickly.
+- [Posts Indexer tutorial](../tutorial/indexer-tutorials/posts-indexer.md): this indexer creates a new row in a pre-defined database for every new BOS post found on the blockchain.
+- [Hype Indexer tutorial](../tutorial/indexer-tutorials/hype-indexer.md): this indexer creates a new row in a pre-defined database for every new BOS post or comment found on the blockchain that contains either `PEPE` or `DOGE` in the contents.
+- [BOS Feed Indexer tutorial](../tutorial/indexer-tutorials/feed-indexer.md): this indexer keeps track of new posts, comments, and likes on BOS, so a social feed can be rendered quickly.
 
-## GraphQL queries 
+## GraphQL queries
 
 Using [QueryAPI's GraphiQL](index-function.md#mutations-in-graphql) tab, you can access the GraphiQL Explorer that provides a user friendly GraphQL playground, where you can view and create queries and mutations based on the DB schema that you defined for the indexer.
 
@@ -38,7 +38,7 @@ For example, if you go and add a new mutation, click <kbd>+</kbd>, then you can 
 ![Playground](/docs/assets/QAPIScreen.gif)
 
 If you want to test your mutation, using [Debug Mode](index-function.md#local-debug-mode) you can add a specific
-block to the list, and then play it to see how it works. 
+block to the list, and then play it to see how it works.
 Based on the indexer logic you defined, you'll get a call to the GraphQL mutation with the object
 and data passed into it.
 

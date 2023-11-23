@@ -6,7 +6,7 @@ sidebar_label: BOS Feed Indexer
 
 :::info
 
-NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers. 
+NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers.
 
 You can request access through [this link](http://bit.ly/near-queryapi-beta).
 
@@ -37,7 +37,6 @@ Note that database tables are named as `roshaan_near_feed_indexer_posts` which f
 :::
 
 ### Schema-Defined Table Names
-
 
 ```sql
 CREATE TABLE
@@ -151,7 +150,7 @@ const SOCIAL_DB = "social.near";
 
 We first designate the near account ID that is on the receiving end of the transactions picked up by the indexer, as `SOCIAL_DB = "social.near"` and later with the equality operator for this check. This way we only filter for transactions that are relevant to the NEAR BOS that uses the `social.near` account ID for saving data on-chain.
 
-The filtering logic then begins by calling `block.actions()` where `block` is defined within the `@near-lake/primtives` package. The output from this filtering is saved in a `nearSocialPosts` variable for later use by the helper functions. The `.filter()` line helps specify for transactions exclusively that have interacted with the BOS data storage. `.flatMap()` specifies the types of transaction and looks for attributes in the transaction data on which to base the filter.
+The filtering logic then begins by calling `block.actions()` where `block` is defined within the `@near-lake/primitives` package. The output from this filtering is saved in a `nearSocialPosts` variable for later use by the helper functions. The `.filter()` line helps specify for transactions exclusively that have interacted with the BOS data storage. `.flatMap()` specifies the types of transaction and looks for attributes in the transaction data on which to base the filter.
 
 Specifically, `.flatMap()` filters for `FunctionCall` call types, calling the `set` method of the BOS contract. In addition, we look for transactions that include a `receiptId` and include either `post` or `index` in the function call argument data.
 
@@ -499,7 +498,7 @@ Once you have defined your query, you can use the GraphiQL Code Exporter to auto
 - `operationName`: The specific query you want to run.
 - `variables`: Any variables to pass in that your query supports, such as `offset` and `limit` for pagination.
 
-Next, you can call the `fetchGraphQL` function with the appropriate parameters and process the results. 
+Next, you can call the `fetchGraphQL` function with the appropriate parameters and process the results.
 
 Here's the complete code snippet for a BOS component using the _Feed Indexer_:
 
@@ -556,7 +555,6 @@ return (
   {renderedData}
 );
 ```
-
 
 :::tip
 

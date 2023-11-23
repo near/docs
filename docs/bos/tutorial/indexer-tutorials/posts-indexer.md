@@ -229,7 +229,6 @@ return (
 );
 ```
 
-
 :::tip
 
 To view a more complex example, see this widget which fetches posts with proper pagination: [Posts Widget powered By QueryAPI](https://near.org/edit/roshaan.near/widget/query-api-feed-infinite).

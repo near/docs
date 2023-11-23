@@ -14,6 +14,7 @@ The Blockchain Operating System (BOS) is chain-agnostic, enabling you to create 
 BOS has imported the [Ethers.js](https://docs.ethers.org/) library, allowing for seamless interaction with Ethereum nodes using JavaScript in a BOS component.
 
 The `Ethers` object exposes the provider connection:
+
 - `Ethers.provider()` is a read-only connection to the blockchain, which allows querying the blockchain state (e.g., account, block or transaction details), querying event logs or evaluating read-only code using call.
   - `Ethers.provider().getSigner()` abstracts the class that interacts with an account
     - `Ethers.provider().getSigner().getBalance()` returns a Promise that resolves to the account address.
@@ -23,12 +24,14 @@ The `Ethers` object exposes the provider connection:
 You can see various ways of using `Ethers` objects on the [Ethers documentation portal](https://docs.ethers.org/)).
 
 ---
-    
+
 Furthermore, numerous [basic tools](https://docs.ethers.org/v6/api/utils/)  can be found in the ethers.utils object (be aware of the lowercase 'e').
+
 - `ethers.utils.parseUnits(value, unit)` converts the decimal string value to a BigInt, assuming unit decimal places. The unit may the number of decimal places or the name of a unit (e.g. "gwei" for 9 decimal places).
 - `ethers.utils.formatEther(wei)` converts value into a decimal string using 18 decimal places.
 
 #### Example showing the difference between `Ethers.provider()` and `ethers.utils`:
+
 ```ts
     Ethers.provider()
         .getSigner()
@@ -133,7 +136,7 @@ Big(balanceHex).toFixed()
 
 Utilize platforms like etherscan.com and blockscout.com, or delve into the project's GitHub repositories and documentation.
 
-### Is there an example of applications with a description of how they were created? 
+### Is there an example of applications with a description of how they were created?
 
 Yes, there is an article that describes [best practices for creating applications for Ethereum developers on BOS](bos-ethersjs-best-practices.md), with a breakdown of individual steps.
 

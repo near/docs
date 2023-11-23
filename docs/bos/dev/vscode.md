@@ -26,7 +26,7 @@ After installing the extension, a new section named **`Near BOS`** will be added
 
 2. Choose a working directory using the `Choose your working folder` button.
 
-2. Retrieve Widgets, Preview, and Develop
+3. Retrieve Widgets, Preview, and Develop
 
    Use the `Login & Fetch Widgets` to login into your NEAR account and fetch your components, or use the `Fetch Account Widgets` to get components from any account in NEAR BOS.
 
@@ -38,7 +38,7 @@ After installing the extension, a new section named **`Near BOS`** will be added
 The preview is not automatically reloaded, you will need to press the `preview` button again.
 :::
 
-3. Use the `Publish` button to store the widget in BOS.
+4. Use the `Publish` button to store the widget in BOS.
 
 :::tip
 The `console.log` can be found within the `OUTPUT` tab, in the `Widget` Channel.

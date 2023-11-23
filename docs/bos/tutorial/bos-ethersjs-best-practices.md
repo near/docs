@@ -8,6 +8,7 @@ import {WidgetEditor} from "@site/src/components/social-widget"
 In this example, we will create an Ethereum dApp on BOS that functions as a portfolio manager, displaying the current balances for a list of tokens. Additionally, we will display current market value of each asset in the portfolio.
 
 We will be using several technologies:
+
 - BOS for the user interface (UI).
 - [Ethers.js](bos-ethersjs.md) for retrieving balance data from the blockchain.
 - CoinGecko API for fetching static content with information about tokens and their current prices.
@@ -184,6 +185,7 @@ const renderToken = (tokenId) => {
 You can see how it works here: [step_2](https://near.org/near/widget/ComponentDetailsPage?src=zavodil.near/widget/token-balances-step-2&tab=source).
 
 Output will be like this:
+
 ```
 Wrapped Bitcoin: 0.0073 wbtc (247.64 USD)
 Dai: 140.3250 dai (140.21 USD)
@@ -204,11 +206,11 @@ Now, instead of hardcoding the list of tokens directly within the application co
 
 Learn more about how [key-value storage social-db works](https://github.com/NearSocial/social-db/blob/master/README.md).
 
-Here is an example of a simple application for [setting tokens list in social-db](https://near.org/near/widget/ComponentDetailsPage?src=zavodil.near/widget/tokens-db&tab=source). 
+Here is an example of a simple application for [setting tokens list in social-db](https://near.org/near/widget/ComponentDetailsPage?src=zavodil.near/widget/tokens-db&tab=source).
 
 In this format, the data from the example will be stored in social-db.
 
-```
+```json
 {
 "0x6b175474e89094c44da98b954eedeac495271d0f": "",
 "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599": "",
@@ -237,6 +239,7 @@ if (!state.tokensLoaded) {
 
 const tokens = Object.keys(state.tokens ?? {});
 ```
+
 :::info
 In this case, `zavodil.near` is the NEAR account of the user who created this list of tokens. Any other user can create their own list, and it will also be available in `social-db`.
 :::
@@ -410,4 +413,3 @@ You can see how it works here: [step_4](https://near.org/near/widget/ComponentDe
 :::tip
 Use GitHub Actions as a serverless backend for securing API keys, caching data etc. 
 :::
-

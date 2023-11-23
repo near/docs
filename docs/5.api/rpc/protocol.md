@@ -6,7 +6,6 @@ title: Protocol
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
 The RPC API enables you to retrieve the current genesis and protocol configuration.
 
 ---
@@ -600,7 +599,6 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 #### What could go wrong? {#what-could-go-wrong-1}
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
-
 
 ```json
 {

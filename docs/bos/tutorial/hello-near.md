@@ -3,7 +3,7 @@ id: interaction
 title: Smart Contract Interaction
 ---
 
-Your frontend can interact with different blockchains using the built-in BOS API. Let's see how to create an application that reads and stores a greeting from a NEAR smart contract. 
+Your frontend can interact with different blockchains using the built-in BOS API. Let's see how to create an application that reads and stores a greeting from a NEAR smart contract.
 
 ![widgets](/docs/hello-near-logedin.png)
 *View of our Hello Near app when the user is logged-in*
@@ -17,12 +17,14 @@ Check the finished example at [near.social code page](https://near.social/#/mob.
 ## The Contract
 
 We have deployed a `Hello World` smart contract in the NEAR network at `hello.near-examples.near`. The contract exposes two methods:
+
 - `set_greeting(greeting: string): void`, which accepts a greeting and stores it in the contract state.
 - `get_greeting(): string` which returns the stored greeting.
 
 ---
 
 ## Retrieving the Greeting
+
 Since we want to interact with the NEAR network, we will use the `Near` object from the BOS API.
 
 ```ts
@@ -41,15 +43,18 @@ Hello World
 ---
 
 ## Changing the Greeting
+
 To modify the greeting, we simply need to use `Near.call` to call the `set_greeting` method. This however, requires us to have a frontend in which the user can input the new greeting.
 
 Lets create it in two steps:
+
 1. Build the HTML that will be rendered
 2. Add the logic to handle the method call
 
 <hr class="subsection" />
 
 ### 1. HTML Components
+
 Use the following code to create a simple frontend, composed by a title, an input form to change the greeting, and a button to submit the change.
 
 ```js
@@ -101,9 +106,11 @@ There are two important things to notice in the code above:
 <hr class="subsection" />
 
 ### 2. Handling User's Input
+
 Having our component's view ready, we now need to define the logic for when the user inputs a new greeting and presses the `Submit` button. This is, we need to define the `onInputChange` and `onBtnClick` methods.
 
 #### onInputChange
+
 When the user inputs a new greeting, we want to store it somewhere until the `Submit` button is pressed, for this, we can use the [application's State](../api/state.md).
 
 In BOS, the state is initialized through `State.init`, updated with `State.update`, and accessed through the `state` variable (notice the lowercase). Lets store the new greeting in the App's state:
@@ -117,6 +124,7 @@ const onInputChange = ({ target }) => {
 ```
 
 #### onBtnClick
+
 The only thing left to do, is to handle when the user clicks the `Submit` button. What we want is to check if the user changed the greeting, and submit it to the contract.
 
 ```jsx
@@ -134,10 +142,12 @@ const onBtnClick = () => {
 ---
 
 ## Complete Example
+
 We have deployed a complete version of this example on the NEAR blockchain, so you can see its code and play with it.
 
 :::tip
-- **Code**: Check the code of this example at the [near.social code page](https://near.social/#/mob.near/widget/WidgetSource?src=gagdiez.near/widget/HelloNear).
 
+- **Code**: Check the code of this example at the [near.social code page](https://near.social/#/mob.near/widget/WidgetSource?src=gagdiez.near/widget/HelloNear).
 - **Try It**: Interact with the application at the [near.social page](https://near.social/#/gagdiez.near/widget/HelloNear).
+
 :::

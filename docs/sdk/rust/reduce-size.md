@@ -51,6 +51,7 @@ Ensure that your manifest (`Cargo.toml`) doesn't contain `rlib` unless it needs 
 [lib]
 crate-type = ["cdylib", "rlib"]
 ```
+
 :::
 
   when it could be:
@@ -61,10 +62,11 @@ crate-type = ["cdylib", "rlib"]
 [lib]
 crate-type = ["cdylib"]
 ```
+
 :::
 
-3. When using the Rust SDK, you may override the default JSON serialization to use [Borsh](https://borsh.io) instead. [See this page](contract-interface/serialization-interface.md#overriding-serialization-protocol-default) for more information and an example.
-4. When using assertions or guards, avoid using the standard `assert` macros like [`assert!`](https://doc.rust-lang.org/std/macro.assert.html), [`assert_eq!`](https://doc.rust-lang.org/std/macro.assert_eq.html), or [`assert_ne!`](https://doc.rust-lang.org/std/macro.assert_ne.html) as these may add bloat for information regarding the line number of the error. There are similar issues with `unwrap`, `expect`, and Rust's `panic!()` macro.
+1. When using the Rust SDK, you may override the default JSON serialization to use [Borsh](https://borsh.io) instead. [See this page](contract-interface/serialization-interface.md#overriding-serialization-protocol-default) for more information and an example.
+2. When using assertions or guards, avoid using the standard `assert` macros like [`assert!`](https://doc.rust-lang.org/std/macro.assert.html), [`assert_eq!`](https://doc.rust-lang.org/std/macro.assert_eq.html), or [`assert_ne!`](https://doc.rust-lang.org/std/macro.assert_ne.html) as these may add bloat for information regarding the line number of the error. There are similar issues with `unwrap`, `expect`, and Rust's `panic!()` macro.
 
   Example of a standard assertion:
 
@@ -73,6 +75,7 @@ crate-type = ["cdylib"]
   ```rust
   assert_eq!(contract_owner, predecessor_account, "ERR_NOT_OWNER");
   ```
+
   :::
 
   when it could be:
@@ -84,6 +87,7 @@ crate-type = ["cdylib"]
     env::panic(b"ERR_NOT_OWNER");
   }
   ```
+
   :::
 
   Example of removing `expect`:
@@ -93,6 +97,7 @@ crate-type = ["cdylib"]
   ```rust
   let owner_id = self.owner_by_id.get(&token_id).expect("Token not found");
   ```
+
   :::
 
   when it could be:
@@ -105,6 +110,7 @@ crate-type = ["cdylib"]
   }
   let owner_id = expect_token_found(self.owner_by_id.get(&token_id));  
   ```
+
   :::
 
   Example of changing standard `panic!()`:
@@ -114,6 +120,7 @@ crate-type = ["cdylib"]
   ```rust
   panic!("ERR_MSG_HERE"); 
   ```
+
   :::
 
   when it could be:
@@ -123,6 +130,7 @@ crate-type = ["cdylib"]
   ```rust
   env::panic_str("ERR_MSG_HERE");  
   ```
+
   :::
 
 ## Lower-level approach

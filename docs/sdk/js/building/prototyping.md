@@ -42,6 +42,7 @@ Let's say you deploy [a JS status message contract](https://github.com/near/near
 near call [contract] set_status '{"message": "lol"}' --accountId you.testnet
 near view [contract] get_status '{"account_id": "you.testnet"}'
 ```
+
 </TabItem>
 <TabItem value="near-cli-rs">
 
@@ -54,19 +55,11 @@ near contract call-function as-read-only [contract] get_status text-args '{"acco
 </TabItem>
 </Tabs>
 
-
-
-
-
-
-
-
-
 This will return the message that you set with the call to `set_status`, in this case `"lol"`.
 
-At this point the contract is deployed and has some state. 
+At this point the contract is deployed and has some state.
 
-Now let's say you change the contract to store two kinds of data for each account, a status message and a tagline. You can add to the contract code a `LookupMap` for both status message and another one for the tagline, both indexed by the account ID. 
+Now let's say you change the contract to store two kinds of data for each account, a status message and a tagline. You can add to the contract code a `LookupMap` for both status message and another one for the tagline, both indexed by the account ID.
 
 You build & deploy the contract again, thinking that maybe because the new `taglines` LookupMap has the same prefix as the old `records` LookupMap (the prefix is `a`, set by `new LookupMap("a"`), the tagline for `you.testnet` should be `"lol"`. But when you `near view` the contract, you get the "Cannot deserialize" message. What to do?
 
@@ -74,13 +67,13 @@ You build & deploy the contract again, thinking that maybe because the new `tagl
 
 When first getting started with a new project, the fastest way to deploy a contract is [`dev-deploy`](/concepts/basics/accounts/creating-accounts):
 
-
 <Tabs className="language-tabs" groupId="code-tabs">
 <TabItem value="near-cli">
 
 ```bash
 near dev-deploy [--wasmFile ./path/to/compiled.wasm]
 ```
+
 </TabItem>
 <TabItem value="near-cli-rs">
 
@@ -91,17 +84,8 @@ near contract deploy <my-new-dev-account>.testnet use-file <route_to_wasm> witho
 
 ```
 
-
-
 </TabItem>
 </Tabs>
-
-
-
-
-
-
-
 
 This does a few things:
 
@@ -131,12 +115,9 @@ near create-account app-name.you.testnet --masterAccount you.testnet
 ```bash title="Create sub-account"
 near account create-account fund-myself app-name.you.testnet '100 NEAR' autogenerate-new-keypair save-to-keychain sign-as you.testnet network-config testnet sign-with-keychain send
 ```
-    
+
 </TabItem>
 </Tabs>
-
-
-
 
 Then deploy your contract to it:
 
@@ -146,17 +127,16 @@ Then deploy your contract to it:
 ```bash title="Deploy to sub-account"
 near deploy --accountId app-name.you.testnet [--wasmFile ./path/to/compiled.wasm]
 ```
+
 </TabItem>
 <TabItem value="near-cli-rs">
 
 ```bash title="Deploy to sub-account"
 near contract deploy app-name.you.testnet use-file <./path/to/compiled.wasm> without-init-call network-config testnet sign-with-keychain send
 ```
-    
+
 </TabItem>
 </Tabs>
-
-
 
 In this case, how do you delete all contract state and start again? Delete the sub-account and recreate it.
 
@@ -166,12 +146,14 @@ In this case, how do you delete all contract state and start again? Delete the s
 ```bash title="Delete sub-account"
 near delete app-name.you.testnet you.testnet
 ```
+
 </TabItem>
 <TabItem value="near-cli-rs">
 
 ```bash title="Delete sub-account"
 near account delete-account app-name.you.testnet beneficiary you.testnet network-config testnet sign-with-keychain send
 ```
+
 </TabItem>
 </Tabs>
 

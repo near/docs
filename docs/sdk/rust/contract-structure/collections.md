@@ -220,9 +220,9 @@ impl Contract {
 ### Functionality
 
 - `UnorderedMap` supports iteration over keys and values, and also supports pagination. Internally, it has the following structures:
-    - a map from a key to an index
-    - a vector of keys
-    - a vector of values
+  - a map from a key to an index
+  - a vector of keys
+  - a vector of values
 - `LookupMap` only has a map from a key to a value. Without a vector of keys, it doesn't have the ability to iterate over keys.
 
 ### Performance

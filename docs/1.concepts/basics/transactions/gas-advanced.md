@@ -41,10 +41,11 @@ With this level of complexity, it's no longer useful to walk through an example,
 The NEAR Whitepaper mentions that [30% of all gas fees](https://near.org/papers/the-official-near-white-paper/) go to smart contract accounts on which the fees are expensed. 
 
 This amount can be calculated for function calls in two ways:
+
 1. Summing all values in the gas profile 
 2. Taking the total gas burnt for the transaction and subtract the static execution gas (which is equal to the amount of gas spent on sending the receipt(s)) from it. Both these numbers are available on the [NEAR Explorer](https://explorer.near.org/) overview page for a transaction.
 
-The second approach is shorter, and quite possibly easier to remember. So here's an example: 
+The second approach is shorter, and quite possibly easier to remember. So here's an example:
 
 - An account calls the method `submit` on `aurora`
   - Converting the transaction to receipt burned a total of ~0.00024Ⓝ
@@ -93,7 +94,7 @@ You can expect the network to sit at the minimum gas price most of the time; lea
 
 Gas unit expense for running smart contract functions can be accurately estimated by running these in `testnet`. Generally, `testnet` runs a higher version of the protocol than `mainnet`. However, gas expense calculations do not change often making this is a good way to get a sense of how much gas a function will cost on `mainnet`.
 
-To estimate gas costs, you can use the `near-workspaces` [crate in Rust](https://github.com/near/workspaces-rs/tree/main/examples/src) or similarly named [package in JavaScript](https://github.com/near/workspaces-js). 
+To estimate gas costs, you can use the `near-workspaces` [crate in Rust](https://github.com/near/workspaces-rs/tree/main/examples/src) or similarly named [package in JavaScript](https://github.com/near/workspaces-js).
 
 You may extract the `total_gas_burnt` field from the `CallExecutionDetails` struct returned by the `call` method. ([Read more](../../../sdk/rust/testing/integration-tests.md#profiling-gas))
 
@@ -116,6 +117,7 @@ You may obtain gas cost estimates for a given function call using `api.gasbuddy.
   }
 }
 ```
+
 :::
 
 #### Gas Cost Estimation in the SDK {#gas-cost-estimation-in-the-sdk}
@@ -145,7 +147,8 @@ A transactions may take several blocks before it completes. Due to dynamic gas p
 
 The pessimistic inflation rule means that the gas has to be purchased at the highest theoretical gas price that the transaction could reach. The extra spending is only temporary, the difference between the pessimistic and actual price is refunded when the transaction finishes. This is the reason why in the explorer, virtually every transaction that spans more than one block contains a refund, even if all the gas has been spent.
 
-By how much is the price inflated? It depends on how many blocks a transaction may take. A simple transaction that only sends tokens from one account to another can take between 2-3 blocks. 
+By how much is the price inflated? It depends on how many blocks a transaction may take. A simple transaction that only sends tokens from one account to another can take between 2-3 blocks.
+
 - One block to subtract the money from the signer's account
 - One block to add it to the receivers account
 - Potentially another block if the receiver is on another shard and the receipt application gets delayed. 

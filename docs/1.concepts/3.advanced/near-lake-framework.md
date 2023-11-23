@@ -6,7 +6,7 @@ sidebar_label: "Lake Framework"
 
 :::note GitHub repo
 
-https://github.com/near/near-lake-framework/
+<https://github.com/near/near-lake-framework/>
 
 :::
 
@@ -22,7 +22,6 @@ Please, read the post [there](https://gov.near.org/t/announcement-near-lake-fram
 
 :::
 
-
 ## How does it compare to [NEAR Indexer Framework](near-indexer-framework.md)?
 
 Feature | Indexer Framework | Lake Framework
@@ -36,7 +35,6 @@ Ease of maintenance | Advanced<br />(need to follow every nearcore upgrade, and 
 How long will it take to start? | days (on mainnet/testnet) | **seconds**
 Ease of local development | Advanced<br />(localnet is a good option, but testing on testnet/mainnet is too heavy) | **Easy**<br />(see [tutorials](/tutorials/indexer/near-lake-state-changes-indexer))
 Programming languages that a custom indexer can be implemented with | Rust only | **Any**<br />(currently, helper packages are released in [Python](http://pypi.org/project/near-lake-framework), [JavaScript](https://www.npmjs.com/package/near-lake-framework), and [Rust](https://crates.io/crates/near-lake-framework))
-
 
 ## Limitations
 
@@ -61,6 +59,7 @@ Calculations (assuming we are following the tip of the network all the time):
 ```
 86400 blocks per day * 5 requests for each block / 1000 requests * $0.0004 per 1k requests = $0.173 * 30 days = $5.19
 ```
+
 **Note:** 5 requests for each block means we have 4 shards (1 file for common block data and 4 separate files for each shard)
 
 And a number of `list` requests we need to perform for 30 days:

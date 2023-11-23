@@ -7,6 +7,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 VM provides a convenient API to update the state of the component. There are two methods:
+
 - [`State.init`](#stateinit)
 - [`State.update`](#stateupdate)
 

@@ -11,16 +11,17 @@ To implement push notifications, you need to:
 
 1. Create a Service Worker
 2. Ask the user for permission to send push notifications
-2. Send the `client identifier` information to our notification server
-3. Add logic to display the notifications
+3. Send the `client identifier` information to our notification server
+4. Add logic to display the notifications
 
 :::tip Example
-Check our working example at https://github.com/near-examples/BOS-notifications
+Check our working example at <https://github.com/near-examples/BOS-notifications>
 :::
 
 ---
 
 ## Create the Service Worker
+
 Push notifications work by having a [service worker](https://codelabs.developers.google.com/codelabs/push-notifications#2) on the client side that listens for messages from the NEAR notifications server.
 
 <CodeTabs>

@@ -7,7 +7,6 @@ sidebar_label: Wallet
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
 Wallet interaction is possible only in the browser, because NEAR's Wallet is web-based.
 
 Most frequent action is Sign In. Your user is redirected to the Wallet page to authorize your application.

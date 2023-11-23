@@ -64,7 +64,7 @@ To design and create your indexer, you can follow this recommended workflow:
 
 1. Using [nearblocks.io](https://nearblocks.io), find transactions to smart contracts that you want to index
 2. Take the block `height` and put it into the [Debug Mode filter](../queryapi/index-function.md#local-debug-mode), open your browser's _Developer Console_, and hit <kbd>Play</kbd>
-4. Inspect the block and write JavaScript code using [NEAR Lake Primitives](../../2.develop/lake/lake-primitives.md) to extract data from a `block` object. (This JS code will be your [`IndexingLogic.js`](#indexinglogicjs))
+3. Inspect the block and write JavaScript code using [NEAR Lake Primitives](../../2.develop/lake/lake-primitives.md) to extract data from a `block` object. (This JS code will be your [`IndexingLogic.js`](#indexinglogicjs))
    > **Tip:** Use `context.log` for debugging to ensure you are getting the right results
 4. Add more blocks for debugging, or start following the blockchain to see how new blocks are handled
 5. Create tables that you need to store the data using Postgres [CREATE table syntax](https://www.postgresql.org/docs/current/sql-createtable.html). (This SQL code will be your [`schema.sql`](#schemasql))

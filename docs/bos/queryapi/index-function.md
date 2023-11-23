@@ -101,9 +101,8 @@ or simply support every single contract that exists on the Near blockchain.
 
 #### Single contract filter
 
-
 For example, if you check out the [simple indexer](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=roshaan.near/demo-indexer&view=editor-window), you'll see that in this case
-you have a `social.near` contract filter. 
+you have a `social.near` contract filter.
 In this example, the indexer is only concerned on indexing events from `social.near`'s contract.
 
 #### Multiple contracts filter
@@ -159,7 +158,6 @@ Creating a BOS component from a GraphQL query is simple when using the GraphQL P
 - get some default code here, copy it,
 - go to the BOS sandbox, paste it.
 
-
 This will set up some boilerplate code to execute the GraphQL query, add the query that you had
 in your playground and then call that query, extract the data and render it using the
 render data function.
@@ -167,4 +165,3 @@ render data function.
 Once you have the BOS component code, you can test it out by going to [the sandbox](https://near.org/sandbox),
 pasting the generated code, and then selecting <kbd>Component Preview</kbd>.
 Next, you can create a nice UI over this boilerplate code, and publish your new BOS component.
-

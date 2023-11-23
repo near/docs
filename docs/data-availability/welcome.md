@@ -15,7 +15,7 @@ Utilizing NEAR as storage data availability with a focus on lowering rollup DA f
 For the latest information, please check the [Near DA](https://github.com/near/rollup-data-availability/) repository.
 :::
 
---- 
+---
 
 ## System Context
 
@@ -24,10 +24,9 @@ This outlines the system components that we build and how it interacts with exte
 Red lines denote external flow of commitments.
 White lines denote flow of blob data.
 
-
 Note: "fisherman" is just an example how a rollup can work with the light client in the initial stage of DA, until we implement a more non-interactive approach, such as KZG.
 
-```mermaid 
+```mermaid
 C4Context
     title NEAR Data Availability System Context
 

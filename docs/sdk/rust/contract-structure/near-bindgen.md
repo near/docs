@@ -33,6 +33,7 @@ impl Counter {
 In this example, the `Counter` struct represents the smart contract state and anything that implements `BorshSerialize` and `BorshDeserialize` can be included, even `collections`, which will be covered in the next section. Whenever a function is called, the state will be loaded and deserialized, so it's important to keep this amount of data loaded as minimal as possible.
 
 `#[near_bindgen]` also annotates the `impl` for `Counter` and this will generate any necessary boilerplate to expose the functions. The core interactions that are important to keep in mind:
+
 - Any `pub` functions will be callable externally from any account/contract.
   - For more information, see [public methods](../contract-interface/public-methods.md)
 - `self` can be used in multiple ways to control the [mutability of the contract](../contract-interface/contract-mutability.md):
@@ -99,5 +100,3 @@ pub fn my_method(&mut self) {
   <summary>Interaction with other macros.</summary>
    When `near_bindgen` is built for the wasm32 target, it generates the external NEAR contract bindings.  To achieve this it is actually generating another function with the signature `pub extern "C" fn function_name()` that first deserializes the contract struct from NEAR storage and then calls the `contract.function_name(parameter1, parameter2, ...)`.  If you have annotated your function with any attribute-like macros, these are then executed _twice_.  Specifically if the attribute like macro makes any modification to the function signature, or inserts any code that depends on the contract struct (in the form of `&self`, `&mut self`, or `self`) this will fail in the second invocation, because the externally exposed function does not have any concept of this struct.  It is possible to detect this by checking which build target you are building for and limit the execution of the macro to operate only on the first pass.
 </details>
-
-

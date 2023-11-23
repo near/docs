@@ -11,12 +11,14 @@ Serialization formats within the SDK define how data structures are translated i
 The qualities of JSON and Borsh are as follows:
 
 JSON:
+
 - Human-readable
 - Self-describing format (don't need to know the underlying type)
 - Easy interop with JavaScript
 - Less efficient size and (de)serialization
 
 Borsh:
+
 - Compact, binary format that's efficient for serialized data size
 - Need to know data format or have a schema to deserialize data
 - Strict and canonical binary representation
@@ -65,12 +67,14 @@ To call this with NEAR CLI, use a command similar to this:
 ```bash
 near call rust-status-message.demo.testnet set_status_borsh --base64 'DAAAAEFsb2hhIGhvbnVhIQ==' --accountId demo.testnet
 ```
+
 </TabItem>
 <TabItem value="near-cli-rs">
 
 ```bash
 near contract call-function as-transaction rust-status-message.demo.testnet set_status_borsh base64-args 'DAAAAEFsb2hhIGhvbnVhIQ==' prepaid-gas '30 TeraGas' attached-deposit '0 NEAR' sign-as demo.testnet network-config testnet sign-with-keychain send
 ```
+
 </TabItem>
 </Tabs>
 

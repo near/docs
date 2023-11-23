@@ -10,14 +10,15 @@ NEAR B.O.S allows applications to send notifications to their users. Notificatio
 
 ---
 
-## Sending Notifications 
+## Sending Notifications
 
 Sending a notification is as simple as including the `notify` action for the indexer, with a `key` and a `value`.
 
 - The `key` tells **which account** to notify.
 - The `value` includes the [notification type](#notification-types) and the item being notified of.
 
-#### Example 
+#### Example
+
 ```js
 Social.set({
   index: {

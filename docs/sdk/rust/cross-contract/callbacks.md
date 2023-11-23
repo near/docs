@@ -119,6 +119,7 @@ impl Contract {
 The syntax begins with `ext_allowlist::ext()` showing that we're using the trait to call the method on the account passed into `ext()`. We then use `with_static_gas()` to specify a base amount of GAS to attach to the call. We then call the method `is_allow_listed()` and pass in the parameters we'd like to attach.
 
 There are a couple things to note when doing these function calls:
+
 1. You can attach a deposit of Ⓝ, in yoctoⓃ to the call by specifying the `.with_attached_deposit()` method but it is defaulted to 0 (1 Ⓝ = 1000000000000000000000000 yoctoⓃ, or 1^24 yoctoⓃ).
 2. You can attach a static amount of GAS by specifying the `.with_static_gas()` method but it is defaulted to 0.
 3. You can attach an unused GAS weight by specifying the `.with_unused_gas_weight()` method but it is defaulted to 1. The unused GAS will be split amongst all the functions in the current execution depending on their weights. If there is only 1 function, any weight above 1 will result in all the unused GAS being attached to that function. If you specify a weight of 0, however, the unused GAS will **not** be attached to that function. If you have two functions, one with a weight of 3, and one with a weight of 1, the first function will get `3/4` of the unused GAS and the other function will get `1/4` of the unused GAS.

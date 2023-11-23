@@ -35,6 +35,7 @@ instance.
 ### Events
 
 The VM exposes the following `<iframe>` events:
+
 - `onLoad()`: support for `onLoad` event without any event info
    ```js
    <iframe onLoad={() => { console.log('iframe loaded') }}>
@@ -51,6 +52,7 @@ The VM exposes the following `<iframe>` events:
 
 The following example demonstrates how you can use an iframe to call
 `eval`:
+
 ```jsx
 State.init({
   text: `"b" + "a" + +"a" + "a"`,

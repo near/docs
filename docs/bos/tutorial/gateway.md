@@ -9,7 +9,6 @@ A `Gateway` is nothing but a [Next.js](https://nextjs.org/) application with the
 
 This allow you to create the frontend of your application combining classic `Next` components with `Web3` components that interact with your desired blockchain.
 
-
 ---
 
 ## Building a Gateway
@@ -59,7 +58,8 @@ Click [on this link](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fg
 Now just wait a few minutes for Vercel to build the website and enjoy your BOS gateway!
 
 :::info Customization
-- If you want to host the gateway on a specific domain you can configure it on Vercel.
 
+- If you want to host the gateway on a specific domain you can configure it on Vercel.
 - If you want to change the home page component, modify `src/data/widgets.js` in your fork to point at different components.
+
 :::
