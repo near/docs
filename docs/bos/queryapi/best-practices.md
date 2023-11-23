@@ -65,17 +65,12 @@ Make sure to `try { } catch { }` exceptions while processing each block. In the 
 ```js
 try {
   console.log("Creating a Post Snapshot");
-  const mutationData = {
-    post_snapshot,
+  const postData = {
+    post_id: post_id,
+    account_id: accountId,
+    block_height: block_height,
   };
-  await context.graphql(
-    `
-    mutation CreatePostSnapshot($post_snapshot: bo_near_devhub_v17_post_snapshots_insert_input!) {
-      insert_bo_near_devhub_v17_post_snapshots_one(object: $post_snapshot) {post_id, block_height}
-    }
-    `,
-    mutationData
-  );
+  await context.db.Posts.insert(postData);
   console.log(
     `Post Snapshot with post_id ${post_id} at block_height ${block_height} has been added to the database`
   );
@@ -117,6 +112,12 @@ Focusing on the two most common blockchain indexing use cases, you can consider:
 
 - a database schema for an indexer doing blockchain analytics, reporting, business intelligence, and big-data queries.
 - a database schema for an indexer built as a backend for a web3 dApp building interactive and responsive UIs, that tracks interactions over a specific smart contract.
+
+:::info
+
+QueryAPI uses [PostgreSQL 14.9](https://postgrespro.com/docs/postgresql/14/ddl). You can find additional documentation about PostgresSQL data definition language [in this link](https://postgrespro.com/docs/postgresql/14/ddl).
+
+:::
 
 ### Schema for Blockchain analytics
 
