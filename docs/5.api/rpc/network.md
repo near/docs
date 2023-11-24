@@ -429,14 +429,22 @@ Here is the exhaustive list of the error variants that can be returned by `netwo
 
 ## Validation Status {#validation-status}
 
-> Queries active validators on the network returning details and the state of validation on the blockchain.
+> Queries active validators on the network returning details and the state of 
+validation on the blockchain.
 
 - method: `validators`
-- params: `["block hash"]`, `[block number]`, or `[null]` for the latest block
+- params: `["block hash"]`, `[block number]`, `{"epoch_id": "epoch id"}`, 
+`{"block_id": block number}`, `{"block_id": "block hash"}`, or 
+`[null]` for the latest block
 
-**Note:** For `["block hash"]` & `[block number]` you will need to query from the last block in an epoch.
+**Note:** If you want the latest `block hash`, `block number` and `epoch id`, 
+you will need to query from the last block in an epoch. You can also query 
+validators endpoint for past epochs if you input `block hash`, `block number` 
+or `epoch id` of the past epoch that you want.
 
-`[block number]`
+Example:
+
+input: `[block number]`
 
 <Tabs>
 <TabItem value="json" label="JSON" default>
@@ -453,10 +461,6 @@ Here is the exhaustive list of the error variants that can be returned by `netwo
 </TabItem>
 <TabItem value="🌐 JavaScript" label="JavaScript">
 
-```js
-const response = await near.connection.provider.validators(17791098);
-```
-
 </TabItem>
 <TabItem value="http" label="HTTPie">
 
@@ -467,7 +471,8 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=validators params:='[1
 </TabItem>
 </Tabs>
 
-`["block hash"]`
+
+input: `["block hash"]`
 
 <Tabs>
 <TabItem value="json" label="JSON" default>
@@ -481,14 +486,6 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=validators params:='[1
 }
 ```
 
-<!--JavaScript-->
-
-```js
-const response = await near.connection.provider.validators(
-  "FiG2nMjjue3YdgYAyM3ZqWXSaG6RJj5Gk7hvY8vrEoGw"
-);
-```
-
 </TabItem>
 <TabItem value="http" label="HTTPie">
 
@@ -499,7 +496,98 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=validators params:='["
 </TabItem>
 </Tabs>
 
-`[null]`
+
+input: `{"block_id": "block hash"}`
+
+<Tabs>
+<TabItem value="json" label="JSON" default>
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "dontcare",
+  "method": "validators",
+  "params": {
+    "block_id": "FiG2nMjjue3YdgYAyM3ZqWXSaG6RJj5Gk7hvY8vrEoGw"
+  }
+}
+```
+
+</TabItem>
+<TabItem value="http" label="HTTPie">
+
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=validators \
+  params:='{
+    "block_id": "FiG2nMjjue3YdgYAyM3ZqWXSaG6RJj5Gk7hvY8vrEoGw"
+  }'
+```
+
+</TabItem>
+</Tabs>
+
+
+input: `{"block_id": block number}`
+
+<Tabs>
+<TabItem value="json" label="JSON" default>
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "dontcare",
+  "method": "validators",
+  "params": {
+    "block_id": 17791098
+  }
+}
+```
+
+</TabItem>
+<TabItem value="http" label="HTTPie">
+
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=validators \
+  params:='{
+    "block_id": 17791098
+  }`
+```
+
+</TabItem>
+</Tabs>
+
+
+input: `{"epoch_id": "epoch id"}`
+
+<Tabs>
+<TabItem value="json" label="JSON" default>
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "dontcare",
+  "method": "validators",
+  "params": {
+    "epoch_id": "8hJSZNNyimPvsCA1v3dMr3Hg5ucYeLUbTvEfhr6jaWJy"
+  }
+}
+```
+
+</TabItem>
+<TabItem value="http" label="HTTPie">
+
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=validators \
+  params:='{
+    "epoch_id": "8hJSZNNyimPvsCA1v3dMr3Hg5ucYeLUbTvEfhr6jaWJy"
+  }`
+```
+
+</TabItem>
+</Tabs>
+
+
+input: `[null]`
 
 <Tabs>
 <TabItem value="json" label="JSON" default>
@@ -511,13 +599,6 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=validators params:='["
   "method": "validators",
   "params": [null]
 }
-```
-
-</TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
-
-```js
-const response = await near.connection.provider.validators(null);
 ```
 
 </TabItem>
