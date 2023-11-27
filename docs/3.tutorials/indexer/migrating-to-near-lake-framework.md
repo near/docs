@@ -4,7 +4,6 @@ sidebar_label: Migrating to NEAR Lake framework
 
 # Migrating to NEAR Lake Framework
 
-<ProgrammingLanguage lang="rust" />
 
 We encourage everyone who don't have a hard requirement to use [NEAR Indexer Framework](https://near-indexers.io/docs/projects/near-indexer-framework) consider the migration to [NEAR Lake Framework](https://near-indexers.io/docs/projects/near-lake-framework).
 

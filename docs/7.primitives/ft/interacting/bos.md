@@ -37,6 +37,7 @@ const tokenMetadata = Near.view(tokenContract, "ft_metadata", {});
 ```
 
 </p>
+
 </details>
 
 ---
@@ -65,6 +66,7 @@ const userTokenBalance = Near.view(tokenContract, "ft_balance_of", {
 ```
 
 </p>
+
 </details>
 
 ---
@@ -101,7 +103,9 @@ const aliceStorageBalance = Near.view(tokenContract, "storage_balance_of", {
 });
 ```
 
-**Example response:**
+<details>
+<summary>Example response</summary>
+<p>
 
 It returns `null` if account is not registered.
 
@@ -111,6 +115,10 @@ It returns `null` if account is not registered.
   "total": "1250000000000000000000"
 }
 ```
+
+</p>
+
+</details>
 
 How to register another account:
 
@@ -138,6 +146,7 @@ If you need to register your own account just pass `{}` as arguments to call.
 ```
 
 </p>
+
 </details>
 
 ---
@@ -174,6 +183,7 @@ const result = Near.call(
 ```
 
 </p>
+
 </details>
 
 How it works:
@@ -226,6 +236,7 @@ const requiredStorageDeposit = Near.view(
 ```
 
 </p>
+
 </details>
 
 Then you can create a token.

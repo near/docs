@@ -44,7 +44,7 @@ class Counter {
 In this example, the `Counter` class represents the smart contract state and anything that implements serialization and deserialization methods can be included, such as `collections`, which will be covered in the next section. Whenever a function is called, the state will be loaded and deserialized, so it's important to keep this amount of data loaded as minimal as possible.
 
 The core interactions that are important to keep in mind:
-- Any `call` or `view` or `init` functions will be callable externally from any account/contract.
+- Any `call` or `view` or `initialize` functions will be callable externally from any account/contract.
   - For more information, see [public methods](../contract-interface/public-methods.md)
 - `view` or `call` decorators can be used in multiple ways to control the mutability of the contract:
   - Functions that are decorated with `view` will be read-only and do not write the updated state to storage
@@ -56,12 +56,12 @@ The core interactions that are important to keep in mind:
 
 ## Initialization Methods
 
-By default, the `default()` implementation of a contract will be used to initialize a contract. There can be a custom initialization function which takes parameters or performs custom logic with the following `@init({})` decorator:
+By default, the `default()` implementation of a contract will be used to initialize a contract. There can be a custom initialization function which takes parameters or performs custom logic with the following `@initialize({})` decorator:
 
 ```javascript
 @NearBindgen({})
 class Counter {
-    @init({})
+    @initialize({})
     init(val): void {
         this.val = val;
     }

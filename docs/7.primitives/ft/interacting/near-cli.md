@@ -36,6 +36,7 @@ near view token.v2.ref-finance.near ft_metadata
 ```
 
 </p>
+
 </details>
 
 ---
@@ -57,6 +58,7 @@ near view token.v2.ref-finance.near ft_balance_of '{"account_id": "bob.near"}'
 ```
 
 </p>
+
 </details>
 
 ---
@@ -95,6 +97,7 @@ It returns `null` if account is not registered.
 ```
 
 </p>
+
 </details>
 
 How to register another account:
@@ -117,6 +120,7 @@ If you need to register your own account just pass `{}` as arguments to call.
 ```
 
 </p>
+
 </details>
 
 ---
@@ -142,6 +146,7 @@ near call token.v2.ref-finance.near ft_transfer_call '{"receiver_id": "v2.ref-fi
 ```
 
 </p>
+
 </details>
 
 How it works:
@@ -175,6 +180,7 @@ near view tkn.near get_required_deposit '{"args":{"owner_id": "bob.near","total_
 ```
 
 </p>
+
 </details>
 
 And then you can create a token.

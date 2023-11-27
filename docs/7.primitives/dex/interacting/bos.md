@@ -7,11 +7,13 @@ hide_table_of_contents: false
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This section describes how to interact with DEX directly from a [NEAR Component](../../../bos/components.md)
+This section describes how to interact with DEXs directly from a [NEAR Component](../../../bos/components.md).
 
 ---
 
 ## Get token price
+
+Here is how to obtain the price for different tokens in US dollars from different exchanges.
 
 <Tabs>
 
@@ -19,9 +21,10 @@ This section describes how to interact with DEX directly from a [NEAR Component]
 
 ```js
 const tokenContract = "token.v2.ref-finance.near";
-const tokenPrice = fetch(
-  "https://indexer.ref.finance/get-token-price?token_id=token.v2.ref-finance.near"
+const tokenPriceResult = fetch(
+  `https://indexer.ref.finance/get-token-price?token_id=${tokenContract}`
 ).body;
+const tokenPriceValue = JSON.parse(tokenPriceResult);
 ```
 
 <details>
@@ -31,15 +34,16 @@ const tokenPrice = fetch(
 ```json
 {
   "token_contract_id": "token.v2.ref-finance.near",
-  "price": "0.05732698"
+  "price": "0.08153090"
 }
 ```
 
 </p>
+
 </details>
 
 :::tip
-Ref Finance API has a method to [get list of prices](https://indexer.ref.finance/list-token-price).
+Ref Finance has a method to [get all token prices at once](https://indexer.ref.finance/list-token-price).
 :::
 
 </TabItem>
@@ -52,15 +56,13 @@ Ref Finance API has a method to [get list of prices](https://indexer.ref.finance
 
 This snippet will enable your users to swap FTs.
 
-We will use [Ref Finance](https://app.ref.finance/) as an AMM contract in this section.
-
-:::warning
-Before initiating any actions related with swapping tokens you must have to check that a wallet has a sufficient storage deposit on a token's smart contract. Otherwise, tokens may be stuck in the contract's "owner" account and you will need to solve this issue via Ref Finance support.
-:::
-
 <Tabs>
 
-<TabItem value="Smart Contract" label="Smart Contract">
+<TabItem value="Ref Finance" label="Ref Finance">
+
+:::note
+Please, be careful using third-party contracts. Make sure that your account meets all the requirements of the smart contract if they exist. [Ref Finance docs](https://guide.ref.finance/).
+:::
 
 ```js
 const ammContract = "v2.ref-finance.near";
@@ -92,12 +94,68 @@ const result = Near.call(
 ```
 
 </p>
+
 </details>
 
-:::info
+<hr class="subsection" />
+
+### Get pools
+
+In order to make swap you need to know `pool_id`. The pool index is its id.
+
+Query available pools:
+
+```js
+const ammContract = "v2.ref-finance.near";
+const result = Near.view(
+  ammContract,
+  "get_pools",
+  {
+    from_index: 0,
+    limit: 1000
+  }
+);
+```
+
+<details>
+<summary>Example response</summary>
+<p>
+
+```js
+[
+  {
+    pool_kind: 'SIMPLE_POOL',
+    token_account_ids: [ 'token.skyward.near', 'wrap.near' ],
+    amounts: [ '51865812079751349630100', '6254162663147994789053210138' ],
+    total_fee: 30,
+    shares_total_supply: '1305338644973934698612124055',
+    amp: 0
+  },
+  {
+    pool_kind: 'SIMPLE_POOL',
+    token_account_ids: [
+      'c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2.factory.bridge.near',
+      'wrap.near'
+    ],
+    amounts: [ '783621938569399817', '1100232280852443291118200599' ],
+    total_fee: 30,
+    shares_total_supply: '33923015415693335344747628',
+    amp: 0
+  }
+]
+```
+
+</p>
+
+</details>
+
+<hr class="subsection" />
+
+### Check deposit balances
+
 In order to make swap you need to have enough tokens in deposit on Ref Finance.
 
-Query your deposit balances on Ref Finance
+Query your deposit balances:
 
 ```js
 const ammContract = "v2.ref-finance.near";
@@ -122,14 +180,21 @@ const depositBalances = Near.view(
 ```
 
 </p>
+
 </details>
 
-How to [deposit funds](#attaching-fts-to-a-call--already-exist-here)
+<hr class="subsection" />
 
-:::
+### Deposit funds
+
+See how to deposit funds on Ref Finance [here](../../ft/interacting/bos.md#attaching-fts-to-a-call).
 
 </TabItem>
 
 </Tabs>
 
 ---
+
+## Additional Resources
+
+- [Ref Finance Component](https://near.org/near/widget/ComponentDetailsPage?src=weige.near/widget/ref-swap): A widget ready to be forked that enables to swap tokens in ref finance.

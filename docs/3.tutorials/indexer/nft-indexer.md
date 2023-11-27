@@ -4,7 +4,6 @@ sidebar_label: NFT Indexer
 
 # Building an NFT indexer
 
-<ProgrammingLanguage lang="js" />
 
 :::note Source code for the tutorial
 
