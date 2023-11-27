@@ -34,6 +34,7 @@ git clone https://github.com/near-examples/transaction-examples.git
 
 2. Follow [setup instructions](https://github.com/near-examples/transaction-examples/blob/master/README.md#prerequisites)
 
+
 ### Imports {#imports}
 
 In [`send-tokens-easy.js`](https://github.com/near-examples/transaction-examples/blob/9e999253aafa2c3e3b537810a0b8ce7596c3506c/send-tokens-easy.js#L1-L5) we use two dependencies:
@@ -132,9 +133,9 @@ This simple command constructs, signs, and sends a token transfer transaction on
 
 1. Clone the [transaction-examples](https://github.com/near-examples/transaction-examples) repository by running:
 
-```bash
-git clone https://github.com/near-examples/transaction-examples.git
-```
+  ```bash
+    git clone https://github.com/near-examples/transaction-examples.git
+  ```
 
 2. Follow [setup instructions](https://github.com/near-examples/transaction-examples/blob/master/README.md#prerequisites)
 

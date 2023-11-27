@@ -8,7 +8,6 @@ sidebar_label: Avoiding Token Loss
 Careful! Losing tokens means losing money!
 :::
 
-
 Token loss is possible under multiple scenarios. These scenarios can be grouped into a few related classes:
 
 1. Improper key management
@@ -33,6 +32,7 @@ An account may have its one and only `FunctionCall` access key deleted.
 No one will be able to recover the funds. Funds will remain locked in the account forever.
 
 ---
+
 ## Refunding deleted accounts {#type-2-refunds}
 
 When a refund receipt is issued for an account, if that account no longer exists, the funds will be dispersed among
@@ -53,6 +53,7 @@ account `A` is vulnerable to deletion by garbage collection activities on the ne
 If account `A` is deleted before the refund receipt arrives, the funds will be dispersed among validators.
 
 ---
+
 ## Failed function calls in batches {#type-3-function-calls}
 
 :::warning
@@ -62,4 +63,3 @@ When designing a smart contract, you should always consider the asynchronous nat
 If a contract function `f1` calls two (or more) other functions `f2` and `f3`, and at least one of these functions, `f2` and `f3` fails, then tokens will be refunded from the function that failed, but tokens will be appropriately credited to the function(s) which succeed.
 
 The successful call's tokens may be considered lost depending on your use case if a single failure in the batch means the whole batch failed.
-

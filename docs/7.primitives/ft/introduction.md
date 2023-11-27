@@ -8,7 +8,6 @@ hide_table_of_contents: false
 import {FeatureList, Column, Feature} from "@site/components/featurelist"
 import ContactUs from '@site/components/ContactUs.mdx';
 
-
 - [What is an FT?](#what-is-an-ft)
 - [How to create FT token](#how-to-create-ft-token)
 

@@ -15,13 +15,12 @@ The [NEAR Platform overview](/concepts/welcome) clarifies much of the language i
 
 - A client creates a transaction, computes the transaction hash and signs this hash to get a signed transaction. Now this signed transaction can be sent to a node.
 - The RPC interface receives the transaction and routes it to the correct physical node using `signer_id`.  Since the `signer_id` must be a NEAR Account ID which lives on a single shard, the account is mapped to a shard which is followed by at least one validator running at least one machine with an IP address.
-- When a node receives a new signed transaction, it validates the transaction for signer, receiver, account balance, cost overflow, signature, etc. ([see here](https://nomicon.io/RuntimeSpec/Scenarios/FinancialTransaction.html#transaction-to-receipt)) and gossips it to all peers following the same shard. If a transaction has an invalid signature or would be invalid on the latest state, it is rejected quickly and returns an error to the original RPC call. 
+- When a node receives a new signed transaction, it validates the transaction for signer, receiver, account balance, cost overflow, signature, etc. ([see here](https://nomicon.io/RuntimeSpec/Scenarios/FinancialTransaction.html#transaction-to-receipt)) and gossips it to all peers following the same shard. If a transaction has an invalid signature or would be invalid on the latest state, it is rejected quickly and returns an error to the original RPC call.
 - Valid transactions are added to the transaction pool (every validating node has its own independent copy of a transaction pool). The transaction pool maintains transactions that are not yet discarded and not yet included into the chain.
 - A pool iterator is used to pick transactions from the pool one at a time, ordered from the smallest nonce to largest, until the pool is drained or some chunk limit is reached (max number of transactions per chunk or max gas burnt per chunk to process transactions).  Please refer to articles on the [pool iterator](https://nomicon.io/ChainSpec/Transactions.html?highlight=pool#pool-iterator) and [gas](/concepts/basics/transactions/gas) for more details.
 - To accommodate the distributed nature of a sharded blockchain, all transactions are subsequently returned to a segmented transaction pool having 3 distinct layers: accepted transactions (which will be processed on the next chunk), pending transactions (which exceeded the limits of the current chunk and will be included in a later round of processing) and invalid transactions (which will be rejected at the next available opportunity).
 - Before producing a chunk, transactions are ordered and validated again. This is done to produce chunks with only valid transactions across a distributed system.
 - While a transaction is being processed on to a chunk, any errors raised by the application of its actions are also returned via RPC.
-
 
 ## NEAR Platform Errors {#near-platform-errors}
 
@@ -30,7 +29,8 @@ Errors raised by the NEAR platform are implemented in the following locations in
 - [nearcore/core/primitives/src/errors.rs](https://github.com/near/nearcore/blob/master/core/primitives/src/errors.rs)
 - [nearcore/runtime/near-vm-errors/src/lib.rs](https://github.com/near/nearcore/blob/master/runtime/near-vm-errors/src/lib.rs)
 
-This page includes: 
+This page includes:
+
 - **RuntimeError and subtypes**: errors raised when a transaction is first received by the destination node and again before it's processed and applied to a chunk
 - **TxExecutionError and subtypes**: errors raised while a transaction and its component action(s) are being validated and applied to a chunk
 - **VMerror and subtypes**: errors raised during the execution of a Wasm contract by the NEAR VM
@@ -86,7 +86,6 @@ TxExecutionError                                          Error returned in the 
           FunctionCallMethodNameLengthExceeded            The length of the method name exceeded the limit in a Function Call action.
           FunctionCallArgumentsLengthExceeded             The length of the arguments exceeded the limit in a Function Call action.
 ```
-
 
 ### VMerror and subtypes {#vmerror-and-subtypes}
 

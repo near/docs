@@ -55,7 +55,7 @@ This snippet will enable your users to swap FTs.
 We will use [Ref Finance](https://app.ref.finance/) as an AMM contract in this section.
 
 :::warning
-Before initiating any actions related with swapping tokens you must have to check that a wallet has a sufficient storage deposit on a token's smart contract. Otherwise, tokens may be stucked in the contract's "owner" account and you will need to solve this issue via Ref Finance support.
+Before initiating any actions related with swapping tokens you must have to check that a wallet has a sufficient storage deposit on a token's smart contract. Otherwise, tokens may be stuck in the contract's "owner" account and you will need to solve this issue via Ref Finance support.
 :::
 
 <Tabs>

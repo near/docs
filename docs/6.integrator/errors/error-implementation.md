@@ -82,7 +82,6 @@ pub enum InvalidTxError {
 }
 ```
 
-
 #### Error Messages {#error-messages-1}
 
 ```rust
@@ -673,7 +672,9 @@ pub enum HostError {
     ContractSizeExceeded { size: u64, limit: u64 },
 }
 ```
+
 #### Error Messages {#error-messages-11}
+
 ```rust
 BadUTF8 
   "String encoding is bad UTF-8 sequence."
@@ -764,7 +765,6 @@ ContractSizeExceeded { size, limit }
 
 ```
 
-
 ### VMLogicError {#vmlogicerror}
 
 #### Definition {#definition-16}
@@ -791,11 +791,11 @@ pub enum InconsistentStateError {
 ```
 
 #### Error Messages {#error-messages-12}
+
 ```rust
 InconsistentStateError::IntegerOverflow
     "Math operation with a value from the state resulted in a integer overflow."
 ```
-
 
 ## RPC interface {#rpc-interface}
 

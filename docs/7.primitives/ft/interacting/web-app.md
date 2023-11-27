@@ -46,7 +46,6 @@ await wallet.viewMethod({
 }
 ```
 
-
 ---
 
 ## Check token balance
@@ -130,7 +129,6 @@ It returns `null` if account is not registered.
 }
 ```
 
-
 How to register another account:
 
 ```js
@@ -193,7 +191,6 @@ await wallet.callMethod({
 ```json
 '100000000000000000'
 ```
-
 
 How it works:
 

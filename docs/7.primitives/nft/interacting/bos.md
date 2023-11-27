@@ -389,7 +389,6 @@ const tokenData = fetch("https://graph.mintbase.xyz", {
 }
 ```
 
-
 :::note
 In the future, users may be required to register using an api key. For now, simply passing the valueanon for `mb-api-key` will work.
 :::
