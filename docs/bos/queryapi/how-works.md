@@ -37,34 +37,39 @@ An in-depth, detailed overview of the QueryApi components:
 
 ## Provisioning
 
-### Low Level Summary
+In summary, QueryAPI provisioning consists of the following steps:
 
-There are two main pieces to provisioning: Postgres and Hasura.
-
-### Postgres
-
-The dynamic piece in this is the user provided `schema` file, which uses Data Definition Language (DDL) to describe the structure of the users database. The `schema` DDL will be executed within a new Postgres Schema named after the account + function name, i.e. `morgs_near_my_function`. Each schema exists within a separate virtual database for that account, named after the account, i.e. `morgs_near`.
-
-### Hasura
-
-After creating the new schema, Hasura is configured to expose this schema via a GraphQL endpoint. First, the database is added as a datasource to Hasura. By default, all tables are hidden, so to expose them they must be "tracked". 
-
-Foreign keys in Postgres allow for nested queries via GraphQL, for example a `posts` table may have a foreign relationship to a `comments` table, this enables us to query the comments relating to a post within a single query. Again, these are not enabled by default, so must be "tracked".
-
-Finally, necessary permissions are added to the tables. These permissions control which GraphQL operations will be exposed. For example, the `select` permission allows all queries, and `delete` will expose all delete mutations. A role, named after the account, is used to group these permissions. Specifying the role in the GraphQL request applies these permissions to that request, preventing access to other users data.
-
-### High Level Steps
-
-In summary, provisioning consists of the following steps:
-1. Create `database`, named after account, if necessary
+1. Create `database` in [Postgres](#postgres), named after account, if necessary
 2. Add `database` to Hasura
 3. Create `schema` in `database`
 4. Run DDL in `schema`
-5. Track all tables in `schema` in Hasura
-6. Track all foreign key relationships in `schema` in Hasura
+5. Track all tables in `schema` in [Hasura](#hasura)
+6. Track all foreign key relationships in `schema` in [Hasura](#hasura)
 7. Add all permissions to all tables in `schema`
 
-To check if an Indexer has been provisioned, we check if both the `database` and `schema` exist. This check is what prevents us from attempting to provision an already provisioned indexer. But is also what prevents us from completing previously failed steps.
+:::info
+To check if an Indexer has been provisioned, QueryAPI checks if both the `database` and `schema` exist. This check is what prevents the app from attempting to provision an already provisioned indexer.
+:::
+
+### Historical backfill
+
+The historical backfill process
+
+### Low level details
+
+There are two main pieces to provisioning: [Postgres](#postgres) and [Hasura](#hasura).
+
+#### Postgres
+
+The dynamic piece in this process is the user-provided `schema.sql` file, which uses Data Definition Language (DDL) to describe the structure of the user's database. The `schema` DDL will be executed within a new Postgres Schema named after the account + function name. For example, if you have an `account.near` and `my_function`, the schema's name will be `account_near_my_function`. Each schema exists within a separate virtual database for that account, named after the account, i.e. `account_near`.
+
+#### Hasura
+
+After creating the new schema, Hasura is configured to expose this schema via a GraphQL endpoint. First, the database is added as a data source to Hasura. By default, all tables are hidden, so to expose them they must be "tracked". 
+
+Foreign keys in Postgres allow for nested queries via GraphQL, for example a `customer` table may have a foreign relationship to an `orders` table, this enables the user to query the orders from a customer within a single query. These are not enabled by default, so they must be "tracked" too.
+
+Finally, necessary permissions are added to the tables. These permissions control which GraphQL operations will be exposed. For example, the `SELECT` permission allows all queries, and `DELETE` will expose all delete mutations. A role, named after the account, is used to group these permissions. Specifying the role in the GraphQL request applies these permissions to that request, preventing access to other users data.
 
 ## Who hosts QueryAPI
 
