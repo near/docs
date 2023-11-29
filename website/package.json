@@ -30,11 +30,11 @@
   "dependencies": {
     "@algolia/autocomplete-js": "^1.7.1",
     "@crowdin/cli": "^3.9.0",
-    "@docusaurus/core": "^2.1.0",
+    "@docusaurus/core": "^3.0.0",
     "@docusaurus/plugin-ideal-image": "^2.1.0",
     "@docusaurus/plugin-sitemap": "^2.1.0",
     "@docusaurus/preset-classic": "^2.1.0",
-    "@docusaurus/theme-mermaid": "^2.1.0",
+    "@docusaurus/theme-mermaid": "^3.0.0",
     "@saucelabs/theme-github-codeblock": "^0.1.1",
     "algoliasearch": "^4.14.2",
     "clsx": "^1.1.1",
