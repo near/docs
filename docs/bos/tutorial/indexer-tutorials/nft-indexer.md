@@ -87,7 +87,7 @@ async function getBlock(block: Block) {
       let event = ev.rawEvent;
 
       if (event.standard === "nep171" && event.event === "nft_mint") {
-        console.log(r.receiverId);
+        console.log(event);
 
         let marketplace = "unknown";
         if (r.receiverId.endsWith(".paras.near"))
