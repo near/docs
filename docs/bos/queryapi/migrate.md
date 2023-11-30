@@ -7,6 +7,10 @@ sidebar_label: Migrate from Lake framework
 In this article you'll learn how to migrate your [NEAR Lake Framework](../../1.concepts/3.advanced/near-lake-framework.md) JavaScript indexer to [Near QueryAPI](intro.md), a fully managed solution to build indexer functions,
 extract on-chain data, store it in a database, and be able to query it using GraphQL endpoints.
 
+:::info Supported languages
+Currently QueryAPI only supports JavaScript, so if your indexer code uses TypeScript, Python, or Rust, you'll have to re-write your indexing logic in JS before you can migrate it.
+:::
+
 ## Basic migration
 
 Let's take a [basic JS indexer](../../3.tutorials/indexer/js-lake-indexer.md) built with NEAR Lake Framework as an example.
@@ -60,3 +64,40 @@ That's all! The basic Lake Framework JS indexer has been migrated to QueryAPI, a
     Block #106812523
     Shards: 4
 ```
+
+### Database storage
+
+```sql
+CREATE TABLE
+  "basic_indexer" (
+    "block_height" BIGINT NOT NULL,
+    "shards" INTEGER NOT NULL,
+    PRIMARY KEY ("block_height")
+  );
+```
+
+## Advanced migration
+
+For this example, let's take the TypeScript [NFT indexer](../../3.tutorials/indexer/nft-indexer.md) built with NEAR Lake Framework as reference. This indexer is watching for `nft_mint` [Events](https://nomicon.io/Standards/EventsFormat) and prints some relevant data about minted NFTs.
+
+As with the previous example, moving this NFT indexer to QueryAPI requires to migrate the code from the `handleStreamerMessage` function. But since it was done in TypeScript, it also needs some additional work as it needs to re-written in JavaScript.
+
+### Migrating to QueryAPI
+
+
+
+### Database storage
+
+```sql
+CREATE TABLE
+  "nfts" (
+    "id" SERIAL NOT NULL,
+    "marketplace" TEXT,
+    "block_height" BIGINT,
+    "block_timestamp" BIGINT,
+    "receipt_id" TEXT,
+    "receiver_id" TEXT,
+    "nft_data" TEXT,
+    PRIMARY KEY ("id", "block_height", "block_timestamp")
+  );
+``` 
