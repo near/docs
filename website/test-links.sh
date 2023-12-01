@@ -50,6 +50,8 @@ stop_server() {
 }
 
 check_links() {
+    use_trap=${1:-false}
+
     if [ ! -f server.port ]; then
         echo "⛔️ - Server is not running. Please start the server first."
         exit 1
@@ -57,14 +59,24 @@ check_links() {
     local port=$(cat server.port)
     local base_url="http://localhost:$port"
     echo "Checking for broken links on $base_url..."
+
+    if [ "$use_trap" = true ]; then
+        # Setup trap to catch any error and stop the server
+        trap 'echo "Error encountered. Stopping server..."; stop_server; exit 1' ERR
+    fi
+
     npx linkinator $base_url --config linkinator.config.json
+
+    if [ "$use_trap" = true ]; then
+        # Disable the trap after successful completion
+        trap - ERR
+    fi
 }
 
 test() {
     start_server
     wait_for_server
-    check_links
-    stop_server
+    check_links true
 }
 
 # Command line argument handling

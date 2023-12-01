@@ -1,5 +1,9 @@
 {
   "scripts": {
+    "start-server": "./test-links.sh start",
+    "check-links": "./test-links.sh check",
+    "stop-server": "./test-links.sh stop",
+    "run-full-test": "./test-links.sh test",
     "examples": "docusaurus-examples",
     "start": "docusaurus start",
     "build": "docusaurus build",
@@ -8,7 +12,6 @@
     "write-heading-ids": "docusaurus write-heading-ids",
     "version": "docusaurus-version",
     "rename-version": "docusaurus-rename-version",
-    "test": "./test-links.sh",
     "preview": "(eval $(echo check_$IS_PULL_REQUEST | grep -U 'check_false')) 2>/dev/null && docusaurus build --locale en",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",

@@ -1,13 +1,12 @@
 {
-  "_comment": "",
   "recurse": true,
   "directoryListing": true,
-  "retry": true,
-  "retry-errors-count": 3,
+  "retry": false,
+  "retryErrorsCount": 1,
+  "retryErrorsJitter": 5,
   "timeout": 5000,
-  "concurrency": 1,
-  "silent": false,
-  "verbosity": "warning",
+  "concurrency": 100,
+  "silent": true,
   "skip": [
     "https://crates.io/*",
     "https://staking.dokia.cloud/staking/near/validators",
@@ -28,6 +27,7 @@
     "https://www.coindesk.com/*",
     "/ko/*",
     "/vi/*",
-    "/zh-CN/*"
+    "/zh-CN/*",
+    "https://github.com/"
   ]
 }
