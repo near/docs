@@ -4,7 +4,6 @@ sidebar_label: "JS basic tutorial"
 
 # NEAR Lake indexer basic tutorial
 
-<ProgrammingLanguage lang="js" />
 
 :::info Source code for the tutorial
 
