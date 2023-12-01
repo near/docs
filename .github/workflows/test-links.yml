@@ -18,4 +18,4 @@ jobs:
       run: cd ./website && npm install
 
     - name: Run test
-      run: npm run full-test
+      run: cd ./website && npm run full-test
