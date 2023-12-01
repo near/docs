@@ -387,14 +387,16 @@
       "type": "html",
       "value": "<span class='menu__link'><b><small> Fungible Tokens (FT) </small></b></span>"
     },
+    "primitives/ft/introduction",
     {
-      "type": "html",
-      "value": "<span class='menu__link'>Coming Soon</span>"
+      "Using FTs": [
+        "primitives/ft/interacting/bos",
+        "primitives/ft/interacting/web-app",
+        "primitives/ft/interacting/smart-contract",
+        "primitives/ft/interacting/near-cli"
+      ]
     },
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
+    "primitives/ft/additional-resources",
     {
       "type": "html",
       "value": "<span class='menu__link'><b><small> DAOs </small></b></span>"
@@ -411,9 +413,14 @@
       "type": "html",
       "value": "<span class='menu__link'><b><small> DEX </small></b></span>"
     },
+    "primitives/dex/introduction",
     {
-      "type": "html",
-      "value": "<span class='menu__link'>Coming Soon</span>"
+      "Using DEX": [
+        "primitives/dex/interacting/bos",
+        "primitives/dex/interacting/web-app",
+        "primitives/dex/interacting/smart-contract",
+        "primitives/dex/interacting/near-cli"
+      ]
     }
   ],
   "tools": [
@@ -765,6 +772,7 @@
       "Tutorials": [
         "bos/tutorial/indexer-tutorials/posts-indexer",
         "bos/tutorial/indexer-tutorials/hype-indexer",
+        "bos/tutorial/indexer-tutorials/nft-indexer",
         "bos/tutorial/indexer-tutorials/feed-indexer"
       ]
     },

@@ -18,7 +18,7 @@ This indexer creates a new row in a pre-defined `posts` table created by the use
 
 :::tip
 
-This indexer can be found by [following this link](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=somepublicaddress.near/postsexample&view=indexer-status).
+This indexer can be found by [following this link](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=bucanero.near/posts-example&view=editor-window).
 
 :::
 
@@ -109,16 +109,16 @@ This function returns an array of objects that contain the `FunctionCall` operat
 
 ### Saving the Data to the Database
 
-The second part of the logic is to save the data from the filtered transactions to the database. This is done by using the `context.graphql` function. This function takes in a string for the graphQL query and returns a promise. The `context.graphql` function will be called for every filtered transaction as defined by the `.map()` function called on the array of `nearSocialPosts`.
+The second part of the logic is to save the data from the filtered transactions to the database. This is done by using the [`context.db.Posts.insert()`](../../queryapi/context.md#insert) function. The `context.db.Posts.insert()` function will be called for every filtered transaction as defined by the `.map()` function called on the array of `nearSocialPosts`.
 
-The `context.graphql` function for this indexer looks like this:
+The function for this indexer looks like this:
 
 ```js
   ... // Logic for filtering blockchain transactions, defining nearSocialPosts
 
   if (nearSocialPosts.length > 0) {
     const blockHeight = block.blockHeight;
-    const blockTimestamp = block.header().timestampNanosec;
+    const blockTimestamp = Number(block.header().timestampNanosec);
     await Promise.all(
       nearSocialPosts.map(async (postAction) => {
         const accountId = Object.keys(postAction.args.data)[0];
@@ -131,26 +131,14 @@ The `context.graphql` function for this indexer looks like this:
         ) {
           try {
             console.log("Creating a post...");
-            const mutationData = {
-              post: {
+            const postData = {
                 account_id: accountId,
                 block_height: blockHeight,
                 block_timestamp: blockTimestamp,
                 receipt_id: postAction.receiptId,
                 content: postAction.args.data[accountId].post.main,
-              },
             };
-            await context.graphql(`
-              mutation CreatePost($post: PostInput!) {
-                insert_somepublicaddress_near_postsexample_posts_one(
-                  object: $post
-                ) {
-                  account_id
-                  block_height
-                }
-              }`,
-              mutationData
-            );
+            await context.db.Posts.insert(postData);
             console.log(`Post by ${accountId} has been added to the database`);
           } catch (e) {
             console.error(`Error creating a post by ${accountId}: ${e}`);
