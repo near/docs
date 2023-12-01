@@ -399,14 +399,6 @@
     "primitives/ft/additional-resources",
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> DAOs </small></b></span>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'>Coming Soon</span>"
-    },
-    {
-      "type": "html",
       "value": "<hr/>"
     },
     {
