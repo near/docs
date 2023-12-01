@@ -43,7 +43,7 @@ Welcome, this is the starting point for all NEAR documentation. Build and publis
             <img src={require("@site/static/docs/assets/welcome-pages/bos-landing.png").default} alt="Web3 Apps" />
           </div>
           <div class="card__body">
-            <h3>Web Applications</h3>
+            <h3>Composable Applications</h3>
               Learn to build multi-chain web apps.
           </div>
         </div>
@@ -103,16 +103,18 @@ Welcome, this is the starting point for all NEAR documentation. Build and publis
     <Feature url="/concepts/basics/transactions/overview" title="Transactions" subtitle="Fast and Inexpensive" image="transaction.png" />
     <Feature url="/concepts/basics/validators" title="Validators" subtitle="Learn how the network stays safe" image="validation.png" />
   </Column>
-  <Column title="Smart Contracts" size="3">
-    <Feature url="/develop/contracts/quickstart" title="Contract Quickstart" subtitle="Create your first contract in minutes" image="smartcontract.png" />
-    <Feature url="/tutorials/welcome" title="Tutorials & Examples" subtitle="Check out a vast library of examples" image="tutorials.png" />
-    <Feature url="/develop/testing/introduction" title="Sandbox Testing" subtitle="Write unit & integration tests" image="test.png" />
-  </Column>
-    <Column title="Web Apps" size="3">
+
+  <Column title="Web Apps" size="3">
     <Feature url="/bos/quickstart" title="WebApp Quickstart" subtitle="Spin-up your first dApp in minutes" image="quickstart.png" />
     <Feature url="/tutorials/welcome" title="Tutorials & Examples" subtitle="Check out a vast library of examples" image="tutorials.png" />
     <Feature url="/develop/integrate/frontend" title="Build a Web Frontend" subtitle="Learn how to make a web dApp" image="frontend.png" />
     <Feature url="/tools/realtime" title="Monitor your App" subtitle="Learn how to track the Blockchain" image="monitor.png" />
+  </Column>
+
+  <Column title="Smart Contracts" size="3">
+    <Feature url="/develop/contracts/quickstart" title="Contract Quickstart" subtitle="Create your first contract in minutes" image="smartcontract.png" />
+    <Feature url="/tutorials/welcome" title="Tutorials & Examples" subtitle="Check out a vast library of examples" image="tutorials.png" />
+    <Feature url="/develop/testing/introduction" title="Sandbox Testing" subtitle="Write unit & integration tests" image="test.png" />
   </Column>
 
   <Column title="Query the Chain" size="3">

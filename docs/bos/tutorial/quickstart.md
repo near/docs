@@ -1,7 +1,7 @@
 ---
 id: quickstart
 title: Hello Component
-sidebar_label: ⭐ Build a Component
+sidebar_label: ⭐ Quickstart
 ---
 
 import {WidgetEditor} from "@site/src/components/social-widget"

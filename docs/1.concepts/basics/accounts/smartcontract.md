@@ -24,7 +24,7 @@ Developers can choose between using [Javascript](../../../sdk/js/js-sdk.md) or [
 Indistinctly from the language chosen, the NEAR SDK will help you to compile the contract into WebAssembly, from which point it can be deployed and executed on the NEAR platform.
 
 :::tip
-See how simple it is to build a contract in NEAR with our [**Quickstart Guide**](../../../2.develop/quickstart.md). You will spin-up your first dApp in a matter of seconds.
+See how simple it is to build a contract in NEAR with our [**Quickstart Guide**](../../../2.develop/contracts/quickstart.md). You will spin-up your first dApp in a matter of seconds.
 :::
 
 ---

@@ -1,38 +1,40 @@
 ---
 id: state
-title: State API
-sidebar_label: State
+title: Basics (State, Props, Hooks)
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import {WidgetEditor} from "@site/src/components/social-widget"
 
-VM provides a convenient API to update the state of the component. There are two methods:
-- [`State.init`](#stateinit)
-- [`State.update`](#stateupdate)
-
-:::note Accessing the State from the Component UI
-You may access state variables from the component UI using the `state` property of the `widget` object. For example, if you have a state variable `numVar` you can access it from the component UI using `state.numVar`. Here's an example of accessing a variable `profile` from the state and showing it conditionally on the component UI:
-
-```javascript
-return (
-  <div>
-  ...
-    {state.profile?.length > 0 && (
-      <div>
-        <p>Profiles:</p>
-        <ul>{state.profile}</ul>
-      </div>
-    )}
-  ...
-  </div>
-);
-```
-
-:::
+### Introduction (State, Props, Hooks)
+Borrowing from React, Near Components use the same concepts of state, props and hooks to handle the component's logic.
 
 ---
 
-## State.init
+## State
+To handle the component's state you can use `useState` hook. The `useState` hook returns a tuple of two values: the current state and a function that updates it.
+
+<WidgetEditor>
+
+```jsx
+const [count, setCount] = useState(0);
+
+return (
+  <div>
+    <p>You clicked {count} times</p>
+    <button onClick={() => setCount(count + 1)}>Click me</button>
+  </div>
+);
+
+```
+</WidgetEditor>
+
+<details markdown="1">
+<summary > State API (deprecated) </summary>
+
+You might encounter some components that use the `State` object to handle state. The `State` API was the first implementation to interact with a component's state, but is now not recommended to use it.
+
+### State.init
 
 `State.init` takes an object as an argument and initializes the state of the component with this object. It'll be no-op if the state is already initialized.
 
@@ -40,40 +42,7 @@ return (
  |---------|--------------|--------|-------------------------------------------|
  | `state` | **required** | object | an initial state object for the component |
 
-### `State.init()` Example
-
-<Tabs>
-<TabItem value="request" label="Request" default>
-
-```js
-const strVar = "Hello World!";
-State.init({
-  numVar: 0,
-  strVar
-});
-```
-
-</TabItem>
-<TabItem value="response" label="Response">
-
-```js
-{ numVar: 0, strVar: "Hello World!" }
-```
-
-</TabItem>
-</Tabs>
-
-### `State.init()` Implementation Details
-
-The state object is both stored in the `state` property of the component virtual machine and in the `state` property of the react component. The state is initialized with the given object.
-
-```js reference title="VM.js"
-https://github.com/NearSocial/VM/blob/5b68433497272c23bf7d06a992c3209f3c97a2b5/src/lib/vm/vm.js#L754-L773
-```
-
----
-
-## State.update
+### State.update
 
 The `State.update` will trigger the state update, and the component will be re-rendered.
 It also has an optional argument, the object that will be added to the `state` object using `Object.assign`.
@@ -84,32 +53,34 @@ The state will be initialized with the given object if it's not initialized yet.
  | `state` | **required** | object | the state                        |
  | `init`  | _optional_   | object | an optional initial state object |
 
-### `State.update()` Example
+</details>
 
-<Tabs>
-<TabItem value="request" label="Request" default>
+---
 
-```js
-State.update({
-  numVar: 1,
-  strVar: "Hello there!"
-});
+## Props
+To handle the component's props you can use `useProps` hook. The `useProps` hook returns the current props of the component.
+
+<WidgetEditor id='2'>
+
+```jsx
+return JSON.stringify(props);
 ```
+</WidgetEditor>
 
-</TabItem>
-<TabItem value="response" label="Response">
+---
 
-```js
-{ numVar: 1, strVar: "Hello there!" }
+## Hooks
+
+### useEffect
+The `useEffect` hook is used to handle side effects. It will execute each time one of the dependencies changes.
+
+### Example with Counter
+<WidgetEditor id='3'>
+
+```jsx
+const likes = Social.index("like", "I<3Near", { subscribe: true });
+
+return likes;
+
 ```
-
-</TabItem>
-</Tabs>
-
-### `State.update()` Implementation Details
-
-The state is stored in the `state` property of the component. The state is initialized with an empty object `{}`. `Object.assign` is used to update the state.
-
-```js reference title="VM.js"
-https://github.com/NearSocial/VM/blob/5b68433497272c23bf7d06a992c3209f3c97a2b5/src/lib/vm/vm.js#L774-L786
-```
+</WidgetEditor>

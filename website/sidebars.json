@@ -617,45 +617,18 @@
   ],
   "components": [
     "bos/welcome",
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Quickstart </small></b></span>"
-    },
     "bos/tutorial/quickstart",
-    "develop/integrate/quickstart-frontend",
     {
       "type": "html",
       "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Components </small></b></span>"
     },
     "bos/overview",
-    "bos/tutorial/bos-gateway",
-    "bos/dev/intro",
     {
-      "type": "category",
-      "label": "Built-in Components",
-      "link": {
-        "type": "doc",
-        "id": "bos/components"
-      },
-      "items": [
-        "bos/components/widgets",
-        "bos/components/ipfs",
-        "bos/components/files",
-        "bos/components/markdown",
-        "bos/components/overlay-trigger",
-        "bos/components/infinite-scroll",
-        "bos/components/typeahead",
-        "bos/components/styled",
-        "bos/components/tooltip"
-      ]
-    },
-    {
-      "Component API": [
-        "bos/api/home",
+      "Build a Component": [
         "bos/api/state",
         "bos/api/near",
         {
@@ -667,11 +640,26 @@
         },
         "bos/api/fetch",
         "bos/api/storage",
-        "bos/api/primitives",
         "bos/api/cache",
         "bos/api/clipboard"
       ]
     },
+    "bos/built-in-components",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Quickstart </small></b></span>"
+    },
+    "develop/integrate/quickstart-frontend",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    "bos/tutorial/bos-gateway",
+    "bos/dev/intro",
     {
       "Examples & Tutorials": [
         "bos/dev/bos-loader",

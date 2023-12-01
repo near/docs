@@ -21,7 +21,7 @@ If you used one of our [examples](https://github.com/near-examples/docs-examples
 ---
 
 ## Snippet I: Testing Hello NEAR
-Lets take a look at the test of our [Quickstart Project](../quickstart.md) [👋 Hello NEAR](https://github.com/near-examples/hello-near-rs), where we deploy the contract on an account and test it correctly retrieves and sets the greeting.
+Lets take a look at the test of our [Quickstart Project](../contracts/quickstart.md) [👋 Hello NEAR](https://github.com/near-examples/hello-near-rs), where we deploy the contract on an account and test it correctly retrieves and sets the greeting.
 
 <CodeTabs>
   <Language value="🌐 - Typescript" language="ts">

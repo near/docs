@@ -23,7 +23,7 @@ Help contribute!
 ## Create Your First Javascript Contract
 Create your first **Javascript contract** in minutes:
 1. Download and install [Node.js](https://nodejs.org/en/download/).
-2. Create a new **javascript** project using our [quickstart guide](../../2.develop/quickstart.md).
+2. Create a new **javascript** project using our [quickstart guide](../../2.develop/contracts/quickstart.md).
 3. Read our docs on **[how to write smart contract](../../2.develop/contracts/anatomy.md)**.
 
 ---
