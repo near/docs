@@ -1,22 +1,21 @@
-name: Check Markdown links
+name: Test Links
 
-on:
-  workflow_dispatch:
-  pull_request:
-    types: [opened, reopened, synchronize]
-    branches:
-      - master
-  push:
-    branches:
-      - master
+on: [push, pull_request]
 
 jobs:
-  markdown-link-check:
+  test_script:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - uses: gaurav-nelson/github-action-markdown-link-check@v1
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
       with:
-        use-quiet-mode: 'yes'
-        config-file: 'website/mlc_config.json'
-        folder-path: 'docs, website/near-api-js_versioned_docs, website/near-sdk-js_versioned_docs'
+        node-version: '14'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run test
+      run: bash ./website/test-links.sh test
