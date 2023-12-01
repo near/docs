@@ -18,4 +18,4 @@ jobs:
       run: npm install
 
     - name: Run test
-      run: bash ./website/test-links.sh test
+      run: bash npm run test
