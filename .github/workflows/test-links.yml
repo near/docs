@@ -1,9 +1,9 @@
-name: Test Links
+name: Link Checker
 
 on: [push, pull_request]
 
 jobs:
-  test_script:
+  check_links:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
