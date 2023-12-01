@@ -77,62 +77,47 @@ The first part of the logic is to filter blockchain transactions for a specific 
 The `getBlock` function for this NFT indexer looks like this:
 
 ```js
-import { Block } from "@near-lake/primitives";
-
 async function getBlock(block: Block) {
 
-  const h = block.header().height;
-  const createdOn = block.streamerMessage.block.header.timestamp;
+  for (let ev of block.events()) {
+    const r = block.actionByReceiptId(ev.relatedReceiptId);
+    const createdOn = block.streamerMessage.block.header.timestamp;
 
-  for (let r of block.receipts()) {
-    // check if we have events  
-    if (!r.events.length) continue;
+    try {
+      let event = ev.rawEvent;
 
-    for (let log of r.logs) {
-      // check if logs follow the Events format  
-      if (!log.match(/^EVENT_JSON:(.*)$/)) continue;
+      if (event.standard === "nep171" && event.event === "nft_mint") {
+        console.log(event);
 
-      try {
-        // parse the JSON Event  
-        let event = JSON.parse(log.substring(log.indexOf(":") + 1));
+        let marketplace = "unknown";
+        if (r.receiverId.endsWith(".paras.near"))
+          marketplace = "Paras";
+        else if (r.receiverId.endsWith(".sharddog.near"))
+          marketplace = "ShardDog";
+        else if (r.receiverId.match(/\.mintbase\d+\.near$/))
+          marketplace = "Mintbase";
 
-        // check if it's a NEP-171 NFT minting
-        if (event.standard === "nep171" && event.event === "nft_mint") {
-          console.log(r.receiverId);
-          console.log(event);
+        const nftMintData = {
+          marketplace: marketplace,
+          block_height: block.header().height,
+          block_timestamp: createdOn,
+          receipt_id: r.receiptId,
+          receiver_id: r.receiverId,
+          nft_data: JSON.stringify(event.data),
+        };
 
-          // identify the NFT marketplace
-          let marketplace = "unknown";
-          if (r.receiverId.endsWith(".paras.near"))
-            marketplace = "Paras";
-          else if (r.receiverId.endsWith(".sharddog.near"))
-            marketplace = "ShardDog";
-          else if (r.receiverId.match(/\.mintbase\d+\.near$/))
-            marketplace = "Mintbase";
+        await context.db.Nfts.insert(nftMintData);
 
-          const nftMintData = {
-            marketplace: marketplace,
-            block_height: h,
-            block_timestamp: createdOn,
-            receipt_id: r.receiptId,
-            receiver_id: r.receiverId,
-            nft_data: JSON.stringify(event.data),
-          };
-
-          // store result to the database
-          await context.db.Nfts.insert(nftMintData);
-
-          console.log(`NFT by ${r.receiptId} has been added to the database`);
-        }
-      } catch (e) {
-        console.log(e);
+        console.log(`NFT by ${r.receiptId} has been added to the database`);
       }
+    } catch (e) {
+      console.log(e);
     }
   }
 }
 ```
 
-This filter selects receipts that have events of type `nft_mint` and standard `nep171`. In addition, it parses the JSON event data and identifies the NFT marketplace.
+This indexer filters [Blocks](https://near.github.io/near-lake-framework-js/classes/block.Block.html) that have [Events](https://near.github.io/near-lake-framework-js/classes/events.Event.html) of type `nft_mint` and standard `nep171`. In addition, it stores the JSON event data and identifies the NFT marketplace.
 
 ### Saving the data to the Database
 
