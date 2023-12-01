@@ -3,7 +3,7 @@
     "start-server": "./test-links.sh start",
     "check-links": "./test-links.sh check",
     "stop-server": "./test-links.sh stop",
-    "run-full-test": "./test-links.sh test",
+    "full-test": "./test-links.sh test",
     "examples": "docusaurus-examples",
     "start": "docusaurus start",
     "build": "docusaurus build",

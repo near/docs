@@ -1,5 +1,5 @@
 {
   "scripts": {
-    "test": "cd ./website && npm run test"
+    "test": "cd ./website && npm run full-test"
   }
 }
