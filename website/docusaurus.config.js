@@ -64,16 +64,6 @@ module.exports = {
     ],
   ],
   plugins: [
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'near-sdk-js',
-        // this path doesn't exit, the versioning mechanism takes docs from website/near-sdk-js_versioned_docs
-        path: '../__generated/near-sdk-js',
-        routeBasePath: '/sdk/near-sdk-js/reference',
-        includeCurrentVersion: false,
-      },
-    ],
     path.join(__dirname, '/plugins/monaco-editor')
   ],
   themeConfig: {
