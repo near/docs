@@ -32,7 +32,9 @@ await wallet.viewMethod({
 });
 ```
 
-**Example response:**
+<details>
+<summary>Example response</summary>
+<p>
 
 ```json
 {
@@ -46,6 +48,9 @@ await wallet.viewMethod({
 }
 ```
 
+</p>
+
+</details>
 
 ---
 
@@ -72,11 +77,17 @@ await wallet.viewMethod({
 });
 ```
 
-**Example response:**
+<details>
+<summary>Example response</summary>
+<p>
 
 ```json
 "3479615037675962643842"
 ```
+
+</p>
+
+</details>
 
 ---
 
@@ -149,6 +160,7 @@ If you need to register your own account just pass `{}` as arguments to call.
 
 <details>
 <summary>Example response</summary>
+<p>
 
 ```json
 {
@@ -156,6 +168,8 @@ If you need to register your own account just pass `{}` as arguments to call.
   "total": "1250000000000000000000"
 }
 ```
+
+</p>
 
 </details>
 
@@ -188,12 +202,17 @@ await wallet.callMethod({
 });
 ```
 
-**Example response:**
+<details>
+<summary>Example response</summary>
+<p>
 
 ```json
 '100000000000000000'
 ```
 
+</p>
+
+</details>
 
 How it works:
 

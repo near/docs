@@ -1,1 +1,0 @@
-dummy for near-sdk-js

@@ -7,7 +7,10 @@ website/secrets.env
 website/build/*
 website/i18n/*
 website/.docusaurus/*
+website/package-lock.json
+website/yarn.lock
 neardev
 .idea
 .docz
+serve*
 

@@ -103,7 +103,9 @@ const aliceStorageBalance = Near.view(tokenContract, "storage_balance_of", {
 });
 ```
 
-**Example response:**
+<details>
+<summary>Example response</summary>
+<p>
 
 It returns `null` if account is not registered.
 
@@ -113,6 +115,10 @@ It returns `null` if account is not registered.
   "total": "1250000000000000000000"
 }
 ```
+
+</p>
+
+</details>
 
 How to register another account:
 
