@@ -11,6 +11,8 @@ const res = fetch("https://rpc.mainnet.near.org/status");
 return res.body;
 ```
 
+---
+
 ## asyncFetch
 
 To access the version that returns a promise, you can use `asyncFetch`. It doesn't cache the value, so it should only be used within a function to avoid frequent requests on every render.

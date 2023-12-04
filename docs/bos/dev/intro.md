@@ -1,6 +1,6 @@
 ---
 id: intro
-sidebar_label: Overview
+sidebar_labe: Overview
 title: BOS Dev Tools
 ---
 

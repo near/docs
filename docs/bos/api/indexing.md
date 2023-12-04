@@ -1,6 +1,6 @@
 ---
 id: indexing
-title: Social Indexer
+title: Indexing Actions
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

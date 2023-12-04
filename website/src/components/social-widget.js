@@ -7,7 +7,7 @@ export function WidgetEditor({ children, id = 1, height = "160px", properties })
     props += `${prop}=${properties[prop]}`
   }
 
-  const uri = "https://near.social/#/embed/zavodil.near/widget/remote-code?" + props;
+  const uri = "https://near.social/#/embed/gagdiez.near/widget/remote-code?" + props;
 
   const code = children.props.children.props.children;
 

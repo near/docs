@@ -143,8 +143,7 @@
             "type": "html",
             "value": "<hr/>"
           },
-          "develop/testing/kurtosis-localnet",
-          "develop/testing/workspaces-migration"
+          "develop/testing/kurtosis-localnet"
         ]
       },
       {
@@ -618,7 +617,7 @@
     "tools/indexing"
   ],
   "components": [
-    "bos/welcome",
+    "bos/overview",
     "bos/tutorial/quickstart",
     {
       "type": "html",
@@ -628,18 +627,13 @@
       "type": "html",
       "value": "<span class='menu__link'><b><small> Components </small></b></span>"
     },
-    "bos/overview",
+    "bos/api/state",
     {
       "Build a Component": [
-        "bos/api/state",
         "bos/api/near",
-        {
-          "SocialDB": [
-            "bos/api/social",
-            "bos/api/indexing",
-            "bos/api/notifications"
-          ]
-        },
+        "bos/api/social",
+        "bos/api/indexing",
+        "bos/api/notifications",
         "bos/api/fetch",
         "bos/api/storage",
         "bos/api/cache",
@@ -647,21 +641,25 @@
       ]
     },
     "bos/built-in-components",
+    "bos/integrate",
     {
       "type": "html",
       "value": "<hr/>"
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Quickstart </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Local Development </small></b></span>"
     },
-    "develop/integrate/quickstart-frontend",
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    "bos/tutorial/bos-gateway",
     "bos/dev/intro",
+    "bos/tutorial/bos-gateway",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Local Development </small></b></span>"
+    },
     {
       "Examples & Tutorials": [
         "bos/dev/bos-loader",
@@ -688,6 +686,7 @@
       "type": "html",
       "value": "<span class='menu__link'><b><small> Frontend Integration </small></b></span>"
     },
+    "develop/integrate/quickstart-frontend",
     "develop/integrate/frontend",
     {
       "type": "category",

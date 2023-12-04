@@ -108,7 +108,8 @@ module.exports = {
           label: "Build",
           position: "left",
           items: [
-            { label: "Composable Apps", href: "/bos/welcome" },
+            { label: "Web Components", href: "/bos/welcome" },
+            { label: "Web3 Applications", href: "develop/integrate/welcome" },
             { label: "Smart Contracts", href: "/develop/contracts/welcome" },
             { label: "Data Solutions", href: "/develop/monitor" },
             {
