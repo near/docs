@@ -856,6 +856,7 @@
   ],
   "api": [
     "api/rpc/introduction",
+    "api/rpc/iprpc",
     "api/rpc/providers",
     {
       "type": "html",
