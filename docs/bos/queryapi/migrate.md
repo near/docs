@@ -85,6 +85,64 @@ As with the previous example, moving this NFT indexer to QueryAPI requires to mi
 ### Migrating to QueryAPI
 
 
+```js
+async function getBlock(block: Block) {
+
+  for (let ev of block.events()) {
+    const r = block.actionByReceiptId(ev.relatedReceiptId);
+    const createdOn = new Date(block.streamerMessage.block.header.timestamp / 1000000);
+
+    try {
+      let event = ev.rawEvent;
+
+      if (event.standard === "nep171" && event.event === "nft_mint") {
+        console.log(event);
+
+        let nfts = [];
+        let marketplace = "unknown";
+
+        if (r.receiverId.endsWith(".paras.near"))
+        {
+          marketplace = "Paras";
+          nfts = event.data.map(eventData => ({
+                owner: eventData.owner_id,
+                links: eventData.token_ids.map(
+                  tokenId => `https://paras.id/token/${r.receiverId}::${tokenId.split(":")[0]}/${tokenId}`)
+                })
+              );
+        }
+        else if (r.receiverId.match(/\.mintbase\d+\.near$/))
+        {
+          marketplace = "Mintbase";
+          nfts = event.data.map(eventData => {
+            const memo = JSON.parse(eventData.memo)
+            return {
+              owner: eventData.owner_id,
+              links: [`https://mintbase.io/thing/${memo["meta_id"]}:${r.receiverId}`]
+            }
+          });
+        }
+
+        console.log(nfts);
+/*
+        const nftMintData = {
+          marketplace: marketplace,
+          block_height: block.header().height,
+          block_timestamp: createdOn,
+          receipt_id: r.receiptId,
+          receiver_id: r.receiverId,
+          nft_data: JSON.stringify(event.data),
+        };
+
+*/
+        console.log(`NFT by ${r.receiptId} has been added to the database`);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+}
+```
 
 ### Database storage
 
