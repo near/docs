@@ -260,7 +260,7 @@ NEAR Workspaces is set up so that you can write tests once and run them against 
 :::tip
 
 In order to use Workspaces in testnet mode you will need to have a `testnet` account.
-You can create one [here](https://testnet.mynearwallet.com//).
+You can create one [here](https://testnet.mynearwallet.com/).
 
 :::
 
