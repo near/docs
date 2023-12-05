@@ -87,7 +87,7 @@ cd 1.skeleton && ./build.sh && cd ..
 
 There will be a list of warnings on your console, but as the tutorial progresses, these warnings will go away. You should now see the folder `out/` with the file `contract.wasm` inside. This is what we will be deploying to the blockchain.
 
-For deployment, you will need a NEAR account with the keys stored on your local machine. Navigate to the [NEAR wallet](https://wallet.testnet.near.org/) site and create an account.
+For deployment, you will need a NEAR account with the keys stored on your local machine. Navigate to the [NEAR wallet](https://testnet.mynearwallet.com//) site and create an account.
 
 :::info
 Please ensure that you deploy the contract to an account with no pre-existing contracts. It's easiest to simply create a new account or create a sub-account for this tutorial.

@@ -115,7 +115,7 @@ Focusing on the two most common blockchain indexing use cases, you can consider:
 
 :::info
 
-QueryAPI uses [PostgreSQL 14.9](https://postgrespro.com/docs/postgresql/14/ddl). You can find additional documentation about PostgresSQL data definition language [in this link](https://postgrespro.com/docs/postgresql/14/ddl).
+QueryAPI uses [PostgreSQL 14.9](https://www.postgresql.org/docs/14/index.html). You can find additional documentation about PostgresSQL data definition language [in this link](https://postgrespro.com/docs/postgresql/14/ddl).
 
 :::
 

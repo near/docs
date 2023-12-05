@@ -23,7 +23,7 @@ finally makes using a blockchain protocol easy for both developers and consumers
 Check out the following links
 
 - Deployed, live documentation: https://docs.near.org
-- Example applications: https://near.dev
+- Example applications: https://github.com/near-examples
 - Community chat: https://near.chat
 
 ## Contributing

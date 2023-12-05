@@ -18,7 +18,7 @@ This indexer creates a new row in a pre-defined `posts` table created by the use
 
 :::tip
 
-This indexer can be found by [following this link](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=bucanero.near/posts-example&view=editor-window).
+This indexer can be found by [following this link](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=bucanero.near/posts-example).
 
 :::
 

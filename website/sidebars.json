@@ -42,10 +42,7 @@
       ]
     },
     {
-      "Tokens": [
-        "concepts/basics/tokens",
-        "concepts/basics/token-loss"
-      ]
+      "Tokens": ["concepts/basics/tokens", "concepts/basics/token-loss"]
     },
     {
       "Storage": [
@@ -475,9 +472,7 @@
               ]
             },
             {
-              "Cross-Contract Calls": [
-                "sdk/rust/cross-contract/callbacks"
-              ]
+              "Cross-Contract Calls": ["sdk/rust/cross-contract/callbacks"]
             },
             {
               "Promises": [
@@ -510,7 +505,7 @@
             {
               "type": "link",
               "label": "Type Docs ↗",
-              "href": "/sdk/near-sdk-js/reference"
+              "href": "https://near.github.io/near-sdk-js/"
             },
             {
               "Structure of a Contract": [
@@ -526,9 +521,7 @@
               ]
             },
             {
-              "Cross-Contract Calls": [
-                "sdk/js/cross-contract/callbacks"
-              ]
+              "Cross-Contract Calls": ["sdk/js/cross-contract/callbacks"]
             },
             {
               "Promises": [
@@ -546,9 +539,7 @@
               ]
             },
             {
-              "SDK CLI": [
-                "sdk/js/cli/cli"
-              ]
+              "SDK CLI": ["sdk/js/cli/cli"]
             },
             {
               "Testing": [
@@ -563,10 +554,7 @@
     {
       "type": "category",
       "label": "Command Line Tools (CLI)",
-      "items": [
-        "tools/near-cli",
-        "tools/near-cli-rs"
-      ]
+      "items": ["tools/near-cli", "tools/near-cli-rs"]
     },
     {
       "type": "category",
@@ -758,6 +746,7 @@
     "bos/queryapi/best-practices",
     "bos/queryapi/index-functions",
     "bos/queryapi/context-object",
+    "bos/queryapi/migrate-from-near-lake",
     {
       "Tutorials": [
         "bos/tutorial/indexer-tutorials/posts-indexer",

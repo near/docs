@@ -23,7 +23,7 @@ There will be three main files we'll be working with:
 
 ## Entry point
 
-We'll go over a pattern that may look familiar to folks who have surveyed the [NEAR examples site](https://near.dev). We'll start with an asynchronous JavaScript function that sets up desired logic, then pass that to the React app.
+We'll go over a pattern that may look familiar to folks who have surveyed the [NEAR examples site](https://github.com/near-examples). We'll start with an asynchronous JavaScript function that sets up desired logic, then pass that to the React app.
 
 ```js reference
 https://github.com/near-examples/crossword-tutorial-chapter-1/blob/3e497b4815600b8382614f76c7812520710f704d/src/index.js#L3-L22
@@ -89,7 +89,7 @@ We haven't had the frontend call a mutable method for our project yet. We'll get
 
 ## Run the React app
 
-Let's run our frontend on testnet! We won't add any new concepts at this point in the chapter, but note that the [near examples](https://near.dev) typically create an account for you automatically with a NodeJS command. We covered the important pattern of creating a subaccount and deploying the smart contract to it, so let's stick with that pattern as we start up our frontend.
+Let's run our frontend on testnet! We won't add any new concepts at this point in the chapter, but note that the [near examples](https://github.com/near-examples) typically create an account for you automatically with a NodeJS command. We covered the important pattern of creating a subaccount and deploying the smart contract to it, so let's stick with that pattern as we start up our frontend.
 
 ```bash
 # Go into the directory containing the Rust smart contract we've been working on

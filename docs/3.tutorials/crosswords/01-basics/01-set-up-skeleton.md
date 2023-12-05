@@ -10,7 +10,7 @@ In this tutorial we'll get a testnet account, use NEAR CLI to add a key to our c
 
 ## Getting a testnet account
 
-Visit [NEAR Wallet for testnet](https://wallet.testnet.near.org) and register for a free account. For the purposes of this tutorial, you may skip the option to add two-factor authentication if you wish.
+Visit [NEAR Wallet for testnet](https://testnet.mynearwallet.com/) and register for a free account. For the purposes of this tutorial, you may skip the option to add two-factor authentication if you wish.
 
 :::note What just happened?
 When you created your NEAR testnet account, a private key was created and placed into your browser's local storage. You may inspect this using developer tools and see it. 
