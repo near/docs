@@ -4,7 +4,7 @@ title: Introduction
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {WidgetEditor} from "@site/src/components/social-widget"
+import {WidgetEditor} from "@site/components/social-widget"
 
 Borrowing from React, Near Components use the same concepts of state, props and hooks to handle the component's logic.
 

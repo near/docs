@@ -98,18 +98,27 @@ module.exports = {
           label: "Build",
           position: "left",
           items: [
-            { label: "Web Components", href: "/bos/welcome" },
-            { label: "Web3 Applications", href: "develop/integrate/welcome" },
-            { label: "Smart Contracts", href: "/develop/contracts/welcome" },
+            { label: "Components", href: "/bos/overview" },
             { label: "Data Solutions", href: "/develop/monitor" },
+            { label: "Smart Contracts", href: "/develop/contracts/welcome" },
+            { label: "Web3 Applications", href: "/bos/welcome" },
             {
               type: 'html',
               value: '<hr/> <small class="subtitle"> Integrations </small>',
             },
-            { label: "Frontend", href: "/develop/contracts/welcome" },
-            { label: "Backend", href: "/develop/contracts/welcome" },
-            { label: "Rollups DA", href: "/data-availability/welcome" },
+            { label: "Backend", href: "/develop/integrate/backend-login" },
+            { label: "Frontend", href: "/develop/integrate/frontend" },
             { label: "Exchanges", href: "/integrator/exchange-integration" },
+            { label: "Rollups DA", href: "/data-availability/welcome" },
+          ]
+        },
+        {
+          label: "Primitives",
+          position: "left",
+          items: [
+            { label: "Fungible Tokens", href: "/primitives/nft/introduction" },
+            { label: "Non-Fungible Tokens", href: "/primitives/ft/introduction" },
+            { label: "Decentralized Exchanges", href: "/primitives/dex/introduction" },
           ]
         },
         {

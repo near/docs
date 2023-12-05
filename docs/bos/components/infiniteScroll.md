@@ -4,7 +4,7 @@ title: InfiniteScroll
 sidebar_label: InfiniteScroll
 ---
 
-import {WidgetEditor} from "@site/src/components/social-widget"
+import {WidgetEditor} from "@site/components/social-widget"
 
 Infinitely load a grid or list of items. This component allows you to create a simple, lightweight infinite scrolling page or element by supporting both window and scrollable elements.
 

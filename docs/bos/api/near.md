@@ -1,6 +1,6 @@
 ---
 id: near
-title: Near
+title: Interact with Near
 ---
 
 import Tabs from '@theme/Tabs';

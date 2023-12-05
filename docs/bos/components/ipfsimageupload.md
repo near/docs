@@ -2,7 +2,7 @@
 id: ipfs
 title: Image Uploader
 ---
-import {WidgetEditor} from "@site/src/components/social-widget"
+import {WidgetEditor} from "@site/components/social-widget"
 
 The `IpfsImageUpload` is a built-in component that enables users to directly upload an image to the InterPlanetary File System (IPFS).
 

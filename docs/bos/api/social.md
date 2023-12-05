@@ -1,6 +1,6 @@
 ---
 id: social
-title: Interacting with SocialDB
+title: Interact with SocialDB
 ---
 
 import Tabs from '@theme/Tabs';

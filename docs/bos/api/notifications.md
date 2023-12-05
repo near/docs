@@ -4,7 +4,7 @@ title: Social Notifications
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {WidgetEditor} from "@site/src/components/social-widget"
+import {WidgetEditor} from "@site/components/social-widget"
 
 NEAR B.O.S allows applications to send notifications to their users. Notifications is implemented as a particular case of [indexed actions](/bos/api/indexing).
 

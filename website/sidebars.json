@@ -398,14 +398,6 @@
     "primitives/ft/additional-resources",
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> DAOs </small></b></span>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'>Coming Soon</span>"
-    },
-    {
-      "type": "html",
       "value": "<hr/>"
     },
     {
@@ -635,6 +627,7 @@
     "bos/api/state",
     {
       "Build a Component": [
+        "bos/api/primitives",
         "bos/api/near",
         "bos/api/social",
         "bos/api/indexing",
@@ -647,6 +640,7 @@
     },
     "bos/built-in-components",
     "bos/integrate",
+    "bos/queryapi/bos-components",
     {
       "type": "html",
       "value": "<hr/>"
@@ -656,33 +650,34 @@
       "value": "<span class='menu__link'><b><small> Local Development </small></b></span>"
     },
     "bos/dev/intro",
-    "bos/tutorial/bos-gateway",
+    "bos/dev/bos-loader",
     {
       "type": "html",
       "value": "<hr/>"
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Local Development </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Examples & Tutorials </small></b></span>"
     },
     {
-      "Examples & Tutorials": [
-        "bos/dev/bos-loader",
-        "bos/tutorial/interaction",
-        "bos/tutorial/ds-components",
-        "bos/tutorial/using-iframes",
-        "bos/tutorial/bos-gateway",
-        "bos/tutorial/push-notifications",
-        "bos/tutorial/queryapi-websockets",
-        "bos/tutorial/ethers-js",
-        "bos/tutorial/ethers-js-best-practices",
+      "Examples": [
         "bos/tutorial/lido"
       ]
     },
-    "bos/queryapi/bos-components"
+    {
+      "Tutorials": [
+        "bos/tutorial/interaction",
+        "bos/tutorial/ds-components",
+        "bos/tutorial/using-iframes",
+        "bos/tutorial/push-notifications",
+        "bos/tutorial/queryapi-websockets",
+        "bos/tutorial/ethers-js",
+        "bos/tutorial/ethers-js-best-practices"
+      ]
+    }
   ],
   "integrate": [
-    "develop/integrate/welcome",
+    "bos/welcome",
     {
       "type": "html",
       "value": "<hr/>"

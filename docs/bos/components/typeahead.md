@@ -3,7 +3,7 @@ id: typeahead
 title: TypeAhead Component
 sidebar_label: TypeAhead
 ---
-import {WidgetEditor} from "@site/src/components/social-widget"
+import {WidgetEditor} from "@site/components/social-widget"
 
 The `TypeAhead` component provides a type-ahead input field for selecting an option from a list of choices. This component is imported from the `react-bootstrap-typeahead` package; more information about the component can be found [here](https://github.com/ericgio/react-bootstrap-typeahead).
 

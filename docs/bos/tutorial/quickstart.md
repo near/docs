@@ -4,7 +4,7 @@ title: Hello Component
 sidebar_label: ⭐ Quickstart
 ---
 
-import {WidgetEditor} from "@site/src/components/social-widget"
+import {WidgetEditor} from "@site/components/social-widget"
 
 NEAR enables to create components that can readily talk with the NEAR network as well as multiple EVM compatible chains.
 

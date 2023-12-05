@@ -3,7 +3,7 @@ id: components
 title: Components
 ---
 
-import {WidgetEditor} from "@site/src/components/social-widget"
+import {WidgetEditor} from "@site/components/social-widget"
 
 BOS allows you to create a decentralized frontend by writing and composing small applications known as `Components`. 
 

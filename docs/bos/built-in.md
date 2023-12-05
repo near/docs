@@ -3,7 +3,7 @@ id: built-in-components
 title: List of Native Components
 ---
 
-import {WidgetEditor} from "@site/src/components/social-widget"
+import {WidgetEditor} from "@site/components/social-widget"
 
 A list of all the built-in components to be used on Near Components.
 

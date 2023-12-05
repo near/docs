@@ -3,7 +3,7 @@ id: integrate
 title: ⭐ Integrate to a React App 
 ---
 
-import {WidgetEditor} from "@site/src/components/social-widget"
+import {WidgetEditor} from "@site/components/social-widget"
 
 Near Components can be easily integrated into any React application. For this, you first need to add the `near-social-vm` package to your application.
 
