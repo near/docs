@@ -25,7 +25,7 @@ In this tutorial you'll learn how you can listen to [Events](https://nomicon.io/
 
 :::tip
 
-The indexer's source code can be found by [following this link](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=bucanero.near/nft_v4&view=editor-window).
+The indexer's source code can be found by [following this link](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=bucanero.near/nft_v4).
 
 :::
 

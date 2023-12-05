@@ -756,6 +756,7 @@
     "bos/queryapi/best-practices",
     "bos/queryapi/index-functions",
     "bos/queryapi/context-object",
+    "bos/queryapi/migrate-from-near-lake",
     {
       "Tutorials": [
         "bos/tutorial/indexer-tutorials/posts-indexer",
