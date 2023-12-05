@@ -79,7 +79,7 @@ const amount = nearAPI.utils.format.parseNearAmount("1.5");
 In order to sign transactions you will need to create a "Key Store" that will hold a [full access key](/concepts/basics/accounts/access-keys#full-access-keys) to sign your transactions. There are several ways to accomplish this, but for this example we will use a private key stored in either an `.env` file in your project or an environment variable exported globally.
 
 - If you created the account using [`near-cli`](/tools/near-cli) or ran [`near login`](/tools/near-cli#for-accounts) in your terminal, your private key can be found in a `.json` file located in `/HOME/.near-credentials`.
-- If you created an account using [NEAR Wallet](https://testnet.mynearwallet.com//), your key will be found in your browser's `Local Storage`.
+- If you created an account using [NEAR Wallet](https://testnet.mynearwallet.com/), your key will be found in your browser's `Local Storage`.
   - In your browser's dev tools... `Application` >> `Storage` >> `Local Storage`
 
 ```js
