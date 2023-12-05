@@ -197,7 +197,7 @@ const provider = new nearAPI.providers.JsonRpcProvider(
 To sign a transaction to send NEAR Ⓝ, we will need a `FullAccess` key to the sender's account.
 
 - If you created the account using [`near-cli`](/tools/near-cli) or ran [`near login`](/tools/near-cli#for-accounts) in your terminal, your private key can be found in a `.json` file located in `/HOME/.near-credentials`.
-- If you created an account using [NEAR Wallet](https://testnet.mynearwallet.com//), your key will be found in your browser's `Local Storage`.
+- If you created an account using [NEAR Wallet](https://testnet.mynearwallet.com/), your key will be found in your browser's `Local Storage`.
   - In your browser's dev tools... `Application` >> `Storage` >> `Local Storage`
 
 Once you have access to the private key of the sender's account, create an environment variable `SENDER_PRIVATE_KEY` or hard code it as a string on [line 18](https://github.com/near-examples/transaction-examples/blob/master/send-tokens-deconstructed.js#L18) of `send-tokens.js`.
