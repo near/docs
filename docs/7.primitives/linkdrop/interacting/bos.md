@@ -13,6 +13,10 @@ This section describes how to create different kinds of linkdrop from a [NEAR Co
 
 ## Getting key pairs
 
+In order to create any kind of drop, you need to first generate key pairs. 
+
+You will need to create one key per drop you want to generate, and you will always pass the `public` part of the key to create the drop, and give the `private` part of the key to the user you want to receive the drop.
+
 ```js
 
 const dropsNumber = "2";
