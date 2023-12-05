@@ -21,6 +21,7 @@ import TabItem from '@theme/TabItem';
 
 You'll typically first create a connection to NEAR with [`connect`](#connect) using a [`KeyStore`](#key-store).
 With the connection object you now can:
+
 - Interact with the [Wallet](naj-wallet.md) in a browser.
 - Instantiate an [Account](naj-account.md) object to:
   - Send tokens
@@ -89,15 +90,14 @@ const { keyStores } = nearAPI;
 const myKeyStore = new keyStores.BrowserLocalStorageKeyStore();
 ```
 
-
-[<span class="typedoc-icon typedoc-icon-class"></span> Class `BrowserLocalStorageKeyStore`](https://near.github.io/near-api-js/classes/key_stores_browser_local_storage_key_store.BrowserLocalStorageKeyStore)
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `BrowserLocalStorageKeyStore`](https://near.github.io/near-api-js/classes/_near_js_keystores_browser.browser_local_storage_key_store.BrowserLocalStorageKeyStore.html)
 
 </TabItem>
 <TabItem value="dir" label="Using Credentials Directory">
 
 ```js
 // creates a keyStore that searches for keys in .near-credentials
-// requires credentials stored locally by using a NEAR-CLI command: `near login` 
+// requires credentials stored locally by using a NEAR-CLI command: `near login`
 // https://docs.near.org/tools/cli#near-login
 
 const { keyStores } = nearAPI;
@@ -107,7 +107,7 @@ const credentialsPath = require("path").join(homedir, CREDENTIALS_DIR);
 const myKeyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
 ```
 
-[<span class="typedoc-icon typedoc-icon-class"></span> Class `UnencryptedFileSystemKeyStore`](https://near.github.io/near-api-js/classes/key_stores_unencrypted_file_system_keystore.UnencryptedFileSystemKeyStore)
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `UnencryptedFileSystemKeyStore`](https://near.github.io/near-api-js/classes/_near_js_keystores_node.unencrypted_file_system_keystore.UnencryptedFileSystemKeyStore.html)
 
 </TabItem>
 <TabItem value="file" label="Using a File">
@@ -120,19 +120,23 @@ const { KeyPair, keyStores } = require("near-api-js");
 const fs = require("fs");
 const homedir = require("os").homedir();
 
-const ACCOUNT_ID = "near-example.testnet";  // NEAR account tied to the keyPair
+const ACCOUNT_ID = "near-example.testnet"; // NEAR account tied to the keyPair
 const NETWORK_ID = "testnet";
 // path to your custom keyPair location (ex. function access key for example account)
-const KEY_PATH = '/.near-credentials/near-example-testnet/get_token_price.json';
+const KEY_PATH = "/.near-credentials/near-example-testnet/get_token_price.json";
 
 const credentials = JSON.parse(fs.readFileSync(homedir + KEY_PATH));
 const myKeyStore = new keyStores.InMemoryKeyStore();
-myKeyStore.setKey(NETWORK_ID, ACCOUNT_ID, KeyPair.fromString(credentials.private_key));
+myKeyStore.setKey(
+  NETWORK_ID,
+  ACCOUNT_ID,
+  KeyPair.fromString(credentials.private_key)
+);
 ```
 
-[<span class="typedoc-icon typedoc-icon-class"></span> Class `InMemoryKeyStore`](https://near.github.io/near-api-js/classes/key_stores_in_memory_key_store.InMemoryKeyStore)
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `InMemoryKeyStore`](https://near.github.io/near-api-js/classes/_near_js_keystores.in_memory_key_store.InMemoryKeyStore.html)
 &nbsp;&nbsp;&nbsp;
-[<span class="typedoc-icon typedoc-icon-class"></span> Class `KeyPair`](https://near.github.io/near-api-js/classes/utils_key_pair.KeyPair)
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `KeyPair`](https://near.github.io/near-api-js/classes/_near_js_crypto.key_pair.KeyPair.html)
 
 </TabItem>
 <TabItem value="key" label="Using a private key string">
@@ -151,9 +155,9 @@ const keyPair = KeyPair.fromString(PRIVATE_KEY);
 await myKeyStore.setKey("testnet", "example-account.testnet", keyPair);
 ```
 
-[<span class="typedoc-icon typedoc-icon-class"></span> Class `InMemoryKeyStore`](https://near.github.io/near-api-js/classes/key_stores_in_memory_key_store.InMemoryKeyStore)
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `InMemoryKeyStore`](https://near.github.io/near-api-js/classes/_near_js_keystores.in_memory_key_store.InMemoryKeyStore.html)
 &nbsp;&nbsp;&nbsp;
-[<span class="typedoc-icon typedoc-icon-class"></span> Class `KeyPair`](https://near.github.io/near-api-js/classes/utils_key_pair.KeyPair)
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `KeyPair`](https://near.github.io/near-api-js/classes/_near_js_crypto.key_pair.KeyPair.html)
 
 </TabItem>
 </Tabs>
@@ -171,7 +175,7 @@ const { connect } = nearAPI;
 
 const connectionConfig = {
   networkId: "testnet",
-  keyStore: myKeyStore, // first create a key store 
+  keyStore: myKeyStore, // first create a key store
   nodeUrl: "https://rpc.testnet.near.org",
   walletUrl: "https://wallet.testnet.near.org",
   helperUrl: "https://helper.testnet.near.org",
@@ -198,23 +202,7 @@ const nearConnection = await connect(connectionConfig);
 ```
 
 </TabItem>
-<TabItem value="betanet" label="BetaNet">
 
-```js
-const { connect } = nearAPI;
-
-const connectionConfig = {
-  networkId: "betanet",
-  keyStore: myKeyStore, // first create a key store
-  nodeUrl: "https://rpc.betanet.near.org",
-  walletUrl: "https://wallet.betanet.near.org",
-  helperUrl: "https://helper.betanet.near.org",
-  explorerUrl: "https://explorer.betanet.near.org",
-};
-const nearConnection = await connect(connectionConfig);
-```
-
-</TabItem>
 <TabItem value="localnet" label="LocalNet">
 
 ```js
@@ -230,4 +218,4 @@ const nearConnection = await connect(connectionConfig);
 </TabItem>
 </Tabs>
 
-[<span class="typedoc-icon typedoc-icon-module"></span> Module `connect`](https://near.github.io/near-api-js/modules/connect)
+[<span class="typedoc-icon typedoc-icon-module"></span> Module `connect`](https://near.github.io/near-api-js/modules/near_api_js.connect.html)

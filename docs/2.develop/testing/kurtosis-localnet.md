@@ -5,7 +5,7 @@ sidebar_label: Local Development
 description: Using Kurtosis NEAR Package to develop locally
 ---
 
-> [Kurtosis](https://www.kurtosis.com/) has created an easy way to spin up a local NEAR testing environment using a [Docker container](https://www.docker.com/). 
+> [Kurtosis](https://www.kurtosis.com/) has created an easy way to spin up a local NEAR testing environment using a [Docker container](https://www.docker.com/).
 
 This Kurtosis NEAR Package contains the following components:
 
@@ -34,28 +34,30 @@ This Kurtosis NEAR Package contains the following components:
 
 Launch your Kurtosis NEAR Package in four easy steps!
 
-1) Launch [Docker](https://docs.docker.com/get-docker/)
+1. Launch [Docker](https://docs.docker.com/get-docker/)
 
-2) Copy the [Kurtosis NEAR Package launch script](https://github.com/kurtosis-tech/near-package/blob/master/launch-local-near-cluster.sh) by running the following:
+2. Copy the [Kurtosis NEAR Package launch script](https://github.com/kurtosis-tech/near-package/blob/master/launch-local-near-cluster.sh) by running the following:
 
 ```bash
 curl -o ~/launch-local-near-cluster.sh https://raw.githubusercontent.com/kurtosis-tech/near-package/master/launch-local-near-cluster.sh -L
 ```
 
-3) Grant write permission to the script file you just downloaded:
+3. Grant write permission to the script file you just downloaded:
 
 ```bash
 chmod u+x ~/launch-local-near-cluster.sh
 ```
 
-4) Launch the Kurtosis NEAR Package:
+4. Launch the Kurtosis NEAR Package:
 
 If you're running the NEAR-in-Kurtosis cluster on your local machine:
+
 ```bash
 ~/launch-local-near-cluster.sh
 ```
 
 If you're running your NEAR-in-Kurtosis cluster on a machine you intend to access remotely, replace `1.2.3.4` with the IP address of the machine you're running the cluster on:
+
 ```bash
 ~/launch-local-near-cluster.sh '{"backend_ip_address":"1.2.3.4"}'
 ```
@@ -66,9 +68,9 @@ If you're running your NEAR-in-Kurtosis cluster on a machine you intend to acces
 
 ```bash
 Created directory '/Users/zerix/.neartosis' for storing all NEAR-in-Kurtosis output
-INFO[2022-12-06T12:59:04+05:30] Creating a new enclave for Starlark to run inside... 
-INFO[2022-12-06T12:59:14+05:30] Enclave 'near' created successfully          
-INFO[2022-12-06T12:59:14+05:30] Kurtosis CLI is running in a non interactive terminal. Everything will work but progress information and the progress bar will not be displayed. 
+INFO[2022-12-06T12:59:04+05:30] Creating a new enclave for Starlark to run inside...
+INFO[2022-12-06T12:59:14+05:30] Enclave 'near' created successfully
+INFO[2022-12-06T12:59:14+05:30] Kurtosis CLI is running in a non interactive terminal. Everything will work but progress information and the progress bar will not be displayed.
 
 > print "Starting the near-package with input struct(backend_ip_address = \"127.0.0.1\")"
 Starting the near-package with input struct(backend_ip_address = "127.0.0.1")
@@ -86,12 +88,12 @@ Service 'contract-helper-db' added with service GUID 'contract-helper-db-1670311
 Command returned with exit code '0' with no output
 
 > exec service_id="contract-helper-db" command=["psql", "-U", "near", "-c", "\\l"]
-Command returned with exit code '0' and the following output: 
+Command returned with exit code '0' and the following output:
 List of databases
-   Name    | Owner | Encoding |  Collate   |   Ctype    | Access privileges 
+   Name    | Owner | Encoding |  Collate   |   Ctype    | Access privileges
 -----------+-------+----------+------------+------------+-------------------
- near      | near  | UTF8     | en_US.utf8 | en_US.utf8 | 
- postgres  | near  | UTF8     | en_US.utf8 | en_US.utf8 | 
+ near      | near  | UTF8     | en_US.utf8 | en_US.utf8 |
+ postgres  | near  | UTF8     | en_US.utf8 | en_US.utf8 |
  template0 | near  | UTF8     | en_US.utf8 | en_US.utf8 | =c/near          +
            |       |          |            |            | near=CTc/near
  template1 | near  | UTF8     | en_US.utf8 | en_US.utf8 | =c/near          +
@@ -138,7 +140,7 @@ Service 'indexer-node' added with service GUID 'indexer-node-1670311774'
 Command returned with exit code '0' with no output
 
 > exec service_id="indexer-node" command=["cat", "/root/.near/validator_key.json"]
-Command returned with exit code '0' and the following output: 
+Command returned with exit code '0' and the following output:
 {
   "account_id": "test.near",
   "public_key": "ed25519:3Kuyi2DUXdoHgoaNEvCxa1m6G8xqc6Xs7WGajaqLhNmW",
@@ -227,9 +229,9 @@ Starlark code successfully run. Output was:
 	},
 	"wallet_url": "http://127.0.0.1:8334"
 }
-INFO[2022-12-06T13:00:10+05:30] ============================================= 
-INFO[2022-12-06T13:00:10+05:30] ||          Created enclave: near          || 
-INFO[2022-12-06T13:00:10+05:30] ============================================= 
+INFO[2022-12-06T13:00:10+05:30] =============================================
+INFO[2022-12-06T13:00:10+05:30] ||          Created enclave: near          ||
+INFO[2022-12-06T13:00:10+05:30] =============================================
 ============================================================ SUCCESS ================================================================================
   ACTION Paste the following in your terminal to declare the following variables so you can use them:
 
@@ -244,18 +246,18 @@ INFO[2022-12-06T13:00:10+05:30] =============================================
 ed25519:2ykcMLiM7vCmsSECcgfmUzihBtNdBv7v2CxNi94sNt4R8ar4xsrMMYvtsSNGQDfSRhNWXEnZvgx2wzS9ViBiS9jW"})
 test.near"
          export NEAR_EXPLORER_URL="http://127.0.0.1:8331"
-  
+
   ACTION Paste the following into your terminal now to use the 'local_near' command as a replacement for the NEAR CLI for connecting to your
          local cluster (e.g. 'local_near login'):
-  
+
          alias local_near='NEAR_ENV="local" NEAR_CLI_LOCALNET_NETWORK_ID="localnet" NEAR_NODE_URL="http://127.0.0.1:8332" NEAR_CLI_LOCALNET_KEY_PATH="/Users/zerix/.neartosis/2022-12-06T12.59.04/validator-key.json" NEAR_WALLET_URL="http://127.0.0.1:8334" NEAR_HELPER_URL="http://127.0.0.1:8330" NEAR_HELPER_ACCOUNT="test.near
 \"ed25519:2ykcMLiM7vCmsSECcgfmUzihBtNdBv7v2CxNi94sNt4R8ar4xsrMMYvtsSNGQDfSRhNWXEnZvgx2wzS9ViBiS9jW\"})
 ed25519:2ykcMLiM7vCmsSECcgfmUzihBtNdBv7v2CxNi94sNt4R8ar4xsrMMYvtsSNGQDfSRhNWXEnZvgx2wzS9ViBiS9jW"})
 test.near" NEAR_EXPLORER_URL="http://127.0.0.1:8331" near'
-  
+
   ACTION If you want the 'local_near' command available in all your new terminal windows, add the above alias into your .bash_profile/.bashrc/.zshrc
          file and open a new terminal window.
-  
+
   ACTION To stop your cluster, run the following:
 
          kurtosis enclave stop near
@@ -283,7 +285,6 @@ If you're running Kurtosis on a remote machine, you'll also need to:
 
 :::
 
-
 </p>
 </details>
 
@@ -295,9 +296,9 @@ kurtosis enclave inspect near
 
 ### Setup Environment Variables
 
-After deploying your Kurtosis NEAR Package, you will need to setup some environment variables to make life a lot easier. Notice the **ACTION** sections in your terminal log from the package deployment. You will be using these exact values to setup these variables. 
+After deploying your Kurtosis NEAR Package, you will need to setup some environment variables to make life a lot easier. Notice the **ACTION** sections in your terminal log from the package deployment. You will be using these exact values to setup these variables.
 
-1) Follow the first ACTION item from the deployment log by copying all of the export commands and running them in your terminal.
+1. Follow the first ACTION item from the deployment log by copying all of the export commands and running them in your terminal.
 
 **Example exports: (DO NOT COPY ~ yours will be slightly different)**
 
@@ -312,7 +313,7 @@ export NEAR_HELPER_ACCOUNT="test.near"
 export NEAR_EXPLORER_URL="http://127.0.0.1:8331"
 ```
 
-2) Proceed to the second ACTION item which asks you to create an alias for `local_near`. This is what we will use when running [`near-cli`](/tools/near-cli) commands with our test environment. 
+2. Proceed to the second ACTION item which asks you to create an alias for `local_near`. This is what we will use when running [`near-cli`](/tools/near-cli) commands with our test environment.
 
 **Example alias: (DO NOT COPY ~ yours will be slightly different)**
 
@@ -363,7 +364,7 @@ The Kurtosis Team has created a great [video presentation](https://www.loom.com/
 
 ### Local NEAR Wallet
 
-Now that you have [everything setup](#setup), create an account using [your local NEAR Wallet at http://127.0.0.1:8334](http://127.0.0.1:8334).
+Now that you have [everything setup](#setup), create an account using your local NEAR Wallet at http://127.0.0.1:8334.
 
 ![Local wallet landing page](/docs/assets/kurtosis/local-wallet-landing-page.png)
 
@@ -432,8 +433,7 @@ http://127.0.0.1:8331/transactions/3e3H5zqj9noKGYTCMqeZ5pb4NWK7tQsjYKak6ybtpgvD
 
 Here everything behaves exactly like the `testnet` or `mainnet` NEAR Explorer except it is retrieving data from your local NEAR blockchain!
 
-- If you ever need to open your local NEAR Explorer, you can [always visit 127.0.0.1:8331](http://127.0.0.1:8331/) or run:
-
+- If you ever need to open your local NEAR Explorer, you can always visit 127.0.0.1:8331 or run:
 
 ```bash
 echo $NEAR_EXPLORER_URL
@@ -446,7 +446,6 @@ http://127.0.0.1:8331
 ```
 
 ![Localnet explorer](/docs/assets/kurtosis/localnet-explorer.png)
-
 
 ---
 
@@ -488,7 +487,7 @@ Done deploying to goteam.test.near
 
 Now, let's interact with the deployed contract.
 
-- First, initialize the contract by running the following command: 
+- First, initialize the contract by running the following command:
 
 ```bash
 local_near call $ACCOUNT_ID new_default_meta '{"owner_id": "'$ACCOUNT_ID'"}' --accountId $ACCOUNT_ID
@@ -502,7 +501,7 @@ This will initialize the contract with some default metadata and set our account
 local_near call $ACCOUNT_ID nft_mint '{"token_id": "team_token", "metadata": { "title": "Go Team!", "description": "Go Team!", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif", "copies": 1}, "receiver_id": "'$ACCOUNT_ID'"}' --accountId $ACCOUNT_ID --amount 0.1
 ```
 
-Once the NFT has been minted, you can view the token on the local wallet's collectibles tab. If you already had the wallet site open, simply refresh. Otherwise open your local NEAR Wallet instance and view your collectible. 
+Once the NFT has been minted, you can view the token on the local wallet's collectibles tab. If you already had the wallet site open, simply refresh. Otherwise open your local NEAR Wallet instance and view your collectible.
 
 ![Local wallet collectibles tab](/docs/assets/kurtosis/local-wallet-collectibles-tab.png)
 
@@ -586,7 +585,7 @@ export CONTRACT_NAME=guest-book.$ACCOUNT_ID
 
 ### Deploy Contract to `localnet`
 
-With the network setup and contract account created you are now ready to launch your dApp! 
+With the network setup and contract account created you are now ready to launch your dApp!
 
 - Run the following command in the root directory of the guest book repo:
 
@@ -611,20 +610,19 @@ You should see the Guest Book landing page:
 
 :::tip
 
- If you run into any problems signing into try clearing your browser's local storage. If you've used the guest-book before your browser might think you're still logged in with your `testnet` account and it will throw an error saying it can't find that account on `localnet`.
+If you run into any problems signing into try clearing your browser's local storage. If you've used the guest-book before your browser might think you're still logged in with your `testnet` account and it will throw an error saying it can't find that account on `localnet`.
 
 :::
 
-Once you've logged in, you can sign a message with an optional donation. 
+Once you've logged in, you can sign a message with an optional donation.
 
 ![Local Guest Book Signed Message](/docs/assets/kurtosis/local-guest-book-signed-message.png)
 
-- Sign the Guest Book which will create a transaction on `localnet`. 
+- Sign the Guest Book which will create a transaction on `localnet`.
 
 - Once complete, open your local NEAR explorer and you can view the transaction you just created!
 
 ![Local Explorer Signed Transaction](/docs/assets/kurtosis/local-explorer-signed-transaction.png)
-
 
 **Congratulations! You've successfully deployed and interacted with a dApp on a local NEAR blockchain!** 🎉
 
@@ -633,7 +631,6 @@ Once you've logged in, you can sign a message with an optional donation.
 ## Managing NEAR Pacakages
 
 The Kurtosis NEAR Pacakages you create will continue to run on your local machine for as long as your Docker engine is running. This package runs inside of a Kurtosis "enclave" which is an environment isolated from both your computer and other enclaves. In practice, this means that you can have multiple independent local NEAR clusters running on your machine simply by rerunning the script we executed from the [setup instructions](#setup).
-
 
 ### View Package Status
 
@@ -682,4 +679,3 @@ kurtosis clean -a
 ```
 
 This can be a handy way to clear all your Kurtosis data.
-
