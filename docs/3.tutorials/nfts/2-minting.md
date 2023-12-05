@@ -219,7 +219,7 @@ yarn build
 
 There will be a list of warnings on your console, but as the tutorial progresses, these warnings will go away. You should now see the folder `out/` with the file `main.wasm` inside. This is what we will be deploying to the blockchain.
 
-For deployment, you will need a NEAR account with the keys stored on your local machine. Navigate to the [NEAR wallet](https://wallet.testnet.near.org/) site and create an account.
+For deployment, you will need a NEAR account with the keys stored on your local machine. Navigate to the [NEAR wallet](https://testnet.mynearwallet.com//) site and create an account.
 
 :::info
 Please ensure that you deploy the contract to an account with no pre-existing contracts. It's easiest to simply create a new account or create a sub-account for this tutorial.
@@ -352,7 +352,7 @@ near view $NFT_CONTRACT_ID nft_token '{"token_id": "token-1"}'
 
 ## Viewing your NFTs in the wallet
 
-If you navigate to the [collectibles tab](https://wallet.testnet.near.org/?tab=collectibles) in the NEAR wallet, this should list all the NFTs that you own. It should look something like the what's below.
+If you navigate to the [collectibles tab](https://testnet.mynearwallet.com//?tab=collectibles) in the NEAR wallet, this should list all the NFTs that you own. It should look something like the what's below.
 
 ![empty-nft-in-wallet](/docs/assets/nfts/empty-nft-in-wallet.png)
 
