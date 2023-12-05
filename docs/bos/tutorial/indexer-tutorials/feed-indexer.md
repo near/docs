@@ -24,7 +24,7 @@ A schema is also specified for the tables in which data from relevant transactio
 
 :::tip
 
-This indexer can be found by [following this link](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=dataplatform.near/social_feed&view=editor-window).
+This indexer can be found by [following this link](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=dataplatform.near/social_feed).
 
 :::
 

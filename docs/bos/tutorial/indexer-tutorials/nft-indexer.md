@@ -24,7 +24,7 @@ In this tutorial you'll learn how you can listen to [Events](https://nomicon.io/
 
 :::tip
 
-The indexer's source code can be found by [following this link](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=bucanero.near/nft_v4&view=editor-window).
+The indexer's source code can be found by [following this link](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=bucanero.near/nft_v4).
 
 :::
 
@@ -117,7 +117,7 @@ async function getBlock(block: Block) {
 }
 ```
 
-This indexer filters [Blocks](https://near.github.io/near-lake-framework-js/classes/block.Block.html) that have [Events](https://near.github.io/near-lake-framework-js/classes/events.Event.html) of type `nft_mint` and standard `nep171`. In addition, it stores the JSON event data and identifies the NFT marketplace.
+This indexer filters [Blocks](https://near.github.io/near-lake-framework-js/classes/_near_lake_primitives.block.Block.html) that have [Events](https://near.github.io/near-lake-framework-js/classes/_near_lake_primitives.events.Event.html) of type `nft_mint` and standard `nep171`. In addition, it stores the JSON event data and identifies the NFT marketplace.
 
 ### Saving the data to the Database
 
