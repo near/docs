@@ -55,7 +55,7 @@ This is the workflow for the initial provisioning. Nothing happens for the remai
 To check if an Indexer has been provisioned, QueryAPI checks if both the `database` and `schema` exist. This check is what prevents the app from attempting to provision an already provisioned indexer.
 :::
 
-### Historical backfill
+## Historical backfill
 
 When an indexer is created, two processes are triggered:
 
