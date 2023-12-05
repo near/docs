@@ -11,37 +11,14 @@ This section describes how to create different kinds of linkdrop from a [NEAR Co
 
 ---
 
-## Simple Drop
-
-This snippet will enable you to create a simple $NEAR drop. A simple drop allows you to onboard both existing and new users.
+## Getting key pairs
 
 ```js
-State.init({
-  amount: "0.05",
-  drops: "2",
-  img: null,
-  desc: "",
-  publicKeys: [],
-  privKeys: [],
-});
 
-if (Storage.privateGet("key_list")) {
-  const obj = Storage.privateGet("key_list");
+const dropsNumber = "2";
+const keysGeneratorUrl = "https://keypom.sctuts.com/keypair/";
 
-  State.update({
-    publicKeys: obj.publicKeys,
-    privKeys: obj.privKeys,
-  });
-}
-
-const keypomContract = "v2.keypom.near";
-const gatewayUrl = "https://near.org/cuongdcdev.near/widget/linkdrop-viewer";
-const generatorUrl = "https://keypom.sctuts.com/keypair/";
-
-const Near2Yocto = (amount) =>
-  new Big(amount).times(new Big(10).pow(24)).toFixed().toString();
-
-asyncFetch(generatorUrl + state.drops + "/rootEntrophy").then((res) => {
+asyncFetch(keysGeneratorUrl + dropsNumber + "/rootEntrophy").then((res) => {
   const keyPairs = JSON.parse(res.body);
   const pubKeys = [];
   const privKeys = [];
@@ -57,22 +34,207 @@ asyncFetch(generatorUrl + state.drops + "/rootEntrophy").then((res) => {
   };
 
   State.update(obj);
-  Storage.privateSet("key_list", obj);
+});
+```
 
-  Near.call([
-    {
-      contractName: keypomContract,
-      methodName: "create_drop",
-      args: {
-        public_keys: state.publicKeys,
-        deposit_per_use: Near2Yocto(state.amount ?? "0.05"),
-      },
-      deposit: Near2Yocto(state.publicKeys.length * state.amount + 0.3),
-      gas: "100000000000000",
+---
+
+## Simple Drop
+
+This snippet will enable you to create a simple $NEAR drop. A simple drop allows you to onboard both existing and new users.
+
+```js
+const dropAmount = "10000000000000000000000"; // 1 NEAR
+const keypomContract = "v2.keypom.near";
+
+Near.call([
+  {
+    contractName: keypomContract,
+    methodName: "create_drop",
+    args: {
+      public_keys: state.publicKeys,
+      deposit_per_use: dropAmount,
     },
-  ]);
+    deposit: "23000000000000000000000" // state.publicKeys.length * dropAmount + 3000000000000000000000,
+    gas: "100000000000000",
+  },
+]);
+```
+
+---
+
+## NFT Drop
+
+This snippet will enable you to create a NFT Drop.
+
+First of all, you need to create a NFT. See you how to do it from NEAR Component [here](../../nft/interacting/bos.md#mint-a-nft).
+
+Then you need to create a drop. You can do it exactly the same way as for a simple drop, but pass extended object as `args`:
+
+<hr class="subsection" />
+
+### Creating a drop
+
+```js
+const accountId = context.accountId ?? props.accountId;
+const keypomContract = "v2.keypom.near";
+const nftContract = "nft.primitives.near";
+const dropAmount = "10000000000000000000000"; // 1 NEAR
+
+ Near.call([
+  {
+    contractName: keypomContract,
+    methodName: "create_drop",
+    args: {
+      public_keys: state.publicKeys,
+      deposit_per_use: dropAmount,
+      nft: {
+        // Who will be sending the NFTs to the Keypom contract
+        sender_id: accountId,
+        // NFT Contract Id that the tokens will come from
+        contract_id: nftContract,
+      },
+    },
+    deposit: "23000000000000000000000" // state.publicKeys.length * dropAmount + 3000000000000000000000,
+    gas: "100000000000000",
+  },
+]);
+```
+
+<hr class="subsection" />
+
+### Getting drop id
+
+```js
+const dropSupplyForOwner = Near.view({
+  contractId: keypomContract,
+  methodName: "get_drop_supply_for_owner",
+  args: { account_id: accountId },
 });
 
+const dropsForOwner = Near.view({
+  contractId: keypomContract, 
+  methodName: 'get_drops_for_owner', 
+  args: { account_id: accountId, from_index: (dropSupplyForOwner - 1).toString() }
+});
+
+const dropId = dropsForOwner[dropsForOwner.length - 1].drop_id;
+```
+
+<hr class="subsection" />
+
+### Transfering NFT
+
+Then you should to transfer your NFT to KeyPom contract.
+
+```js
+const nftTokenId = "1";
+
+Near.call({
+  contractId: nftContract, 
+  methodName: 'nft_transfer_call', 
+  args: {
+    receiver_id: keypomContract,
+    token_id: nftTokenId,
+    msg: dropId.toString()
+  },
+  deposit: "1",
+  gas: "300000000000000"
+});
+```
+
+---
+
+## FT Drop
+
+This snippet will enable you to create a FT Drop.
+
+The process is very similar to creating [NFT drop](#nft-drop). You just need to transfer FTs to KeyPom contract instead of transferring NFT and pass another set of arguments during creating drop.
+
+```js
+const keypomContract = "v2.keypom.near";
+const ftContract = "ft.primitives.near";
+const dropAmount = "10000000000000000000000"; // 1 NEAR
+
+Near.call([
+  {
+    contractName: keypomContract,
+    methodName: "create_drop",
+    args: {
+      public_keys: state.publicKeys,
+      deposit_per_use: dropAmount,
+      ftData: {
+	    	contractId: ftContract,
+	    	senderId: accountId,
+	    	// This balance per use is balance of human readable FTs per use. 
+	    	amount: "1"
+        // Alternatively, you could use absoluteAmount, which is dependant on the decimals value of the FT
+        // ex. if decimals of an ft = 8, then 1 FT token would be absoluteAmount = 100000000
+	    },
+    },
+    deposit: "23000000000000000000000", // state.publicKeys.length * dropAmount + 3000000000000000000000,
+    gas: "100000000000000"
+  },
+]);
+```
+
+---
+
+## Function Call Drop
+
+This snippet will enable you to create a Function Call Drop.
+
+The process is very similar to creating [NFT drop](#nft-drop). You just need to  ass another set of arguments during creating drop.
+
+```js
+const accountId = context.accountId ?? props.accountId;
+const keypomContract = "v2.keypom.near";
+const nftContract = "nft.primitives.near";
+const nftTokenId = "1";
+const dropAmount = "10000000000000000000000"; // 1 NEAR
+
+Near.call([
+  {
+    contractName: keypomContract,
+    methodName: "create_drop",
+    args: {
+      public_keys: state.publicKeys,
+      deposit_per_use: dropAmount,
+      fcData: {
+        // 2D array of function calls. In this case, there is 1 function call to make for a key use
+        // By default, if only one array of methods is present, this array of function calls will be used for all key uses
+        methods: [
+          // Array of functions for Key use 1. 
+            [{
+              receiverId: nftContract,
+              methodName: "nft_mint",
+              args: JSON.stringify({
+              // Change this token_id if it already exists -> check explorer transaction
+                  token_id: nftTokenId,
+                  metadata: {
+                    title: "My NFT drop",
+                    description: "",
+                    media: "",
+                  }
+              }),
+              accountIdField: "receiver_id",
+              // Attached deposit of 1 $NEAR for when the receiver makes this function call
+              attachedDeposit: "10000000000000000000000"
+            }]
+        ]
+      }
+    },
+    deposit: "23000000000000000000000", // state.publicKeys.length * dropAmount + 3000000000000000000000,
+    gas: "100000000000000",
+  },
+]);
+```
+
+---
+
+## Building drop links
+
+```js
 const getLinks = () => {
   const links = [];
 
@@ -84,11 +246,6 @@ const getLinks = () => {
 
   return links;
 };
-
-if (state.privKeys) {
-  const links = getLinks();
-  console.log("Your drop links:", links);
-}
 ```
 
 <details>
@@ -105,170 +262,11 @@ if (state.privKeys) {
 </p>
 </details>
 
----
-
-## NFT Drop
-
-This snippet will enable you to create a NFT Drop.
-
-First of all, you need to create a NFT. See you how to do it from NEAR Component [here](../../nft/interacting/bos.md#mint-a-nft).
-
-Then you need to create a drop. You can do it exactly the same way as for a simple drop, but pass extended object as `args`:
-
-```js
- Near.call([
-  {
-    contractName: keypomContract,
-    methodName: "create_drop",
-    args: {
-      public_keys: state.publicKeys,
-      deposit_per_use: Near2Yocto(state.amount ?? "0.05"),
-      nft: {
-        // Who will be sending the NFTs to the Keypom contract
-        sender_id: accountId,
-        // NFT Contract Id that the tokens will come from
-        contract_id: NFT_CONTRACT,
-      },
-    },
-    deposit: Near2Yocto(state.publicKeys.length * state.amount + 0.3),
-    gas: "100000000000000",
-  },
-]);
-```
-
-Get your dropId.
-
-```js
-const dropSupplyForOwner = Near.view({
-  contractId: keypomContract,
-  methodName: "get_drop_supply_for_owner",
-  args: { account_id: accountId },
-});
-
-const dropsForOwner = Near.view({
-  contractId: keypomContract, 
-  methodName: 'get_drops_for_owner', 
-  args: { account_id: accountId, from_index: (dropSupplyForOwner - 1).toString() }
-});
-
-const dropId = dropsForOwner[dropsForOwner.length - 1].drop_id;
-console.log(dropId);
-```
-
-Then you should to transfer your NFT to KeyPom contract.
-
-```js
-Near.call({
-  contractId: NFT_CONTRACT, 
-  methodName: 'nft_transfer_call', 
-  args: {
-    receiver_id: keypomContract,
-    token_id: NFT_TOKEN_ID,
-    msg: dropId.toString()
-  },
-  gas: "300000000000000",
-  attachedDeposit: "1"
-});
-```
-
-And build your drop links.
-
-```js
-const getLinks = () => {
-  const links = [];
-
-  state.privKeys.map((e, i) => {
-    const link =
-      "https://app.mynearwallet.com" + "/linkdrop/v2.keypom.near/" + e;
-    links.push(link);
-  });
-
-  return links;
-};
-```
-
----
-
-## FT Drop
-
-This snippet will enable you to create a FT Drop.
-
-The process is very similar to creating [NFT drop](#nft-drop). You just need to transfer FTs to KeyPom contract instead of transferring NFT and pass another set of arguments during creating drop.
-
-```js
-Near.call([
-  {
-    contractName: keypomContract,
-    methodName: "create_drop",
-    args: {
-      public_keys: state.publicKeys,
-      deposit_per_use: Near2Yocto(state.amount ?? "0.05"),
-      ftData: {
-	    	contractId: FT_CONTRACT,
-	    	senderId: YOUR_ACCOUNT,
-	    	// This balance per use is balance of human readable FTs per use. 
-	    	amount: "1"
-        // Alternatively, you could use absoluteAmount, which is dependant on the decimals value of the FT
-        // ex. if decimals of an ft = 8, then 1 FT token would be absoluteAmount = 100000000
-	    },
-    },
-    deposit: Near2Yocto(state.publicKeys.length * state.amount + 0.3),
-    gas: "100000000000000",
-  },
-]);
-```
-
----
-
-## Function Call Drop
-
-This snippet will enable you to create a Function Call Drop.
-
-The process is very similar to creating [NFT drop](#nft-drop). You just need to  ass another set of arguments during creating drop.
-
-```js
-Near.call([
-  {
-    contractName: keypomContract,
-    methodName: "create_drop",
-    args: {
-      public_keys: state.publicKeys,
-      deposit_per_use: Near2Yocto(state.amount ?? "0.05"),
-      fcData: {
-        // 2D array of function calls. In this case, there is 1 function call to make for a key use
-        // By default, if only one array of methods is present, this array of function calls will be used for all key uses
-        methods: [
-          // Array of functions for Key use 1. 
-            [{
-              receiverId: NFT_CONTRACT,
-              methodName: "nft_mint",
-              args: JSON.stringify({
-              // Change this token_id if it already exists -> check explorer transaction
-                  token_id: NFT_TOKEN_ID,
-                  metadata: {
-                      title: "My Keypom NFT",
-                      description: "Keypom is lit fam",
-                      media: "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif",
-                  }
-              }),
-              accountIdField: "receiver_id",
-              // Attached deposit of 1 $NEAR for when the receiver makes this function call
-              attachedDeposit: parseNearAmount("1")
-            }]
-        ]
-      }
-    },
-    deposit: Near2Yocto(state.publicKeys.length * state.amount + 0.3),
-    gas: "100000000000000",
-  },
-]);
-```
-
----
-
 :::note
 If you didn't save your linkdrop links before closing NEAR App, you can always find them on [KeyPom app](https://keypom.xyz/drops).
 :::
+
+---
 
 ## Additional Resources
 

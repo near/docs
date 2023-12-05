@@ -15,20 +15,54 @@ All the examples are using a `Wallet` object, which comes from our [basic templa
 
 ---
 
-## Simple Drop
-
-This snippet will enable you to create a Simple Drop.
+## Getting key pairs
 
 ```js
 import { Wallet } from './near-wallet';
 
-const DAO_FACTORY_CONTRACT_ADDRESS = "sputnik-dao.near";
-const wallet = new Wallet({ createAccessKeyFor: DAO_FACTORY_CONTRACT_ADDRESS });
- 
-await wallet.viewMethod({
-  method: 'get_dao_list',
-  args: {},
-  contractId: DAO_FACTORY_CONTRACT_ADDRESS
+const state = {};
+
+const dropsNumber = "2";
+const keysGeneratorUrl = "https://keypom.sctuts.com/keypair/";
+
+fetch(keysGeneratorUrl + dropsNumber + "/rootEntrophy").then((res) => {
+  const keyPairs = JSON.parse(res.body);
+  const pubKeys = [];
+  const privKeys = [];
+
+  keyPairs.forEach((e) => {
+    pubKeys.push(e.pub);
+    privKeys.push(e.priv);
+  });
+
+  state.publicKeys = pubKeys;
+  state.privKeys = privKeys;
+});
+```
+
+---
+
+## Simple Drop
+
+This snippet will enable you to create a simple $NEAR drop. A simple drop allows you to onboard both existing and new users.
+
+```js
+import { Wallet } from './near-wallet';
+
+const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
+const DROP_AMOUNT = "10000000000000000000000"; // 1 NEAR
+
+const wallet = new Wallet({ createAccessKeyFor: KEYPOM_CONTRACT_ADDRESS }); 
+
+await wallet.callMethod({
+  method: "create_drop",
+  contractId: KEYPOM_CONTRACT_ADDRESS,
+  args: {
+    public_keys: state.publicKeys,
+    deposit_per_use: DROP_AMOUNT,
+  },
+  deposit: "23000000000000000000000" // state.publicKeys.length * dropAmount + 3000000000000000000000,
+  gas: "100000000000000",
 });
 ```
 
@@ -38,16 +72,88 @@ await wallet.viewMethod({
 
 This snippet will enable you to create a NFT Drop.
 
+First of all, you need to create a NFT. See you how to do it from a web app [here](../../nft/interacting/web-app.md#mint-a-nft).
+
+Then you need to create a drop. You can do it exactly the same way as for a simple drop, but pass extended object as `args`:
+
+<hr class="subsection" />
+
+### Creating a drop
+
 ```js
 import { Wallet } from './near-wallet';
 
-const DAO_CONTRACT_ADDRESS = "nearweek-news-contribution.sputnik-dao.near";
-const wallet = new Wallet({ createAccessKeyFor: DAO_CONTRACT_ADDRESS });
- 
-await wallet.viewMethod({
-  method: 'get_proposals',
-  args: { from_index: 9262, limit: 2 },
-  contractId: DAO_CONTRACT_ADDRESS
+const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
+const NFT_CONTRACT_ADDRESS = "nft.primitives.near";
+const DROP_AMOUNT = "10000000000000000000000"; // 1 NEAR
+
+const keypomConnectedWallet = new Wallet({ createAccessKeyFor: KEYPOM_CONTRACT_ADDRESS }); 
+const nftConnectedWallet = new Wallet({ createAccessKeyFor: NFT_CONTRACT_ADDRESS });
+
+await wallet.callMethod({
+  method: "create_drop",
+  contractId: KEYPOM_CONTRACT_ADDRESS,
+  args: {
+    public_keys: state.publicKeys,
+    deposit_per_use: DROP_AMOUNT,
+    nft: {
+      // Who will be sending the NFTs to the Keypom contract
+      sender_id: accountId, // TODO How to get it
+      // NFT Contract Id that the tokens will come from
+      contract_id: NFT_CONTRACT_ADDRESS,
+    },
+  },
+  deposit: "23000000000000000000000" // state.publicKeys.length * dropAmount + 3000000000000000000000,
+  gas: "100000000000000",
+});
+```
+
+<hr class="subsection" />
+
+### Getting drop id
+
+```js
+const dropSupplyForOwner = Near.view({
+  contractId: KEYPOM_CONTRACT_ADDRESS,
+  methodName: "get_drop_supply_for_owner",
+  args: { account_id: accountId },
+});
+
+const dropsForOwner = Near.view({
+  contractId: KEYPOM_CONTRACT_ADDRESS, 
+  methodName: 'get_drops_for_owner', 
+  args: { account_id: accountId, from_index: (dropSupplyForOwner - 1).toString() }
+});
+
+const dropId = dropsForOwner[dropsForOwner.length - 1].drop_id;
+```
+
+<hr class="subsection" />
+
+### Transfering NFT
+
+Then you should to transfer your NFT to KeyPom contract.
+
+```js
+import { Wallet } from './near-wallet';
+
+const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
+const NFT_CONTRACT_ADDRESS = "nft.primitives.near";
+const NFT_TOKEN_ID = "1";
+const DROP_AMOUNT = "10000000000000000000000"; // 1 NEAR
+
+const nftConnectedWallet = new Wallet({ createAccessKeyFor: NFT_CONTRACT_ADDRESS }); 
+
+await wallet.callMethod({
+  method: "nft_transfer_call",
+  contractId: NFT_CONTRACT_ADDRESS,
+  args: {
+    receiver_id: keypomContract,
+    token_id: nftTokenId,
+    msg: dropId.toString()
+  },
+  deposit: 1,
+  gas: "100000000000000",
 });
 ```
 
@@ -57,109 +163,34 @@ await wallet.viewMethod({
 
 This snippet will enable you to create a FT Drop.
 
+The process is very similar to creating [NFT drop](#nft-drop). You just need to transfer FTs to KeyPom contract instead of transferring NFT and pass another set of arguments during creating drop.
+
 ```js
 import { Wallet } from './near-wallet';
 
-const DAO_FACTORY_CONTRACT_ADDRESS = "sputnik-dao.near";
-const wallet = new Wallet({ createAccessKeyFor: DAO_FACTORY_CONTRACT_ADDRESS });
- 
+const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
+const FT_CONTRACT_ADDRESS = "ft.primitives.near";
+const DROP_AMOUNT = "10000000000000000000000"; // 1 NEAR
+
+const wallet = new Wallet({ createAccessKeyFor: KEYPOM_CONTRACT_ADDRESS }); 
+
 await wallet.callMethod({
-  method: 'create',
+  method: "create_drop",
+  contractId: KEYPOM_CONTRACT_ADDRESS,
   args: {
-    name: "primitives",
-    args: btoa({
-      purpose: "",
-      bond: "100000000000000000000000",
-      vote_period: "604800000000000",
-      grace_period: "86400000000000",
-      policy: {
-        roles: [
-          {
-            name: "council",
-            slug: "council",
-            kind: { Group: ["bob.near"] },
-            permissions: [
-              "*:Finalize",
-              "policy:AddProposal",
-              "add_bounty:AddProposal",
-              "bounty_done:AddProposal",
-              "transfer:AddProposal",
-              "vote:AddProposal",
-              "remove_member_from_role:AddProposal",
-              "add_member_to_role:AddProposal",
-              "config:AddProposal",
-              "call:AddProposal",
-              "upgrade_remote:AddProposal",
-              "upgrade_self:AddProposal",
-              "set_vote_token:AddProposal",
-              "policy:VoteApprove",
-              "policy:VoteReject",
-              "policy:VoteRemove",
-              "add_bounty:VoteApprove",
-              "add_bounty:VoteReject",
-              "add_bounty:VoteRemove",
-              "bounty_done:VoteApprove",
-              "bounty_done:VoteReject",
-              "bounty_done:VoteRemove",
-              "transfer:VoteApprove",
-              "transfer:VoteReject",
-              "transfer:VoteRemove",
-              "vote:VoteApprove",
-              "vote:VoteReject",
-              "vote:VoteRemove",
-              "remove_member_from_role:VoteApprove",
-              "remove_member_from_role:VoteReject",
-              "remove_member_from_role:VoteRemove",
-              "add_member_to_role:VoteApprove",
-              "add_member_to_role:VoteReject",
-              "add_member_to_role:VoteRemove",
-              "call:VoteApprove",
-              "call:VoteReject",
-              "call:VoteRemove",
-              "config:VoteApprove",
-              "config:VoteReject",
-              "config:VoteRemove",
-              "set_vote_token:VoteApprove",
-              "set_vote_token:VoteReject",
-              "set_vote_token:VoteRemove",
-              "upgrade_self:VoteApprove",
-              "upgrade_self:VoteReject",
-              "upgrade_self:VoteRemove",
-              "upgrade_remote:VoteApprove",
-              "upgrade_remote:VoteReject",
-              "upgrade_remote:VoteRemove",
-            ],
-            vote_policy: {},
-          },
-          {
-            name: "all",
-            slug: "all",
-            kind: "Everyone",
-            permissions: [],
-            vote_policy: {},
-          },
-        ],
-        default_vote_policy: {
-          weight_kind: "RoleWeight",
-          quorum: "0",
-          threshold: [1, 2],
-        },
-        proposal_bond: "100000000000000000000000",
-        proposal_period: "604800000000000",
-        bounty_bond: "100000000000000000000000",
-        bounty_forgiveness_period: "604800000000000",
-      },
-      config: {
-        name: "primitives",
-        purpose: "",
-        metadata:
-          "eyJsaW5rcyI6WyJodHRwczovL2RvY3MubmVhci5vcmcvIl0sImZsYWdDb3ZlciI6IiIsImZsYWdMb2dvIjoiT3ZvN3k4cWJPRFFvaWRKZWlnbTRhIiwiZGlzcGxheU5hbWUiOiJQcmltaXRpdmVzIiwibGVnYWwiOnsibGVnYWxTdGF0dXMiOiIiLCJsZWdhbExpbmsiOiIifX0=",
-      },
-    }),
+    public_keys: state.publicKeys,
+    deposit_per_use: DROP_AMOUNT,
+    ftData: {
+      contractId: FT_CONTRACT_ADDRESS,
+      senderId: accountId, // TODO How to get account id
+      // This balance per use is balance of human readable FTs per use. 
+      amount: "1"
+      // Alternatively, you could use absoluteAmount, which is dependant on the decimals value of the FT
+      // ex. if decimals of an ft = 8, then 1 FT token would be absoluteAmount = 100000000
+    },
   },
-  contractId: DAO_FACTORY_CONTRACT_ADDRESS,
-  gas: 300000000000000,
-  deposit: 6000000000000000000000000
+  deposit: "23000000000000000000000" // state.publicKeys.length * dropAmount + 3000000000000000000000,
+  gas: "100000000000000",
 });
 ```
 
@@ -169,28 +200,81 @@ await wallet.callMethod({
 
 This snippet will enable you to create a Function Call Drop.
 
+The process is very similar to creating [NFT drop](#nft-drop). You just need to  ass another set of arguments during creating drop.
+
 ```js
 import { Wallet } from './near-wallet';
 
-const DAO_CONTRACT_ADDRESS = "primitives.sputnik-dao.near";
+const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
+const NFT_CONTRACT_ADDRESS = "nft.primitives.near";
+const NFT_TOKEN_ID = "1";
+const DROP_AMOUNT = "10000000000000000000000"; // 1 NEAR
+
 const wallet = new Wallet({ createAccessKeyFor: DAO_CONTRACT_ADDRESS });
- 
+
 await wallet.callMethod({
-  method: 'add_proposal',
+  method: "create_drop",
+  contractId: KEYPOM_CONTRACT_ADDRESS,
   args: {
-    proposal: {
-      description: "My first proposal$$$$https://docs.near.org/",
-      kind: {
-        Transfer: {
-          token_id: "",
-          receiver_id: "bob.near",
-          amount: "10000000000000000000000000",
-        },
-      },
-    },
+    public_keys: state.publicKeys,
+    deposit_per_use: DROP_AMOUNT,
+    fcData: {
+      // 2D array of function calls. In this case, there is 1 function call to make for a key use
+      // By default, if only one array of methods is present, this array of function calls will be used for all key uses
+      methods: [
+        // Array of functions for Key use 1. 
+          [{
+            receiverId: NFT_CONTRACT_ADDRESS,
+            methodName: "nft_mint",
+            args: JSON.stringify({
+            // Change this token_id if it already exists -> check explorer transaction
+                token_id: NFT_TOKEN_ID,
+                metadata: {
+                  title: "My NFT drop",
+                  description: "",
+                  media: "",
+                }
+            }),
+            accountIdField: "receiver_id",
+            // Attached deposit of 1 $NEAR for when the receiver makes this function call
+            attachedDeposit: "10000000000000000000000"
+          }]
+      ]
+    }
   },
-  contractId: DAO_CONTRACT_ADDRESS,
-  gas: 300000000000000,
-  deposit: 100000000000000000000000
+  deposit: "23000000000000000000000" // state.publicKeys.length * dropAmount + 3000000000000000000000,
+  gas: "100000000000000",
 });
 ```
+
+---
+
+## Building drop links
+
+```js
+const getLinks = () => {
+  const links = [];
+
+  state.privKeys.map((e, i) => {
+    const link =
+      "https://app.mynearwallet.com" + "/linkdrop/v2.keypom.near/" + e;
+    links.push(link);
+  });
+
+  return links;
+};
+```
+
+<details>
+<summary>Example response</summary>
+<p>
+
+```js
+[
+  'https://app.mynearwallet.com/linkdrop/v2.keypom.near/ed25519:2H32THYM8ob336yk81cZUxpidvKi34zLck6a97ypmCY8bbSAuEfrCTu9LWmWGiG9df2C6vkg2FGKGZzY9qE4aEcj',
+  'https://app.mynearwallet.com/linkdrop/v2.keypom.near/ed25519:3eoMcqKmmY9Q6qgBy3hZy65HisZ8NXQd9aGGYUGe6RRsmNpGJS5YN64MgZaBVVYJJhbFXhQ2ca3DRRBiKh1rYM48'
+]
+```
+
+</p>
+</details>
