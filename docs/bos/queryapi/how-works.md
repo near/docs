@@ -45,7 +45,7 @@ In summary, QueryAPI provisioning consists of the following steps:
 4. Run DDL in `schema`
 5. Track all tables in `schema` in [Hasura](#hasura)
 6. Track all foreign key relationships in `schema` in [Hasura](#hasura)
-7. Add all permissions to all tables in `schema`
+7. Add all permissions to all tables in `schema` for account
 
 :::note
 This is the workflow for the initial provisioning. Nothing happens for the remaining provisions, as QueryAPI checks if it has been provisioned, and then skips these steps.
@@ -64,7 +64,7 @@ When an indexer is created, two processes are triggered:
 
 The historical backfill process can be broken down in to two parts: _indexed_, and _unindexed_ blocks.
 
-Indexed blocks come from the `near-delta-lake` bucket in S3. This bucket is populated via a DataBricks job which streams blocks from NEAR Lake, and for every account, stores the block heights that contain transactions made against them. This processed data allows QueryAPI to quickly fetch a list of block heights that match the contract ID defined on the Indexer, rather than filtering through all blocks.
+**Indexed** blocks come from the `near-delta-lake` bucket in S3. This bucket is populated via a DataBricks job which streams blocks from NEAR Lake, and for every account, stores the block heights that contain transactions made against them. This processed data allows QueryAPI to quickly fetch a list of block heights that match the contract ID defined on the Indexer, rather than filtering through all blocks.
 
 NEAR Delta Lake is not updated in real time, so for the historical process to close the gap between it and the starting point of the real-time process, it must also manually process the remaining blocks. This is the **unindexed** portion of the backfill.
 
