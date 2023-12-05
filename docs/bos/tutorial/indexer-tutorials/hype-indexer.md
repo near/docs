@@ -18,7 +18,7 @@ This indexer creates a new row in a pre-defined `posts` or `comments` table crea
 
 :::tip
 
-This indexer can be found by [following this link](https://near.org/#/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=bucanero.near/hype-indexer&view=editor-window).
+This indexer can be found by [following this link](https://near.org/#/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=bucanero.near/hype-indexer).
 
 :::
 
