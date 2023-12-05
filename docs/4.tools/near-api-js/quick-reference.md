@@ -177,7 +177,7 @@ const connectionConfig = {
   networkId: "testnet",
   keyStore: myKeyStore, // first create a key store
   nodeUrl: "https://rpc.testnet.near.org",
-  walletUrl: "https://wallet.testnet.near.org",
+  walletUrl: "https://testnet.mynearwallet.com/",
   helperUrl: "https://helper.testnet.near.org",
   explorerUrl: "https://explorer.testnet.near.org",
 };

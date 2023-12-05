@@ -12,4 +12,4 @@ We recommend all developers to implement both types of tests, since each is suit
 
 ---
 ## Setting Up Testing
-Testing a smart contract involves using different pieces of software depending on which type of test you are performing. In order to save you from the trouble of setting them up, we recommend you copy the structure from one of our [example projects](https://near.dev).
+Testing a smart contract involves using different pieces of software depending on which type of test you are performing. In order to save you from the trouble of setting them up, we recommend you copy the structure from one of our [example projects](https://github.com/near-examples).

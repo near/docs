@@ -164,7 +164,7 @@ In order to manage accounts on the NEAR network, [Wallet](https://wiki.near.org/
 On the image above, “Reserved for storage” are tokens locked by a smart contract to cover current storage requirements, and “Reserved for transactions” represents the amount of tokens locked to cover gas cost by Functional Call keys.
 Currently, there’s no UI to connect sub-accounts into a wallet. Instead, they should be imported via a specially constructed direct link:
 ```
-https://wallet.testnet.near.org/auto-import-secret-key#YOUR_ACCOUNT_ID/YOUR_PRIVATE_KEY
+https://testnet.mynearwallet.com//auto-import-secret-key#YOUR_ACCOUNT_ID/YOUR_PRIVATE_KEY
 ```
 (you should provide a private key of a full access key for the account in question, so make sure this link is used securely).
 

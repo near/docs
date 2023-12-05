@@ -14,7 +14,7 @@ sidebar_label: Introduction
 To complete these tutorials successfully, you'll need:
 
 - [Rust](/develop/prerequisites)
-- [A NEAR Wallet](https://wallet.testnet.near.org/create)
+- [A NEAR Wallet](https://testnet.mynearwallet.com/create)
 - [NEAR-CLI](/tools/near-cli#setup)
 
 :::info New to Rust?
@@ -28,7 +28,7 @@ If you are new to Rust and want to dive into smart contract development, our [Qu
 These are the steps that will bring you from **_Zero_** to **_Hero_** in no time! 💪
 
 | Step | Name                                                          | Description                                                                                                            |
-| ---- | ------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+|------|---------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
 | 1    | [Pre-deployed contract](/tutorials/nfts/predeployed-contract) | Mint an NFT without the need to code, create, or deploy a smart contract.                                              |
 | 2    | [Contract architecture](/tutorials/nfts/skeleton)             | Learn the basic architecture of the NFT smart contract and compile code.                                               |
 | 3    | [Minting](/tutorials/nfts/minting)                            | Flesh out the skeleton so the smart contract can mint a non-fungible token.                                            |

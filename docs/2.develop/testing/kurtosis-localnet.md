@@ -364,7 +364,7 @@ The Kurtosis Team has created a great [video presentation](https://www.loom.com/
 
 ### Local NEAR Wallet
 
-Now that you have [everything setup](#setup), create an account using your local NEAR Wallet at http://127.0.0.1:8334.
+Now that you have [everything setup](#setup), create an account using your local NEAR Wallet at 127.0.0.1:8334.
 
 ![Local wallet landing page](/docs/assets/kurtosis/local-wallet-landing-page.png)
 

@@ -25,7 +25,7 @@ NEAR Protocol operates on several networks each operating with their own indepen
 
 - Status: `https://rpc.testnet.near.org/status`
 - [ [Explorer](https://explorer.testnet.near.org) ]
-- [ [Wallet](https://wallet.testnet.near.org) ]
+- [ [Wallet](https://testnet.mynearwallet.com/) ]
 - [ [Data Snapshots](https://near-nodes.io/intro/node-data-snapshots) ]
 
 ## Localnet {#localnet}

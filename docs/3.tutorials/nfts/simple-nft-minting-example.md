@@ -56,7 +56,7 @@ Here is the function behind the mint button. The meta data has been filled out f
 https://github.com/near-examples/nft-tutorial-frontend/blob/master/src/Components/MintingTool.js#L7-L23
 ```
 
-After hitting the <kbd>Mint NFT</kbd> button the user will be able to check out the newly minted NFT at [wallet.testnet.near.org](https://wallet.testnet.near.org/?tab=collectibles), under the Wallet's `Collectibles` tab.
+After hitting the <kbd>Mint NFT</kbd> button the user will be able to check out the newly minted NFT at [wallet.testnet.near.org](https://testnet.mynearwallet.com//?tab=collectibles), under the Wallet's `Collectibles` tab.
 
 ## Final remarks
 
