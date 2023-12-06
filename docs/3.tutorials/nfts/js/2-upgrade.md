@@ -94,7 +94,7 @@ near view $NFT_CONTRACT_ID nft_tokens_for_owner '{"account_id": "'$NFT_CONTRACT_
 
 ## Viewing NFTs in the wallet {#viewing-nfts-in-wallet}
 
-Now that your contract implements the necessary functions that the wallet uses to display NFTs, you should be able to see your tokens on display in the [collectibles tab](https://wallet.testnet.near.org/?tab=collectibles).
+Now that your contract implements the necessary functions that the wallet uses to display NFTs, you should be able to see your tokens on display in the [collectibles tab](https://testnet.mynearwallet.com//?tab=collectibles).
 
 ![filled-nft-in-wallet](/docs/assets/nfts/filled-nft-in-wallet.png)
 

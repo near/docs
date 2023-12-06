@@ -49,7 +49,7 @@ Versions list is on [npmjs.com](https://www.npmjs.com/package/near-api-js)
       keyStore: new nearApi.keyStores.BrowserLocalStorageKeyStore(),
       networkId: 'testnet',
       nodeUrl: 'https://rpc.testnet.near.org',
-      walletUrl: 'https://wallet.testnet.near.org'
+      walletUrl: 'https://testnet.mynearwallet.com/'
     });
     
     // connect to the NEAR Wallet
@@ -400,7 +400,7 @@ A temporary workaround: make sure you don't re-import it, for example when runni
 
 ### `regeneratorRuntime` is not defined {#regeneratorruntime-is-not-defined}
 
-You are probably using [Parcel](https://parceljs.org/) like we do in [other examples](https://near.dev). Please make sure you have this line at the top of your main JS file. (Most likely `index.js`):
+You are probably using [Parcel](https://parceljs.org/) like we do in [other examples](https://github.com/near-examples). Please make sure you have this line at the top of your main JS file. (Most likely `index.js`):
 
 ```js
 import "regenerator-runtime/runtime";
