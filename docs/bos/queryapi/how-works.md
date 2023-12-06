@@ -34,6 +34,18 @@ An in-depth, detailed overview of the QueryApi components:
 - **Database:** a Postgres database where the developer's indexer data is stored, using a logical DB per user, and a logical schema per indexer function.
 - **API:** a Hasura server running on Google Cloud Platform exposes a GraphQL endpoint so users can access their data from anywhere.
 
+## Historical backfill
+
+When an indexer is created, two processes are triggered:
+
+- real-time - starts from the block the indexer was registered (`block_X`), and will execute the indexer function on every matching block from there on.
+- historical - starts from the configured `start_from_block` height, and will execute the indexer function for all matching blocks up until `block_X`.
+
+The historical backfill process can be broken down in to two parts: _indexed_, and _unindexed_ blocks.
+
+**Indexed** blocks come from the `near-delta-lake` bucket in S3. This bucket is populated via a DataBricks job which streams blocks from NEAR Lake, and for every account, stores the block heights that contain transactions made against them. This processed data allows QueryAPI to quickly fetch a list of block heights that match the contract ID defined on the Indexer, rather than filtering through all blocks.
+
+NEAR Delta Lake is not updated in real time, so for the historical process to close the gap between it and the starting point of the real-time process, it must also manually process the remaining blocks. This is the **unindexed** portion of the backfill.
 
 ## Provisioning
 
@@ -54,19 +66,6 @@ This is the workflow for the initial provisioning. Nothing happens for the remai
 :::info
 To check if an Indexer has been provisioned, QueryAPI checks if both the `database` and `schema` exist. This check is what prevents the app from attempting to provision an already provisioned indexer.
 :::
-
-## Historical backfill
-
-When an indexer is created, two processes are triggered:
-
-- real-time - starts from the block the indexer was registered (`block_X`), and will execute the indexer function on every matching block from there on.
-- historical - starts from the configured `start_from_block` height, and will execute the indexer function for all matching blocks up until `block_X`.
-
-The historical backfill process can be broken down in to two parts: _indexed_, and _unindexed_ blocks.
-
-**Indexed** blocks come from the `near-delta-lake` bucket in S3. This bucket is populated via a DataBricks job which streams blocks from NEAR Lake, and for every account, stores the block heights that contain transactions made against them. This processed data allows QueryAPI to quickly fetch a list of block heights that match the contract ID defined on the Indexer, rather than filtering through all blocks.
-
-NEAR Delta Lake is not updated in real time, so for the historical process to close the gap between it and the starting point of the real-time process, it must also manually process the remaining blocks. This is the **unindexed** portion of the backfill.
 
 ### Low level details
 
