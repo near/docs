@@ -4,7 +4,7 @@ title: Markdown Viewer
 sidebar_label: Markdown
 ---
 
-import {WidgetEditor} from "@site/src/components/social-widget"
+import {WidgetEditor} from "@site/components/social-widget"
 
 `Markdown` is a built-in component that enables to render Markdown. To use this feature, simply use the `Markdown` component:
 

@@ -64,10 +64,10 @@ module.exports = {
     ],
   ],
   plugins: [
-    path.join(__dirname, '/plugins/monaco-editor')
+    path.join(__dirname, '/plugins/monaco-editor'),
+    path.join(__dirname, '/plugins/node-polyfills'),
   ],
   themeConfig: {
-    plugins: [path.join(__dirname, '/plugins/monaco-editor')],
     prism: {
       additionalLanguages: [
         "rust",
@@ -154,6 +154,10 @@ module.exports = {
         {
           type: "localeDropdown",
           position: "right",
+        },
+        {
+          href: "login",
+          position: "right"
         },
       ],
     },

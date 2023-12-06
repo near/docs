@@ -22,13 +22,14 @@
     "crowdin:build": "(eval $(echo check_$IS_PULL_REQUEST | grep -U 'check_true')) 2>/dev/null && docusaurus write-translations && crowdin download"
   },
   "devDependencies": {
+    "buffer": "^6.0.3",
     "concurrently": "^5.3.0",
+    "file-loader": "^6.2.0",
+    "monaco-editor-webpack-plugin": "^7.0.1",
+    "process": "^0.11.10",
     "replace-in-file": "^5.0.2",
     "serve": "^11.3.2",
-    "wait-on": "^5.2.0",
-    "file-loader": "^6.2.0",
-    "worker-loader": "^3.0.8",
-    "monaco-editor-webpack-plugin": "^7.0.1"
+    "wait-on": "^5.2.0"
   },
   "dependencies": {
     "@algolia/autocomplete-js": "^1.7.1",
@@ -38,16 +39,29 @@
     "@docusaurus/plugin-sitemap": "^2.1.0",
     "@docusaurus/preset-classic": "^2.1.0",
     "@docusaurus/theme-mermaid": "^2.1.0",
+    "@near-wallet-selector/core": "^8.5.1",
+    "@near-wallet-selector/modal-ui": "^8.5.1",
+    "@near-wallet-selector/my-near-wallet": "^8.5.1",
+    "@near-wallet-selector/here-wallet": "^8.5.1",
     "@saucelabs/theme-github-codeblock": "^0.1.1",
     "algoliasearch": "^4.14.2",
+    "bootstrap": "^5.3.2",
+    "bootstrap-icons": "^1.11.1",
     "clsx": "^1.1.1",
+    "crypto-browserify": "^3.12.0",
     "gleap": "^10.1.0",
+    "https-browserify": "^1.0.0",
     "monaco-editor": "^0.34.1",
+    "near-api-js": "^2.1.4",
+    "near-social-vm": "github:NearSocial/VM#2.5.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-monaco-editor": "^0.51.0",
     "react-instantsearch-hooks-web": "^6.37.0",
+    "react-monaco-editor": "^0.54.0",
     "search-insights": "^2.2.1",
-    "url": "^0.11.0"
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
+    "url": "^0.11.0",
+    "zustand": "^4.4.4"
   }
 }

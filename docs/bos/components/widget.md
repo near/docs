@@ -2,7 +2,7 @@
 id: widgets
 title: Widget
 ---
-import {WidgetEditor} from "@site/src/components/social-widget"
+import {WidgetEditor} from "@site/components/social-widget"
 
 The predefined component `Widget` allows you to include an existing component into your code, thus enabling to create complex applications by composing components.
 

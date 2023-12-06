@@ -4,7 +4,7 @@ title: Files
 sidebar_label: Files
 ---
 
-import {WidgetEditor} from "@site/src/components/social-widget"
+import {WidgetEditor} from "@site/components/social-widget"
 
 `Files` is a built-in component that enables to input files with drag and drop support. To use this feature, simply use the `Files` component. This component is a dependency from the [`IpfsImageUpload`](./ipfsimageupload.md) component.
 

@@ -3,7 +3,7 @@ id: styled
 title: Styled Components
 sidebar_label: Styled
 ---
-import {WidgetEditor} from "@site/src/components/social-widget"
+import {WidgetEditor} from "@site/components/social-widget"
 
 [Styled Components](https://styled-components.com/) is a popular library for styling React components using CSS-in-JS.
 This tool was imported into `near.social` infrastructure for your use. You do not have to install or import anything, it is ready to use right away.
