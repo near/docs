@@ -1,6 +1,7 @@
 {
   "concepts": [
     "concepts/welcome",
+    "concepts/github-overview",
     "concepts/basics/protocol",
     {
       "type": "html",
