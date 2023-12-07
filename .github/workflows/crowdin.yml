@@ -27,3 +27,4 @@ jobs:
           yarn crowdin:sync
         env:
           CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
+          NODE_OPTIONS: --max-old-space-size=8192
