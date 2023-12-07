@@ -48,7 +48,9 @@ export function WidgetEditor({ children, id = 1, height = "160px" }) {
           <div class="code_iframe">
             <h4 style={{ fontWeight: 0 }}> Preview <small> - Edit the code above! </small> </h4>
             <hr class="preview-border" />
-            <Widget code={code} />
+            <div class="bootstrap-scope">
+              <Widget code={code} />
+            </div>
           </div>
         </div>
       }}
