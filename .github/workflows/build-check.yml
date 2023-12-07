@@ -21,4 +21,4 @@ jobs:
       - name: Build docusaurus
         run: |
           cd website && yarn
-          yarn build
+          yarn build --locale en

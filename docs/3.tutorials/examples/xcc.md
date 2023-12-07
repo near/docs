@@ -132,4 +132,4 @@ and to return the money to the user in case of error.
 
 ### Advanced Cross Contract Calls
 Your contract can perform multiple cross-contract calls in simultaneous, creating promises that execute in parallel, or as a batch transaction. Check the [advanced cross contract calls
-tutorial](./advanced-xcc.md) to learn more.
+tutorial](advanced-xcc.md) to learn more.
