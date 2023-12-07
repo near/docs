@@ -22,5 +22,5 @@ jobs:
         run: |
           cd website && yarn
           yarn build --locale en
-      env:
-          NODE_OPTIONS: --max-old-space-size=8192
+        env:
+            NODE_OPTIONS: --max-old-space-size=8192
