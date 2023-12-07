@@ -86,7 +86,7 @@ near view ft.predeployed.examples.testnet ft_balance_of '{"account_id": "'$NEARI
 
 ***Congratulations! You just received your first Team Tokens on the NEAR blockchain!*** 🎉
 
-👉 Now try going to your [NEAR Wallet](http://wallet.testnet.near.org) and view your FTs in the "Balances" tab. 👈 
+👉 Now try going to your [NEAR Wallet](https://testnet.mynearwallet.com) and view your FTs in the "Balances" tab. 👈 
 
 :::note Pre-deployed Contract
 The contract used in this section has been modified such that you can infinitely get `gtNEAR` by calling `ft_mint`. This function is not part of the FT [standards](https://nomicon.io/Standards/Tokens/FungibleToken/Core) and has been implemented for the purpose of this tutorial.

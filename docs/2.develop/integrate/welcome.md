@@ -4,9 +4,9 @@ title: Integrate NEAR into your App
 sidebar_label: Home
 hide_table_of_contents: true
 ---
+
 import {FeatureList, Column, Feature} from "@site/components/featurelist"
 import ContactUs from '@site/components/ContactUs.mdx';
-
 
 Welcome! Here you will find documentation on how to integrate NEAR into your app. What kind of application do you have?
 
@@ -67,7 +67,6 @@ Welcome! Here you will find documentation on how to integrate NEAR into your app
   </div>
 </div>
 
-
 <FeatureList>
   <Column title="Composable Apps">
     <Feature url="/bos/overview" title="Overview" subtitle="Why you should use BOS" image="bos.png" />
@@ -78,8 +77,8 @@ Welcome! Here you will find documentation on how to integrate NEAR into your app
   </Column>
   <Column title="Tutorials">
     <Feature url="/bos/tutorial/quickstart" title="Quickstart" subtitle="Build your first component!" image="quickstart.png" />
-    <Feature url="/bos/tutorial/hello-near" title="Contract Interaction" subtitle="Connect your app to a smart contract" image="bos-contract.png" />
-    <Feature url="/bos/tutorial/hello-lido" title="Multi-Chain" subtitle="Connect your app to Ethereum" image="bos-lido.png" />
+    <Feature url="/bos/tutorial/interaction" title="Contract Interaction" subtitle="Connect your app to a smart contract" image="bos-contract.png" />
+    <Feature url="/bos/tutorial/lido" title="Multi-Chain" subtitle="Connect your app to Ethereum" image="bos-lido.png" />
     <Feature url="/bos/tutorial/ds-components" title="Styling" subtitle="Style your application" image="multiple.png" />
   </Column>
   <Column title="Discover Gateways">

@@ -10,7 +10,7 @@ sidebar_label: Pre-deployed Contract
 
 To complete this tutorial successfully, you'll need:
 
-- [A NEAR Wallet](https://wallet.testnet.near.org/create)
+- [A NEAR Wallet](https://testnet.mynearwallet.com/create)
 - [NEAR-CLI](/tools/near-cli#setup)
 
 ## Using the NFT contract
@@ -109,7 +109,7 @@ near view nft.examples.testnet nft_tokens_for_owner '{"account_id": "'$NEARID'"}
 
 ***Congratulations! You just minted your first NFT token on the NEAR blockchain!*** 🎉
 
-👉 Now try going to your [NEAR Wallet](http://wallet.testnet.near.org) and view your NFT in the "Collectibles" tab. 👈 
+👉 Now try going to your [NEAR Wallet](https://testnet.mynearwallet.com) and view your NFT in the "Collectibles" tab. 👈 
 
 ---
 

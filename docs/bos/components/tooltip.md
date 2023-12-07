@@ -6,7 +6,7 @@ sidebar_label: ToolTip
 
 import {WidgetEditor} from "@site/components/social-widget"
 
-This special component displays a message once the mouse hovers over a particular DOM item. This component was imported into NEAR Social from `React-Bootstrap` and more info can be [found here](https://react-bootstrap.netlify.app/components/overlays/#tooltips).
+This special component displays a message once the mouse hovers over a particular DOM item. This component was imported into NEAR Social from `React-Bootstrap` and more info can be [found here](https://react-bootstrap.netlify.app/docs/components/overlays#tooltips).
 
 <hr class="subsection" />
 

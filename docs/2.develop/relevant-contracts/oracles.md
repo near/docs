@@ -2,6 +2,7 @@
 id: oracles
 title: Decentralized Oracles
 ---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -13,18 +14,6 @@ In contrast with [FT](ft.md) and [NFT](nft.md), Oracle contract's are not standa
 and how to use their Oracle as they are built.
 
 ---
-
-## Oracles as a Service
-
-### Switchboard
-
-- Account: **switchboard-v2.near** | **switchboard-v2.testnet**
-- Creator: [Switchboard](https://switchboard.xyz)
-- Documentation: https://docs.switchboard.xyz/near
-- Typescript documentation: https://docs.switchboard.xyz/near/javascript
-- Rust documentation: https://docs.switchboard.xyz/near/rust
-- Integration example: https://github.com/switchboard-xyz/sbv2-near/blob/main/programs/feed-parser/src/lib.rs
-- crates.io: https://crates.io/crates/sbv2-near
 
 ## Price Oracles
 
@@ -40,13 +29,13 @@ and how to use their Oracle as they are built.
 <Tabs>
   <TabItem value="cli" label="CLI">
 
-  ```bash
-  NEAR_ENV=mainnet near view priceoracle.near get_assets
-  ```
-    
+```bash
+NEAR_ENV=mainnet near view priceoracle.near get_assets
+```
+
   </TabItem>
 
-<!--  
+<!--
   <TabItem value="xcc-rs" label="Contract Call">
   ```rs
   pub type AssetId = String;
@@ -65,7 +54,7 @@ and how to use their Oracle as they are built.
     .with_static_gas(Gas(5*TGAS))
     .get_assets();
   ```
-  </TabItem> 
+  </TabItem>
 -->
 </Tabs>
 
@@ -74,14 +63,13 @@ and how to use their Oracle as they are built.
 <Tabs>
   <TabItem value="cli" label="CLI">
 
-  ```bash
-  NEAR_ENV=mainnet near view priceoracle.near get_price_data
-  ```
+```bash
+NEAR_ENV=mainnet near view priceoracle.near get_price_data
+```
 
   </TabItem>
 </Tabs>
 
 :::tip
-  Divide the returned `multiplier` by `10000` to obtain the price in USD.
+Divide the returned `multiplier` by `10000` to obtain the price in USD.
 :::
-
