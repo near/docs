@@ -81,5 +81,5 @@ The block IDs of transactions shown in <a href="https://explorer.testnet.near.or
 ## Using `finality` param {#using-finality-param}
 
 The `finality` param has two options: `optimistic` and `final`.
-1. `optimistic` uses the latest block recorded on the node that responded to your query _(<1 second delay after the transaction is submitted)_
+1. `optimistic` uses the latest block recorded on the node that responded to your query _(< 1 second delay after the transaction is submitted)_
 2. `final` is for a block that has been validated on at least 66% of the nodes in the network _(usually takes 2 blocks / approx. 2 second delay)_

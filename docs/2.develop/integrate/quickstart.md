@@ -5,7 +5,7 @@ sidebar_label: ⭐ Quickstart
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/components/codetabs"
+import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 Hi! Let us guide you in starting and interacting with your first decentralized app (dApp) in NEAR: Hello NEAR.
 

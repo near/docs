@@ -2,8 +2,7 @@
 id: push-notifications
 title: Push Notifications
 ---
-import {CodeBlock} from '@theme/CodeBlock'
-import {CodeTabs, Language, Github} from "@site/components/codetabs"
+import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 Push messages enable your gateway to send notifications on desktop and mobile devices even when the users are not active.
 

@@ -4,14 +4,14 @@ title: Cross Contract Call
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/components/codetabs"
+import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 This example performs the simplest cross-contract call possible: it calls our [Hello NEAR](hello-near.md) example to set and retrieve a greeting.
 It is one of the simplest examples on making a cross-contract call, and the perfect gateway to the world of interoperative contracts.
 
 :::info Advanced Cross-Contract Calls
 
-Check the tutorial on how to perform cross-contract calls [in batches and in parallel](./advanced-xcc.md)
+Check the tutorial on how to perform cross-contract calls [in batches and in parallel](advanced-xcc.md)
 
 :::
 

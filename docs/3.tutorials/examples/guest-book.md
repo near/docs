@@ -4,7 +4,7 @@ title: Guest Book
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/components/codetabs"
+import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 Our Guest Book example is a simple app composed by two main components:
   1. A smart contract that stores messages from users, allowing to attach money to them.

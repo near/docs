@@ -14,10 +14,7 @@ module.exports = {
   },
   scripts: [
     "https://buttons.github.io/buttons.js",
-    "https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js",
     "https://use.fontawesome.com/221fd444f5.js",
-    "/js/copy-code-button.js",
-    "/js/mixpanel.js",
   ],
   stylesheets: [
     "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Source+Code+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap",
@@ -64,8 +61,8 @@ module.exports = {
     ],
   ],
   plugins: [
-    path.join(__dirname, '/plugins/monaco-editor'),
-    path.join(__dirname, '/plugins/node-polyfills'),
+    './src/plugins/monaco-editor',
+    './src/plugins/node-polyfills',
   ],
   themeConfig: {
     prism: {
@@ -76,6 +73,7 @@ module.exports = {
         "ruby",
         "go",
         "typescript",
+        "jsx"
       ],
     },
     colorMode: {
@@ -164,7 +162,7 @@ module.exports = {
     image: "img/near_logo.svg",
     footer: {
       links: [],
-      copyright: "Copyright © 2021 NEAR Protocol",
+      copyright: "Copyright © 2023 NEAR Protocol",
       logo: {
         src: "img/near_logo.svg",
       },

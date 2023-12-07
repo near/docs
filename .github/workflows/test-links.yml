@@ -12,10 +12,10 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '19'
+        node-version: '18'
 
     - name: Install dependencies
-      run: cd ./website && npm install
+      run: cd ./website && yarn
 
     - name: Run test
-      run: cd ./website && npm run full-test
+      run: yarn full-test

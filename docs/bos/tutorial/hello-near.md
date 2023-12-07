@@ -108,7 +108,7 @@ When the user inputs a new greeting, we want to store it somewhere until the `Su
 
 In BOS, the state is initialized through `State.init`, updated with `State.update`, and accessed through the `state` variable (notice the lowercase). Lets store the new greeting in the App's state:
 
-```jsx
+```js
 State.init({ new_greeting: "" });
 
 const onInputChange = ({ target }) => {
@@ -119,7 +119,7 @@ const onInputChange = ({ target }) => {
 #### onBtnClick
 The only thing left to do, is to handle when the user clicks the `Submit` button. What we want is to check if the user changed the greeting, and submit it to the contract.
 
-```jsx
+```js
 const onBtnClick = () => {
   if (!state.new_greeting) {
     return;

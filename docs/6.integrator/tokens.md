@@ -1680,6 +1680,5 @@ Let's examine this response.
   * check `result` » `receipts_outcome` » `0` » `outcome` » `status` and find `Failure` status there
 
 :::tip Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-<h8>Ask it on StackOverflow!</h8></a>
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
 :::

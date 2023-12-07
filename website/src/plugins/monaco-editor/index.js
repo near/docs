@@ -22,7 +22,7 @@ module.exports = function(context, options) {
         },
         plugins: [
           new MonacoWebpackPlugin({
-            languages: ['javascript', 'json'],
+            languages: ['javascript', 'json', 'typescript'],
           }),
         ],
       };

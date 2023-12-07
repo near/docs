@@ -5,8 +5,8 @@ sidebar_label: Home
 hide_table_of_contents: true
 ---
 
-import {FeatureList, Column, Feature} from "@site/components/featurelist"
-import ContactUs from '@site/components/ContactUs.mdx';
+import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
+import ContactUs from '@site/src/components/ContactUs.mdx';
 
 Welcome! Here you will find documentation on how to build Web3 applications using NEAR. What are you planning to build?
 

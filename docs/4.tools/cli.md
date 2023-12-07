@@ -734,12 +734,13 @@ near call guest-book.testnet addMessage '{"text": "Aloha"}' --accountId example-
 
 **Example Response:**
 
-    Scheduling a call: guest-book.testnet.addMessage({"text": "Aloha"})
-    Transaction Id FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK
-    To see the transaction in the transaction explorer, please open this url in your browser
-    https://explorer.testnet.near.org/transactions/FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK
-    ''
-
+```bash
+Scheduling a call: guest-book.testnet.addMessage({"text": "Aloha"})
+Transaction Id FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK
+To see the transaction in the transaction explorer, please open this url in your browser
+https://explorer.testnet.near.org/transactions/FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK
+''
+```
 ---
 
 ### `near view` {#near-view}
@@ -757,6 +758,7 @@ near view guest-book.testnet getMessages '{}'
 
 **Example Response:**
 
+```bash
     View call: guest-book.testnet.getMessages({})
     [
       { premium: false, sender: 'waverlymaven.testnet', text: 'TGIF' },
@@ -775,6 +777,7 @@ near view guest-book.testnet getMessages '{}'
       { premium: false, sender: 'example-acct.testnet', text: 'Aloha' },
       [length]: 10
     ]
+```
 
 ## `near view-state` {#near-view-state}
 

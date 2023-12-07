@@ -3,7 +3,9 @@ id: integration-test
 title: Integration Test
 #sidebar_label: 🥼 Integration Test
 ---
-import {CodeTabs, Language, Github} from "@site/components/codetabs"
+import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 Integration tests enable to deploy your contract in the NEAR `testnet` or a local `sandbox`, and create test-users to interact with it. In this way, you can thoroughly test your contract in a realistic environment.
 

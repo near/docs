@@ -8,10 +8,8 @@ module.exports = function (context, options) {
     configureWebpack(config, isServer, utils) {
       return {
         plugins: [
-          new webpack.DefinePlugin({
-            'process.env': JSON.stringify({}),
-          }),
           new webpack.ProvidePlugin({
+            process: 'process/browser.js',
             Buffer: ['buffer', 'Buffer'],
           }),
         ],
@@ -24,6 +22,7 @@ module.exports = function (context, options) {
             https: require.resolve("https-browserify"),
             buffer: require.resolve('buffer'),
             stream: require.resolve("stream-browserify"),
+            url: require.resolve("url")
           },
         },
       }

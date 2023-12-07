@@ -21,7 +21,7 @@ VM provides a convenient API to interact with the NEAR blockchain. There are thr
 :::info
 
 - desired block height: The height of the specific block to query, expressed as a positive integer
-- `optimistic`: Uses the latest block recorded on the node that responded to your query (<1 second delay)
+- `optimistic`: Uses the latest block recorded on the node that responded to your query (< 1 second delay)
 - `final`: a block that has been validated on at least 66% of the nodes in the network (approx. 2s)
 
 :::
@@ -31,7 +31,7 @@ VM provides a convenient API to interact with the NEAR blockchain. There are thr
 <Tabs>
 <TabItem value="request" label="Request" default>
 
-```jsx
+```js
 return Near.block("optimistic");
 ```
 
@@ -81,8 +81,9 @@ return Near.block("optimistic");
       "tx_root": "11111111111111111111111111111111",
       "validator_proposals": [],
       "validator_reward": "0"
-    },...],
-    ...}
+    }
+  ],
+}
 ```
 
 </TabItem>
@@ -107,7 +108,7 @@ This will conduct a call to a smart contract that will store a message onchain.
 <Tabs>
 <TabItem value="request" label="Request" default>
 
-```jsx
+```js
 return Near.call("nearsocialexamples.near", "set_greeting", {
   message: "Hi Near Social",
 });
@@ -140,7 +141,7 @@ Please take a look at [this Explorer link](https://explorer.near.org/transaction
 <Tabs>
 <TabItem value="request" label="Request" default>
 
-```jsx
+```js
 return Near.view("nearsocialexamples.near", "get_greeting", `{}`);
 ```
 
@@ -149,7 +150,7 @@ return Near.view("nearsocialexamples.near", "get_greeting", `{}`);
 
 Upon hitting the `Render` button in `Widget Editor` you should see this:
 
-```jsx
+```js
 "Hi Near Social";
 ```
 
@@ -160,7 +161,7 @@ Upon hitting the `Render` button in `Widget Editor` you should see this:
 
 Below is an example of how to conduct a Call and View Method within `near.social`
 
-```jsx
+```js
 State.init({
   value: "value to update",
 });

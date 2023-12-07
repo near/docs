@@ -3,7 +3,7 @@ id: components
 title: Components
 ---
 
-import {WidgetEditor} from "@site/components/social-widget"
+import {WidgetEditor} from "@site/src/components/social-widget"
 
 BOS allows you to create a decentralized frontend by writing and composing small applications known as `Components`. 
 
@@ -46,7 +46,7 @@ You can access the `context` object to get specific information about the VM ins
 
 You can detect the current network (`mainnet` or `testnet`) using `context.networkId`. For example:
 
-```jsx
+```js
 const childSrc =
   context.networkId === "mainnet"
     ? "near/src/Foobar"
@@ -64,7 +64,7 @@ return (
 
 You can get the current signed-in user account (e.g., `user.near`) using `context.accountId`. For example:
 
-```jsx
+```js
 let user_account = context.accountId;
 
 return (

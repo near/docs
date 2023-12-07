@@ -143,13 +143,17 @@ Let's deploy the contract (to the subaccount we created) and then check this aga
 
 Ensure that in your command line application, you're in the directory that contains the `res` directory, then run:
 
+```bash
     near deploy crossword.friend.testnet --wasmFile res/my_crossword.wasm
+```
 
 Congratulations, you've deployed the smart contract! Note that NEAR CLI will output a link to [NEAR Explorer](https://explorer.near.org/) where you can inspect details of the transaction.
 
 Lastly, let's run this command again and notice that the `code_hash` is no longer all ones. This is the hash of the smart contract deployed to the account.
 
+```bash
     near state crossword.friend.testnet
+```
 
 **Note**: deploying a contract is often done on the command line. While it may be _technically_ possible to deploy via a frontend, the CLI is likely the best approach. If you're aiming to use a factory model, (where a smart contract deploys contract code to a subaccount) this isn't covered in the tutorial, but you may reference the [contracts in SputnikDAO](https://github.com/near-daos/sputnik-dao-contract). 
 
@@ -157,18 +161,25 @@ Lastly, let's run this command again and notice that the `code_hash` is no longe
 
 Let's first call the method that's view-only:
 
+```bash
     near view crossword.friend.testnet get_puzzle_number
+```
 
 Your command prompt will show the result is `1`. Since this method doesn't take any arguments, we don't pass any. We could have added `'{}'` to the end of the command as well.
 
 Next, we'll add a crossword solution as a string (later we'll do this in a better way) argument:
 
+```bash
     near call crossword.friend.testnet set_solution '{"solution": "near nomicon ref finance"}' --accountId friend.testnet
+```
 
 :::info Windows users
 Windows users will have to modify these commands a bit as the Command Prompt doesn't like single quotes as we have above. The command must use escaped quotes like so:
 
+```bash
     near call crossword.friend.testnet set_solution "{\"solution\": \"near nomicon ref finance\"}" --accountId friend.testnet
+```
+
 :::
 
 Note that we used NEAR CLI's [`view` command](https://docs.near.org/docs/tools/near-cli#near-view), and didn't include an `--accountId` flag. As mentioned earlier, this is because we are not signing a transaction. This second method uses the NEAR CLI [`call` command](https://docs.near.org/docs/tools/near-cli#near-call) which does sign a transaction and requires the user to specify a NEAR account that will sign it, using the credentials files we looked at.
@@ -177,7 +188,9 @@ The last method we have will check the argument against what is stored in state 
 
 Correct:
 
+```bash
     near call crossword.friend.testnet guess_solution '{"solution": "near nomicon ref finance"}' --accountId friend.testnet
+```
 
 You'll see something like this:
 
@@ -187,7 +200,9 @@ Notice the log we wrote is output as well as a link to NEAR Explorer.
 
 Incorrect:
 
+```bash
     near call crossword.friend.testnet guess_solution '{"solution": "wrong answers here"}' --accountId friend.testnet
+```
 
 As you can imagine, the above command will show something similar, except the logs will indicate that you've given the wrong solution.
 
@@ -206,8 +221,10 @@ We'll be iterating on this smart contract during this tutorial, and in some case
 
 Using NEAR CLI, the commands will look like this:
 
+```bash
     near delete crossword.friend.testnet friend.testnet
     near create-account crossword.friend.testnet --masterAccount friend.testnet
+```
 
 The first command deletes `crossword.friend.testnet` and sends the rest of its NEAR to `friend.testnet`.
 
@@ -218,7 +235,9 @@ So far, we're writing a simplified version of smart contract and approaching the
 :::info How would you do that?
 You may hit an RPC endpoint corresponding to `view_state` and see for yourself. Note: this quick example serves as demonstration purposes, but note that the string being returned is Borsh-serialized and contains more info than just the letters.
 
+```bash
     curl -d '{"jsonrpc": "2.0", "method": "query", "id": "see-state", "params": {"request_type": "view_state", "finality": "final", "account_id": "crossword.friend.testnet", "prefix_base64": ""}}' -H 'Content-Type: application/json' https://rpc.testnet.near.org
+```
 
 ![Screenshot of a terminal screen showing a curl request to an RPC endpoint that returns state of a smart contract](/docs/assets/crosswords/rpc-api-view-state.png)
 
