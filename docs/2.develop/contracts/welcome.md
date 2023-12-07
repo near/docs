@@ -14,8 +14,8 @@ Do not worry if you are new to smart contract technology, we will get you up to 
 
 <FeatureList>
   <Column title="Build dApps">
-    <Feature url="/develop/contracts/quickstart" title="Quickstart" subtitle="Spin-up your first smart contract" image="smartcontract.png" highlight="true" />
-    <Feature url="/develop/contracts/introduction" title="Build a Contract" subtitle="Learn how to write smart contracts" image="guest-book.png" />
+    <Feature url="/develop/contracts/whatisacontract" title="What is a Contract?" subtitle="Learn what a smart contract is" image="guest-book.png" />
+    <Feature url="/develop/contracts/quickstart" title="Build a Contract" subtitle="Spin-up your first smart contract" image="smartcontract.png" />
     <Feature url="/develop/testing/introduction" title="Test the Contract" subtitle="Write unit & integration tests" image="test.png" />
     <Feature url="/develop/integrate/frontend" title="Build a Web Frontend" subtitle="Learn how to make a web dApp" image="frontend.png" />
     <Feature url="/tools/realtime" title="Track Your Users Activity" subtitle="Learn how to use Indexers" image="monitor.png" />

@@ -31,6 +31,12 @@ Before starting, make sure you have the following installed:
 Install both `near-cli` and `cargo-near` tools using `npm i -g near-cli cargo-near`
 :::
 
+:::info Testnet Account
+There is no need to have a testnet account to follow this tutorial.
+
+However, if you want to create one, you can do so through [a wallet](https://testnet.mynearwallet.com), and use it from the `near-cli` by invoking `near login`. 
+:::
+
 ---
 
 ## Creating the Contract

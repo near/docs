@@ -106,7 +106,7 @@
   ],
   "contracts": [
     "develop/contracts/welcome",
-    "develop/contracts/quickstart",
+    "develop/contracts/whatisacontract",
     {
       "type": "html",
       "value": "<hr/>"
@@ -116,10 +116,9 @@
       "value": "<span class='menu__link'><b><small> Building Smart Contracts </small></b></span>"
     },
     [
-      "develop/contracts/whatisacontract",
+      "develop/contracts/quickstart",
       {
-        "Build a Contract": [
-          "develop/contracts/introduction",
+        "Anatomy of a Contract": [
           "develop/contracts/basics",
           "develop/contracts/anatomy",
           "develop/contracts/environment/environment",
