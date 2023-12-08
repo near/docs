@@ -1,9 +1,5 @@
 {
   "scripts": {
     "test": "cd ./website && npm run full-test"
-  },
-  "dependencies": {
-    "docusaurus-plugin-remote-content": "^4.0.0",
-    "near-social-vm": "^2.3.1"
   }
 }
