@@ -46,6 +46,7 @@
     "bootstrap": "^5.3.2",
     "bootstrap-icons": "^1.11.1",
     "clsx": "^1.1.1",
+    "docusaurus-plugin-sass": "^0.2.5",
     "gleap": "^10.1.0",
     "https-browserify": "^1.0.0",
     "monaco-editor": "^0.44.0",
@@ -57,6 +58,7 @@
     "react-is": "^18.2.0",
     "react-monaco-editor": "^0.54.0",
     "rxjs": "^7.8.1",
+    "sass": "^1.69.5",
     "search-insights": "^2.2.1",
     "url": "^0.11.3",
     "zustand": "^4.4.4"

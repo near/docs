@@ -26,7 +26,7 @@ let greeting = "Have a great day";
 
 return (
   <>
-    <div class="container border border-info p-3 text-center min-vw-100">
+    <div class="container border border-info p-3 text-center ">
       <h1>Hello</h1>
       <p> {greeting} </p>
     </div>
@@ -69,7 +69,7 @@ let user_account = context.accountId;
 
 return (
   <>
-    <div class="container border border-info p-3 text-center min-vw-100">
+    <div class="container border border-info p-3 text-center ">
       <h1>Hello</h1>
       <p> {user_account} </p>
     </div>
@@ -92,7 +92,7 @@ let greeting = "Have a great day";
 
 return (
   <>
-    <div class="container border border-info p-3 text-center min-vw-100">
+    <div class="container border border-info p-3 text-center ">
       <h1>Hello {name}</h1>
       <p> {greeting} </p>
     </div>
@@ -117,7 +117,7 @@ const onChange = ({target}) => { State.update({greeting: target.value}) };
 
 return (
   <>
-    <div class="container border border-info p-3 min-vw-100">
+    <div class="container border border-info p-3 ">
       <p><b> Greeting: </b>  {state.greeting} </p>
 
       <label class="text-left">Change the Greeting</label>
@@ -143,7 +143,7 @@ const props = { name: "Anna" };
 
 return (
   <>
-    <div class="container min-vw-100">
+    <div class="container ">
 
       <h5> Components can be composed </h5>
       <hr />

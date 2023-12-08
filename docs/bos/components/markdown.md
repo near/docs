@@ -18,7 +18,7 @@ import {WidgetEditor} from "@site/src/components/social-widget"
 return (
   <>
     {["Example **markdown** content", "Some _other_ example"].map((placement) => (
-      <div class="container border border-info pt-3 min-vw-100 text-center">
+      <div class="container border border-info pt-3  text-center">
         <Markdown text={placement} />
       </div>
     ))}

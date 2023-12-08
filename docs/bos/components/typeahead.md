@@ -19,7 +19,7 @@ The code example below demonstrates how to use the `TypeAhead` component to crea
 const options = ["Apple", "Banana", "Cherry", "Durian", "Elderberry"];
 
 return (
-  <div class="container min-vh-100 min-vw-100">
+  <div class="container min-vh-100 ">
     <Typeahead
       options={options}
       multiple

@@ -55,7 +55,7 @@ module.exports = {
         },
         blog: {},
         theme: {
-          customCss: "/src/css/customTheme.css",
+          customCss: "/src/css/custom.scss",
         },
       },
     ],
@@ -63,6 +63,7 @@ module.exports = {
   plugins: [
     './src/plugins/monaco-editor',
     './src/plugins/node-polyfills',
+    'docusaurus-plugin-sass',
   ],
   themeConfig: {
     prism: {
