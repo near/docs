@@ -58,7 +58,7 @@ module.exports = {
           anonymizeIP: true,
         },
         blog: {
-          blogSidebarTitle: 'Recent Releases',
+          blogSidebarTitle: 'NEAR Releases',
           blogSidebarCount: 'ALL',
           showReadingTime: false,
         },
@@ -213,12 +213,12 @@ ${content}`, // <-- this last part adds in the rest of the content, which would 
           className: 'header-github-link',
           'aria-label': 'GitHub repository',
         },
-        { to: 'blog', label: 'NEAR Releases', position: 'right' },
+        { to: 'blog', label: 'Releases 🎉', position: 'right' },
       ],
     },
     image: 'img/near_logo.svg',
     footer: {
-      links: [],
+      links: [], 
       copyright: 'Copyright © 2021 NEAR Protocol',
       logo: {
         src: 'img/near_logo.svg',
