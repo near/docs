@@ -18,6 +18,7 @@ You will need to create one key per drop you want to generate, and you will alwa
 ## Getting key pairs
 
 ```bash
+curl https://keypom.sctuts.com/keypair/2/rootEntrophy
 ```
 
 ---
