@@ -12,5 +12,5 @@ Transactions can be sent asynchronously from a contract through a [`Promise`](ht
 :::info Why wait?
 Why not do these things synchronously, in the same block when the function is called? Why does NEAR require a `Promise` for sending tokens, or creating an account, or deploying a contract?
 
-They need to be scheduled in separate blocks since sender and receiver accounts can be on different shards, and cross-shard communication happens across blocks by passing receipts (you can think of receipts in NEAR as "internal transactions"). You can see these receipts being passed from block to block [in NEAR Explorer](https://nearblocks.io/transactions/36n3tBNiF497Tm9mijEpsCUvejL8mBYF1CEWthCnY8FV).
+They need to be scheduled in separate blocks since sender and receiver accounts can be on different shards, and cross-shard communication happens across blocks by passing receipts (you can think of receipts in NEAR as "internal transactions"). You can see these receipts being passed from block to block [in NEAR Explorer](https://nearblocks.io/txns/36n3tBNiF497Tm9mijEpsCUvejL8mBYF1CEWthCnY8FV).
 :::
