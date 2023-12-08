@@ -77,17 +77,14 @@ module.exports = {
           if (filename.includes('README')) {
             // get everything after ## BOS
             content = content.substring(
-              content.indexOf('## 🚀 Blockchain Operating System (B.O.S.)')
+              content.indexOf('An overview of essential repositories when building on NEAR Protocol.')
             );
             return {
               filename: 'github-overview.md',
               content: `---
 id: github-overview
-title: NEAR GitHub Repo Map
-sidebar_label: Overview
+title: NEAR Developer Repositories
 ---
-
-Below you will find a high-level overview of the NEAR development process. For more detailed information, please see the [NEAR Development Guide](/develop/intro-to-near/intro-to-near).
 
 ${content}`, // <-- this last part adds in the rest of the content, which would otherwise be discarded
             };
