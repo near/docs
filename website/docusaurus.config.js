@@ -161,7 +161,7 @@ module.exports = {
           type: 'localeDropdown',
           position: 'right',
         },
-        { to: 'blog', label: 'New Releases', position: 'right' },
+        { to: 'blog', label: 'NEAR Releases', position: 'right' },
       ],
     },
     image: 'img/near_logo.svg',

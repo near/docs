@@ -1,260 +1,336 @@
----
-title: November 2023
-tags: [Releases, Merged PRs]
-hide_table_of_contents: false
----
+# Releases - November 2023
 
-**Releases and merged pull requests for [developer essential repositories](http://github.com/near/dx).**
+## Releases  🎉 
 
-## Releases
-
-| repo | name | release_date | release_url |
-| --- | --- | --- | --- |
-| near-discovery | 11.07.2023 | 2023-11-07 | https://github.com/near/near-discovery/releases/tag/latest |
-| wallet-selector | v8.9.0 | 2023-11-27 | https://github.com/near/wallet-selector/releases/tag/v8.9.0 |
-| web3-onboard | 2.24.17 | 2023-11-29 | https://github.com/blocknative/web3-onboard/releases/tag/2.24.17 |
-| create-near-app | Release 6.0.1 | 2023-11-16 | https://github.com/near/create-near-app/releases/tag/v6.0.1 |
-| near-cli-rs | 0.7.2 - 2023-11-21 | 2023-11-21 | https://github.com/near/near-cli-rs/releases/tag/v0.7.2 |
-| bos-loader | v0.9.0 | 2023-11-03 | https://github.com/near/bos-loader/releases/tag/v0.9.0 |
-| near-sdk-rs | near-sys-v0.2.1 | 2023-11-19 | https://github.com/near/near-sdk-rs/releases/tag/near-sys-v0.2.1 |
-| near-workspaces-js | v3.4.0 | 2023-11-24 | https://github.com/near/near-workspaces-js/releases/tag/near-workspaces%403.4.0 |
-
-## Merged Pull Requests
-
-### Docs
-
-| Merged | PR | Description |
+| repo | release | release_date |
 | --- | --- | --- |
-| 2023-10-29 | [1558](https://github.com/near/docs/pull/1558) | [Typo fix in nfts.md](https://github.com/near/docs/pull/1558) |
-| 2023-10-29 | [1559](https://github.com/near/docs/pull/1559) | [Typo fix in anatomy.md](https://github.com/near/docs/pull/1559) |
-| 2023-10-27 | [1554](https://github.com/near/docs/pull/1554) | [Best Practices for Ethereum developers on BOS...](https://github.com/near/docs/pull/1554) |
-| 2023-10-27 | [1556](https://github.com/near/docs/pull/1556) | [Fixed Lido component link (BOS for Ethereum](https://github.com/near/docs/pull/1556) |
-| 2023-10-23 | [1546](https://github.com/near/docs/pull/1546) | [Add a tutorial for websockets based on the ](https://github.com/near/docs/pull/1546) |
-| 2023-10-19 | [1544](https://github.com/near/docs/pull/1544) | [feat: BOS for Ethereum developers doc](https://github.com/near/docs/pull/1544) |
-| 2023-10-18 | [1548](https://github.com/near/docs/pull/1548) | [Bump @babel/traverse from 7.18.13 to 7.23.2 in /we...](https://github.com/near/docs/pull/1548) |
-| 2023-10-18 | [1527](https://github.com/near/docs/pull/1527) | [Bump postcss from 8.4.16 to 8.4.31 in /website...](https://github.com/near/docs/pull/1527) |
-| 2023-10-13 | [1541](https://github.com/near/docs/pull/1541) | [update epic template](https://github.com/near/docs/pull/1541) |
-| 2023-10-13 | [1540](https://github.com/near/docs/pull/1540) | [add epic template](https://github.com/near/docs/pull/1540) |
-| 2023-10-12 | [1536](https://github.com/near/docs/pull/1536) | [update queryApi links](https://github.com/near/docs/pull/1536) |
-| 2023-10-11 | [1535](https://github.com/near/docs/pull/1535) | [Update simple-fts.md](https://github.com/near/docs/pull/1535) |
-| 2023-10-10 | [1526](https://github.com/near/docs/pull/1526) | [Update context.md - add log](https://github.com/near/docs/pull/1526) |
-| 2023-10-06 | [1525](https://github.com/near/docs/pull/1525) | [Remove FetchFromSocialApi](https://github.com/near/docs/pull/1525) |
-| 2023-10-05 | [1522](https://github.com/near/docs/pull/1522) | [Update relayers doc](https://github.com/near/docs/pull/1522) |
-| 2023-10-05 | [1524](https://github.com/near/docs/pull/1524) | [Fix typos](https://github.com/near/docs/pull/1524) |
-| 2023-10-04 | [1523](https://github.com/near/docs/pull/1523) | [Gateway notifications](https://github.com/near/docs/pull/1523) |
-| 2023-10-02 | [1510](https://github.com/near/docs/pull/1510) | [update QueryApi limitations](https://github.com/near/docs/pull/1510) |
+| near-discovery | [11.07.2023](https://github.com/near/near-discovery/releases/tag/latest) | 2023-11-07 |
+| wallet-selector | [v8.9.0](https://github.com/near/wallet-selector/releases/tag/v8.9.0) | 2023-11-27 |
+| web3-onboard | [2.24.17](https://github.com/blocknative/web3-onboard/releases/tag/2.24.17) | 2023-11-29 |
+| create-near-app | [Release 6.0.1](https://github.com/near/create-near-app/releases/tag/v6.0.1) | 2023-11-16 |
+| near-cli-rs | [0.7.2 - 2023-11-21](https://github.com/near/near-cli-rs/releases/tag/v0.7.2) | 2023-11-21 |
+| bos-loader | [v0.9.0](https://github.com/near/bos-loader/releases/tag/v0.9.0) | 2023-11-03 |
+| near-sdk-rs | [near-sys-v0.2.1](https://github.com/near/near-sdk-rs/releases/tag/near-sys-v0.2.1) | 2023-11-19 |
+| near-workspaces-js | [v3.4.0](https://github.com/near/near-workspaces-js/releases/tag/near-workspaces%403.4.0) | 2023-11-24 |
 
-### NEAR-DISCOVERY
+## Merged Pull Requests  🚀 
 
-| merged_at | num | title |
+## docs
+
+| DATE | PR | DESCRIPTION |
 | --- | --- | --- |
-| 2023-10-26 | [769](https://github.com/near/near-discovery/pull/769) | [weekly promotion of develop to main](https://github.com/near/near-discovery/pull/769) |
-| 2023-10-24 | [761](https://github.com/near/near-discovery/pull/761) | [develop -> main](https://github.com/near/near-discovery/pull/761) |
-| 2023-10-19 | [734](https://github.com/near/near-discovery/pull/734) | [weekly promotion of develop to main](https://github.com/near/near-discovery/pull/734) |
-| 2023-10-16 | [721](https://github.com/near/near-discovery/pull/721) | [Upgrade vm  (#720)](https://github.com/near/near-discovery/pull/721) |
-| 2023-10-16 | [719](https://github.com/near/near-discovery/pull/719) | [develop -> main](https://github.com/near/near-discovery/pull/719) |
-| 2023-10-12 | [694](https://github.com/near/near-discovery/pull/694) | [weekly promotion of develop to main](https://github.com/near/near-discovery/pull/694) |
-| 2023-10-04 | [654](https://github.com/near/near-discovery/pull/654) | [develop -> main](https://github.com/near/near-discovery/pull/654) |
+| 2023-11-28 | [1584](https://github.com/near/docs/pull/1584) | [chore: change links ...](https://github.com/near/docs/pull/1584) |
+| 2023-11-27 | [1600](https://github.com/near/docs/pull/1600) | [Update indexing-tools.md](https://github.com/near/docs/pull/1600) |
+| 2023-11-23 | [1597](https://github.com/near/docs/pull/1597) | [Update QueryApi best practices](https://github.com/near/docs/pull/1597) |
+| 2023-11-21 | [1574](https://github.com/near/docs/pull/1574) | [complete documentation for validators()](https://github.com/near/docs/pull/1574) |
+| 2023-11-21 | [1583](https://github.com/near/docs/pull/1583) | [WIP: Implementing DEX Primitives on Docs](https://github.com/near/docs/pull/1583) |
+| 2023-11-21 | [1596](https://github.com/near/docs/pull/1596) | [Fix link](https://github.com/near/docs/pull/1596) |
+| 2023-11-20 | [1588](https://github.com/near/docs/pull/1588) | [Update quickstart.md](https://github.com/near/docs/pull/1588) |
+| 2023-11-17 | [1589](https://github.com/near/docs/pull/1589) | [Update Ethereum consensus mechanism](https://github.com/near/docs/pull/1589) |
+| 2023-11-17 | [1590](https://github.com/near/docs/pull/1590) | [Add docs schema best practices](https://github.com/near/docs/pull/1590) |
+| 2023-11-16 | [1587](https://github.com/near/docs/pull/1587) | [Update near-bindgen.md](https://github.com/near/docs/pull/1587) |
+| 2023-11-14 | [1565](https://github.com/near/docs/pull/1565) | [Implementing FT Primitives on Docs](https://github.com/near/docs/pull/1565) |
+| 2023-11-14 | [1582](https://github.com/near/docs/pull/1582) | [Update naj-contract.md](https://github.com/near/docs/pull/1582) |
+| 2023-11-13 | [1580](https://github.com/near/docs/pull/1580) | [Update QueryApi tuto...](https://github.com/near/docs/pull/1580) |
+| 2023-11-13 | [1566](https://github.com/near/docs/pull/1566) | [NFT indexing tutorial using queryApi](https://github.com/near/docs/pull/1566) |
+| 2023-11-10 | [1573](https://github.com/near/docs/pull/1573) | [fix: resolve broken links](https://github.com/near/docs/pull/1573) |
+| 2023-11-09 | [1570](https://github.com/near/docs/pull/1570) | [Add hours to DA docs epoch](https://github.com/near/docs/pull/1570) |
+| 2023-11-09 | [1572](https://github.com/near/docs/pull/1572) | [Update BigQuery example doc](https://github.com/near/docs/pull/1572) |
+| 2023-11-09 | [1571](https://github.com/near/docs/pull/1571) | [Search Bar Fix](https://github.com/near/docs/pull/1571) |
+| 2023-11-08 | [1568](https://github.com/near/docs/pull/1568) | [DA Docs](https://github.com/near/docs/pull/1568) |
+| 2023-11-08 | [1567](https://github.com/near/docs/pull/1567) | [added da-docs](https://github.com/near/docs/pull/1567) |
+| 2023-11-03 | [1563](https://github.com/near/docs/pull/1563) | [Add Seracle to the list of RPC providers](https://github.com/near/docs/pull/1563) |
+| 2023-11-03 | [1552](https://github.com/near/docs/pull/1552) | [QueryApi best practices](https://github.com/near/docs/pull/1552) |
 
-### NEAR-DISCOVERY-COMPONENTS
+## near-discovery
 
-| merged_at | num | title |
+| DATE | PR | DESCRIPTION |
 | --- | --- | --- |
-| 2023-10-30 | [456](https://github.com/near/near-discovery-components/pull/456) | [develop -> main](https://github.com/near/near-discovery-components/pull/456) |
-| 2023-10-26 | [451](https://github.com/near/near-discovery-components/pull/451) | [weekly promotion of develop to main](https://github.com/near/near-discovery-components/pull/451) |
-| 2023-10-23 | [437](https://github.com/near/near-discovery-components/pull/437) | [develop -> main](https://github.com/near/near-discovery-components/pull/437) |
-| 2023-10-18 | [423](https://github.com/near/near-discovery-components/pull/423) | [Non-regular promotion of develop to main](https://github.com/near/near-discovery-components/pull/423) |
-| 2023-10-17 | [420](https://github.com/near/near-discovery-components/pull/420) | [develop -> main](https://github.com/near/near-discovery-components/pull/420) |
-| 2023-10-16 | [416](https://github.com/near/near-discovery-components/pull/416) | [develop -> main](https://github.com/near/near-discovery-components/pull/416) |
-| 2023-10-12 | [399](https://github.com/near/near-discovery-components/pull/399) | [weekly promotion of develop to main](https://github.com/near/near-discovery-components/pull/399) |
-| 2023-10-05 | [382](https://github.com/near/near-discovery-components/pull/382) | [weekly promotion of develop to main](https://github.com/near/near-discovery-components/pull/382) |
-| 2023-10-03 | [379](https://github.com/near/near-discovery-components/pull/379) | [develop -> main](https://github.com/near/near-discovery-components/pull/379) |
-| 2023-10-02 | [377](https://github.com/near/near-discovery-components/pull/377) | [develop -> main](https://github.com/near/near-discovery-components/pull/377) |
+| 2023-11-29 | [862](https://github.com/near/near-discovery/pull/862) | [Hotfix 11 29](https://github.com/near/near-discovery/pull/862) |
+| 2023-11-29 | [861](https://github.com/near/near-discovery/pull/861) | [Temporarily disable ...](https://github.com/near/near-discovery/pull/861) |
+| 2023-11-27 | [857](https://github.com/near/near-discovery/pull/857) | [develop -> main](https://github.com/near/near-discovery/pull/857) |
+| 2023-11-24 | [842](https://github.com/near/near-discovery/pull/842) | [chore: bump near-social-vm](https://github.com/near/near-discovery/pull/842) |
+| 2023-11-22 | [839](https://github.com/near/near-discovery/pull/839) | [develop -> main](https://github.com/near/near-discovery/pull/839) |
+| 2023-11-20 | [834](https://github.com/near/near-discovery/pull/834) | [promote /da shortcut](https://github.com/near/near-discovery/pull/834) |
+| 2023-11-20 | [829](https://github.com/near/near-discovery/pull/829) | [weekly promotion of develop to main](https://github.com/near/near-discovery/pull/829) |
+| 2023-11-08 | [816](https://github.com/near/near-discovery/pull/816) | [release DA link](https://github.com/near/near-discovery/pull/816) |
+| 2023-11-08 | [815](https://github.com/near/near-discovery/pull/815) | [develop -> main](https://github.com/near/near-discovery/pull/815) |
+| 2023-11-06 | [804](https://github.com/near/near-discovery/pull/804) | [Promote idOS integration into production](https://github.com/near/near-discovery/pull/804) |
+| 2023-11-03 | [802](https://github.com/near/near-discovery/pull/802) | [Relayer URL Update](https://github.com/near/near-discovery/pull/802) |
+| 2023-11-03 | [794](https://github.com/near/near-discovery/pull/794) | [weekly promotion of develop to main](https://github.com/near/near-discovery/pull/794) |
 
-### VIEWER
+## near-discovery-components
 
-| merged_at | num | title |
+| DATE | PR | DESCRIPTION |
 | --- | --- | --- |
-| 2023-10-30 | [209](https://github.com/NearSocial/viewer/pull/209) | [Inject props and forced widget](https://github.com/NearSocial/viewer/pull/209) |
-| 2023-10-24 | [207](https://github.com/NearSocial/viewer/pull/207) | [Ability to star current application](https://github.com/NearSocial/viewer/pull/207) |
-| 2023-10-23 | [203](https://github.com/NearSocial/viewer/pull/203) | [Remove overflow on view page](https://github.com/NearSocial/viewer/pull/203) |
-| 2023-10-23 | [206](https://github.com/NearSocial/viewer/pull/206) | [Improve UI in the editor](https://github.com/NearSocial/viewer/pull/206) |
-| 2023-10-16 | [202](https://github.com/NearSocial/viewer/pull/202) | [VM 2.5.0](https://github.com/NearSocial/viewer/pull/202) |
-| 2023-10-10 | [201](https://github.com/NearSocial/viewer/pull/201) | [Add site.webmanifest](https://github.com/NearSocial/viewer/pull/201) |
-| 2023-10-10 | [200](https://github.com/NearSocial/viewer/pull/200) | [Fix Mobile QR for Here Wallet and Meteor](https://github.com/NearSocial/viewer/pull/200) |
-| 2023-10-02 | [198](https://github.com/NearSocial/viewer/pull/198) | [Scroll to top](https://github.com/NearSocial/viewer/pull/198) |
-| 2023-10-02 | [197](https://github.com/NearSocial/viewer/pull/197) | [Magic: return NFT collection icon](https://github.com/NearSocial/viewer/pull/197) |
+| 2023-11-29 | [546](https://github.com/near/near-discovery-components/pull/546) | [develop -> main ](https://github.com/near/near-discovery-components/pull/546) |
+| 2023-11-27 | [539](https://github.com/near/near-discovery-components/pull/539) | [weekly promotion of develop to main](https://github.com/near/near-discovery-components/pull/539) |
+| 2023-11-17 | [537](https://github.com/near/near-discovery-components/pull/537) | [Sync Main](https://github.com/near/near-discovery-components/pull/537) |
+| 2023-11-17 | [535](https://github.com/near/near-discovery-components/pull/535) | [Sync Main](https://github.com/near/near-discovery-components/pull/535) |
+| 2023-11-15 | [531](https://github.com/near/near-discovery-components/pull/531) | [Weekly promotion of ...](https://github.com/near/near-discovery-components/pull/531) |
+| 2023-11-10 | [519](https://github.com/near/near-discovery-components/pull/519) | [Sync Main](https://github.com/near/near-discovery-components/pull/519) |
+| 2023-11-09 | [514](https://github.com/near/near-discovery-components/pull/514) | [weekly promotion of develop to main](https://github.com/near/near-discovery-components/pull/514) |
+| 2023-11-09 | [516](https://github.com/near/near-discovery-components/pull/516) | [Check type of accoun...](https://github.com/near/near-discovery-components/pull/516) |
+| 2023-11-08 | [511](https://github.com/near/near-discovery-components/pull/511) | [chore: Update PoP an...](https://github.com/near/near-discovery-components/pull/511) |
+| 2023-11-08 | [510](https://github.com/near/near-discovery-components/pull/510) | [Sync Main](https://github.com/near/near-discovery-components/pull/510) |
+| 2023-11-08 | [507](https://github.com/near/near-discovery-components/pull/507) | [Update DA Docs Link](https://github.com/near/near-discovery-components/pull/507) |
+| 2023-11-08 | [505](https://github.com/near/near-discovery-components/pull/505) | [Non-regular promotion develop -> main](https://github.com/near/near-discovery-components/pull/505) |
+| 2023-11-06 | [492](https://github.com/near/near-discovery-components/pull/492) | [Sync Main](https://github.com/near/near-discovery-components/pull/492) |
+| 2023-11-06 | [489](https://github.com/near/near-discovery-components/pull/489) | [Promote develop -> main ](https://github.com/near/near-discovery-components/pull/489) |
+| 2023-11-03 | [485](https://github.com/near/near-discovery-components/pull/485) | [Sync Main](https://github.com/near/near-discovery-components/pull/485) |
+| 2023-11-03 | [479](https://github.com/near/near-discovery-components/pull/479) | [Hotfix TOS Checker Bug](https://github.com/near/near-discovery-components/pull/479) |
+| 2023-11-03 | [474](https://github.com/near/near-discovery-components/pull/474) | [weekly promotion of develop to main](https://github.com/near/near-discovery-components/pull/474) |
 
-## VM
+## viewer
 
-| merged_at | num | title |
+| DATE | PR | DESCRIPTION |
 | --- | --- | --- |
-| 2023-10-25 | [150](https://github.com/NearSocial/VM/pull/150) | [Release 2.5.2](https://github.com/NearSocial/VM/pull/150) |
-| 2023-10-16 | [145](https://github.com/NearSocial/VM/pull/145) | [Release 2.5.1](https://github.com/NearSocial/VM/pull/145) |
-| 2023-10-13 | [142](https://github.com/NearSocial/VM/pull/142) | [Release 2.5.0](https://github.com/NearSocial/VM/pull/142) |
-| 2023-10-07 | [136](https://github.com/NearSocial/VM/pull/136) | [Add README.md](https://github.com/NearSocial/VM/pull/136) |
+| 2023-11-04 | [212](https://github.com/NearSocial/viewer/pull/212) | [Fix wallet connect (updating to V2)](https://github.com/NearSocial/viewer/pull/212) |
+| 2023-11-04 | [210](https://github.com/NearSocial/viewer/pull/210) | [Update how hash router works](https://github.com/NearSocial/viewer/pull/210) |
 
-## BOS-WEB-ENGINE
+## bos-web-engine
 
-| merged_at | num | title |
+| DATE | PR | DESCRIPTION |
 | --- | --- | --- |
-| 2023-10-30 | [124](https://github.com/near/bos-web-engine/pull/124) | [build: dependabot](https://github.com/near/bos-web-engine/pull/124) |
-| 2023-10-10 | [80](https://github.com/near/bos-web-engine/pull/80) | [Linting+formatting pre-commit hook](https://github.com/near/bos-web-engine/pull/80) |
-| 2023-10-18 | [103](https://github.com/near/bos-web-engine/pull/103) | [add FAQ to readme](https://github.com/near/bos-web-engine/pull/103) |
-| 2023-10-26 | [118](https://github.com/near/bos-web-engine/pull/118) | [fix: inline stringified JSON props directly...](https://github.com/near/bos-web-engine/pull/118) |
-| 2023-10-25 | [117](https://github.com/near/bos-web-engine/pull/117) | [fix: allow Component names with hyphens](https://github.com/near/bos-web-engine/pull/117) |
-| 2023-10-18 | [104](https://github.com/near/bos-web-engine/pull/104) | [add lib to turbo cache](https://github.com/near/bos-web-engine/pull/104) |
-| 2023-10-18 | [102](https://github.com/near/bos-web-engine/pull/102) | [add code inspector panel](https://github.com/near/bos-web-engine/pull/102) |
-| 2023-10-17 | [99](https://github.com/near/bos-web-engine/pull/99) | [feat: remove builtin Components](https://github.com/near/bos-web-engine/pull/99) |
-| 2023-10-13 | [88](https://github.com/near/bos-web-engine/pull/88) | [refactor: iframe closure](https://github.com/near/bos-web-engine/pull/88) |
-| 2023-10-13 | [89](https://github.com/near/bos-web-engine/pull/89) | [refactor: break out Widget logic](https://github.com/near/bos-web-engine/pull/89) |
-| 2023-10-11 | [83](https://github.com/near/bos-web-engine/pull/83) | [feat: basic hooks support](https://github.com/near/bos-web-engine/pull/83) |
-| 2023-10-09 | [78](https://github.com/near/bos-web-engine/pull/78) | [feat: explicit trust](https://github.com/near/bos-web-engine/pull/78) |
-| 2023-10-02 | [68](https://github.com/near/bos-web-engine/pull/68) | [docs: Component usage docs](https://github.com/near/bos-web-engine/pull/68) |
-| 2023-10-09 | [79](https://github.com/near/bos-web-engine/pull/79) | [feat: replace `isTrusted`](https://github.com/near/bos-web-engine/pull/79) |
-| 2023-10-03 | [76](https://github.com/near/bos-web-engine/pull/76) | [remove babel as a dev dependency](https://github.com/near/bos-web-engine/pull/76) |
-| 2023-10-03 | [74](https://github.com/near/bos-web-engine/pull/74) | [style: prettier](https://github.com/near/bos-web-engine/pull/74) |
-| 2023-10-02 | [58](https://github.com/near/bos-web-engine/pull/58) | [remove index route to prevent unnecessary redirect...](https://github.com/near/bos-web-engine/pull/58) |
+| 2023-11-15 | [120](https://github.com/near/bos-web-engine/pull/120) | [WIP Press Release - FAQ](https://github.com/near/bos-web-engine/pull/120) |
+| 2023-11-08 | [140](https://github.com/near/bos-web-engine/pull/140) | [docs: architecture updates](https://github.com/near/bos-web-engine/pull/140) |
+| 2023-11-06 | [126](https://github.com/near/bos-web-engine/pull/126) | [docs: architecture docs overhaul](https://github.com/near/bos-web-engine/pull/126) |
+| 2023-11-03 | [137](https://github.com/near/bos-web-engine/pull/137) | [feat: messaging closure](https://github.com/near/bos-web-engine/pull/137) |
+| 2023-11-03 | [136](https://github.com/near/bos-web-engine/pull/136) | [feat: remove shims](https://github.com/near/bos-web-engine/pull/136) |
+| 2023-11-03 | [135](https://github.com/near/bos-web-engine/pull/135) | [TypeScript support](https://github.com/near/bos-web-engine/pull/135) |
+| 2023-11-03 | [132](https://github.com/near/bos-web-engine/pull/132) | [Drop `/widget/` from component paths](https://github.com/near/bos-web-engine/pull/132) |
+| 2023-11-01 | [129](https://github.com/near/bos-web-engine/pull/129) | [prevent error flash on load](https://github.com/near/bos-web-engine/pull/129) |
 
-## WALLET-SELECTOR
+## wallet-selector
 
-| merged_at | num | title |
+| DATE | PR | DESCRIPTION |
 | --- | --- | --- |
-| 2023-10-26 | [983](https://github.com/near/wallet-selector/pull/983) | [Add SECURITY.md file](https://github.com/near/wallet-selector/pull/983) |
-| 2023-10-20 | [976](https://github.com/near/wallet-selector/pull/976) | [v8.7.0 Release (dev -> main)](https://github.com/near/wallet-selector/pull/976) |
-| 2023-10-18 | [971](https://github.com/near/wallet-selector/pull/971) | [v8.6.0 Release (dev -> main)](https://github.com/near/wallet-selector/pull/971) |
-| 2023-10-11 | [960](https://github.com/near/wallet-selector/pull/960) | [v8.5.4 Release (dev -> main)](https://github.com/near/wallet-selector/pull/960) |
+| 2023-11-27 | [1020](https://github.com/near/wallet-selector/pull/1020) | [v8.9.0 Release (dev -> main)](https://github.com/near/wallet-selector/pull/1020) |
+| 2023-11-20 | [1014](https://github.com/near/wallet-selector/pull/1014) | [v8.8.0 Release (dev -> main)](https://github.com/near/wallet-selector/pull/1014) |
+| 2023-11-10 | [1008](https://github.com/near/wallet-selector/pull/1008) | [v8.7.2 Release (dev -> main)](https://github.com/near/wallet-selector/pull/1008) |
+| 2023-11-07 | [1001](https://github.com/near/wallet-selector/pull/1001) | [v8.7.1 Release (dev -> main)](https://github.com/near/wallet-selector/pull/1001) |
 
-## WEB3-ONBOARD
+## web3-onboard
 
-| merged_at | num | title |
+| DATE | PR | DESCRIPTION |
 | --- | --- | --- |
-| 2023-10-25 | [1976](https://github.com/blocknative/web3-onboard/pull/1976) | [Release - 2.24.15 ](https://github.com/blocknative/web3-onboard/pull/1976) |
-| 2023-10-17 | [1960](https://github.com/blocknative/web3-onboard/pull/1960) | [Release - 2.24.14](https://github.com/blocknative/web3-onboard/pull/1960) |
-| 2023-10-06 | [1948](https://github.com/blocknative/web3-onboard/pull/1948) | [Release 2.24.13](https://github.com/blocknative/web3-onboard/pull/1948) |
-| 2023-10-02 | [1933](https://github.com/blocknative/web3-onboard/pull/1933) | [Release 2.24.12](https://github.com/blocknative/web3-onboard/pull/1933) |
+| 2023-11-29 | [2012](https://github.com/blocknative/web3-onboard/pull/2012) | [Release 2.24.17](https://github.com/blocknative/web3-onboard/pull/2012) |
+| 2023-11-03 | [1992](https://github.com/blocknative/web3-onboard/pull/1992) | [Release 2.24.16](https://github.com/blocknative/web3-onboard/pull/1992) |
 
-## FAST-AUTH-SIGNER
+## fast-auth-signer
 
-| merged_at | num | title |
+| DATE | PR | DESCRIPTION |
 | --- | --- | --- |
-| 2023-10-25 | [93](https://github.com/near/fast-auth-signer/pull/93) | [Added basePath's to window.location.origin...](https://github.com/near/fast-auth-signer/pull/93) |
-| 2023-10-25 | [90](https://github.com/near/fast-auth-signer/pull/90) | [feat: add support for non webauthn browsers...](https://github.com/near/fast-auth-signer/pull/90) |
-| 2023-10-23 | [96](https://github.com/near/fast-auth-signer/pull/96) | [fix: make catch not miss parent scope errors...](https://github.com/near/fast-auth-signer/pull/96) |
-| 2023-10-20 | [79](https://github.com/near/fast-auth-signer/pull/79) | [Added lint workflow](https://github.com/near/fast-auth-signer/pull/79) |
-| 2023-10-18 | [88](https://github.com/near/fast-auth-signer/pull/88) | [Redirect instead of prompt if no email in local st...](https://github.com/near/fast-auth-signer/pull/88) |
-| 2023-10-05 | [73](https://github.com/near/fast-auth-signer/pull/73) | [Disable auto delete lak, decoupling FAK, LAK on fi...](https://github.com/near/fast-auth-signer/pull/73) |
-| 2023-10-05 | [77](https://github.com/near/fast-auth-signer/pull/77) | [fix: login with JSON key](https://github.com/near/fast-auth-signer/pull/77) |
-| 2023-10-05 | [76](https://github.com/near/fast-auth-signer/pull/76) | [fix: add token format](https://github.com/near/fast-auth-signer/pull/76) |
-| 2023-10-05 | [75](https://github.com/near/fast-auth-signer/pull/75) | [feat: add push to artifact registry](https://github.com/near/fast-auth-signer/pull/75) |
-| 2023-10-04 | [74](https://github.com/near/fast-auth-signer/pull/74) | [fix: removing outdated controllerState on AuthIndi...](https://github.com/near/fast-auth-signer/pull/74) |
-| 2023-10-04 | [70](https://github.com/near/fast-auth-signer/pull/70) | [Refactor useAuthState](https://github.com/near/fast-auth-signer/pull/70) |
-| 2023-10-04 | [68](https://github.com/near/fast-auth-signer/pull/68) | [minor ui fixes](https://github.com/near/fast-auth-signer/pull/68) |
-| 2023-10-04 | [71](https://github.com/near/fast-auth-signer/pull/71) | [Different way of showing favicons of websites...](https://github.com/near/fast-auth-signer/pull/71) |
+| 2023-11-20 | [112](https://github.com/near/fast-auth-signer/pull/112) | [feat: update mpc urls](https://github.com/near/fast-auth-signer/pull/112) |
+| 2023-11-17 | [110](https://github.com/near/fast-auth-signer/pull/110) | [Add playwright test app](https://github.com/near/fast-auth-signer/pull/110) |
+| 2023-11-09 | [108](https://github.com/near/fast-auth-signer/pull/108) | [Monorepo + Playwrigh...](https://github.com/near/fast-auth-signer/pull/108) |
+| 2023-11-09 | [103](https://github.com/near/fast-auth-signer/pull/103) | [Set up Sentry](https://github.com/near/fast-auth-signer/pull/103) |
+| 2023-11-07 | [106](https://github.com/near/fast-auth-signer/pull/106) | [Sign corrections](https://github.com/near/fast-auth-signer/pull/106) |
+| 2023-11-01 | [102](https://github.com/near/fast-auth-signer/pull/102) | [fix: throw if no account exists](https://github.com/near/fast-auth-signer/pull/102) |
 
-## IDOS-SDK-JS
+## mpc-recovery
 
-| merged_at | num | title |
+| DATE | PR | DESCRIPTION |
 | --- | --- | --- |
-| 2023-10-25 | [21](https://github.com/idos-network/idos-sdk-js/pull/21) | [Use near-rs (idos-dev-2.testnet) instead of near-t...](https://github.com/idos-network/idos-sdk-js/pull/21) |
-| 2023-10-23 | [20](https://github.com/idos-network/idos-sdk-js/pull/20) | [Implement idOS.verifiableCredentials.verify...](https://github.com/idos-network/idos-sdk-js/pull/20) |
-| 2023-10-23 | [19](https://github.com/idos-network/idos-sdk-js/pull/19) | [chore: tidy up things](https://github.com/idos-network/idos-sdk-js/pull/19) |
-| 2023-10-20 | [18](https://github.com/idos-network/idos-sdk-js/pull/18) | [Cleaner dapp example, demo reset, prettier UI...](https://github.com/idos-network/idos-sdk-js/pull/18) |
-| 2023-10-20 | [17](https://github.com/idos-network/idos-sdk-js/pull/17) | [feat: implement grant sharing](https://github.com/idos-network/idos-sdk-js/pull/17) |
-| 2023-10-05 | [5](https://github.com/idos-network/idos-sdk-js/pull/5) | [Integration example for NEAR wallets. Also: update...](https://github.com/idos-network/idos-sdk-js/pull/5) |
-| 2023-10-13 | [16](https://github.com/idos-network/idos-sdk-js/pull/16) | [feat: remember humanId and signerPublicKey in encl...](https://github.com/idos-network/idos-sdk-js/pull/16) |
-| 2023-10-11 | [15](https://github.com/idos-network/idos-sdk-js/pull/15) | [feat: connect with near or metamask](https://github.com/idos-network/idos-sdk-js/pull/15) |
-| 2023-10-11 | [14](https://github.com/idos-network/idos-sdk-js/pull/14) | [feat: use public key from credentials table for de...](https://github.com/idos-network/idos-sdk-js/pull/14) |
-| 2023-10-11 | [13](https://github.com/idos-network/idos-sdk-js/pull/13) | [feat: finish NEP-413](https://github.com/idos-network/idos-sdk-js/pull/13) |
-| 2023-10-10 | [12](https://github.com/idos-network/idos-sdk-js/pull/12) | [feat: connect wallets](https://github.com/idos-network/idos-sdk-js/pull/12) |
-| 2023-10-10 | [11](https://github.com/idos-network/idos-sdk-js/pull/11) | [Tweak and update interface after recent changes. U...](https://github.com/idos-network/idos-sdk-js/pull/11) |
-| 2023-10-09 | [8](https://github.com/idos-network/idos-sdk-js/pull/8) | [Draft NEAR grants](https://github.com/idos-network/idos-sdk-js/pull/8) |
-| 2023-10-06 | [10](https://github.com/idos-network/idos-sdk-js/pull/10) | [feat: grant sharing functionality for evm and near...](https://github.com/idos-network/idos-sdk-js/pull/10) |
-| 2023-10-06 | [9](https://github.com/idos-network/idos-sdk-js/pull/9) | [Feat/dogfood the sdk to the dashboard](https://github.com/idos-network/idos-sdk-js/pull/9) |
-| 2023-10-06 | [7](https://github.com/idos-network/idos-sdk-js/pull/7) | [fix: wrap decrypt in try catch](https://github.com/idos-network/idos-sdk-js/pull/7) |
-| 2023-10-06 | [6](https://github.com/idos-network/idos-sdk-js/pull/6) | [fix: encryption decription issues](https://github.com/idos-network/idos-sdk-js/pull/6) |
+| 2023-11-20 | [378](https://github.com/near/mpc-recovery/pull/378) | [release: 2023-11-20_1](https://github.com/near/mpc-recovery/pull/378) |
+| 2023-11-20 | [374](https://github.com/near/mpc-recovery/pull/374) | [chore: release 2023-11-20](https://github.com/near/mpc-recovery/pull/374) |
 
-## NEAR-CLI-RS
+## idos-sdk-js
 
-| merged_at | num | title |
+| DATE | PR | DESCRIPTION |
 | --- | --- | --- |
-| 2023-10-31 | [227](https://github.com/near/near-cli-rs/pull/227) | [feat: New command - staking](https://github.com/near/near-cli-rs/pull/227) |
-| 2023-10-30 | [253](https://github.com/near/near-cli-rs/pull/253) | [refactor: NEAR tokens usages to use a strictly typ...](https://github.com/near/near-cli-rs/pull/253) |
-| 2023-10-17 | [248](https://github.com/near/near-cli-rs/pull/248) | [chore: release v0.6.2](https://github.com/near/near-cli-rs/pull/248) |
-| 2023-10-17 | [249](https://github.com/near/near-cli-rs/pull/249) | [feat: Refactored to use "manage-profile" in "bos"....](https://github.com/near/near-cli-rs/pull/249) |
-| 2023-10-13 | [247](https://github.com/near/near-cli-rs/pull/247) | [feat: Refactored to use "deploy" in "cargo-near"....](https://github.com/near/near-cli-rs/pull/247) |
-| 2023-10-09 | [245](https://github.com/near/near-cli-rs/pull/245) | [chore: release v0.6.1](https://github.com/near/near-cli-rs/pull/245) |
-| 2023-10-09 | [246](https://github.com/near/near-cli-rs/pull/246) | [feat: Refactored for use in "cargo-near"](https://github.com/near/near-cli-rs/pull/246) |
-| 2023-10-07 | [231](https://github.com/near/near-cli-rs/pull/231) | [feat: Added a new command to manage BOS profile in...](https://github.com/near/near-cli-rs/pull/231) |
-| 2023-10-06 | [243](https://github.com/near/near-cli-rs/pull/243) | [chore: propagate faucet error message](https://github.com/near/near-cli-rs/pull/243) |
-| 2023-10-06 | [230](https://github.com/near/near-cli-rs/pull/230) | [chore: release v0.6.0](https://github.com/near/near-cli-rs/pull/230) |
+| 2023-11-24 | [76](https://github.com/idos-network/idos-sdk-js/pull/76) | [feat: add more ergonomic names](https://github.com/idos-network/idos-sdk-js/pull/76) |
+| 2023-11-23 | [75](https://github.com/idos-network/idos-sdk-js/pull/75) | [feat: cookie consent](https://github.com/idos-network/idos-sdk-js/pull/75) |
+| 2023-11-22 | [66](https://github.com/idos-network/idos-sdk-js/pull/66) | [feat: typescript](https://github.com/idos-network/idos-sdk-js/pull/66) |
+| 2023-11-20 | [74](https://github.com/idos-network/idos-sdk-js/pull/74) | [Obvious typo](https://github.com/idos-network/idos-sdk-js/pull/74) |
+| 2023-11-20 | [67](https://github.com/idos-network/idos-sdk-js/pull/67) | [feat: credential statuses](https://github.com/idos-network/idos-sdk-js/pull/67) |
+| 2023-11-15 | [72](https://github.com/idos-network/idos-sdk-js/pull/72) | [Obvious mistakes](https://github.com/idos-network/idos-sdk-js/pull/72) |
+| 2023-11-15 | [71](https://github.com/idos-network/idos-sdk-js/pull/71) | [feat: display creden...](https://github.com/idos-network/idos-sdk-js/pull/71) |
+| 2023-11-14 | [70](https://github.com/idos-network/idos-sdk-js/pull/70) | [Obvious typo](https://github.com/idos-network/idos-sdk-js/pull/70) |
+| 2023-11-14 | [69](https://github.com/idos-network/idos-sdk-js/pull/69) | [Throw error](https://github.com/idos-network/idos-sdk-js/pull/69) |
+| 2023-11-14 | [68](https://github.com/idos-network/idos-sdk-js/pull/68) | [Ensure code formatting](https://github.com/idos-network/idos-sdk-js/pull/68) |
+| 2023-11-13 | [58](https://github.com/idos-network/idos-sdk-js/pull/58) | [fix: SDK credential creation](https://github.com/idos-network/idos-sdk-js/pull/58) |
+| 2023-11-10 | [65](https://github.com/idos-network/idos-sdk-js/pull/65) | [feat: inform user whenever on mobile](https://github.com/idos-network/idos-sdk-js/pull/65) |
+| 2023-11-10 | [64](https://github.com/idos-network/idos-sdk-js/pull/64) | [feat: display messag...](https://github.com/idos-network/idos-sdk-js/pull/64) |
+| 2023-11-10 | [63](https://github.com/idos-network/idos-sdk-js/pull/63) | [Feat/hide view details on mobile](https://github.com/idos-network/idos-sdk-js/pull/63) |
+| 2023-11-10 | [62](https://github.com/idos-network/idos-sdk-js/pull/62) | [feat: hide proof of identity for mobile](https://github.com/idos-network/idos-sdk-js/pull/62) |
+| 2023-11-10 | [61](https://github.com/idos-network/idos-sdk-js/pull/61) | [fix: increase z-index of idos container](https://github.com/idos-network/idos-sdk-js/pull/61) |
+| 2023-11-10 | [60](https://github.com/idos-network/idos-sdk-js/pull/60) | [feat: shared proof of identity component](https://github.com/idos-network/idos-sdk-js/pull/60) |
+| 2023-11-10 | [59](https://github.com/idos-network/idos-sdk-js/pull/59) | [fix: non existent wallets flow](https://github.com/idos-network/idos-sdk-js/pull/59) |
+| 2023-11-10 | [57](https://github.com/idos-network/idos-sdk-js/pull/57) | [feat: download credentials content](https://github.com/idos-network/idos-sdk-js/pull/57) |
+| 2023-11-10 | [56](https://github.com/idos-network/idos-sdk-js/pull/56) | [fix: retry fetching on failed queries](https://github.com/idos-network/idos-sdk-js/pull/56) |
+| 2023-11-09 | [55](https://github.com/idos-network/idos-sdk-js/pull/55) | [Add metamask snap enclave](https://github.com/idos-network/idos-sdk-js/pull/55) |
+| 2023-11-09 | [54](https://github.com/idos-network/idos-sdk-js/pull/54) | [feat: by default add wallet manually](https://github.com/idos-network/idos-sdk-js/pull/54) |
+| 2023-11-09 | [53](https://github.com/idos-network/idos-sdk-js/pull/53) | [feat: use lazy signer initialisation](https://github.com/idos-network/idos-sdk-js/pull/53) |
+| 2023-11-09 | [52](https://github.com/idos-network/idos-sdk-js/pull/52) | [fix: near logo size](https://github.com/idos-network/idos-sdk-js/pull/52) |
+| 2023-11-09 | [50](https://github.com/idos-network/idos-sdk-js/pull/50) | [feat: device detect based auth](https://github.com/idos-network/idos-sdk-js/pull/50) |
+| 2023-11-08 | [49](https://github.com/idos-network/idos-sdk-js/pull/49) | [feat: update styles](https://github.com/idos-network/idos-sdk-js/pull/49) |
+| 2023-11-08 | [46](https://github.com/idos-network/idos-sdk-js/pull/46) | [Add `hasProfile()` a...](https://github.com/idos-network/idos-sdk-js/pull/46) |
+| 2023-11-08 | [47](https://github.com/idos-network/idos-sdk-js/pull/47) | [Delay crypto init; e...](https://github.com/idos-network/idos-sdk-js/pull/47) |
+| 2023-11-07 | [45](https://github.com/idos-network/idos-sdk-js/pull/45) | [feat: data dashboard branding](https://github.com/idos-network/idos-sdk-js/pull/45) |
+| 2023-11-07 | [42](https://github.com/idos-network/idos-sdk-js/pull/42) | [Sanitize enclave input](https://github.com/idos-network/idos-sdk-js/pull/42) |
+| 2023-11-07 | [43](https://github.com/idos-network/idos-sdk-js/pull/43) | [Fix lint nits](https://github.com/idos-network/idos-sdk-js/pull/43) |
+| 2023-11-06 | [41](https://github.com/idos-network/idos-sdk-js/pull/41) | [Extract example-dapp styles](https://github.com/idos-network/idos-sdk-js/pull/41) |
+| 2023-11-04 | [40](https://github.com/idos-network/idos-sdk-js/pull/40) | [WIP doc update](https://github.com/idos-network/idos-sdk-js/pull/40) |
+| 2023-11-04 | [39](https://github.com/idos-network/idos-sdk-js/pull/39) | [Passkey PoC](https://github.com/idos-network/idos-sdk-js/pull/39) |
+| 2023-11-03 | [36](https://github.com/idos-network/idos-sdk-js/pull/36) | [chore: bump verrsion](https://github.com/idos-network/idos-sdk-js/pull/36) |
+| 2023-11-03 | [35](https://github.com/idos-network/idos-sdk-js/pull/35) | [chore: bump version](https://github.com/idos-network/idos-sdk-js/pull/35) |
+| 2023-11-03 | [26](https://github.com/idos-network/idos-sdk-js/pull/26) | [chore: bump release version](https://github.com/idos-network/idos-sdk-js/pull/26) |
+| 2023-11-02 | [33](https://github.com/idos-network/idos-sdk-js/pull/33) | [Better errors](https://github.com/idos-network/idos-sdk-js/pull/33) |
+| 2023-11-02 | [34](https://github.com/idos-network/idos-sdk-js/pull/34) | [Reset storage when new signer connects](https://github.com/idos-network/idos-sdk-js/pull/34) |
+| 2023-11-02 | [32](https://github.com/idos-network/idos-sdk-js/pull/32) | [Clearer enclave flow](https://github.com/idos-network/idos-sdk-js/pull/32) |
+| 2023-11-02 | [31](https://github.com/idos-network/idos-sdk-js/pull/31) | [Rescue dialog closing](https://github.com/idos-network/idos-sdk-js/pull/31) |
+| 2023-11-02 | [30](https://github.com/idos-network/idos-sdk-js/pull/30) | [One less teleport promise](https://github.com/idos-network/idos-sdk-js/pull/30) |
+| 2023-11-02 | [29](https://github.com/idos-network/idos-sdk-js/pull/29) | [dunno anymore](https://github.com/idos-network/idos-sdk-js/pull/29) |
+| 2023-11-02 | [28](https://github.com/idos-network/idos-sdk-js/pull/28) | [Update FiD URL](https://github.com/idos-network/idos-sdk-js/pull/28) |
+| 2023-11-02 | [27](https://github.com/idos-network/idos-sdk-js/pull/27) | [Inspect more](https://github.com/idos-network/idos-sdk-js/pull/27) |
+| 2023-11-01 | [25](https://github.com/idos-network/idos-sdk-js/pull/25) | [Ready to point at an...](https://github.com/idos-network/idos-sdk-js/pull/25) |
 
-## BOS-CLI-RS
+## create-near-app
 
-| merged_at | num | title |
+| DATE | PR | DESCRIPTION |
 | --- | --- | --- |
-| 2023-10-22 | [64](https://github.com/bos-cli-rs/bos-cli-rs/pull/64) | [chore: release v0.3.6](https://github.com/bos-cli-rs/bos-cli-rs/pull/64) |
-| 2023-10-22 | [66](https://github.com/bos-cli-rs/bos-cli-rs/pull/66) | [refactor: Updating components commands](https://github.com/bos-cli-rs/bos-cli-rs/pull/66) |
-| 2023-10-22 | [56](https://github.com/bos-cli-rs/bos-cli-rs/pull/56) | [feat: A new command for diff-ing the widgets code...](https://github.com/bos-cli-rs/bos-cli-rs/pull/56) |
-| 2023-10-22 | [65](https://github.com/bos-cli-rs/bos-cli-rs/pull/65) | [refactor: Update input_account_id()](https://github.com/bos-cli-rs/bos-cli-rs/pull/65) |
-| 2023-10-18 | [61](https://github.com/bos-cli-rs/bos-cli-rs/pull/61) | [feat: New command to manage BOS profile in SocialD...](https://github.com/bos-cli-rs/bos-cli-rs/pull/61) |
+| 2023-11-21 | [2115](https://github.com/near/create-near-app/pull/2115) | [fix: use install instead of i](https://github.com/near/create-near-app/pull/2115) |
+| 2023-11-17 | [2114](https://github.com/near/create-near-app/pull/2114) | [refactor: change the...](https://github.com/near/create-near-app/pull/2114) |
+| 2023-11-16 | [2113](https://github.com/near/create-near-app/pull/2113) | [Better handle input & tracking](https://github.com/near/create-near-app/pull/2113) |
+| 2023-11-09 | [2109](https://github.com/near/create-near-app/pull/2109) | [Gateways](https://github.com/near/create-near-app/pull/2109) |
 
-## NEAR-SDK-RS
+## near-sdk-rs
 
-| merged_at | num | title |
+| DATE | PR | DESCRIPTION |
 | --- | --- | --- |
-| 2023-10-22 | [1099](https://github.com/near/near-sdk-rs/pull/1099) | [Have #[handle_result] support Result types reardle...](https://github.com/near/near-sdk-rs/pull/1099) |
-| 2023-10-19 | [1098](https://github.com/near/near-sdk-rs/pull/1098) | [ Delete the metadata module from near-sdk-macros...](https://github.com/near/near-sdk-rs/pull/1098) |
-| 2023-10-19 | [1097](https://github.com/near/near-sdk-rs/pull/1097) | [ Refactor info_extractor to accumulate compilation...](https://github.com/near/near-sdk-rs/pull/1097) |
-| 2023-10-17 | [1096](https://github.com/near/near-sdk-rs/pull/1096) | [random_seed_array documentation](https://github.com/near/near-sdk-rs/pull/1096) |
-| 2023-10-09 | [1095](https://github.com/near/near-sdk-rs/pull/1095) | [chore: update contract-builder container 1.69.0 ->...](https://github.com/near/near-sdk-rs/pull/1095) |
-| 2023-10-09 | [1075](https://github.com/near/near-sdk-rs/pull/1075) | [chore: borsh version update](https://github.com/near/near-sdk-rs/pull/1075) |
-| 2023-10-08 | [1073](https://github.com/near/near-sdk-rs/pull/1073) | [Prohibit `Self` in non-init methods](https://github.com/near/near-sdk-rs/pull/1073) |
-| 2023-10-08 | [1094](https://github.com/near/near-sdk-rs/pull/1094) | [chore: bump version of near-workspaces](https://github.com/near/near-sdk-rs/pull/1094) |
-| 2023-10-04 | [1090](https://github.com/near/near-sdk-rs/pull/1090) | [chore: use `insta` crate](https://github.com/near/near-sdk-rs/pull/1090) |
-| 2023-10-04 | [1088](https://github.com/near/near-sdk-rs/pull/1088) | [refactor: upgrade syn crate from version 1 to 2...](https://github.com/near/near-sdk-rs/pull/1088) |
-| 2023-10-02 | [1089](https://github.com/near/near-sdk-rs/pull/1089) | [[Fix] Ci - downgrade anstyle-parse. ](https://github.com/near/near-sdk-rs/pull/1089) |
+| 2023-11-28 | [1114](https://github.com/near/near-sdk-rs/pull/1114) | [refactor: Re-exported packages cleanup](https://github.com/near/near-sdk-rs/pull/1114) |
+| 2023-11-19 | [1070](https://github.com/near/near-sdk-rs/pull/1070) | [chore: release v5.0.0-alpha.1](https://github.com/near/near-sdk-rs/pull/1070) |
+| 2023-11-18 | [1104](https://github.com/near/near-sdk-rs/pull/1104) | [refactor: Migrate to NearToken](https://github.com/near/near-sdk-rs/pull/1104) |
+| 2023-11-07 | [1108](https://github.com/near/near-sdk-rs/pull/1108) | [refactor: migrate to near_account_id](https://github.com/near/near-sdk-rs/pull/1108) |
+| 2023-11-03 | [1106](https://github.com/near/near-sdk-rs/pull/1106) | [feat: adding `nep-03...](https://github.com/near/near-sdk-rs/pull/1106) |
 
-## NEAR-API-JS
+## near-api-js
 
-| merged_at | num | title |
+| DATE | PR | DESCRIPTION |
 | --- | --- | --- |
-| 2023-10-30 | [1194](https://github.com/near/near-api-js/pull/1194) | [fix: remove global override of `fetch`](https://github.com/near/near-api-js/pull/1194) |
-| 2023-10-30 | [1195](https://github.com/near/near-api-js/pull/1195) | [fix: add check for process global to exist...](https://github.com/near/near-api-js/pull/1195) |
+| 2023-11-28 | [1205](https://github.com/near/near-api-js/pull/1205) | [Retry RPC requests on 408 HTTP error](https://github.com/near/near-api-js/pull/1205) |
+| 2023-11-15 | [1172](https://github.com/near/near-api-js/pull/1172) | [feat: implement loca...](https://github.com/near/near-api-js/pull/1172) |
 
-## QUERYAPI
+## queryapi
 
-| merged_at | num | title |
+| DATE | PR | DESCRIPTION |
 | --- | --- | --- |
-| 2023-10-26 | [332](https://github.com/near/queryapi/pull/332) | [fix: Use `Histogram` to prevent stale metrics bein...](https://github.com/near/queryapi/pull/332) |
-| 2023-10-24 | [327](https://github.com/near/queryapi/pull/327) | [fix: Rename `close-completed-issues` to `close-com...](https://github.com/near/queryapi/pull/327) |
-| 2023-10-23 | [320](https://github.com/near/queryapi/pull/320) | [Automatically close issues marked 'done'](https://github.com/near/queryapi/pull/320) |
-| 2023-10-20 | [302](https://github.com/near/queryapi/pull/302) | [Update bug_report.md](https://github.com/near/queryapi/pull/302) |
-| 2023-10-16 | [295](https://github.com/near/queryapi/pull/295) | [ignore all runner errors in V1 rather than sending...](https://github.com/near/queryapi/pull/295) |
-| 2023-10-16 | [294](https://github.com/near/queryapi/pull/294) | [hot-fix: skip context.db](https://github.com/near/queryapi/pull/294) |
-| 2023-10-13 | [284](https://github.com/near/queryapi/pull/284) | [fix: fix playground issue + update readme for env ...](https://github.com/near/queryapi/pull/284) |
-| 2023-10-12 | [285](https://github.com/near/queryapi/pull/285) | [feat: add registeration button](https://github.com/near/queryapi/pull/285) |
-| 2023-10-06 | [270](https://github.com/near/queryapi/pull/270) | [fix: Handle errors emitted within worker threads...](https://github.com/near/queryapi/pull/270) |
-| 2023-10-06 | [272](https://github.com/near/queryapi/pull/272) | [chore: add prod graphql link](https://github.com/near/queryapi/pull/272) |
-| 2023-10-05 | [241](https://github.com/near/queryapi/pull/241) | [Store Real Time Streamer Messages in Redis...](https://github.com/near/queryapi/pull/241) |
-| 2023-10-03 | [237](https://github.com/near/queryapi/pull/237) | [feat: put toggle + disclaimer](https://github.com/near/queryapi/pull/237) |
-| 2023-10-02 | [265](https://github.com/near/queryapi/pull/265) | [feat: add aggregation fields by default](https://github.com/near/queryapi/pull/265) |
+| 2023-11-29 | [435](https://github.com/near/queryapi/pull/435) | [fix: Try to resolve heap memory errors](https://github.com/near/queryapi/pull/435) |
+| 2023-11-21 | [424](https://github.com/near/queryapi/pull/424) | [Replace block wait metric with Histogram](https://github.com/near/queryapi/pull/424) |
+| 2023-11-21 | [413](https://github.com/near/queryapi/pull/413) | [Fix Connection Unavailable Error](https://github.com/near/queryapi/pull/413) |
+| 2023-11-16 | [411](https://github.com/near/queryapi/pull/411) | [chore: hot fixes for logs feature](https://github.com/near/queryapi/pull/411) |
+| 2023-11-16 | [388](https://github.com/near/queryapi/pull/388) | [QueryAPI Logging Fea...](https://github.com/near/queryapi/pull/388) |
+| 2023-11-16 | [398](https://github.com/near/queryapi/pull/398) | [fix: Coordinator Not...](https://github.com/near/queryapi/pull/398) |
+| 2023-11-14 | [384](https://github.com/near/queryapi/pull/384) | [fix: Ensure Indexer ...](https://github.com/near/queryapi/pull/384) |
+| 2023-11-14 | [387](https://github.com/near/queryapi/pull/387) | [refactor: Remove asy...](https://github.com/near/queryapi/pull/387) |
+| 2023-11-13 | [386](https://github.com/near/queryapi/pull/386) | [fix: Incorrect test imports](https://github.com/near/queryapi/pull/386) |
+| 2023-11-13 | [385](https://github.com/near/queryapi/pull/385) | [fix: Ensure historic...](https://github.com/near/queryapi/pull/385) |
+| 2023-11-12 | [379](https://github.com/near/queryapi/pull/379) | [refactor: Speed up H...](https://github.com/near/queryapi/pull/379) |
+| 2023-11-09 | [378](https://github.com/near/queryapi/pull/378) | [Revert "Revert "feat...](https://github.com/near/queryapi/pull/378) |
+| 2023-11-09 | [377](https://github.com/near/queryapi/pull/377) | [Revert "feat: Pre-Fe...](https://github.com/near/queryapi/pull/377) |
+| 2023-11-09 | [375](https://github.com/near/queryapi/pull/375) | [fix: Ensure Historic...](https://github.com/near/queryapi/pull/375) |
+| 2023-11-08 | [269](https://github.com/near/queryapi/pull/269) | [feat: Pre-Fetch Streamer Messages](https://github.com/near/queryapi/pull/269) |
+| 2023-11-08 | [373](https://github.com/near/queryapi/pull/373) | [fix: Ensure missing ...](https://github.com/near/queryapi/pull/373) |
+| 2023-11-07 | [363](https://github.com/near/queryapi/pull/363) | [feat: Cancel histori...](https://github.com/near/queryapi/pull/363) |
+| 2023-11-07 | [365](https://github.com/near/queryapi/pull/365) | [refactor: Remove SQS...](https://github.com/near/queryapi/pull/365) |
+| 2023-11-01 | [355](https://github.com/near/queryapi/pull/355) | [refactor: Aggregate ...](https://github.com/near/queryapi/pull/355) |
 
-## NEAR-WORKSPACES-RS
+## near-lake-indexer
 
-| merged_at | num | title |
+| DATE | PR | DESCRIPTION |
 | --- | --- | --- |
-| 2023-10-06 | [321](https://github.com/near/near-workspaces-rs/pull/321) | [chore: remove unwraps](https://github.com/near/near-workspaces-rs/pull/321) |
-| 2023-10-04 | [317](https://github.com/near/near-workspaces-rs/pull/317) | [chore: include `neard-sandbox` logging documentati...](https://github.com/near/near-workspaces-rs/pull/317) |
-| 2023-10-04 | [316](https://github.com/near/near-workspaces-rs/pull/316) | [feat: use tokio](https://github.com/near/near-workspaces-rs/pull/316) |
-| 2023-10-04 | [306](https://github.com/near/near-workspaces-rs/pull/306) | [feat: api key and custom network object](https://github.com/near/near-workspaces-rs/pull/306) |
-| 2023-10-30 | [328](https://github.com/near/near-workspaces-rs/pull/328) | [chore: apply suggestions proposed by clippy...](https://github.com/near/near-workspaces-rs/pull/328) |
-| 2023-10-30 | [327](https://github.com/near/near-workspaces-rs/pull/327) | [chore: release v0.9.0](https://github.com/near/near-workspaces-rs/pull/327) |
-| 2023-10-29 | [334](https://github.com/near/near-workspaces-rs/pull/334) | [fix: Fixed await during acquired lock in rpc::clie...](https://github.com/near/near-workspaces-rs/pull/334) |
-| 2023-10-29 | [333](https://github.com/near/near-workspaces-rs/pull/333) | [refactor: Migrate to NearToken](https://github.com/near/near-workspaces-rs/pull/333) |
-| 2023-10-13 | [326](https://github.com/near/near-workspaces-rs/pull/326) | [chore: Restrict GasHook type to require RefUnwindS...](https://github.com/near/near-workspaces-rs/pull/326) |
-| 2023-10-05 | [284](https://github.com/near/near-workspaces-rs/pull/284) | [feat: gas hook on ExecutionFinalResult](https://github.com/near/near-workspaces-rs/pull/284) |
-| 2023-10-05 | [319](https://github.com/near/near-workspaces-rs/pull/319) | [chore: release v0.8.0](https://github.com/near/near-workspaces-rs/pull/319) |
-| 2023-10-04 | [318](https://github.com/near/near-workspaces-rs/pull/318) | [refactor!: renamed crate to near-workspaces to avo...](https://github.com/near/near-workspaces-rs/pull/318) |
-| 2023-10-04 | [311](https://github.com/near/near-workspaces-rs/pull/311) | [Pin specific version of near-sandbox](https://github.com/near/near-workspaces-rs/pull/311) |
-| 2023-10-04 | [243](https://github.com/near/near-workspaces-rs/pull/243) | [chore: expose more block members](https://github.com/near/near-workspaces-rs/pull/243) |
+| 2023-11-22 | [76](https://github.com/near/near-lake-indexer/pull/76) | [refactor: Improve env-var configaration](https://github.com/near/near-lake-indexer/pull/76) |
+| 2023-11-15 | [82](https://github.com/near/near-lake-indexer/pull/82) | [feat: add localnet Dockerfile](https://github.com/near/near-lake-indexer/pull/82) |
+
+## near-lake-framework-rs
+
+| DATE | PR | DESCRIPTION |
+| --- | --- | --- |
+| 2023-11-23 | [92](https://github.com/near/near-lake-framework-rs/pull/92) | [chore: Cleanup workf...](https://github.com/near/near-lake-framework-rs/pull/92) |
+| 2023-11-22 | [91](https://github.com/near/near-lake-framework-rs/pull/91) | [chore: Upgrade AWS SDK dependencies](https://github.com/near/near-lake-framework-rs/pull/91) |
+
+## near-lake-framework-js
+
+| DATE | PR | DESCRIPTION |
+| --- | --- | --- |
+| 2023-11-30 | [48](https://github.com/near/near-lake-framework-js/pull/48) | [ci: Fix Changesets action](https://github.com/near/near-lake-framework-js/pull/48) |
+| 2023-11-30 | [47](https://github.com/near/near-lake-framework-js/pull/47) | [ci: Automate package...](https://github.com/near/near-lake-framework-js/pull/47) |
+| 2023-11-28 | [42](https://github.com/near/near-lake-framework-js/pull/42) | [feat: Split library ...](https://github.com/near/near-lake-framework-js/pull/42) |
+
+## near-workspaces-rs
+
+| DATE | PR | DESCRIPTION |
+| --- | --- | --- |
+| 2023-11-28 | [338](https://github.com/near/near-workspaces-rs/pull/338) | [chore: dependecy bumps](https://github.com/near/near-workspaces-rs/pull/338) |
+| 2023-11-27 | [340](https://github.com/near/near-workspaces-rs/pull/340) | [chore: fix docs & typos](https://github.com/near/near-workspaces-rs/pull/340) |
+| 2023-11-27 | [335](https://github.com/near/near-workspaces-rs/pull/335) | [chore: sandbox stable](https://github.com/near/near-workspaces-rs/pull/335) |
+| 2023-11-27 | [329](https://github.com/near/near-workspaces-rs/pull/329) | [chore: cleanup internals](https://github.com/near/near-workspaces-rs/pull/329) |
+| 2023-11-27 | [339](https://github.com/near/near-workspaces-rs/pull/339) | [Remove interop_sdk from defaults](https://github.com/near/near-workspaces-rs/pull/339) |
+
+## near-workspaces-js
+
+| DATE | PR | DESCRIPTION |
+| --- | --- | --- |
+| 2023-11-24 | [227](https://github.com/near/near-workspaces-js/pull/227) | [chore: update versio...](https://github.com/near/near-workspaces-js/pull/227) |
+| 2023-11-23 | [216](https://github.com/near/near-workspaces-js/pull/216) | [feat: update version of near-api-js](https://github.com/near/near-workspaces-js/pull/216) |
+| 2023-11-21 | [224](https://github.com/near/near-workspaces-js/pull/224) | [fix: txn_result gas burnt](https://github.com/near/near-workspaces-js/pull/224) |
+| 2023-11-21 | [226](https://github.com/near/near-workspaces-js/pull/226) | [chore: new release 3.4.0](https://github.com/near/near-workspaces-js/pull/226) |
+
+## nearcore
+
+| DATE | PR | DESCRIPTION |
+| --- | --- | --- |
+| 2023-11-17 | [10198](https://github.com/near/nearcore/pull/10198) | [Take advantage of a ...](https://github.com/near/nearcore/pull/10198) |
+| 2023-11-01 | [9983](https://github.com/near/nearcore/pull/9983) | [feat: implement chun...](https://github.com/near/nearcore/pull/9983) |
+| 2023-11-29 | [10241](https://github.com/near/nearcore/pull/10241) | [feat: support partia...](https://github.com/near/nearcore/pull/10241) |
+| 2023-11-27 | [10250](https://github.com/near/nearcore/pull/10250) | [upload all coverage ...](https://github.com/near/nearcore/pull/10250) |
+| 2023-11-29 | [10235](https://github.com/near/nearcore/pull/10235) | [add a Justfile for r...](https://github.com/near/nearcore/pull/10235) |
+| 2023-11-29 | [10262](https://github.com/near/nearcore/pull/10262) | [bump openssl](https://github.com/near/nearcore/pull/10262) |
+| 2023-11-29 | [10260](https://github.com/near/nearcore/pull/10260) | [fix(config): disable...](https://github.com/near/nearcore/pull/10260) |
+| 2023-11-29 | [10255](https://github.com/near/nearcore/pull/10255) | [refactor: more work ...](https://github.com/near/nearcore/pull/10255) |
+| 2023-11-28 | [10251](https://github.com/near/nearcore/pull/10251) | [configurable tx routing horizon](https://github.com/near/nearcore/pull/10251) |
+| 2023-11-28 | [10227](https://github.com/near/nearcore/pull/10227) | [drop buildkite pipeline](https://github.com/near/nearcore/pull/10227) |
+| 2023-11-27 | [10252](https://github.com/near/nearcore/pull/10252) | [build fuzzers on Big machines](https://github.com/near/nearcore/pull/10252) |
+| 2023-11-28 | [10253](https://github.com/near/nearcore/pull/10253) | [allow warnings for fuzzer building](https://github.com/near/nearcore/pull/10253) |
+| 2023-11-28 | [10256](https://github.com/near/nearcore/pull/10256) | [fix: use header_head...](https://github.com/near/nearcore/pull/10256) |
+| 2023-11-27 | [10204](https://github.com/near/nearcore/pull/10204) | [test: add tests for ...](https://github.com/near/nearcore/pull/10204) |
+| 2023-11-27 | [10249](https://github.com/near/nearcore/pull/10249) | [refactor: stop using...](https://github.com/near/nearcore/pull/10249) |
+| 2023-11-24 | [10216](https://github.com/near/nearcore/pull/10216) | [add cargo audit check](https://github.com/near/nearcore/pull/10216) |
+| 2023-11-23 | [10201](https://github.com/near/nearcore/pull/10201) | [bump ed25519-dalek to 2.1.0](https://github.com/near/nearcore/pull/10201) |
+| 2023-11-24 | [10242](https://github.com/near/nearcore/pull/10242) | [refactor: remove ano...](https://github.com/near/nearcore/pull/10242) |
+| 2023-11-24 | [10238](https://github.com/near/nearcore/pull/10238) | [refactor: replace an...](https://github.com/near/nearcore/pull/10238) |
+| 2023-11-24 | [10247](https://github.com/near/nearcore/pull/10247) | [chore: Bump near-account-id version](https://github.com/near/nearcore/pull/10247) |
+| 2023-11-24 | [10243](https://github.com/near/nearcore/pull/10243) | [refactor: remove yet...](https://github.com/near/nearcore/pull/10243) |
+| 2023-11-23 | [10230](https://github.com/near/nearcore/pull/10230) | [refactor: reduce pla...](https://github.com/near/nearcore/pull/10230) |
+| 2023-11-24 | [10224](https://github.com/near/nearcore/pull/10224) | [ETH-implicit account support](https://github.com/near/nearcore/pull/10224) |
+| 2023-11-24 | [10231](https://github.com/near/nearcore/pull/10231) | [fix: logs and traces](https://github.com/near/nearcore/pull/10231) |
+| 2023-11-23 | [10244](https://github.com/near/nearcore/pull/10244) | [[Snyk] Upgrade react...](https://github.com/near/nearcore/pull/10244) |
+| 2023-11-23 | [10239](https://github.com/near/nearcore/pull/10239) | [coverage: apply `-Ci...](https://github.com/near/nearcore/pull/10239) |
+| 2023-11-23 | [10236](https://github.com/near/nearcore/pull/10236) | [fix(nightly): disable broken test](https://github.com/near/nearcore/pull/10236) |
+| 2023-11-22 | [10234](https://github.com/near/nearcore/pull/10234) | [nit: upgrade react-r...](https://github.com/near/nearcore/pull/10234) |
+| 2023-11-22 | [10233](https://github.com/near/nearcore/pull/10233) | [[Snyk] Upgrade react...](https://github.com/near/nearcore/pull/10233) |
+| 2023-11-21 | [10228](https://github.com/near/nearcore/pull/10228) | [Nayduck cli - add cancel option](https://github.com/near/nearcore/pull/10228) |
+| 2023-11-21 | [10226](https://github.com/near/nearcore/pull/10226) | [feat(epoch-sync): Ep...](https://github.com/near/nearcore/pull/10226) |
+| 2023-11-20 | [10223](https://github.com/near/nearcore/pull/10223) | [Disable building sto...](https://github.com/near/nearcore/pull/10223) |
+| 2023-11-20 | [10225](https://github.com/near/nearcore/pull/10225) | [refactor: improve re...](https://github.com/near/nearcore/pull/10225) |
+| 2023-11-20 | [10215](https://github.com/near/nearcore/pull/10215) | [fix(state-parts-dump...](https://github.com/near/nearcore/pull/10215) |
+| 2023-11-20 | [10146](https://github.com/near/nearcore/pull/10146) | [feat(epoch-sync): ad...](https://github.com/near/nearcore/pull/10146) |
+| 2023-11-20 | [10219](https://github.com/near/nearcore/pull/10219) | [fix(pytest): fix rpc_tx_submission.py](https://github.com/near/nearcore/pull/10219) |
+| 2023-11-20 | [10222](https://github.com/near/nearcore/pull/10222) | [make test_account_id...](https://github.com/near/nearcore/pull/10222) |
+| 2023-11-20 | [10211](https://github.com/near/nearcore/pull/10211) | [reintroduce clear_resharding_data](https://github.com/near/nearcore/pull/10211) |
+| 2023-11-20 | [10193](https://github.com/near/nearcore/pull/10193) | [Add test_long_chain_...](https://github.com/near/nearcore/pull/10193) |
+| 2023-11-20 | [10180](https://github.com/near/nearcore/pull/10180) | [introduce code coverage analysis in CI](https://github.com/near/nearcore/pull/10180) |
+| 2023-11-20 | [10205](https://github.com/near/nearcore/pull/10205) | [enable debug assertions in CI](https://github.com/near/nearcore/pull/10205) |
+| 2023-11-20 | [10214](https://github.com/near/nearcore/pull/10214) | [Bump various dependency versions](https://github.com/near/nearcore/pull/10214) |
+| 2023-11-20 | [10217](https://github.com/near/nearcore/pull/10217) | [fix broken links, an...](https://github.com/near/nearcore/pull/10217) |
+| 2023-11-20 | [10187](https://github.com/near/nearcore/pull/10187) | [refactor: prepare sh...](https://github.com/near/nearcore/pull/10187) |
+| 2023-11-20 | [10191](https://github.com/near/nearcore/pull/10191) | [[Snyk] Upgrade react...](https://github.com/near/nearcore/pull/10191) |
+| 2023-11-20 | [10212](https://github.com/near/nearcore/pull/10212) | [build(deps-dev): bum...](https://github.com/near/nearcore/pull/10212) |
+
+## neps
+
+| DATE | PR | DESCRIPTION |
+| --- | --- | --- |
+| 2023-11-16 | [492](https://github.com/near/NEPs/pull/492) | [proposal to restrict...](https://github.com/near/NEPs/pull/492) |
+| 2023-11-03 | [514](https://github.com/near/NEPs/pull/514) | [NEP-514: Reducing th...](https://github.com/near/NEPs/pull/514) |
