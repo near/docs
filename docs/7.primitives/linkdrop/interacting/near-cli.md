@@ -9,6 +9,10 @@ import TabItem from '@theme/TabItem';
 
 This section describes how to create different kinds of linkdrop from your shell using [`near-cli`](../../../4.tools/cli.md).
 
+In order to create any kind of drop, you need to first generate key pairs. 
+
+You will need to create one key per drop you want to generate, and you will always pass the `public` part of the key to create the drop, and give the `private` part of the key to the user you want to receive the drop.
+
 ---
 
 ## Getting key pairs
@@ -70,8 +74,22 @@ This snippet will enable you to create a FT Drop.
 
 The process is very similar to creating [NFT drop](#nft-drop). You just need to transfer FTs to KeyPom contract instead of transferring NFT and pass another set of arguments during creating drop.
 
+<hr class="subsection" />
+
+### Creating a drop
+
 ```bash
 near call v2.keypom.near create_drop '{"public_keys": [PUBLIC_KEYS], "deposit_per_use": "10000000000000000000000", "ftData": {"contractId": "ft.primitives.near","senderId": "bob.near", "amount": "1"}}}' --deposit 23000000000000000000000 --gas 100000000000000 --accountId bob.near
+```
+
+<hr class="subsection" />
+
+### Transfering FT
+
+Then you should to transfer your FTs to KeyPom contract.
+
+```bash
+near call ft.primitives.near ft_transfer '{"receiver_id": "v2.keypom.near", "amount": "1"}' --deposit 1 --gas 100000000000000 --accountId bob.near
 ```
 
 ---
@@ -80,7 +98,7 @@ near call v2.keypom.near create_drop '{"public_keys": [PUBLIC_KEYS], "deposit_pe
 
 This snippet will enable you to create a Function Call Drop.
 
-The process is very similar to creating [NFT drop](#nft-drop). You just need to  ass another set of arguments during creating drop.
+The process is very similar to creating [NFT drop](#nft-drop). You just need to pass another set of arguments during creating drop.
 
 ```bash
 near call v2.keypom.near create_drop '{"public_keys": [PUBLIC_KEYS], "deposit_per_use": "10000000000000000000000", "fcData": {"methods": [[{"receiverId": "nft.primitives.near","methodName": "nft_mint","args": {"token_id": "1", "metadata": {"title": "My NFT drop","description": "","media": ""}, "accountIdField": "receiver_id", "attachedDeposit": "10000000000000000000000"}]]}}' --deposit 23000000000000000000000 --gas 100000000000000 --accountId bob.near

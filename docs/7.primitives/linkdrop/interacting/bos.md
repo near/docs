@@ -9,13 +9,13 @@ import TabItem from '@theme/TabItem';
 
 This section describes how to create different kinds of linkdrop from a [NEAR Component](../../../bos/components.md).
 
----
-
-## Getting key pairs
-
 In order to create any kind of drop, you need to first generate key pairs. 
 
 You will need to create one key per drop you want to generate, and you will always pass the `public` part of the key to create the drop, and give the `private` part of the key to the user you want to receive the drop.
+
+---
+
+## Getting key pairs
 
 ```js
 
@@ -155,6 +155,10 @@ This snippet will enable you to create a FT Drop.
 
 The process is very similar to creating [NFT drop](#nft-drop). You just need to transfer FTs to KeyPom contract instead of transferring NFT and pass another set of arguments during creating drop.
 
+<hr class="subsection" />
+
+### Creating a drop
+
 ```js
 const keypomContract = "v2.keypom.near";
 const ftContract = "ft.primitives.near";
@@ -180,6 +184,25 @@ Near.call([
     gas: "100000000000000"
   },
 ]);
+```
+
+<hr class="subsection" />
+
+### Transfering FT
+
+Then you should to transfer your FTs to KeyPom contract.
+
+```js
+Near.call({
+  contractId: ftContract, 
+  methodName: 'ft_transfer', 
+  args: {
+    receiver_id: keypomContract,
+    amount: "1"
+  },
+  deposit: "1",
+  gas: "300000000000000"
+});
 ```
 
 ---

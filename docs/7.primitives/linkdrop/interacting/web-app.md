@@ -9,6 +9,10 @@ import TabItem from '@theme/TabItem';
 
 This section describes how to create different kinds of linkdrop directly from a web app.
 
+In order to create any kind of drop, you need to first generate key pairs. 
+
+You will need to create one key per drop you want to generate, and you will always pass the `public` part of the key to create the drop, and give the `private` part of the key to the user you want to receive the drop.
+
 :::info
 All the examples are using a `Wallet` object, which comes from our [basic template](https://github.com/near-examples/hello-near-js/blob/master/frontend/near-wallet.js)
 :::
@@ -165,6 +169,10 @@ This snippet will enable you to create a FT Drop.
 
 The process is very similar to creating [NFT drop](#nft-drop). You just need to transfer FTs to KeyPom contract instead of transferring NFT and pass another set of arguments during creating drop.
 
+<hr class="subsection" />
+
+### Creating a drop
+
 ```js
 import { Wallet } from './near-wallet';
 
@@ -191,6 +199,32 @@ await wallet.callMethod({
   },
   deposit: "23000000000000000000000" // state.publicKeys.length * dropAmount + 3000000000000000000000,
   gas: "100000000000000",
+});
+```
+
+<hr class="subsection" />
+
+### Transfering FT
+
+Then you should to transfer your FTs to KeyPom contract.
+
+```js
+import { Wallet } from './near-wallet';
+
+const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
+const FT_CONTRACT_ADDRESS = "ft.primitives.near";
+
+const wallet = new Wallet({ createAccessKeyFor: FT_CONTRACT_ADDRESS }); 
+
+await wallet.callMethod({
+  method: "ft_transfer",
+  contractId: FT_CONTRACT_ADDRESS,
+  args: {
+    receiver_id: KEYPOM_CONTRACT_ADDRESS,
+    amount: "1"
+  },
+  deposit: "1",
+  gas: "100000000000000"
 });
 ```
 
