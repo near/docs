@@ -147,7 +147,7 @@ Ensure that in your command line application, you're in the directory that conta
     near deploy crossword.friend.testnet --wasmFile res/my_crossword.wasm
 ```
 
-Congratulations, you've deployed the smart contract! Note that NEAR CLI will output a link to [NEAR Explorer](https://explorer.near.org/) where you can inspect details of the transaction.
+Congratulations, you've deployed the smart contract! Note that NEAR CLI will output a link to [NEAR Explorer](https://nearblocks.io/) where you can inspect details of the transaction.
 
 Lastly, let's run this command again and notice that the `code_hash` is no longer all ones. This is the hash of the smart contract deployed to the account.
 

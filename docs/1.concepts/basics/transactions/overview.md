@@ -12,7 +12,7 @@ A transaction is the smallest unit of work that can be assigned to the network. 
 There is also a concept of `Receipt`, which is either "request to apply an `Action`" or "result of the `Action`". All cross-contract communication is done through receipts. An action may result in one or more receipts. The Blockchain may be seen as a series of Transactions, but it's also a series of Receipts. 
 
 :::tip
-You can use <a href="https://explorer.near.org/">NEAR Blockchain Explorer</a> to inspect and see all actions and receipts related to a transaction.
+You can use <a href="https://nearblocks.io/">NEAR Blockchain Explorer</a> to inspect and see all actions and receipts related to a transaction.
 :::
 
 

@@ -121,7 +121,7 @@ Upon hitting the `Render` button in `Widget Editor` you should see this:
 
 ![result](https://i.imgur.com/Lft2rtR.png)
 
-Please take a look at [this Explorer link](https://explorer.near.org/transactions/8PyDVdbizhNj81LxfwdZ1WidKZyS8HVZp8udPKgzFiNi) to see the details related to this `Near.call` method.
+Please take a look at [this Explorer link](https://nearblocks.io/transactions/8PyDVdbizhNj81LxfwdZ1WidKZyS8HVZp8udPKgzFiNi) to see the details related to this `Near.call` method.
 
 </TabItem>
 </Tabs>

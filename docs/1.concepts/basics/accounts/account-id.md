@@ -33,12 +33,12 @@ In NEAR, users can register **named accounts** (e.g. `bob.near`) which are simpl
 
 Moreover, named accounts can create **sub-accounts** of themselves, helping to better organize related-accounts.
 In this way, named accounts work as domains, particularly:
-1. Only the [`registrar`](https://explorer.near.org/accounts/registrar) account can create short top-level accounts (< 32 char).
+1. Only the [`registrar`](https://nearblocks.io/address/registrar) account can create short top-level accounts (< 32 char).
 2. Anyone can create long (>= 32 chars) top-level accounts.
 3. An account can only create **immediate** sub-accounts of itself.
 
 In other words:
-1. Only [`registrar`](https://explorer.near.org/accounts/registrar) can create short top-level accounts (e.g. `near`, `aurora`).
+1. Only [`registrar`](https://nearblocks.io/address/registrar) can create short top-level accounts (e.g. `near`, `aurora`).
 2. Anyone can create long top-level accounts, e.g. `verylongaccountnamethatis32chars`.
 3. `near` can create `bob.near`, and `bob.near` can create `app.bob.near`.
 4. `near` **cannot** create `app.bob.near`, and `test.near` **cannot** create `sub.example.near`.

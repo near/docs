@@ -42,7 +42,7 @@ The NEAR Whitepaper mentions that [30% of all gas fees](https://near.org/papers/
 
 This amount can be calculated for function calls in two ways:
 1. Summing all values in the gas profile 
-2. Taking the total gas burnt for the transaction and subtract the static execution gas (which is equal to the amount of gas spent on sending the receipt(s)) from it. Both these numbers are available on the [NEAR Explorer](https://explorer.near.org/) overview page for a transaction.
+2. Taking the total gas burnt for the transaction and subtract the static execution gas (which is equal to the amount of gas spent on sending the receipt(s)) from it. Both these numbers are available on the [NEAR Explorer](https://nearblocks.io/) overview page for a transaction.
 
 The second approach is shorter, and quite possibly easier to remember. So here's an example: 
 
@@ -52,7 +52,7 @@ The second approach is shorter, and quite possibly easier to remember. So here's
 
 The 30% reward for the smart contract owner (in this case aurora) would be: (0.00376Ⓝ - 0.00024Ⓝ) * 0.3 = 0.001056Ⓝ 
 
-This transaction can also be found [here](https://explorer.near.org/transactions/GzRn9yhDaQ8f3ReJguCBGxdi4iJEeBguJ5MWufMcu1JP) on NEAR Explorer, feel free to have a look around!
+This transaction can also be found [here](https://nearblocks.io/transactions/GzRn9yhDaQ8f3ReJguCBGxdi4iJEeBguJ5MWufMcu1JP) on NEAR Explorer, feel free to have a look around!
 
 For calls involving multiple contracts, calculating the reward for each contract with this method would not be possible with the data shown on NEAR Explorer (June 2022) as the explorer does not show the conversion cost for the second (and other) receipt(s).
 

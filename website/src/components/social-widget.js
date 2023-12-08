@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useWallet } from '@theme/Gateway/wallet-selector';
 import BrowserOnly from '@docusaurus/BrowserOnly';
+import "react-bootstrap-typeahead/css/Typeahead.css";
+import "react-bootstrap-typeahead/css/Typeahead.bs5.css";
 
 export function WidgetEditor({ children, id = 1, height = "160px" }) {
 

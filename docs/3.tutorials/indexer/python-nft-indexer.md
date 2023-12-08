@@ -73,7 +73,7 @@ config.aws_secret_key = os.getenv("AWS_SECRET_ACCESS_KEY")
 ```
 
 Just a few words on the config, function `mainnet()` has set `s3_bucket_name`, `s3_region_name` for mainnet.
-You can go to [NEAR Explorer](https://explorer.near.org) and get **the most recent** block height to set `config.start_block_height`.
+You can go to [NEAR Explorer](https://nearblocks.io) and get **the most recent** block height to set `config.start_block_height`.
 
 Let's call `streamer` function with the `config`
 
@@ -307,7 +307,7 @@ def format_mintbase_nfts(data, receipt_execution_outcome):
     return {"owner": data[0].get("owner_id"), "links": links}
 ```
 
-We're going to print the receipt_id, so you would be able to search for it on [NEAR Explorer](https://explorer.near.org), marketplace name and the list of links to the NFTs along with the owner account name.
+We're going to print the receipt_id, so you would be able to search for it on [NEAR Explorer](https://nearblocks.io), marketplace name and the list of links to the NFTs along with the owner account name.
 
 ```python title=main.py
 if receipt_execution_outcome.receipt.receiver_id.endswith(

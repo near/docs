@@ -53,6 +53,8 @@
     "near-api-js": "^2.1.4",
     "near-social-vm": "github:NearSocial/VM#2.5.3",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.9.1",
+    "react-bootstrap-typeahead": "^6.3.2",
     "react-dom": "^18.2.0",
     "react-instantsearch-hooks-web": "^6.47.3",
     "react-is": "^18.2.0",

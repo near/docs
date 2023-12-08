@@ -746,7 +746,7 @@ http post https://archival-rpc.mainnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_
 
 You can get the same info later by the transaction hash from the previous call:
 
-  - using NEAR Explorer: https://explorer.near.org
+  - using NEAR Explorer: https://nearblocks.io
 
 <!--
 - using NEAR CLI:
