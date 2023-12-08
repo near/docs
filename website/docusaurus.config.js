@@ -57,6 +57,8 @@ module.exports = {
           anonymizeIP: true,
         },
         blog: {
+          blogSidebarTitle: 'Recent Releases',
+          blogSidebarCount: 'ALL',
           showReadingTime: false,
         },
         theme: {
