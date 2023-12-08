@@ -23,7 +23,7 @@ export function WidgetEditor({ children, id = 1, height = "160px" }) {
         useEffect(() => {
           initNear && selector && initNear({ networkId: 'mainnet', selector });
         }, [initNear, selector]);
-        console.log(children.props.children.props.children)
+
         return <div>
           <div class="monaco">
             <MonacoEditor
@@ -51,7 +51,9 @@ export function WidgetEditor({ children, id = 1, height = "160px" }) {
             <h4 style={{ fontWeight: 0 }}> Preview <small> - Edit the code above! </small> </h4>
             <hr class="preview-border" />
             <div class="bootstrap-scope">
-              <Widget code={code} />
+              <div class="vm-widget">
+                <Widget code={code} key={id} />
+              </div>
             </div>
           </div>
         </div>

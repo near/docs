@@ -1130,13 +1130,12 @@ iframe+em {
     border: 1px solid #e6e6e6;
     padding: 1rem;
     margin: 1rem 0 2rem 0;
-    overflow: hidden;
 }
 
-.code_iframe iframe {
+.vm-widget {
     min-width: 100%;
-    overflow: hidden;
-    min-height: 160px;
+    height: 300px;
+    overflow-y:auto;
 }
 
 .monaco-editor-background {
