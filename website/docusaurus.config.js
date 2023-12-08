@@ -71,19 +71,23 @@ module.exports = {
         // options here
         name: 'dx-content', // used by CLI, must be path safe
         sourceBaseUrl: 'https://raw.githubusercontent.com/near/DX/main/',
-        outDir: '../docs/1.concepts',
+        outDir: '../docs/2.develop',
         documents: ['README.md'],
         modifyContent(filename, content) {
           if (filename.includes('README')) {
             // get everything after ## BOS
-            content = content.substring(content.indexOf('## 🚀 Blockchain Operating System (B.O.S.)'));
+            content = content.substring(
+              content.indexOf('## 🚀 Blockchain Operating System (B.O.S.)')
+            );
             return {
               filename: 'github-overview.md',
               content: `---
 id: github-overview
-title: NEAR Development Overview
-sidebar_label: Dev Overview
+title: NEAR GitHub Repo Map
+sidebar_label: Overview
 ---
+
+Below you will find a high-level overview of the NEAR development process. For more detailed information, please see the [NEAR Development Guide](/develop/intro-to-near/intro-to-near).
 
 ${content}`, // <-- this last part adds in the rest of the content, which would otherwise be discarded
             };
@@ -128,7 +132,6 @@ ${content}`, // <-- this last part adds in the rest of the content, which would 
           label: 'Build',
           position: 'left',
           items: [
-            { label: 'Overview', href: '/concepts/github-overview' },
             { label: 'Smart Contracts', href: '/develop/contracts/welcome' },
             { label: 'Web3 Applications', href: '/develop/integrate/welcome' },
             { label: 'Indexing the Chain', href: '/develop/monitor' },
@@ -189,6 +192,12 @@ ${content}`, // <-- this last part adds in the rest of the content, which would 
         {
           type: 'localeDropdown',
           position: 'right',
+        },
+        {
+          href: '/develop/github-overview',
+          position: 'right',
+          className: 'header-github-link',
+          'aria-label': 'GitHub repository',
         },
       ],
     },
