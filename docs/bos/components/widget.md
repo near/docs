@@ -9,22 +9,6 @@ The predefined component `Widget` allows you to include an existing component in
 <WidgetEditor id='1' height="220px">
 
 ```ts
-const fc = () => {
-  Near.call('hello.near-examples.near', 'set_greeting', {greeting: 'hi'})
-}
-
-return <>
-  {context.accountId}
-  <br/>
-  <button onClick={fc} > Set Greeting </button>
-</>
-```
-
-</WidgetEditor>
-
-<WidgetEditor id='1' height="220px">
-
-```ts
 const user = "gagdiez.near";
 const props = { name: "Anna" };
 

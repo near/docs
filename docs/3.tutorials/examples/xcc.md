@@ -10,7 +10,7 @@ This example performs the simplest cross-contract call possible: it calls our [H
 It is one of the simplest examples on making a cross-contract call, and the perfect gateway to the world of interoperative contracts.
 
 :::info Advanced Cross-Contract Calls
-Check the tutorial on how to perform cross-contract calls [in batches and in parallel](advanced-xcc.md)
+Check the tutorial on how to perform cross-contract calls [in batches and in parallel](./advanced-xcc)
 :::
 
 ---
@@ -130,4 +130,4 @@ and to return the money to the user in case of error.
 
 ### Advanced Cross Contract Calls
 Your contract can perform multiple cross-contract calls in simultaneous, creating promises that execute in parallel, or as a batch transaction. Check the [advanced cross contract calls
-tutorial](advanced-xcc.md) to learn more.
+tutorial](./advanced-xcc) to learn more.
