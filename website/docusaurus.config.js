@@ -75,11 +75,14 @@ module.exports = {
         documents: ['README.md'],
         modifyContent(filename, content) {
           if (filename.includes('README')) {
-            return { filename: 'github-overview.md',
+            // get everything after ## BOS
+            content = content.substring(content.indexOf('## 🚀 Blockchain Operating System (B.O.S.)'));
+            return {
+              filename: 'github-overview.md',
               content: `---
 id: github-overview
-title: NEAR GitHub Overview
-sidebar_label: GitHub Overview
+title: NEAR Development Overview
+sidebar_label: Dev Overview
 ---
 
 ${content}`, // <-- this last part adds in the rest of the content, which would otherwise be discarded
@@ -125,7 +128,7 @@ ${content}`, // <-- this last part adds in the rest of the content, which would 
           label: 'Build',
           position: 'left',
           items: [
-            { label: 'GITHUB OVERVIEW', href: '/concepts/github-overview' },
+            { label: 'Overview', href: '/concepts/github-overview' },
             { label: 'Smart Contracts', href: '/develop/contracts/welcome' },
             { label: 'Web3 Applications', href: '/develop/integrate/welcome' },
             { label: 'Indexing the Chain', href: '/develop/monitor' },
