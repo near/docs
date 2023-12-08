@@ -67,7 +67,40 @@ module.exports = {
       },
     ],
   ],
-  plugins: [path.join(__dirname, '/plugins/monaco-editor')],
+  plugins: [
+    path.join(__dirname, '/plugins/monaco-editor'),
+    [
+      'docusaurus-plugin-remote-content',
+      {
+        // options here
+        name: 'dx-content', // used by CLI, must be path safe
+        sourceBaseUrl: 'https://raw.githubusercontent.com/near/DX/main/',
+        outDir: '../docs/2.develop',
+        documents: ['README.md'],
+        modifyContent(filename, content) {
+          if (filename.includes('README')) {
+            // get everything after ## BOS
+            content = content.substring(
+              content.indexOf('An overview of essential repositories when building on NEAR Protocol.')
+            );
+            return {
+              filename: 'github-overview.md',
+              content: `---
+id: github-overview
+title: NEAR Developer Repositories
+---
+
+${content}`, // <-- this last part adds in the rest of the content, which would otherwise be discarded
+            };
+          }
+
+          // we don't want to modify this item, since it doesn't contain "README" in the name
+          return undefined;
+        },
+      },
+    ],
+  ],
+
   themeConfig: {
     plugins: [path.join(__dirname, '/plugins/monaco-editor')],
     prism: {
@@ -160,6 +193,12 @@ module.exports = {
         {
           type: 'localeDropdown',
           position: 'right',
+        },
+        {
+          href: '/develop/github-overview',
+          position: 'right',
+          className: 'header-github-link',
+          'aria-label': 'GitHub repository',
         },
         { to: 'blog', label: 'NEAR Releases', position: 'right' },
       ],
