@@ -23,13 +23,13 @@ hide_table_of_contents: false
 
 ### Docs
 
-| merged_at | num | title |
+| Merged | PR | Description |
 | --- | --- | --- |
 | 2023-10-29 | [1558](https://github.com/near/docs/pull/1558) | [Typo fix in nfts.md](https://github.com/near/docs/pull/1558) |
 | 2023-10-29 | [1559](https://github.com/near/docs/pull/1559) | [Typo fix in anatomy.md](https://github.com/near/docs/pull/1559) |
 | 2023-10-27 | [1554](https://github.com/near/docs/pull/1554) | [Best Practices for Ethereum developers on BOS...](https://github.com/near/docs/pull/1554) |
-| 2023-10-27 | [1556](https://github.com/near/docs/pull/1556) | [Fixed Lido component link (BOS for Ethereum develo...](https://github.com/near/docs/pull/1556) |
-| 2023-10-23 | [1546](https://github.com/near/docs/pull/1546) | [Add a tutorial for websockets based on the widget ...](https://github.com/near/docs/pull/1546) |
+| 2023-10-27 | [1556](https://github.com/near/docs/pull/1556) | [Fixed Lido component link (BOS for Ethereum](https://github.com/near/docs/pull/1556) |
+| 2023-10-23 | [1546](https://github.com/near/docs/pull/1546) | [Add a tutorial for websockets based on the ](https://github.com/near/docs/pull/1546) |
 | 2023-10-19 | [1544](https://github.com/near/docs/pull/1544) | [feat: BOS for Ethereum developers doc](https://github.com/near/docs/pull/1544) |
 | 2023-10-18 | [1548](https://github.com/near/docs/pull/1548) | [Bump @babel/traverse from 7.18.13 to 7.23.2 in /we...](https://github.com/near/docs/pull/1548) |
 | 2023-10-18 | [1527](https://github.com/near/docs/pull/1527) | [Bump postcss from 8.4.16 to 8.4.31 in /website...](https://github.com/near/docs/pull/1527) |
