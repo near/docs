@@ -1,5 +1,6 @@
 // @ts-check
 const path = require('path');
+const releases = require('./release-files.json');
 
 /** @type {import('@docusaurus/types').Config} */
 module.exports = {
@@ -81,7 +82,9 @@ module.exports = {
           if (filename.includes('README')) {
             // get everything after ## BOS
             content = content.substring(
-              content.indexOf('An overview of essential repositories when building on NEAR Protocol.')
+              content.indexOf(
+                'An overview of essential repositories when building on NEAR Protocol.'
+              )
             );
             return {
               filename: 'github-overview.md',
@@ -97,6 +100,16 @@ ${content}`, // <-- this last part adds in the rest of the content, which would 
           // we don't want to modify this item, since it doesn't contain "README" in the name
           return undefined;
         },
+      },
+    ],
+    [
+      'docusaurus-plugin-remote-content',
+      {
+        name: 'near-releases',
+        sourceBaseUrl:
+          'https://raw.githubusercontent.com/near/near-releases/main/reports/',
+        outDir: '/blog',
+        documents: releases,
       },
     ],
   ],
