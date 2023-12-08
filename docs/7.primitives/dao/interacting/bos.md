@@ -102,43 +102,12 @@ This snippet will enable your users to create a DAO.
 
 ```js
 const args = {
-  policy: {
-    roles: [
-      {
-        name: "council",
-        kind: {
-          Group: [
-              "cryptogarik.testnet"
-          ]
-        },
-        permissions: [
-          "*:Finalize",
-          "transfer:AddProposal",
-          "transfer:VoteApprove",
-          "transfer:VoteReject",
-          "transfer:VoteRemove"
-        ],
-        vote_policy: {}
-      }
-    ],
-    default_vote_policy: {
-      weight_kind: "RoleWeight",
-      quorum: "0",
-      threshold: [
-        1,
-        2
-      ]
-    },
-    proposal_bond: "100000000000000000000000",
-    proposal_period: "604800000000000",
-    bounty_bond: "100000000000000000000000",
-    bounty_forgiveness_period: "604800000000000"
-  },
   config: {
-    name: "primitives",
-    purpose: "",
+    name: "Primitives",
+    purpose: "Building primitives on NEAR",
     metadata: ""
-  }
+  },
+  policy: ["bob.near"]
 };
 Near.call(
   "sputnik-dao.near",

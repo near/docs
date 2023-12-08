@@ -97,9 +97,10 @@ near view nearweek-news-contribution.sputnik-dao.near get_proposals '{"from_inde
 This snippet will enable you to create a DAO.
 
 ```bash
-export ARGS=`echo '{"policy":{"roles":[{"name":"council","kind":{"Group":["cryptogarik.testnet"]},"permissions":["*:Finalize","transfer:AddProposal","transfer:VoteApprove","transfer:VoteReject","transfer:VoteRemove"],"vote_policy":{}}],"default_vote_policy":{"weight_kind":"RoleWeight","quorum":"0","threshold":[1,2]},"proposal_bond":"100000000000000000000000","proposal_period":"604800000000000","bounty_bond":"100000000000000000000000","bounty_forgiveness_period":"604800000000000"},"config":{"name":"primitives","purpose":"","metadata":""}}' | base64`
+export COUNCIL='["bob.near"]'
+export ARGS=`echo '{"config": {"name": "Primitives", "purpose": "Building primitives on NEAR", "metadata":""}, "policy": '$COUNCIL'}' | base64`
 
-near call sputnikv2.testnet create "{\"name\":\"test16\", \"args\":\"$ARGS\"}" --deposit 6 --gas 300000000000000 --accountId cryptogarik.testnet
+near call sputnikv2.testnet create "{\"name\": \"primitives\", \"args\": \"$ARGS\"}" --accountId bob.near --amount 6 --gas 150000000000000
 ```
 
 :::note
