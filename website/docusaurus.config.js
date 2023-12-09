@@ -52,7 +52,7 @@ module.exports = {
           anonymizeIP: true,
         },
         blog: {
-          blogSidebarTitle: 'Dev Changelog',
+          blogSidebarTitle: 'Developer Changelog',
           blogSidebarCount: 'ALL',
           showReadingTime: false,
         },
@@ -74,28 +74,24 @@ module.exports = {
         sourceBaseUrl: 'https://raw.githubusercontent.com/near/DX/main/',
         outDir: '../docs/2.develop',
         documents: ['README.md'],
+        noRuntimeDownloads: true,
         modifyContent(filename, content) {
-          if (filename.includes('README')) {
-            // get everything after ## BOS
-            content = content.substring(
-              content.indexOf(
-                'An overview of essential repositories when building on NEAR Protocol.'
-              )
-            );
-            return {
-              filename: 'github-overview.md',
-              content: `---
+          // get everything after ## BOS
+          content = content.substring(
+            content.indexOf(
+              'An overview of essential repositories when building on NEAR Protocol.'
+            )
+          );
+          return {
+            filename: 'github-overview.md',
+            content: `---
 id: github-overview
 title: NEAR Developer Repositories
 ---
 
 ${content}`, // <-- this last part adds in the rest of the content, which would otherwise be discarded
-            };
-          }
-
-          // we don't want to modify this item, since it doesn't contain "README" in the name
-          return undefined;
-        },
+          };
+        }
       },
     ],
     [
@@ -106,14 +102,13 @@ ${content}`, // <-- this last part adds in the rest of the content, which would 
           'https://raw.githubusercontent.com/near/near-releases/main/reports/',
         outDir: '/blog',
         documents: changelogs,
+        noRuntimeDownloads: true,
         modifyContent(filename, content) {
-          if (filename === '2023-09-30-changelog.md') console.log(content.replace('{{', ''));
           return { filename, content: content.replace('{{', '') }
         }
       },
     ],
   ],
-
   themeConfig: {
     prism: {
       additionalLanguages: [
@@ -213,7 +208,7 @@ ${content}`, // <-- this last part adds in the rest of the content, which would 
           className: 'header-github-link',
           'aria-label': 'GitHub repository',
         },
-        { to: 'blog', label: 'Dev Changelog 🎉', position: 'right' },
+        { to: 'blog', label: 'Changelog 🎉', position: 'right' },
         {
           href: "login",
           position: "right"
