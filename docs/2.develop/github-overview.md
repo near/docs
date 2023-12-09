@@ -5,6 +5,8 @@ title: NEAR Developer Repositories
 
 An overview of essential repositories when building on NEAR Protocol.
 
+<img src="https://github.com/near/DX/blob/main/assets/near-overview.png?raw=true" width="900"/>
+
 ### 📝 Docs
 
 | Website      | Description | Repo |
