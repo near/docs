@@ -9,6 +9,7 @@
     "preview": "(eval $(echo check_$IS_PULL_REQUEST | grep -U 'check_false')) 2>/dev/null && docusaurus build --locale en",
     "swizzle": "docusaurus swizzle",
     "docusaurus": "docusaurus",
+    "check-logs": "node ./src/utils/getChangelogs.js",
     "crowdin": "crowdin",
     "crowdin:sync": "docusaurus write-translations && crowdin upload && crowdin download",
     "crowdin:build": "(eval $(echo check_$IS_PULL_REQUEST | grep -U 'check_true')) 2>/dev/null && docusaurus write-translations && crowdin download"
