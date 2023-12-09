@@ -1,5 +1,7 @@
 # September 2023
 
+Developer changelog for [essential repositories](/develop/github-overview) when building on NEAR Protocol. 🏗️
+
 ## Releases  🎉
 
 | repo | release | release_date |
@@ -9,7 +11,11 @@
 | web3-onboard | [2.24.11](https://github.com/blocknative/web3-onboard/releases/tag/2.24.11) | 2023-09-19 |
 | nearcore | [1.36.0-rc.1](https://github.com/near/nearcore/releases/tag/1.36.0-rc.1) | 2023-09-19 |
 
+---
+
 ## Merged Pull Requests  🚀
+
+## 📄 Documentation
 
 ### docs
 
@@ -36,6 +42,8 @@
 | 2023-09-06 | [1483](https://github.com/near/docs/pull/1483) | [Landing Page for "Monitor" page ](https://github.com/near/docs/pull/1483) |
 | 2023-09-05 | [1474](https://github.com/near/docs/pull/1474) | [Add big query article](https://github.com/near/docs/pull/1474) |
 | 2023-09-01 | [1471](https://github.com/near/docs/pull/1471) | [query data/indexing content re-org](https://github.com/near/docs/pull/1471) |
+
+## 🚀 BOS
 
 ### near-discovery
 
@@ -93,6 +101,8 @@
 | 2023-09-06 | [41](https://github.com/near/bos-web-engine/pull/41) | [feat: Outer application improvements](https://github.com/near/bos-web-engine/pull/41) |
 | 2023-09-01 | [39](https://github.com/near/bos-web-engine/pull/39) | [feat: state support ...](https://github.com/near/bos-web-engine/pull/39) |
 
+## 🔑 Wallet / Auth
+
 ### wallet-selector
 
 | DATE | PR | DESCRIPTION |
@@ -142,6 +152,8 @@
 | 2023-09-27 | [2](https://github.com/idos-network/idos-sdk-js/pull/2) | [feat: filter list method](https://github.com/idos-network/idos-sdk-js/pull/2) |
 | 2023-09-26 | [1](https://github.com/idos-network/idos-sdk-js/pull/1) | [chore: pnpm workspaces and turbo](https://github.com/idos-network/idos-sdk-js/pull/1) |
 
+## 📝 Smart Contracts
+
 ### near-sdk-rs
 
 | DATE | PR | DESCRIPTION |
@@ -151,28 +163,7 @@
 | 2023-09-20 | [1085](https://github.com/near/near-sdk-rs/pull/1085) | [ci: Respect `{{ matr...](https://github.com/near/near-sdk-rs/pull/1085) |
 | 2023-09-12 | [1081](https://github.com/near/near-sdk-rs/pull/1081) | [fix: Fixed compilati...](https://github.com/near/near-sdk-rs/pull/1081) |
 
-### near-api-js
-
-| DATE | PR | DESCRIPTION |
-| --- | --- | --- |
-| 2023-09-07 | [1189](https://github.com/near/near-api-js/pull/1189) | [Update issue templates](https://github.com/near/near-api-js/pull/1189) |
-
-### queryapi
-
-| DATE | PR | DESCRIPTION |
-| --- | --- | --- |
-| 2023-09-27 | [238](https://github.com/near/queryapi/pull/238) | [feat: Add `indexer_l...](https://github.com/near/queryapi/pull/238) |
-| 2023-09-27 | [193](https://github.com/near/queryapi/pull/193) | [DPLT-1121: Generate ...](https://github.com/near/queryapi/pull/193) |
-| 2023-09-21 | [195](https://github.com/near/queryapi/pull/195) | [fix: Skip missing bl...](https://github.com/near/queryapi/pull/195) |
-| 2023-09-19 | [191](https://github.com/near/queryapi/pull/191) | [DPLT-1118 Paralleliz...](https://github.com/near/queryapi/pull/191) |
-| 2023-09-07 | [189](https://github.com/near/queryapi/pull/189) | [DPLT-1136: Implement...](https://github.com/near/queryapi/pull/189) |
-| 2023-09-06 | [188](https://github.com/near/queryapi/pull/188) | [fix: Improve Scope o...](https://github.com/near/queryapi/pull/188) |
-
-### near-lake-indexer
-
-| DATE | PR | DESCRIPTION |
-| --- | --- | --- |
-| 2023-09-25 | [79](https://github.com/near/near-lake-indexer/pull/79) | [chore: Upgrade to nearcore 1.36.0-rc.1](https://github.com/near/near-lake-indexer/pull/79) |
+## 🧪 Testing
 
 ### near-workspaces-rs
 
@@ -199,6 +190,35 @@
 | 2023-09-18 | [221](https://github.com/near/near-workspaces-js/pull/221) | [Fix issue 220/sandbo...](https://github.com/near/near-workspaces-js/pull/221) |
 | 2023-09-11 | [219](https://github.com/near/near-workspaces-js/pull/219) | [feat-issue-215: incr...](https://github.com/near/near-workspaces-js/pull/219) |
 | 2023-09-11 | [217](https://github.com/near/near-workspaces-js/pull/217) | [feat-issue-123: add ...](https://github.com/near/near-workspaces-js/pull/217) |
+
+## 📞 API
+
+### near-api-js
+
+| DATE | PR | DESCRIPTION |
+| --- | --- | --- |
+| 2023-09-07 | [1189](https://github.com/near/near-api-js/pull/1189) | [Update issue templates](https://github.com/near/near-api-js/pull/1189) |
+
+## 🔎 Data Indexing
+
+### queryapi
+
+| DATE | PR | DESCRIPTION |
+| --- | --- | --- |
+| 2023-09-27 | [238](https://github.com/near/queryapi/pull/238) | [feat: Add `indexer_l...](https://github.com/near/queryapi/pull/238) |
+| 2023-09-27 | [193](https://github.com/near/queryapi/pull/193) | [DPLT-1121: Generate ...](https://github.com/near/queryapi/pull/193) |
+| 2023-09-21 | [195](https://github.com/near/queryapi/pull/195) | [fix: Skip missing bl...](https://github.com/near/queryapi/pull/195) |
+| 2023-09-19 | [191](https://github.com/near/queryapi/pull/191) | [DPLT-1118 Paralleliz...](https://github.com/near/queryapi/pull/191) |
+| 2023-09-07 | [189](https://github.com/near/queryapi/pull/189) | [DPLT-1136: Implement...](https://github.com/near/queryapi/pull/189) |
+| 2023-09-06 | [188](https://github.com/near/queryapi/pull/188) | [fix: Improve Scope o...](https://github.com/near/queryapi/pull/188) |
+
+### near-lake-indexer
+
+| DATE | PR | DESCRIPTION |
+| --- | --- | --- |
+| 2023-09-25 | [79](https://github.com/near/near-lake-indexer/pull/79) | [chore: Upgrade to nearcore 1.36.0-rc.1](https://github.com/near/near-lake-indexer/pull/79) |
+
+## ⛓️ Protocol
 
 ### neps
 

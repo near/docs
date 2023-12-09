@@ -1,6 +1,6 @@
 // @ts-check
 const path = require('path');
-const releases = require('./release-files.json');
+const changelogs = require('./utils/changelogs.json');
 
 /** @type {import('@docusaurus/types').Config} */
 module.exports = {
@@ -58,7 +58,7 @@ module.exports = {
           anonymizeIP: true,
         },
         blog: {
-          blogSidebarTitle: 'NEAR Releases',
+          blogSidebarTitle: 'Dev Changelog',
           blogSidebarCount: 'ALL',
           showReadingTime: false,
         },
@@ -105,11 +105,11 @@ ${content}`, // <-- this last part adds in the rest of the content, which would 
     [
       'docusaurus-plugin-remote-content',
       {
-        name: 'near-releases',
+        name: 'near-changelog',
         sourceBaseUrl:
           'https://raw.githubusercontent.com/near/near-releases/main/reports/',
         outDir: '/blog',
-        documents: releases,
+        documents: changelogs,
       },
     ],
   ],
@@ -213,7 +213,7 @@ ${content}`, // <-- this last part adds in the rest of the content, which would 
           className: 'header-github-link',
           'aria-label': 'GitHub repository',
         },
-        { to: 'blog', label: 'Releases 🎉', position: 'right' },
+        { to: 'blog', label: 'Dev Changelog 🎉', position: 'right' },
       ],
     },
     image: 'img/near_logo.svg',

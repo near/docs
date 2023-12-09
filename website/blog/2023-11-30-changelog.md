@@ -1,5 +1,7 @@
 # November 2023
 
+Developer changelog for [essential repositories](/develop/github-overview) when building on NEAR Protocol. 🏗️
+
 ## Releases  🎉
 
 | repo | release | release_date |
@@ -8,12 +10,16 @@
 | wallet-selector | [v8.9.0](https://github.com/near/wallet-selector/releases/tag/v8.9.0) | 2023-11-27 |
 | web3-onboard | [2.24.17](https://github.com/blocknative/web3-onboard/releases/tag/2.24.17) | 2023-11-29 |
 | create-near-app | [Release 6.0.1](https://github.com/near/create-near-app/releases/tag/v6.0.1) | 2023-11-16 |
-| near-cli-rs | [0.7.2 - 2023-11-21](https://github.com/near/near-cli-rs/releases/tag/v0.7.2) | 2023-11-21 |
 | bos-loader | [v0.9.0](https://github.com/near/bos-loader/releases/tag/v0.9.0) | 2023-11-03 |
+| near-cli-rs | [0.7.2 - 2023-11-21](https://github.com/near/near-cli-rs/releases/tag/v0.7.2) | 2023-11-21 |
 | near-sdk-rs | [near-sys-v0.2.1](https://github.com/near/near-sdk-rs/releases/tag/near-sys-v0.2.1) | 2023-11-19 |
 | near-workspaces-js | [v3.4.0](https://github.com/near/near-workspaces-js/releases/tag/near-workspaces%403.4.0) | 2023-11-24 |
 
+---
+
 ## Merged Pull Requests  🚀
+
+## 📄 Documentation
 
 ### docs
 
@@ -41,6 +47,8 @@
 | 2023-11-08 | [1567](https://github.com/near/docs/pull/1567) | [added da-docs](https://github.com/near/docs/pull/1567) |
 | 2023-11-03 | [1563](https://github.com/near/docs/pull/1563) | [Add Seracle to the list of RPC providers](https://github.com/near/docs/pull/1563) |
 | 2023-11-03 | [1552](https://github.com/near/docs/pull/1552) | [QueryApi best practices](https://github.com/near/docs/pull/1552) |
+
+## 🚀 BOS
 
 ### near-discovery
 
@@ -100,6 +108,8 @@
 | 2023-11-03 | [135](https://github.com/near/bos-web-engine/pull/135) | [TypeScript support](https://github.com/near/bos-web-engine/pull/135) |
 | 2023-11-03 | [132](https://github.com/near/bos-web-engine/pull/132) | [Drop `/widget/` from component paths](https://github.com/near/bos-web-engine/pull/132) |
 | 2023-11-01 | [129](https://github.com/near/bos-web-engine/pull/129) | [prevent error flash on load](https://github.com/near/bos-web-engine/pull/129) |
+
+## 🔑 Wallet / Auth
 
 ### wallet-selector
 
@@ -186,6 +196,8 @@
 | 2023-11-02 | [27](https://github.com/idos-network/idos-sdk-js/pull/27) | [Inspect more](https://github.com/idos-network/idos-sdk-js/pull/27) |
 | 2023-11-01 | [25](https://github.com/idos-network/idos-sdk-js/pull/25) | [Ready to point at an...](https://github.com/idos-network/idos-sdk-js/pull/25) |
 
+## 🛠️ Dev Tools
+
 ### create-near-app
 
 | DATE | PR | DESCRIPTION |
@@ -194,6 +206,8 @@
 | 2023-11-17 | [2114](https://github.com/near/create-near-app/pull/2114) | [refactor: change the...](https://github.com/near/create-near-app/pull/2114) |
 | 2023-11-16 | [2113](https://github.com/near/create-near-app/pull/2113) | [Better handle input & tracking](https://github.com/near/create-near-app/pull/2113) |
 | 2023-11-09 | [2109](https://github.com/near/create-near-app/pull/2109) | [Gateways](https://github.com/near/create-near-app/pull/2109) |
+
+## 📝 Smart Contracts
 
 ### near-sdk-rs
 
@@ -205,12 +219,37 @@
 | 2023-11-07 | [1108](https://github.com/near/near-sdk-rs/pull/1108) | [refactor: migrate to near_account_id](https://github.com/near/near-sdk-rs/pull/1108) |
 | 2023-11-03 | [1106](https://github.com/near/near-sdk-rs/pull/1106) | [feat: adding `nep-03...](https://github.com/near/near-sdk-rs/pull/1106) |
 
+## 🧪 Testing
+
+### near-workspaces-rs
+
+| DATE | PR | DESCRIPTION |
+| --- | --- | --- |
+| 2023-11-28 | [338](https://github.com/near/near-workspaces-rs/pull/338) | [chore: dependecy bumps](https://github.com/near/near-workspaces-rs/pull/338) |
+| 2023-11-27 | [340](https://github.com/near/near-workspaces-rs/pull/340) | [chore: fix docs & typos](https://github.com/near/near-workspaces-rs/pull/340) |
+| 2023-11-27 | [335](https://github.com/near/near-workspaces-rs/pull/335) | [chore: sandbox stable](https://github.com/near/near-workspaces-rs/pull/335) |
+| 2023-11-27 | [329](https://github.com/near/near-workspaces-rs/pull/329) | [chore: cleanup internals](https://github.com/near/near-workspaces-rs/pull/329) |
+| 2023-11-27 | [339](https://github.com/near/near-workspaces-rs/pull/339) | [Remove interop_sdk from defaults](https://github.com/near/near-workspaces-rs/pull/339) |
+
+### near-workspaces-js
+
+| DATE | PR | DESCRIPTION |
+| --- | --- | --- |
+| 2023-11-24 | [227](https://github.com/near/near-workspaces-js/pull/227) | [chore: update versio...](https://github.com/near/near-workspaces-js/pull/227) |
+| 2023-11-23 | [216](https://github.com/near/near-workspaces-js/pull/216) | [feat: update version of near-api-js](https://github.com/near/near-workspaces-js/pull/216) |
+| 2023-11-21 | [224](https://github.com/near/near-workspaces-js/pull/224) | [fix: txn_result gas burnt](https://github.com/near/near-workspaces-js/pull/224) |
+| 2023-11-21 | [226](https://github.com/near/near-workspaces-js/pull/226) | [chore: new release 3.4.0](https://github.com/near/near-workspaces-js/pull/226) |
+
+## 📞 API
+
 ### near-api-js
 
 | DATE | PR | DESCRIPTION |
 | --- | --- | --- |
 | 2023-11-28 | [1205](https://github.com/near/near-api-js/pull/1205) | [Retry RPC requests on 408 HTTP error](https://github.com/near/near-api-js/pull/1205) |
 | 2023-11-15 | [1172](https://github.com/near/near-api-js/pull/1172) | [feat: implement loca...](https://github.com/near/near-api-js/pull/1172) |
+
+## 🔎 Data Indexing
 
 ### queryapi
 
@@ -258,24 +297,15 @@
 | 2023-11-30 | [47](https://github.com/near/near-lake-framework-js/pull/47) | [ci: Automate package...](https://github.com/near/near-lake-framework-js/pull/47) |
 | 2023-11-28 | [42](https://github.com/near/near-lake-framework-js/pull/42) | [feat: Split library ...](https://github.com/near/near-lake-framework-js/pull/42) |
 
-### near-workspaces-rs
+### near-lake-framework-js
 
 | DATE | PR | DESCRIPTION |
 | --- | --- | --- |
-| 2023-11-28 | [338](https://github.com/near/near-workspaces-rs/pull/338) | [chore: dependecy bumps](https://github.com/near/near-workspaces-rs/pull/338) |
-| 2023-11-27 | [340](https://github.com/near/near-workspaces-rs/pull/340) | [chore: fix docs & typos](https://github.com/near/near-workspaces-rs/pull/340) |
-| 2023-11-27 | [335](https://github.com/near/near-workspaces-rs/pull/335) | [chore: sandbox stable](https://github.com/near/near-workspaces-rs/pull/335) |
-| 2023-11-27 | [329](https://github.com/near/near-workspaces-rs/pull/329) | [chore: cleanup internals](https://github.com/near/near-workspaces-rs/pull/329) |
-| 2023-11-27 | [339](https://github.com/near/near-workspaces-rs/pull/339) | [Remove interop_sdk from defaults](https://github.com/near/near-workspaces-rs/pull/339) |
+| 2023-11-30 | [48](https://github.com/near/near-lake-framework-js/pull/48) | [ci: Fix Changesets action](https://github.com/near/near-lake-framework-js/pull/48) |
+| 2023-11-30 | [47](https://github.com/near/near-lake-framework-js/pull/47) | [ci: Automate package...](https://github.com/near/near-lake-framework-js/pull/47) |
+| 2023-11-28 | [42](https://github.com/near/near-lake-framework-js/pull/42) | [feat: Split library ...](https://github.com/near/near-lake-framework-js/pull/42) |
 
-### near-workspaces-js
-
-| DATE | PR | DESCRIPTION |
-| --- | --- | --- |
-| 2023-11-24 | [227](https://github.com/near/near-workspaces-js/pull/227) | [chore: update versio...](https://github.com/near/near-workspaces-js/pull/227) |
-| 2023-11-23 | [216](https://github.com/near/near-workspaces-js/pull/216) | [feat: update version of near-api-js](https://github.com/near/near-workspaces-js/pull/216) |
-| 2023-11-21 | [224](https://github.com/near/near-workspaces-js/pull/224) | [fix: txn_result gas burnt](https://github.com/near/near-workspaces-js/pull/224) |
-| 2023-11-21 | [226](https://github.com/near/near-workspaces-js/pull/226) | [chore: new release 3.4.0](https://github.com/near/near-workspaces-js/pull/226) |
+## ⛓️ Protocol
 
 ### nearcore
 

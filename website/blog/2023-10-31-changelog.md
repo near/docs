@@ -1,5 +1,7 @@
 # October 2023
 
+Developer changelog for [essential repositories](/develop/github-overview) when building on NEAR Protocol. 🏗️
+
 ## Releases  🎉
 
 | repo | release | release_date |
@@ -8,12 +10,16 @@
 | wallet-selector | [v8.7.0](https://github.com/near/wallet-selector/releases/tag/v8.7.0) | 2023-10-20 |
 | web3-onboard | [2.24.15](https://github.com/blocknative/web3-onboard/releases/tag/2.24.15) | 2023-10-25 |
 | near-vscode | [VSCode 2.1.2](https://github.com/near/near-vscode/releases/tag/2.1.2) | 2023-10-18 |
-| near-cli-rs | [0.6.2 - 2023-10-17](https://github.com/near/near-cli-rs/releases/tag/v0.6.2) | 2023-10-17 |
 | bos-cli-rs | [0.3.6 - 2023-10-22](https://github.com/bos-cli-rs/bos-cli-rs/releases/tag/v0.3.6) | 2023-10-22 |
+| near-cli-rs | [0.6.2 - 2023-10-17](https://github.com/near/near-cli-rs/releases/tag/v0.6.2) | 2023-10-17 |
 | near-workspaces-rs | [near-workspaces-v0.9.0](https://github.com/near/near-workspaces-rs/releases/tag/near-workspaces-v0.9.0) | 2023-10-30 |
 | nearcore | [1.36.0](https://github.com/near/nearcore/releases/tag/1.36.0) | 2023-10-30 |
 
+---
+
 ## Merged Pull Requests  🚀
+
+## 📄 Documentation
 
 ### docs
 
@@ -37,6 +43,8 @@
 | 2023-10-05 | [1524](https://github.com/near/docs/pull/1524) | [Fix typos](https://github.com/near/docs/pull/1524) |
 | 2023-10-04 | [1523](https://github.com/near/docs/pull/1523) | [Gateway notifications](https://github.com/near/docs/pull/1523) |
 | 2023-10-02 | [1510](https://github.com/near/docs/pull/1510) | [update QueryApi limitations](https://github.com/near/docs/pull/1510) |
+
+## 🚀 BOS
 
 ### near-discovery
 
@@ -110,6 +118,8 @@
 | 2023-10-03 | [74](https://github.com/near/bos-web-engine/pull/74) | [style: prettier](https://github.com/near/bos-web-engine/pull/74) |
 | 2023-10-02 | [58](https://github.com/near/bos-web-engine/pull/58) | [remove index route t...](https://github.com/near/bos-web-engine/pull/58) |
 
+## 🔑 Wallet / Auth
+
 ### wallet-selector
 
 | DATE | PR | DESCRIPTION |
@@ -168,6 +178,8 @@
 | 2023-10-06 | [7](https://github.com/idos-network/idos-sdk-js/pull/7) | [fix: wrap decrypt in try catch](https://github.com/idos-network/idos-sdk-js/pull/7) |
 | 2023-10-06 | [6](https://github.com/idos-network/idos-sdk-js/pull/6) | [fix: encryption decription issues](https://github.com/idos-network/idos-sdk-js/pull/6) |
 
+## 📝 Smart Contracts
+
 ### near-sdk-rs
 
 | DATE | PR | DESCRIPTION |
@@ -184,30 +196,7 @@
 | 2023-10-04 | [1088](https://github.com/near/near-sdk-rs/pull/1088) | [refactor: upgrade sy...](https://github.com/near/near-sdk-rs/pull/1088) |
 | 2023-10-02 | [1089](https://github.com/near/near-sdk-rs/pull/1089) | [[Fix] Ci - downgrade anstyle-parse. ](https://github.com/near/near-sdk-rs/pull/1089) |
 
-### near-api-js
-
-| DATE | PR | DESCRIPTION |
-| --- | --- | --- |
-| 2023-10-30 | [1194](https://github.com/near/near-api-js/pull/1194) | [fix: remove global override of `fetch`](https://github.com/near/near-api-js/pull/1194) |
-| 2023-10-30 | [1195](https://github.com/near/near-api-js/pull/1195) | [fix: add check for p...](https://github.com/near/near-api-js/pull/1195) |
-
-### queryapi
-
-| DATE | PR | DESCRIPTION |
-| --- | --- | --- |
-| 2023-10-26 | [332](https://github.com/near/queryapi/pull/332) | [fix: Use `Histogram`...](https://github.com/near/queryapi/pull/332) |
-| 2023-10-24 | [327](https://github.com/near/queryapi/pull/327) | [fix: Rename `close-c...](https://github.com/near/queryapi/pull/327) |
-| 2023-10-23 | [320](https://github.com/near/queryapi/pull/320) | [Automatically close issues marked 'done'](https://github.com/near/queryapi/pull/320) |
-| 2023-10-20 | [302](https://github.com/near/queryapi/pull/302) | [Update bug_report.md](https://github.com/near/queryapi/pull/302) |
-| 2023-10-16 | [295](https://github.com/near/queryapi/pull/295) | [ignore all runner er...](https://github.com/near/queryapi/pull/295) |
-| 2023-10-16 | [294](https://github.com/near/queryapi/pull/294) | [hot-fix: skip context.db](https://github.com/near/queryapi/pull/294) |
-| 2023-10-13 | [284](https://github.com/near/queryapi/pull/284) | [fix: fix playground ...](https://github.com/near/queryapi/pull/284) |
-| 2023-10-12 | [285](https://github.com/near/queryapi/pull/285) | [feat: add registeration button](https://github.com/near/queryapi/pull/285) |
-| 2023-10-06 | [270](https://github.com/near/queryapi/pull/270) | [fix: Handle errors e...](https://github.com/near/queryapi/pull/270) |
-| 2023-10-06 | [272](https://github.com/near/queryapi/pull/272) | [chore: add prod graphql link](https://github.com/near/queryapi/pull/272) |
-| 2023-10-05 | [241](https://github.com/near/queryapi/pull/241) | [Store Real Time Stre...](https://github.com/near/queryapi/pull/241) |
-| 2023-10-03 | [237](https://github.com/near/queryapi/pull/237) | [feat: put toggle + disclaimer](https://github.com/near/queryapi/pull/237) |
-| 2023-10-02 | [265](https://github.com/near/queryapi/pull/265) | [feat: add aggregation fields by default](https://github.com/near/queryapi/pull/265) |
+## 🧪 Testing
 
 ### near-workspaces-rs
 
@@ -227,6 +216,37 @@
 | 2023-10-04 | [318](https://github.com/near/near-workspaces-rs/pull/318) | [refactor!: renamed c...](https://github.com/near/near-workspaces-rs/pull/318) |
 | 2023-10-04 | [311](https://github.com/near/near-workspaces-rs/pull/311) | [Pin specific version of near-sandbox](https://github.com/near/near-workspaces-rs/pull/311) |
 | 2023-10-04 | [243](https://github.com/near/near-workspaces-rs/pull/243) | [chore: expose more block members](https://github.com/near/near-workspaces-rs/pull/243) |
+
+## 📞 API
+
+### near-api-js
+
+| DATE | PR | DESCRIPTION |
+| --- | --- | --- |
+| 2023-10-30 | [1194](https://github.com/near/near-api-js/pull/1194) | [fix: remove global override of `fetch`](https://github.com/near/near-api-js/pull/1194) |
+| 2023-10-30 | [1195](https://github.com/near/near-api-js/pull/1195) | [fix: add check for p...](https://github.com/near/near-api-js/pull/1195) |
+
+## 🔎 Data Indexing
+
+### queryapi
+
+| DATE | PR | DESCRIPTION |
+| --- | --- | --- |
+| 2023-10-26 | [332](https://github.com/near/queryapi/pull/332) | [fix: Use `Histogram`...](https://github.com/near/queryapi/pull/332) |
+| 2023-10-24 | [327](https://github.com/near/queryapi/pull/327) | [fix: Rename `close-c...](https://github.com/near/queryapi/pull/327) |
+| 2023-10-23 | [320](https://github.com/near/queryapi/pull/320) | [Automatically close issues marked 'done'](https://github.com/near/queryapi/pull/320) |
+| 2023-10-20 | [302](https://github.com/near/queryapi/pull/302) | [Update bug_report.md](https://github.com/near/queryapi/pull/302) |
+| 2023-10-16 | [295](https://github.com/near/queryapi/pull/295) | [ignore all runner er...](https://github.com/near/queryapi/pull/295) |
+| 2023-10-16 | [294](https://github.com/near/queryapi/pull/294) | [hot-fix: skip context.db](https://github.com/near/queryapi/pull/294) |
+| 2023-10-13 | [284](https://github.com/near/queryapi/pull/284) | [fix: fix playground ...](https://github.com/near/queryapi/pull/284) |
+| 2023-10-12 | [285](https://github.com/near/queryapi/pull/285) | [feat: add registeration button](https://github.com/near/queryapi/pull/285) |
+| 2023-10-06 | [270](https://github.com/near/queryapi/pull/270) | [fix: Handle errors e...](https://github.com/near/queryapi/pull/270) |
+| 2023-10-06 | [272](https://github.com/near/queryapi/pull/272) | [chore: add prod graphql link](https://github.com/near/queryapi/pull/272) |
+| 2023-10-05 | [241](https://github.com/near/queryapi/pull/241) | [Store Real Time Stre...](https://github.com/near/queryapi/pull/241) |
+| 2023-10-03 | [237](https://github.com/near/queryapi/pull/237) | [feat: put toggle + disclaimer](https://github.com/near/queryapi/pull/237) |
+| 2023-10-02 | [265](https://github.com/near/queryapi/pull/265) | [feat: add aggregation fields by default](https://github.com/near/queryapi/pull/265) |
+
+## ⛓️ Protocol
 
 ### nearcore
 
