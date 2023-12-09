@@ -1,5 +1,6 @@
 // @ts-check
 const path = require('path');
+const changelogs = require('./utils/changelogs.json');
 
 /** @type {import('@docusaurus/types').Config} */
 module.exports = {
@@ -56,7 +57,11 @@ module.exports = {
           trackingID: 'UA-100373569-7',
           anonymizeIP: true,
         },
-        blog: {},
+        blog: {
+          blogSidebarTitle: 'Dev Changelog',
+          blogSidebarCount: 'ALL',
+          showReadingTime: false,
+        },
         theme: {
           customCss: '/src/css/customTheme.css',
         },
@@ -77,7 +82,9 @@ module.exports = {
           if (filename.includes('README')) {
             // get everything after ## BOS
             content = content.substring(
-              content.indexOf('An overview of essential repositories when building on NEAR Protocol.')
+              content.indexOf(
+                'An overview of essential repositories when building on NEAR Protocol.'
+              )
             );
             return {
               filename: 'github-overview.md',
@@ -93,6 +100,16 @@ ${content}`, // <-- this last part adds in the rest of the content, which would 
           // we don't want to modify this item, since it doesn't contain "README" in the name
           return undefined;
         },
+      },
+    ],
+    [
+      'docusaurus-plugin-remote-content',
+      {
+        name: 'near-changelog',
+        sourceBaseUrl:
+          'https://raw.githubusercontent.com/near/near-releases/main/reports/',
+        outDir: '/blog',
+        documents: changelogs,
       },
     ],
   ],
@@ -196,11 +213,12 @@ ${content}`, // <-- this last part adds in the rest of the content, which would 
           className: 'header-github-link',
           'aria-label': 'GitHub repository',
         },
+        { to: 'blog', label: 'Dev Changelog 🎉', position: 'right' },
       ],
     },
     image: 'img/near_logo.svg',
     footer: {
-      links: [],
+      links: [], 
       copyright: 'Copyright © 2021 NEAR Protocol',
       logo: {
         src: 'img/near_logo.svg',
