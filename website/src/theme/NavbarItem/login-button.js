@@ -18,5 +18,12 @@ export default function LoginButton(props) {
     }
   }, [signedAccountId, logOut, logIn, setAction, setLabel]);
 
-  return <button className={styles.btn} onClick={action}> {label} </button>
+  if (props.mobile){
+    return <li className='menu__list-item'>
+      <button className={`menu__link ${styles.btn}`} onClick={action}> {label} </button>
+    </li>
+  }else{
+    return <button className={`navbar__item navbar__link ${styles.btn}`} onClick={action}> {label} </button>
+  }
+
 }
