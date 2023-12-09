@@ -192,26 +192,26 @@ ${content}`, // <-- this last part adds in the rest of the content, which would 
               href: 'https://near-nodes.io',
               label: 'Validator Docs',
             },
-          ],
+          ], 
         },
         {
           type: 'search',
           position: 'right',
         },
+        { to: 'blog', label: 'Changelog 🎉', position: 'right' },
         {
           type: 'localeDropdown',
           position: 'right',
+        },
+        {
+          href: "login",
+          position: "right"
         },
         {
           href: '/develop/github-overview',
           position: 'right',
           className: 'header-github-link',
           'aria-label': 'GitHub repository',
-        },
-        { to: 'blog', label: 'Changelog 🎉', position: 'right' },
-        {
-          href: "login",
-          position: "right"
         },
       ],
     },
