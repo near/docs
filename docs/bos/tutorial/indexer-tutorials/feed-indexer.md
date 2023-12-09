@@ -16,7 +16,7 @@ You can request access through [this link](http://bit.ly/near-queryapi-beta).
 
 The indexer `indexingLogic.js` is comprised of functions that help handle, transform and record data. The main logic for handling transaction data as it occurs from the blockchain can be found underneath the comment marked:
 
-```jsx
+```js
 // Add your code here
 ```
 
@@ -105,7 +105,7 @@ The main function can be explained in two parts. The first filters relevant tran
 
 ### Filtering for Relevant Data
 
-```jsx
+```js
 const SOCIAL_DB = "social.near";
 
   const nearSocialPosts = block
@@ -157,7 +157,7 @@ Specifically, `.flatMap()` filters for `FunctionCall` call types, calling the `s
 
 ### Processing Filtered Data
 
-```jsx
+```js
 if (nearSocialPosts.length > 0) {
     console.log("Found Near Social Posts in Block...");
     const blockHeight = block.blockHeight;
@@ -210,7 +210,7 @@ Within every promise, the `accountId` performing the call is extracted from the 
 
 ### `base64decode`
 
-```jsx
+```js
 function base64decode(encodedValue) {
     let buff = Buffer.from(encodedValue, "base64");
     return JSON.parse(buff.toString("utf-8"));
@@ -226,7 +226,7 @@ This function decodes a string that has been encoded in Base64 format. It takes 
 
 ### `handlePostCreation`
 
-```jsx
+```js
 async function handlePostCreation(
     accountId,
     blockHeight,
@@ -259,7 +259,7 @@ An object containing the relevant data to populate the `posts` table defined in 
 
 ### `handleCommentCreation`
 
-```jsx
+```js
 async function handleCommentCreation(
     accountId,
     blockHeight,
@@ -326,7 +326,7 @@ To save or create a comment the relevant post is fetched first. If no posts are 
 
 ### `handleLike`
 
-```jsx
+```js
 async function handleLike(
     accountId,
     blockHeight,
@@ -391,7 +391,7 @@ As with `handleCommentCreation` , first the relevant post is sought from the DB 
 
 ### `_handlePostLike`
 
-```jsx
+```js
 async function _handlePostLike(
     postId,
     likeAuthorAccountId,
@@ -439,7 +439,7 @@ As with `handleLike`, the relevant `post` is first sought from the graphQL DB ta
 
 ### `_handlePostUnlike`
 
-```jsx
+```js
 async function _handlePostUnlike(postId, likeAuthorAccountId) {
     try {
       const posts = await context.db.Posts.select({ id: postId });

@@ -3,7 +3,7 @@ id: unit-test
 title: Unit Testing
 #sidebar_label: 🧫 Unit Testing
 ---
-import {CodeTabs, Language, Github} from "@site/components/codetabs"
+import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 
 Unit tests allow you to test the contract methods individually. They are suitable to check the storage is updated correctly, and that methods return their expected values. They are written in the contract's language and execute locally.

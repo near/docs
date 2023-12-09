@@ -156,15 +156,21 @@ For fun, try interacting with the smart contract using the React frontend and th
 
 Before and after solving the puzzle, run this command:
 
+```bash
     near view crossword.friend.testnet get_puzzle_status '{"solution_hash": "d1a5cf9ad1adefe0528f7d31866cf901e665745ff172b96892693769ad284010"}'
+```
 
 This will return our enum `PuzzleStatus`. Before solving the puzzle it should print:
 
+```json
     'Unsolved'
+```
 
 and after:
 
+```json
     { Solved: { memo: 'Yay I won!' } }
+```
 
 After you solve the crossword puzzle you'll see a screen with a link to NEAR Explorer to look at the details of the transaction. Notice we have our `Transfer` Action in there:
 

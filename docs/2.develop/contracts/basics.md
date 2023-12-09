@@ -4,7 +4,7 @@ title: Modules, Types & Structs
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/components/codetabs"
+import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 
 When writing smart contracts you will leverage common programming concepts such:

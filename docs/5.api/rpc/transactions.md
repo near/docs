@@ -643,7 +643,8 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_tx_status
 </TabItem>
 </Tabs>
 
-<details><summary>Example response:</summary>
+<details>
+<summary>Example response:</summary>
 <p>
 
 ```json
@@ -1008,7 +1009,8 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_receipt p
 </TabItem>
 </Tabs>
 
-<details><summary>Example response:</summary>
+<details>
+<summary>Example response:</summary>
 <p>
 
 ```json

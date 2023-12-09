@@ -8,7 +8,7 @@ async function main() {
     );
     const files = response.data.map((file) => file.name);
 
-    await fs.writeFile('./utils/changelogs.json', JSON.stringify(files, null, 2));
+    await fs.writeFile('./src/utils/changelogs.json', JSON.stringify(files, null, 2));
     console.log('File successfully written: changelogs.json');
   } catch (error) {
     console.error(error);

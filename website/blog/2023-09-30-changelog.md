@@ -160,7 +160,7 @@ Developer changelog for [essential repositories](/develop/github-overview) when 
 | --- | --- | --- |
 | 2023-09-27 | [1080](https://github.com/near/near-sdk-rs/pull/1080) | [chore: adding an `audit.toml` file](https://github.com/near/near-sdk-rs/pull/1080) |
 | 2023-09-24 | [1082](https://github.com/near/near-sdk-rs/pull/1082) | [refactor: Move from ...](https://github.com/near/near-sdk-rs/pull/1082) |
-| 2023-09-20 | [1085](https://github.com/near/near-sdk-rs/pull/1085) | [ci: Respect `{{ matr...](https://github.com/near/near-sdk-rs/pull/1085) |
+| 2023-09-20 | [1085](https://github.com/near/near-sdk-rs/pull/1085) | [ci: Respect ` matr...](https://github.com/near/near-sdk-rs/pull/1085) |
 | 2023-09-12 | [1081](https://github.com/near/near-sdk-rs/pull/1081) | [fix: Fixed compilati...](https://github.com/near/near-sdk-rs/pull/1081) |
 
 ## 🧪 Testing

@@ -338,7 +338,7 @@ return (
           </CardBody>
           <CardFooter>
             <TextLink
-              href={`https://legacy.explorer.near.org/?query=${activity.receipt_id}`}
+              href={`https://legacy.nearblocks.io/?query=${activity.receipt_id}`}
             >
               View details on NEAR Explorer
             </TextLink>

@@ -4,7 +4,7 @@ title: Donation
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/components/codetabs"
+import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 Our donation example enables to forward money to an account while keeping track of it.
 It is one of the simplest examples on making a contract receive and send money, and the

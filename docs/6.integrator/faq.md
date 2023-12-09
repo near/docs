@@ -133,7 +133,7 @@ See `nearcore/scripts/nodelib.py` for different examples of configuration.
 ### What is the source of truth for current block height exposed via API? {#what-is-the-source-of-truth-for-current-block-height-exposed-via-api}
 
 - MainNet
-  - https://explorer.mainnet.near.org (also https://explorer.near.org)
+  - https://explorer.mainnet.near.org (also https://nearblocks.io)
   - `https://rpc.mainnet.near.org/status`
 - TestNet
   - https://explorer.testnet.near.org
@@ -293,6 +293,5 @@ We use a simple binary serialization format that's deterministic: https://borsh.
   - https://www.github.com/near
 
 :::tip Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-<h8>Ask it on StackOverflow!</h8></a>
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
 :::

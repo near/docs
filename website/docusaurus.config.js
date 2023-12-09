@@ -1,6 +1,6 @@
 // @ts-check
 const path = require('path');
-const changelogs = require('./utils/changelogs.json');
+const changelogs = require('./src/utils/changelogs.json');
 
 /** @type {import('@docusaurus/types').Config} */
 module.exports = {
@@ -14,17 +14,11 @@ module.exports = {
     mermaid: true,
   },
   scripts: [
-    'https://buttons.github.io/buttons.js',
-    'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js',
-    'https://use.fontawesome.com/221fd444f5.js',
-    '/js/copy-code-button.js',
-    '/js/mixpanel.js',
+    "https://buttons.github.io/buttons.js",
+    "https://use.fontawesome.com/221fd444f5.js",
   ],
   stylesheets: [
-    'https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Source+Code+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap',
-    '/css/copy-code-button.css',
-    '/css/landing-page.css',
-    '/css/near.min.css',
+    "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Source+Code+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap",
   ],
   favicon: 'img/favicon.ico',
   customFields: {
@@ -58,18 +52,20 @@ module.exports = {
           anonymizeIP: true,
         },
         blog: {
-          blogSidebarTitle: 'Dev Changelog',
+          blogSidebarTitle: 'Developer Changelog',
           blogSidebarCount: 'ALL',
           showReadingTime: false,
         },
         theme: {
-          customCss: '/src/css/customTheme.css',
+          customCss: "/src/css/custom.scss",
         },
       },
     ],
   ],
   plugins: [
-    path.join(__dirname, '/plugins/monaco-editor'),
+    './src/plugins/monaco-editor',
+    './src/plugins/node-polyfills',
+    'docusaurus-plugin-sass',
     [
       'docusaurus-plugin-remote-content',
       {
@@ -78,28 +74,24 @@ module.exports = {
         sourceBaseUrl: 'https://raw.githubusercontent.com/near/DX/main/',
         outDir: '../docs/2.develop',
         documents: ['README.md'],
+        noRuntimeDownloads: true,
         modifyContent(filename, content) {
-          if (filename.includes('README')) {
-            // get everything after ## BOS
-            content = content.substring(
-              content.indexOf(
-                'An overview of essential repositories when building on NEAR Protocol.'
-              )
-            );
-            return {
-              filename: 'github-overview.md',
-              content: `---
+          // get everything after ## BOS
+          content = content.substring(
+            content.indexOf(
+              'An overview of essential repositories when building on NEAR Protocol.'
+            )
+          );
+          return {
+            filename: 'github-overview.md',
+            content: `---
 id: github-overview
 title: NEAR Developer Repositories
 ---
 
 ${content}`, // <-- this last part adds in the rest of the content, which would otherwise be discarded
-            };
-          }
-
-          // we don't want to modify this item, since it doesn't contain "README" in the name
-          return undefined;
-        },
+          };
+        }
       },
     ],
     [
@@ -110,20 +102,23 @@ ${content}`, // <-- this last part adds in the rest of the content, which would 
           'https://raw.githubusercontent.com/near/near-releases/main/reports/',
         outDir: '/blog',
         documents: changelogs,
+        noRuntimeDownloads: true,
+        modifyContent(filename, content) {
+          return { filename, content: content.replace('{{', '') }
+        }
       },
     ],
   ],
-
   themeConfig: {
-    plugins: [path.join(__dirname, '/plugins/monaco-editor')],
     prism: {
       additionalLanguages: [
-        'rust',
-        'java',
-        'python',
-        'ruby',
-        'go',
-        'typescript',
+        "rust",
+        "java",
+        "python",
+        "ruby",
+        "go",
+        "typescript",
+        "jsx"
       ],
     },
     colorMode: {
@@ -197,15 +192,20 @@ ${content}`, // <-- this last part adds in the rest of the content, which would 
               href: 'https://near-nodes.io',
               label: 'Validator Docs',
             },
-          ],
+          ], 
         },
         {
           type: 'search',
           position: 'right',
         },
+        { to: 'blog', label: 'Changelog 🎉', position: 'right' },
         {
           type: 'localeDropdown',
           position: 'right',
+        },
+        {
+          href: "login",
+          position: "right"
         },
         {
           href: '/develop/github-overview',
@@ -213,13 +213,12 @@ ${content}`, // <-- this last part adds in the rest of the content, which would 
           className: 'header-github-link',
           'aria-label': 'GitHub repository',
         },
-        { to: 'blog', label: 'Dev Changelog 🎉', position: 'right' },
       ],
     },
     image: 'img/near_logo.svg',
     footer: {
-      links: [], 
-      copyright: 'Copyright © 2021 NEAR Protocol',
+      links: [],
+      copyright: "Copyright © 2023 NEAR Protocol",
       logo: {
         src: 'img/near_logo.svg',
       },

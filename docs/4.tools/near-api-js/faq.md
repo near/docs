@@ -389,7 +389,7 @@ await contract.method_B_call();
 await contract.method_A_view();
 ```
 
-### Class {X} is missing in schema: publicKey
+### Class `{X}` is missing in schema: publicKey
 
 There is currently a known issue with the JavaScript API library, when you `import` it more than once
 it might cause a namespace collision.

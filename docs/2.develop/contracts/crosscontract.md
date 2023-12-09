@@ -1,11 +1,9 @@
 ---
 id: crosscontract
 title: Cross-Contract Calls
-#sidebar_label: 📞 Cross-Contract Calls
 ---
-import {CodeBlock} from '@theme/CodeBlock'
-import {CodeTabs, Language, Github} from "@site/components/codetabs"
 
+import {CodeTabs, Language, Github} from '@site/src/components/codetabs'
 
 Cross-contract calls allow your contract to interact with other deployed contracts. This is useful for:
 
@@ -69,17 +67,21 @@ Cross-contract calls work by creating two promises in the network:
 Both promises take the same arguments:
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
-    <CodeBlock>
-    NearPromise.new("external_address").functionCall("method", JSON.stringify(arguments), DEPOSIT, GAS);
-    </CodeBlock>
+    
+  ```ts
+  NearPromise.new("external_address").functionCall("method", JSON.stringify(arguments), DEPOSIT, GAS);
+  ```
+
   </Language>
   <Language value="🦀 Rust" language="rust">
-    <CodeBlock>
-    external_trait::ext("external_address")
-    .with_attached_deposit(DEPOSIT)
-    .with_static_gas(GAS)
-    .method(arguments);
-    </CodeBlock>
+
+  ```rust
+  external_trait::ext("external_address")
+  .with_attached_deposit(DEPOSIT)
+  .with_static_gas(GAS)
+  .method(arguments);
+  ```
+
   </Language>
 </CodeTabs>
 

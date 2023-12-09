@@ -117,7 +117,7 @@ const lakeConfig: types.LakeConfig = {
 };
 ```
 
-Just a few words on the config, we have set `s3BucketName` for mainnet, default `s3RegionName` and a fresh-ish block height for `startBlockHeight`. You can go to [NEAR Explorer](https://explorer.near.org) and get **the freshest** block height for your setup. Though you can use the same as we do.
+Just a few words on the config, we have set `s3BucketName` for mainnet, default `s3RegionName` and a fresh-ish block height for `startBlockHeight`. You can go to [NEAR Explorer](https://nearblocks.io) and get **the freshest** block height for your setup. Though you can use the same as we do.
 
 Now we need to create a callback function that we'll be called to handle [`StreamerMessage`](https://near-indexers.io/docs/data-flow-and-structures/structures/toc) our indexer receives.
 
@@ -395,7 +395,7 @@ for (let relevantOutcome of relevantOutcomes) {
 }
 ```
 
-We're going to print the marketplace name, Receipt id so you would be able to search for it on [NEAR Explorer](https://explorer.near.org) and the list of links to the NFTs along with the owner account name.
+We're going to print the marketplace name, Receipt id so you would be able to search for it on [NEAR Explorer](https://nearblocks.io) and the list of links to the NFTs along with the owner account name.
 
 Let's start crafting the links. Time to say "Hi!" to [Riqi](https://twitter.com/hdriqi) (just because we can):
 

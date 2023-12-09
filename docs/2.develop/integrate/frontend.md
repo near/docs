@@ -2,7 +2,7 @@
 id: frontend
 title: Web Frontend
 ---
-import {CodeTabs, Language, Github} from "@site/components/codetabs"
+import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -33,7 +33,8 @@ npm install \
   @near-wallet-selector/my-near-wallet \
   @near-wallet-selector/ledger
 ```
-<details><summary>Using them in plain HTML</summary>
+<details>
+<summary>Using them in plain HTML</summary>
 
 You can add `near-api-js` as a script tag in your html.
 

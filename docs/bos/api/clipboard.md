@@ -29,7 +29,7 @@ The event requires for the page to be in transient state (explicit user's click)
 <Tabs>
 <TabItem value="request" label="Request" default>
 
-```jsx
+```js
 return (
   <div>
     <div>

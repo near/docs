@@ -11,7 +11,7 @@ When building components, the NEAR VM provides a complete set of [Radix primitiv
 
 Using embedded Radix primitives on the NEAR VM is simple and straight-forward. You don't need to import any files:
 
-```jsx
+```js
 return (
     <Label.Root className="LabelRoot">
       Hello World!
@@ -33,7 +33,7 @@ Currently, NEAR VM impose some limitations on the Radix UI framework:
 
 Here is an example on how to use CSS through the `styled.div` wrapper:
 
-```jsx
+```js
 const Wrapper = styled.div`
   .SwitchRoot {
     ...
@@ -62,7 +62,7 @@ return (
 
 You can use [`styled-components`](../components/styledComponents.md) in combination with Radix UI primitives. Here's an example:
 
-```jsx
+```js
 const SwitchRoot = styled("Switch.Root")`
   all: unset;
   display: block;
@@ -114,7 +114,7 @@ The NEAR VM re-implements [React's forwardRef](https://react.dev/reference/react
 
 You can use `ref="forwardedRef"` to forward references through `<Widget />` to support Radix's `asChild` property:
 
-```jsx title='Dialog.jsx'
+```js title='Dialog.jsx'
 <AlertDialog.Trigger asChild>
   <Widget
     src="near/widget/TestButton"
@@ -123,7 +123,7 @@ You can use `ref="forwardedRef"` to forward references through `<Widget />` to s
 </AlertDialog.Trigger>
 ```
 
-```jsx title='TestButton.jsx'
+```js title='TestButton.jsx'
 const Button = styled.button`
   background: #f00;
 `;

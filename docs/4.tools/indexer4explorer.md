@@ -13,7 +13,7 @@ While developing a decentralized app you might want to query usage information f
 
 In order to simplify asking these questions is that we developed the [NEAR Indexer for Explorer](https://github.com/near/near-indexer-for-explorer).
 
-Both `testnet` and `mainnet` networks have active instances that fill the database with all the data from the network starting from the genesis as [Explorer](https://explorer.near.org/) requires.
+Both `testnet` and `mainnet` networks have active instances that fill the database with all the data from the network starting from the genesis as [Explorer](https://nearblocks.io/) requires.
 
 :::info GitHub repo
 
@@ -70,7 +70,7 @@ where r.predecessor_account_id  ='v1.faucet.nonofficial.testnet'
 
 ## NEAR Explorer sunsetting
 
-Pagoda made a decision to sunset NEAR Explorer as a product. This means that `explorer.near.org` (and `explorer.testnet.near.org`) will become a landing page with a list of available alternatives, and the existing [explorer.near.org](https://explorer.near.org) will be hosted under a new domain name and will be transitioned to the community through DevHub. [Read more here](https://near.social/devgovgigs.near/widget/gigs-board.pages.Post?id=635).
+Pagoda made a decision to sunset NEAR Explorer as a product. This means that `nearblocks.io` (and `explorer.testnet.near.org`) will become a landing page with a list of available alternatives, and the existing [nearblocks.io](https://nearblocks.io) will be hosted under a new domain name and will be transitioned to the community through DevHub. [Read more here](https://near.social/devgovgigs.near/widget/gigs-board.pages.Post?id=635).
 
 
 ### What exactly is being shut down?

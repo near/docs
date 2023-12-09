@@ -55,7 +55,7 @@ config.aws_secret_key = os.getenv("AWS_SECRET_ACCESS_KEY")
 ```
 
 Just a few words on the config, function `mainnet()` has set `s3_bucket_name`, `s3_region_name` for mainnet.
-You can go to [NEAR Explorer](https://explorer.near.org) and get **the most recent** block height to set `config.start_block_height`.
+You can go to [NEAR Explorer](https://nearblocks.io) and get **the most recent** block height to set `config.start_block_height`.
 
 ## Starting the stream
 

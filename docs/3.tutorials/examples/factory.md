@@ -5,7 +5,7 @@ title: Factory
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/components/codetabs"
+import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 A factory is a smart contract that stores a compiled contract on itself, and automatizes deploying it into
 sub-accounts.

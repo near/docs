@@ -21,7 +21,7 @@ To deploy the component, you'll need to sign in with a NEAR account and to make 
 
 ### Source code
 
-```jsx
+```js
 // FETCH LIDO ABI
 
 const lidoContract = "0xae7ab96520de3a18e5e111b5eaab095312d7fe84";
