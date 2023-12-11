@@ -117,9 +117,12 @@ You can define and instantiate complex objects through classes and structures.
       return type of the contract's methods. 
 
   :::tip
+
   If you are curious on why the (de)serialization is needed read our [serialization documentation](./serialization.md)
+
   :::
 
 
   </TabItem>
+
 </Tabs>
