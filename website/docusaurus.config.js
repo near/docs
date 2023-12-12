@@ -181,7 +181,7 @@ ${content}`, // <-- this last part adds in the rest of the content, which would 
               value: '<hr/> <small class="subtitle"> Onboarding </small>',
             },
             { label: "Wallet Selector", href: "/tools/wallet-selector" },
-            { label: "FastAuth (Email Login)", href: "/tools/fast-auth-sdk" },
+            { label: "FastAuth (Email Login)", href: "/tools/fastauth-sdk" },
             { label: "Relayers", href: "/develop/relayers/build-relayer" },
             {
               type: 'html',
