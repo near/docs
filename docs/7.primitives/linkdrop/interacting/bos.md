@@ -18,7 +18,6 @@ You will need to create one key per drop you want to generate, and you will alwa
 ## Getting key pairs
 
 ```js
-
 const dropsNumber = "2";
 const keysGeneratorUrl = "https://keypom.sctuts.com/keypair/";
 
@@ -49,7 +48,7 @@ This snippet will enable you to create a simple $NEAR drop. A simple drop allows
 
 ```js
 const keypomContract = "v2.keypom.near";
-const dropAmount = "10000000000000000000000"; // 1 NEAR
+const dropAmount = "10000000000000000000000";
 
 Near.call([
   {
@@ -83,7 +82,7 @@ Then you need to create a drop. You can do it exactly the same way as for a simp
 const accountId = context.accountId ?? props.accountId;
 const keypomContract = "v2.keypom.near";
 const nftContract = "nft.primitives.near";
-const dropAmount = "10000000000000000000000"; // 1 NEAR
+const dropAmount = "10000000000000000000000";
 
  Near.call([
   {
@@ -164,7 +163,7 @@ The process is very similar to creating [NFT drop](#nft-drop). You just need to 
 ```js
 const keypomContract = "v2.keypom.near";
 const ftContract = "ft.primitives.near";
-const dropAmount = "10000000000000000000000"; // 1 NEAR
+const dropAmount = "10000000000000000000000";
 
 Near.call([
   {
@@ -226,7 +225,7 @@ const accountId = context.accountId ?? props.accountId;
 const keypomContract = "v2.keypom.near";
 const nftContract = "nft.primitives.near";
 const nftTokenId = "1";
-const dropAmount = "10000000000000000000000"; // 1 NEAR
+const dropAmount = "10000000000000000000000";
 
 Near.call([
   {
@@ -253,7 +252,7 @@ Near.call([
                   }
               }),
               accountIdField: "receiver_id",
-              // Attached deposit of 1 $NEAR for when the receiver makes this function call
+              // Attached deposit for when the receiver makes this function call
               attachedDeposit: "10000000000000000000000"
             }]
         ]

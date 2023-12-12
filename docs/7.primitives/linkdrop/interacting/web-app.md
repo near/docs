@@ -21,9 +21,22 @@ All the examples are using a `Wallet` object, which comes from our [basic templa
 
 ## Getting key pairs
 
-```js
-import { Wallet } from './near-wallet';
+<Tabs>
 
+<TabItem value="near-api-js" label="near-api-js">
+
+```js
+import { KeyPair } from 'near-api-js';
+
+const newKeyPair = KeyPair.fromRandom('ed25519');
+newKeyPair.public_key = newKeyPair.publicKey.toString();
+```
+
+</TabItem>
+
+<TabItem value="Keypom API" label="Keypom API">
+
+```js
 const state = {};
 
 const dropsNumber = "2";
@@ -44,6 +57,10 @@ fetch(keysGeneratorUrl + dropsNumber + "/rootEntrophy").then((res) => {
 });
 ```
 
+</TabItem>
+
+</Tabs>
+
 ---
 
 ## Simple Drop
@@ -54,7 +71,7 @@ This snippet will enable you to create a simple $NEAR drop. A simple drop allows
 import { Wallet } from './near-wallet';
 
 const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
-const DROP_AMOUNT = "10000000000000000000000"; // 1 NEAR
+const DROP_AMOUNT = "10000000000000000000000"; // 0.1 NEAR
 
 const wallet = new Wallet({ createAccessKeyFor: KEYPOM_CONTRACT_ADDRESS }); 
 
@@ -89,7 +106,7 @@ import { Wallet } from './near-wallet';
 
 const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
 const NFT_CONTRACT_ADDRESS = "nft.primitives.near";
-const DROP_AMOUNT = "10000000000000000000000"; // 1 NEAR
+const DROP_AMOUNT = "10000000000000000000000";
 
 const keypomConnectedWallet = new Wallet({ createAccessKeyFor: KEYPOM_CONTRACT_ADDRESS }); 
 const nftConnectedWallet = new Wallet({ createAccessKeyFor: NFT_CONTRACT_ADDRESS });
@@ -144,7 +161,7 @@ import { Wallet } from './near-wallet';
 const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
 const NFT_CONTRACT_ADDRESS = "nft.primitives.near";
 const NFT_TOKEN_ID = "1";
-const DROP_AMOUNT = "10000000000000000000000"; // 1 NEAR
+const DROP_AMOUNT = "10000000000000000000000";
 
 const nftConnectedWallet = new Wallet({ createAccessKeyFor: NFT_CONTRACT_ADDRESS }); 
 
@@ -178,7 +195,7 @@ import { Wallet } from './near-wallet';
 
 const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
 const FT_CONTRACT_ADDRESS = "ft.primitives.near";
-const DROP_AMOUNT = "10000000000000000000000"; // 1 NEAR
+const DROP_AMOUNT = "10000000000000000000000";
 
 const wallet = new Wallet({ createAccessKeyFor: KEYPOM_CONTRACT_ADDRESS }); 
 
@@ -246,7 +263,7 @@ import { Wallet } from './near-wallet';
 const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
 const NFT_CONTRACT_ADDRESS = "nft.primitives.near";
 const NFT_TOKEN_ID = "1";
-const DROP_AMOUNT = "10000000000000000000000"; // 1 NEAR
+const DROP_AMOUNT = "10000000000000000000000";
 
 const wallet = new Wallet({ createAccessKeyFor: DAO_CONTRACT_ADDRESS });
 
@@ -274,7 +291,7 @@ await wallet.callMethod({
                 }
             }),
             accountIdField: "receiver_id",
-            // Attached deposit of 1 $NEAR for when the receiver makes this function call
+            // Attached deposit for when the receiver makes this function call
             attachedDeposit: "10000000000000000000000"
           }]
       ]
