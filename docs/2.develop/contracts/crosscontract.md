@@ -20,7 +20,7 @@ There is a delay between the call and the callback in which everyone can still i
 
 ## Snippet: Querying Information
 
-While making your contract, it is likely that you will want to query information from another contract. Below, you can see a basic example in which we query the greeting message from our [Hello NEAR](../quickstart.md) example.
+While making your contract, it is likely that you will want to query information from another contract. Below, you can see a basic example in which we query the greeting message from our [Hello NEAR](quickstart.md) example.
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
@@ -40,7 +40,7 @@ While making your contract, it is likely that you will want to query information
 ---
 
 ## Snippet: Sending Information
-Calling another contract passing information is also a common scenario. Bellow you can see a method that interacts with the [Hello NEAR](../quickstart.md) example to change its greeting message.
+Calling another contract passing information is also a common scenario. Bellow you can see a method that interacts with the [Hello NEAR](quickstart.md) example to change its greeting message.
 
 <CodeTabs>
 <Language value="🌐 JavaScript" language="ts">
