@@ -3,8 +3,8 @@ id: welcome
 title: NEAR - Your gateway to an Open Web
 hide_table_of_contents: true
 ---
-import {FeatureList, Column, Feature} from "@site/components/featurelist"
-import ContactUs from '@site/components/ContactUs.mdx';
+import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
+import ContactUs from '@site/src/components/ContactUs.mdx';
 
 Welcome, this is the starting point for all NEAR documentation. Build and publish open web applications. Embrace the power of Web3.
 

@@ -4,7 +4,7 @@ title: Escrow Contract
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/components/codetabs"
+import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 This example provides a simple implementation of an escrow contract, with a timeout callable function that concludes the transaction if the buyer has not provided approval within a given timeframe. 
 

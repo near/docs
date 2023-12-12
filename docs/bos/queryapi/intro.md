@@ -10,7 +10,7 @@ extract on-chain data, store it in a database, and be able to query it using Gra
 
 ## Indexing complexity
 
-Blockchain Indexers are known to be difficult to create, maintain, and operate.
+Blockchain Indexers are known to be challenging to create, maintain, and operate.
 You have to focus on the business logic of your indexer, while you also have to
 take care of everything else around it.
 A dedicated team member could be needed to deal with all these challenges.
@@ -26,8 +26,8 @@ Common indexing challenges include:
 
 #### Maintenance
 
-- Monitor performance of your database and scale it as needed 
-- Manage permissions and access to database with changing requirements 
+- Monitor the performance of your database and scale it as needed 
+- Manage permissions and database access with changing requirements 
 
 #### Operation
 
@@ -39,13 +39,13 @@ Common indexing challenges include:
 
 ## QueryAPI
 
-As you can see, running indexers is a complex and comprehensive set of processes, and
-Near QueryAPI tries to cover most (or all) of these needs offering an open-source solution for creating, managing, and exploring indexers.
+As you can see, running indexers is a complex and comprehensive set of processes and
+Near QueryAPI tries to cover most (or all) of these needs, offering an open-source solution for creating, managing, and exploring indexers.
 
 ### BOS Component
 
 QueryAPI has a [`QueryApi.App` BOS widget](https://near.org/#/dataplatform.near/widget/QueryApi.App), hosted under the `dataplatform.near` account.
-With this component you can see all the public indexers currently available on the Near blockchain.
+With this component, you can see all the public indexers currently available on the Near blockchain.
 
 If you would like to create a new indexer, simply click [**Create New Indexer**](https://near.org/#/dataplatform.near/widget/QueryApi.App/?view=create-new-indexer).
 
@@ -63,19 +63,24 @@ You're free to review the JavaScript code of the indexer function, or check the 
 
 ## Known limitations
 
-- Currently under closed beta-testing.
+- Currently under closed beta testing.
 - Only supports JavaScript indexers. (we plan to support Rust in the future)
 - It always takes the latest `@near-lake/primitives` library. 
 - It doesn't support schema migrations.
-  - If you have an indexer whose schema needs to change you may need to create a new indexer and do historical backfill on that new indexer again.
-- No way to stop your indexer or restart it truncating all tables.
+  - If you have an indexer whose schema needs to change, you may need to create a new indexer and do a historical backfill on that new indexer again.
+- There's no way to stop or restart your indexer, truncating all tables.
 - Historical backfill works in parallel to the real-time indexing.
   - Historical processing won't happen in order. (it will happen at the same time as top of network)
-  - Keep that in mind just to be sure that you don't have unintended side effects.
-- Pagoda currently doesn't charge for storage of your indexer code and data as well as running the indexer, but we will introduce this soon. 
+  - Keep that in mind to ensure you don't have unintended side effects.
 
 :::tip Join the Beta
 
-If you would like to be part of the closed beta please [fill out this form](http://bit.ly/near-queryapi-beta) for access.
+If you want to join the closed beta, please [fill out this form](http://bit.ly/near-queryapi-beta) for access.
+
+:::
+
+:::info Pricing
+
+Pagoda currently doesn't charge for storing your indexer code and data or running the indexer, but we will introduce this soon. 
 
 :::

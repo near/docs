@@ -27,7 +27,7 @@ import TabItem from '@theme/TabItem';
 <Tabs>
 <TabItem value="request" label="Request" default>
 
-```jsx
+```js
 const notificationFeedSrc = "mob.near/widget/NotificationFeed";
 
 const lastBlockHeight = Storage.get("lastBlockHeight", notificationFeedSrc);
@@ -66,7 +66,7 @@ See a full example in the [NotificationButton source code](https://near.social/#
 <Tabs>
 <TabItem value="request" label="Request" default>
 
-```jsx
+```js
 const accountId = context.accountId;
 
 const notifications = Social.index("notify", accountId, {
@@ -107,7 +107,7 @@ See a full example in the [NotificationFeed source code](https://near.social/#/m
 <Tabs>
 <TabItem value="request" label="Request" default>
 
-```jsx
+```js
 const mySecretData = Storage.privateGet("secretKey");
 ```
 
@@ -141,7 +141,7 @@ Private and public values can share the same key and don't conflict.
 <Tabs>
 <TabItem value="request" label="Request" default>
 
-```jsx
+```js
 Storage.privateSet("secretKey", "my-secret-value");
 ```
 

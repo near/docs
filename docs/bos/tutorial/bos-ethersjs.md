@@ -3,7 +3,7 @@ id: ethers-js
 title: BOS for Ethereum developers
 ---
 
-import {WidgetEditor} from "@site/components/social-widget"
+import {WidgetEditor} from "@site/src/components/social-widget"
 
 The Blockchain Operating System (BOS) is chain-agnostic, enabling you to create decentralized frontends tailored for any Ethereum dApps. Throughout this article, we'll navigate prevalent use-cases with code snippets. You’ll also find links to exemplary BOS components for reference.
 

@@ -51,7 +51,7 @@ The VM exposes the following `<iframe>` events:
 
 The following example demonstrates how you can use an iframe to call
 `eval`:
-```jsx
+```js
 State.init({
   text: `"b" + "a" + +"a" + "a"`,
 });
@@ -169,7 +169,7 @@ You can check [this example](https://near.org/near/widget/ComponentDetailsPage?s
 
 An example of a valid `srcDoc` for a secure Iframe using `iframeResizer`:
 
-```jsx
+```js
 const code = `
 <script>
 // ...your code...

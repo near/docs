@@ -4,35 +4,35 @@ title: Integrator FAQ
 sidebar_label: Integrator FAQ
 ---
 
-## Orientation {#orientation}
+## Orientation
 
-### What is a good project summary for NEAR? {#what-is-a-good-project-summary-for-near}
+### What is a good project summary for NEAR?
 
 NEAR is a sharded, public, proof-of-stake blockchain and smart contract platform. It is built in Rust and contracts compile to WASM. It is conceptually similar to Ethereum 2.0.
 
-### What's special about NEAR? {#whats-special-about-near}
+### What's special about NEAR?
 
 NEAR is the blockchain for builders.
 
 If you understand the basics of web development, you can write, test and deploy scalable decentralized applications in minutes on the most developer-friendly blockchain without having to learn new tools or languages.
 
-### Is NEAR open source? {#is-near-open-source}
+### Is NEAR open source?
 
 Yes. Have a look at our [GitHub organization](https://github.com/near).
 
-### How are cryptographic functions used? {#how-are-cryptographic-functions-used}
+### How are cryptographic functions used?
 
 We support both `secp256k1` and `ed25519` for account keys and `ed25519` for signing transactions. We currently use the `ed25519_dalek` and `sha2` libraries for crypto.
 
-### Do you have any on-chain governance mechanisms? {#do-you-have-any-on-chain-governance-mechanisms}
+### Do you have any on-chain governance mechanisms?
 
 NEAR does not have any on-chain governance at the moment. Any changes to state or state transition function must be done through a hard fork.
 
-### Do you have a bug-bounty program? {#do-you-have-a-bug-bounty-program}
+### Do you have a bug-bounty program?
 
 Our plan is to have a transparent Bug Bounty program with clear guidelines for paying out to those reporting issues. Payments will likely be based on publicly available rankings provided by protocol developers based on issue severity.
 
-### What contracts should we be aware of right now? {#what-contracts-should-we-be-aware-of-right-now}
+### What contracts should we be aware of right now?
 
 We have developed a number of [initial contracts](https://github.com/near/core-contracts) with **ones in bold** being most mature at time of writing
 
@@ -42,17 +42,17 @@ We have developed a number of [initial contracts](https://github.com/near/core-c
 - Staking Pool Factory
 - Multisig contract
 
-### Do you have a cold wallet implementation (ie. Ledger)? {#do-you-have-a-cold-wallet-implementation-ie-ledger}
+### Do you have a cold wallet implementation (ie. Ledger)?
 
 https://github.com/near/near-ledger-app
 
-## Validators {#validators}
+## Validators
 
-### What is the process for becoming a validator? {#what-is-the-process-for-becoming-a-validator}
+### What is the process for becoming a validator?
 
 Validation is permissionless and determined via auction. Parties who want to become a validator submit a special transaction to the chain one day ahead which indicates how many tokens they want to stake. An auction is run which determines the minimum necessary stake to get a validation seat during the next epoch and, if the amount submitted is greater than the minimum threshold, the submitter will validate at least one shard during the next epoch.
 
-### How long does a validator remain a validator? {#how-long-does-a-validator-remain-a-validator}
+### How long does a validator remain a validator?
 
 A validator will stop being a validator for the following reasons:
 
@@ -70,19 +70,19 @@ expressing the commitment of some amount of tokens over the system's staking thr
 as well as validators from the previous epoch.
 The output of this computation is a list of the validators for the very next epoch.
 
-### What is the penalty for misbehaving validators? {#what-is-the-penalty-for-misbehaving-validators}
+### What is the penalty for misbehaving validators?
 
 Validators are not slashed for being offline but they do miss out on the rewards of validating. Validators who miss too many blocks or chunks will be removed from the validation set in the next auction and not get any reward (but, again, without slashing).
 
 Any foul play on the part of the validator that is detected by the system may result in a "slashing event" where the validator is marked as out of integrity and forfeit their stake (according to some formula of progressive severity). The slashed stake is burnt.
 
-### What is the mechanism for delegating stake to validators? {#what-is-the-mechanism-for-for-delegating-stake-to-validators}
+### What is the mechanism for delegating stake to validators?
 
 NEAR supports separate validation keys that can be used in smart contracts to delegate stake. Delegation is done via smart contract which allows for a validator to define a custom way to collect stake, manage it and split rewards. This also allows validators to provide leverage or derivatives on stake. Delegated stake will be slashed like any other stake if the node misbehaves.
 
 If a validator misbehaves the funds of the delegators are also slashed. There is no waiting period for delegators to withdraw their stake.
 
-### Does a validator control funds that have been delegated to them? {#does-a-validator-control-funds-that-have-been-delegated-to-them}
+### Does a validator control funds that have been delegated to them? 
 
 Delegation is custodial (you are transferring funds to a different account, the smart contract that implements staking pool). We provide a reference implementation being security reviewed and tested by 100 validators at time of writing.
 
@@ -90,13 +90,13 @@ We allow validators to write and deploy new contracts but it is up to users to d
 
 Currently no slashing but will be added as we add shards into the system. At some point validators will be able to add an option to shield delegators from slashing (similar to Tezos model).
 
-### How do we get the balance of an account after it has delegated funds? {#how-do-we-get-the-balance-of-an-account-after-it-has-delegated-funds}
+### How do we get the balance of an account after it has delegated funds?
 
 One would need to query the staking pool contract to get balance.
 
-## Nodes {#nodes}
+## Nodes
 
-### Can a node be configured to archive all blockchain data since genesis? {#can-a-node-be-configured-to-archive-all-blockchain-data-since-genesis}
+### Can a node be configured to archive all blockchain data since genesis? 
 
 v
 Yes. Start the node using the following command:
@@ -105,22 +105,22 @@ Yes. Start the node using the following command:
 ./target/release/near run --archive
 ```
 
-### Can a node be configured to expose an RPC (ex: HTTP) interface? {#can-a-node-be-configured-to-expose-an-rpc-ex-http-interface}
+### Can a node be configured to expose an RPC (ex: HTTP) interface? 
 
 Yes. All nodes expose this interface by default which can be configured by setting the value of `listen_addr:port` in the node's `config.json` file.
 
-### Can a node be gracefully terminated and restarted (using archived data on disk to continue syncing)? {#can-a-node-be-gracefully-terminated-and-restarted-using-archived-data-on-disk-to-continue-syncing}
+### Can a node be gracefully terminated and restarted (using archived data on disk to continue syncing)? 
 
 Yes.
 
-### Does a node expose an interface for retrieving health telemetry in a structured format (ex: JSON) over RPC? {#does-a-node-expose-an-interface-for-retrieving-health-telemetry-in-a-structured-format-ex-json-over-rpc}
+### Does a node expose an interface for retrieving health telemetry in a structured format (ex: JSON) over RPC?
 
 Yes. `GET /status` and `GET /health` provide this interface.
 
 - `/status`: block height, syncing status, peer count, etc
 - `/health`: success/failure if node is up running & progressing
 
-### Can a node be started using a Dockerfile without human supervision? {#can-a-node-can-be-started-using-a-dockerfile-without-human-supervision}
+### Can a node be started using a Dockerfile without human supervision? 
 
 Yes.
 
@@ -130,16 +130,16 @@ docker run <port mapping> <mount data folder> <ENV vars> nearprotocol/nearcore:l
 
 See `nearcore/scripts/nodelib.py` for different examples of configuration.
 
-### What is the source of truth for current block height exposed via API? {#what-is-the-source-of-truth-for-current-block-height-exposed-via-api}
+### What is the source of truth for current block height exposed via API? 
 
 - MainNet
-  - https://explorer.mainnet.near.org (also https://explorer.near.org)
+  - https://explorer.mainnet.near.org (also https://nearblocks.io)
   - `https://rpc.mainnet.near.org/status`
 - TestNet
   - https://explorer.testnet.near.org
   - `https://rpc.testnet.near.org/status`
 
-### How old can the referenced block hash be before it's invalid? {#how-old-can-the-referenced-block-hash-be-before-its-invalid}
+### How old can the referenced block hash be before it's invalid?
 
 There is a genesis parameter which can be discovered for any network using:
 
@@ -152,19 +152,19 @@ It's `43200` seconds or `~12` hours. You can view the live configuration for `ep
 
 In the response we find `transaction_validity_period": 86400` (and since it takes about 1 second to produce a block, this period is about 24 hrs)
 
-## Blockchain {#blockchain}
+## Blockchain
 
-### How will the network will be bootstrapped? {#how-will-the-network-will-be-bootstrapped}
+### How will the network will be bootstrapped?
 
 Distribution at genesis will be spread among the NEAR team, our contributors, project partners (ie. contributor, beta applications, infrastructure developers, etc.) and the NEAR foundation (with many portions of that segregated for post-MainNet distribution activity and unavailable to stake so the foundation isn’t able to control the network).
 
 There will be auctions occurring on the platform after launch which will allocate large amounts of tokens over the next 2 years. Additionally we are planning to run TestNet where any validator who participates will receive rewards in real tokens. We are planning to onboard at least 50 separate entities to be validators at launch.
 
-### What is the network upgrade process? {#what-is-the-network-upgrade-process}
+### What is the network upgrade process? 
 
 We are currently upgrading via restarting with a new genesis block.
 
-### Which consensus algorithm does NEAR use? {#which-consensus-algorithm-does-near-use}
+### Which consensus algorithm does NEAR use?
 
 NEAR is a sharded **proof-of-stake** blockchain.
 
@@ -179,7 +179,7 @@ _You can read more in our [Nightshade whitepaper](/docs/Nightshade.pdf)._
 >
 > On top of the heaviest chain consensus we use a finality gadget that uses the attestations to finalize the blocks. To reduce the complexity of the system, we use a finality gadget that doesn’t influence the fork choice rule in any way, and instead only introduces extra slashing conditions, such that once a block is finalized by the finality gadget, a fork is impossible unless a very large percentage of the total stake is slashed.
 
-### How does on-chain transaction finality work? {#how-does-on-chain-transaction-finality-work}
+### How does on-chain transaction finality work?
 
 Finality is deterministic, and requires at least 3 blocks as well as (2/3 +1) signatures of the current validator set.
 
@@ -192,33 +192,33 @@ Our definition of finality is BOTH:
 - Block has quorum pre-commit from the finality gadget. See details of the finality gadget [[here]](/docs/PoST.pdf)
 - At least 120 blocks (2-3 minutes) built on top of the block of interest. This is relevant in case of invalid state transition in some shard and provides enough time for state change challenges. In case all shards are tracked and some mechanics to pause across nodes is employed, this is not needed. We recommend exchanges track all shards.
 
-## Accounts {#accounts}
+## Accounts
 
-### How are addresses generated? {#how-are-addresses-generated}
+### How are addresses generated?
 
 Please check out the spec here on accounts https://nomicon.io/DataStructures/Account.html.
 
-### What is the balance record-keeping model on the NEAR platform? {#what-is-the-balance-record-keeping-model-on-the-near-platform}
+### What is the balance record-keeping model on the NEAR platform?
 
 NEAR uses an `Account`-based model. All users and contracts are associated with at least 1 account. Each account lives on a single shard. Each account can have multiple keys for signing transactions.
 
 _You can read [more about NEAR accounts here](https://nomicon.io/DataStructures/Account.html)_
 
-### How are user accounts represented on-chain? {#how-are-user-accounts-represented-on-chain}
+### How are user accounts represented on-chain?
 
 Users create accounts with human-readable names (eg `alice`) which can contain multiple keypairs with individual permissions. Accounts can be atomically and securely transferred between parties as a native transaction on the network. Permissions are programmable with smart contracts as well. For example, a lock up contract is just an account with permission on the key that does not allow to transfer funds greater than those unlocked.
 
-### Is there a minimum account balance? {#is-there-a-minimum-account-balance}
+### Is there a minimum account balance?
 
 To limit on-chain "dust", accounts (and contracts) are charged a refundable deposit for storing data on the chain. This means that if the balance of the account does not have enough balance to cover an increased deposit for additional storage of data, storing additional data will fail. Also, any user can remove their own account and transfer left over balance to another (beneficiary) account.
 
 There will be a restoration mechanism for accounts removed (or slept) in this way implemented in the future.
 
-### How many keys are used? {#how-many-keys-are-used}
+### How many keys are used?
 
 An account can have arbitrarily many keys, as long as it has enough tokens for their storage.
 
-### Which balance look-ups exists? What is required? {#which-balance-look-ups-exists-what-is-required}
+### Which balance look-ups exists? What is required?
 
 We have an [RPC method for viewing account](/api/rpc/setup#view_account).
 
@@ -226,9 +226,9 @@ The [JS implementation is here](https://github.com/near/near-api-js/blob/d7f0cb8
 
 For custody purposes, it is recommended not to rely on latest state but only what is finalized.
 
-## Fees {#fees}
+## Fees
 
-### What is the fee structure for on-chain transactions? {#what-is-the-fee-structure-for-on-chain-transactions}
+### What is the fee structure for on-chain transactions? 
 
 NEAR uses a gas-based model where prices are generally deterministically adjusted based on congestion of the network.
 
@@ -236,7 +236,7 @@ We avoid making changes that are too large through re-sharding by changing numbe
 
 Accounts don’t have associated resources. Gas amount is predetermined for all transactions except function calls. For function call transactions the user (or more likely the developer) attaches the required amount of gas. If some gas is left over after the function call, it is converted back to NEAR and refunded to the original funding account.
 
-### How do we know how much gas to add to a transaction? {#how-do-we-know-how-much-gas-to-add-to-a-transaction}
+### How do we know how much gas to add to a transaction?
 
 - See reference documentation here: https://nomicon.io/Economics/
 - See API documentation for [discovering gas price via RPC here](/api/rpc/setup#gas-price).
@@ -245,13 +245,13 @@ The issuer of a transaction should attach some amount of gas by taking a guess a
 
 We're also considering adding a max gas price limit.
 
-## Transactions {#transactions}
+## Transactions
 
-### How do we follow Tx status? {#how-do-we-follow-tx-status}
+### How do we follow Tx status?
 
 See related [RPC interface for fetching transaction status here](/api/rpc/setup#transaction-status).
 
-### How are transactions constructed and signed? {#how-are-transactions-constructed-and-signed}
+### How are transactions constructed and signed?
 
 Transactions are a collection of related data that is composed and cryptographically signed by the sender using their private key. The related public key is part of the transaction and used for signature verification. Only signed transactions may be sent to the network for processing.
 
@@ -259,11 +259,11 @@ Transactions can be constructed and signed offline. Nodes are not required for s
 
 See [transactions](/concepts/basics/transactions/overview) in the concepts section of our documentation.
 
-### How is the hash preimage generated? Which fields does the raw transaction consist of? {#how-is-the-hash-preimage-generated-which-fields-does-the-raw-transaction-consist-of}
+### How is the hash preimage generated? Which fields does the raw transaction consist of? 
 
 For a transaction, we sign the hash of the transaction. More specifically, what is signed is the `sha256` of the transaction object serialized in borsh (https://github.com/near/borsh).
 
-### How do transactions work on the NEAR platform? {#how-do-transactions-work-on-the-near-platform}
+### How do transactions work on the NEAR platform?
 
 A `Transaction` is made up of one or more `Action`s. An action can (currently) be one of 8 types: `CreateAccount`,
 `DeployContract`, `FunctionCall`, `Transfer`, `Stake`, `AddKey`, `DeleteKey` and `DeleteAccount`. Transactions are composed by a sender and then signed using the private keys of a valid NEAR account to create a `SignedTransaction`. This signed transaction is considered ready to send to the network for processing.
@@ -278,11 +278,11 @@ Receipts may generate other, new receipts which in turn are propagated around th
 
 For more detail, see specs on [`Transactions`](https://nomicon.io/RuntimeSpec/Transactions), [`Actions`](https://nomicon.io/RuntimeSpec/Actions.html), [`Receipts`](https://nomicon.io/RuntimeSpec/Receipts)
 
-### How does NEAR serialize transactions? {#how-does-near-serialize-transactions}
+### How does NEAR serialize transactions?
 
 We use a simple binary serialization format that's deterministic: https://borsh.io
 
-## Additional Resources {#additional-resources}
+## Additional Resources
 
 - Whitepaper
 
@@ -293,6 +293,5 @@ We use a simple binary serialization format that's deterministic: https://borsh.
   - https://www.github.com/near
 
 :::tip Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-<h8>Ask it on StackOverflow!</h8></a>
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
 :::

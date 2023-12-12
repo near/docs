@@ -4,7 +4,7 @@ title: Hello Component
 sidebar_label: ⭐ Quickstart
 ---
 
-import {WidgetEditor} from "@site/components/social-widget"
+import {WidgetEditor} from "@site/src/components/social-widget"
 
 NEAR enables to create components that can readily talk with the NEAR network as well as multiple EVM compatible chains.
 
@@ -122,15 +122,13 @@ To use your component inside of another one, simply invoke it using a `<Widget>`
 <WidgetEditor>
 
 ```ts
-const user = "gagdiez.near";
-
 return (
   <>
     <h3> Composition </h3>
     <p> Components can be composed </p>
     <hr />
 
-    <Widget src={`${user}/widget/Greeter`} props={{name: "Anna"}} />
+    <Widget src={`gagdiez.near/widget/HelloNear`} />
   </>
 );
 ```

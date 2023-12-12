@@ -53,7 +53,7 @@ mod tests {
 }
 ```
 
-:::info What is that {:?} thing?
+:::info What is that `{:?}` thing?
 Take a look at different formatting traits that are covered in the [`std` Rust docs](https://doc.rust-lang.org/std/fmt/index.html#formatting-traits) regarding this. This is a `Debug` formatting trait and can prove to be useful during development.
 :::
 

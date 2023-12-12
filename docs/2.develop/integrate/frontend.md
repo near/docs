@@ -2,13 +2,11 @@
 id: frontend
 title: Web Frontend
 ---
-import {CodeTabs, Language, Github} from "@site/components/codetabs"
+import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Once your contract is deployed it is highly likely that you will want to interact with it from a web frontend.
-
-For creating a frontend you will leverage two tools:
+To integrate NEAR to your frontend, you will leverage two tools:
 1. `Wallet Selector`: Allows the user to use their NEAR wallet in your dApp.
 2. `NEAR API JS`: A suit of tools to interact with the NEAR RPC.
 
@@ -33,7 +31,8 @@ npm install \
   @near-wallet-selector/my-near-wallet \
   @near-wallet-selector/ledger
 ```
-<details><summary>Using them in plain HTML</summary>
+<details>
+<summary>Using them in plain HTML</summary>
 
 You can add `near-api-js` as a script tag in your html.
 
@@ -61,7 +60,9 @@ When instantiating the wallet you can choose if you want to **create a [Function
 
 If you create the key, then your dApp will be able to **automatically sign non-payable transactions** for the user on the specified contract.
 
-### Setting customs RPC endpoints
+<details markdown="1">
+
+<summary> Setting customs RPC endpoints </summary>
 
 If you want to use a user-defined RPC endpoint with the Wallet Selector, you need to setup a [network options](https://github.com/near/wallet-selector/tree/main/packages/core#options) object with the custom URLs.
 For example:
@@ -87,10 +88,10 @@ const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS, network: my_ne
 </CodeTabs>
 
 :::tip
-
 You can find the entire Wallet Selector [API reference here](https://github.com/near/wallet-selector/blob/main/packages/core/docs/api/selector.md).
-
 :::
+
+</details>
 
 ---
 

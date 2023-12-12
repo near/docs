@@ -4,7 +4,7 @@ title: InfiniteScroll
 sidebar_label: InfiniteScroll
 ---
 
-import {WidgetEditor} from "@site/components/social-widget"
+import {WidgetEditor} from "@site/src/components/social-widget"
 
 Infinitely load a grid or list of items. This component allows you to create a simple, lightweight infinite scrolling page or element by supporting both window and scrollable elements.
 
@@ -19,29 +19,21 @@ Read more about the [react-infinite-scroller](https://www.npmjs.com/package/reac
 ```ts
 const allNumbers = Array.from(Array(100).keys())
 
-State.init({
-  displayNums: [],
-  lastNumber: 0,
-});
+const [displayNums, setDisplayNums] = useState([]);
+const [lastNumber, setLastNumber] = useState(0);
 
 const loadNumbers = (page) => {
-  allNumbers
-    .slice(state.lastNumber, state.lastNumber + 10)
-    .map((n) => numberToElem(n))
-    .forEach((i) => state.displayNums.push(i));
-  state.lastNumber += 10;
-  State.update();
+  setLastNumber(lastNumber + 10);
+  setDisplayNums(allNumbers.slice(0, lastNumber + 10).map(n => <p> {n} </p>));
 };
-
-const numberToElem = (number) => <div> {number} </div>;
 
 return (
   <div>
     <InfiniteScroll
       loadMore={loadNumbers}
-      hasMore={state.displayNums.length < allNumbers.length}
+      hasMore={lastNumber < allNumbers.length}
     >
-      <p>{state.displayNums}</p>
+      <p>{displayNums}</p>
     </InfiniteScroll>
   </div>
 );

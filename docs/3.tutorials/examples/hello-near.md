@@ -4,7 +4,7 @@ title: Hello NEAR
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/components/codetabs"
+import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 **Hello NEAR!** is a friendly decentralized App that stores a greeting message. It is one of the simplest
 smart contracts you can create in NEAR, and the perfect gateway to introduce yourself in the world of smart

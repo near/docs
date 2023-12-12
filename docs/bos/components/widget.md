@@ -2,7 +2,7 @@
 id: widgets
 title: Widget
 ---
-import {WidgetEditor} from "@site/components/social-widget"
+import {WidgetEditor} from "@site/src/components/social-widget"
 
 The predefined component `Widget` allows you to include an existing component into your code, thus enabling to create complex applications by composing components.
 
@@ -14,7 +14,7 @@ const props = { name: "Anna" };
 
 return (
   <>
-    <div class="container min-vw-100">
+    <div class="container ">
 
       <h3> Composing Widgets </h3>
       <p> Widgets can be composed </p>
@@ -27,3 +27,4 @@ return (
 ```
 
 </WidgetEditor>
+

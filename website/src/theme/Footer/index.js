@@ -10,7 +10,7 @@ import Link from '@docusaurus/Link';
 import { useThemeConfig } from '@docusaurus/theme-common';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import isInternalUrl from '@docusaurus/isInternalUrl';
-import styles from './styles.module.css';
+import './footer.scss';
 import ThemedImage from '@theme/ThemedImage';
 //import IconExternalLink from '@theme/IconExternalLink';
 
@@ -59,8 +59,9 @@ function Footer() {
   }
 
   return (
-    <footer className="relative pt-100 pb-40 md:pb-100 bg-black text-white mt-150">
-      <div className="container">
+    <footer className="footer">
+      <div>
+      <div className="container relative text-white pb-40 md:pb-100 pt-100">
         <div className="row">
           <div className="col md:w-1/4">
             <ul className="list-reset text-24 font-black text-yellow mt-50">
@@ -74,7 +75,7 @@ function Footer() {
               </li>
               <li>
                 <a
-                  href="https://explorer.near.org/"
+                  href="https://nearblocks.io/"
                   className="hover:text-white"
                 >
                   Explorer
@@ -263,7 +264,7 @@ function Footer() {
           <span className="mx-10">|</span>
           Some icons created by <a href="https://www.flaticon.com/free-icons/coin" title="coin icons">Good Ware, Flaticon, and Freepick</a>
         </p>
-      </div>
+      </div></div>
     </footer>
   );
 }

@@ -4,7 +4,7 @@ sidebar_label: BlockVote JS
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/components/codetabs"
+import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 
 # BlockVote JS Edition

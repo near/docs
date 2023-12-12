@@ -636,7 +636,7 @@ near delete sub-acct2.example-acct.testnet example-acct.testnet
 
 **Example Response:**
 
-    Deleting account. Account id: sub-acct2.example-acct.testnet, node: https://rpc.testnet.near.org, helper: https://helper.testnet.near.org, beneficiary: example-acct.testnet
+    Deleting account. Account id: sub-acct2.example-acct.testnet, node: https://rpc.testnet.near.org,  beneficiary: example-acct.testnet
     Transaction Id 4x8xohER1E3yxeYdXPfG8GvXin1ShiaroqE5GdCd5YxX
     To see the transaction in the transaction explorer, please open this url in your browser
     https://explorer.testnet.near.org/transactions/4x8xohER1E3yxeYdXPfG8GvXin1ShiaroqE5GdCd5YxX
@@ -677,7 +677,7 @@ near deploy --accountId example-contract.testnet --wasmFile out/example.wasm --i
 <summary>**Example Response:**</summary>
 <p>
 
-    Starting deployment. Account id: example-contract.testnet, node: https://rpc.testnet.near.org, helper: https://helper.testnet.near.org, file: main.wasm
+    Starting deployment. Account id: example-contract.testnet, node: https://rpc.testnet.near.org,  file: main.wasm
     Transaction Id G8GhhPuujMHTRnwursPXE1Lv5iUZ8WUecwiST1PcKWMt
     To see the transaction in the transaction explorer, please open this url in your browser
     https://explorer.testnet.near.org/transactions/G8GhhPuujMHTRnwursPXE1Lv5iUZ8WUecwiST1PcKWMt
@@ -701,7 +701,7 @@ near dev-deploy out/main.wasm
 
 **Example Response:**
 
-    Starting deployment. Account id: dev-1603749005325-6432576, node: https://rpc.testnet.near.org, helper: https://helper.testnet.near.org, file: out/main.wasm
+    Starting deployment. Account id: dev-1603749005325-6432576, node: https://rpc.testnet.near.org,  file: out/main.wasm
     Transaction Id 5nixQT87KeN3eZFX7zwBLUAKSY4nyjhwzLF27SWWKkAp
     To see the transaction in the transaction explorer, please open this url in your browser
     https://explorer.testnet.near.org/transactions/5nixQT87KeN3eZFX7zwBLUAKSY4nyjhwzLF27SWWKkAp
@@ -734,12 +734,13 @@ near call guest-book.testnet addMessage '{"text": "Aloha"}' --accountId example-
 
 **Example Response:**
 
-    Scheduling a call: guest-book.testnet.addMessage({"text": "Aloha"})
-    Transaction Id FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK
-    To see the transaction in the transaction explorer, please open this url in your browser
-    https://explorer.testnet.near.org/transactions/FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK
-    ''
-
+```bash
+Scheduling a call: guest-book.testnet.addMessage({"text": "Aloha"})
+Transaction Id FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK
+To see the transaction in the transaction explorer, please open this url in your browser
+https://explorer.testnet.near.org/transactions/FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK
+''
+```
 ---
 
 ### `near view` {#near-view}
@@ -757,6 +758,7 @@ near view guest-book.testnet getMessages '{}'
 
 **Example Response:**
 
+```bash
     View call: guest-book.testnet.getMessages({})
     [
       { premium: false, sender: 'waverlymaven.testnet', text: 'TGIF' },
@@ -775,6 +777,7 @@ near view guest-book.testnet getMessages '{}'
       { premium: false, sender: 'example-acct.testnet', text: 'Aloha' },
       [length]: 10
     ]
+```
 
 ## `near view-state` {#near-view-state}
 

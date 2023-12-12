@@ -4,8 +4,8 @@ title: NEAR Smart Contracts
 sidebar_label: Home
 hide_table_of_contents: true
 ---
-import {FeatureList, Column, Feature} from "@site/components/featurelist"
-import ContactUs from '@site/components/ContactUs.mdx';
+import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
+import ContactUs from '@site/src/components/ContactUs.mdx';
 
 
 Welcome! Here you will find documentation on how to develop a smart contract on NEAR.

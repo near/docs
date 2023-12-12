@@ -5,7 +5,7 @@ sidebar_label: ⭐ WebApp with Components
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/components/codetabs"
+import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 Most interactions with the NEAR ecosystem can be grouped in 2 categories: 
 1. Interacting with a [NEAR smart contract](/develop/contracts/quickstart).

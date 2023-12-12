@@ -223,17 +223,17 @@ Returns the array of matched indexed values. Ordered by `blockHeight`.
 <Tabs>
 <TabItem value="request" label="Request" default>
 
-```jsx
+```js
 return Social.index("test", "test-key-2");
 ```
 
-```jsx
+```js
 return Social.index("test", "test-key-2", {
   accountId: "mob.near"
 });
 ```
 
-```jsx
+```js
 return Social.index("test", "test-key-2", {
   accountId: ["mob.near", "root.near"]
 });
@@ -344,7 +344,7 @@ Note, both use `force`
 <Tabs>
 <TabItem value="request" label="Request" default>
 
-```jsx
+```js
 State.init({ commitLoading: false });
 
 const data = { experimental: { test: "test" } };

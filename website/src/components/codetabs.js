@@ -1,7 +1,6 @@
 import React from "react";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
-import CodeBlock from "@theme/CodeBlock";
 import ReferenceCode from "@theme/ReferenceCodeBlock";
 
 export function CodeTabs({ children }) {
@@ -27,9 +26,7 @@ export function Language({ children, language }) {
     children = [children];
   }
 
-  children = children.map((component) =>
-    change_language_to(component, language)
-  );
+  children = children.map( component => change_language_to(component, language));
 
   if (children.length == 1) {
     return (
@@ -68,16 +65,8 @@ export function Github({ url, start, end, language, fname }) {
 function change_language_to(component, language) {
   const { children, url, start, end, fname } = component.props;
 
-  if (component.props.mdxType == "Github") {
+  if (component.type === Github) {
     return Github({ url, start, end, language, fname });
-  }
-
-  if (component.props.mdxType == "CodeBlock") {
-    return (
-      <CodeBlock fname={fname} language={language}>
-        {children}
-      </CodeBlock>
-    );
   }
 
   return component;
