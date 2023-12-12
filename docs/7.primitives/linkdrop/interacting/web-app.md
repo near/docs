@@ -117,15 +117,15 @@ await wallet.callMethod({
 ### Getting drop id
 
 ```js
-const dropSupplyForOwner = Near.view({
-  contractId: KEYPOM_CONTRACT_ADDRESS,
-  methodName: "get_drop_supply_for_owner",
+const dropSupplyForOwner = await wallet.viewMethod({
+  contractId: KEYPOM_CONTRACT_ADDRESS
+  method: 'get_drop_supply_for_owner',
   args: { account_id: accountId },
 });
 
-const dropsForOwner = Near.view({
-  contractId: KEYPOM_CONTRACT_ADDRESS, 
-  methodName: 'get_drops_for_owner', 
+const dropsForOwner = await wallet.viewMethod({
+  contractId: KEYPOM_CONTRACT_ADDRESS
+  method: 'get_drops_for_owner',
   args: { account_id: accountId, from_index: (dropSupplyForOwner - 1).toString() }
 });
 
@@ -228,6 +228,10 @@ await wallet.callMethod({
 });
 ```
 
+:::note
+Keypom contract have to be registered at FT contract. How to register accounts at FT contracts you can find [here](../../ft/interacting/web-app.md#register-user).
+:::
+
 ---
 
 ## Function Call Drop
@@ -289,7 +293,8 @@ await wallet.callMethod({
 const getLinks = () => {
   const links = [];
 
-  state.privKeys.map((e, i) => {
+  // It assumes that there is a array named privKeys which already contains private keys
+  privKeys.map((e, i) => {
     const link =
       "https://app.mynearwallet.com" + "/linkdrop/v2.keypom.near/" + e;
     links.push(link);

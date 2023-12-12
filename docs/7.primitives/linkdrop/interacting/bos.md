@@ -209,6 +209,10 @@ Near.call([
 ]);
 ```
 
+:::note
+Keypom contract have to be registered at FT contract. How to register accounts at FT contracts you can find [here](../../ft/interacting/bos.md#register-user).
+:::
+
 ---
 
 ## Function Call Drop

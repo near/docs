@@ -30,7 +30,7 @@ curl https://keypom.sctuts.com/keypair/$NUMBER_OF_DROPS/rootEntrophy
 This snippet will enable you to create a simple $NEAR drop. A simple drop allows you to onboard both existing and new users.
 
 ```bash
-near call v2.keypom.near create_drop '{"public_keys": [<PUBLIC KEYS>], "deposit_per_use": "10000000000000000000000"}' --deposit 23000000000000000000000 --gas 100000000000000 --accountId bob.near
+near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_per_use": "10000000000000000000000"}' --deposit 23000000000000000000000 --gas 100000000000000 --accountId bob.near
 ```
 ---
 
@@ -47,7 +47,7 @@ Then you need to create a drop. You can do it exactly the same way as for a simp
 ### Creating a drop
 
 ```bash
-near call v2.keypom.near create_drop '{"public_keys": [PUBLIC_KEYS], "deposit_per_use": "10000000000000000000000", "nft": {"sender_id": "bob.near", "contract_id": "nft.primitives.near"}}' --deposit 23000000000000000000000 --gas 100000000000000 --accountId bob.near
+near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_per_use": "10000000000000000000000", "nft": {"sender_id": "bob.near", "contract_id": "nft.primitives.near"}}' --deposit 23000000000000000000000 --gas 100000000000000 --accountId bob.near
 ```
 
 <hr class="subsection" />
@@ -82,7 +82,7 @@ The process is very similar to creating [NFT drop](#nft-drop). You just need to 
 ### Creating a drop
 
 ```bash
-near call v2.keypom.near create_drop '{"public_keys": [PUBLIC_KEYS], "deposit_per_use": "10000000000000000000000", "ftData": {"contractId": "ft.primitives.near","senderId": "bob.near", "amount": "1"}}}' --deposit 23000000000000000000000 --gas 100000000000000 --accountId bob.near
+near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_per_use": "10000000000000000000000", "ftData": {"contractId": "ft.primitives.near","senderId": "bob.near", "amount": "1"}}}' --deposit 23000000000000000000000 --gas 100000000000000 --accountId bob.near
 ```
 
 <hr class="subsection" />
@@ -95,6 +95,10 @@ Then you should to transfer your FTs to KeyPom contract.
 near call ft.primitives.near ft_transfer '{"receiver_id": "v2.keypom.near", "amount": "1"}' --deposit 1 --gas 100000000000000 --accountId bob.near
 ```
 
+:::note
+Keypom contract have to be registered at FT contract. How to register accounts at FT contracts you can find [here](../../ft/interacting/near-cli.md#register-user).
+:::
+
 ---
 
 ## Function Call Drop
@@ -104,5 +108,5 @@ This snippet will enable you to create a Function Call Drop.
 The process is very similar to creating [NFT drop](#nft-drop). You just need to pass another set of arguments during creating drop.
 
 ```bash
-near call v2.keypom.near create_drop '{"public_keys": [PUBLIC_KEYS], "deposit_per_use": "10000000000000000000000", "fcData": {"methods": [[{"receiverId": "nft.primitives.near","methodName": "nft_mint","args": {"token_id": "1", "metadata": {"title": "My NFT drop","description": "","media": ""}, "accountIdField": "receiver_id", "attachedDeposit": "10000000000000000000000"}]]}}' --deposit 23000000000000000000000 --gas 100000000000000 --accountId bob.near
+near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_per_use": "10000000000000000000000", "fcData": {"methods": [[{"receiverId": "nft.primitives.near","methodName": "nft_mint","args": {"token_id": "1", "metadata": {"title": "My NFT drop","description": "","media": ""}, "accountIdField": "receiver_id", "attachedDeposit": "10000000000000000000000"}]]}}' --deposit 23000000000000000000000 --gas 100000000000000 --accountId bob.near
 ```
