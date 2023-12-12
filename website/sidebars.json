@@ -197,7 +197,6 @@
     },
     {
       "Examples": [
-        "tutorials/examples/hello-near",
         "tutorials/examples/guest-book",
         "tutorials/examples/xcc",
         "tutorials/examples/coin-flip",
