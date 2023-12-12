@@ -10,7 +10,7 @@ import Link from '@docusaurus/Link';
 import { useThemeConfig } from '@docusaurus/theme-common';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import isInternalUrl from '@docusaurus/isInternalUrl';
-import styles from './styles.module.css';
+import './footer.scss';
 import ThemedImage from '@theme/ThemedImage';
 //import IconExternalLink from '@theme/IconExternalLink';
 
@@ -59,24 +59,11 @@ function Footer() {
   }
 
   return (
-    <footer className="relative pt-100 pb-40 md:pb-100 bg-black text-white mt-150">
-      <div className="absolute pin-t pin-r" style={{ maxWidth: "50vw" }}>
-        <img
-          src="https://near.org/wp-content/themes/near-19/assets/img/neue/distortion-footer.svg?t=1600963469"
-          className="locked"
-          style={{ transform: "translateY(-60%)" }}
-          alt=""
-        ></img>
-      </div>
-      <div className="container">
+    <footer className="footer">
+      <div>
+      <div className="container relative text-white pb-40 md:pb-100 pt-100">
         <div className="row">
           <div className="col md:w-1/4">
-            <img
-              src="https://near.org/wp-content/themes/near-19/assets/img/neue/logomark-white.svg?t=1600963474"
-              className="locked"
-              width="91"
-              alt=""
-            ></img>
             <ul className="list-reset text-24 font-black text-yellow mt-50">
               <li>
                 <a
@@ -88,14 +75,14 @@ function Footer() {
               </li>
               <li>
                 <a
-                  href="https://explorer.near.org/"
+                  href="https://nearblocks.io/"
                   className="hover:text-white"
                 >
                   Explorer
                 </a>
               </li>
               <li>
-                <a href="https://near.dev/" className="hover:text-white">
+                <a href="https://github.com/near-examples/" className="hover:text-white">
                   Examples
                 </a>
               </li>
@@ -199,23 +186,6 @@ function Footer() {
               </li>
               <li className="mx-20">
                 <a
-                  href="https://near.org/wechat"
-                  className="block hover:text-wechat"
-                  target="_blank"
-                >
-                  <span className="icon icon-36 ">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 576 512"
-                    >
-                      <path d="M385.2 167.6c6.4 0 12.6.3 18.8 1.1C387.4 90.3 303.3 32 207.7 32 100.5 32 13 104.8 13 197.4c0 53.4 29.3 97.5 77.9 131.6l-19.3 58.6 68-34.1c24.4 4.8 43.8 9.7 68.2 9.7 6.2 0 12.1-.3 18.3-.8-4-12.9-6.2-26.6-6.2-40.8-.1-84.9 72.9-154 165.3-154zm-104.5-52.9c14.5 0 24.2 9.7 24.2 24.4 0 14.5-9.7 24.2-24.2 24.2-14.8 0-29.3-9.7-29.3-24.2.1-14.7 14.6-24.4 29.3-24.4zm-136.4 48.6c-14.5 0-29.3-9.7-29.3-24.2 0-14.8 14.8-24.4 29.3-24.4 14.8 0 24.4 9.7 24.4 24.4 0 14.6-9.6 24.2-24.4 24.2zM563 319.4c0-77.9-77.9-141.3-165.4-141.3-92.7 0-165.4 63.4-165.4 141.3S305 460.7 397.6 460.7c19.3 0 38.9-5.1 58.6-9.9l53.4 29.3-14.8-48.6C534 402.1 563 363.2 563 319.4zm-219.1-24.5c-9.7 0-19.3-9.7-19.3-19.6 0-9.7 9.7-19.3 19.3-19.3 14.8 0 24.4 9.7 24.4 19.3 0 10-9.7 19.6-24.4 19.6zm107.1 0c-9.7 0-19.3-9.7-19.3-19.6 0-9.7 9.7-19.3 19.3-19.3 14.5 0 24.4 9.7 24.4 19.3.1 10-9.9 19.6-24.4 19.6z"></path>
-                    </svg>
-                  </span>
-                  <span className="screen-reader-text">WeChat</span>
-                </a>
-              </li>
-              <li className="mx-20">
-                <a
                   href="https://www.youtube.com/channel/UCuKdIYVN8iE3fv8alyk1aMw"
                   className="block hover:text-youtube"
                   target="_blank"
@@ -235,74 +205,28 @@ function Footer() {
             <div className="row">
               <div className="col sm:w-1/3 mt-50">
                 <h2 className="text-24 font-black text-blue-light">
-                  Developers
+                  Resources
                 </h2>
                 <ul
                   id="menu-developers-1"
                   className="footer-menu list-reset mt-5 text-16 md:text-18"
                 >
-                  <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-550">
-                    <a href="https://near.org/developers/">Overview</a>
-                  </li>
-                  <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2801">
-                    <a href="https://near.org/technology/">Technology</a>
-                  </li>
-                  <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-116">
-                    <a
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      href="https://github.com/near"
-                      id="github"
-                    >
-                      GitHub
-                    </a>
-                  </li>
-                  <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-4720">
-                    <a href="https://near.org/bounties/">Bounties</a>
-                  </li>
-                  <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-580">
-                    <a href="https://near.org/grants/">
-                      Grants
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div className="col sm:w-1/3 mt-50">
-                <h2 className="text-24 font-black text-blue-light">
-                  Community
-                </h2>
-                <ul
-                  id="menu-community-1"
-                  className="footer-menu list-reset mt-5 text-16 md:text-18"
-                >
-                  <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-6804">
-                    <a href="https://gov.near.org/">Forum</a>
-                  </li>
-                  <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-4650">
-                    <a href="https://near.events">Events</a>
-                  </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://near.org/community">
+                    <a href="https://near.org/devhub.near/widget/app">
                       Contributor Program
                     </a>
-                  </li>
-                  <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-4157">
-                    <a href="https://near.org/guilds/">Guild Program</a>
                   </li>
                   <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-2945">
                     <a
                       target="_blank"
                       rel="noopener noreferrer"
-                      href="https://openwebcollective.com"
+                      href="https://near.org/nearhorizon.near/widget/Index"
                     >
                       Startup Accelerator
                     </a>
                   </li>
-                  <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-4719">
-                    <a href="https://near.org/bounties/">Bounties</a>
-                  </li>
-                  <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-7161">
-                    <a href="https://near.org/tokens/">Tokens</a>
+                  <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-6804">
+                    <a href="https://gov.near.org/">Forum</a>
                   </li>
                 </ul>
               </div>
@@ -316,18 +240,7 @@ function Footer() {
                     <a href="https://near.org/about/">About Us</a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-124">
-                    <a href="https://near.org/careers/">Careers</a>
-                  </li>
-                  <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-400">
-                    <a href="https://near.org/backers/">Backers</a>
-                  </li>
-                  <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-3490">
-                    <a href="https://near.org/downloads/NEAR_PressKit.zip">
-                      Press Kit
-                    </a>
-                  </li>
-                  <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2419">
-                    <a href="https://near.org/brand/">Brand Guidelines</a>
+                    <a href="https://careers.near.org/jobs/">Careers</a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-3267">
                     <a href="https://near.org/privacy/">Privacy Policy</a>
@@ -351,7 +264,7 @@ function Footer() {
           <span className="mx-10">|</span>
           Some icons created by <a href="https://www.flaticon.com/free-icons/coin" title="coin icons">Good Ware, Flaticon, and Freepick</a>
         </p>
-      </div>
+      </div></div>
     </footer>
   );
 }

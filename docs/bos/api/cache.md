@@ -40,7 +40,7 @@ The data is being cached and compared as JSON serialized objects.
 <Tabs>
 <TabItem value="request" label="Request" default>
 
-```jsx
+```js
 const status = useCache(
   () =>
     asyncFetch("https://rpc.mainnet.near.org/status").then((res) => res.body),

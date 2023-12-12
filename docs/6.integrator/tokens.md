@@ -746,7 +746,7 @@ http post https://archival-rpc.mainnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_
 
 You can get the same info later by the transaction hash from the previous call:
 
-  - using NEAR Explorer: https://explorer.near.org
+  - using NEAR Explorer: https://nearblocks.io
 
 <!--
 - using NEAR CLI:
@@ -1680,6 +1680,5 @@ Let's examine this response.
   * check `result` » `receipts_outcome` » `0` » `outcome` » `status` and find `Failure` status there
 
 :::tip Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-<h8>Ask it on StackOverflow!</h8></a>
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
 :::

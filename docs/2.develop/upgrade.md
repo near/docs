@@ -3,8 +3,7 @@ id: upgrade
 title: Updating Contracts
 ---
 
-import {CodeBlock} from '@theme/CodeBlock'
-import {CodeTabs, Language, Github} from "@site/components/codetabs"
+import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

@@ -4,7 +4,7 @@ title: Modules, Types & Structs
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/components/codetabs"
+import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 
 When writing smart contracts you will leverage common programming concepts such:
@@ -117,9 +117,12 @@ You can define and instantiate complex objects through classes and structures.
       return type of the contract's methods. 
 
   :::tip
+
   If you are curious on why the (de)serialization is needed read our [serialization documentation](./serialization.md)
+
   :::
 
 
   </TabItem>
+
 </Tabs>

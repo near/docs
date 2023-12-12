@@ -22,12 +22,12 @@ To complete this tutorial successfully, you'll need:
 
 ## Wallet {#wallet}
 
-To store your non-fungible tokens you'll need a [NEAR Wallet](https://wallet.testnet.near.org/).
-If you don't have one yet, you can create one easily by following [these instructions](https://wallet.testnet.near.org/create).
+To store your non-fungible tokens you'll need a [NEAR Wallet](https://testnet.mynearwallet.com//).
+If you don't have one yet, you can create one easily by following [these instructions](https://testnet.mynearwallet.com/create).
 
 > **Tip:** for this tutorial we'll use a `testnet` wallet account. The `testnet` network is free and there's no need to deposit funds.
 
-Once you have your Wallet account, you can click on the [Collectibles](https://wallet.testnet.near.org/?tab=collectibles) tab where all your NFTs will be listed:
+Once you have your Wallet account, you can click on the [Collectibles](https://testnet.mynearwallet.com//?tab=collectibles) tab where all your NFTs will be listed:
 
 ![Wallet](/docs/assets/nfts/nft-wallet.png)
 
@@ -169,7 +169,7 @@ and start using it [mint your NFTs](#minting-your-nfts).
 
 This smart contract will be deployed to your NEAR account. Because NEAR allows the ability to upgrade contracts on the same account, initialization functions must be cleared.
 
-> **Note:** If you'd like to run this example on a NEAR account that has had prior contracts deployed, please use the `near-cli` command `near delete` and then recreate it in Wallet. To create (or recreate) an account, please follow the directions in [Test Wallet](https://wallet.testnet.near.org) or ([NEAR Wallet](https://wallet.near.org/) if we're using `mainnet`).
+> **Note:** If you'd like to run this example on a NEAR account that has had prior contracts deployed, please use the `near-cli` command `near delete` and then recreate it in Wallet. To create (or recreate) an account, please follow the directions in [Test Wallet](https://testnet.mynearwallet.com/) or ([NEAR Wallet](https://wallet.near.org/) if we're using `mainnet`).
 
 Log in to your newly created account with `near-cli` by running the following command in your terminal.
 
@@ -201,7 +201,7 @@ near deploy --wasmFile res/non_fungible_token.wasm --accountId $ID
 <p>
 
 ```bash
-Starting deployment. Account id: ex-1.testnet, node: https://rpc.testnet.near.org, helper: https://helper.testnet.near.org, file: res/non_fungible_token.wasm
+Starting deployment. Account id: ex-1.testnet, node: https://rpc.testnet.near.org, file: res/non_fungible_token.wasm
 Transaction Id E1AoeTjvuNbDDdNS9SqKfoWiZT95keFrRUmsB65fVZ52
 To see the transaction in the transaction explorer, please open this url in your browser
 https://explorer.testnet.near.org/transactions/E1AoeTjvuNbDDdNS9SqKfoWiZT95keFrRUmsB65fVZ52
@@ -326,7 +326,7 @@ near view $ID nft_tokens_for_owner '{"account_id": "'$ID'"}'
 
 > <br/>
 >
-> **Tip:** after you mint your first non-fungible token, you can [view it in your Wallet](https://wallet.testnet.near.org/?tab=collectibles):
+> **Tip:** after you mint your first non-fungible token, you can [view it in your Wallet](https://testnet.mynearwallet.com//?tab=collectibles):
 >
 > ![Wallet with token](/docs/assets/nfts/nft-wallet-token.png)
 >

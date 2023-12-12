@@ -6,7 +6,7 @@ sidebar_label: NFTs Indexer
 
 :::info
 
-NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers. 
+NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers.
 
 You can request access through [this link](http://bit.ly/near-queryapi-beta).
 
@@ -15,6 +15,7 @@ You can request access through [this link](http://bit.ly/near-queryapi-beta).
 ## Overview
 
 This tutorial creates a working NFT indexer using [NEAR QueryAPI](../../queryapi/intro.md), and builds a [B.O.S. component](../../components.md) that presents the data. The indexer is watching for `nft_mint` [Events](https://nomicon.io/Standards/EventsFormat) and captures some relevant data:
+
 - `receiptId` of the [Receipt](https://near-indexers.io/docs/data-flow-and-structures/structures/receipt) where the mint has happened
 - `receiverId`
 - Marketplace
@@ -24,7 +25,7 @@ In this tutorial you'll learn how you can listen to [Events](https://nomicon.io/
 
 :::tip
 
-The indexer's source code can be found by [following this link](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=bucanero.near/nft_v4&view=editor-window).
+The indexer's source code can be found by [following this link](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=bucanero.near/nft_v4).
 
 :::
 
@@ -62,7 +63,6 @@ This schema defines one table: `nfts`. The table has these columns:
 - `receiver_id`: the receiver ID of the transaction that created the NFT
 - `nft_data`: the content of the minted NFT
 
-
 ## Defining the indexing logic
 
 The next step is to define the indexing logic. This is done by editing the `indexingLogic.js` file in the code editor. The logic for this indexer can be divided into two parts:
@@ -77,62 +77,45 @@ The first part of the logic is to filter blockchain transactions for a specific 
 The `getBlock` function for this NFT indexer looks like this:
 
 ```js
-import { Block } from "@near-lake/primitives";
-
 async function getBlock(block: Block) {
+  for (let ev of block.events()) {
+    const r = block.actionByReceiptId(ev.relatedReceiptId);
+    const createdOn = block.streamerMessage.block.header.timestamp;
 
-  const h = block.header().height;
-  const createdOn = block.streamerMessage.block.header.timestamp;
+    try {
+      let event = ev.rawEvent;
 
-  for (let r of block.receipts()) {
-    // check if we have events  
-    if (!r.events.length) continue;
+      if (event.standard === "nep171" && event.event === "nft_mint") {
+        console.log(event);
 
-    for (let log of r.logs) {
-      // check if logs follow the Events format  
-      if (!log.match(/^EVENT_JSON:(.*)$/)) continue;
+        let marketplace = "unknown";
+        if (r.receiverId.endsWith(".paras.near")) marketplace = "Paras";
+        else if (r.receiverId.endsWith(".sharddog.near"))
+          marketplace = "ShardDog";
+        else if (r.receiverId.match(/\.mintbase\d+\.near$/))
+          marketplace = "Mintbase";
 
-      try {
-        // parse the JSON Event  
-        let event = JSON.parse(log.substring(log.indexOf(":") + 1));
+        const nftMintData = {
+          marketplace: marketplace,
+          block_height: block.header().height,
+          block_timestamp: createdOn,
+          receipt_id: r.receiptId,
+          receiver_id: r.receiverId,
+          nft_data: JSON.stringify(event.data),
+        };
 
-        // check if it's a NEP-171 NFT minting
-        if (event.standard === "nep171" && event.event === "nft_mint") {
-          console.log(r.receiverId);
-          console.log(event);
+        await context.db.Nfts.insert(nftMintData);
 
-          // identify the NFT marketplace
-          let marketplace = "unknown";
-          if (r.receiverId.endsWith(".paras.near"))
-            marketplace = "Paras";
-          else if (r.receiverId.endsWith(".sharddog.near"))
-            marketplace = "ShardDog";
-          else if (r.receiverId.match(/\.mintbase\d+\.near$/))
-            marketplace = "Mintbase";
-
-          const nftMintData = {
-            marketplace: marketplace,
-            block_height: h,
-            block_timestamp: createdOn,
-            receipt_id: r.receiptId,
-            receiver_id: r.receiverId,
-            nft_data: JSON.stringify(event.data),
-          };
-
-          // store result to the database
-          await context.db.Nfts.insert(nftMintData);
-
-          console.log(`NFT by ${r.receiptId} has been added to the database`);
-        }
-      } catch (e) {
-        console.log(e);
+        console.log(`NFT by ${r.receiptId} has been added to the database`);
       }
+    } catch (e) {
+      console.log(e);
     }
   }
 }
 ```
 
-This filter selects receipts that have events of type `nft_mint` and standard `nep171`. In addition, it parses the JSON event data and identifies the NFT marketplace.
+This indexer filters [Blocks](https://near.github.io/near-lake-framework-js/classes/_near_lake_primitives.block.Block.html) that have [Events](https://near.github.io/near-lake-framework-js/classes/_near_lake_primitives.events.Event.html) of type `nft_mint` and standard `nep171`. In addition, it stores the JSON event data and identifies the NFT marketplace.
 
 ### Saving the data to the Database
 
@@ -142,19 +125,18 @@ This is solved easily by using the [`context.db.Nfts.insert`](../../queryapi/con
 The logic for this looks like:
 
 ```js
-          const nftMintData = {
-            marketplace: marketplace,
-            block_height: h,
-            block_timestamp: createdOn,
-            receipt_id: r.receiptId,
-            receiver_id: r.receiverId,
-            nft_data: JSON.stringify(event.data),
-          };
+const nftMintData = {
+  marketplace: marketplace,
+  block_height: h,
+  block_timestamp: createdOn,
+  receipt_id: r.receiptId,
+  receiver_id: r.receiverId,
+  nft_data: JSON.stringify(event.data),
+};
 
-          // store result to the database
-          await context.db.Nfts.insert(nftMintData);
+// store result to the database
+await context.db.Nfts.insert(nftMintData);
 ```
-
 
 ## BOS Component
 
@@ -285,7 +267,6 @@ Pay attention to the `widgetActivitySubscription` GraphQL query and the `subscri
 
 This is the JS function that process the incoming widget activities generated by the QueryAPI indexer, allowing the BOS component to create a feed based on the blockchain's widget activity:
 
-
 :::tip
 
 You can fork the [NFT Activity Feed source code](https://near.org/near/widget/ComponentDetailsPage?src=bucanero.near/widget/query-api-nft-feed) and build your own BOS component.
@@ -357,7 +338,7 @@ return (
           </CardBody>
           <CardFooter>
             <TextLink
-              href={`https://legacy.explorer.near.org/?query=${activity.receipt_id}`}
+              href={`https://legacy.nearblocks.io/?query=${activity.receipt_id}`}
             >
               View details on NEAR Explorer
             </TextLink>

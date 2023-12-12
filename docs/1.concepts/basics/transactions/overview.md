@@ -12,7 +12,7 @@ A transaction is the smallest unit of work that can be assigned to the network. 
 There is also a concept of `Receipt`, which is either "request to apply an `Action`" or "result of the `Action`". All cross-contract communication is done through receipts. An action may result in one or more receipts. The Blockchain may be seen as a series of Transactions, but it's also a series of Receipts. 
 
 :::tip
-You can use <a href="https://explorer.near.org/">NEAR Blockchain Explorer</a> to inspect and see all actions and receipts related to a transaction.
+You can use <a href="https://nearblocks.io/">NEAR Blockchain Explorer</a> to inspect and see all actions and receipts related to a transaction.
 :::
 
 
@@ -177,6 +177,5 @@ Transaction finality is closely tied to the finality of the block in which the t
 However, they are not necessarily the same because often, one is concerned with whether the receipts, not the transaction itself, are final since receipt execution is where most of the work is done. Therefore, to verify the finality of a transaction, you can query the transaction and check if all the block hashes of the transactions and receipts generated from the transaction are final.
 
 :::tip Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-<h8>Ask it on StackOverflow!</h8></a>
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
 :::

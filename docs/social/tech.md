@@ -326,14 +326,14 @@ It will help you to understand how to use components better.
 
 Components are like a React functional components, but with omitted function declaration.
 For example, in a React you would write:
-```jsx
+```js
 function MyComponent(props) {
   return <div>Hello, {props.username}!</div>;
 }
 ```
 
 But in the Near Social VM you only need to write the body of the function:
-```jsx
+```js
 return <div>Hello, {props.username}!</div>;
 ```
 
@@ -360,7 +360,7 @@ Another object that is available to the component is `context`.
 Currently, it only contains a single field `accountId` that contains the account ID of the signed-in user or `undefined` otherwise.
 
 A common example preparing the input is the following:
-```jsx
+```js
 const accountId = props.accountId ?? context.accountId;
 ```
 
@@ -373,7 +373,7 @@ This will issue all promises in parallel and will update rerender the component 
 
 You can build a component that either fetches the data or renders the given data.
 For example, we want to fetch the profile for the `accountId` or use the given `profile` if it's passed in the props.
-```jsx
+```js
 const profile = props.profile ?? Social.getr(`${accountId}/profile`);
 
 if (profile === null) {
@@ -392,7 +392,7 @@ So if you call `Social.getr` multiple times with the same key, it will return th
 Now you have the `profile` object fetched. Sometimes you need to process the data or just extract some data.
 
 For example, we want to get the name and extract the list of tags from the profile:
-```jsx
+```js
 const name = profile.name || "No-name profile";
 const tags = Object.keys(profile.tags ?? {});
 ```
@@ -407,7 +407,7 @@ But also you can embed other components.
 [near.social](https://near.social) doesn't allow specifying custom CSS classes, but provides a standard [Bootstrap 5](https://getbootstrap.com/docs/5.2/getting-started/introduction/) CSS classes.
 
 We can render the profile object and also include a list of tags:
-```jsx
+```js
 return (
   <div className="d-inline-block">
     <a
@@ -445,7 +445,7 @@ return (
 ```
 
 You can notice that we use the `Widget` component to embed another component:
-```jsx
+```js
 <Widget
   src="mob.near/widget/ProfileImage"
   props={{
@@ -485,7 +485,7 @@ For example, you want to have an input to enter an account ID.
 The account ID can only contain certain characters (e.g. no uppercase), so when a user enters an uppercase character, you want to convert it to lowercase and remove all non-valid ones.
 
 So you can create the following component:
-```jsx
+```js
 State.init({ accountId: "" });
 
 return (
@@ -505,7 +505,7 @@ return (
 
 Another reason why you need the state is to cache the data. For example, you want to fetch an expansive data, the process it, but don't do it on every re-render.
 You can do it like this:
-```jsx
+```js
 if (!state) {
   // Fetch the data and process it.
   const tags = fetchAndComputeTags();
@@ -528,7 +528,7 @@ The `CommitButton` component has three custom props:
 - `onCommit` - the callback that will be called when the user commits the data.
 
 For example, we can create a notepad component. It will load the note from the `experimental/note` key, and will allow to edit it and then save it.
-```jsx
+```js
 const accountId = context.accountId;
 
 if (!accountId) {

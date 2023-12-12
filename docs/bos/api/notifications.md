@@ -49,7 +49,7 @@ While there is no standard for notifications, we recommend using the following t
 <Tabs>
   <TabItem value="Custom" default>
 
-  ```jsx
+  ```js
   Social.set({
     index: JSON.stringify({
       notify: {

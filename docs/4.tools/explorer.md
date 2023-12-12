@@ -18,10 +18,10 @@ These useful tools enable for example to:
 
 ## NEAR Explorer
 
-Created by NEAR, the [Near Explorer](https://explorer.near.org) enables to check information for transactions and accounts through a user-friendly interface.
+Created by NEAR, the [Near Explorer](https://nearblocks.io) enables to check information for transactions and accounts through a user-friendly interface.
 
 ![NEAR Explorer](/docs/assets/explorers/near-explorer.png)
-*Main page of [NEAR Explorer](https://explorer.near.org)*
+*Main page of [NEAR Explorer](https://nearblocks.io)*
 
 <hr class="subsection"/>
 
