@@ -48,8 +48,8 @@ asyncFetch(keysGeneratorUrl + dropsNumber + "/rootEntrophy").then((res) => {
 This snippet will enable you to create a simple $NEAR drop. A simple drop allows you to onboard both existing and new users.
 
 ```js
-const dropAmount = "10000000000000000000000"; // 1 NEAR
 const keypomContract = "v2.keypom.near";
+const dropAmount = "10000000000000000000000"; // 1 NEAR
 
 Near.call([
   {
@@ -59,7 +59,7 @@ Near.call([
       public_keys: state.publicKeys,
       deposit_per_use: dropAmount,
     },
-    deposit: "23000000000000000000000" // state.publicKeys.length * dropAmount + 3000000000000000000000,
+    deposit: "23000000000000000000000", // state.publicKeys.length * dropAmount + 3000000000000000000000,
     gas: "100000000000000",
   },
 ]);
@@ -110,16 +110,18 @@ const dropAmount = "10000000000000000000000"; // 1 NEAR
 ### Getting drop id
 
 ```js
-const dropSupplyForOwner = Near.view({
-  contractId: keypomContract,
-  methodName: "get_drop_supply_for_owner",
-  args: { account_id: accountId },
-});
+const accountId = context.accountId ?? props.accountId;
+const keypomContract = "v2.keypom.near";
 
-const dropsForOwner = Near.view({
-  contractId: keypomContract, 
-  methodName: 'get_drops_for_owner', 
-  args: { account_id: accountId, from_index: (dropSupplyForOwner - 1).toString() }
+const dropSupplyForOwner = Near.view(
+  keypomContract,
+  "get_drop_supply_for_owner",
+  { account_id: accountId }
+);
+
+const dropsForOwner = Near.view(keypomContract, "get_drops_for_owner", {
+  account_id: accountId,
+  from_index: (dropSupplyForOwner - 1).toString(),
 });
 
 const dropId = dropsForOwner[dropsForOwner.length - 1].drop_id;
@@ -134,8 +136,8 @@ Then you should to transfer your NFT to KeyPom contract.
 ```js
 const nftTokenId = "1";
 
-Near.call({
-  contractId: nftContract, 
+Near.call([{
+  contractName: nftContract, 
   methodName: 'nft_transfer_call', 
   args: {
     receiver_id: keypomContract,
@@ -144,7 +146,7 @@ Near.call({
   },
   deposit: "1",
   gas: "300000000000000"
-});
+}]);
 ```
 
 ---
@@ -193,16 +195,18 @@ Near.call([
 Then you should to transfer your FTs to KeyPom contract.
 
 ```js
-Near.call({
-  contractId: ftContract, 
-  methodName: 'ft_transfer', 
-  args: {
-    receiver_id: keypomContract,
-    amount: "1"
+Near.call([
+  {
+    contractName: ftContract,
+    methodName: "ft_transfer",
+    args: {
+      receiver_id: keypomContract,
+      amount: "1",
+    },
+    deposit: "1",
+    gas: "300000000000000",
   },
-  deposit: "1",
-  gas: "300000000000000"
-});
+]);
 ```
 
 ---
@@ -265,6 +269,7 @@ Near.call([
 const getLinks = () => {
   const links = [];
 
+  // It assumes that private keys have been already stored in State by using State.init() and State.update() method
   state.privKeys.map((e, i) => {
     const link =
       "https://app.mynearwallet.com" + "/linkdrop/v2.keypom.near/" + e;
