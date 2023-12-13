@@ -24,3 +24,4 @@ jobs:
           yarn build
         env:
             NODE_OPTIONS: --max-old-space-size=8192
+            CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
