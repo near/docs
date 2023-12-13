@@ -23,8 +23,7 @@ jobs:
           echo PR #${{ github.event.number }} has been merged
           cd website && yarn
           yarn build
-          yarn crowdin:build
-          yarn crowdin:sync
+          yarn crowdin:upload
         env:
           CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
           NODE_OPTIONS: --max-old-space-size=8192

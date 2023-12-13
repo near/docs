@@ -21,6 +21,6 @@ jobs:
       - name: Build docusaurus
         run: |
           cd website && yarn
-          yarn build --locale en
+          yarn build
         env:
             NODE_OPTIONS: --max-old-space-size=8192
