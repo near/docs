@@ -5,7 +5,7 @@
   "scripts": {
     "full-test": "./test-links.sh test",
     "start": "docusaurus start",
-    "build": "if [ \"$IS_PULL_REQUEST\" = \"true\" ]; then $npm_execpath build:preview; else $npm_execpath build:main; fi",
+    "build": "if [ \"$IS_PULL_REQUEST\" = \"true\" ]; then $npm_execpath run build:preview; else $npm_execpath run build:main; fi",
     "build:main": "docusaurus build && $npm_execpath crowdin:download",
     "build:preview": "docusaurus build --locale en",
     "swizzle": "docusaurus swizzle",
