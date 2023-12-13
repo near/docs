@@ -156,10 +156,10 @@ If the tests are failing, make sure that you are using `node v16` and the `toolc
 
 </details>
 
-In the background these commands are calling the build tools for each language, and invoking the [Sandbox](/develop/testing/integration-test) tests from the `sandbox-ts/rs` directory.
+In the background, these commands are calling the build tools for each language and invoking the [Sandbox](../testing/integration.md) tests from the `sandbox-ts/rs` directory.
 
 :::tip Sandbox
-Testing the contracts within a Sandbox allows us to understand how the contract will behave once deployed to the network, while having total control over the testing environment.
+Testing the contracts within a Sandbox allows you to understand how the contract will behave once deployed to the network while having total control over the testing environment.
 :::
 
 ---
@@ -238,7 +238,7 @@ Having our account created, we can now deploy the contract into it:
 To interact with your deployed smart contract you can call its methods using the `near-cli` tool.
 
 #### Get Greeting
-The `get_greeting` method is a [`view`](./anatomy.md#public-methods) method, meaning it only reads from the contract's state, and thus can be call for **free**.
+The `get_greeting` method is a [`view`](./anatomy.md#public-methods) method, meaning it only reads from the contract's state, and thus can be called for **free**.
 
 ```bash
 > near view <created-account> get_greeting

@@ -60,7 +60,7 @@ Once the app starts you will see the landing page, rendering a navigation bar th
 ![img](/docs/assets/examples/hello-near-landing-page.png)
 *Landing page of Hello NEAR Gateway*
 
-Go ahead and sign in with your NEAR account. If you don't have one, you will be able to create one in the moment.
+Go ahead and sign in with your NEAR account. If you don't have one, you can create one on the fly.
 
 <hr class="subsection" />
 
@@ -105,13 +105,13 @@ Login if you haven't done it yet and you will see a simple form that allows you 
 <hr class="subsection" />
 
 ### Under the Hood
-The interactions with NEAR are done by using the `useWallet` hook to retrieve the `signedAccountId` property, and `viewMethod` and `callMethod` methods from our `wallet selector`.
+Interactions with NEAR are done using the `useWallet` hook to retrieve both the `viewMethod` and `callMethod` methods and the `signedAccountId` property from the `wallet selector`.
 
 <Github url="https://github.com/near/create-near-app/blob/master/templates/frontend/next/src/app/hello-near/page.js" language="jsx" start="12" end="32" />
 
-On load, the first `useEffect` hook will call the `get_greeting` method from the contract, and set the `greeting` state to the result.
+On load, the first `useEffect` hook will call the contract's `get_greeting` method and set the `greeting` state to the result.
 
-If the user is logged in, the `saveGreeting` method will call the `set_greeting` method from the contract, and set the `greeting` state to the result.
+If the user is logged in, the `saveGreeting` method will call the contract's `set_greeting` method and set the `greeting` state to the result.
 
 ---
 
