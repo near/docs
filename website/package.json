@@ -5,14 +5,15 @@
   "scripts": {
     "full-test": "./test-links.sh test",
     "start": "docusaurus start",
-    "build": "docusaurus build",
-    "preview": "(eval $(echo check_$IS_PULL_REQUEST | grep -U 'check_false')) 2>/dev/null && docusaurus build --locale en",
+    "build": "if [ \"$IS_PULL_REQUEST\" = \"true\" ]; then $npm_execpath run build:preview; else $npm_execpath run build:main; fi",
+    "build:main": "$npm_execpath crowdin:download && docusaurus build",
+    "build:preview": "docusaurus build --locale en",
     "swizzle": "docusaurus swizzle",
     "docusaurus": "docusaurus",
     "remote-sync": "node ./src/utils/getChangelogs.js && npm run docusaurus download-remote-changelog && npm run docusaurus download-remote-dx",
     "crowdin": "crowdin",
-    "crowdin:sync": "docusaurus write-translations && crowdin upload && crowdin download",
-    "crowdin:build": "(eval $(echo check_$IS_PULL_REQUEST | grep -U 'check_true')) 2>/dev/null && docusaurus write-translations && crowdin download"
+    "crowdin:upload": "docusaurus write-translations && crowdin upload",
+    "crowdin:download": "docusaurus write-translations && crowdin download"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.0.1",
