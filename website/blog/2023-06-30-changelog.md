@@ -2,6 +2,8 @@
 
 Developer changelog for [essential repositories](/develop/github-overview) when building on NEAR Protocol. 🏗️
 
+👉 [Get monthly emails of this report](https://docs.google.com/forms/d/1JfFUbTq3ELUlScJT1UI9PQPuQsv0W2jcTa7P94KrS5U/edit) 👈
+
 ## Releases  🎉
 
 | repo | release | release_date |
