@@ -70,7 +70,7 @@ module.exports = {
       'docusaurus-plugin-remote-content',
       {
         // options here
-        name: 'dx-content', // used by CLI, must be path safe
+        name: 'dx', // used by CLI, must be path safe
         sourceBaseUrl: 'https://raw.githubusercontent.com/near/DX/main/',
         outDir: '../docs/2.develop',
         documents: ['README.md'],
@@ -97,7 +97,7 @@ ${content}`, // <-- this last part adds in the rest of the content, which would 
     [
       'docusaurus-plugin-remote-content',
       {
-        name: 'near-changelog',
+        name: 'changelog',
         sourceBaseUrl:
           'https://raw.githubusercontent.com/near/near-releases/main/reports/',
         outDir: '/blog',

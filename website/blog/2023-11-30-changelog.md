@@ -2,6 +2,8 @@
 
 Developer changelog for [essential repositories](/develop/github-overview) when building on NEAR Protocol. 🏗️
 
+👉 [Get monthly emails of this report](https://docs.google.com/forms/d/1JfFUbTq3ELUlScJT1UI9PQPuQsv0W2jcTa7P94KrS5U/edit) 👈
+
 ## Releases  🎉
 
 | repo | release | release_date |
@@ -353,10 +355,6 @@ Developer changelog for [essential repositories](/develop/github-overview) when 
 | 2023-11-20 | [10180](https://github.com/near/nearcore/pull/10180) | [introduce code coverage analysis in CI](https://github.com/near/nearcore/pull/10180) |
 | 2023-11-20 | [10205](https://github.com/near/nearcore/pull/10205) | [enable debug assertions in CI](https://github.com/near/nearcore/pull/10205) |
 | 2023-11-20 | [10214](https://github.com/near/nearcore/pull/10214) | [Bump various dependency versions](https://github.com/near/nearcore/pull/10214) |
-| 2023-11-20 | [10217](https://github.com/near/nearcore/pull/10217) | [fix broken links, an...](https://github.com/near/nearcore/pull/10217) |
-| 2023-11-20 | [10187](https://github.com/near/nearcore/pull/10187) | [refactor: prepare sh...](https://github.com/near/nearcore/pull/10187) |
-| 2023-11-20 | [10191](https://github.com/near/nearcore/pull/10191) | [[Snyk] Upgrade react...](https://github.com/near/nearcore/pull/10191) |
-| 2023-11-20 | [10212](https://github.com/near/nearcore/pull/10212) | [build(deps-dev): bum...](https://github.com/near/nearcore/pull/10212) |
 
 ### neps
 
