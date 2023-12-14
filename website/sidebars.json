@@ -395,14 +395,6 @@
     "primitives/ft/additional-resources",
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> DAOs </small></b></span>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'>Coming Soon</span>"
-    },
-    {
-      "type": "html",
       "value": "<hr/>"
     },
     {
@@ -416,6 +408,23 @@
         "primitives/dex/interacting/web-app",
         "primitives/dex/interacting/smart-contract",
         "primitives/dex/interacting/near-cli"
+      ]
+    },
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> DAO </small></b></span>"
+    },
+    "primitives/dao/introduction",
+    {
+      "Using DAO": [
+        "primitives/dao/interacting/bos",
+        "primitives/dao/interacting/web-app",
+        "primitives/dao/interacting/smart-contract",
+        "primitives/dao/interacting/near-cli"
       ]
     }
   ],
