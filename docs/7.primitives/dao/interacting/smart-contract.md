@@ -102,7 +102,7 @@ This snippet assumes that the contract has permissions to create DAO proposals a
 // Need to keep it around for backward compatibility
 pub type OldAccountId = String;
 
-// How the voting policy votes get weigthed.
+// How the voting policy votes get weighted.
 #[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize, Clone, PartialEq)]
 #[cfg_attr(not(target_arch = "wasm32"), derive(Debug))]
 #[serde(crate = "near_sdk::serde")]
