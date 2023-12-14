@@ -102,93 +102,12 @@ This snippet will enable your users to create a DAO.
 
 ```js
 const args = {
-  purpose: "",
-  bond: "100000000000000000000000",
-  vote_period: "604800000000000",
-  grace_period: "86400000000000",
-  policy: {
-    roles: [
-      {
-        name: "council",
-        slug: "council",
-        kind: { Group: ["bob.near"] },
-        permissions: [
-          "*:Finalize",
-          "policy:AddProposal",
-          "add_bounty:AddProposal",
-          "bounty_done:AddProposal",
-          "transfer:AddProposal",
-          "vote:AddProposal",
-          "remove_member_from_role:AddProposal",
-          "add_member_to_role:AddProposal",
-          "config:AddProposal",
-          "call:AddProposal",
-          "upgrade_remote:AddProposal",
-          "upgrade_self:AddProposal",
-          "set_vote_token:AddProposal",
-          "policy:VoteApprove",
-          "policy:VoteReject",
-          "policy:VoteRemove",
-          "add_bounty:VoteApprove",
-          "add_bounty:VoteReject",
-          "add_bounty:VoteRemove",
-          "bounty_done:VoteApprove",
-          "bounty_done:VoteReject",
-          "bounty_done:VoteRemove",
-          "transfer:VoteApprove",
-          "transfer:VoteReject",
-          "transfer:VoteRemove",
-          "vote:VoteApprove",
-          "vote:VoteReject",
-          "vote:VoteRemove",
-          "remove_member_from_role:VoteApprove",
-          "remove_member_from_role:VoteReject",
-          "remove_member_from_role:VoteRemove",
-          "add_member_to_role:VoteApprove",
-          "add_member_to_role:VoteReject",
-          "add_member_to_role:VoteRemove",
-          "call:VoteApprove",
-          "call:VoteReject",
-          "call:VoteRemove",
-          "config:VoteApprove",
-          "config:VoteReject",
-          "config:VoteRemove",
-          "set_vote_token:VoteApprove",
-          "set_vote_token:VoteReject",
-          "set_vote_token:VoteRemove",
-          "upgrade_self:VoteApprove",
-          "upgrade_self:VoteReject",
-          "upgrade_self:VoteRemove",
-          "upgrade_remote:VoteApprove",
-          "upgrade_remote:VoteReject",
-          "upgrade_remote:VoteRemove",
-        ],
-        vote_policy: {},
-      },
-      {
-        name: "all",
-        slug: "all",
-        kind: "Everyone",
-        permissions: [],
-        vote_policy: {},
-      },
-    ],
-    default_vote_policy: {
-      weight_kind: "RoleWeight",
-      quorum: "0",
-      threshold: [1, 2],
-    },
-    proposal_bond: "100000000000000000000000",
-    proposal_period: "604800000000000",
-    bounty_bond: "100000000000000000000000",
-    bounty_forgiveness_period: "604800000000000",
-  },
   config: {
-    name: "primitives",
-    purpose: "",
-    metadata:
-      "eyJsaW5rcyI6WyJodHRwczovL2RvY3MubmVhci5vcmcvIl0sImZsYWdDb3ZlciI6IiIsImZsYWdMb2dvIjoiT3ZvN3k4cWJPRFFvaWRKZWlnbTRhIiwiZGlzcGxheU5hbWUiOiJQcmltaXRpdmVzIiwibGVnYWwiOnsibGVnYWxTdGF0dXMiOiIiLCJsZWdhbExpbmsiOiIifX0=",
+    name: "Primitives",
+    purpose: "Building primitives on NEAR",
+    metadata: ""
   },
+  policy: ["bob.near"]
 };
 Near.call(
   "sputnik-dao.near",
@@ -201,6 +120,11 @@ Near.call(
   6000000000000000000000000
 );
 ```
+
+
+:::note
+The full list of roles and permissions you can find [here](https://github.com/near-daos/sputnik-dao-contract#roles-and-permissions).
+:::
 
 ---
 
@@ -243,3 +167,7 @@ Near.call(
   300000000000000
 );
 ```
+
+:::note
+Available vote options: `VoteApprove`, `VoteReject`, `VoteRemove`.
+:::
