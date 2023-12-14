@@ -72,7 +72,7 @@ Remember that your balance is used to cover for the contract's storage. When sen
 ## Function Call
 
 Your smart contract can call methods in another contract. In the snippet bellow we call a method
-in a deployed [Hello NEAR](../quickstart.md) contract, and check if everything went
+in a deployed [Hello NEAR](quickstart.md) contract, and check if everything went
 right in the callback.
 
 <Tabs className="language-tabs" groupId="code-tabs">
