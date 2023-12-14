@@ -5,8 +5,8 @@ sidebar_label: Home
 hide_table_of_contents: true
 ---
 
-import {FeatureList, Column, Feature} from "@site/components/featurelist"
-import ContactUs from '@site/components/ContactUs.mdx';
+import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
+import ContactUs from '@site/src/components/ContactUs.mdx';
 
 Build fully decentralized applications for all chains. Publish and get discovered by thousands of users. Embrace the power of community and web 3.
 

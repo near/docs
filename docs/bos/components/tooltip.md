@@ -16,7 +16,7 @@ The code has been adopted and modified from the `react-bootstrap` documentation 
 
 <WidgetEditor id='1' height="120px">
 
-```jsx
+```js
 return (
   <>
     {["top", "right", "bottom", "left"].map((placement) => (

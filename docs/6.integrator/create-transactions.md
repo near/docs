@@ -22,9 +22,9 @@ See [Transaction Class](https://near.github.io/near-api-js/classes/near_api_js.t
 
 ---
 
-## HIGH LEVEL -- Create a transaction {#high-level----create-a-transaction}
+## HIGH LEVEL -- Create a transaction
 
-### Setup {#setup}
+### Setup
 
 1. Clone the [transaction-examples](https://github.com/near-examples/transaction-examples) repository by running:
 
@@ -34,7 +34,7 @@ git clone https://github.com/near-examples/transaction-examples.git
 
 2. Follow [setup instructions](https://github.com/near-examples/transaction-examples/blob/master/README.md#prerequisites)
 
-### Imports {#imports}
+### Imports
 
 In [`send-tokens-easy.js`](https://github.com/near-examples/transaction-examples/blob/9e999253aafa2c3e3b537810a0b8ce7596c3506c/send-tokens-easy.js#L1-L5) we use two dependencies:
 
@@ -54,7 +54,7 @@ The second line above deconstructs several utilities from nearAPI that you will 
 - `keyStores` - stores the keyPair that you will create from the private key and used to sign Transactions
 - `utils` - used to format NEAR amounts
 
-### Accounts & Network {#accounts--network}
+### Accounts & Network
 
 Next, you'll need to enter the `accountId` of the `sender` and `receiver`, as well as the `networkId` (`betanet`, `testnet`, or `mainnet`).
 
@@ -64,7 +64,7 @@ const receiver = "receiver.testnet";
 const networkId = "testnet";
 ```
 
-### Formatting Token Amounts {#formatting-token-amounts}
+### Formatting Token Amounts
 
 When sending NEAR tokens (Ⓝ) during a transaction, the amount needs to be converted into [Yocto](https://en.wikipedia.org/wiki/Yocto-) Ⓝ or (10^-24).
 
@@ -74,7 +74,7 @@ When sending NEAR tokens (Ⓝ) during a transaction, the amount needs to be conv
 const amount = nearAPI.utils.format.parseNearAmount("1.5");
 ```
 
-### Create a Key Store {#create-a-key-store}
+### Create a Key Store
 
 In order to sign transactions you will need to create a "Key Store" that will hold a [full access key](/concepts/basics/accounts/access-keys#full-access-keys) to sign your transactions. There are several ways to accomplish this, but for this example we will use a private key stored in either an `.env` file in your project or an environment variable exported globally.
 
@@ -91,7 +91,7 @@ const keyPair = KeyPair.fromString(process.env.SENDER_PRIVATE_KEY);
 await keyStore.setKey(networkId, sender, keyPair);
 ```
 
-### Setting up a connection to NEAR {#setting-up-a-connection-to-near}
+### Setting up a connection to NEAR
 
 Now create a connection to NEAR using a configuration object that will contain your `networkId` setup earlier as well as your `keyStore`.
 
@@ -114,7 +114,7 @@ const senderAccount = await near.account(sender);
 
 You'll notice the last line uses your NEAR connection to create a `senderAccount` object that you'll use to perform the transaction.
 
-### Create, Sign, & Send Transaction {#create-sign--send-transaction}
+### Create, Sign, & Send Transaction
 
 Now that everything is setup, creating the transaction is a single line of code.
 
@@ -126,9 +126,9 @@ This simple command constructs, signs, and sends a token transfer transaction on
 
 ---
 
-## LOW LEVEL -- Create a Transaction {#low-level----create-a-transaction}
+## LOW LEVEL -- Create a Transaction
 
-### Setup {#setup-1}
+### Setup
 
 1. Clone the [transaction-examples](https://github.com/near-examples/transaction-examples) repository by running:
 
@@ -140,7 +140,7 @@ git clone https://github.com/near-examples/transaction-examples.git
 
 ---
 
-### Imports {#imports-1}
+### Imports
 
 In [`send-tokens-deconstructed.js`](https://github.com/near-examples/transaction-examples/blob/master/send-tokens-deconstructed.js#L1-L4) we use three dependencies:
 
@@ -156,7 +156,7 @@ require("dotenv").config();
 
 ---
 
-### Accounts & Network {#accounts--network-1}
+### Accounts & Network
 
 Next, you'll need to enter the `accountId` of the `sender` and `receiver`, as well as the `networkId` (`betanet`, `testnet`, or `mainnet`).
 
@@ -168,7 +168,7 @@ const networkId = "testnet";
 
 ---
 
-### Formatting Token Amounts {#formatting-token-amounts-1}
+### Formatting Token Amounts
 
 When sending NEAR tokens (Ⓝ) during a transaction, the amount needs to be converted into [Yocto](https://en.wikipedia.org/wiki/Yocto-) Ⓝ or (10^-24).
 
@@ -180,7 +180,7 @@ const amount = nearAPI.utils.format.parseNearAmount("1.5");
 
 ---
 
-### Setting up a connection to NEAR {#setting-up-a-connection-to-near-1}
+### Setting up a connection to NEAR
 
 In this example, we will create a NEAR RPC `provider` that allows us to interact with the chain via [RPC endpoints](/api/rpc/introduction).
 
@@ -192,7 +192,7 @@ const provider = new nearAPI.providers.JsonRpcProvider(
 
 ---
 
-### Access Keys {#access-keys}
+### Access Keys
 
 To sign a transaction to send NEAR Ⓝ, we will need a `FullAccess` key to the sender's account.
 
@@ -211,7 +211,7 @@ const keyPair = nearAPI.utils.key_pair.KeyPairEd25519.fromString(privateKey);
 
 ---
 
-### Transaction Requirements {#transaction-requirements}
+### Transaction Requirements
 
 As stated before, all transactions require six parts:
 
@@ -222,12 +222,12 @@ As stated before, all transactions require six parts:
 5. [`actions`](/concepts/basics/transactions/overview#action)
 6. [`blockHash`](#6-blockhash)
 
-### 1 `signerId` {#1-signerid}
+### 1 `signerId`
 
 - The `signerId` is the account ID of the transaction originator.
 - This value is passed as a string (ex. `'example.testnet'` or `'bob.near'`)
 
-### 2 `signerPublicKey` {#2-signerpublickey}
+### 2 `signerPublicKey`
 
 - The `signerPublicKey` is required to be an object with two key value pairs: `keyType` and `data`.
 
@@ -277,13 +277,13 @@ PublicKey = {
 const publicKey = keyPair.getPublicKey();
 ```
 
-### 3 `receiverId` {#3-receiverid}
+### 3 `receiverId`
 
 - The `receiverId` is the account ID of the transaction recipient.
 - This value is passed as a string (ex. `'example.testnet'` or `'bob.near'`)
 - The certain cases, the `signerId` and the `receiverId` can be the same account.
 
-### 4 `nonceForPublicKey` {#4-nonceforpublickey}
+### 4 `nonceForPublicKey`
 
 - A unique number or `nonce` is required for each transaction signed with an access key.
 - To ensure a unique number is created for each transaction, the current `nonce` should be queried and then incremented by 1.
@@ -302,7 +302,7 @@ const accessKey = await provider.query(
 const nonce = ++accessKey.nonce;
 ```
 
-### 5 `actions` {#5-actions}
+### 5 `actions`
 
 - There are currently eight supported `Action` types. [[see here]](/concepts/basics/transactions/overview#action)
 - For this example, we are using `Transfer`
@@ -314,7 +314,7 @@ const actions = [nearAPI.transactions.transfer(amount)];
 
 [[click here]](https://github.com/near/near-api-js/blob/d4d4cf1ac3182fa998b1e004e6782219325a641b/src/transaction.ts#L70-L72) to view source for `transfer()`.
 
-### 6 `blockHash` {#6-blockhash}
+### 6 `blockHash`
 
 - Each transaction requires a current block hash (within 24hrs) to prove that the transaction was created recently.
 - Hash must be converted to an array of bytes using the `base_decode` method found in [`nearAPI`](#imports).
@@ -329,7 +329,7 @@ const recentBlockHash = nearAPI.utils.serialize.base_decode(
 
 ---
 
-### Constructing the Transaction {#constructing-the-transaction}
+### Constructing the Transaction
 
 With all of our [required arguments](#transaction-requirements), we can construct the transaction.
 
@@ -350,7 +350,7 @@ const transaction = nearAPI.transactions.createTransaction(
 
 ---
 
-### Sign Transaction {#sign-transaction}
+### Sign Transaction
 
 Now that the transaction is created, we sign it before sending it to the NEAR blockchain. At the lowest level, there are four steps to this process.
 
@@ -387,7 +387,7 @@ const signedTransaction = new nearAPI.transactions.SignedTransaction({
 });
 ```
 
-### Send Transaction {#send-transaction}
+### Send Transaction
 
 Final step is to encode and send the transaction.
 
@@ -403,7 +403,7 @@ const result = await provider.sendJsonRpc("broadcast_tx_commit", [
 ]);
 ```
 
-### Transaction Results {#transaction-results}
+### Transaction Results
 
 Detailed transaction results of the transaction are returned in the following format:
 

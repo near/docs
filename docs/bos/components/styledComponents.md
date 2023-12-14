@@ -14,7 +14,7 @@ This tool was imported into `near.social` infrastructure for your use. You do no
 
 <WidgetEditor id='1' height="80px">
 
-```jsx
+```js
 const Button = styled.button`
   /* Adapt the colors based on primary prop */
   background: ${(props) => (props.primary ? "palevioletred" : "white")};

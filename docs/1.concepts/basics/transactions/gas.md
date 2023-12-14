@@ -97,30 +97,35 @@ To give you a starting point for what to expect for costs on NEAR, the table bel
 
 NEAR is [configured](https://github.com/near/nearcore/blob/master/core/primitives/res/runtime_configs/parameters.yaml) with base costs. An example:
 
-    transfer_cost: {
-      send_sir:     115123062500,
-      send_not_sir: 115123062500,
-      execution:    115123062500
-    }
+```json
+  transfer_cost: {
+    send_sir:     115123062500,
+    send_not_sir: 115123062500,
+    execution:    115123062500
+  }
+```
 
 The "sir" here stands for "sender is receiver". Yes, these are all identical, but that could change in the future.
 
 When you make a request to transfer funds, NEAR immediately deducts the appropriate `send` amount from your account. Then it creates a _receipt_, an internal book-keeping mechanism to facilitate NEAR's asynchronous, sharded design (if you're coming from Ethereum, forget what you know about Ethereum's receipts, as they're completely different). Creating a receipt has its own associated costs:
 
-    action_receipt_creation_config: {
-      send_sir:     108059500000,
-      send_not_sir: 108059500000,
-      execution:    108059500000
-    }
-
+```json
+  action_receipt_creation_config: {
+    send_sir:     108059500000,
+    send_not_sir: 108059500000,
+    execution:    108059500000
+  }
+```
 You can query this value by using the [`protocol_config`](/api/rpc/setup#protocol-config) RPC endpoint and search for `action_receipt_creation_config`. 
 
 The appropriate `send` amount for creating this receipt is also immediately deducted from your account.
 
 The "transfer" action won't be finalized until the next block. At this point, the `execution` amount for each of these actions will be deducted from your account (something subtle: the gas units on this next block could be multiplied by a gas price that's up to 1% different, since gas price is recalculated on each block). Adding it all up to find the total transaction fee:
 
+```
     (transfer_cost.send_not_sir  + action_receipt_creation_config.send_not_sir ) * gas_price_at_block_1 +
     (transfer_cost.execution + action_receipt_creation_config.execution) * gas_price_at_block_2
+```
 
 </details>
 
