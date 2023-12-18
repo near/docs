@@ -158,9 +158,11 @@ ${content}`, // <-- this last part adds in the rest of the content, which would 
           label: "Primitives",
           position: "left",
           items: [
+            { label: "Drops", href: "/primitives/dao/introduction" },
             { label: "Fungible Tokens", href: "/primitives/nft/introduction" },
             { label: "Non-Fungible Tokens", href: "/primitives/ft/introduction" },
             { label: "Decentralized Exchanges", href: "/primitives/dex/introduction" },
+            { label: "Autonomous Organizations", href: "/primitives/dao/introduction" },
           ]
         },
         {
