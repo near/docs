@@ -85,7 +85,7 @@ near view v2.keypom.near get_drop_supply_for_owner '{"account_id": "bob.near"}'
 
 <hr class="subsection" />
 
-### Transfering NFT
+### Transferring NFT
 
 Then you should to transfer your NFT to KeyPom contract.
 
@@ -111,7 +111,7 @@ near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_pe
 
 <hr class="subsection" />
 
-### Transfering FT
+### Transferring FT
 
 Then you should to transfer your FTs to KeyPom contract.
 

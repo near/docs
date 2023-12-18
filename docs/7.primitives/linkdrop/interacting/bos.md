@@ -128,7 +128,7 @@ const dropId = dropsForOwner[dropsForOwner.length - 1].drop_id;
 
 <hr class="subsection" />
 
-### Transfering NFT
+### Transferring NFT
 
 Then you should to transfer your NFT to KeyPom contract.
 
@@ -189,7 +189,7 @@ Near.call([
 
 <hr class="subsection" />
 
-### Transfering FT
+### Transferring FT
 
 Then you should to transfer your FTs to KeyPom contract.
 
