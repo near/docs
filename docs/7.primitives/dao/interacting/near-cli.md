@@ -97,6 +97,7 @@ near view nearweek-news-contribution.sputnik-dao.near get_proposals '{"from_inde
 This snippet will enable you to create a DAO.
 
 ```bash
+
 export COUNCIL='["bob.near"]'
 export ARGS=`echo '{"config": {"name": "Primitives", "purpose": "Building primitives on NEAR", "metadata":""}, "policy": '$COUNCIL'}' | base64`
 

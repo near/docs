@@ -121,6 +121,7 @@ Near.call(
 );
 ```
 
+
 :::note
 The full list of roles and permissions you can find [here](https://github.com/near-daos/sputnik-dao-contract#roles-and-permissions).
 :::
