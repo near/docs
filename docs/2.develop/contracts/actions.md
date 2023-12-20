@@ -12,7 +12,7 @@ An important property of `Actions` is that they can be batched together when act
 
 :::info
 `Actions` can be batched only when they act on the **same contract**. You can batch calling two methods on a contract,
-but **cannot** call two methods on different contracts.
+but **cannot** call two methods on different contracts. 
 :::
 
 ---
