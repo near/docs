@@ -127,7 +127,7 @@ or id you are in the `./website` directory:
 yarn full-test
 ```
 
-To manually run tests without rebuilding the site run the following from the `./website` directory:-
+To manually run tests without rebuilding the site, run the following from the `./website` directory:-
 
 🏃‍♂️ - Build and start server
 
