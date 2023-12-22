@@ -132,6 +132,7 @@ Building and testing the contract is as simple as running two commands.
   ```
 
   </TabItem>
+
   <TabItem value="🦀 Rust">
 
   ```bash
@@ -144,6 +145,7 @@ Building and testing the contract is as simple as running two commands.
   ```
   
   </TabItem>
+
 </Tabs>
 
 <details>
@@ -179,6 +181,7 @@ While there are different ways to [create accounts](/concepts/basics/accounts/cr
   ```
 
   </TabItem>
+
   <TabItem value="🦀 Rust">
 
   ```bash
@@ -187,6 +190,7 @@ While there are different ways to [create accounts](/concepts/basics/accounts/cr
   ```
   
   </TabItem>
+
 </Tabs>
 
 ```bash
@@ -220,6 +224,7 @@ Having our account created, we can now deploy the contract into it:
   ```
 
   </TabItem>
+
   <TabItem value="🦀 Rust">
 
   ```bash
@@ -227,6 +232,7 @@ Having our account created, we can now deploy the contract into it:
   ```
   
   </TabItem>
+
 </Tabs>
 
 **Congrats**! your contract now lives in the NEAR testnet network.
