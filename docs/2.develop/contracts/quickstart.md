@@ -53,7 +53,8 @@ Create a smart contract by running our `create-near-app` scaffolding tool and fo
 The resulting folder structure will change slightly depending on the chosen language. Here is the general structure you can expect to see:
 
 <Tabs>
-  <TabItem value="🌐 JavaScript">
+
+<TabItem value="🌐 JavaScript">
 
 ```bash
 ├── README.md
@@ -68,8 +69,9 @@ The resulting folder structure will change slightly depending on the chosen lang
 └── tsconfig.json
 ```
 
-  </TabItem>
-  <TabItem value="🦀 Rust">
+</TabItem>
+
+<TabItem value="🦀 Rust">
 
 ```bash
 ├── README.md
@@ -87,7 +89,8 @@ The resulting folder structure will change slightly depending on the chosen lang
 └── Cargo.toml # package manager
 ```
 
-  </TabItem>
+</TabItem>
+
 </Tabs>
 
 ---
@@ -120,7 +123,8 @@ There are 3 important things to notice:
 Building and testing the contract is as simple as running two commands.
 
 <Tabs>
-  <TabItem value="🌐 JavaScript">
+
+<TabItem value="🌐 JavaScript">
 
   ```bash
   npm run build
@@ -131,9 +135,9 @@ Building and testing the contract is as simple as running two commands.
   # changes the greeting ✅
   ```
 
-  </TabItem>
+</TabItem>
 
-  <TabItem value="🦀 Rust">
+<TabItem value="🦀 Rust">
 
   ```bash
   ./build.sh
@@ -144,7 +148,8 @@ Building and testing the contract is as simple as running two commands.
   # Passed ✅ changes the greeting
   ```
   
-  </TabItem>
+</TabItem>
+
 
 </Tabs>
 
@@ -173,23 +178,24 @@ Now that we know the contract is passing the tests, let's create a testnet accou
 While there are different ways to [create accounts](/concepts/basics/accounts/creating-accounts) in NEAR, in this quickstart we will use the `cargo-near` tool to create a new random [`named account`](/concepts/basics/accounts/account-id).
 
 <Tabs>
-  <TabItem value="🌐 JavaScript">
+
+<TabItem value="🌐 JavaScript">
 
   ```bash
   # install cargo-near
   npm i -g cargo-near
   ```
 
-  </TabItem>
+</TabItem>
 
-  <TabItem value="🦀 Rust">
+<TabItem value="🦀 Rust">
 
   ```bash
   # install cargo-near
   cargo install cargo-near
   ```
   
-  </TabItem>
+</TabItem>
 
 </Tabs>
 
@@ -217,21 +223,24 @@ Here we are creating a random account since we do not care about the account's n
 Having our account created, we can now deploy the contract into it:
 
 <Tabs>
-  <TabItem value="🌐 JavaScript">
+
+<TabItem value="🌐 JavaScript">
 
   ```bash
   near deploy --wasmFile build/release/hello.wasm --accountId <created-account>
   ```
 
-  </TabItem>
+</TabItem>
 
-  <TabItem value="🦀 Rust">
+<TabItem value="🦀 Rust">
 
   ```bash
   near deploy --wasmFile ./target/wasm32-unknown-unknown/release/hello_near.wasm --accountId <created-account>
   ```
+
   
-  </TabItem>
+</TabItem>
+
 
 </Tabs>
 

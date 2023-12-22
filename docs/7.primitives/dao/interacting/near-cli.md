@@ -32,6 +32,7 @@ near view sputnik-dao.near get_dao_list '{}'
 ```
 
 </p>
+
 </details>
 
 ---
@@ -88,6 +89,7 @@ near view nearweek-news-contribution.sputnik-dao.near get_proposals '{"from_inde
 ```
 
 </p>
+
 </details>
 
 ---

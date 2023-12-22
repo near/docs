@@ -32,6 +32,7 @@ const result = Near.view("sputnik-dao.near", "get_dao_list");
 ```
 
 </p>
+
 </details>
 
 ---
@@ -92,6 +93,7 @@ const result = Near.view(
 ```
 
 </p>
+
 </details>
 
 ---
