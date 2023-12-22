@@ -780,6 +780,7 @@
     "bos/queryapi/best-practices",
     "bos/queryapi/index-functions",
     "bos/queryapi/context-object",
+    "bos/queryapi/query-data",
     "bos/queryapi/migrate-from-near-lake",
     {
       "Tutorials": [
