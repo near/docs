@@ -177,7 +177,6 @@ const connectionConfig = {
   networkId: "testnet",
   keyStore: myKeyStore, // first create a key store
   nodeUrl: "https://rpc.testnet.near.org",
-  walletUrl: "https://testnet.mynearwallet.com/",
   helperUrl: "https://helper.testnet.near.org",
   explorerUrl: "https://explorer.testnet.near.org",
 };
@@ -194,7 +193,6 @@ const connectionConfig = {
   networkId: "mainnet",
   keyStore: myKeyStore, // first create a key store
   nodeUrl: "https://rpc.mainnet.near.org",
-  walletUrl: "https://wallet.mainnet.near.org",
   helperUrl: "https://helper.mainnet.near.org",
   explorerUrl: "https://explorer.mainnet.near.org",
 };
@@ -210,7 +208,6 @@ const { connect } = nearAPI;
 const connectionConfig = {
   networkId: "local",
   nodeUrl: "http://localhost:3030",
-  walletUrl: "http://localhost:4000/wallet",
 };
 const nearConnection = await connect(connectionConfig);
 ```
