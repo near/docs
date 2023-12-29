@@ -23,18 +23,18 @@ This quickstart is dedicated to creating smart contracts. We also have one dedic
 Before starting, make sure you have the following installed:
  
 1. [Node.js](https://nodejs.org/en/download), to use our scaffolding tool.
-2. [NEAR CLI](/tools/near-cli#installation), to deploy and interact with the contract.
+2. [NEAR CLI-RS]([/tools/near-cli-rs), to deploy and interact with the contract.
 3. [cargo-near](https://github.com/near/cargo-near), to easily create testnet accounts.
 4. (optional) [Rust](https://www.Rust-lang.org/tools/install), to create Rust contracts.
 
 :::tip Easy Install
-Install both `near-cli` and `cargo-near` tools using `npm i -g near-cli cargo-near`
+Install both `near-cli-rs` and `cargo-near` tools using `npm i -g near-cli-rs cargo-near`
 :::
 
 :::info Testnet Account
 There is no need to have a testnet account to follow this tutorial.
 
-However, if you want to create one, you can do so through [a wallet](https://testnet.mynearwallet.com), and use it from the `near-cli` by invoking `near login`. 
+However, if you want to create one, you can do so through [a wallet](https://testnet.mynearwallet.com), and use it from the `near-cli-rs` by invoking `near account`. 
 :::
 
 ---
@@ -214,7 +214,7 @@ New account "lovely-event.testnet" created successfully.
 </details>
 
 :::tip
-Here we are creating a random account since we do not care about the account's name. Remember that you can create a named account through any wallet (i.e. [MyNearWallet](https://testnet.mynearwallet.com)) and then use it from the `near-cli` by invoking `near login`.
+Here we are creating a random account since we do not care about the account's name. Remember that you can create a named account through any wallet (i.e. [MyNearWallet](https://testnet.mynearwallet.com)) and then use it from the `near-cli-rs` by invoking `near account`.
 :::
 
 ---
@@ -250,13 +250,13 @@ Having our account created, we can now deploy the contract into it:
 
 ## Interacting with the Contract
 
-To interact with your deployed smart contract you can call its methods using the `near-cli` tool.
+To interact with your deployed smart contract you can call its methods using the `near-cli-rs` tool.
 
 #### Get Greeting
 The `get_greeting` method is a [`view`](./anatomy.md#public-methods) method, meaning it only reads from the contract's state, and thus can be called for **free**.
 
 ```bash
-> near view <created-account> get_greeting
+> near contract call-function as-read-only as-read-only <created-account> get_greeting
 
 "Hello" # Response
 ```
@@ -265,12 +265,12 @@ The `get_greeting` method is a [`view`](./anatomy.md#public-methods) method, mea
 The `set_greeting` method is a [`change`](./anatomy.md#public-methods) method, meaning it modifies the contract's state, and thus requires a user to sign a transaction in order to be executed.
 
 ```bash
-> near call <created-account> set_greeting '{"greeting": "Hola"}' --accountId <created-account>
+> near contract call-function as-transaction <created-account> set_greeting '{"greeting": "Hola"}' sign-as <created-account>
 
 Log: Saving greeting "Hola" # Response
 ```
 
-In this case we are asking the account that stores the contract to call its own contract's method (`--accountId <created-account>`).
+In this case we are asking the account that stores the contract to call its own contract's method (`sign-as <created-account>`).
 
 ---
 
