@@ -53,7 +53,7 @@
     "docusaurus-plugin-sass": "^0.2.5",
     "gleap": "^10.1.0",
     "https-browserify": "^1.0.0",
-    "monaco-editor": "^0.44.0",
+    "monaco-editor": "^0.45.0",
     "near-api-js": "^2.1.4",
     "near-social-vm": "github:NearSocial/VM#2.5.3",
     "react": "^18.2.0",
