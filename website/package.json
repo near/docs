@@ -62,7 +62,7 @@
     "react-dom": "^18.2.0",
     "react-instantsearch-hooks-web": "^6.47.3",
     "react-is": "^18.2.0",
-    "react-monaco-editor": "^0.54.0",
+    "react-monaco-editor": "^0.55.0",
     "rxjs": "^7.8.1",
     "sass": "^1.69.5",
     "search-insights": "^2.2.1",
