@@ -3,34 +3,33 @@ id: overview
 title: Overview
 ---
 
-The Blockchain Operating System (BOS) simplifies building, deploying and accessing decentralized frontends. Embrace the power of community and Web 3.
+NEAR simplifies building, deploying and accessing decentralized frontends. Embrace the power of community and Web 3.
 
 ![bos](/docs/bos-landing.png)
 
-
 ---
 
-## Why Using BOS?
+## Why Using NEAR Tech Stack?
 
-BOS is both a development environment and a social network where users can deploy and discover new applications. It simplifies building Web 3 applications providing easy onboarding, high security and a seamless interaction with all chains.
+NEAR is more than just a blockchain, it is also a development environment and a platform in which to deploy and discover new applications. NEAR simplifies building Web 3 applications providing easy onboarding, high security and a seamless interaction with all chains.
 
 #### Access 
-With BOS, users always have the ability to locally run blockchain applications which helps assure robustness and censorship-resistance, while maintaining a user-friendly experience.
+With NEAR, users always have the ability to locally run blockchain applications which helps assure robustness and censorship-resistance, while maintaining a user-friendly experience.
 
 #### Security
 The code for Components is always on-chain, making it auditable and viewable in explorers. This enhances security, and users can locally run the full stack with confidence. 
 
 #### Composability
-BOS fosters composability by enabling developers to reuse and remix Components. Building with BOS is extremely lightweight and easy, with the ability to deploy new front-ends for smart contracts on mainnet in less than 10 minutes.
+NEAR fosters composability by enabling developers to reuse and remix Components. Building with NEAR is extremely lightweight and easy, with the ability to deploy new front-ends for smart contracts on mainnet in less than 10 minutes.
 
-#### Chain Agnostic
-Additionally, BOS is chain-agnostic, making it a flexible solution for developers working with different blockchains.
+#### Chain Agnostic Components
+Additionally, NEAR Components are chain-agnostic, making it a flexible solution for developers working with different blockchains.
 
 ---
 
-## The Pillars of BOS
+## The Pillars of NEAR Stack
 
-BOS is based on three pillars: 
+The NEAR stack is based on three pillars: 
 - [Components](#components): Composable frontends that solve specific problems.
 - [Blockchains](#blockchains): To store the component's code, as well as their assets and data.
 - [Gateways](#gateways): A simple way to render components anywhere.

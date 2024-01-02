@@ -282,7 +282,7 @@ query MyQuery {
 }
 ```
 
-Once you have defined your query, you can use the GraphiQL Code Exporter to auto-generate a JavaScript or BOS Widget code snippet. The exporter will create a helper method `fetchGraphQL` which will allow you to fetch data from the indexer's GraphQL API. It takes three parameters:
+Once you have defined your query, you can use the GraphiQL Code Exporter to auto-generate a JavaScript or NEAR Widget code snippet. The exporter will create a helper method `fetchGraphQL` which will allow you to fetch data from the indexer's GraphQL API. It takes three parameters:
 
 - `operationsDoc`: A string containing the queries you would like to execute.
 - `operationName`: The specific query you want to run.
@@ -290,7 +290,7 @@ Once you have defined your query, you can use the GraphiQL Code Exporter to auto
 
 Next, you can call the `fetchGraphQL` function with the appropriate parameters and process the results. 
 
-Here's the complete code snippet for a BOS component using the _Hype Indexer_:
+Here's the complete code snippet for a NEAR component using the _Hype Indexer_:
 
 ```js
 const QUERYAPI_ENDPOINT = `https://near-queryapi.api.pagoda.co/v1/graphql/`;
