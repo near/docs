@@ -19,15 +19,21 @@ This snippet will enable your users to mint NFTs in one of the NFT solutions.
 <TabItem value="NFT Primitive" label="NFT Primitive" default>
 
 ```js
-const tokenData = Near.call("nft.primitives.near", "nft_mint", {
-  token_id: "1",
-  receiver_id: "bob.near", 
-  token_metadata: {
-    title: "NFT Primitive Token",
-    description: "Awesome NFT Primitive Token",
-    media: "string", // URL to associated media, preferably to decentralized, content-addressed storage
-  }
-});
+const tokenData = Near.call(
+  "nft.primitives.near",
+  "nft_mint",
+  {
+    token_id: "1",
+    receiver_id: "bob.near", 
+    token_metadata: {
+      title: "NFT Primitive Token",
+      description: "Awesome NFT Primitive Token",
+      media: "string", // URL to associated media, preferably to decentralized, content-addressed storage
+    }
+  },
+  undefined,
+  10000000000000000000000, // Depends on your NFT metadata
+);
 ```
 
 </TabItem>
@@ -35,10 +41,16 @@ const tokenData = Near.call("nft.primitives.near", "nft_mint", {
 <TabItem value="Paras" label="Paras">
 
 ```js
-const tokenData = Near.call("x.paras.near", "nft_mint", {
-  token_series_id: "490641",
-  receiver_id: "bob.near",
-});
+const tokenData = Near.call(
+  "x.paras.near",
+  "nft_mint",
+  {
+    token_series_id: "490641",
+    receiver_id: "bob.near",
+  },
+  undefined,
+  10000000000000000000000 // Depends on your NFT metadata
+);
 ```
 
 :::note
@@ -59,7 +71,7 @@ const tokenData = Near.call(
     metadata: {},
   },
   undefined,
-  1
+  10000000000000000000000
 );
 ```
 
@@ -414,10 +426,16 @@ This snippet will enable your users to transfer NFTs in one of the NFT solutions
 <TabItem value="NFT Primitive" label="NFT Primitive" default>
 
 ```js
-const tokenData = Near.call("nft.primitives.near", "nft_transfer", {
-  token_id: "1",
-  receiver_id: "bob.near"
-});
+const tokenData = Near.call(
+  "nft.primitives.near",
+  "nft_transfer",
+  {
+    token_id: "1",
+    receiver_id: "bob.near"
+  },
+  undefined,
+  1,
+);
 ```
 
 </TabItem>
@@ -425,10 +443,16 @@ const tokenData = Near.call("nft.primitives.near", "nft_transfer", {
 <TabItem value="Paras" label="Paras">
 
 ```js
-const tokenData = Near.call("x.paras.near", "nft_transfer", {
-  token_id: "490641",
-  receiver_id: "bob.near"
-});
+const tokenData = Near.call(
+  "x.paras.near",
+  "nft_transfer",
+  {
+    token_id: "490641",
+    receiver_id: "bob.near"
+  },
+  undefined,
+  1
+);
 ```
 
 </TabItem>
@@ -436,10 +460,16 @@ const tokenData = Near.call("x.paras.near", "nft_transfer", {
 <TabItem value="Mintbase" label="Mintbase">
 
 ```js
-const tokenData = Near.call("thomasettorreiv.mintbase1.near", "nft_transfer", {
-  token_id: "490641",
-  receiver_id: "bob.near"
-});
+const tokenData = Near.call(
+  "thomasettorreiv.mintbase1.near",
+  "nft_transfer",
+  {
+    token_id: "490641",
+    receiver_id: "bob.near"
+  },
+  undefined,
+  1
+);
 ```
 
 </TabItem>
