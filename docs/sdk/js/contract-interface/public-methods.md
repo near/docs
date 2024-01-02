@@ -5,7 +5,7 @@ title: "Public Methods"
 
 # Public Method Types
 
-Methods can be called externally by using the `view({})` or `call({})` decorators within the coontract class which will expose the method in the compiled WASM bytecode to be called by any other NEAR Account. Whenever a method is declared in your contract class without these decorators and is called by another NEAR Account, a `MethodNotFound` error will be thrown.
+Methods can be called externally by using the `view({})` or `call({})` decorators within the contract class which will expose the method in the compiled WASM bytecode to be called by any other NEAR Account. Whenever a method is declared in your contract class without these decorators and is called by another NEAR Account, a `MethodNotFound` error will be thrown.
 
 :::tip
 
