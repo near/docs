@@ -67,7 +67,7 @@ You **add the first** Full Access Key of the account when [the account is create
 `FunctionCall` keys are defined by three attributes:
 1. `receiver_id`: The **contract** which the key allows to call. No other contract can be called using this key.
 2. `method_names` (Optional): The contract's **methods** the key allows to call. If omitted, all methods can be called.
-3. `allowance` (Optional): The **amount of Ⓝ** allowed to spend on [gas](../transactions/gas.md). If omitted, the key will only be allowed to call view methods (read-only).
+3. `allowance` (Optional): The **amount of Ⓝ** allowed to spend on [gas](../transactions/gas.md). If omitted, the key can consume **UNLIMITED** Ⓝ as gas.
 
 Function Call keys main purpose is to be handed to apps, so they can make contract calls in your name.
 
