@@ -13,7 +13,7 @@ import { useInitWallet } from './Gateway/wallet-selector';
 const GLEAP_API_KEY = 'K2v3kvAJ5XtPzNYSgk4Ulpe5ptgBkIMv';
 
 function Root({ children, history }) {
-    useInitWallet({ createAccessKeyFor: 'social.near', networkId: 'mainnet' });
+    useInitWallet({ createAccessKeyFor: 'v1.social08.testnet' , networkId: 'testnet' });
     const isBrowser = useIsBrowser();
     const docusaurusContext = useDocusaurusContext();
     if (isBrowser) {

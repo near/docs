@@ -636,7 +636,7 @@
   ],
   "integrate": [
     "develop/integrate/welcome",
-    "develop/integrate/quickstart-frontend",
+    "develop/what-is-possible",
     {
       "type": "html",
       "value": "<hr/>"
@@ -645,27 +645,9 @@
       "type": "html",
       "value": "<span class='menu__link'><b><small> BOS Components </small></b></span>"
     },
-    "bos/overview",
+    "bos/tutorial/quickstart",
     "bos/tutorial/bos-gateway",
-    {
-      "type": "category",
-      "label": "Built-in Components",
-      "link": {
-        "type": "doc",
-        "id": "bos/components"
-      },
-      "items": [
-        "bos/components/widgets",
-        "bos/components/ipfs",
-        "bos/components/files",
-        "bos/components/markdown",
-        "bos/components/overlay-trigger",
-        "bos/components/infinite-scroll",
-        "bos/components/typeahead",
-        "bos/components/styled",
-        "bos/components/tooltip"
-      ]
-    },
+    "bos/built-in-components",
     {
       "Component API": [
         "bos/api/home",
@@ -687,7 +669,6 @@
     },
     {
       "Examples & Tutorials": [
-        "bos/tutorial/quickstart",
         "bos/dev/bos-loader",
         "bos/tutorial/interaction",
         "bos/tutorial/ds-components",
@@ -709,6 +690,7 @@
       "type": "html",
       "value": "<span class='menu__link'><b><small> Frontend Integration </small></b></span>"
     },
+    "develop/integrate/quickstart-frontend",
     "develop/integrate/frontend",
     {
       "type": "category",

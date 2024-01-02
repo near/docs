@@ -1,115 +1,95 @@
 ---
 id: quickstart
-title: ⭐ Quickstart
+title: Hello Component
+sidebar_label: ⭐ Quickstart
 ---
 
-NEAR allows you to quicky develop fullstack decentralized applications by publishing all of its source code on-chain.
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import {WidgetEditor} from "@site/src/components/social-widget"
 
-In this quickstart tutorial we will create a simple application that takes a name as input and renders a friendly greeting.
-
-![img](/docs/quickstart-1.png)
-
----
-
-## Development Environment
-
-There are two pathways to creating components & applications:  
-
-- [Online IDE](https://near.org/sandbox) - quickly get started w/ zero setup allowing you to instantly prototype & ship code
-- [Local IDE](https://docs.near.org/bos/dev/intro) - get serious and use our NEAR DevTools to setup your local dev environment
+NEAR Components are a new way to build web applications. They are composable, reusable and decentralized.
 
 ---
 
-## Creating Your First Component
+## React Basics
+NEAR Components borrow ideas from [React](https://react.dev/). If you are familiar with React, you will find the transition to NEAR Components very easy.
 
-To create a `widget` you only need to write valid JSX code, i.e. a mixture of HTML and JS. Let's see how simple it is to create and preview your first component.
+Particularly, the NEAR Components:
+- Use the `JSX` syntax
+- Can receive input in the `props` variable
+- Handle state through the [`useState`](https://react.dev/reference/react/useState) hook
+- Handle side effects through the [`useEffect`](https://react.dev/reference/react/useEffect) hook
 
-<hr class="subsection" />
+<WidgetEditor>
 
-### Create the Component
-In any of the editors, create a new file (`Add` button in the web editors) and name it `Greeter`, then, paste the following code on the editor:
-
-```ts
-let greeting = "Have a great day";
+```jsx
+const name = props.name || "Maria";
+const [count, setCount] = useState(0);
 
 return (
-  <>
-    <div class="container border border-info p-3 text-center">
-      <h1>Hello {props.name}</h1>
-
-      <p> {greeting} </p>
-    </div>
-  </>
+  <div>
+    <p> {count} cheers for {name}! </p>
+    <button onClick={() => setCount(count + 1)}>Cheers!</button>
+  </div>
 );
 ```
 
-<hr class="subsection" />
+</WidgetEditor>
 
-### Preview
-To preview how your component will work, go first to the `props` tab on your editor (or edit the `props.json` file if you are using Visual Studio Code) and add the following property:
+:::danger Contrast with React
+Note that, in contrast with React, NEAR Components are not wrapped in a `function` or `class` definition.
 
-```json
-{"name": "Anna"}
-```
-
-After, simply press the `Preview` button to render the preview of your component!
-
-![img](/docs/quickstart-editor.png)
-*Creating a Hello World component using the [NEAR Social Editor](https://near.social/#/edit)*
-
-<hr class="subsection" />
-
-### Publish
-Click on the `Save Widget` button to store your application in the NEAR Blockchain. If the button is not available, make sure you have signed-in to your [NEAR wallet](https://wallet.near.org) using the `Sign In` button of the editor.
-
-![img](/docs/quickstart-save.png)
-*The NEAR Social Editor asking if we want to store the component*
-
-Accept the transaction in your NEAR Wallet, so the component gets stored in the NEAR blockchain.
-
-<hr class="subsection" />
-
-## Using Your dApp
-Once your application is published, it will be ready to be combined with other components, or rendered as a standalone application  using the NEAR Viewer. 
-
-<hr class="subsection" />
-
-### Composition
-A NEAR application is simply a component that puts together multiple components; this outer component acts as the entry point to your application. To use your component inside of another, simply invoke it using a `<Widget>` component. This will fetch the code from the NEAR blockchain, and include it inside of your new application.
-
-```ts
-const user = "gagdiez.near";
-
-return (
-  <>
-    <h3> Composition </h3>
-    <p> Components can be composed </p>
-    <hr />
-
-    <Widget src={`${user}/widget/Greetings`} props={props} />
-  </>
-);
-```
-
-![img](/docs/quickstart-composition.png)
-*Rendering of the Composition*
-
-:::info
-Notice that we are passing the input `props` as an `object` to the `Greetings` component.
+Indeed, when writing a NEAR Component, you focus on writing the body of the component, which is a function that returns the JSX to be rendered. 
 :::
 
+---
+
+## Interacting with NEAR
+NEAR Components can readily view and call methods in the NEAR Blockchain. In order to interact with a contract, users will need to login with their NEAR account.
+
+<WidgetEditor>
+
+```jsx
+const counter = Near.view('counter.near-examples.testnet', 'get_num')
+
+if(counter === null) return 'Loading...'
+
+const add = () => {
+  Near.call('counter.near-examples.testnet', 'increment')
+}
+
+const subtract = () => {
+  Near.call('counter.near-examples.testnet', 'decrement')
+}
+
+return <>
+  <p> Counter: {counter} </p>
+  {!context.accountId && <p color="red"> Please login to interact with the contract</p>}
+  {context.accountId && 
+  <>
+    <button onClick={add}> + </button>
+    <button onClick={subtract}> - </button>
+  </>
+  }
+</>
+```
+
+</WidgetEditor>
+
 <hr class="subsection" />
 
-### Embedded
-To render your component as a standalone application, go to `https://near.social/#/<your-username>/widget/Greeter?name=Anna`.
+#### User Context
+The `context.accountId` will be `null` until the user logs-in, at which point it will will contain the user's ID.
 
-You can also embed your component in other websites, for example, here we simply have an iframe which `source` is `https://near.social/#/embed/gagdiez.near/widget/Greeter?name=Anna`:
+#### Viewing and Calling
+The `counter` variable is the result of `Near.view`, which returns a `state` variable! This variable can be:
+- `null` until the `Near.view` call is resolved.
+- `undefined` if the call is resolved but the contract does not return a value.
+- The value returned by the contract.
 
+`Near.call` is used to call a method in the contract. If no [access key](/concepts/basics/accounts/access-keys#function-call-keys) was created during login, the user will be prompted to sign the transaction.
 
-<iframe style={{"width": "100%", "height":"130px"}} src="https://near.social/#/embed/gagdiez.near/widget/Greeter?name=Anna"></iframe>
-<em>This component is being rendered inside an `iframe`</em>
-
-
-:::info
-Notice that we are passing the `props.name` as a `GET` parameter in the `url`.
+:::tip
+Login using the button at the top navigation bar. If you don't have a NEAR account, you'll be prompted to a `testnet` account for **free**.
 :::

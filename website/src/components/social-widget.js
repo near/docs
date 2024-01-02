@@ -21,7 +21,7 @@ export function WidgetEditor({ children, id = 1, height = "160px" }) {
         const { selector } = useWallet();
 
         useEffect(() => {
-          initNear && selector && initNear({ networkId: 'mainnet', selector });
+          initNear && selector && initNear({ networkId: 'testnet', selector });
         }, [initNear, selector]);
 
         return <div>
