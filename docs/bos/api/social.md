@@ -1,6 +1,6 @@
 ---
 id: social
-title: Overview
+title: Social Interactions
 ---
 
 import Tabs from '@theme/Tabs';

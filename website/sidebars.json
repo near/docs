@@ -636,25 +636,23 @@
   ],
   "integrate": [
     "develop/integrate/welcome",
-    "develop/what-is-possible",
     {
       "type": "html",
       "value": "<hr/>"
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> BOS Components </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Components </small></b></span>"
     },
     "bos/tutorial/quickstart",
-    "bos/tutorial/bos-gateway",
+    "bos/dev/intro",
     "bos/built-in-components",
     {
-      "Component API": [
-        "bos/api/home",
+      "Building Components": [
         "bos/api/state",
         "bos/api/near",
         {
-          "SocialDB": [
+          "Social Interactions": [
             "bos/api/social",
             "bos/api/indexing",
             "bos/api/notifications"
@@ -662,18 +660,19 @@
         },
         "bos/api/fetch",
         "bos/api/storage",
-        "bos/api/primitives",
         "bos/api/cache",
         "bos/api/clipboard"
       ]
     },
+
+    "bos/queryapi/bos-components",
+    "bos/tutorial/bos-gateway",
     {
       "Examples & Tutorials": [
         "bos/dev/bos-loader",
         "bos/tutorial/interaction",
         "bos/tutorial/ds-components",
         "bos/tutorial/using-iframes",
-        "bos/tutorial/bos-gateway",
         "bos/tutorial/push-notifications",
         "bos/tutorial/queryapi-websockets",
         "bos/tutorial/ethers-js",
@@ -681,7 +680,6 @@
         "bos/tutorial/lido"
       ]
     },
-    "bos/queryapi/bos-components",
     {
       "type": "html",
       "value": "<hr/>"

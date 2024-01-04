@@ -16,10 +16,9 @@ The predefined component `Widget` allows you to include an existing component in
 <WidgetEditor id='1' height="100px">
 
 ```ts
-const user = "gagdiez.near";
-const props = { name: "Anna" };
+const props = { name: "Anna", amount: 3 };
 
-return <Widget src={`${user}/widget/Greetings`} props={props} />;
+return <Widget src="influencer.testnet/widget/Greeter" props={props} />;
 ```
 
 </WidgetEditor>
@@ -32,31 +31,13 @@ A built-in component that enables users to directly upload an image to the Inter
 
 <WidgetEditor id='2' height="200px">
 
-```javascript
-State.init({
-  img: null,
-});
+```js
+State.init({image: {}})
 
-return (
-  <div className='container row'>
-    <div>
-      Image upload: <br />
-      <IpfsImageUpload image={state.img} />
-    </div>
-    <div>
-      Raw State:
-      <pre>{JSON.stringify(state)}</pre>
-    </div>
-    <div className='mt-2'>
-      {state.img.cid && (
-        <img
-          src={`https://ipfs.near.social/ipfs/${state.img.cid}`}
-          alt='uploaded'
-        />
-      )}
-    </div>
-  </div>
-);
+return <>
+  <p> Raw State: {JSON.stringify(state.image)} </p>
+  <IpfsImageUpload image={state.image} />
+</>
 ```
 
 </WidgetEditor>
@@ -69,53 +50,38 @@ A built-in component that enables to input files with drag and drop support. Rea
 
 <WidgetEditor id='3' height="220px">
 
-```ts
-State.init({ img: null });
+```js
+const [img, setImg] = useState(null);
+const [msg, setMsg] = useState('Upload an Image')
 
-const uploadFileUpdateState = (body) => {
-  asyncFetch(
+const uploadFile = (files) => {
+  setMsg('Uploading...')
+
+  const file = fetch(
     "https://ipfs.near.social/add",
     {
       method: "POST",
       headers: { Accept: "application/json" },
-      body
-    }
-  ).then(
-    (res) => {
-      const cid = res.body.cid;
-      State.update({ img: { cid } });
+      body: files[0]
     }
   )
-};
 
-const filesOnChange = (files) => {
-  if (files) {
-    State.update({ img: { uploading: true, cid: null } });
-    uploadFileUpdateState(files[0]);
-  }
-};
+  setImg(file.body.cid)
+  setMsg('Upload an Image')
+}
 
-return (
-  <div className="d-inline-block">
-    { state.img?
-      <img class="rounded w-100 h-100"
-        style={{ objectFit: "cover" }}
-        src={`https://ipfs.near.social/ipfs/${state.img.cid}`}
-        alt="upload preview" />
-      : ""
-    }
-    <Files
-      multiple={false}
-      accepts={["image/*"]}
-      minFileSize={1}
-      clickable
-      className="btn btn-outline-primary"
-      onChange={filesOnChange}
-    >
-      { state.img?.uploading ? <> Uploading </> : "Upload an Image" }
-    </Files>
-  </div>
-);
+return <>
+  <Files
+    multiple={false}
+    accepts={["image/*"]}
+    clickable
+    className="btn btn-outline-primary"
+    onChange={uploadFile}
+  >
+    {msg}
+  </Files>
+  {img ? <div><img src={`https://ipfs.near.social/ipfs/${img}`} /></div> : ''}
+</>;
 ```
 
 </WidgetEditor>
@@ -129,7 +95,13 @@ A component that enables to render Markdown.
 <WidgetEditor id='4' height="60px">
 
 ```jsx
-return <Markdown text={"This is some example **markdown** content, with _text_ example \n ## Subtitle \n Text"} />;
+const markdown = (`
+## A title
+
+This is some example **markdown** content, with _styled_ text
+`)
+
+return <Markdown text={markdown} />;
 ```
 
 </WidgetEditor>
@@ -148,44 +120,28 @@ Used to display a message or icon when the mouse is over a DOM element.
 <WidgetEditor id='5' height="200px">
 
 ```javascript
-State.init({
-  show: false,
-});
-
-const handleOnMouseEnter = () => {
-  State.update({ show: true });
-};
-const handleOnMouseLeave = () => {
-  State.update({ show: false });
-};
+const [show, setShow] = useState(false);
 
 const overlay = (
-  <div
-    className='border m-3 p-3 rounded-4 bg-white shadow'
-    style={{ maxWidth: "24em", zIndex: 1070 }}
-    onMouseEnter={handleOnMouseEnter}
-    onMouseLeave={handleOnMouseLeave}
-  >
+  <div className='border m-3 p-3'>
     This is the overlay Message
   </div>
 );
 
 return (
   <OverlayTrigger
-    show={state.show}
-    trigger={["hover", "focus"]}
+    show={show}
     delay={{ show: 250, hide: 300 }}
     placement='auto'
     overlay={overlay}
   >
-    <span
-      className='d-inline-flex'
-      style={{ backgroundColor: "gray", borderRadius: "10px", padding: "10px" }}
-      onMouseEnter={handleOnMouseEnter}
-      onMouseLeave={handleOnMouseLeave}
+    <button
+      className="btn btn-outline-primary"
+      onMouseEnter={() => setShow(true)}
+      onMouseLeave={() => setShow(false)}
     >
       Place Mouse Over Me
-    </span>
+    </button>
   </OverlayTrigger>
 );
 ```
@@ -217,97 +173,29 @@ Read more about the [react-infinite-scroller](https://www.npmjs.com/package/reac
 
 <WidgetEditor id='6' height="200px">
 
-```ts
+```js
 const allNumbers = Array.from(Array(100).keys())
-
-State.init({
-  displayNums: [],
-  lastNumber: 0,
-});
+const [lastNumber, setLastNumber] = useState(0);
+const [display, setDisplay] = useState([]);
 
 const loadNumbers = (page) => {
-  allNumbers
-    .slice(state.lastNumber, state.lastNumber + 10)
-    .map((n) => numberToElem(n))
-    .forEach((i) => state.displayNums.push(i));
-  state.lastNumber += 10;
-  State.update();
-};
+  const toDisplay = allNumbers
+    .slice(0, lastNumber + page*10)
+    .map(n => <p>{n}</p>)
 
-const numberToElem = (number) => <div> {number} </div>;
-
-return (
-  <div>
-    <InfiniteScroll
-      loadMore={loadNumbers}
-      hasMore={state.displayNums.length < allNumbers.length}
-    >
-      <p>{state.displayNums}</p>
-    </InfiniteScroll>
-  </div>
-);
-```
-
-</WidgetEditor>
-
-### Example: Meme Feed
-
-<WidgetEditor id='7' height="260px">
-
-```ts
-const data = Social.keys(`*/post/meme`, "final", { return_type: "History" });
-
-if (!data) { return "Loading"; }
-
-const processData = (data) => {
-  const accounts = Object.entries(data);
-
-  const allMemes = accounts
-    .map((account) => {
-      const accountId = account[0];
-      const blockHeights = account[1].post.meme;
-      return blockHeights.map((blockHeight) => ({
-        accountId,
-        blockHeight,
-      }));
-    })
-    .flat();
-
-  allMemes.sort((a, b) => b.blockHeight - a.blockHeight);
-  return allMemes;
-};
-
-const memeToWidget = ({accountId, blockHeight}) => {
-  return <div style={{ minHeight: "200px" }}>
-    <a href={`#/mob.near/widget/Meme?accountId=${accountId}&blockHeight=${blockHeight}`}
-      class="text-decoration-none" >
-      <Widget src="mob.near/widget/Meme" props={{accountId, blockHeight}} />
-    </a>
-  </div >
-};
-
-State.init({
-  allMemes: processData(data),
-  widgets: [],
-});
-
-const makeMoreMemes = () => {
-  const newMemes = state.allMemes
-    .slice(state.widgets.length, state.widgets.length + 10)
-    .map(memeToWidget);
-  newMemes.forEach((meme) => state.widgets.push(meme));
-  State.update();
+  console.log(lastNumber + page*10)
+  setDisplay(toDisplay);
+  setLastNumber(lastNumber + page*10);
 };
 
 return (
-  <div className="px-2 mx-auto" >
-    <InfiniteScroll
-      loadMore={makeMoreMemes}
-      hasMore={state.widgets.length < state.allMemes.length}
-    >
-      <div>{state.widgets}</div>
-    </InfiniteScroll>
-  </div>
+  <InfiniteScroll
+    loadMore={loadNumbers}
+    hasMore={lastNumber < allNumbers.length}
+    useWindow={false}
+  >
+    {display}
+  </InfiniteScroll>
 );
 ```
 
@@ -319,23 +207,22 @@ return (
 
 Provides a type-ahead input field for selecting an option from a list of choices. More information about the component can be found [here](https://github.com/ericgio/react-bootstrap-typeahead).
 
-<WidgetEditor id='8' height="220px">
+<WidgetEditor id='7' height="300px">
 
 ```jsx
+const [selected, setSelected] = useState([]);
 const options = ["Apple", "Banana", "Cherry", "Durian", "Elderberry"];
 
-return (
-  <div class="container min-vh-100 min-vw-100">
-    <Typeahead
-      options={options}
-      multiple
-      onChange={(value) => {State.update({choose: value})}}
-      placeholder='Choose a fruit...'
-    />
-    <hr />
-    <p> Selected: {JSON.stringify(state.choose)} </p>
-  </div>
-);
+return <>
+  <Typeahead
+    options={options}
+    multiple
+    onChange={v => setSelected(v)}
+    placeholder='Choose a fruit...'
+  />
+  <hr />
+  <p> Selected: {selected.join(', ')} </p>
+</>;
 ```
 
 </WidgetEditor>
@@ -375,30 +262,34 @@ return (
 
 ## Tooltip
 
-Displays a message once the mouse hovers over a particular item. This component was imported from [`React-Bootstrap`](https://react-bootstrap.netlify.app/components/overlays/#tooltips).
+Displays a message once the mouse hovers over a particular item. This component was imported from [`React-Bootstrap`](https://react-bootstrap-v3.netlify.app/components/tooltips/).
 
-<WidgetEditor id='1' height="120px">
+<WidgetEditor id='9' height="120px">
 
-```jsx
-return (
-  <>
-    {["top", "right", "bottom", "left"].map((placement) => (
-      <div style={{ margin: "2.5rem 1rem", float: "left" }}>
-        <OverlayTrigger
-          key={placement}
-          placement={placement}
-          overlay={
-            <Tooltip id={`tooltip-${placement}`}>
-              Tooltip on <strong>{placement}</strong>.
-            </Tooltip>
-          }
-        >
-          <button variant="secondary">Tooltip on {placement}</button>
-        </OverlayTrigger>
-      </div>
-    ))}
-  </>
+```js
+const tooltip = (
+  <Tooltip id="tooltip">
+    <strong>Holy guacamole!</strong> Check this info.
+  </Tooltip>
 );
+
+return <>
+  <OverlayTrigger placement="left" overlay={tooltip}>
+    <button>Holy guacamole!</button>
+  </OverlayTrigger>
+
+  <OverlayTrigger placement="top" overlay={tooltip}>
+    <button>Holy guacamole!</button>
+  </OverlayTrigger>
+
+  <OverlayTrigger placement="bottom" overlay={tooltip}>
+    <button>Holy guacamole!</button>
+  </OverlayTrigger>
+
+  <OverlayTrigger placement="right" overlay={tooltip}>
+    <button>Holy guacamole!</button>
+  </OverlayTrigger>
+</>
 ```
 
 </WidgetEditor>
