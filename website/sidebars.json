@@ -646,18 +646,14 @@
     },
     "bos/tutorial/quickstart",
     "bos/dev/intro",
-    "bos/built-in-components",
     {
       "Building Components": [
         "bos/api/state",
         "bos/api/near",
-        {
-          "Social Interactions": [
-            "bos/api/social",
-            "bos/api/indexing",
-            "bos/api/notifications"
-          ]
-        },
+        "bos/api/social",
+        "bos/api/indexing",
+        "bos/api/notifications",
+        "bos/api/builtin-components",
         "bos/api/fetch",
         "bos/api/storage",
         "bos/api/cache",
