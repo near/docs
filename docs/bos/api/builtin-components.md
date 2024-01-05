@@ -1,5 +1,5 @@
 ---
-id: built-in-components
+id: builtin-components
 title: List of Native Components
 ---
 

@@ -1,6 +1,6 @@
 ---
 id: intro
-title: Developer Environments
+title: Choosing an Environment
 ---
 
 Building, deploying, and collaborating within a new framework can be challenging. The NEAR community has created helpful workflows using new tools to simplify your development workflow.
