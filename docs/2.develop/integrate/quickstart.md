@@ -11,7 +11,7 @@ Most interactions with the NEAR ecosystem can be grouped in 2 categories:
 1. Interacting with a [NEAR smart contract](/develop/contracts/quickstart).
 2. Interacting with a [NEAR component](/bos/tutorial/quickstart).
 
-In this guide we will show you how to quickly spin-up an application were users can **login** using their wallets and interact with both **contracts** and **components**.
+In this guide we will show you how to quickly spin-up an application where users can **login** using their wallets and interact with both **contracts** and **components**.
 
 Furthermore, the application readily integrates a `Web3 wallet`, allowing people to use `Metamask` to interact with multi-chain components.
 
