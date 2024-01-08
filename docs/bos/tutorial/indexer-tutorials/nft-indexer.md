@@ -140,7 +140,7 @@ await context.db.Nfts.insert(nftMintData);
 
 ## NEAR Component
 
-The final step is querying the indexer using GraphQL from a [B.O.S. component](../../tutorial/queryapi-ws.md) with WebSockets.
+The final step is querying the indexer using GraphQL from a [NEAR component](../../tutorial/queryapi-ws.md) with WebSockets.
 
 Here's a simple GraphQL query that gets the last `${LIMIT}` minted NFTs:
 
