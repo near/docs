@@ -647,7 +647,7 @@
     "bos/tutorial/quickstart",
     "bos/dev/intro",
     {
-      "Building Components": [
+      "Anatomy of a Component": [
         "bos/api/state",
         "bos/api/near",
         "bos/api/social",
@@ -657,11 +657,10 @@
         "bos/api/fetch",
         "bos/api/storage",
         "bos/api/cache",
-        "bos/api/clipboard"
+        "bos/api/clipboard",
+        "bos/queryapi/bos-components"
       ]
     },
-
-    "bos/queryapi/bos-components",
     "bos/tutorial/bos-gateway",
     {
       "Examples & Tutorials": [

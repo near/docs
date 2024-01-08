@@ -1,6 +1,6 @@
 ---
 id: bos-gateway
-title: Gateways
+title: Using Components in your App
 ---
 
 The [`Components`](../components.md) you create are stored in the NEAR blockchain. To read and execute their code you will need a `Gateway`.

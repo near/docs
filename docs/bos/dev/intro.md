@@ -1,6 +1,6 @@
 ---
 id: intro
-title: Choosing an Environment
+title: Setup your Dev Environment
 ---
 
 Building, deploying, and collaborating within a new framework can be challenging. The NEAR community has created helpful workflows using new tools to simplify your development workflow.
