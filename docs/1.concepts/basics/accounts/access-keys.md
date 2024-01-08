@@ -2,10 +2,10 @@
 id: access-keys
 title: Access Keys
 ---
-In blockchain, using an account actually refers to using a `private key` to sign [transactions](../transactions/overview.md).
+In blockchain, using an account refers to using a `private key` to sign [transactions](../transactions/overview.md).
 
 NEAR Accounts have the unique feature of holding multiple [public/private key pairs](https://en.wikipedia.org/wiki/Public-key_cryptography),
-called Access Keys, each with their **own set of permissions**.
+called Access Keys, each with its **own set of permissions**.
 
 Access Keys are similar to [OAuths](https://en.wikipedia.org/wiki/OAuth), enabling you to grant **limited access** over your account
 to third-parties.
@@ -13,22 +13,22 @@ to third-parties.
 ---
 
 ## Benefits of Access Keys
-Since the concept of Access Keys is unique to NEAR it is worth to first understand why and how they can be used.
+Since the concept of Access Keys is unique to NEAR it is worth understanding why and how they can be used.
 
 #### Using An App Safely
 Imagine that you want to play a web3 game consisting of a web-app and a smart contract. You can create a key that only
-allows to **call specific methods** in the game's contract.
+allows you to **call specific methods** in the game's contract.
 
 You can safely give the key to the game, so it can sign **game-related transactions** for you without needing to interrupt
 the gameplay on each transaction.
 
 #### Replacing Keys
 If you think any of your keys could be compromised, you can simply remove them or swap them with a new one. Just as how
-you would change your password on any website.
+you can change your password on any website.
 
 #### Implementing Key Recovery
 You could implement a key-recovery [contract](smartcontract.md) in your account, and create a
-"recovery key" for someone you trust. Such key could only be used to start the recovery.
+"recovery key" for someone you trust. Such a key could only be used to start the recovery.
 
 When needed, that third-party component could trigger the recovery process, helping to create a new master for you.
 
@@ -46,7 +46,7 @@ As the name suggests, `FullAccess` keys have full control of an account, similar
 Particularly, Full Access keys can be used to sign transactions doing [any action](https://nomicon.io/RuntimeSpec/Actions) in your account's behalf:
 
 1. Create immediate [sub-accounts](account-id.md#rules-for-creating-named-accounts) and [top-level accounts](account-id.md#named-accounts) if the account ID's length is at least 32 characters.
-2. Delete your account (but **not** sub-accounts, since they have their own keys).
+2. Delete your account (but **not** sub-accounts, since they have their keys).
 3. Add or remove Access Keys.
 4. Deploy a smart contract in the account.
 5. Call methods on any contract (yours or others).
@@ -85,6 +85,6 @@ If the dApps requests to transfer **any amount of tokens** with the `FunctionCal
 If you remove all keys from an account, then the account will become **locked**, meaning that no external actor can perform transactions in the
 account's name.
 
-In practice, this means that only the account's smart contract can transfer assets, create sub-accounts, or update its own code.
+In practice, this means that only the account's smart contract can transfer assets, create sub-accounts, or update its code.
 
 Locking an account is very useful when one wants to deploy a contract, and let the community be assured that only the contract is in control of the account.
