@@ -18,7 +18,7 @@ Under the hood, NEAR CLI utilizes the [`NEAR JavaScript API`](https://github.com
 :::info
 
 The NEAR CLI also comes with an implementation in Rust called [`near-cli-rs`](https://github.com/near/near-cli-rs).
-
+If you want to use `near-cli` while you have `near-cli-rs` installed, prefix the following commands with `npx`.
 :::
 
 ## Overview {#overview}
@@ -549,6 +549,12 @@ near create-account sub-acct.example-acct.testnet --masterAccount example-acct.t
 
 ```bash
 near create-account sub-acct2.example-acct.testnet --masterAccount example-acct.testnet --initialBalance 10
+```
+
+**.testnet example:**
+To create a `.testnet` (or `.mainnet`) account, you must call the testnet contract to create the account. Here is an example:
+```bash
+near call testnet create_account '{"new_account_id": "<account-name>.testnet", "new_public_key": "ed25519:<data>"}' --deposit 0.00182 --accountId <account-with-funds>
 ```
 
 <details>
