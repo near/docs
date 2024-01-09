@@ -8,14 +8,6 @@ hide_table_of_contents: false
 import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
 import ContactUs from '@site/src/components/ContactUs.mdx';
 
-
-- [What is an NFT?](#what-is-an-nft)
-- [How to create NFT collection](#how-to-create-nft-collection)
-
----
-
-## What is an NFT?
-
 In contrast with fungible tokens, non-fungible tokens (NFT) are unitary and therefore unique. This makes NFTs ideal to represent ownership of assets such as a piece of digital content, or a ticket for an event.
 
 As with fungible tokens, NFTs are **not stored** in the user's wallet, instead, each NFT lives in a **NFT contract**. The NFT contract works as a bookkeeper, this is: it is in charge of handling the creation, storage and transfers of NFTs.

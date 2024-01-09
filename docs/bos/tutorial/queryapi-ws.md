@@ -4,7 +4,7 @@ title: WebSocket-enabled Components with QueryAPI
 sidebar_label: WebSockets & QueryAPI
 ---
 
-In this article you'll learn how to create a B.O.S. component that gathers information from a [QueryAPI indexer](../queryapi/intro.md) using WebSockets.
+In this article you'll learn how to create a NEAR component that gathers information from a [QueryAPI indexer](../queryapi/intro.md) using WebSockets.
 In this example, the QueryAPI indexer monitors the widget activity on the blockchain, and the NEAR component gets that information using WebSockets.
 
 :::info
@@ -145,7 +145,7 @@ Learn more about [QueryAPI indexing functions](../queryapi/index-function.md) an
 
 ## Using WebSockets
 
-Once you have a QueryAPI indexer running, you can use WebSockets to get the data in your B.O.S. component. You only need to create a `WebSocket` object pointing to the QueryAPI's GraphQL endpoint.
+Once you have a QueryAPI indexer running, you can use WebSockets to get the data in your NEAR Component. You only need to create a `WebSocket` object pointing to the QueryAPI's GraphQL endpoint.
 
 ### Setup
 

@@ -14,7 +14,7 @@ You can request access through [this link](http://bit.ly/near-queryapi-beta).
 
 ## Overview
 
-This tutorial creates a working NFT indexer using [NEAR QueryAPI](../../queryapi/intro.md), and builds a [B.O.S. component](../../components.md) that presents the data. The indexer is watching for `nft_mint` [Events](https://nomicon.io/Standards/EventsFormat) and captures some relevant data:
+This tutorial creates a working NFT indexer using [NEAR QueryAPI](../../queryapi/intro.md), and builds a [NEAR component](../../components.md) that presents the data. The indexer is watching for `nft_mint` [Events](https://nomicon.io/Standards/EventsFormat) and captures some relevant data:
 
 - `receiptId` of the [Receipt](https://near-indexers.io/docs/data-flow-and-structures/structures/receipt) where the mint has happened
 - `receiverId`
@@ -140,7 +140,7 @@ await context.db.Nfts.insert(nftMintData);
 
 ## NEAR Component
 
-The final step is querying the indexer using GraphQL from a [B.O.S. component](../../tutorial/queryapi-ws.md) with WebSockets.
+The final step is querying the indexer using GraphQL from a [NEAR component](../../tutorial/queryapi-ws.md) with WebSockets.
 
 Here's a simple GraphQL query that gets the last `${LIMIT}` minted NFTs:
 
