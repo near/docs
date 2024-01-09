@@ -1,7 +1,7 @@
 ---
 id: bos-components
-title: Components handling Historical data
-sidebar_label: Components & Historical data
+title: Historical data
+sidebar_label: Handling Historical data
 ---
 
 Building components that handle historical blockchain data require dedicated solutions that manage the data and reduce the latency of requests, as it's not possible to scan the whole blockchain when a user makes a request.

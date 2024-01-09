@@ -649,15 +649,12 @@
     {
       "Anatomy of a Component": [
         "bos/api/state",
+        "bos/api/web-methods",
         "bos/api/near",
         "bos/api/social",
         "bos/api/indexing",
         "bos/api/notifications",
         "bos/api/builtin-components",
-        "bos/api/fetch",
-        "bos/api/storage",
-        "bos/api/cache",
-        "bos/api/clipboard",
         "bos/queryapi/bos-components"
       ]
     },
