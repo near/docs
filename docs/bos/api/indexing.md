@@ -6,7 +6,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {WidgetEditor} from "@site/src/components/social-widget"
 
-NEAR B.O.S allows applications to index actions so they can be easily found later by other components.
+NEAR allows applications to index actions so they can be easily found later by other components.
 
 For example, it is very useful to index all "comment" actions, so we can easily retrieve all the comments for a post.
 

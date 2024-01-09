@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 
 At the core of NEAR social interactions there is the [SocialDB smart contract](https://github.com/NearSocial/social-db) (currently deployed at [social.near](https://nearblocks.io/address/social.near)).
 
-B.O.S provides a convenient API to get data from the SocialDB contract, composed by four methods:
+NEAR provides a convenient API to get data from the SocialDB contract, composed by four methods:
 
 - [`Social.get`](#socialget)
 - [`Social.getr`](#socialgetr)
