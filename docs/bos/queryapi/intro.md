@@ -42,9 +42,9 @@ Common indexing challenges include:
 As you can see, running indexers is a complex and comprehensive set of processes and
 Near QueryAPI tries to cover most (or all) of these needs, offering an open-source solution for creating, managing, and exploring indexers.
 
-### BOS Component
+### NEAR Component
 
-QueryAPI has a [`QueryApi.App` BOS widget](https://near.org/#/dataplatform.near/widget/QueryApi.App), hosted under the `dataplatform.near` account.
+QueryAPI has a [`QueryApi.App` NEAR widget](https://near.org/#/dataplatform.near/widget/QueryApi.App), hosted under the `dataplatform.near` account.
 With this component, you can see all the public indexers currently available on the Near blockchain.
 
 If you would like to create a new indexer, simply click [**Create New Indexer**](https://near.org/#/dataplatform.near/widget/QueryApi.App/?view=create-new-indexer).
@@ -54,7 +54,7 @@ If you would like to create a new indexer, simply click [**Create New Indexer**]
 ### Indexers stored on-chain
 
 QueryAPI stores all the indexer logic and schemas used to provision the databases on-chain.
-Whenever you interact with the QueryAPI BOS component, in the background it's making an RPC query to [`queryapi.dataplatform.near`](https://stats.gallery/mainnet/queryapi.dataplatform.near/contract?t=week),
+Whenever you interact with the QueryAPI NEAR component, in the background it's making an RPC query to [`queryapi.dataplatform.near`](https://stats.gallery/mainnet/queryapi.dataplatform.near/contract?t=week),
 where a smart contract stores all of your indexer logic as well as your schemas.
 
 For example, if you select the _feed-indexer_ and click on [**View indexer**](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=dataplatform.near/feed-indexer) you'll see all the details about an indexer that powers the [near.org](https://near.org)'s main posts feed.

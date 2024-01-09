@@ -3,7 +3,7 @@ id: quickstart
 title: ⭐ Quickstart
 ---
 
-The Blockchain Operating System (BOS) allows you to quicky develop fullstack decentralized applications by publishing all of its source code on-chain.
+NEAR allows you to quicky develop fullstack decentralized applications by publishing all of its source code on-chain.
 
 In this quickstart tutorial we will create a simple application that takes a name as input and renders a friendly greeting.
 
@@ -16,7 +16,7 @@ In this quickstart tutorial we will create a simple application that takes a nam
 There are two pathways to creating components & applications:  
 
 - [Online IDE](https://near.org/sandbox) - quickly get started w/ zero setup allowing you to instantly prototype & ship code
-- [Local IDE](https://docs.near.org/bos/dev/intro) - get serious and use our BOS DevTools to setup your local dev environment
+- [Local IDE](https://docs.near.org/bos/dev/intro) - get serious and use our NEAR DevTools to setup your local dev environment
 
 ---
 
@@ -70,12 +70,12 @@ Accept the transaction in your NEAR Wallet, so the component gets stored in the 
 <hr class="subsection" />
 
 ## Using Your dApp
-Once your application is published, it will be ready to be combined with other components, or rendered as a standalone application  using the BOS Viewer. 
+Once your application is published, it will be ready to be combined with other components, or rendered as a standalone application  using the NEAR Viewer. 
 
 <hr class="subsection" />
 
 ### Composition
-A BOS application is simply a component that puts together multiple components; this outer component acts as the entry point to your application. To use your component inside of another, simply invoke it using a `<Widget>` component. This will fetch the code from the NEAR blockchain, and include it inside of your new application.
+A NEAR application is simply a component that puts together multiple components; this outer component acts as the entry point to your application. To use your component inside of another, simply invoke it using a `<Widget>` component. This will fetch the code from the NEAR blockchain, and include it inside of your new application.
 
 ```ts
 const user = "gagdiez.near";
