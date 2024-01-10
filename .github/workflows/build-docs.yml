@@ -1,15 +1,13 @@
 name: Build docs on PR merge
 
 on:
-  pull_request:
-    types: [closed]
+  push:
     branches:
       - master
   workflow_dispatch:
 
 jobs:
   merge_job:
-    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
