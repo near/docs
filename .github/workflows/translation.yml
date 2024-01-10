@@ -40,7 +40,7 @@ jobs:
           cd website
           yarn
           yarn crowdin:download
-          yarn build
+          yarn build:main
 
       - name: Commit build
         run: |
