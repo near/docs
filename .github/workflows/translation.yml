@@ -1,0 +1,55 @@
+name: Download translation and build docs
+
+on:
+  schedule:
+    - cron: "0 9 * * 1"
+  workflow_dispatch:
+
+jobs:
+  merge_job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: "0"
+
+      - uses: actions/cache@v3
+        with:
+          path: |
+            ${{ github.workspace }}/website/.docusaurus
+            ${{ github.workspace }}/**/.cache
+          key: |
+            ${{ runner.os }}-docusaurus-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-docusaurus-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Set Git config
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "Github Actions"
+
+      - name: Checkout and pull build
+        run: |
+          git fetch
+          git checkout build
+          git pull
+
+      - name: Install dependencies and build
+        run: |
+          cd website
+          yarn
+          yarn crowdin:download
+          yarn build
+
+      - name: Commit build
+        run: |
+          git add -f ./website/build
+          if git commit -m "add new build";then
+            git push
+          else 
+            echo "Nothing to commit"
+          fi
+    env:
+      NODE_OPTIONS: --max-old-space-size=8192
+      CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
