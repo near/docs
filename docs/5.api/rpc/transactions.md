@@ -19,7 +19,7 @@ The RPC API enables you to send transactions and query their status.
 - method: `send_tx`
 - params: 
   - SignedTransaction encoded in base64
-  - [Optional] `wait_until`: the required minimal level of execution. Can be one of listed below. The default value is `FINAL`.
+  - [Optional] `wait_until`: the required minimal execution level. It can be one of the listed below. The default value is `FINAL`.
 
 ```rust
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
