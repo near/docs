@@ -6,9 +6,6 @@ on:
     types: [opened, reopened, synchronize]
     branches:
       - master
-  push:
-    branches:
-      - master
 
 jobs:
   build-check:
