@@ -1,0 +1,58 @@
+name: Build docs on PR merge
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  merge_job:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: "0"
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "18"
+
+      - uses: actions/cache@v3
+        with:
+          path: |
+            ${{ github.workspace }}/website/.docusaurus
+            ${{ github.workspace }}/**/.cache
+          key: |
+            ${{ runner.os }}-docusaurus-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-docusaurus-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Set Git config
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "Github Actions"
+
+      - name: Merge master back to build
+        run: |
+          git fetch 
+          git checkout build
+          git pull
+          git merge --no-ff master -m "Auto-merge main back to build"
+
+      - name: Install dependencies and build
+        run: |
+          cd website
+          yarn
+          yarn build
+          yarn crowdin:upload
+
+      - name: Commit build
+        run: |
+          git add -f ./website/build 
+          git commit -m "Merge with master"
+          git push
+    env:
+      NODE_OPTIONS: --max-old-space-size=8192
+      CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
