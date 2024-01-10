@@ -26,16 +26,16 @@ The RPC API enables you to send transactions and query their status.
 pub enum TxExecutionStatus {
   /// Transaction is waiting to be included into the block
   None,
-  /// Transaction is included into the block. The block may be not finalised yet
+  /// Transaction is included into the block. The block may be not finalized yet
   Included,
-  /// Transaction is included into finalised block
+  /// Transaction is included into finalized block
   IncludedFinal,
-  /// Transaction is included into finalised block +
+  /// Transaction is included into finalized block +
   /// All the transaction receipts finished their execution.
-  /// The corresponding blocks for each receipt may be not finalised yet
+  /// The corresponding blocks for each receipt may be not finalized yet
   Executed,
-  /// Transaction is included into finalised block +
-  /// Execution of transaction receipts is finalised
+  /// Transaction is included into finalized block +
+  /// Execution of transaction receipts is finalized
   #[default]
   Final,
 }
