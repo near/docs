@@ -1,0 +1,27 @@
+{
+  "id": "tutorials/examples/guest-book",
+  "title": "방명록",
+  "description": "이 방명록 예제는 두 가지 주요 구성 요소로 이루어진 간단한 앱입니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/examples/guest-book.md",
+  "sourceDirName": "3.tutorials/examples",
+  "slug": "/tutorials/examples/guest-book",
+  "permalink": "/ko/tutorials/examples/guest-book",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/examples/guest-book.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "guest-book",
+    "title": "방명록"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Autonomous Organizations (DAO)",
+    "permalink": "/ko/develop/relevant-contracts/dao"
+  },
+  "next": {
+    "title": "교차 컨트랙트 호출(Cross Contract Call)",
+    "permalink": "/ko/tutorials/examples/xcc"
+  }
+}

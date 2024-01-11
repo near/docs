@@ -1,0 +1,27 @@
+{
+  "id": "develop/upgrade",
+  "title": "컨트랙트 업데이트",
+  "description": "NEAR 계정은 로직(컨트랙트의 코드)을 상태(스토리지)와 분리하여, 코드를 변경할 수 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.develop/upgrade.md",
+  "sourceDirName": "2.develop",
+  "slug": "/develop/upgrade",
+  "permalink": "/ko/develop/upgrade",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/upgrade.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "upgrade",
+    "title": "컨트랙트 업데이트"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "배포 및 사용",
+    "permalink": "/ko/develop/deploy"
+  },
+  "next": {
+    "title": "계정 잠금",
+    "permalink": "/ko/develop/lock"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "bos/queryapi/how-it-works",
+  "title": "How QueryAPI works",
+  "description": "QueryApi is a streaming indexer implementation that executes custom indexing logic written by developers on the NEAR blockchain. QueryApi allows hosted execution of complex queries (ones that can’t be answered by a simple RPC or Enhanced API call), data hosting, and its exposure via GraphQL endpoints.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/bos/queryapi/how-works.md",
+  "sourceDirName": "bos/queryapi",
+  "slug": "/bos/queryapi/how-it-works",
+  "permalink": "/ko/bos/queryapi/how-it-works",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/queryapi/how-works.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "how-it-works",
+    "title": "How QueryAPI works",
+    "sidebar_label": "How it works"
+  },
+  "sidebar": "indexers",
+  "previous": {
+    "title": "Introduction",
+    "permalink": "/ko/bos/queryapi/intro"
+  },
+  "next": {
+    "title": "Getting Started",
+    "permalink": "/ko/bos/community/indexers"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "concepts/web3/near",
+  "title": "NEAR Protocol",
+  "description": "For the beginners, it’s always better to start with documentation, and NEAR has an excellent one. Here, we only focus on basic concepts which are necessary to understand later chapters, so an entire guideline could be understood without prior NEAR knowledge.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/1.concepts/web3/near.md",
+  "sourceDirName": "1.concepts/web3",
+  "slug": "/concepts/web3/near",
+  "permalink": "/vi/concepts/web3/near",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/web3/near.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "near",
+    "title": "NEAR Protocol",
+    "sidebar_label": "NEAR Protocol"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Blockchain basics",
+    "permalink": "/vi/concepts/web3/basics"
+  },
+  "next": {
+    "title": "Economics",
+    "permalink": "/vi/concepts/web3/economics"
+  }
+}

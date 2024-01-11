@@ -1,0 +1,32 @@
+{
+  "id": "tutorials/nfts/series",
+  "title": "Customizing the NFT Contract",
+  "description": "In this tutorial, you'll learn how to take the existing NFT contract you've been working with and modify it to meet some of the most common needs in the ecosystem. This includes:",
+  "source": "@site/../docs/3.tutorials/nfts/9-series.md",
+  "sourceDirName": "3.tutorials/nfts",
+  "slug": "/tutorials/nfts/series",
+  "permalink": "/tutorials/nfts/series",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/9-series.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "omahs",
+  "lastUpdatedAt": 1696510785,
+  "formattedLastUpdatedAt": "Oct 5, 2023",
+  "sidebarPosition": 9,
+  "frontMatter": {
+    "id": "series",
+    "title": "Customizing the NFT Contract",
+    "sidebar_label": "Lazy Minting, Collections, and More!"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Marketplace",
+    "permalink": "/tutorials/nfts/marketplace"
+  },
+  "next": {
+    "title": "Introduction",
+    "permalink": "/tutorials/fts/introduction"
+  }
+}

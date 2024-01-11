@@ -1,0 +1,32 @@
+{
+  "id": "tutorials/fts/transfers",
+  "title": "Transferring Fungible Tokens",
+  "description": "In this tutorial, you'll learn how to implement the core standards into your smart contract. You'll implement the logic that allows you to transfer and receive tokens. If you're joining us for the first time, feel free to clone this repository and follow along in the 4.storage folder.",
+  "source": "@site/../docs/3.tutorials/fts/5.transfers.md",
+  "sourceDirName": "3.tutorials/fts",
+  "slug": "/tutorials/fts/transfers",
+  "permalink": "/tutorials/fts/transfers",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/fts/5.transfers.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "omahs",
+  "lastUpdatedAt": 1696510785,
+  "formattedLastUpdatedAt": "Oct 5, 2023",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "id": "transfers",
+    "title": "Transferring Fungible Tokens",
+    "sidebar_label": "Transferring FTs"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Registering Accounts",
+    "permalink": "/tutorials/fts/registering-accounts"
+  },
+  "next": {
+    "title": "Adding FTs to a Marketplace",
+    "permalink": "/tutorials/fts/marketplace"
+  }
+}

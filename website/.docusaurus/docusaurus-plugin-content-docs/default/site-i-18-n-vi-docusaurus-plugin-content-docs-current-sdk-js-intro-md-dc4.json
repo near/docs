@@ -1,0 +1,27 @@
+{
+  "id": "sdk/js/get-started",
+  "title": "Getting Started",
+  "description": "You can develop smart contracts on Windows using Windows Subsystem for Linux (WSL2).",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/sdk/js/intro.md",
+  "sourceDirName": "sdk/js",
+  "slug": "/sdk/js/get-started",
+  "permalink": "/vi/sdk/js/get-started",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/js/intro.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "get-started",
+    "title": "Getting Started"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "About JS SDK",
+    "permalink": "/vi/sdk/js/introduction"
+  },
+  "next": {
+    "title": "NearBindgen",
+    "permalink": "/vi/sdk/js/contract-structure/near-bindgen"
+  }
+}

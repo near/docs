@@ -1,0 +1,30 @@
+{
+  "id": "sdk/rust/promises/create-account",
+  "title": "Creating Accounts",
+  "description": "You might want to create an account from a contract for many reasons. One example:",
+  "source": "@site/../docs/sdk/rust/promises/create-account.md",
+  "sourceDirName": "sdk/rust/promises",
+  "slug": "/sdk/rust/promises/create-account",
+  "permalink": "/sdk/rust/promises/create-account",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/rust/promises/create-account.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1661352815,
+  "formattedLastUpdatedAt": "Aug 24, 2022",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "Sending $NEAR",
+    "permalink": "/sdk/rust/promises/token-tx"
+  },
+  "next": {
+    "title": "Deploying Contracts",
+    "permalink": "/sdk/rust/promises/deploy-contract"
+  }
+}

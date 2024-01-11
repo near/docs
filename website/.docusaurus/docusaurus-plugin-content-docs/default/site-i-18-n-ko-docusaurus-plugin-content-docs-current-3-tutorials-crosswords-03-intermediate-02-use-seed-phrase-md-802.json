@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/crosswords/intermediate/use-seed-phrase",
+  "title": "필수 라이브러리부터 시드 문구 로직 구현",
+  "description": "우리가 하고자 하는 두 가지 별도의 작업이 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/crosswords/03-intermediate/02-use-seed-phrase.md",
+  "sourceDirName": "3.tutorials/crosswords/03-intermediate",
+  "slug": "/tutorials/crosswords/intermediate/use-seed-phrase",
+  "permalink": "/ko/tutorials/crosswords/intermediate/use-seed-phrase",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/crosswords/03-intermediate/02-use-seed-phrase.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3,
+    "sidebar_label": "시드 문구 로직",
+    "title": "필수 라이브러리부터 시드 문구 로직 구현"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "시드 문구를 정답으로",
+    "permalink": "/ko/tutorials/crosswords/intermediate/access-key-solution"
+  },
+  "next": {
+    "title": "Linkdrop 컨트랙트",
+    "permalink": "/ko/tutorials/crosswords/intermediate/linkdrop"
+  }
+}

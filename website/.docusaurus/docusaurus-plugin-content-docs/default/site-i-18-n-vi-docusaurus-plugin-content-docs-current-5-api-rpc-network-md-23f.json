@@ -1,0 +1,27 @@
+{
+  "id": "api/rpc/network",
+  "title": "Network",
+  "description": "Ví dụ:",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/5.api/rpc/network.md",
+  "sourceDirName": "5.api/rpc",
+  "slug": "/api/rpc/network",
+  "permalink": "/vi/api/rpc/network",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/5.api/rpc/network.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "network",
+    "title": "Network"
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Protocol",
+    "permalink": "/vi/api/rpc/protocol"
+  },
+  "next": {
+    "title": "Transactions",
+    "permalink": "/vi/api/rpc/transactions"
+  }
+}

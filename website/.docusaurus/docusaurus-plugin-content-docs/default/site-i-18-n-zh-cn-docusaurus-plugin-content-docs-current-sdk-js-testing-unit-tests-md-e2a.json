@@ -1,0 +1,27 @@
+{
+  "id": "sdk/js/testing/unit-tests",
+  "title": "Unit Tests",
+  "description": "You can unit test abstracted logic implemented by smart contract functions like regular JavaScript functions with any testing library of your liking. A simple example would look as follows:",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/sdk/js/testing/unit-tests.md",
+  "sourceDirName": "sdk/js/testing",
+  "slug": "/sdk/js/testing/unit-tests",
+  "permalink": "/zh-CN/sdk/js/testing/unit-tests",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/js/testing/unit-tests.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "Integration Tests",
+    "permalink": "/zh-CN/sdk/js/testing/integration-tests"
+  },
+  "next": {
+    "title": "NEAR CLI",
+    "permalink": "/zh-CN/tools/near-cli"
+  }
+}

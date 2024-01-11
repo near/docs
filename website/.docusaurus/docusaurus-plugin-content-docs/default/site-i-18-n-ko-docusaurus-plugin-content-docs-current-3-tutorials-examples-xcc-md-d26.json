@@ -1,0 +1,27 @@
+{
+  "id": "tutorials/examples/xcc",
+  "title": "교차 컨트랙트 호출(Cross Contract Call)",
+  "description": "이 예제는 가능한 가장 간단한 교차 컨트랙트 호출을 수행합니다. 인사말을 설정하고 검색하기 위해 Hello NEAR 예제를 호출합니다. 이는 교차 컨트랙트 호출에 대한 가장 간단한 예 중 하나이며, 상호 작용 컨트랙트의 세계로 들어가는 완벽한 관문입니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/examples/xcc.md",
+  "sourceDirName": "3.tutorials/examples",
+  "slug": "/tutorials/examples/xcc",
+  "permalink": "/ko/tutorials/examples/xcc",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/examples/xcc.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "xcc",
+    "title": "교차 컨트랙트 호출(Cross Contract Call)"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "방명록",
+    "permalink": "/ko/tutorials/examples/guest-book"
+  },
+  "next": {
+    "title": "동전 던지기",
+    "permalink": "/ko/tutorials/examples/coin-flip"
+  }
+}

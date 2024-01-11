@@ -1,0 +1,26 @@
+{
+  "id": "concepts/advanced/near-lake-framework",
+  "title": "NEAR Lake Framework",
+  "description": "https://github.com/near/near-lake-framework/",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/1.concepts/3.advanced/near-lake-framework.md",
+  "sourceDirName": "1.concepts/3.advanced",
+  "slug": "/concepts/advanced/near-lake-framework",
+  "permalink": "/vi/concepts/advanced/near-lake-framework",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/3.advanced/near-lake-framework.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "sidebar_label": "Lake Framework"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Indexer Framework",
+    "permalink": "/vi/concepts/advanced/near-indexer-framework"
+  },
+  "next": {
+    "title": "Các video về Core Runtime",
+    "permalink": "/vi/concepts/basics/runtime"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "sdk/js/contract-interface/private-methods",
+  "title": "Private Methods",
+  "description": "When Using Callbacks",
+  "source": "@site/../docs/sdk/js/contract-interface/private-methods.md",
+  "sourceDirName": "sdk/js/contract-interface",
+  "slug": "/sdk/js/contract-interface/private-methods",
+  "permalink": "/sdk/js/contract-interface/private-methods",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/js/contract-interface/private-methods.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Dennis",
+  "lastUpdatedAt": 1674222229,
+  "formattedLastUpdatedAt": "Jan 20, 2023",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2,
+    "title": "Private Methods"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "Public Methods",
+    "permalink": "/sdk/js/contract-interface/public-methods"
+  },
+  "next": {
+    "title": "Payable Methods",
+    "permalink": "/sdk/js/contract-interface/payable-methods"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "sdk/js/contract-structure/nesting",
+  "title": "Nesting",
+  "description": "",
+  "source": "@site/../docs/sdk/js/contract-structure/nesting.md",
+  "sourceDirName": "sdk/js/contract-structure",
+  "slug": "/sdk/js/contract-structure/nesting",
+  "permalink": "/sdk/js/contract-structure/nesting",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/js/contract-structure/nesting.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Dennis",
+  "lastUpdatedAt": 1674222229,
+  "formattedLastUpdatedAt": "Jan 20, 2023",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3,
+    "title": "Nesting"
+  }
+}

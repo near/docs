@@ -1,0 +1,28 @@
+{
+  "id": "primitives/dex/interacting/near-cli",
+  "title": "NEAR CLI",
+  "description": "This section shows how to interact with DEXs from your shell using near-cli.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/7.primitives/dex/interacting/near-cli.md",
+  "sourceDirName": "7.primitives/dex/interacting",
+  "slug": "/primitives/dex/interacting/near-cli",
+  "permalink": "/zh-CN/primitives/dex/interacting/near-cli",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/dex/interacting/near-cli.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "near-cli",
+    "title": "NEAR CLI",
+    "hide_table_of_contents": false
+  },
+  "sidebar": "primitives",
+  "previous": {
+    "title": "Smart Contract",
+    "permalink": "/zh-CN/primitives/dex/interacting/smart-contract"
+  },
+  "next": {
+    "title": "Introduction",
+    "permalink": "/zh-CN/primitives/dao/introduction"
+  }
+}

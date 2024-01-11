@@ -1,0 +1,27 @@
+{
+  "id": "concepts/basics/validators",
+  "title": "밸리데이터",
+  "description": "NEAR 네트워크는 탈중앙화되어 있어, 여러 사람이 협력하여 네트워크를 안전하게 유지합니다. 우리는 그런 역할을 하는 사람들을 밸리데이터라고 부릅니다 .",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/1.concepts/basics/validators.md",
+  "sourceDirName": "1.concepts/basics",
+  "slug": "/concepts/basics/validators",
+  "permalink": "/ko/concepts/basics/validators",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/basics/validators.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "validators",
+    "title": "밸리데이터"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "대체 솔루션",
+    "permalink": "/ko/concepts/storage/storage-solutions"
+  },
+  "next": {
+    "title": "네트워크",
+    "permalink": "/ko/concepts/basics/networks"
+  }
+}

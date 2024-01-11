@@ -1,0 +1,27 @@
+{
+  "id": "api/rpc/access-keys",
+  "title": "Các RPC Endpoint",
+  "description": "Ví dụ:",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/5.api/rpc/access-keys.md",
+  "sourceDirName": "5.api/rpc",
+  "slug": "/api/rpc/access-keys",
+  "permalink": "/vi/api/rpc/access-keys",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/5.api/rpc/access-keys.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "access-keys",
+    "title": "Các RPC Endpoint"
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Cài đặt",
+    "permalink": "/vi/api/rpc/setup"
+  },
+  "next": {
+    "title": "Các RPC Endpoint",
+    "permalink": "/vi/api/rpc/contracts"
+  }
+}

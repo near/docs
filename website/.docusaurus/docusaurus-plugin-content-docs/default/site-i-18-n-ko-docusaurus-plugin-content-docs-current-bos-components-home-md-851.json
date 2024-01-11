@@ -1,0 +1,18 @@
+{
+  "id": "bos/components/home",
+  "title": "빌트인 구성 요소",
+  "description": "In NEAR, you build small apps known as Components, that focus on solving a specific problem. 그런 다음 이러한 Components를 구성하여 잘 동작하는 프론트엔드를 수행합니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/bos/components/home.md",
+  "sourceDirName": "bos/components",
+  "slug": "/bos/components/home",
+  "permalink": "/ko/bos/components/home",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/components/home.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "home",
+    "title": "빌트인 구성 요소"
+  }
+}

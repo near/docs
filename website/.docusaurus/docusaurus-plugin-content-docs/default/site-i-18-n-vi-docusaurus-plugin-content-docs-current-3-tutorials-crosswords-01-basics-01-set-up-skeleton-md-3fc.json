@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/crosswords/basics/set-up-skeleton",
+  "title": "Set up Rust, get a NEAR testnet account, NEAR CLI, and get a basic smart contract skeleton ready",
+  "description": "In this tutorial we'll get a testnet account, use NEAR CLI to add a key to our computer's file system, and set up the basic skeleton of a Rust smart contract.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/3.tutorials/crosswords/01-basics/01-set-up-skeleton.md",
+  "sourceDirName": "3.tutorials/crosswords/01-basics",
+  "slug": "/tutorials/crosswords/basics/set-up-skeleton",
+  "permalink": "/vi/tutorials/crosswords/basics/set-up-skeleton",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/crosswords/01-basics/01-set-up-skeleton.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2,
+    "sidebar_label": "Set up Rust and a contract skeleton",
+    "title": "Set up Rust, get a NEAR testnet account, NEAR CLI, and get a basic smart contract skeleton ready"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Crossword Game Overview",
+    "permalink": "/vi/tutorials/crosswords/basics/overview"
+  },
+  "next": {
+    "title": "Add basic code, create a subaccount, and call methods",
+    "permalink": "/vi/tutorials/crosswords/basics/add-functions-call"
+  }
+}

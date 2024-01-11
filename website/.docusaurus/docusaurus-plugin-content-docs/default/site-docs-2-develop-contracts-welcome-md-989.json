@@ -1,0 +1,28 @@
+{
+  "id": "develop/contracts/welcome",
+  "title": "NEAR Smart Contracts",
+  "description": "Welcome! Here you will find documentation on how to develop a smart contract on NEAR.",
+  "source": "@site/../docs/2.develop/contracts/welcome.md",
+  "sourceDirName": "2.develop/contracts",
+  "slug": "/develop/contracts/welcome",
+  "permalink": "/develop/contracts/welcome",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/contracts/welcome.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1702551195,
+  "formattedLastUpdatedAt": "Dec 14, 2023",
+  "frontMatter": {
+    "id": "welcome",
+    "title": "NEAR Smart Contracts",
+    "sidebar_label": "Home",
+    "hide_table_of_contents": true
+  },
+  "sidebar": "contracts",
+  "next": {
+    "title": "What is a Smart Contract?",
+    "permalink": "/develop/contracts/whatisacontract"
+  }
+}

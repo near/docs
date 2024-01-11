@@ -1,0 +1,27 @@
+{
+  "id": "tutorials/examples/frontend-multiple-contracts",
+  "title": "프론트엔드 다중 컨트랙트",
+  "description": "이 예제는 하나의 프론트엔드에서 여러 컨트랙트와 상호 작용하는 방법을 보여줍니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/examples/frontend-multiple-contracts.md",
+  "sourceDirName": "3.tutorials/examples",
+  "slug": "/tutorials/examples/frontend-multiple-contracts",
+  "permalink": "/ko/tutorials/examples/frontend-multiple-contracts",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/examples/frontend-multiple-contracts.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "frontend-multiple-contracts",
+    "title": "프론트엔드 다중 컨트랙트"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "기부",
+    "permalink": "/ko/tutorials/examples/donation"
+  },
+  "next": {
+    "title": "Building a Relayer",
+    "permalink": "/ko/develop/relayers/build-relayer"
+  }
+}

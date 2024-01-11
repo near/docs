@@ -1,0 +1,27 @@
+{
+  "id": "bos/tutorial/lido",
+  "title": "Lido 예시",
+  "description": "만약 당신이 더 자세히 살펴볼 준비가 되어 있다면, Lido 구성 요소는 이더리움 메인넷에 배치된 스마트 컨트랙트와 상호 작용하는 방법을 보여주기 때문에 완벽한 예시로 작용합니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/bos/tutorial/hello-lido.md",
+  "sourceDirName": "bos/tutorial",
+  "slug": "/bos/tutorial/lido",
+  "permalink": "/ko/bos/tutorial/lido",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/tutorial/hello-lido.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "lido",
+    "title": "Lido 예시"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "Best Practices for Ethereum developers on NEAR",
+    "permalink": "/ko/bos/tutorial/ethers-js-best-practices"
+  },
+  "next": {
+    "title": "Components & Historical data",
+    "permalink": "/ko/bos/queryapi/bos-components"
+  }
+}

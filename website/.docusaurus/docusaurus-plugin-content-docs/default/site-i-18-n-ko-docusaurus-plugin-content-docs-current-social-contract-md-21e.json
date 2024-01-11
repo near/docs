@@ -1,0 +1,19 @@
+{
+  "id": "social/contract",
+  "title": "SocialDB",
+  "description": "SocialDB는 NEAR 프로토콜에서 소셜 데이터를 저장하기 위한 스마트 컨트랙트입니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/social/contract.md",
+  "sourceDirName": "social",
+  "slug": "/social/contract",
+  "permalink": "/ko/social/contract",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/social/contract.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "contract",
+    "title": "SocialDB",
+    "sidebar_label": "SocialDB"
+  }
+}

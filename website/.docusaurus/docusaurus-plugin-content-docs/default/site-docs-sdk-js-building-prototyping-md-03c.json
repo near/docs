@@ -1,0 +1,31 @@
+{
+  "id": "sdk/js/building/prototyping",
+  "title": "Upgrading Contracts: Rapid Prototyping",
+  "description": "When you change the interface of a contract and re-deploy it, you may see this error:",
+  "source": "@site/../docs/sdk/js/building/prototyping.md",
+  "sourceDirName": "sdk/js/building",
+  "slug": "/sdk/js/building/prototyping",
+  "permalink": "/sdk/js/building/prototyping",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/js/building/prototyping.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1696019367,
+  "formattedLastUpdatedAt": "Sep 29, 2023",
+  "frontMatter": {
+    "id": "prototyping",
+    "sidebar_label": "Rapid Prototyping",
+    "title": "Upgrading Contracts: Rapid Prototyping"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "Basic Instructions",
+    "permalink": "/sdk/js/building/basics"
+  },
+  "next": {
+    "title": "Reproducible Builds",
+    "permalink": "/sdk/js/building/reproducible-builds"
+  }
+}

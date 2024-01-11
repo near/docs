@@ -1,0 +1,28 @@
+{
+  "id": "concepts/storage/storage-solutions",
+  "title": "Các giải pháp lưu trữ phi tập trung",
+  "description": "Trong bài viết này, chúng ta sẽ nắm được tổng quan cách thức lưu trữ của các ứng dụng phi tập trung (dAPPs) mà bạn có thể sử dụng cho ứng dụng của mình. Điều này sẽ cho phép bạn lưu trữ một lượng lớn dữ liệu, bằng cách sử dụng một giải pháp thay thế tiết kiệm hơn so với native NEAR storage.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/1.concepts/storage/decentralized-storage.md",
+  "sourceDirName": "1.concepts/storage",
+  "slug": "/concepts/storage/storage-solutions",
+  "permalink": "/vi/concepts/storage/storage-solutions",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/storage/decentralized-storage.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "storage-solutions",
+    "title": "Các giải pháp lưu trữ phi tập trung",
+    "sidebar_label": "Các giải pháp thay thế"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Storage Staking",
+    "permalink": "/vi/concepts/storage/storage-staking"
+  },
+  "next": {
+    "title": "Các Validator",
+    "permalink": "/vi/concepts/basics/validators"
+  }
+}

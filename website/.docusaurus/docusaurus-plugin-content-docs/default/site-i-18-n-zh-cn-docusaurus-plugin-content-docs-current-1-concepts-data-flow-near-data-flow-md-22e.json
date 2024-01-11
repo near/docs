@@ -1,0 +1,26 @@
+{
+  "id": "concepts/data-flow/near-data-flow",
+  "title": "NEAR Data Flow",
+  "description": "<iframe",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/1.concepts/data-flow/near-data-flow.md",
+  "sourceDirName": "1.concepts/data-flow",
+  "slug": "/concepts/data-flow/near-data-flow",
+  "permalink": "/zh-CN/concepts/data-flow/near-data-flow",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/data-flow/near-data-flow.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "sidebar_label": "NEAR Data Flow"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Gas - Advanced",
+    "permalink": "/zh-CN/concepts/basics/transactions/gas-advanced"
+  },
+  "next": {
+    "title": "Token Transfer",
+    "permalink": "/zh-CN/concepts/data-flow/token-transfer-flow"
+  }
+}

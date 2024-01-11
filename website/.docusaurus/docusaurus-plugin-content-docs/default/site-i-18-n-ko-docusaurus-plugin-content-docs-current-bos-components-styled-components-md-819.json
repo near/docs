@@ -1,0 +1,28 @@
+{
+  "id": "bos/components/styled",
+  "title": "스타일 컴포넌트",
+  "description": "스타일 컴포넌트는 CSS-in-JS를 사용하여 React 컴포넌트를 스타일링하는 데 널리 사용되는 라이브러리입니다. 사용을 위해 이 도구를 near.social 인프라로 가져왔습니다.. 설치하거나 가져올 필요 없이 바로 사용할 수 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/bos/components/styledComponents.md",
+  "sourceDirName": "bos/components",
+  "slug": "/bos/components/styled",
+  "permalink": "/ko/bos/components/styled",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/components/styledComponents.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "styled",
+    "title": "스타일 컴포넌트",
+    "sidebar_label": "스타일"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "TypeAhead",
+    "permalink": "/ko/bos/components/typeahead"
+  },
+  "next": {
+    "title": "툴팁",
+    "permalink": "/ko/bos/components/tooltip"
+  }
+}

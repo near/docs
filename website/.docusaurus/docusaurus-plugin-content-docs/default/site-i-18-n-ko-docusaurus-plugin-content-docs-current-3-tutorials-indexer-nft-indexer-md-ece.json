@@ -1,0 +1,26 @@
+{
+  "id": "tutorials/indexer/nft-indexer",
+  "title": "NFT 인덱서 구축",
+  "description": "near-examples/near-lake-nft-indexer: source code for this tutorial",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/indexer/nft-indexer.md",
+  "sourceDirName": "3.tutorials/indexer",
+  "slug": "/tutorials/indexer/nft-indexer",
+  "permalink": "/ko/tutorials/indexer/nft-indexer",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/indexer/nft-indexer.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "sidebar_label": "NFT Indexer"
+  },
+  "sidebar": "indexers",
+  "previous": {
+    "title": "Python 튜토리얼",
+    "permalink": "/ko/tutorials/indexer/python-lake-indexer"
+  },
+  "next": {
+    "title": "Python용 NFT 인덱서",
+    "permalink": "/ko/tutorials/indexer/python-nft-indexer"
+  }
+}

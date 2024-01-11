@@ -1,0 +1,18 @@
+{
+  "id": "develop/prerequisites",
+  "title": "전제 조건",
+  "description": "스마트 컨트랙트를 개발할 때 Javascript를 사용하면 Node.js를, Rust를 사용하면 rust 툴체인을 설치해야 합니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.develop/prerequisites.md",
+  "sourceDirName": "2.develop",
+  "slug": "/develop/prerequisites",
+  "permalink": "/ko/develop/prerequisites",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/prerequisites.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "prerequisites",
+    "title": "전제 조건"
+  }
+}

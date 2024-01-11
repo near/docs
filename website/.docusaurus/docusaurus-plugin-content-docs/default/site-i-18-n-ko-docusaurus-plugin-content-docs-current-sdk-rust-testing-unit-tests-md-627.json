@@ -1,0 +1,27 @@
+{
+  "id": "sdk/rust/testing/unit-tests",
+  "title": "단위 테스트(Unit Test)",
+  "description": "컨트랙트 기능 테스트는 cargo test 프레임워크를 통해 수행할 수 있습니다. 이러한 테스트는 모의 블록체인으로 실행되며, 네트워크를 설정/배포하고 이 네트워크에서 직렬화된 트랜잭션에 서명하지 않고도 함수 호출을 직접 테스트할 수 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/sdk/rust/testing/unit-tests.md",
+  "sourceDirName": "sdk/rust/testing",
+  "slug": "/sdk/rust/testing/unit-tests",
+  "permalink": "/ko/sdk/rust/testing/unit-tests",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/rust/testing/unit-tests.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "통합 테스트(Integration Test)",
+    "permalink": "/ko/sdk/rust/testing/integration-tests"
+  },
+  "next": {
+    "title": "모범 사례",
+    "permalink": "/ko/sdk/rust/best-practices"
+  }
+}

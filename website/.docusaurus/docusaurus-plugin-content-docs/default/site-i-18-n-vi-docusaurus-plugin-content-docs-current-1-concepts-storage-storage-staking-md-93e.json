@@ -1,0 +1,28 @@
+{
+  "id": "concepts/storage/storage-staking",
+  "title": "Storage Staking",
+  "description": "Khi bạn deploy một smart contract trên NEAR, bạn cần trả cho chi phí lưu trữ mà smart contract này yêu cầu thông qua một cơ chế gọi là storage staking.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/1.concepts/storage/storage-staking.md",
+  "sourceDirName": "1.concepts/storage",
+  "slug": "/concepts/storage/storage-staking",
+  "permalink": "/vi/concepts/storage/storage-staking",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/storage/storage-staking.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "storage-staking",
+    "title": "Storage Staking",
+    "sidebar_label": "Storage Staking"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Storage trên NEAR",
+    "permalink": "/vi/concepts/storage/data-storage"
+  },
+  "next": {
+    "title": "Các giải pháp thay thế",
+    "permalink": "/vi/concepts/storage/storage-solutions"
+  }
+}

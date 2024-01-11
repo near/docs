@@ -1,0 +1,27 @@
+{
+  "id": "api/rpc/setup",
+  "title": "설정",
+  "description": "RPC API를 사용하려면 올바른 RPC 엔드포인트를 설정해야 합니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/5.api/rpc/setup.md",
+  "sourceDirName": "5.api/rpc",
+  "slug": "/api/rpc/setup",
+  "permalink": "/ko/api/rpc/setup",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/5.api/rpc/setup.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "setup",
+    "title": "설정"
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "RPC 제공자",
+    "permalink": "/ko/api/rpc/providers"
+  },
+  "next": {
+    "title": "액세스 키",
+    "permalink": "/ko/api/rpc/access-keys"
+  }
+}

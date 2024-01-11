@@ -1,0 +1,30 @@
+{
+  "id": "api/rpc/providers",
+  "title": "RPC Providers",
+  "description": "There are multiple RPC providers from which you can choose from. These providers will work as intermediaries to help you interact with the NEAR network.",
+  "source": "@site/../docs/5.api/rpc/providers.md",
+  "sourceDirName": "5.api/rpc",
+  "slug": "/api/rpc/providers",
+  "permalink": "/api/rpc/providers",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/5.api/rpc/providers.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Vladimir Grichina",
+  "lastUpdatedAt": 1702011996,
+  "formattedLastUpdatedAt": "Dec 8, 2023",
+  "frontMatter": {
+    "id": "providers",
+    "title": "RPC Providers"
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Home",
+    "permalink": "/api/rpc/introduction"
+  },
+  "next": {
+    "title": "Setup",
+    "permalink": "/api/rpc/setup"
+  }
+}

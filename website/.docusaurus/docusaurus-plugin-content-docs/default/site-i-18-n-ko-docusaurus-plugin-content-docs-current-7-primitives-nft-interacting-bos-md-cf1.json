@@ -1,0 +1,28 @@
+{
+  "id": "primitives/nft/interacting/bos",
+  "title": "NEAR Component",
+  "description": "This section shows how to interact with an NFT smart contract directly from a NEAR Component",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/7.primitives/nft/interacting/bos.md",
+  "sourceDirName": "7.primitives/nft/interacting",
+  "slug": "/primitives/nft/interacting/bos",
+  "permalink": "/ko/primitives/nft/interacting/bos",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/nft/interacting/bos.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "bos",
+    "title": "NEAR Component",
+    "hide_table_of_contents": false
+  },
+  "sidebar": "primitives",
+  "previous": {
+    "title": "Introduction",
+    "permalink": "/ko/primitives/nft/introduction"
+  },
+  "next": {
+    "title": "Web Application",
+    "permalink": "/ko/primitives/nft/interacting/web-app"
+  }
+}

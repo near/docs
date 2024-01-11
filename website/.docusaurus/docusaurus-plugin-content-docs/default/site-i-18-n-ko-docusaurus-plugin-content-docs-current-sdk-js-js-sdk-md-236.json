@@ -1,0 +1,27 @@
+{
+  "id": "sdk/js/introduction",
+  "title": "JavaScript SDK에 대해",
+  "description": "JavaScript는 전 세계적으로 약 1,400만 명의 개발자가 사용하는 가장 인기 있는 프로그래밍 언어입니다. NEAR에서는 JavaScript 또는 Typescript로 스마트 컨트랙트를 작성할 수 있으며, SDK는 경량 런타임으로 이를 패킹합니다. 그런 다음, 이를 NEAR 네트워크에 배포할 수 있는 단일 Wasm 파일로 컴파일할 수 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/sdk/js/js-sdk.md",
+  "sourceDirName": "sdk/js",
+  "slug": "/sdk/js/introduction",
+  "permalink": "/ko/sdk/js/introduction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/js/js-sdk.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "introduction",
+    "title": "JavaScript SDK에 대해"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "컨트랙트 크기 축소",
+    "permalink": "/ko/sdk/rust/contract-size"
+  },
+  "next": {
+    "title": "시작하기",
+    "permalink": "/ko/sdk/js/get-started"
+  }
+}

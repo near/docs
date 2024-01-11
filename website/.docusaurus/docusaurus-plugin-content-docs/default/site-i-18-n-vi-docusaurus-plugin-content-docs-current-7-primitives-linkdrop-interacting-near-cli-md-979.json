@@ -1,0 +1,24 @@
+{
+  "id": "primitives/linkdrop/interacting/near-cli",
+  "title": "NEAR CLI",
+  "description": "This section describes how to create different kinds of linkdrop from your shell using near-cli.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/7.primitives/linkdrop/interacting/near-cli.md",
+  "sourceDirName": "7.primitives/linkdrop/interacting",
+  "slug": "/primitives/linkdrop/interacting/near-cli",
+  "permalink": "/vi/primitives/linkdrop/interacting/near-cli",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/linkdrop/interacting/near-cli.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "near-cli",
+    "title": "NEAR CLI",
+    "hide_table_of_contents": false
+  },
+  "sidebar": "primitives",
+  "previous": {
+    "title": "Web Application",
+    "permalink": "/vi/primitives/linkdrop/interacting/web-app"
+  }
+}

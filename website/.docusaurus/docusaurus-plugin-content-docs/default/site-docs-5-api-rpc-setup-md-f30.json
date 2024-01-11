@@ -1,0 +1,30 @@
+{
+  "id": "api/rpc/setup",
+  "title": "Setup",
+  "description": "In order to use the RPC API you will need to setup the correct RPC endpoints.",
+  "source": "@site/../docs/5.api/rpc/setup.md",
+  "sourceDirName": "5.api/rpc",
+  "slug": "/api/rpc/setup",
+  "permalink": "/api/rpc/setup",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/5.api/rpc/setup.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1702155614,
+  "formattedLastUpdatedAt": "Dec 9, 2023",
+  "frontMatter": {
+    "id": "setup",
+    "title": "Setup"
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "RPC Providers",
+    "permalink": "/api/rpc/providers"
+  },
+  "next": {
+    "title": "Access Keys",
+    "permalink": "/api/rpc/access-keys"
+  }
+}

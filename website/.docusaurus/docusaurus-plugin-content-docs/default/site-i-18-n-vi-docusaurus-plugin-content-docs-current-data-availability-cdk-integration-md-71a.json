@@ -1,0 +1,23 @@
+{
+  "id": "data-availability/cdk-integration",
+  "title": "CDK Stack",
+  "description": "The folder ./cdk-stack contains some projects, too:",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/data-availability/cdk-integration.md",
+  "sourceDirName": "data-availability",
+  "slug": "/data-availability/cdk-integration",
+  "permalink": "/vi/data-availability/cdk-integration",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/data-availability/cdk-integration.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "cdk-integration",
+    "title": "CDK Stack"
+  },
+  "sidebar": "data-availability",
+  "previous": {
+    "title": "Optimism",
+    "permalink": "/vi/data-availability/optimism"
+  }
+}

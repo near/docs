@@ -1,0 +1,18 @@
+{
+  "id": "concepts/advanced/vm",
+  "title": "가상 머신",
+  "description": "여기서 실행에 대해 설명합니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/1.concepts/3.advanced/virtual_machine.md",
+  "sourceDirName": "1.concepts/3.advanced",
+  "slug": "/concepts/advanced/vm",
+  "permalink": "/ko/concepts/advanced/vm",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/3.advanced/virtual_machine.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "vm",
+    "title": "가상 머신"
+  }
+}

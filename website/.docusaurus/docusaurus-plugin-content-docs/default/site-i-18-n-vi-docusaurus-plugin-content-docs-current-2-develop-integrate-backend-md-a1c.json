@@ -1,0 +1,27 @@
+{
+  "id": "develop/integrate/backend-login",
+  "title": "Login with NEAR",
+  "description": "Recently NEAR has approved a new standard that, among other things, enables users to authenticate into a backend service.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.develop/integrate/backend.md",
+  "sourceDirName": "2.develop/integrate",
+  "slug": "/develop/integrate/backend-login",
+  "permalink": "/vi/develop/integrate/backend-login",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/integrate/backend.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "backend-login",
+    "title": "Login with NEAR"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "Building a Relayer",
+    "permalink": "/vi/develop/relayers/build-relayer"
+  },
+  "next": {
+    "title": "VS Code Extension",
+    "permalink": "/vi/bos/dev/vscode"
+  }
+}

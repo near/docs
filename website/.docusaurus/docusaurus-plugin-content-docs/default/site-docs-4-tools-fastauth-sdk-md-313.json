@@ -1,0 +1,31 @@
+{
+  "id": "tools/fastauth-sdk",
+  "title": "FastAuth SDK",
+  "description": "Introduction",
+  "source": "@site/../docs/4.tools/fastauth-sdk.md",
+  "sourceDirName": "4.tools",
+  "slug": "/tools/fastauth-sdk",
+  "permalink": "/tools/fastauth-sdk",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/4.tools/fastauth-sdk.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Dio Ortega",
+  "lastUpdatedAt": 1696008194,
+  "formattedLastUpdatedAt": "Sep 29, 2023",
+  "frontMatter": {
+    "id": "fastauth-sdk",
+    "title": "FastAuth SDK",
+    "sidebar_label": "FastAuth SDK"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "Wallet Selector",
+    "permalink": "/tools/wallet-selector"
+  },
+  "next": {
+    "title": "Explorers",
+    "permalink": "/tools/explorer"
+  }
+}

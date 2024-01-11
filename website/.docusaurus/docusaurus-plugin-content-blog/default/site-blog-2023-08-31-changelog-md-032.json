@@ -1,0 +1,21 @@
+{
+  "permalink": "/blog/2023/08/31/changelog",
+  "source": "@site/blog/2023-08-31-changelog.md",
+  "title": "August 2023",
+  "description": "Developer changelog for essential repositories when building on NEAR Protocol. 🏗️",
+  "date": "2023-08-31T00:00:00.000Z",
+  "formattedDate": "August 31, 2023",
+  "tags": [],
+  "hasTruncateMarker": false,
+  "authors": [],
+  "frontMatter": {},
+  "unlisted": false,
+  "prevItem": {
+    "title": "September 2023",
+    "permalink": "/blog/2023/09/30/changelog"
+  },
+  "nextItem": {
+    "title": "July 2023",
+    "permalink": "/blog/2023/07/31/changelog"
+  }
+}

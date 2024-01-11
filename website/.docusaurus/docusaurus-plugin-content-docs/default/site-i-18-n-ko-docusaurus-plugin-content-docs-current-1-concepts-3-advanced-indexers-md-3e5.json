@@ -1,0 +1,26 @@
+{
+  "id": "concepts/advanced/indexers",
+  "title": "인덱서 소개",
+  "description": "여기에서 인덱서 개념에 익숙해지고 자신만의 인덱서를 구축하기 위해 알아야 할 모든 것을 찾을 수 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/1.concepts/3.advanced/indexers.md",
+  "sourceDirName": "1.concepts/3.advanced",
+  "slug": "/concepts/advanced/indexers",
+  "permalink": "/ko/concepts/advanced/indexers",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/3.advanced/indexers.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "sidebar_label": "인덱서 소개"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "블록체인 데이터",
+    "permalink": "/ko/concepts/data-flow/data-storage"
+  },
+  "next": {
+    "title": "인덱서 프레임워크",
+    "permalink": "/ko/concepts/advanced/near-indexer-framework"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "tutorials/crosswords/beginner/logging-in-implementation",
+  "title": "Implementing the login button",
+  "description": "Plan",
+  "source": "@site/../docs/3.tutorials/crosswords/02-beginner/06-logging-in-implementation.md",
+  "sourceDirName": "3.tutorials/crosswords/02-beginner",
+  "slug": "/tutorials/crosswords/beginner/logging-in-implementation",
+  "permalink": "/tutorials/crosswords/beginner/logging-in-implementation",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/crosswords/02-beginner/06-logging-in-implementation.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1702155614,
+  "formattedLastUpdatedAt": "Dec 9, 2023",
+  "sidebarPosition": 6,
+  "frontMatter": {
+    "sidebar_position": 6,
+    "sidebar_label": "Access keys and login 2/2",
+    "title": "Implementing the login button"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Access keys and login 1/2",
+    "permalink": "/tutorials/crosswords/beginner/logging-in"
+  },
+  "next": {
+    "title": "Overview",
+    "permalink": "/tutorials/crosswords/intermediate/overview"
+  }
+}

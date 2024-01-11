@@ -1,0 +1,31 @@
+{
+  "id": "integrator/create-transactions",
+  "title": "Create Transactions",
+  "description": "To construct & process transactions you will need our API JavaScript library: near-api-js. There are many ways to create transactions but for this example we'll show you two ways to create a simple token transfer transaction.",
+  "source": "@site/../docs/6.integrator/create-transactions.md",
+  "sourceDirName": "6.integrator",
+  "slug": "/integrator/create-transactions",
+  "permalink": "/integrator/create-transactions",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/6.integrator/create-transactions.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Damian Parrino",
+  "lastUpdatedAt": 1702311741,
+  "formattedLastUpdatedAt": "Dec 11, 2023",
+  "frontMatter": {
+    "id": "create-transactions",
+    "title": "Create Transactions",
+    "sidebar_label": "Create a Transaction"
+  },
+  "sidebar": "exchanges",
+  "previous": {
+    "title": "Accounts",
+    "permalink": "/integrator/accounts"
+  },
+  "next": {
+    "title": "Fungible Tokens",
+    "permalink": "/integrator/fungible-tokens"
+  }
+}

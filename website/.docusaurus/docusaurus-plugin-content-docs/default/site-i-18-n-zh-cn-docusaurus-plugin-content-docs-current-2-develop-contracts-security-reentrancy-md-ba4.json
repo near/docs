@@ -1,0 +1,27 @@
+{
+  "id": "develop/contracts/security/reentrancy",
+  "title": "Reentrancy Attacks",
+  "description": "Between a cross-contract call and its callback any method of your contract can be executed. Not taking this into account is one of the main sources of exploits. It is so common that it has its own name: reentrancy attacks.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.develop/contracts/security/reentrancy.md",
+  "sourceDirName": "2.develop/contracts/security",
+  "slug": "/develop/contracts/security/reentrancy",
+  "permalink": "/zh-CN/develop/contracts/security/reentrancy",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/contracts/security/reentrancy.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "reentrancy",
+    "title": "Reentrancy Attacks"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Front Running",
+    "permalink": "/zh-CN/develop/contracts/security/frontrunning"
+  },
+  "next": {
+    "title": "Random Numbers",
+    "permalink": "/zh-CN/develop/contracts/security/random"
+  }
+}

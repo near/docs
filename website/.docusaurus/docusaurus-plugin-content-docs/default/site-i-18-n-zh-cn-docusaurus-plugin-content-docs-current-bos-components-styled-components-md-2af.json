@@ -1,0 +1,28 @@
+{
+  "id": "bos/components/styled",
+  "title": "Styled Components",
+  "description": "Styled Components is a popular library for styling React components using CSS-in-JS. This tool was imported into near.social infrastructure for your use. You do not have to install or import anything, it is ready to use right away.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/bos/components/styledComponents.md",
+  "sourceDirName": "bos/components",
+  "slug": "/bos/components/styled",
+  "permalink": "/zh-CN/bos/components/styled",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/components/styledComponents.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "styled",
+    "title": "Styled Components",
+    "sidebar_label": "Styled"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "TypeAhead",
+    "permalink": "/zh-CN/bos/components/typeahead"
+  },
+  "next": {
+    "title": "ToolTip",
+    "permalink": "/zh-CN/bos/components/tooltip"
+  }
+}

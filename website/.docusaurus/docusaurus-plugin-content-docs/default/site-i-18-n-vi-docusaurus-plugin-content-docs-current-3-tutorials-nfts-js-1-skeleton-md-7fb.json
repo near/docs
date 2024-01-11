@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/nfts/js/skeleton",
+  "title": "Skeleton and JavaScript Architecture",
+  "description": "Trong chủ đề này, bạn sẽ tìm hiểu về kiến trúc cơ bản đằng sau một NFT contract mà bạn sẽ develop khi tham gia serie \"Từ Zero đến Hero\" này. You'll discover the contract's layout and you'll see how the JavaScript files are structured in order to build a feature-complete smart contract.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/3.tutorials/nfts/js/1-skeleton.md",
+  "sourceDirName": "3.tutorials/nfts/js",
+  "slug": "/tutorials/nfts/js/skeleton",
+  "permalink": "/vi/tutorials/nfts/js/skeleton",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/js/1-skeleton.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "id": "skeleton",
+    "title": "Skeleton and JavaScript Architecture",
+    "sidebar_label": "Kiến trúc của Contract"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Contract đã được deploy sẵn",
+    "permalink": "/vi/tutorials/nfts/js/predeployed-contract"
+  },
+  "next": {
+    "title": "Minting",
+    "permalink": "/vi/tutorials/nfts/js/minting"
+  }
+}

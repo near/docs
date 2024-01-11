@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/crosswords/basics/hashing-and-unit-tests",
+  "title": "기본 해싱과 단위 테스트 추가에 대한 소개\"",
+  "description": "이전 섹션에서는 십자말 풀이 정답을 스마트 컨트랙트의 String 자료형을 사용해 일반 텍스트로 저장했습니다. 사용자에게 정답을 숨기려는 경우, 이는 상태를 보는 모든 사람에게 공개되므로 좋은 접근 방식이 아닙니다. 대신 십자말 풀이 정답을 해시하고 저장해 보겠습니다. 데이터를 해시하는 방법은 여러 가지가 있지만 Rust SDK에서 사용할 수 있는 해시 알고리즘 중 하나인 sha256을 사용합시다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/crosswords/01-basics/03-hashing-and-unit-tests.md",
+  "sourceDirName": "3.tutorials/crosswords/01-basics",
+  "slug": "/tutorials/crosswords/basics/hashing-and-unit-tests",
+  "permalink": "/ko/tutorials/crosswords/basics/hashing-and-unit-tests",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/crosswords/01-basics/03-hashing-and-unit-tests.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_position": 4,
+    "sidebar_label": "정답 해시, 단위 테스트, 초기화 메서드",
+    "title": "기본 해싱과 단위 테스트 추가에 대한 소개\""
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "기본 코드 추가, 하위 계정 생성 및 메서드 호출",
+    "permalink": "/ko/tutorials/crosswords/basics/add-functions-call"
+  },
+  "next": {
+    "title": "간단한 프론트엔드 추가",
+    "permalink": "/ko/tutorials/crosswords/basics/simple-frontend"
+  }
+}

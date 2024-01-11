@@ -1,0 +1,32 @@
+{
+  "id": "tutorials/crosswords/beginner/structs-enums",
+  "title": "How to think about structs and enums when writing a Rust smart contract on NEAR",
+  "description": "Overview",
+  "source": "@site/../docs/3.tutorials/crosswords/02-beginner/02-structs-enums.md",
+  "sourceDirName": "3.tutorials/crosswords/02-beginner",
+  "slug": "/tutorials/crosswords/beginner/structs-enums",
+  "permalink": "/tutorials/crosswords/beginner/structs-enums",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/crosswords/02-beginner/02-structs-enums.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1661444350,
+  "formattedLastUpdatedAt": "Aug 25, 2022",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3,
+    "sidebar_label": "Using structs and enums",
+    "title": "How to think about structs and enums when writing a Rust smart contract on NEAR"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Store multiple puzzles",
+    "permalink": "/tutorials/crosswords/beginner/collections"
+  },
+  "next": {
+    "title": "Actions and sending NEAR",
+    "permalink": "/tutorials/crosswords/beginner/actions"
+  }
+}

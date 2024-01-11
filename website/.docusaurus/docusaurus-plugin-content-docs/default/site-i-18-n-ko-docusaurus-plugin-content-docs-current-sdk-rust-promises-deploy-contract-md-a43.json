@@ -1,0 +1,27 @@
+{
+  "id": "sdk/rust/promises/deploy-contract",
+  "title": "컨트랙트 배포",
+  "description": "다음과 같은 몇 가지 이유로 스마트 컨트랙트가 후속 스마트 컨트랙트 코드를 배포하기를 원할 수 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/sdk/rust/promises/deploy-contract.md",
+  "sourceDirName": "sdk/rust/promises",
+  "slug": "/sdk/rust/promises/deploy-contract",
+  "permalink": "/ko/sdk/rust/promises/deploy-contract",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/rust/promises/deploy-contract.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_position": 4
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "계정 생성",
+    "permalink": "/ko/sdk/rust/promises/create-account"
+  },
+  "next": {
+    "title": "기본 지침",
+    "permalink": "/ko/sdk/rust/building/basics"
+  }
+}

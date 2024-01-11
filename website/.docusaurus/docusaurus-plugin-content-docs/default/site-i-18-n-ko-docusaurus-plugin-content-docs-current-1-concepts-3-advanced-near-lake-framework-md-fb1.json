@@ -1,0 +1,26 @@
+{
+  "id": "concepts/advanced/near-lake-framework",
+  "title": "NEAR Lake 프레임워크",
+  "description": "https://github.com/near/near-lake-framework/",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/1.concepts/3.advanced/near-lake-framework.md",
+  "sourceDirName": "1.concepts/3.advanced",
+  "slug": "/concepts/advanced/near-lake-framework",
+  "permalink": "/ko/concepts/advanced/near-lake-framework",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/3.advanced/near-lake-framework.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "sidebar_label": "Lake 프레임워크"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "인덱서 프레임워크",
+    "permalink": "/ko/concepts/advanced/near-indexer-framework"
+  },
+  "next": {
+    "title": "런타임",
+    "permalink": "/ko/concepts/basics/runtime"
+  }
+}

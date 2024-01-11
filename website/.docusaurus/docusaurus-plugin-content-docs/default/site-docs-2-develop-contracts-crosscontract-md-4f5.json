@@ -1,0 +1,30 @@
+{
+  "id": "develop/contracts/crosscontract",
+  "title": "Cross-Contract Calls",
+  "description": "Cross-contract calls allow your contract to interact with other deployed contracts. This is useful for:",
+  "source": "@site/../docs/2.develop/contracts/crosscontract.md",
+  "sourceDirName": "2.develop/contracts",
+  "slug": "/develop/contracts/crosscontract",
+  "permalink": "/develop/contracts/crosscontract",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/contracts/crosscontract.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1702551195,
+  "formattedLastUpdatedAt": "Dec 14, 2023",
+  "frontMatter": {
+    "id": "crosscontract",
+    "title": "Cross-Contract Calls"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Transfers & Actions",
+    "permalink": "/develop/contracts/actions"
+  },
+  "next": {
+    "title": "✅ Checklist",
+    "permalink": "/develop/contracts/security/checklist"
+  }
+}

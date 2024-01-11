@@ -1,0 +1,25 @@
+{
+  "id": "concepts/welcome",
+  "title": "NEAR Protocol Overview",
+  "description": "Welcome! Here we will explain you what NEAR Protocol is, its components, and how it works.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/1.concepts/welcome.md",
+  "sourceDirName": "1.concepts",
+  "slug": "/concepts/welcome",
+  "permalink": "/zh-CN/concepts/welcome",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/welcome.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "welcome",
+    "title": "NEAR Protocol Overview",
+    "sidebar_label": "Home",
+    "hide_table_of_contents": true
+  },
+  "sidebar": "concepts",
+  "next": {
+    "title": "⭐ What is NEAR?",
+    "permalink": "/zh-CN/concepts/basics/protocol"
+  }
+}

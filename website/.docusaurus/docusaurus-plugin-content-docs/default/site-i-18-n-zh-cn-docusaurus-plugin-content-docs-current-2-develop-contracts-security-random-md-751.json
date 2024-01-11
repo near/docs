@@ -1,0 +1,27 @@
+{
+  "id": "develop/contracts/security/random",
+  "title": "Random Numbers",
+  "description": "When writing smart contracts in NEAR you have access to a random seed that enables you to create random numbers/strings within your contract.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.develop/contracts/security/random.md",
+  "sourceDirName": "2.develop/contracts/security",
+  "slug": "/develop/contracts/security/random",
+  "permalink": "/zh-CN/develop/contracts/security/random",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/contracts/security/random.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "random",
+    "title": "Random Numbers"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Reentrancy Attacks",
+    "permalink": "/zh-CN/develop/contracts/security/reentrancy"
+  },
+  "next": {
+    "title": "Audit Program",
+    "permalink": "/zh-CN/develop/contracts/security/audits"
+  }
+}

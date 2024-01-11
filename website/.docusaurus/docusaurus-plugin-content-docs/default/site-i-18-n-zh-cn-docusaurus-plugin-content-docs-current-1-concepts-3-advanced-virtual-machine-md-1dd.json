@@ -1,0 +1,18 @@
+{
+  "id": "concepts/advanced/vm",
+  "title": "Virtual Machine",
+  "description": "Talk about execution here",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/1.concepts/3.advanced/virtual_machine.md",
+  "sourceDirName": "1.concepts/3.advanced",
+  "slug": "/concepts/advanced/vm",
+  "permalink": "/zh-CN/concepts/advanced/vm",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/3.advanced/virtual_machine.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "vm",
+    "title": "Virtual Machine"
+  }
+}

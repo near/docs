@@ -1,0 +1,27 @@
+{
+  "id": "sdk/rust/contract-interface/public-methods",
+  "title": "Public Method Types",
+  "description": "Methods can be called externally by using the pub identifier within the #[near_bindgen] macro which will expose the method in the compiled WASM bytecode.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/sdk/rust/contract-interface/public-methods.md",
+  "sourceDirName": "sdk/rust/contract-interface",
+  "slug": "/sdk/rust/contract-interface/public-methods",
+  "permalink": "/vi/sdk/rust/contract-interface/public-methods",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/rust/contract-interface/public-methods.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "Collections Nesting",
+    "permalink": "/vi/sdk/rust/contract-structure/nesting"
+  },
+  "next": {
+    "title": "Contract Mutability",
+    "permalink": "/vi/sdk/rust/contract-interface/contract-mutability"
+  }
+}

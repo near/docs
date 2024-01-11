@@ -1,0 +1,29 @@
+{
+  "id": "concepts/advanced/near-lake-framework",
+  "title": "NEAR Lake Framework",
+  "description": "https://github.com/near/near-lake-framework/",
+  "source": "@site/../docs/1.concepts/3.advanced/near-lake-framework.md",
+  "sourceDirName": "1.concepts/3.advanced",
+  "slug": "/concepts/advanced/near-lake-framework",
+  "permalink": "/concepts/advanced/near-lake-framework",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/3.advanced/near-lake-framework.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1666217652,
+  "formattedLastUpdatedAt": "Oct 19, 2022",
+  "frontMatter": {
+    "sidebar_label": "Lake Framework"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Indexer Framework",
+    "permalink": "/concepts/advanced/near-indexer-framework"
+  },
+  "next": {
+    "title": "Runtime",
+    "permalink": "/concepts/basics/runtime"
+  }
+}

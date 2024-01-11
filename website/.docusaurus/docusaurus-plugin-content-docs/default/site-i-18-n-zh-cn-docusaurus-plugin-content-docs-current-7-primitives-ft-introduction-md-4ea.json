@@ -1,0 +1,28 @@
+{
+  "id": "primitives/ft/introduction",
+  "title": "Introduction",
+  "description": "Fungible token is representation of an asset on a blockchain that is interchangeable.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/7.primitives/ft/introduction.md",
+  "sourceDirName": "7.primitives/ft",
+  "slug": "/primitives/ft/introduction",
+  "permalink": "/zh-CN/primitives/ft/introduction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/ft/introduction.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "introduction",
+    "title": "Introduction",
+    "hide_table_of_contents": false
+  },
+  "sidebar": "primitives",
+  "previous": {
+    "title": "Additional Resources",
+    "permalink": "/zh-CN/primitives/nft/additional-resources"
+  },
+  "next": {
+    "title": "NEAR Component",
+    "permalink": "/zh-CN/primitives/ft/interacting/bos"
+  }
+}

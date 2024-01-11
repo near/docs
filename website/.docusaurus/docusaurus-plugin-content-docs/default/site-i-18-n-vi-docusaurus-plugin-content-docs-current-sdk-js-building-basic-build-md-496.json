@@ -1,0 +1,27 @@
+{
+  "id": "sdk/js/building/basics",
+  "title": "Basic Instructions",
+  "description": "To compile release version of the smart contract you can run a build script (specified in package.json for your project as { build",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/sdk/js/building/basic-build.md",
+  "sourceDirName": "sdk/js/building",
+  "slug": "/sdk/js/building/basics",
+  "permalink": "/vi/sdk/js/building/basics",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/js/building/basic-build.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "basics",
+    "title": "Basic Instructions"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "Deploying Contracts",
+    "permalink": "/vi/sdk/js/promises/deploy-contract"
+  },
+  "next": {
+    "title": "Rapid Prototyping",
+    "permalink": "/vi/sdk/js/building/prototyping"
+  }
+}

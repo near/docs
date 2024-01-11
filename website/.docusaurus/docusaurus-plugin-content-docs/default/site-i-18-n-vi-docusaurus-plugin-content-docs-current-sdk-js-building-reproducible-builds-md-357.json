@@ -1,0 +1,27 @@
+{
+  "id": "sdk/js/building/reproducible-builds",
+  "title": "Reproducible Builds",
+  "description": "Reproducible builds let different people build the same program and get the exact same outputs as one another. It helps users trust that deployed contracts are built correctly and correspond to the source code. To verify your contract user can build it themselves and check that the binaries are identical.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/sdk/js/building/reproducible-builds.md",
+  "sourceDirName": "sdk/js/building",
+  "slug": "/sdk/js/building/reproducible-builds",
+  "permalink": "/vi/sdk/js/building/reproducible-builds",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/js/building/reproducible-builds.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "Rapid Prototyping",
+    "permalink": "/vi/sdk/js/building/prototyping"
+  },
+  "next": {
+    "title": "JS SDK CLI",
+    "permalink": "/vi/sdk/js/cli/"
+  }
+}

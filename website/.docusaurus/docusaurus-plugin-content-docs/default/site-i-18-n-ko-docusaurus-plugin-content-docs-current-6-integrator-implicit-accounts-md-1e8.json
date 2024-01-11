@@ -1,0 +1,28 @@
+{
+  "id": "integrator/implicit-accounts",
+  "title": "암시적 계정(Implicit Account)",
+  "description": "배경",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/6.integrator/implicit-accounts.md",
+  "sourceDirName": "6.integrator",
+  "slug": "/integrator/implicit-accounts",
+  "permalink": "/ko/integrator/implicit-accounts",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/6.integrator/implicit-accounts.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "implicit-accounts",
+    "title": "암시적 계정(Implicit Account)",
+    "sidebar_label": "암시적 계정"
+  },
+  "sidebar": "exchanges",
+  "previous": {
+    "title": "대체 가능한 토큰",
+    "permalink": "/ko/integrator/fungible-tokens"
+  },
+  "next": {
+    "title": "소개",
+    "permalink": "/ko/integrator/errors/introduction"
+  }
+}

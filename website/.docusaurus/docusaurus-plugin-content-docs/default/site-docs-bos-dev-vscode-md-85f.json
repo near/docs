@@ -1,0 +1,26 @@
+{
+  "id": "bos/dev/vscode",
+  "title": "VS Code Extension",
+  "description": "A VS Code extension to help you develop components for NEAR BOS using Visual Studio Code.",
+  "source": "@site/../docs/bos/dev/vscode.md",
+  "sourceDirName": "bos/dev",
+  "slug": "/bos/dev/vscode",
+  "permalink": "/bos/dev/vscode",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/dev/vscode.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1682457647,
+  "formattedLastUpdatedAt": "Apr 25, 2023",
+  "frontMatter": {
+    "id": "vscode",
+    "title": "VS Code Extension"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "Login with NEAR",
+    "permalink": "/develop/integrate/backend-login"
+  }
+}

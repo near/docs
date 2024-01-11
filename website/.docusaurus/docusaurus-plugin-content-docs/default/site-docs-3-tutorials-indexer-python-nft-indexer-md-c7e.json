@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/indexer/python-nft-indexer",
+  "title": "Building an NFT indexer for Python",
+  "description": "frolvanya/near-lake-nft-indexer: source code for this tutorial",
+  "source": "@site/../docs/3.tutorials/indexer/python-nft-indexer.md",
+  "sourceDirName": "3.tutorials/indexer",
+  "slug": "/tutorials/indexer/python-nft-indexer",
+  "permalink": "/tutorials/indexer/python-nft-indexer",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/indexer/python-nft-indexer.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1702155614,
+  "formattedLastUpdatedAt": "Dec 9, 2023",
+  "frontMatter": {
+    "sidebar_label": "NFT indexer for Python"
+  },
+  "sidebar": "indexers",
+  "previous": {
+    "title": "NFT Indexer",
+    "permalink": "/tutorials/indexer/nft-indexer"
+  },
+  "next": {
+    "title": "Running Lake Indexer",
+    "permalink": "/tutorials/indexer/run-lake-indexer"
+  }
+}

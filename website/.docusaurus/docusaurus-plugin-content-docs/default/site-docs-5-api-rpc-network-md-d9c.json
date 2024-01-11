@@ -1,0 +1,30 @@
+{
+  "id": "api/rpc/network",
+  "title": "Network",
+  "description": "The RPC API enables you to query status information for nodes and validators.",
+  "source": "@site/../docs/5.api/rpc/network.md",
+  "sourceDirName": "5.api/rpc",
+  "slug": "/api/rpc/network",
+  "permalink": "/api/rpc/network",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/5.api/rpc/network.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "ppca",
+  "lastUpdatedAt": 1700588589,
+  "formattedLastUpdatedAt": "Nov 21, 2023",
+  "frontMatter": {
+    "id": "network",
+    "title": "Network"
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Protocol",
+    "permalink": "/api/rpc/protocol"
+  },
+  "next": {
+    "title": "Transactions",
+    "permalink": "/api/rpc/transactions"
+  }
+}

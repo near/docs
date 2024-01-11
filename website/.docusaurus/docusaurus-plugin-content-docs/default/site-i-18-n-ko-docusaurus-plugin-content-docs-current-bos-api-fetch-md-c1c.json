@@ -1,0 +1,27 @@
+{
+  "id": "bos/api/fetch",
+  "title": "가져오기",
+  "description": "fetch는 URL에서 데이터를 가져올 수 있는 글로벌 함수입니다. 이는 훅처럼 작동합니다. 이는 캐싱 레이어 뒤에 있는 브라우저의 fetch 함수에 대한 래퍼입니다. 외부 API에서 데이터를 가져오는 데 유용합니다. 브라우저의 fetch 함수와 유사한 API를 가지고 있지만, Promise 대신 값을 반환합니다. 데이터가 캐시되지 않으면 null을 반환하고 백그라운드에서 데이터를 가져옵니다. 데이터가 캐시되면 캐시된 값을 반환한 다음 다시 검증합니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/bos/api/fetch.md",
+  "sourceDirName": "bos/api",
+  "slug": "/bos/api/fetch",
+  "permalink": "/ko/bos/api/fetch",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/api/fetch.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "fetch",
+    "title": "가져오기"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "Social Notifications",
+    "permalink": "/ko/bos/api/notifications"
+  },
+  "next": {
+    "title": "스토리지",
+    "permalink": "/ko/bos/api/storage"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "concepts/basics/networks",
+  "title": "NEAR 네트워크",
+  "description": "NEAR 프로토콜은 각각 독립적인 밸리데이터와 고유한 상태로 작동하는 여러 네트워크에서 작동합니다. 이러한 네트워크는 다음과 같습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/1.concepts/basics/networks.md",
+  "sourceDirName": "1.concepts/basics",
+  "slug": "/concepts/basics/networks",
+  "permalink": "/ko/concepts/basics/networks",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/basics/networks.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "networks",
+    "title": "NEAR 네트워크",
+    "sidebar_label": "네트워크"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "밸리데이터",
+    "permalink": "/ko/concepts/basics/validators"
+  },
+  "next": {
+    "title": "에포크",
+    "permalink": "/ko/concepts/basics/epoch"
+  }
+}

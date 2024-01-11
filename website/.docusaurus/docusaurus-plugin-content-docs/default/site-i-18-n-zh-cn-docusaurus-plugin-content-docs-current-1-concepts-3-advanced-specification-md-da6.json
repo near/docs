@@ -1,0 +1,28 @@
+{
+  "id": "concepts/advanced/specification",
+  "title": "NEAR Protocol Specification",
+  "description": "NEAR协议的规约和标准，记录在以下两个地方:",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/1.concepts/3.advanced/specification.md",
+  "sourceDirName": "1.concepts/3.advanced",
+  "slug": "/concepts/advanced/specification",
+  "permalink": "/zh-CN/concepts/advanced/specification",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/3.advanced/specification.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "specification",
+    "title": "NEAR Protocol Specification",
+    "sidebar_label": "Specification"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Runtime",
+    "permalink": "/zh-CN/concepts/basics/runtime"
+  },
+  "next": {
+    "title": "Papers",
+    "permalink": "/zh-CN/concepts/advanced/papers"
+  }
+}

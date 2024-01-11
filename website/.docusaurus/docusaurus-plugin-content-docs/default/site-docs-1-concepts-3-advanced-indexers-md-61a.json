@@ -1,0 +1,29 @@
+{
+  "id": "concepts/advanced/indexers",
+  "title": "Introduction to Indexers",
+  "description": "Here you will find everything you need to know in order to familiarize yourself with the concept of indexers and even build your own one.",
+  "source": "@site/../docs/1.concepts/3.advanced/indexers.md",
+  "sourceDirName": "1.concepts/3.advanced",
+  "slug": "/concepts/advanced/indexers",
+  "permalink": "/concepts/advanced/indexers",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/3.advanced/indexers.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "James Bayly",
+  "lastUpdatedAt": 1678800844,
+  "formattedLastUpdatedAt": "Mar 14, 2023",
+  "frontMatter": {
+    "sidebar_label": "Intro to Indexers"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Data on the Blockchain",
+    "permalink": "/concepts/data-flow/data-storage"
+  },
+  "next": {
+    "title": "Indexer Framework",
+    "permalink": "/concepts/advanced/near-indexer-framework"
+  }
+}

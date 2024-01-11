@@ -1,0 +1,27 @@
+{
+  "id": "sdk/rust/introduction",
+  "title": "About Rust SDK",
+  "description": "Rust is a programming language designed for performance and safety. It is syntactically similar to C++, but can guarantee memory safety without resorting to garbage collection. Rust has proven to be a mature and secure language, which makes it ideal to write smart contracts. Because of this, Rust is the preferred programming language for writing smart contracts on NEAR. While there might be a learning curve for those coming from web development, learning Rust enables to write safer and faster contracts. Furthermore, core contracts such as Fungible Tokens and DAOs are currently only available in Rust.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/sdk/rust/rs-sdk.md",
+  "sourceDirName": "sdk/rust",
+  "slug": "/sdk/rust/introduction",
+  "permalink": "/zh-CN/sdk/rust/introduction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/rust/rs-sdk.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "introduction",
+    "title": "About Rust SDK"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "NEAR SDKs",
+    "permalink": "/zh-CN/sdk/welcome"
+  },
+  "next": {
+    "title": "Getting Started",
+    "permalink": "/zh-CN/sdk/rust/get-started"
+  }
+}

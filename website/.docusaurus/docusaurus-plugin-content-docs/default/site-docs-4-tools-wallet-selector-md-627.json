@@ -1,0 +1,27 @@
+{
+  "id": "tools/wallet-selector",
+  "title": "Wallet Selector",
+  "description": "An easy-to-navigate modal that allows users to select their preferred wallet to easily interact with the NEAR protocol.",
+  "source": "@site/../docs/4.tools/wallet-selector.md",
+  "sourceDirName": "4.tools",
+  "slug": "/tools/wallet-selector",
+  "permalink": "/tools/wallet-selector",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/4.tools/wallet-selector.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1678382303,
+  "formattedLastUpdatedAt": "Mar 9, 2023",
+  "frontMatter": {},
+  "sidebar": "tools",
+  "previous": {
+    "title": "NEAR CLI RS",
+    "permalink": "/tools/near-cli-rs"
+  },
+  "next": {
+    "title": "FastAuth SDK",
+    "permalink": "/tools/fastauth-sdk"
+  }
+}

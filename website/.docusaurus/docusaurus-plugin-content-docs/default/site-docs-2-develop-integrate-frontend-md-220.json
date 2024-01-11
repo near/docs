@@ -1,0 +1,30 @@
+{
+  "id": "develop/integrate/frontend",
+  "title": "Web Frontend",
+  "description": "Once your contract is deployed it is highly likely that you will want to interact with it from a web frontend.",
+  "source": "@site/../docs/2.develop/integrate/frontend.md",
+  "sourceDirName": "2.develop/integrate",
+  "slug": "/develop/integrate/frontend",
+  "permalink": "/develop/integrate/frontend",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/integrate/frontend.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1702155614,
+  "formattedLastUpdatedAt": "Dec 9, 2023",
+  "frontMatter": {
+    "id": "frontend",
+    "title": "Web Frontend"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "Components & Historical data",
+    "permalink": "/bos/queryapi/bos-components"
+  },
+  "next": {
+    "title": "Count on NEAR",
+    "permalink": "/tutorials/examples/count-near"
+  }
+}

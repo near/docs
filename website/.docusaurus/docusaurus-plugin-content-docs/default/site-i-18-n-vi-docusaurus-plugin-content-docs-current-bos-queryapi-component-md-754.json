@@ -1,0 +1,28 @@
+{
+  "id": "bos/queryapi/bos-components",
+  "title": "Components handling Historical data",
+  "description": "Building components that handle historical blockchain data require dedicated solutions that manage the data and reduce the latency of requests, as it's not possible to scan the whole blockchain when a user makes a request.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/bos/queryapi/component.md",
+  "sourceDirName": "bos/queryapi",
+  "slug": "/bos/queryapi/bos-components",
+  "permalink": "/vi/bos/queryapi/bos-components",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/queryapi/component.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "bos-components",
+    "title": "Components handling Historical data",
+    "sidebar_label": "Components & Historical data"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "Lido Example",
+    "permalink": "/vi/bos/tutorial/lido"
+  },
+  "next": {
+    "title": "Web Frontend",
+    "permalink": "/vi/develop/integrate/frontend"
+  }
+}

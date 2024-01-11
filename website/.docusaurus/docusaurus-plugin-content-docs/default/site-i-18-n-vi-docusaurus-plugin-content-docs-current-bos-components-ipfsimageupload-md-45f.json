@@ -1,0 +1,27 @@
+{
+  "id": "bos/components/ipfs",
+  "title": "Image Uploader",
+  "description": "The IpfsImageUpload is a built-in component that enables users to directly upload an image to the InterPlanetary File System (IPFS).",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/bos/components/ipfsimageupload.md",
+  "sourceDirName": "bos/components",
+  "slug": "/bos/components/ipfs",
+  "permalink": "/vi/bos/components/ipfs",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/components/ipfsimageupload.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "ipfs",
+    "title": "Image Uploader"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "Widget",
+    "permalink": "/vi/bos/components/widgets"
+  },
+  "next": {
+    "title": "Files",
+    "permalink": "/vi/bos/components/files"
+  }
+}

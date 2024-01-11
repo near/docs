@@ -1,0 +1,28 @@
+{
+  "id": "bos/queryapi/index-functions",
+  "title": "Indexing Functions",
+  "description": "QueryAPI is a fully managed service that allows you to create and manage indexers on-chain seamlessly.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/bos/queryapi/index-function.md",
+  "sourceDirName": "bos/queryapi",
+  "slug": "/bos/queryapi/index-functions",
+  "permalink": "/zh-CN/bos/queryapi/index-functions",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/queryapi/index-function.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "index-functions",
+    "title": "Indexing Functions",
+    "sidebar_label": "Indexing Functions"
+  },
+  "sidebar": "indexers",
+  "previous": {
+    "title": "Best Practices",
+    "permalink": "/zh-CN/bos/queryapi/best-practices"
+  },
+  "next": {
+    "title": "Context object",
+    "permalink": "/zh-CN/bos/queryapi/context-object"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "tutorials/examples/coin-flip",
+  "title": "동전 던지기",
+  "description": "동전 던지기는 플레이어가 동전 던지기의 결과를 추측하는 게임입니다. 이는 난수를 구현하는 가장 간단한 컨트랙트 중 하나입니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/examples/coin-flip.md",
+  "sourceDirName": "3.tutorials/examples",
+  "slug": "/tutorials/examples/coin-flip",
+  "permalink": "/ko/tutorials/examples/coin-flip",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/examples/coin-flip.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "coin-flip",
+    "title": "동전 던지기"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "교차 컨트랙트 호출(Cross Contract Call)",
+    "permalink": "/ko/tutorials/examples/xcc"
+  },
+  "next": {
+    "title": "팩토리",
+    "permalink": "/ko/tutorials/examples/factory"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/fts/circulating-supply",
+  "title": "Creating a Circulating Supply",
+  "description": "In the previous tutorial, you looked at what a fungible token was and how you could define one in your smart contract. In this tutorial, you'll learn how to create a circulating supply belonging to the contract owner and view all the tokens, with their metadata, in the NEAR wallet.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/3.tutorials/fts/3-circulating-supply.md",
+  "sourceDirName": "3.tutorials/fts",
+  "slug": "/tutorials/fts/circulating-supply",
+  "permalink": "/vi/tutorials/fts/circulating-supply",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/fts/3-circulating-supply.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "id": "circulating-supply",
+    "title": "Creating a Circulating Supply",
+    "sidebar_label": "Circulating Supply"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Defining Your Token",
+    "permalink": "/vi/tutorials/fts/defining-a-token"
+  },
+  "next": {
+    "title": "Registering Accounts",
+    "permalink": "/vi/tutorials/fts/registering-accounts"
+  }
+}

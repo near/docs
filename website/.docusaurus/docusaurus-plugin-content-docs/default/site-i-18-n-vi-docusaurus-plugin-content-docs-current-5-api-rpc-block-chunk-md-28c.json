@@ -1,0 +1,27 @@
+{
+  "id": "api/rpc/block-chunk",
+  "title": "Block / Chunk",
+  "description": "Lưu ý: Bạn có thể chọn search theo một block cụ thể hoặc finality, chứ không thể chọn cả hai.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/5.api/rpc/block-chunk.md",
+  "sourceDirName": "5.api/rpc",
+  "slug": "/api/rpc/block-chunk",
+  "permalink": "/vi/api/rpc/block-chunk",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/5.api/rpc/block-chunk.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "block-chunk",
+    "title": "Block / Chunk"
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Các RPC Endpoint",
+    "permalink": "/vi/api/rpc/contracts"
+  },
+  "next": {
+    "title": "Gas",
+    "permalink": "/vi/api/rpc/gas"
+  }
+}

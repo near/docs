@@ -1,0 +1,27 @@
+{
+  "id": "develop/contracts/security/bounty",
+  "title": "Bug Bounty Program",
+  "description": "NEAR has a revamped bug bounty program!",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.develop/contracts/security/bounty.md",
+  "sourceDirName": "2.develop/contracts/security",
+  "slug": "/develop/contracts/security/bounty",
+  "permalink": "/zh-CN/develop/contracts/security/bounty",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/contracts/security/bounty.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "bounty",
+    "title": "Bug Bounty Program"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Audit Program",
+    "permalink": "/zh-CN/develop/contracts/security/audits"
+  },
+  "next": {
+    "title": "Fungible Tokens (FT)",
+    "permalink": "/zh-CN/develop/relevant-contracts/ft"
+  }
+}

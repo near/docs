@@ -1,0 +1,30 @@
+{
+  "id": "sdk/js/promises/intro",
+  "title": "소개",
+  "description": "트랜잭션은 Promise를 통해 컨트랙트에서 비동기적으로 전송될 수 있습니다. 많은 프로그래밍 언어의 Promise와 마찬가지로, 이들은 미래에 코드가 실행되도록 합니다. NEAR의 경우 이 \"미래\" 는 원래 함수 호출과 동일한 블록이 아니라 다음 블록(또는 그 부근)에서_ 실행될 트랜잭션을 의미합니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/sdk/js/promises/intro.md",
+  "sourceDirName": "sdk/js/promises",
+  "slug": "/sdk/js/promises/intro",
+  "permalink": "/ko/sdk/js/promises/intro",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/js/promises/intro.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1,
+    "sidebar_label": "소개",
+    "pagination_label": "Promise: 소개",
+    "title": "소개"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "Callbacks",
+    "permalink": "/ko/sdk/js/cross-contract/callbacks"
+  },
+  "next": {
+    "title": "네이티브 토큰 보내기",
+    "permalink": "/ko/sdk/js/promises/token-tx"
+  }
+}

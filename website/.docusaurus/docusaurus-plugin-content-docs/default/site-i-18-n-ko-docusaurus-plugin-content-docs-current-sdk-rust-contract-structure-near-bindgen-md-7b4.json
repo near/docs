@@ -1,0 +1,27 @@
+{
+  "id": "sdk/rust/contract-structure/near-bindgen",
+  "title": "near_bindgen",
+  "description": "#[near_bindgen] 매크로는 유효한 NEAR 컨트랙트가 되기 위해 필요한 코드를 생성하고, 외부에서 호출할 수 있도록 하는 함수를 공개하기 위해 struct에서 사용되는 함수 구현입니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/sdk/rust/contract-structure/near-bindgen.md",
+  "sourceDirName": "sdk/rust/contract-structure",
+  "slug": "/sdk/rust/contract-structure/near-bindgen",
+  "permalink": "/ko/sdk/rust/contract-structure/near-bindgen",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/rust/contract-structure/near-bindgen.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "시작하기",
+    "permalink": "/ko/sdk/rust/get-started"
+  },
+  "next": {
+    "title": "컬렉션",
+    "permalink": "/ko/sdk/rust/contract-structure/collections"
+  }
+}

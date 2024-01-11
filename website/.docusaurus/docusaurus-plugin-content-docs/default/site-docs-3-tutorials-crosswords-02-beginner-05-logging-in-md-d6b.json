@@ -1,0 +1,32 @@
+{
+  "id": "tutorials/crosswords/beginner/logging-in",
+  "title": "Covering access keys and login",
+  "description": "Previously…",
+  "source": "@site/../docs/3.tutorials/crosswords/02-beginner/05-logging-in.md",
+  "sourceDirName": "3.tutorials/crosswords/02-beginner",
+  "slug": "/tutorials/crosswords/beginner/logging-in",
+  "permalink": "/tutorials/crosswords/beginner/logging-in",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/crosswords/02-beginner/05-logging-in.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1673360929,
+  "formattedLastUpdatedAt": "Jan 10, 2023",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "sidebar_position": 5,
+    "sidebar_label": "Access keys and login 1/2",
+    "title": "Covering access keys and login"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Add a puzzle",
+    "permalink": "/tutorials/crosswords/beginner/adding-a-puzzle"
+  },
+  "next": {
+    "title": "Access keys and login 2/2",
+    "permalink": "/tutorials/crosswords/beginner/logging-in-implementation"
+  }
+}

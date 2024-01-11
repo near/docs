@@ -1,0 +1,31 @@
+{
+  "id": "bos/queryapi/context-object",
+  "title": "QueryAPI Context object",
+  "description": "Overview",
+  "source": "@site/../docs/bos/queryapi/context.md",
+  "sourceDirName": "bos/queryapi",
+  "slug": "/bos/queryapi/context-object",
+  "permalink": "/bos/queryapi/context-object",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/queryapi/context.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Roshaan Siddiqui",
+  "lastUpdatedAt": 1701176787,
+  "formattedLastUpdatedAt": "Nov 28, 2023",
+  "frontMatter": {
+    "id": "context-object",
+    "title": "QueryAPI Context object",
+    "sidebar_label": "Context object"
+  },
+  "sidebar": "indexers",
+  "previous": {
+    "title": "Indexing Functions",
+    "permalink": "/bos/queryapi/index-functions"
+  },
+  "next": {
+    "title": "Access & Query Historical data",
+    "permalink": "/bos/queryapi/query-data"
+  }
+}

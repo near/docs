@@ -1,0 +1,31 @@
+{
+  "id": "tutorials/nfts/minting-nft-frontend",
+  "title": "Minting NFT Front-end",
+  "description": "In this tutorial you'll learn how to create a simple NFT front-end and mint a \"Go Team\" NFT on the NEAR blockchain straight from your web browser.",
+  "source": "@site/../docs/3.tutorials/nfts/simple-nft-minting-example.md",
+  "sourceDirName": "3.tutorials/nfts",
+  "slug": "/tutorials/nfts/minting-nft-frontend",
+  "permalink": "/tutorials/nfts/minting-nft-frontend",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/simple-nft-minting-example.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1701811626,
+  "formattedLastUpdatedAt": "Dec 5, 2023",
+  "frontMatter": {
+    "id": "minting-nft-frontend",
+    "title": "Minting NFT Front-end",
+    "sidebar_label": "Minting Front-end"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Minting NFTs",
+    "permalink": "/tutorials/nfts/minting-nfts"
+  },
+  "next": {
+    "title": "Minecraft NFTs",
+    "permalink": "/tutorials/nfts/minecraft-nfts"
+  }
+}

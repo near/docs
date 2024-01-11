@@ -1,0 +1,31 @@
+{
+  "id": "primitives/dex/interacting/bos",
+  "title": "NEAR Component",
+  "description": "This section describes how to interact with DEXs directly from a NEAR Component.",
+  "source": "@site/../docs/7.primitives/dex/interacting/bos.md",
+  "sourceDirName": "7.primitives/dex/interacting",
+  "slug": "/primitives/dex/interacting/bos",
+  "permalink": "/primitives/dex/interacting/bos",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/dex/interacting/bos.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Damian Parrino",
+  "lastUpdatedAt": 1700777490,
+  "formattedLastUpdatedAt": "Nov 23, 2023",
+  "frontMatter": {
+    "id": "bos",
+    "title": "NEAR Component",
+    "hide_table_of_contents": false
+  },
+  "sidebar": "primitives",
+  "previous": {
+    "title": "Introduction",
+    "permalink": "/primitives/dex/introduction"
+  },
+  "next": {
+    "title": "Web Application",
+    "permalink": "/primitives/dex/interacting/web-app"
+  }
+}

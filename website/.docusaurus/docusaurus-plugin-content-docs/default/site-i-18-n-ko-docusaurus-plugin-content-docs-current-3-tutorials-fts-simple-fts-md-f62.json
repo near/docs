@@ -1,0 +1,27 @@
+{
+  "id": "tutorials/fts/simple-fts",
+  "title": "Minting Fungible Tokens",
+  "description": "이 튜토리얼에서는 쉽게 사용할 수 있는 스마트 컨트랙트를 사용하여, 소프트웨어 개발을 수행하지 않고 자신의 대체 가능한 토큰(FT)을 쉽게 만드는 방법을 배웁니다. This article will show you how to use an existing FT smart contract, and you'll learn how to mint fungible tokens and view them in your Wallet.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/fts/simple-fts.md",
+  "sourceDirName": "3.tutorials/fts",
+  "slug": "/tutorials/fts/simple-fts",
+  "permalink": "/ko/tutorials/fts/simple-fts",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/fts/simple-fts.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "simple-fts",
+    "title": "Minting Fungible Tokens"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "자체 업그레이드 및 상태 마이그레이션",
+    "permalink": "/ko/tutorials/examples/update-contract-migrate-state"
+  },
+  "next": {
+    "title": "NFT 발행",
+    "permalink": "/ko/tutorials/nfts/minting-nfts"
+  }
+}

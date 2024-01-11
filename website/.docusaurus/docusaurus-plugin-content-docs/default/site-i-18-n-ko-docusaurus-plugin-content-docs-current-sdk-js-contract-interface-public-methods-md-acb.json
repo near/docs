@@ -1,0 +1,28 @@
+{
+  "id": "sdk/js/contract-interface/public-methods",
+  "title": "퍼블릭 메서드",
+  "description": "Methods can be called externally by using the view({}) or call({}) decorators within the contract class which will expose the method in the compiled WASM bytecode to be called by any other NEAR Account. 이러한 데코레이터 없이 컨트랙트 클래스에서 메서드가 선언되고 다른 NEAR 계정에서 호출될 때마다 MethodNotFound 오류가 발생합니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/sdk/js/contract-interface/public-methods.md",
+  "sourceDirName": "sdk/js/contract-interface",
+  "slug": "/sdk/js/contract-interface/public-methods",
+  "permalink": "/ko/sdk/js/contract-interface/public-methods",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/js/contract-interface/public-methods.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1,
+    "title": "퍼블릭 메서드"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "컬렉션",
+    "permalink": "/ko/sdk/js/contract-structure/collections"
+  },
+  "next": {
+    "title": "프라이빗 메서드",
+    "permalink": "/ko/sdk/js/contract-interface/private-methods"
+  }
+}

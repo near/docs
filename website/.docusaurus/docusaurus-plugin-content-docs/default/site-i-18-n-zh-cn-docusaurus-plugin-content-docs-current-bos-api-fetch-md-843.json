@@ -1,0 +1,27 @@
+{
+  "id": "bos/api/fetch",
+  "title": "Fetch",
+  "description": "fetch is a global function that allows to fetch data from the URL. It acts like a hook. It's a wrapper around the fetch function from the browser behind the caching layer. It's useful for fetching data from the external APIs. It has the similar API as the browser's fetch function, but instead of a promise it returns a value. If the data is not cached, it returns null and fetches the data in the background. If the data is cached, it returns the cached value and then revalidates it.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/bos/api/fetch.md",
+  "sourceDirName": "bos/api",
+  "slug": "/bos/api/fetch",
+  "permalink": "/zh-CN/bos/api/fetch",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/api/fetch.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "fetch",
+    "title": "Fetch"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "Social Notifications",
+    "permalink": "/zh-CN/bos/api/notifications"
+  },
+  "next": {
+    "title": "Storage",
+    "permalink": "/zh-CN/bos/api/storage"
+  }
+}

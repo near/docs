@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/fts/introduction",
+  "title": "Fungible Tokens Zero to Hero",
+  "description": "In this Zero to Hero series, you'll find a set of tutorials covering every aspect of a fungible token (FT) smart contract. You'll start by interacting with a pre-deployed contract and by the end you'll have built a fully-fledged FT smart contract that supports every extension of the standards.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/3.tutorials/fts/0-intro.md",
+  "sourceDirName": "3.tutorials/fts",
+  "slug": "/tutorials/fts/introduction",
+  "permalink": "/vi/tutorials/fts/introduction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/fts/0-intro.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 0,
+  "frontMatter": {
+    "id": "introduction",
+    "title": "Fungible Tokens Zero to Hero",
+    "sidebar_label": "Giới thiệu"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Lazy Minting, Collections, and More!",
+    "permalink": "/vi/tutorials/nfts/series"
+  },
+  "next": {
+    "title": "Contract đã được deploy sẵn",
+    "permalink": "/vi/tutorials/fts/predeployed-contract"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/crosswords/beginner/collections",
+  "title": "LookupMap이라는 NEAR 특화 컬렉션을 사용하여 여러 십자말풀이 퍼즐 저장",
+  "description": "이전 챕터에서 언급했듯이, 온라인 Rust Book은 Rust를 시작하는 사람들에게 훌륭한 참고 자료이지만, 블록체인을 다룰 때는 다른 개념이 필요합니다. 이러한 것들 중 하나는, 컬렉션을 사용하는 것입니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/crosswords/02-beginner/01-collections.md",
+  "sourceDirName": "3.tutorials/crosswords/02-beginner",
+  "slug": "/tutorials/crosswords/beginner/collections",
+  "permalink": "/ko/tutorials/crosswords/beginner/collections",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/crosswords/02-beginner/01-collections.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2,
+    "sidebar_label": "여러 퍼즐 저장",
+    "title": "LookupMap이라는 NEAR 특화 컬렉션을 사용하여 여러 십자말풀이 퍼즐 저장"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "개요",
+    "permalink": "/ko/tutorials/crosswords/beginner/overview"
+  },
+  "next": {
+    "title": "구조체 및 열거형 사용",
+    "permalink": "/ko/tutorials/crosswords/beginner/structs-enums"
+  }
+}

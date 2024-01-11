@@ -1,0 +1,27 @@
+{
+  "id": "api/rpc/contracts",
+  "title": "Các RPC Endpoint",
+  "description": "Ví dụ:",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/5.api/rpc/contracts.md",
+  "sourceDirName": "5.api/rpc",
+  "slug": "/api/rpc/contracts",
+  "permalink": "/vi/api/rpc/contracts",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/5.api/rpc/contracts.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "contracts",
+    "title": "Các RPC Endpoint"
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Các RPC Endpoint",
+    "permalink": "/vi/api/rpc/access-keys"
+  },
+  "next": {
+    "title": "Block / Chunk",
+    "permalink": "/vi/api/rpc/block-chunk"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "social/tech",
+  "title": "Technical Documentation",
+  "description": "This document goes into technical details of the Near Social.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/social/tech.md",
+  "sourceDirName": "social",
+  "slug": "/social/tech",
+  "permalink": "/zh-CN/social/tech",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/social/tech.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "tech",
+    "title": "Technical Documentation"
+  }
+}

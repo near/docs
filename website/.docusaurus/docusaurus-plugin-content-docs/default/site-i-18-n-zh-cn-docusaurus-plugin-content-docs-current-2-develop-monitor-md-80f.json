@@ -1,0 +1,25 @@
+{
+  "id": "develop/monitor",
+  "title": "Monitor the Network",
+  "description": "Welcome! Here you will find documentation on how to query past data and real time events from the NEAR network.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.develop/monitor.md",
+  "sourceDirName": "2.develop",
+  "slug": "/develop/monitor",
+  "permalink": "/zh-CN/develop/monitor",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/monitor.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "monitor",
+    "title": "Monitor the Network",
+    "sidebar_label": "Home",
+    "hide_table_of_contents": true
+  },
+  "sidebar": "indexers",
+  "next": {
+    "title": "Introduction",
+    "permalink": "/zh-CN/bos/queryapi/intro"
+  }
+}

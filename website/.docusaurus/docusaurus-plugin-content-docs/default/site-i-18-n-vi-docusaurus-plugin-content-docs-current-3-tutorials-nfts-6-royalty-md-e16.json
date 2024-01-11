@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/nfts/royalty",
+  "title": "Royalty",
+  "description": "Trong hướng dẫn này bạn sẽ tiếp tục build non-fungible token (NFT) smart contract của mình, và tìm hiểu cách triển khai các perpetual royalty vào các NFT. Việc này sẽ cho phép mọi người nhận được phần trăm của giá mua khi NFT được bán.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/3.tutorials/nfts/6-royalty.md",
+  "sourceDirName": "3.tutorials/nfts",
+  "slug": "/tutorials/nfts/royalty",
+  "permalink": "/vi/tutorials/nfts/royalty",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/6-royalty.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 6,
+  "frontMatter": {
+    "id": "royalty",
+    "title": "Royalty",
+    "sidebar_label": "Royalty"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Approval",
+    "permalink": "/vi/tutorials/nfts/approvals"
+  },
+  "next": {
+    "title": "Event",
+    "permalink": "/vi/tutorials/nfts/events"
+  }
+}

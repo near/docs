@@ -1,0 +1,27 @@
+{
+  "id": "data-availability/rpc",
+  "title": "RPC Client",
+  "description": "This client is the defacto client for submitting blobs to NEAR.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/data-availability/rpc.md",
+  "sourceDirName": "data-availability",
+  "slug": "/data-availability/rpc",
+  "permalink": "/zh-CN/data-availability/rpc",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/data-availability/rpc.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "rpc",
+    "title": "RPC Client"
+  },
+  "sidebar": "data-availability",
+  "previous": {
+    "title": "Light Client",
+    "permalink": "/zh-CN/data-availability/light-client"
+  },
+  "next": {
+    "title": "Integrations",
+    "permalink": "/zh-CN/data-availability/integrations"
+  }
+}

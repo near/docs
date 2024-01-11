@@ -1,0 +1,18 @@
+{
+  "id": "develop/contracts/introduction",
+  "title": "전제 조건",
+  "description": "To develop a smart contract you will need to install Node.js.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.develop/contracts/introduction.md",
+  "sourceDirName": "2.develop/contracts",
+  "slug": "/develop/contracts/introduction",
+  "permalink": "/ko/develop/contracts/introduction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/contracts/introduction.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "introduction",
+    "title": "전제 조건"
+  }
+}

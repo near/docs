@@ -1,0 +1,31 @@
+{
+  "id": "develop/integrate/quickstart-frontend",
+  "title": "Hello WebApp",
+  "description": "Most interactions with the NEAR ecosystem can be grouped in 2 categories:",
+  "source": "@site/../docs/2.develop/integrate/quickstart.md",
+  "sourceDirName": "2.develop/integrate",
+  "slug": "/develop/integrate/quickstart-frontend",
+  "permalink": "/develop/integrate/quickstart-frontend",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/integrate/quickstart.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Daniel Mesfin",
+  "lastUpdatedAt": 1704713286,
+  "formattedLastUpdatedAt": "Jan 8, 2024",
+  "frontMatter": {
+    "id": "quickstart-frontend",
+    "title": "Hello WebApp",
+    "sidebar_label": "⭐ Quickstart"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "Home",
+    "permalink": "/develop/integrate/welcome"
+  },
+  "next": {
+    "title": "Overview",
+    "permalink": "/bos/overview"
+  }
+}

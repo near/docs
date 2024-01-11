@@ -1,0 +1,28 @@
+{
+  "id": "concepts/basics/protocol",
+  "title": "NEAR란 무엇인가요?",
+  "description": "NEAR는 사용자 친화적이고 탄소 중립적인 블록체인으로, 처음부터 성능, 보안 및 무한한 확장성을 목표로 구축되었습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/1.concepts/basics/protocol.md",
+  "sourceDirName": "1.concepts/basics",
+  "slug": "/concepts/basics/protocol",
+  "permalink": "/ko/concepts/basics/protocol",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/basics/protocol.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "protocol",
+    "title": "NEAR란 무엇인가요?",
+    "sidebar_label": "⭐ NEAR란 무엇인가요?"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "홈",
+    "permalink": "/ko/concepts/welcome"
+  },
+  "next": {
+    "title": "계정 모델",
+    "permalink": "/ko/concepts/basics/accounts/model"
+  }
+}

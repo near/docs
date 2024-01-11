@@ -1,0 +1,27 @@
+{
+  "id": "sdk/rust/contract-interface/contract-mutability",
+  "title": "Contract Mutability",
+  "description": "Contract state mutability is handled automatically based on how self is used in the function parameters. Depending on which is used, the #[near_bindgen] macro will generate the respective code to load/deserialize state for any function which uses self and serialize/store state only for when &mut self is used.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/sdk/rust/contract-interface/contract-mutability.md",
+  "sourceDirName": "sdk/rust/contract-interface",
+  "slug": "/sdk/rust/contract-interface/contract-mutability",
+  "permalink": "/vi/sdk/rust/contract-interface/contract-mutability",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/rust/contract-interface/contract-mutability.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "Public Method Types",
+    "permalink": "/vi/sdk/rust/contract-interface/public-methods"
+  },
+  "next": {
+    "title": "Private Methods",
+    "permalink": "/vi/sdk/rust/contract-interface/private-methods"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "tools/near-api-js/wallet",
+  "title": "지갑과 상호 작용",
+  "description": "NEAR의 지갑은 웹 기반이기 때문에, 브라우저에서만 지갑 상호 작용이 가능합니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/4.tools/near-api-js/naj-wallet.md",
+  "sourceDirName": "4.tools/near-api-js",
+  "slug": "/tools/near-api-js/wallet",
+  "permalink": "/ko/tools/near-api-js/wallet",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/4.tools/near-api-js/naj-wallet.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "wallet",
+    "title": "지갑과 상호 작용",
+    "sidebar_label": "지갑"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "JavaScript API 사용",
+    "permalink": "/ko/tools/near-api-js/quick-reference"
+  },
+  "next": {
+    "title": "계정",
+    "permalink": "/ko/tools/near-api-js/account"
+  }
+}

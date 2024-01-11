@@ -1,0 +1,30 @@
+{
+  "id": "api/rpc/access-keys",
+  "title": "Access Keys",
+  "description": "The RPC API enables you to retrieve information about an account's access keys.",
+  "source": "@site/../docs/5.api/rpc/access-keys.md",
+  "sourceDirName": "5.api/rpc",
+  "slug": "/api/rpc/access-keys",
+  "permalink": "/api/rpc/access-keys",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/5.api/rpc/access-keys.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Damian Parrino",
+  "lastUpdatedAt": 1659986412,
+  "formattedLastUpdatedAt": "Aug 8, 2022",
+  "frontMatter": {
+    "id": "access-keys",
+    "title": "Access Keys"
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Setup",
+    "permalink": "/api/rpc/setup"
+  },
+  "next": {
+    "title": "Accounts / Contracts",
+    "permalink": "/api/rpc/contracts"
+  }
+}

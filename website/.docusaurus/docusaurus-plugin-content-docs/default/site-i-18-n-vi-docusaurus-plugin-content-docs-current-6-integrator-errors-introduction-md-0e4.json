@@ -1,0 +1,28 @@
+{
+  "id": "integrator/errors/introduction",
+  "title": "Giới thiệu",
+  "description": "did you know?",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/6.integrator/errors/introduction.md",
+  "sourceDirName": "6.integrator/errors",
+  "slug": "/integrator/errors/introduction",
+  "permalink": "/vi/integrator/errors/introduction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/6.integrator/errors/introduction.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "introduction",
+    "title": "Giới thiệu",
+    "sidebar_label": "Giới thiệu"
+  },
+  "sidebar": "exchanges",
+  "previous": {
+    "title": "Implicit Account",
+    "permalink": "/vi/integrator/implicit-accounts"
+  },
+  "next": {
+    "title": "Đánh Giá Source Code",
+    "permalink": "/vi/integrator/errors/error-implementation"
+  }
+}

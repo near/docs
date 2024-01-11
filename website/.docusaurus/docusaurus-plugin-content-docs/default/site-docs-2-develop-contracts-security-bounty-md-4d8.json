@@ -1,0 +1,30 @@
+{
+  "id": "develop/contracts/security/bounty",
+  "title": "Bug Bounty Program",
+  "description": "NEAR has a revamped bug bounty program!",
+  "source": "@site/../docs/2.develop/contracts/security/bounty.md",
+  "sourceDirName": "2.develop/contracts/security",
+  "slug": "/develop/contracts/security/bounty",
+  "permalink": "/develop/contracts/security/bounty",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/contracts/security/bounty.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1673445665,
+  "formattedLastUpdatedAt": "Jan 11, 2023",
+  "frontMatter": {
+    "id": "bounty",
+    "title": "Bug Bounty Program"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Audit Program",
+    "permalink": "/develop/contracts/security/audits"
+  },
+  "next": {
+    "title": "Fungible Tokens (FT)",
+    "permalink": "/develop/relevant-contracts/ft"
+  }
+}

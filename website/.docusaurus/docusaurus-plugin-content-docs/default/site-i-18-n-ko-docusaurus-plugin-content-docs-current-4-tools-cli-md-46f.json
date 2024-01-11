@@ -1,0 +1,27 @@
+{
+  "id": "tools/near-cli",
+  "title": "NEAR CLI",
+  "description": "NEAR 명령줄(Command Line) 인터페이스 (CLI)는 쉘에서 직접 NEAR 네트워크와 상호 작용할 수 있는 도구입니다. 무엇보다도, NEAR CLI를 사용하면 다음을 수행할 수 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/4.tools/cli.md",
+  "sourceDirName": "4.tools",
+  "slug": "/tools/near-cli",
+  "permalink": "/ko/tools/near-cli",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/4.tools/cli.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "near-cli",
+    "title": "NEAR CLI"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "단위 테스트(Unit Test)",
+    "permalink": "/ko/sdk/js/testing/unit-tests"
+  },
+  "next": {
+    "title": "NEAR CLI RS",
+    "permalink": "/ko/tools/near-cli-rs"
+  }
+}

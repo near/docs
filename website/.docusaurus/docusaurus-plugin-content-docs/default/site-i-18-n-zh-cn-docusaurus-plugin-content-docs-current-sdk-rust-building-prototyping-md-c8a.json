@@ -1,0 +1,28 @@
+{
+  "id": "sdk/rust/building/prototyping",
+  "title": "Upgrading Contracts: Rapid Prototyping",
+  "description": "When you change the interface of a contract and re-deploy it, you may see this error:",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/sdk/rust/building/prototyping.md",
+  "sourceDirName": "sdk/rust/building",
+  "slug": "/sdk/rust/building/prototyping",
+  "permalink": "/zh-CN/sdk/rust/building/prototyping",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/rust/building/prototyping.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "prototyping",
+    "sidebar_label": "Rapid Prototyping",
+    "title": "Upgrading Contracts: Rapid Prototyping"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "Basic Instructions",
+    "permalink": "/zh-CN/sdk/rust/building/basics"
+  },
+  "next": {
+    "title": "Post Processing Tools",
+    "permalink": "/zh-CN/sdk/rust/building/post-processing"
+  }
+}

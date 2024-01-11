@@ -1,0 +1,32 @@
+{
+  "id": "tutorials/nfts/js/events",
+  "title": "Events",
+  "description": "In this tutorial, you'll learn about the events standard and how to implement it in your smart contract.",
+  "source": "@site/../docs/3.tutorials/nfts/js/7-events.md",
+  "sourceDirName": "3.tutorials/nfts/js",
+  "slug": "/tutorials/nfts/js/events",
+  "permalink": "/tutorials/nfts/js/events",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/js/7-events.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1701811626,
+  "formattedLastUpdatedAt": "Dec 5, 2023",
+  "sidebarPosition": 7,
+  "frontMatter": {
+    "id": "events",
+    "title": "Events",
+    "sidebar_label": "Events"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Royalty",
+    "permalink": "/tutorials/nfts/js/royalty"
+  },
+  "next": {
+    "title": "Marketplace",
+    "permalink": "/tutorials/nfts/js/marketplace"
+  }
+}

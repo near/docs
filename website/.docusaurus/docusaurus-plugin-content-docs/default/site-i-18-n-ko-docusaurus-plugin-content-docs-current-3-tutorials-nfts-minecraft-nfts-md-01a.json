@@ -1,0 +1,28 @@
+{
+  "id": "tutorials/nfts/minecraft-nfts",
+  "title": "Minecraft에서 NFT 만들기",
+  "description": "이 튜토리얼에서는 맞춤형 Minecraft 제작물을 가져와서, NEAR 블록체인의 NFT로 발행하는 방법을 배웁니다!",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/nfts/minecraft-nfts.md",
+  "sourceDirName": "3.tutorials/nfts",
+  "slug": "/tutorials/nfts/minecraft-nfts",
+  "permalink": "/ko/tutorials/nfts/minecraft-nfts",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/minecraft-nfts.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "minecraft-nfts",
+    "title": "Minecraft에서 NFT 만들기",
+    "sidebar_label": "Minecraft NFTs"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "프론트엔드",
+    "permalink": "/ko/tutorials/nfts/minting-nft-frontend"
+  },
+  "next": {
+    "title": "소개",
+    "permalink": "/ko/tutorials/nfts/js/introduction"
+  }
+}

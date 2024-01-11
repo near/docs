@@ -1,0 +1,24 @@
+{
+  "id": "api/rpc/introduction",
+  "title": "NEAR RPC API",
+  "description": "The RPC API allows you to communicate directly with the NEAR network. For example, tools such as near-api-js are just abstractions making RPC calls.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/5.api/rpc/introduction.md",
+  "sourceDirName": "5.api/rpc",
+  "slug": "/api/rpc/introduction",
+  "permalink": "/zh-CN/api/rpc/introduction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/5.api/rpc/introduction.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "introduction",
+    "sidebar_label": "Home",
+    "title": "NEAR RPC API"
+  },
+  "sidebar": "api",
+  "next": {
+    "title": "RPC Providers",
+    "permalink": "/zh-CN/api/rpc/providers"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/nfts/js/upgrade-contract",
+  "title": "컨트랙트 업그레이드",
+  "description": "이 튜토리얼에서는 이전에 스마트 컨트랙트 뼈대에서 발행 기능을 구현하기 위해 수행한 작업들을 빌드합니다. NFT를 발행할 수 있는 지점에 도달했지만, 컨트랙트가 지갑이 호출하려는 메서드를 구현하지 않았기 때문에 지갑은 토큰을 표시할 방법이 없습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/nfts/js/2-upgrade.md",
+  "sourceDirName": "3.tutorials/nfts/js",
+  "slug": "/tutorials/nfts/js/upgrade-contract",
+  "permalink": "/ko/tutorials/nfts/js/upgrade-contract",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/js/2-upgrade.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "id": "upgrade-contract",
+    "title": "컨트랙트 업그레이드",
+    "sidebar_label": "컨트랙트 업그레이드"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "발행",
+    "permalink": "/ko/tutorials/nfts/js/minting"
+  },
+  "next": {
+    "title": "열거(Enumeration)",
+    "permalink": "/ko/tutorials/nfts/js/enumeration"
+  }
+}

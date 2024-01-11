@@ -1,0 +1,32 @@
+{
+  "id": "tutorials/fts/skeleton",
+  "title": "Skeleton and Rust Architecture",
+  "description": "In this article, you'll learn about the basic architecture behind the FT contract that you'll develop while following this \"Zero to Hero\" series.",
+  "source": "@site/../docs/3.tutorials/fts/1-skeleton.md",
+  "sourceDirName": "3.tutorials/fts",
+  "slug": "/tutorials/fts/skeleton",
+  "permalink": "/tutorials/fts/skeleton",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/fts/1-skeleton.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "BenKurrek",
+  "lastUpdatedAt": 1661365573,
+  "formattedLastUpdatedAt": "Aug 24, 2022",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "id": "skeleton",
+    "title": "Skeleton and Rust Architecture",
+    "sidebar_label": "Contract Architecture"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Pre-deployed Contract",
+    "permalink": "/tutorials/fts/predeployed-contract"
+  },
+  "next": {
+    "title": "Defining Your Token",
+    "permalink": "/tutorials/fts/defining-a-token"
+  }
+}

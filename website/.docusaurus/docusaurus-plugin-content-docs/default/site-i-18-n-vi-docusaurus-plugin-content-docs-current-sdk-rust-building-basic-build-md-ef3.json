@@ -1,0 +1,27 @@
+{
+  "id": "sdk/rust/building/basics",
+  "title": "Basic Instructions",
+  "description": "To compile release version of the smart contract you can run:",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/sdk/rust/building/basic-build.md",
+  "sourceDirName": "sdk/rust/building",
+  "slug": "/sdk/rust/building/basics",
+  "permalink": "/vi/sdk/rust/building/basics",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/rust/building/basic-build.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "basics",
+    "title": "Basic Instructions"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "Deploying Contract",
+    "permalink": "/vi/sdk/rust/promises/deploy-contract"
+  },
+  "next": {
+    "title": "Rapid Prototyping",
+    "permalink": "/vi/sdk/rust/building/prototyping"
+  }
+}

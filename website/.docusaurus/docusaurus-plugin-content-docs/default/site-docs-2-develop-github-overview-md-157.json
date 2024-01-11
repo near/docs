@@ -1,0 +1,21 @@
+{
+  "id": "develop/github-overview",
+  "title": "NEAR Developer Repositories",
+  "description": "An overview of essential repositories when building on NEAR Protocol.",
+  "source": "@site/../docs/2.develop/github-overview.md",
+  "sourceDirName": "2.develop",
+  "slug": "/develop/github-overview",
+  "permalink": "/develop/github-overview",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/github-overview.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Josh",
+  "lastUpdatedAt": 1702101480,
+  "formattedLastUpdatedAt": "Dec 9, 2023",
+  "frontMatter": {
+    "id": "github-overview",
+    "title": "NEAR Developer Repositories"
+  }
+}

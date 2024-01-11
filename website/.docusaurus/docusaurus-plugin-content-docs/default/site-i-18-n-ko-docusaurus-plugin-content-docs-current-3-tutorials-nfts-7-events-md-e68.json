@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/nfts/events",
+  "title": "이벤트",
+  "description": "이 튜토리얼에서는 이벤트 표준과 이를 스마트 컨트랙트에서 구현하는 방법에 대해 알아봅니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/nfts/7-events.md",
+  "sourceDirName": "3.tutorials/nfts",
+  "slug": "/tutorials/nfts/events",
+  "permalink": "/ko/tutorials/nfts/events",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/7-events.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 7,
+  "frontMatter": {
+    "id": "events",
+    "title": "이벤트",
+    "sidebar_label": "이벤트"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "로열티",
+    "permalink": "/ko/tutorials/nfts/royalty"
+  },
+  "next": {
+    "title": "마켓플레이스",
+    "permalink": "/ko/tutorials/nfts/marketplace"
+  }
+}

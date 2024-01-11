@@ -1,0 +1,30 @@
+{
+  "id": "develop/relevant-contracts/oracles",
+  "title": "Decentralized Oracles",
+  "description": "Oracles are smart contracts that enable you to query the current price of an asset. Since smart contracts cannot connect to",
+  "source": "@site/../docs/2.develop/relevant-contracts/oracles.md",
+  "sourceDirName": "2.develop/relevant-contracts",
+  "slug": "/develop/relevant-contracts/oracles",
+  "permalink": "/develop/relevant-contracts/oracles",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/relevant-contracts/oracles.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1701811626,
+  "formattedLastUpdatedAt": "Dec 5, 2023",
+  "frontMatter": {
+    "id": "oracles",
+    "title": "Decentralized Oracles"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Non Fungible Tokens (NFT)",
+    "permalink": "/develop/relevant-contracts/nft"
+  },
+  "next": {
+    "title": "Autonomous Organizations (DAO)",
+    "permalink": "/develop/relevant-contracts/dao"
+  }
+}

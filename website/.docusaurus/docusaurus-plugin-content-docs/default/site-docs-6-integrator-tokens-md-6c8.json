@@ -1,0 +1,31 @@
+{
+  "id": "integrator/fungible-tokens",
+  "title": "Fungible tokens",
+  "description": "Introduction",
+  "source": "@site/../docs/6.integrator/tokens.md",
+  "sourceDirName": "6.integrator",
+  "slug": "/integrator/fungible-tokens",
+  "permalink": "/integrator/fungible-tokens",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/6.integrator/tokens.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1702155614,
+  "formattedLastUpdatedAt": "Dec 9, 2023",
+  "frontMatter": {
+    "id": "fungible-tokens",
+    "title": "Fungible tokens",
+    "sidebar_label": "Fungible Tokens"
+  },
+  "sidebar": "exchanges",
+  "previous": {
+    "title": "Create a Transaction",
+    "permalink": "/integrator/create-transactions"
+  },
+  "next": {
+    "title": "Implicit Accounts",
+    "permalink": "/integrator/implicit-accounts"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "tutorials/nfts/core",
+  "title": "Core",
+  "description": "In this tutorial you'll learn how to implement the core standards into your smart contract. If you're joining us for the first time, feel free to clone this repo and checkout the 3.enumeration branch to follow along.",
+  "source": "@site/../docs/3.tutorials/nfts/4-core.md",
+  "sourceDirName": "3.tutorials/nfts",
+  "slug": "/tutorials/nfts/core",
+  "permalink": "/tutorials/nfts/core",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/4-core.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1674302473,
+  "formattedLastUpdatedAt": "Jan 21, 2023",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "id": "core",
+    "title": "Core",
+    "sidebar_label": "Core"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Enumeration",
+    "permalink": "/tutorials/nfts/enumeration"
+  },
+  "next": {
+    "title": "Approvals",
+    "permalink": "/tutorials/nfts/approvals"
+  }
+}

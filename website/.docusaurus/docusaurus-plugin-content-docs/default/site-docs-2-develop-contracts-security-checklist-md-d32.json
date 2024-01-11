@@ -1,0 +1,30 @@
+{
+  "id": "develop/contracts/security/checklist",
+  "title": "✅ Checklist",
+  "description": "Once you finished developing your smart contract please go through the following list in order to ensure everything is safe for the end user.",
+  "source": "@site/../docs/2.develop/contracts/security/checklist.md",
+  "sourceDirName": "2.develop/contracts/security",
+  "slug": "/develop/contracts/security/checklist",
+  "permalink": "/develop/contracts/security/checklist",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/contracts/security/checklist.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1673445665,
+  "formattedLastUpdatedAt": "Jan 11, 2023",
+  "frontMatter": {
+    "id": "checklist",
+    "title": "✅ Checklist"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Cross-Contract Calls",
+    "permalink": "/develop/contracts/crosscontract"
+  },
+  "next": {
+    "title": "Notes on Serialization",
+    "permalink": "/develop/contracts/serialization"
+  }
+}

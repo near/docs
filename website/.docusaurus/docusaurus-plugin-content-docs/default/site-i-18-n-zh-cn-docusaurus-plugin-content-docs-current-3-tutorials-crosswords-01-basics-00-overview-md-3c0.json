@@ -1,0 +1,30 @@
+{
+  "id": "tutorials/crosswords/basics/overview",
+  "title": "Basics overview laying out what will be accomplished in this first section.",
+  "description": "This first chapter of the crossword puzzle tutorial will introduce fundamental concepts to smart contract development in a beginner-friendly way. By the end of this chapter you'll have a proof-of-concept contract that can be interacted with via NEAR CLI and a simple frontend that uses the near-api-js library.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/3.tutorials/crosswords/01-basics/00-overview.md",
+  "sourceDirName": "3.tutorials/crosswords/01-basics",
+  "slug": "/tutorials/crosswords/basics/overview",
+  "permalink": "/zh-CN/tutorials/crosswords/basics/overview",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/crosswords/01-basics/00-overview.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "id": "overview",
+    "sidebar_position": 1,
+    "sidebar_label": "Crossword Game Overview",
+    "title": "Basics overview laying out what will be accomplished in this first section."
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Adding FTs to a Marketplace",
+    "permalink": "/zh-CN/tutorials/fts/marketplace"
+  },
+  "next": {
+    "title": "Set up Rust and a contract skeleton",
+    "permalink": "/zh-CN/tutorials/crosswords/basics/set-up-skeleton"
+  }
+}

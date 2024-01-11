@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/fts/registering-accounts",
+  "title": "계정 등록",
+  "description": "이전 튜토리얼에서 토큰의 초기 순환 공급을 발행하는 방법과 이벤트 표준에 따라 이벤트를 기록하는 방법을 살펴보았습니다. 그런 다음 컨트랙트를 배포하고 지갑 잔고에서 FT를 확인했습니다. 이 튜토리얼에서는 스토리지 관리 표준에 대해 알아보고, FT 컨트랙트에 계정을 등록하여 악의적인 사람이 컨트랙트에서 모든 자금을 고갈시키는 것을 방지하는 방법에 대해 알아봅니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/fts/4.storage.md",
+  "sourceDirName": "3.tutorials/fts",
+  "slug": "/tutorials/fts/registering-accounts",
+  "permalink": "/ko/tutorials/fts/registering-accounts",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/fts/4.storage.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "id": "registering-accounts",
+    "title": "계정 등록",
+    "sidebar_label": "계정 등록"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "순환 공급",
+    "permalink": "/ko/tutorials/fts/circulating-supply"
+  },
+  "next": {
+    "title": "FT 전송",
+    "permalink": "/ko/tutorials/fts/transfers"
+  }
+}

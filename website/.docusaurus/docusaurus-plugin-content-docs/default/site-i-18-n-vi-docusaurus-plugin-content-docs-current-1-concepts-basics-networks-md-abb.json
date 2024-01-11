@@ -1,0 +1,28 @@
+{
+  "id": "concepts/basics/networks",
+  "title": "NEAR Networks",
+  "description": "NEAR Protocol hoạt động trên một số network, mỗi network hoạt động với các validator độc lập và state khác nhau. Các network này như sau:",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/1.concepts/basics/networks.md",
+  "sourceDirName": "1.concepts/basics",
+  "slug": "/concepts/basics/networks",
+  "permalink": "/vi/concepts/basics/networks",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/basics/networks.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "networks",
+    "title": "NEAR Networks",
+    "sidebar_label": "Networks"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Các Validator",
+    "permalink": "/vi/concepts/basics/validators"
+  },
+  "next": {
+    "title": "Epoch",
+    "permalink": "/vi/concepts/basics/epoch"
+  }
+}

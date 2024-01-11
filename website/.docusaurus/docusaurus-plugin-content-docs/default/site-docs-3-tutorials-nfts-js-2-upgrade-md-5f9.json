@@ -1,0 +1,32 @@
+{
+  "id": "tutorials/nfts/js/upgrade-contract",
+  "title": "Upgrading the Contract",
+  "description": "In this tutorial, you'll build off the work you previously did to implement the minting functionality on a skeleton smart contract. You got to the point where NFTs could be minted, however, the wallet had no way of displaying the tokens since your contract didn't implement the method that the wallet was trying to call.",
+  "source": "@site/../docs/3.tutorials/nfts/js/2-upgrade.md",
+  "sourceDirName": "3.tutorials/nfts/js",
+  "slug": "/tutorials/nfts/js/upgrade-contract",
+  "permalink": "/tutorials/nfts/js/upgrade-contract",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/js/2-upgrade.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1701811626,
+  "formattedLastUpdatedAt": "Dec 5, 2023",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "id": "upgrade-contract",
+    "title": "Upgrading the Contract",
+    "sidebar_label": "Upgrade a Contract"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Minting",
+    "permalink": "/tutorials/nfts/js/minting"
+  },
+  "next": {
+    "title": "Enumeration",
+    "permalink": "/tutorials/nfts/js/enumeration"
+  }
+}

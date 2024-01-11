@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/nfts/js/introduction",
+  "title": "NFT Zero to Hero JavaScript Edition",
+  "description": "Trong serie Zero to Hero này, bạn sẽ thấy một bộ hướng dẫn bao gồm mọi khía cạnh của một non-fungible token (NFT) smart contract. Bạn sẽ bắt đầu bằng cách mint ra một NFT bằng cách sử dụng một contract đã được deploy sẵn, và cuối cùng, bạn sẽ kết thúc việc xây dựng một một NFT smart contract hoàn chỉnh hỗ trợ mọi extension.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/3.tutorials/nfts/js/0-intro.md",
+  "sourceDirName": "3.tutorials/nfts/js",
+  "slug": "/tutorials/nfts/js/introduction",
+  "permalink": "/vi/tutorials/nfts/js/introduction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/js/0-intro.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 0,
+  "frontMatter": {
+    "id": "introduction",
+    "title": "NFT Zero to Hero JavaScript Edition",
+    "sidebar_label": "Giới thiệu"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Minecraft NFT",
+    "permalink": "/vi/tutorials/nfts/minecraft-nfts"
+  },
+  "next": {
+    "title": "Contract đã được deploy sẵn",
+    "permalink": "/vi/tutorials/nfts/js/predeployed-contract"
+  }
+}

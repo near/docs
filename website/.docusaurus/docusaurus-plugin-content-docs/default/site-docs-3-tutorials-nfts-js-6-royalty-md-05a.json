@@ -1,0 +1,32 @@
+{
+  "id": "tutorials/nfts/js/royalty",
+  "title": "Royalty",
+  "description": "In this tutorial you'll continue building your non-fungible token (NFT) smart contract, and learn how to implement perpetual royalties into your NFTs. This will allow people to get a percentage of the purchase price when an NFT is sold.",
+  "source": "@site/../docs/3.tutorials/nfts/js/6-royalty.md",
+  "sourceDirName": "3.tutorials/nfts/js",
+  "slug": "/tutorials/nfts/js/royalty",
+  "permalink": "/tutorials/nfts/js/royalty",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/js/6-royalty.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1674302473,
+  "formattedLastUpdatedAt": "Jan 21, 2023",
+  "sidebarPosition": 6,
+  "frontMatter": {
+    "id": "royalty",
+    "title": "Royalty",
+    "sidebar_label": "Royalty"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Approvals",
+    "permalink": "/tutorials/nfts/js/approvals"
+  },
+  "next": {
+    "title": "Events",
+    "permalink": "/tutorials/nfts/js/events"
+  }
+}

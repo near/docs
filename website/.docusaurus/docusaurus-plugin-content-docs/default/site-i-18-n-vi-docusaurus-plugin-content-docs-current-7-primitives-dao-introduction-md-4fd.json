@@ -1,0 +1,28 @@
+{
+  "id": "primitives/dao/introduction",
+  "title": "Introduction",
+  "description": "Decentralized Autonomous Organizations (DAOs) are self-organized groups that form around common purposes. Membership, decision making, and funding are coordinated by publicly voting on proposals through a smart contract.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/7.primitives/dao/introduction.md",
+  "sourceDirName": "7.primitives/dao",
+  "slug": "/primitives/dao/introduction",
+  "permalink": "/vi/primitives/dao/introduction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/dao/introduction.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "introduction",
+    "title": "Introduction",
+    "hide_table_of_contents": false
+  },
+  "sidebar": "primitives",
+  "previous": {
+    "title": "NEAR CLI",
+    "permalink": "/vi/primitives/dex/interacting/near-cli"
+  },
+  "next": {
+    "title": "NEAR Component",
+    "permalink": "/vi/primitives/dao/interacting/bos"
+  }
+}

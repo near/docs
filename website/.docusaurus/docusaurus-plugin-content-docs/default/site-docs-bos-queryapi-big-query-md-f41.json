@@ -1,0 +1,31 @@
+{
+  "id": "bos/queryapi/big-query",
+  "title": "BigQuery Public Dataset",
+  "description": "Blockchain data indexing in NEAR Public Lakehouse is for anyone wanting to understand blockchain data. This includes:",
+  "source": "@site/../docs/bos/queryapi/big-query.md",
+  "sourceDirName": "bos/queryapi",
+  "slug": "/bos/queryapi/big-query",
+  "permalink": "/bos/queryapi/big-query",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/queryapi/big-query.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Eduardo Ohe",
+  "lastUpdatedAt": 1699573337,
+  "formattedLastUpdatedAt": "Nov 9, 2023",
+  "frontMatter": {
+    "id": "big-query",
+    "title": "BigQuery Public Dataset",
+    "sidebar_label": "BigQuery"
+  },
+  "sidebar": "indexers",
+  "previous": {
+    "title": "Social Feed Indexer",
+    "permalink": "/bos/tutorial/indexer-tutorials/feed-indexer"
+  },
+  "next": {
+    "title": "Indexer for Explorer (Deprecated)",
+    "permalink": "/tools/indexer-for-explorer"
+  }
+}

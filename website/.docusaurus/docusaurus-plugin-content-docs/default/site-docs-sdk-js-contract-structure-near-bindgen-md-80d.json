@@ -1,0 +1,31 @@
+{
+  "id": "sdk/js/contract-structure/near-bindgen",
+  "title": "NearBindgen",
+  "description": "The @NearBindgen({}) decorator is used on the contract class to generate the necessary code to be a valid NEAR contract and expose the intended functions to be able to be called externally.",
+  "source": "@site/../docs/sdk/js/contract-structure/near-bindgen.md",
+  "sourceDirName": "sdk/js/contract-structure",
+  "slug": "/sdk/js/contract-structure/near-bindgen",
+  "permalink": "/sdk/js/contract-structure/near-bindgen",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/js/contract-structure/near-bindgen.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Lyudmil Ivanov",
+  "lastUpdatedAt": 1700104654,
+  "formattedLastUpdatedAt": "Nov 16, 2023",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1,
+    "title": "NearBindgen"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "Getting Started",
+    "permalink": "/sdk/js/get-started"
+  },
+  "next": {
+    "title": "Collections",
+    "permalink": "/sdk/js/contract-structure/collections"
+  }
+}

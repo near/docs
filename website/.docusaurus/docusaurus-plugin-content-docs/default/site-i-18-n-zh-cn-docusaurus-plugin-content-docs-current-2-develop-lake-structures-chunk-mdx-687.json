@@ -1,0 +1,28 @@
+{
+  "id": "develop/lake/structures/chunk",
+  "title": "Chunk Structure",
+  "description": "Definition",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.develop/lake/structures/chunk.mdx",
+  "sourceDirName": "2.develop/lake/structures",
+  "slug": "/develop/lake/structures/chunk",
+  "permalink": "/zh-CN/develop/lake/structures/chunk",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/lake/structures/chunk.mdx",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3,
+    "sidebar_label": "Chunk"
+  },
+  "sidebar": "indexers",
+  "previous": {
+    "title": "Block",
+    "permalink": "/zh-CN/develop/lake/structures/block"
+  },
+  "next": {
+    "title": "Shard",
+    "permalink": "/zh-CN/develop/lake/structures/shard"
+  }
+}

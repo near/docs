@@ -1,0 +1,30 @@
+{
+  "id": "api/rpc/protocol",
+  "title": "Protocol",
+  "description": "The RPC API enables you to retrieve the current genesis and protocol configuration.",
+  "source": "@site/../docs/5.api/rpc/protocol.md",
+  "sourceDirName": "5.api/rpc",
+  "slug": "/api/rpc/protocol",
+  "permalink": "/api/rpc/protocol",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/5.api/rpc/protocol.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Damian Parrino",
+  "lastUpdatedAt": 1659986412,
+  "formattedLastUpdatedAt": "Aug 8, 2022",
+  "frontMatter": {
+    "id": "protocol",
+    "title": "Protocol"
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Gas",
+    "permalink": "/api/rpc/gas"
+  },
+  "next": {
+    "title": "Network",
+    "permalink": "/api/rpc/network"
+  }
+}

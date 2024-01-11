@@ -1,0 +1,30 @@
+{
+  "id": "concepts/basics/tokens",
+  "title": "Tokens",
+  "description": "This is the native token used in NEAR Protocol.",
+  "source": "@site/../docs/1.concepts/basics/token.md",
+  "sourceDirName": "1.concepts/basics",
+  "slug": "/concepts/basics/tokens",
+  "permalink": "/concepts/basics/tokens",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/basics/token.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1659095642,
+  "formattedLastUpdatedAt": "Jul 29, 2022",
+  "frontMatter": {
+    "id": "tokens",
+    "title": "Tokens"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Token Transfer",
+    "permalink": "/concepts/data-flow/token-transfer-flow"
+  },
+  "next": {
+    "title": "Avoiding Token Loss",
+    "permalink": "/concepts/basics/token-loss"
+  }
+}

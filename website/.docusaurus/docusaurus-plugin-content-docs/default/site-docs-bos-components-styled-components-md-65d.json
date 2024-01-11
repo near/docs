@@ -1,0 +1,31 @@
+{
+  "id": "bos/components/styled",
+  "title": "Styled Components",
+  "description": "Styled Components is a popular library for styling React components using CSS-in-JS.",
+  "source": "@site/../docs/bos/components/styledComponents.md",
+  "sourceDirName": "bos/components",
+  "slug": "/bos/components/styled",
+  "permalink": "/bos/components/styled",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/components/styledComponents.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1702155614,
+  "formattedLastUpdatedAt": "Dec 9, 2023",
+  "frontMatter": {
+    "id": "styled",
+    "title": "Styled Components",
+    "sidebar_label": "Styled"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "TypeAhead",
+    "permalink": "/bos/components/typeahead"
+  },
+  "next": {
+    "title": "ToolTip",
+    "permalink": "/bos/components/tooltip"
+  }
+}

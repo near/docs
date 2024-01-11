@@ -1,0 +1,28 @@
+{
+  "id": "develop/contracts/quickstart",
+  "title": "Hello Contract",
+  "description": "NEAR accounts can host programs known as smart contracts. Smart contracts can store data, and expose methods so other users and contracts interact with them.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.develop/contracts/quickstart.md",
+  "sourceDirName": "2.develop/contracts",
+  "slug": "/develop/contracts/quickstart",
+  "permalink": "/ko/develop/contracts/quickstart",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/contracts/quickstart.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "quickstart",
+    "title": "Hello Contract",
+    "sidebar_label": "⭐ Quickstart"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "스마트 컨트랙트란 무엇인가요?",
+    "permalink": "/ko/develop/contracts/whatisacontract"
+  },
+  "next": {
+    "title": "모듈, 자료형 및 구조",
+    "permalink": "/ko/develop/contracts/basics"
+  }
+}

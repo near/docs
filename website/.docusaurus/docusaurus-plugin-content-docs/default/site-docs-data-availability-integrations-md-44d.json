@@ -1,0 +1,30 @@
+{
+  "id": "data-availability/integrations",
+  "title": "Integrations",
+  "description": "We have some proof of concept works for integrating with rollups. We are working to prove the system's capabilities and provide a reference implementation for others to follow.",
+  "source": "@site/../docs/data-availability/integrations.md",
+  "sourceDirName": "data-availability",
+  "slug": "/data-availability/integrations",
+  "permalink": "/data-availability/integrations",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/data-availability/integrations.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1699467323,
+  "formattedLastUpdatedAt": "Nov 8, 2023",
+  "frontMatter": {
+    "id": "integrations",
+    "title": "Integrations"
+  },
+  "sidebar": "data-availability",
+  "previous": {
+    "title": "RPC Client",
+    "permalink": "/data-availability/rpc"
+  },
+  "next": {
+    "title": "Optimism",
+    "permalink": "/data-availability/optimism"
+  }
+}

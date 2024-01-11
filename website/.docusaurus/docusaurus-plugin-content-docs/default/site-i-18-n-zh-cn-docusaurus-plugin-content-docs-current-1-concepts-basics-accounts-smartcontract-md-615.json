@@ -1,0 +1,27 @@
+{
+  "id": "concepts/basics/accounts/smartcontract",
+  "title": "Smart Contract",
+  "description": "Smart contracts are pieces of executable code stored in the account's state that have their own storage, and perform transactions in the account's name.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/1.concepts/basics/accounts/smartcontract.md",
+  "sourceDirName": "1.concepts/basics/accounts",
+  "slug": "/concepts/basics/accounts/smartcontract",
+  "permalink": "/zh-CN/concepts/basics/accounts/smartcontract",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/basics/accounts/smartcontract.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "smartcontract",
+    "title": "Smart Contract"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Access Keys",
+    "permalink": "/zh-CN/concepts/basics/accounts/access-keys"
+  },
+  "next": {
+    "title": "State",
+    "permalink": "/zh-CN/concepts/basics/accounts/state"
+  }
+}

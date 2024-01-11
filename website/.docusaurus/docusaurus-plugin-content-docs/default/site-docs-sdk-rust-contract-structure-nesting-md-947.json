@@ -1,0 +1,30 @@
+{
+  "id": "sdk/rust/contract-structure/nesting",
+  "title": "Collections Nesting",
+  "description": "Traditional approach for unique prefixes",
+  "source": "@site/../docs/sdk/rust/contract-structure/nesting.md",
+  "sourceDirName": "sdk/rust/contract-structure",
+  "slug": "/sdk/rust/contract-structure/nesting",
+  "permalink": "/sdk/rust/contract-structure/nesting",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/rust/contract-structure/nesting.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "cornflower",
+  "lastUpdatedAt": 1691074131,
+  "formattedLastUpdatedAt": "Aug 3, 2023",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "Collections",
+    "permalink": "/sdk/rust/contract-structure/collections"
+  },
+  "next": {
+    "title": "Public Method Types",
+    "permalink": "/sdk/rust/contract-interface/public-methods"
+  }
+}

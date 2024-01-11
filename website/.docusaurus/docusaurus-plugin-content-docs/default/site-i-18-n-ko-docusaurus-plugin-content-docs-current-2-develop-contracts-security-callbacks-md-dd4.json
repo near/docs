@@ -1,0 +1,27 @@
+{
+  "id": "develop/contracts/security/callbacks",
+  "title": "교차 컨트랙트 호출",
+  "description": "교차 컨트랙트 호출을 작성하는 동안 명심해야 할 중요한 측면이 있습니다. 모든 호출은 독립적이고 비동기적입니다. 다시 말해서:",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.develop/contracts/security/callbacks.md",
+  "sourceDirName": "2.develop/contracts/security",
+  "slug": "/develop/contracts/security/callbacks",
+  "permalink": "/ko/develop/contracts/security/callbacks",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/contracts/security/callbacks.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "callbacks",
+    "title": "교차 컨트랙트 호출"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "수많은 소액 예치",
+    "permalink": "/ko/develop/contracts/security/storage"
+  },
+  "next": {
+    "title": "사용자가 맞는지 확인 (1yⓃ)",
+    "permalink": "/ko/develop/contracts/security/one-yocto"
+  }
+}

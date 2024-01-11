@@ -1,0 +1,21 @@
+{
+  "permalink": "/blog/2023/04/30/changelog",
+  "source": "@site/blog/2023-04-30-changelog.md",
+  "title": "April 2023",
+  "description": "Developer changelog for essential repositories when building on NEAR Protocol. 🏗️",
+  "date": "2023-04-30T00:00:00.000Z",
+  "formattedDate": "April 30, 2023",
+  "tags": [],
+  "hasTruncateMarker": false,
+  "authors": [],
+  "frontMatter": {},
+  "unlisted": false,
+  "prevItem": {
+    "title": "May 2023",
+    "permalink": "/blog/2023/05/31/changelog"
+  },
+  "nextItem": {
+    "title": "March 2023",
+    "permalink": "/blog/2023/03/31/changelog"
+  }
+}

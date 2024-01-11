@@ -1,0 +1,28 @@
+{
+  "id": "develop/relayers/build-relayer",
+  "title": "Building a Meta Transaction Relayer with NextJS",
+  "description": "This guide will walk you through the steps required to construct a meta transaction relayer using NextJS 13.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.develop/relayers/welcome.md",
+  "sourceDirName": "2.develop/relayers",
+  "slug": "/develop/relayers/build-relayer",
+  "permalink": "/vi/develop/relayers/build-relayer",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/relayers/welcome.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "build-relayer",
+    "title": "Building a Meta Transaction Relayer with NextJS",
+    "sidebar_label": "Building a Relayer"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "Frontend Multiple Contracts",
+    "permalink": "/vi/tutorials/examples/frontend-multiple-contracts"
+  },
+  "next": {
+    "title": "Login with NEAR",
+    "permalink": "/vi/develop/integrate/backend-login"
+  }
+}

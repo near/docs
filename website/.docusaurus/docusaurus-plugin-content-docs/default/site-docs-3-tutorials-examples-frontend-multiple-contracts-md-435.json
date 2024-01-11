@@ -1,0 +1,30 @@
+{
+  "id": "tutorials/examples/frontend-multiple-contracts",
+  "title": "Frontend Multiple Contracts",
+  "description": "This example showcases how to interact with multiple contracts from a single frontend.",
+  "source": "@site/../docs/3.tutorials/examples/frontend-multiple-contracts.md",
+  "sourceDirName": "3.tutorials/examples",
+  "slug": "/tutorials/examples/frontend-multiple-contracts",
+  "permalink": "/tutorials/examples/frontend-multiple-contracts",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/examples/frontend-multiple-contracts.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1702155614,
+  "formattedLastUpdatedAt": "Dec 9, 2023",
+  "frontMatter": {
+    "id": "frontend-multiple-contracts",
+    "title": "Frontend Multiple Contracts"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "Donation",
+    "permalink": "/tutorials/examples/donation"
+  },
+  "next": {
+    "title": "Building a Relayer",
+    "permalink": "/develop/relayers/build-relayer"
+  }
+}

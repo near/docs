@@ -1,0 +1,27 @@
+{
+  "id": "bos/api/home",
+  "title": "소개",
+  "description": "NEAR provides a complete API to allow your components to interact with different blockchains, websites, and store data in a decentralized way.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/bos/api/home.md",
+  "sourceDirName": "bos/api",
+  "slug": "/bos/api/home",
+  "permalink": "/ko/bos/api/home",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/api/home.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "home",
+    "title": "소개"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "툴팁",
+    "permalink": "/ko/bos/components/tooltip"
+  },
+  "next": {
+    "title": "상태",
+    "permalink": "/ko/bos/api/state"
+  }
+}

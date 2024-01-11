@@ -1,0 +1,30 @@
+{
+  "id": "sdk/js/testing/integration-tests",
+  "title": "Integration Tests",
+  "description": "NEAR Simulator was meant to be an in-place replacement of a blockchain environment for the purpose of testing NEAR contracts. However, simulating NEAR ledger turned out to be a much more complex endeavor than was anticipated. Eventually, the idea of workspaces was born - a library for automating workflows and writing tests for NEAR smart contracts using a real NEAR network (localnet, testnet or mainnet). Thus, NEAR Simulator is being deprecated in favor of workspaces-rs, the Rust edition of workspaces. As the two libraries have two vastly different APIs this guide was created to ease the migration process for developers.",
+  "source": "@site/../docs/sdk/js/testing/integration-tests.md",
+  "sourceDirName": "sdk/js/testing",
+  "slug": "/sdk/js/testing/integration-tests",
+  "permalink": "/sdk/js/testing/integration-tests",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/js/testing/integration-tests.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Dennis",
+  "lastUpdatedAt": 1674222229,
+  "formattedLastUpdatedAt": "Jan 20, 2023",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "JS SDK CLI",
+    "permalink": "/sdk/js/cli/"
+  },
+  "next": {
+    "title": "Unit Tests",
+    "permalink": "/sdk/js/testing/unit-tests"
+  }
+}

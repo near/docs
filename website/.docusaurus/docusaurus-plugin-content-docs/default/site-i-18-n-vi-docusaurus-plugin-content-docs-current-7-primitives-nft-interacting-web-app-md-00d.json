@@ -1,0 +1,28 @@
+{
+  "id": "primitives/nft/interacting/web-app",
+  "title": "Web Application",
+  "description": "This section describes how to interact with NFT contracts from a web app.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/7.primitives/nft/interacting/web-app.md",
+  "sourceDirName": "7.primitives/nft/interacting",
+  "slug": "/primitives/nft/interacting/web-app",
+  "permalink": "/vi/primitives/nft/interacting/web-app",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/nft/interacting/web-app.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "web-app",
+    "title": "Web Application",
+    "hide_table_of_contents": false
+  },
+  "sidebar": "primitives",
+  "previous": {
+    "title": "NEAR Component",
+    "permalink": "/vi/primitives/nft/interacting/bos"
+  },
+  "next": {
+    "title": "Smart Contract",
+    "permalink": "/vi/primitives/nft/interacting/smart-contract"
+  }
+}

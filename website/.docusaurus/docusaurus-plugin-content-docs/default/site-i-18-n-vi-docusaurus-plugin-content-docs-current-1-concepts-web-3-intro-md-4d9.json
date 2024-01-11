@@ -1,0 +1,28 @@
+{
+  "id": "concepts/web3/intro",
+  "title": "Moving from Web 2 to Web 3",
+  "description": "by Sigma Software",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/1.concepts/web3/intro.md",
+  "sourceDirName": "1.concepts/web3",
+  "slug": "/concepts/web3/intro",
+  "permalink": "/vi/concepts/web3/intro",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/web3/intro.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "intro",
+    "title": "Moving from Web 2 to Web 3",
+    "sidebar_label": "Giới thiệu"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Các paper",
+    "permalink": "/vi/concepts/advanced/papers"
+  },
+  "next": {
+    "title": "Blockchain basics",
+    "permalink": "/vi/concepts/web3/basics"
+  }
+}

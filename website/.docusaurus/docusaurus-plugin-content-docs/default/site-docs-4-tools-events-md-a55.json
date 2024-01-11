@@ -1,0 +1,30 @@
+{
+  "id": "tools/realtime",
+  "title": "Real-time Events (WebSocket)",
+  "description": "While developing a decentralized app you might want track specific events in real time. For example, you could want",
+  "source": "@site/../docs/4.tools/events.md",
+  "sourceDirName": "4.tools",
+  "slug": "/tools/realtime",
+  "permalink": "/tools/realtime",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/4.tools/events.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1694007680,
+  "formattedLastUpdatedAt": "Sep 6, 2023",
+  "frontMatter": {
+    "id": "realtime",
+    "title": "Real-time Events (WebSocket)"
+  },
+  "sidebar": "indexers",
+  "previous": {
+    "title": "StateChange",
+    "permalink": "/develop/lake/structures/state-change"
+  },
+  "next": {
+    "title": "Indexing Solutions",
+    "permalink": "/tools/indexing"
+  }
+}

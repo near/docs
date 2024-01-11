@@ -1,0 +1,28 @@
+{
+  "id": "integrator/accounts",
+  "title": "Accounts",
+  "description": "Introduction",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/6.integrator/accounts.md",
+  "sourceDirName": "6.integrator",
+  "slug": "/integrator/accounts",
+  "permalink": "/zh-CN/integrator/accounts",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/6.integrator/accounts.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "accounts",
+    "title": "Accounts",
+    "sidebar_label": "Accounts"
+  },
+  "sidebar": "exchanges",
+  "previous": {
+    "title": "Balance Changes",
+    "permalink": "/zh-CN/integrator/balance-changes"
+  },
+  "next": {
+    "title": "Create a Transaction",
+    "permalink": "/zh-CN/integrator/create-transactions"
+  }
+}

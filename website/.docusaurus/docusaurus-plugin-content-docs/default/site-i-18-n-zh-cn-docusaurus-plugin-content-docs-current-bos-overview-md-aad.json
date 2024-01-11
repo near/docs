@@ -1,0 +1,27 @@
+{
+  "id": "bos/overview",
+  "title": "Overview",
+  "description": "NEAR simplifies building, deploying and accessing decentralized frontends. Embrace the power of community and Web 3.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/bos/overview.md",
+  "sourceDirName": "bos",
+  "slug": "/bos/overview",
+  "permalink": "/zh-CN/bos/overview",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/overview.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "overview",
+    "title": "Overview"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "⭐ Quickstart",
+    "permalink": "/zh-CN/develop/integrate/quickstart-frontend"
+  },
+  "next": {
+    "title": "Gateways",
+    "permalink": "/zh-CN/bos/tutorial/bos-gateway"
+  }
+}

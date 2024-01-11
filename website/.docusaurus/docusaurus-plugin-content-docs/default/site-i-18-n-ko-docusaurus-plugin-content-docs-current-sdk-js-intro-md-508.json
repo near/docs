@@ -1,0 +1,27 @@
+{
+  "id": "sdk/js/get-started",
+  "title": "시작하기",
+  "description": "Linux용 Windows 하위 시스템(WSL2)을 사용하여 Windows에서 스마트 컨트랙트를 개발할 수 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/sdk/js/intro.md",
+  "sourceDirName": "sdk/js",
+  "slug": "/sdk/js/get-started",
+  "permalink": "/ko/sdk/js/get-started",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/js/intro.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "get-started",
+    "title": "시작하기"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "JavaScript SDK에 대해",
+    "permalink": "/ko/sdk/js/introduction"
+  },
+  "next": {
+    "title": "NearBindgen",
+    "permalink": "/ko/sdk/js/contract-structure/near-bindgen"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "primitives/dex/interacting/web-app",
+  "title": "Web Application",
+  "description": "This section describes how to interact with DEXs directly from a web app.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/7.primitives/dex/interacting/web-app.md",
+  "sourceDirName": "7.primitives/dex/interacting",
+  "slug": "/primitives/dex/interacting/web-app",
+  "permalink": "/ko/primitives/dex/interacting/web-app",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/dex/interacting/web-app.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "web-app",
+    "title": "Web Application",
+    "hide_table_of_contents": false
+  },
+  "sidebar": "primitives",
+  "previous": {
+    "title": "NEAR Component",
+    "permalink": "/ko/primitives/dex/interacting/bos"
+  },
+  "next": {
+    "title": "Smart Contract",
+    "permalink": "/ko/primitives/dex/interacting/smart-contract"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "tutorials/nfts/skeleton",
+  "title": "Skeleton and Rust Architecture",
+  "description": "In this article, you'll learn about the basic architecture behind the NFT contract that you'll develop while following this \"Zero to Hero\" series.",
+  "source": "@site/../docs/3.tutorials/nfts/1-skeleton.md",
+  "sourceDirName": "3.tutorials/nfts",
+  "slug": "/tutorials/nfts/skeleton",
+  "permalink": "/tutorials/nfts/skeleton",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/1-skeleton.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1674302473,
+  "formattedLastUpdatedAt": "Jan 21, 2023",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "id": "skeleton",
+    "title": "Skeleton and Rust Architecture",
+    "sidebar_label": "Contract Architecture"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Pre-deployed Contract",
+    "permalink": "/tutorials/nfts/predeployed-contract"
+  },
+  "next": {
+    "title": "Minting",
+    "permalink": "/tutorials/nfts/minting"
+  }
+}

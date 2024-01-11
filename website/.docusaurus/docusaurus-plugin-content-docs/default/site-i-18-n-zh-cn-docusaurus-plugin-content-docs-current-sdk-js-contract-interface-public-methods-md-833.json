@@ -1,0 +1,28 @@
+{
+  "id": "sdk/js/contract-interface/public-methods",
+  "title": "Public Methods",
+  "description": "Methods can be called externally by using the view({}) or call({}) decorators within the contract class which will expose the method in the compiled WASM bytecode to be called by any other NEAR Account. Whenever a method is declared in your contract class without these decorators and is called by another NEAR Account, a MethodNotFound error will be thrown.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/sdk/js/contract-interface/public-methods.md",
+  "sourceDirName": "sdk/js/contract-interface",
+  "slug": "/sdk/js/contract-interface/public-methods",
+  "permalink": "/zh-CN/sdk/js/contract-interface/public-methods",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/js/contract-interface/public-methods.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1,
+    "title": "Public Methods"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "Collections",
+    "permalink": "/zh-CN/sdk/js/contract-structure/collections"
+  },
+  "next": {
+    "title": "Private Methods",
+    "permalink": "/zh-CN/sdk/js/contract-interface/private-methods"
+  }
+}

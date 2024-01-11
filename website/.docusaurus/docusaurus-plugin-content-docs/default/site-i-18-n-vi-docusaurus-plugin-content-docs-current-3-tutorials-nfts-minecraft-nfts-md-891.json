@@ -1,0 +1,28 @@
+{
+  "id": "tutorials/nfts/minecraft-nfts",
+  "title": "Tạo NFT trong Minecraft",
+  "description": "Trong hướng dẫn này, bạn sẽ tìm hiểu cách đưa các tác phẩm tùy chỉnh của bạn trong Minecraft và mint các bản vẽ này thành NFT trên NEAR blockchain!",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/3.tutorials/nfts/minecraft-nfts.md",
+  "sourceDirName": "3.tutorials/nfts",
+  "slug": "/tutorials/nfts/minecraft-nfts",
+  "permalink": "/vi/tutorials/nfts/minecraft-nfts",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/minecraft-nfts.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "minecraft-nfts",
+    "title": "Tạo NFT trong Minecraft",
+    "sidebar_label": "Minecraft NFT"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Mint Front-end",
+    "permalink": "/vi/tutorials/nfts/minting-nft-frontend"
+  },
+  "next": {
+    "title": "Giới thiệu",
+    "permalink": "/vi/tutorials/nfts/js/introduction"
+  }
+}

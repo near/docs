@@ -1,0 +1,27 @@
+{
+  "id": "tools/indexer-for-explorer",
+  "title": "Indexer for Explorer (Deprecated)",
+  "description": "탈중앙화 앱을 개발하는 동안, 다음과 같이 컨트랙트에 대한 사용 정보를 쿼리할 수 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/4.tools/indexer4explorer.md",
+  "sourceDirName": "4.tools",
+  "slug": "/tools/indexer-for-explorer",
+  "permalink": "/ko/tools/indexer-for-explorer",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/4.tools/indexer4explorer.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "indexer-for-explorer",
+    "title": "Indexer for Explorer (Deprecated)"
+  },
+  "sidebar": "indexers",
+  "previous": {
+    "title": "BigQuery",
+    "permalink": "/ko/bos/queryapi/big-query"
+  },
+  "next": {
+    "title": "Lake Overview",
+    "permalink": "/ko/tools/near-lake"
+  }
+}

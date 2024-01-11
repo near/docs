@@ -1,0 +1,28 @@
+{
+  "id": "concepts/basics/token-loss",
+  "title": "토큰 손실 방지",
+  "description": "주의하세요! 토큰을 잃는다는 것은 돈을 잃는 것을 의미합니다!",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/1.concepts/basics/token-loss.md",
+  "sourceDirName": "1.concepts/basics",
+  "slug": "/concepts/basics/token-loss",
+  "permalink": "/ko/concepts/basics/token-loss",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/basics/token-loss.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "token-loss",
+    "title": "토큰 손실 방지",
+    "sidebar_label": "토큰 손실 방지"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "토큰",
+    "permalink": "/ko/concepts/basics/tokens"
+  },
+  "next": {
+    "title": "NEAR에 저장하기",
+    "permalink": "/ko/concepts/storage/data-storage"
+  }
+}

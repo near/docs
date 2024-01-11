@@ -1,0 +1,27 @@
+{
+  "id": "develop/contracts/security/checklist",
+  "title": "✅ 체크리스트",
+  "description": "스마트 컨트랙트 개발을 마치면, 최종 사용자가 쓸 수 있을 만큼 안전한지 확인해야 합니다. 다음 체크리스트를 활용해 보세요.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.develop/contracts/security/checklist.md",
+  "sourceDirName": "2.develop/contracts/security",
+  "slug": "/develop/contracts/security/checklist",
+  "permalink": "/ko/develop/contracts/security/checklist",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/contracts/security/checklist.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "checklist",
+    "title": "✅ 체크리스트"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "교차 컨트랙트 호출",
+    "permalink": "/ko/develop/contracts/crosscontract"
+  },
+  "next": {
+    "title": "직렬화에 대한 참고 사항",
+    "permalink": "/ko/develop/contracts/serialization"
+  }
+}

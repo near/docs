@@ -1,0 +1,24 @@
+{
+  "id": "integrator/faq",
+  "title": "통합 FAQ",
+  "description": "Orientation",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/6.integrator/faq.md",
+  "sourceDirName": "6.integrator",
+  "slug": "/integrator/faq",
+  "permalink": "/ko/integrator/faq",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/6.integrator/faq.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "faq",
+    "title": "통합 FAQ",
+    "sidebar_label": "통합 FAQ"
+  },
+  "sidebar": "exchanges",
+  "previous": {
+    "title": "토큰 손실 피하기",
+    "permalink": "/ko/integrator/errors/token-loss"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "tools/near-cli-rs",
+  "title": "NEAR CLI RS",
+  "description": "빠른 시작 가이드",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/4.tools/cli-rs.md",
+  "sourceDirName": "4.tools",
+  "slug": "/tools/near-cli-rs",
+  "permalink": "/ko/tools/near-cli-rs",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/4.tools/cli-rs.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "near-cli-rs",
+    "title": "NEAR CLI RS"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "NEAR CLI",
+    "permalink": "/ko/tools/near-cli"
+  },
+  "next": {
+    "title": "NEAR 지갑 선택기",
+    "permalink": "/ko/tools/wallet-selector"
+  }
+}

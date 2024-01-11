@@ -1,0 +1,27 @@
+{
+  "id": "develop/testing/unit-test",
+  "title": "Unit Testing",
+  "description": "Unit tests allow you to test the contract methods individually. They are suitable to check the storage is updated correctly, and that methods return their expected values. They are written in the contract's language and execute locally.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.develop/testing/unit.md",
+  "sourceDirName": "2.develop/testing",
+  "slug": "/develop/testing/unit-test",
+  "permalink": "/zh-CN/develop/testing/unit-test",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/testing/unit.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "unit-test",
+    "title": "Unit Testing"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Introduction",
+    "permalink": "/zh-CN/develop/testing/introduction"
+  },
+  "next": {
+    "title": "Integration Test",
+    "permalink": "/zh-CN/develop/testing/integration-test"
+  }
+}

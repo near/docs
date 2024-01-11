@@ -1,0 +1,19 @@
+{
+  "id": "primitives/dex/additional-resources",
+  "title": "Additional Resources",
+  "description": "1. Claim Fungible Tokens from Lockup - the example how to claim locked tokens from the lockup.burrow.near contract.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/7.primitives/dex/additional-resources.md",
+  "sourceDirName": "7.primitives/dex",
+  "slug": "/primitives/dex/additional-resources",
+  "permalink": "/zh-CN/primitives/dex/additional-resources",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/dex/additional-resources.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "additional-resources",
+    "title": "Additional Resources",
+    "hide_table_of_contents": false
+  }
+}

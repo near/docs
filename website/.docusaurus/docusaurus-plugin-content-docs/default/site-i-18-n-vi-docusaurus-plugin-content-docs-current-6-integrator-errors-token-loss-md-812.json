@@ -1,0 +1,28 @@
+{
+  "id": "integrator/errors/token-loss",
+  "title": "Token Loss",
+  "description": "Careful! Losing tokens means losing money!",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/6.integrator/errors/token-loss.md",
+  "sourceDirName": "6.integrator/errors",
+  "slug": "/integrator/errors/token-loss",
+  "permalink": "/vi/integrator/errors/token-loss",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/6.integrator/errors/token-loss.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "token-loss",
+    "title": "Token Loss",
+    "sidebar_label": "Token Loss"
+  },
+  "sidebar": "exchanges",
+  "previous": {
+    "title": "Đánh Giá Source Code",
+    "permalink": "/vi/integrator/errors/error-implementation"
+  },
+  "next": {
+    "title": "Tích hợp FAQ",
+    "permalink": "/vi/integrator/faq"
+  }
+}

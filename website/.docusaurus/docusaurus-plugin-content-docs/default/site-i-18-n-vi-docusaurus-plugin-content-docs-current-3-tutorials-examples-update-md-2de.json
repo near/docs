@@ -1,0 +1,27 @@
+{
+  "id": "tutorials/examples/update-contract-migrate-state",
+  "title": "Self Upgrade & State Migration",
+  "description": "Three examples on how to handle updates and state migration:",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/3.tutorials/examples/update.md",
+  "sourceDirName": "3.tutorials/examples",
+  "slug": "/tutorials/examples/update-contract-migrate-state",
+  "permalink": "/vi/tutorials/examples/update-contract-migrate-state",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/examples/update.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "update-contract-migrate-state",
+    "title": "Self Upgrade & State Migration"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Complex Cross Contract Call",
+    "permalink": "/vi/tutorials/examples/advanced-xcc"
+  },
+  "next": {
+    "title": "Minting Fungible Tokens",
+    "permalink": "/vi/tutorials/fts/simple-fts"
+  }
+}

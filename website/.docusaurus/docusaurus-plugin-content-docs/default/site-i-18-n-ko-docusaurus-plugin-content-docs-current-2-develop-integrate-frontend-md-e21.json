@@ -1,0 +1,27 @@
+{
+  "id": "develop/integrate/frontend",
+  "title": "웹 프론트엔드 구축",
+  "description": "컨트랙트가 배포되면, 웹 프론트엔드에서 컨트랙트와 상호작용하게 될 가능성이 높습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.develop/integrate/frontend.md",
+  "sourceDirName": "2.develop/integrate",
+  "slug": "/develop/integrate/frontend",
+  "permalink": "/ko/develop/integrate/frontend",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/integrate/frontend.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "frontend",
+    "title": "웹 프론트엔드 구축"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "Components & Historical data",
+    "permalink": "/ko/bos/queryapi/bos-components"
+  },
+  "next": {
+    "title": "NEAR 숫자 세기",
+    "permalink": "/ko/tutorials/examples/count-near"
+  }
+}

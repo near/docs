@@ -1,0 +1,24 @@
+{
+  "id": "integrator/exchange-integration",
+  "title": "Tích hợp sàn giao dịch",
+  "description": "Tham chiếu tích hợp",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/6.integrator/exchange-integration.md",
+  "sourceDirName": "6.integrator",
+  "slug": "/integrator/exchange-integration",
+  "permalink": "/vi/integrator/exchange-integration",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/6.integrator/exchange-integration.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "exchange-integration",
+    "title": "Tích hợp sàn giao dịch",
+    "sidebar_label": "Tích hợp sàn giao dịch"
+  },
+  "sidebar": "exchanges",
+  "next": {
+    "title": "Balance Changes",
+    "permalink": "/vi/integrator/balance-changes"
+  }
+}

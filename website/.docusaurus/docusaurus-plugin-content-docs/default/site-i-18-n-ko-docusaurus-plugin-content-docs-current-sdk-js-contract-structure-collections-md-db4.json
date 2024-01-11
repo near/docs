@@ -1,0 +1,28 @@
+{
+  "id": "sdk/js/contract-structure/collections",
+  "title": "컬렉션",
+  "description": "애플리케이션의 데이터에 사용할 자료구조를 결정할 때, 스토리지에 읽고 쓰는 데이터의 양을 최소화하는 것이 중요하지만 트랜잭션 비용을 최소화하기 위해 직렬화 및 역직렬화되는 데이터의 양도 최소화해야 합니다. 애플리케이션이 확장되고, 상태를 새 데이터 구조로 마이그레이션하면 비용이 발생하고, 병목 현상이 발생할 수 있으므로, 스마트 컨트랙트에서 데이터 구조의 장단점을 이해하는 것이 중요합니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/sdk/js/contract-structure/collections.md",
+  "sourceDirName": "sdk/js/contract-structure",
+  "slug": "/sdk/js/contract-structure/collections",
+  "permalink": "/ko/sdk/js/contract-structure/collections",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/js/contract-structure/collections.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2,
+    "title": "컬렉션"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "NearBindgen",
+    "permalink": "/ko/sdk/js/contract-structure/near-bindgen"
+  },
+  "next": {
+    "title": "퍼블릭 메서드",
+    "permalink": "/ko/sdk/js/contract-interface/public-methods"
+  }
+}

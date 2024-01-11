@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/nfts/skeleton",
+  "title": "Bộ khung và Kiến trúc ngôn ngữ Rust\"",
+  "description": "Trong chủ đề này, bạn sẽ tìm hiểu về kiến trúc cơ bản đằng sau một NFT contract mà bạn sẽ develop khi tham gia serie \"Từ Zero đến Hero\" này. Bạn sẽ khám phá layout của contract và sẽ thấy cách mà các file Rust được cấu trúc để build một smart contract đầy đủ tính năng.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/3.tutorials/nfts/1-skeleton.md",
+  "sourceDirName": "3.tutorials/nfts",
+  "slug": "/tutorials/nfts/skeleton",
+  "permalink": "/vi/tutorials/nfts/skeleton",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/1-skeleton.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "id": "skeleton",
+    "title": "Bộ khung và Kiến trúc ngôn ngữ Rust\"",
+    "sidebar_label": "Kiến trúc của Contract"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Contract đã được deploy sẵn",
+    "permalink": "/vi/tutorials/nfts/predeployed-contract"
+  },
+  "next": {
+    "title": "Minting",
+    "permalink": "/vi/tutorials/nfts/minting"
+  }
+}

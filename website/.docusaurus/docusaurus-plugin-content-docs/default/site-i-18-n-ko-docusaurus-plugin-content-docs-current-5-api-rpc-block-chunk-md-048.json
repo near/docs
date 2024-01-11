@@ -1,0 +1,27 @@
+{
+  "id": "api/rpc/block-chunk",
+  "title": "블록 / 청크",
+  "description": "RPC API를 사용하면, 네트워크를 쿼리하고 특정 블록 또는 청크에 대한 세부 정보를 얻을 수 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/5.api/rpc/block-chunk.md",
+  "sourceDirName": "5.api/rpc",
+  "slug": "/api/rpc/block-chunk",
+  "permalink": "/ko/api/rpc/block-chunk",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/5.api/rpc/block-chunk.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "block-chunk",
+    "title": "블록 / 청크"
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "계정 / 컨트랙트",
+    "permalink": "/ko/api/rpc/contracts"
+  },
+  "next": {
+    "title": "가스",
+    "permalink": "/ko/api/rpc/gas"
+  }
+}

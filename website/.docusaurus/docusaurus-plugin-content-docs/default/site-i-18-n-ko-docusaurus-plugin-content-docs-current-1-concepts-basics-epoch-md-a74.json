@@ -1,0 +1,27 @@
+{
+  "id": "concepts/basics/epoch",
+  "title": "에포크",
+  "description": "에포크는 네트워크의 밸리데이터가 일정하게 유지하는 시간 단위입니다. 이는 블록 단위로 측정됩니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/1.concepts/basics/epoch.md",
+  "sourceDirName": "1.concepts/basics",
+  "slug": "/concepts/basics/epoch",
+  "permalink": "/ko/concepts/basics/epoch",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/basics/epoch.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "epoch",
+    "title": "에포크"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "네트워크",
+    "permalink": "/ko/concepts/basics/networks"
+  },
+  "next": {
+    "title": "블록체인 데이터",
+    "permalink": "/ko/concepts/data-flow/data-storage"
+  }
+}

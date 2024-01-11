@@ -1,0 +1,19 @@
+{
+  "id": "social/contract",
+  "title": "SocialDB",
+  "description": "SocialDB is a smart contract to store social data on NEAR protocol.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/social/contract.md",
+  "sourceDirName": "social",
+  "slug": "/social/contract",
+  "permalink": "/zh-CN/social/contract",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/social/contract.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "contract",
+    "title": "SocialDB",
+    "sidebar_label": "SocialDB"
+  }
+}

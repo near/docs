@@ -1,0 +1,19 @@
+{
+  "id": "develop/quickstart-guide",
+  "title": "Hello NEAR 👋",
+  "description": "안녕하세요! NEAR: Hello NEAR에서 첫 번째 탈중앙화 앱(dApp)을 시작하고, 앱과 상호 작용하는 방법을 안내해 드리겠습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.develop/quickstart.md",
+  "sourceDirName": "2.develop",
+  "slug": "/develop/quickstart-guide",
+  "permalink": "/ko/develop/quickstart-guide",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/quickstart.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "quickstart-guide",
+    "title": "Hello NEAR 👋",
+    "sidebar_label": "⭐ 빠른 시작"
+  }
+}

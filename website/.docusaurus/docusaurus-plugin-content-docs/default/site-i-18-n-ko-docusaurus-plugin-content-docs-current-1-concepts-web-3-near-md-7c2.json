@@ -1,0 +1,28 @@
+{
+  "id": "concepts/web3/near",
+  "title": "NEAR 프로토콜",
+  "description": "초보자는 항상 문서로 시작하는 것이 좋으며, NEAR에는 훌륭한 문서가 있습니다. 여기에서는 이후 장을 이해하는 데 필요한 기본 개념에만 초점을 맞추므로, 사전 NEAR 지식 없이도 전체 가이드를 이해할 수 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/1.concepts/web3/near.md",
+  "sourceDirName": "1.concepts/web3",
+  "slug": "/concepts/web3/near",
+  "permalink": "/ko/concepts/web3/near",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/web3/near.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "near",
+    "title": "NEAR 프로토콜",
+    "sidebar_label": "NEAR 프로토콜"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "블록체인 기초",
+    "permalink": "/ko/concepts/web3/basics"
+  },
+  "next": {
+    "title": "경제학",
+    "permalink": "/ko/concepts/web3/economics"
+  }
+}

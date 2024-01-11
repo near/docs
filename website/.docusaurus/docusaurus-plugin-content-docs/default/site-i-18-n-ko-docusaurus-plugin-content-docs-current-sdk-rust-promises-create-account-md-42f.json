@@ -1,0 +1,27 @@
+{
+  "id": "sdk/rust/promises/create-account",
+  "title": "계정 생성",
+  "description": "여러 가지 이유로 컨트랙트에서 계정을 생성할 수 있습니다. 한 가지 예시로, 사용자를 점진적으로 온보딩하기 위해, 처음에는 NEAR의 전체 개념을 숨기고 자동으로 계정을 생성하려고 합니다(예: user123.some-cool-game.near와 같은 메인 컨트랙트의 하위 계정일 수 있음).",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/sdk/rust/promises/create-account.md",
+  "sourceDirName": "sdk/rust/promises",
+  "slug": "/sdk/rust/promises/create-account",
+  "permalink": "/ko/sdk/rust/promises/create-account",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/rust/promises/create-account.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "$NEAR 전송",
+    "permalink": "/ko/sdk/rust/promises/token-tx"
+  },
+  "next": {
+    "title": "컨트랙트 배포",
+    "permalink": "/ko/sdk/rust/promises/deploy-contract"
+  }
+}

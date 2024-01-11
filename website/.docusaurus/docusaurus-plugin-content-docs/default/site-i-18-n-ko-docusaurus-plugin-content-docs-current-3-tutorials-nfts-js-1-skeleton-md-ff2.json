@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/nfts/js/skeleton",
+  "title": "뼈대 및 JavaScript 아키텍처",
+  "description": "이 글에서는 이 \"Zero to Hero\" 시리즈를 진행하면서 개발하게 될 NFT 컨트랙트의 기본 아키텍처에 대해 알아봅니다. 컨트랙트의 레이아웃을 발견하고 완전한 기능을 갖춘 스마트 컨트랙트를 구축하기 위해 JavaScript 파일이 어떻게 구성되어 있는지 확인할 수 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/nfts/js/1-skeleton.md",
+  "sourceDirName": "3.tutorials/nfts/js",
+  "slug": "/tutorials/nfts/js/skeleton",
+  "permalink": "/ko/tutorials/nfts/js/skeleton",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/js/1-skeleton.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "id": "skeleton",
+    "title": "뼈대 및 JavaScript 아키텍처",
+    "sidebar_label": "컨트랙트 아키텍처"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "사전 배포된 컨트랙트",
+    "permalink": "/ko/tutorials/nfts/js/predeployed-contract"
+  },
+  "next": {
+    "title": "발행",
+    "permalink": "/ko/tutorials/nfts/js/minting"
+  }
+}

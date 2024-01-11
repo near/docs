@@ -1,0 +1,31 @@
+{
+  "id": "primitives/dex/introduction",
+  "title": "Introduction",
+  "description": "DEX is an app which allows users to trade tokens by using only smart contracts. Usually users interact with DEX by web app. But since DEX is a set of smart contracts you can use these contracts from your code.",
+  "source": "@site/../docs/7.primitives/dex/introduction.md",
+  "sourceDirName": "7.primitives/dex",
+  "slug": "/primitives/dex/introduction",
+  "permalink": "/primitives/dex/introduction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/dex/introduction.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1704818347,
+  "formattedLastUpdatedAt": "Jan 9, 2024",
+  "frontMatter": {
+    "id": "introduction",
+    "title": "Introduction",
+    "hide_table_of_contents": false
+  },
+  "sidebar": "primitives",
+  "previous": {
+    "title": "Additional Resources",
+    "permalink": "/primitives/ft/additional-resources"
+  },
+  "next": {
+    "title": "NEAR Component",
+    "permalink": "/primitives/dex/interacting/bos"
+  }
+}

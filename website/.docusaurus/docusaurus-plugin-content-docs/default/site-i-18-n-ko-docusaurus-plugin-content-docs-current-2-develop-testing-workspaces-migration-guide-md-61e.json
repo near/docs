@@ -1,0 +1,28 @@
+{
+  "id": "develop/testing/workspaces-migration",
+  "title": "시뮬레이션 테스트에서 작업 공간로의 마이그레이션",
+  "description": "시뮬레이션 테스트 지원을 중단한 이유는 무엇인가요?",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.develop/testing/workspaces-migration-guide.md",
+  "sourceDirName": "2.develop/testing",
+  "slug": "/develop/testing/workspaces-migration",
+  "permalink": "/ko/develop/testing/workspaces-migration",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/testing/workspaces-migration-guide.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "workspaces-migration",
+    "sidebar_label": "작업 공간(Workspace) 이동",
+    "title": "시뮬레이션 테스트에서 작업 공간로의 마이그레이션"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "로컬 개발 환경",
+    "permalink": "/ko/develop/testing/kurtosis-localnet"
+  },
+  "next": {
+    "title": "배포 및 사용",
+    "permalink": "/ko/develop/deploy"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "primitives/nft/additional-resources",
+  "title": "Additional Resources",
+  "description": "1. NFT Tutorial (NEAR examples, JavaScript SDK) - a set of tutorials that cover how to create a NFT contract using JavaScript.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/7.primitives/nft/additional-resources.md",
+  "sourceDirName": "7.primitives/nft",
+  "slug": "/primitives/nft/additional-resources",
+  "permalink": "/vi/primitives/nft/additional-resources",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/nft/additional-resources.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "additional-resources",
+    "title": "Additional Resources",
+    "hide_table_of_contents": false
+  },
+  "sidebar": "primitives",
+  "previous": {
+    "title": "NEAR CLI",
+    "permalink": "/vi/primitives/nft/interacting/near-cli"
+  },
+  "next": {
+    "title": "Introduction",
+    "permalink": "/vi/primitives/ft/introduction"
+  }
+}

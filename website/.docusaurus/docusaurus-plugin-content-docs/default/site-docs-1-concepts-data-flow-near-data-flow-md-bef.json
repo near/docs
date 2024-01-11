@@ -1,0 +1,29 @@
+{
+  "id": "concepts/data-flow/near-data-flow",
+  "title": "NEAR Data Flow",
+  "description": "<iframe",
+  "source": "@site/../docs/1.concepts/data-flow/near-data-flow.md",
+  "sourceDirName": "1.concepts/data-flow",
+  "slug": "/concepts/data-flow/near-data-flow",
+  "permalink": "/concepts/data-flow/near-data-flow",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/data-flow/near-data-flow.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1666217652,
+  "formattedLastUpdatedAt": "Oct 19, 2022",
+  "frontMatter": {
+    "sidebar_label": "NEAR Data Flow"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Gas - Advanced",
+    "permalink": "/concepts/basics/transactions/gas-advanced"
+  },
+  "next": {
+    "title": "Token Transfer",
+    "permalink": "/concepts/data-flow/token-transfer-flow"
+  }
+}

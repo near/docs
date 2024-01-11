@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/nfts/series",
+  "title": "NFT 컨트랙트 커스터마이징",
+  "description": "이 튜토리얼에서는 작업한 기존 NFT 컨트랙트를 사용하여 생태계에서 가장 일반적인 요구 사항을 충족하도록 수정하는 방법을 배웁니다. 여기에는 다음이 포함됩니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/nfts/9-series.md",
+  "sourceDirName": "3.tutorials/nfts",
+  "slug": "/tutorials/nfts/series",
+  "permalink": "/ko/tutorials/nfts/series",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/9-series.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 9,
+  "frontMatter": {
+    "id": "series",
+    "title": "NFT 컨트랙트 커스터마이징",
+    "sidebar_label": "게으른 발행, 컬렉션 등!"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "마켓플레이스",
+    "permalink": "/ko/tutorials/nfts/marketplace"
+  },
+  "next": {
+    "title": "소개",
+    "permalink": "/ko/tutorials/fts/introduction"
+  }
+}

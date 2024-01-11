@@ -1,0 +1,28 @@
+{
+  "id": "concepts/web3/basics",
+  "title": "블록체인 기초",
+  "description": "Web3 개발의 복잡성에 대해 더 깊이 파고들기 전에, 그것이 무엇이며 왜 존재하는지 살펴보겠습니다. 우선 숫자 3은 무엇을 의미하나요? 일반적으로 World Wide Web 또는 인터넷은 수년에 걸쳐 발전해 왔으며 대략 3개의 \"세대\"로 나눌 수 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/1.concepts/web3/blockchain.md",
+  "sourceDirName": "1.concepts/web3",
+  "slug": "/concepts/web3/basics",
+  "permalink": "/ko/concepts/web3/basics",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/web3/blockchain.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "basics",
+    "title": "블록체인 기초",
+    "sidebar_label": "블록체인 기초"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "소개",
+    "permalink": "/ko/concepts/web3/intro"
+  },
+  "next": {
+    "title": "NEAR 프로토콜",
+    "permalink": "/ko/concepts/web3/near"
+  }
+}

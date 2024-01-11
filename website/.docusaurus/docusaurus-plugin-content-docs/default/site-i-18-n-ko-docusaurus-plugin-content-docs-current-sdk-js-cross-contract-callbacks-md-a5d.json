@@ -1,0 +1,28 @@
+{
+  "id": "sdk/js/cross-contract/callbacks",
+  "title": "Callbacks",
+  "description": "NEAR 프로토콜은 작업 증명(Proof-of-Work) 블록체인과 다르게 작동하는 샤딩된 지분 증명(Proof-of-Stake) 블록체인입니다. 기본 Rust(Wasm으로 컴파일됨) 스마트 컨트랙트 상호 작용할 때, 교차 컨트랙트 호출(cross-contract call)은 비동기식입니다. 콜백은 교차 컨트랙트 호출의 결과를 가져오거나, 교차 컨트랙트 호출이 성공했는지 실패했는지 알려주는 데 사용됩니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/sdk/js/cross-contract/callbacks.md",
+  "sourceDirName": "sdk/js/cross-contract",
+  "slug": "/sdk/js/cross-contract/callbacks",
+  "permalink": "/ko/sdk/js/cross-contract/callbacks",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/js/cross-contract/callbacks.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2,
+    "title": "Callbacks"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "지불 메서드",
+    "permalink": "/ko/sdk/js/contract-interface/payable-methods"
+  },
+  "next": {
+    "title": "Promise: 소개",
+    "permalink": "/ko/sdk/js/promises/intro"
+  }
+}

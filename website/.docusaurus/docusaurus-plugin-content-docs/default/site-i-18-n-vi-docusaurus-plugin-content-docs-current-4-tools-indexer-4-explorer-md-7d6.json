@@ -1,0 +1,27 @@
+{
+  "id": "tools/indexer-for-explorer",
+  "title": "Indexer for Explorer (Deprecated)",
+  "description": "While developing a decentralized app you might want to query usage information for a contract such as:",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/4.tools/indexer4explorer.md",
+  "sourceDirName": "4.tools",
+  "slug": "/tools/indexer-for-explorer",
+  "permalink": "/vi/tools/indexer-for-explorer",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/4.tools/indexer4explorer.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "indexer-for-explorer",
+    "title": "Indexer for Explorer (Deprecated)"
+  },
+  "sidebar": "indexers",
+  "previous": {
+    "title": "BigQuery",
+    "permalink": "/vi/bos/queryapi/big-query"
+  },
+  "next": {
+    "title": "Lake Overview",
+    "permalink": "/vi/tools/near-lake"
+  }
+}

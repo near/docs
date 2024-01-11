@@ -1,0 +1,31 @@
+{
+  "id": "primitives/linkdrop/interacting/web-app",
+  "title": "Web Application",
+  "description": "This section describes how to create different kinds of linkdrop directly from a web app.",
+  "source": "@site/../docs/7.primitives/linkdrop/interacting/web-app.md",
+  "sourceDirName": "7.primitives/linkdrop/interacting",
+  "slug": "/primitives/linkdrop/interacting/web-app",
+  "permalink": "/primitives/linkdrop/interacting/web-app",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/linkdrop/interacting/web-app.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Damian Parrino",
+  "lastUpdatedAt": 1703272292,
+  "formattedLastUpdatedAt": "Dec 22, 2023",
+  "frontMatter": {
+    "id": "web-app",
+    "title": "Web Application",
+    "hide_table_of_contents": false
+  },
+  "sidebar": "primitives",
+  "previous": {
+    "title": "NEAR Component",
+    "permalink": "/primitives/linkdrop/interacting/bos"
+  },
+  "next": {
+    "title": "NEAR CLI",
+    "permalink": "/primitives/linkdrop/interacting/near-cli"
+  }
+}

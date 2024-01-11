@@ -1,0 +1,28 @@
+{
+  "id": "bos/api/primitives",
+  "title": "Primitives API",
+  "description": "Near Social VM provides a set of custom APIs that can be used by the components.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/bos/api/primitives.md",
+  "sourceDirName": "bos/api",
+  "slug": "/bos/api/primitives",
+  "permalink": "/vi/bos/api/primitives",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/api/primitives.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "primitives",
+    "title": "Primitives API",
+    "sidebar_label": "Primitives"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "Storage",
+    "permalink": "/vi/bos/api/storage"
+  },
+  "next": {
+    "title": "Cache",
+    "permalink": "/vi/bos/api/cache"
+  }
+}

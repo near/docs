@@ -1,0 +1,28 @@
+{
+  "id": "sdk/js/cross-contract/callbacks",
+  "title": "Callbacks",
+  "description": "NEAR Protocol is a sharded, proof-of-stake blockchain that behaves differently than proof-of-work blockchains. When interacting with a native Rust (compiled to Wasm) smart contract, cross-contract calls are asynchronous. Callbacks are used to either get the result of a cross-contract call or tell if a cross-contract call has succeeded or failed.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/sdk/js/cross-contract/callbacks.md",
+  "sourceDirName": "sdk/js/cross-contract",
+  "slug": "/sdk/js/cross-contract/callbacks",
+  "permalink": "/vi/sdk/js/cross-contract/callbacks",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/js/cross-contract/callbacks.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2,
+    "title": "Callbacks"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "Payable Methods",
+    "permalink": "/vi/sdk/js/contract-interface/payable-methods"
+  },
+  "next": {
+    "title": "Promises: Introduction",
+    "permalink": "/vi/sdk/js/promises/intro"
+  }
+}

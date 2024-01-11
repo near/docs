@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/fts/predeployed-contract",
+  "title": "Pre-deployed Contract",
+  "description": "Learn how to easily receive fungible tokens without doing any software development by using a readily-available FT smart contract.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/3.tutorials/fts/0-predeployed.md",
+  "sourceDirName": "3.tutorials/fts",
+  "slug": "/tutorials/fts/predeployed-contract",
+  "permalink": "/zh-CN/tutorials/fts/predeployed-contract",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/fts/0-predeployed.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 0,
+  "frontMatter": {
+    "id": "predeployed-contract",
+    "title": "Pre-deployed Contract",
+    "sidebar_label": "Pre-deployed Contract"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Introduction",
+    "permalink": "/zh-CN/tutorials/fts/introduction"
+  },
+  "next": {
+    "title": "Contract Architecture",
+    "permalink": "/zh-CN/tutorials/fts/skeleton"
+  }
+}

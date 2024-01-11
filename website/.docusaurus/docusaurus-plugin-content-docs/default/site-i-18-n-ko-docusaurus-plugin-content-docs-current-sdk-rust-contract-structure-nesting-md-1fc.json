@@ -1,0 +1,27 @@
+{
+  "id": "sdk/rust/contract-structure/nesting",
+  "title": "컬렉션 중첩(Nesting)",
+  "description": "고유 접두사에 대한 기존 접근법",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/sdk/rust/contract-structure/nesting.md",
+  "sourceDirName": "sdk/rust/contract-structure",
+  "slug": "/sdk/rust/contract-structure/nesting",
+  "permalink": "/ko/sdk/rust/contract-structure/nesting",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/rust/contract-structure/nesting.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "컬렉션",
+    "permalink": "/ko/sdk/rust/contract-structure/collections"
+  },
+  "next": {
+    "title": "퍼블릭 메서드 자료형",
+    "permalink": "/ko/sdk/rust/contract-interface/public-methods"
+  }
+}

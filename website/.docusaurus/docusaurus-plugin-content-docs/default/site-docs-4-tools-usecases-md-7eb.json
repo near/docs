@@ -1,0 +1,22 @@
+{
+  "id": "tools/usecases",
+  "title": "Interacting with a Contract",
+  "description": "Here we enumerate case scenarios, and point to where the documentation is present.",
+  "source": "@site/../docs/4.tools/usecases.md",
+  "sourceDirName": "4.tools",
+  "slug": "/tools/usecases",
+  "permalink": "/tools/usecases",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/4.tools/usecases.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Max Harpunsky",
+  "lastUpdatedAt": 1659444857,
+  "formattedLastUpdatedAt": "Aug 2, 2022",
+  "frontMatter": {
+    "id": "usecases",
+    "title": "Interacting with a Contract",
+    "sidebar_label": "💡 Interacting with a Contract"
+  }
+}

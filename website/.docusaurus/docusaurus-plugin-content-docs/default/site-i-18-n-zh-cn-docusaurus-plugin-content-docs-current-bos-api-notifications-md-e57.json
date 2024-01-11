@@ -1,0 +1,27 @@
+{
+  "id": "bos/api/notifications",
+  "title": "Social Notifications",
+  "description": "NEAR allows applications to send notifications to their users. Notifications is implemented as a particular case of indexed actions.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/bos/api/notifications.md",
+  "sourceDirName": "bos/api",
+  "slug": "/bos/api/notifications",
+  "permalink": "/zh-CN/bos/api/notifications",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/api/notifications.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "notifications",
+    "title": "Social Notifications"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "Social Indexer",
+    "permalink": "/zh-CN/bos/api/indexing"
+  },
+  "next": {
+    "title": "Fetch",
+    "permalink": "/zh-CN/bos/api/fetch"
+  }
+}

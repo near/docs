@@ -1,0 +1,31 @@
+{
+  "id": "concepts/web3/basics",
+  "title": "Blockchain basics",
+  "description": "Before diving deeper into the intricacies of Web 3 development, let’s explore what it is and why it exists.",
+  "source": "@site/../docs/1.concepts/web3/blockchain.md",
+  "sourceDirName": "1.concepts/web3",
+  "slug": "/concepts/web3/basics",
+  "permalink": "/concepts/web3/basics",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/web3/blockchain.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Juho Hautala",
+  "lastUpdatedAt": 1700221401,
+  "formattedLastUpdatedAt": "Nov 17, 2023",
+  "frontMatter": {
+    "id": "basics",
+    "title": "Blockchain basics",
+    "sidebar_label": "Blockchain basics"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Introduction",
+    "permalink": "/concepts/web3/intro"
+  },
+  "next": {
+    "title": "NEAR Protocol",
+    "permalink": "/concepts/web3/near"
+  }
+}

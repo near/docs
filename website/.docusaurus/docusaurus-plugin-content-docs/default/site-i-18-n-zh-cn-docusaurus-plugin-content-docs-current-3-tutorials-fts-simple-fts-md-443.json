@@ -1,0 +1,27 @@
+{
+  "id": "tutorials/fts/simple-fts",
+  "title": "Minting Fungible Tokens",
+  "description": "In this tutorial, you'll learn how to easily create your own Fungible Tokens (FT) without doing any software development by using a readily-available smart contract. This article will show you how to use an existing FT smart contract, and you'll learn how to mint fungible tokens and view them in your Wallet.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/3.tutorials/fts/simple-fts.md",
+  "sourceDirName": "3.tutorials/fts",
+  "slug": "/tutorials/fts/simple-fts",
+  "permalink": "/zh-CN/tutorials/fts/simple-fts",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/fts/simple-fts.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "simple-fts",
+    "title": "Minting Fungible Tokens"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Self Upgrade & State Migration",
+    "permalink": "/zh-CN/tutorials/examples/update-contract-migrate-state"
+  },
+  "next": {
+    "title": "Minting NFTs",
+    "permalink": "/zh-CN/tutorials/nfts/minting-nfts"
+  }
+}

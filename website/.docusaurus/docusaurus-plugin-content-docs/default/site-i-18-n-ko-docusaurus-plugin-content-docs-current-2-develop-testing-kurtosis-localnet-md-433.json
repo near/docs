@@ -1,0 +1,29 @@
+{
+  "id": "develop/testing/kurtosis-localnet",
+  "title": "로컬 개발 환경 만들기",
+  "description": "로컬 개발을 위해 Kurtosis NEAR 패키지 사용",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.develop/testing/kurtosis-localnet.md",
+  "sourceDirName": "2.develop/testing",
+  "slug": "/develop/testing/kurtosis-localnet",
+  "permalink": "/ko/develop/testing/kurtosis-localnet",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/testing/kurtosis-localnet.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "kurtosis-localnet",
+    "title": "로컬 개발 환경 만들기",
+    "sidebar_label": "로컬 개발 환경",
+    "description": "로컬 개발을 위해 Kurtosis NEAR 패키지 사용"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "통합 테스트(Integration Test)",
+    "permalink": "/ko/develop/testing/integration-test"
+  },
+  "next": {
+    "title": "작업 공간(Workspace) 이동",
+    "permalink": "/ko/develop/testing/workspaces-migration"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "bos/components/typeahead",
+  "title": "TypeAhead Component",
+  "description": "The TypeAhead component provides a type-ahead input field for selecting an option from a list of choices. This component is imported from the react-bootstrap-typeahead package; more information about the component can be found here.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/bos/components/typeahead.md",
+  "sourceDirName": "bos/components",
+  "slug": "/bos/components/typeahead",
+  "permalink": "/vi/bos/components/typeahead",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/components/typeahead.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "typeahead",
+    "title": "TypeAhead Component",
+    "sidebar_label": "TypeAhead"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "InfiniteScroll",
+    "permalink": "/vi/bos/components/infinite-scroll"
+  },
+  "next": {
+    "title": "Styled",
+    "permalink": "/vi/bos/components/styled"
+  }
+}

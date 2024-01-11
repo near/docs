@@ -1,0 +1,28 @@
+{
+  "id": "develop/lake/structures/transaction",
+  "title": "Transaction Structure",
+  "description": "Definition",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.develop/lake/structures/transaction.mdx",
+  "sourceDirName": "2.develop/lake/structures",
+  "slug": "/develop/lake/structures/transaction",
+  "permalink": "/zh-CN/develop/lake/structures/transaction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/lake/structures/transaction.mdx",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "sidebar_position": 5,
+    "sidebar_label": "Transaction"
+  },
+  "sidebar": "indexers",
+  "previous": {
+    "title": "Shard",
+    "permalink": "/zh-CN/develop/lake/structures/shard"
+  },
+  "next": {
+    "title": "Receipt",
+    "permalink": "/zh-CN/develop/lake/structures/receipt"
+  }
+}

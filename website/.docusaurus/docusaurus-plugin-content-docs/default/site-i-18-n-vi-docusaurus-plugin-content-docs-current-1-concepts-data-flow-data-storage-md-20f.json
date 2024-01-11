@@ -1,0 +1,27 @@
+{
+  "id": "concepts/data-flow/data-storage",
+  "title": "Data on the Blockchain",
+  "description": "This article will cover a high-level overview of Blockchain concepts and tools which facilitate reading and writing Blockchain data.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/1.concepts/data-flow/data-storage.md",
+  "sourceDirName": "1.concepts/data-flow",
+  "slug": "/concepts/data-flow/data-storage",
+  "permalink": "/vi/concepts/data-flow/data-storage",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/data-flow/data-storage.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "data-storage",
+    "sidebar_label": "Data on the Blockchain"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Epoch",
+    "permalink": "/vi/concepts/basics/epoch"
+  },
+  "next": {
+    "title": "Intro to Indexers",
+    "permalink": "/vi/concepts/advanced/indexers"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "concepts/basics/technical_stuff",
+  "title": "technical_stuff",
+  "description": "Interaction with NEAR is done with JSON RPC API via HTTP calls.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/1.concepts/basics/technical_stuff.md",
+  "sourceDirName": "1.concepts/basics",
+  "slug": "/concepts/basics/technical_stuff",
+  "permalink": "/ko/concepts/basics/technical_stuff",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/basics/technical_stuff.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

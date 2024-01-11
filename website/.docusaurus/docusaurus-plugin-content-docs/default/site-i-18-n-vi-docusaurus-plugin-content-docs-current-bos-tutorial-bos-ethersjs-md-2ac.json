@@ -1,0 +1,27 @@
+{
+  "id": "bos/tutorial/ethers-js",
+  "title": "NEAR for Ethereum developers",
+  "description": "NEAR components are chain-agnostic, enabling you to create decentralized frontends tailored for any Ethereum dApps. Throughout this article, we'll navigate prevalent use-cases with code snippets. You’ll also find links to exemplary NEAR components for reference.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/bos/tutorial/bos-ethersjs.md",
+  "sourceDirName": "bos/tutorial",
+  "slug": "/bos/tutorial/ethers-js",
+  "permalink": "/vi/bos/tutorial/ethers-js",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/tutorial/bos-ethersjs.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "ethers-js",
+    "title": "NEAR for Ethereum developers"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "WebSockets & QueryAPI",
+    "permalink": "/vi/bos/tutorial/queryapi-websockets"
+  },
+  "next": {
+    "title": "Best Practices for Ethereum developers on NEAR",
+    "permalink": "/vi/bos/tutorial/ethers-js-best-practices"
+  }
+}

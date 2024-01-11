@@ -1,0 +1,19 @@
+{
+  "id": "social/intro",
+  "title": "NEAR Social",
+  "description": "\"소셜 미디어의 과거, 현재 그리고 미래\"에서 유용한 것들을 모두 가져가세요.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/social/home.md",
+  "sourceDirName": "social",
+  "slug": "/social/intro",
+  "permalink": "/ko/social/intro",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/social/home.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "intro",
+    "title": "NEAR Social",
+    "sidebar_label": "소개"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "integrator/accounts",
+  "title": "Account",
+  "description": "Giới thiệu",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/6.integrator/accounts.md",
+  "sourceDirName": "6.integrator",
+  "slug": "/integrator/accounts",
+  "permalink": "/vi/integrator/accounts",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/6.integrator/accounts.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "accounts",
+    "title": "Account",
+    "sidebar_label": "Accounts"
+  },
+  "sidebar": "exchanges",
+  "previous": {
+    "title": "Balance Changes",
+    "permalink": "/vi/integrator/balance-changes"
+  },
+  "next": {
+    "title": "Tạo Transaction",
+    "permalink": "/vi/integrator/create-transactions"
+  }
+}

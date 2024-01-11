@@ -1,0 +1,30 @@
+{
+  "id": "api/rpc/contracts",
+  "title": "Accounts / Contracts",
+  "description": "The RPC API enables you to view details about accounts and contracts as well as perform contract calls.",
+  "source": "@site/../docs/5.api/rpc/contracts.md",
+  "sourceDirName": "5.api/rpc",
+  "slug": "/api/rpc/contracts",
+  "permalink": "/api/rpc/contracts",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/5.api/rpc/contracts.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "drew-u410",
+  "lastUpdatedAt": 1668682422,
+  "formattedLastUpdatedAt": "Nov 17, 2022",
+  "frontMatter": {
+    "id": "contracts",
+    "title": "Accounts / Contracts"
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Access Keys",
+    "permalink": "/api/rpc/access-keys"
+  },
+  "next": {
+    "title": "Block / Chunk",
+    "permalink": "/api/rpc/block-chunk"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "concepts/basics/technical_stuff",
+  "title": "technical_stuff",
+  "description": "Interaction with NEAR is done with JSON RPC API via HTTP calls.",
+  "source": "@site/../docs/1.concepts/basics/technical_stuff.md",
+  "sourceDirName": "1.concepts/basics",
+  "slug": "/concepts/basics/technical_stuff",
+  "permalink": "/concepts/basics/technical_stuff",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/basics/technical_stuff.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1659095642,
+  "formattedLastUpdatedAt": "Jul 29, 2022",
+  "frontMatter": {}
+}

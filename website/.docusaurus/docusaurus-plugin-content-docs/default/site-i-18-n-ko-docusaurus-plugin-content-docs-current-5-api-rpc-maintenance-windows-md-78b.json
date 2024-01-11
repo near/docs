@@ -1,0 +1,18 @@
+{
+  "id": "api/rpc/maintenance-windows",
+  "title": "유지 관리 기간(Maintenance Window)",
+  "description": "RPC API를 사용하면 현재 에포크의 특정 밸리데이터에 대한 향후 유지 관리 기간을 쿼리할 수 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/5.api/rpc/maintenance-windows.md",
+  "sourceDirName": "5.api/rpc",
+  "slug": "/api/rpc/maintenance-windows",
+  "permalink": "/ko/api/rpc/maintenance-windows",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/5.api/rpc/maintenance-windows.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "maintenance-windows",
+    "title": "유지 관리 기간(Maintenance Window)"
+  }
+}

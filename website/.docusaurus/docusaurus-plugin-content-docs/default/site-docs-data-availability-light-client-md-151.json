@@ -1,0 +1,30 @@
+{
+  "id": "data-availability/light-client",
+  "title": "Light Client",
+  "description": "A trustless off-chain light client for NEAR with DA-enabled features, such as KZG commitments, Reed-Solomon erasure coding & storage connectors.",
+  "source": "@site/../docs/data-availability/light-client.md",
+  "sourceDirName": "data-availability",
+  "slug": "/data-availability/light-client",
+  "permalink": "/data-availability/light-client",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/data-availability/light-client.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1699467323,
+  "formattedLastUpdatedAt": "Nov 8, 2023",
+  "frontMatter": {
+    "id": "light-client",
+    "title": "Light Client"
+  },
+  "sidebar": "data-availability",
+  "previous": {
+    "title": "Blob Store Contract",
+    "permalink": "/data-availability/blob-contract"
+  },
+  "next": {
+    "title": "RPC Client",
+    "permalink": "/data-availability/rpc"
+  }
+}

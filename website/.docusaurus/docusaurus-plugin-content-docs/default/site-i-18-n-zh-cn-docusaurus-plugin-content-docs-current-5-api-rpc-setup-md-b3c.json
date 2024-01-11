@@ -1,0 +1,27 @@
+{
+  "id": "api/rpc/setup",
+  "title": "Setup",
+  "description": "In order to use the RPC API you will need to setup the correct RPC endpoints.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/5.api/rpc/setup.md",
+  "sourceDirName": "5.api/rpc",
+  "slug": "/api/rpc/setup",
+  "permalink": "/zh-CN/api/rpc/setup",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/5.api/rpc/setup.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "setup",
+    "title": "Setup"
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "RPC Providers",
+    "permalink": "/zh-CN/api/rpc/providers"
+  },
+  "next": {
+    "title": "Access Keys",
+    "permalink": "/zh-CN/api/rpc/access-keys"
+  }
+}

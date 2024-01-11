@@ -1,0 +1,28 @@
+{
+  "id": "concepts/advanced/specification",
+  "title": "NEAR 프로토콜 사양",
+  "description": "NEAR 프로토콜 사양 및 표준은 다음 두 링크에서 확인할 수 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/1.concepts/3.advanced/specification.md",
+  "sourceDirName": "1.concepts/3.advanced",
+  "slug": "/concepts/advanced/specification",
+  "permalink": "/ko/concepts/advanced/specification",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/3.advanced/specification.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "specification",
+    "title": "NEAR 프로토콜 사양",
+    "sidebar_label": "사양"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "런타임",
+    "permalink": "/ko/concepts/basics/runtime"
+  },
+  "next": {
+    "title": "논문",
+    "permalink": "/ko/concepts/advanced/papers"
+  }
+}

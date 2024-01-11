@@ -1,0 +1,27 @@
+{
+  "id": "tutorials/examples/coin-flip",
+  "title": "Coin Flip",
+  "description": "Coin Flip is a game where the player tries to guess the outcome of a coin flip. It is one of the simplest contracts implementing random numbers.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/3.tutorials/examples/coin-flip.md",
+  "sourceDirName": "3.tutorials/examples",
+  "slug": "/tutorials/examples/coin-flip",
+  "permalink": "/zh-CN/tutorials/examples/coin-flip",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/examples/coin-flip.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "coin-flip",
+    "title": "Coin Flip"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Cross Contract Call",
+    "permalink": "/zh-CN/tutorials/examples/xcc"
+  },
+  "next": {
+    "title": "Factory",
+    "permalink": "/zh-CN/tutorials/examples/factory"
+  }
+}

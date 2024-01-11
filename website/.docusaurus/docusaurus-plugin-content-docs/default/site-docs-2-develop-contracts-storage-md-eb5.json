@@ -1,0 +1,30 @@
+{
+  "id": "develop/contracts/storage",
+  "title": "State & Data Structures",
+  "description": "Each contract has its own state (storage), which only they can modify but anyone can see.",
+  "source": "@site/../docs/2.develop/contracts/storage.md",
+  "sourceDirName": "2.develop/contracts",
+  "slug": "/develop/contracts/storage",
+  "permalink": "/develop/contracts/storage",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/contracts/storage.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1702155614,
+  "formattedLastUpdatedAt": "Dec 9, 2023",
+  "frontMatter": {
+    "id": "storage",
+    "title": "State & Data Structures"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Environment",
+    "permalink": "/develop/contracts/environment/"
+  },
+  "next": {
+    "title": "Transfers & Actions",
+    "permalink": "/develop/contracts/actions"
+  }
+}

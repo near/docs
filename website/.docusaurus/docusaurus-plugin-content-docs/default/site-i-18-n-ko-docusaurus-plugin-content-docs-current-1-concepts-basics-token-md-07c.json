@@ -1,0 +1,27 @@
+{
+  "id": "concepts/basics/tokens",
+  "title": "토큰",
+  "description": "이는 NEAR 프로토콜에서 사용되는 기본 토큰입니다. 이에 대한 여러 사용 사례가 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/1.concepts/basics/token.md",
+  "sourceDirName": "1.concepts/basics",
+  "slug": "/concepts/basics/tokens",
+  "permalink": "/ko/concepts/basics/tokens",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/basics/token.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "tokens",
+    "title": "토큰"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "토큰 전송",
+    "permalink": "/ko/concepts/data-flow/token-transfer-flow"
+  },
+  "next": {
+    "title": "토큰 손실 방지",
+    "permalink": "/ko/concepts/basics/token-loss"
+  }
+}

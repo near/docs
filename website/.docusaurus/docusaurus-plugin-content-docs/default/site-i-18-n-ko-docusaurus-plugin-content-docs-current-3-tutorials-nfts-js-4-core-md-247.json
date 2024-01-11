@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/nfts/js/core",
+  "title": "핵심",
+  "description": "이 튜토리얼에서는 핵심 표준을 스마트 컨트랙트에 구현하는 방법을 배웁니다. 처음 해보는 경우 이 레퍼지토리를 복제하고 3.enumeration 브랜치를 확인하세요.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/nfts/js/4-core.md",
+  "sourceDirName": "3.tutorials/nfts/js",
+  "slug": "/tutorials/nfts/js/core",
+  "permalink": "/ko/tutorials/nfts/js/core",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/js/4-core.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "id": "core",
+    "title": "핵심",
+    "sidebar_label": "핵심"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "열거(Enumeration)",
+    "permalink": "/ko/tutorials/nfts/js/enumeration"
+  },
+  "next": {
+    "title": "승인",
+    "permalink": "/ko/tutorials/nfts/js/approvals"
+  }
+}

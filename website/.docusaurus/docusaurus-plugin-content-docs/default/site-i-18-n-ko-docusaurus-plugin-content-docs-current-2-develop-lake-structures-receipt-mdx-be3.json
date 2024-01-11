@@ -1,0 +1,28 @@
+{
+  "id": "develop/lake/structures/receipt",
+  "title": "Receipt Structure",
+  "description": "Definition",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.develop/lake/structures/receipt.mdx",
+  "sourceDirName": "2.develop/lake/structures",
+  "slug": "/develop/lake/structures/receipt",
+  "permalink": "/ko/develop/lake/structures/receipt",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/lake/structures/receipt.mdx",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 7,
+  "frontMatter": {
+    "sidebar_position": 7,
+    "sidebar_label": "Receipt"
+  },
+  "sidebar": "indexers",
+  "previous": {
+    "title": "Transaction",
+    "permalink": "/ko/develop/lake/structures/transaction"
+  },
+  "next": {
+    "title": "ExecutionOutcome",
+    "permalink": "/ko/develop/lake/structures/execution-outcome"
+  }
+}

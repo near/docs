@@ -1,0 +1,27 @@
+{
+  "id": "develop/contracts/basics",
+  "title": "Modules, Types & Structs",
+  "description": "When writing smart contracts you will leverage common programming concepts such:",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.develop/contracts/basics.md",
+  "sourceDirName": "2.develop/contracts",
+  "slug": "/develop/contracts/basics",
+  "permalink": "/vi/develop/contracts/basics",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/contracts/basics.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "basics",
+    "title": "Modules, Types & Structs"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "⭐ Quickstart",
+    "permalink": "/vi/develop/contracts/quickstart"
+  },
+  "next": {
+    "title": "The Contract Class",
+    "permalink": "/vi/develop/contracts/anatomy"
+  }
+}

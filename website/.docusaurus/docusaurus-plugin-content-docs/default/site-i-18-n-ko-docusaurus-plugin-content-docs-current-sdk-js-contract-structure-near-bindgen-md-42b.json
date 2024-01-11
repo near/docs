@@ -1,0 +1,28 @@
+{
+  "id": "sdk/js/contract-structure/near-bindgen",
+  "title": "NearBindgen",
+  "description": "@NearBindgen({}) 데코레이터는는 유효한 NEAR 컨트랙트가 되기 위해 필요한 코드를 생성하고, 외부에서 호출할 수 있도록 하는 함수를 공개하기 위해 컨트랙트 클래스에서 사용됩니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/sdk/js/contract-structure/near-bindgen.md",
+  "sourceDirName": "sdk/js/contract-structure",
+  "slug": "/sdk/js/contract-structure/near-bindgen",
+  "permalink": "/ko/sdk/js/contract-structure/near-bindgen",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/js/contract-structure/near-bindgen.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1,
+    "title": "NearBindgen"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "시작하기",
+    "permalink": "/ko/sdk/js/get-started"
+  },
+  "next": {
+    "title": "컬렉션",
+    "permalink": "/ko/sdk/js/contract-structure/collections"
+  }
+}

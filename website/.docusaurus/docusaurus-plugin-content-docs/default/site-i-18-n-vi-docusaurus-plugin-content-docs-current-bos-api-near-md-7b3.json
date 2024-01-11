@@ -1,0 +1,27 @@
+{
+  "id": "bos/api/near",
+  "title": "Near",
+  "description": "VM provides a convenient API to interact with the NEAR blockchain. There are three methods:",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/bos/api/near.md",
+  "sourceDirName": "bos/api",
+  "slug": "/bos/api/near",
+  "permalink": "/vi/bos/api/near",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/api/near.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "near",
+    "title": "Near"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "State",
+    "permalink": "/vi/bos/api/state"
+  },
+  "next": {
+    "title": "Overview",
+    "permalink": "/vi/bos/api/social"
+  }
+}

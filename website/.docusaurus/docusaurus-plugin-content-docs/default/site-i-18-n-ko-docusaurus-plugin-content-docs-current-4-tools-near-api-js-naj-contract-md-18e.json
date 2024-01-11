@@ -1,0 +1,28 @@
+{
+  "id": "tools/near-api-js/contract",
+  "title": "컨트랙트",
+  "description": "Contract의 인스턴스를 초기화할 때, 스마트 컨트랙트에 있는 함수의 이름을 지정해야 합니다. 그러면 Contract의 새 인스턴스에는 스마트 컨트랙트 함수와 동일한 이름을 가진 메서드가 존재할 것입니다. 예를 들어, mysmartcontract_function 함수가 포함된 컨트랙트를 배포한 경우, 이는 다음과 같이 작동합니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/4.tools/near-api-js/naj-contract.md",
+  "sourceDirName": "4.tools/near-api-js",
+  "slug": "/tools/near-api-js/contract",
+  "permalink": "/ko/tools/near-api-js/contract",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/4.tools/near-api-js/naj-contract.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "contract",
+    "title": "컨트랙트",
+    "sidebar_label": "컨트랙트"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "계정",
+    "permalink": "/ko/tools/near-api-js/account"
+  },
+  "next": {
+    "title": "유틸리티",
+    "permalink": "/ko/tools/near-api-js/utils"
+  }
+}

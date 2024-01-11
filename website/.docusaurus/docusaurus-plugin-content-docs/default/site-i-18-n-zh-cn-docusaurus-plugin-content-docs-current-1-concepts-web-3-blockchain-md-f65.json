@@ -1,0 +1,28 @@
+{
+  "id": "concepts/web3/basics",
+  "title": "Blockchain basics",
+  "description": "在更为深入的了解Web3开发的复杂性之前，让我们先了解它的本质及其存在的意义。 首先，数字3意味着什么？ 万维网（或者更广义上的因特网）在多年来不断演化，可以大致被松散地分为三世代。",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/1.concepts/web3/blockchain.md",
+  "sourceDirName": "1.concepts/web3",
+  "slug": "/concepts/web3/basics",
+  "permalink": "/zh-CN/concepts/web3/basics",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/web3/blockchain.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "basics",
+    "title": "Blockchain basics",
+    "sidebar_label": "Blockchain basics"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Introduction",
+    "permalink": "/zh-CN/concepts/web3/intro"
+  },
+  "next": {
+    "title": "NEAR Protocol",
+    "permalink": "/zh-CN/concepts/web3/near"
+  }
+}

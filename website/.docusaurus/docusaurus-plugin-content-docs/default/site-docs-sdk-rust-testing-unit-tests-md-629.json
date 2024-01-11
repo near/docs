@@ -1,0 +1,30 @@
+{
+  "id": "sdk/rust/testing/unit-tests",
+  "title": "Unit Tests",
+  "description": "Testing contract functionality can be done through the cargo test framework. These tests will run with a mocked blockchain and will allow testing function calls directly without having to set up/deploy to a network and sign serialized transactions on this network.",
+  "source": "@site/../docs/sdk/rust/testing/unit-tests.md",
+  "sourceDirName": "sdk/rust/testing",
+  "slug": "/sdk/rust/testing/unit-tests",
+  "permalink": "/sdk/rust/testing/unit-tests",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/rust/testing/unit-tests.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1661952079,
+  "formattedLastUpdatedAt": "Aug 31, 2022",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "Integration Tests",
+    "permalink": "/sdk/rust/testing/integration-tests"
+  },
+  "next": {
+    "title": "Best Practices",
+    "permalink": "/sdk/rust/best-practices"
+  }
+}

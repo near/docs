@@ -1,0 +1,22 @@
+{
+  "id": "bos/dev/intro",
+  "title": "BOS Dev Tools",
+  "description": "Building, deploying, and collaborating within a new framework can be challenging. The NEAR community has created helpful workflows using new tools to simplify your development workflow building on the Blockchain Operating System (BOS).",
+  "source": "@site/../docs/bos/dev/intro.md",
+  "sourceDirName": "bos/dev",
+  "slug": "/bos/dev/intro",
+  "permalink": "/bos/dev/intro",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/dev/intro.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "codingshot",
+  "lastUpdatedAt": 1695650856,
+  "formattedLastUpdatedAt": "Sep 25, 2023",
+  "frontMatter": {
+    "id": "intro",
+    "sidebar_label": "Overview",
+    "title": "BOS Dev Tools"
+  }
+}

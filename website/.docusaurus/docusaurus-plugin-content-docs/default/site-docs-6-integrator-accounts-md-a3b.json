@@ -1,0 +1,31 @@
+{
+  "id": "integrator/accounts",
+  "title": "Accounts",
+  "description": "Introduction",
+  "source": "@site/../docs/6.integrator/accounts.md",
+  "sourceDirName": "6.integrator",
+  "slug": "/integrator/accounts",
+  "permalink": "/integrator/accounts",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/6.integrator/accounts.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1702155614,
+  "formattedLastUpdatedAt": "Dec 9, 2023",
+  "frontMatter": {
+    "id": "accounts",
+    "title": "Accounts",
+    "sidebar_label": "Accounts"
+  },
+  "sidebar": "exchanges",
+  "previous": {
+    "title": "Balance Changes",
+    "permalink": "/integrator/balance-changes"
+  },
+  "next": {
+    "title": "Create a Transaction",
+    "permalink": "/integrator/create-transactions"
+  }
+}

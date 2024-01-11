@@ -1,0 +1,32 @@
+{
+  "id": "tutorials/nfts/js/introduction",
+  "title": "NFT Zero to Hero JavaScript Edition",
+  "description": "In this Zero to Hero series, you'll find a set of tutorials that will cover every aspect of a non-fungible token (NFT) smart contract.",
+  "source": "@site/../docs/3.tutorials/nfts/js/0-intro.md",
+  "sourceDirName": "3.tutorials/nfts/js",
+  "slug": "/tutorials/nfts/js/introduction",
+  "permalink": "/tutorials/nfts/js/introduction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/js/0-intro.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1701811626,
+  "formattedLastUpdatedAt": "Dec 5, 2023",
+  "sidebarPosition": 0,
+  "frontMatter": {
+    "id": "introduction",
+    "title": "NFT Zero to Hero JavaScript Edition",
+    "sidebar_label": "Introduction"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Minecraft NFTs",
+    "permalink": "/tutorials/nfts/minecraft-nfts"
+  },
+  "next": {
+    "title": "Pre-deployed Contract",
+    "permalink": "/tutorials/nfts/js/predeployed-contract"
+  }
+}

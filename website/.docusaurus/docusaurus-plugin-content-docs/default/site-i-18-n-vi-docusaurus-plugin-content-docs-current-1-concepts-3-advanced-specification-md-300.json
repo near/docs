@@ -1,0 +1,28 @@
+{
+  "id": "concepts/advanced/specification",
+  "title": "Đặc điểm kỹ thuật NEAR Protocol",
+  "description": "Bạn có thể xem các đặc điểm kỹ thuật và tiêu chuẩn của Near Protocol tại hai nơi:",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/1.concepts/3.advanced/specification.md",
+  "sourceDirName": "1.concepts/3.advanced",
+  "slug": "/concepts/advanced/specification",
+  "permalink": "/vi/concepts/advanced/specification",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/3.advanced/specification.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "specification",
+    "title": "Đặc điểm kỹ thuật NEAR Protocol",
+    "sidebar_label": "Đặc điểm kỹ thuật"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Các video về Core Runtime",
+    "permalink": "/vi/concepts/basics/runtime"
+  },
+  "next": {
+    "title": "Các paper",
+    "permalink": "/vi/concepts/advanced/papers"
+  }
+}

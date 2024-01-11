@@ -1,0 +1,20 @@
+{
+  "id": "bos/welcome",
+  "title": "Composable Multi-Chain Apps",
+  "description": "모든 체인에 대해 완전히 탈중앙화된 애플리케이션을 빌딩하세요. 수천 명의 사용자가 게시하고 검색할 수 있습니다. 커뮤니티와 웹3의 힘을 경험해보세요.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/bos/index.md",
+  "sourceDirName": "bos",
+  "slug": "/bos/",
+  "permalink": "/ko/bos/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/index.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "welcome",
+    "title": "Composable Multi-Chain Apps",
+    "sidebar_label": "홈",
+    "hide_table_of_contents": true
+  }
+}

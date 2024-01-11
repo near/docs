@@ -1,0 +1,28 @@
+{
+  "id": "develop/integrate/welcome",
+  "title": "Build Web3 Applications",
+  "description": "Welcome! Here you will find documentation on how to build Web3 applications using NEAR. What are you planning to build?",
+  "source": "@site/../docs/2.develop/integrate/welcome.md",
+  "sourceDirName": "2.develop/integrate",
+  "slug": "/develop/integrate/welcome",
+  "permalink": "/develop/integrate/welcome",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/integrate/welcome.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1704817578,
+  "formattedLastUpdatedAt": "Jan 9, 2024",
+  "frontMatter": {
+    "id": "welcome",
+    "title": "Build Web3 Applications",
+    "sidebar_label": "Home",
+    "hide_table_of_contents": true
+  },
+  "sidebar": "integrate",
+  "next": {
+    "title": "⭐ Quickstart",
+    "permalink": "/develop/integrate/quickstart-frontend"
+  }
+}

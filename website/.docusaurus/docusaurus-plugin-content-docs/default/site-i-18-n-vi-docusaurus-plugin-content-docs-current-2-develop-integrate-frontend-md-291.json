@@ -1,0 +1,27 @@
+{
+  "id": "develop/integrate/frontend",
+  "title": "Web Frontend",
+  "description": "Once your contract is deployed it is highly likely that you will want to interact with it from a web frontend.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.develop/integrate/frontend.md",
+  "sourceDirName": "2.develop/integrate",
+  "slug": "/develop/integrate/frontend",
+  "permalink": "/vi/develop/integrate/frontend",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/integrate/frontend.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "frontend",
+    "title": "Web Frontend"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "Components & Historical data",
+    "permalink": "/vi/bos/queryapi/bos-components"
+  },
+  "next": {
+    "title": "Count on NEAR",
+    "permalink": "/vi/tutorials/examples/count-near"
+  }
+}

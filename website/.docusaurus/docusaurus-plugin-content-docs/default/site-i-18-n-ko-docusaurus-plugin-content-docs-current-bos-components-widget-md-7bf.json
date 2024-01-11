@@ -1,0 +1,27 @@
+{
+  "id": "bos/components/widgets",
+  "title": "위젯",
+  "description": "미리 정의된 구성요소인 Widget을 사용하면 기존 구성요소를 코드에 포함할 수 있으므로 구성요소를 구성하여 복잡한 애플리케이션을 만들 수 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/bos/components/widget.md",
+  "sourceDirName": "bos/components",
+  "slug": "/bos/components/widgets",
+  "permalink": "/ko/bos/components/widgets",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/components/widget.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "widgets",
+    "title": "위젯"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "Components",
+    "permalink": "/ko/bos/components"
+  },
+  "next": {
+    "title": "이미지 업로더",
+    "permalink": "/ko/bos/components/ipfs"
+  }
+}

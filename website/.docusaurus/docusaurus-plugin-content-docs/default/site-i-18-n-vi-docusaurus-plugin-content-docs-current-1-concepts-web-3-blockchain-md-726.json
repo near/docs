@@ -1,0 +1,28 @@
+{
+  "id": "concepts/web3/basics",
+  "title": "Blockchain basics",
+  "description": "Before diving deeper into the intricacies of Web 3 development, let’s explore what it is and why it exists. First of all - what does number 3 mean? The World Wide Web, or Internet in general, has evolved through the years and can be loosely divided into the 3 “generations”:",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/1.concepts/web3/blockchain.md",
+  "sourceDirName": "1.concepts/web3",
+  "slug": "/concepts/web3/basics",
+  "permalink": "/vi/concepts/web3/basics",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/web3/blockchain.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "basics",
+    "title": "Blockchain basics",
+    "sidebar_label": "Blockchain basics"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Giới thiệu",
+    "permalink": "/vi/concepts/web3/intro"
+  },
+  "next": {
+    "title": "NEAR Protocol",
+    "permalink": "/vi/concepts/web3/near"
+  }
+}

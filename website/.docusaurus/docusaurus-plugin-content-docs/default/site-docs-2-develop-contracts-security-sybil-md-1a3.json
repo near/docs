@@ -1,0 +1,30 @@
+{
+  "id": "develop/contracts/security/sybil",
+  "title": "Sybil Attacks",
+  "description": "While developing your smart contract, keep in mind that an individual can potentially create multiple NEAR accounts. This is especially relevant in ecosystems involving crowd decisions, such as DAOs.",
+  "source": "@site/../docs/2.develop/contracts/security/sybil.md",
+  "sourceDirName": "2.develop/contracts/security",
+  "slug": "/develop/contracts/security/sybil",
+  "permalink": "/develop/contracts/security/sybil",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/contracts/security/sybil.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1658166318,
+  "formattedLastUpdatedAt": "Jul 18, 2022",
+  "frontMatter": {
+    "id": "sybil",
+    "title": "Sybil Attacks"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Ensure it is the User (1yⓃ)",
+    "permalink": "/develop/contracts/security/one-yocto"
+  },
+  "next": {
+    "title": "Front Running",
+    "permalink": "/develop/contracts/security/frontrunning"
+  }
+}

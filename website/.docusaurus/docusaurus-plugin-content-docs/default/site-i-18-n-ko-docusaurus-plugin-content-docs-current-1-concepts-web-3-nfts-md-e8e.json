@@ -1,0 +1,24 @@
+{
+  "id": "concepts/web3/nfts",
+  "title": "Web2 애플리케이션을 위한 NFT",
+  "description": "Web3로 넘어가기 위한 첫 번째 단계로, 블록체인 기술을 사용하여 디지털 자산의 소유권을 분산시켜 봅시다. 이를 통해 개발자의 참여나 통제 없이 디지털 자산이 교환되고 거래되는 사용자 소유 경제를 만들 수 있습니다. 나중에 다음 단계로, 대체 가능한 토큰을 추가하는 방법에 대해서도 논의할 것입니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/1.concepts/web3/nfts.md",
+  "sourceDirName": "1.concepts/web3",
+  "slug": "/concepts/web3/nfts",
+  "permalink": "/ko/concepts/web3/nfts",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/web3/nfts.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "nfts",
+    "title": "Web2 애플리케이션을 위한 NFT",
+    "sidebar_label": "Web 2.0 앱을 위한 NFT"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "경제학",
+    "permalink": "/ko/concepts/web3/economics"
+  }
+}

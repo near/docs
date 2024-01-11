@@ -1,0 +1,28 @@
+{
+  "id": "data-availability/optimism",
+  "title": "Container diagram for optimism",
+  "description": "We have integrated with the Optimism OP stack. Utilizing the Batcher for submissions to NEAR and the proposer for submitting NEAR commitment data to Ethereum.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/data-availability/optimism.md",
+  "sourceDirName": "data-availability",
+  "slug": "/data-availability/optimism",
+  "permalink": "/vi/data-availability/optimism",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/data-availability/optimism.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "optimism",
+    "title": "Container diagram for optimism",
+    "sidebar_label": "Optimism"
+  },
+  "sidebar": "data-availability",
+  "previous": {
+    "title": "Integrations",
+    "permalink": "/vi/data-availability/integrations"
+  },
+  "next": {
+    "title": "CDK Stack",
+    "permalink": "/vi/data-availability/cdk-integration"
+  }
+}

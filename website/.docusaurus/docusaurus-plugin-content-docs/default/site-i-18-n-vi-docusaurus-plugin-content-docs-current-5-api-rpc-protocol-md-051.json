@@ -1,0 +1,27 @@
+{
+  "id": "api/rpc/protocol",
+  "title": "Protocol",
+  "description": "Ví dụ:",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/5.api/rpc/protocol.md",
+  "sourceDirName": "5.api/rpc",
+  "slug": "/api/rpc/protocol",
+  "permalink": "/vi/api/rpc/protocol",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/5.api/rpc/protocol.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "protocol",
+    "title": "Protocol"
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Gas",
+    "permalink": "/vi/api/rpc/gas"
+  },
+  "next": {
+    "title": "Network",
+    "permalink": "/vi/api/rpc/network"
+  }
+}

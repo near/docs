@@ -1,0 +1,28 @@
+{
+  "id": "bos/api/state",
+  "title": "State API",
+  "description": "VM provides a convenient API to update the state of the component. There are two methods:",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/bos/api/state.md",
+  "sourceDirName": "bos/api",
+  "slug": "/bos/api/state",
+  "permalink": "/vi/bos/api/state",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/api/state.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "state",
+    "title": "State API",
+    "sidebar_label": "State"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "Introduction",
+    "permalink": "/vi/bos/api/home"
+  },
+  "next": {
+    "title": "Near",
+    "permalink": "/vi/bos/api/near"
+  }
+}

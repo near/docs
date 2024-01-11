@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/crosswords/beginner/structs-enums",
+  "title": "NEAR 내 Rust 스마트 컨트랙트를 작성할 때 구조체와 열거형(Enums)에 대해 생각하는 방법",
+  "description": "개요",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/crosswords/02-beginner/02-structs-enums.md",
+  "sourceDirName": "3.tutorials/crosswords/02-beginner",
+  "slug": "/tutorials/crosswords/beginner/structs-enums",
+  "permalink": "/ko/tutorials/crosswords/beginner/structs-enums",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/crosswords/02-beginner/02-structs-enums.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3,
+    "sidebar_label": "구조체 및 열거형 사용",
+    "title": "NEAR 내 Rust 스마트 컨트랙트를 작성할 때 구조체와 열거형(Enums)에 대해 생각하는 방법"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "여러 퍼즐 저장",
+    "permalink": "/ko/tutorials/crosswords/beginner/collections"
+  },
+  "next": {
+    "title": "Action 및 NEAR 전송",
+    "permalink": "/ko/tutorials/crosswords/beginner/actions"
+  }
+}

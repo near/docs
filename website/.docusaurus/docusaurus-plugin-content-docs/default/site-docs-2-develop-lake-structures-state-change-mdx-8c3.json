@@ -1,0 +1,32 @@
+{
+  "id": "develop/lake/structures/state-change",
+  "title": "StateChange Structure",
+  "description": "Definition",
+  "source": "@site/../docs/2.develop/lake/structures/state_change.mdx",
+  "sourceDirName": "2.develop/lake/structures",
+  "slug": "/develop/lake/structures/state-change",
+  "permalink": "/develop/lake/structures/state-change",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/lake/structures/state_change.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1691679383,
+  "formattedLastUpdatedAt": "Aug 10, 2023",
+  "sidebarPosition": 9,
+  "frontMatter": {
+    "id": "state-change",
+    "sidebar_position": 9,
+    "sidebar_label": "StateChange"
+  },
+  "sidebar": "indexers",
+  "previous": {
+    "title": "ExecutionOutcome",
+    "permalink": "/develop/lake/structures/execution-outcome"
+  },
+  "next": {
+    "title": "Real-time Events (WebSocket)",
+    "permalink": "/tools/realtime"
+  }
+}

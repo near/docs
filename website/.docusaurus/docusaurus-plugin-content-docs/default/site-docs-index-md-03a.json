@@ -1,0 +1,22 @@
+{
+  "id": "welcome",
+  "title": "NEAR - Your Gateway to an Open Web",
+  "description": "Welcome, this is the starting point for all NEAR documentation. Learn to build and publish blockchain applications. Embrace the power of Web3.",
+  "source": "@site/../docs/index.md",
+  "sourceDirName": ".",
+  "slug": "/",
+  "permalink": "/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/index.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1704817578,
+  "formattedLastUpdatedAt": "Jan 9, 2024",
+  "frontMatter": {
+    "id": "welcome",
+    "title": "NEAR - Your Gateway to an Open Web",
+    "hide_table_of_contents": true
+  }
+}

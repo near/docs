@@ -1,0 +1,31 @@
+{
+  "id": "bos/queryapi/best-practices",
+  "title": "Indexing best practices",
+  "description": "In this article you can find suggested best practices when building blockchain indexers using QueryAPI.",
+  "source": "@site/../docs/bos/queryapi/best-practices.md",
+  "sourceDirName": "bos/queryapi",
+  "slug": "/bos/queryapi/best-practices",
+  "permalink": "/bos/queryapi/best-practices",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/queryapi/best-practices.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1704817578,
+  "formattedLastUpdatedAt": "Jan 9, 2024",
+  "frontMatter": {
+    "id": "best-practices",
+    "title": "Indexing best practices",
+    "sidebar_label": "Best Practices"
+  },
+  "sidebar": "indexers",
+  "previous": {
+    "title": "Getting Started",
+    "permalink": "/bos/community/indexers"
+  },
+  "next": {
+    "title": "Indexing Functions",
+    "permalink": "/bos/queryapi/index-functions"
+  }
+}

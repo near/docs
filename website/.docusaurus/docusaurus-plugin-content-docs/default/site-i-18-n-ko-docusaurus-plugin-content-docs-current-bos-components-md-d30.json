@@ -1,0 +1,27 @@
+{
+  "id": "bos/components",
+  "title": "Components",
+  "description": "NEAR allows you to create a decentralized frontend by writing and composing small applications known as Components.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/bos/components.md",
+  "sourceDirName": "bos",
+  "slug": "/bos/components",
+  "permalink": "/ko/bos/components",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/components.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "components",
+    "title": "Components"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "Gateways",
+    "permalink": "/ko/bos/tutorial/bos-gateway"
+  },
+  "next": {
+    "title": "위젯",
+    "permalink": "/ko/bos/components/widgets"
+  }
+}

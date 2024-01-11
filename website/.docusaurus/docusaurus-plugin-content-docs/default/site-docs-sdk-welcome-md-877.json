@@ -1,0 +1,31 @@
+{
+  "id": "sdk/welcome",
+  "title": "NEAR SDKs",
+  "description": "Explore our language-specific SDK documentation",
+  "source": "@site/../docs/sdk/welcome.md",
+  "sourceDirName": "sdk",
+  "slug": "/sdk/welcome",
+  "permalink": "/sdk/welcome",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/welcome.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1702155614,
+  "formattedLastUpdatedAt": "Dec 9, 2023",
+  "frontMatter": {
+    "id": "welcome",
+    "title": "NEAR SDKs",
+    "hide_table_of_contents": false
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "FAQ",
+    "permalink": "/tools/near-api-js/faq"
+  },
+  "next": {
+    "title": "About Rust SDK",
+    "permalink": "/sdk/rust/introduction"
+  }
+}

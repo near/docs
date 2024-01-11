@@ -1,0 +1,28 @@
+{
+  "id": "tools/explorer",
+  "title": "Explorer",
+  "description": "An Explorer allows you to quickly obtain information from the blockchain through a friendly user interface. These useful tools enable for example to:",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/4.tools/explorer.md",
+  "sourceDirName": "4.tools",
+  "slug": "/tools/explorer",
+  "permalink": "/zh-CN/tools/explorer",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/4.tools/explorer.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "explorer",
+    "title": "Explorer",
+    "sidebar_label": "Explorers"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "FastAuth SDK",
+    "permalink": "/zh-CN/tools/fastauth-sdk"
+  },
+  "next": {
+    "title": "Indexing Solutions",
+    "permalink": "/zh-CN/tools/indexing"
+  }
+}

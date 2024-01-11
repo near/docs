@@ -1,0 +1,27 @@
+{
+  "id": "develop/contracts/storage",
+  "title": "State & Data Structures",
+  "description": "Each contract has its own state (storage), which only they can modify but anyone can see.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.develop/contracts/storage.md",
+  "sourceDirName": "2.develop/contracts",
+  "slug": "/develop/contracts/storage",
+  "permalink": "/zh-CN/develop/contracts/storage",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/contracts/storage.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "storage",
+    "title": "State & Data Structures"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Environment",
+    "permalink": "/zh-CN/develop/contracts/environment/"
+  },
+  "next": {
+    "title": "Transfers & Actions",
+    "permalink": "/zh-CN/develop/contracts/actions"
+  }
+}

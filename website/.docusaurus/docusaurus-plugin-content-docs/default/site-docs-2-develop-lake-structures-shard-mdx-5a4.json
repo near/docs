@@ -1,0 +1,31 @@
+{
+  "id": "develop/lake/structures/shard",
+  "title": "Shard structure",
+  "description": "Definition",
+  "source": "@site/../docs/2.develop/lake/structures/shard.mdx",
+  "sourceDirName": "2.develop/lake/structures",
+  "slug": "/develop/lake/structures/shard",
+  "permalink": "/develop/lake/structures/shard",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/lake/structures/shard.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1693937988,
+  "formattedLastUpdatedAt": "Sep 5, 2023",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_position": 4,
+    "sidebar_label": "Shard"
+  },
+  "sidebar": "indexers",
+  "previous": {
+    "title": "Chunk",
+    "permalink": "/develop/lake/structures/chunk"
+  },
+  "next": {
+    "title": "Transaction",
+    "permalink": "/develop/lake/structures/transaction"
+  }
+}

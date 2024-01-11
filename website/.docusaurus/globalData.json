@@ -1,0 +1,1752 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/zh-CN/",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/zh-CN/",
+          "mainDocId": "welcome",
+          "docs": [
+            {
+              "id": "api/rpc/access-keys",
+              "path": "/zh-CN/api/rpc/access-keys",
+              "sidebar": "api"
+            },
+            {
+              "id": "api/rpc/block-chunk",
+              "path": "/zh-CN/api/rpc/block-chunk",
+              "sidebar": "api"
+            },
+            {
+              "id": "api/rpc/contracts",
+              "path": "/zh-CN/api/rpc/contracts",
+              "sidebar": "api"
+            },
+            {
+              "id": "api/rpc/gas",
+              "path": "/zh-CN/api/rpc/gas",
+              "sidebar": "api"
+            },
+            {
+              "id": "api/rpc/introduction",
+              "path": "/zh-CN/api/rpc/introduction",
+              "sidebar": "api"
+            },
+            {
+              "id": "api/rpc/maintenance-windows",
+              "path": "/zh-CN/api/rpc/maintenance-windows"
+            },
+            {
+              "id": "api/rpc/network",
+              "path": "/zh-CN/api/rpc/network",
+              "sidebar": "api"
+            },
+            {
+              "id": "api/rpc/protocol",
+              "path": "/zh-CN/api/rpc/protocol",
+              "sidebar": "api"
+            },
+            {
+              "id": "api/rpc/providers",
+              "path": "/zh-CN/api/rpc/providers",
+              "sidebar": "api"
+            },
+            {
+              "id": "api/rpc/setup",
+              "path": "/zh-CN/api/rpc/setup",
+              "sidebar": "api"
+            },
+            {
+              "id": "api/rpc/transactions",
+              "path": "/zh-CN/api/rpc/transactions",
+              "sidebar": "api"
+            },
+            {
+              "id": "bos/api/cache",
+              "path": "/zh-CN/bos/api/cache",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "bos/api/clipboard",
+              "path": "/zh-CN/bos/api/clipboard",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "bos/api/fetch",
+              "path": "/zh-CN/bos/api/fetch",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "bos/api/home",
+              "path": "/zh-CN/bos/api/home",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "bos/api/indexing",
+              "path": "/zh-CN/bos/api/indexing",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "bos/api/near",
+              "path": "/zh-CN/bos/api/near",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "bos/api/notifications",
+              "path": "/zh-CN/bos/api/notifications",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "bos/api/primitives",
+              "path": "/zh-CN/bos/api/primitives",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "bos/api/social",
+              "path": "/zh-CN/bos/api/social",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "bos/api/state",
+              "path": "/zh-CN/bos/api/state",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "bos/api/storage",
+              "path": "/zh-CN/bos/api/storage",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "bos/community/indexers",
+              "path": "/zh-CN/bos/community/indexers",
+              "sidebar": "indexers"
+            },
+            {
+              "id": "bos/components",
+              "path": "/zh-CN/bos/components",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "bos/components/files",
+              "path": "/zh-CN/bos/components/files",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "bos/components/home",
+              "path": "/zh-CN/bos/components/home"
+            },
+            {
+              "id": "bos/components/infinite-scroll",
+              "path": "/zh-CN/bos/components/infinite-scroll",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "bos/components/ipfs",
+              "path": "/zh-CN/bos/components/ipfs",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "bos/components/markdown",
+              "path": "/zh-CN/bos/components/markdown",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "bos/components/overlay-trigger",
+              "path": "/zh-CN/bos/components/overlay-trigger",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "bos/components/styled",
+              "path": "/zh-CN/bos/components/styled",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "bos/components/tooltip",
+              "path": "/zh-CN/bos/components/tooltip",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "bos/components/typeahead",
+              "path": "/zh-CN/bos/components/typeahead",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "bos/components/widgets",
+              "path": "/zh-CN/bos/components/widgets",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "bos/dev/bos-loader",
+              "path": "/zh-CN/bos/dev/bos-loader",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "bos/dev/intro",
+              "path": "/zh-CN/bos/dev/intro"
+            },
+            {
+              "id": "bos/dev/vscode",
+              "path": "/zh-CN/bos/dev/vscode",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "bos/overview",
+              "path": "/zh-CN/bos/overview",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "bos/queryapi/best-practices",
+              "path": "/zh-CN/bos/queryapi/best-practices",
+              "sidebar": "indexers"
+            },
+            {
+              "id": "bos/queryapi/big-query",
+              "path": "/zh-CN/bos/queryapi/big-query",
+              "sidebar": "indexers"
+            },
+            {
+              "id": "bos/queryapi/bos-components",
+              "path": "/zh-CN/bos/queryapi/bos-components",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "bos/queryapi/context-object",
+              "path": "/zh-CN/bos/queryapi/context-object",
+              "sidebar": "indexers"
+            },
+            {
+              "id": "bos/queryapi/how-it-works",
+              "path": "/zh-CN/bos/queryapi/how-it-works",
+              "sidebar": "indexers"
+            },
+            {
+              "id": "bos/queryapi/index-functions",
+              "path": "/zh-CN/bos/queryapi/index-functions",
+              "sidebar": "indexers"
+            },
+            {
+              "id": "bos/queryapi/intro",
+              "path": "/zh-CN/bos/queryapi/intro",
+              "sidebar": "indexers"
+            },
+            {
+              "id": "bos/queryapi/migrate-from-near-lake",
+              "path": "/zh-CN/bos/queryapi/migrate-from-near-lake",
+              "sidebar": "indexers"
+            },
+            {
+              "id": "bos/queryapi/query-data",
+              "path": "/zh-CN/bos/queryapi/query-data",
+              "sidebar": "indexers"
+            },
+            {
+              "id": "bos/tutorial/bos-gateway",
+              "path": "/zh-CN/bos/tutorial/bos-gateway",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "bos/tutorial/ds-components",
+              "path": "/zh-CN/bos/tutorial/ds-components",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "bos/tutorial/ethers-js",
+              "path": "/zh-CN/bos/tutorial/ethers-js",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "bos/tutorial/ethers-js-best-practices",
+              "path": "/zh-CN/bos/tutorial/ethers-js-best-practices",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "bos/tutorial/indexer-tutorials/feed-indexer",
+              "path": "/zh-CN/bos/tutorial/indexer-tutorials/feed-indexer",
+              "sidebar": "indexers"
+            },
+            {
+              "id": "bos/tutorial/indexer-tutorials/hype-indexer",
+              "path": "/zh-CN/bos/tutorial/indexer-tutorials/hype-indexer",
+              "sidebar": "indexers"
+            },
+            {
+              "id": "bos/tutorial/indexer-tutorials/nft-indexer",
+              "path": "/zh-CN/bos/tutorial/indexer-tutorials/nft-indexer",
+              "sidebar": "indexers"
+            },
+            {
+              "id": "bos/tutorial/indexer-tutorials/posts-indexer",
+              "path": "/zh-CN/bos/tutorial/indexer-tutorials/posts-indexer",
+              "sidebar": "indexers"
+            },
+            {
+              "id": "bos/tutorial/interaction",
+              "path": "/zh-CN/bos/tutorial/interaction",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "bos/tutorial/lido",
+              "path": "/zh-CN/bos/tutorial/lido",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "bos/tutorial/push-notifications",
+              "path": "/zh-CN/bos/tutorial/push-notifications",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "bos/tutorial/queryapi-websockets",
+              "path": "/zh-CN/bos/tutorial/queryapi-websockets",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "bos/tutorial/quickstart",
+              "path": "/zh-CN/bos/tutorial/quickstart",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "bos/tutorial/using-iframes",
+              "path": "/zh-CN/bos/tutorial/using-iframes",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "bos/welcome",
+              "path": "/zh-CN/bos/"
+            },
+            {
+              "id": "concepts/advanced/indexers",
+              "path": "/zh-CN/concepts/advanced/indexers",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/advanced/near-indexer-framework",
+              "path": "/zh-CN/concepts/advanced/near-indexer-framework",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/advanced/near-lake-framework",
+              "path": "/zh-CN/concepts/advanced/near-lake-framework",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/advanced/papers",
+              "path": "/zh-CN/concepts/advanced/papers",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/advanced/specification",
+              "path": "/zh-CN/concepts/advanced/specification",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/advanced/vm",
+              "path": "/zh-CN/concepts/advanced/vm"
+            },
+            {
+              "id": "concepts/basics/accounts/access-keys",
+              "path": "/zh-CN/concepts/basics/accounts/access-keys",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/basics/accounts/account-id",
+              "path": "/zh-CN/concepts/basics/accounts/account-id",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/basics/accounts/creating-accounts",
+              "path": "/zh-CN/concepts/basics/accounts/creating-accounts",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/basics/accounts/model",
+              "path": "/zh-CN/concepts/basics/accounts/model",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/basics/accounts/smartcontract",
+              "path": "/zh-CN/concepts/basics/accounts/smartcontract",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/basics/accounts/state",
+              "path": "/zh-CN/concepts/basics/accounts/state",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/basics/actors",
+              "path": "/zh-CN/concepts/basics/actors"
+            },
+            {
+              "id": "concepts/basics/epoch",
+              "path": "/zh-CN/concepts/basics/epoch",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/basics/networks",
+              "path": "/zh-CN/concepts/basics/networks",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/basics/overview",
+              "path": "/zh-CN/concepts/basics/overview"
+            },
+            {
+              "id": "concepts/basics/protocol",
+              "path": "/zh-CN/concepts/basics/protocol",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/basics/runtime",
+              "path": "/zh-CN/concepts/basics/runtime",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/basics/technical_stuff",
+              "path": "/zh-CN/concepts/basics/technical_stuff"
+            },
+            {
+              "id": "concepts/basics/token-loss",
+              "path": "/zh-CN/concepts/basics/token-loss",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/basics/tokens",
+              "path": "/zh-CN/concepts/basics/tokens",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/basics/transactions/gas",
+              "path": "/zh-CN/concepts/basics/transactions/gas",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/basics/transactions/gas-advanced",
+              "path": "/zh-CN/concepts/basics/transactions/gas-advanced",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/basics/transactions/overview",
+              "path": "/zh-CN/concepts/basics/transactions/overview",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/basics/validators",
+              "path": "/zh-CN/concepts/basics/validators",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/data-flow/data-storage",
+              "path": "/zh-CN/concepts/data-flow/data-storage",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/data-flow/near-data-flow",
+              "path": "/zh-CN/concepts/data-flow/near-data-flow",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/data-flow/token-transfer-flow",
+              "path": "/zh-CN/concepts/data-flow/token-transfer-flow",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/storage/data-storage",
+              "path": "/zh-CN/concepts/storage/data-storage",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/storage/storage-solutions",
+              "path": "/zh-CN/concepts/storage/storage-solutions",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/storage/storage-staking",
+              "path": "/zh-CN/concepts/storage/storage-staking",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/web3/basics",
+              "path": "/zh-CN/concepts/web3/basics",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/web3/economics",
+              "path": "/zh-CN/concepts/web3/economics",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/web3/intro",
+              "path": "/zh-CN/concepts/web3/intro",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/web3/near",
+              "path": "/zh-CN/concepts/web3/near",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/web3/nfts",
+              "path": "/zh-CN/concepts/web3/nfts",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/welcome",
+              "path": "/zh-CN/concepts/welcome",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "data-availability/blob-contract",
+              "path": "/zh-CN/data-availability/blob-contract",
+              "sidebar": "data-availability"
+            },
+            {
+              "id": "data-availability/cdk-integration",
+              "path": "/zh-CN/data-availability/cdk-integration",
+              "sidebar": "data-availability"
+            },
+            {
+              "id": "data-availability/integrations",
+              "path": "/zh-CN/data-availability/integrations",
+              "sidebar": "data-availability"
+            },
+            {
+              "id": "data-availability/light-client",
+              "path": "/zh-CN/data-availability/light-client",
+              "sidebar": "data-availability"
+            },
+            {
+              "id": "data-availability/optimism",
+              "path": "/zh-CN/data-availability/optimism",
+              "sidebar": "data-availability"
+            },
+            {
+              "id": "data-availability/rpc",
+              "path": "/zh-CN/data-availability/rpc",
+              "sidebar": "data-availability"
+            },
+            {
+              "id": "data-availability/welcome",
+              "path": "/zh-CN/data-availability/welcome",
+              "sidebar": "data-availability"
+            },
+            {
+              "id": "develop/contracts/actions",
+              "path": "/zh-CN/develop/contracts/actions",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "develop/contracts/anatomy",
+              "path": "/zh-CN/develop/contracts/anatomy",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "develop/contracts/basics",
+              "path": "/zh-CN/develop/contracts/basics",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "develop/contracts/crosscontract",
+              "path": "/zh-CN/develop/contracts/crosscontract",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "develop/contracts/environment/environment",
+              "path": "/zh-CN/develop/contracts/environment/",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "develop/contracts/introduction",
+              "path": "/zh-CN/develop/contracts/introduction"
+            },
+            {
+              "id": "develop/contracts/quickstart",
+              "path": "/zh-CN/develop/contracts/quickstart",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "develop/contracts/security/audits",
+              "path": "/zh-CN/develop/contracts/security/audits",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "develop/contracts/security/bounty",
+              "path": "/zh-CN/develop/contracts/security/bounty",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "develop/contracts/security/callbacks",
+              "path": "/zh-CN/develop/contracts/security/callbacks",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "develop/contracts/security/checklist",
+              "path": "/zh-CN/develop/contracts/security/checklist",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "develop/contracts/security/frontrunning",
+              "path": "/zh-CN/develop/contracts/security/frontrunning",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "develop/contracts/security/one-yocto",
+              "path": "/zh-CN/develop/contracts/security/one-yocto",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "develop/contracts/security/random",
+              "path": "/zh-CN/develop/contracts/security/random",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "develop/contracts/security/reentrancy",
+              "path": "/zh-CN/develop/contracts/security/reentrancy",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "develop/contracts/security/storage",
+              "path": "/zh-CN/develop/contracts/security/storage",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "develop/contracts/security/sybil",
+              "path": "/zh-CN/develop/contracts/security/sybil",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "develop/contracts/security/welcome",
+              "path": "/zh-CN/develop/contracts/security/welcome",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "develop/contracts/serialization",
+              "path": "/zh-CN/develop/contracts/serialization",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "develop/contracts/storage",
+              "path": "/zh-CN/develop/contracts/storage",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "develop/contracts/welcome",
+              "path": "/zh-CN/develop/contracts/welcome",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "develop/contracts/whatisacontract",
+              "path": "/zh-CN/develop/contracts/whatisacontract",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "develop/deploy",
+              "path": "/zh-CN/develop/deploy",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "develop/github-overview",
+              "path": "/zh-CN/develop/github-overview"
+            },
+            {
+              "id": "develop/integrate/backend-login",
+              "path": "/zh-CN/develop/integrate/backend-login",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "develop/integrate/frontend",
+              "path": "/zh-CN/develop/integrate/frontend",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "develop/integrate/quickstart-frontend",
+              "path": "/zh-CN/develop/integrate/quickstart-frontend",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "develop/integrate/rpc",
+              "path": "/zh-CN/develop/integrate/rpc"
+            },
+            {
+              "id": "develop/integrate/welcome",
+              "path": "/zh-CN/develop/integrate/welcome",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "develop/lake/primitives",
+              "path": "/zh-CN/develop/lake/primitives",
+              "sidebar": "indexers"
+            },
+            {
+              "id": "develop/lake/structures/block",
+              "path": "/zh-CN/develop/lake/structures/block",
+              "sidebar": "indexers"
+            },
+            {
+              "id": "develop/lake/structures/chunk",
+              "path": "/zh-CN/develop/lake/structures/chunk",
+              "sidebar": "indexers"
+            },
+            {
+              "id": "develop/lake/structures/execution-outcome",
+              "path": "/zh-CN/develop/lake/structures/execution-outcome",
+              "sidebar": "indexers"
+            },
+            {
+              "id": "develop/lake/structures/receipt",
+              "path": "/zh-CN/develop/lake/structures/receipt",
+              "sidebar": "indexers"
+            },
+            {
+              "id": "develop/lake/structures/shard",
+              "path": "/zh-CN/develop/lake/structures/shard",
+              "sidebar": "indexers"
+            },
+            {
+              "id": "develop/lake/structures/state-change",
+              "path": "/zh-CN/develop/lake/structures/state-change",
+              "sidebar": "indexers"
+            },
+            {
+              "id": "develop/lake/structures/toc",
+              "path": "/zh-CN/develop/lake/structures/toc",
+              "sidebar": "indexers"
+            },
+            {
+              "id": "develop/lake/structures/transaction",
+              "path": "/zh-CN/develop/lake/structures/transaction",
+              "sidebar": "indexers"
+            },
+            {
+              "id": "develop/lock",
+              "path": "/zh-CN/develop/lock",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "develop/monitor",
+              "path": "/zh-CN/develop/monitor",
+              "sidebar": "indexers"
+            },
+            {
+              "id": "develop/prerequisites",
+              "path": "/zh-CN/develop/prerequisites"
+            },
+            {
+              "id": "develop/quickstart-guide",
+              "path": "/zh-CN/develop/quickstart-guide"
+            },
+            {
+              "id": "develop/relayers/build-relayer",
+              "path": "/zh-CN/develop/relayers/build-relayer",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "develop/relevant-contracts/dao",
+              "path": "/zh-CN/develop/relevant-contracts/dao",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "develop/relevant-contracts/ft",
+              "path": "/zh-CN/develop/relevant-contracts/ft",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "develop/relevant-contracts/nft",
+              "path": "/zh-CN/develop/relevant-contracts/nft",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "develop/relevant-contracts/oracles",
+              "path": "/zh-CN/develop/relevant-contracts/oracles",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "develop/testing/integration-test",
+              "path": "/zh-CN/develop/testing/integration-test",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "develop/testing/introduction",
+              "path": "/zh-CN/develop/testing/introduction",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "develop/testing/kurtosis-localnet",
+              "path": "/zh-CN/develop/testing/kurtosis-localnet",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "develop/testing/unit-test",
+              "path": "/zh-CN/develop/testing/unit-test",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "develop/testing/workspaces-migration",
+              "path": "/zh-CN/develop/testing/workspaces-migration",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "develop/upgrade",
+              "path": "/zh-CN/develop/upgrade",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "develop/welcome",
+              "path": "/zh-CN/develop/welcome"
+            },
+            {
+              "id": "integrator/accounts",
+              "path": "/zh-CN/integrator/accounts",
+              "sidebar": "exchanges"
+            },
+            {
+              "id": "integrator/balance-changes",
+              "path": "/zh-CN/integrator/balance-changes",
+              "sidebar": "exchanges"
+            },
+            {
+              "id": "integrator/create-transactions",
+              "path": "/zh-CN/integrator/create-transactions",
+              "sidebar": "exchanges"
+            },
+            {
+              "id": "integrator/errors/error-implementation",
+              "path": "/zh-CN/integrator/errors/error-implementation",
+              "sidebar": "exchanges"
+            },
+            {
+              "id": "integrator/errors/introduction",
+              "path": "/zh-CN/integrator/errors/introduction",
+              "sidebar": "exchanges"
+            },
+            {
+              "id": "integrator/errors/token-loss",
+              "path": "/zh-CN/integrator/errors/token-loss",
+              "sidebar": "exchanges"
+            },
+            {
+              "id": "integrator/exchange-integration",
+              "path": "/zh-CN/integrator/exchange-integration",
+              "sidebar": "exchanges"
+            },
+            {
+              "id": "integrator/faq",
+              "path": "/zh-CN/integrator/faq",
+              "sidebar": "exchanges"
+            },
+            {
+              "id": "integrator/fungible-tokens",
+              "path": "/zh-CN/integrator/fungible-tokens",
+              "sidebar": "exchanges"
+            },
+            {
+              "id": "integrator/implicit-accounts",
+              "path": "/zh-CN/integrator/implicit-accounts",
+              "sidebar": "exchanges"
+            },
+            {
+              "id": "primitives/dao/additional-resources",
+              "path": "/zh-CN/primitives/dao/additional-resources"
+            },
+            {
+              "id": "primitives/dao/interacting/bos",
+              "path": "/zh-CN/primitives/dao/interacting/bos",
+              "sidebar": "primitives"
+            },
+            {
+              "id": "primitives/dao/interacting/near-cli",
+              "path": "/zh-CN/primitives/dao/interacting/near-cli",
+              "sidebar": "primitives"
+            },
+            {
+              "id": "primitives/dao/interacting/smart-contract",
+              "path": "/zh-CN/primitives/dao/interacting/smart-contract",
+              "sidebar": "primitives"
+            },
+            {
+              "id": "primitives/dao/interacting/web-app",
+              "path": "/zh-CN/primitives/dao/interacting/web-app",
+              "sidebar": "primitives"
+            },
+            {
+              "id": "primitives/dao/introduction",
+              "path": "/zh-CN/primitives/dao/introduction",
+              "sidebar": "primitives"
+            },
+            {
+              "id": "primitives/dex/additional-resources",
+              "path": "/zh-CN/primitives/dex/additional-resources"
+            },
+            {
+              "id": "primitives/dex/interacting/bos",
+              "path": "/zh-CN/primitives/dex/interacting/bos",
+              "sidebar": "primitives"
+            },
+            {
+              "id": "primitives/dex/interacting/near-cli",
+              "path": "/zh-CN/primitives/dex/interacting/near-cli",
+              "sidebar": "primitives"
+            },
+            {
+              "id": "primitives/dex/interacting/smart-contract",
+              "path": "/zh-CN/primitives/dex/interacting/smart-contract",
+              "sidebar": "primitives"
+            },
+            {
+              "id": "primitives/dex/interacting/web-app",
+              "path": "/zh-CN/primitives/dex/interacting/web-app",
+              "sidebar": "primitives"
+            },
+            {
+              "id": "primitives/dex/introduction",
+              "path": "/zh-CN/primitives/dex/introduction",
+              "sidebar": "primitives"
+            },
+            {
+              "id": "primitives/ft/additional-resources",
+              "path": "/zh-CN/primitives/ft/additional-resources",
+              "sidebar": "primitives"
+            },
+            {
+              "id": "primitives/ft/interacting/bos",
+              "path": "/zh-CN/primitives/ft/interacting/bos",
+              "sidebar": "primitives"
+            },
+            {
+              "id": "primitives/ft/interacting/near-cli",
+              "path": "/zh-CN/primitives/ft/interacting/near-cli",
+              "sidebar": "primitives"
+            },
+            {
+              "id": "primitives/ft/interacting/smart-contract",
+              "path": "/zh-CN/primitives/ft/interacting/smart-contract",
+              "sidebar": "primitives"
+            },
+            {
+              "id": "primitives/ft/interacting/web-app",
+              "path": "/zh-CN/primitives/ft/interacting/web-app",
+              "sidebar": "primitives"
+            },
+            {
+              "id": "primitives/ft/introduction",
+              "path": "/zh-CN/primitives/ft/introduction",
+              "sidebar": "primitives"
+            },
+            {
+              "id": "primitives/linkdrop/interacting/bos",
+              "path": "/zh-CN/primitives/linkdrop/interacting/bos",
+              "sidebar": "primitives"
+            },
+            {
+              "id": "primitives/linkdrop/interacting/near-cli",
+              "path": "/zh-CN/primitives/linkdrop/interacting/near-cli",
+              "sidebar": "primitives"
+            },
+            {
+              "id": "primitives/linkdrop/interacting/web-app",
+              "path": "/zh-CN/primitives/linkdrop/interacting/web-app",
+              "sidebar": "primitives"
+            },
+            {
+              "id": "primitives/linkdrop/introduction",
+              "path": "/zh-CN/primitives/linkdrop/introduction",
+              "sidebar": "primitives"
+            },
+            {
+              "id": "primitives/nft/additional-resources",
+              "path": "/zh-CN/primitives/nft/additional-resources",
+              "sidebar": "primitives"
+            },
+            {
+              "id": "primitives/nft/interacting/bos",
+              "path": "/zh-CN/primitives/nft/interacting/bos",
+              "sidebar": "primitives"
+            },
+            {
+              "id": "primitives/nft/interacting/near-cli",
+              "path": "/zh-CN/primitives/nft/interacting/near-cli",
+              "sidebar": "primitives"
+            },
+            {
+              "id": "primitives/nft/interacting/smart-contract",
+              "path": "/zh-CN/primitives/nft/interacting/smart-contract",
+              "sidebar": "primitives"
+            },
+            {
+              "id": "primitives/nft/interacting/web-app",
+              "path": "/zh-CN/primitives/nft/interacting/web-app",
+              "sidebar": "primitives"
+            },
+            {
+              "id": "primitives/nft/introduction",
+              "path": "/zh-CN/primitives/nft/introduction",
+              "sidebar": "primitives"
+            },
+            {
+              "id": "primitives/welcome",
+              "path": "/zh-CN/primitives/welcome",
+              "sidebar": "primitives"
+            },
+            {
+              "id": "sdk/js/building/basics",
+              "path": "/zh-CN/sdk/js/building/basics",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/js/building/prototyping",
+              "path": "/zh-CN/sdk/js/building/prototyping",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/js/building/reproducible-builds",
+              "path": "/zh-CN/sdk/js/building/reproducible-builds",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/js/cli/cli",
+              "path": "/zh-CN/sdk/js/cli/",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/js/contract-interface/payable-methods",
+              "path": "/zh-CN/sdk/js/contract-interface/payable-methods",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/js/contract-interface/private-methods",
+              "path": "/zh-CN/sdk/js/contract-interface/private-methods",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/js/contract-interface/public-methods",
+              "path": "/zh-CN/sdk/js/contract-interface/public-methods",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/js/contract-structure/collections",
+              "path": "/zh-CN/sdk/js/contract-structure/collections",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/js/contract-structure/near-bindgen",
+              "path": "/zh-CN/sdk/js/contract-structure/near-bindgen",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/js/contract-structure/nesting",
+              "path": "/zh-CN/sdk/js/contract-structure/nesting"
+            },
+            {
+              "id": "sdk/js/cross-contract/callbacks",
+              "path": "/zh-CN/sdk/js/cross-contract/callbacks",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/js/get-started",
+              "path": "/zh-CN/sdk/js/get-started",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/js/introduction",
+              "path": "/zh-CN/sdk/js/introduction",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/js/promises/create-account",
+              "path": "/zh-CN/sdk/js/promises/create-account",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/js/promises/deploy-contract",
+              "path": "/zh-CN/sdk/js/promises/deploy-contract",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/js/promises/intro",
+              "path": "/zh-CN/sdk/js/promises/intro",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/js/promises/token-tx",
+              "path": "/zh-CN/sdk/js/promises/token-tx",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/js/testing/integration-tests",
+              "path": "/zh-CN/sdk/js/testing/integration-tests",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/js/testing/unit-tests",
+              "path": "/zh-CN/sdk/js/testing/unit-tests",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/rust/best-practices",
+              "path": "/zh-CN/sdk/rust/best-practices",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/rust/building/basics",
+              "path": "/zh-CN/sdk/rust/building/basics",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/rust/building/post-processing",
+              "path": "/zh-CN/sdk/rust/building/post-processing",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/rust/building/prototyping",
+              "path": "/zh-CN/sdk/rust/building/prototyping",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/rust/building/reproducible-builds",
+              "path": "/zh-CN/sdk/rust/building/reproducible-builds",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/rust/contract-interface/contract-mutability",
+              "path": "/zh-CN/sdk/rust/contract-interface/contract-mutability",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/rust/contract-interface/payable-methods",
+              "path": "/zh-CN/sdk/rust/contract-interface/payable-methods",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/rust/contract-interface/private-methods",
+              "path": "/zh-CN/sdk/rust/contract-interface/private-methods",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/rust/contract-interface/public-methods",
+              "path": "/zh-CN/sdk/rust/contract-interface/public-methods",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/rust/contract-interface/serialization-interface",
+              "path": "/zh-CN/sdk/rust/contract-interface/serialization-interface",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/rust/contract-size",
+              "path": "/zh-CN/sdk/rust/contract-size",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/rust/contract-structure/collections",
+              "path": "/zh-CN/sdk/rust/contract-structure/collections",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/rust/contract-structure/near-bindgen",
+              "path": "/zh-CN/sdk/rust/contract-structure/near-bindgen",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/rust/contract-structure/nesting",
+              "path": "/zh-CN/sdk/rust/contract-structure/nesting",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/rust/cross-contract/callbacks",
+              "path": "/zh-CN/sdk/rust/cross-contract/callbacks",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/rust/get-started",
+              "path": "/zh-CN/sdk/rust/get-started",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/rust/introduction",
+              "path": "/zh-CN/sdk/rust/introduction",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/rust/promises/create-account",
+              "path": "/zh-CN/sdk/rust/promises/create-account",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/rust/promises/deploy-contract",
+              "path": "/zh-CN/sdk/rust/promises/deploy-contract",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/rust/promises/intro",
+              "path": "/zh-CN/sdk/rust/promises/intro",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/rust/promises/token-tx",
+              "path": "/zh-CN/sdk/rust/promises/token-tx",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/rust/testing/integration-tests",
+              "path": "/zh-CN/sdk/rust/testing/integration-tests",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/rust/testing/unit-tests",
+              "path": "/zh-CN/sdk/rust/testing/unit-tests",
+              "sidebar": "tools"
+            },
+            {
+              "id": "sdk/welcome",
+              "path": "/zh-CN/sdk/welcome",
+              "sidebar": "tools"
+            },
+            {
+              "id": "social/contract",
+              "path": "/zh-CN/social/contract"
+            },
+            {
+              "id": "social/intro",
+              "path": "/zh-CN/social/intro"
+            },
+            {
+              "id": "social/standards",
+              "path": "/zh-CN/social/standards"
+            },
+            {
+              "id": "social/tech",
+              "path": "/zh-CN/social/tech"
+            },
+            {
+              "id": "tools/explorer",
+              "path": "/zh-CN/tools/explorer",
+              "sidebar": "tools"
+            },
+            {
+              "id": "tools/fastauth-sdk",
+              "path": "/zh-CN/tools/fastauth-sdk",
+              "sidebar": "tools"
+            },
+            {
+              "id": "tools/indexer-for-explorer",
+              "path": "/zh-CN/tools/indexer-for-explorer",
+              "sidebar": "indexers"
+            },
+            {
+              "id": "tools/indexing",
+              "path": "/zh-CN/tools/indexing",
+              "sidebar": "indexers"
+            },
+            {
+              "id": "tools/near-api-js/account",
+              "path": "/zh-CN/tools/near-api-js/account",
+              "sidebar": "tools"
+            },
+            {
+              "id": "tools/near-api-js/contract",
+              "path": "/zh-CN/tools/near-api-js/contract",
+              "sidebar": "tools"
+            },
+            {
+              "id": "tools/near-api-js/cookbook",
+              "path": "/zh-CN/tools/near-api-js/cookbook"
+            },
+            {
+              "id": "tools/near-api-js/faq",
+              "path": "/zh-CN/tools/near-api-js/faq",
+              "sidebar": "tools"
+            },
+            {
+              "id": "tools/near-api-js/quick-reference",
+              "path": "/zh-CN/tools/near-api-js/quick-reference",
+              "sidebar": "tools"
+            },
+            {
+              "id": "tools/near-api-js/utils",
+              "path": "/zh-CN/tools/near-api-js/utils",
+              "sidebar": "tools"
+            },
+            {
+              "id": "tools/near-api-js/wallet",
+              "path": "/zh-CN/tools/near-api-js/wallet",
+              "sidebar": "tools"
+            },
+            {
+              "id": "tools/near-cli",
+              "path": "/zh-CN/tools/near-cli",
+              "sidebar": "tools"
+            },
+            {
+              "id": "tools/near-cli-rs",
+              "path": "/zh-CN/tools/near-cli-rs",
+              "sidebar": "tools"
+            },
+            {
+              "id": "tools/near-lake",
+              "path": "/zh-CN/tools/near-lake",
+              "sidebar": "indexers"
+            },
+            {
+              "id": "tools/realtime",
+              "path": "/zh-CN/tools/realtime",
+              "sidebar": "indexers"
+            },
+            {
+              "id": "tools/remix-ide-plugin",
+              "path": "/zh-CN/tools/remix-ide-plugin"
+            },
+            {
+              "id": "tools/usecases",
+              "path": "/zh-CN/tools/usecases"
+            },
+            {
+              "id": "tools/wallet-selector",
+              "path": "/zh-CN/tools/wallet-selector",
+              "sidebar": "tools"
+            },
+            {
+              "id": "tools/welcome",
+              "path": "/zh-CN/tools/welcome",
+              "sidebar": "tools"
+            },
+            {
+              "id": "tutorials/crosswords/basics/add-functions-call",
+              "path": "/zh-CN/tutorials/crosswords/basics/add-functions-call",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/crosswords/basics/hashing-and-unit-tests",
+              "path": "/zh-CN/tutorials/crosswords/basics/hashing-and-unit-tests",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/crosswords/basics/overview",
+              "path": "/zh-CN/tutorials/crosswords/basics/overview",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/crosswords/basics/set-up-skeleton",
+              "path": "/zh-CN/tutorials/crosswords/basics/set-up-skeleton",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/crosswords/basics/simple-frontend",
+              "path": "/zh-CN/tutorials/crosswords/basics/simple-frontend",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/crosswords/beginner/actions",
+              "path": "/zh-CN/tutorials/crosswords/beginner/actions",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/crosswords/beginner/adding-a-puzzle",
+              "path": "/zh-CN/tutorials/crosswords/beginner/adding-a-puzzle",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/crosswords/beginner/collections",
+              "path": "/zh-CN/tutorials/crosswords/beginner/collections",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/crosswords/beginner/logging-in",
+              "path": "/zh-CN/tutorials/crosswords/beginner/logging-in",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/crosswords/beginner/logging-in-implementation",
+              "path": "/zh-CN/tutorials/crosswords/beginner/logging-in-implementation",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/crosswords/beginner/overview",
+              "path": "/zh-CN/tutorials/crosswords/beginner/overview",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/crosswords/beginner/structs-enums",
+              "path": "/zh-CN/tutorials/crosswords/beginner/structs-enums",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/crosswords/intermediate/access-key-solution",
+              "path": "/zh-CN/tutorials/crosswords/intermediate/access-key-solution",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/crosswords/intermediate/base64vecu8",
+              "path": "/zh-CN/tutorials/crosswords/intermediate/base64vecu8",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/crosswords/intermediate/cross-contract-calls",
+              "path": "/zh-CN/tutorials/crosswords/intermediate/cross-contract-calls",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/crosswords/intermediate/linkdrop",
+              "path": "/zh-CN/tutorials/crosswords/intermediate/linkdrop",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/crosswords/intermediate/overview",
+              "path": "/zh-CN/tutorials/crosswords/intermediate/overview",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/crosswords/intermediate/use-seed-phrase",
+              "path": "/zh-CN/tutorials/crosswords/intermediate/use-seed-phrase",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/examples/advanced-xcc",
+              "path": "/zh-CN/tutorials/examples/advanced-xcc",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/examples/blockvote-js",
+              "path": "/zh-CN/tutorials/examples/blockvote-js"
+            },
+            {
+              "id": "tutorials/examples/coin-flip",
+              "path": "/zh-CN/tutorials/examples/coin-flip",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/examples/count-near",
+              "path": "/zh-CN/tutorials/examples/count-near",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "tutorials/examples/donation",
+              "path": "/zh-CN/tutorials/examples/donation",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "tutorials/examples/escrow",
+              "path": "/zh-CN/tutorials/examples/escrow"
+            },
+            {
+              "id": "tutorials/examples/factory",
+              "path": "/zh-CN/tutorials/examples/factory",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/examples/frontend-multiple-contracts",
+              "path": "/zh-CN/tutorials/examples/frontend-multiple-contracts",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "tutorials/examples/guest-book",
+              "path": "/zh-CN/tutorials/examples/guest-book",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/examples/hello-near",
+              "path": "/zh-CN/tutorials/examples/hello-near"
+            },
+            {
+              "id": "tutorials/examples/update-contract-migrate-state",
+              "path": "/zh-CN/tutorials/examples/update-contract-migrate-state",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/examples/xcc",
+              "path": "/zh-CN/tutorials/examples/xcc",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/fts/circulating-supply",
+              "path": "/zh-CN/tutorials/fts/circulating-supply",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/fts/defining-a-token",
+              "path": "/zh-CN/tutorials/fts/defining-a-token",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/fts/introduction",
+              "path": "/zh-CN/tutorials/fts/introduction",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/fts/marketplace",
+              "path": "/zh-CN/tutorials/fts/marketplace",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/fts/predeployed-contract",
+              "path": "/zh-CN/tutorials/fts/predeployed-contract",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/fts/registering-accounts",
+              "path": "/zh-CN/tutorials/fts/registering-accounts",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/fts/simple-fts",
+              "path": "/zh-CN/tutorials/fts/simple-fts",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/fts/skeleton",
+              "path": "/zh-CN/tutorials/fts/skeleton",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/fts/transfers",
+              "path": "/zh-CN/tutorials/fts/transfers",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/indexer/credentials",
+              "path": "/zh-CN/tutorials/indexer/credentials",
+              "sidebar": "indexers"
+            },
+            {
+              "id": "tutorials/indexer/js-lake-indexer",
+              "path": "/zh-CN/tutorials/indexer/js-lake-indexer",
+              "sidebar": "indexers"
+            },
+            {
+              "id": "tutorials/indexer/lake-start-options",
+              "path": "/zh-CN/tutorials/indexer/lake-start-options",
+              "sidebar": "indexers"
+            },
+            {
+              "id": "tutorials/indexer/migrating-to-near-lake-framework",
+              "path": "/zh-CN/tutorials/indexer/migrating-to-near-lake-framework",
+              "sidebar": "indexers"
+            },
+            {
+              "id": "tutorials/indexer/near-lake-state-changes-indexer",
+              "path": "/zh-CN/tutorials/indexer/near-lake-state-changes-indexer",
+              "sidebar": "indexers"
+            },
+            {
+              "id": "tutorials/indexer/nft-indexer",
+              "path": "/zh-CN/tutorials/indexer/nft-indexer",
+              "sidebar": "indexers"
+            },
+            {
+              "id": "tutorials/indexer/python-lake-indexer",
+              "path": "/zh-CN/tutorials/indexer/python-lake-indexer",
+              "sidebar": "indexers"
+            },
+            {
+              "id": "tutorials/indexer/python-nft-indexer",
+              "path": "/zh-CN/tutorials/indexer/python-nft-indexer",
+              "sidebar": "indexers"
+            },
+            {
+              "id": "tutorials/indexer/run-lake-indexer",
+              "path": "/zh-CN/tutorials/indexer/run-lake-indexer",
+              "sidebar": "indexers"
+            },
+            {
+              "id": "tutorials/nfts/approvals",
+              "path": "/zh-CN/tutorials/nfts/approvals",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/nfts/core",
+              "path": "/zh-CN/tutorials/nfts/core",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/nfts/enumeration",
+              "path": "/zh-CN/tutorials/nfts/enumeration",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/nfts/events",
+              "path": "/zh-CN/tutorials/nfts/events",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/nfts/introduction",
+              "path": "/zh-CN/tutorials/nfts/introduction",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/nfts/js/approvals",
+              "path": "/zh-CN/tutorials/nfts/js/approvals",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/nfts/js/core",
+              "path": "/zh-CN/tutorials/nfts/js/core",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/nfts/js/enumeration",
+              "path": "/zh-CN/tutorials/nfts/js/enumeration",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/nfts/js/events",
+              "path": "/zh-CN/tutorials/nfts/js/events",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/nfts/js/introduction",
+              "path": "/zh-CN/tutorials/nfts/js/introduction",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/nfts/js/marketplace",
+              "path": "/zh-CN/tutorials/nfts/js/marketplace",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/nfts/js/minting",
+              "path": "/zh-CN/tutorials/nfts/js/minting",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/nfts/js/predeployed-contract",
+              "path": "/zh-CN/tutorials/nfts/js/predeployed-contract",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/nfts/js/royalty",
+              "path": "/zh-CN/tutorials/nfts/js/royalty",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/nfts/js/skeleton",
+              "path": "/zh-CN/tutorials/nfts/js/skeleton",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/nfts/js/upgrade-contract",
+              "path": "/zh-CN/tutorials/nfts/js/upgrade-contract",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/nfts/marketplace",
+              "path": "/zh-CN/tutorials/nfts/marketplace",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/nfts/minecraft-nfts",
+              "path": "/zh-CN/tutorials/nfts/minecraft-nfts",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/nfts/minting",
+              "path": "/zh-CN/tutorials/nfts/minting",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/nfts/minting-nft-frontend",
+              "path": "/zh-CN/tutorials/nfts/minting-nft-frontend",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/nfts/minting-nfts",
+              "path": "/zh-CN/tutorials/nfts/minting-nfts",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/nfts/predeployed-contract",
+              "path": "/zh-CN/tutorials/nfts/predeployed-contract",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/nfts/royalty",
+              "path": "/zh-CN/tutorials/nfts/royalty",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/nfts/series",
+              "path": "/zh-CN/tutorials/nfts/series",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/nfts/skeleton",
+              "path": "/zh-CN/tutorials/nfts/skeleton",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/nfts/upgrade-contract",
+              "path": "/zh-CN/tutorials/nfts/upgrade-contract",
+              "sidebar": "contracts"
+            },
+            {
+              "id": "tutorials/welcome",
+              "path": "/zh-CN/tutorials/welcome"
+            },
+            {
+              "id": "welcome",
+              "path": "/zh-CN/"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "concepts": {
+              "link": {
+                "path": "/zh-CN/concepts/welcome",
+                "label": "concepts/welcome"
+              }
+            },
+            "contracts": {
+              "link": {
+                "path": "/zh-CN/develop/contracts/welcome",
+                "label": "develop/contracts/welcome"
+              }
+            },
+            "primitives": {
+              "link": {
+                "path": "/zh-CN/primitives/welcome",
+                "label": "primitives/welcome"
+              }
+            },
+            "tools": {
+              "link": {
+                "path": "/zh-CN/tools/welcome",
+                "label": "tools/welcome"
+              }
+            },
+            "integrate": {
+              "link": {
+                "path": "/zh-CN/develop/integrate/welcome",
+                "label": "develop/integrate/welcome"
+              }
+            },
+            "indexers": {
+              "link": {
+                "path": "/zh-CN/develop/monitor",
+                "label": "develop/monitor"
+              }
+            },
+            "api": {
+              "link": {
+                "path": "/zh-CN/api/rpc/introduction",
+                "label": "api/rpc/introduction"
+              }
+            },
+            "data-availability": {
+              "link": {
+                "path": "/zh-CN/data-availability/welcome",
+                "label": "data-availability/welcome"
+              }
+            },
+            "exchanges": {
+              "link": {
+                "path": "/zh-CN/integrator/exchange-integration",
+                "label": "integrator/exchange-integration"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}

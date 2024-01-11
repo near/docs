@@ -1,0 +1,27 @@
+{
+  "id": "sdk/js/testing/unit-tests",
+  "title": "단위 테스트(Unit Test)",
+  "description": "원하는 테스트 라이브러리를 사용하여 일반 JavaScript 함수와 같은 스마트 컨트랙트 함수로 구현된 추상화된 로직을 단위 테스트할 수 있습니다. 간단한 예는 다음과 같습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/sdk/js/testing/unit-tests.md",
+  "sourceDirName": "sdk/js/testing",
+  "slug": "/sdk/js/testing/unit-tests",
+  "permalink": "/ko/sdk/js/testing/unit-tests",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/js/testing/unit-tests.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "통합 테스트(Integration Test)",
+    "permalink": "/ko/sdk/js/testing/integration-tests"
+  },
+  "next": {
+    "title": "NEAR CLI",
+    "permalink": "/ko/tools/near-cli"
+  }
+}

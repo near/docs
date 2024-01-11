@@ -1,0 +1,28 @@
+{
+  "id": "bos/api/state",
+  "title": "State API",
+  "description": "VM은 컴포넌트의 상태를 업데이트하는 편리한 API를 제공합니다. 두 가지 메서드가 존재합니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/bos/api/state.md",
+  "sourceDirName": "bos/api",
+  "slug": "/bos/api/state",
+  "permalink": "/ko/bos/api/state",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/api/state.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "state",
+    "title": "State API",
+    "sidebar_label": "상태"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "소개",
+    "permalink": "/ko/bos/api/home"
+  },
+  "next": {
+    "title": "Near",
+    "permalink": "/ko/bos/api/near"
+  }
+}

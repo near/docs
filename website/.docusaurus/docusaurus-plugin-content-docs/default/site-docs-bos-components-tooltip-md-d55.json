@@ -1,0 +1,31 @@
+{
+  "id": "bos/components/tooltip",
+  "title": "ToolTip Component",
+  "description": "This special component displays a message once the mouse hovers over a particular DOM item. This component was imported into NEAR Social from React-Bootstrap and more info can be found here.",
+  "source": "@site/../docs/bos/components/tooltip.md",
+  "sourceDirName": "bos/components",
+  "slug": "/bos/components/tooltip",
+  "permalink": "/bos/components/tooltip",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/components/tooltip.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1702155614,
+  "formattedLastUpdatedAt": "Dec 9, 2023",
+  "frontMatter": {
+    "id": "tooltip",
+    "title": "ToolTip Component",
+    "sidebar_label": "ToolTip"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "Styled",
+    "permalink": "/bos/components/styled"
+  },
+  "next": {
+    "title": "Introduction",
+    "permalink": "/bos/api/home"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "tutorials/nfts/marketplace",
+  "title": "Marketplace",
+  "description": "In this tutorial, you'll learn the basics of an NFT marketplace contract where you can buy and sell non-fungible tokens for $NEAR. In the previous tutorials, you went through and created a fully fledged NFT contract that incorporates all the standards found in the NFT standard.",
+  "source": "@site/../docs/3.tutorials/nfts/8-marketplace.md",
+  "sourceDirName": "3.tutorials/nfts",
+  "slug": "/tutorials/nfts/marketplace",
+  "permalink": "/tutorials/nfts/marketplace",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/8-marketplace.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "dhsimpson",
+  "lastUpdatedAt": 1690808042,
+  "formattedLastUpdatedAt": "Jul 31, 2023",
+  "sidebarPosition": 8,
+  "frontMatter": {
+    "id": "marketplace",
+    "title": "Marketplace",
+    "sidebar_label": "Marketplace"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Events",
+    "permalink": "/tutorials/nfts/events"
+  },
+  "next": {
+    "title": "Lazy Minting, Collections, and More!",
+    "permalink": "/tutorials/nfts/series"
+  }
+}

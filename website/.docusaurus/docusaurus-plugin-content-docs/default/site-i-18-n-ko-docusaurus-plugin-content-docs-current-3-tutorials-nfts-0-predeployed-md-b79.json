@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/nfts/predeployed-contract",
+  "title": "사전 배포된 컨트랙트",
+  "description": "쉽게 사용할 수 있는 NFT 스마트 컨트랙트를 사용하여 소프트웨어 개발을 하지 않고도 대체 불가능 토큰(NFT)을 쉽게 만드는 방법에 대해 알아보세요.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/nfts/0-predeployed.md",
+  "sourceDirName": "3.tutorials/nfts",
+  "slug": "/tutorials/nfts/predeployed-contract",
+  "permalink": "/ko/tutorials/nfts/predeployed-contract",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/0-predeployed.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 0,
+  "frontMatter": {
+    "id": "predeployed-contract",
+    "title": "사전 배포된 컨트랙트",
+    "sidebar_label": "사전 배포된 컨트랙트"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "소개",
+    "permalink": "/ko/tutorials/nfts/introduction"
+  },
+  "next": {
+    "title": "컨트랙트 아키텍처",
+    "permalink": "/ko/tutorials/nfts/skeleton"
+  }
+}

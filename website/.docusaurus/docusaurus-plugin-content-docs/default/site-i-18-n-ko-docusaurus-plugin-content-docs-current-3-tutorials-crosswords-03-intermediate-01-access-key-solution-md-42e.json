@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/crosswords/intermediate/access-key-solution",
+  "title": "정답 해시를 액세스 키로 교체",
+  "description": "지금까지 이 튜토리얼에서 사용자는 일반 텍스트 솔루션을 십자말풀이 스마트 컨트랙트로 보내어 해시하고 알려진 답변과 비교합니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/crosswords/03-intermediate/01-access-key-solution.md",
+  "sourceDirName": "3.tutorials/crosswords/03-intermediate",
+  "slug": "/tutorials/crosswords/intermediate/access-key-solution",
+  "permalink": "/ko/tutorials/crosswords/intermediate/access-key-solution",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/crosswords/03-intermediate/01-access-key-solution.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2,
+    "sidebar_label": "시드 문구를 정답으로",
+    "title": "정답 해시를 액세스 키로 교체"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "개요",
+    "permalink": "/ko/tutorials/crosswords/intermediate/overview"
+  },
+  "next": {
+    "title": "시드 문구 로직",
+    "permalink": "/ko/tutorials/crosswords/intermediate/use-seed-phrase"
+  }
+}

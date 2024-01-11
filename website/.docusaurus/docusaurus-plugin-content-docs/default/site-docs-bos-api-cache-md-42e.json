@@ -1,0 +1,30 @@
+{
+  "id": "bos/api/cache",
+  "title": "Cache",
+  "description": "The VM implements caching layer for most network requests. You can leverage it manually by using useCache hook.",
+  "source": "@site/../docs/bos/api/cache.md",
+  "sourceDirName": "bos/api",
+  "slug": "/bos/api/cache",
+  "permalink": "/bos/api/cache",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/api/cache.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1702155614,
+  "formattedLastUpdatedAt": "Dec 9, 2023",
+  "frontMatter": {
+    "id": "cache",
+    "title": "Cache"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "Primitives",
+    "permalink": "/bos/api/primitives"
+  },
+  "next": {
+    "title": "Clipboard",
+    "permalink": "/bos/api/clipboard"
+  }
+}

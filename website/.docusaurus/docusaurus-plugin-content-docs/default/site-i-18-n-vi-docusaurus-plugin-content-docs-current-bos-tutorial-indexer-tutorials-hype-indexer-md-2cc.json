@@ -1,0 +1,28 @@
+{
+  "id": "bos/tutorial/indexer-tutorials/hype-indexer",
+  "title": "Hype Indexer",
+  "description": "NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/bos/tutorial/indexer-tutorials/hype-indexer.md",
+  "sourceDirName": "bos/tutorial/indexer-tutorials",
+  "slug": "/bos/tutorial/indexer-tutorials/hype-indexer",
+  "permalink": "/vi/bos/tutorial/indexer-tutorials/hype-indexer",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/tutorial/indexer-tutorials/hype-indexer.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "hype-indexer",
+    "title": "Hype Indexer",
+    "sidebar_label": "Hype Indexer"
+  },
+  "sidebar": "indexers",
+  "previous": {
+    "title": "Posts Indexer",
+    "permalink": "/vi/bos/tutorial/indexer-tutorials/posts-indexer"
+  },
+  "next": {
+    "title": "NFTs Indexer",
+    "permalink": "/vi/bos/tutorial/indexer-tutorials/nft-indexer"
+  }
+}

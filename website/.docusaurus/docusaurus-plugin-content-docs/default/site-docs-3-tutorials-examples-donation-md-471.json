@@ -1,0 +1,30 @@
+{
+  "id": "tutorials/examples/donation",
+  "title": "Donation",
+  "description": "Our donation example enables to forward money to an account while keeping track of it.",
+  "source": "@site/../docs/3.tutorials/examples/donation.md",
+  "sourceDirName": "3.tutorials/examples",
+  "slug": "/tutorials/examples/donation",
+  "permalink": "/tutorials/examples/donation",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/examples/donation.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1702155614,
+  "formattedLastUpdatedAt": "Dec 9, 2023",
+  "frontMatter": {
+    "id": "donation",
+    "title": "Donation"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "Count on NEAR",
+    "permalink": "/tutorials/examples/count-near"
+  },
+  "next": {
+    "title": "Frontend Multiple Contracts",
+    "permalink": "/tutorials/examples/frontend-multiple-contracts"
+  }
+}

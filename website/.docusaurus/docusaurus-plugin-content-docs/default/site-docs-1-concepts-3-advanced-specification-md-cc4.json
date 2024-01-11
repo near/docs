@@ -1,0 +1,31 @@
+{
+  "id": "concepts/advanced/specification",
+  "title": "NEAR Protocol Specification",
+  "description": "NEAR Protocol Specifications and Standards are tracked in two places:",
+  "source": "@site/../docs/1.concepts/3.advanced/specification.md",
+  "sourceDirName": "1.concepts/3.advanced",
+  "slug": "/concepts/advanced/specification",
+  "permalink": "/concepts/advanced/specification",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/3.advanced/specification.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1658166318,
+  "formattedLastUpdatedAt": "Jul 18, 2022",
+  "frontMatter": {
+    "id": "specification",
+    "title": "NEAR Protocol Specification",
+    "sidebar_label": "Specification"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Runtime",
+    "permalink": "/concepts/basics/runtime"
+  },
+  "next": {
+    "title": "Papers",
+    "permalink": "/concepts/advanced/papers"
+  }
+}

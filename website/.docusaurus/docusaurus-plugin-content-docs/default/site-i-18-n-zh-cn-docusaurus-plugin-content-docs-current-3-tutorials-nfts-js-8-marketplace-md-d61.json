@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/nfts/js/marketplace",
+  "title": "Marketplace",
+  "description": "In this tutorial, you'll learn the basics of an NFT marketplace contract where you can buy and sell non-fungible tokens for $NEAR. In the previous tutorials, you went through and created a fully fledged NFT contract that incorporates all the standards found in the NFT standard.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/3.tutorials/nfts/js/8-marketplace.md",
+  "sourceDirName": "3.tutorials/nfts/js",
+  "slug": "/tutorials/nfts/js/marketplace",
+  "permalink": "/zh-CN/tutorials/nfts/js/marketplace",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/js/8-marketplace.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 8,
+  "frontMatter": {
+    "id": "marketplace",
+    "title": "Marketplace",
+    "sidebar_label": "Marketplace"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Events",
+    "permalink": "/zh-CN/tutorials/nfts/js/events"
+  },
+  "next": {
+    "title": "Introduction",
+    "permalink": "/zh-CN/tutorials/nfts/introduction"
+  }
+}

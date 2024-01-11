@@ -1,0 +1,27 @@
+{
+  "id": "sdk/rust/building/post-processing",
+  "title": "사후 처리 도구",
+  "description": "컨트랙트 크기는 중요한 특성입니다. 이를 작게 유지하는 가장 좋은 방법은, 의존성(dependency)이 적고 잘 설계된 최소한의 코드입니다. 배포하는 데 많은 비용이 소요될 수 있는 대규모 컨트랙트 및 대규모 다중 컨트랙트 dApp의 경우, 컨트랙트 크기를 줄이는 것은 특히 중요합니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/sdk/rust/building/post-processing-tools.md",
+  "sourceDirName": "sdk/rust/building",
+  "slug": "/sdk/rust/building/post-processing",
+  "permalink": "/ko/sdk/rust/building/post-processing",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/rust/building/post-processing-tools.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "post-processing",
+    "title": "사후 처리 도구"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "신속한 프로토타이핑",
+    "permalink": "/ko/sdk/rust/building/prototyping"
+  },
+  "next": {
+    "title": "재현 가능한 빌드",
+    "permalink": "/ko/sdk/rust/building/reproducible-builds"
+  }
+}

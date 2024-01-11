@@ -1,0 +1,27 @@
+{
+  "id": "bos/tutorial/push-notifications",
+  "title": "Push Notifications",
+  "description": "Push messages enable your gateway to send notifications on desktop and mobile devices even when the users are not active.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/bos/tutorial/push-notifications.md",
+  "sourceDirName": "bos/tutorial",
+  "slug": "/bos/tutorial/push-notifications",
+  "permalink": "/vi/bos/tutorial/push-notifications",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/tutorial/push-notifications.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "push-notifications",
+    "title": "Push Notifications"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "Gateways",
+    "permalink": "/vi/bos/tutorial/bos-gateway"
+  },
+  "next": {
+    "title": "WebSockets & QueryAPI",
+    "permalink": "/vi/bos/tutorial/queryapi-websockets"
+  }
+}

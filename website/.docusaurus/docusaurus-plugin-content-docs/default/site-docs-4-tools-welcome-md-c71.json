@@ -1,0 +1,27 @@
+{
+  "id": "tools/welcome",
+  "title": "Tools",
+  "description": "Welcome! The NEAR ecosystem has a complete set of tools for you to make the most out of the NEAR network.",
+  "source": "@site/../docs/4.tools/welcome.md",
+  "sourceDirName": "4.tools",
+  "slug": "/tools/welcome",
+  "permalink": "/tools/welcome",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/4.tools/welcome.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1702155614,
+  "formattedLastUpdatedAt": "Dec 9, 2023",
+  "frontMatter": {
+    "id": "welcome",
+    "title": "Tools",
+    "sidebar_label": "Home"
+  },
+  "sidebar": "tools",
+  "next": {
+    "title": "Using JavaScript API",
+    "permalink": "/tools/near-api-js/quick-reference"
+  }
+}

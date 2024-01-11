@@ -1,0 +1,27 @@
+{
+  "id": "concepts/web3/nfts",
+  "title": "NFTs for Web 2 Applications",
+  "description": "At the first stage of our Web 3 transformation, let’s decentralize ownership of our digital assets using blockchain technology. By doing this, we can create a user-owned economy, where digital assets are exchanged and traded without any participation or control from the developers. Later, we’ll discuss how to bring it to the next level by adding Fungible Tokens into the mix.",
+  "source": "@site/../docs/1.concepts/web3/nfts.md",
+  "sourceDirName": "1.concepts/web3",
+  "slug": "/concepts/web3/nfts",
+  "permalink": "/concepts/web3/nfts",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/web3/nfts.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Igor Perić",
+  "lastUpdatedAt": 1698619183,
+  "formattedLastUpdatedAt": "Oct 29, 2023",
+  "frontMatter": {
+    "id": "nfts",
+    "title": "NFTs for Web 2 Applications",
+    "sidebar_label": "NFTs for Web 2.0 Apps"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Economics",
+    "permalink": "/concepts/web3/economics"
+  }
+}

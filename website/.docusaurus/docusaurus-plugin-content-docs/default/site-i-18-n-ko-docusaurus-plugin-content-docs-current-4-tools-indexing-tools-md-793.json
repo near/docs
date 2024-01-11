@@ -1,0 +1,24 @@
+{
+  "id": "tools/indexing",
+  "title": "NEAR 내 인덱싱 솔루션",
+  "description": "다음은 NEAR 생태계의 인덱서 프로젝트에 대한 간략한 개요입니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/4.tools/indexing-tools.md",
+  "sourceDirName": "4.tools",
+  "slug": "/tools/indexing",
+  "permalink": "/ko/tools/indexing",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/4.tools/indexing-tools.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "indexing",
+    "title": "NEAR 내 인덱싱 솔루션",
+    "sidebar_label": "Indexing Solutions"
+  },
+  "sidebar": "indexers",
+  "previous": {
+    "title": "Real-time Events (WebSocket)",
+    "permalink": "/ko/tools/realtime"
+  }
+}

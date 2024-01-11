@@ -1,0 +1,1385 @@
+{
+  "/zh-CN/search-5cd": {
+    "__comp": "1a4e3797",
+    "__context": {
+      "plugin": "82d98fd4"
+    }
+  },
+  "/zh-CN/-07a": {
+    "__comp": "5e95c892",
+    "__context": {
+      "plugin": "8b378508"
+    }
+  },
+  "/zh-CN/-f0c": {
+    "__comp": "a7bd4aaa",
+    "version": "935f2afb"
+  },
+  "/zh-CN/-180": {
+    "__comp": "a94703ab"
+  },
+  "/zh-CN/api/rpc/access-keys-c54": {
+    "__comp": "17896441",
+    "content": "760cdfc4"
+  },
+  "/zh-CN/api/rpc/block-chunk-d6e": {
+    "__comp": "17896441",
+    "content": "7db86dfc"
+  },
+  "/zh-CN/api/rpc/contracts-87f": {
+    "__comp": "17896441",
+    "content": "912ceaf4"
+  },
+  "/zh-CN/api/rpc/gas-d66": {
+    "__comp": "17896441",
+    "content": "da88877d"
+  },
+  "/zh-CN/api/rpc/introduction-ba8": {
+    "__comp": "17896441",
+    "content": "ae6bf2be"
+  },
+  "/zh-CN/api/rpc/maintenance-windows-582": {
+    "__comp": "17896441",
+    "content": "64e699b4"
+  },
+  "/zh-CN/api/rpc/network-d39": {
+    "__comp": "17896441",
+    "content": "ec12be4f"
+  },
+  "/zh-CN/api/rpc/protocol-e1a": {
+    "__comp": "17896441",
+    "content": "a0c04405"
+  },
+  "/zh-CN/api/rpc/providers-077": {
+    "__comp": "17896441",
+    "content": "2e63797e"
+  },
+  "/zh-CN/api/rpc/setup-619": {
+    "__comp": "17896441",
+    "content": "b3cfbcde"
+  },
+  "/zh-CN/api/rpc/transactions-aed": {
+    "__comp": "17896441",
+    "content": "0f8c7883"
+  },
+  "/zh-CN/bos/-c03": {
+    "__comp": "17896441",
+    "content": "ec201e9b"
+  },
+  "/zh-CN/bos/api/cache-6f3": {
+    "__comp": "17896441",
+    "content": "8b0cd66b"
+  },
+  "/zh-CN/bos/api/clipboard-b88": {
+    "__comp": "17896441",
+    "content": "33622cee"
+  },
+  "/zh-CN/bos/api/fetch-e1c": {
+    "__comp": "17896441",
+    "content": "843dbaac"
+  },
+  "/zh-CN/bos/api/home-035": {
+    "__comp": "17896441",
+    "content": "5cf7834a"
+  },
+  "/zh-CN/bos/api/indexing-148": {
+    "__comp": "17896441",
+    "content": "a77d43e5"
+  },
+  "/zh-CN/bos/api/near-e7f": {
+    "__comp": "17896441",
+    "content": "c6d9813f"
+  },
+  "/zh-CN/bos/api/notifications-eb9": {
+    "__comp": "17896441",
+    "content": "e57862e5"
+  },
+  "/zh-CN/bos/api/primitives-3d2": {
+    "__comp": "17896441",
+    "content": "710f93e8"
+  },
+  "/zh-CN/bos/api/social-929": {
+    "__comp": "17896441",
+    "content": "b357afc2"
+  },
+  "/zh-CN/bos/api/state-d5e": {
+    "__comp": "17896441",
+    "content": "3ada2290"
+  },
+  "/zh-CN/bos/api/storage-0ba": {
+    "__comp": "17896441",
+    "content": "d50206bb"
+  },
+  "/zh-CN/bos/community/indexers-d95": {
+    "__comp": "17896441",
+    "content": "3aaac6f5"
+  },
+  "/zh-CN/bos/components-096": {
+    "__comp": "17896441",
+    "content": "d0c1792b"
+  },
+  "/zh-CN/bos/components/files-9a2": {
+    "__comp": "17896441",
+    "content": "594d6762"
+  },
+  "/zh-CN/bos/components/home-99b": {
+    "__comp": "17896441",
+    "content": "fdae12a5"
+  },
+  "/zh-CN/bos/components/infinite-scroll-89f": {
+    "__comp": "17896441",
+    "content": "844c38cf"
+  },
+  "/zh-CN/bos/components/ipfs-eb2": {
+    "__comp": "17896441",
+    "content": "f6844d26"
+  },
+  "/zh-CN/bos/components/markdown-042": {
+    "__comp": "17896441",
+    "content": "a79704d9"
+  },
+  "/zh-CN/bos/components/overlay-trigger-9d9": {
+    "__comp": "17896441",
+    "content": "cff0cc63"
+  },
+  "/zh-CN/bos/components/styled-473": {
+    "__comp": "17896441",
+    "content": "2af0d174"
+  },
+  "/zh-CN/bos/components/tooltip-2b8": {
+    "__comp": "17896441",
+    "content": "0ec10e80"
+  },
+  "/zh-CN/bos/components/typeahead-8bb": {
+    "__comp": "17896441",
+    "content": "3e5a2469"
+  },
+  "/zh-CN/bos/components/widgets-676": {
+    "__comp": "17896441",
+    "content": "56881af5"
+  },
+  "/zh-CN/bos/dev/bos-loader-ff1": {
+    "__comp": "17896441",
+    "content": "876389ed"
+  },
+  "/zh-CN/bos/dev/intro-ff2": {
+    "__comp": "17896441",
+    "content": "f1d748fc"
+  },
+  "/zh-CN/bos/dev/vscode-870": {
+    "__comp": "17896441",
+    "content": "2a99f642"
+  },
+  "/zh-CN/bos/overview-38f": {
+    "__comp": "17896441",
+    "content": "aad455f9"
+  },
+  "/zh-CN/bos/queryapi/best-practices-5f8": {
+    "__comp": "17896441",
+    "content": "a4bedb0d"
+  },
+  "/zh-CN/bos/queryapi/big-query-839": {
+    "__comp": "17896441",
+    "content": "ebfb529e"
+  },
+  "/zh-CN/bos/queryapi/bos-components-d7b": {
+    "__comp": "17896441",
+    "content": "484acd59"
+  },
+  "/zh-CN/bos/queryapi/context-object-05b": {
+    "__comp": "17896441",
+    "content": "8222b28f"
+  },
+  "/zh-CN/bos/queryapi/how-it-works-a9e": {
+    "__comp": "17896441",
+    "content": "3164cadd"
+  },
+  "/zh-CN/bos/queryapi/index-functions-8b9": {
+    "__comp": "17896441",
+    "content": "068ba692"
+  },
+  "/zh-CN/bos/queryapi/intro-191": {
+    "__comp": "17896441",
+    "content": "5adef4a5"
+  },
+  "/zh-CN/bos/queryapi/migrate-from-near-lake-16b": {
+    "__comp": "17896441",
+    "content": "727c54d7"
+  },
+  "/zh-CN/bos/queryapi/query-data-944": {
+    "__comp": "17896441",
+    "content": "37eec64a"
+  },
+  "/zh-CN/bos/tutorial/bos-gateway-629": {
+    "__comp": "17896441",
+    "content": "ba71f7af"
+  },
+  "/zh-CN/bos/tutorial/ds-components-5ab": {
+    "__comp": "17896441",
+    "content": "7171e043"
+  },
+  "/zh-CN/bos/tutorial/ethers-js-146": {
+    "__comp": "17896441",
+    "content": "6a22c73e"
+  },
+  "/zh-CN/bos/tutorial/ethers-js-best-practices-bb0": {
+    "__comp": "17896441",
+    "content": "95749cd6"
+  },
+  "/zh-CN/bos/tutorial/indexer-tutorials/feed-indexer-9e9": {
+    "__comp": "17896441",
+    "content": "627ea0f4"
+  },
+  "/zh-CN/bos/tutorial/indexer-tutorials/hype-indexer-f95": {
+    "__comp": "17896441",
+    "content": "d8dd6ba2"
+  },
+  "/zh-CN/bos/tutorial/indexer-tutorials/nft-indexer-f65": {
+    "__comp": "17896441",
+    "content": "8c465f38"
+  },
+  "/zh-CN/bos/tutorial/indexer-tutorials/posts-indexer-003": {
+    "__comp": "17896441",
+    "content": "45ef819f"
+  },
+  "/zh-CN/bos/tutorial/interaction-8e5": {
+    "__comp": "17896441",
+    "content": "44820062"
+  },
+  "/zh-CN/bos/tutorial/lido-2ab": {
+    "__comp": "17896441",
+    "content": "fde07143"
+  },
+  "/zh-CN/bos/tutorial/push-notifications-4ff": {
+    "__comp": "17896441",
+    "content": "21116f81"
+  },
+  "/zh-CN/bos/tutorial/queryapi-websockets-336": {
+    "__comp": "17896441",
+    "content": "0cd73eca"
+  },
+  "/zh-CN/bos/tutorial/quickstart-cde": {
+    "__comp": "17896441",
+    "content": "e8ffb7ca"
+  },
+  "/zh-CN/bos/tutorial/using-iframes-aa0": {
+    "__comp": "17896441",
+    "content": "0c5f3ce8"
+  },
+  "/zh-CN/concepts/advanced/indexers-3d7": {
+    "__comp": "17896441",
+    "content": "a56cf653"
+  },
+  "/zh-CN/concepts/advanced/near-indexer-framework-021": {
+    "__comp": "17896441",
+    "content": "382834d8"
+  },
+  "/zh-CN/concepts/advanced/near-lake-framework-477": {
+    "__comp": "17896441",
+    "content": "444c424a"
+  },
+  "/zh-CN/concepts/advanced/papers-357": {
+    "__comp": "17896441",
+    "content": "7687f85c"
+  },
+  "/zh-CN/concepts/advanced/specification-637": {
+    "__comp": "17896441",
+    "content": "da667f77"
+  },
+  "/zh-CN/concepts/advanced/vm-08f": {
+    "__comp": "17896441",
+    "content": "1dddf2c7"
+  },
+  "/zh-CN/concepts/basics/accounts/access-keys-14e": {
+    "__comp": "17896441",
+    "content": "2c1a815b"
+  },
+  "/zh-CN/concepts/basics/accounts/account-id-a7b": {
+    "__comp": "17896441",
+    "content": "d15e1aa3"
+  },
+  "/zh-CN/concepts/basics/accounts/creating-accounts-37b": {
+    "__comp": "17896441",
+    "content": "9a11b15c"
+  },
+  "/zh-CN/concepts/basics/accounts/model-ebf": {
+    "__comp": "17896441",
+    "content": "23733ea1"
+  },
+  "/zh-CN/concepts/basics/accounts/smartcontract-84c": {
+    "__comp": "17896441",
+    "content": "615fb255"
+  },
+  "/zh-CN/concepts/basics/accounts/state-10b": {
+    "__comp": "17896441",
+    "content": "a29e05a1"
+  },
+  "/zh-CN/concepts/basics/actors-806": {
+    "__comp": "17896441",
+    "content": "4f1ce0a0"
+  },
+  "/zh-CN/concepts/basics/epoch-58b": {
+    "__comp": "17896441",
+    "content": "225002d9"
+  },
+  "/zh-CN/concepts/basics/networks-0da": {
+    "__comp": "17896441",
+    "content": "f3516e1c"
+  },
+  "/zh-CN/concepts/basics/overview-6bd": {
+    "__comp": "17896441",
+    "content": "e2cdd810"
+  },
+  "/zh-CN/concepts/basics/protocol-35c": {
+    "__comp": "17896441",
+    "content": "b06457eb"
+  },
+  "/zh-CN/concepts/basics/runtime-0b3": {
+    "__comp": "17896441",
+    "content": "5057452f"
+  },
+  "/zh-CN/concepts/basics/technical_stuff-ae3": {
+    "__comp": "17896441",
+    "content": "ef7bbaa4"
+  },
+  "/zh-CN/concepts/basics/token-loss-46a": {
+    "__comp": "17896441",
+    "content": "737f3d51"
+  },
+  "/zh-CN/concepts/basics/tokens-6ec": {
+    "__comp": "17896441",
+    "content": "61b5cb53"
+  },
+  "/zh-CN/concepts/basics/transactions/gas-e2a": {
+    "__comp": "17896441",
+    "content": "785a16f3"
+  },
+  "/zh-CN/concepts/basics/transactions/gas-advanced-79c": {
+    "__comp": "17896441",
+    "content": "87de9b60"
+  },
+  "/zh-CN/concepts/basics/transactions/overview-9b0": {
+    "__comp": "17896441",
+    "content": "859e80fc"
+  },
+  "/zh-CN/concepts/basics/validators-da6": {
+    "__comp": "17896441",
+    "content": "d6fd0179"
+  },
+  "/zh-CN/concepts/data-flow/data-storage-3de": {
+    "__comp": "17896441",
+    "content": "0deefcb9"
+  },
+  "/zh-CN/concepts/data-flow/near-data-flow-b23": {
+    "__comp": "17896441",
+    "content": "22e65570"
+  },
+  "/zh-CN/concepts/data-flow/token-transfer-flow-9d4": {
+    "__comp": "17896441",
+    "content": "f5963d80"
+  },
+  "/zh-CN/concepts/storage/data-storage-745": {
+    "__comp": "17896441",
+    "content": "dc905a8e"
+  },
+  "/zh-CN/concepts/storage/storage-solutions-e9d": {
+    "__comp": "17896441",
+    "content": "697d885f"
+  },
+  "/zh-CN/concepts/storage/storage-staking-01c": {
+    "__comp": "17896441",
+    "content": "2cd31747"
+  },
+  "/zh-CN/concepts/web3/basics-148": {
+    "__comp": "17896441",
+    "content": "f6505bc1"
+  },
+  "/zh-CN/concepts/web3/economics-9ea": {
+    "__comp": "17896441",
+    "content": "41505972"
+  },
+  "/zh-CN/concepts/web3/intro-99c": {
+    "__comp": "17896441",
+    "content": "0b73acbf"
+  },
+  "/zh-CN/concepts/web3/near-478": {
+    "__comp": "17896441",
+    "content": "92f023ef"
+  },
+  "/zh-CN/concepts/web3/nfts-362": {
+    "__comp": "17896441",
+    "content": "0956f54a"
+  },
+  "/zh-CN/concepts/welcome-ca0": {
+    "__comp": "17896441",
+    "content": "9ece1cec"
+  },
+  "/zh-CN/data-availability/blob-contract-88c": {
+    "__comp": "17896441",
+    "content": "80801506"
+  },
+  "/zh-CN/data-availability/cdk-integration-98d": {
+    "__comp": "17896441",
+    "content": "73bedc3e"
+  },
+  "/zh-CN/data-availability/integrations-32a": {
+    "__comp": "17896441",
+    "content": "ab893119"
+  },
+  "/zh-CN/data-availability/light-client-8ad": {
+    "__comp": "17896441",
+    "content": "4a174287"
+  },
+  "/zh-CN/data-availability/optimism-308": {
+    "__comp": "17896441",
+    "content": "84c8cd3c"
+  },
+  "/zh-CN/data-availability/rpc-523": {
+    "__comp": "17896441",
+    "content": "fdb8e80f"
+  },
+  "/zh-CN/data-availability/welcome-370": {
+    "__comp": "17896441",
+    "content": "1e927f33"
+  },
+  "/zh-CN/develop/contracts/actions-ddd": {
+    "__comp": "17896441",
+    "content": "045fe516"
+  },
+  "/zh-CN/develop/contracts/anatomy-131": {
+    "__comp": "17896441",
+    "content": "60081021"
+  },
+  "/zh-CN/develop/contracts/basics-54a": {
+    "__comp": "17896441",
+    "content": "bef88986"
+  },
+  "/zh-CN/develop/contracts/crosscontract-643": {
+    "__comp": "17896441",
+    "content": "2f32b3ea"
+  },
+  "/zh-CN/develop/contracts/environment/-acf": {
+    "__comp": "17896441",
+    "content": "35a9ffce"
+  },
+  "/zh-CN/develop/contracts/introduction-1d6": {
+    "__comp": "17896441",
+    "content": "6f1879e4"
+  },
+  "/zh-CN/develop/contracts/quickstart-234": {
+    "__comp": "17896441",
+    "content": "f3a04dbc"
+  },
+  "/zh-CN/develop/contracts/security/audits-9a3": {
+    "__comp": "17896441",
+    "content": "a852e941"
+  },
+  "/zh-CN/develop/contracts/security/bounty-2d4": {
+    "__comp": "17896441",
+    "content": "8dd7723d"
+  },
+  "/zh-CN/develop/contracts/security/callbacks-388": {
+    "__comp": "17896441",
+    "content": "8f44653a"
+  },
+  "/zh-CN/develop/contracts/security/checklist-fee": {
+    "__comp": "17896441",
+    "content": "92ab9939"
+  },
+  "/zh-CN/develop/contracts/security/frontrunning-52c": {
+    "__comp": "17896441",
+    "content": "b4bc02ae"
+  },
+  "/zh-CN/develop/contracts/security/one-yocto-304": {
+    "__comp": "17896441",
+    "content": "fa67de33"
+  },
+  "/zh-CN/develop/contracts/security/random-9a3": {
+    "__comp": "17896441",
+    "content": "75144f9e"
+  },
+  "/zh-CN/develop/contracts/security/reentrancy-147": {
+    "__comp": "17896441",
+    "content": "ba42b945"
+  },
+  "/zh-CN/develop/contracts/security/storage-fad": {
+    "__comp": "17896441",
+    "content": "55903317"
+  },
+  "/zh-CN/develop/contracts/security/sybil-a3b": {
+    "__comp": "17896441",
+    "content": "307818dd"
+  },
+  "/zh-CN/develop/contracts/security/welcome-14e": {
+    "__comp": "17896441",
+    "content": "1c82d5f5"
+  },
+  "/zh-CN/develop/contracts/serialization-fc8": {
+    "__comp": "17896441",
+    "content": "29b88f11"
+  },
+  "/zh-CN/develop/contracts/storage-ba9": {
+    "__comp": "17896441",
+    "content": "9979b6b9"
+  },
+  "/zh-CN/develop/contracts/welcome-263": {
+    "__comp": "17896441",
+    "content": "525a9d26"
+  },
+  "/zh-CN/develop/contracts/whatisacontract-730": {
+    "__comp": "17896441",
+    "content": "47aaedc7"
+  },
+  "/zh-CN/develop/deploy-40d": {
+    "__comp": "17896441",
+    "content": "600a7e37"
+  },
+  "/zh-CN/develop/github-overview-7f4": {
+    "__comp": "17896441",
+    "content": "8baee57f"
+  },
+  "/zh-CN/develop/integrate/backend-login-f2b": {
+    "__comp": "17896441",
+    "content": "7a1d98d4"
+  },
+  "/zh-CN/develop/integrate/frontend-4aa": {
+    "__comp": "17896441",
+    "content": "5c69c629"
+  },
+  "/zh-CN/develop/integrate/quickstart-frontend-e4a": {
+    "__comp": "17896441",
+    "content": "bd158b7f"
+  },
+  "/zh-CN/develop/integrate/rpc-67d": {
+    "__comp": "17896441",
+    "content": "40ea5b30"
+  },
+  "/zh-CN/develop/integrate/welcome-98a": {
+    "__comp": "17896441",
+    "content": "400552ff"
+  },
+  "/zh-CN/develop/lake/primitives-124": {
+    "__comp": "17896441",
+    "content": "d8d0970d"
+  },
+  "/zh-CN/develop/lake/structures/block-4a5": {
+    "__comp": "17896441",
+    "content": "b74f1a13"
+  },
+  "/zh-CN/develop/lake/structures/chunk-ea0": {
+    "__comp": "17896441",
+    "content": "6876b6c0"
+  },
+  "/zh-CN/develop/lake/structures/execution-outcome-4a0": {
+    "__comp": "17896441",
+    "content": "504bd87b"
+  },
+  "/zh-CN/develop/lake/structures/receipt-710": {
+    "__comp": "17896441",
+    "content": "da7127eb"
+  },
+  "/zh-CN/develop/lake/structures/shard-b25": {
+    "__comp": "17896441",
+    "content": "95863d00"
+  },
+  "/zh-CN/develop/lake/structures/state-change-264": {
+    "__comp": "17896441",
+    "content": "fbd5e69d"
+  },
+  "/zh-CN/develop/lake/structures/toc-eec": {
+    "__comp": "17896441",
+    "content": "e42dd262"
+  },
+  "/zh-CN/develop/lake/structures/transaction-2da": {
+    "__comp": "17896441",
+    "content": "9e285d68"
+  },
+  "/zh-CN/develop/lock-11b": {
+    "__comp": "17896441",
+    "content": "61eb64e2"
+  },
+  "/zh-CN/develop/monitor-f00": {
+    "__comp": "17896441",
+    "content": "80f0eb77"
+  },
+  "/zh-CN/develop/prerequisites-481": {
+    "__comp": "17896441",
+    "content": "c5c3bab1"
+  },
+  "/zh-CN/develop/quickstart-guide-0de": {
+    "__comp": "17896441",
+    "content": "c0033325"
+  },
+  "/zh-CN/develop/relayers/build-relayer-926": {
+    "__comp": "17896441",
+    "content": "2be659d2"
+  },
+  "/zh-CN/develop/relevant-contracts/dao-ded": {
+    "__comp": "17896441",
+    "content": "549ba9dc"
+  },
+  "/zh-CN/develop/relevant-contracts/ft-f03": {
+    "__comp": "17896441",
+    "content": "a3e1d840"
+  },
+  "/zh-CN/develop/relevant-contracts/nft-418": {
+    "__comp": "17896441",
+    "content": "1090e69f"
+  },
+  "/zh-CN/develop/relevant-contracts/oracles-3a0": {
+    "__comp": "17896441",
+    "content": "e9002b78"
+  },
+  "/zh-CN/develop/testing/integration-test-cfc": {
+    "__comp": "17896441",
+    "content": "824dea7d"
+  },
+  "/zh-CN/develop/testing/introduction-2e2": {
+    "__comp": "17896441",
+    "content": "d34c3525"
+  },
+  "/zh-CN/develop/testing/kurtosis-localnet-99a": {
+    "__comp": "17896441",
+    "content": "69bc9090"
+  },
+  "/zh-CN/develop/testing/unit-test-ff4": {
+    "__comp": "17896441",
+    "content": "c7c9882d"
+  },
+  "/zh-CN/develop/testing/workspaces-migration-89e": {
+    "__comp": "17896441",
+    "content": "1ed3402d"
+  },
+  "/zh-CN/develop/upgrade-12f": {
+    "__comp": "17896441",
+    "content": "ccff57ee"
+  },
+  "/zh-CN/develop/welcome-aef": {
+    "__comp": "17896441",
+    "content": "4aa4f17b"
+  },
+  "/zh-CN/integrator/accounts-38d": {
+    "__comp": "17896441",
+    "content": "fea9ec9f"
+  },
+  "/zh-CN/integrator/balance-changes-ec5": {
+    "__comp": "17896441",
+    "content": "b6cd6383"
+  },
+  "/zh-CN/integrator/create-transactions-7a2": {
+    "__comp": "17896441",
+    "content": "cdb701a6"
+  },
+  "/zh-CN/integrator/errors/error-implementation-608": {
+    "__comp": "17896441",
+    "content": "371d24e6"
+  },
+  "/zh-CN/integrator/errors/introduction-e47": {
+    "__comp": "17896441",
+    "content": "6090c800"
+  },
+  "/zh-CN/integrator/errors/token-loss-005": {
+    "__comp": "17896441",
+    "content": "a44542d1"
+  },
+  "/zh-CN/integrator/exchange-integration-bad": {
+    "__comp": "17896441",
+    "content": "7ca90c74"
+  },
+  "/zh-CN/integrator/faq-a20": {
+    "__comp": "17896441",
+    "content": "79da5cd8"
+  },
+  "/zh-CN/integrator/fungible-tokens-8b1": {
+    "__comp": "17896441",
+    "content": "f66fcc04"
+  },
+  "/zh-CN/integrator/implicit-accounts-d39": {
+    "__comp": "17896441",
+    "content": "50ef3a03"
+  },
+  "/zh-CN/primitives/dao/additional-resources-598": {
+    "__comp": "17896441",
+    "content": "1295f8b6"
+  },
+  "/zh-CN/primitives/dao/interacting/bos-2be": {
+    "__comp": "17896441",
+    "content": "85915d29"
+  },
+  "/zh-CN/primitives/dao/interacting/near-cli-ffe": {
+    "__comp": "17896441",
+    "content": "b22ac0e2"
+  },
+  "/zh-CN/primitives/dao/interacting/smart-contract-6cc": {
+    "__comp": "17896441",
+    "content": "a0ea70f6"
+  },
+  "/zh-CN/primitives/dao/interacting/web-app-e85": {
+    "__comp": "17896441",
+    "content": "2c829983"
+  },
+  "/zh-CN/primitives/dao/introduction-6ff": {
+    "__comp": "17896441",
+    "content": "a8b98bd4"
+  },
+  "/zh-CN/primitives/dex/additional-resources-41a": {
+    "__comp": "17896441",
+    "content": "391c784a"
+  },
+  "/zh-CN/primitives/dex/interacting/bos-5ad": {
+    "__comp": "17896441",
+    "content": "09648cb7"
+  },
+  "/zh-CN/primitives/dex/interacting/near-cli-bbc": {
+    "__comp": "17896441",
+    "content": "9fcd7486"
+  },
+  "/zh-CN/primitives/dex/interacting/smart-contract-3a4": {
+    "__comp": "17896441",
+    "content": "a34aca9b"
+  },
+  "/zh-CN/primitives/dex/interacting/web-app-ee2": {
+    "__comp": "17896441",
+    "content": "c3339dea"
+  },
+  "/zh-CN/primitives/dex/introduction-4d7": {
+    "__comp": "17896441",
+    "content": "aa8e1e61"
+  },
+  "/zh-CN/primitives/ft/additional-resources-955": {
+    "__comp": "17896441",
+    "content": "2b8f149d"
+  },
+  "/zh-CN/primitives/ft/interacting/bos-66e": {
+    "__comp": "17896441",
+    "content": "213d02dd"
+  },
+  "/zh-CN/primitives/ft/interacting/near-cli-bf5": {
+    "__comp": "17896441",
+    "content": "c30ead5b"
+  },
+  "/zh-CN/primitives/ft/interacting/smart-contract-1a9": {
+    "__comp": "17896441",
+    "content": "fd630503"
+  },
+  "/zh-CN/primitives/ft/interacting/web-app-a98": {
+    "__comp": "17896441",
+    "content": "e83ee2aa"
+  },
+  "/zh-CN/primitives/ft/introduction-209": {
+    "__comp": "17896441",
+    "content": "4ea0f83b"
+  },
+  "/zh-CN/primitives/linkdrop/interacting/bos-a89": {
+    "__comp": "17896441",
+    "content": "aec4798a"
+  },
+  "/zh-CN/primitives/linkdrop/interacting/near-cli-f95": {
+    "__comp": "17896441",
+    "content": "b8f62f5c"
+  },
+  "/zh-CN/primitives/linkdrop/interacting/web-app-ccc": {
+    "__comp": "17896441",
+    "content": "b4abba2e"
+  },
+  "/zh-CN/primitives/linkdrop/introduction-2ff": {
+    "__comp": "17896441",
+    "content": "2b3ed200"
+  },
+  "/zh-CN/primitives/nft/additional-resources-baf": {
+    "__comp": "17896441",
+    "content": "4b508af8"
+  },
+  "/zh-CN/primitives/nft/interacting/bos-c86": {
+    "__comp": "17896441",
+    "content": "0a8e87b7"
+  },
+  "/zh-CN/primitives/nft/interacting/near-cli-b03": {
+    "__comp": "17896441",
+    "content": "fd6f0ed2"
+  },
+  "/zh-CN/primitives/nft/interacting/smart-contract-4d1": {
+    "__comp": "17896441",
+    "content": "1378f919"
+  },
+  "/zh-CN/primitives/nft/interacting/web-app-c8e": {
+    "__comp": "17896441",
+    "content": "595ecdb2"
+  },
+  "/zh-CN/primitives/nft/introduction-1a6": {
+    "__comp": "17896441",
+    "content": "67448768"
+  },
+  "/zh-CN/primitives/welcome-680": {
+    "__comp": "17896441",
+    "content": "b457ae9f"
+  },
+  "/zh-CN/sdk/js/building/basics-130": {
+    "__comp": "17896441",
+    "content": "f532b1f1"
+  },
+  "/zh-CN/sdk/js/building/prototyping-ec6": {
+    "__comp": "17896441",
+    "content": "97073150"
+  },
+  "/zh-CN/sdk/js/building/reproducible-builds-5b7": {
+    "__comp": "17896441",
+    "content": "473cb798"
+  },
+  "/zh-CN/sdk/js/cli/-1bd": {
+    "__comp": "17896441",
+    "content": "71467c92"
+  },
+  "/zh-CN/sdk/js/contract-interface/payable-methods-7ea": {
+    "__comp": "17896441",
+    "content": "8383e9db"
+  },
+  "/zh-CN/sdk/js/contract-interface/private-methods-4df": {
+    "__comp": "17896441",
+    "content": "6a8702b7"
+  },
+  "/zh-CN/sdk/js/contract-interface/public-methods-81e": {
+    "__comp": "17896441",
+    "content": "833d2d0f"
+  },
+  "/zh-CN/sdk/js/contract-structure/collections-ca4": {
+    "__comp": "17896441",
+    "content": "384de2bd"
+  },
+  "/zh-CN/sdk/js/contract-structure/near-bindgen-722": {
+    "__comp": "17896441",
+    "content": "6e38bd25"
+  },
+  "/zh-CN/sdk/js/contract-structure/nesting-96c": {
+    "__comp": "17896441",
+    "content": "9d48124e"
+  },
+  "/zh-CN/sdk/js/cross-contract/callbacks-27a": {
+    "__comp": "17896441",
+    "content": "153aaf32"
+  },
+  "/zh-CN/sdk/js/get-started-e25": {
+    "__comp": "17896441",
+    "content": "7cea41b8"
+  },
+  "/zh-CN/sdk/js/introduction-6d0": {
+    "__comp": "17896441",
+    "content": "bc40895c"
+  },
+  "/zh-CN/sdk/js/promises/create-account-21b": {
+    "__comp": "17896441",
+    "content": "1367c9b9"
+  },
+  "/zh-CN/sdk/js/promises/deploy-contract-baf": {
+    "__comp": "17896441",
+    "content": "368bc0db"
+  },
+  "/zh-CN/sdk/js/promises/intro-cd4": {
+    "__comp": "17896441",
+    "content": "bd577fc3"
+  },
+  "/zh-CN/sdk/js/promises/token-tx-fca": {
+    "__comp": "17896441",
+    "content": "20726292"
+  },
+  "/zh-CN/sdk/js/testing/integration-tests-16c": {
+    "__comp": "17896441",
+    "content": "38e3cad5"
+  },
+  "/zh-CN/sdk/js/testing/unit-tests-67b": {
+    "__comp": "17896441",
+    "content": "e2afb47c"
+  },
+  "/zh-CN/sdk/rust/best-practices-da7": {
+    "__comp": "17896441",
+    "content": "3849db8b"
+  },
+  "/zh-CN/sdk/rust/building/basics-693": {
+    "__comp": "17896441",
+    "content": "d1f367e8"
+  },
+  "/zh-CN/sdk/rust/building/post-processing-f72": {
+    "__comp": "17896441",
+    "content": "5093a03b"
+  },
+  "/zh-CN/sdk/rust/building/prototyping-ed0": {
+    "__comp": "17896441",
+    "content": "c8ab2732"
+  },
+  "/zh-CN/sdk/rust/building/reproducible-builds-73e": {
+    "__comp": "17896441",
+    "content": "44991ac0"
+  },
+  "/zh-CN/sdk/rust/contract-interface/contract-mutability-06e": {
+    "__comp": "17896441",
+    "content": "93bc11fe"
+  },
+  "/zh-CN/sdk/rust/contract-interface/payable-methods-adf": {
+    "__comp": "17896441",
+    "content": "92b137dd"
+  },
+  "/zh-CN/sdk/rust/contract-interface/private-methods-305": {
+    "__comp": "17896441",
+    "content": "92e0bc45"
+  },
+  "/zh-CN/sdk/rust/contract-interface/public-methods-39d": {
+    "__comp": "17896441",
+    "content": "a18f1c1f"
+  },
+  "/zh-CN/sdk/rust/contract-interface/serialization-interface-802": {
+    "__comp": "17896441",
+    "content": "80f3ce99"
+  },
+  "/zh-CN/sdk/rust/contract-size-f08": {
+    "__comp": "17896441",
+    "content": "b3dc23e1"
+  },
+  "/zh-CN/sdk/rust/contract-structure/collections-01e": {
+    "__comp": "17896441",
+    "content": "e80c9d49"
+  },
+  "/zh-CN/sdk/rust/contract-structure/near-bindgen-0db": {
+    "__comp": "17896441",
+    "content": "eeec2535"
+  },
+  "/zh-CN/sdk/rust/contract-structure/nesting-cf1": {
+    "__comp": "17896441",
+    "content": "a1e76c8d"
+  },
+  "/zh-CN/sdk/rust/cross-contract/callbacks-f76": {
+    "__comp": "17896441",
+    "content": "db00b7d2"
+  },
+  "/zh-CN/sdk/rust/get-started-3de": {
+    "__comp": "17896441",
+    "content": "3cfb3cb7"
+  },
+  "/zh-CN/sdk/rust/introduction-bb1": {
+    "__comp": "17896441",
+    "content": "1cf24a29"
+  },
+  "/zh-CN/sdk/rust/promises/create-account-8b2": {
+    "__comp": "17896441",
+    "content": "d8a8f541"
+  },
+  "/zh-CN/sdk/rust/promises/deploy-contract-ccc": {
+    "__comp": "17896441",
+    "content": "d1e0cfc3"
+  },
+  "/zh-CN/sdk/rust/promises/intro-13b": {
+    "__comp": "17896441",
+    "content": "ef0db835"
+  },
+  "/zh-CN/sdk/rust/promises/token-tx-ac6": {
+    "__comp": "17896441",
+    "content": "e67830df"
+  },
+  "/zh-CN/sdk/rust/testing/integration-tests-885": {
+    "__comp": "17896441",
+    "content": "362ff4f5"
+  },
+  "/zh-CN/sdk/rust/testing/unit-tests-b8d": {
+    "__comp": "17896441",
+    "content": "88994b2a"
+  },
+  "/zh-CN/sdk/welcome-3a8": {
+    "__comp": "17896441",
+    "content": "70f10e79"
+  },
+  "/zh-CN/social/contract-0e5": {
+    "__comp": "17896441",
+    "content": "6da2e8ac"
+  },
+  "/zh-CN/social/intro-fd6": {
+    "__comp": "17896441",
+    "content": "bcf763b4"
+  },
+  "/zh-CN/social/standards-f5b": {
+    "__comp": "17896441",
+    "content": "22d3d6bb"
+  },
+  "/zh-CN/social/tech-808": {
+    "__comp": "17896441",
+    "content": "0bb49653"
+  },
+  "/zh-CN/tools/explorer-074": {
+    "__comp": "17896441",
+    "content": "d5edbf82"
+  },
+  "/zh-CN/tools/fastauth-sdk-5c0": {
+    "__comp": "17896441",
+    "content": "6ce53e61"
+  },
+  "/zh-CN/tools/indexer-for-explorer-dc3": {
+    "__comp": "17896441",
+    "content": "63a898a4"
+  },
+  "/zh-CN/tools/indexing-080": {
+    "__comp": "17896441",
+    "content": "65d6b33e"
+  },
+  "/zh-CN/tools/near-api-js/account-fb5": {
+    "__comp": "17896441",
+    "content": "2f9dbf76"
+  },
+  "/zh-CN/tools/near-api-js/contract-8f4": {
+    "__comp": "17896441",
+    "content": "95bd24d6"
+  },
+  "/zh-CN/tools/near-api-js/cookbook-f40": {
+    "__comp": "17896441",
+    "content": "b95235de"
+  },
+  "/zh-CN/tools/near-api-js/faq-d6e": {
+    "__comp": "17896441",
+    "content": "edf373d4"
+  },
+  "/zh-CN/tools/near-api-js/quick-reference-c3d": {
+    "__comp": "17896441",
+    "content": "2f2202fc"
+  },
+  "/zh-CN/tools/near-api-js/utils-b95": {
+    "__comp": "17896441",
+    "content": "bbb3c6e7"
+  },
+  "/zh-CN/tools/near-api-js/wallet-a14": {
+    "__comp": "17896441",
+    "content": "d453d634"
+  },
+  "/zh-CN/tools/near-cli-0ec": {
+    "__comp": "17896441",
+    "content": "c2ac4ce7"
+  },
+  "/zh-CN/tools/near-cli-rs-01f": {
+    "__comp": "17896441",
+    "content": "798262f1"
+  },
+  "/zh-CN/tools/near-lake-4c9": {
+    "__comp": "17896441",
+    "content": "9be1b428"
+  },
+  "/zh-CN/tools/realtime-cd0": {
+    "__comp": "17896441",
+    "content": "1451ea06"
+  },
+  "/zh-CN/tools/remix-ide-plugin-b07": {
+    "__comp": "17896441",
+    "content": "f76870c7"
+  },
+  "/zh-CN/tools/usecases-b55": {
+    "__comp": "17896441",
+    "content": "66493090"
+  },
+  "/zh-CN/tools/wallet-selector-a9c": {
+    "__comp": "17896441",
+    "content": "95890914"
+  },
+  "/zh-CN/tools/welcome-957": {
+    "__comp": "17896441",
+    "content": "03b82f47"
+  },
+  "/zh-CN/tutorials/crosswords/basics/add-functions-call-57f": {
+    "__comp": "17896441",
+    "content": "8bd027df"
+  },
+  "/zh-CN/tutorials/crosswords/basics/hashing-and-unit-tests-51b": {
+    "__comp": "17896441",
+    "content": "4ea117cc"
+  },
+  "/zh-CN/tutorials/crosswords/basics/overview-22b": {
+    "__comp": "17896441",
+    "content": "3c097464"
+  },
+  "/zh-CN/tutorials/crosswords/basics/set-up-skeleton-c19": {
+    "__comp": "17896441",
+    "content": "f1beed1d"
+  },
+  "/zh-CN/tutorials/crosswords/basics/simple-frontend-45f": {
+    "__comp": "17896441",
+    "content": "b4f25be2"
+  },
+  "/zh-CN/tutorials/crosswords/beginner/actions-5e3": {
+    "__comp": "17896441",
+    "content": "e1808301"
+  },
+  "/zh-CN/tutorials/crosswords/beginner/adding-a-puzzle-e43": {
+    "__comp": "17896441",
+    "content": "3a355901"
+  },
+  "/zh-CN/tutorials/crosswords/beginner/collections-6f3": {
+    "__comp": "17896441",
+    "content": "b8509cb0"
+  },
+  "/zh-CN/tutorials/crosswords/beginner/logging-in-355": {
+    "__comp": "17896441",
+    "content": "fba3dfcf"
+  },
+  "/zh-CN/tutorials/crosswords/beginner/logging-in-implementation-5aa": {
+    "__comp": "17896441",
+    "content": "fcf1cec2"
+  },
+  "/zh-CN/tutorials/crosswords/beginner/overview-673": {
+    "__comp": "17896441",
+    "content": "bfb72c4d"
+  },
+  "/zh-CN/tutorials/crosswords/beginner/structs-enums-8c1": {
+    "__comp": "17896441",
+    "content": "2a1e8cd4"
+  },
+  "/zh-CN/tutorials/crosswords/intermediate/access-key-solution-0aa": {
+    "__comp": "17896441",
+    "content": "ab1d4299"
+  },
+  "/zh-CN/tutorials/crosswords/intermediate/base64vecu8-a31": {
+    "__comp": "17896441",
+    "content": "13b5b3e9"
+  },
+  "/zh-CN/tutorials/crosswords/intermediate/cross-contract-calls-e9a": {
+    "__comp": "17896441",
+    "content": "0a20d388"
+  },
+  "/zh-CN/tutorials/crosswords/intermediate/linkdrop-323": {
+    "__comp": "17896441",
+    "content": "1b7a324e"
+  },
+  "/zh-CN/tutorials/crosswords/intermediate/overview-875": {
+    "__comp": "17896441",
+    "content": "bc828f7b"
+  },
+  "/zh-CN/tutorials/crosswords/intermediate/use-seed-phrase-46c": {
+    "__comp": "17896441",
+    "content": "c8cc6d2b"
+  },
+  "/zh-CN/tutorials/examples/advanced-xcc-0e9": {
+    "__comp": "17896441",
+    "content": "a4bb07b0"
+  },
+  "/zh-CN/tutorials/examples/blockvote-js-de1": {
+    "__comp": "17896441",
+    "content": "1edf8cf4"
+  },
+  "/zh-CN/tutorials/examples/coin-flip-def": {
+    "__comp": "17896441",
+    "content": "ad3c2cd5"
+  },
+  "/zh-CN/tutorials/examples/count-near-f14": {
+    "__comp": "17896441",
+    "content": "e2f4a20c"
+  },
+  "/zh-CN/tutorials/examples/donation-20e": {
+    "__comp": "17896441",
+    "content": "ad09d313"
+  },
+  "/zh-CN/tutorials/examples/escrow-024": {
+    "__comp": "17896441",
+    "content": "18601697"
+  },
+  "/zh-CN/tutorials/examples/factory-9a5": {
+    "__comp": "17896441",
+    "content": "e86349f2"
+  },
+  "/zh-CN/tutorials/examples/frontend-multiple-contracts-574": {
+    "__comp": "17896441",
+    "content": "8c8ec5ba"
+  },
+  "/zh-CN/tutorials/examples/guest-book-5ba": {
+    "__comp": "17896441",
+    "content": "922b1ba2"
+  },
+  "/zh-CN/tutorials/examples/hello-near-ad5": {
+    "__comp": "17896441",
+    "content": "36e9c3c8"
+  },
+  "/zh-CN/tutorials/examples/update-contract-migrate-state-039": {
+    "__comp": "17896441",
+    "content": "c193d505"
+  },
+  "/zh-CN/tutorials/examples/xcc-3c2": {
+    "__comp": "17896441",
+    "content": "b55b1b7c"
+  },
+  "/zh-CN/tutorials/fts/circulating-supply-18d": {
+    "__comp": "17896441",
+    "content": "9b90945d"
+  },
+  "/zh-CN/tutorials/fts/defining-a-token-c1d": {
+    "__comp": "17896441",
+    "content": "50165f32"
+  },
+  "/zh-CN/tutorials/fts/introduction-40c": {
+    "__comp": "17896441",
+    "content": "a5f34e6d"
+  },
+  "/zh-CN/tutorials/fts/marketplace-2ba": {
+    "__comp": "17896441",
+    "content": "a19d156d"
+  },
+  "/zh-CN/tutorials/fts/predeployed-contract-371": {
+    "__comp": "17896441",
+    "content": "d709c247"
+  },
+  "/zh-CN/tutorials/fts/registering-accounts-c0f": {
+    "__comp": "17896441",
+    "content": "656435cd"
+  },
+  "/zh-CN/tutorials/fts/simple-fts-924": {
+    "__comp": "17896441",
+    "content": "4439072d"
+  },
+  "/zh-CN/tutorials/fts/skeleton-996": {
+    "__comp": "17896441",
+    "content": "fd0a1d57"
+  },
+  "/zh-CN/tutorials/fts/transfers-8fc": {
+    "__comp": "17896441",
+    "content": "1b9e8bfc"
+  },
+  "/zh-CN/tutorials/indexer/credentials-76a": {
+    "__comp": "17896441",
+    "content": "894b3197"
+  },
+  "/zh-CN/tutorials/indexer/js-lake-indexer-f63": {
+    "__comp": "17896441",
+    "content": "7041b3d4"
+  },
+  "/zh-CN/tutorials/indexer/lake-start-options-315": {
+    "__comp": "17896441",
+    "content": "db40c1b9"
+  },
+  "/zh-CN/tutorials/indexer/migrating-to-near-lake-framework-083": {
+    "__comp": "17896441",
+    "content": "6285b659"
+  },
+  "/zh-CN/tutorials/indexer/near-lake-state-changes-indexer-9af": {
+    "__comp": "17896441",
+    "content": "afb4a918"
+  },
+  "/zh-CN/tutorials/indexer/nft-indexer-919": {
+    "__comp": "17896441",
+    "content": "0120525e"
+  },
+  "/zh-CN/tutorials/indexer/python-lake-indexer-e66": {
+    "__comp": "17896441",
+    "content": "5bd7aaab"
+  },
+  "/zh-CN/tutorials/indexer/python-nft-indexer-247": {
+    "__comp": "17896441",
+    "content": "722122f1"
+  },
+  "/zh-CN/tutorials/indexer/run-lake-indexer-6c2": {
+    "__comp": "17896441",
+    "content": "37e7c0e3"
+  },
+  "/zh-CN/tutorials/nfts/approvals-e9b": {
+    "__comp": "17896441",
+    "content": "756c6bb5"
+  },
+  "/zh-CN/tutorials/nfts/core-427": {
+    "__comp": "17896441",
+    "content": "54c2a91d"
+  },
+  "/zh-CN/tutorials/nfts/enumeration-349": {
+    "__comp": "17896441",
+    "content": "4c282584"
+  },
+  "/zh-CN/tutorials/nfts/events-4bc": {
+    "__comp": "17896441",
+    "content": "82297a16"
+  },
+  "/zh-CN/tutorials/nfts/introduction-833": {
+    "__comp": "17896441",
+    "content": "afa19ca1"
+  },
+  "/zh-CN/tutorials/nfts/js/approvals-159": {
+    "__comp": "17896441",
+    "content": "e7860590"
+  },
+  "/zh-CN/tutorials/nfts/js/core-d32": {
+    "__comp": "17896441",
+    "content": "1f4b7ba7"
+  },
+  "/zh-CN/tutorials/nfts/js/enumeration-b5b": {
+    "__comp": "17896441",
+    "content": "403fa534"
+  },
+  "/zh-CN/tutorials/nfts/js/events-a63": {
+    "__comp": "17896441",
+    "content": "16aaa7d4"
+  },
+  "/zh-CN/tutorials/nfts/js/introduction-fde": {
+    "__comp": "17896441",
+    "content": "f2f2acd3"
+  },
+  "/zh-CN/tutorials/nfts/js/marketplace-ebb": {
+    "__comp": "17896441",
+    "content": "d618bb47"
+  },
+  "/zh-CN/tutorials/nfts/js/minting-b1f": {
+    "__comp": "17896441",
+    "content": "46741d34"
+  },
+  "/zh-CN/tutorials/nfts/js/predeployed-contract-477": {
+    "__comp": "17896441",
+    "content": "fa525241"
+  },
+  "/zh-CN/tutorials/nfts/js/royalty-928": {
+    "__comp": "17896441",
+    "content": "09307cd6"
+  },
+  "/zh-CN/tutorials/nfts/js/skeleton-b83": {
+    "__comp": "17896441",
+    "content": "09327a25"
+  },
+  "/zh-CN/tutorials/nfts/js/upgrade-contract-4f6": {
+    "__comp": "17896441",
+    "content": "e2471d63"
+  },
+  "/zh-CN/tutorials/nfts/marketplace-66e": {
+    "__comp": "17896441",
+    "content": "a43ccbc5"
+  },
+  "/zh-CN/tutorials/nfts/minecraft-nfts-946": {
+    "__comp": "17896441",
+    "content": "f2516e7f"
+  },
+  "/zh-CN/tutorials/nfts/minting-2f9": {
+    "__comp": "17896441",
+    "content": "fabc6960"
+  },
+  "/zh-CN/tutorials/nfts/minting-nft-frontend-6a1": {
+    "__comp": "17896441",
+    "content": "3027cd24"
+  },
+  "/zh-CN/tutorials/nfts/minting-nfts-e06": {
+    "__comp": "17896441",
+    "content": "fd7e11b0"
+  },
+  "/zh-CN/tutorials/nfts/predeployed-contract-179": {
+    "__comp": "17896441",
+    "content": "f03f07e5"
+  },
+  "/zh-CN/tutorials/nfts/royalty-c4d": {
+    "__comp": "17896441",
+    "content": "b01d90d4"
+  },
+  "/zh-CN/tutorials/nfts/series-f5f": {
+    "__comp": "17896441",
+    "content": "3c39be7f"
+  },
+  "/zh-CN/tutorials/nfts/skeleton-cd3": {
+    "__comp": "17896441",
+    "content": "3bc23919"
+  },
+  "/zh-CN/tutorials/nfts/upgrade-contract-0bb": {
+    "__comp": "17896441",
+    "content": "ba42afc7"
+  },
+  "/zh-CN/tutorials/welcome-4ae": {
+    "__comp": "17896441",
+    "content": "ca8f19a6"
+  },
+  "/zh-CN/-16a": {
+    "__comp": "17896441",
+    "content": "34709271"
+  }
+}

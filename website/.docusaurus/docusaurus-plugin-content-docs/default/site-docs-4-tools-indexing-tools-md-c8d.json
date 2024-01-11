@@ -1,0 +1,27 @@
+{
+  "id": "tools/indexing",
+  "title": "Indexing Solutions on NEAR",
+  "description": "Here's a quick overview of Indexer projects on the NEAR ecosystem:",
+  "source": "@site/../docs/4.tools/indexing-tools.md",
+  "sourceDirName": "4.tools",
+  "slug": "/tools/indexing",
+  "permalink": "/tools/indexing",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/4.tools/indexing-tools.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1701811626,
+  "formattedLastUpdatedAt": "Dec 5, 2023",
+  "frontMatter": {
+    "id": "indexing",
+    "title": "Indexing Solutions on NEAR",
+    "sidebar_label": "Indexing Solutions"
+  },
+  "sidebar": "indexers",
+  "previous": {
+    "title": "Real-time Events (WebSocket)",
+    "permalink": "/tools/realtime"
+  }
+}

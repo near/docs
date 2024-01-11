@@ -1,0 +1,18 @@
+{
+  "id": "develop/integrate/rpc",
+  "title": "Remote Procedural Call",
+  "description": "Here we will only briefly mention how to use the NEAR RPC. If you want to find the full documentation on NEAR RPC please follow this link.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.develop/integrate/rpc.md",
+  "sourceDirName": "2.develop/integrate",
+  "slug": "/develop/integrate/rpc",
+  "permalink": "/zh-CN/develop/integrate/rpc",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/integrate/rpc.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "rpc",
+    "title": "Remote Procedural Call"
+  }
+}

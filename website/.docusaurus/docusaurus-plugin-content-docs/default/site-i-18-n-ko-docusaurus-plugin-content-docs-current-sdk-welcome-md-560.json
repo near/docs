@@ -1,0 +1,28 @@
+{
+  "id": "sdk/welcome",
+  "title": "NEAR SDKs",
+  "description": "언어별 SDK 문서를 살펴보세요.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/sdk/welcome.md",
+  "sourceDirName": "sdk",
+  "slug": "/sdk/welcome",
+  "permalink": "/ko/sdk/welcome",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/welcome.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "welcome",
+    "title": "NEAR SDKs",
+    "hide_table_of_contents": false
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "FAQ",
+    "permalink": "/ko/tools/near-api-js/faq"
+  },
+  "next": {
+    "title": "Rust SDK에 대해",
+    "permalink": "/ko/sdk/rust/introduction"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "api/rpc/gas",
+  "title": "가스",
+  "description": "RPC API를 통해 특정 블록 또는 해시에 대한 가스 가격을 쿼리할 수 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/5.api/rpc/gas.md",
+  "sourceDirName": "5.api/rpc",
+  "slug": "/api/rpc/gas",
+  "permalink": "/ko/api/rpc/gas",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/5.api/rpc/gas.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "gas",
+    "title": "가스"
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "블록 / 청크",
+    "permalink": "/ko/api/rpc/block-chunk"
+  },
+  "next": {
+    "title": "프로토콜",
+    "permalink": "/ko/api/rpc/protocol"
+  }
+}

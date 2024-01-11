@@ -1,0 +1,32 @@
+{
+  "id": "tutorials/crosswords/basics/simple-frontend",
+  "title": "Add a simple frontend to the crossword puzzle that checks the solution's hash",
+  "description": "This will be the final section in this chapter, where we'll add a simple frontend using React and near-api-js to communicate with the smart contract.",
+  "source": "@site/../docs/3.tutorials/crosswords/01-basics/04-simple-frontend.md",
+  "sourceDirName": "3.tutorials/crosswords/01-basics",
+  "slug": "/tutorials/crosswords/basics/simple-frontend",
+  "permalink": "/tutorials/crosswords/basics/simple-frontend",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/crosswords/01-basics/04-simple-frontend.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1701811626,
+  "formattedLastUpdatedAt": "Dec 5, 2023",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "sidebar_position": 5,
+    "sidebar_label": "Add simple frontend",
+    "title": "Add a simple frontend to the crossword puzzle that checks the solution's hash"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Hash the solution, unit tests, and an init method",
+    "permalink": "/tutorials/crosswords/basics/hashing-and-unit-tests"
+  },
+  "next": {
+    "title": "Overview",
+    "permalink": "/tutorials/crosswords/beginner/overview"
+  }
+}

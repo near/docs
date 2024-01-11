@@ -1,0 +1,30 @@
+{
+  "id": "develop/contracts/security/callbacks",
+  "title": "Cross-Contract Calls",
+  "description": "While writing cross-contract calls there is a significant aspect to keep in mind",
+  "source": "@site/../docs/2.develop/contracts/security/callbacks.md",
+  "sourceDirName": "2.develop/contracts/security",
+  "slug": "/develop/contracts/security/callbacks",
+  "permalink": "/develop/contracts/security/callbacks",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/contracts/security/callbacks.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1673445665,
+  "formattedLastUpdatedAt": "Jan 11, 2023",
+  "frontMatter": {
+    "id": "callbacks",
+    "title": "Cross-Contract Calls"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Million Small Deposits",
+    "permalink": "/develop/contracts/security/storage"
+  },
+  "next": {
+    "title": "Ensure it is the User (1yⓃ)",
+    "permalink": "/develop/contracts/security/one-yocto"
+  }
+}

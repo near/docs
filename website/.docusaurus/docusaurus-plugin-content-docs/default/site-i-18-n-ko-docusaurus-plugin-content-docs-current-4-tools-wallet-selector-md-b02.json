@@ -1,0 +1,24 @@
+{
+  "id": "tools/wallet-selector",
+  "title": "NEAR 지갑 선택기",
+  "description": "이는 사용자가 선호하는 지갑을 선택하여 NEAR 프로토콜과 쉽게 상호 작용할 수 있게 하는, 탐색하기 쉬운 도구입니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/4.tools/wallet-selector.md",
+  "sourceDirName": "4.tools",
+  "slug": "/tools/wallet-selector",
+  "permalink": "/ko/tools/wallet-selector",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/4.tools/wallet-selector.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tools",
+  "previous": {
+    "title": "NEAR CLI RS",
+    "permalink": "/ko/tools/near-cli-rs"
+  },
+  "next": {
+    "title": "FastAuth SDK",
+    "permalink": "/ko/tools/fastauth-sdk"
+  }
+}

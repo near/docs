@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/crosswords/basics/add-functions-call",
+  "title": "Alter the smart contract, learning about basics of development",
+  "description": "This section will modify the smart contract skeleton from the previous section. This tutorial will start by writing a contract in a somewhat useless way in order to learn the basics. Once we've got a solid understanding, we'll iterate until we have a crossword puzzle.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/3.tutorials/crosswords/01-basics/02-add-functions-call.md",
+  "sourceDirName": "3.tutorials/crosswords/01-basics",
+  "slug": "/tutorials/crosswords/basics/add-functions-call",
+  "permalink": "/zh-CN/tutorials/crosswords/basics/add-functions-call",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/crosswords/01-basics/02-add-functions-call.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3,
+    "sidebar_label": "Add basic code, create a subaccount, and call methods",
+    "title": "Alter the smart contract, learning about basics of development"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Set up Rust and a contract skeleton",
+    "permalink": "/zh-CN/tutorials/crosswords/basics/set-up-skeleton"
+  },
+  "next": {
+    "title": "Hash the solution, unit tests, and an init method",
+    "permalink": "/zh-CN/tutorials/crosswords/basics/hashing-and-unit-tests"
+  }
+}

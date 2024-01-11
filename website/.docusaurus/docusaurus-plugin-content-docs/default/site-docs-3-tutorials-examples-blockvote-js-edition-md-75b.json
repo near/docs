@@ -1,0 +1,21 @@
+{
+  "id": "tutorials/examples/blockvote-js",
+  "title": "BlockVote JS Edition",
+  "description": "BlockVote JS Edition is a blockchain-based voting application built using JavaScript on the Near Protocol blockchain. The application allows users to securely cast their votes in an election and have them recorded on the blockchain, ensuring that the results are transparent and cannot be altered.",
+  "source": "@site/../docs/3.tutorials/examples/blockvote-js-edition.md",
+  "sourceDirName": "3.tutorials/examples",
+  "slug": "/tutorials/examples/blockvote-js",
+  "permalink": "/tutorials/examples/blockvote-js",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/examples/blockvote-js-edition.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1702155614,
+  "formattedLastUpdatedAt": "Dec 9, 2023",
+  "frontMatter": {
+    "id": "blockvote-js",
+    "sidebar_label": "BlockVote JS"
+  }
+}

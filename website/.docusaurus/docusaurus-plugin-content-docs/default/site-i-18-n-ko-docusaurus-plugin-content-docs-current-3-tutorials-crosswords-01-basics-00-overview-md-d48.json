@@ -1,0 +1,30 @@
+{
+  "id": "tutorials/crosswords/basics/overview",
+  "title": "기본 개요 : 첫 섹션에서 달성해야 할 사항",
+  "description": "이 십자말풀이 퍼즐 튜토리얼의 이 첫 번째 장에서는 초보자에게 친숙한 방식으로 스마트 컨트랙트 개발에 대한 기본 개념을 소개합니다. 이 챕터에서는, NEAR CLI를 통해 상호 작용할 수 있는 개념 증명(proof-of-concept) 컨트랙트와 near-api-js 라이브러리를 사용하는 간단한 프론트엔드를 작성하게 됩니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/crosswords/01-basics/00-overview.md",
+  "sourceDirName": "3.tutorials/crosswords/01-basics",
+  "slug": "/tutorials/crosswords/basics/overview",
+  "permalink": "/ko/tutorials/crosswords/basics/overview",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/crosswords/01-basics/00-overview.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "id": "overview",
+    "sidebar_position": 1,
+    "sidebar_label": "십자말풀이 게임 개요",
+    "title": "기본 개요 : 첫 섹션에서 달성해야 할 사항"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "마켓플레이스에 FT 추가하기",
+    "permalink": "/ko/tutorials/fts/marketplace"
+  },
+  "next": {
+    "title": "Rust 및 컨트랙트 뼈대 설정",
+    "permalink": "/ko/tutorials/crosswords/basics/set-up-skeleton"
+  }
+}

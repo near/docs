@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/crosswords/intermediate/cross-contract-calls",
+  "title": "교차 컨트랙트 호출, 액세스 키 셔플링 등",
+  "description": "다시 한 번 말하지만, 우리는 NEAR 계정이 없는 사람을 포함하여 누구나 십자말풀이 퍼즐에 참여할 수 있기를 바랍니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/crosswords/03-intermediate/04-cross-contract-calls.md",
+  "sourceDirName": "3.tutorials/crosswords/03-intermediate",
+  "slug": "/tutorials/crosswords/intermediate/cross-contract-calls",
+  "permalink": "/ko/tutorials/crosswords/intermediate/cross-contract-calls",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/crosswords/03-intermediate/04-cross-contract-calls.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "sidebar_position": 5,
+    "sidebar_label": "교차 컨트랙트 호출 등",
+    "title": "교차 컨트랙트 호출, 액세스 키 셔플링 등"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Linkdrop 컨트랙트",
+    "permalink": "/ko/tutorials/crosswords/intermediate/linkdrop"
+  },
+  "next": {
+    "title": "Base64 매개변수, 마무리",
+    "permalink": "/ko/tutorials/crosswords/intermediate/base64vecu8"
+  }
+}

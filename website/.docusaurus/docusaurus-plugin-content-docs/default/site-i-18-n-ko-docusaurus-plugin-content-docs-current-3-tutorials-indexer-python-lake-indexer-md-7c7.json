@@ -1,0 +1,26 @@
+{
+  "id": "tutorials/indexer/python-lake-indexer",
+  "title": "NEAR Lake 인덱서 기본 튜토리얼",
+  "description": "frolvanya/near-lake-raw-printer: source code for the tutorial on how to create an indexer that prints block height and number of shards",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/indexer/python-lake-indexer.md",
+  "sourceDirName": "3.tutorials/indexer",
+  "slug": "/tutorials/indexer/python-lake-indexer",
+  "permalink": "/ko/tutorials/indexer/python-lake-indexer",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/indexer/python-lake-indexer.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "sidebar_label": "Python 튜토리얼"
+  },
+  "sidebar": "indexers",
+  "previous": {
+    "title": "JS 기본 튜토리얼",
+    "permalink": "/ko/tutorials/indexer/js-lake-indexer"
+  },
+  "next": {
+    "title": "NFT Indexer",
+    "permalink": "/ko/tutorials/indexer/nft-indexer"
+  }
+}

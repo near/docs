@@ -1,0 +1,19 @@
+{
+  "id": "social/intro",
+  "title": "NEAR Social",
+  "description": "Take whatever is useful from \"past, present and future of social media\"",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/social/home.md",
+  "sourceDirName": "social",
+  "slug": "/social/intro",
+  "permalink": "/zh-CN/social/intro",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/social/home.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "intro",
+    "title": "NEAR Social",
+    "sidebar_label": "Introduction"
+  }
+}

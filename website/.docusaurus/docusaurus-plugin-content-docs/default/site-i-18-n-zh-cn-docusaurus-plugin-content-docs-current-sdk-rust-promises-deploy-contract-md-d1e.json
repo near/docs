@@ -1,0 +1,27 @@
+{
+  "id": "sdk/rust/promises/deploy-contract",
+  "title": "Deploying Contracts",
+  "description": "You might want your smart contract to deploy subsequent smart contract code for a few reasons:",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/sdk/rust/promises/deploy-contract.md",
+  "sourceDirName": "sdk/rust/promises",
+  "slug": "/sdk/rust/promises/deploy-contract",
+  "permalink": "/zh-CN/sdk/rust/promises/deploy-contract",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/rust/promises/deploy-contract.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_position": 4
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "Creating Accounts",
+    "permalink": "/zh-CN/sdk/rust/promises/create-account"
+  },
+  "next": {
+    "title": "Basic Instructions",
+    "permalink": "/zh-CN/sdk/rust/building/basics"
+  }
+}

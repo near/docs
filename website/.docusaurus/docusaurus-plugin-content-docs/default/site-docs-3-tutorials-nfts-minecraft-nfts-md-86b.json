@@ -1,0 +1,31 @@
+{
+  "id": "tutorials/nfts/minecraft-nfts",
+  "title": "Create NFTs in Minecraft",
+  "description": "In this tutorial you'll learn how to take your custom Minecraft creations and mint the schematics into NFTs on the NEAR blockchain!",
+  "source": "@site/../docs/3.tutorials/nfts/minecraft-nfts.md",
+  "sourceDirName": "3.tutorials/nfts",
+  "slug": "/tutorials/nfts/minecraft-nfts",
+  "permalink": "/tutorials/nfts/minecraft-nfts",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/minecraft-nfts.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "garikbesson",
+  "lastUpdatedAt": 1704192266,
+  "formattedLastUpdatedAt": "Jan 2, 2024",
+  "frontMatter": {
+    "id": "minecraft-nfts",
+    "title": "Create NFTs in Minecraft",
+    "sidebar_label": "Minecraft NFTs"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Minting Front-end",
+    "permalink": "/tutorials/nfts/minting-nft-frontend"
+  },
+  "next": {
+    "title": "Introduction",
+    "permalink": "/tutorials/nfts/js/introduction"
+  }
+}

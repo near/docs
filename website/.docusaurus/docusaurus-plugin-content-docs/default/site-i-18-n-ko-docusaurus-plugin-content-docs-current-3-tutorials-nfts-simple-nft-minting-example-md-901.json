@@ -1,0 +1,28 @@
+{
+  "id": "tutorials/nfts/minting-nft-frontend",
+  "title": "NFT 발행 프론트엔드",
+  "description": "이 튜토리얼에서는 간단한 NFT 프론트엔드를 만들고, 웹 브라우저에서 직접 NEAR 블록체인에 \"Go Team\" NFT를 생성하는 방법을 배웁니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/nfts/simple-nft-minting-example.md",
+  "sourceDirName": "3.tutorials/nfts",
+  "slug": "/tutorials/nfts/minting-nft-frontend",
+  "permalink": "/ko/tutorials/nfts/minting-nft-frontend",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/simple-nft-minting-example.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "minting-nft-frontend",
+    "title": "NFT 발행 프론트엔드",
+    "sidebar_label": "프론트엔드"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "NFT 발행",
+    "permalink": "/ko/tutorials/nfts/minting-nfts"
+  },
+  "next": {
+    "title": "Minecraft NFTs",
+    "permalink": "/ko/tutorials/nfts/minecraft-nfts"
+  }
+}

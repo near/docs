@@ -1,0 +1,24 @@
+{
+  "id": "data-availability/welcome",
+  "title": "Rollup Data Availability",
+  "description": "Utilizing NEAR as storage data availability with a focus on lowering rollup DA fees.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/data-availability/welcome.md",
+  "sourceDirName": "data-availability",
+  "slug": "/data-availability/welcome",
+  "permalink": "/zh-CN/data-availability/welcome",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/data-availability/welcome.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "welcome",
+    "title": "Rollup Data Availability",
+    "sidebar_label": "Home"
+  },
+  "sidebar": "data-availability",
+  "next": {
+    "title": "Blob Store Contract",
+    "permalink": "/zh-CN/data-availability/blob-contract"
+  }
+}

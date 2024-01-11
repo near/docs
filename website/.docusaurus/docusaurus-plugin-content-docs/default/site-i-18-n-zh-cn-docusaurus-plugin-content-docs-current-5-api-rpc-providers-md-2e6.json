@@ -1,0 +1,27 @@
+{
+  "id": "api/rpc/providers",
+  "title": "RPC Providers",
+  "description": "There are multiple RPC providers from which you can choose from. These providers will work as intermediaries to help you interact with the NEAR network. You'll experience different latency levels depending on the provider's location. You can potentially use multiple providers for redundancy and balancing.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/5.api/rpc/providers.md",
+  "sourceDirName": "5.api/rpc",
+  "slug": "/api/rpc/providers",
+  "permalink": "/zh-CN/api/rpc/providers",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/5.api/rpc/providers.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "providers",
+    "title": "RPC Providers"
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Home",
+    "permalink": "/zh-CN/api/rpc/introduction"
+  },
+  "next": {
+    "title": "Setup",
+    "permalink": "/zh-CN/api/rpc/setup"
+  }
+}

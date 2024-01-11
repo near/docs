@@ -1,0 +1,27 @@
+{
+  "id": "sdk/rust/introduction",
+  "title": "Rust SDK에 대해",
+  "description": "Rust는 성능과 안전을 위해 설계된 프로그래밍 언어입니다. 문법적으로는 C++와 유사하지만, 가비지 수집에 의존하지 않고 메모리 안전을 보장할 수 있습니다. Rust는 성숙하고 안전한 언어로 입증되어 스마트 컨트랙트를 작성하는 데 이상적입니다. 이 때문에 Rust는 NEAR에서 스마트 컨트랙트를 작성하는 데 선호되는 프로그래밍 언어입니다. 웹 개발에서 오는 사람들을 위한 학습 곡선이 있을 수 있지만, Rust를 학습하면 보다 안전하고 빠른 컨트랙트를 작성할 수 있습니다. 또한 대체 가능한 토큰(FT) 및 DAO와 같은 핵심 컨트랙트는 현재 Rust에서만 사용할 수 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/sdk/rust/rs-sdk.md",
+  "sourceDirName": "sdk/rust",
+  "slug": "/sdk/rust/introduction",
+  "permalink": "/ko/sdk/rust/introduction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/rust/rs-sdk.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "introduction",
+    "title": "Rust SDK에 대해"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "NEAR SDKs",
+    "permalink": "/ko/sdk/welcome"
+  },
+  "next": {
+    "title": "시작하기",
+    "permalink": "/ko/sdk/rust/get-started"
+  }
+}

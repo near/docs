@@ -1,0 +1,28 @@
+{
+  "id": "concepts/storage/data-storage",
+  "title": "데이터 저장 / 수집",
+  "description": "NEAR 블록체인에 저장된 모든 데이터는 키/값 쌍으로 이루어집니다. 우리가 만든 SDK에는 데이터를 체인에 저장하는 데 도움이 되는 몇 가지 수집 방법이 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/1.concepts/storage/data-collections.md",
+  "sourceDirName": "1.concepts/storage",
+  "slug": "/concepts/storage/data-storage",
+  "permalink": "/ko/concepts/storage/data-storage",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/storage/data-collections.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "data-storage",
+    "title": "데이터 저장 / 수집",
+    "sidebar_label": "NEAR에 저장하기"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "토큰 손실 방지",
+    "permalink": "/ko/concepts/basics/token-loss"
+  },
+  "next": {
+    "title": "스토리지 스테이킹",
+    "permalink": "/ko/concepts/storage/storage-staking"
+  }
+}

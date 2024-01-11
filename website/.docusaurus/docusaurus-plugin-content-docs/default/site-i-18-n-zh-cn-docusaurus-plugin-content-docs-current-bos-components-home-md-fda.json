@@ -1,0 +1,18 @@
+{
+  "id": "bos/components/home",
+  "title": "Built-in Components",
+  "description": "In NEAR, you build small apps known as Components, that focus on solving a specific problem. Then, you compose these Components to achieve a full-working frontend.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/bos/components/home.md",
+  "sourceDirName": "bos/components",
+  "slug": "/bos/components/home",
+  "permalink": "/zh-CN/bos/components/home",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/components/home.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "home",
+    "title": "Built-in Components"
+  }
+}

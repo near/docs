@@ -1,0 +1,24 @@
+{
+  "id": "integrator/faq",
+  "title": "Integrator FAQ",
+  "description": "Orientation",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/6.integrator/faq.md",
+  "sourceDirName": "6.integrator",
+  "slug": "/integrator/faq",
+  "permalink": "/zh-CN/integrator/faq",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/6.integrator/faq.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "faq",
+    "title": "Integrator FAQ",
+    "sidebar_label": "Integrator FAQ"
+  },
+  "sidebar": "exchanges",
+  "previous": {
+    "title": "Avoiding Token Loss",
+    "permalink": "/zh-CN/integrator/errors/token-loss"
+  }
+}

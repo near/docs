@@ -1,0 +1,23 @@
+{
+  "id": "bos/dev/vscode",
+  "title": "VS Code 익스텐션",
+  "description": "Visual Studio Code를 사용하여 NEAR BOS 용 컴포넌트를 개발하는 데 도움이 되는 VS Code 익스텐션입니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/bos/dev/vscode.md",
+  "sourceDirName": "bos/dev",
+  "slug": "/bos/dev/vscode",
+  "permalink": "/ko/bos/dev/vscode",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/dev/vscode.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "vscode",
+    "title": "VS Code 익스텐션"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "Login with NEAR",
+    "permalink": "/ko/develop/integrate/backend-login"
+  }
+}

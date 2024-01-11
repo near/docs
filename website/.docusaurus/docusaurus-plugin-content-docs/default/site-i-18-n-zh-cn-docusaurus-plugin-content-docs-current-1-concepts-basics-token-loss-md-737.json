@@ -1,0 +1,28 @@
+{
+  "id": "concepts/basics/token-loss",
+  "title": "Avoiding Token Loss",
+  "description": "Careful! Losing tokens means losing money!",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/1.concepts/basics/token-loss.md",
+  "sourceDirName": "1.concepts/basics",
+  "slug": "/concepts/basics/token-loss",
+  "permalink": "/zh-CN/concepts/basics/token-loss",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/basics/token-loss.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "token-loss",
+    "title": "Avoiding Token Loss",
+    "sidebar_label": "Avoiding Token Loss"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Tokens",
+    "permalink": "/zh-CN/concepts/basics/tokens"
+  },
+  "next": {
+    "title": "Storage on NEAR",
+    "permalink": "/zh-CN/concepts/storage/data-storage"
+  }
+}

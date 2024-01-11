@@ -1,0 +1,27 @@
+{
+  "id": "sdk/rust/contract-interface/public-methods",
+  "title": "퍼블릭 메서드 자료형",
+  "description": "메서드는 컴파일된 WASM 바이트코드에서 메서드를 공개하는 #[near_bindgen] 매크로 내의 pub 식별자를 사용하여 외부에서 호출할 수 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/sdk/rust/contract-interface/public-methods.md",
+  "sourceDirName": "sdk/rust/contract-interface",
+  "slug": "/sdk/rust/contract-interface/public-methods",
+  "permalink": "/ko/sdk/rust/contract-interface/public-methods",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/rust/contract-interface/public-methods.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "컬렉션 중첩(Nesting)",
+    "permalink": "/ko/sdk/rust/contract-structure/nesting"
+  },
+  "next": {
+    "title": "컨트랙트 가변성",
+    "permalink": "/ko/sdk/rust/contract-interface/contract-mutability"
+  }
+}

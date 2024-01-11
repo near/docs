@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/fts/circulating-supply",
+  "title": "순환 공급(Circulating Supply) 생성",
+  "description": "이전 튜토리얼에서는 대체 가능한 토큰(FT)이 무엇이며, 스마트 컨트랙트에서 토큰을 정의하는 방법을 살펴보았습니다. 이 튜토리얼에서는 컨트랙트 소유자에게 속한 순환 공급을 생성하고, NEAR 지갑에서 메타데이터와 함께 모든 토큰을 보는 방법에 대해 배웁니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/fts/3-circulating-supply.md",
+  "sourceDirName": "3.tutorials/fts",
+  "slug": "/tutorials/fts/circulating-supply",
+  "permalink": "/ko/tutorials/fts/circulating-supply",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/fts/3-circulating-supply.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "id": "circulating-supply",
+    "title": "순환 공급(Circulating Supply) 생성",
+    "sidebar_label": "순환 공급"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "토큰 정의",
+    "permalink": "/ko/tutorials/fts/defining-a-token"
+  },
+  "next": {
+    "title": "계정 등록",
+    "permalink": "/ko/tutorials/fts/registering-accounts"
+  }
+}

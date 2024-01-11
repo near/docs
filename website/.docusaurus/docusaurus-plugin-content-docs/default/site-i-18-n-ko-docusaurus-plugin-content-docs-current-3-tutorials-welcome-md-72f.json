@@ -1,0 +1,19 @@
+{
+  "id": "tutorials/welcome",
+  "title": "예제 & 튜토리얼",
+  "description": "예제 및 튜토리얼 모음을 확인해보세요.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/welcome.md",
+  "sourceDirName": "3.tutorials",
+  "slug": "/tutorials/welcome",
+  "permalink": "/ko/tutorials/welcome",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/welcome.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "welcome",
+    "title": "예제 & 튜토리얼",
+    "hide_table_of_contents": true
+  }
+}

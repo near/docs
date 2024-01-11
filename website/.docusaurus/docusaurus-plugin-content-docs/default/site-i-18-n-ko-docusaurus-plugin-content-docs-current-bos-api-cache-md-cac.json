@@ -1,0 +1,27 @@
+{
+  "id": "bos/api/cache",
+  "title": "Cache",
+  "description": "VM은 대부분의 네트워크 요청에 대해 캐싱 레이어를 구현합니다. useCache 훅을 사용하여 수동으로 활용할 수 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/bos/api/cache.md",
+  "sourceDirName": "bos/api",
+  "slug": "/bos/api/cache",
+  "permalink": "/ko/bos/api/cache",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/api/cache.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "cache",
+    "title": "Cache"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "Primitives",
+    "permalink": "/ko/bos/api/primitives"
+  },
+  "next": {
+    "title": "클립보드",
+    "permalink": "/ko/bos/api/clipboard"
+  }
+}

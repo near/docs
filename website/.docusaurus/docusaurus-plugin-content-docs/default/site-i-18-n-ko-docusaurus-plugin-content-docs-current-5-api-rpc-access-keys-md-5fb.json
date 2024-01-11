@@ -1,0 +1,27 @@
+{
+  "id": "api/rpc/access-keys",
+  "title": "액세스 키",
+  "description": "RPC API를 사용하면 계정의 액세스 키에 대한 정보를 검색할 수 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/5.api/rpc/access-keys.md",
+  "sourceDirName": "5.api/rpc",
+  "slug": "/api/rpc/access-keys",
+  "permalink": "/ko/api/rpc/access-keys",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/5.api/rpc/access-keys.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "access-keys",
+    "title": "액세스 키"
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "설정",
+    "permalink": "/ko/api/rpc/setup"
+  },
+  "next": {
+    "title": "계정 / 컨트랙트",
+    "permalink": "/ko/api/rpc/contracts"
+  }
+}

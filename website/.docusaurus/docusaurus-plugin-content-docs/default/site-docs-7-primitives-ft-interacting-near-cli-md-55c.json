@@ -1,0 +1,31 @@
+{
+  "id": "primitives/ft/interacting/near-cli",
+  "title": "NEAR CLI",
+  "description": "This section shows how to interact with FTs from your shell using near-cli.",
+  "source": "@site/../docs/7.primitives/ft/interacting/near-cli.md",
+  "sourceDirName": "7.primitives/ft/interacting",
+  "slug": "/primitives/ft/interacting/near-cli",
+  "permalink": "/primitives/ft/interacting/near-cli",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/ft/interacting/near-cli.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Damian Parrino",
+  "lastUpdatedAt": 1700234086,
+  "formattedLastUpdatedAt": "Nov 17, 2023",
+  "frontMatter": {
+    "id": "near-cli",
+    "title": "NEAR CLI",
+    "hide_table_of_contents": false
+  },
+  "sidebar": "primitives",
+  "previous": {
+    "title": "Smart Contract",
+    "permalink": "/primitives/ft/interacting/smart-contract"
+  },
+  "next": {
+    "title": "Additional Resources",
+    "permalink": "/primitives/ft/additional-resources"
+  }
+}

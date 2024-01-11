@@ -1,0 +1,28 @@
+{
+  "id": "develop/contracts/whatisacontract",
+  "title": "스마트 컨트랙트란 무엇인가요?",
+  "description": "스마트 컨트랙트는 NEAR 네트워크에 있는 간단한 프로그램입니다. 최신 애플리케이션과 마찬가지로, 스마트 컨트랙트는 데이터를 저장하는 동시에 데이터와 상호 작용하는 몇 가지 메서드를 가지고 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.develop/contracts/whatiscontract.md",
+  "sourceDirName": "2.develop/contracts",
+  "slug": "/develop/contracts/whatisacontract",
+  "permalink": "/ko/develop/contracts/whatisacontract",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/contracts/whatiscontract.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "whatisacontract",
+    "title": "스마트 컨트랙트란 무엇인가요?",
+    "sidebar_label": "스마트 컨트랙트란 무엇인가요?"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Home",
+    "permalink": "/ko/develop/contracts/welcome"
+  },
+  "next": {
+    "title": "⭐ Quickstart",
+    "permalink": "/ko/develop/contracts/quickstart"
+  }
+}

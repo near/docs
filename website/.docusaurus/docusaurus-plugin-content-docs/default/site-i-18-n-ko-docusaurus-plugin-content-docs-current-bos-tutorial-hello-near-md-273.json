@@ -1,0 +1,27 @@
+{
+  "id": "bos/tutorial/interaction",
+  "title": "스마트 컨트랙트 상호작용",
+  "description": "프론트엔드는 내장된 Discovery API를 사용하여 다양한 블록체인과 상호 작용할 수 있습니다. NEAR 스마트 컨트랙트에서 인사말을 읽고 저장하는 애플리케이션을 만드는 방법에 대해 알아보겠습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/bos/tutorial/hello-near.md",
+  "sourceDirName": "bos/tutorial",
+  "slug": "/bos/tutorial/interaction",
+  "permalink": "/ko/bos/tutorial/interaction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/tutorial/hello-near.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "interaction",
+    "title": "스마트 컨트랙트 상호작용"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "BOS Loader",
+    "permalink": "/ko/bos/dev/bos-loader"
+  },
+  "next": {
+    "title": "디자인 구성 요소",
+    "permalink": "/ko/bos/tutorial/ds-components"
+  }
+}

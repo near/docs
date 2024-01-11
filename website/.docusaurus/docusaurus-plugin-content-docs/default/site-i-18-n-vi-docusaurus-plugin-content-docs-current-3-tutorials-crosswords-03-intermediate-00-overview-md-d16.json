@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/crosswords/intermediate/overview",
+  "title": "Intermediate concepts (cross-contract calls and more)",
+  "description": "This chapter will go a bit faster than the previous ones.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/3.tutorials/crosswords/03-intermediate/00-overview.md",
+  "sourceDirName": "3.tutorials/crosswords/03-intermediate",
+  "slug": "/tutorials/crosswords/intermediate/overview",
+  "permalink": "/vi/tutorials/crosswords/intermediate/overview",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/crosswords/03-intermediate/00-overview.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1,
+    "sidebar_label": "Tổng quan",
+    "title": "Intermediate concepts (cross-contract calls and more)"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Access keys and login 2/2",
+    "permalink": "/vi/tutorials/crosswords/beginner/logging-in-implementation"
+  },
+  "next": {
+    "title": "Solution as seed phrase",
+    "permalink": "/vi/tutorials/crosswords/intermediate/access-key-solution"
+  }
+}

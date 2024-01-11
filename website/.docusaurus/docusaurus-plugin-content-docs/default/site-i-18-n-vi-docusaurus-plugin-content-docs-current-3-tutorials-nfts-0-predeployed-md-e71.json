@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/nfts/predeployed-contract",
+  "title": "Contract đã được deploy sẵn",
+  "description": "Bạn sẽ biết cách dễ dàng tạo ra các non-fungible token của riêng mình mà không dùng bất cứ phần mềm phát triển nào, bằng cách sử dụng một NFT smart contract đã có sẵn.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/3.tutorials/nfts/0-predeployed.md",
+  "sourceDirName": "3.tutorials/nfts",
+  "slug": "/tutorials/nfts/predeployed-contract",
+  "permalink": "/vi/tutorials/nfts/predeployed-contract",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/0-predeployed.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 0,
+  "frontMatter": {
+    "id": "predeployed-contract",
+    "title": "Contract đã được deploy sẵn",
+    "sidebar_label": "Contract đã được deploy sẵn"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Giới thiệu",
+    "permalink": "/vi/tutorials/nfts/introduction"
+  },
+  "next": {
+    "title": "Kiến trúc của Contract",
+    "permalink": "/vi/tutorials/nfts/skeleton"
+  }
+}

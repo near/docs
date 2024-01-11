@@ -1,0 +1,27 @@
+{
+  "id": "concepts/basics/validators",
+  "title": "Validators",
+  "description": "The NEAR network is decentralized, meaning that multiple people collaborate in order to keep it safe. We call such people validators.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/1.concepts/basics/validators.md",
+  "sourceDirName": "1.concepts/basics",
+  "slug": "/concepts/basics/validators",
+  "permalink": "/zh-CN/concepts/basics/validators",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/basics/validators.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "validators",
+    "title": "Validators"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Alternative Solutions",
+    "permalink": "/zh-CN/concepts/storage/storage-solutions"
+  },
+  "next": {
+    "title": "Networks",
+    "permalink": "/zh-CN/concepts/basics/networks"
+  }
+}

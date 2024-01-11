@@ -1,0 +1,28 @@
+{
+  "id": "sdk/js/building/prototyping",
+  "title": "컨트랙트 업그레이드: 신속한 프로토타이핑",
+  "description": "컨트랙트의 인터페이스를 변경하고 다시 배포하면 다음 오류가 표시될 수 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/sdk/js/building/prototyping.md",
+  "sourceDirName": "sdk/js/building",
+  "slug": "/sdk/js/building/prototyping",
+  "permalink": "/ko/sdk/js/building/prototyping",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/js/building/prototyping.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "prototyping",
+    "sidebar_label": "신속한 프로토타이핑",
+    "title": "컨트랙트 업그레이드: 신속한 프로토타이핑"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "기본 지침",
+    "permalink": "/ko/sdk/js/building/basics"
+  },
+  "next": {
+    "title": "재현 가능한 빌드",
+    "permalink": "/ko/sdk/js/building/reproducible-builds"
+  }
+}

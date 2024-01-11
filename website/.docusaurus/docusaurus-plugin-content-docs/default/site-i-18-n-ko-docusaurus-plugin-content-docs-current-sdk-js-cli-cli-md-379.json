@@ -1,0 +1,26 @@
+{
+  "id": "sdk/js/cli/cli",
+  "title": "JS SDK CLI",
+  "description": "SDK 명령줄 인터페이스 (CLI)는 빌드 프로세스의 여러 부분에서 작동하고, 유효성 검사 및 ABI를 생성할 수 있는 도구입니다. 무엇보다도 SDK CLI를 사용하면 다음을 수행할 수 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/sdk/js/cli/cli.md",
+  "sourceDirName": "sdk/js/cli",
+  "slug": "/sdk/js/cli/",
+  "permalink": "/ko/sdk/js/cli/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/js/cli/cli.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "JS SDK CLI"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "재현 가능한 빌드",
+    "permalink": "/ko/sdk/js/building/reproducible-builds"
+  },
+  "next": {
+    "title": "통합 테스트(Integration Test)",
+    "permalink": "/ko/sdk/js/testing/integration-tests"
+  }
+}

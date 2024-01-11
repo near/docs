@@ -1,0 +1,31 @@
+{
+  "id": "tutorials/nfts/minting-nfts",
+  "title": "Minting NFTs",
+  "description": "In this tutorial you'll learn how to easily create your own NFTs without doing any software development by using a readily-available smart contract and a decentralized storage solution like IPFS.",
+  "source": "@site/../docs/3.tutorials/nfts/minting-nfts.md",
+  "sourceDirName": "3.tutorials/nfts",
+  "slug": "/tutorials/nfts/minting-nfts",
+  "permalink": "/tutorials/nfts/minting-nfts",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/minting-nfts.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1702155614,
+  "formattedLastUpdatedAt": "Dec 9, 2023",
+  "frontMatter": {
+    "id": "minting-nfts",
+    "title": "Minting NFTs",
+    "sidebar_label": "Minting NFTs"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Minting Fungible Tokens",
+    "permalink": "/tutorials/fts/simple-fts"
+  },
+  "next": {
+    "title": "Minting Front-end",
+    "permalink": "/tutorials/nfts/minting-nft-frontend"
+  }
+}

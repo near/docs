@@ -1,0 +1,28 @@
+{
+  "id": "develop/deploy",
+  "title": "NEAR CLI - 기초",
+  "description": "컨트랙트가 준비되면, 모든 사람이 사용할 수 있도록 NEAR 네트워크에 배포할 수 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.develop/deploy.md",
+  "sourceDirName": "2.develop",
+  "slug": "/develop/deploy",
+  "permalink": "/ko/develop/deploy",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/deploy.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "deploy",
+    "title": "NEAR CLI - 기초",
+    "sidebar_label": "배포 및 사용"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "작업 공간(Workspace) 이동",
+    "permalink": "/ko/develop/testing/workspaces-migration"
+  },
+  "next": {
+    "title": "컨트랙트 업데이트",
+    "permalink": "/ko/develop/upgrade"
+  }
+}

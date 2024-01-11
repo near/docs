@@ -1,0 +1,27 @@
+{
+  "id": "tutorials/indexer/run-lake-indexer",
+  "title": "Running NEAR Lake Indexer",
+  "description": "NEAR Lake is a blockchain indexer built on top of NEAR Indexer microframework to watch the network and store all the events as JSON files on AWS S3.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/indexer/run-near-lake.md",
+  "sourceDirName": "3.tutorials/indexer",
+  "slug": "/tutorials/indexer/run-lake-indexer",
+  "permalink": "/ko/tutorials/indexer/run-lake-indexer",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/indexer/run-near-lake.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "run-lake-indexer",
+    "sidebar_label": "Running Lake Indexer"
+  },
+  "sidebar": "indexers",
+  "previous": {
+    "title": "Python용 NFT 인덱서",
+    "permalink": "/ko/tutorials/indexer/python-nft-indexer"
+  },
+  "next": {
+    "title": "시작 옵션",
+    "permalink": "/ko/tutorials/indexer/lake-start-options"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "concepts/advanced/papers",
+  "title": "Các paper",
+  "description": "Hãy tham gia để cùng nghiên cứu sâu hơn về công nghệ của chúng tôi.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/1.concepts/3.advanced/papers.md",
+  "sourceDirName": "1.concepts/3.advanced",
+  "slug": "/concepts/advanced/papers",
+  "permalink": "/vi/concepts/advanced/papers",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/3.advanced/papers.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "papers",
+    "title": "Các paper",
+    "sidebar_label": "Các paper"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Đặc điểm kỹ thuật",
+    "permalink": "/vi/concepts/advanced/specification"
+  },
+  "next": {
+    "title": "Giới thiệu",
+    "permalink": "/vi/concepts/web3/intro"
+  }
+}

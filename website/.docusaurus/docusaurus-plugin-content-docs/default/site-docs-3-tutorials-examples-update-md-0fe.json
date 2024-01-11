@@ -1,0 +1,30 @@
+{
+  "id": "tutorials/examples/update-contract-migrate-state",
+  "title": "Self Upgrade & State Migration",
+  "description": "Three examples on how to handle updates and state migration:",
+  "source": "@site/../docs/3.tutorials/examples/update.md",
+  "sourceDirName": "3.tutorials/examples",
+  "slug": "/tutorials/examples/update-contract-migrate-state",
+  "permalink": "/tutorials/examples/update-contract-migrate-state",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/examples/update.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1702155614,
+  "formattedLastUpdatedAt": "Dec 9, 2023",
+  "frontMatter": {
+    "id": "update-contract-migrate-state",
+    "title": "Self Upgrade & State Migration"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Complex Cross Contract Call",
+    "permalink": "/tutorials/examples/advanced-xcc"
+  },
+  "next": {
+    "title": "Minting Fungible Tokens",
+    "permalink": "/tutorials/fts/simple-fts"
+  }
+}

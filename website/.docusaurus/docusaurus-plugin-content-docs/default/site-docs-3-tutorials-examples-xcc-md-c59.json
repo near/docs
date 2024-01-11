@@ -1,0 +1,30 @@
+{
+  "id": "tutorials/examples/xcc",
+  "title": "Cross Contract Call",
+  "description": "This example performs the simplest cross-contract call possible: it calls our Hello NEAR example to set and retrieve a greeting.",
+  "source": "@site/../docs/3.tutorials/examples/xcc.md",
+  "sourceDirName": "3.tutorials/examples",
+  "slug": "/tutorials/examples/xcc",
+  "permalink": "/tutorials/examples/xcc",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/examples/xcc.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1702472424,
+  "formattedLastUpdatedAt": "Dec 13, 2023",
+  "frontMatter": {
+    "id": "xcc",
+    "title": "Cross Contract Call"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Guest Book",
+    "permalink": "/tutorials/examples/guest-book"
+  },
+  "next": {
+    "title": "Coin Flip",
+    "permalink": "/tutorials/examples/coin-flip"
+  }
+}

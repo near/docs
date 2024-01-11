@@ -1,0 +1,27 @@
+{
+  "id": "api/rpc/block-chunk",
+  "title": "Block / Chunk",
+  "description": "The RPC API enables you to query the network and get details about specific blocks or chunks.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/5.api/rpc/block-chunk.md",
+  "sourceDirName": "5.api/rpc",
+  "slug": "/api/rpc/block-chunk",
+  "permalink": "/zh-CN/api/rpc/block-chunk",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/5.api/rpc/block-chunk.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "block-chunk",
+    "title": "Block / Chunk"
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Accounts / Contracts",
+    "permalink": "/zh-CN/api/rpc/contracts"
+  },
+  "next": {
+    "title": "Gas",
+    "permalink": "/zh-CN/api/rpc/gas"
+  }
+}

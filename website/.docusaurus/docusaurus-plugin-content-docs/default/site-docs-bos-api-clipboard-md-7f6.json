@@ -1,0 +1,30 @@
+{
+  "id": "bos/api/clipboard",
+  "title": "Clipboard",
+  "description": "The VM implements a clipboard API that works like Mozilla's Clipboard, providing write access to the contents of the system clipboard. The Clipboard API can be used to implement cut, copy, and paste features within a web application.",
+  "source": "@site/../docs/bos/api/clipboard.md",
+  "sourceDirName": "bos/api",
+  "slug": "/bos/api/clipboard",
+  "permalink": "/bos/api/clipboard",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/api/clipboard.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1702155614,
+  "formattedLastUpdatedAt": "Dec 9, 2023",
+  "frontMatter": {
+    "id": "clipboard",
+    "title": "Clipboard"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "Cache",
+    "permalink": "/bos/api/cache"
+  },
+  "next": {
+    "title": "⭐ Quickstart",
+    "permalink": "/bos/tutorial/quickstart"
+  }
+}

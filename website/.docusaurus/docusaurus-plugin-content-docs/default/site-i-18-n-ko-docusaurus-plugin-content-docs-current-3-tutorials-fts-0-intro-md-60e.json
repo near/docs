@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/fts/introduction",
+  "title": "대체 가능한 토큰 Zero to Hero",
+  "description": "이 Zero to Hero 시리즈에서는 대체 가능한 토큰(FT) 스마트 컨트랙트의 모든 측면을 다루는 일련의 튜토리얼을 찾을 수 있습니다. 사전 배포된 컨트랙트와 상호 작용하는 것으로 시작하고, 마지막에는 표준의 모든 확장을 지원하는 본격적인 FT 스마트 컨트랙트를 구축하게 됩니다",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/fts/0-intro.md",
+  "sourceDirName": "3.tutorials/fts",
+  "slug": "/tutorials/fts/introduction",
+  "permalink": "/ko/tutorials/fts/introduction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/fts/0-intro.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 0,
+  "frontMatter": {
+    "id": "introduction",
+    "title": "대체 가능한 토큰 Zero to Hero",
+    "sidebar_label": "소개"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "게으른 발행, 컬렉션 등!",
+    "permalink": "/ko/tutorials/nfts/series"
+  },
+  "next": {
+    "title": "사전 배포된 컨트랙트",
+    "permalink": "/ko/tutorials/fts/predeployed-contract"
+  }
+}

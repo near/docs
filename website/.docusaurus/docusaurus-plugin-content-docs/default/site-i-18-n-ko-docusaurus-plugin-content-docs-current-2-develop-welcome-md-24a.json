@@ -1,0 +1,20 @@
+{
+  "id": "develop/welcome",
+  "title": "개발자 문서",
+  "description": "환영합니다! 여기에서 NEAR를 사용하여 탈중앙화 앱을 개발하는 방법에 대한 문서를 찾을 수 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.develop/welcome.md",
+  "sourceDirName": "2.develop",
+  "slug": "/develop/welcome",
+  "permalink": "/ko/develop/welcome",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/welcome.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "welcome",
+    "title": "개발자 문서",
+    "sidebar_label": "Home",
+    "hide_table_of_contents": true
+  }
+}

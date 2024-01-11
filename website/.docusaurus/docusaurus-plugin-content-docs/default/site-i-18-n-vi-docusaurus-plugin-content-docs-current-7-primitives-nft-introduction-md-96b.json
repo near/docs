@@ -1,0 +1,28 @@
+{
+  "id": "primitives/nft/introduction",
+  "title": "Introduction",
+  "description": "In contrast with fungible tokens, non-fungible tokens (NFT) are unitary and therefore unique. This makes NFTs ideal to represent ownership of assets such as a piece of digital content, or a ticket for an event.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/7.primitives/nft/introduction.md",
+  "sourceDirName": "7.primitives/nft",
+  "slug": "/primitives/nft/introduction",
+  "permalink": "/vi/primitives/nft/introduction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/nft/introduction.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "introduction",
+    "title": "Introduction",
+    "hide_table_of_contents": false
+  },
+  "sidebar": "primitives",
+  "previous": {
+    "title": "Home",
+    "permalink": "/vi/primitives/welcome"
+  },
+  "next": {
+    "title": "NEAR Component",
+    "permalink": "/vi/primitives/nft/interacting/bos"
+  }
+}

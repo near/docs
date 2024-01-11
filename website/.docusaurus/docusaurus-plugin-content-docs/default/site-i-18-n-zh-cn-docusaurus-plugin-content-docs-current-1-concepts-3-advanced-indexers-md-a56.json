@@ -1,0 +1,26 @@
+{
+  "id": "concepts/advanced/indexers",
+  "title": "Introduction to Indexers",
+  "description": "Here you will find everything you need to know in order to familiarize yourself with the concept of indexers and even build your own one.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/1.concepts/3.advanced/indexers.md",
+  "sourceDirName": "1.concepts/3.advanced",
+  "slug": "/concepts/advanced/indexers",
+  "permalink": "/zh-CN/concepts/advanced/indexers",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/3.advanced/indexers.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "sidebar_label": "Intro to Indexers"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Data on the Blockchain",
+    "permalink": "/zh-CN/concepts/data-flow/data-storage"
+  },
+  "next": {
+    "title": "Indexer Framework",
+    "permalink": "/zh-CN/concepts/advanced/near-indexer-framework"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "concepts/storage/data-storage",
+  "title": "Data Storage / Các collection",
+  "description": "Tất cả data lưu trữ trên NEAR blockchain được thực hiện theo cặp key / value. Có một số collection method trong SDK mà chúng tôi đã tạo sẽ giúp bạn lưu trữ data on chain.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/1.concepts/storage/data-collections.md",
+  "sourceDirName": "1.concepts/storage",
+  "slug": "/concepts/storage/data-storage",
+  "permalink": "/vi/concepts/storage/data-storage",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/storage/data-collections.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "data-storage",
+    "title": "Data Storage / Các collection",
+    "sidebar_label": "Storage trên NEAR"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Avoiding Token Loss",
+    "permalink": "/vi/concepts/basics/token-loss"
+  },
+  "next": {
+    "title": "Storage Staking",
+    "permalink": "/vi/concepts/storage/storage-staking"
+  }
+}

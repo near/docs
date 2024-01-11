@@ -1,0 +1,28 @@
+{
+  "id": "concepts/basics/protocol",
+  "title": "NEAR là gì?",
+  "description": "NEAR is a user-friendly and carbon-neutral blockchain, built from the ground up to be performant, secure, and infinitely scalable.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/1.concepts/basics/protocol.md",
+  "sourceDirName": "1.concepts/basics",
+  "slug": "/concepts/basics/protocol",
+  "permalink": "/vi/concepts/basics/protocol",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/basics/protocol.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "protocol",
+    "title": "NEAR là gì?",
+    "sidebar_label": "⭐ What is NEAR?"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Home",
+    "permalink": "/vi/concepts/welcome"
+  },
+  "next": {
+    "title": "Account Model",
+    "permalink": "/vi/concepts/basics/accounts/model"
+  }
+}

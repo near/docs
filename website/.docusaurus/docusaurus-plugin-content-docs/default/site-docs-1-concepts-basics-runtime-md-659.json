@@ -1,0 +1,30 @@
+{
+  "id": "concepts/basics/runtime",
+  "title": "Runtime",
+  "description": "This section contains videos that explore the core Runtime, its operation, and how it implements cross-contract calls.",
+  "source": "@site/../docs/1.concepts/basics/runtime.md",
+  "sourceDirName": "1.concepts/basics",
+  "slug": "/concepts/basics/runtime",
+  "permalink": "/concepts/basics/runtime",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/basics/runtime.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Damian Parrino",
+  "lastUpdatedAt": 1702311741,
+  "formattedLastUpdatedAt": "Dec 11, 2023",
+  "frontMatter": {
+    "id": "runtime",
+    "title": "Runtime"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Lake Framework",
+    "permalink": "/concepts/advanced/near-lake-framework"
+  },
+  "next": {
+    "title": "Specification",
+    "permalink": "/concepts/advanced/specification"
+  }
+}

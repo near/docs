@@ -1,0 +1,32 @@
+{
+  "id": "tutorials/crosswords/intermediate/use-seed-phrase",
+  "title": "Implementing the seed phrase logic from the necessary libraries",
+  "description": "There are two separate things we'll want to do:",
+  "source": "@site/../docs/3.tutorials/crosswords/03-intermediate/02-use-seed-phrase.md",
+  "sourceDirName": "3.tutorials/crosswords/03-intermediate",
+  "slug": "/tutorials/crosswords/intermediate/use-seed-phrase",
+  "permalink": "/tutorials/crosswords/intermediate/use-seed-phrase",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/crosswords/03-intermediate/02-use-seed-phrase.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1701811626,
+  "formattedLastUpdatedAt": "Dec 5, 2023",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3,
+    "sidebar_label": "Seed phrase logic",
+    "title": "Implementing the seed phrase logic from the necessary libraries"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Solution as seed phrase",
+    "permalink": "/tutorials/crosswords/intermediate/access-key-solution"
+  },
+  "next": {
+    "title": "Linkdrop contract",
+    "permalink": "/tutorials/crosswords/intermediate/linkdrop"
+  }
+}

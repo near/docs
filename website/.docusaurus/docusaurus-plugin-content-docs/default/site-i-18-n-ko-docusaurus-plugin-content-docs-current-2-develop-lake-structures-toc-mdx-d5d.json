@@ -1,0 +1,28 @@
+{
+  "id": "develop/lake/structures/toc",
+  "title": "Structures. Table of Contents",
+  "description": "The structures described in this section of the docs are indexer-related more than nearcore related. Some of the are artificial and are not a part of nearcore",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.develop/lake/structures/toc.mdx",
+  "sourceDirName": "2.develop/lake/structures",
+  "slug": "/develop/lake/structures/toc",
+  "permalink": "/ko/develop/lake/structures/toc",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/lake/structures/toc.mdx",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1,
+    "sidebar_label": "Table of contents"
+  },
+  "sidebar": "indexers",
+  "previous": {
+    "title": "자격 증명",
+    "permalink": "/ko/tutorials/indexer/credentials"
+  },
+  "next": {
+    "title": "Block",
+    "permalink": "/ko/develop/lake/structures/block"
+  }
+}

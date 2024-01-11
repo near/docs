@@ -1,0 +1,28 @@
+{
+  "id": "sdk/js/promises/token-tx",
+  "title": "Sending Native Tokens",
+  "description": "You might want to send tokens from a contract for many reasons.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/sdk/js/promises/token-tx.md",
+  "sourceDirName": "sdk/js/promises",
+  "slug": "/sdk/js/promises/token-tx",
+  "permalink": "/vi/sdk/js/promises/token-tx",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/js/promises/token-tx.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2,
+    "title": "Sending Native Tokens"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "Promises: Introduction",
+    "permalink": "/vi/sdk/js/promises/intro"
+  },
+  "next": {
+    "title": "Creating Accounts",
+    "permalink": "/vi/sdk/js/promises/create-account"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/nfts/marketplace",
+  "title": "Marketplace",
+  "description": "Trong hướng dẫn này, bạn sẽ tìm hiểu những điều cơ bản của một NFT marketplace contract, nơi bạn có thể mua và bán các non-fungible token bằng $NEAR. Trong những hướng dẫn trước, bạn đã đi qua và tạo một NFT contract hoàn chỉnh đầy đủ kết hợp tất cả các tiêu chuẩn có trong tiêu chuẩn NFT.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/3.tutorials/nfts/8-marketplace.md",
+  "sourceDirName": "3.tutorials/nfts",
+  "slug": "/tutorials/nfts/marketplace",
+  "permalink": "/vi/tutorials/nfts/marketplace",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/8-marketplace.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 8,
+  "frontMatter": {
+    "id": "marketplace",
+    "title": "Marketplace",
+    "sidebar_label": "Marketplace"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Event",
+    "permalink": "/vi/tutorials/nfts/events"
+  },
+  "next": {
+    "title": "Lazy Minting, Collections, and More!",
+    "permalink": "/vi/tutorials/nfts/series"
+  }
+}

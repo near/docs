@@ -1,0 +1,32 @@
+{
+  "id": "tutorials/crosswords/basics/hashing-and-unit-tests",
+  "title": "Introduction to basic hashing and adding unit tests",
+  "description": "In the previous section, we stored the crossword solution as plain text as a String type on the smart contract. If we're trying to hide the solution from the users, this isn't a great approach as it'll be public to anyone looking at the state. Let's instead hash our crossword solution and store that instead. There are different ways to hash data, but let's use sha256 which is one of the hashing algorithms available in the Rust SDK.",
+  "source": "@site/../docs/3.tutorials/crosswords/01-basics/03-hashing-and-unit-tests.md",
+  "sourceDirName": "3.tutorials/crosswords/01-basics",
+  "slug": "/tutorials/crosswords/basics/hashing-and-unit-tests",
+  "permalink": "/tutorials/crosswords/basics/hashing-and-unit-tests",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/crosswords/01-basics/03-hashing-and-unit-tests.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1702155614,
+  "formattedLastUpdatedAt": "Dec 9, 2023",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_position": 4,
+    "sidebar_label": "Hash the solution, unit tests, and an init method",
+    "title": "Introduction to basic hashing and adding unit tests"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Add basic code, create a subaccount, and call methods",
+    "permalink": "/tutorials/crosswords/basics/add-functions-call"
+  },
+  "next": {
+    "title": "Add simple frontend",
+    "permalink": "/tutorials/crosswords/basics/simple-frontend"
+  }
+}

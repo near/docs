@@ -1,0 +1,19 @@
+{
+  "id": "sdk/js/contract-structure/nesting",
+  "title": "Nesting",
+  "description": "",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/sdk/js/contract-structure/nesting.md",
+  "sourceDirName": "sdk/js/contract-structure",
+  "slug": "/sdk/js/contract-structure/nesting",
+  "permalink": "/zh-CN/sdk/js/contract-structure/nesting",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/js/contract-structure/nesting.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3,
+    "title": "Nesting"
+  }
+}

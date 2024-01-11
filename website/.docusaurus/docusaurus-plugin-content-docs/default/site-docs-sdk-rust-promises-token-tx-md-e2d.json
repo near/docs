@@ -1,0 +1,30 @@
+{
+  "id": "sdk/rust/promises/token-tx",
+  "title": "Sending $NEAR",
+  "description": "You might want to send tokens from a contract for many reasons.",
+  "source": "@site/../docs/sdk/rust/promises/token-tx.md",
+  "sourceDirName": "sdk/rust/promises",
+  "slug": "/sdk/rust/promises/token-tx",
+  "permalink": "/sdk/rust/promises/token-tx",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/rust/promises/token-tx.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1696019367,
+  "formattedLastUpdatedAt": "Sep 29, 2023",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "Promises: Introduction",
+    "permalink": "/sdk/rust/promises/intro"
+  },
+  "next": {
+    "title": "Creating Accounts",
+    "permalink": "/sdk/rust/promises/create-account"
+  }
+}

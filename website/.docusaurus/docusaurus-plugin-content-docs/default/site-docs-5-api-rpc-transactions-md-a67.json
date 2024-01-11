@@ -1,0 +1,27 @@
+{
+  "id": "api/rpc/transactions",
+  "title": "RPC Endpoints",
+  "description": "The RPC API enables you to send transactions and query their status.",
+  "source": "@site/../docs/5.api/rpc/transactions.md",
+  "sourceDirName": "5.api/rpc",
+  "slug": "/api/rpc/transactions",
+  "permalink": "/api/rpc/transactions",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/5.api/rpc/transactions.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Damian Parrino",
+  "lastUpdatedAt": 1704986946,
+  "formattedLastUpdatedAt": "Jan 11, 2024",
+  "frontMatter": {
+    "id": "transactions",
+    "title": "RPC Endpoints",
+    "sidebar_label": "Transactions"
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Network",
+    "permalink": "/api/rpc/network"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/crosswords/beginner/actions",
+  "title": "전송 Action을 통해 십자말 풀이 퍼즐의 우승자에게 NEAR를 보내는 등, 계정이 할 수 있는 여러 Action이 존재함",
+  "description": "우리는 새로운 Action인 Transfer를 소개할 것입니다. 이 챕터에서 우리는 십자말풀이를 가장 먼저 푸는 사람이 NEAR로 약간의 상금을 받길 원합니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/crosswords/02-beginner/03-actions.md",
+  "sourceDirName": "3.tutorials/crosswords/02-beginner",
+  "slug": "/tutorials/crosswords/beginner/actions",
+  "permalink": "/ko/tutorials/crosswords/beginner/actions",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/crosswords/02-beginner/03-actions.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_position": 4,
+    "sidebar_label": "Action 및 NEAR 전송",
+    "title": "전송 Action을 통해 십자말 풀이 퍼즐의 우승자에게 NEAR를 보내는 등, 계정이 할 수 있는 여러 Action이 존재함"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "구조체 및 열거형 사용",
+    "permalink": "/ko/tutorials/crosswords/beginner/structs-enums"
+  },
+  "next": {
+    "title": "퍼즐 추가",
+    "permalink": "/ko/tutorials/crosswords/beginner/adding-a-puzzle"
+  }
+}

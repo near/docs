@@ -1,0 +1,28 @@
+{
+  "id": "concepts/storage/storage-solutions",
+  "title": "분산 스토리지 솔루션",
+  "description": "이 글에서는 분산 애플리케이션(dApp)에 통합할 수 있는 다양한 분산 스토리지 솔루션에 대한 간략한 개요를 볼 수 있습니다. 이를 통해 기본 NEAR 스토리지에 대한 보다 경제적인 대안을 사용하여 많은 양의 데이터를 저장할 수 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/1.concepts/storage/decentralized-storage.md",
+  "sourceDirName": "1.concepts/storage",
+  "slug": "/concepts/storage/storage-solutions",
+  "permalink": "/ko/concepts/storage/storage-solutions",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/storage/decentralized-storage.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "storage-solutions",
+    "title": "분산 스토리지 솔루션",
+    "sidebar_label": "대체 솔루션"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "스토리지 스테이킹",
+    "permalink": "/ko/concepts/storage/storage-staking"
+  },
+  "next": {
+    "title": "밸리데이터",
+    "permalink": "/ko/concepts/basics/validators"
+  }
+}

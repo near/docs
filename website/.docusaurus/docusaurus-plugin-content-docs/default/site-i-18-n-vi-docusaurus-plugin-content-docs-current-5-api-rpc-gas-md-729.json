@@ -1,0 +1,27 @@
+{
+  "id": "api/rpc/gas",
+  "title": "Gas",
+  "description": "The RPC API enables you to query the gas price for a specific block or hash.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/5.api/rpc/gas.md",
+  "sourceDirName": "5.api/rpc",
+  "slug": "/api/rpc/gas",
+  "permalink": "/vi/api/rpc/gas",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/5.api/rpc/gas.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "gas",
+    "title": "Gas"
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Block / Chunk",
+    "permalink": "/vi/api/rpc/block-chunk"
+  },
+  "next": {
+    "title": "Protocol",
+    "permalink": "/vi/api/rpc/protocol"
+  }
+}

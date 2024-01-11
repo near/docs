@@ -1,0 +1,27 @@
+{
+  "id": "tutorials/examples/advanced-xcc",
+  "title": "복잡한 교차 컨트랙트 호출(Cross Contract Call)",
+  "description": "이 예제는 복잡한 교차 컨트랙트 호출의 3가지 인스턴스를 나타냅니다. 특히 다음과 같은 것들을 보여줍니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/examples/advanced-xcc.md",
+  "sourceDirName": "3.tutorials/examples",
+  "slug": "/tutorials/examples/advanced-xcc",
+  "permalink": "/ko/tutorials/examples/advanced-xcc",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/examples/advanced-xcc.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "advanced-xcc",
+    "title": "복잡한 교차 컨트랙트 호출(Cross Contract Call)"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "팩토리",
+    "permalink": "/ko/tutorials/examples/factory"
+  },
+  "next": {
+    "title": "자체 업그레이드 및 상태 마이그레이션",
+    "permalink": "/ko/tutorials/examples/update-contract-migrate-state"
+  }
+}

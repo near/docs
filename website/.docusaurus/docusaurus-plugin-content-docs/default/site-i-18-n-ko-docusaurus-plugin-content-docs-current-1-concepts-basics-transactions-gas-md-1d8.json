@@ -1,0 +1,27 @@
+{
+  "id": "concepts/basics/transactions/gas",
+  "title": "가스",
+  "description": "네트워크로 보내는 모든 트랜잭션에 대해 NEAR는 수수료(일명 가스 수수료)를 청구합니다. 이 수수료는 네트워크 인프라를 유지하는 사람들에게 간접적으로 지불되고, 스마트 컨트랙트 개발자에게 인센티브를 제공하는 데 사용됩니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/1.concepts/basics/transactions/gas.md",
+  "sourceDirName": "1.concepts/basics/transactions",
+  "slug": "/concepts/basics/transactions/gas",
+  "permalink": "/ko/concepts/basics/transactions/gas",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/basics/transactions/gas.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "gas",
+    "title": "가스"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "개요",
+    "permalink": "/ko/concepts/basics/transactions/overview"
+  },
+  "next": {
+    "title": "가스 - 고급",
+    "permalink": "/ko/concepts/basics/transactions/gas-advanced"
+  }
+}

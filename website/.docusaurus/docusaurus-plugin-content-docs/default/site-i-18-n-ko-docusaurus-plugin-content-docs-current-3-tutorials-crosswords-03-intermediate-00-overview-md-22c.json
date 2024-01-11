@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/crosswords/intermediate/overview",
+  "title": "증급 개요(교차 컨트랙트 호출 등)",
+  "description": "이 챕터는 이전 챕터보다 조금 더 빠르게 진행됩니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/crosswords/03-intermediate/00-overview.md",
+  "sourceDirName": "3.tutorials/crosswords/03-intermediate",
+  "slug": "/tutorials/crosswords/intermediate/overview",
+  "permalink": "/ko/tutorials/crosswords/intermediate/overview",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/crosswords/03-intermediate/00-overview.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1,
+    "sidebar_label": "개요",
+    "title": "증급 개요(교차 컨트랙트 호출 등)"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "액세스 키 및 로그인 2/2",
+    "permalink": "/ko/tutorials/crosswords/beginner/logging-in-implementation"
+  },
+  "next": {
+    "title": "시드 문구를 정답으로",
+    "permalink": "/ko/tutorials/crosswords/intermediate/access-key-solution"
+  }
+}

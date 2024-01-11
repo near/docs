@@ -1,0 +1,28 @@
+{
+  "id": "bos/queryapi/intro",
+  "title": "QueryAPI Overview",
+  "description": "Near QueryAPI is a fully managed solution to build indexer functions, extract on-chain data, store it in a database, and be able to query it using GraphQL endpoints.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/bos/queryapi/intro.md",
+  "sourceDirName": "bos/queryapi",
+  "slug": "/bos/queryapi/intro",
+  "permalink": "/ko/bos/queryapi/intro",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/queryapi/intro.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "intro",
+    "title": "QueryAPI Overview",
+    "sidebar_label": "Introduction"
+  },
+  "sidebar": "indexers",
+  "previous": {
+    "title": "Home",
+    "permalink": "/ko/develop/monitor"
+  },
+  "next": {
+    "title": "How it works",
+    "permalink": "/ko/bos/queryapi/how-it-works"
+  }
+}

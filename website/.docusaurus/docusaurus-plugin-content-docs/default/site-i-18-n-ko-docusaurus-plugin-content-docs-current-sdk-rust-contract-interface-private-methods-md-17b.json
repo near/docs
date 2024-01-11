@@ -1,0 +1,27 @@
+{
+  "id": "sdk/rust/contract-interface/private-methods",
+  "title": "프라이빗 메서드",
+  "description": "콜백을 사용할 때",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/sdk/rust/contract-interface/private-methods.md",
+  "sourceDirName": "sdk/rust/contract-interface",
+  "slug": "/sdk/rust/contract-interface/private-methods",
+  "permalink": "/ko/sdk/rust/contract-interface/private-methods",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/rust/contract-interface/private-methods.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "컨트랙트 가변성",
+    "permalink": "/ko/sdk/rust/contract-interface/contract-mutability"
+  },
+  "next": {
+    "title": "지불 메서드",
+    "permalink": "/ko/sdk/rust/contract-interface/payable-methods"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/fts/marketplace",
+  "title": "Integrating FT Payments into an NFT Marketplace",
+  "description": "In this tutorial, you'll learn the basics of how an NFT marketplace contract works and how you can modify it to allow for purchasing NFTs using Fungible Tokens. In the previous tutorials, you went through and created a fully fledged FT contract that incorporates all the standards found in the FT standard.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/3.tutorials/fts/6-marketplace.md",
+  "sourceDirName": "3.tutorials/fts",
+  "slug": "/tutorials/fts/marketplace",
+  "permalink": "/zh-CN/tutorials/fts/marketplace",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/fts/6-marketplace.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 6,
+  "frontMatter": {
+    "id": "marketplace",
+    "title": "Integrating FT Payments into an NFT Marketplace",
+    "sidebar_label": "Adding FTs to a Marketplace"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Transferring FTs",
+    "permalink": "/zh-CN/tutorials/fts/transfers"
+  },
+  "next": {
+    "title": "Crossword Game Overview",
+    "permalink": "/zh-CN/tutorials/crosswords/basics/overview"
+  }
+}

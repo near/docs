@@ -1,0 +1,27 @@
+{
+  "id": "integrator/exchange-integration",
+  "title": "Exchange Integration",
+  "description": "Integration Reference",
+  "source": "@site/../docs/6.integrator/exchange-integration.md",
+  "sourceDirName": "6.integrator",
+  "slug": "/integrator/exchange-integration",
+  "permalink": "/integrator/exchange-integration",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/6.integrator/exchange-integration.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1702155614,
+  "formattedLastUpdatedAt": "Dec 9, 2023",
+  "frontMatter": {
+    "id": "exchange-integration",
+    "title": "Exchange Integration",
+    "sidebar_label": "Exchange Integration"
+  },
+  "sidebar": "exchanges",
+  "next": {
+    "title": "Balance Changes",
+    "permalink": "/integrator/balance-changes"
+  }
+}

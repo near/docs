@@ -1,0 +1,26 @@
+{
+  "id": "sdk/rust/get-started",
+  "title": "Bắt đầu",
+  "description": "Install Rust and Wasm toolchain",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/sdk/rust/intro.md",
+  "sourceDirName": "sdk/rust",
+  "slug": "/sdk/rust/get-started",
+  "permalink": "/vi/sdk/rust/get-started",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/rust/intro.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "get-started"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "About Rust SDK",
+    "permalink": "/vi/sdk/rust/introduction"
+  },
+  "next": {
+    "title": "near_bindgen",
+    "permalink": "/vi/sdk/rust/contract-structure/near-bindgen"
+  }
+}

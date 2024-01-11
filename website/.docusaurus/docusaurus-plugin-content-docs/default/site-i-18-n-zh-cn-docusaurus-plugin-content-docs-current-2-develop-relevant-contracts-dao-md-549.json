@@ -1,0 +1,28 @@
+{
+  "id": "develop/relevant-contracts/dao",
+  "title": "Decentralized Autonomous Organizations",
+  "description": "Decentralized Autonomous Organizations (DAOs) are self-organized groups that form around common purposes. Membership, decision making, and funding are coordinated by publicly voting on proposals through a smart contract.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.develop/relevant-contracts/dao.md",
+  "sourceDirName": "2.develop/relevant-contracts",
+  "slug": "/develop/relevant-contracts/dao",
+  "permalink": "/zh-CN/develop/relevant-contracts/dao",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/relevant-contracts/dao.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "dao",
+    "sidebar_label": "Autonomous Organizations (DAO)",
+    "title": "Decentralized Autonomous Organizations"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Decentralized Oracles",
+    "permalink": "/zh-CN/develop/relevant-contracts/oracles"
+  },
+  "next": {
+    "title": "Guest Book",
+    "permalink": "/zh-CN/tutorials/examples/guest-book"
+  }
+}

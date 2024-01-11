@@ -1,0 +1,28 @@
+{
+  "id": "bos/api/storage",
+  "title": "스토리지 API",
+  "description": "Storage 객체는 새로 고침을해도 지속되는 컴포넌트에 대한 데이터를 저장하는 객체입니다. localStorage 액세스를 시뮬레이션합니다. 4가지 메서드가 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/bos/api/storage.md",
+  "sourceDirName": "bos/api",
+  "slug": "/bos/api/storage",
+  "permalink": "/ko/bos/api/storage",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/api/storage.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "storage",
+    "title": "스토리지 API",
+    "sidebar_label": "스토리지"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "가져오기",
+    "permalink": "/ko/bos/api/fetch"
+  },
+  "next": {
+    "title": "Primitives",
+    "permalink": "/ko/bos/api/primitives"
+  }
+}

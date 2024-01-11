@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/nfts/core",
+  "title": "Core",
+  "description": "In this tutorial you'll learn how to implement the core standards into your smart contract. Nếu bạn tham gia với chúng tôi lần đầu, đừng ngại clone repo này và checkout branch 3.enumeration để theo dõi.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/3.tutorials/nfts/4-core.md",
+  "sourceDirName": "3.tutorials/nfts",
+  "slug": "/tutorials/nfts/core",
+  "permalink": "/vi/tutorials/nfts/core",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/4-core.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "id": "core",
+    "title": "Core",
+    "sidebar_label": "Core"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Enumeration",
+    "permalink": "/vi/tutorials/nfts/enumeration"
+  },
+  "next": {
+    "title": "Approval",
+    "permalink": "/vi/tutorials/nfts/approvals"
+  }
+}

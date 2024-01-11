@@ -1,0 +1,27 @@
+{
+  "id": "sdk/rust/contract-interface/payable-methods",
+  "title": "Payable Methods",
+  "description": "We can allow methods to accept token transfer together with the function call. Điều này được thực hiện để các contract có thể xác định một khoản phí trong các token cần phải trả khi chúng được sử dụng. By default the methods are not payable and they will panic if someone will attempt to transfer tokens to them during the invocation. Điều này được thực hiện vì lý do an toàn, trong trường hợp ai đó vô tình chuyển token trong function call.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/sdk/rust/contract-interface/payable-methods.md",
+  "sourceDirName": "sdk/rust/contract-interface",
+  "slug": "/sdk/rust/contract-interface/payable-methods",
+  "permalink": "/vi/sdk/rust/contract-interface/payable-methods",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/rust/contract-interface/payable-methods.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_position": 4
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "Private Methods",
+    "permalink": "/vi/sdk/rust/contract-interface/private-methods"
+  },
+  "next": {
+    "title": "Serialization Protocols",
+    "permalink": "/vi/sdk/rust/contract-interface/serialization-interface"
+  }
+}

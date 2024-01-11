@@ -1,0 +1,26 @@
+{
+  "id": "concepts/data-flow/token-transfer-flow",
+  "title": "Token Transfer flow",
+  "description": "In the previous article we saw an example of token transfer between accounts found in different shards. That example was simplified and missed a few steps in the process. That was intentional, to keep the article and the video short yet explanatory, in order to give you a bigger picture for understanding concepts.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/1.concepts/data-flow/token-transfer-flow.md",
+  "sourceDirName": "1.concepts/data-flow",
+  "slug": "/concepts/data-flow/token-transfer-flow",
+  "permalink": "/vi/concepts/data-flow/token-transfer-flow",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/data-flow/token-transfer-flow.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "sidebar_label": "Token Transfer"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "NEAR Data Flow",
+    "permalink": "/vi/concepts/data-flow/near-data-flow"
+  },
+  "next": {
+    "title": "Tokens",
+    "permalink": "/vi/concepts/basics/tokens"
+  }
+}

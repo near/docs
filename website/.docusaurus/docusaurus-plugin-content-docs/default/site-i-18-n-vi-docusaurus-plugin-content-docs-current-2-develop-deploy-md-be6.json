@@ -1,0 +1,28 @@
+{
+  "id": "develop/deploy",
+  "title": "NEAR CLI - Basics",
+  "description": "After your contract is ready you can deploy it in the NEAR network for everyone to use it.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.develop/deploy.md",
+  "sourceDirName": "2.develop",
+  "slug": "/develop/deploy",
+  "permalink": "/vi/develop/deploy",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/deploy.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "deploy",
+    "title": "NEAR CLI - Basics",
+    "sidebar_label": "Deploying and Using"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Workspaces Migration",
+    "permalink": "/vi/develop/testing/workspaces-migration"
+  },
+  "next": {
+    "title": "Updating Contracts",
+    "permalink": "/vi/develop/upgrade"
+  }
+}

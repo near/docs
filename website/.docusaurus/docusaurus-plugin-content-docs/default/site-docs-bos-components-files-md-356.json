@@ -1,0 +1,31 @@
+{
+  "id": "bos/components/files",
+  "title": "Files",
+  "description": "Files is a built-in component that enables to input files with drag and drop support. To use this feature, simply use the Files component. This component is a dependency from the IpfsImageUpload component.",
+  "source": "@site/../docs/bos/components/files.md",
+  "sourceDirName": "bos/components",
+  "slug": "/bos/components/files",
+  "permalink": "/bos/components/files",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/components/files.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1682457647,
+  "formattedLastUpdatedAt": "Apr 25, 2023",
+  "frontMatter": {
+    "id": "files",
+    "title": "Files",
+    "sidebar_label": "Files"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "Image Uploader",
+    "permalink": "/bos/components/ipfs"
+  },
+  "next": {
+    "title": "Markdown",
+    "permalink": "/bos/components/markdown"
+  }
+}

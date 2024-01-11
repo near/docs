@@ -1,0 +1,27 @@
+{
+  "id": "api/rpc/network",
+  "title": "네트워크",
+  "description": "RPC API를 사용하면 노드 및 밸리데이터에 대한 상태 정보를 쿼리할 수 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/5.api/rpc/network.md",
+  "sourceDirName": "5.api/rpc",
+  "slug": "/api/rpc/network",
+  "permalink": "/ko/api/rpc/network",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/5.api/rpc/network.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "network",
+    "title": "네트워크"
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "프로토콜",
+    "permalink": "/ko/api/rpc/protocol"
+  },
+  "next": {
+    "title": "트랜잭션",
+    "permalink": "/ko/api/rpc/transactions"
+  }
+}

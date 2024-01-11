@@ -1,0 +1,18 @@
+{
+  "id": "tutorials/examples/blockvote-js",
+  "title": "BlockVote JS 에디션",
+  "description": "BlockVote JS Edition은 Near Protocol 블록체인에서 JavaScript를 사용하여 구축된 블록체인 기반 투표 애플리케이션입니다. 이 애플리케이션을 통해 사용자는 선거에서 안전하게 투표하고 결과를 블록체인에 기록하여 투명하고 변경될 수 없도록 할 수 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/examples/blockvote-js-edition.md",
+  "sourceDirName": "3.tutorials/examples",
+  "slug": "/tutorials/examples/blockvote-js",
+  "permalink": "/ko/tutorials/examples/blockvote-js",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/examples/blockvote-js-edition.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "blockvote-js",
+    "sidebar_label": "BlockVote JS"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/crosswords/intermediate/linkdrop",
+  "title": "Introducing the linkdrop contract we can use",
+  "description": "We're going to take a small detour to talk about the linkdrop smart contract.  It's best that we first understand this contract and its purpose, then discuss calling a method on this contract.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/3.tutorials/crosswords/03-intermediate/03-linkdrop.md",
+  "sourceDirName": "3.tutorials/crosswords/03-intermediate",
+  "slug": "/tutorials/crosswords/intermediate/linkdrop",
+  "permalink": "/vi/tutorials/crosswords/intermediate/linkdrop",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/crosswords/03-intermediate/03-linkdrop.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_position": 4,
+    "sidebar_label": "Linkdrop contract",
+    "title": "Introducing the linkdrop contract we can use"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Seed phrase logic",
+    "permalink": "/vi/tutorials/crosswords/intermediate/use-seed-phrase"
+  },
+  "next": {
+    "title": "Cross-contract calls, etc.",
+    "permalink": "/vi/tutorials/crosswords/intermediate/cross-contract-calls"
+  }
+}

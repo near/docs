@@ -1,0 +1,27 @@
+{
+  "id": "api/rpc/protocol",
+  "title": "프로토콜",
+  "description": "RPC API를 사용하면 현재 제네시스 및 프로토콜 구성(config)을 검색할 수 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/5.api/rpc/protocol.md",
+  "sourceDirName": "5.api/rpc",
+  "slug": "/api/rpc/protocol",
+  "permalink": "/ko/api/rpc/protocol",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/5.api/rpc/protocol.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "protocol",
+    "title": "프로토콜"
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "가스",
+    "permalink": "/ko/api/rpc/gas"
+  },
+  "next": {
+    "title": "네트워크",
+    "permalink": "/ko/api/rpc/network"
+  }
+}

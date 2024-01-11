@@ -1,0 +1,27 @@
+{
+  "id": "tools/realtime",
+  "title": "Real-time Events (WebSocket)",
+  "description": "탈중앙화 앱을 개발하는 동안, 실시간으로 특정 이벤트를 추적하고 싶을 수 있습니다. 예를 들어 특정 NFT 마켓플레이스에서 판매가 발생할 때마다 정보를 받고 싶을 수 있습니다. 이것이 가능하려면 다음과 같은 것들이 필요합니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/4.tools/events.md",
+  "sourceDirName": "4.tools",
+  "slug": "/tools/realtime",
+  "permalink": "/ko/tools/realtime",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/4.tools/events.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "realtime",
+    "title": "Real-time Events (WebSocket)"
+  },
+  "sidebar": "indexers",
+  "previous": {
+    "title": "StateChange",
+    "permalink": "/ko/develop/lake/structures/state-change"
+  },
+  "next": {
+    "title": "Indexing Solutions",
+    "permalink": "/ko/tools/indexing"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "api/rpc/transactions",
+  "title": "RPC Endpoints",
+  "description": "The RPC API enables you to send transactions and query their status.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/5.api/rpc/transactions.md",
+  "sourceDirName": "5.api/rpc",
+  "slug": "/api/rpc/transactions",
+  "permalink": "/zh-CN/api/rpc/transactions",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/5.api/rpc/transactions.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "transactions",
+    "title": "RPC Endpoints",
+    "sidebar_label": "Transactions"
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Network",
+    "permalink": "/zh-CN/api/rpc/network"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "sdk/js/promises/deploy-contract",
+  "title": "Deploying Contracts",
+  "description": "You might want your smart contract to deploy subsequent smart contract code for a few reasons:",
+  "source": "@site/../docs/sdk/js/promises/deploy-contract.md",
+  "sourceDirName": "sdk/js/promises",
+  "slug": "/sdk/js/promises/deploy-contract",
+  "permalink": "/sdk/js/promises/deploy-contract",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/js/promises/deploy-contract.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Luís Freitas",
+  "lastUpdatedAt": 1691161414,
+  "formattedLastUpdatedAt": "Aug 4, 2023",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_position": 4
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "Creating Accounts",
+    "permalink": "/sdk/js/promises/create-account"
+  },
+  "next": {
+    "title": "Basic Instructions",
+    "permalink": "/sdk/js/building/basics"
+  }
+}

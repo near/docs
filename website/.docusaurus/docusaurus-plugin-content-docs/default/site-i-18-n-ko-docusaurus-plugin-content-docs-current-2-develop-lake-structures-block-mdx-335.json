@@ -1,0 +1,28 @@
+{
+  "id": "develop/lake/structures/block",
+  "title": "Block Structure",
+  "description": "Definition",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.develop/lake/structures/block.mdx",
+  "sourceDirName": "2.develop/lake/structures",
+  "slug": "/develop/lake/structures/block",
+  "permalink": "/ko/develop/lake/structures/block",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/lake/structures/block.mdx",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2,
+    "sidebar_label": "Block"
+  },
+  "sidebar": "indexers",
+  "previous": {
+    "title": "Table of contents",
+    "permalink": "/ko/develop/lake/structures/toc"
+  },
+  "next": {
+    "title": "Chunk",
+    "permalink": "/ko/develop/lake/structures/chunk"
+  }
+}

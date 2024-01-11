@@ -1,0 +1,28 @@
+{
+  "id": "bos/api/storage",
+  "title": "Storage API",
+  "description": "Storage object to store data for components that is persistent across refreshes. Simulates localStorage access. It has 4 methods:",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/bos/api/storage.md",
+  "sourceDirName": "bos/api",
+  "slug": "/bos/api/storage",
+  "permalink": "/vi/bos/api/storage",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/api/storage.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "storage",
+    "title": "Storage API",
+    "sidebar_label": "Storage"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "Fetch",
+    "permalink": "/vi/bos/api/fetch"
+  },
+  "next": {
+    "title": "Primitives",
+    "permalink": "/vi/bos/api/primitives"
+  }
+}

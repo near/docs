@@ -1,0 +1,28 @@
+{
+  "id": "concepts/storage/data-storage",
+  "title": "Data Storage / Collections",
+  "description": "All data stored on the NEAR blockchain is done in key / value pairs. There are several collection methods in the SDKs we've created that will help you store your data on chain.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/1.concepts/storage/data-collections.md",
+  "sourceDirName": "1.concepts/storage",
+  "slug": "/concepts/storage/data-storage",
+  "permalink": "/zh-CN/concepts/storage/data-storage",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/storage/data-collections.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "data-storage",
+    "title": "Data Storage / Collections",
+    "sidebar_label": "Storage on NEAR"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Avoiding Token Loss",
+    "permalink": "/zh-CN/concepts/basics/token-loss"
+  },
+  "next": {
+    "title": "Storage Staking",
+    "permalink": "/zh-CN/concepts/storage/storage-staking"
+  }
+}

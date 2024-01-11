@@ -1,0 +1,30 @@
+{
+  "id": "develop/contracts/security/audits",
+  "title": "Audit Program",
+  "description": "Pagoda’s Smart Contract Audit Program is an important step in expanding smart contract audits and enhancing ecosystem security. It allows projects to get an audit with a vetted firm in a timely manner.",
+  "source": "@site/../docs/2.develop/contracts/security/audits.md",
+  "sourceDirName": "2.develop/contracts/security",
+  "slug": "/develop/contracts/security/audits",
+  "permalink": "/develop/contracts/security/audits",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/contracts/security/audits.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1673445665,
+  "formattedLastUpdatedAt": "Jan 11, 2023",
+  "frontMatter": {
+    "id": "audits",
+    "title": "Audit Program"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Random Numbers",
+    "permalink": "/develop/contracts/security/random"
+  },
+  "next": {
+    "title": "Bug Bounty Program",
+    "permalink": "/develop/contracts/security/bounty"
+  }
+}

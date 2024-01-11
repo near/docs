@@ -1,0 +1,28 @@
+{
+  "id": "tools/near-api-js/quick-reference",
+  "title": "JavaScript API를 사용하여 NEAR와 상호 작용",
+  "description": "빠른 참고",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/4.tools/near-api-js/quick-reference.md",
+  "sourceDirName": "4.tools/near-api-js",
+  "slug": "/tools/near-api-js/quick-reference",
+  "permalink": "/ko/tools/near-api-js/quick-reference",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/4.tools/near-api-js/quick-reference.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "quick-reference",
+    "title": "JavaScript API를 사용하여 NEAR와 상호 작용",
+    "sidebar_label": "JavaScript API 사용"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "Home",
+    "permalink": "/ko/tools/welcome"
+  },
+  "next": {
+    "title": "지갑",
+    "permalink": "/ko/tools/near-api-js/wallet"
+  }
+}

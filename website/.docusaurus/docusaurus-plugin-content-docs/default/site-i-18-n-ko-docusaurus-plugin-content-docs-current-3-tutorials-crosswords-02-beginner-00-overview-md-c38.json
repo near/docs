@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/crosswords/beginner/overview",
+  "title": "몇 가지 초보자용 주제들의 핵심",
+  "description": "지난 챕터에서 우리는 Rust를 설치하고 간단한 스마트 컨트랙트를 실행했습니다. 그러나 컨트랙트에는 몇 가지 문제가 있으며, 원하는 만큼 강력하지 않습니다. 예를 들어, 우리는 스마트 컨트랙트에 하나의 십자말풀이 퍼즐만 저장할 수 있고, 프론트엔드는 하드코딩되어 있으며, 승리한 사람에게 어떠한 인센티브도 제공하지 않습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/crosswords/02-beginner/00-overview.md",
+  "sourceDirName": "3.tutorials/crosswords/02-beginner",
+  "slug": "/tutorials/crosswords/beginner/overview",
+  "permalink": "/ko/tutorials/crosswords/beginner/overview",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/crosswords/02-beginner/00-overview.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1,
+    "sidebar_label": "개요",
+    "title": "몇 가지 초보자용 주제들의 핵심"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "간단한 프론트엔드 추가",
+    "permalink": "/ko/tutorials/crosswords/basics/simple-frontend"
+  },
+  "next": {
+    "title": "여러 퍼즐 저장",
+    "permalink": "/ko/tutorials/crosswords/beginner/collections"
+  }
+}

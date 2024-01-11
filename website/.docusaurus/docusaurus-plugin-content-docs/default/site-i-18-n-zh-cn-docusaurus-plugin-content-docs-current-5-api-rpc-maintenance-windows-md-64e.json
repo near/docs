@@ -1,0 +1,18 @@
+{
+  "id": "api/rpc/maintenance-windows",
+  "title": "Maintenance Windows",
+  "description": "The RPC API enables you to query future maintenance windows for a specific validator in current epoch",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/5.api/rpc/maintenance-windows.md",
+  "sourceDirName": "5.api/rpc",
+  "slug": "/api/rpc/maintenance-windows",
+  "permalink": "/zh-CN/api/rpc/maintenance-windows",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/5.api/rpc/maintenance-windows.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "maintenance-windows",
+    "title": "Maintenance Windows"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/nfts/royalty",
+  "title": "로열티",
+  "description": "이 튜토리얼에서는 NFT(Non-Fungible Token) 스마트 컨트랙트를 계속 구축하고, NFT에 영구 로열티를 구현하는 방법을 배웁니다. 이를 통해 사람들은 NFT가 판매될 때 구매 가격의 일정 비율을 얻을 수 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/nfts/6-royalty.md",
+  "sourceDirName": "3.tutorials/nfts",
+  "slug": "/tutorials/nfts/royalty",
+  "permalink": "/ko/tutorials/nfts/royalty",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/6-royalty.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 6,
+  "frontMatter": {
+    "id": "royalty",
+    "title": "로열티",
+    "sidebar_label": "로열티"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "승인",
+    "permalink": "/ko/tutorials/nfts/approvals"
+  },
+  "next": {
+    "title": "이벤트",
+    "permalink": "/ko/tutorials/nfts/events"
+  }
+}

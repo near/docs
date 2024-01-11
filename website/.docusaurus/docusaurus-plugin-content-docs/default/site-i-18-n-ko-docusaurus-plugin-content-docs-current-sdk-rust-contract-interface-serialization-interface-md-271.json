@@ -1,0 +1,27 @@
+{
+  "id": "sdk/rust/contract-interface/serialization-interface",
+  "title": "직렬화 프로토콜",
+  "description": "SDK 내의 직렬화 형식은 자료 구조가 스마트 컨트랙트의 메서드로 데이터를 전달하거나 상태에 데이터를 저장하는 데 필요한 바이트로 변환하는 방식에 대해 정의합니다. 메서드 매개변수의 경우, SDK에서 JSON(기본값)과 Borsh를 지원하며, 데이터를 온체인에 저장하기 위해서는 Borsh를 사용합니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/sdk/rust/contract-interface/serialization-interface.md",
+  "sourceDirName": "sdk/rust/contract-interface",
+  "slug": "/sdk/rust/contract-interface/serialization-interface",
+  "permalink": "/ko/sdk/rust/contract-interface/serialization-interface",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/rust/contract-interface/serialization-interface.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "sidebar_position": 5
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "지불 메서드",
+    "permalink": "/ko/sdk/rust/contract-interface/payable-methods"
+  },
+  "next": {
+    "title": "콜백",
+    "permalink": "/ko/sdk/rust/cross-contract/callbacks"
+  }
+}

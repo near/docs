@@ -1,0 +1,26 @@
+{
+  "id": "tutorials/indexer/lake-start-options",
+  "title": "시작 옵션으로 Lake 인덱서 확장",
+  "description": "끝",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/indexer/lake-start-options.md",
+  "sourceDirName": "3.tutorials/indexer",
+  "slug": "/tutorials/indexer/lake-start-options",
+  "permalink": "/ko/tutorials/indexer/lake-start-options",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/indexer/lake-start-options.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "sidebar_label": "시작 옵션"
+  },
+  "sidebar": "indexers",
+  "previous": {
+    "title": "Running Lake Indexer",
+    "permalink": "/ko/tutorials/indexer/run-lake-indexer"
+  },
+  "next": {
+    "title": "자격 증명",
+    "permalink": "/ko/tutorials/indexer/credentials"
+  }
+}

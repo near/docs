@@ -1,0 +1,27 @@
+{
+  "id": "concepts/data-flow/data-storage",
+  "title": "블록체인 데이터",
+  "description": "이 글에서는 블록체인 데이터 읽기 및 쓰기를 용이하게 하는 블록체인 개념 및 도구에 대한 높은 수준의 개요를 다룹니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/1.concepts/data-flow/data-storage.md",
+  "sourceDirName": "1.concepts/data-flow",
+  "slug": "/concepts/data-flow/data-storage",
+  "permalink": "/ko/concepts/data-flow/data-storage",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/data-flow/data-storage.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "data-storage",
+    "sidebar_label": "블록체인 데이터"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "에포크",
+    "permalink": "/ko/concepts/basics/epoch"
+  },
+  "next": {
+    "title": "인덱서 소개",
+    "permalink": "/ko/concepts/advanced/indexers"
+  }
+}

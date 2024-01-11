@@ -1,0 +1,30 @@
+{
+  "id": "sdk/rust/contract-interface/private-methods",
+  "title": "Private Methods",
+  "description": "When using callbacks",
+  "source": "@site/../docs/sdk/rust/contract-interface/private-methods.md",
+  "sourceDirName": "sdk/rust/contract-interface",
+  "slug": "/sdk/rust/contract-interface/private-methods",
+  "permalink": "/sdk/rust/contract-interface/private-methods",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/rust/contract-interface/private-methods.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1661352815,
+  "formattedLastUpdatedAt": "Aug 24, 2022",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "Contract Mutability",
+    "permalink": "/sdk/rust/contract-interface/contract-mutability"
+  },
+  "next": {
+    "title": "Payable Methods",
+    "permalink": "/sdk/rust/contract-interface/payable-methods"
+  }
+}

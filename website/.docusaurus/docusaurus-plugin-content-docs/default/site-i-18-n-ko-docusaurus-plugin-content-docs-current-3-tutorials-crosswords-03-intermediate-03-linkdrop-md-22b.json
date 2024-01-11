@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/crosswords/intermediate/linkdrop",
+  "title": "사용 중인 Linkdrop 컨트랙트 소개",
+  "description": "우리는 linkdrop 스마트 컨트랙트에 대해 이야기하기 위해, 약간 다른 이야기를 할 것입니다.  먼저 이 컨트랙트와 그 목적을 이해한 다음 이 컨트랙트에서 메서드 호출에 대해 논의하는 것이 가장 좋습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/crosswords/03-intermediate/03-linkdrop.md",
+  "sourceDirName": "3.tutorials/crosswords/03-intermediate",
+  "slug": "/tutorials/crosswords/intermediate/linkdrop",
+  "permalink": "/ko/tutorials/crosswords/intermediate/linkdrop",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/crosswords/03-intermediate/03-linkdrop.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_position": 4,
+    "sidebar_label": "Linkdrop 컨트랙트",
+    "title": "사용 중인 Linkdrop 컨트랙트 소개"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "시드 문구 로직",
+    "permalink": "/ko/tutorials/crosswords/intermediate/use-seed-phrase"
+  },
+  "next": {
+    "title": "교차 컨트랙트 호출 등",
+    "permalink": "/ko/tutorials/crosswords/intermediate/cross-contract-calls"
+  }
+}

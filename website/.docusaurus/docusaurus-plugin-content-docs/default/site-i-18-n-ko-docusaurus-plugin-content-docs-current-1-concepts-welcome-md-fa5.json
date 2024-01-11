@@ -1,0 +1,25 @@
+{
+  "id": "concepts/welcome",
+  "title": "NEAR Protocol Overview",
+  "description": "어서오세요! 여기에서는 NEAR 프로토콜이 무엇인지, 어떻게 구성되었고 어떻게 작동되는지에 대해 설명합니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/1.concepts/welcome.md",
+  "sourceDirName": "1.concepts",
+  "slug": "/concepts/welcome",
+  "permalink": "/ko/concepts/welcome",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/welcome.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "welcome",
+    "title": "NEAR Protocol Overview",
+    "sidebar_label": "홈",
+    "hide_table_of_contents": true
+  },
+  "sidebar": "concepts",
+  "next": {
+    "title": "⭐ NEAR란 무엇인가요?",
+    "permalink": "/ko/concepts/basics/protocol"
+  }
+}

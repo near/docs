@@ -1,0 +1,27 @@
+{
+  "id": "bos/api/near",
+  "title": "Near",
+  "description": "VM은 NEAR 블록체인과 상호작용하기 위한 편리한 API를 제공합니다. 세 가지 메서드가 존재합니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/bos/api/near.md",
+  "sourceDirName": "bos/api",
+  "slug": "/bos/api/near",
+  "permalink": "/ko/bos/api/near",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/api/near.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "near",
+    "title": "Near"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "상태",
+    "permalink": "/ko/bos/api/state"
+  },
+  "next": {
+    "title": "Overview",
+    "permalink": "/ko/bos/api/social"
+  }
+}

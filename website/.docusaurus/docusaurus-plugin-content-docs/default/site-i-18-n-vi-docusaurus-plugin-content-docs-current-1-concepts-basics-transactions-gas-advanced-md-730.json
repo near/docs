@@ -1,0 +1,27 @@
+{
+  "id": "concepts/basics/transactions/gas-advanced",
+  "title": "Gas - Advanced",
+  "description": "Chi phí của những thao tác phức tạp",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/1.concepts/basics/transactions/gas-advanced.md",
+  "sourceDirName": "1.concepts/basics/transactions",
+  "slug": "/concepts/basics/transactions/gas-advanced",
+  "permalink": "/vi/concepts/basics/transactions/gas-advanced",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/basics/transactions/gas-advanced.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "gas-advanced",
+    "title": "Gas - Advanced"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Gas",
+    "permalink": "/vi/concepts/basics/transactions/gas"
+  },
+  "next": {
+    "title": "NEAR Data Flow",
+    "permalink": "/vi/concepts/data-flow/near-data-flow"
+  }
+}

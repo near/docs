@@ -1,0 +1,32 @@
+{
+  "id": "sdk/rust/promises/intro",
+  "title": "Promises",
+  "description": "Transactions can be sent asynchronously from a contract through a Promise. Like Promises in many programming languages, these will cause code to be executed in the future. In the case of NEAR, this \"in the future\" means a transaction to be executed in the next block_ (or thereabouts), rather than in the same block as the original function call.",
+  "source": "@site/../docs/sdk/rust/promises/intro.md",
+  "sourceDirName": "sdk/rust/promises",
+  "slug": "/sdk/rust/promises/intro",
+  "permalink": "/sdk/rust/promises/intro",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/rust/promises/intro.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1702155614,
+  "formattedLastUpdatedAt": "Dec 9, 2023",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1,
+    "sidebar_label": "Introduction",
+    "pagination_label": "Promises: Introduction"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "Callbacks",
+    "permalink": "/sdk/rust/cross-contract/callbacks"
+  },
+  "next": {
+    "title": "Sending $NEAR",
+    "permalink": "/sdk/rust/promises/token-tx"
+  }
+}

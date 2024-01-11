@@ -1,0 +1,26 @@
+{
+  "id": "concepts/data-flow/token-transfer-flow",
+  "title": "토큰 전송 흐름",
+  "description": "이전 글에서 우리는 서로 다른 샤드에 있는 계정 간 토큰 전송의 예를 보았습니다. 이 예는 단순화되었으며 프로세스의 몇 단계가 누락되었습니다. 개념을 이해하기 위한 더 큰 그림을 제공하기 위해, 기사와 비디오를 일부러 짧지만 설명적으로 구성하였기 때문입니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/1.concepts/data-flow/token-transfer-flow.md",
+  "sourceDirName": "1.concepts/data-flow",
+  "slug": "/concepts/data-flow/token-transfer-flow",
+  "permalink": "/ko/concepts/data-flow/token-transfer-flow",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/data-flow/token-transfer-flow.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "sidebar_label": "토큰 전송"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "NEAR 데이터 흐름",
+    "permalink": "/ko/concepts/data-flow/near-data-flow"
+  },
+  "next": {
+    "title": "토큰",
+    "permalink": "/ko/concepts/basics/tokens"
+  }
+}

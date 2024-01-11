@@ -1,0 +1,27 @@
+{
+  "id": "bos/tutorial/quickstart",
+  "title": "⭐ 빠른 시작",
+  "description": "NEAR allows you to quicky develop fullstack decentralized applications by publishing all of its source code on-chain.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/bos/tutorial/quickstart.md",
+  "sourceDirName": "bos/tutorial",
+  "slug": "/bos/tutorial/quickstart",
+  "permalink": "/ko/bos/tutorial/quickstart",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/tutorial/quickstart.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "quickstart",
+    "title": "⭐ 빠른 시작"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "클립보드",
+    "permalink": "/ko/bos/api/clipboard"
+  },
+  "next": {
+    "title": "BOS Loader",
+    "permalink": "/ko/bos/dev/bos-loader"
+  }
+}

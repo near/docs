@@ -1,0 +1,27 @@
+{
+  "id": "tutorials/examples/advanced-xcc",
+  "title": "Complex Cross Contract Call",
+  "description": "This example presents 3 instances of complex cross-contract calls. Particularly, it shows:",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/3.tutorials/examples/advanced-xcc.md",
+  "sourceDirName": "3.tutorials/examples",
+  "slug": "/tutorials/examples/advanced-xcc",
+  "permalink": "/vi/tutorials/examples/advanced-xcc",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/examples/advanced-xcc.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "advanced-xcc",
+    "title": "Complex Cross Contract Call"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Factory",
+    "permalink": "/vi/tutorials/examples/factory"
+  },
+  "next": {
+    "title": "Self Upgrade & State Migration",
+    "permalink": "/vi/tutorials/examples/update-contract-migrate-state"
+  }
+}

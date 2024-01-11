@@ -1,0 +1,30 @@
+{
+  "id": "tutorials/examples/guest-book",
+  "title": "Guest Book",
+  "description": "Our Guest Book example is a simple app composed by two main components:",
+  "source": "@site/../docs/3.tutorials/examples/guest-book.md",
+  "sourceDirName": "3.tutorials/examples",
+  "slug": "/tutorials/examples/guest-book",
+  "permalink": "/tutorials/examples/guest-book",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/examples/guest-book.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1702155614,
+  "formattedLastUpdatedAt": "Dec 9, 2023",
+  "frontMatter": {
+    "id": "guest-book",
+    "title": "Guest Book"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Autonomous Organizations (DAO)",
+    "permalink": "/develop/relevant-contracts/dao"
+  },
+  "next": {
+    "title": "Cross Contract Call",
+    "permalink": "/tutorials/examples/xcc"
+  }
+}

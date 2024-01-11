@@ -1,0 +1,31 @@
+{
+  "id": "develop/contracts/quickstart",
+  "title": "Hello Contract",
+  "description": "NEAR accounts can host programs known as smart contracts. Smart contracts can store data, and expose methods so other users and contracts interact with them.",
+  "source": "@site/../docs/2.develop/contracts/quickstart.md",
+  "sourceDirName": "2.develop/contracts",
+  "slug": "/develop/contracts/quickstart",
+  "permalink": "/develop/contracts/quickstart",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/contracts/quickstart.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Damian Parrino",
+  "lastUpdatedAt": 1703272292,
+  "formattedLastUpdatedAt": "Dec 22, 2023",
+  "frontMatter": {
+    "id": "quickstart",
+    "title": "Hello Contract",
+    "sidebar_label": "⭐ Quickstart"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "What is a Smart Contract?",
+    "permalink": "/develop/contracts/whatisacontract"
+  },
+  "next": {
+    "title": "Modules, Types & Structs",
+    "permalink": "/develop/contracts/basics"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "tutorials/fts/defining-a-token",
+  "title": "Defining a Fungible Token",
+  "description": "This is the first of many tutorials in a series where you'll be creating a complete FT smart contract from scratch that conforms with all the NEAR FT standards. Today you'll learn what a Fungible Token is and how you can define one on the NEAR blockchain. You will be modifying a bare-bones skeleton smart contract by filling in the necessary code snippets needed to add this functionality.",
+  "source": "@site/../docs/3.tutorials/fts/2-define-a-token.md",
+  "sourceDirName": "3.tutorials/fts",
+  "slug": "/tutorials/fts/defining-a-token",
+  "permalink": "/tutorials/fts/defining-a-token",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/fts/2-define-a-token.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1701811626,
+  "formattedLastUpdatedAt": "Dec 5, 2023",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "id": "defining-a-token",
+    "title": "Defining a Fungible Token",
+    "sidebar_label": "Defining Your Token"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Contract Architecture",
+    "permalink": "/tutorials/fts/skeleton"
+  },
+  "next": {
+    "title": "Circulating Supply",
+    "permalink": "/tutorials/fts/circulating-supply"
+  }
+}

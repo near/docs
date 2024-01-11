@@ -1,0 +1,27 @@
+{
+  "id": "develop/contracts/environment/environment",
+  "title": "환경",
+  "description": "모든 메서드 실행에는 다음과 같은 것들과 관련된 환경이 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.develop/contracts/environment/environment.md",
+  "sourceDirName": "2.develop/contracts/environment",
+  "slug": "/develop/contracts/environment/",
+  "permalink": "/ko/develop/contracts/environment/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/contracts/environment/environment.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "environment",
+    "title": "환경"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "컨트랙트 클래스",
+    "permalink": "/ko/develop/contracts/anatomy"
+  },
+  "next": {
+    "title": "상태 & 자료구조",
+    "permalink": "/ko/develop/contracts/storage"
+  }
+}

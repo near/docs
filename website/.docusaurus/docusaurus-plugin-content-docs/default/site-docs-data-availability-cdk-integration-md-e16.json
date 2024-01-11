@@ -1,0 +1,26 @@
+{
+  "id": "data-availability/cdk-integration",
+  "title": "CDK Stack",
+  "description": "The folder ./cdk-stack contains some projects, too:",
+  "source": "@site/../docs/data-availability/cdk-integration.md",
+  "sourceDirName": "data-availability",
+  "slug": "/data-availability/cdk-integration",
+  "permalink": "/data-availability/cdk-integration",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/data-availability/cdk-integration.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "oscarabé",
+  "lastUpdatedAt": 1702381150,
+  "formattedLastUpdatedAt": "Dec 12, 2023",
+  "frontMatter": {
+    "id": "cdk-integration",
+    "title": "CDK Stack"
+  },
+  "sidebar": "data-availability",
+  "previous": {
+    "title": "Optimism",
+    "permalink": "/data-availability/optimism"
+  }
+}

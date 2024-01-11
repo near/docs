@@ -1,0 +1,28 @@
+{
+  "id": "primitives/linkdrop/introduction",
+  "title": "Introduction",
+  "description": "Linkdrops are an easy way to distribute blockchain items (NFTs, FTs) via links. You provide a link for user and they can claim your drop.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/7.primitives/linkdrop/introduction.md",
+  "sourceDirName": "7.primitives/linkdrop",
+  "slug": "/primitives/linkdrop/introduction",
+  "permalink": "/zh-CN/primitives/linkdrop/introduction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/linkdrop/introduction.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "introduction",
+    "title": "Introduction",
+    "hide_table_of_contents": false
+  },
+  "sidebar": "primitives",
+  "previous": {
+    "title": "NEAR CLI",
+    "permalink": "/zh-CN/primitives/dao/interacting/near-cli"
+  },
+  "next": {
+    "title": "NEAR Component",
+    "permalink": "/zh-CN/primitives/linkdrop/interacting/bos"
+  }
+}

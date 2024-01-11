@@ -1,0 +1,27 @@
+{
+  "id": "concepts/basics/accounts/creating-accounts",
+  "title": "Creating Accounts",
+  "description": "The simplest way to create NEAR accounts is through the NEAR Wallet, however, you can also create accounts using local tools.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/1.concepts/basics/accounts/creating-accounts.md",
+  "sourceDirName": "1.concepts/basics/accounts",
+  "slug": "/concepts/basics/accounts/creating-accounts",
+  "permalink": "/zh-CN/concepts/basics/accounts/creating-accounts",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/basics/accounts/creating-accounts.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "creating-accounts",
+    "title": "Creating Accounts"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "State",
+    "permalink": "/zh-CN/concepts/basics/accounts/state"
+  },
+  "next": {
+    "title": "Overview",
+    "permalink": "/zh-CN/concepts/basics/transactions/overview"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "tools/near-cli",
+  "title": "NEAR CLI",
+  "description": "The NEAR Command Line Interface (CLI) is a tool that enables to interact with the NEAR network directly from the shell. Among other things, the NEAR CLI enables you to:",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/4.tools/cli.md",
+  "sourceDirName": "4.tools",
+  "slug": "/tools/near-cli",
+  "permalink": "/zh-CN/tools/near-cli",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/4.tools/cli.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "near-cli",
+    "title": "NEAR CLI"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "Unit Tests",
+    "permalink": "/zh-CN/sdk/js/testing/unit-tests"
+  },
+  "next": {
+    "title": "NEAR CLI RS",
+    "permalink": "/zh-CN/tools/near-cli-rs"
+  }
+}

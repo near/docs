@@ -1,0 +1,21 @@
+{
+  "id": "develop/prerequisites",
+  "title": "Prerequisites",
+  "description": "In order to develop smart contracts you will need Node.js for javascript, and the rust toolchain for Rust.",
+  "source": "@site/../docs/2.develop/prerequisites.md",
+  "sourceDirName": "2.develop",
+  "slug": "/develop/prerequisites",
+  "permalink": "/develop/prerequisites",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/prerequisites.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1660065481,
+  "formattedLastUpdatedAt": "Aug 9, 2022",
+  "frontMatter": {
+    "id": "prerequisites",
+    "title": "Prerequisites"
+  }
+}

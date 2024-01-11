@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/crosswords/intermediate/access-key-solution",
+  "title": "Replacing the solution hash with an access key",
+  "description": "So far in this tutorial, the user sends the plaintext solution to the crossword puzzle smart contract, where it's hashed and compared with the known answer.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/3.tutorials/crosswords/03-intermediate/01-access-key-solution.md",
+  "sourceDirName": "3.tutorials/crosswords/03-intermediate",
+  "slug": "/tutorials/crosswords/intermediate/access-key-solution",
+  "permalink": "/vi/tutorials/crosswords/intermediate/access-key-solution",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/crosswords/03-intermediate/01-access-key-solution.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2,
+    "sidebar_label": "Solution as seed phrase",
+    "title": "Replacing the solution hash with an access key"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Tổng quan",
+    "permalink": "/vi/tutorials/crosswords/intermediate/overview"
+  },
+  "next": {
+    "title": "Seed phrase logic",
+    "permalink": "/vi/tutorials/crosswords/intermediate/use-seed-phrase"
+  }
+}

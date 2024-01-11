@@ -1,0 +1,28 @@
+{
+  "id": "bos/components/infinite-scroll",
+  "title": "InfiniteScroll",
+  "description": "Infinitely load a grid or list of items. This component allows you to create a simple, lightweight infinite scrolling page or element by supporting both window and scrollable elements.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/bos/components/infiniteScroll.md",
+  "sourceDirName": "bos/components",
+  "slug": "/bos/components/infinite-scroll",
+  "permalink": "/zh-CN/bos/components/infinite-scroll",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/components/infiniteScroll.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "infinite-scroll",
+    "title": "InfiniteScroll",
+    "sidebar_label": "InfiniteScroll"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "OverlayTrigger",
+    "permalink": "/zh-CN/bos/components/overlay-trigger"
+  },
+  "next": {
+    "title": "TypeAhead",
+    "permalink": "/zh-CN/bos/components/typeahead"
+  }
+}

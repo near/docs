@@ -1,0 +1,28 @@
+{
+  "id": "integrator/fungible-tokens",
+  "title": "대체 가능한 토큰 (Fungible Token)",
+  "description": "소개",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/6.integrator/tokens.md",
+  "sourceDirName": "6.integrator",
+  "slug": "/integrator/fungible-tokens",
+  "permalink": "/ko/integrator/fungible-tokens",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/6.integrator/tokens.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "fungible-tokens",
+    "title": "대체 가능한 토큰 (Fungible Token)",
+    "sidebar_label": "대체 가능한 토큰"
+  },
+  "sidebar": "exchanges",
+  "previous": {
+    "title": "트랜잭션 생성",
+    "permalink": "/ko/integrator/create-transactions"
+  },
+  "next": {
+    "title": "암시적 계정",
+    "permalink": "/ko/integrator/implicit-accounts"
+  }
+}

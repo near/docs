@@ -1,0 +1,28 @@
+{
+  "id": "bos/components/overlay-trigger",
+  "title": "OverlayTrigger",
+  "description": "OverlayTrigger는 마우스가 DOM 요소 위에 있을 때 메시지 또는 아이콘을 표시하는 데 사용됩니다. 일반적인 사용 사례는 팝업 또는 도구 설명과 같을 수 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/bos/components/overlayTrigger.md",
+  "sourceDirName": "bos/components",
+  "slug": "/bos/components/overlay-trigger",
+  "permalink": "/ko/bos/components/overlay-trigger",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/components/overlayTrigger.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "overlay-trigger",
+    "title": "OverlayTrigger",
+    "sidebar_label": "OverlayTrigger"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "마크다운",
+    "permalink": "/ko/bos/components/markdown"
+  },
+  "next": {
+    "title": "InfiniteScroll",
+    "permalink": "/ko/bos/components/infinite-scroll"
+  }
+}

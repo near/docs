@@ -1,0 +1,28 @@
+{
+  "id": "sdk/welcome",
+  "title": "NEAR SDKs",
+  "description": "Explore our language-specific SDK documentation",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/sdk/welcome.md",
+  "sourceDirName": "sdk",
+  "slug": "/sdk/welcome",
+  "permalink": "/zh-CN/sdk/welcome",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/welcome.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "welcome",
+    "title": "NEAR SDKs",
+    "hide_table_of_contents": false
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "FAQ",
+    "permalink": "/zh-CN/tools/near-api-js/faq"
+  },
+  "next": {
+    "title": "About Rust SDK",
+    "permalink": "/zh-CN/sdk/rust/introduction"
+  }
+}

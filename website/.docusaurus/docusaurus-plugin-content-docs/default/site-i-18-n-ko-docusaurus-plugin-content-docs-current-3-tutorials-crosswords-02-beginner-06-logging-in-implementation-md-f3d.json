@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/crosswords/beginner/logging-in-implementation",
+  "title": "로그인 버튼 구현",
+  "description": "계획",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/crosswords/02-beginner/06-logging-in-implementation.md",
+  "sourceDirName": "3.tutorials/crosswords/02-beginner",
+  "slug": "/tutorials/crosswords/beginner/logging-in-implementation",
+  "permalink": "/ko/tutorials/crosswords/beginner/logging-in-implementation",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/crosswords/02-beginner/06-logging-in-implementation.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 6,
+  "frontMatter": {
+    "sidebar_position": 6,
+    "sidebar_label": "액세스 키 및 로그인 2/2",
+    "title": "로그인 버튼 구현"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "액세스 키 및 로그인 1/2",
+    "permalink": "/ko/tutorials/crosswords/beginner/logging-in"
+  },
+  "next": {
+    "title": "개요",
+    "permalink": "/ko/tutorials/crosswords/intermediate/overview"
+  }
+}

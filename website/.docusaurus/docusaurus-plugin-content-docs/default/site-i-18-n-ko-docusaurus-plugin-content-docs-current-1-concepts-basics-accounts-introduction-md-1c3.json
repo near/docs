@@ -1,0 +1,27 @@
+{
+  "id": "concepts/basics/accounts/model",
+  "title": "계정 모델",
+  "description": "NEAR 생태계에 참여하기 위해서는 사용자가 계정을 생성해야 합니다. NEAR 계정은 다른 블록체인 생태계와 비교했을 때 고유한 특성을 가지고 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/1.concepts/basics/accounts/introduction.md",
+  "sourceDirName": "1.concepts/basics/accounts",
+  "slug": "/concepts/basics/accounts/model",
+  "permalink": "/ko/concepts/basics/accounts/model",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/basics/accounts/introduction.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "model",
+    "title": "계정 모델"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "⭐ NEAR란 무엇인가요?",
+    "permalink": "/ko/concepts/basics/protocol"
+  },
+  "next": {
+    "title": "주소 (계정 ID)",
+    "permalink": "/ko/concepts/basics/accounts/account-id"
+  }
+}

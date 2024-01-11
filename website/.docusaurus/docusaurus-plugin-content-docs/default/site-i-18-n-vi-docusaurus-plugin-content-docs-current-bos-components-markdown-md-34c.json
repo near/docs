@@ -1,0 +1,28 @@
+{
+  "id": "bos/components/markdown",
+  "title": "Markdown Viewer",
+  "description": "Markdown is a built-in component that enables to render Markdown. To use this feature, simply use the Markdown component:",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/bos/components/markdown.md",
+  "sourceDirName": "bos/components",
+  "slug": "/bos/components/markdown",
+  "permalink": "/vi/bos/components/markdown",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/components/markdown.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "markdown",
+    "title": "Markdown Viewer",
+    "sidebar_label": "Markdown"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "Files",
+    "permalink": "/vi/bos/components/files"
+  },
+  "next": {
+    "title": "OverlayTrigger",
+    "permalink": "/vi/bos/components/overlay-trigger"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/fts/transfers",
+  "title": "대체 가능한 토큰 전송",
+  "description": "이 튜토리얼에서는 스마트 컨트랙트에 핵심 표준을 구현하는 방법을 배웁니다. 여기서는 토큰을 전송하고 수신할 수 있는 로직을 구현합니다. 처음 해보는 경우 이 레퍼지토리를 복제하고 4.storage 브랜치를 확인하세요.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/fts/5.transfers.md",
+  "sourceDirName": "3.tutorials/fts",
+  "slug": "/tutorials/fts/transfers",
+  "permalink": "/ko/tutorials/fts/transfers",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/fts/5.transfers.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "id": "transfers",
+    "title": "대체 가능한 토큰 전송",
+    "sidebar_label": "FT 전송"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "계정 등록",
+    "permalink": "/ko/tutorials/fts/registering-accounts"
+  },
+  "next": {
+    "title": "마켓플레이스에 FT 추가하기",
+    "permalink": "/ko/tutorials/fts/marketplace"
+  }
+}

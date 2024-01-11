@@ -1,0 +1,22 @@
+{
+  "id": "tutorials/welcome",
+  "title": "Examples & Tutorials",
+  "description": "Explore our collection of Examples and Tutorials",
+  "source": "@site/../docs/3.tutorials/welcome.md",
+  "sourceDirName": "3.tutorials",
+  "slug": "/tutorials/welcome",
+  "permalink": "/tutorials/welcome",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/welcome.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1702155614,
+  "formattedLastUpdatedAt": "Dec 9, 2023",
+  "frontMatter": {
+    "id": "welcome",
+    "title": "Examples & Tutorials",
+    "hide_table_of_contents": true
+  }
+}

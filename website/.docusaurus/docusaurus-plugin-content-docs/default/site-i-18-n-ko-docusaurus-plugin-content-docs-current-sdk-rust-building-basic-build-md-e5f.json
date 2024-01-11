@@ -1,0 +1,27 @@
+{
+  "id": "sdk/rust/building/basics",
+  "title": "기본 지침",
+  "description": "스마트 컨트랙트의 릴리스 버전을 컴파일하려면 다음을 실행할 수 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/sdk/rust/building/basic-build.md",
+  "sourceDirName": "sdk/rust/building",
+  "slug": "/sdk/rust/building/basics",
+  "permalink": "/ko/sdk/rust/building/basics",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/rust/building/basic-build.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "basics",
+    "title": "기본 지침"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "컨트랙트 배포",
+    "permalink": "/ko/sdk/rust/promises/deploy-contract"
+  },
+  "next": {
+    "title": "신속한 프로토타이핑",
+    "permalink": "/ko/sdk/rust/building/prototyping"
+  }
+}

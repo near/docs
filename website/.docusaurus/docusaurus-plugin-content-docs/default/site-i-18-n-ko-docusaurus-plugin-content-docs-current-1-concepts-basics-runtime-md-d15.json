@@ -1,0 +1,27 @@
+{
+  "id": "concepts/basics/runtime",
+  "title": "런타임",
+  "description": "이 섹션에는 핵심 런타임, 작동 방식 및 교차 컨트랙트 호출(cross-contract call)을 구현하는 방법을 탐색하는 비디오가 포함되어 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/1.concepts/basics/runtime.md",
+  "sourceDirName": "1.concepts/basics",
+  "slug": "/concepts/basics/runtime",
+  "permalink": "/ko/concepts/basics/runtime",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/basics/runtime.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "runtime",
+    "title": "런타임"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Lake 프레임워크",
+    "permalink": "/ko/concepts/advanced/near-lake-framework"
+  },
+  "next": {
+    "title": "사양",
+    "permalink": "/ko/concepts/advanced/specification"
+  }
+}

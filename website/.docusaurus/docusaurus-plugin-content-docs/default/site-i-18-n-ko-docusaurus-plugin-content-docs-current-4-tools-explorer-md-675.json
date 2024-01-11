@@ -1,0 +1,28 @@
+{
+  "id": "tools/explorer",
+  "title": "익스플로러",
+  "description": "익스플로러를 사용하면, 친숙한 사용자 인터페이스를 통해 블록체인에서 정보를 빠르게 얻을 수 있습니다. 이 유용한 도구는 예를 들어 다음과 같은 것들을 가능하게 합니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/4.tools/explorer.md",
+  "sourceDirName": "4.tools",
+  "slug": "/tools/explorer",
+  "permalink": "/ko/tools/explorer",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/4.tools/explorer.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "explorer",
+    "title": "익스플로러",
+    "sidebar_label": "Explorers"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "FastAuth SDK",
+    "permalink": "/ko/tools/fastauth-sdk"
+  },
+  "next": {
+    "title": "Indexing Solutions",
+    "permalink": "/ko/tools/indexing"
+  }
+}

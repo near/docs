@@ -1,0 +1,27 @@
+{
+  "id": "sdk/rust/contract-size",
+  "title": "컨트랙트 크기 축소",
+  "description": "조언 및 예시",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/sdk/rust/reduce-size.md",
+  "sourceDirName": "sdk/rust",
+  "slug": "/sdk/rust/contract-size",
+  "permalink": "/ko/sdk/rust/contract-size",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/rust/reduce-size.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "contract-size",
+    "title": "컨트랙트 크기 축소"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "모범 사례",
+    "permalink": "/ko/sdk/rust/best-practices"
+  },
+  "next": {
+    "title": "JavaScript SDK에 대해",
+    "permalink": "/ko/sdk/js/introduction"
+  }
+}

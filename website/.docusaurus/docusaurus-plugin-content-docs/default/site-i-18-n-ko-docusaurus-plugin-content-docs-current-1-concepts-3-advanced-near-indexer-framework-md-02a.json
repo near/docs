@@ -1,0 +1,26 @@
+{
+  "id": "concepts/advanced/near-indexer-framework",
+  "title": "NEAR 인덱서 프레임워크",
+  "description": "https://github.com/near/nearcore/tree/master/chain/indexer",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/1.concepts/3.advanced/near-indexer-framework.md",
+  "sourceDirName": "1.concepts/3.advanced",
+  "slug": "/concepts/advanced/near-indexer-framework",
+  "permalink": "/ko/concepts/advanced/near-indexer-framework",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/3.advanced/near-indexer-framework.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "sidebar_label": "인덱서 프레임워크"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "인덱서 소개",
+    "permalink": "/ko/concepts/advanced/indexers"
+  },
+  "next": {
+    "title": "Lake 프레임워크",
+    "permalink": "/ko/concepts/advanced/near-lake-framework"
+  }
+}

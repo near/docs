@@ -1,0 +1,30 @@
+{
+  "id": "concepts/basics/epoch",
+  "title": "Epoch",
+  "description": "An epoch is a unit of time when validators of the network remain constant. It is measured in blocks:",
+  "source": "@site/../docs/1.concepts/basics/epoch.md",
+  "sourceDirName": "1.concepts/basics",
+  "slug": "/concepts/basics/epoch",
+  "permalink": "/concepts/basics/epoch",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/basics/epoch.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1702155614,
+  "formattedLastUpdatedAt": "Dec 9, 2023",
+  "frontMatter": {
+    "id": "epoch",
+    "title": "Epoch"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Networks",
+    "permalink": "/concepts/basics/networks"
+  },
+  "next": {
+    "title": "Data on the Blockchain",
+    "permalink": "/concepts/data-flow/data-storage"
+  }
+}

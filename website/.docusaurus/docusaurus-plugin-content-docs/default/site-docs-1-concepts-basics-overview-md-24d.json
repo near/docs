@@ -1,0 +1,21 @@
+{
+  "id": "concepts/basics/overview",
+  "title": "Quick Overview",
+  "description": "Lets start with a quick overview of the different elements that compose the NEAR blockchain.",
+  "source": "@site/../docs/1.concepts/basics/overview.md",
+  "sourceDirName": "1.concepts/basics",
+  "slug": "/concepts/basics/overview",
+  "permalink": "/concepts/basics/overview",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/basics/overview.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1662476093,
+  "formattedLastUpdatedAt": "Sep 6, 2022",
+  "frontMatter": {
+    "id": "overview",
+    "title": "Quick Overview"
+  }
+}

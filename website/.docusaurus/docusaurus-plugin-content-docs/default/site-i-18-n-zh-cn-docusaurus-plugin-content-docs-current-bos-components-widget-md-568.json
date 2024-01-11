@@ -1,0 +1,27 @@
+{
+  "id": "bos/components/widgets",
+  "title": "Widget",
+  "description": "The predefined component Widget allows you to include an existing component into your code, thus enabling to create complex applications by composing components.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/bos/components/widget.md",
+  "sourceDirName": "bos/components",
+  "slug": "/bos/components/widgets",
+  "permalink": "/zh-CN/bos/components/widgets",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/components/widget.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "widgets",
+    "title": "Widget"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "Components",
+    "permalink": "/zh-CN/bos/components"
+  },
+  "next": {
+    "title": "Image Uploader",
+    "permalink": "/zh-CN/bos/components/ipfs"
+  }
+}

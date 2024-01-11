@@ -1,0 +1,29 @@
+{
+  "id": "develop/testing/kurtosis-localnet",
+  "title": "Creating a Local Development Environment",
+  "description": "Using Kurtosis NEAR Package to develop locally",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.develop/testing/kurtosis-localnet.md",
+  "sourceDirName": "2.develop/testing",
+  "slug": "/develop/testing/kurtosis-localnet",
+  "permalink": "/vi/develop/testing/kurtosis-localnet",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/testing/kurtosis-localnet.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "kurtosis-localnet",
+    "title": "Creating a Local Development Environment",
+    "sidebar_label": "Local Development",
+    "description": "Using Kurtosis NEAR Package to develop locally"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Integration Test",
+    "permalink": "/vi/develop/testing/integration-test"
+  },
+  "next": {
+    "title": "Workspaces Migration",
+    "permalink": "/vi/develop/testing/workspaces-migration"
+  }
+}

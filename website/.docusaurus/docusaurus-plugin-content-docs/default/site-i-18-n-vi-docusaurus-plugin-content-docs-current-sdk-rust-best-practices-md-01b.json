@@ -1,0 +1,27 @@
+{
+  "id": "sdk/rust/best-practices",
+  "title": "Best Practices",
+  "description": "Enable overflow checks",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/sdk/rust/best-practices.md",
+  "sourceDirName": "sdk/rust",
+  "slug": "/sdk/rust/best-practices",
+  "permalink": "/vi/sdk/rust/best-practices",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/rust/best-practices.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "best-practices",
+    "title": "Best Practices"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "Các Unit Test",
+    "permalink": "/vi/sdk/rust/testing/unit-tests"
+  },
+  "next": {
+    "title": "Reducing Contract Size",
+    "permalink": "/vi/sdk/rust/contract-size"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "develop/contracts/serialization",
+  "title": "Notes on Serialization",
+  "description": "Smart contracts need to be able to communicate complex data in a simple way, while also reading and storing such data into their states efficiently.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.develop/contracts/serialization.md",
+  "sourceDirName": "2.develop/contracts",
+  "slug": "/develop/contracts/serialization",
+  "permalink": "/zh-CN/develop/contracts/serialization",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/contracts/serialization.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "serialization",
+    "title": "Notes on Serialization"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "✅ Checklist",
+    "permalink": "/zh-CN/develop/contracts/security/checklist"
+  },
+  "next": {
+    "title": "Introduction",
+    "permalink": "/zh-CN/develop/testing/introduction"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "tutorials/examples/factory",
+  "title": "Factory",
+  "description": "A factory is a smart contract that stores a compiled contract on itself, and automatizes deploying it into",
+  "source": "@site/../docs/3.tutorials/examples/factory.md",
+  "sourceDirName": "3.tutorials/examples",
+  "slug": "/tutorials/examples/factory",
+  "permalink": "/tutorials/examples/factory",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/examples/factory.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1702155614,
+  "formattedLastUpdatedAt": "Dec 9, 2023",
+  "frontMatter": {
+    "id": "factory",
+    "title": "Factory"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Coin Flip",
+    "permalink": "/tutorials/examples/coin-flip"
+  },
+  "next": {
+    "title": "Complex Cross Contract Call",
+    "permalink": "/tutorials/examples/advanced-xcc"
+  }
+}

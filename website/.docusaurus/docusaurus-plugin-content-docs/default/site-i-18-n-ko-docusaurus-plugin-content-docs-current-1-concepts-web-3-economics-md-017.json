@@ -1,0 +1,28 @@
+{
+  "id": "concepts/web3/economics",
+  "title": "Web 3.0 경제학",
+  "description": "기술적인 탈중앙화와 함께, 경제적인 탈중앙화도 이루어졌습니다. 이는 NFT(대체 불가능 토큰), FT(대체 가능한 토큰), DeFi(탈중앙화 금융)의 3가지 기둥을 기반으로 합니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/1.concepts/web3/economics.md",
+  "sourceDirName": "1.concepts/web3",
+  "slug": "/concepts/web3/economics",
+  "permalink": "/ko/concepts/web3/economics",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/web3/economics.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "economics",
+    "title": "Web 3.0 경제학",
+    "sidebar_label": "경제학"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "NEAR 프로토콜",
+    "permalink": "/ko/concepts/web3/near"
+  },
+  "next": {
+    "title": "Web 2.0 앱을 위한 NFT",
+    "permalink": "/ko/concepts/web3/nfts"
+  }
+}

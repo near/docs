@@ -1,0 +1,27 @@
+{
+  "id": "sdk/rust/contract-structure/collections",
+  "title": "Collections",
+  "description": "When deciding on data structures to use for the data of the application, it is important to minimize the amount of data read and written to storage but also the amount of data serialized and deserialized to minimize the cost of transactions. It is important to understand the tradeoffs of data structures in your smart contract because it can become a bottleneck as the application scales and migrating the state to the new data structures will come at a cost.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/sdk/rust/contract-structure/collections.md",
+  "sourceDirName": "sdk/rust/contract-structure",
+  "slug": "/sdk/rust/contract-structure/collections",
+  "permalink": "/zh-CN/sdk/rust/contract-structure/collections",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/rust/contract-structure/collections.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "near_bindgen",
+    "permalink": "/zh-CN/sdk/rust/contract-structure/near-bindgen"
+  },
+  "next": {
+    "title": "Collections Nesting",
+    "permalink": "/zh-CN/sdk/rust/contract-structure/nesting"
+  }
+}

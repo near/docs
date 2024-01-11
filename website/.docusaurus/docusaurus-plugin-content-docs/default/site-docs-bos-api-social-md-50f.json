@@ -1,0 +1,30 @@
+{
+  "id": "bos/api/social",
+  "title": "Overview",
+  "description": "At the core of NEAR social interactions there is the SocialDB smart contract (currently deployed at social.near).",
+  "source": "@site/../docs/bos/api/social.md",
+  "sourceDirName": "bos/api",
+  "slug": "/bos/api/social",
+  "permalink": "/bos/api/social",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/api/social.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1704817578,
+  "formattedLastUpdatedAt": "Jan 9, 2024",
+  "frontMatter": {
+    "id": "social",
+    "title": "Overview"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "Near",
+    "permalink": "/bos/api/near"
+  },
+  "next": {
+    "title": "Social Indexer",
+    "permalink": "/bos/api/indexing"
+  }
+}

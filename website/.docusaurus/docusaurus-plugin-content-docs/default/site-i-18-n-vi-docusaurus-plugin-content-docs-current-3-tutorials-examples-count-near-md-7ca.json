@@ -1,0 +1,27 @@
+{
+  "id": "tutorials/examples/count-near",
+  "title": "Count on NEAR",
+  "description": "Our counter example is a friendly decentralized app that stores a number and exposes methods to increment, decrement, and reset it.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/3.tutorials/examples/count-near.md",
+  "sourceDirName": "3.tutorials/examples",
+  "slug": "/tutorials/examples/count-near",
+  "permalink": "/vi/tutorials/examples/count-near",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/examples/count-near.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "count-near",
+    "title": "Count on NEAR"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "Web Frontend",
+    "permalink": "/vi/develop/integrate/frontend"
+  },
+  "next": {
+    "title": "Donation",
+    "permalink": "/vi/tutorials/examples/donation"
+  }
+}

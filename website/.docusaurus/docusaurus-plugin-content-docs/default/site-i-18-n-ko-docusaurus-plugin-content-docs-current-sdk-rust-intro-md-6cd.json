@@ -1,0 +1,26 @@
+{
+  "id": "sdk/rust/get-started",
+  "title": "시작하기",
+  "description": "Rust 및 Wasm 툴체인 설치",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/sdk/rust/intro.md",
+  "sourceDirName": "sdk/rust",
+  "slug": "/sdk/rust/get-started",
+  "permalink": "/ko/sdk/rust/get-started",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/rust/intro.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "get-started"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "Rust SDK에 대해",
+    "permalink": "/ko/sdk/rust/introduction"
+  },
+  "next": {
+    "title": "near_bindgen",
+    "permalink": "/ko/sdk/rust/contract-structure/near-bindgen"
+  }
+}

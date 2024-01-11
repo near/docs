@@ -1,0 +1,26 @@
+{
+  "id": "concepts/data-flow/near-data-flow",
+  "title": "NEAR 데이터 흐름",
+  "description": "<iframe",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/1.concepts/data-flow/near-data-flow.md",
+  "sourceDirName": "1.concepts/data-flow",
+  "slug": "/concepts/data-flow/near-data-flow",
+  "permalink": "/ko/concepts/data-flow/near-data-flow",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/data-flow/near-data-flow.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "sidebar_label": "NEAR 데이터 흐름"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "가스 - 고급",
+    "permalink": "/ko/concepts/basics/transactions/gas-advanced"
+  },
+  "next": {
+    "title": "토큰 전송",
+    "permalink": "/ko/concepts/data-flow/token-transfer-flow"
+  }
+}

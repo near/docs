@@ -1,0 +1,28 @@
+{
+  "id": "bos/tutorial/indexer-tutorials/posts-indexer",
+  "title": "Posts Indexer",
+  "description": "NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/bos/tutorial/indexer-tutorials/posts-indexer.md",
+  "sourceDirName": "bos/tutorial/indexer-tutorials",
+  "slug": "/bos/tutorial/indexer-tutorials/posts-indexer",
+  "permalink": "/vi/bos/tutorial/indexer-tutorials/posts-indexer",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/tutorial/indexer-tutorials/posts-indexer.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "posts-indexer",
+    "title": "Posts Indexer",
+    "sidebar_label": "Posts Indexer"
+  },
+  "sidebar": "indexers",
+  "previous": {
+    "title": "Migrate from Lake framework",
+    "permalink": "/vi/bos/queryapi/migrate-from-near-lake"
+  },
+  "next": {
+    "title": "Hype Indexer",
+    "permalink": "/vi/bos/tutorial/indexer-tutorials/hype-indexer"
+  }
+}

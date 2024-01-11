@@ -1,0 +1,28 @@
+{
+  "id": "concepts/storage/storage-staking",
+  "title": "스토리지 스테이킹",
+  "description": "NEAR에 스마트 컨트랙트를 배포할 때, 스토리지 스테이킹이라는 메커니즘을 사용하여 이 컨트랙트에 필요한 스토리지 비용을 지불합니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/1.concepts/storage/storage-staking.md",
+  "sourceDirName": "1.concepts/storage",
+  "slug": "/concepts/storage/storage-staking",
+  "permalink": "/ko/concepts/storage/storage-staking",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/storage/storage-staking.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "storage-staking",
+    "title": "스토리지 스테이킹",
+    "sidebar_label": "스토리지 스테이킹"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "NEAR에 저장하기",
+    "permalink": "/ko/concepts/storage/data-storage"
+  },
+  "next": {
+    "title": "대체 솔루션",
+    "permalink": "/ko/concepts/storage/storage-solutions"
+  }
+}

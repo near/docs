@@ -1,0 +1,31 @@
+{
+  "id": "concepts/storage/storage-solutions",
+  "title": "Decentralized Storage Solutions",
+  "description": "In this article you'll find a brief overview of different decentralized storage solutions that can be integrated into your decentralized applications (dApps). This will allow you to store large amounts of data using a more economical alternative to native NEAR storage.",
+  "source": "@site/../docs/1.concepts/storage/decentralized-storage.md",
+  "sourceDirName": "1.concepts/storage",
+  "slug": "/concepts/storage/storage-solutions",
+  "permalink": "/concepts/storage/storage-solutions",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/storage/decentralized-storage.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Jessie Mongeon",
+  "lastUpdatedAt": 1676414212,
+  "formattedLastUpdatedAt": "Feb 14, 2023",
+  "frontMatter": {
+    "id": "storage-solutions",
+    "title": "Decentralized Storage Solutions",
+    "sidebar_label": "Alternative Solutions"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Storage Staking",
+    "permalink": "/concepts/storage/storage-staking"
+  },
+  "next": {
+    "title": "Validators",
+    "permalink": "/concepts/basics/validators"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "bos/tutorial/lido",
+  "title": "Lido Example",
+  "description": "If you are ready to explore further, the Lido component serves as an excellent fully-fledged example, as it demonstrates how to interact with a smart contract deployed on the Ethereum mainnet.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/bos/tutorial/hello-lido.md",
+  "sourceDirName": "bos/tutorial",
+  "slug": "/bos/tutorial/lido",
+  "permalink": "/vi/bos/tutorial/lido",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/tutorial/hello-lido.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "lido",
+    "title": "Lido Example"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "Best Practices for Ethereum developers on NEAR",
+    "permalink": "/vi/bos/tutorial/ethers-js-best-practices"
+  },
+  "next": {
+    "title": "Components & Historical data",
+    "permalink": "/vi/bos/queryapi/bos-components"
+  }
+}

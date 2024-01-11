@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/nfts/approvals",
+  "title": "Approvals",
+  "description": "In this tutorial you'll learn the basics of an approval management system which will allow you to grant others access to transfer NFTs on your behalf. This is the backbone of all NFT marketplaces and allows for some complex yet beautiful scenarios to happen. If you're joining us for the first time, feel free to clone this repository and checkout the 4.core branch to follow along.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/3.tutorials/nfts/5-approval.md",
+  "sourceDirName": "3.tutorials/nfts",
+  "slug": "/tutorials/nfts/approvals",
+  "permalink": "/zh-CN/tutorials/nfts/approvals",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/5-approval.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "id": "approvals",
+    "title": "Approvals",
+    "sidebar_label": "Approvals"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Core",
+    "permalink": "/zh-CN/tutorials/nfts/core"
+  },
+  "next": {
+    "title": "Royalty",
+    "permalink": "/zh-CN/tutorials/nfts/royalty"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "primitives/dex/interacting/smart-contract",
+  "title": "Smart Contract",
+  "description": "This section will explain how a smart contract can deposit funds to DEX and swap tokens there.",
+  "source": "@site/../docs/7.primitives/dex/interacting/smart-contract.md",
+  "sourceDirName": "7.primitives/dex/interacting",
+  "slug": "/primitives/dex/interacting/smart-contract",
+  "permalink": "/primitives/dex/interacting/smart-contract",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/dex/interacting/smart-contract.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Damian Parrino",
+  "lastUpdatedAt": 1700777490,
+  "formattedLastUpdatedAt": "Nov 23, 2023",
+  "frontMatter": {
+    "id": "smart-contract",
+    "title": "Smart Contract",
+    "hide_table_of_contents": false
+  },
+  "sidebar": "primitives",
+  "previous": {
+    "title": "Web Application",
+    "permalink": "/primitives/dex/interacting/web-app"
+  },
+  "next": {
+    "title": "NEAR CLI",
+    "permalink": "/primitives/dex/interacting/near-cli"
+  }
+}

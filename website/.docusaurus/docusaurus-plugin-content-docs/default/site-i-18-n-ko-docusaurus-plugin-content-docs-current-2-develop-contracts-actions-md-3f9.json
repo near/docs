@@ -1,0 +1,27 @@
+{
+  "id": "develop/contracts/actions",
+  "title": "전송 & Action",
+  "description": "스마트 컨트랙트는 NEAR 전송 또는 다른 컨트랙트 호출과 같은 특정 Actions를 수행할 수 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.develop/contracts/actions.md",
+  "sourceDirName": "2.develop/contracts",
+  "slug": "/develop/contracts/actions",
+  "permalink": "/ko/develop/contracts/actions",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/contracts/actions.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "actions",
+    "title": "전송 & Action"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "상태 & 자료구조",
+    "permalink": "/ko/develop/contracts/storage"
+  },
+  "next": {
+    "title": "교차 컨트랙트 호출",
+    "permalink": "/ko/develop/contracts/crosscontract"
+  }
+}

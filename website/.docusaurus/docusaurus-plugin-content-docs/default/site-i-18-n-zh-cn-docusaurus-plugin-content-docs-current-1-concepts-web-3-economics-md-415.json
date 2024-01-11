@@ -1,0 +1,28 @@
+{
+  "id": "concepts/web3/economics",
+  "title": "Web 3.0 Economics",
+  "description": "With technological decentralization also came economical decentralization. It stands on 3 pillars - Non-Fungible tokens (NFTs), Fungible tokens (FTs) and Decentralized Finance (DeFi).",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/1.concepts/web3/economics.md",
+  "sourceDirName": "1.concepts/web3",
+  "slug": "/concepts/web3/economics",
+  "permalink": "/zh-CN/concepts/web3/economics",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/web3/economics.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "economics",
+    "title": "Web 3.0 Economics",
+    "sidebar_label": "Economics"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "NEAR Protocol",
+    "permalink": "/zh-CN/concepts/web3/near"
+  },
+  "next": {
+    "title": "NFTs for Web 2.0 Apps",
+    "permalink": "/zh-CN/concepts/web3/nfts"
+  }
+}

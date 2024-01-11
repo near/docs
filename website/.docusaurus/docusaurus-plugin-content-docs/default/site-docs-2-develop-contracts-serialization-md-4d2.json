@@ -1,0 +1,30 @@
+{
+  "id": "develop/contracts/serialization",
+  "title": "Notes on Serialization",
+  "description": "Smart contracts need to be able to communicate complex data in a simple way, while",
+  "source": "@site/../docs/2.develop/contracts/serialization.md",
+  "sourceDirName": "2.develop/contracts",
+  "slug": "/develop/contracts/serialization",
+  "permalink": "/develop/contracts/serialization",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/contracts/serialization.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Zion",
+  "lastUpdatedAt": 1668682832,
+  "formattedLastUpdatedAt": "Nov 17, 2022",
+  "frontMatter": {
+    "id": "serialization",
+    "title": "Notes on Serialization"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "✅ Checklist",
+    "permalink": "/develop/contracts/security/checklist"
+  },
+  "next": {
+    "title": "Introduction",
+    "permalink": "/develop/testing/introduction"
+  }
+}

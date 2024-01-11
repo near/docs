@@ -1,0 +1,28 @@
+{
+  "id": "tools/near-lake",
+  "title": "NEAR Lake Indexer",
+  "description": "NEAR Lake is an indexer built on top of NEAR Indexer Framework to watch the network and store all the events as JSON files on AWS S3.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/4.tools/near-lake.md",
+  "sourceDirName": "4.tools",
+  "slug": "/tools/near-lake",
+  "permalink": "/ko/tools/near-lake",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/4.tools/near-lake.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "near-lake",
+    "sidebar_label": "Lake Overview",
+    "title": "NEAR Lake Indexer"
+  },
+  "sidebar": "indexers",
+  "previous": {
+    "title": "Indexer for Explorer (Deprecated)",
+    "permalink": "/ko/tools/indexer-for-explorer"
+  },
+  "next": {
+    "title": "시작하기",
+    "permalink": "/ko/tutorials/indexer/near-lake-state-changes-indexer"
+  }
+}

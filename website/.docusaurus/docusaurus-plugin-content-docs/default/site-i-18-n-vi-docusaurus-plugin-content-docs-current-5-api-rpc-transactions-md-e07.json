@@ -1,0 +1,24 @@
+{
+  "id": "api/rpc/transactions",
+  "title": "Các RPC Endpoint",
+  "description": "Ví dụ:",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/5.api/rpc/transactions.md",
+  "sourceDirName": "5.api/rpc",
+  "slug": "/api/rpc/transactions",
+  "permalink": "/vi/api/rpc/transactions",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/5.api/rpc/transactions.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "transactions",
+    "title": "Các RPC Endpoint",
+    "sidebar_label": "Transactions"
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Network",
+    "permalink": "/vi/api/rpc/network"
+  }
+}

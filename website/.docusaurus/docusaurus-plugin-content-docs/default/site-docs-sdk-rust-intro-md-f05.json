@@ -1,0 +1,29 @@
+{
+  "id": "sdk/rust/get-started",
+  "title": "Getting Started",
+  "description": "Install Rust and Wasm toolchain",
+  "source": "@site/../docs/sdk/rust/intro.md",
+  "sourceDirName": "sdk/rust",
+  "slug": "/sdk/rust/get-started",
+  "permalink": "/sdk/rust/get-started",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/rust/intro.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1675255683,
+  "formattedLastUpdatedAt": "Feb 1, 2023",
+  "frontMatter": {
+    "id": "get-started"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "About Rust SDK",
+    "permalink": "/sdk/rust/introduction"
+  },
+  "next": {
+    "title": "near_bindgen",
+    "permalink": "/sdk/rust/contract-structure/near-bindgen"
+  }
+}

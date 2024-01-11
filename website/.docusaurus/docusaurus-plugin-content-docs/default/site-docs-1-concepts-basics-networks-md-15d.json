@@ -1,0 +1,31 @@
+{
+  "id": "concepts/basics/networks",
+  "title": "NEAR Networks",
+  "description": "NEAR Protocol operates on several networks each operating with their own independent validators and unique state. These networks are as follows:",
+  "source": "@site/../docs/1.concepts/basics/networks.md",
+  "sourceDirName": "1.concepts/basics",
+  "slug": "/concepts/basics/networks",
+  "permalink": "/concepts/basics/networks",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/basics/networks.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1702155614,
+  "formattedLastUpdatedAt": "Dec 9, 2023",
+  "frontMatter": {
+    "id": "networks",
+    "title": "NEAR Networks",
+    "sidebar_label": "Networks"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Validators",
+    "permalink": "/concepts/basics/validators"
+  },
+  "next": {
+    "title": "Epoch",
+    "permalink": "/concepts/basics/epoch"
+  }
+}

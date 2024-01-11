@@ -1,0 +1,27 @@
+{
+  "id": "concepts/basics/runtime",
+  "title": "Các video về Core Runtime",
+  "description": "Phần này chứa các video giúp bạn khám phá core runtime, cách nó vận hành, và làm thế nào để implement cross-contract call.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/1.concepts/basics/runtime.md",
+  "sourceDirName": "1.concepts/basics",
+  "slug": "/concepts/basics/runtime",
+  "permalink": "/vi/concepts/basics/runtime",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/basics/runtime.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "runtime",
+    "title": "Các video về Core Runtime"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Lake Framework",
+    "permalink": "/vi/concepts/advanced/near-lake-framework"
+  },
+  "next": {
+    "title": "Đặc điểm kỹ thuật",
+    "permalink": "/vi/concepts/advanced/specification"
+  }
+}

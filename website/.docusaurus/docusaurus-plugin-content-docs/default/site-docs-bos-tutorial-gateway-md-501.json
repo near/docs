@@ -1,0 +1,30 @@
+{
+  "id": "bos/tutorial/bos-gateway",
+  "title": "Gateways",
+  "description": "The Components you create are stored in the NEAR blockchain. To read and execute their code you will need a Gateway.",
+  "source": "@site/../docs/bos/tutorial/gateway.md",
+  "sourceDirName": "bos/tutorial",
+  "slug": "/bos/tutorial/bos-gateway",
+  "permalink": "/bos/tutorial/bos-gateway",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/tutorial/gateway.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1704817578,
+  "formattedLastUpdatedAt": "Jan 9, 2024",
+  "frontMatter": {
+    "id": "bos-gateway",
+    "title": "Gateways"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "Overview",
+    "permalink": "/bos/overview"
+  },
+  "next": {
+    "title": "Components",
+    "permalink": "/bos/components"
+  }
+}

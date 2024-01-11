@@ -1,0 +1,27 @@
+{
+  "id": "develop/relevant-contracts/ft",
+  "title": "Fungible Tokens (FT)",
+  "description": "기본 NEAR 토큰 외에도 NEAR 계정은 다양한 대체 가능한 토큰(예: 화이트리스트 토큰)에 액세스할 수 있습니다. 또한 사용자가 자신의 대체 가능한 토큰을 만드는 것도 가능합니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.develop/relevant-contracts/ft.md",
+  "sourceDirName": "2.develop/relevant-contracts",
+  "slug": "/develop/relevant-contracts/ft",
+  "permalink": "/ko/develop/relevant-contracts/ft",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/relevant-contracts/ft.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "ft",
+    "title": "Fungible Tokens (FT)"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "버그 바운티 프로그램",
+    "permalink": "/ko/develop/contracts/security/bounty"
+  },
+  "next": {
+    "title": "Non Fungible Tokens (NFT)",
+    "permalink": "/ko/develop/relevant-contracts/nft"
+  }
+}

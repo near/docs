@@ -1,0 +1,28 @@
+{
+  "id": "integrator/errors/error-implementation",
+  "title": "소스 코드 조사",
+  "description": "이 페이지는 NEAR 플랫폼에 의해 구현된 오류 유형 및 관련 메시지에 대한 매우 높은 수준의 \"의사 코드(pseudocode)\"를 제공합니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/6.integrator/errors/error-implementation.md",
+  "sourceDirName": "6.integrator/errors",
+  "slug": "/integrator/errors/error-implementation",
+  "permalink": "/ko/integrator/errors/error-implementation",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/6.integrator/errors/error-implementation.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "error-implementation",
+    "title": "소스 코드 조사",
+    "sidebar_label": "소스 코드 조사"
+  },
+  "sidebar": "exchanges",
+  "previous": {
+    "title": "소개",
+    "permalink": "/ko/integrator/errors/introduction"
+  },
+  "next": {
+    "title": "토큰 손실 피하기",
+    "permalink": "/ko/integrator/errors/token-loss"
+  }
+}

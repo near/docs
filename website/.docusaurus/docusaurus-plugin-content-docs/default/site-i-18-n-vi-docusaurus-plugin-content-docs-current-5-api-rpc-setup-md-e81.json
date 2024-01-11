@@ -1,0 +1,27 @@
+{
+  "id": "api/rpc/setup",
+  "title": "Cài đặt",
+  "description": "In order to use the RPC API you will need to setup the correct RPC endpoints.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/5.api/rpc/setup.md",
+  "sourceDirName": "5.api/rpc",
+  "slug": "/api/rpc/setup",
+  "permalink": "/vi/api/rpc/setup",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/5.api/rpc/setup.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "setup",
+    "title": "Cài đặt"
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "RPC Providers",
+    "permalink": "/vi/api/rpc/providers"
+  },
+  "next": {
+    "title": "Các RPC Endpoint",
+    "permalink": "/vi/api/rpc/access-keys"
+  }
+}

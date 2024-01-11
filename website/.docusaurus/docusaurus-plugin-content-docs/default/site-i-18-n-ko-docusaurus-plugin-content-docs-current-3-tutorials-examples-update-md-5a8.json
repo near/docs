@@ -1,0 +1,27 @@
+{
+  "id": "tutorials/examples/update-contract-migrate-state",
+  "title": "자체 업그레이드 및 상태 마이그레이션",
+  "description": "업데이트 및 상태 마이그레이션을 처리하는 방법에 대한 세 가지 예는 다음과 같습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/examples/update.md",
+  "sourceDirName": "3.tutorials/examples",
+  "slug": "/tutorials/examples/update-contract-migrate-state",
+  "permalink": "/ko/tutorials/examples/update-contract-migrate-state",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/examples/update.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "update-contract-migrate-state",
+    "title": "자체 업그레이드 및 상태 마이그레이션"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "복잡한 교차 컨트랙트 호출(Cross Contract Call)",
+    "permalink": "/ko/tutorials/examples/advanced-xcc"
+  },
+  "next": {
+    "title": "Minting Fungible Tokens",
+    "permalink": "/ko/tutorials/fts/simple-fts"
+  }
+}

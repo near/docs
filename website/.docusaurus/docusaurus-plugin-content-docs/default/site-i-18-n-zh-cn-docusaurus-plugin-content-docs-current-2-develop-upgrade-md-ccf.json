@@ -1,0 +1,27 @@
+{
+  "id": "develop/upgrade",
+  "title": "Updating Contracts",
+  "description": "NEAR accounts separate their logic (contract's code) from their state (storage), allowing the code to be changed.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.develop/upgrade.md",
+  "sourceDirName": "2.develop",
+  "slug": "/develop/upgrade",
+  "permalink": "/zh-CN/develop/upgrade",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/upgrade.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "upgrade",
+    "title": "Updating Contracts"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Deploying and Using",
+    "permalink": "/zh-CN/develop/deploy"
+  },
+  "next": {
+    "title": "Locking Accounts",
+    "permalink": "/zh-CN/develop/lock"
+  }
+}

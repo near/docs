@@ -1,0 +1,28 @@
+{
+  "id": "tutorials/nfts/minting-nft-frontend",
+  "title": "Mint NFT Front-end",
+  "description": "Trong hướng dẫn này bạn sẽ tìm hiểu cách để tạo ra một NFT front-end đơn giản và mint \"Go Team\" NFT trên NEAR blockchain ngay từ trình duyệt web của mình.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/3.tutorials/nfts/simple-nft-minting-example.md",
+  "sourceDirName": "3.tutorials/nfts",
+  "slug": "/tutorials/nfts/minting-nft-frontend",
+  "permalink": "/vi/tutorials/nfts/minting-nft-frontend",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/simple-nft-minting-example.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "minting-nft-frontend",
+    "title": "Mint NFT Front-end",
+    "sidebar_label": "Mint Front-end"
+  },
+  "sidebar": "contracts",
+  "previous": {
+    "title": "Mint NFT",
+    "permalink": "/vi/tutorials/nfts/minting-nfts"
+  },
+  "next": {
+    "title": "Minecraft NFT",
+    "permalink": "/vi/tutorials/nfts/minecraft-nfts"
+  }
+}

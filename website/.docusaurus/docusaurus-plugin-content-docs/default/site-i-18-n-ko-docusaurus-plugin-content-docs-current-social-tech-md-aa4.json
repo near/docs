@@ -1,0 +1,18 @@
+{
+  "id": "social/tech",
+  "title": "기술 문서",
+  "description": "이 문서는 Near Social의 기술적 세부 사항에 대해 설명합니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/social/tech.md",
+  "sourceDirName": "social",
+  "slug": "/social/tech",
+  "permalink": "/ko/social/tech",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/social/tech.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "tech",
+    "title": "기술 문서"
+  }
+}

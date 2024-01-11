@@ -1,0 +1,27 @@
+{
+  "id": "integrator/faq",
+  "title": "Integrator FAQ",
+  "description": "Orientation",
+  "source": "@site/../docs/6.integrator/faq.md",
+  "sourceDirName": "6.integrator",
+  "slug": "/integrator/faq",
+  "permalink": "/integrator/faq",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/6.integrator/faq.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Damian Parrino",
+  "lastUpdatedAt": 1702311741,
+  "formattedLastUpdatedAt": "Dec 11, 2023",
+  "frontMatter": {
+    "id": "faq",
+    "title": "Integrator FAQ",
+    "sidebar_label": "Integrator FAQ"
+  },
+  "sidebar": "exchanges",
+  "previous": {
+    "title": "Avoiding Token Loss",
+    "permalink": "/integrator/errors/token-loss"
+  }
+}

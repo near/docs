@@ -1,0 +1,27 @@
+{
+  "id": "api/rpc/contracts",
+  "title": "계정 / 컨트랙트",
+  "description": "RPC API를 사용하면 계정 및 컨트랙트에 대한 세부 정보를 보고 컨트랙트 호출을 수행할 수 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/5.api/rpc/contracts.md",
+  "sourceDirName": "5.api/rpc",
+  "slug": "/api/rpc/contracts",
+  "permalink": "/ko/api/rpc/contracts",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/5.api/rpc/contracts.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "contracts",
+    "title": "계정 / 컨트랙트"
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "액세스 키",
+    "permalink": "/ko/api/rpc/access-keys"
+  },
+  "next": {
+    "title": "블록 / 청크",
+    "permalink": "/ko/api/rpc/block-chunk"
+  }
+}

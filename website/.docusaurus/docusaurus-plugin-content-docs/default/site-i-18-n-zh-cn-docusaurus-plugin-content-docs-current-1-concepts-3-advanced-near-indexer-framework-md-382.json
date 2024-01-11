@@ -1,0 +1,26 @@
+{
+  "id": "concepts/advanced/near-indexer-framework",
+  "title": "NEAR Indexer Framework",
+  "description": "https://github.com/near/nearcore/tree/master/chain/indexer",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/1.concepts/3.advanced/near-indexer-framework.md",
+  "sourceDirName": "1.concepts/3.advanced",
+  "slug": "/concepts/advanced/near-indexer-framework",
+  "permalink": "/zh-CN/concepts/advanced/near-indexer-framework",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/3.advanced/near-indexer-framework.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "sidebar_label": "Indexer Framework"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Intro to Indexers",
+    "permalink": "/zh-CN/concepts/advanced/indexers"
+  },
+  "next": {
+    "title": "Lake Framework",
+    "permalink": "/zh-CN/concepts/advanced/near-lake-framework"
+  }
+}

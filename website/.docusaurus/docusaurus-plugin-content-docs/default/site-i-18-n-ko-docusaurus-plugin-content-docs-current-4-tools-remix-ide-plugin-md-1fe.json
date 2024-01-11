@@ -1,0 +1,18 @@
+{
+  "id": "tools/remix-ide-plugin",
+  "title": "Remix IDE 플러그인 통합",
+  "description": "이 튜토리얼에서는 Remix IDE에서 NEAR 스마트 컨트랙트를 배포하고 실행하는 방법을 자세히 설명합니다. 이는 NEAR 스마트 컨트랙트를 개발하기 위한 GUI가 있는 무설치 도구입니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/4.tools/remix-ide-plugin.md",
+  "sourceDirName": "4.tools",
+  "slug": "/tools/remix-ide-plugin",
+  "permalink": "/ko/tools/remix-ide-plugin",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/4.tools/remix-ide-plugin.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "remix-ide-plugin",
+    "sidebar_label": "Remix IDE 플러그인"
+  }
+}
