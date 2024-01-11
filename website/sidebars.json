@@ -642,7 +642,7 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Components </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Composable Apps </small></b></span>"
     },
     "bos/tutorial/quickstart",
     "bos/dev/intro",
@@ -657,7 +657,6 @@
         "bos/queryapi/bos-components"
       ]
     },
-    "bos/tutorial/bos-gateway",
     {
       "Examples & Tutorials": [
         "bos/dev/bos-loader",
@@ -671,16 +670,18 @@
         "bos/tutorial/lido"
       ]
     },
+    "bos/tutorial/bos-gateway",
     {
       "type": "html",
       "value": "<hr/>"
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Frontend Integration </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Web Apps </small></b></span>"
     },
     "develop/integrate/quickstart-frontend",
     "develop/integrate/frontend",
+    "develop/integrate/frontend-components",
     {
       "type": "category",
       "label": "Examples",
@@ -696,7 +697,7 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Backend Integration </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Backend </small></b></span>"
     },
     "develop/relayers/build-relayer",
     "develop/integrate/backend-login",

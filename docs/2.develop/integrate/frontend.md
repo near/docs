@@ -1,6 +1,6 @@
 ---
 id: frontend
-title: Web Frontend
+title: Integrating Contracts
 ---
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 import Tabs from '@theme/Tabs';

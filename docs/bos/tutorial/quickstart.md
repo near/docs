@@ -129,14 +129,23 @@ return <>
 
 Leveraging the cheap storage and computation of the NEAR Blockchain, NEAR Components' code is stored fully on-chain in the SocialDB smart contract (`social.near`).
 
+<WidgetEditor height="40px">
+
+```js
+// retrieving the code of a stored component
+return Social.get('influencer.testnet/widget/Greeter')
+```
+
+</WidgetEditor>
+
 Once deployed a component can be imported and used by any other component. Composing components as lego blocks allow to build complex applications.
 
 <WidgetEditor id="4" height="80px">
 
 ```js
-const props = { name: "Anna", amount: 3 };
-
-return <Widget src="influencer.testnet/widget/Greeter" props={props} />;
+// Rendering the component with props
+return <Widget src="influencer.testnet/widget/Greeter"
+               props={{name: "Anna", amount: 3}} />;
 ```
 </WidgetEditor>
 

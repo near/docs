@@ -71,6 +71,24 @@ return `The contract says: ${greeting}`;
 
 </WidgetEditor>
 
+If you don't want to delay the render of your component, you can also use the `useEffect` hook to control the value returned by `Near.view`
+
+<WidgetEditor>
+
+```js
+const contractGreet = Near.view('hello.near-examples.testnet', 'get_greeting');
+
+const [greeting, setGreeting] = useState('Loading ...');
+
+useEffect(() => {
+  if (contractGreet !== null) setGreeting(contractGreet);
+}, [contractGreet]);
+
+return `The contract says: ${greeting}`;
+```
+
+</WidgetEditor>
+
 ---
 
 ## Near.call
