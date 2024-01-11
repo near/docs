@@ -18,7 +18,6 @@ jobs:
       - uses: actions/cache@v3
         with:
           path: |
-            ${{ github.workspace }}/website/.docusaurus
             ${{ github.workspace }}/**/.cache
           key: |
             ${{ runner.os }}-docusaurus-${{ hashFiles('**/yarn.lock') }}
