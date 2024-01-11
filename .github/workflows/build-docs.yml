@@ -23,7 +23,6 @@ jobs:
       - uses: actions/cache@v3
         with:
           path: |
-            ${{ github.workspace }}/website/.docusaurus
             ${{ github.workspace }}/**/.cache
           key: |
             ${{ runner.os }}-docusaurus-${{ hashFiles('**/yarn.lock') }}
@@ -51,7 +50,7 @@ jobs:
 
       - name: Commit build
         run: |
-          git add -f ./website/build 
+          git add -f ./website/build ./website/.docusaurus ./website/i18n 
           git commit -m "Merge with master"
           git push
     env:
