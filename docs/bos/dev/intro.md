@@ -11,14 +11,14 @@ The environments in which you can develop `Components` are divided into two cate
 - [Local Tools](#local-tools): Tools that allow you to develop and test components locally.
 
 :::tip Handling collaborations
-If you plan to collaborate with multiple people, we recommend you to check [our repo template](https://github.com/near-examples/bos-components) which automatically deploys components each time a PR is merged. 
+If you plan to collaborate with multiple people, we recommend you to check [this repository template](https://github.com/near-examples/bos-components) which automatically deploys components each time a PR is merged. 
 
 :::
 
 ---
 
 ## Web Tools
-The quickest way to start building NEAR Components is by using one of the online tools. They are great to take your first steps, while they help to find other developers and components in the NEAR ecosystem.
+The quickest way to start building NEAR Components is by using one of the online tools. They are great for taking your first steps, while they let you find other developers and components in the NEAR ecosystem.
 
 #### [NEAR Sandbox](https://near.org/sandbox)
 The [near website](https://near.org/) contains its own [sandbox editor](https://near.org/sandbox). The sandbox allows you to code, preview and deploy your components directly from your browser.

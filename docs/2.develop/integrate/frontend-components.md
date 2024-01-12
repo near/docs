@@ -8,7 +8,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 To integrate [Components](../../bos/tutorial/quickstart.md) to your frontend, you will leverage two tools:
-1. `Wallet Selector`: Allows the user to use their preferred NEAR wallet in your dApp.
+1. `Wallet Selector`: Enables the user to select their preferred NEAR wallet in your dApp.
 2. `NEAR VM`: A package that can retrieve the component's code from the blockchain and execute it in the browser. 
 
 <br/>
@@ -21,9 +21,9 @@ Using those tools you will implement the following flow:
 ---
 
 ## Adding the VM & Wallet Selector
-In order to use the `VM` and the `wallet-selector` you will need to first add them to your project.
+To use the `VM` and the `wallet-selector`, you must add them to your project first.
 
-The wallet selector has multiple wallet packages to select from, [see in their website](https://github.com/near/wallet-selector#installation-and-usage).
+The wallet selector has multiple wallet packages to select from. [Check their website](https://github.com/near/wallet-selector#installation-and-usage) for more information.
 
 ```bash
 npm install \
@@ -49,7 +49,7 @@ Check the latest released version for the VM [here](https://github.com/NearSocia
 ---
 
 ## Setup the VM
-To render components, you will need to import the `useInitNear` hook from the `near-social-vm` package, as well as the `Widget` component.
+To render components, you need to import the `useInitNear` hook from the `near-social-vm` package, as well as the `Widget` component.
 
 ```js
 import { useInitNear, Widget } from 'near-social-vm';
@@ -75,7 +75,7 @@ Notice that the VM is inherently linked to `React`, so you will need to use a re
 ---
 
 ## Setup the Wallet Selector
-While the VM allows you to render components, you will need to setup a wallet selector to allow users to interact with the components.
+While the VM allows you to render components, you need to set up a wallet selector to allow users to interact with the components.
 
 To instantiate a `Wallet Selector`, simply import all the wallets you want your users to have access to, and the setup method from the `near-wallet-selector` package.
 

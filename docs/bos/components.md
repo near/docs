@@ -129,7 +129,7 @@ return (
 
 ## Composing Components
 
-To compose components you will use the [Predefined `Widget` component](./api/builtin-components.md#widget). For this, you will only need the NEAR username of who created the component, and the component's name.
+To compose components you will use the [Predefined `Widget` component](./api/builtin-components.md#widget). For this, you only need the NEAR username of who created the component, and the component's name.
 
 <WidgetEditor id='4' height="200px">
 

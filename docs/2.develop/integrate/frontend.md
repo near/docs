@@ -7,7 +7,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 To integrate NEAR to your frontend, you will leverage two tools:
-1. `Wallet Selector`: Allows the user to use their preferred NEAR wallet in your dApp.
+1. `Wallet Selector`: Enables the user to select their preferred NEAR wallet in your dApp.
 2. `NEAR API JS`: A suit of tools to interact with the NEAR RPC.
 
 Using those tools you will implement the following flow:
