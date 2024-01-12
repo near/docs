@@ -138,7 +138,7 @@ return Social.get('influencer.testnet/widget/Greeter')
 
 </WidgetEditor>
 
-Once deployed a component can be imported and used by any other component. Composing components as lego blocks allow to build complex applications.
+Once deployed, a component can be imported and used by any other component. Composing components as LEGO blocks allows you to build complex applications.
 
 <WidgetEditor id="4" height="80px">
 
