@@ -12,19 +12,10 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "gagdiez",
-  "lastUpdatedAt": 1704817578,
-  "formattedLastUpdatedAt": "Jan 9, 2024",
+  "lastUpdatedAt": 1705079030,
+  "formattedLastUpdatedAt": "Jan 12, 2024",
   "frontMatter": {
     "id": "components",
     "title": "Components"
-  },
-  "sidebar": "integrate",
-  "previous": {
-    "title": "Gateways",
-    "permalink": "/bos/tutorial/bos-gateway"
-  },
-  "next": {
-    "title": "Widget",
-    "permalink": "/bos/components/widgets"
   }
 }

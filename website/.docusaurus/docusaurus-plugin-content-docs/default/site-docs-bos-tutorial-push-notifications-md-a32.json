@@ -20,8 +20,8 @@
   },
   "sidebar": "integrate",
   "previous": {
-    "title": "Gateways",
-    "permalink": "/bos/tutorial/bos-gateway"
+    "title": "Using IFrames",
+    "permalink": "/bos/tutorial/using-iframes"
   },
   "next": {
     "title": "WebSockets & QueryAPI",

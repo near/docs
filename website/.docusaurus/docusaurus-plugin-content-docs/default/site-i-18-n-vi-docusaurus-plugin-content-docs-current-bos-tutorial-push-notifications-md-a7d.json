@@ -11,14 +11,17 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/tutorial/push-notifications.md",
   "tags": [],
   "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1704996595,
+  "formattedLastUpdatedAt": "11 thg 1, 2024",
   "frontMatter": {
     "id": "push-notifications",
     "title": "Push Notifications"
   },
   "sidebar": "integrate",
   "previous": {
-    "title": "Gateways",
-    "permalink": "/vi/bos/tutorial/bos-gateway"
+    "title": "Using IFrames",
+    "permalink": "/vi/bos/tutorial/using-iframes"
   },
   "next": {
     "title": "WebSockets & QueryAPI",

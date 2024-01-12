@@ -9,15 +9,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '07a'),
+    component: ComponentCreator('/zh-CN/', 'e88'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', 'f0c'),
+        component: ComponentCreator('/zh-CN/', '8f0'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '180'),
+            component: ComponentCreator('/zh-CN/', '985'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -90,32 +90,8 @@ export default [
                 exact: true
               },
               {
-                path: '/zh-CN/bos/api/cache',
-                component: ComponentCreator('/zh-CN/bos/api/cache', '6f3'),
-                exact: true,
-                sidebar: "integrate"
-              },
-              {
-                path: '/zh-CN/bos/api/clipboard',
-                component: ComponentCreator('/zh-CN/bos/api/clipboard', 'b88'),
-                exact: true,
-                sidebar: "integrate"
-              },
-              {
-                path: '/zh-CN/bos/api/fetch',
-                component: ComponentCreator('/zh-CN/bos/api/fetch', 'e1c'),
-                exact: true,
-                sidebar: "integrate"
-              },
-              {
-                path: '/zh-CN/bos/api/home',
-                component: ComponentCreator('/zh-CN/bos/api/home', '035'),
-                exact: true,
-                sidebar: "integrate"
-              },
-              {
-                path: '/zh-CN/bos/api/indexing',
-                component: ComponentCreator('/zh-CN/bos/api/indexing', '148'),
+                path: '/zh-CN/bos/api/builtin-components',
+                component: ComponentCreator('/zh-CN/bos/api/builtin-components', 'c49'),
                 exact: true,
                 sidebar: "integrate"
               },
@@ -133,9 +109,8 @@ export default [
               },
               {
                 path: '/zh-CN/bos/api/primitives',
-                component: ComponentCreator('/zh-CN/bos/api/primitives', '3d2'),
-                exact: true,
-                sidebar: "integrate"
+                component: ComponentCreator('/zh-CN/bos/api/primitives', '952'),
+                exact: true
               },
               {
                 path: '/zh-CN/bos/api/social',
@@ -150,8 +125,8 @@ export default [
                 sidebar: "integrate"
               },
               {
-                path: '/zh-CN/bos/api/storage',
-                component: ComponentCreator('/zh-CN/bos/api/storage', '0ba'),
+                path: '/zh-CN/bos/api/web-methods',
+                component: ComponentCreator('/zh-CN/bos/api/web-methods', '5d7'),
                 exact: true,
                 sidebar: "integrate"
               },
@@ -163,68 +138,8 @@ export default [
               },
               {
                 path: '/zh-CN/bos/components',
-                component: ComponentCreator('/zh-CN/bos/components', '096'),
-                exact: true,
-                sidebar: "integrate"
-              },
-              {
-                path: '/zh-CN/bos/components/files',
-                component: ComponentCreator('/zh-CN/bos/components/files', '9a2'),
-                exact: true,
-                sidebar: "integrate"
-              },
-              {
-                path: '/zh-CN/bos/components/home',
-                component: ComponentCreator('/zh-CN/bos/components/home', '99b'),
+                component: ComponentCreator('/zh-CN/bos/components', '8bf'),
                 exact: true
-              },
-              {
-                path: '/zh-CN/bos/components/infinite-scroll',
-                component: ComponentCreator('/zh-CN/bos/components/infinite-scroll', '89f'),
-                exact: true,
-                sidebar: "integrate"
-              },
-              {
-                path: '/zh-CN/bos/components/ipfs',
-                component: ComponentCreator('/zh-CN/bos/components/ipfs', 'eb2'),
-                exact: true,
-                sidebar: "integrate"
-              },
-              {
-                path: '/zh-CN/bos/components/markdown',
-                component: ComponentCreator('/zh-CN/bos/components/markdown', '042'),
-                exact: true,
-                sidebar: "integrate"
-              },
-              {
-                path: '/zh-CN/bos/components/overlay-trigger',
-                component: ComponentCreator('/zh-CN/bos/components/overlay-trigger', '9d9'),
-                exact: true,
-                sidebar: "integrate"
-              },
-              {
-                path: '/zh-CN/bos/components/styled',
-                component: ComponentCreator('/zh-CN/bos/components/styled', '473'),
-                exact: true,
-                sidebar: "integrate"
-              },
-              {
-                path: '/zh-CN/bos/components/tooltip',
-                component: ComponentCreator('/zh-CN/bos/components/tooltip', '2b8'),
-                exact: true,
-                sidebar: "integrate"
-              },
-              {
-                path: '/zh-CN/bos/components/typeahead',
-                component: ComponentCreator('/zh-CN/bos/components/typeahead', '8bb'),
-                exact: true,
-                sidebar: "integrate"
-              },
-              {
-                path: '/zh-CN/bos/components/widgets',
-                component: ComponentCreator('/zh-CN/bos/components/widgets', '676'),
-                exact: true,
-                sidebar: "integrate"
               },
               {
                 path: '/zh-CN/bos/dev/bos-loader',
@@ -234,8 +149,9 @@ export default [
               },
               {
                 path: '/zh-CN/bos/dev/intro',
-                component: ComponentCreator('/zh-CN/bos/dev/intro', 'ff2'),
-                exact: true
+                component: ComponentCreator('/zh-CN/bos/dev/intro', 'db9'),
+                exact: true,
+                sidebar: "integrate"
               },
               {
                 path: '/zh-CN/bos/dev/vscode',
@@ -245,9 +161,8 @@ export default [
               },
               {
                 path: '/zh-CN/bos/overview',
-                component: ComponentCreator('/zh-CN/bos/overview', '38f'),
-                exact: true,
-                sidebar: "integrate"
+                component: ComponentCreator('/zh-CN/bos/overview', 'd7a'),
+                exact: true
               },
               {
                 path: '/zh-CN/bos/queryapi/best-practices',
@@ -798,6 +713,12 @@ export default [
               {
                 path: '/zh-CN/develop/integrate/frontend',
                 component: ComponentCreator('/zh-CN/develop/integrate/frontend', '4aa'),
+                exact: true,
+                sidebar: "integrate"
+              },
+              {
+                path: '/zh-CN/develop/integrate/frontend-components',
+                component: ComponentCreator('/zh-CN/develop/integrate/frontend-components', '094'),
                 exact: true,
                 sidebar: "integrate"
               },

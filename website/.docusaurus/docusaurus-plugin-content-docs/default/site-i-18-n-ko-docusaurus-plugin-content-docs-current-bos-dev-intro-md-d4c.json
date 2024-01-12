@@ -11,9 +11,21 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/dev/intro.md",
   "tags": [],
   "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1704996595,
+  "formattedLastUpdatedAt": "2024년 1월 11일",
   "frontMatter": {
     "id": "intro",
     "sidebar_label": "개요",
     "title": "BOS 개발 도구"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "⭐ 빠른 시작",
+    "permalink": "/ko/bos/tutorial/quickstart"
+  },
+  "next": {
+    "title": "상태",
+    "permalink": "/ko/bos/api/state"
   }
 }

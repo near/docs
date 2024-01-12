@@ -11,6 +11,9 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/api/state.md",
   "tags": [],
   "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1704996595,
+  "formattedLastUpdatedAt": "2024년 1월 11일",
   "frontMatter": {
     "id": "state",
     "title": "State API",
@@ -18,11 +21,11 @@
   },
   "sidebar": "integrate",
   "previous": {
-    "title": "소개",
-    "permalink": "/ko/bos/api/home"
+    "title": "개요",
+    "permalink": "/ko/bos/dev/intro"
   },
   "next": {
-    "title": "Near",
-    "permalink": "/ko/bos/api/near"
+    "title": "Web Browser Methods",
+    "permalink": "/ko/bos/api/web-methods"
   }
 }

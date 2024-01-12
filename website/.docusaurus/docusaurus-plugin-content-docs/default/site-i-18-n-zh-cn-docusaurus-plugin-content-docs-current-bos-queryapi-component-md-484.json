@@ -11,6 +11,9 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/queryapi/component.md",
   "tags": [],
   "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1704996595,
+  "formattedLastUpdatedAt": "2024年1月11日",
   "frontMatter": {
     "id": "bos-components",
     "title": "Components handling Historical data",
@@ -18,11 +21,11 @@
   },
   "sidebar": "integrate",
   "previous": {
-    "title": "Lido Example",
-    "permalink": "/zh-CN/bos/tutorial/lido"
+    "title": "Social Notifications",
+    "permalink": "/zh-CN/bos/api/notifications"
   },
   "next": {
-    "title": "Web Frontend",
-    "permalink": "/zh-CN/develop/integrate/frontend"
+    "title": "Gateways",
+    "permalink": "/zh-CN/bos/tutorial/bos-gateway"
   }
 }

@@ -1,7 +1,7 @@
 {
   "id": "develop/integrate/frontend",
-  "title": "Web Frontend",
-  "description": "Once your contract is deployed it is highly likely that you will want to interact with it from a web frontend.",
+  "title": "Integrating Contracts",
+  "description": "To integrate NEAR to your frontend, you will leverage two tools:",
   "source": "@site/../docs/2.develop/integrate/frontend.md",
   "sourceDirName": "2.develop/integrate",
   "slug": "/develop/integrate/frontend",
@@ -12,19 +12,19 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "gagdiez",
-  "lastUpdatedAt": 1702155614,
-  "formattedLastUpdatedAt": "Dec 9, 2023",
+  "lastUpdatedAt": 1705079030,
+  "formattedLastUpdatedAt": "Jan 12, 2024",
   "frontMatter": {
     "id": "frontend",
-    "title": "Web Frontend"
+    "title": "Integrating Contracts"
   },
   "sidebar": "integrate",
   "previous": {
-    "title": "Components & Historical data",
-    "permalink": "/bos/queryapi/bos-components"
+    "title": "⭐ Quickstart a WebApp",
+    "permalink": "/develop/integrate/quickstart-frontend"
   },
   "next": {
-    "title": "Count on NEAR",
-    "permalink": "/tutorials/examples/count-near"
+    "title": "Integrating Components",
+    "permalink": "/develop/integrate/frontend-components"
   }
 }

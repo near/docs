@@ -11,6 +11,9 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/minecraft-nfts.md",
   "tags": [],
   "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1704996595,
+  "formattedLastUpdatedAt": "2024년 1월 11일",
   "frontMatter": {
     "id": "minecraft-nfts",
     "title": "Minecraft에서 NFT 만들기",

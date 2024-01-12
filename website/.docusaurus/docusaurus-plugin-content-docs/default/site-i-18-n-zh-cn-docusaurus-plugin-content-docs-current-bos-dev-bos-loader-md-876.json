@@ -11,14 +11,17 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/dev/bos-loader.md",
   "tags": [],
   "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1704996595,
+  "formattedLastUpdatedAt": "2024年1月11日",
   "frontMatter": {
     "id": "bos-loader",
     "title": "BOS Loader"
   },
   "sidebar": "integrate",
   "previous": {
-    "title": "⭐ Quickstart",
-    "permalink": "/zh-CN/bos/tutorial/quickstart"
+    "title": "Gateways",
+    "permalink": "/zh-CN/bos/tutorial/bos-gateway"
   },
   "next": {
     "title": "Smart Contract Interaction",

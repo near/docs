@@ -11,6 +11,9 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/tutorial/iframes.md",
   "tags": [],
   "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1704996595,
+  "formattedLastUpdatedAt": "11 thg 1, 2024",
   "frontMatter": {
     "id": "using-iframes",
     "title": "Using IFrames"
@@ -21,7 +24,7 @@
     "permalink": "/vi/bos/tutorial/ds-components"
   },
   "next": {
-    "title": "Gateways",
-    "permalink": "/vi/bos/tutorial/bos-gateway"
+    "title": "Push Notifications",
+    "permalink": "/vi/bos/tutorial/push-notifications"
   }
 }

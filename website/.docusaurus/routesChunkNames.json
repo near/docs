@@ -5,17 +5,17 @@
       "plugin": "82d98fd4"
     }
   },
-  "/zh-CN/-07a": {
+  "/zh-CN/-e88": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "8b378508"
     }
   },
-  "/zh-CN/-f0c": {
+  "/zh-CN/-8f0": {
     "__comp": "a7bd4aaa",
     "version": "935f2afb"
   },
-  "/zh-CN/-180": {
+  "/zh-CN/-985": {
     "__comp": "a94703ab"
   },
   "/zh-CN/api/rpc/access-keys-c54": {
@@ -66,25 +66,9 @@
     "__comp": "17896441",
     "content": "ec201e9b"
   },
-  "/zh-CN/bos/api/cache-6f3": {
+  "/zh-CN/bos/api/builtin-components-c49": {
     "__comp": "17896441",
-    "content": "8b0cd66b"
-  },
-  "/zh-CN/bos/api/clipboard-b88": {
-    "__comp": "17896441",
-    "content": "33622cee"
-  },
-  "/zh-CN/bos/api/fetch-e1c": {
-    "__comp": "17896441",
-    "content": "843dbaac"
-  },
-  "/zh-CN/bos/api/home-035": {
-    "__comp": "17896441",
-    "content": "5cf7834a"
-  },
-  "/zh-CN/bos/api/indexing-148": {
-    "__comp": "17896441",
-    "content": "a77d43e5"
+    "content": "2498e57d"
   },
   "/zh-CN/bos/api/near-e7f": {
     "__comp": "17896441",
@@ -94,7 +78,7 @@
     "__comp": "17896441",
     "content": "e57862e5"
   },
-  "/zh-CN/bos/api/primitives-3d2": {
+  "/zh-CN/bos/api/primitives-952": {
     "__comp": "17896441",
     "content": "710f93e8"
   },
@@ -106,63 +90,23 @@
     "__comp": "17896441",
     "content": "3ada2290"
   },
-  "/zh-CN/bos/api/storage-0ba": {
+  "/zh-CN/bos/api/web-methods-5d7": {
     "__comp": "17896441",
-    "content": "d50206bb"
+    "content": "2365e032"
   },
   "/zh-CN/bos/community/indexers-d95": {
     "__comp": "17896441",
     "content": "3aaac6f5"
   },
-  "/zh-CN/bos/components-096": {
+  "/zh-CN/bos/components-8bf": {
     "__comp": "17896441",
     "content": "d0c1792b"
-  },
-  "/zh-CN/bos/components/files-9a2": {
-    "__comp": "17896441",
-    "content": "594d6762"
-  },
-  "/zh-CN/bos/components/home-99b": {
-    "__comp": "17896441",
-    "content": "fdae12a5"
-  },
-  "/zh-CN/bos/components/infinite-scroll-89f": {
-    "__comp": "17896441",
-    "content": "844c38cf"
-  },
-  "/zh-CN/bos/components/ipfs-eb2": {
-    "__comp": "17896441",
-    "content": "f6844d26"
-  },
-  "/zh-CN/bos/components/markdown-042": {
-    "__comp": "17896441",
-    "content": "a79704d9"
-  },
-  "/zh-CN/bos/components/overlay-trigger-9d9": {
-    "__comp": "17896441",
-    "content": "cff0cc63"
-  },
-  "/zh-CN/bos/components/styled-473": {
-    "__comp": "17896441",
-    "content": "2af0d174"
-  },
-  "/zh-CN/bos/components/tooltip-2b8": {
-    "__comp": "17896441",
-    "content": "0ec10e80"
-  },
-  "/zh-CN/bos/components/typeahead-8bb": {
-    "__comp": "17896441",
-    "content": "3e5a2469"
-  },
-  "/zh-CN/bos/components/widgets-676": {
-    "__comp": "17896441",
-    "content": "56881af5"
   },
   "/zh-CN/bos/dev/bos-loader-ff1": {
     "__comp": "17896441",
     "content": "876389ed"
   },
-  "/zh-CN/bos/dev/intro-ff2": {
+  "/zh-CN/bos/dev/intro-db9": {
     "__comp": "17896441",
     "content": "f1d748fc"
   },
@@ -170,7 +114,7 @@
     "__comp": "17896441",
     "content": "2a99f642"
   },
-  "/zh-CN/bos/overview-38f": {
+  "/zh-CN/bos/overview-d7a": {
     "__comp": "17896441",
     "content": "aad455f9"
   },
@@ -545,6 +489,10 @@
   "/zh-CN/develop/integrate/frontend-4aa": {
     "__comp": "17896441",
     "content": "5c69c629"
+  },
+  "/zh-CN/develop/integrate/frontend-components-094": {
+    "__comp": "17896441",
+    "content": "e2d007dc"
   },
   "/zh-CN/develop/integrate/quickstart-frontend-e4a": {
     "__comp": "17896441",

@@ -20,8 +20,8 @@
   },
   "sidebar": "integrate",
   "previous": {
-    "title": "⭐ Quickstart",
-    "permalink": "/bos/tutorial/quickstart"
+    "title": "Using components on WebApps",
+    "permalink": "/bos/tutorial/bos-gateway"
   },
   "next": {
     "title": "Smart Contract Interaction",

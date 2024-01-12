@@ -11,6 +11,9 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/integrate/quickstart.md",
   "tags": [],
   "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1704996595,
+  "formattedLastUpdatedAt": "11 thg 1, 2024",
   "frontMatter": {
     "id": "quickstart-frontend",
     "title": "Hello WebApp",
@@ -18,11 +21,11 @@
   },
   "sidebar": "integrate",
   "previous": {
-    "title": "Home",
-    "permalink": "/vi/develop/integrate/welcome"
+    "title": "Lido Example",
+    "permalink": "/vi/bos/tutorial/lido"
   },
   "next": {
-    "title": "Overview",
-    "permalink": "/vi/bos/overview"
+    "title": "Web Frontend",
+    "permalink": "/vi/develop/integrate/frontend"
   }
 }

@@ -11,6 +11,9 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/api/state.md",
   "tags": [],
   "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1704996595,
+  "formattedLastUpdatedAt": "2024年1月11日",
   "frontMatter": {
     "id": "state",
     "title": "State API",
@@ -18,11 +21,11 @@
   },
   "sidebar": "integrate",
   "previous": {
-    "title": "Introduction",
-    "permalink": "/zh-CN/bos/api/home"
+    "title": "Overview",
+    "permalink": "/zh-CN/bos/dev/intro"
   },
   "next": {
-    "title": "Near",
-    "permalink": "/zh-CN/bos/api/near"
+    "title": "Web Browser Methods",
+    "permalink": "/zh-CN/bos/api/web-methods"
   }
 }

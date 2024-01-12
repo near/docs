@@ -11,17 +11,20 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/tutorial/gateway.md",
   "tags": [],
   "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1704996595,
+  "formattedLastUpdatedAt": "2024年1月11日",
   "frontMatter": {
     "id": "bos-gateway",
     "title": "Gateways"
   },
   "sidebar": "integrate",
   "previous": {
-    "title": "Overview",
-    "permalink": "/zh-CN/bos/overview"
+    "title": "Components & Historical data",
+    "permalink": "/zh-CN/bos/queryapi/bos-components"
   },
   "next": {
-    "title": "Components",
-    "permalink": "/zh-CN/bos/components"
+    "title": "BOS Loader",
+    "permalink": "/zh-CN/bos/dev/bos-loader"
   }
 }

@@ -11,9 +11,21 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/dev/intro.md",
   "tags": [],
   "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1704996595,
+  "formattedLastUpdatedAt": "11 thg 1, 2024",
   "frontMatter": {
     "id": "intro",
     "sidebar_label": "Overview",
     "title": "BOS Dev Tools"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "⭐ Quickstart",
+    "permalink": "/vi/bos/tutorial/quickstart"
+  },
+  "next": {
+    "title": "State",
+    "permalink": "/vi/bos/api/state"
   }
 }

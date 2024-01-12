@@ -11,6 +11,9 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/queryapi/query-data.md",
   "tags": [],
   "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1704996595,
+  "formattedLastUpdatedAt": "2024년 1월 11일",
   "frontMatter": {
     "id": "query-data",
     "title": "Accessing and Querying Historical data",

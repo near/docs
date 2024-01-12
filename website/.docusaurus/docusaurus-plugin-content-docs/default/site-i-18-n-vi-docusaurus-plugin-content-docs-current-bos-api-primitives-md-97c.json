@@ -11,18 +11,12 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/api/primitives.md",
   "tags": [],
   "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1704996595,
+  "formattedLastUpdatedAt": "11 thg 1, 2024",
   "frontMatter": {
     "id": "primitives",
     "title": "Primitives API",
     "sidebar_label": "Primitives"
-  },
-  "sidebar": "integrate",
-  "previous": {
-    "title": "Storage",
-    "permalink": "/vi/bos/api/storage"
-  },
-  "next": {
-    "title": "Cache",
-    "permalink": "/vi/bos/api/cache"
   }
 }

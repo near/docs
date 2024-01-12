@@ -11,6 +11,9 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/tutorial/iframes.md",
   "tags": [],
   "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1704996595,
+  "formattedLastUpdatedAt": "2024년 1월 11일",
   "frontMatter": {
     "id": "using-iframes",
     "title": "IFrame 사용하기"
@@ -21,7 +24,7 @@
     "permalink": "/ko/bos/tutorial/ds-components"
   },
   "next": {
-    "title": "Gateways",
-    "permalink": "/ko/bos/tutorial/bos-gateway"
+    "title": "Push Notifications",
+    "permalink": "/ko/bos/tutorial/push-notifications"
   }
 }

@@ -17,14 +17,5 @@
   "frontMatter": {
     "id": "overview",
     "title": "Overview"
-  },
-  "sidebar": "integrate",
-  "previous": {
-    "title": "⭐ Quickstart",
-    "permalink": "/develop/integrate/quickstart-frontend"
-  },
-  "next": {
-    "title": "Gateways",
-    "permalink": "/bos/tutorial/bos-gateway"
   }
 }

@@ -11,21 +11,21 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/integrate/quickstart.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Daniel Mesfin",
-  "lastUpdatedAt": 1704713286,
-  "formattedLastUpdatedAt": "Jan 8, 2024",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1705079030,
+  "formattedLastUpdatedAt": "Jan 12, 2024",
   "frontMatter": {
     "id": "quickstart-frontend",
     "title": "Hello WebApp",
-    "sidebar_label": "⭐ Quickstart"
+    "sidebar_label": "⭐ Quickstart a WebApp"
   },
   "sidebar": "integrate",
   "previous": {
-    "title": "Home",
-    "permalink": "/develop/integrate/welcome"
+    "title": "Lido Example",
+    "permalink": "/bos/tutorial/lido"
   },
   "next": {
-    "title": "Overview",
-    "permalink": "/bos/overview"
+    "title": "Integrating Contracts",
+    "permalink": "/develop/integrate/frontend"
   }
 }

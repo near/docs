@@ -2055,122 +2055,50 @@
         "unlisted": false
       },
       {
-        "type": "link",
-        "label": "⭐ Quickstart",
-        "href": "/zh-CN/develop/integrate/quickstart-frontend",
-        "docId": "develop/integrate/quickstart-frontend",
-        "unlisted": false
-      },
-      {
         "type": "html",
         "value": "<hr/>"
       },
       {
         "type": "html",
-        "value": "<span class='menu__link'><b><small> BOS Components </small></b></span>"
+        "value": "<span class='menu__link'><b><small> Composable Apps </small></b></span>"
+      },
+      {
+        "type": "link",
+        "label": "⭐ Quickstart",
+        "href": "/zh-CN/bos/tutorial/quickstart",
+        "docId": "bos/tutorial/quickstart",
+        "unlisted": false
       },
       {
         "type": "link",
         "label": "Overview",
-        "href": "/zh-CN/bos/overview",
-        "docId": "bos/overview",
-        "unlisted": false
-      },
-      {
-        "type": "link",
-        "label": "Gateways",
-        "href": "/zh-CN/bos/tutorial/bos-gateway",
-        "docId": "bos/tutorial/bos-gateway",
+        "href": "/zh-CN/bos/dev/intro",
+        "docId": "bos/dev/intro",
         "unlisted": false
       },
       {
         "type": "category",
-        "label": "Built-in Components",
+        "label": "Anatomy of a Component",
         "items": [
-          {
-            "type": "link",
-            "label": "Widget",
-            "href": "/zh-CN/bos/components/widgets",
-            "docId": "bos/components/widgets",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Image Uploader",
-            "href": "/zh-CN/bos/components/ipfs",
-            "docId": "bos/components/ipfs",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Files",
-            "href": "/zh-CN/bos/components/files",
-            "docId": "bos/components/files",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Markdown",
-            "href": "/zh-CN/bos/components/markdown",
-            "docId": "bos/components/markdown",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "OverlayTrigger",
-            "href": "/zh-CN/bos/components/overlay-trigger",
-            "docId": "bos/components/overlay-trigger",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "InfiniteScroll",
-            "href": "/zh-CN/bos/components/infinite-scroll",
-            "docId": "bos/components/infinite-scroll",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "TypeAhead",
-            "href": "/zh-CN/bos/components/typeahead",
-            "docId": "bos/components/typeahead",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Styled",
-            "href": "/zh-CN/bos/components/styled",
-            "docId": "bos/components/styled",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "ToolTip",
-            "href": "/zh-CN/bos/components/tooltip",
-            "docId": "bos/components/tooltip",
-            "unlisted": false
-          }
-        ],
-        "collapsed": true,
-        "collapsible": true,
-        "href": "/zh-CN/bos/components"
-      },
-      {
-        "type": "category",
-        "label": "Component API",
-        "items": [
-          {
-            "type": "link",
-            "label": "Introduction",
-            "href": "/zh-CN/bos/api/home",
-            "docId": "bos/api/home",
-            "unlisted": false
-          },
           {
             "type": "link",
             "label": "State",
             "href": "/zh-CN/bos/api/state",
             "docId": "bos/api/state",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Web Browser Methods",
+            "href": "/zh-CN/bos/api/web-methods",
+            "docId": "bos/api/web-methods",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "List of Native Components",
+            "href": "/zh-CN/bos/api/builtin-components",
+            "docId": "bos/api/builtin-components",
             "unlisted": false
           },
           {
@@ -2181,67 +2109,24 @@
             "unlisted": false
           },
           {
-            "type": "category",
-            "label": "SocialDB",
-            "items": [
-              {
-                "type": "link",
-                "label": "Overview",
-                "href": "/zh-CN/bos/api/social",
-                "docId": "bos/api/social",
-                "unlisted": false
-              },
-              {
-                "type": "link",
-                "label": "Social Indexer",
-                "href": "/zh-CN/bos/api/indexing",
-                "docId": "bos/api/indexing",
-                "unlisted": false
-              },
-              {
-                "type": "link",
-                "label": "Social Notifications",
-                "href": "/zh-CN/bos/api/notifications",
-                "docId": "bos/api/notifications",
-                "unlisted": false
-              }
-            ],
-            "collapsed": true,
-            "collapsible": true
-          },
-          {
             "type": "link",
-            "label": "Fetch",
-            "href": "/zh-CN/bos/api/fetch",
-            "docId": "bos/api/fetch",
+            "label": "Overview",
+            "href": "/zh-CN/bos/api/social",
+            "docId": "bos/api/social",
             "unlisted": false
           },
           {
             "type": "link",
-            "label": "Storage",
-            "href": "/zh-CN/bos/api/storage",
-            "docId": "bos/api/storage",
+            "label": "Social Notifications",
+            "href": "/zh-CN/bos/api/notifications",
+            "docId": "bos/api/notifications",
             "unlisted": false
           },
           {
             "type": "link",
-            "label": "Primitives",
-            "href": "/zh-CN/bos/api/primitives",
-            "docId": "bos/api/primitives",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Cache",
-            "href": "/zh-CN/bos/api/cache",
-            "docId": "bos/api/cache",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Clipboard",
-            "href": "/zh-CN/bos/api/clipboard",
-            "docId": "bos/api/clipboard",
+            "label": "Components & Historical data",
+            "href": "/zh-CN/bos/queryapi/bos-components",
+            "docId": "bos/queryapi/bos-components",
             "unlisted": false
           }
         ],
@@ -2249,16 +2134,16 @@
         "collapsible": true
       },
       {
+        "type": "link",
+        "label": "Gateways",
+        "href": "/zh-CN/bos/tutorial/bos-gateway",
+        "docId": "bos/tutorial/bos-gateway",
+        "unlisted": false
+      },
+      {
         "type": "category",
-        "label": "Examples & Tutorials",
+        "label": "Tutorials",
         "items": [
-          {
-            "type": "link",
-            "label": "⭐ Quickstart",
-            "href": "/zh-CN/bos/tutorial/quickstart",
-            "docId": "bos/tutorial/quickstart",
-            "unlisted": false
-          },
           {
             "type": "link",
             "label": "BOS Loader",
@@ -2285,13 +2170,6 @@
             "label": "Using IFrames",
             "href": "/zh-CN/bos/tutorial/using-iframes",
             "docId": "bos/tutorial/using-iframes",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Gateways",
-            "href": "/zh-CN/bos/tutorial/bos-gateway",
-            "docId": "bos/tutorial/bos-gateway",
             "unlisted": false
           },
           {
@@ -2334,25 +2212,32 @@
         "collapsible": true
       },
       {
-        "type": "link",
-        "label": "Components & Historical data",
-        "href": "/zh-CN/bos/queryapi/bos-components",
-        "docId": "bos/queryapi/bos-components",
-        "unlisted": false
-      },
-      {
         "type": "html",
         "value": "<hr/>"
       },
       {
         "type": "html",
-        "value": "<span class='menu__link'><b><small> Frontend Integration </small></b></span>"
+        "value": "<span class='menu__link'><b><small> Web Apps </small></b></span>"
+      },
+      {
+        "type": "link",
+        "label": "⭐ Quickstart",
+        "href": "/zh-CN/develop/integrate/quickstart-frontend",
+        "docId": "develop/integrate/quickstart-frontend",
+        "unlisted": false
       },
       {
         "type": "link",
         "label": "Web Frontend",
         "href": "/zh-CN/develop/integrate/frontend",
         "docId": "develop/integrate/frontend",
+        "unlisted": false
+      },
+      {
+        "type": "link",
+        "label": "Integrating Components",
+        "href": "/zh-CN/develop/integrate/frontend-components",
+        "docId": "develop/integrate/frontend-components",
         "unlisted": false
       },
       {
@@ -2390,7 +2275,7 @@
       },
       {
         "type": "html",
-        "value": "<span class='menu__link'><b><small> Backend Integration </small></b></span>"
+        "value": "<span class='menu__link'><b><small> Backend </small></b></span>"
       },
       {
         "type": "link",
@@ -3085,34 +2970,10 @@
       "description": "The RPC API enables you to send transactions and query their status.",
       "sidebar": "api"
     },
-    "bos/api/cache": {
-      "id": "bos/api/cache",
-      "title": "Cache",
-      "description": "The VM implements caching layer for most network requests. You can leverage it manually by using useCache hook.",
-      "sidebar": "integrate"
-    },
-    "bos/api/clipboard": {
-      "id": "bos/api/clipboard",
-      "title": "Clipboard",
-      "description": "The VM implements a clipboard API that works like Mozilla's Clipboard, providing write access to the contents of the system clipboard. The Clipboard API can be used to implement cut, copy, and paste features within a web application.",
-      "sidebar": "integrate"
-    },
-    "bos/api/fetch": {
-      "id": "bos/api/fetch",
-      "title": "Fetch",
-      "description": "fetch is a global function that allows to fetch data from the URL. It acts like a hook. It's a wrapper around the fetch function from the browser behind the caching layer. It's useful for fetching data from the external APIs. It has the similar API as the browser's fetch function, but instead of a promise it returns a value. If the data is not cached, it returns null and fetches the data in the background. If the data is cached, it returns the cached value and then revalidates it.",
-      "sidebar": "integrate"
-    },
-    "bos/api/home": {
-      "id": "bos/api/home",
-      "title": "Introduction",
-      "description": "NEAR provides a complete API to allow your components to interact with different blockchains, websites, and store data in a decentralized way.",
-      "sidebar": "integrate"
-    },
-    "bos/api/indexing": {
-      "id": "bos/api/indexing",
-      "title": "Social Indexer",
-      "description": "NEAR allows applications to index actions so they can be easily found later by other components.",
+    "bos/api/builtin-components": {
+      "id": "bos/api/builtin-components",
+      "title": "List of Native Components",
+      "description": "A list of all the built-in components to be used on Near Components.",
       "sidebar": "integrate"
     },
     "bos/api/near": {
@@ -3130,8 +2991,7 @@
     "bos/api/primitives": {
       "id": "bos/api/primitives",
       "title": "Primitives API",
-      "description": "Near Social VM provides a set of custom APIs that can be used by the components.",
-      "sidebar": "integrate"
+      "description": "Near Social VM provides a set of custom APIs that can be used by the components."
     },
     "bos/api/social": {
       "id": "bos/api/social",
@@ -3145,10 +3005,10 @@
       "description": "VM provides a convenient API to update the state of the component. There are two methods:",
       "sidebar": "integrate"
     },
-    "bos/api/storage": {
-      "id": "bos/api/storage",
-      "title": "Storage API",
-      "description": "Storage object to store data for components that is persistent across refreshes. Simulates localStorage access. It has 4 methods:",
+    "bos/api/web-methods": {
+      "id": "bos/api/web-methods",
+      "title": "Web Browser Methods",
+      "description": "NEAR Components have access to classic web methods that enable them to:",
       "sidebar": "integrate"
     },
     "bos/community/indexers": {
@@ -3160,67 +3020,7 @@
     "bos/components": {
       "id": "bos/components",
       "title": "Components",
-      "description": "NEAR allows you to create a decentralized frontend by writing and composing small applications known as Components.",
-      "sidebar": "integrate"
-    },
-    "bos/components/files": {
-      "id": "bos/components/files",
-      "title": "Files",
-      "description": "Files is a built-in component that enables to input files with drag and drop support. To use this feature, simply use the Files component. This component is a dependency from the IpfsImageUpload component.",
-      "sidebar": "integrate"
-    },
-    "bos/components/home": {
-      "id": "bos/components/home",
-      "title": "Built-in Components",
-      "description": "In NEAR, you build small apps known as Components, that focus on solving a specific problem. Then, you compose these Components to achieve a full-working frontend."
-    },
-    "bos/components/infinite-scroll": {
-      "id": "bos/components/infinite-scroll",
-      "title": "InfiniteScroll",
-      "description": "Infinitely load a grid or list of items. This component allows you to create a simple, lightweight infinite scrolling page or element by supporting both window and scrollable elements.",
-      "sidebar": "integrate"
-    },
-    "bos/components/ipfs": {
-      "id": "bos/components/ipfs",
-      "title": "Image Uploader",
-      "description": "The IpfsImageUpload is a built-in component that enables users to directly upload an image to the InterPlanetary File System (IPFS).",
-      "sidebar": "integrate"
-    },
-    "bos/components/markdown": {
-      "id": "bos/components/markdown",
-      "title": "Markdown Viewer",
-      "description": "Markdown is a built-in component that enables to render Markdown. To use this feature, simply use the Markdown component:",
-      "sidebar": "integrate"
-    },
-    "bos/components/overlay-trigger": {
-      "id": "bos/components/overlay-trigger",
-      "title": "OverlayTrigger",
-      "description": "The OverlayTrigger is used to display a message or icon when the mouse is over a DOM element. Common use cases could be like a popover or a tooltip.",
-      "sidebar": "integrate"
-    },
-    "bos/components/styled": {
-      "id": "bos/components/styled",
-      "title": "Styled Components",
-      "description": "Styled Components is a popular library for styling React components using CSS-in-JS. This tool was imported into near.social infrastructure for your use. You do not have to install or import anything, it is ready to use right away.",
-      "sidebar": "integrate"
-    },
-    "bos/components/tooltip": {
-      "id": "bos/components/tooltip",
-      "title": "ToolTip Component",
-      "description": "This special component displays a message once the mouse hovers over a particular DOM item. This component was imported into NEAR Social from React-Bootstrap and more info can be found here.",
-      "sidebar": "integrate"
-    },
-    "bos/components/typeahead": {
-      "id": "bos/components/typeahead",
-      "title": "TypeAhead Component",
-      "description": "The TypeAhead component provides a type-ahead input field for selecting an option from a list of choices. This component is imported from the react-bootstrap-typeahead package; more information about the component can be found here.",
-      "sidebar": "integrate"
-    },
-    "bos/components/widgets": {
-      "id": "bos/components/widgets",
-      "title": "Widget",
-      "description": "The predefined component Widget allows you to include an existing component into your code, thus enabling to create complex applications by composing components.",
-      "sidebar": "integrate"
+      "description": "NEAR allows you to create a decentralized frontend by writing and composing small applications known as Components."
     },
     "bos/dev/bos-loader": {
       "id": "bos/dev/bos-loader",
@@ -3231,7 +3031,8 @@
     "bos/dev/intro": {
       "id": "bos/dev/intro",
       "title": "BOS Dev Tools",
-      "description": "Building, deploying, and collaborating within a new framework can be challenging. The NEAR community has created helpful workflows using new tools to simplify your development workflow building on the Blockchain Operating System (BOS)."
+      "description": "Building, deploying, and collaborating within a new framework can be challenging. The NEAR community has created helpful workflows using new tools to simplify your development workflow building on the Blockchain Operating System (BOS).",
+      "sidebar": "integrate"
     },
     "bos/dev/vscode": {
       "id": "bos/dev/vscode",
@@ -3242,8 +3043,7 @@
     "bos/overview": {
       "id": "bos/overview",
       "title": "Overview",
-      "description": "NEAR simplifies building, deploying and accessing decentralized frontends. Embrace the power of community and Web 3.",
-      "sidebar": "integrate"
+      "description": "NEAR simplifies building, deploying and accessing decentralized frontends. Embrace the power of community and Web 3."
     },
     "bos/queryapi/best-practices": {
       "id": "bos/queryapi/best-practices",
@@ -3800,6 +3600,12 @@
       "id": "develop/integrate/frontend",
       "title": "Web Frontend",
       "description": "Once your contract is deployed it is highly likely that you will want to interact with it from a web frontend.",
+      "sidebar": "integrate"
+    },
+    "develop/integrate/frontend-components": {
+      "id": "develop/integrate/frontend-components",
+      "title": "Integrating Components",
+      "description": "To integrate Components to your frontend, you will leverage two tools:",
       "sidebar": "integrate"
     },
     "develop/integrate/quickstart-frontend": {

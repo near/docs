@@ -11,17 +11,11 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/components.md",
   "tags": [],
   "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1704996595,
+  "formattedLastUpdatedAt": "2024년 1월 11일",
   "frontMatter": {
     "id": "components",
     "title": "Components"
-  },
-  "sidebar": "integrate",
-  "previous": {
-    "title": "Gateways",
-    "permalink": "/ko/bos/tutorial/bos-gateway"
-  },
-  "next": {
-    "title": "위젯",
-    "permalink": "/ko/bos/components/widgets"
   }
 }

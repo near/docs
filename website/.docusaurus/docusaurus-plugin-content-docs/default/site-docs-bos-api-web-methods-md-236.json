@@ -1,0 +1,30 @@
+{
+  "id": "bos/api/web-methods",
+  "title": "Web Browser Methods",
+  "description": "NEAR Components have access to classic web methods that enable them to:",
+  "source": "@site/../docs/bos/api/web-methods.md",
+  "sourceDirName": "bos/api",
+  "slug": "/bos/api/web-methods",
+  "permalink": "/zh-CN/bos/api/web-methods",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/api/web-methods.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1705079030,
+  "formattedLastUpdatedAt": "2024年1月12日",
+  "frontMatter": {
+    "id": "web-methods",
+    "title": "Web Browser Methods"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "State",
+    "permalink": "/zh-CN/bos/api/state"
+  },
+  "next": {
+    "title": "List of Native Components",
+    "permalink": "/zh-CN/bos/api/builtin-components"
+  }
+}

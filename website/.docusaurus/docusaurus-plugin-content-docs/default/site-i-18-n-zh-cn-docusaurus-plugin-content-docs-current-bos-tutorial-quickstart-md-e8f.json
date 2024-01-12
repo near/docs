@@ -11,17 +11,20 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/tutorial/quickstart.md",
   "tags": [],
   "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1704996595,
+  "formattedLastUpdatedAt": "2024年1月11日",
   "frontMatter": {
     "id": "quickstart",
     "title": "⭐ Quickstart"
   },
   "sidebar": "integrate",
   "previous": {
-    "title": "Clipboard",
-    "permalink": "/zh-CN/bos/api/clipboard"
+    "title": "Home",
+    "permalink": "/zh-CN/develop/integrate/welcome"
   },
   "next": {
-    "title": "BOS Loader",
-    "permalink": "/zh-CN/bos/dev/bos-loader"
+    "title": "Overview",
+    "permalink": "/zh-CN/bos/dev/intro"
   }
 }

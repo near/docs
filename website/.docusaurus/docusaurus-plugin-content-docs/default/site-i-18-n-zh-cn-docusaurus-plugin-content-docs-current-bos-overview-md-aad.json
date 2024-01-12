@@ -11,17 +11,11 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/overview.md",
   "tags": [],
   "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1704996595,
+  "formattedLastUpdatedAt": "2024年1月11日",
   "frontMatter": {
     "id": "overview",
     "title": "Overview"
-  },
-  "sidebar": "integrate",
-  "previous": {
-    "title": "⭐ Quickstart",
-    "permalink": "/zh-CN/develop/integrate/quickstart-frontend"
-  },
-  "next": {
-    "title": "Gateways",
-    "permalink": "/zh-CN/bos/tutorial/bos-gateway"
   }
 }

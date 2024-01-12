@@ -65,28 +65,8 @@
               "sidebar": "api"
             },
             {
-              "id": "bos/api/cache",
-              "path": "/zh-CN/bos/api/cache",
-              "sidebar": "integrate"
-            },
-            {
-              "id": "bos/api/clipboard",
-              "path": "/zh-CN/bos/api/clipboard",
-              "sidebar": "integrate"
-            },
-            {
-              "id": "bos/api/fetch",
-              "path": "/zh-CN/bos/api/fetch",
-              "sidebar": "integrate"
-            },
-            {
-              "id": "bos/api/home",
-              "path": "/zh-CN/bos/api/home",
-              "sidebar": "integrate"
-            },
-            {
-              "id": "bos/api/indexing",
-              "path": "/zh-CN/bos/api/indexing",
+              "id": "bos/api/builtin-components",
+              "path": "/zh-CN/bos/api/builtin-components",
               "sidebar": "integrate"
             },
             {
@@ -101,8 +81,7 @@
             },
             {
               "id": "bos/api/primitives",
-              "path": "/zh-CN/bos/api/primitives",
-              "sidebar": "integrate"
+              "path": "/zh-CN/bos/api/primitives"
             },
             {
               "id": "bos/api/social",
@@ -115,8 +94,8 @@
               "sidebar": "integrate"
             },
             {
-              "id": "bos/api/storage",
-              "path": "/zh-CN/bos/api/storage",
+              "id": "bos/api/web-methods",
+              "path": "/zh-CN/bos/api/web-methods",
               "sidebar": "integrate"
             },
             {
@@ -126,57 +105,7 @@
             },
             {
               "id": "bos/components",
-              "path": "/zh-CN/bos/components",
-              "sidebar": "integrate"
-            },
-            {
-              "id": "bos/components/files",
-              "path": "/zh-CN/bos/components/files",
-              "sidebar": "integrate"
-            },
-            {
-              "id": "bos/components/home",
-              "path": "/zh-CN/bos/components/home"
-            },
-            {
-              "id": "bos/components/infinite-scroll",
-              "path": "/zh-CN/bos/components/infinite-scroll",
-              "sidebar": "integrate"
-            },
-            {
-              "id": "bos/components/ipfs",
-              "path": "/zh-CN/bos/components/ipfs",
-              "sidebar": "integrate"
-            },
-            {
-              "id": "bos/components/markdown",
-              "path": "/zh-CN/bos/components/markdown",
-              "sidebar": "integrate"
-            },
-            {
-              "id": "bos/components/overlay-trigger",
-              "path": "/zh-CN/bos/components/overlay-trigger",
-              "sidebar": "integrate"
-            },
-            {
-              "id": "bos/components/styled",
-              "path": "/zh-CN/bos/components/styled",
-              "sidebar": "integrate"
-            },
-            {
-              "id": "bos/components/tooltip",
-              "path": "/zh-CN/bos/components/tooltip",
-              "sidebar": "integrate"
-            },
-            {
-              "id": "bos/components/typeahead",
-              "path": "/zh-CN/bos/components/typeahead",
-              "sidebar": "integrate"
-            },
-            {
-              "id": "bos/components/widgets",
-              "path": "/zh-CN/bos/components/widgets",
-              "sidebar": "integrate"
+              "path": "/zh-CN/bos/components"
             },
             {
               "id": "bos/dev/bos-loader",
@@ -185,7 +114,8 @@
             },
             {
               "id": "bos/dev/intro",
-              "path": "/zh-CN/bos/dev/intro"
+              "path": "/zh-CN/bos/dev/intro",
+              "sidebar": "integrate"
             },
             {
               "id": "bos/dev/vscode",
@@ -194,8 +124,7 @@
             },
             {
               "id": "bos/overview",
-              "path": "/zh-CN/bos/overview",
-              "sidebar": "integrate"
+              "path": "/zh-CN/bos/overview"
             },
             {
               "id": "bos/queryapi/best-practices",
@@ -658,6 +587,11 @@
             {
               "id": "develop/integrate/frontend",
               "path": "/zh-CN/develop/integrate/frontend",
+              "sidebar": "integrate"
+            },
+            {
+              "id": "develop/integrate/frontend-components",
+              "path": "/zh-CN/develop/integrate/frontend-components",
               "sidebar": "integrate"
             },
             {

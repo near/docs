@@ -11,14 +11,17 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/api/near.md",
   "tags": [],
   "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1704996595,
+  "formattedLastUpdatedAt": "2024年1月11日",
   "frontMatter": {
     "id": "near",
     "title": "Near"
   },
   "sidebar": "integrate",
   "previous": {
-    "title": "State",
-    "permalink": "/zh-CN/bos/api/state"
+    "title": "List of Native Components",
+    "permalink": "/zh-CN/bos/api/builtin-components"
   },
   "next": {
     "title": "Overview",

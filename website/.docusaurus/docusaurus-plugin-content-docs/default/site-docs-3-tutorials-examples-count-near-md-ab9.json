@@ -20,8 +20,8 @@
   },
   "sidebar": "integrate",
   "previous": {
-    "title": "Web Frontend",
-    "permalink": "/develop/integrate/frontend"
+    "title": "Integrating Components",
+    "permalink": "/develop/integrate/frontend-components"
   },
   "next": {
     "title": "Donation",

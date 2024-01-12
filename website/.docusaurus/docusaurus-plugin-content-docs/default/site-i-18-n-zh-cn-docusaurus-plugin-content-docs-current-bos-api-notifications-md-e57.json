@@ -11,17 +11,20 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/api/notifications.md",
   "tags": [],
   "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1704996595,
+  "formattedLastUpdatedAt": "2024年1月11日",
   "frontMatter": {
     "id": "notifications",
     "title": "Social Notifications"
   },
   "sidebar": "integrate",
   "previous": {
-    "title": "Social Indexer",
-    "permalink": "/zh-CN/bos/api/indexing"
+    "title": "Overview",
+    "permalink": "/zh-CN/bos/api/social"
   },
   "next": {
-    "title": "Fetch",
-    "permalink": "/zh-CN/bos/api/fetch"
+    "title": "Components & Historical data",
+    "permalink": "/zh-CN/bos/queryapi/bos-components"
   }
 }

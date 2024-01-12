@@ -1,7 +1,7 @@
 {
   "id": "bos/api/state",
-  "title": "State API",
-  "description": "VM provides a convenient API to update the state of the component. There are two methods:",
+  "title": "Basics",
+  "description": "Borrowing from React, Near Components use hooks such as useState and useEffect to handle the state's logic, and props to receive parameters.",
   "source": "@site/../docs/bos/api/state.md",
   "sourceDirName": "bos/api",
   "slug": "/bos/api/state",
@@ -12,20 +12,19 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "gagdiez",
-  "lastUpdatedAt": 1696018523,
-  "formattedLastUpdatedAt": "Sep 29, 2023",
+  "lastUpdatedAt": 1705079030,
+  "formattedLastUpdatedAt": "Jan 12, 2024",
   "frontMatter": {
     "id": "state",
-    "title": "State API",
-    "sidebar_label": "State"
+    "title": "Basics"
   },
   "sidebar": "integrate",
   "previous": {
-    "title": "Introduction",
-    "permalink": "/bos/api/home"
+    "title": "Dev Environments",
+    "permalink": "/bos/dev/intro"
   },
   "next": {
-    "title": "Near",
-    "permalink": "/bos/api/near"
+    "title": "Web Browser Methods",
+    "permalink": "/bos/api/web-methods"
   }
 }

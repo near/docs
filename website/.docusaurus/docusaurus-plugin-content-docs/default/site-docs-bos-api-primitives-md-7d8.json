@@ -18,14 +18,5 @@
     "id": "primitives",
     "title": "Primitives API",
     "sidebar_label": "Primitives"
-  },
-  "sidebar": "integrate",
-  "previous": {
-    "title": "Storage",
-    "permalink": "/bos/api/storage"
-  },
-  "next": {
-    "title": "Cache",
-    "permalink": "/bos/api/cache"
   }
 }
