@@ -657,8 +657,9 @@
         "bos/queryapi/bos-components"
       ]
     },
+    "bos/tutorial/bos-gateway",
     {
-      "Examples & Tutorials": [
+      "Tutorials": [
         "bos/dev/bos-loader",
         "bos/tutorial/interaction",
         "bos/tutorial/ds-components",
@@ -670,7 +671,6 @@
         "bos/tutorial/lido"
       ]
     },
-    "bos/tutorial/bos-gateway",
     {
       "type": "html",
       "value": "<hr/>"

@@ -1,12 +1,16 @@
 ---
 id: state
-title: Component State
+title: Basics
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {WidgetEditor} from "@site/src/components/social-widget"
 
-Borrowing from React, Near Components use the same concepts of state, props and hooks to handle the component's logic.
+Borrowing from React, Near Components use hooks such as [**`useState`**](#state) and [**`useEffect`**](#useeffect-hook) to handle the state's logic, and [**props**](#props) to receive parameters.
+
+Near Components are stored in the blockchain, for which you will use the `NEAR VM` to [retrieve and execute them in the browser](../../2.develop/integrate/frontend-components.md).
+
+Using a VM enforces components to be sandboxed, making them very secure since they cannot access your `LocalStorage` or other elements in the page they are incorporated to. However, because of this, components cannot import external libraries. However, they can [**import functions**](#import) from other components.
 
 ---
 
@@ -75,3 +79,36 @@ return (
 );  
 ```
 </WidgetEditor>
+
+---
+
+## Import
+
+Components can import functions from other components. This is useful to reuse code and to create libraries of components.
+
+<WidgetEditor id='4'>
+
+```jsx
+const {add, multiply} = VM.require('influencer.testnet/widget/Math');
+
+return <>
+  <p> 2 + 3 = {add(2, 3)} </p>
+  <p> 2 * 3 = {multiply(2, 3)} </p>
+</>
+```
+
+</WidgetEditor>
+
+Where the code of the `Math` component is:
+
+```js
+function add(a, b) {
+  return a + b;
+}
+
+function multiply(a, b) {
+  return a * b;
+}
+
+return { add, multiply };
+```

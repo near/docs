@@ -36,5 +36,5 @@ In order to integrate components into your WebApp you will leverage two librarie
 The best way to learn how to integrate components into your WebApp is by following our tutorial:
 
 :::tip Tutorial
-To learn step-by-step how to integrate them, please visit our [integrating components into a WebApp](./frontend.md) tutorial.
+To learn step-by-step how to integrate them, please visit our [integrating components into a WebApp](../../2.develop/integrate/frontend-components.md) tutorial.
 :::
