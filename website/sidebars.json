@@ -636,63 +636,34 @@
   ],
   "integrate": [
     "develop/integrate/welcome",
-    "develop/integrate/quickstart-frontend",
     {
       "type": "html",
       "value": "<hr/>"
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> BOS Components </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Composable Apps </small></b></span>"
     },
-    "bos/overview",
+    "bos/tutorial/quickstart",
+    "bos/dev/intro",
+    {
+      "Anatomy of a Component": [
+        "bos/api/state",
+        "bos/api/web-methods",
+        "bos/api/builtin-components",
+        "bos/api/near",
+        "bos/api/social",
+        "bos/api/notifications",
+        "bos/queryapi/bos-components"
+      ]
+    },
     "bos/tutorial/bos-gateway",
     {
-      "type": "category",
-      "label": "Built-in Components",
-      "link": {
-        "type": "doc",
-        "id": "bos/components"
-      },
-      "items": [
-        "bos/components/widgets",
-        "bos/components/ipfs",
-        "bos/components/files",
-        "bos/components/markdown",
-        "bos/components/overlay-trigger",
-        "bos/components/infinite-scroll",
-        "bos/components/typeahead",
-        "bos/components/styled",
-        "bos/components/tooltip"
-      ]
-    },
-    {
-      "Component API": [
-        "bos/api/home",
-        "bos/api/state",
-        "bos/api/near",
-        {
-          "SocialDB": [
-            "bos/api/social",
-            "bos/api/indexing",
-            "bos/api/notifications"
-          ]
-        },
-        "bos/api/fetch",
-        "bos/api/storage",
-        "bos/api/primitives",
-        "bos/api/cache",
-        "bos/api/clipboard"
-      ]
-    },
-    {
-      "Examples & Tutorials": [
-        "bos/tutorial/quickstart",
+      "Tutorials": [
         "bos/dev/bos-loader",
         "bos/tutorial/interaction",
         "bos/tutorial/ds-components",
         "bos/tutorial/using-iframes",
-        "bos/tutorial/bos-gateway",
         "bos/tutorial/push-notifications",
         "bos/tutorial/queryapi-websockets",
         "bos/tutorial/ethers-js",
@@ -700,16 +671,17 @@
         "bos/tutorial/lido"
       ]
     },
-    "bos/queryapi/bos-components",
     {
       "type": "html",
       "value": "<hr/>"
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Frontend Integration </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Web Apps </small></b></span>"
     },
+    "develop/integrate/quickstart-frontend",
     "develop/integrate/frontend",
+    "develop/integrate/frontend-components",
     {
       "type": "category",
       "label": "Examples",
@@ -725,7 +697,7 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Backend Integration </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Backend </small></b></span>"
     },
     "develop/relayers/build-relayer",
     "develop/integrate/backend-login",
