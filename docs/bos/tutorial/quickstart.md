@@ -11,7 +11,7 @@ import {WidgetEditor} from "@site/src/components/social-widget"
 NEAR Components are a new way to build web applications. They are composable, reusable and decentralized.
 
 :::tip
-You can interact with some of these examples by login using the button at the top navigation bar.
+You can login to interact with some of these examples.
 :::
 
 ---
