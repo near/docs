@@ -5,7 +5,7 @@ title: VS Code Extension
 
 # NEAR BOS IDE
 
-A VS Code extension to help you develop [components](../components/home.md) for [NEAR BOS](https://near.org) using Visual Studio Code.
+A VS Code extension to help you develop [components](../tutorial/quickstart.md) for [NEAR BOS](https://near.org) using Visual Studio Code.
 
 ## Features
 
