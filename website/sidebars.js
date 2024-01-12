@@ -1,4 +1,4 @@
-{
+const sidebar = {
   "concepts": [
     "concepts/welcome",
     "concepts/basics/protocol",
@@ -929,4 +929,6 @@
     },
     "integrator/faq"
   ]
-}
+};
+
+export default sidebar;
