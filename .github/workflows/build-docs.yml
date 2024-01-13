@@ -51,8 +51,11 @@ jobs:
       - name: Commit build
         run: |
           git add -f ./website/build ./website/.docusaurus ./website/i18n 
-          git commit -m "Merge with master"
-          git push
+          if git commit -m "add new build";then
+            git push
+          else 
+            echo "Nothing to commit"
+          fi
     env:
       NODE_OPTIONS: --max-old-space-size=8192
       CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
