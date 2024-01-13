@@ -52,7 +52,7 @@ export default {
           "breadcrumbs": true,
           "editUrl": "https://github.com/near/docs/edit/master/website",
           "path": "../docs",
-          "sidebarPath": "./sidebars.json",
+          "sidebarPath": "./sidebars.js",
           "routeBasePath": "/"
         },
         "sitemap": {
@@ -512,6 +512,7 @@ export default {
     "path": "i18n"
   },
   "baseUrlIssueBanner": true,
+  "onBrokenAnchors": "warn",
   "onDuplicateRoutes": "warn",
   "staticDirectories": [
     "static"
