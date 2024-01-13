@@ -6,35 +6,46 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {WidgetEditor} from "@site/src/components/social-widget"
 
-NEAR allows applications to send notifications to their users. Notifications is implemented as a particular case of [indexed actions](/bos/api/indexing).
+Applications such as [NEAR Social](https://near.social) and the [NEAR Dev Portal](https://dev.near.org/) allow components to send notifications to their users.
+
+Notifications are great to inform users in real time that something has happened, and can be [easily incorporated into any web app](../tutorial/push-notifications.md).
 
 ---
 
 ## Sending Notifications 
 
-Sending a notification is as simple as including the `notify` action for the indexer, with a `key` and a `value`.
+Notifications are implemented as a particular case of [indexed actions](./social.md#socialindex).
+
+This means that to send a notification we just need to `index` the `notify` action for the indexer, with a `key` and a `value`.
 
 - The `key` tells **which account** to notify.
 - The `value` includes the [notification type](#notification-types) and the item being notified of.
 
-#### Example 
+<WidgetEditor>
+
 ```js
-Social.set({
-  index: {
-    notify: {
-      key: "mob.near",
-      value: {
-        type: "like",
-        item: {
-          type: "social",
-          path: "mob.near/post/main",
-          blockHeight: 102169725
-        }
-      }
+const notifyMe = () => {
+  Social.set({
+    index: {
+      notify: JSON.stringify({
+        key: context.accountId,
+        value: "docs notification"
+      })
     }
+  });
+}
+
+return <>
+  {context.accountId?
+  <button onClick={notifyMe}> Get Notification </button>
+  :
+  <p> Please login to be notified</p>
   }
-});
+</>
 ```
+
+</WidgetEditor>
+
 
 In this example, the account executing the code is notifying `mob.near` that they liked their social post created at the block height `102169725`.
 
@@ -149,15 +160,15 @@ In order to get all notifications for an user, we make a call to the Social inde
 <WidgetEditor id='1' height="190px">
 
 ```js
-  return Social.index(
-    "notify",
-    "mob.near",
-    {
-      limit: 10,
-      order: "desc",
-      subscribe: true,
-    }
-  );
+// login to see your notifications
+const accountId = context.accountId || 'influencer.testnet'
+
+const index = Social.index("notify", accountId, {limit: 2, order: "desc", subscribe: true});
+
+return <>
+  <h4> Notifications for {accountId} </h4>
+  {index.map(e => <> {JSON.stringify(e, null, 2)} <br/></>) }
+</>
 ```
 
 </WidgetEditor>
