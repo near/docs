@@ -1,0 +1,294 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.concepts.category.Accounts": {
+    "message": "Accounts",
+    "description": "The label for category Accounts in sidebar concepts"
+  },
+  "sidebar.concepts.category.Transactions": {
+    "message": "Transactions",
+    "description": "The label for category Transactions in sidebar concepts"
+  },
+  "sidebar.concepts.category.Gas": {
+    "message": "Gas",
+    "description": "The label for category Gas in sidebar concepts"
+  },
+  "sidebar.concepts.category.Data Flow": {
+    "message": "Data Flow",
+    "description": "The label for category Data Flow in sidebar concepts"
+  },
+  "sidebar.concepts.category.Tokens": {
+    "message": "Tokens",
+    "description": "The label for category Tokens in sidebar concepts"
+  },
+  "sidebar.concepts.category.Storage": {
+    "message": "Storage",
+    "description": "The label for category Storage in sidebar concepts"
+  },
+  "sidebar.concepts.category.Data Indexing": {
+    "message": "Data Indexing",
+    "description": "The label for category Data Indexing in sidebar concepts"
+  },
+  "sidebar.contracts.category.Anatomy of a Contract": {
+    "message": "Anatomy of a Contract",
+    "description": "The label for category Anatomy of a Contract in sidebar contracts"
+  },
+  "sidebar.contracts.category.Test the Contract": {
+    "message": "Test the Contract",
+    "description": "The label for category Test the Contract in sidebar contracts"
+  },
+  "sidebar.contracts.category.Deploy, Update & Lock": {
+    "message": "Deploy, Update & Lock",
+    "description": "The label for category Deploy, Update & Lock in sidebar contracts"
+  },
+  "sidebar.contracts.category.Security": {
+    "message": "Security",
+    "description": "The label for category Security in sidebar contracts"
+  },
+  "sidebar.contracts.category.Examples": {
+    "message": "Examples",
+    "description": "The label for category Examples in sidebar contracts"
+  },
+  "sidebar.contracts.category.Tutorials": {
+    "message": "Tutorials",
+    "description": "The label for category Tutorials in sidebar contracts"
+  },
+  "sidebar.contracts.category.Non Fungible Tokens": {
+    "message": "Non Fungible Tokens",
+    "description": "The label for category Non Fungible Tokens in sidebar contracts"
+  },
+  "sidebar.contracts.category.Zero to Hero": {
+    "message": "Zero to Hero",
+    "description": "The label for category Zero to Hero in sidebar contracts"
+  },
+  "sidebar.contracts.category.Master NFTs on NEAR": {
+    "message": "Master NFTs on NEAR",
+    "description": "The label for category Master NFTs on NEAR in sidebar contracts"
+  },
+  "sidebar.contracts.category.🌐 Using the JavaScript SDK": {
+    "message": "🌐 Using the JavaScript SDK",
+    "description": "The label for category 🌐 Using the JavaScript SDK in sidebar contracts"
+  },
+  "sidebar.contracts.category.🦀 Using the Rust SDK": {
+    "message": "🦀 Using the Rust SDK",
+    "description": "The label for category 🦀 Using the Rust SDK in sidebar contracts"
+  },
+  "sidebar.contracts.category.Fungible Tokens 101": {
+    "message": "Fungible Tokens 101",
+    "description": "The label for category Fungible Tokens 101 in sidebar contracts"
+  },
+  "sidebar.contracts.category.Build a Crossword Game": {
+    "message": "Build a Crossword Game",
+    "description": "The label for category Build a Crossword Game in sidebar contracts"
+  },
+  "sidebar.contracts.category.Basics": {
+    "message": "Basics",
+    "description": "The label for category Basics in sidebar contracts"
+  },
+  "sidebar.contracts.category.Beginner": {
+    "message": "Beginner",
+    "description": "The label for category Beginner in sidebar contracts"
+  },
+  "sidebar.contracts.category.Intermediate": {
+    "message": "Intermediate",
+    "description": "The label for category Intermediate in sidebar contracts"
+  },
+  "sidebar.contracts.link.Building a Frontend": {
+    "message": "Building a Frontend",
+    "description": "The label for link Building a Frontend in sidebar contracts, linking to https://github.com/near-examples/nft-tutorial-frontend"
+  },
+  "sidebar.contracts.link.Development Kit (SDK) ↗": {
+    "message": "Development Kit (SDK) ↗",
+    "description": "The label for link Development Kit (SDK) ↗ in sidebar contracts, linking to /sdk/welcome"
+  },
+  "sidebar.contracts.link.NEAR API JS ↗": {
+    "message": "NEAR API JS ↗",
+    "description": "The label for link NEAR API JS ↗ in sidebar contracts, linking to /tools/near-api-js/quick-reference"
+  },
+  "sidebar.contracts.link.NEAR CLI ↗": {
+    "message": "NEAR CLI ↗",
+    "description": "The label for link NEAR CLI ↗ in sidebar contracts, linking to /tools/near-cli"
+  },
+  "sidebar.contracts.link.Remix IDE Plugin": {
+    "message": "Remix IDE Plugin",
+    "description": "The label for link Remix IDE Plugin in sidebar contracts, linking to https://docs.welldonestudio.io/code/getting-started"
+  },
+  "sidebar.contracts.link.Aurora (EVM)": {
+    "message": "Aurora (EVM)",
+    "description": "The label for link Aurora (EVM) in sidebar contracts, linking to https://aurora.dev"
+  },
+  "sidebar.primitives.category.Using NFTs": {
+    "message": "Using NFTs",
+    "description": "The label for category Using NFTs in sidebar primitives"
+  },
+  "sidebar.primitives.category.Using FTs": {
+    "message": "Using FTs",
+    "description": "The label for category Using FTs in sidebar primitives"
+  },
+  "sidebar.primitives.category.Using DEX": {
+    "message": "Using DEX",
+    "description": "The label for category Using DEX in sidebar primitives"
+  },
+  "sidebar.primitives.category.Using DAO": {
+    "message": "Using DAO",
+    "description": "The label for category Using DAO in sidebar primitives"
+  },
+  "sidebar.primitives.category.Creating Linkdrops": {
+    "message": "Creating Linkdrops",
+    "description": "The label for category Creating Linkdrops in sidebar primitives"
+  },
+  "sidebar.tools.category.JavaScript API": {
+    "message": "JavaScript API",
+    "description": "The label for category JavaScript API in sidebar tools"
+  },
+  "sidebar.tools.category.Smart Contract SDKs": {
+    "message": "Smart Contract SDKs",
+    "description": "The label for category Smart Contract SDKs in sidebar tools"
+  },
+  "sidebar.tools.category.Rust SDK": {
+    "message": "Rust SDK",
+    "description": "The label for category Rust SDK in sidebar tools"
+  },
+  "sidebar.tools.category.Structure of a Contract": {
+    "message": "Structure of a Contract",
+    "description": "The label for category Structure of a Contract in sidebar tools"
+  },
+  "sidebar.tools.category.Contract Interface": {
+    "message": "Contract Interface",
+    "description": "The label for category Contract Interface in sidebar tools"
+  },
+  "sidebar.tools.category.Cross-Contract Calls": {
+    "message": "Cross-Contract Calls",
+    "description": "The label for category Cross-Contract Calls in sidebar tools"
+  },
+  "sidebar.tools.category.Promises": {
+    "message": "Promises",
+    "description": "The label for category Promises in sidebar tools"
+  },
+  "sidebar.tools.category.Building Contracts": {
+    "message": "Building Contracts",
+    "description": "The label for category Building Contracts in sidebar tools"
+  },
+  "sidebar.tools.category.Testing": {
+    "message": "Testing",
+    "description": "The label for category Testing in sidebar tools"
+  },
+  "sidebar.tools.category.JavaScript SDK": {
+    "message": "JavaScript SDK",
+    "description": "The label for category JavaScript SDK in sidebar tools"
+  },
+  "sidebar.tools.category.SDK CLI": {
+    "message": "SDK CLI",
+    "description": "The label for category SDK CLI in sidebar tools"
+  },
+  "sidebar.tools.category.Command Line Tools (CLI)": {
+    "message": "Command Line Tools (CLI)",
+    "description": "The label for category Command Line Tools (CLI) in sidebar tools"
+  },
+  "sidebar.tools.category.BOS Web Editors": {
+    "message": "BOS Web Editors",
+    "description": "The label for category BOS Web Editors in sidebar tools"
+  },
+  "sidebar.tools.category.Wallets": {
+    "message": "Wallets",
+    "description": "The label for category Wallets in sidebar tools"
+  },
+  "sidebar.tools.link.Handling Passphrases": {
+    "message": "Handling Passphrases",
+    "description": "The label for link Handling Passphrases in sidebar tools, linking to https://github.com/near/near-seed-phrase"
+  },
+  "sidebar.tools.link.Type Docs": {
+    "message": "Type Docs",
+    "description": "The label for link Type Docs in sidebar tools, linking to https://near.github.io/near-api-js"
+  },
+  "sidebar.tools.link.Type Docs ↗": {
+    "message": "Type Docs ↗",
+    "description": "The label for link Type Docs ↗ in sidebar tools, linking to https://near.github.io/near-sdk-js/"
+  },
+  "sidebar.tools.link.near.org Web Editor": {
+    "message": "near.org Web Editor",
+    "description": "The label for link near.org Web Editor in sidebar tools, linking to https://near.org/sandbox"
+  },
+  "sidebar.tools.link.Jutsu Web Editor": {
+    "message": "Jutsu Web Editor",
+    "description": "The label for link Jutsu Web Editor in sidebar tools, linking to https://jutsu.ai/editor"
+  },
+  "sidebar.tools.link.Remix IDE Plugin": {
+    "message": "Remix IDE Plugin",
+    "description": "The label for link Remix IDE Plugin in sidebar tools, linking to https://docs.welldonestudio.io/code/getting-started"
+  },
+  "sidebar.tools.link.Wallets": {
+    "message": "Wallets",
+    "description": "The label for link Wallets in sidebar tools, linking to https://wallet.near.org"
+  },
+  "sidebar.integrate.category.Anatomy of a Component": {
+    "message": "Anatomy of a Component",
+    "description": "The label for category Anatomy of a Component in sidebar integrate"
+  },
+  "sidebar.integrate.category.Tutorials": {
+    "message": "Tutorials",
+    "description": "The label for category Tutorials in sidebar integrate"
+  },
+  "sidebar.integrate.category.Examples": {
+    "message": "Examples",
+    "description": "The label for category Examples in sidebar integrate"
+  },
+  "sidebar.integrate.link.Wallet Selector ↗": {
+    "message": "Wallet Selector ↗",
+    "description": "The label for link Wallet Selector ↗ in sidebar integrate, linking to /tools/wallet-selector"
+  },
+  "sidebar.integrate.link.QueryAPI ↗": {
+    "message": "QueryAPI ↗",
+    "description": "The label for link QueryAPI ↗ in sidebar integrate, linking to /bos/queryapi/intro"
+  },
+  "sidebar.integrate.link.BOS CLI": {
+    "message": "BOS CLI",
+    "description": "The label for link BOS CLI in sidebar integrate, linking to https://github.com/FroVolod/bos-cli-rs"
+  },
+  "sidebar.integrate.link.Seed Phrase Generator": {
+    "message": "Seed Phrase Generator",
+    "description": "The label for link Seed Phrase Generator in sidebar integrate, linking to https://github.com/near/near-seed-phrase"
+  },
+  "sidebar.indexers.category.Tutorials": {
+    "message": "Tutorials",
+    "description": "The label for category Tutorials in sidebar indexers"
+  },
+  "sidebar.indexers.category.Building Indexers": {
+    "message": "Building Indexers",
+    "description": "The label for category Building Indexers in sidebar indexers"
+  },
+  "sidebar.indexers.category.Running NEAR Lake": {
+    "message": "Running NEAR Lake",
+    "description": "The label for category Running NEAR Lake in sidebar indexers"
+  },
+  "sidebar.indexers.category.Lake Data Structures": {
+    "message": "Lake Data Structures",
+    "description": "The label for category Lake Data Structures in sidebar indexers"
+  },
+  "sidebar.indexers.link.Limitations": {
+    "message": "Limitations",
+    "description": "The label for link Limitations in sidebar indexers, linking to /bos/queryapi/intro#known-limitations"
+  },
+  "sidebar.indexers.link.NEAR Lake Primitives": {
+    "message": "NEAR Lake Primitives",
+    "description": "The label for link NEAR Lake Primitives in sidebar indexers, linking to https://near.github.io/near-lake-framework-js/"
+  },
+  "sidebar.indexers.link.Real-time Events (Lake)": {
+    "message": "Real-time Events (Lake)",
+    "description": "The label for link Real-time Events (Lake) in sidebar indexers, linking to /tutorials/indexer/nft-indexer"
+  },
+  "sidebar.data-availability.category.Integrations": {
+    "message": "Integrations",
+    "description": "The label for category Integrations in sidebar data-availability"
+  },
+  "sidebar.exchanges.category.Integration": {
+    "message": "Integration",
+    "description": "The label for category Integration in sidebar exchanges"
+  },
+  "sidebar.exchanges.category.Understanding Errors": {
+    "message": "Understanding Errors",
+    "description": "The label for category Understanding Errors in sidebar exchanges"
+  }
+}

@@ -1,7 +1,7 @@
 {
   "id": "bos/api/notifications",
   "title": "Social Notifications",
-  "description": "NEAR allows applications to send notifications to their users. Notifications is implemented as a particular case of indexed actions.",
+  "description": "Applications such as NEAR Social and the NEAR Dev Portal allow components to send notifications to their users.",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/bos/api/notifications.md",
   "sourceDirName": "bos/api",
   "slug": "/bos/api/notifications",
@@ -20,11 +20,11 @@
   },
   "sidebar": "integrate",
   "previous": {
-    "title": "Overview",
+    "title": "Social Interactions",
     "permalink": "/zh-CN/bos/api/social"
   },
   "next": {
-    "title": "Components & Historical data",
+    "title": "Handling Historical data",
     "permalink": "/zh-CN/bos/queryapi/bos-components"
   }
 }

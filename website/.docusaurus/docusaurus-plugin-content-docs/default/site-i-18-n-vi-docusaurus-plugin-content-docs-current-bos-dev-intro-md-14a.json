@@ -1,7 +1,7 @@
 {
   "id": "bos/dev/intro",
-  "title": "BOS Dev Tools",
-  "description": "Building, deploying, and collaborating within a new framework can be challenging. The NEAR community has created helpful workflows using new tools to simplify your development workflow building on the Blockchain Operating System (BOS).",
+  "title": "Dev Environments",
+  "description": "Building, deploying, and collaborating within a new framework can be challenging. The NEAR community has created helpful workflows using new tools to simplify your development workflow.",
   "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/bos/dev/intro.md",
   "sourceDirName": "bos/dev",
   "slug": "/bos/dev/intro",
@@ -16,16 +16,15 @@
   "formattedLastUpdatedAt": "11 thg 1, 2024",
   "frontMatter": {
     "id": "intro",
-    "sidebar_label": "Overview",
-    "title": "BOS Dev Tools"
+    "title": "Dev Environments"
   },
   "sidebar": "integrate",
   "previous": {
-    "title": "⭐ Quickstart",
+    "title": "⭐ Overview",
     "permalink": "/vi/bos/tutorial/quickstart"
   },
   "next": {
-    "title": "State",
+    "title": "Basics",
     "permalink": "/vi/bos/api/state"
   }
 }

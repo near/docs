@@ -1,16 +1,42 @@
 ---
 id: intro
-sidebar_label: 개요
-title: BOS 개발 도구
+title: Dev Environments
 ---
 
-새로운 프레임워크 내에서 구축, 배포 및 협업하는 것은 어려울 수 있습니다. NEAR 커뮤니티는 [블록체인 운영 체제](https://near.org/blog/near-announces-the-blockchain-operating-system/) (BOS)에서 구축하는 개발 워크플로우를 단순화하기 위해 새로운 도구를 사용하여 유용한 워크플로우를 만들었습니다.
+새로운 프레임워크 내에서 구축, 배포 및 협업하는 것은 어려울 수 있습니다. The NEAR community has created helpful workflows using new tools to simplify your development workflow.
+
+The environments in which you can develop `Components` are divided into two categories:
+
+- [Web Tools](#web-tools): Online tools that allow you to quickly start building and sharing components.
+- [Local Tools](#local-tools): Tools that allow you to develop and test components locally.
+
+:::tip Handling collaborations
+If you plan to collaborate with multiple people, we recommend you to check [this repository template](https://github.com/near-examples/bos-components) which automatically deploys components each time a PR is merged.
+
+:::
+
+---
+
+## Web Tools
+The quickest way to start building NEAR Components is by using one of the online tools. They are great for taking your first steps, while they let you find other developers and components in the NEAR ecosystem.
+
+#### [NEAR Sandbox](https://near.org/sandbox)
+The [near website](https://near.org/) contains its own [sandbox editor](https://near.org/sandbox). The sandbox allows you to code, preview and deploy your components directly from your browser.
+
+#### [Jutsu.ai](https://jutsu.ai)
+[Jutsu.ai](https://jutsu.ai) is a web IDE made for NEAR developers. It contains examples and tutorials to help onboarding you.
+
+---
 
 ## 로컬 도구
 
-BOS에서 빌드를 시작하는 가장 빠른 방법은 [브라우저 내 에디터](https://near.org/sandbox)를 사용하는 것입니다. 더 큰 프로젝트에서 팀과 공동 작업하려는 경우 더 많은 버전 제어, 자동화된 테스트, 배포 및 익숙한 기타 워크플로우가 필요할 수 있습니다. 저희는 로컬 프로젝트 개발을 강화하기 위해 아래 리스트를 작성했습니다.
+If you want to collaborate with a team or work on a larger project, you will likely want more **version control**, automated testing and deployment, and other workflows. For this, the NEAR ecosystem offers a set of tools to easily develop and test your components entirely locally.
 
-- [BOS CLI](https://github.com/FroVolod/bos-cli-rs): NEAR BOS에 대한 로컬 컴포넌트 개발을 단순화하는 명령줄 유틸리티입니다.
-- [BOS Loader](bos-loader.md): NEAR BOS에서 로컬 컴포넌트를 미리 보는 CLI 도구입니다. [BOS CLI](https://github.com/FroVolod/bos-cli-rs)와 함께 쓸 때 좋은 효과를 낼 수 있습니다.
-- [VS Code 익스텐션](vscode.md): VS Code를 사용하여 컴포넌트 개발을 할 수 있도록 하는 익스텐션입니다.
-- [Jutsu.ai](https://jutsu.ai): a web IDE made for BOS developers
+#### [NEAR VSCode Extension](vscode.md)
+The [NEAR VSCode Extension](vscode.md) integrates with the VSCode IDE to help you develop, preview and deploy components all within VSCode.
+
+#### [BOS Loader](bos-loader.md)
+A CLI tool to preview local components in NEAR BOS. A perfect companion to the [BOS CLI](https://github.com/FroVolod/bos-cli-rs).
+
+#### [BOS CLI](https://github.com/FroVolod/bos-cli-rs)
+A command line utility that simplifies local component development for NEAR BOS.

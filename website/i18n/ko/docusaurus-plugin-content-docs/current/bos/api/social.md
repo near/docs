@@ -1,110 +1,112 @@
 ---
 id: social
-title: Overview
+title: Social Interactions
 ---
 
-import Tabs from '@theme/Tabs'
-import TabItem from '@theme/TabItem'
+import {WidgetEditor} from "@site/src/components/social-widget"
 
-At the core of NEAR social interactions there is the [SocialDB smart contract](https://github.com/NearSocial/social-db) (currently deployed at [social.near](https://nearblocks.io/address/social.near)).
+NEAR components can natively communicate with the [SocialDB smart contract](https://github.com/NearSocial/social-db) (currently deployed at [social.near](https://nearblocks.io/address/social.near)).
 
-NEAR provides a convenient API to get data from the SocialDB contract, composed by four methods:
+The `SocialDB` is a contract that stores `key-value` pairs, and is used mostly to store social-related data, such as `posts`, `likes`, or `profiles`.
 
-- [`Social.get`](#socialget)
-- [`Social.getr`](#socialgetr)
-- [`Social.index`](#socialindex)
-- [`Social.keys`](#socialkeys)
-- [`Social.set`](#socialset)
+:::tip
+Besides user data, the `SocialDB` contract stores **all existing NEAR components**.
+:::
 
 ---
 
 ## Social.get
 
-`Social.get`은 `get`을 호출하여 SocialDB 컨트랙트에서 데이터를 가져오고 데이터를 반환합니다. 데이터를 가져오는 동안 반환된 값은 `null`과 같습니다.
+`Social.get` queries a key from the SocialDB contract and returns the data. The key being queried can contain wildcards.
 
-:::note
-경로 패턴이 단일 키인 경우 첫 번째 와일드카드까지 객체의 래핑을 해제합니다.
-:::
+For example:
 
-메서드는 최대 3개의 인수를 사용합니다:
+  - `alice.near/profile/**`  will match the entire profile data of account alice.near.
+  - `alice.near/profile/*` will match all the fields of the profile, but not the nested objects.
+  - `alice.near/profile/name` will match only the name field of the profile.
+  - `*/widget/*` will match all the widgets of all the accounts.
 
- | 매개변수       | 필수 여부  | 자료형               | 설명           |
- | ---------- | ------ | ----------------- | ------------ |
- | `patterns` | **필수** | string / string[] | 경로 패턴        |
- | `finality` | _선택사항_ | `"final"` / 숫자    | 블록 높이 또는 완결성 |
- | `options`  | _선택사항_ | 객체                | `options` 객체 |
+<br />
 
-:::info options 객체
+<WidgetEditor>
+
+```js
+// Ask for the `profile` key of the influencer.testnet account
+const profile = Social.get("influencer.testnet/profile/*");
+
+// Ask a component from the influencer.testnet account
+const widget = Social.get("influencer.testnet/widget/Greeter");
+
+if(profile === null || widget === null) return "Loading ..."
+
+return (
+  <div>
+    <p>Profile: {JSON.stringify(profile)}</p>
+    <p>Widgets: {JSON.stringify(widget)} </p>
+  </div>
+);
+```
+
+</WidgetEditor>
+
+<details markdown="1">
+<summary> Parameters </summary>
+
+| 매개변수       | 필수 여부  | 자료형               | 설명           |
+| ---------- | ------ | ----------------- | ------------ |
+| `patterns` | **필수** | string / string[] | 경로 패턴        |
+| `finality` | _선택사항_ | `"final"` / 숫자    | 블록 높이 또는 완결성 |
+| `options`  | _선택사항_ | 객체                | `options` 객체 |
+
+:::info options object
 
 - `subscribe` _(선택 사항)_: true이면 데이터가 5초마다 새로 고쳐집니다.
 - `return_deleted` _(선택 사항)_: 삭제된 값을 (`null`로) 반환할지 여부를 나타냅니다. 기본값은 `false`입니다.
 
 :::
 
-블록 높이 또는 완결성을 사용하여 특정 블록 높이 또는 완결성에서 데이터를 가져올 수 있습니다. 블록 높이 또는 완결성이 지정되지 않은 경우 데이터는 최적의(`optimistic`) 완결성(최신 블록 높이) 으로 가져옵니다.
+The block height or finality can be used to get the data at a specific block height or finality. If the block height or finality is not specified, the data will be fetched at the `optimistic` finality (the latest block height).
 
-블록 높이 및 완결성 `final`을 위해, VM은 NEAR RPC를 직접 호출하는 대신 소셜 API 서버를 사용하여 데이터를 가져옵니다. Social API 서버는 SocialDB에 대한 데이터를 인덱싱하고 추가 옵션을 사용하여 모든 블록 높이에서 데이터를 가져올 수 있습니다. 또한 가스 제한에 의해 영향받지 않기 때문에 RPC 호출보다 더 많은 데이터를 반환할 수 있습니다. 일반적으로 API 서버는 가상 머신에서 컨트랙트 코드를 실행하지 않기 때문에 NEAR RPC보다 데이터를 더 빠르게 제공합니다.
+For block height and finality `final`, instead of calling the NEAR RPC directly, the VM uses the Social API Server to fetch the data.
 
-`Social.get` 옵션은 SocialDB의 `get` API와 유사합니다.
+Social API server indexes the data for SocialDB and allows to fetch the data at any block height with additional options.
 
-#### 예시
+It also allows returning more data than an RPC call because it's not restricted by the gas limit. In general, the API server also serves data faster than the NEAR RPC, because it doesn't execute the contract code in a virtual machine.
 
-예를 들어 경로 패턴이 `mob.near/widget/*`이면 `Social.get`은 객체 랩핑을 해제하고 다음을 반환합니다:
+</details>
 
-<Tabs>
-<TabItem value="request" label="Request" default>
+:::tip
+While the data is fetching, `Social.get` returns `null`.
+:::
 
-
-```js
-const data = Social.get("mob.near/widget/*");
-```
-
-</TabItem>
-<TabItem value="response" label="Response">
-
-```json
-{
-  "HelloWorld": "return <div>Hello, World!</div>;",
-  "HelloUsername": "return <div>Hello, {props.username}!</div>;"
-}
-```
-
-</TabItem>
-</Tabs>
-
-예를 들어 경로 패턴이 `mob.near/widget/HelloWorld`이면 `Social.get`은 객체 랩핑을 해제하고 다음을 반환합니다:
-
-<Tabs>
-<TabItem value="request" label="Request" default>
-
-
-```js
-const data = Social.get("mob.near/widget/HelloWorld");
-```
-
-</TabItem>
-<TabItem value="response" label="Response">
-
-```json
-"return <div>Hello, World!</div>;"
-```
-
-</TabItem>
-</Tabs>
-
-객체의 랩핑을 수동으로 풀 필요가 없는 것이 유용합니다.
 
 ---
 
 ## Social.getr
-
 `Social.getr`은 `Social.get`의 래퍼 헬퍼일 뿐이며, 각 경로 패턴에 `**`를 추가합니다.
 
- | 매개변수       | 필수 여부  | 자료형               | 설명           |
- | ---------- | ------ | ----------------- | ------------ |
- | `patterns` | **필수** | string / string[] | 경로 패턴        |
- | `finality` | _선택사항_ | `"final"` / 숫자    | 블록 높이 또는 완결성 |
- | `options`  | _선택사항_ | 객체                | `options` 객체 |
+<WidgetEditor>
+
+```js
+const profile = Social.getr("influencer.testnet/profile");
+
+return (
+  <div>
+    <p>Profile: {JSON.stringify(profile)}</p>
+  </div>
+);
+```
+
+</WidgetEditor>
+
+<details markdown="1">
+<summary> Parameters </summary>
+
+| 매개변수       | 필수 여부  | 자료형               | 설명           |
+| ---------- | ------ | ----------------- | ------------ |
+| `patterns` | **필수** | string / string[] | 경로 패턴        |
+| `finality` | _선택사항_ | `"final"` / 숫자    | 블록 높이 또는 완결성 |
+| `options`  | _선택사항_ | 객체                | `options` 객체 |
 
 :::info options 객체
 
@@ -113,41 +115,36 @@ const data = Social.get("mob.near/widget/HelloWorld");
 
 :::
 
-#### 예시
-
-예를 들어 경로 패턴이 `mob.near/profile`인 경우 `Social.getr`은 경로 패턴 `mob.near/profile/**`으로 `Social.get`을 호출합니다.
-
-<Tabs>
-<TabItem value="request" label="Request" default>
-
-
-```js
-const data = Social.getr("mob.near/profile");
-```
-
-</TabItem>
-<TabItem value="response" label="Response">
-
-```json
-"return <div>Hello, World!</div>;"
-```
-
-</TabItem>
-</Tabs>
+</details>
 
 ---
 
 ## Social.keys
 
-SocialDB의 `keys` API를 호출하여 데이터를 반환합니다. 데이터를 가져오는 동안 반환된 값은 `null`과 같습니다. 키 컨트랙트는 객체를 언랩하지 않으므로 반환되는 데이터는 SocialDB의 `keys` API와 동일합니다.
+The `keys` method allows to get the list of keys that match a pattern. It's useful for querying the data without reading values.
+
+It also has an additional `options` field that can be used to specify the return type and whether to return deleted keys.
+
+<WidgetEditor height="80">
+
+```js
+const data = Social.keys(`influencer.testnet/profile/*`, "final");
+
+return JSON.stringify(data)
+```
+
+</WidgetEditor>
+
+<details markdown="1">
+<summary> Parameters </summary>
 
 `Social.key`는 최대 3개의 인수를 사용합니다:
 
- | 매개변수       | 필수 여부  | 자료형               | 설명           |
- | ---------- | ------ | ----------------- | ------------ |
- | `patterns` | **필수** | string / string[] | 경로 패턴        |
- | `finality` | _선택사항_ | `"final"` / 숫자    | 블록 높이 또는 완결성 |
- | `options`  | _선택사항_ | 객체                | `options` 객체 |
+| 매개변수       | 필수 여부  | 자료형               | 설명           |
+| ---------- | ------ | ----------------- | ------------ |
+| `patterns` | **필수** | string / string[] | 경로 패턴        |
+| `finality` | _선택사항_ | `"final"` / 숫자    | 블록 높이 또는 완결성 |
+| `options`  | _선택사항_ | 객체                | `options` 객체 |
 
 :::info options 객체
 
@@ -158,107 +155,48 @@ SocialDB의 `keys` API를 호출하여 데이터를 반환합니다. 데이터�
 
 :::
 
+</details>
+
 :::tip
 Social API 서버는 사용자 지정 옵션 `return_type: "History"`를 지원합니다. 각 일치 키에 대해 값이 오름차순으로 변경되었을 때 모든 블록 높이가 포함된 배열을 반환합니다. 값을 덮어쓰는 피드를 만드는 데 사용할 수 있습니다.
 :::
-
-#### 예시
-
-<Tabs>
-<TabItem value="request" label="Request" default>
-
-```js
-const data = Social.keys(`${accountId}/post/meme`, "final", {
-  return_type: "History",
-});
-```
-
-</TabItem>
-<TabItem value="response" label="Response">
-
-```json
-"return <div>Hello, World!</div>;"
-```
-
-</TabItem>
-</Tabs>
-
----
-
-## Social.index
-
-일치하는 인덱스 값의 배열을 반환합니다. `blockHeight`에 따라 정렬됩니다.
-
-`Social.index` 인자:
-
- | 매개변수      | 필수 여부  | 자료형 | 설명                                                              |
- | --------- | ------ | --- | --------------------------------------------------------------- |
- | `action`  | **필수** | 문자열 | 표준의 `index_type`입니다. 예를 들어 경로 `index/like`에서 action은 `like`입니다. |
- | `key`     | **필수** | 문자열 | 표준의 내부 인덱스 값입니다.                                                |
- | `options` | _선택사항_ | 객체  | `options` 객체입니다.                                                |
-
-:::info options 객체
-
-- `subscribe` _(선택 사항)_: true이면 데이터가 5초마다 새로 고쳐집니다.
-- `accountId` _(선택 사항)_: 지정된 경우 값을 필터링하려면 문자열 또는 계정 ID 배열이어야 합니다. 그렇지 않으면 계정 ID로 필터링하지 않습니다.
-- `order` _(선택 사항)_: `asc` 또는 `desc` 중 하나입니다. 기본값은 `asc`입니다.
-- `limit` _(선택 사항)_: 기본값은 `100`입니다. 반환할 값의 수를 의미합니다. 마지막 요소의 블록 높이가 같은 경우 인덱스 값보다 많은 값을 반환할 수 있습니다.
-- `from` _(선택 사항)_: 순서에 따라 기본값은 `0` 또는 `Max`입니다.
-
-:::
-
-#### 예시
-
-<Tabs>
-<TabItem value="request" label="Request" default>
-
-```js
-return Social.index("test", "test-key-2");
-```
-
-```js
-return Social.index("test", "test-key-2", {
-  accountId: "mob.near"
-});
-```
-
-```js
-return Social.index("test", "test-key-2", {
-  accountId: ["mob.near", "root.near"]
-});
-```
-
-</TabItem>
-<TabItem value="response" label="Response">
-
-```json
-[
-    {
-        "accountId": "mob.near",
-        "blockHeight": 78672789,
-        "value": "test-value-1"
-    },
-    {
-        "accountId": "mob.near",
-        "blockHeight": 78672797,
-        "value": "test-value-1"
-    },
-    {
-        "accountId": "mob.near",
-        "blockHeight": 78672974,
-        "value": "test-value-3"
-    }
-]
-```
-
-</TabItem>
-</Tabs>
 
 ---
 
 ## Social.set
 
-`data` 객체를 가져와 SocialDB에 커밋합니다. 데이터를 저장하기 위해 모달 창 프롬프트를 생성하여 `CommitButton`과 유사하게 작동하지만, Commit Button 구성 요소를 통해 트리거할 필요는 없습니다. 비동기 Promise에 의존하는 보다 유연한 코드를 작성하고 다른 이벤트 및 구성 요소를 사용할 수 있습니다. 전반적으로 SocialDB에 커밋할 때 더 많은 유연성을 제공합니다. 예를 들어, Enter 키를 눌렀을 때 커밋할 수 있습니다.
+`data` 객체를 가져와 SocialDB에 커밋합니다. The data object can contain multiple keys, and each key can contain multiple values.
+
+Importantly, a user can only commit to **their own** space in `SocialDB` (e.g. `alice.near` can only write in `alice.near/**`), except if [**given explicit permission**](https://github.com/NearSocial/social-db#permissions) by the owner of another space.
+
+Each time a user wants to commit data, they will be prompted to confirm the action. On confirming, the user can choose to not be asked again in the future.
+
+<WidgetEditor>
+
+```js
+const onClick = () => {
+  Social.set({
+    post: {
+      main: JSON.stringify({
+        type: "md",
+        text: "I've read the docs!"
+      })
+    }
+  })
+}
+
+if(!context.accountId) return "Please login...";
+
+return <>
+  <p> Save a message showing some love to the NEAR Docs </p>
+  <button onClick={onClick}> Save the Message </button>
+</>
+```
+
+</WidgetEditor>
+
+<details markdown="1">
+<summary> Parameters </summary>
 
 `Social.index` 인자:
 
@@ -275,83 +213,130 @@ return Social.index("test", "test-key-2", {
 
 :::
 
-<details>
+</details>
 
-<summary > 확인 건너뛰기 기능 </summary>
-
-커밋을 확인하는 모달 창이 표시되면 매번 작업을 확인할지 또는 유사한 데이터에 대한 확인 창을 표시하지 않을지 선택하는 전환 기능이 있습니다.
-
-새 데이터의 경우 기본적으로 토글이 켜짐으로 설정되어 있으므로 다음 번에는 데이터를 확인하라는 메시지가 표시되지 않습니다. 로컬에서 결정을 기억하고 다음 번에는 이 결정이 기본적으로 적용됩니다(사용자가 건너뛰지 않기로 결정한 경우). 사용자가 토글을 켠 상태에서 커밋을 승인하면 유사한 데이터를 가진 다음 커밋은 확인 창을 건너뜁니다. 사용 권한은 위젯 소스별로 부여됩니다.
-
-:::note
-Similar data means the same top level keys on the data. `graph`, `post`, `index` 및 `settings` 등 4개의 최상위 키를 제외합니다. 이러한 키에는 두 번째 레벨 키가 사용됩니다. 새 표준이 추가되면 나중에 더 많은 키를 추가할 수 있습니다.
+:::tip
+By default `Social.set` will omit saving data that is already saved (e.g. if the user already liked a post, it won't save the like again). To force saving the data, pass the `force` option.
 :::
 
-예를 들어, 다음 버튼 위젯에서는 다음 키를 사용합니다:
-```json
-{
-    "graph": {
-      "follow": ...
-    },
-    "index": {
-      "graph": ...
-      "notify": ...
-    }
-  }
+---
+
+## Social.index
+NEAR Social readily provides an indexer - a service that listen to actions in SocialDB, and caches them so they can be retrieved without needing to interact with the contract.
+
+The indexer is very useful, for example, to rapidly store and retrieve information on all comments for a post. Without the indexer, we would need to check all entries in the contract to see who answered, surely running out of GAS before completion.
+
+<hr class="subsection" />
+
+### Indexing an Action
+To index an action we need to add the `index` key to the data being saved, within the `index` key we will save the `action` being indexed, alongside a `key` and a `value` that identifies this specific instance.
+
+<WidgetEditor>
+
+```js
+// General form of an indexed action
+// {
+//   index: {
+//     actionName: JSON.stringify({ key, value })
+//   }
+// }
+
+const onClick = () => {
+  Social.set({
+    index: {
+      readDocs: JSON.stringify({key: "docs", value: "like"})
+    } ,
+  })
+}
+
+return <>
+  {context.accountId ?
+  <>
+    <p> Index an action showing some love to the NEAR Docs </p>
+    <button onClick={onClick}> Index Action </button>
+  </> :
+  <p> Login to index an action </p>}
+</>
 ```
 
-다른 내용을 수정하려고 하면 확인 모달이 다시 표시됩니다.
+</WidgetEditor>
 
-![saving data](https://user-images.githubusercontent.com/470453/205456503-7c0db525-7f61-4ead-8591-2b6d86065fa4.png)
+In the example above we index a `docs` action. In this case the `action` is `docs`, and the `key` that identifies it is `"read"`.
+
+<details markdown="1">
+
+<summary> Standards </summary>
+
+#### Indexing a Post
+To index a post, the standard is to save the action `post`, with `{key: "main", value: {type: "md"}`.
+
+```js
+{
+  index: {
+    post: JSON.stringify({
+      key: "main",
+      value: {type: "md"}
+    })
+  }
+}
+```
+
+#### Indexing a Like
+To index a like, the standard is to save the action `like`, with `{key: object-representing-the-post, value: {type: "like" }}`
+
+```js
+{
+  index: {
+    like: JSON.stringify({
+      key: {type: 'social', path: 'influencer.testnet/post/main', blockHeight: 152959480 },
+      value: {type: "like"}})
+  }
+}
+```
 
 </details>
 
+<hr class="subsection" />
 
-#### 예시
+### Retrieving Indexed Actions
 
-일반 버튼을 통한 `CommitButton` and `Social.set` 사용 예시입니다. 둘다 `force`를 사용한다는 점에 유의하세요.
+To retrieve indexed actions we use the `Social.index` method. It takes the `action` and the `key` as arguments, and returns an array of all the indexed values alongside the `blockHeight` in which they were indexed, and which user made the action.
 
-<Tabs>
-<TabItem value="request" label="Request" default>
+
+<WidgetEditor>
 
 ```js
-State.init({ commitLoading: false });
+const readDocs = Social.index("readDocs", "docs")
 
-const data = { experimental: { test: "test" } };
+return <>
+  <p> Number of indexed "readDocs" actions with key "docs": {readDocs.length} </p>
 
-const Loading = (
-  <span
-    className="spinner-grow spinner-grow-sm me-1"
-    role="status"
-    aria-hidden="true"
-  />
-);
-
-return (
-  <div>
-    <CommitButton force data={data}>
-      CommitButton
-    </CommitButton>
-    <button
-      disabled={state.commitLoading}
-      onClick={() > {
-        State.update({ commitLoading: true });
-        Social.set(data, {
-          force: true,
-          onCommit: () => {
-            State.update({ commitLoading: false });
-          },
-          onCancel: () => {
-            State.update({ commitLoading: false });
-          },
-        });
-      }}
-    >
-      {state.commitLoading && Loading}Social.set
-    </button>
-  </div>
-);
+  <b>Indexed actions</b>
+  {JSON.stringify(readDocs)}
+</>
 ```
 
-</TabItem>
-</Tabs>
+</WidgetEditor>
+
+<details markdown="1">
+<summary> Parameters </summary>
+
+`Social.index` 인자:
+
+ | 매개변수      | 필수 여부        | 자료형 | 설명                                                              |
+ | --------- | ------------ | --- | --------------------------------------------------------------- |
+ | `action`  | **필수**       | 문자열 | 표준의 `index_type`입니다. 예를 들어 경로 `index/like`에서 action은 `like`입니다. |
+ | `key`     | **required** | 문자열 | 표준의 내부 인덱스 값입니다.                                                |
+ | `options` | _선택사항_       | 객체  | `options` 객체입니다.                                                |
+
+:::info options 객체
+
+- `subscribe` _(선택 사항)_: true이면 데이터가 5초마다 새로 고쳐집니다.
+- `accountId` _(선택 사항)_: 지정된 경우 값을 필터링하려면 문자열 또는 계정 ID 배열이어야 합니다. 그렇지 않으면 계정 ID로 필터링하지 않습니다.
+- `order` _(선택 사항)_: `asc` 또는 `desc` 중 하나입니다. 기본값은 `asc`입니다.
+- `limit` _(선택 사항)_: 기본값은 `100`입니다. 반환할 값의 수를 의미합니다. 마지막 요소의 블록 높이가 같은 경우 인덱스 값보다 많은 값을 반환할 수 있습니다.
+- `from` _(선택 사항)_: 순서에 따라 기본값은 `0` 또는 `Max`입니다.
+
+:::
+
+</details>

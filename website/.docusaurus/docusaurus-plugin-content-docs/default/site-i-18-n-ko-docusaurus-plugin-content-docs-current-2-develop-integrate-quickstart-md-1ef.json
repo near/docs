@@ -17,7 +17,7 @@
   "frontMatter": {
     "id": "quickstart-frontend",
     "title": "Hello WebApp",
-    "sidebar_label": "⭐ Quickstart"
+    "sidebar_label": "⭐ Quickstart a WebApp"
   },
   "sidebar": "integrate",
   "previous": {
@@ -25,7 +25,7 @@
     "permalink": "/ko/bos/tutorial/lido"
   },
   "next": {
-    "title": "웹 프론트엔드 구축",
+    "title": "Integrating Contracts",
     "permalink": "/ko/develop/integrate/frontend"
   }
 }

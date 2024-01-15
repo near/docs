@@ -69,17 +69,15 @@ Welcome! Here you will find documentation on how to build Web3 applications usin
 
 <FeatureList>
   <Column title="Composable Apps">
-    <Feature url="/bos/overview" title="Overview" subtitle="Why you should use Components" image="bos.png" />
-    <Feature url="/bos/tutorial/quickstart" title="Quickstart" subtitle="Build your first component!" image="quickstart.png" />
-    <Feature url="/bos/components" title="Components" subtitle="Build composable applications" image="frontend-bos.png" />
-    <Feature url="/bos/api/home" title="API" subtitle="Interact with the blockchain" image="api.png" />
-    <Feature url="/bos/dev/vscode" title="VSCode Extension" subtitle="Develop components in vscode" image="vscode.png" />
+    <Feature url="/bos/tutorial/quickstart" title="Overview" subtitle="Learn how components work" image="frontend-bos.png" />
+    <Feature url="/bos/dev/intro" title="Dev Environment" subtitle="Setup your dev environment" image="near-logo.png" />
+    <Feature url="/bos/api/state" title="Anatomy of a Component" subtitle="Learn how to build components" image="guest-book.png" />
+    <Feature url="/bos/api/state" title="Integrate on your App" subtitle="Integrate components to your App" image="bos-lido.png" />
   </Column>
-  <Column title="Tutorials">
-    <Feature url="/bos/tutorial/quickstart" title="Quickstart" subtitle="Build your first component!" image="quickstart.png" />
-    <Feature url="/bos/tutorial/interaction" title="Contract Interaction" subtitle="Connect your app to a smart contract" image="bos-contract.png" />
-    <Feature url="/bos/tutorial/lido" title="Multi-Chain" subtitle="Connect your app to Ethereum" image="bos-lido.png" />
-    <Feature url="/bos/tutorial/ds-components" title="Styling" subtitle="Style your application" image="multiple.png" />
+  <Column title="NEAR Integrations">
+    <Feature url="/develop/integrate/quickstart-frontend" title="Quickstart" subtitle="Create your first dApp!" image="quickstart.png" />
+    <Feature url="/develop/integrate/frontend" title="Frontend Integration" subtitle="Connect your app to NEAR" image="bos-contract.png" />
+    <Feature url="/develop/integrate/backend-login" title="Login to a Backend" subtitle="Login users through NEAR Accounts" image="near-cli.png" />
   </Column>
   <Column title="Discover Gateways">
     <Feature url="https://near.org" title="near.org" subtitle="The main gateway to NEAR" image="near-logo.png" />

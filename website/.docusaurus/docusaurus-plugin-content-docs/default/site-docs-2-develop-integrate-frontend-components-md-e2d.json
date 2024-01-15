@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.develop/integrate/frontend-components.md",
   "sourceDirName": "2.develop/integrate",
   "slug": "/develop/integrate/frontend-components",
-  "permalink": "/zh-CN/develop/integrate/frontend-components",
+  "permalink": "/develop/integrate/frontend-components",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/integrate/frontend-components.md",
@@ -13,18 +13,18 @@
   "version": "current",
   "lastUpdatedBy": "gagdiez",
   "lastUpdatedAt": 1705079030,
-  "formattedLastUpdatedAt": "2024年1月12日",
+  "formattedLastUpdatedAt": "Jan 12, 2024",
   "frontMatter": {
     "id": "frontend-components",
     "title": "Integrating Components"
   },
   "sidebar": "integrate",
   "previous": {
-    "title": "Web Frontend",
-    "permalink": "/zh-CN/develop/integrate/frontend"
+    "title": "Integrating Contracts",
+    "permalink": "/develop/integrate/frontend"
   },
   "next": {
     "title": "Count on NEAR",
-    "permalink": "/zh-CN/tutorials/examples/count-near"
+    "permalink": "/tutorials/examples/count-near"
   }
 }

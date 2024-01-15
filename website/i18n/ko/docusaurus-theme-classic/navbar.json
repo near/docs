@@ -1,0 +1,130 @@
+{
+  "logo.alt": {
+    "message": "NEAR Logo",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Learn": {
+    "message": "Learn",
+    "description": "Navbar item with label Learn"
+  },
+  "item.label.Build": {
+    "message": "Build",
+    "description": "Navbar item with label Build"
+  },
+  "item.label.Primitives": {
+    "message": "Primitives",
+    "description": "Navbar item with label Primitives"
+  },
+  "item.label.Tools": {
+    "message": "Tools",
+    "description": "Navbar item with label Tools"
+  },
+  "item.label.RPC": {
+    "message": "RPC",
+    "description": "Navbar item with label RPC"
+  },
+  "item.label.Other Docs": {
+    "message": "Other Docs",
+    "description": "Navbar item with label Other Docs"
+  },
+  "item.label.Changelog 🎉": {
+    "message": "Changelog 🎉",
+    "description": "Navbar item with label Changelog 🎉"
+  },
+  "item.label.Smart Contracts": {
+    "message": "Smart Contracts",
+    "description": "Navbar item with label Smart Contracts"
+  },
+  "item.label.Web3 Applications": {
+    "message": "Web3 Applications",
+    "description": "Navbar item with label Web3 Applications"
+  },
+  "item.label.Data Solutions": {
+    "message": "Data Solutions",
+    "description": "Navbar item with label Data Solutions"
+  },
+  "item.label.Backend": {
+    "message": "Backend",
+    "description": "Navbar item with label Backend"
+  },
+  "item.label.Frontend": {
+    "message": "Frontend",
+    "description": "Navbar item with label Frontend"
+  },
+  "item.label.Exchanges": {
+    "message": "Exchanges",
+    "description": "Navbar item with label Exchanges"
+  },
+  "item.label.Rollups DA": {
+    "message": "Rollups DA",
+    "description": "Navbar item with label Rollups DA"
+  },
+  "item.label.Drops": {
+    "message": "Drops",
+    "description": "Navbar item with label Drops"
+  },
+  "item.label.Fungible Tokens": {
+    "message": "Fungible Tokens",
+    "description": "Navbar item with label Fungible Tokens"
+  },
+  "item.label.Non-Fungible Tokens": {
+    "message": "Non-Fungible Tokens",
+    "description": "Navbar item with label Non-Fungible Tokens"
+  },
+  "item.label.Decentralized Exchanges": {
+    "message": "Decentralized Exchanges",
+    "description": "Navbar item with label Decentralized Exchanges"
+  },
+  "item.label.Autonomous Organizations": {
+    "message": "Autonomous Organizations",
+    "description": "Navbar item with label Autonomous Organizations"
+  },
+  "item.label.🧰 All Tools": {
+    "message": "🧰 All Tools",
+    "description": "Navbar item with label 🧰 All Tools"
+  },
+  "item.label.NEAR API": {
+    "message": "NEAR API",
+    "description": "Navbar item with label NEAR API"
+  },
+  "item.label.NEAR SDK": {
+    "message": "NEAR SDK",
+    "description": "Navbar item with label NEAR SDK"
+  },
+  "item.label.NEAR CLI": {
+    "message": "NEAR CLI",
+    "description": "Navbar item with label NEAR CLI"
+  },
+  "item.label.Wallet Selector": {
+    "message": "Wallet Selector",
+    "description": "Navbar item with label Wallet Selector"
+  },
+  "item.label.FastAuth (Email Login)": {
+    "message": "FastAuth (Email Login)",
+    "description": "Navbar item with label FastAuth (Email Login)"
+  },
+  "item.label.Relayers": {
+    "message": "Relayers",
+    "description": "Navbar item with label Relayers"
+  },
+  "item.label.VSCode Extension ": {
+    "message": "VSCode Extension ",
+    "description": "Navbar item with label VSCode Extension "
+  },
+  "item.label.BOS Web IDE (Jutsu)": {
+    "message": "BOS Web IDE (Jutsu)",
+    "description": "Navbar item with label BOS Web IDE (Jutsu)"
+  },
+  "item.label.Remix IDE Plugin": {
+    "message": "Remix IDE Plugin",
+    "description": "Navbar item with label Remix IDE Plugin"
+  },
+  "item.label.Protocol Docs": {
+    "message": "Protocol Docs",
+    "description": "Navbar item with label Protocol Docs"
+  },
+  "item.label.Validator Docs": {
+    "message": "Validator Docs",
+    "description": "Navbar item with label Validator Docs"
+  }
+}

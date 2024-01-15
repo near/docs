@@ -1,0 +1,27 @@
+{
+  "id": "develop/integrate/frontend-components",
+  "title": "Integrating Components",
+  "description": "To integrate Components to your frontend, you will leverage two tools:",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.develop/integrate/frontend-components.md",
+  "sourceDirName": "2.develop/integrate",
+  "slug": "/develop/integrate/frontend-components",
+  "permalink": "/vi/develop/integrate/frontend-components",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/integrate/frontend-components.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "frontend-components",
+    "title": "Integrating Components"
+  },
+  "sidebar": "integrate",
+  "previous": {
+    "title": "Integrating Contracts",
+    "permalink": "/vi/develop/integrate/frontend"
+  },
+  "next": {
+    "title": "Count on NEAR",
+    "permalink": "/vi/tutorials/examples/count-near"
+  }
+}

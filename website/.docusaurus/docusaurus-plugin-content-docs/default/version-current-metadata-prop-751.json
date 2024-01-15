@@ -2064,14 +2064,14 @@
       },
       {
         "type": "link",
-        "label": "⭐ Quickstart",
+        "label": "⭐ Overview",
         "href": "/zh-CN/bos/tutorial/quickstart",
         "docId": "bos/tutorial/quickstart",
         "unlisted": false
       },
       {
         "type": "link",
-        "label": "Overview",
+        "label": "Dev Environments",
         "href": "/zh-CN/bos/dev/intro",
         "docId": "bos/dev/intro",
         "unlisted": false
@@ -2082,7 +2082,7 @@
         "items": [
           {
             "type": "link",
-            "label": "State",
+            "label": "Basics",
             "href": "/zh-CN/bos/api/state",
             "docId": "bos/api/state",
             "unlisted": false
@@ -2103,14 +2103,14 @@
           },
           {
             "type": "link",
-            "label": "Near",
+            "label": "Interacting with Near",
             "href": "/zh-CN/bos/api/near",
             "docId": "bos/api/near",
             "unlisted": false
           },
           {
             "type": "link",
-            "label": "Overview",
+            "label": "Social Interactions",
             "href": "/zh-CN/bos/api/social",
             "docId": "bos/api/social",
             "unlisted": false
@@ -2124,7 +2124,7 @@
           },
           {
             "type": "link",
-            "label": "Components & Historical data",
+            "label": "Handling Historical data",
             "href": "/zh-CN/bos/queryapi/bos-components",
             "docId": "bos/queryapi/bos-components",
             "unlisted": false
@@ -2135,7 +2135,7 @@
       },
       {
         "type": "link",
-        "label": "Gateways",
+        "label": "Using components on WebApps",
         "href": "/zh-CN/bos/tutorial/bos-gateway",
         "docId": "bos/tutorial/bos-gateway",
         "unlisted": false
@@ -2221,14 +2221,14 @@
       },
       {
         "type": "link",
-        "label": "⭐ Quickstart",
+        "label": "⭐ Quickstart a WebApp",
         "href": "/zh-CN/develop/integrate/quickstart-frontend",
         "docId": "develop/integrate/quickstart-frontend",
         "unlisted": false
       },
       {
         "type": "link",
-        "label": "Web Frontend",
+        "label": "Integrating Contracts",
         "href": "/zh-CN/develop/integrate/frontend",
         "docId": "develop/integrate/frontend",
         "unlisted": false
@@ -2978,14 +2978,14 @@
     },
     "bos/api/near": {
       "id": "bos/api/near",
-      "title": "Near",
-      "description": "VM provides a convenient API to interact with the NEAR blockchain. There are three methods:",
+      "title": "Interacting with Near",
+      "description": "The components can use the Near object to interact with smart contracts in the NEAR blockchain. There are three methods:",
       "sidebar": "integrate"
     },
     "bos/api/notifications": {
       "id": "bos/api/notifications",
       "title": "Social Notifications",
-      "description": "NEAR allows applications to send notifications to their users. Notifications is implemented as a particular case of indexed actions.",
+      "description": "Applications such as NEAR Social and the NEAR Dev Portal allow components to send notifications to their users.",
       "sidebar": "integrate"
     },
     "bos/api/primitives": {
@@ -2995,14 +2995,14 @@
     },
     "bos/api/social": {
       "id": "bos/api/social",
-      "title": "Overview",
-      "description": "At the core of NEAR social interactions there is the SocialDB smart contract (currently deployed at social.near).",
+      "title": "Social Interactions",
+      "description": "NEAR components can natively communicate with the SocialDB smart contract (currently deployed at social.near).",
       "sidebar": "integrate"
     },
     "bos/api/state": {
       "id": "bos/api/state",
-      "title": "State API",
-      "description": "VM provides a convenient API to update the state of the component. There are two methods:",
+      "title": "Basics",
+      "description": "Borrowing from React, Near Components use hooks such as useState and useEffect to handle the state's logic, and props to receive parameters.",
       "sidebar": "integrate"
     },
     "bos/api/web-methods": {
@@ -3030,8 +3030,8 @@
     },
     "bos/dev/intro": {
       "id": "bos/dev/intro",
-      "title": "BOS Dev Tools",
-      "description": "Building, deploying, and collaborating within a new framework can be challenging. The NEAR community has created helpful workflows using new tools to simplify your development workflow building on the Blockchain Operating System (BOS).",
+      "title": "Dev Environments",
+      "description": "Building, deploying, and collaborating within a new framework can be challenging. The NEAR community has created helpful workflows using new tools to simplify your development workflow.",
       "sidebar": "integrate"
     },
     "bos/dev/vscode": {
@@ -3059,7 +3059,7 @@
     },
     "bos/queryapi/bos-components": {
       "id": "bos/queryapi/bos-components",
-      "title": "Components handling Historical data",
+      "title": "Historical data",
       "description": "Building components that handle historical blockchain data require dedicated solutions that manage the data and reduce the latency of requests, as it's not possible to scan the whole blockchain when a user makes a request.",
       "sidebar": "integrate"
     },
@@ -3101,8 +3101,8 @@
     },
     "bos/tutorial/bos-gateway": {
       "id": "bos/tutorial/bos-gateway",
-      "title": "Gateways",
-      "description": "The Components you create are stored in the NEAR blockchain. To read and execute their code you will need a Gateway.",
+      "title": "Using components on WebApps",
+      "description": "In order to use the components you create in a WebApp you need to use what is known as the NEAR VM. This virtual machine helps you to easily fetch components from the blockchain and transform them into executable code.",
       "sidebar": "integrate"
     },
     "bos/tutorial/ds-components": {
@@ -3173,8 +3173,8 @@
     },
     "bos/tutorial/quickstart": {
       "id": "bos/tutorial/quickstart",
-      "title": "⭐ Quickstart",
-      "description": "NEAR allows you to quicky develop fullstack decentralized applications by publishing all of its source code on-chain.",
+      "title": "Hello Components",
+      "description": "NEAR Components are a new way to build web applications. They are composable, reusable and decentralized.",
       "sidebar": "integrate"
     },
     "bos/tutorial/using-iframes": {
@@ -3598,8 +3598,8 @@
     },
     "develop/integrate/frontend": {
       "id": "develop/integrate/frontend",
-      "title": "Web Frontend",
-      "description": "Once your contract is deployed it is highly likely that you will want to interact with it from a web frontend.",
+      "title": "Integrating Contracts",
+      "description": "To integrate NEAR to your frontend, you will leverage two tools:",
       "sidebar": "integrate"
     },
     "develop/integrate/frontend-components": {

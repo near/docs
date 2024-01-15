@@ -1,7 +1,7 @@
 {
   "id": "bos/dev/intro",
-  "title": "BOS 개발 도구",
-  "description": "새로운 프레임워크 내에서 구축, 배포 및 협업하는 것은 어려울 수 있습니다. NEAR 커뮤니티는 블록체인 운영 체제 (BOS)에서 구축하는 개발 워크플로우를 단순화하기 위해 새로운 도구를 사용하여 유용한 워크플로우를 만들었습니다.",
+  "title": "Dev Environments",
+  "description": "새로운 프레임워크 내에서 구축, 배포 및 협업하는 것은 어려울 수 있습니다. The NEAR community has created helpful workflows using new tools to simplify your development workflow.",
   "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/bos/dev/intro.md",
   "sourceDirName": "bos/dev",
   "slug": "/bos/dev/intro",
@@ -16,16 +16,15 @@
   "formattedLastUpdatedAt": "2024년 1월 11일",
   "frontMatter": {
     "id": "intro",
-    "sidebar_label": "개요",
-    "title": "BOS 개발 도구"
+    "title": "Dev Environments"
   },
   "sidebar": "integrate",
   "previous": {
-    "title": "⭐ 빠른 시작",
+    "title": "⭐ Overview",
     "permalink": "/ko/bos/tutorial/quickstart"
   },
   "next": {
-    "title": "상태",
+    "title": "Basics",
     "permalink": "/ko/bos/api/state"
   }
 }

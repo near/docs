@@ -1,7 +1,7 @@
 {
   "id": "bos/api/near",
-  "title": "Near",
-  "description": "VM은 NEAR 블록체인과 상호작용하기 위한 편리한 API를 제공합니다. 세 가지 메서드가 존재합니다.",
+  "title": "Interacting with Near",
+  "description": "The components can use the Near object to interact with smart contracts in the NEAR blockchain. 세 가지 메서드가 존재합니다.",
   "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/bos/api/near.md",
   "sourceDirName": "bos/api",
   "slug": "/bos/api/near",
@@ -16,7 +16,7 @@
   "formattedLastUpdatedAt": "2024년 1월 11일",
   "frontMatter": {
     "id": "near",
-    "title": "Near"
+    "title": "Interacting with Near"
   },
   "sidebar": "integrate",
   "previous": {
@@ -24,7 +24,7 @@
     "permalink": "/ko/bos/api/builtin-components"
   },
   "next": {
-    "title": "Overview",
+    "title": "Social Interactions",
     "permalink": "/ko/bos/api/social"
   }
 }

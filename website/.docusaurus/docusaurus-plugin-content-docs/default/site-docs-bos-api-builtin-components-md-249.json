@@ -5,7 +5,7 @@
   "source": "@site/../docs/bos/api/builtin-components.md",
   "sourceDirName": "bos/api",
   "slug": "/bos/api/builtin-components",
-  "permalink": "/zh-CN/bos/api/builtin-components",
+  "permalink": "/bos/api/builtin-components",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/api/builtin-components.md",
@@ -13,7 +13,7 @@
   "version": "current",
   "lastUpdatedBy": "gagdiez",
   "lastUpdatedAt": 1705079030,
-  "formattedLastUpdatedAt": "2024年1月12日",
+  "formattedLastUpdatedAt": "Jan 12, 2024",
   "frontMatter": {
     "id": "builtin-components",
     "title": "List of Native Components"
@@ -21,10 +21,10 @@
   "sidebar": "integrate",
   "previous": {
     "title": "Web Browser Methods",
-    "permalink": "/zh-CN/bos/api/web-methods"
+    "permalink": "/bos/api/web-methods"
   },
   "next": {
-    "title": "Near",
-    "permalink": "/zh-CN/bos/api/near"
+    "title": "Interacting with Near",
+    "permalink": "/bos/api/near"
   }
 }

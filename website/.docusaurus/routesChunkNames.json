@@ -5,17 +5,17 @@
       "plugin": "82d98fd4"
     }
   },
-  "/zh-CN/-e88": {
+  "/zh-CN/-2cc": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "8b378508"
     }
   },
-  "/zh-CN/-8f0": {
+  "/zh-CN/-db4": {
     "__comp": "a7bd4aaa",
     "version": "935f2afb"
   },
-  "/zh-CN/-985": {
+  "/zh-CN/-54b": {
     "__comp": "a94703ab"
   },
   "/zh-CN/api/rpc/access-keys-c54": {
@@ -66,9 +66,9 @@
     "__comp": "17896441",
     "content": "ec201e9b"
   },
-  "/zh-CN/bos/api/builtin-components-c49": {
+  "/zh-CN/bos/api/builtin-components-3ab": {
     "__comp": "17896441",
-    "content": "2498e57d"
+    "content": "d0c7b4cf"
   },
   "/zh-CN/bos/api/near-e7f": {
     "__comp": "17896441",
@@ -90,9 +90,9 @@
     "__comp": "17896441",
     "content": "3ada2290"
   },
-  "/zh-CN/bos/api/web-methods-5d7": {
+  "/zh-CN/bos/api/web-methods-0b4": {
     "__comp": "17896441",
-    "content": "2365e032"
+    "content": "a9667f5f"
   },
   "/zh-CN/bos/community/indexers-d95": {
     "__comp": "17896441",
@@ -490,9 +490,9 @@
     "__comp": "17896441",
     "content": "5c69c629"
   },
-  "/zh-CN/develop/integrate/frontend-components-094": {
+  "/zh-CN/develop/integrate/frontend-components-c55": {
     "__comp": "17896441",
-    "content": "e2d007dc"
+    "content": "f643ace2"
   },
   "/zh-CN/develop/integrate/quickstart-frontend-e4a": {
     "__comp": "17896441",

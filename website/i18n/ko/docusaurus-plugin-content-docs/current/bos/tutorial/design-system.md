@@ -60,7 +60,7 @@ return (
 
 ### `styled-components` 사용
 
-Radix UI primitives와 함께 [`styled-components`](../components/styledComponents.md)를 사용할 수도 있습니다. 예시는 다음과 같습니다.
+You can use [`styled-components`](../api/builtin-components.md#styled-components) in combination with Radix UI primitives. 예시는 다음과 같습니다.
 
 ```js
 const SwitchRoot = styled("Switch.Root")`

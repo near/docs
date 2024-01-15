@@ -1,7 +1,7 @@
 {
   "id": "bos/api/state",
-  "title": "State API",
-  "description": "VM은 컴포넌트의 상태를 업데이트하는 편리한 API를 제공합니다. 두 가지 메서드가 존재합니다.",
+  "title": "Basics",
+  "description": "Borrowing from React, Near Components use hooks such as useState and useEffect to handle the state's logic, and props to receive parameters.",
   "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/bos/api/state.md",
   "sourceDirName": "bos/api",
   "slug": "/bos/api/state",
@@ -16,12 +16,11 @@
   "formattedLastUpdatedAt": "2024년 1월 11일",
   "frontMatter": {
     "id": "state",
-    "title": "State API",
-    "sidebar_label": "상태"
+    "title": "Basics"
   },
   "sidebar": "integrate",
   "previous": {
-    "title": "개요",
+    "title": "Dev Environments",
     "permalink": "/ko/bos/dev/intro"
   },
   "next": {

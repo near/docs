@@ -9,15 +9,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', 'e88'),
+    component: ComponentCreator('/zh-CN/', '2cc'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '8f0'),
+        component: ComponentCreator('/zh-CN/', 'db4'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '985'),
+            component: ComponentCreator('/zh-CN/', '54b'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -91,7 +91,7 @@ export default [
               },
               {
                 path: '/zh-CN/bos/api/builtin-components',
-                component: ComponentCreator('/zh-CN/bos/api/builtin-components', 'c49'),
+                component: ComponentCreator('/zh-CN/bos/api/builtin-components', '3ab'),
                 exact: true,
                 sidebar: "integrate"
               },
@@ -126,7 +126,7 @@ export default [
               },
               {
                 path: '/zh-CN/bos/api/web-methods',
-                component: ComponentCreator('/zh-CN/bos/api/web-methods', '5d7'),
+                component: ComponentCreator('/zh-CN/bos/api/web-methods', '0b4'),
                 exact: true,
                 sidebar: "integrate"
               },
@@ -718,7 +718,7 @@ export default [
               },
               {
                 path: '/zh-CN/develop/integrate/frontend-components',
-                component: ComponentCreator('/zh-CN/develop/integrate/frontend-components', '094'),
+                component: ComponentCreator('/zh-CN/develop/integrate/frontend-components', 'c55'),
                 exact: true,
                 sidebar: "integrate"
               },

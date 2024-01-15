@@ -1,7 +1,7 @@
 {
   "id": "develop/integrate/frontend",
-  "title": "Web Frontend",
-  "description": "Once your contract is deployed it is highly likely that you will want to interact with it from a web frontend.",
+  "title": "Integrating Contracts",
+  "description": "To integrate NEAR to your frontend, you will leverage two tools:",
   "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.develop/integrate/frontend.md",
   "sourceDirName": "2.develop/integrate",
   "slug": "/develop/integrate/frontend",
@@ -16,11 +16,11 @@
   "formattedLastUpdatedAt": "11 thg 1, 2024",
   "frontMatter": {
     "id": "frontend",
-    "title": "Web Frontend"
+    "title": "Integrating Contracts"
   },
   "sidebar": "integrate",
   "previous": {
-    "title": "⭐ Quickstart",
+    "title": "⭐ Quickstart a WebApp",
     "permalink": "/vi/develop/integrate/quickstart-frontend"
   },
   "next": {

@@ -1,7 +1,7 @@
 {
   "id": "bos/api/state",
-  "title": "State API",
-  "description": "VM provides a convenient API to update the state of the component. There are two methods:",
+  "title": "Basics",
+  "description": "Borrowing from React, Near Components use hooks such as useState and useEffect to handle the state's logic, and props to receive parameters.",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/bos/api/state.md",
   "sourceDirName": "bos/api",
   "slug": "/bos/api/state",
@@ -16,12 +16,11 @@
   "formattedLastUpdatedAt": "2024年1月11日",
   "frontMatter": {
     "id": "state",
-    "title": "State API",
-    "sidebar_label": "State"
+    "title": "Basics"
   },
   "sidebar": "integrate",
   "previous": {
-    "title": "Overview",
+    "title": "Dev Environments",
     "permalink": "/zh-CN/bos/dev/intro"
   },
   "next": {

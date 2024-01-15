@@ -1,7 +1,7 @@
 {
   "id": "bos/tutorial/quickstart",
-  "title": "⭐ Quickstart",
-  "description": "NEAR allows you to quicky develop fullstack decentralized applications by publishing all of its source code on-chain.",
+  "title": "Hello Components",
+  "description": "NEAR Components are a new way to build web applications. They are composable, reusable and decentralized.",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/bos/tutorial/quickstart.md",
   "sourceDirName": "bos/tutorial",
   "slug": "/bos/tutorial/quickstart",
@@ -16,7 +16,8 @@
   "formattedLastUpdatedAt": "2024年1月11日",
   "frontMatter": {
     "id": "quickstart",
-    "title": "⭐ Quickstart"
+    "title": "Hello Components",
+    "sidebar_label": "⭐ Overview"
   },
   "sidebar": "integrate",
   "previous": {
@@ -24,7 +25,7 @@
     "permalink": "/zh-CN/develop/integrate/welcome"
   },
   "next": {
-    "title": "Overview",
+    "title": "Dev Environments",
     "permalink": "/zh-CN/bos/dev/intro"
   }
 }

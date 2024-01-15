@@ -1,7 +1,7 @@
 {
   "id": "bos/tutorial/bos-gateway",
-  "title": "Gateways",
-  "description": "The Components you create are stored in the NEAR blockchain. To read and execute their code you will need a Gateway.",
+  "title": "Using components on WebApps",
+  "description": "In order to use the components you create in a WebApp you need to use what is known as the NEAR VM. This virtual machine helps you to easily fetch components from the blockchain and transform them into executable code.",
   "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/bos/tutorial/gateway.md",
   "sourceDirName": "bos/tutorial",
   "slug": "/bos/tutorial/bos-gateway",
@@ -16,11 +16,11 @@
   "formattedLastUpdatedAt": "2024년 1월 11일",
   "frontMatter": {
     "id": "bos-gateway",
-    "title": "Gateways"
+    "title": "Using components on WebApps"
   },
   "sidebar": "integrate",
   "previous": {
-    "title": "Components & Historical data",
+    "title": "Handling Historical data",
     "permalink": "/ko/bos/queryapi/bos-components"
   },
   "next": {

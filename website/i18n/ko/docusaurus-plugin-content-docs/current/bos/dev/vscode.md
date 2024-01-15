@@ -5,7 +5,7 @@ title: VS Code 익스텐션
 
 # NEAR BOS IDE
 
-Visual Studio Code를 사용하여 [NEAR BOS](https://near.org) 용 [컴포넌트](../components/home.md)를 개발하는 데 도움이 되는 VS Code 익스텐션입니다.
+A VS Code extension to help you develop [components](../tutorial/quickstart.md) for [NEAR BOS](https://near.org) using Visual Studio Code.
 
 ## 특징
 

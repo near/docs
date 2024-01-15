@@ -1,65 +1,40 @@
 ---
 id: bos-gateway
-title: Gateways
+title: Using components on WebApps
 ---
 
-The [`Components`](../components.md) you create are stored in the NEAR blockchain. To read and execute their code you will need a `Gateway`.
+In order to use the components you create in a WebApp you need to use what is known as the `NEAR VM`. This virtual machine helps you to easily fetch components from the blockchain and transform them into executable code.
 
-A `Gateway` is nothing but a [Next.js](https://nextjs.org/) application with the added ability of retrieving components from the blockchain and rendering their code.
-
-This allow you to create the frontend of your application combining classic `Next` components with `Web3` components that interact with your desired blockchain.
-
+There are two possible scenarios:
+- You want to start a WebApp [**from scratch**](#starting-a-webapp-from-scratch).
+- You want to integrate components into an [**existing WebApp**](#integrating-components-into-your-webapp)
 
 ---
 
-## Building a Gateway
+## Starting a WebApp from scratch
 
-Building your own `Gateway` is as simple as cloning the [example repository](https://github.com/near-examples/bos-gateway), and running it:
+If you want to start a WebApp from scratch, the simplest option is to use `create-near-app`. To use it, you only need to have [node.js](https://nodejs.org/en/) installed on your computer.
+
+Simply run the following command and follow the instructions:
 
 ```bash
-# Clone gateway
-git clone git@github.com:near-examples/bos-gateway.git
-
-# Install dependencies
-cd bos-gateway
-npm install
-
-# Run the gateway
-npm run dev
+npx create-near-app@latest
 ```
 
-:::tip Configure the Gateway
-Make sure to change the `src/data/bos-components.ts` file
+:::tip Tutorial
+To learn more about the template created by `create-near-app` see our [Quickstart a WebApp](../../2.develop/integrate/quickstart.md) tutorial.
 :::
 
 ---
 
-## Deploying Gateway in Vercel
+## Integrating Components into your WebApp
 
-Launching your own NEAR gateway instance is a quick and simple process. In this example we'll be using [Vercel](https://vercel.com) to build and deploy a new NEAR gateway, but you can also use other platforms.
+In order to integrate components into your WebApp you will leverage two libraries:
+- **Wallet Selector**: Allows user to login using their preferred NEAR wallet.
+- **NEAR VM**: Simplifies fetching NEAR components from the blockchain and rendering them.
 
-다음과 같은 간단한 단계만 수행하면 됩니다:
+The best way to learn how to integrate components into your WebApp is by following our tutorial:
 
-1. Clone the [`near/bos-gateway`](https://github.com/near-examples/bos-gateway) repository
-2. [Vercel](https://vercel.com/)에 회원가입하고 복제된 레퍼지토리를 가져옵니다.
-3. 프로젝트를 설정합니다.
-   - 팀 이름
-   - 빌드 명령: `npm run build`
-   - 출력 디렉토리: `dist`
-4. <kbd>Deploy</kbd> 누르기
-
-:::tip
-
-[이 링크](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fnear%2Fnear-discovery-alpha&build-command=npm%20run%20build&install-command=npm%20install&output-directory=dist)를 클릭하여 사용해 보세요.
-
-:::
-
-![vercel setup](/docs/vercel-gateway.png)
-
-Now just wait a few minutes for Vercel to build the website and enjoy your NEAR gateway!
-
-:::info 사용자 정의
-- 특정 도메인에서 게이트웨이를 호스트하려면 Vercel에서 게이트웨이를 구성할 수 있습니다.
-
-- 홈 페이지 구성 요소를 변경하려면 포크 파일에서 `src/data/widgets.js`를 수정하여 다른 구성 요소를 가리킵니다.
+:::tip Tutorial
+To learn step-by-step how to integrate them, please visit our [integrating components into a WebApp](../../2.develop/integrate/frontend-components.md) tutorial.
 :::

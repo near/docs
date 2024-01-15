@@ -1,7 +1,7 @@
 {
   "id": "develop/integrate/frontend",
-  "title": "웹 프론트엔드 구축",
-  "description": "컨트랙트가 배포되면, 웹 프론트엔드에서 컨트랙트와 상호작용하게 될 가능성이 높습니다.",
+  "title": "Integrating Contracts",
+  "description": "To integrate NEAR to your frontend, you will leverage two tools:",
   "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.develop/integrate/frontend.md",
   "sourceDirName": "2.develop/integrate",
   "slug": "/develop/integrate/frontend",
@@ -16,11 +16,11 @@
   "formattedLastUpdatedAt": "2024년 1월 11일",
   "frontMatter": {
     "id": "frontend",
-    "title": "웹 프론트엔드 구축"
+    "title": "Integrating Contracts"
   },
   "sidebar": "integrate",
   "previous": {
-    "title": "⭐ Quickstart",
+    "title": "⭐ Quickstart a WebApp",
     "permalink": "/ko/develop/integrate/quickstart-frontend"
   },
   "next": {

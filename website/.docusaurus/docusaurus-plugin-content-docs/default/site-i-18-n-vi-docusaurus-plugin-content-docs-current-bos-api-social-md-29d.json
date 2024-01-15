@@ -1,7 +1,7 @@
 {
   "id": "bos/api/social",
-  "title": "Overview",
-  "description": "At the core of NEAR social interactions there is the SocialDB smart contract (currently deployed at social.near).",
+  "title": "Social Interactions",
+  "description": "NEAR components can natively communicate with the SocialDB smart contract (currently deployed at social.near).",
   "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/bos/api/social.md",
   "sourceDirName": "bos/api",
   "slug": "/bos/api/social",
@@ -16,11 +16,11 @@
   "formattedLastUpdatedAt": "11 thg 1, 2024",
   "frontMatter": {
     "id": "social",
-    "title": "Overview"
+    "title": "Social Interactions"
   },
   "sidebar": "integrate",
   "previous": {
-    "title": "Near",
+    "title": "Interacting with Near",
     "permalink": "/vi/bos/api/near"
   },
   "next": {
