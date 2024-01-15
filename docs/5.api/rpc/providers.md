@@ -25,7 +25,6 @@ If you want to use a custom RPC provider with NEAR Wallet Selector, [check this 
 | [fast-near](https://github.com/vgrichina/fast-near)                        | `https://rpc.web4.near.page`                                 |
 | [Gateway.fm](https://gateway.fm/)                                          | `https://rpc.near.gateway.fm/`                               |
 | [GetBlock](https://getblock.io/nodes/near/)                                | `https://getblock.io/nodes/near/`                            |
-| [Infura](https://docs.infura.io/infura/networks/near)                      | `https://near-mainnet.infura.io/v3/`                         |
 | [Lavender.Five Nodes](https://lavenderfive.com/)                           | `https://near.lavenderfive.com/`                             |
 | [NodeReal](https://nodereal.io)                                            | `https://nodereal.io/api-marketplace/near-rpc`               |
 | [NOWNodes](https://nownodes.io/)                                           | `https://near.nownodes.io/`                                  |
