@@ -366,6 +366,7 @@
       "value": "<span class='menu__link'><b><small> Non Fungible Tokens (NFT) </small></b></span>"
     },
     "primitives/nft/introduction",
+    "primitives/nft/using-nfts",
     {
       "Using NFTs": [
         "primitives/nft/interacting/bos",
