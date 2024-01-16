@@ -53,11 +53,11 @@ Common Blockchain analytics use cases that can be managed with [BigQuery](big-qu
 Building Web3 apps that handle historical blockchain data require dedicated solutions that manage the data and reduce the latency of requests, as it's not possible to scan the whole blockchain when a user makes a request.
 For example, if your dApp needs to keep track of minted NFTs from a specific smart contract, you'll need to keep historical data related to that contract, the NFTs, and all the transactions in an optimized way so the dApp can provide fast responses to the user.
 
-A simple solution for developers building dApps on [NEAR BOS](../overview.md) is using [QueryAPI](intro.md), a fully managed solution to build indexer functions, extract on-chain data, store it in a database, and be able to query it using GraphQL endpoints.
+A simple solution for developers building dApps on [NEAR](../overview.md) is using [QueryAPI](intro.md), a fully managed solution to build indexer functions, extract on-chain data, store it in a database, and be able to query it using GraphQL endpoints.
 
 In the NFT example, with QueryApi you can create an indexer that follow the activity of your `my-nft-contract.near` smart contract, records all activities related to it (such as minting and transfers), and provides simple endpoints to communicate with your dApp, when your application needs to display all the minted NFTs, or the related transactions to a specific NFT.
 
-QueryApi can also reduce app development time, by letting you auto-generate [BOS component code](index-function.md#create-a-bos-component-from-query) straight from a GraphQL query. By creating the boilerplate code, you can use it to render a UI and publish your new BOS component.
+QueryApi can also reduce app development time, by letting you auto-generate [NEAR component code](index-function.md#create-a-bos-component-from-query) straight from a GraphQL query. By creating the boilerplate code, you can use it to render a UI and publish your new NEAR component.
 
 :::tip
 
@@ -70,5 +70,5 @@ Learn more about QueryAPI in this [Overview article](intro.md).
 For a technical implementation deep-dive, check these QueryAPI tutorials:
 
   - [NFTs Indexer](../tutorial/indexer-tutorials/nft-indexer.md): an indexer that keeps track of newly minted NFT on Near blockchain.
-  - [Posts Indexer](../tutorial/indexer-tutorials/posts-indexer.md): this indexer keeps track of every new B.O.S. post found on the blockchain.
-  - [BOS Feed Indexer](../tutorial/indexer-tutorials/feed-indexer.md): this indexer keeps track of new posts, comments, and likes on BOS, so a social feed can be rendered quickly.
+  - [Posts Indexer](../tutorial/indexer-tutorials/posts-indexer.md): this indexer keeps track of every new NEAR Social post found on the blockchain.
+  - [Social Feed Indexer](../tutorial/indexer-tutorials/feed-indexer.md): this indexer keeps track of new posts, comments, and likes on NEAR Social, so a social feed can be rendered quickly.

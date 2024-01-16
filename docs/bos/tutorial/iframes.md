@@ -5,11 +5,11 @@ title: Using IFrames
 
 # Iframes
 
-In this tutorial you'll learn [how to use](#using-iframes-on-bos-vm) the `iframe` VM tag and the [Iframe resizer](#iframe-resizer) library, so you can embed external HTML or use custom DOM elements when building BOS components.
+In this tutorial you'll learn [how to use](#using-iframes-on-bos-vm) the `iframe` VM tag and the [Iframe resizer](#iframe-resizer) library, so you can embed external HTML or use custom DOM elements when building NEAR components.
 You can use it along the rest of approved VM tags to simplify your component development.
 
 
-## Using IFrames on BOS VM
+## Using IFrames on NEAR VM
 
 Iframes can be used to embed external HTML or to use custom DOM
 elements, for example `canvas`.
@@ -125,7 +125,7 @@ The child page rendered by the `iframe` **must include** this script in order fo
 
 :::note
 
-BOS VM uses the React flavor of [this plugin](https://github.com/davidjbradshaw/iframe-resizer-react).
+NEAR VM uses the React flavor of [this plugin](https://github.com/davidjbradshaw/iframe-resizer-react).
 
 :::
 

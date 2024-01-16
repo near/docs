@@ -16,7 +16,7 @@ If you are ready to explore further, the Lido component serves as an excellent f
 5. Click on "Save" to deploy the component
 
 :::note
-To deploy the component, you'll need to sign in with a NEAR account and to make a deposit of a small amount of NEAR for the storage cost. This is because BOS uses the NEAR blockchain as its underneath.
+To deploy the component, you'll need to sign in with a NEAR account and to make a deposit of a small amount of NEAR for the storage cost. This is because the components are stored in the NEAR network.
 :::
 
 ### Source code
@@ -308,5 +308,5 @@ return (
 5. Click on "Save" to deploy the component
 
 :::note
-To deploy the component, you'll need to sign in with a NEAR account and to make a deposit of a small amount of NEAR for the storage cost. This is because BOS uses the NEAR blockchain underneath.
+To deploy the component, you'll need to sign in with a NEAR account and to make a deposit of a small amount of NEAR for the storage cost. This is because NEAR components are stored in the NEAR network.
 :::

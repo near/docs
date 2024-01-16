@@ -37,7 +37,8 @@ await wallet.callMethod({
       media: "string", // URL to associated media, preferably to decentralized, content-addressed storage
     }
   },
-  contractId: CONTRACT_ADDRESS
+  contractId: CONTRACT_ADDRESS,
+  deposit: 10000000000000000000000
 });
 ```
 
@@ -57,7 +58,8 @@ await wallet.callMethod({
     token_series_id: "490641",
     receiver_id: "bob.near",
   },
-  contractId: CONTRACT_ADDRESS
+  contractId: CONTRACT_ADDRESS,
+  deposit: 10000000000000000000000 // Depends on your NFT metadata
 });
 ```
 
@@ -85,7 +87,7 @@ await wallet.callMethod({
     metadata: {},
   },
   contractId: CONTRACT_ADDRESS,
-  deposit: 1
+  deposit: 10000000000000000000000 // Depends on your NFT metadata
 });
 ```
 
@@ -558,7 +560,8 @@ await wallet.callMethod({
     token_id: "1",
     receiver_id: "bob.near"
   },
-  contractId: CONTRACT_ADDRESS
+  contractId: CONTRACT_ADDRESS,
+  deposit: 1
 });
 ```
 
@@ -578,7 +581,8 @@ await wallet.callMethod({
     token_id: "490641",
     receiver_id: "bob.near"
   },
-  contractId: CONTRACT_ADDRESS
+  contractId: CONTRACT_ADDRESS,
+  deposit: 1
 });
 ```
 
@@ -600,7 +604,8 @@ await wallet.callMethod({
     token_id: "490641",
     receiver_id: "bob.near"
   },
-  contractId: CONTRACT_ADDRESS
+  contractId: CONTRACT_ADDRESS,
+  deposit: 1
 });
 ```
 
