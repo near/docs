@@ -256,7 +256,7 @@ To interact with your deployed smart contract you can call its methods using the
 The `get_greeting` method is a [`view`](./anatomy.md#public-methods) method, meaning it only reads from the contract's state, and thus can be called for **free**.
 
 ```bash
-> near contract call-function as-read-only as-read-only <created-account> get_greeting
+> near contract call-function as-read-only <created-account> get_greeting
 
 "Hello" # Response
 ```
