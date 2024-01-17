@@ -301,6 +301,7 @@ The `set_greeting` method is a [`change`](./anatomy.md#public-methods) method, m
 
 Log: Saving greeting "Hola" # Response
 ```
+
 In this case we are asking the account that stores the contract to call its own contract's method (`--accountId <created-account>`).
 
 </TabItem>
