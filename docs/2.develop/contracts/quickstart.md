@@ -23,7 +23,7 @@ This quickstart is dedicated to creating smart contracts. We also have one dedic
 Before starting, make sure you have the following installed:
  
 1. [Node.js](https://nodejs.org/en/download), to use our scaffolding tool.
-2. [NEAR-CLI](/tools/near-cli#installation) or [NEAR CLI-RS](/tools/near-cli-rs), to deploy and interact with the contract.
+2. [NEAR CLI](/tools/near-cli#installation) or [NEAR CLI-RS](/tools/near-cli-rs), to deploy and interact with the contract.
 3. [cargo-near](https://github.com/near/cargo-near), to easily create testnet accounts.
 4. (optional) [Rust](https://www.Rust-lang.org/tools/install), to create Rust contracts.
 
