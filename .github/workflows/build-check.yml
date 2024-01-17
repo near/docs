@@ -30,3 +30,13 @@ jobs:
           yarn build:preview
         env:
           NODE_OPTIONS: --max-old-space-size=8192
+
+      - name: Create Render service preview
+        uses: fjogeleit/http-request-action@v1
+        with:
+          # Render API endpoint for creating a service preview
+          url: 'https://api.render.com/v1/services/${{ secrets.RENDER_SERVICE_ID }}/preview'
+          method: 'POST'
+  
+          # All Render API requests require a valid API key.
+          bearerToken: ${{ secrets.RENDER_API_KEY }}
