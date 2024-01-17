@@ -29,8 +29,15 @@ Before starting, make sure you have the following installed:
 
 :::tip Easy Install
 
-- **NEAR-CLI:** Install both `near-cli` and `cargo-near` tools using `npm i -g near-cli cargo-near`
-- **NEAR-CLI-RS:**Install both `near-cli-rs` and `cargo-near` tools using `npm i -g near-cli-rs cargo-near`
+- **NEAR-CLI:** Install both `near-cli` and `cargo-near` tools using 
+  ```
+  npm i -g near-cli cargo-near
+  ```
+
+- **NEAR-CLI-RS:** Install both `near-cli-rs` and `cargo-near` tools using
+  ```
+  npm i -g near-cli-rs cargo-near
+  ```
 
 :::
 
