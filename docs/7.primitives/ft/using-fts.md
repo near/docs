@@ -14,7 +14,7 @@ This section shows how to interact with an NFT smart contract.
 
 ## Get token metadata
 
-<Tabs>
+<Tabs groupId="code-tabs">
   <TabItem value="NEAR Component" label="NEAR Component" default>
 
     ```js
@@ -115,7 +115,7 @@ This section shows how to interact with an NFT smart contract.
 
 ## Check token balance
 
-<Tabs>
+<Tabs groupId="code-tabs">
   <TabItem value="NEAR Component" label="NEAR Component" default>
 
     Remember about fungible token precision. You may need this value to show a response of balance requests in an understandable-to-user way in your app. How to get precision value (decimals) you may find [above](#get-token-metadata).
@@ -200,7 +200,7 @@ This section shows how to interact with an NFT smart contract.
 
 ## Send token
 
-<Tabs>
+<Tabs groupId="code-tabs">
   <TabItem value="NEAR Component" label="NEAR Component" default>
   
     ```js
@@ -292,7 +292,7 @@ This section shows how to interact with an NFT smart contract.
 
 In order to transfer FTs to another account receiver account have to be registered in the token contract and make storage deposit. User can register their account or another account can do it for them.
 
-<Tabs>
+<Tabs groupId="code-tabs">
   <TabItem value="NEAR Component" label="NEAR Component" default>
 
     How to check storage balance:
@@ -469,7 +469,7 @@ Natively, only NEAR tokens (Ⓝ) can be attached to a method calls. However, the
 
 Let's assume that you need to deposit FTs on Ref Finance.
 
-<Tabs>
+<Tabs groupId="code-tabs">
   <TabItem value="NEAR Component" label="NEAR Component" default>
     ```js
     const tokenContract = "token.v2.ref-finance.near";
@@ -599,7 +599,7 @@ For creating our own FT we will use [Token Farm](https://tkn.farm/). You can use
 
 First of all, you need to calculate how much creating a token will cost you.
 
-<Tabs>
+<Tabs groupId="code-tabs">
   <TabItem value="NEAR Component" label="NEAR Component" default>
 
     ```js
@@ -737,7 +737,7 @@ After creating a token you can [send it](#send-tokens) to anyone.
 
 ## Handle a deposit
 
-<Tabs>
+<Tabs groupId="code-tabs">
   <TabItem value="Smart Contract" label="Smart Contract" default>
 
     If you want your contract to handle deposit in FTs you have to implement the `ft_on_transfer` method. When executed, such method will know:
