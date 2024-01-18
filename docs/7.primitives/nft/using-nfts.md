@@ -14,9 +14,9 @@ This section shows how to interact with an NFT smart contract.
 
 ## Mint a NFT
 
-<Tabs>
+<Tabs groupId="code-tabs">
   <TabItem value="NEAR Component" label="NEAR Component" default>
-    <Tabs>
+    <Tabs groupId="nft-contract-tabs">
       <TabItem value="NFT Primitive" label="NFT Primitive" default>
 
         ```js
@@ -75,7 +75,7 @@ This section shows how to interact with an NFT smart contract.
     </Tabs>
   </TabItem>
   <TabItem value="Web App" label="Web App">
-    <Tabs>
+    <Tabs groupId="nft-contract-tabs">
       <TabItem value="NFT Primitive" label="NFT Primitive" default>
 
         ```js
@@ -181,7 +181,7 @@ This section shows how to interact with an NFT smart contract.
       start="20" end="27" />
   </TabItem>
   <TabItem value="Near CLI" label="Near CLI">
-    <Tabs>
+    <Tabs groupId="nft-contract-tabs">
       <TabItem value="NFT Primitive" label="NFT Primitive" default>
 
       ```bash
@@ -270,9 +270,9 @@ This section shows how to interact with an NFT smart contract.
 
 ## Buy a NFT
 
-<Tabs>
+<Tabs groupId="code-tabs">
   <TabItem value="NEAR Component" label="NEAR Component" default>
-    <Tabs>
+    <Tabs groupId="nft-contract-tabs">
       <TabItem value="Paras" label="Paras" default>
 
         ```js
@@ -324,7 +324,7 @@ This section shows how to interact with an NFT smart contract.
     </Tabs>
   </TabItem>
   <TabItem value="Web App" label="Web App">
-    <Tabs>
+    <Tabs groupId="nft-contract-tabs">
       <TabItem value="Paras" label="Paras">
 
         ```js
@@ -427,7 +427,7 @@ This section shows how to interact with an NFT smart contract.
       start="20" end="27" />
   </TabItem>
   <TabItem value="Near CLI" label="Near CLI">
-    <Tabs>
+    <Tabs groupId="nft-contract-tabs">
       <TabItem value="Paras" label="Paras">
 
         ```bash
@@ -523,9 +523,9 @@ This section shows how to interact with an NFT smart contract.
 
 ## Query NFT data
 
-<Tabs>
+<Tabs groupId="code-tabs">
   <TabItem value="NEAR Component" label="NEAR Component" default>
-    <Tabs>
+    <Tabs groupId="nft-contract-tabs">
       <TabItem value="NFT Primitive" label="NFT Primitive" default>
 
         ```js
@@ -769,7 +769,7 @@ This section shows how to interact with an NFT smart contract.
     </Tabs>
   </TabItem>
   <TabItem value="Web App" label="Web App">
-    <Tabs>
+    <Tabs groupId="nft-contract-tabs">
       <TabItem value="NFT Primitive" label="NFT Primitive" default>
 
         ```js
@@ -1057,7 +1057,7 @@ This section shows how to interact with an NFT smart contract.
       start="20" end="27" />
   </TabItem>
   <TabItem value="Near CLI" label="Near CLI">
-    <Tabs>
+    <Tabs groupId="nft-contract-tabs">
       <TabItem value="NFT Primitive" label="NFT Primitive" default>
 
         ```bash
@@ -1209,9 +1209,9 @@ This section shows how to interact with an NFT smart contract.
 
 ## Transfer a NFT
 
-<Tabs>
+<Tabs groupId="code-tabs">
   <TabItem value="NEAR Component" label="NEAR Component" default>
-    <Tabs>
+    <Tabs groupId="nft-contract-tabs">
       <TabItem value="NFT Primitive" label="NFT Primitive" default>
 
         ```js
@@ -1260,7 +1260,7 @@ This section shows how to interact with an NFT smart contract.
     </Tabs>
   </TabItem>
   <TabItem value="Web App" label="Web App">
-    <Tabs>
+    <Tabs groupId="nft-contract-tabs">
       <TabItem value="NFT Primitive" label="NFT Primitive" default>
 
         ```js
@@ -1364,7 +1364,7 @@ This section shows how to interact with an NFT smart contract.
       start="20" end="27" />
   </TabItem>
   <TabItem value="Near CLI" label="Near CLI">
-    <Tabs>
+    <Tabs groupId="nft-contract-tabs">
       <TabItem value="NFT Primitive" label="NFT Primitive" default>
 
         ```bash
@@ -1433,9 +1433,9 @@ In order to put a NFT for a sale on a marketplace you need to do two actions:
 1. Cover data storage costs in the marketplace contract. 
 2. Approve the marketplace to sell the NFT in your NFT contract.
 
-<Tabs>
+<Tabs groupId="code-tabs">
   <TabItem value="NEAR Component" label="NEAR Component" default>
-    <Tabs>
+    <Tabs groupId="nft-contract-tabs">
       <TabItem value="Paras" label="Paras" default>
 
         ```js
@@ -1497,7 +1497,7 @@ In order to put a NFT for a sale on a marketplace you need to do two actions:
     </Tabs>
   </TabItem>
   <TabItem value="Web App" label="Web App">
-    <Tabs>
+    <Tabs groupId="nft-contract-tabs">
       <TabItem value="Paras" label="Paras">
 
         ```js
@@ -1611,7 +1611,7 @@ In order to put a NFT for a sale on a marketplace you need to do two actions:
       start="20" end="27" />
   </TabItem>
   <TabItem value="Near CLI" label="Near CLI">
-    <Tabs>
+    <Tabs groupId="nft-contract-tabs">
       <TabItem value="Paras" label="Paras">
 
         ```bash
