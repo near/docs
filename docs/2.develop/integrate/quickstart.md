@@ -73,7 +73,7 @@ Our app's template is defined at `./src/app/layout.js`. It does two things:
 1. Initializes a [wallet selector](../../4.tools/wallet-selector.md), and stores it so other components can access it later.
 2. Renders the navigation menu and the page's content.
 
-<Github url="https://github.com/near/create-near-app/blob/master/templates/frontend/next/src/app/layout.js" language="jsx" start="6" end="21" />
+<Github url="https://github.com/near/create-near-app/blob/master/templates/frontend/next-app/src/app/layout.js" language="jsx" start="6" end="21" />
 
 <details>
 <summary>What it the wallet selector?</summary>
