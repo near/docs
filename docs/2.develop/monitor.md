@@ -12,7 +12,6 @@ Welcome! Here you will find documentation on how to query past data and real tim
 
 <FeatureList>
   <Column title="Realtime Tracking">
-    <Feature url="/tools/realtime" title="Events (Websocket)" subtitle="Simplest way to listen for events" image="smart-contracts.png" />
     <Feature url="/tutorials/indexer/nft-indexer" title="Events (NEAR Lake)" subtitle="Use our Data Lake to listen for events" image="multiple.png" />
   </Column>
   <Column title="Data Analytics">
