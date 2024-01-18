@@ -89,7 +89,7 @@ The navigation bar implements buttons to `login` and `logout` users with their N
 
 The code for the navigation bar can be found at `./src/app/navigation.js`. The login and logout buttons are implemented by using the `logIn` and `logOut` methods from the wallet selector previously initialized:
 
-<Github url="https://github.com/near/create-near-app/blob/master/templates/frontend/next/src/components/navigation.js" language="jsx" start="10" end="22" />
+<Github url="https://github.com/near/create-near-app/blob/master/templates/frontend/next-app/src/components/navigation.js" language="jsx" start="10" end="22" />
 
 ---
 
@@ -107,7 +107,7 @@ Login if you haven't done it yet and you will see a simple form that allows you 
 ### Under the Hood
 Interactions with NEAR are done using the `useWallet` hook to retrieve both the `viewMethod` and `callMethod` methods and the `signedAccountId` property from the `wallet selector`.
 
-<Github url="https://github.com/near/create-near-app/blob/master/templates/frontend/next/src/app/hello-near/page.js" language="jsx" start="12" end="32" />
+<Github url="https://github.com/near/create-near-app/blob/master/templates/frontend/next-app/src/app/hello-near/page.js" language="jsx" start="12" end="32" />
 
 On load, the first `useEffect` hook will call the contract's `get_greeting` method and set the `greeting` state to the result.
 
@@ -142,10 +142,10 @@ The source code (located in `./src/hello-components/page.js`) shows us that the 
 
 <CodeTabs>
   <TabItem value="page.js">
-    <Github url="https://github.com/near/create-near-app/blob/master/templates/frontend/next/src/app/hello-components/page.js" start="25" end="34" language="jsx" />
+    <Github url="https://github.com/near/create-near-app/blob/master/templates/frontend/next-app/src/app/hello-components/page.js" start="25" end="34" language="jsx" />
   </TabItem>
   <TabItem value="vm-components.js">
-      <Github url="https://github.com/near/create-near-app/blob/master/templates/frontend/next/src/components/vm-component.js" language="jsx" />
+      <Github url="https://github.com/near/create-near-app/blob/master/templates/frontend/next-app/src/components/vm-component.js" language="jsx" />
   </TabItem>
 </CodeTabs>
 
