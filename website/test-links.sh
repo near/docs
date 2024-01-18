@@ -15,7 +15,7 @@ find_available_port() {
 start_server() {
     echo " 🏗️ - Building docs site... "
     export IS_PULL_REQUEST=true
-    npm run build
+    npm run build:preview
     echo " ✅ - Docs site built.  "
 
     local port=$(find_available_port)
