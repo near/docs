@@ -2642,13 +2642,6 @@
       },
       {
         "type": "link",
-        "label": "Real-time Events (WebSocket)",
-        "href": "/zh-CN/tools/realtime",
-        "docId": "tools/realtime",
-        "unlisted": false
-      },
-      {
-        "type": "link",
         "label": "Real-time Events (Lake)",
         "href": "/tutorials/indexer/nft-indexer"
       },
@@ -4367,8 +4360,7 @@
     "tools/realtime": {
       "id": "tools/realtime",
       "title": "Real-time Events (WebSocket)",
-      "description": "While developing a decentralized app you might want track specific events in real time. For example, you could want to be informed each time a specific NFT marketplace makes a sell. For this to be possible you need:",
-      "sidebar": "indexers"
+      "description": "While developing a decentralized app you might want track specific events in real time. For example, you could want to be informed each time a specific NFT marketplace makes a sell. For this to be possible you need:"
     },
     "tools/remix-ide-plugin": {
       "id": "tools/remix-ide-plugin",

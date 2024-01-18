@@ -17,14 +17,5 @@
   "frontMatter": {
     "id": "realtime",
     "title": "Real-time Events (WebSocket)"
-  },
-  "sidebar": "indexers",
-  "previous": {
-    "title": "StateChange",
-    "permalink": "/ko/develop/lake/structures/state-change"
-  },
-  "next": {
-    "title": "Indexing Solutions",
-    "permalink": "/ko/tools/indexing"
   }
 }

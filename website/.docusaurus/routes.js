@@ -9,15 +9,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '2cc'),
+    component: ComponentCreator('/zh-CN/', 'a24'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', 'db4'),
+        component: ComponentCreator('/zh-CN/', '3d7'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '54b'),
+            component: ComponentCreator('/zh-CN/', '4d0'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -1480,9 +1480,8 @@ export default [
               },
               {
                 path: '/zh-CN/tools/realtime',
-                component: ComponentCreator('/zh-CN/tools/realtime', 'cd0'),
-                exact: true,
-                sidebar: "indexers"
+                component: ComponentCreator('/zh-CN/tools/realtime', '7e1'),
+                exact: true
               },
               {
                 path: '/zh-CN/tools/remix-ide-plugin',

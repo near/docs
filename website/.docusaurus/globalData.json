@@ -1224,8 +1224,7 @@
             },
             {
               "id": "tools/realtime",
-              "path": "/zh-CN/tools/realtime",
-              "sidebar": "indexers"
+              "path": "/zh-CN/tools/realtime"
             },
             {
               "id": "tools/remix-ide-plugin",

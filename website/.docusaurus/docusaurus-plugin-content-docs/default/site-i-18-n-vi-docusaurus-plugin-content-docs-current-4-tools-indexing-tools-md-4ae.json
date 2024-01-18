@@ -21,7 +21,7 @@
   },
   "sidebar": "indexers",
   "previous": {
-    "title": "Real-time Events (WebSocket)",
-    "permalink": "/vi/tools/realtime"
+    "title": "StateChange",
+    "permalink": "/vi/develop/lake/structures/state-change"
   }
 }
