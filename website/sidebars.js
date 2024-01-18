@@ -824,7 +824,6 @@ const sidebar = {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Track Real-time Events </small></b></span>"
     },
-    "tools/realtime",
     {
       "type": "link",
       "label": "Real-time Events (Lake)",
