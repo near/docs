@@ -97,13 +97,15 @@ Now create a connection to NEAR using a configuration object that will contain y
 
 ```js
 // configuration used to connect to NEAR
+const prefix = (networkId === "testnet") ? networkId : "www";
+
 const config = {
   networkId,
   keyStore,
   nodeUrl: `https://rpc.${networkId}.near.org`,
   walletUrl: `https://wallet.${networkId}.near.org`,
   helperUrl: `https://helper.${networkId}.near.org`,
-  explorerUrl: `https://explorer.${networkId}.near.org`,
+  explorerUrl: `https://${prefix}.nearblocks.io`,
 };
 
 // connect to NEAR! :)
@@ -464,7 +466,8 @@ For detailed information on transaction receipts [[click here]](https://nomicon.
 - In addition, you can create a link in JS using the `networkId` and `result.transaction.hash`.
 
 ```js
-const transactionLink = `https://explorer.${networkId}.near.org/transactions/${result.transaction.hash}`;
+const prefix = (networkId === "testnet") ? networkId : "www";
+const transactionLink = `https://${prefix}.nearblocks.io/txns/${result.transaction.hash}`;
 ```
 
 :::tip Got a question?

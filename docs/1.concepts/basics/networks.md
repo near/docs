@@ -15,7 +15,7 @@ NEAR Protocol operates on several networks each operating with their own indepen
 `mainnet` is for production ready smart contracts and live token transfers. Contracts ready for `mainnet` should have gone through rigorous testing and independent security reviews if necessary. `mainnet` is the only network where state is guaranteed to persist over time _(subject to the typical security guarantees of the network's validation process)_.
 
 - Status: `https://rpc.mainnet.near.org/status`
-- [ [Explorer](https://nearblocks.io) ]
+- [ [NearBlocks Explorer](https://nearblocks.io) ]
 - [ [Wallet](https://wallet.near.org) ]
 - [ [Data Snapshots](https://near-nodes.io/intro/node-data-snapshots) ]
 

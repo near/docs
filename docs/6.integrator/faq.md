@@ -133,7 +133,7 @@ See `nearcore/scripts/nodelib.py` for different examples of configuration.
 ### What is the source of truth for current block height exposed via API? 
 
 - MainNet
-  - https://nearblocks.io (also https://nearblocks.io)
+  - https://nearblocks.io
   - `https://rpc.mainnet.near.org/status`
 - TestNet
   - https://testnet.nearblocks.io
