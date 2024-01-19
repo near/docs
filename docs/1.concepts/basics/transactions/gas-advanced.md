@@ -160,7 +160,7 @@ For a function call, the maximum block delay is computed as the total gas attach
 
 You can directly query the NEAR platform for the price of gas on a specific block using the RPC method `gas_price`. This price may change depending on network load. The price is denominated in yoctoNEAR (10^-24 NEAR)
 
-1. Take any recent block hash from the blockchain using [NEAR Explorer](https://explorer.testnet.near.org/blocks)
+1. Take any recent block hash from the blockchain using [NearBlocks Explorer](https://testnet.nearblocks.io/blocks)
 
    _At time of writing, `SqNPYxdgspCT3dXK93uVvYZh18yPmekirUaXpoXshHv` was the latest block hash_
 

@@ -24,7 +24,7 @@ NEAR Protocol operates on several networks each operating with their own indepen
 `testnet` is a public network and the final testing network for `nearcore` changes before deployment to `mainnet`. `testnet` is intended for testing all aspects of the NEAR platform prior to `mainnet` deployment. From account creation, mock token transfers, development tooling, and smart contract development, the `testnet` environment closely resembles `mainnet` behavior. All `nearcore` changes are deployed as release candidates on first testnet, before the changes are released on `mainnet`. A number of `testnet` validators validate transactions and create new blocks. dApp developers deploy their applications on `testnet` before deploying on `mainnet`. It is important to note that `testnet` has its own transactions and states.
 
 - Status: `https://rpc.testnet.near.org/status`
-- [ [Explorer](https://explorer.testnet.near.org) ]
+- [ [Explorer](https://testnet.nearblocks.io) ]
 - [ [Wallet](https://testnet.mynearwallet.com/) ]
 - [ [Data Snapshots](https://near-nodes.io/intro/node-data-snapshots) ]
 

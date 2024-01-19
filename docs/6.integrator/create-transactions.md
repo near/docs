@@ -122,7 +122,7 @@ Now that everything is setup, creating the transaction is a single line of code.
 const result = await senderAccount.sendMoney(receiver, amount);
 ```
 
-This simple command constructs, signs, and sends a token transfer transaction on the NEAR blockchain. There is no need to create a `result` variable aside from inspecting the response details from your transaction and even create a link to [NEAR Explorer](https://explorer.testnet.near.org/) to view a GUI version of the transaction details.
+This simple command constructs, signs, and sends a token transfer transaction on the NEAR blockchain. There is no need to create a `result` variable aside from inspecting the response details from your transaction and even create a link to [NearBlocks Explorer](https://testnet.nearblocks.io/) to view a GUI version of the transaction details.
 
 ---
 
@@ -460,7 +460,7 @@ Transaction Results:  {
 
 For detailed information on transaction receipts [[click here]](https://nomicon.io/RuntimeSpec/Receipts.html)
 
-- To view the transaction in [NEAR Explorer](https://explorer.testnet.near.org/), enter the `hash` located under `transaction` / `Transaction Results`.
+- To view the transaction in [NearBlocks Explorer](https://testnet.nearblocks.io/), enter the `hash` located under `transaction` / `Transaction Results`.
 - In addition, you can create a link in JS using the `networkId` and `result.transaction.hash`.
 
 ```js

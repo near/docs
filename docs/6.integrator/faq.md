@@ -133,10 +133,10 @@ See `nearcore/scripts/nodelib.py` for different examples of configuration.
 ### What is the source of truth for current block height exposed via API? 
 
 - MainNet
-  - https://explorer.mainnet.near.org (also https://nearblocks.io)
+  - https://nearblocks.io (also https://nearblocks.io)
   - `https://rpc.mainnet.near.org/status`
 - TestNet
-  - https://explorer.testnet.near.org
+  - https://testnet.nearblocks.io
   - `https://rpc.testnet.near.org/status`
 
 ### How old can the referenced block hash be before it's invalid?
