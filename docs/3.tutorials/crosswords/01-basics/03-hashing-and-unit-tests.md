@@ -58,7 +58,9 @@ Take a look at different formatting traits that are covered in the [`std` Rust d
 
 Run the unit tests with the command:
 
-    cargo test -- --nocapture
+```
+cargo test -- --nocapture
+```
 
 You'll see this output:
 
@@ -71,13 +73,15 @@ test tests::debug_get_hash ... ok
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 ```
 
-This means when you sha256 the input "near nomicon ref finance" it produces the hash:
+This means when you sha256 the input **"near nomicon ref finance"** it produces the hash:
 `69c2feb084439956193f4c21936025f14a5a5a78979d67ae34762e18a7206a0f`
 
 :::tip Note on the test flags
 You may also run tests using:
 
-    cargo test
+```
+cargo test
+```
 
 Note that the test command we ran had additional flags. Those flags told Rust *not to hide the output* from the tests. You can read more about this in [the cargo docs](https://doc.rust-lang.org/cargo/commands/cargo-test.html#display-options). Go ahead and try running the tests using the command above, without the additional flags, and note that we won't see the debug message.
 :::
@@ -88,7 +92,7 @@ The unit test above is meant for debugging and quickly running snippets of code.
 
 Let's add this unit test (inside the `mod tests {}` block, under our previous unit test) and analyze it:
 
-<Github language="rust" start="63" end="93" url="https://github.com/near-examples/crossword-tutorial-chapter-1/blob/d7699cf35092024fe11719b68788436c82fe82af/contract/src/lib.rs" />
+<Github language="rust" start="63" end="93" url="https://github.com/near-examples/crossword-tutorial-chapter-1/blob/5bce1c2a604fcb179e9789de1f299063f91abb4d/contract/src/lib.rs" />
 
 The first few lines of code will be used commonly when writing unit tests. It uses the `VMContextBuilder` to create some basic context for a transaction, then sets up the testing environment.
 
@@ -100,12 +104,17 @@ This unit test uses the [`assert_eq!`](https://doc.rust-lang.org/std/macro.asser
 
 Again, we can run all the unit tests with:
 
-    cargo test -- --nocapture
+```
+cargo test -- --nocapture
+```
 
 :::tip Run only one test
 To only run this latest test, use the command:
 
-    cargo test check_guess_solution -- --nocapture
+```
+cargo test check_guess_solution -- --nocapture
+```
+
 :::
 
 ## Modifying `set_solution`
@@ -189,6 +198,8 @@ We'll also modify our `guess_solution` to return a boolean value, which will als
 
 The `get_solution` method can be called with:
 
-    near view crossword.friend.testnet get_solution
+```
+near view crossword.friend.testnet get_solution
+```
 
 In the next section we'll add a simple frontend. Following chapters will illustrate more NEAR concepts built on top of this idea.
