@@ -29,7 +29,7 @@ near send sender.testnet receiver.testnet 1
 Sending 1 NEAR to receiver.testnet from sender.testnet
 Transaction Id 4To336bYcoGc3LMucJPMk6fMk5suKfCrdNotrRtTxqDy
 To see the transaction in the transaction explorer, please open this url in your browser
-https://explorer.testnet.near.org/transactions/4To336bYcoGc3LMucJPMk6fMk5suKfCrdNotrRtTxqDy
+https://testnet.nearblocks.io/txns/4To336bYcoGc3LMucJPMk6fMk5suKfCrdNotrRtTxqDy
 ```
 
 ## View Balance Changes {#view-balance-changes}

@@ -82,11 +82,11 @@ You can expect the network to sit at the minimum gas price most of the time; lea
 
 [fungible token]: https://github.com/near-examples/FT/pull/42
 [1.1m]: https://github.com/chadoh/erc20-test
-[9]: https://explorer.testnet.near.org/transactions/GsgH2KoxLZoL8eoutM2NkHe5tBPnRfyhcDMZaBEsC7Sm
+[9]: https://testnet.nearblocks.io/txns/GsgH2KoxLZoL8eoutM2NkHe5tBPnRfyhcDMZaBEsC7Sm
 [storage staking]: /concepts/storage/storage-staking
 [~45k]: https://ethereum.stackexchange.com/questions/71235/gas-limit-for-erc-20-tokens
-[14]: https://explorer.testnet.near.org/transactions/5joKRvsmpEXzhVShsPDdV8z5EG9bGMWeuM9e9apLJhLe
-[8]: https://explorer.testnet.near.org/transactions/34pW67zsotFsD1DY8GktNhZT9yP5KHHeWAmhKaYvvma6
+[14]: https://testnet.nearblocks.io/txns/5joKRvsmpEXzhVShsPDdV8z5EG9bGMWeuM9e9apLJhLe
+[8]: https://testnet.nearblocks.io/txns/34pW67zsotFsD1DY8GktNhZT9yP5KHHeWAmhKaYvvma6
 [44k]: https://github.com/chadoh/erc20-test
 
 #### Estimating Gas Costs with Automated Tests {#accurate-estimates-with-automated-tests}

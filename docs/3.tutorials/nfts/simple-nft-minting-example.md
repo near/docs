@@ -62,7 +62,7 @@ In the configuration folder you can see that this smart contract has been deploy
 
 <Github language="js" start="1" end="2" url="https://github.com/near-examples/nft-tutorial-frontend/blob/master/src/config.js" />
 
-You can also check out the [explorer link here](https://explorer.testnet.near.org/accounts/nft-frontend-simple-mint.blockhead.testnet) to see how many individuals have been minting their own _Go Team_ NFTs. _**Happy Minting!**_
+You can also check out the [explorer link here](https://testnet.nearblocks.io/address/nft-frontend-simple-mint.blockhead.testnet) to see how many individuals have been minting their own _Go Team_ NFTs. _**Happy Minting!**_
 
 :::tip
 Clone and run this example from https://github.com/near-examples/nft-tutorial-frontend
