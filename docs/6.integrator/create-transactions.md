@@ -97,7 +97,7 @@ Now create a connection to NEAR using a configuration object that will contain y
 
 ```js
 // configuration used to connect to NEAR
-const prefix = (networkId === "testnet") ? "testnet." : "";
+const prefix = (networkId === "testnet") ? "testnet" : "www";
 
 const config = {
   networkId,
