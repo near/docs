@@ -20,7 +20,7 @@ NEAR offers free public peer-to-peer rpc to all developers. Dozens of providers 
 
 ## RPC Providers
 
-There are multiple alternative [RPC providers which you can choose from](./providers.md). These providers will work as intermediaries to help you interact with the NEAR network.
+There are multiple [RPC providers which you can choose from](./providers.md). These providers will work as intermediaries to help you interact with the NEAR network.
 
 <hr class="subsection" />
 
