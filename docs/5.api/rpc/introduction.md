@@ -13,7 +13,6 @@ tools such as [near-api-js](/tools/near-api-js/quick-reference) are just abstrac
 
 <hr class="subsection" />
 
-
 ## RPC Providers
 
 There are multiple [RPC providers which you can choose from](./providers.md). These providers will work as intermediaries to help you interact with the NEAR network.
