@@ -3,6 +3,7 @@ sidebar_position: 5
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import {Github} from "@site/src/components/codetabs";
 
 # Serialization Protocols
 
@@ -41,21 +42,15 @@ Where the `result_serializer(borsh)` annotation will override the default result
 
 A simple demonstration of getting a [Borsh-serialized](https://borsh.io), base64-encoded value from a unit test:
 
-```rust reference
-https://github.com/mikedotexe/rust-status-message/blob/b83c5126fdbe0f19bc904e547fda0bb12c2ea133/src/lib.rs#L93-L104
-```
+<Github language="rust" start="93" end="104" url="https://github.com/mikedotexe/rust-status-message/blob/b83c5126fdbe0f19bc904e547fda0bb12c2ea133/src/lib.rs" />
 
 The following snippet shows a simple function that takes this value from a frontend or CLI. Note: this method doesn't have a return value, so the `#[result_serializer(borsh)]` isn't needed.
 
-```rust reference
-https://github.com/mikedotexe/rust-status-message/blob/b83c5126fdbe0f19bc904e547fda0bb12c2ea133/src/lib.rs#L40-L42
-```
+<Github language="rust" start="40" end="42" url="https://github.com/mikedotexe/rust-status-message/blob/b83c5126fdbe0f19bc904e547fda0bb12c2ea133/src/lib.rs" />
 
 Note that this is using this simple struct:
 
-```rust reference
-https://github.com/mikedotexe/rust-status-message/blob/b83c5126fdbe0f19bc904e547fda0bb12c2ea133/src/lib.rs#L13-L17
-```
+<Github language="rust" start="13" end="17" url="https://github.com/mikedotexe/rust-status-message/blob/b83c5126fdbe0f19bc904e547fda0bb12c2ea133/src/lib.rs" />
 
 To call this with NEAR CLI, use a command similar to this:
 
