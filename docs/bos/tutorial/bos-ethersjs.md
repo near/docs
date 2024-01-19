@@ -1,17 +1,17 @@
 ---
 id: ethers-js
-title: BOS for Ethereum developers
+title: NEAR for Ethereum developers
 ---
 
 import {WidgetEditor} from "@site/src/components/social-widget"
 
-The Blockchain Operating System (BOS) is chain-agnostic, enabling you to create decentralized frontends tailored for any Ethereum dApps. Throughout this article, we'll navigate prevalent use-cases with code snippets. You’ll also find links to exemplary BOS components for reference.
+NEAR components are chain-agnostic, enabling you to create decentralized frontends tailored for any Ethereum dApps. Throughout this article, we'll navigate prevalent use-cases with code snippets. You’ll also find links to exemplary NEAR components for reference.
 
 ---
 
 ## Interact with Ethereum using Ethers.js
 
-BOS has imported the [Ethers.js](https://docs.ethers.org/) library, allowing for seamless interaction with Ethereum nodes using JavaScript in a BOS component.
+The NEAR VM has imported the [Ethers.js](https://docs.ethers.org/) library, allowing for seamless interaction with Ethereum nodes using JavaScript in a NEAR component.
 
 The `Ethers` object exposes the provider connection:
 - `Ethers.provider()` is a read-only connection to the blockchain, which allows querying the blockchain state (e.g., account, block or transaction details), querying event logs or evaluating read-only code using call.
@@ -135,11 +135,11 @@ Utilize platforms like etherscan.com and blockscout.com, or delve into the proje
 
 ### Is there an example of applications with a description of how they were created? 
 
-Yes, there is an article that describes [best practices for creating applications for Ethereum developers on BOS](bos-ethersjs-best-practices.md), with a breakdown of individual steps.
+Yes, there is an article that describes [best practices for creating applications for Ethereum developers on NEAR](bos-ethersjs-best-practices.md), with a breakdown of individual steps.
 
 ## Examples
 
-Below is a curated list of BOS components, developed by the community, that epitomize the best practices for creating BOS components:
+Below is a curated list of NEAR components, developed by the community, that epitomize the best practices for creating NEAR components:
 
 - [Unwrap ETH](https://near.org/near/widget/ComponentDetailsPage?src=zavodil.near/widget/unwrap-weth&tab=source)
 - [ERC-20 Token sender](https://near.org/near/widget/ComponentDetailsPage?src=zavodil.near/widget/erc20-sender&tab=source)

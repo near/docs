@@ -127,7 +127,7 @@ In general, cross-contract call graphs can be quite complex (one contract may ca
 
 We’ve already discussed the storage model on NEAR, but only in abstract terms, without bringing the exact structure, so it’s time to dive a bit deeper. 
 
-Natively, NEAR smart contracts store data as key-value pairs. This is quite limiting, since even simplest applications usually need more advanced data structures. To help in development, NEAR provides [SDK for smart contracts](https://github.com/near/near-sdk-rs), which includes data structures [like vectors, sets and maps](../../1.concepts/storage/data-collections.md#rust-collection-types-rust-collection-types). While they are very useful, it’s important to remember a few things about them:
+Natively, NEAR smart contracts store data as key-value pairs. This is quite limiting, since even simplest applications usually need more advanced data structures. To help in development, NEAR provides [SDK for smart contracts](https://github.com/near/near-sdk-rs), which includes data structures like [vectors, sets and maps](../../1.concepts/storage/data-collections.md#rust-collection-types-rust-collection-types). While they are very useful, it’s important to remember a few things about them:
 - Ultimately, they are stored as binary values, which means it takes some gas to serialize and deserialize them. Also, different operations cost different amounts of gas ([complexity table](../../1.concepts/storage/data-collections.md#big-o-notation-big-o-notation-1)). Because of this, careful choice of data structures is very important. Moving to a different data structure later will not be easy and would probably require data migration.
 - While very useful, vectors, maps and sets won’t match the flexibility and power of classical relational databases. Even implementations of simple filtering and searching might be quite complex and require a lot of gas to execute, especially if multiple entities with relations between them are involved.
 - They are limited to a single contract. If data from multiple contracts is required, aggregation should be performed using cross-contract calls or on a client side, which is quite expensive in terms of gas and time.
@@ -164,7 +164,7 @@ In order to manage accounts on the NEAR network, [Wallet](https://wiki.near.org/
 On the image above, “Reserved for storage” are tokens locked by a smart contract to cover current storage requirements, and “Reserved for transactions” represents the amount of tokens locked to cover gas cost by Functional Call keys.
 Currently, there’s no UI to connect sub-accounts into a wallet. Instead, they should be imported via a specially constructed direct link:
 ```
-https://wallet.testnet.near.org/auto-import-secret-key#YOUR_ACCOUNT_ID/YOUR_PRIVATE_KEY
+https://testnet.mynearwallet.com/auto-import-secret-key#YOUR_ACCOUNT_ID/YOUR_PRIVATE_KEY
 ```
 (you should provide a private key of a full access key for the account in question, so make sure this link is used securely).
 

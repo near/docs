@@ -96,12 +96,12 @@ Remember to clean out old, unused indexers. If you get `YourIndexerName_v8` to w
 
 ### Generate GraphQL queries and export
 
-When your indexer is deployed and ready, you can generate and export GraphQL queries that can be used in your front-end application, BOS component, or any other integration.
+When your indexer is deployed and ready, you can generate and export GraphQL queries that can be used in your front-end application, NEAR component, or any other integration.
 
 To generate GraphQL queries:
   -  [Use GraphiQL playground](index-function.md#mutations-in-graphql)
   -  Click through and debug queries
-  -  [Use code exporter to BOS components](index-function.md#create-a-bos-component-from-query)
+  -  [Use code exporter to NEAR components](index-function.md#create-a-bos-component-from-query)
   -  Change `query` to `subscription` for WebSockets
 
 
@@ -115,7 +115,7 @@ Focusing on the two most common blockchain indexing use cases, you can consider:
 
 :::info
 
-QueryAPI uses [PostgreSQL 14.9](https://postgrespro.com/docs/postgresql/14/ddl). You can find additional documentation about PostgresSQL data definition language [in this link](https://postgrespro.com/docs/postgresql/14/ddl).
+QueryAPI uses [PostgreSQL 14.9](https://www.postgresql.org/docs/14/index.html). You can find additional documentation about PostgresSQL data definition language [in this link](https://postgrespro.com/docs/postgresql/14/ddl).
 
 :::
 

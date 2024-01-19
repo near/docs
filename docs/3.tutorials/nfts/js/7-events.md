@@ -3,6 +3,7 @@ id: events
 title: Events
 sidebar_label: Events
 ---
+import {Github} from "@site/src/components/codetabs"
 
 In this tutorial, you'll learn about the [events standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event) and how to implement it in your smart contract.
 
@@ -26,7 +27,7 @@ If you wish to see the finished code for this _Events_ tutorial, you can find it
 
 ## Understanding the use case {#understanding-the-use-case}
 
-Have you ever wondered how the wallet knows which NFTs you own and how it can display them in the [collectibles tab](https://wallet.testnet.near.org/?tab=collectibles)? Originally, an [indexer](/tools/indexer-for-explorer) was used and it listened for any functions starting with `nft_` on your account. These contracts were then flagged on your account as likely NFT contracts. 
+Have you ever wondered how the wallet knows which NFTs you own and how it can display them in the [collectibles tab](https://testnet.mynearwallet.com//?tab=collectibles)? Originally, an [indexer](/tools/indexer-for-explorer) was used and it listened for any functions starting with `nft_` on your account. These contracts were then flagged on your account as likely NFT contracts. 
 
 When you navigated to your collectibles tab, the wallet would then query all those contracts for the list of NFTs you owned using the `nft_tokens_for_owner` function you saw in the [enumeration tutorial](/tutorials/nfts/js/enumeration).
 
@@ -144,9 +145,7 @@ let nftMintLog = {
 near.log(`EVENT_JSON:${JSON.stringify(nftMintLog)}`);
 ```
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/7.events/src/nft-contract/mint.ts#L7-L85
-```
+<Github language="js" start="7" end="85" url="https://github.com/near-examples/nft-tutorial-js/blob/7.events/src/nft-contract/mint.ts" />
 
 ### Logging transfers {#logging-transfers}
 
@@ -180,9 +179,7 @@ let nftTransferLog = {
 // Log the serialized json.
 near.log(`EVENT_JSON:${JSON.stringify(nftTransferLog)}`);
 ```
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/7.events/src/nft-contract/internal.ts#L113-L205
-```
+<Github language="js" start="113" end="205" url="https://github.com/near-examples/nft-tutorial-js/blob/7.events/src/nft-contract/internal.ts" />
 
 This solution, unfortunately, has an edge case which will break things. If an NFT is transferred via the `nft_transfer_call` function, there's a chance that the transfer will be reverted if the `nft_on_transfer` function returns `true`. Taking a look at the logic for `nft_transfer_call`, you can see why this is a problem.
 
@@ -194,9 +191,7 @@ When `nft_transfer_call` is invoked, it will:
 
 If you only place the log in the `internalTransfer` function, the log will be emitted and the indexer will think that the NFT was transferred. If the transfer is reverted during `internalResolveTransfer`, however, that event should **also** be emitted. Anywhere that an NFT **could** be transferred, we should add logs. Replace the `internalResolveTransfer` with the following code.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/7.events/src/nft-contract/nft_core.ts#L138-L242
-```
+<Github language="js" start="138" end="242" url="https://github.com/near-examples/nft-tutorial-js/blob/7.events/src/nft-contract/nft_core.ts" />
 
 With that finished, you've successfully implemented the events standard and it's time to start testing.
 

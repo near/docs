@@ -3,7 +3,7 @@ id: prototyping
 sidebar_label: Rapid Prototyping
 title: "Upgrading Contracts: Rapid Prototyping"
 ---
-import {CodeTabs, Language, Github} from "@site/components/codetabs";
+import {CodeTabs, Language, Github} from "@site/src/components/codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

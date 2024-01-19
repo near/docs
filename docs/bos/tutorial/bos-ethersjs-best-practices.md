@@ -1,14 +1,14 @@
 ---
 id: ethers-js-best-practices
-title: Best Practices for Ethereum developers on BOS
+title: Best Practices for Ethereum developers on NEAR
 ---
 
 import {WidgetEditor} from "@site/src/components/social-widget"
 
-In this example, we will create an Ethereum dApp on BOS that functions as a portfolio manager, displaying the current balances for a list of tokens. Additionally, we will display current market value of each asset in the portfolio.
+In this example, we will create an Ethereum dApp on NEAR that functions as a portfolio manager, displaying the current balances for a list of tokens. Additionally, we will display current market value of each asset in the portfolio.
 
 We will be using several technologies:
-- BOS for the user interface (UI).
+- NEAR Components for the user interface (UI).
 - [Ethers.js](bos-ethersjs.md) for retrieving balance data from the blockchain.
 - CoinGecko API for fetching static content with information about tokens and their current prices.
 - [Social-DB](../../social/contract.md) for storing the list of tokens to be tracked.
@@ -20,7 +20,7 @@ Let's start with a simple example and consider an application where we want to d
 
 ### Source code
 
-```jsx
+```js
 // Load current sender address if it was not loaded yet
 if (state.sender == undefined && Ethers.provider()) {
   Ethers.provider()
@@ -115,7 +115,7 @@ Once the web3 connection is enabled, the output will appear as follows:
 ```
 
 :::tip
-When developing BOS components, it's recommended to always present some content even if the user hasn't connected their wallet yet. In this example, the component uses the `<Web3Connect>` button to prompt the user to connect their wallet if they haven't already.
+When developing NEAR components, it's recommended to always present some content even if the user hasn't connected their wallet yet. In this example, the component uses the `<Web3Connect>` button to prompt the user to connect their wallet if they haven't already.
 :::
 
 ## Step 2: Load static data
@@ -125,7 +125,7 @@ To format the list, we must determine the decimal precision for each asset. Whil
 
 Let's add a function to load token data for a given token from the Coingecko:
 
-```jsx
+```js
 const loadCoingeckData = (tokenId) => {
     let dataUrl = `https://api.coingecko.com/api/v3/coins/ethereum/contract/${tokenId}`;
 
@@ -145,7 +145,7 @@ Other available API methods are listed in the [Coingecko API documentation](http
 
 Now that we have the data, let's modify the loadTokensData function to save the token information in the state:
 
-```jsx
+```js
 const loadTokensData = () => {
   // load balances of all tokens
   tokens.map((tokenId) => {
@@ -165,7 +165,7 @@ const loadTokensData = () => {
 
 And lets update the `renderToken` function to display data we just got:
 
-```jsx 
+```js 
 const renderToken = (tokenId) => {
   const tokenBalance = Big(state[tokenId].balance ?? 0)
     .div(new Big(10).pow(state[tokenId].decimals ?? 1))
@@ -195,7 +195,7 @@ Please note that the `fetch` function caches data and will be executed only once
 :::
 
 :::tip
-Utilize any available web-services to provide data for your application on BOS, ensuring that the user experience is on par with traditional web 2.0 applications.
+Utilize any available web-services to provide data for your application on NEAR, ensuring that the user experience is on par with traditional web 2.0 applications.
 :::
 
 ## Step 3. Save data in social-db
@@ -217,11 +217,11 @@ In this format, the data from the example will be stored in social-db.
 ```
 
 
-Viewing this data from the blockchain is accessible for every BOS app or, for example, through an [Explorer app](https://near.org/zavodil.near/widget/Explorer?path=zavodil.near/tokens-db/**).
+Viewing this data from the blockchain is accessible for every NEAR app or, for example, through an [Explorer app](https://near.org/zavodil.near/widget/Explorer?path=zavodil.near/tokens-db/**).
 
 Let's add a function to our application that will read the list of tokens.
 
-```jsx
+```js
 // set list of tokens
 if (!state.tokensLoaded) {
     // load tokens list from the Social DB
@@ -249,7 +249,7 @@ Use social-db, an on-chain data storage, to decouple the data and the applicatio
 
 ## Step 4. Caching Data Through GitHub Actions
 
-Ethereum-based applications frequently depend on static content sources to present details about tokens or contracts. Often, frontends pull this data from platforms like CoinGecko or CoinMarketCap, leveraging API keys to enhance the data retrieval rate limit. Without these API keys, and given a significant volume of data, fetching from these platforms can be sluggish or even disrupted. We'll showcase a serverless approach utilizing GitHub Actions. This method preserves the decentralized nature of BOS gateways (where securely storing API keys isn't feasible), all while ensuring user ease-of-use and swift data loading.
+Ethereum-based applications frequently depend on static content sources to present details about tokens or contracts. Often, frontends pull this data from platforms like CoinGecko or CoinMarketCap, leveraging API keys to enhance the data retrieval rate limit. Without these API keys, and given a significant volume of data, fetching from these platforms can be sluggish or even disrupted. We'll showcase a serverless approach utilizing GitHub Actions. This method preserves the decentralized nature of NEAR gateways (where securely storing API keys isn't feasible), all while ensuring user ease-of-use and swift data loading.
 
 Let's create a Node.js application that will iterate through a list of tokens from `social-db` and display the retrieved data along with a timestamp of the operation.
 
@@ -373,11 +373,11 @@ Don't forget to grant the worker the necessary permissions to add files to your 
 
 The output of this worker will be the [tokens-db.json](https://raw.githubusercontent.com/zavodil/tokens-db/main/tokens-db.json) file which will be regularly updated with current data. You can easily add any private API keys required for bypassing rate limits in the worker.
 
-Now, let's get back to the BOS application. We need to modify the code to read data from the cached file created by GitHub Actions instead of fetching it from CoinGecko every time.
+Now, let's get back to the NEAR application. We need to modify the code to read data from the cached file created by GitHub Actions instead of fetching it from CoinGecko every time.
 
 To do this, we'll make changes to the `loadTokensData` function:
 
-```jsx
+```js
 const loadTokensData = () => {
     let cacheTokenData = {};
     // load data generated by github action

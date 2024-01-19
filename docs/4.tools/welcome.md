@@ -4,7 +4,7 @@ title: Tools
 sidebar_label: Home
 ---
 
-import ContactUs from '@site/components/ContactUs.mdx';
+import ContactUs from '@site/src/components/ContactUs.mdx';
 
 Welcome! The NEAR ecosystem has a complete set of tools for you to make the most out of the NEAR network.
 In this page you will find:

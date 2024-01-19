@@ -18,7 +18,7 @@ This indexer creates a new row in a pre-defined `posts` table created by the use
 
 :::tip
 
-This indexer can be found by [following this link](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=bucanero.near/posts-example&view=editor-window).
+This indexer can be found by [following this link](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=bucanero.near/posts-example).
 
 :::
 
@@ -97,7 +97,7 @@ async function getBlock(block: Block, context) {
 }
 ```
 
-This function first defines a helper function called `base64decode` that decodes base64 encoded data. It then defines a constant called `SOCIAL_DB` that is the name of the database that stores the posts from the BOS. It then filters the blockchain transactions for a specific type of transaction. This is done by:
+This function first defines a helper function called `base64decode` that decodes base64 encoded data. It then defines a constant called `SOCIAL_DB` that is the name of the smart contract that stores the posts in NEAR. It then filters the blockchain transactions for a specific type of transaction. This is done by:
 
 1. Filtering the blockchain transactions for transactions where the `receiverId` is the `SOCIAL_DB` database
 2. Mapping the operations of the filtered transactions to the `FunctionCall` operation
@@ -165,7 +165,7 @@ query MyQuery {
 }
 ```
 
-Once you have defined your query, you can use the GraphiQL Code Exporter to auto-generate a JavaScript or BOS Widget code snippet. The exporter will create a helper method `fetchGraphQL` which will allow you to fetch data from the indexer's GraphQL API. It takes three parameters:
+Once you have defined your query, you can use the GraphiQL Code Exporter to auto-generate a JavaScript or NEAR Widget code snippet. The exporter will create a helper method `fetchGraphQL` which will allow you to fetch data from the indexer's GraphQL API. It takes three parameters:
 
 - `operationsDoc`: A string containing the queries you would like to execute.
 - `operationName`: The specific query you want to run.
@@ -173,7 +173,7 @@ Once you have defined your query, you can use the GraphiQL Code Exporter to auto
 
 Next, you can call the `fetchGraphQL` function with the appropriate parameters and process the results. 
 
-Here's the complete code snippet for a BOS component using the _Posts Indexer_:
+Here's the complete code snippet for a NEAR component using the _Posts Indexer_:
 
 ```js
 const QUERYAPI_ENDPOINT = `https://near-queryapi.api.pagoda.co/v1/graphql/`;

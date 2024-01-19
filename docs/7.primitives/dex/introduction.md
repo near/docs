@@ -5,15 +5,8 @@ hide_table_of_contents: false
 ---
 
 
-import {FeatureList, Column, Feature} from "@site/components/featurelist"
-import ContactUs from '@site/components/ContactUs.mdx';
-
-
-- [What is DEX?](#what-is-dex)
-
----
-
-## What is DEX?
+import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
+import ContactUs from '@site/src/components/ContactUs.mdx';
 
 DEX is an app which allows users to trade tokens by using only smart contracts. Usually users interact with DEX by web app. But since DEX is a set of smart contracts you can use these contracts from your code.
 

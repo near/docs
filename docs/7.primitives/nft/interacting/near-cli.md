@@ -17,7 +17,7 @@ This section shows how to interact with an NFT contract from your shell using [`
 <TabItem value="NFT Primitive" label="NFT Primitive" default>
 
 ```bash
-near call nft.primitives.near nft_mint, '{"token_id": "1", "receiver_id": "bob.near", "token_metadata": {"title": "NFT Primitive Token", "description": "Awesome NFT Primitive Token", "media": "string"}}' --accountId bob.near
+near call nft.primitives.near nft_mint '{"token_id": "1", "receiver_id": "bob.near", "token_metadata": {"title": "NFT Primitive Token", "description": "Awesome NFT Primitive Token", "media": "string"}}' --depositYocto 10000000000000000000000, --accountId bob.near
 ```
 
 </TabItem>
@@ -25,7 +25,7 @@ near call nft.primitives.near nft_mint, '{"token_id": "1", "receiver_id": "bob.n
 <TabItem value="Paras" label="Paras">
 
 ```bash
-near call x.paras.near nft_mint '{"token_series_id": "490641", "receiver_id": "bob.near"}' --accountId bob.near
+near call x.paras.near nft_mint '{"token_series_id": "490641", "receiver_id": "bob.near"}' --depositYocto 10000000000000000000000 --accountId bob.near
 ```
 
 :::note
@@ -37,7 +37,7 @@ In order to use `nft_mint` method of the `x.paras.near` contract you have to be 
 <TabItem value="Mintbase" label="Mintbase">
 
 ```bash
-near call thomasettorreiv.mintbase1.near nft_batch_mint '{"num_to_mint": 1, "owner_id": "bob.near", "metadata": {}}' --accountId bob.near --deposit 0.000000000000000000000001
+near call thomasettorreiv.mintbase1.near nft_batch_mint '{"num_to_mint": 1, "owner_id": "bob.near", "metadata": {}}' --accountId bob.near --depositYocto 10000000000000000000000
 ```
 
 :::note

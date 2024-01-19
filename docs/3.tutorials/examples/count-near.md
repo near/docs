@@ -4,7 +4,7 @@ title: Count on NEAR
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/components/codetabs"
+import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 Our counter example is a friendly decentralized app that stores a number and exposes methods to `increment`,
 `decrement`, and `reset` it.

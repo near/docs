@@ -4,7 +4,7 @@ title: The Contract Class
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/components/codetabs"
+import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 Your contract's logic and state (storage) is defined by the [main class](#near-bindgen), in which:
 1. The attributes define the [contract's state](#defining-the-state)

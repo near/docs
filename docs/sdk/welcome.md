@@ -4,8 +4,8 @@ title: "NEAR SDKs"
 hide_table_of_contents: false
 ---
 
-import {FeatureList, Column, Feature} from "@site/components/featurelist";
-import ContactUs from '@site/components/ContactUs.mdx';
+import {FeatureList, Column, Feature} from "@site/src/components/featurelist";
+import ContactUs from '@site/src/components/ContactUs.mdx';
 
 Explore our language-specific SDK documentation
 

@@ -3,6 +3,7 @@ id: minting-nft-frontend
 title: Minting NFT Front-end
 sidebar_label: Minting Front-end
 ---
+import {Github} from "@site/src/components/codetabs"
 
 # NFT Minting Front-end
 
@@ -39,9 +40,7 @@ Then, simply import the contract files from the `main` branch, and you'll have t
 
 Upon mounting the application's components, the app checks for the existence of a non-fungible token.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-frontend/blob/master/src/App.js#L24-L46
-```
+<Github language="js" start="24" end="46" url="https://github.com/near-examples/nft-tutorial-frontend/blob/master/src/App.js" />
 
 If no prior NFT has been minted, the mint button will be available for use.
 
@@ -52,20 +51,16 @@ Here is the function behind the mint button. The meta data has been filled out f
 - `token_id` is set by the user's account id,
 - and the `media` link is hard-coded to a `goteam-gif.gif` hosted on IPFS.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-frontend/blob/master/src/Components/MintingTool.js#L7-L23
-```
+<Github language="js" start="7" end="23" url="https://github.com/near-examples/nft-tutorial-frontend/blob/master/src/Components/MintingTool.js" />
 
-After hitting the <kbd>Mint NFT</kbd> button the user will be able to check out the newly minted NFT at [wallet.testnet.near.org](https://wallet.testnet.near.org/?tab=collectibles), under the Wallet's `Collectibles` tab.
+After hitting the <kbd>Mint NFT</kbd> button the user will be able to check out the newly minted NFT at [wallet.testnet.near.org](https://testnet.mynearwallet.com//?tab=collectibles), under the Wallet's `Collectibles` tab.
 
 ## Final remarks
 
 You can find the complete application repository [on GitHub](https://github.com/near-examples/nft-tutorial-frontend) to clone and run.
 In the configuration folder you can see that this smart contract has been deployed to `nft-frontend-simple-mint.blockhead.testnet`:
 
-```js reference
-https://github.com/near-examples/nft-tutorial-frontend/blob/master/src/config.js#L1-L2
-```
+<Github language="js" start="1" end="2" url="https://github.com/near-examples/nft-tutorial-frontend/blob/master/src/config.js" />
 
 You can also check out the [explorer link here](https://explorer.testnet.near.org/accounts/nft-frontend-simple-mint.blockhead.testnet) to see how many individuals have been minting their own _Go Team_ NFTs. _**Happy Minting!**_
 

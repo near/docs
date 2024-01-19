@@ -11,7 +11,7 @@ When building components, the NEAR VM provides a complete set of [Radix primitiv
 
 Using embedded Radix primitives on the NEAR VM is simple and straight-forward. You don't need to import any files:
 
-```jsx
+```js
 return (
     <Label.Root className="LabelRoot">
       Hello World!
@@ -33,7 +33,7 @@ Currently, NEAR VM impose some limitations on the Radix UI framework:
 
 Here is an example on how to use CSS through the `styled.div` wrapper:
 
-```jsx
+```js
 const Wrapper = styled.div`
   .SwitchRoot {
     ...
@@ -60,9 +60,9 @@ return (
 
 ### Using `styled-components`
 
-You can use [`styled-components`](../components/styledComponents.md) in combination with Radix UI primitives. Here's an example:
+You can use [`styled-components`](../api/builtin-components.md#styled-components) in combination with Radix UI primitives. Here's an example:
 
-```jsx
+```js
 const SwitchRoot = styled("Switch.Root")`
   all: unset;
   display: block;
@@ -114,7 +114,7 @@ The NEAR VM re-implements [React's forwardRef](https://react.dev/reference/react
 
 You can use `ref="forwardedRef"` to forward references through `<Widget />` to support Radix's `asChild` property:
 
-```jsx title='Dialog.jsx'
+```js title='Dialog.jsx'
 <AlertDialog.Trigger asChild>
   <Widget
     src="near/widget/TestButton"
@@ -123,7 +123,7 @@ You can use `ref="forwardedRef"` to forward references through `<Widget />` to s
 </AlertDialog.Trigger>
 ```
 
-```jsx title='TestButton.jsx'
+```js title='TestButton.jsx'
 const Button = styled.button`
   background: #f00;
 `;
@@ -153,7 +153,7 @@ A fully featured button component that can act as a `<button>` or `<a>` tag.
 
 ### `DIG.Theme`
 
-This component wraps all of BOS so you don't need to render it yourself.
+This component wraps all of NEAR Components so you don't need to render it yourself.
 
 :::tip
 You can use any of the [CSS variables](https://near.org/near/widget/ComponentDetailsPage?src=near/widget/DIG.Theme&tab=source) defined inside `DIG.Theme`.

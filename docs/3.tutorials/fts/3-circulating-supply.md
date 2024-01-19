@@ -3,7 +3,7 @@ id: circulating-supply
 title: Creating a Circulating Supply
 sidebar_label: Circulating Supply
 ---
-
+import {Github} from "@site/src/components/codetabs"
 
 In the previous tutorial, you looked at what a fungible token was and how you could define one in your smart contract. In this tutorial, you'll learn how to create a circulating supply belonging to the contract owner and view all the tokens, with their metadata, in the NEAR wallet.
 
@@ -34,9 +34,7 @@ The mapping is so that you can easily check or modify the tokens owned by any gi
 
 Head over to the `src/lib.rs` file and add the following code to the `Contract` struct.
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/lib.rs#L21-L32
-```
+<Github language="rust" start="21" end="32" url="https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/lib.rs" />
 
 You'll now want to add the functionality for depositing the tokens into the owner's account. Do this by creating a helper function that takes an amount and an account ID and performs the deposit logic for you. First create a new file `src/internal.rs` such that your file structure now looks as follows.
 
@@ -51,15 +49,11 @@ src
 
 In the `internal.rs` file, add the following code to create a method called `internal_deposit` which takes an `AccountId` and a `Balance` and adds the amount to the account's current supply of FTs. 
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/internal.rs#L1-L18
-```
+<Github language="rust" start="1" end="18" url="https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/internal.rs" />
 
 Now that the functionality for depositing FTs is in place, switch back to the `src/lib.rs` file and add the `internal` module:
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/lib.rs#L8-L10
-```
+<Github language="rust" start="8" end="10" url="https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/lib.rs" />
 
 In addition, add the following code to the `new` initialization function.
 
@@ -100,15 +94,13 @@ Now that you've created a way to set the total supply, you'll also want a way to
 
 Head on over to the `src/ft_core.rs` file and add the following code to these functions.
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/ft_core.rs#L83-L91
-```
+<Github language="rust" start="83" end="91" url="https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/ft_core.rs" />
 
 At this point, you have everything you need to create an initial supply of tokens and query for the balance of a given account. There is, however, a problem that we need to solve. How will the wallet know that the total supply was created and is owned by the contract owner? How would it even know that our contract is a fungible token contract? If you were to deploy the contract and run through the setup process, you would be able to query for the information from the contract but you wouldn't see any FTs in the owner's NEAR wallet.
 
 ## Events
 
-Have you ever wondered how the wallet knows which FTs you own and how it can display them in the [balances tab](https://wallet.testnet.near.org)? Originally, an [indexer](/tools/indexer-for-explorer) was used and it listened for any functions starting with `ft_` on your account. These contracts were then flagged on your account as likely FT contracts. 
+Have you ever wondered how the wallet knows which FTs you own and how it can display them in the [balances tab](https://testnet.mynearwallet.com/)? Originally, an [indexer](/tools/indexer-for-explorer) was used and it listened for any functions starting with `ft_` on your account. These contracts were then flagged on your account as likely FT contracts. 
 
 When you navigated to your balances tab, the wallet would then query all those contracts for the number of FTs you owned using the `ft_balance_of` function you just wrote.
 
@@ -186,25 +178,19 @@ At this point, you should have a good understanding of what the end goal should 
 
 Copy the following into your file. This will outline the structs for your `EventLog`, `FtMintLog`, and `FtTransferLog`. In addition, we've added a way for `EVENT_JSON:` to be prefixed whenever you log the `EventLog`. 
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/events.rs#L1-L121
-```
+<Github language="rust" start="1" end="121" url="https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/events.rs" />
 
 ### Adding modules and constants {#lib-rs}
 
 Now that you've created a new file, you need to add the module to the `lib.rs` file.
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/lib.rs#L1-L13
-```
+<Github language="rust" start="1" end="13" url="https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/lib.rs" />
 
 ### Logging the total supply minted
 
 Now that all the tools are set in place, you can implement the actual logging functionality. Since the contract will only be minting tokens at the very start when it's initialized, it's trivial where you should place the log. Open the `src/lib.rs` file and navigate to the bottom of the `new` initialization function. This is where you'll construct the log for minting.
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/lib.rs#L63-L97
-```
+<Github language="rust" start="63" end="97" url="https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/lib.rs" />
 
 With that finished, you've successfully implemented the backbone of the events standard and it's time to start testing.
 
@@ -288,7 +274,7 @@ near view $EVENTS_FT_CONTRACT_ID ft_balance_of '{"account_id": "benjiman.testnet
 
 ## Viewing FTs in the wallet {#viewing-fts-in-wallet}
 
-Now that your contract implements the necessary functions that the wallet uses to pickup your contract and display the FTs, you should be able to see your tokens on display in the [balances tab](https://wallet.testnet.near.org).
+Now that your contract implements the necessary functions that the wallet uses to pickup your contract and display the FTs, you should be able to see your tokens on display in the [balances tab](https://testnet.mynearwallet.com/).
 
 <img width="65%" src="/docs/assets/fts/filled-fts-in-wallet.png" />
 

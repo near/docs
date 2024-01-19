@@ -251,7 +251,7 @@ The interface to capture data about an event has the following arguments:
 - `standard`: name of standard, e.g. nep171
 - `version`: e.g. 1.0.0
 - `event`: type of the event, e.g. nft_mint
-- `data`: associate event data. Strictly typed for each set {standard, version, event} inside corresponding NEP
+- `data`: associate event data. Strictly typed for each set `{standard, version, event}` inside corresponding NEP
 
 ### `Event` Structure Definition
 

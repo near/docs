@@ -5,13 +5,9 @@ title: Components
 
 import {WidgetEditor} from "@site/src/components/social-widget"
 
-BOS allows you to create a decentralized frontend by writing and composing small applications known as `Components`. 
+NEAR allows you to create a decentralized frontend by writing and composing small applications known as `Components`. 
 
 Components are stored in the NEAR blockchain, and execute locally in a custom Virtual Machine, thus ensuring the component can not access local storage or cookies.
-
-:::info BOS API
-Components use the BOS [**API**](./api/home.md) to process data, fetch data from other websites, and interact with blockchains.
-:::
 
 ---
 
@@ -26,7 +22,7 @@ let greeting = "Have a great day";
 
 return (
   <>
-    <div class="container border border-info p-3 text-center min-vw-100">
+    <div class="container border border-info p-3 text-center ">
       <h1>Hello</h1>
       <p> {greeting} </p>
     </div>
@@ -46,7 +42,7 @@ You can access the `context` object to get specific information about the VM ins
 
 You can detect the current network (`mainnet` or `testnet`) using `context.networkId`. For example:
 
-```jsx
+```js
 const childSrc =
   context.networkId === "mainnet"
     ? "near/src/Foobar"
@@ -64,12 +60,12 @@ return (
 
 You can get the current signed-in user account (e.g., `user.near`) using `context.accountId`. For example:
 
-```jsx
+```js
 let user_account = context.accountId;
 
 return (
   <>
-    <div class="container border border-info p-3 text-center min-vw-100">
+    <div class="container border border-info p-3 text-center ">
       <h1>Hello</h1>
       <p> {user_account} </p>
     </div>
@@ -92,7 +88,7 @@ let greeting = "Have a great day";
 
 return (
   <>
-    <div class="container border border-info p-3 text-center min-vw-100">
+    <div class="container border border-info p-3 text-center ">
       <h1>Hello {name}</h1>
       <p> {greeting} </p>
     </div>
@@ -117,7 +113,7 @@ const onChange = ({target}) => { State.update({greeting: target.value}) };
 
 return (
   <>
-    <div class="container border border-info p-3 min-vw-100">
+    <div class="container border border-info p-3 ">
       <p><b> Greeting: </b>  {state.greeting} </p>
 
       <label class="text-left">Change the Greeting</label>
@@ -133,7 +129,7 @@ return (
 
 ## Composing Components
 
-To compose components you will use the [Predefined `Widget` component](./components/widget.md). For this, you will only need the NEAR username of who created the component, and the component's name.
+To compose components you will use the [Predefined `Widget` component](./api/builtin-components.md#widget). For this, you only need the NEAR username of who created the component, and the component's name.
 
 <WidgetEditor id='4' height="200px">
 
@@ -143,7 +139,7 @@ const props = { name: "Anna" };
 
 return (
   <>
-    <div class="container min-vw-100">
+    <div class="container ">
 
       <h5> Components can be composed </h5>
       <hr />

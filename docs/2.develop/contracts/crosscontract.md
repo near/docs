@@ -1,11 +1,9 @@
 ---
 id: crosscontract
 title: Cross-Contract Calls
-#sidebar_label: 📞 Cross-Contract Calls
 ---
-import {CodeBlock} from '@theme/CodeBlock'
-import {CodeTabs, Language, Github} from "@site/components/codetabs"
 
+import {CodeTabs, Language, Github} from '@site/src/components/codetabs'
 
 Cross-contract calls allow your contract to interact with other deployed contracts. This is useful for:
 
@@ -22,7 +20,7 @@ There is a delay between the call and the callback in which everyone can still i
 
 ## Snippet: Querying Information
 
-While making your contract, it is likely that you will want to query information from another contract. Below, you can see a basic example in which we query the greeting message from our [Hello NEAR](../quickstart.md) example.
+While making your contract, it is likely that you will want to query information from another contract. Below, you can see a basic example in which we query the greeting message from our [Hello NEAR](quickstart.md) example.
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
@@ -42,7 +40,7 @@ While making your contract, it is likely that you will want to query information
 ---
 
 ## Snippet: Sending Information
-Calling another contract passing information is also a common scenario. Bellow you can see a method that interacts with the [Hello NEAR](../quickstart.md) example to change its greeting message.
+Calling another contract passing information is also a common scenario. Bellow you can see a method that interacts with the [Hello NEAR](quickstart.md) example to change its greeting message.
 
 <CodeTabs>
 <Language value="🌐 JavaScript" language="ts">
@@ -69,17 +67,21 @@ Cross-contract calls work by creating two promises in the network:
 Both promises take the same arguments:
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
-    <CodeBlock>
-    NearPromise.new("external_address").functionCall("method", JSON.stringify(arguments), DEPOSIT, GAS);
-    </CodeBlock>
+    
+  ```ts
+  NearPromise.new("external_address").functionCall("method", JSON.stringify(arguments), DEPOSIT, GAS);
+  ```
+
   </Language>
   <Language value="🦀 Rust" language="rust">
-    <CodeBlock>
-    external_trait::ext("external_address")
-    .with_attached_deposit(DEPOSIT)
-    .with_static_gas(GAS)
-    .method(arguments);
-    </CodeBlock>
+
+  ```rust
+  external_trait::ext("external_address")
+  .with_attached_deposit(DEPOSIT)
+  .with_static_gas(GAS)
+  .method(arguments);
+  ```
+
   </Language>
 </CodeTabs>
 

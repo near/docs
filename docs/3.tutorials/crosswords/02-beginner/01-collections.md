@@ -3,6 +3,7 @@ sidebar_position: 2
 sidebar_label: "Store multiple puzzles"
 title: "Store multiple crossword puzzles using a specialized collection in NEAR called a LookupMap"
 ---
+import {Github} from "@site/src/components/codetabs"
 
 import bookPagination from '/docs/assets/crosswords/paging-through-hashes-swing--pierced_staggg.near--pierced_stag.jpg';
 import guardsAroundContract from '/docs/assets/crosswords/guards-contract-permissions--connoisseur_dane.near--connoisseurdane.png';
@@ -51,9 +52,7 @@ The name of the struct doesn't matter and there's nothing special about naming i
 
 Here's how our struct will look with the iterable and non-iterable NEAR collections:
 
-```rust reference
-https://github.com/near-examples/crossword-tutorial-chapter-2/blob/276217ad82c64c610148e998ec926942ba910a12/contract/src/lib.rs#L73-L79
-```
+<Github language="rust" start="73" end="79" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/276217ad82c64c610148e998ec926942ba910a12/contract/src/lib.rs" />
 
 Above, we have the `puzzles` and `unsolved_puzzles` fields which are collections.
 
@@ -61,9 +60,7 @@ We also have an `owner_id` so we can exercise a common pattern in smart contract
 
 The snippet below shows the first method in the implementation of the `Crossword` struct, where the `new` function sets up these two specialized collections.
 
-```rust reference
-https://github.com/near-examples/crossword-tutorial-chapter-2/blob/276217ad82c64c610148e998ec926942ba910a12/contract/src/lib.rs#L81-L90
-```
+<Github language="rust" start="81" end="90" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/276217ad82c64c610148e998ec926942ba910a12/contract/src/lib.rs" />
 
 So during the initialization function (`new`) we're setting the `owner_id`. For our purposes the owner will likely be the contract itself, but there can be several reasons to have it be a DAO or another user. Next, let's look at the `b"c"` and `b"u"` bits for the collection fields.
 
@@ -75,9 +72,7 @@ Let's take a peek at how we'll add a new crossword puzzle. Note that there will 
 
 Unlike the previous chapter where there was only one crossword puzzle, we'll be inserting into our new collections, so let's create a `new_puzzle` method.
 
-```rust reference
-https://github.com/near-examples/crossword-tutorial-chapter-2/blob/8ec941c82539e6eafa4971444e1da9e4819330d3/contract/src/lib.rs#L147-L163
-```
+<Github language="rust" start="147" end="163" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/8ec941c82539e6eafa4971444e1da9e4819330d3/contract/src/lib.rs" />
 
 Now we're set up to store multiple puzzles!
 

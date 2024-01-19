@@ -2,8 +2,7 @@
 id: storage
 title: State & Data Structures
 ---
-import {CodeBlock} from '@theme/CodeBlock'
-import {CodeTabs, Language, Github} from "@site/components/codetabs"
+import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 Each contract has its own state (storage), which **only they can modify** but [anyone can see](../../4.tools/cli.md#near-view-state-near-view-state).
 

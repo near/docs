@@ -5,16 +5,8 @@ hide_table_of_contents: false
 ---
 
 
-import {FeatureList, Column, Feature} from "@site/components/featurelist"
-import ContactUs from '@site/components/ContactUs.mdx';
-
-
-- [What is an NFT?](#what-is-an-nft)
-- [How to create NFT collection](#how-to-create-nft-collection)
-
----
-
-## What is an NFT?
+import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
+import ContactUs from '@site/src/components/ContactUs.mdx';
 
 In contrast with fungible tokens, non-fungible tokens (NFT) are unitary and therefore unique. This makes NFTs ideal to represent ownership of assets such as a piece of digital content, or a ticket for an event.
 

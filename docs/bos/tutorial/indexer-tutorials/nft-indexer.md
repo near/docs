@@ -6,7 +6,7 @@ sidebar_label: NFTs Indexer
 
 :::info
 
-NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers. 
+NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers.
 
 You can request access through [this link](http://bit.ly/near-queryapi-beta).
 
@@ -14,7 +14,8 @@ You can request access through [this link](http://bit.ly/near-queryapi-beta).
 
 ## Overview
 
-This tutorial creates a working NFT indexer using [NEAR QueryAPI](../../queryapi/intro.md), and builds a [B.O.S. component](../../components.md) that presents the data. The indexer is watching for `nft_mint` [Events](https://nomicon.io/Standards/EventsFormat) and captures some relevant data:
+This tutorial creates a working NFT indexer using [NEAR QueryAPI](../../queryapi/intro.md), and builds a [NEAR component](../../components.md) that presents the data. The indexer is watching for `nft_mint` [Events](https://nomicon.io/Standards/EventsFormat) and captures some relevant data:
+
 - `receiptId` of the [Receipt](https://near-indexers.io/docs/data-flow-and-structures/structures/receipt) where the mint has happened
 - `receiverId`
 - Marketplace
@@ -24,7 +25,7 @@ In this tutorial you'll learn how you can listen to [Events](https://nomicon.io/
 
 :::tip
 
-The indexer's source code can be found by [following this link](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=bucanero.near/nft_v4&view=editor-window).
+The indexer's source code can be found by [following this link](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=bucanero.near/nft_v4).
 
 :::
 
@@ -62,7 +63,6 @@ This schema defines one table: `nfts`. The table has these columns:
 - `receiver_id`: the receiver ID of the transaction that created the NFT
 - `nft_data`: the content of the minted NFT
 
-
 ## Defining the indexing logic
 
 The next step is to define the indexing logic. This is done by editing the `indexingLogic.js` file in the code editor. The logic for this indexer can be divided into two parts:
@@ -78,7 +78,6 @@ The `getBlock` function for this NFT indexer looks like this:
 
 ```js
 async function getBlock(block: Block) {
-
   for (let ev of block.events()) {
     const r = block.actionByReceiptId(ev.relatedReceiptId);
     const createdOn = block.streamerMessage.block.header.timestamp;
@@ -90,8 +89,7 @@ async function getBlock(block: Block) {
         console.log(event);
 
         let marketplace = "unknown";
-        if (r.receiverId.endsWith(".paras.near"))
-          marketplace = "Paras";
+        if (r.receiverId.endsWith(".paras.near")) marketplace = "Paras";
         else if (r.receiverId.endsWith(".sharddog.near"))
           marketplace = "ShardDog";
         else if (r.receiverId.match(/\.mintbase\d+\.near$/))
@@ -117,7 +115,7 @@ async function getBlock(block: Block) {
 }
 ```
 
-This indexer filters [Blocks](https://near.github.io/near-lake-framework-js/classes/block.Block.html) that have [Events](https://near.github.io/near-lake-framework-js/classes/events.Event.html) of type `nft_mint` and standard `nep171`. In addition, it stores the JSON event data and identifies the NFT marketplace.
+This indexer filters [Blocks](https://near.github.io/near-lake-framework-js/classes/_near_lake_primitives.block.Block.html) that have [Events](https://near.github.io/near-lake-framework-js/classes/_near_lake_primitives.events.Event.html) of type `nft_mint` and standard `nep171`. In addition, it stores the JSON event data and identifies the NFT marketplace.
 
 ### Saving the data to the Database
 
@@ -127,23 +125,22 @@ This is solved easily by using the [`context.db.Nfts.insert`](../../queryapi/con
 The logic for this looks like:
 
 ```js
-          const nftMintData = {
-            marketplace: marketplace,
-            block_height: h,
-            block_timestamp: createdOn,
-            receipt_id: r.receiptId,
-            receiver_id: r.receiverId,
-            nft_data: JSON.stringify(event.data),
-          };
+const nftMintData = {
+  marketplace: marketplace,
+  block_height: h,
+  block_timestamp: createdOn,
+  receipt_id: r.receiptId,
+  receiver_id: r.receiverId,
+  nft_data: JSON.stringify(event.data),
+};
 
-          // store result to the database
-          await context.db.Nfts.insert(nftMintData);
+// store result to the database
+await context.db.Nfts.insert(nftMintData);
 ```
 
+## NEAR Component
 
-## BOS Component
-
-The final step is querying the indexer using GraphQL from a [B.O.S. component](../../tutorial/queryapi-ws.md) with WebSockets.
+The final step is querying the indexer using GraphQL from a [NEAR component](../../tutorial/queryapi-ws.md) with WebSockets.
 
 Here's a simple GraphQL query that gets the last `${LIMIT}` minted NFTs:
 
@@ -166,7 +163,7 @@ Here's a code snippet that subscribes and processes the most recent activity (la
 
 :::tip
 
-The code below is only a snippet. If you want the full source code to play around with the component, you can fork the [NFT Activity Feed source code](https://near.org/near/widget/ComponentDetailsPage?src=bucanero.near/widget/query-api-nft-feed) and build your own BOS component.
+The code below is only a snippet. If you want the full source code to play around with the component, you can fork the [NFT Activity Feed source code](https://near.org/near/widget/ComponentDetailsPage?src=bucanero.near/widget/query-api-nft-feed) and build your own NEAR component.
 
 :::
 
@@ -268,12 +265,11 @@ Pay attention to the `widgetActivitySubscription` GraphQL query and the `subscri
 
 ### Processing
 
-This is the JS function that process the incoming widget activities generated by the QueryAPI indexer, allowing the BOS component to create a feed based on the blockchain's widget activity:
-
+This is the JS function that process the incoming widget activities generated by the QueryAPI indexer, allowing the NEAR component to create a feed based on the blockchain's widget activity:
 
 :::tip
 
-You can fork the [NFT Activity Feed source code](https://near.org/near/widget/ComponentDetailsPage?src=bucanero.near/widget/query-api-nft-feed) and build your own BOS component.
+You can fork the [NFT Activity Feed source code](https://near.org/near/widget/ComponentDetailsPage?src=bucanero.near/widget/query-api-nft-feed) and build your own NEAR component.
 
 :::
 
@@ -307,7 +303,7 @@ if (state.ws_widgetActivity === undefined) {
 
 ### Rendering
 
-Finally, rendering the activity feed on the BOS component is straight-forward, by iterating through the `state.widgetActivities` map:
+Finally, rendering the activity feed on the NEAR component is straight-forward, by iterating through the `state.widgetActivities` map:
 
 ```js
 return (
@@ -342,7 +338,7 @@ return (
           </CardBody>
           <CardFooter>
             <TextLink
-              href={`https://legacy.explorer.near.org/?query=${activity.receipt_id}`}
+              href={`https://legacy.nearblocks.io/?query=${activity.receipt_id}`}
             >
               View details on NEAR Explorer
             </TextLink>

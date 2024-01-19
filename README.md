@@ -11,7 +11,7 @@
 ## NEAR Protocol - scalable and usable blockchain
 
 [![Discord](https://img.shields.io/discord/490367152054992913.svg)](http://near.chat)
-[![CI](https://github.com/near/docs/actions/workflows/build-check.yml/badge.svg)](https://github.com/near/docs/actions/workflows/build-check.yml)
+[![CI](https://github.com/near/docs/actions/workflows/build-docs.yml/badge.svg)](https://github.com/near/docs/actions/workflows/build-docs.yml)
 
 * ⚖️ NEAR Protocol is a new smart-contract platform that delivers scalability and usability.
 * 🛠 Through sharding, it will linearly scale with the number of validation nodes on the network.
@@ -23,7 +23,7 @@ finally makes using a blockchain protocol easy for both developers and consumers
 Check out the following links
 
 - Deployed, live documentation: https://docs.near.org
-- Example applications: https://near.dev
+- Example applications: https://github.com/near-examples
 - Community chat: https://near.chat
 
 ## Contributing
@@ -127,7 +127,7 @@ or id you are in the `./website` directory:
 yarn full-test
 ```
 
-To manually run tests without rebuilding the site run the following from the `./website` directory:-
+To manually run tests without rebuilding the site, run the following from the `./website` directory:-
 
 🏃‍♂️ - Build and start server
 

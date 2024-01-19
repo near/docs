@@ -5,16 +5,8 @@ hide_table_of_contents: false
 ---
 
 
-import {FeatureList, Column, Feature} from "@site/components/featurelist"
-import ContactUs from '@site/components/ContactUs.mdx';
-
-
-- [What is an FT?](#what-is-an-ft)
-- [How to create FT token](#how-to-create-ft-token)
-
----
-
-## What is an FT?
+import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
+import ContactUs from '@site/src/components/ContactUs.mdx';
 
 Fungible token is representation of an asset on a blockchain that is interchangeable.
 

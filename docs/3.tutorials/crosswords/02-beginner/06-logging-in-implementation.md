@@ -3,6 +3,7 @@ sidebar_position: 6
 sidebar_label: "Access keys and login 2/2"
 title: "Implementing the login button"
 ---
+import {Github} from "@site/src/components/codetabs"
 
 import loggingIn from '/docs/assets/crosswords/logging-in.png';
 import explorerTransfer from '/docs/assets/crosswords/chapter-2-explorer-transfer.jpg';
@@ -32,9 +33,7 @@ We won't go over every change, but instead point to the new logic.
 
 First we set up a `WalletConnection` object from our JavaScript library:
 
-```js reference
-https://github.com/near-examples/crossword-tutorial-chapter-2/blob/1d64bf29c3376a18c71e5c5a075e29824d7a55f5/src/index.js#L12-L20
-```
+<Github language="js" start="12" end="20" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/1d64bf29c3376a18c71e5c5a075e29824d7a55f5/src/index.js" />
 
 It's then used in React:
 
@@ -156,15 +155,21 @@ For fun, try interacting with the smart contract using the React frontend and th
 
 Before and after solving the puzzle, run this command:
 
+```bash
     near view crossword.friend.testnet get_puzzle_status '{"solution_hash": "d1a5cf9ad1adefe0528f7d31866cf901e665745ff172b96892693769ad284010"}'
+```
 
 This will return our enum `PuzzleStatus`. Before solving the puzzle it should print:
 
+```json
     'Unsolved'
+```
 
 and after:
 
+```json
     { Solved: { memo: 'Yay I won!' } }
+```
 
 After you solve the crossword puzzle you'll see a screen with a link to NEAR Explorer to look at the details of the transaction. Notice we have our `Transfer` Action in there:
 

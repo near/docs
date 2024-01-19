@@ -1,7 +1,7 @@
 ---
 id: feed-indexer
-title: BOS Feed Indexer
-sidebar_label: BOS Feed Indexer
+title: Social Feed Indexer
+sidebar_label: Social Feed Indexer
 ---
 
 :::info
@@ -16,7 +16,7 @@ You can request access through [this link](http://bit.ly/near-queryapi-beta).
 
 The indexer `indexingLogic.js` is comprised of functions that help handle, transform and record data. The main logic for handling transaction data as it occurs from the blockchain can be found underneath the comment marked:
 
-```jsx
+```js
 // Add your code here
 ```
 
@@ -24,7 +24,7 @@ A schema is also specified for the tables in which data from relevant transactio
 
 :::tip
 
-This indexer can be found by [following this link](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=dataplatform.near/social_feed&view=editor-window).
+This indexer can be found by [following this link](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=dataplatform.near/social_feed).
 
 :::
 
@@ -105,7 +105,7 @@ The main function can be explained in two parts. The first filters relevant tran
 
 ### Filtering for Relevant Data
 
-```jsx
+```js
 const SOCIAL_DB = "social.near";
 
   const nearSocialPosts = block
@@ -149,15 +149,15 @@ const SOCIAL_DB = "social.near";
     );
 ```
 
-We first designate the near account ID that is on the receiving end of the transactions picked up by the indexer, as `SOCIAL_DB = "social.near"` and later with the equality operator for this check. This way we only filter for transactions that are relevant to the NEAR BOS that uses the `social.near` account ID for saving data on-chain.
+We first designate the near account ID that is on the receiving end of the transactions picked up by the indexer, as `SOCIAL_DB = "social.near"` and later with the equality operator for this check. This way we only filter for transactions that are relevant to the `social.near` account ID for saving data on-chain.
 
-The filtering logic then begins by calling `block.actions()` where `block` is defined within the `@near-lake/primtives` package. The output from this filtering is saved in a `nearSocialPosts` variable for later use by the helper functions. The `.filter()` line helps specify for transactions exclusively that have interacted with the BOS data storage. `.flatMap()` specifies the types of transaction and looks for attributes in the transaction data on which to base the filter.
+The filtering logic then begins by calling `block.actions()` where `block` is defined within the `@near-lake/primtives` package. The output from this filtering is saved in a `nearSocialPosts` variable for later use by the helper functions. The `.filter()` line helps specify for transactions exclusively that have interacted with the SocialDB. `.flatMap()` specifies the types of transaction and looks for attributes in the transaction data on which to base the filter.
 
-Specifically, `.flatMap()` filters for `FunctionCall` call types, calling the `set` method of the BOS contract. In addition, we look for transactions that include a `receiptId` and include either `post` or `index` in the function call argument data.
+Specifically, `.flatMap()` filters for `FunctionCall` call types, calling the `set` method of the SocialDB contract. In addition, we look for transactions that include a `receiptId` and include either `post` or `index` in the function call argument data.
 
 ### Processing Filtered Data
 
-```jsx
+```js
 if (nearSocialPosts.length > 0) {
     console.log("Found Near Social Posts in Block...");
     const blockHeight = block.blockHeight;
@@ -210,7 +210,7 @@ Within every promise, the `accountId` performing the call is extracted from the 
 
 ### `base64decode`
 
-```jsx
+```js
 function base64decode(encodedValue) {
     let buff = Buffer.from(encodedValue, "base64");
     return JSON.parse(buff.toString("utf-8"));
@@ -226,7 +226,7 @@ This function decodes a string that has been encoded in Base64 format. It takes 
 
 ### `handlePostCreation`
 
-```jsx
+```js
 async function handlePostCreation(
     accountId,
     blockHeight,
@@ -259,7 +259,7 @@ An object containing the relevant data to populate the `posts` table defined in 
 
 ### `handleCommentCreation`
 
-```jsx
+```js
 async function handleCommentCreation(
     accountId,
     blockHeight,
@@ -326,7 +326,7 @@ To save or create a comment the relevant post is fetched first. If no posts are 
 
 ### `handleLike`
 
-```jsx
+```js
 async function handleLike(
     accountId,
     blockHeight,
@@ -391,7 +391,7 @@ As with `handleCommentCreation` , first the relevant post is sought from the DB 
 
 ### `_handlePostLike`
 
-```jsx
+```js
 async function _handlePostLike(
     postId,
     likeAuthorAccountId,
@@ -439,7 +439,7 @@ As with `handleLike`, the relevant `post` is first sought from the graphQL DB ta
 
 ### `_handlePostUnlike`
 
-```jsx
+```js
 async function _handlePostUnlike(postId, likeAuthorAccountId) {
     try {
       const posts = await context.db.Posts.select({ id: postId });
@@ -493,7 +493,7 @@ query MyQuery {
 }
 ```
 
-Once you have defined your query, you can use the GraphiQL Code Exporter to auto-generate a JavaScript or BOS Widget code snippet. The exporter will create a helper method `fetchGraphQL` which will allow you to fetch data from the indexer's GraphQL API. It takes three parameters:
+Once you have defined your query, you can use the GraphiQL Code Exporter to auto-generate a JavaScript or NEAR Widget code snippet. The exporter will create a helper method `fetchGraphQL` which will allow you to fetch data from the indexer's GraphQL API. It takes three parameters:
 
 - `operationsDoc`: A string containing the queries you would like to execute.
 - `operationName`: The specific query you want to run.
@@ -501,7 +501,7 @@ Once you have defined your query, you can use the GraphiQL Code Exporter to auto
 
 Next, you can call the `fetchGraphQL` function with the appropriate parameters and process the results. 
 
-Here's the complete code snippet for a BOS component using the _Feed Indexer_:
+Here's the complete code snippet for a NEAR component using the _Feed Indexer_:
 
 ```js
 const QUERYAPI_ENDPOINT = `https://near-queryapi.api.pagoda.co/v1/graphql/`;
