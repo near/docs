@@ -105,7 +105,7 @@ const config = {
   nodeUrl: `https://rpc.${networkId}.near.org`,
   walletUrl: `https://wallet.${networkId}.near.org`,
   helperUrl: `https://helper.${networkId}.near.org`,
-  explorerUrl: `https://${prefix}nearblocks.io`,
+  explorerUrl: `https://${prefix}.nearblocks.io`,
 };
 
 // connect to NEAR! :)
