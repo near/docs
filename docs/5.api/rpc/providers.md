@@ -16,7 +16,7 @@ If you want to use a custom RPC provider with NEAR Wallet Selector, [check this 
 
 | Provider   | Endpoint Root                           |
 | ---------- | --------------------------------------- |
-| [Lava Network](https://lavanet.xyz/getting-started/near)           | `https://near.lava.build`                                      |
+| [Lava Network](https://www.lavanet.xyz/get-started/near)           | `https://near.lava.build`                                      |
 | [NEAR](setup.md)      | `https://rpc.mainnet.near.org`                                                |
 | [Pagoda](https://www.pagoda.co/console)    | `https://near-mainnet.api.pagoda.co/rpc/v1`                                        |
 | [1RPC](https://docs.ata.network/1rpc/introduction/) | `https://1rpc.io/near`  |

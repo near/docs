@@ -11,10 +11,6 @@ import ContactUs from '@site/components/ContactUs.mdx';
 The RPC API allows you to communicate directly with the NEAR network. For example,
 tools such as [near-api-js](/tools/near-api-js/quick-reference) are just abstractions making RPC calls.
 
-## Free Public RPC
-
-NEAR offers free public peer-to-peer rpc to all developers. Dozens of providers are collated under a single, unified endpoint for ease of use and immediate access. 🔥 Learn [more](iprpc#endpoints-)!
-
 <hr class="subsection" />
 
 
