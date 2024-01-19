@@ -3,6 +3,7 @@ sidebar_position: 4
 sidebar_label: "Linkdrop contract"
 title: "Introducing the linkdrop contract we can use"
 ---
+import {Github} from "@site/src/components/codetabs"
 
 import createMainnetAccount from '/docs/assets/crosswords/create-mainnet-account.png';
 import createTestnetAccount from '/docs/assets/crosswords/create-testnet-wallet-account.png';
@@ -51,9 +52,7 @@ We'll want to write a smart contract that calls that same method. However, thing
 
 Here, we'll show the implementation of the `create_account` method. Note the `#[payable]` macro, which allows this function to accept an attached deposit. (Remember in the CLI command we were attaching 15 Ⓝ.)
 
-```rust reference
-https://github.com/near/near-linkdrop/blob/ba94a9c7292d3b48a0a8ba380fb0e7ff6b24efc6/src/lib.rs#L125-L149
-```
+<Github language="rust" start="125" end="149" url="https://github.com/near/near-linkdrop/blob/ba94a9c7292d3b48a0a8ba380fb0e7ff6b24efc6/src/lib.rs" />
 
 The most important part of the snippet above is around the middle where there's:
 
@@ -88,15 +87,11 @@ In other programming languages promises might work like this, but we must use ca
 
 Now let's look at the callback:
 
-```rust reference
-https://github.com/near/near-linkdrop/blob/ba94a9c7292d3b48a0a8ba380fb0e7ff6b24efc6/src/lib.rs#L151-L164
-```
+<Github language="rust" start="151" end="164" url="https://github.com/near/near-linkdrop/blob/ba94a9c7292d3b48a0a8ba380fb0e7ff6b24efc6/src/lib.rs" />
 
 This calls the private helper method `is_promise_success`, which basically checks to see that there was only one promise result, because we only attempted one Promise:
 
-```rust reference
-https://github.com/near/near-linkdrop/blob/ba94a9c7292d3b48a0a8ba380fb0e7ff6b24efc6/src/lib.rs#L32-L42
-```
+<Github language="rust" start="32" end="42" url="https://github.com/near/near-linkdrop/blob/ba94a9c7292d3b48a0a8ba380fb0e7ff6b24efc6/src/lib.rs" />
 
 Note that the callback returns a boolean. This means when we modify our crossword puzzle to call the linkdrop contract on `testnet`, we'll be able to determine if the account creation succeeded or failed.
 
