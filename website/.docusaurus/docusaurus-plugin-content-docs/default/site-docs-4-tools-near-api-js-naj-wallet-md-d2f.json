@@ -11,9 +11,9 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/4.tools/near-api-js/naj-wallet.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "gagdiez",
-  "lastUpdatedAt": 1701811626,
-  "formattedLastUpdatedAt": "Dec 5, 2023",
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1705690302,
+  "formattedLastUpdatedAt": "Jan 19, 2024",
   "frontMatter": {
     "id": "wallet",
     "title": "Interacting with the Wallet",

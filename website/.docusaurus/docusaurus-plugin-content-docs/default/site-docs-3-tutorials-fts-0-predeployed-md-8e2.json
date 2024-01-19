@@ -11,9 +11,9 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/fts/0-predeployed.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "gagdiez",
-  "lastUpdatedAt": 1701811626,
-  "formattedLastUpdatedAt": "Dec 5, 2023",
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1705690302,
+  "formattedLastUpdatedAt": "Jan 19, 2024",
   "sidebarPosition": 0,
   "frontMatter": {
     "id": "predeployed-contract",
