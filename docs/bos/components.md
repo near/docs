@@ -134,7 +134,7 @@ To compose components you will use the [Predefined `Widget` component](./api/bui
 <WidgetEditor id='4' height="200px">
 
 ```ts
-const user = "gagdiez.near";
+const user = "devendra116.testnet";
 const props = { name: "Anna" };
 
 return (
