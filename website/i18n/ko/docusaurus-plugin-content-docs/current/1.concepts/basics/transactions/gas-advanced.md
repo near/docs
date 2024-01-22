@@ -147,7 +147,7 @@ function myMethod(){
 
 RPC 메소드 `gas_price`를 사용하여 특정 블록의 가스 가격에 대해 NEAR 플랫폼에서 직접 쿼리할 수 있습니다. 이 가격은 네트워크 부하에 따라 변경될 수 있습니다. 가격은 yoctoNEAR(10^-24 NEAR)로 표시됩니다.
 
-1. [NEAR 익스플로러](https://explorer.testnet.near.org/blocks)를 사용하여 블록체인에서 최근 블록 해시를 가져옵니다.
+1. Take any recent block hash from the blockchain using [NearBlocks Explorer](https://testnet.nearblocks.io/blocks)
 
    _작성 당시, `SqNPYxdgspCT3dXK93uVvYZh18yPmekirUaXpoXshHv`가 최신 블록 해시였습니다._
 
@@ -196,9 +196,9 @@ Ethereum과 같은 기존 블록체인은 각각에 대해 별도로 계산하�
 
 [대체 가능한 토큰]: https://github.com/near-examples/FT/pull/42
 [1.1M]: https://github.com/chadoh/erc20-test
-[9]: https://explorer.testnet.near.org/transactions/GsgH2KoxLZoL8eoutM2NkHe5tBPnRfyhcDMZaBEsC7Sm
+[9]: https://testnet.nearblocks.io/txns/GsgH2KoxLZoL8eoutM2NkHe5tBPnRfyhcDMZaBEsC7Sm
 [스토리지 스테이킹]: /concepts/storage/storage-staking
 [~45k]: https://ethereum.stackexchange.com/questions/71235/gas-limit-for-erc-20-tokens
-[14]: https://explorer.testnet.near.org/transactions/5joKRvsmpEXzhVShsPDdV8z5EG9bGMWeuM9e9apLJhLe
-[8]: https://explorer.testnet.near.org/transactions/34pW67zsotFsD1DY8GktNhZT9yP5KHHeWAmhKaYvvma6
+[14]: https://testnet.nearblocks.io/txns/5joKRvsmpEXzhVShsPDdV8z5EG9bGMWeuM9e9apLJhLe
+[8]: https://testnet.nearblocks.io/txns/34pW67zsotFsD1DY8GktNhZT9yP5KHHeWAmhKaYvvma6
 [44k]: https://github.com/chadoh/erc20-test

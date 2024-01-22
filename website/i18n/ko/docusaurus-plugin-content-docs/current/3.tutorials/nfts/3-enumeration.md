@@ -4,6 +4,8 @@ title: 열거(Enumeration)
 sidebar_label: 열거(Enumeration)
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 이전 튜토리얼에서는 발행 함수를 스마트 컨트랙트 뼈대에 통합하는 방법을 살펴보았습니다. NFT를 지갑에 표시하려면 열거 메서드 중 하나를 구현하는 패치 수정 사항도 배포해야 했습니다. 이 튜토리얼에서는 [표준](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration)에 따라 나머지 열거 메서드를 확장하고 완료합니다. 이제 NFT 스마트 컨트랙트를 확장하고 컨트랙트 상태를 반환하는 데 사용할 수 있는 몇 가지 열거 메서드를 추가합니다.
 
 ## 소개
@@ -26,27 +28,21 @@ git checkout 2.minting
 
 이 함수는 컨트랙트에 저장된 총 NFT 수를 반환해야 합니다. `nft_metadata_by_id` 자료 구조의 길이를 반환하기만 하면, 이 기능을 쉽게 구현할 수 있습니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/3.enumeration/nft-contract/src/enumeration.rs#L5-L9
-```
+<Github language="rust" start="5" end="9" url="https://github.com/near-examples/nft-tutorial/blob/3.enumeration/nft-contract/src/enumeration.rs" />
 
 **nft_token**
 
-이 함수는 소유자에 관계없이 컨트랙트에 저장된 `JsonTokens` 목록을 반환해야 합니다. 사용자가 `from_index` 매개변수를 제공하는 경우, 이를 토큰 반복을 시작하는 시작점으로 사용해야 합니다. 그렇지 않으면 처음부터 시작해야 합니다. 마찬가지로 사용자가 `limit` 매개변수를 제공하면 한계 또는 목록 끝에 도달한 후 함수가 중지됩니다.
+This function should return a paginated list of `JsonTokens` that are stored on the contract regardless of their owners. If the user provides a `from_index` parameter, you should use that as the starting point for which to start iterating through tokens; otherwise it should start from the beginning. Likewise, if the user provides a `limit` parameter, the function shall stop after reaching either the limit or the end of the list.
 
-:::info 기억하세요 이 튜토리얼에서 완성된 코드를 보려면 `3.enumeration` 브랜치를 확인해보세요. :::
+:::tip Rust has useful methods for pagination, allowing you to skip to a starting index and taking the first `n` elements of an iterator. :::
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/3.enumeration/nft-contract/src/enumeration.rs#L11-L27
-```
+<Github language="rust" start="11" end="27" url="https://github.com/near-examples/nft-tutorial/blob/3.enumeration/nft-contract/src/enumeration.rs" />
 
 **nft_supply_for_owner**
 
 이 함수는 사용자 정의 소유자에 대한 모든 NFT를 찾고 결과 집합의 길이를 반환해야 합니다. 제공된 `AccountID`에 대한 토큰 집합이 없으면 함수는 `0`을 반환합니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/3.enumeration/nft-contract/src/enumeration.rs#L28-L43
-```
+<Github language="rust" start="28" end="43" url="https://github.com/near-examples/nft-tutorial/blob/3.enumeration/nft-contract/src/enumeration.rs" />
 
 그런 다음 CLI를 사용하여 이러한 새 메서드를 쿼리하고 올바르게 작동하는지 확인할 수 있습니다.
 

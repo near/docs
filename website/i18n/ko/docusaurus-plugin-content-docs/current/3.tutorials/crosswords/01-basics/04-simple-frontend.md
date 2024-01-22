@@ -4,6 +4,8 @@ sidebar_label: "간단한 프론트엔드 추가"
 title: "정답의 해시를 확인하는 간단한 프론트엔트를 십자말 풀이 퍼즐에 추가"
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 import nearReactFriends from '/docs/assets/crosswords/near-and-react--dakila.near--rodolf_dtbbx.png';
 
 # 간단한 프론트엔드 추가
@@ -26,29 +28,25 @@ import nearReactFriends from '/docs/assets/crosswords/near-and-react--dakila.nea
 
 We'll go over a pattern that may look familiar to folks who have surveyed the [NEAR examples site](https://github.com/near-examples). 원하는 로직을 설정하는 비동기 JavaScript 함수로 시작한 다음, 이를 React 앱에 전달할 것입니다.
 
-```js reference
-https://github.com/near-examples/crossword-tutorial-chapter-1/blob/3e497b4815600b8382614f76c7812520710f704d/src/index.js#L3-L22
-```
+<Github language="js" start="3" end="22" url="https://github.com/near-examples/crossword-tutorial-chapter-1/blob/3e497b4815600b8382614f76c7812520710f704d/src/index.js" />
 
-가져오기(import)부터 시작하여 위의 코드를 살펴보겠습니다.
+Let's talk through the code above, starting with the imports.
 
-다음과 같은 것들을 가져옵니다.
+We import from:
 
 - `config.js`: 현재 일반적인 패턴입니다. 이 파일에는 다양한 네트워크에 대한 세부 정보가 포함되어 있습니다. (적중할 RPC 엔드포인트, 리디렉션할 NEAR Wallet 사이트, NEAR 익스플로러...)
 - `utils.js`: 사람이 십자말풀이를 올바르게 완료했을 때, 올바른 정답 해시를 검색하기 위해 호출하는 보기 전용 함수 `get_solution`를 호출하기 위함입니다.
 - `hardcoded-data.js`: 십자말풀이 퍼즐 단서에 대한 정보가 포함된 파일입니다. 이 챕터에서는 정답이 **near nomicon ref finance**인 십자말풀이 퍼즐을 다루었으며, 챕터 개요에서 이야기한 대로 우리는 *하나의* 퍼즐을 제공하기로 약속했습니다. 나중에 스마트 컨트랙트를 개선하여 여러 십자말풀이 퍼즐을 허용할 것이지만, 지금은 이 부분이 하드코딩되어 있습니다.
 
-다음으로 데이터를 React 앱에 전달하기 전에 호출될 비동기 함수 `initCrossword`를 정의합니다. 여기에서 블록체인과의 연결을 설정하는 것이 종종 유용하지만, 우리의 경우에는 십자말풀이 퍼즐 정답을 해시로 검색하기만 하면 됩니다. 이제 이 환경 변수 `NEAR_ENV`를 구성 파일에 전달하려고 합니다. 이는 블록체인 네트워크(testnet, betanet, mainnet)를 지정하는 데 사용되며, [NEAR CLI에서도 사용](https://docs.near.org/develop/deploy)됩니다.
+Next, we define an asynchronous function called `initCrossword` that will be called before passing data to the React app. It's often useful to set up a connection with the blockchain here, but in our case all we need to do is retrieve the crossword puzzle solution as a hash. Note that we're attempting to pass this environment variable `NEAR_ENV` into our configuration file. `NEAR_ENV` is used to designate the blockchain network (testnet, betanet, mainnet) and is also [used in NEAR CLI](https://docs.near.org/develop/deploy).
 
-마지막으로 `initCrossword`를 호출하고 모든 것이 완료되면, `App.js`에 있는 React 앱으로 데이터를 전달합니다.
+Lastly, we'll call `initCrossword` and, when everything is complete, pass data to the React app contained in `App.js`.
 
 ## React 앱
 
-다음은 Jared Reisinger의 React 십자말풀이 라이브러리 포크를 사용하는 `App.js` 파일의 많은 부분입니다.
+Here's a large portion of the `App.js` file, which will make use of a fork of a React crossword library by Jared Reisinger.
 
-```js reference
-https://github.com/near-examples/crossword-tutorial-chapter-1/blob/3e497b4815600b8382614f76c7812520710f704d/src/App.js#L3-L54
-```
+<Github language="js" start="3" end="54" url="https://github.com/near-examples/crossword-tutorial-chapter-1/blob/3e497b4815600b8382614f76c7812520710f704d/src/App.js" />
 
 위 코드의 몇 가지 핵심 사항에 대해 논의할 것이지만, 여기서는 블록체인에 대한 프론트엔드 연결에 초점을 맞추기 위해 라이브러리 관련 다른 부분은 건너뛸 것입니다.
 
@@ -80,9 +78,7 @@ const [solutionFound, setSolutionFound] = useState(false);
 
 두 번째 메서드에만 집중하겠습니다.
 
-```js reference
-https://github.com/near-examples/crossword-tutorial-chapter-1/blob/3e497b4815600b8382614f76c7812520710f704d/src/utils.js#L8-L12
-```
+<Github language="js" start="8" end="12" url="https://github.com/near-examples/crossword-tutorial-chapter-1/blob/3e497b4815600b8382614f76c7812520710f704d/src/utils.js" />
 
 이 API는 아직 따뜻하고 친근해 보이지 않습니다. 맞습니다! [이 문제에 자세히 설명된 대로](https://github.com/near/near-api-js/issues/612) API를 개선하는 데 도움을 주면 좋겠지만, 현재로서는 이것이 보기 전용 메서드에서 데이터를 가져오는 간결한 방법입니다.
 
@@ -115,14 +111,10 @@ env CONTRACT_NAME=crossword.friend.testnet npm run start
 
 마지막 줄은 환경 변수 `CONTRACT_NAME`를 NodeJS 스크립트로 보냅니다. 이는 컨트랙트 계정 및 네트워크 구성을 설정하는 데 사용되는 `config.js` 파일에서 선택됩니다.
 
-```js reference
-https://github.com/near-examples/crossword-tutorial-chapter-1/blob/3e497b4815600b8382614f76c7812520710f704d/src/config.js#L1
-```
+<Github language="js" start="1" end="2" url="https://github.com/near-examples/crossword-tutorial-chapter-1/blob/3e497b4815600b8382614f76c7812520710f704d/src/config.js" />
 
 React 앱을 시작하기 위해 마지막 명령을 실행하면 `https://localhost:1234`와 같은 로컬 웹 사이트에 대한 링크가 제공됩니다. 사이트를 방문하면 스마트 컨트랙트와 상호 작용하는 간단한 프론트엔드를 볼 수 있습니다.
 
 ![오른쪽 사이드바에 단서가 있는 작성된 퍼즐을 보여주는 십자말풀이 퍼즐 프론트엔드](/docs/assets/crosswords/basics-final-frontend.png)
 
-다시 말하지만, 이 챕터의 전체 코드는 다음 링크에서 사용할 수 있습니다.
-
-https://github.com/near-examples/crossword-tutorial-chapter-1
+Again, the full code for this chapter is [available here](https://github.com/near-examples/crossword-tutorial-chapter-1).

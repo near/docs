@@ -4,6 +4,8 @@ title: Core
 sidebar_label: Core
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 In this tutorial you'll learn how to implement the [core standards](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core) into your smart contract. If you're joining us for the first time, feel free to clone [this repo](https://github.com/near-examples/nft-tutorial) and checkout the `3.enumeration` branch to follow along.
 
 
@@ -53,9 +55,7 @@ Let's start our journey in the `nft-contract/src/nft_core.ts` file.
 
 You'll start by implementing the `nft_transfer` logic. This function will transfer the specified `token_id` to the `receiver_id` with an optional `memo` such as `"Happy Birthday Mike!"`. The core logic will be found in the `internalNftTransfer` function.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/nft_core.ts#L37-L64
-```
+<Github language="js" start="37" end="64" url="https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/nft_core.ts" />
 
 There are a couple things to notice here. Firstly, we've introduced a new method called `assertOneYocto()`. This method will ensure that the user has attached exactly one yoctoNEAR to the call. If a function requires a deposit, you need a full access key to sign that transaction. By adding the one yoctoNEAR deposit requirement, you're essentially forcing the user to sign the transaction with a full access key.
 
@@ -71,9 +71,7 @@ Let's start with the easier one, `assertOneYocto()`.
 
 #### assertOneYocto
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/internal.ts#L38-L41
-```
+<Github language="js" start="38" end="41" url="https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/internal.ts" />
 
 #### internal_transfer
 
@@ -88,17 +86,13 @@ The first thing you'll want to do is to make sure that the sender is authorized 
 
 Second, you'll remove the token ID from the sender's list and add the token ID to the receiver's list of tokens. Finally, you'll create a new `Token` object with the receiver as the owner and remap the token ID to that newly created object.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/internal.ts#L80-L114
-```
+<Github language="js" start="80" end="114" url="https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/internal.ts" />
 
 You've previously implemented functionality for adding a token ID to an owner's set but you haven't created the functionality for removing a token ID from an owner's set. Let's do that now by created a new function called `internalRemoveTokenFromOwner` which we'll place right above our `internalTransfer` and below the `internalAddTokenToOwner` function.
 
 In the remove function, you'll get the set of tokens for a given account ID and then remove the passed in token ID. If the account's set is empty after the removal, you'll simply remove the account from the `tokensPerOwner` data structure.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/internal.ts#L60-L78
-```
+<Github language="js" start="60" end="78" url="https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/internal.ts" />
 
 With these internal functions complete, the logic for transferring NFTs is finished. It's now time to move on and implement `nft_transfer_call`, one of the most integral yet complicated functions of the standard.
 
@@ -110,17 +104,13 @@ This allowance workflow takes multiple transactions. If we introduce a “transf
 
 For this reason, we have a function `nft_transfer_call` which will transfer an NFT to a receiver and also call a method on the receiver's contract all in the same transaction.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/nft_core.ts#L66-L125
-```
+<Github language="js" start="66" end="125" url="https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/nft_core.ts" />
 
 The function will first assert that the caller attached exactly 1 yocto for security purposes. It will then transfer the NFT using `internalTransfer` and start the cross contract call. It will call the method `nft_on_transfer` on the `receiver_id`'s contract which returns a promise. After the promise finishes executing, the function `nft_resolve_transfer` is called. This is a very common workflow when dealing with cross contract calls. You first initiate the call and wait for it to finish executing. You then invoke a function that resolves the result of the promise and act accordingly.
 
 In our case, when calling `nft_on_transfer`, that function will return whether or not you should return the NFT to it's original owner in the form of a boolean. This is logic will be executed in the `internalResolveTransfer` function.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/nft_core.ts#L127-L187
-```
+<Github language="js" start="127" end="187" url="https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/nft_core.ts" />
 
 If `nft_on_transfer` returned true, you should send the token back to it's original owner. On the contrary, if false was returned, no extra logic is needed. As for the return value of `nft_resolve_transfer`, the standard dictates that the function should return a boolean indicating whether or not the receiver successfully received the token or not.
 

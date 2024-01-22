@@ -4,6 +4,8 @@ title: 핵심
 sidebar_label: 핵심
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 이 튜토리얼에서는 [핵심 표준](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core)을 스마트 컨트랙트에 구현하는 방법을 배웁니다. 처음 해보는 경우 [이 레퍼지토리](https://github.com/near-examples/nft-tutorial)를 복제하고 `3.enumeration` 브랜치를 확인하세요.
 
 
@@ -53,27 +55,23 @@ git checkout 3.enumeration
 
 `nft_transfer` 로직을 구현하여 시작합니다. 이 함수는 `"Happy Birthday Mike!"`와 같은 `memo`를 사용하여 지정된 `token_id`를 `receiver_id`로 전송합니다. 핵심 로직은 `internalNftTransfer` 함수에서 찾을 수 있습니다.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/nft_core.ts#L37-L64
-```
+<Github language="js" start="37" end="64" url="https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/nft_core.ts" />
 
-여기서 주목해야 할 몇 가지 사항이 있습니다. 먼저, 여기서는 `assertOneYocto()`이라는 새로운 메서드를 도입했습니다. 이 메서드는 사용자가 호출에 정확히 하나의 yoctoNEAR를 첨부했는지 확인합니다. 함수에 입금이 필요한 경우, 해당 트랜잭션에 서명하려면 전체 액세스 키가 필요합니다. 이는 1 yoctoNEAR의 보증금 요구 사항을 추가함으로써, 본질적으로 사용자가 전체 액세스 키로 트랜잭션에 서명하도록 강제합니다.
+There are a couple things to notice here. Firstly, we've introduced a new method called `assertOneYocto()`. This method will ensure that the user has attached exactly one yoctoNEAR to the call. If a function requires a deposit, you need a full access key to sign that transaction. By adding the one yoctoNEAR deposit requirement, you're essentially forcing the user to sign the transaction with a full access key.
 
-전송 함수는 잠재적으로 매우 귀중한 자산을 전송하므로, 함수를 호출하는 사람이 전체 액세스 키를 가지고 있는지 확인해야 합니다.
+Since the transfer function is potentially transferring very valuable assets, you'll want to make sure that whoever is calling the function has a full access key.
 
-두 번째로 `internalTransfer` 메서드를 도입했습니다. 이것은 NFT를 전송하는 데 필요한 모든 로직을 수행합니다.
+Secondly, we've introduced an `internalTransfer` method. This will perform all the logic necessary to transfer an NFT.
 
 ### 내부 헬퍼 함수
 
-`assertOneYocto()`와 `internalTransfer`를 구현할 수 있도록 `nft-contract/src/internal.ts` 파일로 빠르게 이동해 보겠습니다.
+Let's quickly move over to the `nft-contract/src/internal.ts` file so that you can implement the `assertOneYocto()` and `internalTransfer` methods.
 
-더 쉬운 `assertOneYocto()`부터 시작하겠습니다.
+Let's start with the easier one, `assertOneYocto()`.
 
 #### assertOneYocto
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/internal.ts#L38-L41
-```
+<Github language="js" start="38" end="41" url="https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/internal.ts" />
 
 #### internal_transfer
 
@@ -88,17 +86,13 @@ https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/in
 
 두 번째로, 보낸 사람 목록에서 토큰 ID를 제거하고 받는 사람의 토큰 목록에 토큰 ID를 추가합니다. 마지막으로, 수신자를 소유자로 하는 새 `Token` 객체를 만들고 토큰 ID를 새로 만든 객체에 다시 매핑합니다.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/internal.ts#L80-L114
-```
+<Github language="js" start="80" end="114" url="https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/internal.ts" />
 
 이전에 소유자 집합에 토큰 ID를 추가하는 기능을 구현했지만, 소유자 집합에서 토큰 ID를 제거하는 기능은 만들지 않았습니다. `internalTransfer` 함수 바로 위와 `internalAddTokenToOwner` 함수 아래에 배치할 `internalRemoveTokenFromOwner`라는 새 함수를 만들어서 지금 수행해 보겠습니다.
 
 제거 함수에서는 주어진 계정 ID에 대한 토큰 집합을 가져온 다음 전달된 토큰 ID를 제거합니다. 제거 후 계정의 집합이 비어 있으면 `tokensPerOwner` 자료 구조에서 계정을 제거하기만 하면 됩니다.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/internal.ts#L60-L78
-```
+<Github language="js" start="60" end="78" url="https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/internal.ts" />
 
 이러한 내부 함수가 완료되면 NFT 전송 로직이 완료됩니다. 이제 표준의 가장 통합적이지만 복잡한 함수 중 하나인 `nft_transfer_call`를 구현할 때입니다.
 
@@ -110,17 +104,13 @@ https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/in
 
 이러한 이유로 NFT를 수신자에게 전송하고 동일한 트랜잭션에서 수신자의 컨트랙트에 대한 메서드를 호출하는 `nft_transfer_call` 함수가 있습니다.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/nft_core.ts#L66-L125
-```
+<Github language="js" start="66" end="125" url="https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/nft_core.ts" />
 
 이 함수는 먼저 호출자가 보안 목적으로 정확히 1 yocto를 첨부했다고 가정합니다. 그런 다음 `internalTransfer`를 사용하여 NFT를 전송하고 교차 컨트랙트 호출(cross-contract call)을 시작합니다. 이는 Promise를 반환하는 `receiver_id`의 컨트랙트에서 `nft_on_transfer` 메서드를 호출할 것입니다. Promise 실행이 끝나면 `nft_resolve_transfer` 함수가 호출됩니다. 이는 교차 컨트랙트 호출을 처리할 때 매우 일반적인 워크플로우입니다. 먼저 호출을 시작하고, 실행이 완료될 때까지 기다립니다. 그런 다음 Promise의 결과를 받아오는 함수를 호출하고 그에 따라 조치를 취합니다.
 
 우리의 경우 `nft_on_transfer`를 호출할 때, 해당 함수는 Bool 형식으로 NFT를 원래 소유자에게 반환해야 하는지 여부를 반환합니다. 이는 `internalResolveTransfer` 함수에서 실행되는 로직입니다.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/nft_core.ts#L127-L187
-```
+<Github language="js" start="127" end="187" url="https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/nft_core.ts" />
 
 `nft_on_transfer`에서 true가 반환되면, 토큰을 원래 소유자에게 다시 보내야 합니다. 반대로 false가 반환되면 추가 로직이 필요하지 않습니다. `nft_resolve_transfer`의 반환 값에 대해, 표준은 함수가 수신자가 토큰을 성공적으로 수신했는지 여부를 나타내는 Bool을 반환해야 한다고 규정합니다.
 

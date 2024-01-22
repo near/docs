@@ -2,6 +2,8 @@
 sidebar_position: 2
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 # 통합 테스트(Integration Test)
 
 **참고:** 시뮬레이션 테스트는 더 이상 적극적으로 지원되지 않습니다. NEAR 시뮬레이터는 NEAR 컨트랙트를 테스트할 목적으로 블록체인 환경을 대체하기 위한 것이었습니다. 그러나 NEAR 렛저를 시뮬레이션하는 것은 예상했던 것보다 훨씬 더 복잡한 노력이 든다는 것이 밝혀졌습니다. 결국 워크플로우를 자동화하고 실제 NEAR 네트워크(로컬넷, 테스트넷 또는 메인넷)를 사용하여 NEAR 스마트 컨트랙트에 대한 테스트를 작성하기 위한 라이브러리인 '작업 공간(Workspace)'에 대한 아이디어가 탄생했습니다. 따라서 NEAR 시뮬레이터는 더 이상 사용되지 않고, 작업 공간의 Rust 버전인 [`workspaces-rs`](https://github.com/near/workspaces-rs)가 대신 사용되고 있습니다. 두 라이브러리에는 크게 다른 두 API가 있으므로, [이 가이드](/develop/testing/workspaces-migration)는 개발자의 마이그레이션 프로세스를 쉽게 하기 위해 만들어졌습니다.
@@ -90,19 +92,15 @@ members = [
 
 먼저 `test_transfer` 메서드의 기능을 테스트하는 이 단위 테스트에 주목하세요.
 
-```rust reference
-https://github.com/near/near-sdk-rs/blob/6d4045251c63ec875dc55f43b065b33a36d94792/examples/fungible-token/ft/src/lib.rs#L100-L165
-```
+<Github language="rust" start="100" end="165" url="https://github.com/near/near-sdk-rs/blob/6d4045251c63ec875dc55f43b065b33a36d94792/examples/fungible-token/ft/src/lib.rs" />
 
-위의 테스트는 테스트 컨텍스트를 설정하고, `get_context()`를 통해 테스트 환경을 인스턴스화하고, `test_transfer` 메서드를 호출하며, `storage_deposit()` 초기화 호출(FT 컨트랙트에 등록하기 위해) 및 `ft_transfer()` FT 전송 호출을 수행합니다.
+The test above sets up the testing context, instantiates the test environment through `get_context()`, calls the `test_transfer` method, and performs the `storage_deposit()` initialization call (to register with the fungible token contract) and the `ft_transfer()` fungible token transfer call.
 
-이것이 작업 공간 테스트로 작성되는 방식에 대해 살펴보겠습니다. 아래 스니펫은 주목할 가치가 있는 몇 가지 사항을 보여주기 때문에, 조금 더 깁니다.
+Let's look at how this might be written with workspaces tests. The snippet below is a bit longer as it demonstrates a couple of things worth noting.
 
 ### 작업 공간 테스트
 
-```rust reference
-https://github.com/near/near-sdk-rs/blob/master/examples/fungible-token/tests/workspaces.rs#L25-L115
-```
+<Github language="rust" start="25" end="115" url="https://github.com/near/near-sdk-rs/blob/master/examples/fungible-token/tests/workspaces.rs" />
 
 위의 테스트에서, 대체 가능한 토큰 예제에 대한 컴파일된 스마트 컨트랙트 `.wasm` 파일(`/out` 디렉토리로 컴파일됨)은 환경에 dev-deploy(새로 생성된 계정)되었습니다. 계정 생성에 사용된 환경의 결과로, `ft_contract` 계정이 생성됩니다. 이 특정 파일의 형식에는 하나의 테스트 진입점(`main`)만 있으며, 모든 테스트는 `#[tokio::test]`로 선언됩니다. 테스트는 실행 간에 상태를 공유하지 않습니다.
 
@@ -116,29 +114,23 @@ https://github.com/near/near-sdk-rs/blob/master/examples/fungible-token/tests/wo
 
 ### 계정 생성
 
-```rust reference
-https://github.com/near-examples/rust-counter/blob/6a7af5a32c630e0298c09c24eab87267746552b2/integration-tests/rs/src/tests.rs#L16-L21
-```
+<Github language="rust" start="16" end="21" url="https://github.com/near-examples/rust-counter/blob/6a7af5a32c630e0298c09c24eab87267746552b2/integration-tests/rs/src/tests.rs" />
 
 :::note 다음과 같이 컨트랙트를 배포하지 않고도 `dev_account`를 생성할 수 있습니다.
-```rust reference
-https://github.com/near/workspaces-rs/blob/8f12f3dc3b0251ac3f44ddf6ab6fc63003579139/workspaces/tests/create_account.rs#L7-L8
-```
+
+<Github language="rust" start="7" end="8" url="https://github.com/near/workspaces-rs/blob/8f12f3dc3b0251ac3f44ddf6ab6fc63003579139/workspaces/tests/create_account.rs" />
+
 :::
 
 ### 헬퍼 함수 생성
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/7fb267b83899d1f65f1bceb71804430fab62c7a7/integration-tests/rs/src/helpers.rs#L148-L161
-```
+<Github language="rust" start="148" end="161" url="https://github.com/near-examples/nft-tutorial/blob/7fb267b83899d1f65f1bceb71804430fab62c7a7/integration-tests/rs/src/helpers.rs" />
 
 ### 스푸닝 - Mainnet/Testnet에서 존재하는 상태 및 컨트랙트 풀링(Pulling)
 
 이 예는 테스트넷 컨트랙트에서 로컬 샌드박스 환경으로 상태를 스푸닝(데이터 복사)하는 것을 보여줍니다.
 
-```rust reference
-https://github.com/near/workspaces-rs/blob/c14fe2aa6cdf586028b2993c6a28240f78484d3e/examples/src/spooning.rs#L64-L122
-```
+<Github language="rust" start="64" end="122" url="https://github.com/near/workspaces-rs/blob/c14fe2aa6cdf586028b2993c6a28240f78484d3e/examples/src/spooning.rs" />
 
 전체 예제는 [examples/src/spooning.rs](https://github.com/near/workspaces-rs/blob/main/examples/src/spooning.rs) 예제를 참조하세요.
 
@@ -146,17 +138,13 @@ https://github.com/near/workspaces-rs/blob/c14fe2aa6cdf586028b2993c6a28240f78484
 
 `workspaces` 테스트는 블록체인의 상태를 미래로 보낼 수 있는 기능을 제공합니다. 즉, 시간에 민감한 데이터가 필요한 컨트랙트는 샌드박스의 블록이 생성될 때까지 앉아서 기다릴 필요가 없습니다. 시간을 빨리 돌리고 싶다면, `worker.fast_forward`를 호출하면 됩니다.
 
-```rust reference
-https://github.com/near/workspaces-rs/blob/c14fe2aa6cdf586028b2993c6a28240f78484d3e/examples/src/fast_forward.rs#L12-L44
-```
+<Github language="rust" start="12" end="44" url="https://github.com/near/workspaces-rs/blob/c14fe2aa6cdf586028b2993c6a28240f78484d3e/examples/src/fast_forward.rs" />
 
 전체 예제를 보려면 [examples/src/fast_forward.rs](https://github.com/near/workspaces-rs/blob/main/examples/src/fast_forward.rs)를 살펴보세요.
 
 ### 에러 핸들링
 
-```rust reference
-https://github.com/near-examples/FT/blob/98b85297a270cbcb8ef3901c29c17701e1cab698/integration-tests/rs/src/tests.rs#L199-L225
-```
+<Github language="rust" start="199" end="225" url="https://github.com/near-examples/FT/blob/98b85297a270cbcb8ef3901c29c17701e1cab698/integration-tests/rs/src/tests.rs" />
 
 :::note `Err(msg)` 반환 또한 구현 가능합니다(또한 틀림없이 더 간단할 것입니다). :::
 

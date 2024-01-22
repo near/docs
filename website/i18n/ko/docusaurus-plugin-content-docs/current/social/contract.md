@@ -8,7 +8,7 @@ sidebar_label: SocialDB
 
 - 소스 코드: https://github.com/NearSocial/social-db
 - API: https://github.com/NearSocial/social-db#api
-- 테스트넷 계정 ID: [`v1.social08.testnet`](https://explorer.testnet.near.org/accounts/v1.social08.testnet)
+- Testnet account ID: [`v1.social08.testnet`](https://testnet.nearblocks.io/address/v1.social08.testnet)
 - Mainnet account ID: [`social.near`](https://nearblocks.io/address/social.near)
 
 ### API 가져오기

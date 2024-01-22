@@ -4,6 +4,8 @@ title: Skeleton and JavaScript Architecture
 sidebar_label: Contract Architecture
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 > In this article, you'll learn about the basic architecture behind the NFT contract that you'll develop while following this _"Zero to Hero"_ series. You'll discover the contract's layout and you'll see how the JavaScript files are structured in order to build a feature-complete smart contract.
 
 
@@ -68,9 +70,7 @@ This file contains the internal logic that complies with the standard's [approva
 | **internalNftRevoke**     | Revokes a specific account from transferring the token on your behalf. Called during **nft_revoke**. |
 | **internalNftRevokeAll**  | Revokes all accounts from transferring the token on your behalf. Called during **nft_revoke_all**. |
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/approval.ts#L9-L69
-```
+<Github language="js" start="9" end="69" url="https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/approval.ts" />
 
 You'll learn more about these functions in the [approvals section](/tutorials/nfts/js/approvals) of the Zero to Hero series.
 
@@ -87,9 +87,7 @@ You'll learn more about these functions in the [approvals section](/tutorials/nf
 | **internalNftSupplyForOwner** | Allows you view the total number of NFTs owned by any given user. Called during **nft_supply_for_owner**.      |
 | **internalNftTokensForOwner** | Returns a paginated list of NFTs owned by any given user. Called during **nft_tokens_for_owner**.              |
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/enumeration.ts#L8-L62
-```
+<Github language="js" start="8" end="62" url="https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/enumeration.ts" />
 
 You'll learn more about these functions in the [enumeration section](/tutorials/nfts/js/enumeration) of the tutorial series.
 
@@ -106,9 +104,7 @@ You'll learn more about these functions in the [enumeration section](/tutorials/
 | **JsonToken**           | When querying information about NFTs through view calls, the return information is stored in this JSON token. |
 | **internalNftMetadata** | This function allows users to query for the contact's internal metadata. Called during **nft_metadata**.      |
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/metadata.ts#L12-L46
-```
+<Github language="js" start="12" end="46" url="https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/metadata.ts" />
 
 You'll learn more about these functions in the [minting section](/tutorials/nfts/js/minting) of the tutorial series.
 
@@ -122,9 +118,7 @@ You'll learn more about these functions in the [minting section](/tutorials/nfts
 | ------------------- | --------------------------------------------------------------------- |
 | **internalNftMint** | This function mints a non-fungible token. Called during **nft_mint**. |
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/mint.ts#L7-L23
-```
+<Github language="js" start="7" end="23" url="https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/mint.ts" />
 
 ---
 
@@ -139,9 +133,7 @@ https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contrac
 | **internalNftToken**           | Allows users to query for the information about a specific NFT. Called during **nft_token**.                                                                                                                                                                                                                               |                                    |
 | **internalNftResolveTransfer** | When you start the `nft_transfer_call` and transfer an NFT, the standard dictates that you should also call a method on the receiver's contract. If the receiver needs you to return the NFT to the sender (as per the return value of the `nft_on_transfer` method), this function allows you to execute that logic. Called during **nft_resolve_transfer**. |
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/nft_core.ts#L10-L85
-```
+<Github language="js" start="10" end="85" url="https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/nft_core.ts" />
 
 You'll learn more about these functions in the [minting section](/tutorials/nfts/js/minting) of the tutorial series.
 
@@ -156,9 +148,7 @@ You'll learn more about these functions in the [minting section](/tutorials/nfts
 | **internalNftPayout**         | This internal method calculates the payout for a given token. Called during **nft_payout**.                                                                             |
 | **internalNftTransferPayout** | Internal method to transfer the token to the receiver ID and return the payout object that should be paid for a given balance. Called during **nft_transfer_payout**. |
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/royalty.ts#L7-L45
-```
+<Github language="js" start="7" end="45" url="https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/royalty.ts" />
 
 You'll learn more about these functions in the [royalty section](/tutorials/nfts/js/royalty) of the tutorial series.
 
@@ -188,9 +178,9 @@ You'll learn more about these functions in the [royalty section](/tutorials/nfts
 | **nft_supply_for_owner** | Calls the internal function to query for the total number of NFTs owned by someone.                  |
 | **nft_metadata**           | Calls the internal function to query for the contract's metadata                                     |
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/index.ts#L16-L157
-```
+
+
+<Github language="js" start="16" end="157" url="https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/index.ts" />
 
 You'll learn more about these functions in the [minting section](/tutorials/nfts/js/minting) of the tutorial series.
 

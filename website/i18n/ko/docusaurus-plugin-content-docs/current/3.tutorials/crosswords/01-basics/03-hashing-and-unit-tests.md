@@ -4,6 +4,8 @@ sidebar_label: "정답 해시, 단위 테스트, 초기화 메서드"
 title: "기본 해싱과 단위 테스트 추가에 대한 소개\""
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 import batchCookieTray from '/docs/assets/crosswords/batch-of-actions--dobulyo.near--w_artsu.jpg';
 
 # 정답 해시 & 기본 단위 테스트 추가
@@ -24,11 +26,9 @@ import batchCookieTray from '/docs/assets/crosswords/batch-of-actions--dobulyo.n
 
 일을 더 쉽게 하기 위해 [hex 크레이트](https://crates.io/crates/hex)에 의존성(dependency)을 추가할 것입니다. 기억하시겠지만 의존성은 매니페스트 파일에 있습니다.
 
-```rust reference
-https://github.com/near-examples/crossword-tutorial-chapter-1/blob/481a83f0c90398f3234ce8006af4e232d6c779d7/contract/Cargo.toml#L10-L12
-```
+<Github language="rust" start="10" end="12" url="https://github.com/near-examples/crossword-tutorial-chapter-1/blob/481a83f0c90398f3234ce8006af4e232d6c779d7/contract/Cargo.toml" />
 
-개발 중에 헬퍼 역할을 하는 단위 테스트를 작성해 봅시다. 이 단위 테스트는 **"near nomicon ref finance"** 입력을 sha256으로 해시하고, 사람이 읽을 수 있는 16진수 형식으로 출력합니다 (일반적으로 `lib.rs.` 파일 맨 아래에 단위 테스트를 넣습니다)
+Let's write a unit test that acts as a helper during development. This unit test will sha256 hash the input **"near nomicon ref finance"** and print it in a human-readable, hex format. (We'll typically put unit tests at the bottom of the `lib.rs` file.)
 
 ```rust
 #[cfg(test)]
@@ -51,13 +51,15 @@ mod tests {
 }
 ```
 
-:::info What is that `{:?}` thing? 이와 관련하여[`std` Rust 문서](https://doc.rust-lang.org/std/fmt/index.html#formatting-traits)에서 다루는 다양한 서식(formatting) 특성을 살펴보세요. 이는 `Debug`서식 지정 특성이며, 개발 과정에서 유용할 수 있습니다. :::
+:::info What is that `{:?}` thing? Take a look at different formatting traits that are covered in the [`std` Rust docs](https://doc.rust-lang.org/std/fmt/index.html#formatting-traits) regarding this. This is a `Debug` formatting trait and can prove to be useful during development. :::
 
-다음 명령을 사용하여 단위 테스트를 실행합니다.
+Run the unit tests with the command:
 
-    cargo test -- --nocapture
+```
+cargo test -- --nocapture
+```
 
-다음과 같은 출력이 표시됩니다.
+You'll see this output:
 
 ```
 …
@@ -68,23 +70,23 @@ test tests::debug_get_hash ... ok
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 ```
 
-즉, "near nomicon ref finance" 입력을 sha256 해시하면 다음과 같은 해시값이 생성됩니다: `69c2feb084439956193f4c21936025f14a5a5a78979d67ae34762e18a7206a0f`
+This means when you sha256 the input **"near nomicon ref finance"** it produces the hash: `69c2feb084439956193f4c21936025f14a5a5a78979d67ae34762e18a7206a0f`
 
-:::tip 테스트 플래그에 대한 참고 사항 다음을 사용하여 테스트를 실행할 수도 있습니다.
+:::tip Note on the test flags You may also run tests using:
 
-    cargo test
+```
+cargo test
+```
 
-우리가 실행한 테스트 명령에는 추가 플래그가 있습니다. 이러한 플래그는 Rust에게 *테스트 결과를 숨기지 말라고* 지시했습니다. 이에 대한 자세한 내용은 [cargo docs](https://doc.rust-lang.org/cargo/commands/cargo-test.html#display-options)에서 확인할 수 있습니다. 추가 플래그 없이 위의 명령을 사용하여 테스트를 실행하면 디버그 메시지가 표시되지 않습니다. :::
+Note that the test command we ran had additional flags. Those flags told Rust *not to hide the output* from the tests. You can read more about this in [the cargo docs](https://doc.rust-lang.org/cargo/commands/cargo-test.html#display-options). Go ahead and try running the tests using the command above, without the additional flags, and note that we won't see the debug message. :::
 
-위의 단위 테스트는 코드 스니펫을 디버깅하고 빠르게 실행하기 위한 것입니다. 어떤 사람들은 Rust에 익숙해지고 스마트 컨트랙트를 작성할 때, 이것이 유용한 기술임을 알 수 있습니다. 다음으로 십자말풀이 퍼즐 컨트랙트의 초기 버전에 적용되는 실제 단위 테스트를 작성할 것입니다.
+The unit test above is meant for debugging and quickly running snippets of code. Some may find this a useful technique when getting familiar with Rust and writing smart contracts. Next we'll write a real unit test that applies to this early version of our crossword puzzle contract.
 
 ## 일반 단위 테스트 작성
 
-이 단위 테스트(이전 단위 테스트에서 `mod tests {}` 블록 내부)를 추가하고 분석해 보겠습니다.
+Let's add this unit test (inside the `mod tests {}` block, under our previous unit test) and analyze it:
 
-```rust reference
-https://github.com/near-examples/crossword-tutorial-chapter-1/blob/d7699cf35092024fe11719b68788436c82fe82af/contract/src/lib.rs#L63-L93
-```
+<Github language="rust" start="63" end="93" url="https://github.com/near-examples/crossword-tutorial-chapter-1/blob/5bce1c2a604fcb179e9789de1f299063f91abb4d/contract/src/lib.rs" />
 
 처음 몇 줄의 코드는 단위 테스트를 작성할 때 일반적으로 사용됩니다. 이는 `VMContextBuilder`를 사용하여 트랜잭션에 대한 기본 컨텍스트를 생성한 다음, 테스트 환경을 설정합니다.
 
@@ -94,11 +96,16 @@ https://github.com/near-examples/crossword-tutorial-chapter-1/blob/d7699cf350920
 
 다시 말하지만, 다음을 사용하여 모든 단위 테스트를 실행할 수 있습니다.
 
-    cargo test -- --nocapture
+```
+cargo test -- --nocapture
+```
 
 :::tip 하나의 테스트만 실행 최신 테스트만 실행하려면 다음 명령을 사용하세요.
 
-    cargo test check_guess_solution -- --nocapture
+```
+cargo test check_guess_solution -- --nocapture
+```
+
 :::
 
 ## `set_solution` 수정
@@ -109,9 +116,7 @@ https://github.com/near-examples/crossword-tutorial-chapter-1/blob/d7699cf350920
 
 여기서는 일반적인 패턴인 `new`라는 함수에 [`#[near_bindgen]` macro](https://docs.rs/near-sdk/latest/near_sdk/attr.near_bindgen.html) 매크로를 사용합니다.
 
-```rust reference
-https://github.com/near-examples/crossword-tutorial-chapter-1/blob/94f42e75cf70ed2aafb9c29a1faa1e21f079a49e/contract/src/lib.rs#L10-L17
-```
+<Github language="rust" start="10" end="17" url="https://github.com/near-examples/crossword-tutorial-chapter-1/blob/94f42e75cf70ed2aafb9c29a1faa1e21f079a49e/contract/src/lib.rs" />
 
 새로운 컨트랙트에서 이 메서드를 호출해 봅시다.
 
@@ -143,10 +148,8 @@ near call crossword.friend.testnet new '{"solution": "69c2feb084439956193f4c2193
 
 :::info 사용 중인 일괄 Action 일괄 Action은 초기화 함수를 배포하고 호출하려는 경우에 일반적으로 사용됩니다. 팩토리 패턴을 사용할 때도 마찬가지인데, 여기서 하위 계정(subaccount)이 생성되고 스마트 컨트랙트가 배포되며 키가 추가되고 함수가 호출되는 것은 일괄 Action을 통해 이루어집니다.
 
-다음은 유용한 코드가 풍부한 유용한(다소 고급이긴 하지만) 레퍼지토리 내 스니펫 일부입니다.
-```rust reference
-https://github.com/near/core-contracts/blob/1720c0cfee238974ebeae8ad43076abeb951504f/staking-pool-factory/src/lib.rs#L172-L177
-```
+Here's a truncated snippet from a useful (though somewhat advanced) repository with a wealth of useful code:
+<Github language="rust" start="172" end="177" url="https://github.com/near/core-contracts/blob/1720c0cfee238974ebeae8ad43076abeb951504f/staking-pool-factory/src/lib.rs" />
 
 이 튜토리얼의 뒷부분에서 Action에 대해 살펴보겠지만, 그 동안 사양에 대한 편리한 [이 문서](https://nomicon.io/RuntimeSpec/Actions.html)를 읽어보셔도 좋습니다. :::
 
@@ -179,12 +182,12 @@ near deploy crossword.friend.testnet --wasmFile res/my_crossword.wasm \
 
 또한 `guess_solution`이 Bool 값을 반환하도록 수정하여 프론트엔드 작업을 더 쉽게 할 것입니다.
 
-```rust reference
-https://github.com/near-examples/crossword-tutorial-chapter-1/blob/94f42e75cf70ed2aafb9c29a1faa1e21f079a49e/contract/src/lib.rs#L19-L34
-```
+<Github language="rust" start="19" end="34" url="https://github.com/near-examples/crossword-tutorial-chapter-1/blob/94f42e75cf70ed2aafb9c29a1faa1e21f079a49e/contract/src/lib.rs" />
 
 `get_solution` 메서드는 다음과 같이 호출할 수 있습니다.
 
-    near view crossword.friend.testnet get_solution
+```
+near view crossword.friend.testnet get_solution
+```
 
 다음 섹션에서는 간단한 프론트엔드를 추가합니다. 다음 챕터에서는 이 아이디어 기반으로 구축된 더 많은 NEAR 개념을 설명합니다.

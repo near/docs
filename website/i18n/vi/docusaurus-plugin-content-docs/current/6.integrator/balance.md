@@ -29,12 +29,12 @@ near send sender.testnet receiver.testnet 1
 Sending 1 NEAR to receiver.testnet from sender.testnet
 Transaction Id 4To336bYcoGc3LMucJPMk6fMk5suKfCrdNotrRtTxqDy
 To see the transaction in the transaction explorer, please open this url in your browser
-https://explorer.testnet.near.org/transactions/4To336bYcoGc3LMucJPMk6fMk5suKfCrdNotrRtTxqDy
+https://testnet.nearblocks.io/txns/4To336bYcoGc3LMucJPMk6fMk5suKfCrdNotrRtTxqDy
 ```
 
 ## View Balance Changes {#view-balance-changes}
 
-- Mở transaction URL trong [NEAR Explorer](https://explorer.testnet.near.org/) và copy `BLOCK HASH`.
+- Open the transaction URL in [NearBlocks Explorer](https://testnet.nearblocks.io/) and copy the `BLOCK HASH`.
 - Sử dụng `BLOCK HASH` và accountId, truy vấn [changes RPC endpoint](/docs/api/rpc#view-account-changes) để xem những thay đổi.
 
 **Ví dụ Query sử dụng HTTPie:**

@@ -4,6 +4,8 @@ title: Minting
 sidebar_label: Minting
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 Đây là hướng dẫn đầu tiên trong một loạt serie chỉ bạn cách tạo một NFT smart contract hoàn chỉnh từ đầu, phù hợp với tất cả [các chuẩn NFT](https://nomicon.io/Standards/NonFungibleToken/) của NEAR. Hôm nay bạn sẽ học cách tạo logic cần thiết để mint (đúc) NFT và để chúng hiển thị trong ví NEAR của bạn. Bạn sẽ sửa đổi một phần của [skeleton smart contract](/tutorials/nfts/js/skeleton) bằng cách điền vào các code snippet cần thiết cần thiết để thêm các chức năng mint.
 
 
@@ -42,27 +44,23 @@ Bắt đầu bằng cách đến `nft-contract/src/index.ts` và điền vào m�
 
 The first thing to do is add the information to the contract class.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/index.ts#L16-L22
-```
+<Github language="js" start="16" end="22" url="https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/index.ts" />
 
-Điều này cho phép bạn lấy thông tin được lưu trữ trong các data structure này từ bất kỳ đâu trong contract. Đoạn code trên đã tạo 3 kho lưu trữ token cụ thể:
+This allows you to get the information stored in these data structures from anywhere in the contract. The code above has created 3 token specific storages:
 
 - **tokensPerOwner**: allows you to keep track of the tokens owned by any account. It will map the account address to a set of token ID strings owned by that account.
 - **tokensById**: returns all the information about a specific token. It will map a token ID string to a `Token` object.
 - **tokenMetadataById**: returns just the metadata for a specific token. It wil map a token ID string to a `TokenMetadata` object.
 
-Ngoài ra, bạn sẽ theo dõi owner của contract cũng như metadata của contract.
+In addition, you'll keep track of the owner of the contract as well as the metadata for the contract.
 
 #### Constructor Function
 
-Next, you'll add the logic to the constructor function. Function này cần được gọi khi bạn deploy contract lần đầu tiên. Nó sẽ khởi tạo tất cả các field của contract mà bạn đã define ở trên với các giá trị mặc định. We've added the `ownerId` and `metadata` fields as parameters to the function because those are the only ones that can be customized.
+Next, you'll add the logic to the constructor function. This function needs to be invoked when you first deploy the contract. It will initialize all the contract's fields that you've defined above with default values. We've added the `ownerId` and `metadata` fields as parameters to the function because those are the only ones that can be customized.
 
-Function này sẽ mặc định tất cả các collection là empty và set `owner` cũng như `metadata` bằng với những giá trị bạn nhập vào.
+This function will default all the collections to be empty and set the `owner` and `metadata` equal to what you pass in.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/index.ts#L24-L43
-```
+<Github language="js" start="24" end="43" url="https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/index.ts" />
 
 Thường thì khi develop, bạn sẽ cần deploy các contract một vài lần. Bạn có thể tưởng tượng được sự tẻ nhạt khi phải pass metadata mỗi khi init contract. For this reason, the metadata has been defaulted with some initial data if it wasn't passed in by the user.
 
@@ -72,23 +70,17 @@ Bây giờ bạn đã xác định thông tin nào cần lưu trữ trên chính
 
 Hãy chuyển qua file `nft-contract/src/metadata.ts` vì đây là nơi sẽ chứa thông tin. If you look at the [standards for metadata](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata), you'll find all the necessary information that you need to store for both `TokenMetadata` and `NFTContractMetadata`. Đơn giản chỉ cần điền vào code sau.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/metadata.ts#L12-L104
-```
+<Github language="js" start="12" end="104" url="https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/metadata.ts" />
 
 Đến đây bạn sẽ có struct `Token` và có `JsonToken`. Struct `Token` sẽ chứa tất cả thông tin liên quan đến token, ngoại trừ metadata. The metadata, if you remember, is stored in a map on the contract in a data structured called `tokenMetadataById`. Nó cho phép bạn có thể lấy nhanh metadata của bất kỳ token nào, bằng cách chỉ cần pass vào ID của token.
 
 Đối với struct `Token`, bạn sẽ chỉ cần theo dõi owner từ lúc này.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/metadata.ts#L106-L117
-```
+<Github language="js" start="106" end="117" url="https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/metadata.ts" />
 
 Mục đích của `JsonToken` là chứa tất cả các thông tin cho một NFT mà bạn muốn gởi trả lại dưới dạng JSON khi ai đó thực hiện một view call. Nghĩa là bạn sẽ cần chứa owner, token ID, và metadata.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/metadata.ts#L119-L141
-```
+<Github language="js" start="119" end="141" url="https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/metadata.ts" />
 
 :::tip Có thể một vài bạn sẽ nghĩ _"tại sao chúng ta không chứa tất cả thông tin trong struct `Token` cho đơn giản?"_. Lý do là, việc chỉ tạo JSON token khi bạn cần đến sẽ hiệu quả hơn là lưu trữ tất cả thông tin trong struct token. Hơn nữa, một số hoạt động có thể chỉ cần metadata của một token và do đó, việc có metadata trong một data structure riêng biệt sẽ tối ưu hơn. :::
 
@@ -96,9 +88,7 @@ https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract
 
 Now that you've defined some of the types that were used in the previous section, let's move on and create the first view function `internalNftMetadata`. This will allow users to query for the contract's metadata as per the [metadata standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata).
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/metadata.ts#L143-L150
-```
+<Github language="js" start="143" end="150" url="https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/metadata.ts" />
 
 Function này sẽ lấy object `metadata` từ contract thuộc type `NFTContractMetadata` và trả về nó.
 
@@ -129,9 +119,7 @@ Với những bước đã nêu, điều quan trọng là phải tính đến ch
 
 Bây giờ bạn đã hiểu rõ mọi thứ sẽ diễn ra như thế nào, hãy điền vào đoạn code cần thiết.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/mint.ts#L7-L44
-```
+<Github language="js" start="7" end="44" url="https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/mint.ts" />
 
 You'll notice that we're using some internal methods such as `refundDeposit` and `internalAddTokenToOwner`. We've described the function of `refundDeposit` and as for `internalAddTokenToOwner`, this will add a token to the set of tokens an account owns for the contract's `tokensPerOwner` data structure. Bạn có thể tạo các function này trong một file có tên `internal.ts`. Hãy tiếp tục và tạo file. Kiến trúc contract mới của bạn sẽ trông như sau:
 
@@ -150,9 +138,7 @@ nft-contract
 
 Thêm code sau vào file `internal.ts` mà bạn vừa tạo.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/internal.ts#L1-L54
-```
+<Github language="js" start="1" end="54" url="https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/internal.ts" />
 
 Tại thời điểm này, tất cả logic cốt lõi đã sẵn sàng để bạn có thể mint các NFT. Bạn có thể dùng function `nft_mint`, với các parameter sau:
 
@@ -176,9 +162,7 @@ Nếu bạn tiếp tục và triển khai hợp đồng này, khởi tạo nó v
 
 Nó sẽ lấy token ID làm tham số và trả về thông tin cho token đó. `JsonToken` chứa token ID, owner ID, và metadata của token.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/nft_core.ts#L10-L35
-```
+<Github language="js" start="10" end="35" url="https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/nft_core.ts" />
 
 Sau khi hoàn thành, cuối cùng cũng đã đến lúc build và deploy contract để bạn có thể mint NFT đầu tiên của mình.
 
@@ -256,9 +240,7 @@ Tại thời điểm này, bạn đã sẵn sàng để tiếp tục và mint NF
 
 Nào hãy call function dùng để mint mà bạn đã tạo trước đó. Function này cần một `token_id` và `metadata`. Nếu bạn nhìn lại struct `TokenMetadata` mà bạn đã tạo trước đó, có nhiều trường có thể được lưu trữ on-chain:
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/metadata.ts#L91-L102
-```
+<Github language="js" start="91" end="102" url="https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/metadata.ts" />
 
 Hãy bắt đầu mint một NFT với một title, description, và media. Trường media có thể là bất kỳ URL nào trỏ đến một file media. Chúng ta có một file GIF tuyệt vời để mint nhưng nếu bạn muốn tạo một NFT tùy chỉnh, chỉ cần thay thế media link của chúng ta bằng một trong những lựa chọn của bạn. Nếu bạn chạy lệnh sau, nó sẽ mint ra một NFT với các tham số sau:
 

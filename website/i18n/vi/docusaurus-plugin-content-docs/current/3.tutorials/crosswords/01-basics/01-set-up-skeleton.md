@@ -4,6 +4,8 @@ sidebar_label: "Set up Rust and a contract skeleton"
 title: "Set up Rust, get a NEAR testnet account, NEAR CLI, and get a basic smart contract skeleton ready"
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 # Getting started
 
 In this tutorial we'll get a testnet account, use NEAR CLI to add a key to our computer's file system, and set up the basic skeleton of a Rust smart contract.
@@ -89,9 +91,7 @@ By changing the `name` here, we'll be changing the compiled Wasm file's name aft
 
 Now let's look at our main file, in `src/lib.rs`:
 
-```rust reference
-https://github.com/near/boilerplate-template-rs/blob/f1edeead98a9ec12c3f6db311f62025305f57874/contract/src/lib.rs#L8-L44
-```
+<Github language="rust" start="8" end="44" url="https://github.com/near/boilerplate-template-rs/blob/f1edeead98a9ec12c3f6db311f62025305f57874/contract/src/lib.rs" />
 
 As you can see, this is a stub that's ready to be filled in. Let's pause and point out a few items:
 

@@ -4,6 +4,8 @@ title: 컨트랙트 업그레이드
 sidebar_label: 컨트랙트 업그레이드
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 이 튜토리얼에서는 이전에 스마트 컨트랙트 뼈대에서 [발행 기능](/tutorials/nfts/js/minting)을 구현하기 위해 수행한 작업들을 빌드합니다. NFT를 발행할 수 있는 지점에 도달했지만, 컨트랙트가 지갑이 호출하려는 메서드를 구현하지 않았기 때문에 지갑은 토큰을 표시할 방법이 없습니다.
 
 
@@ -35,44 +37,42 @@ NEAR 런타임은 디스크에서 직렬화된 상태를 읽고 현재 컨트랙
 
 페이지를 매기기 위해, JavaScript를 사용할 수 있습니다. `enumeration.ts` 파일로 이동하여 해당 로직을 구현해 보겠습니다.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/enumeration.ts#L47-L82
-```
+<Github language="js" start="47" end="82" url="https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/enumeration.ts" />
 
 ## 컨트랙트 재배포 {#redeploying-contract}
 
-`nft_tokens_for_owner`에 필요한 로직을 구현했으므로, 이제 컨트랙트를 빌드하고 계정에 재배포할 차례입니다. 빌드 스크립트를 사용하여 이전 튜토리얼에서와 같이 컨트랙트를 배포합니다.
+Now that you've implemented the necessary logic for `nft_tokens_for_owner`, it's time to build and re-deploy the contract to your account. Using the build script, deploy the contract as you did in the previous tutorial:
 
 ```bash
 yarn build && near deploy --wasmFile build/nft.wasm --accountId $NFT_CONTRACT_ID
 ```
 
-이렇게 하면 계정에 배포된 컨트랙트가 있다는 경고가 출력되고 계속 진행할 것인지 묻습니다. 간단히 `y`를 입력하고 엔터를 누르세요.
+This should output a warning saying that the account has a deployed contract and will ask if you'd like to proceed. Simply type `y` and hit enter.
 
 ```bash
 This account already has a deployed contract [ AKJK7sCysrWrFZ976YVBnm6yzmJuKLzdAyssfzK9yLsa ]. Do you want to proceed? (y/n)
 ```
 
-컨트랙트가 재배포되면 간단한 view 함수를 실행하여 상태가 올바르게 마이그레이션되었는지 테스트하고 확인합니다.
+Once the contract has been redeployed, let's test and see if the state migrated correctly by running a simple view function:
 
 ```bash
 near view $NFT_CONTRACT_ID nft_metadata
 ```
 
-그러면 다음과 유사한 출력이 반환됩니다.
+This should return an output similar to the following:
 
 ```bash
 { spec: 'nft-1.0.0', name: 'NFT Tutorial Contract', symbol: 'GOTEAM' }
 ```
 
-**완료되었습니다!** 이제 작성한 새 함수가 올바르게 작동하는지 테스트하고 확인할 수 있습니다. 소유하고 있는 토큰 목록을 쿼리해 보겠습니다.
+**Go team!** At this point, you can now test and see if the new function you wrote works correctly. Let's query for the list of tokens that you own:
 
 ```bash
 near view $NFT_CONTRACT_ID nft_tokens_for_owner '{"account_id": "'$NFT_CONTRACT_ID'", "limit": 5}'
 ```
 
 <details>
-<summary>응답 예시: </summary>
+<summary>Example response: </summary>
 <p>
 
 ```bash
@@ -100,13 +100,13 @@ Now that your contract implements the necessary functions that the wallet uses t
 
 ## 결론
 
-이 튜토리얼에서는 [컨트랙트 업그레이드](#upgrading-contracts)의 기본 사항에 대해 배웠습니다. 그런 다음 스마트 컨트랙트에 필요한 [수정 사항을 구현](#modifications-to-contract)하고 [재배포](#redeploying-contract)했습니다. 마지막으로 지갑 수집품 탭으로 이동하여 [NFT를 확인했습니다](#viewing-nfts-in-wallet).
+In this tutorial, you learned about the basics of [upgrading contracts](#upgrading-contracts). Then, you implemented the necessary [modifications to your smart contract](#modifications-to-contract) and [redeployed it](#redeploying-contract). Finally you navigated to the wallet collectibles tab and [viewed your NFTs](#viewing-nfts-in-wallet).
 
-[다음 튜토리얼](/tutorials/nfts/js/enumeration)에서는 [열거(Enumeration)](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration) 표준을 완료하는 데 필요한 나머지 함수들을 구현합니다.
+In the [next tutorial](/tutorials/nfts/js/enumeration), you'll implement the remaining functions needed to complete the [enumeration](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration) standard.
 
-:::note 문서 버전 관리
+:::note Versioning for this article
 
-이 글을 쓰는 시점에서, 이 예제는 다음 버전에서 작동합니다.
+At the time of this writing, this example works with the following versions:
 
 - near-cli: `3.0.0`
 - NFT 표준: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), `1.0.0` 버전

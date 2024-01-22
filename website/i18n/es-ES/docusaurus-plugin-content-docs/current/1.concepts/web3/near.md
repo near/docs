@@ -163,7 +163,7 @@ https://testnet.mynearwallet.com/auto-import-secret-key#YOUR_ACCOUNT_ID/YOUR_PRI
 ```
 (you should provide a private key of a full access key for the account in question, so make sure this link is used securely).
 
-Last, but not least, blockchain transactions can be viewed using NEAR Explorer. It provides insights into transaction execution and outcome. Let’s look at [one example](https://explorer.testnet.near.org/transactions/ABh4zQ5aZ3CGhpQzstL16TAB8TvqPbiirJG1uTPJVxTt). First of all, we can see general transaction information - sender, receiver, status. After this, we can see gas usage information:
+Last, but not least, blockchain transactions can be viewed using NEAR Explorer. It provides insights into transaction execution and outcome. Let’s look at [one example](https://testnet.nearblocks.io/txns/ABh4zQ5aZ3CGhpQzstL16TAB8TvqPbiirJG1uTPJVxTt). First of all, we can see general transaction information - sender, receiver, status. After this, we can see gas usage information:
 - Attached gas - total gas provided for the transaction.
 - Gas used - actual gas spend.
 - Transaction fee - gas used multiplied to current gas price, shows an actual cost of a transaction in NEAR tokens. Also, Deposit Value shows the amount of NEAR tokens transferred from sender to receiver.

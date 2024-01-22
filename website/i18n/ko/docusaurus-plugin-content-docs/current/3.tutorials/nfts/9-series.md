@@ -4,6 +4,8 @@ title: NFT 컨트랙트 커스터마이징
 sidebar_label: 게으른 발행, 컬렉션 등!
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 이 튜토리얼에서는 작업한 [기존 NFT 컨트랙트](https://github.com/near-examples/nft-tutorial)를 사용하여 생태계에서 가장 일반적인 요구 사항을 충족하도록 수정하는 방법을 배웁니다. 여기에는 다음이 포함됩니다.
 - NFT 게으른 발행(Lazy Minting)
 - 컬렉션 만들기
@@ -141,41 +143,37 @@ pub struct Series {
 
 `series.rs`는 이전 [발행](2-minting.md) 로직을 대체하는 새 파일입니다. 이 파일은 시리즈 생성 및 발행 로직을 하나로 합치기 위해 생성되었습니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/series.rs#L7-L58
-```
+<Github language="rust" start="7" end="58" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/series.rs" />
 
-이 함수는 [u64](https://doc.rust-lang.org/std/primitive.u64.html) 형식의 시리즈 ID, 메타데이터, 로열티 및 시리즈의 토큰 가격을 가져옵니다. 그런 다음 [시리즈 객체](#series-object)를 생성하고, 컨트랙트의 series_by_id 자료 구조에 삽입합니다. 호출자는 승인된 작성자여야 하며, 스토리지 비용을 충당하기에 충분한 $NEAR를 첨부해야 합니다.
+The function takes in a series ID in the form of a [u64](https://doc.rust-lang.org/std/primitive.u64.html), the metadata, royalties, and the price for tokens in the series. It will then create the [Series object](#series-object) and insert it into the contract's series_by_id data structure. It's important to note that the caller must be an approved creator and they must attach enough $NEAR to cover storage costs.
 
 ### NFT 발행
 
-다음으로 발행 함수를 살펴보겠습니다. 이전을 기억해 보면, 다음과 같은 매개변수들이 사용되었습니다.
+Next, we'll look at the minting function. If you remember from before, this used to take the following parameters:
 - 토큰 ID
 - 메타데이터
 - 수신자 ID
 - 영구 로열티
 
-새롭게 개선된 발행 함수로, 이러한 매개변수가 두 가지로 변경되었습니다.
+With the new and improved minting function, these parameters have been changed to just two:
 - 시리즈 ID
 - 수신자 ID
 
-발행 함수는 처음에는 복잡해 보일 수 있지만, 무슨 일이 일어나고 있는지 이해하기 위해 이를 분해해 보겠습니다. 가장 먼저 하는 일은 지정된 시리즈 ID에서 [시리즈 객체](#series-object)를 가져오는 것입니다. 거기에서, 사본 수가 메타데이터에 지정된 경우 사본 수가 초과되지 않는지 확인합니다.
+The mint function might look complicated at first but let's break it down to understand what's happening. The first thing it does is get the [series object](#series-object) from the specified series ID. From there, it will check that the number of copies won't be exceeded if one is specified in the metadata.
 
-그런 다음 튜토리얼의 [발행 섹션](2-minting.md#storage-implications)에서 설명한 대로 컨트랙트에 토큰 정보를 저장하고, 토큰 ID를 시리즈에 매핑합니다. 이 작업이 완료되면 발행 로그가 내보내지고, 호출에 충분한 보증금이 첨부되었는지 확인합니다. 이 금액은 시리즈에 가격이 있는지 여부에 따라 다릅니다.
+It will then store the token information on the contract as explained in the [minting section](2-minting.md#storage-implications) of the tutorial and map the token ID to the series. Once this is finished, a mint log will be emitted and it will ensure that enough deposit has been attached to the call. This amount differs based on whether or not the series has a price.
 
 #### 필요 금액
 
-이 튜토리얼의 [발행 섹션](2-minting.md#storage-implications)에서 살펴본 바와 같이 컨트랙트에 저장된 모든 정보의 비용은 $NEAR입니다. 발행할 때 스토리지를 위해 지불해야 하는 금액이 있습니다. *이 컨트랙트* 의 경우, 시리즈가 생성될 때 소유자가 시리즈 가격을 지정할 수도 있습니다. 이 가격은 시리즈의 **모든** NFT가 발행될 때 사용됩니다. 가격이 명시되어 있는 경우, 금액은 보관과 가격을 모두 포함해야 합니다.
+As we went over in the [minting section](2-minting.md#storage-implications) of this tutorial, all information stored on the contract costs $NEAR. When minting, there is a required deposit to pay for this storage. For *this contract*, a series price can also be specified by the owner when the series is created. This price will be used for **all** NFTs in the series when they are minted. If the price is specified, the deposit must cover both the storage as well as the price.
 
-만약 가격이 **지정되었고**, 사용자가 필요한 것보다 더 많은 금액을 지불하면, 초과 금액이 **시리즈 소유자**에게 전송됩니다. 가격이 있는 시리즈의 토큰을 발행할 수 있는 사람에 대한 *제한도 없습니다*. 발신인은 승인된 채굴자일 필요는 **없습니다**.
+If a price **is specified** and the user more deposit than what is necessary, the excess is sent to the **series owner**. There is also *no restriction* on who can mint tokens for series that have a price. The caller does **not** need to be an approved minter.
 
-시리즈에 가격이 **지정되지 않았고**, 사용자가 필요한 것보다 더 많은 금액을 첨부한 경우, 초과분은 *그들에게 환불* 됩니다. 또한 컨트랙트는 이 경우 발신자가 승인된 발행자임을 확인합니다.
+If **no price** was specified in the series and the user attaches more deposit than what is necessary, the excess is *refunded to them*. In addition, the contract makes sure that the caller is an approved minter in this case.
 
-:::info 어떻게 토큰 ID가 필요하지 않은지 알 수 있나요? 토큰 ID가 발행 시 자동으로 생성되기 때문입니다. 컨트랙트에 저장된 ID는 `${series_id}:${token_id}`이고, 여기서 토큰 ID는 일련의 새 토큰이 발행될 때마다 증가하는 논스(nonce)입니다. 이는 컨트랙트에 저장되는 정보의 양을 줄일 뿐만 아니라, 특정 에디션 번호를 확인하는 방법으로도 작용합니다. :::
+:::info Notice how the token ID isn't required? This is because the token ID is automatically generated when minting. The ID stored on the contract is `${series_id}:${token_id}` where the token ID is a nonce that increases each time a new token is minted in a series. This not only reduces the amount of information stored on the contract but it also acts as a way to check the specific edition number. :::
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/series.rs#L60-L149
-```
+<Github language="rust" start="60" end="149" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/series.rs" />
 
 ### View 함수
 
@@ -187,9 +185,7 @@ https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/series.rs
 <!-- TODO: add a learn more here call to action -->
 :::
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs#L5-L16
-```
+<Github language="rust" start="5" end="16" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs" />
 
 view 함수는 아래에 나열되어 있습니다.
 - **[get_series_total_supply](https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs#L92)**: 현재 컨트랙트 있는 총 시리즈 수를 가져옵니다.
@@ -199,11 +195,12 @@ view 함수는 아래에 나열되어 있습니다.
 - **[get_series_details](https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs#L115)**: 특정 시리즈에 대한 `JsonSeries` 세부 정보를 가져옵니다.Get the
   - 인자: `id: number`.
 - **[nft_supply_for_series](https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs#L133)**: 특정 시리즈에 대해 발행된 총 NFT 수를 봅니다.
-  - 인자: `id: number`.
+  - Arguments: `id: number`.
 - **[nft_tokens_for_series](https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs#L146)**: 특정 시리즈에 대한 모든 NFT에 대해 페이지를 매기고, `JsonToken` 객체의 벡터를 반환합니다.
   - 인자: `id: number`, `from_index: String | null`, `limit: number | null`.
 
 :::info 모든 페이지 매김 함수에 총 공급량을 보기 위한 게터도 포함되어 있습니다. 이렇게 하면 전체 공급량과 함께 페이지 매김 함수의 `from_index` 및 `limit` 매개변수를 사용할 수 있으므로, 페이지 매김을 끝낼 위치를 알 수 있습니다. :::
+
 ### 최적화를 위한 View 호출 수정
 
 정보를 온체인에 저장하는 것은 매우 비쌀 수 있습니다. 스마트 컨트랙트 개발 기술의 레벨이 올라감에 따라 조사해야 할 한 가지 영역은, 저장되는 정보의 양을 줄이는 것입니다. View 호출은 이러한 최적화의 완벽한 예입니다.
@@ -212,9 +209,7 @@ view 함수는 아래에 나열되어 있습니다.
 
 이를 위해, 모든 열거 메서드의 중심인 `nft_token` 함수를 수정하는 방법이 있습니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/nft_core.rs#L156-L193
-```
+<Github language="rust" start="156" end="193" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/nft_core.rs" />
 
 예를 들어 토큰에 `"My Amazing Go Team Gif"`라는 제목이 있고, NFT가 에디션 42인 경우, 반환되는 새 제목은 `"My Amazing Go Team Gif - 42"`입니다. NFT의 메타데이터에 제목이 없으면, 시리즈 및 에디션 번호가 `Series {} : Edition {}` 형식으로 반환됩니다.
 
@@ -416,7 +411,7 @@ Receipts: BrJLxCVmxLk3yNFVnwzpjZPDRhiCinNinLQwj9A7184P, 3UwUgdq7i1VpKyw3L5bmJvbU
     Log [dev-1660936980897-79989663811468]: EVENT_JSON:{"standard":"nep171","version":"nft-1.0.0","event":"nft_mint","data":[{"owner_id":"benjiman.testnet","token_ids":["2:1"]}]}
 Transaction Id FxWLFGuap7SFrUPLskVr7Uxxq8hpDtAG76AvshWppBVC
 To see the transaction in the transaction explorer, please open this url in your browser
-https://explorer.testnet.near.org/transactions/FxWLFGuap7SFrUPLskVr7Uxxq8hpDtAG76AvshWppBVC
+https://testnet.nearblocks.io/txns/FxWLFGuap7SFrUPLskVr7Uxxq8hpDtAG76AvshWppBVC
 ''
 ```
 

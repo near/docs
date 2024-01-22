@@ -4,6 +4,8 @@ title: 뼈대 및 Rust 아키텍처
 sidebar_label: 컨트랙트 아키텍처
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 > 이 글에서는 이 _"Zero to Hero"_ 시리즈를 진행하면서 개발하게 될 NFT 컨트랙트의 기본 아키텍처에 대해 알아봅니다. 컨트랙트의 레이아웃을 발견하고 완전한 기능을 갖춘 스마트 컨트랙트를 구축하기 위해 Rust 파일이 어떻게 구성되어 있는지 확인할 수 있습니다.
 
 :::info Rust가 처음이신가요?
@@ -65,11 +67,9 @@ skeleton
 | **ft_on_transfer**      | 수신자의 컨트랙트에 따라 진행되는 메서드입니다. `ft_transfer_call` 메서드를 통해 FT가 수신자의 컨트랙트 계정으로 전송될 때 호출됩니다. 이는 보낸 사람에게 다시 환불해야 하는 FT 수를 반환합니다.                                                                                                                                                     |
 | **ft_resolve_transfer** | `ft_on_transfer` 실행이 완료된 후 호출됩니다. 이 함수는 수신자 컨트랙트에서 사용하지 않은 FT를 환불하고 환불 후 수신자에게 전송된 순 FT 수를 반환합니다(있는 경우).                                                                                                                                                                     |
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/1.skeleton/src/ft_core.rs#L61-L166
-```
+<Github language="rust" start="61" end="166" url="https://github.com/near-examples/ft-tutorial/blob/main/1.skeleton/src/ft_core.rs" />
 
-튜토리얼 시리즈의 [순환 공급](/tutorials/fts/circulating-supply) 및 [전송](/tutorials/fts/transfers) 섹션에서 이러한 함수에 대해 자세히 알아봅니다.
+You'll learn more about these functions in the [circulating supply](/tutorials/fts/circulating-supply) and [transfers](/tutorials/fts/transfers) sections of the tutorial series.
 
 ---
 
@@ -82,13 +82,11 @@ https://github.com/near-examples/ft-tutorial/blob/main/1.skeleton/src/ft_core.rs
 | **new_default_meta** | 기본 `metadata`를 이용해 컨트랙트를 초기화해, 사용자가 입력값을 제공하지 않아도 되도록 합니다. 또한 소유자에게 전송되는 전체 토큰 수량을 전달됩니다. |
 | **new**                | 사용자가 제공한 `metadata`와 총 공급량으로 컨트랙트를 초기화합니다.                                                |
 
-:::info 기억해 두세요
-초기화 함수 (`new`, `new_default_meta`)은 한 번만 호출될 수 있습니다.
+:::info Keep in mind
+The initialization functions (`new`, `new_default_meta`) can only be called once.
 :::
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/1.skeleton/src/lib.rs#L34-L58
-```
+<Github language="rust" start="34" end="58" url="https://github.com/near-examples/ft-tutorial/blob/main/1.skeleton/src/lib.rs" />
 
 튜토리얼 시리즈의 [토큰 정의](2-define-a-token.md)에서 이러한 기능에 대해 자세히 알아볼 것입니다.
 
@@ -103,9 +101,7 @@ https://github.com/near-examples/ft-tutorial/blob/main/1.skeleton/src/lib.rs#L34
 | **FungibleTokenMetadata** | 이 구조는 대체 가능한 토큰의 메타데이터를 정의합니다.       |
 | **ft_metadata**           | 이 함수를 통해 사용자는 토큰의 메타데이터를 쿼리할 수 있습니다. |
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/1.skeleton/src/metadata.rs#L10-L30
-```
+<Github language="rust" start="10" end="30" url="https://github.com/near-examples/ft-tutorial/blob/main/1.skeleton/src/metadata.rs" />
 
 튜토리얼 시리즈의 [토큰 정의](2-define-a-token.md)에서 이러한 기능에 대해 자세히 알아볼 것입니다.
 
@@ -121,9 +117,7 @@ https://github.com/near-examples/ft-tutorial/blob/main/1.skeleton/src/metadata.r
 | **storage_balance_bounds** | 컨트랙트와 상호 작용하는 데 필요한 최소 및 최대 허용 스토리지 금액을 반환합니다. FT 컨트랙트의 경우 최소값 = 최대값입니다.                                                 |
 | **storage_balance_of**     | 지정된 사용자가 지불한 총 스토리지 및 사용 가능한 스토리지를 반환합니다. FT 컨트랙트의 경우 등록을 위해 컨트랙트에서 사용하고 스토리지에 대해 초과 지불할 수 없기 때문에, 사용 가능한 스토리지는 항상 0입니다. |
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/1.skeleton/src/storage.rs#L79-L106
-```
+<Github language="rust" start="79" end="106" url="https://github.com/near-examples/ft-tutorial/blob/main/1.skeleton/src/storage.rs" />
 
 :::tip
 튜토리얼 시리즈의 [스토리지](4.storage.md)에서 이러한 기능에 대해 자세히 알아볼 것입니다.

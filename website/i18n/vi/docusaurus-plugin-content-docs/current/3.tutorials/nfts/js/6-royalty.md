@@ -4,6 +4,8 @@ title: Royalty
 sidebar_label: Royalty
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 Trong hướng dẫn này bạn sẽ tiếp tục build non-fungible token (NFT) smart contract của mình, và tìm hiểu cách triển khai các perpetual royalty vào các NFT. Việc này sẽ cho phép mọi người nhận được phần trăm của giá mua khi NFT được bán.
 
 :::caution
@@ -48,19 +50,15 @@ royalty: { [accountId: string]: number };
 
 Thứ hai, bạn cũng sẽ muốn thêm `royalty` tới `JsonToken` struct:
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/metadata.ts#L106-L166
-```
+<Github language="js" start="106" end="166" url="https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/metadata.ts" />
 
 ### Internal helper function
 
 **royaltyToPayout**
 
-To simplify the payout calculation, let's add a helper `royaltyToPayout` function to `src/internal.ts`. Điều này sẽ chuyển đổi tỷ lệ phần trăm thành số tiền thực thế cần được thanh toán. Tỷ lệ phần trăm là một integer nên để cho phép nó nhỏ hơn 1%, bạn có thể quy định 100% tương ứng với giá trị `10,000`. Điều này có nghĩa rằng phần trăm tối thiểu bạn có thể đưa ra là 0.01% hay `1`. Ví dụ, nếu bạn muốn account `benji.testnet` có perpetual royalty là 20%, bạn sẽ chèn cặp `"benji.testnet": 2000` tới payout map.
+To simplify the payout calculation, let's add a helper `royaltyToPayout` function to `src/internal.ts`. This will convert a percentage to the actual amount that should be paid. In order to allow for percentages less than 1%, you can give 100% a value of `10,000`. This means that the minimum percentage you can give out is 0.01%, or `1`. For example, if you wanted the account `benji.testnet` to have a perpetual royalty of 20%, you would insert the pair `"benji.testnet": 2000` into the payout map.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/internal.ts#L13-L16
-```
+<Github language="js" start="13" end="16" url="https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/internal.ts" />
 
 If you were to use the `royaltyToPayout` function and pass in `2000` as the `royaltyPercentage` and an `amountToPay` of 1 NEAR, it would return a value of 0.2 NEAR.
 
@@ -70,9 +68,7 @@ If you were to use the `royaltyToPayout` function and pass in `2000` as the `roy
 
 Bây giờ hãy triển khai một phương pháp để kiểm tra xem những account nào sẽ được thanh toán từ một NFT với một số tiền hoặc một số dư nhất định. Open the `nft-contract/src/royalty.ts` file, and modify the `internalNftPayout` function as shown.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/royalty.ts#L7-L53
-```
+<Github language="js" start="7" end="53" url="https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/royalty.ts" />
 
 This function will loop through the token's royalty map and take the balance and convert that to a payout using the `royaltyToPayout` function you created earlier. Nó sẽ cung cấp cho chủ sở sữu token bất cứ thứ gì còn lại từ tổng các royalty. Ví dụ:
 
@@ -107,31 +103,23 @@ Cuối cùng, nó sẽ chèn `damian` vào payout object và đưa cho anh ấy 
 
 Bây giờ thì bạn đã biết làm cách nào để tính các khoản thanh toán, đã đến lúc tạo function sẽ transfer NFT và trả lại khoản thanh toán cho marketplace.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/royalty.ts#L55-L121
-```
+<Github language="js" start="55" end="121" url="https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/royalty.ts" />
 
 ### Các perpetual royalty
 
 Để thêm tính năng hỗ trợ cho perpetual royalty, hãy chỉnh sửa file `src/mint.ts`. Đầu tiên, thêm một tham số tùy chọn cho perpetual royalty. Điều này sẽ xác định tỷ lệ phần trăm sẽ được chuyển vào các account khi NFT được mua. Bạn cũng cần tạo và chèn royalty vào trong `Token` object:
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/mint.ts#L7-L64
-```
+<Github language="js" start="7" end="64" url="https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/mint.ts" />
 
 ### Thêm royalty object vào các triển khai cấu trúc
 
 Bởi vì bạn đã thêm một filed mới vào các struct `Token` và `JsonToken` của mình, nên bạn cần phải chỉnh sửa các triển khai của mình cho phù hợp. Move to the `nft-contract/src/internal.ts` file and edit the part of your `internalTransfer` function that creates the new `Token` object:
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/internal.ts#L150-L158
-```
+<Github language="js" start="150" end="158" url="https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/internal.ts" />
 
 Once that's finished, move to the `nft-contract/src/nft_core.ts` file. You need to edit your implementation of `internalNftToken` so that the `JsonToken` sends back the new royalty information.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/nft_core.ts#L10-L37
-```
+<Github language="js" start="10" end="37" url="https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/nft_core.ts" />
 
 Tiếp theo, bạn có thể sử dụng CLI để truy vấn function mới `nft_payout` và xác nhận rằng nó làm việc chính xác.
 

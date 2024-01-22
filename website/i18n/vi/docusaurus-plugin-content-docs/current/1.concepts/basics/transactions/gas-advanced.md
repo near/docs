@@ -150,7 +150,7 @@ For a function call, the maximum block delay is computed as the total gas attach
 
 Bạn có thể truy vấn trực tiếp NEAR platform về gas price trên một block cụ thể bằng cách sử dụng RPC method `gas_price`. Giá này có thể thay đổi dựa vào network load. Nó được tính bằng yoctoNEAR (10^-24 NEAR)
 
-1. Lấy bất kỳ block hash nào từ blockchain sử dụng [NEAR Explorer](https://explorer.testnet.near.org/blocks)
+1. Take any recent block hash from the blockchain using [NearBlocks Explorer](https://testnet.nearblocks.io/blocks)
 
    _Tại thời điểm viết bài này, `SqNPYxdgspCT3dXK93uVvYZh18yPmekirUaXpoXshHv` là block hash cuối cùng_
 
@@ -201,9 +201,9 @@ Các developer thích việc giá có thể dự đoán được để họ có 
 
 [fungible token]: https://github.com/near-examples/FT/pull/42
 [1.1M]: https://github.com/chadoh/erc20-test
-[9]: https://explorer.testnet.near.org/transactions/GsgH2KoxLZoL8eoutM2NkHe5tBPnRfyhcDMZaBEsC7Sm
+[9]: https://testnet.nearblocks.io/txns/GsgH2KoxLZoL8eoutM2NkHe5tBPnRfyhcDMZaBEsC7Sm
 [storage staking]: /docs/concepts/storage-staking
 [~45k]: https://ethereum.stackexchange.com/questions/71235/gas-limit-for-erc-20-tokens
-[14]: https://explorer.testnet.near.org/transactions/5joKRvsmpEXzhVShsPDdV8z5EG9bGMWeuM9e9apLJhLe
-[8]: https://explorer.testnet.near.org/transactions/34pW67zsotFsD1DY8GktNhZT9yP5KHHeWAmhKaYvvma6
+[14]: https://testnet.nearblocks.io/txns/5joKRvsmpEXzhVShsPDdV8z5EG9bGMWeuM9e9apLJhLe
+[8]: https://testnet.nearblocks.io/txns/34pW67zsotFsD1DY8GktNhZT9yP5KHHeWAmhKaYvvma6
 [44k]: https://github.com/chadoh/erc20-test

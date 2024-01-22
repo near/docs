@@ -4,6 +4,8 @@ title: 승인
 sidebar_label: 승인
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 이 튜토리얼에서는 다른 사람이 당신을 대신해 NFT를 전송할 수 있도록 액세스 권한을 부여할 수 있는 승인 관리 시스템의 기본 사항을 배웁니다. 이것은 모든 NFT 마켓플레이스의 중추이며, 복잡하지만 아름다운 시나리오가 발생할 수 있도록 합니다. 처음 가입하는 경우 이 레퍼지토리를 자유롭게 복제하고 `4.core` 브랜치를 확인하세요.
 
 
@@ -116,23 +118,17 @@ Token: {
 
 이제 계정에서 NFT를 전송하도록 허용하는, 원래 문제에 대해 제안된 솔루션을 이해했으므로 일부 로직을 구현할 차례입니다. 가장 먼저 해야 할 일은 새 변경 사항을 반영하도록 `Token`및 `JsonToken` 구조체를 수정하는 것입니다. `nft-contract/src/metadata.rs` 파일 로 가보겠습니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/metadata.rs#L39-L61
-```
+<Github language="rust" start="39" end="61" url="https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/metadata.rs" />
 
-그런 다음 토큰이 발행될 때 `approved_account_ids`와 `next_approval_id`를 모두 기본값으로 초기화해야 합니다. `nft-contract/src/mint.rs` 파일로 가서 컨트랙트에 저장할 `Token` 구조체를 생성할 때 다음 승인 ID를 0으로 설정하고, 승인된 계정 ID를 빈 객체로 설정합니다.
+You'll then need to initialize both the `approved_account_ids` and `next_approval_id` to their default values when a token is minted. Switch to the `nft-contract/src/mint.rs` file and when creating the `Token` struct to store in the contract, let's set the next approval ID to be 0 and the approved account IDs to be an empty map:
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/mint.rs#L15-L22
-```
+<Github language="rust" start="15" end="22" url="https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/mint.rs" />
 
 ### 계정 승인
 
 이제 토큰 수준에서 승인된 계정 ID 및 다음 승인 ID에 대한 지원을 추가했으므로, `nft_approve`라는 함수를 통해 해당 필드를 채우고 변경하는 로직을 추가할 차례입니다. 이 함수는 계정이 특정 토큰 ID에 액세스할 수 있도록 승인해야 합니다. `nft-contract/src/approval.rs` 파일로 이동하여 `nft_approve` 함수를 편집해 보겠습니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/approval.rs#L38-L96
-```
+<Github language="rust" start="38" end="96" url="https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/approval.rs" />
 
 이 함수는 먼저 사용자가 **적어도** 하나의 yoctoNEAR(곧 구현할 것임)를 첨부하라고 요구합니다(assert). 이것은 보안과 스토리지 비용을 감당하기 위한 것입니다. 누군가 계정 ID를 승인하면 컨트랙트에 해당 정보가 저장됩니다. [발행 튜토리얼](/tutorials/nfts/minting)에서 본 것처럼, 스마트 컨트랙트 계정이 스토리지를 처리하도록 하거나 사용자가 해당 비용을 처리하도록 할 수 있습니다. 후자가 더 확장 가능하며, 이 튜토리얼 전체에서 작업하게 될 접근 방식입니다.
 
@@ -160,15 +156,11 @@ sale_conditions: {
 
 이제 계정 승인을 위한 핵심 로직이 완료되었으므로 `assert_at_least_one_yocto` 및 `bytes_for_approved_account` 함수를 구현해야 합니다. `nft-contract/src/internal.rs` 파일로 이동하여 `assert_one_yocto` 함수 바로 아래에 다음 함수를 복사합니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/internal.rs#L52-L58
-```
+<Github language="rust" start="52" end="58" url="https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/internal.rs" />
 
 다음으로 계정 ID를 저장하는 데 드는 비용을 계산하는 로직을 복사해야 합니다. 이 함수를 페이지 맨 위에 두세요.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/internal.rs#L1-L9
-```
+<Github language="rust" start="1" end="9" url="https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/internal.rs" />
 
 이제 계정 승인 로직이 완료되었으므로, 전송 제한을 변경해야 합니다.
 
@@ -178,9 +170,7 @@ https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/i
 
 `internal.rs` 파일에서 제한이 적용되는 `internal_transfer` 메서드의 로직을 변경해야 합니다. 내부 전송 함수를 다음과 같이 변경합니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/internal.rs#L135-L201
-```
+<Github language="rust" start="135" end="201" url="https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/internal.rs" />
 
 보낸 사람이 소유자가 아닌지 확인한 다음, 소유자가 아니면 보낸 사람이 승인 목록에 있는지 확인합니다. 승인 ID가 함수에 전달된 경우 컨트랙트에 저장된 발신자의 실제 승인 ID가 전달된 것과 일치하는지 확인합니다.
 
@@ -190,9 +180,7 @@ https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/i
 
 `bytes_for_approved_account_id` 함수 바로 아래에서, 다음 두 함수를 복사합니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/internal.rs#L11-L32
-```
+<Github language="rust" start="11" end="32" url="https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/internal.rs" />
 
 이는 새 승인 로직을 포함하도록 `nft_core` 함수를 변경하는 다음 섹션에서 유용합니다.
 
@@ -200,39 +188,27 @@ https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/i
 
 `nft-contract/src/nft_core.rs` 파일로 가봅시다. 가장 먼저 변경하고 싶은 것은 `nft_transfer`와 `nft_transfer_call` 함수에 `approval_id`를 추가하는 것입니다. 이는 소유자가 아닌 토큰을 전송하려는 사람이 위에서 본 문제를 해결하기 위해 승인 ID를 전달해야 하기 때문입니다. 소유자인 경우 `internal_transfer` 함수에서 본 승인 ID가 사용되지 않습니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/nft_core.rs#L8-L29
-```
+<Github language="rust" start="8" end="29" url="https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/nft_core.rs" />
 
 그런 다음 `nft_resolve_transfer`의 매개변수에 `approved_account_ids` 맵을 추가해야 합니다. 이는 전송이 제대로 이루어졌을 경우 목록을 환불할 수 있도록 하기 위한 것입니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/nft_core.rs#L47-L62
-```
+<Github language="rust" start="47" end="62" url="https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/nft_core.rs" />
 
 `nft_transfer` 함수로 이동해서, 승인 ID를 `internal_transfer` 함수에 전달한 다음, 전송이 완료된 후 이전 토큰 승인 계정 ID를 환불하기만 하면 됩니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/nft_core.rs#L67-L96
-```
+<Github language="rust" start="67" end="96" url="https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/nft_core.rs" />
 
 다음으로 `nft_transfer_call`에 대해 동일한 작업을 수행해야 하지만, 전송이 취소될 가능성이 있기 때문에, 즉시 환불하는 대신 이전 토큰의 승인된 계정 ID를 `nft_resolve_transfer`에 첨부해야 합니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/nft_core.rs#L98-L145
-```
+<Github language="rust" start="98" end="145" url="https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/nft_core.rs" />
 
 또한 `nft_token`에서 반환되는 `JsonToken` 토큰에 승인된 계정 ID를 추가해야 합니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/nft_core.rs#L147-L163
-```
+<Github language="rust" start="147" end="163" url="https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/nft_core.rs" />
 
 마지막으로 `nft_resolve_transfer`에서 승인된 계정 ID를 환불하기 위한 로직을 추가해야 합니다. 이전이 완료되면 토큰 `approved_account_ids` 필드를 재설정하여 해제되는 스토리지에 대해 소유자에게 환불해야 합니다. 그러나 전송을 되돌려야 하는 경우 아무에게도 환불하지 않는 것만으로는 충분하지 않습니다. 수신자가 토큰을 잠시 소유했기 때문에 승인된 자체 계정 ID를 추가할 수 있기 때문입니다. 따라서 그렇게 한 경우, 환불해야 합니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/nft_core.rs#L168-L234
-```
+<Github language="rust" start="168" end="234" url="https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/nft_core.rs" />
 
 완료되면 다음 작업으로 이동하여 완료할 시간입니다.
 
@@ -242,9 +218,7 @@ https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/n
 
 승인 ID가 제공된 경우, 계정이 승인되었는지 여부와 제공된 승인 ID가 동일한지 여부를 반환해야 합니다. `nft-contract/src/approval.rs` 파일로 이동하여 `nft_is_approved` 함수에 필요한 로직을 추가해 봅시다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/approval.rs#L98-L125
-```
+<Github language="rust" start="98" end="125" url="https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/approval.rs" />
 
 이제 계속해서 계정 해지 로직을 추가해 보겠습니다.
 
@@ -252,17 +226,13 @@ https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/a
 
 튜토리얼의 다음 단계는 사용자가 자신의 NFT에 대한 액세스 권한을 갖지 못하도록 특정 계정을 취소하도록 허용하는 것입니다. 가장 먼저 해야 할 일은 보안을 위해 하나의 yocto를 첨부하도록 요구하는 것입니다. 그런 다음 호출자가 토큰의 소유자인지 확인해야 합니다. 이러한 확인 과정을 거치면, 토큰 승인 계정 ID에서 전달된 계정을 제거하고 해제되는 스토리지에 대해 소유자에게 환불해야 합니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/approval.rs#L127-L151
-```
+<Github language="rust" start="127" end="151" url="https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/approval.rs" />
 
 ## 모든 계정 해지
 
 튜토리얼의 마지막 단계는 사용자가 NFT에 대한 액세스 권한이 없는 모든 계정을 취소할 수 있도록 허용하는 것입니다. 이것은 또한 보안 목적을 위해 하나의 yocto를 요구하고 호출자가 토큰의 소유자인지 확인해야 합니다. 그런 다음 소유자에게 맵의 모든 계정을 해제하는 데에 대한 금액을 환불하고, `approved_account_ids`를 비우면 됩니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/approval.rs#L153-L174
-```
+<Github language="rust" start="153" end="174" url="https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/approval.rs" />
 
 완료되면 컨트랙트를 배포하고 테스트를 시작할 때입니다.
 

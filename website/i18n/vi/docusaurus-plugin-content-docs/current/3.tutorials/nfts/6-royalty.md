@@ -4,6 +4,8 @@ title: Royalty
 sidebar_label: Royalty
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 Trong hướng dẫn này bạn sẽ tiếp tục build non-fungible token (NFT) smart contract của mình, và tìm hiểu cách triển khai các perpetual royalty vào các NFT. Việc này sẽ cho phép mọi người nhận được phần trăm của giá mua khi NFT được bán.
 
 ## Giới thiệu
@@ -52,21 +54,17 @@ pub royalty: HashMap<AccountId, u32>,
 
 Để đơn giản hóa việc tính khoản thanh toán, hãy thêm một helper function là `royalty_to_payout` vào `src/internal.rs`. Điều này sẽ chuyển đổi tỷ lệ phần trăm thành số tiền thực thế cần được thanh toán. Tỷ lệ phần trăm là một integer nên để cho phép nó nhỏ hơn 1%, bạn có thể quy định 100% tương ứng với giá trị `10,000`. Điều này có nghĩa rằng phần trăm tối thiểu bạn có thể đưa ra là 0.01% hay `1`. Ví dụ, nếu bạn muốn account `benji.testnet` có perpetual royalty là 20%, bạn sẽ chèn cặp `"benji.testnet": 2000` tới payout map.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/tree/6.royalty/nft-contract/src/internal.rs#L5-L8
-```
+<Github language="rust" start="5" end="8" url="https://github.com/near-examples/nft-tutorial/tree/6.royalty/nft-contract/src/internal.rs" />
 
-Nếu bạn sử dụng function `royalty_to_payout` và truyền vào `2000` dưới dạng `royalty_percentage` và một `amount_to_pay` là 1 NEAR, nó sẽ trả về một giá trị là 0.2 NEAR.
+If you were to use the `royalty_to_payout` function and pass in `2000` as the `royalty_percentage` and an `amount_to_pay` of 1 NEAR, it would return a value of 0.2 NEAR.
 
 ### Các royalty
 
 **nft_payout**
 
-Bây giờ hãy triển khai một phương pháp để kiểm tra xem những account nào sẽ được thanh toán từ một NFT với một số tiền hoặc một số dư nhất định. Open the `nft-contract/src/royalty.rs` file, and modify the `nft_payout` function as shown.
+Let's now implement a method to check what accounts will be paid out for an NFT given an amount, or balance. Open the `nft-contract/src/royalty.rs` file, and modify the `nft_payout` function as shown.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/6.royalty/nft-contract/src/royalty.rs#L22-L60
-```
+<Github language="rust" start="22" end="60" url="https://github.com/near-examples/nft-tutorial/blob/6.royalty/nft-contract/src/royalty.rs" />
 
 Function này sẽ loop qua các royalty map của token và lấy số dư để chuyển thành khoản thanh toán sử dụng function `royalty_to_payout` mà bạn đã tạo trước đó. Nó sẽ cung cấp cho chủ sở sữu token bất cứ thứ gì còn lại từ tổng các royalty. Ví dụ:
 
@@ -101,17 +99,13 @@ Cuối cùng, nó sẽ chèn `damian` vào payout object và đưa cho anh ấy 
 
 Bây giờ thì bạn đã biết làm cách nào để tính các khoản thanh toán, đã đến lúc tạo function sẽ transfer NFT và trả lại khoản thanh toán cho marketplace.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/tree/6.royalty/nft-contract/src/royalty.rs#L64-L125
-```
+<Github language="rust" start="64" end="125" url="https://github.com/near-examples/nft-tutorial/tree/6.royalty/nft-contract/src/royalty.rs" />
 
 ### Các perpetual royalty
 
 Để thêm tính năng hỗ trợ cho perpetual royalty, hãy chỉnh sửa file `src/mint.rs`. Đầu tiên, thêm một tham số tùy chọn cho perpetual royalty. Điều này sẽ xác định tỷ lệ phần trăm sẽ được chuyển vào các account khi NFT được mua. Bạn cũng cần tạo và chèn royalty vào trong `Token` object:
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/6.royalty/nft-contract/src/mint.rs#L6-L60
-```
+<Github language="rust" start="6" end="60" url="https://github.com/near-examples/nft-tutorial/blob/6.royalty/nft-contract/src/mint.rs" />
 
 Tiếp theo, bạn có thể sử dụng CLI để truy vấn function mới `nft_payout` và xác nhận rằng nó làm việc chính xác.
 
@@ -119,15 +113,11 @@ Tiếp theo, bạn có thể sử dụng CLI để truy vấn function mới `nf
 
 Bởi vì bạn đã thêm một filed mới vào các struct `Token` và `JsonToken` của mình, nên bạn cần phải chỉnh sửa các triển khai của mình cho phù hợp. Chuyển sang file `nft-contract/src/internal.rs` và chỉnh sửa một phần của function `internal_transfer` để tạo `Token` object mới:
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/6.royalty/nft-contract/src/internal.rs#L189-L197
-```
+<Github language="rust" start="189" end="197" url="https://github.com/near-examples/nft-tutorial/blob/6.royalty/nft-contract/src/internal.rs" />
 
 Sau khi hoàn tất, chuyển tới file `nft-contract/src/nft_core.rs`. Bạn cần chỉnh sửa việc triển khai `nft_token` để `JsonToken` gửi lại thông tin royalty mới.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/6.royalty/nft-contract/src/nft_core.rs#L147-L164
-```
+<Github language="rust" start="147" end="164" url="https://github.com/near-examples/nft-tutorial/blob/6.royalty/nft-contract/src/nft_core.rs" />
 
 ## Deploy contract {#redeploying-contract}
 

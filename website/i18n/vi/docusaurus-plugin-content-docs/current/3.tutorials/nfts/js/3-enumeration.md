@@ -4,6 +4,8 @@ title: Enumeration
 sidebar_label: Enumeration
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 Trong các hướng dẫn trước, bạn đã xem xét các cách tích hợp chức năng mint vào một skeleton smart contract. Để NFT của bạn hiển thị trong ví, bạn cũng phải deploy một bản vá lỗi đã được implement một trong các enumeration method. In this tutorial, you'll expand on and finish the rest of the enumeration methods as per the [standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration) Now you'll extend the NFT smart contract and add a couple of enumeration methods that can be used to return the contract's state.
 
 
@@ -33,25 +35,19 @@ Let's start by opening the  `src/enumeration.ts` file and locating the empty `in
 
 Function này sẽ trả về tổng số các NFT được lưu trữ trên contract. You can easily achieve this functionality by simply returning the length of the `nftMetadataById` data structure.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/3.enumeration/src/nft-contract/enumeration.ts#L8-L16
-```
+<Github language="js" start="8" end="16" url="https://github.com/near-examples/nft-tutorial-js/blob/3.enumeration/src/nft-contract/enumeration.ts" />
 
 ### NFT Tokens
 
-Function này sẽ trả về một danh sách được phân trang các `JsonTokens` lưu trữ trên contract bất kể các owner là ai. Nếu user cung cấp một tham số `from_index`, bạn nên dùng nó như điểm bắt đầu để lặp qua các token; còn nếu không thì cần bắt đầu lại từ đầu. Tương tự như vậy, nếu user cung cấp tham số `limit`, thì function sẽ dừng sau khi đạt đến limit hoặc khi kết thúc danh sách.
+This function should return a paginated list of `JsonTokens` that are stored on the contract regardless of their owners. If the user provides a `from_index` parameter, you should use that as the starting point for which to start iterating through tokens; otherwise it should start from the beginning. Likewise, if the user provides a `limit` parameter, the function shall stop after reaching either the limit or the end of the list.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/3.enumeration/src/nft-contract/enumeration.ts#L18-L43
-```
+<Github language="js" start="18" end="43" url="https://github.com/near-examples/nft-tutorial-js/blob/3.enumeration/src/nft-contract/enumeration.ts" />
 
 ### NFT Supply For Owner
 
 Function này sẽ tìm kiếm tất cả các non-fungible token của owner do người dùng xác định và trả về độ dài của tập hợp kết quả. If there isn't a set of tokens for the provided Account ID, then the function shall return `0`.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/3.enumeration/src/nft-contract/enumeration.ts#L45-L62
-```
+<Github language="js" start="45" end="62" url="https://github.com/near-examples/nft-tutorial-js/blob/3.enumeration/src/nft-contract/enumeration.ts" />
 
 Tiếp theo, bạn có thể sử dụng CLI để truy vấn các method mới này và xác nhận rằng chúng hoạt động chính xác.
 

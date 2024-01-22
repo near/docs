@@ -4,6 +4,8 @@ sidebar_label: "Base64 매개변수, 마무리"
 title: "새 십자말풀이 퍼즐 생성 시 Base64 인코딩된 인자 사용"
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 # 최종 수정
 
 import base64Encode from '/docs/assets/crosswords/boop-base64-encode.gif';
@@ -20,15 +22,11 @@ import base64Encode from '/docs/assets/crosswords/boop-base64-encode.gif';
 
 먼저 예상되는 인자에 대한 구조체를 설정합니다.
 
-```rust reference
-https://github.com/near-examples/crossword-tutorial-chapter-3/blob/ec07e1e48285d31089b7e8cec9e9cf32a7e90c35/contract/src/lib.rs#L111-L117
-```
+<Github language="rust" start="111" end="117" url="https://github.com/near-examples/crossword-tutorial-chapter-3/blob/ec07e1e48285d31089b7e8cec9e9cf32a7e90c35/contract/src/lib.rs" />
 
-그런 다음 `new_puzzle` 메서드를 다음과 같이 수정합니다.
+Then we modify our `new_puzzle` method like so:
 
-```rust reference
-https://github.com/near-examples/crossword-tutorial-chapter-3/blob/ec07e1e48285d31089b7e8cec9e9cf32a7e90c35/contract/src/lib.rs#L290-L297
-```
+<Github language="rust" start="290" end="297" url="https://github.com/near-examples/crossword-tutorial-chapter-3/blob/ec07e1e48285d31089b7e8cec9e9cf32a7e90c35/contract/src/lib.rs" />
 
 우리는 원하는 방법을 사용하여 원래 인수를 가져와 base64로 인코딩할 수 있습니다. 많은 온라인 도구, 터미널 명령 및 [Boop](https://boop.okat.best)과 같은 오픈 소스 애플리케이션이 있습니다.
 

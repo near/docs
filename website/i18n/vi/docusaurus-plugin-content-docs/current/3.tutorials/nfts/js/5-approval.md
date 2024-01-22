@@ -4,6 +4,8 @@ title: Approval
 sidebar_label: Approval
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 Trong bài hướng dẫn này bạn sẽ học được những điều cơ bản của một hệ thống approval management, nó sẽ cho phép bạn cấp quyền truy cập cho người khác để transfer các NFT thay mình. Đây là xương sống của tất cả các NFT marketplace và cho phép một số tình huống phức tạp nhưng cần thiết xảy ra. Nếu bạn tham gia với chúng tôi lần đầu, đừng ngại clone [repository này](https://github.com/near-examples/nft-tutorial) và checkout branch `4.core` để theo dõi.
 
 :::caution
@@ -122,23 +124,17 @@ Marketplace được chèn vào map và next approval ID được tăng lên. T�
 
 Bây giờ bạn đã hiểu giải pháp được đề xuất cho vấn đề ban đầu là cho phép account chuyển NFT của bạn, đã đến lúc thực hiện một số logic. Điều đầu tiên bạn nên làm là sửa đổi cấu trúc của `Token` and `JsonToken` để phản ánh những thay đổi mới. Hãy chuyển sang file `nft-contract/src/metadata.ts`:
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/metadata.ts#L106-L156
-```
+<Github language="js" start="106" end="156" url="https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/metadata.ts" />
 
-Sau đó, bạn sẽ cần phải khởi tạo cả hai hàm `approved_account_ids` và `next_approval_id` về giá trị mặc định của chúng khi token được mint. Switch to the `nft-contract/src/mint.ts` file and when creating the `Token` struct to store in the contract, let's set the next approval ID to be 0 and the approved account IDs to be an empty object:
+You'll then need to initialize both the `approved_account_ids` and `next_approval_id` to their default values when a token is minted. Switch to the `nft-contract/src/mint.ts` file and when creating the `Token` struct to store in the contract, let's set the next approval ID to be 0 and the approved account IDs to be an empty object:
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/mint.ts#L23-L31
-```
+<Github language="js" start="23" end="31" url="https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/mint.ts" />
 
 ### Các approve account
 
 Bây giờ bạn đã thêm hỗ trợ cho các approve account ID và next approval ID ở token level, đã đến lúc thêm logic để tạo và thay đổi các field đó thông qua một function gọi là `nft_approve`. Function này sẽ chấp thuận một account để có quyền truy cập vào một token ID cụ thể. Let's move to the `nft-contract/src/approval.ts` file and edit the `internalNftApprove` function:
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/approval.ts#L9-L73
-```
+<Github language="js" start="9" end="73" url="https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/approval.ts" />
 
 Trước tiên, function sẽ xác nhận rằng người dùng đã đính kèm **ít nhất** một yoctoNEAR (chút nữa chúng ta sẽ triển khai). Điều này để đảm bảo security và trả phí storage. Khi ai đó chấp thuận một account ID, họ sẽ lưu trữ thông tin đó trên contract. Như bạn đã thấy trong [hướng dẫn mint](/tutorials/nfts/js/minting), bạn có thể yêu cầu smart contract account thanh toán cho storage, hoặc bạn có thể bắt người dùng thanh toán chi phí đó. Cách tiếp cận sau có khả năng mở rộng tốt hơn và đó là cách mà bạn sẽ làm việc trong suốt hướng dẫn này.
 
@@ -166,15 +162,11 @@ Bằng cách để message field type chỉ là một string, điều này sẽ 
 
 Now that the core logic for approving an account is finished, you need to implement the `assertAtLeastOneYocto` and `bytesForApprovedAccountId` functions. Move to the `nft-contract/src/internal.ts` file and copy the following function right below the `assertOneYocto` function.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/internal.ts#L61-L64
-```
+<Github language="js" start="61" end="64" url="https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/internal.ts" />
 
 Tiếp theo, bạn sẽ cần copy logic để tính toán chi phí để lưu trữ một account ID là bao nhiêu byte. Đặt function này ở đầu trang:
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/internal.ts#L55-L59
-```
+<Github language="js" start="55" end="59" url="https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/internal.ts" />
 
 Bây giờ, logic để approve account đã hoàn thành, bạn cần thay đổi các hạn chế cho việc transfer.
 
@@ -184,9 +176,7 @@ Hiện tại, một NFT **chỉ** có thể transfer bởi người sở hữu n
 
 In the `internal.ts` file, you need to change the logic of the `internalTransfer` method as that's where the restrictions are being made. Thay đổi internal transfer function thành như sau:
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/internal.ts#L108-L163
-```
+<Github language="js" start="108" end="163" url="https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/internal.ts" />
 
 Việc này sẽ kiểm tra xem người gửi có phải là chủ sở hữu hay không và sau đó nếu họ không phải là chủ sở hữu, nó sẽ kiểm tra người gửi có trong approval list hay không. Nếu một approve ID được truyền vào function, nó sẽ kiểm tra approval ID thực tế của người gửi đã được lữu trữ trên contract có khớp với approve ID được truyền vào hay không.
 
@@ -194,9 +184,7 @@ Việc này sẽ kiểm tra xem người gửi có phải là chủ sở hữu h
 
 Trong khi bạn đang ở internal file, bạn sẽ cần thêm các method để hoàn lại tiền cho user đã trả cho việc lưu trữ các approve account trên contract khi một NFT được transfer. This is because you'll be clearing the `approved_account_ids` object whenever NFTs are transferred and so the storage is no longer being used.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/internal.ts#L13-L28
-```
+<Github language="js" start="13" end="28" url="https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/internal.ts" />
 
 Việc này sẽ hữu ích trong phần tiếp theo, nơi bạn sẽ thay đổi function `nft_core` để thêm vào logic approval mới.
 
@@ -207,27 +195,19 @@ Head over to the `nft-contract/src/nft_core.ts` file and the first change that y
 
 For the `nft_transfer` function, the only change that you'll need to make is to pass in the approval ID into the `internalTransfer` function and then refund the previous tokens approved account IDs after the transfer is finished
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/nft_core.ts#L38-L72
-```
+<Github language="js" start="38" end="72" url="https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/nft_core.ts" />
 
 Next, you need to do the same to `nft_transfer_call` but instead of refunding immediately, you need to attach the previous token's approved account IDs to `nft_resolve_transfer` instead as there's still the possibility that the transfer gets reverted.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/nft_core.ts#L74-L135
-```
+<Github language="js" start="74" end="135" url="https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/nft_core.ts" />
 
 Bạn cũng cần thêm các approve account ID của các token vào `JsonToken` được trả về bởi `nft_token`.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/nft_core.ts#L10-L36
-```
+<Github language="js" start="10" end="36" url="https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/nft_core.ts" />
 
 Finally, you need to add the logic for refunding the approved account IDs in `internalResolveTransfer`. Nếu quá trình transfer thành công, bạn nên hoàn lại tiền cho chủ sở hữu vì đã giải phóng storage bởi reset field `approved_account_ids` của các token. Tuy nhiên, bạn nên revert quá trình transfer nếu không đủ tiền để hoàn lại cho bất kỳ ai. Vì người nhận đã sở hữu token, họ có thể đã thêm các approve account ID của riêng mình và vì vậy bạn nên hoàn lại tiền cho người gửi nếu người nhận đã làm vậy.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/nft_core.ts#L137-L208
-```
+<Github language="js" start="137" end="208" url="https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/nft_core.ts" />
 
 Với việc hoàn thành điều đó, đã đến lúc tiếp tục và hoàn thành nhiệm vụ tiếp theo.
 
@@ -237,9 +217,7 @@ Giờ đây, logic cốt lõi đã được áp dụng cho chấp thuận và ho
 
 Nếu một approval ID được cung cấp, nó sẽ trả về việc account có được chấp thuận và có cùng approval ID với account đã cung cấp hay không. Let's move to the `nft-contract/src/approval.ts` file and add the necessary logic to the `internalNftIsApproved` function.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/approval.ts#L75-L110
-```
+<Github language="js" start="75" end="110" url="https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/approval.ts" />
 
 Bây giờ chúng ta hãy tiếp tục và thêm logic để thu hồi account
 
@@ -247,17 +225,13 @@ Bây giờ chúng ta hãy tiếp tục và thêm logic để thu hồi account
 
 Bước tiếp theo trong hướng dẫn này là cho phép người dùng thu hồi một account được chỉ định khỏi quyền truy cập NFT của họ. Điều đầu tiên bạn sẽ muốn làm là yêu cầu một yocto cho mục đích security. Sau đó bạn cần đảm bảo rằng người gọi là chủ sở hữu của token. Nếu những điều đó đều được đáp ứng, bạn sẽ cần xóa account đã truyền vào khỏi các approve account ID của các token và hoàn lại tiền cho chủ sở hữu vì storage được giải phóng.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/approval.ts#L112-L145
-```
+<Github language="js" start="112" end="145" url="https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/approval.ts" />
 
 ## Thu hồi toàn bộ các account
 
 Bước cuối cùng trong hướng dẫn này là cho phép user thu hồi toàn bộ các account khỏi quyền truy cập NFT của họ. Việc này cũng yêu cầu một yocto cho mục địch security và đảm bảo rằng người gọi là chủ sở hữu của token. Sau đó bạn hoàn tiền cho chủ sở hữu vì đã giải phóng toàn bộ các account trong map và sau đó là xóa `approved_account_ids`.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/approval.ts#L147-L177
-```
+<Github language="js" start="147" end="177" url="https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/approval.ts" />
 
 Với việc hoàn thành điều đó, bây giờ là lúc để deploy và bắt đầu quá trình test contract.
 

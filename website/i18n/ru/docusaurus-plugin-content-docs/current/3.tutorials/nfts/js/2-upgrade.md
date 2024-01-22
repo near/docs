@@ -4,6 +4,8 @@ title: Upgrading the Contract
 sidebar_label: Upgrade a Contract
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 In this tutorial, you'll build off the work you previously did to implement the [minting functionality](/tutorials/nfts/js/minting) on a skeleton smart contract. You got to the point where NFTs could be minted, however, the wallet had no way of displaying the tokens since your contract didn't implement the method that the wallet was trying to call.
 
 
@@ -35,9 +37,7 @@ Luckily, you wrote a function `nft_token` which takes a token ID and returns a `
 
 As for the pagination, you can use some basic JavaScript to get that done. Let's move over to the `enumeration.ts` file and implement that logic:
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/enumeration.ts#L47-L82
-```
+<Github language="js" start="47" end="82" url="https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/enumeration.ts" />
 
 ## Redeploying the contract {#redeploying-contract}
 

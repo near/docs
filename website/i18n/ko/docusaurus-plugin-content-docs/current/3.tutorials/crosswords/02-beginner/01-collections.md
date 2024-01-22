@@ -4,6 +4,8 @@ sidebar_label: "여러 퍼즐 저장"
 title: "LookupMap이라는 NEAR 특화 컬렉션을 사용하여 여러 십자말풀이 퍼즐 저장"
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 import bookPagination from '/docs/assets/crosswords/paging-through-hashes-swing--pierced_staggg.near--pierced_stag.jpg';
 import guardsAroundContract from '/docs/assets/crosswords/guards-contract-permissions--connoisseur_dane.near--connoisseurdane.png';
 
@@ -48,19 +50,15 @@ NEAR의 스마트 컨트랙트들에서 사용되는 여러 규칙을 볼 수 �
 
 반복 가능/불가능한 NEAR 컬렉션에서 구조체가 구성된 방식은 다음과 같습니다.
 
-```rust reference
-https://github.com/near-examples/crossword-tutorial-chapter-2/blob/276217ad82c64c610148e998ec926942ba910a12/contract/src/lib.rs#L73-L79
-```
+<Github language="rust" start="73" end="79" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/276217ad82c64c610148e998ec926942ba910a12/contract/src/lib.rs" />
 
-위에, 컬렉션인 `puzzles` 및 `unsolved_puzzles` 필드가 있습니다.
+Above, we have the `puzzles` and `unsolved_puzzles` fields which are collections.
 
-또한 우리는 `owner_id`를 통해 스마트 컨트랙트 개발에서 일반적인 패턴을 실행할 수 있도록 합니다. 이는 특정 함수에 대한 액세스를 제한할 수 있는 기본 권한 시스템을 구현합니다. 우리는 잠시 후에 이를 확장할 것입니다. 우리는 잠시 후에 이를 확장할 것입니다.
+We also have an `owner_id` so we can exercise a common pattern in smart contract development: implementing a rudimentary permission system which can restrict access to certain functions. We'll expand on this thought in a moment.
 
-아래 스니펫은 `Crossword` 구조체 구현의 첫 번째 메서드를 보여줍니다. 여기서 `new` 함수는 이 두 가지 특수 컬렉션을 설정합니다.
+The snippet below shows the first method in the implementation of the `Crossword` struct, where the `new` function sets up these two specialized collections.
 
-```rust reference
-https://github.com/near-examples/crossword-tutorial-chapter-2/blob/276217ad82c64c610148e998ec926942ba910a12/contract/src/lib.rs#L81-L90
-```
+<Github language="rust" start="81" end="90" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/276217ad82c64c610148e998ec926942ba910a12/contract/src/lib.rs" />
 
 따라서 초기화 함수(`new`) 실행 중에 `owner_id`를 설정합니다. 우리의 목적을 위해, 소유자는 컨트랙트 자체일 가능성이 높지만, 이는 DAO 또는 다른 사용자가 될 수도 있습니다. 다음으로 컬렉션 필드의 `b"c"`및 `b"u"` 비트를 살펴보겠습니다.
 
@@ -72,9 +70,7 @@ https://github.com/near-examples/crossword-tutorial-chapter-2/blob/276217ad82c64
 
 십자말풀이 퍼즐이 하나만 있었던 이전 챕터와 달리, 새 컬렉션에 퍼즐을 삽입할 것이므로, `new_puzzle` 메서드를 만들어 보겠습니다.
 
-```rust reference
-https://github.com/near-examples/crossword-tutorial-chapter-2/blob/8ec941c82539e6eafa4971444e1da9e4819330d3/contract/src/lib.rs#L147-L163
-```
+<Github language="rust" start="147" end="163" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/8ec941c82539e6eafa4971444e1da9e4819330d3/contract/src/lib.rs" />
 
 이제 여러 퍼즐을 저장하도록 설정했습니다!
 

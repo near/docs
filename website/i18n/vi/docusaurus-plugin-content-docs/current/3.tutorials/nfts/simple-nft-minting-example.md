@@ -4,6 +4,8 @@ title: Mint NFT Front-end
 sidebar_label: Mint Front-end
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 # NFT Mint Front-end
 
 > Trong hướng dẫn này bạn sẽ tìm hiểu cách để tạo ra một NFT front-end đơn giản và mint "Go Team" NFT trên NEAR blockchain ngay từ trình duyệt web của mình.
@@ -39,22 +41,18 @@ Then, simply import the contract files from the `main` branch, and you'll have t
 
 Khi mount các component của ứng dụng, ứng dụng kiểm tra sự tồn tại của một non-fungible token.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-frontend/blob/master/src/App.js#L24-L46
-```
+<Github language="js" start="24" end="46" url="https://github.com/near-examples/nft-tutorial-frontend/blob/master/src/App.js" />
 
-Nếu không có NFT nào trước đó được mint, nút mint sẽ sẵn sàng để sử dụng.
+If no prior NFT has been minted, the mint button will be available for use.
 
 ### Nút mint
 
-Đây là function đằng sau nút mint. Meta data đã được điền sẵn cho user:
+Here is the function behind the mint button. The meta data has been filled out for the user already:
 
 - `token_id` được set bởi account id của user,
 - và `media` link được hard-code thành `goteam-gif.gif` lưu trữ trên IPFS.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-frontend/blob/master/src/Components/MintingTool.js#L7-L23
-```
+<Github language="js" start="7" end="23" url="https://github.com/near-examples/nft-tutorial-frontend/blob/master/src/Components/MintingTool.js" />
 
 After hitting the <kbd>Mint NFT</kbd> button the user will be able to check out the newly minted NFT at [wallet.testnet.near.org](https://testnet.mynearwallet.com//?tab=collectibles), under the Wallet's `Collectibles` tab.
 
@@ -62,11 +60,9 @@ After hitting the <kbd>Mint NFT</kbd> button the user will be able to check out 
 
 Bạn có thể tìm repository của ứng dụng hoàn chỉnh [trên GitHub](https://github.com/near-examples/nft-tutorial-frontend) để clone và chạy. Trong thư mục cấu hình bạn có thể nhìn thấy rằng smart contract này đã được deploy tới `nft-frontend-simple-mint.blockhead.testnet`:
 
-```js reference
-https://github.com/near-examples/nft-tutorial-frontend/blob/master/src/config.js#L1-L2
-```
+<Github language="js" start="1" end="2" url="https://github.com/near-examples/nft-tutorial-frontend/blob/master/src/config.js" />
 
-Bạn cũng có thể xem [explorer link tại đây](https://explorer.testnet.near.org/accounts/nft-frontend-simple-mint.blockhead.testnet) để xem có bao nhiêu cá nhân đang mint các NFT _Go Team_ của riêng họ. _**Chúc bạn mint thành công!**_
+You can also check out the [explorer link here](https://testnet.nearblocks.io/address/nft-frontend-simple-mint.blockhead.testnet) to see how many individuals have been minting their own _Go Team_ NFTs. _**Chúc bạn mint thành công!**_
 
 :::tip
 Clone and chạy ví dụ này từ https://github.com/near-examples/nft-tutorial-frontend

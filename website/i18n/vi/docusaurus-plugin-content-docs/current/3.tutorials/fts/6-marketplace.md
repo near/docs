@@ -4,6 +4,8 @@ title: Integrating FT Payments into an NFT Marketplace
 sidebar_label: Adding FTs to a Marketplace
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 In this tutorial, you'll learn the basics of how an NFT marketplace contract works and how you can modify it to allow for purchasing NFTs using Fungible Tokens. In the previous tutorials, you went through and created a fully fledged FT contract that incorporates all the standards found in the [FT standard](https://nomicon.io/Standards/Tokens/FungibleToken/Core).
 
 ## Giới thiệu
@@ -84,17 +86,15 @@ Starting at the `lib.rs` file, this outlines what information is stored on the c
 
 Function đầu tiên bạn sẽ xem là initialization function. This takes an `owner_id` as well as the `ft_id` as the parameters and will default all the storage collections to their default values. The `ft_id` outlines the account ID for the fungible token that the contract will allow.
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/lib.rs#L94-L118
-```
+<Github language="rust" start="94" end="118" url="https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/lib.rs" />
 
 ### Model quản lý storage {#storage-management-model}
 
-Tiếp theo, hãy nói về model quản lý storage được chọn cho contract này. User sẽ cần nạp $NEAR vào trong marketplace để trang trải chi phí storage. Bất cứ khi nào ai đó đặt NFT để bán, marketplace cần lưu trữ thông tin đó với giá $NEAR. Users can either deposit a large amount of $NEAR so that they never have to worry about storage again or they can deposit the minimum amount to cover 1 sale on an as-needed basis.
+Next, let's talk about the storage management model chosen for this contract. Users will need to deposit $NEAR onto the marketplace to cover the storage costs. Whenever someone puts an NFT for sale, the marketplace needs to store that information which costs $NEAR. Users can either deposit a large amount of $NEAR so that they never have to worry about storage again or they can deposit the minimum amount to cover 1 sale on an as-needed basis.
 
-Bạn có thể đang nghĩ về tình huống khi một mặt hàng được mua. Điều gì xảy ra với storage hiện đang được phát hành trên contract? This is why we have a storage withdrawal function. Nó cho phép người dùng rút bất kỳ storage dư thừa không được sử dụng đến. Hãy xem qua vài tình huống để hiểu về logic này. Storage yêu cầu một lần sale là 0.01 NEAR trên marketplace contract.
+You might be thinking about the scenario when a sale is purchased. What happens to the storage that is now being released on the contract? This is why we have a storage withdrawal function. This allows users to withdraw any excess storage that is not being used. Let's go through some scenarios to understand the logic. The required storage for 1 sale is 0.01 NEAR on the marketplace contract.
 
-**Tình huống A**
+**Scenario A**
 
 - Benji muốn đưa NFT lên marketplace nhưng anh ấy chưa bao giờ trả tiền cho storage.
 - Anh ấy nạp chính xác 0.01 NEAR sử dụng method `storage_deposit`. Nó sẽ thanh toán cho 1 lần bán.
@@ -102,17 +102,15 @@ Bạn có thể đang nghĩ về tình huống khi một mặt hàng được mu
 - Dorian thích NFT của anh ấy và nhanh chóng mua nó trước bất cứ ai. Điều này có nghĩa rằng đơn hàng của Benji bây giờ đã bị gỡ xuống (kể từ khi nó được mua) và Benji đã sử dụng 0 trong số 1 lần sale đã thanh toán trước. Nói cách khác, anh ấy đang thừa 1 lần sale hay 0.01 NEAR.
 - Benji bây giờ có thể call `storage_withdraw` và sẽ được chuyển lại 0.01 NEAR cho anh ấy. Về phía contract, sau khi rút tiền, anh ấy sẽ có 0 lần sale được thanh toán sẽ cần phải nạp tiền storage trước khi niêm yết thêm NFT.
 
-**Tình huống B**
+**Scenario B**
 
 - Dorian sở hữu một trăm NFT rất đẹp và anh ta muốn niêm yết toàn bộ.
 - Để tránh phải gọi `storage_deposit` mỗi khi muốn niêm yết một NFT, anh ấy sẽ gọi nó một lần. Vì Dorian là một người có tiền, anh đã đã đính kèm 10 NEAR đủ để thanh toán cho 1000 lần sale. Bây giờ anh ấy thừa 9 NEAR hay 900 lần sale.
 - Dorian cần 9 NEAR để để làm gì đó nhưng anh ấy không muốn gỡ 100 NFT đang niêm yết. Bởi vì anh ấy có thừa 9 NEAR, anh ấy có thể dễ dàng rút và vẫn có 100 NFT đang niêm yết. Sau khi call `storage_withdraw` và được chuyển 9 NEAR, anh ấy có 0 lần sale đang thừa.
 
-Suy nghĩ về hành vi này, hai function dưới đây phác thảo logic.
+With this behavior in mind, the following two functions outline the logic.
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/lib.rs#L120-L183
-```
+<Github language="rust" start="120" end="183" url="https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/lib.rs" />
 
 Trong contract này, storage yêu cầu 0.01 NEAR cho mỗi lần sale nhưng bạn có thể truy vấn thông tin đó sử dụng function `storage_minimum_balance`. Ngoài ra, bạn có thể truy vấn function `storage_balance_of` để kiểm tra một tài khoản nào đó đã thanh toán bao nhiêu storage.
 
@@ -125,15 +123,11 @@ If you want to learn more about how NFTs are put for sale, check out the [NFT ze
 
 In order to purchase NFTs, buyers need to deposit FTs in the contract and call the `offer` function. All the logic for FT deposits is outlined in the `src/ft_balances.rs` file. Starting with the `ft_on_approve` function, this is called when a user transfers FTs to the marketplace contract. The logic can be seen below.
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/ft_balances.rs#L35-L77
-```
+<Github language="rust" start="35" end="77" url="https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/ft_balances.rs" />
 
 Once FTs are deposited into the contract, users can either withdraw their FTs or they can use them to purchase NFTs. The withdrawing flow is outlined in the `ft_withdraw` function. It's important to note that you should decrement the user's balance **before** calling the `ft_transfer` function to avoid a common exploit scenario where a user spams the `ft_withdraw`. If you were to decrement their balance in the callback function (if the transfer was successful), they could spam the `ft_withdraw` during the time it takes the callback function to execute. A better pattern is to decrement their balance before the transfer and then if the promise was **unsuccessful*, revert the balance back to what it was before.
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/ft_balances.rs#L79-L149
-```
+<Github language="rust" start="79" end="149" url="https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/ft_balances.rs" />
 
 ## Mua các NFT
 
@@ -141,16 +135,12 @@ Now that you're familiar with the process of both adding storage and depositing 
 
 Để mua các NFT, bạn phải call function `offer`. It takes an `nft_contract_id`, `token_id`, and the amount you wish to offer as parameters. Behind the scenes, this function will make sure your offer amount is greater than the list price and also that you have enough FTs deposited. It will then call a private method `process_purchase` which will perform a cross-contract call to the NFT contract to invoke the `nft_transfer` function where the NFT will be transferred to the seller.
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/sale.rs#L67-L144
-```
+<Github language="rust" start="67" end="144" url="https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/sale.rs" />
 
 Once the transfer is complete, the contract will call `resolve_purchase` where it will check the status of the transfer.If the transfer succeeded, it will send the FTs to the seller. If the transfer didn't succeed, it will increment the buyer's FT balance (acting as a refund).
 
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/sale.rs#L146-L192
-```
+<Github language="rust" start="146" end="192" url="https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/sale.rs" />
 
 ## View Methods
 

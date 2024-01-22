@@ -4,6 +4,8 @@ title: Skeleton and Rust Architecture
 sidebar_label: Contract Architecture
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 > In this article, you'll learn about the basic architecture behind the FT contract that you'll develop while following this _"Zero to Hero"_ series. You'll discover the contract's layout and you'll see how the Rust files are structured in order to build a feature-complete smart contract.
 
 :::info New to Rust?
@@ -65,9 +67,7 @@ Explore the code in our [GitHub repository](https://github.com/near-examples/ft-
 | **ft_on_transfer**      | Method that lives on a receiver's contract. It is called when FTs are transferred to the receiver's contract account via the `ft_transfer_call` method. It returns how many FTs should be refunded back to the sender.                                                                                                                                                                                                                                     |
 | **ft_resolve_transfer** | Invoked after the `ft_on_transfer` is finished executing. This function will refund any FTs not used by the receiver contract and will return the net number of FTs sent to the receiver after the refund (if any).                                                                                                                                                                                                                                        |
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/1.skeleton/src/ft_core.rs#L61-L166
-```
+<Github language="rust" start="61" end="166" url="https://github.com/near-examples/ft-tutorial/blob/main/1.skeleton/src/ft_core.rs" />
 
 You'll learn more about these functions in the [circulating supply](/tutorials/fts/circulating-supply) and [transfers](/tutorials/fts/transfers) sections of the tutorial series.
 
@@ -86,9 +86,7 @@ You'll learn more about these functions in the [circulating supply](/tutorials/f
 The initialization functions (`new`, `new_default_meta`) can only be called once.
 :::
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/1.skeleton/src/lib.rs#L34-L58
-```
+<Github language="rust" start="34" end="58" url="https://github.com/near-examples/ft-tutorial/blob/main/1.skeleton/src/lib.rs" />
 
 You'll learn more about these functions in the [define a token](2-define-a-token.md) section of the tutorial series.
 
@@ -103,9 +101,7 @@ You'll learn more about these functions in the [define a token](2-define-a-token
 | **FungibleTokenMetadata** | This structure defines the metadata for the fungible token.  |
 | **ft_metadata**           | This function allows users to query for the token's metadata |
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/1.skeleton/src/metadata.rs#L10-L30
-```
+<Github language="rust" start="10" end="30" url="https://github.com/near-examples/ft-tutorial/blob/main/1.skeleton/src/metadata.rs" />
 
 You'll learn more about these functions in the [define a token](2-define-a-token.md) section of the tutorial series.
 
@@ -121,9 +117,7 @@ You'll learn more about these functions in the [define a token](2-define-a-token
 | **storage_balance_bounds** | Returns the minimum and maximum allowed storage deposit required to interact with the contract. In the FT contract's case, min = max.                                                              |
 | **storage_balance_of**     | Returns the total and available storage paid by a given user. In the FT contract's case, available is always 0 since it's used by the contract for registration and you can't overpay for storage. |
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/1.skeleton/src/storage.rs#L79-L106
-```
+<Github language="rust" start="79" end="106" url="https://github.com/near-examples/ft-tutorial/blob/main/1.skeleton/src/storage.rs" />
 
 :::tip
 You'll learn more about these functions in the [storage](4.storage.md) section of the tutorial series.

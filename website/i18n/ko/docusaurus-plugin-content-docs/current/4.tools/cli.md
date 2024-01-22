@@ -444,7 +444,7 @@ near add-key example-acct.testnet Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1S
     Adding full access key = Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1S to example-acct.testnet.
     Transaction Id EwU1ooEvkR42HvGoJHu5ou3xLYT3JcgQwFV3fAwevGJg
     To see the transaction in the transaction explorer, please open this url in your browser
-    https://explorer.testnet.near.org/transactions/EwU1ooEvkR42HvGoJHu5ou3xLYT3JcgQwFV3fAwevGJg
+    https://testnet.nearblocks.io/txns/EwU1ooEvkR42HvGoJHu5ou3xLYT3JcgQwFV3fAwevGJg
 
 </p>
 </details>
@@ -477,7 +477,7 @@ near add-key example-acct.testnet GkMNfc92fwM1AmwH1MTjF4b7UZuceamsq96XPkHsQ9vi -
     Adding function call access key = GkMNfc92fwM1AmwH1MTjF4b7UZuceamsq96XPkHsQ9vi to example-acct.testnet.
     Transaction Id H2BQL9fXVmdTbwkXcMFfZ7qhZqC8fFhsA8KDHFdT9q2r
     To see the transaction in the transaction explorer, please open this url in your browser
-    https://explorer.testnet.near.org/transactions/H2BQL9fXVmdTbwkXcMFfZ7qhZqC8fFhsA8KDHFdT9q2r
+    https://testnet.nearblocks.io/txns/H2BQL9fXVmdTbwkXcMFfZ7qhZqC8fFhsA8KDHFdT9q2r
 
 </p>
 </details>
@@ -503,7 +503,7 @@ near delete-key example-acct.testnet Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1
 
     Transaction Id 4PwW7vjzTCno7W433nu4ieA6FvsAjp7zNFwicNLKjQFT
     To see the transaction in the transaction explorer, please open this url in your browser
-    https://explorer.testnet.near.org/transactions/4PwW7vjzTCno7W433nu4ieA6FvsAjp7zNFwicNLKjQFT
+    https://testnet.nearblocks.io/txns/4PwW7vjzTCno7W433nu4ieA6FvsAjp7zNFwicNLKjQFT
 
 ---
 
@@ -614,7 +614,7 @@ near send sender.testnet receiver.testnet 10
     Sending 10 NEAR to receiver.testnet from sender.testnet
     Transaction Id BYTr6WNyaEy2ykAiQB9P5VvTyrJcFk6Yw95HPhXC6KfN
     To see the transaction in the transaction explorer, please open this url in your browser
-    https://explorer.testnet.near.org/transactions/BYTr6WNyaEy2ykAiQB9P5VvTyrJcFk6Yw95HPhXC6KfN
+    https://testnet.nearblocks.io/txns/BYTr6WNyaEy2ykAiQB9P5VvTyrJcFk6Yw95HPhXC6KfN
 
 ---
 
@@ -640,7 +640,7 @@ near delete sub-acct2.example-acct.testnet example-acct.testnet
     Deleting account. Account id: sub-acct2.example-acct.testnet, node: https://rpc.testnet.near.org,  beneficiary: example-acct.testnet
     Transaction Id 4x8xohER1E3yxeYdXPfG8GvXin1ShiaroqE5GdCd5YxX
     To see the transaction in the transaction explorer, please open this url in your browser
-    https://explorer.testnet.near.org/transactions/4x8xohER1E3yxeYdXPfG8GvXin1ShiaroqE5GdCd5YxX
+    https://testnet.nearblocks.io/txns/4x8xohER1E3yxeYdXPfG8GvXin1ShiaroqE5GdCd5YxX
     Account sub-acct2.example-acct.testnet for network "default" was deleted.
 
 :::warning 토큰 손실 수령자 계정이 존재하지 않는 경우 환불 Receipt가 생성되어 원래 계정으로 다시 전송됩니다. 그러나 원래 계정이 이미 삭제되었으므로 오류가 발생할 것이고, **자금은 밸리데이터에게 분배됩니다**. :::
@@ -677,7 +677,7 @@ near deploy --accountId example-contract.testnet --wasmFile out/example.wasm --i
     Starting deployment. Account id: example-contract.testnet, node: https://rpc.testnet.near.org,  file: main.wasm
     Transaction Id G8GhhPuujMHTRnwursPXE1Lv5iUZ8WUecwiST1PcKWMt
     To see the transaction in the transaction explorer, please open this url in your browser
-    https://explorer.testnet.near.org/transactions/G8GhhPuujMHTRnwursPXE1Lv5iUZ8WUecwiST1PcKWMt
+    https://testnet.nearblocks.io/txns/G8GhhPuujMHTRnwursPXE1Lv5iUZ8WUecwiST1PcKWMt
     Done deploying to example-contract.testnet
 
 </p>
@@ -701,7 +701,7 @@ near dev-deploy out/main.wasm
     Starting deployment. Account id: dev-1603749005325-6432576, node: https://rpc.testnet.near.org,  file: out/main.wasm
     Transaction Id 5nixQT87KeN3eZFX7zwBLUAKSY4nyjhwzLF27SWWKkAp
     To see the transaction in the transaction explorer, please open this url in your browser
-    https://explorer.testnet.near.org/transactions/5nixQT87KeN3eZFX7zwBLUAKSY4nyjhwzLF27SWWKkAp
+    https://testnet.nearblocks.io/txns/5nixQT87KeN3eZFX7zwBLUAKSY4nyjhwzLF27SWWKkAp
     Done deploying to dev-1603749005325-6432576
 
 ---
@@ -735,7 +735,7 @@ near call guest-book.testnet addMessage '{"text": "Aloha"}' --accountId example-
 Scheduling a call: guest-book.testnet.addMessage({"text": "Aloha"})
 Transaction Id FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK
 To see the transaction in the transaction explorer, please open this url in your browser
-https://explorer.testnet.near.org/transactions/FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK
+https://testnet.nearblocks.io/txns/FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK
 ''
 ```
 ---

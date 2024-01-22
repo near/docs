@@ -57,7 +57,7 @@ Các kết quả cuối cùng của transaction có thể được query qua [Tr
 }
 ```
 
-Các kết quả cuối cùng của transaction có thể được query qua [Transaction Status](#transaction-status) hoặc [NEAR Explorer](https://explorer.testnet.near.org/) bằng cách sử dụng `kết quả` hash được trả về như ví dụ sau đây.
+Final transaction results can be queried using [Transaction Status](#transaction-status) or [NearBlocks Explorer](https://testnet.nearblocks.io/) using the above `result` hash returning a result similar to the example below.
 
 ![NEAR-Explorer-transactionHash](/docs/assets/NEAR-Explorer-transactionHash.png)
 
@@ -331,7 +331,7 @@ Ví dụ:
 
 - method: `tx`
 - các param:
-  - `transaction hash` _(xem [NEAR Explorer](https://explorer.testnet.near.org) để hiểu về một transaction hash hợp lệ)_
+  - `transaction hash` _(see [NearBlocks Explorer](https://testnet.nearblocks.io) for a valid transaction hash)_
   - `sender account id`
 
 Dưới đây là danh sách đầy đủ các error variant có thể được trả về theo loại request `view_access_key_list`:
@@ -605,7 +605,7 @@ Ví dụ:
 
 - method: `EXPERIMENTAL_tx_status`
 - các param:
-  - `transaction hash` _(xem [NEAR Explorer](https://explorer.testnet.near.org) để hiểu về một transaction hash hợp lệ)_
+  - `transaction hash` _(see [NearBlocks Explorer](https://testnet.nearblocks.io) for a valid transaction hash)_
   - `sender account id` _(được sử dụng để xác định shard nào cần query cho transaction)_
 
 Dưới đây là danh sách đầy đủ các error variant có thể được trả về theo loại request `view_access_key_list`:
@@ -982,7 +982,7 @@ Ví dụ:
 
 - method: `EXPERIMENTAL_receipt`
 - các param:
-  - `receipt_id` _(xem [NEAR Explorer](https://explorer.testnet.near.org) để hiểu về một receipt id hợp lệ)_
+  - `receipt_id` _(see [NearBlocks Explorer](https://testnet.nearblocks.io) for a valid receipt id)_
 
 Dưới đây là danh sách đầy đủ các error variant có thể được trả về theo loại request `view_access_key_list`:
 

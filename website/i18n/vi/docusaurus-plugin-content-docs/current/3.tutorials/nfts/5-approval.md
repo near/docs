@@ -4,6 +4,8 @@ title: Approval
 sidebar_label: Approval
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 Trong bài hướng dẫn này bạn sẽ học được những điều cơ bản của một hệ thống approval management, nó sẽ cho phép bạn cấp quyền truy cập cho người khác để transfer các NFT thay mình. Đây là xương sống của tất cả các NFT marketplace và cho phép một số tình huống phức tạp nhưng cần thiết xảy ra. Nếu bạn tham gia với chúng tôi lần đầu, đừng ngại clone [repository này](https://github.com/near-examples/nft-tutorial) và checkout branch `4.core` để theo dõi.
 
 
@@ -116,23 +118,17 @@ Marketplace được chèn vào map và next approval ID được tăng lên. T�
 
 Bây giờ bạn đã hiểu giải pháp được đề xuất cho vấn đề ban đầu là cho phép account chuyển NFT của bạn, đã đến lúc thực hiện một số logic. Điều đầu tiên bạn nên làm là sửa đổi cấu trúc của `Token` and `JsonToken` để phản ánh những thay đổi mới. Hãy chuyển sang file `nft-contract/src/metadata.rs`:
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/metadata.rs#L39-L61
-```
+<Github language="rust" start="39" end="61" url="https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/metadata.rs" />
 
-Sau đó, bạn sẽ cần phải khởi tạo cả hai hàm `approved_account_ids` và `next_approval_id` về giá trị mặc định của chúng khi token được mint. Chuyển sang file `nft-contract/src/mint.rs` và khi tạo cấu trúc `Token` để lưu trữ trong contract, hãy đặt next approval ID là 0 và các approve account ID là một empty map:
+You'll then need to initialize both the `approved_account_ids` and `next_approval_id` to their default values when a token is minted. Switch to the `nft-contract/src/mint.rs` file and when creating the `Token` struct to store in the contract, let's set the next approval ID to be 0 and the approved account IDs to be an empty map:
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/mint.rs#L15-L22
-```
+<Github language="rust" start="15" end="22" url="https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/mint.rs" />
 
 ### Các approve account
 
 Bây giờ bạn đã thêm hỗ trợ cho các approve account ID và next approval ID ở token level, đã đến lúc thêm logic để tạo và thay đổi các field đó thông qua một function gọi là `nft_approve`. Function này sẽ chấp thuận một account để có quyền truy cập vào một token ID cụ thể. Hãy chuyển đến file `nft-contract/src/approval.rs` và chỉnh sửa function `nft_approve`:
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/approval.rs#L38-L96
-```
+<Github language="rust" start="38" end="96" url="https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/approval.rs" />
 
 Trước tiên, function sẽ xác nhận rằng người dùng đã đính kèm **ít nhất** một yoctoNEAR (chút nữa chúng ta sẽ triển khai). Điều này để đảm bảo security và trả phí storage. Khi ai đó chấp thuận một account ID, họ sẽ lưu trữ thông tin đó trên contract. Như bạn đã thấy trong [hướng dẫn mint](/tutorials/nfts/minting), bạn có thể yêu cầu smart contract account thanh toán cho storage, hoặc bạn có thể bắt người dùng thanh toán chi phí đó. Cách tiếp cận sau có khả năng mở rộng tốt hơn và đó là cách mà bạn sẽ làm việc trong suốt hướng dẫn này.
 
@@ -160,15 +156,11 @@ Bằng cách để message field type chỉ là một string, điều này sẽ 
 
 Bây giờ, logic cốt lỗi để chấp thuận một account đã hoàn tất, bạn cần tiến hành các function `assert_at_least_one_yocto` và `bytes_for_approved_account`. Di chuyển đến file `nft-contract/src/internal.rs` và copy function dưới đây ngay bên dưới function `assert_one_yocto`.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/internal.rs#L52-L58
-```
+<Github language="rust" start="52" end="58" url="https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/internal.rs" />
 
 Tiếp theo, bạn sẽ cần copy logic để tính toán chi phí để lưu trữ một account ID là bao nhiêu byte. Đặt function này ở đầu trang:
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/internal.rs#L1-L9
-```
+<Github language="rust" start="1" end="9" url="https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/internal.rs" />
 
 Bây giờ, logic để approve account đã hoàn thành, bạn cần thay đổi các hạn chế cho việc transfer.
 
@@ -178,9 +170,7 @@ Hiện tại, một NFT **chỉ** có thể transfer bởi người sở hữu n
 
 Trong file `internal.rs`, bạn cần thay đổi logic của method `internal_transfer` vì đó là nơi mà các hạn chế đang được tạo ra. Thay đổi internal transfer function thành như sau:
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/internal.rs#L135-L201
-```
+<Github language="rust" start="135" end="201" url="https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/internal.rs" />
 
 Việc này sẽ kiểm tra xem người gửi có phải là chủ sở hữu hay không và sau đó nếu họ không phải là chủ sở hữu, nó sẽ kiểm tra người gửi có trong approval list hay không. Nếu một approve ID được truyền vào function, nó sẽ kiểm tra approval ID thực tế của người gửi đã được lữu trữ trên contract có khớp với approve ID được truyền vào hay không.
 
@@ -190,9 +180,7 @@ Trong khi bạn đang ở internal file, bạn sẽ cần thêm các method đ�
 
 Ngay bên dưới function `bytes_for_approved_account_id`, copy hai function bên dưới:
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/internal.rs#L11-L32
-```
+<Github language="rust" start="11" end="32" url="https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/internal.rs" />
 
 Việc này sẽ hữu ích trong phần tiếp theo, nơi bạn sẽ thay đổi function `nft_core` để thêm vào logic approval mới.
 
@@ -200,39 +188,27 @@ Việc này sẽ hữu ích trong phần tiếp theo, nơi bạn sẽ thay đổ
 
 Đi tới file `nft-contract/src/nft_core.rs` và thay đổi đầu tiên mà bạn muốn thực hiện là thêm một `approval_id` tới cả hai function `nft_transfer` và `nft_transfer_call`. Việc này để bất kỳ ai không phải là chủ sở hữu đang cố gắng transfer token, phải truyền vào một approval ID để giải quyết vấn đề đã thấy trước đó. Nếu họ là chủ sở hữu, approval ID sẽ không được sử dụng như chúng ta đã thấy trong function `internal_transfer`.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/nft_core.rs#L8-L29
-```
+<Github language="rust" start="8" end="29" url="https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/nft_core.rs" />
 
 Sau đó, bạn sẽ cần thêm một map `approved_account_ids` tới các tham số của `nft_resolve_transfer`. Việc này để bạn có thể hoàn lại tiền cho các account nếu việc transfer diễn ra bình thường.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/nft_core.rs#L47-L62
-```
+<Github language="rust" start="47" end="62" url="https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/nft_core.rs" />
 
 Chuyển sang `nft_transfer`, thay đổi duy nhất mà bạn cần thực hiện là truyền approval ID vào function `internal_transfer` và sau đó trả lại các approve account ID của các token trước đó sau khi quá trình transfer đã kết thúc
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/nft_core.rs#L67-L96
-```
+<Github language="rust" start="67" end="96" url="https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/nft_core.rs" />
 
 Next, you need to do the same to `nft_transfer_call` but instead of refunding immediately, you need to attach the previous token's approved account IDs to `nft_resolve_transfer` instead as there's still the possibility that the transfer gets reverted.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/nft_core.rs#L98-L145
-```
+<Github language="rust" start="98" end="145" url="https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/nft_core.rs" />
 
 Bạn cũng cần thêm các approve account ID của các token vào `JsonToken` được trả về bởi `nft_token`.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/nft_core.rs#L147-L163
-```
+<Github language="rust" start="147" end="163" url="https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/nft_core.rs" />
 
 Cuối cùng, bạn cần thêm logic để hoàn trả các approve account ID trong `nft_resolve_transfer`. Nếu quá trình transfer thành công, bạn nên hoàn lại tiền cho chủ sở hữu vì đã giải phóng storage bởi reset field `approved_account_ids` của các token. Tuy nhiên, bạn nên revert quá trình transfer nếu không đủ tiền để hoàn lại cho bất kỳ ai. Vì người nhận đã sở hữu token, họ có thể đã thêm các approve account ID của riêng mình và vì vậy bạn nên hoàn lại tiền cho người gửi nếu người nhận đã làm vậy.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/nft_core.rs#L168-L234
-```
+<Github language="rust" start="168" end="234" url="https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/nft_core.rs" />
 
 Với việc hoàn thành điều đó, đã đến lúc tiếp tục và hoàn thành nhiệm vụ tiếp theo.
 
@@ -242,9 +218,7 @@ Giờ đây, logic cốt lõi đã được áp dụng cho chấp thuận và ho
 
 Nếu một approval ID được cung cấp, nó sẽ trả về việc account có được chấp thuận và có cùng approval ID với account đã cung cấp hay không. Let's move to the `nft-contract/src/approval.rs` file and add the necessary logic to the `nft_is_approved` function.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/approval.rs#L98-L125
-```
+<Github language="rust" start="98" end="125" url="https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/approval.rs" />
 
 Bây giờ chúng ta hãy tiếp tục và thêm logic để thu hồi account
 
@@ -252,17 +226,13 @@ Bây giờ chúng ta hãy tiếp tục và thêm logic để thu hồi account
 
 Bước tiếp theo trong hướng dẫn này là cho phép người dùng thu hồi một account được chỉ định khỏi quyền truy cập NFT của họ. Điều đầu tiên bạn sẽ muốn làm là yêu cầu một yocto cho mục đích security. Sau đó bạn cần đảm bảo rằng người gọi là chủ sở hữu của token. Nếu những điều đó đều được đáp ứng, bạn sẽ cần xóa account đã truyền vào khỏi các approve account ID của các token và hoàn lại tiền cho chủ sở hữu vì storage được giải phóng.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/approval.rs#L127-L151
-```
+<Github language="rust" start="127" end="151" url="https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/approval.rs" />
 
 ## Thu hồi toàn bộ các account
 
 Bước cuối cùng trong hướng dẫn này là cho phép user thu hồi toàn bộ các account khỏi quyền truy cập NFT của họ. Việc này cũng yêu cầu một yocto cho mục địch security và đảm bảo rằng người gọi là chủ sở hữu của token. Sau đó bạn hoàn tiền cho chủ sở hữu vì đã giải phóng toàn bộ các account trong map và sau đó là xóa `approved_account_ids`.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/approval.rs#L153-L174
-```
+<Github language="rust" start="153" end="174" url="https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/approval.rs" />
 
 Với việc hoàn thành điều đó, bây giờ là lúc để deploy và bắt đầu quá trình test contract.
 

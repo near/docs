@@ -4,6 +4,8 @@ sidebar_label: "Cross-contract calls, etc."
 title: "Adding cross-contract calls, access key shuffling, etc."
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 # Updating the contract
 
 import shuffleKeys from '/docs/assets/crosswords/shuffle-keys.gif';
@@ -45,9 +47,7 @@ The previous chapter [we discussed enums](../02-beginner/02-structs-enums.md#usi
 
 First, let's see how the `submit_solution` will verify the correct solution.
 
-```rust reference
-https://github.com/near-examples/crossword-tutorial-chapter-3/blob/ec07e1e48285d31089b7e8cec9e9cf32a7e90c35/contract/src/lib.rs#L145-L151
-```
+<Github language="rust" start="145" end="151" url="https://github.com/near-examples/crossword-tutorial-chapter-3/blob/ec07e1e48285d31089b7e8cec9e9cf32a7e90c35/contract/src/lib.rs" />
 
 Instead of hashing the plaintext, we simply check that the public key matches what we know the answer is. (The answer being the series of words representing the solution to the crossword puzzle, used as a seed phrase to create a key pair, including a public key.)
 
@@ -60,9 +60,7 @@ Further down in the `submit_solution` method we'll follow our plan by **adding a
 
 <br/>
 
-```rust reference
-https://github.com/near-examples/crossword-tutorial-chapter-3/blob/ec07e1e48285d31089b7e8cec9e9cf32a7e90c35/contract/src/lib.rs#L175-L181
-```
+<Github language="rust" start="175" end="181" url="https://github.com/near-examples/crossword-tutorial-chapter-3/blob/ec07e1e48285d31089b7e8cec9e9cf32a7e90c35/contract/src/lib.rs" />
 
 The first promise above adds an access key, and the second deletes the access key on the account that was derived from the solution as a seed phrase.
 
@@ -86,9 +84,7 @@ Both functions will do cross-contract calls and use callbacks to see the result.
 
 We're going to be making a cross-contract call to the linkdrop account deployed to the `testnet` account. We're also going to have callbacks for that, and for a simple transfer to a (potentially existing) account. We'll create the traits that define both those methods.
 
-```rust reference
-https://github.com/near-examples/crossword-tutorial-chapter-3/blob/ec07e1e48285d31089b7e8cec9e9cf32a7e90c35/contract/src/lib.rs#L19-L45
-```
+<Github language="rust" start="19" end="45" url="https://github.com/near-examples/crossword-tutorial-chapter-3/blob/ec07e1e48285d31089b7e8cec9e9cf32a7e90c35/contract/src/lib.rs" />
 
 :::tip It's not necessary to create the trait for the callback as we could have just implemented the functions `callback_after_transfer` and `callback_after_create_account` in our `Crossword` struct implementation. We chose to define the trait and implement it to make the code a bit more readable. :::
 
@@ -138,9 +134,7 @@ This `claim_reward` method will attempt to use the `Transfer` Action to send NEA
 
 Let's see how we check this in the callback:
 
-```rust reference
-https://github.com/near-examples/crossword-tutorial-chapter-3/blob/ec07e1e48285d31089b7e8cec9e9cf32a7e90c35/contract/src/lib.rs#L381-L411
-```
+<Github language="rust" start="381" end="411" url="https://github.com/near-examples/crossword-tutorial-chapter-3/blob/ec07e1e48285d31089b7e8cec9e9cf32a7e90c35/contract/src/lib.rs" />
 
 :::info The `#[private]` macro Notice that above the function, we have declared it to be private.
 
@@ -189,9 +183,7 @@ pub fn claim_reward_new_account(
 
 Then the callback:
 
-```rust reference
-https://github.com/near-examples/crossword-tutorial-chapter-3/blob/ec07e1e48285d31089b7e8cec9e9cf32a7e90c35/contract/src/lib.rs#L413-L448
-```
+<Github language="rust" start="413" end="448" url="https://github.com/near-examples/crossword-tutorial-chapter-3/blob/ec07e1e48285d31089b7e8cec9e9cf32a7e90c35/contract/src/lib.rs" />
 
 In the above snippet, there's one difference from the callback we saw in `claim_reward`: we capture the value returned from the smart contract we just called. Since the linkdrop contract returns a bool, we can expect that type. (See the comments with "NOTE:" above, highlighting this.)
 

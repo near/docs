@@ -4,6 +4,8 @@ title: Customizing the NFT Contract
 sidebar_label: Lazy Minting, Collections, and More!
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 In this tutorial, you'll learn how to take the [existing NFT contract](https://github.com/near-examples/nft-tutorial) you've been working with and modify it to meet some of the most common needs in the ecosystem. This includes:
 - Lazy Minting NFTs
 - Creating Collections
@@ -141,9 +143,7 @@ We've also added a field `tokens` which keeps track of all the token IDs that ha
 
 `series.rs` is a new file that replaces the old [minting](2-minting.md) logic. This file has been created to combine both the series creation and minting logic into one.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/series.rs#L7-L58
-```
+<Github language="rust" start="7" end="58" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/series.rs" />
 
 The function takes in a series ID in the form of a [u64](https://doc.rust-lang.org/std/primitive.u64.html), the metadata, royalties, and the price for tokens in the series. It will then create the [Series object](#series-object) and insert it into the contract's series_by_id data structure. It's important to note that the caller must be an approved creator and they must attach enough $NEAR to cover storage costs.
 
@@ -173,9 +173,7 @@ If **no price** was specified in the series and the user attaches more deposit t
 
 :::info Notice how the token ID isn't required? This is because the token ID is automatically generated when minting. The ID stored on the contract is `${series_id}:${token_id}` where the token ID is a nonce that increases each time a new token is minted in a series. This not only reduces the amount of information stored on the contract but it also acts as a way to check the specific edition number. :::
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/series.rs#L60-L149
-```
+<Github language="rust" start="60" end="149" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/series.rs" />
 
 ### View Functions
 
@@ -187,9 +185,7 @@ The common practice is to return everything **except** the `UnorderedSet` in a s
 <!-- TODO: add a learn more here call to action -->
 :::
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs#L5-L16
-```
+<Github language="rust" start="5" end="16" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs" />
 
 The view functions are listed below.
 - **[get_series_total_supply](https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs#L92)**: Get the total number of series currently on the contract.
@@ -204,6 +200,7 @@ The view functions are listed below.
   - Arguments: `id: number`, `from_index: String | null`, `limit: number | null`.
 
 :::info Notice how with every pagination function, we've also included a getter to view the total supply. This is so that you can use the `from_index` and `limit` parameters of the pagination functions in conjunction with the total supply so you know where to end your pagination. :::
+
 ### Modifying View Calls for Optimizations
 
 Storing information on-chain can be very expensive. As you level up in your smart contract development skills, one area to look into is reducing the amount of information stored. View calls are a perfect example of this optimization.
@@ -212,9 +209,7 @@ For example, if you wanted to relay the edition number for a given NFT in its ti
 
 To do this, here's a way of modifying the `nft_token` function as it's central to all enumeration methods.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/nft_core.rs#L156-L193
-```
+<Github language="rust" start="156" end="193" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/nft_core.rs" />
 
 For example if a token had a title `"My Amazing Go Team Gif"` and the NFT was edition 42, the new title returned would be `"My Amazing Go Team Gif - 42"`. If the NFT didn't have a title in the metadata, the series and edition number would be returned in the form of `Series {} : Edition {}`.
 
@@ -416,7 +411,7 @@ Receipts: BrJLxCVmxLk3yNFVnwzpjZPDRhiCinNinLQwj9A7184P, 3UwUgdq7i1VpKyw3L5bmJvbU
     Log [dev-1660936980897-79989663811468]: EVENT_JSON:{"standard":"nep171","version":"nft-1.0.0","event":"nft_mint","data":[{"owner_id":"benjiman.testnet","token_ids":["2:1"]}]}
 Transaction Id FxWLFGuap7SFrUPLskVr7Uxxq8hpDtAG76AvshWppBVC
 To see the transaction in the transaction explorer, please open this url in your browser
-https://explorer.testnet.near.org/transactions/FxWLFGuap7SFrUPLskVr7Uxxq8hpDtAG76AvshWppBVC
+https://testnet.nearblocks.io/txns/FxWLFGuap7SFrUPLskVr7Uxxq8hpDtAG76AvshWppBVC
 ''
 ```
 

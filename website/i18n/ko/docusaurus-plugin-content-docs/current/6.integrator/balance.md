@@ -29,12 +29,12 @@ near send sender.testnet receiver.testnet 1
 Sending 1 NEAR to receiver.testnet from sender.testnet
 Transaction Id 4To336bYcoGc3LMucJPMk6fMk5suKfCrdNotrRtTxqDy
 To see the transaction in the transaction explorer, please open this url in your browser
-https://explorer.testnet.near.org/transactions/4To336bYcoGc3LMucJPMk6fMk5suKfCrdNotrRtTxqDy
+https://testnet.nearblocks.io/txns/4To336bYcoGc3LMucJPMk6fMk5suKfCrdNotrRtTxqDy
 ```
 
 ## 잔고 변화 보기 {#view-balance-changes}
 
-- [NEAR 익스플로러](https://explorer.testnet.near.org/)에서 트랜잭션 URL을 열고, `BLOCK HASH`를 복사합니다.
+- Open the transaction URL in [NearBlocks Explorer](https://testnet.nearblocks.io/) and copy the `BLOCK HASH`.
 - `BLOCK HASH`와 accountId를 사용하여, [변경 RPC 엔드포인트](/api/rpc/setup#view-account-changes)를 쿼리하여 변화를 확인합니다.
 
 **HTTPie를 사용한 쿼리 예시:**

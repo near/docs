@@ -4,6 +4,8 @@ sidebar_label: "Rust 및 컨트랙트 뼈대 설정"
 title: "Rust를 설정하고, NEAR 테스트넷 계정과 NEAR CLI를 설정하며, 기본적인 스마트 컨트랙트 뼈대를 준비하세요"
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 # 시작하기
 
 이 튜토리얼에서는 테스트넷 계정을 만들고, NEAR CLI를 사용하여 컴퓨터 파일 시스템에 키를 추가하고 Rust 스마트 컨트랙트의 기본 뼈대를 설정합니다.
@@ -88,11 +90,9 @@ edition = "2018"
 
 이제 `src/lib.rs` 내 메인 파일을 살펴보겠습니다:
 
-```rust reference
-https://github.com/near/boilerplate-template-rs/blob/f1edeead98a9ec12c3f6db311f62025305f57874/contract/src/lib.rs#L8-L44
-```
+<Github language="rust" start="8" end="44" url="https://github.com/near/boilerplate-template-rs/blob/f1edeead98a9ec12c3f6db311f62025305f57874/contract/src/lib.rs" />
 
-보시다시피, 여기에 여러 가지를 채워야 합니다. 잠시 멈추고 몇 가지 항목을 지적해 보겠습니다:
+As you can see, this is a stub that's ready to be filled in. Let's pause and point out a few items:
 
 - [**near_bindgen** 매크로](/sdk/rust/contract-structure/near-bindgen)는 struct와 impl 위에 있습니다.
 - 여기서 기본 구조체는 `Contract`이지만, 다른 예에서는 `Counter`이거나 다른 것일 수 있습니다. 이는 순전히 작성자의 마음이지만, 이전 항목의 링크에서 더 많은 정보를 얻을 수 있습니다.

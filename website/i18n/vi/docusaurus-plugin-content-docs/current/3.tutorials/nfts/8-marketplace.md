@@ -4,6 +4,8 @@ title: Marketplace
 sidebar_label: Marketplace
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 Trong hướng dẫn này, bạn sẽ tìm hiểu những điều cơ bản của một NFT marketplace contract, nơi bạn có thể mua và bán các non-fungible token bằng $NEAR. Trong những hướng dẫn trước, bạn đã đi qua và tạo một NFT contract hoàn chỉnh đầy đủ kết hợp tất cả các tiêu chuẩn có trong [tiêu chuẩn NFT](https://nomicon.io/Standards/NonFungibleToken).
 
 ## Giới thiệu
@@ -63,19 +65,17 @@ File này phác thảo thông tin nào được lưu trữ trên contract cũng 
 
 Function đầu tiên bạn sẽ xem là initialization function. Nó lấy một `owner_id` làm tham số duy nhất và sẽ mặc định tất cả các storage collection bằng giá trị mặc định của chúng.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/lib.rs#L85-L105
-```
+<Github language="rust" start="85" end="105" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/lib.rs" />
 
 ### Model quản lý storage {#storage-management-model}
 
-Tiếp theo, hãy nói về model quản lý storage được chọn cho contract này. Trên NFT contract, user đã đính kèm $NEAR với các call cần thanh toán cho storage. Ví dụ, nếu ai đó đang mint NFT, họ sẽ cần đính kèm một lượng `x` NEAR để trang trải chi phí lưu trữ data trên contract.
+Next, let's talk about the storage management model chosen for this contract. On the NFT contract, users attached $NEAR to the calls that needed storage paid for. For example, if someone was minting an NFT, they would need to attach `x` amount of NEAR to cover the cost of storing the data on the contract.
 
-Tuy nhiên, trên marketplace contract này, storage model có một chút khác biệt. User sẽ cần nạp $NEAR vào trong marketplace để trang trải chi phí storage. Bất cứ khi nào ai đó đặt NFT để bán, marketplace cần lưu trữ thông tin đó với giá $NEAR. User có thể nạp bao nhiêu NEAR tùy thích để không bao giờ phải lo lắng về storage thêm nữa hoặc họ có thể nạp số tiền tối thiểu để chi trả cho 1 lần sale khi cần thiết.
+On this marketplace contract, however, the storage model is a bit different. Users will need to deposit $NEAR onto the marketplace to cover the storage costs. Whenever someone puts an NFT for sale, the marketplace needs to store that information which costs $NEAR. Users can either deposit as much NEAR as they want so that they never have to worry about storage again or they can deposit the minimum amount to cover 1 sale on an as-needed basis.
 
-Bạn có thể đang nghĩ về tình huống khi một mặt hàng được mua. Điều gì xảy ra với storage hiện đang được phát hành trên contract? Đây là lý do tại sao chúng tôi đã giới thiệu một storage withdrawal function. Nó cho phép người dùng rút bất kỳ storage dư thừa không được sử dụng đến. Hãy xem qua vài tình huống để hiểu về logic này. Storage yêu cầu một lần sale là 0.01 NEAR trên marketplace contract.
+You might be thinking about the scenario when a sale is purchased. What happens to the storage that is now being released on the contract? This is why we've introduced a storage withdrawal function. This allows users to withdraw any excess storage that is not being used. Let's go through some scenarios to understand the logic. The required storage for 1 sale is 0.01 NEAR on the marketplace contract.
 
-**Tình huống A**
+**Scenario A**
 
 - Benji muốn đưa NFT lên marketplace nhưng anh ấy chưa bao giờ trả tiền cho storage.
 - Anh ấy nạp chính xác 0.01 NEAR sử dụng method `storage_deposit`. Nó sẽ thanh toán cho 1 lần bán.
@@ -83,17 +83,15 @@ Bạn có thể đang nghĩ về tình huống khi một mặt hàng được mu
 - Dorian thích NFT của anh ấy và nhanh chóng mua nó trước bất cứ ai. Điều này có nghĩa rằng đơn hàng của Benji bây giờ đã bị gỡ xuống (kể từ khi nó được mua) và Benji đã sử dụng 0 trong số 1 lần sale đã thanh toán trước. Nói cách khác, anh ấy đang thừa 1 lần sale hay 0.01 NEAR.
 - Benji bây giờ có thể call `storage_withdraw` và sẽ được chuyển lại 0.01 NEAR cho anh ấy. Về phía contract, sau khi rút tiền, anh ấy sẽ có 0 lần sale được thanh toán sẽ cần phải nạp tiền storage trước khi niêm yết thêm NFT.
 
-**Tình huống B**
+**Scenario B**
 
 - Dorian sở hữu một trăm NFT rất đẹp và anh ta muốn niêm yết toàn bộ.
 - Để tránh phải gọi `storage_deposit` mỗi khi muốn niêm yết một NFT, anh ấy sẽ gọi nó một lần. Vì Dorian là một người có tiền, anh đã đã đính kèm 10 NEAR đủ để thanh toán cho 1000 lần sale. Bây giờ anh ấy thừa 9 NEAR hay 900 lần sale.
 - Dorian cần 9 NEAR để để làm gì đó nhưng anh ấy không muốn gỡ 100 NFT đang niêm yết. Bởi vì anh ấy có thừa 9 NEAR, anh ấy có thể dễ dàng rút và vẫn có 100 NFT đang niêm yết. Sau khi call `storage_withdraw` và được chuyển 9 NEAR, anh ấy có 0 lần sale đang thừa.
 
-Suy nghĩ về hành vi này, hai function dưới đây phác thảo logic.
+With this behavior in mind, the following two functions outline the logic.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/lib.rs#L110-L173
-```
+<Github language="rust" start="110" end="173" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/lib.rs" />
 
 Trong contract này, storage yêu cầu 0.01 NEAR cho mỗi lần sale nhưng bạn có thể truy vấn thông tin đó sử dụng function `storage_minimum_balance`. Ngoài ra, bạn có thể truy vấn function `storage_balance_of` để kiểm tra một tài khoản nào đó đã thanh toán bao nhiêu storage.
 
@@ -107,15 +105,11 @@ File này chịu trách nhiệm về logic được sử dụng để bán các 
 
 Điều quan trọng đầu tiên cần chú ý là cấu trúc `SaleArgs`. Đây là những gì market contract mong đợi message mà user truyền vào `nft_approve` trên NFT contract. Cấu trúc này phác thảo giá bán bằng yoctoNEAR cho NFT đã được niêm yết.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/nft_callbacks.rs#L5-L10
-```
+<Github language="rust" start="5" end="10" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/nft_callbacks.rs" />
 
 Tiếp theo, chúng ta hãy xem function `nft_on_approve` được gọi thông qua một cross-contract call bởi NFT contract. Việc này sẽ đảm bảo rằng người ký có đủ storage để trả thêm cho lần sale khác. Sau đó, nó sẽ cố gắng lấy `SaleArgs` từ message và tạo niêm yết.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/nft_callbacks.rs#L32-L134
-```
+<Github language="rust" start="32" end="134" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/nft_callbacks.rs" />
 
 ## sale.rs {#sale-rs}
 
@@ -125,25 +119,19 @@ Bây giờ chúng ta đã quen với quy trình thêm storage và niêm yết c�
 
 Điều quan trọng là phải hiểu contract đang lưu trữ thông tin gì của mỗi sale object. Bởi vì marketplace có nhiều NFT được niêm yết đến từ các NFT contract khác nhau, chỉ lưu trữ token ID sẽ không đủ để phân biệt giữa các NFT khác nhau. Đây là lý do bạn cần theo dõi cả token ID và contract mà NFT đến từ đó. Ngoài ra, với mỗi niêm yết, contract phải theo dõi approval ID mà nó đã được cấp để transfer NFT. Cuối cùng, chủ sở hữu và các điều kiện sale là cần thiết.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/sale.rs#L7-L18
-```
+<Github language="rust" start="7" end="18" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/sale.rs" />
 
 ### Xóa các sale {#removing-sales}
 
 Để xóa một niêm yết, chủ sở hữu phải call function `remove_sale` và truyền vào NFT contract cùng với token ID. Phía đằng sau, hàm này call function `internal_remove_sale` mà bạn có thể tìm thấy trong file `internal.rs`. Điều này sẽ yêu cầu một yoctoNEAR vì lý do bảo mật.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/sale.rs#L23-L34
-```
+<Github language="rust" start="23" end="34" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/sale.rs" />
 
 ### Cập nhật giá {#updating-price}
 
 Để cập nhật giá niêm yết của token, chủ sở hữu phải call function `update_price` và truyền vào contract, token ID, và giá mong muốn. Việc này sẽ lấy sale object, thay đổi các điều kiện sale và chèn nó trở lại. Vì lý do bảo mật, function này sẽ yêu cầu một yoctoNEAR.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/sale.rs#L36-L65
-```
+<Github language="rust" start="36" end="65" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/sale.rs" />
 
 ### Mua các NFT {#purchasing-nfts}
 
@@ -151,9 +139,7 @@ https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract
 
 Sau đó marketplace sẽ call `resolve_purchase`, nơi nó sẽ kiểm tra các payout object độc hại và sau đó nếu mọi thứ đều tốt, nó sẽ thanh toán cho đúng cho các account.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/sale.rs#L67-L99
-```
+<Github language="rust" start="67" end="99" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/sale.rs" />
 
 ## sale_view.rs {#sale_view-rs}
 

@@ -4,6 +4,8 @@ title: 이벤트
 sidebar_label: 이벤트
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 이 튜토리얼에서는 [이벤트 표준](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event)과 이를 스마트 컨트랙트에서 구현하는 방법에 대해 알아봅니다.
 
 :::caution
@@ -142,13 +144,11 @@ let nftMintLog = {
 near.log(`EVENT_JSON:${JSON.stringify(nftMintLog)}`);
 ```
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/7.events/src/nft-contract/mint.ts#L7-L85
-```
+<Github language="js" start="7" end="85" url="https://github.com/near-examples/nft-tutorial-js/blob/7.events/src/nft-contract/mint.ts" />
 
 ### 전송 로깅 {#logging-transfers}
 
-`nft-contract/src/internal.ts` 파일을 열고 `internalTransfer` 함수로 이동해 보겠습니다. 여기가 전송 로그를 작성할 위치입니다. NFT가 전송될 때마다 이 함수가 호출되므로, 이제 전송을 올바르게 기록하게 됩니다.
+Let's open the `nft-contract/src/internal.ts` file and navigate to the `internalTransfer` function. This is the location where you'll build your transfer logs. Whenever an NFT is transferred, this function is called and so you'll correctly be logging the transfers.
 
 ```js
 // Construct the transfer log as per the events standard.
@@ -178,9 +178,7 @@ let nftTransferLog = {
 // Log the serialized json.
 near.log(`EVENT_JSON:${JSON.stringify(nftTransferLog)}`);
 ```
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/7.events/src/nft-contract/internal.ts#L113-L205
-```
+<Github language="js" start="113" end="205" url="https://github.com/near-examples/nft-tutorial-js/blob/7.events/src/nft-contract/internal.ts" />
 
 불행하게도 이 솔루션에는 문제를 일으킬 수 있는 극단적인 케이스가 존재합니다. NFT가 `nft_transfer_call` 함수를 통해 전송되는 경우, `nft_on_transfer` 함수가 `true`를 반환하면 전송이 취소될 가능성이 있습니다. `nft_transfer_call`에 대한 로직을 살펴보면, 이것이 왜 문제인지 알 수 있습니다.
 
@@ -192,9 +190,7 @@ https://github.com/near-examples/nft-tutorial-js/blob/7.events/src/nft-contract/
 
 만약 `internalTransfer` 함수에 로그만 넣으면, 로그가 내보내지고 인덱서는 NFT가 전송된 것으로 간주할 것입니다. 그러나 `internalResolveTransfer` 도중에 전송이 되돌려지면 해당 이벤트도 **역시** 내보내야 합니다. NFT가 전송**될 수 있는** 모든 위치에 로그를 추가해야 합니다. `internalResolveTransfer`를 다음 코드로 바꿉니다.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/7.events/src/nft-contract/nft_core.ts#L138-L242
-```
+<Github language="js" start="138" end="242" url="https://github.com/near-examples/nft-tutorial-js/blob/7.events/src/nft-contract/nft_core.ts" />
 
 완료되면 이벤트 표준을 성공적으로 구현한 것이며, 이제 테스트를 시작할 시간입니다.
 
@@ -244,7 +240,7 @@ Receipts: F4oxNfv54cqwUwLUJ7h74H1iE66Y3H7QDfZMmGENwSxd, BJxKNFRuLDdbhbGeLA3UBSbL
     Log [events.goteam.examples.testnet]: EVENT_JSON:{"standard":"nep171","version":"1.0.0","event":"nft_mint","data":[{"owner_id":"events.goteam.examples.testnet","token_ids":["events-token"]}]}
 Transaction Id 4Wy2KQVTuAWQHw5jXcRAbrz7bNyZBoiPEvLcGougciyk
 To see the transaction in the transaction explorer, please open this url in your browser
-https://explorer.testnet.near.org/transactions/4Wy2KQVTuAWQHw5jXcRAbrz7bNyZBoiPEvLcGougciyk
+https://testnet.nearblocks.io/txns/4Wy2KQVTuAWQHw5jXcRAbrz7bNyZBoiPEvLcGougciyk
 ''
 ```
 
@@ -267,7 +263,7 @@ Receipts: EoqBxrpv9Dgb8KqK4FdeREawVVLWepEUR15KPNuZ4fGD, HZ4xQpbgc8EfU3PiV72LvfXb
     Log [events.goteam.examples.testnet]: EVENT_JSON:{"standard":"nep171","version":"1.0.0","event":"nft_transfer","data":[{"authorized_id":"events.goteam.examples.testnet","old_owner_id":"events.goteam.examples.testnet","new_owner_id":"benjiman.testnet","token_ids":["events-token"],"memo":"Go Team :)"}]}
 Transaction Id 4S1VrepKzA6HxvPj3cK12vaT7Dt4vxJRWESA1ym1xdvH
 To see the transaction in the transaction explorer, please open this url in your browser
-https://explorer.testnet.near.org/transactions/4S1VrepKzA6HxvPj3cK12vaT7Dt4vxJRWESA1ym1xdvH
+https://testnet.nearblocks.io/txns/4S1VrepKzA6HxvPj3cK12vaT7Dt4vxJRWESA1ym1xdvH
 ''
 ```
 

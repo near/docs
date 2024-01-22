@@ -4,6 +4,8 @@ title: Bộ khung và Kiến trúc ngôn ngữ Rust"
 sidebar_label: Kiến trúc của Contract
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 > Trong chủ đề này, bạn sẽ tìm hiểu về kiến trúc cơ bản đằng sau một NFT contract mà bạn sẽ develop khi tham gia serie _"Từ Zero đến Hero"_ này. Bạn sẽ khám phá layout của contract và sẽ thấy cách mà các file Rust được cấu trúc để build một smart contract đầy đủ tính năng.
 
 :::info Bạn mới đến với Rust? Nếu bạn là người mới đến với ngôn ngữ Rust và mong muốn tiến sâu hơn nữa vào lập trình smart contract, phần [Hướng dẫn nhanh](/develop/quickstart-guide) của chúng tôi là một điểm khởi đầu tốt. :::
@@ -69,11 +71,9 @@ This file contains the logic that complies with the standard's [approvals manage
 | **nft_revoke_all**  | Thu hồi quyền của tất cả các account trong việc transfer token thay bạn.                                     |
 | **nft_on_approve**  | Function callback này, được khởi tạo trong `nft_approve`, là cross contract call tới một contract bên ngoài. |
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/approval.rs#L4-L33
-```
+<Github language="rust" start="4" end="33" url="https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/approval.rs" />
 
-You'll learn more about these functions in the [approvals section](/docs/tutorials/contracts/nfts/approvals) of the Zero to Hero series.
+You'll learn more about these functions in the [approvals section](/tutorials/nfts/approvals) of the Zero to Hero series.
 
 ---
 
@@ -88,9 +88,7 @@ You'll learn more about these functions in the [approvals section](/docs/tutoria
 | **nft_supply_for_owner** | Cho phép bạn xem tổng số NFT được sở hữu bởi một người dùng nhất định.                           |
 | **nft_tokens_for_owner** | Trả về một danh sách NFT được phân trang, thuộc về sở hữu của một người dùng nhất định.          |
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/1.skeleton/nft-contract/src/enumeration.rs#L4-L44
-```
+<Github language="rust" start="4" end="44" url="https://github.com/near-examples/nft-tutorial/blob/1.skeleton/nft-contract/src/enumeration.rs" />
 
 You'll learn more about these functions in the [enumeration section](/docs/tutorials/contracts/nfts/enumeration) of the tutorial series.
 
@@ -107,9 +105,7 @@ You'll learn more about these functions in the [enumeration section](/docs/tutor
 
 :::info Hãy ghi nhớ Các init function (`new`, `new_default_meta`) chỉ có thể được call một lần duy nhất. :::
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/lib.rs#L45-L71
-```
+<Github language="rust" start="45" end="71" url="https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/lib.rs" />
 
 You'll learn more about these functions in the [minting section](/docs/tutorials/contracts/nfts/minting) of the tutorial series.
 
@@ -126,9 +122,7 @@ You'll learn more about these functions in the [minting section](/docs/tutorials
 | **JsonToken**     | Khi truy vấn thông tin về NFT thông qua các view call, thông tin trả về được lưu trữ trong JSON token này. |
 | **nft_metadata**  | Function này cho phép user query metadata bên trong contact.                                               |
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/1.skeleton/nft-contract/src/metadata.rs#L10-L55
-```
+<Github language="rust" start="10" end="55" url="https://github.com/near-examples/nft-tutorial/blob/1.skeleton/nft-contract/src/metadata.rs" />
 
 Bạn có thể tìm hiểu thêm về các function này trong [minting section](/docs/tutorials/contracts/nfts/minting) của serie hướng dẫn.
 
@@ -142,9 +136,7 @@ Bạn có thể tìm hiểu thêm về các function này trong [minting section
 | ------------ | -------------------------------------------- |
 | **nft_mint** | Function này sẽ mint một non-fungible token. |
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/mint.rs#L4-L16
-```
+<Github language="rust" start="4" end="16" url="https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/mint.rs" />
 
 ---
 
@@ -160,9 +152,7 @@ https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/m
 | **nft_on_transfer**      | Được call bởi các contract khác khi một NFT được transfer đến contract account của bạn thông qua method `nft_transfer_call`. Method sẽ trả về `true` nếu token có thể được trả về cho sender.                                                                                  |
 | **nft_resolve_transfer** | Khi bạn bắt đầu câu lệnh `nft_transfer_call` và transfer một NFT, theo chuẩn một method cũng được call trên contract của receiver. Nếu receiver cần bạn trả về NFT cho sender (theo giá trị trả về của phương thức `nft_on_transfer`), hàm này cho phép bạn thực thi logic đó. |
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/1.skeleton/nft-contract/src/nft_core.rs#L7-L56
-```
+<Github language="rust" start="7" end="56" url="https://github.com/near-examples/nft-tutorial/blob/1.skeleton/nft-contract/src/nft_core.rs" />
 
 Bạn có thể tìm hiểu thêm về các function này trong [minting section](/docs/tutorials/contracts/nfts/minting) của serie hướng dẫn.
 
@@ -177,9 +167,7 @@ Bạn có thể tìm hiểu thêm về các function này trong [minting section
 | **nft_payout**            | View method này tính toán khoản thanh toán cho một token nhất định.                                   |
 | **nft_transfer_payout** | Transfer token đến receiver ID và trả về payout object cần được thanh toán với một balance cho trước. |
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/royalty.rs#L3-L17
-```
+<Github language="rust" start="3" end="17" url="https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/royalty.rs" />
 
 You'll learn more about these functions in the [royalty section](/docs/tutorials/contracts/nfts/royalty) of the tutorial series.
 

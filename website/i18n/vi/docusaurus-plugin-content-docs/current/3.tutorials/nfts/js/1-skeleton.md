@@ -4,6 +4,8 @@ title: Skeleton and JavaScript Architecture
 sidebar_label: Kiến trúc của Contract
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 > Trong chủ đề này, bạn sẽ tìm hiểu về kiến trúc cơ bản đằng sau một NFT contract mà bạn sẽ develop khi tham gia serie _"Từ Zero đến Hero"_ này. You'll discover the contract's layout and you'll see how the JavaScript files are structured in order to build a feature-complete smart contract.
 
 
@@ -68,11 +70,9 @@ This file contains the internal logic that complies with the standard's [approva
 | **internalNftRevoke**     | Thu hồi quyền của một account cụ thể trong việc transfer token thay bạn. Called during **nft_revoke**.              |
 | **internalNftRevokeAll**  | Thu hồi quyền của tất cả các account trong việc transfer token thay bạn. Called during **nft_revoke_all**.        |
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/approval.ts#L9-L69
-```
+<Github language="js" start="9" end="69" url="https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/approval.ts" />
 
-Bạn có thể tìm hiểu thêm về các function này trong [phần các approval](/tutorials/nfts/js/approvals) của serie Từ Zero đến Hero.
+You'll learn more about these functions in the [approvals section](/tutorials/nfts/js/approvals) of the Zero to Hero series.
 
 ---
 
@@ -87,9 +87,7 @@ Bạn có thể tìm hiểu thêm về các function này trong [phần các app
 | **internalNftSupplyForOwner** | Cho phép bạn xem tổng số NFT được sở hữu bởi một người dùng nhất định. Called during **nft_supply_for_owner**.                  |
 | **internalNftTokensForOwner** | Trả về một danh sách NFT được phân trang, thuộc về sở hữu của một người dùng nhất định. Called during **nft_tokens_for_owner**. |
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/enumeration.ts#L8-L62
-```
+<Github language="js" start="8" end="62" url="https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/enumeration.ts" />
 
 Bạn có thể tìm hiểu thêm về các function này trong [enumeration section](/tutorials/nfts/js/enumeration) của serie hướng dẫn.
 
@@ -106,9 +104,7 @@ Bạn có thể tìm hiểu thêm về các function này trong [enumeration sec
 | **JsonToken**           | Khi truy vấn thông tin về NFT thông qua các view call, thông tin trả về được lưu trữ trong JSON token này. |
 | **internalNftMetadata** | Function này cho phép user query metadata bên trong contact. Called during **nft_metadata**.               |
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/metadata.ts#L12-L46
-```
+<Github language="js" start="12" end="46" url="https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/metadata.ts" />
 
 Bạn có thể tìm hiểu thêm về các function này trong [minting section](/tutorials/nfts/js/minting) của serie hướng dẫn.
 
@@ -122,9 +118,7 @@ Bạn có thể tìm hiểu thêm về các function này trong [minting section
 | ------------------- | ------------------------------------------------------------------------ |
 | **internalNftMint** | Function này sẽ mint một non-fungible token. Called during **nft_mint**. |
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/mint.ts#L7-L23
-```
+<Github language="js" start="7" end="23" url="https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/mint.ts" />
 
 ---
 
@@ -139,9 +133,7 @@ https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contrac
 | **internalNftToken**           | Cho phép các user query thông tin của một NFT cụ thể. Called during **nft_token**.                                                                                                                                                                                                                               |                     |
 | **internalNftResolveTransfer** | When you start the `nft_transfer_call` and transfer an NFT, the standard dictates that you should also call a method on the receiver's contract. Nếu receiver cần bạn trả về NFT cho sender (theo giá trị trả về của phương thức `nft_on_transfer`), hàm này cho phép bạn thực thi logic đó. Called during **nft_resolve_transfer**. |
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/nft_core.ts#L10-L85
-```
+<Github language="js" start="10" end="85" url="https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/nft_core.ts" />
 
 Bạn có thể tìm hiểu thêm về các function này trong [minting section](/tutorials/nfts/js/minting) của serie hướng dẫn.
 
@@ -156,9 +148,7 @@ Bạn có thể tìm hiểu thêm về các function này trong [minting section
 | **internalNftPayout**         | This internal method calculates the payout for a given token. Called during **nft_payout**.                                                                             |
 | **internalNftTransferPayout** | Internal method to transfer the token to the receiver ID and return the payout object that should be paid for a given balance. Called during **nft_transfer_payout**. |
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/royalty.ts#L7-L45
-```
+<Github language="js" start="7" end="45" url="https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/royalty.ts" />
 
 Bạn có thể tìm hiểu thêm về các function này trong [royalty section](/tutorials/nfts/js/royalty) của serie hướng dẫn.
 
@@ -188,9 +178,9 @@ Bạn có thể tìm hiểu thêm về các function này trong [royalty section
 | **nft_supply_for_owner** | Calls the internal function to query for the total number of NFTs owned by someone.                  |
 | **nft_metadata**           | Calls the internal function to query for the contract's metadata                                     |
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/index.ts#L16-L157
-```
+
+
+<Github language="js" start="16" end="157" url="https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/index.ts" />
 
 Bạn có thể tìm hiểu thêm về các function này trong [minting section](/tutorials/nfts/js/minting) của serie hướng dẫn.
 

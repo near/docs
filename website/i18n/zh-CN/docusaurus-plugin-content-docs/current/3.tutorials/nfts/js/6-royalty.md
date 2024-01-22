@@ -4,6 +4,8 @@ title: Royalty
 sidebar_label: Royalty
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 In this tutorial you'll continue building your non-fungible token (NFT) smart contract, and learn how to implement perpetual royalties into your NFTs. This will allow people to get a percentage of the purchase price when an NFT is sold.
 
 :::caution
@@ -48,9 +50,7 @@ royalty: { [accountId: string]: number };
 
 Second, you'll want to add `royalty` to the `JsonToken` struct as well:
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/metadata.ts#L106-L166
-```
+<Github language="js" start="106" end="166" url="https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/metadata.ts" />
 
 ### Internal helper function
 
@@ -58,9 +58,7 @@ https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract
 
 To simplify the payout calculation, let's add a helper `royaltyToPayout` function to `src/internal.ts`. This will convert a percentage to the actual amount that should be paid. In order to allow for percentages less than 1%, you can give 100% a value of `10,000`. This means that the minimum percentage you can give out is 0.01%, or `1`. For example, if you wanted the account `benji.testnet` to have a perpetual royalty of 20%, you would insert the pair `"benji.testnet": 2000` into the payout map.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/internal.ts#L13-L16
-```
+<Github language="js" start="13" end="16" url="https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/internal.ts" />
 
 If you were to use the `royaltyToPayout` function and pass in `2000` as the `royaltyPercentage` and an `amountToPay` of 1 NEAR, it would return a value of 0.2 NEAR.
 
@@ -70,9 +68,7 @@ If you were to use the `royaltyToPayout` function and pass in `2000` as the `roy
 
 Let's now implement a method to check what accounts will be paid out for an NFT given an amount, or balance. Open the `nft-contract/src/royalty.ts` file, and modify the `internalNftPayout` function as shown.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/royalty.ts#L7-L53
-```
+<Github language="js" start="7" end="53" url="https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/royalty.ts" />
 
 This function will loop through the token's royalty map and take the balance and convert that to a payout using the `royaltyToPayout` function you created earlier. It will give the owner of the token whatever is left from the total royalties. As an example:
 
@@ -107,31 +103,23 @@ At the very end, it will insert `damian` into the payout object and give him `1 
 
 Now that you know how payouts are calculated, it's time to create the function that will transfer the NFT and return the payout to the marketplace.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/royalty.ts#L55-L121
-```
+<Github language="js" start="55" end="121" url="https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/royalty.ts" />
 
 ### Perpetual royalties
 
 To add support for perpetual royalties, let's edit the `src/mint.ts` file. First, add an optional parameter for perpetual royalties. This is what will determine what percentage goes to which accounts when the NFT is purchased. You will also need to create and insert the royalty to be put in the `Token` object:
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/mint.ts#L7-L64
-```
+<Github language="js" start="7" end="64" url="https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/mint.ts" />
 
 ### Adding royalty object to struct implementations
 
 Since you've added a new field to your `Token` and `JsonToken` structs, you need to edit your implementations accordingly. Move to the `nft-contract/src/internal.ts` file and edit the part of your `internalTransfer` function that creates the new `Token` object:
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/internal.ts#L150-L158
-```
+<Github language="js" start="150" end="158" url="https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/internal.ts" />
 
 Once that's finished, move to the `nft-contract/src/nft_core.ts` file. You need to edit your implementation of `internalNftToken` so that the `JsonToken` sends back the new royalty information.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/nft_core.ts#L10-L37
-```
+<Github language="js" start="10" end="37" url="https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/nft_core.ts" />
 
 Next, you can use the CLI to query the new `nft_payout` function and validate that it works correctly.
 

@@ -4,6 +4,8 @@ sidebar_label: "Linkdrop 컨트랙트"
 title: "사용 중인 Linkdrop 컨트랙트 소개"
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 import createMainnetAccount from '/docs/assets/crosswords/create-mainnet-account.png';
 import createTestnetAccount from '/docs/assets/crosswords/create-testnet-wallet-account.png';
 
@@ -51,11 +53,9 @@ NEAR CLI를 사용하면 아래와 같이 linkdrop 컨트랙트를 호출하여 
 
 여기에서는 메서드의 `create_account` 구현을 보여줍니다. 이 함수가 첨부된 금액을 수락할 수 있도록 하는 `#[payable]` 매크로에 주의하세요. (CLI 명령에서 15 Ⓝ를 첨부했음을 기억하세요.)
 
-```rust reference
-https://github.com/near/near-linkdrop/blob/ba94a9c7292d3b48a0a8ba380fb0e7ff6b24efc6/src/lib.rs#L125-L149
-```
+<Github language="rust" start="125" end="149" url="https://github.com/near/near-linkdrop/blob/ba94a9c7292d3b48a0a8ba380fb0e7ff6b24efc6/src/lib.rs" />
 
-위 스니펫에서 가장 중요한 부분은 다음과 같은 중간 부분입니다.
+The most important part of the snippet above is around the middle where there's:
 
 ```rs
 Promise::new(...)
@@ -66,11 +66,11 @@ Promise::new(...)
     )
 ```
 
-이것은 "우리는 작업을 수행하려고 시도할 것입니다. 작업이 완료되면 어떻게 진행되었는지 확인할 수 있도록 `on_account_created` 메서드에서 저를 호출하세요."라는 말입니다.
+This translates to, "we're going to attempt to perform an Action, and when we're done, please call myself at the method `on_account_created` so we can see how that went."
 
-:::caution 작동하지 않습니다.
+:::caution This doesn't work
 
-드물지 않게 개발자는 스마트 컨트랙트에서 아래 작업을 시도합니다.
+Not infrequently, developers will attempt to do this in a smart contract:
 
 ```rust
 let creation_result = Promise::new("aloha.mike.near")
@@ -81,21 +81,17 @@ if creation_result {...}
 
 ```
 
-다른 프로그래밍 언어에서는 Promise가 이와 같이 작동할 수 있지만, 여기서는 콜백을 사용해야 합니다. :::
+In other programming languages promises might work like this, but we must use callbacks instead. :::
 
 ### 콜백
 
-이제 콜백을 살펴보겠습니다.
+Now let's look at the callback:
 
-```rust reference
-https://github.com/near/near-linkdrop/blob/ba94a9c7292d3b48a0a8ba380fb0e7ff6b24efc6/src/lib.rs#L151-L164
-```
+<Github language="rust" start="151" end="164" url="https://github.com/near/near-linkdrop/blob/ba94a9c7292d3b48a0a8ba380fb0e7ff6b24efc6/src/lib.rs" />
 
 이것은 개인 헬퍼 메서드 `is_promise_success`를 호출합니다. 이 메서드는 기본적으로 Promise를 하나만 시도했기 때문에, Promise 결과가 하나만 있는지 확인합니다.
 
-```rust reference
-https://github.com/near/near-linkdrop/blob/ba94a9c7292d3b48a0a8ba380fb0e7ff6b24efc6/src/lib.rs#L32-L42
-```
+<Github language="rust" start="32" end="42" url="https://github.com/near/near-linkdrop/blob/ba94a9c7292d3b48a0a8ba380fb0e7ff6b24efc6/src/lib.rs" />
 
 콜백은 bool을 반환합니다. 즉, `testnet`에서 linkdrop 컨트랙트를 호출하기 위해 십자말풀이 퍼즐을 수정할 때, 계정 생성이 성공했는지 실패했는지 확인할 수 있습니다.
 

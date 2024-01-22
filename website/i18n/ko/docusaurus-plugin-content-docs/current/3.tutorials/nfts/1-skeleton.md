@@ -4,6 +4,8 @@ title: 뼈대 및 Rust 아키텍처
 sidebar_label: 컨트랙트 아키텍처
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 > 이 글에서는 이 _"Zero to Hero"_ 시리즈를 진행하면서 개발하게 될 NFT 컨트랙트의 기본 아키텍처에 대해 알아봅니다. 컨트랙트의 레이아웃을 발견하고 완전한 기능을 갖춘 스마트 컨트랙트를 구축하기 위해 Rust 파일이 어떻게 구성되어 있는지 확인할 수 있습니다.
 
 :::info Rust가 처음이신가요? Rust를 처음 사용하고 스마트 컨트랙트 개발에 뛰어들고 싶다면 [빠른 시작 가이드](/develop/quickstart-guide)가 시작하기에 좋은 곳입니다. :::
@@ -69,11 +71,9 @@ nft-contract
 | **nft_revoke_all**  | 사용자를 대신하여 토큰을 전송하는 모든 계정을 취소합니다.                              |
 | **nft_on_approve**  | 이 콜백 함수는 `nft_approve`에 의해 시작되어, 외부 컨트랙트로의 교차 컨트랙트 호출을 실행합니다. |
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/approval.rs#L4-L33
-```
+<Github language="rust" start="4" end="33" url="https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/approval.rs" />
 
-Zero to Hero 시리즈의 [승인 섹션](/tutorials/nfts/approvals)에서 이러한 함수들에 대해 자세히 알아볼 수 있습니다.
+You'll learn more about these functions in the [approvals section](/tutorials/nfts/approvals) of the Zero to Hero series.
 
 ---
 
@@ -88,9 +88,7 @@ Zero to Hero 시리즈의 [승인 섹션](/tutorials/nfts/approvals)에서 이�
 | **nft_supply_for_owner** | 주어진 사용자가 소유한 총 NFT 수를 볼 수 있습니다.             |
 | **nft_tokens_for_owner** | 지정된 사용자가 소유한 NFT 목록을 페이지 형태로 반환합니다.         |
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/1.skeleton/nft-contract/src/enumeration.rs#L4-L44
-```
+<Github language="rust" start="4" end="44" url="https://github.com/near-examples/nft-tutorial/blob/1.skeleton/nft-contract/src/enumeration.rs" />
 
 튜토리얼 시리즈의 [열거 섹션](/tutorials/nfts/enumeration)에서 이러한 함수에 대해 자세히 알아볼 수 있습니다.
 
@@ -107,9 +105,7 @@ https://github.com/near-examples/nft-tutorial/blob/1.skeleton/nft-contract/src/e
 
 :::info 기억해 두세요 초기화 함수(`new`, `new_default_meta`) 한 번만 호출될 수 있습니다. :::
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/lib.rs#L45-L71
-```
+<Github language="rust" start="45" end="71" url="https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/lib.rs" />
 
 튜토리얼 시리즈의 [발행 섹션](/tutorials/nfts/minting)에서 이러한 기능에 대해 자세히 알아볼 것입니다.
 
@@ -126,9 +122,7 @@ https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/l
 | **JsonToken**     | View 호출을 통해 NFT에 대한 정보를 조회할 때, 반환된 정보는 이 JSON 토큰에 저장됩니다. |
 | **nft_metadata**  | 이 함수를 통해 사용자는 컨트랙트의 내부 메타데이터를 쿼리할 수 있습니다.                |
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/1.skeleton/nft-contract/src/metadata.rs#L10-L55
-```
+<Github language="rust" start="10" end="55" url="https://github.com/near-examples/nft-tutorial/blob/1.skeleton/nft-contract/src/metadata.rs" />
 
 튜토리얼 시리즈 내 [발행 섹션](/tutorials/nfts/minting)에서 이러한 함수에 대해 더 많이 배울 수 있습니다.
 
@@ -142,9 +136,7 @@ https://github.com/near-examples/nft-tutorial/blob/1.skeleton/nft-contract/src/m
 | ------------ | ----------------------- |
 | **nft_mint** | 이 함수는 대체 불가능 토큰을 생성합니다. |
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/mint.rs#L4-L16
-```
+<Github language="rust" start="4" end="16" url="https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/mint.rs" />
 
 ---
 
@@ -160,9 +152,7 @@ https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/m
 | **nft_on_transfer**      | `nft_transfer_call`을 시작하고 NFT를 전송할 때 표준에 따르면 수신자의 컨트랙트에 있는 메서드도 호출해야 합니다. 수신자가 발신자에게 NFT를 반환해야 하는 경우(`nft_on_transfer` 메서드의 반환 값에 따라) 이 함수를 사용하면 해당 로직을 실행할 수 있습니다.   |
 | **nft_resolve_transfer** | `nft_transfer_call`을 시작하고 NFT를 전송할 때의 표준에 따르면, 수신자의 컨트랙트에 있는 메서드도 호출해야 합니다. 수신자가 발신자에게 NFT를 반환해야 하는 경우(`nft_on_transfer` 메서드의 반환 값에 따라) 이 함수를 사용하면 해당 로직을 실행할 수 있습니다. |
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/1.skeleton/nft-contract/src/nft_core.rs#L7-L56
-```
+<Github language="rust" start="7" end="56" url="https://github.com/near-examples/nft-tutorial/blob/1.skeleton/nft-contract/src/nft_core.rs" />
 
 튜토리얼 시리즈의 [발행 섹션](/tutorials/nfts/minting)에서 이러한 함수들에 대해 자세히 알아볼 것입니다.
 
@@ -177,9 +167,7 @@ https://github.com/near-examples/nft-tutorial/blob/1.skeleton/nft-contract/src/n
 | **nft_payout**            | 이 view 메서드는 주어진 토큰에 대한 지불금을 계산합니다.                         |
 | **nft_transfer_payout** | 토큰을 수신자 ID로 전송하고 주어진 잔고에 대해 지불해야 하는 지불 객체를 반환하는 내부 메서드입니다. |
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/royalty.rs#L3-L17
-```
+<Github language="rust" start="3" end="17" url="https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/royalty.rs" />
 
 튜토리얼 시리즈의 [로열티 섹션](/tutorials/nfts/royalty)에서 이러한 함수들에 대해 자세히 알아볼 수 있습니다.
 

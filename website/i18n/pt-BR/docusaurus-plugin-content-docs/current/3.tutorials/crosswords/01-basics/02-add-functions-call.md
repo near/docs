@@ -4,6 +4,8 @@ sidebar_label: "Add basic code, create a subaccount, and call methods"
 title: "Alter the smart contract, learning about basics of development"
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 import teachingDeployment from '/docs/assets/crosswords/teaching--jeheycell.near--artcultureac.jpeg';
 import createAccount from '/docs/assets/crosswords/creating account with text--seanpineda.near--_seanpineda.png';
 import chalkboardErase from '/docs/assets/crosswords/erasing-subaccount-chalkboard--iambon.near--JohnreyBona.mp4';
@@ -16,9 +18,7 @@ This section will modify the smart contract skeleton from the previous section. 
 
 Let's modify the contract to be:
 
-```rust reference
-https://github.com/near-examples/crossword-snippets/blob/00223633f3e6b5b7137097e996b0aee90d632b0f/src/lib.rs#L1-L29
-```
+<Github language="rust" start="1" end="29" url="https://github.com/near-examples/crossword-snippets/blob/00223633f3e6b5b7137097e996b0aee90d632b0f/src/lib.rs" />
 
 We've done a few things here:
 1. Set a constant for the puzzle number.

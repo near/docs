@@ -4,6 +4,8 @@ title: Event
 sidebar_label: Event
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 In this tutorial, you'll learn about the [events standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event) and how to implement it in your smart contract.
 
 :::caution
@@ -142,13 +144,11 @@ let nftMintLog = {
 near.log(`EVENT_JSON:${JSON.stringify(nftMintLog)}`);
 ```
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/7.events/src/nft-contract/mint.ts#L7-L85
-```
+<Github language="js" start="7" end="85" url="https://github.com/near-examples/nft-tutorial-js/blob/7.events/src/nft-contract/mint.ts" />
 
 ### Log các transfer {#logging-transfers}
 
-Let's open the `nft-contract/src/internal.ts` file and navigate to the `internalTransfer` function. Đây là nơi bạn sẽ xây dựng transfer log của mình. Bất kỳ khi nào một NFT được transfer, function này sẽ được call và vì thế bạn sẽ log các transfer một cách chính xác.
+Let's open the `nft-contract/src/internal.ts` file and navigate to the `internalTransfer` function. This is the location where you'll build your transfer logs. Whenever an NFT is transferred, this function is called and so you'll correctly be logging the transfers.
 
 ```js
 // Construct the transfer log as per the events standard.
@@ -178,9 +178,7 @@ let nftTransferLog = {
 // Log the serialized json.
 near.log(`EVENT_JSON:${JSON.stringify(nftTransferLog)}`);
 ```
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/7.events/src/nft-contract/internal.ts#L113-L205
-```
+<Github language="js" start="113" end="205" url="https://github.com/near-examples/nft-tutorial-js/blob/7.events/src/nft-contract/internal.ts" />
 
 Thật không may, có một trường hợp sẽ làm hỏng mọi thứ với giải pháp này. Nếu một NFT được transfer thông qua function `nft_transfer_call`, có khả năng quá trình transfer sẽ bị revert nếu `nft_on_transfer` function trả về `true`. Xem xét logic của `nft_transfer_call`, bạn sẽ thấy tại sao đây là một vấn đề.
 
@@ -192,9 +190,7 @@ Khi `nft_transfer_call` được gọi, nó sẽ:
 
 If you only place the log in the `internalTransfer` function, the log will be emitted and the indexer will think that the NFT was transferred. If the transfer is reverted during `internalResolveTransfer`, however, that event should **also** be emitted. Bất cứ nơi nào mà một NFT **có thể** được transfer, chúng ta nên ghi vào log. Replace the `internalResolveTransfer` with the following code.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/7.events/src/nft-contract/nft_core.ts#L138-L242
-```
+<Github language="js" start="138" end="242" url="https://github.com/near-examples/nft-tutorial-js/blob/7.events/src/nft-contract/nft_core.ts" />
 
 Với việc hoàn thành điều đó, bạn đã triển khai thành công tiêu chuẩn các event và bây giờ là lúc để bắt đầu quá trình test.
 
@@ -244,7 +240,7 @@ Receipts: F4oxNfv54cqwUwLUJ7h74H1iE66Y3H7QDfZMmGENwSxd, BJxKNFRuLDdbhbGeLA3UBSbL
     Log [events.goteam.examples.testnet]: EVENT_JSON:{"standard":"nep171","version":"1.0.0","event":"nft_mint","data":[{"owner_id":"events.goteam.examples.testnet","token_ids":["events-token"]}]}
 Transaction Id 4Wy2KQVTuAWQHw5jXcRAbrz7bNyZBoiPEvLcGougciyk
 To see the transaction in the transaction explorer, please open this url in your browser
-https://explorer.testnet.near.org/transactions/4Wy2KQVTuAWQHw5jXcRAbrz7bNyZBoiPEvLcGougciyk
+https://testnet.nearblocks.io/txns/4Wy2KQVTuAWQHw5jXcRAbrz7bNyZBoiPEvLcGougciyk
 ''
 ```
 
@@ -267,7 +263,7 @@ Receipts: EoqBxrpv9Dgb8KqK4FdeREawVVLWepEUR15KPNuZ4fGD, HZ4xQpbgc8EfU3PiV72LvfXb
     Log [events.goteam.examples.testnet]: EVENT_JSON:{"standard":"nep171","version":"1.0.0","event":"nft_transfer","data":[{"authorized_id":"events.goteam.examples.testnet","old_owner_id":"events.goteam.examples.testnet","new_owner_id":"benjiman.testnet","token_ids":["events-token"],"memo":"Go Team :)"}]}
 Transaction Id 4S1VrepKzA6HxvPj3cK12vaT7Dt4vxJRWESA1ym1xdvH
 To see the transaction in the transaction explorer, please open this url in your browser
-https://explorer.testnet.near.org/transactions/4S1VrepKzA6HxvPj3cK12vaT7Dt4vxJRWESA1ym1xdvH
+https://testnet.nearblocks.io/txns/4S1VrepKzA6HxvPj3cK12vaT7Dt4vxJRWESA1ym1xdvH
 ''
 ```
 

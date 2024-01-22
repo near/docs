@@ -4,6 +4,8 @@ title: Core
 sidebar_label: Core
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 In this tutorial you'll learn how to implement the [core standards](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core) into your smart contract. Nếu bạn tham gia với chúng tôi lần đầu, đừng ngại clone [repo này](https://github.com/near-examples/nft-tutorial) và checkout branch `3.enumeration` để theo dõi.
 
 
@@ -53,15 +55,13 @@ Let's start our journey in the `nft-contract/src/nft_core.ts` file.
 
 You'll start by implementing the `nft_transfer` logic. Function này sẽ chuyển `token_id` được chỉ định tới `receiver_id` với một tuỳ chọn `memo` ví dụ như `"Happy Birthday Mike!"`. The core logic will be found in the `internalNftTransfer` function.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/nft_core.ts#L37-L64
-```
+<Github language="js" start="37" end="64" url="https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/nft_core.ts" />
 
-Có một số điều cần lưu ý ở đây. Firstly, we've introduced a new method called `assertOneYocto()`. Method này sẽ đảm bảo rằng user đã đính kèm chính xác một yoctoNEAR để call. Nếu một function yêu cầu deposit, bạn cần một full access key để sign transaction đó. Bằng cách yêu cầu đặt cọc một yoctoNEAR, về cơ bản bạn đang bắt buộc user ký transaction với một full access key.
+There are a couple things to notice here. Firstly, we've introduced a new method called `assertOneYocto()`. This method will ensure that the user has attached exactly one yoctoNEAR to the call. If a function requires a deposit, you need a full access key to sign that transaction. By adding the one yoctoNEAR deposit requirement, you're essentially forcing the user to sign the transaction with a full access key.
 
-Vì transfer function có khả năng chuyển các tài sản rất có giá trị, nên bạn sẽ muốn đảm bảo rằng bất kỳ ai call function này đều có full access key.
+Since the transfer function is potentially transferring very valuable assets, you'll want to make sure that whoever is calling the function has a full access key.
 
-Secondly, we've introduced an `internalTransfer` method. Nó sẽ tiến hành tất cả logic cần thiết để chuyển một NFT.
+Secondly, we've introduced an `internalTransfer` method. This will perform all the logic necessary to transfer an NFT.
 
 ### Các internal helper function
 
@@ -71,9 +71,7 @@ Let's start with the easier one, `assertOneYocto()`.
 
 #### assertOneYocto
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/internal.ts#L38-L41
-```
+<Github language="js" start="38" end="41" url="https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/internal.ts" />
 
 #### internal_transfer
 
@@ -88,17 +86,13 @@ It's now time to implement the `internalTransfer` function which is the core of 
 
 Thứ hai, bạn sẽ xóa token ID từ danh sách token của người gửi và thêm token ID vào danh sách token của người nhận. Cuối cùng, bạn sẽ tạo một `Token` object mới với chủ sở hữu là người nhận và map lại token ID tới nó.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/internal.ts#L80-L114
-```
+<Github language="js" start="80" end="114" url="https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/internal.ts" />
 
 Phía trên, bạn đã triển khai function để thêm token ID tới một tập các token của chủ sở hữu nhưng bạn chưa tạo một function để xóa một token ID từ một tập các token. Let's do that now by created a new function called `internalRemoveTokenFromOwner` which we'll place right above our `internalTransfer` and below the `internalAddTokenToOwner` function.
 
 Trong remove function này, bạn sẽ lấy tập các token của một account ID và sau đó remove token ID đã truyền vào. If the account's set is empty after the removal, you'll simply remove the account from the `tokensPerOwner` data structure.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/internal.ts#L60-L78
-```
+<Github language="js" start="60" end="78" url="https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/internal.ts" />
 
 Với việc hoàn thành những internal function này, logic cho việc transfer các NFT đã xong. Bây giờ là lúc để tiếp tục và tiến hành `nft_transfer_call`, một trong những hàm tích phân phức tạp nhất trong các standard function.
 
@@ -110,17 +104,13 @@ Workflow này cần nhiều transaction. Nếu chúng ta giới thiệu “trans
 
 Vì lý do này, chúng ta có một function là `nft_transfer_call`, nó sẽ transfer một NFT tới một người nhận và cũng call một method trên contract của người nhận trong cùng một transaction.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/nft_core.ts#L66-L125
-```
+<Github language="js" start="66" end="125" url="https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/nft_core.ts" />
 
 Trước tiên, function sẽ xác nhận rằng người gọi đã đính kèm chính xác 1 yocto cho mục đích bảo mật. It will then transfer the NFT using `internalTransfer` and start the cross contract call. Nó sẽ call một method `nft_on_transfer` trên contract của `receiver_id` để trả về một promise. Sau khi promise kết thúc, hàm `nft_resolve_transfer` được gọi. Đây là workflow rất phổ biến khi xử lý các cross contract call. Trước tiên, bạn bắt đầu khởi tạo call và đợi nó thực hiện xong. Sau đó bạn gọi một function xử lý kết quả của promise và hành động phù hợp.
 
 Trong trường hợp cùa chúng ta, khi call `nft_on_transfer`, function đó sẽ trả về một giá trị boolean để cho biết bạn có nên trả lại NFT cho chủ sở hữu ban đầu của nó hay không. This is logic will be executed in the `internalResolveTransfer` function.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/nft_core.ts#L127-L187
-```
+<Github language="js" start="127" end="187" url="https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/nft_core.ts" />
 
 Nếu `nft_on_transfer` trả về true, bạn sẽ gửi token trở lại cho người sở hữu ban đầu của nó. Ngược lại, nếu trả về false thì không cần thêm logic nào cả. Đối với giá trị trả về của `nft_resolve_transfer`, hàm này phải trả về một giá trị boolean theo tiêu chuẩn quy định để cho biết người nhận có nhận thành công token hay không.
 

@@ -4,6 +4,8 @@ sidebar_label: "Action 및 NEAR 전송"
 title: "전송 Action을 통해 십자말 풀이 퍼즐의 우승자에게 NEAR를 보내는 등, 계정이 할 수 있는 여러 Action이 존재함"
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 import allActions from '/docs/assets/crosswords/crossword-actions.png';
 import transferNEAR from '/docs/assets/crosswords/transfer-brand-blue--qiqi04.near--blankworl.png';
 import yoctoNEAR from '/docs/assets/crosswords/yoctoNEAR-magnifying--jrbemint.near--JrbeMad.jpg';
@@ -48,13 +50,11 @@ Action의 전체 목록은 [NEAR 사양 사이트](https://nomicon.io/RuntimeSpe
 
 `lib.rs` 파일 맨 위에 다음 상수를 추가합니다.
 
-```rust reference
-https://github.com/near-examples/crossword-tutorial-chapter-2/blob/1909630a10291081cb00b2780c1ae8889d98f620/contract/src/lib.rs#L10-L11
-```
+<Github language="rust" start="10" end="11" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/1909630a10291081cb00b2780c1ae8889d98f620/contract/src/lib.rs" />
 
-코드 주석에서 언급했듯이, 이는 5 NEAR이지만 코드 내 모든 0을 확인하세요!
+As the code comment mentions, this is 5 NEAR, but look at all those zeroes in the code!
 
-이것이 yoctoNEAR로 표현된 값입니다. 이 개념은 다른 블록체인과 유사합니다. 비트코인의 최소 단위는 사토시이고 이더리움의 최소 단위는 웨이입니다.
+That's the value in yoctoNEAR. This concept is similar to other blockchains. Bitcoin's smallest unit is a satoshi and Ethereum's is a wei.
 
 <figure>
     <img src={yoctoNEAR} alt="NEAR의 지폐, NEAR 일부에 대한 코인, 그리고 개미 옆에 있는 작은 yoctoNEAR를 보여주는 돋보기. jrbemint.near 그림"/>
@@ -63,11 +63,9 @@ https://github.com/near-examples/crossword-tutorial-chapter-2/blob/1909630a10291
 
 ## `Transfer` 추가
 
-지난 챕터에서 정답이 정확하면 `true`를 반환하고, 틀리면 `false`를 반환하는 간단한 함수 `guess_solution`이 있었습니다. 해당 함수를 아래와 같이 `submit_solution`로 대체합니다.
+In the last chapter we had a simple function called `guess_solution` that returned `true` if the solution was correct, and `false` otherwise. We'll be replacing that function with `submit_solution` as shown below:
 
-```rust reference
-https://github.com/near-examples/crossword-tutorial-chapter-2/blob/83d4d8925e6d30e04e8e4cb5e9a0a6d3763fce40/contract/src/lib.rs#L92-L124
-```
+<Github language="rust" start="92" end="124" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/83d4d8925e6d30e04e8e4cb5e9a0a6d3763fce40/contract/src/lib.rs" />
 
 이 함수의 마지막 줄을 확인하면, 전임자(predecessor)에 NEAR를 보내고 있다는 것을 알 수 있습니다.
 

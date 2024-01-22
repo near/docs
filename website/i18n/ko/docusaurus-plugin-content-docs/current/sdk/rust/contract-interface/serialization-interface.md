@@ -4,6 +4,7 @@ sidebar_position: 5
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import {Github} from "@site/src/components/codetabs";
 
 # 직렬화 프로토콜
 
@@ -42,21 +43,15 @@ pub fn sum_borsh(#[serializer(borsh)] a: u32, #[serializer(borsh)] b: u32) -> u3
 
 단위 테스트에서 [Borsh로 직렬화](https://borsh.io)되어 있고 base64로 인코딩된 값을 가져오는 간단한 데모는 다음과 같습니다.
 
-```rust reference
-https://github.com/mikedotexe/rust-status-message/blob/b83c5126fdbe0f19bc904e547fda0bb12c2ea133/src/lib.rs#L93-L104
-```
+<Github language="rust" start="93" end="104" url="https://github.com/mikedotexe/rust-status-message/blob/b83c5126fdbe0f19bc904e547fda0bb12c2ea133/src/lib.rs" />
 
 다음 스니펫은 프론트엔드 또는 CLI에서 이 값을 가져오는 간단한 함수를 보여줍니다. 참고: 이 메서드에는 반환 값이 없으므로 `#[result_serializer(borsh)]`가 필요하지 않습니다.
 
-```rust reference
-https://github.com/mikedotexe/rust-status-message/blob/b83c5126fdbe0f19bc904e547fda0bb12c2ea133/src/lib.rs#L40-L42
-```
+<Github language="rust" start="40" end="42" url="https://github.com/mikedotexe/rust-status-message/blob/b83c5126fdbe0f19bc904e547fda0bb12c2ea133/src/lib.rs" />
 
 이는 다음과 같은 간단한 구조체를 사용하고 있습니다.
 
-```rust reference
-https://github.com/mikedotexe/rust-status-message/blob/b83c5126fdbe0f19bc904e547fda0bb12c2ea133/src/lib.rs#L13-L17
-```
+<Github language="rust" start="13" end="17" url="https://github.com/mikedotexe/rust-status-message/blob/b83c5126fdbe0f19bc904e547fda0bb12c2ea133/src/lib.rs" />
 
 NEAR CLI로 이를 호출하려면 다음과 유사한 명령을 사용하세요.
 

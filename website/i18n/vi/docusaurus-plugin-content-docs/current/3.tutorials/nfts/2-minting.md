@@ -4,6 +4,8 @@ title: Minting
 sidebar_label: Minting
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 Đây là hướng dẫn đầu tiên trong một loạt serie chỉ bạn cách tạo một NFT smart contract hoàn chỉnh từ đầu, phù hợp với tất cả [các chuẩn NFT](https://nomicon.io/Standards/NonFungibleToken/) của NEAR. Hôm nay bạn sẽ học cách tạo logic cần thiết để mint (đúc) NFT và để chúng hiển thị trong ví NEAR của bạn. Bạn sẽ sửa đổi một phần của [skeleton smart contract](/tutorials/nfts/skeleton) bằng cách điền vào các code snippet cần thiết cần thiết để thêm các chức năng mint.
 
 ## Giới thiệu
@@ -36,40 +38,34 @@ Bắt đầu bằng cách đến `nft-contract/src/lib.rs` và điền vào mộ
 
 Việc đầu tiên cần làm là modify contract `struct` như sau:
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/lib.rs#L25-L42
-```
+<Github language="rust" start="25" end="42" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/lib.rs" />
 
-Điều này cho phép bạn lấy thông tin được lưu trữ trong các data structure này từ bất kỳ đâu trong contract. Đoạn code trên đã tạo 3 kho lưu trữ token cụ thể:
+This allows you to get the information stored in these data structures from anywhere in the contract. The code above has created 3 token specific storages:
 
 - **tokens_per_owner**: cho phép bạn theo dõi các token thuộc sở hữu của bất kỳ account nào
 - **tokens_by_id**: trả về tất cả thông tin của một token xác định
 - **token_metadata_by_id**: trả về metadata của một token xác định
 
-Ngoài ra, bạn sẽ theo dõi owner của contract cũng như metadata của contract.
+In addition, you'll keep track of the owner of the contract as well as the metadata for the contract.
 
-Bạn có thể nhầm lẫn với một số type đang được sử dụng. Để làm cho code dễ đọc hơn, chúng tôi đã giới thiệu các data type tùy chỉnh mà chúng tôi sẽ trình bày ngắn gọn bên dưới:
+You might be confused as to some of the types that are being used. In order to make the code more readable, we've introduced custom data types which we'll briefly outline below:
 
 - **AccountId**: một string đảm bảo không có ký tự đặc biệt hoặc không được hỗ trợ.
 - **TokenId**: đơn giản chỉ là một string.
 
-Đối với các data type `Token`, `TokenMetadata`, và `NFTContractMetadata`, đó là những struct mà chúng tôi sẽ định nghĩa sau trong hướng dẫn này.
+As for the `Token`, `TokenMetadata`, and `NFTContractMetadata` data types, those are structs that we'll define later in this tutorial.
 
 #### Các Initialization Function
 
-Tiếp theo, tạo init function; bạn có thể đặt tên cho nó là `new`. Function này cần được gọi khi bạn deploy contract lần đầu tiên. Nó sẽ khởi tạo tất cả các field của contract mà bạn đã define ở trên với các giá trị mặc định. Đừng quên thêm vào các field `owner_id` và `metadata` như là các parameter của function, để những field đó có thể được tùy chỉnh.
+Next, create what's called an initialization function; you can name it `new`. This function needs to be invoked when you first deploy the contract. It will initialize all the contract's fields that you've defined above with default values. Don't forget to add the `owner_id` and `metadata` fields as parameters to the function, so only those can be customized.
 
-Function này sẽ mặc định tất cả các collection là empty và set `owner` cũng như `metadata` bằng với những giá trị bạn nhập vào.
+This function will default all the collections to be empty and set the `owner` and `metadata` equal to what you pass in.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/tree/2.minting/nft-contract/src/lib.rs#L86-L106
-```
+<Github language="rust" start="86" end="106" url="https://github.com/near-examples/nft-tutorial/tree/2.minting/nft-contract/src/lib.rs" />
 
 Thường thì khi develop, bạn sẽ cần deploy các contract một vài lần. Bạn có thể tưởng tượng được sự tẻ nhạt khi phải pass metadata mỗi khi init contract. Vì lý do này, hãy tạo một function có thể init contract với một bộ `metadata` mặc định. Bạn có thể gọi nó là `new_default_meta` và nó chỉ có một parameter `owner_id` duy nhất.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/lib.rs#L64-L79
-```
+<Github language="rust" start="64" end="79" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/lib.rs" />
 
 Function này chỉ đơn giản là gọi function `new` trước đó và truyền vào owner mà bạn chỉ định và cũng truyền vào một vài metadata mặc định.
 
@@ -79,23 +75,17 @@ Bây giờ bạn đã xác định thông tin nào cần lưu trữ trên chính
 
 Hãy chuyển qua file `nft-contract/src/metadata.rs` vì đây là nơi sẽ chứa thông tin. If you look at the [standards for metadata](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata), you'll find all the necessary information that you need to store for both `TokenMetadata` and `NFTContractMetadata`. Đơn giản chỉ cần điền vào code sau.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs#L10-L37
-```
+<Github language="rust" start="10" end="37" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs" />
 
 Đến đây bạn sẽ có struct `Token` và có `JsonToken`. Struct `Token` sẽ chứa tất cả thông tin liên quan đến token, ngoại trừ metadata. The metadata, if you remember, is stored in a map on the contract in a data structure called `token_metadata_by_id`. Nó cho phép bạn có thể lấy nhanh metadata của bất kỳ token nào, bằng cách chỉ cần pass vào ID của token.
 
 Đối với struct `Token`, bạn sẽ chỉ cần theo dõi owner từ lúc này.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs#L39-L43
-```
+<Github language="rust" start="39" end="43" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs" />
 
 Mục đích của `JsonToken` là chứa tất cả các thông tin cho một NFT mà bạn muốn gởi trả lại dưới dạng JSON khi ai đó thực hiện một view call. Nghĩa là bạn sẽ cần chứa owner, token ID, và metadata.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs#L45-L55
-```
+<Github language="rust" start="45" end="55" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs" />
 
 :::tip Có thể một vài bạn sẽ nghĩ _"tại sao chúng ta không chứa tất cả thông tin trong struct `Token` cho đơn giản?"_. Lý do là, việc chỉ tạo JSON token khi bạn cần đến sẽ hiệu quả hơn là lưu trữ tất cả thông tin trong struct token. Hơn nữa, một số hoạt động có thể chỉ cần metadata của một token và do đó, việc có metadata trong một data structure riêng biệt sẽ tối ưu hơn. :::
 
@@ -103,9 +93,7 @@ https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/me
 
 Bây giờ bạn đã xác định một số kiểu đã được sử dụng trong phần trước, hãy tiếp tục và tạo view function đầu tiên `nft_metadata`. This will allow users to query for the contract's metadata as per the [metadata standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata).
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs#L57-L67
-```
+<Github language="rust" start="57" end="67" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs" />
 
 Function này sẽ lấy object `metadata` từ contract thuộc type `NFTContractMetadata` và trả về nó.
 
@@ -137,9 +125,7 @@ Với những bước đã nêu, điều quan trọng là phải tính đến ch
 
 Bây giờ bạn đã hiểu rõ mọi thứ sẽ diễn ra như thế nào, hãy điền vào đoạn code cần thiết.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/mint.rs#L3-L45
-```
+<Github language="rust" start="3" end="45" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/mint.rs" />
 
 Bạn sẽ nhận thấy rằng chúng tôi đang sử dụng một số internal method như `refund_deposit` và `internal_add_token_to_owner`. Chúng tôi đã mô tả chức năng của `refund_deposit`, còn đối với `internal_add_token_to_owner`, method này sẽ thêm một token vào tập hợp các token mà một account sở hữu, cụ thể là cho data structure `tokens_per_owner` của contract. Bạn có thể tạo các function này trong một file có tên `internal.rs`. Hãy tiếp tục và tạo file. Kiến trúc contract mới của bạn sẽ trông như sau:
 
@@ -162,15 +148,11 @@ nft-contract
 
 Thêm code sau vào file `internal.rs` mà bạn vừa tạo.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/internal.rs#L1-L63
-```
+<Github language="rust" start="1" end="63" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/internal.rs" />
 
 Bây giờ, hãy nhanh chóng di chuyển đến file `lib.rs` và làm cho các function chúng ta vừa tạo có thể invoke trong các file khác. Chúng ta sẽ thêm các internal crate và sửa đổi file như được hiển thị bên dưới:
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/lib.rs#L10-L23
-```
+<Github language="rust" start="10" end="23" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/lib.rs" />
 
 Tại thời điểm này, tất cả logic cốt lõi đã sẵn sàng để bạn có thể mint các NFT. Bạn có thể dùng function `nft_mint`, với các parameter sau:
 
@@ -193,9 +175,7 @@ Nếu bạn tiếp tục và triển khai hợp đồng này, khởi tạo nó v
 
 Nó sẽ lấy token ID làm tham số và trả về thông tin cho token đó. `JsonToken` chứa token ID, owner ID, và metadata của token.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/nft_core.rs#L89-L104
-```
+<Github language="rust" start="89" end="104" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/nft_core.rs" />
 
 Sau khi hoàn thành, cuối cùng cũng đã đến lúc build và deploy contract để bạn có thể mint NFT đầu tiên của mình.
 
@@ -283,9 +263,7 @@ Tại thời điểm này, bạn đã sẵn sàng để tiếp tục và mint NF
 
 Nào hãy call function dùng để mint mà bạn đã tạo trước đó. Function này cần một `token_id` và `metadata`. Nếu bạn nhìn lại struct `TokenMetadata` mà bạn đã tạo trước đó, có nhiều trường có thể được lưu trữ on-chain:
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs#L24-L37
-```
+<Github language="rust" start="24" end="37" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs" />
 
 Hãy bắt đầu mint một NFT với một title, description, và media. Trường media có thể là bất kỳ URL nào trỏ đến một file media. Chúng ta có một file GIF tuyệt vời để mint nhưng nếu bạn muốn tạo một NFT tùy chỉnh, chỉ cần thay thế media link của chúng ta bằng một trong những lựa chọn của bạn. Nếu bạn chạy lệnh sau, nó sẽ mint ra một NFT với các tham số sau:
 

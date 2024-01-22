@@ -4,6 +4,8 @@ title: 로열티
 sidebar_label: 로열티
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 이 튜토리얼에서는 대체 불가능 토큰(NFT) 스마트 컨트랙트를 계속 구축하고, NFT에 영구 로열티를 구현하는 방법을 배웁니다. 이를 통해 사람들은 NFT가 판매될 때 구매 가격의 일정 비율을 얻을 수 있습니다.
 
 :::caution
@@ -48,19 +50,15 @@ royalty: { [accountId: string]: number };
 
 두 번째로, `JsonToken` 구조체에도 `royalty`를 추가합니다.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/metadata.ts#L106-L166
-```
+<Github language="js" start="106" end="166" url="https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/metadata.ts" />
 
 ### 내부 헬퍼 함수
 
 **royaltyToPayout**
 
-지급액 계산을 단순화하기 위해, 헬퍼 함수 `royaltyToPayout`을 `src/internal.ts`에 추가해 보겠습니다. 이는 백분율로 표현된 값을 지불해야 하는 실제 금액으로 변환할 것입니다. 1% 미만의 백분율을 허용하려면 100% 값을 `10,000`으로 설정할 수 있습니다. 이는 귀하가 제공할 수 있는 최소 비율이 0.01% 또는 `1`임을 의미합니다. 예를 들어, 계정이 20%의 영구 로열티를 가지도록 하려면 지급 맵에 `"benji.testnet": 2000`이라는 키-값 쌍을 삽입하면 됩니다.
+To simplify the payout calculation, let's add a helper `royaltyToPayout` function to `src/internal.ts`. This will convert a percentage to the actual amount that should be paid. In order to allow for percentages less than 1%, you can give 100% a value of `10,000`. This means that the minimum percentage you can give out is 0.01%, or `1`. For example, if you wanted the account `benji.testnet` to have a perpetual royalty of 20%, you would insert the pair `"benji.testnet": 2000` into the payout map.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/internal.ts#L13-L16
-```
+<Github language="js" start="13" end="16" url="https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/internal.ts" />
 
 `royaltyToPayout` 함수를 사용하여 `royaltyPercentage`에 `2000`이라는 값을, `amountToPay`에 1 NEAR라는 값을 전달하면 0.2 NEAR를 로열티로 반환할 것입니다.
 
@@ -70,9 +68,7 @@ https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract
 
 이제 주어진 NFT에 대해 금액 또는 잔액이 지급될 계정을 확인하는 메서드를 구현해 보겠습니다. `nft-contract/src/royalty.ts` 파일을 열고 아래 표시된 대로 `internalNftPayout` 함수를 수정합니다.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/royalty.ts#L7-L53
-```
+<Github language="js" start="7" end="53" url="https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/royalty.ts" />
 
 이 함수는 토큰의 로열티 맵을 반복하여 잔액을 가져와, 이전에 생성한 `royaltyToPayout` 함수를 통해 잔액을 지불금으로 변환합니다. 이는 총 로열티에서 남은 금액을 토큰 소유자에게 제공할 것입니다. 그 예시로,
 
@@ -107,31 +103,23 @@ Payout {
 
 지불금 계산 방법을 알았으므로, 이제 NFT를 전송하고 지불금을 마켓플레이스에 반환하는 함수를 만들 차례입니다.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/royalty.ts#L55-L121
-```
+<Github language="js" start="55" end="121" url="https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/royalty.ts" />
 
 ### 영구 로열티
 
 영구 로열티에 대한 지원을 추가하기 위해, `src/mint.ts` 파일을 편집해 보겠습니다. 먼저 영구 로열티에 대한 선택적인 매개변수를 추가합니다. 이는 NFT를 구매할 때 어떤 계정으로 가는 비율을 결정하는 것입니다. 또한 `Token` 객체에 넣을 로열티를 생성하고 삽입해야 합니다.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/mint.ts#L7-L64
-```
+<Github language="js" start="7" end="64" url="https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/mint.ts" />
 
 ### 구조체 구현에 로열티 객체 추가
 
 `Token` 및 `JsonToken` 구조체에 새 필드를 추가했으므로, 이에 따라 구현을 편집해야 합니다. `nft-contract/src/internal.ts` 파일로 이동해서, 새 `Token` 객체를 만드는 `internalTransfer` 함수 부분을 편집합니다.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/internal.ts#L150-L158
-```
+<Github language="js" start="150" end="158" url="https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/internal.ts" />
 
 완료되면 `nft-contract/src/nft_core.ts` 파일로 이동합니다. 거기서 `internalNftToken`의 구현을 수정해서, `JsonToken`가 새 로열티 정보를 다시 보내도록 해야 합니다.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/nft_core.ts#L10-L37
-```
+<Github language="js" start="10" end="37" url="https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/nft_core.ts" />
 
 그런 다음, CLI를 사용하여 새 `nft_payout` 함수를 쿼리하고 제대로 작동하는지 확인할 수 있습니다.
 

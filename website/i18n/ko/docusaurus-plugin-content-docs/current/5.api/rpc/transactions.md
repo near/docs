@@ -57,7 +57,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_
 }
 ```
 
-최종 트랜잭션 결과는 아래 예와 유사한 결과를 반환하는 위의 `result` 해시를 사용하여 [트랜잭션 상태](#transaction-status) 또는 [NEAR 익스플로러](https://explorer.testnet.near.org/)를 사용하여 쿼리할 수 있습니다.
+Final transaction results can be queried using [Transaction Status](#transaction-status) or [NearBlocks Explorer](https://testnet.nearblocks.io/) using the above `result` hash returning a result similar to the example below.
 
 ![NEAR-Explorer-transactionHash](/docs/assets/NEAR-Explorer-transactionHash.png)
 
@@ -331,7 +331,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
 
 - 메서드: `tx`
 - 매개변수:
-  - `transaction hash` _(유효한 트랜잭션 해시는 [NEAR 익스플로러](https://explorer.testnet.near.org) 참조)_
+  - `transaction hash` _(see [NearBlocks Explorer](https://testnet.nearblocks.io) for a valid transaction hash)_
   - `sender account id`
 
 예시:
@@ -605,7 +605,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
 
 - 메서드: `EXPERIMENTAL_tx_status`
 - 매개변수:
-  - `transaction hash` _(유효한 트랜잭션 해시는 [NEAR 익스플로러](https://explorer.testnet.near.org) 참조)_
+  - `transaction hash` _(see [NearBlocks Explorer](https://testnet.nearblocks.io) for a valid transaction hash)_
   - `sender account id` _(트랜잭션을 쿼리할 샤드를 결정하는 데 사용됨)_
 
 예시:
@@ -982,7 +982,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
 
 - 메서드: `EXPERIMENTAL_receipt`
 - 매개변수:
-  - `receipt_id` _(유효한 Receipt ID는 [NEAR 익스플로러](https://explorer.testnet.near.org) 참조)_
+  - `receipt_id` _(see [NearBlocks Explorer](https://testnet.nearblocks.io) for a valid receipt id)_
 
 예시:
 

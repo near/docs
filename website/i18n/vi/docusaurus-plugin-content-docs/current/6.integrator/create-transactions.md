@@ -96,17 +96,19 @@ await keyStore.setKey(networkId, sender, keyPair);
 Bây giờ tạo một kết nối tới NEAR sử dụng một configuration object, nó sẽ chứa `networkId` đã được cài đặt trước đó cũng như `keyStore` của bạn.
 
 ```js
-// configuration được dùng để kết nối tới NEAR
+// configuration used to connect to NEAR
+const prefix = (networkId === "testnet") ? "testnet" : "www";
+
 const config = {
   networkId,
   keyStore,
   nodeUrl: `https://rpc.${networkId}.near.org`,
   walletUrl: `https://wallet.${networkId}.near.org`,
   helperUrl: `https://helper.${networkId}.near.org`,
-  explorerUrl: `https://explorer.${networkId}.near.org`,
+  explorerUrl: `https://${prefix}.nearblocks.io`,
 };
 
-// kết nối tới NEAR! :)
+// connect to NEAR! :)
 const near = await connect(config);
 // tạo một object NEAR account
 const senderAccount = await near.account(sender);
@@ -122,7 +124,7 @@ Bây giờ bạn đã cài đặt mọi thứ, khởi tạo transaction bằng c
 const result = await senderAccount.sendMoney(receiver, amount);
 ```
 
-Command đơn giản này sẽ khởi tạo, sign, và gửi một transaction về việc transfer token trên NEAR blockchain. There is no need to create a `result` variable aside from inspecting the response details from your transaction and even create a link to [NEAR Explorer](https://explorer.testnet.near.org/) to view a GUI version of the transaction details.
+Command đơn giản này sẽ khởi tạo, sign, và gửi một transaction về việc transfer token trên NEAR blockchain. There is no need to create a `result` variable aside from inspecting the response details from your transaction and even create a link to [NearBlocks Explorer](https://testnet.nearblocks.io/) to view a GUI version of the transaction details.
 
 ---
 
@@ -460,11 +462,12 @@ Transaction Results:  {
 
 Để biết thêm thông tin chi tiết của các transaction receipt [[bấm vào đây]](https://nomicon.io/RuntimeSpec/Receipts.html)
 
-- Để xem transaction trong [NEAR Explorer](https://explorer.testnet.near.org/), nhập vào `hash` nằm dưới cùng của `transaction` / `Các Kết Quả của Transaction`.
+- To view the transaction in [NearBlocks Explorer](https://testnet.nearblocks.io/), enter the `hash` located under `transaction` / `Transaction Results`.
 - Hơn nữa, bạn có thể tạo một link trong JS bằng cách sử dụng `networkId` và `result.transaction.hash`.
 
 ```js
-const transactionLink = `https://explorer.${networkId}.near.org/transactions/${result.transaction.hash}`;
+const prefix = (networkId === "testnet") ? "testnet." : "";
+const transactionLink = `https://${prefix}nearblocks.io/txns/${result.transaction.hash}`;
 ```
 
 :::tip Got a question?

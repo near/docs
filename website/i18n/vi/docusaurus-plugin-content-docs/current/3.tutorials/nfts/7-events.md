@@ -4,6 +4,8 @@ title: Event
 sidebar_label: Event
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 In this tutorial, you'll learn about the [events standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event) and how to implement it in your smart contract.
 
 ## Giới thiệu
@@ -113,39 +115,29 @@ EVENT_JSON:{
 
 Copy phần dưới đây vào file của bạn. Cái này sẽ phác thảo các cấu trúc cho `EventLog` của bạn, `NftMintLog`, và `NftTransferLog`. Ngoài ra, chúng ta đã thêm `EVENT_JSON:` là tiền tố bất cứ khi nào bạn ghi lại `EventLog`.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/events.rs#L1-L79
-```
+<Github language="rust" start="1" end="79" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/events.rs" />
 
-Việc này yêu cầu `serde_json` package, bạn có thể dễ dàng thêm nó vào file `nft-contract/Cargo.toml`:
+This requires the `serde_json` package which you can easily add to your `nft-contract/Cargo.toml` file:
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/Cargo.toml#L1-L20
-```
+<Github language="rust" start="1" end="20" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/Cargo.toml" />
 
 ### Thêm các module và constant {#lib-rs}
 
 Bây giờ bạn đã tạo một file mới, bạn cần thêm module tới file `lib.rs`. Ngoài ra, bạn có thể định nghĩa hai constant cho tiêu chuẩn và version sẽ được sử dụng trong contract của chúng ta.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/lib.rs#L10-L30
-```
+<Github language="rust" start="10" end="30" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/lib.rs" />
 
 ### Log các token đã được mint {#logging-minted-tokens}
 
 Bây giờ tất cả các công cụ đã được thiết lập sẵn, bạn có thể tiến hành thực tế chức năng log. Vì contract chỉ mint các token ở một nơi, nên việc bạn đặt log ở đâu là không quan trọng. Mở file `nft-contract/src/mint.rs` và chuyển tới phía cuối file. Đây là nơi bạn sẽ xây dựng log để mint. Bây giờ nó sẽ phát ra một log chính xác, bất kỳ khi nào ai đó mint thành công một NFT.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/mint.rs#L5-L80
-```
+<Github language="rust" start="5" end="80" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/mint.rs" />
 
 ### Log các transfer {#logging-transfers}
 
 Hãy mở file `nft-contract/src/internal.rs` và chuyển tới `internal_transfer` function. Đây là nơi bạn sẽ xây dựng transfer log của mình. Bất kỳ khi nào một NFT được transfer, function này sẽ được call và vì thế bạn sẽ log các transfer một cách chính xác.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/internal.rs#L140-L239
-```
+<Github language="rust" start="140" end="239" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/internal.rs" />
 
 Thật không may, có một trường hợp sẽ làm hỏng mọi thứ với giải pháp này. Nếu một NFT được transfer thông qua function `nft_transfer_call`, có khả năng quá trình transfer sẽ bị revert nếu `nft_on_transfer` function trả về `true`. Xem xét logic của `nft_transfer_call`, bạn sẽ thấy tại sao đây là một vấn đề.
 
@@ -157,21 +149,15 @@ Khi `nft_transfer_call` được gọi, nó sẽ:
 
 Nếu bạn chỉ đặt log vào function `internal_transfer`, log sẽ được phát ra và indexer sẽ nghĩ rằng NFT đã được transfer. Tuy nhiên, nếu quá trình transfer bị revert trong `nft_resolve_transfer`, thì event đó **cũng** sẽ được phát ra. Bất cứ nơi nào mà một NFT **có thể** được transfer, chúng ta nên ghi vào log. Thay thế `nft_resolve_transfer` với đoạn code dưới đây.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/nft_core.rs#L182-L277
-```
+<Github language="rust" start="182" end="277" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/nft_core.rs" />
 
 Ngoài ra, bạn cần thêm `authorized_id` và `memo` vào các tham số cho `nft_resolve_transfer` như dưới đây.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/nft_core.rs#L47-L66
-```
+<Github language="rust" start="47" end="66" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/nft_core.rs" />
 
 The last step is to modify the `nft_transfer_call` logic to include these new parameters:
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/nft_core.rs#L102-L159
-```
+<Github language="rust" start="102" end="159" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/nft_core.rs" />
 
 Với việc hoàn thành điều đó, bạn đã triển khai thành công tiêu chuẩn các event và bây giờ là lúc để bắt đầu quá trình test.
 
@@ -221,7 +207,7 @@ Receipts: F4oxNfv54cqwUwLUJ7h74H1iE66Y3H7QDfZMmGENwSxd, BJxKNFRuLDdbhbGeLA3UBSbL
     Log [events.goteam.examples.testnet]: EVENT_JSON:{"standard":"nep171","version":"1.0.0","event":"nft_mint","data":[{"owner_id":"events.goteam.examples.testnet","token_ids":["events-token"]}]}
 Transaction Id 4Wy2KQVTuAWQHw5jXcRAbrz7bNyZBoiPEvLcGougciyk
 To see the transaction in the transaction explorer, please open this url in your browser
-https://explorer.testnet.near.org/transactions/4Wy2KQVTuAWQHw5jXcRAbrz7bNyZBoiPEvLcGougciyk
+https://testnet.nearblocks.io/txns/4Wy2KQVTuAWQHw5jXcRAbrz7bNyZBoiPEvLcGougciyk
 ''
 ```
 
@@ -244,7 +230,7 @@ Receipts: EoqBxrpv9Dgb8KqK4FdeREawVVLWepEUR15KPNuZ4fGD, HZ4xQpbgc8EfU3PiV72LvfXb
     Log [events.goteam.examples.testnet]: EVENT_JSON:{"standard":"nep171","version":"1.0.0","event":"nft_transfer","data":[{"authorized_id":"events.goteam.examples.testnet","old_owner_id":"events.goteam.examples.testnet","new_owner_id":"benjiman.testnet","token_ids":["events-token"],"memo":"Go Team :)"}]}
 Transaction Id 4S1VrepKzA6HxvPj3cK12vaT7Dt4vxJRWESA1ym1xdvH
 To see the transaction in the transaction explorer, please open this url in your browser
-https://explorer.testnet.near.org/transactions/4S1VrepKzA6HxvPj3cK12vaT7Dt4vxJRWESA1ym1xdvH
+https://testnet.nearblocks.io/txns/4S1VrepKzA6HxvPj3cK12vaT7Dt4vxJRWESA1ym1xdvH
 ''
 ```
 

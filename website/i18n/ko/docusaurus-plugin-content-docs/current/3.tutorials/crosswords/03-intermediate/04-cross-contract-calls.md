@@ -4,6 +4,8 @@ sidebar_label: "교차 컨트랙트 호출 등"
 title: "교차 컨트랙트 호출, 액세스 키 셔플링 등"
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 # 컨트랙트 업데이트
 
 import shuffleKeys from '/docs/assets/crosswords/shuffle-keys.gif';
@@ -45,13 +47,11 @@ import recycleKey from '/docs/assets/crosswords/remove-key-recycle--eerie_ram.ne
 
 먼저 `submit_solution`가 올바른 정답을 확인하는 방법에 대해 살펴보겠습니다.
 
-```rust reference
-https://github.com/near-examples/crossword-tutorial-chapter-3/blob/ec07e1e48285d31089b7e8cec9e9cf32a7e90c35/contract/src/lib.rs#L145-L151
-```
+<Github language="rust" start="145" end="151" url="https://github.com/near-examples/crossword-tutorial-chapter-3/blob/ec07e1e48285d31089b7e8cec9e9cf32a7e90c35/contract/src/lib.rs" />
 
-일반 텍스트를 해싱하는 대신 공개 키가 우리가 알고 있는 답과 일치하는지 확인하기만 하면 됩니다. (대답은 공개 키를 포함하여 키 쌍을 생성하기 위한 시드 문구로 사용되는 십자말풀이 퍼즐의 정답을 나타내는 일련의 단어입니다.)
+Instead of hashing the plaintext, we simply check that the public key matches what we know the answer is. (The answer being the series of words representing the solution to the crossword puzzle, used as a seed phrase to create a key pair, including a public key.)
 
-이 `submit_solution` 메서드에서, 우리는 (승자만 가지고 있는) **함수 호출 액세스 키를 추가**하고 승자가 발견한 액세스 키를 제거하여 다른 사람이 사용할 수 없도록 계획을 따를 것입니다.
+Further down in the `submit_solution` method we'll follow our plan by **adding a function-call access key** (that only the winner has) and removing the access key that was discovered by the winner, so no one else can use it.
 
 <figure>
     <img src={carpenterAddingKey} alt="키를 만든 목수에 대한 묘사 carlcarlkarl.near 그림" width="400"/>
@@ -60,9 +60,7 @@ https://github.com/near-examples/crossword-tutorial-chapter-3/blob/ec07e1e48285d
 
 <br/>
 
-```rust reference
-https://github.com/near-examples/crossword-tutorial-chapter-3/blob/ec07e1e48285d31089b7e8cec9e9cf32a7e90c35/contract/src/lib.rs#L175-L181
-```
+<Github language="rust" start="175" end="181" url="https://github.com/near-examples/crossword-tutorial-chapter-3/blob/ec07e1e48285d31089b7e8cec9e9cf32a7e90c35/contract/src/lib.rs" />
 
 위의 첫 번째 Promise는 액세스 키를 추가하고 두 번째 Promise는 정답에서 파생된 계정의 액세스 키를 시드 문구로 삭제합니다.
 
@@ -86,9 +84,7 @@ https://github.com/near-examples/crossword-tutorial-chapter-3/blob/ec07e1e48285d
 
 우리는 `testnet` 계정에 배포된 linkdrop 계정에 대해 교차 컨트랙트 호출을 할 것입니다. 우리는 또한 이에 대한 콜백과 (잠재적으로 존재하는) 계정으로의 간단한 전송을 할 것입니다. 또한, 두 메서드를 모두 정의하는 특성을 만들 것입니다.
 
-```rust reference
-https://github.com/near-examples/crossword-tutorial-chapter-3/blob/ec07e1e48285d31089b7e8cec9e9cf32a7e90c35/contract/src/lib.rs#L19-L45
-```
+<Github language="rust" start="19" end="45" url="https://github.com/near-examples/crossword-tutorial-chapter-3/blob/ec07e1e48285d31089b7e8cec9e9cf32a7e90c35/contract/src/lib.rs" />
 
 :::tip `Crossword` 구조체 구현에서 `callback_after_transfer`와 `callback_after_create_account` 함수를 구현했을 수 있으므로, 콜백에 대한 특성을 만들 필요가 없습니다. 코드를 좀 더 읽기 쉽게 만들기 위해 특성을 정의하고 구현하기로 했습니다 :::
 
@@ -138,9 +134,7 @@ pub fn claim_reward(
 
 콜백에서 이를 확인하는 방법을 살펴보겠습니다.
 
-```rust reference
-https://github.com/near-examples/crossword-tutorial-chapter-3/blob/ec07e1e48285d31089b7e8cec9e9cf32a7e90c35/contract/src/lib.rs#L381-L411
-```
+<Github language="rust" start="381" end="411" url="https://github.com/near-examples/crossword-tutorial-chapter-3/blob/ec07e1e48285d31089b7e8cec9e9cf32a7e90c35/contract/src/lib.rs" />
 
 :::info `#[private]` 매크로 위에서 함수를 비공개로 선언했습니다.
 
@@ -189,9 +183,7 @@ pub fn claim_reward_new_account(
 
 그런 다음 콜백은 다음과 같습니다.
 
-```rust reference
-https://github.com/near-examples/crossword-tutorial-chapter-3/blob/ec07e1e48285d31089b7e8cec9e9cf32a7e90c35/contract/src/lib.rs#L413-L448
-```
+<Github language="rust" start="413" end="448" url="https://github.com/near-examples/crossword-tutorial-chapter-3/blob/ec07e1e48285d31089b7e8cec9e9cf32a7e90c35/contract/src/lib.rs" />
 
 위 스니펫에는 우리가 `claim_reward`에서 본 콜백과 한 가지 차이점이 있습니다. 방금 호출한 스마트 컨트랙트에서 반환된 값을 캡처합니다. linkdrop 컨트랙트는 bool을 반환하므로, 해당 자료형을 기대할 수 있습니다. (위의 "참고:" 주석을 참조하세요.)
 

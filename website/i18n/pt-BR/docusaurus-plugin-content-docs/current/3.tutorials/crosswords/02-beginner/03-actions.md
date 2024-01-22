@@ -4,6 +4,8 @@ sidebar_label: "Actions and sending NEAR"
 title: "There are several Actions an account can do, including sending the winner of the crossword puzzle NEAR using the Transfer Action"
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 import allActions from '/docs/assets/crosswords/crossword-actions.png';
 import transferNEAR from '/docs/assets/crosswords/transfer-brand-blue--qiqi04.near--blankworl.png';
 import yoctoNEAR from '/docs/assets/crosswords/yoctoNEAR-magnifying--jrbemint.near--JrbeMad.jpg';
@@ -48,9 +50,7 @@ Let's make it simple and hardcode the prize amount. This is how much NEAR will b
 
 At the top of the `lib.rs` file we'll add this constant:
 
-```rust reference
-https://github.com/near-examples/crossword-tutorial-chapter-2/blob/1909630a10291081cb00b2780c1ae8889d98f620/contract/src/lib.rs#L10-L11
-```
+<Github language="rust" start="10" end="11" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/1909630a10291081cb00b2780c1ae8889d98f620/contract/src/lib.rs" />
 
 As the code comment mentions, this is 5 NEAR, but look at all those zeroes in the code!
 
@@ -65,9 +65,7 @@ That's the value in yoctoNEAR. This concept is similar to other blockchains. Bit
 
 In the last chapter we had a simple function called `guess_solution` that returned `true` if the solution was correct, and `false` otherwise. We'll be replacing that function with `submit_solution` as shown below:
 
-```rust reference
-https://github.com/near-examples/crossword-tutorial-chapter-2/blob/83d4d8925e6d30e04e8e4cb5e9a0a6d3763fce40/contract/src/lib.rs#L92-L124
-```
+<Github language="rust" start="92" end="124" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/83d4d8925e6d30e04e8e4cb5e9a0a6d3763fce40/contract/src/lib.rs" />
 
 Note the last line in this function, which sends NEAR to the predecessor.
 

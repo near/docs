@@ -4,6 +4,8 @@ title: 이벤트
 sidebar_label: 이벤트
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 이 튜토리얼에서는 [이벤트 표준](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event)과 이를 스마트 컨트랙트에서 구현하는 방법에 대해 알아봅니다.
 
 ## 소개
@@ -113,39 +115,29 @@ EVENT_JSON:{
 
 다음을 파일에 복사합니다. 이는 `EventLog`, `NftMintLog`, 및 `NftTransferLog`에 대한 구조체의 개요를 설명합니다. 또한, `EVENT_JSON:`에 대해 `EventLog`를 로그할 때마다 접두사가 붙도록 하는 방법도 추가했습니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/events.rs#L1-L79
-```
+<Github language="rust" start="1" end="79" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/events.rs" />
 
-이를 위해서는 `nft-contract/Cargo.toml` 파일에 쉽게 추가할 수 있는 `serde_json` 패키지가 필요합니다.
+This requires the `serde_json` package which you can easily add to your `nft-contract/Cargo.toml` file:
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/Cargo.toml#L1-L20
-```
+<Github language="rust" start="1" end="20" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/Cargo.toml" />
 
 ### 모듈 및 상수 추가 {#lib-rs}
 
 이제 새 파일을 만들었으므로 `lib.rs` 파일에 모듈을 추가해야 합니다. 또한 컨트랙트 전체에서 사용될 표준 및 버전에 대해 두 개의 상수를 정의할 수 있습니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/lib.rs#L10-L30
-```
+<Github language="rust" start="10" end="30" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/lib.rs" />
 
 ### 발행된 토큰 로깅 {#logging-minted-tokens}
 
 이제 모든 도구가 제자리에 설정되었으므로 이제 실제 로깅 기능을 구현할 수 있습니다. 컨트랙트는 한 곳에서만 토큰을 발행하기 때문에, 로그를 어디에 두어야 하는지는 간단합니다. `nft-contract/src/mint.rs` 파일을 열고 파일 맨 아래로 이동합니다. 여기에서 발행을 위한 로그를 구성할 수 있습니다. 누군가 성공적으로 NFT를 생성할 때마다 이제 올바르게 로그를 내보낼 것입니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/mint.rs#L5-L80
-```
+<Github language="rust" start="5" end="80" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/mint.rs" />
 
 ### 전송 로깅 {#logging-transfers}
 
 `nft-contract/src/internal.rs` 파일을 열고 `internal_transfer` 함수로 이동해 보겠습니다. 여기가 전송 로그를 작성할 위치입니다. NFT가 전송될 때마다 이 함수가 호출되므로, 이제 전송을 올바르게 기록하게 됩니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/internal.rs#L140-L239
-```
+<Github language="rust" start="140" end="239" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/internal.rs" />
 
 불행하게도 이 솔루션에는 문제를 일으킬 수 있는 극단적인 경우가 있습니다. NFT가 `nft_transfer_call` 함수를 통해 전송되는 경우, `nft_on_transfer` 함수가 `true`를 반환하면 전송이 취소될 가능성이 있습니다. `nft_transfer_call`에 대한 로직을 살펴보면, 이것이 왜 문제인지 알 수 있습니다.
 
@@ -157,21 +149,15 @@ https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/int
 
 만약 `internal_transfer` 함수에 로그만 넣으면, 로그가 내보내지고 인덱서는 NFT가 전송된 것으로 간주할 것입니다. 그러나 `nft_resolve_transfer` 도중에 전송이 되돌려지면 해당 이벤트도 **역시** 내보내야 합니다. NFT가 전송**될 수 있는** 모든 위치에 로그를 추가해야 합니다. `nft_resolve_transfer`를 다음 코드로 바꿉니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/nft_core.rs#L182-L277
-```
+<Github language="rust" start="182" end="277" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/nft_core.rs" />
 
 또한 다음과 같이 `nft_resolve_transfer`에 대해 매개변수에 `authorized_id`와 `memo`를 추가해야 합니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/nft_core.rs#L47-L66
-```
+<Github language="rust" start="47" end="66" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/nft_core.rs" />
 
 마지막 단계는 다음 새 매개변수를 포함하도록 `nft_transfer_call` 로직을 수정하는 것입니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/nft_core.rs#L102-L159
-```
+<Github language="rust" start="102" end="159" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/nft_core.rs" />
 
 완료되면 이벤트 표준을 성공적으로 구현한 것이며, 이제 테스트를 시작할 시간입니다.
 
@@ -221,7 +207,7 @@ Receipts: F4oxNfv54cqwUwLUJ7h74H1iE66Y3H7QDfZMmGENwSxd, BJxKNFRuLDdbhbGeLA3UBSbL
     Log [events.goteam.examples.testnet]: EVENT_JSON:{"standard":"nep171","version":"1.0.0","event":"nft_mint","data":[{"owner_id":"events.goteam.examples.testnet","token_ids":["events-token"]}]}
 Transaction Id 4Wy2KQVTuAWQHw5jXcRAbrz7bNyZBoiPEvLcGougciyk
 To see the transaction in the transaction explorer, please open this url in your browser
-https://explorer.testnet.near.org/transactions/4Wy2KQVTuAWQHw5jXcRAbrz7bNyZBoiPEvLcGougciyk
+https://testnet.nearblocks.io/txns/4Wy2KQVTuAWQHw5jXcRAbrz7bNyZBoiPEvLcGougciyk
 ''
 ```
 
@@ -244,7 +230,7 @@ Receipts: EoqBxrpv9Dgb8KqK4FdeREawVVLWepEUR15KPNuZ4fGD, HZ4xQpbgc8EfU3PiV72LvfXb
     Log [events.goteam.examples.testnet]: EVENT_JSON:{"standard":"nep171","version":"1.0.0","event":"nft_transfer","data":[{"authorized_id":"events.goteam.examples.testnet","old_owner_id":"events.goteam.examples.testnet","new_owner_id":"benjiman.testnet","token_ids":["events-token"],"memo":"Go Team :)"}]}
 Transaction Id 4S1VrepKzA6HxvPj3cK12vaT7Dt4vxJRWESA1ym1xdvH
 To see the transaction in the transaction explorer, please open this url in your browser
-https://explorer.testnet.near.org/transactions/4S1VrepKzA6HxvPj3cK12vaT7Dt4vxJRWESA1ym1xdvH
+https://testnet.nearblocks.io/txns/4S1VrepKzA6HxvPj3cK12vaT7Dt4vxJRWESA1ym1xdvH
 ''
 ```
 

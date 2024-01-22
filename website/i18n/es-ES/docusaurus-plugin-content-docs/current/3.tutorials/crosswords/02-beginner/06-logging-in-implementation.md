@@ -4,6 +4,8 @@ sidebar_label: "Access keys and login 2/2"
 title: "Implementing the login button"
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 import loggingIn from '/docs/assets/crosswords/logging-in.png';
 import explorerTransfer from '/docs/assets/crosswords/chapter-2-explorer-transfer.jpg';
 
@@ -32,9 +34,7 @@ We won't go over every change, but instead point to the new logic.
 
 First we set up a `WalletConnection` object from our JavaScript library:
 
-```js reference
-https://github.com/near-examples/crossword-tutorial-chapter-2/blob/1d64bf29c3376a18c71e5c5a075e29824d7a55f5/src/index.js#L12-L20
-```
+<Github language="js" start="12" end="20" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/1d64bf29c3376a18c71e5c5a075e29824d7a55f5/src/index.js" />
 
 It's then used in React:
 

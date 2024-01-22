@@ -4,6 +4,8 @@ sidebar_label: "액세스 키 및 로그인 2/2"
 title: "로그인 버튼 구현"
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 import loggingIn from '/docs/assets/crosswords/logging-in.png';
 import explorerTransfer from '/docs/assets/crosswords/chapter-2-explorer-transfer.jpg';
 
@@ -32,11 +34,9 @@ NEAR로 로그인할 때, `near-api-js`를 사용하는 로그인 버튼을 추�
 
 먼저 JavaScript 라이브러리에서 `WalletConnection` 객체를 설정합니다.
 
-```js reference
-https://github.com/near-examples/crossword-tutorial-chapter-2/blob/1d64bf29c3376a18c71e5c5a075e29824d7a55f5/src/index.js#L12-L20
-```
+<Github language="js" start="12" end="20" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/1d64bf29c3376a18c71e5c5a075e29824d7a55f5/src/index.js" />
 
-그런 다음 이는 React에서 사용됩니다.
+It's then used in React:
 
 ```js
 const signIn = () => {
@@ -71,19 +71,19 @@ return (
 );
 ```
 
-로그인하면 해당 `WalletConnection` 객체는 로그인한 사용자와 연결되며, 해당 키를 사용하여 트랜잭션에 서명하고 컨트랙트와 상호 작용합니다.
+Once logged in, that `WalletConnection` object will be tied to the logged-in user, and they'll use that key to sign transactions and interact with the contract.
 
-:::info NEAR 지갑으로 리디렉션되는 트랜잭션 개선된 십자말풀이 퍼즐에 로그인한 사용자의 함수 호출 액세스 키는 정답을 제출하기 위해 트랜잭션에 서명하는 데에 사용됩니다.
+:::info Transactions that redirect to NEAR Wallet In our improved crossword puzzle, the function-call access key for the logged-in user will be signing a transaction to submit their solution.
 
-그러나, NEAR 지갑으로 리디렉션되는 경우도 있고 그렇지 않은 경우도 있습니다.
+You may notice, however, that sometimes you'll be redirected to NEAR Wallet, and other times you aren't.
 
-이는 우리가 언급한 이전 규칙으로 되돌아갑니다: 함수 호출 액세스 키는 NEAR를 전송할 수 없습니다. 그들은 `Transfer` Action을 수행할 수 없습니다.
+This goes back to an earlier rule we mentioned: function-call access keys cannot send NEAR. They cannot perform the `Transfer` Action.
 
-함수 호출에 1 yoctoNEAR라도 필요한 경우, 트랜잭션에 서명하려면 NEAR 지갑(또는 전체 액세스 키가 포함된 다른 지갑)이 필요합니다. :::
+If a function call requires even 1 yoctoNEAR, NEAR Wallet (or any other wallet containing a full-access key) is required to sign the transaction. :::
 
 ## JavaScript에서 컨트랙트 함수 호출
 
-프론트엔드 코드에는 사용자가 십자말풀이 퍼즐을 성공적으로 완료했는지 확인하는 검사가 포함되어 있습니다. 여기에 스마트 컨트랙트의 `submit_solution` 함수를 호출하는 로직을 추가합니다.
+The frontend code contains a check to see if the user has completed the crossword puzzle successfully. In there we'll add logic to call the `submit_solution` function on the smart contract.
 
 ```js
 // Send the 5 NEAR prize to the logged-in winner
@@ -103,27 +103,27 @@ if (functionCallResult && functionCallResult.transaction && functionCallResult.t
 }
 ```
 
-:::tip TRY…CATCH 블록 블록체인에서 발생하는 오류를 적절하게 처리하기 위해 이러한 유형의 호출을 try…catch 블록으로 래핑하는 것은 나쁜 생각이 아닙니다.
+:::tip try…catch blocks It's not a bad idea to wrap these type of calls in try…catch blocks to properly handle any errors that come from the blockchain.
 
-이러한 오류는 개발자와 최종 사용자에게 매우 유용할 수 있습니다. :::
+These errors can be quite helpful to the developer and the end user. :::
 
 ## 퍼즐 가져오기, 마무리
 
-이전 챕터에서 프론트엔드는 간단한 십자말풀이 퍼즐의 단서에 대한 정보가 포함된 하드코딩된 파일을 가지고 있었습니다. 이 챕터에서 단서에 대한 좌표와 세부 정보를 제공했지만, 프론트엔드는 이 정보를 가져와야 합니다.
+In the previous chapter, the frontend had a hardcoded file containing information about the clues for a simple crossword puzzle. In this chapter, we've given the coordinates and details about the clues, but the frontend needs to fetch this information.
 
-이제 컨트랙트 내 `get_unsolved_puzzles`에 대한 보기 전용 호출을 둘러싼 로직을 수정할 것입니다. 이 메서드는 단서 정보를 반환하므로, React가 십자말풀이 퍼즐을 구성할 수 있도록 적절한 형식으로 입력값을 받는 함수를 구현했습니다.
+We're going to modify the logic surrounding our view-only call to `get_unsolved_puzzles` on the contract. This method now returns the clue information, so we've implemented a function that puts it in the proper format for React to construct the crossword puzzle.
 
-이것은 Rust 스마트 컨트랙트 개발에 대한 튜토리얼이므로, 이에 대한 세부 사항에 초점을 맞추지 않겠지만, `mungeBlockchainCrossword` 함수를 추가했음을 알아두도록 하세요. 이를 통해 맞춤형 십자말풀이 퍼즐을 계속 추가하고, 프론트엔드를 동적으로 만들 수 있습니다.
+This is a tutorial about Rust smart contract development, so we won't focus on the details of this, but know we've added the function `mungeBlockchainCrossword`. This allows us to keep adding custom crossword puzzles and have the frontend be dynamic.
 
-또한 사용할 수 있는 퍼즐이 없을 때를 위한 페이지를 추가하고, 로딩 화면을 추가하는 것과 같은 다른 사소한 변경 사항을 적용할 것입니다.
+We'll also make other minor changes like adding a page for when there are no puzzles available, and adding a loading screen.
 
 ## React 앱 작동
 
-이 가이드를 잘 따랐다면, 다음과 같이 React 앱을 시작하기만 하면 됩니다.
+If you've been following this guide closely, you'll likely just need to start the React app with:
 
     env CONTRACT_NAME=crossword.friend.testnet npm run start
 
-도움을 드리기 위해 다시 이야기하자면, 아래에는 하위 계정(sub-account)을 다시 만들고, 컨트랙트를 구축하고, 하위 계정을 배포하며, 컨트랙트에서 메서드를 호출하는 데 필요한 단계가 나와 있습니다.
+As a helpful reminder, below has the steps necessary to recreate the subaccount, build the contract, deploy the subaccount, and call methods on the contract:
 
 ```bash
 # Go into the directory containing the Rust smart contract we've been working on
@@ -148,27 +148,27 @@ env CONTRACT_NAME=crossword.friend.testnet npm run start
 
 ## 재미를 위해
 
-재미로 React 프론트엔드 및 CLI를 사용하여 스마트 컨트랙트와 상호 작용해 보세요. CLI를 사용하여 퍼즐의 상태를 확인하고 프론트엔드로 퍼즐을 푼 다음 상태를 다시 확인할 수 있습니다.
+For fun, try interacting with the smart contract using the React frontend and the CLI. We can check the status of the puzzle using the CLI, solve the puzzle with the frontend, and check the status again.
 
-퍼즐을 풀기 전후에 다음 명령을 실행합니다.
+Before and after solving the puzzle, run this command:
 
 ```bash
     near view crossword.friend.testnet get_puzzle_status '{"solution_hash": "d1a5cf9ad1adefe0528f7d31866cf901e665745ff172b96892693769ad284010"}'
 ```
 
-이는 우리의 열거형(Enums) `PuzzleStatus`을 반환할 것입니다. 퍼즐을 풀기 전에는, 다음을 출력해야 합니다.
+This will return our enum `PuzzleStatus`. Before solving the puzzle it should print:
 
 ```json
     'Unsolved'
 ```
 
-그리고 푼 다음에는:
+and after:
 
 ```json
     { Solved: { memo: 'Yay I won!' } }
 ```
 
-십자말풀이 퍼즐을 풀고 나면, NEAR 익스플로러에 대한 링크가 포함된 화면이 표시되어 트랜잭션 세부 정보를 볼 수 있습니다. 거기에 `Transfer` Action이 있음을 주목하세요:
+After you solve the crossword puzzle you'll see a screen with a link to NEAR Explorer to look at the details of the transaction. Notice we have our `Transfer` Action in there:
 
 <figure>
     <img src={explorerTransfer} alt="트랜잭션에서 5 NEAR가 mike.testnet으로 전송되는 위치를 강조 표시하는 NEAR 익스플로러의 스크린샷
@@ -179,6 +179,6 @@ env CONTRACT_NAME=crossword.friend.testnet npm run start
 
 ---
 
-이번 챕터는 여기까지입니다! 참고로, 전체 코드는 다음에서 확인할 수 있습니다.
+That's it for this chapter! As a reminder the full code is available at:
 
 https://github.com/near-examples/crossword-tutorial-chapter-2

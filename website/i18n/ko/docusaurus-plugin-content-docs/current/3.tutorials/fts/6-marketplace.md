@@ -4,6 +4,8 @@ title: NFT 마켓플레이스에 FT 결제 통합하기
 sidebar_label: 마켓플레이스에 FT 추가하기
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 이 튜토리얼에서는 NFT 마켓플레이스 컨트랙트가 작동하는 방식과 대체 가능한 토큰(FT)을 사용하여 NFT를 구매할 수 있도록 컨트랙트를 수정하는 방법에 대한 기본 사항을 배웁니다. 이전 튜토리얼에서는 [FT 표준](https://nomicon.io/Standards/Tokens/FungibleToken/Core)에 있는 모든 표준을 통합하는 본격적인 FT 컨트랙트를 작성했습니다.
 
 ## 소개
@@ -84,17 +86,15 @@ NFT를 구매하기 위해 컨트랙트는 FT 컨트랙트가 제공하는 "전�
 
 처음으로 살펴볼 함수는 초기화 함수입니다. 이것은 매개변수로 `owner_id`뿐만 아니라 `ft_id`를 취하며, 모든 스토리지 컬렉션을 기본값으로 설정합니다. `ft_id`는 컨트랙트에서 허용하는 대체 가능한 토큰의 계정 ID를 설명합니다.
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/lib.rs#L94-L118
-```
+<Github language="rust" start="94" end="118" url="https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/lib.rs" />
 
 ### 스토리지 관리 모델 {#storage-management-model}
 
-다음으로 이 컨트랙트를 위해 선택한 스토리지 관리 모델에 대해 이야기하겠습니다. 사용자는 스토리지 비용을 충당하기 위해 마켓플레이스에 $NEAR를 예치해야 합니다. 누군가 NFT를 판매할 때마다 시장은 $NEAR 비용으로 해당 정보를 저장해야 합니다. 사용자는 스토리지에 대해 다시는 걱정할 필요가 없도록 많은 $NEAR를 예치하거나 필요에 따라 1회 판매를 충당하기 위한 최소 금액을 예치할 수 있습니다.
+Next, let's talk about the storage management model chosen for this contract. Users will need to deposit $NEAR onto the marketplace to cover the storage costs. Whenever someone puts an NFT for sale, the marketplace needs to store that information which costs $NEAR. Users can either deposit a large amount of $NEAR so that they never have to worry about storage again or they can deposit the minimum amount to cover 1 sale on an as-needed basis.
 
-리스팅된 NFT가 구매될 때 시나리오에 대해 생각해 볼 수 있습니다. 현재 컨트랙트에서 해제되는 스토리지는 어떻게 되나요? 이것이 우리가 스토리지 출금 기능을 도입한 이유입니다. 이를 통해 사용자는 사용하지 않는 초과 스토리지에 대한 비용을 출금할 수 있습니다. 로직을 이해하기 위해 몇 가지 시나리오를 살펴보겠습니다. 1회 판매에 필요한 저장 공간은 마켓플레이스 컨트랙트에서 0.01 NEAR입니다.
+You might be thinking about the scenario when a sale is purchased. What happens to the storage that is now being released on the contract? This is why we have a storage withdrawal function. This allows users to withdraw any excess storage that is not being used. Let's go through some scenarios to understand the logic. The required storage for 1 sale is 0.01 NEAR on the marketplace contract.
 
-**시나리오 A**
+**Scenario A**
 
 - Benji는 마켓플레이스에 자신의 NFT를 리스팅하고 싶지만, 스토리지 비용을 지불한 적이 없습니다.
 - 그는 `storage_deposit` 메서드를 사용하여 정확히 0.01 NEAR를 예치합니다. 이것은 한 번의 판매를 커버할 것입니다.
@@ -102,17 +102,15 @@ https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/lib.r
 - Dorian은 Benji의 NFT를 좋아하고, 다른 사람보다 먼저 빠르게 구매했습니다. 이는 Benji의 판매가 이제 중단되었으며(구매한 이후) Benji는 선불 판매 1개 중 0개를 사용하고 있음을 의미합니다. 즉, 그는 1 판매 또는 0.01 NEAR가 남습니다.
 - Benji는 이제 `storage_withdraw` 호출을 할 수 있으며, 그의 0.01 NEAR를 다시 돌려받을 것입니다. 컨트랙트 측면에서, 그는 출금 후 판매 금액이 0이 되며, 이제 NFT를 리스팅하기 전에 스토리지를 예치해야 합니다.
 
-**시나리오 B**
+**Scenario B**
 
 - Dorian은 100개의 아름다운 NFT를 소유하고 있으며, 모든 NFT를 리스팅하고 싶습니다.
 - NFT를 나열할 때마다 `storage_deposit`를 호출할 필요가 없도록, 그는 한 번만 호출하였습니다. Dorian은 성공한 사람이기 때문에 1000개의 판매를 커버하기에 충분한 10개의 NEAR를 첨부하였습니다. 이후, 그는 이제 9 NEAR 또는 900 판매를 초과했습니다.
 - Dorian은 다른 일을 위해 9 NEAR가 필요하지만, 100개의 리스팅을 삭제하고 싶지는 않습니다. 그는 9 NEAR가 남았기 때문에 쉽게 인출할 수 있고 여전히 100개의 목록을 보유할 수 있습니다. `storage_withdraw` 호출을 하고 9 NEAR를 받으면 그는 0개의 판매 가능 수량을 가지게 될 것입니다.
 
-이 동작을 염두에 두고 다음 두 함수는 로직을 설명합니다.
+With this behavior in mind, the following two functions outline the logic.
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/lib.rs#L120-L183
-```
+<Github language="rust" start="120" end="183" url="https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/lib.rs" />
 
 이 컨트랙트에서 각 판매에 필요한 스토리지는 0.01 NEAR이지만, `storage_minimum_balance` 함수를 사용하여 해당 정보를 쿼리할 수 있습니다. 또한, 해당 계정이 지불한 스토리지 공간을 확인하려면 `storage_balance_of` 함수로 쿼리할 수 있습니다.
 
@@ -125,15 +123,11 @@ NFT가 판매되는 방법에 대해 자세히 알아보려면 [NFT zero to hero
 
 NFT를 구매하기 위해서는 구매자가 컨트랙트에 FT를 예치하고 `offer` 함수를 호출해야 합니다. FT 보증금에 대한 모든 로직은 `src/ft_balances.rs` 파일에 요약되어 있습니다. `ft_on_approve` 함수를 시작으로, 사용자는 FT를 마켓플레이스 컨트랙트로 전송할 때 호출됩니다. 로직은 아래에서 볼 수 있습니다.
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/ft_balances.rs#L35-L77
-```
+<Github language="rust" start="35" end="77" url="https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/ft_balances.rs" />
 
 FT가 컨트랙트에 입금되면, 사용자는 FT를 인출하거나 이를 사용하여 NFT를 구매할 수 있습니다. 인출 흐름은 `ft_withdraw` 함수에 설명되어 있습니다. `ft_transfer` 함수를 호출하기 **전에** 사용자의 잔액을 차감해야 한다는 것(전송이 성공한 경우)을 기억해야 합니다. 이는 `ft_withdraw_`를 스팸 공격하는 일반적인 해킹 시나리오를 피하기 위함입니다. 더 나은 패턴은 전송 전에 잔액을 감소시킨 다음, Promise가 **실패하면**, 잔액을 이전 상태로 되돌리는 것입니다.
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/ft_balances.rs#L79-L149
-```
+<Github language="rust" start="79" end="149" url="https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/ft_balances.rs" />
 
 ## NFT 구매
 
@@ -141,16 +135,12 @@ https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/ft_ba
 
 NFT를 구매하려면 `offer` 함수를 호출해야 합니다. 이를 위해, `nft_contract_id`, `token_id` 및 매개변수로 제공하려는 금액이 필요합니다. 내부적으로 이 함수는 제안 금액이 정가보다 크고 충분한 FT가 예치되었는지 확인합니다. 그런 다음 NFT 컨트랙트에 대한 교차 컨트랙트 호출을 수행하여 NFT가 판매자에게 전송되는 `nft_transfer` 함수를 호출하는 프라이빗 메서드 `process_purchase`를 호출합니다.
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/sale.rs#L67-L144
-```
+<Github language="rust" start="67" end="144" url="https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/sale.rs" />
 
 전송이 완료되면, 컨트랙트가 전송 상태를 확인하는 `resolve_purchase`를 호출합니다. 이는 전송이 성공하면 판매자에게 FT를 보내고, 전송에 실패하면 구매자의 FT 잔액이 증가합니다(환불).
 
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/sale.rs#L146-L192
-```
+<Github language="rust" start="146" end="192" url="https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/sale.rs" />
 
 ## View 메서드
 

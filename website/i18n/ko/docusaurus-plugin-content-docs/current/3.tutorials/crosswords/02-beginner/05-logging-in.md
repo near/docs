@@ -27,7 +27,7 @@ import tutorialAccessKeys from '/docs/assets/crosswords/access-keys.png';
 
 이 전송은 퍼즐을 푸는 첫 번째 사용자가 정답이 있는 `submit_solution` 메서드를 호출할 때 발생합니다. 해당 함수를 실행하는 동안, 사용자가 정답을 제출했는지 확인한 다음 상금을 양도합니다.
 
-NEAR 익스플로러에서 이 전송(및 발생한 다른 단계)을 확인할 수 있습니다.
+We'll be able to see this transfer (and other steps that occurred) in [NearBlocks Explorer](https://testnet.nearblocks.io).
 
 그러나 먼저 NEAR의 가장 흥미롭고 강력한 기능 중 하나인 액세스 키에 대해 이야기해 보겠습니다.
 

@@ -4,6 +4,8 @@ title: Upgrading the Contract
 sidebar_label: Upgrade a Contract
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 In this tutorial, you'll build off the work you previously did to implement the [minting functionality](/tutorials/nfts/minting) on a skeleton smart contract. You got to the point where NFTs could be minted and the wallet correctly picked up on the fact that you owned an NFT. However, it had no way of displaying the tokens since your contract didn't implement the method that the wallet was trying to call.
 
 ## Introduction
@@ -30,9 +32,7 @@ As for the pagination, Rust has some awesome functions for skipping to a startin
 
 Let's move over to the `enumerable.rs` file and implement that logic:
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/enumeration.rs#L32-L62
-```
+<Github language="rust" start="32" end="62" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/enumeration.rs" />
 
 ## Redeploying the contract {#redeploying-contract}
 

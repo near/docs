@@ -163,7 +163,7 @@ https://testnet.mynearwallet.com/auto-import-secret-key#YOUR_ACCOUNT_ID/YOUR_PRI
 ```
 (해당 계정에 대한 전체 액세스 키의 개인 키를 제공해야 하므로 이 링크가 안전하게 사용되는지 확인하세요.)
 
-마지막으로 NEAR 익스플로러를 사용하여 블록체인 트랜잭션을 볼 수 있습니다. 이는 트랜잭션 실행 및 결과에 대한 인사이트를 제공합니다. [한 가지 예](https://explorer.testnet.near.org/transactions/ABh4zQ5aZ3CGhpQzstL16TAB8TvqPbiirJG1uTPJVxTt)를 살펴보겠습니다. 먼저 발신자, 수신자, 상태와 같은 일반적인 트랜잭션 정보를 볼 수 있습니다. 그런 다음 가스 사용 정보를 볼 수 있습니다:
+마지막으로 NEAR 익스플로러를 사용하여 블록체인 트랜잭션을 볼 수 있습니다. 이는 트랜잭션 실행 및 결과에 대한 인사이트를 제공합니다. Let’s look at [one example](https://testnet.nearblocks.io/txns/ABh4zQ5aZ3CGhpQzstL16TAB8TvqPbiirJG1uTPJVxTt). 먼저 발신자, 수신자, 상태와 같은 일반적인 트랜잭션 정보를 볼 수 있습니다. 그런 다음 가스 사용 정보를 볼 수 있습니다:
 - 첨부된 가스 - 트랜잭션에 제공된 총 가스입니다.
 - 사용된 가스 - 실제 가스 지출입니다.
 - 트랜잭션 수수료 - 사용된 가스에 현재 가스 가격을 곱하여 실제 트랜잭션 비용을 NEAR 토큰으로 표시합니다. 또한 Deposit Value는 송신자로부터 수신자에게 전송된 NEAR 토큰의 양을 보여줍니다.

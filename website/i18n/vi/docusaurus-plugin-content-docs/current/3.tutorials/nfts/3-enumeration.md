@@ -4,6 +4,8 @@ title: Enumeration
 sidebar_label: Enumeration
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 Trong các hướng dẫn trước, bạn đã xem xét các cách tích hợp chức năng mint vào một skeleton smart contract. Để NFT của bạn hiển thị trong ví, bạn cũng phải deploy một bản vá lỗi đã được implement một trong các enumeration method. In this tutorial, you'll expand on and finish the rest of the enumeration methods as per the [standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration) Now you'll extend the NFT smart contract and add a couple of enumeration methods that can be used to return the contract's state.
 
 ## Giới thiệu
@@ -26,27 +28,21 @@ Hãy bắt đầu bằng cách mở file  `src/enumeration.rs` và đến với 
 
 Function này sẽ trả về tổng số các NFT được lưu trữ trên contract. Bạn dễ dàng có được tính năng này, bằng cách chỉ cần trả về độ dài của data structure `nft_metadata_by_id`.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/3.enumeration/nft-contract/src/enumeration.rs#L5-L9
-```
+<Github language="rust" start="5" end="9" url="https://github.com/near-examples/nft-tutorial/blob/3.enumeration/nft-contract/src/enumeration.rs" />
 
 **nft_token**
 
-Function này sẽ trả về một danh sách được phân trang các `JsonTokens` lưu trữ trên contract bất kể các owner là ai. Nếu user cung cấp một tham số `from_index`, bạn nên dùng nó như điểm bắt đầu để lặp qua các token; còn nếu không thì cần bắt đầu lại từ đầu. Tương tự như vậy, nếu user cung cấp tham số `limit`, thì function sẽ dừng sau khi đạt đến limit hoặc khi kết thúc danh sách.
+This function should return a paginated list of `JsonTokens` that are stored on the contract regardless of their owners. If the user provides a `from_index` parameter, you should use that as the starting point for which to start iterating through tokens; otherwise it should start from the beginning. Likewise, if the user provides a `limit` parameter, the function shall stop after reaching either the limit or the end of the list.
 
-:::tip Rust có các method hữu ích để phân trang, cho phép bạn bỏ qua starting index và `n` element đầu tiên của một iterator. :::
+:::tip Rust has useful methods for pagination, allowing you to skip to a starting index and taking the first `n` elements of an iterator. :::
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/3.enumeration/nft-contract/src/enumeration.rs#L11-L27
-```
+<Github language="rust" start="11" end="27" url="https://github.com/near-examples/nft-tutorial/blob/3.enumeration/nft-contract/src/enumeration.rs" />
 
 **nft_supply_for_owner**
 
 Function này sẽ tìm kiếm tất cả các non-fungible token của owner do người dùng xác định và trả về độ dài của tập hợp kết quả. Nếu không có một bộ token nào thuộc sở hữu của `AccountID` tương ứng, function sẽ trả về `0`.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/3.enumeration/nft-contract/src/enumeration.rs#L28-L43
-```
+<Github language="rust" start="28" end="43" url="https://github.com/near-examples/nft-tutorial/blob/3.enumeration/nft-contract/src/enumeration.rs" />
 
 Tiếp theo, bạn có thể sử dụng CLI để truy vấn các method mới này và xác nhận rằng chúng hoạt động chính xác.
 

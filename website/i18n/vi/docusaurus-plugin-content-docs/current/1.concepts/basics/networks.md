@@ -15,7 +15,7 @@ NEAR Protocol hoạt động trên một số network, mỗi network hoạt đ�
 `mainnet` cho smart contract và token sẵn sàng chạy thực tế. Những contract sẵn sàng cho `mainnet` phải trải qua quá trình kiểm tra nghiêm ngặt và các quá trình đánh giá bảo mật độc lập nếu cần thiết. `mainnet` là mạng duy nhất mà trạng thái(state) được đảm bảo tồn tại theo thời gian _(tuân theo các đảm bảo bảo mật điển hình của quy trình xác thực mạng lưới)_.
 
 - Status: `https://rpc.mainnet.near.org/status`
-- [ [Explorer](https://nearblocks.io) ]
+- [ [NearBlocks Explorer](https://nearblocks.io) ]
 - [ [Wallet](https://wallet.near.org) ]
 - [ [Data Snapshots](https://near-nodes.io/intro/node-data-snapshots) ]
 
@@ -24,7 +24,7 @@ NEAR Protocol hoạt động trên một số network, mỗi network hoạt đ�
 `testnet` là public network và là test network cuối cùng cho các thay đổi của `nearcore` trước khi được deploy lên `mainnet`. `testnet` là để test tất cả các tính năng của NEAR platform trước khi đưa vào delpoy trên `mainnet`. Từ việc tạo account, mock quá trình chuyển Token, công cụ phát triển và phát triển smart contract thì môi trường `testnet` cũng gần giống với môi trường `mainnet`. Tất cả các thay đổi của `nearcore` được deploy ở release candidate đầu tiên trên mạng testnet trước khi các thay đổi này được phát hành trên mạng `mainnet`. Một số validator của mạng `testnet` xác nhận các transaction và tạo ra các block mới. Các dApp developer deploy các ứng dụng của họ trên `testnet` trước khi deply trên `mainnet`. Lưu ý quan trọng ở mạng `testnet` là có các transaction và state riêng.
 
 - Status: `https://rpc.testnet.near.org/status`
-- [ [Explorer](https://explorer.testnet.near.org) ]
+- [ [Explorer](https://testnet.nearblocks.io) ]
 - [ [Wallet](https://testnet.mynearwallet.com/) ]
 - [ [Data Snapshots](https://near-nodes.io/intro/node-data-snapshots) ]
 

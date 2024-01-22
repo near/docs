@@ -4,6 +4,8 @@ title: 마켓플레이스
 sidebar_label: 마켓플레이스
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 이 튜토리얼에서는 $NEAR에 대해 대체 불가능 토큰(NFT)을 사고 팔 수 있는 NFT 마켓플레이스 컨트랙트의 기본 사항을 배웁니다. 이전 튜토리얼에서는 [NFT 표준](https://nomicon.io/Standards/NonFungibleToken)에 있는 모든 표준을 통합하는 완전한 NFT 컨트랙트를 작성했습니다.
 
 ## 소개
@@ -63,19 +65,17 @@ nft-tutorial
 
 처음으로 살펴볼 함수는 생성자 함수입니다. 이것은 유일한 매개변수로 `owner_id`를 사용하며, 모든 스토리지 컬렉션을 기본값으로 설정합니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/lib.rs#L85-L105
-```
+<Github language="rust" start="85" end="105" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/lib.rs" />
 
 ### 스토리지 관리 모델 {#storage-management-model}
 
-다음으로 이 컨트랙트를 위해 선택한 스토리지 관리 모델에 대해 이야기하겠습니다. NFT 컨트랙트에서, 사용자는 비용을 지불해야 하는 스토리지 호출에 $NEAR를 첨부했습니다. 예를 들어 누군가 NFT를 발행하는 경우, 컨트랙트에 데이터를 저장하는 비용을 충당하기 위해 `x` NEAR 만큼의 금액을 첨부해야 합니다.
+Next, let's talk about the storage management model chosen for this contract. On the NFT contract, users attached $NEAR to the calls that needed storage paid for. For example, if someone was minting an NFT, they would need to attach `x` amount of NEAR to cover the cost of storing the data on the contract.
 
-그러나 이 마켓플레이스 컨트랙트에서는 스토리지 모델이 약간 다릅니다. 사용자는 스토리지 비용을 충당하기 위해 $NEAR를 마켓플레이스에 보증금으로 예치해야 합니다. 누군가 NFT를 판매할 때마다 마켓플레이스는 $NEAR 비용으로 해당 정보를 저장해야 합니다. 사용자는 스토리지에 대해 다시는 걱정할 필요가 없도록 원하는 만큼 NEAR를 입금하거나, 필요에 따라 1회 판매를 충당하기 위한 최소 금액을 입금할 수 있습니다.
+On this marketplace contract, however, the storage model is a bit different. Users will need to deposit $NEAR onto the marketplace to cover the storage costs. Whenever someone puts an NFT for sale, the marketplace needs to store that information which costs $NEAR. Users can either deposit as much NEAR as they want so that they never have to worry about storage again or they can deposit the minimum amount to cover 1 sale on an as-needed basis.
 
-리스팅된 NFT가 구매될 때 시나리오에 대해 생각해 볼 수 있습니다. 현재 컨트랙트에서 해제되는 스토리지는 어떻게 되나요? 이것이 우리가 스토리지 출금 기능을 도입한 이유입니다. 이를 통해 사용자는 사용하지 않는 초과 스토리지에 대한 비용을 출금할 수 있습니다. 로직을 이해하기 위해 몇 가지 시나리오를 살펴보겠습니다. 1회 판매에 필요한 저장 공간은 마켓플레이스 컨트랙트에서 0.01 NEAR입니다.
+You might be thinking about the scenario when a sale is purchased. What happens to the storage that is now being released on the contract? This is why we've introduced a storage withdrawal function. This allows users to withdraw any excess storage that is not being used. Let's go through some scenarios to understand the logic. The required storage for 1 sale is 0.01 NEAR on the marketplace contract.
 
-**시나리오 A**
+**Scenario A**
 
 - Benji는 시장에 자신의 NFT를 리스팅하고 싶지만, 스토리지 비용을 지불한 적이 없습니다.
 - 그는 `storage_deposit` 메서드를 사용하여 정확히 0.01 NEAR를 예치합니다. 이것은 한 번의 판매를 커버할 것입니다.
@@ -83,17 +83,15 @@ https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract
 - Dorian은 Benji의 NFT를 좋아하고, 다른 사람보다 먼저 빠르게 구매했습니다. 이는 Benji의 판매가 이제 중단되었으며(구매한 이후) Benji는 선불 판매 1개 중 0개를 사용하고 있음을 의미합니다. 즉, 그는 1 판매 또는 0.01 NEAR가 남습니다.
 - Benji는 이제 `storage_withdraw` 호출을 할 수 있으며, 그의 0.01 NEAR를 다시 돌려받을 것입니다. 컨트랙트 측면에서, 그는 출금 후 판매 금액이 0이 되며, 이제 NFT를 리스팅하기 전에 스토리지 보증금을 예치해야 합니다.
 
-**시나리오 B**
+**Scenario B**
 
 - Dorian은 100개의 아름다운 NFT를 소유하고 있으며, 모든 NFT를 리스팅하고 싶습니다.
 - NFT를 나열할 때마다 `storage_deposit`를 호출할 필요가 없도록, 그는 한 번만 호출하였습니다. Dorian은 성공한 사람이기 때문에 1000개의 판매를 커버하기에 충분한 10개의 NEAR를 첨부하였습니다. 이후, 그는 이제 9 NEAR 또는 900 판매를 초과했습니다.
 - Dorian은 다른 일을 위해 9 NEAR가 필요하지만, 100개의 리스팅을 삭제하고 싶지는 않습니다. 그는 9 NEAR가 남았기 때문에 쉽게 인출할 수 있고 여전히 100개의 목록을 보유할 수 있습니다. `storage_withdraw` 호출을 하고 9 NEAR를 받으면 그는 0개의 판매 가능 수량을 가지게 될 것입니다.
 
-이 동작을 염두에 두고 두 함수는 다음과 같이 로직을 설명합니다.
+With this behavior in mind, the following two functions outline the logic.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/lib.rs#L110-L173
-```
+<Github language="rust" start="110" end="173" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/lib.rs" />
 
 이 컨트랙트에서 각 판매에 필요한 스토리지는 0.01 NEAR이지만, `storage_minimum_balance` 함수를 사용하여 해당 정보를 쿼리할 수 있습니다. 또한, 해당 계정이 지불한 스토리지 공간을 확인하려면 `storage_balance_of` 함수로 쿼리할 수 있습니다.
 
@@ -107,15 +105,11 @@ https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract
 
 주목해야 할 첫 번째 중요한 사항은 `SaleArgs` 구조체입니다. 이는 마켓플레이스 컨트랙트가 사용자가 NFT 컨트랙트 내 `nft_approve`로 전달하는 메시지를 기대하는 것입니다. 여기에는 나열된 NFT에 대한 yoctoNEAR의 판매 가격이 요약되어 있습니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/nft_callbacks.rs#L5-L10
-```
+<Github language="rust" start="5" end="10" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/nft_callbacks.rs" />
 
 `nft_on_approve` 함수는 NFT 컨트랙트에 의한 교차 컨트랙트 호출을 통해 호출됩니다. 이는 서명자가 다른 판매를 추가할 수 있는 충분한 스토리지 공간이 있는지 확인할 것입니다. 그런 다음 메시지에서 `SaleArgs`를 가져오고 리스팅을 생성하려고 시도할 것입니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/nft_callbacks.rs#L32-L134
-```
+<Github language="rust" start="32" end="134" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/nft_callbacks.rs" />
 
 ## sale.rs {#sale-rs}
 
@@ -125,25 +119,19 @@ https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract
 
 컨트랙트는 각 판매 객체에 대해 저장하는 정보를 이해하는 것이 중요합니다. 마켓플레이스에는 서로 다른 NFT 컨트랙트에서 나온 많은 NFT가 나열되어 있기 때문에, 단순히 토큰 ID를 저장하는 것만으로는 서로 다른 NFT를 구별하기에 충분하지 않습니다. 이것이 토큰 ID와 NFT가 발생한 컨트랙트를 모두 추적해야 하는 이유입니다. 또한 각 목록에 대해 컨트랙트는 NFT 전송을 위해 제공된 승인 ID를 추적해야 합니다. 마지막으로 소유자 및 판매 조건이 필요합니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/sale.rs#L7-L18
-```
+<Github language="rust" start="7" end="18" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/sale.rs" />
 
 ### 리스팅 제거 {#removing-sales}
 
 리스팅을 제거하려면, 소유자가 `remove_sale` 함수를 호출하고 NFT 컨트랙트 및 토큰 ID를 전달해야 합니다. 내부적으로, 이는 `internal.rs` 파일에서 찾을 수 있는 `internal_remove_sale` 함수를 호출합니다. 이것은 보안상의 이유로 1 yoctoNEAR를 요구합니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/sale.rs#L23-L34
-```
+<Github language="rust" start="23" end="34" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/sale.rs" />
 
 ### 가격 업데이트 {#updating-price}
 
 토큰의 리스팅 가격을 업데이트하려면 소유자가 `update_price` 함수를 호출하고 컨트랙트, 토큰 ID 및 원하는 가격을 전달해야 합니다. 이렇게 하면 판매 객체를 가져오고 판매 조건을 변경한 다음 다시 삽입할 것입니다. 보안상의 이유로 이 함수는 1 yoctoNEAR를 요구합니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/sale.rs#L36-L65
-```
+<Github language="rust" start="36" end="65" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/sale.rs" />
 
 ### NFT 구매 {#purchasing-nfts}
 
@@ -151,9 +139,7 @@ NFT를 구매하려면 `offer` 함수를 호출해야 합니다. 이는 매개�
 
 그런 다음 마켓플레이스는 `resolve_purchase`를 호출하여 악의적인 지불 객체를 확인하고, 모든 것이 잘 진행되면 올바른 계정에 지불합니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/sale.rs#L67-L99
-```
+<Github language="rust" start="67" end="99" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/sale.rs" />
 
 ## sale_view.rs {#sale_view-rs}
 

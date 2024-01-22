@@ -4,6 +4,8 @@ title: Defining a Fungible Token
 sidebar_label: Defining Your Token
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 This is the first of many tutorials in a series where you'll be creating a complete FT smart contract from scratch that conforms with all the NEAR [FT standards](https://nomicon.io/Standards/Tokens/FungibleToken/Core). Today you'll learn what a Fungible Token is and how you can define one on the NEAR blockchain. You will be modifying a bare-bones [skeleton smart contract](/tutorials/fts/skeleton) by filling in the necessary code snippets needed to add this functionality.
 
 ## Introduction
@@ -37,15 +39,11 @@ Optional:
 
 With this finished, you can now add these fields to the metadata in the contract.
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/2.define-a-token/src/metadata.rs#L8-L18
-```
+<Github language="rust" start="8" end="18" url="https://github.com/near-examples/ft-tutorial/blob/main/2.define-a-token/src/metadata.rs" />
 
 Now that you've defined what the metadata will look like, you need someway to store it on the contract. Switch to the `1.skeleton/src/lib.rs` file and add the following to the `Contract` struct. You'll want to store the metadata on the contract under the `metadata` field.
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/2.define-a-token/src/lib.rs#L18-L23
-```
+<Github language="rust" start="18" end="23" url="https://github.com/near-examples/ft-tutorial/blob/main/2.define-a-token/src/lib.rs" />
 
 You've now defined *where* the metadata will live but you'll also need someway to pass in the metadata itself. This is where the initialization function comes into play.
 
@@ -53,23 +51,17 @@ You've now defined *where* the metadata will live but you'll also need someway t
 
 You'll now create what's called an initialization function; you can name it `new`. This function needs to be invoked when you first deploy the contract. It will initialize all the contract's fields that you've defined with default values. It's important to note that you **cannot** call these methods more than once.
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/2.define-a-token/src/lib.rs#L56-L72
-```
+<Github language="rust" start="56" end="72" url="https://github.com/near-examples/ft-tutorial/blob/main/2.define-a-token/src/lib.rs" />
 
 More often than not when doing development, you'll need to deploy contracts several times. You can imagine that it might get tedious to have to pass in metadata every single time you want to initialize the contract. For this reason, let's create a function that can initialize the contract with a set of default `metadata`. You can call it `new_default_meta`.
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/2.define-a-token/src/lib.rs#L36-L52
-```
+<Github language="rust" start="36" end="52" url="https://github.com/near-examples/ft-tutorial/blob/main/2.define-a-token/src/lib.rs" />
 
 This function is simply calling the previous `new` function and passing in some default metadata behind the scenes.
 
 At this point, you've defined the metadata for your fungible tokens and you've created a way to store this information on the contract. The last step is to introduce a getter that will query for and return the metadata. Switch to the `1.skeleton/src/metadata.rs` file and add the following code to the `ft_metadata` function.
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/2.define-a-token/src/metadata.rs#L20-L30
-```
+<Github language="rust" start="20" end="30" url="https://github.com/near-examples/ft-tutorial/blob/main/2.define-a-token/src/metadata.rs" />
 
 This function will get the `metadata` object from the contract which is of type `FungibleTokenMetadata` and will return it.
 

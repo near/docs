@@ -4,6 +4,8 @@ sidebar_label: "Base64 params, wrap up"
 title: "Using base64-encoded arguments when we create a new crossword puzzle"
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 # Final modifications
 
 import base64Encode from '/docs/assets/crosswords/boop-base64-encode.gif';
@@ -20,15 +22,11 @@ Read more [about it here](/sdk/rust/contract-interface/serialization-interface#b
 
 First we'll set up a struct for the arguments we're expecting:
 
-```rust reference
-https://github.com/near-examples/crossword-tutorial-chapter-3/blob/ec07e1e48285d31089b7e8cec9e9cf32a7e90c35/contract/src/lib.rs#L111-L117
-```
+<Github language="rust" start="111" end="117" url="https://github.com/near-examples/crossword-tutorial-chapter-3/blob/ec07e1e48285d31089b7e8cec9e9cf32a7e90c35/contract/src/lib.rs" />
 
 Then we modify our `new_puzzle` method like so:
 
-```rust reference
-https://github.com/near-examples/crossword-tutorial-chapter-3/blob/ec07e1e48285d31089b7e8cec9e9cf32a7e90c35/contract/src/lib.rs#L290-L297
-```
+<Github language="rust" start="290" end="297" url="https://github.com/near-examples/crossword-tutorial-chapter-3/blob/ec07e1e48285d31089b7e8cec9e9cf32a7e90c35/contract/src/lib.rs" />
 
 We can take our original arguments and base64 encode them, using whatever method you prefer. There are plenty of online tool, Terminal commands, and open source applications like [Boop](https://boop.okat.best).
 

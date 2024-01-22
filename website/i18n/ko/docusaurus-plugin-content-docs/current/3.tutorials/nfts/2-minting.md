@@ -4,6 +4,8 @@ title: 발행
 sidebar_label: 발행
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 이것은 모든 NEAR [NFT 표준](https://nomicon.io/Standards/NonFungibleToken/)을 준수하는 완전한 NFT 스마트 컨트랙트를 처음부터 만드는 시리즈의 많은 튜토리얼 중 첫 번째입니다. 오늘은 NFT를 생성하고 NEAR 지갑에 표시하는 데 필요한 로직을 생성하는 방법을 배웁니다. 여기서는, 발행 함수를 추가하는 데 필요한 필수 코드 스니펫을 작성하여 중요한 [스마트 컨트랙트의 뼈대](/tutorials/nfts/skeleton)를 수정하게 됩니다.
 
 ## 소개
@@ -36,40 +38,34 @@ git checkout 1.skeleton
 
 가장 먼저 할 일은 `struct` 컨트랙트를 다음과 같이 수정하는 것입니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/lib.rs#L25-L42
-```
+<Github language="rust" start="25" end="42" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/lib.rs" />
 
-이를 통해 컨트랙트의 어느 곳에서나 이러한 데이터 구조에 저장된 정보를 얻을 수 있습니다. 위의 코드는 3개의 토큰별 저장소를 생성했습니다.
+This allows you to get the information stored in these data structures from anywhere in the contract. The code above has created 3 token specific storages:
 
 - **tokens_per_owner**: 모든 계정이 소유한 토큰을 추적할 수 있습니다.
 - **tokens_by_id**: 특정 토큰에 대한 모든 정보를 반환합니다.
 - **token_metadata_by_id**: 특정 토큰에 대한 메타데이터만 반환합니다.
 
-또한 컨트랙트의 메타데이터와 컨트랙트 소유자를 추적할 것입니다.
+In addition, you'll keep track of the owner of the contract as well as the metadata for the contract.
 
-사용 중인 일부 자료형에 대해 혼란스러울 수 있습니다. 코드의 가독성을 높이기 위해 사용자 지정 자료형을 도입했으며, 이에 대해 아래에서 간략하게 설명하겠습니다.
+You might be confused as to some of the types that are being used. In order to make the code more readable, we've introduced custom data types which we'll briefly outline below:
 
 - **AccountId**: 특수 문자나 지원되지 않는 문자가 없는 문자열입니다.
 - **TokenId**: 단순한 문자열입니다.
 
-`Token`, `TokenMetadata` 및 `NFTContractMetadata` 자료형은 이 튜토리얼의 뒷부분에서 정의할 구조체입니다.
+As for the `Token`, `TokenMetadata`, and `NFTContractMetadata` data types, those are structs that we'll define later in this tutorial.
 
 #### 초기화 함수
 
-다음으로 초기화 함수를 만듭니다. 이 함수의 이름을 `new`로 지정할 수 있습니다. 이 함수는 컨트랙트를 처음 배포할 때 호출해야 합니다. 이는 위에서 정의한 모든 컨트랙트 필드를 기본값으로 초기화합니다. `owner_id` 및 `metadata` 필드를 함수에 대한 매개변수로 추가하는 것을 잊지 마세요. 그러면 해당 필드만 사용자 정의할 수 있습니다.
+Next, create what's called an initialization function; you can name it `new`. This function needs to be invoked when you first deploy the contract. It will initialize all the contract's fields that you've defined above with default values. Don't forget to add the `owner_id` and `metadata` fields as parameters to the function, so only those can be customized.
 
-이 함수는 기본적으로 모든 컬렉션을 비우고, 당신이 전달하는 것과 일치하는 `owner`와 `metadata`를 설정합니다.
+This function will default all the collections to be empty and set the `owner` and `metadata` equal to what you pass in.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/tree/2.minting/nft-contract/src/lib.rs#L86-L106
-```
+<Github language="rust" start="86" end="106" url="https://github.com/near-examples/nft-tutorial/tree/2.minting/nft-contract/src/lib.rs" />
 
 개발을 할 때 종종 컨트랙트를 여러 번 배포해야 합니다. 컨트랙트를 초기화할 때마다 메타데이터를 전달해야 하는 것이 지루할 수 있다고 생각할 수 있습니다. 이러한 이유로, 기본 `metadata` 집합으로 컨트랙트를 초기화할 수 있는 함수를 만들어 봅시다. 당신은 이를 `new_default_meta`로 부를 수 있고, 매개 변수로 `owner_id`만 취할 것입니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/lib.rs#L64-L79
-```
+<Github language="rust" start="64" end="79" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/lib.rs" />
 
 이 함수는 단순히 이전 `new` 함수를 호출하고, 지정한 소유자를 전달하며, 일부 기본 메타데이터도 전달합니다.
 
@@ -79,23 +75,17 @@ https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/li
 
 `nft-contract/src/metadata.rs` 파일로 이동해 보겠습니다. 여기가 해당 정보가 들어갈 위치입니다. [메타데이터에 대한 표준](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata)을 살펴보면, `TokenMetadata` 및 `NFTContractMetadata` 모두에 대해 저장해야 하는 모든 필수 정보를 찾을 수 있습니다. 다음 코드를 입력하기만 하면 됩니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs#L10-L37
-```
+<Github language="rust" start="10" end="37" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs" />
 
 이제 `Token` 구조체와 `JsonToken`이라는 것이 남습니다. `Token` 구조체는 메타데이터를 제외하고 토큰과 직접 관련된 모든 정보를 보유합니다. 이를 통해 토큰의 ID를 전달하기만 하면 모든 토큰에 대한 메타데이터를 빠르게 가져올 수 있습니다. 기억한다면, 메타데이터는 컨트랙트 내 맵에 `tokenMetadataById`이라는 이름의 자료 구조로 저장됩니다.
 
 `Token` 구조체의 경우, 지금은 소유자만 추적합니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs#L39-L43
-```
+<Github language="rust" start="39" end="43" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs" />
 
 `JsonToken`의 목적은 누군가 View 호출을 할 때마다 JSON 형태로 다시 보내려는 NFT에 대한 모든 정보를 보유하는 것입니다. 즉, 소유자, 토큰 ID 및 메타데이터를 저장해야 합니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs#L45-L55
-```
+<Github language="rust" start="45" end="55" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs" />
 
 :::tip 여러분 중 일부는 _"왜 `Token` 구조체에 모든 정보를 저장하지 않는 거죠?"_ 라고 생각할 수도 있습니다. 그 이유는 토큰 구조에 모든 정보를 저장하는 것보다 필요할 때만 즉시 JSON 토큰을 구성하는 것이 실제로 더 효율적이기 때문입니다. 또한 일부 작업에는 토큰에 대한 메타데이터만 필요할 수 있으므로 메타데이터를 별도의 자료 구조에 두는 것이 더 적합합니다. :::
 
@@ -103,9 +93,7 @@ https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/me
 
 이제 이전 섹션에서 사용된 일부 자료형을 정의했으므로, 첫 번째 View 함수 `nft_metadata`를 만들어 보겠습니다. 이를 통해 사용자는 [메타데이터 표준](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata)에 따라 컨트랙트의 메타데이터를 쿼리할 수 있습니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs#L57-L67
-```
+<Github language="rust" start="57" end="67" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs" />
 
 이 함수는 컨트랙트에서 `NFTContractMetadata` 자료형의 `metadata` 객체를 가져와 반환합니다.
 
@@ -137,9 +125,7 @@ pub token_metadata_by_id: UnorderedMap<TokenId, TokenMetadata>,
 
 이제 모든 것이 어떻게 진행되어야 하는지 잘 이해했으므로, 필요한 코드를 입력해 보겠습니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/mint.rs#L3-L45
-```
+<Github language="rust" start="3" end="45" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/mint.rs" />
 
 여기서 `refund_deposit`과 `internal_add_token_to_owner`와 같은 몇 가지 내부 메서드를 사용하고 있음을 알 수 있습니다. 우리는 `refund_deposit`의 기능에 대해 설명했습니다. 또한 `internal_add_token_to_owner`도, 계정이 컨트랙트의 `tokens_per_owner` 자료 구조에 대해 소유한 토큰 집합에 토큰을 추가합니다. `internal.rs`라는 파일에서 이 함수들을 만들 수 있습니다. 계속해서 파일을 만드세요. 새 컨트랙트 아키텍처는 다음과 같아야 합니다.
 
@@ -162,15 +148,11 @@ nft-contract
 
 새로 만든 `internal.rs` 파일에 다음을 추가합니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/internal.rs#L1-L63
-```
+<Github language="rust" start="1" end="63" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/internal.rs" />
 
 그런 다음 빠르게 `lib.rs` 파일로 이동하여, 방금 만든 함수를 다른 파일에서 호출할 수 있도록 만들어 보겠습니다. 아래와 같이 내부 크레이트를 추가하고 파일을 수정합니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/lib.rs#L10-L23
-```
+<Github language="rust" start="10" end="23" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/lib.rs" />
 
 이 시점에서 NFT를 발행할 수 있는 핵심 로직이 모두 준비되었습니다. 이제 다음 매개변수를 사용하는 `nft_mint` 함수를 사용할 수 있습니다.
 
@@ -193,9 +175,7 @@ https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/li
 
 이는 토큰 ID를 매개변수로 사용하고 해당 토큰에 대한 정보를 반환할 것입니다. `JsonToken`에는 토큰 ID, 소유자 ID 및 토큰의 메타데이터가 포함됩니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/nft_core.rs#L89-L104
-```
+<Github language="rust" start="89" end="104" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/nft_core.rs" />
 
 완료되면 첫 NFT를 생성할 수 있도록 컨트랙트를 구축하고 배포할 차례입니다.
 
@@ -283,9 +263,7 @@ near view $NFT_CONTRACT_ID nft_metadata
 
 이제 생성한 발행 함수를 호출해 보겠습니다. 이를 위해 `token_id`와 `metadata`가 필요합니다. 이전에 생성한 `TokenMetadata` 구조체를 다시 살펴보면, 잠재적으로 온체인에 저장할 수 있는 많은 필드가 있습니다.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs#L24-L37
-```
+<Github language="rust" start="24" end="37" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs" />
 
 시작하려면 제목, 설명 및 미디어가 있는 NFT를 만들어 봅시다. 미디어 필드는 미디어 파일을 가리키는 URL일 수 있습니다. 우리에게는 생성할 수 있는 훌륭한 GIF가 있지만, 사용자 지정 NFT를 생성하고 싶다면 미디어 링크를 선택한 것으로 교체하기만 하면 됩니다. 다음 명령을 실행하면 다음 매개 변수를 사용하여 NFT를 생성합니다.
 

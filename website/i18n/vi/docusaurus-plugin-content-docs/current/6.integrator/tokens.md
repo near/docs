@@ -267,7 +267,7 @@ Nếu không deposit đủ cho storage hoặc giá trị được trả về là
     Scheduling a call: ft.demo.testnet.storage_deposit() with attached 0.125 NEAR
     Transaction Id 9CMrMMt3UzeU63FFrUyFb1gNGuHXxvKfHqYJzyFTAk6z
     To see the transaction in the transaction explorer, please open this url in your browser
-    https://explorer.testnet.near.org/transactions/9CMrMMt3UzeU63FFrUyFb1gNGuHXxvKfHqYJzyFTAk6z
+    https://testnet.nearblocks.io/txns/9CMrMMt3UzeU63FFrUyFb1gNGuHXxvKfHqYJzyFTAk6z
     { total: '1250000000000000000000', available: '0' }
     ```
 
@@ -532,7 +532,7 @@ Transfer các token:
         Log [berryclub.ek.near]: Transfer 1 from serhii.near to volovyk.near
     Transaction Id 3MkWKbXVP8wyy4pBofELqiE1pwx7ie2v3SKCwaobNcEe
     To see the transaction in the transaction explorer, please open this url in your browser
-    https://explorer.mainnet.near.org/transactions/3MkWKbXVP8wyy4pBofELqiE1pwx7ie2v3SKCwaobNcEe
+    https://nearblocks.io/txns/3MkWKbXVP8wyy4pBofELqiE1pwx7ie2v3SKCwaobNcEe
     ''
     ```
 

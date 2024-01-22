@@ -4,6 +4,8 @@ title: Việc Upgrade một Contract
 sidebar_label: Upgrade một Contract
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 Trong hướng dẫn này, bạn sẽ nâng cấp những gì bạn đã làm trước đây để implement [chức năng mint](/tutorials/nfts/minting) trên một bộ khung smart contract. Bạn đã đến thời điểm mà NFT có thể được mint và wallet đã chính thức xác nhận là bạn sở hữu một NFT. Tuy nhiên, không có cách nào để hiển thị các token vì contract của bạn không implement method mà wallet đang cố gắng call.
 
 ## Giới thiệu
@@ -30,31 +32,29 @@ May mắn thay, bạn đã viết function `nft_token`, nơi mà nhận một to
 
 Hãy đến với file `enumerable.rs` và implement logic đó:
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/enumeration.rs#L32-L62
-```
+<Github language="rust" start="32" end="62" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/enumeration.rs" />
 
 ## Deploying lại một contract {#redeploying-contract}
 
-Giờ đây bạn đã implement xong phần logic cần thiết cho `nft_tokens_for_owner`, giờ là lúc build và deploy lại contract cho account của bạn. Dùng build script, deploy contract theo cách bạn đã làm trong phần hướng dẫn trước:
+Now that you've implemented the necessary logic for `nft_tokens_for_owner`, it's time to build and re-deploy the contract to your account. Using the build script, deploy the contract as you did in the previous tutorial:
 
 ```bash
 yarn build && near deploy --wasmFile out/main.wasm --accountId $NFT_CONTRACT_ID
 ```
 
-Lúc này sẽ có một cảnh báo nói rằng tài khoản đã có một contract đã được deploy và sẽ hỏi bạn có muốn tiếp tục hay không. Chỉ cần gõ `y` và bấm enter.
+This should output a warning saying that the account has a deployed contract and will ask if you'd like to proceed. Simply type `y` and hit enter.
 
 ```bash
 This account already has a deployed contract [ AKJK7sCysrWrFZ976YVBnm6yzmJuKLzdAyssfzK9yLsa ]. Do you want to proceed? (y/n)
 ```
 
-Một khi contract đã được deploy lại, hãy test và xem state có được migrate chính xác hay không bằng cách chạy một view function đơn giản:
+Once the contract has been redeployed, let's test and see if the state migrated correctly by running a simple view function:
 
 ```bash
 near view $NFT_CONTRACT_ID nft_metadata
 ```
 
-Lệnh này sẽ trả về kết quả tương tự như sau:
+This should return an output similar to the following:
 
 ```bash
 {
@@ -68,14 +68,14 @@ Lệnh này sẽ trả về kết quả tương tự như sau:
 }
 ```
 
-**Chúc mừng!** Tại thời điểm này, bạn có thể test và xem liệu function mới viết có hoạt động chính xác hay không. Hãy query list của các token mà bạn sở hữu:
+**Go team!** At this point, you can now test and see if the new function you wrote works correctly. Let's query for the list of tokens that you own:
 
 ```bash
 near view $NFT_CONTRACT_ID nft_tokens_for_owner '{"account_id": "'$NFT_CONTRACT_ID'", "limit": 5}'
 ```
 
 <details>
-<summary>Ví dụ về response nhận được: </summary>
+<summary>Example response: </summary>
 <p>
 
 ```bash
@@ -112,7 +112,7 @@ Now that your contract implements the necessary functions that the wallet uses t
 
 ## Kết luận
 
-Trong hướng dẫn này, bạn đã học được những điều cơ bản của [việc upgrade các contract](#upgrading-contracts). Kế tiếp, bạn đã implement [những sửa đổi cần thiết cho smart contract của bạn](#modifications-to-contract) và [đã deploy lại nó](#redeploying-contract). Cuối cùng, bạn đến wallet collectibles tab và [đã nhìn thấy các NFT của mình](#viewing-nfts-in-wallet).
+In this tutorial, you learned about the basics of [upgrading contracts](#upgrading-contracts). Then, you implemented the necessary [modifications to your smart contract](#modifications-to-contract) and [redeployed it](#redeploying-contract). Finally you navigated to the wallet collectibles tab and [viewed your NFTs](#viewing-nfts-in-wallet).
 
 In the [next tutorial](/tutorials/nfts/enumeration), you'll implement the remaining functions needed to complete the [enumeration](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration) standard.
 

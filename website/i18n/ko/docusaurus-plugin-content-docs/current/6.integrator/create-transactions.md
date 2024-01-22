@@ -97,13 +97,15 @@ await keyStore.setKey(networkId, sender, keyPair);
 
 ```js
 // configuration used to connect to NEAR
+const prefix = (networkId === "testnet") ? "testnet" : "www";
+
 const config = {
   networkId,
   keyStore,
   nodeUrl: `https://rpc.${networkId}.near.org`,
   walletUrl: `https://wallet.${networkId}.near.org`,
   helperUrl: `https://helper.${networkId}.near.org`,
-  explorerUrl: `https://explorer.${networkId}.near.org`,
+  explorerUrl: `https://${prefix}.nearblocks.io`,
 };
 
 // connect to NEAR! :)
@@ -122,7 +124,7 @@ const senderAccount = await near.account(sender);
 const result = await senderAccount.sendMoney(receiver, amount);
 ```
 
-이 간단한 명령은 NEAR 블록체인에서 토큰 전송 트랜잭션을 구성, 서명 및 전송합니다. There is no need to create a `result` variable aside from inspecting the response details from your transaction and even create a link to [NEAR Explorer](https://explorer.testnet.near.org/) to view a GUI version of the transaction details.
+이 간단한 명령은 NEAR 블록체인에서 토큰 전송 트랜잭션을 구성, 서명 및 전송합니다. There is no need to create a `result` variable aside from inspecting the response details from your transaction and even create a link to [NearBlocks Explorer](https://testnet.nearblocks.io/) to view a GUI version of the transaction details.
 
 ---
 
@@ -460,11 +462,12 @@ Transaction Results:  {
 
 트랜잭션 Receipt에 대한 자세한 내용을 알고 싶다면, [[여기를 클릭하세요]](https://nomicon.io/RuntimeSpec/Receipts.html).
 
-- [NEAR 익스플로러](https://explorer.testnet.near.org/)에서 트랜잭션을 보려면 `transaction` / `Transaction Results` 아래에 있는 `hash`로 들어가세요.
+- To view the transaction in [NearBlocks Explorer](https://testnet.nearblocks.io/), enter the `hash` located under `transaction` / `Transaction Results`.
 - 또한, `networkId`와 `result.transaction.hash`를 사용하여 JS에서 링크를 만들 수 있습니다.
 
 ```js
-const transactionLink = `https://explorer.${networkId}.near.org/transactions/${result.transaction.hash}`;
+const prefix = (networkId === "testnet") ? "testnet." : "";
+const transactionLink = `https://${prefix}nearblocks.io/txns/${result.transaction.hash}`;
 ```
 
 :::tip 질문이 있으신가요?

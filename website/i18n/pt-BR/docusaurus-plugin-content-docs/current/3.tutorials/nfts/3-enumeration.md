@@ -4,6 +4,8 @@ title: Enumeration
 sidebar_label: Enumeration
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 In the previous tutorials, you looked at ways to integrate the minting functionality into a skeleton smart contract. In order to get your NFTs to show in the wallet, you also had to deploy a patch fix that implemented one of the enumeration methods. In this tutorial, you'll expand on and finish the rest of the enumeration methods as per the [standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration) Now you'll extend the NFT smart contract and add a couple of enumeration methods that can be used to return the contract's state.
 
 ## Introduction
@@ -26,9 +28,7 @@ Let's start by opening the  `src/enumeration.rs` file and locating the empty `nf
 
 This function should return the total number of NFTs stored on the contract. You can easily achieve this functionality by simply returning the length of the `nft_metadata_by_id` data structure.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/3.enumeration/nft-contract/src/enumeration.rs#L5-L9
-```
+<Github language="rust" start="5" end="9" url="https://github.com/near-examples/nft-tutorial/blob/3.enumeration/nft-contract/src/enumeration.rs" />
 
 **nft_token**
 
@@ -36,17 +36,13 @@ This function should return a paginated list of `JsonTokens` that are stored on 
 
 :::tip Rust has useful methods for pagination, allowing you to skip to a starting index and taking the first `n` elements of an iterator. :::
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/3.enumeration/nft-contract/src/enumeration.rs#L11-L27
-```
+<Github language="rust" start="11" end="27" url="https://github.com/near-examples/nft-tutorial/blob/3.enumeration/nft-contract/src/enumeration.rs" />
 
 **nft_supply_for_owner**
 
 This function should look for all the non-fungible tokens for a user-defined owner, and return the length of the resulting set. If there isn't a set of tokens for the provided `AccountID`, then the function shall return `0`.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/3.enumeration/nft-contract/src/enumeration.rs#L28-L43
-```
+<Github language="rust" start="28" end="43" url="https://github.com/near-examples/nft-tutorial/blob/3.enumeration/nft-contract/src/enumeration.rs" />
 
 Next, you can use the CLI to query these new methods and validate that they work correctly.
 

@@ -57,7 +57,7 @@ Example response:
 }
 ```
 
-Final transaction results can be queried using [Transaction Status](#transaction-status) or [NEAR Explorer](https://explorer.testnet.near.org/) using the above `result` hash returning a result similar to the example below.
+Final transaction results can be queried using [Transaction Status](#transaction-status) or [NearBlocks Explorer](https://testnet.nearblocks.io/) using the above `result` hash returning a result similar to the example below.
 
 ![NEAR-Explorer-transactionHash](/docs/assets/NEAR-Explorer-transactionHash.png)
 
@@ -331,7 +331,7 @@ Here is the exhaustive list of the error variants that can be returned by `broad
 
 - method: `tx`
 - params:
-  - `transaction hash` _(see [NEAR Explorer](https://explorer.testnet.near.org) for a valid transaction hash)_
+  - `transaction hash` _(see [NearBlocks Explorer](https://testnet.nearblocks.io) for a valid transaction hash)_
   - `sender account id`
 
 Example:
@@ -605,7 +605,7 @@ Here is the exhaustive list of the error variants that can be returned by `tx` m
 
 - method: `EXPERIMENTAL_tx_status`
 - params:
-  - `transaction hash` _(see [NEAR Explorer](https://explorer.testnet.near.org) for a valid transaction hash)_
+  - `transaction hash` _(see [NearBlocks Explorer](https://testnet.nearblocks.io) for a valid transaction hash)_
   - `sender account id` _(used to determine which shard to query for transaction)_
 
 Example:
@@ -982,7 +982,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
 
 - method: `EXPERIMENTAL_receipt`
 - params:
-  - `receipt_id` _(see [NEAR Explorer](https://explorer.testnet.near.org) for a valid receipt id)_
+  - `receipt_id` _(see [NearBlocks Explorer](https://testnet.nearblocks.io) for a valid receipt id)_
 
 Example:
 

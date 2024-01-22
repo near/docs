@@ -4,6 +4,8 @@ title: 대체 가능한 토큰 정의
 sidebar_label: 토큰 정의
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 이것은 모든 NEAR [FT 표준](https://nomicon.io/Standards/Tokens/FungibleToken/Core)을 준수하는 완전한 FT 스마트 컨트랙트를 처음부터 만드는 시리즈의 많은 튜토리얼 중 첫 번째입니다. 오늘은 FT가 무엇이고, NEAR 블록체인에서 이를 어떻게 정의할 수 있는지를 배웁니다. 여기서는, 이 기능을 추가하는 데 필요한 필수 코드 스니펫을 작성하여 중요한 [스마트 컨트랙트의 뼈대](/tutorials/fts/skeleton)를 수정하게 됩니다.
 
 ## 소개
@@ -37,15 +39,11 @@ sidebar_label: 토큰 정의
 
 이 작업이 완료되면 이제 이러한 필드를 컨트랙트의 메타데이터에 추가할 수 있습니다.
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/2.define-a-token/src/metadata.rs#L8-L18
-```
+<Github language="rust" start="8" end="18" url="https://github.com/near-examples/ft-tutorial/blob/main/2.define-a-token/src/metadata.rs" />
 
-이제 메타데이터의 모양을 정의했으므로 컨트랙트에 저장할 방법이 필요합니다. `1.skeleton/src/lib.rs` 파일로 이동해서, `Contract` 구조체에 다음을 추가합니다. `metadata` 필드 아래의 컨트랙트에 메타데이터를 저장하고 싶을 것입니다.
+Now that you've defined what the metadata will look like, you need someway to store it on the contract. Switch to the `1.skeleton/src/lib.rs` file and add the following to the `Contract` struct. You'll want to store the metadata on the contract under the `metadata` field.
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/2.define-a-token/src/lib.rs#L18-L23
-```
+<Github language="rust" start="18" end="23" url="https://github.com/near-examples/ft-tutorial/blob/main/2.define-a-token/src/lib.rs" />
 
 이제 메타데이터가 있는 *위치를* 정의했지만 메타데이터 자체를 전달해야 합니다. 여기에서 초기화 함수가 작동합니다.
 
@@ -53,23 +51,17 @@ https://github.com/near-examples/ft-tutorial/blob/main/2.define-a-token/src/lib.
 
 이제 초기화 함수라고 하는 것을 생성합니다. 이를 `new`라고 부를 수 있습니다. 이 함수는 컨트랙트를 처음 배포할 때 호출해야 합니다. 이는 기본값으로 정의한 모든 컨트랙트 필드를 초기화합니다. 이러한 메서드를 두 번 이상 호출 할 수 **없다는** 점에 유의해야 합니다.
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/2.define-a-token/src/lib.rs#L56-L72
-```
+<Github language="rust" start="56" end="72" url="https://github.com/near-examples/ft-tutorial/blob/main/2.define-a-token/src/lib.rs" />
 
 개발을 할 때 종종 컨트랙트를 여러 번 배포해야 합니다. 컨트랙트를 초기화할 때마다 메타데이터를 전달해야 하는 것이 지루할 수 있다고 생각할 수 있습니다. 이러한 이유로, 기본 `metadata` 집합으로 컨트랙트를 초기화할 수 있는 함수를 만들어 봅시다. 당신은 이를 `new_default_meta`라고 부를 수 있습니다.
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/2.define-a-token/src/lib.rs#L36-L52
-```
+<Github language="rust" start="36" end="52" url="https://github.com/near-examples/ft-tutorial/blob/main/2.define-a-token/src/lib.rs" />
 
 이 함수는 단순히 이전 `new` 함수를 호출하고, 내부적으로는 일부 기본 메타데이터를 전달합니다.
 
 이 시점에서 대체 가능한 토큰에 대한 메타데이터를 정의했고 이 정보를 컨트랙트에 저장하는 방법을 만들었습니다. 마지막 단계는 메타데이터를 쿼리하고 반환하는 게터를 도입하는 것입니다. `1.skeleton/src/metadata.rs` 파일로 이동하여 `ft_metadata` 함수에 다음 코드를 추가합니다.
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/2.define-a-token/src/metadata.rs#L20-L30
-```
+<Github language="rust" start="20" end="30" url="https://github.com/near-examples/ft-tutorial/blob/main/2.define-a-token/src/metadata.rs" />
 
 이 함수는 컨트랙트에서 `FungibleTokenMetadata` 자료형을 가진 `metadata` 객체를 가져와서 반환합니다.
 

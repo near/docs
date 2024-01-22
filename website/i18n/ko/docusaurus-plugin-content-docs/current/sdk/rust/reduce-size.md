@@ -3,6 +3,8 @@ id: contract-size
 title: "컨트랙트 크기 축소"
 ---
 
+import {Github} from "@site/src/components/codetabs"
+
 # 컨트랙트 크기 축소
 
 ## 조언 및 예시
@@ -140,9 +142,7 @@ crate-type = ["cdylib"]
 <details>
   <summary>펼쳐서 <code>sys.rs</code>에서 사용 가능한 항목 보기</summary>
 
-```rust reference
-https://github.com/near/near-sdk-rs/blob/master/near-sdk/src/environment/sys.rs
-```
+<Github language="rust" start="" end="" url="https://github.com/near/near-sdk-rs/blob/master/near-sdk/src/environment/sys.rs" />
 
 </details>
 

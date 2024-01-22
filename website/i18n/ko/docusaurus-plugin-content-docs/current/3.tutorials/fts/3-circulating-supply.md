@@ -4,6 +4,7 @@ title: 순환 공급(Circulating Supply) 생성
 sidebar_label: 순환 공급
 ---
 
+import {Github} from "@site/src/components/codetabs"
 
 이전 튜토리얼에서는 대체 가능한 토큰(FT)이 무엇이며, 스마트 컨트랙트에서 토큰을 정의하는 방법을 살펴보았습니다. 이 튜토리얼에서는 컨트랙트 소유자에게 속한 순환 공급을 생성하고, NEAR 지갑에서 메타데이터와 함께 모든 토큰을 보는 방법에 대해 배웁니다.
 
@@ -34,11 +35,9 @@ NEAR의 모든 대체 가능한 토큰 컨트랙트에는 순환 공급(Circulat
 
 `src/lib.rs` 파일로 이동하여 `Contract` 구조체에 다음을 추가합니다.
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/lib.rs#L21-L32
-```
+<Github language="rust" start="21" end="32" url="https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/lib.rs" />
 
-이제 토큰을 소유자의 계정에 입금하는 기능을 추가하고 싶을 것입니다. 금액과 계정 ID를 받아 입금 로직을 수행하는 헬퍼 함수를 ​​생성하면 됩니다. 먼저 파일 구조가 다음과 같이 보이도록 새 파일 `src/internal.rs`을 만듭니다.
+You'll now want to add the functionality for depositing the tokens into the owner's account. Do this by creating a helper function that takes an amount and an account ID and performs the deposit logic for you. First create a new file `src/internal.rs` such that your file structure now looks as follows.
 
 ```
 src
@@ -49,17 +48,13 @@ src
   └── storage.rs
 ```
 
-`internal.rs` 파일 내에서, 다음 코드를 추가하여, `AccountId`와 `Balance`를 가져와 계정의 현재 FT 공급량에 금액을 추가하는 `internal_deposit`라는 메서드를 만듭니다
+In the `internal.rs` file, add the following code to create a method called `internal_deposit` which takes an `AccountId` and a `Balance` and adds the amount to the account's current supply of FTs.
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/internal.rs#L1-L18
-```
+<Github language="rust" start="1" end="18" url="https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/internal.rs" />
 
 이제 FT 입금 기능이 준비되었으므로, `src/lib.rs` 파일로 다시 이동하여 `internal` 모듈을 추가합니다.
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/lib.rs#L8-L10
-```
+<Github language="rust" start="8" end="10" url="https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/lib.rs" />
 
 또한 `new` 초기화 함수에 다음 코드를 추가합니다.
 
@@ -100,9 +95,7 @@ pub fn new(
 
 `src/ft_core.rs` 파일로 이동하여, 이러한 함수에 다음 코드를 추가합니다.
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/ft_core.rs#L83-L91
-```
+<Github language="rust" start="83" end="91" url="https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/ft_core.rs" />
 
 이 시점에서 초기 토큰 공급을 생성하고 주어진 계정의 잔고를 쿼리하는 데 필요한 모든 것이 있습니다. 그러나, 우리가 해결해야 할 문제가 있습니다. 총 공급량이 생성되었고 컨트랙트 소유자가 이를 소유한다는 것을 지갑은 어떻게 알 수 있나요? 우리 컨트랙트가 대체 가능한 토큰 컨트랙트라는 것을 어떻게 알 수 있나요? 컨트랙트를 배포하고 설정 프로세스를 실행하는 경우, 컨트랙트 정보를 쿼리할 수 있지만 소유자의 NEAR 지갑에는 FT가 표시되지 않습니다.
 
@@ -186,25 +179,19 @@ EVENT_JSON:{
 
 다음을 파일에 복사합니다. 이것은 `EventLog`, `FtMintLog`, 및 `FtTransferLog`에 대한 구조체의 개요를 설명합니다. 또한 `EventLog`를 로깅할 때마다 `EVENT_JSON:`가 앞에 붙는 방식을 추가했습니다.
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/events.rs#L1-L121
-```
+<Github language="rust" start="1" end="121" url="https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/events.rs" />
 
 ### 모듈 및 상수 추가 {#lib-rs}
 
 이제 새 파일을 만들었으므로 `lib.rs` 파일에 모듈을 추가해야 합니다.
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/lib.rs#L1-L13
-```
+<Github language="rust" start="1" end="13" url="https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/lib.rs" />
 
 ### 발행된 총 공급량 로깅
 
 이제 모든 도구가 설정되었으므로 실제 로깅 기능을 구현할 수 있습니다. 컨트랙트가 초기화될 때 맨 처음에 토큰을 발행하기 때문에, 로그를 어디에 두어야 하는지는 간단합니다. `src/lib.rs` 파일을 열고 초기화 함수 `new`의 하단으로 이동합니다. 여기에서 발행을 위한 로그를 구성합니다.
 
-```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/lib.rs#L63-L97
-```
+<Github language="rust" start="63" end="97" url="https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/lib.rs" />
 
 완료되면 이벤트 표준의 기반을 성공적으로 구현했으며, 이제 테스트를 시작할 때입니다.
 
@@ -249,7 +236,7 @@ Receipt: BmD2hQJCUEMmvaUd45qrt7S55cewUXQSTPWT21Um3gXd
     Log [events.goteam.testnet]: EVENT_JSON:{"standard":"nep141","version":"1.0.0","event":"ft_mint","data":[{"owner_id":"events.goteam.testnet","amount":"1000000000000000000000000000","memo":"Initial token supply is minted"}]}
 Transaction Id BrEBqE9S3tTBcgDUU6ZyszjAbaR4wkPyEN1viYKaXpgh
 To see the transaction in the transaction explorer, please open this url in your browser
-https://explorer.testnet.near.org/transactions/BrEBqE9S3tTBcgDUU6ZyszjAbaR4wkPyEN1viYKaXpgh
+https://testnet.nearblocks.io/txns/BrEBqE9S3tTBcgDUU6ZyszjAbaR4wkPyEN1viYKaXpgh
 ''
 ```
 
