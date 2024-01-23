@@ -398,14 +398,7 @@ const sidebar = {
       "value": "<span class='menu__link'><b><small> DAO </small></b></span>"
     },
     "primitives/dao/introduction",
-    {
-      "Using DAO": [
-        "primitives/dao/interacting/bos",
-        "primitives/dao/interacting/web-app",
-        "primitives/dao/interacting/smart-contract",
-        "primitives/dao/interacting/near-cli"
-      ]
-    },
+    "primitives/dao/using-dao",
     {
       "type": "html",
       "value": "<hr/>"
