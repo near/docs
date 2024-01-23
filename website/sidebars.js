@@ -367,14 +367,6 @@ const sidebar = {
     },
     "primitives/nft/introduction",
     "primitives/nft/using-nfts",
-    {
-      "Using NFTs": [
-        "primitives/nft/interacting/bos",
-        "primitives/nft/interacting/web-app",
-        "primitives/nft/interacting/smart-contract",
-        "primitives/nft/interacting/near-cli"
-      ]
-    },
     "primitives/nft/additional-resources",
     {
       "type": "html",
