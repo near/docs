@@ -94,6 +94,8 @@ const idx_posts = Social.index(
   'post', 'main', { accountId: ['influencer.testnet'] }
 );
 
+if (idx_posts === null) return 'Loading...';
+
 // retrieve likes for each post
 const likes = idx_posts.map(
   index => Social.index('like', item(index.blockHeight)).length

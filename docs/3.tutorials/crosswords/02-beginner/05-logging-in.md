@@ -29,7 +29,7 @@ Since logging in is important for many decentralized apps, we'll show how this i
 
 This transfer will occur when the first user to solve the puzzle calls the `submit_solution` method with the solution. During the execution of that function it will check that the user submitted the correct answer, then transfer the prize.
 
-We'll be able to see this transfer (and other steps that occurred) in [NEAR Explorer](https://explorer.testnet.near.org).
+We'll be able to see this transfer (and other steps that occurred) in [NearBlocks Explorer](https://testnet.nearblocks.io).
 
 But first let's talk about one of the most interesting superpowers of NEAR: access keys.
 
