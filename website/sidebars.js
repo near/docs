@@ -388,14 +388,7 @@ const sidebar = {
       "value": "<span class='menu__link'><b><small> DEX </small></b></span>"
     },
     "primitives/dex/introduction",
-    {
-      "Using DEX": [
-        "primitives/dex/interacting/bos",
-        "primitives/dex/interacting/web-app",
-        "primitives/dex/interacting/smart-contract",
-        "primitives/dex/interacting/near-cli"
-      ]
-    },
+    "primitives/dex/using-dex",
     {
       "type": "html",
       "value": "<hr/>"
