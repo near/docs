@@ -408,13 +408,7 @@ const sidebar = {
       "value": "<span class='menu__link'><b><small> Linkdrops </small></b></span>"
     },
     "primitives/linkdrop/introduction",
-    {
-      "Creating Linkdrops": [
-        "primitives/linkdrop/interacting/bos",
-        "primitives/linkdrop/interacting/web-app",
-        "primitives/linkdrop/interacting/near-cli"
-      ]
-    }
+    "primitives/linkdrop/using-linkdrops"
   ],
   "tools": [
     "tools/welcome",
