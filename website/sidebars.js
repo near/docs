@@ -378,14 +378,6 @@ const sidebar = {
     },
     "primitives/ft/introduction",
     "primitives/ft/using-fts",
-    {
-      "Using FTs": [
-        "primitives/ft/interacting/bos",
-        "primitives/ft/interacting/web-app",
-        "primitives/ft/interacting/smart-contract",
-        "primitives/ft/interacting/near-cli"
-      ]
-    },
     "primitives/ft/additional-resources",
     {
       "type": "html",
