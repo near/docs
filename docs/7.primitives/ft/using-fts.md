@@ -6,7 +6,6 @@ hide_table_of_contents: false
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 import BOSGetMetadata from "./interacting/bos/get-metadata.md"
 import BOSCheckBalance from "./interacting/bos/check-balance.md"
@@ -29,8 +28,6 @@ import CLICreateToken from "./interacting/near-cli/create.md"
 import SmartContractSendToken from "./interacting/smart-contract/send.md"
 import SmartContractAttachTokenToCall from "./interacting/smart-contract/attach-to-call.md"
 import SmartContractHandleDeposit from "./interacting/smart-contract/handle-deposit.md"
-
-This section shows how to interact with an NFT smart contract.
 
 ---
 

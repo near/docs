@@ -6,7 +6,6 @@ hide_table_of_contents: false
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs";
 
 import BOSMintNFT from "./interacting/bos/mint.md"
 import BOSBuyNFT from "./interacting/bos/buy.md"
@@ -30,8 +29,6 @@ import SmartContractMintNFT from "./interacting/smart-contract/mint.md"
 import SmartContractBuyNFT from "./interacting/smart-contract/buy.md"
 import SmartContractQueryNFT from "./interacting/smart-contract/query.md"
 import SmartContractTransferNFT from "./interacting/smart-contract/transfer.md"
-
-This section shows how to interact with an NFT smart contract.
 
 ---
 
