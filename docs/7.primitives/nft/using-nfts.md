@@ -30,6 +30,8 @@ import SmartContractBuyNFT from "./interacting/smart-contract/buy.md"
 import SmartContractQueryNFT from "./interacting/smart-contract/query.md"
 import SmartContractTransferNFT from "./interacting/smart-contract/transfer.md"
 
+This section shows how to interact with an NFT smart contract from different tools. Please choose which tool you are planing to use. 
+
 ---
 
 ## Mint a NFT

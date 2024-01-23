@@ -1,7 +1,7 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-<Tabs groupId="nft-contract-tabs">
+<Tabs groupId="nft-contract-tabs" className="file-tabs">
 <TabItem value="NFT Primitive" label="NFT Primitive" default>
 
 ```bash

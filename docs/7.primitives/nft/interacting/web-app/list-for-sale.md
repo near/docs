@@ -2,7 +2,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {Github} from "@site/src/components/codetabs";
 
-<Tabs groupId="nft-contract-tabs">
+<Tabs groupId="nft-contract-tabs" className="file-tabs">
 <TabItem value="Paras" label="Paras">
 
 ```js
