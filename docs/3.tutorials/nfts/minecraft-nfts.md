@@ -18,7 +18,7 @@ It is recommended that you first complete the introductory **[minting NFTs tutor
 
 To complete this tutorial successfully, you'll need:
 
-- [A Minecraft account](https://account.mojang.com/)
+- [A Minecraft account](https://www.minecraft.net/)
 - [WorldEdit installed](https://worldedit.enginehub.org/en/latest/install/)
 - [A NEAR account](#wallet)
 - [NEAR command-line interface](/tools/near-cli#setup) (`near-cli`)

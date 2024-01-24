@@ -1,115 +1,503 @@
 ---
 id: quickstart
-title: ⭐ Quickstart
+title: Hello Components
+sidebar_label: ⭐ Overview
 ---
 
-The Blockchain Operating System (BOS) allows you to quicky develop fullstack decentralized applications by publishing all of its source code on-chain.
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import {WidgetEditor} from "@site/src/components/social-widget"
 
-In this quickstart tutorial we will create a simple application that takes a name as input and renders a friendly greeting.
+NEAR Components are a new way to build web applications. They are composable, reusable and decentralized.
 
-![img](/docs/quickstart-1.png)
-
----
-
-## Development Environment
-
-There are two pathways to creating components & applications:  
-
-- [Online IDE](https://near.org/sandbox) - quickly get started w/ zero setup allowing you to instantly prototype & ship code
-- [Local IDE](https://docs.near.org/bos/dev/intro) - get serious and use our BOS DevTools to setup your local dev environment
+:::tip
+You can login to interact with some of these examples.
+:::
 
 ---
 
-## Creating Your First Component
+## Familiar to Web Developers
+NEAR Components are built on top of [React Components](https://react.dev/), meaning that they:
+- Handle input through the `props` variable
+- Handle state through the [`useState`](https://react.dev/reference/react/useState) hook
+- Handle side effects through the [`useEffect`](https://react.dev/reference/react/useEffect) hook
 
-To create a `widget` you only need to write valid JSX code, i.e. a mixture of HTML and JS. Let's see how simple it is to create and preview your first component.
+<WidgetEditor id="1">
 
-<hr class="subsection" />
-
-### Create the Component
-In any of the editors, create a new file (`Add` button in the web editors) and name it `Greeter`, then, paste the following code on the editor:
-
-```ts
-let greeting = "Have a great day";
+```jsx
+const name = props.name || "Maria";
+const [count, setCount] = useState(1);
 
 return (
-  <>
-    <div class="container border border-info p-3 text-center">
-      <h1>Hello {props.name}</h1>
+  <div>
+    <p> {count} cheers for {name}! </p>
+    <button onClick={() => setCount(count + 1)}>Cheers!</button>
+  </div>
+);
+```
 
-      <p> {greeting} </p>
+</WidgetEditor>
+
+In contrast with React, NEAR Components are not wrapped in a `function` or `class` definition.
+
+Indeed, when writing a NEAR Component, you focus on writing the body of the component, which is a function that returns the JSX to be rendered. 
+
+---
+
+## NEAR Native
+NEAR Components can readily [interact with smart contracts](../api/near.md) in the NEAR Blockchain. While `view` methods are free to query by anyone, `call` methods require the user to be logged in.
+
+<WidgetEditor id="2">
+
+```jsx
+const counter = Near.view('counter.near-examples.testnet', 'get_num')
+
+if(counter === null) return 'Loading...'
+
+const add = () => {
+  Near.call('counter.near-examples.testnet', 'increment')
+}
+
+const subtract = () => {
+  Near.call('counter.near-examples.testnet', 'decrement')
+}
+
+return <>
+  <p> Counter: {counter} </p>
+  {!context.accountId &&
+    <p color="red"> Please login to interact with the contract</p>
+  }
+  {context.accountId && 
+  <>
+    <button onClick={add}> + </button>
+    <button onClick={subtract}> - </button>
+  </>
+  }
+</>
+```
+
+</WidgetEditor>
+
+---
+
+## Social from the Get-Go
+
+NEAR Components are easily integrated with [NEAR Social](https://near.social/), a social network built on NEAR.
+
+<WidgetEditor id="3">
+
+```js
+const item = (blockHeight) => ({ type: 'social', path: 'influencer.testnet/post/main', blockHeight });
+
+// retrieve indexed posts by influencer.testnet
+const idx_posts = Social.index(
+  'post', 'main', { accountId: ['influencer.testnet'] }
+);
+
+if (idx_posts === null) return 'Loading...';
+
+// retrieve likes for each post
+const likes = idx_posts.map(
+  index => Social.index('like', item(index.blockHeight)).length
+);
+
+// retrieve data for each post
+const post_data = idx_posts.map(
+  index => Social.get(`${index.accountId}/post/main`, index.blockHeight)
+);
+
+// defined "Like" function
+const like = (blockHeight) => Social.set(
+  {index:{like: JSON.stringify({key: item(blockHeight), value: {type: 'like'}})}}
+)
+
+return <>
+  <h5>Posts from <i>influencer.testnet</i></h5>
+  {post_data.map((post, idx) =>
+    <div class="mt-3">
+      <div>{JSON.parse(post).text} - {likes[idx]} likes</div>
+      {context.accountId && <button class="btn btn-danger btn-sm" onClick={() => like(idx_posts[idx].blockHeight)}>Like</button>}
     </div>
-  </>
+  )}
+</>
+
+```
+
+</WidgetEditor>
+
+---
+
+## Fully On-Chain & Easily Composable
+
+Leveraging the cheap storage and computation of the NEAR Blockchain, NEAR Components' code is stored fully on-chain in the SocialDB smart contract (`social.near`).
+
+<WidgetEditor height="40px">
+
+```js
+// retrieving the code of a stored component
+return Social.get('influencer.testnet/widget/Greeter')
+```
+
+</WidgetEditor>
+
+Once deployed, a component can be imported and used by any other component. Composing components as LEGO blocks allows you to build complex applications.
+
+<WidgetEditor id="4" height="80px">
+
+```js
+// Rendering the component with props
+return <Widget src="influencer.testnet/widget/Greeter"
+               props={{name: "Anna", amount: 3}} />;
+```
+</WidgetEditor>
+
+---
+
+## Multi-Chain by Design
+
+NEAR Components can easily interact with Ethereum compatible blockchains, helping to easily create decentralized frontends for multi-chain applications.
+
+<WidgetEditor id="5" height="100px">
+
+```js
+if (
+  state.chainId === undefined &&
+  ethers !== undefined &&
+  Ethers.send("eth_requestAccounts", [])[0]
+) {
+  Ethers.provider()
+    .getNetwork()
+    .then((chainIdData) => {
+      if (chainIdData?.chainId) {
+        State.update({ chainId: chainIdData.chainId });
+      }
+    });
+}
+if (state.chainId !== undefined && state.chainId !== 1) {
+  return <p>Switch to Ethereum Mainnet</p>;
+}
+
+// FETCH LIDO ABI
+
+const lidoContract = "0xae7ab96520de3a18e5e111b5eaab095312d7fe84";
+const tokenDecimals = 18;
+
+const lidoAbi = fetch(
+  "https://raw.githubusercontent.com/lidofinance/lido-subgraph/master/abis/Lido.json"
 );
-```
+if (!lidoAbi.ok) {
+  return "Loading";
+}
 
-<hr class="subsection" />
+const iface = new ethers.utils.Interface(lidoAbi.body);
 
-### Preview
-To preview how your component will work, go first to the `props` tab on your editor (or edit the `props.json` file if you are using Visual Studio Code) and add the following property:
+// FETCH LIDO STAKING APR
 
-```json
-{"name": "Anna"}
-```
+if (state.lidoArp === undefined) {
+  const apr = fetch(
+    "https://api.allorigins.win/get?url=https://stake.lido.fi/api/sma-steth-apr"
+  );
+  if (!apr) return;
+  State.update({ lidoArp: JSON.parse(apr?.body?.contents) ?? "..." });
+}
 
-After, simply press the `Preview` button to render the preview of your component!
+// HELPER FUNCTIONS
 
-![img](/docs/quickstart-editor.png)
-*Creating a Hello World component using the [NEAR Social Editor](https://near.social/#/edit)*
+const getStakedBalance = (receiver) => {
+  const encodedData = iface.encodeFunctionData("balanceOf", [receiver]);
 
-<hr class="subsection" />
+  return Ethers.provider()
+    .call({
+      to: lidoContract,
+      data: encodedData,
+    })
+    .then((rawBalance) => {
+      const receiverBalanceHex = iface.decodeFunctionResult(
+        "balanceOf",
+        rawBalance
+      );
 
-### Publish
-Click on the `Save Widget` button to store your application in the NEAR Blockchain. If the button is not available, make sure you have signed-in to your [NEAR wallet](https://wallet.near.org) using the `Sign In` button of the editor.
+      return Big(receiverBalanceHex.toString())
+        .div(Big(10).pow(tokenDecimals))
+        .toFixed(2)
+        .replace(/\d(?=(\d{3})+\.)/g, "$&,");
+    });
+};
 
-![img](/docs/quickstart-save.png)
-*The NEAR Social Editor asking if we want to store the component*
+const submitEthers = (strEther, _referral) => {
+  if (!strEther) {
+    return console.log("Amount is missing");
+  }
+  const erc20 = new ethers.Contract(
+    lidoContract,
+    lidoAbi.body,
+    Ethers.provider().getSigner()
+  );
 
-Accept the transaction in your NEAR Wallet, so the component gets stored in the NEAR blockchain.
+  let amount = ethers.utils.parseUnits(strEther, tokenDecimals).toHexString();
 
-<hr class="subsection" />
+  erc20.submit(lidoContract, { value: amount }).then((transactionHash) => {
+    console.log("transactionHash is " + transactionHash);
+  });
+};
 
-## Using Your dApp
-Once your application is published, it will be ready to be combined with other components, or rendered as a standalone application  using the BOS Viewer. 
+// DETECT SENDER
 
-<hr class="subsection" />
+if (state.sender === undefined) {
+  const accounts = Ethers.send("eth_requestAccounts", []);
+  if (accounts.length) {
+    State.update({ sender: accounts[0] });
+    console.log("set sender", accounts[0]);
+  }
+}
 
-### Composition
-A BOS application is simply a component that puts together multiple components; this outer component acts as the entry point to your application. To use your component inside of another, simply invoke it using a `<Widget>` component. This will fetch the code from the NEAR blockchain, and include it inside of your new application.
+//if (!state.sender)  return "Please login first";
 
-```ts
-const user = "gagdiez.near";
+// FETCH SENDER BALANCE
+
+if (state.balance === undefined && state.sender) {
+  Ethers.provider()
+    .getBalance(state.sender)
+    .then((balance) => {
+      State.update({ balance: Big(balance).div(Big(10).pow(18)).toFixed(2) });
+    });
+}
+
+// FETCH SENDER STETH BALANCE
+
+if (state.stakedBalance === undefined && state.sender) {
+  getStakedBalance(state.sender).then((stakedBalance) => {
+    State.update({ stakedBalance });
+  });
+}
+
+// FETCH TX COST
+
+if (state.txCost === undefined) {
+  const gasEstimate = ethers.BigNumber.from(1875000);
+  const gasPrice = ethers.BigNumber.from(1500000000);
+
+  const gasCostInWei = gasEstimate.mul(gasPrice);
+  const gasCostInEth = ethers.utils.formatEther(gasCostInWei);
+
+  let responseGql = fetch(
+    "https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v2",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        query: `{
+          bundle(id: "1" ) {
+            ethPrice
+          }
+        }`,
+      }),
+    }
+  );
+
+  if (!responseGql) return "";
+
+  const ethPriceInUsd = responseGql.body.data.bundle.ethPrice;
+
+  const txCost = Number(gasCostInEth) * Number(ethPriceInUsd);
+
+  State.update({ txCost: `$${txCost.toFixed(2)}` });
+}
+
+// FETCH CSS
+
+const cssFont = fetch(
+  "https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800"
+).body;
+const css = fetch(
+  "https://pluminite.mypinata.cloud/ipfs/Qmboz8aoSvVXLeP5pZbRtNKtDD3kX5D9DEnfMn2ZGSJWtP"
+).body;
+
+if (!cssFont || !css) return "";
+
+if (!state.theme) {
+  State.update({
+    theme: styled.div`
+    font-family: Manrope, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    ${cssFont}
+    ${css}
+`,
+  });
+}
+const Theme = state.theme;
+
+// OUTPUT UI
+
+const getSender = () => {
+  return !state.sender
+    ? ""
+    : state.sender.substring(0, 6) +
+        "..." +
+        state.sender.substring(state.sender.length - 4, state.sender.length);
+};
 
 return (
-  <>
-    <h3> Composition </h3>
-    <p> Components can be composed </p>
-    <hr />
+  <Theme>
+    <div class="LidoContainer">
+      <div class="Header">Stake Ether</div>
+      <div class="SubHeader">Stake ETH and receive stETH while staking.</div>
 
-    <Widget src={`${user}/widget/Greetings`} props={props} />
-  </>
+      <div class="LidoForm">
+        {state.sender && (
+          <>
+            <div class="LidoFormTopContainer">
+              <div class="LidoFormTopContainerLeft">
+                <div class="LidoFormTopContainerLeftContent1">
+                  <div class="LidoFormTopContainerLeftContent1Container">
+                    <span>Available to stake</span>
+                    <div class="LidoFormTopContainerLeftContent1Circle" />
+                  </div>
+                </div>
+                <div class="LidoFormTopContainerLeftContent2">
+                  <span>
+                    {state.balance ?? (!state.sender ? "0" : "...")}&nbsp;ETH
+                  </span>
+                </div>
+              </div>
+              <div class="LidoFormTopContainerRight">
+                <div class="LidoFormTopContainerRightContent1">
+                  <div class="LidoFormTopContainerRightContent1Text">
+                    <span>{getSender()}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="LidoSplitter" />
+          </>
+        )}
+        <div
+          class={
+            state.sender ? "LidoFormBottomContainer" : "LidoFormTopContainer"
+          }
+        >
+          <div class="LidoFormTopContainerLeft">
+            <div class="LidoFormTopContainerLeftContent1">
+              <div class="LidoFormTopContainerLeftContent1Container">
+                <span>Staked amount</span>
+              </div>
+            </div>
+            <div class="LidoFormTopContainerLeftContent2">
+              <span>
+                {state.stakedBalance ?? (!state.sender ? "0" : "...")}
+                &nbsp;stETH
+              </span>
+            </div>
+          </div>
+          <div class="LidoFormTopContainerRight">
+            <div class="LidoAprContainer">
+              <div class="LidoAprTitle">Lido APR</div>
+              <div class="LidoAprValue">{state.lidoArp ?? "..."}%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="LidoStakeForm">
+        <div class="LidoStakeFormInputContainer">
+          <span class="LidoStakeFormInputContainerSpan1">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                opacity="0.6"
+                d="M11.999 3.75v6.098l5.248 2.303-5.248-8.401z"
+              ></path>
+              <path d="M11.999 3.75L6.75 12.151l5.249-2.303V3.75z"></path>
+              <path
+                opacity="0.6"
+                d="M11.999 16.103v4.143l5.251-7.135L12 16.103z"
+              ></path>
+              <path d="M11.999 20.246v-4.144L6.75 13.111l5.249 7.135z"></path>
+              <path
+                opacity="0.2"
+                d="M11.999 15.144l5.248-2.993-5.248-2.301v5.294z"
+              ></path>
+              <path
+                opacity="0.6"
+                d="M6.75 12.151l5.249 2.993V9.85l-5.249 2.3z"
+              ></path>
+            </svg>
+          </span>
+          <span class="LidoStakeFormInputContainerSpan2">
+            <input
+              disabled={!state.sender}
+              class="LidoStakeFormInputContainerSpan2Input"
+              value={state.strEther}
+              onChange={(e) => State.update({ strEther: e.target.value })}
+              placeholder="Amount"
+            />
+          </span>
+          <span
+            class="LidoStakeFormInputContainerSpan3"
+            onClick={() => {
+              State.update({
+                strEther: (state.balance > 0.05
+                  ? parseFloat(state.balance) - 0.05
+                  : 0
+                ).toFixed(2),
+              });
+            }}
+          >
+            <button
+              class="LidoStakeFormInputContainerSpan3Content"
+              disabled={!state.sender}
+            >
+              <span class="LidoStakeFormInputContainerSpan3Max">MAX</span>
+            </button>
+          </span>
+        </div>
+        {!!state.sender ? (
+          <button
+            class="LidoStakeFormSubmitContainer"
+            onClick={() => submitEthers(state.strEther, state.sender)}
+          >
+            <span>Submit</span>
+          </button>
+        ) : (
+          <Web3Connect
+            className="LidoStakeFormSubmitContainer"
+            connectLabel="Connect with Web3"
+          />
+        )}
+
+        <div class="LidoFooterContainer">
+          {state.sender && (
+            <div class="LidoFooterRaw">
+              <div class="LidoFooterRawLeft">You will receive</div>
+              <div class="LidoFooterRawRight">${state.strEther ?? 0} stETH</div>
+            </div>
+          )}
+          <div class="LidoFooterRaw">
+            <div class="LidoFooterRawLeft">Exchange rate</div>
+            <div class="LidoFooterRawRight">1 ETH = 1 stETH</div>
+          </div>
+          {false && (
+            <div class="LidoFooterRaw">
+              <div class="LidoFooterRawLeft">Transaction cost</div>
+              <div class="LidoFooterRawRight">{state.txCost}</div>
+            </div>
+          )}
+          <div class="LidoFooterRaw">
+            <div class="LidoFooterRawLeft">Reward fee</div>
+            <div class="LidoFooterRawRight">10%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Theme>
 );
 ```
 
-![img](/docs/quickstart-composition.png)
-*Rendering of the Composition*
+</WidgetEditor>
 
-:::info
-Notice that we are passing the input `props` as an `object` to the `Greetings` component.
+:::danger ETH Disabled in Docs
+For security reasons, interacting with Ethereum is disabled in our documentation. To see a working example please navigate to the [deployed NEAR Component](https://near.social/zavodil.near/widget/Lido).
 :::
 
-<hr class="subsection" />
-
-### Embedded
-To render your component as a standalone application, go to `https://near.social/#/<your-username>/widget/Greeter?name=Anna`.
-
-You can also embed your component in other websites, for example, here we simply have an iframe which `source` is `https://near.social/#/embed/gagdiez.near/widget/Greeter?name=Anna`:
+---
 
 
-<iframe style={{"width": "100%", "height":"130px"}} src="https://near.social/#/embed/gagdiez.near/widget/Greeter?name=Anna"></iframe>
-<em>This component is being rendered inside an `iframe`</em>
-
-
-:::info
-Notice that we are passing the `props.name` as a `GET` parameter in the `url`.
-:::
+## Next Steps
+Build and deploy your first components without leaving the browser. Go to https://near.org/sandbox , create an account and start building!

@@ -30,7 +30,7 @@ const connectionConfig = {
   nodeUrl: "https://rpc.testnet.near.org",
   walletUrl: "https://testnet.mynearwallet.com/",
   helperUrl: "https://helper.testnet.near.org",
-  explorerUrl: "https://explorer.testnet.near.org",
+  explorerUrl: "https://testnet.nearblocks.io",
 };
 
 // connect to NEAR
@@ -52,7 +52,7 @@ const connectionConfig = {
   nodeUrl: "https://rpc.mainnet.near.org",
   walletUrl: "https://wallet.mainnet.near.org",
   helperUrl: "https://helper.mainnet.near.org",
-  explorerUrl: "https://explorer.mainnet.near.org",
+  explorerUrl: "https://nearblocks.io",
 };
 
 // connect to NEAR

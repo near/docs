@@ -8,14 +8,6 @@ hide_table_of_contents: false
 import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
 import ContactUs from '@site/src/components/ContactUs.mdx';
 
-
-- [What is an FT?](#what-is-an-ft)
-- [How to create FT token](#how-to-create-ft-token)
-
----
-
-## What is an FT?
-
 Fungible token is representation of an asset on a blockchain that is interchangeable.
 
 Besides the native NEAR token, user can issue their own fungible tokens or use those that are already present in the ecosystem and created by other users or projects.

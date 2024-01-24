@@ -3,7 +3,7 @@ const path = require('path');
 const changelogs = require('./src/utils/changelogs.json');
 
 /** @type {import('@docusaurus/types').Config} */
-module.exports = {
+const config = {
   title: 'NEAR Documentation',
   tagline: 'NEAR Protocol Developer Documentation',
   url: 'https://docs.near.org',
@@ -40,7 +40,7 @@ module.exports = {
           breadcrumbs: true,
           editUrl: 'https://github.com/near/docs/edit/master/website',
           path: '../docs',
-          sidebarPath: './sidebars.json',
+          sidebarPath: './sidebars.js',
           routeBasePath: '/',
         },
         sitemap: {
@@ -158,9 +158,9 @@ ${content}`, // <-- this last part adds in the rest of the content, which would 
           label: "Primitives",
           position: "left",
           items: [
-            { label: "Drops", href: "/primitives/dao/introduction" },
-            { label: "Fungible Tokens", href: "/primitives/nft/introduction" },
-            { label: "Non-Fungible Tokens", href: "/primitives/ft/introduction" },
+            { label: "Drops", href: "/primitives/linkdrop/introduction" },
+            { label: "Fungible Tokens", href: "/primitives/ft/introduction" },
+            { label: "Non-Fungible Tokens", href: "/primitives/nft/introduction" },
             { label: "Decentralized Exchanges", href: "/primitives/dex/introduction" },
             { label: "Autonomous Organizations", href: "/primitives/dao/introduction" },
           ]
@@ -271,3 +271,5 @@ ${content}`, // <-- this last part adds in the rest of the content, which would 
     },
   },
 };
+
+export default config;

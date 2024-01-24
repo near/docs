@@ -5,13 +5,9 @@ title: Components
 
 import {WidgetEditor} from "@site/src/components/social-widget"
 
-BOS allows you to create a decentralized frontend by writing and composing small applications known as `Components`. 
+NEAR allows you to create a decentralized frontend by writing and composing small applications known as `Components`. 
 
 Components are stored in the NEAR blockchain, and execute locally in a custom Virtual Machine, thus ensuring the component can not access local storage or cookies.
-
-:::info BOS API
-Components use the BOS [**API**](./api/home.md) to process data, fetch data from other websites, and interact with blockchains.
-:::
 
 ---
 
@@ -133,7 +129,7 @@ return (
 
 ## Composing Components
 
-To compose components you will use the [Predefined `Widget` component](./components/widget.md). For this, you will only need the NEAR username of who created the component, and the component's name.
+To compose components you will use the [Predefined `Widget` component](./api/builtin-components.md#widget). For this, you only need the NEAR username of who created the component, and the component's name.
 
 <WidgetEditor id='4' height="200px">
 

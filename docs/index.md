@@ -1,6 +1,6 @@
 ---
 id: welcome
-title: NEAR - The Blockchain Operating System
+title: NEAR - Your Gateway to an Open Web
 hide_table_of_contents: true
 ---
 import {FeatureList, Column, Feature} from "@site/src/components/featurelist"

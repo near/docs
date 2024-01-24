@@ -178,7 +178,7 @@ const connectionConfig = {
   keyStore: myKeyStore, // first create a key store
   nodeUrl: "https://rpc.testnet.near.org",
   helperUrl: "https://helper.testnet.near.org",
-  explorerUrl: "https://explorer.testnet.near.org",
+  explorerUrl: "https://testnet.nearblocks.io",
 };
 const nearConnection = await connect(connectionConfig);
 ```
@@ -194,7 +194,7 @@ const connectionConfig = {
   keyStore: myKeyStore, // first create a key store
   nodeUrl: "https://rpc.mainnet.near.org",
   helperUrl: "https://helper.mainnet.near.org",
-  explorerUrl: "https://explorer.mainnet.near.org",
+  explorerUrl: "https://nearblocks.io",
 };
 const nearConnection = await connect(connectionConfig);
 ```
