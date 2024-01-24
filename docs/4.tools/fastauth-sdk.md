@@ -18,16 +18,6 @@ The FastAuth system is comprised of 3 main components:
 
 ## Getting started
 
-### Gaining access to the Beta
-
-:::tip
-
-FastAuth is currently on a closed early-access Beta. You can apply to be part of the Beta through [this form](https://forms.gle/pyuW3fXPZwPffYju6). 
-
-:::
-
-During the Beta, user accounts created via FastAuth will be constrained to your own dApp, and won't be interoperable with other domains. In a future FastAuth release, you'll be given the option to make your user accounts interoperable across the ecosystem.
-
 ### Setting up Firebase
 
 #### Create a project
