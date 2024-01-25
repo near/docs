@@ -2,7 +2,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {Github} from "@site/src/components/codetabs";
 
-<Tabs groupId="dex-tabs">
+<Tabs groupId="dex-tabs" className="file-tabs">
 
 <TabItem value="Ref Finance API" label="Ref Finance API">
 

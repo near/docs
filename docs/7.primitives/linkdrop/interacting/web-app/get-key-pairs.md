@@ -1,7 +1,7 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-<Tabs>
+<Tabs className="file-tabs">
 
 <TabItem value="near-api-js" label="near-api-js">
 

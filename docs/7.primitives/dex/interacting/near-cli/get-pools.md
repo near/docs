@@ -1,7 +1,7 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-<Tabs groupId="dex-tabs">
+<Tabs groupId="dex-tabs" className="file-tabs">
 
 <TabItem value="Ref Finance" label="Ref Finance">
 ```bash
