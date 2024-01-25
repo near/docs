@@ -73,7 +73,9 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=network_in
 The `block_id` param can take either the block number (e.g. `27912554`) or the block hash (e.g. `'3Xz2wM9rigMXzA2c5vgCP8wTgFBaePucgUmVYPkMqhRL'` ) as an argument.
 
 :::caution
-The block IDs of transactions shown in <a href="https://explorer.testnet.near.org">NEAR Explorer</a> are not necessarily the block ID of the executed transaction. Transactions may execute a block or two after its recorded, and in some cases, can take place over several blocks. Due to this, it is important to to check subsequent blocks to be sure all results related to the queried transaction are discovered.
+
+The block IDs of transactions shown in [NearBlocks Explorer](https://testnet.nearblocks.io) are not necessarily the block ID of the executed transaction. Transactions may execute a block or two after its recorded, and in some cases, can take place over several blocks. Due to this, it is important to to check subsequent blocks to be sure all results related to the queried transaction are discovered.
+
 :::
 
 ---
