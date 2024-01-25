@@ -4,6 +4,9 @@ title: Using DEX
 hide_table_of_contents: false
 ---
 
+import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
+import ContactUs from '@site/src/components/ContactUs.mdx';
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -24,6 +27,14 @@ import CLIGetDepositBalances from "./interacting/near-cli/get-deposit-balances.m
 import SmartContractSwap from "./interacting/smart-contract/swap.md"
 import SmartContractGetPools from "./interacting/smart-contract/get-pools.md"
 import SmartContractGetDepositBalances from "./interacting/smart-contract/get-deposit-balances.md"
+
+DEX is an app which allows users to trade tokens by using only smart contracts. Usually users interact with DEX by web app. But since DEX is a set of smart contracts you can use these contracts from your code.
+
+This section provides some examples how to interact with DEX from [a NEAR component](./interacting/bos), [web app](./interacting/web-app), [near-cli](./interacting/near-cli) and [smart contract](./interacting/smart-contract).
+
+:::note
+[Ref Finance](https://www.ref.finance/) is used as DEX in examples. If you want to add another DEX you can create a PR on docs repository.
+:::
 
 ---
 
@@ -115,3 +126,7 @@ See how to deposit funds on Ref Finance [here](../ft/using-fts#attaching-fts-to-
 
 ---
 
+## Additional Resources
+
+1. [Claim Fungible Tokens from Lockup](https://near.org/near/widget/ComponentDetailsPage?src=whtt.near/widget/Draft-0) - the example how to claim locked tokens from the `lockup.burrow.near` contract.
+2. [BSC Dex Collection](https://near.org/near/widget/ComponentDetailsPage?src=bluebiu.near/widget/Bsc.Swap.Dex) - the example of how to build simple swap page for a DEX.

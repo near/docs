@@ -365,9 +365,7 @@ const sidebar = {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Non Fungible Tokens (NFT) </small></b></span>"
     },
-    "primitives/nft/introduction",
     "primitives/nft/using-nfts",
-    "primitives/nft/additional-resources",
     {
       "type": "html",
       "value": "<hr/>"
@@ -376,9 +374,7 @@ const sidebar = {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Fungible Tokens (FT) </small></b></span>"
     },
-    "primitives/ft/introduction",
     "primitives/ft/using-fts",
-    "primitives/ft/additional-resources",
     {
       "type": "html",
       "value": "<hr/>"
@@ -387,7 +383,6 @@ const sidebar = {
       "type": "html",
       "value": "<span class='menu__link'><b><small> DEX </small></b></span>"
     },
-    "primitives/dex/introduction",
     "primitives/dex/using-dex",
     {
       "type": "html",
@@ -397,7 +392,6 @@ const sidebar = {
       "type": "html",
       "value": "<span class='menu__link'><b><small> DAO </small></b></span>"
     },
-    "primitives/dao/introduction",
     "primitives/dao/using-dao",
     {
       "type": "html",
@@ -407,7 +401,6 @@ const sidebar = {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Linkdrops </small></b></span>"
     },
-    "primitives/linkdrop/introduction",
     "primitives/linkdrop/using-linkdrops"
   ],
   "tools": [

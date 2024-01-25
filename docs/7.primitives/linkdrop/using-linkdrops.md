@@ -4,6 +4,9 @@ title: Using Linkdrops
 hide_table_of_contents: false
 ---
 
+import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
+import ContactUs from '@site/src/components/ContactUs.mdx';
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -33,6 +36,14 @@ import CLITransferNFT from "./interacting/near-cli/transfer-nft.md"
 import CLICreateFTDrop from "./interacting/near-cli/create-ft-drop.md"
 import CLITransferFT from "./interacting/near-cli/transfer-ft.md"
 import CLICreateFunctionCallDrop from "./interacting/near-cli/create-function-call-drop.md"
+
+Linkdrops are an easy way to distribute blockchain items (NFTs, FTs) via links. You provide a link for user and they can claim your drop.
+
+This section provides some examples how to create different linkdrops from [a NEAR component](./interacting/bos.md), [web app](./interacting/web-app.md) and [near-cli](./interacting/near-cli.md).
+
+:::note
+In this section we will use as reference the [Keypom implementation](https://keypom.xyz/).
+:::
 
 In order to create any kind of drop, you need to first generate key pairs. 
 
