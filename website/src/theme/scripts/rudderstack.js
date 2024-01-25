@@ -12,18 +12,21 @@ export function initRudderAnalytics() {
 }
 
 export function recordPageView(rudderAnalytics, pageName) {
-  console.log("Trying to record", pageName);
+  if(pageName === '/') return;
+  if(!rudderAnalytics) return;
+  
+  // pageName should be /category/page and never contain ? or #
+  // but just in case we split on ? and #
+  const split = pageName.split('?')[0].split('#')[0].split('/');
+  const category = split[1];
+  const page = split.slice(2).join('/');
   try {
-    rudderAnalytics.page('category', pageName, {
-      hashId: localStorage.getItem('hashId'),
+    rudderAnalytics.page(category, page, {
+      hashId: localStorage.getItem('hashId') || '',
       url: filterURL(window.location.href),
       ref: filterURL(document.referrer),
     });
-    console.log("Recorded", pageName);
-  } catch (e) {
-    console.log("Failed to record", pageName);
-    console.error(e);
-  }
+  } catch (e) { } // Silent error
 }
 
 // let rudderAnalytics = null;
