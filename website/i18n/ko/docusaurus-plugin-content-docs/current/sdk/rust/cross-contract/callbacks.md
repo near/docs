@@ -12,6 +12,13 @@ NEAR 프로토콜은 작업 증명(Proof-of-Work) 블록체인과 다르게 작�
 
 `#[ext_contract(...)]` 구문을 사용하여 교차 컨트랙트 호출을 수행할 수 있는 헬퍼 매크로가 있습니다. 이는 Rust 특성을 가져와 정적 메서드가 있는 모듈로 변환합니다. 이러한 각각의 정적 메서드는 Trait에 의해 정의된 위치 인자와, `receiver_id`, 첨부된 보증금 및 가스의 양을 사용하여 새 `Promise`를 반환합니다.
 
+
+:::info
+
+If the function returns the promise, then it will delegate the return value and status of transaction execution, but if you return a unit type (`()`, `void`, `nothing`), then the `Promise` result will not influence the transaction status.
+
+:::
+
 예를 들어 계산기 컨트랙트의 Trait을 정의해 보겠습니다.
 
 ```rust

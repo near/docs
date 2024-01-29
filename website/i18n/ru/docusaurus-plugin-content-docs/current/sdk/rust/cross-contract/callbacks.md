@@ -12,6 +12,13 @@ There are two techniques to write cross-contract calls: [high-level](https://git
 
 There is a helper macro that allows you to make cross-contract calls with the syntax `#[ext_contract(...)]`. It takes a Rust Trait and converts it to a module with static methods. Each of these static methods takes positional arguments defined by the Trait, then the `receiver_id`, the attached deposit and the amount of gas and returns a new `Promise`.
 
+
+:::info
+
+If the function returns the promise, then it will delegate the return value and status of transaction execution, but if you return a unit type (`()`, `void`, `nothing`), then the `Promise` result will not influence the transaction status.
+
+:::
+
 For example, let's define a calculator contract Trait:
 
 ```rust
