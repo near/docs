@@ -113,12 +113,12 @@ Your new smart contract stores a `greeting: string` attribute in their state, an
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
-            url="https://github.com/near-examples/hello-near-js/blob/master/contract/src/contract.ts"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts"
             start="3" end="18" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/hello-near-rs/blob/main/contract/src/lib.rs"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
             start="4" end="36" />
   </Language>
 </CodeTabs>
