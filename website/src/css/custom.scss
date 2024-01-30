@@ -163,18 +163,10 @@ a:hover {
     border-bottom-left-radius: 30px !important;
 }
 
-.tabItem_node_modules-\@docusaurus-theme-classic-lib-theme-TabItem-styles-module {
-    padding: .7rem 0 0 0;
-}
-
-.tabItem_node_modules-\@docusaurus-theme-classic-lib-theme-TabItem-styles-module>.tabItem_node_modules-\@docusaurus-theme-classic-lib-theme-TabItem-styles-module {
-    padding: 0rem;
-    border: none;
-}
-
 /* for image caption */
 img+em,
-.tabs-container+p em {
+.tabs-container+p em,
+.theme-code-block+p em {
     font-style: normal;
     display: inherit;
     text-align: center;
@@ -187,13 +179,6 @@ img+em,
 }
 
 /* Language selection Tabs*/
-.language-tabs {
-    margin-bottom: -1rem;
-}
-
-.language-tabs li {
-    padding: 0.5em 1em;
-}
 
 .language-tabs li:hover {
     background-color: transparent;
@@ -216,8 +201,8 @@ img+em,
 }
 
 .file-tabs li {
-    padding: 0.5em 0em 0 0em;
-    margin-bottom: 0.5em;
+    padding: 0.5rem 0 0 0;
+    margin-bottom: 1rem;
     margin-right: 1rem;
 }
 
