@@ -3228,6 +3228,11 @@
     uncontrollable "^8.0.1"
     warning "^4.0.3"
 
+"@rudderstack/analytics-js@^3.0.0-beta.20":
+  version "3.0.0-beta.20"
+  resolved "https://registry.yarnpkg.com/@rudderstack/analytics-js/-/analytics-js-3.0.0-beta.20.tgz#d3897ccd4eb5205fbca0b81ddb1b5bbdbf0e2508"
+  integrity sha512-/G2ed7DMUua3hdY5m5Mxms4m/LHO5Gj0w1R1pcYG60I4BaMnFrlUYx/9x9wmNY38uj2HK6mxYvkpNoKv5NvQvQ==
+
 "@saucelabs/theme-github-codeblock@^0.2.3":
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/@saucelabs/theme-github-codeblock/-/theme-github-codeblock-0.2.3.tgz#706a43292f600532271979941b0155db667c2c21"
