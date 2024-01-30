@@ -20,8 +20,8 @@
   },
   "sidebar": "contracts",
   "previous": {
-    "title": "Autonomous Organizations (DAO)",
-    "permalink": "/ko/develop/relevant-contracts/dao"
+    "title": "버그 바운티 프로그램",
+    "permalink": "/ko/develop/contracts/security/bounty"
   },
   "next": {
     "title": "교차 컨트랙트 호출(Cross Contract Call)",

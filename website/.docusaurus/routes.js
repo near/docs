@@ -9,15 +9,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', 'a24'),
+    component: ComponentCreator('/zh-CN/', 'b5e'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '3d7'),
+        component: ComponentCreator('/zh-CN/', '8c0'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '4d0'),
+            component: ComponentCreator('/zh-CN/', '02f'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -823,27 +823,23 @@ export default [
               },
               {
                 path: '/zh-CN/develop/relevant-contracts/dao',
-                component: ComponentCreator('/zh-CN/develop/relevant-contracts/dao', 'ded'),
-                exact: true,
-                sidebar: "contracts"
+                component: ComponentCreator('/zh-CN/develop/relevant-contracts/dao', '177'),
+                exact: true
               },
               {
                 path: '/zh-CN/develop/relevant-contracts/ft',
-                component: ComponentCreator('/zh-CN/develop/relevant-contracts/ft', 'f03'),
-                exact: true,
-                sidebar: "contracts"
+                component: ComponentCreator('/zh-CN/develop/relevant-contracts/ft', 'b46'),
+                exact: true
               },
               {
                 path: '/zh-CN/develop/relevant-contracts/nft',
-                component: ComponentCreator('/zh-CN/develop/relevant-contracts/nft', '418'),
-                exact: true,
-                sidebar: "contracts"
+                component: ComponentCreator('/zh-CN/develop/relevant-contracts/nft', 'e8f'),
+                exact: true
               },
               {
                 path: '/zh-CN/develop/relevant-contracts/oracles',
-                component: ComponentCreator('/zh-CN/develop/relevant-contracts/oracles', '3a0'),
-                exact: true,
-                sidebar: "contracts"
+                component: ComponentCreator('/zh-CN/develop/relevant-contracts/oracles', 'cf2'),
+                exact: true
               },
               {
                 path: '/zh-CN/develop/testing/integration-test',
@@ -947,168 +943,513 @@ export default [
                 sidebar: "exchanges"
               },
               {
-                path: '/zh-CN/primitives/dao/additional-resources',
-                component: ComponentCreator('/zh-CN/primitives/dao/additional-resources', '598'),
+                path: '/zh-CN/primitives/dao',
+                component: ComponentCreator('/zh-CN/primitives/dao', 'f5c'),
+                exact: true,
+                sidebar: "primitives"
+              },
+              {
+                path: '/zh-CN/primitives/dao/bos/create-dao',
+                component: ComponentCreator('/zh-CN/primitives/dao/bos/create-dao', 'd1a'),
                 exact: true
               },
               {
-                path: '/zh-CN/primitives/dao/interacting/bos',
-                component: ComponentCreator('/zh-CN/primitives/dao/interacting/bos', '2be'),
-                exact: true,
-                sidebar: "primitives"
-              },
-              {
-                path: '/zh-CN/primitives/dao/interacting/near-cli',
-                component: ComponentCreator('/zh-CN/primitives/dao/interacting/near-cli', 'ffe'),
-                exact: true,
-                sidebar: "primitives"
-              },
-              {
-                path: '/zh-CN/primitives/dao/interacting/smart-contract',
-                component: ComponentCreator('/zh-CN/primitives/dao/interacting/smart-contract', '6cc'),
-                exact: true,
-                sidebar: "primitives"
-              },
-              {
-                path: '/zh-CN/primitives/dao/interacting/web-app',
-                component: ComponentCreator('/zh-CN/primitives/dao/interacting/web-app', 'e85'),
-                exact: true,
-                sidebar: "primitives"
-              },
-              {
-                path: '/zh-CN/primitives/dao/introduction',
-                component: ComponentCreator('/zh-CN/primitives/dao/introduction', '6ff'),
-                exact: true,
-                sidebar: "primitives"
-              },
-              {
-                path: '/zh-CN/primitives/dex/additional-resources',
-                component: ComponentCreator('/zh-CN/primitives/dex/additional-resources', '41a'),
+                path: '/zh-CN/primitives/dao/bos/create-proposal',
+                component: ComponentCreator('/zh-CN/primitives/dao/bos/create-proposal', 'ac1'),
                 exact: true
               },
               {
-                path: '/zh-CN/primitives/dex/interacting/bos',
-                component: ComponentCreator('/zh-CN/primitives/dex/interacting/bos', '5ad'),
+                path: '/zh-CN/primitives/dao/bos/get-dao-list',
+                component: ComponentCreator('/zh-CN/primitives/dao/bos/get-dao-list', '2b3'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/dao/bos/get-proposal-list',
+                component: ComponentCreator('/zh-CN/primitives/dao/bos/get-proposal-list', 'eb8'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/dao/bos/vote-for-proposal',
+                component: ComponentCreator('/zh-CN/primitives/dao/bos/vote-for-proposal', 'd2b'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/dao/near-cli/create-dao',
+                component: ComponentCreator('/zh-CN/primitives/dao/near-cli/create-dao', 'ab9'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/dao/near-cli/create-proposal',
+                component: ComponentCreator('/zh-CN/primitives/dao/near-cli/create-proposal', '3ec'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/dao/near-cli/get-dao-list',
+                component: ComponentCreator('/zh-CN/primitives/dao/near-cli/get-dao-list', '481'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/dao/near-cli/get-proposal-list',
+                component: ComponentCreator('/zh-CN/primitives/dao/near-cli/get-proposal-list', '2ca'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/dao/near-cli/vote-for-proposal',
+                component: ComponentCreator('/zh-CN/primitives/dao/near-cli/vote-for-proposal', '1af'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/dao/smart-contract/create-dao',
+                component: ComponentCreator('/zh-CN/primitives/dao/smart-contract/create-dao', 'b1e'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/dao/smart-contract/create-proposal',
+                component: ComponentCreator('/zh-CN/primitives/dao/smart-contract/create-proposal', '5f6'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/dao/smart-contract/vote-for-proposal',
+                component: ComponentCreator('/zh-CN/primitives/dao/smart-contract/vote-for-proposal', 'bd6'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/dao/web-app/create-dao',
+                component: ComponentCreator('/zh-CN/primitives/dao/web-app/create-dao', '4dc'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/dao/web-app/create-proposal',
+                component: ComponentCreator('/zh-CN/primitives/dao/web-app/create-proposal', '986'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/dao/web-app/get-dao-list',
+                component: ComponentCreator('/zh-CN/primitives/dao/web-app/get-dao-list', 'fad'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/dao/web-app/get-proposal-list',
+                component: ComponentCreator('/zh-CN/primitives/dao/web-app/get-proposal-list', 'edc'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/dao/web-app/vote-for-proposal',
+                component: ComponentCreator('/zh-CN/primitives/dao/web-app/vote-for-proposal', '748'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/dex',
+                component: ComponentCreator('/zh-CN/primitives/dex', 'e49'),
                 exact: true,
                 sidebar: "primitives"
               },
               {
-                path: '/zh-CN/primitives/dex/interacting/near-cli',
-                component: ComponentCreator('/zh-CN/primitives/dex/interacting/near-cli', 'bbc'),
+                path: '/zh-CN/primitives/dex/bos/get-deposit-balances',
+                component: ComponentCreator('/zh-CN/primitives/dex/bos/get-deposit-balances', '3a4'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/dex/bos/get-pools',
+                component: ComponentCreator('/zh-CN/primitives/dex/bos/get-pools', '067'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/dex/bos/get-price',
+                component: ComponentCreator('/zh-CN/primitives/dex/bos/get-price', 'eb9'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/dex/bos/swap',
+                component: ComponentCreator('/zh-CN/primitives/dex/bos/swap', 'b08'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/dex/near-cli/get-deposit-balances',
+                component: ComponentCreator('/zh-CN/primitives/dex/near-cli/get-deposit-balances', '672'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/dex/near-cli/get-pools',
+                component: ComponentCreator('/zh-CN/primitives/dex/near-cli/get-pools', 'e23'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/dex/near-cli/swap',
+                component: ComponentCreator('/zh-CN/primitives/dex/near-cli/swap', '94d'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/dex/smart-contract/get-deposit-balances',
+                component: ComponentCreator('/zh-CN/primitives/dex/smart-contract/get-deposit-balances', 'd76'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/dex/smart-contract/get-pools',
+                component: ComponentCreator('/zh-CN/primitives/dex/smart-contract/get-pools', '987'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/dex/smart-contract/swap',
+                component: ComponentCreator('/zh-CN/primitives/dex/smart-contract/swap', 'f8b'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/dex/web-app/get-deposit-balances',
+                component: ComponentCreator('/zh-CN/primitives/dex/web-app/get-deposit-balances', '885'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/dex/web-app/get-pools',
+                component: ComponentCreator('/zh-CN/primitives/dex/web-app/get-pools', 'a01'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/dex/web-app/get-price',
+                component: ComponentCreator('/zh-CN/primitives/dex/web-app/get-price', '5ce'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/dex/web-app/swap',
+                component: ComponentCreator('/zh-CN/primitives/dex/web-app/swap', '2b9'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/ft',
+                component: ComponentCreator('/zh-CN/primitives/ft', '567'),
                 exact: true,
                 sidebar: "primitives"
               },
               {
-                path: '/zh-CN/primitives/dex/interacting/smart-contract',
-                component: ComponentCreator('/zh-CN/primitives/dex/interacting/smart-contract', '3a4'),
+                path: '/zh-CN/primitives/ft/bos/attach-to-call',
+                component: ComponentCreator('/zh-CN/primitives/ft/bos/attach-to-call', '2bf'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/ft/bos/check-balance',
+                component: ComponentCreator('/zh-CN/primitives/ft/bos/check-balance', 'edc'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/ft/bos/create',
+                component: ComponentCreator('/zh-CN/primitives/ft/bos/create', '8d1'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/ft/bos/get-metadata',
+                component: ComponentCreator('/zh-CN/primitives/ft/bos/get-metadata', 'f2c'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/ft/bos/register',
+                component: ComponentCreator('/zh-CN/primitives/ft/bos/register', 'fe3'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/ft/bos/send',
+                component: ComponentCreator('/zh-CN/primitives/ft/bos/send', 'ee7'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/ft/near-cli/attach-to-call',
+                component: ComponentCreator('/zh-CN/primitives/ft/near-cli/attach-to-call', '2b4'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/ft/near-cli/check-balance',
+                component: ComponentCreator('/zh-CN/primitives/ft/near-cli/check-balance', '8a3'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/ft/near-cli/create',
+                component: ComponentCreator('/zh-CN/primitives/ft/near-cli/create', '5d3'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/ft/near-cli/get-metadata',
+                component: ComponentCreator('/zh-CN/primitives/ft/near-cli/get-metadata', '19e'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/ft/near-cli/register',
+                component: ComponentCreator('/zh-CN/primitives/ft/near-cli/register', '502'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/ft/near-cli/send',
+                component: ComponentCreator('/zh-CN/primitives/ft/near-cli/send', '139'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/ft/smart-contract/attach-to-call',
+                component: ComponentCreator('/zh-CN/primitives/ft/smart-contract/attach-to-call', '70f'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/ft/smart-contract/send',
+                component: ComponentCreator('/zh-CN/primitives/ft/smart-contract/send', '240'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/ft/web-app/attach-to-call',
+                component: ComponentCreator('/zh-CN/primitives/ft/web-app/attach-to-call', '088'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/ft/web-app/check-balance',
+                component: ComponentCreator('/zh-CN/primitives/ft/web-app/check-balance', '31f'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/ft/web-app/create',
+                component: ComponentCreator('/zh-CN/primitives/ft/web-app/create', '94b'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/ft/web-app/get-metadata',
+                component: ComponentCreator('/zh-CN/primitives/ft/web-app/get-metadata', 'd0f'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/ft/web-app/register',
+                component: ComponentCreator('/zh-CN/primitives/ft/web-app/register', '06f'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/ft/web-app/send',
+                component: ComponentCreator('/zh-CN/primitives/ft/web-app/send', '5bf'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/linkdrop',
+                component: ComponentCreator('/zh-CN/primitives/linkdrop', '44f'),
                 exact: true,
                 sidebar: "primitives"
               },
               {
-                path: '/zh-CN/primitives/dex/interacting/web-app',
-                component: ComponentCreator('/zh-CN/primitives/dex/interacting/web-app', 'ee2'),
+                path: '/zh-CN/primitives/linkdrop/bos/create-ft-drop',
+                component: ComponentCreator('/zh-CN/primitives/linkdrop/bos/create-ft-drop', '541'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/linkdrop/bos/create-function-call-drop',
+                component: ComponentCreator('/zh-CN/primitives/linkdrop/bos/create-function-call-drop', '79d'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/linkdrop/bos/create-nft-drop',
+                component: ComponentCreator('/zh-CN/primitives/linkdrop/bos/create-nft-drop', '258'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/linkdrop/bos/get-drop-id',
+                component: ComponentCreator('/zh-CN/primitives/linkdrop/bos/get-drop-id', 'e9b'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/linkdrop/bos/get-key-pairs',
+                component: ComponentCreator('/zh-CN/primitives/linkdrop/bos/get-key-pairs', 'bc2'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/linkdrop/bos/simple-drop',
+                component: ComponentCreator('/zh-CN/primitives/linkdrop/bos/simple-drop', 'a9c'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/linkdrop/bos/transfer-ft',
+                component: ComponentCreator('/zh-CN/primitives/linkdrop/bos/transfer-ft', 'e24'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/linkdrop/bos/transfer-nft',
+                component: ComponentCreator('/zh-CN/primitives/linkdrop/bos/transfer-nft', '21c'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/linkdrop/near-cli/create-ft-drop',
+                component: ComponentCreator('/zh-CN/primitives/linkdrop/near-cli/create-ft-drop', '7f9'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/linkdrop/near-cli/create-function-call-drop',
+                component: ComponentCreator('/zh-CN/primitives/linkdrop/near-cli/create-function-call-drop', 'd3d'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/linkdrop/near-cli/create-nft-drop',
+                component: ComponentCreator('/zh-CN/primitives/linkdrop/near-cli/create-nft-drop', '7ff'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/linkdrop/near-cli/get-drop-id',
+                component: ComponentCreator('/zh-CN/primitives/linkdrop/near-cli/get-drop-id', '3ca'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/linkdrop/near-cli/get-key-pairs',
+                component: ComponentCreator('/zh-CN/primitives/linkdrop/near-cli/get-key-pairs', '8b4'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/linkdrop/near-cli/simple-drop',
+                component: ComponentCreator('/zh-CN/primitives/linkdrop/near-cli/simple-drop', '00d'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/linkdrop/near-cli/transfer-ft',
+                component: ComponentCreator('/zh-CN/primitives/linkdrop/near-cli/transfer-ft', 'b8e'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/linkdrop/near-cli/transfer-nft',
+                component: ComponentCreator('/zh-CN/primitives/linkdrop/near-cli/transfer-nft', 'b58'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/linkdrop/web-app/create-ft-drop',
+                component: ComponentCreator('/zh-CN/primitives/linkdrop/web-app/create-ft-drop', 'd80'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/linkdrop/web-app/create-function-call-drop',
+                component: ComponentCreator('/zh-CN/primitives/linkdrop/web-app/create-function-call-drop', '39b'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/linkdrop/web-app/create-nft-drop',
+                component: ComponentCreator('/zh-CN/primitives/linkdrop/web-app/create-nft-drop', '505'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/linkdrop/web-app/get-drop-id',
+                component: ComponentCreator('/zh-CN/primitives/linkdrop/web-app/get-drop-id', 'e37'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/linkdrop/web-app/get-key-pairs',
+                component: ComponentCreator('/zh-CN/primitives/linkdrop/web-app/get-key-pairs', 'd98'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/linkdrop/web-app/simple-drop',
+                component: ComponentCreator('/zh-CN/primitives/linkdrop/web-app/simple-drop', '3e3'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/linkdrop/web-app/transfer-ft',
+                component: ComponentCreator('/zh-CN/primitives/linkdrop/web-app/transfer-ft', 'a13'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/linkdrop/web-app/transfer-nft',
+                component: ComponentCreator('/zh-CN/primitives/linkdrop/web-app/transfer-nft', '06e'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/nft',
+                component: ComponentCreator('/zh-CN/primitives/nft', '6bb'),
                 exact: true,
                 sidebar: "primitives"
               },
               {
-                path: '/zh-CN/primitives/dex/introduction',
-                component: ComponentCreator('/zh-CN/primitives/dex/introduction', '4d7'),
-                exact: true,
-                sidebar: "primitives"
+                path: '/zh-CN/primitives/nft/bos/buy',
+                component: ComponentCreator('/zh-CN/primitives/nft/bos/buy', '39a'),
+                exact: true
               },
               {
-                path: '/zh-CN/primitives/ft/additional-resources',
-                component: ComponentCreator('/zh-CN/primitives/ft/additional-resources', '955'),
-                exact: true,
-                sidebar: "primitives"
+                path: '/zh-CN/primitives/nft/bos/list-for-sale',
+                component: ComponentCreator('/zh-CN/primitives/nft/bos/list-for-sale', '962'),
+                exact: true
               },
               {
-                path: '/zh-CN/primitives/ft/interacting/bos',
-                component: ComponentCreator('/zh-CN/primitives/ft/interacting/bos', '66e'),
-                exact: true,
-                sidebar: "primitives"
+                path: '/zh-CN/primitives/nft/bos/mint',
+                component: ComponentCreator('/zh-CN/primitives/nft/bos/mint', '7c3'),
+                exact: true
               },
               {
-                path: '/zh-CN/primitives/ft/interacting/near-cli',
-                component: ComponentCreator('/zh-CN/primitives/ft/interacting/near-cli', 'bf5'),
-                exact: true,
-                sidebar: "primitives"
+                path: '/zh-CN/primitives/nft/bos/query',
+                component: ComponentCreator('/zh-CN/primitives/nft/bos/query', 'ea8'),
+                exact: true
               },
               {
-                path: '/zh-CN/primitives/ft/interacting/smart-contract',
-                component: ComponentCreator('/zh-CN/primitives/ft/interacting/smart-contract', '1a9'),
-                exact: true,
-                sidebar: "primitives"
+                path: '/zh-CN/primitives/nft/bos/transfer',
+                component: ComponentCreator('/zh-CN/primitives/nft/bos/transfer', 'cf4'),
+                exact: true
               },
               {
-                path: '/zh-CN/primitives/ft/interacting/web-app',
-                component: ComponentCreator('/zh-CN/primitives/ft/interacting/web-app', 'a98'),
-                exact: true,
-                sidebar: "primitives"
+                path: '/zh-CN/primitives/nft/near-cli/buy',
+                component: ComponentCreator('/zh-CN/primitives/nft/near-cli/buy', '722'),
+                exact: true
               },
               {
-                path: '/zh-CN/primitives/ft/introduction',
-                component: ComponentCreator('/zh-CN/primitives/ft/introduction', '209'),
-                exact: true,
-                sidebar: "primitives"
+                path: '/zh-CN/primitives/nft/near-cli/list-for-sale',
+                component: ComponentCreator('/zh-CN/primitives/nft/near-cli/list-for-sale', 'f7f'),
+                exact: true
               },
               {
-                path: '/zh-CN/primitives/linkdrop/interacting/bos',
-                component: ComponentCreator('/zh-CN/primitives/linkdrop/interacting/bos', 'a89'),
-                exact: true,
-                sidebar: "primitives"
+                path: '/zh-CN/primitives/nft/near-cli/mint',
+                component: ComponentCreator('/zh-CN/primitives/nft/near-cli/mint', '60b'),
+                exact: true
               },
               {
-                path: '/zh-CN/primitives/linkdrop/interacting/near-cli',
-                component: ComponentCreator('/zh-CN/primitives/linkdrop/interacting/near-cli', 'f95'),
-                exact: true,
-                sidebar: "primitives"
+                path: '/zh-CN/primitives/nft/near-cli/query',
+                component: ComponentCreator('/zh-CN/primitives/nft/near-cli/query', 'b94'),
+                exact: true
               },
               {
-                path: '/zh-CN/primitives/linkdrop/interacting/web-app',
-                component: ComponentCreator('/zh-CN/primitives/linkdrop/interacting/web-app', 'ccc'),
-                exact: true,
-                sidebar: "primitives"
+                path: '/zh-CN/primitives/nft/near-cli/transfer',
+                component: ComponentCreator('/zh-CN/primitives/nft/near-cli/transfer', 'b93'),
+                exact: true
               },
               {
-                path: '/zh-CN/primitives/linkdrop/introduction',
-                component: ComponentCreator('/zh-CN/primitives/linkdrop/introduction', '2ff'),
-                exact: true,
-                sidebar: "primitives"
+                path: '/zh-CN/primitives/nft/smart-contract/buy',
+                component: ComponentCreator('/zh-CN/primitives/nft/smart-contract/buy', '79c'),
+                exact: true
               },
               {
-                path: '/zh-CN/primitives/nft/additional-resources',
-                component: ComponentCreator('/zh-CN/primitives/nft/additional-resources', 'baf'),
-                exact: true,
-                sidebar: "primitives"
+                path: '/zh-CN/primitives/nft/smart-contract/mint',
+                component: ComponentCreator('/zh-CN/primitives/nft/smart-contract/mint', '0ee'),
+                exact: true
               },
               {
-                path: '/zh-CN/primitives/nft/interacting/bos',
-                component: ComponentCreator('/zh-CN/primitives/nft/interacting/bos', 'c86'),
-                exact: true,
-                sidebar: "primitives"
+                path: '/zh-CN/primitives/nft/smart-contract/query',
+                component: ComponentCreator('/zh-CN/primitives/nft/smart-contract/query', 'a24'),
+                exact: true
               },
               {
-                path: '/zh-CN/primitives/nft/interacting/near-cli',
-                component: ComponentCreator('/zh-CN/primitives/nft/interacting/near-cli', 'b03'),
-                exact: true,
-                sidebar: "primitives"
+                path: '/zh-CN/primitives/nft/smart-contract/transfer',
+                component: ComponentCreator('/zh-CN/primitives/nft/smart-contract/transfer', 'fcd'),
+                exact: true
               },
               {
-                path: '/zh-CN/primitives/nft/interacting/smart-contract',
-                component: ComponentCreator('/zh-CN/primitives/nft/interacting/smart-contract', '4d1'),
-                exact: true,
-                sidebar: "primitives"
+                path: '/zh-CN/primitives/nft/web-app/buy',
+                component: ComponentCreator('/zh-CN/primitives/nft/web-app/buy', '212'),
+                exact: true
               },
               {
-                path: '/zh-CN/primitives/nft/interacting/web-app',
-                component: ComponentCreator('/zh-CN/primitives/nft/interacting/web-app', 'c8e'),
-                exact: true,
-                sidebar: "primitives"
+                path: '/zh-CN/primitives/nft/web-app/list-for-sale',
+                component: ComponentCreator('/zh-CN/primitives/nft/web-app/list-for-sale', '1c0'),
+                exact: true
               },
               {
-                path: '/zh-CN/primitives/nft/introduction',
-                component: ComponentCreator('/zh-CN/primitives/nft/introduction', '1a6'),
+                path: '/zh-CN/primitives/nft/web-app/mint',
+                component: ComponentCreator('/zh-CN/primitives/nft/web-app/mint', 'a08'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/nft/web-app/query',
+                component: ComponentCreator('/zh-CN/primitives/nft/web-app/query', '755'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/nft/web-app/transfer',
+                component: ComponentCreator('/zh-CN/primitives/nft/web-app/transfer', '7ab'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/primitives/oracles',
+                component: ComponentCreator('/zh-CN/primitives/oracles', '9c3'),
                 exact: true,
                 sidebar: "primitives"
               },

@@ -17,14 +17,5 @@
   "frontMatter": {
     "id": "oracles",
     "title": "Decentralized Oracles"
-  },
-  "sidebar": "contracts",
-  "previous": {
-    "title": "Non Fungible Tokens (NFT)",
-    "permalink": "/develop/relevant-contracts/nft"
-  },
-  "next": {
-    "title": "Autonomous Organizations (DAO)",
-    "permalink": "/develop/relevant-contracts/dao"
   }
 }

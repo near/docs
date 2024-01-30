@@ -1,0 +1,18 @@
+{
+  "id": "primitives/ft/web-app/check-balance",
+  "title": "check-balance",
+  "description": "Remember about fungible token precision. You may need this value to show a response of balance requests in an understandable-to-user way in your app. How to get precision value (decimals) you may find above.",
+  "source": "@site/../docs/7.primitives/ft/web-app/check-balance.md",
+  "sourceDirName": "7.primitives/ft/web-app",
+  "slug": "/primitives/ft/web-app/check-balance",
+  "permalink": "/zh-CN/primitives/ft/web-app/check-balance",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/ft/web-app/check-balance.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "garikbesson",
+  "lastUpdatedAt": 1706635251,
+  "formattedLastUpdatedAt": "2024年1月30日",
+  "frontMatter": {}
+}

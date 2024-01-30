@@ -24,7 +24,7 @@
     "permalink": "/develop/contracts/security/audits"
   },
   "next": {
-    "title": "Fungible Tokens (FT)",
-    "permalink": "/develop/relevant-contracts/ft"
+    "title": "Guest Book",
+    "permalink": "/tutorials/examples/guest-book"
   }
 }

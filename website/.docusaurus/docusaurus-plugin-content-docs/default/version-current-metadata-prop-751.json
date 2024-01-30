@@ -593,31 +593,23 @@
       },
       {
         "type": "link",
-        "label": "Fungible Tokens (FT)",
-        "href": "/zh-CN/develop/relevant-contracts/ft",
-        "docId": "develop/relevant-contracts/ft",
-        "unlisted": false
+        "label": "Fungible Tokens (FT) ↗",
+        "href": "/primitives/ft"
       },
       {
         "type": "link",
-        "label": "Non Fungible Tokens (NFT)",
-        "href": "/zh-CN/develop/relevant-contracts/nft",
-        "docId": "develop/relevant-contracts/nft",
-        "unlisted": false
-      },
-      {
-        "type": "link",
-        "label": "Decentralized Oracles",
-        "href": "/zh-CN/develop/relevant-contracts/oracles",
-        "docId": "develop/relevant-contracts/oracles",
-        "unlisted": false
+        "label": "Non-Fungible Tokens (NFT) ↗",
+        "href": "/primitives/nft"
       },
       {
         "type": "link",
         "label": "Autonomous Organizations (DAO)",
-        "href": "/zh-CN/develop/relevant-contracts/dao",
-        "docId": "develop/relevant-contracts/dao",
-        "unlisted": false
+        "href": "/primitives/dao"
+      },
+      {
+        "type": "link",
+        "label": "Oracles ↗",
+        "href": "/primitives/oracles"
       },
       {
         "type": "html",
@@ -1197,56 +1189,27 @@
       },
       {
         "type": "html",
-        "value": "<span class='menu__link'><b><small> Non Fungible Tokens (NFT) </small></b></span>"
+        "value": "<span class='menu__link'><b><small> Standards </small></b></span>"
       },
       {
         "type": "link",
-        "label": "Introduction",
-        "href": "/zh-CN/primitives/nft/introduction",
-        "docId": "primitives/nft/introduction",
+        "label": "Fungible Tokens (FT)",
+        "href": "/zh-CN/primitives/ft",
+        "docId": "primitives/ft",
         "unlisted": false
       },
       {
-        "type": "category",
-        "label": "Using NFTs",
-        "items": [
-          {
-            "type": "link",
-            "label": "NEAR Component",
-            "href": "/zh-CN/primitives/nft/interacting/bos",
-            "docId": "primitives/nft/interacting/bos",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Web Application",
-            "href": "/zh-CN/primitives/nft/interacting/web-app",
-            "docId": "primitives/nft/interacting/web-app",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Smart Contract",
-            "href": "/zh-CN/primitives/nft/interacting/smart-contract",
-            "docId": "primitives/nft/interacting/smart-contract",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "NEAR CLI",
-            "href": "/zh-CN/primitives/nft/interacting/near-cli",
-            "docId": "primitives/nft/interacting/near-cli",
-            "unlisted": false
-          }
-        ],
-        "collapsed": true,
-        "collapsible": true
+        "type": "link",
+        "label": "Non-Fungible Tokens (NFT)",
+        "href": "/zh-CN/primitives/nft",
+        "docId": "primitives/nft",
+        "unlisted": false
       },
       {
         "type": "link",
-        "label": "Additional Resources",
-        "href": "/zh-CN/primitives/nft/additional-resources",
-        "docId": "primitives/nft/additional-resources",
+        "label": "Linkdrops",
+        "href": "/zh-CN/primitives/linkdrop",
+        "docId": "primitives/linkdrop",
         "unlisted": false
       },
       {
@@ -1255,203 +1218,28 @@
       },
       {
         "type": "html",
-        "value": "<span class='menu__link'><b><small> Fungible Tokens (FT) </small></b></span>"
+        "value": "<span class='menu__link'><b><small> Community Apps </small></b></span>"
       },
       {
         "type": "link",
-        "label": "Introduction",
-        "href": "/zh-CN/primitives/ft/introduction",
-        "docId": "primitives/ft/introduction",
+        "label": "Price Oracles",
+        "href": "/zh-CN/primitives/oracles",
+        "docId": "primitives/oracles",
         "unlisted": false
-      },
-      {
-        "type": "category",
-        "label": "Using FTs",
-        "items": [
-          {
-            "type": "link",
-            "label": "NEAR Component",
-            "href": "/zh-CN/primitives/ft/interacting/bos",
-            "docId": "primitives/ft/interacting/bos",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Web Application",
-            "href": "/zh-CN/primitives/ft/interacting/web-app",
-            "docId": "primitives/ft/interacting/web-app",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Smart Contract",
-            "href": "/zh-CN/primitives/ft/interacting/smart-contract",
-            "docId": "primitives/ft/interacting/smart-contract",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "NEAR CLI",
-            "href": "/zh-CN/primitives/ft/interacting/near-cli",
-            "docId": "primitives/ft/interacting/near-cli",
-            "unlisted": false
-          }
-        ],
-        "collapsed": true,
-        "collapsible": true
       },
       {
         "type": "link",
-        "label": "Additional Resources",
-        "href": "/zh-CN/primitives/ft/additional-resources",
-        "docId": "primitives/ft/additional-resources",
+        "label": "Autonomous Organizations (DAO)",
+        "href": "/zh-CN/primitives/dao",
+        "docId": "primitives/dao",
         "unlisted": false
-      },
-      {
-        "type": "html",
-        "value": "<hr/>"
-      },
-      {
-        "type": "html",
-        "value": "<span class='menu__link'><b><small> DEX </small></b></span>"
       },
       {
         "type": "link",
-        "label": "Introduction",
-        "href": "/zh-CN/primitives/dex/introduction",
-        "docId": "primitives/dex/introduction",
+        "label": "Decentralized Exchanges (DEX)",
+        "href": "/zh-CN/primitives/dex",
+        "docId": "primitives/dex",
         "unlisted": false
-      },
-      {
-        "type": "category",
-        "label": "Using DEX",
-        "items": [
-          {
-            "type": "link",
-            "label": "NEAR Component",
-            "href": "/zh-CN/primitives/dex/interacting/bos",
-            "docId": "primitives/dex/interacting/bos",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Web Application",
-            "href": "/zh-CN/primitives/dex/interacting/web-app",
-            "docId": "primitives/dex/interacting/web-app",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Smart Contract",
-            "href": "/zh-CN/primitives/dex/interacting/smart-contract",
-            "docId": "primitives/dex/interacting/smart-contract",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "NEAR CLI",
-            "href": "/zh-CN/primitives/dex/interacting/near-cli",
-            "docId": "primitives/dex/interacting/near-cli",
-            "unlisted": false
-          }
-        ],
-        "collapsed": true,
-        "collapsible": true
-      },
-      {
-        "type": "html",
-        "value": "<hr/>"
-      },
-      {
-        "type": "html",
-        "value": "<span class='menu__link'><b><small> DAO </small></b></span>"
-      },
-      {
-        "type": "link",
-        "label": "Introduction",
-        "href": "/zh-CN/primitives/dao/introduction",
-        "docId": "primitives/dao/introduction",
-        "unlisted": false
-      },
-      {
-        "type": "category",
-        "label": "Using DAO",
-        "items": [
-          {
-            "type": "link",
-            "label": "NEAR Component",
-            "href": "/zh-CN/primitives/dao/interacting/bos",
-            "docId": "primitives/dao/interacting/bos",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Web Application",
-            "href": "/zh-CN/primitives/dao/interacting/web-app",
-            "docId": "primitives/dao/interacting/web-app",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Smart Contract",
-            "href": "/zh-CN/primitives/dao/interacting/smart-contract",
-            "docId": "primitives/dao/interacting/smart-contract",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "NEAR CLI",
-            "href": "/zh-CN/primitives/dao/interacting/near-cli",
-            "docId": "primitives/dao/interacting/near-cli",
-            "unlisted": false
-          }
-        ],
-        "collapsed": true,
-        "collapsible": true
-      },
-      {
-        "type": "html",
-        "value": "<hr/>"
-      },
-      {
-        "type": "html",
-        "value": "<span class='menu__link'><b><small> Linkdrops </small></b></span>"
-      },
-      {
-        "type": "link",
-        "label": "Introduction",
-        "href": "/zh-CN/primitives/linkdrop/introduction",
-        "docId": "primitives/linkdrop/introduction",
-        "unlisted": false
-      },
-      {
-        "type": "category",
-        "label": "Creating Linkdrops",
-        "items": [
-          {
-            "type": "link",
-            "label": "NEAR Component",
-            "href": "/zh-CN/primitives/linkdrop/interacting/bos",
-            "docId": "primitives/linkdrop/interacting/bos",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Web Application",
-            "href": "/zh-CN/primitives/linkdrop/interacting/web-app",
-            "docId": "primitives/linkdrop/interacting/web-app",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "NEAR CLI",
-            "href": "/zh-CN/primitives/linkdrop/interacting/near-cli",
-            "docId": "primitives/linkdrop/interacting/near-cli",
-            "unlisted": false
-          }
-        ],
-        "collapsed": true,
-        "collapsible": true
       }
     ],
     "tools": [
@@ -3703,26 +3491,22 @@
     "develop/relevant-contracts/dao": {
       "id": "develop/relevant-contracts/dao",
       "title": "Decentralized Autonomous Organizations",
-      "description": "Decentralized Autonomous Organizations (DAOs) are self-organized groups that form around common purposes. Membership, decision making, and funding are coordinated by publicly voting on proposals through a smart contract.",
-      "sidebar": "contracts"
+      "description": "Decentralized Autonomous Organizations (DAOs) are self-organized groups that form around common purposes. Membership, decision making, and funding are coordinated by publicly voting on proposals through a smart contract."
     },
     "develop/relevant-contracts/ft": {
       "id": "develop/relevant-contracts/ft",
       "title": "Fungible Tokens (FT)",
-      "description": "Besides the native NEAR token, NEAR accounts have access to a multitude of fungible tokens (e.g. these whitelisted tokens). Moreover, it is even possible for users to create their own fungible tokens.",
-      "sidebar": "contracts"
+      "description": "Besides the native NEAR token, NEAR accounts have access to a multitude of fungible tokens (e.g. these whitelisted tokens). Moreover, it is even possible for users to create their own fungible tokens."
     },
     "develop/relevant-contracts/nft": {
       "id": "develop/relevant-contracts/nft",
       "title": "Non Fungible Tokens (NFT)",
-      "description": "In contrast with fungible tokens, non-fungible tokens (NFT) are unitary and therefore unique. This makes NFTs ideal to represent ownership of assets such as a piece of digital content, or a ticket for an event.",
-      "sidebar": "contracts"
+      "description": "In contrast with fungible tokens, non-fungible tokens (NFT) are unitary and therefore unique. This makes NFTs ideal to represent ownership of assets such as a piece of digital content, or a ticket for an event."
     },
     "develop/relevant-contracts/oracles": {
       "id": "develop/relevant-contracts/oracles",
       "title": "Decentralized Oracles",
-      "description": "Oracles are smart contracts that enable you to query the current price of an asset. Since smart contracts cannot connect to internet and pull information, Oracles rely on having someone constantly updating their prices. Because of that, be mindful when using an oracle that there might be a delay between the market's latest information and the Oracles data.",
-      "sidebar": "contracts"
+      "description": "Oracles are smart contracts that enable you to query the current price of an asset. Since smart contracts cannot connect to internet and pull information, Oracles rely on having someone constantly updating their prices. Because of that, be mindful when using an oracle that there might be a delay between the market's latest information and the Oracles data."
     },
     "develop/testing/integration-test": {
       "id": "develop/testing/integration-test",
@@ -3825,170 +3609,515 @@
       "description": "Background",
       "sidebar": "exchanges"
     },
-    "primitives/dao/additional-resources": {
-      "id": "primitives/dao/additional-resources",
-      "title": "Additional Resources",
-      "description": "1. AstroDAO UI - the web app built on top of the Sputnik DAO Contract. Allows users to create and manage DAOs."
-    },
-    "primitives/dao/interacting/bos": {
-      "id": "primitives/dao/interacting/bos",
-      "title": "NEAR Component",
-      "description": "This section describes how to create or interact with DAO directly from a NEAR Component.",
-      "sidebar": "primitives"
-    },
-    "primitives/dao/interacting/near-cli": {
-      "id": "primitives/dao/interacting/near-cli",
-      "title": "NEAR CLI",
-      "description": "This section describes how to create or interact with DAO from your shell using near-cli.",
-      "sidebar": "primitives"
-    },
-    "primitives/dao/interacting/smart-contract": {
-      "id": "primitives/dao/interacting/smart-contract",
-      "title": "Smart Contract",
-      "description": "This section will explain how a smart contract can create DAO or interact with them.",
-      "sidebar": "primitives"
-    },
-    "primitives/dao/interacting/web-app": {
-      "id": "primitives/dao/interacting/web-app",
-      "title": "Web Application",
-      "description": "This section describes how to create or interact with DAO directly from a web app.",
-      "sidebar": "primitives"
-    },
-    "primitives/dao/introduction": {
-      "id": "primitives/dao/introduction",
-      "title": "Introduction",
+    "primitives/dao": {
+      "id": "primitives/dao",
+      "title": "Decentralized Autonomous Organizations",
       "description": "Decentralized Autonomous Organizations (DAOs) are self-organized groups that form around common purposes. Membership, decision making, and funding are coordinated by publicly voting on proposals through a smart contract.",
       "sidebar": "primitives"
     },
-    "primitives/dex/additional-resources": {
-      "id": "primitives/dex/additional-resources",
-      "title": "Additional Resources",
-      "description": "1. Claim Fungible Tokens from Lockup - the example how to claim locked tokens from the lockup.burrow.near contract."
+    "primitives/dao/bos/create-dao": {
+      "id": "primitives/dao/bos/create-dao",
+      "title": "create-dao",
+      "description": "The full list of roles and permissions you can find here."
     },
-    "primitives/dex/interacting/bos": {
-      "id": "primitives/dex/interacting/bos",
-      "title": "NEAR Component",
-      "description": "This section describes how to interact with DEXs directly from a NEAR Component.",
+    "primitives/dao/bos/create-proposal": {
+      "id": "primitives/dao/bos/create-proposal",
+      "title": "create-proposal",
+      "description": ""
+    },
+    "primitives/dao/bos/get-dao-list": {
+      "id": "primitives/dao/bos/get-dao-list",
+      "title": "get-dao-list",
+      "description": "Example response"
+    },
+    "primitives/dao/bos/get-proposal-list": {
+      "id": "primitives/dao/bos/get-proposal-list",
+      "title": "get-proposal-list",
+      "description": "Example response"
+    },
+    "primitives/dao/bos/vote-for-proposal": {
+      "id": "primitives/dao/bos/vote-for-proposal",
+      "title": "vote-for-proposal",
+      "description": "Available vote options: VoteApprove, VoteReject, VoteRemove."
+    },
+    "primitives/dao/near-cli/create-dao": {
+      "id": "primitives/dao/near-cli/create-dao",
+      "title": "create-dao",
+      "description": "The full list of roles and permissions you can find here."
+    },
+    "primitives/dao/near-cli/create-proposal": {
+      "id": "primitives/dao/near-cli/create-proposal",
+      "title": "create-proposal",
+      "description": ""
+    },
+    "primitives/dao/near-cli/get-dao-list": {
+      "id": "primitives/dao/near-cli/get-dao-list",
+      "title": "get-dao-list",
+      "description": "Example response"
+    },
+    "primitives/dao/near-cli/get-proposal-list": {
+      "id": "primitives/dao/near-cli/get-proposal-list",
+      "title": "get-proposal-list",
+      "description": "Example response"
+    },
+    "primitives/dao/near-cli/vote-for-proposal": {
+      "id": "primitives/dao/near-cli/vote-for-proposal",
+      "title": "vote-for-proposal",
+      "description": "Available vote options: VoteApprove, VoteReject, VoteRemove."
+    },
+    "primitives/dao/smart-contract/create-dao": {
+      "id": "primitives/dao/smart-contract/create-dao",
+      "title": "create-dao",
+      "description": ""
+    },
+    "primitives/dao/smart-contract/create-proposal": {
+      "id": "primitives/dao/smart-contract/create-proposal",
+      "title": "create-proposal",
+      "description": ""
+    },
+    "primitives/dao/smart-contract/vote-for-proposal": {
+      "id": "primitives/dao/smart-contract/vote-for-proposal",
+      "title": "vote-for-proposal",
+      "description": ""
+    },
+    "primitives/dao/web-app/create-dao": {
+      "id": "primitives/dao/web-app/create-dao",
+      "title": "create-dao",
+      "description": "The full list of roles and permissions you can find here."
+    },
+    "primitives/dao/web-app/create-proposal": {
+      "id": "primitives/dao/web-app/create-proposal",
+      "title": "create-proposal",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "primitives/dao/web-app/get-dao-list": {
+      "id": "primitives/dao/web-app/get-dao-list",
+      "title": "get-dao-list",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "primitives/dao/web-app/get-proposal-list": {
+      "id": "primitives/dao/web-app/get-proposal-list",
+      "title": "get-proposal-list",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "primitives/dao/web-app/vote-for-proposal": {
+      "id": "primitives/dao/web-app/vote-for-proposal",
+      "title": "vote-for-proposal",
+      "description": "Available vote options: VoteApprove, VoteReject, VoteRemove."
+    },
+    "primitives/dex": {
+      "id": "primitives/dex",
+      "title": "Decentralized Exchanges (DEX)",
+      "description": "A Decentralized Exchange (DEX) is an application that allows users to trade tokens (native & fungible tokens) through smart contracts.",
       "sidebar": "primitives"
     },
-    "primitives/dex/interacting/near-cli": {
-      "id": "primitives/dex/interacting/near-cli",
-      "title": "NEAR CLI",
-      "description": "This section shows how to interact with DEXs from your shell using near-cli.",
+    "primitives/dex/bos/get-deposit-balances": {
+      "id": "primitives/dex/bos/get-deposit-balances",
+      "title": "get-deposit-balances",
+      "description": "Example response"
+    },
+    "primitives/dex/bos/get-pools": {
+      "id": "primitives/dex/bos/get-pools",
+      "title": "get-pools",
+      "description": "Example response"
+    },
+    "primitives/dex/bos/get-price": {
+      "id": "primitives/dex/bos/get-price",
+      "title": "get-price",
+      "description": "Example response"
+    },
+    "primitives/dex/bos/swap": {
+      "id": "primitives/dex/bos/swap",
+      "title": "swap",
+      "description": "Example response"
+    },
+    "primitives/dex/near-cli/get-deposit-balances": {
+      "id": "primitives/dex/near-cli/get-deposit-balances",
+      "title": "get-deposit-balances",
+      "description": "Example response"
+    },
+    "primitives/dex/near-cli/get-pools": {
+      "id": "primitives/dex/near-cli/get-pools",
+      "title": "get-pools",
+      "description": "Example response"
+    },
+    "primitives/dex/near-cli/swap": {
+      "id": "primitives/dex/near-cli/swap",
+      "title": "swap",
+      "description": "Example response"
+    },
+    "primitives/dex/smart-contract/get-deposit-balances": {
+      "id": "primitives/dex/smart-contract/get-deposit-balances",
+      "title": "get-deposit-balances",
+      "description": ""
+    },
+    "primitives/dex/smart-contract/get-pools": {
+      "id": "primitives/dex/smart-contract/get-pools",
+      "title": "get-pools",
+      "description": ""
+    },
+    "primitives/dex/smart-contract/swap": {
+      "id": "primitives/dex/smart-contract/swap",
+      "title": "swap",
+      "description": ""
+    },
+    "primitives/dex/web-app/get-deposit-balances": {
+      "id": "primitives/dex/web-app/get-deposit-balances",
+      "title": "get-deposit-balances",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "primitives/dex/web-app/get-pools": {
+      "id": "primitives/dex/web-app/get-pools",
+      "title": "get-pools",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "primitives/dex/web-app/get-price": {
+      "id": "primitives/dex/web-app/get-price",
+      "title": "get-price",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "primitives/dex/web-app/swap": {
+      "id": "primitives/dex/web-app/swap",
+      "title": "swap",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "primitives/ft": {
+      "id": "primitives/ft",
+      "title": "Fungible Tokens (FT)",
+      "description": "Besides the native NEAR token, NEAR accounts have access to a multitude of tokens to use thoughtout the ecosystem. Moreover, it is even possible for users to create their own fungible tokens.",
       "sidebar": "primitives"
     },
-    "primitives/dex/interacting/smart-contract": {
-      "id": "primitives/dex/interacting/smart-contract",
-      "title": "Smart Contract",
-      "description": "This section will explain how a smart contract can deposit funds to DEX and swap tokens there.",
+    "primitives/ft/bos/attach-to-call": {
+      "id": "primitives/ft/bos/attach-to-call",
+      "title": "attach-to-call",
+      "description": "Example response"
+    },
+    "primitives/ft/bos/check-balance": {
+      "id": "primitives/ft/bos/check-balance",
+      "title": "check-balance",
+      "description": "Remember about fungible token precision. You may need this value to show a response of balance requests in an understandable-to-user way in your app. How to get precision value (decimals) you may find above."
+    },
+    "primitives/ft/bos/create": {
+      "id": "primitives/ft/bos/create",
+      "title": "create",
+      "description": ""
+    },
+    "primitives/ft/bos/get-metadata": {
+      "id": "primitives/ft/bos/get-metadata",
+      "title": "get-metadata",
+      "description": "Example response"
+    },
+    "primitives/ft/bos/register": {
+      "id": "primitives/ft/bos/register",
+      "title": "register",
+      "description": ""
+    },
+    "primitives/ft/bos/send": {
+      "id": "primitives/ft/bos/send",
+      "title": "send",
+      "description": ""
+    },
+    "primitives/ft/near-cli/attach-to-call": {
+      "id": "primitives/ft/near-cli/attach-to-call",
+      "title": "attach-to-call",
+      "description": "Example response"
+    },
+    "primitives/ft/near-cli/check-balance": {
+      "id": "primitives/ft/near-cli/check-balance",
+      "title": "check-balance",
+      "description": "Example response"
+    },
+    "primitives/ft/near-cli/create": {
+      "id": "primitives/ft/near-cli/create",
+      "title": "create",
+      "description": ""
+    },
+    "primitives/ft/near-cli/get-metadata": {
+      "id": "primitives/ft/near-cli/get-metadata",
+      "title": "get-metadata",
+      "description": "Example response"
+    },
+    "primitives/ft/near-cli/register": {
+      "id": "primitives/ft/near-cli/register",
+      "title": "register",
+      "description": ""
+    },
+    "primitives/ft/near-cli/send": {
+      "id": "primitives/ft/near-cli/send",
+      "title": "send",
+      "description": ""
+    },
+    "primitives/ft/smart-contract/attach-to-call": {
+      "id": "primitives/ft/smart-contract/attach-to-call",
+      "title": "attach-to-call",
+      "description": ""
+    },
+    "primitives/ft/smart-contract/send": {
+      "id": "primitives/ft/smart-contract/send",
+      "title": "send",
+      "description": "This snippet assumes that the contract is already holding some FTs and that you want to send them to another account."
+    },
+    "primitives/ft/web-app/attach-to-call": {
+      "id": "primitives/ft/web-app/attach-to-call",
+      "title": "attach-to-call",
+      "description": "Example response"
+    },
+    "primitives/ft/web-app/check-balance": {
+      "id": "primitives/ft/web-app/check-balance",
+      "title": "check-balance",
+      "description": "Remember about fungible token precision. You may need this value to show a response of balance requests in an understandable-to-user way in your app. How to get precision value (decimals) you may find above."
+    },
+    "primitives/ft/web-app/create": {
+      "id": "primitives/ft/web-app/create",
+      "title": "create",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "primitives/ft/web-app/get-metadata": {
+      "id": "primitives/ft/web-app/get-metadata",
+      "title": "get-metadata",
+      "description": "Example response"
+    },
+    "primitives/ft/web-app/register": {
+      "id": "primitives/ft/web-app/register",
+      "title": "register",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "primitives/ft/web-app/send": {
+      "id": "primitives/ft/web-app/send",
+      "title": "send",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "primitives/linkdrop": {
+      "id": "primitives/linkdrop",
+      "title": "Linkdrops",
+      "description": "Linkdrops allow users to distribute assets and onboard people to Web3 apps through a simple web link.",
       "sidebar": "primitives"
     },
-    "primitives/dex/interacting/web-app": {
-      "id": "primitives/dex/interacting/web-app",
-      "title": "Web Application",
-      "description": "This section describes how to interact with DEXs directly from a web app.",
-      "sidebar": "primitives"
+    "primitives/linkdrop/bos/create-ft-drop": {
+      "id": "primitives/linkdrop/bos/create-ft-drop",
+      "title": "create-ft-drop",
+      "description": ""
     },
-    "primitives/dex/introduction": {
-      "id": "primitives/dex/introduction",
-      "title": "Introduction",
-      "description": "DEX is an app which allows users to trade tokens by using only smart contracts. Usually users interact with DEX by web app. But since DEX is a set of smart contracts you can use these contracts from your code.",
-      "sidebar": "primitives"
+    "primitives/linkdrop/bos/create-function-call-drop": {
+      "id": "primitives/linkdrop/bos/create-function-call-drop",
+      "title": "create-function-call-drop",
+      "description": ""
     },
-    "primitives/ft/additional-resources": {
-      "id": "primitives/ft/additional-resources",
-      "title": "Additional Resources",
-      "description": "1. NEP-141 and NEP-148 standards",
-      "sidebar": "primitives"
+    "primitives/linkdrop/bos/create-nft-drop": {
+      "id": "primitives/linkdrop/bos/create-nft-drop",
+      "title": "create-nft-drop",
+      "description": ""
     },
-    "primitives/ft/interacting/bos": {
-      "id": "primitives/ft/interacting/bos",
-      "title": "NEAR Component",
-      "description": "This section describes how to interact with FTs directly from a NEAR Component",
-      "sidebar": "primitives"
+    "primitives/linkdrop/bos/get-drop-id": {
+      "id": "primitives/linkdrop/bos/get-drop-id",
+      "title": "get-drop-id",
+      "description": ""
     },
-    "primitives/ft/interacting/near-cli": {
-      "id": "primitives/ft/interacting/near-cli",
-      "title": "NEAR CLI",
-      "description": "This section shows how to interact with FTs from your shell using near-cli.",
-      "sidebar": "primitives"
+    "primitives/linkdrop/bos/get-key-pairs": {
+      "id": "primitives/linkdrop/bos/get-key-pairs",
+      "title": "get-key-pairs",
+      "description": ""
     },
-    "primitives/ft/interacting/smart-contract": {
-      "id": "primitives/ft/interacting/smart-contract",
-      "title": "Smart Contract",
-      "description": "This section will explain how a smart contract can handle a deposit in FTs, send tokens, swap tokens and attach them to call.",
-      "sidebar": "primitives"
+    "primitives/linkdrop/bos/simple-drop": {
+      "id": "primitives/linkdrop/bos/simple-drop",
+      "title": "simple-drop",
+      "description": ""
     },
-    "primitives/ft/interacting/web-app": {
-      "id": "primitives/ft/interacting/web-app",
-      "title": "Web Application",
-      "description": "This section describes how to interact with FTs directly from a web app.",
-      "sidebar": "primitives"
+    "primitives/linkdrop/bos/transfer-ft": {
+      "id": "primitives/linkdrop/bos/transfer-ft",
+      "title": "transfer-ft",
+      "description": ""
     },
-    "primitives/ft/introduction": {
-      "id": "primitives/ft/introduction",
-      "title": "Introduction",
-      "description": "Fungible token is representation of an asset on a blockchain that is interchangeable.",
-      "sidebar": "primitives"
+    "primitives/linkdrop/bos/transfer-nft": {
+      "id": "primitives/linkdrop/bos/transfer-nft",
+      "title": "transfer-nft",
+      "description": ""
     },
-    "primitives/linkdrop/interacting/bos": {
-      "id": "primitives/linkdrop/interacting/bos",
-      "title": "NEAR Component",
-      "description": "This section describes how to create different kinds of linkdrop from a NEAR Component.",
-      "sidebar": "primitives"
+    "primitives/linkdrop/near-cli/create-ft-drop": {
+      "id": "primitives/linkdrop/near-cli/create-ft-drop",
+      "title": "create-ft-drop",
+      "description": ""
     },
-    "primitives/linkdrop/interacting/near-cli": {
-      "id": "primitives/linkdrop/interacting/near-cli",
-      "title": "NEAR CLI",
-      "description": "This section describes how to create different kinds of linkdrop from your shell using near-cli.",
-      "sidebar": "primitives"
+    "primitives/linkdrop/near-cli/create-function-call-drop": {
+      "id": "primitives/linkdrop/near-cli/create-function-call-drop",
+      "title": "create-function-call-drop",
+      "description": ""
     },
-    "primitives/linkdrop/interacting/web-app": {
-      "id": "primitives/linkdrop/interacting/web-app",
-      "title": "Web Application",
-      "description": "This section describes how to create different kinds of linkdrop directly from a web app.",
-      "sidebar": "primitives"
+    "primitives/linkdrop/near-cli/create-nft-drop": {
+      "id": "primitives/linkdrop/near-cli/create-nft-drop",
+      "title": "create-nft-drop",
+      "description": ""
     },
-    "primitives/linkdrop/introduction": {
-      "id": "primitives/linkdrop/introduction",
-      "title": "Introduction",
-      "description": "Linkdrops are an easy way to distribute blockchain items (NFTs, FTs) via links. You provide a link for user and they can claim your drop.",
-      "sidebar": "primitives"
+    "primitives/linkdrop/near-cli/get-drop-id": {
+      "id": "primitives/linkdrop/near-cli/get-drop-id",
+      "title": "get-drop-id",
+      "description": ""
     },
-    "primitives/nft/additional-resources": {
-      "id": "primitives/nft/additional-resources",
-      "title": "Additional Resources",
-      "description": "1. NFT Tutorial (NEAR examples, JavaScript SDK) - a set of tutorials that cover how to create a NFT contract using JavaScript.",
-      "sidebar": "primitives"
+    "primitives/linkdrop/near-cli/get-key-pairs": {
+      "id": "primitives/linkdrop/near-cli/get-key-pairs",
+      "title": "get-key-pairs",
+      "description": "Example response:"
     },
-    "primitives/nft/interacting/bos": {
-      "id": "primitives/nft/interacting/bos",
-      "title": "NEAR Component",
-      "description": "This section shows how to interact with an NFT smart contract directly from a NEAR Component",
-      "sidebar": "primitives"
+    "primitives/linkdrop/near-cli/simple-drop": {
+      "id": "primitives/linkdrop/near-cli/simple-drop",
+      "title": "simple-drop",
+      "description": ""
     },
-    "primitives/nft/interacting/near-cli": {
-      "id": "primitives/nft/interacting/near-cli",
-      "title": "NEAR CLI",
-      "description": "This section shows how to interact with an NFT contract from your shell using near-cli.",
-      "sidebar": "primitives"
+    "primitives/linkdrop/near-cli/transfer-ft": {
+      "id": "primitives/linkdrop/near-cli/transfer-ft",
+      "title": "transfer-ft",
+      "description": ""
     },
-    "primitives/nft/interacting/smart-contract": {
-      "id": "primitives/nft/interacting/smart-contract",
-      "title": "Smart Contract",
-      "description": "This section will explain how a smart contract can mint, buy, transfer and query NFTs.",
-      "sidebar": "primitives"
+    "primitives/linkdrop/near-cli/transfer-nft": {
+      "id": "primitives/linkdrop/near-cli/transfer-nft",
+      "title": "transfer-nft",
+      "description": ""
     },
-    "primitives/nft/interacting/web-app": {
-      "id": "primitives/nft/interacting/web-app",
-      "title": "Web Application",
-      "description": "This section describes how to interact with NFT contracts from a web app.",
-      "sidebar": "primitives"
+    "primitives/linkdrop/web-app/create-ft-drop": {
+      "id": "primitives/linkdrop/web-app/create-ft-drop",
+      "title": "create-ft-drop",
+      "description": "The Wallet object comes from our quickstart template"
     },
-    "primitives/nft/introduction": {
-      "id": "primitives/nft/introduction",
-      "title": "Introduction",
+    "primitives/linkdrop/web-app/create-function-call-drop": {
+      "id": "primitives/linkdrop/web-app/create-function-call-drop",
+      "title": "create-function-call-drop",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "primitives/linkdrop/web-app/create-nft-drop": {
+      "id": "primitives/linkdrop/web-app/create-nft-drop",
+      "title": "create-nft-drop",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "primitives/linkdrop/web-app/get-drop-id": {
+      "id": "primitives/linkdrop/web-app/get-drop-id",
+      "title": "get-drop-id",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "primitives/linkdrop/web-app/get-key-pairs": {
+      "id": "primitives/linkdrop/web-app/get-key-pairs",
+      "title": "get-key-pairs",
+      "description": ""
+    },
+    "primitives/linkdrop/web-app/simple-drop": {
+      "id": "primitives/linkdrop/web-app/simple-drop",
+      "title": "simple-drop",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "primitives/linkdrop/web-app/transfer-ft": {
+      "id": "primitives/linkdrop/web-app/transfer-ft",
+      "title": "transfer-ft",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "primitives/linkdrop/web-app/transfer-nft": {
+      "id": "primitives/linkdrop/web-app/transfer-nft",
+      "title": "transfer-nft",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "primitives/nft": {
+      "id": "primitives/nft",
+      "title": "Non-Fungible Tokens (NFT)",
       "description": "In contrast with fungible tokens, non-fungible tokens (NFT) are unitary and therefore unique. This makes NFTs ideal to represent ownership of assets such as a piece of digital content, or a ticket for an event.",
+      "sidebar": "primitives"
+    },
+    "primitives/nft/bos/buy": {
+      "id": "primitives/nft/bos/buy",
+      "title": "buy",
+      "description": "Example response:"
+    },
+    "primitives/nft/bos/list-for-sale": {
+      "id": "primitives/nft/bos/list-for-sale",
+      "title": "list-for-sale",
+      "description": "The method nftapprove will call nfton_approve in marketplace.paras.near."
+    },
+    "primitives/nft/bos/mint": {
+      "id": "primitives/nft/bos/mint",
+      "title": "mint",
+      "description": "In order to use nft_mint method of the x.paras.near contract you have to be a creator of a particular token series."
+    },
+    "primitives/nft/bos/query": {
+      "id": "primitives/nft/bos/query",
+      "title": "query",
+      "description": "Example response"
+    },
+    "primitives/nft/bos/transfer": {
+      "id": "primitives/nft/bos/transfer",
+      "title": "transfer",
+      "description": ""
+    },
+    "primitives/nft/near-cli/buy": {
+      "id": "primitives/nft/near-cli/buy",
+      "title": "buy",
+      "description": "Example response:"
+    },
+    "primitives/nft/near-cli/list-for-sale": {
+      "id": "primitives/nft/near-cli/list-for-sale",
+      "title": "list-for-sale",
+      "description": "Method nftapprove of a NFT contract also calls the nfton_approve method in marketplace.paras.near as a callback."
+    },
+    "primitives/nft/near-cli/mint": {
+      "id": "primitives/nft/near-cli/mint",
+      "title": "mint",
+      "description": "In order to use nft_mint method of the x.paras.near contract you have to be a creator of a particular token series."
+    },
+    "primitives/nft/near-cli/query": {
+      "id": "primitives/nft/near-cli/query",
+      "title": "query",
+      "description": "Example response"
+    },
+    "primitives/nft/near-cli/transfer": {
+      "id": "primitives/nft/near-cli/transfer",
+      "title": "transfer",
+      "description": ""
+    },
+    "primitives/nft/smart-contract/buy": {
+      "id": "primitives/nft/smart-contract/buy",
+      "title": "buy",
+      "description": "This is an example on how you can make your smart contract buy a NFT on some marketplace (Paras this case)."
+    },
+    "primitives/nft/smart-contract/mint": {
+      "id": "primitives/nft/smart-contract/mint",
+      "title": "mint",
+      "description": ""
+    },
+    "primitives/nft/smart-contract/query": {
+      "id": "primitives/nft/smart-contract/query",
+      "title": "query",
+      "description": ""
+    },
+    "primitives/nft/smart-contract/transfer": {
+      "id": "primitives/nft/smart-contract/transfer",
+      "title": "transfer",
+      "description": "Please notice that a contract can only transfer an NFT that they own, or an NFT that they were approved to transfer."
+    },
+    "primitives/nft/web-app/buy": {
+      "id": "primitives/nft/web-app/buy",
+      "title": "buy",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "primitives/nft/web-app/list-for-sale": {
+      "id": "primitives/nft/web-app/list-for-sale",
+      "title": "list-for-sale",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "primitives/nft/web-app/mint": {
+      "id": "primitives/nft/web-app/mint",
+      "title": "mint",
+      "description": "In order to use nft_mint method of the x.paras.near contract you have to be a creator of a particular token series."
+    },
+    "primitives/nft/web-app/query": {
+      "id": "primitives/nft/web-app/query",
+      "title": "query",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "primitives/nft/web-app/transfer": {
+      "id": "primitives/nft/web-app/transfer",
+      "title": "transfer",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "primitives/oracles": {
+      "id": "primitives/oracles",
+      "title": "Price Oracles",
+      "description": "Oracles are smart contracts that enable you to query the current price of an asset.",
       "sidebar": "primitives"
     },
     "primitives/welcome": {

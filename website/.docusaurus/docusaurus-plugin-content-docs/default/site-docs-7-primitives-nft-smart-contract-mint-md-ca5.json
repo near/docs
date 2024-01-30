@@ -1,0 +1,18 @@
+{
+  "id": "primitives/nft/smart-contract/mint",
+  "title": "mint",
+  "description": "",
+  "source": "@site/../docs/7.primitives/nft/smart-contract/mint.md",
+  "sourceDirName": "7.primitives/nft/smart-contract",
+  "slug": "/primitives/nft/smart-contract/mint",
+  "permalink": "/zh-CN/primitives/nft/smart-contract/mint",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/nft/smart-contract/mint.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "garikbesson",
+  "lastUpdatedAt": 1706635251,
+  "formattedLastUpdatedAt": "2024年1月30日",
+  "frontMatter": {}
+}

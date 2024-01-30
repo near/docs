@@ -1,0 +1,18 @@
+{
+  "id": "primitives/dex/smart-contract/swap",
+  "title": "swap",
+  "description": "",
+  "source": "@site/../docs/7.primitives/dex/smart-contract/swap.md",
+  "sourceDirName": "7.primitives/dex/smart-contract",
+  "slug": "/primitives/dex/smart-contract/swap",
+  "permalink": "/zh-CN/primitives/dex/smart-contract/swap",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/dex/smart-contract/swap.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "garikbesson",
+  "lastUpdatedAt": 1706635251,
+  "formattedLastUpdatedAt": "2024年1月30日",
+  "frontMatter": {}
+}

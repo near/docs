@@ -20,8 +20,8 @@
   },
   "sidebar": "contracts",
   "previous": {
-    "title": "Autonomous Organizations (DAO)",
-    "permalink": "/develop/relevant-contracts/dao"
+    "title": "Bug Bounty Program",
+    "permalink": "/develop/contracts/security/bounty"
   },
   "next": {
     "title": "Cross Contract Call",

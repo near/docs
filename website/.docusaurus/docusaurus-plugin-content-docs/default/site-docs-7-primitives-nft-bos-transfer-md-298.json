@@ -1,0 +1,18 @@
+{
+  "id": "primitives/nft/bos/transfer",
+  "title": "transfer",
+  "description": "",
+  "source": "@site/../docs/7.primitives/nft/bos/transfer.md",
+  "sourceDirName": "7.primitives/nft/bos",
+  "slug": "/primitives/nft/bos/transfer",
+  "permalink": "/zh-CN/primitives/nft/bos/transfer",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/nft/bos/transfer.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "garikbesson",
+  "lastUpdatedAt": 1706635251,
+  "formattedLastUpdatedAt": "2024年1月30日",
+  "frontMatter": {}
+}

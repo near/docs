@@ -24,7 +24,7 @@
     "permalink": "/ko/develop/contracts/security/audits"
   },
   "next": {
-    "title": "Fungible Tokens (FT)",
-    "permalink": "/ko/develop/relevant-contracts/ft"
+    "title": "방명록",
+    "permalink": "/ko/tutorials/examples/guest-book"
   }
 }

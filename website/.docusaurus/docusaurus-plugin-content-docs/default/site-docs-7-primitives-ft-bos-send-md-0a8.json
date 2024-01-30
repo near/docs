@@ -1,0 +1,18 @@
+{
+  "id": "primitives/ft/bos/send",
+  "title": "send",
+  "description": "",
+  "source": "@site/../docs/7.primitives/ft/bos/send.md",
+  "sourceDirName": "7.primitives/ft/bos",
+  "slug": "/primitives/ft/bos/send",
+  "permalink": "/zh-CN/primitives/ft/bos/send",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/ft/bos/send.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "garikbesson",
+  "lastUpdatedAt": 1706635251,
+  "formattedLastUpdatedAt": "2024年1月30日",
+  "frontMatter": {}
+}

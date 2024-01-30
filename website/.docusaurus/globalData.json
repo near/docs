@@ -678,23 +678,19 @@
             },
             {
               "id": "develop/relevant-contracts/dao",
-              "path": "/zh-CN/develop/relevant-contracts/dao",
-              "sidebar": "contracts"
+              "path": "/zh-CN/develop/relevant-contracts/dao"
             },
             {
               "id": "develop/relevant-contracts/ft",
-              "path": "/zh-CN/develop/relevant-contracts/ft",
-              "sidebar": "contracts"
+              "path": "/zh-CN/develop/relevant-contracts/ft"
             },
             {
               "id": "develop/relevant-contracts/nft",
-              "path": "/zh-CN/develop/relevant-contracts/nft",
-              "sidebar": "contracts"
+              "path": "/zh-CN/develop/relevant-contracts/nft"
             },
             {
               "id": "develop/relevant-contracts/oracles",
-              "path": "/zh-CN/develop/relevant-contracts/oracles",
-              "sidebar": "contracts"
+              "path": "/zh-CN/develop/relevant-contracts/oracles"
             },
             {
               "id": "develop/testing/integration-test",
@@ -781,141 +777,413 @@
               "sidebar": "exchanges"
             },
             {
-              "id": "primitives/dao/additional-resources",
-              "path": "/zh-CN/primitives/dao/additional-resources"
-            },
-            {
-              "id": "primitives/dao/interacting/bos",
-              "path": "/zh-CN/primitives/dao/interacting/bos",
+              "id": "primitives/dao",
+              "path": "/zh-CN/primitives/dao",
               "sidebar": "primitives"
             },
             {
-              "id": "primitives/dao/interacting/near-cli",
-              "path": "/zh-CN/primitives/dao/interacting/near-cli",
+              "id": "primitives/dao/bos/create-dao",
+              "path": "/zh-CN/primitives/dao/bos/create-dao"
+            },
+            {
+              "id": "primitives/dao/bos/create-proposal",
+              "path": "/zh-CN/primitives/dao/bos/create-proposal"
+            },
+            {
+              "id": "primitives/dao/bos/get-dao-list",
+              "path": "/zh-CN/primitives/dao/bos/get-dao-list"
+            },
+            {
+              "id": "primitives/dao/bos/get-proposal-list",
+              "path": "/zh-CN/primitives/dao/bos/get-proposal-list"
+            },
+            {
+              "id": "primitives/dao/bos/vote-for-proposal",
+              "path": "/zh-CN/primitives/dao/bos/vote-for-proposal"
+            },
+            {
+              "id": "primitives/dao/near-cli/create-dao",
+              "path": "/zh-CN/primitives/dao/near-cli/create-dao"
+            },
+            {
+              "id": "primitives/dao/near-cli/create-proposal",
+              "path": "/zh-CN/primitives/dao/near-cli/create-proposal"
+            },
+            {
+              "id": "primitives/dao/near-cli/get-dao-list",
+              "path": "/zh-CN/primitives/dao/near-cli/get-dao-list"
+            },
+            {
+              "id": "primitives/dao/near-cli/get-proposal-list",
+              "path": "/zh-CN/primitives/dao/near-cli/get-proposal-list"
+            },
+            {
+              "id": "primitives/dao/near-cli/vote-for-proposal",
+              "path": "/zh-CN/primitives/dao/near-cli/vote-for-proposal"
+            },
+            {
+              "id": "primitives/dao/smart-contract/create-dao",
+              "path": "/zh-CN/primitives/dao/smart-contract/create-dao"
+            },
+            {
+              "id": "primitives/dao/smart-contract/create-proposal",
+              "path": "/zh-CN/primitives/dao/smart-contract/create-proposal"
+            },
+            {
+              "id": "primitives/dao/smart-contract/vote-for-proposal",
+              "path": "/zh-CN/primitives/dao/smart-contract/vote-for-proposal"
+            },
+            {
+              "id": "primitives/dao/web-app/create-dao",
+              "path": "/zh-CN/primitives/dao/web-app/create-dao"
+            },
+            {
+              "id": "primitives/dao/web-app/create-proposal",
+              "path": "/zh-CN/primitives/dao/web-app/create-proposal"
+            },
+            {
+              "id": "primitives/dao/web-app/get-dao-list",
+              "path": "/zh-CN/primitives/dao/web-app/get-dao-list"
+            },
+            {
+              "id": "primitives/dao/web-app/get-proposal-list",
+              "path": "/zh-CN/primitives/dao/web-app/get-proposal-list"
+            },
+            {
+              "id": "primitives/dao/web-app/vote-for-proposal",
+              "path": "/zh-CN/primitives/dao/web-app/vote-for-proposal"
+            },
+            {
+              "id": "primitives/dex",
+              "path": "/zh-CN/primitives/dex",
               "sidebar": "primitives"
             },
             {
-              "id": "primitives/dao/interacting/smart-contract",
-              "path": "/zh-CN/primitives/dao/interacting/smart-contract",
+              "id": "primitives/dex/bos/get-deposit-balances",
+              "path": "/zh-CN/primitives/dex/bos/get-deposit-balances"
+            },
+            {
+              "id": "primitives/dex/bos/get-pools",
+              "path": "/zh-CN/primitives/dex/bos/get-pools"
+            },
+            {
+              "id": "primitives/dex/bos/get-price",
+              "path": "/zh-CN/primitives/dex/bos/get-price"
+            },
+            {
+              "id": "primitives/dex/bos/swap",
+              "path": "/zh-CN/primitives/dex/bos/swap"
+            },
+            {
+              "id": "primitives/dex/near-cli/get-deposit-balances",
+              "path": "/zh-CN/primitives/dex/near-cli/get-deposit-balances"
+            },
+            {
+              "id": "primitives/dex/near-cli/get-pools",
+              "path": "/zh-CN/primitives/dex/near-cli/get-pools"
+            },
+            {
+              "id": "primitives/dex/near-cli/swap",
+              "path": "/zh-CN/primitives/dex/near-cli/swap"
+            },
+            {
+              "id": "primitives/dex/smart-contract/get-deposit-balances",
+              "path": "/zh-CN/primitives/dex/smart-contract/get-deposit-balances"
+            },
+            {
+              "id": "primitives/dex/smart-contract/get-pools",
+              "path": "/zh-CN/primitives/dex/smart-contract/get-pools"
+            },
+            {
+              "id": "primitives/dex/smart-contract/swap",
+              "path": "/zh-CN/primitives/dex/smart-contract/swap"
+            },
+            {
+              "id": "primitives/dex/web-app/get-deposit-balances",
+              "path": "/zh-CN/primitives/dex/web-app/get-deposit-balances"
+            },
+            {
+              "id": "primitives/dex/web-app/get-pools",
+              "path": "/zh-CN/primitives/dex/web-app/get-pools"
+            },
+            {
+              "id": "primitives/dex/web-app/get-price",
+              "path": "/zh-CN/primitives/dex/web-app/get-price"
+            },
+            {
+              "id": "primitives/dex/web-app/swap",
+              "path": "/zh-CN/primitives/dex/web-app/swap"
+            },
+            {
+              "id": "primitives/ft",
+              "path": "/zh-CN/primitives/ft",
               "sidebar": "primitives"
             },
             {
-              "id": "primitives/dao/interacting/web-app",
-              "path": "/zh-CN/primitives/dao/interacting/web-app",
+              "id": "primitives/ft/bos/attach-to-call",
+              "path": "/zh-CN/primitives/ft/bos/attach-to-call"
+            },
+            {
+              "id": "primitives/ft/bos/check-balance",
+              "path": "/zh-CN/primitives/ft/bos/check-balance"
+            },
+            {
+              "id": "primitives/ft/bos/create",
+              "path": "/zh-CN/primitives/ft/bos/create"
+            },
+            {
+              "id": "primitives/ft/bos/get-metadata",
+              "path": "/zh-CN/primitives/ft/bos/get-metadata"
+            },
+            {
+              "id": "primitives/ft/bos/register",
+              "path": "/zh-CN/primitives/ft/bos/register"
+            },
+            {
+              "id": "primitives/ft/bos/send",
+              "path": "/zh-CN/primitives/ft/bos/send"
+            },
+            {
+              "id": "primitives/ft/near-cli/attach-to-call",
+              "path": "/zh-CN/primitives/ft/near-cli/attach-to-call"
+            },
+            {
+              "id": "primitives/ft/near-cli/check-balance",
+              "path": "/zh-CN/primitives/ft/near-cli/check-balance"
+            },
+            {
+              "id": "primitives/ft/near-cli/create",
+              "path": "/zh-CN/primitives/ft/near-cli/create"
+            },
+            {
+              "id": "primitives/ft/near-cli/get-metadata",
+              "path": "/zh-CN/primitives/ft/near-cli/get-metadata"
+            },
+            {
+              "id": "primitives/ft/near-cli/register",
+              "path": "/zh-CN/primitives/ft/near-cli/register"
+            },
+            {
+              "id": "primitives/ft/near-cli/send",
+              "path": "/zh-CN/primitives/ft/near-cli/send"
+            },
+            {
+              "id": "primitives/ft/smart-contract/attach-to-call",
+              "path": "/zh-CN/primitives/ft/smart-contract/attach-to-call"
+            },
+            {
+              "id": "primitives/ft/smart-contract/send",
+              "path": "/zh-CN/primitives/ft/smart-contract/send"
+            },
+            {
+              "id": "primitives/ft/web-app/attach-to-call",
+              "path": "/zh-CN/primitives/ft/web-app/attach-to-call"
+            },
+            {
+              "id": "primitives/ft/web-app/check-balance",
+              "path": "/zh-CN/primitives/ft/web-app/check-balance"
+            },
+            {
+              "id": "primitives/ft/web-app/create",
+              "path": "/zh-CN/primitives/ft/web-app/create"
+            },
+            {
+              "id": "primitives/ft/web-app/get-metadata",
+              "path": "/zh-CN/primitives/ft/web-app/get-metadata"
+            },
+            {
+              "id": "primitives/ft/web-app/register",
+              "path": "/zh-CN/primitives/ft/web-app/register"
+            },
+            {
+              "id": "primitives/ft/web-app/send",
+              "path": "/zh-CN/primitives/ft/web-app/send"
+            },
+            {
+              "id": "primitives/linkdrop",
+              "path": "/zh-CN/primitives/linkdrop",
               "sidebar": "primitives"
             },
             {
-              "id": "primitives/dao/introduction",
-              "path": "/zh-CN/primitives/dao/introduction",
+              "id": "primitives/linkdrop/bos/create-ft-drop",
+              "path": "/zh-CN/primitives/linkdrop/bos/create-ft-drop"
+            },
+            {
+              "id": "primitives/linkdrop/bos/create-function-call-drop",
+              "path": "/zh-CN/primitives/linkdrop/bos/create-function-call-drop"
+            },
+            {
+              "id": "primitives/linkdrop/bos/create-nft-drop",
+              "path": "/zh-CN/primitives/linkdrop/bos/create-nft-drop"
+            },
+            {
+              "id": "primitives/linkdrop/bos/get-drop-id",
+              "path": "/zh-CN/primitives/linkdrop/bos/get-drop-id"
+            },
+            {
+              "id": "primitives/linkdrop/bos/get-key-pairs",
+              "path": "/zh-CN/primitives/linkdrop/bos/get-key-pairs"
+            },
+            {
+              "id": "primitives/linkdrop/bos/simple-drop",
+              "path": "/zh-CN/primitives/linkdrop/bos/simple-drop"
+            },
+            {
+              "id": "primitives/linkdrop/bos/transfer-ft",
+              "path": "/zh-CN/primitives/linkdrop/bos/transfer-ft"
+            },
+            {
+              "id": "primitives/linkdrop/bos/transfer-nft",
+              "path": "/zh-CN/primitives/linkdrop/bos/transfer-nft"
+            },
+            {
+              "id": "primitives/linkdrop/near-cli/create-ft-drop",
+              "path": "/zh-CN/primitives/linkdrop/near-cli/create-ft-drop"
+            },
+            {
+              "id": "primitives/linkdrop/near-cli/create-function-call-drop",
+              "path": "/zh-CN/primitives/linkdrop/near-cli/create-function-call-drop"
+            },
+            {
+              "id": "primitives/linkdrop/near-cli/create-nft-drop",
+              "path": "/zh-CN/primitives/linkdrop/near-cli/create-nft-drop"
+            },
+            {
+              "id": "primitives/linkdrop/near-cli/get-drop-id",
+              "path": "/zh-CN/primitives/linkdrop/near-cli/get-drop-id"
+            },
+            {
+              "id": "primitives/linkdrop/near-cli/get-key-pairs",
+              "path": "/zh-CN/primitives/linkdrop/near-cli/get-key-pairs"
+            },
+            {
+              "id": "primitives/linkdrop/near-cli/simple-drop",
+              "path": "/zh-CN/primitives/linkdrop/near-cli/simple-drop"
+            },
+            {
+              "id": "primitives/linkdrop/near-cli/transfer-ft",
+              "path": "/zh-CN/primitives/linkdrop/near-cli/transfer-ft"
+            },
+            {
+              "id": "primitives/linkdrop/near-cli/transfer-nft",
+              "path": "/zh-CN/primitives/linkdrop/near-cli/transfer-nft"
+            },
+            {
+              "id": "primitives/linkdrop/web-app/create-ft-drop",
+              "path": "/zh-CN/primitives/linkdrop/web-app/create-ft-drop"
+            },
+            {
+              "id": "primitives/linkdrop/web-app/create-function-call-drop",
+              "path": "/zh-CN/primitives/linkdrop/web-app/create-function-call-drop"
+            },
+            {
+              "id": "primitives/linkdrop/web-app/create-nft-drop",
+              "path": "/zh-CN/primitives/linkdrop/web-app/create-nft-drop"
+            },
+            {
+              "id": "primitives/linkdrop/web-app/get-drop-id",
+              "path": "/zh-CN/primitives/linkdrop/web-app/get-drop-id"
+            },
+            {
+              "id": "primitives/linkdrop/web-app/get-key-pairs",
+              "path": "/zh-CN/primitives/linkdrop/web-app/get-key-pairs"
+            },
+            {
+              "id": "primitives/linkdrop/web-app/simple-drop",
+              "path": "/zh-CN/primitives/linkdrop/web-app/simple-drop"
+            },
+            {
+              "id": "primitives/linkdrop/web-app/transfer-ft",
+              "path": "/zh-CN/primitives/linkdrop/web-app/transfer-ft"
+            },
+            {
+              "id": "primitives/linkdrop/web-app/transfer-nft",
+              "path": "/zh-CN/primitives/linkdrop/web-app/transfer-nft"
+            },
+            {
+              "id": "primitives/nft",
+              "path": "/zh-CN/primitives/nft",
               "sidebar": "primitives"
             },
             {
-              "id": "primitives/dex/additional-resources",
-              "path": "/zh-CN/primitives/dex/additional-resources"
+              "id": "primitives/nft/bos/buy",
+              "path": "/zh-CN/primitives/nft/bos/buy"
             },
             {
-              "id": "primitives/dex/interacting/bos",
-              "path": "/zh-CN/primitives/dex/interacting/bos",
-              "sidebar": "primitives"
+              "id": "primitives/nft/bos/list-for-sale",
+              "path": "/zh-CN/primitives/nft/bos/list-for-sale"
             },
             {
-              "id": "primitives/dex/interacting/near-cli",
-              "path": "/zh-CN/primitives/dex/interacting/near-cli",
-              "sidebar": "primitives"
+              "id": "primitives/nft/bos/mint",
+              "path": "/zh-CN/primitives/nft/bos/mint"
             },
             {
-              "id": "primitives/dex/interacting/smart-contract",
-              "path": "/zh-CN/primitives/dex/interacting/smart-contract",
-              "sidebar": "primitives"
+              "id": "primitives/nft/bos/query",
+              "path": "/zh-CN/primitives/nft/bos/query"
             },
             {
-              "id": "primitives/dex/interacting/web-app",
-              "path": "/zh-CN/primitives/dex/interacting/web-app",
-              "sidebar": "primitives"
+              "id": "primitives/nft/bos/transfer",
+              "path": "/zh-CN/primitives/nft/bos/transfer"
             },
             {
-              "id": "primitives/dex/introduction",
-              "path": "/zh-CN/primitives/dex/introduction",
-              "sidebar": "primitives"
+              "id": "primitives/nft/near-cli/buy",
+              "path": "/zh-CN/primitives/nft/near-cli/buy"
             },
             {
-              "id": "primitives/ft/additional-resources",
-              "path": "/zh-CN/primitives/ft/additional-resources",
-              "sidebar": "primitives"
+              "id": "primitives/nft/near-cli/list-for-sale",
+              "path": "/zh-CN/primitives/nft/near-cli/list-for-sale"
             },
             {
-              "id": "primitives/ft/interacting/bos",
-              "path": "/zh-CN/primitives/ft/interacting/bos",
-              "sidebar": "primitives"
+              "id": "primitives/nft/near-cli/mint",
+              "path": "/zh-CN/primitives/nft/near-cli/mint"
             },
             {
-              "id": "primitives/ft/interacting/near-cli",
-              "path": "/zh-CN/primitives/ft/interacting/near-cli",
-              "sidebar": "primitives"
+              "id": "primitives/nft/near-cli/query",
+              "path": "/zh-CN/primitives/nft/near-cli/query"
             },
             {
-              "id": "primitives/ft/interacting/smart-contract",
-              "path": "/zh-CN/primitives/ft/interacting/smart-contract",
-              "sidebar": "primitives"
+              "id": "primitives/nft/near-cli/transfer",
+              "path": "/zh-CN/primitives/nft/near-cli/transfer"
             },
             {
-              "id": "primitives/ft/interacting/web-app",
-              "path": "/zh-CN/primitives/ft/interacting/web-app",
-              "sidebar": "primitives"
+              "id": "primitives/nft/smart-contract/buy",
+              "path": "/zh-CN/primitives/nft/smart-contract/buy"
             },
             {
-              "id": "primitives/ft/introduction",
-              "path": "/zh-CN/primitives/ft/introduction",
-              "sidebar": "primitives"
+              "id": "primitives/nft/smart-contract/mint",
+              "path": "/zh-CN/primitives/nft/smart-contract/mint"
             },
             {
-              "id": "primitives/linkdrop/interacting/bos",
-              "path": "/zh-CN/primitives/linkdrop/interacting/bos",
-              "sidebar": "primitives"
+              "id": "primitives/nft/smart-contract/query",
+              "path": "/zh-CN/primitives/nft/smart-contract/query"
             },
             {
-              "id": "primitives/linkdrop/interacting/near-cli",
-              "path": "/zh-CN/primitives/linkdrop/interacting/near-cli",
-              "sidebar": "primitives"
+              "id": "primitives/nft/smart-contract/transfer",
+              "path": "/zh-CN/primitives/nft/smart-contract/transfer"
             },
             {
-              "id": "primitives/linkdrop/interacting/web-app",
-              "path": "/zh-CN/primitives/linkdrop/interacting/web-app",
-              "sidebar": "primitives"
+              "id": "primitives/nft/web-app/buy",
+              "path": "/zh-CN/primitives/nft/web-app/buy"
             },
             {
-              "id": "primitives/linkdrop/introduction",
-              "path": "/zh-CN/primitives/linkdrop/introduction",
-              "sidebar": "primitives"
+              "id": "primitives/nft/web-app/list-for-sale",
+              "path": "/zh-CN/primitives/nft/web-app/list-for-sale"
             },
             {
-              "id": "primitives/nft/additional-resources",
-              "path": "/zh-CN/primitives/nft/additional-resources",
-              "sidebar": "primitives"
+              "id": "primitives/nft/web-app/mint",
+              "path": "/zh-CN/primitives/nft/web-app/mint"
             },
             {
-              "id": "primitives/nft/interacting/bos",
-              "path": "/zh-CN/primitives/nft/interacting/bos",
-              "sidebar": "primitives"
+              "id": "primitives/nft/web-app/query",
+              "path": "/zh-CN/primitives/nft/web-app/query"
             },
             {
-              "id": "primitives/nft/interacting/near-cli",
-              "path": "/zh-CN/primitives/nft/interacting/near-cli",
-              "sidebar": "primitives"
+              "id": "primitives/nft/web-app/transfer",
+              "path": "/zh-CN/primitives/nft/web-app/transfer"
             },
             {
-              "id": "primitives/nft/interacting/smart-contract",
-              "path": "/zh-CN/primitives/nft/interacting/smart-contract",
-              "sidebar": "primitives"
-            },
-            {
-              "id": "primitives/nft/interacting/web-app",
-              "path": "/zh-CN/primitives/nft/interacting/web-app",
-              "sidebar": "primitives"
-            },
-            {
-              "id": "primitives/nft/introduction",
-              "path": "/zh-CN/primitives/nft/introduction",
+              "id": "primitives/oracles",
+              "path": "/zh-CN/primitives/oracles",
               "sidebar": "primitives"
             },
             {

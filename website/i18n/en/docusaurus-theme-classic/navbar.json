@@ -126,5 +126,13 @@
   "item.label.Validator Docs": {
     "message": "Validator Docs",
     "description": "Navbar item with label Validator Docs"
+  },
+  "item.label.Overview": {
+    "message": "Overview",
+    "description": "Navbar item with label Overview"
+  },
+  "item.label.LinkDrops": {
+    "message": "LinkDrops",
+    "description": "Navbar item with label LinkDrops"
   }
 }

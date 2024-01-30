@@ -18,14 +18,5 @@
     "id": "dao",
     "sidebar_label": "Autonomous Organizations (DAO)",
     "title": "탈중앙화 자율 조직(DAO)"
-  },
-  "sidebar": "contracts",
-  "previous": {
-    "title": "Decentralized Oracles",
-    "permalink": "/ko/develop/relevant-contracts/oracles"
-  },
-  "next": {
-    "title": "방명록",
-    "permalink": "/ko/tutorials/examples/guest-book"
   }
 }

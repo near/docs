@@ -1,0 +1,18 @@
+{
+  "id": "primitives/dao/near-cli/vote-for-proposal",
+  "title": "vote-for-proposal",
+  "description": "Available vote options: VoteApprove, VoteReject, VoteRemove.",
+  "source": "@site/../docs/7.primitives/dao/near-cli/vote-for-proposal.md",
+  "sourceDirName": "7.primitives/dao/near-cli",
+  "slug": "/primitives/dao/near-cli/vote-for-proposal",
+  "permalink": "/zh-CN/primitives/dao/near-cli/vote-for-proposal",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/dao/near-cli/vote-for-proposal.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "garikbesson",
+  "lastUpdatedAt": 1706635251,
+  "formattedLastUpdatedAt": "2024年1月30日",
+  "frontMatter": {}
+}

@@ -324,24 +324,32 @@ export default {
           "position": "left",
           "items": [
             {
-              "label": "Drops",
-              "href": "/primitives/linkdrop/introduction"
+              "label": "Overview",
+              "href": "/primitives/welcome"
+            },
+            {
+              "type": "html",
+              "value": "<hr/>"
+            },
+            {
+              "label": "LinkDrops",
+              "href": "/primitives/linkdrop"
             },
             {
               "label": "Fungible Tokens",
-              "href": "/primitives/ft/introduction"
+              "href": "/primitives/ft"
             },
             {
               "label": "Non-Fungible Tokens",
-              "href": "/primitives/nft/introduction"
+              "href": "/primitives/nft"
             },
             {
               "label": "Decentralized Exchanges",
-              "href": "/primitives/dex/introduction"
+              "href": "/primitives/dex"
             },
             {
               "label": "Autonomous Organizations",
-              "href": "/primitives/dao/introduction"
+              "href": "/primitives/dao"
             }
           ]
         },

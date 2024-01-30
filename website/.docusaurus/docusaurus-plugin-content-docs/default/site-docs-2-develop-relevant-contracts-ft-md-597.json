@@ -17,14 +17,5 @@
   "frontMatter": {
     "id": "ft",
     "title": "Fungible Tokens (FT)"
-  },
-  "sidebar": "contracts",
-  "previous": {
-    "title": "Bug Bounty Program",
-    "permalink": "/develop/contracts/security/bounty"
-  },
-  "next": {
-    "title": "Non Fungible Tokens (NFT)",
-    "permalink": "/develop/relevant-contracts/nft"
   }
 }

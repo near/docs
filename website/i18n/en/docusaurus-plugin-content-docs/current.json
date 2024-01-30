@@ -290,5 +290,21 @@
   "sidebar.exchanges.category.Understanding Errors": {
     "message": "Understanding Errors",
     "description": "The label for category Understanding Errors in sidebar exchanges"
+  },
+  "sidebar.contracts.link.Fungible Tokens (FT) ↗": {
+    "message": "Fungible Tokens (FT) ↗",
+    "description": "The label for link Fungible Tokens (FT) ↗ in sidebar contracts, linking to /primitives/ft"
+  },
+  "sidebar.contracts.link.Non-Fungible Tokens (NFT) ↗": {
+    "message": "Non-Fungible Tokens (NFT) ↗",
+    "description": "The label for link Non-Fungible Tokens (NFT) ↗ in sidebar contracts, linking to /primitives/nft"
+  },
+  "sidebar.contracts.link.Autonomous Organizations (DAO)": {
+    "message": "Autonomous Organizations (DAO)",
+    "description": "The label for link Autonomous Organizations (DAO) in sidebar contracts, linking to /primitives/dao"
+  },
+  "sidebar.contracts.link.Oracles ↗": {
+    "message": "Oracles ↗",
+    "description": "The label for link Oracles ↗ in sidebar contracts, linking to /primitives/oracles"
   }
 }

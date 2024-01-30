@@ -22,7 +22,7 @@
   },
   "sidebar": "primitives",
   "next": {
-    "title": "Introduction",
-    "permalink": "/ko/primitives/nft/introduction"
+    "title": "Fungible Tokens (FT)",
+    "permalink": "/ko/primitives/ft"
   }
 }

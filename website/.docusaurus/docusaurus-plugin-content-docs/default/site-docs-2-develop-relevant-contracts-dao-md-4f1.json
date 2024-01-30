@@ -18,14 +18,5 @@
     "id": "dao",
     "sidebar_label": "Autonomous Organizations (DAO)",
     "title": "Decentralized Autonomous Organizations"
-  },
-  "sidebar": "contracts",
-  "previous": {
-    "title": "Decentralized Oracles",
-    "permalink": "/develop/relevant-contracts/oracles"
-  },
-  "next": {
-    "title": "Guest Book",
-    "permalink": "/tutorials/examples/guest-book"
   }
 }

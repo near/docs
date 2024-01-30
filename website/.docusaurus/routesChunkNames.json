@@ -5,17 +5,17 @@
       "plugin": "82d98fd4"
     }
   },
-  "/zh-CN/-a24": {
+  "/zh-CN/-b5e": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "8b378508"
     }
   },
-  "/zh-CN/-3d7": {
+  "/zh-CN/-8c0": {
     "__comp": "a7bd4aaa",
     "version": "935f2afb"
   },
-  "/zh-CN/-4d0": {
+  "/zh-CN/-02f": {
     "__comp": "a94703ab"
   },
   "/zh-CN/api/rpc/access-keys-c54": {
@@ -562,19 +562,19 @@
     "__comp": "17896441",
     "content": "2be659d2"
   },
-  "/zh-CN/develop/relevant-contracts/dao-ded": {
+  "/zh-CN/develop/relevant-contracts/dao-177": {
     "__comp": "17896441",
     "content": "549ba9dc"
   },
-  "/zh-CN/develop/relevant-contracts/ft-f03": {
+  "/zh-CN/develop/relevant-contracts/ft-b46": {
     "__comp": "17896441",
     "content": "a3e1d840"
   },
-  "/zh-CN/develop/relevant-contracts/nft-418": {
+  "/zh-CN/develop/relevant-contracts/nft-e8f": {
     "__comp": "17896441",
     "content": "1090e69f"
   },
-  "/zh-CN/develop/relevant-contracts/oracles-3a0": {
+  "/zh-CN/develop/relevant-contracts/oracles-cf2": {
     "__comp": "17896441",
     "content": "e9002b78"
   },
@@ -646,117 +646,409 @@
     "__comp": "17896441",
     "content": "50ef3a03"
   },
-  "/zh-CN/primitives/dao/additional-resources-598": {
+  "/zh-CN/primitives/dao-f5c": {
     "__comp": "17896441",
-    "content": "1295f8b6"
+    "content": "53c29875"
   },
-  "/zh-CN/primitives/dao/interacting/bos-2be": {
+  "/zh-CN/primitives/dao/bos/create-dao-d1a": {
     "__comp": "17896441",
-    "content": "85915d29"
+    "content": "30638fe2"
   },
-  "/zh-CN/primitives/dao/interacting/near-cli-ffe": {
+  "/zh-CN/primitives/dao/bos/create-proposal-ac1": {
     "__comp": "17896441",
-    "content": "b22ac0e2"
+    "content": "a4891f2c"
   },
-  "/zh-CN/primitives/dao/interacting/smart-contract-6cc": {
+  "/zh-CN/primitives/dao/bos/get-dao-list-2b3": {
     "__comp": "17896441",
-    "content": "a0ea70f6"
+    "content": "cb7e5d4c"
   },
-  "/zh-CN/primitives/dao/interacting/web-app-e85": {
+  "/zh-CN/primitives/dao/bos/get-proposal-list-eb8": {
     "__comp": "17896441",
-    "content": "2c829983"
+    "content": "c32e9e2d"
   },
-  "/zh-CN/primitives/dao/introduction-6ff": {
+  "/zh-CN/primitives/dao/bos/vote-for-proposal-d2b": {
     "__comp": "17896441",
-    "content": "a8b98bd4"
+    "content": "dd0d7b5c"
   },
-  "/zh-CN/primitives/dex/additional-resources-41a": {
+  "/zh-CN/primitives/dao/near-cli/create-dao-ab9": {
     "__comp": "17896441",
-    "content": "391c784a"
+    "content": "cc3a0218"
   },
-  "/zh-CN/primitives/dex/interacting/bos-5ad": {
+  "/zh-CN/primitives/dao/near-cli/create-proposal-3ec": {
     "__comp": "17896441",
-    "content": "09648cb7"
+    "content": "b625f321"
   },
-  "/zh-CN/primitives/dex/interacting/near-cli-bbc": {
+  "/zh-CN/primitives/dao/near-cli/get-dao-list-481": {
     "__comp": "17896441",
-    "content": "9fcd7486"
+    "content": "7512e0a6"
   },
-  "/zh-CN/primitives/dex/interacting/smart-contract-3a4": {
+  "/zh-CN/primitives/dao/near-cli/get-proposal-list-2ca": {
     "__comp": "17896441",
-    "content": "a34aca9b"
+    "content": "d5b21ab8"
   },
-  "/zh-CN/primitives/dex/interacting/web-app-ee2": {
+  "/zh-CN/primitives/dao/near-cli/vote-for-proposal-1af": {
     "__comp": "17896441",
-    "content": "c3339dea"
+    "content": "9af07c5d"
   },
-  "/zh-CN/primitives/dex/introduction-4d7": {
+  "/zh-CN/primitives/dao/smart-contract/create-dao-b1e": {
     "__comp": "17896441",
-    "content": "aa8e1e61"
+    "content": "8c461f83"
   },
-  "/zh-CN/primitives/ft/additional-resources-955": {
+  "/zh-CN/primitives/dao/smart-contract/create-proposal-5f6": {
     "__comp": "17896441",
-    "content": "2b8f149d"
+    "content": "61351ced"
   },
-  "/zh-CN/primitives/ft/interacting/bos-66e": {
+  "/zh-CN/primitives/dao/smart-contract/vote-for-proposal-bd6": {
     "__comp": "17896441",
-    "content": "213d02dd"
+    "content": "2fa1946b"
   },
-  "/zh-CN/primitives/ft/interacting/near-cli-bf5": {
+  "/zh-CN/primitives/dao/web-app/create-dao-4dc": {
     "__comp": "17896441",
-    "content": "c30ead5b"
+    "content": "59f1df72"
   },
-  "/zh-CN/primitives/ft/interacting/smart-contract-1a9": {
+  "/zh-CN/primitives/dao/web-app/create-proposal-986": {
     "__comp": "17896441",
-    "content": "fd630503"
+    "content": "5b45ae48"
   },
-  "/zh-CN/primitives/ft/interacting/web-app-a98": {
+  "/zh-CN/primitives/dao/web-app/get-dao-list-fad": {
     "__comp": "17896441",
-    "content": "e83ee2aa"
+    "content": "6833c52f"
   },
-  "/zh-CN/primitives/ft/introduction-209": {
+  "/zh-CN/primitives/dao/web-app/get-proposal-list-edc": {
     "__comp": "17896441",
-    "content": "4ea0f83b"
+    "content": "2d11e614"
   },
-  "/zh-CN/primitives/linkdrop/interacting/bos-a89": {
+  "/zh-CN/primitives/dao/web-app/vote-for-proposal-748": {
     "__comp": "17896441",
-    "content": "aec4798a"
+    "content": "15e9e903"
   },
-  "/zh-CN/primitives/linkdrop/interacting/near-cli-f95": {
+  "/zh-CN/primitives/dex-e49": {
     "__comp": "17896441",
-    "content": "b8f62f5c"
+    "content": "386e277d"
   },
-  "/zh-CN/primitives/linkdrop/interacting/web-app-ccc": {
+  "/zh-CN/primitives/dex/bos/get-deposit-balances-3a4": {
     "__comp": "17896441",
-    "content": "b4abba2e"
+    "content": "428ede7b"
   },
-  "/zh-CN/primitives/linkdrop/introduction-2ff": {
+  "/zh-CN/primitives/dex/bos/get-pools-067": {
     "__comp": "17896441",
-    "content": "2b3ed200"
+    "content": "9d865bf7"
   },
-  "/zh-CN/primitives/nft/additional-resources-baf": {
+  "/zh-CN/primitives/dex/bos/get-price-eb9": {
     "__comp": "17896441",
-    "content": "4b508af8"
+    "content": "3802e4e8"
   },
-  "/zh-CN/primitives/nft/interacting/bos-c86": {
+  "/zh-CN/primitives/dex/bos/swap-b08": {
     "__comp": "17896441",
-    "content": "0a8e87b7"
+    "content": "50cad6eb"
   },
-  "/zh-CN/primitives/nft/interacting/near-cli-b03": {
+  "/zh-CN/primitives/dex/near-cli/get-deposit-balances-672": {
     "__comp": "17896441",
-    "content": "fd6f0ed2"
+    "content": "939b6b93"
   },
-  "/zh-CN/primitives/nft/interacting/smart-contract-4d1": {
+  "/zh-CN/primitives/dex/near-cli/get-pools-e23": {
     "__comp": "17896441",
-    "content": "1378f919"
+    "content": "8e3b4f8a"
   },
-  "/zh-CN/primitives/nft/interacting/web-app-c8e": {
+  "/zh-CN/primitives/dex/near-cli/swap-94d": {
     "__comp": "17896441",
-    "content": "595ecdb2"
+    "content": "7db0fb94"
   },
-  "/zh-CN/primitives/nft/introduction-1a6": {
+  "/zh-CN/primitives/dex/smart-contract/get-deposit-balances-d76": {
     "__comp": "17896441",
-    "content": "67448768"
+    "content": "ea5b028b"
+  },
+  "/zh-CN/primitives/dex/smart-contract/get-pools-987": {
+    "__comp": "17896441",
+    "content": "02b59c23"
+  },
+  "/zh-CN/primitives/dex/smart-contract/swap-f8b": {
+    "__comp": "17896441",
+    "content": "ac1acbe5"
+  },
+  "/zh-CN/primitives/dex/web-app/get-deposit-balances-885": {
+    "__comp": "17896441",
+    "content": "99b91348"
+  },
+  "/zh-CN/primitives/dex/web-app/get-pools-a01": {
+    "__comp": "17896441",
+    "content": "a0a0d22e"
+  },
+  "/zh-CN/primitives/dex/web-app/get-price-5ce": {
+    "__comp": "17896441",
+    "content": "79c918ce"
+  },
+  "/zh-CN/primitives/dex/web-app/swap-2b9": {
+    "__comp": "17896441",
+    "content": "894d34b8"
+  },
+  "/zh-CN/primitives/ft-567": {
+    "__comp": "17896441",
+    "content": "4011eec7"
+  },
+  "/zh-CN/primitives/ft/bos/attach-to-call-2bf": {
+    "__comp": "17896441",
+    "content": "59a7a676"
+  },
+  "/zh-CN/primitives/ft/bos/check-balance-edc": {
+    "__comp": "17896441",
+    "content": "952585e1"
+  },
+  "/zh-CN/primitives/ft/bos/create-8d1": {
+    "__comp": "17896441",
+    "content": "c99c3089"
+  },
+  "/zh-CN/primitives/ft/bos/get-metadata-f2c": {
+    "__comp": "17896441",
+    "content": "293b1386"
+  },
+  "/zh-CN/primitives/ft/bos/register-fe3": {
+    "__comp": "17896441",
+    "content": "dff328e2"
+  },
+  "/zh-CN/primitives/ft/bos/send-ee7": {
+    "__comp": "17896441",
+    "content": "0a84a2ae"
+  },
+  "/zh-CN/primitives/ft/near-cli/attach-to-call-2b4": {
+    "__comp": "17896441",
+    "content": "9ecd9759"
+  },
+  "/zh-CN/primitives/ft/near-cli/check-balance-8a3": {
+    "__comp": "17896441",
+    "content": "5e2dd8fa"
+  },
+  "/zh-CN/primitives/ft/near-cli/create-5d3": {
+    "__comp": "17896441",
+    "content": "6282a4ad"
+  },
+  "/zh-CN/primitives/ft/near-cli/get-metadata-19e": {
+    "__comp": "17896441",
+    "content": "c3d36aa2"
+  },
+  "/zh-CN/primitives/ft/near-cli/register-502": {
+    "__comp": "17896441",
+    "content": "c460560b"
+  },
+  "/zh-CN/primitives/ft/near-cli/send-139": {
+    "__comp": "17896441",
+    "content": "63efc31a"
+  },
+  "/zh-CN/primitives/ft/smart-contract/attach-to-call-70f": {
+    "__comp": "17896441",
+    "content": "5c0008a7"
+  },
+  "/zh-CN/primitives/ft/smart-contract/send-240": {
+    "__comp": "17896441",
+    "content": "dbc8ed54"
+  },
+  "/zh-CN/primitives/ft/web-app/attach-to-call-088": {
+    "__comp": "17896441",
+    "content": "969657a2"
+  },
+  "/zh-CN/primitives/ft/web-app/check-balance-31f": {
+    "__comp": "17896441",
+    "content": "80d17d2a"
+  },
+  "/zh-CN/primitives/ft/web-app/create-94b": {
+    "__comp": "17896441",
+    "content": "8782e27d"
+  },
+  "/zh-CN/primitives/ft/web-app/get-metadata-d0f": {
+    "__comp": "17896441",
+    "content": "fde88743"
+  },
+  "/zh-CN/primitives/ft/web-app/register-06f": {
+    "__comp": "17896441",
+    "content": "c29a92c8"
+  },
+  "/zh-CN/primitives/ft/web-app/send-5bf": {
+    "__comp": "17896441",
+    "content": "664ad087"
+  },
+  "/zh-CN/primitives/linkdrop-44f": {
+    "__comp": "17896441",
+    "content": "91353868"
+  },
+  "/zh-CN/primitives/linkdrop/bos/create-ft-drop-541": {
+    "__comp": "17896441",
+    "content": "4f654e09"
+  },
+  "/zh-CN/primitives/linkdrop/bos/create-function-call-drop-79d": {
+    "__comp": "17896441",
+    "content": "be5573b8"
+  },
+  "/zh-CN/primitives/linkdrop/bos/create-nft-drop-258": {
+    "__comp": "17896441",
+    "content": "10e8c6c8"
+  },
+  "/zh-CN/primitives/linkdrop/bos/get-drop-id-e9b": {
+    "__comp": "17896441",
+    "content": "44340537"
+  },
+  "/zh-CN/primitives/linkdrop/bos/get-key-pairs-bc2": {
+    "__comp": "17896441",
+    "content": "24187aa3"
+  },
+  "/zh-CN/primitives/linkdrop/bos/simple-drop-a9c": {
+    "__comp": "17896441",
+    "content": "a43ef492"
+  },
+  "/zh-CN/primitives/linkdrop/bos/transfer-ft-e24": {
+    "__comp": "17896441",
+    "content": "d5b78fe7"
+  },
+  "/zh-CN/primitives/linkdrop/bos/transfer-nft-21c": {
+    "__comp": "17896441",
+    "content": "03536ba5"
+  },
+  "/zh-CN/primitives/linkdrop/near-cli/create-ft-drop-7f9": {
+    "__comp": "17896441",
+    "content": "48448a60"
+  },
+  "/zh-CN/primitives/linkdrop/near-cli/create-function-call-drop-d3d": {
+    "__comp": "17896441",
+    "content": "69b6ed93"
+  },
+  "/zh-CN/primitives/linkdrop/near-cli/create-nft-drop-7ff": {
+    "__comp": "17896441",
+    "content": "092d2789"
+  },
+  "/zh-CN/primitives/linkdrop/near-cli/get-drop-id-3ca": {
+    "__comp": "17896441",
+    "content": "24cf1365"
+  },
+  "/zh-CN/primitives/linkdrop/near-cli/get-key-pairs-8b4": {
+    "__comp": "17896441",
+    "content": "4e2160f4"
+  },
+  "/zh-CN/primitives/linkdrop/near-cli/simple-drop-00d": {
+    "__comp": "17896441",
+    "content": "3e23fb41"
+  },
+  "/zh-CN/primitives/linkdrop/near-cli/transfer-ft-b8e": {
+    "__comp": "17896441",
+    "content": "a49b8fb9"
+  },
+  "/zh-CN/primitives/linkdrop/near-cli/transfer-nft-b58": {
+    "__comp": "17896441",
+    "content": "90bf0e70"
+  },
+  "/zh-CN/primitives/linkdrop/web-app/create-ft-drop-d80": {
+    "__comp": "17896441",
+    "content": "426bc554"
+  },
+  "/zh-CN/primitives/linkdrop/web-app/create-function-call-drop-39b": {
+    "__comp": "17896441",
+    "content": "51d615ca"
+  },
+  "/zh-CN/primitives/linkdrop/web-app/create-nft-drop-505": {
+    "__comp": "17896441",
+    "content": "f33926eb"
+  },
+  "/zh-CN/primitives/linkdrop/web-app/get-drop-id-e37": {
+    "__comp": "17896441",
+    "content": "ad3d8e04"
+  },
+  "/zh-CN/primitives/linkdrop/web-app/get-key-pairs-d98": {
+    "__comp": "17896441",
+    "content": "ef32f3a8"
+  },
+  "/zh-CN/primitives/linkdrop/web-app/simple-drop-3e3": {
+    "__comp": "17896441",
+    "content": "3cdb0931"
+  },
+  "/zh-CN/primitives/linkdrop/web-app/transfer-ft-a13": {
+    "__comp": "17896441",
+    "content": "aee30785"
+  },
+  "/zh-CN/primitives/linkdrop/web-app/transfer-nft-06e": {
+    "__comp": "17896441",
+    "content": "86cf5df3"
+  },
+  "/zh-CN/primitives/nft-6bb": {
+    "__comp": "17896441",
+    "content": "751584c2"
+  },
+  "/zh-CN/primitives/nft/bos/buy-39a": {
+    "__comp": "17896441",
+    "content": "1e52fa9f"
+  },
+  "/zh-CN/primitives/nft/bos/list-for-sale-962": {
+    "__comp": "17896441",
+    "content": "2af5af66"
+  },
+  "/zh-CN/primitives/nft/bos/mint-7c3": {
+    "__comp": "17896441",
+    "content": "0590c259"
+  },
+  "/zh-CN/primitives/nft/bos/query-ea8": {
+    "__comp": "17896441",
+    "content": "8f8058de"
+  },
+  "/zh-CN/primitives/nft/bos/transfer-cf4": {
+    "__comp": "17896441",
+    "content": "298feec2"
+  },
+  "/zh-CN/primitives/nft/near-cli/buy-722": {
+    "__comp": "17896441",
+    "content": "36d0cf89"
+  },
+  "/zh-CN/primitives/nft/near-cli/list-for-sale-f7f": {
+    "__comp": "17896441",
+    "content": "c992c48b"
+  },
+  "/zh-CN/primitives/nft/near-cli/mint-60b": {
+    "__comp": "17896441",
+    "content": "bc44c69f"
+  },
+  "/zh-CN/primitives/nft/near-cli/query-b94": {
+    "__comp": "17896441",
+    "content": "7795363f"
+  },
+  "/zh-CN/primitives/nft/near-cli/transfer-b93": {
+    "__comp": "17896441",
+    "content": "78f4328e"
+  },
+  "/zh-CN/primitives/nft/smart-contract/buy-79c": {
+    "__comp": "17896441",
+    "content": "6f229258"
+  },
+  "/zh-CN/primitives/nft/smart-contract/mint-0ee": {
+    "__comp": "17896441",
+    "content": "ca5deea5"
+  },
+  "/zh-CN/primitives/nft/smart-contract/query-a24": {
+    "__comp": "17896441",
+    "content": "63e34a64"
+  },
+  "/zh-CN/primitives/nft/smart-contract/transfer-fcd": {
+    "__comp": "17896441",
+    "content": "697623b5"
+  },
+  "/zh-CN/primitives/nft/web-app/buy-212": {
+    "__comp": "17896441",
+    "content": "a3bd7f7b"
+  },
+  "/zh-CN/primitives/nft/web-app/list-for-sale-1c0": {
+    "__comp": "17896441",
+    "content": "192781c1"
+  },
+  "/zh-CN/primitives/nft/web-app/mint-a08": {
+    "__comp": "17896441",
+    "content": "766ddd79"
+  },
+  "/zh-CN/primitives/nft/web-app/query-755": {
+    "__comp": "17896441",
+    "content": "8a729093"
+  },
+  "/zh-CN/primitives/nft/web-app/transfer-7ab": {
+    "__comp": "17896441",
+    "content": "9bd94bb6"
+  },
+  "/zh-CN/primitives/oracles-9c3": {
+    "__comp": "17896441",
+    "content": "83eee8fc"
   },
   "/zh-CN/primitives/welcome-680": {
     "__comp": "17896441",

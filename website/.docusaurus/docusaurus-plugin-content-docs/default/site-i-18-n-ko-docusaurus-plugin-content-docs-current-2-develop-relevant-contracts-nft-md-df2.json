@@ -17,14 +17,5 @@
   "frontMatter": {
     "id": "nft",
     "title": "Non Fungible Tokens (NFT)"
-  },
-  "sidebar": "contracts",
-  "previous": {
-    "title": "Fungible Tokens (FT)",
-    "permalink": "/ko/develop/relevant-contracts/ft"
-  },
-  "next": {
-    "title": "Decentralized Oracles",
-    "permalink": "/ko/develop/relevant-contracts/oracles"
   }
 }

@@ -1,0 +1,18 @@
+{
+  "id": "primitives/ft/web-app/attach-to-call",
+  "title": "attach-to-call",
+  "description": "Example response",
+  "source": "@site/../docs/7.primitives/ft/web-app/attach-to-call.md",
+  "sourceDirName": "7.primitives/ft/web-app",
+  "slug": "/primitives/ft/web-app/attach-to-call",
+  "permalink": "/zh-CN/primitives/ft/web-app/attach-to-call",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/ft/web-app/attach-to-call.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "garikbesson",
+  "lastUpdatedAt": 1706635251,
+  "formattedLastUpdatedAt": "2024年1月30日",
+  "frontMatter": {}
+}
