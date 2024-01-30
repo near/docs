@@ -53,11 +53,6 @@ See the [metadata standard](https://nomicon.io/Standards/Tokens/NonFungibleToken
 Implement [events](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event) to be able to [track NFT mints in real time](../../4.tools/events.md).
 :::
 
-### Minting Collections
-Many times people want to create multiple 100 copies of an NFT (this is called a collection). In such cases, what you actually need to do is to mint 100 different NFTs with the same metadata (but different `token-id`).
-
-### Royalties
-You might have noticed that one of the parameters is a structure called royalties. Royalties enable you to create a list of users that should get paid when the token is sell in a marketplace. For example, if `anna` has `5%` of royalties, each time the NFT is sell, `anna` should get a 5% of the selling price.
 
 <hr class="subsection"/>
 

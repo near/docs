@@ -183,10 +183,26 @@ const sidebar = {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Standards & Primitives </small></b></span>"
     },
-    "develop/relevant-contracts/ft",
-    "develop/relevant-contracts/nft",
-    "develop/relevant-contracts/oracles",
-    "develop/relevant-contracts/dao",
+    {
+      "type": "link",
+      "label": "Fungible Tokens (FT) ↗",
+      "href": "/primitives/ft"
+    },
+    {
+      "type": "link",
+      "label": "Non-Fungible Tokens (NFT) ↗",
+      "href": "/primitives/nft"
+    },
+    {
+      "type": "link",
+      "label": "Autonomous Organizations (DAO)",
+      "href": "/primitives/dao"
+    },
+    {
+      "type": "link",
+      "label": "Oracles ↗",
+      "href": "/primitives/oracles"
+    },
     {
       "type": "html",
       "value": "<hr/>"
@@ -363,45 +379,22 @@ const sidebar = {
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Non Fungible Tokens (NFT) </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Standards </small></b></span>"
     },
-    "primitives/nft/using-nfts",
+    "primitives/ft",
+    "primitives/nft",
+    "primitives/linkdrop",
     {
       "type": "html",
       "value": "<hr/>"
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Fungible Tokens (FT) </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Community Apps </small></b></span>"
     },
-    "primitives/ft/using-fts",
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> DEX </small></b></span>"
-    },
-    "primitives/dex/using-dex",
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> DAO </small></b></span>"
-    },
-    "primitives/dao/using-dao",
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Linkdrops </small></b></span>"
-    },
-    "primitives/linkdrop/using-linkdrops"
+    "primitives/oracles",
+    "primitives/dao",
+    "primitives/dex",
   ],
   "tools": [
     "tools/welcome",
