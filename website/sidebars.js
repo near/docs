@@ -183,10 +183,26 @@ const sidebar = {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Standards & Primitives </small></b></span>"
     },
-    "develop/relevant-contracts/ft",
-    "develop/relevant-contracts/nft",
-    "develop/relevant-contracts/oracles",
-    "develop/relevant-contracts/dao",
+    {
+      "type": "link",
+      "label": "Fungible Tokens (FT) ↗",
+      "href": "/primitives/ft"
+    },
+    {
+      "type": "link",
+      "label": "Non-Fungible Tokens (NFT) ↗",
+      "href": "/primitives/nft"
+    },
+    {
+      "type": "link",
+      "label": "Autonomous Organizations (DAO)",
+      "href": "/primitives/dao"
+    },
+    {
+      "type": "link",
+      "label": "Oracles ↗",
+      "href": "/primitives/oracles"
+    },
     {
       "type": "html",
       "value": "<hr/>"
@@ -363,86 +379,22 @@ const sidebar = {
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Non Fungible Tokens (NFT) </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Standards </small></b></span>"
     },
-    "primitives/nft/introduction",
-    {
-      "Using NFTs": [
-        "primitives/nft/interacting/bos",
-        "primitives/nft/interacting/web-app",
-        "primitives/nft/interacting/smart-contract",
-        "primitives/nft/interacting/near-cli"
-      ]
-    },
-    "primitives/nft/additional-resources",
+    "primitives/ft",
+    "primitives/nft",
+    "primitives/linkdrop",
     {
       "type": "html",
       "value": "<hr/>"
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Fungible Tokens (FT) </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Community Apps </small></b></span>"
     },
-    "primitives/ft/introduction",
-    {
-      "Using FTs": [
-        "primitives/ft/interacting/bos",
-        "primitives/ft/interacting/web-app",
-        "primitives/ft/interacting/smart-contract",
-        "primitives/ft/interacting/near-cli"
-      ]
-    },
-    "primitives/ft/additional-resources",
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> DEX </small></b></span>"
-    },
-    "primitives/dex/introduction",
-    {
-      "Using DEX": [
-        "primitives/dex/interacting/bos",
-        "primitives/dex/interacting/web-app",
-        "primitives/dex/interacting/smart-contract",
-        "primitives/dex/interacting/near-cli"
-      ]
-    },
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> DAO </small></b></span>"
-    },
-    "primitives/dao/introduction",
-    {
-      "Using DAO": [
-        "primitives/dao/interacting/bos",
-        "primitives/dao/interacting/web-app",
-        "primitives/dao/interacting/smart-contract",
-        "primitives/dao/interacting/near-cli"
-      ]
-    },
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Linkdrops </small></b></span>"
-    },
-    "primitives/linkdrop/introduction",
-    {
-      "Creating Linkdrops": [
-        "primitives/linkdrop/interacting/bos",
-        "primitives/linkdrop/interacting/web-app",
-        "primitives/linkdrop/interacting/near-cli"
-      ]
-    }
+    "primitives/oracles",
+    "primitives/dao",
+    "primitives/dex",
   ],
   "tools": [
     "tools/welcome",
