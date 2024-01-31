@@ -35,7 +35,7 @@ Given the general-purpose nature of NEAR, function calls win the award for most 
 
 With this level of complexity, it's no longer useful to walk through an example, enumerating each (see `ext_costs` under `wasm_config` using the [`protocol_config`](/api/rpc/protocol#protocol-config) RPC endpoint) of the gas calculations as we go (you can research this yourself, [if you want](https://github.com/near/nearcore/pull/3038)). Instead, let's approach this from two other angles: ballpark comparisons to Ethereum, and getting accurate estimates with automated tests.
 
-<blockquote class="lesson">
+<blockquote className="lesson">
 **How much of the gas fee goes as a 30% reward to the smart contract account?**
 
 The NEAR Whitepaper mentions that [30% of all gas fees](https://near.org/papers/the-official-near-white-paper/) go to smart contract accounts on which the fees are expensed. 
@@ -188,7 +188,7 @@ The price of 1 unit of gas at this block was 5000 yoctoNEAR (10^-24 NEAR).
 
 ## Some closing thoughts from the whitepaper {#some-closing-thoughts-from-the-whitepaper}
 
-<blockquote class="info">
+<blockquote className="info">
 Fundamentally, the NEAR platform is a marketplace between willing participants.  On the supply side, operators of the validator nodes and other fundamental infrastructure need to be incentivized to provide these services which make up the “community cloud.”  On the demand side, the developers and end-users of the platform who are paying for its use need to be able to do so in a way which is simple, clear and consistent so it helps them.
 
 A blockchain-based cloud provides several specific resources to the applications which run atop it:

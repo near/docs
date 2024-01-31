@@ -11,13 +11,13 @@ import ContactUs from '@site/src/components/ContactUs.mdx';
 The RPC API allows you to communicate directly with the NEAR network. For example,
 tools such as [near-api-js](/tools/near-api-js/quick-reference) are just abstractions making RPC calls.
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ## RPC Providers
 
 There are multiple [RPC providers which you can choose from](./providers.md). These providers will work as intermediaries to help you interact with the NEAR network.
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ## NEAR RPC - Quick Links
 
@@ -37,6 +37,6 @@ You can access the JSON RPC 2.0 endpoints using [Postman](/api/rpc/setup#postman
 [JavaScript](/api/rpc/setup#javascript-setup), and [HTTPie](/api/rpc/setup#httpie-setup).
 :::
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 <ContactUs />

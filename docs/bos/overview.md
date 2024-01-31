@@ -34,7 +34,7 @@ The NEAR stack is based on three pillars:
 - [Blockchains](#blockchains): To store the component's code, as well as their assets and data.
 - [Gateways](#gateways): A simple way to render components anywhere.
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Components
 
@@ -42,7 +42,7 @@ The NEAR stack is based on three pillars:
 
 Developers can fork these apps and [compose them](./components.md#composing-components) to create full web applications.
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Blockchains
 
@@ -50,7 +50,7 @@ Components can call functions on any blockchain, with current support for all EV
 
 The source code for the apps is on NEAR, due to it's ability to very cheaply store HTML/CSS/JS (a few cents).
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Gateways
 

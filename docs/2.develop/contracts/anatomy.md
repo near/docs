@@ -36,7 +36,7 @@ Under the hood, the `NEAR Bindgen` decorator/macro traverses the class, generati
 2. Expose public methods, so they can be called externally.
 3. Serialize objects for internal storage and communication with external actors.
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### The State
 Each account has its own state (storage), which **only they can modify** but [anyone can see](../../4.tools/cli.md#near-view-state-near-view-state).
@@ -66,7 +66,7 @@ There are two ways to initialize the account's state, and they can co-exist:
 2. A **default state**, which will be used until `init` is invoked, or a method writes into the state
 
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Initialization Method
 To define an initialization method simply decorate it with the [initialization macro](#decorators--macros).
@@ -106,7 +106,7 @@ To make the initialization mandatory use `#[derive(PanicOnDefault)]` in the cont
   </TabItem>
 </Tabs>
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Default State
 Contracts can define a **default state** to use if no initialize method is called. This is, if any method is invoked
@@ -189,7 +189,7 @@ All the **public methods** are exposed to the network as the contract's interfac
   </TabItem>
 </Tabs>
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Public Methods
 Public methods can be categorized in three types: `init` methods, `view` methods, and `call` methods.
@@ -209,7 +209,7 @@ as `call` methods.
 By default `init` methods are public, make sure to [decorate them as `private`](#private-methods), or [batch call the initialization on deploy](../deploy.md#initializing-the-contract)
 :::
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Private Methods
 Sometimes you will want some methods to remain public, but only be callable by the contract's
@@ -240,7 +240,7 @@ For this, you can use the `private` macro/decorator.
   </TabItem>
 </Tabs>
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Payable Methods
 By default **all methods panic** if a user **attaches money** while calling them. To enable a
@@ -269,7 +269,7 @@ method to receive money use the payable decorator.
   </TabItem>
 </Tabs>
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 
 ### Input & Return Types

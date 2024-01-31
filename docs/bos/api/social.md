@@ -231,7 +231,7 @@ NEAR Social readily provides an indexer - a service that listen to actions in So
 
 The indexer is very useful, for example, to rapidly store and retrieve information on all comments for a post. Without the indexer, we would need to check all entries in the contract to see who answered, surely running out of GAS before completion.
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Indexing an Action
 To index an action we need to add the `index` key to the data being saved, within the `index` key we will save the `action` being indexed, alongside a `key` and a `value` that identifies this specific instance.
@@ -301,7 +301,7 @@ To index a like, the standard is to save the action `like`, with `{key: object-r
 
 </details>
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Retrieving Indexed Actions
 

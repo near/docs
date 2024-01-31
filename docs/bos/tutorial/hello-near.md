@@ -47,7 +47,7 @@ Lets create it in two steps:
 1. Build the HTML that will be rendered
 2. Add the logic to handle the method call
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### 1. HTML Components
 Use the following code to create a simple frontend, composed by a title, an input form to change the greeting, and a button to submit the change.
@@ -59,10 +59,10 @@ const greeting = Near.view(contract, "get_greeting", {});
 // Define components
 const greetingForm = (
   <>
-    <div class="border border-black p-3">
+    <div className="border border-black p-3">
       <label>Update greeting</label>
       <input placeholder="Howdy" onChange={onInputChange} />
-      <button class="btn btn-primary mt-2" onClick={onBtnClick}>
+      <button className="btn btn-primary mt-2" onClick={onBtnClick}>
         Save
       </button>
     </div>
@@ -74,13 +74,13 @@ const notLoggedInWarning = <p> Login to change the greeting </p>;
 // Render
 return (
   <>
-    <div class="container border border-info p-3">
-      <h3 class="text-center">
+    <div className="container border border-info p-3">
+      <h3 className="text-center">
         The contract says:
-        <span class="text-decoration-underline"> {greeting} </span>
+        <span className="text-decoration-underline"> {greeting} </span>
       </h3>
 
-      <p class="text-center py-2">
+      <p className="text-center py-2">
         Look at that! A greeting stored on the NEAR blockchain.
       </p>
 
@@ -98,7 +98,7 @@ There are two important things to notice in the code above:
 2. **context.accountId**: We check if `context.accountId` is set, which tells us if the user has logged in using their NEAR account, and thus can interact with NEAR contracts.
 :::
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### 2. Handling User's Input
 Having our component's view ready, we now need to define the logic for when the user inputs a new greeting and presses the `Submit` button. This is, we need to define the `onInputChange` and `onBtnClick` methods.
