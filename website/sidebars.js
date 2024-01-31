@@ -141,7 +141,6 @@ const sidebar = {
             "value": "<hr/>"
           },
           "develop/testing/kurtosis-localnet",
-          "develop/testing/workspaces-migration"
         ]
       },
       {
