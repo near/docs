@@ -158,6 +158,7 @@ const sidebar = {
           "id": "develop/contracts/security/welcome"
         },
         "items": [
+          "develop/contracts/security/checklist",
           "develop/contracts/security/storage",
           "develop/contracts/security/callbacks",
           "develop/contracts/security/one-yocto",
