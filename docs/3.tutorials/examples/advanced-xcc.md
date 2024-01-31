@@ -25,6 +25,11 @@ they **all get reverted**.
             url="https://github.com/near-examples/xcc-advanced/blob/main/contract/src/batch_actions.rs"
             start="7" end="19" />
   </Language>
+  <Language value="🌐 JavaScript" language="js">
+    <Github fname="index.js"
+          url="https://github.com/garikbesson/cross-contract-hello-js/blob/batch_actions/contract/src/contract.ts"
+          start="67" end="80" />
+  </Language>
 </CodeTabs>
 
 #### Getting the Last Response
@@ -36,6 +41,14 @@ action** from the chain.
     <Github fname="lib.rs"
             url="https://github.com/near-examples/xcc-advanced/blob/main/contract/src/batch_actions.rs"
             start="21" end="34" />
+  </Language>
+  <Language value="🌐 JavaScript" language="js">
+    <Github fname="callback"
+      url="https://github.com/garikbesson/cross-contract-hello-js/blob/batch_actions/contract/src/contract.ts"
+      start="82" end="93" />
+    <Github fname="promiseResult"
+      url="https://github.com/garikbesson/cross-contract-hello-js/blob/batch_actions/contract/src/contract.ts"
+      start="127" end="145" />
   </Language>
 </CodeTabs>
 
@@ -52,6 +65,11 @@ all in parallel. If one of them fails the rest **ARE NOT REVERTED**.
             url="https://github.com/near-examples/xcc-advanced/blob/main/contract/src/multiple_contracts.rs"
             start="18" end="56" />
   </Language>
+  <Language value="🌐 JavaScript" language="js">
+    <Github fname="index.js"
+          url="https://github.com/garikbesson/cross-contract-hello-js/blob/batch_actions/contract/src/contract.ts"
+          start="95" end="111" />
+  </Language>
 </CodeTabs>
 
 #### Getting All Responses
@@ -63,6 +81,14 @@ value returned by each call, or an error message.
     <Github fname="lib.rs"
             url="https://github.com/near-examples/xcc-advanced/blob/main/contract/src/multiple_contracts.rs"
             start="58" end="91" />
+  </Language>
+  <Language value="🌐 JavaScript" language="js">
+    <Github fname="callback"
+      url="https://github.com/garikbesson/cross-contract-hello-js/blob/batch_actions/contract/src/contract.ts"
+      start="113" end="125" />
+    <Github fname="promiseResult"
+      url="https://github.com/garikbesson/cross-contract-hello-js/blob/batch_actions/contract/src/contract.ts"
+      start="127" end="145" />
   </Language>
 </CodeTabs>
 
@@ -81,6 +107,11 @@ In this case, we call multiple contracts that will return the same type:
             url="https://github.com/near-examples/xcc-advanced/blob/main/contract/src/similar_contracts.rs"
             start="18" end="31" />
   </Language>
+  <Language value="🌐 JavaScript" language="js">
+    <Github fname="index.js"
+          url="https://github.com/garikbesson/cross-contract-hello-js/blob/batch_actions/contract/src/contract.ts"
+          start="95" end="111" />
+  </Language>
 </CodeTabs>
 
 #### Getting All Responses
@@ -92,5 +123,13 @@ results.
     <Github fname="lib.rs"
             url="https://github.com/near-examples/xcc-advanced/blob/main/contract/src/similar_contracts.rs"
             start="33" end="61" />
+  </Language>
+  <Language value="🌐 JavaScript" language="js">
+    <Github fname="callback"
+      url="https://github.com/garikbesson/cross-contract-hello-js/blob/batch_actions/contract/src/contract.ts"
+      start="113" end="125" />
+    <Github fname="promiseResult"
+      url="https://github.com/garikbesson/cross-contract-hello-js/blob/batch_actions/contract/src/contract.ts"
+      start="127" end="145" />
   </Language>
 </CodeTabs>
