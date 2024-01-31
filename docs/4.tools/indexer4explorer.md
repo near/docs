@@ -39,7 +39,7 @@ where r.receiver_account_id ='v1.faucet.nonofficial.testnet'
   and t.transaction_hash = r.originated_from_transaction_hash
 ```
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Users, Status, and Attached Money
 Query for all users that called `contribute` in `v1.faucet.nonofficial.testnet`, how much they attached to the call, and the transaction status.
@@ -54,7 +54,7 @@ where r.receiver_account_id ='v1.faucet.nonofficial.testnet'
   and r.receipt_id = eo.receipt_id
 ```
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Sent Money
 Query for all the transfers going out from `v1.faucet.nonofficial.testnet`.

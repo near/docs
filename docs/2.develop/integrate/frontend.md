@@ -169,7 +169,7 @@ Signing in is as simple as requesting the `wallet` object to `signIn`, the same 
 
 When the user clicks in the button, it will be asked to select a wallet and use it to login.
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Function Call Key
 
@@ -220,7 +220,7 @@ Remember that you can use the `wallet` to call methods in **any** contract. If y
 
 :::
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 
 ### Wallet Redirection
