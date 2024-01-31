@@ -30,7 +30,7 @@ Additionally, NEAR Components are chain-agnostic, making it a flexible solution 
 ## The Pillars of NEAR Stack
 
 The NEAR stack is based on three pillars: 
-- [Components](#components): Composable frontends that solve specific problems.
+- Components: Composable frontends that solve specific problems.
 - [Blockchains](#blockchains): To store the component's code, as well as their assets and data.
 - [Gateways](#gateways): A simple way to render components anywhere.
 
@@ -38,9 +38,9 @@ The NEAR stack is based on three pillars:
 
 ### Components
 
-[Components](./components.md) are small web 3 applications (think [Lido](tutorial/hello-lido.md), Uniswap, Aave) that are stored **entirely on-chain**.
+Components are small web 3 applications (think [Lido](tutorial/hello-lido.md), Uniswap, Aave) that are stored **entirely on-chain**.
 
-Developers can fork these apps and [compose them](./components.md#composing-components) to create full web applications.
+Developers can fork these apps and compose them to create full web applications.
 
 <hr className="subsection" />
 
