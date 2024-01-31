@@ -17,18 +17,20 @@ contracts.
 ## Starting Hello NEAR
 
 You have two options to start Hello NEAR:
+
 1. **Recommended:** use the app through Gitpod (a web-based interactive environment)
 2. Start the project locally by using `create-near-app`, our node-based utility.
 
 #### Gitpod
+
 Hello NEAR is available in gitpod. When selecting one, a new tab will open in your browser with a web-based IDE. Give it a minute to compile and deploy the contract, and then a frontend will pop-up for you to interact with the app (make sure the pop-up window is not blocked).
 
-| 🌐 JavaScript                                                                                                                                                      |  🦀 Rust                                                                                                                                                           | 
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | 
+| 🌐 JavaScript                                                                                                                                                      |  🦀 Rust                                                                                                                                                           |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-js.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-rust.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> |
 
-
 #### Create Near App (node)
+
 Hello NEAR can be created locally with the help of `create-near-app`. Follow the snippet bellow to create a local project.
 
 ```bash
@@ -40,27 +42,28 @@ and follow the instructions that appear on the screen.
 ---
 
 ## Interacting With Hello NEAR
-Go ahead and login with your NEAR account. If you don't have one, you will be able to create one in the moment. Once logged in, change the greeting and see how our Hello NEAR app greets you!
 
+Go ahead and login with your NEAR account. If you don't have one, you will be able to create one in the moment. Once logged in, change the greeting and see how our Hello NEAR app greets you!
 
 ![img](/docs/assets/examples/hello-near.png)
 *Frontend of Hello NEAR*
 
-
 ---
 
 ## Structure of a dApp
+
 Now that you understand what the dApp does, let us take a closer look to its structure:
 
 1. The frontend code lives in the `/frontend` folder.
 2. The smart contract code is in the `/contract` folder.
 
 ### Contract
+
 The contract presents 2 methods: `set_greeting` and `get_greeting`. The first one stores a `string` in the contract's parameter `greeting`, while the second one retrieves it. By default, the contract returns the message `"Hello"`.
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
-    <Github fname="contract.ts" 
+    <Github fname="contract.ts"
             url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts"
             start="4" end="18" />
   </Language>
@@ -72,6 +75,7 @@ The contract presents 2 methods: `set_greeting` and `get_greeting`. The first on
 </CodeTabs>
 
 ### Frontend
+
 The frontend is composed by a single HTML file (`/index.html`). This file defines the components displayed in the screen.
 
 The website's logic lives in `/assets/js/index.js`, which communicates with the contract through `/near-interface.js`. You will notice in `/assets/js/index.js` the following code:
@@ -80,10 +84,9 @@ The website's logic lives in `/assets/js/index.js`, which communicates with the 
   <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
             url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/index.js"
-            start="11" end="22" />
+            start="11" end="21" />
   </Language>
 </CodeTabs>
-
 
 It indicates our app, when it starts, to check if the user is already logged in and execute either `signedInFlow()` or `signedOutFlow()`.
 
@@ -97,7 +100,7 @@ go ahead and perform the tests present in the dApp through the command `yarn tes
 
 ### Unit test
 
-Unit tests check individual functions in the smart contract. Right now only rust implements unit testing. 
+Unit tests check individual functions in the smart contract. Right now only rust implements unit testing.
 
 <CodeTabs>
   <Language value="🦀 Rust" language="rust">
@@ -115,7 +118,7 @@ Integration tests are generally written in javascript. They automatically deploy
   <Language value="🌐 JavaScript" language="js">
     <Github fname="main.ava.ts"
             url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/sandbox-ts/src/main.ava.ts"
-            start="32" end="43" />
+            start="33" end="44" />
   </Language>
 </CodeTabs>
 

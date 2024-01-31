@@ -14,25 +14,26 @@ Our counter example is a friendly decentralized app that stores a number and exp
 ---
 
 ## Starting the Counter
+
 You have two options to start the Counter:
+
 1. **Recommended:** use the app through Gitpod (a web-based interactive environment)
 2. Clone the project locally .
-
 
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="🌐 JavaScript">
 
-| Gitpod                                                                                                                                                            | Clone locally                                         |
+| Codespaces                                                                                                                                                            | Clone locally                                         |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| <a href="https://gitpod.io/#https://github.com/near-examples/js-counter.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🌐 `https://github.com/near-examples/js-counter.git` |
+| [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/near-examples/counters) | 🌐 `https://github.com/near-examples/js-counter.git` |
 
   </TabItem>
 
   <TabItem value="🦀 Rust">
 
-| Gitpod                                                                                                                                                            | Clone locally                                         |
+| Codespaces                                                                                                                                                            | Clone locally                                         |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| <a href="https://gitpod.io/#https://github.com/near-examples/rust-counter.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🦀 `https://github.com/near-examples/rust-counter.git` |
+| [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/near-examples/counters) | 🦀 `https://github.com/near-examples/rust-counter.git` |
 
   </TabItem>
 
@@ -48,11 +49,13 @@ yarn
 yarn deploy
 yarn start
 ```
+
 Your contract will then be **compiled** and **deployed** to an **account** in the `testnet` network. When done, a browser window should open.
 
 ---
 
 ## Interacting With the Counter
+
 Go ahead and login with your NEAR account. If you don't have one, you will be able to create one in the moment. Once logged in, use the `+` and `-` buttons to increase and decrease the counter. Then, use the Gameboy buttons to reset it and make the counter blink an eye!
 
 ![img](/docs/assets/examples/count-on-near.png)
@@ -68,22 +71,24 @@ Now that you understand what the dApp does, let us take a closer look to its str
 2. The smart contract code is in the `/contract` folder.
 
 ### Contract
+
 The contract presents 4 methods: `get_num`, `increment`, `decrement`, and `reset`. The method `get_num` retrieves the current value, and the rest modify it.
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
-    <Github fname="contract.ts" 
+    <Github fname="contract.ts"
             url="https://github.com/near-examples/counters/blob/main/contract-ts/src/contract.ts"
             start="3" end="29" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/counters/blob/main/contract-rs/src/lib.rs"
-            start="5" end="36" />
+            start="5" end="35" />
   </Language>
 </CodeTabs>
 
 ### Frontend
+
 The frontend is composed by a single HTML file (`/index.html`). This file defines the components displayed in the screen.
 
 The website's logic lives in `/assets/js/index.js`, which communicates with the contract through `/near-interface.js`. You will notice in `/assets/js/index.js` the following code:
@@ -92,7 +97,7 @@ The website's logic lives in `/assets/js/index.js`, which communicates with the 
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="index.js"
             url="https://github.com/near-examples/counters/blob/main/frontend/index.js"
-            start="10" end="21" />            
+            start="10" end="21" />
   </Language>
 </CodeTabs>
 
@@ -108,7 +113,7 @@ go ahead and perform the tests present in the dApp through the command `yarn tes
 
 ### Unit test
 
-Unit tests check individual functions in the smart contract. Right now only Rust implements unit testing. 
+Unit tests check individual functions in the smart contract. Right now only Rust implements unit testing.
 
 <CodeTabs>
   <Language value="🦀 Rust" language="rust">
