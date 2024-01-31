@@ -31,7 +31,7 @@ export function Feature({ image, title, subtitle, url, highlight = false }) {
 
   return <>
     <h4>  </h4>
-    <a className="avatar" href={url} style={{ backgroundColor: highlight && "rgb(240, 255, 240)" }}>
+    <a className="avatar" href={url} style={{ color: highlight && "var(--ifm-color-primary)" }}>
       <img
         className="avatar__photo"
         src={require(`@site/static/docs/assets/welcome-pages/${image}`).default} />
