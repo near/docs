@@ -157,8 +157,6 @@ Particularly, the `Component` in the main page are wrappers around the `Widget` 
 
 That's it for our quickstart  tutorial. You have now seen a fully functional frontend that can talk with NEAR contracts and render Web3 components.
 
-<!-- In the following sections we dive deeper into what are [BOS components](../../bos/overview.md), how to [make your own gateway](../../bos/tutorial/gateway.md), and what are some of the [built-in components](../../bos/components.md). -->
-
 If you have any questions, do not hesitate in joining us on [Discord](https://near.chat). We regularly host Office Hours, in which you can join our voice channel and ask questions.
 
 Happy coding!
