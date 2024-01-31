@@ -25,13 +25,13 @@ Welcome! Smart contracts are pieces of **executable code** that live in a NEAR a
   <Column title="Examples & Tutorials">
       <Feature url="/tutorials/examples/guest-book" title="Guest-Book Example" 
                subtitle="Store multiple messages on-chain" image="guest-book.png" />
-      <Feature url="/tutorials/examples/cross-call" title="Cross-Calls Example"
+      <Feature url="/tutorials/examples/xcc" title="Cross-Calls Example"
                subtitle="Query and execute methods in other contracts" image="cross-call.png" />
       <Feature url="/tutorials/examples/coin-flip" title="Coin Flip Example"
                subtitle="Generate random numbers in a contract" image="random.png" />
       <Feature url="/tutorials/nfts/introduction" title="Zero-to-Hero NFT"
                subtitle="Build a NFT contract from scratch" image="nft-marketplace-rs.png" />
-      <Feature url="/tutorials/ft/introduction" title="Zero-to-Hero FT"
+      <Feature url="/tutorials/fts/introduction" title="Zero-to-Hero FT"
                subtitle="Build a FT contract from scratch" image="ft.png" />
 
 
