@@ -169,7 +169,6 @@ const sidebar = {
             "type": "html",
             "value": "<hr/>"
           },
-          "develop/contracts/security/audits",
           "develop/contracts/security/bounty"
         ]
       }
@@ -222,7 +221,6 @@ const sidebar = {
     },
     {
       "Tutorials": [
-        "tutorials/fts/simple-fts",
         {
           "Non Fungible Tokens": [
             "tutorials/nfts/minting-nfts",
