@@ -34,7 +34,7 @@ Since Validators validate all shards, high requirements are set for running them
 
 The current active Validators are available on the Explorer. The minimum seat price to become a block-producing validator is based on the 300th proposal. (If more than 300 proposals are submitted, the threshold will simply be the stake of the 300th proposal, provided that it’s larger than the minimum threshold of 25,500 $NEAR.) The current seat price to become a block-producing validator is updated live on the Explorer. Any validator nodes with stakes higher than the seat price can join the active set of Validators.
 
-<blockquote class="lesson">
+<blockquote className="lesson">
 <strong>Is there a plan to support GPU compute if certain validator nodes can offer that or is it just CPU?</strong><br /><br />
   
 We don't need GPU support as we are a POS chain and we require very little compute power.
@@ -54,7 +54,7 @@ Like Validators, Chunk-Only Producers will receive, at minimum, 4.5% annual rewa
 
 If you'd like to further explore Validators and Nodes in general, you can visit the [Dedicated Validator Documentation Site](https://near-nodes.io/).
 
-<blockquote class="lesson">
+<blockquote className="lesson">
 <strong>If a developer writes a vulnerable or malicious dApp, is a validator implicitly taking on risk?</strong><br /><br />
   
 No. We have handled the potential damages to the network on the protocol level. For example, we have a lot of limiters that constrain how much data you can pass into a function call or how much compute you can do in one function call, etc.

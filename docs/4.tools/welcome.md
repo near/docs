@@ -16,6 +16,6 @@ In this page you will find:
 5. Developer tools to deploy and interact with contracts such as the [NEAR CLI](cli.md) and [NEAR JavaScript API](/tools/near-api-js/quick-reference).
 
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 <ContactUs />

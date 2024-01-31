@@ -129,7 +129,7 @@ You can initialize your contract [during deployment](#deploying-the-contract) us
 ## Calling the Contract
 Once your contract is deployed you can interact with it right away using [NEAR CLI](../4.tools/cli.md).
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### View methods
 View methods are those that perform **read-only** operations. Calling these methods is free, and do not require to specify which account is being used to make the call:
@@ -154,7 +154,7 @@ View methods are those that perform **read-only** operations. Calling these meth
 View methods have by default 200 TGAS for execution
 :::
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Change methods
 Change methods are those that perform both read and write operations. For these methods we do need to specify the account being used to make the call,
