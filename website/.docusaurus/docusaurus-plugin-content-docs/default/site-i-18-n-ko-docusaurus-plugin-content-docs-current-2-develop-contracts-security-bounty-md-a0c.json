@@ -20,8 +20,8 @@
   },
   "sidebar": "contracts",
   "previous": {
-    "title": "감사 프로그램",
-    "permalink": "/ko/develop/contracts/security/audits"
+    "title": "난수",
+    "permalink": "/ko/develop/contracts/security/random"
   },
   "next": {
     "title": "방명록",

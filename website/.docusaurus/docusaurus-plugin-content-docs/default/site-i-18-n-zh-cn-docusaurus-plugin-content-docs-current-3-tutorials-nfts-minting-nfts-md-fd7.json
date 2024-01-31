@@ -21,8 +21,8 @@
   },
   "sidebar": "contracts",
   "previous": {
-    "title": "Minting Fungible Tokens",
-    "permalink": "/zh-CN/tutorials/fts/simple-fts"
+    "title": "Self Upgrade & State Migration",
+    "permalink": "/zh-CN/tutorials/examples/update-contract-migrate-state"
   },
   "next": {
     "title": "Minting Front-end",

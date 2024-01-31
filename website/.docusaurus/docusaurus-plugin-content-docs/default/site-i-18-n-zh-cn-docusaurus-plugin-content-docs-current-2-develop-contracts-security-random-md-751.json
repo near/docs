@@ -24,7 +24,7 @@
     "permalink": "/zh-CN/develop/contracts/security/reentrancy"
   },
   "next": {
-    "title": "Audit Program",
-    "permalink": "/zh-CN/develop/contracts/security/audits"
+    "title": "Bug Bounty Program",
+    "permalink": "/zh-CN/develop/contracts/security/bounty"
   }
 }

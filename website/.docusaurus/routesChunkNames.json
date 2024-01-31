@@ -5,17 +5,17 @@
       "plugin": "82d98fd4"
     }
   },
-  "/zh-CN/-029": {
+  "/zh-CN/-862": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "8b378508"
     }
   },
-  "/zh-CN/-124": {
+  "/zh-CN/-c58": {
     "__comp": "a7bd4aaa",
     "version": "935f2afb"
   },
-  "/zh-CN/-ca2": {
+  "/zh-CN/-0ab": {
     "__comp": "a94703ab"
   },
   "/zh-CN/api/rpc/access-keys-c54": {
@@ -405,10 +405,6 @@
   "/zh-CN/develop/contracts/quickstart-234": {
     "__comp": "17896441",
     "content": "f3a04dbc"
-  },
-  "/zh-CN/develop/contracts/security/audits-9a3": {
-    "__comp": "17896441",
-    "content": "a852e941"
   },
   "/zh-CN/develop/contracts/security/bounty-2d4": {
     "__comp": "17896441",
@@ -1450,7 +1446,7 @@
     "__comp": "17896441",
     "content": "656435cd"
   },
-  "/zh-CN/tutorials/fts/simple-fts-924": {
+  "/zh-CN/tutorials/fts/simple-fts-cfb": {
     "__comp": "17896441",
     "content": "4439072d"
   },

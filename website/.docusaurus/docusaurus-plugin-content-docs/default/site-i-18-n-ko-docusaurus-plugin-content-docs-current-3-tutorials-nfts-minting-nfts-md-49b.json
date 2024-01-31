@@ -21,8 +21,8 @@
   },
   "sidebar": "contracts",
   "previous": {
-    "title": "Minting Fungible Tokens",
-    "permalink": "/ko/tutorials/fts/simple-fts"
+    "title": "자체 업그레이드 및 상태 마이그레이션",
+    "permalink": "/ko/tutorials/examples/update-contract-migrate-state"
   },
   "next": {
     "title": "프론트엔드",

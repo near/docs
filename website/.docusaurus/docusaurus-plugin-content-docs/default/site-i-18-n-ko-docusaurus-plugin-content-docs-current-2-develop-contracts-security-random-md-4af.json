@@ -24,7 +24,7 @@
     "permalink": "/ko/develop/contracts/security/reentrancy"
   },
   "next": {
-    "title": "감사 프로그램",
-    "permalink": "/ko/develop/contracts/security/audits"
+    "title": "버그 바운티 프로그램",
+    "permalink": "/ko/develop/contracts/security/bounty"
   }
 }

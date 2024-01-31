@@ -24,7 +24,7 @@
     "permalink": "/zh-CN/tutorials/examples/advanced-xcc"
   },
   "next": {
-    "title": "Minting Fungible Tokens",
-    "permalink": "/zh-CN/tutorials/fts/simple-fts"
+    "title": "Minting NFTs",
+    "permalink": "/zh-CN/tutorials/nfts/minting-nfts"
   }
 }

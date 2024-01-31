@@ -17,14 +17,5 @@
   "frontMatter": {
     "id": "simple-fts",
     "title": "Minting Fungible Tokens"
-  },
-  "sidebar": "contracts",
-  "previous": {
-    "title": "Self Upgrade & State Migration",
-    "permalink": "/vi/tutorials/examples/update-contract-migrate-state"
-  },
-  "next": {
-    "title": "Mint NFT",
-    "permalink": "/vi/tutorials/nfts/minting-nfts"
   }
 }

@@ -9,15 +9,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '029'),
+    component: ComponentCreator('/zh-CN/', '862'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '124'),
+        component: ComponentCreator('/zh-CN/', 'c58'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', 'ca2'),
+            component: ComponentCreator('/zh-CN/', '0ab'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -590,12 +590,6 @@ export default [
               {
                 path: '/zh-CN/develop/contracts/quickstart',
                 component: ComponentCreator('/zh-CN/develop/contracts/quickstart', '234'),
-                exact: true,
-                sidebar: "contracts"
-              },
-              {
-                path: '/zh-CN/develop/contracts/security/audits',
-                component: ComponentCreator('/zh-CN/develop/contracts/security/audits', '9a3'),
                 exact: true,
                 sidebar: "contracts"
               },
@@ -2045,9 +2039,8 @@ export default [
               },
               {
                 path: '/zh-CN/tutorials/fts/simple-fts',
-                component: ComponentCreator('/zh-CN/tutorials/fts/simple-fts', '924'),
-                exact: true,
-                sidebar: "contracts"
+                component: ComponentCreator('/zh-CN/tutorials/fts/simple-fts', 'cfb'),
+                exact: true
               },
               {
                 path: '/zh-CN/tutorials/fts/skeleton',

@@ -17,14 +17,5 @@
   "frontMatter": {
     "id": "simple-fts",
     "title": "Minting Fungible Tokens"
-  },
-  "sidebar": "contracts",
-  "previous": {
-    "title": "자체 업그레이드 및 상태 마이그레이션",
-    "permalink": "/ko/tutorials/examples/update-contract-migrate-state"
-  },
-  "next": {
-    "title": "NFT 발행",
-    "permalink": "/ko/tutorials/nfts/minting-nfts"
   }
 }

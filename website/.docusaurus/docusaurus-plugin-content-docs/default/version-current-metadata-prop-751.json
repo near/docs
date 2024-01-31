@@ -506,6 +506,13 @@
         "items": [
           {
             "type": "link",
+            "label": "✅ Checklist",
+            "href": "/zh-CN/develop/contracts/security/checklist",
+            "docId": "develop/contracts/security/checklist",
+            "unlisted": false
+          },
+          {
+            "type": "link",
             "label": "Million Small Deposits",
             "href": "/zh-CN/develop/contracts/security/storage",
             "docId": "develop/contracts/security/storage",
@@ -556,13 +563,6 @@
           {
             "type": "html",
             "value": "<hr/>"
-          },
-          {
-            "type": "link",
-            "label": "Audit Program",
-            "href": "/zh-CN/develop/contracts/security/audits",
-            "docId": "develop/contracts/security/audits",
-            "unlisted": false
           },
           {
             "type": "link",
@@ -666,13 +666,6 @@
         "type": "category",
         "label": "Tutorials",
         "items": [
-          {
-            "type": "link",
-            "label": "Minting Fungible Tokens",
-            "href": "/zh-CN/tutorials/fts/simple-fts",
-            "docId": "tutorials/fts/simple-fts",
-            "unlisted": false
-          },
           {
             "type": "category",
             "label": "Non Fungible Tokens",
@@ -3253,12 +3246,6 @@
       "description": "NEAR accounts can host programs known as smart contracts. Smart contracts can store data, and expose methods so other users and contracts interact with them.",
       "sidebar": "contracts"
     },
-    "develop/contracts/security/audits": {
-      "id": "develop/contracts/security/audits",
-      "title": "Audit Program",
-      "description": "Pagoda’s Smart Contract Audit Program is an important step in expanding smart contract audits and enhancing ecosystem security. It allows projects to get an audit with a vetted firm in a timely manner.",
-      "sidebar": "contracts"
-    },
     "develop/contracts/security/bounty": {
       "id": "develop/contracts/security/bounty",
       "title": "Bug Bounty Program",
@@ -4706,8 +4693,7 @@
     "tutorials/fts/simple-fts": {
       "id": "tutorials/fts/simple-fts",
       "title": "Minting Fungible Tokens",
-      "description": "In this tutorial, you'll learn how to easily create your own Fungible Tokens (FT) without doing any software development by using a readily-available smart contract. This article will show you how to use an existing FT smart contract, and you'll learn how to mint fungible tokens and view them in your Wallet.",
-      "sidebar": "contracts"
+      "description": "In this tutorial, you'll learn how to easily create your own Fungible Tokens (FT) without doing any software development by using a readily-available smart contract. This article will show you how to use an existing FT smart contract, and you'll learn how to mint fungible tokens and view them in your Wallet."
     },
     "tutorials/fts/skeleton": {
       "id": "tutorials/fts/skeleton",

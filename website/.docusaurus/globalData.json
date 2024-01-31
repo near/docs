@@ -488,11 +488,6 @@
               "sidebar": "contracts"
             },
             {
-              "id": "develop/contracts/security/audits",
-              "path": "/zh-CN/develop/contracts/security/audits",
-              "sidebar": "contracts"
-            },
-            {
               "id": "develop/contracts/security/bounty",
               "path": "/zh-CN/develop/contracts/security/bounty",
               "sidebar": "contracts"
@@ -1678,8 +1673,7 @@
             },
             {
               "id": "tutorials/fts/simple-fts",
-              "path": "/zh-CN/tutorials/fts/simple-fts",
-              "sidebar": "contracts"
+              "path": "/zh-CN/tutorials/fts/simple-fts"
             },
             {
               "id": "tutorials/fts/skeleton",

@@ -20,8 +20,8 @@
   },
   "sidebar": "contracts",
   "previous": {
-    "title": "보안",
-    "permalink": "/ko/develop/contracts/security/welcome"
+    "title": "✅ 체크리스트",
+    "permalink": "/ko/develop/contracts/security/checklist"
   },
   "next": {
     "title": "교차 컨트랙트 호출",

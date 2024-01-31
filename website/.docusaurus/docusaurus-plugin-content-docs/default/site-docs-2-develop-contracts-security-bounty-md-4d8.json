@@ -20,8 +20,8 @@
   },
   "sidebar": "contracts",
   "previous": {
-    "title": "Audit Program",
-    "permalink": "/develop/contracts/security/audits"
+    "title": "Random Numbers",
+    "permalink": "/develop/contracts/security/random"
   },
   "next": {
     "title": "Guest Book",

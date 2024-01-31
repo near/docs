@@ -24,7 +24,7 @@
     "permalink": "/develop/contracts/security/reentrancy"
   },
   "next": {
-    "title": "Audit Program",
-    "permalink": "/develop/contracts/security/audits"
+    "title": "Bug Bounty Program",
+    "permalink": "/develop/contracts/security/bounty"
   }
 }

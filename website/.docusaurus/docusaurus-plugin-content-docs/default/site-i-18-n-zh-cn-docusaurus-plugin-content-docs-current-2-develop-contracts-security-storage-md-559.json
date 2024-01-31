@@ -20,8 +20,8 @@
   },
   "sidebar": "contracts",
   "previous": {
-    "title": "Security",
-    "permalink": "/zh-CN/develop/contracts/security/welcome"
+    "title": "✅ Checklist",
+    "permalink": "/zh-CN/develop/contracts/security/checklist"
   },
   "next": {
     "title": "Cross-Contract Calls",
