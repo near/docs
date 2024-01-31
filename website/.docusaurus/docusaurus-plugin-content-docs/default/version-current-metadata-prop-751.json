@@ -466,13 +466,6 @@
             "href": "/zh-CN/develop/testing/kurtosis-localnet",
             "docId": "develop/testing/kurtosis-localnet",
             "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Workspaces Migration",
-            "href": "/zh-CN/develop/testing/workspaces-migration",
-            "docId": "develop/testing/workspaces-migration",
-            "unlisted": false
           }
         ],
         "collapsed": true,
@@ -2798,11 +2791,6 @@
       "description": "With QueryAPI you can quickly create your own indexer by:",
       "sidebar": "indexers"
     },
-    "bos/components": {
-      "id": "bos/components",
-      "title": "Components",
-      "description": "NEAR allows you to create a decentralized frontend by writing and composing small applications known as Components."
-    },
     "bos/dev/bos-loader": {
       "id": "bos/dev/bos-loader",
       "title": "BOS Loader",
@@ -2963,11 +2951,6 @@
       "title": "Using IFrames",
       "description": "In this tutorial you'll learn how to use the iframe VM tag and the Iframe resizer library, so you can embed external HTML or use custom DOM elements when building NEAR components. You can use it along the rest of approved VM tags to simplify your component development.",
       "sidebar": "integrate"
-    },
-    "bos/welcome": {
-      "id": "bos/welcome",
-      "title": "Composable Multi-Chain Apps",
-      "description": "Build fully decentralized applications for all chains. Publish and get discovered by thousands of users. Embrace the power of community and web 3."
     },
     "concepts/advanced/indexers": {
       "id": "concepts/advanced/indexers",
@@ -3530,12 +3513,6 @@
       "id": "develop/testing/unit-test",
       "title": "Unit Testing",
       "description": "Unit tests allow you to test the contract methods individually. They are suitable to check the storage is updated correctly, and that methods return their expected values. They are written in the contract's language and execute locally.",
-      "sidebar": "contracts"
-    },
-    "develop/testing/workspaces-migration": {
-      "id": "develop/testing/workspaces-migration",
-      "title": "Migrating from Simulation Testing to Workspaces",
-      "description": "Why did we stop supporting Simulation Testing?",
       "sidebar": "contracts"
     },
     "develop/upgrade": {

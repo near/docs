@@ -11,9 +11,9 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/5.api/rpc/maintenance-windows.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "isoldo",
-  "lastUpdatedAt": 1674562249,
-  "formattedLastUpdatedAt": "Jan 24, 2023",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1706698360,
+  "formattedLastUpdatedAt": "Jan 31, 2024",
   "frontMatter": {
     "id": "maintenance-windows",
     "title": "Maintenance Windows"

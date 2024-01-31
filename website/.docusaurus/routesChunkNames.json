@@ -5,17 +5,17 @@
       "plugin": "82d98fd4"
     }
   },
-  "/zh-CN/-b5e": {
+  "/zh-CN/-029": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "8b378508"
     }
   },
-  "/zh-CN/-8c0": {
+  "/zh-CN/-124": {
     "__comp": "a7bd4aaa",
     "version": "935f2afb"
   },
-  "/zh-CN/-02f": {
+  "/zh-CN/-ca2": {
     "__comp": "a94703ab"
   },
   "/zh-CN/api/rpc/access-keys-c54": {
@@ -62,10 +62,6 @@
     "__comp": "17896441",
     "content": "0f8c7883"
   },
-  "/zh-CN/bos/-c03": {
-    "__comp": "17896441",
-    "content": "ec201e9b"
-  },
   "/zh-CN/bos/api/builtin-components-3ab": {
     "__comp": "17896441",
     "content": "d0c7b4cf"
@@ -97,10 +93,6 @@
   "/zh-CN/bos/community/indexers-d95": {
     "__comp": "17896441",
     "content": "3aaac6f5"
-  },
-  "/zh-CN/bos/components-8bf": {
-    "__comp": "17896441",
-    "content": "d0c1792b"
   },
   "/zh-CN/bos/dev/bos-loader-ff1": {
     "__comp": "17896441",
@@ -593,10 +585,6 @@
   "/zh-CN/develop/testing/unit-test-ff4": {
     "__comp": "17896441",
     "content": "c7c9882d"
-  },
-  "/zh-CN/develop/testing/workspaces-migration-89e": {
-    "__comp": "17896441",
-    "content": "1ed3402d"
   },
   "/zh-CN/develop/upgrade-12f": {
     "__comp": "17896441",

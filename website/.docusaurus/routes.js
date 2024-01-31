@@ -9,15 +9,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', 'b5e'),
+    component: ComponentCreator('/zh-CN/', '029'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '8c0'),
+        component: ComponentCreator('/zh-CN/', '124'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '02f'),
+            component: ComponentCreator('/zh-CN/', 'ca2'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -85,11 +85,6 @@ export default [
                 sidebar: "api"
               },
               {
-                path: '/zh-CN/bos/',
-                component: ComponentCreator('/zh-CN/bos/', 'c03'),
-                exact: true
-              },
-              {
                 path: '/zh-CN/bos/api/builtin-components',
                 component: ComponentCreator('/zh-CN/bos/api/builtin-components', '3ab'),
                 exact: true,
@@ -135,11 +130,6 @@ export default [
                 component: ComponentCreator('/zh-CN/bos/community/indexers', 'd95'),
                 exact: true,
                 sidebar: "indexers"
-              },
-              {
-                path: '/zh-CN/bos/components',
-                component: ComponentCreator('/zh-CN/bos/components', '8bf'),
-                exact: true
               },
               {
                 path: '/zh-CN/bos/dev/bos-loader',
@@ -862,12 +852,6 @@ export default [
               {
                 path: '/zh-CN/develop/testing/unit-test',
                 component: ComponentCreator('/zh-CN/develop/testing/unit-test', 'ff4'),
-                exact: true,
-                sidebar: "contracts"
-              },
-              {
-                path: '/zh-CN/develop/testing/workspaces-migration',
-                component: ComponentCreator('/zh-CN/develop/testing/workspaces-migration', '89e'),
                 exact: true,
                 sidebar: "contracts"
               },

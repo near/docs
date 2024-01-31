@@ -22,11 +22,11 @@
   },
   "sidebar": "contracts",
   "previous": {
-    "title": "Integration Test",
+    "title": "Integration Tests",
     "permalink": "/develop/testing/integration-test"
   },
   "next": {
-    "title": "Workspaces Migration",
-    "permalink": "/develop/testing/workspaces-migration"
+    "title": "Deploying and Using",
+    "permalink": "/develop/deploy"
   }
 }

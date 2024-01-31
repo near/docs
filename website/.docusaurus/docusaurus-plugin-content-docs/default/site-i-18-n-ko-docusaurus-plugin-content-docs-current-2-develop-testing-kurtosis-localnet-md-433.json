@@ -26,7 +26,7 @@
     "permalink": "/ko/develop/testing/integration-test"
   },
   "next": {
-    "title": "작업 공간(Workspace) 이동",
-    "permalink": "/ko/develop/testing/workspaces-migration"
+    "title": "배포 및 사용",
+    "permalink": "/ko/develop/deploy"
   }
 }

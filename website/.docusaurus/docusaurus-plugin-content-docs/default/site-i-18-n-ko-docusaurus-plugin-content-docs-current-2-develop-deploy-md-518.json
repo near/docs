@@ -21,8 +21,8 @@
   },
   "sidebar": "contracts",
   "previous": {
-    "title": "작업 공간(Workspace) 이동",
-    "permalink": "/ko/develop/testing/workspaces-migration"
+    "title": "로컬 개발 환경",
+    "permalink": "/ko/develop/testing/kurtosis-localnet"
   },
   "next": {
     "title": "컨트랙트 업데이트",

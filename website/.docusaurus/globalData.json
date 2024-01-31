@@ -104,10 +104,6 @@
               "sidebar": "indexers"
             },
             {
-              "id": "bos/components",
-              "path": "/zh-CN/bos/components"
-            },
-            {
               "id": "bos/dev/bos-loader",
               "path": "/zh-CN/bos/dev/bos-loader",
               "sidebar": "integrate"
@@ -240,10 +236,6 @@
               "id": "bos/tutorial/using-iframes",
               "path": "/zh-CN/bos/tutorial/using-iframes",
               "sidebar": "integrate"
-            },
-            {
-              "id": "bos/welcome",
-              "path": "/zh-CN/bos/"
             },
             {
               "id": "concepts/advanced/indexers",
@@ -710,11 +702,6 @@
             {
               "id": "develop/testing/unit-test",
               "path": "/zh-CN/develop/testing/unit-test",
-              "sidebar": "contracts"
-            },
-            {
-              "id": "develop/testing/workspaces-migration",
-              "path": "/zh-CN/develop/testing/workspaces-migration",
               "sidebar": "contracts"
             },
             {

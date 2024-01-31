@@ -11,9 +11,9 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/contracts/serialization.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Zion",
-  "lastUpdatedAt": 1668682832,
-  "formattedLastUpdatedAt": "Nov 17, 2022",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1706698360,
+  "formattedLastUpdatedAt": "Jan 31, 2024",
   "frontMatter": {
     "id": "serialization",
     "title": "Notes on Serialization"

@@ -11,9 +11,9 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/integrate/quickstart.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Damián Parrino",
-  "lastUpdatedAt": 1705582873,
-  "formattedLastUpdatedAt": "Jan 18, 2024",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1706698360,
+  "formattedLastUpdatedAt": "Jan 31, 2024",
   "frontMatter": {
     "id": "quickstart-frontend",
     "title": "Hello WebApp",

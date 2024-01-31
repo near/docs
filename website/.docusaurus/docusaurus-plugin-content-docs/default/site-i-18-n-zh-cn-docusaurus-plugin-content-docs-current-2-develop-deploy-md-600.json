@@ -21,8 +21,8 @@
   },
   "sidebar": "contracts",
   "previous": {
-    "title": "Workspaces Migration",
-    "permalink": "/zh-CN/develop/testing/workspaces-migration"
+    "title": "Local Development",
+    "permalink": "/zh-CN/develop/testing/kurtosis-localnet"
   },
   "next": {
     "title": "Updating Contracts",
