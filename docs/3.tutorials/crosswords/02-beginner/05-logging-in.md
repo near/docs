@@ -24,7 +24,7 @@ In this chapter, our smart contract will send 5 Ⓝ to the first person who solv
 :::note Better onboarding to come
 Later in this tutorial we won't require the user to have a NEAR account.
 
-Since logging in is important for many decentralized apps, we'll show how this is done in NEAR and how it's incredibly unique compared to other blockchains. 
+Since logging in is important for many decentralized apps, we'll show how this is done in NEAR and how it's incredibly unique compared to other blockchains.
 :::
 
 This transfer will occur when the first user to solve the puzzle calls the `submit_solution` method with the solution. During the execution of that function it will check that the user submitted the correct answer, then transfer the prize.
@@ -74,7 +74,7 @@ Let's look at this testnet account that has one full-access key and two function
 
 Let's look deeper into each key.
 
-#### First key:
+#### First key
 
 ```js
 {
@@ -102,7 +102,7 @@ The allowance on this key is intentionally large for demonstration purposes. `77
 
 So the key is simply allowed to use the allowance in NEAR on gas, deducting from the account for each function call.
 
-#### Second key:
+#### Second key
 
 ```js
 {
@@ -122,7 +122,7 @@ So the key is simply allowed to use the allowance in NEAR on gas, deducting from
 
 This second key specifies which methods can be called, and has a lower allowance.
 
-Note that the allowance for this key (a quarter of a NEAR) is the default allowance when a person "logs in" in with the NEAR Wallet. 
+Note that the allowance for this key (a quarter of a NEAR) is the default allowance when a person "logs in" in with the NEAR Wallet.
 
 In NEAR, "logging in" typically means adding a key like this to your account. We'll cover this more in a moment.
 
@@ -157,7 +157,7 @@ So signing a message is fine, but what if we could do better?
 
 With NEAR, we can leverage access keys to improve a user's login experience and give the power back to the user.
 
-If I log into the [Guest Book example site](https://github.com/near-examples/guest-book-js), I create a unique key just for that dApp, adding it to my account. When I'm done I can remove the key myself. If I suspect someone has control of my key (if a laptop is stolen, for example) I can remove the key as long as I have a full-access key in my control.
+If I log into the [Guest Book example site](https://github.com/near-examples/guest-book-examples), I create a unique key just for that dApp, adding it to my account. When I'm done I can remove the key myself. If I suspect someone has control of my key (if a laptop is stolen, for example) I can remove the key as long as I have a full-access key in my control.
 
 Logging in with NEAR truly gives the end user control of their account and how they interact with dApps, and does so on the protocol level.
 
