@@ -110,7 +110,7 @@ npm install -g near-cli
 npm install -g near-cli
 ```
 
-<blockquote class="info">
+<blockquote className="info">
 <strong>heads up</strong><br /><br />
 
 Copy/pasting can be a bit odd using `WSL`.
@@ -520,7 +520,7 @@ near delete-key example-acct.testnet Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1
 - arguments: `accountId` `--masterAccount`
 - options: `--initialBalance` `--publicKey` `--newLedgerKey` 
 
-<blockquote class="warning">
+<blockquote className="warning">
 <strong>heads up</strong><br /><br />
 
 This command will only allow the creation of [subaccounts](/concepts/basics/accounts/model#subaccounts) of the `--masterAccount`. You can, however, create a [top-level account](/concepts/basics/accounts/model#top-level-accounts) if the length of the account ID is greater than 31 characters. This is most commonly used for [implicit account](/concepts/basics/accounts/model#implicit-accounts) creation.

@@ -232,7 +232,7 @@ Sub-accounts are simply useful for organizing your accounts (e.g. `dao.project.n
   When you create an account from within a contract, it has no keys by default. If you don't explicitly [add keys](#add-keys) to it or [deploy a contract](#deploy-a-contract) on creation then it will be [locked](../../1.concepts/basics/accounts/access-keys.md#locked-accounts).
 :::
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 #### Creating Other Accounts
 Accounts can only create immediate sub-accounts of themselves.

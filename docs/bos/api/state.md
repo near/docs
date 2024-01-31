@@ -71,7 +71,7 @@ useEffect(() => {
 return (
   <div>
     <p>You clicked {count} times</p>
-    <p class="alert alert-danger" hidden={!visible}>
+    <p className="alert alert-danger" hidden={!visible}>
       You clicked more than 5 times
     </p>
     <button onClick={() => setCount(count + 1)}>Click me</button>

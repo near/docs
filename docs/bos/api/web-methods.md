@@ -31,7 +31,7 @@ return res.body;
 
 </WidgetEditor>
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 #### Async Version
 

@@ -95,7 +95,7 @@ See the [metadata standard](https://nomicon.io/Standards/Tokens/NonFungibleToken
 Values of gas and deposit might vary depending on which NFT contract you are calling.
 :::
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Minting Collections
 Many times people want to create multiple 100 copies of an NFT (this is called a collection). In such cases, what you actually need to do is to mint 100 different NFTs with the same metadata (but different `token-id`).
@@ -104,7 +104,7 @@ Many times people want to create multiple 100 copies of an NFT (this is called a
 Notice that [minting in Mintbase](#minting-a-nft) allows you to pass a `num_to_mint` parameter.
 :::
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Royalties
 You might have noticed that one of the parameters is a structure called royalties. Royalties enable you to create a list of users that should get paid when the token is sell in a marketplace. For example, if `anna` has `5%` of royalties, each time the NFT is sell, `anna` should get a 5% of the selling price.
@@ -172,7 +172,7 @@ Natively, only NEAR tokens (Ⓝ) can be attached to a method calls. However, the
 Optionally, a [`memo` parameter](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core#nft-interface) can be passed to provide more information to your contract.
 :::
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### How Does it Work?
 Assume you want to attach an NFT (🎫) to a call on the receiver contract. The workflow is as follows:

@@ -63,7 +63,7 @@ You can also create a DAO by interacting with the `sputnik-dao` contract.
   </TabItem>
 </Tabs>
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Voting policy
 Currently, DAOs support two different types of [voting policies](https://github.com/near-daos/sputnik-dao-contract#voting-policy): `TokenWeight`, and `RoleWeight`. 
