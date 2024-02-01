@@ -69,34 +69,6 @@ module.exports = {
     [
       'docusaurus-plugin-remote-content',
       {
-        // options here
-        name: 'dx-content', // used by CLI, must be path safe
-        sourceBaseUrl: 'https://raw.githubusercontent.com/near/DX/main/',
-        outDir: '../docs/2.develop',
-        documents: ['README.md'],
-        noRuntimeDownloads: true,
-        modifyContent(filename, content) {
-          // get everything after ## BOS
-          content = content.substring(
-            content.indexOf(
-              'An overview of essential repositories when building on NEAR Protocol.'
-            )
-          );
-          return {
-            filename: 'github-overview.md',
-            content: `---
-id: github-overview
-title: NEAR Developer Repositories
----
-
-${content}`, // <-- this last part adds in the rest of the content, which would otherwise be discarded
-          };
-        }
-      },
-    ],
-    [
-      'docusaurus-plugin-remote-content',
-      {
         name: 'near-changelog',
         sourceBaseUrl:
           'https://raw.githubusercontent.com/near/near-releases/main/reports/',
