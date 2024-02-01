@@ -33,8 +33,6 @@ Welcome! Smart contracts are pieces of **executable code** that live in a NEAR a
                subtitle="Build a NFT contract from scratch" image="nft-marketplace-rs.png" />
       <Feature url="/tutorials/fts/introduction" title="Zero-to-Hero FT"
                subtitle="Build a FT contract from scratch" image="ft.png" />
-
-
   </Column>
 
   <Column title="Related Resources">
