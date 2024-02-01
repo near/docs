@@ -33,10 +33,6 @@ article a[href^="http"]::after {
     margin-left: 0.3rem;
 }
 
-.cards a[href^="http"]::after {
-    content: "";
-}
-
 .features a[href^="http"]::after {
     content: "";
 }
@@ -92,6 +88,10 @@ strong {
     border-radius: 0;
 }
 
+.cards a[href^="http"]::after {
+    content: "";
+}
+
 a:hover {
     text-decoration: none;
 }
@@ -139,7 +139,6 @@ img+em,
 }
 
 /* Language selection Tabs*/
-
 .language-tabs li:hover {
     background-color: transparent;
 }
@@ -159,21 +158,7 @@ img+em,
     background-color: transparent;
 }
 
-/* columns */
-.col {
-    padding: 0 calc(var(--ifm-spacing-horizontal)/2);
-}
-
-.col:last-child {
-    padding: 0 0 0 calc(var(--ifm-spacing-horizontal)/2);
-}
-
-.col:first-child {
-    padding: 0 calc(var(--ifm-spacing-horizontal)/2) 0 0;
-}
-
 /* navbar height overrides */
-
 [data-theme='light'] .navbar {
     background-color: #f8f9fa;
 }
@@ -231,14 +216,18 @@ h4 {
 }
 
 article {
-    margin: 1rem 3rem;
+    margin: 1.8rem 3rem;
 }
 
 .menu {
     padding: .7rem .5rem !important;
 }
 
-.theme-doc-breadcrumbs{
+.theme-doc-toc-mobile {
+    display: none;
+}
+
+.theme-doc-breadcrumbs {
     margin-bottom: 1.5rem !important;
 }
 
@@ -258,20 +247,21 @@ footer a {
     color: white;
 }
 
-.theme-edit-this-page{
+.theme-edit-this-page {
     color: var(--near-color-royal);
 }
 
 .avatar {
-    color: var(--ifm-font-color-base)
+    color: var(--ifm-font-color-base);
+    margin: 1rem auto;
 }
 
 .avatar img {
     border-radius: 0%;
     display: block;
-    height: var(--ifm-avatar-photo-size);
     overflow: hidden;
-    width: var(--ifm-avatar-photo-size);
+    height: 3rem;
+    width: 3rem;
 }
 
 .avatar__photo {
@@ -354,6 +344,32 @@ iframe+em {
 
     .navbar__search-input {
         width: 9rem
+    }
+}
+
+@media (max-width: 996px) {
+    article {
+        margin: 0.5rem 1.5rem;
+    }
+
+    .col {
+        flex-basis: max-content !important;
+        padding: 0 calc(var(--ifm-spacing-horizontal)/2);
+    }
+}
+
+@media (min-width: 996px) {
+    /* columns */
+    .col, .col:only-child {
+        padding: 0 calc(var(--ifm-spacing-horizontal)/2);
+    }
+
+    .col:last-child {
+        padding: 0 0 0 calc(var(--ifm-spacing-horizontal)/2);
+    }
+
+    .col:first-child {
+        padding: 0 calc(var(--ifm-spacing-horizontal)/2) 0 0;
     }
 }
 
