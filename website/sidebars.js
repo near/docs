@@ -25,6 +25,11 @@ const sidebar = {
       ]
     },
     {
+      "Account Abstraction": [
+        "concepts/account-abstraction/chain-signatures",
+      ]
+    },
+    {
       "Transactions": [
         "concepts/basics/transactions/overview",
         {
