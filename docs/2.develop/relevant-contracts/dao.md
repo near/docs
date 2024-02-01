@@ -52,7 +52,7 @@ When the vote policy is `RoleWeight(role)`, the vote weigh is computed as "one o
 
 Both voting policies further include a "threshold" for passing a proposal, which can be a ratio or a fixed number. The ratio indicates that you need a proportion of people/tokens to approve the proposal (e.g. half the people need to vote, and to vote positively). A fixed number indicated that you need a specific number of votes/tokens to pass the proposal (e.g. 3 people/tokens are enough to approve the proposal).
 
-<hr class="subsection"/>
+<hr className="subsection"/>
 
 ## Adding a Proposal
 By default, anyone can add a proposal to the DAO, but a minimum of 1Ⓝ needs to be attached as a bond. This however can be changed by [setting roles in the DAO](https://github.com/near-daos/sputnik-dao-contract#roles-and-permissions). The type of proposals that can be added [is predefined](https://github.com/near-daos/sputnik-dao-contract#proposal-types), and include actions such as:
@@ -77,7 +77,7 @@ Each action has its own kind of arguments. The complete list of actions can be [
   </TabItem>
 </Tabs>
 
-<hr class="subsection"/>
+<hr className="subsection"/>
 
 ## Acting on a Proposal
 Once a proposal is added, **council members** can act on them calling the `act_proposal` method. The available actions are one of the following: AddProposal, RemoveProposal, VoteApprove, VoteReject, VoteRemove, Finalize, or MoveToHub.

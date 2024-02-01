@@ -112,7 +112,7 @@ error: `Cannot deserialize the contract state`, in which case you can choose to:
 2. Rollback to the previous contract code
 3. Add a method to migrate the contract's state
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### The Migration Method
 If you have no option but to migrate the state, then you need to implement a method that:
@@ -124,7 +124,7 @@ If you have no option but to migrate the state, then you need to implement a met
 This is how DAOs [update themselves](https://github.com/near-daos/sputnik-dao-contract/blob/main/sputnikdao2/src/upgrade.rs#L59)
 :::
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Example: Guest Book Migration
 

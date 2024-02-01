@@ -74,12 +74,12 @@ The contract presents 2 methods: `add_message` and `get_message`.
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="contract.ts" 
-            url="https://github.com/near-examples/guest-book-js/blob/master/contract/src/contract.ts"
+            url="https://github.com/near-examples/guest-book-examples/blob/main/contract-ts/src/contract.ts"
             start="4" end="24" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/guest-book-rust/blob/main/contract/src/lib.rs"
+            url="https://github.com/near-examples/guest-book-examples/blob/main/contract-rs/src/lib.rs"
             start="29" end="50" />
   </Language>
   
@@ -94,8 +94,8 @@ You will notice in `/assets/js/index.js` the following code:
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
-            url="https://github.com/near-examples/guest-book-rust/blob/main/frontend/index.js"
-            start="15" end="25" />
+            url="https://github.com/near-examples/guest-book-examples/blob/main/frontend/index.js"
+            start="17" end="27" />
   </Language>
 </CodeTabs>
 
@@ -117,7 +117,7 @@ Unit tests check individual functions in the smart contract. Right now only rust
 <CodeTabs>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/guest-book-rust/blob/main/contract/src/lib.rs"
+            url="https://github.com/near-examples/guest-book-examples/blob/main/contract-rs/src/lib.rs"
             start="63" end="86" />
   </Language>
 </CodeTabs>
@@ -129,7 +129,7 @@ Integration tests are generally written in JavaScript. They automatically deploy
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="main.ava.ts"
-            url="https://github.com/near-examples/guest-book-js/blob/master/integration-tests/src/main.ava.ts"
+            url="https://github.com/near-examples/guest-book-examples/blob/main/contract-ts/sandbox-ts/src/main.ava.ts"
             start="39" end="59" />
   </Language>
 </CodeTabs>

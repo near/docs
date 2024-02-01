@@ -17,7 +17,7 @@ These accounts also have the permission to create subaccounts such as `nft.alice
 For more information see the **[accounts section](/concepts/basics/accounts/model)**.
 :::
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ## Keys
 
@@ -32,7 +32,7 @@ Full access keys allow for full control of the account. You can send funds, crea
 For more information see the **[access keys section](/concepts/basics/accounts/access-keys)**.
 :::
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Contracts
 
@@ -44,7 +44,7 @@ As an example, benji could have the root account `benji.near`. He then stores al
 For more information see a guide on **[deploying contracts](/sdk/rust/promises/deploy-contract)**.
 :::
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Storage
 

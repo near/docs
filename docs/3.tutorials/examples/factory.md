@@ -46,7 +46,7 @@ The [Generic Factory](https://github.com/near-examples/factory-rust/) presents a
 1. Make sure you have installed [rust](https://www.rust-lang.org/).
 2. Install the [`NEAR CLI`](https://github.com/near/near-cli#setup)
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Build and Deploy the Factory
 
@@ -63,7 +63,7 @@ cat ./neardev/dev-account
 # e.g. dev-1659899566943-21539992274727
 ```
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Deploy the Stored Contract Into a Sub-Account
 
@@ -81,7 +81,7 @@ near view sub.<factory-account> get_beneficiary
 # expected response is: <account-to-be-beneficiary>
 ```
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Update the Stored Contract
 
@@ -108,7 +108,7 @@ near call <factory-account> update_stored_contract "$BYTES" --base64 --accountId
 Factories are an interesting concept, here we further explain some of their implementation aspects,
 as well as their limitations.
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Automatically Creating Accounts
 
@@ -124,7 +124,7 @@ This means that the factory:
 It is important to remember that, while `factory.testnet` can create `sub.factory.testnet`, it has
 no control over it after its creation.
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### The Update Method
 

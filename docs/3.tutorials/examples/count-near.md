@@ -73,12 +73,12 @@ The contract presents 4 methods: `get_num`, `increment`, `decrement`, and `reset
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="contract.ts" 
-            url="https://github.com/near-examples/js-counter/blob/master/contract/src/contract.ts"
+            url="https://github.com/near-examples/counters/blob/main/contract-ts/src/contract.ts"
             start="3" end="29" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/rust-counter/blob/master/contract/src/lib.rs"
+            url="https://github.com/near-examples/counters/blob/main/contract-rs/src/lib.rs"
             start="5" end="36" />
   </Language>
 </CodeTabs>
@@ -91,7 +91,7 @@ The website's logic lives in `/assets/js/index.js`, which communicates with the 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="index.js"
-            url="https://github.com/near-examples/js-counter/blob/master/frontend/index.js"
+            url="https://github.com/near-examples/counters/blob/main/frontend/index.js"
             start="10" end="21" />            
   </Language>
 </CodeTabs>
@@ -113,7 +113,7 @@ Unit tests check individual functions in the smart contract. Right now only Rust
 <CodeTabs>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/rust-counter/blob/master/contract/src/lib.rs"
+            url="https://github.com/near-examples/counters/blob/main/contract-rs/src/lib.rs"
             start="48" end="69" />
   </Language>
 </CodeTabs>
@@ -128,7 +128,7 @@ in `tests/integration-tests`.
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="main.test.js"
-            url="https://github.com/near-examples/js-counter/blob/master/integration-tests/src/main.ava.ts"
+            url="https://github.com/near-examples/counters/blob/main/contract-ts/sandbox-ts/src/main.ava.ts"
             start="37" end="61" />
   </Language>
 </CodeTabs>
