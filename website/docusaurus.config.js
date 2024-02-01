@@ -180,7 +180,7 @@ module.exports = {
           position: "right"
         },
         {
-          href: '/develop/github-overview',
+          href: 'https://github.com/near',
           position: 'right',
           className: 'header-github-link',
           'aria-label': 'GitHub repository',
