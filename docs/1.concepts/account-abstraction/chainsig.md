@@ -10,10 +10,7 @@ import TabItem from '@theme/TabItem';
 Chain Signatures are a method to allow a smart contract to call an async method. For example:
 
 ```rust
-async fn sign(
-    payload: Bytes,
-    key_derivation: Bytes,
-    key_type: ECDSA) -> Signature
+    pub fn sign(payload: [u8; 32], path: String) -> Signature {
 ```
 
 The signature is calculated on the data payload using a user-provided key. The signature output is always the same, as long as the caller and payload remains unchanged.
