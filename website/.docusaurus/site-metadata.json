@@ -47,12 +47,7 @@
       "name": "docusaurus-plugin-sass",
       "version": "0.2.5"
     },
-    "docusaurus-plugin-remote-content-dx": {
-      "type": "package",
-      "name": "docusaurus-plugin-remote-content",
-      "version": "4.0.0"
-    },
-    "docusaurus-plugin-remote-content-changelog": {
+    "docusaurus-plugin-remote-content-near-changelog": {
       "type": "package",
       "name": "docusaurus-plugin-remote-content",
       "version": "4.0.0"

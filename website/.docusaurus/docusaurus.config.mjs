@@ -81,19 +81,7 @@ export default {
     [
       "docusaurus-plugin-remote-content",
       {
-        "name": "dx",
-        "sourceBaseUrl": "https://raw.githubusercontent.com/near/DX/main/",
-        "outDir": "../docs/2.develop",
-        "documents": [
-          "README.md"
-        ],
-        "noRuntimeDownloads": true
-      }
-    ],
-    [
-      "docusaurus-plugin-remote-content",
-      {
-        "name": "changelog",
+        "name": "near-changelog",
         "sourceBaseUrl": "https://raw.githubusercontent.com/near/near-releases/main/reports/",
         "outDir": "/blog",
         "documents": [
@@ -452,7 +440,7 @@ export default {
           "position": "right"
         },
         {
-          "href": "/develop/github-overview",
+          "href": "https://github.com/near",
           "position": "right",
           "className": "header-github-link",
           "aria-label": "GitHub repository"
