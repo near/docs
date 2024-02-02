@@ -13,6 +13,10 @@
 [data-theme="dark"] {
     --ifm-color-primary: #82aaff;
     --near-color-royal: #82aaff;
+
+    hr{
+        background-color: #2d2d2d;
+    }
 }
 
 [data-theme='light'] li hr {
@@ -317,6 +321,7 @@ iframe+em {
     background-color: #f6f8fa !important;
 }
 
+/* Github Logo */
 .header-github-link:hover {
     opacity: 0.6;
 }
