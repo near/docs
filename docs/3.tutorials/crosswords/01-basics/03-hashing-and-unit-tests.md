@@ -3,6 +3,7 @@ sidebar_position: 4
 sidebar_label: "Hash the solution, unit tests, and an init method"
 title: "Introduction to basic hashing and adding unit tests"
 ---
+import {Github} from "@site/src/components/codetabs"
 
 import batchCookieTray from '/docs/assets/crosswords/batch-of-actions--dobulyo.near--w_artsu.jpg';
 
@@ -26,9 +27,7 @@ As mentioned in the first section of this **Basics** chapter, our smart contract
 
 We'll add a dependency to the [hex crate](https://crates.io/crates/hex) to make things easier. As you may remember, dependencies live in the manifest file.
 
-```rust reference
-https://github.com/near-examples/crossword-tutorial-chapter-1/blob/481a83f0c90398f3234ce8006af4e232d6c779d7/contract/Cargo.toml#L10-L12
-```
+<Github language="rust" start="10" end="12" url="https://github.com/near-examples/crossword-tutorial-chapter-1/blob/481a83f0c90398f3234ce8006af4e232d6c779d7/contract/Cargo.toml" />
 
 Let's write a unit test that acts as a helper during development. This unit test will sha256 hash the input **"near nomicon ref finance"** and print it in a human-readable, hex format. (We'll typically put unit tests at the bottom of the `lib.rs` file.)
 
@@ -59,7 +58,9 @@ Take a look at different formatting traits that are covered in the [`std` Rust d
 
 Run the unit tests with the command:
 
-    cargo test -- --nocapture
+```
+cargo test -- --nocapture
+```
 
 You'll see this output:
 
@@ -72,13 +73,15 @@ test tests::debug_get_hash ... ok
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 ```
 
-This means when you sha256 the input "near nomicon ref finance" it produces the hash:
+This means when you sha256 the input **"near nomicon ref finance"** it produces the hash:
 `69c2feb084439956193f4c21936025f14a5a5a78979d67ae34762e18a7206a0f`
 
 :::tip Note on the test flags
 You may also run tests using:
 
-    cargo test
+```
+cargo test
+```
 
 Note that the test command we ran had additional flags. Those flags told Rust *not to hide the output* from the tests. You can read more about this in [the cargo docs](https://doc.rust-lang.org/cargo/commands/cargo-test.html#display-options). Go ahead and try running the tests using the command above, without the additional flags, and note that we won't see the debug message.
 :::
@@ -89,9 +92,7 @@ The unit test above is meant for debugging and quickly running snippets of code.
 
 Let's add this unit test (inside the `mod tests {}` block, under our previous unit test) and analyze it:
 
-```rust reference
-https://github.com/near-examples/crossword-tutorial-chapter-1/blob/d7699cf35092024fe11719b68788436c82fe82af/contract/src/lib.rs#L63-L93
-```
+<Github language="rust" start="63" end="93" url="https://github.com/near-examples/crossword-tutorial-chapter-1/blob/5bce1c2a604fcb179e9789de1f299063f91abb4d/contract/src/lib.rs" />
 
 The first few lines of code will be used commonly when writing unit tests. It uses the `VMContextBuilder` to create some basic context for a transaction, then sets up the testing environment.
 
@@ -103,12 +104,17 @@ This unit test uses the [`assert_eq!`](https://doc.rust-lang.org/std/macro.asser
 
 Again, we can run all the unit tests with:
 
-    cargo test -- --nocapture
+```
+cargo test -- --nocapture
+```
 
 :::tip Run only one test
 To only run this latest test, use the command:
 
-    cargo test check_guess_solution -- --nocapture
+```
+cargo test check_guess_solution -- --nocapture
+```
+
 :::
 
 ## Modifying `set_solution`
@@ -119,9 +125,7 @@ Let's have the solution be set once, right after deploying the smart contract.
 
 Here we'll use the [`#[near_bindgen]` macro](https://docs.rs/near-sdk/latest/near_sdk/attr.near_bindgen.html) on a function called `new`, which is a common pattern.
 
-```rust reference
-https://github.com/near-examples/crossword-tutorial-chapter-1/blob/94f42e75cf70ed2aafb9c29a1faa1e21f079a49e/contract/src/lib.rs#L10-L17
-```
+<Github language="rust" start="10" end="17" url="https://github.com/near-examples/crossword-tutorial-chapter-1/blob/94f42e75cf70ed2aafb9c29a1faa1e21f079a49e/contract/src/lib.rs" />
 
 Let's call this method on a fresh contract.
 
@@ -156,9 +160,7 @@ This is close to what we want, but what if a person deploys their smart contract
 Batch Actions are common in this instance, where we want to deploy and call an initialization function. They're also common when using a factory pattern, where a subaccount is created, a smart contract is deployed to it, a key is added, and a function is called.
 
 Here's a truncated snippet from a useful (though somewhat advanced) repository with a wealth of useful code:
-```rust reference
-https://github.com/near/core-contracts/blob/1720c0cfee238974ebeae8ad43076abeb951504f/staking-pool-factory/src/lib.rs#L172-L177
-```
+<Github language="rust" start="172" end="177" url="https://github.com/near/core-contracts/blob/1720c0cfee238974ebeae8ad43076abeb951504f/staking-pool-factory/src/lib.rs" />
 
 We'll get into Actions later in this tutorial, but in the meantime here's a handy [reference from the spec](https://nomicon.io/RuntimeSpec/Actions.html).
 :::
@@ -192,12 +194,12 @@ In the next section we'll add a simple frontend for our single, hardcoded crossw
 
 We'll also modify our `guess_solution` to return a boolean value, which will also make things easier for our frontend.
 
-```rust reference
-https://github.com/near-examples/crossword-tutorial-chapter-1/blob/94f42e75cf70ed2aafb9c29a1faa1e21f079a49e/contract/src/lib.rs#L19-L34
-```
+<Github language="rust" start="19" end="34" url="https://github.com/near-examples/crossword-tutorial-chapter-1/blob/94f42e75cf70ed2aafb9c29a1faa1e21f079a49e/contract/src/lib.rs" />
 
 The `get_solution` method can be called with:
 
-    near view crossword.friend.testnet get_solution
+```
+near view crossword.friend.testnet get_solution
+```
 
 In the next section we'll add a simple frontend. Following chapters will illustrate more NEAR concepts built on top of this idea.

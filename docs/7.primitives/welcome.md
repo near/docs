@@ -11,13 +11,6 @@ Welcome! Here you will find blockchain primitives such as Fungible Tokens (FT), 
 
 These primitives are the building blocks of the NEAR ecosystem. They are designed to be composable and easy to use.
 
-<FeatureList>
-  <Column title="Tokens">
-    <Feature url="/primitives/nft/introduction" title="Non-Fungible Tokens" subtitle="How to interact with NFT" image="nft.png" />
-    <Feature url="/primitives/ft/introduction" title="Fungible Tokens" subtitle="How to interact with FT" image="ft.png" />
-  </Column>
-</FeatureList>
-
 ---
 
 <ContactUs />

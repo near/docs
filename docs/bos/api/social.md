@@ -1,39 +1,63 @@
 ---
 id: social
-title: Overview
+title: Social Interactions
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import {WidgetEditor} from "@site/src/components/social-widget"
 
-At the core of NEAR social interactions there is the [SocialDB smart contract](https://github.com/NearSocial/social-db) (currently deployed at [social.near](https://nearblocks.io/address/social.near)).
+NEAR components can natively communicate with the [SocialDB smart contract](https://github.com/NearSocial/social-db) (currently deployed at [social.near](https://nearblocks.io/address/social.near)).
 
-B.O.S provides a convenient API to get data from the SocialDB contract, composed by four methods:
+The `SocialDB` is a contract that stores `key-value` pairs, and is used mostly to store social-related data, such as `posts`, `likes`, or `profiles`.
 
-- [`Social.get`](#socialget)
-- [`Social.getr`](#socialgetr)
-- [`Social.index`](#socialindex)
-- [`Social.keys`](#socialkeys)
-- [`Social.set`](#socialset)
+:::tip
+Besides user data, the `SocialDB` contract stores **all existing NEAR components**.
+:::
 
 ---
 
 ## Social.get
 
-`Social.get` fetches the data from the SocialDB contract by calling `get` and returns the data.
-While the data is fetching the returned value equals to `null`.
+`Social.get` queries a key from the SocialDB contract and returns the data. The key being queried can contain wildcards.
 
-:::note
-If the path pattern is a single key, it will try to unwrap the object until the first wildcard.
-:::
+For example:
 
-The method takes up to 3 arguments:
+  - `alice.near/profile/**`  will match the entire profile data of account alice.near.
+  - `alice.near/profile/*` will match all the fields of the profile, but not the nested objects.
+  - `alice.near/profile/name` will match only the name field of the profile.
+  - `*/widget/*` will match all the widgets of all the accounts.
 
- | param      | required     | type               | description                  |
- |------------|--------------|--------------------|------------------------------|
- | `patterns` | **required** | string / string[]  | the path pattern(s)          |
- | `finality` | _optional_   | `"final"` / number | the block height or finality |
- | `options`  | _optional_   | object             | the `options` object.        |
+<br />
+
+<WidgetEditor>
+
+```js
+// Ask for the `profile` key of the influencer.testnet account
+const profile = Social.get("influencer.testnet/profile/*");
+
+// Ask a component from the influencer.testnet account
+const widget = Social.get("influencer.testnet/widget/Greeter");
+
+if(profile === null || widget === null) return "Loading ..."
+
+return (
+  <div>
+    <p>Profile: {JSON.stringify(profile)}</p>
+    <p>Widgets: {JSON.stringify(widget)} </p>
+  </div>
+);
+```
+
+</WidgetEditor>
+
+
+<details markdown="1">
+<summary> Parameters </summary>
+
+| param      | required     | type               | description                  |
+|------------|--------------|--------------------|------------------------------|
+| `patterns` | **required** | string / string[]  | the path pattern(s)          |
+| `finality` | _optional_   | `"final"` / number | the block height or finality |
+| `options`  | _optional_   | object             | the `options` object.        |
 
 :::info options object
 
@@ -46,72 +70,46 @@ The block height or finality can be used to get the data at a specific block hei
 If the block height or finality is not specified, the data will be fetched at the `optimistic` finality (the latest block height).
 
 For block height and finality `final`, instead of calling the NEAR RPC directly, the VM uses the Social API Server to fetch the data.
+
 Social API server indexes the data for SocialDB and allows to fetch the data at any block height with additional options.
+
 It also allows returning more data than an RPC call because it's not restricted by the gas limit.
 In general, the API server also serves data faster than the NEAR RPC, because it doesn't execute the contract code in a virtual machine.
 
-`Social.get` options are similar to the SocialDB's `get` API.
+</details>
 
-#### Examples
+:::tip
+While the data is fetching, `Social.get` returns `null`.
+:::
 
-For example, if the path pattern is `mob.near/widget/*`, the `Social.get` will unwrap the object and return the following:
-
-<Tabs>
-<TabItem value="request" label="Request" default>
-
-
-```js
-const data = Social.get("mob.near/widget/*");
-```
-
-</TabItem>
-<TabItem value="response" label="Response">
-
-```json
-{
-  "HelloWorld": "return <div>Hello, World!</div>;",
-  "HelloUsername": "return <div>Hello, {props.username}!</div>;"
-}
-```
-
-</TabItem>
-</Tabs>
-
-
-If the path pattern is `mob.near/widget/HelloWorld`, the `Social.get` will unwrap the object and return the actual value:
-
-<Tabs>
-<TabItem value="request" label="Request" default>
-
-
-```js
-const data = Social.get("mob.near/widget/HelloWorld");
-```
-
-</TabItem>
-<TabItem value="response" label="Response">
-
-```json
-"return <div>Hello, World!</div>;"
-```
-
-</TabItem>
-</Tabs>
-
-
-It's helpful that you don't have to manually unwrap object.
 
 ---
 
 ## Social.getr
-
 `Social.getr` is just a wrapper helper for `Social.get`, it appends `**` to each of the path pattern.
 
- | param      | required     | type               | description                  |
- |------------|--------------|--------------------|------------------------------|
- | `patterns` | **required** | string / string[]  | the path pattern(s)          |
- | `finality` | _optional_   | `"final"` / number | the block height or finality |
- | `options`  | _optional_   | object             | the `options` object.        |
+<WidgetEditor>
+
+```js
+const profile = Social.getr("influencer.testnet/profile");
+
+return (
+  <div>
+    <p>Profile: {JSON.stringify(profile)}</p>
+  </div>
+);
+```
+
+</WidgetEditor>
+
+<details markdown="1">
+<summary> Parameters </summary>
+
+| param      | required     | type               | description                  |
+|------------|--------------|--------------------|------------------------------|
+| `patterns` | **required** | string / string[]  | the path pattern(s)          |
+| `finality` | _optional_   | `"final"` / number | the block height or finality |
+| `options`  | _optional_   | object             | the `options` object.        |
 
 :::info options object
 
@@ -120,43 +118,36 @@ It's helpful that you don't have to manually unwrap object.
 
 :::
 
-#### Examples
-
-For example, if the path pattern is `mob.near/profile`, `Social.getr` will call `Social.get` with the path pattern `mob.near/profile/**`.
-
-<Tabs>
-<TabItem value="request" label="Request" default>
-
-
-```js
-const data = Social.getr("mob.near/profile");
-```
-
-</TabItem>
-<TabItem value="response" label="Response">
-
-```json
-"return <div>Hello, World!</div>;"
-```
-
-</TabItem>
-</Tabs>
-
+</details>
 
 ---
 
 ## Social.keys
 
-It calls the SocialDB's `keys` API and returns the data. While the data is fetching the returned value equals to `null`.
-The keys contract doesn't unwrap the object, so the returned data is the same as the SocialDB's `keys` API.
+The `keys` method allows to get the list of keys that match a pattern. It's useful for querying the data without reading values.
+
+It also has an additional `options` field that can be used to specify the return type and whether to return deleted keys.
+
+<WidgetEditor height="80">
+
+```js
+const data = Social.keys(`influencer.testnet/profile/*`, "final");
+
+return JSON.stringify(data)
+```
+
+</WidgetEditor>
+
+<details markdown="1">
+<summary> Parameters </summary>
 
 `Social.keys` takes up to 3 arguments:
 
- | param      | required     | type               | description                  |
- |------------|--------------|--------------------|------------------------------|
- | `patterns` | **required** | string / string[]  | the path pattern(s)          |
- | `finality` | _optional_   | `"final"` / number | the block height or finality |
- | `options`  | _optional_   | object             | the `options` object.        |
+| param      | required     | type               | description                  |
+|------------|--------------|--------------------|------------------------------|
+| `patterns` | **required** | string / string[]  | the path pattern(s)          |
+| `finality` | _optional_   | `"final"` / number | the block height or finality |
+| `options`  | _optional_   | object             | the `options` object.        |
 
 :::info options object
 
@@ -167,38 +158,174 @@ The keys contract doesn't unwrap the object, so the returned data is the same as
 
 :::
 
+</details>
+
 :::tip
 The Social API server supports custom options `return_type: "History"`. For each matching key, it will return an array containing all the block heights when the value was changed in ascending order.
 It can be used for building a feed, where the values are overwritten. 
 :::
 
-#### Examples
+---
 
-<Tabs>
-<TabItem value="request" label="Request" default>
+## Social.set
+
+Takes a `data` object and commits it to SocialDB. The data object can contain multiple keys, and each key can contain multiple values.
+
+Importantly, a user can only commit to **their own** space in `SocialDB` (e.g. `alice.near` can only write in `alice.near/**`), except if [**given explicit permission**](https://github.com/NearSocial/social-db#permissions) by the owner of another space. 
+
+Each time a user wants to commit data, they will be prompted to confirm the action. On confirming, the user can choose to not be asked again in the future.
+
+<WidgetEditor>
 
 ```js
-const data = Social.keys(`${accountId}/post/meme`, "final", {
-  return_type: "History",
-});
+const onClick = () => {
+  Social.set({
+    post: {
+      main: JSON.stringify({
+        type: "md",
+        text: "I've read the docs!"
+      })
+    }
+  })
+}
+
+if(!context.accountId) return "Please login...";
+
+return <>
+  <p> Save a message showing some love to the NEAR Docs </p>
+  <button onClick={onClick}> Save the Message </button>
+</>
 ```
 
-</TabItem>
-<TabItem value="response" label="Response">
+</WidgetEditor>
 
-```json
-"return <div>Hello, World!</div>;"
-```
+<details markdown="1">
+<summary> Parameters </summary>
 
-</TabItem>
-</Tabs>
+`Social.set` arguments:
 
+ | param     | required     | type   | description                                                                                        |
+ |-----------|--------------|--------|----------------------------------------------------------------------------------------------------|
+ | `data`    | **required** | object | the data object to be committed. Similar to `CommitButton`, it shouldn't start with an account ID. |
+ | `options` | _optional_   | object | optional object.                                                                                   |
+
+:::info options object
+
+- `force` _(optional)_: whether to overwrite the data.
+- `onCommit` _(optional)_: function to trigger on successful commit. Will pass the
+data that was written (including `accountID`).
+- `onCancel` _(optional)_: function to trigger if the user cancels the commit.
+
+:::
+
+</details>
+
+:::tip
+By default `Social.set` will omit saving data that is already saved (e.g. if the user already liked a post, it won't save the like again). To force saving the data, pass the `force` option.
+:::
 
 ---
 
 ## Social.index
+NEAR Social readily provides an indexer - a service that listen to actions in SocialDB, and caches them so they can be retrieved without needing to interact with the contract.
 
-Returns the array of matched indexed values. Ordered by `blockHeight`.
+The indexer is very useful, for example, to rapidly store and retrieve information on all comments for a post. Without the indexer, we would need to check all entries in the contract to see who answered, surely running out of GAS before completion.
+
+<hr className="subsection" />
+
+### Indexing an Action
+To index an action we need to add the `index` key to the data being saved, within the `index` key we will save the `action` being indexed, alongside a `key` and a `value` that identifies this specific instance.
+
+<WidgetEditor>
+
+```js
+// General form of an indexed action
+// {
+//   index: {
+//     actionName: JSON.stringify({ key, value })
+//   }
+// }
+
+const onClick = () => {
+  Social.set({
+    index: {
+      readDocs: JSON.stringify({key: "docs", value: "like"})
+    } ,
+  })
+}
+
+return <>
+  {context.accountId ?
+  <>
+    <p> Index an action showing some love to the NEAR Docs </p>
+    <button onClick={onClick}> Index Action </button>
+  </> :
+  <p> Login to index an action </p>}
+</>
+```
+
+</WidgetEditor>
+
+In the example above we index a `docs` action. In this case the `action` is `docs`, and the `key` that identifies it is `"read"`.
+
+<details markdown="1">
+
+<summary> Standards </summary>
+
+#### Indexing a Post
+To index a post, the standard is to save the action `post`, with `{key: "main", value: {type: "md"}`.
+
+```js
+{
+  index: {
+    post: JSON.stringify({
+      key: "main",
+      value: {type: "md"}
+    })
+  }
+}
+```
+
+#### Indexing a Like
+To index a like, the standard is to save the action `like`, with `{key: object-representing-the-post, value: {type: "like" }}`
+
+```js
+{
+  index: {
+    like: JSON.stringify({
+      key: {type: 'social', path: 'influencer.testnet/post/main', blockHeight: 152959480 },
+      value: {type: "like"}})
+  }
+}
+```
+
+</details>
+
+<hr className="subsection" />
+
+### Retrieving Indexed Actions
+
+To retrieve indexed actions we use the `Social.index` method. It takes the `action` and the `key` as arguments, and returns an array of all the indexed values alongside the `blockHeight` in which they were indexed, and which user made the action.
+
+
+<WidgetEditor>
+
+```js
+const readDocs = Social.index("readDocs", "docs")
+
+return <>
+  <p> Number of indexed "readDocs" actions with key "docs": {readDocs.length} </p>
+
+  <b>Indexed actions</b>
+  {JSON.stringify(readDocs)}
+</>
+```
+
+</WidgetEditor>
+
+
+<details markdown="1">
+<summary> Parameters </summary>
 
 `Social.index` arguments:
 
@@ -218,170 +345,4 @@ Returns the array of matched indexed values. Ordered by `blockHeight`.
 
 :::
 
-#### Examples
-
-<Tabs>
-<TabItem value="request" label="Request" default>
-
-```js
-return Social.index("test", "test-key-2");
-```
-
-```js
-return Social.index("test", "test-key-2", {
-  accountId: "mob.near"
-});
-```
-
-```js
-return Social.index("test", "test-key-2", {
-  accountId: ["mob.near", "root.near"]
-});
-```
-
-</TabItem>
-<TabItem value="response" label="Response">
-
-```json
-[
-    {
-        "accountId": "mob.near",
-        "blockHeight": 78672789,
-        "value": "test-value-1"
-    },
-    {
-        "accountId": "mob.near",
-        "blockHeight": 78672797,
-        "value": "test-value-1"
-    },
-    {
-        "accountId": "mob.near",
-        "blockHeight": 78672974,
-        "value": "test-value-3"
-    }
-]
-```
-
-</TabItem>
-</Tabs>
-
----
-
-## Social.set
-
-Takes a `data` object and commits it to SocialDB. It works similarly to
-the `CommitButton` by spawning the modal window prompt to save data, but
-it doesn't have to be triggered through the commit button component. It
-allows you to write more flexible code that relies on async promises and
-use other events and components. Overall it enables more flexibility
-when committing to SocialDB. For example, you can commit when Enter key
-pressed.
-
-`Social.set` arguments:
-
- | param     | required     | type   | description                                                                                        |
- |-----------|--------------|--------|----------------------------------------------------------------------------------------------------|
- | `data`    | **required** | object | the data object to be committed. Similar to `CommitButton`, it shouldn't start with an account ID. |
- | `options` | _optional_   | object | optional object.                                                                                   |
-
-:::info options object
-
-- `force` _(optional)_: whether to overwrite the data.
-- `onCommit` _(optional)_: function to trigger on successful commit. Will pass the
-data that was written (including `accountID`).
-- `onCancel` _(optional)_: function to trigger if the user cancels the commit.
-
-:::
-
-<details>
-
-<summary > Ability to skip confirmation </summary>
-
-When a modal window to confirm a commit is shown, it has a toggle to
-select whether you want to confirm the action every time, or don't show
-the confirm window for similar data.
-
-By default for new data the toggle is set to on, which means the user will not be prompted to
-confirm the data for the next time. It remembers the decision locally
-and will be default to this decision next time (in case the user decides
-to not skip). If the user approves the commit with the toggle on, then the
-next commit with similar data will skip the confirmation window. The
-permission is given per widget source.
-
-:::note
-Similar data means the same top level keys on the data. Except for the
-4 top level keys: ` graph`, `post`, `index` and `settings`. For these
-keys, the second level key will be used. More keys can be added later,
-once new standards added.
-:::
-
-For example the follow button widget uses the following keys:
-```json
-{
-    "graph": {
-      "follow": ...
-    },
-    "index": {
-      "graph": ...
-      "notify": ...
-    }
-  }
-```
-
-If it attempts to modify something else, the confirmation modal will be
-shown again.
-
-![saving data](https://user-images.githubusercontent.com/470453/205456503-7c0db525-7f61-4ead-8591-2b6d86065fa4.png)
-
 </details>
-
-
-#### Examples
-
-Example on using `CommitButton` and `Social.set` with a regular button.
-Note, both use `force`
-
-<Tabs>
-<TabItem value="request" label="Request" default>
-
-```js
-State.init({ commitLoading: false });
-
-const data = { experimental: { test: "test" } };
-
-const Loading = (
-  <span
-    className="spinner-grow spinner-grow-sm me-1"
-    role="status"
-    aria-hidden="true"
-  />
-);
-
-return (
-  <div>
-    <CommitButton force data={data}>
-      CommitButton
-    </CommitButton>
-    <button
-      disabled={state.commitLoading}
-      onClick={() => {
-        State.update({ commitLoading: true });
-        Social.set(data, {
-          force: true,
-          onCommit: () => {
-            State.update({ commitLoading: false });
-          },
-          onCancel: () => {
-            State.update({ commitLoading: false });
-          },
-        });
-      }}
-    >
-      {state.commitLoading && Loading}Social.set
-    </button>
-  </div>
-);
-```
-
-</TabItem>
-</Tabs>

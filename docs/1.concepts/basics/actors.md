@@ -10,7 +10,7 @@ There are 3 main actors interacting to form the NEAR ecosystem:
 
 <!-- To set the stage, we're building a "base-layer blockchain," or a layer-one, meaning that it's on the same level of the ecosystem as projects like Ethereum or Cosmos. That means everything in the ecosystem is built on the NEAR blockchain, including your application. -->
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ## Users
 Users can have one or multiple [NEAR accounts](./accounts/introduction.md), which they can use to:
@@ -19,7 +19,7 @@ Users can have one or multiple [NEAR accounts](./accounts/introduction.md), whic
 2. **Execute** [decentralized apps](https://awesomenear.com) stored in the network, known as [smart contracts](./accounts/smartcontract.md).
 3. **Develop** their own decentralized app and store it in the network.
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ## Validators
 Validators are people distributed around the world, running the infrastructure that underlies the NEAR network. They serve two main jobs:

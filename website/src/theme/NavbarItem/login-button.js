@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { useWallet } from '@theme/Gateway/wallet-selector';
+import { useWallet } from '@theme/scripts/wallet-selector';
 import styles from './btn.module.css';
 
 export default function LoginButton(props) {

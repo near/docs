@@ -23,7 +23,7 @@ Created by NEAR, the [Near Explorer](https://nearblocks.io) enables to check inf
 ![NEAR Explorer](/docs/assets/explorers/near-explorer.png)
 *Main page of [NEAR Explorer](https://nearblocks.io)*
 
-<hr class="subsection"/>
+<hr className="subsection"/>
 
 ## Stats Gallery
 Created by the community, [Stats Gallery](https://stats.gallery) gamifies the experience of looking to an account, adding levels and badges based on the account's activity. One of its
@@ -32,7 +32,7 @@ best features is that it allows you to see the contract's methods.
 ![Stats Gallery](/docs/assets/explorers/stats-gallery.png)
 *Account view in [Stats Gallery](https://stats.gallery)*
 
-<hr class="subsection"/>
+<hr className="subsection"/>
 
 ## NearBlocks
 
@@ -41,7 +41,7 @@ Created by the community, [NearBlocks](https://nearblocks.io/) enables to check 
 ![NearBlocks](/docs/assets/explorers/nearblocks.png)
 *Main page of [NearBlocks](https://nearblocks.io/)*
 
-<hr class="subsection"/>
+<hr className="subsection"/>
 
 ## Nearscope
 
@@ -50,7 +50,7 @@ Created by the community, [NearBlocks](https://nearblocks.io/) enables to check 
 ![Nearscope](/docs/assets/explorers/nearscope.png)
 *Main page of [Nearscope](https://nearscope.net/)*
 
-<hr class="subsection"/>
+<hr className="subsection"/>
 
 ## DappLooker
 
@@ -60,7 +60,7 @@ Created by the community, [NearBlocks](https://nearblocks.io/) enables to check 
 *Main page of [DappLooker](https://dapplooker.com/)*
 
 
-<hr class="subsection"/>
+<hr className="subsection"/>
 
 ## Pikespeak
 

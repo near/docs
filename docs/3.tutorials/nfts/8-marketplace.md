@@ -3,6 +3,7 @@ id: marketplace
 title: Marketplace
 sidebar_label: Marketplace
 ---
+import {Github} from "@site/src/components/codetabs"
 
 In this tutorial, you'll learn the basics of an NFT marketplace contract where you can buy and sell non-fungible tokens for $NEAR. In the previous tutorials, you went through and created a fully fledged NFT contract that incorporates all the standards found in the [NFT standard](https://nomicon.io/Standards/NonFungibleToken). 
 
@@ -63,9 +64,7 @@ This file outlines what information is stored on the contract as well as some ot
 
 The first function you'll look at is the initialization function. This takes an `owner_id` as the only parameter and will default all the storage collections to their default values.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/lib.rs#L85-L105
-```
+<Github language="rust" start="85" end="105" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/lib.rs" />
 
 ### Storage management model {#storage-management-model}
 
@@ -91,9 +90,7 @@ You might be thinking about the scenario when a sale is purchased. What happens 
 
 With this behavior in mind, the following two functions outline the logic.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/lib.rs#L110-L173
-```
+<Github language="rust" start="110" end="173" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/lib.rs" />
 
 In this contract, the storage required for each sale is 0.01 NEAR but you can query that information using the `storage_minimum_balance` function. In addition, if you wanted to check how much storage a given account has paid, you can query the `storage_balance_of` function.
 
@@ -107,15 +104,11 @@ This file is responsible for the logic used to put NFTs for sale. If you remembe
 
 The first important thing to note is the `SaleArgs` struct. This is what the market contract is expecting the message that the user passes into `nft_approve` on the NFT contract to be. This outlines the sale price in yoctoNEAR for the NFT that is listed.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/nft_callbacks.rs#L5-L10
-```
+<Github language="rust" start="5" end="10" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/nft_callbacks.rs" />
 
 Next, we'll look at the `nft_on_approve` function which is called via a cross-contract call by the NFT contract. This will make sure that the signer has enough storage to cover adding another sale. It will then attempt to get the `SaleArgs` from the message and create the listing.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/nft_callbacks.rs#L32-L134
-```
+<Github language="rust" start="32" end="134" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/nft_callbacks.rs" />
 
 ## sale.rs {#sale-rs}
 
@@ -125,25 +118,19 @@ Now that you're familiar with the process of both adding storage and listing NFT
 
 It's important to understand what information the contract is storing for each sale object. Since the marketplace has many NFTs listed that come from different NFT contracts, simply storing the token ID would not be enough to distinguish between different NFTs. This is why you need to keep track of both the token ID and the contract by which the NFT came from. In addition, for each listing, the contract must keep track of the approval ID it was given to transfer the NFT. Finally, the owner and sale conditions are needed.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/sale.rs#L7-L18
-```
+<Github language="rust" start="7" end="18" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/sale.rs" />
 
 ### Removing sales {#removing-sales}
 
 In order to remove a listing, the owner must call the `remove_sale` function and pass the NFT contract and token ID. Behind the scenes, this calls the `internal_remove_sale` function which you can find in the `internal.rs` file. This will assert one yoctoNEAR for security reasons.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/sale.rs#L23-L34
-```
+<Github language="rust" start="23" end="34" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/sale.rs" />
 
 ### Updating price {#updating-price}
 
 In order to update the list price of a token, the owner must call the `update_price` function and pass in the contract, token ID, and desired price. This will get the sale object, change the sale conditions, and insert it back. For security reasons, this function will assert one yoctoNEAR.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/sale.rs#L36-L65
-```
+<Github language="rust" start="36" end="65" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/sale.rs" />
 
 ### Purchasing NFTs {#purchasing-nfts}
 
@@ -151,9 +138,7 @@ For purchasing NFTs, you must call the `offer` function. It takes an `nft_contra
 
 The marketplace will then call `resolve_purchase` where it will check for malicious payout objects and then if everything went well, it will pay the correct accounts.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/sale.rs#L67-L99
-```
+<Github language="rust" start="67" end="99" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/sale.rs" />
 
 ## sale_view.rs {#sale_view-rs}
 

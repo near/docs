@@ -30,7 +30,7 @@ const connectionConfig = {
   nodeUrl: "https://rpc.testnet.near.org",
   walletUrl: "https://testnet.mynearwallet.com/",
   helperUrl: "https://helper.testnet.near.org",
-  explorerUrl: "https://explorer.testnet.near.org",
+  explorerUrl: "https://testnet.nearblocks.io",
 };
 
 // connect to NEAR
@@ -52,7 +52,7 @@ const connectionConfig = {
   nodeUrl: "https://rpc.mainnet.near.org",
   walletUrl: "https://wallet.mainnet.near.org",
   helperUrl: "https://helper.mainnet.near.org",
-  explorerUrl: "https://explorer.mainnet.near.org",
+  explorerUrl: "https://nearblocks.io",
 };
 
 // connect to NEAR
@@ -66,9 +66,9 @@ const walletConnection = new WalletConnection(nearConnection);
 
 </Tabs>
 
-[<span class="typedoc-icon typedoc-icon-module"></span> Module `browserConnect`](https://near.github.io/near-api-js/modules/near_api_js.browserConnect.html)
+[<span className="typedoc-icon typedoc-icon-module"></span> Module `browserConnect`](https://near.github.io/near-api-js/modules/near_api_js.browserConnect.html)
 &nbsp;&nbsp;&nbsp;
-[<span class="typedoc-icon typedoc-icon-class"></span> Class `WalletConnection`](https://near.github.io/near-api-js/classes/_near_js_wallet_account.walletAccount.WalletConnection.html)
+[<span className="typedoc-icon typedoc-icon-class"></span> Class `WalletConnection`](https://near.github.io/near-api-js/classes/_near_js_wallet_account.walletAccount.WalletConnection.html)
 
 ### Ask your user to Sign In {#sign-in}
 
@@ -90,7 +90,7 @@ walletConnection.requestSignIn({
 });
 ```
 
-[<span class="typedoc-icon typedoc-icon-method"></span> Method `WalletConnection.requestSignIn`](https://near.github.io/near-api-js/classes/_near_js_wallet_account.walletAccount.WalletConnection.html#requestSignIn)
+[<span className="typedoc-icon typedoc-icon-method"></span> Method `WalletConnection.requestSignIn`](https://near.github.io/near-api-js/classes/_near_js_wallet_account.walletAccount.WalletConnection.html#requestSignIn)
 
 :::tip
 Sign In is **_not required_** if you are using an alternative key store to local storage, or you are not signing transactions (meaning - you are only calling read-only _view_ methods on a contract)
@@ -103,7 +103,7 @@ Sign In is **_not required_** if you are using an alternative key store to local
 walletConnection.signOut();
 ```
 
-[<span class="typedoc-icon typedoc-icon-method"></span> Method `WalletConnection.signOut`](https://near.github.io/near-api-js/classes/_near_js_wallet_account.walletAccount.WalletConnection.html#signOut)
+[<span className="typedoc-icon typedoc-icon-method"></span> Method `WalletConnection.signOut`](https://near.github.io/near-api-js/classes/_near_js_wallet_account.walletAccount.WalletConnection.html#signOut)
 
 ### Check if Signed In {#check-if-signed-in}
 
@@ -114,7 +114,7 @@ if (walletConnection.isSignedIn()) {
 }
 ```
 
-[<span class="typedoc-icon typedoc-icon-method"></span> Method `WalletConnection.isSignedId`](https://near.github.io/near-api-js/classes/_near_js_wallet_account.walletAccount.WalletConnection.html#isSignedIn)
+[<span className="typedoc-icon typedoc-icon-method"></span> Method `WalletConnection.isSignedId`](https://near.github.io/near-api-js/classes/_near_js_wallet_account.walletAccount.WalletConnection.html#isSignedIn)
 
 ### Get Wallet Account {#get-authorized-account}
 
@@ -127,7 +127,7 @@ Get the [Account](naj-account.md) your user has signed in with in the Wallet.
 const walletAccountId = walletConnection.getAccountId();
 ```
 
-[<span class="typedoc-icon typedoc-icon-method"></span> Method `WalletConnection.getAccountId`](https://near.github.io/near-api-js/classes/_near_js_wallet_account.walletAccount.WalletConnection.html#getAccountId)
+[<span className="typedoc-icon typedoc-icon-method"></span> Method `WalletConnection.getAccountId`](https://near.github.io/near-api-js/classes/_near_js_wallet_account.walletAccount.WalletConnection.html#getAccountId)
 
 #### Get Account Object {#get-authorized-account-object}
 
@@ -136,6 +136,6 @@ const walletAccountId = walletConnection.getAccountId();
 const walletAccountObj = walletConnection.account();
 ```
 
-[<span class="typedoc-icon typedoc-icon-method"></span> Method `WalletConnection.account`](https://near.github.io/near-api-js/classes/_near_js_wallet_account.walletAccount.WalletConnection.html#account)
+[<span className="typedoc-icon typedoc-icon-method"></span> Method `WalletConnection.account`](https://near.github.io/near-api-js/classes/_near_js_wallet_account.walletAccount.WalletConnection.html#account)
 &nbsp;&nbsp;&nbsp;
-[<span class="typedoc-icon typedoc-icon-class"></span> Class `ConnectedWalletAccount`](https://near.github.io/near-api-js/classes/_near_js_wallet_account.walletAccount.ConnectedWalletAccount.html)
+[<span className="typedoc-icon typedoc-icon-class"></span> Class `ConnectedWalletAccount`](https://near.github.io/near-api-js/classes/_near_js_wallet_account.walletAccount.ConnectedWalletAccount.html)

@@ -72,7 +72,7 @@ Remember that your balance is used to cover for the contract's storage. When sen
 ## Function Call
 
 Your smart contract can call methods in another contract. In the snippet bellow we call a method
-in a deployed [Hello NEAR](../quickstart.md) contract, and check if everything went
+in a deployed [Hello NEAR](quickstart.md) contract, and check if everything went
 right in the callback.
 
 <Tabs className="language-tabs" groupId="code-tabs">
@@ -232,7 +232,7 @@ Sub-accounts are simply useful for organizing your accounts (e.g. `dao.project.n
   When you create an account from within a contract, it has no keys by default. If you don't explicitly [add keys](#add-keys) to it or [deploy a contract](#deploy-a-contract) on creation then it will be [locked](../../1.concepts/basics/accounts/access-keys.md#locked-accounts).
 :::
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 #### Creating Other Accounts
 Accounts can only create immediate sub-accounts of themselves.

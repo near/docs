@@ -3,6 +3,7 @@ sidebar_position: 4
 sidebar_label: "Actions and sending NEAR"
 title: "There are several Actions an account can do, including sending the winner of the crossword puzzle NEAR using the Transfer Action"
 ---
+import {Github} from "@site/src/components/codetabs"
 
 import allActions from '/docs/assets/crosswords/crossword-actions.png';
 import transferNEAR from '/docs/assets/crosswords/transfer-brand-blue--qiqi04.near--blankworl.png';
@@ -15,7 +16,7 @@ We're going to introduce a new Action: `Transfer`. In this chapter, we'd like th
 
 <figure>
     <img src={transferNEAR} alt="Two hands exchanging a coin emblazoned with the NEAR Protocol logo. Art created by qiqi04.near" width="400"/>
-    <figcaption class="small">Art by <a href="https://twitter.com/blankworl" target="_blank">qiqi04.near</a></figcaption>
+    <figcaption className="small">Art by <a href="https://twitter.com/blankworl" target="_blank">qiqi04.near</a></figcaption>
 </figure>
 <br/>
 
@@ -49,9 +50,7 @@ Let's make it simple and hardcode the prize amount. This is how much NEAR will b
 
 At the top of the `lib.rs` file we'll add this constant:
 
-```rust reference
-https://github.com/near-examples/crossword-tutorial-chapter-2/blob/1909630a10291081cb00b2780c1ae8889d98f620/contract/src/lib.rs#L10-L11
-```
+<Github language="rust" start="10" end="11" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/1909630a10291081cb00b2780c1ae8889d98f620/contract/src/lib.rs" />
 
 As the code comment mentions, this is 5 NEAR, but look at all those zeroes in the code!
 
@@ -59,16 +58,14 @@ That's the value in yoctoNEAR. This concept is similar to other blockchains. Bit
 
 <figure>
     <img src={yoctoNEAR} alt="Depiction of bills of NEAR, coins for partial NEAR, and then a magnifying glass showing a tiny yoctoNEAR next to an ant. Art created by jrbemint.near"/>
-    <figcaption class="full-width">Art by <a href="https://twitter.com/JrbeMad" target="_blank">jrbemint.near</a></figcaption>
+    <figcaption className="full-width">Art by <a href="https://twitter.com/JrbeMad" target="_blank">jrbemint.near</a></figcaption>
 </figure>
 
 ## Adding `Transfer`
 
 In the last chapter we had a simple function called `guess_solution` that returned `true` if the solution was correct, and `false` otherwise. We'll be replacing that function with `submit_solution` as shown below:
 
-```rust reference
-https://github.com/near-examples/crossword-tutorial-chapter-2/blob/83d4d8925e6d30e04e8e4cb5e9a0a6d3763fce40/contract/src/lib.rs#L92-L124
-```
+<Github language="rust" start="92" end="124" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/83d4d8925e6d30e04e8e4cb5e9a0a6d3763fce40/contract/src/lib.rs" />
 
 Note the last line in this function, which sends NEAR to the predecessor.
 
@@ -99,7 +96,7 @@ Let's cover three commonly-used functions regarding accounts: predecessor, signe
 
 <figure>
     <img src={signerPredecessorCurrent} alt="Illustration of Alice sending a transaction to a smart contract named Banana, which does a cross-contract call to the smart contract Cucumber. Art created by yasuoarts.near"/>
-    <figcaption class="full-width">Alice sends a transaction to the contract on banana.near, which does a cross-contract call to cucumber.near.<br/>From the perspective of a contract on cucumber.near, we see a list of the predecessor, signer, and current account.<br/>Art by <a href="https://twitter.com/YasuoArt69" target="_blank">yasuoarts.near</a></figcaption>
+    <figcaption className="full-width">Alice sends a transaction to the contract on banana.near, which does a cross-contract call to cucumber.near.<br/>From the perspective of a contract on cucumber.near, we see a list of the predecessor, signer, and current account.<br/>Art by <a href="https://twitter.com/YasuoArt69" target="_blank">yasuoarts.near</a></figcaption>
 </figure><br/><br/>
 
 1. [predecessor account](https://docs.rs/near-sdk/latest/near_sdk/env/fn.predecessor_account_id.html) — `env::predecessor_account_id()`

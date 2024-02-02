@@ -3,7 +3,7 @@ const path = require('path');
 const changelogs = require('./src/utils/changelogs.json');
 
 /** @type {import('@docusaurus/types').Config} */
-module.exports = {
+const config = {
   title: 'NEAR Documentation',
   tagline: 'NEAR Protocol Developer Documentation',
   url: 'https://docs.near.org',
@@ -40,7 +40,7 @@ module.exports = {
           breadcrumbs: true,
           editUrl: 'https://github.com/near/docs/edit/master/website',
           path: '../docs',
-          sidebarPath: './sidebars.json',
+          sidebarPath: './sidebars.js',
           routeBasePath: '/',
         },
         sitemap: {
@@ -115,20 +115,32 @@ module.exports = {
           items: [
             { label: 'Smart Contracts', href: '/develop/contracts/welcome' },
             { label: 'Web3 Applications', href: '/develop/integrate/welcome' },
-            { label: 'Indexing the Chain', href: '/develop/monitor' },
+            { label: 'Data Solutions', href: '/develop/monitor' },
+            {
+              type: 'html',
+              value: '<hr/> <small class="subtitle"> Integrations </small>',
+            },
+            { label: "Backend", href: "/develop/integrate/backend-login" },
+            { label: "Frontend", href: "/develop/integrate/frontend" },
+            { label: "Exchanges", href: "/integrator/exchange-integration" },
+            { label: "Rollups DA", href: "/data-availability/welcome" },
+          ],
+        },
+        {
+          label: "Primitives",
+          position: "left",
+          items: [
+            { label: 'Overview', href: '/primitives/welcome' },
             {
               type: 'html',
               value: '<hr/>',
             },
-            {
-              label: 'Data Availability',
-              href: '/data-availability/welcome',
-            },
-            {
-              label: 'Exchange Integration',
-              href: '/integrator/exchange-integration',
-            },
-          ],
+            { label: "LinkDrops", href: "/primitives/linkdrop" },
+            { label: "Fungible Tokens", href: "/primitives/ft" },
+            { label: "Non-Fungible Tokens", href: "/primitives/nft" },
+            { label: "Decentralized Exchanges", href: "/primitives/dex" },
+            { label: "Autonomous Organizations", href: "/primitives/dao" },
+          ]
         },
         {
           type: 'dropdown',
@@ -136,16 +148,27 @@ module.exports = {
           position: 'left',
           items: [
             { label: '🧰 All Tools', href: '/tools/welcome' },
+            {
+              type: 'html',
+              value: '<hr/> <small class="subtitle"> Essentials </small>',
+            },
             { label: 'NEAR API', href: '/tools/near-api-js/quick-reference' },
             { label: 'NEAR SDK', href: '/sdk/welcome' },
             { label: 'NEAR CLI', href: '/tools/near-cli' },
-            { label: 'Wallet Selector', href: '/tools/wallet-selector' },
-            { label: 'BOS Web IDE (Jutsu)', href: 'https://jutsu.ai/editor' },
             {
-              label: 'Remix IDE Plugin',
-              href: 'https://docs.welldonestudio.io/code/getting-started',
+              type: 'html',
+              value: '<hr/> <small class="subtitle"> Onboarding </small>',
             },
-          ],
+            { label: "Wallet Selector", href: "/tools/wallet-selector" },
+            { label: "FastAuth (Email Login)", href: "/tools/fastauth-sdk" },
+            { label: "Relayers", href: "/develop/relayers/build-relayer" },
+            {
+              type: 'html',
+              value: '<hr/> <small class="subtitle"> IDEs </small>',
+            },
+            { label: "VSCode Extension ", href: "/bos/dev/vscode" },
+            { label: "BOS Web IDE (Jutsu)", href: "https://jutsu.ai/editor" },
+            { label: "Remix IDE Plugin", href: "https://docs.welldonestudio.io/code/getting-started" },],
         },
         {
           href: '/api/rpc/introduction',
@@ -164,7 +187,7 @@ module.exports = {
               href: 'https://near-nodes.io',
               label: 'Validator Docs',
             },
-          ], 
+          ],
         },
         {
           type: 'search',
@@ -225,3 +248,5 @@ module.exports = {
     },
   },
 };
+
+export default config;

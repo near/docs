@@ -175,7 +175,7 @@ The GraphiQL tab in the editor will allow you to view the returned data from you
 
 ## Performing Queries on the Public GraphQL API
 
-In this section, we will provide a brief overview of how to query from a component in BOS.
+In this section, we will provide a brief overview of how to query from a component in NEAR.
 
 It is helpful to create a helper method which will allow us to fetch from our GraphQL API. Let's call it`fetchGraphQL`. It takes three parameters:
 
@@ -240,7 +240,7 @@ fetchGraphQL(transactionQueriesDoc, "TransactionsQuery", {})
   });
 ```
 
-We have just shown how to fetch data from the indexers that we have created from within the BOS. To view a more complex example, see this widget which fetches posts with proper pagination: [Posts Widget powered By QueryAPI](https://near.org/dataplatform.near/widget/QueryApi.Examples.Feed.Posts).
+We have just shown how to fetch data from the indexers that we have created from within NEAR. To view a more complex example, see this widget which fetches posts with proper pagination: [Posts Widget powered By QueryAPI](https://near.org/dataplatform.near/widget/QueryApi.Examples.Feed.Posts).
 
 :::tip Video Walkthrough
 

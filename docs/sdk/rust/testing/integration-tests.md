@@ -1,10 +1,9 @@
 ---
 sidebar_position: 2
 ---
+import {Github} from "@site/src/components/codetabs"
 
 # Integration Tests
-
-**Note:** Simulation tests are no longer actively supported. NEAR Simulator was meant to be an in-place replacement of a blockchain environment for the purpose of testing NEAR contracts. However, simulating NEAR ledger turned out to be a much more complex endeavor than was anticipated. Eventually, the idea of workspaces was born - a library for automating workflows and writing tests for NEAR smart contracts using a real NEAR network (localnet, testnet or mainnet). Thus, NEAR Simulator is being deprecated in favor of [`workspaces-rs`](https://github.com/near/workspaces-rs), the Rust edition of workspaces. As the two libraries have two vastly different APIs [this guide](/develop/testing/workspaces-migration) was created to ease the migration process for developers.
 
 ## Unit Tests vs. Integration Tests
 
@@ -92,9 +91,7 @@ We'll be using snippets from the [fungible-token example](https://github.com/nea
 
 First, note this unit test that tests the functionality of the `test_transfer` method:
 
-```rust reference
-https://github.com/near/near-sdk-rs/blob/6d4045251c63ec875dc55f43b065b33a36d94792/examples/fungible-token/ft/src/lib.rs#L100-L165
-```
+<Github language="rust" start="100" end="165" url="https://github.com/near/near-sdk-rs/blob/6d4045251c63ec875dc55f43b065b33a36d94792/examples/fungible-token/ft/src/lib.rs" />
 
 The test above sets up the testing context, instantiates the test environment through `get_context()`, calls the `test_transfer` method, and performs the `storage_deposit()` initialization call (to register with the fungible token contract) and the `ft_transfer()` fungible token transfer call.
 
@@ -102,9 +99,7 @@ Let's look at how this might be written with workspaces tests. The snippet below
 
 ### Workspaces Test
 
-```rust reference
-https://github.com/near/near-sdk-rs/blob/master/examples/fungible-token/tests/workspaces.rs#L25-L115
-```
+<Github language="rust" start="25" end="115" url="https://github.com/near/near-sdk-rs/blob/master/examples/fungible-token/tests/workspaces.rs" />
 
 In the test above, the compiled smart contract `.wasm` file (which we compiled into the `/out` directory) for the Fungible Token example is dev-deployed (newly created account) to the environment. The `ft_contract` account is created as a result from the environment which is used to create accounts. This specific file's format has only one test entry point (`main`), and every test is declared with `#[tokio::test]`. Tests do not share state between runs.
 
@@ -122,30 +117,24 @@ In case you wish to preserve state between runs, you can call multiple tests wit
 
 ### Create an Account
 
-```rust reference
-https://github.com/near-examples/rust-counter/blob/6a7af5a32c630e0298c09c24eab87267746552b2/integration-tests/rs/src/tests.rs#L16-L21
-```
+<Github language="rust" start="16" end="21" url="https://github.com/near-examples/rust-counter/blob/6a7af5a32c630e0298c09c24eab87267746552b2/integration-tests/rs/src/tests.rs" />
 
 :::note
 You can also create a `dev_account` without having to deploy a contract as follows:
-```rust reference
-https://github.com/near/workspaces-rs/blob/8f12f3dc3b0251ac3f44ddf6ab6fc63003579139/workspaces/tests/create_account.rs#L7-L8
-```
+
+<Github language="rust" start="7" end="8" url="https://github.com/near/workspaces-rs/blob/8f12f3dc3b0251ac3f44ddf6ab6fc63003579139/workspaces/tests/create_account.rs" />
+
 :::
 
 ### Create Helper Functions
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/7fb267b83899d1f65f1bceb71804430fab62c7a7/integration-tests/rs/src/helpers.rs#L148-L161
-```
+<Github language="rust" start="148" end="161" url="https://github.com/near-examples/nft-tutorial/blob/7fb267b83899d1f65f1bceb71804430fab62c7a7/integration-tests/rs/src/helpers.rs" />
 
 ### Spooning - Pulling Existing State and Contracts from Mainnet/Testnet
 
 This example showcases spooning state from a testnet contract into our local sandbox environment:
 
-```rust reference
-https://github.com/near/workspaces-rs/blob/c14fe2aa6cdf586028b2993c6a28240f78484d3e/examples/src/spooning.rs#L64-L122
-```
+<Github language="rust" start="64" end="122" url="https://github.com/near/workspaces-rs/blob/c14fe2aa6cdf586028b2993c6a28240f78484d3e/examples/src/spooning.rs" />
 
 For a full example, see the [examples/src/spooning.rs](https://github.com/near/workspaces-rs/blob/main/examples/src/spooning.rs) example.
 
@@ -153,17 +142,13 @@ For a full example, see the [examples/src/spooning.rs](https://github.com/near/w
 
 `workspaces` testing offers support for forwarding the state of the blockchain to the future. This means contracts which require time sensitive data do not need to sit and wait the same amount of time for blocks on the sandbox to be produced. We can simply just call `worker.fast_forward` to get us further in time:
 
-```rust reference
-https://github.com/near/workspaces-rs/blob/c14fe2aa6cdf586028b2993c6a28240f78484d3e/examples/src/fast_forward.rs#L12-L44
-```
+<Github language="rust" start="12" end="44" url="https://github.com/near/workspaces-rs/blob/c14fe2aa6cdf586028b2993c6a28240f78484d3e/examples/src/fast_forward.rs" />
 
 For a full example, take a look at [examples/src/fast_forward.rs](https://github.com/near/workspaces-rs/blob/main/examples/src/fast_forward.rs).
 
 ### Handle Errors
 
-```rust reference
-https://github.com/near-examples/FT/blob/98b85297a270cbcb8ef3901c29c17701e1cab698/integration-tests/rs/src/tests.rs#L199-L225
-```
+<Github language="rust" start="199" end="225" url="https://github.com/near-examples/FT/blob/98b85297a270cbcb8ef3901c29c17701e1cab698/integration-tests/rs/src/tests.rs" />
 
 :::note
 Returning `Err(msg)` is also a viable (and arguably simpler) implementation.

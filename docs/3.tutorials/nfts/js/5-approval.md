@@ -3,6 +3,7 @@ id: approvals
 title: Approvals
 sidebar_label: Approvals
 ---
+import {Github} from "@site/src/components/codetabs"
 
 In this tutorial you'll learn the basics of an approval management system which will allow you to grant others access to transfer NFTs on your behalf. This is the backbone of all NFT marketplaces and allows for some complex yet beautiful scenarios to happen. If you're joining us for the first time, feel free to clone [this repository](https://github.com/near-examples/nft-tutorial) and checkout the `4.core` branch to follow along.
 
@@ -124,23 +125,17 @@ The marketplace is inserted into the map and the next approval ID is incremented
 
 Now that you understand the proposed solution to the original problem of allowing an account to transfer your NFT, it's time to implement some of the logic. The first thing you should do is modify the `Token` and `JsonToken` structs to reflect the new changes. Let's switch over to the `nft-contract/src/metadata.ts` file:
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/metadata.ts#L106-L156
-```
+<Github language="js" start="106" end="156" url="https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/metadata.ts" />
 
 You'll then need to initialize both the `approved_account_ids` and `next_approval_id` to their default values when a token is minted. Switch to the `nft-contract/src/mint.ts` file and when creating the `Token` struct to store in the contract, let's set the next approval ID to be 0 and the approved account IDs to be an empty object:
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/mint.ts#L23-L31
-```
+<Github language="js" start="23" end="31" url="https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/mint.ts" />
 
 ### Approving accounts
 
 Now that you've added the support for approved account IDs and the next approval ID on the token level, it's time to add the logic for populating and changing those fields through a function called `nft_approve`. This function should approve an account to have access to a specific token ID. Let's move to the `nft-contract/src/approval.ts` file and edit the `internalNftApprove` function:
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/approval.ts#L9-L73
-```
+<Github language="js" start="9" end="73" url="https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/approval.ts" />
 
 The function will first assert that the user has attached **at least** one yoctoNEAR (which we'll implement soon). This is both for security and to cover storage. When someone approves an account ID, they're storing that information on the contract. As you saw in the [minting tutorial](/tutorials/nfts/js/minting), you can either have the smart contract account cover the storage, or you can have the users cover that cost. The latter is more scalable and it's the approach you'll be working with throughout this tutorial.
 
@@ -168,15 +163,11 @@ By leaving the message field type as just a string, this generalizes the process
 
 Now that the core logic for approving an account is finished, you need to implement the `assertAtLeastOneYocto` and `bytesForApprovedAccountId` functions. Move to the `nft-contract/src/internal.ts` file and copy the following function right below the `assertOneYocto` function.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/internal.ts#L61-L64
-```
+<Github language="js" start="61" end="64" url="https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/internal.ts" />
 
 Next, you'll need to copy the logic for calculating how many bytes it costs to store an account ID. Place this function at the very top of the page:
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/internal.ts#L55-L59
-```
+<Github language="js" start="55" end="59" url="https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/internal.ts" />
 
 Now that the logic for approving accounts is finished, you need to change the restrictions for transferring.
 
@@ -186,9 +177,7 @@ Currently, an NFT can **only** be transferred by its owner. You need to change t
 
 In the `internal.ts` file, you need to change the logic of the `internalTransfer` method as that's where the restrictions are being made. Change the internal transfer function to be the following:
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/internal.ts#L108-L163
-```
+<Github language="js" start="108" end="163" url="https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/internal.ts" />
 
 This will check if the sender isn't the owner and then if they're not, it will check if the sender is in the approval list. If an approval ID was passed into the function, it will check if the sender's actual approval ID stored on the contract matches the one passed in.
 
@@ -196,9 +185,7 @@ This will check if the sender isn't the owner and then if they're not, it will c
 
 While you're in the internal file, you're going to need to add methods for refunding users who have paid for storing approved accounts on the contract when an NFT is transferred. This is because you'll be clearing the `approved_account_ids` object whenever NFTs are transferred and so the storage is no longer being used.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/internal.ts#L13-L28
-```
+<Github language="js" start="13" end="28" url="https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/internal.ts" />
 
 These will be useful in the next section where you'll be changing the `nft_core` functions to include the new approval logic.
 
@@ -209,27 +196,19 @@ Head over to the `nft-contract/src/nft_core.ts` file and the first change that y
 
 For the `nft_transfer` function, the only change that you'll need to make is to pass in the approval ID into the `internalTransfer` function and then refund the previous tokens approved account IDs after the transfer is finished
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/nft_core.ts#L38-L72
-```
+<Github language="js" start="38" end="72" url="https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/nft_core.ts" />
 
 Next, you need to do the same to `nft_transfer_call` but instead of refunding immediately, you need to attach the previous token's approved account IDs to `nft_resolve_transfer` instead as there's still the possibility that the transfer gets reverted.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/nft_core.ts#L74-L135
-```
+<Github language="js" start="74" end="135" url="https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/nft_core.ts" />
 
 You'll also need to add the tokens approved account IDs to the `JsonToken` being returned by `nft_token`.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/nft_core.ts#L10-L36
-```
+<Github language="js" start="10" end="36" url="https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/nft_core.ts" />
 
 Finally, you need to add the logic for refunding the approved account IDs in `internalResolveTransfer`. If the transfer went through, you should refund the owner for the storage being released by resetting the tokens `approved_account_ids` field. If, however, you should revert the transfer, it wouldn't be enough to just not refund anybody. Since the receiver briefly owned the token, they could have added their own approved account IDs and so you should refund them if they did so.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/nft_core.ts#L137-L208
-```
+<Github language="js" start="137" end="208" url="https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/nft_core.ts" />
 
 With that finished, it's time to move on and complete the next task.
 
@@ -239,9 +218,7 @@ Now that the core logic is in place for approving and refunding accounts, it sho
 
 If an approval ID was provided, it should return whether or not the account is approved and has the same approval ID as the one provided. Let's move to the `nft-contract/src/approval.ts` file and add the necessary logic to the `internalNftIsApproved` function.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/approval.ts#L75-L110
-```
+<Github language="js" start="75" end="110" url="https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/approval.ts" />
 
 Let's now move on and add the logic for revoking an account
 
@@ -249,17 +226,13 @@ Let's now move on and add the logic for revoking an account
 
 The next step in the tutorial is to allow a user to revoke a specific account from having access to their NFT. The first thing you'll want to do is assert one yocto for security purposes. You'll then need to make sure that the caller is the owner of the token. If those checks pass, you'll need to remove the passed in account from the tokens approved account IDs and refund the owner for the storage being released.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/approval.ts#L112-L145
-```
+<Github language="js" start="112" end="145" url="https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/approval.ts" />
 
 ## Revoke all accounts
 
 The final step in the tutorial is to allow a user to revoke all accounts from having access to their NFT. This should also assert one yocto for security purposes and make sure that the caller is the owner of the token. You then refund the owner for releasing all the accounts in the map and then clear the `approved_account_ids`.
 
-```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/approval.ts#L147-L177
-```
+<Github language="js" start="147" end="177" url="https://github.com/near-examples/nft-tutorial-js/blob/5.approval/src/nft-contract/approval.ts" />
 
 With that finished, it's time to deploy and start testing the contract.
 

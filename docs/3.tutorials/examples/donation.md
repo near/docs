@@ -73,12 +73,12 @@ The contract exposes methods to donate money (`donate`), and methods to retrieve
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="contract.ts" 
-            url="https://github.com/near-examples/donation-js/blob/master/contract/src/contract.ts"
+            url="https://github.com/near-examples/donation-examples/blob/main/contract-ts/src/contract.ts"
             start="16" end="44" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/donation-rust/blob/main/contract/src/donation.rs"
+            url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/src/donation.rs"
             start="21" end="50" />
   </Language>
 </CodeTabs>
@@ -94,13 +94,13 @@ NEAR wallet to accept a transaction.
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
-            url="https://github.com/near-examples/donation-js/blob/master/frontend/index.js"
-            start="74" end="81" />
+            url="https://github.com/near-examples/donation-examples/blob/main/frontend/index.js"
+            start="75" end="82" />
     <Github fname="near-interface.js"
-            url="https://github.com/near-examples/donation-js/blob/master/frontend/near-interface.js"
+            url="https://github.com/near-examples/donation-examples/blob/main/frontend/near-interface.js"
             start="29" end="32" />
     <Github fname="near-wallet.js"
-            url="https://github.com/near-examples/donation-js/blob/master/frontend/near-wallet.js"
+            url="https://github.com/near-examples/donation-examples/blob/main/frontend/near-wallet.js"
             start="105" end="113" />
   </Language>
 </CodeTabs>
@@ -121,7 +121,7 @@ same language as the smart contract is.
 <CodeTabs>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/donation-rust/blob/main/contract/src/lib.rs"
+            url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/src/lib.rs"
             start="63" end="92" />
   </Language>
 </CodeTabs>
@@ -136,7 +136,7 @@ in `tests/integration-tests`.
 <CodeTabs>
   <Language value="🌐 JavaScript" language="rust">
     <Github fname="main.test.js"
-            url="https://github.com/near-examples/donation-js/blob/master/integration-tests/src/main.ava.ts"
+            url="https://github.com/near-examples/donation-examples/blob/main/contract-ts/sandbox-ts/src/main.ava.ts"
             start="50" end="73" />
   </Language>
 </CodeTabs>
