@@ -7,7 +7,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-Chain Signatures are a method to allow a smart contract to call an async method. For example:
+Chain Signatures allows you to the method on multichain.near:
 
 ```rust
     pub fn sign(payload: [u8; 32], path: String) -> Signature {
