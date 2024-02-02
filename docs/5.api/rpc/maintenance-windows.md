@@ -101,7 +101,7 @@ When API request fails, RPC server returns a structured error response with a li
 
 Here is the exhaustive list of the error variants that can be returned by `maintenance_windows` method:
 
-<table class="custom-stripe">
+<table className="custom-stripe">
   <thead>
     <tr>
       <th>

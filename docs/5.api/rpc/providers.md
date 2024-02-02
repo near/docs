@@ -25,11 +25,11 @@ If you want to use a custom RPC provider with NEAR Wallet Selector, [check this 
 | [fast-near](https://github.com/vgrichina/fast-near)                        | `https://rpc.web4.near.page`                                 |
 | [Gateway.fm](https://gateway.fm/)                                          | `https://rpc.near.gateway.fm/`                               |
 | [GetBlock](https://getblock.io/nodes/near/)                                | `https://getblock.io/nodes/near/`                            |
-| [Infura](https://docs.infura.io/infura/networks/near)                      | `https://near-mainnet.infura.io/v3/`                         |
+| [Lava Network](https://www.lavanet.xyz/get-started/near)                   | `https://near.lava.build`                                    |
 | [Lavender.Five Nodes](https://lavenderfive.com/)                           | `https://near.lavenderfive.com/`                             |
 | [NodeReal](https://nodereal.io)                                            | `https://nodereal.io/api-marketplace/near-rpc`               |
 | [NOWNodes](https://nownodes.io/)                                           | `https://near.nownodes.io/`                                  |
 | [OMNIA](https://omniatech.io)                                              | `https://endpoints.omniatech.io/v1/near/mainnet/public`      |
 | [QuickNode](https://www.quicknode.com/chains/near)                         | -                                                            |
 | [Seracle](https://docs.seracle.com/)                                       | `https://api.seracle.com/saas/baas/rpc/near/mainnet/public/` |
-| [Zeeve](https://www.zeeve.io/)                                             | ``                                                           |
+| [Zeeve](https://www.zeeve.io/)                                             | -                                                            |

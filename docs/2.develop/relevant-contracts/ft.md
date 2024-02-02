@@ -41,7 +41,7 @@ Creating a new FT is as simple as deploying a new FT contract and initializing i
 On initialization you will define an **owner**, who will own **ALL** the tokens.
 :::
 
-<hr class="subsection"/>
+<hr className="subsection"/>
 
 ## Querying Metadata
 You can query the FT's metadata by calling the `ft_metadata`.
@@ -56,7 +56,7 @@ You can query the FT's metadata by calling the `ft_metadata`.
   </TabItem>
 </Tabs>
 
-<hr class="subsection"/>
+<hr className="subsection"/>
 
 ## Registering a User
 In order for a user to own and transfer tokens they need to first **register** in the contract. This is done by calling `storage_deposit` and attaching 0.00125Ⓝ. This method also allows to pay for other users to register them.
@@ -80,7 +80,7 @@ You can make sure a user is registered by asserting they have a `storage_balance
 After you call the `storage_deposit` the FT will appear in the NEAR WALLET. 
 :::
 
-<hr class="subsection"/>
+<hr className="subsection"/>
 
 ## Getting Balance
 To know how many coins a user has you will need to query the method `ft_balance_of`.
@@ -99,7 +99,7 @@ To know how many coins a user has you will need to query the method `ft_balance_
   Keep in mind the `decimals` from the [metadata](#query-metadata). A balance of `150 FT` for a token with 2 `decimals` actually represents `1.50 FT`.
 :::
 
-<hr class="subsection"/>
+<hr className="subsection"/>
 
 ## Transferring
 To send FT to another account you will use the `ft_transfer` method, indicating the receiver and the amount of FT you want to send.
@@ -122,7 +122,7 @@ Implement [events](https://nomicon.io/Standards/Tokens/FungibleToken/Event) to b
 In order to send a fungible token to an account, both the sender and receiver must be [registered](#register-a-user) in the FT contract.
 :::
 
-<hr class="subsection"/>
+<hr className="subsection"/>
 
 ## Attaching FTs to a Call
 Natively, only NEAR tokens (Ⓝ) can be attached to a method calls. However, the FT standard enables to attach fungible tokens in a call by using the FT-contract as intermediary. This means that, instead of you attaching tokens directly to the call, you ask the FT-contract to do both a transfer and a method call in your name.
@@ -154,7 +154,7 @@ From the workflow above it follows that the receiver we want to call needs to im
 
 The `ft_on_transfer` **must** return **how many FT tokens have to be refunded**, so the FT contract gives them back to the sender.
 
-<hr class="subsection"/>
+<hr className="subsection"/>
 
 ## Events
 You can track real time events (such as transfers) by implementing the [FT Event Standards](https://nomicon.io/Standards/Tokens/FungibleToken/Event).

@@ -5,23 +5,52 @@ title: Lido Example
 
 # Hello Lido!
 
-If you are ready to explore further, the Lido component serves as an excellent fully-fledged example, as it demonstrates how to interact with a smart contract deployed on the Ethereum mainnet.
+If you are ready to explore further, the [Lido component](https://near.org/zavodil.near/widget/Lido) serves as an excellent fully-fledged example, as it demonstrates how to interact with a smart contract deployed on the Ethereum mainnet.
+
+:::info Ethers.js
+
+This component uses the [Ethers JavaScript](https://ethers.org) library to interact with Ethereum smart contracts. Follow [this link](https://docs.ethers.org/v6/) for the official `ethers.js` documentation.
+
+:::
+
+:::info Web3 connect
+
+The Lido example uses the [Web3Connect component](https://near.org/near/widget/ComponentDetailsPage?src=a_liutiev.near/widget/button_web3connect) to provide a [WalletConnect modal](https://github.com/WalletConnect/web3modal) so the user can connect with any Web3 Ethereum wallet like Ledger or MetaMask.
+
+:::
+
 
 ### Fork the component
 
-1. Navigate to [the component](https://bos.gg/#/zavodil.near/widget/Lido)
-2. Click on the menu icon in the top-right corner
-3. Select `Fork`
-4. Feel free to make any changes
-5. Click on "Save" to deploy the component
+1. Navigate to [the component](https://near.org/near/widget/ComponentDetailsPage?src=zavodil.near/widget/Lido)
+2. Select `Fork`
+3. Feel free to make any changes
+4. Click on <kbd>Save</kbd> to deploy the component
 
 :::note
-To deploy the component, you'll need to sign in with a NEAR account and to make a deposit of a small amount of NEAR for the storage cost. This is because BOS uses the NEAR blockchain as its underneath.
+To deploy the component, you'll need to sign in with a NEAR account and to make a deposit of a small amount of NEAR for the storage cost. This is because the components are stored in the NEAR network.
 :::
 
 ### Source code
 
 ```js
+if (
+  state.chainId === undefined &&
+  ethers !== undefined &&
+  Ethers.send("eth_requestAccounts", [])[0]
+) {
+  Ethers.provider()
+    .getNetwork()
+    .then((chainIdData) => {
+      if (chainIdData?.chainId) {
+        State.update({ chainId: chainIdData.chainId });
+      }
+    });
+}
+if (state.chainId !== undefined && state.chainId !== 1) {
+  return <p>Switch to Ethereum Mainnet</p>;
+}
+
 // FETCH LIDO ABI
 
 const lidoContract = "0xae7ab96520de3a18e5e111b5eaab095312d7fe84";
@@ -89,14 +118,18 @@ const submitEthers = (strEther, _referral) => {
 // DETECT SENDER
 
 if (state.sender === undefined) {
-  State.update({ sender: Ethers.send("eth_requestAccounts", [])[0] });
+  const accounts = Ethers.send("eth_requestAccounts", []);
+  if (accounts.length) {
+    State.update({ sender: accounts[0] });
+    console.log("set sender", accounts[0]);
+  }
 }
 
-if (!state.sender) return "Please login first";
+//if (!state.sender)  return "Please login first";
 
 // FETCH SENDER BALANCE
 
-if (state.balance === undefined) {
+if (state.balance === undefined && state.sender) {
   Ethers.provider()
     .getBalance(state.sender)
     .then((balance) => {
@@ -106,7 +139,7 @@ if (state.balance === undefined) {
 
 // FETCH SENDER STETH BALANCE
 
-if (state.stakedBalance === undefined) {
+if (state.stakedBalance === undefined && state.sender) {
   getStakedBalance(state.sender).then((stakedBalance) => {
     State.update({ stakedBalance });
   });
@@ -159,73 +192,87 @@ if (!cssFont || !css) return "";
 if (!state.theme) {
   State.update({
     theme: styled.div`
-      font-family: Manrope, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-        Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-      ${cssFont}
-      ${css}
-    `,
+    font-family: Manrope, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    ${cssFont}
+    ${css}
+`,
   });
 }
 const Theme = state.theme;
 
 // OUTPUT UI
 
+const getSender = () => {
+  return !state.sender
+    ? ""
+    : state.sender.substring(0, 6) +
+        "..." +
+        state.sender.substring(state.sender.length - 4, state.sender.length);
+};
+
 return (
   <Theme>
-    <div class="LidoContainer">
-      <div class="Header">Stake Ether</div>
-      <div class="SubHeader">Stake ETH and receive stETH while staking.</div>
+    <div className="LidoContainer">
+      <div className="Header">Stake Ether</div>
+      <div className="SubHeader">Stake ETH and receive stETH while staking.</div>
 
-      <div class="LidoForm">
-        <div class="LidoFormTopContainer">
-          <div class="LidoFormTopContainerLeft">
-            <div class="LidoFormTopContainerLeftContent1">
-              <div class="LidoFormTopContainerLeftContent1Container">
-                <span>Available to stake</span>
-                <div class="LidoFormTopContainerLeftContent1Circle" />
+      <div className="LidoForm">
+        {state.sender && (
+          <>
+            <div className="LidoFormTopContainer">
+              <div className="LidoFormTopContainerLeft">
+                <div className="LidoFormTopContainerLeftContent1">
+                  <div className="LidoFormTopContainerLeftContent1Container">
+                    <span>Available to stake</span>
+                    <div className="LidoFormTopContainerLeftContent1Circle" />
+                  </div>
+                </div>
+                <div className="LidoFormTopContainerLeftContent2">
+                  <span>
+                    {state.balance ?? (!state.sender ? "0" : "...")}&nbsp;ETH
+                  </span>
+                </div>
+              </div>
+              <div className="LidoFormTopContainerRight">
+                <div className="LidoFormTopContainerRightContent1">
+                  <div className="LidoFormTopContainerRightContent1Text">
+                    <span>{getSender()}</span>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="LidoFormTopContainerLeftContent2">
-              <span>{state.balance ?? "..."}&nbsp;ETH</span>
-            </div>
-          </div>
-          <div class="LidoFormTopContainerRight">
-            <div class="LidoFormTopContainerRightContent1">
-              <div class="LidoFormTopContainerRightContent1Text">
-                <span>
-                  {state.sender.substring(0, 6)}...
-                  {state.sender.substring(
-                    state.sender.length - 4,
-                    state.sender.length
-                  )}{" "}
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="LidoSplitter" />
-        <div class="LidoFormBottomContainer">
-          <div class="LidoFormTopContainerLeft">
-            <div class="LidoFormTopContainerLeftContent1">
-              <div class="LidoFormTopContainerLeftContent1Container">
+            <div className="LidoSplitter" />
+          </>
+        )}
+        <div
+          className={
+            state.sender ? "LidoFormBottomContainer" : "LidoFormTopContainer"
+          }
+        >
+          <div className="LidoFormTopContainerLeft">
+            <div className="LidoFormTopContainerLeftContent1">
+              <div className="LidoFormTopContainerLeftContent1Container">
                 <span>Staked amount</span>
               </div>
             </div>
-            <div class="LidoFormTopContainerLeftContent2">
-              <span>{state.stakedBalance ?? "..."}&nbsp;stETH</span>
+            <div className="LidoFormTopContainerLeftContent2">
+              <span>
+                {state.stakedBalance ?? (!state.sender ? "0" : "...")}
+                &nbsp;stETH
+              </span>
             </div>
           </div>
-          <div class="LidoFormTopContainerRight">
-            <div class="LidoAprContainer">
-              <div class="LidoAprTitle">Lido APR</div>
-              <div class="LidoAprValue">{state.lidoArp ?? "..."}%</div>
+          <div className="LidoFormTopContainerRight">
+            <div className="LidoAprContainer">
+              <div className="LidoAprTitle">Lido APR</div>
+              <div className="LidoAprValue">{state.lidoArp ?? "..."}%</div>
             </div>
           </div>
         </div>
       </div>
-      <div class="LidoStakeForm">
-        <div class="LidoStakeFormInputContainer">
-          <span class="LidoStakeFormInputContainerSpan1">
+      <div className="LidoStakeForm">
+        <div className="LidoStakeFormInputContainer">
+          <span className="LidoStakeFormInputContainerSpan1">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
               <path
                 opacity="0.6"
@@ -247,50 +294,68 @@ return (
               ></path>
             </svg>
           </span>
-          <span class="LidoStakeFormInputContainerSpan2">
+          <span className="LidoStakeFormInputContainerSpan2">
             <input
-              class="LidoStakeFormInputContainerSpan2Input"
+              disabled={!state.sender}
+              className="LidoStakeFormInputContainerSpan2Input"
               value={state.strEther}
               onChange={(e) => State.update({ strEther: e.target.value })}
               placeholder="Amount"
             />
           </span>
           <span
-            class="LidoStakeFormInputContainerSpan3"
+            className="LidoStakeFormInputContainerSpan3"
             onClick={() => {
               State.update({
-                strEther: (parseFloat(state.balance) - 0.05).toFixed(2),
+                strEther: (state.balance > 0.05
+                  ? parseFloat(state.balance) - 0.05
+                  : 0
+                ).toFixed(2),
               });
             }}
           >
-            <button class="LidoStakeFormInputContainerSpan3Content">
-              <span class="LidoStakeFormInputContainerSpan3Max">MAX</span>
+            <button
+              className="LidoStakeFormInputContainerSpan3Content"
+              disabled={!state.sender}
+            >
+              <span className="LidoStakeFormInputContainerSpan3Max">MAX</span>
             </button>
           </span>
         </div>
-        <button
-          class="LidoStakeFormSubmitContainer"
-          onClick={() => submitEthers(state.strEther, state.sender)}
-        >
-          <span>Submit</span>
-        </button>
+        {!!state.sender ? (
+          <button
+            className="LidoStakeFormSubmitContainer"
+            onClick={() => submitEthers(state.strEther, state.sender)}
+          >
+            <span>Submit</span>
+          </button>
+        ) : (
+          <Web3Connect
+            className="LidoStakeFormSubmitContainer"
+            connectLabel="Connect with Web3"
+          />
+        )}
 
-        <div class="LidoFooterContainer">
-          <div class="LidoFooterRaw">
-            <div class="LidoFooterRawLeft">You will receive</div>
-            <div class="LidoFooterRawRight">${state.strEther ?? 0} stETH</div>
+        <div className="LidoFooterContainer">
+          {state.sender && (
+            <div className="LidoFooterRaw">
+              <div className="LidoFooterRawLeft">You will receive</div>
+              <div className="LidoFooterRawRight">${state.strEther ?? 0} stETH</div>
+            </div>
+          )}
+          <div className="LidoFooterRaw">
+            <div className="LidoFooterRawLeft">Exchange rate</div>
+            <div className="LidoFooterRawRight">1 ETH = 1 stETH</div>
           </div>
-          <div class="LidoFooterRaw">
-            <div class="LidoFooterRawLeft">Exchange rate</div>
-            <div class="LidoFooterRawRight">1 ETH = 1 stETH</div>
-          </div>
-          <div class="LidoFooterRaw">
-            <div class="LidoFooterRawLeft">Transaction cost</div>
-            <div class="LidoFooterRawRight">{state.txCost}</div>
-          </div>
-          <div class="LidoFooterRaw">
-            <div class="LidoFooterRawLeft">Reward fee</div>
-            <div class="LidoFooterRawRight">10%</div>
+          {false && (
+            <div className="LidoFooterRaw">
+              <div className="LidoFooterRawLeft">Transaction cost</div>
+              <div className="LidoFooterRawRight">{state.txCost}</div>
+            </div>
+          )}
+          <div className="LidoFooterRaw">
+            <div className="LidoFooterRawLeft">Reward fee</div>
+            <div className="LidoFooterRawRight">10%</div>
           </div>
         </div>
       </div>
@@ -301,12 +366,11 @@ return (
 
 #### Fork the component
 
-1. Navigate to [the component](https://bos.gg/#/zavodil.near/widget/Lido)
-2. Click on the menu icon in the top-right corner
-3. Select `Fork`
-4. Feel free to make any changes
-5. Click on "Save" to deploy the component
+1. Navigate to [the component](https://near.org/near/widget/ComponentDetailsPage?src=zavodil.near/widget/Lido)
+2. Select `Fork`
+3. Feel free to make any changes
+4. Click on <kbd>Save</kbd> to deploy the component
 
 :::note
-To deploy the component, you'll need to sign in with a NEAR account and to make a deposit of a small amount of NEAR for the storage cost. This is because BOS uses the NEAR blockchain underneath.
+To deploy the component, you'll need to sign in with a NEAR account and to make a deposit of a small amount of NEAR for the storage cost. This is because NEAR components are stored in the NEAR network.
 :::

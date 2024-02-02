@@ -35,7 +35,7 @@ Given the general-purpose nature of NEAR, function calls win the award for most 
 
 With this level of complexity, it's no longer useful to walk through an example, enumerating each (see `ext_costs` under `wasm_config` using the [`protocol_config`](/api/rpc/protocol#protocol-config) RPC endpoint) of the gas calculations as we go (you can research this yourself, [if you want](https://github.com/near/nearcore/pull/3038)). Instead, let's approach this from two other angles: ballpark comparisons to Ethereum, and getting accurate estimates with automated tests.
 
-<blockquote class="lesson">
+<blockquote className="lesson">
 **How much of the gas fee goes as a 30% reward to the smart contract account?**
 
 The NEAR Whitepaper mentions that [30% of all gas fees](https://near.org/papers/the-official-near-white-paper/) go to smart contract accounts on which the fees are expensed. 
@@ -82,11 +82,11 @@ You can expect the network to sit at the minimum gas price most of the time; lea
 
 [fungible token]: https://github.com/near-examples/FT/pull/42
 [1.1m]: https://github.com/chadoh/erc20-test
-[9]: https://explorer.testnet.near.org/transactions/GsgH2KoxLZoL8eoutM2NkHe5tBPnRfyhcDMZaBEsC7Sm
+[9]: https://testnet.nearblocks.io/txns/GsgH2KoxLZoL8eoutM2NkHe5tBPnRfyhcDMZaBEsC7Sm
 [storage staking]: /concepts/storage/storage-staking
 [~45k]: https://ethereum.stackexchange.com/questions/71235/gas-limit-for-erc-20-tokens
-[14]: https://explorer.testnet.near.org/transactions/5joKRvsmpEXzhVShsPDdV8z5EG9bGMWeuM9e9apLJhLe
-[8]: https://explorer.testnet.near.org/transactions/34pW67zsotFsD1DY8GktNhZT9yP5KHHeWAmhKaYvvma6
+[14]: https://testnet.nearblocks.io/txns/5joKRvsmpEXzhVShsPDdV8z5EG9bGMWeuM9e9apLJhLe
+[8]: https://testnet.nearblocks.io/txns/34pW67zsotFsD1DY8GktNhZT9yP5KHHeWAmhKaYvvma6
 [44k]: https://github.com/chadoh/erc20-test
 
 #### Estimating Gas Costs with Automated Tests {#accurate-estimates-with-automated-tests}
@@ -160,7 +160,7 @@ For a function call, the maximum block delay is computed as the total gas attach
 
 You can directly query the NEAR platform for the price of gas on a specific block using the RPC method `gas_price`. This price may change depending on network load. The price is denominated in yoctoNEAR (10^-24 NEAR)
 
-1. Take any recent block hash from the blockchain using [NEAR Explorer](https://explorer.testnet.near.org/blocks)
+1. Take any recent block hash from the blockchain using [NearBlocks Explorer](https://testnet.nearblocks.io/blocks)
 
    _At time of writing, `SqNPYxdgspCT3dXK93uVvYZh18yPmekirUaXpoXshHv` was the latest block hash_
 
@@ -188,7 +188,7 @@ The price of 1 unit of gas at this block was 5000 yoctoNEAR (10^-24 NEAR).
 
 ## Some closing thoughts from the whitepaper {#some-closing-thoughts-from-the-whitepaper}
 
-<blockquote class="info">
+<blockquote className="info">
 Fundamentally, the NEAR platform is a marketplace between willing participants.  On the supply side, operators of the validator nodes and other fundamental infrastructure need to be incentivized to provide these services which make up the “community cloud.”  On the demand side, the developers and end-users of the platform who are paying for its use need to be able to do so in a way which is simple, clear and consistent so it helps them.
 
 A blockchain-based cloud provides several specific resources to the applications which run atop it:

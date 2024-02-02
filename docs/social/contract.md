@@ -8,7 +8,7 @@ sidebar_label: SocialDB
 
 - Source code: https://github.com/NearSocial/social-db
 - API: https://github.com/NearSocial/social-db#api
-- Testnet account ID: [`v1.social08.testnet`](https://explorer.testnet.near.org/accounts/v1.social08.testnet)
+- Testnet account ID: [`v1.social08.testnet`](https://testnet.nearblocks.io/address/v1.social08.testnet)
 - Mainnet account ID: [`social.near`](https://nearblocks.io/address/social.near)
 
 ### Get API

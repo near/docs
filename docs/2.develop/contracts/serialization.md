@@ -22,7 +22,7 @@ This process of translating **complex objects into simpler single-value** repres
 Lets give a quick overview of both serialization formats, including their pros and cons, as well as
 an example on how their serializations look like.
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### [JSON](https://www.json.org/json-en.html): Objects to Strings
 
@@ -43,7 +43,7 @@ Example{
 "{\"number\": 2, \"arr\": [0, 1]}"
 ```
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### [Borsh](https://borsh.io/): Objects to Bytes
 
@@ -232,7 +232,7 @@ the vector now has 2 elements.
 
 At the same time, a new key-value was added adding the new vector entry: the `1u8` we just added.
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 <!-- We should see where to move/replicate this -->
 

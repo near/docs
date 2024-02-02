@@ -60,7 +60,7 @@ return (
 
 ### Using `styled-components`
 
-You can use [`styled-components`](../components/styledComponents.md) in combination with Radix UI primitives. Here's an example:
+You can use [`styled-components`](../api/builtin-components.md#styled-components) in combination with Radix UI primitives. Here's an example:
 
 ```js
 const SwitchRoot = styled("Switch.Root")`
@@ -153,7 +153,7 @@ A fully featured button component that can act as a `<button>` or `<a>` tag.
 
 ### `DIG.Theme`
 
-This component wraps all of BOS so you don't need to render it yourself.
+This component wraps all of NEAR Components so you don't need to render it yourself.
 
 :::tip
 You can use any of the [CSS variables](https://near.org/near/widget/ComponentDetailsPage?src=near/widget/DIG.Theme&tab=source) defined inside `DIG.Theme`.

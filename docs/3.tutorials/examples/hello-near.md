@@ -61,13 +61,13 @@ The contract presents 2 methods: `set_greeting` and `get_greeting`. The first on
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="contract.ts" 
-            url="https://github.com/near-examples/hello-near-js/blob/master/contract/src/contract.ts"
-            start="3" end="18" />
+            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts"
+            start="4" end="18" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/hello-near-rs/blob/main/contract/src/lib.rs"
-            start="23" end="36" />
+            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
+            start="21" end="33" />
   </Language>
 </CodeTabs>
 
@@ -79,8 +79,8 @@ The website's logic lives in `/assets/js/index.js`, which communicates with the 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
-            url="https://github.com/near-examples/hello-near-js/blob/master/frontend/index.js"
-            start="10" end="21" />
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/index.js"
+            start="11" end="22" />
   </Language>
 </CodeTabs>
 
@@ -102,8 +102,8 @@ Unit tests check individual functions in the smart contract. Right now only rust
 <CodeTabs>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/hello-near-rs/blob/main/contract/src/lib.rs"
-            start="46" end="58" />
+            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
+            start="43" end="61" />
   </Language>
 </CodeTabs>
 
@@ -114,7 +114,7 @@ Integration tests are generally written in javascript. They automatically deploy
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="main.ava.ts"
-            url="https://github.com/near-examples/hello-near-js/blob/master/integration-tests/src/main.ava.ts"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/sandbox-ts/src/main.ava.ts"
             start="32" end="43" />
   </Language>
 </CodeTabs>

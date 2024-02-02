@@ -53,13 +53,8 @@ See the [metadata standard](https://nomicon.io/Standards/Tokens/NonFungibleToken
 Implement [events](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event) to be able to [track NFT mints in real time](../../4.tools/events.md).
 :::
 
-### Minting Collections
-Many times people want to create multiple 100 copies of an NFT (this is called a collection). In such cases, what you actually need to do is to mint 100 different NFTs with the same metadata (but different `token-id`).
 
-### Royalties
-You might have noticed that one of the parameters is a structure called royalties. Royalties enable you to create a list of users that should get paid when the token is sell in a marketplace. For example, if `anna` has `5%` of royalties, each time the NFT is sell, `anna` should get a 5% of the selling price.
-
-<hr class="subsection"/>
+<hr className="subsection"/>
 
 ## Querying Metadata
 You can query the NFT's metadata by calling the `nft_metadata`.
@@ -74,7 +69,7 @@ You can query the NFT's metadata by calling the `nft_metadata`.
   </TabItem>
 </Tabs>
 
-<hr class="subsection"/>
+<hr className="subsection"/>
 
 ## Approving Users
 You can authorize other users to transfer an NFT you own. This is useful, for example, to enable listing your NFT in a marketplace. In such scenario, you **trust** that the marketplace will only transfer the NFT upon receiving a certain amount of money in exchange.
@@ -99,7 +94,7 @@ If the `msg` parameter is included, then a cross-contract call will be made to `
 :::
 
 
-<hr class="subsection"/>
+<hr className="subsection"/>
 
 ## Transferring an NFT
 Transferring an NFT can happen in two scenarios: (1) you ask to transfer an NFT, and (2) an authorized account asks to transfer the NFT. In both cases, it is necessary to invoke the `nft_transfer` method, indicating the token id, the receiver, and an (optionally) an [approval_id](https://nomicon.io/Standards/Tokens/NonFungibleToken/ApprovalManagement).
@@ -118,7 +113,7 @@ Transferring an NFT can happen in two scenarios: (1) you ask to transfer an NFT,
 Implement [events](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event) to be able to [track NFT transfers in real time](../../4.tools/events.md).
 :::
 
-<hr class="subsection"/>
+<hr className="subsection"/>
 
 ## Attaching NFTs to a Call
 Natively, only NEAR tokens (Ⓝ) can be attached to a method calls. However, the NFT standard enables to attach a non-fungible tokens in a call by using the NFT-contract as intermediary. This means that, instead of you attaching tokens directly to the call, you ask the NFT-contract to do both a transfer and a method call in your name.
@@ -154,7 +149,7 @@ From the workflow above it follows that the receiver we want to call needs to im
 
 The `nft_on_transfer` **must return true** if the NFT has to be **returned to the sender**.
 
-<hr class="subsection"/>
+<hr className="subsection"/>
 
 ## Events
 You can track real time events (such as transfers) by implementing the [NFT Event Standards](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event).

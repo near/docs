@@ -5,7 +5,7 @@ title: Setup
 
 In order to use the RPC API you will need to setup the correct RPC endpoints.
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ## RPC Endpoint Setup
 - `POST` for all methods
@@ -20,7 +20,7 @@ In order to use the RPC API you will need to setup the correct RPC endpoints.
 ### Limits
 - Maximum number of requests per IP: 600 req/min
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ## Querying Historical Data
 Querying historical data (older than 5 [epochs](../../1.concepts/basics/epoch.md) or ~2.5 days), you may get responses that the data is not available anymore. In that case, archival RPC nodes will come to your rescue:
@@ -73,7 +73,9 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=network_in
 The `block_id` param can take either the block number (e.g. `27912554`) or the block hash (e.g. `'3Xz2wM9rigMXzA2c5vgCP8wTgFBaePucgUmVYPkMqhRL'` ) as an argument.
 
 :::caution
-The block IDs of transactions shown in <a href="https://explorer.testnet.near.org">NEAR Explorer</a> are not necessarily the block ID of the executed transaction. Transactions may execute a block or two after its recorded, and in some cases, can take place over several blocks. Due to this, it is important to to check subsequent blocks to be sure all results related to the queried transaction are discovered.
+
+The block IDs of transactions shown in [NearBlocks Explorer](https://testnet.nearblocks.io) are not necessarily the block ID of the executed transaction. Transactions may execute a block or two after its recorded, and in some cases, can take place over several blocks. Due to this, it is important to to check subsequent blocks to be sure all results related to the queried transaction are discovered.
+
 :::
 
 ---

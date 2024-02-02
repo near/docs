@@ -74,12 +74,12 @@ The contract presents 2 methods: `set_greeting` and `get_greeting`. The first on
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
-            url="https://github.com/near-examples/hello-near-js/blob/master/contract/src/contract.ts"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts"
             start="3" end="18" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/hello-near-rs/blob/main/contract/src/lib.rs"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
             start="9" end="43" />
   </Language>
 </CodeTabs>
@@ -100,7 +100,7 @@ each `.rs` file.
 <CodeTabs>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/hello-near-rs/blob/main/contract/src/lib.rs"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
             start="46" end="58" />
   </Language>
 </CodeTabs>

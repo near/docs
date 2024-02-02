@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useWallet } from '@theme/Gateway/wallet-selector';
+import { useWallet } from '@theme/scripts/wallet-selector';
 import BrowserOnly from '@docusaurus/BrowserOnly';
 import "react-bootstrap-typeahead/css/Typeahead.css";
 import "react-bootstrap-typeahead/css/Typeahead.bs5.css";
@@ -21,11 +21,11 @@ export function WidgetEditor({ children, id = 1, height = "160px" }) {
         const { selector } = useWallet();
 
         useEffect(() => {
-          initNear && selector && initNear({ networkId: 'mainnet', selector });
+          initNear && selector && initNear({ networkId: 'testnet', selector });
         }, [initNear, selector]);
 
         return <div>
-          <div class="monaco">
+          <div className="monaco">
             <MonacoEditor
               height={height}
               value={code}
@@ -47,11 +47,9 @@ export function WidgetEditor({ children, id = 1, height = "160px" }) {
             />
           </div>
 
-          <div class="code_iframe">
-            <h4 style={{ fontWeight: 0 }}> Preview <small> - Edit the code above! </small> </h4>
-            <hr class="preview-border" />
-            <div class="bootstrap-scope">
-              <div class="vm-widget">
+          <div className="code_iframe">
+            <div className="bootstrap-scope">
+              <div className="vm-widget">
                 <Widget code={code} key={id} />
               </div>
             </div>
