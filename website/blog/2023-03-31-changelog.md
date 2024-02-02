@@ -1,6 +1,6 @@
 # March 2023
 
-Developer changelog for [essential repositories](/develop/github-overview) when building on NEAR Protocol. 🏗️
+Developer changelog for [essential repositories](https://github.com/near) when building on NEAR Protocol. 🏗️
 
 ## Releases  🎉
 
