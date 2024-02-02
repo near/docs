@@ -7,7 +7,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-Chain Signatures allows you to the method on multichain.near:
+Chain Signatures allows you to call the `sign()` method on `multichain.near`:
 
 ```rust
     pub fn sign(payload: [u8; 32], path: String) -> Signature {
@@ -21,7 +21,8 @@ The signature is an ECDSA signature on the Secp256k1 curve.
 
 ## Use cases
 
-For the sake of clarity I've broken down the use cases into simple component parts, but practically we're going to be using all of these use cases in a single application.
+Chain signatures enable you to implement multichain and cross-chain workflows in a simple way.
+Take a look at a few possible use cases:
 
 ### Oauth-controlled Blockchain accounts
 
@@ -80,32 +81,3 @@ Companies like [Calimero](https://www.calimero.network/) offer private NEAR shar
 :::tip
 This could also simplify NEAR's sharding model, by treating each NEAR shard like one would a private shard.
 :::
-
-<!--
-## Future use cases
-
-### Chain decryptable messages [^1]
-
-Certain on chain keys allow the following flow:
-
-1. The sender sends encrypted data onto the chain
-2. When a receiver proves they have a right to the data it is re-encrypted with their key
-3. The receiver then decrypts the data
-
-This is useful for paid content, whatsapp messages and any private data on chain.
-
-Apart from the obvious this also enables:
-- **Secret-bid auctions with MEV protection** Users can submit bids that are encrypted at the end of the auction, the smart contract can decrypt all bids with a single evaluation.
-- **Dead man’s switch**. Journalists or whistleblowers can ensure that compromising information in their possession is automatically published if they were to become incapacitated
-- **One-time programs** Programs that can be executed only once on a single input, and that don’t leak anything about the program other than the result of the computation
-
-
-### On Chain Domain Control[^2]
-
-It may be possible to use DNSSEC & email signatures to control the DNS record and the sending of emails from a domain.
-
-There are practical issues
-
-[^1]: This might require BLS signatures and further work [description of one implementation exists here](https://eprint.iacr.org/2023/616.pdf)
-[^2]: This is speculative
--->
