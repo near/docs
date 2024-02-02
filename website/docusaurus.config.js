@@ -69,35 +69,7 @@ const config = {
     [
       'docusaurus-plugin-remote-content',
       {
-        // options here
-        name: 'dx', // used by CLI, must be path safe
-        sourceBaseUrl: 'https://raw.githubusercontent.com/near/DX/main/',
-        outDir: '../docs/2.develop',
-        documents: ['README.md'],
-        noRuntimeDownloads: true,
-        modifyContent(filename, content) {
-          // get everything after ## BOS
-          content = content.substring(
-            content.indexOf(
-              'An overview of essential repositories when building on NEAR Protocol.'
-            )
-          );
-          return {
-            filename: 'github-overview.md',
-            content: `---
-id: github-overview
-title: NEAR Developer Repositories
----
-
-${content}`, // <-- this last part adds in the rest of the content, which would otherwise be discarded
-          };
-        }
-      },
-    ],
-    [
-      'docusaurus-plugin-remote-content',
-      {
-        name: 'changelog',
+        name: 'near-changelog',
         sourceBaseUrl:
           'https://raw.githubusercontent.com/near/near-releases/main/reports/',
         outDir: '/blog',
@@ -231,7 +203,7 @@ ${content}`, // <-- this last part adds in the rest of the content, which would 
           position: "right"
         },
         {
-          href: '/develop/github-overview',
+          href: 'https://github.com/near',
           position: 'right',
           className: 'header-github-link',
           'aria-label': 'GitHub repository',
