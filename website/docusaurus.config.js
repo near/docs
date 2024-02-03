@@ -141,34 +141,23 @@ ${content}`, // <-- this last part adds in the rest of the content, which would 
           label: 'Build',
           position: 'left',
           items: [
-            { label: 'Smart Contracts', href: '/develop/contracts/welcome' },
-            { label: 'Web3 Applications', href: '/develop/integrate/welcome' },
-            { label: 'Data Solutions', href: '/develop/monitor' },
+            { label: 'Overview', href: '/develop/welcome' },
+            {
+              type: 'html',
+              value: '<hr/>',
+            },           
+            { label: 'Smart Contracts', href: '/develop/contracts/whatisacontract' },
+            { label: 'Components', href: '/bos/tutorial/quickstart' },
+            { label: 'Web3 Applications', href: '/develop/web3-apps/whatareweb3apps' },
+            { label: 'Primitives', href: '/primitives/whatareprimitives' },
+            { label: 'Data Infrastructure', href: '/develop/whataredatasolutions' },
             {
               type: 'html',
               value: '<hr/> <small class="subtitle"> Integrations </small>',
             },
-            { label: "Backend", href: "/develop/integrate/backend-login" },
-            { label: "Frontend", href: "/develop/integrate/frontend" },
-            { label: "Exchanges", href: "/integrator/exchange-integration" },
             { label: "Rollups DA", href: "/data-availability/welcome" },
+            { label: "Exchanges", href: "/integrator/exchange-integration" },
           ],
-        },
-        {
-          label: "Primitives",
-          position: "left",
-          items: [
-            { label: 'Overview', href: '/primitives/welcome' },
-            {
-              type: 'html',
-              value: '<hr/>',
-            },
-            { label: "LinkDrops", href: "/primitives/linkdrop" },
-            { label: "Fungible Tokens", href: "/primitives/ft" },
-            { label: "Non-Fungible Tokens", href: "/primitives/nft" },
-            { label: "Decentralized Exchanges", href: "/primitives/dex" },
-            { label: "Autonomous Organizations", href: "/primitives/dao" },
-          ]
         },
         {
           type: 'dropdown',
@@ -215,6 +204,10 @@ ${content}`, // <-- this last part adds in the rest of the content, which would 
               href: 'https://near-nodes.io',
               label: 'Validator Docs',
             },
+            {
+              href: "https://aurora.dev",
+              label: "Aurora (EVM)",
+            }
           ],
         },
         {
