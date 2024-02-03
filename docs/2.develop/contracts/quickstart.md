@@ -11,11 +11,6 @@ import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 In this quickstart tutorial, we will guide you in creating your first smart contract in the NEAR **testnet** that stores and retrieves a greeting.
 
-
-:::info
-This quickstart is dedicated to creating smart contracts. We also have one dedicated only to [frontends](../integrate/quickstart.md)
-:::
-
 ---
 
 ## Prerequisites

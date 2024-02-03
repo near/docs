@@ -13,6 +13,10 @@
 [data-theme="dark"] {
     --ifm-color-primary: #82aaff;
     --near-color-royal: #82aaff;
+
+    hr{
+        background-color: #2d2d2d;
+    }
 }
 
 [data-theme='light'] li hr {
@@ -39,8 +43,6 @@ body {
     padding-top: 1rem;
 }
 
-
-
 .features a[href^="http"]::after {
     content: "";
 }
@@ -54,15 +56,6 @@ hr {
 .landing {
     margin: 2.5em 0 1.5em 0;
 }
-
-li hr {
-    height: 4px;
-    margin: 0.2em auto;
-    width: 90%;
-    border-width: 0;
-}
-
-
 
 ol li::marker {
     color: var(--near-color-royal);
@@ -78,8 +71,6 @@ ol li::marker {
 .text-center {
     text-align: center !important;
 }
-
-
 
 strong {
     font-weight: 600;
@@ -231,6 +222,13 @@ article {
     padding: .7rem .5rem !important;
 }
 
+li hr {
+    height: 4px;
+    margin: 0.4em auto;
+    width: 90%;
+    border-width: 0;
+}
+
 .theme-doc-toc-mobile {
     display: none;
 }
@@ -317,6 +315,7 @@ iframe+em {
     background-color: #f6f8fa !important;
 }
 
+/* Github Logo */
 .header-github-link:hover {
     opacity: 0.6;
 }

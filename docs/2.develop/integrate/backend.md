@@ -1,6 +1,6 @@
 ---
 id: backend-login
-title: Login with NEAR 
+title: Authenticate NEAR Users 
 ---
 Recently NEAR has approved a new standard that, among other things, enables users to authenticate into a backend service.
 
