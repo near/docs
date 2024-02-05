@@ -2,6 +2,7 @@
 id: donation
 title: Donation
 ---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
@@ -16,36 +17,72 @@ perfect gateway to enter the world of decentralized finance.
 
 ## Starting the Donation Example
 
-You have two options to start the Donation Example. The first and recommended is to use the app through Gitpod, which will open a web-based interactive environment. The second option is to clone the repository locally, for which you will need to install all the [Prerequisites](../../2.develop/prerequisites.md).
+You have two options to start the Donation Example. The first and recommended is to use the app through Codespaces, which will open a web-based interactive environment. The second option is to clone the repository locally, for which you will need to install all the [Prerequisites](../../2.develop/prerequisites.md).
 
-<Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value="🌐 JavaScript" >
+| Codespaces                                                                                                                      | Clone locally                                               |
+| ------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/near-examples/donation-examples) | 🌐 `https://github.com/near-examples/donation-examples.git` |
 
-  | Codespaces                                                                                                                                                                               | Clone locally                                                     |
-  | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
-  | [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/near-examples/donation-examples) | 🌐 `https://github.com/near-examples/donation-js.git` |
+If you choose Codespaces a new browser window will open automatically with the code.
+
+Compiling the contract requires the following steps:
+<Tabs>
+<TabItem value="🌐 JavaScript">
+
+```bash
+cd contract-ts
+yarn
+yarn build
+```
 
   </TabItem>
-  <TabItem value="🦀 Rust">
-
-| Codespaces                                                                                                                                                                               | Clone locally                                                     |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
-| [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/near-examples/donation-examples) | 🦀 `https://github.com/near-examples/donation-rust.git` |
-
+    <TabItem value="🦀 Rust">
+```bash
+cd contract-rs
+./build.rs
+```
   </TabItem>
 
 </Tabs>
 
-If you choose Gitpod a new browser window will open automatically with the code. The project will compile and eventually the frontend will open in a new window/tab (make sure the pop-up window is not blocked).
-
-If you are running the app locally, enter the directory where you cloned it and use `yarn` to install dependencies, and `yarn start` to start it.
+Compiling and testing the contract requires the following steps:
+<Tabs>
+<TabItem value="🌐 JavaScript">
 
 ```bash
-cd donation
+cd contract-ts
 yarn
-yarn deploy
+yarn test
+```
+
+  </TabItem>
+    <TabItem value="🦀 Rust">
+```bash
+cd contract-rs
+./test.rs
+```
+  </TabItem>
+</Tabs>
+
+To display the frontend:
+<Tabs>
+<TabItem value="🎨 Frontend">
+
+```bash
+cd frontend
+yarn
 yarn start
 ```
+
+  </TabItem>
+</Tabs>
+:::tip
+If you deploy your own contract and want to display it in the frontend. You must change the following:
+
+<Github fname="index"
+            url="https://github.com/near-examples/donation-examples/blob/main/frontend/index.js"
+            start="5" end="5" />
+:::
 
 Your contract will then be **compiled** and **deployed** to an **account** in the `testnet` network. When done, a browser window should open.
 
@@ -58,7 +95,7 @@ to donate and press the donate button. You will be redirected to the NEAR Wallet
 in the "Latest Donations".
 
 ![img](/docs/assets/examples/donation.png)
-*Frontend of the Donation App*
+_Frontend of the Donation App_
 
 ---
 
@@ -67,7 +104,7 @@ in the "Latest Donations".
 Now that you understand what the dApp does, let us take a closer look to its structure:
 
 1. The frontend code lives in the `/frontend` folder.
-2. The smart contract code is in the `/contract` folder.
+2. The smart contract code is in the `/contract-ts` or `/contract-rs` folder.
 
 ### Contract
 
@@ -95,7 +132,7 @@ An interesting aspect of the donation example is that it showcases how to retrie
 NEAR wallet to accept a transaction.
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="js">
+  <Language value="🎨 Frontend" language="js">
     <Github fname="index.js"
             url="https://github.com/near-examples/donation-examples/blob/main/frontend/index.js"
             start="71" end="93" />
