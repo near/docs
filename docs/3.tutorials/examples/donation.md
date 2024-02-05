@@ -7,66 +7,81 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
-Our donation example enables to forward money to an account while keeping track of it.
-It is one of the simplest examples on making a contract receive and send money, and the
-perfect gateway to enter the world of decentralized finance.
+Our donation example enables to forward money to an account while keeping track of it. It is one of the simplest examples on making a contract handle tranfers.
 
 ![img](/docs/assets/examples/donation.png)
+_Frontend of the Donation App_
 
 ---
 
-## Starting the Donation Example
-
-You have two options to start the Donation Example. The first and recommended is to use the app through Codespaces, which will open a web-based interactive environment. The second option is to clone the repository locally, for which you will need to install all the [Prerequisites](../../2.develop/prerequisites.md).
+## Obtaining the Donation Example
+You have two options to start the Donation Example. 
+1. You can use the app through `Github Codespaces`, which will open a web-based interactive environment.
+2. Clone the repository locally and use it from your computer.
 
 | Codespaces                                                                                                                      | Clone locally                                               |
-| ------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+|---------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------|
 | [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/near-examples/donation-examples) | 🌐 `https://github.com/near-examples/donation-examples.git` |
 
-If you choose Codespaces a new browser window will open automatically with the code.
+---
 
-Compiling the contract requires the following steps:
+## Structure of the Example
+The example is divided in two main components: 
+1. The smart contract, available in two flavours: rust and javascript
+2. The frontend, that interacts with an already deployed contract.
+
 <Tabs>
-<TabItem value="🌐 JavaScript">
 
-```bash
-cd contract-ts
-yarn
-yarn build
-```
+  <TabItem value="🌐 JavaScript">
+
+  ```bash
+  ├── README.md
+  ├── contract-ts
+  │   └── src
+  │       └── contract.ts # contract's code
+  │   ├── ava.config.cjs
+  │   ├── package.json
+  │   └── src
+  │       └── main.ava.ts
+  ├── contract-rs     # sanbox testing
+  ├── package.json    # package manager
+  └── tsconfig.json
+  ```
 
   </TabItem>
-    <TabItem value="🦀 Rust">
-```bash
-cd contract-rs
-./build.rs
-```
+
+  <TabItem value="🦀 Rust">
+
+  ```bash
+  ├── README.md
+  ├── src
+  │   └── lib.rs # contract's code
+  ├── sandbox-rs # sandbox testing
+  │   ├── Cargo.toml
+  │   └── src
+  │       └── tests.rs
+  ├── build.sh   # build script
+  ├── test.sh    # test script
+  ├── deploy.sh  # deploy script
+  ├── .cargo
+  │   └── config
+  └── Cargo.toml # package manager
+  ```
+
   </TabItem>
 
 </Tabs>
 
-Compiling and testing the contract requires the following steps:
-<Tabs>
-<TabItem value="🌐 JavaScript">
+---
 
-```bash
-cd contract-ts
-yarn
-yarn test
-```
+## Frontend
 
-  </TabItem>
-    <TabItem value="🦀 Rust">
-```bash
-cd contract-rs
-./test.rs
-```
-  </TabItem>
-</Tabs>
+The donation example includes a frontend that interacts with an already deployed smart contract, allowing user to donate NEAR tokens to a faucet service.
 
-To display the frontend:
-<Tabs>
-<TabItem value="🎨 Frontend">
+<hr class="subsection" />
+
+### Running the Frontend
+To start the frontend you will need to install the dependencies and start the server.
 
 ```bash
 cd frontend
@@ -74,39 +89,32 @@ yarn
 yarn start
 ```
 
-  </TabItem>
-</Tabs>
-:::tip
-If you deploy your own contract and want to display it in the frontend. You must change the following:
+Go ahead and login with your NEAR account. If you don't have one, you will be able to create one in the moment. Once logged in, input the amount of NEAR you want to donate and press the donate button. You will be redirected to the NEAR Wallet to confirm the transaction. After confirming it, the donation will be listed in the "Latest Donations".
 
-<Github fname="index"
-            url="https://github.com/near-examples/donation-examples/blob/main/frontend/index.js"
-            start="5" end="5" />
-:::
+<hr class="subsection" />
 
-Your contract will then be **compiled** and **deployed** to an **account** in the `testnet` network. When done, a browser window should open.
+### Understanding the Frontend
+
+The frontend is composed by a single HTML file (`/index.html`), while the logic lives in `/assets/js/index.js`, which communicates with the contract through `/assets/js/near/utils.js`.
+
+<Language value="" language="js">
+  <Github fname="index.js"
+          url="https://github.com/near-examples/donation-examples/blob/main/frontend/index.js"
+          start="71" end="93" />
+  <Github fname="near-interface.js"
+          url="https://github.com/near-examples/donation-examples/blob/main/frontend/near-interface.js"
+          start="29" end="32" />
+  <Github fname="near-wallet.js"
+          url="https://github.com/near-examples/donation-examples/blob/main/frontend/near-wallet.js"
+          start="105" end="113" />
+</Language>
+
+An interesting aspect of the donation example is that it showcases how to retrieve a result after being redirected to the
+NEAR wallet to accept a transaction.
 
 ---
 
-## Interacting With the dApp
-
-Go ahead and login with your NEAR account. If you don't have one, you will be able to create one in the moment. Once logged in, input the amount of NEAR you want
-to donate and press the donate button. You will be redirected to the NEAR Wallet to confirm the transaction. After confirming it, the donation will be listed
-in the "Latest Donations".
-
-![img](/docs/assets/examples/donation.png)
-_Frontend of the Donation App_
-
----
-
-## Structure of a dApp
-
-Now that you understand what the dApp does, let us take a closer look to its structure:
-
-1. The frontend code lives in the `/frontend` folder.
-2. The smart contract code is in the `/contract-ts` or `/contract-rs` folder.
-
-### Contract
+## Smart Contract
 
 The contract exposes methods to donate money (`donate`), and methods to retrieve the recorded donations (e.g. `get_donation_by_number`).
 
@@ -123,63 +131,68 @@ The contract exposes methods to donate money (`donate`), and methods to retrieve
   </Language>
 </CodeTabs>
 
-### Frontend
+<hr class="subsection" />
 
-The frontend is composed by a single HTML file (`/index.html`). This file defines the components displayed in the screen.
-The website's logic lives in `/assets/js/index.js`, which communicates with the contract through `/assets/js/near/utils.js`.
+### Testing the Contract
+The contract readily includes a set of unit and sandbox testing to validate its functionality. To execute the tests, run the following commands:
 
-An interesting aspect of the donation example is that it showcases how to retrieve a result after being redirected to the
-NEAR wallet to accept a transaction.
+<Tabs>
+  <TabItem value="🌐 JavaScript">
 
-<CodeTabs>
-  <Language value="🎨 Frontend" language="js">
-    <Github fname="index.js"
-            url="https://github.com/near-examples/donation-examples/blob/main/frontend/index.js"
-            start="71" end="93" />
-    <Github fname="near-interface.js"
-            url="https://github.com/near-examples/donation-examples/blob/main/frontend/near-interface.js"
-            start="29" end="32" />
-    <Github fname="near-wallet.js"
-            url="https://github.com/near-examples/donation-examples/blob/main/frontend/near-wallet.js"
-            start="105" end="113" />
-  </Language>
-</CodeTabs>
+  ```bash
+  cd contract-ts
+  yarn
+  yarn test
+  ```
 
----
+  </TabItem>
+  <TabItem value="🦀 Rust">
+  
+  ```bash
+  cd contract-rs
+  ./test.sh
+  ```
+  </TabItem>
 
-## Testing
+</Tabs>
 
-When writing smart contracts it is very important to test all methods exhaustively. In this
-project you have two types of tests: unit and integration. Before digging in them,
-go ahead and perform the tests present in the dApp through the command `yarn test`.
+:::tip
+The `integration tests` use a sandbox to create NEAR users and simulate interactions with the contract.
+:::
 
-### Unit test
+<hr class="subsection" />
 
-Unit tests check individual functions in the smart contract. They are written in the
-same language as the smart contract is.
+### Deploying the Contract to the NEAR network
+In order to deploy the contract you will need to [create a NEAR account](/develop/contracts/quickstart#create-a-testnet-account).
 
-<CodeTabs>
-  <Language value="🦀 Rust" language="rust">
-    <Github fname="lib.rs"
-            url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/src/lib.rs"
-            start="63" end="92" />
-  </Language>
-</CodeTabs>
+<Tabs>
+  <TabItem value="🌐 JavaScript">
 
-### Integration test
+  ```bash
+  cd contract-ts
+  yarn build
+  near deploy <accountId> res/contract.wasm
+  ```
+  </TabItem>
+  <TabItem value="🦀 Rust">
 
-Integration tests are generally written in javascript. They automatically deploy a new
-contract and execute methods on it. In this way, integration tests simulate interactions
-from users in a realistic scenario. You will find the integration tests
-in `tests/integration-tests`.
+  ```bash
+  cd contract-rs
+  ./test.sh
+  ```
+  </TabItem>
+</Tabs>
 
-<CodeTabs>
-  <Language value="🌐 JavaScript" language="rust">
-    <Github fname="main.test.js"
-            url="https://github.com/near-examples/donation-examples/blob/main/contract-ts/sandbox-ts/src/main.ava.ts"
-            start="50" end="73" />
-  </Language>
-</CodeTabs>
+:::tip
+To interact with your contract from the [frontend](#frontend), simply replace the variable `CONTRACT_NAME` in the `index.js` file.
+:::
+
+<hr class="subsection" />
+
+### CLI: Interacting with the Contract
+
+<!-- near view donation.near-examples get_donations -->
+<!-- near call donation.near-examples donate --accountId accountId --deposit 0.1 -->
 
 ---
 
