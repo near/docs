@@ -657,6 +657,15 @@ const sidebar = {
     },
     {
       "type": "html",
+      "value": "<span class='menu__link'><b><small> Chain Signatures </small></b></span>"
+    },
+    "develop/chain-signatures/wallet",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
       "value": "<span class='menu__link'><b><small> Related Tools </small></b></span>"
     },
     {
