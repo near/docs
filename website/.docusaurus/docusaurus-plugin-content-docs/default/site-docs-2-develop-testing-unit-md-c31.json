@@ -11,9 +11,9 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/testing/unit.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "gagdiez",
-  "lastUpdatedAt": 1702155614,
-  "formattedLastUpdatedAt": "Dec 9, 2023",
+  "lastUpdatedBy": "matiasbenary",
+  "lastUpdatedAt": 1707406474,
+  "formattedLastUpdatedAt": "Feb 8, 2024",
   "frontMatter": {
     "id": "unit-test",
     "title": "Unit Testing"

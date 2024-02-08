@@ -1,7 +1,7 @@
 {
   "id": "tutorials/examples/donation",
   "title": "Donation",
-  "description": "Our donation example enables to forward money to an account while keeping track of it.",
+  "description": "Our donation example enables to forward money to an account while keeping track of it. It is one of the simplest examples on making a contract handle tranfers.",
   "source": "@site/../docs/3.tutorials/examples/donation.md",
   "sourceDirName": "3.tutorials/examples",
   "slug": "/tutorials/examples/donation",
@@ -12,8 +12,8 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "matiasbenary",
-  "lastUpdatedAt": 1706635288,
-  "formattedLastUpdatedAt": "Jan 30, 2024",
+  "lastUpdatedAt": 1707406474,
+  "formattedLastUpdatedAt": "Feb 8, 2024",
   "frontMatter": {
     "id": "donation",
     "title": "Donation"

@@ -11,9 +11,9 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/contracts/basics.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Damian Parrino",
-  "lastUpdatedAt": 1702311741,
-  "formattedLastUpdatedAt": "Dec 11, 2023",
+  "lastUpdatedBy": "matiasbenary",
+  "lastUpdatedAt": 1707406474,
+  "formattedLastUpdatedAt": "Feb 8, 2024",
   "frontMatter": {
     "id": "basics",
     "title": "Modules, Types & Structs"
