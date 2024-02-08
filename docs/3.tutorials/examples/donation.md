@@ -31,7 +31,7 @@ You have two options to start the Donation Example.
 
 The example is divided in two main components:
 
-1. The smart contract, available in two flavours: rust and javascript
+1. The smart contract, available in two flavors: rust and javascript
 2. The frontend, that interacts with an already deployed contract.
 
 <Tabs>
