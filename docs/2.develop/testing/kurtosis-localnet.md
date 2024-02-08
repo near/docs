@@ -218,16 +218,16 @@ Explorer wallet struct(public_url = struct(ip_address = "127.0.0.1", path = "", 
 
 Starlark code successfully run. Output was:
 {
-	"contract_helper_service_url": "http://127.0.0.1:8330",
-	"explorer_url": "http://127.0.0.1:8331",
-	"near_node_rpc_url": "http://127.0.0.1:8332",
-	"network_name": "localnet",
-	"root_validator_key": {
-		"account_id": "test.near",
-		"public_key": "ed25519:3Kuyi2DUXdoHgoaNEvCxa1m6G8xqc6Xs7WGajaqLhNmW",
-		"secret_key": "ed25519:2ykcMLiM7vCmsSECcgfmUzihBtNdBv7v2CxNi94sNt4R8ar4xsrMMYvtsSNGQDfSRhNWXEnZvgx2wzS9ViBiS9jW"
-	},
-	"wallet_url": "http://127.0.0.1:8334"
+ "contract_helper_service_url": "http://127.0.0.1:8330",
+ "explorer_url": "http://127.0.0.1:8331",
+ "near_node_rpc_url": "http://127.0.0.1:8332",
+ "network_name": "localnet",
+ "root_validator_key": {
+  "account_id": "test.near",
+  "public_key": "ed25519:3Kuyi2DUXdoHgoaNEvCxa1m6G8xqc6Xs7WGajaqLhNmW",
+  "secret_key": "ed25519:2ykcMLiM7vCmsSECcgfmUzihBtNdBv7v2CxNi94sNt4R8ar4xsrMMYvtsSNGQDfSRhNWXEnZvgx2wzS9ViBiS9jW"
+ },
+ "wallet_url": "http://127.0.0.1:8334"
 }
 INFO[2022-12-06T13:00:10+05:30] =============================================
 INFO[2022-12-06T13:00:10+05:30] ||          Created enclave: near          ||
@@ -515,10 +515,10 @@ The ability to develop decentralized applications locally is a dream come true f
 
 ### Clone Example dApp
 
-- Clone the [NEAR Guestbook](https://github.com/near-examples/guest-book-js) repository:
+- Clone the [NEAR Guestbook](https://github.com/near-examples/guest-book-examples) repository:
 
 ```bash
-git clone https://github.com/near-examples/guest-book-js.git
+git clone https://github.com/near-examples/guest-book-examples.git
 ```
 
 ### Configure Network
