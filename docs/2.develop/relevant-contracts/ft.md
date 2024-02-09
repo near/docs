@@ -125,7 +125,7 @@ In order to send a fungible token to an account, both the sender and receiver mu
 <hr className="subsection"/>
 
 ## Attaching FTs to a Call
-Natively, only NEAR tokens (Ⓝ) can be attached to a method calls. However, the FT standard enables to attach fungible tokens in a call by using the FT-contract as intermediary. This means that, instead of you attaching tokens directly to the call, you ask the FT-contract to do both a transfer and a method call in your name.
+Natively, only NEAR tokens (Ⓝ) can be attached to a function calls. However, the FT standard enables to attach fungible tokens in a call by using the FT-contract as intermediary. This means that, instead of you attaching tokens directly to the call, you ask the FT-contract to do both a transfer and a function call in your name.
 
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="cli" label="NEAR CLI">
