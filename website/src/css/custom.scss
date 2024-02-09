@@ -186,6 +186,10 @@ img+em,
     color: #999;
 }
 
+.navbar .separator {
+    border: 1px #999 solid;
+}
+
 /* fonts and headers */
 h1,
 h2,
@@ -373,6 +377,10 @@ iframe+em {
 
     .navbar__search-input {
         width: 9rem
+    }
+
+    .navbar .separator {
+        display: none;
     }
 }
 

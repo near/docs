@@ -33,7 +33,8 @@ Once deployed and initialized, you can call the `nft_mint` method. You will need
 
   ```bash
   # 1. Deploy the contract in a testnet account
-  near dev-deploy --wasmFile non_fungible_token.wasm
+  near create-account <account-id> --useFaucet
+  near deploy <account-id> non_fungible_token.wasm
 
   # 2. Initialize NFT contract
 

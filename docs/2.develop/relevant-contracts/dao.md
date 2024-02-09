@@ -27,7 +27,8 @@ Once deployed and initialized, you can ask the factory to `create` a new DAO for
 
   ```bash
   # 1. Deploy the contract in a testnet account
-  near dev-deploy <factory-account> --wasmFile=<sputnikdao-factory> --accountId <your-account>
+  near create-account <factory-account> --useFaucet
+  near deploy <factory-account> <sputnikdao-wasm> --accountId <your-account>
 
   # 2. Initialize factory contract
   near call <factory-account> new --accountId  <your-account> --gas 100000000000000

@@ -27,7 +27,8 @@ Creating a new FT is as simple as deploying a new FT contract and initializing i
 
   ```bash
   # 1. Deploy the contract in a testnet account
-  near dev-deploy --wasmFile fungible_token.wasm
+  near create-account <account-id> --useFaucet
+  near deploy <account-id> fungible_token.wasm
 
   # 2. Initialize the contract with metadata
   near call <ft-contract> new '{"owner_id": "<owner-account>", "total_supply": "1000000000000000", "metadata": { "spec": "ft-1.0.0", "name": "Example Token Name", "symbol": "EXLT", "decimals": 8 }}' --accountId <ft-contract>
