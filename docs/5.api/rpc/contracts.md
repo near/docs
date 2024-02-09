@@ -1585,7 +1585,7 @@ Here is the exhaustive list of the error variants that can be returned by `call_
     </tr>
     <tr>
       <td>CONTRACT_EXECUTION_ERROR</td>
-      <td>The execution of the view method call failed (crashed, run out of the default 200 TGas limit, etc)</td>
+      <td>The execution of the view function call failed (crashed, run out of the default 200 TGas limit, etc)</td>
       <td>
         <ul>
           <li>Check <code>error.cause.info</code> for more details</li>

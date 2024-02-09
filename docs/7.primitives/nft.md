@@ -156,7 +156,7 @@ In both cases, it is necessary to invoke the `nft_transfer` method, indicating t
 ---
 
 ## Attaching NFTs to a Call
-Natively, only NEAR tokens (Ⓝ) can be attached to a method calls. However, the NFT standard enables to attach a non-fungible tokens in a call by using the NFT-contract as intermediary. This means that, instead of you attaching tokens directly to the call, you ask the NFT-contract to do both a transfer and a method call in your name.
+Natively, only NEAR tokens (Ⓝ) can be attached to a function calls. However, the NFT standard enables to attach a non-fungible tokens in a call by using the NFT-contract as intermediary. This means that, instead of you attaching tokens directly to the call, you ask the NFT-contract to do both a transfer and a function call in your name.
 
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
