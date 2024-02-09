@@ -18,9 +18,7 @@ Welcome! Here you will find all the information on what you can **build** on NEA
     <Feature url="/develop/contracts/quickstart" title="Build a Contract"
              subtitle="Spin-up your first smart contract" image="smartcontract.png" />
     <Feature url="/develop/testing/introduction" title="Test a Contract" subtitle="Write unit & integration tests" image="test.png" />
-    <Feature url="/develop/contracts/security/checklist" title="Security Checklist"
-             subtitle="Make sure your contract is safe" image="validation.png" />
-    <Feature url="/develop/deploy" title="Deploy a Contract" subtitle="Deploy the contract to the network" image="blocks.png" />
+    <Feature url="/develop/deploy" title="Deploy a Contract" subtitle="Deploy the contract to the network" image="near-cli.png" />
   </Column>
   <Column title="Components">
     <Feature url="/bos/tutorial/quickstart" title="What is a Component?"
@@ -41,14 +39,20 @@ Welcome! Here you will find all the information on what you can **build** on NEA
              subtitle="Integrate with Contracts" image="bos-contract.png"  />
     <Feature url="/develop/integrate/frontend" title="Build a Web Frontend"
              subtitle="Use the contract in a frontend" image="frontend.png"  />
-    <Feature url="/develop/monitor" title="Track Your Users Activity" subtitle="Learn how to use Indexers" image="monitor.png" />
   </Column>
   <Column title="Primitives">
     <Feature url="/primitives/ft" title="Fungible Tokens" subtitle="Learn how to use and make FT" image="ft.png" />
     <Feature url="/primitives/nft" title="Non-Fungible Tokens" subtitle="Enter the NFT space" image="nft.png" />
     <Feature url="/primitives/dao" title="Autonomous Organizations" subtitle="Understand DAOs" image="dao.png" />
+    <Feature url="/primitives/linkdrop" title="Linkdrops" subtitle="Drop assets & onboard users" image="key.png" />
+    <Feature url="/primitives/oracles" title="Oracles" subtitle="On-chain oracles to query prices" image="oracle.png" />
   </Column>
-
+  <Column title="Data Infrastructure">
+    <Feature url="/bos/queryapi/big-query" title="Google BigQuery" 
+             subtitle="Query network data efficiently" image="experiment.png" />
+    <Feature url="/bos/queryapi/intro" title="QueryAPI" subtitle="The simplest way to build indexers" image="blocks.png" />
+    <Feature url="/tools/near-lake" title="NEAR Lake" subtitle="An Indexer that stores chain events" image="monitor.png" />
+  </Column>
 </FeatureList>
 
 <br/>

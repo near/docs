@@ -172,7 +172,15 @@ const sidebar = {
             },
             "develop/contracts/security/bounty"
           ]
-        }
+        },
+        {
+          "type": "html",
+          "value": "<hr/>"
+        },
+        {
+          "type": "html",
+          "value": "<a class='menu__link internal' href='/tutorials/examples/count-near'> 📖 Tutorials </a>",
+        },
       ]
     },
     {
@@ -181,30 +189,11 @@ const sidebar = {
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Primitives (FT, NFT, ...) </small></b></span>"
-    },
-    "primitives/whatareprimitives",
-    {
-      "Using Primitives": [
-        "primitives/ft",
-        "primitives/nft",
-        "primitives/linkdrop",
-        "primitives/oracles",
-        "primitives/dao",
-        "primitives/dex"
-      ]
-    },
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Components </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Multi-Chain Components </small></b></span>"
     },
     "bos/tutorial/quickstart",
     {
-      "Building Components": [
+      "Building Web3 Components": [
         "bos/dev/intro",
         {
           "Anatomy of a Component": [
@@ -218,6 +207,14 @@ const sidebar = {
           ]
         },
         "bos/tutorial/bos-gateway",
+        {
+          "type": "html",
+          "value": "<hr/>"
+        },
+        {
+          "type": "html",
+          "value": "<a class='menu__link internal' href='/bos/dev/bos-loader'> 📖 Tutorials </a>",
+        },
       ]
     },
     {
@@ -226,11 +223,11 @@ const sidebar = {
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Web3 Apps </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Web3 Applications </small></b></span>"
     },
     "develop/web3-apps/whatareweb3apps",
     {
-      "Building a Web3 App": [
+      "Building Web3 Applications": [
         "develop/integrate/quickstart-frontend",
         "develop/integrate/frontend",
         "develop/integrate/frontend-components",
@@ -240,8 +237,42 @@ const sidebar = {
             "develop/integrate/backend-login",
           ]
         },
-
+        {
+          "type": "html",
+          "value": "<hr/>"
+        },
+        {
+          "type": "html",
+          "value": "<a class='menu__link internal' href='/tutorials/examples/count-near'> 📖 Tutorials </a>",
+        },
       ],
+    },
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Primitives (FT, NFT, ...) </small></b></span>"
+    },
+    "primitives/whatareprimitives",
+    {
+      "Primitives & Standards": [
+        "primitives/ft",
+        "primitives/nft",
+        "primitives/linkdrop",
+        "primitives/oracles",
+        "primitives/dao",
+        "primitives/dex",
+        {
+          "type": "html",
+          "value": "<hr/>"
+        },
+        {
+          "type": "html",
+          "value": "<a class='menu__link internal' href='/tutorials/nfts/minting-nfts'> 📖 Tutorials </a>",
+        },
+      ]
     },
     {
       "type": "html",
@@ -314,6 +345,187 @@ const sidebar = {
         },
       ]
     }
+  ],
+  "tutorials": [
+    "tutorials/welcome",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Examples </small></b></span>"
+    },
+    {
+      "Frontend & Smart Contract": [
+        "tutorials/examples/count-near",
+        "tutorials/examples/guest-book",
+        "tutorials/examples/donation",
+        "tutorials/examples/xcc",
+        "tutorials/examples/coin-flip",
+      ]
+    },
+    {
+      "Advanced Contracts": [
+        "tutorials/examples/factory",
+        "tutorials/examples/advanced-xcc",
+        "tutorials/examples/update-contract-migrate-state",
+      ]
+    },
+    "tutorials/examples/frontend-multiple-contracts",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Tutorials </small></b></span>"
+    },
+    {
+      "Components": [
+        "bos/dev/bos-loader",
+        "bos/tutorial/interaction",
+        "bos/tutorial/ds-components",
+        "bos/tutorial/using-iframes",
+        "bos/tutorial/push-notifications",
+        "bos/tutorial/queryapi-websockets",
+        "bos/tutorial/ethers-js",
+        "bos/tutorial/ethers-js-best-practices",
+        "bos/tutorial/lido",
+      ]
+    },
+    {
+      "Fungible Tokens 101 (FT)": [
+        "tutorials/fts/introduction",
+        "tutorials/fts/predeployed-contract",
+        "tutorials/fts/skeleton",
+        "tutorials/fts/defining-a-token",
+        "tutorials/fts/circulating-supply",
+        "tutorials/fts/registering-accounts",
+        "tutorials/fts/transfers",
+        "tutorials/fts/marketplace"
+      ]
+    },
+    {
+      "Non-Fungible Tokens (NFT)": [
+        "tutorials/nfts/minting-nfts",
+        "tutorials/nfts/minting-nft-frontend",
+        "tutorials/nfts/minecraft-nfts",
+        {
+          "type": "link",
+          "label": "Building a Frontend",
+          "href": "https://github.com/near-examples/nft-tutorial-frontend"
+        },
+        {
+          "type": "html",
+          "value": "<hr/>"
+        },
+        {
+          "🌐 Contract: Zero to Hero ": [
+            "tutorials/nfts/js/introduction",
+            "tutorials/nfts/js/predeployed-contract",
+            "tutorials/nfts/js/skeleton",
+            "tutorials/nfts/js/minting",
+            "tutorials/nfts/js/upgrade-contract",
+            "tutorials/nfts/js/enumeration",
+            "tutorials/nfts/js/core",
+            "tutorials/nfts/js/approvals",
+            "tutorials/nfts/js/royalty",
+            "tutorials/nfts/js/events",
+            "tutorials/nfts/js/marketplace"
+          ]
+        },
+        {
+          "🦀 Contract: Zero to Hero": [
+            "tutorials/nfts/introduction",
+            "tutorials/nfts/predeployed-contract",
+            "tutorials/nfts/skeleton",
+            "tutorials/nfts/minting",
+            "tutorials/nfts/upgrade-contract",
+            "tutorials/nfts/enumeration",
+            "tutorials/nfts/core",
+            "tutorials/nfts/approvals",
+            "tutorials/nfts/royalty",
+            "tutorials/nfts/events",
+            "tutorials/nfts/marketplace",
+            "tutorials/nfts/series"
+          ]
+        }
+      ]
+    },
+    {
+      "Build a Crossword Game": [
+        {
+          "type": "category",
+          "label": "Basics",
+          "items": [
+            "tutorials/crosswords/basics/overview",
+            "tutorials/crosswords/basics/set-up-skeleton",
+            "tutorials/crosswords/basics/add-functions-call",
+            "tutorials/crosswords/basics/hashing-and-unit-tests",
+            "tutorials/crosswords/basics/simple-frontend"
+          ]
+        },
+        {
+          "type": "category",
+          "label": "Beginner",
+          "items": [
+            "tutorials/crosswords/beginner/overview",
+            "tutorials/crosswords/beginner/collections",
+            "tutorials/crosswords/beginner/structs-enums",
+            "tutorials/crosswords/beginner/actions",
+            "tutorials/crosswords/beginner/adding-a-puzzle",
+            "tutorials/crosswords/beginner/logging-in",
+            "tutorials/crosswords/beginner/logging-in-implementation"
+          ]
+        },
+        {
+          "type": "category",
+          "label": "Intermediate",
+          "items": [
+            "tutorials/crosswords/intermediate/overview",
+            "tutorials/crosswords/intermediate/access-key-solution",
+            "tutorials/crosswords/intermediate/use-seed-phrase",
+            "tutorials/crosswords/intermediate/linkdrop",
+            "tutorials/crosswords/intermediate/cross-contract-calls",
+            "tutorials/crosswords/intermediate/base64vecu8"
+          ]
+        }
+      ]
+    },
+    {
+      "Data Infrastructure":
+        [
+          "bos/tutorial/indexer-tutorials/posts-indexer",
+          "bos/tutorial/indexer-tutorials/hype-indexer",
+          "bos/tutorial/indexer-tutorials/nft-indexer",
+          "bos/tutorial/indexer-tutorials/feed-indexer",
+          "tutorials/indexer/near-lake-state-changes-indexer",
+          "tutorials/indexer/migrating-to-near-lake-framework",
+          {
+            "Building Indexers": [
+              "develop/lake/primitives",
+              {
+                "type": "link",
+                "label": "NEAR Lake Primitives",
+                "href": "https://near.github.io/near-lake-framework-js/"
+              },
+              "tutorials/indexer/js-lake-indexer",
+              "tutorials/indexer/python-lake-indexer",
+              "tutorials/indexer/nft-indexer",
+              "tutorials/indexer/python-nft-indexer"
+            ]
+          },
+          {
+            "Running NEAR Lake": [
+              "tutorials/indexer/run-lake-indexer",
+              "tutorials/indexer/lake-start-options",
+              "tutorials/indexer/credentials"
+            ]
+          },
+        ]
+    },
+
   ],
   "primitives": [
     "primitives/welcome",

@@ -138,26 +138,14 @@ ${content}`, // <-- this last part adds in the rest of the content, which would 
           position: 'left',
         },
         {
+          to: '/develop/welcome',
           label: 'Build',
           position: 'left',
-          items: [
-            { label: 'Overview', href: '/develop/welcome' },
-            {
-              type: 'html',
-              value: '<hr/>',
-            },           
-            { label: 'Smart Contracts', href: '/develop/contracts/whatisacontract' },
-            { label: 'Components', href: '/bos/tutorial/quickstart' },
-            { label: 'Web3 Applications', href: '/develop/web3-apps/whatareweb3apps' },
-            { label: 'Primitives', href: '/primitives/whatareprimitives' },
-            { label: 'Data Infrastructure', href: '/develop/whataredatasolutions' },
-            {
-              type: 'html',
-              value: '<hr/> <small class="subtitle"> Integrations </small>',
-            },
-            { label: "Rollups DA", href: "/data-availability/welcome" },
-            { label: "Exchanges", href: "/integrator/exchange-integration" },
-          ],
+        },
+        {
+          to: '/tutorials/welcome',
+          label: 'Tutorials',
+          position: 'left',
         },
         {
           type: 'dropdown',

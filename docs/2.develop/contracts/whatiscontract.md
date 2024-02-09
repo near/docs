@@ -1,7 +1,7 @@
 ---
 id: whatisacontract
 title: What is a Smart Contract?
-sidebar_label: What is a Smart Contract?
+sidebar_label: What is a Contract?
 ---
 
 Smart contracts are pieces of **executable code** that live in a NEAR account. They can **store data**, **perform transactions** in the account’s name, and **expose methods** so other accounts can interact with them.

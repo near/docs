@@ -14,7 +14,7 @@
     --ifm-color-primary: #82aaff;
     --near-color-royal: #82aaff;
 
-    hr{
+    hr {
         background-color: #2d2d2d;
     }
 }
@@ -28,6 +28,14 @@ article a[href^="http"]::after {
     width: 0.6rem;
     display: inline-block;
     margin-left: 0.3rem;
+}
+
+.internal::after {
+    content: url("data:image/svg+xml,%3Csvg fill='%235f8afaff' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z'/%3E%3C/svg%3E");
+    width: 0.6rem;
+    display: inline-block;
+    margin-left: 0.3rem;
+    color: var(--near-font-body)
 }
 
 body {
@@ -225,8 +233,18 @@ article {
 li hr {
     height: 4px;
     margin: 0.4em auto;
-    width: 90%;
+    width: 93%;
     border-width: 0;
+}
+
+.menu__list .menu__list li hr {
+    background-color: #e8f0f9;
+    height: 2px;
+}
+
+table {
+    display: inline-table;
+    min-width: 100%;
 }
 
 .theme-doc-toc-mobile {
@@ -366,8 +384,10 @@ iframe+em {
 }
 
 @media (min-width: 996px) {
+
     /* columns */
-    .col, .col:only-child {
+    .col,
+    .col:only-child {
         padding: 0 calc(var(--ifm-spacing-horizontal)/2);
     }
 

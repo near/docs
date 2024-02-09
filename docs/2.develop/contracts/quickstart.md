@@ -1,7 +1,7 @@
 ---
 id: quickstart
 title: Hello Contract 
-sidebar_label: ⭐ Quickstart
+sidebar_label: Quickstart ✨
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
