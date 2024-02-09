@@ -89,6 +89,16 @@ const modal = setupModal(selector, {
 modal.show();
 ```
 
+:::info Required CSS
+
+To integrate the Wallet Selector, you also need to include the required CSS:
+
+```
+import "@near-wallet-selector/modal-ui/styles.css"
+```
+
+:::
+
 ## API Reference
 
 The API reference of the selector can be found [`here`](https://github.com/near/wallet-selector/blob/main/packages/core/docs/api/selector.md)
