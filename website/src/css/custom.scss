@@ -388,4 +388,18 @@ iframe+em {
 
 /* BOOTSTRAP */
 /* TODO: Include this from file */
-@import './bootstrap.scss'
+@import './bootstrap.scss';
+
+#near-wallet-selector-modal {
+  .nws-modal-wrapper .nws-modal .modal-left .modal-left-title h2 {
+    font-family: inherit;
+  }
+  .nws-modal-wrapper .nws-modal .modal-right .nws-modal-header h3.middleTitle {
+    margin: 4px auto !important;
+    font-family: inherit;
+  }
+
+  .nws-modal-wrapper .nws-modal .modal-right .wallet-what .content-side h3 {
+    margin: 0 auto 8px 0 !important;
+  }
+}
