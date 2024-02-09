@@ -6,7 +6,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
-NEAR offers ready-to-use solutions to easily access and monitor on-chain data. This is very useful to automatically on certain **events**, cache data to **reduce latency**, gather **usage data** of the blockchain, and even **study user preferences**.
+NEAR offers ready-to-use solutions to access and monitor on-chain data easily. This is very useful to automate actions based on specific **events**, cache data to **reduce latency**, gather **usage data** of the blockchain, and even **study user preferences**.
 
 ![img](/docs/assets/welcome-pages/data-lake.png)
 
