@@ -18,46 +18,46 @@ Welcome, this is the starting point for all NEAR documentation. Learn to build a
           </div>
           <div className="card__body">
             <h3>Understanding NEAR</h3>
-            Learn what NEAR is and how it works.
+            Learn what NEAR is and how it works
           </div>
         </div>
       </a>
     </div>
     <div className="col col--4">
-      <a href="/develop/contracts/welcome">
+      <a href="/develop/contracts/whatisacontract">
         <div className="card">
           <div className="card__image">
             <img src={require("@site/static/docs/assets/welcome-pages/contracts.png").default} alt="Contracts" />
           </div>
           <div className="card__body">
             <h3>Smart Contracts</h3>
-              Learn to build smart contracts in NEAR.
+            Learn to build smart contracts in NEAR
           </div>
         </div>
       </a>
     </div>
     <div className="col col--4">
-      <a href="/develop/integrate/welcome">
+      <a href="/bos/tutorial/quickstart">
         <div className="card">
           <div className="card__image">
-            <img src={require("@site/static/docs/assets/welcome-pages/bos-landing.png").default} alt="Web3 Apps" />
+            <img src={require("@site/static/docs/assets/welcome-pages/bos-landing.png").default} alt="Web3 Components" />
           </div>
           <div className="card__body">
-            <h3>Web Applications</h3>
-              Learn to build multi-chain web apps.
+            <h3>Web3 Components</h3>
+            The building blocks for multi-chain apps
           </div>
         </div>
       </a>
     </div>
     <div className="col col--4">
-      <a href="/primitives/welcome">
+      <a href="/develop/web3-apps/whatareweb3apps">
         <div className="card">
           <div className="card__image">
             <img src={require("@site/static/docs/assets/welcome-pages/examples.png").default} alt="Solutions" />
           </div>
           <div className="card__body">
-            <h3>NEAR Primitives</h3>
-              Reliable solutions powered by NEAR.
+            <h3>Web3 Applications</h3>
+            Supercharge your App using NEAR
           </div>
         </div>
       </a>
@@ -70,7 +70,7 @@ Welcome, this is the starting point for all NEAR documentation. Learn to build a
           </div>
           <div className="card__body">
             <h3>NEAR Tools</h3>
-              Info on our SDK, API, CLI, and more.
+            Discover our SDK, API, CLI, and more
           </div>
         </div>
       </a>
@@ -83,7 +83,7 @@ Welcome, this is the starting point for all NEAR documentation. Learn to build a
           </div>
           <div className="card__body">
             <h3>Query On-Chain Information</h3>
-              Learn about indexers and our data lake.
+              Learn about indexers and our data lake
           </div>
         </div>
       </a>

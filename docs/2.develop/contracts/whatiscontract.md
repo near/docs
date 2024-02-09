@@ -1,10 +1,12 @@
 ---
 id: whatisacontract
 title: What is a Smart Contract?
-sidebar_label: What is a Smart Contract?
+sidebar_label: What is a Contract?
 ---
 
 Smart contracts are pieces of **executable code** that live in a NEAR account. They can **store data**, **perform transactions** in the account’s name, and **expose methods** so other accounts can interact with them.
+
+![img](/docs/assets/welcome-pages/contracts.png)
 
 Do not worry if you don't know how smart-contract blockchains work. As a developer, it is sufficient to understand that NEAR smart-contracts:
 1. Have **limited** computational resources.
@@ -17,21 +19,24 @@ Smart contracts **cannot perform HTTP requests**, meaning they can't fetch data 
 
 ---
 
-## Where do Contracts Live?
-Smart Contracts are deployed into [**NEAR accounts**](../../1.concepts/basics/accounts/introduction.md). Any NEAR account can hold a contract, needing to pay for the **contract's code** and the **data it stores**. Since storage is cheap (0.01Ⓝ per kb) deploying a contract generally costs just a few cents.
-
-![img](/docs/assets/welcome-pages/contract-landing.png)
+## Where do contracts live?
+Smart Contracts are deployed into [**NEAR accounts**](../../1.concepts/basics/accounts/introduction.md). Any NEAR account can hold a contract, needing to pay for the **contract's code** and the **data it stores**. 
 
 Once in an account, anyone can interact with the contract. Thanks to the underlying network structure, executing code from a contract is both **fast** (avg. 1.4s finality) and **cheap**. Moreover, **read-only** operations are **free for everyone**.
 
+:::tip
+Storing 100kb costs 1Ⓝ, so deploying a contract generally costs only a few $NEARs.
+:::
+
 ---
 
-## Life Cycle of a Contract
+## Development flow
 
-Just like any piece of software, smart contracts have a “life cycle” - starting with its creation and ending with monitoring it, all of which we cover in our documentation.
+Just like any piece of software, smart contracts have a development flow - starting with its creation and ending with monitoring it, all of which we cover in our documentation.
 
 ![img](/docs/assets/welcome-pages/contract-lifecycle.png)
 
+The development flow can be summarized as follows:
 - [**Scaffold**](../contracts/quickstart.md): The simplest way to create a project is by starting from a template.
 - [**Build**](../contracts/): To write a contract developers can choose between Javascript and Rust.
 - [**Test**](../testing/introduction.md): Our Sandbox enables to simulate interactions with one or multiple contracts in a realistic environment.
@@ -39,6 +44,7 @@ Just like any piece of software, smart contracts have a “life cycle” - start
 - [**Use**](https://mynearwallet.com): Any user can interact with the contract through their NEAR Wallet.
 - [**Monitor**](../monitor.md): The contract's activity can be monitored through simple APIs.
 
+#### Supported Languages
 During the whole cycle, developers can choose between [JavaScript](https://www.learn-js.org/) and [Rust](https://www.rust-lang.org/), allowing them to use their favorite language at each step of their journey.
 
 <details>
@@ -50,14 +56,9 @@ We envision that in the future, more languages will be supported and the support
 
 ---
 
-## Contract Primitives
-Contract primitives are the fundamental building blocks that can be combined to create a fully functional application. Blockchain primitives include Fungible Tokens (FT), Non Fungible Tokens (NFT), Decentralized Autonomous organizations (DAO), Link Drops and more.
+## Contract primitives
+Contract primitives such as FT, NFT, and DAOs are fundamental building blocks that can be combined to create awesome user experiences such as reward tokens, decision-making tools, and marketplaces. 
 
-- [Fungible Tokens (FT)](/primitives/ft): Fungible token is representation of an asset on a blockchain that is interchangeable. Besides the native NEAR token, users can issue their own fungible tokens or use those that are already present in the ecosystem and created by other users or projects.
-
-- [Non Fungible Tokens (NFT)](/primitives/nft): In contrast with fungible tokens, non-fungible tokens (NFT) are unitary and therefore unique. This makes NFTs ideal to represent ownership of assets such as a piece of digital content, or a ticket for an event.
-
-- [Decentralized Autonomous organizations (DAO)](/primitives/dao): Decentralized Autonomous Organizations (DAOs) are self-organized groups that form around common purposes. Membership, decision making, and funding are coordinated by publicly voting on proposals through a smart contract.
-
-- [LinkDrops](/primitives/linkdrop): LinkDrops are an easy way to distribute digital assets (NFTs, FTs) via links. You provide a link for users and they can claim your drop.
-
+:::tip
+Check our section on [primitives](../../7.primitives/whatareprimitives.md) to learn more about them
+:::
