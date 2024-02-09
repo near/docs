@@ -120,6 +120,14 @@ const config = {
           position: 'left',
         },
         {
+          href: '/api/rpc/introduction',
+          label: 'RPC',
+        },
+        {
+          type: 'html',
+          value: '<span class="separator"></span>'
+        },
+        {
           type: 'dropdown',
           label: 'Tools',
           position: 'left',
@@ -148,14 +156,26 @@ const config = {
             { label: "Remix IDE Plugin", href: "https://docs.welldonestudio.io/code/getting-started" },],
         },
         {
-          href: '/api/rpc/introduction',
-          label: 'RPC',
-        },
-        {
           type: 'dropdown',
-          label: 'Other Docs',
+          label: 'Resources',
           position: 'left',
           items: [
+            {
+              type: "html",
+              value: '<div class="subtitle"> Support </dib>',
+            },
+            {
+              href: 'https://discord.gg/GZ7735Xjce',
+              label: 'Discord',
+            },
+            {
+              href: 'https://t.me/neardev',
+              label: 'Telegram',
+            },
+            {
+              type: "html",
+              value: '<hr /><div class="subtitle"> Other Docs </dib>',
+            },
             {
               href: 'https://nomicon.io',
               label: 'Protocol Docs',
