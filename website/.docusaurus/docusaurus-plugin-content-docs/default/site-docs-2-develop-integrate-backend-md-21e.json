@@ -11,9 +11,9 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/integrate/backend.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "gagdiez",
-  "lastUpdatedAt": 1693946789,
-  "formattedLastUpdatedAt": "Sep 5, 2023",
+  "lastUpdatedBy": "Kujtim Prenku",
+  "lastUpdatedAt": 1707477335,
+  "formattedLastUpdatedAt": "Feb 9, 2024",
   "frontMatter": {
     "id": "backend-login",
     "title": "Login with NEAR"
