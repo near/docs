@@ -57,7 +57,7 @@ const config = {
           showReadingTime: false,
         },
         theme: {
-          customCss: "/src/css/custom.scss",
+          customCss: "./src/css/custom.scss",
         },
       },
     ],
