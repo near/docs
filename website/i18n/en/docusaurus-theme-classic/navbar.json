@@ -142,5 +142,17 @@
   "item.label.Aurora (EVM)": {
     "message": "Aurora (EVM)",
     "description": "Navbar item with label Aurora (EVM)"
+  },
+  "item.label.Resources": {
+    "message": "Resources",
+    "description": "Navbar item with label Resources"
+  },
+  "item.label.Discord": {
+    "message": "Discord",
+    "description": "Navbar item with label Discord"
+  },
+  "item.label.Telegram": {
+    "message": "Telegram",
+    "description": "Navbar item with label Telegram"
   }
 }

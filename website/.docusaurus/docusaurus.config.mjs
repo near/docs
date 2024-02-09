@@ -280,6 +280,16 @@ export default {
           "position": "left"
         },
         {
+          "href": "/api/rpc/introduction",
+          "label": "RPC",
+          "position": "left"
+        },
+        {
+          "type": "html",
+          "value": "<span class=\"separator\"></span>",
+          "position": "left"
+        },
+        {
           "type": "dropdown",
           "label": "Tools",
           "position": "left",
@@ -339,15 +349,26 @@ export default {
           ]
         },
         {
-          "href": "/api/rpc/introduction",
-          "label": "RPC",
-          "position": "left"
-        },
-        {
           "type": "dropdown",
-          "label": "Other Docs",
+          "label": "Resources",
           "position": "left",
           "items": [
+            {
+              "type": "html",
+              "value": "<div class=\"subtitle\"> Support </dib>"
+            },
+            {
+              "href": "https://discord.gg/GZ7735Xjce",
+              "label": "Discord"
+            },
+            {
+              "href": "https://t.me/neardev",
+              "label": "Telegram"
+            },
+            {
+              "type": "html",
+              "value": "<hr /><div class=\"subtitle\"> Other Docs </dib>"
+            },
             {
               "href": "https://nomicon.io",
               "label": "Protocol Docs"
