@@ -19,7 +19,7 @@
     "title": "Tạo NFT trong Minecraft",
     "sidebar_label": "Minecraft NFT"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Mint Front-end",
     "permalink": "/vi/tutorials/nfts/minting-nft-frontend"

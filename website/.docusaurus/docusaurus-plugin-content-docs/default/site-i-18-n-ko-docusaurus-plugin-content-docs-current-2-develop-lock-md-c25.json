@@ -18,7 +18,7 @@
     "id": "lock",
     "title": "계정 잠금"
   },
-  "sidebar": "contracts",
+  "sidebar": "build",
   "previous": {
     "title": "컨트랙트 업데이트",
     "permalink": "/ko/develop/upgrade"

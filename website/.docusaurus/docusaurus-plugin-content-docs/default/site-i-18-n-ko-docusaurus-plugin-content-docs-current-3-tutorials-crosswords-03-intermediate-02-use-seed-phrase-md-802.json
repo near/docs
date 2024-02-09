@@ -20,7 +20,7 @@
     "sidebar_label": "시드 문구 로직",
     "title": "필수 라이브러리부터 시드 문구 로직 구현"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "시드 문구를 정답으로",
     "permalink": "/ko/tutorials/crosswords/intermediate/access-key-solution"

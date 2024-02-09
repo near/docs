@@ -19,7 +19,7 @@
     "title": "Hello Contract",
     "sidebar_label": "⭐ Quickstart"
   },
-  "sidebar": "contracts",
+  "sidebar": "build",
   "previous": {
     "title": "What is a Smart Contract?",
     "permalink": "/zh-CN/develop/contracts/whatisacontract"

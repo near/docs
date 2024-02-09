@@ -18,7 +18,7 @@
     "id": "storage",
     "title": "Million Small Deposits"
   },
-  "sidebar": "contracts",
+  "sidebar": "build",
   "previous": {
     "title": "✅ Checklist",
     "permalink": "/develop/contracts/security/checklist"

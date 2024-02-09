@@ -20,7 +20,7 @@
     "title": "Creating a Circulating Supply",
     "sidebar_label": "Circulating Supply"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Defining Your Token",
     "permalink": "/vi/tutorials/fts/defining-a-token"

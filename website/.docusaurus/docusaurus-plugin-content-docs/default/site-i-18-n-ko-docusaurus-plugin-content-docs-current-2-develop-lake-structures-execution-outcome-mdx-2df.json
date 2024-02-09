@@ -20,7 +20,7 @@
     "sidebar_position": 6,
     "sidebar_label": "ExecutionOutcome"
   },
-  "sidebar": "indexers",
+  "sidebar": "build",
   "previous": {
     "title": "Receipt",
     "permalink": "/ko/develop/lake/structures/receipt"

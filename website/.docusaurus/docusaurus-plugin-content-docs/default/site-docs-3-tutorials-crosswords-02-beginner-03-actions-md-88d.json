@@ -20,7 +20,7 @@
     "sidebar_label": "Actions and sending NEAR",
     "title": "There are several Actions an account can do, including sending the winner of the crossword puzzle NEAR using the Transfer Action"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Using structs and enums",
     "permalink": "/tutorials/crosswords/beginner/structs-enums"

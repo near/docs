@@ -18,7 +18,7 @@
     "id": "oracles",
     "title": "Price Oracles"
   },
-  "sidebar": "primitives",
+  "sidebar": "build",
   "previous": {
     "title": "Linkdrops",
     "permalink": "/zh-CN/primitives/linkdrop"

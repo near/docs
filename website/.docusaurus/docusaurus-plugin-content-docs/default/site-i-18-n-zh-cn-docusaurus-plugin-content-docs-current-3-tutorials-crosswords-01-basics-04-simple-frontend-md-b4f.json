@@ -20,7 +20,7 @@
     "sidebar_label": "Add simple frontend",
     "title": "Add a simple frontend to the crossword puzzle that checks the solution's hash"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Hash the solution, unit tests, and an init method",
     "permalink": "/zh-CN/tutorials/crosswords/basics/hashing-and-unit-tests"

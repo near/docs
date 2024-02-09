@@ -18,7 +18,7 @@
     "id": "sybil",
     "title": "시빌 공격"
   },
-  "sidebar": "contracts",
+  "sidebar": "build",
   "previous": {
     "title": "사용자가 맞는지 확인 (1yⓃ)",
     "permalink": "/ko/develop/contracts/security/one-yocto"

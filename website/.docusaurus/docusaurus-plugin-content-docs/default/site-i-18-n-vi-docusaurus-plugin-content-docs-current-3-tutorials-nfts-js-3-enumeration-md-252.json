@@ -20,7 +20,7 @@
     "title": "Enumeration",
     "sidebar_label": "Enumeration"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Upgrade một Contract",
     "permalink": "/vi/tutorials/nfts/js/upgrade-contract"

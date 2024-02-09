@@ -18,7 +18,7 @@
     "id": "callbacks",
     "title": "교차 컨트랙트 호출"
   },
-  "sidebar": "contracts",
+  "sidebar": "build",
   "previous": {
     "title": "수많은 소액 예치",
     "permalink": "/ko/develop/contracts/security/storage"

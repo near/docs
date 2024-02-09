@@ -20,7 +20,7 @@
     "sidebar_label": "Solution as seed phrase",
     "title": "Replacing the solution hash with an access key"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Tổng quan",
     "permalink": "/vi/tutorials/crosswords/intermediate/overview"

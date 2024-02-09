@@ -19,5 +19,10 @@
     "title": "개발자 문서",
     "sidebar_label": "Home",
     "hide_table_of_contents": true
+  },
+  "sidebar": "build",
+  "next": {
+    "title": "스마트 컨트랙트란 무엇인가요?",
+    "permalink": "/ko/develop/contracts/whatisacontract"
   }
 }

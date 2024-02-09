@@ -19,7 +19,7 @@
     "title": "Minecraft에서 NFT 만들기",
     "sidebar_label": "Minecraft NFTs"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "프론트엔드",
     "permalink": "/ko/tutorials/nfts/minting-nft-frontend"

@@ -20,7 +20,7 @@
     "title": "Upgrading the Contract",
     "sidebar_label": "Upgrade a Contract"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Minting",
     "permalink": "/zh-CN/tutorials/nfts/js/minting"

@@ -17,10 +17,10 @@
   "frontMatter": {
     "sidebar_label": "시작하기"
   },
-  "sidebar": "indexers",
+  "sidebar": "tutorials",
   "previous": {
-    "title": "Lake Overview",
-    "permalink": "/ko/tools/near-lake"
+    "title": "Social Feed Indexer",
+    "permalink": "/ko/bos/tutorial/indexer-tutorials/feed-indexer"
   },
   "next": {
     "title": "NEAR Lake 프레임워크로 마이그레이션",

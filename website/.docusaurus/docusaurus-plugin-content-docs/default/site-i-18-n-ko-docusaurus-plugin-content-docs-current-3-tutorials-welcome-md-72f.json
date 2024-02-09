@@ -18,5 +18,10 @@
     "id": "welcome",
     "title": "예제 & 튜토리얼",
     "hide_table_of_contents": true
+  },
+  "sidebar": "tutorials",
+  "next": {
+    "title": "NEAR 숫자 세기",
+    "permalink": "/ko/tutorials/examples/count-near"
   }
 }

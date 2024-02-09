@@ -20,9 +20,13 @@
     "sidebar_label": "Base64 매개변수, 마무리",
     "title": "새 십자말풀이 퍼즐 생성 시 Base64 인코딩된 인자 사용"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "교차 컨트랙트 호출 등",
     "permalink": "/ko/tutorials/crosswords/intermediate/cross-contract-calls"
+  },
+  "next": {
+    "title": "Posts 인덱서",
+    "permalink": "/ko/bos/tutorial/indexer-tutorials/posts-indexer"
   }
 }

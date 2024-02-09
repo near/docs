@@ -19,7 +19,7 @@
     "title": "NFT 발행 프론트엔드",
     "sidebar_label": "프론트엔드"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "NFT 발행",
     "permalink": "/ko/tutorials/nfts/minting-nfts"

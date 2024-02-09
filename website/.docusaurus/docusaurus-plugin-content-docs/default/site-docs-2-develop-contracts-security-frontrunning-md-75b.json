@@ -18,7 +18,7 @@
     "id": "frontrunning",
     "title": "Front Running"
   },
-  "sidebar": "contracts",
+  "sidebar": "build",
   "previous": {
     "title": "Sybil Attacks",
     "permalink": "/develop/contracts/security/sybil"

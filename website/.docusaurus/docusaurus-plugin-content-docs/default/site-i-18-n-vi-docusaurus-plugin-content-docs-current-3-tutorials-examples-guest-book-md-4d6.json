@@ -18,13 +18,13 @@
     "id": "guest-book",
     "title": "Guest Book"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
-    "title": "Bug Bounty Program",
-    "permalink": "/vi/develop/contracts/security/bounty"
+    "title": "Count on NEAR",
+    "permalink": "/vi/tutorials/examples/count-near"
   },
   "next": {
-    "title": "Cross Contract Call",
-    "permalink": "/vi/tutorials/examples/xcc"
+    "title": "Donation",
+    "permalink": "/vi/tutorials/examples/donation"
   }
 }

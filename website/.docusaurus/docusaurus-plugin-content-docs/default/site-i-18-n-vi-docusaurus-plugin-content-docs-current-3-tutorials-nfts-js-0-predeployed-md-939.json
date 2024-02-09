@@ -20,7 +20,7 @@
     "title": "Contract đã được deploy sẵn",
     "sidebar_label": "Contract đã được deploy sẵn"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Giới thiệu",
     "permalink": "/vi/tutorials/nfts/js/introduction"

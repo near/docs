@@ -20,7 +20,7 @@
     "title": "Marketplace",
     "sidebar_label": "Marketplace"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Events",
     "permalink": "/tutorials/nfts/events"

@@ -18,7 +18,7 @@
     "id": "push-notifications",
     "title": "Push Notifications"
   },
-  "sidebar": "integrate",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Using IFrames",
     "permalink": "/bos/tutorial/using-iframes"

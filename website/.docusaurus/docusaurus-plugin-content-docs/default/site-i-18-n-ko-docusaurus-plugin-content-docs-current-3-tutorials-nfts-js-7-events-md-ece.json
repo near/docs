@@ -20,7 +20,7 @@
     "title": "이벤트",
     "sidebar_label": "이벤트"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "로열티",
     "permalink": "/ko/tutorials/nfts/js/royalty"

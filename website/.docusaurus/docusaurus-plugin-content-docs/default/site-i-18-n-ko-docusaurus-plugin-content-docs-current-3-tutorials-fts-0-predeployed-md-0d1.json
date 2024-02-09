@@ -20,7 +20,7 @@
     "title": "사전 배포된 컨트랙트",
     "sidebar_label": "사전 배포된 컨트랙트"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "소개",
     "permalink": "/ko/tutorials/fts/introduction"

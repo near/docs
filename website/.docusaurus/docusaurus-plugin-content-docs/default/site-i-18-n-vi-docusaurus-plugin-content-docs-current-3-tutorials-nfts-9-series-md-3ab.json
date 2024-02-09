@@ -20,13 +20,13 @@
     "title": "Customizing the NFT Contract",
     "sidebar_label": "Lazy Minting, Collections, and More!"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Marketplace",
     "permalink": "/vi/tutorials/nfts/marketplace"
   },
   "next": {
-    "title": "Giới thiệu",
-    "permalink": "/vi/tutorials/fts/introduction"
+    "title": "Crossword Game Overview",
+    "permalink": "/vi/tutorials/crosswords/basics/overview"
   }
 }

@@ -20,7 +20,7 @@
     "title": "승인",
     "sidebar_label": "승인"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "핵심",
     "permalink": "/ko/tutorials/nfts/js/core"

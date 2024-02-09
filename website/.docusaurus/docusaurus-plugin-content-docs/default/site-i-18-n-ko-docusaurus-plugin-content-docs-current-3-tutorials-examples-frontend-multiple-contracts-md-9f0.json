@@ -18,13 +18,13 @@
     "id": "frontend-multiple-contracts",
     "title": "프론트엔드 다중 컨트랙트"
   },
-  "sidebar": "integrate",
+  "sidebar": "tutorials",
   "previous": {
-    "title": "기부",
-    "permalink": "/ko/tutorials/examples/donation"
+    "title": "자체 업그레이드 및 상태 마이그레이션",
+    "permalink": "/ko/tutorials/examples/update-contract-migrate-state"
   },
   "next": {
-    "title": "Building a Relayer",
-    "permalink": "/ko/develop/relayers/build-relayer"
+    "title": "BOS Loader",
+    "permalink": "/ko/bos/dev/bos-loader"
   }
 }

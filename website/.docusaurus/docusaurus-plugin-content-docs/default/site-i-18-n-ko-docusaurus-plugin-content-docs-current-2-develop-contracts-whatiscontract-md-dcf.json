@@ -19,10 +19,10 @@
     "title": "스마트 컨트랙트란 무엇인가요?",
     "sidebar_label": "스마트 컨트랙트란 무엇인가요?"
   },
-  "sidebar": "contracts",
+  "sidebar": "build",
   "previous": {
     "title": "Home",
-    "permalink": "/ko/develop/contracts/welcome"
+    "permalink": "/ko/develop/welcome"
   },
   "next": {
     "title": "⭐ Quickstart",

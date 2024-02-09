@@ -18,7 +18,7 @@
     "id": "crosscontract",
     "title": "교차 컨트랙트 호출"
   },
-  "sidebar": "contracts",
+  "sidebar": "build",
   "previous": {
     "title": "전송 & Action",
     "permalink": "/ko/develop/contracts/actions"

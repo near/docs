@@ -20,10 +20,10 @@
     "title": "Fungible Tokens Zero to Hero",
     "sidebar_label": "Giới thiệu"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
-    "title": "Lazy Minting, Collections, and More!",
-    "permalink": "/vi/tutorials/nfts/series"
+    "title": "Lido Example",
+    "permalink": "/vi/bos/tutorial/lido"
   },
   "next": {
     "title": "Contract đã được deploy sẵn",

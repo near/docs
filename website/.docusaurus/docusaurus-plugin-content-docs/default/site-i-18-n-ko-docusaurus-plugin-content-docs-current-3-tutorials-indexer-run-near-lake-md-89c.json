@@ -18,7 +18,7 @@
     "id": "run-lake-indexer",
     "sidebar_label": "Running Lake Indexer"
   },
-  "sidebar": "indexers",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Python용 NFT 인덱서",
     "permalink": "/ko/tutorials/indexer/python-nft-indexer"

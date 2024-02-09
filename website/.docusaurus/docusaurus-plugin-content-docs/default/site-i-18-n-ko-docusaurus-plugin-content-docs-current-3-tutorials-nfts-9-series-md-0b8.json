@@ -20,13 +20,13 @@
     "title": "NFT 컨트랙트 커스터마이징",
     "sidebar_label": "게으른 발행, 컬렉션 등!"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "마켓플레이스",
     "permalink": "/ko/tutorials/nfts/marketplace"
   },
   "next": {
-    "title": "소개",
-    "permalink": "/ko/tutorials/fts/introduction"
+    "title": "십자말풀이 게임 개요",
+    "permalink": "/ko/tutorials/crosswords/basics/overview"
   }
 }

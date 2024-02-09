@@ -18,13 +18,13 @@
     "id": "bounty",
     "title": "Bug Bounty Program"
   },
-  "sidebar": "contracts",
+  "sidebar": "build",
   "previous": {
     "title": "Random Numbers",
     "permalink": "/vi/develop/contracts/security/random"
   },
   "next": {
-    "title": "Guest Book",
-    "permalink": "/vi/tutorials/examples/guest-book"
+    "title": "⭐ Overview",
+    "permalink": "/vi/bos/tutorial/quickstart"
   }
 }

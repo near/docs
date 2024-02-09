@@ -18,7 +18,7 @@
     "id": "upgrade",
     "title": "컨트랙트 업데이트"
   },
-  "sidebar": "contracts",
+  "sidebar": "build",
   "previous": {
     "title": "배포 및 사용",
     "permalink": "/ko/develop/deploy"

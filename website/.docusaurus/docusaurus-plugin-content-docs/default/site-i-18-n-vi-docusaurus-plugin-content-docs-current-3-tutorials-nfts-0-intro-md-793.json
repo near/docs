@@ -20,7 +20,7 @@
     "title": "NFT từ Zero đến Hero",
     "sidebar_label": "Giới thiệu"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Marketplace",
     "permalink": "/vi/tutorials/nfts/js/marketplace"

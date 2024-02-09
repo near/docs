@@ -18,13 +18,13 @@
     "id": "bos-gateway",
     "title": "Using components on WebApps"
   },
-  "sidebar": "integrate",
+  "sidebar": "build",
   "previous": {
     "title": "Handling Historical data",
     "permalink": "/zh-CN/bos/queryapi/bos-components"
   },
   "next": {
-    "title": "BOS Loader",
-    "permalink": "/zh-CN/bos/dev/bos-loader"
+    "title": "What are Web3 Apps?",
+    "permalink": "/zh-CN/develop/web3-apps/whatareweb3apps"
   }
 }

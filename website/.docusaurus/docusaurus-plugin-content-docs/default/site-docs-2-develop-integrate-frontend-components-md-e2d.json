@@ -18,13 +18,13 @@
     "id": "frontend-components",
     "title": "Integrating Components"
   },
-  "sidebar": "integrate",
+  "sidebar": "build",
   "previous": {
     "title": "Integrating Contracts",
     "permalink": "/develop/integrate/frontend"
   },
   "next": {
-    "title": "Count on NEAR",
-    "permalink": "/tutorials/examples/count-near"
+    "title": "Building a Relayer",
+    "permalink": "/develop/relayers/build-relayer"
   }
 }

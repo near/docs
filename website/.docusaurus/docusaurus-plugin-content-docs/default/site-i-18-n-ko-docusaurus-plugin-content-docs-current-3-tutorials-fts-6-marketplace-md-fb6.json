@@ -20,13 +20,13 @@
     "title": "NFT 마켓플레이스에 FT 결제 통합하기",
     "sidebar_label": "마켓플레이스에 FT 추가하기"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "FT 전송",
     "permalink": "/ko/tutorials/fts/transfers"
   },
   "next": {
-    "title": "십자말풀이 게임 개요",
-    "permalink": "/ko/tutorials/crosswords/basics/overview"
+    "title": "NFT 발행",
+    "permalink": "/ko/tutorials/nfts/minting-nfts"
   }
 }

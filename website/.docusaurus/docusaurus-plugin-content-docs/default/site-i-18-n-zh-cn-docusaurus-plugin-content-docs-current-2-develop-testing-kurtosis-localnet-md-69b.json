@@ -20,7 +20,7 @@
     "sidebar_label": "Local Development",
     "description": "Using Kurtosis NEAR Package to develop locally"
   },
-  "sidebar": "contracts",
+  "sidebar": "build",
   "previous": {
     "title": "Integration Test",
     "permalink": "/zh-CN/develop/testing/integration-test"

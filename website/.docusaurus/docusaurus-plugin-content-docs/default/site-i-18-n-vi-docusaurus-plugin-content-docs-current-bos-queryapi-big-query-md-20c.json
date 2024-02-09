@@ -19,13 +19,13 @@
     "title": "BigQuery Public Dataset",
     "sidebar_label": "BigQuery"
   },
-  "sidebar": "indexers",
+  "sidebar": "build",
   "previous": {
-    "title": "Social Feed Indexer",
-    "permalink": "/vi/bos/tutorial/indexer-tutorials/feed-indexer"
+    "title": "What is Data Infrastructure?",
+    "permalink": "/vi/develop/whataredatasolutions"
   },
   "next": {
-    "title": "Indexer for Explorer (Deprecated)",
-    "permalink": "/vi/tools/indexer-for-explorer"
+    "title": "Introduction",
+    "permalink": "/vi/bos/queryapi/intro"
   }
 }

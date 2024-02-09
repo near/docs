@@ -18,7 +18,7 @@
     "id": "crosscontract",
     "title": "Cross-Contract Calls"
   },
-  "sidebar": "contracts",
+  "sidebar": "build",
   "previous": {
     "title": "Transfers & Actions",
     "permalink": "/vi/develop/contracts/actions"

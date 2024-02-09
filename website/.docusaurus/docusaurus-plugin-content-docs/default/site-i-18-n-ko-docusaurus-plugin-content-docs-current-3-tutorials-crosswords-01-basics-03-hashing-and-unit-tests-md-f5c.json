@@ -20,7 +20,7 @@
     "sidebar_label": "정답 해시, 단위 테스트, 초기화 메서드",
     "title": "기본 해싱과 단위 테스트 추가에 대한 소개\""
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "기본 코드 추가, 하위 계정 생성 및 메서드 호출",
     "permalink": "/ko/tutorials/crosswords/basics/add-functions-call"

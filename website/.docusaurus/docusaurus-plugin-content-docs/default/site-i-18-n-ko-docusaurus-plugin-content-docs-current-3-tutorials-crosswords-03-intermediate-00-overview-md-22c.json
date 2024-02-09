@@ -20,7 +20,7 @@
     "sidebar_label": "개요",
     "title": "증급 개요(교차 컨트랙트 호출 등)"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "액세스 키 및 로그인 2/2",
     "permalink": "/ko/tutorials/crosswords/beginner/logging-in-implementation"

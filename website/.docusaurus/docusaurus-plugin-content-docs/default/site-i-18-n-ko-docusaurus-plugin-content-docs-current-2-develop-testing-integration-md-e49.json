@@ -18,7 +18,7 @@
     "id": "integration-test",
     "title": "통합 테스트(Integration Test)"
   },
-  "sidebar": "contracts",
+  "sidebar": "build",
   "previous": {
     "title": "단위 테스트(Unit Testing)",
     "permalink": "/ko/develop/testing/unit-test"

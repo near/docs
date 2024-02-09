@@ -18,13 +18,13 @@
     "id": "frontend-components",
     "title": "Integrating Components"
   },
-  "sidebar": "integrate",
+  "sidebar": "build",
   "previous": {
     "title": "Integrating Contracts",
     "permalink": "/ko/develop/integrate/frontend"
   },
   "next": {
-    "title": "NEAR 숫자 세기",
-    "permalink": "/ko/tutorials/examples/count-near"
+    "title": "Building a Relayer",
+    "permalink": "/ko/develop/relayers/build-relayer"
   }
 }

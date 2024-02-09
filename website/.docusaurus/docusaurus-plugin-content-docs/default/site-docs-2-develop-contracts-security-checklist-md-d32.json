@@ -18,7 +18,7 @@
     "id": "checklist",
     "title": "✅ Checklist"
   },
-  "sidebar": "contracts",
+  "sidebar": "build",
   "previous": {
     "title": "Cross-Contract Calls",
     "permalink": "/develop/contracts/crosscontract"

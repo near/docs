@@ -18,7 +18,7 @@
     "id": "interaction",
     "title": "Smart Contract Interaction"
   },
-  "sidebar": "integrate",
+  "sidebar": "tutorials",
   "previous": {
     "title": "BOS Loader",
     "permalink": "/zh-CN/bos/dev/bos-loader"

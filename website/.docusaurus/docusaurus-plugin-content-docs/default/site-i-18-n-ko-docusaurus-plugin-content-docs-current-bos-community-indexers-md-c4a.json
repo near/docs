@@ -19,7 +19,7 @@
     "title": "QueryAPI Indexing Example",
     "sidebar_label": "Getting Started"
   },
-  "sidebar": "indexers",
+  "sidebar": "build",
   "previous": {
     "title": "How it works",
     "permalink": "/ko/bos/queryapi/how-it-works"

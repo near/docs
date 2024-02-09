@@ -20,7 +20,7 @@
     "sidebar_label": "Overview",
     "title": "Intermediate concepts (cross-contract calls and more)"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Access keys and login 2/2",
     "permalink": "/tutorials/crosswords/beginner/logging-in-implementation"

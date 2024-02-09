@@ -19,10 +19,10 @@
     "title": "Mint NFT",
     "sidebar_label": "Mint NFT"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
-    "title": "Self Upgrade & State Migration",
-    "permalink": "/vi/tutorials/examples/update-contract-migrate-state"
+    "title": "Adding FTs to a Marketplace",
+    "permalink": "/vi/tutorials/fts/marketplace"
   },
   "next": {
     "title": "Mint Front-end",

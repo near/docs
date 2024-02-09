@@ -18,10 +18,10 @@
     "id": "bos-loader",
     "title": "BOS Loader"
   },
-  "sidebar": "integrate",
+  "sidebar": "tutorials",
   "previous": {
-    "title": "Using components on WebApps",
-    "permalink": "/vi/bos/tutorial/bos-gateway"
+    "title": "Frontend Multiple Contracts",
+    "permalink": "/vi/tutorials/examples/frontend-multiple-contracts"
   },
   "next": {
     "title": "Smart Contract Interaction",

@@ -18,7 +18,7 @@
     "id": "reentrancy",
     "title": "재진입 공격"
   },
-  "sidebar": "contracts",
+  "sidebar": "build",
   "previous": {
     "title": "프론트러닝",
     "permalink": "/ko/develop/contracts/security/frontrunning"

@@ -19,7 +19,7 @@
     "title": "Indexing Functions",
     "sidebar_label": "Indexing Functions"
   },
-  "sidebar": "indexers",
+  "sidebar": "build",
   "previous": {
     "title": "Best Practices",
     "permalink": "/zh-CN/bos/queryapi/best-practices"

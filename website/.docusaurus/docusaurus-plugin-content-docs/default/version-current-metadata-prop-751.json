@@ -333,13 +333,21 @@
         "unlisted": false
       }
     ],
-    "contracts": [
+    "build": [
       {
         "type": "link",
         "label": "Home",
-        "href": "/zh-CN/develop/contracts/welcome",
-        "docId": "develop/contracts/welcome",
+        "href": "/zh-CN/develop/welcome",
+        "docId": "develop/welcome",
         "unlisted": false
+      },
+      {
+        "type": "html",
+        "value": "<hr/>"
+      },
+      {
+        "type": "html",
+        "value": "<span class='menu__link'><b><small> Smart Contracts </small></b></span>"
       },
       {
         "type": "link",
@@ -349,71 +357,329 @@
         "unlisted": false
       },
       {
+        "type": "category",
+        "label": "Building Smart Contracts",
+        "items": [
+          {
+            "type": "link",
+            "label": "⭐ Quickstart",
+            "href": "/zh-CN/develop/contracts/quickstart",
+            "docId": "develop/contracts/quickstart",
+            "unlisted": false
+          },
+          {
+            "type": "category",
+            "label": "Anatomy of a Contract",
+            "items": [
+              {
+                "type": "link",
+                "label": "Modules, Types & Structs",
+                "href": "/zh-CN/develop/contracts/basics",
+                "docId": "develop/contracts/basics",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "The Contract Class",
+                "href": "/zh-CN/develop/contracts/anatomy",
+                "docId": "develop/contracts/anatomy",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Environment",
+                "href": "/zh-CN/develop/contracts/environment/",
+                "docId": "develop/contracts/environment/environment",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "State & Data Structures",
+                "href": "/zh-CN/develop/contracts/storage",
+                "docId": "develop/contracts/storage",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Transfers & Actions",
+                "href": "/zh-CN/develop/contracts/actions",
+                "docId": "develop/contracts/actions",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Cross-Contract Calls",
+                "href": "/zh-CN/develop/contracts/crosscontract",
+                "docId": "develop/contracts/crosscontract",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "✅ Checklist",
+                "href": "/zh-CN/develop/contracts/security/checklist",
+                "docId": "develop/contracts/security/checklist",
+                "unlisted": false
+              },
+              {
+                "type": "html",
+                "value": "<hr/>"
+              },
+              {
+                "type": "link",
+                "label": "Notes on Serialization",
+                "href": "/zh-CN/develop/contracts/serialization",
+                "docId": "develop/contracts/serialization",
+                "unlisted": false
+              }
+            ],
+            "collapsed": true,
+            "collapsible": true
+          },
+          {
+            "type": "category",
+            "label": "Test the Contract",
+            "items": [
+              {
+                "type": "link",
+                "label": "Introduction",
+                "href": "/zh-CN/develop/testing/introduction",
+                "docId": "develop/testing/introduction",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Unit Testing",
+                "href": "/zh-CN/develop/testing/unit-test",
+                "docId": "develop/testing/unit-test",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Integration Test",
+                "href": "/zh-CN/develop/testing/integration-test",
+                "docId": "develop/testing/integration-test",
+                "unlisted": false
+              },
+              {
+                "type": "html",
+                "value": "<hr/>"
+              },
+              {
+                "type": "link",
+                "label": "Local Development",
+                "href": "/zh-CN/develop/testing/kurtosis-localnet",
+                "docId": "develop/testing/kurtosis-localnet",
+                "unlisted": false
+              }
+            ],
+            "collapsed": true,
+            "collapsible": true
+          },
+          {
+            "type": "category",
+            "label": "Deploy, Update & Lock",
+            "items": [
+              {
+                "type": "link",
+                "label": "Deploying and Using",
+                "href": "/zh-CN/develop/deploy",
+                "docId": "develop/deploy",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Updating Contracts",
+                "href": "/zh-CN/develop/upgrade",
+                "docId": "develop/upgrade",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Locking Accounts",
+                "href": "/zh-CN/develop/lock",
+                "docId": "develop/lock",
+                "unlisted": false
+              }
+            ],
+            "collapsed": true,
+            "collapsible": true
+          },
+          {
+            "type": "category",
+            "label": "Security",
+            "items": [
+              {
+                "type": "link",
+                "label": "✅ Checklist",
+                "href": "/zh-CN/develop/contracts/security/checklist",
+                "docId": "develop/contracts/security/checklist",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Million Small Deposits",
+                "href": "/zh-CN/develop/contracts/security/storage",
+                "docId": "develop/contracts/security/storage",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Cross-Contract Calls",
+                "href": "/zh-CN/develop/contracts/security/callbacks",
+                "docId": "develop/contracts/security/callbacks",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Ensure it is the User (1yⓃ)",
+                "href": "/zh-CN/develop/contracts/security/one-yocto",
+                "docId": "develop/contracts/security/one-yocto",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Sybil Attacks",
+                "href": "/zh-CN/develop/contracts/security/sybil",
+                "docId": "develop/contracts/security/sybil",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Front Running",
+                "href": "/zh-CN/develop/contracts/security/frontrunning",
+                "docId": "develop/contracts/security/frontrunning",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Reentrancy Attacks",
+                "href": "/zh-CN/develop/contracts/security/reentrancy",
+                "docId": "develop/contracts/security/reentrancy",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Random Numbers",
+                "href": "/zh-CN/develop/contracts/security/random",
+                "docId": "develop/contracts/security/random",
+                "unlisted": false
+              },
+              {
+                "type": "html",
+                "value": "<hr/>"
+              },
+              {
+                "type": "link",
+                "label": "Bug Bounty Program",
+                "href": "/zh-CN/develop/contracts/security/bounty",
+                "docId": "develop/contracts/security/bounty",
+                "unlisted": false
+              }
+            ],
+            "collapsed": true,
+            "collapsible": true,
+            "href": "/zh-CN/develop/contracts/security/welcome"
+          },
+          {
+            "type": "html",
+            "value": "<hr/>"
+          },
+          {
+            "type": "html",
+            "value": "<a class='menu__link internal' href='/tutorials/examples/count-near'> 📖 Tutorials </a>"
+          }
+        ],
+        "collapsed": true,
+        "collapsible": true
+      },
+      {
         "type": "html",
         "value": "<hr/>"
       },
       {
         "type": "html",
-        "value": "<span class='menu__link'><b><small> Building Smart Contracts </small></b></span>"
+        "value": "<span class='menu__link'><b><small> Multi-Chain Components </small></b></span>"
       },
       {
         "type": "link",
-        "label": "⭐ Quickstart",
-        "href": "/zh-CN/develop/contracts/quickstart",
-        "docId": "develop/contracts/quickstart",
+        "label": "⭐ Overview",
+        "href": "/zh-CN/bos/tutorial/quickstart",
+        "docId": "bos/tutorial/quickstart",
         "unlisted": false
       },
       {
         "type": "category",
-        "label": "Anatomy of a Contract",
+        "label": "Building Web3 Components",
         "items": [
           {
             "type": "link",
-            "label": "Modules, Types & Structs",
-            "href": "/zh-CN/develop/contracts/basics",
-            "docId": "develop/contracts/basics",
+            "label": "Dev Environments",
+            "href": "/zh-CN/bos/dev/intro",
+            "docId": "bos/dev/intro",
             "unlisted": false
           },
           {
-            "type": "link",
-            "label": "The Contract Class",
-            "href": "/zh-CN/develop/contracts/anatomy",
-            "docId": "develop/contracts/anatomy",
-            "unlisted": false
+            "type": "category",
+            "label": "Anatomy of a Component",
+            "items": [
+              {
+                "type": "link",
+                "label": "Basics",
+                "href": "/zh-CN/bos/api/state",
+                "docId": "bos/api/state",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Web Browser Methods",
+                "href": "/zh-CN/bos/api/web-methods",
+                "docId": "bos/api/web-methods",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "List of Native Components",
+                "href": "/zh-CN/bos/api/builtin-components",
+                "docId": "bos/api/builtin-components",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Interacting with Near",
+                "href": "/zh-CN/bos/api/near",
+                "docId": "bos/api/near",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Social Interactions",
+                "href": "/zh-CN/bos/api/social",
+                "docId": "bos/api/social",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Social Notifications",
+                "href": "/zh-CN/bos/api/notifications",
+                "docId": "bos/api/notifications",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Handling Historical data",
+                "href": "/zh-CN/bos/queryapi/bos-components",
+                "docId": "bos/queryapi/bos-components",
+                "unlisted": false
+              }
+            ],
+            "collapsed": true,
+            "collapsible": true
           },
           {
             "type": "link",
-            "label": "Environment",
-            "href": "/zh-CN/develop/contracts/environment/",
-            "docId": "develop/contracts/environment/environment",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "State & Data Structures",
-            "href": "/zh-CN/develop/contracts/storage",
-            "docId": "develop/contracts/storage",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Transfers & Actions",
-            "href": "/zh-CN/develop/contracts/actions",
-            "docId": "develop/contracts/actions",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Cross-Contract Calls",
-            "href": "/zh-CN/develop/contracts/crosscontract",
-            "docId": "develop/contracts/crosscontract",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "✅ Checklist",
-            "href": "/zh-CN/develop/contracts/security/checklist",
-            "docId": "develop/contracts/security/checklist",
+            "label": "Using components on WebApps",
+            "href": "/zh-CN/bos/tutorial/bos-gateway",
+            "docId": "bos/tutorial/bos-gateway",
             "unlisted": false
           },
           {
@@ -421,160 +687,12 @@
             "value": "<hr/>"
           },
           {
-            "type": "link",
-            "label": "Notes on Serialization",
-            "href": "/zh-CN/develop/contracts/serialization",
-            "docId": "develop/contracts/serialization",
-            "unlisted": false
-          }
-        ],
-        "collapsed": true,
-        "collapsible": true
-      },
-      {
-        "type": "category",
-        "label": "Test the Contract",
-        "items": [
-          {
-            "type": "link",
-            "label": "Introduction",
-            "href": "/zh-CN/develop/testing/introduction",
-            "docId": "develop/testing/introduction",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Unit Testing",
-            "href": "/zh-CN/develop/testing/unit-test",
-            "docId": "develop/testing/unit-test",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Integration Test",
-            "href": "/zh-CN/develop/testing/integration-test",
-            "docId": "develop/testing/integration-test",
-            "unlisted": false
-          },
-          {
             "type": "html",
-            "value": "<hr/>"
-          },
-          {
-            "type": "link",
-            "label": "Local Development",
-            "href": "/zh-CN/develop/testing/kurtosis-localnet",
-            "docId": "develop/testing/kurtosis-localnet",
-            "unlisted": false
+            "value": "<a class='menu__link internal' href='/bos/dev/bos-loader'> 📖 Tutorials </a>"
           }
         ],
         "collapsed": true,
         "collapsible": true
-      },
-      {
-        "type": "category",
-        "label": "Deploy, Update & Lock",
-        "items": [
-          {
-            "type": "link",
-            "label": "Deploying and Using",
-            "href": "/zh-CN/develop/deploy",
-            "docId": "develop/deploy",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Updating Contracts",
-            "href": "/zh-CN/develop/upgrade",
-            "docId": "develop/upgrade",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Locking Accounts",
-            "href": "/zh-CN/develop/lock",
-            "docId": "develop/lock",
-            "unlisted": false
-          }
-        ],
-        "collapsed": true,
-        "collapsible": true
-      },
-      {
-        "type": "category",
-        "label": "Security",
-        "items": [
-          {
-            "type": "link",
-            "label": "✅ Checklist",
-            "href": "/zh-CN/develop/contracts/security/checklist",
-            "docId": "develop/contracts/security/checklist",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Million Small Deposits",
-            "href": "/zh-CN/develop/contracts/security/storage",
-            "docId": "develop/contracts/security/storage",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Cross-Contract Calls",
-            "href": "/zh-CN/develop/contracts/security/callbacks",
-            "docId": "develop/contracts/security/callbacks",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Ensure it is the User (1yⓃ)",
-            "href": "/zh-CN/develop/contracts/security/one-yocto",
-            "docId": "develop/contracts/security/one-yocto",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Sybil Attacks",
-            "href": "/zh-CN/develop/contracts/security/sybil",
-            "docId": "develop/contracts/security/sybil",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Front Running",
-            "href": "/zh-CN/develop/contracts/security/frontrunning",
-            "docId": "develop/contracts/security/frontrunning",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Reentrancy Attacks",
-            "href": "/zh-CN/develop/contracts/security/reentrancy",
-            "docId": "develop/contracts/security/reentrancy",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Random Numbers",
-            "href": "/zh-CN/develop/contracts/security/random",
-            "docId": "develop/contracts/security/random",
-            "unlisted": false
-          },
-          {
-            "type": "html",
-            "value": "<hr/>"
-          },
-          {
-            "type": "link",
-            "label": "Bug Bounty Program",
-            "href": "/zh-CN/develop/contracts/security/bounty",
-            "docId": "develop/contracts/security/bounty",
-            "unlisted": false
-          }
-        ],
-        "collapsed": true,
-        "collapsible": true,
-        "href": "/zh-CN/develop/contracts/security/welcome"
       },
       {
         "type": "html",
@@ -582,27 +700,73 @@
       },
       {
         "type": "html",
-        "value": "<span class='menu__link'><b><small> Standards & Primitives </small></b></span>"
+        "value": "<span class='menu__link'><b><small> Web3 Applications </small></b></span>"
       },
       {
         "type": "link",
-        "label": "Fungible Tokens (FT) ↗",
-        "href": "/primitives/ft"
+        "label": "What are Web3 Apps?",
+        "href": "/zh-CN/develop/web3-apps/whatareweb3apps",
+        "docId": "develop/web3-apps/whatareweb3apps",
+        "unlisted": false
       },
       {
-        "type": "link",
-        "label": "Non-Fungible Tokens (NFT) ↗",
-        "href": "/primitives/nft"
-      },
-      {
-        "type": "link",
-        "label": "Autonomous Organizations (DAO)",
-        "href": "/primitives/dao"
-      },
-      {
-        "type": "link",
-        "label": "Oracles ↗",
-        "href": "/primitives/oracles"
+        "type": "category",
+        "label": "Building Web3 Applications",
+        "items": [
+          {
+            "type": "link",
+            "label": "⭐ Quickstart a WebApp",
+            "href": "/zh-CN/develop/integrate/quickstart-frontend",
+            "docId": "develop/integrate/quickstart-frontend",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Integrating Contracts",
+            "href": "/zh-CN/develop/integrate/frontend",
+            "docId": "develop/integrate/frontend",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Integrating Components",
+            "href": "/zh-CN/develop/integrate/frontend-components",
+            "docId": "develop/integrate/frontend-components",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Building a Relayer",
+            "href": "/zh-CN/develop/relayers/build-relayer",
+            "docId": "develop/relayers/build-relayer",
+            "unlisted": false
+          },
+          {
+            "type": "category",
+            "label": "Backend",
+            "items": [
+              {
+                "type": "link",
+                "label": "Login with NEAR",
+                "href": "/zh-CN/develop/integrate/backend-login",
+                "docId": "develop/integrate/backend-login",
+                "unlisted": false
+              }
+            ],
+            "collapsed": true,
+            "collapsible": true
+          },
+          {
+            "type": "html",
+            "value": "<hr/>"
+          },
+          {
+            "type": "html",
+            "value": "<a class='menu__link internal' href='/tutorials/examples/count-near'> 📖 Tutorials </a>"
+          }
+        ],
+        "collapsed": true,
+        "collapsible": true
       },
       {
         "type": "html",
@@ -610,17 +774,382 @@
       },
       {
         "type": "html",
-        "value": "<span class='menu__link'><b><small> Examples & Tutorials </small></b></span>"
+        "value": "<span class='menu__link'><b><small> Primitives (FT, NFT, ...) </small></b></span>"
+      },
+      {
+        "type": "link",
+        "label": "What are Primitives?",
+        "href": "/zh-CN/primitives/whatareprimitives",
+        "docId": "primitives/whatareprimitives",
+        "unlisted": false
       },
       {
         "type": "category",
-        "label": "Examples",
+        "label": "Primitives & Standards",
         "items": [
+          {
+            "type": "link",
+            "label": "Fungible Tokens (FT)",
+            "href": "/zh-CN/primitives/ft",
+            "docId": "primitives/ft",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Non-Fungible Tokens (NFT)",
+            "href": "/zh-CN/primitives/nft",
+            "docId": "primitives/nft",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Linkdrops",
+            "href": "/zh-CN/primitives/linkdrop",
+            "docId": "primitives/linkdrop",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Price Oracles",
+            "href": "/zh-CN/primitives/oracles",
+            "docId": "primitives/oracles",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Autonomous Organizations (DAO)",
+            "href": "/zh-CN/primitives/dao",
+            "docId": "primitives/dao",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Decentralized Exchanges (DEX)",
+            "href": "/zh-CN/primitives/dex",
+            "docId": "primitives/dex",
+            "unlisted": false
+          },
+          {
+            "type": "html",
+            "value": "<hr/>"
+          },
+          {
+            "type": "html",
+            "value": "<a class='menu__link internal' href='/tutorials/nfts/minting-nfts'> 📖 Tutorials </a>"
+          }
+        ],
+        "collapsed": true,
+        "collapsible": true
+      },
+      {
+        "type": "html",
+        "value": "<hr/>"
+      },
+      {
+        "type": "html",
+        "value": "<span class='menu__link'><b><small> Data Infrastructure </small></b></span>"
+      },
+      {
+        "type": "link",
+        "label": "What is Data Infrastructure?",
+        "href": "/zh-CN/develop/whataredatasolutions",
+        "docId": "develop/whataredatasolutions",
+        "unlisted": false
+      },
+      {
+        "type": "category",
+        "label": "NEAR Data Infrastructure",
+        "items": [
+          {
+            "type": "link",
+            "label": "BigQuery",
+            "href": "/zh-CN/bos/queryapi/big-query",
+            "docId": "bos/queryapi/big-query",
+            "unlisted": false
+          },
+          {
+            "type": "category",
+            "label": "QueryAPI",
+            "items": [
+              {
+                "type": "link",
+                "label": "Introduction",
+                "href": "/zh-CN/bos/queryapi/intro",
+                "docId": "bos/queryapi/intro",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "How it works",
+                "href": "/zh-CN/bos/queryapi/how-it-works",
+                "docId": "bos/queryapi/how-it-works",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Limitations",
+                "href": "/bos/queryapi/intro#known-limitations"
+              },
+              {
+                "type": "link",
+                "label": "Getting Started",
+                "href": "/zh-CN/bos/community/indexers",
+                "docId": "bos/community/indexers",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Best Practices",
+                "href": "/zh-CN/bos/queryapi/best-practices",
+                "docId": "bos/queryapi/best-practices",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Indexing Functions",
+                "href": "/zh-CN/bos/queryapi/index-functions",
+                "docId": "bos/queryapi/index-functions",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Context object",
+                "href": "/zh-CN/bos/queryapi/context-object",
+                "docId": "bos/queryapi/context-object",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Access & Query Historical data",
+                "href": "/zh-CN/bos/queryapi/query-data",
+                "docId": "bos/queryapi/query-data",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Migrate from Lake framework",
+                "href": "/zh-CN/bos/queryapi/migrate-from-near-lake",
+                "docId": "bos/queryapi/migrate-from-near-lake",
+                "unlisted": false
+              }
+            ],
+            "collapsed": true,
+            "collapsible": true
+          },
+          {
+            "type": "category",
+            "label": "Lake Framework",
+            "items": [
+              {
+                "type": "link",
+                "label": "Lake Overview",
+                "href": "/zh-CN/tools/near-lake",
+                "docId": "tools/near-lake",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Getting started",
+                "href": "/zh-CN/tutorials/indexer/near-lake-state-changes-indexer",
+                "docId": "tutorials/indexer/near-lake-state-changes-indexer",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Migrating to NEAR Lake framework",
+                "href": "/zh-CN/tutorials/indexer/migrating-to-near-lake-framework",
+                "docId": "tutorials/indexer/migrating-to-near-lake-framework",
+                "unlisted": false
+              },
+              {
+                "type": "category",
+                "label": "Building Indexers",
+                "items": [
+                  {
+                    "type": "link",
+                    "label": "Lake Primitive Types",
+                    "href": "/zh-CN/develop/lake/primitives",
+                    "docId": "develop/lake/primitives",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "NEAR Lake Primitives",
+                    "href": "https://near.github.io/near-lake-framework-js/"
+                  },
+                  {
+                    "type": "link",
+                    "label": "JS basic tutorial",
+                    "href": "/zh-CN/tutorials/indexer/js-lake-indexer",
+                    "docId": "tutorials/indexer/js-lake-indexer",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Python tutorial",
+                    "href": "/zh-CN/tutorials/indexer/python-lake-indexer",
+                    "docId": "tutorials/indexer/python-lake-indexer",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "NFT Indexer",
+                    "href": "/zh-CN/tutorials/indexer/nft-indexer",
+                    "docId": "tutorials/indexer/nft-indexer",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "NFT indexer for Python",
+                    "href": "/zh-CN/tutorials/indexer/python-nft-indexer",
+                    "docId": "tutorials/indexer/python-nft-indexer",
+                    "unlisted": false
+                  }
+                ],
+                "collapsed": true,
+                "collapsible": true
+              },
+              {
+                "type": "category",
+                "label": "Running NEAR Lake",
+                "items": [
+                  {
+                    "type": "link",
+                    "label": "Running Lake Indexer",
+                    "href": "/zh-CN/tutorials/indexer/run-lake-indexer",
+                    "docId": "tutorials/indexer/run-lake-indexer",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Start options",
+                    "href": "/zh-CN/tutorials/indexer/lake-start-options",
+                    "docId": "tutorials/indexer/lake-start-options",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Credentials",
+                    "href": "/zh-CN/tutorials/indexer/credentials",
+                    "docId": "tutorials/indexer/credentials",
+                    "unlisted": false
+                  }
+                ],
+                "collapsed": true,
+                "collapsible": true
+              },
+              {
+                "type": "category",
+                "label": "Lake Data Structures",
+                "items": [
+                  {
+                    "type": "link",
+                    "label": "Table of contents",
+                    "href": "/zh-CN/develop/lake/structures/toc",
+                    "docId": "develop/lake/structures/toc",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Block",
+                    "href": "/zh-CN/develop/lake/structures/block",
+                    "docId": "develop/lake/structures/block",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Chunk",
+                    "href": "/zh-CN/develop/lake/structures/chunk",
+                    "docId": "develop/lake/structures/chunk",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Shard",
+                    "href": "/zh-CN/develop/lake/structures/shard",
+                    "docId": "develop/lake/structures/shard",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Transaction",
+                    "href": "/zh-CN/develop/lake/structures/transaction",
+                    "docId": "develop/lake/structures/transaction",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Receipt",
+                    "href": "/zh-CN/develop/lake/structures/receipt",
+                    "docId": "develop/lake/structures/receipt",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "ExecutionOutcome",
+                    "href": "/zh-CN/develop/lake/structures/execution-outcome",
+                    "docId": "develop/lake/structures/execution-outcome",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "StateChange",
+                    "href": "/zh-CN/develop/lake/structures/state-change",
+                    "docId": "develop/lake/structures/state-change",
+                    "unlisted": false
+                  }
+                ],
+                "collapsed": true,
+                "collapsible": true
+              }
+            ],
+            "collapsed": true,
+            "collapsible": true
+          }
+        ],
+        "collapsed": true,
+        "collapsible": true
+      }
+    ],
+    "tutorials": [
+      {
+        "type": "link",
+        "label": "Examples & Tutorials",
+        "href": "/zh-CN/tutorials/welcome",
+        "docId": "tutorials/welcome",
+        "unlisted": false
+      },
+      {
+        "type": "html",
+        "value": "<hr/>"
+      },
+      {
+        "type": "html",
+        "value": "<span class='menu__link'><b><small> Examples </small></b></span>"
+      },
+      {
+        "type": "category",
+        "label": "Frontend & Smart Contract",
+        "items": [
+          {
+            "type": "link",
+            "label": "Count on NEAR",
+            "href": "/zh-CN/tutorials/examples/count-near",
+            "docId": "tutorials/examples/count-near",
+            "unlisted": false
+          },
           {
             "type": "link",
             "label": "Guest Book",
             "href": "/zh-CN/tutorials/examples/guest-book",
             "docId": "tutorials/examples/guest-book",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Donation",
+            "href": "/zh-CN/tutorials/examples/donation",
+            "docId": "tutorials/examples/donation",
             "unlisted": false
           },
           {
@@ -636,7 +1165,15 @@
             "href": "/zh-CN/tutorials/examples/coin-flip",
             "docId": "tutorials/examples/coin-flip",
             "unlisted": false
-          },
+          }
+        ],
+        "collapsed": true,
+        "collapsible": true
+      },
+      {
+        "type": "category",
+        "label": "Advanced Contracts",
+        "items": [
           {
             "type": "link",
             "label": "Factory",
@@ -663,38 +1200,269 @@
         "collapsible": true
       },
       {
+        "type": "link",
+        "label": "Frontend Multiple Contracts",
+        "href": "/zh-CN/tutorials/examples/frontend-multiple-contracts",
+        "docId": "tutorials/examples/frontend-multiple-contracts",
+        "unlisted": false
+      },
+      {
+        "type": "html",
+        "value": "<hr/>"
+      },
+      {
+        "type": "html",
+        "value": "<span class='menu__link'><b><small> Tutorials </small></b></span>"
+      },
+      {
         "type": "category",
-        "label": "Tutorials",
+        "label": "Components",
         "items": [
           {
+            "type": "link",
+            "label": "BOS Loader",
+            "href": "/zh-CN/bos/dev/bos-loader",
+            "docId": "bos/dev/bos-loader",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Smart Contract Interaction",
+            "href": "/zh-CN/bos/tutorial/interaction",
+            "docId": "bos/tutorial/interaction",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Design Components",
+            "href": "/zh-CN/bos/tutorial/ds-components",
+            "docId": "bos/tutorial/ds-components",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Using IFrames",
+            "href": "/zh-CN/bos/tutorial/using-iframes",
+            "docId": "bos/tutorial/using-iframes",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Push Notifications",
+            "href": "/zh-CN/bos/tutorial/push-notifications",
+            "docId": "bos/tutorial/push-notifications",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "WebSockets & QueryAPI",
+            "href": "/zh-CN/bos/tutorial/queryapi-websockets",
+            "docId": "bos/tutorial/queryapi-websockets",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "NEAR for Ethereum developers",
+            "href": "/zh-CN/bos/tutorial/ethers-js",
+            "docId": "bos/tutorial/ethers-js",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Best Practices for Ethereum developers on NEAR",
+            "href": "/zh-CN/bos/tutorial/ethers-js-best-practices",
+            "docId": "bos/tutorial/ethers-js-best-practices",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Lido Example",
+            "href": "/zh-CN/bos/tutorial/lido",
+            "docId": "bos/tutorial/lido",
+            "unlisted": false
+          }
+        ],
+        "collapsed": true,
+        "collapsible": true
+      },
+      {
+        "type": "category",
+        "label": "Fungible Tokens 101 (FT)",
+        "items": [
+          {
+            "type": "link",
+            "label": "Introduction",
+            "href": "/zh-CN/tutorials/fts/introduction",
+            "docId": "tutorials/fts/introduction",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Pre-deployed Contract",
+            "href": "/zh-CN/tutorials/fts/predeployed-contract",
+            "docId": "tutorials/fts/predeployed-contract",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Contract Architecture",
+            "href": "/zh-CN/tutorials/fts/skeleton",
+            "docId": "tutorials/fts/skeleton",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Defining Your Token",
+            "href": "/zh-CN/tutorials/fts/defining-a-token",
+            "docId": "tutorials/fts/defining-a-token",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Circulating Supply",
+            "href": "/zh-CN/tutorials/fts/circulating-supply",
+            "docId": "tutorials/fts/circulating-supply",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Registering Accounts",
+            "href": "/zh-CN/tutorials/fts/registering-accounts",
+            "docId": "tutorials/fts/registering-accounts",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Transferring FTs",
+            "href": "/zh-CN/tutorials/fts/transfers",
+            "docId": "tutorials/fts/transfers",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Adding FTs to a Marketplace",
+            "href": "/zh-CN/tutorials/fts/marketplace",
+            "docId": "tutorials/fts/marketplace",
+            "unlisted": false
+          }
+        ],
+        "collapsed": true,
+        "collapsible": true
+      },
+      {
+        "type": "category",
+        "label": "Non-Fungible Tokens (NFT)",
+        "items": [
+          {
+            "type": "link",
+            "label": "Minting NFTs",
+            "href": "/zh-CN/tutorials/nfts/minting-nfts",
+            "docId": "tutorials/nfts/minting-nfts",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Minting Front-end",
+            "href": "/zh-CN/tutorials/nfts/minting-nft-frontend",
+            "docId": "tutorials/nfts/minting-nft-frontend",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Minecraft NFTs",
+            "href": "/zh-CN/tutorials/nfts/minecraft-nfts",
+            "docId": "tutorials/nfts/minecraft-nfts",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Building a Frontend",
+            "href": "https://github.com/near-examples/nft-tutorial-frontend"
+          },
+          {
+            "type": "html",
+            "value": "<hr/>"
+          },
+          {
             "type": "category",
-            "label": "Non Fungible Tokens",
+            "label": "🌐 Contract: Zero to Hero ",
             "items": [
               {
                 "type": "link",
-                "label": "Minting NFTs",
-                "href": "/zh-CN/tutorials/nfts/minting-nfts",
-                "docId": "tutorials/nfts/minting-nfts",
+                "label": "Introduction",
+                "href": "/zh-CN/tutorials/nfts/js/introduction",
+                "docId": "tutorials/nfts/js/introduction",
                 "unlisted": false
               },
               {
                 "type": "link",
-                "label": "Minting Front-end",
-                "href": "/zh-CN/tutorials/nfts/minting-nft-frontend",
-                "docId": "tutorials/nfts/minting-nft-frontend",
+                "label": "Pre-deployed Contract",
+                "href": "/zh-CN/tutorials/nfts/js/predeployed-contract",
+                "docId": "tutorials/nfts/js/predeployed-contract",
                 "unlisted": false
               },
               {
                 "type": "link",
-                "label": "Minecraft NFTs",
-                "href": "/zh-CN/tutorials/nfts/minecraft-nfts",
-                "docId": "tutorials/nfts/minecraft-nfts",
+                "label": "Contract Architecture",
+                "href": "/zh-CN/tutorials/nfts/js/skeleton",
+                "docId": "tutorials/nfts/js/skeleton",
                 "unlisted": false
               },
               {
                 "type": "link",
-                "label": "Building a Frontend",
-                "href": "https://github.com/near-examples/nft-tutorial-frontend"
+                "label": "Minting",
+                "href": "/zh-CN/tutorials/nfts/js/minting",
+                "docId": "tutorials/nfts/js/minting",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Upgrade a Contract",
+                "href": "/zh-CN/tutorials/nfts/js/upgrade-contract",
+                "docId": "tutorials/nfts/js/upgrade-contract",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Enumeration",
+                "href": "/zh-CN/tutorials/nfts/js/enumeration",
+                "docId": "tutorials/nfts/js/enumeration",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Core",
+                "href": "/zh-CN/tutorials/nfts/js/core",
+                "docId": "tutorials/nfts/js/core",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Approvals",
+                "href": "/zh-CN/tutorials/nfts/js/approvals",
+                "docId": "tutorials/nfts/js/approvals",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Royalty",
+                "href": "/zh-CN/tutorials/nfts/js/royalty",
+                "docId": "tutorials/nfts/js/royalty",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Events",
+                "href": "/zh-CN/tutorials/nfts/js/events",
+                "docId": "tutorials/nfts/js/events",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Marketplace",
+                "href": "/zh-CN/tutorials/nfts/js/marketplace",
+                "docId": "tutorials/nfts/js/marketplace",
+                "unlisted": false
               }
             ],
             "collapsed": true,
@@ -702,414 +1470,91 @@
           },
           {
             "type": "category",
-            "label": "Zero to Hero",
+            "label": "🦀 Contract: Zero to Hero",
             "items": [
               {
-                "type": "category",
-                "label": "Master NFTs on NEAR",
-                "items": [
-                  {
-                    "type": "category",
-                    "label": "🌐 Using the JavaScript SDK",
-                    "items": [
-                      {
-                        "type": "link",
-                        "label": "Introduction",
-                        "href": "/zh-CN/tutorials/nfts/js/introduction",
-                        "docId": "tutorials/nfts/js/introduction",
-                        "unlisted": false
-                      },
-                      {
-                        "type": "link",
-                        "label": "Pre-deployed Contract",
-                        "href": "/zh-CN/tutorials/nfts/js/predeployed-contract",
-                        "docId": "tutorials/nfts/js/predeployed-contract",
-                        "unlisted": false
-                      },
-                      {
-                        "type": "link",
-                        "label": "Contract Architecture",
-                        "href": "/zh-CN/tutorials/nfts/js/skeleton",
-                        "docId": "tutorials/nfts/js/skeleton",
-                        "unlisted": false
-                      },
-                      {
-                        "type": "link",
-                        "label": "Minting",
-                        "href": "/zh-CN/tutorials/nfts/js/minting",
-                        "docId": "tutorials/nfts/js/minting",
-                        "unlisted": false
-                      },
-                      {
-                        "type": "link",
-                        "label": "Upgrade a Contract",
-                        "href": "/zh-CN/tutorials/nfts/js/upgrade-contract",
-                        "docId": "tutorials/nfts/js/upgrade-contract",
-                        "unlisted": false
-                      },
-                      {
-                        "type": "link",
-                        "label": "Enumeration",
-                        "href": "/zh-CN/tutorials/nfts/js/enumeration",
-                        "docId": "tutorials/nfts/js/enumeration",
-                        "unlisted": false
-                      },
-                      {
-                        "type": "link",
-                        "label": "Core",
-                        "href": "/zh-CN/tutorials/nfts/js/core",
-                        "docId": "tutorials/nfts/js/core",
-                        "unlisted": false
-                      },
-                      {
-                        "type": "link",
-                        "label": "Approvals",
-                        "href": "/zh-CN/tutorials/nfts/js/approvals",
-                        "docId": "tutorials/nfts/js/approvals",
-                        "unlisted": false
-                      },
-                      {
-                        "type": "link",
-                        "label": "Royalty",
-                        "href": "/zh-CN/tutorials/nfts/js/royalty",
-                        "docId": "tutorials/nfts/js/royalty",
-                        "unlisted": false
-                      },
-                      {
-                        "type": "link",
-                        "label": "Events",
-                        "href": "/zh-CN/tutorials/nfts/js/events",
-                        "docId": "tutorials/nfts/js/events",
-                        "unlisted": false
-                      },
-                      {
-                        "type": "link",
-                        "label": "Marketplace",
-                        "href": "/zh-CN/tutorials/nfts/js/marketplace",
-                        "docId": "tutorials/nfts/js/marketplace",
-                        "unlisted": false
-                      }
-                    ],
-                    "collapsed": true,
-                    "collapsible": true
-                  },
-                  {
-                    "type": "category",
-                    "label": "🦀 Using the Rust SDK",
-                    "items": [
-                      {
-                        "type": "link",
-                        "label": "Introduction",
-                        "href": "/zh-CN/tutorials/nfts/introduction",
-                        "docId": "tutorials/nfts/introduction",
-                        "unlisted": false
-                      },
-                      {
-                        "type": "link",
-                        "label": "Pre-deployed Contract",
-                        "href": "/zh-CN/tutorials/nfts/predeployed-contract",
-                        "docId": "tutorials/nfts/predeployed-contract",
-                        "unlisted": false
-                      },
-                      {
-                        "type": "link",
-                        "label": "Contract Architecture",
-                        "href": "/zh-CN/tutorials/nfts/skeleton",
-                        "docId": "tutorials/nfts/skeleton",
-                        "unlisted": false
-                      },
-                      {
-                        "type": "link",
-                        "label": "Minting",
-                        "href": "/zh-CN/tutorials/nfts/minting",
-                        "docId": "tutorials/nfts/minting",
-                        "unlisted": false
-                      },
-                      {
-                        "type": "link",
-                        "label": "Upgrade a Contract",
-                        "href": "/zh-CN/tutorials/nfts/upgrade-contract",
-                        "docId": "tutorials/nfts/upgrade-contract",
-                        "unlisted": false
-                      },
-                      {
-                        "type": "link",
-                        "label": "Enumeration",
-                        "href": "/zh-CN/tutorials/nfts/enumeration",
-                        "docId": "tutorials/nfts/enumeration",
-                        "unlisted": false
-                      },
-                      {
-                        "type": "link",
-                        "label": "Core",
-                        "href": "/zh-CN/tutorials/nfts/core",
-                        "docId": "tutorials/nfts/core",
-                        "unlisted": false
-                      },
-                      {
-                        "type": "link",
-                        "label": "Approvals",
-                        "href": "/zh-CN/tutorials/nfts/approvals",
-                        "docId": "tutorials/nfts/approvals",
-                        "unlisted": false
-                      },
-                      {
-                        "type": "link",
-                        "label": "Royalty",
-                        "href": "/zh-CN/tutorials/nfts/royalty",
-                        "docId": "tutorials/nfts/royalty",
-                        "unlisted": false
-                      },
-                      {
-                        "type": "link",
-                        "label": "Events",
-                        "href": "/zh-CN/tutorials/nfts/events",
-                        "docId": "tutorials/nfts/events",
-                        "unlisted": false
-                      },
-                      {
-                        "type": "link",
-                        "label": "Marketplace",
-                        "href": "/zh-CN/tutorials/nfts/marketplace",
-                        "docId": "tutorials/nfts/marketplace",
-                        "unlisted": false
-                      },
-                      {
-                        "type": "link",
-                        "label": "Lazy Minting, Collections, and More!",
-                        "href": "/zh-CN/tutorials/nfts/series",
-                        "docId": "tutorials/nfts/series",
-                        "unlisted": false
-                      }
-                    ],
-                    "collapsed": true,
-                    "collapsible": true
-                  }
-                ],
-                "collapsed": true,
-                "collapsible": true
+                "type": "link",
+                "label": "Introduction",
+                "href": "/zh-CN/tutorials/nfts/introduction",
+                "docId": "tutorials/nfts/introduction",
+                "unlisted": false
               },
               {
-                "type": "category",
-                "label": "Fungible Tokens 101",
-                "items": [
-                  {
-                    "type": "link",
-                    "label": "Introduction",
-                    "href": "/zh-CN/tutorials/fts/introduction",
-                    "docId": "tutorials/fts/introduction",
-                    "unlisted": false
-                  },
-                  {
-                    "type": "link",
-                    "label": "Pre-deployed Contract",
-                    "href": "/zh-CN/tutorials/fts/predeployed-contract",
-                    "docId": "tutorials/fts/predeployed-contract",
-                    "unlisted": false
-                  },
-                  {
-                    "type": "link",
-                    "label": "Contract Architecture",
-                    "href": "/zh-CN/tutorials/fts/skeleton",
-                    "docId": "tutorials/fts/skeleton",
-                    "unlisted": false
-                  },
-                  {
-                    "type": "link",
-                    "label": "Defining Your Token",
-                    "href": "/zh-CN/tutorials/fts/defining-a-token",
-                    "docId": "tutorials/fts/defining-a-token",
-                    "unlisted": false
-                  },
-                  {
-                    "type": "link",
-                    "label": "Circulating Supply",
-                    "href": "/zh-CN/tutorials/fts/circulating-supply",
-                    "docId": "tutorials/fts/circulating-supply",
-                    "unlisted": false
-                  },
-                  {
-                    "type": "link",
-                    "label": "Registering Accounts",
-                    "href": "/zh-CN/tutorials/fts/registering-accounts",
-                    "docId": "tutorials/fts/registering-accounts",
-                    "unlisted": false
-                  },
-                  {
-                    "type": "link",
-                    "label": "Transferring FTs",
-                    "href": "/zh-CN/tutorials/fts/transfers",
-                    "docId": "tutorials/fts/transfers",
-                    "unlisted": false
-                  },
-                  {
-                    "type": "link",
-                    "label": "Adding FTs to a Marketplace",
-                    "href": "/zh-CN/tutorials/fts/marketplace",
-                    "docId": "tutorials/fts/marketplace",
-                    "unlisted": false
-                  }
-                ],
-                "collapsed": true,
-                "collapsible": true
+                "type": "link",
+                "label": "Pre-deployed Contract",
+                "href": "/zh-CN/tutorials/nfts/predeployed-contract",
+                "docId": "tutorials/nfts/predeployed-contract",
+                "unlisted": false
               },
               {
-                "type": "category",
-                "label": "Build a Crossword Game",
-                "items": [
-                  {
-                    "type": "category",
-                    "label": "Basics",
-                    "items": [
-                      {
-                        "type": "link",
-                        "label": "Crossword Game Overview",
-                        "href": "/zh-CN/tutorials/crosswords/basics/overview",
-                        "docId": "tutorials/crosswords/basics/overview",
-                        "unlisted": false
-                      },
-                      {
-                        "type": "link",
-                        "label": "Set up Rust and a contract skeleton",
-                        "href": "/zh-CN/tutorials/crosswords/basics/set-up-skeleton",
-                        "docId": "tutorials/crosswords/basics/set-up-skeleton",
-                        "unlisted": false
-                      },
-                      {
-                        "type": "link",
-                        "label": "Add basic code, create a subaccount, and call methods",
-                        "href": "/zh-CN/tutorials/crosswords/basics/add-functions-call",
-                        "docId": "tutorials/crosswords/basics/add-functions-call",
-                        "unlisted": false
-                      },
-                      {
-                        "type": "link",
-                        "label": "Hash the solution, unit tests, and an init method",
-                        "href": "/zh-CN/tutorials/crosswords/basics/hashing-and-unit-tests",
-                        "docId": "tutorials/crosswords/basics/hashing-and-unit-tests",
-                        "unlisted": false
-                      },
-                      {
-                        "type": "link",
-                        "label": "Add simple frontend",
-                        "href": "/zh-CN/tutorials/crosswords/basics/simple-frontend",
-                        "docId": "tutorials/crosswords/basics/simple-frontend",
-                        "unlisted": false
-                      }
-                    ],
-                    "collapsed": true,
-                    "collapsible": true
-                  },
-                  {
-                    "type": "category",
-                    "label": "Beginner",
-                    "items": [
-                      {
-                        "type": "link",
-                        "label": "Overview",
-                        "href": "/zh-CN/tutorials/crosswords/beginner/overview",
-                        "docId": "tutorials/crosswords/beginner/overview",
-                        "unlisted": false
-                      },
-                      {
-                        "type": "link",
-                        "label": "Store multiple puzzles",
-                        "href": "/zh-CN/tutorials/crosswords/beginner/collections",
-                        "docId": "tutorials/crosswords/beginner/collections",
-                        "unlisted": false
-                      },
-                      {
-                        "type": "link",
-                        "label": "Using structs and enums",
-                        "href": "/zh-CN/tutorials/crosswords/beginner/structs-enums",
-                        "docId": "tutorials/crosswords/beginner/structs-enums",
-                        "unlisted": false
-                      },
-                      {
-                        "type": "link",
-                        "label": "Actions and sending NEAR",
-                        "href": "/zh-CN/tutorials/crosswords/beginner/actions",
-                        "docId": "tutorials/crosswords/beginner/actions",
-                        "unlisted": false
-                      },
-                      {
-                        "type": "link",
-                        "label": "Add a puzzle",
-                        "href": "/zh-CN/tutorials/crosswords/beginner/adding-a-puzzle",
-                        "docId": "tutorials/crosswords/beginner/adding-a-puzzle",
-                        "unlisted": false
-                      },
-                      {
-                        "type": "link",
-                        "label": "Access keys and login 1/2",
-                        "href": "/zh-CN/tutorials/crosswords/beginner/logging-in",
-                        "docId": "tutorials/crosswords/beginner/logging-in",
-                        "unlisted": false
-                      },
-                      {
-                        "type": "link",
-                        "label": "Access keys and login 2/2",
-                        "href": "/zh-CN/tutorials/crosswords/beginner/logging-in-implementation",
-                        "docId": "tutorials/crosswords/beginner/logging-in-implementation",
-                        "unlisted": false
-                      }
-                    ],
-                    "collapsed": true,
-                    "collapsible": true
-                  },
-                  {
-                    "type": "category",
-                    "label": "Intermediate",
-                    "items": [
-                      {
-                        "type": "link",
-                        "label": "Overview",
-                        "href": "/zh-CN/tutorials/crosswords/intermediate/overview",
-                        "docId": "tutorials/crosswords/intermediate/overview",
-                        "unlisted": false
-                      },
-                      {
-                        "type": "link",
-                        "label": "Solution as seed phrase",
-                        "href": "/zh-CN/tutorials/crosswords/intermediate/access-key-solution",
-                        "docId": "tutorials/crosswords/intermediate/access-key-solution",
-                        "unlisted": false
-                      },
-                      {
-                        "type": "link",
-                        "label": "Seed phrase logic",
-                        "href": "/zh-CN/tutorials/crosswords/intermediate/use-seed-phrase",
-                        "docId": "tutorials/crosswords/intermediate/use-seed-phrase",
-                        "unlisted": false
-                      },
-                      {
-                        "type": "link",
-                        "label": "Linkdrop contract",
-                        "href": "/zh-CN/tutorials/crosswords/intermediate/linkdrop",
-                        "docId": "tutorials/crosswords/intermediate/linkdrop",
-                        "unlisted": false
-                      },
-                      {
-                        "type": "link",
-                        "label": "Cross-contract calls, etc.",
-                        "href": "/zh-CN/tutorials/crosswords/intermediate/cross-contract-calls",
-                        "docId": "tutorials/crosswords/intermediate/cross-contract-calls",
-                        "unlisted": false
-                      },
-                      {
-                        "type": "link",
-                        "label": "Base64 params, wrap up",
-                        "href": "/zh-CN/tutorials/crosswords/intermediate/base64vecu8",
-                        "docId": "tutorials/crosswords/intermediate/base64vecu8",
-                        "unlisted": false
-                      }
-                    ],
-                    "collapsed": true,
-                    "collapsible": true
-                  }
-                ],
-                "collapsed": true,
-                "collapsible": true
+                "type": "link",
+                "label": "Contract Architecture",
+                "href": "/zh-CN/tutorials/nfts/skeleton",
+                "docId": "tutorials/nfts/skeleton",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Minting",
+                "href": "/zh-CN/tutorials/nfts/minting",
+                "docId": "tutorials/nfts/minting",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Upgrade a Contract",
+                "href": "/zh-CN/tutorials/nfts/upgrade-contract",
+                "docId": "tutorials/nfts/upgrade-contract",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Enumeration",
+                "href": "/zh-CN/tutorials/nfts/enumeration",
+                "docId": "tutorials/nfts/enumeration",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Core",
+                "href": "/zh-CN/tutorials/nfts/core",
+                "docId": "tutorials/nfts/core",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Approvals",
+                "href": "/zh-CN/tutorials/nfts/approvals",
+                "docId": "tutorials/nfts/approvals",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Royalty",
+                "href": "/zh-CN/tutorials/nfts/royalty",
+                "docId": "tutorials/nfts/royalty",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Events",
+                "href": "/zh-CN/tutorials/nfts/events",
+                "docId": "tutorials/nfts/events",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Marketplace",
+                "href": "/zh-CN/tutorials/nfts/marketplace",
+                "docId": "tutorials/nfts/marketplace",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Lazy Minting, Collections, and More!",
+                "href": "/zh-CN/tutorials/nfts/series",
+                "docId": "tutorials/nfts/series",
+                "unlisted": false
               }
             ],
             "collapsed": true,
@@ -1120,45 +1565,289 @@
         "collapsible": true
       },
       {
-        "type": "html",
-        "value": "<hr/>"
+        "type": "category",
+        "label": "Build a Crossword Game",
+        "items": [
+          {
+            "type": "category",
+            "label": "Basics",
+            "items": [
+              {
+                "type": "link",
+                "label": "Crossword Game Overview",
+                "href": "/zh-CN/tutorials/crosswords/basics/overview",
+                "docId": "tutorials/crosswords/basics/overview",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Set up Rust and a contract skeleton",
+                "href": "/zh-CN/tutorials/crosswords/basics/set-up-skeleton",
+                "docId": "tutorials/crosswords/basics/set-up-skeleton",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Add basic code, create a subaccount, and call methods",
+                "href": "/zh-CN/tutorials/crosswords/basics/add-functions-call",
+                "docId": "tutorials/crosswords/basics/add-functions-call",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Hash the solution, unit tests, and an init method",
+                "href": "/zh-CN/tutorials/crosswords/basics/hashing-and-unit-tests",
+                "docId": "tutorials/crosswords/basics/hashing-and-unit-tests",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Add simple frontend",
+                "href": "/zh-CN/tutorials/crosswords/basics/simple-frontend",
+                "docId": "tutorials/crosswords/basics/simple-frontend",
+                "unlisted": false
+              }
+            ],
+            "collapsed": true,
+            "collapsible": true
+          },
+          {
+            "type": "category",
+            "label": "Beginner",
+            "items": [
+              {
+                "type": "link",
+                "label": "Overview",
+                "href": "/zh-CN/tutorials/crosswords/beginner/overview",
+                "docId": "tutorials/crosswords/beginner/overview",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Store multiple puzzles",
+                "href": "/zh-CN/tutorials/crosswords/beginner/collections",
+                "docId": "tutorials/crosswords/beginner/collections",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Using structs and enums",
+                "href": "/zh-CN/tutorials/crosswords/beginner/structs-enums",
+                "docId": "tutorials/crosswords/beginner/structs-enums",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Actions and sending NEAR",
+                "href": "/zh-CN/tutorials/crosswords/beginner/actions",
+                "docId": "tutorials/crosswords/beginner/actions",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Add a puzzle",
+                "href": "/zh-CN/tutorials/crosswords/beginner/adding-a-puzzle",
+                "docId": "tutorials/crosswords/beginner/adding-a-puzzle",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Access keys and login 1/2",
+                "href": "/zh-CN/tutorials/crosswords/beginner/logging-in",
+                "docId": "tutorials/crosswords/beginner/logging-in",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Access keys and login 2/2",
+                "href": "/zh-CN/tutorials/crosswords/beginner/logging-in-implementation",
+                "docId": "tutorials/crosswords/beginner/logging-in-implementation",
+                "unlisted": false
+              }
+            ],
+            "collapsed": true,
+            "collapsible": true
+          },
+          {
+            "type": "category",
+            "label": "Intermediate",
+            "items": [
+              {
+                "type": "link",
+                "label": "Overview",
+                "href": "/zh-CN/tutorials/crosswords/intermediate/overview",
+                "docId": "tutorials/crosswords/intermediate/overview",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Solution as seed phrase",
+                "href": "/zh-CN/tutorials/crosswords/intermediate/access-key-solution",
+                "docId": "tutorials/crosswords/intermediate/access-key-solution",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Seed phrase logic",
+                "href": "/zh-CN/tutorials/crosswords/intermediate/use-seed-phrase",
+                "docId": "tutorials/crosswords/intermediate/use-seed-phrase",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Linkdrop contract",
+                "href": "/zh-CN/tutorials/crosswords/intermediate/linkdrop",
+                "docId": "tutorials/crosswords/intermediate/linkdrop",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Cross-contract calls, etc.",
+                "href": "/zh-CN/tutorials/crosswords/intermediate/cross-contract-calls",
+                "docId": "tutorials/crosswords/intermediate/cross-contract-calls",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Base64 params, wrap up",
+                "href": "/zh-CN/tutorials/crosswords/intermediate/base64vecu8",
+                "docId": "tutorials/crosswords/intermediate/base64vecu8",
+                "unlisted": false
+              }
+            ],
+            "collapsed": true,
+            "collapsible": true
+          }
+        ],
+        "collapsed": true,
+        "collapsible": true
       },
       {
-        "type": "html",
-        "value": "<span class='menu__link'><b><small> Related Tools </small></b></span>"
-      },
-      {
-        "type": "link",
-        "label": "Development Kit (SDK) ↗",
-        "href": "/sdk/welcome"
-      },
-      {
-        "type": "link",
-        "label": "NEAR API JS ↗",
-        "href": "/tools/near-api-js/quick-reference"
-      },
-      {
-        "type": "link",
-        "label": "NEAR CLI ↗",
-        "href": "/tools/near-cli"
-      },
-      {
-        "type": "link",
-        "label": "Remix IDE Plugin",
-        "href": "https://docs.welldonestudio.io/code/getting-started"
-      },
-      {
-        "type": "html",
-        "value": "<hr/>"
-      },
-      {
-        "type": "html",
-        "value": "<span class='menu__link'><b><small> Ethereum Ecosystem </small></b></span>"
-      },
-      {
-        "type": "link",
-        "label": "Aurora (EVM)",
-        "href": "https://aurora.dev"
+        "type": "category",
+        "label": "Data Infrastructure",
+        "items": [
+          {
+            "type": "link",
+            "label": "Posts Indexer",
+            "href": "/zh-CN/bos/tutorial/indexer-tutorials/posts-indexer",
+            "docId": "bos/tutorial/indexer-tutorials/posts-indexer",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Hype Indexer",
+            "href": "/zh-CN/bos/tutorial/indexer-tutorials/hype-indexer",
+            "docId": "bos/tutorial/indexer-tutorials/hype-indexer",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "NFTs Indexer",
+            "href": "/zh-CN/bos/tutorial/indexer-tutorials/nft-indexer",
+            "docId": "bos/tutorial/indexer-tutorials/nft-indexer",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Social Feed Indexer",
+            "href": "/zh-CN/bos/tutorial/indexer-tutorials/feed-indexer",
+            "docId": "bos/tutorial/indexer-tutorials/feed-indexer",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Getting started",
+            "href": "/zh-CN/tutorials/indexer/near-lake-state-changes-indexer",
+            "docId": "tutorials/indexer/near-lake-state-changes-indexer",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Migrating to NEAR Lake framework",
+            "href": "/zh-CN/tutorials/indexer/migrating-to-near-lake-framework",
+            "docId": "tutorials/indexer/migrating-to-near-lake-framework",
+            "unlisted": false
+          },
+          {
+            "type": "category",
+            "label": "Building Indexers",
+            "items": [
+              {
+                "type": "link",
+                "label": "Lake Primitive Types",
+                "href": "/zh-CN/develop/lake/primitives",
+                "docId": "develop/lake/primitives",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "NEAR Lake Primitives",
+                "href": "https://near.github.io/near-lake-framework-js/"
+              },
+              {
+                "type": "link",
+                "label": "JS basic tutorial",
+                "href": "/zh-CN/tutorials/indexer/js-lake-indexer",
+                "docId": "tutorials/indexer/js-lake-indexer",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Python tutorial",
+                "href": "/zh-CN/tutorials/indexer/python-lake-indexer",
+                "docId": "tutorials/indexer/python-lake-indexer",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "NFT Indexer",
+                "href": "/zh-CN/tutorials/indexer/nft-indexer",
+                "docId": "tutorials/indexer/nft-indexer",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "NFT indexer for Python",
+                "href": "/zh-CN/tutorials/indexer/python-nft-indexer",
+                "docId": "tutorials/indexer/python-nft-indexer",
+                "unlisted": false
+              }
+            ],
+            "collapsed": true,
+            "collapsible": true
+          },
+          {
+            "type": "category",
+            "label": "Running NEAR Lake",
+            "items": [
+              {
+                "type": "link",
+                "label": "Running Lake Indexer",
+                "href": "/zh-CN/tutorials/indexer/run-lake-indexer",
+                "docId": "tutorials/indexer/run-lake-indexer",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Start options",
+                "href": "/zh-CN/tutorials/indexer/lake-start-options",
+                "docId": "tutorials/indexer/lake-start-options",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Credentials",
+                "href": "/zh-CN/tutorials/indexer/credentials",
+                "docId": "tutorials/indexer/credentials",
+                "unlisted": false
+              }
+            ],
+            "collapsed": true,
+            "collapsible": true
+          }
+        ],
+        "collapsed": true,
+        "collapsible": true
       }
     ],
     "primitives": [
@@ -1176,56 +1865,6 @@
       {
         "type": "html",
         "value": "<span class='menu__link'><b><small> Standards </small></b></span>"
-      },
-      {
-        "type": "link",
-        "label": "Fungible Tokens (FT)",
-        "href": "/zh-CN/primitives/ft",
-        "docId": "primitives/ft",
-        "unlisted": false
-      },
-      {
-        "type": "link",
-        "label": "Non-Fungible Tokens (NFT)",
-        "href": "/zh-CN/primitives/nft",
-        "docId": "primitives/nft",
-        "unlisted": false
-      },
-      {
-        "type": "link",
-        "label": "Linkdrops",
-        "href": "/zh-CN/primitives/linkdrop",
-        "docId": "primitives/linkdrop",
-        "unlisted": false
-      },
-      {
-        "type": "html",
-        "value": "<hr/>"
-      },
-      {
-        "type": "html",
-        "value": "<span class='menu__link'><b><small> Community Apps </small></b></span>"
-      },
-      {
-        "type": "link",
-        "label": "Price Oracles",
-        "href": "/zh-CN/primitives/oracles",
-        "docId": "primitives/oracles",
-        "unlisted": false
-      },
-      {
-        "type": "link",
-        "label": "Autonomous Organizations (DAO)",
-        "href": "/zh-CN/primitives/dao",
-        "docId": "primitives/dao",
-        "unlisted": false
-      },
-      {
-        "type": "link",
-        "label": "Decentralized Exchanges (DEX)",
-        "href": "/zh-CN/primitives/dex",
-        "docId": "primitives/dex",
-        "unlisted": false
       }
     ],
     "tools": [
@@ -1837,235 +2476,6 @@
         "value": "<span class='menu__link'><b><small> Composable Apps </small></b></span>"
       },
       {
-        "type": "link",
-        "label": "⭐ Overview",
-        "href": "/zh-CN/bos/tutorial/quickstart",
-        "docId": "bos/tutorial/quickstart",
-        "unlisted": false
-      },
-      {
-        "type": "link",
-        "label": "Dev Environments",
-        "href": "/zh-CN/bos/dev/intro",
-        "docId": "bos/dev/intro",
-        "unlisted": false
-      },
-      {
-        "type": "category",
-        "label": "Anatomy of a Component",
-        "items": [
-          {
-            "type": "link",
-            "label": "Basics",
-            "href": "/zh-CN/bos/api/state",
-            "docId": "bos/api/state",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Web Browser Methods",
-            "href": "/zh-CN/bos/api/web-methods",
-            "docId": "bos/api/web-methods",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "List of Native Components",
-            "href": "/zh-CN/bos/api/builtin-components",
-            "docId": "bos/api/builtin-components",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Interacting with Near",
-            "href": "/zh-CN/bos/api/near",
-            "docId": "bos/api/near",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Social Interactions",
-            "href": "/zh-CN/bos/api/social",
-            "docId": "bos/api/social",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Social Notifications",
-            "href": "/zh-CN/bos/api/notifications",
-            "docId": "bos/api/notifications",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Handling Historical data",
-            "href": "/zh-CN/bos/queryapi/bos-components",
-            "docId": "bos/queryapi/bos-components",
-            "unlisted": false
-          }
-        ],
-        "collapsed": true,
-        "collapsible": true
-      },
-      {
-        "type": "link",
-        "label": "Using components on WebApps",
-        "href": "/zh-CN/bos/tutorial/bos-gateway",
-        "docId": "bos/tutorial/bos-gateway",
-        "unlisted": false
-      },
-      {
-        "type": "category",
-        "label": "Tutorials",
-        "items": [
-          {
-            "type": "link",
-            "label": "BOS Loader",
-            "href": "/zh-CN/bos/dev/bos-loader",
-            "docId": "bos/dev/bos-loader",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Smart Contract Interaction",
-            "href": "/zh-CN/bos/tutorial/interaction",
-            "docId": "bos/tutorial/interaction",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Design Components",
-            "href": "/zh-CN/bos/tutorial/ds-components",
-            "docId": "bos/tutorial/ds-components",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Using IFrames",
-            "href": "/zh-CN/bos/tutorial/using-iframes",
-            "docId": "bos/tutorial/using-iframes",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Push Notifications",
-            "href": "/zh-CN/bos/tutorial/push-notifications",
-            "docId": "bos/tutorial/push-notifications",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "WebSockets & QueryAPI",
-            "href": "/zh-CN/bos/tutorial/queryapi-websockets",
-            "docId": "bos/tutorial/queryapi-websockets",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "NEAR for Ethereum developers",
-            "href": "/zh-CN/bos/tutorial/ethers-js",
-            "docId": "bos/tutorial/ethers-js",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Best Practices for Ethereum developers on NEAR",
-            "href": "/zh-CN/bos/tutorial/ethers-js-best-practices",
-            "docId": "bos/tutorial/ethers-js-best-practices",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Lido Example",
-            "href": "/zh-CN/bos/tutorial/lido",
-            "docId": "bos/tutorial/lido",
-            "unlisted": false
-          }
-        ],
-        "collapsed": true,
-        "collapsible": true
-      },
-      {
-        "type": "html",
-        "value": "<hr/>"
-      },
-      {
-        "type": "html",
-        "value": "<span class='menu__link'><b><small> Web Apps </small></b></span>"
-      },
-      {
-        "type": "link",
-        "label": "⭐ Quickstart a WebApp",
-        "href": "/zh-CN/develop/integrate/quickstart-frontend",
-        "docId": "develop/integrate/quickstart-frontend",
-        "unlisted": false
-      },
-      {
-        "type": "link",
-        "label": "Integrating Contracts",
-        "href": "/zh-CN/develop/integrate/frontend",
-        "docId": "develop/integrate/frontend",
-        "unlisted": false
-      },
-      {
-        "type": "link",
-        "label": "Integrating Components",
-        "href": "/zh-CN/develop/integrate/frontend-components",
-        "docId": "develop/integrate/frontend-components",
-        "unlisted": false
-      },
-      {
-        "type": "category",
-        "label": "Examples",
-        "items": [
-          {
-            "type": "link",
-            "label": "Count on NEAR",
-            "href": "/zh-CN/tutorials/examples/count-near",
-            "docId": "tutorials/examples/count-near",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Donation",
-            "href": "/zh-CN/tutorials/examples/donation",
-            "docId": "tutorials/examples/donation",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Frontend Multiple Contracts",
-            "href": "/zh-CN/tutorials/examples/frontend-multiple-contracts",
-            "docId": "tutorials/examples/frontend-multiple-contracts",
-            "unlisted": false
-          }
-        ],
-        "collapsed": true,
-        "collapsible": true
-      },
-      {
-        "type": "html",
-        "value": "<hr/>"
-      },
-      {
-        "type": "html",
-        "value": "<span class='menu__link'><b><small> Backend </small></b></span>"
-      },
-      {
-        "type": "link",
-        "label": "Building a Relayer",
-        "href": "/zh-CN/develop/relayers/build-relayer",
-        "docId": "develop/relayers/build-relayer",
-        "unlisted": false
-      },
-      {
-        "type": "link",
-        "label": "Login with NEAR",
-        "href": "/zh-CN/develop/integrate/backend-login",
-        "docId": "develop/integrate/backend-login",
-        "unlisted": false
-      },
-      {
         "type": "html",
         "value": "<hr/>"
       },
@@ -2101,340 +2511,7 @@
         "href": "https://github.com/near/near-seed-phrase"
       }
     ],
-    "indexers": [
-      {
-        "type": "link",
-        "label": "Home",
-        "href": "/zh-CN/develop/monitor",
-        "docId": "develop/monitor",
-        "unlisted": false
-      },
-      {
-        "type": "html",
-        "value": "<hr/>"
-      },
-      {
-        "type": "html",
-        "value": "<span class='menu__link'><b><small> QueryAPI </small></b></span>"
-      },
-      {
-        "type": "link",
-        "label": "Introduction",
-        "href": "/zh-CN/bos/queryapi/intro",
-        "docId": "bos/queryapi/intro",
-        "unlisted": false
-      },
-      {
-        "type": "link",
-        "label": "How it works",
-        "href": "/zh-CN/bos/queryapi/how-it-works",
-        "docId": "bos/queryapi/how-it-works",
-        "unlisted": false
-      },
-      {
-        "type": "link",
-        "label": "Limitations",
-        "href": "/bos/queryapi/intro#known-limitations"
-      },
-      {
-        "type": "link",
-        "label": "Getting Started",
-        "href": "/zh-CN/bos/community/indexers",
-        "docId": "bos/community/indexers",
-        "unlisted": false
-      },
-      {
-        "type": "link",
-        "label": "Best Practices",
-        "href": "/zh-CN/bos/queryapi/best-practices",
-        "docId": "bos/queryapi/best-practices",
-        "unlisted": false
-      },
-      {
-        "type": "link",
-        "label": "Indexing Functions",
-        "href": "/zh-CN/bos/queryapi/index-functions",
-        "docId": "bos/queryapi/index-functions",
-        "unlisted": false
-      },
-      {
-        "type": "link",
-        "label": "Context object",
-        "href": "/zh-CN/bos/queryapi/context-object",
-        "docId": "bos/queryapi/context-object",
-        "unlisted": false
-      },
-      {
-        "type": "link",
-        "label": "Access & Query Historical data",
-        "href": "/zh-CN/bos/queryapi/query-data",
-        "docId": "bos/queryapi/query-data",
-        "unlisted": false
-      },
-      {
-        "type": "link",
-        "label": "Migrate from Lake framework",
-        "href": "/zh-CN/bos/queryapi/migrate-from-near-lake",
-        "docId": "bos/queryapi/migrate-from-near-lake",
-        "unlisted": false
-      },
-      {
-        "type": "category",
-        "label": "Tutorials",
-        "items": [
-          {
-            "type": "link",
-            "label": "Posts Indexer",
-            "href": "/zh-CN/bos/tutorial/indexer-tutorials/posts-indexer",
-            "docId": "bos/tutorial/indexer-tutorials/posts-indexer",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Hype Indexer",
-            "href": "/zh-CN/bos/tutorial/indexer-tutorials/hype-indexer",
-            "docId": "bos/tutorial/indexer-tutorials/hype-indexer",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "NFTs Indexer",
-            "href": "/zh-CN/bos/tutorial/indexer-tutorials/nft-indexer",
-            "docId": "bos/tutorial/indexer-tutorials/nft-indexer",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Social Feed Indexer",
-            "href": "/zh-CN/bos/tutorial/indexer-tutorials/feed-indexer",
-            "docId": "bos/tutorial/indexer-tutorials/feed-indexer",
-            "unlisted": false
-          }
-        ],
-        "collapsed": true,
-        "collapsible": true
-      },
-      {
-        "type": "html",
-        "value": "<hr/>"
-      },
-      {
-        "type": "html",
-        "value": "<span class='menu__link'><b><small> Data Analytics </small></b></span>"
-      },
-      {
-        "type": "link",
-        "label": "BigQuery",
-        "href": "/zh-CN/bos/queryapi/big-query",
-        "docId": "bos/queryapi/big-query",
-        "unlisted": false
-      },
-      {
-        "type": "link",
-        "label": "Indexer for Explorer (Deprecated)",
-        "href": "/zh-CN/tools/indexer-for-explorer",
-        "docId": "tools/indexer-for-explorer",
-        "unlisted": false
-      },
-      {
-        "type": "html",
-        "value": "<hr/>"
-      },
-      {
-        "type": "html",
-        "value": "<span class='menu__link'><b><small> NEAR Lake Framework </small></b></span>"
-      },
-      {
-        "type": "link",
-        "label": "Lake Overview",
-        "href": "/zh-CN/tools/near-lake",
-        "docId": "tools/near-lake",
-        "unlisted": false
-      },
-      {
-        "type": "link",
-        "label": "Getting started",
-        "href": "/zh-CN/tutorials/indexer/near-lake-state-changes-indexer",
-        "docId": "tutorials/indexer/near-lake-state-changes-indexer",
-        "unlisted": false
-      },
-      {
-        "type": "link",
-        "label": "Migrating to NEAR Lake framework",
-        "href": "/zh-CN/tutorials/indexer/migrating-to-near-lake-framework",
-        "docId": "tutorials/indexer/migrating-to-near-lake-framework",
-        "unlisted": false
-      },
-      {
-        "type": "category",
-        "label": "Building Indexers",
-        "items": [
-          {
-            "type": "link",
-            "label": "Lake Primitive Types",
-            "href": "/zh-CN/develop/lake/primitives",
-            "docId": "develop/lake/primitives",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "NEAR Lake Primitives",
-            "href": "https://near.github.io/near-lake-framework-js/"
-          },
-          {
-            "type": "link",
-            "label": "JS basic tutorial",
-            "href": "/zh-CN/tutorials/indexer/js-lake-indexer",
-            "docId": "tutorials/indexer/js-lake-indexer",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Python tutorial",
-            "href": "/zh-CN/tutorials/indexer/python-lake-indexer",
-            "docId": "tutorials/indexer/python-lake-indexer",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "NFT Indexer",
-            "href": "/zh-CN/tutorials/indexer/nft-indexer",
-            "docId": "tutorials/indexer/nft-indexer",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "NFT indexer for Python",
-            "href": "/zh-CN/tutorials/indexer/python-nft-indexer",
-            "docId": "tutorials/indexer/python-nft-indexer",
-            "unlisted": false
-          }
-        ],
-        "collapsed": true,
-        "collapsible": true
-      },
-      {
-        "type": "category",
-        "label": "Running NEAR Lake",
-        "items": [
-          {
-            "type": "link",
-            "label": "Running Lake Indexer",
-            "href": "/zh-CN/tutorials/indexer/run-lake-indexer",
-            "docId": "tutorials/indexer/run-lake-indexer",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Start options",
-            "href": "/zh-CN/tutorials/indexer/lake-start-options",
-            "docId": "tutorials/indexer/lake-start-options",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Credentials",
-            "href": "/zh-CN/tutorials/indexer/credentials",
-            "docId": "tutorials/indexer/credentials",
-            "unlisted": false
-          }
-        ],
-        "collapsed": true,
-        "collapsible": true
-      },
-      {
-        "type": "category",
-        "label": "Lake Data Structures",
-        "items": [
-          {
-            "type": "link",
-            "label": "Table of contents",
-            "href": "/zh-CN/develop/lake/structures/toc",
-            "docId": "develop/lake/structures/toc",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Block",
-            "href": "/zh-CN/develop/lake/structures/block",
-            "docId": "develop/lake/structures/block",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Chunk",
-            "href": "/zh-CN/develop/lake/structures/chunk",
-            "docId": "develop/lake/structures/chunk",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Shard",
-            "href": "/zh-CN/develop/lake/structures/shard",
-            "docId": "develop/lake/structures/shard",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Transaction",
-            "href": "/zh-CN/develop/lake/structures/transaction",
-            "docId": "develop/lake/structures/transaction",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Receipt",
-            "href": "/zh-CN/develop/lake/structures/receipt",
-            "docId": "develop/lake/structures/receipt",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "ExecutionOutcome",
-            "href": "/zh-CN/develop/lake/structures/execution-outcome",
-            "docId": "develop/lake/structures/execution-outcome",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "StateChange",
-            "href": "/zh-CN/develop/lake/structures/state-change",
-            "docId": "develop/lake/structures/state-change",
-            "unlisted": false
-          }
-        ],
-        "collapsed": true,
-        "collapsible": true
-      },
-      {
-        "type": "html",
-        "value": "<hr/>"
-      },
-      {
-        "type": "html",
-        "value": "<span class='menu__link'><b><small> Track Real-time Events </small></b></span>"
-      },
-      {
-        "type": "link",
-        "label": "Real-time Events (Lake)",
-        "href": "/tutorials/indexer/nft-indexer"
-      },
-      {
-        "type": "html",
-        "value": "<hr/>"
-      },
-      {
-        "type": "html",
-        "value": "<span class='menu__link'><b><small> Ecosystem Tools </small></b></span>"
-      },
-      {
-        "type": "link",
-        "label": "Indexing Solutions",
-        "href": "/zh-CN/tools/indexing",
-        "docId": "tools/indexing",
-        "unlisted": false
-      }
-    ],
+    "indexers": [],
     "api": [
       {
         "type": "link",
@@ -2741,19 +2818,19 @@
       "id": "bos/api/builtin-components",
       "title": "List of Native Components",
       "description": "A list of all the built-in components to be used on Near Components.",
-      "sidebar": "integrate"
+      "sidebar": "build"
     },
     "bos/api/near": {
       "id": "bos/api/near",
       "title": "Interacting with Near",
       "description": "The components can use the Near object to interact with smart contracts in the NEAR blockchain. There are three methods:",
-      "sidebar": "integrate"
+      "sidebar": "build"
     },
     "bos/api/notifications": {
       "id": "bos/api/notifications",
       "title": "Social Notifications",
       "description": "Applications such as NEAR Social and the NEAR Dev Portal allow components to send notifications to their users.",
-      "sidebar": "integrate"
+      "sidebar": "build"
     },
     "bos/api/primitives": {
       "id": "bos/api/primitives",
@@ -2764,37 +2841,37 @@
       "id": "bos/api/social",
       "title": "Social Interactions",
       "description": "NEAR components can natively communicate with the SocialDB smart contract (currently deployed at social.near).",
-      "sidebar": "integrate"
+      "sidebar": "build"
     },
     "bos/api/state": {
       "id": "bos/api/state",
       "title": "Basics",
       "description": "Borrowing from React, Near Components use hooks such as useState and useEffect to handle the state's logic, and props to receive parameters.",
-      "sidebar": "integrate"
+      "sidebar": "build"
     },
     "bos/api/web-methods": {
       "id": "bos/api/web-methods",
       "title": "Web Browser Methods",
       "description": "NEAR Components have access to classic web methods that enable them to:",
-      "sidebar": "integrate"
+      "sidebar": "build"
     },
     "bos/community/indexers": {
       "id": "bos/community/indexers",
       "title": "QueryAPI Indexing Example",
       "description": "With QueryAPI you can quickly create your own indexer by:",
-      "sidebar": "indexers"
+      "sidebar": "build"
     },
     "bos/dev/bos-loader": {
       "id": "bos/dev/bos-loader",
       "title": "BOS Loader",
       "description": "In this article you'll learn how to develop, test, and deploy BOS components using CLI tools. You can use this workflow to tap into the colaboration, pull-request, and other GitHub benefits while still deploying components to the BOS.",
-      "sidebar": "integrate"
+      "sidebar": "tutorials"
     },
     "bos/dev/intro": {
       "id": "bos/dev/intro",
       "title": "Dev Environments",
       "description": "Building, deploying, and collaborating within a new framework can be challenging. The NEAR community has created helpful workflows using new tools to simplify your development workflow.",
-      "sidebar": "integrate"
+      "sidebar": "build"
     },
     "bos/dev/vscode": {
       "id": "bos/dev/vscode",
@@ -2811,139 +2888,139 @@
       "id": "bos/queryapi/best-practices",
       "title": "Indexing best practices",
       "description": "In this article you can find suggested best practices when building blockchain indexers using QueryAPI.",
-      "sidebar": "indexers"
+      "sidebar": "build"
     },
     "bos/queryapi/big-query": {
       "id": "bos/queryapi/big-query",
       "title": "BigQuery Public Dataset",
       "description": "Blockchain data indexing in NEAR Public Lakehouse is for anyone wanting to understand blockchain data. This includes:",
-      "sidebar": "indexers"
+      "sidebar": "build"
     },
     "bos/queryapi/bos-components": {
       "id": "bos/queryapi/bos-components",
       "title": "Historical data",
       "description": "Building components that handle historical blockchain data require dedicated solutions that manage the data and reduce the latency of requests, as it's not possible to scan the whole blockchain when a user makes a request.",
-      "sidebar": "integrate"
+      "sidebar": "build"
     },
     "bos/queryapi/context-object": {
       "id": "bos/queryapi/context-object",
       "title": "QueryAPI Context object",
       "description": "Overview",
-      "sidebar": "indexers"
+      "sidebar": "build"
     },
     "bos/queryapi/how-it-works": {
       "id": "bos/queryapi/how-it-works",
       "title": "How QueryAPI works",
       "description": "QueryApi is a streaming indexer implementation that executes custom indexing logic written by developers on the NEAR blockchain. QueryApi allows hosted execution of complex queries (ones that can’t be answered by a simple RPC or Enhanced API call), data hosting, and its exposure via GraphQL endpoints.",
-      "sidebar": "indexers"
+      "sidebar": "build"
     },
     "bos/queryapi/index-functions": {
       "id": "bos/queryapi/index-functions",
       "title": "Indexing Functions",
       "description": "QueryAPI is a fully managed service that allows you to create and manage indexers on-chain seamlessly.",
-      "sidebar": "indexers"
+      "sidebar": "build"
     },
     "bos/queryapi/intro": {
       "id": "bos/queryapi/intro",
       "title": "QueryAPI Overview",
       "description": "Near QueryAPI is a fully managed solution to build indexer functions, extract on-chain data, store it in a database, and be able to query it using GraphQL endpoints.",
-      "sidebar": "indexers"
+      "sidebar": "build"
     },
     "bos/queryapi/migrate-from-near-lake": {
       "id": "bos/queryapi/migrate-from-near-lake",
       "title": "Migrate from NEAR Lake framework",
       "description": "NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers.",
-      "sidebar": "indexers"
+      "sidebar": "build"
     },
     "bos/queryapi/query-data": {
       "id": "bos/queryapi/query-data",
       "title": "Accessing and Querying Historical data",
       "description": "In this article, you'll find a high-level overview about the two most common use-cases for blockchain indexing, and how they can be solved using NEAR QueryAPI and BigQuery.",
-      "sidebar": "indexers"
+      "sidebar": "build"
     },
     "bos/tutorial/bos-gateway": {
       "id": "bos/tutorial/bos-gateway",
       "title": "Using components on WebApps",
       "description": "In order to use the components you create in a WebApp you need to use what is known as the NEAR VM. This virtual machine helps you to easily fetch components from the blockchain and transform them into executable code.",
-      "sidebar": "integrate"
+      "sidebar": "build"
     },
     "bos/tutorial/ds-components": {
       "id": "bos/tutorial/ds-components",
       "title": "Design Components",
       "description": "When building components, the NEAR VM provides a complete set of Radix primitives to simplify UI development.",
-      "sidebar": "integrate"
+      "sidebar": "tutorials"
     },
     "bos/tutorial/ethers-js": {
       "id": "bos/tutorial/ethers-js",
       "title": "NEAR for Ethereum developers",
       "description": "NEAR components are chain-agnostic, enabling you to create decentralized frontends tailored for any Ethereum dApps. Throughout this article, we'll navigate prevalent use-cases with code snippets. You’ll also find links to exemplary NEAR components for reference.",
-      "sidebar": "integrate"
+      "sidebar": "tutorials"
     },
     "bos/tutorial/ethers-js-best-practices": {
       "id": "bos/tutorial/ethers-js-best-practices",
       "title": "Best Practices for Ethereum developers on NEAR",
       "description": "In this example, we will create an Ethereum dApp on NEAR that functions as a portfolio manager, displaying the current balances for a list of tokens. Additionally, we will display current market value of each asset in the portfolio.",
-      "sidebar": "integrate"
+      "sidebar": "tutorials"
     },
     "bos/tutorial/indexer-tutorials/feed-indexer": {
       "id": "bos/tutorial/indexer-tutorials/feed-indexer",
       "title": "Social Feed Indexer",
       "description": "NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers.",
-      "sidebar": "indexers"
+      "sidebar": "tutorials"
     },
     "bos/tutorial/indexer-tutorials/hype-indexer": {
       "id": "bos/tutorial/indexer-tutorials/hype-indexer",
       "title": "Hype Indexer",
       "description": "NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers.",
-      "sidebar": "indexers"
+      "sidebar": "tutorials"
     },
     "bos/tutorial/indexer-tutorials/nft-indexer": {
       "id": "bos/tutorial/indexer-tutorials/nft-indexer",
       "title": "Minted NFTs Indexer",
       "description": "NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers.",
-      "sidebar": "indexers"
+      "sidebar": "tutorials"
     },
     "bos/tutorial/indexer-tutorials/posts-indexer": {
       "id": "bos/tutorial/indexer-tutorials/posts-indexer",
       "title": "Posts Indexer",
       "description": "NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers.",
-      "sidebar": "indexers"
+      "sidebar": "tutorials"
     },
     "bos/tutorial/interaction": {
       "id": "bos/tutorial/interaction",
       "title": "Smart Contract Interaction",
       "description": "Your frontend can interact with different blockchains using the built-in BOS API. Let's see how to create an application that reads and stores a greeting from a NEAR smart contract.",
-      "sidebar": "integrate"
+      "sidebar": "tutorials"
     },
     "bos/tutorial/lido": {
       "id": "bos/tutorial/lido",
       "title": "Lido Example",
       "description": "If you are ready to explore further, the Lido component serves as an excellent fully-fledged example, as it demonstrates how to interact with a smart contract deployed on the Ethereum mainnet.",
-      "sidebar": "integrate"
+      "sidebar": "tutorials"
     },
     "bos/tutorial/push-notifications": {
       "id": "bos/tutorial/push-notifications",
       "title": "Push Notifications",
       "description": "Push messages enable your gateway to send notifications on desktop and mobile devices even when the users are not active.",
-      "sidebar": "integrate"
+      "sidebar": "tutorials"
     },
     "bos/tutorial/queryapi-websockets": {
       "id": "bos/tutorial/queryapi-websockets",
       "title": "WebSocket-enabled Components with QueryAPI",
       "description": "In this article you'll learn how to create a NEAR component that gathers information from a QueryAPI indexer using WebSockets. In this example, the QueryAPI indexer monitors the widget activity on the blockchain, and the NEAR component gets that information using WebSockets.",
-      "sidebar": "integrate"
+      "sidebar": "tutorials"
     },
     "bos/tutorial/quickstart": {
       "id": "bos/tutorial/quickstart",
       "title": "Hello Components",
       "description": "NEAR Components are a new way to build web applications. They are composable, reusable and decentralized.",
-      "sidebar": "integrate"
+      "sidebar": "build"
     },
     "bos/tutorial/using-iframes": {
       "id": "bos/tutorial/using-iframes",
       "title": "Using IFrames",
       "description": "In this tutorial you'll learn how to use the iframe VM tag and the Iframe resizer library, so you can embed external HTML or use custom DOM elements when building NEAR components. You can use it along the rest of approved VM tags to simplify your component development.",
-      "sidebar": "integrate"
+      "sidebar": "tutorials"
     },
     "concepts/advanced/indexers": {
       "id": "concepts/advanced/indexers",
@@ -3209,31 +3286,31 @@
       "id": "develop/contracts/actions",
       "title": "Transfers & Actions",
       "description": "Smart contracts can perform specific Actions such as transferring NEAR, or calling other contracts.",
-      "sidebar": "contracts"
+      "sidebar": "build"
     },
     "develop/contracts/anatomy": {
       "id": "develop/contracts/anatomy",
       "title": "The Contract Class",
       "description": "Your contract's logic and state (storage) is defined by the main class, in which:",
-      "sidebar": "contracts"
+      "sidebar": "build"
     },
     "develop/contracts/basics": {
       "id": "develop/contracts/basics",
       "title": "Modules, Types & Structs",
       "description": "When writing smart contracts you will leverage common programming concepts such:",
-      "sidebar": "contracts"
+      "sidebar": "build"
     },
     "develop/contracts/crosscontract": {
       "id": "develop/contracts/crosscontract",
       "title": "Cross-Contract Calls",
       "description": "Cross-contract calls allow your contract to interact with other deployed contracts. This is useful for:",
-      "sidebar": "contracts"
+      "sidebar": "build"
     },
     "develop/contracts/environment/environment": {
       "id": "develop/contracts/environment/environment",
       "title": "Environment",
       "description": "Every method execution has an environment associated with information such as:",
-      "sidebar": "contracts"
+      "sidebar": "build"
     },
     "develop/contracts/introduction": {
       "id": "develop/contracts/introduction",
@@ -3244,97 +3321,96 @@
       "id": "develop/contracts/quickstart",
       "title": "Hello Contract",
       "description": "NEAR accounts can host programs known as smart contracts. Smart contracts can store data, and expose methods so other users and contracts interact with them.",
-      "sidebar": "contracts"
+      "sidebar": "build"
     },
     "develop/contracts/security/bounty": {
       "id": "develop/contracts/security/bounty",
       "title": "Bug Bounty Program",
       "description": "NEAR has a revamped bug bounty program!",
-      "sidebar": "contracts"
+      "sidebar": "build"
     },
     "develop/contracts/security/callbacks": {
       "id": "develop/contracts/security/callbacks",
       "title": "Cross-Contract Calls",
       "description": "While writing cross-contract calls there is a significant aspect to keep in mind",
-      "sidebar": "contracts"
+      "sidebar": "build"
     },
     "develop/contracts/security/checklist": {
       "id": "develop/contracts/security/checklist",
       "title": "✅ Checklist",
       "description": "Once you finished developing your smart contract please go through the following list in order to ensure everything is safe for the end user.",
-      "sidebar": "contracts"
+      "sidebar": "build"
     },
     "develop/contracts/security/frontrunning": {
       "id": "develop/contracts/security/frontrunning",
       "title": "Front Running",
       "description": "In the NEAR network, validators have access to the transaction pool, and can therefore see them before they execute. This enables validators to analyze transactions for a potential profit and frontrun them with a transaction of their own.",
-      "sidebar": "contracts"
+      "sidebar": "build"
     },
     "develop/contracts/security/one-yocto": {
       "id": "develop/contracts/security/one-yocto",
       "title": "Ensure it is the User (1yⓃ)",
       "description": "NEAR uses a system of Access Keys to simplify handling accounts. There are basically two type of keys: Full Access, that have full control over an account (i.e. can perform all actions), and Function Call, that only have permission to call a specified smart contract's method(s) that do not attach Ⓝ as a deposit.",
-      "sidebar": "contracts"
+      "sidebar": "build"
     },
     "develop/contracts/security/random": {
       "id": "develop/contracts/security/random",
       "title": "Random Numbers",
       "description": "When writing smart contracts in NEAR you have access to a random seed that enables you to create random numbers/strings within your contract.",
-      "sidebar": "contracts"
+      "sidebar": "build"
     },
     "develop/contracts/security/reentrancy": {
       "id": "develop/contracts/security/reentrancy",
       "title": "Reentrancy Attacks",
       "description": "Between a cross-contract call and its callback any method of your contract can be executed. Not taking this into account is one of the main sources of exploits. It is so common that it has its own name: reentrancy attacks.",
-      "sidebar": "contracts"
+      "sidebar": "build"
     },
     "develop/contracts/security/storage": {
       "id": "develop/contracts/security/storage",
       "title": "Million Small Deposits",
       "description": "On NEAR, your contract pays for the storage it uses. This means that the more data you store, the more balance you need to cover for storage. If you don't handle these costs correctly (e.g. asking the user to cover their storage usage), then a million little deposits can drain your contract of its funds.",
-      "sidebar": "contracts"
+      "sidebar": "build"
     },
     "develop/contracts/security/sybil": {
       "id": "develop/contracts/security/sybil",
       "title": "Sybil Attacks",
       "description": "While developing your smart contract, keep in mind that an individual can potentially create multiple NEAR accounts. This is especially relevant in ecosystems involving crowd decisions, such as DAOs.",
-      "sidebar": "contracts"
+      "sidebar": "build"
     },
     "develop/contracts/security/welcome": {
       "id": "develop/contracts/security/welcome",
       "title": "Security",
       "description": "Here you will find information on how to keep your smart contract and decentralized applications secure.",
-      "sidebar": "contracts"
+      "sidebar": "build"
     },
     "develop/contracts/serialization": {
       "id": "develop/contracts/serialization",
       "title": "Notes on Serialization",
       "description": "Smart contracts need to be able to communicate complex data in a simple way, while also reading and storing such data into their states efficiently.",
-      "sidebar": "contracts"
+      "sidebar": "build"
     },
     "develop/contracts/storage": {
       "id": "develop/contracts/storage",
       "title": "State & Data Structures",
       "description": "Each contract has its own state (storage), which only they can modify but anyone can see.",
-      "sidebar": "contracts"
+      "sidebar": "build"
     },
     "develop/contracts/welcome": {
       "id": "develop/contracts/welcome",
       "title": "NEAR Smart Contracts",
-      "description": "Welcome! Here you will find documentation on how to develop a smart contract on NEAR.",
-      "sidebar": "contracts"
+      "description": "Welcome! Here you will find documentation on how to develop a smart contract on NEAR."
     },
     "develop/contracts/whatisacontract": {
       "id": "develop/contracts/whatisacontract",
       "title": "What is a Smart Contract?",
       "description": "Smart contracts are simple programs that live in a NEAR network. As any modern application, smart contracts store data and expose methods to interact with them.",
-      "sidebar": "contracts"
+      "sidebar": "build"
     },
     "develop/deploy": {
       "id": "develop/deploy",
       "title": "NEAR CLI - Basics",
       "description": "After your contract is ready you can deploy it in the NEAR network for everyone to use it.",
-      "sidebar": "contracts"
+      "sidebar": "build"
     },
     "develop/github-overview": {
       "id": "develop/github-overview",
@@ -3345,25 +3421,25 @@
       "id": "develop/integrate/backend-login",
       "title": "Login with NEAR",
       "description": "Recently NEAR has approved a new standard that, among other things, enables users to authenticate into a backend service.",
-      "sidebar": "integrate"
+      "sidebar": "build"
     },
     "develop/integrate/frontend": {
       "id": "develop/integrate/frontend",
       "title": "Integrating Contracts",
       "description": "To integrate NEAR to your frontend, you will leverage two tools:",
-      "sidebar": "integrate"
+      "sidebar": "build"
     },
     "develop/integrate/frontend-components": {
       "id": "develop/integrate/frontend-components",
       "title": "Integrating Components",
       "description": "To integrate Components to your frontend, you will leverage two tools:",
-      "sidebar": "integrate"
+      "sidebar": "build"
     },
     "develop/integrate/quickstart-frontend": {
       "id": "develop/integrate/quickstart-frontend",
       "title": "Hello WebApp",
       "description": "Most interactions with the NEAR ecosystem can be grouped in 2 categories:",
-      "sidebar": "integrate"
+      "sidebar": "build"
     },
     "develop/integrate/rpc": {
       "id": "develop/integrate/rpc",
@@ -3380,67 +3456,66 @@
       "id": "develop/lake/primitives",
       "title": "NEAR Lake Primitive Types",
       "description": "This article contains the primitive types used by the NEAR Lake Framework package. These types are used to define the data structures used by the framework as well as provide some popular helper functions.",
-      "sidebar": "indexers"
+      "sidebar": "tutorials"
     },
     "develop/lake/structures/block": {
       "id": "develop/lake/structures/block",
       "title": "Block Structure",
       "description": "Definition",
-      "sidebar": "indexers"
+      "sidebar": "build"
     },
     "develop/lake/structures/chunk": {
       "id": "develop/lake/structures/chunk",
       "title": "Chunk Structure",
       "description": "Definition",
-      "sidebar": "indexers"
+      "sidebar": "build"
     },
     "develop/lake/structures/execution-outcome": {
       "id": "develop/lake/structures/execution-outcome",
       "title": "ExecutionOutcome Structure",
       "description": "Definition",
-      "sidebar": "indexers"
+      "sidebar": "build"
     },
     "develop/lake/structures/receipt": {
       "id": "develop/lake/structures/receipt",
       "title": "Receipt Structure",
       "description": "Definition",
-      "sidebar": "indexers"
+      "sidebar": "build"
     },
     "develop/lake/structures/shard": {
       "id": "develop/lake/structures/shard",
       "title": "Shard structure",
       "description": "Definition",
-      "sidebar": "indexers"
+      "sidebar": "build"
     },
     "develop/lake/structures/state-change": {
       "id": "develop/lake/structures/state-change",
       "title": "StateChange Structure",
       "description": "Definition",
-      "sidebar": "indexers"
+      "sidebar": "build"
     },
     "develop/lake/structures/toc": {
       "id": "develop/lake/structures/toc",
       "title": "Structures. Table of Contents",
       "description": "The structures described in this section of the docs are indexer-related more than nearcore related. Some of the are artificial and are not a part of nearcore",
-      "sidebar": "indexers"
+      "sidebar": "build"
     },
     "develop/lake/structures/transaction": {
       "id": "develop/lake/structures/transaction",
       "title": "Transaction Structure",
       "description": "Definition",
-      "sidebar": "indexers"
+      "sidebar": "build"
     },
     "develop/lock": {
       "id": "develop/lock",
       "title": "Locking Accounts",
       "description": "Removing all full access keys from an account will effectively lock it.",
-      "sidebar": "contracts"
+      "sidebar": "build"
     },
     "develop/monitor": {
       "id": "develop/monitor",
       "title": "Monitor the Network",
-      "description": "Welcome! Here you will find documentation on how to query past data and real time events from the NEAR network.",
-      "sidebar": "indexers"
+      "description": "Welcome! Here you will find documentation on how to query past data and real time events from the NEAR network."
     },
     "develop/prerequisites": {
       "id": "develop/prerequisites",
@@ -3456,7 +3531,7 @@
       "id": "develop/relayers/build-relayer",
       "title": "Building a Meta Transaction Relayer with NextJS",
       "description": "This guide will walk you through the steps required to construct a meta transaction relayer using NextJS 13.",
-      "sidebar": "integrate"
+      "sidebar": "build"
     },
     "develop/relevant-contracts/dao": {
       "id": "develop/relevant-contracts/dao",
@@ -3482,36 +3557,49 @@
       "id": "develop/testing/integration-test",
       "title": "Integration Test",
       "description": "Integration tests enable to deploy your contract in the NEAR testnet or a local sandbox, and create test-users to interact with it. In this way, you can thoroughly test your contract in a realistic environment.",
-      "sidebar": "contracts"
+      "sidebar": "build"
     },
     "develop/testing/introduction": {
       "id": "develop/testing/introduction",
       "title": "Introduction",
       "description": "While developing your smart contract you will want to test that it works as it is supposed to, and moreover, does so securely. In NEAR we have developed tools to help you carry out such tests. Basically, there are two types of tests you can perform:",
-      "sidebar": "contracts"
+      "sidebar": "build"
     },
     "develop/testing/kurtosis-localnet": {
       "id": "develop/testing/kurtosis-localnet",
       "title": "Creating a Local Development Environment",
       "description": "Using Kurtosis NEAR Package to develop locally",
-      "sidebar": "contracts"
+      "sidebar": "build"
     },
     "develop/testing/unit-test": {
       "id": "develop/testing/unit-test",
       "title": "Unit Testing",
       "description": "Unit tests allow you to test the contract methods individually. They are suitable to check the storage is updated correctly, and that methods return their expected values. They are written in the contract's language and execute locally.",
-      "sidebar": "contracts"
+      "sidebar": "build"
     },
     "develop/upgrade": {
       "id": "develop/upgrade",
       "title": "Updating Contracts",
       "description": "NEAR accounts separate their logic (contract's code) from their state (storage), allowing the code to be changed.",
-      "sidebar": "contracts"
+      "sidebar": "build"
+    },
+    "develop/web3-apps/whatareweb3apps": {
+      "id": "develop/web3-apps/whatareweb3apps",
+      "title": "What are Web3 Apps?",
+      "description": "Web3 Applications - also known as decentralized apps (dApps) - leverage smart contracts and blockchain data to offer transparency, security and giving back control to users over their assets and data.",
+      "sidebar": "build"
     },
     "develop/welcome": {
       "id": "develop/welcome",
       "title": "Developer Documentation",
-      "description": "Welcome! Here you will find documentation on how to develop decentralized apps using NEAR."
+      "description": "Welcome! Here you will find documentation on how to develop decentralized apps using NEAR.",
+      "sidebar": "build"
+    },
+    "develop/whataredatasolutions": {
+      "id": "develop/whataredatasolutions",
+      "title": "What is Data Infrastructure?",
+      "description": "NEAR offers ready-to-use solutions to access and monitor on-chain data easily. This is very useful to automate actions based on specific events, cache data to reduce latency, gather usage data of the blockchain, and even study user preferences.",
+      "sidebar": "build"
     },
     "integrator/accounts": {
       "id": "integrator/accounts",
@@ -3577,7 +3665,7 @@
       "id": "primitives/dao",
       "title": "Decentralized Autonomous Organizations",
       "description": "Decentralized Autonomous Organizations (DAOs) are self-organized groups that form around common purposes. Membership, decision making, and funding are coordinated by publicly voting on proposals through a smart contract.",
-      "sidebar": "primitives"
+      "sidebar": "build"
     },
     "primitives/dao/bos/create-dao": {
       "id": "primitives/dao/bos/create-dao",
@@ -3673,7 +3761,7 @@
       "id": "primitives/dex",
       "title": "Decentralized Exchanges (DEX)",
       "description": "A Decentralized Exchange (DEX) is an application that allows users to trade tokens (native & fungible tokens) through smart contracts.",
-      "sidebar": "primitives"
+      "sidebar": "build"
     },
     "primitives/dex/bos/get-deposit-balances": {
       "id": "primitives/dex/bos/get-deposit-balances",
@@ -3749,7 +3837,7 @@
       "id": "primitives/ft",
       "title": "Fungible Tokens (FT)",
       "description": "Besides the native NEAR token, NEAR accounts have access to a multitude of tokens to use thoughtout the ecosystem. Moreover, it is even possible for users to create their own fungible tokens.",
-      "sidebar": "primitives"
+      "sidebar": "build"
     },
     "primitives/ft/bos/attach-to-call": {
       "id": "primitives/ft/bos/attach-to-call",
@@ -3855,7 +3943,7 @@
       "id": "primitives/linkdrop",
       "title": "Linkdrops",
       "description": "Linkdrops allow users to distribute assets and onboard people to Web3 apps through a simple web link.",
-      "sidebar": "primitives"
+      "sidebar": "build"
     },
     "primitives/linkdrop/bos/create-ft-drop": {
       "id": "primitives/linkdrop/bos/create-ft-drop",
@@ -3981,7 +4069,7 @@
       "id": "primitives/nft",
       "title": "Non-Fungible Tokens (NFT)",
       "description": "In contrast with fungible tokens, non-fungible tokens (NFT) are unitary and therefore unique. This makes NFTs ideal to represent ownership of assets such as a piece of digital content, or a ticket for an event.",
-      "sidebar": "primitives"
+      "sidebar": "build"
     },
     "primitives/nft/bos/buy": {
       "id": "primitives/nft/bos/buy",
@@ -4082,13 +4170,19 @@
       "id": "primitives/oracles",
       "title": "Price Oracles",
       "description": "Oracles are smart contracts that enable you to query the current price of an asset.",
-      "sidebar": "primitives"
+      "sidebar": "build"
     },
     "primitives/welcome": {
       "id": "primitives/welcome",
       "title": "NEAR Primitives",
       "description": "Welcome! Here you will find blockchain primitives such as Fungible Tokens (FT), Non Fungible Tokens (NFT), Decentralized autonomous organizations (DAO), and more.",
       "sidebar": "primitives"
+    },
+    "primitives/whatareprimitives": {
+      "id": "primitives/whatareprimitives",
+      "title": "What are Primitives?",
+      "description": "Primitives are fundamental building blocks that can be combined to create a fully functional application. Blockchain primitives include Fungible Tokens (FT), Non Fungible Tokens (NFT), Decentralized Autonomous organizations (DAO), Link Drops and more.",
+      "sidebar": "build"
     },
     "sdk/js/building/basics": {
       "id": "sdk/js/building/basics",
@@ -4382,14 +4476,13 @@
     "tools/indexer-for-explorer": {
       "id": "tools/indexer-for-explorer",
       "title": "Indexer for Explorer (Deprecated)",
-      "description": "While developing a decentralized app you might want to query usage information for a contract such as:",
-      "sidebar": "indexers"
+      "description": "While developing a decentralized app you might want to query usage information for a contract such as:"
     },
     "tools/indexing": {
       "id": "tools/indexing",
       "title": "Indexing Solutions on NEAR",
       "description": "Here's a quick overview of Indexer projects on the NEAR ecosystem:",
-      "sidebar": "indexers"
+      "sidebar": "tools"
     },
     "tools/near-api-js/account": {
       "id": "tools/near-api-js/account",
@@ -4448,7 +4541,7 @@
       "id": "tools/near-lake",
       "title": "NEAR Lake Indexer",
       "description": "NEAR Lake is an indexer built on top of NEAR Indexer Framework to watch the network and store all the events as JSON files on AWS S3.",
-      "sidebar": "indexers"
+      "sidebar": "build"
     },
     "tools/realtime": {
       "id": "tools/realtime",
@@ -4481,115 +4574,115 @@
       "id": "tutorials/crosswords/basics/add-functions-call",
       "title": "Alter the smart contract, learning about basics of development",
       "description": "This section will modify the smart contract skeleton from the previous section. This tutorial will start by writing a contract in a somewhat useless way in order to learn the basics. Once we've got a solid understanding, we'll iterate until we have a crossword puzzle.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/crosswords/basics/hashing-and-unit-tests": {
       "id": "tutorials/crosswords/basics/hashing-and-unit-tests",
       "title": "Introduction to basic hashing and adding unit tests",
       "description": "In the previous section, we stored the crossword solution as plain text as a String type on the smart contract. If we're trying to hide the solution from the users, this isn't a great approach as it'll be public to anyone looking at the state. Let's instead hash our crossword solution and store that instead. There are different ways to hash data, but let's use sha256 which is one of the hashing algorithms available in the Rust SDK.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/crosswords/basics/overview": {
       "id": "tutorials/crosswords/basics/overview",
       "title": "Basics overview laying out what will be accomplished in this first section.",
       "description": "This first chapter of the crossword puzzle tutorial will introduce fundamental concepts to smart contract development in a beginner-friendly way. By the end of this chapter you'll have a proof-of-concept contract that can be interacted with via NEAR CLI and a simple frontend that uses the near-api-js library.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/crosswords/basics/set-up-skeleton": {
       "id": "tutorials/crosswords/basics/set-up-skeleton",
       "title": "Set up Rust, get a NEAR testnet account, NEAR CLI, and get a basic smart contract skeleton ready",
       "description": "In this tutorial we'll get a testnet account, use NEAR CLI to add a key to our computer's file system, and set up the basic skeleton of a Rust smart contract.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/crosswords/basics/simple-frontend": {
       "id": "tutorials/crosswords/basics/simple-frontend",
       "title": "Add a simple frontend to the crossword puzzle that checks the solution's hash",
       "description": "This will be the final section in this chapter, where we'll add a simple frontend using React and near-api-js to communicate with the smart contract.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/crosswords/beginner/actions": {
       "id": "tutorials/crosswords/beginner/actions",
       "title": "There are several Actions an account can do, including sending the winner of the crossword puzzle NEAR using the Transfer Action",
       "description": "We're going to introduce a new Action: Transfer. In this chapter, we'd like the first person to solve the crossword puzzle to earn some prize money, sent in NEAR.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/crosswords/beginner/adding-a-puzzle": {
       "id": "tutorials/crosswords/beginner/adding-a-puzzle",
       "title": "Adding a new puzzle now that we're using a collection that can contain multiple crossword puzzles",
       "description": "We're going to make a new puzzle, which means we need to provide the smart contract with a set of clues and info about the answers.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/crosswords/beginner/collections": {
       "id": "tutorials/crosswords/beginner/collections",
       "title": "Store multiple crossword puzzles using a specialized collection in NEAR called a LookupMap",
       "description": "As mentioned in the previous chapter, the online Rust Book is a great reference for folks getting started with Rust, but there are concepts that differ when we're dealing with the blockchain. One of these differences is the use of collections.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/crosswords/beginner/logging-in": {
       "id": "tutorials/crosswords/beginner/logging-in",
       "title": "Covering access keys and login",
       "description": "Previously…",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/crosswords/beginner/logging-in-implementation": {
       "id": "tutorials/crosswords/beginner/logging-in-implementation",
       "title": "Implementing the login button",
       "description": "Plan",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/crosswords/beginner/overview": {
       "id": "tutorials/crosswords/beginner/overview",
       "title": "Highlights of some beginner topics covered.",
       "description": "In the last chapter we installed Rust and got up and running with a simple smart contract. The contract has a few issues, however, and isn't as powerful as we'd like it to be. For instance, we can only store one crossword puzzle in the smart contract, the frontend is  hardcoded, and we don't offer any incentives to the person who wins.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/crosswords/beginner/structs-enums": {
       "id": "tutorials/crosswords/beginner/structs-enums",
       "title": "How to think about structs and enums when writing a Rust smart contract on NEAR",
       "description": "Overview",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/crosswords/intermediate/access-key-solution": {
       "id": "tutorials/crosswords/intermediate/access-key-solution",
       "title": "Replacing the solution hash with an access key",
       "description": "So far in this tutorial, the user sends the plaintext solution to the crossword puzzle smart contract, where it's hashed and compared with the known answer.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/crosswords/intermediate/base64vecu8": {
       "id": "tutorials/crosswords/intermediate/base64vecu8",
       "title": "Using base64-encoded arguments when we create a new crossword puzzle",
       "description": "Let's modify our new_puzzle method a bit, and demonstrate how a smart contract author might use base64-encoded arguments.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/crosswords/intermediate/cross-contract-calls": {
       "id": "tutorials/crosswords/intermediate/cross-contract-calls",
       "title": "Adding cross-contract calls, access key shuffling, etc.",
       "description": "To reiterate, we'd like anyone to be able to participate in the crossword puzzle, even folks who don't have a NEAR account.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/crosswords/intermediate/linkdrop": {
       "id": "tutorials/crosswords/intermediate/linkdrop",
       "title": "Introducing the linkdrop contract we can use",
       "description": "We're going to take a small detour to talk about the linkdrop smart contract.  It's best that we first understand this contract and its purpose, then discuss calling a method on this contract.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/crosswords/intermediate/overview": {
       "id": "tutorials/crosswords/intermediate/overview",
       "title": "Intermediate concepts (cross-contract calls and more)",
       "description": "This chapter will go a bit faster than the previous ones.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/crosswords/intermediate/use-seed-phrase": {
       "id": "tutorials/crosswords/intermediate/use-seed-phrase",
       "title": "Implementing the seed phrase logic from the necessary libraries",
       "description": "There are two separate things we'll want to do:",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/examples/advanced-xcc": {
       "id": "tutorials/examples/advanced-xcc",
       "title": "Complex Cross Contract Call",
       "description": "This example presents 3 instances of complex cross-contract calls. Particularly, it shows:",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/examples/blockvote-js": {
       "id": "tutorials/examples/blockvote-js",
@@ -4600,19 +4693,19 @@
       "id": "tutorials/examples/coin-flip",
       "title": "Coin Flip",
       "description": "Coin Flip is a game where the player tries to guess the outcome of a coin flip. It is one of the simplest contracts implementing random numbers.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/examples/count-near": {
       "id": "tutorials/examples/count-near",
       "title": "Count on NEAR",
       "description": "Our counter example is a friendly decentralized app that stores a number and exposes methods to increment, decrement, and reset it.",
-      "sidebar": "integrate"
+      "sidebar": "tutorials"
     },
     "tutorials/examples/donation": {
       "id": "tutorials/examples/donation",
       "title": "Donation",
       "description": "Our donation example enables to forward money to an account while keeping track of it. It is one of the simplest examples on making a contract receive and send money, and the perfect gateway to enter the world of decentralized finance.",
-      "sidebar": "integrate"
+      "sidebar": "tutorials"
     },
     "tutorials/examples/escrow": {
       "id": "tutorials/examples/escrow",
@@ -4623,19 +4716,19 @@
       "id": "tutorials/examples/factory",
       "title": "Factory",
       "description": "A factory is a smart contract that stores a compiled contract on itself, and automatizes deploying it into sub-accounts.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/examples/frontend-multiple-contracts": {
       "id": "tutorials/examples/frontend-multiple-contracts",
       "title": "Frontend Multiple Contracts",
       "description": "This example showcases how to interact with multiple contracts from a single frontend.",
-      "sidebar": "integrate"
+      "sidebar": "tutorials"
     },
     "tutorials/examples/guest-book": {
       "id": "tutorials/examples/guest-book",
       "title": "Guest Book",
       "description": "Our Guest Book example is a simple app composed by two main components:",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/examples/hello-near": {
       "id": "tutorials/examples/hello-near",
@@ -4646,49 +4739,49 @@
       "id": "tutorials/examples/update-contract-migrate-state",
       "title": "Self Upgrade & State Migration",
       "description": "Three examples on how to handle updates and state migration:",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/examples/xcc": {
       "id": "tutorials/examples/xcc",
       "title": "Cross Contract Call",
       "description": "This example performs the simplest cross-contract call possible: it calls our Hello NEAR example to set and retrieve a greeting. It is one of the simplest examples on making a cross-contract call, and the perfect gateway to the world of interoperative contracts.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/fts/circulating-supply": {
       "id": "tutorials/fts/circulating-supply",
       "title": "Creating a Circulating Supply",
       "description": "In the previous tutorial, you looked at what a fungible token was and how you could define one in your smart contract. In this tutorial, you'll learn how to create a circulating supply belonging to the contract owner and view all the tokens, with their metadata, in the NEAR wallet.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/fts/defining-a-token": {
       "id": "tutorials/fts/defining-a-token",
       "title": "Defining a Fungible Token",
       "description": "This is the first of many tutorials in a series where you'll be creating a complete FT smart contract from scratch that conforms with all the NEAR FT standards. Today you'll learn what a Fungible Token is and how you can define one on the NEAR blockchain. You will be modifying a bare-bones skeleton smart contract by filling in the necessary code snippets needed to add this functionality.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/fts/introduction": {
       "id": "tutorials/fts/introduction",
       "title": "Fungible Tokens Zero to Hero",
       "description": "In this Zero to Hero series, you'll find a set of tutorials covering every aspect of a fungible token (FT) smart contract. You'll start by interacting with a pre-deployed contract and by the end you'll have built a fully-fledged FT smart contract that supports every extension of the standards.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/fts/marketplace": {
       "id": "tutorials/fts/marketplace",
       "title": "Integrating FT Payments into an NFT Marketplace",
       "description": "In this tutorial, you'll learn the basics of how an NFT marketplace contract works and how you can modify it to allow for purchasing NFTs using Fungible Tokens. In the previous tutorials, you went through and created a fully fledged FT contract that incorporates all the standards found in the FT standard.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/fts/predeployed-contract": {
       "id": "tutorials/fts/predeployed-contract",
       "title": "Pre-deployed Contract",
       "description": "Learn how to easily receive fungible tokens without doing any software development by using a readily-available FT smart contract.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/fts/registering-accounts": {
       "id": "tutorials/fts/registering-accounts",
       "title": "Registering Accounts",
       "description": "In the previous tutorial, you looked at how to mint an initial circulating supply of tokens and how you could log events as per the events standard. You then deployed the contract and saw the FTs in your wallet balance. In this tutorial, you'll learn about the storage management standard and how you can register accounts in your FT contract in order to prevent a malicious party from draining your contract of all its funds.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/fts/simple-fts": {
       "id": "tutorials/fts/simple-fts",
@@ -4699,228 +4792,229 @@
       "id": "tutorials/fts/skeleton",
       "title": "Skeleton and Rust Architecture",
       "description": "In this article, you'll learn about the basic architecture behind the FT contract that you'll develop while following this \"Zero to Hero\" series. You'll discover the contract's layout and you'll see how the Rust files are structured in order to build a feature-complete smart contract.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/fts/transfers": {
       "id": "tutorials/fts/transfers",
       "title": "Transferring Fungible Tokens",
       "description": "In this tutorial, you'll learn how to implement the core standards into your smart contract. You'll implement the logic that allows you to transfer and receive tokens. If you're joining us for the first time, feel free to clone this repository and follow along in the 4.storage folder.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/indexer/credentials": {
       "id": "tutorials/indexer/credentials",
       "title": "Credentials",
       "description": "Please, keep in mind, currently using the AWS Credentials is the only way to access the data provided by NEAR Lake ecosystem. But it is about to change with Pagoda DevConsole release. Stay tuned!",
-      "sidebar": "indexers"
+      "sidebar": "tutorials"
     },
     "tutorials/indexer/js-lake-indexer": {
       "id": "tutorials/indexer/js-lake-indexer",
       "title": "NEAR Lake indexer basic tutorial",
       "description": "near-examples/near-lake-raw-printer-js: source code for the tutorial on how to create an indexer that prints block height and number of shards",
-      "sidebar": "indexers"
+      "sidebar": "tutorials"
     },
     "tutorials/indexer/lake-start-options": {
       "id": "tutorials/indexer/lake-start-options",
       "title": "Extending Lake indexer with start options",
       "description": "The End",
-      "sidebar": "indexers"
+      "sidebar": "tutorials"
     },
     "tutorials/indexer/migrating-to-near-lake-framework": {
       "id": "tutorials/indexer/migrating-to-near-lake-framework",
       "title": "Migrating to NEAR Lake Framework",
       "description": "We encourage everyone who don't have a hard requirement to use NEAR Indexer Framework consider the migration to NEAR Lake Framework.",
-      "sidebar": "indexers"
+      "sidebar": "tutorials"
     },
     "tutorials/indexer/near-lake-state-changes-indexer": {
       "id": "tutorials/indexer/near-lake-state-changes-indexer",
       "title": "NEAR Lake StateChanges indexer tutorial",
       "description": "near-examples/near-lake-accounts-watcher: source code for a video tutorial on how to use the NEAR Lake Framework",
-      "sidebar": "indexers"
+      "sidebar": "tutorials"
     },
     "tutorials/indexer/nft-indexer": {
       "id": "tutorials/indexer/nft-indexer",
       "title": "Building an NFT indexer",
       "description": "near-examples/near-lake-nft-indexer: source code for this tutorial",
-      "sidebar": "indexers"
+      "sidebar": "tutorials"
     },
     "tutorials/indexer/python-lake-indexer": {
       "id": "tutorials/indexer/python-lake-indexer",
       "title": "NEAR Lake indexer basic tutorial",
       "description": "frolvanya/near-lake-raw-printer: source code for the tutorial on how to create an indexer that prints block height and number of shards",
-      "sidebar": "indexers"
+      "sidebar": "tutorials"
     },
     "tutorials/indexer/python-nft-indexer": {
       "id": "tutorials/indexer/python-nft-indexer",
       "title": "Building an NFT indexer for Python",
       "description": "frolvanya/near-lake-nft-indexer: source code for this tutorial",
-      "sidebar": "indexers"
+      "sidebar": "tutorials"
     },
     "tutorials/indexer/run-lake-indexer": {
       "id": "tutorials/indexer/run-lake-indexer",
       "title": "Running NEAR Lake Indexer",
       "description": "NEAR Lake is a blockchain indexer built on top of NEAR Indexer microframework to watch the network and store all the events as JSON files on AWS S3.",
-      "sidebar": "indexers"
+      "sidebar": "tutorials"
     },
     "tutorials/nfts/approvals": {
       "id": "tutorials/nfts/approvals",
       "title": "Approvals",
       "description": "In this tutorial you'll learn the basics of an approval management system which will allow you to grant others access to transfer NFTs on your behalf. This is the backbone of all NFT marketplaces and allows for some complex yet beautiful scenarios to happen. If you're joining us for the first time, feel free to clone this repository and checkout the 4.core branch to follow along.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/nfts/core": {
       "id": "tutorials/nfts/core",
       "title": "Core",
       "description": "In this tutorial you'll learn how to implement the core standards into your smart contract. If you're joining us for the first time, feel free to clone this repo and checkout the 3.enumeration branch to follow along.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/nfts/enumeration": {
       "id": "tutorials/nfts/enumeration",
       "title": "Enumeration",
       "description": "In the previous tutorials, you looked at ways to integrate the minting functionality into a skeleton smart contract. In order to get your NFTs to show in the wallet, you also had to deploy a patch fix that implemented one of the enumeration methods. In this tutorial, you'll expand on and finish the rest of the enumeration methods as per the standard Now you'll extend the NFT smart contract and add a couple of enumeration methods that can be used to return the contract's state.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/nfts/events": {
       "id": "tutorials/nfts/events",
       "title": "Events",
       "description": "In this tutorial, you'll learn about the events standard and how to implement it in your smart contract.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/nfts/introduction": {
       "id": "tutorials/nfts/introduction",
       "title": "NFT Zero to Hero",
       "description": "In this Zero to Hero series, you'll find a set of tutorials that will cover every aspect of a non-fungible token (NFT) smart contract. You'll start by minting an NFT using a pre-deployed contract and by the end you'll end up building a fully-fledged NFT smart contract that supports every extension.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/nfts/js/approvals": {
       "id": "tutorials/nfts/js/approvals",
       "title": "Approvals",
       "description": "In this tutorial you'll learn the basics of an approval management system which will allow you to grant others access to transfer NFTs on your behalf. This is the backbone of all NFT marketplaces and allows for some complex yet beautiful scenarios to happen. If you're joining us for the first time, feel free to clone this repository and checkout the 4.core branch to follow along.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/nfts/js/core": {
       "id": "tutorials/nfts/js/core",
       "title": "Core",
       "description": "In this tutorial you'll learn how to implement the core standards into your smart contract. If you're joining us for the first time, feel free to clone this repo and checkout the 3.enumeration branch to follow along.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/nfts/js/enumeration": {
       "id": "tutorials/nfts/js/enumeration",
       "title": "Enumeration",
       "description": "In the previous tutorials, you looked at ways to integrate the minting functionality into a skeleton smart contract. In order to get your NFTs to show in the wallet, you also had to deploy a patch fix that implemented one of the enumeration methods. In this tutorial, you'll expand on and finish the rest of the enumeration methods as per the standard Now you'll extend the NFT smart contract and add a couple of enumeration methods that can be used to return the contract's state.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/nfts/js/events": {
       "id": "tutorials/nfts/js/events",
       "title": "Events",
       "description": "In this tutorial, you'll learn about the events standard and how to implement it in your smart contract.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/nfts/js/introduction": {
       "id": "tutorials/nfts/js/introduction",
       "title": "NFT Zero to Hero JavaScript Edition",
       "description": "In this Zero to Hero series, you'll find a set of tutorials that will cover every aspect of a non-fungible token (NFT) smart contract. You'll start by minting an NFT using a pre-deployed contract and by the end you'll end up building a fully-fledged NFT smart contract that supports every extension.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/nfts/js/marketplace": {
       "id": "tutorials/nfts/js/marketplace",
       "title": "Marketplace",
       "description": "In this tutorial, you'll learn the basics of an NFT marketplace contract where you can buy and sell non-fungible tokens for $NEAR. In the previous tutorials, you went through and created a fully fledged NFT contract that incorporates all the standards found in the NFT standard.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/nfts/js/minting": {
       "id": "tutorials/nfts/js/minting",
       "title": "Minting",
       "description": "This is the first of many tutorials in a series where you'll be creating a complete NFT smart contract from scratch that conforms with all the NEAR NFT standards. Today you'll learn how to create the logic needed to mint NFTs and have them show up in your NEAR wallet. You will be modifying a bare-bones skeleton smart contract by filling in the necessary code snippets needed to add minting functionalities.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/nfts/js/predeployed-contract": {
       "id": "tutorials/nfts/js/predeployed-contract",
       "title": "Pre-deployed Contract",
       "description": "Learn how to easily create your own non-fungible tokens without doing any software development by using a readily-available NFT smart contract.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/nfts/js/royalty": {
       "id": "tutorials/nfts/js/royalty",
       "title": "Royalty",
       "description": "In this tutorial you'll continue building your non-fungible token (NFT) smart contract, and learn how to implement perpetual royalties into your NFTs. This will allow people to get a percentage of the purchase price when an NFT is sold.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/nfts/js/skeleton": {
       "id": "tutorials/nfts/js/skeleton",
       "title": "Skeleton and JavaScript Architecture",
       "description": "In this article, you'll learn about the basic architecture behind the NFT contract that you'll develop while following this \"Zero to Hero\" series. You'll discover the contract's layout and you'll see how the JavaScript files are structured in order to build a feature-complete smart contract.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/nfts/js/upgrade-contract": {
       "id": "tutorials/nfts/js/upgrade-contract",
       "title": "Upgrading the Contract",
       "description": "In this tutorial, you'll build off the work you previously did to implement the minting functionality on a skeleton smart contract. You got to the point where NFTs could be minted, however, the wallet had no way of displaying the tokens since your contract didn't implement the method that the wallet was trying to call.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/nfts/marketplace": {
       "id": "tutorials/nfts/marketplace",
       "title": "Marketplace",
       "description": "In this tutorial, you'll learn the basics of an NFT marketplace contract where you can buy and sell non-fungible tokens for $NEAR. In the previous tutorials, you went through and created a fully fledged NFT contract that incorporates all the standards found in the NFT standard.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/nfts/minecraft-nfts": {
       "id": "tutorials/nfts/minecraft-nfts",
       "title": "Create NFTs in Minecraft",
       "description": "In this tutorial you'll learn how to take your custom Minecraft creations and mint the schematics into NFTs on the NEAR blockchain!",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/nfts/minting": {
       "id": "tutorials/nfts/minting",
       "title": "Minting",
       "description": "This is the first of many tutorials in a series where you'll be creating a complete NFT smart contract from scratch that conforms with all the NEAR NFT standards. Today you'll learn how to create the logic needed to mint NFTs and have them show up in your NEAR wallet. You will be modifying a bare-bones skeleton smart contract by filling in the necessary code snippets needed to add minting functionalities.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/nfts/minting-nft-frontend": {
       "id": "tutorials/nfts/minting-nft-frontend",
       "title": "Minting NFT Front-end",
       "description": "In this tutorial you'll learn how to create a simple NFT front-end and mint a \"Go Team\" NFT on the NEAR blockchain straight from your web browser.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/nfts/minting-nfts": {
       "id": "tutorials/nfts/minting-nfts",
       "title": "Minting NFTs",
       "description": "In this tutorial you'll learn how to easily create your own NFTs without doing any software development by using a readily-available smart contract and a decentralized storage solution like IPFS.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/nfts/predeployed-contract": {
       "id": "tutorials/nfts/predeployed-contract",
       "title": "Pre-deployed Contract",
       "description": "Learn how to easily create your own non-fungible tokens without doing any software development by using a readily-available NFT smart contract.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/nfts/royalty": {
       "id": "tutorials/nfts/royalty",
       "title": "Royalty",
       "description": "In this tutorial you'll continue building your non-fungible token (NFT) smart contract, and learn how to implement perpetual royalties into your NFTs. This will allow people to get a percentage of the purchase price when an NFT is sold.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/nfts/series": {
       "id": "tutorials/nfts/series",
       "title": "Customizing the NFT Contract",
       "description": "In this tutorial, you'll learn how to take the existing NFT contract you've been working with and modify it to meet some of the most common needs in the ecosystem. This includes:",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/nfts/skeleton": {
       "id": "tutorials/nfts/skeleton",
       "title": "Skeleton and Rust Architecture",
       "description": "In this article, you'll learn about the basic architecture behind the NFT contract that you'll develop while following this \"Zero to Hero\" series. You'll discover the contract's layout and you'll see how the Rust files are structured in order to build a feature-complete smart contract.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/nfts/upgrade-contract": {
       "id": "tutorials/nfts/upgrade-contract",
       "title": "Upgrading the Contract",
       "description": "In this tutorial, you'll build off the work you previously did to implement the minting functionality on a skeleton smart contract. You got to the point where NFTs could be minted and the wallet correctly picked up on the fact that you owned an NFT. However, it had no way of displaying the tokens since your contract didn't implement the method that the wallet was trying to call.",
-      "sidebar": "contracts"
+      "sidebar": "tutorials"
     },
     "tutorials/welcome": {
       "id": "tutorials/welcome",
       "title": "Examples & Tutorials",
-      "description": "Explore our collection of Examples and Tutorials"
+      "description": "Explore our collection of Examples and Tutorials",
+      "sidebar": "tutorials"
     },
     "welcome": {
       "id": "welcome",

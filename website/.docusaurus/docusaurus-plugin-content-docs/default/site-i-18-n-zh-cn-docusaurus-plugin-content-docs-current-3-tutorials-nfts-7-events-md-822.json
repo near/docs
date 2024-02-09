@@ -20,7 +20,7 @@
     "title": "Events",
     "sidebar_label": "Events"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Royalty",
     "permalink": "/zh-CN/tutorials/nfts/royalty"

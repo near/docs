@@ -18,7 +18,7 @@
     "id": "actions",
     "title": "전송 & Action"
   },
-  "sidebar": "contracts",
+  "sidebar": "build",
   "previous": {
     "title": "상태 & 자료구조",
     "permalink": "/ko/develop/contracts/storage"

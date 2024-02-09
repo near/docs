@@ -22,7 +22,7 @@
   },
   "sidebar": "integrate",
   "next": {
-    "title": "⭐ Overview",
-    "permalink": "/ko/bos/tutorial/quickstart"
+    "title": "VS Code 익스텐션",
+    "permalink": "/ko/bos/dev/vscode"
   }
 }

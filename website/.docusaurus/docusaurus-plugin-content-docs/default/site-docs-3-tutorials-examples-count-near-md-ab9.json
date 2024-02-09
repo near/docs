@@ -18,13 +18,13 @@
     "id": "count-near",
     "title": "Count on NEAR"
   },
-  "sidebar": "integrate",
+  "sidebar": "tutorials",
   "previous": {
-    "title": "Integrating Components",
-    "permalink": "/develop/integrate/frontend-components"
+    "title": "Home",
+    "permalink": "/tutorials/welcome"
   },
   "next": {
-    "title": "Donation",
-    "permalink": "/tutorials/examples/donation"
+    "title": "Guest Book",
+    "permalink": "/tutorials/examples/guest-book"
   }
 }

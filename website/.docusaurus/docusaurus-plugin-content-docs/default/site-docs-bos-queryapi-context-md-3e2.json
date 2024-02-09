@@ -19,7 +19,7 @@
     "title": "QueryAPI Context object",
     "sidebar_label": "Context object"
   },
-  "sidebar": "indexers",
+  "sidebar": "build",
   "previous": {
     "title": "Indexing Functions",
     "permalink": "/bos/queryapi/index-functions"

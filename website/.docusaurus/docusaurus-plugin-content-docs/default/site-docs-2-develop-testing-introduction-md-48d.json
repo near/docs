@@ -18,7 +18,7 @@
     "id": "introduction",
     "title": "Introduction"
   },
-  "sidebar": "contracts",
+  "sidebar": "build",
   "previous": {
     "title": "Notes on Serialization",
     "permalink": "/develop/contracts/serialization"

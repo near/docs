@@ -18,7 +18,7 @@
     "id": "web-methods",
     "title": "Web Browser Methods"
   },
-  "sidebar": "integrate",
+  "sidebar": "build",
   "previous": {
     "title": "Basics",
     "permalink": "/zh-CN/bos/api/state"

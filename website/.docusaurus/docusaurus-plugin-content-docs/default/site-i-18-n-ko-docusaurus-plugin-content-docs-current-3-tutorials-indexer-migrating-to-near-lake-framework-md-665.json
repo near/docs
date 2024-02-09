@@ -17,7 +17,7 @@
   "frontMatter": {
     "sidebar_label": "NEAR Lake 프레임워크로 마이그레이션"
   },
-  "sidebar": "indexers",
+  "sidebar": "tutorials",
   "previous": {
     "title": "시작하기",
     "permalink": "/ko/tutorials/indexer/near-lake-state-changes-indexer"

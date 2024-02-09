@@ -20,7 +20,7 @@
     "sidebar_label": "Rust 및 컨트랙트 뼈대 설정",
     "title": "Rust를 설정하고, NEAR 테스트넷 계정과 NEAR CLI를 설정하며, 기본적인 스마트 컨트랙트 뼈대를 준비하세요"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "십자말풀이 게임 개요",
     "permalink": "/ko/tutorials/crosswords/basics/overview"

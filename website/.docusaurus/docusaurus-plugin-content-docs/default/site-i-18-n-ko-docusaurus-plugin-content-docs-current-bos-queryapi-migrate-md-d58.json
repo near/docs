@@ -19,13 +19,13 @@
     "title": "Migrate from NEAR Lake framework",
     "sidebar_label": "Migrate from Lake framework"
   },
-  "sidebar": "indexers",
+  "sidebar": "build",
   "previous": {
     "title": "Access & Query Historical data",
     "permalink": "/ko/bos/queryapi/query-data"
   },
   "next": {
-    "title": "Posts 인덱서",
-    "permalink": "/ko/bos/tutorial/indexer-tutorials/posts-indexer"
+    "title": "Lake Overview",
+    "permalink": "/ko/tools/near-lake"
   }
 }

@@ -20,7 +20,7 @@
     "title": "Pre-deployed Contract",
     "sidebar_label": "Pre-deployed Contract"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Introduction",
     "permalink": "/tutorials/nfts/js/introduction"

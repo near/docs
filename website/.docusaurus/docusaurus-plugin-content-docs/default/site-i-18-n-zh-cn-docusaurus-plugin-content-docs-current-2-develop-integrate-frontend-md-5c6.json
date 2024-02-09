@@ -18,7 +18,7 @@
     "id": "frontend",
     "title": "Integrating Contracts"
   },
-  "sidebar": "integrate",
+  "sidebar": "build",
   "previous": {
     "title": "⭐ Quickstart a WebApp",
     "permalink": "/zh-CN/develop/integrate/quickstart-frontend"

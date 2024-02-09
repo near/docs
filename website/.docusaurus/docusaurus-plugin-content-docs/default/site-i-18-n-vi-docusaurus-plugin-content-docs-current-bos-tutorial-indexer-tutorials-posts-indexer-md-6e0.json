@@ -19,10 +19,10 @@
     "title": "Posts Indexer",
     "sidebar_label": "Posts Indexer"
   },
-  "sidebar": "indexers",
+  "sidebar": "tutorials",
   "previous": {
-    "title": "Migrate from Lake framework",
-    "permalink": "/vi/bos/queryapi/migrate-from-near-lake"
+    "title": "Base64 params, wrap up",
+    "permalink": "/vi/tutorials/crosswords/intermediate/base64vecu8"
   },
   "next": {
     "title": "Hype Indexer",

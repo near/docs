@@ -20,7 +20,7 @@
     "title": "마켓플레이스",
     "sidebar_label": "마켓플레이스"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "이벤트",
     "permalink": "/ko/tutorials/nfts/js/events"

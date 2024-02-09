@@ -20,7 +20,7 @@
     "sidebar_label": "퍼즐 추가",
     "title": "퍼즐을 추가하여, 여러 십자말풀이 퍼즐을 포함한 컬렉션을 사용"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Action 및 NEAR 전송",
     "permalink": "/ko/tutorials/crosswords/beginner/actions"

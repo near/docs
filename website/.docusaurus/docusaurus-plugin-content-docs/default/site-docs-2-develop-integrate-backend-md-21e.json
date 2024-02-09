@@ -1,6 +1,6 @@
 {
   "id": "develop/integrate/backend-login",
-  "title": "Login with NEAR",
+  "title": "Authenticate NEAR Users",
   "description": "Recently NEAR has approved a new standard that, among other things, enables users to authenticate into a backend service.",
   "source": "@site/../docs/2.develop/integrate/backend.md",
   "sourceDirName": "2.develop/integrate",
@@ -11,20 +11,20 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/integrate/backend.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Kujtim Prenku",
-  "lastUpdatedAt": 1707477335,
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1707477797,
   "formattedLastUpdatedAt": "Feb 9, 2024",
   "frontMatter": {
     "id": "backend-login",
-    "title": "Login with NEAR"
+    "title": "Authenticate NEAR Users"
   },
-  "sidebar": "integrate",
+  "sidebar": "build",
   "previous": {
     "title": "Building a Relayer",
     "permalink": "/develop/relayers/build-relayer"
   },
   "next": {
-    "title": "VS Code Extension",
-    "permalink": "/bos/dev/vscode"
+    "title": "What are Primitives?",
+    "permalink": "/primitives/whatareprimitives"
   }
 }

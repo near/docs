@@ -19,10 +19,10 @@
     "title": "QueryAPI Overview",
     "sidebar_label": "Introduction"
   },
-  "sidebar": "indexers",
+  "sidebar": "build",
   "previous": {
-    "title": "Home",
-    "permalink": "/develop/monitor"
+    "title": "BigQuery",
+    "permalink": "/bos/queryapi/big-query"
   },
   "next": {
     "title": "How it works",

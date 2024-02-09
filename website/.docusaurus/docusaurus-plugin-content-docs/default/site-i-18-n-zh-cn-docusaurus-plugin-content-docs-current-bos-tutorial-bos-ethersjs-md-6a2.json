@@ -18,7 +18,7 @@
     "id": "ethers-js",
     "title": "NEAR for Ethereum developers"
   },
-  "sidebar": "integrate",
+  "sidebar": "tutorials",
   "previous": {
     "title": "WebSockets & QueryAPI",
     "permalink": "/zh-CN/bos/tutorial/queryapi-websockets"

@@ -20,7 +20,7 @@
     "title": "열거(Enumeration)",
     "sidebar_label": "열거(Enumeration)"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "컨트랙트 업그레이드",
     "permalink": "/ko/tutorials/nfts/js/upgrade-contract"

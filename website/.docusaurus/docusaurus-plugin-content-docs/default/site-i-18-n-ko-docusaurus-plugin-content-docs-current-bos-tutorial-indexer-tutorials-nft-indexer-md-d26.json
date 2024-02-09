@@ -19,7 +19,7 @@
     "title": "Minted NFTs Indexer",
     "sidebar_label": "NFTs Indexer"
   },
-  "sidebar": "indexers",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Hype 인덱서",
     "permalink": "/ko/bos/tutorial/indexer-tutorials/hype-indexer"

@@ -21,10 +21,10 @@
     "sidebar_label": "십자말풀이 게임 개요",
     "title": "기본 개요 : 첫 섹션에서 달성해야 할 사항"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
-    "title": "마켓플레이스에 FT 추가하기",
-    "permalink": "/ko/tutorials/fts/marketplace"
+    "title": "게으른 발행, 컬렉션 등!",
+    "permalink": "/ko/tutorials/nfts/series"
   },
   "next": {
     "title": "Rust 및 컨트랙트 뼈대 설정",

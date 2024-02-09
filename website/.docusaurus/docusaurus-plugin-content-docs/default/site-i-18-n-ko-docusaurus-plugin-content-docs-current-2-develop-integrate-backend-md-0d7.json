@@ -18,13 +18,13 @@
     "id": "backend-login",
     "title": "Login with NEAR"
   },
-  "sidebar": "integrate",
+  "sidebar": "build",
   "previous": {
     "title": "Building a Relayer",
     "permalink": "/ko/develop/relayers/build-relayer"
   },
   "next": {
-    "title": "VS Code 익스텐션",
-    "permalink": "/ko/bos/dev/vscode"
+    "title": "What are Primitives?",
+    "permalink": "/ko/primitives/whatareprimitives"
   }
 }

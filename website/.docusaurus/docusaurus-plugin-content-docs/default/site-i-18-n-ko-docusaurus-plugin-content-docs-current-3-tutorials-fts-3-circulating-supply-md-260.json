@@ -20,7 +20,7 @@
     "title": "순환 공급(Circulating Supply) 생성",
     "sidebar_label": "순환 공급"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "토큰 정의",
     "permalink": "/ko/tutorials/fts/defining-a-token"

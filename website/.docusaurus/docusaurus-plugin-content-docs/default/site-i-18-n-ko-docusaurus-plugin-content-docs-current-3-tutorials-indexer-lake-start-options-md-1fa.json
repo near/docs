@@ -17,7 +17,7 @@
   "frontMatter": {
     "sidebar_label": "시작 옵션"
   },
-  "sidebar": "indexers",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Running Lake Indexer",
     "permalink": "/ko/tutorials/indexer/run-lake-indexer"

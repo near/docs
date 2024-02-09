@@ -20,10 +20,5 @@
     "sidebar_label": "Home",
     "hide_table_of_contents": true,
     "hide_breadcrumb": true
-  },
-  "sidebar": "contracts",
-  "next": {
-    "title": "What is a Smart Contract?",
-    "permalink": "/develop/contracts/whatisacontract"
   }
 }

@@ -18,7 +18,7 @@
     "id": "interaction",
     "title": "스마트 컨트랙트 상호작용"
   },
-  "sidebar": "integrate",
+  "sidebar": "tutorials",
   "previous": {
     "title": "BOS Loader",
     "permalink": "/ko/bos/dev/bos-loader"

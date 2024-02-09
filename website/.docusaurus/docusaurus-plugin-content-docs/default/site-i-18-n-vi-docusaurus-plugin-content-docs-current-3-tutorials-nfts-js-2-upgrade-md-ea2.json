@@ -20,7 +20,7 @@
     "title": "Việc Upgrade một Contract",
     "sidebar_label": "Upgrade một Contract"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Minting",
     "permalink": "/vi/tutorials/nfts/js/minting"

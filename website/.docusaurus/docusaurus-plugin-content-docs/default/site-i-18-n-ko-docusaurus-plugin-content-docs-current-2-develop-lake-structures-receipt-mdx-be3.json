@@ -19,7 +19,7 @@
     "sidebar_position": 7,
     "sidebar_label": "Receipt"
   },
-  "sidebar": "indexers",
+  "sidebar": "build",
   "previous": {
     "title": "Transaction",
     "permalink": "/ko/develop/lake/structures/transaction"

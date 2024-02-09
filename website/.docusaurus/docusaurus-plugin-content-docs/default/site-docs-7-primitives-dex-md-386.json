@@ -19,9 +19,13 @@
     "title": "Decentralized Exchanges (DEX)",
     "hide_table_of_contents": false
   },
-  "sidebar": "primitives",
+  "sidebar": "build",
   "previous": {
     "title": "Autonomous Organizations (DAO)",
     "permalink": "/zh-CN/primitives/dao"
+  },
+  "next": {
+    "title": "What is Data Infrastructure?",
+    "permalink": "/zh-CN/develop/whataredatasolutions"
   }
 }

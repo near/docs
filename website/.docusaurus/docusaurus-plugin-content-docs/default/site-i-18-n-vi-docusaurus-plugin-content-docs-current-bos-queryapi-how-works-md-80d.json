@@ -19,7 +19,7 @@
     "title": "How QueryAPI works",
     "sidebar_label": "How it works"
   },
-  "sidebar": "indexers",
+  "sidebar": "build",
   "previous": {
     "title": "Introduction",
     "permalink": "/vi/bos/queryapi/intro"

@@ -17,7 +17,7 @@
   "frontMatter": {
     "sidebar_label": "Python tutorial"
   },
-  "sidebar": "indexers",
+  "sidebar": "tutorials",
   "previous": {
     "title": "JS basic tutorial",
     "permalink": "/tutorials/indexer/js-lake-indexer"

@@ -20,7 +20,7 @@
     "title": "로열티",
     "sidebar_label": "로열티"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "승인",
     "permalink": "/ko/tutorials/nfts/approvals"

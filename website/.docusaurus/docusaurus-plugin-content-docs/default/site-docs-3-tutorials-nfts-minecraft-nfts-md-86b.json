@@ -19,7 +19,7 @@
     "title": "Create NFTs in Minecraft",
     "sidebar_label": "Minecraft NFTs"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Minting Front-end",
     "permalink": "/tutorials/nfts/minting-nft-frontend"

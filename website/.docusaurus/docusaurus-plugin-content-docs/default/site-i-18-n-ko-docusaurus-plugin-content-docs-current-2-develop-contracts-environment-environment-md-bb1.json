@@ -18,7 +18,7 @@
     "id": "environment",
     "title": "환경"
   },
-  "sidebar": "contracts",
+  "sidebar": "build",
   "previous": {
     "title": "컨트랙트 클래스",
     "permalink": "/ko/develop/contracts/anatomy"

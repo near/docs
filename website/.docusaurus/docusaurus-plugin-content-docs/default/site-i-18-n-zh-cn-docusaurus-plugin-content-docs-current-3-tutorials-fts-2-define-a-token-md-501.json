@@ -20,7 +20,7 @@
     "title": "Defining a Fungible Token",
     "sidebar_label": "Defining Your Token"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Contract Architecture",
     "permalink": "/zh-CN/tutorials/fts/skeleton"

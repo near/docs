@@ -17,7 +17,7 @@
   "frontMatter": {
     "sidebar_label": "JS basic tutorial"
   },
-  "sidebar": "indexers",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Lake Primitive Types",
     "permalink": "/develop/lake/primitives"

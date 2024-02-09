@@ -18,7 +18,7 @@
     "id": "welcome",
     "title": "Security"
   },
-  "sidebar": "contracts",
+  "sidebar": "build",
   "previous": {
     "title": "Locking Accounts",
     "permalink": "/develop/lock"

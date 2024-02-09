@@ -18,7 +18,7 @@
     "id": "unit-test",
     "title": "Unit Testing"
   },
-  "sidebar": "contracts",
+  "sidebar": "build",
   "previous": {
     "title": "Introduction",
     "permalink": "/zh-CN/develop/testing/introduction"

@@ -20,7 +20,7 @@
     "sidebar_label": "Add basic code, create a subaccount, and call methods",
     "title": "Alter the smart contract, learning about basics of development"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Set up Rust and a contract skeleton",
     "permalink": "/tutorials/crosswords/basics/set-up-skeleton"

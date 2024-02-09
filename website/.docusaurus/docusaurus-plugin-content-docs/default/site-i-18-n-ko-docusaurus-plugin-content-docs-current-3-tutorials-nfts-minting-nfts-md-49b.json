@@ -19,10 +19,10 @@
     "title": "NFT 발행",
     "sidebar_label": "NFT 발행"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
-    "title": "자체 업그레이드 및 상태 마이그레이션",
-    "permalink": "/ko/tutorials/examples/update-contract-migrate-state"
+    "title": "마켓플레이스에 FT 추가하기",
+    "permalink": "/ko/tutorials/fts/marketplace"
   },
   "next": {
     "title": "프론트엔드",

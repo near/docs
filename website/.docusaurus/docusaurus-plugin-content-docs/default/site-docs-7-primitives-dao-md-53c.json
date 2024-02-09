@@ -20,7 +20,7 @@
     "sidebar_label": "Autonomous Organizations (DAO)",
     "hide_table_of_contents": false
   },
-  "sidebar": "primitives",
+  "sidebar": "build",
   "previous": {
     "title": "Price Oracles",
     "permalink": "/zh-CN/primitives/oracles"

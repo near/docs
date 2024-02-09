@@ -20,7 +20,7 @@
     "title": "Skeleton and JavaScript Architecture",
     "sidebar_label": "Contract Architecture"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Pre-deployed Contract",
     "permalink": "/tutorials/nfts/js/predeployed-contract"

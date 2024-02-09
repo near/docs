@@ -19,7 +19,7 @@
     "title": "Historical data",
     "sidebar_label": "Handling Historical data"
   },
-  "sidebar": "integrate",
+  "sidebar": "build",
   "previous": {
     "title": "Social Notifications",
     "permalink": "/bos/api/notifications"

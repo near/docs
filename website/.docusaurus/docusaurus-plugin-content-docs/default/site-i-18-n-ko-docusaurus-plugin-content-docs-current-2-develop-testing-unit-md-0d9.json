@@ -18,7 +18,7 @@
     "id": "unit-test",
     "title": "단위 테스트(Unit Testing)"
   },
-  "sidebar": "contracts",
+  "sidebar": "build",
   "previous": {
     "title": "소개",
     "permalink": "/ko/develop/testing/introduction"

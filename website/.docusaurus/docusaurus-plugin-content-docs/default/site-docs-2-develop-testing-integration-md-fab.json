@@ -18,7 +18,7 @@
     "id": "integration-test",
     "title": "Integration Tests"
   },
-  "sidebar": "contracts",
+  "sidebar": "build",
   "previous": {
     "title": "Unit Testing",
     "permalink": "/develop/testing/unit-test"

@@ -19,13 +19,13 @@
     "title": "Social Feed Indexer",
     "sidebar_label": "Social Feed Indexer"
   },
-  "sidebar": "indexers",
+  "sidebar": "tutorials",
   "previous": {
     "title": "NFTs Indexer",
     "permalink": "/ko/bos/tutorial/indexer-tutorials/nft-indexer"
   },
   "next": {
-    "title": "BigQuery",
-    "permalink": "/ko/bos/queryapi/big-query"
+    "title": "시작하기",
+    "permalink": "/ko/tutorials/indexer/near-lake-state-changes-indexer"
   }
 }

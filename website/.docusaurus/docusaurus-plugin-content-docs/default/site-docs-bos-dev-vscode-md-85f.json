@@ -20,7 +20,7 @@
   },
   "sidebar": "integrate",
   "previous": {
-    "title": "Login with NEAR",
-    "permalink": "/develop/integrate/backend-login"
+    "title": "Home",
+    "permalink": "/develop/integrate/welcome"
   }
 }

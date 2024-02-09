@@ -20,7 +20,7 @@
     "title": "Registering Accounts",
     "sidebar_label": "Registering Accounts"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Circulating Supply",
     "permalink": "/tutorials/fts/circulating-supply"

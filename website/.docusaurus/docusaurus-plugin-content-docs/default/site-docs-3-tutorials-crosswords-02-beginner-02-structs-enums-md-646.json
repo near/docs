@@ -20,7 +20,7 @@
     "sidebar_label": "Using structs and enums",
     "title": "How to think about structs and enums when writing a Rust smart contract on NEAR"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Store multiple puzzles",
     "permalink": "/tutorials/crosswords/beginner/collections"

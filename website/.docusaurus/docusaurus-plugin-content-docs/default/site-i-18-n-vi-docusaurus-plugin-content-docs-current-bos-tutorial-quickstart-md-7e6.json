@@ -19,10 +19,10 @@
     "title": "Hello Components",
     "sidebar_label": "⭐ Overview"
   },
-  "sidebar": "integrate",
+  "sidebar": "build",
   "previous": {
-    "title": "Home",
-    "permalink": "/vi/develop/integrate/welcome"
+    "title": "Bug Bounty Program",
+    "permalink": "/vi/develop/contracts/security/bounty"
   },
   "next": {
     "title": "Dev Environments",

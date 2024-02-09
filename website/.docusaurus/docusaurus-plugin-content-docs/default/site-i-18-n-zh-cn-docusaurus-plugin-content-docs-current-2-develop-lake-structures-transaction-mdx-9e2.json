@@ -19,7 +19,7 @@
     "sidebar_position": 5,
     "sidebar_label": "Transaction"
   },
-  "sidebar": "indexers",
+  "sidebar": "build",
   "previous": {
     "title": "Shard",
     "permalink": "/zh-CN/develop/lake/structures/shard"

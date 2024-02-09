@@ -18,7 +18,7 @@
     "id": "lock",
     "title": "Locking Accounts"
   },
-  "sidebar": "contracts",
+  "sidebar": "build",
   "previous": {
     "title": "Updating Contracts",
     "permalink": "/develop/upgrade"

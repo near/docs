@@ -18,7 +18,7 @@
     "id": "near",
     "title": "Interacting with Near"
   },
-  "sidebar": "integrate",
+  "sidebar": "build",
   "previous": {
     "title": "List of Native Components",
     "permalink": "/bos/api/builtin-components"

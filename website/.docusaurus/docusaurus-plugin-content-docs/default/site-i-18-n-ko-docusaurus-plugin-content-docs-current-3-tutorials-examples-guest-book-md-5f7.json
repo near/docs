@@ -18,13 +18,13 @@
     "id": "guest-book",
     "title": "방명록"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
-    "title": "버그 바운티 프로그램",
-    "permalink": "/ko/develop/contracts/security/bounty"
+    "title": "NEAR 숫자 세기",
+    "permalink": "/ko/tutorials/examples/count-near"
   },
   "next": {
-    "title": "교차 컨트랙트 호출(Cross Contract Call)",
-    "permalink": "/ko/tutorials/examples/xcc"
+    "title": "기부",
+    "permalink": "/ko/tutorials/examples/donation"
   }
 }

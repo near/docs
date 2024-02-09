@@ -20,7 +20,7 @@
     "sidebar_label": "간단한 프론트엔드 추가",
     "title": "정답의 해시를 확인하는 간단한 프론트엔트를 십자말 풀이 퍼즐에 추가"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "정답 해시, 단위 테스트, 초기화 메서드",
     "permalink": "/ko/tutorials/crosswords/basics/hashing-and-unit-tests"

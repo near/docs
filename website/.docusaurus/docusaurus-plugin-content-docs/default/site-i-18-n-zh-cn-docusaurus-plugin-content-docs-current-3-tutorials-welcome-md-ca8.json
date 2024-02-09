@@ -18,5 +18,10 @@
     "id": "welcome",
     "title": "Examples & Tutorials",
     "hide_table_of_contents": true
+  },
+  "sidebar": "tutorials",
+  "next": {
+    "title": "Count on NEAR",
+    "permalink": "/zh-CN/tutorials/examples/count-near"
   }
 }

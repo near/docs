@@ -22,7 +22,7 @@
   },
   "sidebar": "integrate",
   "next": {
-    "title": "⭐ Overview",
-    "permalink": "/zh-CN/bos/tutorial/quickstart"
+    "title": "VS Code Extension",
+    "permalink": "/zh-CN/bos/dev/vscode"
   }
 }

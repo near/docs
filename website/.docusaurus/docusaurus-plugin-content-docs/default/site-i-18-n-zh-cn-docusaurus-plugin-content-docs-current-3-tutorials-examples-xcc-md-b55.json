@@ -18,10 +18,10 @@
     "id": "xcc",
     "title": "Cross Contract Call"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
-    "title": "Guest Book",
-    "permalink": "/zh-CN/tutorials/examples/guest-book"
+    "title": "Donation",
+    "permalink": "/zh-CN/tutorials/examples/donation"
   },
   "next": {
     "title": "Coin Flip",

@@ -19,10 +19,10 @@
     "title": "What is a Smart Contract?",
     "sidebar_label": "What is a Smart Contract?"
   },
-  "sidebar": "contracts",
+  "sidebar": "build",
   "previous": {
     "title": "Home",
-    "permalink": "/zh-CN/develop/contracts/welcome"
+    "permalink": "/zh-CN/develop/welcome"
   },
   "next": {
     "title": "⭐ Quickstart",

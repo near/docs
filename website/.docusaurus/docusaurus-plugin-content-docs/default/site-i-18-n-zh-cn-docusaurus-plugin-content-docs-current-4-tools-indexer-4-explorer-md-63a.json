@@ -17,14 +17,5 @@
   "frontMatter": {
     "id": "indexer-for-explorer",
     "title": "Indexer for Explorer (Deprecated)"
-  },
-  "sidebar": "indexers",
-  "previous": {
-    "title": "BigQuery",
-    "permalink": "/zh-CN/bos/queryapi/big-query"
-  },
-  "next": {
-    "title": "Lake Overview",
-    "permalink": "/zh-CN/tools/near-lake"
   }
 }

@@ -18,13 +18,13 @@
     "id": "update-contract-migrate-state",
     "title": "Self Upgrade & State Migration"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Complex Cross Contract Call",
     "permalink": "/tutorials/examples/advanced-xcc"
   },
   "next": {
-    "title": "Minting NFTs",
-    "permalink": "/tutorials/nfts/minting-nfts"
+    "title": "Frontend & Multiple Contracts",
+    "permalink": "/tutorials/examples/frontend-multiple-contracts"
   }
 }

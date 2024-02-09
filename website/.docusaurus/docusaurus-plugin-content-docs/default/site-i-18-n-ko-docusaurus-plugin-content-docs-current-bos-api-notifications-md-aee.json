@@ -18,7 +18,7 @@
     "id": "notifications",
     "title": "Social Notifications"
   },
-  "sidebar": "integrate",
+  "sidebar": "build",
   "previous": {
     "title": "Social Interactions",
     "permalink": "/ko/bos/api/social"

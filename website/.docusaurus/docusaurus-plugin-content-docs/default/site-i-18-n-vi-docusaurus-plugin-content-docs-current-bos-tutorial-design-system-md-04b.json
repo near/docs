@@ -18,7 +18,7 @@
     "id": "ds-components",
     "title": "Design Components"
   },
-  "sidebar": "integrate",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Smart Contract Interaction",
     "permalink": "/vi/bos/tutorial/interaction"

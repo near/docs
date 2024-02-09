@@ -20,7 +20,7 @@
     "sidebar_label": "개요",
     "title": "몇 가지 초보자용 주제들의 핵심"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "간단한 프론트엔드 추가",
     "permalink": "/ko/tutorials/crosswords/basics/simple-frontend"

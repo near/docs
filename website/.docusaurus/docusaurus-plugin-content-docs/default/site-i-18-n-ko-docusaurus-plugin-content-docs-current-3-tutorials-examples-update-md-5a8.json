@@ -18,13 +18,13 @@
     "id": "update-contract-migrate-state",
     "title": "자체 업그레이드 및 상태 마이그레이션"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "복잡한 교차 컨트랙트 호출(Cross Contract Call)",
     "permalink": "/ko/tutorials/examples/advanced-xcc"
   },
   "next": {
-    "title": "NFT 발행",
-    "permalink": "/ko/tutorials/nfts/minting-nfts"
+    "title": "프론트엔드 다중 컨트랙트",
+    "permalink": "/ko/tutorials/examples/frontend-multiple-contracts"
   }
 }

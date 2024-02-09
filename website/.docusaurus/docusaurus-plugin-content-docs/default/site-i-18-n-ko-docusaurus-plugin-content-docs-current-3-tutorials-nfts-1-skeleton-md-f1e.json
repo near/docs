@@ -20,7 +20,7 @@
     "title": "뼈대 및 Rust 아키텍처",
     "sidebar_label": "컨트랙트 아키텍처"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "사전 배포된 컨트랙트",
     "permalink": "/ko/tutorials/nfts/predeployed-contract"

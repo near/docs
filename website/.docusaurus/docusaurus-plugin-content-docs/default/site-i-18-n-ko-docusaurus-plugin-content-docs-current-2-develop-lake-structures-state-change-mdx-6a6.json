@@ -20,13 +20,9 @@
     "sidebar_position": 9,
     "sidebar_label": "StateChange"
   },
-  "sidebar": "indexers",
+  "sidebar": "build",
   "previous": {
     "title": "ExecutionOutcome",
     "permalink": "/ko/develop/lake/structures/execution-outcome"
-  },
-  "next": {
-    "title": "Indexing Solutions",
-    "permalink": "/ko/tools/indexing"
   }
 }

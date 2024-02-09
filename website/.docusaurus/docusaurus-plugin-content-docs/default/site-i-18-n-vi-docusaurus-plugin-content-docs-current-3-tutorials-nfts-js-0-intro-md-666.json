@@ -20,7 +20,7 @@
     "title": "NFT Zero to Hero JavaScript Edition",
     "sidebar_label": "Giới thiệu"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Minecraft NFT",
     "permalink": "/vi/tutorials/nfts/minecraft-nfts"

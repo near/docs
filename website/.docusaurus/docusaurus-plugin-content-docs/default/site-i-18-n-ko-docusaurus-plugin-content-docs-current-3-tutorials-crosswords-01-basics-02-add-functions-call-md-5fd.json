@@ -20,7 +20,7 @@
     "sidebar_label": "기본 코드 추가, 하위 계정 생성 및 메서드 호출",
     "title": "스마트 컨트랙트 변경 및 개발 기초 학습"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Rust 및 컨트랙트 뼈대 설정",
     "permalink": "/ko/tutorials/crosswords/basics/set-up-skeleton"

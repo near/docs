@@ -20,7 +20,7 @@
     "sidebar_label": "Add a puzzle",
     "title": "Adding a new puzzle now that we're using a collection that can contain multiple crossword puzzles"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Actions and sending NEAR",
     "permalink": "/zh-CN/tutorials/crosswords/beginner/actions"

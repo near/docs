@@ -20,10 +20,10 @@
     "title": "대체 가능한 토큰 Zero to Hero",
     "sidebar_label": "소개"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
-    "title": "게으른 발행, 컬렉션 등!",
-    "permalink": "/ko/tutorials/nfts/series"
+    "title": "Lido 예시",
+    "permalink": "/ko/bos/tutorial/lido"
   },
   "next": {
     "title": "사전 배포된 컨트랙트",

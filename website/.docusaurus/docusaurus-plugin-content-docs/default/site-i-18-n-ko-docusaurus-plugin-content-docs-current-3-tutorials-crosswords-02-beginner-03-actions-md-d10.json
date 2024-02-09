@@ -20,7 +20,7 @@
     "sidebar_label": "Action 및 NEAR 전송",
     "title": "전송 Action을 통해 십자말 풀이 퍼즐의 우승자에게 NEAR를 보내는 등, 계정이 할 수 있는 여러 Action이 존재함"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "구조체 및 열거형 사용",
     "permalink": "/ko/tutorials/crosswords/beginner/structs-enums"

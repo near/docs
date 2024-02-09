@@ -20,10 +20,10 @@
     "title": "Fungible Tokens Zero to Hero",
     "sidebar_label": "Introduction"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
-    "title": "Lazy Minting, Collections, and More!",
-    "permalink": "/zh-CN/tutorials/nfts/series"
+    "title": "Lido Example",
+    "permalink": "/zh-CN/bos/tutorial/lido"
   },
   "next": {
     "title": "Pre-deployed Contract",

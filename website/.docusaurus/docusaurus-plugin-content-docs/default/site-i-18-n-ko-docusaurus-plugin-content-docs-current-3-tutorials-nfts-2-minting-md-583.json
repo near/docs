@@ -20,7 +20,7 @@
     "title": "발행",
     "sidebar_label": "발행"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "컨트랙트 아키텍처",
     "permalink": "/ko/tutorials/nfts/skeleton"

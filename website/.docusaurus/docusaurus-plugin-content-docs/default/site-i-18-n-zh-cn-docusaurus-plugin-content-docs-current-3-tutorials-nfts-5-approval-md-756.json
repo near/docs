@@ -20,7 +20,7 @@
     "title": "Approvals",
     "sidebar_label": "Approvals"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Core",
     "permalink": "/zh-CN/tutorials/nfts/core"

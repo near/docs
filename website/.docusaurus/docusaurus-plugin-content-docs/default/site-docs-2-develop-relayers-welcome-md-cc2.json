@@ -19,13 +19,13 @@
     "title": "Building a Meta Transaction Relayer with NextJS",
     "sidebar_label": "Building a Relayer"
   },
-  "sidebar": "integrate",
+  "sidebar": "build",
   "previous": {
-    "title": "Frontend Multiple Contracts",
-    "permalink": "/tutorials/examples/frontend-multiple-contracts"
+    "title": "Integrating Components",
+    "permalink": "/develop/integrate/frontend-components"
   },
   "next": {
-    "title": "Login with NEAR",
+    "title": "Authenticate NEAR Users",
     "permalink": "/develop/integrate/backend-login"
   }
 }

@@ -20,7 +20,7 @@
     "sidebar_label": "Set up Rust and a contract skeleton",
     "title": "Set up Rust, get a NEAR testnet account, NEAR CLI, and get a basic smart contract skeleton ready"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Crossword Game Overview",
     "permalink": "/zh-CN/tutorials/crosswords/basics/overview"

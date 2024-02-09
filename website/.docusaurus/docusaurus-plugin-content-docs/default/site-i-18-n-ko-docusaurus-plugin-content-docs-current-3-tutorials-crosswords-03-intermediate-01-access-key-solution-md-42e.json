@@ -20,7 +20,7 @@
     "sidebar_label": "시드 문구를 정답으로",
     "title": "정답 해시를 액세스 키로 교체"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "개요",
     "permalink": "/ko/tutorials/crosswords/intermediate/overview"

@@ -20,13 +20,9 @@
     "sidebar_position": 9,
     "sidebar_label": "StateChange"
   },
-  "sidebar": "indexers",
+  "sidebar": "build",
   "previous": {
     "title": "ExecutionOutcome",
     "permalink": "/vi/develop/lake/structures/execution-outcome"
-  },
-  "next": {
-    "title": "Indexing Solutions",
-    "permalink": "/vi/tools/indexing"
   }
 }

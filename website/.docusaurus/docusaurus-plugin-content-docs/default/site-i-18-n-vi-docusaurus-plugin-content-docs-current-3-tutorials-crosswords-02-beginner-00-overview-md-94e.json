@@ -20,7 +20,7 @@
     "sidebar_label": "Tổng quan",
     "title": "Highlights of some beginner topics covered."
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Add simple frontend",
     "permalink": "/vi/tutorials/crosswords/basics/simple-frontend"

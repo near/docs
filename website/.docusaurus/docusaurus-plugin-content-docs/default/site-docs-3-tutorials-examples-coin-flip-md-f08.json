@@ -18,7 +18,7 @@
     "id": "coin-flip",
     "title": "Coin Flip"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Cross Contract Call",
     "permalink": "/tutorials/examples/xcc"

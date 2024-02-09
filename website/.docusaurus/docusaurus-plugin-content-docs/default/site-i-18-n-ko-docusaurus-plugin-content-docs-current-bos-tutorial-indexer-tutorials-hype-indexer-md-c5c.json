@@ -19,7 +19,7 @@
     "title": "Hype 인덱서",
     "sidebar_label": "Hype 인덱서"
   },
-  "sidebar": "indexers",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Posts 인덱서",
     "permalink": "/ko/bos/tutorial/indexer-tutorials/posts-indexer"

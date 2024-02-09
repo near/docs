@@ -18,7 +18,7 @@
     "id": "advanced-xcc",
     "title": "Complex Cross Contract Call"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Factory",
     "permalink": "/vi/tutorials/examples/factory"

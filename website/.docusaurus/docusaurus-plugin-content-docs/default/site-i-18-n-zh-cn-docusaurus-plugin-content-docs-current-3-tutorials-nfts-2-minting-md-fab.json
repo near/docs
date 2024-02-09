@@ -20,7 +20,7 @@
     "title": "Minting",
     "sidebar_label": "Minting"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Contract Architecture",
     "permalink": "/zh-CN/tutorials/nfts/skeleton"

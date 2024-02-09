@@ -18,13 +18,13 @@
     "id": "donation",
     "title": "기부"
   },
-  "sidebar": "integrate",
+  "sidebar": "tutorials",
   "previous": {
-    "title": "NEAR 숫자 세기",
-    "permalink": "/ko/tutorials/examples/count-near"
+    "title": "방명록",
+    "permalink": "/ko/tutorials/examples/guest-book"
   },
   "next": {
-    "title": "프론트엔드 다중 컨트랙트",
-    "permalink": "/ko/tutorials/examples/frontend-multiple-contracts"
+    "title": "교차 컨트랙트 호출(Cross Contract Call)",
+    "permalink": "/ko/tutorials/examples/xcc"
   }
 }

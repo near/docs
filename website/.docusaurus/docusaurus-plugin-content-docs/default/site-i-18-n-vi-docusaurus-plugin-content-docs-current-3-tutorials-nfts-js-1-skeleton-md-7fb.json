@@ -20,7 +20,7 @@
     "title": "Skeleton and JavaScript Architecture",
     "sidebar_label": "Kiến trúc của Contract"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Contract đã được deploy sẵn",
     "permalink": "/vi/tutorials/nfts/js/predeployed-contract"

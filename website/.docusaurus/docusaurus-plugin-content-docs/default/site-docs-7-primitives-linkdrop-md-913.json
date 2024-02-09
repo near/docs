@@ -19,7 +19,7 @@
     "title": "Linkdrops",
     "hide_table_of_contents": false
   },
-  "sidebar": "primitives",
+  "sidebar": "build",
   "previous": {
     "title": "Non-Fungible Tokens (NFT)",
     "permalink": "/zh-CN/primitives/nft"

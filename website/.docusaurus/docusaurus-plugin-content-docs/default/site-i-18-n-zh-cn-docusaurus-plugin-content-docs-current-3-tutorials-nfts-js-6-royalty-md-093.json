@@ -20,7 +20,7 @@
     "title": "Royalty",
     "sidebar_label": "Royalty"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Approvals",
     "permalink": "/zh-CN/tutorials/nfts/js/approvals"

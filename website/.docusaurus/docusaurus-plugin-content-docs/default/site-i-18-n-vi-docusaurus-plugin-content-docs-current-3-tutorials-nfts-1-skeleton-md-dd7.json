@@ -20,7 +20,7 @@
     "title": "Bộ khung và Kiến trúc ngôn ngữ Rust\"",
     "sidebar_label": "Kiến trúc của Contract"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Contract đã được deploy sẵn",
     "permalink": "/vi/tutorials/nfts/predeployed-contract"

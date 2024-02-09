@@ -17,7 +17,7 @@
   "frontMatter": {
     "sidebar_label": "Migrating to NEAR Lake framework"
   },
-  "sidebar": "indexers",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Getting started",
     "permalink": "/tutorials/indexer/near-lake-state-changes-indexer"

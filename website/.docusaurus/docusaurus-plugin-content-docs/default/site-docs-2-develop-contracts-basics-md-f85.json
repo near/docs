@@ -18,9 +18,9 @@
     "id": "basics",
     "title": "Modules, Types & Structs"
   },
-  "sidebar": "contracts",
+  "sidebar": "build",
   "previous": {
-    "title": "⭐ Quickstart",
+    "title": "Quickstart ✨",
     "permalink": "/develop/contracts/quickstart"
   },
   "next": {

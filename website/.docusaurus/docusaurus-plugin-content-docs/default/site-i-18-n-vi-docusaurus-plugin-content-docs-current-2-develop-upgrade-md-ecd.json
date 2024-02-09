@@ -18,7 +18,7 @@
     "id": "upgrade",
     "title": "Updating Contracts"
   },
-  "sidebar": "contracts",
+  "sidebar": "build",
   "previous": {
     "title": "Deploying and Using",
     "permalink": "/vi/develop/deploy"

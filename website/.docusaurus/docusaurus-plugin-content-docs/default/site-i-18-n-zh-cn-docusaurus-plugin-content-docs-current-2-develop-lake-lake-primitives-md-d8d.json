@@ -19,7 +19,7 @@
     "title": "NEAR Lake Primitive Types",
     "sidebar_label": "Lake Primitive Types"
   },
-  "sidebar": "indexers",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Migrating to NEAR Lake framework",
     "permalink": "/zh-CN/tutorials/indexer/migrating-to-near-lake-framework"

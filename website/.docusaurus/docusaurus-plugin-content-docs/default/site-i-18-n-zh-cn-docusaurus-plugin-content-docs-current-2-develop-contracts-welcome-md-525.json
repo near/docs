@@ -19,10 +19,5 @@
     "title": "NEAR Smart Contracts",
     "sidebar_label": "Home",
     "hide_table_of_contents": true
-  },
-  "sidebar": "contracts",
-  "next": {
-    "title": "What is a Smart Contract?",
-    "permalink": "/zh-CN/develop/contracts/whatisacontract"
   }
 }

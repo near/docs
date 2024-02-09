@@ -19,7 +19,7 @@
     "title": "Indexing best practices",
     "sidebar_label": "Best Practices"
   },
-  "sidebar": "indexers",
+  "sidebar": "build",
   "previous": {
     "title": "Getting Started",
     "permalink": "/ko/bos/community/indexers"

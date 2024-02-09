@@ -20,7 +20,7 @@
     "sidebar_label": "Hash the solution, unit tests, and an init method",
     "title": "Introduction to basic hashing and adding unit tests"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Add basic code, create a subaccount, and call methods",
     "permalink": "/tutorials/crosswords/basics/add-functions-call"

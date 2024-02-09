@@ -19,9 +19,9 @@
     "title": "Indexing Solutions on NEAR",
     "sidebar_label": "Indexing Solutions"
   },
-  "sidebar": "indexers",
+  "sidebar": "tools",
   "previous": {
-    "title": "StateChange",
-    "permalink": "/develop/lake/structures/state-change"
+    "title": "Explorers",
+    "permalink": "/tools/explorer"
   }
 }

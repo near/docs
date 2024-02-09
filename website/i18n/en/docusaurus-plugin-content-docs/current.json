@@ -306,5 +306,141 @@
   "sidebar.contracts.link.Oracles ↗": {
     "message": "Oracles ↗",
     "description": "The label for link Oracles ↗ in sidebar contracts, linking to /primitives/oracles"
+  },
+  "sidebar.build.category.Building Smart Contracts": {
+    "message": "Building Smart Contracts",
+    "description": "The label for category Building Smart Contracts in sidebar build"
+  },
+  "sidebar.build.category.Anatomy of a Contract": {
+    "message": "Anatomy of a Contract",
+    "description": "The label for category Anatomy of a Contract in sidebar build"
+  },
+  "sidebar.build.category.Test the Contract": {
+    "message": "Test the Contract",
+    "description": "The label for category Test the Contract in sidebar build"
+  },
+  "sidebar.build.category.Deploy, Update & Lock": {
+    "message": "Deploy, Update & Lock",
+    "description": "The label for category Deploy, Update & Lock in sidebar build"
+  },
+  "sidebar.build.category.Security": {
+    "message": "Security",
+    "description": "The label for category Security in sidebar build"
+  },
+  "sidebar.build.category.Building Web3 Components": {
+    "message": "Building Web3 Components",
+    "description": "The label for category Building Web3 Components in sidebar build"
+  },
+  "sidebar.build.category.Anatomy of a Component": {
+    "message": "Anatomy of a Component",
+    "description": "The label for category Anatomy of a Component in sidebar build"
+  },
+  "sidebar.build.category.Building Web3 Applications": {
+    "message": "Building Web3 Applications",
+    "description": "The label for category Building Web3 Applications in sidebar build"
+  },
+  "sidebar.build.category.Backend": {
+    "message": "Backend",
+    "description": "The label for category Backend in sidebar build"
+  },
+  "sidebar.build.category.Primitives & Standards": {
+    "message": "Primitives & Standards",
+    "description": "The label for category Primitives & Standards in sidebar build"
+  },
+  "sidebar.build.category.NEAR Data Infrastructure": {
+    "message": "NEAR Data Infrastructure",
+    "description": "The label for category NEAR Data Infrastructure in sidebar build"
+  },
+  "sidebar.build.category.QueryAPI": {
+    "message": "QueryAPI",
+    "description": "The label for category QueryAPI in sidebar build"
+  },
+  "sidebar.build.category.Lake Framework": {
+    "message": "Lake Framework",
+    "description": "The label for category Lake Framework in sidebar build"
+  },
+  "sidebar.build.category.Building Indexers": {
+    "message": "Building Indexers",
+    "description": "The label for category Building Indexers in sidebar build"
+  },
+  "sidebar.build.category.Running NEAR Lake": {
+    "message": "Running NEAR Lake",
+    "description": "The label for category Running NEAR Lake in sidebar build"
+  },
+  "sidebar.build.category.Lake Data Structures": {
+    "message": "Lake Data Structures",
+    "description": "The label for category Lake Data Structures in sidebar build"
+  },
+  "sidebar.build.link.Limitations": {
+    "message": "Limitations",
+    "description": "The label for link Limitations in sidebar build, linking to /bos/queryapi/intro#known-limitations"
+  },
+  "sidebar.build.link.NEAR Lake Primitives": {
+    "message": "NEAR Lake Primitives",
+    "description": "The label for link NEAR Lake Primitives in sidebar build, linking to https://near.github.io/near-lake-framework-js/"
+  },
+  "sidebar.tutorials.category.Frontend & Smart Contract": {
+    "message": "Frontend & Smart Contract",
+    "description": "The label for category Frontend & Smart Contract in sidebar tutorials"
+  },
+  "sidebar.tutorials.category.Advanced Contracts": {
+    "message": "Advanced Contracts",
+    "description": "The label for category Advanced Contracts in sidebar tutorials"
+  },
+  "sidebar.tutorials.category.Components": {
+    "message": "Components",
+    "description": "The label for category Components in sidebar tutorials"
+  },
+  "sidebar.tutorials.category.Fungible Tokens 101 (FT)": {
+    "message": "Fungible Tokens 101 (FT)",
+    "description": "The label for category Fungible Tokens 101 (FT) in sidebar tutorials"
+  },
+  "sidebar.tutorials.category.Non-Fungible Tokens (NFT)": {
+    "message": "Non-Fungible Tokens (NFT)",
+    "description": "The label for category Non-Fungible Tokens (NFT) in sidebar tutorials"
+  },
+  "sidebar.tutorials.category.🌐 Contract: Zero to Hero ": {
+    "message": "🌐 Contract: Zero to Hero ",
+    "description": "The label for category 🌐 Contract: Zero to Hero  in sidebar tutorials"
+  },
+  "sidebar.tutorials.category.🦀 Contract: Zero to Hero": {
+    "message": "🦀 Contract: Zero to Hero",
+    "description": "The label for category 🦀 Contract: Zero to Hero in sidebar tutorials"
+  },
+  "sidebar.tutorials.category.Build a Crossword Game": {
+    "message": "Build a Crossword Game",
+    "description": "The label for category Build a Crossword Game in sidebar tutorials"
+  },
+  "sidebar.tutorials.category.Basics": {
+    "message": "Basics",
+    "description": "The label for category Basics in sidebar tutorials"
+  },
+  "sidebar.tutorials.category.Beginner": {
+    "message": "Beginner",
+    "description": "The label for category Beginner in sidebar tutorials"
+  },
+  "sidebar.tutorials.category.Intermediate": {
+    "message": "Intermediate",
+    "description": "The label for category Intermediate in sidebar tutorials"
+  },
+  "sidebar.tutorials.category.Data Infrastructure": {
+    "message": "Data Infrastructure",
+    "description": "The label for category Data Infrastructure in sidebar tutorials"
+  },
+  "sidebar.tutorials.category.Building Indexers": {
+    "message": "Building Indexers",
+    "description": "The label for category Building Indexers in sidebar tutorials"
+  },
+  "sidebar.tutorials.category.Running NEAR Lake": {
+    "message": "Running NEAR Lake",
+    "description": "The label for category Running NEAR Lake in sidebar tutorials"
+  },
+  "sidebar.tutorials.link.Building a Frontend": {
+    "message": "Building a Frontend",
+    "description": "The label for link Building a Frontend in sidebar tutorials, linking to https://github.com/near-examples/nft-tutorial-frontend"
+  },
+  "sidebar.tutorials.link.NEAR Lake Primitives": {
+    "message": "NEAR Lake Primitives",
+    "description": "The label for link NEAR Lake Primitives in sidebar tutorials, linking to https://near.github.io/near-lake-framework-js/"
   }
 }

@@ -18,7 +18,7 @@
     "id": "ds-components",
     "title": "디자인 구성 요소"
   },
-  "sidebar": "integrate",
+  "sidebar": "tutorials",
   "previous": {
     "title": "스마트 컨트랙트 상호작용",
     "permalink": "/ko/bos/tutorial/interaction"

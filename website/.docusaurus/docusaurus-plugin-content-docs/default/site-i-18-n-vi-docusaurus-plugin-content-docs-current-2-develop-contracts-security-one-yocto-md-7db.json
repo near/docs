@@ -18,7 +18,7 @@
     "id": "one-yocto",
     "title": "Ensure it is the User (1yⓃ)"
   },
-  "sidebar": "contracts",
+  "sidebar": "build",
   "previous": {
     "title": "Cross-Contract Calls",
     "permalink": "/vi/develop/contracts/security/callbacks"

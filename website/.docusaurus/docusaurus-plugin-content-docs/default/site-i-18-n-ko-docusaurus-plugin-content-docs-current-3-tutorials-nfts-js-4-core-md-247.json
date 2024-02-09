@@ -20,7 +20,7 @@
     "title": "핵심",
     "sidebar_label": "핵심"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "열거(Enumeration)",
     "permalink": "/ko/tutorials/nfts/js/enumeration"

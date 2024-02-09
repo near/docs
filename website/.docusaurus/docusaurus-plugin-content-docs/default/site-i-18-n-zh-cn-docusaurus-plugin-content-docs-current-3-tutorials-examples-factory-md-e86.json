@@ -18,7 +18,7 @@
     "id": "factory",
     "title": "Factory"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Coin Flip",
     "permalink": "/zh-CN/tutorials/examples/coin-flip"

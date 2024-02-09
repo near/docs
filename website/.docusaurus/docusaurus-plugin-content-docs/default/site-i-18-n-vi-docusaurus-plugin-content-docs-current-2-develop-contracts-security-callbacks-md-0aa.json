@@ -18,7 +18,7 @@
     "id": "callbacks",
     "title": "Cross-Contract Calls"
   },
-  "sidebar": "contracts",
+  "sidebar": "build",
   "previous": {
     "title": "Million Small Deposits",
     "permalink": "/vi/develop/contracts/security/storage"

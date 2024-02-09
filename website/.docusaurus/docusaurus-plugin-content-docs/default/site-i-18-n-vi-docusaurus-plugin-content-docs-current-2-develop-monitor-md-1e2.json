@@ -19,10 +19,5 @@
     "title": "Monitor the Network",
     "sidebar_label": "Home",
     "hide_table_of_contents": true
-  },
-  "sidebar": "indexers",
-  "next": {
-    "title": "Introduction",
-    "permalink": "/vi/bos/queryapi/intro"
   }
 }

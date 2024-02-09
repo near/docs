@@ -20,9 +20,5 @@
     "sidebar_label": "Home",
     "hide_table_of_contents": true
   },
-  "sidebar": "primitives",
-  "next": {
-    "title": "Fungible Tokens (FT)",
-    "permalink": "/zh-CN/primitives/ft"
-  }
+  "sidebar": "primitives"
 }

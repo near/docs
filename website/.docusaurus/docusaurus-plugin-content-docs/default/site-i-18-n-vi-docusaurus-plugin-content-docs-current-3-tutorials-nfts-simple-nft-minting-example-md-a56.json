@@ -19,7 +19,7 @@
     "title": "Mint NFT Front-end",
     "sidebar_label": "Mint Front-end"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Mint NFT",
     "permalink": "/vi/tutorials/nfts/minting-nfts"

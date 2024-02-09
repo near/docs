@@ -18,7 +18,7 @@
     "id": "anatomy",
     "title": "The Contract Class"
   },
-  "sidebar": "contracts",
+  "sidebar": "build",
   "previous": {
     "title": "Modules, Types & Structs",
     "permalink": "/vi/develop/contracts/basics"

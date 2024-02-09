@@ -18,7 +18,7 @@
     "id": "sybil",
     "title": "Sybil Attacks"
   },
-  "sidebar": "contracts",
+  "sidebar": "build",
   "previous": {
     "title": "Ensure it is the User (1yⓃ)",
     "permalink": "/vi/develop/contracts/security/one-yocto"

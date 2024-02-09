@@ -19,7 +19,7 @@
     "title": "Hype Indexer",
     "sidebar_label": "Hype Indexer"
   },
-  "sidebar": "indexers",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Posts Indexer",
     "permalink": "/vi/bos/tutorial/indexer-tutorials/posts-indexer"

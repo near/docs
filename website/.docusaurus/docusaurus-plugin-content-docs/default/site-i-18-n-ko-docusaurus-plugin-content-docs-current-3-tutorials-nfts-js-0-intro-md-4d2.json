@@ -20,7 +20,7 @@
     "title": "NFT Zero to Hero JavaScript 에디션",
     "sidebar_label": "소개"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Minecraft NFTs",
     "permalink": "/ko/tutorials/nfts/minecraft-nfts"

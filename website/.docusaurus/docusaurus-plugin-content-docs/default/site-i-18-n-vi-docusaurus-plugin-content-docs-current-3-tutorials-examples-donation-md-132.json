@@ -18,13 +18,13 @@
     "id": "donation",
     "title": "Donation"
   },
-  "sidebar": "integrate",
+  "sidebar": "tutorials",
   "previous": {
-    "title": "Count on NEAR",
-    "permalink": "/vi/tutorials/examples/count-near"
+    "title": "Guest Book",
+    "permalink": "/vi/tutorials/examples/guest-book"
   },
   "next": {
-    "title": "Frontend Multiple Contracts",
-    "permalink": "/vi/tutorials/examples/frontend-multiple-contracts"
+    "title": "Cross Contract Call",
+    "permalink": "/vi/tutorials/examples/xcc"
   }
 }

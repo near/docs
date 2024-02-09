@@ -18,7 +18,7 @@
     "id": "ethers-js-best-practices",
     "title": "Best Practices for Ethereum developers on NEAR"
   },
-  "sidebar": "integrate",
+  "sidebar": "tutorials",
   "previous": {
     "title": "NEAR for Ethereum developers",
     "permalink": "/ko/bos/tutorial/ethers-js"

@@ -17,10 +17,10 @@
   "frontMatter": {
     "sidebar_label": "Getting started"
   },
-  "sidebar": "indexers",
+  "sidebar": "tutorials",
   "previous": {
-    "title": "Lake Overview",
-    "permalink": "/zh-CN/tools/near-lake"
+    "title": "Social Feed Indexer",
+    "permalink": "/zh-CN/bos/tutorial/indexer-tutorials/feed-indexer"
   },
   "next": {
     "title": "Migrating to NEAR Lake framework",

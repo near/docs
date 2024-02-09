@@ -18,13 +18,13 @@
     "id": "bounty",
     "title": "Bug Bounty Program"
   },
-  "sidebar": "contracts",
+  "sidebar": "build",
   "previous": {
     "title": "Random Numbers",
     "permalink": "/zh-CN/develop/contracts/security/random"
   },
   "next": {
-    "title": "Guest Book",
-    "permalink": "/zh-CN/tutorials/examples/guest-book"
+    "title": "⭐ Overview",
+    "permalink": "/zh-CN/bos/tutorial/quickstart"
   }
 }

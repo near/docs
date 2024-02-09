@@ -19,10 +19,10 @@
     "title": "Minting NFTs",
     "sidebar_label": "Minting NFTs"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
-    "title": "Self Upgrade & State Migration",
-    "permalink": "/tutorials/examples/update-contract-migrate-state"
+    "title": "Adding FTs to a Marketplace",
+    "permalink": "/tutorials/fts/marketplace"
   },
   "next": {
     "title": "Minting Front-end",

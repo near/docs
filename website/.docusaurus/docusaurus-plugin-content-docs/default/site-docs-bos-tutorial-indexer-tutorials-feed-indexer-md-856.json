@@ -19,13 +19,13 @@
     "title": "Social Feed Indexer",
     "sidebar_label": "Social Feed Indexer"
   },
-  "sidebar": "indexers",
+  "sidebar": "tutorials",
   "previous": {
     "title": "NFTs Indexer",
     "permalink": "/bos/tutorial/indexer-tutorials/nft-indexer"
   },
   "next": {
-    "title": "BigQuery",
-    "permalink": "/bos/queryapi/big-query"
+    "title": "Getting started",
+    "permalink": "/tutorials/indexer/near-lake-state-changes-indexer"
   }
 }

@@ -19,7 +19,7 @@
     "sidebar_position": 4,
     "sidebar_label": "Shard"
   },
-  "sidebar": "indexers",
+  "sidebar": "build",
   "previous": {
     "title": "Chunk",
     "permalink": "/develop/lake/structures/chunk"

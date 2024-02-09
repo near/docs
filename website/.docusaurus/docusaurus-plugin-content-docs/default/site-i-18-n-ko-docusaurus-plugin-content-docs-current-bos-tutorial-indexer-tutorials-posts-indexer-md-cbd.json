@@ -19,10 +19,10 @@
     "title": "Posts 인덱서",
     "sidebar_label": "Posts 인덱서"
   },
-  "sidebar": "indexers",
+  "sidebar": "tutorials",
   "previous": {
-    "title": "Migrate from Lake framework",
-    "permalink": "/ko/bos/queryapi/migrate-from-near-lake"
+    "title": "Base64 매개변수, 마무리",
+    "permalink": "/ko/tutorials/crosswords/intermediate/base64vecu8"
   },
   "next": {
     "title": "Hype 인덱서",

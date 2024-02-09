@@ -21,10 +21,10 @@
     "sidebar_label": "Crossword Game Overview",
     "title": "Basics overview laying out what will be accomplished in this first section."
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
-    "title": "Adding FTs to a Marketplace",
-    "permalink": "/zh-CN/tutorials/fts/marketplace"
+    "title": "Lazy Minting, Collections, and More!",
+    "permalink": "/zh-CN/tutorials/nfts/series"
   },
   "next": {
     "title": "Set up Rust and a contract skeleton",

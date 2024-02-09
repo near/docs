@@ -18,7 +18,7 @@
     "id": "social",
     "title": "Social Interactions"
   },
-  "sidebar": "integrate",
+  "sidebar": "build",
   "previous": {
     "title": "Interacting with Near",
     "permalink": "/zh-CN/bos/api/near"

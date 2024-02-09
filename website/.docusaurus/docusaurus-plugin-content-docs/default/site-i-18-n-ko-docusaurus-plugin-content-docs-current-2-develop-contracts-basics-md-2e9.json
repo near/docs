@@ -18,7 +18,7 @@
     "id": "basics",
     "title": "모듈, 자료형 및 구조"
   },
-  "sidebar": "contracts",
+  "sidebar": "build",
   "previous": {
     "title": "⭐ Quickstart",
     "permalink": "/ko/develop/contracts/quickstart"

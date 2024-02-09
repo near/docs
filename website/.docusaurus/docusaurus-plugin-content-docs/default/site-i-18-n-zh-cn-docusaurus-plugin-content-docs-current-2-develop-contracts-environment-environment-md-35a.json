@@ -18,7 +18,7 @@
     "id": "environment",
     "title": "Environment"
   },
-  "sidebar": "contracts",
+  "sidebar": "build",
   "previous": {
     "title": "The Contract Class",
     "permalink": "/zh-CN/develop/contracts/anatomy"

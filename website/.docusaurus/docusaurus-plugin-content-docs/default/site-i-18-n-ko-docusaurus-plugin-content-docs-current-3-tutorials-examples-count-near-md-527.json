@@ -18,13 +18,13 @@
     "id": "count-near",
     "title": "NEAR 숫자 세기"
   },
-  "sidebar": "integrate",
+  "sidebar": "tutorials",
   "previous": {
-    "title": "Integrating Components",
-    "permalink": "/ko/develop/integrate/frontend-components"
+    "title": "예제 & 튜토리얼",
+    "permalink": "/ko/tutorials/welcome"
   },
   "next": {
-    "title": "기부",
-    "permalink": "/ko/tutorials/examples/donation"
+    "title": "방명록",
+    "permalink": "/ko/tutorials/examples/guest-book"
   }
 }

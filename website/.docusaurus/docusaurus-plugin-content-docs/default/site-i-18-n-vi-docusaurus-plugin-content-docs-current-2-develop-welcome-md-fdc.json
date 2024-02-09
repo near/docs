@@ -19,5 +19,10 @@
     "title": "Developer Documentation",
     "sidebar_label": "Home",
     "hide_table_of_contents": true
+  },
+  "sidebar": "build",
+  "next": {
+    "title": "What is a Smart Contract?",
+    "permalink": "/vi/develop/contracts/whatisacontract"
   }
 }

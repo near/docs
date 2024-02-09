@@ -18,13 +18,13 @@
     "id": "lido",
     "title": "Lido Example"
   },
-  "sidebar": "integrate",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Best Practices for Ethereum developers on NEAR",
     "permalink": "/zh-CN/bos/tutorial/ethers-js-best-practices"
   },
   "next": {
-    "title": "⭐ Quickstart a WebApp",
-    "permalink": "/zh-CN/develop/integrate/quickstart-frontend"
+    "title": "Introduction",
+    "permalink": "/zh-CN/tutorials/fts/introduction"
   }
 }

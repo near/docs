@@ -19,7 +19,7 @@
     "sidebar_position": 2,
     "sidebar_label": "Block"
   },
-  "sidebar": "indexers",
+  "sidebar": "build",
   "previous": {
     "title": "Table of contents",
     "permalink": "/develop/lake/structures/toc"

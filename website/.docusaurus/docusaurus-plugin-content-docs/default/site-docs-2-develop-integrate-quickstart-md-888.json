@@ -19,10 +19,10 @@
     "title": "Hello WebApp",
     "sidebar_label": "⭐ Quickstart a WebApp"
   },
-  "sidebar": "integrate",
+  "sidebar": "build",
   "previous": {
-    "title": "Lido Example",
-    "permalink": "/bos/tutorial/lido"
+    "title": "What are Web3 Apps?",
+    "permalink": "/develop/web3-apps/whatareweb3apps"
   },
   "next": {
     "title": "Integrating Contracts",

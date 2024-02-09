@@ -20,7 +20,7 @@
     "title": "계정 등록",
     "sidebar_label": "계정 등록"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "순환 공급",
     "permalink": "/ko/tutorials/fts/circulating-supply"

@@ -20,7 +20,7 @@
     "sidebar_label": "Seed phrase logic",
     "title": "Implementing the seed phrase logic from the necessary libraries"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Solution as seed phrase",
     "permalink": "/zh-CN/tutorials/crosswords/intermediate/access-key-solution"

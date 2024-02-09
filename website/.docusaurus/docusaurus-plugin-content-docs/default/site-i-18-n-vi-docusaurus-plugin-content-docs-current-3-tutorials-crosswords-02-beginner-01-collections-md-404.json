@@ -20,7 +20,7 @@
     "sidebar_label": "Store multiple puzzles",
     "title": "Store multiple crossword puzzles using a specialized collection in NEAR called a LookupMap"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Tổng quan",
     "permalink": "/vi/tutorials/crosswords/beginner/overview"

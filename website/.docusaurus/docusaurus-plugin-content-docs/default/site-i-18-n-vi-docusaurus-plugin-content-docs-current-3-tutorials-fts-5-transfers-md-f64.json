@@ -20,7 +20,7 @@
     "title": "Transferring Fungible Tokens",
     "sidebar_label": "Transferring FTs"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Registering Accounts",
     "permalink": "/vi/tutorials/fts/registering-accounts"

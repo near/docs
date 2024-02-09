@@ -18,9 +18,9 @@
     "id": "state",
     "title": "Basics"
   },
-  "sidebar": "integrate",
+  "sidebar": "build",
   "previous": {
-    "title": "Dev Environments",
+    "title": "Choose your Dev Environment",
     "permalink": "/bos/dev/intro"
   },
   "next": {

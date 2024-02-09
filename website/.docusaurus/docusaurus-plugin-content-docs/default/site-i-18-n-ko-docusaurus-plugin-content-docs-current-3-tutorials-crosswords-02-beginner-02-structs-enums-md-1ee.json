@@ -20,7 +20,7 @@
     "sidebar_label": "구조체 및 열거형 사용",
     "title": "NEAR 내 Rust 스마트 컨트랙트를 작성할 때 구조체와 열거형(Enums)에 대해 생각하는 방법"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "여러 퍼즐 저장",
     "permalink": "/ko/tutorials/crosswords/beginner/collections"

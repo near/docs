@@ -17,7 +17,7 @@
   "frontMatter": {
     "sidebar_label": "Python용 NFT 인덱서"
   },
-  "sidebar": "indexers",
+  "sidebar": "tutorials",
   "previous": {
     "title": "NFT Indexer",
     "permalink": "/ko/tutorials/indexer/nft-indexer"

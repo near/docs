@@ -18,7 +18,7 @@
     "id": "actions",
     "title": "Transfers & Actions"
   },
-  "sidebar": "contracts",
+  "sidebar": "build",
   "previous": {
     "title": "State & Data Structures",
     "permalink": "/vi/develop/contracts/storage"

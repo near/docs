@@ -18,7 +18,7 @@
     "id": "push-notifications",
     "title": "Push Notifications"
   },
-  "sidebar": "integrate",
+  "sidebar": "tutorials",
   "previous": {
     "title": "IFrame 사용하기",
     "permalink": "/ko/bos/tutorial/using-iframes"

@@ -20,13 +20,13 @@
     "title": "Integrating FT Payments into an NFT Marketplace",
     "sidebar_label": "Adding FTs to a Marketplace"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Transferring FTs",
     "permalink": "/zh-CN/tutorials/fts/transfers"
   },
   "next": {
-    "title": "Crossword Game Overview",
-    "permalink": "/zh-CN/tutorials/crosswords/basics/overview"
+    "title": "Minting NFTs",
+    "permalink": "/zh-CN/tutorials/nfts/minting-nfts"
   }
 }

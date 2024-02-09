@@ -19,10 +19,10 @@
     "sidebar_label": "Lake Overview",
     "title": "NEAR Lake Indexer"
   },
-  "sidebar": "indexers",
+  "sidebar": "build",
   "previous": {
-    "title": "Indexer for Explorer (Deprecated)",
-    "permalink": "/tools/indexer-for-explorer"
+    "title": "Migrate from Lake framework",
+    "permalink": "/bos/queryapi/migrate-from-near-lake"
   },
   "next": {
     "title": "Getting started",

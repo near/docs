@@ -20,7 +20,7 @@
     "sidebar_label": "Linkdrop 컨트랙트",
     "title": "사용 중인 Linkdrop 컨트랙트 소개"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "시드 문구 로직",
     "permalink": "/ko/tutorials/crosswords/intermediate/use-seed-phrase"

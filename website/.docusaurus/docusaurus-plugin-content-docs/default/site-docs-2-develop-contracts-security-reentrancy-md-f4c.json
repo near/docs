@@ -18,7 +18,7 @@
     "id": "reentrancy",
     "title": "Reentrancy Attacks"
   },
-  "sidebar": "contracts",
+  "sidebar": "build",
   "previous": {
     "title": "Front Running",
     "permalink": "/develop/contracts/security/frontrunning"

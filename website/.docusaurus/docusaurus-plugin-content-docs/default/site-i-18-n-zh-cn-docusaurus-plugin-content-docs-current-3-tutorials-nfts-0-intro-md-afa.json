@@ -20,7 +20,7 @@
     "title": "NFT Zero to Hero",
     "sidebar_label": "Introduction"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Marketplace",
     "permalink": "/zh-CN/tutorials/nfts/js/marketplace"

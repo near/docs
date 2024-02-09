@@ -20,7 +20,7 @@
     "title": "컨트랙트 업그레이드",
     "sidebar_label": "컨트랙트 업그레이드"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "발행",
     "permalink": "/ko/tutorials/nfts/js/minting"

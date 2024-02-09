@@ -19,9 +19,9 @@
     "title": "NEAR 내 인덱싱 솔루션",
     "sidebar_label": "Indexing Solutions"
   },
-  "sidebar": "indexers",
+  "sidebar": "tools",
   "previous": {
-    "title": "StateChange",
-    "permalink": "/ko/develop/lake/structures/state-change"
+    "title": "Explorers",
+    "permalink": "/ko/tools/explorer"
   }
 }

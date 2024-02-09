@@ -19,7 +19,7 @@
     "title": "WebSocket-enabled Components with QueryAPI",
     "sidebar_label": "WebSockets & QueryAPI"
   },
-  "sidebar": "integrate",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Push Notifications",
     "permalink": "/ko/bos/tutorial/push-notifications"

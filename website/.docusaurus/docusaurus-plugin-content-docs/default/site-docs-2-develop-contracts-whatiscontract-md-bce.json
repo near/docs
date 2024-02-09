@@ -12,20 +12,20 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "gagdiez",
-  "lastUpdatedAt": 1706736562,
-  "formattedLastUpdatedAt": "Jan 31, 2024",
+  "lastUpdatedAt": 1707477797,
+  "formattedLastUpdatedAt": "Feb 9, 2024",
   "frontMatter": {
     "id": "whatisacontract",
     "title": "What is a Smart Contract?",
-    "sidebar_label": "What is a Smart Contract?"
+    "sidebar_label": "What is a Contract?"
   },
-  "sidebar": "contracts",
+  "sidebar": "build",
   "previous": {
     "title": "Home",
-    "permalink": "/develop/contracts/welcome"
+    "permalink": "/develop/welcome"
   },
   "next": {
-    "title": "⭐ Quickstart",
+    "title": "Quickstart ✨",
     "permalink": "/develop/contracts/quickstart"
   }
 }

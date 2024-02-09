@@ -20,7 +20,7 @@
     "title": "Core",
     "sidebar_label": "Core"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Enumeration",
     "permalink": "/tutorials/nfts/enumeration"

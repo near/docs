@@ -20,7 +20,7 @@
     "sidebar_label": "Cross-contract calls, etc.",
     "title": "Adding cross-contract calls, access key shuffling, etc."
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Linkdrop contract",
     "permalink": "/zh-CN/tutorials/crosswords/intermediate/linkdrop"

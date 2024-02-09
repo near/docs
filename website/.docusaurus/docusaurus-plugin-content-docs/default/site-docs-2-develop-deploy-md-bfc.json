@@ -19,7 +19,7 @@
     "title": "NEAR CLI - Basics",
     "sidebar_label": "Deploying and Using"
   },
-  "sidebar": "contracts",
+  "sidebar": "build",
   "previous": {
     "title": "Local Development",
     "permalink": "/develop/testing/kurtosis-localnet"

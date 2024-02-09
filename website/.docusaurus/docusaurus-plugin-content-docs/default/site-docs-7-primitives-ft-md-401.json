@@ -19,10 +19,10 @@
     "title": "Fungible Tokens (FT)",
     "hide_table_of_contents": false
   },
-  "sidebar": "primitives",
+  "sidebar": "build",
   "previous": {
-    "title": "Home",
-    "permalink": "/zh-CN/primitives/welcome"
+    "title": "What are Primitives?",
+    "permalink": "/zh-CN/primitives/whatareprimitives"
   },
   "next": {
     "title": "Non-Fungible Tokens (NFT)",

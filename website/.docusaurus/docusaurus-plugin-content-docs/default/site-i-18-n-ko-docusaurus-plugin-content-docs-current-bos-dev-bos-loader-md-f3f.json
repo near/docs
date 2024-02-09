@@ -18,10 +18,10 @@
     "id": "bos-loader",
     "title": "BOS Loader"
   },
-  "sidebar": "integrate",
+  "sidebar": "tutorials",
   "previous": {
-    "title": "Using components on WebApps",
-    "permalink": "/ko/bos/tutorial/bos-gateway"
+    "title": "프론트엔드 다중 컨트랙트",
+    "permalink": "/ko/tutorials/examples/frontend-multiple-contracts"
   },
   "next": {
     "title": "스마트 컨트랙트 상호작용",

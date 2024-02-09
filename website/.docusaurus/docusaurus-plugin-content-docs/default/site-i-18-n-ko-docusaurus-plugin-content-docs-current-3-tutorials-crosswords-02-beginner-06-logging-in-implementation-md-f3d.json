@@ -20,7 +20,7 @@
     "sidebar_label": "액세스 키 및 로그인 2/2",
     "title": "로그인 버튼 구현"
   },
-  "sidebar": "contracts",
+  "sidebar": "tutorials",
   "previous": {
     "title": "액세스 키 및 로그인 1/2",
     "permalink": "/ko/tutorials/crosswords/beginner/logging-in"

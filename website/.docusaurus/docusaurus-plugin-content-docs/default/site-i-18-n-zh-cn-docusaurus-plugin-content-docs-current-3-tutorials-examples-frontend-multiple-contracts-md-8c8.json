@@ -18,13 +18,13 @@
     "id": "frontend-multiple-contracts",
     "title": "Frontend Multiple Contracts"
   },
-  "sidebar": "integrate",
+  "sidebar": "tutorials",
   "previous": {
-    "title": "Donation",
-    "permalink": "/zh-CN/tutorials/examples/donation"
+    "title": "Self Upgrade & State Migration",
+    "permalink": "/zh-CN/tutorials/examples/update-contract-migrate-state"
   },
   "next": {
-    "title": "Building a Relayer",
-    "permalink": "/zh-CN/develop/relayers/build-relayer"
+    "title": "BOS Loader",
+    "permalink": "/zh-CN/bos/dev/bos-loader"
   }
 }

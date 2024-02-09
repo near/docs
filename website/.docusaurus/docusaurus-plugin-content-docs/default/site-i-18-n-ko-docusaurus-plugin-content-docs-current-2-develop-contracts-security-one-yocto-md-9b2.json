@@ -18,7 +18,7 @@
     "id": "one-yocto",
     "title": "사용자가 맞는지 확인 (1yⓃ)"
   },
-  "sidebar": "contracts",
+  "sidebar": "build",
   "previous": {
     "title": "교차 컨트랙트 호출",
     "permalink": "/ko/develop/contracts/security/callbacks"

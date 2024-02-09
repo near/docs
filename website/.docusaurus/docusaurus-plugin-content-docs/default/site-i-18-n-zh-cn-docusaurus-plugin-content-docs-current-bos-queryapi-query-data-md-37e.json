@@ -19,7 +19,7 @@
     "title": "Accessing and Querying Historical data",
     "sidebar_label": "Access & Query Historical data"
   },
-  "sidebar": "indexers",
+  "sidebar": "build",
   "previous": {
     "title": "Context object",
     "permalink": "/zh-CN/bos/queryapi/context-object"
