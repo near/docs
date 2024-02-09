@@ -127,7 +127,7 @@ Except for [upsert](#upsert), all of the below methods are used in [social_feed_
 
 ### Insert
 
-This method allows inserting one or more objects into the table preceding the method call. The inserted objects are then returned back with all of their information. Later on, we may implement returning specific fields but for now, we are returning them all. This goes for all methods. 
+This method allows inserting one or more objects into the table preceding the function call. The inserted objects are then returned back with all of their information. Later on, we may implement returning specific fields but for now, we are returning them all. This goes for all methods. 
 
 #### Input
 
