@@ -57,7 +57,7 @@ We envision that in the future, more languages will be supported and the support
 ---
 
 ## Contract primitives
-Contract primitives such as FT, NFT and DAOs are fundamental building blocks that can be combined to create awesome user experiences such as reward tokens, decision-making tools and marketplaces. 
+Contract primitives such as FT, NFT, and DAOs are fundamental building blocks that can be combined to create awesome user experiences such as reward tokens, decision-making tools, and marketplaces. 
 
 :::tip
 Check our section on [primitives](/primitives/whatareprimitives) to learn more about them
