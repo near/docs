@@ -110,6 +110,6 @@ near account delete-account app-name.you.testnet beneficiary you.testnet network
 </TabItem>
 </Tabs>
 
-This sends all funds still on the `<accountId>` account to `<beneficiaryId>` and delete the contract that had been deployed to it, including all contract state.
+This sends all funds still on the `<accountId>` account to `<beneficiaryId>` and deletes the contract that had been deployed to it, including all contract state.
 
 Now you create the sub-account and deploy to it again using the commands above, and it will have empty state like it did the first time you deployed it.

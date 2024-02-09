@@ -193,7 +193,7 @@ At the end, transaction execution details, including token transfers, logs, cros
 
 During the development, and sometimes even in production, updates to a contract’s code (or even data) are needed. That’s why different contract upgrades mechanisms have been created.
 
-While developing the contract, we recommend to just create a new account each time we need to deploy a contract (the [create-account](../../4.tools/cli.md#near-create-account) command in NEAR CLI exists for this). With such an approach, you will start with a clean state each time.
+While developing the contract, we recommend just creating a new account each time you need to deploy a contract (the [create-account](../../4.tools/cli.md#near-create-account) command in NEAR CLI exists for this). With such an approach, you will start with a clean state each time.
  
 However, once we move to a more stable environment, like testing or production, more sophisticated methods are needed. Redeployment of code is quite simple: we just issue another `DeployContract` transaction, and NEAR will handle the rest. The biggest challenge is to migrate contract state - [several approaches are possible](../../2.develop/upgrade.md#migrating-the-state), but all of them involve some kind of migration code.
 
