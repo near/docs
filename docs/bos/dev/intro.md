@@ -1,9 +1,7 @@
 ---
 id: intro
-title: Dev Environments
+title: Choose your Dev Environment
 ---
-
-Building, deploying, and collaborating within a new framework can be challenging. The NEAR community has created helpful workflows using new tools to simplify your development workflow.
 
 The environments in which you can develop `Components` are divided into two categories:
 
@@ -12,7 +10,6 @@ The environments in which you can develop `Components` are divided into two cate
 
 :::tip Handling collaborations
 If you plan to collaborate with multiple people, we recommend you to check [this repository template](https://github.com/near-examples/bos-components) which automatically deploys components each time a PR is merged. 
-
 :::
 
 ---

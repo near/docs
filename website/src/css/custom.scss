@@ -14,7 +14,7 @@
     --ifm-color-primary: #82aaff;
     --near-color-royal: #82aaff;
 
-    hr{
+    hr {
         background-color: #2d2d2d;
     }
 }
@@ -30,6 +30,14 @@ article a[href^="http"]::after {
     margin-left: 0.3rem;
 }
 
+.internal::after {
+    content: url("data:image/svg+xml,%3Csvg fill='%235f8afaff' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z'/%3E%3C/svg%3E");
+    width: 0.6rem;
+    display: inline-block;
+    margin-left: 0.3rem;
+    color: var(--near-font-body)
+}
+
 body {
     font-family: var(--near-font-body);
     color: var(--ifm-font-color-base);
@@ -42,8 +50,6 @@ body {
     margin-bottom: 1rem;
     padding-top: 1rem;
 }
-
-
 
 .features a[href^="http"]::after {
     content: "";
@@ -59,15 +65,6 @@ hr {
     margin: 2.5em 0 1.5em 0;
 }
 
-li hr {
-    height: 4px;
-    margin: 0.2em auto;
-    width: 90%;
-    border-width: 0;
-}
-
-
-
 ol li::marker {
     color: var(--near-color-royal);
     font-weight: 600;
@@ -82,8 +79,6 @@ ol li::marker {
 .text-center {
     text-align: center !important;
 }
-
-
 
 strong {
     font-weight: 600;
@@ -235,6 +230,23 @@ article {
     padding: .7rem .5rem !important;
 }
 
+li hr {
+    height: 4px;
+    margin: 0.4em auto;
+    width: 93%;
+    border-width: 0;
+}
+
+.menu__list .menu__list li hr {
+    background-color: #e8f0f9;
+    height: 2px;
+}
+
+table {
+    display: inline-table;
+    min-width: 100%;
+}
+
 .theme-doc-toc-mobile {
     display: none;
 }
@@ -372,8 +384,10 @@ iframe+em {
 }
 
 @media (min-width: 996px) {
+
     /* columns */
-    .col, .col:only-child {
+    .col,
+    .col:only-child {
         padding: 0 calc(var(--ifm-spacing-horizontal)/2);
     }
 
@@ -388,4 +402,18 @@ iframe+em {
 
 /* BOOTSTRAP */
 /* TODO: Include this from file */
-@import './bootstrap.scss'
+@import './bootstrap.scss';
+
+#near-wallet-selector-modal {
+  .nws-modal-wrapper .nws-modal .modal-left .modal-left-title h2 {
+    font-family: inherit;
+  }
+  .nws-modal-wrapper .nws-modal .modal-right .nws-modal-header h3.middleTitle {
+    margin: 4px auto !important;
+    font-family: inherit;
+  }
+
+  .nws-modal-wrapper .nws-modal .modal-right .wallet-what .content-side h3 {
+    margin: 0 auto 8px 0 !important;
+  }
+}
