@@ -220,7 +220,8 @@ near view guestbook.near-examples.testnet get_messages --args='{"from_index": "0
 near view guestbook.near-examples.testnet total_messages
 
 # Add a message
-# The contract is expecting a JSON object with a key "text"
+# Replace <accountId> with your account ID
+# Required a text
 # Optional deposit to make the message premium
 near call guestbook.near-examples.testnet add_message '{"text":"Hello Near"}' --accountId <accountId> --deposit 0.1
 ```

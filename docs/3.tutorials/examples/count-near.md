@@ -211,13 +211,16 @@ To interact with the contract through the console, you can use the following com
 # Get the current number of the counter
 near view counter.near-examples.testnet get_num
 
-# Increment the counter - replace <accountId> with your account ID
+# Increment the counter 
+# Replace <accountId> with your account ID
 near call counter.near-examples.testnet increment --accountId <accountId>
 
-# Decrement the counter - replace <accountId> with your account ID
+# Decrement the counter
+# Replace <accountId> with your account ID
 near call counter.near-examples.testnet decrement --accountId <accountId>
 
-# Reset the counter to zero - replace <accountId> with your account ID
+# Reset the counter to zero 
+# Replace <accountId> with your account ID
 near call counter.near-examples.testnet reset --accountId <accountId>
 ```
 

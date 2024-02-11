@@ -215,7 +215,8 @@ To interact with your contract from the [frontend](#frontend), simply replace th
 To interact with the contract through the console, you can use the following commands
 
 ```bash
-# Get donations with optional arguments for pagination
+# Get donations 
+# Optional arguments for pagination
 near view donation.near-examples.testnet get_donations --args='{"from_index": "0","limit": "10"}'
 
 # Get beneficiary
@@ -224,11 +225,13 @@ near view donation.near-examples.testnet get_beneficiary
 # Get number of donors
 near view donation.near-examples.testnet number_of_donors
 
-# Get donation for an account - Require accountId
+# Get donation for an account 
+# Require accountId
 near view donation.near-examples.testnet get_donation_for_account --args='{"account_id":<accountId>}'
 
-# Donate to the contract
-# Requires you to donate
+# Donate to the contract 
+# Replace <accountId> with your account ID
+# Require deposit
 near call donation.near-examples.testnet donate --accountId <accountId> --deposit 0.1
 ```
 
