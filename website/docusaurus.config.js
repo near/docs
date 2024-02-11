@@ -57,7 +57,7 @@ const config = {
           showReadingTime: false,
         },
         theme: {
-          customCss: "/src/css/custom.scss",
+          customCss: "./src/css/custom.scss",
         },
       },
     ],
@@ -110,37 +110,22 @@ const config = {
           position: 'left',
         },
         {
+          to: '/develop/welcome',
           label: 'Build',
           position: 'left',
-          items: [
-            { label: 'Smart Contracts', href: '/develop/contracts/welcome' },
-            { label: 'Web3 Applications', href: '/develop/integrate/welcome' },
-            { label: 'Data Solutions', href: '/develop/monitor' },
-            {
-              type: 'html',
-              value: '<hr/> <small class="subtitle"> Integrations </small>',
-            },
-            { label: "Backend", href: "/develop/integrate/backend-login" },
-            { label: "Frontend", href: "/develop/integrate/frontend" },
-            { label: "Exchanges", href: "/integrator/exchange-integration" },
-            { label: "Rollups DA", href: "/data-availability/welcome" },
-          ],
         },
         {
-          label: "Primitives",
-          position: "left",
-          items: [
-            { label: 'Overview', href: '/primitives/welcome' },
-            {
-              type: 'html',
-              value: '<hr/>',
-            },
-            { label: "LinkDrops", href: "/primitives/linkdrop" },
-            { label: "Fungible Tokens", href: "/primitives/ft" },
-            { label: "Non-Fungible Tokens", href: "/primitives/nft" },
-            { label: "Decentralized Exchanges", href: "/primitives/dex" },
-            { label: "Autonomous Organizations", href: "/primitives/dao" },
-          ]
+          to: '/tutorials/welcome',
+          label: 'Tutorials',
+          position: 'left',
+        },
+        {
+          href: '/api/rpc/introduction',
+          label: 'RPC',
+        },
+        {
+          type: 'html',
+          value: '<span class="separator"></span>'
         },
         {
           type: 'dropdown',
@@ -171,14 +156,26 @@ const config = {
             { label: "Remix IDE Plugin", href: "https://docs.welldonestudio.io/code/getting-started" },],
         },
         {
-          href: '/api/rpc/introduction',
-          label: 'RPC',
-        },
-        {
           type: 'dropdown',
-          label: 'Other Docs',
+          label: 'Resources',
           position: 'left',
           items: [
+            {
+              type: "html",
+              value: '<div class="subtitle"> Support </dib>',
+            },
+            {
+              href: 'https://discord.gg/GZ7735Xjce',
+              label: 'Discord',
+            },
+            {
+              href: 'https://t.me/neardev',
+              label: 'Telegram',
+            },
+            {
+              type: "html",
+              value: '<hr /><div class="subtitle"> Other Docs </dib>',
+            },
             {
               href: 'https://nomicon.io',
               label: 'Protocol Docs',
@@ -187,6 +184,10 @@ const config = {
               href: 'https://near-nodes.io',
               label: 'Validator Docs',
             },
+            {
+              href: "https://aurora.dev",
+              label: "Aurora (EVM)",
+            }
           ],
         },
         {

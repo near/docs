@@ -1,6 +1,7 @@
 ---
 id: frontend-multiple-contracts
-title: Frontend Multiple Contracts
+title: Frontend Interacting with Multiple Contracts
+sidebar_label: Frontend & Multiple Contracts
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

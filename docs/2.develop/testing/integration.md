@@ -38,7 +38,12 @@ Lets take a look at the test of our [Quickstart Project](../quickstart.md) [👋
 
 ## Snippet II: Testing Donations
 
-In most cases we will want to test complex methods involving multiple users and money transfers. A perfect example for this is our [Donation Example](https://github.com/near-examples/donation-examples), which enables users to `donate` money to a beneficiary. Lets see its integration tests:
+<<<<<<< HEAD
+In most cases we will want to test complex methods involving multiple users and money transfers. A perfect example for this is our [Donation Example](https://github.com/near-examples/donation-examples), which enables users to `donate` money to a beneficiary. Lets see its integration tests
+=======
+
+In most cases we will want to test complex methods involving multiple users and money transfers. A perfect example for this is our [Donation Example](https://github.com/near-examples/donation-js), which enables users to `donate` money to a beneficiary. Lets see its integration tests:
+>>>>>>> ca46bbf0a49d365cd1e787ffb69c840fdabc9a7b
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
