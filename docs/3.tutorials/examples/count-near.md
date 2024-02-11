@@ -2,6 +2,7 @@
 id: count-near
 title: Count on NEAR
 ---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
@@ -20,8 +21,8 @@ You have two options to start the Counter Example.
 1. You can use the app through `Github Codespaces`, which will open a web-based interactive environment.
 2. Clone the repository locally and use it from your computer.
 
-| Codespaces                                                                                                                      | Clone locally                                               |
-| ------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| Codespaces                                                                                                             | Clone locally                                  |
+| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
 | [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/near-examples/counters) | 🌐 `https://github.com/near-examples/counters` |
 
 ---
@@ -60,7 +61,6 @@ The example is divided in two main components:
 │    │    └── main.ava.ts
 │    ├── ava.config.cjs
 │    └── package.json
-├── package.json
 ├── src # contract's code
 │    └── lib.rs
 ├── build.sh # build script
@@ -94,7 +94,7 @@ yarn start
 Go ahead and login with your NEAR account. If you don't have one, you will be able to create one in the moment. Once logged in, use the `+` and `-` buttons to increase and decrease the counter. Then, use the Gameboy buttons to reset it and make the counter blink an eye!
 
 ![img](/docs/assets/examples/count-on-near.png)
-*Frontend of the Counter*
+_Frontend of the Counter_
 
 <hr class="subsection" />
 
@@ -102,7 +102,7 @@ Go ahead and login with your NEAR account. If you don't have one, you will be ab
 
 The frontend is composed by a single HTML file (`/index.html`). This file defines the components displayed in the screen.
 
-The website's logic lives in `/index.js`, which communicates with the contract through `/near-wallet`. You will notice in `/index.js` the following code:
+The website's logic lives in `/index.js`, which communicates with the contract through `/near-wallet.js`. You will notice in `/index.js` the following code:
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
@@ -140,11 +140,11 @@ The contract readily includes a set of unit and sandbox testing to validate its 
 <Tabs>
   <TabItem value="🌐 JavaScript">
 
-  ```bash
-  cd contract-ts
-  yarn
-  yarn test
-  ```
+```bash
+cd contract-ts
+yarn
+yarn test
+```
 
   </TabItem>
   <TabItem value="🦀 Rust">
@@ -172,6 +172,10 @@ In order to deploy the contract you will need to [create a NEAR account](/develo
   <TabItem value="🌐 JavaScript">
 
 ```bash
+# Optional - create an account
+near create-account <accountId> --useFaucet
+
+# Deploy the contract
 cd contract-ts
 yarn build
 near deploy <accountId> ./build/counter.wasm
@@ -181,6 +185,10 @@ near deploy <accountId> ./build/counter.wasm
   <TabItem value="🦀 Rust">
 
 ```bash
+  # Optional - create an account
+  near create-account <accountId> --useFaucet
+
+  # Deploy the contract
 cd contract-rs
 ./build.sh
 near deploy <accountId> ./target/wasm32-unknown-unknown/release/counter.wasm
@@ -197,16 +205,25 @@ To interact with your contract from the [frontend](#frontend), simply replace th
 
 ### CLI: Interacting with the Contract
 
-```bash
+To interact with the contract through the console, you can use the following commands
 
+```bash
+# Get the current number of the counter
 near view counter.near-examples.testnet get_num
 
+# Increment the counter - replace <accountId> with your account ID
 near call counter.near-examples.testnet increment --accountId <accountId>
 
+# Decrement the counter - replace <accountId> with your account ID
 near call counter.near-examples.testnet decrement --accountId <accountId>
 
+# Reset the counter to zero - replace <accountId> with your account ID
 near call counter.near-examples.testnet reset --accountId <accountId>
 ```
+
+:::tip
+If you're using your own account, replace `counter.near-examples.testnet` with your `accountId`.
+:::
 
 ---
 

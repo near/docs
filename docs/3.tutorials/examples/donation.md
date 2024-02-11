@@ -102,7 +102,7 @@ Go ahead and login with your NEAR account. If you don't have one, you will be ab
 
 ### Understanding the Frontend
 
-The frontend is composed by a single HTML file (`/index.html`), while the logic lives in `/index.js`, which communicates with the contract through `/utils.js`.
+The frontend is composed by a single HTML file (`/index.html`), while the logic lives in `/index.js`, which communicates with the contract through `/near-interface.js`.
 
 <Language value="" language="js">
   <Github fname="index.js"
@@ -179,6 +179,10 @@ In order to deploy the contract you will need to [create a NEAR account](/develo
   <TabItem value="🌐 JavaScript">
 
 ```bash
+# Optional - create an account
+near create-account <accountId> --useFaucet
+
+# Deploy the contract
 cd contract-ts
 yarn build
 near deploy <accountId> ./build/donation.wasm
@@ -188,6 +192,10 @@ near deploy <accountId> ./build/donation.wasm
   <TabItem value="🦀 Rust">
 
 ```bash
+# Optional - create an account
+near create-account <accountId> --useFaucet
+
+# Deploy the contract
 cd contract-rs
 ./build.sh
 near deploy <accountId> ./target/wasm32-unknown-unknown/release/donation.wasm
@@ -204,10 +212,29 @@ To interact with your contract from the [frontend](#frontend), simply replace th
 
 ### CLI: Interacting with the Contract
 
+To interact with the contract through the console, you can use the following commands
+
 ```bash
-near view donation.near-examples.testnet get_donations
+# Get donations with optional arguments for pagination
+near view donation.near-examples.testnet get_donations --args='{"from_index": "0","limit": "10"}'
+
+# Get beneficiary
+near view donation.near-examples.testnet get_beneficiary
+
+# Get number of donors
+near view donation.near-examples.testnet number_of_donors
+
+# Get donation for an account - Require accountId
+near view donation.near-examples.testnet get_donation_for_account --args='{"account_id":<accountId>}'
+
+# Donate to the contract
+# Requires you to donate
 near call donation.near-examples.testnet donate --accountId <accountId> --deposit 0.1
 ```
+
+:::tip
+If you're using your own account, replace `donation.near-examples.testnet` with your `accountId`.
+:::
 
 ---
 

@@ -2,14 +2,15 @@
 id: guest-book
 title: Guest Book
 ---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 Our Guest Book example is a simple app composed by two main components:
 
-  1. A smart contract that stores messages from users, allowing to attach money to them.
-  2. A simple web-based frontend that displays the last 10 messages posted.
+1. A smart contract that stores messages from users, allowing to attach money to them.
+2. A simple web-based frontend that displays the last 10 messages posted.
 
 ![img](/docs/assets/examples/guest-book.png)
 
@@ -22,8 +23,8 @@ You have two options to start the Guest book Example.
 1. You can use the app through `Github Codespaces`, which will open a web-based interactive environment.
 2. Clone the repository locally and use it from your computer.
 
-| Codespaces                                                                                                                      | Clone locally                                               |
-| ------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| Codespaces                                                                                                                        | Clone locally                                             |
+| --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
 | [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/near-examples/guest-book-examples) | 🌐 `https://github.com/near-examples/guest-book-examples` |
 
 ---
@@ -119,7 +120,7 @@ It setups the necessary variables and starts the app.
 
 ## Smart Contract
 
-The contract presents 2 methods: `add_message` and `get_message`.
+The contract presents 3 methods: `add_message`, `get_message` and `total_messages`.
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
@@ -130,7 +131,7 @@ The contract presents 2 methods: `add_message` and `get_message`.
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/guest-book-examples/blob/main/contract-rs/src/lib.rs"
-            start="29" end="52" />
+            start="29" end="53" />
   </Language>
   
 </CodeTabs>
@@ -144,11 +145,11 @@ The contract readily includes a set of unit and sandbox testing to validate its 
 <Tabs>
   <TabItem value="🌐 JavaScript">
 
-  ```bash
-  cd contract-ts
-  yarn
-  yarn test
-  ```
+```bash
+cd contract-ts
+yarn
+yarn test
+```
 
   </TabItem>
   <TabItem value="🦀 Rust">
@@ -176,10 +177,10 @@ In order to deploy the contract you will need to [create a NEAR account](/develo
   <TabItem value="🌐 JavaScript">
 
 ```bash
-# optional - create an account 
+# Optional - create an account
 near create-account <accountId> --useFaucet
 
-# deploy the contract
+# Deploy the contract
 cd contract-ts
 yarn build
 near deploy <accountId> ./build/guestbook.wasm
@@ -188,15 +189,15 @@ near deploy <accountId> ./build/guestbook.wasm
   </TabItem>
   <TabItem value="🦀 Rust">
 
-  ```bash
-  # optional - create an account 
-  near create-account <accountId> --useFaucet
+```bash
+# Optional - create an account
+near create-account <accountId> --useFaucet
 
-  # deploy the contract
-  cd contract-rs
-  ./build.sh
-  near deploy <accountId> ./target/wasm32-unknown-unknown/release/guestbook.wasm
-  ```
+# Deploy the contract
+cd contract-rs
+./build.sh
+near deploy <accountId> ./target/wasm32-unknown-unknown/release/guestbook.wasm
+```
 
   </TabItem>
 </Tabs>
@@ -209,14 +210,27 @@ To interact with your contract from the [frontend](#frontend), simply replace th
 
 ### CLI: Interacting with the Contract
 
-```bash
-near view guestbook.near-examples.testnet get_messages --args='{"from_index": "0","limit": 10}'
+To interact with the contract through the console, you can use the following commands
 
+```bash
+# Get messages with optional arguments for pagination
+near view guestbook.near-examples.testnet get_messages --args='{"from_index": "0","limit": "10"}'
+
+# Get total number of messages
+near view guestbook.near-examples.testnet total_messages
+
+# Add a message
+# The contract is expecting a JSON object with a key "text"
+# Optional deposit to make the message premium
 near call guestbook.near-examples.testnet add_message '{"text":"Hello Near"}' --accountId <accountId> --deposit 0.1
 ```
+
+:::tip
+If you're using your own account, replace `guestbook.near-examples.testnet` with your `accountId`.
+:::
 
 ---
 
 ## Moving Forward
 
-A nice way to learn is by trying to expand a contract. Modify the book signing example so that you can give likes to signatures. Then make a method to toggle the likes.
+A nice way to learn is by trying to expand a contract. You can modify the guestbook example to incorporate a feature where users can give likes to messages. Additionally, implement a method to toggle the like.
