@@ -44,7 +44,6 @@ The example is divided in two main components:
 │    │    └── main.ava.ts
 │    ├── ava.config.cjs
 │    └── package.json
-├── package.json
 ├── src # contract's code
 │    ├── contract.ts
 │    ├── model.ts
@@ -103,7 +102,7 @@ Go ahead and login with your NEAR account. If you don't have one, you will be ab
 
 ### Understanding the Frontend
 
-The frontend is composed by a single HTML file (`/index.html`), while the logic lives in `/assets/js/index.js`, which communicates with the contract through `/assets/js/near/utils.js`.
+The frontend is composed by a single HTML file (`/index.html`), while the logic lives in `/index.js`, which communicates with the contract through `/utils.js`.
 
 <Language value="" language="js">
   <Github fname="index.js"
@@ -182,7 +181,7 @@ In order to deploy the contract you will need to [create a NEAR account](/develo
 ```bash
 cd contract-ts
 yarn build
-near deploy <accountId> ./build/contract.wasm
+near deploy <accountId> ./build/donation.wasm
 ```
 
   </TabItem>
@@ -191,7 +190,7 @@ near deploy <accountId> ./build/contract.wasm
 ```bash
 cd contract-rs
 ./build.sh
-near deploy <accountId> ./target/wasm32-unknown-unknown/release/contract.wasm
+near deploy <accountId> ./target/wasm32-unknown-unknown/release/donation.wasm
 ```
 
   </TabItem>
@@ -207,7 +206,7 @@ To interact with your contract from the [frontend](#frontend), simply replace th
 
 ```bash
 near view donation.near-examples.testnet get_donations
-near call donation.near-examples.testnet donate --accountId <accountId> --deposit 0.1 -->
+near call donation.near-examples.testnet donate --accountId <accountId> --deposit 0.1
 ```
 
 ---
