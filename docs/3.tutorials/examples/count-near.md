@@ -114,6 +114,8 @@ The website's logic lives in `/index.js`, which communicates with the contract t
 
 It indicates our app, when it starts, to check if the user is already logged in and execute either `signedInFlow()` or `signedOutFlow()`.
 
+---
+
 ## Smart Contract
 
 The contract presents 4 methods: `get_num`, `increment`, `decrement`, and `reset`. The method `get_num` retrieves the current value, and the rest modify it.
