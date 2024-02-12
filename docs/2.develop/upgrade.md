@@ -23,21 +23,21 @@ Simply re-deploy another contract using your preferred tool, for example, using 
   <TabItem value="near-cli">
 
   ```bash
-  # If you already used dev-deploy the same account will be used
-  near dev-deploy --wasmFile <new-contract>
+  # (optional) If you don't have an account, create one
+  near create-account <account-id> --useFaucet
 
-  # If you logged in
-  near deploy <account-id> --wasmFile <new-contract>
+  # Deploy the contract
+  near deploy <account-id> <wasm-file>
   ```
 
   </TabItem>
   <TabItem value="near-cli-rs">
 
   ```bash
-  # If you already used dev-deploy the same account will be used
-  near contract deploy <my-new-dev-account>.testnet use-file <route_to_wasm> without-init-call network-config testnet sign-with-keychain
-
-  # If you logged in
+  # (optional) If you don't have an account, create one
+  near account create-account sponsor-by-faucet-service somrnd.testnet autogenerate-new-keypair save-to-keychain network-config testnet create
+  
+  # Deploy the contract
   near contract deploy <accountId> use-file <route_to_wasm> without-init-call network-config testnet sign-with-keychain send
   ```
   </TabItem>

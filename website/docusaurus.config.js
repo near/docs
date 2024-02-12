@@ -163,10 +163,9 @@ const config = {
           items: [
             { label: '🎉 Changelog', href: '/blog'},
             { label: 'Github', href: 'https://github.com/near', className: 'header-github-link'},
-          
             {
               type: "html",
-              value: '<hr /><div class="subtitle"> Support </dib>',
+              value: '<hr/><div class="subtitle"> Support </dib>',
             },
             {
               href: 'https://discord.gg/GZ7735Xjce',
