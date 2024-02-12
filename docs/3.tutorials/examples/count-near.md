@@ -18,7 +18,7 @@ Our counter example is a friendly decentralized app that stores a number and exp
 
 You have two options to start the Counter Example.
 
-1. You can use the app through `Github Codespaces`, which will open a web-based interactive environment.
+1. You can use the app through `GitHub Codespaces`, which will open a web-based interactive environment.
 2. Clone the repository locally and use it from your computer.
 
 | Codespaces                                                                                                             | Clone locally                                  |
@@ -31,7 +31,7 @@ You have two options to start the Counter Example.
 
 The example is divided in two main components:
 
-1. The smart contract, available in two flavours: rust and javascript
+1. The smart contract, available in two flavors: Rust and JavaScript
 2. The frontend, that interacts with an already deployed contract.
 
 <Tabs>
