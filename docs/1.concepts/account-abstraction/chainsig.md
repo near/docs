@@ -7,6 +7,12 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
+Chain signatures unlock the ability for a single account to transact across multiple blockchain protocols, giving ownership of many accounts to one NEAR account.
+
+This many-to-one ownership model is made possible through NEAR’s native account abstraction, which allows a nearly infinite number of keys to be associated with a single account. Chain Signatures leverages this ability to create keys for accounts on other blockchain platforms, enabling the NEAR account control of data and assets on different chains.
+
+## How it works
+
 Chain Signatures allows you to call the `sign()` method on `multichain.near`:
 
 ```rust
@@ -19,7 +25,7 @@ The signature is calculated on the data payload using a user-provided key. The s
 The signature is an ECDSA signature on the Secp256k1 curve.
 :::
 
-## How it works
+### Workflow
 
 - A NEAR account requests a payload to be signed by a deployed [MPC](#multi-party-computation-mpc) smart contract
   > This request is performed by calling `sign` and passing the payload (hash from a message or transaction)
