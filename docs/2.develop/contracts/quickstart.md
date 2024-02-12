@@ -1,7 +1,7 @@
 ---
 id: quickstart
 title: Hello Contract 
-sidebar_label: ⭐ Quickstart
+sidebar_label: Quickstart ✨
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -10,11 +10,6 @@ import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 [NEAR accounts](../../1.concepts/basics/accounts/introduction.md) can host programs known as smart contracts. Smart contracts can **store data**, and **expose methods** so other users and contracts interact with them. 
 
 In this quickstart tutorial, we will guide you in creating your first smart contract in the NEAR **testnet** that stores and retrieves a greeting.
-
-
-:::info
-This quickstart is dedicated to creating smart contracts. We also have one dedicated only to [frontends](../integrate/quickstart.md)
-:::
 
 ---
 
