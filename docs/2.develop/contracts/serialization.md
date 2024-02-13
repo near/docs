@@ -12,7 +12,7 @@ from their complex representation into simpler ones.
 This process of translating **complex objects into simpler single-value** representations is called
 **serialization**. NEAR uses two serialization formats: [JSON](https://www.json.org/json-en.html) and
 [Borsh](https://borsh.io/).
-1. [JSON](https://www.json.org/json-en.html) is used to serialize the contract's input/output during a method call
+1. [JSON](https://www.json.org/json-en.html) is used to serialize the contract's input/output during a function call
 2. [Borsh](https://borsh.io/) is used to serialize the contract's state.
 
 ---

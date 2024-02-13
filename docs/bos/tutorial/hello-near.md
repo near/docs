@@ -45,7 +45,7 @@ To modify the greeting, we simply need to use `Near.call` to call the `set_greet
 
 Lets create it in two steps:
 1. Build the HTML that will be rendered
-2. Add the logic to handle the method call
+2. Add the logic to handle the function call
 
 <hr className="subsection" />
 
