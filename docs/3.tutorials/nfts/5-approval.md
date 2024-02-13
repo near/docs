@@ -258,7 +258,7 @@ export APPROVAL_NFT_CONTRACT_ID=approval.$NFT_CONTRACT_ID
 Using the build script, build the deploy the contract as you did in the previous tutorials:
 
 ```bash
-yarn build && near deploy --wasmFile out/main.wasm --accountId $APPROVAL_NFT_CONTRACT_ID
+yarn build && near deploy $APPROVAL_NFT_CONTRACT_ID out/main.wasm
 ```
 
 ### Initialization and minting {#initialization-and-minting}
@@ -473,9 +473,9 @@ In the next tutorial, you'll learn about the royalty standards and how you can i
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `3.0.0`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
+- near-cli: `4.0.4`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 - Enumeration standard: [NEP181](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration), version `1.0.0`
-- Approval standard: [NEP178](https://nomicon.io/Standards/Tokens/NonFungibleToken/ApprovalManagement), version `1.0.0`
+- Approval standard: [NEP178](https://nomicon.io/Standards/Tokens/NonFungibleToken/ApprovalManagement), version `1.1.0`
 
 :::

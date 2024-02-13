@@ -85,12 +85,12 @@ You might be thinking about the scenario when a sale is purchased. What happens 
 **Scenario B**
 
 - Dorian owns one hundred beautiful NFTs and knows that he wants to list all of them.
-- To avoid having to call `storage_deposit` everytime he wants to list an NFT, he calls it once. Since Dorian is a baller, he attaches 10 NEAR which is enough to cover 1000 sales. He now has an excess of 9 NEAR or 900 sales.
+- To avoid having to call `storage_deposit` everytime he wants to list an NFT, he calls it once. Since Dorian is a baller, he attaches 10 NEAR which is enough to cover 1000 sales. Then he lists his 100 NFTs and now he has an excess of 9 NEAR or 900 sales.
 - Dorian needs the 9 NEAR for something else but doesn't want to take down his 100 listings. Since he has an excess of 9 NEAR, he can easily withdraw and still have his 100 listings. After calling `storage_withdraw` and being transferred 9 NEAR, he will have an excess of 0 sales.
 
 With this behavior in mind, the following two functions outline the logic.
 
-<Github language="rust" start="110" end="173" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/lib.rs" />
+<Github language="rust" start="110" end="170" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/lib.rs" />
 
 In this contract, the storage required for each sale is 0.01 NEAR but you can query that information using the `storage_minimum_balance` function. In addition, if you wanted to check how much storage a given account has paid, you can query the `storage_balance_of` function.
 
@@ -161,8 +161,7 @@ export MARKETPLACE_CONTRACT_ID=marketplace.$NFT_CONTRACT_ID
 Using the build script, deploy the contract as you did in the previous tutorials:
 
 ```bash
-near deploy --wasmFile out/market.wasm --accountId
- $MARKETPLACE_CONTRACT_ID
+near deploy $MARKETPLACE_CONTRACT_ID out/market.wasm
 ```
 
 ### Initialization and minting
@@ -235,7 +234,7 @@ You should now have a solid understanding of NFTs and marketplaces on NEAR. Feel
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `3.0.0`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
+- near-cli: `4.0.4`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 
 :::

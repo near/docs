@@ -142,7 +142,7 @@ export ROYALTY_NFT_CONTRACT_ID=royalty.$NFT_CONTRACT_ID
 Using the build script, build the deploy the contract as you did in the previous tutorials:
 
 ```bash
-yarn build && near deploy --wasmFile out/main.wasm --accountId $ROYALTY_NFT_CONTRACT_ID
+yarn build && near deploy $ROYALTY_NFT_CONTRACT_ID out/main.wasm
 ```
 
 ### Initialization and minting {#initialization-and-minting}
@@ -234,8 +234,8 @@ If you want to see the finished code from this tutorial, you can checkout the `6
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `3.0.0`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
+- near-cli: `4.0.4`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 - Enumeration standard: [NEP181](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration), version `1.0.0`
 - Royalties standard: [NEP199](https://nomicon.io/Standards/Tokens/NonFungibleToken/Payout), version `2.0.0`
 
