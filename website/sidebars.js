@@ -232,6 +232,7 @@ const sidebar = {
         "develop/integrate/frontend",
         "develop/integrate/frontend-components",
         "develop/relayers/build-relayer",
+        "develop/relayers/multichain-server",
         {
           "Backend": [
             "develop/integrate/backend-login",
