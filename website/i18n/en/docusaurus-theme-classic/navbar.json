@@ -154,5 +154,13 @@
   "item.label.Telegram": {
     "message": "Telegram",
     "description": "Navbar item with label Telegram"
+  },
+  "item.label.🎉 Changelog": {
+    "message": "🎉 Changelog",
+    "description": "Navbar item with label 🎉 Changelog"
+  },
+  "item.label.Github": {
+    "message": "Github",
+    "description": "Navbar item with label Github"
   }
 }

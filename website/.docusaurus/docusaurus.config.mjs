@@ -354,8 +354,17 @@ export default {
           "position": "left",
           "items": [
             {
+              "label": "🎉 Changelog",
+              "href": "/blog"
+            },
+            {
+              "label": "Github",
+              "href": "https://github.com/near",
+              "className": "header-github-link"
+            },
+            {
               "type": "html",
-              "value": "<div class=\"subtitle\"> Support </dib>"
+              "value": "<hr/><div class=\"subtitle\"> Support </dib>"
             },
             {
               "href": "https://discord.gg/GZ7735Xjce",
@@ -388,11 +397,6 @@ export default {
           "position": "right"
         },
         {
-          "to": "blog",
-          "label": "Changelog 🎉",
-          "position": "right"
-        },
-        {
           "type": "localeDropdown",
           "position": "right",
           "dropdownItemsBefore": [],
@@ -401,12 +405,6 @@ export default {
         {
           "href": "login",
           "position": "right"
-        },
-        {
-          "href": "https://github.com/near",
-          "position": "right",
-          "className": "header-github-link",
-          "aria-label": "GitHub repository"
         }
       ],
       "hideOnScroll": false
