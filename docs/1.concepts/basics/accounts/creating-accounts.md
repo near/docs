@@ -50,7 +50,7 @@ nearAPI.utils.PublicKey.fromString(pk58).data.hexSlice()
 
 The output string will be the account ID in hex (without `'`), for example `98793cd91a3f870fb126f66285808c7e094afcfc4eda8a970f6648cdf0dbd6de`.
 
-You can share this `id` with anyone to recieve Near tokens. At least **0.001Ⓝ** is needed to start using the account.
+You can share this `id` with anyone to receive Near tokens. At least **0.001Ⓝ** is needed to start using the account.
 
 :::tip
 You can also use **other languages** to infer the implicit address, for example, in python you can use the `base58` package: `base58.b58decode(<data>).hex()`

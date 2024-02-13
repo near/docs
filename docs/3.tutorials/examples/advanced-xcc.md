@@ -7,7 +7,7 @@ import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 This example presents 3 instances of complex cross-contract calls. Particularly, it shows:
-1. How to batch multiple method calls to a same contract.
+1. How to batch multiple function calls to a same contract.
 2. How to call multiple contracts in parallel, each returning a different type.
 3. Different ways of handling the responses in the callback.
 

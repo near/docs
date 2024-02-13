@@ -23,7 +23,7 @@ On this page, we will only cover the basics of NEAR CLI. For more information vi
 Thanks to the `NEAR CLI` deploying a contract is as simple as:
 
 1. Compiling the contract to wasm (done automatically through `yarn build` in our templates).
-2. Deploy it into the desired account using the [NEAR CLI](../4.tools/cli.md#near-deploy):
+2. [Create an account](../4.tools/cli.md#near-create-account) and [deploy the contract](../4.tools/cli.md#near-deploy) into it using `NEAR CLI`.
 
 #### Create an Account and Deploy
 
@@ -32,8 +32,9 @@ Thanks to the `NEAR CLI` deploying a contract is as simple as:
   <TabItem value="near-cli">
 
   ```bash
-  # Automatically deploy the wasm in a new account
-  near dev-deploy <route_to_wasm>
+  # Create a new account pre-funded by a faucet & deploy
+  near create-account <accountId> --useFaucet
+  near deploy <accountId> <route_to_wasm>
 
   # Get the account name
   cat ./neardev/dev-account
