@@ -123,20 +123,15 @@ Once that's finished, move to the `nft-contract/src/nft_core.rs` file. You need 
 
 ## Deploying the contract {#redeploying-contract}
 
-As you saw in the previous tutorial, adding changes like these will cause problems when redeploying. Since these changes affect all the other tokens and the state won't be able to automatically be inherited by the new code, simply redeploying the contract will lead to errors. For this reason, you'll create a new sub-account again.
+As you saw in the previous tutorial, adding changes like these will cause problems when redeploying. Since these changes affect all the other tokens and the state won't be able to automatically be inherited by the new code, simply redeploying the contract will lead to errors. For this reason, you'll create a new account again.
 
-### Creating a sub-account
+### Deployment
 
-Run the following command to create a sub-account `royalty` of your main account with an initial balance of 25 NEAR which will be transferred from the original to your new account.
-
-```bash
-near create-account royalty.$NFT_CONTRACT_ID --masterAccount $NFT_CONTRACT_ID --initialBalance 25
-```
-
-Next, you'll want to export an environment variable for ease of development:
+Next, you'll deploy this contract to the network.
 
 ```bash
-export ROYALTY_NFT_CONTRACT_ID=royalty.$NFT_CONTRACT_ID
+export ROYALTY_NFT_CONTRACT_ID=<accountId>
+near create-account $ROYALTY_NFT_CONTRACT_ID --useFaucet
 ```
 
 Using the build script, build the deploy the contract as you did in the previous tutorials:

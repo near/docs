@@ -164,20 +164,15 @@ With that finished, you've successfully implemented the events standard and it's
 
 ## Deploying the contract {#redeploying-contract}
 
-For the purpose of readability and ease of development, instead of redeploying the contract to the same account, let's create a sub-account and deploy to that instead. You could have deployed to the same account as none of the changes you implemented in this tutorial would have caused errors.
+For the purpose of readability and ease of development, instead of redeploying the contract to the same account, let's create an account and deploy to that instead. You could have deployed to the same account as none of the changes you implemented in this tutorial would have caused errors.
 
-### Creating a sub-account
+### Deployment
 
-Run the following command to create a sub-account `events` of your main account with an initial balance of 25 NEAR which will be transferred from the original to your new account.
-
-```bash
-near create-account events.$NFT_CONTRACT_ID --masterAccount $NFT_CONTRACT_ID --initialBalance 25
-```
-
-Next, you'll want to export an environment variable for ease of development:
+Next, you'll deploy this contract to the network.
 
 ```bash
-export EVENTS_NFT_CONTRACT_ID=events.$NFT_CONTRACT_ID
+export EVENTS_NFT_CONTRACT_ID=<accountId>
+near create-account $EVENTS_NFT_CONTRACT_ID --useFaucet
 ```
 
 Using the build script, build the deploy the contract as you did in the previous tutorials:

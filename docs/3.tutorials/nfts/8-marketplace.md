@@ -144,18 +144,13 @@ The marketplace will then call `resolve_purchase` where it will check for malici
 
 The final file we'll go through is the `sale_view.rs` file. This is where some of the enumeration methods are outlined. It allows users to query for important information regarding sales.
 
-### Creating a sub-account
+### Deployment
 
-Run the following command to create a sub-account marketplace of your main account with an initial balance of 25 NEAR which will be transferred from the original to your new account.
-
-```bash
-near create-account marketplace.$NFT_CONTRACT_ID --masterAccount $NFT_CONTRACT_ID --initialBalance 25
-```
-
-Next, you'll want to export an environment variable for ease of development:
+Next, you'll deploy this contract to the network.
 
 ```bash
-export MARKETPLACE_CONTRACT_ID=marketplace.$NFT_CONTRACT_ID
+export MARKETPLACE_CONTRACT_ID=<accountId>
+near create-account $MARKETPLACE_CONTRACT_ID --useFaucet
 ```
 
 Using the build script, deploy the contract as you did in the previous tutorials:
