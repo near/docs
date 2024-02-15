@@ -17,7 +17,7 @@ If you’re familiar with Ethereum’s pricing model, you may know that, like NE
 
 ## How does NEAR's design align incentives?
 
-Storage-staked tokens are unavailable for other uses, such as validation staking. This increases the yield that validators will receive. Learn more in [the economics whitepaper](https://near.org/papers/economics-in-sharded-blockchain/).
+Storage-staked tokens are unavailable for other uses, such as validation staking. This increases the yield that validators will receive. Learn more in [the economics whitepaper](https://pages.near.org/papers/economics-in-sharded-blockchain/).
 
 ## When do tokens get staked?
 

@@ -38,7 +38,7 @@ With this level of complexity, it's no longer useful to walk through an example,
 <blockquote className="lesson">
 **How much of the gas fee goes as a 30% reward to the smart contract account?**
 
-The NEAR Whitepaper mentions that [30% of all gas fees](https://near.org/papers/the-official-near-white-paper/) go to smart contract accounts on which the fees are expensed. 
+The NEAR Whitepaper mentions that [30% of all gas fees](https://pages.near.org/papers/the-official-near-white-paper/) go to smart contract accounts on which the fees are expensed. 
 
 This amount can be calculated for function calls in two ways:
 1. Summing all values in the gas profile 
@@ -78,7 +78,7 @@ Multiplying Ethereum's gas units by gas price usually results in an amount that'
 
 While some of these operations on their surface appear to only be about a 10x improvement over Ethereum, something else to note is that the total supply of NEAR is more than 1 billion, while total supply of Ethereum is more like 100 million. So as fraction of total supply, NEAR's gas fees are approximately another 10x lower than Ethereum's. Additionally, if the price of NEAR goes up significantly, then the minimum gas fee set by the network can be lowered.
 
-You can expect the network to sit at the minimum gas price most of the time; learn more in the [Economics whitepaper](https://near.org/papers/economics-in-sharded-blockchain/#transaction-and-storage-fees).
+You can expect the network to sit at the minimum gas price most of the time; learn more in the [Economics whitepaper](https://pages.near.org/papers/economics-in-sharded-blockchain/#transaction-and-storage-fees).
 
 [fungible token]: https://github.com/near-examples/FT/pull/42
 [1.1m]: https://github.com/chadoh/erc20-test
@@ -203,7 +203,7 @@ Developers prefer predictable pricing so they can budget and provide prices for 
 
 </blockquote>
 
-To dig deeper into how and why gas works the way it does on NEAR, check out the [Economics](https://near.org/papers/the-official-near-white-paper/#economics) section of the main whitepaper and the [Transaction and Storage Fees](https://near.org/papers/economics-in-sharded-blockchain/#transaction-and-storage-fees) section of the economics whitepaper.
+To dig deeper into how and why gas works the way it does on NEAR, check out the [Economics](https://pages.near.org/papers/the-official-near-white-paper/#economics) section of the main whitepaper and the [Transaction and Storage Fees](https://pages.near.org/papers/economics-in-sharded-blockchain/#transaction-and-storage-fees) section of the economics whitepaper.
 
 :::tip Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
