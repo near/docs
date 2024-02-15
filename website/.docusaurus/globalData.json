@@ -11,6 +11,11 @@
           "mainDocId": "welcome",
           "docs": [
             {
+              "id": "abstraction/what-is",
+              "path": "/zh-CN/abstraction/what-is",
+              "sidebar": "build"
+            },
+            {
               "id": "api/rpc/access-keys",
               "path": "/zh-CN/api/rpc/access-keys",
               "sidebar": "api"
@@ -1178,11 +1183,6 @@
               "sidebar": "build"
             },
             {
-              "id": "primitives/welcome",
-              "path": "/zh-CN/primitives/welcome",
-              "sidebar": "primitives"
-            },
-            {
               "id": "primitives/whatareprimitives",
               "path": "/zh-CN/primitives/whatareprimitives",
               "sidebar": "build"
@@ -1425,7 +1425,7 @@
             {
               "id": "tools/fastauth-sdk",
               "path": "/zh-CN/tools/fastauth-sdk",
-              "sidebar": "tools"
+              "sidebar": "build"
             },
             {
               "id": "tools/indexer-for-explorer",
@@ -1901,12 +1901,6 @@
               "link": {
                 "path": "/zh-CN/tutorials/welcome",
                 "label": "tutorials/welcome"
-              }
-            },
-            "primitives": {
-              "link": {
-                "path": "/zh-CN/primitives/welcome",
-                "label": "primitives/welcome"
               }
             },
             "tools": {

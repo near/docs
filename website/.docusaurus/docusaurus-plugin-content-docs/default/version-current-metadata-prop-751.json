@@ -774,6 +774,36 @@
       },
       {
         "type": "html",
+        "value": "<span class='menu__link'><b><small> Chain Abstraction ✨ </small></b></span>"
+      },
+      {
+        "type": "link",
+        "label": "What is Chain Abstraction?",
+        "href": "/zh-CN/abstraction/what-is",
+        "docId": "abstraction/what-is",
+        "unlisted": false
+      },
+      {
+        "type": "category",
+        "label": "Chain Abstraction Services",
+        "items": [
+          {
+            "type": "link",
+            "label": "FastAuth SDK",
+            "href": "/zh-CN/tools/fastauth-sdk",
+            "docId": "tools/fastauth-sdk",
+            "unlisted": false
+          }
+        ],
+        "collapsed": true,
+        "collapsible": true
+      },
+      {
+        "type": "html",
+        "value": "<hr/>"
+      },
+      {
+        "type": "html",
         "value": "<span class='menu__link'><b><small> Primitives (FT, NFT, ...) </small></b></span>"
       },
       {
@@ -1850,23 +1880,6 @@
         "collapsible": true
       }
     ],
-    "primitives": [
-      {
-        "type": "link",
-        "label": "Home",
-        "href": "/zh-CN/primitives/welcome",
-        "docId": "primitives/welcome",
-        "unlisted": false
-      },
-      {
-        "type": "html",
-        "value": "<hr/>"
-      },
-      {
-        "type": "html",
-        "value": "<span class='menu__link'><b><small> Standards </small></b></span>"
-      }
-    ],
     "tools": [
       {
         "type": "link",
@@ -2417,13 +2430,6 @@
           },
           {
             "type": "link",
-            "label": "FastAuth SDK",
-            "href": "/zh-CN/tools/fastauth-sdk",
-            "docId": "tools/fastauth-sdk",
-            "unlisted": false
-          },
-          {
-            "type": "link",
             "label": "Remix IDE Plugin",
             "href": "https://docs.welldonestudio.io/code/getting-started"
           }
@@ -2749,6 +2755,12 @@
     ]
   },
   "docs": {
+    "abstraction/what-is": {
+      "id": "abstraction/what-is",
+      "title": "What is Chain Abstraction?",
+      "description": "The idea behind chain abstraction is quite simple: blockchain technology should be abstracted away from the user experience. In other words, people should not realize when they are using a blockchain, nor which blockchain they are using.",
+      "sidebar": "build"
+    },
     "api/rpc/access-keys": {
       "id": "api/rpc/access-keys",
       "title": "Access Keys",
@@ -4172,12 +4184,6 @@
       "description": "Oracles are smart contracts that enable you to query the current price of an asset.",
       "sidebar": "build"
     },
-    "primitives/welcome": {
-      "id": "primitives/welcome",
-      "title": "NEAR Primitives",
-      "description": "Welcome! Here you will find blockchain primitives such as Fungible Tokens (FT), Non Fungible Tokens (NFT), Decentralized autonomous organizations (DAO), and more.",
-      "sidebar": "primitives"
-    },
     "primitives/whatareprimitives": {
       "id": "primitives/whatareprimitives",
       "title": "What are Primitives?",
@@ -4471,7 +4477,7 @@
       "id": "tools/fastauth-sdk",
       "title": "FastAuth SDK",
       "description": "Introduction",
-      "sidebar": "tools"
+      "sidebar": "build"
     },
     "tools/indexer-for-explorer": {
       "id": "tools/indexer-for-explorer",

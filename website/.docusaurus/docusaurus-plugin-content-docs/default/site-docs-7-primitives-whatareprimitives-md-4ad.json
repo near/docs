@@ -12,16 +12,16 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "gagdiez",
-  "lastUpdatedAt": 1707477797,
-  "formattedLastUpdatedAt": "2024年2月9日",
+  "lastUpdatedAt": 1708028445,
+  "formattedLastUpdatedAt": "2024年2月15日",
   "frontMatter": {
     "id": "whatareprimitives",
     "title": "What are Primitives?"
   },
   "sidebar": "build",
   "previous": {
-    "title": "Login with NEAR",
-    "permalink": "/zh-CN/develop/integrate/backend-login"
+    "title": "FastAuth SDK",
+    "permalink": "/zh-CN/tools/fastauth-sdk"
   },
   "next": {
     "title": "Fungible Tokens (FT)",

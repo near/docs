@@ -11,21 +11,21 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/4.tools/fastauth-sdk.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Dio Ortega",
-  "lastUpdatedAt": 1706115203,
-  "formattedLastUpdatedAt": "Jan 24, 2024",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1708028445,
+  "formattedLastUpdatedAt": "Feb 15, 2024",
   "frontMatter": {
     "id": "fastauth-sdk",
     "title": "FastAuth SDK",
-    "sidebar_label": "FastAuth SDK"
+    "sidebar_label": "FastAuth (Email Login)"
   },
-  "sidebar": "tools",
+  "sidebar": "build",
   "previous": {
-    "title": "Wallet Selector",
-    "permalink": "/tools/wallet-selector"
+    "title": "What is Chain Abstraction?",
+    "permalink": "/abstraction/what-is"
   },
   "next": {
-    "title": "Explorers",
-    "permalink": "/tools/explorer"
+    "title": "What are Primitives?",
+    "permalink": "/primitives/whatareprimitives"
   }
 }

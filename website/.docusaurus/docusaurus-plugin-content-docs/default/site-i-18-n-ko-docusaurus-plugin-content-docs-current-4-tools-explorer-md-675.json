@@ -21,8 +21,8 @@
   },
   "sidebar": "tools",
   "previous": {
-    "title": "FastAuth SDK",
-    "permalink": "/ko/tools/fastauth-sdk"
+    "title": "NEAR 지갑 선택기",
+    "permalink": "/ko/tools/wallet-selector"
   },
   "next": {
     "title": "Indexing Solutions",

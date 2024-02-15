@@ -24,7 +24,7 @@
     "permalink": "/zh-CN/develop/relayers/build-relayer"
   },
   "next": {
-    "title": "What are Primitives?",
-    "permalink": "/zh-CN/primitives/whatareprimitives"
+    "title": "What is Chain Abstraction?",
+    "permalink": "/zh-CN/abstraction/what-is"
   }
 }

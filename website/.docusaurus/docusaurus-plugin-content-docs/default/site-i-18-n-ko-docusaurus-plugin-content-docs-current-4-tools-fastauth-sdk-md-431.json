@@ -19,13 +19,13 @@
     "title": "FastAuth SDK",
     "sidebar_label": "FastAuth SDK"
   },
-  "sidebar": "tools",
+  "sidebar": "build",
   "previous": {
-    "title": "NEAR 지갑 선택기",
-    "permalink": "/ko/tools/wallet-selector"
+    "title": "What is Chain Abstraction?",
+    "permalink": "/ko/abstraction/what-is"
   },
   "next": {
-    "title": "Explorers",
-    "permalink": "/ko/tools/explorer"
+    "title": "What are Primitives?",
+    "permalink": "/ko/primitives/whatareprimitives"
   }
 }

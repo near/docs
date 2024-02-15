@@ -19,13 +19,13 @@
     "title": "FastAuth SDK",
     "sidebar_label": "FastAuth SDK"
   },
-  "sidebar": "tools",
+  "sidebar": "build",
   "previous": {
-    "title": "Wallet Selector",
-    "permalink": "/vi/tools/wallet-selector"
+    "title": "What is Chain Abstraction?",
+    "permalink": "/vi/abstraction/what-is"
   },
   "next": {
-    "title": "Explorers",
-    "permalink": "/vi/tools/explorer"
+    "title": "What are Primitives?",
+    "permalink": "/vi/primitives/whatareprimitives"
   }
 }

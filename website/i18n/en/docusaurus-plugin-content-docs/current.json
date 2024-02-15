@@ -442,5 +442,9 @@
   "sidebar.tutorials.link.NEAR Lake Primitives": {
     "message": "NEAR Lake Primitives",
     "description": "The label for link NEAR Lake Primitives in sidebar tutorials, linking to https://near.github.io/near-lake-framework-js/"
+  },
+  "sidebar.build.category.Chain Abstraction Services": {
+    "message": "Chain Abstraction Services",
+    "description": "The label for category Chain Abstraction Services in sidebar build"
   }
 }

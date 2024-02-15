@@ -9,16 +9,22 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', 'a83'),
+    component: ComponentCreator('/zh-CN/', '87c'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '8a8'),
+        component: ComponentCreator('/zh-CN/', '108'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '8e2'),
+            component: ComponentCreator('/zh-CN/', '6db'),
             routes: [
+              {
+                path: '/zh-CN/abstraction/what-is',
+                component: ComponentCreator('/zh-CN/abstraction/what-is', 'ddb'),
+                exact: true,
+                sidebar: "build"
+              },
               {
                 path: '/zh-CN/api/rpc/access-keys',
                 component: ComponentCreator('/zh-CN/api/rpc/access-keys', 'c54'),
@@ -1443,12 +1449,6 @@ export default [
                 sidebar: "build"
               },
               {
-                path: '/zh-CN/primitives/welcome',
-                component: ComponentCreator('/zh-CN/primitives/welcome', '680'),
-                exact: true,
-                sidebar: "primitives"
-              },
-              {
                 path: '/zh-CN/primitives/whatareprimitives',
                 component: ComponentCreator('/zh-CN/primitives/whatareprimitives', '5ed'),
                 exact: true,
@@ -1739,9 +1739,9 @@ export default [
               },
               {
                 path: '/zh-CN/tools/fastauth-sdk',
-                component: ComponentCreator('/zh-CN/tools/fastauth-sdk', '5c0'),
+                component: ComponentCreator('/zh-CN/tools/fastauth-sdk', '6ad'),
                 exact: true,
-                sidebar: "tools"
+                sidebar: "build"
               },
               {
                 path: '/zh-CN/tools/indexer-for-explorer',
