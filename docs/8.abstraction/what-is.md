@@ -58,7 +58,6 @@ NEAR Protocol provides a multi-chain signature service that allows users to use 
 Multi-chain signatures work by combining **smart contracts** that produce signatures, with indexers that listen for these signatures, and relayers that submit the transactions to other networks. This allows users to hold assets and use applications in **any** network, only needing to have a single NEAR account.
 :::
 
----
 <!-- 
 ## Chain Abstraction: The holistic view
 
