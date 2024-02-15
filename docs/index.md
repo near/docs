@@ -18,46 +18,46 @@ Welcome, this is the starting point for all NEAR documentation. Learn to build a
           </div>
           <div className="card__body">
             <h3>Understanding NEAR</h3>
-            Learn what NEAR is and how it works.
+            Learn what NEAR is and how it works
           </div>
         </div>
       </a>
     </div>
     <div className="col col--4">
-      <a href="/develop/contracts/welcome">
+      <a href="/develop/contracts/whatisacontract">
         <div className="card">
           <div className="card__image">
             <img src={require("@site/static/docs/assets/welcome-pages/contracts.png").default} alt="Contracts" />
           </div>
           <div className="card__body">
             <h3>Smart Contracts</h3>
-              Learn to build smart contracts in NEAR.
+            Learn to build smart contracts in NEAR
           </div>
         </div>
       </a>
     </div>
     <div className="col col--4">
-      <a href="/develop/integrate/welcome">
+      <a href="/bos/tutorial/quickstart">
         <div className="card">
           <div className="card__image">
-            <img src={require("@site/static/docs/assets/welcome-pages/bos-landing.png").default} alt="Web3 Apps" />
+            <img src={require("@site/static/docs/assets/welcome-pages/bos-landing.png").default} alt="Web3 Components" />
           </div>
           <div className="card__body">
-            <h3>Web Applications</h3>
-              Learn to build multi-chain web apps.
+            <h3>Web3 Components</h3>
+            The building blocks for multi-chain apps
           </div>
         </div>
       </a>
     </div>
     <div className="col col--4">
-      <a href="/primitives/welcome">
+      <a href="/develop/web3-apps/whatareweb3apps">
         <div className="card">
           <div className="card__image">
             <img src={require("@site/static/docs/assets/welcome-pages/examples.png").default} alt="Solutions" />
           </div>
           <div className="card__body">
-            <h3>NEAR Primitives</h3>
-              Reliable solutions powered by NEAR.
+            <h3>Web3 Applications</h3>
+            Supercharge your App using NEAR
           </div>
         </div>
       </a>
@@ -70,7 +70,7 @@ Welcome, this is the starting point for all NEAR documentation. Learn to build a
           </div>
           <div className="card__body">
             <h3>NEAR Tools</h3>
-              Info on our SDK, API, CLI, and more.
+            Discover our SDK, API, CLI, and more
           </div>
         </div>
       </a>
@@ -83,7 +83,7 @@ Welcome, this is the starting point for all NEAR documentation. Learn to build a
           </div>
           <div className="card__body">
             <h3>Query On-Chain Information</h3>
-              Learn about indexers and our data lake.
+              Learn about indexers and our data lake
           </div>
         </div>
       </a>
@@ -101,15 +101,14 @@ Welcome, this is the starting point for all NEAR documentation. Learn to build a
     <Feature url="/concepts/basics/accounts/account-id" title="Named Accounts" subtitle="NEAR uses human-readable accounts" image="user.png" />
     <Feature url="/concepts/basics/accounts/access-keys" title="Multiple Access Keys" subtitle="More keys means more security" image="key.png" />
     <Feature url="/concepts/basics/accounts/smartcontract" title="Smart Contracts" subtitle="Learn about our contract technology" image="contract.png" />
-    <Feature url="/concepts/basics/tokens" title="Token" subtitle="Learn about the NEAR token" image="ft.png" />
-    <Feature url="/concepts/basics/transactions/overview" title="Transactions" subtitle="Fast and Inexpensive" image="transaction.png" />
-    <Feature url="/concepts/basics/validators" title="Validators" subtitle="Learn how the network stays safe" image="validation.png" />
   </Column>
   <Column title="Developer Docs" size="3">
     <Feature url="/develop/integrate/quickstart-frontend" title="Quickstart: WebApp" subtitle="Spin-up your first dApp" image="quickstart.png" />
-    <Feature url="/develop/contracts/quickstart" title="Quickstart: Contract" subtitle="Learn how to write smart contracts" image="smartcontract.png" />
-    <Feature url="/develop/monitor" title="Monitor your App" subtitle="Learn how to track the Blockchain" image="monitor.png" />
-    <Feature url="/tutorials/welcome" title="Tutorials & Examples" subtitle="Check out a vast library of examples" image="tutorials.png" />
+    <Feature url="/develop/contracts/quickstart" title="Quickstart: Contract"
+             subtitle="Learn how to write smart contracts" image="smartcontract.png" />
+    <Feature url="/bos/tutorial/quickstart" title="Multi-chain Components"
+             subtitle="Learn about multi-chain components" image="bos-lido.png" />
+    <Feature url="/bos/queryapi/intro" title="QueryAPI" subtitle="The simplest way to build indexers" image="blocks.png" />
   </Column>
   <Column title="Developer Tools" size="3">
     <Feature url="/sdk/js/introduction" title="JavaScript SDK" subtitle="Write contracts in JavaScript" image="smartcontract-js.png" />
@@ -117,13 +116,12 @@ Welcome, this is the starting point for all NEAR documentation. Learn to build a
     <Feature url="/tools/near-cli" title="NEAR CLI" subtitle="Use NEAR from the Terminal" image="near-cli.png" />
     <Feature url="/tools/near-api-js/quick-reference" title="NEAR API JS" subtitle="Interact with NEAR from JS" image="near-api-js.png" />
     <Feature url="/api/rpc/introduction" title="RPC API" subtitle="Interact with the NEAR RPC API" image="rpc.png" />
-    <Feature url="/concepts/advanced/indexers" title="Indexing blockchain data" subtitle="Query usage information for a contract" image="blocks.png" />
   </Column>
   <Column title="Examples & Tutorials" size="3">
-    <Feature url="/develop/relevant-contracts/ft" title="Fungible Tokens" subtitle="Learn how to use and make FT" image="ft.png" />
-    <Feature url="/develop/relevant-contracts/nft" title="Non-Fungible Tokens" subtitle="Enter the NFT space" image="nft.png" />
-    <Feature url="/develop/relevant-contracts/dao" title="Autonomous Organizations" subtitle="Understand DAOs" image="dao.png" />
-    <Feature url="/tutorials/indexer/near-lake-state-changes-indexer" title="Lake Indexer" subtitle="Watch the network and access all the events" image="experiment.png" />
+    <Feature url="/tutorials/examples/donation" title="Donation" subtitle="Receive and send tokens" image="donation.png" />
+    <Feature url="/tutorials/examples/factory" title="Factory Contract" subtitle="Build a contract that deploys contracts" image="factory.png" />
+    <Feature url="/tutorials/examples/frontend-multiple-contracts" title="Multi-Contract Frontend" subtitle="Interact with multiple contracts" image="multiple.png" />
+    <Feature url="/tutorials/nfts/js/introduction" title="Master NFTs on NEAR (JS)" subtitle="Learn everything about NFT in JS" image="nft-marketplace-js.png" />
   </Column>
 </FeatureList>
 
@@ -136,7 +134,7 @@ Here are more sources from our ecosystem that can help you to learn more about N
 <div className="container">
   <div className="row cards">
     <div className="col col--6">
-      <a href="https://awesomenear.com">
+      <a href="https://near.org/applications">
         <div className="card">
           <div className="card__image">
             <img src={require("@site/static/docs/assets/welcome-pages/awesomenear.jpg").default} alt="Discover" />

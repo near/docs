@@ -24,24 +24,26 @@ All of our [examples](https://github.com/near-examples/docs-examples) come with 
 ---
 
 ## Snippet I: Testing Hello NEAR
-Lets take a look at the test of our [Quickstart Project](../quickstart.md) [👋 Hello NEAR](https://github.com/near-examples/hello-near-rs), where we deploy the contract on an account and test it correctly retrieves and sets the greeting.
+
+Lets take a look at the test of our [Quickstart Project](../quickstart.md) [👋 Hello NEAR](https://github.com/near-examples/hello-near-examples), where we deploy the contract on an account and test it correctly retrieves and sets the greeting.
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="main.ava.ts"
-            url="https://github.com/near-examples/hello-near-js/blob/master/integration-tests/src/main.ava.ts" start="9" end="43"/>
+            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/sandbox-ts/src/main.ava.ts" start="9" end="43"/>
   </Language>
 </CodeTabs>
 
 ---
 
 ## Snippet II: Testing Donations
-In most cases we will want to test complex methods involving multiple users and money transfers. A perfect example for this is our [Donation Example](https://github.com/near-examples/donation-js), which enables users to `donate` money to a beneficiary. Lets see its integration tests:
+
+In most cases we will want to test complex methods involving multiple users and money transfers. A perfect example for this is our [Donation Example](https://github.com/near-examples/donation-examples), which enables users to `donate` money to a beneficiary. Lets see its integration tests
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="main.ava.ts"
-            url="https://github.com/near-examples/donation-js/blob/master/integration-tests/src/main.ava.ts"
+            url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/sandbox-ts/src/main.ava.ts"
             start="50" end="73" />
   </Language>
 </CodeTabs>
@@ -123,7 +125,6 @@ This is because the contract's data is too big for the RPC service to pull down.
 </TabItem>
 </Tabs>
 
-
 ### Patch State on the Fly
 
 In Sandbox-mode, you can add or modify any contract state, contract code, account or access key with `patchState`.
@@ -134,7 +135,7 @@ You can alter contract code, accounts, and access keys using normal transactions
 
 :::
 
-Keep in mind that you cannot perform arbitrary mutation on contract state with transactions since transactions can only include contract calls that mutate state in a contract-programmed way. For example, with an NFT contract, you can perform some operation with NFTs you have ownership of, but you cannot manipulate NFTs that are owned by other accounts since the smart contract is coded with checks to reject that. This is the expected behavior of the NFT contract. However, you may want to change another person's NFT for a test setup. This is called "arbitrary mutation on contract state" and can be done with `patchState`: 
+Keep in mind that you cannot perform arbitrary mutation on contract state with transactions since transactions can only include contract calls that mutate state in a contract-programmed way. For example, with an NFT contract, you can perform some operation with NFTs you have ownership of, but you cannot manipulate NFTs that are owned by other accounts since the smart contract is coded with checks to reject that. This is the expected behavior of the NFT contract. However, you may want to change another person's NFT for a test setup. This is called "arbitrary mutation on contract state" and can be done with `patchState`:
 
 <Tabs groupId="code-tabs">
 <TabItem value="🌐 JavaScript" >
@@ -244,6 +245,7 @@ async fn test_contract() -> anyhow::Result<()> {
         .await?;
 }
 ```
+
 _[See the full example on Github](https://github.com/near/workspaces-rs/blob/main/examples/src/fast_forward.rs)._
 
 </TabItem>
@@ -296,7 +298,6 @@ let worker = workspaces::testnet().await?;
 
 </TabItem>
 </Tabs>
-
 
 2. Set the `NEAR_WORKSPACES_NETWORK` and `TESTNET_MASTER_ACCOUNT_ID` environment variables when running your tests:
 

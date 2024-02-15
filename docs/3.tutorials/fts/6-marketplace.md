@@ -157,16 +157,24 @@ The first thing you'll want to do is deploy a new FT, NFT, and marketplace contr
 yarn build && cd market-contract && ./build.sh && cd ..
 ```
 
-To deploy the FT contract and export an environment variable, run the following command. If you've already been using dev-accounts, attach the `-f` flag at the end of the dev-deploy command to force create a new one.
+To deploy the FT contract and export an environment variable, run the following command:
 
-```
-near dev-deploy out/contract.wasm && export FT_CONTRACT=$(cat neardev/dev-account)
+```bash
+export FT_CONTRACT=<new-ft-account-id>
+near create-account $FT_CONTRACT --useFaucet
+near deploy $FT_CONTRACT out/contract.wasm
 ```
 
 Next, you'll deploy the NFT and marketplace contracts.
 
-```
-near dev-deploy out/market.wasm -f && export MARKETPLACE_CONTRACT=$(cat neardev/dev-account) && near dev-deploy out/nft-contract.wasm -f && export NFT_CONTRACT=$(cat neardev/dev-account)
+```bash
+export NFT_CONTRACT=<new-nft-account-id>
+near create-account $NFT_CONTRACT --useFaucet
+near deploy $NFT_CONTRACT out/nft-contract.wasm
+
+export MARKETPLACE_CONTRACT=<new-marketplace-account-id>
+near create-account $MARKETPLACE_CONTRACT --useFaucet
+near deploy $MARKETPLACE_CONTRACT out/market.wasm
 ```
 
 Check and see if your environment variables are all correct by running the following command. Each output should be different.
