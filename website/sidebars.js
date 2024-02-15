@@ -255,7 +255,7 @@ const sidebar = {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Chain Abstraction ✨ </small></b></span>"
     },
-    'chain-abstraction/what-is',
+    'abstraction/what-is',
     {"Chain Abstraction Services": [
       'tools/fastauth-sdk'
     ]},
