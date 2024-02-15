@@ -3,16 +3,17 @@ id: integrations
 title: Integrations
 ---
 
-We have some proof of concept works for integrating with rollups. We are working to prove the system's capabilities and provide a reference implementation for others to follow. 
+We have some proof of concept works for integrating with roll-ups. We are working to prove the system's capabilities and provide a reference implementation for others to follow. 
 
 They are being actively developed, so they are in a state of flux.
 
+- [Arbitrum Nitro](./arbitrum.md)
 - [Optimism](./optimism.md)
 - [Polygon CDK](./cdk-integration.md)
 
 ---
 
-## 👷🚧 Integrating your own rollup 🚧👷
+## 👷🚧 Integrating your own roll-up 🚧👷
 
 The aim of NEAR DA is to be as modular as possible.
 
@@ -73,7 +74,7 @@ make deploy-contracts
 
 Don't forget to update your `.env` file for `DA_KEY`, `DA_CONTRACT` and `DA_ACCOUNT` for use later.
 
-### If the da-rpc-sys image isn't released yet
+### If the `da-rpc-sys` image isn't released yet
 
 We use an FFI library for any go applications that need it, until this is release you've gotta build it locally.
 
@@ -108,26 +109,25 @@ To build this image, there's a makefile entry for it:
 make light-client-docker
 ```
 
-### If deploying optimism
+### Deploying Optimism
 
 Configure `./op-stack/optimism/ops-bedrock/.env.example`.
 This needs copying the without `.example` suffix, adding the keys, contract address, and signer from your NEAR wallet, and should work out of the box for you.
 
-#### If deploying optimism on arm64
+#### If deploying Optimism on arm64
 
 You can use a docker image to standardize the builds for `da-rpc-sys` and genesis.
 
-`da-rpc-sys-unix`
+- `da-rpc-sys-unix`
 This will copy the contents of `da-rpc-sys-docker` generated libraries to the `gopkg/da-rpc` folder.
 
-`op-devnet-genesis-docker`
+- `op-devnet-genesis-docker`
 This will create a docker image to generate the genesis files
 
-`op-devnet-genesis`
-
+- `op-devnet-genesis`
 This will generate the genesis files in a docker container and push the files in `.devnet` folder.
 
-`make op-devnet-up`
+- `make op-devnet-up`
 This should build the docker images and deploy a local devnet for you
 
 Once up, observe the logs
@@ -146,7 +146,7 @@ make op-devnet-down
 
 If you just wanna get up and running and have already built the docker images using something like `make bedrock images`, there is a `docker-compose-testnet.yml` in `ops-bedrock` you can play with.
 
-### If deploying Polygon CDK
+### Deploying Polygon CDK
 
 First, we have to pull the docker image containing the contracts.
 
@@ -175,7 +175,7 @@ Now we can do the following:
 cdk-devnet-up
 ```
 
-This will spawn the devnet and an explorer for each network at `localhost:4000`(L1) and localhost:4001`(L2).
+This will spawn the devnet and an explorer for each network at `localhost:4000`(L1) and `localhost:4001`(L2).
 
 Run a transaction, check out your contract on NEAR, and verify the commitment with the last 64 bytes of the transaction made to L1.
 
@@ -198,3 +198,38 @@ For this transaction, the blob commitment was `7f5aa2475d57f8a5b2b3d3368ee8760cf
 And if I check the CDKValidium contract `0x0dcd1bf9a1b36ce34237eeafef220932846bcd82`, the root was at the end of the calldata.
 
 `0x438a53990000000000000000000000000000000000000000000000000000000000000060000000000000000000000000f39fd6e51aad88f6f4ce6ab8827279cfffb922660000000000000000000000000000000000000000000000000000000000000180000000000000000000000000000000000000000000000000000000000000000233a121c7ad205b875b115c1af3bbbd8948e90afb83011435a7ae746212639654000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000651c2f3400000000000000000000000000000000000000000000000000000000000000005ee177aad2bb1f9862bf8585aafcc34ebe56de8997379cc7aa9dc8b9c68d7359000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000651c303600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000040b5614110c679e3d124ca2b7fca6acdd6eb539c1c02899df54667af1ffc7123247f5aa2475d57f8a5b2b3d3368ee8760cffeb72b11783779a86abb83ac09c8d59`
+
+### Deploying Arbitrum Nitro
+
+Build `daserver/datool`:
+
+```
+make target/bin/daserver && make target/bin/datool
+```
+
+Deploy your DA contract as above 
+
+Update `daserver` config to introduce new configuration fields:
+
+```jsx
+ "near-aggregator": {
+      "enable": true,
+      "key": "ed25519:insert_here",
+      "account": "helloworld.testnet",
+      "contract": "your_deployed_da_contract.testnet",
+      "storage": {
+        "enable": true,
+        "data-dir": "config/near-storage"
+      }
+    },
+```
+
+```sh
+target/bin/datool client rpc store  --url http://localhost:7876 --message "Hello world" --signing-key config/daserverkeys/ecdsa
+```
+
+Take the hash, check the output:
+
+```sh
+target/bin/datool client rest getbyhash --url http://localhost:7877 --data-hash 0xea7c19deb86746af7e65c131e5040dbd5dcce8ecb3ca326ca467752e72915185
+```

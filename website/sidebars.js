@@ -807,6 +807,7 @@ const sidebar = {
     {
       "Integrations": [
         "data-availability/integrations",
+        "data-availability/arbitrum",
         "data-availability/optimism",
         "data-availability/cdk-integration"
       ]
