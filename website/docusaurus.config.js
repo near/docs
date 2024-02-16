@@ -153,16 +153,19 @@ const config = {
             },
             { label: "VSCode Extension ", href: "/bos/dev/vscode" },
             { label: "BOS Web IDE (Jutsu)", href: "https://jutsu.ai/editor" },
-            { label: "Remix IDE Plugin", href: "https://docs.welldonestudio.io/code/getting-started" },],
+            { label: "Remix IDE Plugin", href: "https://docs.welldonestudio.io/code/getting-started" },
+          ],
         },
         {
           type: 'dropdown',
           label: 'Resources',
           position: 'left',
           items: [
+            { label: '🎉 Changelog', href: '/blog'},
+            { label: 'Github', href: 'https://github.com/near', className: 'header-github-link'},
             {
               type: "html",
-              value: '<div class="subtitle"> Support </dib>',
+              value: '<hr/><div class="subtitle"> Support </dib>',
             },
             {
               href: 'https://discord.gg/GZ7735Xjce',
@@ -194,7 +197,6 @@ const config = {
           type: 'search',
           position: 'right',
         },
-        { to: 'blog', label: 'Changelog 🎉', position: 'right' },
         {
           type: 'localeDropdown',
           position: 'right',
@@ -202,12 +204,6 @@ const config = {
         {
           href: "login",
           position: "right"
-        },
-        {
-          href: 'https://github.com/near',
-          position: 'right',
-          className: 'header-github-link',
-          'aria-label': 'GitHub repository',
         },
       ],
     },
