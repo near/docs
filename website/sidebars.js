@@ -259,6 +259,9 @@ const sidebar = {
     {"Chain Abstraction Services": [
       'tools/fastauth-sdk'
     ]},
+    {"Chain Signatures": [
+      "abstraction/chain-signatures/wallet",
+    ]},
     {
       "type": "html",
       "value": "<hr/>"
@@ -738,15 +741,6 @@ const sidebar = {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Composable Apps </small></b></span>"
     },
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Chain Signatures </small></b></span>"
-    },
-    "develop/chain-signatures/wallet",
     {
       "type": "html",
       "value": "<hr/>"
