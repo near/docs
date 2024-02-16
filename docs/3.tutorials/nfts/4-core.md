@@ -136,7 +136,7 @@ With that finished, you've now successfully added the necessary logic to allow u
 Using the build script, build and deploy the contract as you did in the previous tutorials:
 
 ```bash
-yarn build && near deploy --wasmFile out/main.wasm --accountId $NFT_CONTRACT_ID
+yarn build && near deploy $NFT_CONTRACT_ID out/main.wasm
 ```
 
 This should output a warning saying that the account has a deployed contract and will ask if you'd like to proceed. Simply type `y` and hit enter.
@@ -201,8 +201,8 @@ In the [next tutorial](/tutorials/nfts/approvals), you'll learn about the approv
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `3.0.0`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
+- near-cli: `4.0.4`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 - Enumeration standard: [NEP181](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration), version `1.0.0`
 
 :::

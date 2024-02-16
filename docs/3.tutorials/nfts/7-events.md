@@ -150,7 +150,7 @@ When `nft_transfer_call` is invoked, it will:
 
 If you only place the log in the `internal_transfer` function, the log will be emitted and the indexer will think that the NFT was transferred. If the transfer is reverted during `nft_resolve_transfer`, however, that event should **also** be emitted. Anywhere that an NFT **could** be transferred, we should add logs. Replace the `nft_resolve_transfer` with the following code.
 
-<Github language="rust" start="182" end="277" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/nft_core.rs" />
+<Github language="rust" start="182" end="279" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/nft_core.rs" />
 
 In addition, you need to add an `authorized_id` and `memo` to the parameters for `nft_resolve_transfer` as shown below.
 
@@ -164,26 +164,21 @@ With that finished, you've successfully implemented the events standard and it's
 
 ## Deploying the contract {#redeploying-contract}
 
-For the purpose of readability and ease of development, instead of redeploying the contract to the same account, let's create a sub-account and deploy to that instead. You could have deployed to the same account as none of the changes you implemented in this tutorial would have caused errors.
+For the purpose of readability and ease of development, instead of redeploying the contract to the same account, let's create an account and deploy to that instead. You could have deployed to the same account as none of the changes you implemented in this tutorial would have caused errors.
 
-### Creating a sub-account
+### Deployment
 
-Run the following command to create a sub-account `events` of your main account with an initial balance of 25 NEAR which will be transferred from the original to your new account.
-
-```bash
-near create-account events.$NFT_CONTRACT_ID --masterAccount $NFT_CONTRACT_ID --initialBalance 25
-```
-
-Next, you'll want to export an environment variable for ease of development:
+Next, you'll deploy this contract to the network.
 
 ```bash
-export EVENTS_NFT_CONTRACT_ID=events.$NFT_CONTRACT_ID
+export EVENTS_NFT_CONTRACT_ID=<accountId>
+near create-account $EVENTS_NFT_CONTRACT_ID --useFaucet
 ```
 
 Using the build script, build the deploy the contract as you did in the previous tutorials:
 
 ```bash
-yarn build && near deploy --wasmFile out/main.wasm --accountId $EVENTS_NFT_CONTRACT_ID
+yarn build && near deploy $EVENTS_NFT_CONTRACT_ID out/main.wasm
 ```
 
 ### Initialization and minting {#initialization-and-minting}
@@ -247,8 +242,8 @@ In the next tutorial, you'll look at the basics of a marketplace contract and ho
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `3.0.0`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
-- Events standard: [NEP297 extension](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event), version `1.0.0`
+- near-cli: `4.0.4`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
+- Events standard: [NEP297 extension](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event), version `1.1.0`
 
 :::
