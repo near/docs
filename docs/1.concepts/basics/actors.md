@@ -38,5 +38,5 @@ Here are some of the best **introductory videos**:
 
 And you can read more in these **educational resources**:
 - The [Beginner’s Guide to the NEAR Blockchain](https://near.org/blog/the-beginners-guide-to-the-near-blockchain/)
-- The [Official NEAR white paper](https://near.org/papers/the-official-near-white-paper/#design-principles)
+- The [Official NEAR white paper](https://pages.near.org/papers/the-official-near-white-paper/#design-principles)
 - Blog post on [Thresholded Proof of Stake](https://near.org/blog/thresholded-proof-of-stake/)

@@ -17,7 +17,7 @@ If you’re familiar with Ethereum’s pricing model, you may know that, like NE
 
 ## How does NEAR's design align incentives?
 
-Storage-staked tokens are unavailable for other uses, such as validation staking. This increases the yield that validators will receive. Learn more in [the economics whitepaper](https://near.org/papers/economics-in-sharded-blockchain/).
+Storage-staked tokens are unavailable for other uses, such as validation staking. This increases the yield that validators will receive. Learn more in [the economics whitepaper](https://pages.near.org/papers/economics-in-sharded-blockchain/).
 
 ## When do tokens get staked?
 
@@ -118,7 +118,7 @@ In general, Borsh is faster, uses less storage, and costs less gas. Use it if yo
 
 This is especially important if you are storing user-generated data!
 
-Let's use this [Guest Book](https://github.com/near-examples/guest-book) as an example. As implemented today, visitors to the app can sign in with NEAR and leave a message. Their message is stored on-chain.
+Let's use this [Guest Book](https://github.com/near-examples/guest-book-examples) as an example. As implemented today, visitors to the app can sign in with NEAR and leave a message. Their message is stored on-chain.
 
 Imagine this app got very popular, and that visitors started leaving unexpectedly long messages. The contract owner might run out of funding for storage very quickly!
 

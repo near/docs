@@ -104,7 +104,7 @@ Throughout this section, we’ve discussed how to call a smart contract from a c
 
 Looks simple enough, but there are few gotchas:
 - In order to provide a call status (success or failure) and a return value to the calling contract, a callback method should be called, so there’s no single activation of ContractA. Instead, an entry method is called first by the user, and then a callback is invoked in response to cross-contract call completion.
-- Transaction status is determined by the success or failure of a first method call. For example, if a ContractB.methodB or ContractA.methodACb call fails, the transaction will still be considered successful. This means that to ensure proper rollbacks in case of expected failures, custom rollback code must be written in the ContractA.methodACb, and the callback method itself must not fail at all. Otherwise, smart contract state might be left inconsistent.
+- Transaction status is determined by the success or failure of a first function call. For example, if a ContractB.methodB or ContractA.methodACb call fails, the transaction will still be considered successful. This means that to ensure proper rollbacks in case of expected failures, custom rollback code must be written in the ContractA.methodACb, and the callback method itself must not fail at all. Otherwise, smart contract state might be left inconsistent.
 - Cross-contract calls must have gas attached by the calling contract. Total available gas is attached to a transaction by a calling user, and distributed inside the call chain by contracts. For example, if 15TGas are attached by the user, ContractA may reserve 5TGas for itself and pass the rest to ContractB. All unspent gas will be refunded back to the user.
 
 
@@ -193,7 +193,7 @@ At the end, transaction execution details, including token transfers, logs, cros
 
 During the development, and sometimes even in production, updates to a contract’s code (or even data) are needed. That’s why different contract upgrades mechanisms have been created.
 
-During the local development, we can just recreate a smart contract’s account each time we deploy a contract ([dev-deploy](../../4.tools/cli.md#near-dev-deploy-near-dev-deploy) command in NEAR CLI exists for this). With such an approach, contract data will be purged each time a contract is redeployed. More info [here](/sdk/rust/building/prototyping).
+While developing the contract, we recommend just creating a new account each time you need to deploy a contract (the [create-account](../../4.tools/cli.md#near-create-account) command in NEAR CLI exists for this). With such an approach, you will start with a clean state each time.
  
 However, once we move to a more stable environment, like testing or production, more sophisticated methods are needed. Redeployment of code is quite simple: we just issue another `DeployContract` transaction, and NEAR will handle the rest. The biggest challenge is to migrate contract state - [several approaches are possible](../../2.develop/upgrade.md#migrating-the-state), but all of them involve some kind of migration code.
 

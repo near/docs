@@ -253,8 +253,11 @@ This should create a new wasm file in the `out/series.wasm` directory. This is w
 Next, you'll deploy this contract to the network by using a dev-account. If you've already used one in this tutorial before, make sure you include the `-f` flag which will remove the existing dev-account before creating a new one.
 
 ```bash
-near dev-deploy out/series.wasm && export NFT_CONTRACT_ID=$(cat neardev/dev-account)
+export NFT_CONTRACT_ID=<accountId>
+near create-account $NFT_CONTRACT_ID --useFaucet
+near deploy $NFT_CONTRACT_ID out/series.wasm
 ```
+
 Check if this worked correctly by echoing the environment variable.
 ```bash
 echo $NFT_CONTRACT_ID

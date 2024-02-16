@@ -1,7 +1,7 @@
 ---
 id: quickstart
-title: Hello Components
-sidebar_label: ⭐ Overview
+title: What are NEAR Components?
+sidebar_label: What is a Component?
 ---
 
 import Tabs from '@theme/Tabs';
@@ -10,8 +10,10 @@ import {WidgetEditor} from "@site/src/components/social-widget"
 
 NEAR Components are a new way to build web applications. They are composable, reusable and decentralized.
 
+![img](/docs/assets/welcome-pages/bos-landing.png)
+
 :::tip
-You can login to interact with some of these examples.
+You can login to interact with the examples in this section.
 :::
 
 ---
