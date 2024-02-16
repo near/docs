@@ -1,7 +1,7 @@
 ---
 id: fastauth-sdk
 title: FastAuth SDK
-sidebar_label: FastAuth SDK
+sidebar_label: FastAuth (Email Login)
 ---
 
 ## Introduction

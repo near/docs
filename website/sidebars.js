@@ -254,6 +254,18 @@ const sidebar = {
     },
     {
       "type": "html",
+      "value": "<span class='menu__link'><b><small> Chain Abstraction ✨ </small></b></span>"
+    },
+    'abstraction/what-is',
+    {"Chain Abstraction Services": [
+      'tools/fastauth-sdk'
+    ]},
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
       "value": "<span class='menu__link'><b><small> Primitives (FT, NFT, ...) </small></b></span>"
     },
     "primitives/whatareprimitives",
@@ -528,17 +540,6 @@ const sidebar = {
     },
 
   ],
-  "primitives": [
-    "primitives/welcome",
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Standards </small></b></span>"
-    },
-  ],
   "tools": [
     "tools/welcome",
     {
@@ -705,7 +706,6 @@ const sidebar = {
       "label": "Wallets",
       "items": [
         "tools/wallet-selector",
-        "tools/fastauth-sdk",
         {
           "type": "link",
           "label": "Remix IDE Plugin",
