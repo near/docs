@@ -13,7 +13,7 @@ They are being actively developed, so they are in a state of flux.
 
 ---
 
-## 👷🚧 Integrating your own roll-up 🚧👷
+## Integrating your own roll-up
 
 The aim of NEAR DA is to be as modular as possible.
 
