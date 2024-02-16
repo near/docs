@@ -1,5 +1,5 @@
 ---
-id: chain-signatures
+id: signatures
 title: Chain Signatures
 ---
 

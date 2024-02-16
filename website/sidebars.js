@@ -25,8 +25,8 @@ const sidebar = {
       ]
     },
     {
-      "Account Abstraction": [
-        "concepts/account-abstraction/chain-signatures",
+      "Chain Abstraction": [
+        "concepts/chain-abstraction/signatures",
       ]
     },
     {
