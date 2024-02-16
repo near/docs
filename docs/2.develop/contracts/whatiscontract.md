@@ -6,7 +6,7 @@ sidebar_label: What is a Contract?
 
 Smart contracts are pieces of **executable code** that live in a NEAR account. They can **store data**, **perform transactions** in the account’s name, and **expose methods** so other accounts can interact with them.
 
-![img](/docs/assets/welcome-pages/contracts.png)
+![img](/docs/assets/welcome-pages/contracts-landing.png)
 
 Do not worry if you don't know how smart-contract blockchains work. As a developer, it is sufficient to understand that NEAR smart-contracts:
 1. Have **limited** computational resources.

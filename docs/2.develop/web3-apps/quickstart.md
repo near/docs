@@ -8,7 +8,7 @@ import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 Web3 Applications - also known as decentralized apps (dApps) - leverage [smart contracts](../contracts/whatiscontract.md) and blockchain data to offer **transparency**, **security** and **giving back control** to users over their assets and data.
 
-![img](/docs/assets/welcome-pages/examples.png)
+![img](/docs/assets/welcome-pages/examples-landing.png)
 
 NEAR simplifies building Web3 apps for the general public, making it easy to **interact** with different blockchains, while helping to **onboard users** that are not familiarized with crypto.
 
