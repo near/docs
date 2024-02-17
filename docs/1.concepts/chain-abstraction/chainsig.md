@@ -71,6 +71,39 @@ Using MPC, the root key is never reconstructed and it’s never available. User 
 Chain signatures enable you to implement multichain and cross-chain workflows in a simple way.
 Take a look at a few possible use cases:
 
+### Trade Blockchain assets without transactions
+
+Trading assets across different blockchains usually require using a bridge that supports them, bringing longer settlement times as the trades are not atomic and require confirmation on both blockchains.
+
+Using Chain signatures you have the ability to change the ownership of different blockchain accounts (e.g., Bitcoin and Ethereum) to trade assets across chains without doing on-chain transactions.
+This way you can keep native tokens on their native blockchain (e.g., `BTC` on Bitcoin, `ETH` on Ethereum, `ARB` on Arbitrum), and trade them without bridges.
+As an added bonus, trades are atomic across chains, settlement takes just 2 seconds, and it supports any token on any chain.
+
+For example, a basic trade flow could be:
+
+1. Users create an account controlled by NEAR chain signatures
+2. Users funds these accounts on the native blockchains (depositing)
+3. Place orders by funding a new account for the total amount of the order
+4. Another user accepts the order
+5. Users swap control of the keys to fulfill the order
+
+![docs](/docs/native-cross-chain.png)
+
+<details>
+- User A has `ETH` on the Ethereum blockchain, and wants to buy native Bitcoin
+- User B wants to sell Bitcoin for Ethereum
+
+**Steps**
+
+1. User B, using NEAR, creates and funds a new account on Bitcoin with 1 `BTC`
+2. User B, using the spot marketplace smart contract, signs a transaction to create a limit order. This transfers control of the Bitcoin account to the smart contract
+3. User A creates a batch transaction with two steps
+    - Creating and funding a new Ethereum account with 10 `ETH`
+    - Accepting the order and atomically swapping control of the accounts
+4. User A takes ownership of the Bitcoin account with 1 `BTC`, and User B takes ownership of the Ethereum account with 10 `ETH`
+5. User A and B can _"withdraw"_ their asset from the order by transferring the assets to their respective _"main"_ accounts
+</details>
+
 ### Oauth-controlled Blockchain accounts
 
 On-boarding is a huge problem for decentralized applications. If you want widespread adoption you can't expect people to keep seed phrases safe in order to use an application.
