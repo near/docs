@@ -83,12 +83,12 @@ near view nft.examples.testnet nft_tokens_for_owner '{"account_id": "'$NEARID'"}
 ```json
 [
   {
-    "token_id": "0",
-    "owner_id": "dev-xxxxxx-xxxxxxx",
+    "token_id": "Goi0CZ",
+    "owner_id": "bob.testnet",
     "metadata": {
-      "title": "Some Art",
-      "description": "My NFT media",
-      "media": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Olympus_Mons_alt.jpg/1024px-Olympus_Mons_alt.jpg",
+      "title": "GO TEAM",
+      "description": "The Team Goes",
+      "media": "https://bafybeidl4hjbpdr6u6xvlrizwxbrfcyqurzvcnn5xoilmcqbxfbdwrmp5m.ipfs.dweb.link/",
       "media_hash": null,
       "copies": 1,
       "issued_at": null,
@@ -125,7 +125,7 @@ Now that you're familiar with the process, you can jump to [Contract Architectur
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `3.0.0`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
+- near-cli: `4.0.4`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 
 :::
