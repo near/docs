@@ -277,6 +277,7 @@ const sidebar = {
     },
     'abstraction/what-is',
     {"Chain Abstraction Services": [
+      "develop/relayers/multichain-server",
       'tools/fastauth-sdk'
     ]},
     {
@@ -827,6 +828,7 @@ const sidebar = {
     {
       "Integrations": [
         "data-availability/integrations",
+        "data-availability/arbitrum",
         "data-availability/optimism",
         "data-availability/cdk-integration"
       ]
