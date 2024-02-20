@@ -257,6 +257,7 @@ const sidebar = {
     },
     'abstraction/what-is',
     {"Chain Abstraction Services": [
+      "develop/relayers/multichain-server",
       'tools/fastauth-sdk'
     ]},
     {
