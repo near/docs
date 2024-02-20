@@ -28,85 +28,23 @@ export NEAR_ENV=betanet
 ### Generating a key-pair first {#generating-a-key-pair-first}
 
 ```bash
-near generate-key tmp1
+near generate-key --saveImplicit
 ```
 
 Example Output
 ```
-Generated key pair with ed25519:BGCCDDHfysuuVnaNVtEhhqeT4k9Muyem3Kpgq2U1m9HX public key
+Seed phrase: lumber habit sausage used zebra brain border exist meat muscle river hidden
+Key pair: {"publicKey":"ed25519:AQgnQSR1Mp3v7xrw7egJtu3ibNzoCGwUwnEehypip9od","secretKey":"ed25519:51qTiqybe8ycXwPznA8hz7GJJQ5hyZ45wh2rm5MBBjgZ5XqFjbjta1m41pq9zbRZfWGUGWYJqH4yVhSWoW6pYFkT"}
+Implicit account: 8bca86065be487de45e795b2c3154fe834d53ffa07e0a44f29e76a2a5f075df8
+Storing credentials for account: 8bca86065be487de45e795b2c3154fe834d53ffa07e0a44f29e76a2a5f075df8 (network: testnet)
+Saving key to '~/.near-credentials/testnet/8bca86065be487de45e795b2c3154fe834d53ffa07e0a44f29e76a2a5f075df8.json'
 ```
 
-It generates a key-pair for `tmp1` account ID. The new public key is `ed25519:BGCCDDHfysuuVnaNVtEhhqeT4k9Muyem3Kpgq2U1m9HX`.
-
-NEAR's string representation of a public key is `<curve>:<data>`.
-- Curve is either `ed25519` or `secp256k1`. For implicit accounts we only support `ed25519`.
-- Data is a base58 encoding of the public key. For `ed25519` it contains 32 bytes.
-
-This command generated a key-pair locally and stored it locally at:
-```
-~/.near-credentials/betanet/tmp1.json
-```
-
-### Viewing the key-pair {#viewing-the-key-pair}
-
-Run this command to print the content of the key-pair file:
+#### Using the Implicit Account
+We can export our account ID to a bash env variable:
 ```bash
-cat ~/.near-credentials/betanet/tmp1.json
+export ACCOUNT="8bca86065be487de45e795b2c3154fe834d53ffa07e0a44f29e76a2a5f075df8"
 ```
-
-Content:
-```json
-{"account_id":"tmp1","public_key":"ed25519:BGCCDDHfysuuVnaNVtEhhqeT4k9Muyem3Kpgq2U1m9HX","private_key":"ed25519:4qAABW9HfVW4UNQjuQAaAWpB21jqoP58kGqDia18FZDRat6Lg6TLWdAD9FyvAd3PPQLYF4hhx2mZAotJudVjoqfs"}
-```
-
-As you can see, it's a valid json-file and public key matches the one we generated.
-The `private_key` is a secret/private key of the key pair that can be used to sign transactions with the corresponding public key.
-
-### Converting a public key to an account ID. {#converting-a-public-key-to-an-account-id}
-
-Let's convert a public key from NEAR string representation `ed25519:BGCCDDHfysuuVnaNVtEhhqeT4k9Muyem3Kpgq2U1m9HX`
-
-The easiest way is to use `near-cli` with interactive console `repl`
-
-1) Start `near repl`:
-```bash
-near repl
-```
-
-2) Store your base58 public key to a local constant:
-```javascript
-const pk58 = 'ed25519:BGCCDDHfysuuVnaNVtEhhqeT4k9Muyem3Kpgq2U1m9HX'
-```
-
-3) Now let's parse the public key and convert it to the hex in one line:
-```javascript
-nearAPI.utils.PublicKey.fromString(pk58).data.toString('hex')
-```
-
-The output string is the account ID in hex (without `'`):
-```javascript
-'98793cd91a3f870fb126f66285808c7e094afcfc4eda8a970f6648cdf0dbd6de'
-```
-
-Now the new account ID is `98793cd91a3f870fb126f66285808c7e094afcfc4eda8a970f6648cdf0dbd6de`.
-
-4) We can now give this account ID to someone and ask them to transfer tokens.
-
-### Moving the temporary key-pair {#moving-the-temporary-key-pair}
-
-Finally, we need to move `tmp1.json` key-pair to the real account ID, so that `near-cli` can use it to sign transactions.
-
-Let's first export our account ID to a bash env variable:
-```bash
-export ACCOUNT="98793cd91a3f870fb126f66285808c7e094afcfc4eda8a970f6648cdf0dbd6de"
-```
-
-Now we can move the `tmp1.json` file:
-```bash
-mv ~/.near-credentials/betanet/tmp1.json ~/.near-credentials/betanet/$ACCOUNT.json
-```
-
-*NOTE: While `.json` key-pair file still contains the `"account_id":"tmp1"`, it's okay. Because `near-cli` doesn't care.*
 
 Assuming you've received tokens on your new account, you can transfer from it using the following command:
 ```bash
