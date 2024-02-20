@@ -175,21 +175,21 @@ The GraphiQL tab in the editor will allow you to view the returned data from you
 
 ### Publishing
 
-Clicking the "Publish" button will open the following pop-up. From here you can configure the Indexer name, start block, and contract filter.
+Clicking the <kbd>Publish</kbd> button will open the following pop-up. From here, you can configure the Indexer name, start block, and contract filter.
 
 ![Publishing QueryAPI Indexer](/docs/assets/QAPIPublish.png)
 
 #### Start Block Options
-- Start from latest block - Start indexing from the tip of the network, the exact block height is not guaranteed. Useful for testing indexing for events happening in real-time.
-- Continue from last processed block - Update the configuration of the Indexer, and resume indexing from the last processed block. The block at which config is updated is not guaranteed. Useful for fixing bugs encountered on specific blocks, or adding additional logs etc.
-- Start from block height - Start indexing from the height specified, i.e. when the contract was deployed, or when a specific event occurs.
+- `Start from latest block`: Start indexing from the tip of the network. The exact block height is not guaranteed. Useful for testing indexing for events happening in real-time.
+- `Continue from last processed block`: Update the configuration of the Indexer, and resume indexing from the last processed block. The block at which the configuration is updated is not guaranteed. Useful for fixing bugs encountered on specific blocks, adding additional logs, etc.
+- `Start from block height`: Start indexing from the height specified, i.e., when the contract was deployed, or when a specific event occurs.
 
 :::info
-"Continue from last processed block" is only available for existing indexers. Updating the contract filter is disabled for this option, as it will create a backlog of blocks for two different contracts. 
+`Continue from last processed block` is only available for existing indexers. Updating the contract filter is disabled for this option, as it will create a backlog of blocks for two different contracts. 
 :::
 
 :::warning
-"Start from latest block" and "Start from block height" supersede the existing process, all queued blocks at the time of update will be cleared.
+`Start from latest block` and `Start from block height` supersede the existing process. All queued blocks at the time of update will be cleared.
 :::
 
 ## Performing Queries on the Public GraphQL API
