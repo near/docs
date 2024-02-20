@@ -24,7 +24,7 @@
     "permalink": "/zh-CN/develop/integrate/backend-login"
   },
   "next": {
-    "title": "FastAuth SDK",
-    "permalink": "/zh-CN/tools/fastauth-sdk"
+    "title": "Multichain Relayer Server",
+    "permalink": "/zh-CN/develop/relayers/multichain-server"
   }
 }

@@ -21,8 +21,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "What is Chain Abstraction?",
-    "permalink": "/zh-CN/abstraction/what-is"
+    "title": "Multichain Relayer Server",
+    "permalink": "/zh-CN/develop/relayers/multichain-server"
   },
   "next": {
     "title": "What are Primitives?",

@@ -9,15 +9,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '87c'),
+    component: ComponentCreator('/zh-CN/', 'e36'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '108'),
+        component: ComponentCreator('/zh-CN/', '744'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '6db'),
+            component: ComponentCreator('/zh-CN/', '3f8'),
             routes: [
               {
                 path: '/zh-CN/abstraction/what-is',
@@ -806,6 +806,12 @@ export default [
               {
                 path: '/zh-CN/develop/relayers/build-relayer',
                 component: ComponentCreator('/zh-CN/develop/relayers/build-relayer', 'a6b'),
+                exact: true,
+                sidebar: "build"
+              },
+              {
+                path: '/zh-CN/develop/relayers/multichain-server',
+                component: ComponentCreator('/zh-CN/develop/relayers/multichain-server', '802'),
                 exact: true,
                 sidebar: "build"
               },

@@ -1,0 +1,31 @@
+{
+  "id": "develop/relayers/multichain-server",
+  "title": "Multichain Relayer Server",
+  "description": "The Multichain Relayer Server facilitates cross-chain transactions and enables Chain Abstraction.",
+  "source": "@site/../docs/2.develop/relayers/multichain-server.md",
+  "sourceDirName": "2.develop/relayers",
+  "slug": "/develop/relayers/multichain-server",
+  "permalink": "/zh-CN/develop/relayers/multichain-server",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/relayers/multichain-server.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1708431298,
+  "formattedLastUpdatedAt": "2024年2月20日",
+  "frontMatter": {
+    "id": "multichain-server",
+    "title": "Multichain Relayer Server",
+    "sidebar_label": "Multichain Relayer Server"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "What is Chain Abstraction?",
+    "permalink": "/zh-CN/abstraction/what-is"
+  },
+  "next": {
+    "title": "FastAuth SDK",
+    "permalink": "/zh-CN/tools/fastauth-sdk"
+  }
+}

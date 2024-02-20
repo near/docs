@@ -667,6 +667,11 @@
               "sidebar": "build"
             },
             {
+              "id": "develop/relayers/multichain-server",
+              "path": "/zh-CN/develop/relayers/multichain-server",
+              "sidebar": "build"
+            },
+            {
               "id": "develop/relevant-contracts/dao",
               "path": "/zh-CN/develop/relevant-contracts/dao"
             },

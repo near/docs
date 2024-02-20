@@ -5,17 +5,17 @@
       "plugin": "82d98fd4"
     }
   },
-  "/zh-CN/-87c": {
+  "/zh-CN/-e36": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "8b378508"
     }
   },
-  "/zh-CN/-108": {
+  "/zh-CN/-744": {
     "__comp": "a7bd4aaa",
     "version": "935f2afb"
   },
-  "/zh-CN/-6db": {
+  "/zh-CN/-3f8": {
     "__comp": "a94703ab"
   },
   "/zh-CN/abstraction/what-is-ddb": {
@@ -553,6 +553,10 @@
   "/zh-CN/develop/relayers/build-relayer-a6b": {
     "__comp": "17896441",
     "content": "2be659d2"
+  },
+  "/zh-CN/develop/relayers/multichain-server-802": {
+    "__comp": "17896441",
+    "content": "eb2eb433"
   },
   "/zh-CN/develop/relevant-contracts/dao-177": {
     "__comp": "17896441",
