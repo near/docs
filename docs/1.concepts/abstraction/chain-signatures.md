@@ -1,6 +1,7 @@
 ---
 id: chain-signatures
 title: Chain Signatures
+sidebar_label: What are Chain Signatures?
 ---
 
 import Tabs from '@theme/Tabs';
@@ -61,15 +62,17 @@ Every time an account makes a signature request using the same `path`, the same 
 <details>
 <summary> What is an MPC Service? </summary>
 
-MPC (multi-party computation) allows independent nodes to jointly sign a message while not reveling secrets to each-other. In practice, this means that each node can hold a part of a full-key to jointly to sign a message, but **no single node** can **access the full key**. 
+MPC (multi-party computation) allows independent nodes to jointly sign a message while not reveling secrets to each-other. In practice, this means that each node creates a signature-share, which can be aggregated to sign a message, thus **no single node** can **sign by itself**. 
 
 This means you can safely let the MPC network take care of your cross-chain keys, which will allow its nodes to sign requests in your behalf, but no single node will ever be able to access your accounts.
+
+NEAR uses a modified version of MPC that allows for nodes to join and leave, without needing to re-derive a master key. 
 
 If you want to learn more about how MPC works, we recommend to [**check this article**](https://www.zellic.io/blog/mpc-from-scratch/)
 
 </details>
 
----
+<hr class="subsection" />
 
 ### 3. Relaying the Signature
 At this point - assuming the contract didn't run out of gas waiting - the contract will return the response for the signature request. This response is a valid signed transaction that can be readily sent to the target blockchain to be executed.

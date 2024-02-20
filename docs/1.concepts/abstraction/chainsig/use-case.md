@@ -1,22 +1,57 @@
 ---
-id: use-cases
-title: Use Cases
+id: use-case
+title: Use cases for Chain Signatures
+sidebar_label: Use cases
 ---
 
-Chain signatures enable you to implement multichain and cross-chain workflows in a simple way. Let's take a look at a few possible use cases.
+Chain signatures enable you to implement multichain and cross-chain workflows in a simple way.
+Take a look at a few possible use cases:
 
 ---
 
-<!-- ## Oauth-controlled Blockchain accounts
+## Trade Blockchain assets without transactions
+
+Trading assets across different blockchains usually require using a bridge that supports them, bringing longer settlement times as the trades are not atomic and require confirmation on both blockchains.
+
+Using Chain signatures you have the ability to change the ownership of different blockchain accounts (e.g., Bitcoin and Ethereum) to trade assets across chains without doing on-chain transactions.
+This way you can keep native tokens on their native blockchain (e.g., `BTC` on Bitcoin, `ETH` on Ethereum, `ARB` on Arbitrum), and trade them without bridges.
+As an added bonus, trades are atomic across chains, settlement takes just 2 seconds, and it supports any token on any chain.
+
+For example, a basic trade flow could be:
+
+1. Users create an account controlled by NEAR chain signatures
+2. Users funds these accounts on the native blockchains (depositing)
+3. Place orders by funding a new account for the total amount of the order
+4. Another user accepts the order
+5. Users swap control of the keys to fulfill the order
+
+![docs](/docs/native-cross-chain.png)
+
+<details>
+- User A has `ETH` on the Ethereum blockchain, and wants to buy native Bitcoin
+- User B wants to sell Bitcoin for Ethereum
+
+**Steps**
+
+1. User B, using NEAR, creates and funds a new account on Bitcoin with 1 `BTC`
+2. User B, using the spot marketplace smart contract, signs a transaction to create a limit order. This transfers control of the Bitcoin account to the smart contract
+3. User A creates a batch transaction with two steps
+    - Creating and funding a new Ethereum account with 10 `ETH`
+    - Accepting the order and atomically swapping control of the accounts
+4. User A takes ownership of the Bitcoin account with 1 `BTC`, and User B takes ownership of the Ethereum account with 10 `ETH`
+5. User A and B can _"withdraw"_ their asset from the order by transferring the assets to their respective _"main"_ accounts
+</details>
+
+---
+
+## Oauth-controlled Blockchain accounts
 
 On-boarding is a huge problem for decentralized applications. If you want widespread adoption you can't expect people to keep seed phrases safe in order to use an application.
 
-An attractive way of managing Web3 accounts is to use familiar login methods. For example, one could:
+An attractive way of managing Web3 accounts is to use existing Web2 accounts to on-board users. This can be done in the following way:
 
-1. Gatekeep the [`sign` method](./what-is.md#1-signing-up-for-the-mpc-service) requiring a [JWT Token](https://jwt.io/). 
-    1. Users can embed the `payload` and `path` parameters in the Token's data
-    2. NEAR contracts can validate the token's signature
-2. Create a web service that validates the user's identity (e.g. with their email), and replies with a JWT Token on success
+1. Deploy a NEAR contract that allows the bearer of a user's [JWT token](https://jwt.io/) to sign a blockchain transaction (Ethereum, Polygon, Avalanche, and others)
+2. The user validates their identity with a third-party receiving a JWT Token
 3. The user holding that token can interact with blockchain applications on Ethereum/Polygon/+++ via the NEAR contract for the duration of it's validity
 
 Any method of controlling a NEAR account can also be used to control a cross-chain account.
@@ -25,7 +60,7 @@ Any method of controlling a NEAR account can also be used to control a cross-cha
 JSON Web Tokens are a standard RFC 7519 method for representing claims securely between two parties. They are used in this example to represent the claim that someone is the owner of an Oauth account.
 :::
 
----  -->
+---
 
 ## Cross-chain Zero-friction onboarding
 
@@ -33,18 +68,17 @@ Using unique features of the NEAR account model, [Keypom](https://keypom.xyz/) p
 
 A generic Keypom user-flow could be: 
 
-1. The developer creates and funds a restricted NEAR account
-2. The user receives a key with limited control of the account
-3. The user uses the funded account to call controlled endpoints on NEAR
-4. The user returns the remaining funds to the developer and their account is unlocked
+1. The developer creates a restricted NEAR account
+2. The account is funded with `NEAR`
+3. The user receives a key with limited control of the account
+4. The user uses the funded account to call controlled endpoints on NEAR
+5. The user returns the remaining funds to the developer and their account is unlocked
 
 :::tip
 This allows easy on-boarding to decentralized apps. The accounts are initially restricted to prevent the user being able to simply withdraw the `NEAR` from the account. 
 :::
 
-<hr class="subsection" />
-
-### Using Chain Signatures
+#### Using Chain Signatures
 
 With Chain Signatures you can do the same but across many chains, for example Polygon:
 

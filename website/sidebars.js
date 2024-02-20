@@ -68,11 +68,12 @@ const sidebar = {
     },
     "concepts/abstraction/introduction",
     "concepts/abstraction/relayers",
-    "concepts/abstraction/chain-signatures",
-    // {"Chain Signatures": [
-    //   "concepts/abstraction/chainsig/what-is",
-    //   "concepts/abstraction/chainsig/use-cases",
-    // ]},
+    {
+      "Chain Signatures": [
+        "concepts/abstraction/chain-signatures",
+        "concepts/abstraction/chainsig/use-case",
+      ]
+    },
     {
       "type": "html",
       "value": "<hr/>"
