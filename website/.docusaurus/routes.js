@@ -9,15 +9,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', 'e36'),
+    component: ComponentCreator('/zh-CN/', 'b86'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '744'),
+        component: ComponentCreator('/zh-CN/', 'c7b'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '3f8'),
+            component: ComponentCreator('/zh-CN/', '584'),
             routes: [
               {
                 path: '/zh-CN/abstraction/what-is',
@@ -515,6 +515,12 @@ export default [
                 component: ComponentCreator('/zh-CN/concepts/welcome', 'ca0'),
                 exact: true,
                 sidebar: "concepts"
+              },
+              {
+                path: '/zh-CN/data-availability/arbitrum',
+                component: ComponentCreator('/zh-CN/data-availability/arbitrum', 'd43'),
+                exact: true,
+                sidebar: "data-availability"
               },
               {
                 path: '/zh-CN/data-availability/blob-contract',

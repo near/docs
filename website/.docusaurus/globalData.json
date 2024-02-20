@@ -424,6 +424,11 @@
               "sidebar": "concepts"
             },
             {
+              "id": "data-availability/arbitrum",
+              "path": "/zh-CN/data-availability/arbitrum",
+              "sidebar": "data-availability"
+            },
+            {
               "id": "data-availability/blob-contract",
               "path": "/zh-CN/data-availability/blob-contract",
               "sidebar": "data-availability"

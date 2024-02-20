@@ -2655,6 +2655,13 @@
           },
           {
             "type": "link",
+            "label": "Arbitrum Nitro",
+            "href": "/zh-CN/data-availability/arbitrum",
+            "docId": "data-availability/arbitrum",
+            "unlisted": false
+          },
+          {
+            "type": "link",
             "label": "Optimism",
             "href": "/zh-CN/data-availability/optimism",
             "docId": "data-availability/optimism",
@@ -3258,6 +3265,12 @@
       "title": "NEAR Protocol Overview",
       "description": "Welcome! Here we will explain you what NEAR Protocol is, its components, and how it works.",
       "sidebar": "concepts"
+    },
+    "data-availability/arbitrum": {
+      "id": "data-availability/arbitrum",
+      "title": "Arbitrum Nitro",
+      "description": "To support Arbitrum Nitro, we have integrated a small plugin into the DAC daserver. This is much like our http sidecar and provides a very modular integration into NEAR DA whilst supporting Arbitrum",
+      "sidebar": "data-availability"
     },
     "data-availability/blob-contract": {
       "id": "data-availability/blob-contract",
