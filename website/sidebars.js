@@ -25,11 +25,6 @@ const sidebar = {
       ]
     },
     {
-      "Account Abstraction": [
-        "concepts/account-abstraction/chain-signatures",
-      ]
-    },
-    {
       "Transactions": [
         "concepts/basics/transactions/overview",
         {
@@ -56,9 +51,28 @@ const sidebar = {
         "concepts/storage/storage-solutions"
       ]
     },
-    "concepts/basics/validators",
-    "concepts/basics/networks",
-    "concepts/basics/epoch",
+    {
+      "Network":[
+        "concepts/basics/validators",
+        "concepts/basics/networks",
+        "concepts/basics/epoch",
+      ]
+    },
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Chain Abstraction </small></b></span>"
+    },
+    "concepts/abstraction/introduction",
+    "concepts/abstraction/relayers",
+    "concepts/abstraction/chain-signatures",
+    // {"Chain Signatures": [
+    //   "concepts/abstraction/chainsig/what-is",
+    //   "concepts/abstraction/chainsig/use-cases",
+    // ]},
     {
       "type": "html",
       "value": "<hr/>"
