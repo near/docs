@@ -20,7 +20,7 @@ Technically, the end user (client) creates a `SignedDelegateAction` that contain
 
 When the request is received, the relayer uses its own key to sign a `Transaction` using the fields in the `SignedDelegateAction` as input to create a `SignedTransaction`.
 
-The `SignedTransaction` is then sent to the network via RPC call and the result is sent back to the client. The `Transaction` executes in such a way that the GAS fees are payed by the relayer, but all actions execute as if the user had sent the transaction.
+The `SignedTransaction` is then sent to the network via RPC call, and the result is sent back to the client. The `Transaction` is executed in such a way that the relayer pays the GAS fees, but all actions are executed as if the user had sent the transaction.
 </details>
 
 ---
