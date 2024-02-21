@@ -7,15 +7,15 @@ sidebar_label: What are Chain Signatures?
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Chain signatures unlock the ability for a single account to transact across multiple blockchain protocols, giving ownership of many accounts, data, and assets to one NEAR account. 🤯
+Chain Signatures unlock the ability for a single account to transact across multiple blockchain protocols, giving ownership of many accounts, data, and assets to one NEAR account. 🤯
 
-This many-to-one ownership is made possible through NEAR's [unique account model](../basics/accounts/introduction.md), which allows many keys to be associated with a single account. Chain Signatures leverages this ability by generating keys for accounts on multiple blockchain platforms that map to a single NEAR account.
+This many-to-one ownership is made possible through NEAR's [unique account model](../basics/accounts/introduction.md), which allows many keys to be associated with a single account. Chain Signatures generates and uses one of these keys to sign payloads compatible with other blockchain platforms but still linked to a native NEAR account.
 
 ---
 
 ## How It Works
 
-Chain signatures work in four basic steps:
+Chain Signatures are completed in four basic steps:
 
 1. [Create Payload](#1-create-a-payload) - A payload is created to be signed and sent to a given blockchain platform.
 2. [Request Signature](#2-request-signature) - A smart contract call is made to sign the payload.
