@@ -18,7 +18,7 @@ This many-to-one ownership is made possible through NEAR's [unique account model
 Chain Signatures are completed in four basic steps:
 
 1. [Create Payload](#1-create-a-payload) - A payload is created to be signed and sent to a given blockchain platform.
-2. [Request Signature](#2-request-signature) - A smart contract call is made to sign the payload.
+2. [Signature Request](#2-request-signature) - A smart contract call is made to sign the payload.
 3. [MPC Signing Service](#3-sign-with-mpc) - A service signs the payload linking it with the sender's NEAR account.
 4. [Relay Signed Payload](#4-relaying-the-signature) - The signed payload is then sent to the destination chain for execution.
 
@@ -40,27 +40,28 @@ This can be performed in the following steps:
 
 3.
 
-### 2. Request Signature
+### 2. Signature Request
 
-In order to request a chain signature, the user first calls the `sign` method on the `multichain.near`, which posses the following signature:
+Once a payload is created and ready to sign, a signature request is made by calling `sign` a deployed smart contract `multichain.near`. This method takes two parameters:
+  - **payload:** A payload (transaction, message, data, etc.) signed by a NEAR account
+  - **path:** The destination for signed payload (ex. ethereum-1)
 
 ```rust
   pub fn sign(payload: [u8; 32], path: String) -> Signature
 ```
 _[See the full code in Github](https://github.com/near/mpc-recovery/blob/bc85d66833ffa8537ec61d0b22cd5aa96fbe3197/contract/src/lib.rs#L263)_
 
-The method takes two parameters indicating: the **transaction** that the user wants to sign (`payload`), and which **account** (`path`) should be used to sign (more on this [later](#3-mpc-signature)).
+For example, a user could request a signature for sending `...0.1 ETH to 0x060f1...` **(payload)** on `ethereum-1` **(path)**.
 
-For example, the user could ask to sign a transaction to `send 0.1ETH to ...` (payload) using the account `ethereum-1` (path).
-
-After a request is made, the `sign` method will start recursively calling itself while waiting for a signature from the [MPC service](#3-mpc-signature).
+After a request is made, the `sign` method starts recursively calling itself while waiting for a signature from the [MPC signing service](#3-mpc-signing-service).
 
 <details>
 <summary> A Contract Recursively Calling Itself? </summary>
 
-NEAR contracts do not have a way to wait for an external agent and then resume computations. Instead, one can make the contract call itself again, and check on each iteration if the result is ready.
+Due to NEAR's asynchronous nature, contracts can not pause and wait for a promise to resolve or process to complete before resuming. This can be resolved by utilizing callbacks or in this case, making the contract call itself again and again checking on each iteration if the result is ready.
 
-Each call will take 1 block, and thus 1 second of waiting. After a certain period of time, either the contract will have the result and return it, or it will run our of GAS.
+Note that each call will take one block (~1 second) and after a period of time the contract will either complete the result and return it, or run out of GAS.
+
 </details>
 
 <hr class="subsection" />
