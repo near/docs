@@ -7,7 +7,9 @@ sidebar_label: What are Chain Signatures?
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Chain signatures unlock the ability for a user to control accounts across multiple blockchains through a single NEAR account. This is possible thanks to NEAR's unique [account model](../basics/accounts/introduction.md) and a mixture of services across the NEAR's tech stack.
+Chain signatures unlock the ability for a single account to transact across multiple blockchain protocols, giving ownership of many accounts, data, and assets to one NEAR account. 🤯
+
+This many-to-one ownership is made possible through NEAR's [unique account model](../basics/accounts/introduction.md), which allows many keys to be associated with a single account. Chain Signatures leverages this ability by generating keys for accounts on multiple blockchain platforms that map to a single NEAR account.
 
 1. A [MPC service](#1-signing-up-for-the-mpc-service) handling user's keys and listening for requests to sign payloads.
 2. A NEAR [smart contract](#2-signature-request) that holds requests for multi-chain signatures.
