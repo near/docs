@@ -11,22 +11,37 @@ Chain signatures unlock the ability for a single account to transact across mult
 
 This many-to-one ownership is made possible through NEAR's [unique account model](../basics/accounts/introduction.md), which allows many keys to be associated with a single account. Chain Signatures leverages this ability by generating keys for accounts on multiple blockchain platforms that map to a single NEAR account.
 
-1. A [MPC service](#1-signing-up-for-the-mpc-service) handling user's keys and listening for requests to sign payloads.
-2. A NEAR [smart contract](#2-signature-request) that holds requests for multi-chain signatures.
-3. A multi-chain [relayer](#4-relaying-the-signature), which can submit signed transactions to other networks.
-
 ---
 
-## Overview of a chain signature
+## How It Works
 
-Lets see how the different elements of chain signature (accounts, contracts, MPC and relayers) interact to allow a NEAR account to send a transaction to another chain.
+Chain signatures work in four basic steps:
+
+1. [Create Payload](#1-create-a-payload) - A payload is created to be signed and sent to a given blockchain platform.
+2. [Request Signature](#2-request-signature) - A smart contract call is made to sign the payload.
+3. [MPC Signing Service](#3-sign-with-mpc) - A service signs the payload linking it with the sender's NEAR account.
+4. [Relay Signed Payload](#4-relaying-the-signature) - The signed payload is then sent to the destination chain for execution.
 
 ![chain-signatures](/docs/assets/welcome-pages/chain-signatures-overview.png)
 _Diagram of a chain signature in NEAR_
 
 <hr class="subsection" />
 
-### 1. Signature Request
+### 1. Create Payload
+
+The first step is to construct a payload (transaction, message, data, etc.) that you want to send to another blockchain platform for execution.
+
+This can be performed in the following steps:
+<!-- TODO -->
+
+1.
+
+2.
+
+3.
+
+### 2. Request Signature
+
 In order to request a chain signature, the user first calls the `sign` method on the `multichain.near`, which posses the following signature:
 
 ```rust
@@ -50,7 +65,8 @@ Each call will take 1 block, and thus 1 second of waiting. After a certain perio
 
 <hr class="subsection" />
 
-### 2. MPC Signature
+### 3. MPC Signing Service
+
 A multi-party computation service (`MPC service`, see bellow) is constantly listening for signature requests (i.e. users calling the `sign` method). When a call is detected, the service will:
 
 1. Use the `accountId` of the requester, and the `path` (in our example, `ethereum-1`) to derive a key 
@@ -76,7 +92,8 @@ If you want to learn more about how MPC works, we recommend to [**check this art
 
 <hr class="subsection" />
 
-### 3. Relaying the Signature
+### 4. Relaying the Signature
+
 At this point - assuming the contract didn't run out of gas waiting - the contract will return the response for the signature request. This response is a valid signed transaction that can be readily sent to the target blockchain to be executed.
 
 In the future, we will simplify this by using an indexer to automatically capture the signature, and submit it to a multi-chain [relayer](relayers.md).
