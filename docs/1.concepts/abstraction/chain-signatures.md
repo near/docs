@@ -15,7 +15,7 @@ This many-to-one ownership is made possible through NEAR's [unique account model
 
 ## How It Works
 
-Chain Signatures are completed in four basic steps:
+Chain Signatures in four basic steps:
 
 1. [Create Payload](#1-create-a-payload) - A payload is created to be signed and sent to a given blockchain platform.
 2. [Signature Request](#2-request-signature) - A smart contract call is made to sign the payload.
@@ -29,7 +29,7 @@ _Diagram of a chain signature in NEAR_
 
 ### 1. Create Payload
 
-The first step is to construct a payload (transaction, message, data, etc.) that you want to send to another blockchain platform for execution.
+The first step is to construct a payload (transaction, message, data, etc.) for the target blockchain platform.
 
 This can be performed in the following steps:
 <!-- TODO -->
@@ -42,7 +42,7 @@ This can be performed in the following steps:
 
 ### 2. Signature Request
 
-Once a payload is created and ready to sign, a signature request is made by calling `sign` a deployed smart contract `multichain.near`. This method takes two parameters:
+Once a payload is created and ready to sign, a signature request is made by calling `sign` the deployed smart contract `multichain.near`. This method takes two parameters:
   - **payload:** A payload (transaction, message, data, etc.) signed by a NEAR account
   - **path:** The destination for signed payload (ex. ethereum-1)
 
@@ -53,14 +53,14 @@ _[See the full code in Github](https://github.com/near/mpc-recovery/blob/bc85d66
 
 For example, a user could request a signature for sending `...0.1 ETH to 0x060f1...` **(payload)** on `ethereum-1` **(path)**.
 
-After a request is made, the `sign` method starts recursively calling itself while waiting for a signature from the [MPC signing service](#3-mpc-signing-service).
+After a request is made, the `sign` method starts recursively calling itself while waiting for the [MPC signing service](#3-mpc-signing-service) to complete the signature.
 
 <details>
 <summary> A Contract Recursively Calling Itself? </summary>
 
-Due to NEAR's asynchronous nature, contracts can not pause and wait for a promise to resolve or process to complete before resuming. This can be resolved by utilizing callbacks or in this case, making the contract call itself again and again checking on each iteration if the result is ready.
+Due to NEAR's asynchronous nature, smart contracts are unable to halt execution and await the resolution of a promise or the completion of a process. This can be resolved by utilizing callbacks or in this case, making the contract call itself again and again checking on each iteration if the result is ready.
 
-Note that each call will take one block (~1 second) and after a period of time the contract will either complete the result and return it, or run out of GAS.
+Note that each call will take one block (~1 second) and after some time the contract will either complete the result and return it, or run out of GAS.
 
 </details>
 
@@ -68,7 +68,7 @@ Note that each call will take one block (~1 second) and after a period of time t
 
 ### 3. MPC Signing Service
 
-A multi-party computation service (`MPC service`, see bellow) is constantly listening for signature requests (i.e. users calling the `sign` method). When a call is detected, the service will:
+A multi-party computation service (`MPC service`, see below) is constantly listening for signature requests (i.e. users calling the `sign` method). When a call is detected, the service will:
 
 1. Use the `accountId` of the requester, and the `path` (in our example, `ethereum-1`) to derive a key 
 2. Sign the `payload` (in our example, a transaction transferring ETH) using the stored key
