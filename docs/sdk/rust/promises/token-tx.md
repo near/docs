@@ -48,7 +48,7 @@ Most of this is boilerplate you're probably familiar with by now – imports, s
 
 * `AccountId`: this will automatically check that the provided string is a well-formed NEAR account ID, and panic with a useful error if not.
 
-* Returning `Promise`: This allows NEAR Explorer, near-cli, near-api-js, and other tooling to correctly determine if a whole chain of transactions is successful. If your function does not return `Promise`, tools like near-cli will return immediately after your function call. And then even if the `transfer` fails, your function call will be considered successful. You can see an example of this behavior [here](https://github.com/near-examples/xcc-advanced).
+* Returning `Promise`: This allows NEAR Explorer, near-cli, near-api-js, and other tooling to correctly determine if a whole chain of transactions is successful. If your function does not return `Promise`, tools like near-cli will return immediately after your function call. And then even if the `transfer` fails, your function call will be considered successful. You can see an example of this behavior [here](/tutorials/examples/advanced-xcc).
 
 Using near-cli or near-cli-rs, someone could invoke this function with a call like:
 
