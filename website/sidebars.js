@@ -71,7 +71,7 @@ const sidebar = {
     {
       "Chain Signatures": [
         "concepts/abstraction/chain-signatures",
-        "concepts/abstraction/chainsig/use-case",
+        "concepts/abstraction/signatures/use-cases",
       ]
     },
     {

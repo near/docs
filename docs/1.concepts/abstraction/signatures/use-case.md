@@ -1,5 +1,5 @@
 ---
-id: use-case
+id: use-cases
 title: Use cases for Chain Signatures
 sidebar_label: Use cases
 ---
