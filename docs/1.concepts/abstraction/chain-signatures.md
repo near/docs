@@ -4,22 +4,23 @@ title: Chain Signatures
 sidebar_label: What are Chain Signatures?
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+Chain Signatures unlock the ability for a single account to transact across multiple blockchain protocols, giving ownership of cross-chain accounts, data, and assets to one NEAR account.
 
-Chain Signatures unlock the ability for a single account to transact across multiple blockchain protocols, giving ownership of many accounts, data, and assets to one NEAR account. 🤯
+This many-to-one ownership is made possible through a mixture of services across our tech stack:
 
-This many-to-one ownership is made possible through NEAR's [unique account model](../basics/accounts/introduction.md), which allows many keys to be associated with a single account. Chain Signatures generates and uses one of these keys to sign payloads compatible with other blockchain platforms but still linked to a native NEAR account.
+1. A [smart contract](../basics/accounts/smartcontract.md) that holds requests for multi-chain signatures.
+2. A [multiparty computation](https://www.zellic.io/blog/mpc-from-scratch/) service handling user's keys and listening for requests to sign payloads.
+3. A multi-chain [relayer](./relayers.md), which can submit signed transactions to other networks.
 
 ---
 
 ## How It Works
 
-Chain Signatures in four basic steps:
+There are four steps involved on Chain Signatures:
 
-1. [Create Payload](#1-create-a-payload) - A payload is created to be signed and sent to a given blockchain platform.
-2. [Signature Request](#2-request-signature) - A smart contract call is made to sign the payload.
-3. [MPC Signing Service](#3-sign-with-mpc) - A service signs the payload linking it with the sender's NEAR account.
+1. [Create a Transaction](#1-create-a-payload) - The user creates the transaction they intent to submit to another blockchain
+2. [Signature Request](#2-request-signature) - The user calls the NEAR `multichain` contract, requesting to sign the transaction
+3. [MPC Signing Service](#3-sign-with-mpc) - A service captures the call, and returns the signed the transaction for the user
 4. [Relay Signed Payload](#4-relaying-the-signature) - The signed payload is then sent to the destination chain for execution.
 
 ![chain-signatures](/docs/assets/welcome-pages/chain-signatures-overview.png)
@@ -29,38 +30,31 @@ _Diagram of a chain signature in NEAR_
 
 ### 1. Create Payload
 
-The first step is to construct a payload (transaction, message, data, etc.) for the target blockchain platform.
+The first step is to construct a payload (transaction, message, data, etc.) for the target blockchain platform. This variates depending on the target blockchain, but in general, it's a hash of the message or transaction to be signed.
 
-This can be performed in the following steps:
-<!-- TODO -->
-
-1.
-
-2.
-
-3.
+<hr class="subsection" />
 
 ### 2. Signature Request
 
-Once a payload is created and ready to sign, a signature request is made by calling `sign` the deployed smart contract `multichain.near`. This method takes two parameters:
-  - **payload:** A payload (transaction, message, data, etc.) signed by a NEAR account
-  - **path:** The destination for signed payload (ex. ethereum-1)
+Once a payload is created and ready to sign, a signature request is made by calling `sign` on the deployed smart contract `multichain.near`. This method takes two parameters:
+  - **payload:** The payload (transaction, message, data, etc.) to be signed for the target blockchain
+  - **path:** A name representing the account that should be used to sign the payload (e.g. ethereum-1)
 
 ```rust
   pub fn sign(payload: [u8; 32], path: String) -> Signature
 ```
 _[See the full code in Github](https://github.com/near/mpc-recovery/blob/bc85d66833ffa8537ec61d0b22cd5aa96fbe3197/contract/src/lib.rs#L263)_
 
-For example, a user could request a signature for sending `...0.1 ETH to 0x060f1...` **(payload)** on `ethereum-1` **(path)**.
+For example, a user could request a signature to `send 0.1 ETH to 0x060f1...` **(payload)** using the `ethereum-1` account **(path)**.
 
-After a request is made, the `sign` method starts recursively calling itself while waiting for the [MPC signing service](#3-mpc-signing-service) to complete the signature.
+After a request is made, the `sign` method starts recursively calling itself in order to wait while the [MPC signing service](#3-mpc-signing-service) signs the payload.
 
 <details>
 <summary> A Contract Recursively Calling Itself? </summary>
 
-Due to NEAR's asynchronous nature, smart contracts are unable to halt execution and await the resolution of a promise or the completion of a process. This can be resolved by utilizing callbacks or in this case, making the contract call itself again and again checking on each iteration if the result is ready.
+NEAR smart contracts are unable to halt execution and await the completion of a process. To solve this, one can make the contract call itself again and again checking on each iteration if the result is ready.
 
-Note that each call will take one block (~1 second) and after some time the contract will either complete the result and return it, or run out of GAS.
+Note that each call will take one block, and thus result on ~1s of waiting. After some time the contract will either return a result - since somebody external provided it - or run out of GAS waiting.
 
 </details>
 
@@ -81,11 +75,11 @@ Every time an account makes a signature request using the same `path`, the same 
 <details>
 <summary> What is an MPC Service? </summary>
 
-MPC (multi-party computation) allows independent nodes to jointly sign a message while not reveling secrets to each-other. In practice, this means that each node creates a signature-share, which can be aggregated to sign a message, thus **no single node** can **sign by itself**. 
+MPC (multi-party computation) allows independent actors to do shared computations on private information, without revealing secrets to each-other.
 
-This means you can safely let the MPC network take care of your cross-chain keys, which will allow its nodes to sign requests in your behalf, but no single node will ever be able to access your accounts.
+NEAR uses its own MPC service to safely sign transactions for other chains on behalf of the user. In practice, **no single node** on the MPC can **sign by itself** since they do **not hold the user's keys**. Instead, nodes create signature-shares which are aggregated through multiple rounds to jointly sign the payload.
 
-NEAR uses a modified version of MPC that allows for nodes to join and leave, without needing to re-derive a master key. 
+Generally, MPC signing services work by sharing a master key, which needs to be re-created each time a node joins or leaves. NEAR's MPC service allows for nodes to safely join and leave, without needing to re-derive a master key.
 
 If you want to learn more about how MPC works, we recommend to [**check this article**](https://www.zellic.io/blog/mpc-from-scratch/)
 
@@ -97,7 +91,7 @@ If you want to learn more about how MPC works, we recommend to [**check this art
 
 At this point - assuming the contract didn't run out of gas waiting - the contract will return the response for the signature request. This response is a valid signed transaction that can be readily sent to the target blockchain to be executed.
 
-In the future, we will simplify this by using an indexer to automatically capture the signature, and submit it to a multi-chain [relayer](relayers.md).
+To simplify relaying the transaction, we are building an indexer that will automatically capture the signature, and submit it to the target chain using a multi-chain [relayer](relayers.md).
 
 :::tip
 A multi-chain [relayer](relayers.md) is a service that knows how to relay signed transactions into their target networks so they are executed on-chain.
