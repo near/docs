@@ -258,6 +258,7 @@ const sidebar = {
     'abstraction/what-is',
     {"Chain Abstraction Services": [
       "develop/relayers/multichain-server",
+      "develop/relayers/gas-station",
       'tools/fastauth-sdk'
     ]},
     {
