@@ -24,7 +24,7 @@
     "permalink": "/zh-CN/develop/integrate/frontend"
   },
   "next": {
-    "title": "Building a Relayer",
-    "permalink": "/zh-CN/develop/relayers/build-relayer"
+    "title": "Login with NEAR",
+    "permalink": "/zh-CN/develop/integrate/backend-login"
   }
 }

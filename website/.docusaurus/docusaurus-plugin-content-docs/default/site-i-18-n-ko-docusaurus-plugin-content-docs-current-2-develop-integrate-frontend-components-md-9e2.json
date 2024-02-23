@@ -24,7 +24,7 @@
     "permalink": "/ko/develop/integrate/frontend"
   },
   "next": {
-    "title": "Building a Relayer",
-    "permalink": "/ko/develop/relayers/build-relayer"
+    "title": "Login with NEAR",
+    "permalink": "/ko/develop/integrate/backend-login"
   }
 }

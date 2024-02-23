@@ -20,8 +20,8 @@
   },
   "sidebar": "concepts",
   "previous": {
-    "title": "에포크",
-    "permalink": "/ko/concepts/basics/epoch"
+    "title": "Use cases",
+    "permalink": "/ko/concepts/abstraction/signatures/use-cases"
   },
   "next": {
     "title": "인덱서 소개",

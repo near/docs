@@ -21,11 +21,11 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Integrating Components",
-    "permalink": "/ko/develop/integrate/frontend-components"
+    "title": "What is Chain Abstraction?",
+    "permalink": "/ko/abstraction/what-is"
   },
   "next": {
-    "title": "Login with NEAR",
-    "permalink": "/ko/develop/integrate/backend-login"
+    "title": "FastAuth SDK",
+    "permalink": "/ko/tools/fastauth-sdk"
   }
 }

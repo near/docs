@@ -24,7 +24,7 @@
     "permalink": "/develop/integrate/frontend"
   },
   "next": {
-    "title": "Building a Relayer",
-    "permalink": "/develop/relayers/build-relayer"
+    "title": "Authenticate NEAR Users",
+    "permalink": "/develop/integrate/backend-login"
   }
 }

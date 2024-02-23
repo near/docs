@@ -20,8 +20,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Building a Relayer",
-    "permalink": "/ko/develop/relayers/build-relayer"
+    "title": "Integrating Components",
+    "permalink": "/ko/develop/integrate/frontend-components"
   },
   "next": {
     "title": "What is Chain Abstraction?",

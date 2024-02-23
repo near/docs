@@ -24,7 +24,7 @@
     "permalink": "/vi/develop/integrate/frontend"
   },
   "next": {
-    "title": "Building a Relayer",
-    "permalink": "/vi/develop/relayers/build-relayer"
+    "title": "Login with NEAR",
+    "permalink": "/vi/develop/integrate/backend-login"
   }
 }

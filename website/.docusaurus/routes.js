@@ -9,16 +9,22 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', 'b86'),
+    component: ComponentCreator('/zh-CN/', 'd28'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', 'c7b'),
+        component: ComponentCreator('/zh-CN/', '4f6'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '584'),
+            component: ComponentCreator('/zh-CN/', 'aea'),
             routes: [
+              {
+                path: '/zh-CN/abstraction/chain-signatures',
+                component: ComponentCreator('/zh-CN/abstraction/chain-signatures', 'ebd'),
+                exact: true,
+                sidebar: "build"
+              },
               {
                 path: '/zh-CN/abstraction/what-is',
                 component: ComponentCreator('/zh-CN/abstraction/what-is', 'ddb'),
@@ -297,6 +303,35 @@ export default [
                 component: ComponentCreator('/zh-CN/bos/tutorial/using-iframes', '7be'),
                 exact: true,
                 sidebar: "tutorials"
+              },
+              {
+                path: '/zh-CN/concepts/abstraction/chain-signatures',
+                component: ComponentCreator('/zh-CN/concepts/abstraction/chain-signatures', '623'),
+                exact: true,
+                sidebar: "concepts"
+              },
+              {
+                path: '/zh-CN/concepts/abstraction/introduction',
+                component: ComponentCreator('/zh-CN/concepts/abstraction/introduction', 'b30'),
+                exact: true,
+                sidebar: "concepts"
+              },
+              {
+                path: '/zh-CN/concepts/abstraction/mpc',
+                component: ComponentCreator('/zh-CN/concepts/abstraction/mpc', '1f1'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/concepts/abstraction/relayers',
+                component: ComponentCreator('/zh-CN/concepts/abstraction/relayers', 'e83'),
+                exact: true,
+                sidebar: "concepts"
+              },
+              {
+                path: '/zh-CN/concepts/abstraction/signatures/use-cases',
+                component: ComponentCreator('/zh-CN/concepts/abstraction/signatures/use-cases', '07f'),
+                exact: true,
+                sidebar: "concepts"
               },
               {
                 path: '/zh-CN/concepts/advanced/indexers',

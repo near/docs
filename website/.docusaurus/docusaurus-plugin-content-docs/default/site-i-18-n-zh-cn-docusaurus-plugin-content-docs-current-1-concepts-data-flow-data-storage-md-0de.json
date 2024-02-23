@@ -20,8 +20,8 @@
   },
   "sidebar": "concepts",
   "previous": {
-    "title": "Epoch",
-    "permalink": "/zh-CN/concepts/basics/epoch"
+    "title": "Use cases",
+    "permalink": "/zh-CN/concepts/abstraction/signatures/use-cases"
   },
   "next": {
     "title": "Intro to Indexers",

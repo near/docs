@@ -21,11 +21,11 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "What is Chain Abstraction?",
-    "permalink": "/zh-CN/abstraction/what-is"
+    "title": "Cross-Chain Signatures",
+    "permalink": "/zh-CN/abstraction/chain-signatures"
   },
   "next": {
-    "title": "FastAuth SDK",
-    "permalink": "/zh-CN/tools/fastauth-sdk"
+    "title": "What are Primitives?",
+    "permalink": "/zh-CN/primitives/whatareprimitives"
   }
 }

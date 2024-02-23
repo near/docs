@@ -20,8 +20,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Building a Relayer",
-    "permalink": "/zh-CN/develop/relayers/build-relayer"
+    "title": "Integrating Components",
+    "permalink": "/zh-CN/develop/integrate/frontend-components"
   },
   "next": {
     "title": "What is Chain Abstraction?",

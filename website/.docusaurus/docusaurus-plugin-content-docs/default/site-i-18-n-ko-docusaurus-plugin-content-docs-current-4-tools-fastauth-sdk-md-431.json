@@ -21,11 +21,11 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Multichain Relayer Server",
-    "permalink": "/ko/develop/relayers/multichain-server"
+    "title": "Building a Relayer",
+    "permalink": "/ko/develop/relayers/build-relayer"
   },
   "next": {
-    "title": "What are Primitives?",
-    "permalink": "/ko/primitives/whatareprimitives"
+    "title": "Cross-Chain Signatures",
+    "permalink": "/ko/abstraction/chain-signatures"
   }
 }

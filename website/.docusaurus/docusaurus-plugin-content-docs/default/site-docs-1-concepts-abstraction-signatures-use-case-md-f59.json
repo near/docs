@@ -1,0 +1,31 @@
+{
+  "id": "concepts/abstraction/signatures/use-cases",
+  "title": "Use cases for Chain Signatures",
+  "description": "Chain signatures enable you to implement multichain and cross-chain workflows in a simple way.",
+  "source": "@site/../docs/1.concepts/abstraction/signatures/use-case.md",
+  "sourceDirName": "1.concepts/abstraction/signatures",
+  "slug": "/concepts/abstraction/signatures/use-cases",
+  "permalink": "/zh-CN/concepts/abstraction/signatures/use-cases",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/abstraction/signatures/use-case.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1708712355,
+  "formattedLastUpdatedAt": "2024年2月23日",
+  "frontMatter": {
+    "id": "use-cases",
+    "title": "Use cases for Chain Signatures",
+    "sidebar_label": "Use cases"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "What are Chain Signatures?",
+    "permalink": "/zh-CN/concepts/abstraction/chain-signatures"
+  },
+  "next": {
+    "title": "Data on the Blockchain",
+    "permalink": "/zh-CN/concepts/data-flow/data-storage"
+  }
+}

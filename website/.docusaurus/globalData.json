@@ -11,6 +11,11 @@
           "mainDocId": "welcome",
           "docs": [
             {
+              "id": "abstraction/chain-signatures",
+              "path": "/zh-CN/abstraction/chain-signatures",
+              "sidebar": "build"
+            },
+            {
               "id": "abstraction/what-is",
               "path": "/zh-CN/abstraction/what-is",
               "sidebar": "build"
@@ -241,6 +246,30 @@
               "id": "bos/tutorial/using-iframes",
               "path": "/zh-CN/bos/tutorial/using-iframes",
               "sidebar": "tutorials"
+            },
+            {
+              "id": "concepts/abstraction/chain-signatures",
+              "path": "/zh-CN/concepts/abstraction/chain-signatures",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/abstraction/introduction",
+              "path": "/zh-CN/concepts/abstraction/introduction",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/abstraction/mpc",
+              "path": "/zh-CN/concepts/abstraction/mpc"
+            },
+            {
+              "id": "concepts/abstraction/relayers",
+              "path": "/zh-CN/concepts/abstraction/relayers",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/abstraction/signatures/use-cases",
+              "path": "/zh-CN/concepts/abstraction/signatures/use-cases",
+              "sidebar": "concepts"
             },
             {
               "id": "concepts/advanced/indexers",

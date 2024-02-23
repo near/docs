@@ -446,5 +446,13 @@
   "sidebar.build.category.Chain Abstraction Services": {
     "message": "Chain Abstraction Services",
     "description": "The label for category Chain Abstraction Services in sidebar build"
+  },
+  "sidebar.concepts.category.Network": {
+    "message": "Network",
+    "description": "The label for category Network in sidebar concepts"
+  },
+  "sidebar.concepts.category.Chain Signatures": {
+    "message": "Chain Signatures",
+    "description": "The label for category Chain Signatures in sidebar concepts"
   }
 }

@@ -5,18 +5,22 @@
       "plugin": "82d98fd4"
     }
   },
-  "/zh-CN/-b86": {
+  "/zh-CN/-d28": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "8b378508"
     }
   },
-  "/zh-CN/-c7b": {
+  "/zh-CN/-4f6": {
     "__comp": "a7bd4aaa",
     "version": "935f2afb"
   },
-  "/zh-CN/-584": {
+  "/zh-CN/-aea": {
     "__comp": "a94703ab"
+  },
+  "/zh-CN/abstraction/chain-signatures-ebd": {
+    "__comp": "17896441",
+    "content": "06446ead"
   },
   "/zh-CN/abstraction/what-is-ddb": {
     "__comp": "17896441",
@@ -205,6 +209,26 @@
   "/zh-CN/bos/tutorial/using-iframes-7be": {
     "__comp": "17896441",
     "content": "0c5f3ce8"
+  },
+  "/zh-CN/concepts/abstraction/chain-signatures-623": {
+    "__comp": "17896441",
+    "content": "ab43e22e"
+  },
+  "/zh-CN/concepts/abstraction/introduction-b30": {
+    "__comp": "17896441",
+    "content": "348aef2a"
+  },
+  "/zh-CN/concepts/abstraction/mpc-1f1": {
+    "__comp": "17896441",
+    "content": "da7ceac9"
+  },
+  "/zh-CN/concepts/abstraction/relayers-e83": {
+    "__comp": "17896441",
+    "content": "063b50ae"
+  },
+  "/zh-CN/concepts/abstraction/signatures/use-cases-07f": {
+    "__comp": "17896441",
+    "content": "f5908e0a"
   },
   "/zh-CN/concepts/advanced/indexers-3d7": {
     "__comp": "17896441",
