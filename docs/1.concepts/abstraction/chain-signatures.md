@@ -9,22 +9,26 @@ Chain Signatures unlock the ability for a single account to transact across mult
 This many-to-one ownership is made possible through a mixture of services across our tech stack:
 
 1. A [smart contract](../basics/accounts/smartcontract.md) that holds requests for multi-chain signatures.
-2. A [multiparty computation](https://www.zellic.io/blog/mpc-from-scratch/) service handling user's keys and listening for requests to sign payloads.
+2. A [multiparty computation](https://www.zellic.io/blog/mpc-from-scratch/) service listening for signature requests.
 3. A multi-chain [relayer](./relayers.md), which can submit signed transactions to other networks.
+
+:::info
+This section presents an overview of Chain Signatures. To create one, please switch to the [**building a Chain Signature**](../../8.abstraction/chain-signatures.md) document.
+:::
 
 ---
 
 ## How It Works
 
+![chain-signatures](/docs/assets/welcome-pages/chain-signatures-overview.png)
+_Diagram of a chain signature in NEAR_
+
 There are four steps involved on Chain Signatures:
 
-1. [Create a Transaction](#1-create-a-payload) - The user creates the transaction they intent to submit to another blockchain
+1. [Create a Payload](#1-create-a-payload) - The user creates the transaction / message they want to sign
 2. [Signature Request](#2-request-signature) - The user calls the NEAR `multichain` contract, requesting to sign the transaction
 3. [MPC Signing Service](#3-sign-with-mpc) - A service captures the call, and returns the signed the transaction for the user
 4. [Relay Signed Payload](#4-relaying-the-signature) - The signed payload is then sent to the destination chain for execution.
-
-![chain-signatures](/docs/assets/welcome-pages/chain-signatures-overview.png)
-_Diagram of a chain signature in NEAR_
 
 <hr class="subsection" />
 
@@ -37,8 +41,8 @@ The first step is to construct a payload (transaction, message, data, etc.) for 
 ### 2. Signature Request
 
 Once a payload is created and ready to sign, a signature request is made by calling `sign` on the deployed smart contract `multichain.near`. This method takes two parameters:
-  - **payload:** The payload (transaction, message, data, etc.) to be signed for the target blockchain
-  - **path:** A name representing the account that should be used to sign the payload (e.g. ethereum-1)
+  1. **payload:** The payload (transaction, message, data, etc.) to be signed for the target blockchain
+  2. **path:** A name representing the account that should be used to sign the payload (e.g. ethereum-1)
 
 ```rust
   pub fn sign(payload: [u8; 32], path: String) -> Signature
@@ -62,7 +66,7 @@ Note that each call will take one block, and thus result on ~1s of waiting. Afte
 
 ### 3. MPC Signing Service
 
-A multi-party computation service (`MPC service`, see below) is constantly listening for signature requests (i.e. users calling the `sign` method). When a call is detected, the service will:
+A multi-party computation service (`MPC service`, see more below) is constantly listening for signature requests (i.e. users calling the `sign` method). When a call is detected, the service will:
 
 1. Use the `accountId` of the requester, and the `path` (in our example, `ethereum-1`) to derive a key 
 2. Sign the `payload` (in our example, a transaction transferring ETH) using the stored key

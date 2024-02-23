@@ -251,7 +251,6 @@ const sidebar = {
         "develop/integrate/quickstart-frontend",
         "develop/integrate/frontend",
         "develop/integrate/frontend-components",
-        "develop/relayers/build-relayer",
         {
           "Backend": [
             "develop/integrate/backend-login",
@@ -276,9 +275,12 @@ const sidebar = {
       "value": "<span class='menu__link'><b><small> Chain Abstraction ✨ </small></b></span>"
     },
     'abstraction/what-is',
-    {"Chain Abstraction Services": [
-      "develop/relayers/multichain-server",
-      'tools/fastauth-sdk'
+    {
+      "Chain Abstraction Services": [
+        "develop/relayers/build-relayer",
+        'tools/fastauth-sdk',
+        'abstraction/chain-signatures',
+        "develop/relayers/multichain-server",
     ]},
     {
       "type": "html",
