@@ -17,15 +17,15 @@ This smart contract is a piece of the NEAR Multichain project, which makes NEAR 
 
 Currently, relaying one transaction to a foreign chain requires three transactions.
 
-:::info
-[NEP-516 (delayed receipts / runtime triggers)](https://github.com/near/NEPs/issues/516) will reduce the required transactions to one.
-:::
-
 Transaction breakdown:
 
 1. The first transaction is a call to the `create_transaction` function. This function accepts an EVM transaction request payload and a deposit amount (to pay for gas on the foreign chain) and returns an `id` and a `pending_transactions_count`.
 2. The second transaction is a call to the `sign_next` function. This function accepts the `id` returned in step 1 and returns a signed payload. This payload is the gas funding transaction, transferring funds from a paymaster account on the foreign chain to the user's account on the foreign chain. It must be submitted to the foreign chain before the second signed payload.
 3. The third transaction is another call to the `sign_next` function, identical to the one before. This function accepts an `id` and returns a signed payload. This payload is the signed user transaction.
+
+:::info
+[NEP-516 (delayed receipts / runtime triggers)](https://github.com/near/NEPs/issues/516) will reduce the required transactions to one.
+:::
 
 Three transactions are required because of the gas restrictions imposed by the protocol. Currently (pre-NEP-516), the MPC signing function requires a _lot_ of gas, so dividing up the signing process into three parts is required to maximize the amount of gas available to each signing call.
 
