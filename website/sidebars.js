@@ -51,9 +51,29 @@ const sidebar = {
         "concepts/storage/storage-solutions"
       ]
     },
-    "concepts/basics/validators",
-    "concepts/basics/networks",
-    "concepts/basics/epoch",
+    {
+      "Network":[
+        "concepts/basics/validators",
+        "concepts/basics/networks",
+        "concepts/basics/epoch",
+      ]
+    },
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Chain Abstraction </small></b></span>"
+    },
+    "concepts/abstraction/introduction",
+    "concepts/abstraction/relayers",
+    {
+      "Chain Signatures": [
+        "concepts/abstraction/chain-signatures",
+        "concepts/abstraction/signatures/use-cases",
+      ]
+    },
     {
       "type": "html",
       "value": "<hr/>"
@@ -231,7 +251,6 @@ const sidebar = {
         "develop/integrate/quickstart-frontend",
         "develop/integrate/frontend",
         "develop/integrate/frontend-components",
-        "develop/relayers/build-relayer",
         {
           "Backend": [
             "develop/integrate/backend-login",
@@ -256,9 +275,12 @@ const sidebar = {
       "value": "<span class='menu__link'><b><small> Chain Abstraction ✨ </small></b></span>"
     },
     'abstraction/what-is',
-    {"Chain Abstraction Services": [
-      "develop/relayers/multichain-server",
-      'tools/fastauth-sdk'
+    {
+      "Chain Abstraction Services": [
+        "develop/relayers/build-relayer",
+        'tools/fastauth-sdk',
+        'abstraction/chain-signatures',
+        "develop/relayers/multichain-server",
     ]},
     {"Chain Signatures": [
       "abstraction/chain-signatures/wallet",
