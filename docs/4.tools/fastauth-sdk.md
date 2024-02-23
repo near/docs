@@ -4,19 +4,19 @@ title: FastAuth SDK
 sidebar_label: FastAuth (Email Login)
 ---
 
-## Introduction
+FastAuth is a key management system that allows users to **recover or sign-up for** a NEAR account using their **email address**. Furthermore, it allows to subsidize gas for a certain smart contract, so users can interact with it without having to fund their account. 
 
-FastAuth is a key management system that allows dApp developers to offer an easy and familiar onboarding flow to new users. Users can sign up for an account using just their email address, and they can easily recover access to that account using the same email they used during sign up. Furthermore, dApp developers can also choose to subsidize gas for a certain smart contract, so that users can start interacting with their dApp immediately, without having to fund their account. 
+---
 
-### System components
+## FastAuth Components
 
-The FastAuth system is comprised of 3 main components:
+FastAuth is comprised of 3 main elements:
 
-- **FastAuth Signer App**: An app that can be embedded on your website to allow FastAuth users to sign transactions.
-- **MPC Recovery Service**: service used to create and restore user accounts, as well as signing transactions on behalf of the user. This service uses the OIDC protocol and leverages multiple MPC nodes, each of them containing a secret key. Each action must be signed by all nodes, and those signatures are then combined into a single signature on the leader node.
-- **Transaction Relayer**: an http server that relays transactions to the network via RPC on behalf of new users who haven't yet acquired NEAR as part of the onboarding process.
+1. **FastAuth Signer App**: A module that allow FastAuth users to sign transactions.
+2. **MPC Recovery Service**: A service to create and restore user accounts, as well as signing transactions on behalf of the user.
+3. **Transaction Relayer**: A server that relays transactions to the NEAR network on behalf of the user.
 
-## Getting started
+---
 
 ### Setting up Firebase
 
