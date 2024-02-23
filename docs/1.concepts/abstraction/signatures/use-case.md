@@ -78,6 +78,19 @@ A generic Keypom user-flow could be:
 This allows easy on-boarding to decentralized apps. The accounts are initially restricted to prevent the user being able to simply withdraw the `NEAR` from the account. 
 :::
 
+## DeFi on Bitcoin (and other non-smart contract chains). 
+
+Using chain signatures, smart contracts on NEAR can control externally-owned accounts on non-smart contract chains like Bitcoin, Dogecoin, Ripple, Bittensor, Cosmos Hub, etc. This enables developers to use NEAR as a smart contract “layer” for chains that do not support this functionality natively.
+
+For example, a developer can build a decentralized exchange for Bitcoin Ordinals, using a smart contract on NEAR to manage deposits (into Bitcoin addresses controlled by the contract) and to verify and execute swaps when two users agree to trade BTC for an Ordinal or BRC20 token.
+
+Example:
+1. Seller generates a deposit address on Bitcoin that is controlled by the marketplace smart contract on NEAR via chain signatures
+2. Seller deposits a Bitcoin Ordinal to the deposit address
+3. The Ordinal is listed for sale with a price and a pre-commitment signature from the seller
+4. Buyer accepts the order, deposits USDC
+5. The control of the Bitcoin Ordinal address is given to the buyer, USDC on NEAR is transferred to the seller
+
 #### Using Chain Signatures
 
 With Chain Signatures you can do the same but across many chains, for example Polygon:
