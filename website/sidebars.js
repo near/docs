@@ -257,9 +257,11 @@ const sidebar = {
     },
     'abstraction/what-is',
     {"Chain Abstraction Services": [
+      'tools/fastauth-sdk'
+    ]},
+    {"Multichain Gas Relayer": [
       "develop/relayers/multichain-server",
       "develop/relayers/gas-station",
-      'tools/fastauth-sdk'
     ]},
     {
       "type": "html",
