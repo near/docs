@@ -15,7 +15,11 @@ This smart contract is a piece of the NEAR Multichain project, which makes NEAR 
 
 ## How does it work?
 
-Currently, relaying one transaction to a foreign chain requires three transactions. However, [NEP-516 (delayed receipts / runtime triggers)](https://github.com/near/NEPs/issues/516) will reduce this number to one.
+Currently, relaying one transaction to a foreign chain requires three transactions.
+
+:::info
+[NEP-516 (delayed receipts / runtime triggers)](https://github.com/near/NEPs/issues/516) will reduce the required transactions to one.
+:::
 
 Transaction breakdown:
 
