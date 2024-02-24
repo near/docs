@@ -9,15 +9,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', 'd28'),
+    component: ComponentCreator('/zh-CN/', '247'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '4f6'),
+        component: ComponentCreator('/zh-CN/', '4b6'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', 'aea'),
+            component: ComponentCreator('/zh-CN/', 'e0f'),
             routes: [
               {
                 path: '/zh-CN/abstraction/chain-signatures',
@@ -847,6 +847,12 @@ export default [
               {
                 path: '/zh-CN/develop/relayers/build-relayer',
                 component: ComponentCreator('/zh-CN/develop/relayers/build-relayer', 'a6b'),
+                exact: true,
+                sidebar: "build"
+              },
+              {
+                path: '/zh-CN/develop/relayers/gas-station',
+                component: ComponentCreator('/zh-CN/develop/relayers/gas-station', '052'),
                 exact: true,
                 sidebar: "build"
               },

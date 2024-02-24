@@ -701,6 +701,11 @@
               "sidebar": "build"
             },
             {
+              "id": "develop/relayers/gas-station",
+              "path": "/zh-CN/develop/relayers/gas-station",
+              "sidebar": "build"
+            },
+            {
               "id": "develop/relayers/multichain-server",
               "path": "/zh-CN/develop/relayers/multichain-server",
               "sidebar": "build"

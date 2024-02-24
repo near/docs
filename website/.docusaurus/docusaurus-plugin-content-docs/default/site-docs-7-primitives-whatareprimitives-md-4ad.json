@@ -20,8 +20,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Multichain Relayer Server",
-    "permalink": "/zh-CN/develop/relayers/multichain-server"
+    "title": "Multichain Gas Station",
+    "permalink": "/zh-CN/develop/relayers/gas-station"
   },
   "next": {
     "title": "Fungible Tokens (FT)",

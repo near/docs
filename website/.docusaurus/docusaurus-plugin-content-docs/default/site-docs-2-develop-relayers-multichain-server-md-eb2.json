@@ -25,7 +25,7 @@
     "permalink": "/zh-CN/abstraction/chain-signatures"
   },
   "next": {
-    "title": "What are Primitives?",
-    "permalink": "/zh-CN/primitives/whatareprimitives"
+    "title": "Multichain Gas Station",
+    "permalink": "/zh-CN/develop/relayers/gas-station"
   }
 }

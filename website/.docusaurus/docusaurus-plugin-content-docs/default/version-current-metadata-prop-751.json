@@ -852,12 +852,27 @@
             "href": "/zh-CN/abstraction/chain-signatures",
             "docId": "abstraction/chain-signatures",
             "unlisted": false
-          },
+          }
+        ],
+        "collapsed": true,
+        "collapsible": true
+      },
+      {
+        "type": "category",
+        "label": "Multichain Gas Relayer",
+        "items": [
           {
             "type": "link",
             "label": "Multichain Relayer Server",
             "href": "/zh-CN/develop/relayers/multichain-server",
             "docId": "develop/relayers/multichain-server",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Multichain Gas Station",
+            "href": "/zh-CN/develop/relayers/gas-station",
+            "docId": "develop/relayers/gas-station",
             "unlisted": false
           }
         ],
@@ -3657,6 +3672,12 @@
       "id": "develop/relayers/build-relayer",
       "title": "Building a Meta Transaction Relayer with NextJS",
       "description": "This guide will walk you through the steps required to construct a meta transaction relayer using NextJS 13.",
+      "sidebar": "build"
+    },
+    "develop/relayers/gas-station": {
+      "id": "develop/relayers/gas-station",
+      "title": "Multichain Gas Station Contract",
+      "description": "The multichain gas station smart contract accepts payments in NEAR tokens in exchange for gas funding on non-NEAR foreign chains. Part of the NEAR Multichain effort, it works in conjunction with the MPC recovery service to generate on-chain signatures.",
       "sidebar": "build"
     },
     "develop/relayers/multichain-server": {

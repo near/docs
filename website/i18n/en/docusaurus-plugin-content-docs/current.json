@@ -454,5 +454,9 @@
   "sidebar.concepts.category.Chain Signatures": {
     "message": "Chain Signatures",
     "description": "The label for category Chain Signatures in sidebar concepts"
+  },
+  "sidebar.build.category.Multichain Gas Relayer": {
+    "message": "Multichain Gas Relayer",
+    "description": "The label for category Multichain Gas Relayer in sidebar build"
   }
 }
