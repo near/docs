@@ -280,7 +280,10 @@ const sidebar = {
         "develop/relayers/build-relayer",
         'tools/fastauth-sdk',
         'abstraction/chain-signatures',
-        "develop/relayers/multichain-server",
+    ]},
+    {"Multichain Gas Relayer": [
+      "develop/relayers/multichain-server",
+      "develop/relayers/gas-station",
     ]},
     {
       "type": "html",
