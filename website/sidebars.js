@@ -52,7 +52,7 @@ const sidebar = {
       ]
     },
     {
-      "Network":[
+      "Network": [
         "concepts/basics/validators",
         "concepts/basics/networks",
         "concepts/basics/epoch",
@@ -280,11 +280,14 @@ const sidebar = {
         "develop/relayers/build-relayer",
         'tools/fastauth-sdk',
         'abstraction/chain-signatures',
-    ]},
-    {"Multichain Gas Relayer": [
-      "develop/relayers/multichain-server",
-      "develop/relayers/gas-station",
-    ]},
+        {
+          "Multichain Gas Relayer": [
+            "develop/relayers/multichain-server",
+            "develop/relayers/gas-station",
+          ]
+        },
+      ]
+    },
     {
       "type": "html",
       "value": "<hr/>"
