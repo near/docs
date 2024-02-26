@@ -87,7 +87,7 @@ The contract exposes methods to query the greeting and change it. These methods 
 
 <CodeTabs>
 <Language value="🌐 JavaScript" language="ts">
-    <Github fname="contract.ts" 
+    <Github fname="contract.ts"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/src/contract.ts"
             start="17" end="39" />
   </Language>
@@ -145,7 +145,7 @@ near create-account <accountId> --useFaucet
 # Deploy the contract
 cd contract-simple-ts
 yarn build
-near deploy <accountId> ./build/cross_contract.wasm init '{"hello_account":"hello.near-example.testnet"}'
+near deploy <accountId> ./build/cross_contract.wasm init --initFunction init --initArgs '{"hello_account":"hello.near-example.testnet"}'
 ```
 
   </TabItem>
@@ -158,7 +158,8 @@ near create-account <accountId> --useFaucet
 # Deploy the contract
 cd contract-simple-rs
 ./build.sh
-near deploy <accountId> ./target/wasm32-unknown-unknown/release/cross_contract.wasm init '{"hello_account":"hello.near-example.testnet"}'
+near deploy <accountId> ./target/wasm32-unknown-unknown/release/cross_contract.wasm --initFunction init --initArgs '{"hello_account":"hello.near-example.testnet"}'
+
 ```
 
   </TabItem>

@@ -7,10 +7,10 @@ import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 This example presents 3 instances of complex cross-contract calls. Particularly, it shows:
+
 1. How to batch multiple function calls to a same contract.
 2. How to call multiple contracts in parallel, each returning a different type.
 3. Different ways of handling the responses in the callback.
-
 
 :::info Simple Cross-Contract Calls
 Check the tutorial on how to the [simple cross-contract call](./xcc)
@@ -88,12 +88,12 @@ The smart contract, available in two flavors: rust and javascript
 └── test.sh # test script
 ```
 
-
   </TabItem>
 
 </Tabs>
 
 ---
+
 ## Smart Contract
 
 ### Batch Actions
@@ -119,6 +119,7 @@ they **all get reverted**.
 </CodeTabs>
 
 #### Getting the Last Response
+
 In this case, the callback has access to the value returned by the **last
 action** from the chain.
 
@@ -165,6 +166,7 @@ all in parallel. If one of them fails the rest **ARE NOT REVERTED**.
 </CodeTabs>
 
 #### Getting All Responses
+
 In this case, the callback has access to an **array of responses**, which have either the
 value returned by each call, or an error message.
 
@@ -189,7 +191,7 @@ value returned by each call, or an error message.
 
 ---
 
-### Multiple Calls - Same Result Type 
+### Multiple Calls - Same Result Type
 
 This example is a particular case of the previous one ([2. Calling Multiple Contracts](#2-calling-multiple-contracts)).
 It simply showcases a different way to check the results by directly accessing the `promise_result` array.
@@ -213,6 +215,7 @@ In this case, we call multiple contracts that will return the same type:
 </CodeTabs>
 
 #### Getting All Responses
+
 In this case, the callback again has access to an **array of responses**, which we can iterate checking the
 results.
 
@@ -282,7 +285,7 @@ near create-account <accountId> --useFaucet
 # Deploy the contract
 cd contract-advanced-ts
 yarn build
-near deploy <accountId> ./build/cross_contract.wasm init '{"hello_account":"hello.near-example.testnet","guestbook_account":"guestbook_account.near-example.testnet","counter_account":"counter_account.near-example.testnet"}'
+near deploy <accountId> ./build/cross_contract.wasm --initFunction init --initArgs '{"hello_account":"hello.near-example.testnet","guestbook_account":"guestbook_account.near-example.testnet","counter_account":"counter_account.near-example.testnet"}'
 ```
 
   </TabItem>
@@ -295,7 +298,8 @@ near create-account <accountId> --useFaucet
 # Deploy the contract
 cd contract-advanced-rs
 ./build.sh
-near deploy <accountId> ./target/wasm32-unknown-unknown/release/cross_contract.wasm init '{"hello_account":"hello.near-example.testnet","guestbook_account":"guestbook_account.near-example.testnet","counter_account":"counter_account.near-example.testnet"}'
+near deploy <accountId> ./target/wasm32-unknown-unknown/release/cross_contract.wasm --initFunction init --initArgs '{"hello_account":"hello.near-example.testnet","guestbook_account":"guestbook_account.near-example.testnet","counter_account":"counter_account.near-example.testnet"}'
+
 ```
 
   </TabItem>
