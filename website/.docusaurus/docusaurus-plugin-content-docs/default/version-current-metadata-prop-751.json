@@ -852,28 +852,28 @@
             "href": "/zh-CN/abstraction/chain-signatures",
             "docId": "abstraction/chain-signatures",
             "unlisted": false
-          }
-        ],
-        "collapsed": true,
-        "collapsible": true
-      },
-      {
-        "type": "category",
-        "label": "Multichain Gas Relayer",
-        "items": [
-          {
-            "type": "link",
-            "label": "Multichain Relayer Server",
-            "href": "/zh-CN/develop/relayers/multichain-server",
-            "docId": "develop/relayers/multichain-server",
-            "unlisted": false
           },
           {
-            "type": "link",
-            "label": "Multichain Gas Station",
-            "href": "/zh-CN/develop/relayers/gas-station",
-            "docId": "develop/relayers/gas-station",
-            "unlisted": false
+            "type": "category",
+            "label": "Multichain Gas Relayer",
+            "items": [
+              {
+                "type": "link",
+                "label": "Multichain Relayer Server",
+                "href": "/zh-CN/develop/relayers/multichain-server",
+                "docId": "develop/relayers/multichain-server",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Multichain Gas Station",
+                "href": "/zh-CN/develop/relayers/gas-station",
+                "docId": "develop/relayers/gas-station",
+                "unlisted": false
+              }
+            ],
+            "collapsed": true,
+            "collapsible": true
           }
         ],
         "collapsed": true,
