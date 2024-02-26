@@ -11,9 +11,9 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/abstraction/what-is.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Damián Parrino",
-  "lastUpdatedAt": 1708712355,
-  "formattedLastUpdatedAt": "2024年2月23日",
+  "lastUpdatedBy": "kualta",
+  "lastUpdatedAt": 1708965012,
+  "formattedLastUpdatedAt": "2024年2月26日",
   "frontMatter": {
     "id": "introduction",
     "title": "Chain Abstraction",
