@@ -12,7 +12,7 @@ Chain Signatures unlock the ability for a single account to transact across mult
 In this document we cover the steps necessary to sign a transaction for another chain, we recommend you to read our [**overview of Chain Signatures**](../1.concepts/abstraction/chain-signatures.md) before, as well as some of its [**use cases**](../1.concepts/abstraction/signatures/use-case.md).
 
 :::info
-Check our example showing how to [sign Ethereum transactions on NEAR](https://github.com/near-examples/near-multichain)
+See our [web-app example](https://github.com/near-examples/near-multichain) and [component example](https://test.near.social/md1.testnet/widget/chainsig-sign-eth-tx) showing how a NEAR account can create an Ethereum testnet transaction.
 ::: 
 
 ---
@@ -24,7 +24,7 @@ The first step is to use Chain Signatures is to construct a payload (transaction
   <TabItem value="Ξ Ethereum">
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/ethereum.js"
-      start="12" end="33" />
+      start="18" end="40" />
   </TabItem>
   <TabItem value="₿ Bitcoin">
   ```js
@@ -44,7 +44,7 @@ The method expects the `payload` to be signed for the target blockchain, and a `
   <TabItem value="Ξ Ethereum">
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/index.js"
-      start="24" end="33" />
+      start="49" end="54" />
   </TabItem>
   <TabItem value="₿ Bitcoin">
 
@@ -59,8 +59,8 @@ The contract will take some time to respond, as it needs to wait for the [`MPC s
 <Tabs groupId="code-tabs">
   <TabItem value="Ξ Ethereum">
     <Github language="js"
-      url="https://github.com/near-examples/near-multichain/blob/main/src/index.js"
-      start="35" end="48" />
+      url="https://github.com/near-examples/near-multichain/blob/main/src/ethereum.js"
+      start="49" end="57" />
   </TabItem>
   <TabItem value="₿ Bitcoin">
 
@@ -80,7 +80,7 @@ Once we have reconstructed the signature, we can relay it to the corresponding n
   <TabItem value="Ξ Ethereum">
     <Github fname="index.js" language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/ethereum.js"
-      start="36" end="40" />
+      start="43" end="47" />
   </TabItem>
   <TabItem value="₿ Bitcoin">
 
