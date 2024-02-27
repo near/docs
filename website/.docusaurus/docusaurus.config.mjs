@@ -66,7 +66,8 @@ export default {
         "blog": {
           "blogSidebarTitle": "Developer Changelog",
           "blogSidebarCount": "ALL",
-          "showReadingTime": false
+          "showReadingTime": false,
+          "routeBasePath": "changelog"
         },
         "theme": {
           "customCss": "./src/css/custom.scss"
@@ -83,7 +84,7 @@ export default {
       {
         "name": "near-changelog",
         "sourceBaseUrl": "https://raw.githubusercontent.com/near/near-releases/main/reports/",
-        "outDir": "/blog",
+        "outDir": "/changelog",
         "documents": [
           "2023-01-31-changelog.md",
           "2023-02-28-changelog.md",
@@ -356,8 +357,8 @@ export default {
           "position": "left",
           "items": [
             {
-              "label": "🎉 Changelog",
-              "href": "/blog"
+              "label": "🎉 Dev Changelog",
+              "href": "/changelog"
             },
             {
               "label": "Github",

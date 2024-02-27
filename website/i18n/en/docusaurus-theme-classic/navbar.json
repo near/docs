@@ -162,5 +162,9 @@
   "item.label.Github": {
     "message": "Github",
     "description": "Navbar item with label Github"
+  },
+  "item.label.🎉 Dev Changelog": {
+    "message": "🎉 Dev Changelog",
+    "description": "Navbar item with label 🎉 Dev Changelog"
   }
 }
