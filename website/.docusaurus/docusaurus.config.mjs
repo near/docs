@@ -95,7 +95,9 @@ export default {
           "2023-08-31-changelog.md",
           "2023-09-30-changelog.md",
           "2023-10-31-changelog.md",
-          "2023-11-30-changelog.md"
+          "2023-11-30-changelog.md",
+          "2023-12-31-changelog.md",
+          "2024-01-31-changelog.md"
         ],
         "noRuntimeDownloads": true
       }
