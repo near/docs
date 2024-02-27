@@ -20,8 +20,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Multichain Gas Station",
-    "permalink": "/zh-CN/develop/relayers/gas-station"
+    "title": "Login with NEAR",
+    "permalink": "/zh-CN/develop/integrate/backend-login"
   },
   "next": {
     "title": "Fungible Tokens (FT)",

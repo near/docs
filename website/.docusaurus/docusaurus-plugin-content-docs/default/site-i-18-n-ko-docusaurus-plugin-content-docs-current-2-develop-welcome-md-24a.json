@@ -22,7 +22,7 @@
   },
   "sidebar": "build",
   "next": {
-    "title": "스마트 컨트랙트란 무엇인가요?",
-    "permalink": "/ko/develop/contracts/whatisacontract"
+    "title": "What is Chain Abstraction?",
+    "permalink": "/ko/abstraction/what-is"
   }
 }

@@ -230,7 +230,7 @@
       },
       {
         "type": "html",
-        "value": "<span class='menu__link'><b><small> Chain Abstraction </small></b></span>"
+        "value": "<span class='menu__link'><b><small> Chain Abstraction ✨</small></b></span>"
       },
       {
         "type": "link",
@@ -392,6 +392,72 @@
         "href": "/zh-CN/develop/welcome",
         "docId": "develop/welcome",
         "unlisted": false
+      },
+      {
+        "type": "html",
+        "value": "<hr/>"
+      },
+      {
+        "type": "html",
+        "value": "<span class='menu__link'><b><small> Chain Abstraction ✨ </small></b></span>"
+      },
+      {
+        "type": "link",
+        "label": "What is Chain Abstraction?",
+        "href": "/zh-CN/abstraction/what-is",
+        "docId": "abstraction/what-is",
+        "unlisted": false
+      },
+      {
+        "type": "category",
+        "label": "Chain Abstraction Services",
+        "items": [
+          {
+            "type": "link",
+            "label": "Building a Relayer",
+            "href": "/zh-CN/develop/relayers/build-relayer",
+            "docId": "develop/relayers/build-relayer",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "FastAuth SDK",
+            "href": "/zh-CN/tools/fastauth-sdk",
+            "docId": "tools/fastauth-sdk",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Cross-Chain Signatures",
+            "href": "/zh-CN/abstraction/chain-signatures",
+            "docId": "abstraction/chain-signatures",
+            "unlisted": false
+          },
+          {
+            "type": "category",
+            "label": "Multichain Gas Relayer",
+            "items": [
+              {
+                "type": "link",
+                "label": "Multichain Relayer Server",
+                "href": "/zh-CN/develop/relayers/multichain-server",
+                "docId": "develop/relayers/multichain-server",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Multichain Gas Station",
+                "href": "/zh-CN/develop/relayers/gas-station",
+                "docId": "develop/relayers/gas-station",
+                "unlisted": false
+              }
+            ],
+            "collapsed": true,
+            "collapsible": true
+          }
+        ],
+        "collapsed": true,
+        "collapsible": true
       },
       {
         "type": "html",
@@ -808,72 +874,6 @@
           {
             "type": "html",
             "value": "<a class='menu__link internal' href='/tutorials/examples/count-near'> 📖 Tutorials </a>"
-          }
-        ],
-        "collapsed": true,
-        "collapsible": true
-      },
-      {
-        "type": "html",
-        "value": "<hr/>"
-      },
-      {
-        "type": "html",
-        "value": "<span class='menu__link'><b><small> Chain Abstraction ✨ </small></b></span>"
-      },
-      {
-        "type": "link",
-        "label": "What is Chain Abstraction?",
-        "href": "/zh-CN/abstraction/what-is",
-        "docId": "abstraction/what-is",
-        "unlisted": false
-      },
-      {
-        "type": "category",
-        "label": "Chain Abstraction Services",
-        "items": [
-          {
-            "type": "link",
-            "label": "Building a Relayer",
-            "href": "/zh-CN/develop/relayers/build-relayer",
-            "docId": "develop/relayers/build-relayer",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "FastAuth SDK",
-            "href": "/zh-CN/tools/fastauth-sdk",
-            "docId": "tools/fastauth-sdk",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Cross-Chain Signatures",
-            "href": "/zh-CN/abstraction/chain-signatures",
-            "docId": "abstraction/chain-signatures",
-            "unlisted": false
-          },
-          {
-            "type": "category",
-            "label": "Multichain Gas Relayer",
-            "items": [
-              {
-                "type": "link",
-                "label": "Multichain Relayer Server",
-                "href": "/zh-CN/develop/relayers/multichain-server",
-                "docId": "develop/relayers/multichain-server",
-                "unlisted": false
-              },
-              {
-                "type": "link",
-                "label": "Multichain Gas Station",
-                "href": "/zh-CN/develop/relayers/gas-station",
-                "docId": "develop/relayers/gas-station",
-                "unlisted": false
-              }
-            ],
-            "collapsed": true,
-            "collapsible": true
           }
         ],
         "collapsed": true,

@@ -22,7 +22,7 @@
   },
   "sidebar": "build",
   "next": {
-    "title": "What is a Smart Contract?",
-    "permalink": "/vi/develop/contracts/whatisacontract"
+    "title": "What is Chain Abstraction?",
+    "permalink": "/vi/abstraction/what-is"
   }
 }

@@ -23,7 +23,7 @@
   },
   "sidebar": "build",
   "next": {
-    "title": "What is a Contract?",
-    "permalink": "/develop/contracts/whatisacontract"
+    "title": "What is Chain Abstraction?",
+    "permalink": "/abstraction/what-is"
   }
 }
