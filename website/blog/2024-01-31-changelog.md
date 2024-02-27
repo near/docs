@@ -1,4 +1,4 @@
-# January 2023
+# January 2024
 
 Developer changelog for [essential repositories](https://near.dev) when building on NEAR Protocol. 🏗️
 
@@ -337,8 +337,6 @@ Developer changelog for [essential repositories](https://near.dev) when building
 | DATE | PR | DESCRIPTION |
 | --- | --- | --- |
 | 2024-01-30 | [10522](https://github.com/near/nearcore/pull/10522) | [[stateless_validatio...](https://github.com/near/nearcore/pull/10522) |
-| 2024-01-30 | [10445](https://github.com/near/nearcore/pull/10445) | [ci: try out the scca...](https://github.com/near/nearcore/pull/10445) |
-| 2024-01-30 | [10500](https://github.com/near/nearcore/pull/10500) | [implement custom coverage generation](https://github.com/near/nearcore/pull/10500) |
 
 ### neps
 
