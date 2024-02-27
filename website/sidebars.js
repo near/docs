@@ -64,7 +64,7 @@ const sidebar = {
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Chain Abstraction </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Chain Abstraction ✨</small></b></span>"
     },
     "concepts/abstraction/introduction",
     "concepts/abstraction/relayers",
