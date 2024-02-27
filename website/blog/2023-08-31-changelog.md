@@ -1,6 +1,6 @@
 # August 2023
 
-Developer changelog for [essential repositories](https://github.com/near) when building on NEAR Protocol. 🏗️
+Developer changelog for [essential repositories](https://near.dev) when building on NEAR Protocol. 🏗️
 
 👉 [Get monthly emails of this report](https://docs.google.com/forms/d/1JfFUbTq3ELUlScJT1UI9PQPuQsv0W2jcTa7P94KrS5U/edit) 👈
 
