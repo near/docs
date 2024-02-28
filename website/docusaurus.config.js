@@ -1,3 +1,5 @@
+import { title } from 'process';
+
 // @ts-check
 const path = require('path');
 const changelogs = require('./src/utils/changelogs.json');
@@ -52,10 +54,13 @@ const config = {
           anonymizeIP: true,
         },
         blog: {
+          blogTitle: 'NEAR Developer Changelog',
           blogSidebarTitle: 'Developer Changelog',
           blogSidebarCount: 'ALL',
           showReadingTime: false,
           routeBasePath: 'changelog',
+          path: '../changelog',
+          
         },
         theme: {
           customCss: './src/css/custom.scss',
@@ -73,7 +78,7 @@ const config = {
         name: 'near-changelog',
         sourceBaseUrl:
           'https://raw.githubusercontent.com/near/near-releases/main/reports/',
-        outDir: '/blog',
+        outDir: '../changelog',
         documents: changelogs,
         noRuntimeDownloads: true,
         modifyContent(filename, content) {
