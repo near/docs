@@ -287,11 +287,6 @@
               "sidebar": "concepts"
             },
             {
-              "id": "concepts/advanced/papers",
-              "path": "/zh-CN/concepts/advanced/papers",
-              "sidebar": "concepts"
-            },
-            {
               "id": "concepts/advanced/specification",
               "path": "/zh-CN/concepts/advanced/specification",
               "sidebar": "concepts"

@@ -458,5 +458,9 @@
   "sidebar.build.category.Multichain Gas Relayer": {
     "message": "Multichain Gas Relayer",
     "description": "The label for category Multichain Gas Relayer in sidebar build"
+  },
+  "sidebar.concepts.link.Papers": {
+    "message": "Papers",
+    "description": "The label for link Papers in sidebar concepts, linking to https://near.org/papers"
   }
 }

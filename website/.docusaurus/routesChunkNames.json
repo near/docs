@@ -164,17 +164,17 @@
       "plugin": "82d98fd4"
     }
   },
-  "/zh-CN/-247": {
+  "/zh-CN/-f4f": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "8b378508"
     }
   },
-  "/zh-CN/-4b6": {
+  "/zh-CN/-87e": {
     "__comp": "a7bd4aaa",
     "version": "935f2afb"
   },
-  "/zh-CN/-e0f": {
+  "/zh-CN/-b44": {
     "__comp": "a94703ab"
   },
   "/zh-CN/abstraction/chain-signatures-ebd": {
@@ -400,10 +400,6 @@
   "/zh-CN/concepts/advanced/near-lake-framework-477": {
     "__comp": "17896441",
     "content": "444c424a"
-  },
-  "/zh-CN/concepts/advanced/papers-357": {
-    "__comp": "17896441",
-    "content": "7687f85c"
   },
   "/zh-CN/concepts/advanced/specification-637": {
     "__comp": "17896441",

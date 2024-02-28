@@ -84,15 +84,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '247'),
+    component: ComponentCreator('/zh-CN/', 'f4f'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '4b6'),
+        component: ComponentCreator('/zh-CN/', '87e'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', 'e0f'),
+            component: ComponentCreator('/zh-CN/', 'b44'),
             routes: [
               {
                 path: '/zh-CN/abstraction/chain-signatures',
@@ -423,12 +423,6 @@ export default [
               {
                 path: '/zh-CN/concepts/advanced/near-lake-framework',
                 component: ComponentCreator('/zh-CN/concepts/advanced/near-lake-framework', '477'),
-                exact: true,
-                sidebar: "concepts"
-              },
-              {
-                path: '/zh-CN/concepts/advanced/papers',
-                component: ComponentCreator('/zh-CN/concepts/advanced/papers', '357'),
                 exact: true,
                 sidebar: "concepts"
               },

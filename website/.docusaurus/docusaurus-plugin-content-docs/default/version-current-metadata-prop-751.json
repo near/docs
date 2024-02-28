@@ -337,9 +337,7 @@
       {
         "type": "link",
         "label": "Papers",
-        "href": "/zh-CN/concepts/advanced/papers",
-        "docId": "concepts/advanced/papers",
-        "unlisted": false
+        "href": "https://near.org/papers"
       },
       {
         "type": "html",
@@ -3173,12 +3171,6 @@
       "id": "concepts/advanced/near-lake-framework",
       "title": "NEAR Lake Framework",
       "description": "https://github.com/near/near-lake-framework/",
-      "sidebar": "concepts"
-    },
-    "concepts/advanced/papers": {
-      "id": "concepts/advanced/papers",
-      "title": "Papers",
-      "description": "加入我们，和我们一起深入探索我们的技术吧。",
       "sidebar": "concepts"
     },
     "concepts/advanced/specification": {
