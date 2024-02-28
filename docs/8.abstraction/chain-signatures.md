@@ -28,7 +28,7 @@ The first step is to use Chain Signatures is to construct a payload (transaction
       url="https://github.com/near-examples/near-multichain/blob/main/src/ethereum.js"
       start="18" end="40" />
 
-  </TabItem>
+</TabItem>
 
 <TabItem value="₿ Bitcoin">
 
@@ -53,7 +53,7 @@ The method expects the `payload` to be signed for the target blockchain, and a `
       url="https://github.com/near-examples/near-multichain/blob/main/src/index.js"
       start="49" end="54" />
 
-  </TabItem>
+</TabItem>
 
 <TabItem value="₿ Bitcoin">
 
@@ -73,7 +73,7 @@ The contract will take some time to respond, as it needs to wait for the [`MPC s
       url="https://github.com/near-examples/near-multichain/blob/main/src/ethereum.js"
       start="49" end="57" />
 
-  </TabItem>
+</TabItem>
 
 <TabItem value="₿ Bitcoin">
 
@@ -97,7 +97,7 @@ Once we have reconstructed the signature, we can relay it to the corresponding n
       url="https://github.com/near-examples/near-multichain/blob/main/src/ethereum.js"
       start="43" end="47" />
 
-  </TabItem>
+</TabItem>
 
 <TabItem value="₿ Bitcoin">
 
