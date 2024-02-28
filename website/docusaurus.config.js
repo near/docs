@@ -73,11 +73,11 @@ const config = {
         name: 'near-changelog',
         sourceBaseUrl:
           'https://raw.githubusercontent.com/near/near-releases/main/reports/',
-        outDir: '/changelog',
+        outDir: '/blog',
         documents: changelogs,
         noRuntimeDownloads: true,
         modifyContent(filename, content) {
-          return { filename, content: content.replace('{{', '') };
+          return { filename, content: content.replace('{{', '').replace('<', '\\<') };
         },
       },
     ],
