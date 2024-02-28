@@ -11,6 +11,7 @@ const tokenData = Near.view("nft.primitives.near", "nft_token", {
 ```
 
 <details>
+
 <summary> Example response </summary>
 
 ```json
@@ -33,6 +34,7 @@ const tokenData = Near.view("nft.primitives.near", "nft_token", {
   }
 }
 ```
+
 </details>
 
 </TabItem>
@@ -44,6 +46,7 @@ const tokenData = fetch("https://api-v2-mainnet.paras.id/token?token_id=84686:11
 ```
 
 <details>
+
 <summary> Example response </summary>
 
 ```json
@@ -102,11 +105,15 @@ const tokenData = fetch("https://api-v2-mainnet.paras.id/token?token_id=84686:11
 </details>
 
 :::info
+
 See the [Paras API documentation](https://parashq.github.io/) for the full list of methods.
+
 :::
 
 :::note
+
 Paras API methods returns data from all NFT contracts in NEAR. You might want to pass more parameters like `contract_id` or `owner_id` to make the response more accurate.
+
 :::
 
 </TabItem>
@@ -144,6 +151,7 @@ const tokenData = fetch("https://graph.mintbase.xyz", {
 ```
 
 <details>
+
 <summary> Example response </summary>
 
 ```json
@@ -172,8 +180,11 @@ const tokenData = fetch("https://graph.mintbase.xyz", {
 </details>
 
 :::note
+
 In the future, users may be required to register using an api key. For now, simply passing the value `anon` for `mb-api-key` will work.
+
 :::
 
 </TabItem>
+
 </Tabs>
