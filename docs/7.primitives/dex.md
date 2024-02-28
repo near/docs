@@ -37,9 +37,11 @@ In brief, DEXs work by having [pools of token pairs](https://guide.ref.finance/p
 The ratio of the tokens in the pool determines the exchange rate for a swap. Indeed, swapping is adding tokens to one side of the pool while removing tokens from the other side of the pool.
 
 :::info
+
 This docs refer to [Ref Finance](https://www.ref.finance/), a community built DEX in NEAR.
 
 Please check their [docs](https://guide.ref.finance/developers-1/cli-trading) for more information.
+
 :::
 
 ---
@@ -69,9 +71,11 @@ Anyone list tokens for sale in the DEX. This is why, in order to protect users, 
     ```
 
   </TabItem>
+
 </Tabs>
 
 <details>
+
 <summary> Examples Response </summary>
 
 ```bash
@@ -101,6 +105,7 @@ In order to use the contract, make sure to register your account in the DEX by p
     ```
 
   </TabItem>
+
 </Tabs>
 
 ---
@@ -117,12 +122,15 @@ In order to swap tokens, one must first deposit tokens into the DEX. For this, y
     ```
 
   </TabItem>
+
 </Tabs>
 
 :::danger
+
 Do **NOT** transfer **NEAR** tokens to Ref Finance. Instead, call `near_deposit` in the [`wrap.near`](https://nearblocks.io/address/wrap.near) contract, attaching the amount of NEAR you want to swap.
 
 This will mint `wrap.near` for you, which you can then transfer to Ref Finance.
+
 :::
 
 ---
