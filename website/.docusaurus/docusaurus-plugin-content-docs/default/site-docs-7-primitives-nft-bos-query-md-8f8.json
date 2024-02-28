@@ -5,7 +5,7 @@
   "source": "@site/../docs/7.primitives/nft/bos/query.md",
   "sourceDirName": "7.primitives/nft/bos",
   "slug": "/primitives/nft/bos/query",
-  "permalink": "/zh-CN/primitives/nft/bos/query",
+  "permalink": "/primitives/nft/bos/query",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/nft/bos/query.md",
@@ -13,6 +13,6 @@
   "version": "current",
   "lastUpdatedBy": "Damián Parrino",
   "lastUpdatedAt": 1709133591,
-  "formattedLastUpdatedAt": "2024年2月28日",
+  "formattedLastUpdatedAt": "Feb 28, 2024",
   "frontMatter": {}
 }

@@ -1,0 +1,15 @@
+{
+  "id": "primitives/dex/web-app/swap",
+  "title": "swap",
+  "description": "The Wallet object comes from our quickstart template",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/7.primitives/dex/web-app/swap.md",
+  "sourceDirName": "7.primitives/dex/web-app",
+  "slug": "/primitives/dex/web-app/swap",
+  "permalink": "/zh-CN/primitives/dex/web-app/swap",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/dex/web-app/swap.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

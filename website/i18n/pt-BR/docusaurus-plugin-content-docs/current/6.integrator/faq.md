@@ -278,7 +278,7 @@ We use a simple binary serialization format that's deterministic: https://borsh.
 - Whitepaper
 
   - General overview at [The Beginner's Guide to the NEAR Blockchain](https://near.org/blog/the-beginners-guide-to-the-near-blockchain)
-  - [NEAR Whitepaper](https://near.org/papers/the-official-near-white-paper/)
+  - [NEAR Whitepaper](https://pages.near.org/papers/the-official-near-white-paper/)
 
 - Github
   - https://www.github.com/near

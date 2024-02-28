@@ -1,7 +1,7 @@
 {
   "id": "bos/tutorial/lido",
   "title": "Lido 예시",
-  "description": "만약 당신이 더 자세히 살펴볼 준비가 되어 있다면, Lido 구성 요소는 이더리움 메인넷에 배치된 스마트 컨트랙트와 상호 작용하는 방법을 보여주기 때문에 완벽한 예시로 작용합니다.",
+  "description": "If you are ready to explore further, the Lido component serves as an excellent fully-fledged example, as it demonstrates how to interact with a smart contract deployed on the Ethereum mainnet.",
   "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/bos/tutorial/hello-lido.md",
   "sourceDirName": "bos/tutorial",
   "slug": "/bos/tutorial/lido",

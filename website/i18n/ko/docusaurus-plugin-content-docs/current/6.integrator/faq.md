@@ -278,7 +278,7 @@ Receipt는 모든 Receipt가 적용될 때까지 네트워크 전체에 전파�
 - 백서
 
   - [NEAR 블록체인 초보자 가이드](https://near.org/blog/the-beginners-guide-to-the-near-blockchain) - 일반 개요
-  - [NEAR 백서](https://near.org/papers/the-official-near-white-paper/)
+  - [NEAR 백서](https://pages.near.org/papers/the-official-near-white-paper/)
 
 - Github
   - https://www.github.com/near

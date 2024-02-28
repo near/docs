@@ -1,0 +1,15 @@
+{
+  "id": "primitives/dao/bos/get-dao-list",
+  "title": "get-dao-list",
+  "description": "Example response",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/7.primitives/dao/bos/get-dao-list.md",
+  "sourceDirName": "7.primitives/dao/bos",
+  "slug": "/primitives/dao/bos/get-dao-list",
+  "permalink": "/zh-CN/primitives/dao/bos/get-dao-list",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/dao/bos/get-dao-list.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

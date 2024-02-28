@@ -1,37 +1,70 @@
 ---
 id: whatisacontract
 title: 스마트 컨트랙트란 무엇인가요?
-sidebar_label: 스마트 컨트랙트란 무엇인가요?
+sidebar_label: What is a Contract?
 ---
 
-스마트 컨트랙트는 NEAR 네트워크에 있는 간단한 프로그램입니다. 최신 애플리케이션과 마찬가지로, 스마트 컨트랙트는 데이터를 저장하는 동시에 데이터와 상호 작용하는 몇 가지 메서드를 가지고 있습니다.
+Smart contracts are pieces of **executable code** that live in a NEAR account. They can **store data**, **perform transactions** in the account’s name, and **expose methods** so other accounts can interact with them.
 
-스마트 컨트랙트는 사람이 읽을 수 있는 언어로 작성된 다음, 모든 사람이 상호 작용할 수 있는 계정에 컴파일 및 배포됩니다.
+![img](/docs/assets/welcome-pages/contracts-landing.png)
 
 스마트 컨트랙트 블록체인이 어떻게 작동하는지 모르더라도 걱정하지 마세요. 개발자로서 NEAR 스마트 컨트랙트를 이해하는 것만으로도 충분합니다. 스마트 컨트랙트는 다음과 같은 특성들을 가지고 있습니다.
 1. **제한적인** 컴퓨팅 리소스를 가지고 있습니다.
 2. **비동기적인** 방식으로 다른 컨트랙트와 상호 작용합니다.
 3. **실제 돈**을 다루기 때문에, 제일 중요한 것은 보안입니다.
 
-:::info HTTP 요청 및 스마트 컨트랙트 스마트 컨트랙트는 **HTTP 요청을 수행할 수 없습니다**. 즉, 컨트랙트는 NEAR 네트워크 외부에 있는 데이터를 검색할 수 없습니다. 그러나 외부 소스에서 데이터를 수신할 수는 있습니다. 필요한 경우, 컨트랙트에 정기적으로 데이터를 공급하는 서버를 설정할 수도 있습니다(간단히 말해서 [오라클](../relevant-contracts/oracles.md)의 작동 방식을 의미합니다). :::
+:::info HTTP Requests and Smart Contracts
 
----
-
-## 프로그래밍 언어
-개발자는 [Javascript](../../sdk/js/js-sdk.md) 또는 [Rust](../../sdk/rust/rs-sdk.md)를 사용해서 NEAR 내 스마트 컨트랙트를 작성할 수 있습니다.
-
-선택한 언어와 상관없이, NEAR SDK는 컨트랙트를 WebAssembly로 컴파일하여 NEAR 플랫폼에서 배포하고 실행할 수 있도록 도와줍니다.
-
-두 언어 중 하나의 전문가일 필요는 없지만, 이 문서에서는 적어도 하나의 언어에 대한 기본 지식이 있다고 가정한 상태로 진행하도록 하겠습니다.
-
-:::caution [JS-SDK](https://github.com/near/near-sdk-js/releases/)는 현재 알파 버전입니다
-
-JavaScript 런타임은 아직 완전히 감사되지 않았습니다. 가치를 지닌 스마트 컨트랙트를 생성하려면 [`near-sdk-rs`](https://github.com/near/near-sdk-rs)를 사용하세요.
+Smart contracts **cannot perform HTTP requests**, meaning they can't fetch data from outside the NEAR network.
 
 :::
 
+---
 
-### 다른 언어
-이론적으로, NEAR 스마트 컨트랙트 개발에는 Wasm으로 컴파일되는 모든 언어가 사용될 수 있습니다. 그러나, 사용자에게 친숙한 경험을 제공하려면 저수준 런타임 API를 랩핑하는 라이브러리를 제공하는 동시에, 다른 고수준의 기능도 제공해야 합니다.
+## Where do contracts live?
+Smart Contracts are deployed into [**NEAR accounts**](../../1.concepts/basics/accounts/introduction.md). Any NEAR account can hold a contract, needing to pay for the **contract's code** and the **data it stores**.
 
-앞으로 더 많은 언어가 지원되고, NEAR 혼자만이 아닌 더 넓은 커뮤니티의 노력과 지원이 이루어질 것이라고 생각합니다.
+Once in an account, anyone can interact with the contract. Thanks to the underlying network structure, executing code from a contract is both **fast** (avg. 1.4s finality) and **cheap**. Moreover, **read-only** operations are **free for everyone**.
+
+:::tip
+Storing 100kb costs 1Ⓝ, so deploying a contract generally costs only a few $NEARs.
+:::
+
+---
+
+## Development flow
+
+Just like any piece of software, smart contracts have a development flow - starting with its creation and ending with monitoring it, all of which we cover in our documentation.
+
+![img](/docs/assets/welcome-pages/contract-lifecycle.png)
+
+The development flow can be summarized as follows:
+- [**Scaffold**](../contracts/quickstart.md): The simplest way to create a project is by starting from a template.
+- [**Build**](../contracts/welcome.md): To write a contract developers can choose between Javascript and Rust.
+- [**Test**](../testing/introduction.md): Our Sandbox enables to simulate interactions with one or multiple contracts in a realistic environment.
+- [**Deploy**](../deploy.md): After making sure the contract is secure, developers can deploy the contract into their accounts.
+- [**Use**](https://mynearwallet.com): Any user can interact with the contract through their NEAR Wallet.
+- [**Monitor**](../monitor.md): The contract's activity can be monitored through simple APIs.
+
+#### Supported Languages
+During the whole cycle, developers can choose between [JavaScript](https://www.learn-js.org/) and [Rust](https://www.rust-lang.org/), allowing them to use their favorite language at each step of their journey.
+
+<details>
+
+<summary> Other languages </summary>
+Theoretically, you can use any language that compiles to Wasm for developing NEAR smart contract. However, in order to have a user-friendly experience we would need to provide a library that wraps around low-level runtime APIs, while also offering other high-level functionalities.
+
+We envision that in the future, more languages will be supported and the support will be done through the effort from the wider community, not just NEAR alone.
+
+</details>
+
+---
+
+## Contract primitives
+Contract primitives such as FT, NFT, and DAOs are fundamental building blocks that can be combined to create awesome user experiences such as reward tokens, decision-making tools, and marketplaces.
+
+:::tip
+
+Check our section on [primitives](../../7.primitives/whatareprimitives.md) to learn more about them
+
+:::

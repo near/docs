@@ -83,7 +83,7 @@ You'll learn more about these functions in the [approvals section](/tutorials/nf
 
 | Method                     | Description                                                                        |
 | -------------------------- | ---------------------------------------------------------------------------------- |
-| **nft_total_supply**     | Returns the total amount of NFTs stored on the contract                            |
+| **nft_total_supply**     | Returns the total amount of NFTs stored on the contract.                           |
 | **nft_tokens**             | Returns a paginated list of NFTs stored on the contract regardless of their owner. |
 | **nft_supply_for_owner** | Allows you view the total number of NFTs owned by any given user.                  |
 | **nft_tokens_for_owner** | Returns a paginated list of NFTs owned by any given user.                          |
@@ -117,7 +117,7 @@ You'll learn more about these functions in the [minting section](/tutorials/nfts
 
 | Name              | Description                                                                                                   |
 | ----------------- | ------------------------------------------------------------------------------------------------------------- |
-| **TokenMetadata** | This structure defines the metadata that can be stored for each token. (title, description, media, etc.       |
+| **TokenMetadata** | This structure defines the metadata that can be stored for each token (title, description, media, etc.).      |
 | **Token**         | This structure outlines what information will be stored on the contract for each token.                       |
 | **JsonToken**     | When querying information about NFTs through view calls, the return information is stored in this JSON token. |
 | **nft_metadata**  | This function allows users to query for the contact's internal metadata.                                      |
@@ -154,7 +154,7 @@ You'll learn more about these functions in the [minting section](/tutorials/nfts
 
 <Github language="rust" start="7" end="56" url="https://github.com/near-examples/nft-tutorial/blob/1.skeleton/nft-contract/src/nft_core.rs" />
 
-You'll learn more about these functions in the [minting section](/tutorials/nfts/minting) of the tutorial series.
+You'll learn more about these functions in the [core section](/tutorials/nfts/core) of the tutorial series.
 
 ---
 
@@ -224,8 +224,8 @@ You've seen the layout of this NFT smart contract, and how all the functions are
 
 :::note Versioning for this article At the time of this writing, this example works with the following versions:
 
-- rustc: `1.6.0`
-- near-sdk-rs: `4.0.0`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
+- rustc: `1.75.0`
+- near-sdk-rs: `4.1.1`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 
 :::

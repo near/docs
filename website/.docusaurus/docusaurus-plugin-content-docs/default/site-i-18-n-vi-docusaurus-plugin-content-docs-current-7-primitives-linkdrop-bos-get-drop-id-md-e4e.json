@@ -1,0 +1,15 @@
+{
+  "id": "primitives/linkdrop/bos/get-drop-id",
+  "title": "get-drop-id",
+  "description": "",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/7.primitives/linkdrop/bos/get-drop-id.md",
+  "sourceDirName": "7.primitives/linkdrop/bos",
+  "slug": "/primitives/linkdrop/bos/get-drop-id",
+  "permalink": "/vi/primitives/linkdrop/bos/get-drop-id",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/linkdrop/bos/get-drop-id.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

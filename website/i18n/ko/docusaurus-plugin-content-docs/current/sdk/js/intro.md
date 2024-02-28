@@ -34,7 +34,7 @@ WSL2 설정에 문제가 있는 경우 다음을 확인하세요.
 npx create-near-app
 ```
 
-JS 컨트랙트만 개발하고 배포하려는 경우, [`hello-near-js`](https://github.com/near-examples/hello-near-js) 레퍼지토리를 템플릿 또는 [SDK 레퍼지토리의 예제](https://github.com/near/near-sdk-js/tree/develop/examples/src) 중 하나로 사용하는 것이 좋습니다.
+If you only wish to develop and deploy a JS contract, the [`hello-near-ts`](https://github.com/near-examples/hello-near-examples/tree/main/contract-ts) repository is great to use as a template or one of the [examples in the SDK repository](https://github.com/near/near-sdk-js/tree/develop/examples/src).
 
 `npm init`를 사용하여 새 프로젝트를 수동으로 생성하려면, 생성된 `package.json` 내에 다음 구성이 포함되는지 확인해야 합니다.
 

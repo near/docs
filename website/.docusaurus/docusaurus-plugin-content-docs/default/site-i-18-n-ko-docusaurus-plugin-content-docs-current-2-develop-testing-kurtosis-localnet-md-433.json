@@ -22,7 +22,7 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "통합 테스트(Integration Test)",
+    "title": "Integration Tests",
     "permalink": "/ko/develop/testing/integration-test"
   },
   "next": {

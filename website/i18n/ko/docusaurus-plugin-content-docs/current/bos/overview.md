@@ -30,19 +30,19 @@ Additionally, NEAR Components are chain-agnostic, making it a flexible solution 
 ## The Pillars of NEAR Stack
 
 The NEAR stack is based on three pillars:
-- [컴포넌트](#components): 특정 문제점들을 해결하는 구성 가능한 프론트엔드를 의미합니다.
+- Components: Composable frontends that solve specific problems.
 - [블록체인](#blockchains): 컴포넌트의 코드, 자산, 데이터를 저장합니다.
 - [게이트웨이](#gateways): 모든 곳에 컴포넌트를 렌더링하는 단순한 방법입니다.
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### 컴포넌트
 
-[Components](./components.md) are small web 3 applications (think [Lido](tutorial/hello-lido.md), Uniswap, Aave) that are stored **entirely on-chain**.
+Components are small web 3 applications (think [Lido](tutorial/hello-lido.md), Uniswap, Aave) that are stored **entirely on-chain**.
 
-Developers can fork these apps and [compose them](./components.md#composing-components) to create full web applications.
+Developers can fork these apps and compose them to create full web applications.
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### 블록체인
 
@@ -50,7 +50,7 @@ Developers can fork these apps and [compose them](./components.md#composing-comp
 
 앱(프론트엔드)의 소스 코드는 HTML/CSS/JS를 매우 저렴하게(몇 센트) 저장할 수 있다는 장점을 가진 NEAR에 존재합니다.
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### 게이트웨이
 

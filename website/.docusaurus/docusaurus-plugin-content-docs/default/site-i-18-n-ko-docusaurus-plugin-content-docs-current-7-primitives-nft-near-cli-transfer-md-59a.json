@@ -1,0 +1,15 @@
+{
+  "id": "primitives/nft/near-cli/transfer",
+  "title": "transfer",
+  "description": "",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/7.primitives/nft/near-cli/transfer.md",
+  "sourceDirName": "7.primitives/nft/near-cli",
+  "slug": "/primitives/nft/near-cli/transfer",
+  "permalink": "/ko/primitives/nft/near-cli/transfer",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/nft/near-cli/transfer.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

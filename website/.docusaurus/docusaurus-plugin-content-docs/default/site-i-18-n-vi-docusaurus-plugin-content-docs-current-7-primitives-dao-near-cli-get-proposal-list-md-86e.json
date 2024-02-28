@@ -1,0 +1,15 @@
+{
+  "id": "primitives/dao/near-cli/get-proposal-list",
+  "title": "get-proposal-list",
+  "description": "Example response",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/7.primitives/dao/near-cli/get-proposal-list.md",
+  "sourceDirName": "7.primitives/dao/near-cli",
+  "slug": "/primitives/dao/near-cli/get-proposal-list",
+  "permalink": "/vi/primitives/dao/near-cli/get-proposal-list",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/dao/near-cli/get-proposal-list.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

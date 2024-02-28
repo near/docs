@@ -1,0 +1,15 @@
+{
+  "id": "primitives/ft/smart-contract/attach-to-call",
+  "title": "attach-to-call",
+  "description": "",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/7.primitives/ft/smart-contract/attach-to-call.md",
+  "sourceDirName": "7.primitives/ft/smart-contract",
+  "slug": "/primitives/ft/smart-contract/attach-to-call",
+  "permalink": "/ko/primitives/ft/smart-contract/attach-to-call",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/ft/smart-contract/attach-to-call.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

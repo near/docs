@@ -126,5 +126,45 @@
   "item.label.Validator Docs": {
     "message": "Validator Docs",
     "description": "Navbar item with label Validator Docs"
+  },
+  "item.label.Overview": {
+    "message": "Overview",
+    "description": "Navbar item with label Overview"
+  },
+  "item.label.LinkDrops": {
+    "message": "LinkDrops",
+    "description": "Navbar item with label LinkDrops"
+  },
+  "item.label.Tutorials": {
+    "message": "Tutorials",
+    "description": "Navbar item with label Tutorials"
+  },
+  "item.label.Aurora (EVM)": {
+    "message": "Aurora (EVM)",
+    "description": "Navbar item with label Aurora (EVM)"
+  },
+  "item.label.Resources": {
+    "message": "Resources",
+    "description": "Navbar item with label Resources"
+  },
+  "item.label.Discord": {
+    "message": "Discord",
+    "description": "Navbar item with label Discord"
+  },
+  "item.label.Telegram": {
+    "message": "Telegram",
+    "description": "Navbar item with label Telegram"
+  },
+  "item.label.🎉 Changelog": {
+    "message": "🎉 Changelog",
+    "description": "Navbar item with label 🎉 Changelog"
+  },
+  "item.label.Github": {
+    "message": "Github",
+    "description": "Navbar item with label Github"
+  },
+  "item.label.🎉 Dev Changelog": {
+    "message": "🎉 Dev Changelog",
+    "description": "Navbar item with label 🎉 Dev Changelog"
   }
 }

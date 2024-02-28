@@ -5,7 +5,7 @@
   "source": "@site/../docs/7.primitives/nft.md",
   "sourceDirName": "7.primitives",
   "slug": "/primitives/nft",
-  "permalink": "/zh-CN/primitives/nft",
+  "permalink": "/primitives/nft",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/nft.md",
@@ -13,7 +13,7 @@
   "version": "current",
   "lastUpdatedBy": "Damian Parrino",
   "lastUpdatedAt": 1709136567,
-  "formattedLastUpdatedAt": "2024年2月28日",
+  "formattedLastUpdatedAt": "Feb 28, 2024",
   "frontMatter": {
     "id": "nft",
     "title": "Non-Fungible Tokens (NFT)",
@@ -22,10 +22,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Fungible Tokens (FT)",
-    "permalink": "/zh-CN/primitives/ft"
+    "permalink": "/primitives/ft"
   },
   "next": {
     "title": "Linkdrops",
-    "permalink": "/zh-CN/primitives/linkdrop"
+    "permalink": "/primitives/linkdrop"
   }
 }

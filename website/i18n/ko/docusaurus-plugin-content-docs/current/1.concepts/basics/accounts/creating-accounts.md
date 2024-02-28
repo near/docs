@@ -19,36 +19,24 @@ In **testnet** you can directly create [named accounts](account-id.md#named-acco
 ---
 
 ## 로컬 암시적 계정
-To create an implicit account locally, it takes two steps: create a key-pair locally, and then you derive its address.
-> Open your teminal/cmd to run the command that will allow you perform the steps stated above
-
-#### 1. [near cli](../../../4.tools/cli.md)를 사용하여 ED25519 키 쌍 생성하기
+We can create a implicit account with ED25519 key-pair locally using [near cli](../../../4.tools/cli.md)
 
 ```bash
-near generate-key my-new-account
-```
-> A new key-pair will be stored at `~/.near-credentials/testnet/my-new-account.json`.
-
-#### 2. public_key를 계정 ID로 변환하기 {#converting-a-public-key-to-an-account-id}
-Use [`near-cli`](../../../4.tools/cli.md) to convert the `public_key` from the `.json` file to its related NEAR account address.
-
-> Open the javascript console of near-cli using the command below
-
-```bash
-near repl
+near generate-key --saveImplicit
 ```
 
-```javascript
-// Paste this code in the javascript console
-const pk58 = 'ed25519:<data>'
-nearAPI.utils.PublicKey.fromString(pk58).data.hexSlice()
+Example Output
 ```
+Generated key pair with ed25519:BGCCDDHfysuuVnaNVtEhhqeT4k9Muyem3Kpgq2U1m9HX public key
+Seed phrase: lumber habit sausage used zebra brain border exist meat muscle river hidden
+Key pair: {"publicKey":"ed25519:AQgnQSR1Mp3v7xrw7egJtu3ibNzoCGwUwnEehypip9od","secretKey":"ed25519:51qTiqybe8ycXwPznA8hz7GJJQ5hyZ45wh2rm5MBBjgZ5XqFjbjta1m41pq9zbRZfWGUGWYJqH4yVhSWoW6pYFkT"}
+Implicit account: 8bca86065be487de45e795b2c3154fe834d53ffa07e0a44f29e76a2a5f075df8
+Storing credentials for account: 8bca86065be487de45e795b2c3154fe834d53ffa07e0a44f29e76a2a5f075df8 (network: testnet)
+Saving key to '~/.near-credentials/testnet/8bca86065be487de45e795b2c3154fe834d53ffa07e0a44f29e76a2a5f075df8.json'
+```
+> A new implicit account credentials will be stored at `~/.near-credentials/testnet/8bca86065be487de45e795b2c3154fe834d53ffa07e0a44f29e76a2a5f075df8.json`.
 
-출력 문자열은 16진수(`'` 없이) 형태의 계정 ID로, 예를 들면 `98793cd91a3f870fb126f66285808c7e094afcfc4eda8a970f6648cdf0dbd6de` 형태입니다.
-
-You can share this `id` with anyone to recieve Near tokens. 계정을 사용하려면 최소 **0.001Ⓝ**가 필요합니다.
-
-:::tip **다른 언어**를 사용하여 암시적 주소를 유추할 수도 있습니다. 예를 들어 Python에서는 다음 `base58` 패키지를 사용할 수 있습니다: `.base58.b58decode(<data>).hex()` :::
+You can share this `id` with anyone to receive Near tokens. 계정을 사용하려면 최소 **0.001Ⓝ**가 필요합니다.
 
 ---
 

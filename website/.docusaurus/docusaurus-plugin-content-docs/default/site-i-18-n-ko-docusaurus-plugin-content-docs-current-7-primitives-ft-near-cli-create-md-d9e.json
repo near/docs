@@ -1,0 +1,15 @@
+{
+  "id": "primitives/ft/near-cli/create",
+  "title": "create",
+  "description": "",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/7.primitives/ft/near-cli/create.md",
+  "sourceDirName": "7.primitives/ft/near-cli",
+  "slug": "/primitives/ft/near-cli/create",
+  "permalink": "/ko/primitives/ft/near-cli/create",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/ft/near-cli/create.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

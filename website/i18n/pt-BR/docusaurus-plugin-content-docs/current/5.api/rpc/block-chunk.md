@@ -275,7 +275,7 @@ When API request fails, RPC server returns a structured error response with a li
 
 Here is the exhaustive list of the error variants that can be returned by `block` method:
 
-<table class="custom-stripe">
+<table className="custom-stripe">
   <thead>
     <tr>
       <th>
@@ -309,7 +309,7 @@ Here is the exhaustive list of the error variants that can be returned by `block
         </ul>
       </td>
     </tr>
-    <tr class="stripe">
+    <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
       <td>Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)</td>
@@ -523,7 +523,7 @@ When API request fails, RPC server returns a structured error response with a li
 
 Here is the exhaustive list of the error variants that can be returned by `EXPERIMENTAL_changes_in_block` method:
 
-<table class="custom-stripe">
+<table className="custom-stripe">
   <thead>
     <tr>
       <th>
@@ -557,7 +557,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
         </ul>
       </td>
     </tr>
-    <tr class="stripe">
+    <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
       <td>Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)</td>
@@ -728,7 +728,7 @@ When API request fails, RPC server returns a structured error response with a li
 
 Here is the exhaustive list of the error variants that can be returned by `chunk` method:
 
-<table class="custom-stripe">
+<table className="custom-stripe">
   <thead>
     <tr>
       <th>
@@ -781,7 +781,7 @@ Here is the exhaustive list of the error variants that can be returned by `chunk
         </ul>
       </td>
     </tr>
-    <tr class="stripe">
+    <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
       <td>Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)</td>

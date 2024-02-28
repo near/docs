@@ -1,0 +1,15 @@
+{
+  "id": "primitives/dao/near-cli/create-dao",
+  "title": "create-dao",
+  "description": "The full list of roles and permissions you can find here.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/7.primitives/dao/near-cli/create-dao.md",
+  "sourceDirName": "7.primitives/dao/near-cli",
+  "slug": "/primitives/dao/near-cli/create-dao",
+  "permalink": "/ko/primitives/dao/near-cli/create-dao",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/dao/near-cli/create-dao.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

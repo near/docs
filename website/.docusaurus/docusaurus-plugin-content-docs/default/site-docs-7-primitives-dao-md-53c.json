@@ -5,7 +5,7 @@
   "source": "@site/../docs/7.primitives/dao.md",
   "sourceDirName": "7.primitives",
   "slug": "/primitives/dao",
-  "permalink": "/zh-CN/primitives/dao",
+  "permalink": "/primitives/dao",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/dao.md",
@@ -13,7 +13,7 @@
   "version": "current",
   "lastUpdatedBy": "gagdiez",
   "lastUpdatedAt": 1706698360,
-  "formattedLastUpdatedAt": "2024年1月31日",
+  "formattedLastUpdatedAt": "Jan 31, 2024",
   "frontMatter": {
     "id": "dao",
     "title": "Decentralized Autonomous Organizations",
@@ -23,10 +23,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Price Oracles",
-    "permalink": "/zh-CN/primitives/oracles"
+    "permalink": "/primitives/oracles"
   },
   "next": {
     "title": "Decentralized Exchanges (DEX)",
-    "permalink": "/zh-CN/primitives/dex"
+    "permalink": "/primitives/dex"
   }
 }

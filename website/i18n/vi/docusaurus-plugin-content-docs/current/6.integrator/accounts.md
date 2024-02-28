@@ -10,7 +10,7 @@ Vui lòng xem [tài liệu cho các account](/docs/concepts/account) đối vớ
 
 - Đối với các sàn giao dịch, NEAR hỗ trợ tạo [implicit account](https://nomicon.io/DataStructures/Account.html#implicit-account-ids) cho phép việc tạo các account mà không cần trả phí cho bất kỳ transaction nào.
 - Bạn có thể tạo một implicit account bằng cách làm theo các bước trong [hướng dẫn này](/docs/roles/integrator/implicit-accounts).
-- Accounts must have enough tokens to cover its storage which currently costs `0.0001 NEAR` per byte. This equates to a minimum balance of `0.00182 NEAR` for an account with one access key. Bạn có thể truy vấn giá storage trực tiếp bằng cách sử dụng [`protocol-config`](https://docs.near.org/api/rpc/setup#protocol-config) RPC endpoint. Để có thêm thông tin chi tiết về các loại phí storage vui lòng xem [section này của economics paper](https://near.org/papers/economics-in-sharded-blockchain/#transaction-and-storage-fees).
+- Accounts must have enough tokens to cover its storage which currently costs `0.0001 NEAR` per byte. This equates to a minimum balance of `0.00182 NEAR` for an account with one access key. Bạn có thể truy vấn giá storage trực tiếp bằng cách sử dụng [`protocol-config`](https://docs.near.org/api/rpc/setup#protocol-config) RPC endpoint. For more details on storage fees see [this section of the economics paper](https://pages.near.org/papers/economics-in-sharded-blockchain/#transaction-and-storage-fees).
 
 ## Transfer từ Function Call {#transfer-from-function-call}
 

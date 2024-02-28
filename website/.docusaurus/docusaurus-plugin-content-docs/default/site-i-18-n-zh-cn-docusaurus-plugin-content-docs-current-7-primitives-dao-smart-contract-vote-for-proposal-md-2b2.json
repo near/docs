@@ -1,0 +1,15 @@
+{
+  "id": "primitives/dao/smart-contract/vote-for-proposal",
+  "title": "vote-for-proposal",
+  "description": "",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/7.primitives/dao/smart-contract/vote-for-proposal.md",
+  "sourceDirName": "7.primitives/dao/smart-contract",
+  "slug": "/primitives/dao/smart-contract/vote-for-proposal",
+  "permalink": "/zh-CN/primitives/dao/smart-contract/vote-for-proposal",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/dao/smart-contract/vote-for-proposal.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

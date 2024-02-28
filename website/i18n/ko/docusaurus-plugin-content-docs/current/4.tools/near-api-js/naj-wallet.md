@@ -63,7 +63,7 @@ const walletConnection = new WalletConnection(nearConnection);
 
 </Tabs>
 
-[<span class="typedoc-icon typedoc-icon-module"></span> Module `browserConnect`](https://near.github.io/near-api-js/modules/near_api_js.browserConnect.html) &nbsp;&nbsp;&nbsp; [<span class="typedoc-icon typedoc-icon-class"></span> Class `WalletConnection`](https://near.github.io/near-api-js/classes/_near_js_wallet_account.walletAccount.WalletConnection.html)
+[<span className="typedoc-icon typedoc-icon-module"></span> Module `browserConnect`](https://near.github.io/near-api-js/modules/near_api_js.browserConnect.html) &nbsp;&nbsp;&nbsp; [<span className="typedoc-icon typedoc-icon-class"></span> Class `WalletConnection`](https://near.github.io/near-api-js/classes/_near_js_wallet_account.walletAccount.WalletConnection.html)
 
 ### 사용자에게 로그인 요청 {#sign-in}
 
@@ -81,7 +81,7 @@ walletConnection.requestSignIn({
 });
 ```
 
-[<span class="typedoc-icon typedoc-icon-method"></span> `WalletConnection.requestSignIn` 메서드](https://near.github.io/near-api-js/classes/_near_js_wallet_account.walletAccount.WalletConnection.html#requestSignIn)
+[<span className="typedoc-icon typedoc-icon-method"></span> `WalletConnection.requestSignIn` 메서드](https://near.github.io/near-api-js/classes/_near_js_wallet_account.walletAccount.WalletConnection.html#requestSignIn)
 
 :::tip 로컬 스토리지에 대한 대체 키 저장소(Key Store)를 사용하거나 트랜잭션에 서명하지 않는 경우, 로그인이 필요하지 않습니다 (즉, 컨트랙트에서 읽기 전용 _view_ 메서드 만 호출함). :::
 
@@ -92,7 +92,7 @@ walletConnection.requestSignIn({
 walletConnection.signOut();
 ```
 
-[<span class="typedoc-icon typedoc-icon-method"></span> `WalletConnection.signOut` 메서드](https://near.github.io/near-api-js/classes/_near_js_wallet_account.walletAccount.WalletConnection.html#signOut)
+[<span className="typedoc-icon typedoc-icon-method"></span> `WalletConnection.signOut` 메서드](https://near.github.io/near-api-js/classes/_near_js_wallet_account.walletAccount.WalletConnection.html#signOut)
 
 ### 로그인 여부 확인 {#check-if-signed-in}
 
@@ -103,7 +103,7 @@ if (walletConnection.isSignedIn()) {
 }
 ```
 
-[<span class="typedoc-icon typedoc-icon-method"></span> `WalletConnection.isSignedId` 메서드](https://near.github.io/near-api-js/classes/_near_js_wallet_account.walletAccount.WalletConnection.html#isSignedIn)
+[<span className="typedoc-icon typedoc-icon-method"></span> `WalletConnection.isSignedId` 메서드](https://near.github.io/near-api-js/classes/_near_js_wallet_account.walletAccount.WalletConnection.html#isSignedIn)
 
 ### 지갑 계정 가져오기 {#get-authorized-account}
 
@@ -116,7 +116,7 @@ if (walletConnection.isSignedIn()) {
 const walletAccountId = walletConnection.getAccountId();
 ```
 
-[<span class="typedoc-icon typedoc-icon-method"></span> `WalletConnection.getAccountId` 메서드](https://near.github.io/near-api-js/classes/_near_js_wallet_account.walletAccount.WalletConnection.html#getAccountId)
+[<span className="typedoc-icon typedoc-icon-method"></span> `WalletConnection.getAccountId` 메서드](https://near.github.io/near-api-js/classes/_near_js_wallet_account.walletAccount.WalletConnection.html#getAccountId)
 
 #### 계정 객체 가져오기 {#get-authorized-account-object}
 
@@ -125,4 +125,4 @@ const walletAccountId = walletConnection.getAccountId();
 const walletAccountObj = walletConnection.account();
 ```
 
-[<span class="typedoc-icon typedoc-icon-method"></span> Method `WalletConnection.account`](https://near.github.io/near-api-js/classes/_near_js_wallet_account.walletAccount.WalletConnection.html#account) &nbsp;&nbsp;&nbsp; [<span class="typedoc-icon typedoc-icon-class"></span> Class `ConnectedWalletAccount`](https://near.github.io/near-api-js/classes/_near_js_wallet_account.walletAccount.ConnectedWalletAccount.html)
+[<span className="typedoc-icon typedoc-icon-method"></span> Method `WalletConnection.account`](https://near.github.io/near-api-js/classes/_near_js_wallet_account.walletAccount.WalletConnection.html#account) &nbsp;&nbsp;&nbsp; [<span className="typedoc-icon typedoc-icon-class"></span> Class `ConnectedWalletAccount`](https://near.github.io/near-api-js/classes/_near_js_wallet_account.walletAccount.ConnectedWalletAccount.html)

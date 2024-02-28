@@ -1,0 +1,15 @@
+{
+  "id": "primitives/dao/web-app/vote-for-proposal",
+  "title": "vote-for-proposal",
+  "description": "Available vote options: VoteApprove, VoteReject, VoteRemove.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/7.primitives/dao/web-app/vote-for-proposal.md",
+  "sourceDirName": "7.primitives/dao/web-app",
+  "slug": "/primitives/dao/web-app/vote-for-proposal",
+  "permalink": "/zh-CN/primitives/dao/web-app/vote-for-proposal",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/dao/web-app/vote-for-proposal.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

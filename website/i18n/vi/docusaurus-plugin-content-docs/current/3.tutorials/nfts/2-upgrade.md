@@ -30,7 +30,7 @@ May mắn thay, bạn đã viết function `nft_token`, nơi mà nhận một to
 
 Đối với phân trang, Rust có một số function tuyệt vời để bỏ qua starting index và lấy `n` element đầu tiên của một iterator.
 
-Hãy đến với file `enumerable.rs` và implement logic đó:
+Let's move over to the `enumeration.rs` file and implement that logic:
 
 <Github language="rust" start="32" end="62" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/enumeration.rs" />
 
@@ -39,7 +39,7 @@ Hãy đến với file `enumerable.rs` và implement logic đó:
 Now that you've implemented the necessary logic for `nft_tokens_for_owner`, it's time to build and re-deploy the contract to your account. Using the build script, deploy the contract as you did in the previous tutorial:
 
 ```bash
-yarn build && near deploy --wasmFile out/main.wasm --accountId $NFT_CONTRACT_ID
+yarn build && near deploy $NFT_CONTRACT_ID out/main.wasm
 ```
 
 This should output a warning saying that the account has a deployed contract and will ask if you'd like to proceed. Simply type `y` and hit enter.
@@ -120,7 +120,7 @@ In the [next tutorial](/tutorials/nfts/enumeration), you'll implement the remain
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `3.0.0`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
+- near-cli: `4.0.4`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 
 :::

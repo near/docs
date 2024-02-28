@@ -45,7 +45,7 @@ In this page we will focus on the Donation factory, to learn more about the toke
 1. Make sure you have installed [rust](https://www.rust-lang.org/).
 2. Install the [`NEAR CLI`](https://github.com/near/near-cli#setup)
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### 팩토리 구축 및 배포
 
@@ -62,7 +62,7 @@ cat ./neardev/dev-account
 # e.g. dev-1659899566943-21539992274727
 ```
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### 저장된 컨트랙트를 하위 게정에 배포
 
@@ -79,7 +79,7 @@ near view sub.<factory-account> get_beneficiary
 # expected response is: <account-to-be-beneficiary>
 ```
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### 저장된 컨트랙트 업데이트
 
@@ -103,7 +103,7 @@ near call <factory-account> update_stored_contract "$BYTES" --base64 --accountId
 
 팩토리는 흥미로운 개념입니다. 여기서는 구현 측면과 제한 사항에 대해 자세히 설명합니다.
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### 자동으로 계정 생성
 
@@ -117,7 +117,7 @@ NEAR 계정은 자신의 하위 계정만 만들 수 있으므로, `factory`는 
 
 `factory.testnet`은 `sub.factory.testnet`를 생성할 수 있지만, 생성 후에는 제어할 수 없다는 점을 기억하는 것이 중요합니다.
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### 업데이트 메서드
 

@@ -14,7 +14,7 @@ NEAR 계정과 상호 작용, 생성 또는 삭제할 수 있습니다.
 const account = await nearConnection.account("example-account.testnet");
 ```
 
-[<span class="typedoc-icon typedoc-icon-class"></span> Class `Account`](https://near.github.io/near-api-js/classes/near_api_js.account.Account.html)
+[<span className="typedoc-icon typedoc-icon-class"></span> Class `Account`](https://near.github.io/near-api-js/classes/near_api_js.account.Account.html)
 
 ### 계정 생성 {#create-account}
 
@@ -27,7 +27,7 @@ await account.createAccount(
 );
 ```
 
-[<span class="typedoc-icon typedoc-icon-method"></span> `Account.createAccount` 메서드](https://near.github.io/near-api-js/classes/near_api_js.account.Account.html#createAccount)
+[<span className="typedoc-icon typedoc-icon-method"></span> `Account.createAccount` 메서드](https://near.github.io/near-api-js/classes/near_api_js.account.Account.html#createAccount)
 
 ### 계정 삭제 {#delete-account}
 
@@ -38,7 +38,7 @@ const account = await nearConnection.account("example-account.testnet");
 await account.deleteAccount("beneficiary-account.testnet");
 ```
 
-[<span class="typedoc-icon typedoc-icon-method"></span> `Account.deleteAccount` 메서드](https://near.github.io/near-api-js/classes/near_api_js.account.Account.html#deleteAccount)
+[<span className="typedoc-icon typedoc-icon-method"></span> `Account.deleteAccount` 메서드](https://near.github.io/near-api-js/classes/near_api_js.account.Account.html#deleteAccount)
 
 ### 계정 잔고 가져오기 {#get-account-balance}
 
@@ -48,7 +48,7 @@ const account = await nearConnection.account("example-account.testnet");
 await account.getAccountBalance();
 ```
 
-[<span class="typedoc-icon typedoc-icon-method"></span> `Account.getAccountBalance` 메서드](https://near.github.io/near-api-js/classes/near_api_js.account.Account.html#getAccountBalance)
+[<span className="typedoc-icon typedoc-icon-method"></span> `Account.getAccountBalance` 메서드](https://near.github.io/near-api-js/classes/near_api_js.account.Account.html#getAccountBalance)
 
 ### 계정 세부 정보 가져오기 {#get-account-details}
 
@@ -60,7 +60,7 @@ const account = await nearConnection.account("example-account.testnet");
 await account.getAccountDetails();
 ```
 
-[<span class="typedoc-icon typedoc-icon-method"></span> `Account.getAccountDetails` 메서드](https://near.github.io/near-api-js/classes/near_api_js.account.Account.html#getAccountDetails)
+[<span className="typedoc-icon typedoc-icon-method"></span> `Account.getAccountDetails` 메서드](https://near.github.io/near-api-js/classes/near_api_js.account.Account.html#getAccountDetails)
 
 ### 컨트랙트 배포 {#deploy-a-contract}
 
@@ -73,7 +73,7 @@ const transactionOutcome = await account.deployContract(
 );
 ```
 
-[<span class="typedoc-icon typedoc-icon-method"></span> Method `Account.deployContract`](https://near.github.io/near-api-js/classes/near_api_js.account.Account.html#deployContract) &nbsp;&nbsp;&nbsp; [<span class="typedoc-icon typedoc-icon-interface"></span> Interface `FinalExecutionOutcome`](https://near.github.io/near-api-js/interfaces/_near_js_types.provider_response.FinalExecutionOutcome.html)
+[<span className="typedoc-icon typedoc-icon-method"></span> Method `Account.deployContract`](https://near.github.io/near-api-js/classes/near_api_js.account.Account.html#deployContract) &nbsp;&nbsp;&nbsp; [<span className="typedoc-icon typedoc-icon-interface"></span> Interface `FinalExecutionOutcome`](https://near.github.io/near-api-js/interfaces/_near_js_types.provider_response.FinalExecutionOutcome.html)
 
 ### 토큰 전송 {#send-tokens}
 
@@ -87,7 +87,7 @@ await account.sendMoney(
 );
 ```
 
-[<span class="typedoc-icon typedoc-icon-method"></span> Method `Account.sendMoney`](https://near.github.io/near-api-js/classes/near_api_js.account.Account.html#sendMoney) &nbsp;&nbsp;&nbsp; [<span class="typedoc-icon typedoc-icon-interface"></span> Interface `FinalExecutionOutcome`](https://near.github.io/near-api-js/interfaces/_near_js_types.provider_response.FinalExecutionOutcome.html)
+[<span className="typedoc-icon typedoc-icon-method"></span> Method `Account.sendMoney`](https://near.github.io/near-api-js/classes/near_api_js.account.Account.html#sendMoney) &nbsp;&nbsp;&nbsp; [<span className="typedoc-icon typedoc-icon-interface"></span> Interface `FinalExecutionOutcome`](https://near.github.io/near-api-js/interfaces/_near_js_types.provider_response.FinalExecutionOutcome.html)
 
 ### 상태 {#state}
 
@@ -98,7 +98,7 @@ const account = await nearConnection.account("example-account.testnet");
 const accountState = await account.state();
 ```
 
-[<span class="typedoc-icon typedoc-icon-method"></span> Method `Account.state`](https://near.github.io/near-api-js/classes/near_api_js.account.Account.html#state) &nbsp;&nbsp;&nbsp; [<span class="typedoc-icon typedoc-icon-interface"></span> Interface `AccountView`](https://near.github.io/near-api-js/interfaces/near_api_js.providers_provider.AccountView.html)
+[<span className="typedoc-icon typedoc-icon-method"></span> Method `Account.state`](https://near.github.io/near-api-js/classes/near_api_js.account.Account.html#state) &nbsp;&nbsp;&nbsp; [<span className="typedoc-icon typedoc-icon-interface"></span> Interface `AccountView`](https://near.github.io/near-api-js/interfaces/near_api_js.providers_provider.AccountView.html)
 
 ### 액세스 키 {#access-keys}
 
@@ -112,7 +112,7 @@ const account = await nearConnection.account("example-account.testnet");
 await account.addKey("8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc");
 ```
 
-[<span class="typedoc-icon typedoc-icon-method"></span> `Account.addKey` 메서드](https://near.github.io/near-api-js/classes/near_api_js.account.Account.html#addKey)
+[<span className="typedoc-icon typedoc-icon-method"></span> `Account.addKey` 메서드](https://near.github.io/near-api-js/classes/near_api_js.account.Account.html#addKey)
 
 #### 함수 액세스 키 {#add-function-access-key}
 
@@ -126,7 +126,7 @@ await account.addKey(
 );
 ```
 
-[<span class="typedoc-icon typedoc-icon-method"></span> `Account.addKey` 메서드](https://near.github.io/near-api-js/classes/near_api_js.account.Account.html#addKey)
+[<span className="typedoc-icon typedoc-icon-method"></span> `Account.addKey` 메서드](https://near.github.io/near-api-js/classes/near_api_js.account.Account.html#addKey)
 
 #### 모든 액세스 키 가져오기 {#get-all-access-keys}
 
@@ -135,7 +135,7 @@ const account = await nearConnection.account("example-account.testnet");
 await account.getAccessKeys();
 ```
 
-[<span class="typedoc-icon typedoc-icon-method"></span> Method `Account.getAccessKeys`](https://near.github.io/near-api-js/classes/near_api_js.account.Account.html#getAccessKeys) &nbsp;&nbsp;&nbsp; [<span class="typedoc-icon typedoc-icon-interface"></span> Interface `AccessKeyInfoView`](https://near.github.io/near-api-js/interfaces/near_api_js.providers_provider.AccessKeyInfoView.html)
+[<span className="typedoc-icon typedoc-icon-method"></span> Method `Account.getAccessKeys`](https://near.github.io/near-api-js/classes/near_api_js.account.Account.html#getAccessKeys) &nbsp;&nbsp;&nbsp; [<span className="typedoc-icon typedoc-icon-interface"></span> Interface `AccessKeyInfoView`](https://near.github.io/near-api-js/interfaces/near_api_js.providers_provider.AccessKeyInfoView.html)
 
 #### 액세스 키 삭제 {#delete-access-key}
 
@@ -144,4 +144,4 @@ const account = await nearConnection.account("example-account.testnet");
 await account.deleteKey("8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc");
 ```
 
-[<span class="typedoc-icon typedoc-icon-method"></span> `Account.deleteKey` 메서드](https://near.github.io/near-api-js/classes/near_api_js.account.Account.html#deleteKey)
+[<span className="typedoc-icon typedoc-icon-method"></span> `Account.deleteKey` 메서드](https://near.github.io/near-api-js/classes/near_api_js.account.Account.html#deleteKey)

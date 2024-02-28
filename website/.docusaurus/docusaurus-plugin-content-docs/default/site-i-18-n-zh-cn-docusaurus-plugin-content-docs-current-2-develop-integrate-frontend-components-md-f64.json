@@ -24,7 +24,7 @@
     "permalink": "/zh-CN/develop/integrate/frontend"
   },
   "next": {
-    "title": "Login with NEAR",
+    "title": "Authenticate NEAR Users",
     "permalink": "/zh-CN/develop/integrate/backend-login"
   }
 }

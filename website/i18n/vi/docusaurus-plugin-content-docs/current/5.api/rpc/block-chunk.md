@@ -275,7 +275,7 @@ Khi API request không thành công, RPC server sẽ trả về một error resp
 
 **Lưu ý**: Bạn có thể chọn search theo một block cụ thể _hoặc_ finality, chứ không thể chọn cả hai.
 
-<table class="custom-stripe">
+<table className="custom-stripe">
   <thead>
     <tr>
       <th>
@@ -309,7 +309,7 @@ Khi API request không thành công, RPC server sẽ trả về một error resp
         </ul>
       </td>
     </tr>
-    <tr class="stripe">
+    <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
       <td>Đã pass các argument mà JSON RPC server không thể parse được (thiếu các argument, sai format, v.v...)</td>
@@ -523,7 +523,7 @@ Khi API request không thành công, RPC server sẽ trả về một error resp
 
 ví dụ cho `chunk_id`:
 
-<table class="custom-stripe">
+<table className="custom-stripe">
   <thead>
     <tr>
       <th>
@@ -557,7 +557,7 @@ ví dụ cho `chunk_id`:
         </ul>
       </td>
     </tr>
-    <tr class="stripe">
+    <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
       <td>Đã pass các argument mà JSON RPC server không thể parse được (thiếu các argument, sai format, v.v...)</td>
@@ -728,7 +728,7 @@ Khi API request không thành công, RPC server sẽ trả về một error resp
 
 Dưới đây là danh sách đầy đủ các error variant có thể được trả về bởi method `chunk`:
 
-<table class="custom-stripe">
+<table className="custom-stripe">
   <thead>
     <tr>
       <th>
@@ -781,7 +781,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
         </ul>
       </td>
     </tr>
-    <tr class="stripe">
+    <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
       <td>Đã pass các argument mà JSON RPC server không thể parse được (thiếu các argument, sai format, v.v...)</td>

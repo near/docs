@@ -50,7 +50,7 @@ You'll start by implementing the `nft_transfer` logic. Function này sẽ chuy�
 
 <Github language="rust" start="62" end="82" url="https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/nft_core.rs" />
 
-There are a couple things to notice here. Firstly, we've introduced a new method called `assert_one_yocto()`. This method will ensure that the user has attached exactly one yoctoNEAR to the call. If a function requires a deposit, you need a full access key to sign that transaction. By adding the one yoctoNEAR deposit requirement, you're essentially forcing the user to sign the transaction with a full access key.
+There are a couple things to notice here. Firstly, we've introduced a new function called `assert_one_yocto()`. This method will ensure that the user has attached exactly one yoctoNEAR to the call. If a function requires a deposit, you need a full access key to sign that transaction. By adding the one yoctoNEAR deposit requirement, you're essentially forcing the user to sign the transaction with a full access key.
 
 Since the transfer function is potentially transferring very valuable assets, you'll want to make sure that whoever is calling the function has a full access key.
 
@@ -133,7 +133,7 @@ Với việc hoàn thành điều đó, bạn đã thêm thành công logic cầ
 Sử dụng build script, build và deploy contract giống như bạn đã làm trong các hướng dẫn trước:
 
 ```bash
-yarn build && near deploy --wasmFile out/main.wasm --accountId $NFT_CONTRACT_ID
+yarn build && near deploy $NFT_CONTRACT_ID out/main.wasm
 ```
 
 Lúc này sẽ có một cảnh báo nói rằng tài khoản đã có một contract đã được deploy và sẽ hỏi bạn có muốn tiếp tục hay không. Đơn giản hãy gõ `y` và ấn enter.
@@ -192,8 +192,8 @@ In the [next tutorial](/docs/tutorials/contracts/nfts/approvals), you'll learn a
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `3.0.0`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
+- near-cli: `4.0.4`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 - Enumeration standard: [NEP181](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration), version `1.0.0`
 
 :::

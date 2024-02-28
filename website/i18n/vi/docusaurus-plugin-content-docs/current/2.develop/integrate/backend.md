@@ -1,6 +1,6 @@
 ---
 id: backend-login
-title: Login with NEAR
+title: Authenticate NEAR Users
 ---
 
 Recently NEAR has approved a new standard that, among other things, enables users to authenticate into a backend service.
@@ -36,7 +36,16 @@ Here we use [crypto.randomBytes](https://nodejs.org/api/crypto.html#crypto_crypt
 :::
 
 ### 2. Ask the User to Sign the Challenge
-As of today only [Meteor Wallet](https://meteorwallet.app) supports the `signMessage` method needed to sign the challenge. However, we expect more wallets to support this method in the future.
+The `signMessage` method needed to sign the challenge is supported by these wallets:
+- Meteor Wallet
+- Here Wallet
+- Near Snap
+- Nightly Wallet
+- WELLDONE Wallet
+- NearMobileWallet
+- MyNearWallet
+- Sender
+
 
 The message that the user needs to sign contains 4 fields:
 - Message: The message that the user is signing.

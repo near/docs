@@ -50,7 +50,7 @@ The NEAR SDK exposes a series of structures ([Vectors](#vector), [Sets](#set), [
 </CodeTabs>
 :::
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Vector
 
@@ -70,7 +70,7 @@ Implements a [vector/array](https://en.wikipedia.org/wiki/Array_data_structure) 
   </Language>
 </CodeTabs>
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Map
 
@@ -130,7 +130,7 @@ class StatusMessage {
 }
 ```
 </details>
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Set
 
@@ -150,7 +150,7 @@ Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type)) which
   </Language>
 </CodeTabs>
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Tree
 

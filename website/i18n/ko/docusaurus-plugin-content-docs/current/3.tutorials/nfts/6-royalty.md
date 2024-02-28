@@ -121,26 +121,21 @@ Payout {
 
 ## 컨트랙트 배포 {#redeploying-contract}
 
-이전 튜토리얼에서 본 것처럼, 이와 같은 변경 사항을 추가하면 재배포할 때 문제가 발생합니다. 이러한 변경 사항은 다른 모든 토큰에 영향을 미치고, 상태는 새 코드에 의해 자동으로 상속될 수 없기 때문에 단순히 컨트랙트를 재배포하면 오류가 발생합니다. 이러한 이유로 새 하위 계정을 다시 만듭니다.
+이전 튜토리얼에서 본 것처럼, 이와 같은 변경 사항을 추가하면 재배포할 때 문제가 발생합니다. 이러한 변경 사항은 다른 모든 토큰에 영향을 미치고, 상태는 새 코드에 의해 자동으로 상속될 수 없기 때문에 단순히 컨트랙트를 재배포하면 오류가 발생합니다. For this reason, you'll create a new account again.
 
-### 하위 계정 배포
+### Deployment
 
-다음 명령을 실행하여 초기 잔액이 25 NEAR인 하위 계정 `royalty`를 만듭니다.
-
-```bash
-near create-account royalty.$NFT_CONTRACT_ID --masterAccount $NFT_CONTRACT_ID --initialBalance 25
-```
-
-다음으로, 개발을 쉽게 하기 위해 환경 변수를 내보낼 수 있습니다.
+Next, you'll deploy this contract to the network.
 
 ```bash
-export ROYALTY_NFT_CONTRACT_ID=royalty.$NFT_CONTRACT_ID
+export ROYALTY_NFT_CONTRACT_ID=<accountId>
+near create-account $ROYALTY_NFT_CONTRACT_ID --useFaucet
 ```
 
 빌드 스크립트를 사용하여 이전 튜토리얼에서와 같이 컨트랙트 배포를 빌드합니다.
 
 ```bash
-yarn build && near deploy --wasmFile out/main.wasm --accountId $ROYALTY_NFT_CONTRACT_ID
+yarn build && near deploy $ROYALTY_NFT_CONTRACT_ID out/main.wasm
 ```
 
 ### 초기화 및 발행 {#initialization-and-minting}
@@ -229,8 +224,8 @@ NFT가 100 yoctoNEAR에 판매된 경우, josh는 5, benji는 20, mike는 10, �
 
 글을 작성하는 시점에서, 해당 예제는 다음 버전에서 작동합니다.
 
-- near-cli: `3.0.0`
-- NFT 표준: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), `1.0.0` 버전
+- near-cli: `4.0.4`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 - 열거 표준: [NEP181](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration), `1.0.0` 버전
 - 로열티 표준: [NEP199](https://nomicon.io/Standards/Tokens/NonFungibleToken/Payout), `2.0.0` 버전
 

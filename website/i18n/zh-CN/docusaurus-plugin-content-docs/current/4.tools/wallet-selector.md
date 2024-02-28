@@ -10,7 +10,7 @@ Launched in March 2022 by the NEAR Foundation, this simple modal will appear whe
 
 ## Framework agnostic
 
-[React](https://reactjs.org/) / [Next.js](https://nextjs.org/) and [Angular](https://angular.io/) variations of the [Guest Book](https://github.com/near-examples/guest-book-js/) dApp can be found in the [`examples`](https://github.com/near/wallet-selector/tree/main/examples) directory. Developers can use these to gain a concrete understanding of how to integrate NEAR Wallet Selector into their own dApp.
+[React](https://reactjs.org/) / [Next.js](https://nextjs.org/) and [Angular](https://angular.io/) variations of the [Guest Book](https://github.com/near-examples/guest-book-examples/) dApp can be found in the [`examples`](https://github.com/near/wallet-selector/tree/main/examples) directory. Developers can use these to gain a concrete understanding of how to integrate NEAR Wallet Selector into their own dApp.
 
 ### Unlocking the wallet ecosystem
 
@@ -87,6 +87,16 @@ const modal = setupModal(selector, {
 
 modal.show();
 ```
+
+:::info Required CSS
+
+To integrate the Wallet Selector, you also need to include the required CSS:
+
+```
+import "@near-wallet-selector/modal-ui/styles.css"
+```
+
+:::
 
 ## API Reference
 

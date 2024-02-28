@@ -26,7 +26,8 @@ NEAR 기본 토큰과 달리 대체 가능 토큰(FT)은 사용자의 지갑에 
 
   ```bash
   # 1. Deploy the contract in a testnet account
-  near dev-deploy --wasmFile fungible_token.wasm
+  near create-account <account-id> --useFaucet
+  near deploy <account-id> fungible_token.wasm
 
   # 2. Initialize the contract with metadata
   near call <ft-contract> new '{"owner_id": "<owner-account>", "total_supply": "1000000000000000", "metadata": { "spec": "ft-1.0.0", "name": "Example Token Name", "symbol": "EXLT", "decimals": 8 }}' --accountId <ft-contract>
@@ -38,7 +39,7 @@ NEAR 기본 토큰과 달리 대체 가능 토큰(FT)은 사용자의 지갑에 
 
 :::info 초기화 시 **모든** 토큰을 소유할 **소유자**를 정의합니다. :::
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ## 메타데이터 쿼리
 `ft_metadata`를 호출하여 FT의 메타데이터를 쿼리할 수 있습니다.
@@ -53,7 +54,7 @@ NEAR 기본 토큰과 달리 대체 가능 토큰(FT)은 사용자의 지갑에 
   </TabItem>
 </Tabs>
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ## 사용자 등록
 사용자가 토큰을 소유하고 전송하려면 먼저 컨트랙트에 **등록**해야 합니다. 이는 `storage_deposit`을 호출하여 0.00125Ⓝ를 첨부하는 방식으로 진행됩니다. 이 메서드를 사용하면, 다른 사용자가 등록하도록 비용을 지불할 수도 있습니다.
@@ -72,7 +73,7 @@ NEAR 기본 토큰과 달리 대체 가능 토큰(FT)은 사용자의 지갑에 
 
 :::tip `storage_deposit`을 호출하면, FT가 NEAR 지갑에 나타날 것입니다. :::
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ## 잔고 가져오기
 사용자가 얼마나 많은 코인을 가지고 있는지 알려면, 메서드 `ft_balance_of`를 쿼리해야 합니다.
@@ -89,7 +90,7 @@ NEAR 기본 토큰과 달리 대체 가능 토큰(FT)은 사용자의 지갑에 
 
 :::caution [메타데이터](#메타데이터-조회)에서 `decimals`를 염두에 두세요. 2 `decimals` 상태에서 `150 FT`만큼의 토큰 잔고는 실제로 `1.50 FT`를 나타냅니다. :::
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ## 전송
 FT를 다른 계정으로 보내려면, 받는 사람과 보내려는 FT 금액을 나타내는 `ft_transfer` 메서드를 사용합니다.
@@ -108,10 +109,10 @@ FT를 다른 계정으로 보내려면, 받는 사람과 보내려는 FT 금액�
 
 :::warning 대체 가능한 토큰을 계정에 보내려면 발신자와 수신자 모두 FT 컨트랙트에 [등록](#사용자-등록)해야 합니다. :::
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ## 호출에 FT 첨부
-기본적으로, NEAR 토큰(Ⓝ)만 메서드 호출에 첨부할 수 있습니다. 그러나 FT 표준에서는 FT 컨트랙트를 중개자로 사용하여 호출에 대체 가능한 토큰을 첨부할 수 있습니다. 즉, 호출에 직접 토큰을 첨부하는 대신 FT 컨트랙트에 당신의 이름으로 전송 및 메서드 호출을 모두 수행하도록 요청하는 방식입니다.
+Natively, only NEAR tokens (Ⓝ) can be attached to a function calls. 그러나 FT 표준에서는 FT 컨트랙트를 중개자로 사용하여 호출에 대체 가능한 토큰을 첨부할 수 있습니다. This means that, instead of you attaching tokens directly to the call, you ask the FT-contract to do both a transfer and a function call in your name.
 
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="cli" label="NEAR CLI">
@@ -140,7 +141,7 @@ FT를 다른 계정으로 보내려면, 받는 사람과 보내려는 FT 금액�
 
 `ft_on_transfer`는 **돌려주어야 하는 FT 토큰 수**를 반환**해야** 하므로, FT 컨트랙트는 이를 보낸 사람에게 돌려줍니다.
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ## 이벤트
 [FT 이벤트 표준](https://nomicon.io/Standards/Tokens/FungibleToken/Event)을 구현하여 실시간 이벤트(예: 전송)를 추적할 수 있습니다. `Events` are simple to use because they are just log messages formatted in a standardized way. 이렇게 기록된 메시지는 공개되므로, 서비스를 구축하여 이를 [실시간으로 추적](../../4.tools/events.md)할 수 있습니다.

@@ -149,7 +149,7 @@ This requires the `serde_json` package which you can easily add to your `nft-con
 
 만약 `internal_transfer` 함수에 로그만 넣으면, 로그가 내보내지고 인덱서는 NFT가 전송된 것으로 간주할 것입니다. 그러나 `nft_resolve_transfer` 도중에 전송이 되돌려지면 해당 이벤트도 **역시** 내보내야 합니다. NFT가 전송**될 수 있는** 모든 위치에 로그를 추가해야 합니다. `nft_resolve_transfer`를 다음 코드로 바꿉니다.
 
-<Github language="rust" start="182" end="277" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/nft_core.rs" />
+<Github language="rust" start="182" end="279" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/nft_core.rs" />
 
 또한 다음과 같이 `nft_resolve_transfer`에 대해 매개변수에 `authorized_id`와 `memo`를 추가해야 합니다.
 
@@ -163,26 +163,21 @@ This requires the `serde_json` package which you can easily add to your `nft-con
 
 ## 컨트랙트 배포 {#redeploying-contract}
 
-가독성과 개발 용이성을 위해 컨트랙트를 동일한 계정에 재배포하는 대신, 하위 계정을 만들어 배포해 보겠습니다. 이 튜토리얼에서 구현한 변경 사항으로 인해 오류가 발생하지 않았으므로, 동일한 계정에 배포했을 수 있습니다.
+For the purpose of readability and ease of development, instead of redeploying the contract to the same account, let's create an account and deploy to that instead. 이 튜토리얼에서 구현한 변경 사항으로 인해 오류가 발생하지 않았으므로, 동일한 계정에 배포했을 수 있습니다.
 
-### 하위 계정 생성
+### Deployment
 
-다음 명령을 실행하여 초기 잔액이 25 NEAR인 하위 계정 `events`를 만듭니다.
-
-```bash
-near create-account events.$NFT_CONTRACT_ID --masterAccount $NFT_CONTRACT_ID --initialBalance 25
-```
-
-다음으로 개발을 쉽게 하기 위해 환경 변수를 내보낼 수 있습니다.
+Next, you'll deploy this contract to the network.
 
 ```bash
-export EVENTS_NFT_CONTRACT_ID=events.$NFT_CONTRACT_ID
+export EVENTS_NFT_CONTRACT_ID=<accountId>
+near create-account $EVENTS_NFT_CONTRACT_ID --useFaucet
 ```
 
 빌드 스크립트를 사용하여 이전 튜토리얼에서와 같이 컨트랙트 배포를 빌드합니다.
 
 ```bash
-yarn build && near deploy --wasmFile out/main.wasm --accountId $EVENTS_NFT_CONTRACT_ID
+yarn build && near deploy $EVENTS_NFT_CONTRACT_ID out/main.wasm
 ```
 
 ### 초기화 및 발행 {#initialization-and-minting}
@@ -246,8 +241,8 @@ https://testnet.nearblocks.io/txns/4S1VrepKzA6HxvPj3cK12vaT7Dt4vxJRWESA1ym1xdvH
 
 글을 작성하는 시점에서, 해당 예제는 다음 버전에서 작동합니다.
 
-- near-cli: `3.0.0`
-- NFT 표준: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), `1.0.0` 버전
-- 이벤트 표준: [NEP181](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event), `1.0.0` 버전
+- near-cli: `4.0.4`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
+- Events standard: [NEP297 extension](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event), version `1.1.0`
 
 :::

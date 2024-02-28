@@ -56,7 +56,7 @@ QueryAPI works by:
 * `schema.graphql` 내 데이터베이스 스키마
 * `GraphiQL` 내 GraphQL 쿼리
 * Indexer Name에 있는 인덱서 이름
-* 인덱싱을 시작할 특정 블록 높이 또는 최근 블록 높이(기본값)
+* from which block to start indexing
 
 ### Design Workflow
 
@@ -172,6 +172,25 @@ You are able to update `indexingLogic.js` after you have registered/created your
 
 **Tip:** Watch how to [create mutations in GraphQL](https://www.youtube.com/watch?v=VwO6spk8D58&t=781s).
 
+:::
+
+### Publishing
+
+Clicking the <kbd>Publish</kbd> button will open the following pop-up. From here, you can configure the Indexer name, start block, and contract filter.
+
+![Publishing QueryAPI Indexer](/docs/assets/QAPIPublish.png)
+
+#### Start Block Options
+- `Start from latest block`: Start indexing from the tip of the network. The exact block height is not guaranteed. Useful for testing indexing for events happening in real-time.
+- `Continue from last processed block`: Update the configuration of the Indexer, and resume indexing from the last processed block. The block at which the configuration is updated is not guaranteed. Useful for fixing bugs encountered on specific blocks, adding additional logs, etc.
+- `Start from block height`: Start indexing from the height specified, i.e., when the contract was deployed, or when a specific event occurs.
+
+:::info
+`Continue from last processed block` is only available for existing indexers. Updating the contract filter is disabled for this option, as it will create a backlog of blocks for two different contracts.
+:::
+
+:::warning
+`Start from latest block` and `Start from block height` supersede the existing process. All queued blocks at the time of update will be cleared.
 :::
 
 ## Performing Queries on the Public GraphQL API

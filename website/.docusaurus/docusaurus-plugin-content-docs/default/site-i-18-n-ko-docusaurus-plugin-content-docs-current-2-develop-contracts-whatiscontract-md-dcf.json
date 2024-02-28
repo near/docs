@@ -1,7 +1,7 @@
 {
   "id": "develop/contracts/whatisacontract",
   "title": "스마트 컨트랙트란 무엇인가요?",
-  "description": "스마트 컨트랙트는 NEAR 네트워크에 있는 간단한 프로그램입니다. 최신 애플리케이션과 마찬가지로, 스마트 컨트랙트는 데이터를 저장하는 동시에 데이터와 상호 작용하는 몇 가지 메서드를 가지고 있습니다.",
+  "description": "Smart contracts are pieces of executable code that live in a NEAR account. They can store data, perform transactions in the account’s name, and expose methods so other accounts can interact with them.",
   "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.develop/contracts/whatiscontract.md",
   "sourceDirName": "2.develop/contracts",
   "slug": "/develop/contracts/whatisacontract",
@@ -17,7 +17,7 @@
   "frontMatter": {
     "id": "whatisacontract",
     "title": "스마트 컨트랙트란 무엇인가요?",
-    "sidebar_label": "스마트 컨트랙트란 무엇인가요?"
+    "sidebar_label": "What is a Contract?"
   },
   "sidebar": "build",
   "previous": {
@@ -25,7 +25,7 @@
     "permalink": "/ko/develop/relayers/gas-station"
   },
   "next": {
-    "title": "⭐ Quickstart",
+    "title": "Quickstart ✨",
     "permalink": "/ko/develop/contracts/quickstart"
   }
 }

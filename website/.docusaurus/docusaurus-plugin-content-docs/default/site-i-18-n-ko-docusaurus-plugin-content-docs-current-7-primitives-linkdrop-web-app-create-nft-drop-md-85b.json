@@ -1,0 +1,15 @@
+{
+  "id": "primitives/linkdrop/web-app/create-nft-drop",
+  "title": "create-nft-drop",
+  "description": "The Wallet object comes from our quickstart template",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/7.primitives/linkdrop/web-app/create-nft-drop.md",
+  "sourceDirName": "7.primitives/linkdrop/web-app",
+  "slug": "/primitives/linkdrop/web-app/create-nft-drop",
+  "permalink": "/ko/primitives/linkdrop/web-app/create-nft-drop",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/linkdrop/web-app/create-nft-drop.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

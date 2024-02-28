@@ -16,18 +16,20 @@ import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 ## Hello NEAR 시작하기
 
 Hello NEAR를 시작하는 두 가지 옵션이 있습니다.
+
 1. **권장:** Gitpod(웹 기반 대화형 환경)를 통해 앱 사용
 2. 노드 기반 유틸리티인 `create-near-app`를 사용하여 로컬에서 프로젝트 시작
 
 #### Gitpod
+
 Hello NEAR는 gitpod에서 사용할 수 있습니다. 아래에서 한 가지를 선택하면 웹 기반 IDE와 함께 브라우저에서 새 탭이 열립니다. 컨트랙트를 컴파일하고 배포하는 데 잠시 시간을 주면 앱과 상호작용할 수 있는 프론트엔드가 팝업됩니다(팝업 창이 차단되지 않았는지 확인).
 
 | 🌐 JavaScript              | 🦀 Rust                    |
 | ------------------------- | ------------------------- |
 | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-js.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Gitpod에서 열기" /></a> | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-rust.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Gitpod에서 열기" /></a> |
 
-
 #### Near 앱 만들기 (node)
+
 Hello NEAR는 `create-near-app`의 도움으로 로컬에서 생성할 수 있습니다. 로컬 프로젝트를 생성하려면 아래 스니펫을 입력하세요.
 
 ```bash
@@ -39,50 +41,52 @@ npx create-near-app@latest
 ---
 
 ## Hello NEAR와 상호 작용하기
+
 계속해서 NEAR 계정으로 로그인하세요. 계정이 없는 경우 즉시 만들 수 있습니다. 로그인한 후 인사말을 변경하고 Hello NEAR 앱이 어떻게 인사하는지 확인하세요!
 
-
 ![img](/docs/assets/examples/hello-near.png) *Hello NEAR의 프론트엔드*
-
 
 ---
 
 ## dApp의 구조
+
 이제 dApp이 무엇을 하는지 이해했으므로 그 구조를 자세히 살펴보겠습니다.
 
 1. 프론트엔드 코드는 `/frontend` 폴더에 있습니다.
 2. 스마트 컨트랙트 코드는 `/contract` 폴더에 있습니다.
 
 ### 컨트랙트
+
 컨트랙트는 `set_greeting`과 `get_greeting` 두 가지 메서드가 존재합니다. 첫 번째는 컨트랙트의 매개변수 `greeting`에 `string`를 저장하고, 두 번째는 이를 검색합니다. 기본적으로 컨트랙트는 `"Hello"` 메시지를 반환합니다.
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
-    <Github fname="contract.ts" 
-            url="https://github.com/near-examples/hello-near-js/blob/master/contract/src/contract.ts"
-            start="3" end="18" />
+    <Github fname="contract.ts"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts"
+            start="4" end="18" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/hello-near-rs/blob/main/contract/src/lib.rs"
-            start="23" end="36" />
+            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
+            start="21" end="33" />
   </Language>
 </CodeTabs>
 
-### 프론트엔드
-프론트엔드는 하나의 HTML 파일(`/index.html`)로 구성됩니다. 이 파일은 화면에 표시되는 구성 요소를 정의합니다.
+### Frontend
+
+The frontend is composed by a single HTML file (`/index.html`). 이 파일은 화면에 표시되는 구성 요소를 정의합니다.
 
 웹사이트의 로직은 `/assets/js/index.js`에 존재하며 `/near-interface.js`를 통해 컨트랙트와 통신합니다. 다음 코드에서 `/assets/js/index.js`를 확인할 수 있습니다.
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
-            url="https://github.com/near-examples/hello-near-js/blob/master/frontend/index.js"
-            start="10" end="21" />
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/index.js"
+            start="11" end="21" />
   </Language>
 </CodeTabs>
 
-이는 앱이 시작될 때 사용자가 이미 로그인되어 있는지 확인하고, `signedInFlow()` 또는 `signedOutFlow()`를 실행하도록 합니다.
+It indicates our app, when it starts, to check if the user is already logged in and execute either `signedInFlow()` or `signedOutFlow()`.
 
 ---
 
@@ -97,8 +101,8 @@ npx create-near-app@latest
 <CodeTabs>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/hello-near-rs/blob/main/contract/src/lib.rs"
-            start="46" end="58" />
+            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
+            start="43" end="61" />
   </Language>
 </CodeTabs>
 
@@ -109,8 +113,8 @@ npx create-near-app@latest
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="main.ava.ts"
-            url="https://github.com/near-examples/hello-near-js/blob/master/integration-tests/src/main.ava.ts"
-            start="32" end="43" />
+            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/sandbox-ts/src/main.ava.ts"
+            start="33" end="44" />
   </Language>
 </CodeTabs>
 

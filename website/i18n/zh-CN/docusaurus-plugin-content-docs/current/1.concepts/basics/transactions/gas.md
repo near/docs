@@ -87,7 +87,7 @@ To give you a starting point for what to expect for costs on NEAR, the table bel
 | Add Full Access Key | 0.42 | 0.042    | 4.2⨉10⁻⁵ |
 | Delete Key          | 0.41 | 0.041    | 4.1⨉10⁻⁵ |
 
-<details class="info">
+<details className="info">
 <summary>Where do these numbers come from?</summary>
 
 NEAR is [configured](https://github.com/near/nearcore/blob/master/core/primitives/res/runtime_configs/parameters.yaml) with base costs. An example:
@@ -138,7 +138,7 @@ Function calls are more complex and need you to attach an explicit amount of gas
 
 :::info This maximum value of prepaid gas is subject to change but you can query this value by using the [`protocol_config`](/api/rpc/protocol#protocol-config) RPC endpoint and search for `max_total_prepaid_gas`. :::
 
-<details class="warning">
+<details className="warning">
 <summary>How many tokens will these units cost?</summary>
 Note that you are greenlighting a maximum number of gas _units_, not a number of NEAR tokens or yoctoNEAR.
 

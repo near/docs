@@ -242,16 +242,19 @@ This should create a new wasm file in the `out/series.wasm` directory. This is w
 
 ## Deployment and Initialization
 
-Next, you'll deploy this contract to the network by using a dev-account. If you've already used one in this tutorial before, make sure you include the `-f` flag which will remove the existing dev-account before creating a new one.
+Next, you'll deploy this contract to the network.
 
 ```bash
-near dev-deploy out/series.wasm && export NFT_CONTRACT_ID=$(cat neardev/dev-account)
+export NFT_CONTRACT_ID=<accountId>
+near create-account $NFT_CONTRACT_ID --useFaucet
+near deploy $NFT_CONTRACT_ID out/series.wasm
 ```
+
 Check if this worked correctly by echoing the environment variable.
 ```bash
 echo $NFT_CONTRACT_ID
 ```
-This should return something similar to `dev-1660936980897-79989663811468`. The next step is to initialize the contract with some default metadata.
+This should return your `<accountId>`. The next step is to initialize the contract with some default metadata.
 
 ```bash
 near call $NFT_CONTRACT_ID new_default_meta '{"owner_id": "'$NFT_CONTRACT_ID'"}' --accountId $NFT_CONTRACT_ID
@@ -267,7 +270,7 @@ near view $NFT_CONTRACT_ID nft_metadata
 The next step is to create two different series. One will have a price for lazy minting and the other will simply be a basic series with no price. The first step is to create an owner [sub-account](../../4.tools/cli.md#create-a-sub-account) that you can use to create both series
 
 ```bash
-near create-account owner.$NFT_CONTRACT_ID --masterAccount $NFT_CONTRACT_ID --initialBalance 25 && export SERIES_OWNER=owner.$NFT_CONTRACT_ID
+near create-account owner.$NFT_CONTRACT_ID --masterAccount $NFT_CONTRACT_ID --initialBalance 3 && export SERIES_OWNER=owner.$NFT_CONTRACT_ID
 ```
 
 ### Basic Series
@@ -312,7 +315,7 @@ Which should return something similar to:
       reference_hash: null
     },
     royalty: null,
-    owner_id: 'owner.dev-1660936980897-79989663811468'
+    owner_id: 'owner.nft_contract.testnet'
   }
 ]
 ```
@@ -322,7 +325,7 @@ Which should return something similar to:
 Now that you've created the first, simple series, let's create the second one that has a price of 1 $NEAR associated with it.
 
 ```bash
-near call $NFT_CONTRACT_ID create_series '{"id": 2, "metadata": {"title": "COMPLEX SERIES!", "description": "testing out the new contract with a complex series", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "price": "1000000000000000000000000"}' --accountId $SERIES_OWNER --amount 1
+near call $NFT_CONTRACT_ID create_series '{"id": 2, "metadata": {"title": "COMPLEX SERIES!", "description": "testing out the new contract with a complex series", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "price": "500000000000000000000000"}' --accountId $SERIES_OWNER --amount 1
 ```
 
 If you now paginate through the series again, you should see both appear.
@@ -351,7 +354,7 @@ Which has
       reference_hash: null
     },
     royalty: null,
-    owner_id: 'owner.dev-1660936980897-79989663811468'
+    owner_id: 'owner.nft_contract.testnet'
   },
   {
     series_id: 2,
@@ -370,7 +373,7 @@ Which has
       reference_hash: null
     },
     royalty: null,
-    owner_id: 'owner.dev-1660936980897-79989663811468'
+    owner_id: 'owner.nft_contract.testnet'
   }
 ]
 ```
@@ -380,7 +383,7 @@ Which has
 Now that you have both series created, it's time to now mint some NFTs. You can either login with an existing NEAR wallet using [`near login`](../../4.tools/cli.md#near-login) or you can create a sub-account of the NFT contract. In our case, we'll use a sub-account.
 
 ```bash
-near create-account buyer.$NFT_CONTRACT_ID --masterAccount $NFT_CONTRACT_ID --initialBalance 25 && export BUYER_ID=buyer.$NFT_CONTRACT_ID
+near create-account buyer.$NFT_CONTRACT_ID --masterAccount $NFT_CONTRACT_ID --initialBalance 1 && export BUYER_ID=buyer.$NFT_CONTRACT_ID
 ```
 
 ### Lazy Minting
@@ -401,21 +404,21 @@ near call $NFT_CONTRACT_ID nft_mint '{"id": "2", "receiver_id": "'$NFT_RECEIVER_
 Run the command again but this time, attach 1.5 $NEAR.
 
 ```bash
-near call $NFT_CONTRACT_ID nft_mint '{"id": "2", "receiver_id": "'$NFT_RECEIVER_ID'"}' --accountId $BUYER_ID --amount 1.5
+near call $NFT_CONTRACT_ID nft_mint '{"id": "2", "receiver_id": "'$NFT_RECEIVER_ID'"}' --accountId $BUYER_ID --amount 0.6
 ```
 
 This should output the following logs.
 
 ```bash
 Receipts: BrJLxCVmxLk3yNFVnwzpjZPDRhiCinNinLQwj9A7184P, 3UwUgdq7i1VpKyw3L5bmJvbUiqvFRvpi2w7TfqmnPGH6
-    Log [dev-1660936980897-79989663811468]: EVENT_JSON:{"standard":"nep171","version":"nft-1.0.0","event":"nft_mint","data":[{"owner_id":"benjiman.testnet","token_ids":["2:1"]}]}
+    Log [nft_contract.testnet]: EVENT_JSON:{"standard":"nep171","version":"nft-1.0.0","event":"nft_mint","data":[{"owner_id":"benjiman.testnet","token_ids":["2:1"]}]}
 Transaction Id FxWLFGuap7SFrUPLskVr7Uxxq8hpDtAG76AvshWppBVC
 To see the transaction in the transaction explorer, please open this url in your browser
 https://testnet.nearblocks.io/txns/FxWLFGuap7SFrUPLskVr7Uxxq8hpDtAG76AvshWppBVC
 ''
 ```
 
-If you check the explorer link, it should show that the owner received on the order of `1.493 $NEAR`.
+If you check the explorer link, it should show that the owner received on the order of `0.59305 $NEAR`.
 
 <img width="80%" src="/docs/assets/nfts/explorer-payout-series-owner.png" />
 
@@ -459,7 +462,7 @@ Thank you so much for going through this journey with us! I wish you all the bes
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `3.0.0`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
+- near-cli: `4.0.4`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 
 :::

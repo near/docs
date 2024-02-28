@@ -24,7 +24,7 @@
     "permalink": "/vi/develop/integrate/frontend"
   },
   "next": {
-    "title": "Login with NEAR",
+    "title": "Authenticate NEAR Users",
     "permalink": "/vi/develop/integrate/backend-login"
   }
 }

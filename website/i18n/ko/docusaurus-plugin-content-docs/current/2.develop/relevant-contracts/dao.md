@@ -24,7 +24,8 @@ DAO를 생성하려면 먼저 [DAO 컨트랙트 팩토리](https://github.com/ne
 
   ```bash
   # 1. Deploy the contract in a testnet account
-  near dev-deploy <factory-account> --wasmFile=<sputnikdao-factory> --accountId <your-account>
+  near create-account <factory-account> --useFaucet
+  near deploy <factory-account> <sputnikdao-wasm> --accountId <your-account>
 
   # 2. Initialize factory contract
   near call <factory-account> new --accountId  <your-account> --gas 100000000000000
@@ -39,25 +40,25 @@ DAO를 생성하려면 먼저 [DAO 컨트랙트 팩토리](https://github.com/ne
   </TabItem>
 </Tabs>
 
-### 투표 정책
-현재 DAO는 `TokenWeight` 및 `RoleWeight`라는 두 가지 유형의 [투표 정책](https://github.com/near-daos/sputnik-dao-contract#voting-policy)을 지원합니다
+### Voting policy
+Currently, the DAO supports two different types of [voting policies](https://github.com/near-daos/sputnik-dao-contract#voting-policy): `TokenWeight`, and `RoleWeight`.
 
-투표 정책이 `TokenWeight`인 경우, 위원회는 토큰을 사용하여 투표합니다. 투표의 가중치는 토큰의 총 공급량에 대한 투표에 사용된 토큰의 비율입니다.
+When the vote policy is `TokenWeight`, the council votes using [tokens](ft.md). The weigh of a vote is the proportion of tokens used for voting over the token's total supply.
 
-투표 정책이 `RoleWeight(role)`인 경우, 투표 가중치는 "역할을 가진 총 사람 수 분의 1"로 계산됩니다.
+When the vote policy is `RoleWeight(role)`, the vote weigh is computed as "one over the total number of people with the role".
 
-두 투표 정책 제안 통과를 위한 "임계값"을 추가로 포함합니다. 임계값은 모두 비율 또는 고정 숫자가 될 수 있습니다. 비율은 제안을 승인하는 데 일정 비율의 사람/토큰이 필요함을 나타냅니다(예: 절반의 사람들이 투표 및 찬성해야 함). 고정된 숫자는 제안을 통과하기 위해 특정 수의 투표/토큰이 필요함을 나타냅니다(예: 3명/토큰이면 제안을 승인하기에 충분함).
+Both voting policies further include a "threshold" for passing a proposal, which can be a ratio or a fixed number. The ratio indicates that you need a proportion of people/tokens to approve the proposal (e.g. half the people need to vote, and to vote positively). A fixed number indicated that you need a specific number of votes/tokens to pass the proposal (e.g. 3 people/tokens are enough to approve the proposal).
 
-<hr class="subsection" />
+<hr className="subsection" />
 
-## 제안 추가
-기본적으로 누구나 DAO에 제안을 추가할 수 있지만, 최소 1Ⓝ은 채권으로 첨부해야 합니다. 그러나 이는 [DAO에서 역할을 설정](https://github.com/near-daos/sputnik-dao-contract#roles-and-permissions)하여 변경할 수 있습니다. 추가할 수 있는 제안 유형은 미리 정의되어 있으며 다음과 같은 작업을 포함합니다.
+## Adding a Proposal
+By default, anyone can add a proposal to the DAO, but a minimum of 1Ⓝ needs to be attached as a bond. This however can be changed by [setting roles in the DAO](https://github.com/near-daos/sputnik-dao-contract#roles-and-permissions). The type of proposals that can be added [is predefined](https://github.com/near-daos/sputnik-dao-contract#proposal-types), and include actions such as:
 
-1. 위원회에 구성원을 추가합니다.
-2. 스마트 컨트랙트에서 메서드를 호출합니다.
-3. NEAR 또는 FT를 일부 계정으로 전송합니다.
+1. Adding a member to the council.
+2. Calling a method in a smart contract.
+3. Transferring NEAR or a FT to some account.
 
-각 작업에는 고유한 종류의 인자가 있습니다. 작업의 전체 목록은 [여기](https://github.com/near-daos/sputnik-dao-contract#proposal-types)에서 찾을 수 있습니다.
+Each action has its own kind of arguments. The complete list of actions can be [found here](https://github.com/near-daos/sputnik-dao-contract#proposal-types).
 
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="cli" label="NEAR CLI">
@@ -73,10 +74,10 @@ DAO를 생성하려면 먼저 [DAO 컨트랙트 팩토리](https://github.com/ne
   </TabItem>
 </Tabs>
 
-<hr class="subsection" />
+<hr className="subsection" />
 
-## 제안에 따른 작업
-제안이 추가되면 **위원회 구성원**은 `act_proposal` 메서드를 호출하여 작업[label](https://docs.near.org/develop/relevant-contracts/dao)을 수행할 수 있습니다. 사용 가능한 작업은 AddProposal, RemoveProposal, VoteApprove, VoteReject, VoteRemove, Finalize 또는 MoveToHub 중 하나입니다.
+## Acting on a Proposal
+Once a proposal is added, **council members** can act on them calling the `act_proposal` method. The available actions are one of the following: AddProposal, RemoveProposal, VoteApprove, VoteReject, VoteRemove, Finalize, or MoveToHub.
 
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="cli" label="NEAR CLI">
@@ -88,4 +89,4 @@ DAO를 생성하려면 먼저 [DAO 컨트랙트 팩토리](https://github.com/ne
   </TabItem>
 </Tabs>
 
-누군가가 제안에 대해 작업할 때마다, DAO는 제안이 승인되기에 충분한 투표권을 가지고 있는지 확인합니다. 제안이 승인되면 DAO는 제안을 실행합니다(예: 위원회에 새 구성원 추가).
+Each time somebody acts on the proposal, the DAO checks if the proposal has enough votes to be approved. If the proposal is approve, then the DAO executes the proposal (for example, adding a new member to the council).

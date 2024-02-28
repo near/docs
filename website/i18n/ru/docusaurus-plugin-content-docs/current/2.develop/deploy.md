@@ -20,7 +20,7 @@ Let us guide you on how to use the [NEAR CLI](../4.tools/cli.md) to deploy your 
 Thanks to the `NEAR CLI` deploying a contract is as simple as:
 
 1. Compiling the contract to wasm (done automatically through `yarn build` in our templates).
-2. Deploy it into the desired account using the [NEAR CLI](../4.tools/cli.md#near-deploy):
+2. [Create an account](../4.tools/cli.md#near-create-account) and [deploy the contract](../4.tools/cli.md#near-deploy) into it using `NEAR CLI`.
 
 #### Create an Account and Deploy
 
@@ -29,8 +29,9 @@ Thanks to the `NEAR CLI` deploying a contract is as simple as:
   <TabItem value="near-cli">
 
   ```bash
-  # Automatically deploy the wasm in a new account
-  near dev-deploy <route_to_wasm>
+  # Create a new account pre-funded by a faucet & deploy
+  near create-account <accountId> --useFaucet
+  near deploy <accountId> <route_to_wasm>
 
   # Get the account name
   cat ./neardev/dev-account
@@ -118,7 +119,7 @@ If your contract has an [initialization method](./contracts/anatomy.md#initializ
 ## Calling the Contract
 Once your contract is deployed you can interact with it right away using [NEAR CLI](../4.tools/cli.md).
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### View methods
 View methods are those that perform **read-only** operations. Calling these methods is free, and do not require to specify which account is being used to make the call:
@@ -143,7 +144,7 @@ View methods are those that perform **read-only** operations. Calling these meth
 View methods have by default 200 TGAS for execution
 :::
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Change methods
 Change methods are those that perform both read and write operations. For these methods we do need to specify the account being used to make the call, since that account will expend GAS in the call.

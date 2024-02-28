@@ -87,7 +87,7 @@ NEAR의 비용에 대해 예상할 수 있는 시작점을 제공하기 위해, 
 | 전체 액세스 키 추가 | 0.42 | 0.042    | 4.2⨉10⁻⁵ |
 | 키 삭제        | 0.41 | 0.041    | 4.1⨉10⁻⁵ |
 
-<details class="info">
+<details className="info">
 <summary>이 숫자는 어디에서 왔나요?</summary>
 
 NEAR는 기본 비용으로 [구성되어 있습니다](https://github.com/near/nearcore/blob/master/core/primitives/res/runtime_configs/parameters.yaml). 예시는 다음과 같습니다:
@@ -138,7 +138,7 @@ Ethereum에 익숙하다면, 트랜잭션을 더 빨리 처리하기 위해 더 
 
 :::info 이 선불 가스의 이 최대값은 변경될 수 있지만, [`protocol_config`](/api/rpc/setup#protocol-config) RPC 엔드포인트를 사용하여 이 값을 조회할 수 있고 `max_total_prepaid_gas`를 검색할 수 있습니다. :::
 
-<details class="warning">
+<details className="warning">
 <summary>이 단위에는 몇 개의 토큰이 들까요?</summary>__ NEAR 토큰이나 yoctoNEAR이 아닌 최대 수의 가스 _단위_에 녹색 불이 켜집니다.
 
 이러한 단위는 처리되는 블록 내의 가스 가격과 곱해집니다. 함수 호출이 교차 컨트랙트 호출을 수행하는 경우, 함수의 일부가 다른 블록에서 처리되고, 다른 가스 가격을 사용할 수 있습니다. [해당 숫자의 출처](#the-cost-of-common-actions)에 설명된 대로, 함수는 완결되려면 최소 두 블록을 기다려야 합니다.

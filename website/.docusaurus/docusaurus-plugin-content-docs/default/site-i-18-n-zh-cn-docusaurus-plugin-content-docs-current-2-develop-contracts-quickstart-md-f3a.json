@@ -17,11 +17,11 @@
   "frontMatter": {
     "id": "quickstart",
     "title": "Hello Contract",
-    "sidebar_label": "⭐ Quickstart"
+    "sidebar_label": "Quickstart ✨"
   },
   "sidebar": "build",
   "previous": {
-    "title": "What is a Smart Contract?",
+    "title": "What is a Contract?",
     "permalink": "/zh-CN/develop/contracts/whatisacontract"
   },
   "next": {

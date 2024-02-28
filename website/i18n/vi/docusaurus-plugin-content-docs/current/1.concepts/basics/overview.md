@@ -15,7 +15,7 @@ Những account này đồng thời cũng có quyền tạo các subaccount như
 
 :::tip Để biết thêm chi tiết vui lòng xem **[session các account](/concepts/basics/accounts/model)**. :::
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ## Các Key
 
@@ -28,7 +28,7 @@ Các Full access key cho phép kiểm soát hoàn toàn account. Bạn có thể
 
 :::tip Để biết thêm chi tiết xin vui lòng xem tại **[phần các access key](/concepts/basics/accounts/access-keys)**. :::
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Contracts
 
@@ -38,7 +38,7 @@ Ví dụ như, benji có thể sở hữu root account `benji.near`. Sau đó an
 
 :::tip Để biết thêm chi tiết, xin vui lòng xem hướng dẫn tại **[deploy các contract](/sdk/rust/promises/deploy-contract)**. :::
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Storage
 

@@ -34,10 +34,10 @@ Với bản chất mục đích chung của NEAR, các function call dành đư�
 
 Với mức độ phức tạp này, sẽ không có nhiều lợi ích khi xem qua một ví dụ, liệt kê (hãy nhìn `ext_costs` bên dưới `wasm_config` bằng cách sử dụng [`protocol_config`](/api/rpc/protocol#protocol-config) RPC endpoint) các phép tính gas (bạn có thể tự nghiên cứu điều này [nếu bạn muốn](https://github.com/near/nearcore/pull/3038)). Thay vào đó, hãy tiếp cận từ hai góc độ khác nhau: so sánh ballpark comparison với Ethereum và nhận các ước tính chính xác với các bài automated test.
 
-<blockquote class="lesson">
+<blockquote className="lesson">
 **How much of the gas fee goes as a 30% reward to the smart contract account?**
 
-The NEAR Whitepaper mentions that [30% of all gas fees](https://near.org/papers/the-official-near-white-paper/) go to smart contract accounts on which the fees are expensed. 
+The NEAR Whitepaper mentions that [30% of all gas fees](https://pages.near.org/papers/the-official-near-white-paper/) go to smart contract accounts on which the fees are expensed. 
 
 This amount can be calculated for function calls in two ways:
 1. Summing all values in the gas profile 
@@ -77,7 +77,7 @@ Bằng cách nhân gas unit của Ethereum với gas price để tính được 
 
 Trong các hoạt động, nếu nhìn qua chúng ta chỉ thấy NEAR được cải thiện khoảng 10 lần so với Ethereum, nhưng thêm một điều cần lưu ý là tổng nguồn cung của NEAR là hơn 1 tỷ, trong khi đó tổng cung của Ethereum là hơn 100 triệu. Vì vậy, tương ứng với tổng nguồn cung, gas fee của NEAR cũng thấp hơn khoảng 10 lần so với Ethereum. Ngoài ra, nếu giá NEAR tăng lên một cách đáng kể, thì phí gas tối thiểu do NEAR network đặt ra có thể được hạ xuống.
 
-Bạn có thể mong đợi network luôn ở mức gas price tối thiểu, tìm hiểu thêm ở [Economics whitepaper](https://near.org/papers/economics-in-sharded-blockchain/#transaction-and-storage-fees).
+You can expect the network to sit at the minimum gas price most of the time; learn more in the [Economics whitepaper](https://pages.near.org/papers/economics-in-sharded-blockchain/#transaction-and-storage-fees).
 
 #### Estimating Gas Costs with Automated Tests {#accurate-estimates-with-automated-tests}
 
@@ -178,7 +178,7 @@ Price của một gas unit ở block này là 5000 yoctoNEAR (10^-24 NEAR).
 
 ## Một vài kết luận từ whitepaper {#some-closing-thoughts-from-the-whitepaper}
 
-<blockquote class="info">
+<blockquote className="info">
 Về cơ bản, NEAR platform là một marketplace giữa những người tham gia.  Về phía cung cấp, những người điều khiển các node validator, các cơ sở hạ tầng cơ bản khác cần được khuyến khích để cung cấp các dịch vụ này để tạo một “community cloud.”  Về phía những người có nhu cầu, các developer và end-user của nền tảng đang trả tiền cho việc sử dụng các dịch vụ mà những người cung cấp đưa ra, cần được sử dụng nó theo cách đơn giản, rõ ràng và nhất quán để nó giúp ích cho họ.
 
 Một blockchain-based cloud cung cấp một số tài nguyên cụ thể cho các ứng dụng chạy trên nó:
@@ -193,7 +193,7 @@ Các developer thích việc giá có thể dự đoán được để họ có 
 
 </blockquote>
 
-Để tìm hiểu sâu hơn về cách thức và lý do tại sao gas hoạt động theo cách như thế trên NEAR, hãy xem phần [Economics](https://near.org/papers/the-official-near-white-paper/#economics) của main whitepaper và phần [Transaction and các Storage Fee](https://near.org/papers/economics-in-sharded-blockchain/#transaction-and-storage-fees) của economics whitepaper.
+To dig deeper into how and why gas works the way it does on NEAR, check out the [Economics](https://pages.near.org/papers/the-official-near-white-paper/#economics) section of the main whitepaper and the [Transaction and Storage Fees](https://pages.near.org/papers/economics-in-sharded-blockchain/#transaction-and-storage-fees) section of the economics whitepaper.
 
 :::tip Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>

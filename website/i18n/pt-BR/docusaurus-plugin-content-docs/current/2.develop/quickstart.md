@@ -74,12 +74,12 @@ The contract presents 2 methods: `set_greeting` and `get_greeting`. The first on
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
-            url="https://github.com/near-examples/hello-near-js/blob/master/contract/src/contract.ts"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts"
             start="3" end="18" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/hello-near-rs/blob/main/contract/src/lib.rs"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
             start="9" end="43" />
   </Language>
 </CodeTabs>
@@ -88,22 +88,22 @@ The contract presents 2 methods: `set_greeting` and `get_greeting`. The first on
 
 ## Testing
 
-When writing smart contracts it is very important to test all methods exhaustively. This project has both **unit** and **integration** tests. Before digging in their code, go ahead and execute them using the command `npm run test`.
+When writing smart contracts, it is very important to test all methods exhaustively. This project has both **unit** and **integration** tests. Before digging into their code, go ahead and execute them using the command `npm run test`.
 
 ### Unit test
-Unit tests check individual functions in the smart contract. They are written in the same language than the smart contract. If your contract is in Rust you will find the tests at the bottom of each `.rs` file.
+Unit tests check individual functions in the smart contract. They are written in the same language as the smart contract. If your contract is in Rust, you will find the tests at the bottom of each `.rs` file.
 
 <CodeTabs>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/hello-near-rs/blob/main/contract/src/lib.rs"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
             start="46" end="58" />
   </Language>
 </CodeTabs>
 
 ### Integration test
 
-Integration tests can be written in both Javascript and Rust. They work by deploying the contract in a **sandbox** and executing methods on it. In this way, integration tests simulate interactions from users in a realistic scenario. You will find the integration tests for `hello-near` in `integration-tests/`.
+Integration tests can be written in both Javascript and Rust. They work by deploying the contract in a **sandbox** and executing its methods. In this way, integration tests simulate user interactions in a realistic scenario. You will find the integration tests for `hello-near` in `integration-tests/`.
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
@@ -119,8 +119,8 @@ Integration tests can be written in both Javascript and Rust. They work by deplo
 
 That's it for our first quickstart tutorial. You have now seen a fully functional contract with a minimal user interface and testing.
 
-Go ahead and check other [examples](/tutorials/examples/guest-book) or proceed straight to the [Develop section](./contracts/anatomy.md) to know how to write your own contract.
+Go ahead and check other [examples](/tutorials/examples/guest-book) or proceed straight to the [Develop section](./contracts/anatomy.md) to learn how to write your own contract.
 
-If you have any questions, do not hesitate in joining us on [Discord](https://near.chat). We regularly host Office Hours, in which you can join our voice channel and ask questions.
+If you have any questions, do not hesitate to join us on [Discord](https://near.chat). We regularly host Office Hours, in which you can join our voice channel and ask questions.
 
 Happy coding!

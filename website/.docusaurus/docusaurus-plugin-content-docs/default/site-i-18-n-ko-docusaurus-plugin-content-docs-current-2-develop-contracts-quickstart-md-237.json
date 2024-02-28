@@ -17,11 +17,11 @@
   "frontMatter": {
     "id": "quickstart",
     "title": "Hello Contract",
-    "sidebar_label": "⭐ Quickstart"
+    "sidebar_label": "Quickstart ✨"
   },
   "sidebar": "build",
   "previous": {
-    "title": "스마트 컨트랙트란 무엇인가요?",
+    "title": "What is a Contract?",
     "permalink": "/ko/develop/contracts/whatisacontract"
   },
   "next": {

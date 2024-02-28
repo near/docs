@@ -17,6 +17,7 @@
   "frontMatter": {
     "id": "welcome",
     "title": "예제 & 튜토리얼",
+    "sidebar_label": "Home",
     "hide_table_of_contents": true
   },
   "sidebar": "tutorials",

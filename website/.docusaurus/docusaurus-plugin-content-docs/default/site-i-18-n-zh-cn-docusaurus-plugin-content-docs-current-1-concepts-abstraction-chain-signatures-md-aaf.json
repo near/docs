@@ -1,0 +1,28 @@
+{
+  "id": "concepts/abstraction/chain-signatures",
+  "title": "Chain Signatures",
+  "description": "Chain Signatures unlock the ability for a single account to transact across multiple blockchain protocols, giving ownership of cross-chain accounts, data, and assets to one NEAR account.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/1.concepts/abstraction/chain-signatures.md",
+  "sourceDirName": "1.concepts/abstraction",
+  "slug": "/concepts/abstraction/chain-signatures",
+  "permalink": "/zh-CN/concepts/abstraction/chain-signatures",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/abstraction/chain-signatures.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "chain-signatures",
+    "title": "Chain Signatures",
+    "sidebar_label": "What are Chain Signatures?"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Relayers",
+    "permalink": "/zh-CN/concepts/abstraction/relayers"
+  },
+  "next": {
+    "title": "Use cases",
+    "permalink": "/zh-CN/concepts/abstraction/signatures/use-cases"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "primitives/ft/bos/register",
+  "title": "register",
+  "description": "",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/7.primitives/ft/bos/register.md",
+  "sourceDirName": "7.primitives/ft/bos",
+  "slug": "/primitives/ft/bos/register",
+  "permalink": "/ko/primitives/ft/bos/register",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/ft/bos/register.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

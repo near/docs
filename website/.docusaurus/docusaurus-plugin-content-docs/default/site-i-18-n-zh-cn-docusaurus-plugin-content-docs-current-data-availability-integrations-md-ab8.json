@@ -1,7 +1,7 @@
 {
   "id": "data-availability/integrations",
   "title": "Integrations",
-  "description": "We have some proof of concept works for integrating with rollups. We are working to prove the system's capabilities and provide a reference implementation for others to follow.",
+  "description": "We have some proof of concept works for integrating with roll-ups. We are working to prove the system's capabilities and provide a reference implementation for others to follow.",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/data-availability/integrations.md",
   "sourceDirName": "data-availability",
   "slug": "/data-availability/integrations",

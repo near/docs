@@ -5,7 +5,7 @@
   "source": "@site/../docs/7.primitives/dex.md",
   "sourceDirName": "7.primitives",
   "slug": "/primitives/dex",
-  "permalink": "/zh-CN/primitives/dex",
+  "permalink": "/primitives/dex",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/dex.md",
@@ -13,7 +13,7 @@
   "version": "current",
   "lastUpdatedBy": "Damian Parrino",
   "lastUpdatedAt": 1709136567,
-  "formattedLastUpdatedAt": "2024年2月28日",
+  "formattedLastUpdatedAt": "Feb 28, 2024",
   "frontMatter": {
     "id": "dex",
     "title": "Decentralized Exchanges (DEX)",
@@ -22,10 +22,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Autonomous Organizations (DAO)",
-    "permalink": "/zh-CN/primitives/dao"
+    "permalink": "/primitives/dao"
   },
   "next": {
     "title": "What is Data Infrastructure?",
-    "permalink": "/zh-CN/develop/whataredatasolutions"
+    "permalink": "/develop/whataredatasolutions"
   }
 }

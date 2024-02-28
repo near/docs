@@ -5,7 +5,7 @@
   "source": "@site/../docs/data-availability/arbitrum.md",
   "sourceDirName": "data-availability",
   "slug": "/data-availability/arbitrum",
-  "permalink": "/zh-CN/data-availability/arbitrum",
+  "permalink": "/data-availability/arbitrum",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/data-availability/arbitrum.md",
@@ -13,7 +13,7 @@
   "version": "current",
   "lastUpdatedBy": "Damián Parrino",
   "lastUpdatedAt": 1708447890,
-  "formattedLastUpdatedAt": "2024年2月20日",
+  "formattedLastUpdatedAt": "Feb 20, 2024",
   "frontMatter": {
     "id": "arbitrum",
     "title": "Arbitrum Nitro",
@@ -22,10 +22,10 @@
   "sidebar": "data-availability",
   "previous": {
     "title": "Integrations",
-    "permalink": "/zh-CN/data-availability/integrations"
+    "permalink": "/data-availability/integrations"
   },
   "next": {
     "title": "Optimism",
-    "permalink": "/zh-CN/data-availability/optimism"
+    "permalink": "/data-availability/optimism"
   }
 }

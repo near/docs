@@ -1,0 +1,15 @@
+{
+  "id": "primitives/ft/bos/create",
+  "title": "create",
+  "description": "",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/7.primitives/ft/bos/create.md",
+  "sourceDirName": "7.primitives/ft/bos",
+  "slug": "/primitives/ft/bos/create",
+  "permalink": "/ko/primitives/ft/bos/create",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/ft/bos/create.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

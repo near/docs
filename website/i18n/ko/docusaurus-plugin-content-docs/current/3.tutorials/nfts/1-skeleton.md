@@ -81,12 +81,12 @@ You'll learn more about these functions in the [approvals section](/tutorials/nf
 
 > 이 파일은 NFT에 대한 정보를 보는 데 필요한 내부 함수들을 제공하며 표준의 [열거(Enumeration)](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration) 확장자를 따릅니다.
 
-| 메서드                        | 설명                                          |
-| -------------------------- | ------------------------------------------- |
-| **nft_total_supply**     | 컨트랙트에 저장된 NFT의 총량을 반환합니다.                   |
-| **nft_tokens**             | 소유자와 관계없이 컨트랙트에 저장된 페이지가 매겨진 NFT 목록을 반환합니다. |
-| **nft_supply_for_owner** | 주어진 사용자가 소유한 총 NFT 수를 볼 수 있습니다.             |
-| **nft_tokens_for_owner** | 지정된 사용자가 소유한 NFT 목록을 페이지 형태로 반환합니다.         |
+| 메서드                        | 설명                                                       |
+| -------------------------- | -------------------------------------------------------- |
+| **nft_total_supply**     | Returns the total amount of NFTs stored on the contract. |
+| **nft_tokens**             | 소유자와 관계없이 컨트랙트에 저장된 페이지가 매겨진 NFT 목록을 반환합니다.              |
+| **nft_supply_for_owner** | 주어진 사용자가 소유한 총 NFT 수를 볼 수 있습니다.                          |
+| **nft_tokens_for_owner** | 지정된 사용자가 소유한 NFT 목록을 페이지 형태로 반환합니다.                      |
 
 <Github language="rust" start="4" end="44" url="https://github.com/near-examples/nft-tutorial/blob/1.skeleton/nft-contract/src/enumeration.rs" />
 
@@ -115,12 +115,12 @@ You'll learn more about these functions in the [approvals section](/tutorials/nf
 
 > 이 파일은 토큰 및 메타데이터에 대해 저장할 정보를 추적하는 데 사용됩니다. 또한 표준 메타데이터 확장의 일부인 컨트랙트의 [메타데이터](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata)를 보는 기능을 정의할 수 있습니다.
 
-| 이름                | 설명                                                       |
-| ----------------- | -------------------------------------------------------- |
-| **TokenMetadata** | 이 구조는 각 토큰에 대해 저장할 수 있는 메타데이터를 정의합니다. (제목, 설명, 매체 등)     |
-| **Token**         | 이 구조는 각 토큰에 대한 컨트랙트에 어떤 정보가 저장될 것인지를 설명합니다.              |
-| **JsonToken**     | View 호출을 통해 NFT에 대한 정보를 조회할 때, 반환된 정보는 이 JSON 토큰에 저장됩니다. |
-| **nft_metadata**  | 이 함수를 통해 사용자는 컨트랙트의 내부 메타데이터를 쿼리할 수 있습니다.                |
+| 이름                | 설명                                                                                                       |
+| ----------------- | -------------------------------------------------------------------------------------------------------- |
+| **TokenMetadata** | This structure defines the metadata that can be stored for each token (title, description, media, etc.). |
+| **Token**         | 이 구조는 각 토큰에 대한 컨트랙트에 어떤 정보가 저장될 것인지를 설명합니다.                                                              |
+| **JsonToken**     | View 호출을 통해 NFT에 대한 정보를 조회할 때, 반환된 정보는 이 JSON 토큰에 저장됩니다.                                                 |
+| **nft_metadata**  | 이 함수를 통해 사용자는 컨트랙트의 내부 메타데이터를 쿼리할 수 있습니다.                                                                |
 
 <Github language="rust" start="10" end="55" url="https://github.com/near-examples/nft-tutorial/blob/1.skeleton/nft-contract/src/metadata.rs" />
 
@@ -154,7 +154,7 @@ You'll learn more about these functions in the [approvals section](/tutorials/nf
 
 <Github language="rust" start="7" end="56" url="https://github.com/near-examples/nft-tutorial/blob/1.skeleton/nft-contract/src/nft_core.rs" />
 
-튜토리얼 시리즈의 [발행 섹션](/tutorials/nfts/minting)에서 이러한 함수들에 대해 자세히 알아볼 것입니다.
+You'll learn more about these functions in the [core section](/tutorials/nfts/core) of the tutorial series.
 
 ---
 
@@ -216,8 +216,8 @@ warning: unused imports: `LazyOption`, `LookupMap`, `UnorderedMap`, `UnorderedSe
 
 :::note 이 문서의 버전 관리 이 글을 쓰는 시점에서 이 예제는 다음 버전에서 작동합니다.
 
-- rustc: `1.6.0`
-- near-sdk-rs: `4.0.0`
-- NFT 표준: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), `1.0.0` 버전
+- rustc: `1.75.0`
+- near-sdk-rs: `4.1.1`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 
 :::

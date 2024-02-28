@@ -149,7 +149,7 @@ Khi `nft_transfer_call` được gọi, nó sẽ:
 
 Nếu bạn chỉ đặt log vào function `internal_transfer`, log sẽ được phát ra và indexer sẽ nghĩ rằng NFT đã được transfer. Tuy nhiên, nếu quá trình transfer bị revert trong `nft_resolve_transfer`, thì event đó **cũng** sẽ được phát ra. Bất cứ nơi nào mà một NFT **có thể** được transfer, chúng ta nên ghi vào log. Thay thế `nft_resolve_transfer` với đoạn code dưới đây.
 
-<Github language="rust" start="182" end="277" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/nft_core.rs" />
+<Github language="rust" start="182" end="279" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/nft_core.rs" />
 
 Ngoài ra, bạn cần thêm `authorized_id` và `memo` vào các tham số cho `nft_resolve_transfer` như dưới đây.
 
@@ -163,26 +163,21 @@ Với việc hoàn thành điều đó, bạn đã triển khai thành công ti�
 
 ## Deploy contract {#redeploying-contract}
 
-Với mục đích dễ đọc và dễ develop, thay vì redeploy contract tới cùng account, hãy tạo một sub-account và deploy với tài khoản đó. Bạn có thể deploy cùng account vì không có thay đổi nào bạn đã triển khai trong hướng dẫn này gây ra lỗi.
+For the purpose of readability and ease of development, instead of redeploying the contract to the same account, let's create an account and deploy to that instead. Bạn có thể deploy cùng account vì không có thay đổi nào bạn đã triển khai trong hướng dẫn này gây ra lỗi.
 
-### Tạo một sub-account
+### Deployment
 
-Chạy command dưới đây để tạo một sub-account `events` cho account chính của bạn với số dư ban đầu là 25 NEAR, nó sẽ được transfer từ account gốc sang account mới của bạn.
-
-```bash
-near create-account events.$NFT_CONTRACT_ID --masterAccount $NFT_CONTRACT_ID --initialBalance 25
-```
-
-Tiếp theo, bạn sẽ muốn export một biến môi trường cho việc develop được dễ dàng hơn:
+Next, you'll deploy this contract to the network.
 
 ```bash
-export EVENTS_NFT_CONTRACT_ID=events.$NFT_CONTRACT_ID
+export EVENTS_NFT_CONTRACT_ID=<accountId>
+near create-account $EVENTS_NFT_CONTRACT_ID --useFaucet
 ```
 
 Sử dụng build script, deploy contract như bạn đã làm ở các hướng dẫn trước:
 
 ```bash
-yarn build && near deploy --wasmFile out/main.wasm --accountId $EVENTS_NFT_CONTRACT_ID
+yarn build && near deploy $EVENTS_NFT_CONTRACT_ID out/main.wasm
 ```
 
 ### Khởi tạo và mint {#initialization-and-minting}
@@ -246,8 +241,8 @@ Trong hướng dẫn tiếp theo, bạn sẽ xem những thứ cơ bản của m
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `3.0.0`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
-- Events standard: [NEP297 extension](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event), version `1.0.0`
+- near-cli: `4.0.4`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
+- Events standard: [NEP297 extension](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event), version `1.1.0`
 
 :::

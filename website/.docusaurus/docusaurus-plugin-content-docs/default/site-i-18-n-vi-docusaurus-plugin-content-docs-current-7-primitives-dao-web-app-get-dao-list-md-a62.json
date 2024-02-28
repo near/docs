@@ -1,0 +1,15 @@
+{
+  "id": "primitives/dao/web-app/get-dao-list",
+  "title": "get-dao-list",
+  "description": "The Wallet object comes from our quickstart template",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/7.primitives/dao/web-app/get-dao-list.md",
+  "sourceDirName": "7.primitives/dao/web-app",
+  "slug": "/primitives/dao/web-app/get-dao-list",
+  "permalink": "/vi/primitives/dao/web-app/get-dao-list",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/dao/web-app/get-dao-list.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

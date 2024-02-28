@@ -1,0 +1,28 @@
+{
+  "id": "data-availability/arbitrum",
+  "title": "Arbitrum Nitro",
+  "description": "To support Arbitrum Nitro, we have integrated a small plugin into the DAC daserver. This is much like our http sidecar and provides a very modular integration into NEAR DA whilst supporting Arbitrum",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/data-availability/arbitrum.md",
+  "sourceDirName": "data-availability",
+  "slug": "/data-availability/arbitrum",
+  "permalink": "/ko/data-availability/arbitrum",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/data-availability/arbitrum.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "arbitrum",
+    "title": "Arbitrum Nitro",
+    "sidebar_label": "Arbitrum Nitro"
+  },
+  "sidebar": "data-availability",
+  "previous": {
+    "title": "Integrations",
+    "permalink": "/ko/data-availability/integrations"
+  },
+  "next": {
+    "title": "Optimism",
+    "permalink": "/ko/data-availability/optimism"
+  }
+}

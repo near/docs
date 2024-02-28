@@ -242,16 +242,19 @@ yarn build
 
 ## 배포 및 초기화
 
-다음으로, dev-account를 사용하여 이 컨트랙트를 네트워크에 배포합니다. 이전에 이 튜토리얼에서 이를 이미 사용한 적이 있는 경우, 새 계정을 만들기 전에 기존 dev 계정을 제거하는 `-f` 플래그를 포함해야 합니다.
+Next, you'll deploy this contract to the network.
 
 ```bash
-near dev-deploy out/series.wasm && export NFT_CONTRACT_ID=$(cat neardev/dev-account)
+export NFT_CONTRACT_ID=<accountId>
+near create-account $NFT_CONTRACT_ID --useFaucet
+near deploy $NFT_CONTRACT_ID out/series.wasm
 ```
+
 환경 변수를 반영하여 이것이 올바르게 작동하는지 확인하세요.
 ```bash
 echo $NFT_CONTRACT_ID
 ```
-이것은 `dev-1660936980897-79989663811468`와 유사한 결과를 반환해야 합니다. 다음 단계는 일부 기본 메타데이터로 컨트랙트를 초기화하는 것입니다.
+This should return your `<accountId>`. 다음 단계는 일부 기본 메타데이터로 컨트랙트를 초기화하는 것입니다.
 
 ```bash
 near call $NFT_CONTRACT_ID new_default_meta '{"owner_id": "'$NFT_CONTRACT_ID'"}' --accountId $NFT_CONTRACT_ID
@@ -267,7 +270,7 @@ near view $NFT_CONTRACT_ID nft_metadata
 다음 단계는 두 개의 다른 시리즈를 만드는 것입니다. 하나는 게으른 발행에 대한 가격이 있고, 다른 하나는 단순히 가격이 없는 기본 시리즈입니다. 첫 번째 단계는 두 시리즈를 만드는 데 사용할 수 있는 소유자인 [하위 계정(sub-account)](../../4.tools/cli.md#create-a-sub-account)을 만드는 것입니다.
 
 ```bash
-near create-account owner.$NFT_CONTRACT_ID --masterAccount $NFT_CONTRACT_ID --initialBalance 25 && export SERIES_OWNER=owner.$NFT_CONTRACT_ID
+near create-account owner.$NFT_CONTRACT_ID --masterAccount $NFT_CONTRACT_ID --initialBalance 3 && export SERIES_OWNER=owner.$NFT_CONTRACT_ID
 ```
 
 ### 기본 시리즈
@@ -312,7 +315,7 @@ near view $NFT_CONTRACT_ID get_series
       reference_hash: null
     },
     royalty: null,
-    owner_id: 'owner.dev-1660936980897-79989663811468'
+    owner_id: 'owner.nft_contract.testnet'
   }
 ]
 ```
@@ -322,7 +325,7 @@ near view $NFT_CONTRACT_ID get_series
 이제 첫 번째 간단한 시리즈를 만들었으니, 가격이 1 $NEAR인 두 번째 시리즈를 만들어 보겠습니다.
 
 ```bash
-near call $NFT_CONTRACT_ID create_series '{"id": 2, "metadata": {"title": "COMPLEX SERIES!", "description": "testing out the new contract with a complex series", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "price": "1000000000000000000000000"}' --accountId $SERIES_OWNER --amount 1
+near call $NFT_CONTRACT_ID create_series '{"id": 2, "metadata": {"title": "COMPLEX SERIES!", "description": "testing out the new contract with a complex series", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "price": "500000000000000000000000"}' --accountId $SERIES_OWNER --amount 1
 ```
 
 이제 시리즈를 통해 다시 페이지를 매기면, 둘 다 표시되어야 합니다.
@@ -351,7 +354,7 @@ near view $NFT_CONTRACT_ID get_series
       reference_hash: null
     },
     royalty: null,
-    owner_id: 'owner.dev-1660936980897-79989663811468'
+    owner_id: 'owner.nft_contract.testnet'
   },
   {
     series_id: 2,
@@ -370,7 +373,7 @@ near view $NFT_CONTRACT_ID get_series
       reference_hash: null
     },
     royalty: null,
-    owner_id: 'owner.dev-1660936980897-79989663811468'
+    owner_id: 'owner.nft_contract.testnet'
   }
 ]
 ```
@@ -380,7 +383,7 @@ near view $NFT_CONTRACT_ID get_series
 두 시리즈를 모두 만들었으므로 이제 NFT를 만들 차례입니다. [`near login`](../../4.tools/cli.md#near-login)를 사용하여 기존 NEAR 지갑으로 로그인하거나, NFT 컨트랙트의 하위 계정을 만들 수 있습니다. 우리의 경우 하위 계정을 사용합니다.
 
 ```bash
-near create-account buyer.$NFT_CONTRACT_ID --masterAccount $NFT_CONTRACT_ID --initialBalance 25 && export BUYER_ID=buyer.$NFT_CONTRACT_ID
+near create-account buyer.$NFT_CONTRACT_ID --masterAccount $NFT_CONTRACT_ID --initialBalance 1 && export BUYER_ID=buyer.$NFT_CONTRACT_ID
 ```
 
 ### 게으른 발행
@@ -401,21 +404,21 @@ near call $NFT_CONTRACT_ID nft_mint '{"id": "2", "receiver_id": "'$NFT_RECEIVER_
 명령을 다시 실행하되, 이번에는 1.5 $NEAR를 첨부합니다.
 
 ```bash
-near call $NFT_CONTRACT_ID nft_mint '{"id": "2", "receiver_id": "'$NFT_RECEIVER_ID'"}' --accountId $BUYER_ID --amount 1.5
+near call $NFT_CONTRACT_ID nft_mint '{"id": "2", "receiver_id": "'$NFT_RECEIVER_ID'"}' --accountId $BUYER_ID --amount 0.6
 ```
 
 그러면 다음과 같은 로그가 출력되어야 합니다.
 
 ```bash
 Receipts: BrJLxCVmxLk3yNFVnwzpjZPDRhiCinNinLQwj9A7184P, 3UwUgdq7i1VpKyw3L5bmJvbUiqvFRvpi2w7TfqmnPGH6
-    Log [dev-1660936980897-79989663811468]: EVENT_JSON:{"standard":"nep171","version":"nft-1.0.0","event":"nft_mint","data":[{"owner_id":"benjiman.testnet","token_ids":["2:1"]}]}
+    Log [nft_contract.testnet]: EVENT_JSON:{"standard":"nep171","version":"nft-1.0.0","event":"nft_mint","data":[{"owner_id":"benjiman.testnet","token_ids":["2:1"]}]}
 Transaction Id FxWLFGuap7SFrUPLskVr7Uxxq8hpDtAG76AvshWppBVC
 To see the transaction in the transaction explorer, please open this url in your browser
 https://testnet.nearblocks.io/txns/FxWLFGuap7SFrUPLskVr7Uxxq8hpDtAG76AvshWppBVC
 ''
 ```
 
-익스플로러 링크를 확인하면, 소유자가 `1.493 $NEAR` 만큼의 주문을 받은 것으로 표시되어야 합니다.
+If you check the explorer link, it should show that the owner received on the order of `0.59305 $NEAR`.
 
 <img width="80%" src="/docs/assets/nfts/explorer-payout-series-owner.png" />
 
@@ -459,7 +462,7 @@ near call $NFT_CONTRACT_ID nft_mint '{"id": "1", "receiver_id": "'$NFT_RECEIVER_
 
 이 글을 쓰는 시점에서 이 예제는 다음 버전에서 작동합니다.
 
-- near-cli: `3.0.0`
-- NFT 표준: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), `1.0.0` 버전
+- near-cli: `4.0.4`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 
 :::

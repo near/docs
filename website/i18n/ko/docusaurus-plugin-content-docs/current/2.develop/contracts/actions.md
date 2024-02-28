@@ -221,7 +221,7 @@ import TabItem from '@theme/TabItem';
 
 :::caution 컨트랙트 내에서 계정을 생성하면 기본적으로 키가 없습니다. 계정에 키를 명시적으로 [추가](#키-추가)하지 않거나 생성 시 [컨트랙트를 배포](#컨트랙트-배포)하지 않으면 계정은 [잠기게](../../1.concepts/basics/accounts/access-keys.md#locked-accounts) 됩니다. :::
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 #### 다른 계정 생성
 계정은 자신의 직접적인 하위 계정만 만들 수 있습니다.

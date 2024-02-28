@@ -74,12 +74,12 @@ Test it online with Gitpod
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
-            url="https://github.com/near-examples/hello-near-js/blob/master/contract/src/contract.ts"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts"
             start="3" end="18" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/hello-near-rs/blob/main/contract/src/lib.rs"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
             start="9" end="43" />
   </Language>
 </CodeTabs>
@@ -88,22 +88,22 @@ Test it online with Gitpod
 
 ## Testing
 
-When writing smart contracts it is very important to test all methods exhaustively. 이 프로젝트에는 **단위** 테스트(unit test)와 **통합** 테스트(integration test)가 모두 있습니다. Before digging in their code, go ahead and execute them using the command `npm run test`.
+When writing smart contracts, it is very important to test all methods exhaustively. 이 프로젝트에는 **단위** 테스트(unit test)와 **통합** 테스트(integration test)가 모두 있습니다. Before digging into their code, go ahead and execute them using the command `npm run test`.
 
 ### 단위 테스트
-단위 테스트는 스마트 컨트랙트의 각 함수를 확인합니다. 이는 스마트 컨트랙트와 동일한 언어로 작성됩니다. 컨트랙트가 Rust로 작성된 경우, 각 `.rs` 파일의 맨 아래에서 테스트를 찾을 수 있습니다.
+단위 테스트는 스마트 컨트랙트의 각 함수를 확인합니다. They are written in the same language as the smart contract. If your contract is in Rust, you will find the tests at the bottom of each `.rs` file.
 
 <CodeTabs>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/hello-near-rs/blob/main/contract/src/lib.rs"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
             start="46" end="58" />
   </Language>
 </CodeTabs>
 
 ### 통합 테스트
 
-통합 테스트는 Javascript와 Rust로 작성할 수 있습니다. 이는 **샌드박스**에 컨트랙트를 배포하고 그 위에서 메서드를 실행하는 방식으로 동작합니다. 이를 통해, 통합 테스트는 현실적인 시나리오 상에서 사용자와의 상호 작용을 시뮬레이션합니다. `integration-tests/`에서 `hello-near`에 대한 통합 테스트를 찾을 수 있습니다.
+통합 테스트는 Javascript와 Rust로 작성할 수 있습니다. They work by deploying the contract in a **sandbox** and executing its methods. In this way, integration tests simulate user interactions in a realistic scenario. `integration-tests/`에서 `hello-near`에 대한 통합 테스트를 찾을 수 있습니다.
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
@@ -119,8 +119,8 @@ When writing smart contracts it is very important to test all methods exhaustive
 
 첫 번째 빠른 시작 튜토리얼은 여기까지입니다. You have now seen a fully functional contract with a minimal user interface and testing.
 
-Go ahead and check other [examples](/tutorials/examples/guest-book) or proceed straight to the [Develop section](./contracts/anatomy.md) to know how to write your own contract.
+Go ahead and check other [examples](/tutorials/examples/guest-book) or proceed straight to the [Develop section](./contracts/anatomy.md) to learn how to write your own contract.
 
-질문이 있으시면 주저하지 마시고 [Discord](https://near.chat)에서 저희와 함께 하세요. 저희는 음성 채널에 참여하고 질문할 수 있는 Office Hours를 정기적으로 개최하고 있습니다.
+If you have any questions, do not hesitate to join us on [Discord](https://near.chat). 저희는 음성 채널에 참여하고 질문할 수 있는 Office Hours를 정기적으로 개최하고 있습니다.
 
 즐거운 코딩 시간 되세요!

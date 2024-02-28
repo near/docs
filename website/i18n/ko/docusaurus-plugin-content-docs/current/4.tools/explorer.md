@@ -22,14 +22,14 @@ Created by NEAR, the [Near Explorer](https://nearblocks.io) enables to check inf
 
 ![NEAR Explorer](/docs/assets/explorers/near-explorer.png) *Main page of [NEAR Explorer](https://nearblocks.io)*
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ## Stats Gallery
 커뮤니티에서 만든 [Stats Gallery](https://stats.gallery)는 계정 활동을 기반으로 레벨과 배지를 추가하여 계정을 찾는 경험을 게임화합니다. 이 갤러리의 가장 좋은 기능 중 하나는, 컨트랙트의 메서드를 볼 수 있다는 것입니다.
 
 ![Stats Gallery](/docs/assets/explorers/stats-gallery.png) *[Stats Gallery](https://stats.gallery) 내 계정 조회*
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ## NearBlocks
 
@@ -37,7 +37,7 @@ Created by NEAR, the [Near Explorer](https://nearblocks.io) enables to check inf
 
 ![NearBlocks](/docs/assets/explorers/nearblocks.png) *[NearBlocks](https://nearblocks.io/) 메인 페이지*
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ## Nearscope
 
@@ -45,7 +45,7 @@ Created by NEAR, the [Near Explorer](https://nearblocks.io) enables to check inf
 
 ![Nearscope](/docs/assets/explorers/nearscope.png) *[Nearscope](https://nearscope.net/) 메인 페이지*
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ## DappLooker
 
@@ -54,7 +54,7 @@ Created by NEAR, the [Near Explorer](https://nearblocks.io) enables to check inf
 ![DappLooker](/docs/assets/explorers/dapplooker.png) *[DappLooker](https://dapplooker.com/) 메인 페이지*
 
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ## Pikespeak
 

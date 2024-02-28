@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.develop/relayers/gas-station.md",
   "sourceDirName": "2.develop/relayers",
   "slug": "/develop/relayers/gas-station",
-  "permalink": "/zh-CN/develop/relayers/gas-station",
+  "permalink": "/develop/relayers/gas-station",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/relayers/gas-station.md",
@@ -13,7 +13,7 @@
   "version": "current",
   "lastUpdatedBy": "Damián Parrino",
   "lastUpdatedAt": 1708796382,
-  "formattedLastUpdatedAt": "2024年2月24日",
+  "formattedLastUpdatedAt": "Feb 24, 2024",
   "frontMatter": {
     "id": "gas-station",
     "title": "Multichain Gas Station Contract",
@@ -22,10 +22,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Multichain Relayer Server",
-    "permalink": "/zh-CN/develop/relayers/multichain-server"
+    "permalink": "/develop/relayers/multichain-server"
   },
   "next": {
-    "title": "What is a Smart Contract?",
-    "permalink": "/zh-CN/develop/contracts/whatisacontract"
+    "title": "What is a Contract?",
+    "permalink": "/develop/contracts/whatisacontract"
   }
 }

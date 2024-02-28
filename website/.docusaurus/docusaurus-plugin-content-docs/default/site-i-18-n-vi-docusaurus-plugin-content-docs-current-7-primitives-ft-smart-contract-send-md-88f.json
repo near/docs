@@ -1,0 +1,15 @@
+{
+  "id": "primitives/ft/smart-contract/send",
+  "title": "send",
+  "description": "This snippet assumes that the contract is already holding some FTs and that you want to send them to another account.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/7.primitives/ft/smart-contract/send.md",
+  "sourceDirName": "7.primitives/ft/smart-contract",
+  "slug": "/primitives/ft/smart-contract/send",
+  "permalink": "/vi/primitives/ft/smart-contract/send",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/ft/smart-contract/send.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

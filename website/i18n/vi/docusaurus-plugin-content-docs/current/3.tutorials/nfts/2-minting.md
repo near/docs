@@ -220,7 +220,7 @@ echo $NFT_CONTRACT_ID
 Hãy xác nhận rằng account được in ra trong terminal là chính xác. Nếu mọi thứ đều đúng, thì bây giờ bạn có thể deploy contract của bạn. Trong thư mục root của NFT project, chạy câu lệnh sau để deploy smart contract của bạn.
 
 ```bash
-near deploy --wasmFile out/main.wasm --accountId $NFT_CONTRACT_ID
+near deploy $NFT_CONTRACT_ID out/main.wasm
 ```
 
 Tại thời điểm này, contract đã được deploy vào account của bạn, và đã sẵn sàng để chuyển sang test và mint NFT.
@@ -344,8 +344,8 @@ In the [next tutorial](/docs/tutorials/contracts/nfts/upgrade-contract), you'll 
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `3.0.0`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
+- near-cli: `4.0.4`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 - Metadata standard: [NEP177](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata), version `2.1.0`
 
 :::

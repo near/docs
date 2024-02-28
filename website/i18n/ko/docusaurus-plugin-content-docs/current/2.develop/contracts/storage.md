@@ -50,11 +50,11 @@ NEAR SDK는 효율적인 방식으로 데이터 저장 방식을 단순화하기
 </CodeTabs>
 :::
 
-<hr class="subsection" />
+<hr className="subsection" />
 
-### 벡터
+### Vector
 
-컨트랙트의 스토리지에 유지되는 [벡터/배열](https://en.wikipedia.org/wiki/Array_data_structure)을 구현합니다. Please refer to the Rust and AS SDK's for a full reference on their interfaces.
+Implements a [vector/array](https://en.wikipedia.org/wiki/Array_data_structure) which persists in the contract's storage. Please refer to the Rust and AS SDK's for a full reference on their interfaces.
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
@@ -70,7 +70,7 @@ NEAR SDK는 효율적인 방식으로 데이터 저장 방식을 단순화하기
   </Language>
 </CodeTabs>
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Map
 
@@ -130,7 +130,7 @@ class StatusMessage {
 }
 ```
 </details>
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### 집합
 
@@ -150,7 +150,7 @@ class StatusMessage {
   </Language>
 </CodeTabs>
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### 트리
 

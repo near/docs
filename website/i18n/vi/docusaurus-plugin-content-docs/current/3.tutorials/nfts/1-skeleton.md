@@ -83,7 +83,7 @@ You'll learn more about these functions in the [approvals section](/tutorials/nf
 
 | Method                     | Mô tả                                                                                            |
 | -------------------------- | ------------------------------------------------------------------------------------------------ |
-| **nft_total_supply**     | Trả về tổng số NFT được lưu trữ trên contract                                                    |
+| **nft_total_supply**     | Returns the total amount of NFTs stored on the contract.                                         |
 | **nft_tokens**             | Trả về danh sách phân trang của các NFT lưu trữ trên contract bất kể chủ sở hữu của chúng là ai. |
 | **nft_supply_for_owner** | Cho phép bạn xem tổng số NFT được sở hữu bởi một người dùng nhất định.                           |
 | **nft_tokens_for_owner** | Trả về một danh sách NFT được phân trang, thuộc về sở hữu của một người dùng nhất định.          |
@@ -117,7 +117,7 @@ You'll learn more about these functions in the [minting section](/docs/tutorials
 
 | Tên               | Mô tả                                                                                                      |
 | ----------------- | ---------------------------------------------------------------------------------------------------------- |
-| **TokenMetadata** | Structure này định nghĩa metadata có thể được chứa trong mỗi token. (title, description, media, v.v.       |
+| **TokenMetadata** | This structure defines the metadata that can be stored for each token (title, description, media, etc.).   |
 | **Token**         | Structure này liệt kê những thông tin sẽ được lưu trữ trong contract cho mỗi token.                        |
 | **JsonToken**     | Khi truy vấn thông tin về NFT thông qua các view call, thông tin trả về được lưu trữ trong JSON token này. |
 | **nft_metadata**  | Function này cho phép user query metadata bên trong contact.                                               |
@@ -154,7 +154,7 @@ Bạn có thể tìm hiểu thêm về các function này trong [minting section
 
 <Github language="rust" start="7" end="56" url="https://github.com/near-examples/nft-tutorial/blob/1.skeleton/nft-contract/src/nft_core.rs" />
 
-Bạn có thể tìm hiểu thêm về các function này trong [minting section](/docs/tutorials/contracts/nfts/minting) của serie hướng dẫn.
+You'll learn more about these functions in the [core section](/tutorials/nfts/core) of the tutorial series.
 
 ---
 
@@ -224,8 +224,8 @@ Bạn đã xem bố cục của NFT smart contract này và cách tất cả cá
 
 :::note Versioning for this article At the time of this writing, this example works with the following versions:
 
-- rustc: `1.6.0`
-- near-sdk-rs: `4.0.0`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
+- rustc: `1.75.0`
+- near-sdk-rs: `4.1.1`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 
 :::

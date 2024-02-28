@@ -1,0 +1,18 @@
+{
+  "id": "concepts/abstraction/mpc",
+  "title": "Multi-Party Computation (MPC)",
+  "description": "MPC, or multi-party computation, is about how multiple parties can do shared computations on private inputs without revealing the private data.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/1.concepts/abstraction/mpc.md",
+  "sourceDirName": "1.concepts/abstraction",
+  "slug": "/concepts/abstraction/mpc",
+  "permalink": "/ko/concepts/abstraction/mpc",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/abstraction/mpc.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "mpc",
+    "title": "Multi-Party Computation (MPC)"
+  }
+}

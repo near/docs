@@ -86,12 +86,12 @@ You might be thinking about the scenario when a sale is purchased. What happens 
 **Scenario B**
 
 - Dorian sở hữu một trăm NFT rất đẹp và anh ta muốn niêm yết toàn bộ.
-- Để tránh phải gọi `storage_deposit` mỗi khi muốn niêm yết một NFT, anh ấy sẽ gọi nó một lần. Vì Dorian là một người có tiền, anh đã đã đính kèm 10 NEAR đủ để thanh toán cho 1000 lần sale. Bây giờ anh ấy thừa 9 NEAR hay 900 lần sale.
+- Để tránh phải gọi `storage_deposit` mỗi khi muốn niêm yết một NFT, anh ấy sẽ gọi nó một lần. Vì Dorian là một người có tiền, anh đã đã đính kèm 10 NEAR đủ để thanh toán cho 1000 lần sale. Then he lists his 100 NFTs and now he has an excess of 9 NEAR or 900 sales.
 - Dorian cần 9 NEAR để để làm gì đó nhưng anh ấy không muốn gỡ 100 NFT đang niêm yết. Bởi vì anh ấy có thừa 9 NEAR, anh ấy có thể dễ dàng rút và vẫn có 100 NFT đang niêm yết. Sau khi call `storage_withdraw` và được chuyển 9 NEAR, anh ấy có 0 lần sale đang thừa.
 
 With this behavior in mind, the following two functions outline the logic.
 
-<Github language="rust" start="110" end="173" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/lib.rs" />
+<Github language="rust" start="110" end="170" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/lib.rs" />
 
 Trong contract này, storage yêu cầu 0.01 NEAR cho mỗi lần sale nhưng bạn có thể truy vấn thông tin đó sử dụng function `storage_minimum_balance`. Ngoài ra, bạn có thể truy vấn function `storage_balance_of` để kiểm tra một tài khoản nào đó đã thanh toán bao nhiêu storage.
 
@@ -145,25 +145,19 @@ Sau đó marketplace sẽ call `resolve_purchase`, nơi nó sẽ kiểm tra các
 
 File cuối chúng ta sẽ xem qua là `sale_view.rs`. Đây là nơi một vài method enumeration được phác thảo. Nó cho phép user truy vấn các thông tin quan trọng liên quan đến sale.
 
-### Creating a sub-account
+### Deployment
 
-Run the following command to create a sub-account marketplace of your main account with an initial balance of 25 NEAR which will be transferred from the original to your new account.
-
-```bash
-near create-account marketplace.$NFT_CONTRACT_ID --masterAccount $NFT_CONTRACT_ID --initialBalance 25
-```
-
-Next, you'll want to export an environment variable for ease of development:
+Next, you'll deploy this contract to the network.
 
 ```bash
-export MARKETPLACE_CONTRACT_ID=marketplace.$NFT_CONTRACT_ID
+export MARKETPLACE_CONTRACT_ID=<accountId>
+near create-account $MARKETPLACE_CONTRACT_ID --useFaucet
 ```
 
 Using the build script, deploy the contract as you did in the previous tutorials:
 
 ```bash
-near deploy --wasmFile out/market.wasm --accountId
- $MARKETPLACE_CONTRACT_ID
+near deploy $MARKETPLACE_CONTRACT_ID out/market.wasm
 ```
 
 ### Initialization and minting
@@ -236,7 +230,7 @@ Bây giờ bạn đã có hiểu biết vững chắc về NFT và marketplace t
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `3.0.0`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
+- near-cli: `4.0.4`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 
 :::

@@ -1,0 +1,15 @@
+{
+  "id": "primitives/dao/web-app/create-dao",
+  "title": "create-dao",
+  "description": "The full list of roles and permissions you can find here.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/7.primitives/dao/web-app/create-dao.md",
+  "sourceDirName": "7.primitives/dao/web-app",
+  "slug": "/primitives/dao/web-app/create-dao",
+  "permalink": "/vi/primitives/dao/web-app/create-dao",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/dao/web-app/create-dao.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

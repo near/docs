@@ -5,7 +5,7 @@
   "source": "@site/../docs/1.concepts/abstraction/mpc.md",
   "sourceDirName": "1.concepts/abstraction",
   "slug": "/concepts/abstraction/mpc",
-  "permalink": "/zh-CN/concepts/abstraction/mpc",
+  "permalink": "/concepts/abstraction/mpc",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/abstraction/mpc.md",
@@ -13,7 +13,7 @@
   "version": "current",
   "lastUpdatedBy": "Damián Parrino",
   "lastUpdatedAt": 1708712355,
-  "formattedLastUpdatedAt": "2024年2月23日",
+  "formattedLastUpdatedAt": "Feb 23, 2024",
   "frontMatter": {
     "id": "mpc",
     "title": "Multi-Party Computation (MPC)"

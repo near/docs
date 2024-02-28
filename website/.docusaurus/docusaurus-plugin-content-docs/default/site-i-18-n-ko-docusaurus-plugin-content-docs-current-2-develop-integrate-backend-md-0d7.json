@@ -1,6 +1,6 @@
 {
   "id": "develop/integrate/backend-login",
-  "title": "Login with NEAR",
+  "title": "Authenticate NEAR Users",
   "description": "Recently NEAR has approved a new standard that, among other things, enables users to authenticate into a backend service.",
   "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.develop/integrate/backend.md",
   "sourceDirName": "2.develop/integrate",
@@ -16,7 +16,7 @@
   "formattedLastUpdatedAt": "2024년 1월 11일",
   "frontMatter": {
     "id": "backend-login",
-    "title": "Login with NEAR"
+    "title": "Authenticate NEAR Users"
   },
   "sidebar": "build",
   "previous": {

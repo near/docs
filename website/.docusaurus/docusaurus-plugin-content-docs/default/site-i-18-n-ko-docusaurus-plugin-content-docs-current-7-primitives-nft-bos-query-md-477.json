@@ -1,0 +1,15 @@
+{
+  "id": "primitives/nft/bos/query",
+  "title": "query",
+  "description": "Example response",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/7.primitives/nft/bos/query.md",
+  "sourceDirName": "7.primitives/nft/bos",
+  "slug": "/primitives/nft/bos/query",
+  "permalink": "/ko/primitives/nft/bos/query",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/nft/bos/query.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

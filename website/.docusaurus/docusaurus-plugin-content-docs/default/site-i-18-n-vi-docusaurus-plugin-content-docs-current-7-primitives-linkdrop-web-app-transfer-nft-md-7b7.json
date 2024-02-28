@@ -1,0 +1,15 @@
+{
+  "id": "primitives/linkdrop/web-app/transfer-nft",
+  "title": "transfer-nft",
+  "description": "The Wallet object comes from our quickstart template",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/7.primitives/linkdrop/web-app/transfer-nft.md",
+  "sourceDirName": "7.primitives/linkdrop/web-app",
+  "slug": "/primitives/linkdrop/web-app/transfer-nft",
+  "permalink": "/vi/primitives/linkdrop/web-app/transfer-nft",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/linkdrop/web-app/transfer-nft.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

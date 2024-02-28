@@ -5,7 +5,7 @@
   "source": "@site/../docs/7.primitives/whatareprimitives.md",
   "sourceDirName": "7.primitives",
   "slug": "/primitives/whatareprimitives",
-  "permalink": "/zh-CN/primitives/whatareprimitives",
+  "permalink": "/primitives/whatareprimitives",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/whatareprimitives.md",
@@ -13,18 +13,18 @@
   "version": "current",
   "lastUpdatedBy": "gagdiez",
   "lastUpdatedAt": 1708028445,
-  "formattedLastUpdatedAt": "2024年2月15日",
+  "formattedLastUpdatedAt": "Feb 15, 2024",
   "frontMatter": {
     "id": "whatareprimitives",
     "title": "What are Primitives?"
   },
   "sidebar": "build",
   "previous": {
-    "title": "Login with NEAR",
-    "permalink": "/zh-CN/develop/integrate/backend-login"
+    "title": "Authenticate NEAR Users",
+    "permalink": "/develop/integrate/backend-login"
   },
   "next": {
     "title": "Fungible Tokens (FT)",
-    "permalink": "/zh-CN/primitives/ft"
+    "permalink": "/primitives/ft"
   }
 }

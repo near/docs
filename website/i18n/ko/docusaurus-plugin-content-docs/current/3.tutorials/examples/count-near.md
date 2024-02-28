@@ -13,85 +13,100 @@ import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 ---
 
-## 숫자 세기 시작
-숫자 세기를 시작하는 두 가지 옵션이 있습니다.
-1. **권장:** Gitpod(웹 기반 대화형 환경)를 통해 앱 사용
-2. 프로젝트를 로컬로 복제
+## Obtaining the Counter Example
 
+You have two options to start the Counter Example.
 
-<Tabs className="language-tabs" groupId="code-tabs">
+1. You can use the app through `GitHub Codespaces`, which will open a web-based interactive environment.
+2. Clone the repository locally and use it from your computer.
+
+| Codespaces                                                                                                             | Clone locally                                 |
+| ---------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
+| [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/near-examples/counters) | 🌐 `https://github.com/near-examples/counters` |
+
+---
+
+## Structure of the Example
+
+The example is divided in two main components:
+
+1. The smart contract, available in two flavors: Rust and JavaScript
+2. The frontend, that interacts with an already deployed contract.
+
+<Tabs>
+
   <TabItem value="🌐 JavaScript">
 
-| Gitpod                                                                                                                                                            | 로컬로 복제                                         |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| <a href="https://gitpod.io/#https://github.com/near-examples/js-counter.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🌐 `https://github.com/near-examples/js-counter.git` |
+```bash
+┌── sandbox-ts # sandbox testing
+│    ├── src
+│    │    └── main.ava.ts
+│    ├── ava.config.cjs
+│    └── package.json
+├── src # contract's code
+│    └── contract.ts
+├── package.json # package manager
+├── README.md
+└── tsconfig.json # test script
+```
 
   </TabItem>
 
   <TabItem value="🦀 Rust">
 
-| Gitpod                                                                                                                                                            | 로컬로 복제                                         |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| <a href="https://gitpod.io/#https://github.com/near-examples/rust-counter.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🦀 `https://github.com/near-examples/rust-counter.git` |
+```bash
+┌── sandbox-ts # sandbox testing
+│    ├── src
+│    │    └── main.ava.ts
+│    ├── ava.config.cjs
+│    └── package.json
+├── src # contract's code
+│    └── lib.rs
+├── build.sh # build script
+├── Cargo.toml # package manager
+├── README.md
+└── rust-toolchain.toml
+```
 
   </TabItem>
 
 </Tabs>
 
-Gitpod를 선택하면 새 브라우저 창이 코드와 함께 자동으로 열립니다. 잠시 기다리면 프론트엔드가 팝업됩니다(팝업 창이 차단되지 않았는지 확인).
+---
 
-앱을 로컬에서 실행하는 경우, 앱을 복제한 디렉터리를 입력하고 `yarn`을 통해 의존성(dependency)을 설치하며, `yarn start`를 사용해 시작하면 됩니다.
+## Frontend
+
+The counter example includes a frontend interface designed to interact seamlessly with an existing smart contract that has been deployed. This interface allows users to increase or decrease the counter as needed.
+
+<hr class="subsection" />
+
+### Running the Frontend
+
+To start the frontend you will need to install the dependencies and start the server.
 
 ```bash
-cd counter
+cd frontend
 yarn
-yarn deploy
 yarn start
 ```
-그러면 컨트랙트가 **컴파일**되어 `testnet` 네트워크의 **계정**에 **배포**됩니다. 완료되면 브라우저 창이 열립니다.
 
----
-
-## 숫자 세기 앱과 상호 작용
 계속해서 NEAR 계정으로 로그인하세요. 계정이 없는 경우 즉시 만들 수 있습니다. 로그인한 후 `+` 및 `-` 버튼을 사용하여 숫자를 높이거나 낮춥니다. 그런 다음 Gameboy 버튼을 사용하여 재설정하고 카운터가 눈을 깜박이게 만드세요!
 
-![img](/docs/assets/examples/count-on-near.png) *Counter 앱의 프론트엔드*
+![img](/docs/assets/examples/count-on-near.png) _Frontend of the Counter_
 
----
+<hr class="subsection" />
 
-## dApp의 구조
+### Understanding the Frontend
 
-이제 dApp이 무엇을 하는지 이해했으므로 그 구조를 자세히 살펴보겠습니다.
+The frontend is composed by a single HTML file (`/index.html`). This file defines the components displayed in the screen.
 
-1. 프론트엔드 코드는 `/frontend` 폴더에 있습니다.
-2. 스마트 컨트랙트 코드는 `/contract` 폴더에 있습니다.
-
-### 컨트랙트
-컨트랙트에는 `get_num`, `increment`, `decrement`, 그리고 `reset`이라는 네 가지 메서드가 있습니다. `get_num` 메서드는 현재 값을 반환하고, 나머지 메서드들은 값을 수정합니다.
-
-<CodeTabs>
-  <Language value="🌐 JavaScript" language="ts">
-    <Github fname="contract.ts" 
-            url="https://github.com/near-examples/js-counter/blob/master/contract/src/contract.ts"
-            start="3" end="29" />
-  </Language>
-  <Language value="🦀 Rust" language="rust">
-    <Github fname="lib.rs"
-            url="https://github.com/near-examples/rust-counter/blob/master/contract/src/lib.rs"
-            start="5" end="36" />
-  </Language>
-</CodeTabs>
-
-### 프론트엔드
-프론트엔드는 하나의 HTML 파일(`/index.html`)로 구성됩니다. 이 파일은 화면에 표시되는 구성 요소를 정의합니다.
-
-웹사이트의 로직은 `/assets/js/index.js`에 존재하며 `/assets/js/near/utils.js`를 통해 컨트랙트와 통신합니다. 다음 코드에서 `/assets/js/index.js`를 확인할 수 있습니다.
+The website's logic lives in `/index.js`, which communicates with the contract through `/near-wallet.js`. You will notice in `/index.js` the following code:
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="index.js"
-            url="https://github.com/near-examples/js-counter/blob/master/frontend/index.js"
-            start="10" end="21" />            
+            url="https://github.com/near-examples/counters/blob/main/frontend/index.js"
+            start="10" end="21" />
   </Language>
 </CodeTabs>
 
@@ -99,36 +114,116 @@ yarn start
 
 ---
 
-## 테스트
+## Smart Contract
 
-스마트 컨트랙트를 작성할 때 모든 메서드를 철저하게 테스트하는 것이 매우 중요합니다. 이 프로젝트에는 단위(unit) 및 통합(integration)이라는 두 가지 유형의 테스트가 있습니다. 이에 대해 자세히 알아보기 전에, `yarn test` 명령을 통해 dApp에 있는 테스트를 수행하세요.
-
-### 단위 테스트
-
-단위 테스트는 스마트 컨트랙트 내 개별 함수를 확인합니다. 현재 Rust에서만 단위 테스트가 구현되어 있습니다.
-
-<CodeTabs>
-  <Language value="🦀 Rust" language="rust">
-    <Github fname="lib.rs"
-            url="https://github.com/near-examples/rust-counter/blob/master/contract/src/lib.rs"
-            start="48" end="69" />
-  </Language>
-</CodeTabs>
-
-### 통합 테스트
-
-통합 테스트는 일반적으로 Javascript로 작성됩니다. 그들은 자동으로 컨트랙트를 배포하고, 메서드를 실행합니다. 이러한 방식으로 통합 테스트는 현실적인 시나리오에서 사용자의 상호 작용을 시뮬레이션합니다. `integration-tests/`에서 `counter`에 대한 통합 테스트를 찾을 수 있습니다.
+컨트랙트에는 `get_num`, `increment`, `decrement`, 그리고 `reset`이라는 네 가지 메서드가 있습니다. `get_num` 메서드는 현재 값을 반환하고, 나머지 메서드들은 값을 수정합니다.
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
-    <Github fname="main.test.js"
-            url="https://github.com/near-examples/js-counter/blob/master/integration-tests/src/main.ava.ts"
-            start="37" end="61" />
+    <Github fname="contract.ts"
+            url="https://github.com/near-examples/counters/blob/main/contract-ts/src/contract.ts"
+            start="3" end="29" />
+  </Language>
+  <Language value="🦀 Rust" language="rust">
+    <Github fname="lib.rs"
+            url="https://github.com/near-examples/counters/blob/main/contract-rs/src/lib.rs"
+            start="5" end="35" />
   </Language>
 </CodeTabs>
 
 ---
 
-## 더 알아보기
+### Testing the Contract
 
-배울 수 있는 좋은 방법은 컨트랙트를 확장하는 것입니다. `increment` 및 `decrement`에 인자를 추가하여, 사용자가 변화시킬 값의 정도를 선택할 수 있도록 수정해 보세요. 이를 위해서는 [내부 구조](../../2.develop/contracts/anatomy.md) 및 [스토리지](../../2.develop/contracts/storage.md) 섹션의 지식을 사용해야 합니다.
+The contract readily includes a set of unit and sandbox testing to validate its functionality. To execute the tests, run the following commands:
+
+<Tabs>
+  <TabItem value="🌐 JavaScript">
+
+```bash
+cd contract-ts
+yarn
+yarn test
+```
+
+  </TabItem>
+  <TabItem value="🦀 Rust">
+  
+  ```bash
+  cd contract-rs
+  ./test.sh
+  ```
+
+  </TabItem>
+
+</Tabs>
+
+:::tip The `integration tests` use a sandbox to create NEAR users and simulate interactions with the contract. :::
+
+<hr class="subsection" />
+
+### Deploying the Contract to the NEAR network
+
+In order to deploy the contract you will need to [create a NEAR account](/develop/contracts/quickstart#create-a-testnet-account).
+
+<Tabs>
+  <TabItem value="🌐 JavaScript">
+
+```bash
+# Optional - create an account
+near create-account <accountId> --useFaucet
+
+# Deploy the contract
+cd contract-ts
+yarn build
+near deploy <accountId> ./build/counter.wasm
+```
+
+  </TabItem>
+  <TabItem value="🦀 Rust">
+
+```bash
+# Optional - create an account
+near create-account <accountId> --useFaucet
+
+# Deploy the contract
+cd contract-rs
+./build.sh
+near deploy <accountId> ./target/wasm32-unknown-unknown/release/counter.wasm
+```
+
+  </TabItem>
+</Tabs>
+
+:::tip To interact with your contract from the [frontend](#frontend), simply replace the variable `CONTRACT_NAME` in the `index.js` file. :::
+
+<hr class="subsection" />
+
+### CLI: Interacting with the Contract
+
+To interact with the contract through the console, you can use the following commands
+
+```bash
+# Get the current number of the counter
+near view counter.near-examples.testnet get_num
+
+# Increment the counter 
+# Replace <accountId> with your account ID
+near call counter.near-examples.testnet increment --accountId <accountId>
+
+# Decrement the counter
+# Replace <accountId> with your account ID
+near call counter.near-examples.testnet decrement --accountId <accountId>
+
+# Reset the counter to zero 
+# Replace <accountId> with your account ID
+near call counter.near-examples.testnet reset --accountId <accountId>
+```
+
+:::tip If you're using your own account, replace `counter.near-examples.testnet` with your `accountId`. :::
+
+---
+
+## Moving Forward
+
+A nice way to learn is by trying to expand the contract. `increment` 및 `decrement`에 인자를 추가하여, 사용자가 변화시킬 값의 정도를 선택할 수 있도록 수정해 보세요. For this, you will need to use knowledge from the [anatomy](../../2.develop/contracts/anatomy.md) and [storage](../../2.develop/contracts/storage.md) sections.

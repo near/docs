@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.develop/relayers/multichain-server.md",
   "sourceDirName": "2.develop/relayers",
   "slug": "/develop/relayers/multichain-server",
-  "permalink": "/zh-CN/develop/relayers/multichain-server",
+  "permalink": "/develop/relayers/multichain-server",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/relayers/multichain-server.md",
@@ -13,7 +13,7 @@
   "version": "current",
   "lastUpdatedBy": "Damián Parrino",
   "lastUpdatedAt": 1708431298,
-  "formattedLastUpdatedAt": "2024年2月20日",
+  "formattedLastUpdatedAt": "Feb 20, 2024",
   "frontMatter": {
     "id": "multichain-server",
     "title": "Multichain Relayer Server",
@@ -22,10 +22,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Cross-Chain Signatures",
-    "permalink": "/zh-CN/abstraction/chain-signatures"
+    "permalink": "/abstraction/chain-signatures"
   },
   "next": {
     "title": "Multichain Gas Station",
-    "permalink": "/zh-CN/develop/relayers/gas-station"
+    "permalink": "/develop/relayers/gas-station"
   }
 }

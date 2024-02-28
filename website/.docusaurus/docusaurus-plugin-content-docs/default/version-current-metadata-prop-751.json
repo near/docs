@@ -419,7 +419,7 @@
           },
           {
             "type": "link",
-            "label": "FastAuth SDK",
+            "label": "FastAuth (Email Login)",
             "href": "/zh-CN/tools/fastauth-sdk",
             "docId": "tools/fastauth-sdk",
             "unlisted": false
@@ -467,7 +467,7 @@
       },
       {
         "type": "link",
-        "label": "What is a Smart Contract?",
+        "label": "What is a Contract?",
         "href": "/zh-CN/develop/contracts/whatisacontract",
         "docId": "develop/contracts/whatisacontract",
         "unlisted": false
@@ -478,7 +478,7 @@
         "items": [
           {
             "type": "link",
-            "label": "⭐ Quickstart",
+            "label": "Quickstart ✨",
             "href": "/zh-CN/develop/contracts/quickstart",
             "docId": "develop/contracts/quickstart",
             "unlisted": false
@@ -571,7 +571,7 @@
               },
               {
                 "type": "link",
-                "label": "Integration Test",
+                "label": "Integration Tests",
                 "href": "/zh-CN/develop/testing/integration-test",
                 "docId": "develop/testing/integration-test",
                 "unlisted": false
@@ -718,7 +718,7 @@
       },
       {
         "type": "link",
-        "label": "⭐ Overview",
+        "label": "What is a Component?",
         "href": "/zh-CN/bos/tutorial/quickstart",
         "docId": "bos/tutorial/quickstart",
         "unlisted": false
@@ -729,7 +729,7 @@
         "items": [
           {
             "type": "link",
-            "label": "Dev Environments",
+            "label": "Choose your Dev Environment",
             "href": "/zh-CN/bos/dev/intro",
             "docId": "bos/dev/intro",
             "unlisted": false
@@ -856,7 +856,7 @@
             "items": [
               {
                 "type": "link",
-                "label": "Login with NEAR",
+                "label": "Authenticate NEAR Users",
                 "href": "/zh-CN/develop/integrate/backend-login",
                 "docId": "develop/integrate/backend-login",
                 "unlisted": false
@@ -1223,7 +1223,7 @@
     "tutorials": [
       {
         "type": "link",
-        "label": "Examples & Tutorials",
+        "label": "Home",
         "href": "/zh-CN/tutorials/welcome",
         "docId": "tutorials/welcome",
         "unlisted": false
@@ -1310,7 +1310,7 @@
       },
       {
         "type": "link",
-        "label": "Frontend Multiple Contracts",
+        "label": "Frontend & Multiple Contracts",
         "href": "/zh-CN/tutorials/examples/frontend-multiple-contracts",
         "docId": "tutorials/examples/frontend-multiple-contracts",
         "unlisted": false
@@ -2973,8 +2973,8 @@
     },
     "bos/dev/intro": {
       "id": "bos/dev/intro",
-      "title": "Dev Environments",
-      "description": "Building, deploying, and collaborating within a new framework can be challenging. The NEAR community has created helpful workflows using new tools to simplify your development workflow.",
+      "title": "Choose your Dev Environment",
+      "description": "The environments in which you can develop Components are divided into two categories:",
       "sidebar": "build"
     },
     "bos/dev/vscode": {
@@ -3116,7 +3116,7 @@
     },
     "bos/tutorial/quickstart": {
       "id": "bos/tutorial/quickstart",
-      "title": "Hello Components",
+      "title": "What are NEAR Components?",
       "description": "NEAR Components are a new way to build web applications. They are composable, reusable and decentralized.",
       "sidebar": "build"
     },
@@ -3388,7 +3388,7 @@
     "data-availability/integrations": {
       "id": "data-availability/integrations",
       "title": "Integrations",
-      "description": "We have some proof of concept works for integrating with rollups. We are working to prove the system's capabilities and provide a reference implementation for others to follow.",
+      "description": "We have some proof of concept works for integrating with roll-ups. We are working to prove the system's capabilities and provide a reference implementation for others to follow.",
       "sidebar": "data-availability"
     },
     "data-availability/light-client": {
@@ -3531,12 +3531,12 @@
     "develop/contracts/welcome": {
       "id": "develop/contracts/welcome",
       "title": "NEAR Smart Contracts",
-      "description": "Welcome! Here you will find documentation on how to develop a smart contract on NEAR."
+      "description": "Welcome! Smart contracts are pieces of executable code that live in a NEAR account. They can store data, perform transactions in the account’s name, and expose methods so other accounts can interact with them."
     },
     "develop/contracts/whatisacontract": {
       "id": "develop/contracts/whatisacontract",
       "title": "What is a Smart Contract?",
-      "description": "Smart contracts are simple programs that live in a NEAR network. As any modern application, smart contracts store data and expose methods to interact with them.",
+      "description": "Smart contracts are pieces of executable code that live in a NEAR account. They can store data, perform transactions in the account’s name, and expose methods so other accounts can interact with them.",
       "sidebar": "build"
     },
     "develop/deploy": {
@@ -3552,7 +3552,7 @@
     },
     "develop/integrate/backend-login": {
       "id": "develop/integrate/backend-login",
-      "title": "Login with NEAR",
+      "title": "Authenticate NEAR Users",
       "description": "Recently NEAR has approved a new standard that, among other things, enables users to authenticate into a backend service.",
       "sidebar": "build"
     },
@@ -3700,7 +3700,7 @@
     },
     "develop/testing/integration-test": {
       "id": "develop/testing/integration-test",
-      "title": "Integration Test",
+      "title": "Integration Tests",
       "description": "Integration tests enable to deploy your contract in the NEAR testnet or a local sandbox, and create test-users to interact with it. In this way, you can thoroughly test your contract in a realistic environment.",
       "sidebar": "build"
     },
@@ -3736,8 +3736,8 @@
     },
     "develop/welcome": {
       "id": "develop/welcome",
-      "title": "Developer Documentation",
-      "description": "Welcome! Here you will find documentation on how to develop decentralized apps using NEAR.",
+      "title": "Build on NEAR",
+      "description": "Welcome! Here you will find all the information on what you can build on NEAR and how to build it. Do not worry if you are new to Web3 or Blockchain, we are here to guide you through the process of learning.",
       "sidebar": "build"
     },
     "develop/whataredatasolutions": {
@@ -4427,7 +4427,7 @@
     "sdk/js/testing/integration-tests": {
       "id": "sdk/js/testing/integration-tests",
       "title": "Integration Tests",
-      "description": "NEAR Simulator was meant to be an in-place replacement of a blockchain environment for the purpose of testing NEAR contracts. However, simulating NEAR ledger turned out to be a much more complex endeavor than was anticipated. Eventually, the idea of workspaces was born - a library for automating workflows and writing tests for NEAR smart contracts using a real NEAR network (localnet, testnet or mainnet). Thus, NEAR Simulator is being deprecated in favor of workspaces-rs, the Rust edition of workspaces. As the two libraries have two vastly different APIs this guide was created to ease the migration process for developers.",
+      "description": "We place integration tests in JS in a separate directory at the same level as /src, called /integration-tests (read more), placing this folder within a /tests folder at root-level that contains the unit tests folder would also be plausible. Refer to this folder structure below:",
       "sidebar": "tools"
     },
     "sdk/js/testing/unit-tests": {
@@ -4565,7 +4565,7 @@
     "sdk/rust/testing/integration-tests": {
       "id": "sdk/rust/testing/integration-tests",
       "title": "Integration Tests",
-      "description": "Note: Simulation tests are no longer actively supported. NEAR Simulator was meant to be an in-place replacement of a blockchain environment for the purpose of testing NEAR contracts. However, simulating NEAR ledger turned out to be a much more complex endeavor than was anticipated. Eventually, the idea of workspaces was born - a library for automating workflows and writing tests for NEAR smart contracts using a real NEAR network (localnet, testnet or mainnet). Thus, NEAR Simulator is being deprecated in favor of workspaces-rs, the Rust edition of workspaces. As the two libraries have two vastly different APIs this guide was created to ease the migration process for developers.",
+      "description": "Unit Tests vs. Integration Tests",
       "sidebar": "tools"
     },
     "sdk/rust/testing/unit-tests": {
@@ -4609,7 +4609,7 @@
     "tools/fastauth-sdk": {
       "id": "tools/fastauth-sdk",
       "title": "FastAuth SDK",
-      "description": "Introduction",
+      "description": "FastAuth is a key management system that allows users to recover or sign-up for a NEAR account using their email address. Furthermore, it allows to subsidize gas for a certain smart contract, so users can interact with it without having to fund their account.",
       "sidebar": "build"
     },
     "tools/indexer-for-explorer": {
@@ -4843,7 +4843,7 @@
     "tutorials/examples/donation": {
       "id": "tutorials/examples/donation",
       "title": "Donation",
-      "description": "Our donation example enables to forward money to an account while keeping track of it. It is one of the simplest examples on making a contract receive and send money, and the perfect gateway to enter the world of decentralized finance.",
+      "description": "Our donation example enables to forward money to an account while keeping track of it. It is one of the simplest examples on making a contract handle tranfers.",
       "sidebar": "tutorials"
     },
     "tutorials/examples/escrow": {
@@ -4859,7 +4859,7 @@
     },
     "tutorials/examples/frontend-multiple-contracts": {
       "id": "tutorials/examples/frontend-multiple-contracts",
-      "title": "Frontend Multiple Contracts",
+      "title": "Frontend Interacting with Multiple Contracts",
       "description": "This example showcases how to interact with multiple contracts from a single frontend.",
       "sidebar": "tutorials"
     },

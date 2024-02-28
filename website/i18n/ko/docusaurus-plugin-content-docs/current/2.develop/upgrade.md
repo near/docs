@@ -23,21 +23,21 @@ NEAR 계정은 로직(컨트랙트의 코드)을 상태(스토리지)와 분리�
   <TabItem value="near-cli">
 
   ```bash
-  # If you already used dev-deploy the same account will be used
-  near dev-deploy --wasmFile <new-contract>
+  # (optional) If you don't have an account, create one
+  near create-account <account-id> --useFaucet
 
-  # If you logged in
-  near deploy <account-id> --wasmFile <new-contract>
+  # Deploy the contract
+  near deploy <account-id> <wasm-file>
   ```
 
   </TabItem>
   <TabItem value="near-cli-rs">
 
   ```bash
-  # If you already used dev-deploy the same account will be used
-  near contract deploy <my-new-dev-account>.testnet use-file <route_to_wasm> without-init-call network-config testnet sign-with-keychain
-
-  # If you logged in
+  # (optional) If you don't have an account, create one
+  near account create-account sponsor-by-faucet-service somrnd.testnet autogenerate-new-keypair save-to-keychain network-config testnet create
+  
+  # Deploy the contract
   near contract deploy <accountId> use-file <route_to_wasm> without-init-call network-config testnet sign-with-keychain send
   ```
   </TabItem>
@@ -110,7 +110,7 @@ However, deploying a contract that **modifies or removes structures**  stored in
 2. 이전 컨트랙트 코드로 롤백
 3. 컨트랙트 상태를 마이그레이션하는 메서드 추가
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### 마이그레이션 메서드
 상태를 마이그레이션하는 것 외에 다른 옵션이 없는 경우 다음과 같은 메서드를 구현해야 합니다.
@@ -121,7 +121,7 @@ However, deploying a contract that **modifies or removes structures**  stored in
 이것이 DAO가 [스스로를 업데이트](https://github.com/near-daos/sputnik-dao-contract/blob/main/sputnikdao2/src/upgrade.rs#L59)하는 방법입니다.
 :::
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### 예제: 방명록 마이그레이션
 

@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.develop/web3-apps/quickstart.md",
   "sourceDirName": "2.develop/web3-apps",
   "slug": "/develop/web3-apps/whatareweb3apps",
-  "permalink": "/zh-CN/develop/web3-apps/whatareweb3apps",
+  "permalink": "/develop/web3-apps/whatareweb3apps",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/web3-apps/quickstart.md",
@@ -13,7 +13,7 @@
   "version": "current",
   "lastUpdatedBy": "Damián Parrino",
   "lastUpdatedAt": 1708712355,
-  "formattedLastUpdatedAt": "2024年2月23日",
+  "formattedLastUpdatedAt": "Feb 23, 2024",
   "frontMatter": {
     "id": "whatareweb3apps",
     "title": "What are Web3 Apps?"
@@ -21,10 +21,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Using components on WebApps",
-    "permalink": "/zh-CN/bos/tutorial/bos-gateway"
+    "permalink": "/bos/tutorial/bos-gateway"
   },
   "next": {
     "title": "⭐ Quickstart a WebApp",
-    "permalink": "/zh-CN/develop/integrate/quickstart-frontend"
+    "permalink": "/develop/integrate/quickstart-frontend"
   }
 }

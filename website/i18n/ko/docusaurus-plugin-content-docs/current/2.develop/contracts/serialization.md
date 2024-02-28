@@ -8,7 +8,7 @@ title: 직렬화에 대한 참고 사항
 즉, 간단한 통신과 효율적인 저장이라는 목적을 달성하기 위해 스마트 컨트랙트는 데이터를 더 간단한 방식으로 변형합니다.
 
 **복잡한 객체를 더 단순한 단일 값**으로 변환하는 이 프로세스를 **직렬화**라고 합니다. NEAR는 [JSON](https://www.json.org/json-en.html)과 [Borsh](https://borsh.io/)의 두 가지 직렬화 형식을 사용합니다.
-1. [JSON](https://www.json.org/json-en.html)은 메서드 호출 중 컨트랙트의 입력/출력을 직렬화하는 데 사용됩니다.
+1. [JSON](https://www.json.org/json-en.html) is used to serialize the contract's input/output during a function call
 2. [Borsh](https://borsh.io/)는 컨트랙트의 상태를 직렬화하는 데 사용됩니다.
 
 ---
@@ -17,7 +17,7 @@ title: 직렬화에 대한 참고 사항
 
 두 직렬화 형식에 대한 간략한 개요와 장단점, 그리고 직렬화가 어떻게 보이는지에 대한 예시는 다음과 같습니다.
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### [JSON](https://www.json.org/json-en.html): 객체를 문자열로
 
@@ -38,7 +38,7 @@ Example{
 "{\"number\": 2, \"arr\": [0, 1]}"
 ```
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### [Borsh](https://borsh.io/): 객체를 바이트로
 
@@ -213,7 +213,7 @@ near call $CONTRACT change_state '{"string":"bye", "number":1}' --accountId $CON
 
 동시에 새로운 벡터 항목(`1u8`)을 추가하는 새로운 키-값이 추가되었습니다.
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 <!-- We should see where to move/replicate this -->
 

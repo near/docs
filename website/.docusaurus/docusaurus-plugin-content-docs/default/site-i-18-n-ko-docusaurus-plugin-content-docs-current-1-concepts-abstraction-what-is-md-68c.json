@@ -1,0 +1,28 @@
+{
+  "id": "concepts/abstraction/introduction",
+  "title": "Chain Abstraction",
+  "description": "Do you know how your favorite apps are built and which database they use?. Chances are not, since we choose apps based on their functionality, and not their underlying tech.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/1.concepts/abstraction/what-is.md",
+  "sourceDirName": "1.concepts/abstraction",
+  "slug": "/concepts/abstraction/introduction",
+  "permalink": "/ko/concepts/abstraction/introduction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/abstraction/what-is.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "introduction",
+    "title": "Chain Abstraction",
+    "sidebar_label": "Introduction"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "에포크",
+    "permalink": "/ko/concepts/basics/epoch"
+  },
+  "next": {
+    "title": "Relayers",
+    "permalink": "/ko/concepts/abstraction/relayers"
+  }
+}

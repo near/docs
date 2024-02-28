@@ -1,7 +1,7 @@
 {
   "id": "develop/contracts/whatisacontract",
   "title": "What is a Smart Contract?",
-  "description": "Smart contracts are simple programs that live in a NEAR network. As any modern application, smart contracts store data and expose methods to interact with them.",
+  "description": "Smart contracts are pieces of executable code that live in a NEAR account. They can store data, perform transactions in the account’s name, and expose methods so other accounts can interact with them.",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.develop/contracts/whatiscontract.md",
   "sourceDirName": "2.develop/contracts",
   "slug": "/develop/contracts/whatisacontract",
@@ -17,7 +17,7 @@
   "frontMatter": {
     "id": "whatisacontract",
     "title": "What is a Smart Contract?",
-    "sidebar_label": "What is a Smart Contract?"
+    "sidebar_label": "What is a Contract?"
   },
   "sidebar": "build",
   "previous": {
@@ -25,7 +25,7 @@
     "permalink": "/zh-CN/develop/relayers/gas-station"
   },
   "next": {
-    "title": "⭐ Quickstart",
+    "title": "Quickstart ✨",
     "permalink": "/zh-CN/develop/contracts/quickstart"
   }
 }

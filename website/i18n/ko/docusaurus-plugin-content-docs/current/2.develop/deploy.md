@@ -20,7 +20,7 @@ import TabItem from '@theme/TabItem';
 `NEAR CLI` 덕분에 컨트랙트 배포는 다음과 같이 간단하게 수행될 수 있습니다.
 
 1. 컨트랙트를 wasm으로 컴파일합니다(템플릿 내 `yarn build`를 통해 자동으로 수행됨).
-2. [NEAR CLI](../4.tools/cli.md#near-deploy)를 사용해 원하는 계정에 컨트랙트를 배포합니다.
+2. [Create an account](../4.tools/cli.md#near-create-account) and [deploy the contract](../4.tools/cli.md#near-deploy) into it using `NEAR CLI`.
 
 #### 계정 생성 및 배포
 
@@ -29,8 +29,9 @@ import TabItem from '@theme/TabItem';
   <TabItem value="near-cli">
 
   ```bash
-  # Automatically deploy the wasm in a new account
-  near dev-deploy <route_to_wasm>
+  # Create a new account pre-funded by a faucet & deploy
+  near create-account <accountId> --useFaucet
+  near deploy <accountId> <route_to_wasm>
 
   # Get the account name
   cat ./neardev/dev-account
@@ -115,7 +116,7 @@ import TabItem from '@theme/TabItem';
 ## 컨트랙트 호출
 컨트랙트가 배포되고 나면, [NEAR CLI](../4.tools/cli.md)를 통해 바로 컨트랙트와 상호 작용할 수 있습니다.
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### View 메서드
 View 메서드는 **읽기 전용** 작업을 수행하는 메서드입니다. 이러한 메서드를 호출하는 것은 무료이며, 호출에 사용되는 계정을 지정할 필요가 없습니다.
@@ -138,7 +139,7 @@ View 메서드는 **읽기 전용** 작업을 수행하는 메서드입니다. �
 
 :::tip View 메서드는 실행에 기본적으로 200 TGAS를 소모합니다. :::
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### 메서드 변경
 변경 방법은 읽기 및 쓰기 작업을 모두 수행하는 방법입니다. 이러한 방법의 경우, 호출에 사용되는 계정을 지정해야 합니다. 해당 계정은 호출을 위해 가스를 소비하기 때문입니다.

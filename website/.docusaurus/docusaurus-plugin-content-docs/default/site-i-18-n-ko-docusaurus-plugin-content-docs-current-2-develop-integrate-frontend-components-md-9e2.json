@@ -24,7 +24,7 @@
     "permalink": "/ko/develop/integrate/frontend"
   },
   "next": {
-    "title": "Login with NEAR",
+    "title": "Authenticate NEAR Users",
     "permalink": "/ko/develop/integrate/backend-login"
   }
 }

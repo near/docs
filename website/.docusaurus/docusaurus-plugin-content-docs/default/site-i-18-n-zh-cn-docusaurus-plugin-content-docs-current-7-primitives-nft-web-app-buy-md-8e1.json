@@ -1,0 +1,15 @@
+{
+  "id": "primitives/nft/web-app/buy",
+  "title": "buy",
+  "description": "The Wallet object comes from our quickstart template",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/7.primitives/nft/web-app/buy.md",
+  "sourceDirName": "7.primitives/nft/web-app",
+  "slug": "/primitives/nft/web-app/buy",
+  "permalink": "/zh-CN/primitives/nft/web-app/buy",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/nft/web-app/buy.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

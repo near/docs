@@ -1,0 +1,15 @@
+{
+  "id": "primitives/dex/bos/get-price",
+  "title": "get-price",
+  "description": "Example response",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/7.primitives/dex/bos/get-price.md",
+  "sourceDirName": "7.primitives/dex/bos",
+  "slug": "/primitives/dex/bos/get-price",
+  "permalink": "/vi/primitives/dex/bos/get-price",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/dex/bos/get-price.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

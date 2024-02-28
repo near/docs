@@ -5,7 +5,7 @@
   "source": "@site/../docs/7.primitives/oracles.md",
   "sourceDirName": "7.primitives",
   "slug": "/primitives/oracles",
-  "permalink": "/zh-CN/primitives/oracles",
+  "permalink": "/primitives/oracles",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/oracles.md",
@@ -13,7 +13,7 @@
   "version": "current",
   "lastUpdatedBy": "Damian Parrino",
   "lastUpdatedAt": 1709136567,
-  "formattedLastUpdatedAt": "2024年2月28日",
+  "formattedLastUpdatedAt": "Feb 28, 2024",
   "frontMatter": {
     "id": "oracles",
     "title": "Price Oracles"
@@ -21,10 +21,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Linkdrops",
-    "permalink": "/zh-CN/primitives/linkdrop"
+    "permalink": "/primitives/linkdrop"
   },
   "next": {
     "title": "Autonomous Organizations (DAO)",
-    "permalink": "/zh-CN/primitives/dao"
+    "permalink": "/primitives/dao"
   }
 }

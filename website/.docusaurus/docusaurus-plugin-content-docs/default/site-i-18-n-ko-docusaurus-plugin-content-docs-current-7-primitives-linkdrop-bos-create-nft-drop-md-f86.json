@@ -1,0 +1,15 @@
+{
+  "id": "primitives/linkdrop/bos/create-nft-drop",
+  "title": "create-nft-drop",
+  "description": "",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/7.primitives/linkdrop/bos/create-nft-drop.md",
+  "sourceDirName": "7.primitives/linkdrop/bos",
+  "slug": "/primitives/linkdrop/bos/create-nft-drop",
+  "permalink": "/ko/primitives/linkdrop/bos/create-nft-drop",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/linkdrop/bos/create-nft-drop.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

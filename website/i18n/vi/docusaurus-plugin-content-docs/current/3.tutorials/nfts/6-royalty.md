@@ -121,26 +121,21 @@ Sau khi hoàn tất, chuyển tới file `nft-contract/src/nft_core.rs`. Bạn c
 
 ## Deploy contract {#redeploying-contract}
 
-Giống như bạn đã thấy ở bài hướng dẫn trước, việc thêm các thay đổi như thế này sẽ gây ra các vấn đề khi redeploy. Vì những thay đổi này ảnh hưởng đến tất cả các token khác và state sẽ không thể tự động được kế thừa từ code mới, chỉ redeploy contract sẽ dẫn đến lỗi. Vì lý do này, bạn sẽ tạo một sub-account mới một lần nữa.
+Giống như bạn đã thấy ở bài hướng dẫn trước, việc thêm các thay đổi như thế này sẽ gây ra các vấn đề khi redeploy. Vì những thay đổi này ảnh hưởng đến tất cả các token khác và state sẽ không thể tự động được kế thừa từ code mới, chỉ redeploy contract sẽ dẫn đến lỗi. For this reason, you'll create a new account again.
 
-### Tạo một sub-account
+### Deployment
 
-Chạy command dưới đây để tạo một sub-account `royalty` cho account chính của bạn với số dư ban đầu là 25 NEAR, nó sẽ được transfer từ account gốc sang account mới của bạn.
-
-```bash
-near create-account royalty.$NFT_CONTRACT_ID --masterAccount $NFT_CONTRACT_ID --initialBalance 25
-```
-
-Tiếp theo, bạn sẽ muốn export một biến môi trường cho việc develop được dễ dàng hơn:
+Next, you'll deploy this contract to the network.
 
 ```bash
-export ROYALTY_NFT_CONTRACT_ID=royalty.$NFT_CONTRACT_ID
+export ROYALTY_NFT_CONTRACT_ID=<accountId>
+near create-account $ROYALTY_NFT_CONTRACT_ID --useFaucet
 ```
 
 Sử dụng build script, deploy contract như bạn đã làm ở các hướng dẫn trước:
 
 ```bash
-yarn build && near deploy --wasmFile out/main.wasm --accountId $ROYALTY_NFT_CONTRACT_ID
+yarn build && near deploy $ROYALTY_NFT_CONTRACT_ID out/main.wasm
 ```
 
 ### Khởi tạo và mint {#initialization-and-minting}
@@ -229,8 +224,8 @@ Nếu NFT đã được bán với 100 yoctoNEAR, josh sẽ được 5, benji đ
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `3.0.0`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
+- near-cli: `4.0.4`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 - Enumeration standard: [NEP181](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration), version `1.0.0`
 - Royalties standard: [NEP199](https://nomicon.io/Standards/Tokens/NonFungibleToken/Payout), version `2.0.0`
 

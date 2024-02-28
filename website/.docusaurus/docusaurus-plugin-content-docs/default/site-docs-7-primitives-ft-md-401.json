@@ -5,7 +5,7 @@
   "source": "@site/../docs/7.primitives/ft.md",
   "sourceDirName": "7.primitives",
   "slug": "/primitives/ft",
-  "permalink": "/zh-CN/primitives/ft",
+  "permalink": "/primitives/ft",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/ft.md",
@@ -13,7 +13,7 @@
   "version": "current",
   "lastUpdatedBy": "gagdiez",
   "lastUpdatedAt": 1707480554,
-  "formattedLastUpdatedAt": "2024年2月9日",
+  "formattedLastUpdatedAt": "Feb 9, 2024",
   "frontMatter": {
     "id": "ft",
     "title": "Fungible Tokens (FT)",
@@ -22,10 +22,10 @@
   "sidebar": "build",
   "previous": {
     "title": "What are Primitives?",
-    "permalink": "/zh-CN/primitives/whatareprimitives"
+    "permalink": "/primitives/whatareprimitives"
   },
   "next": {
     "title": "Non-Fungible Tokens (NFT)",
-    "permalink": "/zh-CN/primitives/nft"
+    "permalink": "/primitives/nft"
   }
 }

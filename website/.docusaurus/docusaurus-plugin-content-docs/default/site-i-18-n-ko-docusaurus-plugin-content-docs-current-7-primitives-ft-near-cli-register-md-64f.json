@@ -1,0 +1,15 @@
+{
+  "id": "primitives/ft/near-cli/register",
+  "title": "register",
+  "description": "",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/7.primitives/ft/near-cli/register.md",
+  "sourceDirName": "7.primitives/ft/near-cli",
+  "slug": "/primitives/ft/near-cli/register",
+  "permalink": "/ko/primitives/ft/near-cli/register",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/ft/near-cli/register.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

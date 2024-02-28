@@ -1,6 +1,6 @@
 {
   "id": "bos/tutorial/quickstart",
-  "title": "Hello Components",
+  "title": "What are NEAR Components?",
   "description": "NEAR Components are a new way to build web applications. They are composable, reusable and decentralized.",
   "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/bos/tutorial/quickstart.md",
   "sourceDirName": "bos/tutorial",
@@ -16,8 +16,8 @@
   "formattedLastUpdatedAt": "22 thg 1, 2024",
   "frontMatter": {
     "id": "quickstart",
-    "title": "Hello Components",
-    "sidebar_label": "⭐ Overview"
+    "title": "What are NEAR Components?",
+    "sidebar_label": "What is a Component?"
   },
   "sidebar": "build",
   "previous": {
@@ -25,7 +25,7 @@
     "permalink": "/vi/develop/contracts/security/bounty"
   },
   "next": {
-    "title": "Dev Environments",
+    "title": "Choose your Dev Environment",
     "permalink": "/vi/bos/dev/intro"
   }
 }

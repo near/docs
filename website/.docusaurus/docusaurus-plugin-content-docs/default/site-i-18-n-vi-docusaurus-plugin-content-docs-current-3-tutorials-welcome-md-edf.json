@@ -17,6 +17,7 @@
   "frontMatter": {
     "id": "welcome",
     "title": "Examples & Tutorials",
+    "sidebar_label": "Home",
     "hide_table_of_contents": true
   },
   "sidebar": "tutorials",

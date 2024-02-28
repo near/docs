@@ -124,7 +124,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
 
 다음은 `view_access_key` 요청 자료형에 의해 반환될 수 있는 오류 변형의 전체 목록입니다.
 
-<table class="custom-stripe">
+<table className="custom-stripe">
   <thead>
     <tr>
       <th>
@@ -196,7 +196,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
         </ul>
       </td>
     </tr>
-    <tr class="stripe">
+    <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
       <td>전달된 인수는 JSON RPC 서버에서 파싱할 수 없습니다(인자 누락, 잘못된 형식 등).</td>
@@ -440,7 +440,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
 
 다음은 `view_access_key_list` 요청 자료형에 의해 반환될 수 있는 오류 변형의 전체 목록입니다.
 
-<table class="custom-stripe">
+<table className="custom-stripe">
   <thead>
     <tr>
       <th>
@@ -502,7 +502,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
         </ul>
       </td>
     </tr>
-    <tr class="stripe">
+    <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
       <td>전달된 인수는 JSON RPC 서버에서 파싱할 수 없습니다(인자 누락, 잘못된 형식 등).</td>
@@ -661,7 +661,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
 
 다음은 `EXPERIMENTAL_changes_in_block` 메서드에 의해 반환될 수 있는 오류 변형의 전체 목록입니다.
 
-<table class="custom-stripe">
+<table className="custom-stripe">
   <thead>
     <tr>
       <th>
@@ -695,7 +695,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
         </ul>
       </td>
     </tr>
-    <tr class="stripe">
+    <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
       <td>전달된 인자는 JSON RPC 서버에서 파싱할 수 없습니다(인자 누락, 잘못된 형식 등).</td>
@@ -854,7 +854,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
 
 다음은 `EXPERIMENTAL_changes` 메서드에 의해 반환될 수 있는 오류 변형의 전체 목록입니다.
 
-<table class="custom-stripe">
+<table className="custom-stripe">
   <thead>
     <tr>
       <th>
@@ -888,7 +888,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
         </ul>
       </td>
     </tr>
-    <tr class="stripe">
+    <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
       <td>전달된 인자는 JSON RPC 서버에서 파싱할 수 없습니다(인자 누락, 잘못된 형식 등).</td>

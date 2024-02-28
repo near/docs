@@ -220,7 +220,7 @@ echo $NFT_CONTRACT_ID
 터미널에 올바른 계정 ID가 출력되어 있는지 확인하세요. 모든 것이 올바르게 보이면 이제 컨트랙트를 배포할 수 있습니다. NFT 프로젝트의 루트에서 다음 명령을 실행하여 스마트 컨트랙트를 배포합니다.
 
 ```bash
-near deploy --wasmFile out/main.wasm --accountId $NFT_CONTRACT_ID
+near deploy $NFT_CONTRACT_ID out/main.wasm
 ```
 
 이 시점에서 컨트랙트가 당신의 계정에 배포되었어야 하며, NFT 테스트 및 발행 작업으로 이동할 준비가 된 것입니다.
@@ -344,8 +344,8 @@ If you navigate to the [collectibles tab](https://testnet.mynearwallet.com//?tab
 
 글을 작성하는 시점에서, 해당 예제는 다음 버전에서 작동합니다.
 
-- near-cli: `3.0.0`
-- NFT 표준: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), `1.0.0` 버전
+- near-cli: `4.0.4`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 - 메타데이터 표준: [NEP177](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata), `1.0.0` 버전
 
 :::

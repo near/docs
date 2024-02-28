@@ -50,7 +50,7 @@ return `The contract says: ${greeting}`;
 Notice that the optional parameter `subscribe` allows users to subscribe to a query, which automatically refreshes the data every 5 seconds.
 :::
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 #### Avoiding a Common Pitfall
 

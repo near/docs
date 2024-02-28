@@ -13,7 +13,7 @@ const { utils } = nearAPI;
 const amountInYocto = utils.format.parseNearAmount("1");
 ```
 
-[<span class="typedoc-icon typedoc-icon-function"></span> `parseNearAmount` 함수](https://near.github.io/near-api-js/functions/_near_js_utils.format.parseNearAmount.html)
+[<span className="typedoc-icon typedoc-icon-function"></span> `parseNearAmount` 함수](https://near.github.io/near-api-js/functions/_near_js_utils.format.parseNearAmount.html)
 
 ### YoctoNEAR => NEAR {#yoctonear--near}
 
@@ -24,4 +24,4 @@ const { utils } = nearAPI;
 const amountInNEAR = utils.format.formatNearAmount("1000000000000000000000000");
 ```
 
-[<span class="typedoc-icon typedoc-icon-function"></span> `formatNearAmount` 함수](https://near.github.io/near-api-js/functions/_near_js_utils.format.formatNearAmount.html)
+[<span className="typedoc-icon typedoc-icon-function"></span> `formatNearAmount` 함수](https://near.github.io/near-api-js/functions/_near_js_utils.format.formatNearAmount.html)

@@ -5,7 +5,7 @@
   "source": "@site/../docs/1.concepts/abstraction/signatures/use-case.md",
   "sourceDirName": "1.concepts/abstraction/signatures",
   "slug": "/concepts/abstraction/signatures/use-cases",
-  "permalink": "/zh-CN/concepts/abstraction/signatures/use-cases",
+  "permalink": "/concepts/abstraction/signatures/use-cases",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/abstraction/signatures/use-case.md",
@@ -13,7 +13,7 @@
   "version": "current",
   "lastUpdatedBy": "Damián Parrino",
   "lastUpdatedAt": 1708712355,
-  "formattedLastUpdatedAt": "2024年2月23日",
+  "formattedLastUpdatedAt": "Feb 23, 2024",
   "frontMatter": {
     "id": "use-cases",
     "title": "Use cases for Chain Signatures",
@@ -22,10 +22,10 @@
   "sidebar": "concepts",
   "previous": {
     "title": "What are Chain Signatures?",
-    "permalink": "/zh-CN/concepts/abstraction/chain-signatures"
+    "permalink": "/concepts/abstraction/chain-signatures"
   },
   "next": {
     "title": "Data on the Blockchain",
-    "permalink": "/zh-CN/concepts/data-flow/data-storage"
+    "permalink": "/concepts/data-flow/data-storage"
   }
 }

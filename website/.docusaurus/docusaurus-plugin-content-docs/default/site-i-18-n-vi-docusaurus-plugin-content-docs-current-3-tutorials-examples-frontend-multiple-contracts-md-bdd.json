@@ -1,6 +1,6 @@
 {
   "id": "tutorials/examples/frontend-multiple-contracts",
-  "title": "Frontend Multiple Contracts",
+  "title": "Frontend Interacting with Multiple Contracts",
   "description": "This example showcases how to interact with multiple contracts from a single frontend.",
   "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/3.tutorials/examples/frontend-multiple-contracts.md",
   "sourceDirName": "3.tutorials/examples",
@@ -16,7 +16,8 @@
   "formattedLastUpdatedAt": "11 thg 1, 2024",
   "frontMatter": {
     "id": "frontend-multiple-contracts",
-    "title": "Frontend Multiple Contracts"
+    "title": "Frontend Interacting with Multiple Contracts",
+    "sidebar_label": "Frontend & Multiple Contracts"
   },
   "sidebar": "tutorials",
   "previous": {

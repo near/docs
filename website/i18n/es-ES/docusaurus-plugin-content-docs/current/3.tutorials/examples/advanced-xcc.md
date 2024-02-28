@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 This example presents 3 instances of complex cross-contract calls. Particularly, it shows:
-1. How to batch multiple method calls to a same contract.
+1. How to batch multiple function calls to a same contract.
 2. How to call multiple contracts in parallel, each returning a different type.
 3. Different ways of handling the responses in the callback.
 
@@ -24,6 +24,11 @@ You can aggregate multiple actions directed towards one same contract into a bat
             url="https://github.com/near-examples/xcc-advanced/blob/main/contract/src/batch_actions.rs"
             start="7" end="19" />
   </Language>
+  <Language value="🌐 JavaScript" language="js">
+    <Github fname="index.js"
+          url="https://github.com/garikbesson/cross-contract-hello-js/blob/batch_actions/contract/src/contract.ts"
+          start="67" end="80" />
+  </Language>
 </CodeTabs>
 
 #### Getting the Last Response
@@ -34,6 +39,14 @@ In this case, the callback has access to the value returned by the **last action
     <Github fname="lib.rs"
             url="https://github.com/near-examples/xcc-advanced/blob/main/contract/src/batch_actions.rs"
             start="21" end="34" />
+  </Language>
+  <Language value="🌐 JavaScript" language="js">
+    <Github fname="callback"
+      url="https://github.com/garikbesson/cross-contract-hello-js/blob/batch_actions/contract/src/contract.ts"
+      start="82" end="93" />
+    <Github fname="promiseResult"
+      url="https://github.com/garikbesson/cross-contract-hello-js/blob/batch_actions/contract/src/contract.ts"
+      start="127" end="145" />
   </Language>
 </CodeTabs>
 
@@ -49,6 +62,11 @@ A contract can call multiple other contracts. This creates multiple transactions
             url="https://github.com/near-examples/xcc-advanced/blob/main/contract/src/multiple_contracts.rs"
             start="18" end="56" />
   </Language>
+  <Language value="🌐 JavaScript" language="js">
+    <Github fname="index.js"
+          url="https://github.com/garikbesson/cross-contract-hello-js/blob/batch_actions/contract/src/contract.ts"
+          start="95" end="111" />
+  </Language>
 </CodeTabs>
 
 #### Getting All Responses
@@ -59,6 +77,14 @@ In this case, the callback has access to an **array of responses**, which have e
     <Github fname="lib.rs"
             url="https://github.com/near-examples/xcc-advanced/blob/main/contract/src/multiple_contracts.rs"
             start="58" end="91" />
+  </Language>
+  <Language value="🌐 JavaScript" language="js">
+    <Github fname="callback"
+      url="https://github.com/garikbesson/cross-contract-hello-js/blob/batch_actions/contract/src/contract.ts"
+      start="113" end="125" />
+    <Github fname="promiseResult"
+      url="https://github.com/garikbesson/cross-contract-hello-js/blob/batch_actions/contract/src/contract.ts"
+      start="127" end="145" />
   </Language>
 </CodeTabs>
 
@@ -76,6 +102,11 @@ In this case, we call multiple contracts that will return the same type:
             url="https://github.com/near-examples/xcc-advanced/blob/main/contract/src/similar_contracts.rs"
             start="18" end="31" />
   </Language>
+  <Language value="🌐 JavaScript" language="js">
+    <Github fname="index.js"
+          url="https://github.com/garikbesson/cross-contract-hello-js/blob/batch_actions/contract/src/contract.ts"
+          start="95" end="111" />
+  </Language>
 </CodeTabs>
 
 #### Getting All Responses
@@ -86,5 +117,13 @@ In this case, the callback again has access to an **array of responses**, which 
     <Github fname="lib.rs"
             url="https://github.com/near-examples/xcc-advanced/blob/main/contract/src/similar_contracts.rs"
             start="33" end="61" />
+  </Language>
+  <Language value="🌐 JavaScript" language="js">
+    <Github fname="callback"
+      url="https://github.com/garikbesson/cross-contract-hello-js/blob/batch_actions/contract/src/contract.ts"
+      start="113" end="125" />
+    <Github fname="promiseResult"
+      url="https://github.com/garikbesson/cross-contract-hello-js/blob/batch_actions/contract/src/contract.ts"
+      start="127" end="145" />
   </Language>
 </CodeTabs>

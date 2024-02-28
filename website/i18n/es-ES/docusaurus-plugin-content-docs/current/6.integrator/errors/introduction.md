@@ -4,7 +4,7 @@ title: Introduction
 sidebar_label: Introduction
 ---
 
-<blockquote class="info">
+<blockquote className="info">
 <strong>did you know?</strong><br /><br />
 
 The [NEAR Platform overview](/concepts/welcome) clarifies much of the language in this section.
