@@ -1,5 +1,3 @@
-import { title } from 'process';
-
 // @ts-check
 const path = require('path');
 const changelogs = require('./src/utils/changelogs.json');
