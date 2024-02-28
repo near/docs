@@ -30,13 +30,13 @@ The first step is to use Chain Signatures is to construct a payload (transaction
 
   </TabItem>
 
-  <TabItem value="₿ Bitcoin">
+<TabItem value="₿ Bitcoin">
 
-  ```js
-  console.log("Coming soon...")
-  ```
+```js
+console.log("Coming soon...")
+```
 
-  </TabItem>
+</TabItem>
 
 </Tabs>
 
@@ -55,13 +55,13 @@ The method expects the `payload` to be signed for the target blockchain, and a `
 
   </TabItem>
 
-  <TabItem value="₿ Bitcoin">
+<TabItem value="₿ Bitcoin">
 
-    ```js
-    console.log("Coming soon...")
-    ```
+```js
+console.log("Coming soon...")
+```
 
-  </TabItem>
+</TabItem>
 
 </Tabs>
 
@@ -75,13 +75,13 @@ The contract will take some time to respond, as it needs to wait for the [`MPC s
 
   </TabItem>
 
-  <TabItem value="₿ Bitcoin">
+<TabItem value="₿ Bitcoin">
 
-    ```js
-    console.log("Coming soon...")
-    ```
+```js
+console.log("Coming soon...")
+```
 
-  </TabItem>
+</TabItem>
 
 </Tabs>
 
@@ -99,12 +99,12 @@ Once we have reconstructed the signature, we can relay it to the corresponding n
 
   </TabItem>
 
-  <TabItem value="₿ Bitcoin">
+<TabItem value="₿ Bitcoin">
 
-    ```js
-    console.log("Coming soon...")
-    ```
+```js
+console.log("Coming soon...")
+```
 
-  </TabItem>
+</TabItem>
 
 </Tabs>

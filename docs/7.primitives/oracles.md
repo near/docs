@@ -30,11 +30,11 @@ Oracle contract's are not standardized. We will here list different providers an
 <Tabs>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
-    ```bash
-    near view priceoracle.near get_assets
-    ``` 
+```bash
+near view priceoracle.near get_assets
+``` 
 
-  </TabItem>
+</TabItem>
 
 </Tabs>
 
@@ -75,11 +75,11 @@ Oracle contract's are not standardized. We will here list different providers an
 <Tabs>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
-  ```bash
-  near view priceoracle.near get_price_data
-  ```
+```bash
+near view priceoracle.near get_price_data
+```
 
-  </TabItem>
+</TabItem>
 
 </Tabs>
 
