@@ -40,7 +40,7 @@ Just like any piece of software, smart contracts have a development flow - start
 
 The development flow can be summarized as follows:
 - [**Scaffold**](../contracts/quickstart.md): The simplest way to create a project is by starting from a template.
-- [**Build**](../contracts/): To write a contract developers can choose between Javascript and Rust.
+- [**Build**](../contracts/welcome.md): To write a contract developers can choose between Javascript and Rust.
 - [**Test**](../testing/introduction.md): Our Sandbox enables to simulate interactions with one or multiple contracts in a realistic environment.
 - [**Deploy**](../deploy.md): After making sure the contract is secure, developers can deploy the contract into their accounts.
 - [**Use**](https://mynearwallet.com): Any user can interact with the contract through their NEAR Wallet.
