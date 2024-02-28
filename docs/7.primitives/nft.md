@@ -172,11 +172,11 @@ Natively, only NEAR tokens (Ⓝ) can be attached to a function calls. However, t
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
-  ```bash
-  near call <nft-contract> nft_transfer_call '{"receiver_id": "<receiver-contract>", "token_id": "<token_id>", "msg": "<a-string-message>"}' --accountId <your-account> --depositYocto 1
-  ```
-  
-  </TabItem>
+```bash
+near call <nft-contract> nft_transfer_call '{"receiver_id": "<receiver-contract>", "token_id": "<token_id>", "msg": "<a-string-message>"}' --accountId <your-account> --depositYocto 1
+```
+
+</TabItem>
 
 </Tabs>
 
@@ -215,16 +215,15 @@ You can authorize other users to transfer an NFT you own. This is useful, for ex
 <Tabs groupId="code-tabs">
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
-  ```bash
-  near call <nft-contract> nft_approve '{
-   "token_id": "<token-unique-id>",
-   "account_id": "<authorized-account>",
-   "msg": "<json-structure>"
-  }' --accountId <your-account> --depositYocto 1
+```bash
+near call <nft-contract> nft_approve '{
+"token_id": "<token-unique-id>",
+"account_id": "<authorized-account>",
+"msg": "<json-structure>"
+}' --accountId <your-account> --depositYocto 1
+```
 
-  ```
-
-  </TabItem>
+</TabItem>
 
 </Tabs>
 

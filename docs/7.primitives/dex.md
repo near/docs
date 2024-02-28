@@ -66,11 +66,11 @@ Anyone list tokens for sale in the DEX. This is why, in order to protect users, 
 <Tabs groupId="code-tabs">
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
     
-    ```bash
-    near view v2.ref-finance.near get_whitelisted_tokens
-    ```
+```bash
+near view v2.ref-finance.near get_whitelisted_tokens
+```
 
-  </TabItem>
+</TabItem>
 
 </Tabs>
 
@@ -100,11 +100,11 @@ In order to use the contract, make sure to register your account in the DEX by p
 <Tabs groupId="code-tabs">
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
     
-    ```bash
-    near call v2.ref-finance.near storage_deposit '' --accountId <account> --amount 0.1
-    ```
+```bash
+near call v2.ref-finance.near storage_deposit '' --accountId <account> --amount 0.1
+```
 
-  </TabItem>
+</TabItem>
 
 </Tabs>
 
@@ -117,11 +117,11 @@ In order to swap tokens, one must first deposit tokens into the DEX. For this, y
 <Tabs groupId="code-tabs">
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
     
-    ```bash
-    near call token.v2.ref-finance.near ft_transfer_call {"receiver_id": "v2.ref-finance.near", "amount": "1000000000000", "msg": ""} --gas 300000000000000 --depositYocto 1 --accountId <account>
-    ```
+```bash
+near call token.v2.ref-finance.near ft_transfer_call {"receiver_id": "v2.ref-finance.near", "amount": "1000000000000", "msg": ""} --gas 300000000000000 --depositYocto 1 --accountId <account>
+```
 
-  </TabItem>
+</TabItem>
 
 </Tabs>
 
