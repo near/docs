@@ -12,7 +12,9 @@ Chain Signatures unlock the ability for a single account to transact across mult
 In this document we cover the steps necessary to sign a transaction for another chain, we recommend you to read our [**overview of Chain Signatures**](../1.concepts/abstraction/chain-signatures.md) before, as well as some of its [**use cases**](../1.concepts/abstraction/signatures/use-case.md).
 
 :::info
+
 See our [web-app example](https://github.com/near-examples/near-multichain) and [component example](https://test.near.social/md1.testnet/widget/chainsig-sign-eth-tx) showing how a NEAR account can create an Ethereum testnet transaction.
+
 ::: 
 
 ---
@@ -25,12 +27,17 @@ The first step is to use Chain Signatures is to construct a payload (transaction
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/ethereum.js"
       start="18" end="40" />
+
   </TabItem>
+
   <TabItem value="₿ Bitcoin">
+
   ```js
   console.log("Coming soon...")
   ```
+
   </TabItem>
+
 </Tabs>
 
 ---
@@ -45,13 +52,17 @@ The method expects the `payload` to be signed for the target blockchain, and a `
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/index.js"
       start="49" end="54" />
+
   </TabItem>
+
   <TabItem value="₿ Bitcoin">
 
     ```js
     console.log("Coming soon...")
     ```
+
   </TabItem>
+
 </Tabs>
 
 The contract will take some time to respond, as it needs to wait for the [`MPC signing service`](../1.concepts/abstraction/chain-signatures.md#3-mpc-signing-service). Once finished, the result will not be the signature on itself, but the elements needed to reconstruct the signature. 
@@ -61,13 +72,17 @@ The contract will take some time to respond, as it needs to wait for the [`MPC s
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/ethereum.js"
       start="49" end="57" />
+
   </TabItem>
+
   <TabItem value="₿ Bitcoin">
 
     ```js
     console.log("Coming soon...")
     ```
+
   </TabItem>
+
 </Tabs>
 
 ---
@@ -81,11 +96,15 @@ Once we have reconstructed the signature, we can relay it to the corresponding n
     <Github fname="index.js" language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/ethereum.js"
       start="43" end="47" />
+
   </TabItem>
+
   <TabItem value="₿ Bitcoin">
 
     ```js
     console.log("Coming soon...")
     ```
+
   </TabItem>
+
 </Tabs>
