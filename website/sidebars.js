@@ -103,7 +103,11 @@ const sidebar = {
     [
       "concepts/basics/runtime",
       "concepts/advanced/specification",
-      "concepts/advanced/papers"
+      {
+        "type": "link",
+        "label": "Papers",
+        "href": "https://near.org/papers"
+      },
     ],
     {
       "type": "html",
