@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk=self.webpackChunk||[]).push([[6639],{36556:e=>{e.exports=JSON.parse('{"permalink":"/vi/changelog","page":1,"postsPerPage":10,"totalPages":2,"totalCount":12,"nextPage":"/vi/changelog/page/2","blogDescription":"Blog","blogTitle":"Blog"}')}}]);

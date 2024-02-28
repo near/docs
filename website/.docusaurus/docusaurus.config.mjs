@@ -84,21 +84,21 @@ export default {
       {
         "name": "near-changelog",
         "sourceBaseUrl": "https://raw.githubusercontent.com/near/near-releases/main/reports/",
-        "outDir": "/changelog",
+        "outDir": "/blog",
         "documents": [
-          "2023-01-31-changelog.md",
-          "2023-02-28-changelog.md",
-          "2023-03-31-changelog.md",
-          "2023-04-30-changelog.md",
-          "2023-05-31-changelog.md",
-          "2023-06-30-changelog.md",
-          "2023-07-31-changelog.md",
-          "2023-08-31-changelog.md",
-          "2023-09-30-changelog.md",
-          "2023-10-31-changelog.md",
-          "2023-11-30-changelog.md",
-          "2023-12-31-changelog.md",
-          "2024-01-31-changelog.md"
+          "2023-01-31.md",
+          "2023-02-28.md",
+          "2023-03-31.md",
+          "2023-04-30.md",
+          "2023-05-31.md",
+          "2023-06-30.md",
+          "2023-07-31.md",
+          "2023-08-31.md",
+          "2023-09-30.md",
+          "2023-10-31.md",
+          "2023-11-30.md",
+          "2023-12-31.md",
+          "2024-01-31.md"
         ],
         "noRuntimeDownloads": true
       }
