@@ -1,5 +1,5 @@
 ---
-title: NEAR Enhanced API powered by Pagoda v0.1
+title: NEAR Enhanced API
 language_tabs:
   - shell: Shell
   - http: HTTP
@@ -26,9 +26,8 @@ import TabItem from '@theme/TabItem';
 Try out our newly released Enhanced APIs - Balances (in Beta) and get what you need for all kinds of balances and token information at ease.
 Call Enhanced APIs using the endpoint in the API URL box, varies by Network.
 
-https://near-testnet.api.pagoda.co/eapi/v1
-
-https://near-mainnet.api.pagoda.co/eapi/v1
+- https://near-testnet.api.pagoda.co/eapi/v1
+- https://near-mainnet.api.pagoda.co/eapi/v1
 
 Grab your API keys and give it a try! We will be adding more advanced Enhanced APIs in our offering, so stay tuned. Get the data you need without extra processing, NEAR Blockchain data query has never been easier!
 

@@ -30,7 +30,7 @@ For the best development experience, we recommend that you [sign up for a free A
 With a dedicated API key, developers are able to:
 
 -    Access higher request throughput and increased concurrent requests
--    Query data from [Enhanced APIs](/api/), gaining access to free processed data for NFT, FT and NEAR balances, ownership, and metadata
+-    Query data from [Enhanced APIs](api.md), gaining access to free processed data for NFT, FT and NEAR balances, ownership, and metadata
 -    Utlize dedicated, individualized usage metrics
 
 ### Test your API keys

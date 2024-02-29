@@ -22,7 +22,7 @@ We will be using the webhook trigger to allow the pagoda console to call an endp
 
 IFTTT stands for "If This Then That". It's a platform (at ifttt.com) that provides a variety of services each with their own collection of applets within it that provide some unique functionality. 
 
-<img width="60%" src="/img/alerts/webhook1.png" />
+<img width="60%" src="/docs/pagoda/webhook1.png" />
 
 
 #### If This
@@ -45,19 +45,19 @@ Next comes the "Then That" action. An action is what happens when your trigger h
 
 We will be setting up a webhook trigger so after you make an account on ifttt.com You will see this page.... 
 
-<img width="70%" src="/img/alerts/webhook2.png" />
+<img width="70%" src="/docs/pagoda/webhook2.png" />
 
 Go to the **Services** Tab and search for "webhook"
 
-<img width="20%" src="/img/alerts/webhook3.png" />
+<img width="20%" src="/docs/pagoda/webhook3.png" />
 
 Click on the webhooks icon and then you'll be sent to this page...
 
-<img width="50%" src="/img/alerts/webhook4.png" />
+<img width="50%" src="/docs/pagoda/webhook4.png" />
 
 Click on the "Documentation Button". This should open up a new tab....
 
-<img width="70%" src="/img/alerts/webhook5.png" />
+<img width="70%" src="/docs/pagoda/webhook5.png" />
 
 Leave that page alone for now we'll come back to it. This is essentially where we get the webhook address we will call for our "IF". 
 
@@ -65,23 +65,23 @@ Leave that page alone for now we'll come back to it. This is essentially where w
 
 Hit the **Create** Button on the upper right corner of the screen..
 
-<img width="20%" src="/img/alerts/webhook6.png" />
+<img width="20%" src="/docs/pagoda/webhook6.png" />
 
 Next click on the "If This" Button...
 
-<img width="40%" src="/img/alerts/webhook7.png" />
+<img width="40%" src="/docs/pagoda/webhook7.png" />
 
 Again search for **webhooks** ...
 
-<img width="60%" src="/img/alerts/webhook8.png" />
+<img width="60%" src="/docs/pagoda/webhook8.png" />
 
 Select the **Receive a Web Request** trigger...
 
-<img width="30%" src="/img/alerts/webhook9.png" />
+<img width="30%" src="/docs/pagoda/webhook9.png" />
 
 let's call this "**on_transaction**" then select create trigger 
 
-<img width="50%" src="/img/alerts/webhook10.png" />
+<img width="50%" src="/docs/pagoda/webhook10.png" />
 
 ## Step 3: Select your Action 
 You for this tutorial you will need to have:
@@ -90,25 +90,25 @@ You for this tutorial you will need to have:
 
 Next click on **Then That** ...
 
-<img width="50%" src="/img/alerts/webhook11.png" />
+<img width="50%" src="/docs/pagoda/webhook11.png" />
 
 Search for **Hue**
 
-<img width="60%" src="/img/alerts/webhook12.png" />
+<img width="60%" src="/docs/pagoda/webhook12.png" />
 
 Select Turn On Lights 
 
-<img width="30%" src="/img/alerts/webhook13.png" />
+<img width="30%" src="/docs/pagoda/webhook13.png" />
 
 Select the lights of your choosing but I will simply do all lights. 
 
 If you haven't already create and connect your Hue Account
 
-<img width="40%" src="/img/alerts/webhook14.png" />
+<img width="40%" src="/docs/pagoda/webhook14.png" />
 
 After you do this simply hit **Create Action** Then you'll be redirected here... 
 
-<img width="50%" src="/img/alerts/webhook15.png" />
+<img width="50%" src="/docs/pagoda/webhook15.png" />
 
 As you can see you can add more than one trigger or action if you'd like. But for now we'll stick to the one. Hit **Continue**
 
@@ -116,7 +116,7 @@ As you can see you can add more than one trigger or action if you'd like. But fo
 
 Once you hit **Continue** you'll be redirected here...
 
-<img width="40%" src="/img/alerts/webhook16.png" />
+<img width="40%" src="/docs/pagoda/webhook16.png" />
 
 take note of the name "on_transaction" and copy it.. then hit the **Finish** button...
 
@@ -124,11 +124,11 @@ Next go back to the documentation tab we opened up earlier
 
 Where it says `{event}` replace everything even the curly braces with "on_transaction"
 
-<img width="90%" src="/img/alerts/webhook17.png" />
+<img width="90%" src="/docs/pagoda/webhook17.png" />
 
 to 
 
-<img width="90%" src="/img/alerts/webhook18.png" />
+<img width="90%" src="/docs/pagoda/webhook18.png" />
 
 copy that entire line and head on over to console.pagoda.co 
 
@@ -136,29 +136,29 @@ copy that entire line and head on over to console.pagoda.co
 
 Once at console.pagoda.co, you should be greeted by the log-in page. Select the Non-funcable Token (NFT) project to start exploring the NFT contract
 
-<img width="60%" src="/img/alerts/webhook19.png" />
+<img width="60%" src="/docs/pagoda/webhook19.png" />
 
 Hit the "Deploy and Explore Contract" Button. This will create a dev account for you and deploy the pre written NFT smart contract onto that account for you. 
 
 
-<img width="40%" src="/img/alerts/webhook20.png" />
+<img width="40%" src="/docs/pagoda/webhook20.png" />
 
 Head to the <kbd>Alerts</kbd> section 
 
-<img width="20%" src="/img/alerts/webhook21.png" />
+<img width="20%" src="/docs/pagoda/webhook21.png" />
 
 And select <kbd>+ New Alert</kbd>
 
-<img width="70%" src="/img/alerts/webhook22.png" />
+<img width="70%" src="/docs/pagoda/webhook22.png" />
 
 You should see this page...
 
 
-<img width="80%" src="/img/alerts/webhook23.png" />
+<img width="80%" src="/docs/pagoda/webhook23.png" />
 
 Select the suggested contract which should be dev account that was created. 
 
-<img width="80%" src="/img/alerts/webhook24.png" />
+<img width="80%" src="/docs/pagoda/webhook24.png" />
 
 :::info
 You can use any contract running on mainnet or testnet for an alert. We'll just use this NFT testnet example for this guide.  
@@ -169,7 +169,7 @@ Under "Select Condition" hit "Successful Transaction". This means that for any s
 But for now, we'll keep it easy and select any Successful Action. 
 
 
-<img width="60%" src="/img/alerts/webhook25.png" />
+<img width="60%" src="/docs/pagoda/webhook25.png" />
 
 
 We're almost done! Under destination select webhooks. Now that webhook we created earlier go ahead and copy and paste it into here. Then hit "Create"
@@ -178,27 +178,27 @@ We're almost done! Under destination select webhooks. Now that webhook we create
 Don't forget to remove the `{}` around the name of your event! `ifttt.com/trigger/...`, not `ifftt.com/{trigger}/...`
 :::
 
-<img width="60%" src="/img/alerts/webhook26.png" />
+<img width="60%" src="/docs/pagoda/webhook26.png" />
 
 Remember to hit the "+ Create Alert" button on this page... 
 
-<img width="60%" src="/img/alerts/webhook27.png" />
+<img width="60%" src="/docs/pagoda/webhook27.png" />
 
 
 Now head on over to the "Contracts" Section.
 
-<img width="60%" src="/img/alerts/webhook28.png" />
+<img width="60%" src="/docs/pagoda/webhook28.png" />
 
 Select the contract we just created and navigate to the "Interact" tab to connect your wallet. 
 
-<img width="60%" src="/img/alerts/webhook29.png" />
+<img width="60%" src="/docs/pagoda/webhook29.png" />
 
 
 Now here is the part we've all been waiting for... **Turn on the (hue) lights!** 
 
 Select the `new_default_metadata` function (we are choosing this one because we have to initialize our contract, this is still a transaction which will trigger our new webhook). Fill in the `owner_id` field with your wallet account name and hit send transaction 
 
-<img width="60%" src="/img/alerts/webhook30.png" />
+<img width="60%" src="/docs/pagoda/webhook30.png" />
 
 ## Wrapping up 
 

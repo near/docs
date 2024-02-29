@@ -829,13 +829,29 @@ const sidebar = {
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> PAGODA RPC API </small></b></span>"
+      "value": "<span class='menu__link'><b><small> PAGODA CONSOLE </small></b></span>"
     },
-    "pagoda/rpc/intro",
-    "pagoda/rpc/get-keys",
-    "pagoda/rpc/setup",
-    "pagoda/rpc/stats",
-    "pagoda/rpc/api",
+    {
+      "Pagoda RPC": [
+        "pagoda/rpc/intro",
+        "pagoda/rpc/get-keys",
+        "pagoda/rpc/setup",
+        "pagoda/rpc/stats",
+      ]
+    },
+    {
+      "Enhanced API": [
+        "pagoda/rpc/api",
+      ]
+    },
+    {
+      "Alerts & Triggers": [
+        "pagoda/alerts/intro",
+        "pagoda/alerts/setup",
+        "pagoda/alerts/webhooks",
+      ]
+    }
+
   ],
   "data-availability": [
     "data-availability/welcome",

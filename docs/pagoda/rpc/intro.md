@@ -19,15 +19,15 @@ In addition to the powerful node infrastructure, we also created the Pagoda RPC 
 
 ### API Keys
 
-- [Getting API keys](/rpc/get-keys)
-- [Testing your API keys](/rpc/setup#test-your-api-keys)
+- [Getting API keys](get-keys.md)
+- [Testing your API keys](setup.md#test-your-api-keys)
 
 ### Tools
 
-- [Postman](/rpc/setup#postman-setup) setup
-- [Command-line (CLI)](/rpc/setup#command-line-setup) setup
-- [JavaScript](/rpc/setup#javascript-setup) setup
-- [Rust](/rpc/setup#rust-setup) setup
+- [Postman](setup.md#postman-setup) setup
+- [Command-line (CLI)](setup.md#command-line-setup) setup
+- [JavaScript](setup.md#javascript-setup) setup
+- [Rust](setup.md#rust-setup) setup
 
 ---
 
@@ -35,15 +35,17 @@ In addition to the powerful node infrastructure, we also created the Pagoda RPC 
 
 | API                                        | Description                                                                  |
 | ------------------------------------------ | ---------------------------------------------------------------------------- |
-| [Access Keys](/rpc/endpoints/access-keys)        | Retrieve information about an account's access keys.                         |
-| [Accounts / Contracts](/rpc/endpoints/contracts) | View details about accounts and contracts as well as perform contract calls. |
-| [Block / Chunk](/rpc/endpoints/block-chunk)      | Query the network and get details about specific blocks or chunks.           |
-| [Gas](/rpc/endpoints/gas)                        | Get gas price for a specific block or hash.                                  |
-| [Protocol](/rpc/endpoints/protocol)              | Retrieve current genesis and protocol configuration.                         |
-| [Network](/rpc/endpoints/network)                | Return status information for nodes and validators.                          |
-| [Transactions](/rpc/endpoints/transactions)      | Send transactions and query their status.                                    |
+| [Access Keys](/api/rpc/access-keys)        | Retrieve information about an account's access keys.                         |
+| [Accounts / Contracts](/api/rpc/contracts) | View details about accounts and contracts as well as perform contract calls. |
+| [Block / Chunk](/api/rpc/block-chunk)      | Query the network and get details about specific blocks or chunks.           |
+| [Gas](/api/rpc/gas)                        | Get gas price for a specific block or hash.                                  |
+| [Protocol](/api/rpc/protocol)              | Retrieve current genesis and protocol configuration.                         |
+| [Network](/api/rpc/network)                | Return status information for nodes and validators.                          |
+| [Transactions](/api/rpc/transactions)      | Send transactions and query their status.                                    |
 
 :::tip
-You can access the JSON RPC 2.0 endpoints using [Postman](/rpc/setup#postman-setup),
-[JavaScript](/rpc/setup#javascript-setup), [Rust](/rpc/setup#rust-setup), and [CLI](/rpc/setup#command-line-setup).
+
+You can access the JSON RPC 2.0 endpoints using [Postman](setup.md#postman-setup),
+[JavaScript](setup.md#javascript-setup), [Rust](setup.md#rust-setup), and [CLI](setup.md#command-line-setup).
+
 :::
