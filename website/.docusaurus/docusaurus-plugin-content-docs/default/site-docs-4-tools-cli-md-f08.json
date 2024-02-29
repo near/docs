@@ -11,9 +11,9 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/4.tools/cli.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "matiasbenary",
-  "lastUpdatedAt": 1707754681,
-  "formattedLastUpdatedAt": "Feb 12, 2024",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1709232162,
+  "formattedLastUpdatedAt": "Feb 29, 2024",
   "frontMatter": {
     "id": "near-cli",
     "title": "NEAR CLI"
