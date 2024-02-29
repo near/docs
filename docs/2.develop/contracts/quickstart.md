@@ -14,13 +14,12 @@ In this quickstart tutorial, we will guide you in creating your first smart cont
 
 ---
 
-## JavaScript
+### Prerequisites
 
-If you are a Javascript programmer and you want to create, test and deploy contracts you can follow this quickstart.
-
-### Prerequisites for JavaScript
-
-Before starting, make sure you have the following installed:
+<CodeTabs>
+  <Language value="🌐 JavaScript" language="js">
+  <>
+  Before starting, make sure you have the following installed:
 
 1. [Node.js](https://nodejs.org/en/download), to use our scaffolding tool.
 2. [NEAR CLI](/tools/near-cli#installation), to deploy and interact with the contract.
@@ -34,177 +33,10 @@ Before starting, make sure you have the following installed:
   ```
 
 :::
-
-:::info Testnet Account
-
-There is no need to have a `testnet` account to follow this tutorial.
-
-However, if you want to create one, you can do so through [a wallet](https://testnet.mynearwallet.com), and use it from the `near-cli` by invoking `near login`.
-
-:::
-
----
-
-### Creating the Contract
-
-Create a smart contract by running our `create-near-app` scaffolding tool and following the interactive menu.
-
-```bash
-  npx create-near-app@latest
-```
-
-![img](@site/static/docs/hello-near-ts.gif)
-_create-near-app in action_
-
-The resulting folder structure will change slightly depending on the chosen language. Here is the general structure you can expect to see:
-
-```bash
-├── README.md
-├── src
-│   └── contract.ts # contract's code
-├── sandbox-ts      # sanbox testing
-│   ├── ava.config.cjs
-│   ├── package.json
-│   └── src
-│       └── main.ava.ts
-├── package.json    # package manager
-└── tsconfig.json
-```
-
----
-
-### The Contract
-
-Your new smart contract stores a `greeting: string` attribute in their state, and exposes two methods to interact with it (`set_greeting`, `get_greeting`).
-
-  <Language value="🌐 JavaScript" language="js">
-    <Github fname="index.js"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts"
-            start="4" end="18" />
-  </Language>
-
-There are 3 important things to notice:
-
-1. The `get_greeting` method is a [`view`](./anatomy.md#public-methods) method, meaning it only reads from the contract and can be called for free by anyone.
-2. By default, the contract is initialized with the `greeting` attribute set to `"Hello"`.
-3. The `set_greeting` method is a [`change`](./anatomy.md#public-methods) method, meaning it modifies the contract's state and requires a user to sign a transaction in order to be executed.
-
----
-
-### Build and Test
-
-Building and testing the contract is as simple as running two commands.
-
-```bash
-npm run build
-npm run test
-
-# Expected:
-# returns the default greeting ✅
-# changes the greeting ✅
-```
-
-<details>
-<summary> Failing tests? </summary>
-
-If the tests are failing, make sure that you are using `node v16`. You can always use
-
-- `nvm use 16` to switch to `node v16`
-
-</details>
-
-In the background, these commands are calling the build tools for each language and invoking the [Sandbox](../testing/integration.md) tests from the `sandbox-ts` directory.
-
-:::tip Sandbox
-Testing the contracts within a Sandbox allows you to understand how the contract will behave once deployed to the network while having total control over the testing environment.
-:::
-
----
-
-### Create a Testnet Account
-
-Now that we know the contract is passing the tests, let's create a testnet account in which to deploy the contract.
-
-While there are different ways to [create accounts](/concepts/basics/accounts/creating-accounts) in NEAR, in this quickstart we will use the `cargo-near` tool to create a new random [`named account`](/concepts/basics/accounts/account-id).
-
-```bash
-# Create a new testnet account
-# Replace <created-account> with a custom name
-near create-account <created-account> --useFaucet
-```
-
-<details>
-<summary> Example Result </summary>
-
-```bash
-> near create-account lovely-event.testnet --useFaucet
-# Console response
-New account "lovely-event.testnet" created successfully. # Response
-```
-
-</details>
-
-:::tip
-
-Here we are creating a random account since we do not care about the account's name. Remember that you can create a named account through any wallet (i.e. [MyNearWallet](https://testnet.mynearwallet.com)) and then use it from the `near-cli` by invoking `near login`.
-
-:::
-
----
-
-### Deploy the Contract
-
-Having our account created, we can now deploy the contract into it:
-
-```bash
-near deploy --wasmFile build/release/hello.wasm --accountId <created-account>
-```
-
-**Congrats**! your contract now lives in the NEAR testnet network.
-
----
-
-### Interacting with the Contract
-
-To interact with your deployed smart contract you can call its methods using the `near-cli` tools.
-
-#### Get Greeting
-
-The `get_greeting` method is a [`view`](./anatomy.md#public-methods) method, meaning it only reads from the contract's state, and thus can be called for **free**.
-
-```bash
-> near view <created-account> get_greeting
-
-"Hello" # Response
-```
-
-#### Set Greeting
-
-The `set_greeting` method is a [`change`](./anatomy.md#public-methods) method, meaning it modifies the contract's state, and thus requires a user to sign a transaction in order to be executed.
-
-```bash
-> near call <created-account> set_greeting '{"greeting": "Hola"}' --accountId <created-account>
-
-Log: Saving greeting "Hola" # Response
-```
-
-In this case we are asking the account that stores the contract to call its own contract's method (`--accountId <created-account>`).
-
-```bash
-> near contract call-function as-transaction <created-account> set_greeting '{"greeting": "Hola"}' sign-as <created-account>
-
-Log: Saving greeting "Hola" # Response
-```
-
-In this case we are asking the account that stores the contract to call its own contract's method (`sign-as <created-account>`).
-
----
-## Rust
-
-If you are a Rust programmer and you want to create, test and deploy contracts you can follow this quickstart.
-
-### Prerequisites for Rust
-
+</>
+</Language>
+<Language value="🦀 Rust" language="rust">
+<>
 Before starting, make sure you have the following installed:
 
 1. [NEAR CLI-RS](/tools/near-cli-rs), to deploy and interact with the contract.
@@ -220,17 +52,22 @@ Before starting, make sure you have the following installed:
   # Using node
   npm i -g near-cli-rs cargo-near
 
-  # Using cargo
-  cargo install near-cli-rs cargo-near
+  # Using macOS, Linux, WSL
+  curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releases/latest/download/near-cli-rs-installer.sh | sh
+  curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/cargo-near/releases/latest/download/cargo-near-installer.sh | sh
   ```
 
-:::
+  :::
+  </>
+  </Language>
+
+</CodeTabs>
 
 :::info Testnet Account
 
 There is no need to have a `testnet` account to follow this tutorial.
 
-However, if you want to create one, you can do so through [a wallet](https://testnet.mynearwallet.com), and use it from the `near-cli-rs` by invoking `near account`.
+However, if you want to create one, you can do so through [a wallet](https://testnet.mynearwallet.com), and use it from the `near-cli` by invoking `near login`.
 
 :::
 
@@ -238,6 +75,37 @@ However, if you want to create one, you can do so through [a wallet](https://tes
 
 ### Creating the Contract
 
+<CodeTabs>
+<Language value="🌐 JavaScript" language="js">
+<>
+Create a smart contract by running our `create-near-app` scaffolding tool and following the interactive menu.
+
+```bash
+  npx create-near-app@latest
+```
+
+![img](@site/static/docs/hello-near-ts.gif)
+_create-near-app in action_
+
+The resulting folder structure will change slightly depending on the chosen language. Here is the general structure you can expect to see:
+
+```bash
+├── sandbox-ts      # sanbox testing
+│   ├── src
+│   ├──  └── main.ava.ts
+│   ├── ava.config.cjs
+│   └── package.json
+├── src
+│   └── contract.ts # contract's code
+├── package.json    # package manager
+├── README.md
+└── tsconfig.json
+```
+
+</>
+</Language>
+<Language value="🦀 Rust" language="rust">
+<>
 Create a smart contract by running our `create-near-app` scaffolding tool and following the interactive menu.
 
 ```bash
@@ -250,20 +118,19 @@ _create-near-app in action_
 The resulting folder structure will change slightly depending on the chosen language. Here is the general structure you can expect to see:
 
 ```bash
-├── README.md
 ├── src
 │   └── lib.rs # contract's code
-├── sandbox-rs # sandbox testing
-│   ├── Cargo.toml
-│   └── src
-│       └── tests.rs
-├── build.sh   # build script
-├── test.sh    # test script
-├── deploy.sh  # deploy script
-├── .cargo
-│   └── config
-└── Cargo.toml # package manager
+├── test 
+│   └── test_basics.rs # testing code
+├── Cargo.toml # package manager
+├── README.md
+└── rust-toolchain.toml
 ```
+
+</>
+</Language>
+
+</CodeTabs>
 
 ---
 
@@ -271,11 +138,20 @@ The resulting folder structure will change slightly depending on the chosen lang
 
 Your new smart contract stores a `greeting: string` attribute in their state, and exposes two methods to interact with it (`set_greeting`, `get_greeting`).
 
+<CodeTabs>
+ <Language value="🌐 JavaScript" language="js">
+    <Github fname="index.js"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts"
+            start="4" end="18" />
+
+  </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
-            start="7" end="33" />
+            start="6" end="35" />
   </Language>
+
+</CodeTabs>
 
 There are 3 important things to notice:
 
@@ -283,20 +159,36 @@ There are 3 important things to notice:
 2. By default, the contract is initialized with the `greeting` attribute set to `"Hello"`.
 3. The `set_greeting` method is a [`change`](./anatomy.md#public-methods) method, meaning it modifies the contract's state and requires a user to sign a transaction in order to be executed.
 
----
-
 ### Build and Test
 
 Building and testing the contract is as simple as running two commands.
 
+<CodeTabs>
+  <Language value="🌐 JavaScript" language="js">
+
 ```bash
-./build.sh
-./test.sh
+npm run build
+npm run test
+
+# Expected:
+# returns the default greeting ✅
+# changes the greeting ✅
+````
+
+  </Language>
+  <Language value="🦀 Rust" language="rust">
+
+```bash
+cargo build
+cargo test
 
 # Expected:
 # Passed ✅ gets default greeting
 # Passed ✅ changes the greeting
 ```
+
+  </Language>
+</CodeTabs>
 
 <details>
 <summary> Failing tests? </summary>
@@ -322,30 +214,65 @@ Now that we know the contract is passing the tests, let's create a testnet accou
 
 While there are different ways to [create accounts](/concepts/basics/accounts/creating-accounts) in NEAR, in this quickstart we will use the `cargo-near` tool to create a new random [`named account`](/concepts/basics/accounts/account-id).
 
-```bash
-# Install cargo-near
-cargo install cargo-near
-```
+<CodeTabs>
 
-```bash
-# Create a new testnet account with a random name
-cargo-near near create-dev-account use-random-account-id autogenerate-new-keypair save-to-legacy-keychain network-config testnet create
+  <Language value="🌐 JavaScript" language="js">
+    <>
+    ```bash
+# Create a new testnet account
+# Replace <created-account> with a custom name
+near create-account <created-account> --useFaucet
 ```
 
 <details>
 <summary> Example Result </summary>
 
 ```bash
-> cargo-near near create-dev-account lovely-event.testnet autogenerate-new-keypair save-to-legacy-keychain network-config testnet create
+> near create-account lovely-event.testnet --useFaucet
+# Console response
+New account "lovely-event.testnet" created successfully. # Response
+```
+
+</details>
+    </>
+
+  </Language>
+    <Language value="🦀 Rust" language="rust">
+<>
+```bash
+# Create a new testnet account with a random name
+cargo-near near create-dev-account use-random-account-id autogenerate-new-keypair save-to-legacy-keychain network-config testnet create
+
+# Create a new testnet account
+# Replace <created-account> with a custom name
+cargo-near near create-dev-account use-specific-account-id lovely-event.testnet autogenerate-new-keypair save-to-keychain network-config testnet create
+````
+
+<details>
+<summary> Example Result </summary>
+
+```bash
+# If you want to create account with a random name
+> cargo-near near create-dev-account use-random-account-id autogenerate-new-keypair save-to-legacy-keychain network-config testnet create
+
+New account "lovely-event.testnet" created successfully. # Response
+
+# If you want to create account with a custom name
+> cargo-near near create-dev-account use-specific-account-id lovely-event.testnet autogenerate-new-keypair save-to-keychain network-config testnet create
 
 New account "lovely-event.testnet" created successfully. # Response
 ```
 
 </details>
 
+</>
+
+  </Language>
+</CodeTabs>
+
 :::tip
 
-Here we are creating a random account since we do not care about the account's name. Remember that you can create a named account through any wallet (i.e. [MyNearWallet](https://testnet.mynearwallet.com)) and then use it from the `near-cli-rs` by invoking `near account`.
+Here we are creating a random account since we do not care about the account's name. Remember that you can create a named account through any wallet (i.e. [MyNearWallet](https://testnet.mynearwallet.com)) and then use it from the `near-cli` by invoking `near login`.
 
 :::
 
@@ -355,39 +282,87 @@ Here we are creating a random account since we do not care about the account's n
 
 Having our account created, we can now deploy the contract into it:
 
-```bash
-near deploy --wasmFile ./target/wasm32-unknown-unknown/release/hello_near.wasm --accountId <created-account>
-```
+<CodeTabs>
+
+  <Language value="🌐 JavaScript" language="js">
+  ```bash
+  near deploy <created-account> build/release/hello.wasm
+  ```
+  </Language>
+   <Language value="🦀 Rust" language="rust">
+  ```bash
+  near contract deploy <created-account> use-file ./target/wasm32-unknown-unknown/release/contract_rs.wasm without-init-call network-config testnet sign-with-keychain send
+  ```
+  </Language>
+</CodeTabs>
 
 **Congrats**! your contract now lives in the NEAR testnet network.
 
 ---
 
-### Interacting with the Contract
+## Interacting with the Contract
 
-To interact with your deployed smart contract you can call its methods using the `near-cli-rs` tool.
+To interact with your deployed smart contract you can call its methods using the `near-cli` or `near-cli-rs` tools.
 
-##### Get Greeting
+#### Get Greeting
 
 The `get_greeting` method is a [`view`](./anatomy.md#public-methods) method, meaning it only reads from the contract's state, and thus can be called for **free**.
 
+<Tabs>
+
+<TabItem value="near-cli">
+
 ```bash
-> near contract call-function as-read-only <created-account> get_greeting
+> near view <created-account> get_greeting
 
 "Hello" # Response
 ```
+
+</TabItem>
+
+<TabItem value="near-cli-rs">
+
+```bash
+> near contract call-function as-read-only <created-account> get_greeting json-args {} network-config testnet now
+
+"Hello" # Response
+```
+
+</TabItem>
+
+</Tabs>
 
 #### Set Greeting
 
 The `set_greeting` method is a [`change`](./anatomy.md#public-methods) method, meaning it modifies the contract's state, and thus requires a user to sign a transaction in order to be executed.
 
+<Tabs>
+
+<TabItem value="near-cli">
+
 ```bash
-> near contract call-function as-transaction <created-account> set_greeting '{"greeting": "Hola"}' sign-as <created-account>
+> near call <created-account> set_greeting '{"greeting": "Hola"}' --accountId <created-account>
+
+Log: Saving greeting "Hola" # Response
+```
+
+In this case we are asking the account that stores the contract to call its own contract's method (`--accountId <created-account>`).
+
+</TabItem>
+
+<TabItem value="near-cli-rs">
+
+```bash
+> near contract call-function as-transaction <created-account> set_greeting json-args '{"greeting": "Hola"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as <created-account> network-config testnet sign-with-keychain send
 
 Log: Saving greeting "Hola" # Response
 ```
 
 In this case we are asking the account that stores the contract to call its own contract's method (`sign-as <created-account>`).
+
+</TabItem>
+
+</Tabs>
 
 ---
 
