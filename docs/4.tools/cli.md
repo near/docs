@@ -777,6 +777,7 @@ near view guest-book.testnet getMessages '{}'
 <summary><strong>Example Response</strong></summary>
 <p>
 
+```bash
     View call: guest-book.testnet.getMessages({})
     [
       { premium: false, sender: 'waverlymaven.testnet', text: 'TGIF' },
@@ -795,6 +796,7 @@ near view guest-book.testnet getMessages '{}'
       { premium: false, sender: 'example-acct.testnet', text: 'Aloha' },
       [length]: 10
     ]
+```
 
 </p>
 </details>
