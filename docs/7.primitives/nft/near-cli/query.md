@@ -9,6 +9,7 @@ near view nft.primitives.near nft_token '{"token_id": "1"}'
 ```
 
 <details>
+
 <summary> Example response </summary>
 
 ```json
@@ -42,6 +43,7 @@ near view x.paras.near nft_token '{"token_id": "84686:1154"}'
 ```
 
 <details>
+
 <summary> Example response </summary>
 
 ```json
@@ -65,6 +67,7 @@ near view x.paras.near nft_token '{"token_id": "84686:1154"}'
   "approved_account_ids": {}
 }
 ```
+
 </details>
 
 </TabItem>
@@ -76,6 +79,7 @@ near view anthropocene.mintbase1.near nft_token '{"token_id": "17960"}'
 ```
 
 <details>
+
 <summary> Example response </summary>
 
 ```json
@@ -122,4 +126,5 @@ When someone creates a NFT on Mintbase they need to deploy their own NFT contrac
 :::
 
 </TabItem>
+
 </Tabs>

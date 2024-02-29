@@ -40,7 +40,9 @@ As with fungible tokens, NFTs are **not stored** in the user's wallet, instead, 
 In order for a contract to be considered a NFT-contract it has to follow the [**NEP-171 and NEP-177 standards**](https://nomicon.io/Standards/Tokens/NonFungibleToken). The **NEP-171** & **NEP-177** standards explain the **minimum interface** required to be implemented, as well as the expected functionality.
 
 :::info NFT & Marketplaces
+
 Be mindful of not confusing an NFT with an NFT-marketplace. NFT simply store information (metadata), while NFT-marketplaces are contracts where NFT can be listed and exchanged for a price.
+
 :::
 
 ---
@@ -64,7 +66,9 @@ near deploy <account-id> --wasmFile contract.wasm --initFunction new
 ```
 
 :::tip
+
 Check the [Contract Wizard](https://near.org/contractwizard.near/widget/ContractWizardUI) to create a personalized NFT contract!.
+
 :::
 
 ---
@@ -88,20 +92,27 @@ To create a new NFT (a.k.a. minting it) you will call the `nft_mint` method pass
 </Tabs>
 
 :::info
+
 See the [metadata standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata) for the full list of `TokenMetadata` parameters.
+
 :::
 
 :::warning
+
 Values of gas and deposit might vary depending on which NFT contract you are calling.
+
 :::
 
 <hr className="subsection" />
 
 ### Minting Collections
+
 Many times people want to create multiple 100 copies of an NFT (this is called a collection). In such cases, what you actually need to do is to mint 100 different NFTs with the same metadata (but different `token-id`).
 
 :::tip
+
 Notice that [minting in Mintbase](#minting-a-nft) allows you to pass a `num_to_mint` parameter.
+
 :::
 
 <hr className="subsection" />
@@ -161,15 +172,18 @@ Natively, only NEAR tokens (Ⓝ) can be attached to a function calls. However, t
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
-  ```bash
-  near call <nft-contract> nft_transfer_call '{"receiver_id": "<receiver-contract>", "token_id": "<token_id>", "msg": "<a-string-message>"}' --accountId <your-account> --depositYocto 1
-  ```
-  
-  </TabItem>
+```bash
+near call <nft-contract> nft_transfer_call '{"receiver_id": "<receiver-contract>", "token_id": "<token_id>", "msg": "<a-string-message>"}' --accountId <your-account> --depositYocto 1
+```
+
+</TabItem>
+
 </Tabs>
 
 :::info
+
 Optionally, a [`memo` parameter](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core#nft-interface) can be passed to provide more information to your contract.
+
 :::
 
 <hr className="subsection" />
@@ -195,25 +209,28 @@ The `nft_on_transfer` **must return true** if the NFT has to be **returned to th
 ---
 
 ## Approving Users
+
 You can authorize other users to transfer an NFT you own. This is useful, for example, to enable listing your NFT in a marketplace. In such scenario, you **trust** that the marketplace will only transfer the NFT upon receiving a certain amount of money in exchange.
 
 <Tabs groupId="code-tabs">
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
-  ```bash
-  near call <nft-contract> nft_approve '{
-   "token_id": "<token-unique-id>",
-   "account_id": "<authorized-account>",
-   "msg": "<json-structure>"
-  }' --accountId <your-account> --depositYocto 1
+```bash
+near call <nft-contract> nft_approve '{
+"token_id": "<token-unique-id>",
+"account_id": "<authorized-account>",
+"msg": "<json-structure>"
+}' --accountId <your-account> --depositYocto 1
+```
 
-  ```
+</TabItem>
 
-  </TabItem>
 </Tabs>
 
 :::info
+
 If the `msg` parameter is included, then a cross-contract call will be made to `<authorized_account>.nft_on_approve(msg)`. Which in turn will make a callback to `nft_resolve_transfer` in your NFT contract.
+
 :::
 
 ---

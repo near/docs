@@ -51,9 +51,29 @@ const sidebar = {
         "concepts/storage/storage-solutions"
       ]
     },
-    "concepts/basics/validators",
-    "concepts/basics/networks",
-    "concepts/basics/epoch",
+    {
+      "Network": [
+        "concepts/basics/validators",
+        "concepts/basics/networks",
+        "concepts/basics/epoch",
+      ]
+    },
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Chain Abstraction ✨</small></b></span>"
+    },
+    "concepts/abstraction/introduction",
+    "concepts/abstraction/relayers",
+    {
+      "Chain Signatures": [
+        "concepts/abstraction/chain-signatures",
+        "concepts/abstraction/signatures/use-cases",
+      ]
+    },
     {
       "type": "html",
       "value": "<hr/>"
@@ -83,7 +103,11 @@ const sidebar = {
     [
       "concepts/basics/runtime",
       "concepts/advanced/specification",
-      "concepts/advanced/papers"
+      {
+        "type": "link",
+        "label": "Papers",
+        "href": "https://near.org/papers"
+      },
     ],
     {
       "type": "html",
@@ -103,6 +127,28 @@ const sidebar = {
   ],
   "build": [
     "develop/welcome",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Chain Abstraction ✨ </small></b></span>"
+    },
+    'abstraction/what-is',
+    {
+      "Chain Abstraction Services": [
+        "develop/relayers/build-relayer",
+        'tools/fastauth-sdk',
+        'abstraction/chain-signatures',
+        {
+          "Multichain Gas Relayer": [
+            "develop/relayers/multichain-server",
+            "develop/relayers/gas-station",
+          ]
+        },
+      ]
+    },
     {
       "type": "html",
       "value": "<hr/>"
@@ -231,7 +277,6 @@ const sidebar = {
         "develop/integrate/quickstart-frontend",
         "develop/integrate/frontend",
         "develop/integrate/frontend-components",
-        "develop/relayers/build-relayer",
         {
           "Backend": [
             "develop/integrate/backend-login",
@@ -247,19 +292,6 @@ const sidebar = {
         },
       ],
     },
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Chain Abstraction ✨ </small></b></span>"
-    },
-    'abstraction/what-is',
-    {"Chain Abstraction Services": [
-      "develop/relayers/multichain-server",
-      'tools/fastauth-sdk'
-    ]},
     {
       "type": "html",
       "value": "<hr/>"

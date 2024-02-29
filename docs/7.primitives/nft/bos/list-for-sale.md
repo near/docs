@@ -63,4 +63,5 @@ Near.call(
 The method `nft_approve` will call `nft_on_approve` in `simple.market.mintbase1.near`.
 
 </TabItem>
+
 </Tabs>
