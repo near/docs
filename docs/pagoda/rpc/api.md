@@ -42,7 +42,7 @@ Base URLs:
 * API Key (apiKey)
     - Parameter Name: **x-api-key**, in: header. Use Pagoda DevConsole API key here
 
-## NFT
+## Non Fungible Tokens
 
 ### Get NFT
 
@@ -1223,240 +1223,7 @@ apiKey
 
 ---
 
-## Coins
-
-### Get user's coin balances
-
-> Code samples
-
-<Tabs>
-<TabItem value="Shell">
-
-```shell
-# You can also use wget
-curl -X GET https://near-testnet.api.pagoda.co/eapi/v1/accounts/{account_id}/coins \
-  -H 'Accept: application/json' \
-  -H 'x-api-key: API_KEY'
-
-```
-
-</TabItem>
-<TabItem value="HTTP">
-
-```http
-GET https://near-testnet.api.pagoda.co/eapi/v1/accounts/{account_id}/coins HTTP/1.1
-Host: near-testnet.api.pagoda.co
-Accept: application/json
-
-```
-
-</TabItem>
-<TabItem value="JS">
-
-```javascript
-
-const headers = {
-  'Accept':'application/json',
-  'x-api-key':'API_KEY'
-};
-
-fetch('https://near-testnet.api.pagoda.co/eapi/v1/accounts/{account_id}/coins',
-{
-  method: 'GET',
-
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-</TabItem>
-<TabItem value="Ruby">
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Accept' => 'application/json',
-  'x-api-key' => 'API_KEY'
-}
-
-result = RestClient.get 'https://near-testnet.api.pagoda.co/eapi/v1/accounts/{account_id}/coins',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-
-```
-
-</TabItem>
-<TabItem value="Python">
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'x-api-key': 'API_KEY'
-}
-
-r = requests.get('https://near-testnet.api.pagoda.co/eapi/v1/accounts/{account_id}/coins', headers = headers)
-
-print(r.json())
-
-```
-
-</TabItem>
-<TabItem value="PHP">
-
-```php
-<?php
-
-require 'vendor/autoload.php';
-
-$headers = array(
-    'Accept' => 'application/json',
-    'x-api-key' => 'API_KEY',
-);
-
-$client = new \GuzzleHttp\Client();
-
-// Define array of request body.
-$request_body = array();
-
-try {
-    $response = $client->request('GET','https://near-testnet.api.pagoda.co/eapi/v1/accounts/{account_id}/coins', array(
-        'headers' => $headers,
-        'json' => $request_body,
-       )
-    );
-    print_r($response->getBody()->getContents());
- }
- catch (\GuzzleHttp\Exception\BadResponseException $e) {
-    // handle exception or api errors.
-    print_r($e->getMessage());
- }
-
- // ...
-
-```
-
-</TabItem>
-<TabItem value="Java">
-
-```java
-URL obj = new URL("https://near-testnet.api.pagoda.co/eapi/v1/accounts/{account_id}/coins");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("GET");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-</TabItem>
-<TabItem value="Go">
-
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Accept": []string{"application/json"},
-        "x-api-key": []string{"API_KEY"},
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "https://near-testnet.api.pagoda.co/eapi/v1/accounts/{account_id}/coins", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
-
-```
-
-</TabItem>
-</Tabs>
-
-
-`GET /accounts/{account_id}/coins`
-
-*Get user's coin balances*
-
-This endpoint returns all the countable coin balances (including NEAR, fungible tokens, and _multi-tokens_)
- of the given `account_id`, at the given `timestamp`/`block_height`.
-
- **Limitations**
- * For now, we only support the balance for NEAR and FT contracts that implement the Events NEP standard.
-   We are working on a solution to support other FT contracts, including `wrap.near` and bridged tokens.
- * We are in the process of supporting Multi Token balances.
- * We currently provide the most recent 100 items.
-   Full-featured pagination will be provided in an upcoming update.
-
-<h3 id="get__accounts_{account_id}_coins-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|account_id|path|string|true|none|
-|block_height|query|string|false|none|
-|block_timestamp_nanos|query|string|false|none|
-|limit|query|integer(int32)|false|Maximum available limit 100|
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "balances": [
-    {
-      "balance": "string",
-      "contract_account_id": "string",
-      "metadata": {
-        "decimals": 0,
-        "icon": "string",
-        "name": "string",
-        "symbol": "string"
-      },
-      "standard": "string"
-    }
-  ],
-  "block_height": "string",
-  "block_timestamp_nanos": "string"
-}
-```
-
-<h3 id="get__accounts_{account_id}_coins-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[CoinBalancesResponse](#schemacoinbalancesresponse)|
-|500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|See the inner `code` value to get more details|None|
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-apiKey
-</aside>
+## NEAR
 
 ### Get user's NEAR balance
 
@@ -1909,6 +1676,243 @@ This endpoint returns the history of operations with NEAR coins
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[HistoryResponse](#schemahistoryresponse)|
+|500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|See the inner `code` value to get more details|None|
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+apiKey
+</aside>
+
+---
+
+## Fungible Tokens
+
+### Get user's coin balances
+
+> Code samples
+
+<Tabs>
+<TabItem value="Shell">
+
+```shell
+# You can also use wget
+curl -X GET https://near-testnet.api.pagoda.co/eapi/v1/accounts/{account_id}/coins \
+  -H 'Accept: application/json' \
+  -H 'x-api-key: API_KEY'
+
+```
+
+</TabItem>
+<TabItem value="HTTP">
+
+```http
+GET https://near-testnet.api.pagoda.co/eapi/v1/accounts/{account_id}/coins HTTP/1.1
+Host: near-testnet.api.pagoda.co
+Accept: application/json
+
+```
+
+</TabItem>
+<TabItem value="JS">
+
+```javascript
+
+const headers = {
+  'Accept':'application/json',
+  'x-api-key':'API_KEY'
+};
+
+fetch('https://near-testnet.api.pagoda.co/eapi/v1/accounts/{account_id}/coins',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+</TabItem>
+<TabItem value="Ruby">
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'x-api-key' => 'API_KEY'
+}
+
+result = RestClient.get 'https://near-testnet.api.pagoda.co/eapi/v1/accounts/{account_id}/coins',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+</TabItem>
+<TabItem value="Python">
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'x-api-key': 'API_KEY'
+}
+
+r = requests.get('https://near-testnet.api.pagoda.co/eapi/v1/accounts/{account_id}/coins', headers = headers)
+
+print(r.json())
+
+```
+
+</TabItem>
+<TabItem value="PHP">
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Accept' => 'application/json',
+    'x-api-key' => 'API_KEY',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('GET','https://near-testnet.api.pagoda.co/eapi/v1/accounts/{account_id}/coins', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+</TabItem>
+<TabItem value="Java">
+
+```java
+URL obj = new URL("https://near-testnet.api.pagoda.co/eapi/v1/accounts/{account_id}/coins");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+</TabItem>
+<TabItem value="Go">
+
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+        "x-api-key": []string{"API_KEY"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "https://near-testnet.api.pagoda.co/eapi/v1/accounts/{account_id}/coins", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+</TabItem>
+</Tabs>
+
+
+`GET /accounts/{account_id}/coins`
+
+*Get user's coin balances*
+
+This endpoint returns all the countable coin balances (including NEAR, fungible tokens, and _multi-tokens_)
+ of the given `account_id`, at the given `timestamp`/`block_height`.
+
+ **Limitations**
+ * For now, we only support the balance for NEAR and FT contracts that implement the Events NEP standard.
+   We are working on a solution to support other FT contracts, including `wrap.near` and bridged tokens.
+ * We are in the process of supporting Multi Token balances.
+ * We currently provide the most recent 100 items.
+   Full-featured pagination will be provided in an upcoming update.
+
+<h3 id="get__accounts_{account_id}_coins-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|account_id|path|string|true|none|
+|block_height|query|string|false|none|
+|block_timestamp_nanos|query|string|false|none|
+|limit|query|integer(int32)|false|Maximum available limit 100|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "balances": [
+    {
+      "balance": "string",
+      "contract_account_id": "string",
+      "metadata": {
+        "decimals": 0,
+        "icon": "string",
+        "name": "string",
+        "symbol": "string"
+      },
+      "standard": "string"
+    }
+  ],
+  "block_height": "string",
+  "block_timestamp_nanos": "string"
+}
+```
+
+<h3 id="get__accounts_{account_id}_coins-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[CoinBalancesResponse](#schemacoinbalancesresponse)|
 |500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|See the inner `code` value to get more details|None|
 
 <aside class="warning">
