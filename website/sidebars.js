@@ -822,7 +822,20 @@ const sidebar = {
     "api/rpc/gas",
     "api/rpc/protocol",
     "api/rpc/network",
-    "api/rpc/transactions"
+    "api/rpc/transactions",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> PAGODA RPC API </small></b></span>"
+    },
+    "pagoda/rpc/intro",
+    "pagoda/rpc/get-keys",
+    "pagoda/rpc/setup",
+    "pagoda/rpc/stats",
+    "pagoda/rpc/api",
   ],
   "data-availability": [
     "data-availability/welcome",
