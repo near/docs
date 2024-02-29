@@ -122,7 +122,7 @@ take note of the name "on_transaction" and copy it.. then hit the **Finish** but
 
 Next go back to the documentation tab we opened up earlier
 
-Where it says "{event}" replace everything even the curly braces with "on_transaction"
+Where it says `{event}` replace everything even the curly braces with "on_transaction"
 
 <img width="90%" src="/img/alerts/webhook17.png" />
 
