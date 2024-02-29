@@ -11,6 +11,9 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/8.abstraction/what-is.md",
   "tags": [],
   "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1709152665,
+  "formattedLastUpdatedAt": "2024年2月28日",
   "frontMatter": {
     "id": "what-is",
     "title": "What is Chain Abstraction?"

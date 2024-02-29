@@ -64,10 +64,12 @@ export default {
           "anonymizeIP": true
         },
         "blog": {
+          "blogTitle": "NEAR Developer Changelog",
           "blogSidebarTitle": "Developer Changelog",
           "blogSidebarCount": "ALL",
           "showReadingTime": false,
-          "routeBasePath": "changelog"
+          "routeBasePath": "changelog",
+          "path": "../changelog"
         },
         "theme": {
           "customCss": "./src/css/custom.scss"
@@ -84,7 +86,7 @@ export default {
       {
         "name": "near-changelog",
         "sourceBaseUrl": "https://raw.githubusercontent.com/near/near-releases/main/reports/",
-        "outDir": "/blog",
+        "outDir": "../changelog",
         "documents": [
           "2023-01-31.md",
           "2023-02-28.md",
