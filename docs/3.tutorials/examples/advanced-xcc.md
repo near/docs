@@ -13,14 +13,16 @@ This example presents 3 instances of complex cross-contract calls. Particularly,
 3. Different ways of handling the responses in the callback.
 
 :::info Simple Cross-Contract Calls
-Check the tutorial on how to the [simple cross-contract call](./xcc)
+
+Check the tutorial on how to use [simple cross-contract calls](xcc.md)
+
 :::
 
 ---
 
 ## Obtaining the Cross Contract Call Example
 
-You have two options to start the Donation Example.
+You have two options to start the Donation Example:
 
 1. You can use the app through `Github Codespaces`, which will open a web-based interactive environment.
 2. Clone the repository locally and use it from your computer.
@@ -33,7 +35,7 @@ You have two options to start the Donation Example.
 
 ## Structure of the Example
 
-The smart contract, available in two flavors: rust and javascript
+The smart contract is available in two flavors: Rust and JavaScript
 
 <Tabs>
 
@@ -193,7 +195,7 @@ value returned by each call, or an error message.
 
 ### Multiple Calls - Same Result Type
 
-This example is a particular case of the previous one ([2. Calling Multiple Contracts](#2-calling-multiple-contracts)).
+This example is a particular case of the previous one ([Calling Multiple Contracts](#2-calling-multiple-contracts)).
 It simply showcases a different way to check the results by directly accessing the `promise_result` array.
 
 In this case, we call multiple contracts that will return the same type:
@@ -309,7 +311,7 @@ near deploy <accountId> ./target/wasm32-unknown-unknown/release/cross_contract.w
 
 ### CLI: Interacting with the Contract
 
-To interact with the contract through the console, you can use the following commands
+To interact with the contract through the console, you can use the following commands:
 
 ```bash
 # Execute contracts sequentially

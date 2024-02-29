@@ -18,7 +18,7 @@ Check the tutorial on how to perform cross-contract calls [in batches and in par
 
 ## Obtaining the Cross Contract Call Example
 
-You have two options to start the Donation Example.
+You have two options to start the Donation Example:
 
 1. You can use the app through `Github Codespaces`, which will open a web-based interactive environment.
 2. Clone the repository locally and use it from your computer.
@@ -31,7 +31,7 @@ You have two options to start the Donation Example.
 
 ## Structure of the Example
 
-The smart contract, available in two flavors: rust and javascript
+The smart contract is available in two flavors: Rust and JavaScript
 
 <Tabs>
 
@@ -169,7 +169,7 @@ near deploy <accountId> ./target/wasm32-unknown-unknown/release/cross_contract.w
 
 ### CLI: Interacting with the Contract
 
-To interact with the contract through the console, you can use the following commands
+To interact with the contract through the console, you can use the following commands:
 
 ```bash
 # Get message from the hello-near contract
