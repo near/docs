@@ -688,11 +688,13 @@ near call guest-book.testnet addMessage '{"text": "Aloha"}' --account-id example
 <summary><strong>Example Response</strong></summary>
 <p>
 
+```bash
     Scheduling a call: guest-book.testnet.addMessage({"text": "Aloha"})
     Transaction Id FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK
     To see the transaction in the transaction explorer, please open this url in your browser
     https://testnet.nearblocks.io/txns/FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK
     ''
+```
 
 </p>
 </details>
