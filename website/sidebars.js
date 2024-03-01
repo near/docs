@@ -759,7 +759,20 @@ const sidebar = {
       "href": "https://wallet.near.org"
     },
     "tools/explorer",
-    "tools/indexing"
+    "tools/indexing",
+    {
+      "Enhanced API": [
+        "pagoda/rpc/api",
+      ]
+    },
+    {
+      "Alerts & Triggers": [
+        "pagoda/alerts/intro",
+        "pagoda/alerts/setup",
+        "pagoda/alerts/webhooks",
+      ]
+    }
+
   ],
   "integrate": [
     "develop/integrate/welcome",
@@ -838,20 +851,7 @@ const sidebar = {
         "pagoda/rpc/setup",
         "pagoda/rpc/stats",
       ]
-    },
-    {
-      "Enhanced API": [
-        "pagoda/rpc/api",
-      ]
-    },
-    {
-      "Alerts & Triggers": [
-        "pagoda/alerts/intro",
-        "pagoda/alerts/setup",
-        "pagoda/alerts/webhooks",
-      ]
     }
-
   ],
   "data-availability": [
     "data-availability/welcome",
