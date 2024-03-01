@@ -98,20 +98,20 @@ With that out of the way, it's time to move onto the `nft_callbacks.rs` file whe
 
 ## nft_callbacks.rs {#nft_callbacks-rs}
 
-This file is responsible for the internal marketplace logic the trigger for which is approving the marketplace contract on NFT contract. If you remember from the [marketplaces section](/tutorials/nfts/approvals#marketplace-integrations) of the approvals tutorial, when users call `nft_approve` and pass in a message, it will perform a cross-contract call to the `receiver_id`'s contract and call the method `nft_on_approve`. This `nft_callbacks.rs` file will implement that function.
+This file is responsible for the internal marketplace logic, the trigger for which is approving the marketplace contract on the NFT contract. If you remember from the [marketplaces section](/tutorials/nfts/approvals#marketplace-integrations) of the approvals tutorial, when users call `nft_approve` and pass in a message, it will perform a cross-contract call to the `receiver_id`'s contract and call the method `nft_on_approve`. This `nft_callbacks.rs` file will implement that function.
 
 ### Listing logic {#listing-logic}
 
 In order to put an NFT on sale, a user should:
 
-1. Approve marketplace contract on NFT token (by calling `nft_approve` method on NFT contract)
-2. Call `list_nft_for_sale` method on marketplace contract.
+1. Approve the marketplace contract on an NFT token (by calling `nft_approve` method on the NFT contract)
+2. Call the `list_nft_for_sale` method on the marketplace contract.
 
 The first important thing to note is the `SaleArgs` struct. This is what the market contract is expecting the message that the user passes into `list_nft_for_sale` on the marketplace contract to be. This outlines the sale price in yoctoNEAR for the NFT that is listed.
 
 <Github language="rust" start="5" end="10" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/nft_callbacks.rs" />
 
-Next, we'll look at the `nft_on_approve` function which is called via a cross-contract call by the NFT contract. We won't put any logic there, but you can if you want to do execute some additional logic on marketplace contract after approving it on NFT contract.
+Next, we'll look at the `nft_on_approve` function, which is called via a cross-contract call by the NFT contract. We won't put any logic there, but you can if you want to execute some additional logic on the marketplace contract after approving it on the NFT contract.
 
 <Github language="rust" start="32" end="134" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/nft_callbacks.rs" />
 
@@ -174,7 +174,7 @@ near call $MARKETPLACE_CONTRACT_ID new '{"owner_id": "'$MARKETPLACE_CONTRACT_ID'
 
 ### Minting and approving
 
-Let's mint a new NFT token and approve marketplace contract:
+Let's mint a new NFT token and approve a marketplace contract:
 
 ```bash
 near call $NFT_CONTRACT_ID nft_mint '{"token_id": "token-1", "metadata": {"title": "My Non Fungible Team Token", "description": "The Team Most Certainly Goes :)", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$NFT_CONTRACT_ID'"}' --accountId $NFT_CONTRACT_ID --amount 0.1
@@ -236,7 +236,7 @@ near view $MARKETPLACE_CONTRACT_ID get_sales_by_nft_contract_id '{"nft_contract_
 
 In this tutorial, you learned about the basics of a marketplace contract and how it works. You went through the [lib.rs](#lib-rs) file and learned about the [initialization function](#initialization-function) in addition to the [storage management](#storage-management-model) model. 
 
-You then went through the [nft_callbacks](#nft_callbacks-rs) file and [NFTs listing process](#listing-logic). In addition, you went through some important functions needed for after you've listed an NFT. This includes [removing sales](#removing-sales), [updating the price](#updating-price), and [purchasing NFTs](#purchasing-nfts).
+You went through the [nft_callbacks](#nft_callbacks-rs) file and [NFTs listing process](#listing-logic). In addition, you went through some important functions needed after you've listed an NFT. This includes [removing sales](#removing-sales), [updating the price](#updating-price), and [purchasing NFTs](#purchasing-nfts).
 
 Finally, you went through the enumeration methods found in the [`sale_view`](#sale_view-rs) file. These allow you to query for important information found on the marketplace contract. 
 
