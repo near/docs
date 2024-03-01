@@ -100,7 +100,8 @@ export default {
           "2023-10-31.md",
           "2023-11-30.md",
           "2023-12-31.md",
-          "2024-01-31.md"
+          "2024-01-31.md",
+          "2024-02-29.md"
         ],
         "noRuntimeDownloads": true
       }
