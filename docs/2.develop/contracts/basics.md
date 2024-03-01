@@ -120,8 +120,8 @@ You can define and instantiate complex objects through classes and structures.
 - `Serialize` & `Deserialize` allow the structure to be used as an input type and
       return type of the contract's methods.
 
-  :::tip
+:::tip
 
-  If you are curious on why the (de)serialization is needed read our [serialization documentation](./serialization.md)
+If you are curious on why the (de)serialization is needed read our [serialization documentation](./serialization.md)
 
-  :::
+:::

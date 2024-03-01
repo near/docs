@@ -52,7 +52,7 @@ const sidebar = {
       ]
     },
     {
-      "Network":[
+      "Network": [
         "concepts/basics/validators",
         "concepts/basics/networks",
         "concepts/basics/epoch",
@@ -64,7 +64,7 @@ const sidebar = {
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Chain Abstraction </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Chain Abstraction ✨</small></b></span>"
     },
     "concepts/abstraction/introduction",
     "concepts/abstraction/relayers",
@@ -103,7 +103,11 @@ const sidebar = {
     [
       "concepts/basics/runtime",
       "concepts/advanced/specification",
-      "concepts/advanced/papers"
+      {
+        "type": "link",
+        "label": "Papers",
+        "href": "https://near.org/papers"
+      },
     ],
     {
       "type": "html",
@@ -123,6 +127,28 @@ const sidebar = {
   ],
   "build": [
     "develop/welcome",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Chain Abstraction ✨ </small></b></span>"
+    },
+    'abstraction/what-is',
+    {
+      "Chain Abstraction Services": [
+        "develop/relayers/build-relayer",
+        'tools/fastauth-sdk',
+        'abstraction/chain-signatures',
+        {
+          "Multichain Gas Relayer": [
+            "develop/relayers/multichain-server",
+            "develop/relayers/gas-station",
+          ]
+        },
+      ]
+    },
     {
       "type": "html",
       "value": "<hr/>"
@@ -266,25 +292,6 @@ const sidebar = {
         },
       ],
     },
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Chain Abstraction ✨ </small></b></span>"
-    },
-    'abstraction/what-is',
-    {
-      "Chain Abstraction Services": [
-        "develop/relayers/build-relayer",
-        'tools/fastauth-sdk',
-        'abstraction/chain-signatures',
-        "develop/relayers/multichain-server",
-    ]},
-    {"Chain Signatures": [
-      "abstraction/chain-signatures/wallet",
-    ]},
     {
       "type": "html",
       "value": "<hr/>"

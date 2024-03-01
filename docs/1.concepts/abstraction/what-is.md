@@ -6,11 +6,11 @@ sidebar_label: Introduction
 
 Do you know how your favorite apps are built and which database they use?. Chances are not, since we choose apps based on their functionality, and not their underlying tech.
 
-We believe that **same should be true for blockchain apps**, users should be able to enjoy an application, without the underlying tech hampering their experience. This is, the user experience should be so good, that they don't realize their are using a blockchain.
+We believe that **same should be true for blockchain apps**, users should be able to enjoy an application, without the underlying tech hampering their experience. The user experience should be so good, that they don't realize they're using a blockchain.
 
 ![img](/docs/assets/welcome-pages/chain-abstraction-landing.png)
 
-To help make this a reality, NEAR provides a set of services that allow to **abstract away** the blockchain from the user experience. This means that users can use blockchain-based application - both in NEAR and **other chains** - without even realizing they are using a blockchain.
+To help make this a reality, NEAR provides a set of services that allow to **abstract away** the blockchain from the user experience. This means that users can use blockchain-based application - both in NEAR and **other chains** - without needing to understand the technical details.
 
 ---
 
