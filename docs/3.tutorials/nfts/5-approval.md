@@ -139,7 +139,7 @@ You then calculate how much storage is being used by adding that new account to 
 
 You'll notice that the function contains an optional `msg` parameter. This message can be used by NFT marketplaces. If a message was provided into the function, you're going to perform a cross contract call to the account being given access. This cross contract call will invoke the `nft_on_approve` function which will parse the message and act accordingly.
 
-It is up to the person approving to pass in an appropriate message that the marketplace can properly decode and use. This is usually done through the marketplace's frontend app which would know how to construct the `msg` in a useful way.
+It is up to the approving person to provide a properly encoded message that the marketplace can decode and use. This is usually done through the marketplace's frontend app which would know how to construct the `msg` in a useful way.
 
 #### Internal functions
 

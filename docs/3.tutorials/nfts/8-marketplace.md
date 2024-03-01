@@ -102,7 +102,7 @@ This file is responsible for the internal marketplace logic the trigger for whic
 
 ### Listing logic {#listing-logic}
 
-In order to put a NFT on sale user should:
+In order to put an NFT on sale, a user should:
 
 1. Approve marketplace contract on NFT token (by calling `nft_approve` method on NFT contract)
 2. Call `list_nft_for_sale` method on marketplace contract.
