@@ -5,22 +5,26 @@
       "plugin": "82d98fd4"
     }
   },
-  "/zh-CN/-636": {
+  "/zh-CN/-222": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "8b378508"
     }
   },
-  "/zh-CN/-97d": {
+  "/zh-CN/-2c2": {
     "__comp": "a7bd4aaa",
     "version": "935f2afb"
   },
-  "/zh-CN/-cf6": {
+  "/zh-CN/-3bc": {
     "__comp": "a94703ab"
   },
   "/zh-CN/abstraction/chain-signatures-b84": {
     "__comp": "17896441",
     "content": "bd9debfd"
+  },
+  "/zh-CN/abstraction/chain-signatures/wallet-40d": {
+    "__comp": "17896441",
+    "content": "d87ac866"
   },
   "/zh-CN/abstraction/what-is-b83": {
     "__comp": "17896441",

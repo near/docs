@@ -21,8 +21,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Cross-Chain Signatures",
-    "permalink": "/ko/abstraction/chain-signatures"
+    "title": "Wallet Chain Key Rules",
+    "permalink": "/ko/abstraction/chain-signatures/wallet"
   },
   "next": {
     "title": "Multichain Gas Station",

@@ -16,6 +16,11 @@
               "sidebar": "build"
             },
             {
+              "id": "abstraction/chain-signatures/wallet",
+              "path": "/zh-CN/abstraction/chain-signatures/wallet",
+              "sidebar": "build"
+            },
+            {
               "id": "abstraction/what-is",
               "path": "/zh-CN/abstraction/what-is",
               "sidebar": "build"

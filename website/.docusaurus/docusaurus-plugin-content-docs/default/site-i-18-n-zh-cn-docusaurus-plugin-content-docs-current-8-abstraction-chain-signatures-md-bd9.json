@@ -24,7 +24,7 @@
     "permalink": "/zh-CN/tools/fastauth-sdk"
   },
   "next": {
-    "title": "Multichain Relayer Server",
-    "permalink": "/zh-CN/develop/relayers/multichain-server"
+    "title": "Wallet Chain Key Rules",
+    "permalink": "/zh-CN/abstraction/chain-signatures/wallet"
   }
 }
