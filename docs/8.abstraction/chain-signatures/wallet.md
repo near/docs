@@ -52,6 +52,12 @@ This is the chain signature key format structure:
 "david.near,bitcoin,near.org,somedata"
 ```
 
+:::warning Under development
+
+Please keep in mind that this format is under development and changes could be added in the future.
+
+:::
+
 ### Examples
 
 | Key | Description |
@@ -64,11 +70,17 @@ This is the chain signature key format structure:
 
 ## Example user flows
 
+In the following examples, the messages are coming from the user's wallet frontend.
+
 - [Using a domains bitcoin key](#using-a-domains-bitcoin-key)
 - [Using a personal Bitcoin key](#using-a-personal-bitcoin-key)
 - [Using a personal EVM key to sign a Binance transaction](#using-a-personal-evm-key-to-sign-a-binance-transaction)
 - [Using an untyped domain key](#using-an-untyped-domain-key)
 - [Using another domains Bitcoin key](#using-another-domains-bitcoin-key)
+
+:::tip
+Wallet developers should follow this user flow format.
+:::
 
 ### Using a domains bitcoin key
 
