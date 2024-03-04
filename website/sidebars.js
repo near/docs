@@ -141,6 +141,7 @@ const sidebar = {
         "develop/relayers/build-relayer",
         'tools/fastauth-sdk',
         'abstraction/chain-signatures',
+        'abstraction/chain-signatures/wallet',
         {
           "Multichain Gas Relayer": [
             "develop/relayers/multichain-server",
