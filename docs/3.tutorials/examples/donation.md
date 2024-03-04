@@ -58,20 +58,14 @@ The example is divided in two main components:
   <TabItem value="🦀 Rust">
 
 ```bash
-┌── sandbox-ts # sandbox testing
-│    ├── src
-│    │    └── main.ava.ts
-│    ├── ava.config.cjs
-│    └── package.json
-├── package.json
+┌── tests # workspaces testing
+│    ├── workspaces.rs
 ├── src # contract's code
 │    ├── donation.rs
 │    └── lib.rs
-├── build.sh # build script
 ├── Cargo.toml # package manager
 ├── README.md
 ├── rust-toolchain.toml
-└── test.sh # test script
 ```
 
   </TabItem>
@@ -134,7 +128,7 @@ The contract exposes methods to donate money (`donate`), and methods to retrieve
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/src/donation.rs"
-            start="20" end="49" />
+            start="22" end="46" />
   </Language>
 </CodeTabs>
 
@@ -158,7 +152,7 @@ The contract readily includes a set of unit and sandbox testing to validate its 
   
   ```bash
   cd contract-rs
-  ./test.sh
+  cargo test
   ```
 
   </TabItem>
