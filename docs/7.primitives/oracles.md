@@ -30,13 +30,16 @@ Oracle contract's are not standardized. We will here list different providers an
 <Tabs>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
-    ```bash
-    near view priceoracle.near get_assets
-    ``` 
-  </TabItem>
+```bash
+near view priceoracle.near get_assets
+``` 
+
+</TabItem>
+
 </Tabs>
 
 <details>
+
 <summary>Example response</summary>
 
 ```json
@@ -62,6 +65,7 @@ Oracle contract's are not standardized. We will here list different providers an
         },
         ...
 ```
+
 </details>
 
 ---
@@ -71,14 +75,16 @@ Oracle contract's are not standardized. We will here list different providers an
 <Tabs>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
-  ```bash
-  near view priceoracle.near get_price_data
-  ```
+```bash
+near view priceoracle.near get_price_data
+```
 
-  </TabItem>
+</TabItem>
+
 </Tabs>
 
 <details>
+
 <summary>Example response</summary>
 
 ```json
@@ -103,8 +109,11 @@ Oracle contract's are not standardized. We will here list different providers an
       price: { multiplier: '36432', decimals: 28 }
     },
 ```
+
 </details>
 
 :::tip
+
 Divide the returned `multiplier` by `10000` to obtain the price in USD.
+
 :::

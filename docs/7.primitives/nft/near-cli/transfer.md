@@ -25,4 +25,5 @@ near call thomasettorreiv.mintbase1.near nft_transfer '{"token_id": "490641" "re
 ```
 
 </TabItem>
+
 </Tabs>

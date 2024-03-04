@@ -36,4 +36,5 @@ near call simple.market.mintbase1.near buy '{"nft_contract_id": "rubennnnnnnn.mi
 
 
 </TabItem>
+
 </Tabs>

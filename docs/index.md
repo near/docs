@@ -40,7 +40,7 @@ Welcome, this is the starting point for all NEAR documentation. Learn to build a
       <a href="/bos/tutorial/quickstart">
         <div className="card">
           <div className="card__image">
-            <img src={require("@site/static/docs/assets/welcome-pages/bos-landing.png").default} alt="Web3 Components" />
+            <img src={require("@site/static/docs/assets/welcome-pages/bos-big.png").default} alt="Web3 Components" />
           </div>
           <div className="card__body">
             <h3>Web3 Components</h3>

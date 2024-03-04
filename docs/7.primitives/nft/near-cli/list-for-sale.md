@@ -25,4 +25,5 @@ near call nft.primitives.near nft_approve '{"token_id": "3c46b76cbd48e65f2fc8847
 Method `nft_approve` of a NFT contract also calls the `nft_on_approve` method in `simple.market.mintbase1.near` as a callback.
 
 </TabItem>
+
 </Tabs>

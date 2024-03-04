@@ -28,7 +28,7 @@ All transaction fees (minus the part which is allocated as the rebate for contra
 
 ## Intro to Validators
 
-[Validators](https://near.org/papers/the-official-near-white-paper/#economics) are responsible for producing blocks and the security of the network.
+[Validators](https://pages.near.org/papers/the-official-near-white-paper/#economics) are responsible for producing blocks and the security of the network.
 
 Since Validators validate all shards, high requirements are set for running them (an 8-Core CPU with 16GB of RAM and 1 TB SSD of storage). The cost of running a block-producing validator node is estimated to be $330 per month for hosting. Please see our [hardware and cost estimates page](https://near-nodes.io/validator/hardware) for more info.
 
@@ -46,7 +46,7 @@ You can read more about our consensus strategy on our <a href="https://github.co
 
 The Chunk-Only Producer is a more accessible role with lower hardware and token requirements. This new role will allow the network's validator number to grow, creating more opportunities to earn rewards and secure the NEAR Ecosystem. 
 
-[Chunk-Only Producers](https://near.org/papers/the-official-near-white-paper/#economics) are solely responsible for [producing chunks](https://near.org/papers/nightshade/#nightshade) (parts of the block from a shard, see [Nightshade](https://near.org/papers/nightshade/) for more detail) in one shard (a partition on the network). Because Chunk-Only Producers only need to validate one shard, they can run the validator node on a 8-Core CPU, with 16GB of RAM, and 500 GB SSD of storage.
+[Chunk-Only Producers](https://pages.near.org/papers/the-official-near-white-paper/#economics) are solely responsible for [producing chunks](https://pages.near.org/papers/nightshade/#nightshade) (parts of the block from a shard, see [Nightshade](https://pages.near.org/papers/nightshade/) for more detail) in one shard (a partition on the network). Because Chunk-Only Producers only need to validate one shard, they can run the validator node on a 8-Core CPU, with 16GB of RAM, and 500 GB SSD of storage.
 
 Like Validators, Chunk-Only Producers will receive, at minimum, 4.5% annual rewards. If less than 100% of the tokens on the network is staked, Chunk-Only Producers stand to earn even more annual rewards. For more details about the Validator’s economics, please check out [NEAR’s Economics Explained](https://near.org/blog/near-protocol-economics/).
 
