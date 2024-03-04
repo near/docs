@@ -187,10 +187,10 @@ near deploy <accountId> ./build/counter.wasm
   <TabItem value="🦀 Rust">
 
 ```bash
-  # Optional - create an account
-  near create-account <accountId> --useFaucet
+# Optional - create an account
+near create-account <accountId> --useFaucet
 
-  # Deploy the contract
+# Deploy the contract
 cd contract-rs
 ./build.sh
 near deploy <accountId> ./target/wasm32-unknown-unknown/release/counter.wasm

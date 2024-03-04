@@ -1,3 +1,6 @@
+// - concepts/advanced/specification
+// - concepts/basics/runtime
+// - concepts/data-flow/data-storage
 const sidebar = {
   "concepts": [
     "concepts/welcome",
@@ -54,9 +57,29 @@ const sidebar = {
         "concepts/storage/storage-solutions"
       ]
     },
-    "concepts/validators",
-    "concepts/networks",
-    "concepts/epoch",
+    {
+      "Network": [
+        "concepts/network/validators",
+        "concepts/network/networks",
+        "concepts/network/epoch",
+      ]
+    },
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Chain Abstraction ✨</small></b></span>"
+    },
+    "concepts/introduction",
+    "concepts/relayers",
+    {
+      "Chain Signatures": [
+        "concepts/chain-signatures/chain-signatures",
+        "concepts/chain-signatures/use-cases",
+      ]
+    },
     {
       "type": "html",
       "value": "<hr/>"
@@ -66,7 +89,7 @@ const sidebar = {
       "value": "<span class='menu__link'><b><small> Blockchain Data &amp; Indexing </small></b></span>"
     },
     [
-      "concepts/data-flow/data-storage",
+      "concepts/data-storage",
       {
         "Data Indexing": [
           "concepts/data-indexing/indexers",
@@ -86,7 +109,11 @@ const sidebar = {
     [
       "concepts/runtime",
       "concepts/specification",
-      "concepts/papers"
+      {
+        "type": "link",
+        "label": "Papers",
+        "href": "https://near.org/papers"
+      },
     ],
     {
       "type": "html",
@@ -106,6 +133,29 @@ const sidebar = {
   ],
   "build": [
     "develop/welcome",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Chain Abstraction ✨ </small></b></span>"
+    },
+    'abstraction/what-is',
+    {
+      "Chain Abstraction Services": [
+        "develop/relayers/build-relayer",
+        'tools/fastauth-sdk',
+        'abstraction/chain-signatures',
+        'abstraction/chain-signatures/wallet',
+        {
+          "Multichain Gas Relayer": [
+            "develop/relayers/multichain-server",
+            "develop/relayers/gas-station",
+          ]
+        },
+      ]
+    },
     {
       "type": "html",
       "value": "<hr/>"
@@ -234,7 +284,6 @@ const sidebar = {
         "develop/integrate/quickstart-frontend",
         "develop/integrate/frontend",
         "develop/integrate/frontend-components",
-        "develop/relayers/build-relayer",
         {
           "Backend": [
             "develop/integrate/backend-login",
@@ -530,17 +579,6 @@ const sidebar = {
     },
 
   ],
-  "primitives": [
-    "primitives/welcome",
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Standards </small></b></span>"
-    },
-  ],
   "tools": [
     "tools/welcome",
     {
@@ -707,7 +745,6 @@ const sidebar = {
       "label": "Wallets",
       "items": [
         "tools/wallet-selector",
-        "tools/fastauth-sdk",
         {
           "type": "link",
           "label": "Remix IDE Plugin",
@@ -810,6 +847,7 @@ const sidebar = {
     {
       "Integrations": [
         "data-availability/integrations",
+        "data-availability/arbitrum",
         "data-availability/optimism",
         "data-availability/cdk-integration"
       ]

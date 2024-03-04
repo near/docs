@@ -3,7 +3,7 @@ id: one-yocto
 title: Ensure it is the User (1yⓃ)
 ---
 
-NEAR uses a system of [Access Keys](../../../1.concepts/basics/accounts/access-keys.md) to simplify handling accounts.
+NEAR uses a system of [Access Keys](../../../1.concepts/accounts/access-keys.md) to simplify handling accounts.
 There are basically two type of keys: `Full Access`, that have full control over an account (i.e. can perform all [actions](../actions.md)), and 
 `Function Call`, that only have permission to call a specified smart contract's method(s) that _do not_ attach Ⓝ as a deposit.
 

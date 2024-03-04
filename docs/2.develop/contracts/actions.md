@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 
 Smart contracts can perform specific `Actions` such as transferring NEAR, or calling other contracts.
 
-An important property of `Actions` is that they can be batched together when acting on the same contract. **Batched actions** act as a unit: they execute in the same [receipt](../../1.concepts/basics/transactions/overview.md#receipt-receipt), and if **any fails**, then they **all get reverted**.
+An important property of `Actions` is that they can be batched together when acting on the same contract. **Batched actions** act as a unit: they execute in the same [receipt](../../1.concepts/overview.md#receipt-receipt), and if **any fails**, then they **all get reverted**.
 
 :::info
 `Actions` can be batched only when they act on the **same contract**. You can batch calling two methods on a contract,
@@ -229,7 +229,7 @@ Sub-accounts are simply useful for organizing your accounts (e.g. `dao.project.n
 :::
 
 :::caution
-  When you create an account from within a contract, it has no keys by default. If you don't explicitly [add keys](#add-keys) to it or [deploy a contract](#deploy-a-contract) on creation then it will be [locked](../../1.concepts/basics/accounts/access-keys.md#locked-accounts).
+  When you create an account from within a contract, it has no keys by default. If you don't explicitly [add keys](#add-keys) to it or [deploy a contract](#deploy-a-contract) on creation then it will be [locked](../../1.concepts/accounts/access-keys.md#locked-accounts).
 :::
 
 <hr className="subsection" />
@@ -340,7 +340,7 @@ If an account with a contract deployed does **not** have any access keys, this i
 
 ## Add Keys
 
-When you use actions to create a new account, the created account does not have any [access keys](../../1.concepts/basics/accounts/access-keys.md), meaning that it **cannot sign transactions** (e.g. to update its contract, delete itself, transfer money).
+When you use actions to create a new account, the created account does not have any [access keys](../../1.concepts/accounts/access-keys.md), meaning that it **cannot sign transactions** (e.g. to update its contract, delete itself, transfer money).
 
 There are two options for adding keys to the account:
 1. `add_access_key`: adds a key that can only call specific methods on a specified contract.
@@ -478,7 +478,7 @@ There are two scenarios in which you can use the `delete_account` action:
 </Tabs>
 
 :::warning Token Loss
-If the beneficiary account does not exist the funds will be [**dispersed among validators**](../../1.concepts/basics/token-loss.md).
+If the beneficiary account does not exist the funds will be [**dispersed among validators**](../../1.concepts/tokens/token-loss.md).
 :::
 
 :::warning Token Loss
