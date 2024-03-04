@@ -9,15 +9,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '222'),
+    component: ComponentCreator('/zh-CN/', '6d2'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '2c2'),
+        component: ComponentCreator('/zh-CN/', '042'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '3bc'),
+            component: ComponentCreator('/zh-CN/', '445'),
             routes: [
               {
                 path: '/zh-CN/abstraction/chain-signatures',
@@ -27,7 +27,7 @@ export default [
               },
               {
                 path: '/zh-CN/abstraction/chain-signatures/wallet',
-                component: ComponentCreator('/zh-CN/abstraction/chain-signatures/wallet', '40d'),
+                component: ComponentCreator('/zh-CN/abstraction/chain-signatures/wallet', '225'),
                 exact: true,
                 sidebar: "build"
               },

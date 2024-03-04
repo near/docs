@@ -5,7 +5,7 @@
   "source": "@site/../docs/8.abstraction/chain-signatures/wallet.md",
   "sourceDirName": "8.abstraction/chain-signatures",
   "slug": "/abstraction/chain-signatures/wallet",
-  "permalink": "/zh-CN/abstraction/chain-signatures/wallet",
+  "permalink": "/abstraction/chain-signatures/wallet",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/8.abstraction/chain-signatures/wallet.md",
@@ -13,7 +13,7 @@
   "version": "current",
   "lastUpdatedBy": "Damián Parrino",
   "lastUpdatedAt": 1709312226,
-  "formattedLastUpdatedAt": "2024年3月1日",
+  "formattedLastUpdatedAt": "Mar 1, 2024",
   "frontMatter": {
     "id": "wallet",
     "title": "Wallet Chain Key Rules"
@@ -21,10 +21,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Cross-Chain Signatures",
-    "permalink": "/zh-CN/abstraction/chain-signatures"
+    "permalink": "/abstraction/chain-signatures"
   },
   "next": {
     "title": "Multichain Relayer Server",
-    "permalink": "/zh-CN/develop/relayers/multichain-server"
+    "permalink": "/develop/relayers/multichain-server"
   }
 }

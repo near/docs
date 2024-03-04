@@ -45,10 +45,6 @@ _Click vào từng command để xem thông tin chi tiết và các ví dụ._
 | [`near tx-status`](#near-tx-status)             | truy vấn status của một transaction bằng `txHash`                                         |
 
 
-[ [**OPTIONS**](#options) ]
-
-> [`near-cli`](https://github.com/near/near-cli) là một [NodeJS](https://nodejs.org/) command line interface sử dụng [`near-api-js`](https://github.com/near/near-api-js) để kết nối và tương tác với NEAR blockchain.
-
 ---
 
 ## Cài đặt
@@ -65,6 +61,22 @@ _Click vào từng command để xem thông tin chi tiết và các ví dụ._
 
 ```bash
 npm install -g near-cli
+```
+
+For example, on Ubuntu 20.04 `near-cli` can be installed by running:
+```bash
+# Install nvm (https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+source ~/.bashrc
+
+# Install node
+nvm install node
+
+# Install near-cli
+npm install -g near-cli
+
+# near-cli works!
+near --help
 ```
 
 #### Windows
@@ -91,7 +103,7 @@ npm install -g near-cli
 - Ngoài ra, bạn có thể thiết lập một environment variable chung bằng cách chạy đoạn code sau:
 
 ```bash
-NEAR_NETWORK=betanet near send ...
+NEAR_NETWORK=testnet near send ...
 ```
 
 - Ngoài ra, bạn có thể thiết lập một environment variable chung bằng cách chạy đoạn code sau:
@@ -152,6 +164,8 @@ near add-credentials example-acct.testnet --seedPhrase "antique attitude say evo
 ### `near add-key`
 
 > Adds either a **full access** or **function access** key to a given account.
+
+> Optionally allows to sign with a Ledger: `--signWithLedger` `--ledgerPath`
 
 **Lưu ý:** Bạn sẽ sử dụng một full access key _đang tồn tại_ cho account mà bạn muốn thêm một key _mới_. ([`near login`](http://docs.near.org/docs/tools/near-cli#near-login))
 
@@ -214,7 +228,7 @@ near add-key example-acct.testnet GkMNfc92fwM1AmwH1MTjF4b7UZuceamsq96XPkHsQ9vi -
 
 ### `near delete-key`
 
-> Xóa một key hiện có cho một account nhất định.
+> Xóa một key hiện có cho một account nhất định. Optionally allows to sign with a Ledger: `--signWithLedger` `--ledgerPath`
 
 -   các tham số: `accountId` `--masterAccount`
 -   options: `--networkId`, `force`
@@ -244,7 +258,7 @@ near delete-key example-acct.testnet Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1
 > Displays a key-pair and seed-phrase and optionally stores it locally in `.near-credentials`.
 
 -   các tham số: `accountId` hoặc `không có`
--   options: `--fromSeedPhrase`, `--saveImplicit`
+-   options: `--fromSeedPhrase`, `--saveImplicit`, `--queryLedgerPK`
 
 **Lưu ý:** Có một vài cách để sử dụng `generate-key` trả về những kết quả rất khác nhau. Hãy tham khảo các ví dụ dưới đây để biết thêm chi tiết.
 
@@ -352,6 +366,76 @@ Implicit account: 9c07afc7673ea0f9a20c8a279e8bbe1dd1e283254263bb3b07403e4b6fd7a4
 
 Will store the key pair corresponding to the seedPhrase in `.near-credentials` with an `accountId` that you specify.
 
+<details>
+<summary><strong>Example Response</strong></summary>
+<p>
+
+```
+Seed phrase: antique attitude say evolve ring arrive hollow auto wide bronze usual unfold
+Key pair: {"publicKey":"ed25519:BW5Q957u1rTATGpanKUktjVmixEmT56Df4Dt9hoGWEXz","secretKey":"ed25519:5StmPDg9xVNzpyudwxT8Y72iyRq7Fa86hcpsRk6Cq5eWGWqwsPbPT9woXbJs9Qe69crZJHh4DMkrGEPGDDfmXmy2"}
+Implicit account: 9c07afc7673ea0f9a20c8a279e8bbe1dd1e283254263bb3b07403e4b6fd7a411
+```
+
+</p>
+</details>
+
+---
+
+#### 4a) `near generate-key --queryLedgerPK`
+
+> Uses a connected Ledger device to display a public key and [implicit account](http://docs.near.org/docs/roles/integrator/implicit-accounts) using the default HD path (`"44'/397'/0'/0'/1'"`)
+
+```bash
+near generate-key --queryLedgerPK
+```
+
+You should then see the following prompt to confirm this request on your Ledger device:
+
+  Make sure to connect your Ledger and open NEAR app Getting Public Key from Ledger...
+
+After confirming the request on your Ledger device, a public key and implicit accountId will be displayed.
+
+<details>
+<summary><strong>Example Response</strong></summary>
+<p>
+
+```bash
+Using public key: ed25519:B22RP10g695wyeRvKIWv61NjmQZEkWTMzAYgdfx6oSeB2
+Implicit account: 42c320xc20739fd9a6bqf2f89z61rd14efe5d3de234199bc771235a4bb8b0e1
+```
+
+</p>
+</details>
+
+---
+
+#### 3b) `near generate-key --queryLedgerPK --ledgerPath="HD path you specify"`
+
+> Uses a connected Ledger device to display a public key and [implicit account](http://docs.near.org/docs/roles/integrator/implicit-accounts) using a custom HD path.
+
+```bash
+near generate-key --queryLedgerPK --ledgerPath="44'/397'/0'/0'/2'"
+```
+
+You should then see the following prompt to confirm this request on your Ledger device:
+
+    Make sure to connect your Ledger and open NEAR app
+    Waiting for confirmation on Ledger...
+
+After confirming the request on your Ledger device, a public key and implicit accountId will be displayed.
+
+<details>
+<summary><strong>Example Response</strong></summary>
+<p>
+
+```bash
+Using public key: ed25519:B22RP10g695wye3dfa32rDjmQZEkWTMzAYgCX6oSeB2
+Implicit account: 42c320xc20739ASD9a6bqf2Dsaf289z61rd14efe5d3de23213789009afDsd5bb8b0e1
+```
+
+</p>
+</details>
+
 ---
 
 ### `near list-keys`
@@ -430,7 +514,7 @@ near login
 > Creates an account using an existing account or a faucet service to pay for the account's creation and initial balance.
 
 -   arguments: `accountId`
--   options: `--initialBalance`, `--useFaucet`, `--useAccount`
+-   options: `--initialBalance`, `--useFaucet`, `--useAccount`, `--seedPhrase`, `--publicKey`, `--signWithLedger`, `--ledgerPath`, `--useLedgerPK`, `--PkLedgerPath`
 
 **Examples:**:
 
@@ -444,10 +528,26 @@ near create-account new-acc.testnet --useAccount example-acct.testnet
 near create-account new-acc.testnet --useFaucet
 ```
 
+```bash
+# Creating a pre-funded account that can be controlled by the Ledger's public key
+near create-account new-acc.testnet --useFaucet --useLedgerPK 
+```
+
+```bash
+# Creating an account using a Ledger account
+near create-account new-acc.testnet --useAccount ledger-acct.testnet --signWithLedger
+```
+
 **Ví dụ subaccount:**
 
 ```bash
+# Using an account to create a sub-account
 near create-account sub-acct.example-acct.testnet --useAccount example-acct.testnet
+```
+
+```bash
+# Creating a sub-account using the Ledger that can also be controlled by the ledger
+near create-account sub.acc.testnet --useAccount sub.acc.testnet --signWithLedger --useLedgerPK
 ```
 
 **Ví dụ sử dụng `--initialBalance`:**
@@ -473,7 +573,7 @@ near create-account sub-acct2.example-acct.testnet --useAccount example-acct.tes
 > Chuyển NEAR token (Ⓝ) từ một account này tới một account khác.
 
 -   các tham số: `accountId` `.wasmFile`
--   options: `force`
+-   options: `force`, `--signWithLedger`, `--ledgerPath`
 
 **Ví dụ:**
 
@@ -501,7 +601,8 @@ near delete-account sub-acct2.example-acct.testnet example-acct.testnet
 
 > Hiển thị chi tiết về state của account.
 
--   các tham số: `accountId` `beneficiaryId`
+- các tham số: `accountId` `beneficiaryId`
+- options: `--signWithLedger`, `--ledgerPath`
 
 **Lưu ý:** Bạn sẽ cần một full access key cho sending account. ([`near login`](http://docs.near.org/docs/tools/near-cli#near-login))
 
@@ -568,7 +669,7 @@ near state example.testnet
 **Note:** các contract call yêu cầu một transaction fee (gas) vì vậy bạn sẽ cần một access key cho `--accountId` sẽ bị tính phí. ([`near login`](http://docs.near.org/docs/tools/near-cli#near-login))
 
 -   các tham số: `contractName` `method_name` `{ args }` `--accountId`
--   options: `--gas` `--deposit`
+-   options: `--gas` `--deposit` `--signWithLedger` `--ledgerPath`
 
 **Ví dụ:**
 
@@ -578,15 +679,17 @@ near call guest-book.testnet addMessage '{"text": "Aloha"}' --account-id example
 
 <details>
 <summary><strong>Example Response</strong></summary>
+<p>
 
 ```bash
-Scheduling a call: guest-book.testnet.addMessage({"text": "Aloha"})
-Transaction Id FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK
-To see the transaction in the transaction explorer, please open this url in your browser
-https://testnet.nearblocks.io/txns/FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK
-''
+    Scheduling a call: guest-book.testnet.addMessage({"text": "Aloha"})
+    Transaction Id FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK
+    To see the transaction in the transaction explorer, please open this url in your browser
+    https://testnet.nearblocks.io/txns/FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK
+    ''
 ```
 
+</p>
 </details>
 
 ---
@@ -603,13 +706,13 @@ https://testnet.nearblocks.io/txns/FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK
 **Ví dụ:**
 
 ```bash
-near deploy --accountId example-contract.testnet --wasmFile out/example.wasm
+near deploy example-contract.testnet out/example.wasm
 ```
 
 **Example về việc khởi tạo:**
 
 ```bash
-near deploy --accountId example-contract.testnet --wasmFile out/example.wasm --initFunction new --initArgs '{"owner_id": "example-contract.testnet", "total_supply": "10000000"}'
+near deploy example-contract.testnet out/example.wasm --initFunction new --initArgs '{"owner_id": "example-contract.testnet", "total_supply": "10000000"}'
 ```
 
 <details>
@@ -667,28 +770,30 @@ near view guest-book.testnet getMessages '{}'
 
 <details>
 <summary><strong>Example Response</strong></summary>
+<p>
 
 ```bash
-View call: guest-book.testnet.getMessages({})
-[
-  { premium: false, sender: 'waverlymaven.testnet', text: 'TGIF' },
-  {
-    premium: true,
-    sender: 'waverlymaven.testnet',
-    text: 'Hello from New York 🌈'
-  },
-  { premium: false, sender: 'fhr.testnet', text: 'Hi' },
-  { premium: true, sender: 'eugenethedream', text: 'test' },
-  { premium: false, sender: 'dongri.testnet', text: 'test' },
-  { premium: false, sender: 'dongri.testnet', text: 'hello' },
-  { premium: true, sender: 'dongri.testnet', text: 'hey' },
-  { premium: false, sender: 'hirokihori.testnet', text: 'hello' },
-  { premium: true, sender: 'eugenethedream', text: 'hello' },
-  { premium: false, sender: 'example-acct.testnet', text: 'Aloha' },
-  [length]: 10
-]
+    View call: guest-book.testnet.getMessages({})
+    [
+      { premium: false, sender: 'waverlymaven.testnet', text: 'TGIF' },
+      {
+        premium: true,
+        sender: 'waverlymaven.testnet',
+        text: 'Hello from New York 🌈'
+      },
+      { premium: false, sender: 'fhr.testnet', text: 'Hi' },
+      { premium: true, sender: 'eugenethedream', text: 'test' },
+      { premium: false, sender: 'dongri.testnet', text: 'test' },
+      { premium: false, sender: 'dongri.testnet', text: 'hello' },
+      { premium: true, sender: 'dongri.testnet', text: 'hey' },
+      { premium: false, sender: 'hirokihori.testnet', text: 'hello' },
+      { premium: true, sender: 'eugenethedream', text: 'hello' },
+      { premium: false, sender: 'example-acct.testnet', text: 'Aloha' },
+      [length]: 10
+    ]
 ```
 
+</p>
 </details>
 
 ---
