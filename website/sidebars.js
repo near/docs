@@ -1,7 +1,7 @@
 const sidebar = {
   "concepts": [
     "concepts/welcome",
-    "concepts/basics/protocol",
+    "concepts/protocol",
     {
       "type": "html",
       "value": "<hr/>"
@@ -12,25 +12,25 @@ const sidebar = {
     },
     {
       "Accounts": [
-        "concepts/basics/accounts/model",
-        "concepts/basics/accounts/account-id",
-        "concepts/basics/accounts/access-keys",
-        "concepts/basics/accounts/smartcontract",
-        "concepts/basics/accounts/state",
+        "concepts/accounts/model",
+        "concepts/accounts/account-id",
+        "concepts/accounts/access-keys",
+        "concepts/accounts/smartcontract",
+        "concepts/accounts/state",
         {
           "type": "html",
           "value": "<hr/>"
         },
-        "concepts/basics/accounts/creating-accounts"
+        "concepts/accounts/creating-accounts"
       ]
     },
     {
       "Transactions": [
-        "concepts/basics/transactions/overview",
+        "concepts/overview",
         {
           "Gas": [
-            "concepts/basics/transactions/gas",
-            "concepts/basics/transactions/gas-advanced"
+            "concepts/transactions/gas",
+            "concepts/transactions/gas-advanced"
           ]
         }
       ]
@@ -42,7 +42,10 @@ const sidebar = {
       ]
     },
     {
-      "Tokens": ["concepts/basics/tokens", "concepts/basics/token-loss"]
+      "Tokens": [
+        "concepts/tokens/tokens",
+        "concepts/tokens/token-loss"
+      ]
     },
     {
       "Storage": [
@@ -51,9 +54,9 @@ const sidebar = {
         "concepts/storage/storage-solutions"
       ]
     },
-    "concepts/basics/validators",
-    "concepts/basics/networks",
-    "concepts/basics/epoch",
+    "concepts/validators",
+    "concepts/networks",
+    "concepts/epoch",
     {
       "type": "html",
       "value": "<hr/>"
@@ -66,9 +69,9 @@ const sidebar = {
       "concepts/data-flow/data-storage",
       {
         "Data Indexing": [
-          "concepts/advanced/indexers",
-          "concepts/advanced/near-indexer-framework",
-          "concepts/advanced/near-lake-framework"
+          "concepts/data-indexing/indexers",
+          "concepts/data-indexing/near-indexer-framework",
+          "concepts/data-indexing/near-lake-framework"
         ]
       }
     ],
@@ -81,9 +84,9 @@ const sidebar = {
       "value": "<span class='menu__link'><b><small> Advanced Topics </small></b></span>"
     },
     [
-      "concepts/basics/runtime",
-      "concepts/advanced/specification",
-      "concepts/advanced/papers"
+      "concepts/runtime",
+      "concepts/specification",
+      "concepts/papers"
     ],
     {
       "type": "html",
@@ -94,11 +97,11 @@ const sidebar = {
       "value": "<span class='menu__link'><b><small> From Web 2 to Web 3 </small></b></span>"
     },
     [
-      "concepts/web3/intro",
-      "concepts/web3/basics",
-      "concepts/web3/near",
-      "concepts/web3/economics",
-      "concepts/web3/nfts"
+      "concepts/intro",
+      "concepts/basics",
+      "concepts/near",
+      "concepts/economics",
+      "concepts/nfts"
     ]
   ],
   "build": [

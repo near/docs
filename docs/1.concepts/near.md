@@ -10,14 +10,14 @@ For the beginners, it’s always better to start with [documentation](/concepts/
 ## Accounts & Transactions
 NEAR's account system is very powerful and differs substantially from other blockchains, like Bitcoin or Ethereum. Instead of identifying users by their public/private key pairs, it defines accounts as first-class entities. This has a few important implications:
 - Instead of public keys, users can use readable account names.
-- Multiple key pairs with [different permissions](../basics/accounts/access-keys.md) can be used. This provides a better security model for users, since loss of one key pair doesn’t compromise an entire account and has a quite limited impact.
+- Multiple key pairs with [different permissions](./accounts/access-keys.md) can be used. This provides a better security model for users, since loss of one key pair doesn’t compromise an entire account and has a quite limited impact.
 - Hierarchical accounts structure is supported. This is useful if we want to manage multiple smart contracts under one parent account.
 - Accounts/public keys are created using transactions, since they are stored on the blockchain.
 
-More information on NEAR accounts can be [found in the docs](../basics/accounts/introduction.md). 
+More information on NEAR accounts can be [found in the docs](./accounts/model.md). 
 
 
-But an account by itself won’t get us anywhere, its [transactions](../basics/transactions/overview.md) that make things happen. In NEAR, we have only one transaction type, but the transaction itself may have different actions included. For most practical purposes, transactions will have a single action included, so for simplicity we’ll use “action” and “transaction” terms interchangeably further down the road. Each transaction always has sender and receiver accounts (and it is cryptographically signed by the sender’s key). The following transaction (action) types are supported:
+But an account by itself won’t get us anywhere, its [transactions](./overview.md) that make things happen. In NEAR, we have only one transaction type, but the transaction itself may have different actions included. For most practical purposes, transactions will have a single action included, so for simplicity we’ll use “action” and “transaction” terms interchangeably further down the road. Each transaction always has sender and receiver accounts (and it is cryptographically signed by the sender’s key). The following transaction (action) types are supported:
 
 - CreateAccount/DeleteAccount, AddKey/DeleteKey - accounts and key management transactions.
 - Transfer - send NEAR tokens from one account to another. The basic command of any blockchain.
@@ -36,7 +36,7 @@ The second method should always be used whenever possible since it doesn’t inc
 
 ## Gas and Storage
 
-As we already discussed, users should pay computational costs for each transaction. This cost is called “gas” and is measured in [gas units](../basics/transactions/gas.md) (this is an established term in the blockchain world). Each time a transaction is posted, an amount of gas is attached to it to cover the cost. For simple transactions, gas can be calculated ahead of time to attach an exact amount. For FunctionCall transactions, however, exact cost is impossible to automatically calculate beforehand, so the usual approach is to attach a large enough amount of gas to cover the cost, and any excess will get automatically refunded.
+As we already discussed, users should pay computational costs for each transaction. This cost is called “gas” and is measured in [gas units](./transactions/gas.md) (this is an established term in the blockchain world). Each time a transaction is posted, an amount of gas is attached to it to cover the cost. For simple transactions, gas can be calculated ahead of time to attach an exact amount. For FunctionCall transactions, however, exact cost is impossible to automatically calculate beforehand, so the usual approach is to attach a large enough amount of gas to cover the cost, and any excess will get automatically refunded.
 
 
 ![image](/docs/assets/web3/web3-7.png)
@@ -58,7 +58,7 @@ One last gotcha about storage - remember that smart contracts themselves are als
 - Don’t build Rust code on Windows, it produces quite big output. Use WSL or build on other OSes.
 - Optimize smart contracts code for size - [more info here](/sdk/rust/contract-size).
 
-More details on the storage model can be [found in the docs](../storage/storage-staking.md).
+More details on the storage model can be [found in the docs](./storage/storage-staking.md).
 
 ## Clients Integration
 
@@ -73,7 +73,7 @@ The general flow for transactions signing looks like this:
     
 
 
-Each time we want to post a transaction, the client redirects the user to a wallet, where the transaction is approved and wallet returns a signed transaction back to the client (via redirect). This is a quite secure way of signing, since the private key is not exposed to the client, but constant redirects might quickly get annoying for users, especially if we just want to call smart contract functions that incur only small gas fees. That’s why NEAR introduced [two types of access keys](../../1.concepts/basics/accounts/access-keys.md) - full keys and functional call keys. Full access keys, as the name implies, can be used to sign any types of transactions. Functional call keys, on the other hand, aim to solve this UX problem. They are tied to a specific contract, and have a budget for gas fees. Such a key can’t be used to sign transactions that transfers NEAR tokens (payable transactions), and can only be used to cover gas fees, that’s why it’s not so security-critical and can be stored on the client. Because of this, we can create a simplified signing flow for non-payable transactions. First of all, a login flow to obtain a Functional Call key is used.
+Each time we want to post a transaction, the client redirects the user to a wallet, where the transaction is approved and wallet returns a signed transaction back to the client (via redirect). This is a quite secure way of signing, since the private key is not exposed to the client, but constant redirects might quickly get annoying for users, especially if we just want to call smart contract functions that incur only small gas fees. That’s why NEAR introduced [two types of access keys](./accounts/access-keys.md) - full keys and functional call keys. Full access keys, as the name implies, can be used to sign any types of transactions. Functional call keys, on the other hand, aim to solve this UX problem. They are tied to a specific contract, and have a budget for gas fees. Such a key can’t be used to sign transactions that transfers NEAR tokens (payable transactions), and can only be used to cover gas fees, that’s why it’s not so security-critical and can be stored on the client. Because of this, we can create a simplified signing flow for non-payable transactions. First of all, a login flow to obtain a Functional Call key is used.
 
 
 ![image](/docs/assets/web3/web3-10.png)
@@ -127,8 +127,8 @@ In general, cross-contract call graphs can be quite complex (one contract may ca
 
 We’ve already discussed the storage model on NEAR, but only in abstract terms, without bringing the exact structure, so it’s time to dive a bit deeper. 
 
-Natively, NEAR smart contracts store data as key-value pairs. This is quite limiting, since even simplest applications usually need more advanced data structures. To help in development, NEAR provides [SDK for smart contracts](https://github.com/near/near-sdk-rs), which includes data structures like [vectors, sets and maps](../../1.concepts/storage/data-collections.md#rust-collection-types-rust-collection-types). While they are very useful, it’s important to remember a few things about them:
-- Ultimately, they are stored as binary values, which means it takes some gas to serialize and deserialize them. Also, different operations cost different amounts of gas ([complexity table](../../1.concepts/storage/data-collections.md#big-o-notation-big-o-notation-1)). Because of this, careful choice of data structures is very important. Moving to a different data structure later will not be easy and would probably require data migration.
+Natively, NEAR smart contracts store data as key-value pairs. This is quite limiting, since even simplest applications usually need more advanced data structures. To help in development, NEAR provides [SDK for smart contracts](https://github.com/near/near-sdk-rs), which includes data structures like [vectors, sets and maps](./storage/data-storage.md#rust-collection-types). While they are very useful, it’s important to remember a few things about them:
+- Ultimately, they are stored as binary values, which means it takes some gas to serialize and deserialize them. Also, different operations cost different amounts of gas ([complexity table](./storage/data-storage.md#big-o-notation-big-o-notation-1)). Because of this, careful choice of data structures is very important. Moving to a different data structure later will not be easy and would probably require data migration.
 - While very useful, vectors, maps and sets won’t match the flexibility and power of classical relational databases. Even implementations of simple filtering and searching might be quite complex and require a lot of gas to execute, especially if multiple entities with relations between them are involved.
 - They are limited to a single contract. If data from multiple contracts is required, aggregation should be performed using cross-contract calls or on a client side, which is quite expensive in terms of gas and time.
 
@@ -152,9 +152,9 @@ By now, we should be familiar with necessary concepts to start developing WEB 3.
 First of all, we need a development and testing environment. Of course, we could theoraticaly perform development and testing on the main blockchain network, but this would not be cheap. For this reason, NEAR provides [several networks](../../1.concepts/basics/networks.md) that can be used during development:
 - testnet - public NEAR network which is identical to mainnet and can be used for free.
 - localnet - you can deploy your personal NEAR network on your own environment. Because it’s owned by you, data and code can be kept private during development. More info on how you can run your own node can be [found here](https://docs.near.org/docs/develop/node/validator/running-a-node). Alternatively, you can bootstrap an entire testing infrastructure in Docker on your local machine using Kurtosis - [guide is here](/develop/testing/kurtosis-localnet).
-- workspaces - you can start your own local network to perform e2e testing. More info [here](../../2.develop/testing/integration.md).
+- workspaces - you can start your own local network to perform e2e testing. More info [here](../2.develop/testing/integration.md).
 
-Once we’ve chosen a network to use, we need a way to interact with it. Of course, transactions can be constructed manually and posted into [node’s API](https://docs.near.org/api/rpc/setup). But [this is tedious](https://github.com/near-examples/transaction-examples) and isn’t fun at all. That’s why, NEAR [provides a CLI](../../4.tools/cli.md) which automates all of the necessary actions. It can be used locally for development purposes or on build machines for CI/CD scenarios.
+Once we’ve chosen a network to use, we need a way to interact with it. Of course, transactions can be constructed manually and posted into [node’s API](https://docs.near.org/api/rpc/setup). But [this is tedious](https://github.com/near-examples/transaction-examples) and isn’t fun at all. That’s why, NEAR [provides a CLI](../4.tools/cli.md) which automates all of the necessary actions. It can be used locally for development purposes or on build machines for CI/CD scenarios.
 
 In order to manage accounts on the NEAR network, [Wallet](https://wiki.near.org/overview/tokenomics/creating-a-near-wallet) can be used. It can show an effective account balance and active keys.
 
@@ -193,9 +193,9 @@ At the end, transaction execution details, including token transfers, logs, cros
 
 During the development, and sometimes even in production, updates to a contract’s code (or even data) are needed. That’s why different contract upgrades mechanisms have been created.
 
-While developing the contract, we recommend just creating a new account each time you need to deploy a contract (the [create-account](../../4.tools/cli.md#near-create-account) command in NEAR CLI exists for this). With such an approach, you will start with a clean state each time.
+While developing the contract, we recommend just creating a new account each time you need to deploy a contract (the [create-account](../4.tools/cli.md#near-create-account) command in NEAR CLI exists for this). With such an approach, you will start with a clean state each time.
  
-However, once we move to a more stable environment, like testing or production, more sophisticated methods are needed. Redeployment of code is quite simple: we just issue another `DeployContract` transaction, and NEAR will handle the rest. The biggest challenge is to migrate contract state - [several approaches are possible](../../2.develop/upgrade.md#migrating-the-state), but all of them involve some kind of migration code.
+However, once we move to a more stable environment, like testing or production, more sophisticated methods are needed. Redeployment of code is quite simple: we just issue another `DeployContract` transaction, and NEAR will handle the rest. The biggest challenge is to migrate contract state - [several approaches are possible](../2.develop/upgrade.md#migrating-the-state), but all of them involve some kind of migration code.
 
 But we can take our upgrade strategy one step further. In the previous strategies, developers are fully in control of code upgrades. This is fine for many applications, but it requires some level of trust between users and developers, since malicious changes could be made at any moment and without the user’s consent (as it [sometimes happens](https://www.bleepingcomputer.com/news/security/dev-corrupts-npm-libs-colors-and-faker-breaking-thousands-of-apps/) in npm world). To solve this, a contract update process itself can also be decentralized - this is called [Programmatic Updates](../../2.develop/upgrade.md#programmatic-update). The exact strategy may vary, but the basic idea is that the contract update code is implemented in a smart contract itself, and a Full Access key to the contract account is removed from a blockchain (via DeleteKey transaction). In this way, an update strategy is transparent to everyone and cannot be changed by developers at will.
 
@@ -207,4 +207,4 @@ For a deep dive into NEAR, the following links will be useful:
 - [Rust Smart Contract docs](/sdk/rust/introduction)
     - [Smart Contract quick start guide](/develop/quickstart-guide)
 - [NEAR Protocol Specification](https://nomicon.io/)
-- [How to build a dApp on NEAR](../../3.tutorials/examples/guest-book.md)
+- [How to build a dApp on NEAR](../3.tutorials/examples/guest-book.md)
