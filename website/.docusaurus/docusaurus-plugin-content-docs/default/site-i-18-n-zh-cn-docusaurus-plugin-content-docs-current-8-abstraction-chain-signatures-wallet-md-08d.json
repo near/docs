@@ -11,6 +11,9 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/8.abstraction/chain-signatures/wallet.md",
   "tags": [],
   "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1709546910,
+  "formattedLastUpdatedAt": "2024年3月4日",
   "frontMatter": {
     "id": "wallet",
     "title": "Wallet Chain Key Rules"
