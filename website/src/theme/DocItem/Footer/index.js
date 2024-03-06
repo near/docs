@@ -6,8 +6,10 @@ export default function FooterWrapper(props) {
   return (
     <>
       <Footer {...props} />
-      <hr />
+
+      <div class="theme-admonition theme-admonition-tip admonition_node_modules-@docusaurus-theme-classic-lib-theme-Admonition-Layout-styles-module alert alert--success">
       <FeedbackComponent />
+      </div>
     </>
   );
 }

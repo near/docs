@@ -431,4 +431,19 @@ iframe+em {
   }
 }
 
+/*
+Feedback widget CSS customization
+https://www.feelback.dev/docs/guides/stripe-like-documentation-feedback-for-docusaurus/
+*/
 @import "@feelback/react/styles/feelback.css";
+
+.feelback-container .feelback-btn {
+  background-color: #1a8870;
+  color: white;
+}
+
+.feelback-container textarea {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0.5rem;
+}
