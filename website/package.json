@@ -38,6 +38,7 @@
     "@docusaurus/plugin-sitemap": "^3.1.0",
     "@docusaurus/preset-classic": "^3.1.0",
     "@docusaurus/theme-mermaid": "^3.1.0",
+    "@feelback/react": "^0.3.4",
     "@near-wallet-selector/core": "^8.5.1",
     "@near-wallet-selector/here-wallet": "^8.5.1",
     "@near-wallet-selector/modal-ui": "^8.5.1",
