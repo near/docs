@@ -14,7 +14,7 @@ In this quickstart tutorial, we will guide you in creating your first smart cont
 
 ---
 
-### Prerequisites
+## Prerequisites
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
@@ -73,7 +73,7 @@ However, if you want to create one, you can do so through [a wallet](https://tes
 
 ---
 
-### Creating the Contract
+## Creating the Contract
 
 <CodeTabs>
 <Language value="🌐 JavaScript" language="js">
@@ -134,7 +134,7 @@ The resulting folder structure will change slightly depending on the chosen lang
 
 ---
 
-### The Contract
+## The Contract
 
 Your new smart contract stores a `greeting: string` attribute in their state, and exposes two methods to interact with it (`set_greeting`, `get_greeting`).
 
@@ -159,7 +159,7 @@ There are 3 important things to notice:
 2. By default, the contract is initialized with the `greeting` attribute set to `"Hello"`.
 3. The `set_greeting` method is a [`change`](./anatomy.md#public-methods) method, meaning it modifies the contract's state and requires a user to sign a transaction in order to be executed.
 
-### Build and Test
+## Build and Test
 
 Building and testing the contract is as simple as running two commands.
 
@@ -208,7 +208,7 @@ Testing the contracts within a Sandbox allows you to understand how the contract
 
 ---
 
-### Create a Testnet Account
+## Create a Testnet Account
 
 Now that we know the contract is passing the tests, let's create a testnet account in which to deploy the contract.
 
@@ -278,7 +278,7 @@ Here we are creating a random account since we do not care about the account's n
 
 ---
 
-### Deploy the Contract
+## Deploy the Contract
 
 Having our account created, we can now deploy the contract into it:
 
@@ -332,7 +332,7 @@ The `get_greeting` method is a [`view`](./anatomy.md#public-methods) method, mea
 
 </Tabs>
 
-#### Set Greeting
+### Set Greeting
 
 The `set_greeting` method is a [`change`](./anatomy.md#public-methods) method, meaning it modifies the contract's state, and thus requires a user to sign a transaction in order to be executed.
 
