@@ -7,7 +7,7 @@ export default function FooterWrapper(props) {
     <>
       <Footer {...props} />
 
-      <div class="theme-admonition theme-admonition-tip admonition_node_modules-@docusaurus-theme-classic-lib-theme-Admonition-Layout-styles-module alert alert--success">
+      <div class="theme-admonition theme-admonition-tip admonition_node_modules-@docusaurus-theme-classic-lib-theme-Admonition-Layout-styles-module alert alert--info">
       <FeedbackComponent />
       </div>
     </>
