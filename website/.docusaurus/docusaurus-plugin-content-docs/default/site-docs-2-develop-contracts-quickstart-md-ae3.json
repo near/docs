@@ -11,9 +11,9 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/contracts/quickstart.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "gagdiez",
-  "lastUpdatedAt": 1707477797,
-  "formattedLastUpdatedAt": "Feb 9, 2024",
+  "lastUpdatedBy": "matiasbenary",
+  "lastUpdatedAt": 1709733426,
+  "formattedLastUpdatedAt": "Mar 6, 2024",
   "frontMatter": {
     "id": "quickstart",
     "title": "Hello Contract",

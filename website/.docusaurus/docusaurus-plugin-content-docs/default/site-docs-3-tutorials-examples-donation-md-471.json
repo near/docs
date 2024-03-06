@@ -1,7 +1,7 @@
 {
   "id": "tutorials/examples/donation",
   "title": "Donation",
-  "description": "Our donation example enables to forward money to an account while keeping track of it. It is one of the simplest examples on making a contract handle tranfers.",
+  "description": "Our donation example enables to forward NEAR Tokens to an account while keeping track of it. It is one of the simplest examples on making a contract handle tranfers.",
   "source": "@site/../docs/3.tutorials/examples/donation.md",
   "sourceDirName": "3.tutorials/examples",
   "slug": "/tutorials/examples/donation",
@@ -11,9 +11,9 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/examples/donation.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "matiasbenary",
-  "lastUpdatedAt": 1707754681,
-  "formattedLastUpdatedAt": "Feb 12, 2024",
+  "lastUpdatedBy": "Lyudmil Ivanov",
+  "lastUpdatedAt": 1709732790,
+  "formattedLastUpdatedAt": "Mar 6, 2024",
   "frontMatter": {
     "id": "donation",
     "title": "Donation"
