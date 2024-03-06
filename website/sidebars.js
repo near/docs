@@ -11,8 +11,11 @@ const sidebar = {
       "value": "<span class='menu__link'><b><small> The NEAR Protocol </small></b></span>"
     },
     {
-      "Accounts": [
-        "concepts/basics/accounts/model",
+      type: 'category',
+      label: 'Accounts',
+      link: {type: 'doc', id: 'concepts/basics/accounts/model'},
+      items: [
+        ,
         "concepts/basics/accounts/account-id",
         "concepts/basics/accounts/access-keys",
         "concepts/basics/accounts/smartcontract",

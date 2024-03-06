@@ -2,18 +2,24 @@
 id: access-keys
 title: Access Keys
 ---
-In blockchain, using an account refers to using a `private key` to sign [transactions](../transactions/overview.md).
+In all blockchains, users control their accounts by holding a `private key` (a secret only they know) and use it to sign [transactions](../transactions/overview.md).
 
-NEAR Accounts have the unique feature of holding multiple [public/private key pairs](https://en.wikipedia.org/wiki/Public-key_cryptography),
-called Access Keys, each with its **own set of permissions**.
+![img](@site/static/docs/assets/welcome-pages/access-keys.png)
 
-Access Keys are similar to [OAuths](https://en.wikipedia.org/wiki/OAuth), enabling you to grant **limited access** over your account
-to third-parties.
+NEAR accounts have the **unique** feature of holding multiple [Access Keys](https://en.wikipedia.org/wiki/Public-key_cryptography), each with its **own set of permissions**.
+
+1. `Full Access Keys`: They have full control over the account, and should **NEVER** be shared!
+2. `Function Call Keys`: They can only call specific methods on a contract, and are actually meant to be **shared**
 
 ---
 
 ## Benefits of Access Keys
-Since the concept of Access Keys is unique to NEAR it is worth understanding why and how they can be used.
+NEAR accounts can hold multiple keys: some will grant full control over the account (`Full Access Keys`), and some will grant limited control over it (`Function Call Keys`).
+
+If you have used another chain, the concept of `Full Access Key` might be familiar to you. You basically hold a key to the account, and anyone in control of the key can request the account to do something (e.g. transfer tokens).
+
+
+
 
 #### Using An App Safely
 Imagine that you want to play a web3 game consisting of a web-app and a smart contract. You can create a key that only
@@ -31,6 +37,10 @@ You could implement a key-recovery [contract](smartcontract.md) in your account,
 "recovery key" for someone you trust. Such a key could only be used to start the recovery.
 
 When needed, that third-party component could trigger the recovery process, helping to create a new master for you.
+
+:::tip
+You can think of Function Call Keys as [delegation tokens](https://en.wikipedia.org/wiki/OAuth), enabling you to grant **limited access** over your account to third-parties.
+:::
 
 ---
 

@@ -4,15 +4,25 @@ title: The NEAR Account Model
 sidebar_label: Overview
 ---
 
-Users interact with the NEAR ecosystem through accounts. These accounts are identified by a unique ID, have a $NEAR balance, and can optionally hold a smart contract.
+Users interact with the NEAR ecosystem through accounts. These accounts are identified by a [unique ID](./account-id.md), hold $NEAR tokens, are controlled through [Access Keys](./access-keys.md), and can optionally hold a [smart contract](./smartcontract.md).
 
 ![img](@site/static/docs/assets/welcome-pages/accounts.png)
 
-To control the accounts, users can add different "access keys", each with a different level of permissions. This allows for fine-grained control over the account's actions.
+NEAR accounts are the main way to interact with the NEAR Ecosystem. We will cover all use cases in the documentation, but as an overview, users can:
+
+1. Send and receive tokens (such as $NEAR, or any other token on the NEAR blockchain)
+2. Request to sign transactions in other blockchains (such as Ethereum)
+3. Collect and drop digital assets
+4. Interact with applications known as smart contracts
+5. Deploy their own smart contracts so other accounts interact with them
+
+:::tip Create an Account!
+You have multiple ways to create an account, you can [sign-up using your email](https://near.org/), get a mobile wallet through [telegram](https://web.telegram.org/k/#@herewalletbot), or create a [web wallet](https://app.mynearwallet.com).
+:::
 
 ---
 
-### Account Model Overview 
+## Account Model Overview 
 
 Let's take a closer look at the different elements that compose the NEAR account model.
 
