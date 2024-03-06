@@ -302,11 +302,11 @@ Having our account created, we can now deploy the contract into it:
 
 ## Interacting with the Contract
 
-To interact with your deployed smart contract you can call its methods using the `near-cli` or `near-cli-rs` tools.
+To interact with your deployed smart contract, you can call its methods using the `near-cli` or `near-cli-rs` tools.
 
-#### Get Greeting
+### Get Greeting
 
-The `get_greeting` method is a [`view`](./anatomy.md#public-methods) method, meaning it only reads from the contract's state, and thus can be called for **free**.
+The `get_greeting` method is a [`view`](./anatomy.md#public-methods) method, meaning it only reads from the contract's state, and can thus be called for **free**.
 
 <Tabs>
 
@@ -358,7 +358,7 @@ In this case we are asking the account that stores the contract to call its own 
 Log: Saving greeting "Hola" # Response
 ```
 
-In this case we are asking the account that stores the contract to call its own contract's method (`sign-as <created-account>`).
+In this case, we are asking the account that stores the contract to call its own contract's method (`sign-as <created-account>`).
 
 </TabItem>
 
@@ -372,6 +372,6 @@ That's it for the quickstart tutorial. You have now seen a fully functional cont
 
 Go ahead and check other [examples](/tutorials/examples/guest-book) or proceed straight to the [Develop section](./anatomy.md) to know how to write your own contract.
 
-If you have any questions, do not hesitate in joining us on [Discord](https://near.chat). We regularly host Office Hours, in which you can join our voice channel and ask questions.
+If you have any questions, do not hesitate to join us on [Discord](https://near.chat). We regularly host Office Hours, in which you can join our voice channel and ask questions.
 
 Happy coding! 🚀
