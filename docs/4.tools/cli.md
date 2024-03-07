@@ -125,14 +125,17 @@ near send-near ... --networkId mainnet
 ---
 
 ### Custom RPC server selection
-You can set custom RPC server URL by setting this env variables:
+You can set custom RPC server URL by setting these env variables:
+
 ```bash
 NEAR_MAINNET_RPC
 NEAR_TESTNET_RPC
 ```
+
 Clear them in case you want to get back to the default RPC server.
 
 Example:
+
 ```bash
 export NEAR_TESTNET_RPC=<put_your_rpc_server_url_here>
 ```
@@ -187,10 +190,12 @@ near add-key example-acct.testnet Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1S
 <summary><strong>Example Response</strong></summary>
 <p>
 
+```
     Adding full access key = Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1S to example-acct.testnet.
     Transaction Id EwU1ooEvkR42HvGoJHu5ou3xLYT3JcgQwFV3fAwevGJg
     To see the transaction in the transaction explorer, please open this url in your browser
     https://testnet.nearblocks.io/txns/EwU1ooEvkR42HvGoJHu5ou3xLYT3JcgQwFV3fAwevGJg
+```
 
 </p>
 </details>
@@ -220,10 +225,12 @@ near add-key example-acct.testnet GkMNfc92fwM1AmwH1MTjF4b7UZuceamsq96XPkHsQ9vi -
 <summary><strong>Example Response</strong></summary>
 <p>
 
+```
     Adding function call access key = GkMNfc92fwM1AmwH1MTjF4b7UZuceamsq96XPkHsQ9vi to example-acct.testnet.
     Transaction Id H2BQL9fXVmdTbwkXcMFfZ7qhZqC8fFhsA8KDHFdT9q2r
     To see the transaction in the transaction explorer, please open this url in your browser
     https://testnet.nearblocks.io/txns/H2BQL9fXVmdTbwkXcMFfZ7qhZqC8fFhsA8KDHFdT9q2r
+```
 
 </p>
 </details>
@@ -250,9 +257,11 @@ near delete-key example-acct.testnet Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1
 <summary><strong>Example Response</strong></summary>
 <p>
 
+```
     Transaction Id 4PwW7vjzTCno7W433nu4ieA6FvsAjp7zNFwicNLKjQFT
     To see the transaction in the transaction explorer, please open this url in your browser
     https://testnet.nearblocks.io/txns/4PwW7vjzTCno7W433nu4ieA6FvsAjp7zNFwicNLKjQFT
+```
 
 </p>
 </details>
@@ -396,8 +405,10 @@ near generate-key --queryLedgerPK
 
 You should then see the following prompt to confirm this request on your Ledger device:
 
+```
   Make sure to connect your Ledger and open NEAR app
   Getting Public Key from Ledger...
+```
 
 After confirming the request on your Ledger device, a public key and implicit accountId will be displayed.
 
@@ -425,8 +436,10 @@ near generate-key --queryLedgerPK --ledgerPath="44'/397'/0'/0'/2'"
 
 You should then see the following prompt to confirm this request on your Ledger device:
 
+```
     Make sure to connect your Ledger and open NEAR app
     Waiting for confirmation on Ledger...
+```
 
 After confirming the request on your Ledger device, a public key and implicit accountId will be displayed.
 
@@ -505,7 +518,7 @@ near login
 
 **Custom wallet url:**
 
-Default wallet url is `https://testnet.mynearwallet.com/`. But if you want to change to a different wallet url, you can setup the environmental variable `NEAR_MAINNET_WALLET` or `NEAR_TESTNET_WALLET`.
+The default wallet URL is `https://testnet.mynearwallet.com/`. However, if you want to change to a different wallet URL, you can set the environmental variable `NEAR_MAINNET_WALLET` or `NEAR_TESTNET_WALLET`.
 
 ```bash
 export NEAR_TESTNET_WALLET=https://wallet.testnet.near.org/
@@ -567,8 +580,10 @@ near create-account sub-acct2.example-acct.testnet --useAccount example-acct.tes
 <summary><strong>Example Response</strong></summary>
 <p>
 
+```
     Saving key to '/HOME_DIR/.near-credentials/default/sub-acct2.example-acct.testnet.json'
     Account sub-acct2.example-acct.testnet for network "default" was created.
+```
 
 </p>
 </details>
@@ -592,11 +607,13 @@ near delete-account sub-acct2.example-acct.testnet example-acct.testnet
 <summary><strong>Example Response</strong></summary>
 <p>
 
+```
     Deleting account. Account id: sub-acct2.example-acct.testnet, node: https://rpc.testnet.near.org, helper: https://helper.testnet.near.org, beneficiary: example-acct.testnet
     Transaction Id 4x8xohER1E3yxeYdXPfG8GvXin1ShiaroqE5GdCd5YxX
     To see the transaction in the transaction explorer, please open this url in your browser
     https://testnet.nearblocks.io/txns/4x8xohER1E3yxeYdXPfG8GvXin1ShiaroqE5GdCd5YxX
     Account sub-acct2.example-acct.testnet for network "default" was deleted.
+```
 
 </p>
 </details>
@@ -623,10 +640,12 @@ near send-near sender.testnet receiver.testnet 10
 <summary><strong>Example Response</strong></summary>
 <p>
 
+```
     Sending 10 NEAR to receiver.testnet from sender.testnet
     Transaction Id BYTr6WNyaEy2ykAiQB9P5VvTyrJcFk6Yw95HPhXC6KfN
     To see the transaction in the transaction explorer, please open this url in your browser
     https://testnet.nearblocks.io/txns/BYTr6WNyaEy2ykAiQB9P5VvTyrJcFk6Yw95HPhXC6KfN
+```
 
 </p>
 </details>
@@ -726,11 +745,13 @@ near deploy example-contract.testnet out/example.wasm --initFunction new --initA
 <summary><strong>Example Response</strong></summary>
 <p>
 
+```
     Starting deployment. Account id: example-contract.testnet, node: https://rpc.testnet.near.org, helper: https://helper.testnet.near.org, file: main.wasm
     Transaction Id G8GhhPuujMHTRnwursPXE1Lv5iUZ8WUecwiST1PcKWMt
     To see the transaction in the transaction explorer, please open this url in your browser
     https://testnet.nearblocks.io/txns/G8GhhPuujMHTRnwursPXE1Lv5iUZ8WUecwiST1PcKWMt
     Done deploying to example-contract.testnet
+```
 
 </p>
 </details>
