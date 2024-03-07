@@ -462,5 +462,9 @@
   "sidebar.concepts.link.Papers": {
     "message": "Papers",
     "description": "The label for link Papers in sidebar concepts, linking to https://near.org/papers"
+  },
+  "sidebar.tools.link.Testnet Faucet": {
+    "message": "Testnet Faucet",
+    "description": "The label for link Testnet Faucet in sidebar tools, linking to https://near-faucet.io/"
   }
 }

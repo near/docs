@@ -2538,6 +2538,11 @@
       },
       {
         "type": "link",
+        "label": "Testnet Faucet",
+        "href": "https://near-faucet.io/"
+      },
+      {
+        "type": "link",
         "label": "Explorers",
         "href": "/zh-CN/tools/explorer",
         "docId": "tools/explorer",
