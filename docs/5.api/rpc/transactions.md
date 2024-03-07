@@ -1072,7 +1072,7 @@ Example response:
 ```
 
 Final transaction results can be queried using [Transaction Status](#transaction-status)
-or [NEAR Explorer](https://explorer.testnet.near.org/) using the above `result` hash returning a result similar to the example below.
+or [NearBlocks Explorer](https://testnet.nearblocks.io/) using the above `result` hash returning a result similar to the example below.
 
 ![NEAR-Explorer-transactionHash](/docs/assets/NEAR-Explorer-transactionHash.png)
 
