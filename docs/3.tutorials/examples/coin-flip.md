@@ -45,7 +45,7 @@ Now that you understand what the dApp does, let us take a closer look to its str
 3. The smart contract code in JavaScript is in the `/contract-ts` folder.
 
 :::note
-Both Rust and JavaScript versions of contract implement the same functionality.
+Both Rust and JavaScript versions of the contract implement the same functionality.
 :::
 
 ### Contract
@@ -84,14 +84,14 @@ It indicates our app, when it starts, to check if the user is already logged in 
 ## Testing
 
 When writing smart contracts, it is very important to test all methods exhaustively. In this
-project, you have integration tests. Before digging into them, go ahead and perform the tests present in the dApp through the command `yarn test` for the JavaScript version of contract or `./test.sh` for the Rust version of contract.
+project you have integration tests. Before digging into them, go ahead and perform the tests present in the dApp through the command `yarn test` for the JavaScript version, or `./test.sh` for the Rust version.
 
 ### Integration test
 
-Integration tests could be written in both Rust and JavaScript. They automatically deploy a new
+Integration tests can be written in both Rust and JavaScript. They automatically deploy a new
 contract and execute methods on it. In this way, integration tests simulate interactions
 from users in a realistic scenario. You will find the integration tests for the `coin-flip`
-in `contract-ts/integration-tests` (for the contract in JavaScript) and `contract-rs/sandbox-rs` (for the contract in Rust).
+in `contract-ts/integration-tests` (for the JavaScript contract) and `contract-rs/sandbox-rs` (for the Rust contract).
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
