@@ -4,9 +4,9 @@ title: Chain Signatures
 sidebar_label: What are Chain Signatures?
 ---
 
-Chain Signatures allow NEAR accounts to request signatures for transactions on other blockchains.
+Chain signatures enable NEAR accounts, including smart contracts, to sign transactions and seamlessly transact across many blockchain protocols.
 
-Thanks to chain signatures, a NEAR account can safely control multiple accounts across different blockchains, enabling true ownership of cross-chain data and assets.
+This unlocks the next level of blockchain interoperability by giving ownership of diverse assets, cross-chain accounts, and data to a single NEAR account.
 
 :::info Searching for code?
 
@@ -102,3 +102,4 @@ Chain Signatures are a powerful tool that allows NEAR accounts to control accoun
 For the user, the process is made completely **on chain**, since they only need to make a call to a smart contract and wait for the response.
 
 Thanks to `derivation paths`, a single NEAR account can control **multiple accounts** on different blockchains, and thanks to the MPC service, the user can be sure that **nobody but themselves** can request signatures for those accounts.
+
