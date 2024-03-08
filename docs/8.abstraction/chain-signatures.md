@@ -43,11 +43,11 @@ _Diagram of a chain signature in NEAR_
 
 Chain Signatures use [`derivation paths`](../1.concepts/abstraction/chain-signatures.md#one-account-multiple-chains) to represent accounts on the target blockchain. The external address can be deterministically derived from:
 
-- The NEAR address _(e.g., `ana.near`)_
+- The NEAR address _(e.g., `example.near`)_
 - A derivation path _(a string such as `ethereum-1`, `ethereum-2`, etc)_
 - The MPC service's public key
 
-We recommend to use our example code to derive the address, as it's a complex process that involves hashing and encoding: 
+We recommend using this example code snippet to derive the address, as it's a complex process that involves hashing and encoding:
 
 <Tabs groupId="code-tabs">
   <TabItem value="Ξ Ethereum">
@@ -67,13 +67,14 @@ We recommend to use our example code to derive the address, as it's a complex pr
 :::tip
 The same NEAR account and path will always produce the same address on the target blockchain.
 
-- `influencer.testnet` + `ethereum-1` = `0x1b48b83a308ea4beb845db088180dc3389f8aa3b`
-- `influencer.testnet` + `ethereum-2` = `0x99c5d3025dc736541f2d97c3ef3c90de4d221315`
+- `example.near` + `ethereum-1` = `0x1b48b83a308ea4beb845db088180dc3389f8aa3b`
+- `example.near` + `ethereum-2` = `0x99c5d3025dc736541f2d97c3ef3c90de4d221315`
 :::
 
 ---
 
 ## 2. Creating the Transaction
+
 Constructing the transaction to be signed (transaction, message, data, etc.) variates depending on the target blockchain, but in general, it's just the hash of the message or transaction to be signed.
 
 <Tabs groupId="code-tabs">
