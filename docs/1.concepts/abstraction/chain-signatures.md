@@ -9,7 +9,9 @@ Chain Signatures allow NEAR accounts to request signatures for transactions on o
 Thanks to chain signatures, a NEAR account can safely control multiple accounts across different blockchains, enabling true ownership of cross-chain data and assets.
 
 :::info Searching for code?
-This document presents only broad concepts, to include Chain Signatures in your project check the [**build documentation**](../../8.abstraction/chain-signatures.md)
+
+This document presents only broad concepts, to include Chain Signatures in your project, check the [**build documentation**](../../8.abstraction/chain-signatures.md)
+
 :::
 
 ---
@@ -20,7 +22,7 @@ Controlling accounts on other chains is made possible thanks to the interaction 
 
 1. A deterministic way to derive [**multiple foreign addresses**](#one-account-multiple-chains) from one NEAR account
 2. A **smart contract** that receives requests to sign transaction for other chains
-3. A [**multiparty computation**](#3-mpc-signing-service) service that provides the smart contract with the signatures
+3. A [**multiparty computation service**](#multi-party-computation-service-mpc) that provides the signatures to the smart contract
 
 <hr class="subsection" />
 
@@ -46,9 +48,9 @@ See our Build section to see [how the derivation is implemented](../../8.abstrac
 ### A Contract for Chain Signatures
 A deployed smart contract is used to request signatures for transactions on other blockchains.
 
-The contract has a method called `sign` that takes two parameters:
+The contract has a `sign` method that takes two parameters:
   1. The `payload` (transaction) to be signed for the target blockchain
-  2. The `path` that identifies the account we want to use to sign the payload.
+  2. The `path` that identifies the account you want to use to sign the payload.
 
 For example, a user could request a signature to `send 0.1 ETH to 0x060f1...` **(payload)** using the `ethereum-1` account **(path)**.
 
@@ -72,7 +74,7 @@ Curious on how you can use the contract? Check the technical docs: [requesting t
 <hr class="subsection" />
 
 ### Multi-Party Computation Service (MPC)
-Multi-party computation (MPC) allows independent actors to do shared computations on private information, without revealing secrets to each-other.
+Multi-party computation (MPC) allows independent actors to do shared computations on private information without revealing secrets to each other.
 
 The NEAR MPC service is constantly listening for signature requests (i.e. users calling the `sign` method). When a call is detected, the MPC service will:
   1. Ask its nodes to jointly derive a signature for the `payload` using the account identified by the `path`
