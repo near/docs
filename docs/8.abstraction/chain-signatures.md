@@ -75,7 +75,7 @@ The same NEAR account and path will always produce the same address on the targe
 
 ## 2. Creating the Transaction
 
-Constructing the transaction to be signed (transaction, message, data, etc.) variates depending on the target blockchain, but in general, it's just the hash of the message or transaction to be signed.
+Constructing the transaction to be signed (transaction, message, data, etc.) varies depending on the target blockchain, but generally it's the hash of the message or transaction to be signed.
 
 <Tabs groupId="code-tabs">
   <TabItem value="Ξ Ethereum">
@@ -92,12 +92,14 @@ Constructing the transaction to be signed (transaction, message, data, etc.) var
 
 ---
 
-## 3. Requesting the Signature 
-Once the transaction is created and ready to be signed, a signature request is made by calling `sign` on the [MPC smart contract](https://github.com/near/mpc-recovery/blob/develop/contract/src/lib.rs#L298). 
+## 3. Requesting the Signature
 
-The method expects two parameters: 
+Once the transaction is created and ready to be signed, a signature request is made by calling `sign` on the [MPC smart contract](https://github.com/near/mpc-recovery/blob/develop/contract/src/lib.rs#L298).
+
+The method requires two parameters:
+
   1. The `transaction` to be signed for the target blockchain
-  2. The derivation `path` for the account we want to use to sign the transaction.
+  2. The derivation `path` for the account we want to use to sign the transaction
 
 <Tabs groupId="code-tabs">
   <TabItem value="Ξ Ethereum">
@@ -115,14 +117,14 @@ The method expects two parameters:
   </TabItem>
 </Tabs>
 
-The contract will take some time to respond, as the `sign` method starts recursively calling itself in order to wait while the **MPC service** signs the transaction.
+The contract will take some time to respond, as the `sign` method starts recursively calling itself waiting for the **MPC service** to sign the transaction.
 
 <details>
 <summary> A Contract Recursively Calling Itself? </summary>
 
-NEAR smart contracts are unable to halt execution and await the completion of a process. To solve this, one can make the contract call itself again and again checking on each iteration if the result is ready.
+NEAR smart contracts are unable to halt execution and await the completion of a process. To solve this, one can make the contract call itself again and again checking on each iteration to see if the result is ready.
 
-Note that each call will take one block, and thus result on ~1s of waiting. After some time the contract will either return a result - since somebody external provided it - or run out of GAS waiting.
+**Note:** Each call will take one block that equates to ~1 second of waiting. After some time the contract will either return a result that an external party provided or return an error running out of GAS waiting.
 
 </details>
 
@@ -139,12 +141,11 @@ If you want to learn more about how MPC works, we recommend to [**check this art
 
 </details>
 
-
 ---
 
-## 4. Reconstructing the Signature 
+## 4. Reconstructing the Signature
 
-The MPC contract will not return the signature of the transaction itself, but the elements we need to reconstruct such signature. 
+The MPC contract will not return the signature of the transaction itself, but the elements needed to reconstruct the signature.
 
 <Tabs groupId="code-tabs">
   <TabItem value="Ξ Ethereum">
@@ -181,6 +182,13 @@ Once we have reconstructed the signature, we can relay it to the corresponding n
   </TabItem>
 </Tabs>
 
+:::info
 
-:::info 
+⭐️ For a deep dive into the concepts of Chain Signatures see [What are Chain Signatures?](/concepts/abstraction/chain-signatures)
+
+⭐️ For complete examples of a NEAR account performing Eth transactions:
+
+- [web-app example](https://github.com/near-examples/near-multichain)
+- [component example](https://test.near.social/md1.testnet/widget/chainsig-sign-eth-tx) 
+
 :::
