@@ -759,6 +759,11 @@ const sidebar = {
       "label": "Wallets",
       "href": "https://wallet.near.org"
     },
+    {
+      "type": "link",
+      "label": "Testnet Faucet",
+      "href": "https://near-faucet.io/"
+    },
     "tools/explorer",
     "tools/indexing"
   ],
