@@ -41,9 +41,11 @@ _Diagram of a chain signature in NEAR_
 
 ## 1. Deriving the Foreign Address
 
-Chain Signatures use [`derivation paths`](../1.concepts/abstraction/chain-signatures.md#one-account-multiple-chains) to represent accounts on the target blockchain.
+Chain Signatures use [`derivation paths`](../1.concepts/abstraction/chain-signatures.md#one-account-multiple-chains) to represent accounts on the target blockchain. The external address can be deterministically derived from:
 
-The external address can be deterministically derived from the NEAR address (e.g., `ana.near`), a derivation path (a string such as `ethereum-1`, `ethereum-2`, etc), and the MPC service's public key.
+- The NEAR address _(e.g., `ana.near`)_
+- A derivation path _(a string such as `ethereum-1`, `ethereum-2`, etc)_
+- The MPC service's public key
 
 We recommend to use our example code to derive the address, as it's a complex process that involves hashing and encoding: 
 
