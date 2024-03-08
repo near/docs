@@ -12,7 +12,7 @@ NEAR accounts can safely control accounts across different blockchain protocols,
 ![chain-signatures](/docs/assets/welcome-pages/chain-signatures-overview.png)
 _Diagram of a chain signature in NEAR_
 
-There are five steps involved on Chain Signatures:
+There are five steps involved in Chain Signatures:
 
 1. [Deriving the Foreign Address](#1-deriving-foreigner-the-address) - Reconstruct the address that will be controlled on the target blockchain
 2. [Creating a Payload](#2-creating-the-payload) - Create the transaction / message that we want to sign for the target blockchain
@@ -30,7 +30,7 @@ See our [web-app example](https://github.com/near-examples/near-multichain) and 
 
 Chain Signatures use [`derivation paths`](../1.concepts/abstraction/chain-signatures.md#one-account-multiple-chains) to represent accounts on the target blockchain.
 
-The external address can be deterministically derived from the NEAR's address (e.g. `ana.near`), a derivation path (a string such as `ethereum-1`, `ethereum-2`, etc), and the MPC service's public key.
+The external address can be deterministically derived from the NEAR address (e.g., `ana.near`), a derivation path (a string such as `ethereum-1`, `ethereum-2`, etc), and the MPC service's public key.
 
 We recommend to use our example code to derive the address, as it's a complex process that involves hashing and encoding: 
 
