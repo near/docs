@@ -1,6 +1,6 @@
 ---
 id: chain-signatures
-title: Cross-Chain Signatures
+title: Chain Signatures
 ---
 
 import Tabs from '@theme/Tabs';
