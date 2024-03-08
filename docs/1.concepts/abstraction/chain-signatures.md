@@ -1,6 +1,6 @@
 ---
 id: chain-signatures
-title: Chain Signatures
+title: What are Chain Signatures?
 sidebar_label: What are Chain Signatures?
 ---
 

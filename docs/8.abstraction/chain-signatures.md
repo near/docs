@@ -11,20 +11,28 @@ Chain signatures enable NEAR accounts, including smart contracts, to sign and ex
 
 This unlocks the next level of blockchain interoperability by giving ownership of diverse assets, cross-chain accounts, and data to a single NEAR account.
 
-![chain-signatures](/docs/assets/welcome-pages/chain-signatures-overview.png)
-_Diagram of a chain signature in NEAR_
+:::tip
 
-There are five steps involved in Chain Signatures:
+For a deeper dive into the technical concepts of Chain Signatures see [What are Chain Signatures?](/concepts/abstraction/chain-signatures)
+
+:::
+
+## Creating Chain Signatures
+
+There are five steps to create a Chain Signature:
 
 1. [Deriving the Foreign Address](#1-deriving-foreigner-the-address) - Reconstruct the address that will be controlled on the target blockchain
-2. [Creating a Payload](#2-creating-the-payload) - Create the transaction / message that we want to sign for the target blockchain
-3. [Requesting a Signature](#3-requesting-the-signature) - Call the NEAR multichain contract, requesting to sign the payload
+2. [Creating a Transaction](#2-creating-the-payload) - Create the transaction / message that will be signed for the target blockchain
+3. [Requesting a Signature](#3-requesting-the-signature) - Call the NEAR `multichain` contract, requesting to sign the payload
 4. [Reconstructing the Signature](#4-reconstructing-the-signature) - Reconstruct the signature from the MPC service's response
-5. [Relaying the Signed Payload](#5-relaying-the-signature) - The signed payload is then sent to the destination chain for execution.
+5. [Relaying the Signed Transaction](#5-relaying-the-signature) - Send the signed payload to the destination chain for execution.
 
 :::info Looking for examples?
 See our [web-app example](https://github.com/near-examples/near-multichain) and [component example](https://test.near.social/md1.testnet/widget/chainsig-sign-eth-tx) showing how a NEAR account can create transactions on Ethereum.
-::: 
+:::
+
+![chain-signatures](/docs/assets/welcome-pages/chain-signatures-overview.png)
+_Diagram of a chain signature in NEAR_
 
 ---
 
@@ -60,7 +68,7 @@ The same NEAR account and path will always produce the same address on the targe
 
 ---
 
-## 2. Creating the Payload
+## 2. Creating the Transaction
 Constructing the payload to be signed (transaction, message, data, etc.) variates depending on the target blockchain, but in general, it's just the hash of the message or transaction to be signed.
 
 <Tabs groupId="code-tabs">
