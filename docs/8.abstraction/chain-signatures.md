@@ -7,7 +7,9 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
-NEAR accounts can safely control accounts across different blockchain protocols, allowing each NEAR account to have true ownership of cross-chain data and assets.
+Chain signatures enable NEAR accounts, including smart contracts, to sign and execute transactions across many blockchain protocols.
+
+This unlocks the next level of blockchain interoperability by giving ownership of diverse assets, cross-chain accounts, and data to a single NEAR account.
 
 ![chain-signatures](/docs/assets/welcome-pages/chain-signatures-overview.png)
 _Diagram of a chain signature in NEAR_
