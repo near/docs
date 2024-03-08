@@ -6,7 +6,7 @@ sidebar_label: ⭐ What is NEAR?
 
 NEAR is a **user-friendly** and [**carbon-neutral**](https://near.org/blog/near-climate-neutral-product/) blockchain, built from the ground up to be performant, secure, and infinitely scalable.
 
-In technical terms, NEAR is a [layer one](https://blockchain-comparison.com/blockchain-protocols/), [sharded](https://near.org/blog/near-launches-nightshade-sharding-paving-the-way-for-mass-adoption), [proof-of-stake](https://en.wikipedia.org/wiki/Proof_of_stake) blockchain built with usability in mind.
+In technical terms, NEAR is a [layer one](https://coinmarketcap.com/academy/glossary/layer-1-blockchain), [sharded](https://near.org/blog/near-launches-nightshade-sharding-paving-the-way-for-mass-adoption), [proof-of-stake](https://en.wikipedia.org/wiki/Proof_of_stake) blockchain built with usability in mind.
 
 In simple terms, NEAR is **blockchain for everyone**.
 
