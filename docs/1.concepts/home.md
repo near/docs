@@ -1,5 +1,5 @@
 ---
-id: welcome
+id: home
 title: NEAR Protocol Overview
 sidebar_label: Home
 hide_table_of_contents: true

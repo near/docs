@@ -3,7 +3,7 @@
 // - concepts/data-flow/data-storage
 const sidebar = {
   "concepts": [
-    "concepts/welcome",
+    "concepts/home",
     "concepts/protocol",
     {
       "type": "html",
@@ -29,11 +29,11 @@ const sidebar = {
     },
     {
       "Transactions": [
-        "concepts/overview",
+        "concepts/transactions/overview",
         {
           "Gas": [
-            "concepts/transactions/gas",
-            "concepts/transactions/gas-advanced"
+            "concepts/transactions/gas/gas",
+            "concepts/transactions/gas/gas-advanced"
           ]
         }
       ]
@@ -72,8 +72,8 @@ const sidebar = {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Chain Abstraction ✨</small></b></span>"
     },
-    "concepts/introduction",
-    "concepts/relayers",
+    "concepts/chain-signatures/introduction",
+    "concepts/chain-signatures/relayers",
     {
       "Chain Signatures": [
         "concepts/chain-signatures/chain-signatures",
@@ -89,7 +89,7 @@ const sidebar = {
       "value": "<span class='menu__link'><b><small> Blockchain Data &amp; Indexing </small></b></span>"
     },
     [
-      "concepts/data-storage",
+      "concepts/data-indexing/data-storage",
       {
         "Data Indexing": [
           "concepts/data-indexing/indexers",
@@ -107,8 +107,8 @@ const sidebar = {
       "value": "<span class='menu__link'><b><small> Advanced Topics </small></b></span>"
     },
     [
-      "concepts/runtime",
-      "concepts/specification",
+      "concepts/advanced-topics/runtime",
+      "concepts/advanced-topics/specification",
       {
         "type": "link",
         "label": "Papers",
@@ -124,11 +124,11 @@ const sidebar = {
       "value": "<span class='menu__link'><b><small> From Web 2 to Web 3 </small></b></span>"
     },
     [
-      "concepts/intro",
-      "concepts/basics",
-      "concepts/near",
-      "concepts/economics",
-      "concepts/nfts"
+      "concepts/from-web-2-to-web-3/intro",
+      "concepts/from-web-2-to-web-3/basics",
+      "concepts/from-web-2-to-web-3/near",
+      "concepts/from-web-2-to-web-3/economics",
+      "concepts/from-web-2-to-web-3/nfts"
     ]
   ],
   "build": [

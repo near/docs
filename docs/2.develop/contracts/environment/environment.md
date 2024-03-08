@@ -87,10 +87,12 @@ In most scenarios you will **only need to know the predecessor**. However, there
 ---
 
 ## Balances and Attached NEAR
+
 The environment gives you access to 3 token-related parameters, all expressed in yoctoNEAR (1 Ⓝ = 10<sup>24</sup>yⓃ):
 
 ### Attached Deposit
-`attached_deposit` represents the amount of yoctoNEAR the predecessor attached to the call. 
+
+`attached_deposit` represents the amount of yoctoNEAR the predecessor attached to the call.
 
 This amount is **already deposited** in your contract's account, and is **automatically returned** to the `predecessor` if your **method panics**.
 
@@ -128,7 +130,7 @@ The `timestamp` attribute represents the approximated **UNIX timestamp** at whic
 
 ### Current Epoch
 
-The NEAR blockchain groups blocks in [Epochs](../../../1.concepts/basics/epoch.md). The `current_epoch` attribute measures how many epochs have passed so far. It is very useful to coordinate with other contracts that measure time in epochs, such as the [validators](../../../1.concepts/basics/validators.md).
+The NEAR blockchain groups blocks in [Epochs](../../../1.concepts/network/epoch.md). The `current_epoch` attribute measures how many epochs have passed so far. It is very useful to coordinate with other contracts that measure time in epochs, such as the [validators](../../../1.concepts/network/validators.md).
 
 ### Block Index
 
@@ -147,9 +149,11 @@ Each code instruction costs a certain amount of Gas, and if you run out of it, t
 The environment gives you access to two gas-related arguments: `prepaid_gas` and `used_gas`.
 
 ### Prepaid Gas
+
 `prepaid_gas` represents the amount of Gas the `predecessor` attached to this call. It cannot exceed the limit 300TGas (300 * 10<sup>12</sup> Gas).
 
 ### Used Gas
+
 `used_gas` contains the amount of Gas that has been used so far. It is useful to estimate the Gas cost of running a method.
 
 :::warning
@@ -166,6 +170,7 @@ If you already [estimated the Gas](/concepts/basics/transactions/gas#accurate-es
   const REQUIRED_GAS: Gas = Gas(20_000_000_000_000); // 20 TGas
   assert!(env::prepaid_gas() >= REQUIRED_GAS, "Please attach at least 20 TGas");
   ```
+
   </TabItem>
 </Tabs>
 :::
@@ -209,7 +214,7 @@ If you already [estimated the Gas](/concepts/basics/transactions/gas#accurate-es
   </TabItem>
 </Tabs>
 
-:::info 
+:::info
 In the JS SDK, `throw new Error("message")` mimics the behavior of Rust's `env::panic_str("message")`.
 :::
 

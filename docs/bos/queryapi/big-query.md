@@ -96,7 +96,7 @@ The tables available in the NEAR Public Lakehouse are:
 
 :::note References
 
-- [Protocol documentation](../../1.concepts/welcome.md)
+- [Protocol documentation](../../1.concepts/home.md)
 - [Near Data flow](../../1.concepts/data-flow/near-data-flow.md)
 - [Lake Data structures](../../2.develop/lake/structures/toc.mdx)
 - [Protocol specification](https://nomicon.io/)

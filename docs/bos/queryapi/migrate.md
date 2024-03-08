@@ -12,7 +12,7 @@ You can request access through [this link](http://bit.ly/near-queryapi-beta).
 
 :::
 
-In this article you'll learn how to migrate your [NEAR Lake Framework](../../1.concepts/3.advanced/near-lake-framework.md) JavaScript indexer to [Near QueryAPI](intro.md), a fully managed solution to build indexer functions,
+In this article you'll learn how to migrate your [NEAR Lake Framework](../../1.concepts/data-indexing/near-lake-framework.md) JavaScript indexer to [Near QueryAPI](intro.md), a fully managed solution to build indexer functions,
 extract on-chain data, store it in a database, and be able to query it using GraphQL endpoints.
 
 :::info Supported languages

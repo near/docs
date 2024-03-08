@@ -19,7 +19,7 @@ The state keeps track of relevant metadata from the contract. Particularly, the 
 3. `storage_usage`: Amount of bytes used for storage by the account (code + metadata + data storage).
 
 :::info
-You can check an accounts metadata by running the following [near cli](../../../4.tools/cli.md) command:
+You can check an accounts metadata by running the following [near cli](../../4.tools/cli.md) command:
 
 ```bash
 near state hello-nearverse.testnet
@@ -35,7 +35,7 @@ The contract's storage is organized as **key-value pairs** encoded using base64 
 
 :::info
 
-You can check an accounts contract state by running the following [near cli](../../../4.tools/cli.md) command:
+You can check an accounts contract state by running the following [near cli](../../4.tools/cli.md) command:
 
 ```bash
 near view-state hello-nearverse.testnet --finality final --utf8 true

@@ -10,7 +10,7 @@ We recommend using the CLI for deploying contracts. In a CI/CD environment, you 
 
 ### API requests flow
 
-There are different types of [Nodes on NEAR](./validators.md): RPC Nodes, Validators, and Archival Nodes.
+There are different types of [Nodes on NEAR](../network/validators.md): RPC Nodes, Validators, and Archival Nodes.
 
 When calling an endpoint on `near.org`, it resolves to a server that chooses an available RPC node to handle the request.
 Then the RPC node passes the request to an available Validator node. Finally, the validator node spawns a VM environment to execute the contract.

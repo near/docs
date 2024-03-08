@@ -14,7 +14,7 @@ In this guideline we’ll see how to bring a traditional Web 2 application into 
 
 It’s written for developers who are just starting their journey into the world of Web 3 and Blockchain, so we’ll start by explaining what Web 3 and blockchain are. Then, we’ll explore how to build decentralized applications (dApps) using NEAR Protocol. And after we’ve learned the basics, we’ll guide you through the intricacies of fusing client applications, traditional web servers and the NEAR blockchain.
 
-During our journey we’ll focus on high-level decisions, architecture, and explore not just HOW to do something, but also WHY it’s done this way. And as with anything, there’s no single right way, so we’ll explore different alternatives and help you to choose the right one. 
+During our journey we’ll focus on high-level decisions, architecture, and explore not just HOW to do something, but also WHY it’s done this way. And as with anything, there’s no single right way, so we’ll explore different alternatives and help you to choose the right one.
 
 Of course, real world applications aren’t built with words, but with code, so links to numerous code examples will be provided. But to make it as useful as possible, this guideline itself will be kept implementation and technology agnostic whenever possible.
 

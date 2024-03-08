@@ -109,7 +109,7 @@ const config = {
       },
       items: [
         {
-          to: '/concepts/welcome',
+          to: '/concepts/home',
           label: 'Learn',
           position: 'left',
         },

@@ -27,7 +27,7 @@ Each `Transaction` is augmented with critical information about its:
 
 - **origin** (cryptographically signed by `signer`)
 - **destination** or intention (sent or applied to `receiver`)
-- **recency** (`block_hash` from recent block within acceptable limits - [1 epoch](../epoch.md))
+- **recency** (`block_hash` from recent block within acceptable limits - [1 epoch](../network/epoch.md))
 - **uniqueness** (`nonce` must be unique for a given `signer` `AccessKey`)
 
 ## Action {#action}

@@ -11,7 +11,7 @@ Welcome, this is the starting point for all NEAR documentation. Learn to build a
 <div className="container">
   <div className="row">
     <div className="col col--4">
-      <a href="/concepts/welcome">
+      <a href="/concepts/home">
         <div className="card">
           <div className="card__image">
             <img src={require("@site/static/docs/assets/welcome-pages/protocol.png").default} alt="Learn" />

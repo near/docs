@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 
 Smart contracts can perform specific `Actions` such as transferring NEAR, or calling other contracts.
 
-An important property of `Actions` is that they can be batched together when acting on the same contract. **Batched actions** act as a unit: they execute in the same [receipt](../../1.concepts/overview.md#receipt-receipt), and if **any fails**, then they **all get reverted**.
+An important property of `Actions` is that they can be batched together when acting on the same contract. **Batched actions** act as a unit: they execute in the same [receipt](../../1.concepts/basics/overview.md#receipt-receipt), and if **any fails**, then they **all get reverted**.
 
 :::info
 `Actions` can be batched only when they act on the **same contract**. You can batch calling two methods on a contract,
@@ -169,12 +169,12 @@ The snippet showed above is a low level way of calling other methods. We recomme
 ---
 
 ## Create a Sub Account
+
 Your contract can create direct sub accounts of itself, for example, `user.near` can create `sub.user.near`.
 
-Accounts do **NOT** have control over their sub-accounts, since they have their own keys. 
+Accounts do **NOT** have control over their sub-accounts, since they have their own keys.
 
 Sub-accounts are simply useful for organizing your accounts (e.g. `dao.project.near`, `token.project.near`).
-
 
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="🌐 JavaScript">
@@ -235,6 +235,7 @@ Sub-accounts are simply useful for organizing your accounts (e.g. `dao.project.n
 <hr className="subsection" />
 
 #### Creating Other Accounts
+
 Accounts can only create immediate sub-accounts of themselves.
 
 If your contract wants to create a `.mainnet` or `.testnet` account, then it needs to [call](#function-call)
@@ -343,6 +344,7 @@ If an account with a contract deployed does **not** have any access keys, this i
 When you use actions to create a new account, the created account does not have any [access keys](../../1.concepts/accounts/access-keys.md), meaning that it **cannot sign transactions** (e.g. to update its contract, delete itself, transfer money).
 
 There are two options for adding keys to the account:
+
 1. `add_access_key`: adds a key that can only call specific methods on a specified contract.
 2. `add_full_access_key`: adds a key that has full access to the account.
 
@@ -412,6 +414,7 @@ If an account with a contract deployed does **not** have any access keys, this i
 ## Delete Account
 
 There are two scenarios in which you can use the `delete_account` action:
+
 1. As the **last** action in a chain of batched actions.
 2. To make your smart contract delete its own account.
 

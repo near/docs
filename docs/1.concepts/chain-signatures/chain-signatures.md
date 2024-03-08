@@ -8,7 +8,7 @@ Chain Signatures unlock the ability for a single account to transact across mult
 
 This many-to-one ownership is made possible through a mixture of services across our tech stack:
 
-1. A [smart contract](../basics/accounts/smartcontract.md) that holds requests for multi-chain signatures.
+1. A [smart contract](../accounts/smartcontract.md) that holds requests for multi-chain signatures.
 2. A [multiparty computation](https://www.zellic.io/blog/mpc-from-scratch/) service listening for signature requests.
 3. A multi-chain [relayer](./relayers.md), which can submit signed transactions to other networks.
 
@@ -41,12 +41,14 @@ The first step is to construct a payload (transaction, message, data, etc.) for 
 ### 2. Signature Request
 
 Once a payload is created and ready to sign, a signature request is made by calling `sign` on the deployed smart contract `multichain.near`. This method takes two parameters:
+
   1. **payload:** The payload (transaction, message, data, etc.) to be signed for the target blockchain
   2. **path:** A name representing the account that should be used to sign the payload (e.g. ethereum-1)
 
 ```rust
   pub fn sign(payload: [u8; 32], path: String) -> Signature
 ```
+
 _[See the full code in Github](https://github.com/near/mpc-recovery/blob/bc85d66833ffa8537ec61d0b22cd5aa96fbe3197/contract/src/lib.rs#L263)_
 
 For example, a user could request a signature to `send 0.1 ETH to 0x060f1...` **(payload)** using the `ethereum-1` account **(path)**.
@@ -68,7 +70,7 @@ Note that each call will take one block, and thus result on ~1s of waiting. Afte
 
 A multi-party computation service (`MPC service`, see more below) is constantly listening for signature requests (i.e. users calling the `sign` method). When a call is detected, the service will:
 
-1. Use the `accountId` of the requester, and the `path` (in our example, `ethereum-1`) to derive a key 
+1. Use the `accountId` of the requester, and the `path` (in our example, `ethereum-1`) to derive a key
 2. Sign the `payload` (in our example, a transaction transferring ETH) using the stored key
 3. Call the contract `multichain.near`, storing the resulting `Signature`
 

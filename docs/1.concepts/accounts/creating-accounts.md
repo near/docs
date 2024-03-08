@@ -21,7 +21,7 @@ that, you can use your [implicit account](account-id.md#implicit-accounts-implic
 ---
 
 ## Local Implicit Account
-We can create a implicit account with ED25519 key-pair locally using [near cli](../../../4.tools/cli.md)
+We can create a implicit account with ED25519 key-pair locally using [near cli](../../4.tools/cli.md)
 
 ```bash
 near generate-key --saveImplicit
@@ -59,5 +59,5 @@ The public key that you pass will become the [Full Access key](access-keys.md#fu
 :::
 
 :::info
-For **sub-accounts** check the [near-cli create-account](../../../4.tools/cli.md#near-create-account) docs.
+For **sub-accounts** check the [near-cli create-account](../../4.tools/cli.md#near-create-account) docs.
 :::

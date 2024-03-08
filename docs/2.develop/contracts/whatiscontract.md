@@ -9,6 +9,7 @@ Smart contracts are pieces of **executable code** that live in a NEAR account. T
 ![img](/docs/assets/welcome-pages/contracts-landing.png)
 
 Do not worry if you don't know how smart-contract blockchains work. As a developer, it is sufficient to understand that NEAR smart-contracts:
+
 1. Have **limited** computational resources.
 2. Interact with other contracts in an **asynchronous** way.
 3. Deal with **real money**, for which security must be a top concern.
@@ -22,7 +23,8 @@ Smart contracts **cannot perform HTTP requests**, meaning they can't fetch data 
 ---
 
 ## Where do contracts live?
-Smart Contracts are deployed into [**NEAR accounts**](../../1.concepts/basics/accounts/introduction.md). Any NEAR account can hold a contract, needing to pay for the **contract's code** and the **data it stores**. 
+
+Smart Contracts are deployed into [**NEAR accounts**](../../1.concepts/accounts/model.md). Any NEAR account can hold a contract, needing to pay for the **contract's code** and the **data it stores**.
 
 Once in an account, anyone can interact with the contract. Thanks to the underlying network structure, executing code from a contract is both **fast** (avg. 1.4s finality) and **cheap**. Moreover, **read-only** operations are **free for everyone**.
 
@@ -39,6 +41,7 @@ Just like any piece of software, smart contracts have a development flow - start
 ![img](/docs/assets/welcome-pages/contract-lifecycle.png)
 
 The development flow can be summarized as follows:
+
 - [**Scaffold**](../contracts/quickstart.md): The simplest way to create a project is by starting from a template.
 - [**Build**](../contracts/welcome.md): To write a contract developers can choose between Javascript and Rust.
 - [**Test**](../testing/introduction.md): Our Sandbox enables to simulate interactions with one or multiple contracts in a realistic environment.
@@ -47,6 +50,7 @@ The development flow can be summarized as follows:
 - [**Monitor**](../monitor.md): The contract's activity can be monitored through simple APIs.
 
 #### Supported Languages
+
 During the whole cycle, developers can choose between [JavaScript](https://www.learn-js.org/) and [Rust](https://www.rust-lang.org/), allowing them to use their favorite language at each step of their journey.
 
 <details>
@@ -61,7 +65,8 @@ We envision that in the future, more languages will be supported and the support
 ---
 
 ## Contract primitives
-Contract primitives such as FT, NFT, and DAOs are fundamental building blocks that can be combined to create awesome user experiences such as reward tokens, decision-making tools, and marketplaces. 
+
+Contract primitives such as FT, NFT, and DAOs are fundamental building blocks that can be combined to create awesome user experiences such as reward tokens, decision-making tools, and marketplaces.
 
 :::tip
 

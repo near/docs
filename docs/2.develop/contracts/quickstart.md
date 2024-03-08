@@ -7,7 +7,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
-[NEAR accounts](../../1.concepts/basics/accounts/introduction.md) can host programs known as smart contracts. Smart contracts can **store data**, and **expose methods** so other users and contracts interact with them. 
+[NEAR accounts](../../1.concepts/accounts/model.md) can host programs known as smart contracts. Smart contracts can **store data**, and **expose methods** so other users and contracts interact with them.
 
 In this quickstart tutorial, we will guide you in creating your first smart contract in the NEAR **testnet** that stores and retrieves a greeting.
 
@@ -16,7 +16,7 @@ In this quickstart tutorial, we will guide you in creating your first smart cont
 ## Prerequisites
 
 Before starting, make sure you have the following installed:
- 
+
 1. [Node.js](https://nodejs.org/en/download), to use our scaffolding tool.
 2. [NEAR CLI](/tools/near-cli#installation) or [NEAR CLI-RS](/tools/near-cli-rs), to deploy and interact with the contract.
 3. [cargo-near](https://github.com/near/cargo-near), to easily create testnet accounts.
@@ -24,12 +24,14 @@ Before starting, make sure you have the following installed:
 
 :::tip Easy Install
 
-- **NEAR-CLI:** Install both `near-cli` and `cargo-near` tools using 
+- **NEAR-CLI:** Install both `near-cli` and `cargo-near` tools using
+
   ```
   npm i -g near-cli cargo-near
   ```
 
 - **NEAR-CLI-RS:** Install both `near-cli-rs` and `cargo-near` tools using
+
   ```
   npm i -g near-cli-rs cargo-near
   ```
@@ -48,9 +50,9 @@ However, if you want to create one, you can do so through [a wallet](https://tes
 
 ## Creating the Contract
 
-Create a smart contract by running our `create-near-app` scaffolding tool and following the interactive menu. 
+Create a smart contract by running our `create-near-app` scaffolding tool and following the interactive menu.
 
-```bash 
+```bash
   npx create-near-app@latest
 ```
 
@@ -103,7 +105,8 @@ The resulting folder structure will change slightly depending on the chosen lang
 ---
 
 ## The Contract
-Your new smart contract stores a `greeting: string` attribute in their state, and exposes two methods to interact with it (`set_greeting`, `get_greeting`). 
+
+Your new smart contract stores a `greeting: string` attribute in their state, and exposes two methods to interact with it (`set_greeting`, `get_greeting`).
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
@@ -119,6 +122,7 @@ Your new smart contract stores a `greeting: string` attribute in their state, an
 </CodeTabs>
 
 There are 3 important things to notice:
+
 1. The `get_greeting` method is a [`view`](./anatomy.md#public-methods) method, meaning it only reads from the contract and can be called for free by anyone.
 2. By default, the contract is initialized with the `greeting` attribute set to `"Hello"`.
 3. The `set_greeting` method is a [`change`](./anatomy.md#public-methods) method, meaning it modifies the contract's state and requires a user to sign a transaction in order to be executed.
@@ -156,7 +160,6 @@ Building and testing the contract is as simple as running two commands.
   ```
   
 </TabItem>
-
 
 </Tabs>
 
@@ -229,6 +232,7 @@ Here we are creating a random account since we do not care about the account's n
 ---
 
 ## Deploy the Contract
+
 Having our account created, we can now deploy the contract into it:
 
 <Tabs>
@@ -247,9 +251,7 @@ Having our account created, we can now deploy the contract into it:
   near deploy --wasmFile ./target/wasm32-unknown-unknown/release/hello_near.wasm --accountId <created-account>
   ```
 
-  
 </TabItem>
-
 
 </Tabs>
 
@@ -288,7 +290,6 @@ The `get_greeting` method is a [`view`](./anatomy.md#public-methods) method, mea
 </TabItem>
 
 </Tabs>
-
 
 #### Set Greeting
 

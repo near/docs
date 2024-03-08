@@ -13,10 +13,10 @@ There are 3 main actors interacting to form the NEAR ecosystem:
 <hr className="subsection" />
 
 ## Users
-Users can have one or multiple [NEAR accounts](./accounts/introduction.md), which they can use to:
+Users can have one or multiple [NEAR accounts](../accounts/model.md), which they can use to:
 
-1. **Transfer** tokens, such as the native [$NEAR token](token.md) or community-built ones.
-2. **Execute** [decentralized apps](https://awesomenear.com) stored in the network, known as [smart contracts](./accounts/smartcontract.md).
+1. **Transfer** tokens, such as the native [$NEAR token](../tokens/token.md) or community-built ones.
+2. **Execute** [decentralized apps](https://awesomenear.com) stored in the network, known as [smart contracts](../accounts/smartcontract.md).
 3. **Develop** their own decentralized app and store it in the network.
 
 <hr className="subsection" />
@@ -24,7 +24,7 @@ Users can have one or multiple [NEAR accounts](./accounts/introduction.md), whic
 ## Validators
 Validators are people distributed around the world, running the infrastructure that underlies the NEAR network. They serve two main jobs:
 
-1. **Execute** the [transactions](transactions/overview.md) sent by the users, persisting their outcomes in the blockchain.
+1. **Execute** the [transactions](../transactions/overview.md) sent by the users, persisting their outcomes in the blockchain.
 2. **Secure** the network by overseeing the rest of the validators and the blocks they create.
 
 ---

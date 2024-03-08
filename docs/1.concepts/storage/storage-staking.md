@@ -37,7 +37,7 @@ Take care, then, when designing your smart contracts to ensure that such attacks
 
 ## btw, you can remove data to unstake some tokens
 
-People familiar with the "immutable data" narrative about blockchains find this surprising. While it's true that an _indexing node_ will keep all data forever, _validating nodes_ (that is, the nodes run by most validators in the network) do not. Smart contracts can provide ways to delete data, and this data will be purged from most nodes in the network within a few [epochs](../basics/epoch.md).
+People familiar with the "immutable data" narrative about blockchains find this surprising. While it's true that an _indexing node_ will keep all data forever, _validating nodes_ (that is, the nodes run by most validators in the network) do not. Smart contracts can provide ways to delete data, and this data will be purged from most nodes in the network within a few [epochs](../network/epoch.md).
 
 Note that a call to your smart contract to remove data has an associated gas fee. Given NEAR's gas limit, this creates an upper limit on how much data can be deleted in a single transaction.
 

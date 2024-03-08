@@ -8,6 +8,7 @@ In order to use the RPC API you will need to setup the correct RPC endpoints.
 <hr className="subsection" />
 
 ## RPC Endpoint Setup
+
 - `POST` for all methods
 - `JSON RPC 2.0`
 - `id: "dontcare"`
@@ -18,12 +19,14 @@ In order to use the RPC API you will need to setup the correct RPC endpoints.
   - localnet `http://localhost:3030`
 
 ### Limits
+
 - Maximum number of requests per IP: 600 req/min
 
 <hr className="subsection" />
 
 ## Querying Historical Data
-Querying historical data (older than 5 [epochs](../../1.concepts/basics/epoch.md) or ~2.5 days), you may get responses that the data is not available anymore. In that case, archival RPC nodes will come to your rescue:
+
+Querying historical data (older than 5 [epochs](../../1.concepts/network/epoch.md) or ~2.5 days), you may get responses that the data is not available anymore. In that case, archival RPC nodes will come to your rescue:
 
 - mainnet `https://archival-rpc.mainnet.near.org`
 - testnet `https://archival-rpc.testnet.near.org`
@@ -31,6 +34,7 @@ Querying historical data (older than 5 [epochs](../../1.concepts/basics/epoch.md
 You can see this interface defined in `nearcore` [here](https://github.com/near/nearcore/blob/bf9ae4ce8c680d3408db1935ebd0ca24c4960884/chain/jsonrpc/client/src/lib.rs#L181).
 
 ### Limits
+
 - Maximum number of requests per IP: 600 req/min
 
 ---
@@ -49,6 +53,7 @@ You only need to configure two things:
 After that is set up, just copy/paste the `JSON object` example snippets below into the `body` of your request, on Postman, and click `send`.
 
 ---
+
 ## JavaScript Setup {#javascript-setup}
 
 All of the queries listed in this documentation page can be called using [`near-api-js`](https://github.com/near/near-api-js).
@@ -57,6 +62,7 @@ All of the queries listed in this documentation page can be called using [`near-
 - All JavaScript code snippets require a `near` object. For examples of how to instantiate, [**click here**](/tools/near-api-js/quick-reference#connect).
 
 ---
+
 ## HTTPie Setup {#httpie-setup}
 
 If you prefer to use a command line interface, we have provided RPC examples you can use with [HTTPie](https://httpie.org/). Please note that params take
@@ -83,5 +89,6 @@ The block IDs of transactions shown in [NearBlocks Explorer](https://testnet.nea
 ## Using `finality` param {#using-finality-param}
 
 The `finality` param has two options: `optimistic` and `final`.
+
 1. `optimistic` uses the latest block recorded on the node that responded to your query _(< 1 second delay after the transaction is submitted)_
 2. `final` is for a block that has been validated on at least 66% of the nodes in the network _(usually takes 2 blocks / approx. 2 second delay)_

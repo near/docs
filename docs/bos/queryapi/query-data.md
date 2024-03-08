@@ -15,7 +15,7 @@ Building a blockchain indexer depends on the kind of historical blockchain data 
 
 :::tip
 
-Want to learn more about indexing? Check the [Introduction to Indexers](../../1.concepts/3.advanced/indexers.md) article.
+Want to learn more about indexing? Check the [Introduction to Indexers](../../1.concepts/data-indexing/indexers.md) article.
 
 :::
 
@@ -47,7 +47,6 @@ Common Blockchain analytics use cases that can be managed with [BigQuery](big-qu
 - smart contract utilization
 - insights across tokens and NFT adoption.
 
-
 ## WebApps
 
 Building Web3 apps that handle historical blockchain data require dedicated solutions that manage the data and reduce the latency of requests, as it's not possible to scan the whole blockchain when a user makes a request.
@@ -69,6 +68,6 @@ Learn more about QueryAPI in this [Overview article](intro.md).
 
 For a technical implementation deep-dive, check these QueryAPI tutorials:
 
-  - [NFTs Indexer](../tutorial/indexer-tutorials/nft-indexer.md): an indexer that keeps track of newly minted NFT on Near blockchain.
-  - [Posts Indexer](../tutorial/indexer-tutorials/posts-indexer.md): this indexer keeps track of every new NEAR Social post found on the blockchain.
-  - [Social Feed Indexer](../tutorial/indexer-tutorials/feed-indexer.md): this indexer keeps track of new posts, comments, and likes on NEAR Social, so a social feed can be rendered quickly.
+- [NFTs Indexer](../tutorial/indexer-tutorials/nft-indexer.md): an indexer that keeps track of newly minted NFT on Near blockchain.
+- [Posts Indexer](../tutorial/indexer-tutorials/posts-indexer.md): this indexer keeps track of every new NEAR Social post found on the blockchain.
+- [Social Feed Indexer](../tutorial/indexer-tutorials/feed-indexer.md): this indexer keeps track of new posts, comments, and likes on NEAR Social, so a social feed can be rendered quickly.
