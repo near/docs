@@ -11,18 +11,20 @@ Chain signatures enable NEAR accounts, including smart contracts, to sign and ex
 
 This unlocks the next level of blockchain interoperability by giving ownership of diverse assets, cross-chain accounts, and data to a single NEAR account.
 
-:::tip
+:::info
 
-For a deep dive into the concepts of Chain Signatures see [What are Chain Signatures?](/concepts/abstraction/chain-signatures)
+This guide will take you through a step by step process for creating a Chain Signature.
 
-For complete examples of a NEAR account performing Eth transactions:
+⭐️ For a deep dive into the concepts of Chain Signatures see [What are Chain Signatures?](/concepts/abstraction/chain-signatures)
+
+⭐️ For complete examples of a NEAR account performing Eth transactions:
 
 - [web-app example](https://github.com/near-examples/near-multichain)
 - [component example](https://test.near.social/md1.testnet/widget/chainsig-sign-eth-tx) 
 
 :::
 
-## Creating Chain Signatures
+## Create a Chain Signature
 
 There are five steps to create a Chain Signature:
 
