@@ -13,7 +13,12 @@ This unlocks the next level of blockchain interoperability by giving ownership o
 
 :::tip
 
-For a deeper dive into the technical concepts of Chain Signatures see [What are Chain Signatures?](/concepts/abstraction/chain-signatures)
+For a deep dive into the concepts of Chain Signatures see [What are Chain Signatures?](/concepts/abstraction/chain-signatures)
+
+For complete examples of a NEAR account performing Eth transactions:
+
+- [web-app example](https://github.com/near-examples/near-multichain)
+- [component example](https://test.near.social/md1.testnet/widget/chainsig-sign-eth-tx) 
 
 :::
 
@@ -21,15 +26,11 @@ For a deeper dive into the technical concepts of Chain Signatures see [What are 
 
 There are five steps to create a Chain Signature:
 
-1. [Deriving the Foreign Address](#1-deriving-foreigner-the-address) - Reconstruct the address that will be controlled on the target blockchain
-2. [Creating a Transaction](#2-creating-the-payload) - Create the transaction / message that will be signed for the target blockchain
-3. [Requesting a Signature](#3-requesting-the-signature) - Call the NEAR `multichain` contract, requesting to sign the payload
+1. [Deriving the Foreign Address](#1-deriving-the-foreign-address) - Reconstruct the address that will be controlled on the target blockchain
+2. [Creating a Transaction](#2-creating-the-transaction) - Create the transaction / message that will be signed for the target blockchain
+3. [Requesting a Signature](#3-requesting-the-signature) - Call the NEAR `multichain` contract, requesting to sign the transaction
 4. [Reconstructing the Signature](#4-reconstructing-the-signature) - Reconstruct the signature from the MPC service's response
-5. [Relaying the Signed Transaction](#5-relaying-the-signature) - Send the signed payload to the destination chain for execution.
-
-:::info Looking for examples?
-See our [web-app example](https://github.com/near-examples/near-multichain) and [component example](https://test.near.social/md1.testnet/widget/chainsig-sign-eth-tx) showing how a NEAR account can create transactions on Ethereum.
-:::
+5. [Relaying the Signed Transaction](#5-relaying-the-signature) - Send the signed transaction to the destination chain for execution.
 
 ![chain-signatures](/docs/assets/welcome-pages/chain-signatures-overview.png)
 _Diagram of a chain signature in NEAR_
@@ -69,7 +70,7 @@ The same NEAR account and path will always produce the same address on the targe
 ---
 
 ## 2. Creating the Transaction
-Constructing the payload to be signed (transaction, message, data, etc.) variates depending on the target blockchain, but in general, it's just the hash of the message or transaction to be signed.
+Constructing the transaction to be signed (transaction, message, data, etc.) variates depending on the target blockchain, but in general, it's just the hash of the message or transaction to be signed.
 
 <Tabs groupId="code-tabs">
   <TabItem value="Ξ Ethereum">
@@ -87,11 +88,11 @@ Constructing the payload to be signed (transaction, message, data, etc.) variate
 ---
 
 ## 3. Requesting the Signature 
-Once the payload is created and ready to be signed, a signature request is made by calling `sign` on the [MPC smart contract](https://github.com/near/mpc-recovery/blob/develop/contract/src/lib.rs#L298). 
+Once the transaction is created and ready to be signed, a signature request is made by calling `sign` on the [MPC smart contract](https://github.com/near/mpc-recovery/blob/develop/contract/src/lib.rs#L298). 
 
 The method expects two parameters: 
-  1. The `payload` to be signed for the target blockchain
-  2. The derivation `path` for the account we want to use to sign the payload.
+  1. The `transaction` to be signed for the target blockchain
+  2. The derivation `path` for the account we want to use to sign the transaction.
 
 <Tabs groupId="code-tabs">
   <TabItem value="Ξ Ethereum">
@@ -109,7 +110,7 @@ The method expects two parameters:
   </TabItem>
 </Tabs>
 
-The contract will take some time to respond, as the `sign` method starts recursively calling itself in order to wait while the **MPC service** signs the payload.
+The contract will take some time to respond, as the `sign` method starts recursively calling itself in order to wait while the **MPC service** signs the transaction.
 
 <details>
 <summary> A Contract Recursively Calling Itself? </summary>
@@ -125,7 +126,7 @@ Note that each call will take one block, and thus result on ~1s of waiting. Afte
 
 MPC (multi-party computation) allows independent actors to do shared computations on private information, without revealing secrets to each-other.
 
-NEAR uses its own MPC service to safely sign transactions for other chains on behalf of the user. In practice, **no single node** on the MPC can **sign by itself** since they do **not hold the user's keys**. Instead, nodes create signature-shares which are aggregated through multiple rounds to jointly sign the payload.
+NEAR uses its own MPC service to safely sign transactions for other chains on behalf of the user. In practice, **no single node** on the MPC can **sign by itself** since they do **not hold the user's keys**. Instead, nodes create signature-shares which are aggregated through multiple rounds to jointly sign the transaction.
 
 Generally, MPC signing services work by sharing a master key, which needs to be re-created each time a node joins or leaves. NEAR's MPC service allows for nodes to safely join and leave, without needing to re-derive a master key.
 
@@ -138,7 +139,7 @@ If you want to learn more about how MPC works, we recommend to [**check this art
 
 ## 4. Reconstructing the Signature 
 
-The MPC contract will not return the signature of the payload itself, but the elements we need to reconstruct such signature. 
+The MPC contract will not return the signature of the transaction itself, but the elements we need to reconstruct such signature. 
 
 <Tabs groupId="code-tabs">
   <TabItem value="Ξ Ethereum">
@@ -174,3 +175,7 @@ Once we have reconstructed the signature, we can relay it to the corresponding n
   ```
   </TabItem>
 </Tabs>
+
+
+:::info 
+:::

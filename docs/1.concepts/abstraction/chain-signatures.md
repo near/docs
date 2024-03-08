@@ -49,12 +49,13 @@ See our Build section to see [how the derivation is implemented](../../8.abstrac
 A deployed smart contract is used to request signatures for transactions on other blockchains.
 
 The contract has a `sign` method that takes two parameters:
-  1. The `payload` (transaction) to be signed for the target blockchain
-  2. The `path` that identifies the account you want to use to sign the payload.
 
-For example, a user could request a signature to `send 0.1 ETH to 0x060f1...` **(payload)** using the `ethereum-1` account **(path)**.
+  1. The `transaction` (transaction) to be signed for the target blockchain
+  2. The `path` that identifies the account you want to use to sign the transaction.
 
-After a request is made, the `sign` method starts recursively calling itself in order to wait while the [MPC signing service](#multi-party-computation-service-mpc) signs the payload. 
+For example, a user could request a signature to `send 0.1 ETH to 0x060f1...` **(transaction)** using the `ethereum-1` account **(path)**.
+
+After a request is made, the `sign` method starts recursively calling itself in order to wait while the [MPC signing service](#multi-party-computation-service-mpc) signs the transaction.
 
 Once the signature is ready, the contract will gain access to it, and return it to the user. This signature is a valid signed transaction that can be readily sent to the target blockchain to be executed.
 
