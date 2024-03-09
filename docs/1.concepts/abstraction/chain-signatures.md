@@ -28,22 +28,24 @@ Controlling accounts and their assets on other blockchain platforms is made poss
 
 ### Derivation Paths: One Account, Multiple Chains
 
-Chain Signatures link NEAR accounts to other blockchain accounts using what is called `derivation paths` (or `paths` for short).
+Chain Signatures link NEAR accounts to other blockchain accounts using [Additive Key Derivation](https://eprint.iacr.org/2021/1330#:~:text=Additive%20key%20derivation%20is%20a,Improvement%20Proposal%2032%20(BIP32)) _(a simple mechanism for deriving many subkeys from a single master key)_. These keys are generated using `derivation paths` _(or `paths` for short)_.
 
-A path is just a string (e.g. `ethereum-1`, `ethereum-2`, etc) that in conjunction with the NEAR account derives a unique address on the target blockchain.
+A `derivation path` is just a string _(e.g. `ethereum-1`, `ethereum-2`, etc)_ that in conjunction with the NEAR account derives a unique address on the target blockchain.
 
 For example, we can derive multiple Ethereum accounts from `example.near` by using different paths:
 
   1. `example.near` + `ethereum-1` = `0x1b48b83a308ea4beb845db088180dc3389f8aa3b`
   2. `example.near` + `ethereum-2` = `0x99c5d3025dc736541f2d97c3ef3c90de4d221315`
-  3. `example.near` + `...` = `0x...` 
+  3. `example.near` + `...` = `0x...`
 
-:::info Technical Details
+This external address is deterministically derived using the `path` (`example.near` + `ethereum-1`) and the MPC service's public key.
 
-The external address is deterministically derived from the account's ID, the path, and the MPC service's public key.
+:::info
 
-See our Build section to see [how the derivation is implemented](../../8.abstraction/chain-signatures.md#1-deriving-the-foreign-address).
+See [**Create a Chain Signature - how the derivation is implemented**](../../8.abstraction/chain-signatures.md#1-deriving-the-foreign-address) for an example implementation
+
 :::
+
 
 <hr class="subsection" />
 
