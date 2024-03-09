@@ -20,7 +20,7 @@ This guide will take you through a step by step process for creating a Chain Sig
 ⭐️ For complete examples of a NEAR account performing Eth transactions:
 
 - [web-app example](https://github.com/near-examples/near-multichain)
-- [component example](https://test.near.social/md1.testnet/widget/chainsig-sign-eth-tx) 
+- [component example](https://test.near.social/bot.testnet/widget/chainsig-sign-eth-tx) 
 
 :::
 
@@ -176,6 +176,6 @@ Once we have reconstructed the signature, we can relay it to the corresponding n
 ⭐️ For complete examples of a NEAR account performing Eth transactions:
 
 - [web-app example](https://github.com/near-examples/near-multichain)
-- [component example](https://test.near.social/md1.testnet/widget/chainsig-sign-eth-tx) 
+- [component example](https://test.near.social/bot.testnet/widget/chainsig-sign-eth-tx) 
 
 :::
