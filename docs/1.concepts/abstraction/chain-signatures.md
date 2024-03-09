@@ -46,35 +46,36 @@ See [**Create a Chain Signature - how the derivation is implemented**](../../8.a
 
 :::
 
-
 <hr class="subsection" />
 
 ### Multichain Smart Contract
 
-A deployed smart contract is used to request signatures for transactions on other blockchains.
+A deployed multichain smart contract is used to request signatures for transactions on other blockchains.
 
-The contract has a `sign` method that takes two parameters:
+This contract has a `sign` method that takes two parameters:
 
-  1. The `transaction` (transaction) to be signed for the target blockchain
+  1. The `payload` (transaction) to be signed for the target blockchain
   2. The `path` that identifies the account you want to use to sign the transaction.
 
 For example, a user could request a signature to `send 0.1 ETH to 0x060f1...` **(transaction)** using the `ethereum-1` account **(path)**.
 
-After a request is made, the `sign` method starts recursively calling itself in order to wait while the [MPC signing service](#multi-party-computation-service-mpc) signs the transaction.
+After a request is made, the `sign` method starts recursively calling itself to wait while the [MPC signing service](#multi-party-computation-service-mpc) signs the transaction.
 
-Once the signature is ready, the contract will gain access to it, and return it to the user. This signature is a valid signed transaction that can be readily sent to the target blockchain to be executed.
+Once the signature is ready, the contract gains access to it and returns it to the user. This signature is a valid signed transaction that can be readily sent to the target blockchain to be executed.
 
 <details>
 <summary> A Contract Recursively Calling Itself? </summary>
 
-NEAR smart contracts are unable to halt execution and await the completion of a process. To solve this, one can make the contract call itself again and again checking on each iteration if the result is ready.
+NEAR smart contracts are unable to halt execution and await the completion of a process. To solve this, one can make the contract call itself again and again checking on each iteration to see if the result is ready.
 
-Note that each call will take one block, and thus result on ~1s of waiting. After some time the contract will either return a result - since somebody external provided it - or run out of GAS waiting.
+**Note:** Each call will take one block which equates to ~1 second of waiting. After some time the contract will either return a result that an external party provided or return an error running out of GAS waiting.
 
 </details>
 
-:::info Technical Details
-Curious on how you can use the contract? Check the technical docs: [requesting the signature](../../8.abstraction/chain-signatures.md#3-requesting-the-signature).
+:::info
+
+See [**Create a Chain Signature - requesting the signature**](../../8.abstraction/chain-signatures.md#3-requesting-the-signature) for an example implementation
+
 :::
 
 <hr class="subsection" />
@@ -90,9 +91,6 @@ NEAR uses its own MPC service to safely sign transactions for other chains on be
 Generally, MPC signing services work by sharing a master key, which needs to be re-created each time a node joins or leaves. NEAR's MPC service allows for nodes to safely join and leave, without needing to re-derive a master key.
 
 If you want to learn more about how MPC works, we recommend to [**check this article**](https://www.zellic.io/blog/mpc-from-scratch/)
-
-
-
 
 The NEAR MPC service is constantly listening for signature requests (i.e. users calling the `sign` method). When a call is detected, the MPC service will:
   1. Ask its nodes to jointly derive a signature for the `payload` using the account identified by the `path`
