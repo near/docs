@@ -20,9 +20,9 @@ To get started using Chain Signatures in your project see **[Create a Chain Sign
 
 Controlling accounts and their assets on other blockchain platforms is made possible thanks to the interaction between three elements:
 
-1. [**Derivation Paths**](#derivation-paths-one-account-multiple-chains) - A deterministic way to derive multiple foreign addresses from one NEAR account
+1. [**Derivation Paths**](#derivation-paths-one-account-multiple-chains) - A deterministic way to derive multiple addresses from one NEAR account
 2. [**Multichain Smart Contract**](#multichain-smart-contract) - Receives requests to sign a transaction for other blockchains
-3. [**Multiparty Computation Service (MPC)**](#multi-party-computation-service-mpc) Third-party service providing signatures to the contract
+3. [**Multiparty Computation Service**](#multi-party-computation-service) Third-party service providing signatures to the contract
 
 <hr class="subsection" />
 
@@ -30,7 +30,7 @@ Controlling accounts and their assets on other blockchain platforms is made poss
 
 Chain Signatures link NEAR accounts to other blockchain accounts using [Additive Key Derivation](https://eprint.iacr.org/2021/1330#:~:text=Additive%20key%20derivation%20is%20a,Improvement%20Proposal%2032%20(BIP32)) _(a simple mechanism for deriving many subkeys from a single master key)_. These keys are generated using `derivation paths` _(or `paths` for short)_.
 
-A `derivation path` is just a string _(e.g. `ethereum-1`, `ethereum-2`, etc)_ that in conjunction with the NEAR account derives a unique address on the target blockchain.
+A `derivation path` is simply a string _(e.g. `ethereum-1`, `ethereum-2`, etc)_ that in conjunction with the NEAR account derives a unique address on the target blockchain.
 
 For example, we can derive multiple Ethereum accounts from `example.near` by using different paths:
 
@@ -80,42 +80,36 @@ See [**Create a Chain Signature - requesting the signature**](../../8.abstractio
 
 <hr class="subsection" />
 
-### Multi-Party Computation Service (MPC)
+### Multi-Party Computation Service
 
- What is an MPC Service?
+The essence of Multi-Party Computation (MPC) is to enable independent parties to perform shared computations on private information without revealing secrets to each other. This system can be used with blockchain platforms to safely sign transactions on behalf of a user as a private key is never exposed.
 
-MPC (multi-party computation) allows independent actors to do shared computations on private information, without revealing secrets to each other.
+The NEAR MPC service continuously listens for signature requests _(i.e. users calling the `sign` method)_. When a call is detected the MPC service will:
 
-NEAR uses its own MPC service to safely sign transactions for other chains on behalf of the user. In practice, **no single node** on the MPC can **sign by itself** since they do **not hold the user's keys**. Instead, nodes create signature-shares which are aggregated through multiple rounds to jointly sign the transaction.
-
-Generally, MPC signing services work by sharing a master key, which needs to be re-created each time a node joins or leaves. NEAR's MPC service allows for nodes to safely join and leave, without needing to re-derive a master key.
-
-If you want to learn more about how MPC works, we recommend to [**check this article**](https://www.zellic.io/blog/mpc-from-scratch/)
-
-The NEAR MPC service is constantly listening for signature requests (i.e. users calling the `sign` method). When a call is detected, the MPC service will:
   1. Ask its nodes to jointly derive a signature for the `payload` using the account identified by the `path`
-  2. Call the multichain contract, storing the resulting `Signature`
+  2. Once complete, call the multichain contract and store the resulting `Signature`
 
-It is important to notice that the signature process is not performed by a single node, but by multiple nodes working together to sign the payload.
+It is important to notice that the signature process is not performed by any single node, but by multiple nodes working together to collectively sign the transaction.
 
 **No single node can sign by itself** since they do **not hold the user's keys**. Instead, nodes create **signature-shares** which are **aggregated through multiple rounds** to **jointly** sign the payload.
 
 :::info A Custom MPC Service
+
 Generally, MPC signing services work by sharing a master key, which needs to be re-created each time a node joins or leaves
 
 NEAR's MPC service allows for nodes to safely join and leave, without needing to re-derive a master key
 :::
 
-:::tip
-Want to learn more about the mathematics that enable MPC? [**Check this awesome article**](https://www.zellic.io/blog/mpc-from-scratch/)
-:::
-
----
-
 ## Concluding Remarks
+
 Chain Signatures are a powerful tool that allows NEAR accounts to control accounts on other blockchains. This is a fundamental step towards enabling true ownership of cross-chain data and assets.
 
 For the user, the process is made completely **on chain**, since they only need to make a call to a smart contract and wait for the response.
 
 Thanks to `derivation paths`, a single NEAR account can control **multiple accounts** on different blockchains, and thanks to the MPC service, the user can be sure that **nobody but themselves** can request signatures for those accounts.
 
+:::tip
+
+Want to learn more about the mathematics that enable MPC? [**Check this awesome article**](https://www.zellic.io/blog/mpc-from-scratch/)
+
+:::
