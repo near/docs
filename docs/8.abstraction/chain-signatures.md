@@ -28,11 +28,11 @@ This guide will take you through a step by step process for creating a Chain Sig
 
 There are five steps to create a Chain Signature:
 
-1. [Deriving the Foreign Address](#1-deriving-the-foreign-address) - Reconstruct the address that will be controlled on the target blockchain
-2. [Creating a Transaction](#2-creating-the-transaction) - Create the transaction / message that will be signed for the target blockchain
-3. [Requesting a Signature](#3-requesting-the-signature) - Call the NEAR `multichain` contract, requesting to sign the transaction
+1. [Deriving the Foreign Address](#1-deriving-the-foreign-address) - Construct the address that will be controlled on the target blockchain
+2. [Creating a Transaction](#2-creating-the-transaction) - Create the transaction or message to be signed
+3. [Requesting a Signature](#3-requesting-the-signature) - Call the NEAR `multichain` contract and requesting to sign the transaction
 4. [Reconstructing the Signature](#4-reconstructing-the-signature) - Reconstruct the signature from the MPC service's response
-5. [Relaying the Signed Transaction](#5-relaying-the-signature) - Send the signed transaction to the destination chain for execution.
+5. [Relaying the Signed Transaction](#5-relaying-the-signature) - Send the signed transaction to the destination chain for execution
 
 ![chain-signatures](/docs/assets/welcome-pages/chain-signatures-overview.png)
 _Diagram of a chain signature in NEAR_
@@ -43,8 +43,8 @@ _Diagram of a chain signature in NEAR_
 
 Chain Signatures use [`derivation paths`](../1.concepts/abstraction/chain-signatures.md#one-account-multiple-chains) to represent accounts on the target blockchain. The external address can be deterministically derived from:
 
-- The NEAR address _(e.g., `example.near`)_
-- A derivation path _(a string such as `ethereum-1`, `ethereum-2`, etc)_
+- The NEAR address _(e.g., `example.near`, `example.testnet`, etc.)_
+- A derivation path _(a string such as `ethereum-1`, `ethereum-2`, etc.)_
 - The MPC service's public key
 
 We recommend using this example code snippet to derive the address, as it's a complex process that involves hashing and encoding:
@@ -125,19 +125,6 @@ The contract will take some time to respond, as the `sign` method starts recursi
 NEAR smart contracts are unable to halt execution and await the completion of a process. To solve this, one can make the contract call itself again and again checking on each iteration to see if the result is ready.
 
 **Note:** Each call will take one block that equates to ~1 second of waiting. After some time the contract will either return a result that an external party provided or return an error running out of GAS waiting.
-
-</details>
-
-<details>
-<summary> What is an MPC Service? </summary>
-
-MPC (multi-party computation) allows independent actors to do shared computations on private information, without revealing secrets to each-other.
-
-NEAR uses its own MPC service to safely sign transactions for other chains on behalf of the user. In practice, **no single node** on the MPC can **sign by itself** since they do **not hold the user's keys**. Instead, nodes create signature-shares which are aggregated through multiple rounds to jointly sign the transaction.
-
-Generally, MPC signing services work by sharing a master key, which needs to be re-created each time a node joins or leaves. NEAR's MPC service allows for nodes to safely join and leave, without needing to re-derive a master key.
-
-If you want to learn more about how MPC works, we recommend to [**check this article**](https://www.zellic.io/blog/mpc-from-scratch/)
 
 </details>
 
