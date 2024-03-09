@@ -1,16 +1,16 @@
 ---
 id: chain-signatures
-title: Chain Signatures
+title: What are Chain Signatures?
 sidebar_label: What are Chain Signatures?
 ---
 
-Chain Signatures allow NEAR accounts to request signatures for transactions on other blockchains.
+Chain signatures enable NEAR accounts, including smart contracts, to sign and execute transactions across many blockchain protocols.
 
-Thanks to chain signatures, a NEAR account can safely control multiple accounts across different blockchains, enabling true ownership of cross-chain data and assets.
+This unlocks the next level of blockchain interoperability by giving ownership of diverse assets, cross-chain accounts, and data to a single NEAR account.
 
-:::info Searching for code?
+:::info Looking for code?
 
-This document presents only broad concepts, to include Chain Signatures in your project, check the [**build documentation**](../../8.abstraction/chain-signatures.md)
+To get started using Chain Signatures in your project see **[Create a Chain Signature](../../8.abstraction/chain-signatures.md)**.
 
 :::
 
@@ -18,85 +18,94 @@ This document presents only broad concepts, to include Chain Signatures in your 
 
 ## How It Works
 
-Controlling accounts on other chains is made possible thanks to the interaction between three elements:
+Controlling accounts and their assets on other blockchain platforms is made possible thanks to the interaction between three elements:
 
-1. A deterministic way to derive [**multiple foreign addresses**](#one-account-multiple-chains) from one NEAR account
-2. A **smart contract** that receives requests to sign transaction for other chains
-3. A [**multiparty computation service**](#multi-party-computation-service-mpc) that provides the signatures to the smart contract
+1. [**Derivation Paths**](#derivation-paths-one-account-multiple-chains) - A deterministic way to derive multiple addresses from one NEAR account
+2. [**Multichain Smart Contract**](#multichain-smart-contract) - Receives requests to sign a transaction for other blockchains
+3. [**Multiparty Computation Service**](#multi-party-computation-service) Third-party service providing signatures to the contract
 
 <hr class="subsection" />
 
 ### Derivation Paths: One Account, Multiple Chains
-Chain Signatures link NEAR accounts to other blockchain accounts using what we call `derivation paths` (or `paths` for short). 
 
-A path is just a string (e.g. `ethereum-1`, `ethereum-2`, etc) that, in conjunction with the NEAR account, denotes a unique address on the target blockchain.
+Chain Signatures link NEAR accounts to other blockchain accounts using [Additive Key Derivation](https://eprint.iacr.org/2021/1330#:~:text=Additive%20key%20derivation%20is%20a,Improvement%20Proposal%2032%20(BIP32)) _(a simple mechanism for deriving many subkeys from a single master key)_. These keys are generated using `derivation paths` _(or `paths` for short)_.
 
-For example, we can derive multiple Ethereum accounts from `influencer.testnet` by using different paths:
+A `derivation path` is simply a string _(e.g. `ethereum-1`, `ethereum-2`, etc)_ that in conjunction with the NEAR account derives a unique address on the target blockchain.
 
-  1. `influencer.testnet` + `ethereum-1` = `0x1b48b83a308ea4beb845db088180dc3389f8aa3b`
-  2. `influencer.testnet` + `ethereum-2` = `0x99c5d3025dc736541f2d97c3ef3c90de4d221315`
-  3. `influencer.testnet` + `...` = `0x...` 
+For example, we can derive multiple Ethereum accounts from `example.near` by using different paths:
 
-:::info Technical Details
-The external address is deterministically derived from the account's ID, the path, and the MPC service's public key.
+  1. `example.near` + `ethereum-1` = `0x1b48b83a308ea4beb845db088180dc3389f8aa3b`
+  2. `example.near` + `ethereum-2` = `0x99c5d3025dc736541f2d97c3ef3c90de4d221315`
+  3. `example.near` + `...` = `0x...`
 
-See our Build section to see [how the derivation is implemented](../../8.abstraction/chain-signatures.md#1-deriving-the-foreign-address).
+This external address is deterministically derived using the `path` (`example.near` + `ethereum-1`) and the MPC service's public key.
+
+:::info
+
+See [**Create a Chain Signature - how the derivation is implemented**](../../8.abstraction/chain-signatures.md#1-deriving-the-foreign-address) for an example implementation
+
 :::
 
 <hr class="subsection" />
 
-### A Contract for Chain Signatures
-A deployed smart contract is used to request signatures for transactions on other blockchains.
+### Multichain Smart Contract
 
-The contract has a `sign` method that takes two parameters:
+A deployed multichain smart contract is used to request signatures for transactions on other blockchains.
+
+This contract has a `sign` method that takes two parameters:
+
   1. The `payload` (transaction) to be signed for the target blockchain
-  2. The `path` that identifies the account you want to use to sign the payload.
+  2. The `path` that identifies the account you want to use to sign the transaction.
 
-For example, a user could request a signature to `send 0.1 ETH to 0x060f1...` **(payload)** using the `ethereum-1` account **(path)**.
+For example, a user could request a signature to `send 0.1 ETH to 0x060f1...` **(transaction)** using the `ethereum-1` account **(path)**.
 
-After a request is made, the `sign` method starts recursively calling itself in order to wait while the [MPC signing service](#multi-party-computation-service-mpc) signs the payload. 
+After a request is made, the `sign` method starts recursively calling itself to wait while the [MPC signing service](#multi-party-computation-service-mpc) signs the transaction.
 
-Once the signature is ready, the contract will gain access to it, and return it to the user. This signature is a valid signed transaction that can be readily sent to the target blockchain to be executed.
+Once the signature is ready, the contract gains access to it and returns it to the user. This signature is a valid signed transaction that can be readily sent to the target blockchain to be executed.
 
 <details>
 <summary> A Contract Recursively Calling Itself? </summary>
 
-NEAR smart contracts are unable to halt execution and await the completion of a process. To solve this, one can make the contract call itself again and again checking on each iteration if the result is ready.
+NEAR smart contracts are unable to halt execution and await the completion of a process. To solve this, one can make the contract call itself again and again checking on each iteration to see if the result is ready.
 
-Note that each call will take one block, and thus result on ~1s of waiting. After some time the contract will either return a result - since somebody external provided it - or run out of GAS waiting.
+**Note:** Each call will take one block which equates to ~1 second of waiting. After some time the contract will either return a result that an external party provided or return an error running out of GAS waiting.
 
 </details>
 
-:::info Technical Details
-Curious on how you can use the contract? Check the technical docs: [requesting the signature](../../8.abstraction/chain-signatures.md#3-requesting-the-signature).
+:::info
+
+See [**Create a Chain Signature - requesting the signature**](../../8.abstraction/chain-signatures.md#3-requesting-the-signature) for an example implementation
+
 :::
 
 <hr class="subsection" />
 
-### Multi-Party Computation Service (MPC)
-Multi-party computation (MPC) allows independent actors to do shared computations on private information without revealing secrets to each other.
+### Multi-Party Computation Service
 
-The NEAR MPC service is constantly listening for signature requests (i.e. users calling the `sign` method). When a call is detected, the MPC service will:
-  1. Ask its nodes to jointly derive a signature for the `payload` using the account identified by the `path`
-  2. Call the multichain contract, storing the resulting `Signature`
+The essence of Multi-Party Computation (MPC) is to enable independent parties to perform shared computations on private information without revealing secrets to each other. In practice, this system can be used with blockchain platforms to safely sign a transaction on behalf of a user without ever having to expose a private key.
 
-It is important to notice that the signature process is not performed by a single node, but by multiple nodes working together to sign the payload.
+NEAR's MPC service is comprised of several independent nodes, **none of which can sign by itself**, but instead create **signature-shares** that are **aggregated through multiple rounds** to **jointly** sign a transaction.
 
-**No single node can sign by itself** since they do **not hold the user's keys**. Instead, nodes create **signature-shares** which are **aggregated through multiple rounds** to **jointly** sign the payload.
+This service continuously listens for signature requests _(i.e. users calling the `sign` method on the `multichain` smart contract)_ and when a call is detected the MPC service:
+
+  1. Asks its nodes to jointly derive a signature for the `payload` using the account identified by the `path`
+  2. Once complete, call the `multichain` contract to store the resulting `Signature`
 
 :::info A Custom MPC Service
-Generally, MPC signing services work by sharing a master key, which needs to be re-created each time a node joins or leaves
+
+Generally, MPC signing services work by sharing a master key, which needs to be re-created each time a node joins or leaves.
 
 NEAR's MPC service allows for nodes to safely join and leave, without needing to re-derive a master key
 :::
 
 :::tip
+
 Want to learn more about the mathematics that enable MPC? [**Check this awesome article**](https://www.zellic.io/blog/mpc-from-scratch/)
+
 :::
 
----
-
 ## Concluding Remarks
+
 Chain Signatures are a powerful tool that allows NEAR accounts to control accounts on other blockchains. This is a fundamental step towards enabling true ownership of cross-chain data and assets.
 
 For the user, the process is made completely **on chain**, since they only need to make a call to a smart contract and wait for the response.
