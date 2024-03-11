@@ -25,7 +25,7 @@ You have two options to start using the project. The first and recommended is to
 
   | Gitpod                                                                                                                                                                                           | Clone locally                                                                 |
   | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- |
-  | <a href="https://gitpod.io/#https://github.com/near-examples/cross-contract-hello-js"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🌐 `https://github.com/near-examples/cross-contract-hello-js.git` |
+  | <a href="https://gitpod.io/#https://github.com/near-examples/cross-contract-calls/tree/main/contract-simple-ts"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🌐 `https://github.com/near-examples/cross-contract-calls.git` |
 
   </TabItem>
 
@@ -33,7 +33,7 @@ You have two options to start using the project. The first and recommended is to
 
   | Gitpod                                                                                                                                                                                           | Clone locally                                                                 |
   | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- |
-  | <a href="https://gitpod.io/#https://github.com/near-examples/cross-contract-hello-rust"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🦀 `https://github.com/near-examples/cross-contract-hello-rust.git` |
+  | <a href="https://gitpod.io/#https://github.com/near-examples/cross-contract-calls/tree/main/contract-simple-rs"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🦀 `https://github.com/near-examples/cross-contract-calls.git` |
 
   </TabItem>
 </Tabs>
@@ -47,17 +47,24 @@ Since this example does not have a frontend, we will interact with it through th
 <!-- Expand on this explanation adding snippets  -->
 Check the README.md. Briefly, you will need to:
 
-#### 1. Build and Deploy the Contract
+#### 1. Create a new account
+
+In order to deploy the contract you will need to [create a NEAR account](https://docs.near.org/develop/contracts/quickstart#create-a-testnet-account).
+
+```bash
+# Create an account
+near create-account <accountId> --useFaucet
+```
+
+#### 2. Build and Deploy the Contract
 You can automatically compile and deploy the contract in the NEAR testnet by running:
 
 ```bash
-./contract/deploy.sh
-```
+# Build the contract
+cargo near build
 
-Once finished, check the `neardev/dev-account` file to find the address in which the contract was deployed:
-
-```bash
-cat ./contract/neardev/dev-account # e.g. dev-1659899566943-21539992274727
+# Deploy the contract
+cargo near deploy <accountId>
 ```
 
 #### 2. Get the Greeting
@@ -68,7 +75,7 @@ cat ./contract/neardev/dev-account # e.g. dev-1659899566943-21539992274727
 
 ```bash
 # Use near-cli to ask the contract to query the greeting
-near call <dev-account> query_greeting --accountId <dev-account>
+near call <accountId> query_greeting --accountId <accountId>
 ```
 
 ---
@@ -80,12 +87,12 @@ The contract exposes methods to query the greeting and change it. These methods 
 <CodeTabs>
 <Language value="🌐 JavaScript" language="ts">
     <Github fname="contract.ts" 
-            url="https://github.com/near-examples/cross-contract-hello-js/blob/master/contract/src/contract.ts"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/src/contract.ts"
             start="17" end="39" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/cross-contract-hello-rust/blob/main/contract/src/lib.rs"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/lib.rs"
             start="24" end="49" />
   </Language>
 </CodeTabs>
@@ -110,13 +117,18 @@ method works. This is because unit tests are **cannot test** cross-contract call
 
 In this project in particular, the integration tests first deploy the `hello-near` contract. Then,
 they test that the cross-contract call correctly sets and retrieves the message. You will find the integration tests
-in `integration-tests/`.
+in `sandbox-ts/` for the JavaScript version and in `tests/` for the Rust version.
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="rust">
-    <Github fname="main.test.js"
-            url="https://github.com/near-examples/cross-contract-hello-js/blob/master/integration-tests/src/main.ava.ts"
+    <Github fname="main.ava.ts"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/sandbox-ts/src/main.ava.ts"
             start="9" end="59" />
+  </Language>
+  <Language value="🦀 Rust" language="rust">
+    <Github fname="lib.rs"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/tests/tests.rs"
+            start="5" end="77" />
   </Language>
 </CodeTabs>
 

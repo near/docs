@@ -21,14 +21,17 @@ they **all get reverted**.
 
 <CodeTabs>
   <Language value="🦀 Rust" language="rust">
-    <Github fname="lib.rs"
-            url="https://github.com/near-examples/xcc-advanced/blob/main/contract/src/batch_actions.rs"
+    <Github fname="batch_actions.rs"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/batch_actions.rs"
             start="7" end="19" />
   </Language>
   <Language value="🌐 JavaScript" language="js">
-    <Github fname="index.js"
-          url="https://github.com/garikbesson/cross-contract-hello-js/blob/batch_actions/contract/src/contract.ts"
-          start="67" end="80" />
+    <Github fname="contract.ts"
+          url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
+          start="37" end="40" />
+    <Github fname="batch_actions.js"
+          url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/batch_actions.ts"
+          start="5" end="17" />
   </Language>
 </CodeTabs>
 
@@ -38,17 +41,20 @@ action** from the chain.
 
 <CodeTabs>
   <Language value="🦀 Rust" language="rust">
-    <Github fname="lib.rs"
-            url="https://github.com/near-examples/xcc-advanced/blob/main/contract/src/batch_actions.rs"
+    <Github fname="batch_actions.rs"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/batch_actions.rs"
             start="21" end="34" />
   </Language>
   <Language value="🌐 JavaScript" language="js">
-    <Github fname="callback"
-      url="https://github.com/garikbesson/cross-contract-hello-js/blob/batch_actions/contract/src/contract.ts"
-      start="82" end="93" />
-    <Github fname="promiseResult"
-      url="https://github.com/garikbesson/cross-contract-hello-js/blob/batch_actions/contract/src/contract.ts"
-      start="127" end="145" />
+    <Github fname="contract.ts"
+      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
+      start="42" end="45" />
+    <Github fname="batch_actions.ts"
+      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/batch_actions.ts"
+      start="19" end="29" />
+    <Github fname="utils.ts"
+      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/utils.ts"
+      start="3" end="20" />
   </Language>
 </CodeTabs>
 
@@ -61,14 +67,17 @@ all in parallel. If one of them fails the rest **ARE NOT REVERTED**.
 
 <CodeTabs>
   <Language value="🦀 Rust" language="rust">
-    <Github fname="lib.rs"
-            url="https://github.com/near-examples/xcc-advanced/blob/main/contract/src/multiple_contracts.rs"
+    <Github fname="multiple_contracts.rs"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/multiple_contracts.rs"
             start="18" end="56" />
   </Language>
   <Language value="🌐 JavaScript" language="js">
-    <Github fname="index.js"
-          url="https://github.com/garikbesson/cross-contract-hello-js/blob/batch_actions/contract/src/contract.ts"
-          start="95" end="111" />
+    <Github fname="contract.ts"
+      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
+      start="47" end="50" />
+    <Github fname="multiple_contracts.ts"
+      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/multiple_contracts.ts"
+      start="6" end="21" />
   </Language>
 </CodeTabs>
 
@@ -78,17 +87,20 @@ value returned by each call, or an error message.
 
 <CodeTabs>
   <Language value="🦀 Rust" language="rust">
-    <Github fname="lib.rs"
-            url="https://github.com/near-examples/xcc-advanced/blob/main/contract/src/multiple_contracts.rs"
-            start="58" end="91" />
+    <Github fname="multiple_contracts.rs"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/multiple_contracts.rs"
+            start="58" end="92" />
   </Language>
   <Language value="🌐 JavaScript" language="js">
-    <Github fname="callback"
-      url="https://github.com/garikbesson/cross-contract-hello-js/blob/batch_actions/contract/src/contract.ts"
-      start="113" end="125" />
-    <Github fname="promiseResult"
-      url="https://github.com/garikbesson/cross-contract-hello-js/blob/batch_actions/contract/src/contract.ts"
-      start="127" end="145" />
+    <Github fname="contract.ts"
+      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
+      start="52" end="55" />
+    <Github fname="multiple_contracts.ts"
+      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/multiple_contracts.ts"
+      start="24" end="41" />
+    <Github fname="utils.ts"
+      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/utils.ts"
+      start="3" end="20" />
   </Language>
 </CodeTabs>
 
@@ -103,14 +115,17 @@ In this case, we call multiple contracts that will return the same type:
 
 <CodeTabs>
   <Language value="🦀 Rust" language="rust">
-    <Github fname="lib.rs"
-            url="https://github.com/near-examples/xcc-advanced/blob/main/contract/src/similar_contracts.rs"
-            start="18" end="31" />
+    <Github fname="similar_contracts.rs"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/similar_contracts.rs"
+            start="7" end="30" />
   </Language>
   <Language value="🌐 JavaScript" language="js">
-    <Github fname="index.js"
-          url="https://github.com/garikbesson/cross-contract-hello-js/blob/batch_actions/contract/src/contract.ts"
-          start="95" end="111" />
+    <Github fname="contract.ts"
+      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
+      start="57" end="60" />
+    <Github fname="similar_contracts.ts"
+      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/similar_contracts.ts"
+      start="6" end="35" />
   </Language>
 </CodeTabs>
 
@@ -120,16 +135,19 @@ results.
 
 <CodeTabs>
   <Language value="🦀 Rust" language="rust">
-    <Github fname="lib.rs"
-            url="https://github.com/near-examples/xcc-advanced/blob/main/contract/src/similar_contracts.rs"
-            start="33" end="61" />
+    <Github fname="similar_contracts.rs"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/similar_contracts.rs"
+            start="32" end="57" />
   </Language>
   <Language value="🌐 JavaScript" language="js">
-    <Github fname="callback"
-      url="https://github.com/garikbesson/cross-contract-hello-js/blob/batch_actions/contract/src/contract.ts"
-      start="113" end="125" />
-    <Github fname="promiseResult"
-      url="https://github.com/garikbesson/cross-contract-hello-js/blob/batch_actions/contract/src/contract.ts"
-      start="127" end="145" />
+    <Github fname="contract.ts"
+      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
+      start="62" end="65" />
+    <Github fname="similar_contracts.ts"
+      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/similar_contracts.ts"
+      start="37" end="54" />
+    <Github fname="utils.ts"
+      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/utils.ts"
+      start="3" end="20" />
   </Language>
 </CodeTabs>
