@@ -11,9 +11,9 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/contracts/crosscontract.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "gagdiez",
-  "lastUpdatedAt": 1702551195,
-  "formattedLastUpdatedAt": "Dec 14, 2023",
+  "lastUpdatedBy": "matiasbenary",
+  "lastUpdatedAt": 1710260483,
+  "formattedLastUpdatedAt": "Mar 12, 2024",
   "frontMatter": {
     "id": "crosscontract",
     "title": "Cross-Contract Calls"
