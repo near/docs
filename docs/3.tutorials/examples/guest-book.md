@@ -63,11 +63,9 @@ The example is divided in two main components:
 │    ├── workspaces.rs
 ├── src # contract's code
 │    └── lib.rs
-├── build.sh # build script
 ├── Cargo.toml # package manager
 ├── README.md
 ├── rust-toolchain.toml
-└── test.sh # test script
 ```
 
   </TabItem>
