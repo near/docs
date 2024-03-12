@@ -59,11 +59,8 @@ The example is divided in two main components:
   <TabItem value="🦀 Rust">
 
 ```bash
-┌── sandbox-ts # sandbox testing
-│    ├── src
-│    │    └── main.ava.ts
-│    ├── ava.config.cjs
-│    └── package.json
+┌── tests # workspaces testing
+│    ├── workspaces.rs
 ├── src # contract's code
 │    └── lib.rs
 ├── build.sh # build script
@@ -131,7 +128,7 @@ The contract presents 3 methods: `add_message`, `get_message` and `total_message
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/guest-book-examples/blob/main/contract-rs/src/lib.rs"
-            start="29" end="53" />
+            start="37" end="70" />
   </Language>
   
 </CodeTabs>
@@ -156,7 +153,7 @@ yarn test
   
   ```bash
   cd contract-rs
-  ./test.sh
+  cargo test
   ```
 
   </TabItem>
@@ -195,7 +192,7 @@ near create-account <accountId> --useFaucet
 
 # Deploy the contract
 cd contract-rs
-./build.sh
+cargo near build
 near deploy <accountId> ./target/wasm32-unknown-unknown/release/guestbook.wasm
 ```
 
