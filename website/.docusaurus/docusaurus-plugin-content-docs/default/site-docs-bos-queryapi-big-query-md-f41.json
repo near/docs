@@ -11,9 +11,9 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/queryapi/big-query.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Eduardo Ohe",
-  "lastUpdatedAt": 1699573337,
-  "formattedLastUpdatedAt": "Nov 9, 2023",
+  "lastUpdatedBy": "s-n-park",
+  "lastUpdatedAt": 1710276816,
+  "formattedLastUpdatedAt": "Mar 12, 2024",
   "frontMatter": {
     "id": "big-query",
     "title": "BigQuery Public Dataset",
