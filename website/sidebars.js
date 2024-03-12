@@ -67,6 +67,7 @@ const sidebar = {
       "value": "<span class='menu__link'><b><small> Chain Abstraction ✨</small></b></span>"
     },
     "concepts/abstraction/introduction",
+    "concepts/abstraction/meta-transactions",
     "concepts/abstraction/relayers",
     {
       "Chain Signatures": [
