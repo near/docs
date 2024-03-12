@@ -2109,6 +2109,18 @@
     "@ethersproject/properties" "^5.7.0"
     "@ethersproject/strings" "^5.7.0"
 
+"@feelback/js@0.3.4":
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/@feelback/js/-/js-0.3.4.tgz#1f3c885817b2d46230e922ac84c0b79a76d1a1c4"
+  integrity sha512-xr7gTqSJcVUYQlELs1TntYovCBjMcYUr/hGKTnDoF64/lig5CbX4bOmqLoF50IImCy5q3oIwg9w+TSFvtBwsIA==
+
+"@feelback/react@^0.3.4":
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/@feelback/react/-/react-0.3.4.tgz#f53ccb830a04e209c837910e8756f9d9ca65b30b"
+  integrity sha512-ZWzUQAmPwl4nYR2olzBKddHzoLtGW/2pb8TiesiJCirxhaDW2E/XBx2ZaB4fL5TGXtjBt4eYq/qZxJZ0fIE0kg==
+  dependencies:
+    "@feelback/js" "0.3.4"
+
 "@floating-ui/core@^1.5.3":
   version "1.5.3"
   resolved "https://registry.yarnpkg.com/@floating-ui/core/-/core-1.5.3.tgz#b6aa0827708d70971c8679a16cf680a515b8a52a"

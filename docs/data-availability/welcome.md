@@ -25,7 +25,11 @@ Red lines denote external flow of commitments.
 White lines denote flow of blob data.
 
 
-Note: "fisherman" is just an example how a rollup can work with the light client in the initial stage of DA, until we implement a more non-interactive approach, such as KZG.
+:::note
+
+`Fisherman` is just an example how a rollup can work with the light client in the initial stage of DA, until we implement a more non-interactive approach, such as KZG.
+
+:::
 
 ```mermaid 
 C4Context

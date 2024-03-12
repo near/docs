@@ -11,6 +11,12 @@ They are being actively developed, so they are in a state of flux.
 - [Optimism](./optimism.md)
 - [Polygon CDK](./cdk-integration.md)
 
+:::info
+
+Due to protocol limitations, the maximum transaction size is 4 MB.
+
+:::
+
 ---
 
 ## Integrating your own roll-up
