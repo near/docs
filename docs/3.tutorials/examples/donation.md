@@ -211,7 +211,7 @@ To interact with the contract through the console, you can use the following com
 ```bash
 # Get donations 
 # Optional arguments for pagination
-near view donation.near-examples.testnet get_donations --args='{"from_index": "0","limit": "10"}'
+near view donation.near-examples.testnet get_donations --args='{"from_index": 0,"limit": 10}'
 
 # Get beneficiary
 near view donation.near-examples.testnet get_beneficiary
