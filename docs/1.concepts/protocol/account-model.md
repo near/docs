@@ -1,22 +1,19 @@
 ---
-id: model
-title: The NEAR Account Model
+id: account-model
+title: NEAR Accounts
 sidebar_label: Overview
 ---
 
-Users interact with the NEAR ecosystem through accounts. These accounts are identified by a [unique ID](./account-id.md), hold $NEAR tokens, are controlled through [Access Keys](./access-keys.md), and can optionally hold a [smart contract](./smartcontract.md).
+Users participate in the NEAR ecosystem through their NEAR accounts. These accounts are identified by a [unique address](./account-id.md), can optionally hold a [smart contract](./smart-contract.md), and are controlled through [Access Keys](./access-keys.md).
 
-![img](@site/static/docs/assets/welcome-pages/accounts.png)
+By signing [transactions](../transactions.md) with their account, users can:
 
-NEAR accounts are the main way to interact with the NEAR Ecosystem. We will cover all use cases in the documentation, but as an overview, users can:
+1. Send and receive **digital assets** (such as tokens or collectibles)
+2. Create and interact with on-chain applications known as **smart contracts**
+3. Control accounts in **other chains** (such as Ethereum or Bitcoin) ✨
+4. Help onboard new users by **covering the costs** of their transactions (gas fees)
 
-1. Send and receive tokens (such as $NEAR, or any other token on the NEAR blockchain)
-2. Request to sign transactions in other blockchains (such as Ethereum)
-3. Collect and drop digital assets
-4. Interact with applications known as smart contracts
-5. Deploy their own smart contracts so other accounts interact with them
-
-:::tip Create an Account!
+:::tip Want to create an account?
 You have multiple ways to create an account, you can [sign-up using your email](https://near.org/), get a mobile wallet through [telegram](https://web.telegram.org/k/#@herewalletbot), or create a [web wallet](https://app.mynearwallet.com).
 :::
 
@@ -26,17 +23,17 @@ You have multiple ways to create an account, you can [sign-up using your email](
 
 Let's take a closer look at the different elements that compose the NEAR account model.
 
-#### [Account ID](account-id.md)
-NEAR implements two types of accounts IDs: [named accounts](account-id.md) such as `alice.near`, which are simple to remember and share, and alphanumeric IDs (`fb9243ce...`) - as other chains do.
+![img](@site/static/docs/assets/welcome-pages/accounts.png)
+
+
+#### [Account ID](./account-id.md)
+NEAR implements two types of accounts IDs: **named accounts** such as `alice.near`, which are simple to remember and share, and the classic alphanumeric IDs (`fb9243ce...`) that other chains also implement.
 
 #### [Permissions Through Access Keys](access-keys.md)
-NEAR accounts can have multiple [keys](access-keys.md), each with their own set of permissions. This allows to swap keys if one gets compromised, and to use keys as authorization tokens for third-parties.
+NEAR accounts can have multiple [keys](access-keys.md), each with their own set of permissions. This allows to easily swap keys if one gets compromised, and to use keys as authorization tokens for third-parties.
 
 #### [Simple to Develop Smart Contracts](/concepts/basics/accounts/smartcontract)
-NEAR accounts can optionally hold a simple program, known as a [smart contract](smartcontract.md). In NEAR, developers can create smart contracts using languages such as Javascript or Rust. 
-
-#### [Mutable State (Storage)](state.md)
-NEAR accounts have a state (storage) which can mutate when the user or the account's contract performs a transaction.
+NEAR accounts can optionally hold a simple program, known as a [smart contract](smart-contract.md). In NEAR, developers can create smart contracts using languages such as Javascript or Rust. 
 
 ---
 

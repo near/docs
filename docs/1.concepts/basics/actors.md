@@ -16,7 +16,7 @@ There are 3 main actors interacting to form the NEAR ecosystem:
 Users can have one or multiple [NEAR accounts](./accounts/introduction.md), which they can use to:
 
 1. **Transfer** tokens, such as the native [$NEAR token](token.md) or community-built ones.
-2. **Execute** [decentralized apps](https://awesomenear.com) stored in the network, known as [smart contracts](./accounts/smartcontract.md).
+2. **Execute** [decentralized apps](https://awesomenear.com) stored in the network, known as [smart contracts](./accounts/smart-contract.md).
 3. **Develop** their own decentralized app and store it in the network.
 
 <hr className="subsection" />

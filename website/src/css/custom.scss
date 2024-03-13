@@ -70,6 +70,11 @@ ol li::marker {
     font-weight: 600;
 }
 
+ul li::marker {
+    color: var(--near-color-royal);
+    font-weight: 600;
+}
+
 .subsection {
     width: 50%;
     margin: 2.5em auto;

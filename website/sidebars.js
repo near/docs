@@ -12,19 +12,12 @@ const sidebar = {
     },
     {
       type: 'category',
-      label: 'Accounts',
-      link: {type: 'doc', id: 'concepts/basics/accounts/model'},
+      label: 'Accounts / Contracts',
+      link: {type: 'doc', id: 'concepts/protocol/account-model'},
       items: [
-        ,
-        "concepts/basics/accounts/account-id",
-        "concepts/basics/accounts/access-keys",
-        "concepts/basics/accounts/smartcontract",
-        "concepts/basics/accounts/state",
-        {
-          "type": "html",
-          "value": "<hr/>"
-        },
-        "concepts/basics/accounts/creating-accounts"
+        "concepts/protocol/account-id",
+        "concepts/protocol/access-keys",
+        "concepts/protocol/smartcontract",
       ]
     },
     {
