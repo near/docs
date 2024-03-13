@@ -244,9 +244,9 @@ Here is the exhaustive list of the error variants that can be returned by `broad
   - `sender_account_id` _(used to determine which shard to query for transaction)_
   - [Optional] `wait_until`: the required minimal execution level. Read more [here](/api/rpc/transactions#tx-status-result). The default value is `EXECUTED_OPTIMISTIC`.
 
-Transaction status request with `wait_until != NONE` will wait until the transaction appears in the chain.
+A Transaction status request with `wait_until != NONE` will wait until the transaction appears on the blockchain.
 If the transaction does not exist, the method will wait until the timeout is reached.
-If you just need to check whether the transaction exists, use `wait_until = NONE`, it will return the response immediately.
+If you only need to check whether the transaction exists, use `wait_until = NONE`, it will return the response immediately.
 
 Example:
 
@@ -488,9 +488,9 @@ Here is the exhaustive list of the error variants that can be returned by `tx` m
   - `sender_account_id` _(used to determine which shard to query for transaction)_
   - [Optional] `wait_until`: the required minimal execution level. Read more [here](/api/rpc/transactions#tx-status-result). The default value is `EXECUTED_OPTIMISTIC`.
 
-Transaction status request with `wait_until != NONE` will wait until the transaction appears in the chain.
+A Transaction status request with `wait_until != NONE` will wait until the transaction appears on the blockchain.
 If the transaction does not exist, the method will wait until the timeout is reached.
-If you just need to check whether the transaction exists, use `wait_until = NONE`, it will return the response immediately.
+If you only need to check whether the transaction exists, use `wait_until = NONE`, it will return the response immediately.
 
 
 Example:
