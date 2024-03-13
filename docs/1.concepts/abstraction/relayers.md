@@ -9,9 +9,9 @@ A relayer is a simple web service that receives transactions from NEAR users, an
 
 ## How it works
 
-Relayers are a natural consequence of [NEP-366: Meta Transactions](https://github.com/near/NEPs/blob/master/neps/nep-0366.md), a special type of transaction which can be best understood as an intent.
+Relayers are a natural consequence of [Meta Transactions](meta-tx.md) ([NEP-366](https://github.com/near/NEPs/blob/master/neps/nep-0366.md)), a special type of transaction which can be best understood as an intent.
 
-The user expresses: "I want to do a specific action on chain" and signs this intent **off-chain**, but does not sends it to the network. Instead, they send the intent to a `Relayer`, which wraps the message into an actual transaction, attaches the necessary funds, and sends it to the network.
+The user expresses: _"I want to do a specific action on chain"_ and signs this intent **off-chain**, but does not sends it to the network. Instead, they send the intent to a `Relayer`, which wraps the message into an actual transaction, attaches the necessary funds, and sends it to the network.
 
 <details>
 <summary> Technical Details </summary>
@@ -26,6 +26,7 @@ The `SignedTransaction` is then sent to the network via RPC call, and the result
 ---
 
 ## Why using a Relayer?
+
 There are multiple reasons to use a relayer:
 1. Your users are new to NEAR and don't have any gas to cover transactions
 2. Your users have an account on NEAR, but only have a Fungible Token Balance. They can now use the FT to pay for gas
