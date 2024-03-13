@@ -19,7 +19,7 @@ The RPC API enables you to send transactions and query their status.
 - method: `send_tx`
 - params: 
   - `signed_tx_base64`: SignedTransaction encoded in base64
-  - [Optional] `wait_until`: the required minimal execution level. Read more [here](/api/rpc/transactions#tx-status-result). The default value is `EXECUTED_OPTIMISTIC`.
+  - [Optional] `wait_until`: the required minimal execution level. [Read more here](#tx-status-result). The default value is `EXECUTED_OPTIMISTIC`.
 
 Using `send_tx` with `wait_until = NONE` is equal to legacy `broadcast_tx_async` method.  
 Using `send_tx` with finality `wait_until = EXECUTED_OPTIMISTIC` is equal to legacy `broadcast_tx_commit` method.
