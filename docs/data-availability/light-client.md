@@ -81,7 +81,7 @@ Below are the current circuits for the ZK light client.
 The current circuits serve only a "one-shot" command style for syncing/verification and no autonomous proving.
 :::
 
-Since the ZK client integrates with a Solidity Contract on chain and the circuit must have a statically aligned size, we have to minimise as much calldata as possible, opting to witness verification in the circuit rather than store information.
+Since the ZK client integrates with a Solidity Contract on chain and the circuit must have a statically aligned size, we have to minimize as much call data as possible, opting to witness verification in the circuit rather than store information.
 
 ##### Sync
 
