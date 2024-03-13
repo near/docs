@@ -1,0 +1,30 @@
+{
+  "id": "concepts/abstraction/meta-transactions",
+  "title": "Meta Transactions",
+  "description": "NEP-366 introduced the concept of meta",
+  "source": "@site/../docs/1.concepts/abstraction/meta-tx.md",
+  "sourceDirName": "1.concepts/abstraction",
+  "slug": "/concepts/abstraction/meta-transactions",
+  "permalink": "/zh-CN/concepts/abstraction/meta-transactions",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/abstraction/meta-tx.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1710321945,
+  "formattedLastUpdatedAt": "2024年3月13日",
+  "frontMatter": {
+    "id": "meta-transactions",
+    "title": "Meta Transactions"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Introduction",
+    "permalink": "/zh-CN/concepts/abstraction/introduction"
+  },
+  "next": {
+    "title": "Relayers",
+    "permalink": "/zh-CN/concepts/abstraction/relayers"
+  }
+}

@@ -263,6 +263,11 @@
               "sidebar": "concepts"
             },
             {
+              "id": "concepts/abstraction/meta-transactions",
+              "path": "/zh-CN/concepts/abstraction/meta-transactions",
+              "sidebar": "concepts"
+            },
+            {
               "id": "concepts/abstraction/mpc",
               "path": "/zh-CN/concepts/abstraction/mpc"
             },

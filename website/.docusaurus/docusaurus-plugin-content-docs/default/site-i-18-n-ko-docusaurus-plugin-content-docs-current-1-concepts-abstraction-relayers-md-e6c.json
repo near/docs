@@ -20,8 +20,8 @@
   },
   "sidebar": "concepts",
   "previous": {
-    "title": "Introduction",
-    "permalink": "/ko/concepts/abstraction/introduction"
+    "title": "Meta Transactions",
+    "permalink": "/ko/concepts/abstraction/meta-transactions"
   },
   "next": {
     "title": "What are Chain Signatures?",

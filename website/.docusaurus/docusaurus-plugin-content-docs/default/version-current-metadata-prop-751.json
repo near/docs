@@ -241,6 +241,13 @@
       },
       {
         "type": "link",
+        "label": "Meta Transactions",
+        "href": "/zh-CN/concepts/abstraction/meta-transactions",
+        "docId": "concepts/abstraction/meta-transactions",
+        "unlisted": false
+      },
+      {
+        "type": "link",
         "label": "Relayers",
         "href": "/zh-CN/concepts/abstraction/relayers",
         "docId": "concepts/abstraction/relayers",
@@ -3154,6 +3161,12 @@
       "id": "concepts/abstraction/introduction",
       "title": "Chain Abstraction",
       "description": "Do you know how your favorite apps are built and which database they use?. Chances are not, since we choose apps based on their functionality, and not their underlying tech.",
+      "sidebar": "concepts"
+    },
+    "concepts/abstraction/meta-transactions": {
+      "id": "concepts/abstraction/meta-transactions",
+      "title": "Meta Transactions",
+      "description": "NEP-366 introduced the concept of meta",
       "sidebar": "concepts"
     },
     "concepts/abstraction/mpc": {

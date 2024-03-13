@@ -12,16 +12,16 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Damián Parrino",
-  "lastUpdatedAt": 1708712355,
-  "formattedLastUpdatedAt": "Feb 23, 2024",
+  "lastUpdatedAt": 1710321945,
+  "formattedLastUpdatedAt": "Mar 13, 2024",
   "frontMatter": {
     "id": "relayers",
     "title": "Relayers"
   },
   "sidebar": "concepts",
   "previous": {
-    "title": "Introduction",
-    "permalink": "/concepts/abstraction/introduction"
+    "title": "Meta Transactions",
+    "permalink": "/concepts/abstraction/meta-transactions"
   },
   "next": {
     "title": "What are Chain Signatures?",

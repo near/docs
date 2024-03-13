@@ -9,15 +9,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '6d2'),
+    component: ComponentCreator('/zh-CN/', '3cd'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '042'),
+        component: ComponentCreator('/zh-CN/', '79f'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '445'),
+            component: ComponentCreator('/zh-CN/', '7ce'),
             routes: [
               {
                 path: '/zh-CN/abstraction/chain-signatures',
@@ -319,6 +319,12 @@ export default [
               {
                 path: '/zh-CN/concepts/abstraction/introduction',
                 component: ComponentCreator('/zh-CN/concepts/abstraction/introduction', 'ddf'),
+                exact: true,
+                sidebar: "concepts"
+              },
+              {
+                path: '/zh-CN/concepts/abstraction/meta-transactions',
+                component: ComponentCreator('/zh-CN/concepts/abstraction/meta-transactions', 'c5d'),
                 exact: true,
                 sidebar: "concepts"
               },
