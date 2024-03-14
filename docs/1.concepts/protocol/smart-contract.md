@@ -19,22 +19,27 @@ Check our [**Quickstart Guide**](../../2.develop/contracts/quickstart.md) to bui
 
 Smart contracts have complete control over the account, and thus can perform any action on its behalf. For example, contracts can:
 - Transfer $NEAR Tokens 
-- Call methods on themselves or other contracts
+- Call methods on themselves or **other contracts**
 - Create new accounts and deploy contracts on them
 - Update their own code
 
 Besides, smart contracts can store data in the account's storage. This allows contract's to create almost any type of application, from simple games to complex financial systems.
+
+:::danger What contracts cannot do
+- Smart contracts cannot **access the internet**, so they cannot make HTTP requests or access external data 
+- Smart contracts cannot **execute automatically**, they need to be called by an external account
+:::
 
 ---
 
 ## What are Contract's Used for?
 Smart contracts are useful to create **decentralized applications**. Some traditional examples include:
 - [Decentralized Autonomous Organizations](https://near.org/nearcatalog.near/widget/Index?cat=dao), where users create and vote proposals
-- [Art Marketplaces](https://near.org/nearcatalog.near/widget/Index?cat=marketplaces), where users create and commercialize digital art pieces
+- [Marketplaces](https://near.org/nearcatalog.near/widget/Index?cat=marketplaces), where users create and commercialize digital art pieces
 - [Decentralized exchanges](https://near.org/nearcatalog.near/widget/Index?cat=exchanges), where users can trade different currencies
-- And many more...
+- [And many more...](https://near.org/nearcatalog.near/widget/Index)
 
-For example, you can easily create a reward system by deploying a contract that keeps track of users' scores. If certain thresholds are met, the contract can automatically transfer NEAR Ⓝ or any other token to the user's account.
+For instance, you can easily create a crowdfunding contract that accepts $NEAR. If the goal is met in time, the creator can claim the funds. Otherwise, the backers are refunded.
 
 ---
 

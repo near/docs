@@ -13,24 +13,17 @@ const sidebar = {
     {
       type: 'category',
       label: 'Accounts / Contracts',
-      link: {type: 'doc', id: 'concepts/protocol/account-model'},
+      link: { type: 'doc', id: 'concepts/protocol/account-model' },
       items: [
         "concepts/protocol/account-id",
         "concepts/protocol/access-keys",
         "concepts/protocol/smartcontract",
       ]
     },
-    {
-      "Transactions": [
-        "concepts/basics/transactions/overview",
-        {
-          "Gas": [
-            "concepts/basics/transactions/gas",
-            "concepts/basics/transactions/gas-advanced"
-          ]
-        }
-      ]
-    },
+    "concepts/protocol/transactions",
+    "concepts/basics/transactions/gas",
+    "concepts/basics/transactions/gas-advanced"
+    ,
     {
       "Data Flow": [
         "concepts/data-flow/near-data-flow",

@@ -11,9 +11,6 @@ NEAR accounts present the **unique** feature of being able to hold multiple [Acc
 1. `Full-Access Keys`: Have full control over the account, and should **never be shared**
 2. `Function-Call Keys`: Can sign calls to specific contract, and are **meant to be shared**
 
-<br />
-
-
 ---
 
 ## Full-Access Keys {#full-access-keys}
@@ -43,21 +40,21 @@ The **first** Full-Access Key of an account is added when the account is **creat
 Function-Call keys have the main purpose of being shared, so third-parties can make contract calls in your name. This is useful in [multiple scenarios as we will see below](#benefits-of-function-call-keys).
 
 :::tip 
-`Function-Call` keys can be shared safely, since they can only use it to call a specific contract, and cannot transfer NEAR tokens
+`Function-Call` keys are secure to share, as they only permit calls to a specific contract and prohibit NEAR token transfers.
 :::
 
 ---
 
 ## Benefits of Function-Call Keys
 
-`Function Call Keys` allow you to grant **limited access** to third-parties. These type of keys are quite unique to NEAR, for which it is useful to talk about the use-cases they enable.
+`Function Call Keys` allows you to provide **restricted access** to third parties. This key type, unique to NEAR, enables several use-cases worth discussing.
 
-### Improving UX
-The most common use case for `Function-Call` keys is to enable an application to sign transactions for you, so they **don't** need to **interrupt your experience** asking to sign a transaction.
+### Enhancing User Experience
+The most common use case for `Function-Call` keys is to allow an application to sign transactions on the user's behalf.
 
-Imagine that you are building a game that keeps the user's score on a smart contract. In other chains, you would need to interrupt the user's experience to ask them to sign a transaction each time the game wants to update the score.
+Imagine you are developing a game that records the user's score on a smart contract. On other chains, you would have to disrupt the user's experience to request transaction signatures each time the game needs to update the score.
 
-In NEAR, you can ask the user to create a `Function-Call` key for the game's contract, and share it with the game. This way, the game can now sign transactions in the user's name, without needing to interrupt the gameplay.
+With NEAR, you can request the user to generate a `Function-Call` key for the game's contract and share it with the game. This way, the game can sign transactions in the user's name, eliminating gameplay interruptions.
 
 Sharing this key is safe for the user, because even in the case of somebody stealing it, they would only be able to call the score-keeping method, and nothing else.
 
@@ -65,9 +62,11 @@ Sharing this key is safe for the user, because even in the case of somebody stea
 
 ### Simple Onboarding
 
-Another common use-case of `Function-Call` keys is to enable **onboarding** new users. It works as follows: You first create a contract that has a method called `create_account`. You can program the method so - when executed - it creates a new account and then transfers some tokens to it.
+Another common use-case of `Function-Call` keys is to simplify the **onboarding** process for new users. It works as follows:
 
-You can then create a `Function-Call` key for this method, and share it with your friends. They can then use it to create an account and claim some tokens, without needing to know anything about blockchain.
+First create a contract that has a method called `create_account`. This method should only be callable by the contract itself and, when executed, should create a new account and transfer some tokens to it.
+
+You can then create multiple `Function-Call` in the contract's account, that only allow to call `create_account`. Drop these keys to your friends, so they can call the method, and easily create an account with some tokens.
 
 :::tip
 This is the basic principle behind [NEAR Drops](../../7.primitives/linkdrop.md), a way to distribute assets to a large number of users
@@ -75,12 +74,13 @@ This is the basic principle behind [NEAR Drops](../../7.primitives/linkdrop.md),
 
 <hr class="subsection" />
 
-### Rotating / Recovering Keys
-Having multiple keys means that you can easily change them. If you think any of your keys could be compromised, you can simply remove them or swap them with a new one. Just as how you can change your password on any website.
+### Key Rotation and Recovery
 
-You could also implement a key-recovery [contract](smart-contract.md) in your account, and create a "recovery key" for someone you trust. Such a key could only be used to start the recovery.
+The presence of multiple keys allows for easy **rotation** and **recovery**. If you suspect a key might be compromised, you can promptly remove it or replace it with a new one, similar to changing your password on a website.
 
-When needed, that third-party component could trigger the recovery process, helping to create a new full-access key for you.
+You can also establish a key-recovery contract in your account and generate a "recovery key" for a trusted party. This key would only be used to initiate the recovery process.
+
+In case of necessity, the trusted party can trigger the recovery process, assisting in the creation of a new full-access key for you.
 
 ---
 
