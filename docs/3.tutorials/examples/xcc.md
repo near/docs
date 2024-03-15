@@ -18,7 +18,7 @@ Check the tutorial on how to perform cross-contract calls [in batches and in par
 
 ## Obtaining the Cross Contract Call Example
 
-You have two options to start the Donation Example:
+You have two options to start the project:
 
 1. You can use the app through `Github Codespaces`, which will open a web-based interactive environment.
 2. Clone the repository locally and use it from your computer.
@@ -39,12 +39,9 @@ The smart contract is available in two flavors: Rust and JavaScript
 
 ```bash
 ┌── sandbox-ts # sandbox testing
-│    ├── src
-│    │    ├── hello-near
-│    │    │    └── hello-near.wasm
-│    │    └── main.ava.ts
-│    ├── ava.config.cjs
-│    └── package.json
+│    ├── hello-near
+│    │    └── hello-near.wasm
+│    └── main.ava.ts
 ├── src # contract's code
 │    └── contract.ts
 ├── package.json
@@ -56,22 +53,18 @@ The smart contract is available in two flavors: Rust and JavaScript
 
   <TabItem value="🦀 Rust">
 
+=======
 ```bash
-┌── sandbox-ts # sandbox testing
-│    ├── src
-│    │    ├── hello-near
-│    │    │    └── hello-near.wasm
-│    │    └── main.ava.ts
-│    ├── ava.config.cjs
-│    └── package.json
+┌── tests # sandbox testing
+│    ├── hello-near
+│    │    └── hello-near.wasm
+│    └── tests.rs
 ├── src # contract's code
 │    ├── external.rs
 │    └── lib.rs
-├── build.sh # build script
 ├── Cargo.toml # package manager
 ├── README.md
-├── rust-toolchain.toml
-└── test.sh # test script
+└── rust-toolchain.toml
 ```
 
   </TabItem>
@@ -82,6 +75,7 @@ The smart contract is available in two flavors: Rust and JavaScript
 
 ## Smart Contract
 
+### Contract
 The contract exposes methods to query the greeting and change it. These methods do nothing but calling `get_greeting` and
 `set_greeting` in the `hello-near` example.
 
@@ -118,7 +112,7 @@ yarn test
   
   ```bash
   cd contract-simple-rs
-  ./test.sh
+  cargo test
   ```
 
   </TabItem>
@@ -128,6 +122,24 @@ yarn test
 :::tip
 The `integration tests` use a sandbox to create NEAR users and simulate interactions with the contract.
 :::
+
+In this project in particular, the integration tests first deploy the `hello-near` contract. Then,
+they test that the cross-contract call correctly sets and retrieves the message. You will find the integration tests
+in `sandbox-ts/` for the JavaScript version and in `tests/` for the Rust version.
+
+<CodeTabs>
+  <Language value="🌐 JavaScript" language="rust">
+    <Github fname="main.ava.ts"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/sandbox-ts/src/main.ava.ts"
+            start="9" end="59" />
+  </Language>
+  <Language value="🦀 Rust" language="rust">
+    <Github fname="lib.rs"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/tests/tests.rs"
+            start="5" end="77" />
+  </Language>
+</CodeTabs>
+
 
 <hr class="subsection" />
 
@@ -157,11 +169,12 @@ near create-account <accountId> --useFaucet
 
 # Deploy the contract
 cd contract-simple-rs
-./build.sh
-near deploy <accountId> ./target/wasm32-unknown-unknown/release/cross_contract.wasm --initFunction init --initArgs '{"hello_account":"hello.near-example.testnet"}'
 
+cargo near build
+
+# During deploying pass {"hello_account":"hello.near-example.testnet"} as init arguments
+cargo near deploy <accountId>
 ```
-
   </TabItem>
 </Tabs>
 
