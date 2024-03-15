@@ -101,7 +101,7 @@ they **all get reverted**.
     <Github fname="contract.ts"
           url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
           start="37" end="40" />
-    <Github fname="batch_actions.js"
+    <Github fname="batch_actions.ts"
           url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/batch_actions.ts"
           start="5" end="17" />
   </Language>
