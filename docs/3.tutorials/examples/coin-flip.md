@@ -54,12 +54,12 @@ The contract presents 2 methods: `flip_coin`, and `points_of`.
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="contract.ts" 
-            url="https://github.com/near-examples/coin-flip-examples/blob/rust-version/contract-ts/src/contract.ts"
+            url="https://github.com/near-examples/coin-flip-examples/blob/main/contract-ts/src/contract.ts"
             start="23" end="56" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs" 
-            url="https://github.com/near-examples/coin-flip-examples/blob/rust-version/contract-rs/src/lib.rs"
+            url="https://github.com/near-examples/coin-flip-examples/blob/main/contract-rs/src/lib.rs"
             start="49" end="83" />
   </Language>
 </CodeTabs>
@@ -96,12 +96,12 @@ in `contract-ts/integration-tests` (for the JavaScript contract) and `contract-r
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="main.test.js"
-            url="https://github.com/near-examples/coin-flip-examples/blob/rust-version/contract-ts/integration-tests/src/main.ava.ts"
+            url="https://github.com/near-examples/coin-flip-examples/blob/main/contract-ts/integration-tests/src/main.ava.ts"
             start="32" end="57" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs" 
-            url="https://github.com/near-examples/coin-flip-examples/blob/rust-version/contract-rs/sandbox-rs/src/tests.rs"
+            url="https://github.com/near-examples/coin-flip-examples/blob/main/contract-rs/sandbox-rs/src/tests.rs"
             start="27" end="83" />
   </Language>
 </CodeTabs>
