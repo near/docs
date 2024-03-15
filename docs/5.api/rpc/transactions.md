@@ -18,31 +18,11 @@ The RPC API enables you to send transactions and query their status.
 
 - method: `send_tx`
 - params: 
-  - SignedTransaction encoded in base64
-  - [Optional] `wait_until`: the required minimal execution level. It can be one of the listed below. The default value is `FINAL`.
+  - `signed_tx_base64`: SignedTransaction encoded in base64
+  - [Optional] `wait_until`: the required minimal execution level. [Read more here](#tx-status-result). The default value is `EXECUTED_OPTIMISTIC`.
 
-```rust
-#[serde(rename_all = "SCREAMING_SNAKE_CASE")]
-pub enum TxExecutionStatus {
-  /// Transaction is waiting to be included into the block
-  None,
-  /// Transaction is included into the block. The block may be not finalized yet
-  Included,
-  /// Transaction is included into finalized block
-  IncludedFinal,
-  /// Transaction is included into finalized block +
-  /// All the transaction receipts finished their execution.
-  /// The corresponding blocks for each receipt may be not finalized yet
-  Executed,
-  /// Transaction is included into finalized block +
-  /// Execution of transaction receipts is finalized
-  #[default]
-  Final,
-}
-```
-
-Using `send_tx` with finality `NONE` is equal to legacy `broadcast_tx_async` method.  
-Using `send_tx` with finality `FINAL` is equal to legacy `broadcast_tx_commit` method.
+Using `send_tx` with `wait_until = NONE` is equal to legacy `broadcast_tx_async` method.  
+Using `send_tx` with finality `wait_until = EXECUTED_OPTIMISTIC` is equal to legacy `broadcast_tx_commit` method.
 
 Example:
 
@@ -260,8 +240,13 @@ Here is the exhaustive list of the error variants that can be returned by `broad
 
 - method: `tx`
 - params:
-  - `transaction hash` _(see [NearBlocks Explorer](https://testnet.nearblocks.io) for a valid transaction hash)_
-  - `sender account id`
+  - `tx_hash` _(see [NearBlocks Explorer](https://testnet.nearblocks.io) for a valid transaction hash)_
+  - `sender_account_id` _(used to determine which shard to query for transaction)_
+  - [Optional] `wait_until`: the required minimal execution level. Read more [here](/api/rpc/transactions#tx-status-result). The default value is `EXECUTED_OPTIMISTIC`.
+
+A Transaction status request with `wait_until != NONE` will wait until the transaction appears on the blockchain.
+If the transaction does not exist, the method will wait until the timeout is reached.
+If you only need to check whether the transaction exists, use `wait_until = NONE`, it will return the response immediately.
 
 Example:
 
@@ -273,18 +258,12 @@ Example:
   "jsonrpc": "2.0",
   "id": "dontcare",
   "method": "tx",
-  "params": ["6zgh2u9DqHHiXzdy9ouTP7oGky2T4nugqzqt9wJZwNFm", "sender.testnet"]
+  "params": {
+    "tx_hash": "6zgh2u9DqHHiXzdy9ouTP7oGky2T4nugqzqt9wJZwNFm",
+    "sender_account_id": "sender.testnet",
+    "wait_until": "EXECUTED"
+  }
 }
-```
-
-</TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
-
-```js
-const response = await near.connection.provider.txStatus(
-  "6zgh2u9DqHHiXzdy9ouTP7oGky2T4nugqzqt9wJZwNFm",
-  "sender.testnet"
-);
 ```
 
 </TabItem>
@@ -292,7 +271,7 @@ const response = await near.connection.provider.txStatus(
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=tx \
-    params:='[ "6zgh2u9DqHHiXzdy9ouTP7oGky2T4nugqzqt9wJZwNFm", "sender.testnet"]'
+    params:='{"tx_hash": "6zgh2u9DqHHiXzdy9ouTP7oGky2T4nugqzqt9wJZwNFm", "sender_account_id": "sender.testnet"}'
 ```
 
 </TabItem>
@@ -306,6 +285,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=tx \
 {
   "jsonrpc": "2.0",
   "result": {
+    "final_execution_status": "FINAL",
     "status": {
       "SuccessValue": ""
     },
@@ -504,8 +484,14 @@ Here is the exhaustive list of the error variants that can be returned by `tx` m
 
 - method: `EXPERIMENTAL_tx_status`
 - params:
-  - `transaction hash` _(see [NearBlocks Explorer](https://testnet.nearblocks.io) for a valid transaction hash)_
-  - `sender account id` _(used to determine which shard to query for transaction)_
+  - `tx_hash` _(see [NearBlocks Explorer](https://testnet.nearblocks.io) for a valid transaction hash)_
+  - `sender_account_id` _(used to determine which shard to query for transaction)_
+  - [Optional] `wait_until`: the required minimal execution level. Read more [here](/api/rpc/transactions#tx-status-result). The default value is `EXECUTED_OPTIMISTIC`.
+
+A Transaction status request with `wait_until != NONE` will wait until the transaction appears on the blockchain.
+If the transaction does not exist, the method will wait until the timeout is reached.
+If you only need to check whether the transaction exists, use `wait_until = NONE`, it will return the response immediately.
+
 
 Example:
 
@@ -517,25 +503,19 @@ Example:
   "jsonrpc": "2.0",
   "id": "dontcare",
   "method": "EXPERIMENTAL_tx_status",
-  "params": ["HEgnVQZfs9uJzrqTob4g2Xmebqodq9waZvApSkrbcAhd", "bowen"]
+  "params": {
+    "tx_hash": "HEgnVQZfs9uJzrqTob4g2Xmebqodq9waZvApSkrbcAhd",
+    "sender_account_id": "bowen",
+    "wait_until": "EXECUTED"
+  }
 }
-```
-
-</TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
-
-```js
-const response = await near.connection.provider.experimental_txStatus(
-  "HEgnVQZfs9uJzrqTob4g2Xmebqodq9waZvApSkrbcAhd",
-  "bowen"
-);
 ```
 
 </TabItem>
 <TabItem value="http" label="HTTPie">
 
 ```bash
-http post https://rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_tx_status params:='["HEgnVQZfs9uJzrqTob4g2Xmebqodq9waZvApSkrbcAhd", "bowen"]' id=dontcare
+http post https://rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_tx_status params:='{"tx_hash": "HEgnVQZfs9uJzrqTob4g2Xmebqodq9waZvApSkrbcAhd", "sender_account_id": "bowen"}' id=dontcare
 ```
 
 </TabItem>
@@ -550,6 +530,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_tx_status
   "id": "123",
   "jsonrpc": "2.0",
   "result": {
+    "final_execution_status": "FINAL",
     "receipts": [
       {
         "predecessor_id": "bowen",
@@ -1020,14 +1001,45 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
   </tbody>
 </table>
 
+## Transaction Execution Levels {#tx-status-result}
+
+All the methods listed above have `wait_until` request parameter, and `final_execution_status` response value.
+They correspond to the same enum `TxExecutionStatus`.
+See the detailed explanation for all the options:
+
+```rust
+#[serde(rename_all = "SCREAMING_SNAKE_CASE")]
+pub enum TxExecutionStatus {
+  /// Transaction is waiting to be included into the block
+  None,
+  /// Transaction is included into the block. The block may be not finalized yet
+  Included,
+  /// Transaction is included into the block +
+  /// All the transaction receipts finished their execution.
+  /// The corresponding blocks for tx and each receipt may be not finalized yet
+  #[default]
+  ExecutedOptimistic,
+  /// Transaction is included into finalized block
+  IncludedFinal,
+  /// Transaction is included into finalized block +
+  /// All the transaction receipts finished their execution.
+  /// The corresponding blocks for each receipt may be not finalized yet
+  Executed,
+  /// Transaction is included into finalized block +
+  /// Execution of transaction receipts is finalized
+  Final,
+}
+```
+
 ---
 
 # Deprecated methods {#deprecated}
 
-## Send transaction (async) {#send-transaction-async}
+## [deprecated] Send transaction (async) {#send-transaction-async}
+
+> Consider using [`send_tx`](/api/rpc/transactions#send-tx) instead
 
 > Sends a transaction and immediately returns transaction hash.
-> Consider using `send_tx`
 
 - method: `broadcast_tx_async`
 - params: [SignedTransaction encoded in base64]
@@ -1133,7 +1145,9 @@ Here is the exhaustive list of the error variants that can be returned by `broad
 
 ---
 
-## Send transaction (await) {#send-transaction-await}
+## [deprecated] Send transaction (await) {#send-transaction-await}
+
+> Consider using [`send_tx`](/api/rpc/transactions#send-tx) instead
 
 > Sends a transaction and waits until transaction is fully complete. _(Has a 10 second timeout)_
 
@@ -1177,6 +1191,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_
 {
   "jsonrpc": "2.0",
   "result": {
+    "final_execution_status": "FINAL",
     "status": {
       "SuccessValue": ""
     },

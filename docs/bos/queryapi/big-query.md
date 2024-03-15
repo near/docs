@@ -32,12 +32,13 @@ The [NEAR Public Lakehouse repository](https://github.com/near/near-public-lakeh
 
 ### Example Queries
 
-- _How many unique users do I have for my smart contract per day?_
+- _How many unique signers and accounts have interacted with my smart contract per day?_
 
 ```sql
 SELECT
   ra.block_date collected_for_day,
-  COUNT(DISTINCT t.signer_account_id) as total
+  COUNT(DISTINCT t.signer_account_id) as total_signers,
+  COUNT(DISTINCT ra.receipt_predecessor_account_id) as total_accounts
 FROM `bigquery-public-data.crypto_near_mainnet_us.receipt_actions` ra
   JOIN `bigquery-public-data.crypto_near_mainnet_us.receipt_origin_transaction` ro ON ro.receipt_id = ra.receipt_id
   JOIN `bigquery-public-data.crypto_near_mainnet_us.transactions` t ON ro.originated_from_transaction_hash = t.transaction_hash
