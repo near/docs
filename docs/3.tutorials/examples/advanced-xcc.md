@@ -43,14 +43,11 @@ The smart contract is available in two flavors: Rust and JavaScript
 
 ```bash
 ┌── sandbox-ts # sandbox testing
-│    ├── src
-│    │    ├── external-contracts
-│    │    │    ├── counter.wasm
-│    │    │    ├── guest-book.wasm
-│    │    │    └── hello-near.wasm
-│    │    └── main.ava.ts
-│    ├── ava.config.cjs
-│    └── package.json
+│    ├── external-contracts
+│    │    ├── counter.wasm
+│    │    ├── guest-book.wasm
+│    │    └── hello-near.wasm
+│    └── main.ava.ts
 ├── src # contract's code
 │    ├── internal
 │    │    ├── batch_actions.ts
@@ -69,25 +66,20 @@ The smart contract is available in two flavors: Rust and JavaScript
   <TabItem value="🦀 Rust">
 
 ```bash
-┌── sandbox-ts # sandbox testing
-│    ├── src
-│    │    ├── external-contracts
-│    │    │    ├── counter.wasm
-│    │    │    ├── guest-book.wasm
-│    │    │    └── hello-near.wasm
-│    │    └── main.ava.ts
-│    ├── ava.config.cjs
-│    └── package.json
+┌── tests # sandbox testing
+│    ├── external-contracts
+│    │    ├── counter.wasm
+│    │    ├── guest-book.wasm
+│    │    └── hello-near.wasm
+│    └── main.ava.ts
 ├── src # contract's code
 │    ├── batch_actions.rs
 │    ├── lib.rs
 │    ├── multiple_contracts.rs
 │    └── similar_contracts.rs
-├── build.sh # build script
 ├── Cargo.toml # package manager
 ├── README.md
-├── rust-toolchain.toml
-└── test.sh # test script
+└── rust-toolchain.toml
 ```
 
   </TabItem>
@@ -105,8 +97,8 @@ Methods called this way are executed sequentially, with the added benefit that, 
 they **all get reverted**.
 
 <CodeTabs>
- <Language value="🌐 JavaScript" language="js">
-  <Github fname="contract.ts"
+  <Language value="🌐 JavaScript" language="js">
+    <Github fname="contract.ts"
           url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
           start="37" end="40" />
     <Github fname="batch_actions.ts"
@@ -153,12 +145,12 @@ all in parallel. If one of them fails the rest **ARE NOT REVERTED**.
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
-     <Github fname="contract.ts"
-          url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
-          start="47" end="50" />
+    <Github fname="contract.ts"
+      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
+      start="47" end="50" />
     <Github fname="multiple_contracts.ts"
-          url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/multiple_contracts.ts"
-          start="6" end="21" />
+      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/multiple_contracts.ts"
+      start="6" end="21" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="multiple_contracts.rs"
@@ -176,7 +168,7 @@ value returned by each call, or an error message.
   <Language value="🌐 JavaScript" language="js">
     <Github fname="contract.ts"
       url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
-      start="42" end="45" />
+      start="52" end="55" />
     <Github fname="multiple_contracts.ts"
       url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/multiple_contracts.ts"
       start="24" end="41" />
@@ -187,7 +179,7 @@ value returned by each call, or an error message.
   <Language value="🦀 Rust" language="rust">
     <Github fname="multiple_contracts.rs"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/multiple_contracts.rs"
-            start="58" end="91" />
+            start="58" end="92" />
   </Language>
 </CodeTabs>
 
@@ -203,16 +195,16 @@ In this case, we call multiple contracts that will return the same type:
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="contract.ts"
-          url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
-          start="57" end="60" />
+      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
+      start="57" end="60" />
     <Github fname="similar_contracts.ts"
-          url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/similar_contratcs.ts"
-          start="6" end="35" />
+      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/similar_contracts.ts"
+      start="6" end="35" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="similar_contracts.rs"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/similar_contracts.rs"
-            start="18" end="31" />
+            start="7" end="30" />
   </Language>
 </CodeTabs>
 
@@ -225,9 +217,9 @@ results.
   <Language value="🌐 JavaScript" language="js">
     <Github fname="contract.ts"
       url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
-      start="42" end="45" />
+      start="62" end="65" />
     <Github fname="similar_contracts.ts"
-      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/similar_contratcs.ts"
+      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/similar_contracts.ts"
       start="37" end="54" />
     <Github fname="utils.ts"
       url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/utils.ts"
@@ -236,7 +228,7 @@ results.
   <Language value="🦀 Rust" language="rust">
     <Github fname="similar_contracts.rs"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/similar_contracts.rs"
-            start="33" end="61" />
+            start="32" end="57" />
   </Language>
 </CodeTabs>
 
@@ -260,7 +252,7 @@ yarn test
   
   ```bash
   cd contract-advanced-rs
-  ./test.sh
+  cargo test
   ```
 
   </TabItem>
@@ -299,9 +291,10 @@ near create-account <accountId> --useFaucet
 
 # Deploy the contract
 cd contract-advanced-rs
-./build.sh
-near deploy <accountId> ./target/wasm32-unknown-unknown/release/cross_contract.wasm --initFunction init --initArgs '{"hello_account":"hello.near-example.testnet","guestbook_account":"guestbook_account.near-example.testnet","counter_account":"counter_account.near-example.testnet"}'
+cargo near build
 
+# During deploying pass {"hello_account":"hello.near-example.testnet","guestbook_account":"guestbook_account.near-example.testnet","counter_account":"counter_account.near-example.testnet"} as init arguments
+cargo near deploy <accountId>
 ```
 
   </TabItem>
