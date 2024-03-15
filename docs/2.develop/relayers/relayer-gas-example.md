@@ -1,6 +1,6 @@
 ---
 id: relayer-gas-example
-title: Multi-chain Relayer and Gas Station example
+title: Multichain Relayer and Gas Station example
 sidebar_label: Relayer + Gas Station
 ---
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
