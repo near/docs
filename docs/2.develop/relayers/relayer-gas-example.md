@@ -21,7 +21,11 @@ For this tutorial, you'll need to have installed:
 
 ## Setup
 
+Before you start testing, set up your local environment and install the Relayer server, the Event indexer and NEAR CLI.
+
 ### Multichain Relayer server
+
+The main function of this server is interfacing with foreign chain RPCs sending both pre-signed funding transactions to cover gas and the actual pre-signed transaction once the funding is done.
 
 To run the [Multichain Relayer Server](https://github.com/near/multichain-relayer-server):
 
@@ -31,7 +35,15 @@ To run the [Multichain Relayer Server](https://github.com/near/multichain-relaye
    cargo run
    ```
 
+:::tip
+
+Find the Multichain Relayer server source code in [this GitHub repository](https://github.com/near/multichain-relayer-server).
+
+:::
+
 ### Gas Station Event indexer
+
+The event indexer picks up events emitted from the [gas station contract](gas-station.md) used for generating signed foreign chain transactions and calls the multichain relayer `/send_funding_and_user_signed_txns` endpoint locally.
 
 To run the [Gas Station indexer](https://github.com/near/gas-station-event-indexer):
 
@@ -40,11 +52,24 @@ To run the [Gas Station indexer](https://github.com/near/gas-station-event-index
    ```sh
    pip install requirements.txt
    ```
+
 3. Update the [`config.toml`](https://github.com/near/gas-station-event-indexer/blob/main/config.toml) configuration file with appropriate values
+   ```
+   network = "testnet"
+   # gas station contract account id
+   contract_id = "canhazgas.testnet"
+   ```
+
 4. Run the indexer:
    ```sh
    python3 gas-station-event-indexer.py
    ```
+
+:::tip
+
+Find the Gas Station Event indexer source code in [this GitHub repository](https://github.com/near/gas-station-event-indexer).
+
+:::
 
 ## Running tests
 
@@ -54,6 +79,11 @@ To run the [Gas Station indexer](https://github.com/near/gas-station-event-index
   <Language value="Python" language="python">
     <Github fname="generate_rlp_evm_txn.py"
         url="https://github.com/near/multichain-relayer-server/blob/5b040611f2dc6c6b405b5ec00d5102e3cc27a65c/integration_tests/generate_rlp_evm_txn.py"
+        start="7" end="13" />
+  </Language>
+  <Language value="Rust" language="rust">
+    <Github fname="test.rs"
+        url="https://github.com/near/multichain-relayer-server/blob/5b040611f2dc6c6b405b5ec00d5102e3cc27a65c/tests/tests.rs"
         start="7" end="13" />
   </Language>
 </CodeTabs>
@@ -66,7 +96,7 @@ If that doesn't work, try running the `generate_eip1559_rlp_hex()` test in [`tes
 
 2. Ensure the [Multichain Relayer server](#multichain-relayer-server) is configured correctly and running.
 
-3. Ensure the [Gas Station indexer](#gas-station-event-indexer) is running locally. The event indexer picks up events emitted from the gas station contract used for generating signed foreign chain transactions and calls the multichain relayer `/send_funding_and_user_signed_txns` endpoint locally
+3. Ensure the [Gas Station indexer](#gas-station-event-indexer) is running locally.
 
 4. Construct the signed transaction using the [near-cli-rs](https://github.com/near/near-cli-rs).
    The receiver account ID should be the gas station contract.
