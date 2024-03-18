@@ -11,9 +11,9 @@ A relayer is a simple web service that receives signed transactions from NEAR us
 
 ![relayer-overview](/docs/assets/welcome-pages/relayer-overview.png)
 
-Relayers are a natural consequence of [NEP-366: Meta Transactions](https://github.com/near/NEPs/blob/master/neps/nep-0366.md), a special type of transaction which can be best understood as an intent.
+Relayers are a natural consequence of [Meta Transactions](meta-tx.md) ([NEP-366](https://github.com/near/NEPs/blob/master/neps/nep-0366.md)), a special type of transaction that can be best understood as an intent.
 
-The user expresses: "I want to do a specific action on chain" and signs this intent **off-chain**, but does not send it to the network. Instead, they send the intent to a `Relayer`, which wraps the message into an actual transaction, attaches the necessary funds, and sends it to the network.
+The user expresses: _"I want to do a specific action on chain"_ and signs this intent **off-chain**, but does not send it to the network. Instead, they send the intent to a `Relayer`, which wraps the message into an actual transaction, attaches the necessary funds, and sends it to the network.
 
 <details>
 <summary> Technical Details </summary>
