@@ -7,9 +7,6 @@ title: Light Client
 
 A trustless off-chain light client for NEAR with DA-enabled features, such as KZG commitments, Reed-Solomon erasure coding & storage connectors.
 
-:::note
-The NEAR Light client was inspired by the [Helios light client](https://github.com/a16z/helios), where there were once many light client implementations for Ethereum until it was released. 
-:::
 
 ## Features
 
