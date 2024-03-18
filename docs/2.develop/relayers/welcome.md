@@ -9,7 +9,7 @@ import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 Relayers serve to delegate gas fees to a web service, allowing users to transact on NEAR without the need to acquire the token themselves while still retaining the security of signing their own transactions. This guide will lead you through the components necessary to construct a relayer capable of handling meta transactions.
 
-If you're already aquainted with the technology you can fast track to a [working open source example](https://github.com/SurgeCode/near-relay-example) 
+If you're already acquainted with the technology, you can fast track to a [working open source example](https://github.com/SurgeCode/near-relay-example) 
 
 For other languages you can check out [Python](https://github.com/here-wallet/near-relay), [Rust](https://github.com/near/pagoda-relayer-rs) 
 
