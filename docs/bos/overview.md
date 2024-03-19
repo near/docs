@@ -1,7 +1,7 @@
----
-id: overview
-title: Overview
----
+#!
+id: @resendezandres0b.near
+title: @EnsDeLiz
+near.org
 
 NEAR simplifies building, deploying and accessing decentralized frontends. Embrace the power of community and Web 3.
 
