@@ -30,6 +30,20 @@ Transaction breakdown:
 
 Once this service and its supporting services are live, the multichain relayer server will be monitoring this gas station contract and relaying the signed transactions in the proper order as they become available, so it will not be strictly necessary for the users of this contract to ensure that the transactions are properly relayed, unless the user wishes to relay the transactions using their own RPC (e.g. to minimize latency).
 
+## Settlement
+
+Settlement is needed because the Gas Station contract is accumulating NEAR, while the [Paymaster accounts](multichain-server.md#paymaster) on foreign chains are spending native foreign chain gas tokens (`ETH`, `BNB`, `SOL`, etc).
+
+Manual Settlement involves several steps:
+
+1. Withdrawing the NEAR held in the gas station contract and swapping for a token that can be bridged.
+   This may be the native gas token of the foreign chain, another token like USDC that has wide bridge support, or NEAR.
+
+2. Bridging the token from NEAR to the foreign chain.
+   - Here's an [overview of bridging related to NEAR](https://knotty-marsupial-f6d.notion.site/NEAR-Bridging-Guides-f4359bd35c794dc184b098f7ed00c4ce).
+
+3. Sending the native gas tokens to the paymaster accounts on the foreign chains.
+   - A swap from the bridged token to the native gas token before sending to the paymaster accounts is necessary if the token that was bridged was not the foreign chain native gas token
 
 ## Contract Interactions
 
