@@ -73,7 +73,17 @@ Find the Gas Station Event indexer source code in [this GitHub repository](https
 
 ## Running tests
 
+The gas station contract supports EIP-1559 transactions. 
+
 1. Set the transaction details of the EVM transaction you want to send in [`generate_rlp_evm_txn.py`](https://github.com/near/multichain-relayer-server/blob/5b040611f2dc6c6b405b5ec00d5102e3cc27a65c/integration_tests/generate_rlp_evm_txn.py), run the script, and save the RLP hex string output.
+
+:::note
+
+Python and Rust output different hex RLP encoded transactions. 
+ - If you're using Rust, use [`generate_eip1559_rlp_hex()`](https://github.com/near/multichain-relayer-server/blob/5b040611f2dc6c6b405b5ec00d5102e3cc27a65c/tests/tests.rs#L24).
+ - If you're using Python, use [`generate_rlp_encoded_transaction(is_eip_1559=true)`](https://github.com/near/multichain-relayer-server/blob/5b040611f2dc6c6b405b5ec00d5102e3cc27a65c/integration_tests/generate_rlp_evm_txn.py#L7)
+
+:::
 
 <CodeTabs>
   <Language value="Python" language="python">
@@ -84,15 +94,9 @@ Find the Gas Station Event indexer source code in [this GitHub repository](https
   <Language value="Rust" language="rust">
     <Github fname="test.rs"
         url="https://github.com/near/multichain-relayer-server/blob/5b040611f2dc6c6b405b5ec00d5102e3cc27a65c/tests/tests.rs"
-        start="7" end="13" />
+        start="24" end="33" />
   </Language>
 </CodeTabs>
-
-:::note
-
-If that doesn't work, try running the `generate_eip1559_rlp_hex()` test in [`tests/tests.rs`](https://github.com/near/multichain-relayer-server/blob/5b040611f2dc6c6b405b5ec00d5102e3cc27a65c/tests/tests.rs) (Python and Rust output different hex RLP encoded transactions)
-
-:::
 
 2. Ensure the [Multichain Relayer server](#multichain-relayer-server) is configured correctly and running.
 
