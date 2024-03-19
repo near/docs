@@ -17,19 +17,15 @@ If you're already acquainted with the technology, you can fast track to a [worki
 
 For other languages you can check out [Python](https://github.com/here-wallet/near-relay), [Rust](https://github.com/near/pagoda-relayer-rs) 
 
-
-
 ## How it works
-
 
 ![relayer-overview-technical](/docs/assets/welcome-pages/relayer-overview-technical.png)
 
 A basic relayer consists of a web server housing a funded NEAR account. This account receives an encoded signed transaction, which can subsequently be decoded into a `SignedDelegate` format and transmitted on-chain.
 
-The client can then generate a `SignedDelegateAction` (signed message that isn't yet sent), encode it, and transmit it to this server, where it will be relayed onto the blockchain.
+The client can then generate a `SignedDelegateAction` (a signed message that hasn't yet been sent), encode it, and transmit it to this server, where it will be relayed onto the blockchain.
 
 ## Relayer (server)
-
 
 <Tabs groupId="code-tabs">
   <TabItem value="near-api-js">
@@ -82,12 +78,12 @@ The client can then generate a `SignedDelegateAction` (signed message that isn't
 
   </TabItem>
   <TabItem value="@near-relay/client">
-   As mentioned in the above note in order to be able to relay on the client side its necessary to have access to signing transactions directly on the client. Luckily leveraging the near biometric library its possible to do so in a non custodial way.
+   As mentioned in the above note in order to be able to relay on the client side it's necessary to have access to signing transactions directly on the client. Luckily leveraging the near biometric library it's possible to do so in a non custodial way.
 
-   By calling this method and passing in the url for the account creation endpoint (mentioned in the server section) as well as the accoundId everything is handled under the hood to successfully create an account.
+   By calling this method and passing in the URL for the account creation endpoint (mentioned in the server section) as well as the `accoundId` everything is handled under the hood to successfully create an account.
   <Github language='typescript' url='https://github.com/SurgeCode/near-relay/blob/main/example/src/app/page.tsx' start='17' end='23'/>
 
-   On the client side you just need to create an `Action` and pass it into the `relayTransaction` method along with the url of the relayer endpoint discussed in the server section and the id of the receiverId.
+   On the client side, you just need to create an `Action` and pass it into the `relayTransaction` method along with the URL of the relayer endpoint discussed in the server section and the id of the `receiverId`.
 
    <Github language='typescript' url='https://github.com/SurgeCode/near-relay/blob/main/example/src/app/page.tsx' start='25' end='36'/>
   </TabItem>
@@ -104,8 +100,10 @@ The client can then generate a `SignedDelegateAction` (signed message that isn't
 
 ### Gating the relayer
 
-In most production applications its expected to want to be able to gate the relayer to only be used in certain cases. By taking apart the `delegateAction` object inside the `SignedDelegate`on the server this can be done simply.
-```
+In most production applications it's expected that you want to be able to gate the relayer to only be used in certain cases.
+By taking apart the `delegateAction` object inside the `SignedDelegate`on the server this can be done simply.
+
+```typescript
 export declare class DelegateAction extends Assignable {
     senderId: string;
     receiverId: string;
@@ -115,7 +113,8 @@ export declare class DelegateAction extends Assignable {
     publicKey: PublicKey;
 }
 ```
-We can for example gate by some particular user or contract
+
+You can, for example, gate by some particular user or contract:
 
 ```typescript
   const serializedTx: Buffer = req.body;
@@ -139,9 +138,6 @@ You can decode the args using:
 ```
 JSON.parse(Buffer.from(args_base64 || "", "base64").toString())
 ```
-
-
-
 
 
 
