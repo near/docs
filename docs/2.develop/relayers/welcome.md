@@ -34,7 +34,7 @@ The client can then generate a `SignedDelegateAction` (signed message that isn't
 <Tabs groupId="code-tabs">
   <TabItem value="near-api-js">
 
-    Here a simple express endpoint deserializes the body, instantiates the relayer account and then sends the transaction.
+    Here's a simple express endpoint deserializes the body, instantiates the relayer account and then sends the transaction.
 
   <Github language='typescript' url='https://github.com/SurgeCode/near-relay-example/blob/main/server.ts' start='16' end='27'/>
 
@@ -43,15 +43,15 @@ The client can then generate a `SignedDelegateAction` (signed message that isn't
   <Github language='typescript' url='https://github.com/SurgeCode/near-relay-example/blob/main/util.ts' start='5' end='17'/>  
 
 
-  :::info
+:::info
 
  The code in the example only works from the following versions onwards
 
-   "near-api-js": "3.0.4"
-
-   "@near-js/transactions": "1.1.2",
-
-   "@near-js/accounts": "1.0.4"
+```
+"near-api-js": "3.0.4"
+"@near-js/transactions": "1.1.2",
+"@near-js/accounts": "1.0.4"
+```
 
 ::: 
 
