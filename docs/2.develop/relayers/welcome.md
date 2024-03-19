@@ -138,10 +138,3 @@ You can decode the args using:
 ```
 JSON.parse(Buffer.from(args_base64 || "", "base64").toString())
 ```
-
-
-
-
-
-
-
