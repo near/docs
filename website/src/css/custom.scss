@@ -138,6 +138,8 @@ a:hover {
 /* for image caption */
 img+em,
 .tabs-container+p em,
+table+p em,
+.code_iframe+p em,
 .theme-code-block+p em {
     font-style: normal;
     display: inherit;

@@ -3,7 +3,7 @@ id: ethers-js
 title: NEAR for Ethereum developers
 ---
 
-import {WidgetEditor} from "@site/src/components/social-widget"
+import {WidgetEditor} from "@site/src/components/widget-editor"
 
 NEAR components are chain-agnostic, enabling you to create decentralized frontends tailored for any Ethereum dApps. Throughout this article, we'll navigate prevalent use-cases with code snippets. You’ll also find links to exemplary NEAR components for reference.
 

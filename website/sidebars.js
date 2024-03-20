@@ -20,10 +20,16 @@ const sidebar = {
         "concepts/protocol/smartcontract",
       ]
     },
-    "concepts/protocol/transactions",
-    "concepts/basics/transactions/gas",
-    "concepts/basics/transactions/gas-advanced"
-    ,
+    {
+      type: 'category',
+      label: 'Transactions',
+      link: { type: 'doc', id: 'concepts/protocol/transactions' },
+      items: [
+        "concepts/protocol/transaction-anatomy",
+        "concepts/protocol/gas",
+        "concepts/protocol/transaction-execution",
+      ]
+    },
     {
       "Data Flow": [
         "concepts/data-flow/near-data-flow",

@@ -5,7 +5,7 @@ title: Address (Account ID)
 
 NEAR accounts are identified by a unique address, which take one of two forms:
 1. [**Implicit addresses**](#implicit-address), which are 64 characters long (e.g. `fb9243ce...`)
-2. [**Named addresses**](#named-address), which are simpler to remember and share (e.g. `alice.near`)
+2. [**Named addresses**](#named-address), which are simpler to remember and act as domains (e.g. `alice.near`)
 
 :::tip Searching to create an account?
 You have multiple ways to create an account, you can [sign-up using your email](https://near.org/), get a mobile wallet through [telegram](https://web.telegram.org/k/#@herewalletbot), or create a [web wallet](https://app.mynearwallet.com).
@@ -55,10 +55,32 @@ Another advantage of named accounts is that they can create **sub-accounts** of 
     - `account.near` **cannot** create `sub.another-account.near`
 5. Accounts have **no control** over their sub-account, they are different entities
 
-:::info
-Accounts have **no control** over sub-accounts, since they do **NOT** share [access keys](access-keys.md)
-:::
+Anyone can create a `.near` or `.testnet` account, you just to call the `create_account` method of the corresponding top-level account - `tesnet` on testnet, and `near` on mainnet.
+
+<details>
+
+<summary> 🧑‍💻 Technical: How to create a named account  </summary>
+
+Named accounts are created by calling the `create_account` method of the network's top-level account - `tesnet` on testnet, and `near` on mainnet. 
+
+```bash
+near call testnet create_account '{"new_account_id": "new-acc.testnet", "new_public_key": "ed25519:<data>"}' --deposit 0.00182 --accountId funding-account.testnet
+```
+
+We abstract this process in the [NEAR CLI](../../4.tools/cli.md) with the following command:
+
+```bash
+near create_account new-acc.testnet --useAccount funding-account.testnet --publicKey ed25519:<data>
+```
+
+You can use the same command to create sub-accounts of an existing named account:
+
+```bash
+near create_account sub-acc.new-acc.testnet --useAccount new-acc.testnet
+```
+
+</details>
 
 :::tip
-Currently, mainstream **mainnet** accounts are sub-accounts of `.near` (`example.near`), and **testnet** accounts are sub-accounts of `testnet` (`example.testnet`).
+Accounts have **no control** over their sub-accounts, they are different entities. This means that `near` cannot control `bob.near`, and `bob.near` cannot control `sub.bob.near`.
 :::
