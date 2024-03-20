@@ -30,6 +30,21 @@ Transaction breakdown:
 
 Once this service and its supporting services are live, the multichain relayer server will be monitoring this gas station contract and relaying the signed transactions in the proper order as they become available, so it will not be strictly necessary for the users of this contract to ensure that the transactions are properly relayed, unless the user wishes to relay the transactions using their own RPC (e.g. to minimize latency).
 
+## Variable Gas fees
+
+There's a premium on the Gas Station in `NEAR` for what the gas will cost on the foreign chain to account for variation in both the exchange rate between transactions, settlement between chains, and to account for variation in gas costs until the transaction is confirmed.
+
+This is the formula for calculating the gas fee:
+
+`(gas_limit_of_user_transaction + 21000) * gas_price_of_user_transaction * near_tokens_per_foreign_token * 1.2`
+
+:::note
+
+- `21000` is the exact amount of gas necessary to transfer funds on `BSC`.
+- `1.2` is an arbitrage fee: charge 20% more than market rate to discourage people from using the Gas Station as an arbitrage/DEX.
+
+:::
+
 ## Settlement
 
 Settlement is needed because the Gas Station contract is accumulating NEAR, while the [Paymaster accounts](multichain-server.md#paymaster) on foreign chains are spending native foreign chain gas tokens (`ETH`, `BNB`, `SOL`, etc).
