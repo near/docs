@@ -25,7 +25,7 @@
     "permalink": "/zh-CN/develop/relayers/multichain-server"
   },
   "next": {
-    "title": "What is a Contract?",
-    "permalink": "/zh-CN/develop/contracts/whatisacontract"
+    "title": "Relayer + Gas Station",
+    "permalink": "/zh-CN/develop/relayers/relayer-gas-example"
   }
 }

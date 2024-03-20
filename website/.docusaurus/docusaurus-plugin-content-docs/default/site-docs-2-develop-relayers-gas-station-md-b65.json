@@ -12,8 +12,8 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Damián Parrino",
-  "lastUpdatedAt": 1708796382,
-  "formattedLastUpdatedAt": "Feb 24, 2024",
+  "lastUpdatedAt": 1710956366,
+  "formattedLastUpdatedAt": "Mar 20, 2024",
   "frontMatter": {
     "id": "gas-station",
     "title": "Multichain Gas Station Contract",
@@ -25,7 +25,7 @@
     "permalink": "/develop/relayers/multichain-server"
   },
   "next": {
-    "title": "What is a Contract?",
-    "permalink": "/develop/contracts/whatisacontract"
+    "title": "Relayer + Gas Station",
+    "permalink": "/develop/relayers/relayer-gas-example"
   }
 }

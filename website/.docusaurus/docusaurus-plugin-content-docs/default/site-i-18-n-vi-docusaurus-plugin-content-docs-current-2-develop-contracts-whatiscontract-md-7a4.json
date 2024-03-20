@@ -21,8 +21,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Multichain Gas Station",
-    "permalink": "/vi/develop/relayers/gas-station"
+    "title": "Relayer + Gas Station",
+    "permalink": "/vi/develop/relayers/relayer-gas-example"
   },
   "next": {
     "title": "Quickstart ✨",

@@ -462,6 +462,13 @@
                 "href": "/zh-CN/develop/relayers/gas-station",
                 "docId": "develop/relayers/gas-station",
                 "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Relayer + Gas Station",
+                "href": "/zh-CN/develop/relayers/relayer-gas-example",
+                "docId": "develop/relayers/relayer-gas-example",
+                "unlisted": false
               }
             ],
             "collapsed": true,
@@ -3707,6 +3714,12 @@
       "id": "develop/relayers/multichain-server",
       "title": "Multichain Relayer Server",
       "description": "The Multichain Relayer Server facilitates cross-chain transactions and enables Chain Abstraction.",
+      "sidebar": "build"
+    },
+    "develop/relayers/relayer-gas-example": {
+      "id": "develop/relayers/relayer-gas-example",
+      "title": "Multichain Relayer and Gas Station example",
+      "description": "In this article you'll learn how to run end-to-end tests on the entire Multichain Relayer system.",
       "sidebar": "build"
     },
     "develop/relevant-contracts/dao": {

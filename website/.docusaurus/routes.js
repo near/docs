@@ -9,15 +9,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '3cd'),
+    component: ComponentCreator('/zh-CN/', '4c1'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '79f'),
+        component: ComponentCreator('/zh-CN/', 'e20'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '7ce'),
+            component: ComponentCreator('/zh-CN/', 'f0f'),
             routes: [
               {
                 path: '/zh-CN/abstraction/chain-signatures',
@@ -865,6 +865,12 @@ export default [
               {
                 path: '/zh-CN/develop/relayers/multichain-server',
                 component: ComponentCreator('/zh-CN/develop/relayers/multichain-server', '1d2'),
+                exact: true,
+                sidebar: "build"
+              },
+              {
+                path: '/zh-CN/develop/relayers/relayer-gas-example',
+                component: ComponentCreator('/zh-CN/develop/relayers/relayer-gas-example', '500'),
                 exact: true,
                 sidebar: "build"
               },
