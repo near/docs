@@ -147,6 +147,7 @@ const sidebar = {
           "Multichain Gas Relayer": [
             "develop/relayers/multichain-server",
             "develop/relayers/gas-station",
+            "develop/relayers/relayer-gas-example",
           ]
         },
       ]
