@@ -61,6 +61,19 @@ A paymaster represents an address on a destination chain that holds a balance of
 Check the Relayer's [GitHub repository](https://github.com/near/multichain-relayer-server) to learn more about upcoming features and updates.
 :::
 
+## Limitations
+
+When using the Multichain Gas relayer solution, some limitations should be consider. Here's a list of potential issues you might encounter, and suggested ways to mitigate them:
+- Not enough gas for a cross-chain transaction to get included in time
+  - **Solution:** overcharge for gas at the gas station and when constructing the transaction include more than the average gas price
+- Slippage violations causing the gas token or foreign chain Fungible Token to get refunded to the user's foreign chain address
+  - **Solution:** encourage your users to use high slippage settings in volatile or low liquidity market conditions
+  - **Solution:** if such error occurs, make the user aware of what happened and that funds were not lost.
+  - **Note:** in future versions the solution will support retrying transactions.
+- Nonce issues if Paymaster rotation isn't done properly. This issue is a function of concurrent usage, blockchain finality time, and number of paymaster treasury accounts that the gas station is rotating through.
+  - **Solution:** use a blockchain that has faster finality.
+  - **Solution:** increase the number of paymaster treasury accounts that the gas station rotates through.
+
 ## Total Time expectations for end users
 
 It depends on the chain, but in our current estimation 50-90% of the time will be on NEAR calling and waiting for the signing to complete on the MPC service. 
