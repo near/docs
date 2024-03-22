@@ -1,7 +1,7 @@
 {
   "id": "develop/relayers/relayer-gas-example",
   "title": "Multichain Relayer and Gas Station example",
-  "description": "In this article you'll learn how to run end-to-end tests on the entire Multichain Relayer system.",
+  "description": "This technology is currently in Alpha and should only be used in a testnet environment.",
   "source": "@site/../docs/2.develop/relayers/relayer-gas-example.md",
   "sourceDirName": "2.develop/relayers",
   "slug": "/develop/relayers/relayer-gas-example",
@@ -11,9 +11,9 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/relayers/relayer-gas-example.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Damián Parrino",
-  "lastUpdatedAt": 1710956366,
-  "formattedLastUpdatedAt": "2024年3月20日",
+  "lastUpdatedBy": "Josh Ford",
+  "lastUpdatedAt": 1711075977,
+  "formattedLastUpdatedAt": "2024年3月22日",
   "frontMatter": {
     "id": "relayer-gas-example",
     "title": "Multichain Relayer and Gas Station example",

@@ -3719,7 +3719,7 @@
     "develop/relayers/relayer-gas-example": {
       "id": "develop/relayers/relayer-gas-example",
       "title": "Multichain Relayer and Gas Station example",
-      "description": "In this article you'll learn how to run end-to-end tests on the entire Multichain Relayer system.",
+      "description": "This technology is currently in Alpha and should only be used in a testnet environment.",
       "sidebar": "build"
     },
     "develop/relevant-contracts/dao": {
