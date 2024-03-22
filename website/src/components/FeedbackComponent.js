@@ -18,7 +18,7 @@ const NO_TAGS = [
   { value: "inaccurate", title: "Inaccurate" },
   { value: "missing-info", title: "Couldn't find what I was looking for" },
   { value: "unclear", title: "Hard to understand" },
-  { value: "bad-examples", title: "Code samples errors" },
+  { value: "bad-examples", title: "Code examples didn't work" },
   { value: "other-no", title: "Other" },
 ];
 
@@ -42,7 +42,7 @@ export function FeedbackComponent() {
           layout="radio-group"
           tags={choice === "y" ? YES_TAGS : NO_TAGS}
           title={choice === "y" ? "What did you like?" : "What went wrong?"}
-          placeholder="(optional) Please, further detail the feedback"
+          placeholder="(optional) Feedback details..."
         />
       )}
     </div>
