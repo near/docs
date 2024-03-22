@@ -4,6 +4,12 @@ title: Multichain Relayer Server
 sidebar_label: Multichain Relayer Server
 ---
 
+:::caution
+
+This technology is currently in `Alpha` and should only be used in a `testnet` environment.
+
+:::
+
 The [Multichain Relayer Server](https://github.com/near/multichain-relayer-server) facilitates cross-chain transactions and enables Chain Abstraction.
 
 ## Overview
@@ -26,6 +32,12 @@ Below is a design diagram of the entire multichain relayer system:
 - This multichain relayer server focuses on the purple/blue Multichain Relayer Core Backend Services Box in the middle and the connections to the XChain systems in the red box via RPCs.
 - The XChain Settlement that's happening in the yellow box is currently manual and will be automated in the future.
 
+## Paymaster
+
+A paymaster represents an address on a destination chain that holds a balance of that chain’s native gas token:
+- User addresses on destination chains will be funded directly from paymaster accounts.
+- Partners that want to integrate with the Multichain Gas Relayer service need to create, fund, and manage paymaster accounts on the destination chains that they want to have support for.
+- [Manual settlement](gas-station.md#settlement) between the [NEAR Gas Station contract](gas-station.md) and paymaster accounts are also required on a regular basis to ensure a consistent balance of funds.
 
 ## System workflow
 
@@ -47,9 +59,8 @@ Below is a design diagram of the entire multichain relayer system:
 ## Supported Chains
 
 - BSC testnet
-- BSC Mainnet (March 31 2024)
-- Solana Testnet (March 31 2024)
-- Solana Mainnet (March 31 2024)
+- BSC Mainnet (March 27 2024)
+- Ethereum Mainnet (March 27 2024)
 - More chains coming soon!
 
 :::info

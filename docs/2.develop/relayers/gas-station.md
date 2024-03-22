@@ -3,6 +3,11 @@ id: gas-station
 title: Multichain Gas Station Contract
 sidebar_label: Multichain Gas Station
 ---
+:::caution
+
+This technology is currently in `Alpha` and should only be used in a `testnet` environment.
+
+:::
 
 The [multichain gas station smart contract](https://github.com/near/multichain-gas-station-contract) accepts payments in NEAR tokens in exchange for gas funding on non-NEAR foreign chains. Part of the NEAR Multichain effort, it works in conjunction with the [MPC recovery service](https://github.com/near/mpc-recovery) to generate on-chain signatures.
 
@@ -30,6 +35,35 @@ Transaction breakdown:
 
 Once this service and its supporting services are live, the multichain relayer server will be monitoring this gas station contract and relaying the signed transactions in the proper order as they become available, so it will not be strictly necessary for the users of this contract to ensure that the transactions are properly relayed, unless the user wishes to relay the transactions using their own RPC (e.g. to minimize latency).
 
+## Variable Gas fees
+
+There's a premium on the Gas Station in `NEAR` for what the gas will cost on the foreign chain to account for variation in both the exchange rate between transactions, settlement between chains, and to account for variation in gas costs until the transaction is confirmed.
+
+This is the formula for calculating the gas fee:
+
+`(gas_limit_of_user_transaction + 21000) * gas_price_of_user_transaction * near_tokens_per_foreign_token * 1.2`
+
+:::note
+
+- `21000` is the exact amount of gas necessary to transfer funds on `BSC`.
+- `1.2` is an arbitrage fee: charge 20% more than market rate to discourage people from using the Gas Station as an arbitrage/DEX.
+
+:::
+
+## Settlement
+
+Settlement is needed because the Gas Station contract is accumulating NEAR, while the [Paymaster accounts](multichain-server.md#paymaster) on foreign chains are spending native foreign chain gas tokens (`ETH`, `BNB`, `SOL`, etc).
+
+Manual Settlement involves several steps:
+
+1. Withdrawing the NEAR held in the gas station contract and swapping for a token that can be bridged.
+   This may be the native gas token of the foreign chain, another token like USDC that has wide bridge support, or NEAR.
+
+2. Bridging the token from NEAR to the foreign chain.
+   - Here's an [overview of bridging related to NEAR](https://knotty-marsupial-f6d.notion.site/NEAR-Bridging-Guides-f4359bd35c794dc184b098f7ed00c4ce).
+
+3. Sending the native gas tokens to the paymaster accounts on the foreign chains.
+   - A swap from the bridged token to the native gas token before sending to the paymaster accounts is necessary if the token that was bridged was not the foreign chain native gas token
 
 ## Contract Interactions
 

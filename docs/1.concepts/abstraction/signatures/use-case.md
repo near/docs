@@ -4,6 +4,12 @@ title: Use cases for Chain Signatures
 sidebar_label: Use cases
 ---
 
+:::caution
+
+This technology is currently in `Alpha` and should only be used in a `testnet` environment.
+
+:::
+
 Chain signatures enable you to implement multichain and cross-chain workflows in a simple way.
 Take a look at a few possible use cases:
 
@@ -80,7 +86,7 @@ This allows easy on-boarding to decentralized apps. The accounts are initially r
 
 ## DeFi on Bitcoin (and other non-smart contract chains). 
 
-Using chain signatures, smart contracts on NEAR can control externally-owned accounts on non-smart contract chains like Bitcoin, Dogecoin, Ripple, Bittensor, Cosmos Hub, etc. This enables developers to use NEAR as a smart contract “layer” for chains that do not support this functionality natively.
+Using chain signatures, smart contracts on NEAR can control externally-owned accounts on non-smart contract chains like Bitcoin, Dogecoin, XRP Ledger, Bittensor, Cosmos Hub, etc. This enables developers to use NEAR as a smart contract “layer” for chains that do not support this functionality natively.
 
 For example, a developer can build a decentralized exchange for Bitcoin Ordinals, using a smart contract on NEAR to manage deposits (into Bitcoin addresses controlled by the contract) and to verify and execute swaps when two users agree to trade BTC for an Ordinal or BRC20 token.
 
