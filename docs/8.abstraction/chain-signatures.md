@@ -56,12 +56,12 @@ We provide code to derive the address, as it's a complex process that involves m
 <Tabs groupId="code-tabs">
   <TabItem value="Ξ Ethereum">
     <Github language="js"
-      url="https://github.com/gagdiez/near-multichain/blob/main/src/services/ethereum.js" start="14" end="18" />
+      url="https://github.com/near-examples/near-multichain/blob/main/src/services/ethereum.js" start="14" end="18" />
   </TabItem>
 
   <TabItem value="₿ Bitcoin">
     <Github language="js"
-      url="https://github.com/gagdiez/near-multichain/blob/main/src/services/bitcoin.js" start="14" end="18" />
+      url="https://github.com/near-examples/near-multichain/blob/main/src/services/bitcoin.js" start="14" end="18" />
   </TabItem>
 </Tabs>
 
@@ -81,14 +81,14 @@ Constructing the transaction to be signed (transaction, message, data, etc.) var
 <Tabs groupId="code-tabs">
   <TabItem value="Ξ Ethereum">
     <Github language="js"
-      url="https://github.com/gagdiez/near-multichain/blob/main/src/services/ethereum.js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/services/ethereum.js"
       start="32" end="48" />
     
     In Ethereum, constructing the transaction is simple since you only need to specify the address of the receiver and how much you want to send.
   </TabItem>
   <TabItem value="₿ Bitcoin">
     <Github language="js"
-      url="https://github.com/gagdiez/near-multichain/blob/main/src/services/bitcoin.js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/services/bitcoin.js"
       start="28" end="80" />
 
     In bitcoin, you construct a new transaction by using all the Unspent Transaction Outputs (UTXOs) of the account as input, and then specify the output address and amount you want to send.
@@ -109,13 +109,13 @@ The method requires two parameters:
 <Tabs groupId="code-tabs">
   <TabItem value="Ξ Ethereum">
     <Github language="js"
-      url="https://github.com/gagdiez/near-multichain/blob/main/src/services/ethereum.js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/services/ethereum.js"
       start="57" end="61" />
   </TabItem>
 
   <TabItem value="₿ Bitcoin">
     <Github language="js"
-      url="https://github.com/gagdiez/near-multichain/blob/main/src/services/bitcoin.js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/services/bitcoin.js"
       start="87" end="98" />
 
     For bitcoin, all UTXOs are signed independently and then combined into a single transaction.
@@ -152,7 +152,7 @@ This allows the contract to generalize the signing process for multiple blockcha
 <Tabs groupId="code-tabs">
   <TabItem value="Ξ Ethereum">
     <Github language="js"
-      url="https://github.com/gagdiez/near-multichain/blob/main/src/services/ethereum.js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/services/ethereum.js"
       start="62" end="71" />
 
     In Ethereum, the signature is reconstructed by concatenating the `r`, `s`, and `v` values returned by the contract.
@@ -161,7 +161,7 @@ This allows the contract to generalize the signing process for multiple blockcha
   </TabItem>
   <TabItem value="₿ Bitcoin">
     <Github language="js"
-      url="https://github.com/gagdiez/near-multichain/blob/main/src/services/bitcoin.js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/services/bitcoin.js"
       start="105" end="116" />
 
     In Bitcoin, the signature is reconstructed by concatenating the `r` and `s` values returned by the contract.
@@ -177,12 +177,12 @@ Once we have reconstructed the signature, we can relay it to the corresponding n
 <Tabs groupId="code-tabs">
   <TabItem value="Ξ Ethereum">
     <Github language="js"
-      url="https://github.com/gagdiez/near-multichain/blob/main/src/services/ethereum.js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/services/ethereum.js"
       start="80" end="84" />
   </TabItem>
   <TabItem value="₿ Bitcoin">
     <Github language="js"
-      url="https://github.com/gagdiez/near-multichain/blob/main/src/services/bitcoin.js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/services/bitcoin.js"
       start="119" end="127" />
   </TabItem>
 </Tabs>
