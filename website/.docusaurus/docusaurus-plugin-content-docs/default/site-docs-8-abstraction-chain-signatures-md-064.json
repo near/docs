@@ -1,7 +1,7 @@
 {
   "id": "abstraction/chain-signatures",
   "title": "Chain Signatures",
-  "description": "This technology is currently in Alpha and should only be used in a testnet environment.",
+  "description": "Chain signatures enable NEAR accounts, including smart contracts, to sign and execute transactions across many blockchain protocols.",
   "source": "@site/../docs/8.abstraction/chain-signatures.md",
   "sourceDirName": "8.abstraction",
   "slug": "/abstraction/chain-signatures",
@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/8.abstraction/chain-signatures.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Josh Ford",
-  "lastUpdatedAt": 1711075977,
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1711120661,
   "formattedLastUpdatedAt": "Mar 22, 2024",
   "frontMatter": {
     "id": "chain-signatures",
