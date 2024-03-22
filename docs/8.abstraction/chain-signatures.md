@@ -123,7 +123,7 @@ The method requires two parameters:
 </Tabs>
 
 :::tip
-Notice that the `payload` is begin reversed before requesting the signature, to match the little-endian format expected by the contract
+Notice that the `payload` is being reversed before requesting the signature, to match the little-endian format expected by the contract
 :::
 
 :::info
