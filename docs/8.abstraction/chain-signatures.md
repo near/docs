@@ -7,18 +7,11 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
-:::caution
-
-This technology is currently in `Alpha` and should only be used in a `testnet` environment.
-
-:::
-
 Chain signatures enable NEAR accounts, including smart contracts, to sign and execute transactions across many blockchain protocols.
 
 This unlocks the next level of blockchain interoperability by giving ownership of diverse assets, cross-chain accounts, and data to a single NEAR account.
 
 :::info
-
 This guide will take you through a step by step process for creating a Chain Signature.
 
 ⭐️ For a deep dive into the concepts of Chain Signatures see [What are Chain Signatures?](/concepts/abstraction/chain-signatures)
@@ -27,8 +20,13 @@ This guide will take you through a step by step process for creating a Chain Sig
 
 - [web-app example](https://github.com/near-examples/near-multichain)
 - [component example](https://test.near.social/bot.testnet/widget/chainsig-sign-eth-tx) 
-
 :::
+
+:::caution
+This technology is currently in `alpha` and should only be used in a `testnet` environment.
+:::
+
+---
 
 ## Create a Chain Signature
 
@@ -36,7 +34,7 @@ There are five steps to create a Chain Signature:
 
 1. [Deriving the Foreign Address](#1-deriving-the-foreign-address) - Construct the address that will be controlled on the target blockchain
 2. [Creating a Transaction](#2-creating-the-transaction) - Create the transaction or message to be signed
-3. [Requesting a Signature](#3-requesting-the-signature) - Call the NEAR `multichain` contract and requesting to sign the transaction
+3. [Requesting a Signature](#3-requesting-the-signature) - Call the NEAR `multichain` contract requesting it to sign the transaction
 4. [Reconstructing the Signature](#4-reconstructing-the-signature) - Reconstruct the signature from the MPC service's response
 5. [Relaying the Signed Transaction](#5-relaying-the-signature) - Send the signed transaction to the destination chain for execution
 
@@ -47,26 +45,23 @@ _Diagram of a chain signature in NEAR_
 
 ## 1. Deriving the Foreign Address
 
-Chain Signatures use [`derivation paths`](../1.concepts/abstraction/chain-signatures.md#one-account-multiple-chains) to represent accounts on the target blockchain. The external address can be deterministically derived from:
+Chain Signatures use [`derivation paths`](../1.concepts/abstraction/chain-signatures.md#one-account-multiple-chains) to represent accounts on the target blockchain. The external address to be controlled can be deterministically derived from:
 
-- The NEAR address _(e.g., `example.near`, `example.testnet`, etc.)_
-- A derivation path _(a string such as `ethereum-1`, `ethereum-2`, etc.)_
+- The NEAR address (e.g., `example.near`, `example.testnet`, etc.)
+- A derivation path (a string such as `ethereum-1`, `ethereum-2`, etc.)
 - The MPC service's public key
 
-We recommend using this example code snippet to derive the address, as it's a complex process that involves hashing and encoding:
+We provide code to derive the address, as it's a complex process that involves multiple steps of hashing and encoding:
 
 <Tabs groupId="code-tabs">
   <TabItem value="Ξ Ethereum">
     <Github language="js"
-      url="https://github.com/near-examples/near-multichain/blob/main/src/index.js" start="24" end="28" />
+      url="https://github.com/near-examples/near-multichain/blob/main/src/services/ethereum.js" start="14" end="18" />
   </TabItem>
 
   <TabItem value="₿ Bitcoin">
-
-  ```js
-  console.log("Coming soon...")
-  ```
-
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/services/bitcoin.js" start="14" end="18" />
   </TabItem>
 </Tabs>
 
@@ -86,13 +81,17 @@ Constructing the transaction to be signed (transaction, message, data, etc.) var
 <Tabs groupId="code-tabs">
   <TabItem value="Ξ Ethereum">
     <Github language="js"
-      url="https://github.com/near-examples/near-multichain/blob/main/src/ethereum.js"
-      start="24" end="46" />
+      url="https://github.com/near-examples/near-multichain/blob/main/src/services/ethereum.js"
+      start="32" end="48" />
+    
+    In Ethereum, constructing the transaction is simple since you only need to specify the address of the receiver and how much you want to send.
   </TabItem>
   <TabItem value="₿ Bitcoin">
-  ```js
-  console.log("Coming soon...")
-  ```
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/services/bitcoin.js"
+      start="28" end="80" />
+
+    In bitcoin, you construct a new transaction by using all the Unspent Transaction Outputs (UTXOs) of the account as input, and then specify the output address and amount you want to send.
   </TabItem>
 </Tabs>
 
@@ -110,18 +109,24 @@ The method requires two parameters:
 <Tabs groupId="code-tabs">
   <TabItem value="Ξ Ethereum">
     <Github language="js"
-      url="https://github.com/near-examples/near-multichain/blob/main/src/index.js"
-      start="60" end="64" />
+      url="https://github.com/near-examples/near-multichain/blob/main/src/services/ethereum.js"
+      start="57" end="61" />
   </TabItem>
 
   <TabItem value="₿ Bitcoin">
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/services/bitcoin.js"
+      start="87" end="98" />
 
-  ```js
-  console.log("Coming soon...")
-  ```
-
+    For bitcoin, all UTXOs are signed independently and then combined into a single transaction.
   </TabItem>
 </Tabs>
+
+:::tip
+Notice that the `payload` is being reversed before requesting the signature, to match the little-endian format expected by the contract
+:::
+
+:::info
 
 The contract will take some time to respond, as the `sign` method starts recursively calling itself waiting for the **MPC service** to sign the transaction.
 
@@ -134,23 +139,32 @@ NEAR smart contracts are unable to halt execution and await the completion of a 
 
 </details>
 
+:::
+
 ---
 
 ## 4. Reconstructing the Signature
 
 The MPC contract will not return the signature of the transaction itself, but the elements needed to reconstruct the signature.
 
+This allows the contract to generalize the signing process for multiple blockchains.
+
 <Tabs groupId="code-tabs">
   <TabItem value="Ξ Ethereum">
     <Github language="js"
-      url="https://github.com/near-examples/near-multichain/blob/main/src/ethereum.js"
-      start="48" end="60" />
+      url="https://github.com/near-examples/near-multichain/blob/main/src/services/ethereum.js"
+      start="62" end="71" />
+
+    In Ethereum, the signature is reconstructed by concatenating the `r`, `s`, and `v` values returned by the contract.
+    
+    The `v` parameter is a parity bit that depends on the `sender` address. We reconstruct the signature using both possible values (`v=0` and `v=1`) and check which one corresponds to our `sender` address.
   </TabItem>
   <TabItem value="₿ Bitcoin">
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/services/bitcoin.js"
+      start="105" end="116" />
 
-  ```js
-  console.log("Coming soon...")
-  ```
+    In Bitcoin, the signature is reconstructed by concatenating the `r` and `s` values returned by the contract.
   </TabItem>
 </Tabs>
 
@@ -162,26 +176,22 @@ Once we have reconstructed the signature, we can relay it to the corresponding n
 
 <Tabs groupId="code-tabs">
   <TabItem value="Ξ Ethereum">
-    <Github fname="index.js" language="js"
-      url="https://github.com/near-examples/near-multichain/blob/main/src/ethereum.js"
-      start="63" end="67" />
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/services/ethereum.js"
+      start="80" end="84" />
   </TabItem>
-
   <TabItem value="₿ Bitcoin">
-
-  ```js
-  console.log("Coming soon...")
-  ```
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/services/bitcoin.js"
+      start="119" end="127" />
   </TabItem>
 </Tabs>
 
 :::info
-
 ⭐️ For a deep dive into the concepts of Chain Signatures see [What are Chain Signatures?](/concepts/abstraction/chain-signatures)
 
 ⭐️ For complete examples of a NEAR account performing Eth transactions:
 
 - [web-app example](https://github.com/near-examples/near-multichain)
 - [component example](https://test.near.social/bot.testnet/widget/chainsig-sign-eth-tx) 
-
 :::
