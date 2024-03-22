@@ -4,20 +4,17 @@ title: What are Chain Signatures?
 sidebar_label: What are Chain Signatures?
 ---
 
-:::caution
-
-This technology is currently in `Alpha` and should only be used in a `testnet` environment.
-
-:::
 
 Chain signatures enable NEAR accounts, including smart contracts, to sign and execute transactions across many blockchain protocols.
 
 This unlocks the next level of blockchain interoperability by giving ownership of diverse assets, cross-chain accounts, and data to a single NEAR account.
 
 :::info Looking for code?
-
 To get started using Chain Signatures in your project see **[Create a Chain Signature](../../8.abstraction/chain-signatures.md)**.
+:::
 
+:::caution
+This technology is currently in `alpha` and should only be used in a `testnet` environment.
 :::
 
 ---
@@ -109,6 +106,8 @@ NEAR's MPC service allows for nodes to safely join and leave, without needing to
 Want to learn more about the mathematics that enable MPC? [**Check this awesome article**](https://www.zellic.io/blog/mpc-from-scratch/)
 
 :::
+
+---
 
 ## Concluding Remarks
 
