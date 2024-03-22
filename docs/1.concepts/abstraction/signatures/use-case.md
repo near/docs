@@ -4,6 +4,12 @@ title: Use cases for Chain Signatures
 sidebar_label: Use cases
 ---
 
+:::caution
+
+This technology is currently in `Alpha` and should only be used in a `testnet` environment.
+
+:::
+
 Chain signatures enable you to implement multichain and cross-chain workflows in a simple way.
 Take a look at a few possible use cases:
 

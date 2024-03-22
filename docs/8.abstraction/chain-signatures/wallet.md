@@ -3,6 +3,12 @@ id: wallet
 title: Wallet Chain Key Rules 
 ---
 
+:::caution
+
+This technology is currently in `Alpha` and should only be used in a `testnet` environment.
+
+:::
+
 ## Overview
 
 In this article you'll find details on how to parse and present multichain transactions to the user so they can take an informed decision about their wallet's assets, while minimizing the number of times the user has to consent.

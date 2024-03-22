@@ -4,6 +4,12 @@ title: What are Chain Signatures?
 sidebar_label: What are Chain Signatures?
 ---
 
+:::caution
+
+This technology is currently in `Alpha` and should only be used in a `testnet` environment.
+
+:::
+
 Chain signatures enable NEAR accounts, including smart contracts, to sign and execute transactions across many blockchain protocols.
 
 This unlocks the next level of blockchain interoperability by giving ownership of diverse assets, cross-chain accounts, and data to a single NEAR account.
