@@ -90,3 +90,16 @@ Users who wish to get transactions signed and relayed by this contract and its a
    - This transaction will return a signed payload, part of the sequence of transactions necessary to send the user's transaction to the foreign chain.
    - Repeat `pending_transactions_count` times.
 4. Relay each signed payload to the foreign chain RPC in the order they were requested.
+
+## Limitations
+
+When using the Multichain Gas relayer solution, some limitations should be consider. Here's a list of potential issues you might encounter, and suggested ways to mitigate them:
+- Not enough gas for a cross-chain transaction to get included in time.
+  - **Solution:** overcharge for gas at the gas station and when constructing the transaction include more than the average gas price.
+- Slippage violations causing the gas token or foreign chain Fungible Token to get refunded to the user's foreign chain address.
+  - **Solution:** encourage your users to use high slippage settings in volatile or low liquidity market conditions.
+  - **Solution:** if such error occurs, make the user aware of what happened and that funds were not lost.
+  - **Note:** in future versions the solution will support retrying transactions.
+- Nonce issues if Paymaster rotation isn't done properly. This issue is a function of concurrent usage, blockchain finality time, and number of paymaster treasury accounts that the [Gas Station](gas-station.md) is rotating through.
+  - **Solution:** use a blockchain that has faster finality.
+  - **Solution:** increase the number of paymaster treasury accounts that the gas station rotates through.
