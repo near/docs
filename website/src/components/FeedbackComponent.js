@@ -1,7 +1,6 @@
 import { useState } from "react";
 import {
   FeelbackTaggedMessage,
-  FeelbackValueDefinition,
   Question,
   PRESET_YESNO_LIKE_DISLIKE,
 } from "@feelback/react";
