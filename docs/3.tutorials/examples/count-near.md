@@ -63,7 +63,6 @@ The example is divided in two main components:
 │    └── package.json
 ├── src # contract's code
 │    └── lib.rs
-├── build.sh # build script
 ├── Cargo.toml # package manager
 ├── README.md
 └── rust-toolchain.toml
@@ -129,7 +128,7 @@ The contract presents 4 methods: `get_num`, `increment`, `decrement`, and `reset
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/counters/blob/main/contract-rs/src/lib.rs"
-            start="5" end="35" />
+            start="5" end="39" />
   </Language>
 </CodeTabs>
 

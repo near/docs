@@ -53,7 +53,6 @@ The smart contract is available in two flavors: Rust and JavaScript
 
   <TabItem value="🦀 Rust">
 
-=======
 ```bash
 ┌── tests # sandbox testing
 │    ├── hello-near
@@ -88,7 +87,7 @@ The contract exposes methods to query the greeting and change it. These methods 
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/lib.rs"
-            start="24" end="49" />
+            start="25" end="50" />
             <Github fname="external.rs"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/external.rs" />
   </Language>
@@ -130,13 +129,13 @@ in `sandbox-ts/` for the JavaScript version and in `tests/` for the Rust version
 <CodeTabs>
   <Language value="🌐 JavaScript" language="rust">
     <Github fname="main.ava.ts"
-            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/sandbox-ts/src/main.ava.ts"
-            start="9" end="59" />
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/sandbox-ts/main.ava.ts"
+            start="8" end="52" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/tests/tests.rs"
-            start="5" end="77" />
+            start="4" end="77" />
   </Language>
 </CodeTabs>
 
