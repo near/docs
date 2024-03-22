@@ -11,9 +11,9 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/examples/count-near.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Sam Snowman(赵正中)",
-  "lastUpdatedAt": 1708513838,
-  "formattedLastUpdatedAt": "Feb 21, 2024",
+  "lastUpdatedBy": "matiasbenary",
+  "lastUpdatedAt": 1711104164,
+  "formattedLastUpdatedAt": "Mar 22, 2024",
   "frontMatter": {
     "id": "count-near",
     "title": "Count on NEAR"
