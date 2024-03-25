@@ -49,10 +49,6 @@ _Click on a command for more information and examples._
 | [`near tx-status`](#near-tx-status)             | queries a transaction's status by `txHash`                                                |
 
 
-[ [**OPTIONS**](#options) ]
-
-> For EVM support see [Project Aurora's](https://aurora.dev) [`aurora-cli`](https://github.com/aurora-is-near/aurora-cli).
-
 ---
 
 ## Setup
@@ -69,6 +65,22 @@ _Click on a command for more information and examples._
 
 ```bash
 npm install -g near-cli
+```
+
+For example, on Ubuntu 20.04 `near-cli` can be installed by running:
+```bash
+# Install nvm (https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+source ~/.bashrc
+
+# Install node
+nvm install node
+
+# Install near-cli
+npm install -g near-cli
+
+# near-cli works!
+near --help
 ```
 
 #### Windows
@@ -95,7 +107,7 @@ npm install -g near-cli
 - You can change the network by prepending an environment variable to your command.
 
 ```bash
-NEAR_NETWORK=betanet near send ...
+NEAR_NETWORK=testnet near send ...
 ```
 
 - Alternatively, you can set up a global environment variable by running:
@@ -113,14 +125,17 @@ near send-near ... --networkId mainnet
 ---
 
 ### Custom RPC server selection
-You can set custom RPC server URL by setting this env variables:
+You can set custom RPC server URL by setting these env variables:
+
 ```bash
 NEAR_MAINNET_RPC
 NEAR_TESTNET_RPC
 ```
+
 Clear them in case you want to get back to the default RPC server.
 
 Example:
+
 ```bash
 export NEAR_TESTNET_RPC=<put_your_rpc_server_url_here>
 ```
@@ -157,6 +172,8 @@ near add-credentials example-acct.testnet --seedPhrase "antique attitude say evo
 
 > Adds either a **full access** or **function access** key to a given account.
 
+> Optionally allows to sign with a Ledger: `--signWithLedger` `--ledgerPath`
+
 **Note:** You will use an _existing_ full access key for the account you would like to add a _new_ key to. ([`near login`](http://docs.near.org/docs/tools/near-cli#near-login))
 
 #### 1) add a `full access` key
@@ -173,10 +190,12 @@ near add-key example-acct.testnet Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1S
 <summary><strong>Example Response</strong></summary>
 <p>
 
+```
     Adding full access key = Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1S to example-acct.testnet.
     Transaction Id EwU1ooEvkR42HvGoJHu5ou3xLYT3JcgQwFV3fAwevGJg
     To see the transaction in the transaction explorer, please open this url in your browser
     https://testnet.nearblocks.io/txns/EwU1ooEvkR42HvGoJHu5ou3xLYT3JcgQwFV3fAwevGJg
+```
 
 </p>
 </details>
@@ -206,10 +225,12 @@ near add-key example-acct.testnet GkMNfc92fwM1AmwH1MTjF4b7UZuceamsq96XPkHsQ9vi -
 <summary><strong>Example Response</strong></summary>
 <p>
 
+```
     Adding function call access key = GkMNfc92fwM1AmwH1MTjF4b7UZuceamsq96XPkHsQ9vi to example-acct.testnet.
     Transaction Id H2BQL9fXVmdTbwkXcMFfZ7qhZqC8fFhsA8KDHFdT9q2r
     To see the transaction in the transaction explorer, please open this url in your browser
     https://testnet.nearblocks.io/txns/H2BQL9fXVmdTbwkXcMFfZ7qhZqC8fFhsA8KDHFdT9q2r
+```
 
 </p>
 </details>
@@ -219,6 +240,7 @@ near add-key example-acct.testnet GkMNfc92fwM1AmwH1MTjF4b7UZuceamsq96XPkHsQ9vi -
 ### `near delete-key`
 
 > Deletes an existing key for a given account.
+> Optionally allows to sign with a Ledger: `--signWithLedger` `--ledgerPath`
 
 -   arguments: `accountId` `publicKey`
 -   options: `--networkId`, `force`
@@ -235,9 +257,11 @@ near delete-key example-acct.testnet Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1
 <summary><strong>Example Response</strong></summary>
 <p>
 
+```
     Transaction Id 4PwW7vjzTCno7W433nu4ieA6FvsAjp7zNFwicNLKjQFT
     To see the transaction in the transaction explorer, please open this url in your browser
     https://testnet.nearblocks.io/txns/4PwW7vjzTCno7W433nu4ieA6FvsAjp7zNFwicNLKjQFT
+```
 
 </p>
 </details>
@@ -248,7 +272,7 @@ near delete-key example-acct.testnet Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1
 > Displays a key-pair and seed-phrase and optionally stores it locally in `.near-credentials`.
 
 -   arguments: `accountId` or `none`
--   options: `--fromSeedPhrase`, `--saveImplicit`
+-   options: `--fromSeedPhrase`, `--saveImplicit`, `--queryLedgerPK`
 
 **Note:** There are several ways to use `generate-key` that return very different results. Please reference the examples below for further details.
 
@@ -356,6 +380,82 @@ Implicit account: 9c07afc7673ea0f9a20c8a279e8bbe1dd1e283254263bb3b07403e4b6fd7a4
 
 Will store the key pair corresponding to the seedPhrase in `.near-credentials` with an `accountId` that you specify.
 
+<details>
+<summary><strong>Example Response</strong></summary>
+<p>
+
+```
+Seed phrase: antique attitude say evolve ring arrive hollow auto wide bronze usual unfold
+Key pair: {"publicKey":"ed25519:BW5Q957u1rTATGpanKUktjVmixEmT56Df4Dt9hoGWEXz","secretKey":"ed25519:5StmPDg9xVNzpyudwxT8Y72iyRq7Fa86hcpsRk6Cq5eWGWqwsPbPT9woXbJs9Qe69crZJHh4DMkrGEPGDDfmXmy2"}
+Implicit account: 9c07afc7673ea0f9a20c8a279e8bbe1dd1e283254263bb3b07403e4b6fd7a411
+```
+
+</p>
+</details>
+
+---
+
+#### 4a) `near generate-key --queryLedgerPK`
+
+> Uses a connected Ledger device to display a public key and [implicit account](http://docs.near.org/integrator/implicit-accounts) using the default HD path (`"44'/397'/0'/0'/1'"`)
+
+```bash
+near generate-key --queryLedgerPK
+```
+
+You should then see the following prompt to confirm this request on your Ledger device:
+
+```
+  Make sure to connect your Ledger and open NEAR app
+  Getting Public Key from Ledger...
+```
+
+After confirming the request on your Ledger device, a public key and implicit accountId will be displayed.
+
+<details>
+<summary><strong>Example Response</strong></summary>
+<p>
+
+```bash
+Using public key: ed25519:B22RP10g695wyeRvKIWv61NjmQZEkWTMzAYgdfx6oSeB2
+Implicit account: 42c320xc20739fd9a6bqf2f89z61rd14efe5d3de234199bc771235a4bb8b0e1
+```
+
+</p>
+</details>
+
+---
+
+#### 3b) `near generate-key --queryLedgerPK --ledgerPath="HD path you specify"`
+
+> Uses a connected Ledger device to display a public key and [implicit account](http://docs.near.org/integrator/implicit-accounts) using a custom HD path.
+
+```bash
+near generate-key --queryLedgerPK --ledgerPath="44'/397'/0'/0'/2'"
+```
+
+You should then see the following prompt to confirm this request on your Ledger device:
+
+```
+    Make sure to connect your Ledger and open NEAR app
+    Waiting for confirmation on Ledger...
+```
+
+After confirming the request on your Ledger device, a public key and implicit accountId will be displayed.
+
+<details>
+<summary><strong>Example Response</strong></summary>
+<p>
+
+```bash
+Using public key: ed25519:B22RP10g695wye3dfa32rDjmQZEkWTMzAYgCX6oSeB2
+Implicit account: 42c320xc20739ASD9a6bqf2Dsaf289z61rd14efe5d3de23213789009afDsd5bb8b0e1
+```
+
+</p>
+</details>
+
+
 ---
 
 ### `near list-keys`
@@ -418,7 +518,7 @@ near login
 
 **Custom wallet url:**
 
-Default wallet url is `https://testnet.mynearwallet.com/`. But if you want to change to a different wallet url, you can setup the environmental variable `NEAR_MAINNET_WALLET` or `NEAR_TESTNET_WALLET`.
+The default wallet URL is `https://testnet.mynearwallet.com/`. However, if you want to change to a different wallet URL, you can set the environmental variable `NEAR_MAINNET_WALLET` or `NEAR_TESTNET_WALLET`.
 
 ```bash
 export NEAR_TESTNET_WALLET=https://wallet.testnet.near.org/
@@ -434,7 +534,7 @@ near login
 > Creates an account using an existing account or a faucet service to pay for the account's creation and initial balance.
 
 -   arguments: `accountId`
--   options: `--initialBalance`, `--useFaucet`, `--useAccount`
+-   options: `--initialBalance`, `--useFaucet`, `--useAccount`, `--seedPhrase`, `--publicKey`, `--signWithLedger`, `--ledgerPath`, `--useLedgerPK`, `--PkLedgerPath`
 
 **Examples:**:
 
@@ -448,10 +548,26 @@ near create-account new-acc.testnet --useAccount example-acct.testnet
 near create-account new-acc.testnet --useFaucet
 ```
 
+```bash
+# Creating a pre-funded account that can be controlled by the Ledger's public key
+near create-account new-acc.testnet --useFaucet --useLedgerPK 
+```
+
+```bash
+# Creating an account using a Ledger account
+near create-account new-acc.testnet --useAccount ledger-acct.testnet --signWithLedger
+```
+
 **Subaccount example:**
 
 ```bash
+# Using an account to create a sub-account
 near create-account sub-acct.example-acct.testnet --useAccount example-acct.testnet
+```
+
+```bash
+# Creating a sub-account using the Ledger that can also be controlled by the ledger
+near create-account sub.acc.testnet --useAccount sub.acc.testnet --signWithLedger --useLedgerPK
 ```
 
 **Example using `--initialBalance`:**
@@ -464,8 +580,10 @@ near create-account sub-acct2.example-acct.testnet --useAccount example-acct.tes
 <summary><strong>Example Response</strong></summary>
 <p>
 
+```
     Saving key to '/HOME_DIR/.near-credentials/default/sub-acct2.example-acct.testnet.json'
     Account sub-acct2.example-acct.testnet for network "default" was created.
+```
 
 </p>
 </details>
@@ -477,7 +595,7 @@ near create-account sub-acct2.example-acct.testnet --useAccount example-acct.tes
 > Deletes an account and transfers remaining balance to a beneficiary account.
 
 -   arguments: `accountId` `beneficiaryId`
--   options: `force`
+-   options: `force`, `--signWithLedger`, `--ledgerPath`
 
 **Example:**
 
@@ -489,11 +607,13 @@ near delete-account sub-acct2.example-acct.testnet example-acct.testnet
 <summary><strong>Example Response</strong></summary>
 <p>
 
+```
     Deleting account. Account id: sub-acct2.example-acct.testnet, node: https://rpc.testnet.near.org, helper: https://helper.testnet.near.org, beneficiary: example-acct.testnet
     Transaction Id 4x8xohER1E3yxeYdXPfG8GvXin1ShiaroqE5GdCd5YxX
     To see the transaction in the transaction explorer, please open this url in your browser
     https://testnet.nearblocks.io/txns/4x8xohER1E3yxeYdXPfG8GvXin1ShiaroqE5GdCd5YxX
     Account sub-acct2.example-acct.testnet for network "default" was deleted.
+```
 
 </p>
 </details>
@@ -505,7 +625,8 @@ near delete-account sub-acct2.example-acct.testnet example-acct.testnet
 
 > Sends NEAR tokens (Ⓝ) from one account to another.
 
--   arguments: `senderId` `receiverId` `amount`
+- arguments: `senderId` `receiverId` `amount`
+- options: `--signWithLedger`, `--ledgerPath`
 
 **Note:** You will need a full access key for the sending account. ([`near login`](http://docs.near.org/docs/tools/near-cli#near-login))
 
@@ -519,10 +640,12 @@ near send-near sender.testnet receiver.testnet 10
 <summary><strong>Example Response</strong></summary>
 <p>
 
+```
     Sending 10 NEAR to receiver.testnet from sender.testnet
     Transaction Id BYTr6WNyaEy2ykAiQB9P5VvTyrJcFk6Yw95HPhXC6KfN
     To see the transaction in the transaction explorer, please open this url in your browser
     https://testnet.nearblocks.io/txns/BYTr6WNyaEy2ykAiQB9P5VvTyrJcFk6Yw95HPhXC6KfN
+```
 
 </p>
 </details>
@@ -572,7 +695,7 @@ near state example.testnet
 **Note:** Contract calls require a transaction fee (gas) so you will need an access key for the `--accountId` that will be charged. ([`near login`](http://docs.near.org/docs/tools/near-cli#near-login))
 
 -   arguments: `contractName` `method_name` `{ args }` `--accountId`
--   options: `--gas` `--deposit`
+-   options: `--gas` `--deposit` `--signWithLedger` `--ledgerPath`
 
 **Example:**
 
@@ -582,15 +705,17 @@ near call guest-book.testnet addMessage '{"text": "Aloha"}' --account-id example
 
 <details>
 <summary><strong>Example Response</strong></summary>
+<p>
 
 ```bash
-Scheduling a call: guest-book.testnet.addMessage({"text": "Aloha"})
-Transaction Id FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK
-To see the transaction in the transaction explorer, please open this url in your browser
-https://testnet.nearblocks.io/txns/FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK
-''
+    Scheduling a call: guest-book.testnet.addMessage({"text": "Aloha"})
+    Transaction Id FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK
+    To see the transaction in the transaction explorer, please open this url in your browser
+    https://testnet.nearblocks.io/txns/FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK
+    ''
 ```
 
+</p>
 </details>
 
 ---
@@ -607,24 +732,26 @@ https://testnet.nearblocks.io/txns/FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK
 **Example:**
 
 ```bash
-near deploy --accountId example-contract.testnet --wasmFile out/example.wasm
+near deploy example-contract.testnet out/example.wasm
 ```
 
 **Initialize Example:**
 
 ```bash
-near deploy --accountId example-contract.testnet --wasmFile out/example.wasm --initFunction new --initArgs '{"owner_id": "example-contract.testnet", "total_supply": "10000000"}'
+near deploy example-contract.testnet out/example.wasm --initFunction new --initArgs '{"owner_id": "example-contract.testnet", "total_supply": "10000000"}'
 ```
 
 <details>
 <summary><strong>Example Response</strong></summary>
 <p>
 
+```
     Starting deployment. Account id: example-contract.testnet, node: https://rpc.testnet.near.org, helper: https://helper.testnet.near.org, file: main.wasm
     Transaction Id G8GhhPuujMHTRnwursPXE1Lv5iUZ8WUecwiST1PcKWMt
     To see the transaction in the transaction explorer, please open this url in your browser
     https://testnet.nearblocks.io/txns/G8GhhPuujMHTRnwursPXE1Lv5iUZ8WUecwiST1PcKWMt
     Done deploying to example-contract.testnet
+```
 
 </p>
 </details>
@@ -671,28 +798,30 @@ near view guest-book.testnet getMessages '{}'
 
 <details>
 <summary><strong>Example Response</strong></summary>
+<p>
 
 ```bash
-View call: guest-book.testnet.getMessages({})
-[
-  { premium: false, sender: 'waverlymaven.testnet', text: 'TGIF' },
-  {
-    premium: true,
-    sender: 'waverlymaven.testnet',
-    text: 'Hello from New York 🌈'
-  },
-  { premium: false, sender: 'fhr.testnet', text: 'Hi' },
-  { premium: true, sender: 'eugenethedream', text: 'test' },
-  { premium: false, sender: 'dongri.testnet', text: 'test' },
-  { premium: false, sender: 'dongri.testnet', text: 'hello' },
-  { premium: true, sender: 'dongri.testnet', text: 'hey' },
-  { premium: false, sender: 'hirokihori.testnet', text: 'hello' },
-  { premium: true, sender: 'eugenethedream', text: 'hello' },
-  { premium: false, sender: 'example-acct.testnet', text: 'Aloha' },
-  [length]: 10
-]
+    View call: guest-book.testnet.getMessages({})
+    [
+      { premium: false, sender: 'waverlymaven.testnet', text: 'TGIF' },
+      {
+        premium: true,
+        sender: 'waverlymaven.testnet',
+        text: 'Hello from New York 🌈'
+      },
+      { premium: false, sender: 'fhr.testnet', text: 'Hi' },
+      { premium: true, sender: 'eugenethedream', text: 'test' },
+      { premium: false, sender: 'dongri.testnet', text: 'test' },
+      { premium: false, sender: 'dongri.testnet', text: 'hello' },
+      { premium: true, sender: 'dongri.testnet', text: 'hey' },
+      { premium: false, sender: 'hirokihori.testnet', text: 'hello' },
+      { premium: true, sender: 'eugenethedream', text: 'hello' },
+      { premium: false, sender: 'example-acct.testnet', text: 'Aloha' },
+      [length]: 10
+    ]
 ```
 
+</p>
 </details>
 
 ---

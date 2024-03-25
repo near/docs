@@ -215,7 +215,7 @@ export EVENTS_FT_CONTRACT_ID=events.$FT_CONTRACT_ID
 Using the build script, build the deploy the contract as you did in the previous tutorials:
 
 ```bash
-cd 1.skeleton && ./build.sh && cd .. && near deploy --wasmFile out/contract.wasm --accountId $EVENTS_FT_CONTRACT_ID
+cd 2.define-a-token && ./build.sh && cd .. && near deploy $EVENTS_FT_CONTRACT_ID out/contract.wasm 
 ```
 
 ### Initialization {#initialization}

@@ -7,7 +7,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
-Our donation example enables to forward money to an account while keeping track of it. It is one of the simplest examples on making a contract handle tranfers.
+Our donation example enables to forward NEAR Tokens to an account while keeping track of it. It is one of the simplest examples on making a contract handle tranfers.
 
 ![img](/docs/assets/examples/donation.png)
 _Frontend of the Donation App_
@@ -58,20 +58,14 @@ The example is divided in two main components:
   <TabItem value="🦀 Rust">
 
 ```bash
-┌── sandbox-ts # sandbox testing
-│    ├── src
-│    │    └── main.ava.ts
-│    ├── ava.config.cjs
-│    └── package.json
-├── package.json
+┌── tests # workspaces testing
+│    ├── workspaces.rs
 ├── src # contract's code
 │    ├── donation.rs
 │    └── lib.rs
-├── build.sh # build script
 ├── Cargo.toml # package manager
 ├── README.md
 ├── rust-toolchain.toml
-└── test.sh # test script
 ```
 
   </TabItem>
@@ -123,7 +117,7 @@ NEAR wallet to accept a transaction.
 
 ## Smart Contract
 
-The contract exposes methods to donate money (`donate`), and methods to retrieve the recorded donations (e.g. `get_donation_by_number`).
+The contract exposes methods to donate tokens (`donate`), and methods to retrieve the recorded donations (e.g. `get_donation_by_number`).
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
@@ -134,7 +128,7 @@ The contract exposes methods to donate money (`donate`), and methods to retrieve
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/src/donation.rs"
-            start="20" end="49" />
+            start="22" end="65" />
   </Language>
 </CodeTabs>
 
@@ -158,7 +152,7 @@ The contract readily includes a set of unit and sandbox testing to validate its 
   
   ```bash
   cd contract-rs
-  ./test.sh
+  cargo test
   ```
 
   </TabItem>
@@ -197,7 +191,7 @@ near create-account <accountId> --useFaucet
 
 # Deploy the contract
 cd contract-rs
-./build.sh
+cargo near build
 near deploy <accountId> ./target/wasm32-unknown-unknown/release/donation.wasm
 ```
 
@@ -217,7 +211,7 @@ To interact with the contract through the console, you can use the following com
 ```bash
 # Get donations 
 # Optional arguments for pagination
-near view donation.near-examples.testnet get_donations --args='{"from_index": "0","limit": "10"}'
+near view donation.near-examples.testnet get_donations --args='{"from_index": 0,"limit": 10}'
 
 # Get beneficiary
 near view donation.near-examples.testnet get_beneficiary
@@ -243,5 +237,5 @@ If you're using your own account, replace `donation.near-examples.testnet` with 
 
 ## Moving Forward
 
-A nice way to learn is by trying to expand a contract. Modify the donation example so it accumulates the money in the contract
-instead of sending it immediately. Then, make a method that only the `beneficiary` can call to retrieve the money.
+A nice way to learn is by trying to expand a contract. Modify the donation example so it accumulates the tokens in the contract
+instead of sending it immediately. Then, make a method that only the `beneficiary` can call to retrieve the tokens.

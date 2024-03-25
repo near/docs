@@ -8,7 +8,7 @@ NEAR is a **user-friendly** and [**carbon-neutral**](https://near.org/blog/near-
 
 ![img](@site/static/docs/assets/welcome-pages/protocol.png)
 
-In technical terms, NEAR is a layer one that offers the speed, scalability and cost-effectiveness of a layer two thanks to its [sharding](https://near.org/blog/near-launches-nightshade-sharding-paving-the-way-for-mass-adoption) and [proof-of-stake](https://en.wikipedia.org/wiki/Proof_of_stake) mechanics.
+In technical terms, NEAR is a [layer one](https://coinmarketcap.com/academy/glossary/layer-1-blockchain), [sharded](https://near.org/blog/near-launches-nightshade-sharding-paving-the-way-for-mass-adoption), [proof-of-stake](https://en.wikipedia.org/wiki/Proof_of_stake) blockchain built with usability in mind.
 
 In simpler terms, NEAR is the **blockchain for everyone**.
 

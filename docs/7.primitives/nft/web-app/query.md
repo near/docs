@@ -17,9 +17,11 @@ const response = await wallet.viewMethod({
   }
 });
 ```
+
 _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_ 
 
 <details>
+
 <summary> Example response </summary>
 
 ```json
@@ -51,9 +53,11 @@ _The `Wallet` object comes from our [quickstart template](https://github.com/nea
 ```js
 const tokenData = fetch("https://api-v2-mainnet.paras.id/token?token_id=84686:1154");
 ```
+
 _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_ 
 
 <details>
+
 <summary> Example response </summary>
 
 ```json
@@ -112,11 +116,15 @@ _The `Wallet` object comes from our [quickstart template](https://github.com/nea
 </details>
 
 :::info
+
 See the [Paras API documentation](https://parashq.github.io/) for the full list of methods.
+
 :::
 
 :::note
+
 Paras API methods returns data from all NFT contracts in NEAR. You might want to pass more parameters like `contract_id` or `owner_id` to make the response more accurate.
+
 :::
 
 </TabItem>
@@ -152,9 +160,11 @@ const tokenData = fetch("https://graph.mintbase.xyz", {
   }),
 });
 ```
+
 _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
 
 <details>
+
 <summary> Example response </summary>
 
 ```json
@@ -183,12 +193,17 @@ _The `Wallet` object comes from our [quickstart template](https://github.com/nea
 </details>
 
 :::note
+
 In the future, users may be required to register using an api key. For now, simply passing the valueanon for `mb-api-key` will work.
+
 :::
 
 :::tip
+
 Check how to do this also using the [`Mintbase JS`](https://docs.mintbase.xyz/dev/mintbase-sdk-ref/data/api/tokenbyid)
+
 :::
 
 </TabItem>
+
 </Tabs>

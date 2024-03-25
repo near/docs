@@ -14,11 +14,11 @@ const config = {
     mermaid: true,
   },
   scripts: [
-    "https://buttons.github.io/buttons.js",
-    "https://use.fontawesome.com/221fd444f5.js",
+    'https://buttons.github.io/buttons.js',
+    'https://use.fontawesome.com/221fd444f5.js',
   ],
   stylesheets: [
-    "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Source+Code+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap",
+    'https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Source+Code+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap',
   ],
   favicon: 'img/favicon.ico',
   customFields: {
@@ -52,12 +52,16 @@ const config = {
           anonymizeIP: true,
         },
         blog: {
+          blogTitle: 'NEAR Developer Changelog',
           blogSidebarTitle: 'Developer Changelog',
           blogSidebarCount: 'ALL',
           showReadingTime: false,
+          routeBasePath: 'changelog',
+          path: '../changelog',
+          
         },
         theme: {
-          customCss: "./src/css/custom.scss",
+          customCss: './src/css/custom.scss',
         },
       },
     ],
@@ -72,25 +76,25 @@ const config = {
         name: 'near-changelog',
         sourceBaseUrl:
           'https://raw.githubusercontent.com/near/near-releases/main/reports/',
-        outDir: '/blog',
+        outDir: '../changelog',
         documents: changelogs,
         noRuntimeDownloads: true,
         modifyContent(filename, content) {
-          return { filename, content: content.replace('{{', '') }
-        }
+          return { filename, content: content.replace('{{', '').replace('<', '\\<') };
+        },
       },
     ],
   ],
   themeConfig: {
     prism: {
       additionalLanguages: [
-        "rust",
-        "java",
-        "python",
-        "ruby",
-        "go",
-        "typescript",
-        "jsx"
+        'rust',
+        'java',
+        'python',
+        'ruby',
+        'go',
+        'typescript',
+        'jsx',
       ],
     },
     colorMode: {
@@ -125,7 +129,7 @@ const config = {
         },
         {
           type: 'html',
-          value: '<span class="separator"></span>'
+          value: '<span class="separator"></span>',
         },
         {
           type: 'dropdown',
@@ -144,16 +148,19 @@ const config = {
               type: 'html',
               value: '<hr/> <small class="subtitle"> Onboarding </small>',
             },
-            { label: "Wallet Selector", href: "/tools/wallet-selector" },
-            { label: "FastAuth (Email Login)", href: "/tools/fastauth-sdk" },
-            { label: "Relayers", href: "/develop/relayers/build-relayer" },
+            { label: 'Wallet Selector', href: '/tools/wallet-selector' },
+            { label: 'FastAuth (Email Login)', href: '/tools/fastauth-sdk' },
+            { label: 'Relayers', href: '/develop/relayers/build-relayer' },
             {
               type: 'html',
               value: '<hr/> <small class="subtitle"> IDEs </small>',
             },
-            { label: "VSCode Extension ", href: "/bos/dev/vscode" },
-            { label: "BOS Web IDE (Jutsu)", href: "https://jutsu.ai/editor" },
-            { label: "Remix IDE Plugin", href: "https://docs.welldonestudio.io/code/getting-started" },
+            { label: 'VSCode Extension ', href: '/bos/dev/vscode' },
+            { label: 'BOS Web IDE (Jutsu)', href: 'https://jutsu.ai/editor' },
+            {
+              label: 'Remix IDE Plugin',
+              href: 'https://docs.welldonestudio.io/code/getting-started',
+            },
           ],
         },
         {
@@ -161,10 +168,14 @@ const config = {
           label: 'Resources',
           position: 'left',
           items: [
-            { label: '🎉 Changelog', href: '/blog'},
-            { label: 'Github', href: 'https://github.com/near', className: 'header-github-link'},
+            { label: '🎉 Dev Changelog', href: '/changelog' },
             {
-              type: "html",
+              label: 'Github',
+              href: 'https://github.com/near',
+              className: 'header-github-link',
+            },
+            {
+              type: 'html',
               value: '<hr/><div class="subtitle"> Support </dib>',
             },
             {
@@ -176,7 +187,7 @@ const config = {
               label: 'Telegram',
             },
             {
-              type: "html",
+              type: 'html',
               value: '<hr /><div class="subtitle"> Other Docs </dib>',
             },
             {
@@ -188,9 +199,9 @@ const config = {
               label: 'Validator Docs',
             },
             {
-              href: "https://aurora.dev",
-              label: "Aurora (EVM)",
-            }
+              href: 'https://aurora.dev',
+              label: 'Aurora (EVM)',
+            },
           ],
         },
         {
@@ -202,15 +213,15 @@ const config = {
           position: 'right',
         },
         {
-          href: "login",
-          position: "right"
+          href: 'login',
+          position: 'right',
         },
       ],
     },
     image: 'img/near_logo.svg',
     footer: {
       links: [],
-      copyright: "Copyright © 2023 NEAR Protocol",
+      copyright: 'Copyright © 2023 NEAR Protocol',
       logo: {
         src: 'img/near_logo.svg',
       },

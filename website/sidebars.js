@@ -62,6 +62,7 @@ const sidebar = {
       "value": "<span class='menu__link'><b><small> Chain Abstraction ✨</small></b></span>"
     },
     "concepts/abstraction/introduction",
+    "concepts/abstraction/meta-transactions",
     "concepts/abstraction/relayers",
     {
       "Chain Signatures": [
@@ -98,7 +99,11 @@ const sidebar = {
     [
       "concepts/basics/runtime",
       "concepts/advanced/specification",
-      "concepts/advanced/papers"
+      {
+        "type": "link",
+        "label": "Papers",
+        "href": "https://near.org/papers"
+      },
     ],
     {
       "type": "html",
@@ -132,10 +137,12 @@ const sidebar = {
         "develop/relayers/build-relayer",
         'tools/fastauth-sdk',
         'abstraction/chain-signatures',
+        'abstraction/chain-signatures/wallet',
         {
           "Multichain Gas Relayer": [
             "develop/relayers/multichain-server",
             "develop/relayers/gas-station",
+            "develop/relayers/relayer-gas-example",
           ]
         },
       ]
@@ -748,6 +755,11 @@ const sidebar = {
       "type": "link",
       "label": "Wallets",
       "href": "https://wallet.near.org"
+    },
+    {
+      "type": "link",
+      "label": "Testnet Faucet",
+      "href": "https://near-faucet.io/"
     },
     "tools/explorer",
     "tools/indexing"

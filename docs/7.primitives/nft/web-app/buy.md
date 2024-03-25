@@ -20,9 +20,11 @@ await wallet.callMethod({
   deposit: 205740000000000000000000 // attached deposit in yoctoNEAR, covers NFT price + storage cost
 });
 ```
+
 _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
 
 <details>
+
 <summary>Example response</summary>
 
 ```json
@@ -51,9 +53,11 @@ await wallet.callMethod({
   deposit: 1000000000000000000000 // attached deposit in yoctoNEAR, covers NFT price + storage cost (optional)
 });
 ```
+
 _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
 
 <details>
+
 <summary>Example response</summary>
 
 ```json
@@ -64,11 +68,15 @@ _The `Wallet` object comes from our [quickstart template](https://github.com/nea
   }
 }
 ```
+
 </details>
 
 :::tip
+
 Check how to do this using the [`Mintbase JS`](https://docs.mintbase.xyz/dev/mintbase-sdk-ref/sdk/buy)
+
 :::
 
 </TabItem>
+
 </Tabs>
