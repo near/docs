@@ -1,147 +1,140 @@
 ---
 id: build-relayer
-title: Building a Meta Transaction Relayer with NextJS
+title: Building a Meta Transaction Relayer
 sidebar_label: Building a Relayer
 ---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
-This guide will walk you through the steps required to construct a meta transaction relayer using NextJS 13.
+Relayers serve to delegate gas fees to a web service, allowing users to transact on NEAR without the need to acquire the token themselves while still retaining the security of signing their own transactions. This guide will lead you through the components necessary to construct a relayer capable of handling meta transactions.
 
 :::tip
-This guide was originally created by [@microchipgnu](https://x.com/microchipgnu) and can be found in [hackmd](https://hackmd.io/@microchipgnu/meta-transactions-relayer-next-js?utm_source=preview-mode&utm_medium=rec).
+
+If you're already acquainted with the technology, you can fast track to a [working open source example](https://github.com/SurgeCode/near-relay-example) 
+
 :::
 
----
+For other languages you can check out [Python](https://github.com/here-wallet/near-relay), [Rust](https://github.com/near/pagoda-relayer-rs) 
 
-## Configuring the Environment
+## How it works
 
-Before we begin, it’s crucial to configure our environment correctly. We need to set some environment variables. This is done in the .env file at the root of your project.
+![relayer-overview-technical](/docs/assets/welcome-pages/relayer-overview-technical.png)
 
-```bash
-NEXT_PUBLIC_RELAYER_ACCOUNT_ID=xyz.testnet
-RELAYER_ACCOUNT_PRIVATE_KEY=xyz
+A basic relayer consists of a web server housing a funded NEAR account. This account receives an encoded signed transaction, which can subsequently be decoded into a `SignedDelegate` format and transmitted on-chain.
+
+The client can then generate a `SignedDelegateAction` (a signed message that hasn't yet been sent), encode it, and transmit it to this server, where it will be relayed onto the blockchain.
+
+## Relayer (server)
+
+<Tabs groupId="code-tabs">
+  <TabItem value="near-api-js">
+
+    Here's a simple express endpoint deserializes the body, instantiates the relayer account and then sends the transaction.
+
+  <Github language='typescript' url='https://github.com/SurgeCode/near-relay-example/blob/main/server.ts' start='16' end='27'/>
+
+    You can easily get the account object used to send the transactions from its private key using this snippet
+
+  <Github language='typescript' url='https://github.com/SurgeCode/near-relay-example/blob/main/util.ts' start='5' end='17'/>  
+
+
+:::info
+
+ The code in the example only works from the following versions onwards
+
+```
+"near-api-js": "3.0.4"
+"@near-js/transactions": "1.1.2",
+"@near-js/accounts": "1.0.4"
 ```
 
-The `NEXT_PUBLIC_RELAYER_ACCOUNT_ID` is your public relayer account identifier and the `RELAYER_ACCOUNT_PRIVATE_KEY` is your relayer account’s private key.
+::: 
 
-## API Route Creation
 
-The next step is creating the API route. For this, we need to take the following actions:
+  </TabItem>
+  <TabItem value="@near-relay/server">
+  @near-relay simplifies meta transactions making it easier to get started for a beginner
 
-1. Navigate to the `./src/app/api/ directory`
-2. Inside the api directory, create a new folder called relayer
-3. Inside the relayer folder, create a new file named `route.ts`
+  To start, call the relay method inside an endpoint to automatically deserialize the transaction and send it with the account defined in the environment variables.
 
-Now, let’s fill `route.ts` with the following code:
+   <Github language='typescript' url='https://github.com/SurgeCode/near-relay/blob/main/server/server.ts' start='8' end='12'/>
 
-```js
-import { submitTransaction } from "@/utils/near/meta-transactions";
-import { SCHEMA } from "@/utils/near/types/schema";
-import { SignedDelegate } from "@near-js/transactions";
-import { deserialize } from "borsh";
-import { NextResponse } from "next/server";
 
-export async function POST(req: Request) {
-  const body = await req.json();
-  const { delegated, network } = body;
+  If you're interested in relaying account creation as well, it's quite straightforward. Simply create another endpoint and directly call the createAccount method with the accountId and publicKey. These parameters are automatically included in the body when using the corresponding client library.
+  <Github language='typescript' url='https://github.com/SurgeCode/near-relay/blob/main/server/server.ts' start='14' end='18'/>
+  
+  </TabItem>
+  </Tabs>
 
-  const deserializeDelegate = deserialize(
-    SCHEMA,
-    SignedDelegate,
-    Buffer.from(new Uint8Array(delegated))
-  );
 
-  const result = await submitTransaction({
-    delegate: deserializeDelegate,
-    network,
-  });
 
-  return NextResponse.json(
-    { result },
-    {
-      status: 200,
-      headers: {
-        "content-type": "application/json",
-      },
-    }
-  );
+## Client
+
+<Tabs groupId="code-tabs">
+  <TabItem value="near-api-js">
+  In this method we are creating an arbitrary smart contract call, instantiating an account and using it to sign but not send the transaction. We can then serialize it and send it to the relayer where it will be delegated via the previously created endpoint.
+  <Github language='typescript' url='https://github.com/SurgeCode/near-relay-example/blob/main/client.ts' start='10' end='30'/>
+
+  </TabItem>
+  <TabItem value="@near-relay/client">
+   As mentioned in the above note in order to be able to relay on the client side it's necessary to have access to signing transactions directly on the client. Luckily leveraging the near biometric library it's possible to do so in a non custodial way.
+
+   By calling this method and passing in the URL for the account creation endpoint (mentioned in the server section) as well as the `accoundId` everything is handled under the hood to successfully create an account.
+  <Github language='typescript' url='https://github.com/SurgeCode/near-relay/blob/main/example/src/app/page.tsx' start='17' end='23'/>
+
+   On the client side, you just need to create an `Action` and pass it into the `relayTransaction` method along with the URL of the relayer endpoint discussed in the server section and the id of the `receiverId`.
+
+   <Github language='typescript' url='https://github.com/SurgeCode/near-relay/blob/main/example/src/app/page.tsx' start='25' end='36'/>
+  </TabItem>
+  </Tabs>
+
+<details>
+  <summary> Relaying with wallets </summary>
+
+
+  At the moment, wallet selector standard doesn't support signing transactions without immediately sending them. This functionality is essential for routing transactions to a relayer. Therefore, to smoothly integrate relaying on the client side, it's necessary to be able to sign transactions without relying on wallets.
+  Progress is being made to make this possible in the future.
+</details>
+
+
+### Gating the relayer
+
+In most production applications it's expected that you want to be able to gate the relayer to only be used in certain cases.
+By taking apart the `delegateAction` object inside the `SignedDelegate`on the server this can be done simply.
+
+```typescript
+export declare class DelegateAction extends Assignable {
+    senderId: string;
+    receiverId: string;
+    actions: Array<Action>;
+    nonce: BN;
+    maxBlockHeight: BN;
+    publicKey: PublicKey;
 }
 ```
 
-This script is responsible for receiving a delegated transaction, deserializing it, and submitting the transaction using the submitTransaction utility.
+You can, for example, gate by some particular user or contract:
 
----
+```typescript
+  const serializedTx: Buffer = req.body;
+  const deserializedTx: SignedDelegate = deserialize(SCHEMA.SignedDelegate, Buffer.from(serializedTx)) as SignedDelegate;
+  const relayerAccount: Account = await getAccount(NETWORK_ID, RELAYER_ID, RELAYER_PRIVATE_KEY);
+  const delegateAction = deserializedTx?.delegateAction
 
-### Client Code Execution
-
-The client code is divided into two parts. The first part signs a delegated transaction, and the second part submits the transaction through the relayer.
-
-#### Signing a Delegated Transaction
-
-We use the following code snippet to sign a delegated transaction:
-
-```js
-import { getKeys } from "@near-js/biometric-ed25519";
-import { InMemoryKeyStore } from "@near-js/keystores";
-import { actionCreators } from "@near-js/transactions";
-import BN from "bn.js";
-import { connect } from "./meta-transactions";
-
-export const signDelegatedTransaction = async ({
-  network,
-  signer,
-  privateKey,
-  transaction,
-  contractAddress,
-}: {
-  network: string;
-  signer: string;
-  privateKey: string;
-  transaction: {
-    methodName: string;
-    args: any;
-    gas: string | number;
-    deposit: string | number;
-  };
-  contractAddress: string;
-}) => {
-  const keyStore = new InMemoryKeyStore();
-    
-  // TODO: Connect the user
-    
-  const signerAccount = await connect(signer, keyStore, network);
-
-  const action = actionCreators.functionCall(
-    transaction.methodName,
-    JSON.parse(transaction.args),
-    new BN(transaction.gas),
-    new BN(transaction.deposit)
-  );
-
-  const delegate = await signerAccount.signedDelegate({
-    actions: [action],
-    blockHeightTtl: 600,
-    receiverId: contractAddress,
+  if(delegateAction.senderId == 'someUserId' || delegateAction.receiverId == 'someContractId' ){
+       const receipt = await relayerAccount.signAndSendTransaction({
+       actions: [actionCreators.signedDelegate(deserializedTx)],
+       receiverId: deserializedTx.delegateAction.senderId
   });
+  }
 
-  return delegate;
-};
 ```
 
-This function receives several parameters, including `network`, `signer`, `privateKey`, `transaction`, and `contractAddress`. It generates a delegate using the `signedDelegate` method, which is later used to submit the transaction.
+Other examples could be looking into the actions and seeing if there is deposit or gas and limiting them, gating by particular smart contract methods or even args.
 
-#### Submitting the Transaction via the Relayer
+You can decode the args using:
 
-After signing the delegated transaction, we use the following code snippet to submit the transaction through the relayer:
-
-```js
-await fetch("/api/internal/near/submit-meta-transaction", {
-  body: JSON.stringify({
-    delegated: Array.from(encodeSignedDelegate(delegated)),
-    network: "testnet",
-  }),
-  headers: {},
-  method: "POST",
-});
 ```
-
-The `fetch` function sends a POST request to the API route we created earlier. The body of this request includes the delegated transaction and the network.
+JSON.parse(Buffer.from(args_base64 || "", "base64").toString())
+```

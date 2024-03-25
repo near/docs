@@ -11,11 +11,12 @@ export function WidgetEditor({ children, id = 1, height = "160px" }) {
       {() => {
         let startCode = '';
         try {
-          startCode = children.props.children.props.children;
-        } catch(e){ }
+          if (!children.length) children = [children]
+          startCode = children[0].props.children.props.children;
+        } catch (e) { }
         const { Widget, useInitNear } = require('near-social-vm');
         const MonacoEditor = require('react-monaco-editor').default;
-      
+
         const [code, setCode] = useState(startCode);
         const { initNear } = useInitNear();
         const { selector } = useWallet();
@@ -54,6 +55,7 @@ export function WidgetEditor({ children, id = 1, height = "160px" }) {
               </div>
             </div>
           </div>
+          {children[1]}
         </div>
       }}
     </BrowserOnly>

@@ -3,7 +3,7 @@ id: web-methods
 title: Web Browser Methods
 ---
 
-import {WidgetEditor} from "@site/src/components/social-widget"
+import {WidgetEditor} from "@site/src/components/widget-editor"
 
 NEAR Components have access to classic web methods that enable them to:
 - [Fetch](#fetch) data from external sources.
