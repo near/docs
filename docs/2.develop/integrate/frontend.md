@@ -57,7 +57,7 @@ To create a wallet, simply import the `Wallet` object from the module and initia
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="index.js"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/index.js"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/index.js"
             start="2" end="8" />
   </Language>
 </CodeTabs>
@@ -112,10 +112,10 @@ For this, override the `window.onload` method with a function that calls the `wa
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="index.js"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/index.js"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/index.js"
             start="10" end="21" />
     <Github fname="near-wallet.js"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/near-wallet.js"
             start="36" end="52" />
   </Language>
 </CodeTabs>
@@ -133,10 +133,10 @@ Because of their read-only nature, view methods are **free** to call, and do **n
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="index.js"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/index.js"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/index.js"
             start="46" end="46" />
     <Github fname="near-wallet.js"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/near-wallet.js"
             start="68" end="81" />
   </Language>
 </CodeTabs>
@@ -160,10 +160,10 @@ Signing in is as simple as requesting the `wallet` object to `signIn`, the same 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/index.js"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/index.js"
             start="25" end="26" />
     <Github fname="near-wallet.js"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/near-wallet.js"
             start="54" end="66" />
   </Language>
 </CodeTabs>
@@ -179,7 +179,7 @@ If you instantiated the `Wallet` passing an account for the `createAccessKeyFor`
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/index.js"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/index.js"
             start="8" end="8" />
   </Language>
 </CodeTabs>
@@ -205,10 +205,10 @@ It is important to notice that, if you ask for money to be attached in the call,
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/index.js"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/index.js"
             start="36" end="36" />
     <Github fname="near-wallet.js"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/near-wallet.js"
             start="83" end="103" />
   </Language>
 </CodeTabs>
@@ -232,10 +232,10 @@ If the method invoked returned a result, you can use the transaction hash to ret
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
   <Github fname="index.js"
-            url="https://github.com/near-examples/donation-examples/blob/main/frontend/index.js"
+            url="https://github.com/near-examples/donation-examples/blob/main/frontend/src/index.js"
             start="71" end="92" />
     <Github fname="utils.js"
-            url="https://github.com/near-examples/donation-examples/blob/main/frontend/near-wallet.js"
+            url="https://github.com/near-examples/donation-examples/blob/main/frontend/src/near-wallet.js"
             start="105" end="113" />
   </Language>
 </CodeTabs>
