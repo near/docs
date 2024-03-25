@@ -333,7 +333,7 @@ Saving key to '~/.near-credentials/testnet/example.testnet.json'
 
 #### 3a) `near generate-key --fromSeedPhrase="your seed phrase"`
 
-> Uses a seed phrase to display a public key and [implicit account](../1.concepts/basics/accounts/account-id.md#implicit-accounts-implicit-accounts)
+> Uses a seed phrase to display a public key and [implicit account](../1.concepts/protocol/account-id.md#implicit-accounts-implicit-accounts)
 
 ```bash
 near generate-key --seedPhrase="antique attitude say evolve ring arrive hollow auto wide bronze usual unfold"

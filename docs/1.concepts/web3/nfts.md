@@ -201,7 +201,7 @@ Of course, this is just one possible flow, and a different solution can be assem
 
 So far, we’ve discussed authentication and authorization on the Web 2 server’s side. But what about Web 3 smart contracts? Everything is much more straightforward in this case.
 
-Since everything is public data on the blockchain, we don’t need any authentication for read calls. For transactions, each is signed by an account’s private key, and authentication is performed by the network. More details on transaction signing can be found [in the docs](../basics/transactions/overview.md).
+Since everything is public data on the blockchain, we don’t need any authentication for read calls. For transactions, each is signed by an account’s private key, and authentication is performed by the network. More details on transaction signing can be found [in the docs](../protocol/transactions.md).
 
 Authorization, on the other hand, must be performed on a smart contract itself, the simplest way is just to check whether caller is allowed to perform an action:
 
@@ -391,11 +391,11 @@ In this way, users can remain unaware about the intricacies of blockchain until 
     * Server-signed transactions in case of custodial wallet.
     * Client-signed transactions in case of non-custodial wallet.
 
-As we mentioned above, [Implicit Accounts](../basics/accounts/account-id.md#implicit-accounts-implicit-accounts) can be used to avoid paying account creation costs. This is especially useful for custodial wallets, since it allows us to create a NEAR Account free of charge. Basically, they work like an Ethereum/Bitcoin-style account by using a public key as an account id, and later can be converted to a full NEAR account. However, they have drawbacks as well. First of all, human-readable account names cannot be used. Also, if we want to convert it to a proper NEAR account, which can support Functional Call keys, the account creation fee still has to be paid.
+As we mentioned above, [Implicit Accounts](../protocol/account-id.md#implicit-accounts-implicit-accounts) can be used to avoid paying account creation costs. This is especially useful for custodial wallets, since it allows us to create a NEAR Account free of charge. Basically, they work like an Ethereum/Bitcoin-style account by using a public key as an account id, and later can be converted to a full NEAR account. However, they have drawbacks as well. First of all, human-readable account names cannot be used. Also, if we want to convert it to a proper NEAR account, which can support Functional Call keys, the account creation fee still has to be paid.
 
 While being very powerful, custodial accounts are quite complex and tricky to implement. An alternative approach to ease users onboarding is to simplify creation of a wallet itself. In NEAR, we can do this using [NEAR Drops](https://near.org/blog/send-near-to-anyone-with-near-drops/). It allows us to generate a link that guides users through a quick wallet creation process. However, the same problem as for the custodial accounts applies - creation of an account is not free. That’s why, such a link has NEAR tokens attached to it to cover account creation cost and to serve as an initial balance for a newly created wallet. And as with custodial accounts, funds should be transferred from a user to cover this cost using traditional payment channels.
 
-Another option to simplify onboarding is usage of the [Prepaid Gas](../basics/transactions/gas.md#what-about-prepaid-gas-what-about-prepaid-gas) concept. For example, we can issue a Functional Call key that allows users to interact with blockchain without having an account created. In this case funds will be drawn from the developer's account. This can be used for demo purposes, or to allow users without a NEAR account to perform some smart contract actions.
+Another option to simplify onboarding is usage of the [Prepaid Gas](../protocol/gas.md#what-about-prepaid-gas-what-about-prepaid-gas) concept. For example, we can issue a Functional Call key that allows users to interact with blockchain without having an account created. In this case funds will be drawn from the developer's account. This can be used for demo purposes, or to allow users without a NEAR account to perform some smart contract actions.
 
 
 ## NFT Marketplace

@@ -8,7 +8,7 @@ Chain Signatures unlock the ability for a single account to transact across mult
 
 This many-to-one ownership is made possible through a mixture of services across our tech stack:
 
-1. A [smart contract](../basics/accounts/smart-contract.md) that holds requests for multi-chain signatures.
+1. A [smart contract](../protocol/smart-contract.md) that holds requests for multi-chain signatures.
 2. A [multiparty computation](https://www.zellic.io/blog/mpc-from-scratch/) service listening for signature requests.
 3. A multi-chain [relayer](./relayers.md), which can submit signed transactions to other networks.
 

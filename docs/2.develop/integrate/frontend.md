@@ -62,7 +62,7 @@ To create a wallet, simply import the `Wallet` object from the module and initia
   </Language>
 </CodeTabs>
 
-When instantiating the wallet you can choose if you want to **create a [FunctionCall Key](../../1.concepts/basics/accounts/access-keys.md#function-call-keys-function-call-keys)**.
+When instantiating the wallet you can choose if you want to **create a [FunctionCall Key](../../1.concepts/protocol/access-keys.md#function-call-keys-function-call-keys)**.
 
 If you create the key, then your dApp will be able to **automatically sign non-payable transactions** for the user on the specified contract.
 
@@ -174,7 +174,7 @@ When the user clicks in the button, it will be asked to select a wallet and use 
 
 ### Function Call Key
 
-If you instantiated the `Wallet` passing an account for the `createAccessKeyFor` parameter, then the wallet will create a [FunctionCall Key](../../1.concepts/basics/accounts/access-keys.md#function-call-keys-function-call-keys) and store it in the web's local storage.
+If you instantiated the `Wallet` passing an account for the `createAccessKeyFor` parameter, then the wallet will create a [FunctionCall Key](../../1.concepts/protocol/access-keys.md#function-call-keys-function-call-keys) and store it in the web's local storage.
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">

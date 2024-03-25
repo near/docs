@@ -20,7 +20,7 @@ Smart contracts **cannot perform HTTP requests**, meaning they can't fetch data 
 ---
 
 ## Where do contracts live?
-Smart Contracts are deployed into [**NEAR accounts**](../../1.concepts/basics/accounts/introduction.md). Any NEAR account can hold a contract, needing to pay for the **contract's code** and the **data it stores**. 
+Smart Contracts are deployed into [**NEAR accounts**](../../1.concepts/protocol/account-model.md). Any NEAR account can hold a contract, needing to pay for the **contract's code** and the **data it stores**. 
 
 Once in an account, anyone can interact with the contract. Thanks to the underlying network structure, executing code from a contract is both **fast** (avg. 1.4s finality) and **cheap**. Moreover, **read-only** operations are **free for everyone**.
 

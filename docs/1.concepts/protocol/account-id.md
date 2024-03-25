@@ -27,7 +27,7 @@ Implicit accounts always *exist*, and thus do not need to be created. However, i
 
 <summary> 🧑‍💻 Technical: How to obtain a key-pair  </summary>
 
-The simplest way to obtain a public / private key that represents an account is using the [NEAR CLI](../../../4.tools/cli.md)
+The simplest way to obtain a public / private key that represents an account is using the [NEAR CLI](../../4.tools/cli.md)
 
 ```bash
 near generate-key

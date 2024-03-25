@@ -2,7 +2,7 @@
 id: access-keys
 title: Access Keys
 ---
-In all blockchains, users control their accounts by holding a `private key` (a secret only they know) and using it to sign [transactions](../transactions/overview.md).
+In all blockchains, users control their accounts by holding a `private key` (a secret only they know) and using it to sign [transactions](./transactions.md).
 
 ![img](@site/static/docs/assets/welcome-pages/access-keys.png)
 
@@ -14,7 +14,7 @@ NEAR accounts present the **unique** feature of being able to hold multiple [Acc
 ---
 
 ## Full-Access Keys {#full-access-keys}
-As the name suggests, `Full-Access` keys have full control of an account, meaning they can be used to sign [transactions](../transactions.md) doing any action in your account's behalf:
+As the name suggests, `Full-Access` keys have full control of an account, meaning they can be used to sign [transactions](transactions.md) doing any action in your account's behalf:
 
 1. Transfer NEAR Ⓝ
 2. Delete your account or create sub-accounts of it
@@ -35,7 +35,7 @@ The **first** Full-Access Key of an account is added when the account is **creat
 `Function-Call` keys can only sign transactions calling a **specific contract**, and do **not allow** to **attach NEAR tokens** to the call. They are defined by three attributes:
 1. `receiver_id`: The **contract** which the key allows to call. No other contract can be called using this key
 2. `method_names` (Optional): The contract's **methods** the key allows to call. If omitted, all methods can be called
-3. `allowance` (Optional): The **amount of NEAR** allowed to be spent on [gas](../transactions/gas.md). If omitted, the key can consume **unlimited** as gas
+3. `allowance` (Optional): The **amount of NEAR** allowed to be spent on [gas](gas.md). If omitted, the key can consume **unlimited** as gas
 
 Function-Call keys have the main purpose of being shared, so third-parties can make contract calls in your name. This is useful in [multiple scenarios as we will see below](#benefits-of-function-call-keys).
 

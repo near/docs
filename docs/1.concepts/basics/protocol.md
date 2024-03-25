@@ -18,11 +18,11 @@ In simpler terms, NEAR is the **blockchain for everyone**.
 NEAR is a technical marvel, offering built-in features such as named accounts and account abstraction. For developers, NEAR offers all the infra-structure needed for their applications, from smart contracts to indexers. All while being interoperable with other chains.
 
 ### ⭐ Simple to Use 
-1. Accounts are easy to remember and share thanks to built-in [**Named accounts**](./accounts/introduction.md#human-readable-accountsaccount-idmd) (as `alice.near`)
+1. Accounts are easy to remember and share thanks to built-in [**Named accounts**](../protocol/account-model.md) (as `alice.near`)
 2. Simple sign-up: accounts can be created through [email](https://near.org/signup) or [telegram](https://web.telegram.org/k/#@herewalletbot)
 3. Transactions are **incredibly fast** _(~1.3s transactions)_ and **cheap** _(< 1¢ in fees)_
 4. No need to acquire crypto thanks to **built-in account abstraction**
-5. Enhanced usability and security thanks to a rich [Access Keys](./accounts/access-keys.md) system
+5. Enhanced usability and security thanks to a rich [Access Keys](../protocol/access-keys.md) system
 6. Control accounts on **other chains** thanks to [chain signatures](../abstraction/chain-signatures.md)
 
 ### 🛡️ Battle-Tested 
