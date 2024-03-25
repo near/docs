@@ -13,10 +13,7 @@
 [![Discord](https://img.shields.io/discord/490367152054992913.svg)](http://near.chat)
 [![CI](https://github.com/near/docs/actions/workflows/build-docs.yml/badge.svg)](https://github.com/near/docs/actions/workflows/build-docs.yml)
 
-* ⚖️ NEAR Protocol is a new smart-contract platform that delivers scalability and usability.
-* 🛠 Through sharding, it will linearly scale with the number of validation nodes on the network.
-* 🗝 Leveraging WebAssembly (via Rust and JavaScript), more sane contract management, ephemeral accounts and many other advancements, NEAR
-finally makes using a blockchain protocol easy for both developers and consumers.
+This is the repository for the official documentation of NEAR Protocol, a user-friendly and carbon-neutral blockchain, built from the ground up to be performant, secure, and infinitely scalable.
 
 ## Quick start
 
@@ -101,7 +98,7 @@ Your project file structure should look something like this with a few key files
     ├── i18n
     ├── package.json
     ├── pages
-    ├── sidebars.json     <-- rarely used for changing left-hand-side page navigation
+    ├── sidebars.js     <-- rarely used for changing left-hand-side page navigation
     ├── docusaurus.config.js     <-- rarely used for general site configuration (including header links)
     ├── static
     └── test-links.sh     <-- always used to test links before submitting changes
@@ -125,24 +122,4 @@ or id you are in the `./website` directory:
 
 ```bash
 yarn full-test
-```
-
-To manually run tests without rebuilding the site, run the following from the `./website` directory:-
-
-🏃‍♂️ - Build and start server
-
-```bash
-yarn start-server
-```
-
-✅ - Check links
-
-```bash
-yarn check-links
-```
-
-⛔️ - Stop server
-
-```bash
-yarn stop-server
 ```
