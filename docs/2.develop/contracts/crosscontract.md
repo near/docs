@@ -51,7 +51,7 @@ Calling another contract passing information is also a common scenario. Bellow y
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/lib.rs"
-            start="51" end="74" />
+            start="52" end="75" />
     <Github fname="external.rs"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/external.rs" />
   </Language>
@@ -124,7 +124,7 @@ The callback methods in your contract must be public, so it can be called when t
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/lib.rs"
-            start="67" end="73" />
+            start="67" end="74" />
   </Language>
 </CodeTabs>
 
@@ -140,7 +140,7 @@ In case the call finishes successfully, the resulting object will have a `status
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.ts"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/lib.rs"
-            start="47" end="47" />
+            start="47" end="49" />
   </Language>
 </CodeTabs>
 

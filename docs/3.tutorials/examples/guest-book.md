@@ -65,7 +65,7 @@ The example is divided in two main components:
 │    └── lib.rs
 ├── Cargo.toml # package manager
 ├── README.md
-├── rust-toolchain.toml
+└── rust-toolchain.toml
 ```
 
   </TabItem>
@@ -99,13 +99,12 @@ Go ahead and login with your NEAR account. If you don't have one, you will be ab
 The frontend is composed by a single HTML file (`/index.html`) and uses REACT. Check `/App.js` and `/index.js` to understand how
 components are displayed in the screen.
 
-You will notice in `/index.js` the following code:
+You will notice in `/src/App.jsx` the following code:
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
-    <Github fname="index.js"
-            url="https://github.com/near-examples/guest-book-examples/blob/main/frontend/index.js"
-            start="17" end="27" />
+    <Github fname="App.jsx"
+            url="https://github.com/near-examples/guest-book-examples/blob/main/frontend/src/App.jsx"/>
   </Language>
 </CodeTabs>
 
