@@ -60,7 +60,7 @@ The contract presents 2 methods: `flip_coin`, and `points_of`.
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs" 
             url="https://github.com/near-examples/coin-flip-examples/blob/main/contract-rs/src/lib.rs"
-            start="49" end="83" />
+            start="49" end="81" />
   </Language>
 </CodeTabs>
 

@@ -65,7 +65,7 @@ The example is divided in two main components:
 │    └── lib.rs
 ├── Cargo.toml # package manager
 ├── README.md
-├── rust-toolchain.toml
+└── rust-toolchain.toml
 ```
 
   </TabItem>
