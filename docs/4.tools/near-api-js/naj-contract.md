@@ -124,5 +124,5 @@ const response = await contract.view_method_name({ arg_name: "arg_value" });
 [<span className="typedoc-icon typedoc-icon-class"></span> Class `Contract`](https://near.github.io/near-api-js/classes/_near_js_accounts.contract.Contract.html)
 
 [//]: # "## Transactions {#transactions}"
-[//]: # "A [Transaction](/concepts/basics/transactions/overview) is a collection of Actions, and there are few types of Actions."
+[//]: # "A [Transaction](/concepts/protocol/transactions) is a collection of Actions, and there are few types of Actions."
 [//]: # "For every type of Action there is a function on Account that you can use to invoke the Action, but Account also exposes `signAndSendTransaction` function which you can use to build and invoke a batch transaction."
