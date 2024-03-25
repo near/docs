@@ -59,9 +59,7 @@ A paymaster represents an address on a destination chain that holds a balance of
 ## Supported Chains
 
 - BSC testnet
-- BSC Mainnet (March 27 2024)
-- Ethereum Mainnet (March 27 2024)
-- More chains coming soon!
+- BSC mainnet, Ethereum mainnet, and more chains coming soon!
 
 :::info
 Check the Relayer's [GitHub repository](https://github.com/near/multichain-relayer-server) to learn more about upcoming features and updates.
