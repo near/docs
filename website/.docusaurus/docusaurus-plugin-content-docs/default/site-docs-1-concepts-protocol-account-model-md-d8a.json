@@ -1,0 +1,31 @@
+{
+  "id": "concepts/protocol/account-model",
+  "title": "NEAR Accounts",
+  "description": "Users participate in the NEAR ecosystem through their NEAR accounts. These accounts are identified by a unique address, can optionally hold a smart contract, and are controlled through Access Keys.",
+  "source": "@site/../docs/1.concepts/protocol/account-model.md",
+  "sourceDirName": "1.concepts/protocol",
+  "slug": "/concepts/protocol/account-model",
+  "permalink": "/zh-CN/concepts/protocol/account-model",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/protocol/account-model.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1711375194,
+  "formattedLastUpdatedAt": "2024年3月25日",
+  "frontMatter": {
+    "id": "account-model",
+    "title": "NEAR Accounts",
+    "sidebar_label": "Overview"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "⭐ What is NEAR?",
+    "permalink": "/zh-CN/concepts/basics/protocol"
+  },
+  "next": {
+    "title": "Address (Account ID)",
+    "permalink": "/zh-CN/concepts/protocol/account-id"
+  }
+}

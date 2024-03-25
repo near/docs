@@ -25,7 +25,7 @@
     "permalink": "/ko/concepts/welcome"
   },
   "next": {
-    "title": "계정 모델",
-    "permalink": "/ko/concepts/basics/accounts/model"
+    "title": "Overview",
+    "permalink": "/ko/concepts/protocol/account-model"
   }
 }

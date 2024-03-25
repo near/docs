@@ -9,15 +9,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '4c1'),
+    component: ComponentCreator('/zh-CN/', '282'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', 'e20'),
+        component: ComponentCreator('/zh-CN/', '35b'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', 'f0f'),
+            component: ComponentCreator('/zh-CN/', '700'),
             routes: [
               {
                 path: '/zh-CN/abstraction/chain-signatures',
@@ -375,47 +375,6 @@ export default [
                 exact: true
               },
               {
-                path: '/zh-CN/concepts/basics/accounts/access-keys',
-                component: ComponentCreator('/zh-CN/concepts/basics/accounts/access-keys', '14e'),
-                exact: true,
-                sidebar: "concepts"
-              },
-              {
-                path: '/zh-CN/concepts/basics/accounts/account-id',
-                component: ComponentCreator('/zh-CN/concepts/basics/accounts/account-id', 'a7b'),
-                exact: true,
-                sidebar: "concepts"
-              },
-              {
-                path: '/zh-CN/concepts/basics/accounts/creating-accounts',
-                component: ComponentCreator('/zh-CN/concepts/basics/accounts/creating-accounts', '37b'),
-                exact: true,
-                sidebar: "concepts"
-              },
-              {
-                path: '/zh-CN/concepts/basics/accounts/model',
-                component: ComponentCreator('/zh-CN/concepts/basics/accounts/model', 'ebf'),
-                exact: true,
-                sidebar: "concepts"
-              },
-              {
-                path: '/zh-CN/concepts/basics/accounts/smartcontract',
-                component: ComponentCreator('/zh-CN/concepts/basics/accounts/smartcontract', '84c'),
-                exact: true,
-                sidebar: "concepts"
-              },
-              {
-                path: '/zh-CN/concepts/basics/accounts/state',
-                component: ComponentCreator('/zh-CN/concepts/basics/accounts/state', '10b'),
-                exact: true,
-                sidebar: "concepts"
-              },
-              {
-                path: '/zh-CN/concepts/basics/actors',
-                component: ComponentCreator('/zh-CN/concepts/basics/actors', '806'),
-                exact: true
-              },
-              {
                 path: '/zh-CN/concepts/basics/epoch',
                 component: ComponentCreator('/zh-CN/concepts/basics/epoch', '58b'),
                 exact: true,
@@ -462,24 +421,6 @@ export default [
                 sidebar: "concepts"
               },
               {
-                path: '/zh-CN/concepts/basics/transactions/gas',
-                component: ComponentCreator('/zh-CN/concepts/basics/transactions/gas', 'e2a'),
-                exact: true,
-                sidebar: "concepts"
-              },
-              {
-                path: '/zh-CN/concepts/basics/transactions/gas-advanced',
-                component: ComponentCreator('/zh-CN/concepts/basics/transactions/gas-advanced', '79c'),
-                exact: true,
-                sidebar: "concepts"
-              },
-              {
-                path: '/zh-CN/concepts/basics/transactions/overview',
-                component: ComponentCreator('/zh-CN/concepts/basics/transactions/overview', '9b0'),
-                exact: true,
-                sidebar: "concepts"
-              },
-              {
                 path: '/zh-CN/concepts/basics/validators',
                 component: ComponentCreator('/zh-CN/concepts/basics/validators', 'da6'),
                 exact: true,
@@ -500,6 +441,54 @@ export default [
               {
                 path: '/zh-CN/concepts/data-flow/token-transfer-flow',
                 component: ComponentCreator('/zh-CN/concepts/data-flow/token-transfer-flow', '9d4'),
+                exact: true,
+                sidebar: "concepts"
+              },
+              {
+                path: '/zh-CN/concepts/protocol/access-keys',
+                component: ComponentCreator('/zh-CN/concepts/protocol/access-keys', 'ae8'),
+                exact: true,
+                sidebar: "concepts"
+              },
+              {
+                path: '/zh-CN/concepts/protocol/account-id',
+                component: ComponentCreator('/zh-CN/concepts/protocol/account-id', '823'),
+                exact: true,
+                sidebar: "concepts"
+              },
+              {
+                path: '/zh-CN/concepts/protocol/account-model',
+                component: ComponentCreator('/zh-CN/concepts/protocol/account-model', 'b72'),
+                exact: true,
+                sidebar: "concepts"
+              },
+              {
+                path: '/zh-CN/concepts/protocol/gas',
+                component: ComponentCreator('/zh-CN/concepts/protocol/gas', '279'),
+                exact: true,
+                sidebar: "concepts"
+              },
+              {
+                path: '/zh-CN/concepts/protocol/smartcontract',
+                component: ComponentCreator('/zh-CN/concepts/protocol/smartcontract', '32c'),
+                exact: true,
+                sidebar: "concepts"
+              },
+              {
+                path: '/zh-CN/concepts/protocol/transaction-anatomy',
+                component: ComponentCreator('/zh-CN/concepts/protocol/transaction-anatomy', '91b'),
+                exact: true,
+                sidebar: "concepts"
+              },
+              {
+                path: '/zh-CN/concepts/protocol/transaction-execution',
+                component: ComponentCreator('/zh-CN/concepts/protocol/transaction-execution', '4f6'),
+                exact: true,
+                sidebar: "concepts"
+              },
+              {
+                path: '/zh-CN/concepts/protocol/transactions',
+                component: ComponentCreator('/zh-CN/concepts/protocol/transactions', '731'),
                 exact: true,
                 sidebar: "concepts"
               },

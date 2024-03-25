@@ -1,0 +1,30 @@
+{
+  "id": "concepts/protocol/transaction-execution",
+  "title": "Lifecycle of a Transaction",
+  "description": "Transactions are constructed by users to express the intent of performing actions in the network. Once in the network, transactions are converted into Receipts, which are messages exchanged between network nodes.",
+  "source": "@site/../docs/1.concepts/protocol/transaction-execution.md",
+  "sourceDirName": "1.concepts/protocol",
+  "slug": "/concepts/protocol/transaction-execution",
+  "permalink": "/zh-CN/concepts/protocol/transaction-execution",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/protocol/transaction-execution.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1711375194,
+  "formattedLastUpdatedAt": "2024年3月25日",
+  "frontMatter": {
+    "id": "transaction-execution",
+    "title": "Lifecycle of a Transaction"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Gas (Execution Fees)",
+    "permalink": "/zh-CN/concepts/protocol/gas"
+  },
+  "next": {
+    "title": "NEAR Data Flow",
+    "permalink": "/zh-CN/concepts/data-flow/near-data-flow"
+  }
+}

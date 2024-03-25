@@ -33,57 +33,33 @@
       },
       {
         "type": "category",
-        "label": "Accounts",
+        "label": "Accounts / Contracts",
         "items": [
           {
             "type": "link",
-            "label": "Account Model",
-            "href": "/zh-CN/concepts/basics/accounts/model",
-            "docId": "concepts/basics/accounts/model",
-            "unlisted": false
-          },
-          {
-            "type": "link",
             "label": "Address (Account ID)",
-            "href": "/zh-CN/concepts/basics/accounts/account-id",
-            "docId": "concepts/basics/accounts/account-id",
+            "href": "/zh-CN/concepts/protocol/account-id",
+            "docId": "concepts/protocol/account-id",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Access Keys",
-            "href": "/zh-CN/concepts/basics/accounts/access-keys",
-            "docId": "concepts/basics/accounts/access-keys",
+            "href": "/zh-CN/concepts/protocol/access-keys",
+            "docId": "concepts/protocol/access-keys",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Smart Contract",
-            "href": "/zh-CN/concepts/basics/accounts/smartcontract",
-            "docId": "concepts/basics/accounts/smartcontract",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "State",
-            "href": "/zh-CN/concepts/basics/accounts/state",
-            "docId": "concepts/basics/accounts/state",
-            "unlisted": false
-          },
-          {
-            "type": "html",
-            "value": "<hr/>"
-          },
-          {
-            "type": "link",
-            "label": "Creating Accounts",
-            "href": "/zh-CN/concepts/basics/accounts/creating-accounts",
-            "docId": "concepts/basics/accounts/creating-accounts",
+            "href": "/zh-CN/concepts/protocol/smartcontract",
+            "docId": "concepts/protocol/smartcontract",
             "unlisted": false
           }
         ],
         "collapsed": true,
-        "collapsible": true
+        "collapsible": true,
+        "href": "/zh-CN/concepts/protocol/account-model"
       },
       {
         "type": "category",
@@ -91,36 +67,29 @@
         "items": [
           {
             "type": "link",
-            "label": "Overview",
-            "href": "/zh-CN/concepts/basics/transactions/overview",
-            "docId": "concepts/basics/transactions/overview",
+            "label": "Anatomy of a Transaction",
+            "href": "/zh-CN/concepts/protocol/transaction-anatomy",
+            "docId": "concepts/protocol/transaction-anatomy",
             "unlisted": false
           },
           {
-            "type": "category",
-            "label": "Gas",
-            "items": [
-              {
-                "type": "link",
-                "label": "Gas",
-                "href": "/zh-CN/concepts/basics/transactions/gas",
-                "docId": "concepts/basics/transactions/gas",
-                "unlisted": false
-              },
-              {
-                "type": "link",
-                "label": "Gas - Advanced",
-                "href": "/zh-CN/concepts/basics/transactions/gas-advanced",
-                "docId": "concepts/basics/transactions/gas-advanced",
-                "unlisted": false
-              }
-            ],
-            "collapsed": true,
-            "collapsible": true
+            "type": "link",
+            "label": "Gas (Execution Fees)",
+            "href": "/zh-CN/concepts/protocol/gas",
+            "docId": "concepts/protocol/gas",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Lifecycle of a Transaction",
+            "href": "/zh-CN/concepts/protocol/transaction-execution",
+            "docId": "concepts/protocol/transaction-execution",
+            "unlisted": false
           }
         ],
         "collapsed": true,
-        "collapsible": true
+        "collapsible": true,
+        "href": "/zh-CN/concepts/protocol/transactions"
       },
       {
         "type": "category",
@@ -3222,47 +3191,6 @@
       "title": "Virtual Machine",
       "description": "Talk about execution here"
     },
-    "concepts/basics/accounts/access-keys": {
-      "id": "concepts/basics/accounts/access-keys",
-      "title": "Access Keys",
-      "description": "In blockchain, using an account refers to using a private key to sign transactions.",
-      "sidebar": "concepts"
-    },
-    "concepts/basics/accounts/account-id": {
-      "id": "concepts/basics/accounts/account-id",
-      "title": "Address (Account ID)",
-      "description": "Every NEAR account is identified by a specific address. Based on their name, two types of accounts can be distinguished:",
-      "sidebar": "concepts"
-    },
-    "concepts/basics/accounts/creating-accounts": {
-      "id": "concepts/basics/accounts/creating-accounts",
-      "title": "Creating Accounts",
-      "description": "The simplest way to create NEAR accounts is through the NEAR Wallet, however, you can also create accounts using local tools.",
-      "sidebar": "concepts"
-    },
-    "concepts/basics/accounts/model": {
-      "id": "concepts/basics/accounts/model",
-      "title": "Account Model",
-      "description": "In order to join the NEAR ecosystem, users need to create an account. NEAR accounts are unique when compared to other blockchain ecosystems.",
-      "sidebar": "concepts"
-    },
-    "concepts/basics/accounts/smartcontract": {
-      "id": "concepts/basics/accounts/smartcontract",
-      "title": "Smart Contract",
-      "description": "Smart contracts are pieces of executable code stored in the account's state that have their own storage, and perform transactions in the account's name.",
-      "sidebar": "concepts"
-    },
-    "concepts/basics/accounts/state": {
-      "id": "concepts/basics/accounts/state",
-      "title": "State",
-      "description": "Each account has an associated state where it stores its metadata and all the contract-related data (contract's code + storage).",
-      "sidebar": "concepts"
-    },
-    "concepts/basics/actors": {
-      "id": "concepts/basics/actors",
-      "title": "Actors of NEAR",
-      "description": "There are 3 main actors interacting to form the NEAR ecosystem:"
-    },
     "concepts/basics/epoch": {
       "id": "concepts/basics/epoch",
       "title": "Epoch",
@@ -3309,24 +3237,6 @@
       "description": "This is the native token used in NEAR Protocol. It has multiple use cases:",
       "sidebar": "concepts"
     },
-    "concepts/basics/transactions/gas": {
-      "id": "concepts/basics/transactions/gas",
-      "title": "Gas",
-      "description": "On every transaction you send to the network NEAR charges you a fee (aka gas fee). This fee is used to indirectly pay the people that keep the network infrastructure, and to incentivize developers of smart contracts.",
-      "sidebar": "concepts"
-    },
-    "concepts/basics/transactions/gas-advanced": {
-      "id": "concepts/basics/transactions/gas-advanced",
-      "title": "Gas - Advanced",
-      "description": "Costs of complex actions",
-      "sidebar": "concepts"
-    },
-    "concepts/basics/transactions/overview": {
-      "id": "concepts/basics/transactions/overview",
-      "title": "Transactions",
-      "description": "NEAR is asynchronous by design. While it opens a wide range of possibilities for smart contracts implementations, it may also add to confusion among beginners and newcomers from other blockchain platforms. Transactions in NEAR may contain actions that do asynchronous work, in such cases keep in mind the possible outcomes of success or failure of the transaction. For example, if a transaction contains a cross-contract call, it may be marked as successful, but the other contract execution might fail. This article covers possible scenarios for this.",
-      "sidebar": "concepts"
-    },
     "concepts/basics/validators": {
       "id": "concepts/basics/validators",
       "title": "Validators",
@@ -3349,6 +3259,54 @@
       "id": "concepts/data-flow/token-transfer-flow",
       "title": "Token Transfer flow",
       "description": "In the previous article we saw an example of token transfer between accounts found in different shards. That example was simplified and missed a few steps in the process. That was intentional, to keep the article and the video short yet explanatory, in order to give you a bigger picture for understanding concepts.",
+      "sidebar": "concepts"
+    },
+    "concepts/protocol/access-keys": {
+      "id": "concepts/protocol/access-keys",
+      "title": "Access Keys",
+      "description": "In all blockchains, users control their accounts by holding a private key (a secret only they know) and using it to sign transactions.",
+      "sidebar": "concepts"
+    },
+    "concepts/protocol/account-id": {
+      "id": "concepts/protocol/account-id",
+      "title": "Address (Account ID)",
+      "description": "NEAR accounts are identified by a unique address, which take one of two forms:",
+      "sidebar": "concepts"
+    },
+    "concepts/protocol/account-model": {
+      "id": "concepts/protocol/account-model",
+      "title": "NEAR Accounts",
+      "description": "Users participate in the NEAR ecosystem through their NEAR accounts. These accounts are identified by a unique address, can optionally hold a smart contract, and are controlled through Access Keys.",
+      "sidebar": "concepts"
+    },
+    "concepts/protocol/gas": {
+      "id": "concepts/protocol/gas",
+      "title": "Gas (Execution Fees)",
+      "description": "On every transaction the NEAR network charges a tiny fee known as gas. This fee is a simple mechanism that allows us to:",
+      "sidebar": "concepts"
+    },
+    "concepts/protocol/smartcontract": {
+      "id": "concepts/protocol/smartcontract",
+      "title": "Smart Contract",
+      "description": "Smart contracts are pieces of executable code that live in a NEAR account. They can store data, perform transactions in the account’s name, and expose methods so other accounts can interact with them.",
+      "sidebar": "concepts"
+    },
+    "concepts/protocol/transaction-anatomy": {
+      "id": "concepts/protocol/transaction-anatomy",
+      "title": "Anatomy of a Transaction",
+      "description": "A transaction is a request from a user to the network to perform a set of actions. To create a transaction, the user must specify the following fields:",
+      "sidebar": "concepts"
+    },
+    "concepts/protocol/transaction-execution": {
+      "id": "concepts/protocol/transaction-execution",
+      "title": "Lifecycle of a Transaction",
+      "description": "Transactions are constructed by users to express the intent of performing actions in the network. Once in the network, transactions are converted into Receipts, which are messages exchanged between network nodes.",
+      "sidebar": "concepts"
+    },
+    "concepts/protocol/transactions": {
+      "id": "concepts/protocol/transactions",
+      "title": "Transactions",
+      "description": "Users interact with NEAR by creating transactions. Specifically, user's use their account's private keys to sign transactions, which are then broadcasted and processed by the network.",
       "sidebar": "concepts"
     },
     "concepts/storage/data-storage": {

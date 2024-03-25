@@ -5,17 +5,17 @@
       "plugin": "82d98fd4"
     }
   },
-  "/zh-CN/-4c1": {
+  "/zh-CN/-282": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "8b378508"
     }
   },
-  "/zh-CN/-e20": {
+  "/zh-CN/-35b": {
     "__comp": "a7bd4aaa",
     "version": "935f2afb"
   },
-  "/zh-CN/-f0f": {
+  "/zh-CN/-700": {
     "__comp": "a94703ab"
   },
   "/zh-CN/abstraction/chain-signatures-b84": {
@@ -258,34 +258,6 @@
     "__comp": "17896441",
     "content": "1dddf2c7"
   },
-  "/zh-CN/concepts/basics/accounts/access-keys-14e": {
-    "__comp": "17896441",
-    "content": "2c1a815b"
-  },
-  "/zh-CN/concepts/basics/accounts/account-id-a7b": {
-    "__comp": "17896441",
-    "content": "d15e1aa3"
-  },
-  "/zh-CN/concepts/basics/accounts/creating-accounts-37b": {
-    "__comp": "17896441",
-    "content": "9a11b15c"
-  },
-  "/zh-CN/concepts/basics/accounts/model-ebf": {
-    "__comp": "17896441",
-    "content": "23733ea1"
-  },
-  "/zh-CN/concepts/basics/accounts/smartcontract-84c": {
-    "__comp": "17896441",
-    "content": "615fb255"
-  },
-  "/zh-CN/concepts/basics/accounts/state-10b": {
-    "__comp": "17896441",
-    "content": "a29e05a1"
-  },
-  "/zh-CN/concepts/basics/actors-806": {
-    "__comp": "17896441",
-    "content": "4f1ce0a0"
-  },
   "/zh-CN/concepts/basics/epoch-58b": {
     "__comp": "17896441",
     "content": "225002d9"
@@ -318,18 +290,6 @@
     "__comp": "17896441",
     "content": "61b5cb53"
   },
-  "/zh-CN/concepts/basics/transactions/gas-e2a": {
-    "__comp": "17896441",
-    "content": "785a16f3"
-  },
-  "/zh-CN/concepts/basics/transactions/gas-advanced-79c": {
-    "__comp": "17896441",
-    "content": "87de9b60"
-  },
-  "/zh-CN/concepts/basics/transactions/overview-9b0": {
-    "__comp": "17896441",
-    "content": "859e80fc"
-  },
   "/zh-CN/concepts/basics/validators-da6": {
     "__comp": "17896441",
     "content": "d6fd0179"
@@ -345,6 +305,38 @@
   "/zh-CN/concepts/data-flow/token-transfer-flow-9d4": {
     "__comp": "17896441",
     "content": "f5963d80"
+  },
+  "/zh-CN/concepts/protocol/access-keys-ae8": {
+    "__comp": "17896441",
+    "content": "c15c48c8"
+  },
+  "/zh-CN/concepts/protocol/account-id-823": {
+    "__comp": "17896441",
+    "content": "ca3a7f64"
+  },
+  "/zh-CN/concepts/protocol/account-model-b72": {
+    "__comp": "17896441",
+    "content": "d8a6fb23"
+  },
+  "/zh-CN/concepts/protocol/gas-279": {
+    "__comp": "17896441",
+    "content": "0d2ed750"
+  },
+  "/zh-CN/concepts/protocol/smartcontract-32c": {
+    "__comp": "17896441",
+    "content": "8a566151"
+  },
+  "/zh-CN/concepts/protocol/transaction-anatomy-91b": {
+    "__comp": "17896441",
+    "content": "483e6703"
+  },
+  "/zh-CN/concepts/protocol/transaction-execution-4f6": {
+    "__comp": "17896441",
+    "content": "efbfc4c4"
+  },
+  "/zh-CN/concepts/protocol/transactions-731": {
+    "__comp": "17896441",
+    "content": "b2b0a5db"
   },
   "/zh-CN/concepts/storage/data-storage-745": {
     "__comp": "17896441",

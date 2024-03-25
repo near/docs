@@ -19,8 +19,8 @@
   },
   "sidebar": "concepts",
   "previous": {
-    "title": "Gas - Advanced",
-    "permalink": "/concepts/basics/transactions/gas-advanced"
+    "title": "Lifecycle of a Transaction",
+    "permalink": "/concepts/protocol/transaction-execution"
   },
   "next": {
     "title": "Token Transfer",

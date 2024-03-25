@@ -306,40 +306,6 @@
               "path": "/zh-CN/concepts/advanced/vm"
             },
             {
-              "id": "concepts/basics/accounts/access-keys",
-              "path": "/zh-CN/concepts/basics/accounts/access-keys",
-              "sidebar": "concepts"
-            },
-            {
-              "id": "concepts/basics/accounts/account-id",
-              "path": "/zh-CN/concepts/basics/accounts/account-id",
-              "sidebar": "concepts"
-            },
-            {
-              "id": "concepts/basics/accounts/creating-accounts",
-              "path": "/zh-CN/concepts/basics/accounts/creating-accounts",
-              "sidebar": "concepts"
-            },
-            {
-              "id": "concepts/basics/accounts/model",
-              "path": "/zh-CN/concepts/basics/accounts/model",
-              "sidebar": "concepts"
-            },
-            {
-              "id": "concepts/basics/accounts/smartcontract",
-              "path": "/zh-CN/concepts/basics/accounts/smartcontract",
-              "sidebar": "concepts"
-            },
-            {
-              "id": "concepts/basics/accounts/state",
-              "path": "/zh-CN/concepts/basics/accounts/state",
-              "sidebar": "concepts"
-            },
-            {
-              "id": "concepts/basics/actors",
-              "path": "/zh-CN/concepts/basics/actors"
-            },
-            {
               "id": "concepts/basics/epoch",
               "path": "/zh-CN/concepts/basics/epoch",
               "sidebar": "concepts"
@@ -378,21 +344,6 @@
               "sidebar": "concepts"
             },
             {
-              "id": "concepts/basics/transactions/gas",
-              "path": "/zh-CN/concepts/basics/transactions/gas",
-              "sidebar": "concepts"
-            },
-            {
-              "id": "concepts/basics/transactions/gas-advanced",
-              "path": "/zh-CN/concepts/basics/transactions/gas-advanced",
-              "sidebar": "concepts"
-            },
-            {
-              "id": "concepts/basics/transactions/overview",
-              "path": "/zh-CN/concepts/basics/transactions/overview",
-              "sidebar": "concepts"
-            },
-            {
               "id": "concepts/basics/validators",
               "path": "/zh-CN/concepts/basics/validators",
               "sidebar": "concepts"
@@ -410,6 +361,46 @@
             {
               "id": "concepts/data-flow/token-transfer-flow",
               "path": "/zh-CN/concepts/data-flow/token-transfer-flow",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/protocol/access-keys",
+              "path": "/zh-CN/concepts/protocol/access-keys",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/protocol/account-id",
+              "path": "/zh-CN/concepts/protocol/account-id",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/protocol/account-model",
+              "path": "/zh-CN/concepts/protocol/account-model",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/protocol/gas",
+              "path": "/zh-CN/concepts/protocol/gas",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/protocol/smartcontract",
+              "path": "/zh-CN/concepts/protocol/smartcontract",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/protocol/transaction-anatomy",
+              "path": "/zh-CN/concepts/protocol/transaction-anatomy",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/protocol/transaction-execution",
+              "path": "/zh-CN/concepts/protocol/transaction-execution",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/protocol/transactions",
+              "path": "/zh-CN/concepts/protocol/transactions",
               "sidebar": "concepts"
             },
             {
