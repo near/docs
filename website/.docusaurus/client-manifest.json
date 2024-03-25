@@ -2649,9 +2649,9 @@
     "1303": {
       "js": [
         {
-          "file": "assets/js/runtime~main.2e315900.js",
-          "hash": "9c524749406e3986",
-          "publicPath": "/zh-CN/assets/js/runtime~main.2e315900.js"
+          "file": "assets/js/runtime~main.e6663a1a.js",
+          "hash": "013b647db6cbe075",
+          "publicPath": "/zh-CN/assets/js/runtime~main.e6663a1a.js"
         }
       ]
     },
@@ -4693,9 +4693,9 @@
     "6749": {
       "js": [
         {
-          "file": "assets/js/aaff0a8d.f60db020.js",
-          "hash": "0ba6e60a95dd1e9f",
-          "publicPath": "/zh-CN/assets/js/aaff0a8d.f60db020.js"
+          "file": "assets/js/aaff0a8d.52f85c86.js",
+          "hash": "b9749e07f9ca5bdf",
+          "publicPath": "/zh-CN/assets/js/aaff0a8d.52f85c86.js"
         }
       ]
     },
