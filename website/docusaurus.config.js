@@ -86,6 +86,14 @@ const config = {
     ],
   ],
   themeConfig: {
+    announcementBar: {
+      id: 'abstraction',
+      content:
+        '📚 Learn how your NEAR account can sign transactions on foreign chains using <a href="/concepts/abstraction/chain-signatures">Chain Signatures</a> 📚',
+      backgroundColor: '#fafbfc',
+      textColor: '#333',
+      isCloseable: true,
+    },
     prism: {
       additionalLanguages: [
         'rust',

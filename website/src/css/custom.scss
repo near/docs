@@ -451,12 +451,21 @@ https://www.feelback.dev/docs/guides/stripe-like-documentation-feedback-for-docu
 @import "@feelback/react/styles/feelback.css";
 
 .feelback-container .feelback-btn {
-  background-color: #1a8870;
-  color: white;
+    background-color: #1a8870;
+    color: white;
 }
 
 .feelback-container textarea {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0.5rem;
+}
+
+/* Announcement bar */
+div[class^="announcementBar_"] {
+    --site-announcement-bar-stripe-color1: #dfffe3;
+    --site-announcement-bar-stripe-color2: #c4fbe6;
+    background: repeating-linear-gradient(45deg, var(--site-announcement-bar-stripe-color1), var(--site-announcement-bar-stripe-color1) 20px, var(--site-announcement-bar-stripe-color2) 10px, var(--site-announcement-bar-stripe-color2) 40px);
+    font-size: 20px;
+    font-weight: 600;
 }
