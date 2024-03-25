@@ -212,7 +212,7 @@ Testing the contracts within a Sandbox allows you to understand how the contract
 
 Now that we know the contract is passing the tests, let's create a testnet account in which to deploy the contract.
 
-While there are different ways to [create accounts](/concepts/basics/accounts/creating-accounts) in NEAR, in this quickstart we will use the `cargo-near` tool to create a new random [`named account`](/concepts/basics/accounts/account-id).
+While there are different ways to create accounts in NEAR, in this quickstart we will use the `cargo-near` tool to create a new random [`named account`](/concepts/protocol/account-id).
 
 <CodeTabs>
 
