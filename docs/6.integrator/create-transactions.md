@@ -208,7 +208,7 @@ Once you have access to the private key of the sender's account, create an envir
 
 ```js
 const privateKey = process.env.SENDER_PRIVATE_KEY;
-const keyPair = nearAPI.utils.key_pair.KeyPairEd25519.fromString(privateKey);
+const keyPair = nearAPI.KeyPair.fromString(privateKey);
 ```
 
 ---
@@ -360,7 +360,7 @@ Now that the transaction is created, we sign it before sending it to the NEAR bl
 
 ```js
 const serializedTx = nearAPI.utils.serialize.serialize(
-  nearAPI.transactions.SCHEMA,
+  nearAPI.transactions.SCHEMA.Transaction,
   transaction
 );
 ```
