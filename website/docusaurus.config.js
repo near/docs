@@ -86,6 +86,7 @@ const config = {
     ],
   ],
   themeConfig: {
+    notFound: { title: "This" },
     prism: {
       additionalLanguages: [
         'rust',
