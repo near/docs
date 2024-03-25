@@ -124,7 +124,7 @@ Khi API request không thành công, RPC server sẽ trả về một error resp
 
 Dưới đây là danh sách đầy đủ các error variant có thể được trả về theo loại request `view_access_key`:
 
-<table class="custom-stripe">
+<table className="custom-stripe">
   <thead>
     <tr>
       <th>
@@ -196,7 +196,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
         </ul>
       </td>
     </tr>
-    <tr class="stripe">
+    <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
       <td>Đã pass các argument mà JSON RPC server không thể parse được (thiếu các argument, sai format, v.v...)</td>
@@ -440,7 +440,7 @@ Khi API request không thành công, RPC server sẽ trả về một error resp
 
 Dưới đây là danh sách đầy đủ các error variant có thể được trả về theo loại request `view_access_key_list`:
 
-<table class="custom-stripe">
+<table className="custom-stripe">
   <thead>
     <tr>
       <th>
@@ -502,7 +502,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
         </ul>
       </td>
     </tr>
-    <tr class="stripe">
+    <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
       <td>Đã pass các argument mà JSON RPC server không thể parse được (thiếu các argument, sai format, v.v...)</td>
@@ -661,7 +661,7 @@ Khi API request không thành công, RPC server sẽ trả về một error resp
 
 Dưới đây là danh sách đầy đủ các error variant có thể được trả về bởi method `EXPERIMENTAL_changes`:
 
-<table class="custom-stripe">
+<table className="custom-stripe">
   <thead>
     <tr>
       <th>
@@ -695,7 +695,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
         </ul>
       </td>
     </tr>
-    <tr class="stripe">
+    <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
       <td>Đã pass các argument mà JSON RPC server không thể parse được (thiếu các argument, sai format, v.v...)</td>
@@ -854,7 +854,7 @@ Khi API request không thành công, RPC server sẽ trả về một error resp
 
 Ví dụ:
 
-<table class="custom-stripe">
+<table className="custom-stripe">
   <thead>
     <tr>
       <th>
@@ -888,7 +888,7 @@ Ví dụ:
         </ul>
       </td>
     </tr>
-    <tr class="stripe">
+    <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
       <td>Đã pass các argument mà JSON RPC server không thể parse được (thiếu các argument, sai format, v.v...)</td>

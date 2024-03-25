@@ -1,0 +1,31 @@
+{
+  "id": "concepts/abstraction/signatures/use-cases",
+  "title": "Use cases for Chain Signatures",
+  "description": "This technology is currently in Alpha and should only be used in a testnet environment.",
+  "source": "@site/../docs/1.concepts/abstraction/signatures/use-case.md",
+  "sourceDirName": "1.concepts/abstraction/signatures",
+  "slug": "/concepts/abstraction/signatures/use-cases",
+  "permalink": "/concepts/abstraction/signatures/use-cases",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/abstraction/signatures/use-case.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Josh Ford",
+  "lastUpdatedAt": 1711076299,
+  "formattedLastUpdatedAt": "Mar 22, 2024",
+  "frontMatter": {
+    "id": "use-cases",
+    "title": "Use cases for Chain Signatures",
+    "sidebar_label": "Use cases"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "What are Chain Signatures?",
+    "permalink": "/concepts/abstraction/chain-signatures"
+  },
+  "next": {
+    "title": "Data on the Blockchain",
+    "permalink": "/concepts/data-flow/data-storage"
+  }
+}

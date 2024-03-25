@@ -1,0 +1,18 @@
+{
+  "id": "primitives/linkdrop/near-cli/create-nft-drop",
+  "title": "create-nft-drop",
+  "description": "",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/7.primitives/linkdrop/near-cli/create-nft-drop.md",
+  "sourceDirName": "7.primitives/linkdrop/near-cli",
+  "slug": "/primitives/linkdrop/near-cli/create-nft-drop",
+  "permalink": "/zh-CN/primitives/linkdrop/near-cli/create-nft-drop",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/linkdrop/near-cli/create-nft-drop.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1709152665,
+  "formattedLastUpdatedAt": "2024年2月28日",
+  "frontMatter": {}
+}

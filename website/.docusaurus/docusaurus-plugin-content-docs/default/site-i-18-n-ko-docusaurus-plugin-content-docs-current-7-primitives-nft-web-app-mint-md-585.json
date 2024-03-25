@@ -1,0 +1,18 @@
+{
+  "id": "primitives/nft/web-app/mint",
+  "title": "mint",
+  "description": "In order to use nft_mint method of the x.paras.near contract you have to be a creator of a particular token series.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/7.primitives/nft/web-app/mint.md",
+  "sourceDirName": "7.primitives/nft/web-app",
+  "slug": "/primitives/nft/web-app/mint",
+  "permalink": "/ko/primitives/nft/web-app/mint",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/nft/web-app/mint.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1709152665,
+  "formattedLastUpdatedAt": "2024년 2월 28일",
+  "frontMatter": {}
+}

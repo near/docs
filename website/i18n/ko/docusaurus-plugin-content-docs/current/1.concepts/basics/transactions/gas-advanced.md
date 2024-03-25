@@ -34,10 +34,10 @@ NEAR의 범용적인 특성을 고려할 때, 함수 호출은 가장 복잡한 
 
 이러한 복잡성으로, 가스 계산의 각 항목([`protocol_config`](/api/rpc/protocol#protocol-config) RPC 엔드포인트를 사용한 `wasm_config` 내 `ext_costs`를 참조하세요)을 열거하는 예제를 살펴보는 것은 더 이상 유용하지 않습니다([원하는 경우](https://github.com/near/nearcore/pull/3038) 직접 조사해도 좋습니다). 대신, 두 가지 다른 각도에서 접근해 보겠습니다. 대신, 두 가지 다른 관점으로 접근해 봅시다: Ethereum에 대한 볼파크 비교와, 자동화 테스트를 통한 정확한 추정치를 얻는 것입니다.
 
-<blockquote class="lesson">
-**스마트 컨트랙트 계정에 30% 보상으로 들어가는 가스비는 얼마인가요?**
+<blockquote className="lesson">
+**How much of the gas fee goes as a 30% reward to the smart contract account?**
 
-NEAR 백서는 [모든 가스 수수료의 30%](https://near.org/papers/the-official-near-white-paper/)가 수수료가 지출되는 스마트 컨트랙트 계정으로 간다고 언급합니다. 
+The NEAR Whitepaper mentions that [30% of all gas fees](https://pages.near.org/papers/the-official-near-white-paper/) go to smart contract accounts on which the fees are expensed. 
 
 이 금액은 두 가지 방법으로 함수 호출에 대해 계산될 수 있습니다. 1. 가스 프로파일 내 모든 값을 합산합니다. 2. 트랜잭션을 위해 소진된 총 가스에서 정적 실행 가스(Receipt 전송에 소비된 가스 양과 동일)를 뺍니다. Both these numbers are available on the [NEAR Explorer](https://nearblocks.io/) overview page for a transaction.
 
@@ -75,7 +75,7 @@ Etherscan은 [Ethereum 가스 가격 차트](https://etherscan.io/chart/gasprice
 
 이러한 작업 중 일부는 이더리움에 비해 10배 정도 개선된 것처럼 보이지만, NEAR의 총 공급량은 10억 개 이상인 반면 이더리움의 총 공급량은 1억 개에 가깝습니다. 따라서 총 공급량의 퍼센티지로 따지자면, NEAR의 가스 요금은 이더리움보다 약 10배 더 낮습니다. 또한 NEAR의 가격이 크게 오르면 네트워크에서 설정한 최소 가스 요금을 낮출 수 있습니다.
 
-대부분의 경우 네트워크가 최소 가스 가격에 머물 것으로 예상됩니다. [Economics 백서](https://near.org/papers/economics-in-sharded-blockchain/#transaction-and-storage-fees)에서 자세히 알아보세요.
+You can expect the network to sit at the minimum gas price most of the time; learn more in the [Economics whitepaper](https://pages.near.org/papers/economics-in-sharded-blockchain/#transaction-and-storage-fees).
 
 #### 자동화된 테스트로 가스 비용 예측하기 {#accurate-estimates-with-automated-tests}
 
@@ -175,7 +175,7 @@ RPC 메소드 `gas_price`를 사용하여 특정 블록의 가스 가격에 대�
 
 ## 백서에서의 몇 가지 마무리 생각 {#some-closing-thoughts-from-the-whitepaper}
 
-<blockquote class="info">
+<blockquote className="info">
 기본적으로 NEAR 플랫폼은 자발적인 참여자 간의 시장입니다.  공급 측면에서, 밸리데이터 노드 및 기타 기본 인프라의 운영자는 "커뮤니티 클라우드"를 구성하는 서비스를 제공하는 데에 있어 인센티브를 받아야 합니다.  수요 측면에서, 이를 사용하는 플랫폼의 개발자와 최종 사용자는 간단하고 명확하며 일관된 방식으로 서비스 사용에 대한 비용을 지불할 수 있어야 합니다.
 
 블록체인 기반 클라우드는 그 위에서 실행되는 애플리케이션에 몇 가지 특정 리소스를 제공합니다. - **컴퓨팅 (CPU)**: 이는 컨트랙트에서 코드를 실행하는 실제 컴퓨터 처리(및 즉시 사용 가능한 RAM)입니다.
@@ -188,7 +188,7 @@ Ethereum과 같은 기존 블록체인은 각각에 대해 별도로 계산하�
 
 </blockquote>
 
-가스가 NEAR에서 작동하는 방식과 이유에 대해 자세히 알아보려면, 기본 백서의 [Economics](https://near.org/papers/the-official-near-white-paper/#economics) 섹션과 Economics 백서의 [트랜잭션 및 스토리지 수수료](https://near.org/papers/economics-in-sharded-blockchain/#transaction-and-storage-fees) 섹션을 확인하세요.
+To dig deeper into how and why gas works the way it does on NEAR, check out the [Economics](https://pages.near.org/papers/the-official-near-white-paper/#economics) section of the main whitepaper and the [Transaction and Storage Fees](https://pages.near.org/papers/economics-in-sharded-blockchain/#transaction-and-storage-fees) section of the economics whitepaper.
 
 :::tip Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>

@@ -12,8 +12,8 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Github Actions",
-  "lastUpdatedAt": 1704996595,
-  "formattedLastUpdatedAt": "11 thg 1, 2024",
+  "lastUpdatedAt": 1709152665,
+  "formattedLastUpdatedAt": "28 thg 2, 2024",
   "frontMatter": {
     "id": "kurtosis-localnet",
     "title": "Creating a Local Development Environment",
@@ -22,7 +22,7 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Integration Test",
+    "title": "Integration Tests",
     "permalink": "/vi/develop/testing/integration-test"
   },
   "next": {

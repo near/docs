@@ -10,7 +10,7 @@ NEAR 재단이 2022년 3월에 출시한 이 간단한 도구는 NEAR 블록체�
 
 ## 프레임워크 불가지론
 
-[방명록](https://github.com/near-examples/guest-book-js/) 디앱(dApp)의 [React](https://reactjs.org/) / [Next.js](https://nextjs.org/) 및 [Angular](https://angular.io/) 구현은 [`examples`](https://github.com/near/wallet-selector/tree/main/examples) 디렉토리에서 찾을 수 있습니다. 개발자는 이를 사용하여 NEAR 지갑 선택기를 자신의 dApp에 통합하는 방법을 구체적으로 이해할 수 있습니다.
+[React](https://reactjs.org/) / [Next.js](https://nextjs.org/) and [Angular](https://angular.io/) variations of the [Guest Book](https://github.com/near-examples/guest-book-examples/) dApp can be found in the [`examples`](https://github.com/near/wallet-selector/tree/main/examples) directory. 개발자는 이를 사용하여 NEAR 지갑 선택기를 자신의 dApp에 통합하는 방법을 구체적으로 이해할 수 있습니다.
 
 ### 지갑 생태계 개방
 
@@ -87,6 +87,16 @@ const modal = setupModal(selector, {
 
 modal.show();
 ```
+
+:::info Required CSS
+
+To integrate the Wallet Selector, you also need to include the required CSS:
+
+```
+import "@near-wallet-selector/modal-ui/styles.css"
+```
+
+:::
 
 ## API 참조
 

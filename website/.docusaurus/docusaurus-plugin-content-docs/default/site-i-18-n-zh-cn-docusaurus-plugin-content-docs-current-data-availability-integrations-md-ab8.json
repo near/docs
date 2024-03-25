@@ -1,7 +1,7 @@
 {
   "id": "data-availability/integrations",
   "title": "Integrations",
-  "description": "We have some proof of concept works for integrating with rollups. We are working to prove the system's capabilities and provide a reference implementation for others to follow.",
+  "description": "We have some proof of concept works for integrating with roll-ups. We are working to prove the system's capabilities and provide a reference implementation for others to follow.",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/data-availability/integrations.md",
   "sourceDirName": "data-availability",
   "slug": "/data-availability/integrations",
@@ -12,8 +12,8 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Github Actions",
-  "lastUpdatedAt": 1704996595,
-  "formattedLastUpdatedAt": "2024年1月11日",
+  "lastUpdatedAt": 1709152665,
+  "formattedLastUpdatedAt": "2024年2月28日",
   "frontMatter": {
     "id": "integrations",
     "title": "Integrations"
@@ -24,7 +24,7 @@
     "permalink": "/zh-CN/data-availability/rpc"
   },
   "next": {
-    "title": "Optimism",
-    "permalink": "/zh-CN/data-availability/optimism"
+    "title": "Arbitrum Nitro",
+    "permalink": "/zh-CN/data-availability/arbitrum"
   }
 }

@@ -10,7 +10,7 @@ NEAR는 **사용자 친화적**이고 [**탄소 중립적**](https://near.org/bl
 
 간단히 말해서 NEAR는 **모두를 위한 블록체인**입니다.
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ## NEAR를 선택해야 하는 이유 {#why-build-on-near}
 NEAR는 개발자와 사용자 모두를 위한 성능과 유용성에 중점을 두고 개발되었습니다.

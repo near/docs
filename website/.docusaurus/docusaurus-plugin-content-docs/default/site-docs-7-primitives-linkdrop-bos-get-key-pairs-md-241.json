@@ -5,14 +5,14 @@
   "source": "@site/../docs/7.primitives/linkdrop/bos/get-key-pairs.md",
   "sourceDirName": "7.primitives/linkdrop/bos",
   "slug": "/primitives/linkdrop/bos/get-key-pairs",
-  "permalink": "/zh-CN/primitives/linkdrop/bos/get-key-pairs",
+  "permalink": "/primitives/linkdrop/bos/get-key-pairs",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/linkdrop/bos/get-key-pairs.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "garikbesson",
-  "lastUpdatedAt": 1706635251,
-  "formattedLastUpdatedAt": "2024年1月30日",
+  "lastUpdatedBy": "Cuong DC",
+  "lastUpdatedAt": 1711361303,
+  "formattedLastUpdatedAt": "Mar 25, 2024",
   "frontMatter": {}
 }

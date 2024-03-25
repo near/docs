@@ -8,7 +8,7 @@ sidebar_label: 스토리지 스테이킹
 > 
 > 스토리지 스테이킹(_상태_ 스테이킹이라고도 함)에서 스마트 컨트랙트를 소유한 계정은 해당 스마트 컨트랙트에 저장된 데이터의 양에 따라 토큰을 스테이킹(또는 잠가야)하여 컨트랙트 계정의 잔고를 효과적으로 줄입니다.
 
-<blockquote class="info">
+<blockquote className="info">
 <strong>Ethereum에서 오셨나요?</strong><br /><br />
 
 Ethereum의 가격 책정 모델에 익숙하다면 NEAR와 마찬가지로 프로토콜이 각 트랜잭션에 대해 수수료("가스"라고 함)를 부과한다는 것을 알 수 있습니다. NEAR와 달리 Ethereum의 가스 요금은 해당 트랜잭션을 통해 저장된 데이터의 양을 설명합니다. 이것은 본질적으로 누구나 체인에 영구 데이터를 저장하기 위해 한 번 지불할 수 있음을 의미합니다. 이것은 적어도 두 가지 이유로 인해 좋지 않은 경제적 설계입니다. 1. 네트워크를 운영하는 사람들(이더리움 1의 경우 채굴자)은 먼 과거에 부과된 가스 요금이 스토리지 비용을 영원히 증가시킬 수 있기 때문에 대량의 데이터를 저장할 적절한 동기 부여를 받지 못합니다. 2. 스마트 컨트랙트 소유자에게 데이터 비용을 청구하는 대신, 그들이 저장하기 위해 스마트 컨트랙트 사용자에게 보낸 데이터에 대해 비용을 청구합니다.
@@ -17,7 +17,7 @@ Ethereum의 가격 책정 모델에 익숙하다면 NEAR와 마찬가지로 프�
 
 ## How does NEAR's design align incentives?
 
-스토리지 스테이킹 토큰은 검증 스테이킹과 같은 다른 용도로는 사용할 수 없습니다. 이는 밸리데이터가 받을 수익률을 증가시킵니다. [Economics 백서](https://near.org/papers/economics-in-sharded-blockchain/)에서 자세히 알아보세요.
+스토리지 스테이킹 토큰은 검증 스테이킹과 같은 다른 용도로는 사용할 수 없습니다. 이는 밸리데이터가 받을 수익률을 증가시킵니다. Learn more in [the economics whitepaper](https://pages.near.org/papers/economics-in-sharded-blockchain/).
 
 ## When do tokens get staked?
 
@@ -117,7 +117,7 @@ borsh를 사용하면 동일한 배열이 아래와 같이 8바이트로 저장�
 
 이는 사용자 생성 데이터를 저장하는 경우 특히 중요합니다!
 
-이 [방명록](https://github.com/near-examples/guest-book)을 예로 들어 보겠습니다. 아까 구현된 대로 앱 방문자는 NEAR로 로그인하고 메시지를 남길 수 있습니다. 그들의 메시지는 온체인에 저장됩니다.
+Let's use this [Guest Book](https://github.com/near-examples/guest-book-examples) as an example. 아까 구현된 대로 앱 방문자는 NEAR로 로그인하고 메시지를 남길 수 있습니다. 그들의 메시지는 온체인에 저장됩니다.
 
 이 앱이 큰 인기를 얻었고 방문자가 예기치 않게 긴 메시지를 남기기 시작했다고 상상해 보세요. 컨트랙트 소유자의 보관 자금은 매우 빨리 바닥날 수 있습니다!
 

@@ -11,9 +11,9 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/community/indexers.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "gagdiez",
-  "lastUpdatedAt": 1704817578,
-  "formattedLastUpdatedAt": "Jan 9, 2024",
+  "lastUpdatedBy": "Morgan McCauley",
+  "lastUpdatedAt": 1708560849,
+  "formattedLastUpdatedAt": "Feb 22, 2024",
   "frontMatter": {
     "id": "indexers",
     "title": "QueryAPI Indexing Example",

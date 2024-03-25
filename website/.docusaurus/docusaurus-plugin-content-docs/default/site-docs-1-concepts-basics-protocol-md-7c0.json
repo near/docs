@@ -12,8 +12,8 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "gagdiez",
-  "lastUpdatedAt": 1706698360,
-  "formattedLastUpdatedAt": "Jan 31, 2024",
+  "lastUpdatedAt": 1711375194,
+  "formattedLastUpdatedAt": "Mar 25, 2024",
   "frontMatter": {
     "id": "protocol",
     "title": "What is NEAR?",
@@ -25,7 +25,7 @@
     "permalink": "/concepts/welcome"
   },
   "next": {
-    "title": "Account Model",
-    "permalink": "/concepts/basics/accounts/model"
+    "title": "Overview",
+    "permalink": "/concepts/protocol/account-model"
   }
 }

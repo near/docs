@@ -1,0 +1,18 @@
+{
+  "id": "primitives/nft/web-app/transfer",
+  "title": "transfer",
+  "description": "The Wallet object comes from our quickstart template",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/7.primitives/nft/web-app/transfer.md",
+  "sourceDirName": "7.primitives/nft/web-app",
+  "slug": "/primitives/nft/web-app/transfer",
+  "permalink": "/zh-CN/primitives/nft/web-app/transfer",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/nft/web-app/transfer.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1709152665,
+  "formattedLastUpdatedAt": "2024年2月28日",
+  "frontMatter": {}
+}

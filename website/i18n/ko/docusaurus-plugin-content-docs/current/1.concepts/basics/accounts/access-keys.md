@@ -33,7 +33,7 @@ Since the concept of Access Keys is unique to NEAR it is worth understanding why
 
 NEAR는 `FullAccess` 키와 `FunctionCall` 키라는 두 가지 유형의 액세스 키를 구현하고 있습니다.
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### 전체 액세스 키 (Full Access Key) {#full-access-keys}
 이름에서 알 수 있듯이, `FullAccess` 키는 운영 체제에서 관리자 권한을 갖는 것과 유사하게 계정을 완전히 제어할 수 있는 권한을 가집니다.
@@ -51,7 +51,7 @@ NEAR는 `FullAccess` 키와 `FunctionCall` 키라는 두 가지 유형의 액세
 
 :::tip [계정을 만들 때](creating-accounts.md) 계정의 첫 번째 **전체 액세스 키**를 추가하게 될 것입니다. :::
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### 함수 호출 키 (Function Call Key) {#function-call-keys}
 

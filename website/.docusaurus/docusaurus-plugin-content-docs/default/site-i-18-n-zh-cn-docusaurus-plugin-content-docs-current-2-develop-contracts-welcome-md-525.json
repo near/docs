@@ -1,7 +1,7 @@
 {
   "id": "develop/contracts/welcome",
   "title": "NEAR Smart Contracts",
-  "description": "Welcome! Here you will find documentation on how to develop a smart contract on NEAR.",
+  "description": "Welcome! Smart contracts are pieces of executable code that live in a NEAR account. They can store data, perform transactions in the account’s name, and expose methods so other accounts can interact with them.",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.develop/contracts/welcome.md",
   "sourceDirName": "2.develop/contracts",
   "slug": "/develop/contracts/welcome",
@@ -12,12 +12,13 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Github Actions",
-  "lastUpdatedAt": 1704996595,
-  "formattedLastUpdatedAt": "2024年1月11日",
+  "lastUpdatedAt": 1709152665,
+  "formattedLastUpdatedAt": "2024年2月28日",
   "frontMatter": {
     "id": "welcome",
     "title": "NEAR Smart Contracts",
     "sidebar_label": "Home",
-    "hide_table_of_contents": true
+    "hide_table_of_contents": true,
+    "hide_breadcrumb": true
   }
 }

@@ -5,7 +5,7 @@
   "source": "@site/../docs/7.primitives/linkdrop/bos/transfer-ft.md",
   "sourceDirName": "7.primitives/linkdrop/bos",
   "slug": "/primitives/linkdrop/bos/transfer-ft",
-  "permalink": "/zh-CN/primitives/linkdrop/bos/transfer-ft",
+  "permalink": "/primitives/linkdrop/bos/transfer-ft",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/linkdrop/bos/transfer-ft.md",
@@ -13,6 +13,6 @@
   "version": "current",
   "lastUpdatedBy": "garikbesson",
   "lastUpdatedAt": 1706635251,
-  "formattedLastUpdatedAt": "2024年1月30日",
+  "formattedLastUpdatedAt": "Jan 30, 2024",
   "frontMatter": {}
 }

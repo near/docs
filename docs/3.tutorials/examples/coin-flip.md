@@ -15,31 +15,16 @@ Coin Flip is a game where the player tries to guess the outcome of a coin flip. 
 ## Starting the Game
 You have two options to start the example:
 1. **Recommended:** use the app through Gitpod (a web-based interactive environment)
-2. Clone the project locally .
-
-
-<Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value="🌐 JavaScript">
+2. Clone the project locally.
 
 | Gitpod                                                                                                                                                            | Clone locally                                          |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | -----------------------------------------------------  |
-| <a href="https://gitpod.io/#https://github.com/near-examples/coin-flip-js.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🌐 `https://github.com/near-examples/coin-flip-js.git` |
+| <a href="https://gitpod.io/#https://github.com/near-examples/coin-flip-examples.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | `https://github.com/near-examples/coin-flip-examples.git` |
 
-  </TabItem>
-
-</Tabs>
 
 If you choose Gitpod, a new browser window will open automatically with the code. Give it a minute, and the front-end will pop up (ensure the pop-up window is not blocked).
 
-If you are running the app locally, enter the directory where you cloned it and use `yarn` to install dependencies, and `yarn start` to start it.
-
-```bash
-cd coin-flip-js
-yarn
-yarn deploy
-yarn start
-```
-Your contract will then be **compiled** and **deployed** to an **account** in the `testnet` network. When done, a browser window should open.
+If you are running the app locally, you should build and deploy a contract (JavaScript or Rust version) and a client manually.
 
 ---
 
@@ -56,7 +41,12 @@ Go ahead and log in with your NEAR account. If you don't have one, you can creat
 Now that you understand what the dApp does, let us take a closer look to its structure:
 
 1. The frontend code lives in the `/frontend` folder.
-2. The smart contract code is in the `/contract` folder.
+2. The smart contract code in Rust is in the `/contract-rs` folder.
+3. The smart contract code in JavaScript is in the `/contract-ts` folder.
+
+:::note
+Both Rust and JavaScript versions of the contract implement the same functionality.
+:::
 
 ### Contract
 The contract presents 2 methods: `flip_coin`, and `points_of`.
@@ -64,8 +54,13 @@ The contract presents 2 methods: `flip_coin`, and `points_of`.
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="contract.ts" 
-            url="https://github.com/near-examples/coin-flip-workshop-js/blob/main/contract/src/contract.ts"
+            url="https://github.com/near-examples/coin-flip-examples/blob/main/contract-ts/src/contract.ts"
             start="23" end="56" />
+  </Language>
+  <Language value="🦀 Rust" language="rust">
+    <Github fname="lib.rs" 
+            url="https://github.com/near-examples/coin-flip-examples/blob/main/contract-rs/src/lib.rs"
+            start="49" end="81" />
   </Language>
 </CodeTabs>
 
@@ -89,21 +84,25 @@ It indicates our app, when it starts, to check if the user is already logged in 
 ## Testing
 
 When writing smart contracts, it is very important to test all methods exhaustively. In this
-project, you have two types: unit and integration tests. Before digging into them,
-go ahead and perform the tests present in the dApp through the command `yarn test`.
+project you have integration tests. Before digging into them, go ahead and perform the tests present in the dApp through the command `yarn test` for the JavaScript version, or `./test.sh` for the Rust version.
 
 ### Integration test
 
-Integration tests are generally written in JavaScript. They automatically deploy a new
+Integration tests can be written in both Rust and JavaScript. They automatically deploy a new
 contract and execute methods on it. In this way, integration tests simulate interactions
 from users in a realistic scenario. You will find the integration tests for the `coin-flip`
-in `tests/integration-tests`.
+in `contract-ts/integration-tests` (for the JavaScript contract) and `contract-rs/sandbox-rs` (for the Rust contract).
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="main.test.js"
-            url="https://github.com/near-examples/coin-flip-workshop-js/blob/main/integration-tests/src/main.ava.ts"
-            start="32" end="56" />
+            url="https://github.com/near-examples/coin-flip-examples/blob/main/contract-ts/integration-tests/src/main.ava.ts"
+            start="32" end="57" />
+  </Language>
+  <Language value="🦀 Rust" language="rust">
+    <Github fname="lib.rs" 
+            url="https://github.com/near-examples/coin-flip-examples/blob/main/contract-rs/sandbox-rs/src/tests.rs"
+            start="27" end="83" />
   </Language>
 </CodeTabs>
 

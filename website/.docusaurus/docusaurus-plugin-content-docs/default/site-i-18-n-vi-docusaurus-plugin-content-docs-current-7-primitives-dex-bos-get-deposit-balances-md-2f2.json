@@ -1,0 +1,18 @@
+{
+  "id": "primitives/dex/bos/get-deposit-balances",
+  "title": "get-deposit-balances",
+  "description": "Example response",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/7.primitives/dex/bos/get-deposit-balances.md",
+  "sourceDirName": "7.primitives/dex/bos",
+  "slug": "/primitives/dex/bos/get-deposit-balances",
+  "permalink": "/vi/primitives/dex/bos/get-deposit-balances",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/dex/bos/get-deposit-balances.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1709152665,
+  "formattedLastUpdatedAt": "28 thg 2, 2024",
+  "frontMatter": {}
+}

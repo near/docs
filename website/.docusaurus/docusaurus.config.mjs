@@ -64,9 +64,12 @@ export default {
           "anonymizeIP": true
         },
         "blog": {
+          "blogTitle": "NEAR Developer Changelog",
           "blogSidebarTitle": "Developer Changelog",
           "blogSidebarCount": "ALL",
-          "showReadingTime": false
+          "showReadingTime": false,
+          "routeBasePath": "changelog",
+          "path": "../changelog"
         },
         "theme": {
           "customCss": "./src/css/custom.scss"
@@ -83,19 +86,22 @@ export default {
       {
         "name": "near-changelog",
         "sourceBaseUrl": "https://raw.githubusercontent.com/near/near-releases/main/reports/",
-        "outDir": "/blog",
+        "outDir": "../changelog",
         "documents": [
-          "2023-01-31-changelog.md",
-          "2023-02-28-changelog.md",
-          "2023-03-31-changelog.md",
-          "2023-04-30-changelog.md",
-          "2023-05-31-changelog.md",
-          "2023-06-30-changelog.md",
-          "2023-07-31-changelog.md",
-          "2023-08-31-changelog.md",
-          "2023-09-30-changelog.md",
-          "2023-10-31-changelog.md",
-          "2023-11-30-changelog.md"
+          "2023-01-31.md",
+          "2023-02-28.md",
+          "2023-03-31.md",
+          "2023-04-30.md",
+          "2023-05-31.md",
+          "2023-06-30.md",
+          "2023-07-31.md",
+          "2023-08-31.md",
+          "2023-09-30.md",
+          "2023-10-31.md",
+          "2023-11-30.md",
+          "2023-12-31.md",
+          "2024-01-31.md",
+          "2024-02-29.md"
         ],
         "noRuntimeDownloads": true
       }
@@ -266,7 +272,7 @@ export default {
       "items": [
         {
           "to": "/concepts/welcome",
-          "label": "Learn",
+          "label": "Concepts",
           "position": "left"
         },
         {
@@ -277,6 +283,16 @@ export default {
         {
           "to": "/tutorials/welcome",
           "label": "Tutorials",
+          "position": "left"
+        },
+        {
+          "href": "/api/rpc/introduction",
+          "label": "RPC",
+          "position": "left"
+        },
+        {
+          "type": "html",
+          "value": "<span class=\"separator\"></span>",
           "position": "left"
         },
         {
@@ -339,15 +355,35 @@ export default {
           ]
         },
         {
-          "href": "/api/rpc/introduction",
-          "label": "RPC",
-          "position": "left"
-        },
-        {
           "type": "dropdown",
-          "label": "Other Docs",
+          "label": "Resources",
           "position": "left",
           "items": [
+            {
+              "label": "🎉 Dev Changelog",
+              "href": "/changelog"
+            },
+            {
+              "label": "Github",
+              "href": "https://github.com/near",
+              "className": "header-github-link"
+            },
+            {
+              "type": "html",
+              "value": "<hr/><div class=\"subtitle\"> Support </dib>"
+            },
+            {
+              "href": "https://discord.gg/GZ7735Xjce",
+              "label": "Discord"
+            },
+            {
+              "href": "https://t.me/neardev",
+              "label": "Telegram"
+            },
+            {
+              "type": "html",
+              "value": "<hr /><div class=\"subtitle\"> Other Docs </dib>"
+            },
             {
               "href": "https://nomicon.io",
               "label": "Protocol Docs"
@@ -367,11 +403,6 @@ export default {
           "position": "right"
         },
         {
-          "to": "blog",
-          "label": "Changelog 🎉",
-          "position": "right"
-        },
-        {
           "type": "localeDropdown",
           "position": "right",
           "dropdownItemsBefore": [],
@@ -380,12 +411,6 @@ export default {
         {
           "href": "login",
           "position": "right"
-        },
-        {
-          "href": "https://github.com/near",
-          "position": "right",
-          "className": "header-github-link",
-          "aria-label": "GitHub repository"
         }
       ],
       "hideOnScroll": false

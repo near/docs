@@ -1,6 +1,6 @@
 {
   "id": "develop/testing/integration-test",
-  "title": "통합 테스트(Integration Test)",
+  "title": "Integration Tests",
   "description": "통합 테스트를 사용하면 NEAR testnet 또는 로컬 sandbox에 컨트랙트를 배포하고, 컨트랙트와 상호 작용할 테스트 사용자를 만들 수 있습니다. 그러한 방식으로, 현실적인 환경에서 컨트랙트를 철저하게 테스트할 수 있습니다.",
   "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.develop/testing/integration.md",
   "sourceDirName": "2.develop/testing",
@@ -12,11 +12,11 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Github Actions",
-  "lastUpdatedAt": 1704996595,
-  "formattedLastUpdatedAt": "2024년 1월 11일",
+  "lastUpdatedAt": 1709152665,
+  "formattedLastUpdatedAt": "2024년 2월 28일",
   "frontMatter": {
     "id": "integration-test",
-    "title": "통합 테스트(Integration Test)"
+    "title": "Integration Tests"
   },
   "sidebar": "build",
   "previous": {

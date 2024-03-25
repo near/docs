@@ -72,7 +72,7 @@ Let's look at this testnet account that has one full-access key and two function
 
 Let's look deeper into each key.
 
-#### First key:
+#### First key
 
 ```js
 {
@@ -100,7 +100,7 @@ The allowance on this key is intentionally large for demonstration purposes. `77
 
 So the key is simply allowed to use the allowance in NEAR on gas, deducting from the account for each function call.
 
-#### Second key:
+#### Second key
 
 ```js
 {
@@ -155,7 +155,7 @@ So signing a message is fine, but what if we could do better?
 
 With NEAR, we can leverage access keys to improve a user's login experience and give the power back to the user.
 
-If I log into the [Guest Book example site](https://github.com/near-examples/guest-book-js), I create a unique key just for that dApp, adding it to my account. When I'm done I can remove the key myself. If I suspect someone has control of my key (if a laptop is stolen, for example) I can remove the key as long as I have a full-access key in my control.
+If I log into the [Guest Book example site](https://github.com/near-examples/guest-book-examples/tree/main/frontend), I create a unique key just for that dApp, adding it to my account. When I'm done I can remove the key myself. If I suspect someone has control of my key (if a laptop is stolen, for example) I can remove the key as long as I have a full-access key in my control.
 
 Logging in with NEAR truly gives the end user control of their account and how they interact with dApps, and does so on the protocol level.
 

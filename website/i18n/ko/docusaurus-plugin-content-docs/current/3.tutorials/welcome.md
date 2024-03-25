@@ -1,6 +1,7 @@
 ---
 id: welcome
 title: 예제 & 튜토리얼
+sidebar_label: Home
 hide_table_of_contents: true
 ---
 
@@ -20,17 +21,20 @@ import ContactUs from '@site/src/components/ContactUs.mdx';
     <Feature url="/tutorials/examples/frontend-multiple-contracts" title="다중 컨트랙트 프론트엔드" subtitle="Interact with multiple contracts" image="multiple.png" />
 
   </Column>
-  
-  <Column title="입문서: DeFi & 거버넌스">
-    <Feature url="/develop/relevant-contracts/ft" title="대체 가능한 토큰" subtitle="Learn how to use and make FT" image="ft.png" />
-    <Feature url="/develop/relevant-contracts/nft" title="대체 불가능 토큰" subtitle="Enter the NFT space" image="nft.png" />
-    <Feature url="/develop/relevant-contracts/dao" title="자율 조직" subtitle="Understand autonomous organizations" image="dao.png" />
+  <Column title="Popular Tutorials">
+    <Feature url="/bos/tutorial/interaction" title="Components & Contracts" subtitle="Use a contract from your component" image="bos-contract.png" />
+    <Feature url="/bos/tutorial/lido" title="ETH Component" subtitle="Build an Ethereum Component" image="bos-lido.png" />
+    <Feature url="/tutorials/nfts/minting-nfts" title="NFT Mint" subtitle="Mint an NFT without using code" image="frontend-bos.png" />
+    <Feature url="/tutorials/indexer/nft-indexer" title="Events (NEAR Lake)"
+             subtitle="Use our Data Lake to listen for events" image="monitor.png" />
   </Column>
   <Column title="From Zero to Hero">
     <Feature url="/tutorials/nfts/js/introduction" title="NEAR에서 NFT 마스터 (JS)" subtitle="Learn everything about NFT in JS" image="nft-marketplace-js.png" />
     <Feature url="/tutorials/nfts/introduction" title="NEAR에서 NFT 마스터 (RS)" subtitle="Learn everything about NFT in Rust" image="nft-marketplace-rs.png" />
-    <Feature url="/tutorials/fts/introduction" title="대체 가능한 토큰 101" subtitle="Learn everything about fungible tokens" image="ft.png" />
-    <Feature url="/tutorials/crosswords/basics/overview" title="십자말풀이 게임" subtitle="Build a Crossword Game from zero" image="crossword.png" />
+    <Feature url="/tutorials/fts/introduction" title="대체 가능한 토큰 101"
+             subtitle="Learn everything about fungible tokens" image="ft.png" />
+    <Feature url="/tutorials/crosswords/basics/overview" title="십자말풀이 게임" 
+             subtitle="Build a Crossword Game from zero" image="crossword.png" />
   </Column>
 </FeatureList>
 

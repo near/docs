@@ -1,0 +1,30 @@
+{
+  "id": "concepts/protocol/access-keys",
+  "title": "Access Keys",
+  "description": "In all blockchains, users control their accounts by holding a private key (a secret only they know) and using it to sign transactions.",
+  "source": "@site/../docs/1.concepts/protocol/access-keys.md",
+  "sourceDirName": "1.concepts/protocol",
+  "slug": "/concepts/protocol/access-keys",
+  "permalink": "/zh-CN/concepts/protocol/access-keys",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/protocol/access-keys.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1711375194,
+  "formattedLastUpdatedAt": "2024年3月25日",
+  "frontMatter": {
+    "id": "access-keys",
+    "title": "Access Keys"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Address (Account ID)",
+    "permalink": "/zh-CN/concepts/protocol/account-id"
+  },
+  "next": {
+    "title": "Smart Contract",
+    "permalink": "/zh-CN/concepts/protocol/smartcontract"
+  }
+}

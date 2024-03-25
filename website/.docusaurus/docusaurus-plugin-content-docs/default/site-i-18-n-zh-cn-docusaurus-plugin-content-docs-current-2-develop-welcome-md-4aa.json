@@ -1,7 +1,7 @@
 {
   "id": "develop/welcome",
-  "title": "Developer Documentation",
-  "description": "Welcome! Here you will find documentation on how to develop decentralized apps using NEAR.",
+  "title": "Build on NEAR",
+  "description": "Welcome! Here you will find all the information on what you can build on NEAR and how to build it. Do not worry if you are new to Web3 or Blockchain, we are here to guide you through the process of learning.",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.develop/welcome.md",
   "sourceDirName": "2.develop",
   "slug": "/develop/welcome",
@@ -12,17 +12,18 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Github Actions",
-  "lastUpdatedAt": 1704996595,
-  "formattedLastUpdatedAt": "2024年1月11日",
+  "lastUpdatedAt": 1709152665,
+  "formattedLastUpdatedAt": "2024年2月28日",
   "frontMatter": {
     "id": "welcome",
-    "title": "Developer Documentation",
+    "title": "Build on NEAR",
     "sidebar_label": "Home",
-    "hide_table_of_contents": true
+    "hide_table_of_contents": true,
+    "hide_breadcrumb": true
   },
   "sidebar": "build",
   "next": {
-    "title": "What is a Smart Contract?",
-    "permalink": "/zh-CN/develop/contracts/whatisacontract"
+    "title": "What is Chain Abstraction?",
+    "permalink": "/zh-CN/abstraction/what-is"
   }
 }

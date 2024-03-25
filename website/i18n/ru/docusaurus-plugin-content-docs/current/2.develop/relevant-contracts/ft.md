@@ -26,7 +26,8 @@ Creating a new FT is as simple as deploying a new FT contract and initializing i
 
   ```bash
   # 1. Deploy the contract in a testnet account
-  near dev-deploy --wasmFile fungible_token.wasm
+  near create-account <account-id> --useFaucet
+  near deploy <account-id> fungible_token.wasm
 
   # 2. Initialize the contract with metadata
   near call <ft-contract> new '{"owner_id": "<owner-account>", "total_supply": "1000000000000000", "metadata": { "spec": "ft-1.0.0", "name": "Example Token Name", "symbol": "EXLT", "decimals": 8 }}' --accountId <ft-contract>
@@ -38,7 +39,7 @@ Creating a new FT is as simple as deploying a new FT contract and initializing i
 
 :::info On initialization you will define an **owner**, who will own **ALL** the tokens. :::
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ## Querying Metadata
 You can query the FT's metadata by calling the `ft_metadata`.
@@ -53,7 +54,7 @@ You can query the FT's metadata by calling the `ft_metadata`.
   </TabItem>
 </Tabs>
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ## Registering a User
 In order for a user to own and transfer tokens they need to first **register** in the contract. This is done by calling `storage_deposit` and attaching 0.00125Ⓝ. This method also allows to pay for other users to register them.
@@ -72,7 +73,7 @@ In order for a user to own and transfer tokens they need to first **register** i
 
 :::tip After you call the `storage_deposit` the FT will appear in the NEAR WALLET. :::
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ## Getting Balance
 To know how many coins a user has you will need to query the method `ft_balance_of`.
@@ -89,7 +90,7 @@ To know how many coins a user has you will need to query the method `ft_balance_
 
 :::caution Keep in mind the `decimals` from the [metadata](#query-metadata). A balance of `150 FT` for a token with 2 `decimals` actually represents `1.50 FT`. :::
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ## Transferring
 To send FT to another account you will use the `ft_transfer` method, indicating the receiver and the amount of FT you want to send.
@@ -108,10 +109,10 @@ To send FT to another account you will use the `ft_transfer` method, indicating 
 
 :::warning In order to send a fungible token to an account, both the sender and receiver must be [registered](#register-a-user) in the FT contract. :::
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ## Attaching FTs to a Call
-Natively, only NEAR tokens (Ⓝ) can be attached to a method calls. However, the FT standard enables to attach fungible tokens in a call by using the FT-contract as intermediary. This means that, instead of you attaching tokens directly to the call, you ask the FT-contract to do both a transfer and a method call in your name.
+Natively, only NEAR tokens (Ⓝ) can be attached to a function calls. However, the FT standard enables to attach fungible tokens in a call by using the FT-contract as intermediary. This means that, instead of you attaching tokens directly to the call, you ask the FT-contract to do both a transfer and a function call in your name.
 
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="cli" label="NEAR CLI">
@@ -140,7 +141,7 @@ From the workflow above it follows that the receiver we want to call needs to im
 
 The `ft_on_transfer` **must** return **how many FT tokens have to be refunded**, so the FT contract gives them back to the sender.
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ## Events
 You can track real time events (such as transfers) by implementing the [FT Event Standards](https://nomicon.io/Standards/Tokens/FungibleToken/Event). `Events` are simple to use because they are just log messages formatted in a standardized way. Since these logged messages are public, a service can then be built to [track them in real time](../../4.tools/events.md).

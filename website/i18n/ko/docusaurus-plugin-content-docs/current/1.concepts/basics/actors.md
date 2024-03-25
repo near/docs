@@ -10,7 +10,7 @@ NEAR 생태계를 형성하기 위해 상호작용하는 세 가지 주요 주�
 
 <!-- To set the stage, we're building a "base-layer blockchain," or a layer-one, meaning that it's on the same level of the ecosystem as projects like Ethereum or Cosmos. That means everything in the ecosystem is built on the NEAR blockchain, including your application. -->
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ## 사용자
 사용자는 하나 이상의 [계정](./accounts/introduction.md)을 가질 수 있으며, 각 계정은 다음과 같이 사용됩니다.
@@ -19,7 +19,7 @@ NEAR 생태계를 형성하기 위해 상호작용하는 세 가지 주요 주�
 2. 네트워크 내에 저장된, [스마트 컨트랙트](./accounts/smartcontract.md)로 알려진 [탈중앙화 앱](https://awesomenear.com)을 **실행**
 3. 자신만의 탈중앙화 앱을 **개발**하고 네트워크에 저장
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ## 밸리데이터
 밸리데이터는 전세계에 분산된 사람들로, NEAR 네트워크를 지탱하는 인프라를 작동시키는 역할을 합니다. 이들은 두 가지 주요 작업을 수행합니다.
@@ -38,5 +38,5 @@ NEAR 생태계를 형성하기 위해 상호작용하는 세 가지 주요 주�
 
 다음 **교육 리소스**에서 더 많은 내용을 읽을 수 있습니다:
 - [NEAR 블록체인 초보자 가이드](https://near.org/blog/the-beginners-guide-to-the-near-blockchain/) - 일반 개요
-- [NEAR 공식 백서](https://near.org/papers/the-official-near-white-paper/#design-principles)
+- The [Official NEAR white paper](https://pages.near.org/papers/the-official-near-white-paper/#design-principles)
 - [임계값 지분 증명(Thresholded Proof of Stake)](https://near.org/blog/thresholded-proof-of-stake/)에 대한 블로그 글

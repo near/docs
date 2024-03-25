@@ -19,8 +19,8 @@
   },
   "sidebar": "concepts",
   "previous": {
-    "title": "가스 - 고급",
-    "permalink": "/ko/concepts/basics/transactions/gas-advanced"
+    "title": "Lifecycle of a Transaction",
+    "permalink": "/ko/concepts/protocol/transaction-execution"
   },
   "next": {
     "title": "토큰 전송",

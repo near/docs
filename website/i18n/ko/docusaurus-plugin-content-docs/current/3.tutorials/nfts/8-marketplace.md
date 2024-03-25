@@ -86,12 +86,12 @@ You might be thinking about the scenario when a sale is purchased. What happens 
 **Scenario B**
 
 - Dorian은 100개의 아름다운 NFT를 소유하고 있으며, 모든 NFT를 리스팅하고 싶습니다.
-- NFT를 나열할 때마다 `storage_deposit`를 호출할 필요가 없도록, 그는 한 번만 호출하였습니다. Dorian은 성공한 사람이기 때문에 1000개의 판매를 커버하기에 충분한 10개의 NEAR를 첨부하였습니다. 이후, 그는 이제 9 NEAR 또는 900 판매를 초과했습니다.
+- NFT를 나열할 때마다 `storage_deposit`를 호출할 필요가 없도록, 그는 한 번만 호출하였습니다. Dorian은 성공한 사람이기 때문에 1000개의 판매를 커버하기에 충분한 10개의 NEAR를 첨부하였습니다. Then he lists his 100 NFTs and now he has an excess of 9 NEAR or 900 sales.
 - Dorian은 다른 일을 위해 9 NEAR가 필요하지만, 100개의 리스팅을 삭제하고 싶지는 않습니다. 그는 9 NEAR가 남았기 때문에 쉽게 인출할 수 있고 여전히 100개의 목록을 보유할 수 있습니다. `storage_withdraw` 호출을 하고 9 NEAR를 받으면 그는 0개의 판매 가능 수량을 가지게 될 것입니다.
 
 With this behavior in mind, the following two functions outline the logic.
 
-<Github language="rust" start="110" end="173" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/lib.rs" />
+<Github language="rust" start="110" end="170" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/lib.rs" />
 
 이 컨트랙트에서 각 판매에 필요한 스토리지는 0.01 NEAR이지만, `storage_minimum_balance` 함수를 사용하여 해당 정보를 쿼리할 수 있습니다. 또한, 해당 계정이 지불한 스토리지 공간을 확인하려면 `storage_balance_of` 함수로 쿼리할 수 있습니다.
 
@@ -145,25 +145,19 @@ NFT를 구매하려면 `offer` 함수를 호출해야 합니다. 이는 매개�
 
 마지막으로 살펴볼 파일은 `sale_view.rs` 파일입니다. 여기에 열거 메서드 중 일부가 설명되어 있습니다. 이를 통해 사용자는 판매에 관한 중요한 정보를 쿼리할 수 있습니다.
 
-### Creating a sub-account
+### Deployment
 
-Run the following command to create a sub-account marketplace of your main account with an initial balance of 25 NEAR which will be transferred from the original to your new account.
-
-```bash
-near create-account marketplace.$NFT_CONTRACT_ID --masterAccount $NFT_CONTRACT_ID --initialBalance 25
-```
-
-Next, you'll want to export an environment variable for ease of development:
+Next, you'll deploy this contract to the network.
 
 ```bash
-export MARKETPLACE_CONTRACT_ID=marketplace.$NFT_CONTRACT_ID
+export MARKETPLACE_CONTRACT_ID=<accountId>
+near create-account $MARKETPLACE_CONTRACT_ID --useFaucet
 ```
 
 Using the build script, deploy the contract as you did in the previous tutorials:
 
 ```bash
-near deploy --wasmFile out/market.wasm --accountId
- $MARKETPLACE_CONTRACT_ID
+near deploy $MARKETPLACE_CONTRACT_ID out/market.wasm
 ```
 
 ### Initialization and minting
@@ -236,7 +230,7 @@ near view $MARKETPLACE_CONTRACT_ID get_sales_by_nft_contract_id '{"nft_contract_
 
 이 글을 쓰는 시점에서 이 예제는 다음 버전에서 작동합니다.
 
-- near-cli: `3.0.0`
-- NFT 표준: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), `1.0.0` 버전
+- near-cli: `4.0.4`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 
 :::

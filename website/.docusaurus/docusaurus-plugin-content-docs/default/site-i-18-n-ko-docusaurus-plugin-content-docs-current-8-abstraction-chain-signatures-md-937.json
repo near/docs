@@ -1,0 +1,30 @@
+{
+  "id": "abstraction/chain-signatures",
+  "title": "Cross-Chain Signatures",
+  "description": "Chain Signatures unlock the ability for a single account to transact across multiple blockchain protocols, giving ownership of cross-chain accounts, data, and assets to one NEAR account.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/8.abstraction/chain-signatures.md",
+  "sourceDirName": "8.abstraction",
+  "slug": "/abstraction/chain-signatures",
+  "permalink": "/ko/abstraction/chain-signatures",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/8.abstraction/chain-signatures.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1709152665,
+  "formattedLastUpdatedAt": "2024년 2월 28일",
+  "frontMatter": {
+    "id": "chain-signatures",
+    "title": "Cross-Chain Signatures"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "FastAuth (Email Login)",
+    "permalink": "/ko/tools/fastauth-sdk"
+  },
+  "next": {
+    "title": "Wallet Chain Key Rules",
+    "permalink": "/ko/abstraction/chain-signatures/wallet"
+  }
+}

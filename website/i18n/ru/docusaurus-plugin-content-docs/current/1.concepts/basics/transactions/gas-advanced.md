@@ -34,10 +34,10 @@ Given the general-purpose nature of NEAR, function calls win the award for most 
 
 With this level of complexity, it's no longer useful to walk through an example, enumerating each (see `ext_costs` under `wasm_config` using the [`protocol_config`](/api/rpc/protocol#protocol-config) RPC endpoint) of the gas calculations as we go (you can research this yourself, [if you want](https://github.com/near/nearcore/pull/3038)). Instead, let's approach this from two other angles: ballpark comparisons to Ethereum, and getting accurate estimates with automated tests.
 
-<blockquote class="lesson">
+<blockquote className="lesson">
 **How much of the gas fee goes as a 30% reward to the smart contract account?**
 
-The NEAR Whitepaper mentions that [30% of all gas fees](https://near.org/papers/the-official-near-white-paper/) go to smart contract accounts on which the fees are expensed. 
+The NEAR Whitepaper mentions that [30% of all gas fees](https://pages.near.org/papers/the-official-near-white-paper/) go to smart contract accounts on which the fees are expensed. 
 
 This amount can be calculated for function calls in two ways:
 1. Summing all values in the gas profile 
@@ -77,7 +77,7 @@ Multiplying Ethereum's gas units by gas price usually results in an amount that'
 
 While some of these operations on their surface appear to only be about a 10x improvement over Ethereum, something else to note is that the total supply of NEAR is more than 1 billion, while total supply of Ethereum is more like 100 million. So as fraction of total supply, NEAR's gas fees are approximately another 10x lower than Ethereum's. Additionally, if the price of NEAR goes up significantly, then the minimum gas fee set by the network can be lowered.
 
-You can expect the network to sit at the minimum gas price most of the time; learn more in the [Economics whitepaper](https://near.org/papers/economics-in-sharded-blockchain/#transaction-and-storage-fees).
+You can expect the network to sit at the minimum gas price most of the time; learn more in the [Economics whitepaper](https://pages.near.org/papers/economics-in-sharded-blockchain/#transaction-and-storage-fees).
 
 #### Estimating Gas Costs with Automated Tests {#accurate-estimates-with-automated-tests}
 
@@ -178,7 +178,7 @@ The price of 1 unit of gas at this block was 5000 yoctoNEAR (10^-24 NEAR).
 
 ## Some closing thoughts from the whitepaper {#some-closing-thoughts-from-the-whitepaper}
 
-<blockquote class="info">
+<blockquote className="info">
 Fundamentally, the NEAR platform is a marketplace between willing participants.  On the supply side, operators of the validator nodes and other fundamental infrastructure need to be incentivized to provide these services which make up the “community cloud.”  On the demand side, the developers and end-users of the platform who are paying for its use need to be able to do so in a way which is simple, clear and consistent so it helps them.
 
 A blockchain-based cloud provides several specific resources to the applications which run atop it:
@@ -193,7 +193,7 @@ Developers prefer predictable pricing so they can budget and provide prices for 
 
 </blockquote>
 
-To dig deeper into how and why gas works the way it does on NEAR, check out the [Economics](https://near.org/papers/the-official-near-white-paper/#economics) section of the main whitepaper and the [Transaction and Storage Fees](https://near.org/papers/economics-in-sharded-blockchain/#transaction-and-storage-fees) section of the economics whitepaper.
+To dig deeper into how and why gas works the way it does on NEAR, check out the [Economics](https://pages.near.org/papers/the-official-near-white-paper/#economics) section of the main whitepaper and the [Transaction and Storage Fees](https://pages.near.org/papers/economics-in-sharded-blockchain/#transaction-and-storage-fees) section of the economics whitepaper.
 
 :::tip Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>

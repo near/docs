@@ -7,11 +7,11 @@ sidebar_label: 암시적 계정
 ## 배경 {#background}
 
 암시적 계정은 Bitcoin/Ethereum 계정과 유사하게 작동합니다.
- - 로컬에서 ED25519 키 쌍을 생성하여 계정을 생성하기 전에 계정 ID를 예약할 수 있습니다.
- - 이 키 쌍에는 계정 ID에 매핑되는 공개 키가 있습니다.
- - 계정 ID는 공개 키의 소문자 16진수 표현입니다.
- - ED25519 공개 키에는 64자의 계정 ID에 매핑되는 32바이트가 포함되어 있습니다.
- - 이에 해당하는 비밀 키를 사용하면 체인에 생성된 계정을 대신하여 트랜잭션에 서명할 수 있습니다.
+ - They allow you to reserve an account ID before it's created by generating a ED25519 key-pair locally.
+ - This key-pair has a public key that maps to the account ID.
+ - The account ID is a lowercase hex representation of the public key.
+ - An ED25519 Public key contains 32 bytes that maps to 64 characters account ID.
+ - The corresponding secret key allows you to sign transactions on behalf of this account once it's created on chain.
 
 ## [사양](https://nomicon.io/DataStructures/Account.html#implicit-account-ids) {#specifications}
 
@@ -28,84 +28,23 @@ export NEAR_ENV=betanet
 ### 키 쌍 생성 {#generating-a-key-pair-first}
 
 ```bash
-near generate-key tmp1
+near generate-key --saveImplicit
 ```
 
 출력 예시
 ```
-Generated key pair with ed25519:BGCCDDHfysuuVnaNVtEhhqeT4k9Muyem3Kpgq2U1m9HX public key
+Seed phrase: lumber habit sausage used zebra brain border exist meat muscle river hidden
+Key pair: {"publicKey":"ed25519:AQgnQSR1Mp3v7xrw7egJtu3ibNzoCGwUwnEehypip9od","secretKey":"ed25519:51qTiqybe8ycXwPznA8hz7GJJQ5hyZ45wh2rm5MBBjgZ5XqFjbjta1m41pq9zbRZfWGUGWYJqH4yVhSWoW6pYFkT"}
+Implicit account: 8bca86065be487de45e795b2c3154fe834d53ffa07e0a44f29e76a2a5f075df8
+Storing credentials for account: 8bca86065be487de45e795b2c3154fe834d53ffa07e0a44f29e76a2a5f075df8 (network: testnet)
+Saving key to '~/.near-credentials/testnet/8bca86065be487de45e795b2c3154fe834d53ffa07e0a44f29e76a2a5f075df8.json'
 ```
 
-계정 ID `tmp1`에 대한 키 쌍을 생성합니다. 새 공개 키는 `ed25519:BGCCDDHfysuuVnaNVtEhhqeT4k9Muyem3Kpgq2U1m9HX`입니다.
-
-NEAR 공개 키를 문자열로 표현하면 `<curve>:<data>`와 같습니다.
-- 타원 곡선은 `ed25519` 아니면 `secp256k1`입니다. 암시적 계정의 경우, `ed25519`만 지원됩니다.
-- Data는 공개 키의 base58 인코딩입니다. `ed25519`에서 이는 32바이트의 크기를 가집니다.
-
-이 명령을 통해, 로컬에서 키 쌍을 생성하고 아래 위치에 로컬로 저장했습니다.
-```
-~/.near-credentials/betanet/tmp1.json
-```
-
-### 키 쌍 보기 {#viewing-the-key-pair}
-
-다음 명령을 실행하여 키 쌍 파일의 내용을 출력합니다.
+#### Using the Implicit Account
+We can export our account ID to a bash env variable:
 ```bash
-cat ~/.near-credentials/betanet/tmp1.json
+export ACCOUNT="8bca86065be487de45e795b2c3154fe834d53ffa07e0a44f29e76a2a5f075df8"
 ```
-
-내용은 다음과 같습니다.
-```json
-{"account_id":"tmp1","public_key":"ed25519:BGCCDDHfysuuVnaNVtEhhqeT4k9Muyem3Kpgq2U1m9HX","private_key":"ed25519:4qAABW9HfVW4UNQjuQAaAWpB21jqoP58kGqDia18FZDRat6Lg6TLWdAD9FyvAd3PPQLYF4hhx2mZAotJudVjoqfs"}
-```
-
-보시다시피, 이는 유효한 json 파일이고, 공개 키는 우리가 생성한 것과 일치합니다. 해당 `private_key`는 키 쌍의 비밀/개인 키로, 이에 대응되는 공개 키로 트랜잭션에 서명하는 데 사용할 수 있습니다.
-
-### 공개 키를 계정 ID로 변환 {#converting-a-public-key-to-an-account-id}
-
-NEAR 문자열 표현 `ed25519:BGCCDDHfysuuVnaNVtEhhqeT4k9Muyem3Kpgq2U1m9HX`을 공개 키로 변환해 보겠습니다.
-
-가장 쉬운 방법은 대화형 콘솔 `repl`과 함꼐 `near-cli`를 사용하는 것입니다.
-
-1) `near repl`을 시작합니다.
-```bash
-near repl
-```
-
-2) base58 공개 키를 로컬 상수에 저장합니다.
-```javascript
-const pk58 = 'ed25519:BGCCDDHfysuuVnaNVtEhhqeT4k9Muyem3Kpgq2U1m9HX'
-```
-
-3) 이제 공개 키를 구문 분석하고, 다음과 같은 한 줄을 통해 이를 16진수로 변환해 보겠습니다.
-```javascript
-nearAPI.utils.PublicKey.fromString(pk58).data.toString('hex')
-```
-
-출력되는 문자열은 16진수(`'` 없이)의 계정 ID입니다.
-```javascript
-'98793cd91a3f870fb126f66285808c7e094afcfc4eda8a970f6648cdf0dbd6de'
-```
-
-이제 새 계정 ID는 `98793cd91a3f870fb126f66285808c7e094afcfc4eda8a970f6648cdf0dbd6de`입니다.
-
-4) 이제 이 계정 ID를 누군가에게 주고 토큰 전송을 요청할 수 있습니다.
-
-### 임시 키 쌍 이동 {#moving-the-temporary-key-pair}
-
-마지막으로 실제 계정 ID로 `tmp1.json` 키 쌍을 옮겨서, `near-cli`가 트랜잭션 서명에 키 쌍을 사용할 수 있도록 해야 합니다.
-
-먼저 계정 ID를 bash 환경 변수로 내보내겠습니다.
-```bash
-export ACCOUNT="98793cd91a3f870fb126f66285808c7e094afcfc4eda8a970f6648cdf0dbd6de"
-```
-
-이제 `tmp1.json` 파일을 이동할 수 있습니다.
-```bash
-mv ~/.near-credentials/betanet/tmp1.json ~/.near-credentials/betanet/$ACCOUNT.json
-```
-
-*참고: `.json` 키 쌍 파일은 아직 `"account_id":"tmp1"`를 가지고 있지만, 괜찮습니다. `near-cli`는 이를 신경쓰지 않을 것입니다.*
 
 새 계정에서 토큰을 받았다고 가정하면, 다음 명령을 사용하여 이를 전송할 수 있습니다.
 ```bash

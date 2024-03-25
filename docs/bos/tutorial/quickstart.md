@@ -6,11 +6,11 @@ sidebar_label: What is a Component?
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {WidgetEditor} from "@site/src/components/social-widget"
+import {WidgetEditor} from "@site/src/components/widget-editor"
 
 NEAR Components are a new way to build web applications. They are composable, reusable and decentralized.
 
-![img](/docs/assets/welcome-pages/bos-big.png)
+![img](/docs/assets/welcome-pages/bos-landing.png)
 
 :::tip
 You can login to interact with the examples in this section.

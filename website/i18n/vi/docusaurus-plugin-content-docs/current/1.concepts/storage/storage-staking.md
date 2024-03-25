@@ -8,7 +8,7 @@ sidebar_label: Storage Staking
 > 
 > Trong storage staking (đôi khi được gọi là _state_ staking), tài khoản sở hữu smart contract phải stake (hoặc lock) một lượng token tương ứng với lượng dữ liệu được lưu trữ trên smart contract đó, tương ứng với việc khấu trừ một khoản từ account sở hữu contract.
 
-<blockquote class="info">
+<blockquote className="info">
 <strong>Bạn đã biết về Ethereum?</strong><br /><br />
 
 Nếu bạn quen thuộc với pricing model của Ethereum, thì bạn cũng biết rằng, giống như NEAR, nó cũng thu một khoản phí (gọi là "gas") cho mỗi transaction. Khác với NEAR, phí gas của Ethereum đại diện cho lượng dữ liệu được lưu trữ thông qua transaction đó. Điều này về cơ bản có nghĩa là bất kì ai đều có thể chi trả một lần cho việc lưu trữ dữ liệu vĩnh viễn on-chain. Đây là một economic design không tốt với hai nguyên nhân chính sau: 1. Những người sử dụng network (miner, trong trường hợp của Etherum 1) không được khuyến khích lưu trữ một lượng lớn dữ liệu một cách thích hợp, vì phí gas được trả trong quá khứ có thể làm tăng chi phí lữu trữ mãi mãi, và 2. Những người dùng của smart contract bị thu phí cho lượng dữ liệu mà họ gửi để lưu trữ trong nó, thay vì thu phí của người sỡ hữu smart contract.
@@ -17,7 +17,7 @@ Nếu bạn quen thuộc với pricing model của Ethereum, thì bạn cũng bi
 
 ## How does NEAR's design align incentives?
 
-Những token được dùng trong storage staking không thể sử dụng cho các việc khác, như là validation staking. Điều này làm tăng lợi nhuận mà những validator nhận được. Tìm hiểu thêm tại [economics whitepaper](https://near.org/papers/economics-in-sharded-blockchain/).
+Những token được dùng trong storage staking không thể sử dụng cho các việc khác, như là validation staking. Điều này làm tăng lợi nhuận mà những validator nhận được. Learn more in [the economics whitepaper](https://pages.near.org/papers/economics-in-sharded-blockchain/).
 
 ## When do tokens get staked?
 
@@ -117,7 +117,7 @@ Nhìn chung, Borsh nhanh hơn, tốn ít chi phí bộ nhớ, và chi phí gas h
 
 This is especially important if you are storing user-generated data!
 
-Hãy sử dụng [Guest Book](https://github.com/near-examples/guest-book) này để làm ví dụ. Hiện tại, những người dùng ứng dụng có thể đăng nhập với NEAR và để lại một tin nhắn. Tin nhắn của họ được lưu on-chain.
+Let's use this [Guest Book](https://github.com/near-examples/guest-book-examples) as an example. Hiện tại, những người dùng ứng dụng có thể đăng nhập với NEAR và để lại một tin nhắn. Tin nhắn của họ được lưu on-chain.
 
 Thử nghĩ rằng ứng dụng này rất phổ biến, và những người dùng đó bắt đầu vô tình để lại rất nhiều những tin nhắn dài. Người sở hữu contract có lẽ sẽ rất nhanh hết tiền để trả chi phí lưu trữ!
 

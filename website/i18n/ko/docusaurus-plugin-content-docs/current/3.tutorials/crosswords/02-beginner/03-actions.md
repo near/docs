@@ -17,7 +17,7 @@ import signerPredecessorCurrent from '/docs/assets/crosswords/predecessor-signer
 
 <figure>
     <img src={transferNEAR} alt="두 손이 NEAR Protocol 로고가 새겨진 동전을 교환하고 있습니다. qiqi04.near 그림" width="400"/>
-    <figcaption class="small">Art by <a href="https://twitter.com/blankworl" target="_blank">qiqi04.near</a></figcaption>
+    <figcaption className="small">Art by <a href="https://twitter.com/blankworl" target="_blank">qiqi04.near</a></figcaption>
 </figure>
 
 <br/>
@@ -58,7 +58,7 @@ That's the value in yoctoNEAR. This concept is similar to other blockchains. Bit
 
 <figure>
     <img src={yoctoNEAR} alt="NEAR의 지폐, NEAR 일부에 대한 코인, 그리고 개미 옆에 있는 작은 yoctoNEAR를 보여주는 돋보기. jrbemint.near 그림"/>
-    <figcaption class="full-width">Art by <a href="https://twitter.com/JrbeMad" target="_blank">jrbemint.near</a></figcaption>
+    <figcaption className="full-width">Art by <a href="https://twitter.com/JrbeMad" target="_blank">jrbemint.near</a></figcaption>
 </figure>
 
 ## `Transfer` 추가
@@ -95,7 +95,7 @@ pub fn submit_solution(&mut self, solution: String, memo: String) -> Promise {
 
 <figure>
     <img src={signerPredecessorCurrent} alt="앨리스가 바나나라는 이름의 스마트 컨트랙트에 트랜잭션을 보내는 그림으로, 스마트 컨트랙트 Cucumber에 교차 컨트랙트 호출을 합니다. yasuoarts.near 그림"/>
-    <figcaption class="full-width">앨리스는 banana.near의 컨트랙트에 트랜잭션을 보내, cucumber.near에 대해 교차 컨트랙트 호출을 진행합니다.<br/>cucumber.near에 대한 컨트랙트의 관점에서 봤을 때, predecessor, 서명자 및 현재 계정 목록을 볼 수 있습니다.<br/>Art by <a href="https://twitter.com/YasuoArt69" target="_blank">yasuoarts.near</a></figcaption>
+    <figcaption className="full-width">Alice sends a transaction to the contract on banana.near, which does a cross-contract call to cucumber.near.<br/>From the perspective of a contract on cucumber.near, we see a list of the predecessor, signer, and current account.<br/>Art by <a href="https://twitter.com/YasuoArt69" target="_blank">yasuoarts.near</a></figcaption>
 </figure><br/><br/>
 
 1. [전임자 계정](https://docs.rs/near-sdk/latest/near_sdk/env/fn.predecessor_account_id.html) — `env::predecessor_account_id()`

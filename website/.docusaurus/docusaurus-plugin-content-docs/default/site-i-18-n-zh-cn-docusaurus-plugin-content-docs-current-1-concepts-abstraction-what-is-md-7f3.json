@@ -1,0 +1,31 @@
+{
+  "id": "concepts/abstraction/introduction",
+  "title": "Chain Abstraction",
+  "description": "Do you know how your favorite apps are built and which database they use?. Chances are not, since we choose apps based on their functionality, and not their underlying tech.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/1.concepts/abstraction/what-is.md",
+  "sourceDirName": "1.concepts/abstraction",
+  "slug": "/concepts/abstraction/introduction",
+  "permalink": "/zh-CN/concepts/abstraction/introduction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/abstraction/what-is.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1709152665,
+  "formattedLastUpdatedAt": "2024年2月28日",
+  "frontMatter": {
+    "id": "introduction",
+    "title": "Chain Abstraction",
+    "sidebar_label": "Introduction"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Epoch",
+    "permalink": "/zh-CN/concepts/basics/epoch"
+  },
+  "next": {
+    "title": "Meta Transactions",
+    "permalink": "/zh-CN/concepts/abstraction/meta-transactions"
+  }
+}

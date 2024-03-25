@@ -48,7 +48,7 @@ src
   └── storage.rs
 ```
 
-In the `internal.rs` file, add the following code to create a method called `internal_deposit` which takes an `AccountId` and a `Balance` and adds the amount to the account's current supply of FTs.
+In the `internal.rs` file, add the following code to create a function called `internal_deposit` which takes an `AccountId` and a `Balance` and adds the amount to the account's current supply of FTs.
 
 <Github language="rust" start="1" end="18" url="https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/internal.rs" />
 

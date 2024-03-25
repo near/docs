@@ -238,26 +238,21 @@ With that finished, it's time to deploy and start testing the contract.
 
 ## Testing the new changes {#testing-changes}
 
-Since these changes affect all the other tokens and the state won't be able to automatically be inherited by the new code, simply redeploying the contract will lead to errors. For this reason, it's best practice to create a sub-account and deploy the contract there.
+Since these changes affect all the other tokens and the state won't be able to automatically be inherited by the new code, simply redeploying the contract will lead to errors. For this reason, it's best practice to create a new account and deploy the contract there.
 
-### Creating a sub-account {#creating-sub-account}
+### Deployment
 
-Run the following command to create a sub-account `approval` of your main account with an initial balance of 25 NEAR which will be transferred from the original to your new account.
-
-```bash
-near create-account approval.$NFT_CONTRACT_ID --masterAccount $NFT_CONTRACT_ID --initialBalance 25
-```
-
-Next, you'll want to export an environment variable for ease of development:
+Next, you'll deploy this contract to the network.
 
 ```bash
-export APPROVAL_NFT_CONTRACT_ID=approval.$NFT_CONTRACT_ID
+export APPROVAL_NFT_CONTRACT_ID=<accountId>
+near create-account $APPROVAL_NFT_CONTRACT_ID --useFaucet
 ```
 
 Using the build script, build the deploy the contract as you did in the previous tutorials:
 
 ```bash
-yarn build && near deploy --wasmFile out/main.wasm --accountId $APPROVAL_NFT_CONTRACT_ID
+yarn build && near deploy $APPROVAL_NFT_CONTRACT_ID out/main.wasm
 ```
 
 ### Initialization and minting {#initialization-and-minting}
@@ -405,13 +400,13 @@ If you again call the enumeration method, you should see the owner updated and t
 ]
 ```
 
-Let's now test the approval ID incrementing across different owners. If you approve the sub-account that originally minted the token, the approval ID should be 1 now.
+Let's now test the approval ID incrementing across different owners. If you approve the account that originally minted the token, the approval ID should be 1 now.
 
 ```bash
 near call $APPROVAL_NFT_CONTRACT_ID nft_approve '{"token_id": "approval-token", "account_id": "'$APPROVAL_NFT_CONTRACT_ID'"}' --accountId $NFT_CONTRACT_ID --deposit 0.1
 ```
 
-Calling the view function again show now return an approval ID of 1 for the sub-account that was approved.
+Calling the view function again show now return an approval ID of 1 for the account that was approved.
 
 ```bash
 near view $APPROVAL_NFT_CONTRACT_ID nft_tokens_for_owner '{"account_id": "'$NFT_CONTRACT_ID'", "limit": 10}'
@@ -464,7 +459,7 @@ At this point, everything was implemented in order to allow accounts to be appro
 
 You implemented a view method to [check](#check-if-account-approved) if an account is approved and to finish the coding portion of the tutorial, you implemented the logic necessary to [revoke an account](#revoke-account) as well as [revoke all accounts](#revoke-all-accounts).
 
-After this, the contract code was finished and it was time to move onto testing where you created a [subaccount](#creating-sub-account) and tested the [approving](#approving-an-account) and [transferring](#transferring-the-nft) for your NFTs.
+After this, the contract code was finished and it was time to move onto testing where you created an [account](#deployment) and tested the [approving](#approving-an-account) and [transferring](#transferring-the-nft) for your NFTs.
 
 In the next tutorial, you'll learn about the royalty standards and how you can interact with NFT marketplaces.
 
@@ -472,9 +467,9 @@ In the next tutorial, you'll learn about the royalty standards and how you can i
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `3.0.0`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
+- near-cli: `4.0.4`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 - Enumeration standard: [NEP181](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration), version `1.0.0`
-- Approval standard: [NEP178](https://nomicon.io/Standards/Tokens/NonFungibleToken/ApprovalManagement), version `1.0.0`
+- Approval standard: [NEP178](https://nomicon.io/Standards/Tokens/NonFungibleToken/ApprovalManagement), version `1.1.0`
 
 :::

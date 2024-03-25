@@ -1,6 +1,6 @@
 {
   "id": "develop/integrate/backend-login",
-  "title": "Login with NEAR",
+  "title": "Authenticate NEAR Users",
   "description": "Recently NEAR has approved a new standard that, among other things, enables users to authenticate into a backend service.",
   "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.develop/integrate/backend.md",
   "sourceDirName": "2.develop/integrate",
@@ -12,16 +12,16 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Github Actions",
-  "lastUpdatedAt": 1704996595,
-  "formattedLastUpdatedAt": "2024년 1월 11일",
+  "lastUpdatedAt": 1709152665,
+  "formattedLastUpdatedAt": "2024년 2월 28일",
   "frontMatter": {
     "id": "backend-login",
-    "title": "Login with NEAR"
+    "title": "Authenticate NEAR Users"
   },
   "sidebar": "build",
   "previous": {
-    "title": "Building a Relayer",
-    "permalink": "/ko/develop/relayers/build-relayer"
+    "title": "Integrating Components",
+    "permalink": "/ko/develop/integrate/frontend-components"
   },
   "next": {
     "title": "What are Primitives?",

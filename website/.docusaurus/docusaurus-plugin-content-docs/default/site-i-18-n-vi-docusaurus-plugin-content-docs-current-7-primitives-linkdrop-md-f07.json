@@ -1,0 +1,31 @@
+{
+  "id": "primitives/linkdrop",
+  "title": "Linkdrops",
+  "description": "Linkdrops allow users to distribute assets and onboard people to Web3 apps through a simple web link.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/7.primitives/linkdrop.md",
+  "sourceDirName": "7.primitives",
+  "slug": "/primitives/linkdrop",
+  "permalink": "/vi/primitives/linkdrop",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/linkdrop.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1709152665,
+  "formattedLastUpdatedAt": "28 thg 2, 2024",
+  "frontMatter": {
+    "id": "linkdrop",
+    "title": "Linkdrops",
+    "hide_table_of_contents": false
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Non-Fungible Tokens (NFT)",
+    "permalink": "/vi/primitives/nft"
+  },
+  "next": {
+    "title": "Price Oracles",
+    "permalink": "/vi/primitives/oracles"
+  }
+}

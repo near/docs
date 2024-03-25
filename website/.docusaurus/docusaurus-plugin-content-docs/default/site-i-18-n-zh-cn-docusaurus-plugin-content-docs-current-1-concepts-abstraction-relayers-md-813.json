@@ -1,0 +1,30 @@
+{
+  "id": "concepts/abstraction/relayers",
+  "title": "Relayers",
+  "description": "A relayer is a simple web service that receives transactions from NEAR users, and relays them to the network while attaching tokens to cover their GAS expenses. In this document we present a high-level overview on how relayers work. Please check the build a relayer page if you want to learn how to build your own relayer.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/1.concepts/abstraction/relayers.md",
+  "sourceDirName": "1.concepts/abstraction",
+  "slug": "/concepts/abstraction/relayers",
+  "permalink": "/zh-CN/concepts/abstraction/relayers",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/abstraction/relayers.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1709152665,
+  "formattedLastUpdatedAt": "2024年2月28日",
+  "frontMatter": {
+    "id": "relayers",
+    "title": "Relayers"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Meta Transactions",
+    "permalink": "/zh-CN/concepts/abstraction/meta-transactions"
+  },
+  "next": {
+    "title": "What are Chain Signatures?",
+    "permalink": "/zh-CN/concepts/abstraction/chain-signatures"
+  }
+}

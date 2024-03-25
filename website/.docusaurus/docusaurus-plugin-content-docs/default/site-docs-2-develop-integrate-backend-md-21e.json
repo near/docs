@@ -20,8 +20,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Building a Relayer",
-    "permalink": "/develop/relayers/build-relayer"
+    "title": "Integrating Components",
+    "permalink": "/develop/integrate/frontend-components"
   },
   "next": {
     "title": "What are Primitives?",

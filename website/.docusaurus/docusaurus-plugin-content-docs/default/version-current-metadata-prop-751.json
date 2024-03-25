@@ -33,57 +33,33 @@
       },
       {
         "type": "category",
-        "label": "Accounts",
+        "label": "Accounts / Contracts",
         "items": [
           {
             "type": "link",
-            "label": "Account Model",
-            "href": "/zh-CN/concepts/basics/accounts/model",
-            "docId": "concepts/basics/accounts/model",
-            "unlisted": false
-          },
-          {
-            "type": "link",
             "label": "Address (Account ID)",
-            "href": "/zh-CN/concepts/basics/accounts/account-id",
-            "docId": "concepts/basics/accounts/account-id",
+            "href": "/zh-CN/concepts/protocol/account-id",
+            "docId": "concepts/protocol/account-id",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Access Keys",
-            "href": "/zh-CN/concepts/basics/accounts/access-keys",
-            "docId": "concepts/basics/accounts/access-keys",
+            "href": "/zh-CN/concepts/protocol/access-keys",
+            "docId": "concepts/protocol/access-keys",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Smart Contract",
-            "href": "/zh-CN/concepts/basics/accounts/smartcontract",
-            "docId": "concepts/basics/accounts/smartcontract",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "State",
-            "href": "/zh-CN/concepts/basics/accounts/state",
-            "docId": "concepts/basics/accounts/state",
-            "unlisted": false
-          },
-          {
-            "type": "html",
-            "value": "<hr/>"
-          },
-          {
-            "type": "link",
-            "label": "Creating Accounts",
-            "href": "/zh-CN/concepts/basics/accounts/creating-accounts",
-            "docId": "concepts/basics/accounts/creating-accounts",
+            "href": "/zh-CN/concepts/protocol/smartcontract",
+            "docId": "concepts/protocol/smartcontract",
             "unlisted": false
           }
         ],
         "collapsed": true,
-        "collapsible": true
+        "collapsible": true,
+        "href": "/zh-CN/concepts/protocol/account-model"
       },
       {
         "type": "category",
@@ -91,36 +67,29 @@
         "items": [
           {
             "type": "link",
-            "label": "Overview",
-            "href": "/zh-CN/concepts/basics/transactions/overview",
-            "docId": "concepts/basics/transactions/overview",
+            "label": "Anatomy of a Transaction",
+            "href": "/zh-CN/concepts/protocol/transaction-anatomy",
+            "docId": "concepts/protocol/transaction-anatomy",
             "unlisted": false
           },
           {
-            "type": "category",
-            "label": "Gas",
-            "items": [
-              {
-                "type": "link",
-                "label": "Gas",
-                "href": "/zh-CN/concepts/basics/transactions/gas",
-                "docId": "concepts/basics/transactions/gas",
-                "unlisted": false
-              },
-              {
-                "type": "link",
-                "label": "Gas - Advanced",
-                "href": "/zh-CN/concepts/basics/transactions/gas-advanced",
-                "docId": "concepts/basics/transactions/gas-advanced",
-                "unlisted": false
-              }
-            ],
-            "collapsed": true,
-            "collapsible": true
+            "type": "link",
+            "label": "Gas (Execution Fees)",
+            "href": "/zh-CN/concepts/protocol/gas",
+            "docId": "concepts/protocol/gas",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Lifecycle of a Transaction",
+            "href": "/zh-CN/concepts/protocol/transaction-execution",
+            "docId": "concepts/protocol/transaction-execution",
+            "unlisted": false
           }
         ],
         "collapsed": true,
-        "collapsible": true
+        "collapsible": true,
+        "href": "/zh-CN/concepts/protocol/transactions"
       },
       {
         "type": "category",
@@ -196,25 +165,84 @@
         "collapsible": true
       },
       {
+        "type": "category",
+        "label": "Network",
+        "items": [
+          {
+            "type": "link",
+            "label": "Validators",
+            "href": "/zh-CN/concepts/basics/validators",
+            "docId": "concepts/basics/validators",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Networks",
+            "href": "/zh-CN/concepts/basics/networks",
+            "docId": "concepts/basics/networks",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Epoch",
+            "href": "/zh-CN/concepts/basics/epoch",
+            "docId": "concepts/basics/epoch",
+            "unlisted": false
+          }
+        ],
+        "collapsed": true,
+        "collapsible": true
+      },
+      {
+        "type": "html",
+        "value": "<hr/>"
+      },
+      {
+        "type": "html",
+        "value": "<span class='menu__link'><b><small> Chain Abstraction ✨</small></b></span>"
+      },
+      {
         "type": "link",
-        "label": "Validators",
-        "href": "/zh-CN/concepts/basics/validators",
-        "docId": "concepts/basics/validators",
+        "label": "Introduction",
+        "href": "/zh-CN/concepts/abstraction/introduction",
+        "docId": "concepts/abstraction/introduction",
         "unlisted": false
       },
       {
         "type": "link",
-        "label": "Networks",
-        "href": "/zh-CN/concepts/basics/networks",
-        "docId": "concepts/basics/networks",
+        "label": "Meta Transactions",
+        "href": "/zh-CN/concepts/abstraction/meta-transactions",
+        "docId": "concepts/abstraction/meta-transactions",
         "unlisted": false
       },
       {
         "type": "link",
-        "label": "Epoch",
-        "href": "/zh-CN/concepts/basics/epoch",
-        "docId": "concepts/basics/epoch",
+        "label": "Relayers",
+        "href": "/zh-CN/concepts/abstraction/relayers",
+        "docId": "concepts/abstraction/relayers",
         "unlisted": false
+      },
+      {
+        "type": "category",
+        "label": "Chain Signatures",
+        "items": [
+          {
+            "type": "link",
+            "label": "What are Chain Signatures?",
+            "href": "/zh-CN/concepts/abstraction/chain-signatures",
+            "docId": "concepts/abstraction/chain-signatures",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Use cases",
+            "href": "/zh-CN/concepts/abstraction/signatures/use-cases",
+            "docId": "concepts/abstraction/signatures/use-cases",
+            "unlisted": false
+          }
+        ],
+        "collapsed": true,
+        "collapsible": true
       },
       {
         "type": "html",
@@ -285,9 +313,7 @@
       {
         "type": "link",
         "label": "Papers",
-        "href": "/zh-CN/concepts/advanced/papers",
-        "docId": "concepts/advanced/papers",
-        "unlisted": false
+        "href": "https://near.org/papers"
       },
       {
         "type": "html",
@@ -347,11 +373,91 @@
       },
       {
         "type": "html",
+        "value": "<span class='menu__link'><b><small> Chain Abstraction ✨ </small></b></span>"
+      },
+      {
+        "type": "link",
+        "label": "What is Chain Abstraction?",
+        "href": "/zh-CN/abstraction/what-is",
+        "docId": "abstraction/what-is",
+        "unlisted": false
+      },
+      {
+        "type": "category",
+        "label": "Chain Abstraction Services",
+        "items": [
+          {
+            "type": "link",
+            "label": "Building a Relayer",
+            "href": "/zh-CN/develop/relayers/build-relayer",
+            "docId": "develop/relayers/build-relayer",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "FastAuth (Email Login)",
+            "href": "/zh-CN/tools/fastauth-sdk",
+            "docId": "tools/fastauth-sdk",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Cross-Chain Signatures",
+            "href": "/zh-CN/abstraction/chain-signatures",
+            "docId": "abstraction/chain-signatures",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Wallet Chain Key Rules",
+            "href": "/zh-CN/abstraction/chain-signatures/wallet",
+            "docId": "abstraction/chain-signatures/wallet",
+            "unlisted": false
+          },
+          {
+            "type": "category",
+            "label": "Multichain Gas Relayer",
+            "items": [
+              {
+                "type": "link",
+                "label": "Multichain Relayer Server",
+                "href": "/zh-CN/develop/relayers/multichain-server",
+                "docId": "develop/relayers/multichain-server",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Multichain Gas Station",
+                "href": "/zh-CN/develop/relayers/gas-station",
+                "docId": "develop/relayers/gas-station",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Relayer + Gas Station",
+                "href": "/zh-CN/develop/relayers/relayer-gas-example",
+                "docId": "develop/relayers/relayer-gas-example",
+                "unlisted": false
+              }
+            ],
+            "collapsed": true,
+            "collapsible": true
+          }
+        ],
+        "collapsed": true,
+        "collapsible": true
+      },
+      {
+        "type": "html",
+        "value": "<hr/>"
+      },
+      {
+        "type": "html",
         "value": "<span class='menu__link'><b><small> Smart Contracts </small></b></span>"
       },
       {
         "type": "link",
-        "label": "What is a Smart Contract?",
+        "label": "What is a Contract?",
         "href": "/zh-CN/develop/contracts/whatisacontract",
         "docId": "develop/contracts/whatisacontract",
         "unlisted": false
@@ -362,7 +468,7 @@
         "items": [
           {
             "type": "link",
-            "label": "⭐ Quickstart",
+            "label": "Quickstart ✨",
             "href": "/zh-CN/develop/contracts/quickstart",
             "docId": "develop/contracts/quickstart",
             "unlisted": false
@@ -455,7 +561,7 @@
               },
               {
                 "type": "link",
-                "label": "Integration Test",
+                "label": "Integration Tests",
                 "href": "/zh-CN/develop/testing/integration-test",
                 "docId": "develop/testing/integration-test",
                 "unlisted": false
@@ -602,7 +708,7 @@
       },
       {
         "type": "link",
-        "label": "⭐ Overview",
+        "label": "What is a Component?",
         "href": "/zh-CN/bos/tutorial/quickstart",
         "docId": "bos/tutorial/quickstart",
         "unlisted": false
@@ -613,7 +719,7 @@
         "items": [
           {
             "type": "link",
-            "label": "Dev Environments",
+            "label": "Choose your Dev Environment",
             "href": "/zh-CN/bos/dev/intro",
             "docId": "bos/dev/intro",
             "unlisted": false
@@ -735,19 +841,12 @@
             "unlisted": false
           },
           {
-            "type": "link",
-            "label": "Building a Relayer",
-            "href": "/zh-CN/develop/relayers/build-relayer",
-            "docId": "develop/relayers/build-relayer",
-            "unlisted": false
-          },
-          {
             "type": "category",
             "label": "Backend",
             "items": [
               {
                 "type": "link",
-                "label": "Login with NEAR",
+                "label": "Authenticate NEAR Users",
                 "href": "/zh-CN/develop/integrate/backend-login",
                 "docId": "develop/integrate/backend-login",
                 "unlisted": false
@@ -1114,7 +1213,7 @@
     "tutorials": [
       {
         "type": "link",
-        "label": "Examples & Tutorials",
+        "label": "Home",
         "href": "/zh-CN/tutorials/welcome",
         "docId": "tutorials/welcome",
         "unlisted": false
@@ -1201,7 +1300,7 @@
       },
       {
         "type": "link",
-        "label": "Frontend Multiple Contracts",
+        "label": "Frontend & Multiple Contracts",
         "href": "/zh-CN/tutorials/examples/frontend-multiple-contracts",
         "docId": "tutorials/examples/frontend-multiple-contracts",
         "unlisted": false
@@ -1850,23 +1949,6 @@
         "collapsible": true
       }
     ],
-    "primitives": [
-      {
-        "type": "link",
-        "label": "Home",
-        "href": "/zh-CN/primitives/welcome",
-        "docId": "primitives/welcome",
-        "unlisted": false
-      },
-      {
-        "type": "html",
-        "value": "<hr/>"
-      },
-      {
-        "type": "html",
-        "value": "<span class='menu__link'><b><small> Standards </small></b></span>"
-      }
-    ],
     "tools": [
       {
         "type": "link",
@@ -2417,13 +2499,6 @@
           },
           {
             "type": "link",
-            "label": "FastAuth SDK",
-            "href": "/zh-CN/tools/fastauth-sdk",
-            "docId": "tools/fastauth-sdk",
-            "unlisted": false
-          },
-          {
-            "type": "link",
             "label": "Remix IDE Plugin",
             "href": "https://docs.welldonestudio.io/code/getting-started"
           }
@@ -2443,6 +2518,11 @@
         "type": "link",
         "label": "Wallets",
         "href": "https://wallet.near.org"
+      },
+      {
+        "type": "link",
+        "label": "Testnet Faucet",
+        "href": "https://near-faucet.io/"
       },
       {
         "type": "link",
@@ -2642,6 +2722,13 @@
           },
           {
             "type": "link",
+            "label": "Arbitrum Nitro",
+            "href": "/zh-CN/data-availability/arbitrum",
+            "docId": "data-availability/arbitrum",
+            "unlisted": false
+          },
+          {
+            "type": "link",
             "label": "Optimism",
             "href": "/zh-CN/data-availability/optimism",
             "docId": "data-availability/optimism",
@@ -2749,6 +2836,24 @@
     ]
   },
   "docs": {
+    "abstraction/chain-signatures": {
+      "id": "abstraction/chain-signatures",
+      "title": "Cross-Chain Signatures",
+      "description": "Chain Signatures unlock the ability for a single account to transact across multiple blockchain protocols, giving ownership of cross-chain accounts, data, and assets to one NEAR account.",
+      "sidebar": "build"
+    },
+    "abstraction/chain-signatures/wallet": {
+      "id": "abstraction/chain-signatures/wallet",
+      "title": "Wallet Chain Key Rules",
+      "description": "Overview",
+      "sidebar": "build"
+    },
+    "abstraction/what-is": {
+      "id": "abstraction/what-is",
+      "title": "What is Chain Abstraction?",
+      "description": "The idea behind chain abstraction is quite simple: blockchain technology should be abstracted away from the user experience. In other words, people should not realize when they are using a blockchain, nor which blockchain they are using.",
+      "sidebar": "build"
+    },
     "api/rpc/access-keys": {
       "id": "api/rpc/access-keys",
       "title": "Access Keys",
@@ -2869,8 +2974,8 @@
     },
     "bos/dev/intro": {
       "id": "bos/dev/intro",
-      "title": "Dev Environments",
-      "description": "Building, deploying, and collaborating within a new framework can be challenging. The NEAR community has created helpful workflows using new tools to simplify your development workflow.",
+      "title": "Choose your Dev Environment",
+      "description": "The environments in which you can develop Components are divided into two categories:",
       "sidebar": "build"
     },
     "bos/dev/vscode": {
@@ -3012,7 +3117,7 @@
     },
     "bos/tutorial/quickstart": {
       "id": "bos/tutorial/quickstart",
-      "title": "Hello Components",
+      "title": "What are NEAR Components?",
       "description": "NEAR Components are a new way to build web applications. They are composable, reusable and decentralized.",
       "sidebar": "build"
     },
@@ -3021,6 +3126,41 @@
       "title": "Using IFrames",
       "description": "In this tutorial you'll learn how to use the iframe VM tag and the Iframe resizer library, so you can embed external HTML or use custom DOM elements when building NEAR components. You can use it along the rest of approved VM tags to simplify your component development.",
       "sidebar": "tutorials"
+    },
+    "concepts/abstraction/chain-signatures": {
+      "id": "concepts/abstraction/chain-signatures",
+      "title": "Chain Signatures",
+      "description": "Chain Signatures unlock the ability for a single account to transact across multiple blockchain protocols, giving ownership of cross-chain accounts, data, and assets to one NEAR account.",
+      "sidebar": "concepts"
+    },
+    "concepts/abstraction/introduction": {
+      "id": "concepts/abstraction/introduction",
+      "title": "Chain Abstraction",
+      "description": "Do you know how your favorite apps are built and which database they use?. Chances are not, since we choose apps based on their functionality, and not their underlying tech.",
+      "sidebar": "concepts"
+    },
+    "concepts/abstraction/meta-transactions": {
+      "id": "concepts/abstraction/meta-transactions",
+      "title": "Meta Transactions",
+      "description": "NEP-366 introduced the concept of meta",
+      "sidebar": "concepts"
+    },
+    "concepts/abstraction/mpc": {
+      "id": "concepts/abstraction/mpc",
+      "title": "Multi-Party Computation (MPC)",
+      "description": "MPC, or multi-party computation, is about how multiple parties can do shared computations on private inputs without revealing the private data."
+    },
+    "concepts/abstraction/relayers": {
+      "id": "concepts/abstraction/relayers",
+      "title": "Relayers",
+      "description": "A relayer is a simple web service that receives transactions from NEAR users, and relays them to the network while attaching tokens to cover their GAS expenses. In this document we present a high-level overview on how relayers work. Please check the build a relayer page if you want to learn how to build your own relayer.",
+      "sidebar": "concepts"
+    },
+    "concepts/abstraction/signatures/use-cases": {
+      "id": "concepts/abstraction/signatures/use-cases",
+      "title": "Use cases for Chain Signatures",
+      "description": "Chain signatures enable you to implement multichain and cross-chain workflows in a simple way.",
+      "sidebar": "concepts"
     },
     "concepts/advanced/indexers": {
       "id": "concepts/advanced/indexers",
@@ -3040,12 +3180,6 @@
       "description": "https://github.com/near/near-lake-framework/",
       "sidebar": "concepts"
     },
-    "concepts/advanced/papers": {
-      "id": "concepts/advanced/papers",
-      "title": "Papers",
-      "description": "加入我们，和我们一起深入探索我们的技术吧。",
-      "sidebar": "concepts"
-    },
     "concepts/advanced/specification": {
       "id": "concepts/advanced/specification",
       "title": "NEAR Protocol Specification",
@@ -3056,47 +3190,6 @@
       "id": "concepts/advanced/vm",
       "title": "Virtual Machine",
       "description": "Talk about execution here"
-    },
-    "concepts/basics/accounts/access-keys": {
-      "id": "concepts/basics/accounts/access-keys",
-      "title": "Access Keys",
-      "description": "In blockchain, using an account refers to using a private key to sign transactions.",
-      "sidebar": "concepts"
-    },
-    "concepts/basics/accounts/account-id": {
-      "id": "concepts/basics/accounts/account-id",
-      "title": "Address (Account ID)",
-      "description": "Every NEAR account is identified by a specific address. Based on their name, two types of accounts can be distinguished:",
-      "sidebar": "concepts"
-    },
-    "concepts/basics/accounts/creating-accounts": {
-      "id": "concepts/basics/accounts/creating-accounts",
-      "title": "Creating Accounts",
-      "description": "The simplest way to create NEAR accounts is through the NEAR Wallet, however, you can also create accounts using local tools.",
-      "sidebar": "concepts"
-    },
-    "concepts/basics/accounts/model": {
-      "id": "concepts/basics/accounts/model",
-      "title": "Account Model",
-      "description": "In order to join the NEAR ecosystem, users need to create an account. NEAR accounts are unique when compared to other blockchain ecosystems.",
-      "sidebar": "concepts"
-    },
-    "concepts/basics/accounts/smartcontract": {
-      "id": "concepts/basics/accounts/smartcontract",
-      "title": "Smart Contract",
-      "description": "Smart contracts are pieces of executable code stored in the account's state that have their own storage, and perform transactions in the account's name.",
-      "sidebar": "concepts"
-    },
-    "concepts/basics/accounts/state": {
-      "id": "concepts/basics/accounts/state",
-      "title": "State",
-      "description": "Each account has an associated state where it stores its metadata and all the contract-related data (contract's code + storage).",
-      "sidebar": "concepts"
-    },
-    "concepts/basics/actors": {
-      "id": "concepts/basics/actors",
-      "title": "Actors of NEAR",
-      "description": "There are 3 main actors interacting to form the NEAR ecosystem:"
     },
     "concepts/basics/epoch": {
       "id": "concepts/basics/epoch",
@@ -3144,24 +3237,6 @@
       "description": "This is the native token used in NEAR Protocol. It has multiple use cases:",
       "sidebar": "concepts"
     },
-    "concepts/basics/transactions/gas": {
-      "id": "concepts/basics/transactions/gas",
-      "title": "Gas",
-      "description": "On every transaction you send to the network NEAR charges you a fee (aka gas fee). This fee is used to indirectly pay the people that keep the network infrastructure, and to incentivize developers of smart contracts.",
-      "sidebar": "concepts"
-    },
-    "concepts/basics/transactions/gas-advanced": {
-      "id": "concepts/basics/transactions/gas-advanced",
-      "title": "Gas - Advanced",
-      "description": "Costs of complex actions",
-      "sidebar": "concepts"
-    },
-    "concepts/basics/transactions/overview": {
-      "id": "concepts/basics/transactions/overview",
-      "title": "Transactions",
-      "description": "NEAR is asynchronous by design. While it opens a wide range of possibilities for smart contracts implementations, it may also add to confusion among beginners and newcomers from other blockchain platforms. Transactions in NEAR may contain actions that do asynchronous work, in such cases keep in mind the possible outcomes of success or failure of the transaction. For example, if a transaction contains a cross-contract call, it may be marked as successful, but the other contract execution might fail. This article covers possible scenarios for this.",
-      "sidebar": "concepts"
-    },
     "concepts/basics/validators": {
       "id": "concepts/basics/validators",
       "title": "Validators",
@@ -3184,6 +3259,54 @@
       "id": "concepts/data-flow/token-transfer-flow",
       "title": "Token Transfer flow",
       "description": "In the previous article we saw an example of token transfer between accounts found in different shards. That example was simplified and missed a few steps in the process. That was intentional, to keep the article and the video short yet explanatory, in order to give you a bigger picture for understanding concepts.",
+      "sidebar": "concepts"
+    },
+    "concepts/protocol/access-keys": {
+      "id": "concepts/protocol/access-keys",
+      "title": "Access Keys",
+      "description": "In all blockchains, users control their accounts by holding a private key (a secret only they know) and using it to sign transactions.",
+      "sidebar": "concepts"
+    },
+    "concepts/protocol/account-id": {
+      "id": "concepts/protocol/account-id",
+      "title": "Address (Account ID)",
+      "description": "NEAR accounts are identified by a unique address, which take one of two forms:",
+      "sidebar": "concepts"
+    },
+    "concepts/protocol/account-model": {
+      "id": "concepts/protocol/account-model",
+      "title": "NEAR Accounts",
+      "description": "Users participate in the NEAR ecosystem through their NEAR accounts. These accounts are identified by a unique address, can optionally hold a smart contract, and are controlled through Access Keys.",
+      "sidebar": "concepts"
+    },
+    "concepts/protocol/gas": {
+      "id": "concepts/protocol/gas",
+      "title": "Gas (Execution Fees)",
+      "description": "On every transaction the NEAR network charges a tiny fee known as gas. This fee is a simple mechanism that allows us to:",
+      "sidebar": "concepts"
+    },
+    "concepts/protocol/smartcontract": {
+      "id": "concepts/protocol/smartcontract",
+      "title": "Smart Contract",
+      "description": "Smart contracts are pieces of executable code that live in a NEAR account. They can store data, perform transactions in the account’s name, and expose methods so other accounts can interact with them.",
+      "sidebar": "concepts"
+    },
+    "concepts/protocol/transaction-anatomy": {
+      "id": "concepts/protocol/transaction-anatomy",
+      "title": "Anatomy of a Transaction",
+      "description": "A transaction is a request from a user to the network to perform a set of actions. To create a transaction, the user must specify the following fields:",
+      "sidebar": "concepts"
+    },
+    "concepts/protocol/transaction-execution": {
+      "id": "concepts/protocol/transaction-execution",
+      "title": "Lifecycle of a Transaction",
+      "description": "Transactions are constructed by users to express the intent of performing actions in the network. Once in the network, transactions are converted into Receipts, which are messages exchanged between network nodes.",
+      "sidebar": "concepts"
+    },
+    "concepts/protocol/transactions": {
+      "id": "concepts/protocol/transactions",
+      "title": "Transactions",
+      "description": "Users interact with NEAR by creating transactions. Specifically, user's use their account's private keys to sign transactions, which are then broadcasted and processed by the network.",
       "sidebar": "concepts"
     },
     "concepts/storage/data-storage": {
@@ -3240,6 +3363,12 @@
       "description": "Welcome! Here we will explain you what NEAR Protocol is, its components, and how it works.",
       "sidebar": "concepts"
     },
+    "data-availability/arbitrum": {
+      "id": "data-availability/arbitrum",
+      "title": "Arbitrum Nitro",
+      "description": "To support Arbitrum Nitro, we have integrated a small plugin into the DAC daserver. This is much like our http sidecar and provides a very modular integration into NEAR DA whilst supporting Arbitrum",
+      "sidebar": "data-availability"
+    },
     "data-availability/blob-contract": {
       "id": "data-availability/blob-contract",
       "title": "Blob Store Contract",
@@ -3255,7 +3384,7 @@
     "data-availability/integrations": {
       "id": "data-availability/integrations",
       "title": "Integrations",
-      "description": "We have some proof of concept works for integrating with rollups. We are working to prove the system's capabilities and provide a reference implementation for others to follow.",
+      "description": "We have some proof of concept works for integrating with roll-ups. We are working to prove the system's capabilities and provide a reference implementation for others to follow.",
       "sidebar": "data-availability"
     },
     "data-availability/light-client": {
@@ -3398,12 +3527,12 @@
     "develop/contracts/welcome": {
       "id": "develop/contracts/welcome",
       "title": "NEAR Smart Contracts",
-      "description": "Welcome! Here you will find documentation on how to develop a smart contract on NEAR."
+      "description": "Welcome! Smart contracts are pieces of executable code that live in a NEAR account. They can store data, perform transactions in the account’s name, and expose methods so other accounts can interact with them."
     },
     "develop/contracts/whatisacontract": {
       "id": "develop/contracts/whatisacontract",
       "title": "What is a Smart Contract?",
-      "description": "Smart contracts are simple programs that live in a NEAR network. As any modern application, smart contracts store data and expose methods to interact with them.",
+      "description": "Smart contracts are pieces of executable code that live in a NEAR account. They can store data, perform transactions in the account’s name, and expose methods so other accounts can interact with them.",
       "sidebar": "build"
     },
     "develop/deploy": {
@@ -3419,7 +3548,7 @@
     },
     "develop/integrate/backend-login": {
       "id": "develop/integrate/backend-login",
-      "title": "Login with NEAR",
+      "title": "Authenticate NEAR Users",
       "description": "Recently NEAR has approved a new standard that, among other things, enables users to authenticate into a backend service.",
       "sidebar": "build"
     },
@@ -3533,6 +3662,24 @@
       "description": "This guide will walk you through the steps required to construct a meta transaction relayer using NextJS 13.",
       "sidebar": "build"
     },
+    "develop/relayers/gas-station": {
+      "id": "develop/relayers/gas-station",
+      "title": "Multichain Gas Station Contract",
+      "description": "The multichain gas station smart contract accepts payments in NEAR tokens in exchange for gas funding on non-NEAR foreign chains. Part of the NEAR Multichain effort, it works in conjunction with the MPC recovery service to generate on-chain signatures.",
+      "sidebar": "build"
+    },
+    "develop/relayers/multichain-server": {
+      "id": "develop/relayers/multichain-server",
+      "title": "Multichain Relayer Server",
+      "description": "The Multichain Relayer Server facilitates cross-chain transactions and enables Chain Abstraction.",
+      "sidebar": "build"
+    },
+    "develop/relayers/relayer-gas-example": {
+      "id": "develop/relayers/relayer-gas-example",
+      "title": "Multichain Relayer and Gas Station example",
+      "description": "This technology is currently in Alpha and should only be used in a testnet environment.",
+      "sidebar": "build"
+    },
     "develop/relevant-contracts/dao": {
       "id": "develop/relevant-contracts/dao",
       "title": "Decentralized Autonomous Organizations",
@@ -3555,7 +3702,7 @@
     },
     "develop/testing/integration-test": {
       "id": "develop/testing/integration-test",
-      "title": "Integration Test",
+      "title": "Integration Tests",
       "description": "Integration tests enable to deploy your contract in the NEAR testnet or a local sandbox, and create test-users to interact with it. In this way, you can thoroughly test your contract in a realistic environment.",
       "sidebar": "build"
     },
@@ -3591,8 +3738,8 @@
     },
     "develop/welcome": {
       "id": "develop/welcome",
-      "title": "Developer Documentation",
-      "description": "Welcome! Here you will find documentation on how to develop decentralized apps using NEAR.",
+      "title": "Build on NEAR",
+      "description": "Welcome! Here you will find all the information on what you can build on NEAR and how to build it. Do not worry if you are new to Web3 or Blockchain, we are here to guide you through the process of learning.",
       "sidebar": "build"
     },
     "develop/whataredatasolutions": {
@@ -4172,12 +4319,6 @@
       "description": "Oracles are smart contracts that enable you to query the current price of an asset.",
       "sidebar": "build"
     },
-    "primitives/welcome": {
-      "id": "primitives/welcome",
-      "title": "NEAR Primitives",
-      "description": "Welcome! Here you will find blockchain primitives such as Fungible Tokens (FT), Non Fungible Tokens (NFT), Decentralized autonomous organizations (DAO), and more.",
-      "sidebar": "primitives"
-    },
     "primitives/whatareprimitives": {
       "id": "primitives/whatareprimitives",
       "title": "What are Primitives?",
@@ -4288,7 +4429,7 @@
     "sdk/js/testing/integration-tests": {
       "id": "sdk/js/testing/integration-tests",
       "title": "Integration Tests",
-      "description": "NEAR Simulator was meant to be an in-place replacement of a blockchain environment for the purpose of testing NEAR contracts. However, simulating NEAR ledger turned out to be a much more complex endeavor than was anticipated. Eventually, the idea of workspaces was born - a library for automating workflows and writing tests for NEAR smart contracts using a real NEAR network (localnet, testnet or mainnet). Thus, NEAR Simulator is being deprecated in favor of workspaces-rs, the Rust edition of workspaces. As the two libraries have two vastly different APIs this guide was created to ease the migration process for developers.",
+      "description": "We place integration tests in JS in a separate directory at the same level as /src, called /integration-tests (read more), placing this folder within a /tests folder at root-level that contains the unit tests folder would also be plausible. Refer to this folder structure below:",
       "sidebar": "tools"
     },
     "sdk/js/testing/unit-tests": {
@@ -4426,7 +4567,7 @@
     "sdk/rust/testing/integration-tests": {
       "id": "sdk/rust/testing/integration-tests",
       "title": "Integration Tests",
-      "description": "Note: Simulation tests are no longer actively supported. NEAR Simulator was meant to be an in-place replacement of a blockchain environment for the purpose of testing NEAR contracts. However, simulating NEAR ledger turned out to be a much more complex endeavor than was anticipated. Eventually, the idea of workspaces was born - a library for automating workflows and writing tests for NEAR smart contracts using a real NEAR network (localnet, testnet or mainnet). Thus, NEAR Simulator is being deprecated in favor of workspaces-rs, the Rust edition of workspaces. As the two libraries have two vastly different APIs this guide was created to ease the migration process for developers.",
+      "description": "Unit Tests vs. Integration Tests",
       "sidebar": "tools"
     },
     "sdk/rust/testing/unit-tests": {
@@ -4470,8 +4611,8 @@
     "tools/fastauth-sdk": {
       "id": "tools/fastauth-sdk",
       "title": "FastAuth SDK",
-      "description": "Introduction",
-      "sidebar": "tools"
+      "description": "FastAuth is a key management system that allows users to recover or sign-up for a NEAR account using their email address. Furthermore, it allows to subsidize gas for a certain smart contract, so users can interact with it without having to fund their account.",
+      "sidebar": "build"
     },
     "tools/indexer-for-explorer": {
       "id": "tools/indexer-for-explorer",
@@ -4704,7 +4845,7 @@
     "tutorials/examples/donation": {
       "id": "tutorials/examples/donation",
       "title": "Donation",
-      "description": "Our donation example enables to forward money to an account while keeping track of it. It is one of the simplest examples on making a contract receive and send money, and the perfect gateway to enter the world of decentralized finance.",
+      "description": "Our donation example enables to forward money to an account while keeping track of it. It is one of the simplest examples on making a contract handle tranfers.",
       "sidebar": "tutorials"
     },
     "tutorials/examples/escrow": {
@@ -4720,7 +4861,7 @@
     },
     "tutorials/examples/frontend-multiple-contracts": {
       "id": "tutorials/examples/frontend-multiple-contracts",
-      "title": "Frontend Multiple Contracts",
+      "title": "Frontend Interacting with Multiple Contracts",
       "description": "This example showcases how to interact with multiple contracts from a single frontend.",
       "sidebar": "tutorials"
     },

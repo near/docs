@@ -24,22 +24,22 @@ sidebar_label: 소개
 
 다음은 **_Zero_** to **_Hero_**로 순식간에 데려다 줄 단계입니다! 💪
 
-| 단계 | 이름                                                  | 설명                                                                         |
-| -- | --------------------------------------------------- | -------------------------------------------------------------------------- |
-| 1  | [사전 배포된 컨트랙트](/tutorials/nfts/predeployed-contract) | 스마트 컨트랙트를 코딩, 생성 또는 배포할 필요 없이 NFT를 생성합니다.                                  |
-| 2  | [컨트랙트 아키텍처](/tutorials/nfts/skeleton)               | NFT 스마트 컨트랙트의 기본 아키텍처를 배우고 코드를 컴파일합니다.                                     |
-| 3  | [발행](/tutorials/nfts/minting)                       | 뼈대에 살을 채워 넣어 스마트 컨트랙트가 대체 불가능 토큰을 발행할 수 있도록 합니다.                           |
-| 4  | [컨트랙트 업그레이드](/tutorials/nfts/upgrade-contract)      | 기존 스마트 컨트랙트를 업그레이드하는 프로세스에 대해 알아보세요.                                       |
-| 5  | [Enumeration](/tutorials/nfts/enumeration)          | 스마트 컨트랙트의 상태를 반환하는 데 사용할 수 있는 열거 메서드를 살펴보세요.                               |
-| 6  | [핵심](/tutorials/nfts/core)                          | 토큰 전송을 허용하는 핵심 표준을 사용하여 NFT 컨트랙트 확장                                        |
-| 7  | [승인](/tutorials/nfts/approvals)                     | 다른 계정이 당신을 대신하여 NFT를 전송할 수 있도록 컨트랙트를 확장하세요.                                |
-| 8  | [로열티](/tutorials/nfts/royalty)                      | NFT 로열티를 추가하여 일정 비율의 금액을 토큰 생성자에게 지급할 수 있습니다.                              |
-| 9  | [마켓플레이스](/tutorials/nfts/marketplace)               | 일반 마켓플레이스가 NEAR에서 작동하는 방식에 대해 알아보고, NFT 구매 및 판매를 허용하는 일부 코드에 대해 자세히 알아보세요. |
+| 단계 | 이름                                                  | 설명                                                                                                                      |
+| -- | --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| 1  | [사전 배포된 컨트랙트](/tutorials/nfts/predeployed-contract) | 스마트 컨트랙트를 코딩, 생성 또는 배포할 필요 없이 NFT를 생성합니다.                                                                               |
+| 2  | [컨트랙트 아키텍처](/tutorials/nfts/skeleton)               | NFT 스마트 컨트랙트의 기본 아키텍처를 배우고 코드를 컴파일합니다.                                                                                  |
+| 3  | [발행](/tutorials/nfts/minting)                       | 뼈대에 살을 채워 넣어 스마트 컨트랙트가 대체 불가능 토큰을 발행할 수 있도록 합니다.                                                                        |
+| 4  | [컨트랙트 업그레이드](/tutorials/nfts/upgrade-contract)      | 기존 스마트 컨트랙트를 업그레이드하는 프로세스에 대해 알아보세요.                                                                                    |
+| 5  | [Enumeration](/tutorials/nfts/enumeration)          | 스마트 컨트랙트의 상태를 반환하는 데 사용할 수 있는 열거 메서드를 살펴보세요.                                                                            |
+| 6  | [핵심](/tutorials/nfts/core)                          | Extend the NFT contract using the core standard which allows token transfer.                                            |
+| 7  | [승인](/tutorials/nfts/approvals)                     | 다른 계정이 당신을 대신하여 NFT를 전송할 수 있도록 컨트랙트를 확장하세요.                                                                             |
+| 8  | [로열티](/tutorials/nfts/royalty)                      | NFT 로열티를 추가하여 일정 비율의 금액을 토큰 생성자에게 지급할 수 있습니다.                                                                           |
+| 9  | [마켓플레이스](/tutorials/nfts/marketplace)               | Learn about how common marketplaces operate on NEAR and dive into some of the code that allows buying and selling NFTs. |
 
 
 <!--
 1. [Events](/tutorials/nfts/events): in this tutorial you'll explore the events extension, allowing the contract to react on certain events.
-1. [Marketplace](/tutorials/nfts/marketplace): in the last tutorial you'll be exploring some key aspects of the marketplace contract.
+2. [Marketplace](/tutorials/nfts/marketplace): in the last tutorial you'll be exploring some key aspects of the marketplace contract.
 -->
 
 ---

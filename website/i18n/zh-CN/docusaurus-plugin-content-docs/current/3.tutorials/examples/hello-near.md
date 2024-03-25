@@ -16,18 +16,20 @@ import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 ## Starting Hello NEAR
 
 You have two options to start Hello NEAR:
+
 1. **Recommended:** use the app through Gitpod (a web-based interactive environment)
 2. Start the project locally by using `create-near-app`, our node-based utility.
 
 #### Gitpod
+
 Hello NEAR is available in gitpod. When selecting one, a new tab will open in your browser with a web-based IDE. Give it a minute to compile and deploy the contract, and then a frontend will pop-up for you to interact with the app (make sure the pop-up window is not blocked).
 
 | 🌐 JavaScript              | 🦀 Rust                    |
 | ------------------------- | ------------------------- |
 | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-js.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-rust.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> |
 
-
 #### Create Near App (node)
+
 Hello NEAR can be created locally with the help of `create-near-app`. Follow the snippet bellow to create a local project.
 
 ```bash
@@ -39,37 +41,39 @@ and follow the instructions that appear on the screen.
 ---
 
 ## Interacting With Hello NEAR
+
 Go ahead and login with your NEAR account. If you don't have one, you will be able to create one in the moment. Once logged in, change the greeting and see how our Hello NEAR app greets you!
 
-
 ![img](/docs/assets/examples/hello-near.png) *Frontend of Hello NEAR*
-
 
 ---
 
 ## Structure of a dApp
+
 Now that you understand what the dApp does, let us take a closer look to its structure:
 
 1. The frontend code lives in the `/frontend` folder.
 2. The smart contract code is in the `/contract` folder.
 
 ### Contract
+
 The contract presents 2 methods: `set_greeting` and `get_greeting`. The first one stores a `string` in the contract's parameter `greeting`, while the second one retrieves it. By default, the contract returns the message `"Hello"`.
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
-    <Github fname="contract.ts" 
-            url="https://github.com/near-examples/hello-near-js/blob/master/contract/src/contract.ts"
-            start="3" end="18" />
+    <Github fname="contract.ts"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts"
+            start="4" end="18" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/hello-near-rs/blob/main/contract/src/lib.rs"
-            start="23" end="36" />
+            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
+            start="21" end="33" />
   </Language>
 </CodeTabs>
 
 ### Frontend
+
 The frontend is composed by a single HTML file (`/index.html`). This file defines the components displayed in the screen.
 
 The website's logic lives in `/assets/js/index.js`, which communicates with the contract through `/near-interface.js`. You will notice in `/assets/js/index.js` the following code:
@@ -77,8 +81,8 @@ The website's logic lives in `/assets/js/index.js`, which communicates with the 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
-            url="https://github.com/near-examples/hello-near-js/blob/master/frontend/index.js"
-            start="10" end="21" />
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/index.js"
+            start="11" end="21" />
   </Language>
 </CodeTabs>
 
@@ -97,8 +101,8 @@ Unit tests check individual functions in the smart contract. Right now only rust
 <CodeTabs>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/hello-near-rs/blob/main/contract/src/lib.rs"
-            start="46" end="58" />
+            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
+            start="43" end="61" />
   </Language>
 </CodeTabs>
 
@@ -109,8 +113,8 @@ Integration tests are generally written in javascript. They automatically deploy
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="main.ava.ts"
-            url="https://github.com/near-examples/hello-near-js/blob/master/integration-tests/src/main.ava.ts"
-            start="32" end="43" />
+            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/sandbox-ts/src/main.ava.ts"
+            start="33" end="44" />
   </Language>
 </CodeTabs>
 

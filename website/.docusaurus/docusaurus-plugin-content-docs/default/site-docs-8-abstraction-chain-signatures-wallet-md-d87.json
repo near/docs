@@ -1,0 +1,30 @@
+{
+  "id": "abstraction/chain-signatures/wallet",
+  "title": "Wallet Chain Key Rules",
+  "description": "This technology is currently in Alpha and should only be used in a testnet environment.",
+  "source": "@site/../docs/8.abstraction/chain-signatures/wallet.md",
+  "sourceDirName": "8.abstraction/chain-signatures",
+  "slug": "/abstraction/chain-signatures/wallet",
+  "permalink": "/abstraction/chain-signatures/wallet",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/8.abstraction/chain-signatures/wallet.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Josh Ford",
+  "lastUpdatedAt": 1711075977,
+  "formattedLastUpdatedAt": "Mar 22, 2024",
+  "frontMatter": {
+    "id": "wallet",
+    "title": "Wallet Chain Key Rules"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Chain Signatures",
+    "permalink": "/abstraction/chain-signatures"
+  },
+  "next": {
+    "title": "Multichain Relayer Server",
+    "permalink": "/develop/relayers/multichain-server"
+  }
+}

@@ -23,21 +23,21 @@ Simply re-deploy another contract using your preferred tool, for example, using 
   <TabItem value="near-cli">
 
   ```bash
-  # If you already used dev-deploy the same account will be used
-  near dev-deploy --wasmFile <new-contract>
+  # (optional) If you don't have an account, create one
+  near create-account <account-id> --useFaucet
 
-  # If you logged in
-  near deploy <account-id> --wasmFile <new-contract>
+  # Deploy the contract
+  near deploy <account-id> <wasm-file>
   ```
 
   </TabItem>
   <TabItem value="near-cli-rs">
 
   ```bash
-  # If you already used dev-deploy the same account will be used
-  near contract deploy <my-new-dev-account>.testnet use-file <route_to_wasm> without-init-call network-config testnet sign-with-keychain
-
-  # If you logged in
+  # (optional) If you don't have an account, create one
+  near account create-account sponsor-by-faucet-service somrnd.testnet autogenerate-new-keypair save-to-keychain network-config testnet create
+  
+  # Deploy the contract
   near contract deploy <accountId> use-file <route_to_wasm> without-init-call network-config testnet sign-with-keychain send
   ```
   </TabItem>
@@ -110,7 +110,7 @@ However, deploying a contract that **modifies or removes structures**  stored in
 2. Rollback to the previous contract code
 3. Add a method to migrate the contract's state
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### The Migration Method
 If you have no option but to migrate the state, then you need to implement a method that:
@@ -122,7 +122,7 @@ If you have no option but to migrate the state, then you need to implement a met
 This is how DAOs [update themselves](https://github.com/near-daos/sputnik-dao-contract/blob/main/sputnikdao2/src/upgrade.rs#L59)
 :::
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Example: Guest Book Migration
 

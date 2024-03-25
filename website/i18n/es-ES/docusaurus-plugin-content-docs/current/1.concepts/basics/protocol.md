@@ -10,7 +10,7 @@ In technical terms, NEAR is a [layer one](https://blockchain-comparison.com/bloc
 
 In simple terms, NEAR is **blockchain for everyone**.
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ## Why Choose NEAR? {#why-build-on-near}
 NEAR has been developed with a focus on performance and usability, both for developers and users.

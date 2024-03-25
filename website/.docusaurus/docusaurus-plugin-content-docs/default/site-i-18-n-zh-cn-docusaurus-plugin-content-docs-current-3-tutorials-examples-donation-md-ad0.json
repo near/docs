@@ -1,7 +1,7 @@
 {
   "id": "tutorials/examples/donation",
   "title": "Donation",
-  "description": "Our donation example enables to forward money to an account while keeping track of it. It is one of the simplest examples on making a contract receive and send money, and the perfect gateway to enter the world of decentralized finance.",
+  "description": "Our donation example enables to forward money to an account while keeping track of it. It is one of the simplest examples on making a contract handle tranfers.",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/3.tutorials/examples/donation.md",
   "sourceDirName": "3.tutorials/examples",
   "slug": "/tutorials/examples/donation",
@@ -12,8 +12,8 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Github Actions",
-  "lastUpdatedAt": 1704996595,
-  "formattedLastUpdatedAt": "2024年1月11日",
+  "lastUpdatedAt": 1709152665,
+  "formattedLastUpdatedAt": "2024年2月28日",
   "frontMatter": {
     "id": "donation",
     "title": "Donation"

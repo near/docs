@@ -12,16 +12,16 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Github Actions",
-  "lastUpdatedAt": 1704996595,
-  "formattedLastUpdatedAt": "2024년 1월 11일",
+  "lastUpdatedAt": 1709152665,
+  "formattedLastUpdatedAt": "2024년 2월 28일",
   "frontMatter": {
     "id": "data-storage",
     "sidebar_label": "블록체인 데이터"
   },
   "sidebar": "concepts",
   "previous": {
-    "title": "에포크",
-    "permalink": "/ko/concepts/basics/epoch"
+    "title": "Use cases",
+    "permalink": "/ko/concepts/abstraction/signatures/use-cases"
   },
   "next": {
     "title": "인덱서 소개",

@@ -36,7 +36,7 @@ const contract = new Contract(
 );
 ```
 
-[<span class="typedoc-icon typedoc-icon-class"></span> Class `Contract`](https://near.github.io/near-api-js/classes/_near_js_accounts.contract.Contract.html)
+[<span className="typedoc-icon typedoc-icon-class"></span> Class `Contract`](https://near.github.io/near-api-js/classes/_near_js_accounts.contract.Contract.html)
 
 </TabItem>
 <TabItem value="wallet" label="Using Wallet">
@@ -55,7 +55,7 @@ const contract = new Contract(
 );
 ```
 
-[<span class="typedoc-icon typedoc-icon-class"></span> Class `Contract`](https://near.github.io/near-api-js/classes/_near_js_accounts.contract.Contract.html)
+[<span className="typedoc-icon typedoc-icon-class"></span> Class `Contract`](https://near.github.io/near-api-js/classes/_near_js_accounts.contract.Contract.html)
 
 </TabItem>
 </Tabs>
@@ -119,4 +119,4 @@ const response = await contract.view_method_name({ arg_name: "arg_value" });
 </TabItem>
 </Tabs>
 
-[<span class="typedoc-icon typedoc-icon-class"></span> `Contract` 클래스](https://near.github.io/near-api-js/classes/_near_js_accounts.contract.Contract.html)
+[<span className="typedoc-icon typedoc-icon-class"></span> `Contract` 클래스](https://near.github.io/near-api-js/classes/_near_js_accounts.contract.Contract.html)

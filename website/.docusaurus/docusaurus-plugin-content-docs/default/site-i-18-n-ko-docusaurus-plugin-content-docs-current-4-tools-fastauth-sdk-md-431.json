@@ -1,7 +1,7 @@
 {
   "id": "tools/fastauth-sdk",
   "title": "FastAuth SDK",
-  "description": "Introduction",
+  "description": "FastAuth is a key management system that allows users to recover or sign-up for a NEAR account using their email address. Furthermore, it allows to subsidize gas for a certain smart contract, so users can interact with it without having to fund their account.",
   "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/4.tools/fastauth-sdk.md",
   "sourceDirName": "4.tools",
   "slug": "/tools/fastauth-sdk",
@@ -12,20 +12,20 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Github Actions",
-  "lastUpdatedAt": 1706519575,
-  "formattedLastUpdatedAt": "2024년 1월 29일",
+  "lastUpdatedAt": 1709152665,
+  "formattedLastUpdatedAt": "2024년 2월 28일",
   "frontMatter": {
     "id": "fastauth-sdk",
     "title": "FastAuth SDK",
-    "sidebar_label": "FastAuth SDK"
+    "sidebar_label": "FastAuth (Email Login)"
   },
-  "sidebar": "tools",
+  "sidebar": "build",
   "previous": {
-    "title": "NEAR 지갑 선택기",
-    "permalink": "/ko/tools/wallet-selector"
+    "title": "Building a Relayer",
+    "permalink": "/ko/develop/relayers/build-relayer"
   },
   "next": {
-    "title": "Explorers",
-    "permalink": "/ko/tools/explorer"
+    "title": "Cross-Chain Signatures",
+    "permalink": "/ko/abstraction/chain-signatures"
   }
 }

@@ -1,7 +1,7 @@
 {
   "id": "bos/dev/intro",
-  "title": "Dev Environments",
-  "description": "Building, deploying, and collaborating within a new framework can be challenging. The NEAR community has created helpful workflows using new tools to simplify your development workflow.",
+  "title": "Choose your Dev Environment",
+  "description": "The environments in which you can develop Components are divided into two categories:",
   "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/bos/dev/intro.md",
   "sourceDirName": "bos/dev",
   "slug": "/bos/dev/intro",
@@ -12,15 +12,15 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Github Actions",
-  "lastUpdatedAt": 1705334457,
-  "formattedLastUpdatedAt": "15 thg 1, 2024",
+  "lastUpdatedAt": 1709152665,
+  "formattedLastUpdatedAt": "28 thg 2, 2024",
   "frontMatter": {
     "id": "intro",
-    "title": "Dev Environments"
+    "title": "Choose your Dev Environment"
   },
   "sidebar": "build",
   "previous": {
-    "title": "⭐ Overview",
+    "title": "What is a Component?",
     "permalink": "/vi/bos/tutorial/quickstart"
   },
   "next": {

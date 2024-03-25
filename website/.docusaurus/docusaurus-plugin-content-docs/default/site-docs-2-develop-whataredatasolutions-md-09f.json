@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.develop/whataredatasolutions.md",
   "sourceDirName": "2.develop",
   "slug": "/develop/whataredatasolutions",
-  "permalink": "/zh-CN/develop/whataredatasolutions",
+  "permalink": "/develop/whataredatasolutions",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/whataredatasolutions.md",
@@ -13,7 +13,7 @@
   "version": "current",
   "lastUpdatedBy": "gagdiez",
   "lastUpdatedAt": 1707477797,
-  "formattedLastUpdatedAt": "2024年2月9日",
+  "formattedLastUpdatedAt": "Feb 9, 2024",
   "frontMatter": {
     "id": "whataredatasolutions",
     "title": "What is Data Infrastructure?"
@@ -21,10 +21,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Decentralized Exchanges (DEX)",
-    "permalink": "/zh-CN/primitives/dex"
+    "permalink": "/primitives/dex"
   },
   "next": {
     "title": "BigQuery",
-    "permalink": "/zh-CN/bos/queryapi/big-query"
+    "permalink": "/bos/queryapi/big-query"
   }
 }

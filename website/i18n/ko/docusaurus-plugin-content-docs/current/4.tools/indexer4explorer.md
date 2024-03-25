@@ -39,7 +39,7 @@ where r.receiver_account_id ='v1.faucet.nonofficial.testnet'
   and t.transaction_hash = r.originated_from_transaction_hash
 ```
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Users, Status, and Attached Money
 `v1.faucet.nonofficial.testnet` 테스트넷 계정에서 `contribute`를 호출한 모든 사용자, 호출에 첨부된 금액, 그리고 트랜잭션 상태를 쿼리합니다.
@@ -54,7 +54,7 @@ where r.receiver_account_id ='v1.faucet.nonofficial.testnet'
   and r.receipt_id = eo.receipt_id
 ```
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### 보낸 금액
 `v1.faucet.nonofficial.testnet`에서 나가는 모든 전송 데이터를 쿼리합니다.

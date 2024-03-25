@@ -11,9 +11,9 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/data-availability/light-client.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "gagdiez",
-  "lastUpdatedAt": 1699467323,
-  "formattedLastUpdatedAt": "Nov 8, 2023",
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1711026111,
+  "formattedLastUpdatedAt": "Mar 21, 2024",
   "frontMatter": {
     "id": "light-client",
     "title": "Light Client"

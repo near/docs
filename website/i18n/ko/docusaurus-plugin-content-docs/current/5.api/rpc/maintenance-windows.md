@@ -100,7 +100,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
 
 다음은 `maintenance_windows` 메서드에서 반환할 수 있는 오류 변형의 전체 목록입니다.
 
-<table class="custom-stripe">
+<table className="custom-stripe">
   <thead>
     <tr>
       <th>

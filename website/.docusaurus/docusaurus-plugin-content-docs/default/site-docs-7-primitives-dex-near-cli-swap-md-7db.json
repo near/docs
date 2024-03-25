@@ -5,7 +5,7 @@
   "source": "@site/../docs/7.primitives/dex/near-cli/swap.md",
   "sourceDirName": "7.primitives/dex/near-cli",
   "slug": "/primitives/dex/near-cli/swap",
-  "permalink": "/zh-CN/primitives/dex/near-cli/swap",
+  "permalink": "/primitives/dex/near-cli/swap",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/dex/near-cli/swap.md",
@@ -13,6 +13,6 @@
   "version": "current",
   "lastUpdatedBy": "garikbesson",
   "lastUpdatedAt": 1706635251,
-  "formattedLastUpdatedAt": "2024年1月30日",
+  "formattedLastUpdatedAt": "Jan 30, 2024",
   "frontMatter": {}
 }

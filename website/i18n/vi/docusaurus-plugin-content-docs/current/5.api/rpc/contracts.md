@@ -115,7 +115,7 @@ Khi API request không thành công, RPC server sẽ trả về một error resp
 
 Ví dụ:
 
-<table class="custom-stripe">
+<table className="custom-stripe">
   <thead>
     <tr>
       <th>
@@ -177,7 +177,7 @@ Ví dụ:
         </ul>
       </td>
     </tr>
-    <tr class="stripe">
+    <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
       <td>Đã pass các argument mà JSON RPC server không thể parse được (thiếu các argument, sai format, v.v...)</td>
@@ -336,7 +336,7 @@ Khi API request không thành công, RPC server sẽ trả về một error resp
 
 Ví dụ:
 
-<table class="custom-stripe">
+<table className="custom-stripe">
   <thead>
     <tr>
       <th>
@@ -370,7 +370,7 @@ Ví dụ:
         </ul>
       </td>
     </tr>
-    <tr class="stripe">
+    <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
       <td>Đã pass các argument mà JSON RPC server không thể parse được (thiếu các argument, sai format, v.v...)</td>
@@ -500,7 +500,7 @@ Khi API request không thành công, RPC server sẽ trả về một error resp
 
 Ví dụ:
 
-<table class="custom-stripe">
+<table className="custom-stripe">
   <thead>
     <tr>
       <th>
@@ -572,7 +572,7 @@ Ví dụ:
         </ul>
       </td>
     </tr>
-    <tr class="stripe">
+    <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
       <td>Đã pass các argument mà JSON RPC server không thể parse được (thiếu các argument, sai format, v.v...)</td>
@@ -888,7 +888,7 @@ Khi API request không thành công, RPC server sẽ trả về một error resp
 
 Here is the exhaustive list of the error variants that can be returned by `view_state` request type:
 
-<table class="custom-stripe">
+<table className="custom-stripe">
   <thead>
     <tr>
       <th>
@@ -970,7 +970,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
         </ul>
       </td>
     </tr>
-    <tr class="stripe">
+    <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
       <td>Đã pass các argument mà JSON RPC server không thể parse được (thiếu các argument, sai format, v.v...)</td>
@@ -1127,7 +1127,7 @@ Khi API request không thành công, RPC server sẽ trả về một error resp
 
 Here is the exhaustive list of the error variants that can be returned by `EXPERIMENTAL_changes` method:
 
-<table class="custom-stripe">
+<table className="custom-stripe">
   <thead>
     <tr>
       <th>
@@ -1161,7 +1161,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
         </ul>
       </td>
     </tr>
-    <tr class="stripe">
+    <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
       <td>Đã pass các argument mà JSON RPC server không thể parse được (thiếu các argument, sai format, v.v...)</td>
@@ -1301,7 +1301,7 @@ Khi API request không thành công, RPC server sẽ trả về một error resp
 
 Here is the exhaustive list of the error variants that can be returned by `EXPERIMENTAL_changes` method:
 
-<table class="custom-stripe">
+<table className="custom-stripe">
   <thead>
     <tr>
       <th>
@@ -1335,7 +1335,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
         </ul>
       </td>
     </tr>
-    <tr class="stripe">
+    <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
       <td>Đã pass các argument mà JSON RPC server không thể parse được (thiếu các argument, sai format, v.v...)</td>
@@ -1526,7 +1526,7 @@ Khi API request không thành công, RPC server sẽ trả về một error resp
 
 Dưới đây là danh sách đầy đủ các error variant có thể được trả về theo loại request `call_function`:
 
-<table class="custom-stripe">
+<table className="custom-stripe">
   <thead>
     <tr>
       <th>
@@ -1581,7 +1581,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
     </tr>
     <tr>
       <td>CONTRACT_EXECUTION_ERROR</td>
-      <td>Không thực hiện được view method call (bị crash, hết giới hạn 200 TGas mặc định, v.v.)</td>
+      <td>The execution of the view function call failed (crashed, run out of the default 200 TGas limit, etc)</td>
       <td>
         <ul>
           <li>Kiểm tra <code>error.cause.info</code> để biết thêm chi tiết</li>
@@ -1607,7 +1607,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
         </ul>
       </td>
     </tr>
-    <tr class="stripe">
+    <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
       <td>Đã pass các argument mà JSON RPC server không thể parse được (thiếu các argument, sai format, v.v...)</td>

@@ -1,6 +1,6 @@
 ---
 id: integration-test
-title: 통합 테스트(Integration Test)
+title: Integration Tests
 ---
 
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
@@ -15,48 +15,53 @@ import TabItem from '@theme/TabItem';
 2. 콜백에서 에러를 시뮬레이션합니다.
 3. 시간 흐름을 제어하고, 미래로 빠르게 이동합니다(Rust에서는 준비된 기능이고, TS에서는 출시 예정입니다).
 
-### NEAR 작업 공간
-NEAR에서 통합 테스트는 **작업 공간(Workspaces)**라는 프레임워크를 사용하여 구현됩니다. 작업 공간은 [🦀 Rust](https://github.com/near/workspaces-rs) 및 [🌐 Typescript](https://github.com/near/workspaces-js)의 두 가지 유형으로 제공됩니다.
+:::tip NEAR Workspaces
 
-[예제](https://github.com/near-examples/docs-examples) 중 하나를 템플릿으로 사용한 경우, `workspaces-js`를 사용한 통합 테스트가 이미 구현되었으며, 프로젝트의 루트 폴더에서  `yarn test:integration`를 실행하기만 하면 됩니다.
+In NEAR, integration tests are implemented using a framework called **Workspaces**. 작업 공간은 [🦀 Rust](https://github.com/near/workspaces-rs) 및 [🌐 Typescript](https://github.com/near/workspaces-js)의 두 가지 유형으로 제공됩니다.
+
+All of our [examples](https://github.com/near-examples/docs-examples) come with integration testing.
+
+:::
 
 ---
 
 ## 스니펫 I: Hello NEAR 테스트
-[빠른 시작 프로젝트](../quickstart.md) 내 [👋 Hello NEAR](https://github.com/near-examples/hello-near-rs)의 테스트를 살펴보겠습니다. 다음은 컨트랙트를 계정에 배포하고, 올바르게 인사말을 검색하여 설정하는지 테스트하는 예제입니다.
 
-<CodeTabs>
-  <Language value="🌐 - Typescript" language="ts">
-    <Github fname="main.ava.ts"
-            url="https://github.com/near-examples/hello-near-js/blob/master/integration-tests/src/main.ava.ts" start="9" end="43"/>
-  </Language>
-</CodeTabs>
-
----
-## 스니펫 II: 기부 예제 테스트
-대부분의 경우, 여러 사용자 및 송금과 관련된 복잡한 메서드를 테스트하게 될 것입니다. 이에 대한 완벽한 예시로, 다음과 같이 사용자가 수혜자에게 돈을 `donate`할 수 있는 [기부 예제](https://github.com/near-examples/donation-js)가 존재합니다. 이에 대한 통합 테스트를 살펴보겠습니다.
-
+Lets take a look at the test of our [Quickstart Project](../quickstart.md) [👋 Hello NEAR](https://github.com/near-examples/hello-near-examples), where we deploy the contract on an account and test it correctly retrieves and sets the greeting.
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="main.ava.ts"
-            url="https://github.com/near-examples/donation-js/blob/master/integration-tests/src/main.ava.ts"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/sandbox-ts/src/main.ava.ts" start="9" end="43"/>
+  </Language>
+</CodeTabs>
+
+---
+
+## Snippet II: Testing Donations
+
+In most cases we will want to test complex methods involving multiple users and money transfers. A perfect example for this is our [Donation Example](https://github.com/near-examples/donation-examples), which enables users to `donate` money to a beneficiary. Lets see its integration tests
+
+<CodeTabs>
+  <Language value="🌐 JavaScript" language="js">
+    <Github fname="main.ava.ts"
+            url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/sandbox-ts/src/main.ava.ts"
             start="50" end="73" />
   </Language>
 </CodeTabs>
 
 ---
 
-## 샌드박스 테스트
+## Sandbox Testing
 
-NEAR 작업 공간을 사용하면 테스트를 한 번만 작성해도 `testnet`과  로컬 `Sandbox`에서 모두 실행할 수 있습니다. **기본적으로**, 작업 공간은 **샌드박스**를 시작하고, **로컬 환경에서** 테스트를 실행합니다. 이 프레임워크의 기능에 대해 자세히 알아보고, 해당 프레임워크가 어떻게 도움이 되는지 살펴보겠습니다.
+NEAR Workspaces allows you to write tests once, and run them either on `testnet` or a local `Sandbox`. **기본적으로**, 작업 공간은 **샌드박스**를 시작하고, **로컬 환경에서** 테스트를 실행합니다. 이 프레임워크의 기능에 대해 자세히 알아보고, 해당 프레임워크가 어떻게 도움이 되는지 살펴보겠습니다.
 
 ### 컨트랙트 스푸닝
 
 [블록체인을 스푸닝하는 것](https://coinmarketcap.com/alexandria/glossary/spoon-blockchain)은 한 네트워크에서 다른 네트워크로 데이터를 복사하는 것입니다. NEAR 작업 공간을 사용하면, Mainnet 또는 Testnet 컨트랙트에서 로컬 샌드박스 환경으로 데이터를 쉽게 복사할 수 있습니다.
 
-<Tabs>
-<TabItem value="🌐 JavaScript" label="JavaScript" default>
+<Tabs groupId="code-tabs">
+<TabItem value="🌐 JavaScript" default>
 
 ```ts
 const refFinance = await root.importContract({
@@ -69,13 +74,16 @@ const refFinance = await root.importContract({
 This would copy the Wasm bytes and contract state from [v2.ref-finance.near](https://nearblocks.io/address/v2.ref-finance.near) to your local blockchain as it existed at block `50_000_000`. 최상위 계정이 로컬에 존재하지 않더라도 컨트랙트 이름을 동일하게 유지하기 위해, 여기서는 샌드박스의 특수한 [패치 상태](#실시간-패치-상태) 기능을 사용합니다 (이는 샌드박스 테스트 모드에서만 작동함을 의미합니다). 이렇게 하면 가까운 작업 공간에서 생성된 다른 모든 계정과 상호 작용하는 것과 동일하게, 결정론적 방식으로 컨트랙트와 상호 작용할 수 있습니다.
 
 :::note
-`withData`는 컨트랙트의 데이터가 50kB 이하인 경우에만 작동합니다. 이는 RPC 서버의 기본 구성 때문입니다. 이에 대해서는 ["주의" 메모](../../5.api/rpc/contracts.md#view-contract-state-view-contract-state)를 참조하시기 바랍니다.
+
+`withData` will only work out-of-the-box if the contract's data is 50kB or less. 이는 RPC 서버의 기본 구성 때문입니다. 이에 대해서는 ["주의" 메모](../../5.api/rpc/contracts.md#view-contract-state-view-contract-state)를 참조하시기 바랍니다.
+
 :::
 
 [컨트랙트 스푸닝에 대한 TypeScript 예제](https://github.com/near/workspaces-js/blob/main/__tests__/05.spoon-contract-to-sandbox.ava.ts)를 참조하세요.
 
 </TabItem>
-<TabItem value="rust" label="Rust">
+
+<TabItem value="🦀 Rust">
 
 `testnet`에서 가져오려는 컨트랙트 이름과, 특정 시간을 다시 참조하는 블록 ID를 지정하세요(참조하는 컨트랙트가 변경되거나 업데이트된 경우). ```rust
 const CONTRACT_ACCOUNT: &str = "contract_account_name_on_testnet.testnet";
@@ -118,6 +126,7 @@ async fn pull_contract(owner: &Account, worker: &Worker<Sandbox>) -> anyhow::Res
 ```
 
 </TabItem>
+
 </Tabs>
 
 ### 실시간 상태 패치
@@ -132,8 +141,8 @@ async fn pull_contract(owner: &Account, worker: &Worker<Sandbox>) -> anyhow::Res
 
 트랜잭션은 컨트랙트가 프로그램된 방식으로 상태를 변경하는 컨트랙트 호출만 포함할 수 있기 때문에, 트랜잭션을 통해 컨트랙트 상태에 대해 임의로 변경하는 작업을 수행할 수 없음을 명심하세요. 예를 들어 NFT 컨트랙트를 사용하면 소유권을 가진 NFT에 대해 작업을 수행할 수는 있지만, 다른 계정이 소유한 NFT에 대해 작업하는 것은 불가능합니다. 스마트 컨트랙트는 이를 거부하도록 코딩되어 있기 때문입니다. 이것은 NFT 컨트랙트의 예상된 작동 방식입니다. 그러나 테스트를 위해 다른 사람의 NFT를 변경하고 싶을 수 있습니다. 이를 "컨트랙트 상태의 임의 변경"이라고 하며, `patchState`를 통해 수행할 수 있습니다.
 
-<Tabs>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<Tabs groupId="code-tabs">
+<TabItem value="🌐 JavaScript">
 
 ```js
     const {contract, ali} = t.context.accounts;
@@ -162,7 +171,8 @@ async fn pull_contract(owner: &Account, worker: &Worker<Sandbox>) -> anyhow::Res
 이를 수행하는 방법에 대한 전체 예제를 보고 싶다면, [상태 패치 테스트](https://github.com/near/workspaces-js/blob/main/__tests__/02.patch-state.ava.ts)를 참조하세요.
 
 </TabItem>
-<TabItem value="rust" label="Rust">
+
+<TabItem value="🦀 Rust">
 
 ```rust
     // Grab STATE from the testnet status_message contract. This contract contains the following data:
@@ -208,23 +218,25 @@ async fn pull_contract(owner: &Account, worker: &Worker<Sandbox>) -> anyhow::Res
 ```
 
 </TabItem>
+
 </Tabs>
 
 `patchState` 대신, 노드를 중지하고 제네시스에서 상태를 덤프한 다음, 제네시스를 편집하고 노드를 다시 시작할 수 있습니다. 이 접근 방식은 수행하기가 더 복잡하며, 노드를 다시 시작하지 않고서는 수행할 수도 없습니다.
 
 ### 시간 이동
 
-`workspaces` 테스트는 블록체인의 상태를 미래로 보낼 수 있는 기능을 제공합니다. 즉, 시간에 민감한 데이터가 필요한 컨트랙트는 샌드박스의 블록이 생성될 때까지 앉아서 기다릴 필요가 없습니다. 시간을 빨리 돌리고 싶다면, `worker.fast_forward`를 호출하면 됩니다.
+`workspaces` offers support for forwarding the state of the blockchain to the future. 즉, 시간에 민감한 데이터가 필요한 컨트랙트는 샌드박스의 블록이 생성될 때까지 앉아서 기다릴 필요가 없습니다. 시간을 빨리 돌리고 싶다면, `worker.fast_forward`를 호출하면 됩니다.
 
-<Tabs>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<Tabs groupId="code-tabs">
+<TabItem value="🌐 JavaScript" default>
 
-:::note
-`workspaces-js`에서의 시간 이동은 현재 불가능합니다.
-:::
+  <Github fname="fast-forward.ava.ts" language="js"
+          url="https://github.com/near/near-workspaces-js/blob/main/__tests__/08.fast-forward.ava.ts"
+          start="34" end="53" />
 
 </TabItem>
-<TabItem value="rust" label="Rust" default>
+
+<TabItem value="🦀 Rust">
 
 ```rust
 #[tokio::test]
@@ -240,10 +252,11 @@ async fn test_contract() -> anyhow::Result<()> {
 }
 ```
 
-</TabItem>
-</Tabs>
+_[See the full example on Github](https://github.com/near/workspaces-rs/blob/main/examples/src/fast_forward.rs)._
 
-전체 Rust 예제를 보려면 [examples/src/fast_forward.rs](https://github.com/near/workspaces-rs/blob/main/examples/src/fast_forward.rs)를 살펴보세요.
+</TabItem>
+
+</Tabs>
 
 ---
 
@@ -265,8 +278,8 @@ NEAR 작업 공간은 테스트를 작성한 뒤 로컬 샌드박스 노드(기�
 
 1. `testnet`에 작업자 설정 네트워크를 만들고 마스터 계정을 전달할 때
 
-<Tabs>
-<TabItem value="🌐 JavaScript" label="JavaScript" default>
+<Tabs groupId="code-tabs">
+<TabItem value="🌐 JavaScript"  default>
 
 ```ts
 const worker = await Worker.init({
@@ -276,7 +289,8 @@ const worker = await Worker.init({
 ```
 
 </TabItem>
-<TabItem value="rust" label="Rust">
+
+<TabItem value="🦀 Rust">
 
 ```rust
 #[tokio::main]  // or whatever runtime we want
@@ -290,12 +304,13 @@ let worker = workspaces::testnet().await?;
 ```
 
 </TabItem>
+
 </Tabs>
 
 2. 테스트를 실행할 때, `NEAR_WORKSPACES_NETWORK` 및 `TESTNET_MASTER_ACCOUNT_ID` 환경 변수를 설정
 
-<Tabs>
-<TabItem value="🌐 JavaScript" label="JavaScript" default>
+<Tabs groupId="code-tabs">
+<TabItem value="🌐 JavaScript"  default>
 
 ```bash
 NEAR_WORKSPACES_NETWORK=testnet TESTNET_MASTER_ACCOUNT_ID=<your master account Id> node test.js
@@ -304,12 +319,13 @@ NEAR_WORKSPACES_NETWORK=testnet TESTNET_MASTER_ACCOUNT_ID=<your master account I
 이 환경 변수를 설정하고, `{network: 'testnet', testnetMasterAccountId: <masterAccountId>}`를 `Worker.init`에 전달하면 구성 객체가 우선합니다.
 
 </TabItem>
+
 </Tabs>
 
 3. AVA를 통해 `near-workspaces`를 사용하고 있다면 커스텀 구성 파일을 사용할 수 있습니다. 다른 테스터들도 유사한 구성 파일을 허용합니다. 각 상황에 맞게 다음 지침을 따르면 됩니다.
 
-<Tabs>
-<TabItem value="🌐 JavaScript" label="JavaScript" default>
+<Tabs groupId="code-tabs">
+<TabItem value="🌐 JavaScript"  default>
 
 다음과 같은 형태로 `ava.testnet.config.cjs` 파일을 `package.json`과 동일한 디렉토리에 만듭니다. 
 
@@ -335,6 +351,7 @@ module.exports.environmentVariables = {
 ```
 
 </TabItem>
+
 </Tabs>
 
 ---

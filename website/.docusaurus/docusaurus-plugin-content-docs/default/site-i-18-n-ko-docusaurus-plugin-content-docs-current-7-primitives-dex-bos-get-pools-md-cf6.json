@@ -1,0 +1,18 @@
+{
+  "id": "primitives/dex/bos/get-pools",
+  "title": "get-pools",
+  "description": "Example response",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/7.primitives/dex/bos/get-pools.md",
+  "sourceDirName": "7.primitives/dex/bos",
+  "slug": "/primitives/dex/bos/get-pools",
+  "permalink": "/ko/primitives/dex/bos/get-pools",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/dex/bos/get-pools.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1709152665,
+  "formattedLastUpdatedAt": "2024년 2월 28일",
+  "frontMatter": {}
+}

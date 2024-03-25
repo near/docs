@@ -442,5 +442,33 @@
   "sidebar.tutorials.link.NEAR Lake Primitives": {
     "message": "NEAR Lake Primitives",
     "description": "The label for link NEAR Lake Primitives in sidebar tutorials, linking to https://near.github.io/near-lake-framework-js/"
+  },
+  "sidebar.build.category.Chain Abstraction Services": {
+    "message": "Chain Abstraction Services",
+    "description": "The label for category Chain Abstraction Services in sidebar build"
+  },
+  "sidebar.concepts.category.Network": {
+    "message": "Network",
+    "description": "The label for category Network in sidebar concepts"
+  },
+  "sidebar.concepts.category.Chain Signatures": {
+    "message": "Chain Signatures",
+    "description": "The label for category Chain Signatures in sidebar concepts"
+  },
+  "sidebar.build.category.Multichain Gas Relayer": {
+    "message": "Multichain Gas Relayer",
+    "description": "The label for category Multichain Gas Relayer in sidebar build"
+  },
+  "sidebar.concepts.link.Papers": {
+    "message": "Papers",
+    "description": "The label for link Papers in sidebar concepts, linking to https://near.org/papers"
+  },
+  "sidebar.tools.link.Testnet Faucet": {
+    "message": "Testnet Faucet",
+    "description": "The label for link Testnet Faucet in sidebar tools, linking to https://near-faucet.io/"
+  },
+  "sidebar.concepts.category.Accounts / Contracts": {
+    "message": "Accounts / Contracts",
+    "description": "The label for category Accounts / Contracts in sidebar concepts"
   }
 }

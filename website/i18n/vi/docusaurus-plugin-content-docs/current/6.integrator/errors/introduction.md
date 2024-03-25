@@ -4,7 +4,7 @@ title: Giới thiệu
 sidebar_label: Giới thiệu
 ---
 
-<blockquote class="info">
+<blockquote className="info">
 <strong>did you know?</strong><br /><br />
 
 The [NEAR Platform overview](/concepts/welcome) clarifies much of the language in this section.

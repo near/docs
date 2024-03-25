@@ -31,7 +31,8 @@ NFT와 NFT 마켓플레이스를 혼동하지 않도록 주의하세요. NFT는 
 
   ```bash
   # 1. Deploy the contract in a testnet account
-  near dev-deploy --wasmFile non_fungible_token.wasm
+  near create-account <account-id> --useFaucet
+  near deploy <account-id> non_fungible_token.wasm
 
   # 2. Initialize NFT contract
 
@@ -47,13 +48,8 @@ NFT와 NFT 마켓플레이스를 혼동하지 않도록 주의하세요. NFT는 
 
 :::tip [실시간으로 NFT 민팅을 추적](../../4.tools/events.md)할 수 있도록 [이벤트](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event)를 구현합니다. :::
 
-### 컬렉션 민팅
-많은 경우 사람들은 NFT의 100개 복사본을 생성하려고 합니다(이를 컬렉션이라고 함). 이러한 경우 실제로 해야 할 일은 동일한 메타데이터(그러나 다른 `token-id`)로 100개의 서로 다른 NFT를 발행하는 것입니다.
 
-### 로열티
-매개변수 중 하나가 로열티인 구조라는 것을 알아차렸을 것입니다. 로열티를 사용하면 토큰이 시장에서 판매될 때, 판매금의 일부를 지불해야 하는 사용자 목록을 만들 수 있습니다. 예를 들어 `anna`가 `5%` 로열티를 설정하였다면, NFT가 판매될 때마다 `anna`는 판매 가격의 5%를 받아야 합니다.
-
-<hr class="subsection" />
+<hr className="subsection" />
 
 ## 메타데이터 쿼리
 `nft_metadata`를 호출하여 NFT의 메타데이터를 쿼리할 수 있습니다.
@@ -68,7 +64,7 @@ NFT와 NFT 마켓플레이스를 혼동하지 않도록 주의하세요. NFT는 
   </TabItem>
 </Tabs>
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ## 사용자 승인
 다른 사용자가 소유한 NFT를 전송하도록 승인할 수 있습니다. 이는, 예를 들어 NFT를 마켓플레이스에 나열하는 데 유용합니다. 이러한 시나리오에서 당신은 마켓플레이스가 일정 이상의 금액을 받을 때만 NFT를 전송할 것이라고 **믿습니다**.
@@ -91,7 +87,7 @@ NFT와 NFT 마켓플레이스를 혼동하지 않도록 주의하세요. NFT는 
 :::info `msg` 매개변수가 포함된 경우, `<authorized_account>.nft_on_approve(msg)`에 대한 교차 컨트랙트 호출(cross-contract call)이 이루어집니다. 그러면 NFT 컨트랙트에서 `nft_resolve_transfer`로의 콜백이 이루어집니다. :::
 
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ## NFT 전송
 NFT 전송은 두 가지 시나리오에서 발생할 수 있습니다. (1) NFT 전송을 요청하고 (2) 승인된 계정이 NFT 전송을 요청합니다. 두 경우 모두 토큰 ID, 수신자 및 (선택 사항) [approval_id](https://nomicon.io/Standards/Tokens/NonFungibleToken/ApprovalManagement)를 나타내는 `nft_transfer` 메서드를 호출해야 합니다.
@@ -108,10 +104,10 @@ NFT 전송은 두 가지 시나리오에서 발생할 수 있습니다. (1) NFT 
 
 :::tip [실시간으로 NFT 전송을 추적](../../4.tools/events.md)할 수 있도록 [이벤트](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event)를 구현하세요. :::
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ## 호출에 NFT 첨부
-기본적으로 NEAR 토큰(Ⓝ)만 메서드 호출에 첨부할 수 있습니다. 그러나 NFT 표준은 NFT 컨트랙트를 중개자로 사용하여 호출에 대체 불가능한 토큰을 첨부할 수 있습니다. 즉, 호출에 토큰을 직접 첨부하는 대신 NFT 컨트랙트에 당신의 이름으로 전송 및 메서드 호출을 모두 수행하도록 요청하는 것입니다.
+Natively, only NEAR tokens (Ⓝ) can be attached to a function calls. 그러나 NFT 표준은 NFT 컨트랙트를 중개자로 사용하여 호출에 대체 불가능한 토큰을 첨부할 수 있습니다. This means that, instead of you attaching tokens directly to the call, you ask the NFT-contract to do both a transfer and a function call in your name.
 
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="cli" label="NEAR CLI">
@@ -142,7 +138,7 @@ NFT 전송은 두 가지 시나리오에서 발생할 수 있습니다. (1) NFT 
 
 NFT가 발신자에게 **환불**되어야 하는 경우, `nft_on_transfer`는 **true를 반환해야 합니다**.
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ## 이벤트
 [NFT 이벤트 표준](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event)을 구현하여 실시간 이벤트(예: 전송)를 추적할 수 있습니다. `Events`는 표준화된 방식으로 형식화된 로그인 메시지이기 때문에, 사용이 간편합니다. 이렇게 기록된 메시지는 공개되므로 서비스를 구축하여 [실시간으로 추적](../../4.tools/events.md)할 수 있습니다.

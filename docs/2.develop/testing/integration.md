@@ -16,9 +16,11 @@ Moreover, when using the local `sandbox` you gain complete control of the networ
 3. Control the time-flow and fast-forward into the future (Rust ready, TS coming soon).
 
 :::tip NEAR Workspaces
+
 In NEAR, integration tests are implemented using a framework called **Workspaces**. Workspaces comes in two flavors: [🦀 Rust](https://github.com/near/workspaces-rs) and [🌐 Typescript](https://github.com/near/workspaces-js).
 
 All of our [examples](https://github.com/near-examples/docs-examples) come with integration testing.
+
 :::
 
 ---
@@ -30,7 +32,7 @@ Lets take a look at the test of our [Quickstart Project](../quickstart.md) [👋
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="main.ava.ts"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/sandbox-ts/src/main.ava.ts" start="9" end="43"/>
+            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/sandbox-ts/main.ava.ts" start="8" end="43"/>
   </Language>
 </CodeTabs>
 
@@ -43,7 +45,7 @@ In most cases we will want to test complex methods involving multiple users and 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="main.ava.ts"
-            url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/sandbox-ts/src/main.ava.ts"
+            url="https://github.com/near-examples/donation-examples/blob/main/contract-ts/sandbox-ts/src/main.ava.ts"
             start="50" end="73" />
   </Language>
 </CodeTabs>
@@ -72,12 +74,15 @@ const refFinance = await root.importContract({
 This would copy the Wasm bytes and contract state from [v2.ref-finance.near](https://nearblocks.io/address/v2.ref-finance.near) to your local blockchain as it existed at block `50_000_000`. This makes use of Sandbox's special [patch state](#patch-state-on-the-fly) feature to keep the contract name the same, even though the top level account might not exist locally (note that this means it only works in Sandbox testing mode). You can then interact with the contract in a deterministic way the same way you interact with all other accounts created with near-workspaces.
 
 :::note
+
 `withData` will only work out-of-the-box if the contract's data is 50kB or less. This is due to the default configuration of RPC servers; see [the "Heads Up" note here](../../5.api/rpc/contracts.md#view-contract-state-view-contract-state).
+
 :::
 
 See a [TypeScript example of spooning](https://github.com/near/workspaces-js/blob/main/__tests__/05.spoon-contract-to-sandbox.ava.ts) contracts.
 
 </TabItem>
+
 <TabItem value="🦀 Rust">
 
 Specify the contract name from `testnet` you want to be pulling, and a specific block ID referencing back to a specific time. (Just in case the contract you're referencing has been changed or updated)
@@ -123,6 +128,7 @@ This is because the contract's data is too big for the RPC service to pull down.
 ```
 
 </TabItem>
+
 </Tabs>
 
 ### Patch State on the Fly
@@ -167,6 +173,7 @@ Keep in mind that you cannot perform arbitrary mutation on contract state with t
 To see a complete example of how to do this, see the [patch-state test](https://github.com/near/workspaces-js/blob/main/__tests__/02.patch-state.ava.ts).
 
 </TabItem>
+
 <TabItem value="🦀 Rust" >
 
 ```rust
@@ -213,6 +220,7 @@ To see a complete example of how to do this, see the [patch-state test](https://
 ```
 
 </TabItem>
+
 </Tabs>
 
 As an alternative to `patchState`, you can stop the node, dump state at genesis, edit the genesis, and restart the node.
@@ -230,6 +238,7 @@ This approach is more complex to do and also cannot be performed without restart
           start="34" end="53" />
 
 </TabItem>
+
 <TabItem value="🦀 Rust">
 
 ```rust
@@ -249,6 +258,7 @@ async fn test_contract() -> anyhow::Result<()> {
 _[See the full example on Github](https://github.com/near/workspaces-rs/blob/main/examples/src/fast_forward.rs)._
 
 </TabItem>
+
 </Tabs>
 
 ---
@@ -283,6 +293,7 @@ const worker = await Worker.init({
 ```
 
 </TabItem>
+
 <TabItem value="🦀 Rust" >
 
 ```rust
@@ -297,6 +308,7 @@ let worker = workspaces::testnet().await?;
 ```
 
 </TabItem>
+
 </Tabs>
 
 2. Set the `NEAR_WORKSPACES_NETWORK` and `TESTNET_MASTER_ACCOUNT_ID` environment variables when running your tests:
@@ -311,6 +323,7 @@ NEAR_WORKSPACES_NETWORK=testnet TESTNET_MASTER_ACCOUNT_ID=<your master account I
 If you set this environment variables and pass `{network: 'testnet', testnetMasterAccountId: <masterAccountId>}` to `Worker.init`, the config object takes precedence.
 
 </TabItem>
+
 </Tabs>
 
 3. If using `near-workspaces` with AVA, you can use a custom config file. Other test runners allow similar config files; adjust the following instructions for your situation.
@@ -342,6 +355,7 @@ Now you'll also want to add a `test:testnet` script to your `package.json`'s `sc
 ```
 
 </TabItem>
+
 </Tabs>
 
 ---

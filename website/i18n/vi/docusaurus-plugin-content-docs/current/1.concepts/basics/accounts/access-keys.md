@@ -33,7 +33,7 @@ When needed, that third-party component could trigger the recovery process, help
 
 NEAR implements two types of access keys: `FullAccess` keys and `FunctionCall` keys.
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Các Full Access Key {#full-access-keys}
 As the name suggests, `FullAccess` keys have full control of an account, similar to having administrator privileges on your operating system.
@@ -51,7 +51,7 @@ If you hand a `FullAccess` to someone, they will have **total control over the a
 
 :::tip You **add the first** Full Access Key of the account when [the account is created](creating-accounts.md). :::
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Các Function Call Key {#function-call-keys}
 

@@ -11,9 +11,9 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/data-availability/welcome.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "gagdiez",
-  "lastUpdatedAt": 1699467323,
-  "formattedLastUpdatedAt": "Nov 8, 2023",
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1709813405,
+  "formattedLastUpdatedAt": "Mar 7, 2024",
   "frontMatter": {
     "id": "welcome",
     "title": "Rollup Data Availability",

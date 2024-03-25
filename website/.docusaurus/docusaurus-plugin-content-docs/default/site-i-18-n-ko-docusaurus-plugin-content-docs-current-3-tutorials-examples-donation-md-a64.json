@@ -1,7 +1,7 @@
 {
   "id": "tutorials/examples/donation",
   "title": "기부",
-  "description": "이 기부 예시는 돈을 추적하면서 계좌로 돈을 보낼 수 있게 합니다. 컨트랙트를 통해 돈을 받고 보내는 가장 간단한 예 중 하나이며, 탈중앙화 금융의 세계로 진입하기 위한 완벽한 관문입니다.",
+  "description": "이 기부 예시는 돈을 추적하면서 계좌로 돈을 보낼 수 있게 합니다. It is one of the simplest examples on making a contract handle tranfers.",
   "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/examples/donation.md",
   "sourceDirName": "3.tutorials/examples",
   "slug": "/tutorials/examples/donation",
@@ -12,8 +12,8 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Github Actions",
-  "lastUpdatedAt": 1704996595,
-  "formattedLastUpdatedAt": "2024년 1월 11일",
+  "lastUpdatedAt": 1709152665,
+  "formattedLastUpdatedAt": "2024년 2월 28일",
   "frontMatter": {
     "id": "donation",
     "title": "기부"

@@ -12,8 +12,8 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Github Actions",
-  "lastUpdatedAt": 1704996595,
-  "formattedLastUpdatedAt": "11 thg 1, 2024",
+  "lastUpdatedAt": 1709152665,
+  "formattedLastUpdatedAt": "28 thg 2, 2024",
   "frontMatter": {
     "id": "explorer",
     "title": "Explorer",
@@ -21,8 +21,8 @@
   },
   "sidebar": "tools",
   "previous": {
-    "title": "FastAuth SDK",
-    "permalink": "/vi/tools/fastauth-sdk"
+    "title": "Wallet Selector",
+    "permalink": "/vi/tools/wallet-selector"
   },
   "next": {
     "title": "Indexing Solutions",

@@ -10,7 +10,7 @@ sidebar_label: 계정
 
 - 거래소의 경우, NEAR는 트랜잭션 비용을 지불하지 않고 계정을 생성할 수 있는 [암시적 계정(Implicit Account)](https://nomicon.io/DataStructures/Account.html#implicit-account-ids) 생성을 지원합니다.
 - [이 가이드](/integrator/implicit-accounts)의 단계에 따라 암시적 계정을 만들 수 있습니다.
-- Accounts must have enough tokens to cover its storage which currently costs `0.0001 NEAR` per byte. This equates to a minimum balance of `0.00182 NEAR` for an account with one access key. [`protocol-config`](https://docs.near.org/api/rpc/setup#protocol-config) RPC 엔드포인트를 사용하여 실시간 스토리지 가격을 쿼리할 수 있습니다. 스토리지 수수료에 대한 자세한 내용은 [경제학 논문 내 이 섹션](https://near.org/papers/economics-in-sharded-blockchain/#transaction-and-storage-fees)을 참고하세요.
+- Accounts must have enough tokens to cover its storage which currently costs `0.0001 NEAR` per byte. This equates to a minimum balance of `0.00182 NEAR` for an account with one access key. [`protocol-config`](https://docs.near.org/api/rpc/setup#protocol-config) RPC 엔드포인트를 사용하여 실시간 스토리지 가격을 쿼리할 수 있습니다. For more details on storage fees see [this section of the economics paper](https://pages.near.org/papers/economics-in-sharded-blockchain/#transaction-and-storage-fees).
 
 ## 함수 호출에 의한 전송 {#transfer-from-function-call}
 

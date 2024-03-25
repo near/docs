@@ -55,7 +55,7 @@ Further down in the `submit_solution` method we'll follow our plan by **adding a
 
 <figure>
     <img src={carpenterAddingKey} alt="키를 만든 목수에 대한 묘사 carlcarlkarl.near 그림" width="400"/>
-    <figcaption class="small">우리의 스마트 컨트랙트는 이 목수가 자신에게 키를 추가하는 것과 같습니다.<br/><a href="https://twitter.com/CarlCarlKarl" target="_blank">carlcarlkarl.near</a> 그림</figcaption>
+    <figcaption className="small">Our smart contract is like this carpenter adding a key to itself.<br/>Art by <a href="https://twitter.com/CarlCarlKarl" target="_blank">carlcarlkarl.near</a></figcaption>
 </figure>
 
 <br/>

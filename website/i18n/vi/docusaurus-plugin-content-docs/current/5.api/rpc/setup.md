@@ -5,7 +5,7 @@ title: Cài đặt
 
 In order to use the RPC API you will need to setup the correct RPC endpoints.
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ## RPC Endpoint Setup
 - `POST` cho tất cả các method
@@ -20,7 +20,7 @@ In order to use the RPC API you will need to setup the correct RPC endpoints.
 ### Limits
 - Maximum number of requests per IP: 600 req/min
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ## Querying Historical Data
 Truy vấn lịch sử data (nhiều hơn 5 [epoch](../../1.concepts/basics/epoch.md) hoặc ~2.5 day), bạn có thể nhận được những phản hồi là data không tồn tại nữa. Trong trường hợp đó, các archival RPC node sẽ giúp bạn:

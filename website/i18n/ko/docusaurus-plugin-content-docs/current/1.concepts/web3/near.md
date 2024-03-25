@@ -100,7 +100,7 @@ NEAR의 스마트 컨트랙트는 Rust 또는 JavaScript로 작성되고, [WebAs
 
 간단해 보이지만, 몇 가지 문제가 있습니다.
 - 호출 상태(성공 또는 실패)와 반환 값을 호출 컨트랙트에 제공하려면 콜백 메서드를 호출해야 하므로, ContractA 혼자서 활성화될 수 없습니다. 대신 사용자가 먼저 엔트리 메서드를 호출한 다음, 교차 컨트랙트 호출 완료에 대한 응답으로 콜백을 호출합니다.
-- 트랜잭션 상태는 첫 번째 메서드 호출의 성공 또는 실패에 따라 결정됩니다. 예를 들어 ContractB.methodB 또는 ContractA.methodACb 호출이 실패해도 트랜잭션은 성공한 것으로 간주됩니다. 실패가 예상되는 경우, 적절한 롤백을 보장하기 위해 사용자 지정 롤백 코드를 ContractA.methodACb에 작성해야 하며, 콜백 메서드 자체가 전혀 실패하지 않아야 합니다. 그렇지 않으면 스마트 컨트랙트 상태가 일관되지 않은 상태로 남을 수 있습니다.
+- Transaction status is determined by the success or failure of a first function call. 예를 들어 ContractB.methodB 또는 ContractA.methodACb 호출이 실패해도 트랜잭션은 성공한 것으로 간주됩니다. 실패가 예상되는 경우, 적절한 롤백을 보장하기 위해 사용자 지정 롤백 코드를 ContractA.methodACb에 작성해야 하며, 콜백 메서드 자체가 전혀 실패하지 않아야 합니다. 그렇지 않으면 스마트 컨트랙트 상태가 일관되지 않은 상태로 남을 수 있습니다.
 - 교차 컨트랙트 호출에는 호출 컨트랙트에 의해 첨부된 가스가 있어야 합니다. 사용 가능한 총 가스는 호출 사용자와 함께 트랜잭션에 연결되고, 컨트랙트에 의해 호출 체인 내부에 배포됩니다. 예를 들어 사용자가 15TGas를 첨부한 경우, ContractA는 5TGas를 예약하고 나머지는 ContractB에 전달할 수 있습니다. 사용하지 않은 모든 가스는 사용자에게 환불됩니다.
 
 
@@ -186,7 +186,7 @@ https://testnet.mynearwallet.com/auto-import-secret-key#YOUR_ACCOUNT_ID/YOUR_PRI
 
 개발 중에, 때로는 프로덕션 단계에서도 컨트랙트 코드(또는 데이터)에 대한 업데이트가 필요합니다. 그렇기 때문에 다양한 컨트랙트 업그레이드 메커니즘이 만들어졌습니다.
 
-로컬 개발 중 컨트랙트를 배포할 때마다 스마트 컨트랙트의 계정을 다시 만들 수 있습니다(NEAR CLI의 [dev-deploy](../../4.tools/cli.md#near-dev-deploy-near-dev-deploy) 명령이 이를 위해 존재함). 이러한 접근 방식을 사용하면 컨트랙트가 재배포될 때마다 컨트랙트 데이터가 제거됩니다. [여기](/sdk/rust/building/prototyping)에서 더 많은 정보를 얻을 수 있습니다 .
+While developing the contract, we recommend just creating a new account each time you need to deploy a contract (the [create-account](../../4.tools/cli.md#near-create-account) command in NEAR CLI exists for this). With such an approach, you will start with a clean state each time.
 
 그러나 테스트나 프로덕션과 같은 안정적인 환경으로 이동하면 보다 정교한 방법이 필요합니다. 코드 재배치는 매우 간단합니다. 다른 `DeployContract` 트랜잭션을 발행하면 NEAR가 처리해 줄 것입니다. 가장 큰 문제는 컨트랙트 상태를 마이그레이션하는 것입니다. [여러 접근 방식이 가능](../../2.develop/upgrade.md#migrating-the-state)하지만, 모두 일종의 마이그레이션 코드가 필요합니다.
 

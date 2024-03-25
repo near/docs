@@ -238,26 +238,21 @@ sale_conditions: {
 
 ## 새 변경 사항 테스트 {#testing-changes}
 
-이러한 변경 사항은 다른 모든 토큰에 영향을 미치고, 상태가 새 코드에 의해 자동으로 상속될 수 없기 때문에 단순히 컨트랙트를 재배포하면 오류가 발생합니다. 이러한 이유로 하위 계정을 만들고 거기에 컨트랙트를 배포하는 것이 가장 좋습니다.
+이러한 변경 사항은 다른 모든 토큰에 영향을 미치고, 상태가 새 코드에 의해 자동으로 상속될 수 없기 때문에 단순히 컨트랙트를 재배포하면 오류가 발생합니다. For this reason, it's best practice to create a new account and deploy the contract there.
 
-### 하위 계정 생성 {#creating-sub-account}
+### Deployment
 
-다음 명령을 실행하여 초기 잔액이 25 NEAR인 기본 계정의 하위 계정 `approval`을 만듭니다.
-
-```bash
-near create-account approval.$NFT_CONTRACT_ID --masterAccount $NFT_CONTRACT_ID --initialBalance 25
-```
-
-다음으로 개발을 쉽게 하기 위해 환경 변수를 내보낼 수 있습니다.
+Next, you'll deploy this contract to the network.
 
 ```bash
-export APPROVAL_NFT_CONTRACT_ID=approval.$NFT_CONTRACT_ID
+export APPROVAL_NFT_CONTRACT_ID=<accountId>
+near create-account $APPROVAL_NFT_CONTRACT_ID --useFaucet
 ```
 
 빌드 스크립트를 사용하여 이전 튜토리얼에서와 같이 컨트랙트 배포를 빌드합니다.
 
 ```bash
-yarn build && near deploy --wasmFile out/main.wasm --accountId $APPROVAL_NFT_CONTRACT_ID
+yarn build && near deploy $APPROVAL_NFT_CONTRACT_ID out/main.wasm
 ```
 
 ### 초기화 및 발행 {#initialization-and-minting}
@@ -405,13 +400,13 @@ near call $APPROVAL_NFT_CONTRACT_ID nft_transfer '{"receiver_id": "'$NFT_CONTRAC
 ]
 ```
 
-이제 다른 소유자 간에 증가하는 승인 ID를 테스트해 보겠습니다. 원래 토큰을 발행한 하위 계정을 승인하면 이제 승인 ID는 1이어야 합니다.
+이제 다른 소유자 간에 증가하는 승인 ID를 테스트해 보겠습니다. If you approve the account that originally minted the token, the approval ID should be 1 now.
 
 ```bash
 near call $APPROVAL_NFT_CONTRACT_ID nft_approve '{"token_id": "approval-token", "account_id": "'$APPROVAL_NFT_CONTRACT_ID'"}' --accountId $NFT_CONTRACT_ID --deposit 0.1
 ```
 
-view 함수를 다시 호출하면 이제, 승인된 하위 계정에 대한 승인 ID 1이 반환됩니다.
+Calling the view function again show now return an approval ID of 1 for the account that was approved.
 
 ```bash
 near view $APPROVAL_NFT_CONTRACT_ID nft_tokens_for_owner '{"account_id": "'$NFT_CONTRACT_ID'", "limit": 10}'
@@ -464,7 +459,7 @@ near view $APPROVAL_NFT_CONTRACT_ID nft_tokens_for_owner '{"account_id": "'$NFT_
 
 또한, 계정이 승인되었는지 [확인](#check-if-account-approved)하고 튜토리얼의 코딩 파트를 완료하기 위해 view 메서드를 구현하고 [계정을 해지](#revoke-account) 및 [모든 계정을 해지](#revoke-all-accounts)하는 데 필요한 로직을 구현했습니다.
 
-그 후 컨트랙트 코드가 작성 완료되었으며, [하위 계정](#creating-sub-account)을 생성하고, NFT [승인](#approving-an-account) 및 [전송](#transferring-the-nft)을 테스트할 시간입니다.
+After this, the contract code was finished and it was time to move onto testing where you created an [account](#deployment) and tested the [approving](#approving-an-account) and [transferring](#transferring-the-nft) for your NFTs.
 
 다음 튜토리얼에서는 로열티 표준과 NFT 마켓플레이스와 상호 작용하는 방법에 대해 알아봅니다.
 
@@ -472,9 +467,9 @@ near view $APPROVAL_NFT_CONTRACT_ID nft_tokens_for_owner '{"account_id": "'$NFT_
 
 글을 작성하는 시점에서, 해당 예제는 다음 버전에서 작동합니다.
 
-- near-cli: `3.0.0`
-- NFT 표준: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), `1.0.0` 버전
+- near-cli: `4.0.4`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 - 열거 표준: [NEP181](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration), `1.0.0` 버전
-- 승인 표준: [NEP178](https://nomicon.io/Standards/Tokens/NonFungibleToken/ApprovalManagement), `1.0.0` 버전
+- Approval standard: [NEP178](https://nomicon.io/Standards/Tokens/NonFungibleToken/ApprovalManagement), version `1.1.0`
 
 :::

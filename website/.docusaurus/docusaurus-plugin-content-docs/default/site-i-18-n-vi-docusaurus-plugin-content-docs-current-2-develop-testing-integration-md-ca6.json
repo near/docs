@@ -1,6 +1,6 @@
 {
   "id": "develop/testing/integration-test",
-  "title": "Integration Test",
+  "title": "Integration Tests",
   "description": "Integration tests enable to deploy your contract in the NEAR testnet or a local sandbox, and create test-users to interact with it. In this way, you can thoroughly test your contract in a realistic environment.",
   "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.develop/testing/integration.md",
   "sourceDirName": "2.develop/testing",
@@ -12,11 +12,11 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Github Actions",
-  "lastUpdatedAt": 1704996595,
-  "formattedLastUpdatedAt": "11 thg 1, 2024",
+  "lastUpdatedAt": 1709152665,
+  "formattedLastUpdatedAt": "28 thg 2, 2024",
   "frontMatter": {
     "id": "integration-test",
-    "title": "Integration Test"
+    "title": "Integration Tests"
   },
   "sidebar": "build",
   "previous": {

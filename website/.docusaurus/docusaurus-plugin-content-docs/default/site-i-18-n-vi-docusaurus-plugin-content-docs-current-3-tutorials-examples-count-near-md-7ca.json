@@ -12,15 +12,15 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Github Actions",
-  "lastUpdatedAt": 1704996595,
-  "formattedLastUpdatedAt": "11 thg 1, 2024",
+  "lastUpdatedAt": 1709152665,
+  "formattedLastUpdatedAt": "28 thg 2, 2024",
   "frontMatter": {
     "id": "count-near",
     "title": "Count on NEAR"
   },
   "sidebar": "tutorials",
   "previous": {
-    "title": "Examples & Tutorials",
+    "title": "Home",
     "permalink": "/vi/tutorials/welcome"
   },
   "next": {

@@ -1,7 +1,7 @@
 ---
 id: quickstart
-title: Hello Components
-sidebar_label: '⭐ Overview'
+title: What are NEAR Components?
+sidebar_label: What is a Component?
 ---
 
 import Tabs from '@theme/Tabs';
@@ -10,8 +10,10 @@ import {WidgetEditor} from "@site/src/components/social-widget"
 
 NEAR Components are a new way to build web applications. They are composable, reusable and decentralized.
 
+![img](/docs/assets/welcome-pages/bos-landing.png)
+
 :::tip
-You can login to interact with some of these examples.
+You can login to interact with the examples in this section.
 :::
 
 ---
@@ -114,9 +116,9 @@ const like = (blockHeight) => Social.set(
 return <>
   <h5>Posts from <i>influencer.testnet</i></h5>
   {post_data.map((post, idx) =>
-    <div class="mt-3">
+    <div className="mt-3">
       <div>{JSON.parse(post).text} - {likes[idx]} likes</div>
-      {context.accountId && <button class="btn btn-danger btn-sm" onClick={() => like(idx_posts[idx].blockHeight)}>Like</button>}
+      {context.accountId && <button className="btn btn-danger btn-sm" onClick={() => like(idx_posts[idx].blockHeight)}>Like</button>}
     </div>
   )}
 </>
@@ -338,67 +340,67 @@ const getSender = () => {
 
 return (
   <Theme>
-    <div class="LidoContainer">
-      <div class="Header">Stake Ether</div>
-      <div class="SubHeader">Stake ETH and receive stETH while staking.</div>
+    <div className="LidoContainer">
+      <div className="Header">Stake Ether</div>
+      <div className="SubHeader">Stake ETH and receive stETH while staking.</div>
 
-      <div class="LidoForm">
+      <div className="LidoForm">
         {state.sender && (
           <>
-            <div class="LidoFormTopContainer">
-              <div class="LidoFormTopContainerLeft">
-                <div class="LidoFormTopContainerLeftContent1">
-                  <div class="LidoFormTopContainerLeftContent1Container">
+            <div className="LidoFormTopContainer">
+              <div className="LidoFormTopContainerLeft">
+                <div className="LidoFormTopContainerLeftContent1">
+                  <div className="LidoFormTopContainerLeftContent1Container">
                     <span>Available to stake</span>
-                    <div class="LidoFormTopContainerLeftContent1Circle" />
+                    <div className="LidoFormTopContainerLeftContent1Circle" />
                   </div>
                 </div>
-                <div class="LidoFormTopContainerLeftContent2">
+                <div className="LidoFormTopContainerLeftContent2">
                   <span>
                     {state.balance ?? (!state.sender ? "0" : "...")}&nbsp;ETH
                   </span>
                 </div>
               </div>
-              <div class="LidoFormTopContainerRight">
-                <div class="LidoFormTopContainerRightContent1">
-                  <div class="LidoFormTopContainerRightContent1Text">
+              <div className="LidoFormTopContainerRight">
+                <div className="LidoFormTopContainerRightContent1">
+                  <div className="LidoFormTopContainerRightContent1Text">
                     <span>{getSender()}</span>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="LidoSplitter" />
+            <div className="LidoSplitter" />
           </>
         )}
         <div
-          class={
+          className={
             state.sender ? "LidoFormBottomContainer" : "LidoFormTopContainer"
  }
 >
-          <div class="LidoFormTopContainerLeft">
-            <div class="LidoFormTopContainerLeftContent1">
-              <div class="LidoFormTopContainerLeftContent1Container">
+          <div className="LidoFormTopContainerLeft">
+            <div className="LidoFormTopContainerLeftContent1">
+              <div className="LidoFormTopContainerLeftContent1Container">
                 <span>Staked amount</span>
               </div>
             </div>
-            <div class="LidoFormTopContainerLeftContent2">
+            <div className="LidoFormTopContainerLeftContent2">
               <span>
                 {state.stakedBalance ?? (!state.sender ? "0" : "...")}
                 &nbsp;stETH
               </span>
             </div>
           </div>
-          <div class="LidoFormTopContainerRight">
-            <div class="LidoAprContainer">
-              <div class="LidoAprTitle">Lido APR</div>
-              <div class="LidoAprValue">{state.lidoArp ?? "..."}%</div>
+          <div className="LidoFormTopContainerRight">
+            <div className="LidoAprContainer">
+              <div className="LidoAprTitle">Lido APR</div>
+              <div className="LidoAprValue">{state.lidoArp ?? "..."}%</div>
             </div>
           </div>
         </div>
       </div>
-      <div class="LidoStakeForm">
-        <div class="LidoStakeFormInputContainer">
-          <span class="LidoStakeFormInputContainerSpan1">
+      <div className="LidoStakeForm">
+        <div className="LidoStakeFormInputContainer">
+          <span className="LidoStakeFormInputContainerSpan1">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
               <path
                 opacity="0.6"
@@ -420,17 +422,17 @@ return (
               ></path>
             </svg>
           </span>
-          <span class="LidoStakeFormInputContainerSpan2">
+          <span className="LidoStakeFormInputContainerSpan2">
             <input
               disabled={!state.sender}
-              class="LidoStakeFormInputContainerSpan2Input"
+              className="LidoStakeFormInputContainerSpan2Input"
               value={state.strEther}
               onChange={(e) > State.update({ strEther: e.target.value })}
               placeholder="Amount"
             />
           </span>
           <span
-            class="LidoStakeFormInputContainerSpan3"
+            className="LidoStakeFormInputContainerSpan3"
             onClick={() > {
               State.update({
                 strEther: (state.balance > 0.05
@@ -441,16 +443,16 @@ return (
             }}
           >
             <button
-              class="LidoStakeFormInputContainerSpan3Content"
+              className="LidoStakeFormInputContainerSpan3Content"
               disabled={!state.sender}
             >
-              <span class="LidoStakeFormInputContainerSpan3Max">MAX</span>
+              <span className="LidoStakeFormInputContainerSpan3Max">MAX</span>
             </button>
           </span>
         </div>
         {!!state.sender ? (
           <button
-            class="LidoStakeFormSubmitContainer"
+            className="LidoStakeFormSubmitContainer"
             onClick={() > submitEthers(state.strEther, state.sender)}
           >
             <span>Submit</span>
@@ -462,26 +464,26 @@ return (
           />
         )}
 
-        <div class="LidoFooterContainer">
+        <div className="LidoFooterContainer">
           {state.sender && (
-            <div class="LidoFooterRaw">
-              <div class="LidoFooterRawLeft">You will receive</div>
-              <div class="LidoFooterRawRight">${state.strEther ?? 0} stETH</div>
+            <div className="LidoFooterRaw">
+              <div className="LidoFooterRawLeft">You will receive</div>
+              <div className="LidoFooterRawRight">${state.strEther ?? 0} stETH</div>
             </div>
           )}
-          <div class="LidoFooterRaw">
-            <div class="LidoFooterRawLeft">Exchange rate</div>
-            <div class="LidoFooterRawRight">1 ETH = 1 stETH</div>
+          <div className="LidoFooterRaw">
+            <div className="LidoFooterRawLeft">Exchange rate</div>
+            <div className="LidoFooterRawRight">1 ETH = 1 stETH</div>
           </div>
           {false && (
-            <div class="LidoFooterRaw">
-              <div class="LidoFooterRawLeft">Transaction cost</div>
-              <div class="LidoFooterRawRight">{state.txCost}</div>
+            <div className="LidoFooterRaw">
+              <div className="LidoFooterRawLeft">Transaction cost</div>
+              <div className="LidoFooterRawRight">{state.txCost}</div>
             </div>
           )}
-          <div class="LidoFooterRaw">
-            <div class="LidoFooterRawLeft">Reward fee</div>
-            <div class="LidoFooterRawRight">10%</div>
+          <div className="LidoFooterRaw">
+            <div className="LidoFooterRawLeft">Reward fee</div>
+            <div className="LidoFooterRawRight">10%</div>
           </div>
         </div>
       </div>

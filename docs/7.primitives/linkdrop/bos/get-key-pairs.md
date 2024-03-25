@@ -8,8 +8,8 @@ import TabItem from '@theme/TabItem';
 ```js
 const dropsNumber = "2";
 const keysGeneratorUrl = "https://keypom.sctuts.com/keypair/";
-
-asyncFetch(keysGeneratorUrl + dropsNumber + "/rootEntrophy").then((res) => {
+const rootEntrophy = "my-password"; //If not provided, the keypair will be completely random. see: https://docs.keypom.xyz/docs/next/keypom-sdk/Core/modules 
+asyncFetch(keysGeneratorUrl + dropsNumber + "/" + rootEntrophy).then((res) => {
   const keyPairs = JSON.parse(res.body);
   const pubKeys = [];
   const privKeys = [];

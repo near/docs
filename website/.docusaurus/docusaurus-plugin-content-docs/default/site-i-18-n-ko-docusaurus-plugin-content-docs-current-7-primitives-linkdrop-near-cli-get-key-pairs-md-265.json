@@ -1,0 +1,18 @@
+{
+  "id": "primitives/linkdrop/near-cli/get-key-pairs",
+  "title": "get-key-pairs",
+  "description": "Example response:",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/7.primitives/linkdrop/near-cli/get-key-pairs.md",
+  "sourceDirName": "7.primitives/linkdrop/near-cli",
+  "slug": "/primitives/linkdrop/near-cli/get-key-pairs",
+  "permalink": "/ko/primitives/linkdrop/near-cli/get-key-pairs",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/linkdrop/near-cli/get-key-pairs.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1709152665,
+  "formattedLastUpdatedAt": "2024년 2월 28일",
+  "frontMatter": {}
+}

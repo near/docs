@@ -8,15 +8,16 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 To integrate NEAR to your frontend, you will leverage two tools:
+
 1. `Wallet Selector`: Enables the user to select their preferred NEAR wallet in your dApp.
 2. `NEAR API JS`: NEAR RPC와 상호 작용하는 도구 세트입니다.
 
 이러한 도구를 사용하여 다음 흐름을 구현합니다.
+
 1. wallet selector를 **설정합니다**.
 1. **시작할 때** wallet selector를 로드합니다.
 2. 사용자에게 NEAR 지갑을 사용하여 **로그인**하도록 요청합니다.
 2. 컨트랙트 내 **메서드를 호출합니다**.
-
 
 ---
 
@@ -43,20 +44,21 @@ HTML 내 스크립트 태그로 `near-api-js`를 추가할 수 있습니다.
 ```js
 <script src="https://cdn.jsdelivr.net/npm/near-api-js@0.44.2/dist/near-api-js.min.js" integrity="sha256-W5o4c5DRZZXMKjuL41jsaoBpE/UHMkrGvIxN9HcjNSY=" crossorigin="anonymous"></script>
 ```
+
 </details>
 
 ---
 
 ## Wallet 객체 생성
 
-이 예제에서 우리는 [`./near-wallet.js`](https://github.com/near-examples/hello-near-js/blob/master/frontend/near-wallet.js) 모듈을 구현할 것입니다. 단순화를 위해 `wallet selector`를 `Wallet` 객체로 추상화하였습니다.
+In our examples we implement a [`./near-wallet.js`](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js) module, where we abstracted the `wallet selector` into a `Wallet` object to simplify using it.
 
 지갑을 만드려면, 모듈에서 `Wallet` 객체를 가지고 와서 초기화하면 됩니다. 이 `wallet`은 나중에 사용자로 하여금 NEAR 내 모든 컨트랙트를 호출할 수 있도록 합니다.
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="index.js"
-            url="https://github.com/near-examples/hello-near-js/blob/master/frontend/index.js"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/index.js"
             start="2" end="8" />
   </Language>
 </CodeTabs>
@@ -110,10 +112,10 @@ For this, override the `window.onload` method with a function that calls the `wa
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="index.js"
-            url="https://github.com/near-examples/hello-near-js/blob/master/frontend/index.js"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/index.js"
             start="10" end="21" />
     <Github fname="near-wallet.js"
-            url="https://github.com/near-examples/hello-near-js/blob/master/frontend/near-wallet.js"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js"
             start="36" end="52" />
   </Language>
 </CodeTabs>
@@ -131,10 +133,10 @@ For this, override the `window.onload` method with a function that calls the `wa
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="index.js"
-            url="https://github.com/near-examples/hello-near-js/blob/master/frontend/index.js"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/index.js"
             start="46" end="46" />
     <Github fname="near-wallet.js"
-            url="https://github.com/near-examples/hello-near-js/blob/master/frontend/near-wallet.js"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js"
             start="68" end="81" />
   </Language>
 </CodeTabs>
@@ -147,7 +149,6 @@ View methods have by default 200 TGAS for execution
 
 :::
 
-
 ---
 
 ## 사용자 로그인/로그아웃
@@ -159,17 +160,17 @@ non-view 메서드와 상호 작용하려면, 사용자는 먼저 NEAR 지갑을
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
-            url="https://github.com/near-examples/hello-near-js/blob/master/frontend/index.js"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/index.js"
             start="25" end="26" />
     <Github fname="near-wallet.js"
-            url="https://github.com/near-examples/hello-near-js/blob/master/frontend/near-wallet.js"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js"
             start="54" end="66" />
   </Language>
 </CodeTabs>
 
 When the user clicks in the button, it will be asked to select a wallet and use it to login.
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Function Call Key
 
@@ -178,7 +179,7 @@ If you instantiated the `Wallet` passing an account for the `createAccessKeyFor`
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
-            url="https://github.com/near-examples/hello-near-js/blob/master/frontend/index.js"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/index.js"
             start="8" end="8" />
   </Language>
 </CodeTabs>
@@ -204,10 +205,10 @@ Please notice that this only applies for **non-payable** methods, if you attach 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
-            url="https://github.com/near-examples/hello-near-js/blob/master/frontend/index.js"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/index.js"
             start="36" end="36" />
     <Github fname="near-wallet.js"
-            url="https://github.com/near-examples/hello-near-js/blob/master/frontend/near-wallet.js"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js"
             start="83" end="103" />
   </Language>
 </CodeTabs>
@@ -220,8 +221,7 @@ Remember that you can use the `wallet` to call methods in **any** contract. 함�
 
 :::
 
-<hr class="subsection" />
-
+<hr className="subsection" />
 
 ### 지갑 리디렉션
 
@@ -232,10 +232,10 @@ Remember that you can use the `wallet` to call methods in **any** contract. 함�
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
   <Github fname="index.js"
-            url="https://github.com/near-examples/donation-js/blob/master/frontend/index.js"
-            start="74" end="80" />
+            url="https://github.com/near-examples/donation-examples/blob/main/frontend/index.js"
+            start="71" end="92" />
     <Github fname="utils.js"
-            url="https://github.com/near-examples/donation-js/blob/master/frontend/near-wallet.js"
+            url="https://github.com/near-examples/donation-examples/blob/main/frontend/near-wallet.js"
             start="105" end="113" />
   </Language>
 </CodeTabs>
@@ -253,8 +253,9 @@ The block timestamp in a smart contract is encoded using nanoseconds (i.e. 19 di
 ##### 자금
 
 스마트 컨트랙트는 항상 yocto NEAR(1Ⓝ = 10^24yocto) 단위로 이야기하고, 해당 값은 `string`으로 인코딩됩니다.
-  - `near-api-js.utils.format.parseNearAmount(amount.toString())`를 사용하여 컨트랙트로 돈을 보내기 전에 NEAR를 yocto로 변환합니다.
-  - `near-api-js.utils.format.formatNearAmount(amount)`를 사용하여 yoctoNEAR 형태의 응답 결과를 NEAR 단위로 변환합니다
+
+- `near-api-js.utils.format.parseNearAmount(amount.toString())`를 사용하여 컨트랙트로 돈을 보내기 전에 NEAR를 yocto로 변환합니다.
+- `near-api-js.utils.format.formatNearAmount(amount)`를 사용하여 yoctoNEAR 형태의 응답 결과를 NEAR 단위로 변환합니다
 
 :::tip
 
@@ -270,8 +271,6 @@ function formatAmount(amount) {
 
 :::
 
-
-
 ---
 
 ## NEAR API JS 이용
@@ -279,7 +278,7 @@ function formatAmount(amount) {
 NEAR API JS는 단순히 컨트랙트에서 메서드를 호출하는 작업만으로 제한되지 않습니다. 사실, 이를 통해 웹 앱에서 더 풍부한 사용자 경험을 제공할 수 있습니다. 이러한 주제를 깊이 다루지는 않겠지만, NEAR API JS를 사용하면 다음과 같은 작업도 가능하다는 사실을 아는 것이 중요합니다.
 
 - **[메세지 서명 및 검증](https://github.com/near/near-api-js/blob/master/packages/cookbook/utils/verify-signature.js)**: 메시지가 사용자에 의해 생성되었음을 증명하는 데 매우 유용합니다.
-- **[배치 트랜잭션 만들기](https://github.com/near/near-api-js/tree/master/packages/cookbook/transactions/batch-transactions.js)**: 여러 [작업](/develop/contracts/actions)(예: 여러 메서드 호출)을 연결할 수 있습니다. 트랜잭션 중 하나가 실패하면 모두 되돌려집니다.
+- **[Create batch transactions](https://github.com/near/near-api-js/tree/master/packages/cookbook/transactions/batch-transactions.js)**: this enables to link multiple [actions](/develop/contracts/actions) (e.g. multiple function calls).
 - **[계정 생성](https://github.com/near/near-api-js/tree/master/packages/cookbook/accounts/create-testnet-account.js)**: 사용자를 위한 계정을 배포하세요!
 
 웹앱을 강화하는 방법을 알아보려면 [설명서](/tools/near-api-js/cookbook)를 확인하세요 .

@@ -44,9 +44,9 @@ Hello World
 
 다음 두 단계를 통해 생성합니다:
 1. 렌더링할 HTML 작성
-2. 메서드 호출을 처리할 로직을 추가
+2. Add the logic to handle the function call
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### 1. HTML 컴포넌트
 다음 코드를 사용하여 제목, 인사말을 변경하는 입력 양식 및 변경사항을 제출하는 버튼로 구성된 간단한 프론트엔드를 만듭니다.
@@ -58,10 +58,10 @@ const greeting = Near.view(contract, "get_greeting", {});
 // Define components
 const greetingForm = (
   <>
-    <div class="border border-black p-3">
+    <div className="border border-black p-3">
       <label>Update greeting</label>
       <input placeholder="Howdy" onChange={onInputChange} />
-      <button class="btn btn-primary mt-2" onClick={onBtnClick}>
+      <button className="btn btn-primary mt-2" onClick={onBtnClick}>
         Save
       </button>
     </div>
@@ -73,13 +73,13 @@ const notLoggedInWarning = <p> Login to change the greeting </p>;
 // Render
 return (
   <>
-    <div class="container border border-info p-3">
-      <h3 class="text-center">
+    <div className="container border border-info p-3">
+      <h3 className="text-center">
         The contract says:
-        <span class="text-decoration-underline"> {greeting} </span>
+        <span className="text-decoration-underline"> {greeting} </span>
       </h3>
 
-      <p class="text-center py-2">
+      <p className="text-center py-2">
         Look at that! A greeting stored on the NEAR blockchain.
       </p>
 
@@ -97,7 +97,7 @@ return (
 2. **context.accountId**: `context.accountId`가 설정되어 있는지 확인합니다. 이를 통해 사용자가 NEAR 계정을 사용하여 로그인했는지 여부를 알 수 있으므로 NEAR 컨트랙트와 상호 작용할 수 있습니다.
 :::
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### 2. 사용자 입력 처리
 컴포넌트의 보기를 준비했으므로 이제 사용자가 새 인사말을 입력하고 `Submit` 버튼을 누를 때의 로직을 정의해야 합니다. 즉, `onInputChange` 및 `onBtnClick` 메서드를 정의해야 합니다.

@@ -8,7 +8,7 @@ Smart contracts need to be able to **communicate complex data** in a simple way,
 To achieve such simple communication and efficient storage, smart contracts morph the data from their complex representation into simpler ones.
 
 This process of translating **complex objects into simpler single-value** representations is called **serialization**. NEAR uses two serialization formats: [JSON](https://www.json.org/json-en.html) and [Borsh](https://borsh.io/).
-1. [JSON](https://www.json.org/json-en.html) is used to serialize the contract's input/output during a method call
+1. [JSON](https://www.json.org/json-en.html) is used to serialize the contract's input/output during a function call
 2. [Borsh](https://borsh.io/) is used to serialize the contract's state.
 
 ---
@@ -17,7 +17,7 @@ This process of translating **complex objects into simpler single-value** repres
 
 Lets give a quick overview of both serialization formats, including their pros and cons, as well as an example on how their serializations look like.
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### [JSON](https://www.json.org/json-en.html): Objects to Strings
 
@@ -38,7 +38,7 @@ Example{
 "{\"number\": 2, \"arr\": [0, 1]}"
 ```
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### [Borsh](https://borsh.io/): Objects to Bytes
 
@@ -214,7 +214,7 @@ We can see that the `STATE` key changes to reflect the storage of the new string
 
 At the same time, a new key-value was added adding the new vector entry: the `1u8` we just added.
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 <!-- We should see where to move/replicate this -->
 

@@ -11,6 +11,21 @@
           "mainDocId": "welcome",
           "docs": [
             {
+              "id": "abstraction/chain-signatures",
+              "path": "/zh-CN/abstraction/chain-signatures",
+              "sidebar": "build"
+            },
+            {
+              "id": "abstraction/chain-signatures/wallet",
+              "path": "/zh-CN/abstraction/chain-signatures/wallet",
+              "sidebar": "build"
+            },
+            {
+              "id": "abstraction/what-is",
+              "path": "/zh-CN/abstraction/what-is",
+              "sidebar": "build"
+            },
+            {
               "id": "api/rpc/access-keys",
               "path": "/zh-CN/api/rpc/access-keys",
               "sidebar": "api"
@@ -238,6 +253,35 @@
               "sidebar": "tutorials"
             },
             {
+              "id": "concepts/abstraction/chain-signatures",
+              "path": "/zh-CN/concepts/abstraction/chain-signatures",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/abstraction/introduction",
+              "path": "/zh-CN/concepts/abstraction/introduction",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/abstraction/meta-transactions",
+              "path": "/zh-CN/concepts/abstraction/meta-transactions",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/abstraction/mpc",
+              "path": "/zh-CN/concepts/abstraction/mpc"
+            },
+            {
+              "id": "concepts/abstraction/relayers",
+              "path": "/zh-CN/concepts/abstraction/relayers",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/abstraction/signatures/use-cases",
+              "path": "/zh-CN/concepts/abstraction/signatures/use-cases",
+              "sidebar": "concepts"
+            },
+            {
               "id": "concepts/advanced/indexers",
               "path": "/zh-CN/concepts/advanced/indexers",
               "sidebar": "concepts"
@@ -253,11 +297,6 @@
               "sidebar": "concepts"
             },
             {
-              "id": "concepts/advanced/papers",
-              "path": "/zh-CN/concepts/advanced/papers",
-              "sidebar": "concepts"
-            },
-            {
               "id": "concepts/advanced/specification",
               "path": "/zh-CN/concepts/advanced/specification",
               "sidebar": "concepts"
@@ -265,40 +304,6 @@
             {
               "id": "concepts/advanced/vm",
               "path": "/zh-CN/concepts/advanced/vm"
-            },
-            {
-              "id": "concepts/basics/accounts/access-keys",
-              "path": "/zh-CN/concepts/basics/accounts/access-keys",
-              "sidebar": "concepts"
-            },
-            {
-              "id": "concepts/basics/accounts/account-id",
-              "path": "/zh-CN/concepts/basics/accounts/account-id",
-              "sidebar": "concepts"
-            },
-            {
-              "id": "concepts/basics/accounts/creating-accounts",
-              "path": "/zh-CN/concepts/basics/accounts/creating-accounts",
-              "sidebar": "concepts"
-            },
-            {
-              "id": "concepts/basics/accounts/model",
-              "path": "/zh-CN/concepts/basics/accounts/model",
-              "sidebar": "concepts"
-            },
-            {
-              "id": "concepts/basics/accounts/smartcontract",
-              "path": "/zh-CN/concepts/basics/accounts/smartcontract",
-              "sidebar": "concepts"
-            },
-            {
-              "id": "concepts/basics/accounts/state",
-              "path": "/zh-CN/concepts/basics/accounts/state",
-              "sidebar": "concepts"
-            },
-            {
-              "id": "concepts/basics/actors",
-              "path": "/zh-CN/concepts/basics/actors"
             },
             {
               "id": "concepts/basics/epoch",
@@ -339,21 +344,6 @@
               "sidebar": "concepts"
             },
             {
-              "id": "concepts/basics/transactions/gas",
-              "path": "/zh-CN/concepts/basics/transactions/gas",
-              "sidebar": "concepts"
-            },
-            {
-              "id": "concepts/basics/transactions/gas-advanced",
-              "path": "/zh-CN/concepts/basics/transactions/gas-advanced",
-              "sidebar": "concepts"
-            },
-            {
-              "id": "concepts/basics/transactions/overview",
-              "path": "/zh-CN/concepts/basics/transactions/overview",
-              "sidebar": "concepts"
-            },
-            {
               "id": "concepts/basics/validators",
               "path": "/zh-CN/concepts/basics/validators",
               "sidebar": "concepts"
@@ -371,6 +361,46 @@
             {
               "id": "concepts/data-flow/token-transfer-flow",
               "path": "/zh-CN/concepts/data-flow/token-transfer-flow",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/protocol/access-keys",
+              "path": "/zh-CN/concepts/protocol/access-keys",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/protocol/account-id",
+              "path": "/zh-CN/concepts/protocol/account-id",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/protocol/account-model",
+              "path": "/zh-CN/concepts/protocol/account-model",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/protocol/gas",
+              "path": "/zh-CN/concepts/protocol/gas",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/protocol/smartcontract",
+              "path": "/zh-CN/concepts/protocol/smartcontract",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/protocol/transaction-anatomy",
+              "path": "/zh-CN/concepts/protocol/transaction-anatomy",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/protocol/transaction-execution",
+              "path": "/zh-CN/concepts/protocol/transaction-execution",
+              "sidebar": "concepts"
+            },
+            {
+              "id": "concepts/protocol/transactions",
+              "path": "/zh-CN/concepts/protocol/transactions",
               "sidebar": "concepts"
             },
             {
@@ -417,6 +447,11 @@
               "id": "concepts/welcome",
               "path": "/zh-CN/concepts/welcome",
               "sidebar": "concepts"
+            },
+            {
+              "id": "data-availability/arbitrum",
+              "path": "/zh-CN/data-availability/arbitrum",
+              "sidebar": "data-availability"
             },
             {
               "id": "data-availability/blob-contract",
@@ -659,6 +694,21 @@
             {
               "id": "develop/relayers/build-relayer",
               "path": "/zh-CN/develop/relayers/build-relayer",
+              "sidebar": "build"
+            },
+            {
+              "id": "develop/relayers/gas-station",
+              "path": "/zh-CN/develop/relayers/gas-station",
+              "sidebar": "build"
+            },
+            {
+              "id": "develop/relayers/multichain-server",
+              "path": "/zh-CN/develop/relayers/multichain-server",
+              "sidebar": "build"
+            },
+            {
+              "id": "develop/relayers/relayer-gas-example",
+              "path": "/zh-CN/develop/relayers/relayer-gas-example",
               "sidebar": "build"
             },
             {
@@ -1178,11 +1228,6 @@
               "sidebar": "build"
             },
             {
-              "id": "primitives/welcome",
-              "path": "/zh-CN/primitives/welcome",
-              "sidebar": "primitives"
-            },
-            {
               "id": "primitives/whatareprimitives",
               "path": "/zh-CN/primitives/whatareprimitives",
               "sidebar": "build"
@@ -1425,7 +1470,7 @@
             {
               "id": "tools/fastauth-sdk",
               "path": "/zh-CN/tools/fastauth-sdk",
-              "sidebar": "tools"
+              "sidebar": "build"
             },
             {
               "id": "tools/indexer-for-explorer",
@@ -1901,12 +1946,6 @@
               "link": {
                 "path": "/zh-CN/tutorials/welcome",
                 "label": "tutorials/welcome"
-              }
-            },
-            "primitives": {
-              "link": {
-                "path": "/zh-CN/primitives/welcome",
-                "label": "primitives/welcome"
               }
             },
             "tools": {

@@ -10,13 +10,13 @@ import ContactUs from '@site/src/components/ContactUs.mdx';
 
 RPC API를 사용하면 NEAR 네트워크와 직접 통신할 수 있습니다. 예를 들어, [near-api-js](/tools/near-api-js/quick-reference)와 같은 도구는 RPC 호출을 만드는 추상화일 뿐입니다.
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ## RPC 제공자
 
 [선택할 수 있는 여러 RPC 공급자](./providers.md)가 있습니다. 이러한 공급자는 NEAR 네트워크와 상호 작용하는 데 도움이 되는 중개자 역할을 합니다.
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ## NEAR RPC - 빠른 링크
 
@@ -33,6 +33,6 @@ RPC API를 사용하면 NEAR 네트워크와 직접 통신할 수 있습니다. 
 
 :::tip [Postman](/api/rpc/setup#postman-setup), [JavaScript](/api/rpc/setup#javascript-setup) 및 [HTTPie](/api/rpc/setup#httpie-setup)를 사용하여 JSON RPC 2.0 엔드포인트에 액세스할 수 있습니다. :::
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 <ContactUs />

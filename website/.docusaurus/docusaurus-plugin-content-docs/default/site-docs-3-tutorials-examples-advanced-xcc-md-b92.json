@@ -11,9 +11,9 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/examples/advanced-xcc.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "gagdiez",
-  "lastUpdatedAt": 1702155614,
-  "formattedLastUpdatedAt": "Dec 9, 2023",
+  "lastUpdatedBy": "garikbesson",
+  "lastUpdatedAt": 1710534675,
+  "formattedLastUpdatedAt": "Mar 15, 2024",
   "frontMatter": {
     "id": "advanced-xcc",
     "title": "Complex Cross Contract Call"

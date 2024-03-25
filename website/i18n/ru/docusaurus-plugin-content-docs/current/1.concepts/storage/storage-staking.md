@@ -8,7 +8,7 @@ sidebar_label: Storage Staking
 > 
 > In storage staking (sometimes called _state_ staking), the account that owns a smart contract must stake (or lock) tokens according to the amount of data stored in that smart contract, effectively reducing the balance of the contract's account.
 
-<blockquote class="info">
+<blockquote className="info">
 <strong>Coming from Ethereum?</strong><br /><br />
 
 If you’re familiar with Ethereum’s pricing model, you may know that, like NEAR, the protocol charges a fee (called "gas") for each transaction. Unlike NEAR, Ethereum's gas fee accounts for the amount of data stored via that transaction. This essentially means that anyone can pay once to store permanent data on-chain. This is a poor economic design for at least two reasons: 1. The people running the network (miners, in the case of Ethereum 1) are not appropriately incentivized to store large amounts of data, since a gas fee far charged in the distant past can increase storage costs forever, and 2. The users of a smart contract are charged for the data they send to store in it, rather than charging the owner of the smart contract.
@@ -17,7 +17,7 @@ If you’re familiar with Ethereum’s pricing model, you may know that, like NE
 
 ## How does NEAR's design align incentives?
 
-Storage-staked tokens are unavailable for other uses, such as validation staking. This increases the yield that validators will receive. Learn more in [the economics whitepaper](https://near.org/papers/economics-in-sharded-blockchain/).
+Storage-staked tokens are unavailable for other uses, such as validation staking. This increases the yield that validators will receive. Learn more in [the economics whitepaper](https://pages.near.org/papers/economics-in-sharded-blockchain/).
 
 ## When do tokens get staked?
 
@@ -117,7 +117,7 @@ In general, Borsh is faster, uses less storage, and costs less gas. Use it if yo
 
 This is especially important if you are storing user-generated data!
 
-Let's use this [Guest Book](https://github.com/near-examples/guest-book) as an example. As implemented today, visitors to the app can sign in with NEAR and leave a message. Their message is stored on-chain.
+Let's use this [Guest Book](https://github.com/near-examples/guest-book-examples) as an example. As implemented today, visitors to the app can sign in with NEAR and leave a message. Their message is stored on-chain.
 
 Imagine this app got very popular, and that visitors started leaving unexpectedly long messages. The contract owner might run out of funding for storage very quickly!
 

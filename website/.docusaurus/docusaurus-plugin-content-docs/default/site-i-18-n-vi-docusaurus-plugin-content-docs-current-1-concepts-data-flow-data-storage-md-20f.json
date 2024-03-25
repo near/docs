@@ -12,16 +12,16 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Github Actions",
-  "lastUpdatedAt": 1704996595,
-  "formattedLastUpdatedAt": "11 thg 1, 2024",
+  "lastUpdatedAt": 1709152665,
+  "formattedLastUpdatedAt": "28 thg 2, 2024",
   "frontMatter": {
     "id": "data-storage",
     "sidebar_label": "Data on the Blockchain"
   },
   "sidebar": "concepts",
   "previous": {
-    "title": "Epoch",
-    "permalink": "/vi/concepts/basics/epoch"
+    "title": "Use cases",
+    "permalink": "/vi/concepts/abstraction/signatures/use-cases"
   },
   "next": {
     "title": "Intro to Indexers",

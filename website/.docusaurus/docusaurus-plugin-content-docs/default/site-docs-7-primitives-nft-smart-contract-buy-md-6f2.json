@@ -5,7 +5,7 @@
   "source": "@site/../docs/7.primitives/nft/smart-contract/buy.md",
   "sourceDirName": "7.primitives/nft/smart-contract",
   "slug": "/primitives/nft/smart-contract/buy",
-  "permalink": "/zh-CN/primitives/nft/smart-contract/buy",
+  "permalink": "/primitives/nft/smart-contract/buy",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/nft/smart-contract/buy.md",
@@ -13,6 +13,6 @@
   "version": "current",
   "lastUpdatedBy": "garikbesson",
   "lastUpdatedAt": 1706635251,
-  "formattedLastUpdatedAt": "2024年1月30日",
+  "formattedLastUpdatedAt": "Jan 30, 2024",
   "frontMatter": {}
 }

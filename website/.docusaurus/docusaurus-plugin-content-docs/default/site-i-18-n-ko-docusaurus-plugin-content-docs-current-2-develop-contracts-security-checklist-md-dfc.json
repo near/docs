@@ -1,7 +1,7 @@
 {
   "id": "develop/contracts/security/checklist",
   "title": "✅ 체크리스트",
-  "description": "스마트 컨트랙트 개발을 마치면, 최종 사용자가 쓸 수 있을 만큼 안전한지 확인해야 합니다. 다음 체크리스트를 활용해 보세요.",
+  "description": "Once you finished developing your smart contract please go through the following list in order to ensure everything is safe for the end user.",
   "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.develop/contracts/security/checklist.md",
   "sourceDirName": "2.develop/contracts/security",
   "slug": "/develop/contracts/security/checklist",
@@ -12,8 +12,8 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Github Actions",
-  "lastUpdatedAt": 1704996595,
-  "formattedLastUpdatedAt": "2024년 1월 11일",
+  "lastUpdatedAt": 1709152665,
+  "formattedLastUpdatedAt": "2024년 2월 28일",
   "frontMatter": {
     "id": "checklist",
     "title": "✅ 체크리스트"

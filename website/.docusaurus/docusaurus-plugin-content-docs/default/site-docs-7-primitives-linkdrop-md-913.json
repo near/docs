@@ -5,15 +5,15 @@
   "source": "@site/../docs/7.primitives/linkdrop.md",
   "sourceDirName": "7.primitives",
   "slug": "/primitives/linkdrop",
-  "permalink": "/zh-CN/primitives/linkdrop",
+  "permalink": "/primitives/linkdrop",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/linkdrop.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "garikbesson",
-  "lastUpdatedAt": 1706635251,
-  "formattedLastUpdatedAt": "2024年1月30日",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1711375194,
+  "formattedLastUpdatedAt": "Mar 25, 2024",
   "frontMatter": {
     "id": "linkdrop",
     "title": "Linkdrops",
@@ -22,10 +22,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Non-Fungible Tokens (NFT)",
-    "permalink": "/zh-CN/primitives/nft"
+    "permalink": "/primitives/nft"
   },
   "next": {
     "title": "Price Oracles",
-    "permalink": "/zh-CN/primitives/oracles"
+    "permalink": "/primitives/oracles"
   }
 }

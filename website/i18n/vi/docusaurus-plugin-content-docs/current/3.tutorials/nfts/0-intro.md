@@ -24,22 +24,22 @@ sidebar_label: Giới thiệu
 
 Chỉ vài bước bạn sẽ từ **_Zero_** trở thành **_Hero_** trong một thời gian ngắn! 💪
 
-| Bước | Tên                                                                 | Mô tả                                                                                                                  |
-| ---- | ------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| 1    | [Contract đã được deploy sẵn](/tutorials/nfts/predeployed-contract) | Mint một NFT mà không cần code, tạo, hay deploy một smart contract.                                                    |
-| 2    | [Kiến trúc của contract](/tutorials/nfts/skeleton)                  | Tìm hiểu kiến trúc cơ bản của NFT smart contract và compile code.                                                      |
-| 3    | [Mint](/tutorials/nfts/minting)                                     | Tóm gọn cách để hợp đồng thông minh có thể tạo ra một non-fungible token.                                              |
-| 4    | [Upgrade một contract](/tutorials/nfts/upgrade-contract)            | Khám phá quy trình upgrade một smart contract có sẵn.                                                                  |
-| 5    | [Enumeration](/tutorials/nfts/enumeration)                          | Khám phá các enumeration method có thể được dùng để trả về các state của smart contract.                               |
-| 6    | [Core](/tutorials/nfts/core)                                        | Mở rộng NFT contract bằng cách sử dụng tiêu chuẩn cốt lõi cho phép transfer token                                      |
-| 7    | [Các Approval](/tutorials/nfts/approvals)                           | Mở rộng contract cho phép các account khác có thể transfer các NFT thay mặt bạn.                                       |
-| 8    | [Royalty](/tutorials/nfts/royalty)                                  | Thêm các NFT royalty để cho phép cài đặt tỷ lệ phần trăm sẽ trả cho người tạo token.                                   |
-| 9    | [Marketplace](/tutorials/nfts/marketplace)                          | Learn about how common marketplaces operate on NEAR and dive into some of the code that allows buying and selling NFTs |
+| Bước | Tên                                                                 | Mô tả                                                                                                                   |
+| ---- | ------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| 1    | [Contract đã được deploy sẵn](/tutorials/nfts/predeployed-contract) | Mint một NFT mà không cần code, tạo, hay deploy một smart contract.                                                     |
+| 2    | [Kiến trúc của contract](/tutorials/nfts/skeleton)                  | Tìm hiểu kiến trúc cơ bản của NFT smart contract và compile code.                                                       |
+| 3    | [Mint](/tutorials/nfts/minting)                                     | Tóm gọn cách để hợp đồng thông minh có thể tạo ra một non-fungible token.                                               |
+| 4    | [Upgrade một contract](/tutorials/nfts/upgrade-contract)            | Khám phá quy trình upgrade một smart contract có sẵn.                                                                   |
+| 5    | [Enumeration](/tutorials/nfts/enumeration)                          | Khám phá các enumeration method có thể được dùng để trả về các state của smart contract.                                |
+| 6    | [Core](/tutorials/nfts/core)                                        | Extend the NFT contract using the core standard which allows token transfer.                                            |
+| 7    | [Các Approval](/tutorials/nfts/approvals)                           | Mở rộng contract cho phép các account khác có thể transfer các NFT thay mặt bạn.                                        |
+| 8    | [Royalty](/tutorials/nfts/royalty)                                  | Thêm các NFT royalty để cho phép cài đặt tỷ lệ phần trăm sẽ trả cho người tạo token.                                    |
+| 9    | [Marketplace](/tutorials/nfts/marketplace)                          | Learn about how common marketplaces operate on NEAR and dive into some of the code that allows buying and selling NFTs. |
 
 
 <!--
 1. [Events](/tutorials/nfts/events): in this tutorial you'll explore the events extension, allowing the contract to react on certain events.
-1. [Marketplace](/tutorials/nfts/marketplace): in the last tutorial you'll be exploring some key aspects of the marketplace contract.
+2. [Marketplace](/tutorials/nfts/marketplace): in the last tutorial you'll be exploring some key aspects of the marketplace contract.
 -->
 
 ---

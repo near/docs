@@ -158,16 +158,24 @@ NFT를 구매하려면 `offer` 함수를 호출해야 합니다. 이를 위해, 
 yarn build && cd market-contract && ./build.sh && cd ..
 ```
 
-FT 컨트랙트를 배포하고 환경 변수를 내보내려면, 다음 명령을 실행합니다. 이미 dev-accounts를 사용하고 있는 경우, dev-deploy 명령 끝에 `-f` 플래그를 연결하여 새 계정을 강제로 생성합니다.
+To deploy the FT contract and export an environment variable, run the following command:
 
-```
-near dev-deploy out/contract.wasm && export FT_CONTRACT=$(cat neardev/dev-account)
+```bash
+export FT_CONTRACT=<new-ft-account-id>
+near create-account $FT_CONTRACT --useFaucet
+near deploy $FT_CONTRACT out/contract.wasm
 ```
 
 다음으로 NFT 및 마켓플레이스 컨트랙트를 배포합니다.
 
-```
-near dev-deploy out/market.wasm -f && export MARKETPLACE_CONTRACT=$(cat neardev/dev-account) && near dev-deploy out/nft-contract.wasm -f && export NFT_CONTRACT=$(cat neardev/dev-account)
+```bash
+export NFT_CONTRACT=<new-nft-account-id>
+near create-account $NFT_CONTRACT --useFaucet
+near deploy $NFT_CONTRACT out/nft-contract.wasm
+
+export MARKETPLACE_CONTRACT=<new-marketplace-account-id>
+near create-account $MARKETPLACE_CONTRACT --useFaucet
+near deploy $MARKETPLACE_CONTRACT out/market.wasm
 ```
 
 다음 명령을 실행하여 환경 변수가 모두 올바른지 확인하세요. 각 출력은 달라야 합니다.

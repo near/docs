@@ -12,15 +12,15 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Github Actions",
-  "lastUpdatedAt": 1704996595,
-  "formattedLastUpdatedAt": "2024년 1월 11일",
+  "lastUpdatedAt": 1709152665,
+  "formattedLastUpdatedAt": "2024년 2월 28일",
   "frontMatter": {
     "id": "count-near",
     "title": "NEAR 숫자 세기"
   },
   "sidebar": "tutorials",
   "previous": {
-    "title": "예제 & 튜토리얼",
+    "title": "Home",
     "permalink": "/ko/tutorials/welcome"
   },
   "next": {

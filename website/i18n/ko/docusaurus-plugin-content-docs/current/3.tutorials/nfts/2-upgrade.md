@@ -30,7 +30,7 @@ NEAR 런타임은 디스크에서 직렬화된 상태를 읽고 현재 컨트랙
 
 페이지를 매기기 위해, Rust에는 시작 인덱스를 건너뛰어 반복자(iterator)의 첫 `n`개의 원소를 취하는 멋진 함수들이 여러 개 존재합니다.
 
-`enumeration.rs` 파일로 이동하여 해당 로직을 구현해 보겠습니다.
+Let's move over to the `enumeration.rs` file and implement that logic:
 
 <Github language="rust" start="32" end="62" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/enumeration.rs" />
 
@@ -39,7 +39,7 @@ NEAR 런타임은 디스크에서 직렬화된 상태를 읽고 현재 컨트랙
 Now that you've implemented the necessary logic for `nft_tokens_for_owner`, it's time to build and re-deploy the contract to your account. Using the build script, deploy the contract as you did in the previous tutorial:
 
 ```bash
-yarn build && near deploy --wasmFile out/main.wasm --accountId $NFT_CONTRACT_ID
+yarn build && near deploy $NFT_CONTRACT_ID out/main.wasm
 ```
 
 This should output a warning saying that the account has a deployed contract and will ask if you'd like to proceed. Simply type `y` and hit enter.
@@ -120,7 +120,7 @@ In the [next tutorial](/tutorials/nfts/enumeration), you'll implement the remain
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `3.0.0`
-- NFT 표준: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), `1.0.0` 버전
+- near-cli: `4.0.4`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 
 :::

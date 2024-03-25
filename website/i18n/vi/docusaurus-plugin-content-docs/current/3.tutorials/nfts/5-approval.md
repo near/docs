@@ -238,26 +238,21 @@ Với việc hoàn thành điều đó, bây giờ là lúc để deploy và b�
 
 ## Test các thay đổi mới {#testing-changes}
 
-Vì những thay đổi này ảnh hưởng đến tất cả các token khác và state sẽ không thể tự động được kế thừa từ code mới, chỉ redeploy contract sẽ dẫn đến lỗi. Vì lý do này, cách tốt nhất là tạo một sub-account và deploy contract với nó.
+Vì những thay đổi này ảnh hưởng đến tất cả các token khác và state sẽ không thể tự động được kế thừa từ code mới, chỉ redeploy contract sẽ dẫn đến lỗi. For this reason, it's best practice to create a new account and deploy the contract there.
 
-### Tạo một sub-account {#creating-sub-account}
+### Deployment
 
-Chạy command dưới đây để tạo một sub-account `approval` cho account chính của bạn với số dư ban đầu là 25 NEAR, nó sẽ được transfer từ account gốc sang account mới của bạn.
-
-```bash
-near create-account approval.$NFT_CONTRACT_ID --masterAccount $NFT_CONTRACT_ID --initialBalance 25
-```
-
-Tiếp theo, bạn sẽ muốn export một biến môi trường cho việc development được dễ dàng hơn:
+Next, you'll deploy this contract to the network.
 
 ```bash
-export APPROVAL_NFT_CONTRACT_ID=approval.$NFT_CONTRACT_ID
+export APPROVAL_NFT_CONTRACT_ID=<accountId>
+near create-account $APPROVAL_NFT_CONTRACT_ID --useFaucet
 ```
 
 Sử dụng build script, deploy contract như bạn đã làm ở các hướng dẫn trước:
 
 ```bash
-yarn build && near deploy --wasmFile out/main.wasm --accountId $APPROVAL_NFT_CONTRACT_ID
+yarn build && near deploy $APPROVAL_NFT_CONTRACT_ID out/main.wasm
 ```
 
 ### Khởi tạo và mint {#initialization-and-minting}
@@ -405,13 +400,13 @@ Nếu bạn gọi enumeration method một lần nữa, bạn sẽ nhìn thấy 
 ]
 ```
 
-Bây giờ chúng ta hãy test approval ID tăng dần trên các chủ sở hữu khác nhau. Nếu bạn chấp thuận sub-account đã mint token ban đầu, thì bây giờ approval ID sẽ là 1.
+Bây giờ chúng ta hãy test approval ID tăng dần trên các chủ sở hữu khác nhau. If you approve the account that originally minted the token, the approval ID should be 1 now.
 
 ```bash
 near call $APPROVAL_NFT_CONTRACT_ID nft_approve '{"token_id": "approval-token", "account_id": "'$APPROVAL_NFT_CONTRACT_ID'"}' --accountId $NFT_CONTRACT_ID --deposit 0.1
 ```
 
-Gọi view function một lần nữa, bây giờ kết quả trả về một approval ID là 1 cho sub-account đã được chấp thuận.
+Calling the view function again show now return an approval ID of 1 for the account that was approved.
 
 ```bash
 near view $APPROVAL_NFT_CONTRACT_ID nft_tokens_for_owner '{"account_id": "'$NFT_CONTRACT_ID'", "limit": 10}'
@@ -464,7 +459,7 @@ At this point, everything was implemented in order to allow accounts to be appro
 
 Bạn đã tiến hành một view method để [kiểm tra](#check-if-account-approved) một account được chấp thuận hay không và để hoàn thành phần code của hướng dẫn, bạn đã triển khai logic cần thiết để [thu hồi account](#revoke-account) cũng như là [thu hồi toàn bộ các account](#revoke-all-accounts).
 
-Sau đó, contract code đã hoàn tất và đó là lúc để chuyển sang công việc test, trong đó bạn đã tạo một [subaccount](#creating-sub-account) và test [việc chấp thuận](#approving-an-account) và [transfer](#transferring-the-nft) cho các NFT của bạn.
+After this, the contract code was finished and it was time to move onto testing where you created an [account](#deployment) and tested the [approving](#approving-an-account) and [transferring](#transferring-the-nft) for your NFTs.
 
 Trong hướng dẫn tiếp theo, bạn sẽ học về các tiêu chuẩn royalty và làm cách nào bạn có thể tương tác được với các NFT marketplace.
 
@@ -472,9 +467,9 @@ Trong hướng dẫn tiếp theo, bạn sẽ học về các tiêu chuẩn royal
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `3.0.0`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
+- near-cli: `4.0.4`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 - Enumeration standard: [NEP181](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration), version `1.0.0`
-- Approval standard: [NEP178](https://nomicon.io/Standards/Tokens/NonFungibleToken/ApprovalManagement), version `1.0.0`
+- Approval standard: [NEP178](https://nomicon.io/Standards/Tokens/NonFungibleToken/ApprovalManagement), version `1.1.0`
 
 :::

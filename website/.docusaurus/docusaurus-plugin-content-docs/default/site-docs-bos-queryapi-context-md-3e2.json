@@ -11,9 +11,9 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/queryapi/context.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Roshaan Siddiqui",
-  "lastUpdatedAt": 1701176787,
-  "formattedLastUpdatedAt": "Nov 28, 2023",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1707480554,
+  "formattedLastUpdatedAt": "Feb 9, 2024",
   "frontMatter": {
     "id": "context-object",
     "title": "QueryAPI Context object",

@@ -1,7 +1,7 @@
 {
   "id": "develop/welcome",
-  "title": "개발자 문서",
-  "description": "환영합니다! 여기에서 NEAR를 사용하여 탈중앙화 앱을 개발하는 방법에 대한 문서를 찾을 수 있습니다.",
+  "title": "Build on NEAR",
+  "description": "환영합니다! Here you will find all the information on what you can build on NEAR and how to build it. Do not worry if you are new to Web3 or Blockchain, we are here to guide you through the process of learning.",
   "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.develop/welcome.md",
   "sourceDirName": "2.develop",
   "slug": "/develop/welcome",
@@ -12,17 +12,18 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Github Actions",
-  "lastUpdatedAt": 1704996595,
-  "formattedLastUpdatedAt": "2024년 1월 11일",
+  "lastUpdatedAt": 1709152665,
+  "formattedLastUpdatedAt": "2024년 2월 28일",
   "frontMatter": {
     "id": "welcome",
-    "title": "개발자 문서",
+    "title": "Build on NEAR",
     "sidebar_label": "Home",
-    "hide_table_of_contents": true
+    "hide_table_of_contents": true,
+    "hide_breadcrumb": true
   },
   "sidebar": "build",
   "next": {
-    "title": "스마트 컨트랙트란 무엇인가요?",
-    "permalink": "/ko/develop/contracts/whatisacontract"
+    "title": "What is Chain Abstraction?",
+    "permalink": "/ko/abstraction/what-is"
   }
 }

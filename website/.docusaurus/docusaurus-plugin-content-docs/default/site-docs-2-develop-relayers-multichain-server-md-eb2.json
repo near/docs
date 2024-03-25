@@ -1,0 +1,31 @@
+{
+  "id": "develop/relayers/multichain-server",
+  "title": "Multichain Relayer Server",
+  "description": "This technology is currently in Alpha and should only be used in a testnet environment.",
+  "source": "@site/../docs/2.develop/relayers/multichain-server.md",
+  "sourceDirName": "2.develop/relayers",
+  "slug": "/develop/relayers/multichain-server",
+  "permalink": "/develop/relayers/multichain-server",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/relayers/multichain-server.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1711372504,
+  "formattedLastUpdatedAt": "Mar 25, 2024",
+  "frontMatter": {
+    "id": "multichain-server",
+    "title": "Multichain Relayer Server",
+    "sidebar_label": "Multichain Relayer Server"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Wallet Chain Key Rules",
+    "permalink": "/abstraction/chain-signatures/wallet"
+  },
+  "next": {
+    "title": "Multichain Gas Station",
+    "permalink": "/develop/relayers/gas-station"
+  }
+}

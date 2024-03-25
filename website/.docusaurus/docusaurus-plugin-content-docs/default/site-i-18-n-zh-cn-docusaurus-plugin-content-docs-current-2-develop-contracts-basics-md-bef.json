@@ -12,15 +12,15 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Github Actions",
-  "lastUpdatedAt": 1704996595,
-  "formattedLastUpdatedAt": "2024年1月11日",
+  "lastUpdatedAt": 1709152665,
+  "formattedLastUpdatedAt": "2024年2月28日",
   "frontMatter": {
     "id": "basics",
     "title": "Modules, Types & Structs"
   },
   "sidebar": "build",
   "previous": {
-    "title": "⭐ Quickstart",
+    "title": "Quickstart ✨",
     "permalink": "/zh-CN/develop/contracts/quickstart"
   },
   "next": {

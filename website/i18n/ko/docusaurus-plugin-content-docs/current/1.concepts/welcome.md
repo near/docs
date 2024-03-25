@@ -25,7 +25,7 @@ import ContactUs from '@site/src/components/ContactUs.mdx';
     <Feature url="/concepts/basics/validators" title="밸리데이터" subtitle="Learn how the network stays safe" image="validation.png" />
   </Column>
   <Column title="추가 자료">
-    <Feature url="/concepts/advanced/papers" title="논문" subtitle="Read the research that defined NEAR" image="experiment.png" />
+    <Feature url="https://near.org/papers" title="논문" subtitle="Read the research that defined NEAR" image="experiment.png" />
     <Feature url="/concepts/web3/intro" title="Web2에서 Web3로" subtitle="Migrate your applications" image="near-api-js.png" />
     <Feature url="/concepts/advanced/indexers" title="블록체인 데이터 인덱싱" subtitle="Query usage information for a contract" image="blocks.png" />
   </Column>

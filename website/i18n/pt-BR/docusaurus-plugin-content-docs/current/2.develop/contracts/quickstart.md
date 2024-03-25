@@ -1,7 +1,7 @@
 ---
 id: quickstart
 title: Hello Contract
-sidebar_label: ⭐ Quickstart
+sidebar_label: Quickstart ✨
 ---
 
 import Tabs from '@theme/Tabs';
@@ -11,10 +11,6 @@ import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 [NEAR accounts](../../1.concepts/basics/accounts/introduction.md) can host programs known as smart contracts. Smart contracts can **store data**, and **expose methods** so other users and contracts interact with them.
 
 In this quickstart tutorial, we will guide you in creating your first smart contract in the NEAR **testnet** that stores and retrieves a greeting.
-
-:::info
-This quickstart is dedicated to creating smart contracts. We also have one dedicated only to [frontends](../integrate/quickstart.md)
-:::
 
 ***
 
@@ -114,11 +110,11 @@ Your new smart contract stores a `greeting: string` attribute in their state, an
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
-            url="https://github.com/near-examples/hello-near-js/blob/master/contract/src/contract.ts"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts"
             start="3" end="18" /></Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/hello-near-rs/blob/main/contract/src/lib.rs"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
             start="4" end="36" /></Language>
 </CodeTabs>
 

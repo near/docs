@@ -1,0 +1,31 @@
+{
+  "id": "develop/relayers/gas-station",
+  "title": "Multichain Gas Station Contract",
+  "description": "The multichain gas station smart contract accepts payments in NEAR tokens in exchange for gas funding on non-NEAR foreign chains. Part of the NEAR Multichain effort, it works in conjunction with the MPC recovery service to generate on-chain signatures.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.develop/relayers/gas-station.md",
+  "sourceDirName": "2.develop/relayers",
+  "slug": "/develop/relayers/gas-station",
+  "permalink": "/zh-CN/develop/relayers/gas-station",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/relayers/gas-station.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1709152665,
+  "formattedLastUpdatedAt": "2024年2月28日",
+  "frontMatter": {
+    "id": "gas-station",
+    "title": "Multichain Gas Station Contract",
+    "sidebar_label": "Multichain Gas Station"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Multichain Relayer Server",
+    "permalink": "/zh-CN/develop/relayers/multichain-server"
+  },
+  "next": {
+    "title": "Relayer + Gas Station",
+    "permalink": "/zh-CN/develop/relayers/relayer-gas-example"
+  }
+}

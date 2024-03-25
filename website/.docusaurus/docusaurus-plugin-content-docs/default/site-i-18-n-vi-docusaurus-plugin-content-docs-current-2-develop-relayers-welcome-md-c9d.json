@@ -21,11 +21,11 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Integrating Components",
-    "permalink": "/vi/develop/integrate/frontend-components"
+    "title": "What is Chain Abstraction?",
+    "permalink": "/vi/abstraction/what-is"
   },
   "next": {
-    "title": "Login with NEAR",
-    "permalink": "/vi/develop/integrate/backend-login"
+    "title": "FastAuth (Email Login)",
+    "permalink": "/vi/tools/fastauth-sdk"
   }
 }

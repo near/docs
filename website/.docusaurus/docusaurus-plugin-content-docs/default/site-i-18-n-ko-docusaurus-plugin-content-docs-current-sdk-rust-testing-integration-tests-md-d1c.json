@@ -1,7 +1,7 @@
 {
   "id": "sdk/rust/testing/integration-tests",
   "title": "통합 테스트(Integration Test)",
-  "description": "참고: 시뮬레이션 테스트는 더 이상 적극적으로 지원되지 않습니다. NEAR 시뮬레이터는 NEAR 컨트랙트를 테스트할 목적으로 블록체인 환경을 대체하기 위한 것이었습니다. 그러나 NEAR 렛저를 시뮬레이션하는 것은 예상했던 것보다 훨씬 더 복잡한 노력이 든다는 것이 밝혀졌습니다. 결국 워크플로우를 자동화하고 실제 NEAR 네트워크(로컬넷, 테스트넷 또는 메인넷)를 사용하여 NEAR 스마트 컨트랙트에 대한 테스트를 작성하기 위한 라이브러리인 '작업 공간(Workspace)'에 대한 아이디어가 탄생했습니다. 따라서 NEAR 시뮬레이터는 더 이상 사용되지 않고, 작업 공간의 Rust 버전인 workspaces-rs가 대신 사용되고 있습니다. 두 라이브러리에는 크게 다른 두 API가 있으므로, 이 가이드는 개발자의 마이그레이션 프로세스를 쉽게 하기 위해 만들어졌습니다.",
+  "description": "단위 테스트(Unit Test) vs. 통합 테스트(Integration Test)",
   "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/sdk/rust/testing/integration-tests.md",
   "sourceDirName": "sdk/rust/testing",
   "slug": "/sdk/rust/testing/integration-tests",
@@ -12,8 +12,8 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Github Actions",
-  "lastUpdatedAt": 1705914809,
-  "formattedLastUpdatedAt": "2024년 1월 22일",
+  "lastUpdatedAt": 1709152665,
+  "formattedLastUpdatedAt": "2024년 2월 28일",
   "sidebarPosition": 2,
   "frontMatter": {
     "sidebar_position": 2

@@ -62,7 +62,7 @@ Once the app starts you will see the landing page, rendering a navigation bar th
 
 Go ahead and sign in with your NEAR account. If you don't have one, you can create one on the fly.
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Under the Hood
 
@@ -82,7 +82,7 @@ The wallet selector is a component that allows users to select their preferred N
 
 </details>
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Navigation Bar & Login
 The navigation bar implements buttons to `login` and `logout` users with their Near wallet.
@@ -101,7 +101,7 @@ Now that you understand how the landing page works, we can move to the `Near Int
 
 Login if you haven't done it yet and you will see a simple form that allows you to store a greeting in the smart contract.
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Under the Hood
 Interactions with NEAR are done using the `useWallet` hook to retrieve both the `viewMethod` and `callMethod` methods and the `signedAccountId` property from the `wallet selector`.
@@ -132,7 +132,7 @@ To interact with the Ethereum components (a Lido) you will need to have Metamask
 While the component's code is stored in the **Near testnet**, the Lido component is connected to the **Ethereum mainnet**.
 :::
 
-<hr class="subsection" />
+<hr className="subsection" />
 
 ### Under the Hood
 
@@ -153,6 +153,8 @@ Particularly, the `Component` in the main page are wrappers around the `Widget` 
 
 ## Moving Forward
 
-That's it for our quickstart  tutorial. You have now seen a fully functional frontend that can talk with NEAR contracts and render Web3 components.<!-- In the following sections we dive deeper into what are \[BOS components\](../../bos/overview.md), how to \[make your own gateway\](../../bos/tutorial/gateway.md), and what are some of the \[built-in components\](../../bos/components.md). -->If you have any questions, do not hesitate in joining us on [Discord](https://near.chat). We regularly host Office Hours, in which you can join our voice channel and ask questions.
+That's it for our quickstart  tutorial. You have now seen a fully functional frontend that can talk with NEAR contracts and render Web3 components.
+
+If you have any questions, do not hesitate in joining us on [Discord](https://near.chat). We regularly host Office Hours, in which you can join our voice channel and ask questions.
 
 Happy coding!

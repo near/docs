@@ -1,7 +1,7 @@
 {
   "id": "sdk/rust/testing/integration-tests",
   "title": "Integration Tests",
-  "description": "Note: Simulation tests are no longer actively supported. NEAR Simulator was meant to be an in-place replacement of a blockchain environment for the purpose of testing NEAR contracts. However, simulating NEAR ledger turned out to be a much more complex endeavor than was anticipated. Eventually, the idea of workspaces was born - a library for automating workflows and writing tests for NEAR smart contracts using a real NEAR network (localnet, testnet or mainnet). Thus, NEAR Simulator is being deprecated in favor of workspaces-rs, the Rust edition of workspaces. As the two libraries have two vastly different APIs this guide was created to ease the migration process for developers.",
+  "description": "Unit Tests vs. Integration Tests",
   "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/sdk/rust/testing/integration-tests.md",
   "sourceDirName": "sdk/rust/testing",
   "slug": "/sdk/rust/testing/integration-tests",
@@ -12,8 +12,8 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Github Actions",
-  "lastUpdatedAt": 1705914809,
-  "formattedLastUpdatedAt": "22 thg 1, 2024",
+  "lastUpdatedAt": 1709152665,
+  "formattedLastUpdatedAt": "28 thg 2, 2024",
   "sidebarPosition": 2,
   "frontMatter": {
     "sidebar_position": 2

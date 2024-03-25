@@ -5,7 +5,7 @@
   "source": "@site/../docs/7.primitives/dao/web-app/vote-for-proposal.md",
   "sourceDirName": "7.primitives/dao/web-app",
   "slug": "/primitives/dao/web-app/vote-for-proposal",
-  "permalink": "/zh-CN/primitives/dao/web-app/vote-for-proposal",
+  "permalink": "/primitives/dao/web-app/vote-for-proposal",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/dao/web-app/vote-for-proposal.md",
@@ -13,6 +13,6 @@
   "version": "current",
   "lastUpdatedBy": "garikbesson",
   "lastUpdatedAt": 1706635251,
-  "formattedLastUpdatedAt": "2024年1月30日",
+  "formattedLastUpdatedAt": "Jan 30, 2024",
   "frontMatter": {}
 }

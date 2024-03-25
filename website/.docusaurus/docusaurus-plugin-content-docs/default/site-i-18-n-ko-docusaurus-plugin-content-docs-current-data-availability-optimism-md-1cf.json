@@ -21,8 +21,8 @@
   },
   "sidebar": "data-availability",
   "previous": {
-    "title": "Integrations",
-    "permalink": "/ko/data-availability/integrations"
+    "title": "Arbitrum Nitro",
+    "permalink": "/ko/data-availability/arbitrum"
   },
   "next": {
     "title": "CDK Stack",

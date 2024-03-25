@@ -1,0 +1,18 @@
+{
+  "id": "primitives/nft/near-cli/list-for-sale",
+  "title": "list-for-sale",
+  "description": "Method nftapprove of a NFT contract also calls the nfton_approve method in marketplace.paras.near as a callback.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/7.primitives/nft/near-cli/list-for-sale.md",
+  "sourceDirName": "7.primitives/nft/near-cli",
+  "slug": "/primitives/nft/near-cli/list-for-sale",
+  "permalink": "/vi/primitives/nft/near-cli/list-for-sale",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/7.primitives/nft/near-cli/list-for-sale.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1709152665,
+  "formattedLastUpdatedAt": "28 thg 2, 2024",
+  "frontMatter": {}
+}
