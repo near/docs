@@ -70,6 +70,11 @@ ol li::marker {
     font-weight: 600;
 }
 
+ul li::marker {
+    color: var(--near-color-royal);
+    font-weight: 600;
+}
+
 .subsection {
     width: 50%;
     margin: 2.5em auto;
@@ -133,6 +138,8 @@ a:hover {
 /* for image caption */
 img+em,
 .tabs-container+p em,
+table+p em,
+.code_iframe+p em,
 .theme-code-block+p em {
     font-style: normal;
     display: inherit;
@@ -215,7 +222,7 @@ h2 {
 
 h3 {
     font-weight: 600;
-    margin: 1.5em 0 0.5em 0 !important;
+    margin: 1.75em 0 0.5em 0 !important;
 }
 
 h4 {
@@ -418,17 +425,23 @@ iframe+em {
 @import './bootstrap.scss';
 
 #near-wallet-selector-modal {
-  .nws-modal-wrapper .nws-modal .modal-left .modal-left-title h2 {
-    font-family: inherit;
-  }
-  .nws-modal-wrapper .nws-modal .modal-right .nws-modal-header h3.middleTitle {
-    margin: 4px auto !important;
-    font-family: inherit;
-  }
+    .nws-modal-wrapper .nws-modal .modal-left .modal-left-title h2 {
+        font-family: inherit;
+    }
 
-  .nws-modal-wrapper .nws-modal .modal-right .wallet-what .content-side h3 {
-    margin: 0 auto 8px 0 !important;
-  }
+    .nws-modal-wrapper .nws-modal .modal-right .nws-modal-header h3.middleTitle {
+        margin: 4px auto !important;
+        font-family: inherit;
+    }
+
+    .nws-modal-wrapper .nws-modal .modal-right .wallet-what .content-side h3 {
+        margin: 0 auto 8px 0 !important;
+    }
+}
+
+/* 404 page */
+.p404 h4 {
+    font-weight: 400 !important;
 }
 
 /*

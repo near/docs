@@ -8,7 +8,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
-[NEAR accounts](../../1.concepts/basics/accounts/introduction.md) can host programs known as smart contracts. Smart contracts can **store data**, and **expose methods** so other users and contracts interact with them.
+[NEAR accounts](../../1.concepts/protocol/account-model.md) can host programs known as smart contracts. Smart contracts can **store data**, and **expose methods** so other users and contracts interact with them. 
 
 In this quickstart tutorial, we will guide you in creating your first smart contract in the NEAR **testnet** that stores and retrieves a greeting.
 
@@ -212,7 +212,7 @@ Testing the contracts within a Sandbox allows you to understand how the contract
 
 Now that we know the contract is passing the tests, let's create a testnet account in which to deploy the contract.
 
-While there are different ways to [create accounts](/concepts/basics/accounts/creating-accounts) in NEAR, in this quickstart we will use the `cargo-near` tool to create a new random [`named account`](/concepts/basics/accounts/account-id).
+While there are different ways to create accounts in NEAR, in this quickstart we will use the `cargo-near` tool to create a new random [`named account`](/concepts/protocol/account-id).
 
 <CodeTabs>
 

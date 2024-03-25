@@ -3,7 +3,7 @@ id: ethers-js-best-practices
 title: Best Practices for Ethereum developers on NEAR
 ---
 
-import {WidgetEditor} from "@site/src/components/social-widget"
+import {WidgetEditor} from "@site/src/components/widget-editor"
 
 In this example, we will create an Ethereum dApp on NEAR that functions as a portfolio manager, displaying the current balances for a list of tokens. Additionally, we will display current market value of each asset in the portfolio.
 

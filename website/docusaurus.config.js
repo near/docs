@@ -110,7 +110,7 @@ const config = {
       items: [
         {
           to: '/concepts/welcome',
-          label: 'Learn',
+          label: 'Concepts',
           position: 'left',
         },
         {
