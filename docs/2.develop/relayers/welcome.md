@@ -28,15 +28,16 @@ The client can then generate a `SignedDelegateAction` (a signed message that has
 ## Relayer (server)
 
 <Tabs groupId="code-tabs">
-  <TabItem value="near-api-js">
 
-    Here's a simple express endpoint deserializes the body, instantiates the relayer account and then sends the transaction.
+<TabItem value="near-api-js">
 
-  <Github language='typescript' url='https://github.com/SurgeCode/near-relay-example/blob/main/server.ts' start='16' end='27'/>
+Here's a simple express endpoint deserializes the body, instantiates the relayer account and then sends the transaction.
 
-    You can easily get the account object used to send the transactions from its private key using this snippet
+<Github language='typescript' url='https://github.com/SurgeCode/near-relay-example/blob/main/server.ts' start='16' end='27'/>
 
-  <Github language='typescript' url='https://github.com/SurgeCode/near-relay-example/blob/main/util.ts' start='5' end='17'/>  
+You can easily get the account object used to send the transactions from its private key using this snippet
+
+<Github language='typescript' url='https://github.com/SurgeCode/near-relay-example/blob/main/util.ts' start='5' end='17'/>  
 
 
 :::info
@@ -52,49 +53,59 @@ The client can then generate a `SignedDelegateAction` (a signed message that has
 ::: 
 
 
-  </TabItem>
-  <TabItem value="@near-relay/server">
-  @near-relay simplifies meta transactions making it easier to get started for a beginner
+</TabItem>
 
-  To start, call the relay method inside an endpoint to automatically deserialize the transaction and send it with the account defined in the environment variables.
+<TabItem value="@near-relay/server">
 
-   <Github language='typescript' url='https://github.com/SurgeCode/near-relay/blob/main/server/server.ts' start='8' end='12'/>
+`@near-relay` simplifies meta transactions making it easier to get started for a beginner.
 
+To start, call the relay method inside an endpoint to automatically deserialize the transaction and send it with the account defined in the environment variables.
 
-  If you're interested in relaying account creation as well, it's quite straightforward. Simply create another endpoint and directly call the createAccount method with the accountId and publicKey. These parameters are automatically included in the body when using the corresponding client library.
-  <Github language='typescript' url='https://github.com/SurgeCode/near-relay/blob/main/server/server.ts' start='14' end='18'/>
+<Github language='typescript' url='https://github.com/SurgeCode/near-relay/blob/main/server/server.ts' start='8' end='12'/>
+
+If you're interested in relaying account creation as well, it's quite straightforward. Simply create another endpoint and directly call the createAccount method with the accountId and publicKey. These parameters are automatically included in the body when using the corresponding client library.
+
+<Github language='typescript' url='https://github.com/SurgeCode/near-relay/blob/main/server/server.ts' start='14' end='18'/>
   
-  </TabItem>
-  </Tabs>
+</TabItem>
 
+</Tabs>
 
 
 ## Client
 
 <Tabs groupId="code-tabs">
-  <TabItem value="near-api-js">
-  In this method we are creating an arbitrary smart contract call, instantiating an account and using it to sign but not send the transaction. We can then serialize it and send it to the relayer where it will be delegated via the previously created endpoint.
-  <Github language='typescript' url='https://github.com/SurgeCode/near-relay-example/blob/main/client.ts' start='10' end='30'/>
 
-  </TabItem>
-  <TabItem value="@near-relay/client">
-   As mentioned in the above note in order to be able to relay on the client side it's necessary to have access to signing transactions directly on the client. Luckily leveraging the near biometric library it's possible to do so in a non custodial way.
+<TabItem value="near-api-js">
 
-   By calling this method and passing in the URL for the account creation endpoint (mentioned in the server section) as well as the `accoundId` everything is handled under the hood to successfully create an account.
-  <Github language='typescript' url='https://github.com/SurgeCode/near-relay/blob/main/example/src/app/page.tsx' start='17' end='23'/>
+In this method we are creating an arbitrary smart contract call, instantiating an account and using it to sign but not send the transaction. We can then serialize it and send it to the relayer where it will be delegated via the previously created endpoint.
 
-   On the client side, you just need to create an `Action` and pass it into the `relayTransaction` method along with the URL of the relayer endpoint discussed in the server section and the id of the `receiverId`.
+<Github language='typescript' url='https://github.com/SurgeCode/near-relay-example/blob/main/client.ts' start='10' end='30'/>
 
-   <Github language='typescript' url='https://github.com/SurgeCode/near-relay/blob/main/example/src/app/page.tsx' start='25' end='36'/>
-  </TabItem>
-  </Tabs>
+</TabItem>
+
+<TabItem value="@near-relay/client">
+
+As mentioned in the above note in order to be able to relay on the client side it's necessary to have access to signing transactions directly on the client. Luckily leveraging the near biometric library it's possible to do so in a non custodial way.
+
+By calling this method and passing in the URL for the account creation endpoint (mentioned in the server section) as well as the `accoundId` everything is handled under the hood to successfully create an account.
+
+<Github language='typescript' url='https://github.com/SurgeCode/near-relay/blob/main/example/src/app/page.tsx' start='17' end='23'/>
+
+On the client side, you just need to create an `Action` and pass it into the `relayTransaction` method along with the URL of the relayer endpoint discussed in the server section and the id of the `receiverId`.
+
+<Github language='typescript' url='https://github.com/SurgeCode/near-relay/blob/main/example/src/app/page.tsx' start='25' end='36'/>
+
+</TabItem>
+
+</Tabs>
 
 <details>
-  <summary> Relaying with wallets </summary>
+<summary> Relaying with wallets </summary>
 
+At the moment, wallet selector standard doesn't support signing transactions without immediately sending them. This functionality is essential for routing transactions to a relayer. Therefore, to smoothly integrate relaying on the client side, it's necessary to be able to sign transactions without relying on wallets.
+Progress is being made to make this possible in the future.
 
-  At the moment, wallet selector standard doesn't support signing transactions without immediately sending them. This functionality is essential for routing transactions to a relayer. Therefore, to smoothly integrate relaying on the client side, it's necessary to be able to sign transactions without relying on wallets.
-  Progress is being made to make this possible in the future.
 </details>
 
 
@@ -128,7 +139,6 @@ You can, for example, gate by some particular user or contract:
        receiverId: deserializedTx.delegateAction.senderId
   });
   }
-
 ```
 
 Other examples could be looking into the actions and seeing if there is deposit or gas and limiting them, gating by particular smart contract methods or even args.
