@@ -1,7 +1,7 @@
 ---
 id: welcome
 title: Rollup Data Availability
-sidebar_label: Home
+sidebar_label: Rollup Data Availability
 ---
 
 Utilizing NEAR as storage data availability with a focus on lowering rollup DA fees.
