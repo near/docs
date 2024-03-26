@@ -317,8 +317,6 @@ const sidebar = {
         },
       ]
     },
-
-
     {
       "type": "html",
       "value": "<hr/>"
