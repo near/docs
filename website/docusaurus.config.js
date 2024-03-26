@@ -89,7 +89,7 @@ const config = {
     announcementBar: {
       id: 'abstraction',
       content:
-        '📚 Learn how your NEAR account can sign transactions on foreign chains using <a href="/concepts/abstraction/chain-signatures">Chain Signatures</a> 📚',
+        '📚 <a href="/concepts/abstraction/chain-signatures">Chain Signatures</a>: Sign transactions on Bitcoin, Ethereum, and other chains 📚',
       backgroundColor: '#fafbfc',
       textColor: '#333',
       isCloseable: true,
