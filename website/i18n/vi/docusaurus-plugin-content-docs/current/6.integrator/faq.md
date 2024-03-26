@@ -249,7 +249,7 @@ Transaction là tập hợp của các data liên quan được tạo và ký b�
 
 Các transaction có thể được tạo và ký offline. Nodes không yêu cầu phải ký. Chúng tôi có kế hoạch thêm block hash tùy chọn gần đây để giúp ngăn chặn các replay attack.
 
-Xem thêm [các transaction](/docs/concepts/transaction) trong phần khái niệm của tài liệu của chúng tôi.
+See [transactions](/concepts/protocol/transactions) in the concepts section of our documentation.
 
 ### How is the hash preimage generated? Which fields does the raw transaction consist of?
 

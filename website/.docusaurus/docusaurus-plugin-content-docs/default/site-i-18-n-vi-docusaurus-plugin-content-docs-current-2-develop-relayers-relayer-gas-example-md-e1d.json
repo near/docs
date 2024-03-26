@@ -1,0 +1,28 @@
+{
+  "id": "develop/relayers/relayer-gas-example",
+  "title": "Multichain Relayer and Gas Station example",
+  "description": "This technology is currently in Alpha and should only be used in a testnet environment.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.develop/relayers/relayer-gas-example.md",
+  "sourceDirName": "2.develop/relayers",
+  "slug": "/develop/relayers/relayer-gas-example",
+  "permalink": "/vi/develop/relayers/relayer-gas-example",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.develop/relayers/relayer-gas-example.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "relayer-gas-example",
+    "title": "Multichain Relayer and Gas Station example",
+    "sidebar_label": "Relayer + Gas Station"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Multichain Gas Station",
+    "permalink": "/vi/develop/relayers/gas-station"
+  },
+  "next": {
+    "title": "What is a Contract?",
+    "permalink": "/vi/develop/contracts/whatisacontract"
+  }
+}

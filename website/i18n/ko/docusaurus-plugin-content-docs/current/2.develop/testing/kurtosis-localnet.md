@@ -368,7 +368,7 @@ Now that you have [everything setup](#setup), create an account using your local
 
 ![로컬 지갑 랜딩 페이지](/docs/assets/kurtosis/local-wallet-landing-page.png)
 
-계정 생성 과정은 메인넷이나 테스트넷에서와 정확히 동일하지만, 여기서는 **암호 복구 모드만** 작동합니다. 또한 루트 계정이 `testnet` 또는 `mainnet` 대신 `test.near`임을 유의하세요. 즉, 생성한 모든 계정은 `test.near`의 [하위 계정(sub account)](/concepts/basics/accounts/model#하위-계정)이 됩니다(예: `benji.test.near`). (예. `benji.test.near`)
+계정 생성 과정은 메인넷이나 테스트넷에서와 정확히 동일하지만, 여기서는 **암호 복구 모드만** 작동합니다. 또한 루트 계정이 `testnet` 또는 `mainnet` 대신 `test.near`임을 유의하세요. This means that all the accounts you create will be [subaccounts](/concepts/protocol/account-model#subaccounts) of `test.near`. (예. `benji.test.near`)
 
 :::tip
 

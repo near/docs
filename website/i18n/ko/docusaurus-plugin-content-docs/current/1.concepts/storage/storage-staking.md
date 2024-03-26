@@ -26,7 +26,7 @@ Ethereum의 가격 책정 모델에 익숙하다면 NEAR와 마찬가지로 프�
 예를 들어 보겠습니다.
 
 1. [방명록 앱](https://examples.near.org/guest-book)을 시작 하고 앱의 스마트 컨트랙트를 계정 `example.near`에 배포합니다.
-2. 앱 방문자는 방명록에 메시지를 추가할 수 있습니다. 사용자는 [기본적으로](/concepts/basics/transactions/gas#what-about-prepaid-gas) 컨트랙트에 메시지를 보내기 위해 약간의 가스 요금을 지불합니다.
+2. 앱 방문자는 방명록에 메시지를 추가할 수 있습니다. This means your users will, [by default](/concepts/protocol/gas#what-about-prepaid-gas), pay a small gas fee to send their message to your contract.
 3. 이러한 요청이 들어오면 NEAR는 `example.near`에 새로운 스토리지 요구 사항을 충당할 수 있을 만큼 충분한 잔액이 있는지 확인합니다. 그렇지 않으면 트랜잭션이 실패합니다.
 
 ## The "million cheap data additions" attack

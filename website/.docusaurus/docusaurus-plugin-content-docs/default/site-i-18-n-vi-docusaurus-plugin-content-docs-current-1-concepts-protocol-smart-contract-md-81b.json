@@ -1,0 +1,27 @@
+{
+  "id": "concepts/protocol/smartcontract",
+  "title": "Smart Contract",
+  "description": "Smart contracts are pieces of executable code that live in a NEAR account. They can store data, perform transactions in the account’s name, and expose methods so other accounts can interact with them.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/1.concepts/protocol/smart-contract.md",
+  "sourceDirName": "1.concepts/protocol",
+  "slug": "/concepts/protocol/smartcontract",
+  "permalink": "/vi/concepts/protocol/smartcontract",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/protocol/smart-contract.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "smartcontract",
+    "title": "Smart Contract"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Access Keys",
+    "permalink": "/vi/concepts/protocol/access-keys"
+  },
+  "next": {
+    "title": "Transactions",
+    "permalink": "/vi/concepts/protocol/transactions"
+  }
+}

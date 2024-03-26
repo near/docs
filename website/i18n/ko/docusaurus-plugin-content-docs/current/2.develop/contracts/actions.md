@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 
 스마트 컨트랙트는 NEAR 전송 또는 다른 컨트랙트 호출과 같은 특정 `Actions`를 수행할 수 있습니다.
 
-`Actions`의 중요한 속성은, 동일한 컨트랙트에서 작업할 때 일괄적으로 처리될 수 있다는 것입니다. **일괄 Action**은 한 단위로 작동합니다. 이는 동일한 [Receipt](../../1.concepts/basics/transactions/overview.md#receipt-receipt)에서 실행되며, **실패할** 경우 모두 **되돌려집니다**.
+`Actions`의 중요한 속성은, 동일한 컨트랙트에서 작업할 때 일괄적으로 처리될 수 있다는 것입니다. **Batched actions** act as a unit: they execute in the same [receipt](../../1.concepts/protocol/transactions.md#receipt-receipt), and if **any fails**, then they **all get reverted**.
 
 :::info `Actions`는 **동일한 컨트랙트**에 따라 행동하는 경우에만 일괄 처리될 수 있습니다. 컨트랙트에서 두 메서드를 일괄적으로 호출할 수 있지만, 서로 다른 컨트랙트에서 두 메서드를 일괄적으로 호출 할 수는 **없습니다**. :::
 
@@ -219,7 +219,7 @@ import TabItem from '@theme/TabItem';
   스니펫에서 스토리지를 위해 새 계정에 자금을 전송하고 있다는 것을 참고하세요.
 :::
 
-:::caution 컨트랙트 내에서 계정을 생성하면 기본적으로 키가 없습니다. 계정에 키를 명시적으로 [추가](#키-추가)하지 않거나 생성 시 [컨트랙트를 배포](#컨트랙트-배포)하지 않으면 계정은 [잠기게](../../1.concepts/basics/accounts/access-keys.md#locked-accounts) 됩니다. :::
+:::caution 컨트랙트 내에서 계정을 생성하면 기본적으로 키가 없습니다. If you don't explicitly [add keys](#add-keys) to it or [deploy a contract](#deploy-a-contract) on creation then it will be [locked](../../1.concepts/protocol/access-keys.md#locked-accounts). :::
 
 <hr className="subsection" />
 
@@ -326,7 +326,7 @@ import TabItem from '@theme/TabItem';
 
 ## 키 추가
 
-Action를 사용하여 새 계정을 만들 때 생성된 계정에는 [액세스 키](../../1.concepts/basics/accounts/access-keys.md)가 없습니다. 즉, 이 경우 **트랜잭션에 서명할 수 없습니다**(예: 컨트랙트 업데이트, 계정 삭제, 송금).
+When you use actions to create a new account, the created account does not have any [access keys](../../1.concepts/protocol/access-keys.md), meaning that it **cannot sign transactions** (e.g. to update its contract, delete itself, transfer money).
 
 계정에 키를 추가하려면, 다음 두 가지 옵션 중 하나를 사용하면 됩니다.
 1. `add_access_key`: 지정된 컨트랙트에서 특정 메서드만 호출할 수 있는 키를 추가합니다.

@@ -6,7 +6,7 @@ sidebar_label: Accounts
 
 ## Introduction {#introduction}
 
-Please see the [documentation for accounts](/concepts/basics/accounts/model) for basic information.
+Please see the [documentation for accounts](/concepts/protocol/account-model) for basic information.
 
 - For exchanges, NEAR supports [implicit account](https://nomicon.io/DataStructures/Account.html#implicit-account-ids) creation which allows the creation of accounts without paying for transactions.
 - You can create an implicit account by following the steps in [this guide](/integrator/implicit-accounts).

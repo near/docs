@@ -106,7 +106,7 @@ echo $FT_CONTRACT_ID
 Verify that the correct account ID is printed in the terminal. If everything looks correct you can now deploy your contract. In the root of your FT project run the following command to deploy your smart contract.
 
 ```bash
-near deploy --wasmFile out/contract.wasm --accountId $FT_CONTRACT_ID
+near deploy $FT_CONTRACT_ID out/contract.wasm
 ```
 
 At this point, the contract should have been deployed to your account and you're ready to move onto creating your personalized fungible token.

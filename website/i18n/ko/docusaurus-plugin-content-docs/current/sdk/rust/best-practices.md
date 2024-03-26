@@ -16,7 +16,7 @@ overflow-checks = true
 
 ## 초기에 `require!` 사용
 
-조치를 취하기 전에, `require!`를 사용하여 입력, 컨텍스트, 상태 및 액세스를 검증하세요. 패닉 상태가 빠를수록, 발신자를 위해 더 많은 [가스](https://docs.near.org/concepts/basics/transactions/gas)를 절약할 수 있습니다.
+조치를 취하기 전에, `require!`를 사용하여 입력, 컨텍스트, 상태 및 액세스를 검증하세요. The earlier you panic, the more [gas](https://docs.near.org/concepts/protocol/gas) you will save for the caller.
 
 ```rust
 #[near_bindgen]

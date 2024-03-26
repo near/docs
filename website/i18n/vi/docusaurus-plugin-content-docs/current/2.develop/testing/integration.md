@@ -32,7 +32,7 @@ Lets take a look at the test of our [Quickstart Project](../quickstart.md) [👋
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="main.ava.ts"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/sandbox-ts/src/main.ava.ts" start="9" end="43"/>
+            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/sandbox-ts/main.ava.ts" start="8" end="43"/>
   </Language>
 </CodeTabs>
 
@@ -45,7 +45,7 @@ In most cases we will want to test complex methods involving multiple users and 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="main.ava.ts"
-            url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/sandbox-ts/src/main.ava.ts"
+            url="https://github.com/near-examples/donation-examples/blob/main/contract-ts/sandbox-ts/src/main.ava.ts"
             start="50" end="73" />
   </Language>
 </CodeTabs>

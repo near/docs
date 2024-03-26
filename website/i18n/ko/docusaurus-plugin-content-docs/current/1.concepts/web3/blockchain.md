@@ -146,7 +146,7 @@ reward = infrastructureCostReward + coinbaseReward
 - 확장성 - 네트워크가 많은 수의 트랜잭션을 지원하도록 설계되었는지 여부입니다. 그렇지 않으면 트랜잭션 속도/비용이 시간이 지남에 따라 통제할 수 없을 정도로 커질 수 있습니다.
 - 개발 경험 - 가장 중요한 것은 스마트 컨트랙트를 작성하는 데 사용할 언어입니다. Ethereum은 컨트랙트를 위한 프로그래밍 언어로 [Solidity](https://docs.soliditylang.org/en/v0.8.12/)를 대중화했습니다. NEAR와 같은 여러 최신 체인은 보다 성숙한 범용 프로그래밍 언어인 Rust를 선택했습니다.
 
-역사적으로 스마트 컨트랙트를 도입한 최초의 블록체인은 이더리움이었습니다. 그러나 사용자 수가 증가함에 따라 트랜잭션 속도와 비용이 급증했고 수요를 감당할 수 없다는 것이 명백해졌습니다. 따라서 [레이어 2 체인](https://ethereum.org/en/developers/docs/scaling/#layer-2-scaling), [사이드 체인](https://ethereum.org/en/developers/docs/scaling/sidechains/) 및 [플라즈마 체인](https://ethereum.org/en/developers/docs/scaling/plasma/)과 같은 여러 [스케일링 솔루션](https://ethereum.org/en/developers/docs/scaling/)이 나타났습니다. 그러나 그들은 모두 각자만의 단점이 존재합니다. 이더리움은 핵심 문제를 수정하고 네트워크를 재설계하려고 시도하고 있습니다. 이는 지분 증명 합의로 전환하는 것과 같이 꽤 오랫동안 진행되고 있지만, 모든 문제가 해결될지는 매우 불분명합니다.
+역사적으로 스마트 컨트랙트를 도입한 최초의 블록체인은 이더리움이었습니다. 그러나 사용자 수가 증가함에 따라 트랜잭션 속도와 비용이 급증했고 수요를 감당할 수 없다는 것이 명백해졌습니다. So, a number of [scaling solutions](https://ethereum.org/en/developers/docs/scaling.html) appeared - [layer 2 chains](https://ethereum.org/en/developers/docs/scaling.html#layer-2-scaling), [sidechains](https://ethereum.org/en/developers/docs/scaling/sidechains/), and [plasma chains](https://ethereum.org/en/developers/docs/scaling/plasma/). 그러나 그들은 모두 각자만의 단점이 존재합니다. 이더리움은 핵심 문제를 수정하고 네트워크를 재설계하려고 시도하고 있습니다. 이는 지분 증명 합의로 전환하는 것과 같이 꽤 오랫동안 진행되고 있지만, 모든 문제가 해결될지는 매우 불분명합니다.
 
 한편, 차세대 블록체인들이 등장하기 시작했습니다. 그들은 Ethereum의 실수로부터 배운 점을 토대로, 처음부터 빠르고 저렴하며 확장 가능하도록 설계했습니다. 올바른 것을 선택하는 것은 결코 쉬운 일이 아니지만, 다음과 같은 특징 때문에 [NEAR](https://near.org/) 블록체인이 이상적인 솔루션이라는 것을 알 수 있습니다.
 - 트랜잭션은 저렴하고 매우 빠릅니다.

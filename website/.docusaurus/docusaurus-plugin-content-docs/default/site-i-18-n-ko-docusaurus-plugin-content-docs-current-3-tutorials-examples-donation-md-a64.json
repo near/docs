@@ -1,7 +1,7 @@
 {
   "id": "tutorials/examples/donation",
   "title": "기부",
-  "description": "이 기부 예시는 돈을 추적하면서 계좌로 돈을 보낼 수 있게 합니다. It is one of the simplest examples on making a contract handle tranfers.",
+  "description": "Our donation example enables to forward NEAR Tokens to an account while keeping track of it. It is one of the simplest examples on making a contract handle tranfers.",
   "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/examples/donation.md",
   "sourceDirName": "3.tutorials/examples",
   "slug": "/tutorials/examples/donation",

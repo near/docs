@@ -199,7 +199,7 @@ NEAR 계정 연결 시퀀스는 이미 설명한 NEAR 인증 방법과 매우 �
 
 지금까지 Web2 서버 측의 인증 및 권한 부여에 대해 논의했습니다. 그러나 Web3 스마트 컨트랙트는 어떻습니까? 이 경우 모든 것이 훨씬 더 간단합니다.
 
-모든 것이 블록체인의 공개 데이터이므로, 읽기 호출에 대한 인증은 필요하지 않습니다. 트랜잭션의 경우 각 계정의 개인 키로 서명되며 인증은 네트워크에서 수행됩니다. 트랜잭션 서명에 대한 자세한 내용은 [문서](../basics/transactions/overview.md)에서 찾을 수 있습니다.
+모든 것이 블록체인의 공개 데이터이므로, 읽기 호출에 대한 인증은 필요하지 않습니다. 트랜잭션의 경우 각 계정의 개인 키로 서명되며 인증은 네트워크에서 수행됩니다. More details on transaction signing can be found [in the docs](../protocol/transactions.md).
 
 반면 권한 부여는 스마트 컨트랙트 자체에서 수행되어야 합니다. 가장 간단한 방법은 호출자가 작업을 수행할 수 있는지 확인하는 것입니다.
 
@@ -386,11 +386,11 @@ pub fn nft_mint(
     * 수탁 지갑의 경우 서버 서명 트랜잭션.
     * 비수탁 지갑의 경우 클라이언트 서명 트랜잭션.
 
-위에서 언급했듯이 [암시적 계정](../basics/accounts/account-id.md#implicit-accounts-implicit-accounts)을 사용하면 계정 생성 비용을 지불하지 않아도 됩니다. NEAR 계정을 무료로 만들 수 있기 때문에, 수탁 지갑에 특히 유용합니다. 기본적으로 공개 키를 계정 ID로 사용하여 Ethereum/Bitcoin 내 계정처럼 작동하며, 나중에 완전한 NEAR 계정으로 전환할 수 있습니다. 그러나 단점도 있습니다. 우선 사람이 읽을 수 있는 계정 이름은 사용할 수 없습니다. 또한 함수 호출 키를 지원할 수 있는 적절한 NEAR 계정으로 전환하려면 계정 생성 수수료를 여전히 지불해야 합니다.
+As we mentioned above, [Implicit Accounts](../protocol/account-id.md#implicit-accounts-implicit-accounts) can be used to avoid paying account creation costs. NEAR 계정을 무료로 만들 수 있기 때문에, 수탁 지갑에 특히 유용합니다. 기본적으로 공개 키를 계정 ID로 사용하여 Ethereum/Bitcoin 내 계정처럼 작동하며, 나중에 완전한 NEAR 계정으로 전환할 수 있습니다. 그러나 단점도 있습니다. 우선 사람이 읽을 수 있는 계정 이름은 사용할 수 없습니다. 또한 함수 호출 키를 지원할 수 있는 적절한 NEAR 계정으로 전환하려면 계정 생성 수수료를 여전히 지불해야 합니다.
 
 수탁 계정은 매우 강력하지만, 구현하기가 매우 복잡하고 까다롭습니다. 사용자 온보딩을 용이하게 하는 다른 접근 방식은 지갑 자체 생성을 단순화하는 것입니다. NEAR에서는 [NEAR Drops](https://near.org/blog/send-near-to-anyone-with-near-drops/)를 사용하여 이를 수행할 수 있습니다. 빠른 지갑 생성 프로세스를 통해 사용자를 안내하는 링크를 생성할 수 있습니다. 그러나 수탁 계정과 동일한 문제가 적용됩니다. 계정 생성은 무료가 아니라는 점입니다. 그렇기 때문에 이러한 링크에는 NEAR 토큰이 부착되어 계정 생성 비용을 충당하고 새로 생성된 지갑의 초기 잔액 역할을 합니다. 수탁 계정과 마찬가지로 기존 결제 채널을 사용하여 이 비용을 충당하기 위해 사용자로부터 자금을 이체해야 합니다.
 
-온보딩을 단순화하는 또 다른 옵션은 [선불 가스](../basics/transactions/gas.md#what-about-prepaid-gas-what-about-prepaid-gas) 개념을 사용하는 것입니다. 예를 들어 사용자가 계정을 생성하지 않고도 블록체인과 상호 작용할 수 있도록 하는 함수 호출 키를 발행할 수 있습니다. 이 경우 자금은 개발자 계정에서 인출됩니다. 이는 데모 목적으로 사용하거나 NEAR 계정이 없는 사용자가 일부 스마트 컨트랙트 작업을 수행할 수 있도록 허용할 수 있습니다.
+Another option to simplify onboarding is usage of the [Prepaid Gas](../protocol/gas.md#what-about-prepaid-gas-what-about-prepaid-gas) concept. 예를 들어 사용자가 계정을 생성하지 않고도 블록체인과 상호 작용할 수 있도록 하는 함수 호출 키를 발행할 수 있습니다. 이 경우 자금은 개발자 계정에서 인출됩니다. 이는 데모 목적으로 사용하거나 NEAR 계정이 없는 사용자가 일부 스마트 컨트랙트 작업을 수행할 수 있도록 허용할 수 있습니다.
 
 
 ## NFT 마켓플레이스

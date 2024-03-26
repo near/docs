@@ -19,7 +19,6 @@ title: RPC 제공자
 | [All That Node](https://docs.allthatnode.com/protocols/near/)              | `https://near-mainnet-rpc.allthatnode.com:3030`              |
 | [ankr.com](https://www.ankr.com/docs/rpc-service/chains/chains-list/#near) | `https://rpc.ankr.com/near`                                  |
 | [BlockPi](https://chains.blockpi.io/#/near)                                | `https://public-rpc.blockpi.io/http/near`                    |
-| [Chainstack](https://chainstack.com/build-better-with-near/)               | -                                                            |
 | [fast-near](https://github.com/vgrichina/fast-near)                        | `https://rpc.web4.near.page`                                 |
 | [Gateway.fm](https://gateway.fm/)                                          | `https://rpc.near.gateway.fm/`                               |
 | [GetBlock](https://getblock.io/nodes/near/)                                | `https://getblock.io/nodes/near/`                            |

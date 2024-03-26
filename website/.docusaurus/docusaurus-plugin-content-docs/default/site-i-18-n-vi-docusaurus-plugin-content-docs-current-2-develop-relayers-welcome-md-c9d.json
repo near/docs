@@ -1,7 +1,7 @@
 {
   "id": "develop/relayers/build-relayer",
-  "title": "Building a Meta Transaction Relayer with NextJS",
-  "description": "This guide will walk you through the steps required to construct a meta transaction relayer using NextJS 13.",
+  "title": "Building a Meta Transaction Relayer",
+  "description": "Relayers serve to delegate gas fees to a web service, allowing users to transact on NEAR without the need to acquire the token themselves while still retaining the security of signing their own transactions. This guide will lead you through the components necessary to construct a relayer capable of handling meta transactions.",
   "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.develop/relayers/welcome.md",
   "sourceDirName": "2.develop/relayers",
   "slug": "/develop/relayers/build-relayer",
@@ -16,7 +16,7 @@
   "formattedLastUpdatedAt": "11 thg 1, 2024",
   "frontMatter": {
     "id": "build-relayer",
-    "title": "Building a Meta Transaction Relayer with NextJS",
+    "title": "Building a Meta Transaction Relayer",
     "sidebar_label": "Building a Relayer"
   },
   "sidebar": "build",

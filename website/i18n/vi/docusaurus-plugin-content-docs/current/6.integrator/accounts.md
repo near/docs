@@ -6,7 +6,7 @@ sidebar_label: Accounts
 
 ## Giới thiệu {#introduction}
 
-Vui lòng xem [tài liệu cho các account](/docs/concepts/account) đối với các thông tin cơ bản.
+Please see the [documentation for accounts](/concepts/protocol/account-model) for basic information.
 
 - Đối với các sàn giao dịch, NEAR hỗ trợ tạo [implicit account](https://nomicon.io/DataStructures/Account.html#implicit-account-ids) cho phép việc tạo các account mà không cần trả phí cho bất kỳ transaction nào.
 - Bạn có thể tạo một implicit account bằng cách làm theo các bước trong [hướng dẫn này](/docs/roles/integrator/implicit-accounts).

@@ -28,7 +28,7 @@ The contract is just another class, with its own attributes and methods. To **di
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
       url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/src/lib.rs"
-      start="7" end="12" />
+      start="13" end="16" />
   </Language>
 </CodeTabs>
 
@@ -97,7 +97,7 @@ In JavaScript you **must always** define a [default state](#default-state)
 
   <Github fname="lib.rs" language="rust"
           url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/src/lib.rs"
-          start="25" end="32" />
+          start="35" end="40" />
 
 :::info
 To make the initialization mandatory use `#[derive(PanicOnDefault)]` in the contract's structure
@@ -131,7 +131,7 @@ In Javascript you **must always** assign values to **all the class' parameters**
   <TabItem value="🦀 Rust">
     <Github fname="lib.rs" language="rust"
             url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/src/lib.rs"
-            start="14" end="21" />
+            start="19" end="26" />
   </TabItem>
 </Tabs>
 

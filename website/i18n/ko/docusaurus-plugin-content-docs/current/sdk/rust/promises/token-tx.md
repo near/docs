@@ -48,7 +48,7 @@ impl Contract {
 
 * `AccountId`: 이는 제공된 문자열이 올바른 형식의 NEAR 계정 ID인지 자동으로 확인하고, 그렇지 않은 경우 유용한 오류와 함께 패닉합니다.
 
-* `Promise` 반환 : 이를 통해 NEAR 익스플로러, near-cli, near-api-js 및 기타 도구가 전체 트랜잭션 체인이 성공했는지 여부를 올바르게 결정할 수 있습니다. 함수가 `Promise`를 반환하지 않으면, near-cli와 같은 도구는 함수 호출 직후에 이를 반환할 것입니다. 그런 다음 `transfer`가 실패하더라도, 함수 호출은 성공한 것으로 간주됩니다. [여기](https://github.com/near-examples/xcc-advanced)에서 이 동작의 예를 볼 수 있습니다.
+* `Promise` 반환 : 이를 통해 NEAR 익스플로러, near-cli, near-api-js 및 기타 도구가 전체 트랜잭션 체인이 성공했는지 여부를 올바르게 결정할 수 있습니다. 함수가 `Promise`를 반환하지 않으면, near-cli와 같은 도구는 함수 호출 직후에 이를 반환할 것입니다. 그런 다음 `transfer`가 실패하더라도, 함수 호출은 성공한 것으로 간주됩니다. You can see an example of this behavior [here](/tutorials/examples/advanced-xcc).
 
 Using near-cli or near-cli-rs, someone could invoke this function with a call like:
 

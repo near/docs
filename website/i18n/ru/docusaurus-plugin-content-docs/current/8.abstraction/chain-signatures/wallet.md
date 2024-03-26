@@ -3,6 +3,12 @@ id: wallet
 title: Wallet Chain Key Rules
 ---
 
+:::caution
+
+This technology is currently in `Alpha` and should only be used in a `testnet` environment.
+
+:::
+
 ## Overview
 
 In this article you'll find details on how to parse and present multichain transactions to the user so they can take an informed decision about their wallet's assets, while minimizing the number of times the user has to consent.
@@ -42,29 +48,47 @@ The user would approve the `SOL` transaction but the attacker would also get the
 
 This can be solved by having different keys for any chains that you can't prove could have ambiguous transactions. This means that while an attacker may create ambiguous transactions, it will only be for wallets without assets on the target chain.
 
-## Structure
+## Serialization format
 
-This is the chain signature key format structure:
+We're using the following format for our derivations paths.
 
+```typescript
+{
+   chain: number, // SLIP-44 coin type unsigned integer
+   domain: String, // The domain that owns this key
+   meta: any, // Catch all data structure
+}
 ```
-| account | chain | domain | subkey |
-"david.near,bitcoin,near.org,somedata"
-```
 
-:::warning Under development
+This is encoded in canonical [JSON RFC 8785](https://www.rfc-editor.org/rfc/rfc8785).
 
-Please keep in mind that this format is under development and changes could be added in the future.
-
+:::info
+If you are not using a field don't make it `null`, don't include the key instead.
 :::
+
+### User-defined fields
+
+For user-defined fields, the `meta` field can include any data you like.
+
+:::tip
+Do not add any extra fields at the top level, as that may clash with future versions of this specification. If needed, put them in the `meta` field instead.
+:::
+
+For example, a simple way of selecting alternate keys will be using an object with an `ID` field:
+
+```typescript
+{
+    meta: {id: 10}, // Pick the tenth bitcoin key
+    chain: 0,
+}
+```
 
 ### Examples
 
-| Key                            | Description                                           |
-| ------------------------------ | ----------------------------------------------------- |
-| `david.near,,,`                | Personal untyped key, probably never used by a client |
-| `david.near,bitcoin,,`         | Personal bitcoin key                                  |
-| `david.near,bitcoin,near.org,` | A bitcoin key used on `near.org`                      |
-| `david.near,,near.org,`        | An untyped key used on `near.org`                     |
+| Key                              | Description                      |
+| -------------------------------- | -------------------------------- |
+| `{chain: 0, domain: "near.org"}` | A bitcoin key used on `near.org` |
+| `{chain: 0, meta: {id: 3}}`      | Use the third bitcoin key        |
 
 ## Example user flows
 

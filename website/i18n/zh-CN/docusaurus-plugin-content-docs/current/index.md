@@ -99,9 +99,9 @@ Welcome, this is the starting point for all NEAR documentation. Learn to build a
 <FeatureList>
   <Column title="Understanding NEAR" size="3">
     <Feature url="/concepts/basics/protocol" title="What is NEAR?" subtitle="Learn the Basics about NEAR" image="near-logo.png" />
-    <Feature url="/concepts/basics/accounts/account-id" title="Named Accounts" subtitle="NEAR uses human-readable accounts" image="user.png" />
-    <Feature url="/concepts/basics/accounts/access-keys" title="Multiple Access Keys" subtitle="More keys means more security" image="key.png" />
-    <Feature url="/concepts/basics/accounts/smartcontract" title="Smart Contracts" subtitle="Learn about our contract technology" image="contract.png" />
+    <Feature url="/concepts/protocol/account-id" title="Named Accounts" subtitle="NEAR uses human-readable accounts" image="user.png" />
+    <Feature url="/concepts/protocol/access-keys" title="Multiple Access Keys" subtitle="More keys means more security" image="key.png" />
+    <Feature url="/concepts/protocol/smartcontract" title="Smart Contracts" subtitle="Learn about our contract technology" image="contract.png" />
   </Column>
   <Column title="Developer Docs" size="3">
     <Feature url="/develop/integrate/quickstart-frontend" title="Quickstart: WebApp" subtitle="Spin-up your first dApp" image="quickstart.png" />

@@ -13,7 +13,7 @@ sidebar_label: Giới thiệu
 Để hoàn thành tốt các hướng dẫn này, bạn sẽ cần:
 
 - [Rust](/develop/prerequisites)
-- [A NEAR TestNet account](/concepts/basics/accounts/creating-accounts)
+- [A NEAR testnet account](https://testnet.mynearwallet.com)
 - [NEAR-CLI](/tools/near-cli#setup)
 
 :::info New to Rust?

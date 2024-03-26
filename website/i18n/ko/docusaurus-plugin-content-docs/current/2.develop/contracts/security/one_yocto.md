@@ -3,7 +3,7 @@ id: one-yocto
 title: 사용자가 맞는지 확인 (1yⓃ)
 ---
 
-NEAR는 [액세스 키](../../../1.concepts/basics/accounts/access-keys.md) 시스템을 사용하여 계정 처리를 단순화합니다. `전체 액세스 키`는 계정에 대한 완전한 제어권(즉, 모든 [Action](../actions.md)을 수행할 수 있음)을 가지고 있고, `함수 호출 키`는 Ⓝ를 보증금으로 첨부하지 _않는_ 지정된 스마트 컨트랙트 내 메서드를 호출할 수 있는 권한만 있는 키입니다.
+NEAR uses a system of [Access Keys](../../../1.concepts/protocol/access-keys.md) to simplify handling accounts. `전체 액세스 키`는 계정에 대한 완전한 제어권(즉, 모든 [Action](../actions.md)을 수행할 수 있음)을 가지고 있고, `함수 호출 키`는 Ⓝ를 보증금으로 첨부하지 _않는_ 지정된 스마트 컨트랙트 내 메서드를 호출할 수 있는 권한만 있는 키입니다.
 
 사용자가 컨트랙트와 상호작용하기 위해 [웹사이트에 로그인](../../integrate/frontend.md#user-sign-in)하면, 실제로 발생하는 일은 `함수 호출` 키가 생성되어 웹사이트에 저장되는 것입니다. 웹 사이트는 `함수 호출` 키에 액세스할 수 있으므로, 이를 통해 원하는 대로 승인된 메서드를 호출하는 데 사용할 수 있습니다. 이러한 경우 자산 이전을 요청하는 사람이 **실제로 사용자인지** 확인해야 합니다 . 이것은 대부분의 경우 사용자에게 매우 친숙하지만, [NFT](../../relevant-contracts/nft.md) 또는 [FT](../../relevant-contracts/ft.md)와 같은 귀중한 자산의 전송과 관련된 시나리오에서는 주의하는 것이 중요합니다.
 

@@ -1,0 +1,27 @@
+{
+  "id": "concepts/protocol/account-id",
+  "title": "Address (Account ID)",
+  "description": "NEAR accounts are identified by a unique address, which take one of two forms:",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/1.concepts/protocol/account-id.md",
+  "sourceDirName": "1.concepts/protocol",
+  "slug": "/concepts/protocol/account-id",
+  "permalink": "/zh-CN/concepts/protocol/account-id",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/protocol/account-id.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "account-id",
+    "title": "Address (Account ID)"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Overview",
+    "permalink": "/zh-CN/concepts/protocol/account-model"
+  },
+  "next": {
+    "title": "Access Keys",
+    "permalink": "/zh-CN/concepts/protocol/access-keys"
+  }
+}

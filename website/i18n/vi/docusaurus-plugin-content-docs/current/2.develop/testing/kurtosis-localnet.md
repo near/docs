@@ -368,7 +368,7 @@ Now that you have [everything setup](#setup), create an account using your local
 
 ![Local wallet landing page](/docs/assets/kurtosis/local-wallet-landing-page.png)
 
-Quá trình tạo account này hoàn toàn giống với mainnet hoặc testnet, tuy nhiên **passphrase recovery mode chỉ** hoạt động ở mainnet và testnet. Cũng lưu ý rằng root account là `test.near` thay vì `testnet` hoặc `mainnet`. This means that all the accounts you create will be [subaccounts](/concepts/basics/accounts/model#subaccounts) of `test.near`. (ví dụ: `benji.test.near`)
+Quá trình tạo account này hoàn toàn giống với mainnet hoặc testnet, tuy nhiên **passphrase recovery mode chỉ** hoạt động ở mainnet và testnet. Cũng lưu ý rằng root account là `test.near` thay vì `testnet` hoặc `mainnet`. This means that all the accounts you create will be [subaccounts](/concepts/protocol/account-model#subaccounts) of `test.near`. (ví dụ: `benji.test.near`)
 
 :::tip
 

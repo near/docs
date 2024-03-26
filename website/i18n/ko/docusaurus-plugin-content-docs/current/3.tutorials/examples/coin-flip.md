@@ -16,31 +16,16 @@ import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 ## 게임 시작하기
 예제를 시작하는 두 가지 옵션이 있습니다.
 1. **권장:** Gitpod(웹 기반 대화형 환경)를 통해 앱 사용
-2. 프로젝트를 로컬로 복제
+2. Clone the project locally.
 
+| Gitpod                    | Clone locally                                             |
+| ------------------------- | --------------------------------------------------------- |
+| <a href="https://gitpod.io/#https://github.com/near-examples/coin-flip-examples.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | `https://github.com/near-examples/coin-flip-examples.git` |
 
-<Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value="🌐 JavaScript">
-
-| Gitpod                                                                                                                                                            | 로컬로 복제                                          |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | -----------------------------------------------------  |
-| <a href="https://gitpod.io/#https://github.com/near-examples/coin-flip-js.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🌐 `https://github.com/near-examples/coin-flip-js.git` |
-
-  </TabItem>
-
-</Tabs>
 
 Gitpod를 선택하면 새 브라우저 창이 코드와 함께 자동으로 열립니다. 잠시 기다리면 프론트엔드가 팝업됩니다(팝업 창이 차단되지 않았는지 확인).
 
-앱을 로컬에서 실행하는 경우, 앱을 복제한 디렉터리를 입력하고 `yarn`을 통해 의존성(dependency)을 설치하며, `yarn start`를 사용해 시작하면 됩니다.
-
-```bash
-cd coin-flip-js
-yarn
-yarn deploy
-yarn start
-```
-그러면 컨트랙트가 **컴파일**되어 `testnet` 네트워크의 **계정**에 **배포**됩니다. 완료되면 브라우저 창이 열립니다.
+If you are running the app locally, you should build and deploy a contract (JavaScript or Rust version) and a client manually.
 
 ---
 
@@ -56,7 +41,12 @@ yarn start
 이제 dApp이 무엇을 하는지 이해했으므로 그 구조를 자세히 살펴보겠습니다.
 
 1. 프론트엔드 코드는 `/frontend` 폴더에 있습니다
-2. 스마트 컨트랙트 코드는 `/contract` 폴더에 있습니다.
+2. The smart contract code in Rust is in the `/contract-rs` folder.
+3. The smart contract code in JavaScript is in the `/contract-ts` folder.
+
+:::note
+Both Rust and JavaScript versions of the contract implement the same functionality.
+:::
 
 ### 컨트랙트
 컨트랙트는 `flip_coin`과 `points_of`의 두 가지 메서드를 가지고 있습니다.
@@ -64,8 +54,13 @@ yarn start
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="contract.ts" 
-            url="https://github.com/near-examples/coin-flip-workshop-js/blob/main/contract/src/contract.ts"
+            url="https://github.com/near-examples/coin-flip-examples/blob/main/contract-ts/src/contract.ts"
             start="23" end="56" />
+  </Language>
+  <Language value="🦀 Rust" language="rust">
+    <Github fname="lib.rs" 
+            url="https://github.com/near-examples/coin-flip-examples/blob/main/contract-rs/src/lib.rs"
+            start="49" end="81" />
   </Language>
 </CodeTabs>
 
@@ -88,17 +83,22 @@ yarn start
 
 ## 테스트
 
-스마트 컨트랙트를 작성할 때 모든 메서드를 철저하게 테스트하는 것이 매우 중요합니다. 이 프로젝트에는 단위(unit) 및 통합(integration)이라는 두 가지 유형의 테스트가 있습니다. 이에 대해 자세히 알아보기 전에, `yarn test` 명령을 통해 dApp에 있는 테스트를 수행하세요.
+스마트 컨트랙트를 작성할 때 모든 메서드를 철저하게 테스트하는 것이 매우 중요합니다. In this project you have integration tests. Before digging into them, go ahead and perform the tests present in the dApp through the command `yarn test` for the JavaScript version, or `./test.sh` for the Rust version.
 
 ### 통합 테스트
 
-통합 테스트는 일반적으로 Javascript로 작성됩니다. 이는 자동으로 컨트랙트를 배포하고, 메서드를 실행합니다. 이러한 방식으로 통합 테스트는 현실적인 시나리오에서 사용자의 상호 작용을 시뮬레이션합니다. `integration-tests/`에서 `coin-flip`에 대한 통합 테스트를 찾을 수 있습니다.
+Integration tests can be written in both Rust and JavaScript. 이는 자동으로 컨트랙트를 배포하고, 메서드를 실행합니다. 이러한 방식으로 통합 테스트는 현실적인 시나리오에서 사용자의 상호 작용을 시뮬레이션합니다. You will find the integration tests for the `coin-flip` in `contract-ts/integration-tests` (for the JavaScript contract) and `contract-rs/sandbox-rs` (for the Rust contract).
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="main.test.js"
-            url="https://github.com/near-examples/coin-flip-workshop-js/blob/main/integration-tests/src/main.ava.ts"
-            start="32" end="56" />
+            url="https://github.com/near-examples/coin-flip-examples/blob/main/contract-ts/integration-tests/src/main.ava.ts"
+            start="32" end="57" />
+  </Language>
+  <Language value="🦀 Rust" language="rust">
+    <Github fname="lib.rs" 
+            url="https://github.com/near-examples/coin-flip-examples/blob/main/contract-rs/sandbox-rs/src/tests.rs"
+            start="27" end="83" />
   </Language>
 </CodeTabs>
 

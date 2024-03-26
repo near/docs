@@ -4,7 +4,7 @@ title: Integrating Components
 ---
 
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
-import {WidgetEditor} from "@site/src/components/social-widget"
+import {WidgetEditor} from "@site/src/components/widget-editor"
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

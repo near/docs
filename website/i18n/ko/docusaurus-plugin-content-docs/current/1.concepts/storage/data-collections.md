@@ -32,7 +32,7 @@ NEAR 블록체인에 저장된 모든 데이터는 키/값 쌍으로 이루어�
 
 ### Big-O 표기법 {#big-o-notation-1}
 
-> 아래 차트의 [Big-O 표기법](https://en.wikipedia.org/wiki/Big_O_notation) 값은 `near-sdk-rs`에서 볼 수 있는 다양한 수집 방법의 [시간 복잡도](https://en.wikipedia.org/wiki/Time_complexity)를 설명 합니다. 이러한 방식들의 시간 복잡도 정보는 NEAR의 [가스](/concepts/basics/transactions/gas) 소비와 관련이 있으므로, 프로젝트에서 사용할 데이터를 결정하는 데 도움이 됩니다. 데이터 수집 방법에는 세 가지 유형이 있습니다.
+> 아래 차트의 [Big-O 표기법](https://en.wikipedia.org/wiki/Big_O_notation) 값은 `near-sdk-rs`에서 볼 수 있는 다양한 수집 방법의 [시간 복잡도](https://en.wikipedia.org/wiki/Time_complexity)를 설명 합니다. These method complexities correlate with [gas](/concepts/protocol/gas) consumption on NEAR, helping you decide which collection to utilize in your project. 데이터 수집 방법에는 세 가지 유형이 있습니다.
 
 - O(1) - _[상수시간](https://en.wikipedia.org/wiki/Time_complexity#Constant_time)_
 - O(n) - _[선형시간](https://en.wikipedia.org/wiki/Time_complexity#Linear_time)_

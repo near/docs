@@ -105,7 +105,7 @@ echo $FT_CONTRACT_ID
 터미널에 올바른 계정 ID가 출력되어 있는지 확인하세요. 모든 것이 올바르게 보이면 이제 컨트랙트를 배포할 수 있습니다. FT 프로젝트의 루트에서 다음 명령을 실행하여 스마트 컨트랙트를 배포합니다.
 
 ```bash
-near deploy --wasmFile out/contract.wasm --accountId $FT_CONTRACT_ID
+near deploy $FT_CONTRACT_ID out/contract.wasm
 ```
 
 이 시점에서 컨트랙트가 당신의 계정에 배포되었어야 하며, 대체 가능한 토큰 발행 작업으로 이동할 준비가 된 것입니다.

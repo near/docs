@@ -9,15 +9,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '96c'),
+    component: ComponentCreator('/zh-CN/', '340'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '4f7'),
+        component: ComponentCreator('/zh-CN/', '810'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '308'),
+            component: ComponentCreator('/zh-CN/', '640'),
             routes: [
               {
                 path: '/zh-CN/abstraction/chain-signatures',
@@ -324,7 +324,7 @@ export default [
               },
               {
                 path: '/zh-CN/concepts/abstraction/meta-transactions',
-                component: ComponentCreator('/zh-CN/concepts/abstraction/meta-transactions', 'c5d'),
+                component: ComponentCreator('/zh-CN/concepts/abstraction/meta-transactions', '5e1'),
                 exact: true,
                 sidebar: "concepts"
               },
@@ -446,49 +446,49 @@ export default [
               },
               {
                 path: '/zh-CN/concepts/protocol/access-keys',
-                component: ComponentCreator('/zh-CN/concepts/protocol/access-keys', 'ae8'),
+                component: ComponentCreator('/zh-CN/concepts/protocol/access-keys', 'dc9'),
                 exact: true,
                 sidebar: "concepts"
               },
               {
                 path: '/zh-CN/concepts/protocol/account-id',
-                component: ComponentCreator('/zh-CN/concepts/protocol/account-id', '823'),
+                component: ComponentCreator('/zh-CN/concepts/protocol/account-id', '673'),
                 exact: true,
                 sidebar: "concepts"
               },
               {
                 path: '/zh-CN/concepts/protocol/account-model',
-                component: ComponentCreator('/zh-CN/concepts/protocol/account-model', 'b72'),
+                component: ComponentCreator('/zh-CN/concepts/protocol/account-model', 'd57'),
                 exact: true,
                 sidebar: "concepts"
               },
               {
                 path: '/zh-CN/concepts/protocol/gas',
-                component: ComponentCreator('/zh-CN/concepts/protocol/gas', '279'),
+                component: ComponentCreator('/zh-CN/concepts/protocol/gas', '0de'),
                 exact: true,
                 sidebar: "concepts"
               },
               {
                 path: '/zh-CN/concepts/protocol/smartcontract',
-                component: ComponentCreator('/zh-CN/concepts/protocol/smartcontract', '32c'),
+                component: ComponentCreator('/zh-CN/concepts/protocol/smartcontract', '3d3'),
                 exact: true,
                 sidebar: "concepts"
               },
               {
                 path: '/zh-CN/concepts/protocol/transaction-anatomy',
-                component: ComponentCreator('/zh-CN/concepts/protocol/transaction-anatomy', '91b'),
+                component: ComponentCreator('/zh-CN/concepts/protocol/transaction-anatomy', '57c'),
                 exact: true,
                 sidebar: "concepts"
               },
               {
                 path: '/zh-CN/concepts/protocol/transaction-execution',
-                component: ComponentCreator('/zh-CN/concepts/protocol/transaction-execution', '4f6'),
+                component: ComponentCreator('/zh-CN/concepts/protocol/transaction-execution', 'aeb'),
                 exact: true,
                 sidebar: "concepts"
               },
               {
                 path: '/zh-CN/concepts/protocol/transactions',
-                component: ComponentCreator('/zh-CN/concepts/protocol/transactions', '731'),
+                component: ComponentCreator('/zh-CN/concepts/protocol/transactions', '50e'),
                 exact: true,
                 sidebar: "concepts"
               },
@@ -859,7 +859,7 @@ export default [
               },
               {
                 path: '/zh-CN/develop/relayers/relayer-gas-example',
-                component: ComponentCreator('/zh-CN/develop/relayers/relayer-gas-example', '500'),
+                component: ComponentCreator('/zh-CN/develop/relayers/relayer-gas-example', 'f52'),
                 exact: true,
                 sidebar: "build"
               },

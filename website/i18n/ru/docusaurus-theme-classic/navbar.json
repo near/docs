@@ -166,5 +166,9 @@
   "item.label.🎉 Dev Changelog": {
     "message": "🎉 Dev Changelog",
     "description": "Navbar item with label 🎉 Dev Changelog"
+  },
+  "item.label.Concepts": {
+    "message": "Concepts",
+    "description": "Navbar item with label Concepts"
   }
 }

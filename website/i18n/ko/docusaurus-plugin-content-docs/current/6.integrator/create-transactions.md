@@ -15,7 +15,7 @@ sidebar_label: 트랜잭션 생성
 - `signerPublicKey`
 - `receiverId` _(트랜잭션 수신자의 계정 ID)_
 - `nonceForPublicKey` _(키가 사용될 때마다 nonce 값이 1씩 증가해야 함)_
-- `actions` _(지원되는 인자를 보려면 [[여기를 클릭하세요]](/concepts/basics/transactions/overview#action))_
+- `actions` _( [[click here]](/concepts/protocol/transactions#action) for supported arguments)_
 - `blockHash` _(트랜잭션이 최근에 생성되었음을 증명하기 위한 현재 블록 해시(24시간 이내))_
 
 See [Transaction Class](https://near.github.io/near-api-js/classes/near_api_js.transaction.Transaction.html) for a more in depth outline.
@@ -76,7 +76,7 @@ const amount = nearAPI.utils.format.parseNearAmount("1.5");
 
 ### Create a Key Store
 
-트랜잭션에 서명하려면, 트랜잭션에 서명하기 위한 [전체 액세스 키](/concepts/basics/accounts/access-keys#full-access-keys)를 보유할 "키 저장소"를 생성해야 합니다. 이를 수행하는 방법에는 여러 가지가 있지만, 이 예제에서는 프로젝트의 `.env` 파일 또는 전역으로 내보낸 환경 변수에 저장된 개인 키를 사용합니다.
+In order to sign transactions you will need to create a "Key Store" that will hold a [full access key](/concepts/protocol/access-keys#full-access-keys) to sign your transactions. 이를 수행하는 방법에는 여러 가지가 있지만, 이 예제에서는 프로젝트의 `.env` 파일 또는 전역으로 내보낸 환경 변수에 저장된 개인 키를 사용합니다.
 
 - [`near-cli`](/tools/near-cli)를 사용하여 계정을 생성했거나 터미널에서 [`near login`](/tools/near-cli#for-accounts)을 실행한 경우, 개인 키는 `/HOME/.near-credentials`에 있는 `.json` 파일에서 찾을 수 있습니다.
 - If you created an account using [NEAR Wallet](https://testnet.mynearwallet.com/), your key will be found in your browser's `Local Storage`.
@@ -208,7 +208,7 @@ NEAR Ⓝ를 보내기 위한 트랜잭션에 서명하려면, 발신자 계정�
 
 ```js
 const privateKey = process.env.SENDER_PRIVATE_KEY;
-const keyPair = nearAPI.utils.key_pair.KeyPairEd25519.fromString(privateKey);
+const keyPair = nearAPI.KeyPair.fromString(privateKey);
 ```
 
 ---
@@ -221,7 +221,7 @@ const keyPair = nearAPI.utils.key_pair.KeyPairEd25519.fromString(privateKey);
 2. [`signerPublicKey`](#2-signerpublickey)
 3. [`receiverId`](#3-receiverid)
 4. [`nonceForPublicKey`](#4-nonceforpublickey)
-5. [`actions`](/concepts/basics/transactions/overview#action)
+5. [`actions`](/concepts/protocol/transactions#action)
 6. [`blockHash`](#6-blockhash)
 
 ### 1 `signerId`
@@ -306,7 +306,7 @@ const nonce = ++accessKey.nonce;
 
 ### 5 `actions`
 
-- 현재 지원되는 `Action` 유형은 8가지가 있습니다. [[여기를 확인하세요.]](/concepts/basics/transactions/overview#action)
+- 현재 지원되는 `Action` 유형은 8가지가 있습니다. [[see here]](/concepts/protocol/transactions#action)
 - 이 예제에서는, `Transfer`를 사용합니다.
 - 이 Transfer Action은 [가져온 `nearAPI` 객체](#imports)와 이전에 만든 [단위 지정된 Ⓝ 금액](#formatting-token-amounts)을 사용하여 생성할 수 있습니다.
 
@@ -360,7 +360,7 @@ const transaction = nearAPI.transactions.createTransaction(
 
 ```js
 const serializedTx = nearAPI.utils.serialize.serialize(
-  nearAPI.transactions.SCHEMA,
+  nearAPI.transactions.SCHEMA.Transaction,
   transaction
 );
 ```

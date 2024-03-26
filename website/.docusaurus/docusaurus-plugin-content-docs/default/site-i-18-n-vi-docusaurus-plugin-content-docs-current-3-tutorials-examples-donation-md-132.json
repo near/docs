@@ -1,7 +1,7 @@
 {
   "id": "tutorials/examples/donation",
   "title": "Donation",
-  "description": "Our donation example enables to forward money to an account while keeping track of it. It is one of the simplest examples on making a contract handle tranfers.",
+  "description": "Our donation example enables to forward NEAR Tokens to an account while keeping track of it. It is one of the simplest examples on making a contract handle tranfers.",
   "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/3.tutorials/examples/donation.md",
   "sourceDirName": "3.tutorials/examples",
   "slug": "/tutorials/examples/donation",

@@ -5,7 +5,7 @@ title: Social Notifications
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {WidgetEditor} from "@site/src/components/social-widget"
+import {WidgetEditor} from "@site/src/components/widget-editor"
 
 Applications such as [NEAR Social](https://near.social) and the [NEAR Dev Portal](https://dev.near.org/) allow components to send notifications to their users.
 

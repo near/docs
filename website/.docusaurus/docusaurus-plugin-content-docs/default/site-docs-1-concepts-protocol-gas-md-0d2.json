@@ -5,7 +5,7 @@
   "source": "@site/../docs/1.concepts/protocol/gas.md",
   "sourceDirName": "1.concepts/protocol",
   "slug": "/concepts/protocol/gas",
-  "permalink": "/zh-CN/concepts/protocol/gas",
+  "permalink": "/concepts/protocol/gas",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/protocol/gas.md",
@@ -13,7 +13,7 @@
   "version": "current",
   "lastUpdatedBy": "gagdiez",
   "lastUpdatedAt": 1711375194,
-  "formattedLastUpdatedAt": "2024年3月25日",
+  "formattedLastUpdatedAt": "Mar 25, 2024",
   "frontMatter": {
     "id": "gas",
     "title": "Gas (Execution Fees)"
@@ -21,10 +21,10 @@
   "sidebar": "concepts",
   "previous": {
     "title": "Anatomy of a Transaction",
-    "permalink": "/zh-CN/concepts/protocol/transaction-anatomy"
+    "permalink": "/concepts/protocol/transaction-anatomy"
   },
   "next": {
     "title": "Lifecycle of a Transaction",
-    "permalink": "/zh-CN/concepts/protocol/transaction-execution"
+    "permalink": "/concepts/protocol/transaction-execution"
   }
 }

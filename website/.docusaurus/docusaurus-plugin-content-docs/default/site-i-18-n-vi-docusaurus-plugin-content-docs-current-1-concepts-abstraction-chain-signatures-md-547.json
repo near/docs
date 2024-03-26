@@ -1,7 +1,7 @@
 {
   "id": "concepts/abstraction/chain-signatures",
-  "title": "Chain Signatures",
-  "description": "Chain Signatures unlock the ability for a single account to transact across multiple blockchain protocols, giving ownership of cross-chain accounts, data, and assets to one NEAR account.",
+  "title": "What are Chain Signatures?",
+  "description": "Chain signatures enable NEAR accounts, including smart contracts, to sign and execute transactions across many blockchain protocols.",
   "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/1.concepts/abstraction/chain-signatures.md",
   "sourceDirName": "1.concepts/abstraction",
   "slug": "/concepts/abstraction/chain-signatures",
@@ -16,7 +16,7 @@
   "formattedLastUpdatedAt": "28 thg 2, 2024",
   "frontMatter": {
     "id": "chain-signatures",
-    "title": "Chain Signatures",
+    "title": "What are Chain Signatures?",
     "sidebar_label": "What are Chain Signatures?"
   },
   "sidebar": "concepts",

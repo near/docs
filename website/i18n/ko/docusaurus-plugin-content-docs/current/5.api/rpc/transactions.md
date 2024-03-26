@@ -11,119 +11,17 @@ RPC API를 사용하면 트랜잭션을 보내고 해당 상태를 쿼리할 수
 
 ---
 
-## 트랜잭션 전송 (비동기) {#send-transaction-async}
+## Send transaction {#send-tx}
 
-> 트랜잭션을 보내고 즉시 트랜잭션 해시를 반환합니다.
+> Sends transaction. Returns the guaranteed execution status and the results the blockchain can provide at the moment.
 
-- 메서드: `broadcast_tx_async`
-- 매개변수: `[SignedTransaction encoded in base64]`
+- method: `send_tx`
+- 매개변수:
+  - `signed_tx_base64`: SignedTransaction encoded in base64
+  - [Optional] `wait_until`: the required minimal execution level. [Read more here](#tx-status-result). The default value is `EXECUTED_OPTIMISTIC`.
 
-예시:
-
-<Tabs>
-<TabItem value="json" label="JSON" default>
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": "dontcare",
-  "method": "broadcast_tx_async",
-  "params": [
-    "DgAAAHNlbmRlci50ZXN0bmV0AOrmAai64SZOv9e/naX4W15pJx0GAap35wTT1T/DwcbbDwAAAAAAAAAQAAAAcmVjZWl2ZXIudGVzdG5ldNMnL7URB1cxPOu3G8jTqlEwlcasagIbKlAJlF5ywVFLAQAAAAMAAACh7czOG8LTAAAAAAAAAGQcOG03xVSFQFjoagOb4NBBqWhERnnz45LY4+52JgZhm1iQKz7qAdPByrGFDQhQ2Mfga8RlbysuQ8D8LlA6bQE="
-  ]
-}
-```
-
-</TabItem>
-<TabItem value="http" label="HTTPie">
-
-```bash
-http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_async \
-    params:='[
-        "DgAAAHNlbmRlci50ZXN0bmV0AOrmAai64SZOv9e/naX4W15pJx0GAap35wTT1T/DwcbbDwAAAAAAAAAQAAAAcmVjZWl2ZXIudGVzdG5ldNMnL7URB1cxPOu3G8jTqlEwlcasagIbKlAJlF5ywVFLAQAAAAMAAACh7czOG8LTAAAAAAAAAGQcOG03xVSFQFjoagOb4NBBqWhERnnz45LY4+52JgZhm1iQKz7qAdPByrGFDQhQ2Mfga8RlbysuQ8D8LlA6bQE="
-    ]'
-```
-
-</TabItem>
-</Tabs>
-
-응답 예시:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "result": "6zgh2u9DqHHiXzdy9ouTP7oGky2T4nugqzqt9wJZwNFm",
-  "id": "dontcare"
-}
-```
-
-Final transaction results can be queried using [Transaction Status](#transaction-status) or [NearBlocks Explorer](https://testnet.nearblocks.io/) using the above `result` hash returning a result similar to the example below.
-
-![NEAR-Explorer-transactionHash](/docs/assets/NEAR-Explorer-transactionHash.png)
-
-#### 무엇이 잘못될 수 있나요? {#what-could-go-wrong}
-
-API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 변형과 함께 구조화된 오류 응답을 반환하므로, 클라이언트 코드는 가능한 모든 오류 사례를 철저하게 처리할 수 있습니다. JSON-RPC 오류는 오류 응답을 구조화하기 위해 [verror](https://github.com/joyent/node-verror) 규칙을 따릅니다.
-
-
-```json
-{
-    "error": {
-        "name": <ERROR_TYPE>,
-        "cause": {
-            "info": {..},
-            "name": <ERROR_CAUSE>
-        },
-        "code": -32000,
-        "data": String,
-        "message": "Server error",
-    },
-    "id": "dontcare",
-    "jsonrpc": "2.0"
-}
-```
-
-> **주의**
-> 
-> 위 구조의 `code`, `data`, 및 `message` 필드는 레거시 항목으로 간주되며, 향후 사용되지 않을 수 있습니다. 이에 의존하지 마세요.
-
-다음은 `broadcast_tx_async` 메서드에 의해 반환될 수 있는 오류 변형의 전체 목록입니다.
-
-<table className="custom-stripe">
-  <thead>
-    <tr>
-      <th>
-        ERROR_TYPE<br />
-        <code>error.name</code>
-      </th>
-      <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
-      <th>이유</th>
-      <th>해결책</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr className="stripe">
-      <td>REQUEST_VALIDATION_ERROR</td>
-      <td>PARSE_ERROR</td>
-      <td>전달된 인자는 JSON RPC 서버에서 파싱할 수 없습니다(인자 누락, 잘못된 형식 등).</td>
-      <td>
-        <ul>
-          <li>전달된 인수를 확인하고 올바른 인수를 전달하세요.</li>
-          <li><code>error.cause.info</code>자세한 내용을 확인하세요.</li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
----
-
-## 트랜잭션 전송 (대기) {#send-transaction-await}
-
-> 트랜잭션을 보내고 트랜잭션이 완전히 완료될 때까지 기다립니다. _(타임아웃 10초 있음)_
-
-- 메서드: `broadcast_tx_commit`
-- 매개변수: `[SignedTransaction encoded in base64]`
+Using `send_tx` with `wait_until = NONE` is equal to legacy `broadcast_tx_async` method.  
+Using `send_tx` with finality `wait_until = EXECUTED_OPTIMISTIC` is equal to legacy `broadcast_tx_commit` method.
 
 예시:
 
@@ -134,10 +32,11 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
 {
   "jsonrpc": "2.0",
   "id": "dontcare",
-  "method": "broadcast_tx_commit",
-  "params": [
-    "DgAAAHNlbmRlci50ZXN0bmV0AOrmAai64SZOv9e/naX4W15pJx0GAap35wTT1T/DwcbbDQAAAAAAAAAQAAAAcmVjZWl2ZXIudGVzdG5ldIODI4YfV/QS++blXpQYT+bOsRblTRW4f547y/LkvMQ9AQAAAAMAAACh7czOG8LTAAAAAAAAAAXcaTJzu9GviPT7AD4mNJGY79jxTrjFLoyPBiLGHgBi8JK1AnhK8QknJ1ourxlvOYJA2xEZE8UR24THmSJcLQw="
-  ]
+  "method": "send_tx",
+  "params": {
+    "signed_tx_base64": "DgAAAHNlbmRlci50ZXN0bmV0AOrmAai64SZOv9e/naX4W15pJx0GAap35wTT1T/DwcbbDwAAAAAAAAAQAAAAcmVjZWl2ZXIudGVzdG5ldNMnL7URB1cxPOu3G8jTqlEwlcasagIbKlAJlF5ywVFLAQAAAAMAAACh7czOG8LTAAAAAAAAAGQcOG03xVSFQFjoagOb4NBBqWhERnnz45LY4+52JgZhm1iQKz7qAdPByrGFDQhQ2Mfga8RlbysuQ8D8LlA6bQE=",
+    "wait_until": "INCLUDED_FINAL"
+  }
 }
 ```
 
@@ -145,10 +44,18 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
 <TabItem value="http" label="HTTPie">
 
 ```bash
-http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
-    params:='[
-        "DwAAAG5lYXJrYXQudGVzdG5ldABuTi5L1rwnlb35hc9tn5WELkxfiGfGh1Q5aeGNQDejo0QAAAAAAAAAEAAAAGpvc2hmb3JkLnRlc3RuZXSiWAc6W9KlqXS5fK+vjFRDV5pAxHRKU0srKX/cmdRTBgEAAAADAAAAoe3MzhvC0wAAAAAAAAB9rOE9zc5zQYLL1j6VTh3I4fQbERs6I07gJfrAC6jo8DB4HolR9Xps3v4qrZxkgZjwv6wB0QOROM4UEbeOaBoB"
-    ]'
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=send_tx \
+    params:='{
+      "signed_tx_base64": "DgAAAHNlbmRlci50ZXN0bmV0AOrmAai64SZOv9e/naX4W15pJx0GAap35wTT1T/DwcbbDwAAAAAAAAAQAAAAcmVjZWl2ZXIudGVzdG5ldNMnL7URB1cxPOu3G8jTqlEwlcasagIbKlAJlF5ywVFLAQAAAAMAAACh7czOG8LTAAAAAAAAAGQcOG03xVSFQFjoagOb4NBBqWhERnnz45LY4+52JgZhm1iQKz7qAdPByrGFDQhQ2Mfga8RlbysuQ8D8LlA6bQE=",
+      "wait_until": "EXECUTED"
+    }'
+```
+
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=send_tx \
+    params:='{
+      "signed_tx_base64": "DgAAAHNlbmRlci50ZXN0bmV0AOrmAai64SZOv9e/naX4W15pJx0GAap35wTT1T/DwcbbDwAAAAAAAAAQAAAAcmVjZWl2ZXIudGVzdG5ldNMnL7URB1cxPOu3G8jTqlEwlcasagIbKlAJlF5ywVFLAQAAAAMAAACh7czOG8LTAAAAAAAAAGQcOG03xVSFQFjoagOb4NBBqWhERnnz45LY4+52JgZhm1iQKz7qAdPByrGFDQhQ2Mfga8RlbysuQ8D8LlA6bQE="
+    }'
 ```
 
 </TabItem>
@@ -162,6 +69,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_
 {
   "jsonrpc": "2.0",
   "result": {
+    "final_execution_status": "FINAL",
     "status": {
       "SuccessValue": ""
     },
@@ -235,7 +143,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_
 </p>
 </details>
 
-#### 무엇이 잘못될 수 있나요? {#what-could-go-wrong-1}
+#### 무엇이 잘못될 수 있나요? {#what-could-go-wrong-send-tx}
 
 API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 변형과 함께 구조화된 오류 응답을 반환하므로, 클라이언트 코드는 가능한 모든 오류 사례를 철저하게 처리할 수 있습니다. JSON-RPC 오류는 오류 응답을 구조화하기 위해 [verror](https://github.com/joyent/node-verror) 규칙을 따릅니다.
 
@@ -303,8 +211,8 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
       <td>전달된 인자는 JSON RPC 서버에서 파싱할 수 없습니다(인자 누락, 잘못된 형식 등).</td>
       <td>
         <ul>
-          <li>전달된 인자를 확인하고 올바른 인수를 전달하세요.</li>
-          <li><code>error.cause.info</code>에서 자세한 내용을 확인하세요.</li>
+          <li>전달된 인수를 확인하고 올바른 인수를 전달하세요.</li>
+          <li><code>error.cause.info</code>자세한 내용을 확인하세요.</li>
         </ul>
       </td>
     </tr>
@@ -331,8 +239,11 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
 
 - 메서드: `tx`
 - 매개변수:
-  - `transaction hash` _(see [NearBlocks Explorer](https://testnet.nearblocks.io) for a valid transaction hash)_
-  - `sender account id`
+  - `tx_hash` _(see [NearBlocks Explorer](https://testnet.nearblocks.io) for a valid transaction hash)_
+  - `sender_account_id` _(used to determine which shard to query for transaction)_
+  - [Optional] `wait_until`: the required minimal execution level. Read more [here](/api/rpc/transactions#tx-status-result). The default value is `EXECUTED_OPTIMISTIC`.
+
+A Transaction status request with `wait_until != NONE` will wait until the transaction appears on the blockchain. If the transaction does not exist, the method will wait until the timeout is reached. If you only need to check whether the transaction exists, use `wait_until = NONE`, it will return the response immediately.
 
 예시:
 
@@ -344,18 +255,12 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
   "jsonrpc": "2.0",
   "id": "dontcare",
   "method": "tx",
-  "params": ["6zgh2u9DqHHiXzdy9ouTP7oGky2T4nugqzqt9wJZwNFm", "sender.testnet"]
+  "params": {
+    "tx_hash": "6zgh2u9DqHHiXzdy9ouTP7oGky2T4nugqzqt9wJZwNFm",
+    "sender_account_id": "sender.testnet",
+    "wait_until": "EXECUTED"
+  }
 }
-```
-
-</TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
-
-```js
-const response = await near.connection.provider.txStatus(
-  "6zgh2u9DqHHiXzdy9ouTP7oGky2T4nugqzqt9wJZwNFm",
-  "sender.testnet"
-);
 ```
 
 </TabItem>
@@ -363,7 +268,7 @@ const response = await near.connection.provider.txStatus(
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=tx \
-    params:='[ "6zgh2u9DqHHiXzdy9ouTP7oGky2T4nugqzqt9wJZwNFm", "sender.testnet"]'
+    params:='{"tx_hash": "6zgh2u9DqHHiXzdy9ouTP7oGky2T4nugqzqt9wJZwNFm", "sender_account_id": "sender.testnet"}'
 ```
 
 </TabItem>
@@ -377,6 +282,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=tx \
 {
   "jsonrpc": "2.0",
   "result": {
+    "final_execution_status": "FINAL",
     "status": {
       "SuccessValue": ""
     },
@@ -575,8 +481,12 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
 
 - 메서드: `EXPERIMENTAL_tx_status`
 - 매개변수:
-  - `transaction hash` _(see [NearBlocks Explorer](https://testnet.nearblocks.io) for a valid transaction hash)_
-  - `sender account id` _(트랜잭션을 쿼리할 샤드를 결정하는 데 사용됨)_
+  - `tx_hash` _(see [NearBlocks Explorer](https://testnet.nearblocks.io) for a valid transaction hash)_
+  - `sender_account_id` _(used to determine which shard to query for transaction)_
+  - [Optional] `wait_until`: the required minimal execution level. Read more [here](/api/rpc/transactions#tx-status-result). The default value is `EXECUTED_OPTIMISTIC`.
+
+A Transaction status request with `wait_until != NONE` will wait until the transaction appears on the blockchain. If the transaction does not exist, the method will wait until the timeout is reached. If you only need to check whether the transaction exists, use `wait_until = NONE`, it will return the response immediately.
+
 
 예시:
 
@@ -588,25 +498,19 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
   "jsonrpc": "2.0",
   "id": "dontcare",
   "method": "EXPERIMENTAL_tx_status",
-  "params": ["HEgnVQZfs9uJzrqTob4g2Xmebqodq9waZvApSkrbcAhd", "bowen"]
+  "params": {
+    "tx_hash": "HEgnVQZfs9uJzrqTob4g2Xmebqodq9waZvApSkrbcAhd",
+    "sender_account_id": "bowen",
+    "wait_until": "EXECUTED"
+  }
 }
-```
-
-</TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
-
-```js
-const response = await near.connection.provider.experimental_txStatus(
-  "HEgnVQZfs9uJzrqTob4g2Xmebqodq9waZvApSkrbcAhd",
-  "bowen"
-);
 ```
 
 </TabItem>
 <TabItem value="http" label="HTTPie">
 
 ```bash
-http post https://rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_tx_status params:='["HEgnVQZfs9uJzrqTob4g2Xmebqodq9waZvApSkrbcAhd", "bowen"]' id=dontcare
+http post https://rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_tx_status params:='{"tx_hash": "HEgnVQZfs9uJzrqTob4g2Xmebqodq9waZvApSkrbcAhd", "sender_account_id": "bowen"}' id=dontcare
 ```
 
 </TabItem>
@@ -621,6 +525,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_tx_status
   "id": "123",
   "jsonrpc": "2.0",
   "result": {
+    "final_execution_status": "FINAL",
     "receipts": [
       {
         "predecessor_id": "bowen",
@@ -951,7 +856,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
 > ID로 Receipt를 가져옵니다(상태 또는 실행 결과 없이 있는 그대로).
 
 - 메서드: `EXPERIMENTAL_receipt`
-- 매개변수:
+- params:
   - `receipt_id` _(see [NearBlocks Explorer](https://testnet.nearblocks.io) for a valid receipt id)_
 
 예시:
@@ -1085,6 +990,355 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
           <li>나중에 다시 시도하세요.</li>
           <li>다른 노드에 요청을 보내세요.</li>
           <li><code>error.cause.info</code>에서 자세한 내용을 확인하세요.</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## Transaction Execution Levels {#tx-status-result}
+
+All the methods listed above have `wait_until` request parameter, and `final_execution_status` response value. They correspond to the same enum `TxExecutionStatus`. See the detailed explanation for all the options:
+
+```rust
+#[serde(rename_all = "SCREAMING_SNAKE_CASE")]
+pub enum TxExecutionStatus {
+  /// Transaction is waiting to be included into the block
+  None,
+  /// Transaction is included into the block. The block may be not finalized yet
+  Included,
+  /// Transaction is included into the block +
+  /// All the transaction receipts finished their execution.
+  /// The corresponding blocks for tx and each receipt may be not finalized yet
+  #[default]
+  ExecutedOptimistic,
+  /// Transaction is included into finalized block
+  IncludedFinal,
+  /// Transaction is included into finalized block +
+  /// All the transaction receipts finished their execution.
+  /// The corresponding blocks for each receipt may be not finalized yet
+  Executed,
+  /// Transaction is included into finalized block +
+  /// Execution of transaction receipts is finalized
+  Final,
+}
+```
+
+---
+
+# Deprecated methods {#deprecated}
+
+## [deprecated] Send transaction (async) {#send-transaction-async}
+
+> Consider using [`send_tx`](/api/rpc/transactions#send-tx) instead
+
+> 트랜잭션을 보내고 즉시 트랜잭션 해시를 반환합니다.
+
+- 메서드: `broadcast_tx_async`
+- 매개변수: `[SignedTransaction encoded in base64]`
+
+예시:
+
+<Tabs>
+<TabItem value="json" label="JSON" default>
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "dontcare",
+  "method": "broadcast_tx_async",
+  "params": [
+    "DgAAAHNlbmRlci50ZXN0bmV0AOrmAai64SZOv9e/naX4W15pJx0GAap35wTT1T/DwcbbDwAAAAAAAAAQAAAAcmVjZWl2ZXIudGVzdG5ldNMnL7URB1cxPOu3G8jTqlEwlcasagIbKlAJlF5ywVFLAQAAAAMAAACh7czOG8LTAAAAAAAAAGQcOG03xVSFQFjoagOb4NBBqWhERnnz45LY4+52JgZhm1iQKz7qAdPByrGFDQhQ2Mfga8RlbysuQ8D8LlA6bQE="
+  ]
+}
+```
+
+</TabItem>
+<TabItem value="http" label="HTTPie">
+
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_async \
+    params:='[
+        "DgAAAHNlbmRlci50ZXN0bmV0AOrmAai64SZOv9e/naX4W15pJx0GAap35wTT1T/DwcbbDwAAAAAAAAAQAAAAcmVjZWl2ZXIudGVzdG5ldNMnL7URB1cxPOu3G8jTqlEwlcasagIbKlAJlF5ywVFLAQAAAAMAAACh7czOG8LTAAAAAAAAAGQcOG03xVSFQFjoagOb4NBBqWhERnnz45LY4+52JgZhm1iQKz7qAdPByrGFDQhQ2Mfga8RlbysuQ8D8LlA6bQE="
+    ]'
+```
+
+</TabItem>
+</Tabs>
+
+응답 예시:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "result": "6zgh2u9DqHHiXzdy9ouTP7oGky2T4nugqzqt9wJZwNFm",
+  "id": "dontcare"
+}
+```
+
+Final transaction results can be queried using [Transaction Status](#transaction-status) or [NearBlocks Explorer](https://testnet.nearblocks.io/) using the above `result` hash returning a result similar to the example below.
+
+![NEAR-Explorer-transactionHash](/docs/assets/NEAR-Explorer-transactionHash.png)
+
+#### 무엇이 잘못될 수 있나요? {#what-could-go-wrong}
+
+API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 변형과 함께 구조화된 오류 응답을 반환하므로, 클라이언트 코드는 가능한 모든 오류 사례를 철저하게 처리할 수 있습니다. JSON-RPC 오류는 오류 응답을 구조화하기 위해 [verror](https://github.com/joyent/node-verror) 규칙을 따릅니다.
+
+
+```json
+{
+    "error": {
+        "name": <ERROR_TYPE>,
+        "cause": {
+            "info": {..},
+            "name": <ERROR_CAUSE>
+        },
+        "code": -32000,
+        "data": String,
+        "message": "Server error",
+    },
+    "id": "dontcare",
+    "jsonrpc": "2.0"
+}
+```
+
+> **주의**
+> 
+> 위 구조의 `code`, `data`, 및 `message` 필드는 레거시 항목으로 간주되며, 향후 사용되지 않을 수 있습니다. 이에 의존하지 마세요.
+
+다음은 `broadcast_tx_async` 메서드에 의해 반환될 수 있는 오류 변형의 전체 목록입니다.
+
+<table class="custom-stripe">
+  <thead>
+    <tr>
+      <th>
+        ERROR_TYPE<br />
+        <code>error.name</code>
+      </th>
+      <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>이유</th>
+      <th>해결책</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="stripe">
+      <td>REQUEST_VALIDATION_ERROR</td>
+      <td>PARSE_ERROR</td>
+      <td>전달된 인자는 JSON RPC 서버에서 파싱할 수 없습니다(인자 누락, 잘못된 형식 등).</td>
+      <td>
+        <ul>
+          <li>전달된 인자를 확인하고 올바른 인수를 전달하세요.</li>
+          <li><code>error.cause.info</code>에서 자세한 내용을 확인하세요.</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+## [deprecated] Send transaction (await) {#send-transaction-await}
+
+> Consider using [`send_tx`](/api/rpc/transactions#send-tx) instead
+
+> 트랜잭션을 보내고 트랜잭션이 완전히 완료될 때까지 기다립니다. _(타임아웃 10초 있음)_
+
+- 메서드: `broadcast_tx_commit`
+- 매개변수: `[SignedTransaction encoded in base64]`
+
+Example:
+
+<Tabs>
+<TabItem value="json" label="JSON" default>
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "dontcare",
+  "method": "broadcast_tx_commit",
+  "params": [
+    "DgAAAHNlbmRlci50ZXN0bmV0AOrmAai64SZOv9e/naX4W15pJx0GAap35wTT1T/DwcbbDQAAAAAAAAAQAAAAcmVjZWl2ZXIudGVzdG5ldIODI4YfV/QS++blXpQYT+bOsRblTRW4f547y/LkvMQ9AQAAAAMAAACh7czOG8LTAAAAAAAAAAXcaTJzu9GviPT7AD4mNJGY79jxTrjFLoyPBiLGHgBi8JK1AnhK8QknJ1ourxlvOYJA2xEZE8UR24THmSJcLQw="
+  ]
+}
+```
+
+</TabItem>
+<TabItem value="http" label="HTTPie">
+
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
+    params:='[
+        "DwAAAG5lYXJrYXQudGVzdG5ldABuTi5L1rwnlb35hc9tn5WELkxfiGfGh1Q5aeGNQDejo0QAAAAAAAAAEAAAAGpvc2hmb3JkLnRlc3RuZXSiWAc6W9KlqXS5fK+vjFRDV5pAxHRKU0srKX/cmdRTBgEAAAADAAAAoe3MzhvC0wAAAAAAAAB9rOE9zc5zQYLL1j6VTh3I4fQbERs6I07gJfrAC6jo8DB4HolR9Xps3v4qrZxkgZjwv6wB0QOROM4UEbeOaBoB"
+    ]'
+```
+
+</TabItem>
+</Tabs>
+
+<details>
+<summary>Example response: </summary>
+<p>
+
+```json
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "final_execution_status": "FINAL",
+    "status": {
+      "SuccessValue": ""
+    },
+    "transaction": {
+      "signer_id": "sender.testnet",
+      "public_key": "ed25519:Gowpa4kXNyTMRKgt5W7147pmcc2PxiFic8UHW9rsNvJ6",
+      "nonce": 13,
+      "receiver_id": "receiver.testnet",
+      "actions": [
+        {
+          "Transfer": {
+            "deposit": "1000000000000000000000000"
+          }
+        }
+      ],
+      "signature": "ed25519:7oCBMfSHrZkT7tzPDBxxCd3tWFhTES38eks3MCZMpYPJRfPWKxJsvmwQiVBBxRLoxPTnXVaMU2jPV3MdFKZTobH",
+      "hash": "ASS7oYwGiem9HaNwJe6vS2kznx2CxueKDvU9BAYJRjNR"
+    },
+    "transaction_outcome": {
+      "proof": [],
+      "block_hash": "9MzuZrRPW1BGpFnZJUJg6SzCrixPpJDfjsNeUobRXsLe",
+      "id": "ASS7oYwGiem9HaNwJe6vS2kznx2CxueKDvU9BAYJRjNR",
+      "outcome": {
+        "logs": [],
+        "receipt_ids": ["BLV2q6p8DX7pVgXRtGtBkyUNrnqkNyU7iSksXG7BjVZh"],
+        "gas_burnt": 223182562500,
+        "tokens_burnt": "22318256250000000000",
+        "executor_id": "sender.testnet",
+        "status": {
+          "SuccessReceiptId": "BLV2q6p8DX7pVgXRtGtBkyUNrnqkNyU7iSksXG7BjVZh"
+        }
+      }
+    },
+    "receipts_outcome": [
+      {
+        "proof": [],
+        "block_hash": "5Hpj1PeCi32ZkNXgiD1DrW4wvW4Xtic74DJKfyJ9XL3a",
+        "id": "BLV2q6p8DX7pVgXRtGtBkyUNrnqkNyU7iSksXG7BjVZh",
+        "outcome": {
+          "logs": [],
+          "receipt_ids": ["3sawynPNP8UkeCviGqJGwiwEacfPyxDKRxsEWPpaUqtR"],
+          "gas_burnt": 223182562500,
+          "tokens_burnt": "22318256250000000000",
+          "executor_id": "receiver.testnet",
+          "status": {
+            "SuccessValue": ""
+          }
+        }
+      },
+      {
+        "proof": [],
+        "block_hash": "CbwEqMpPcu6KwqVpBM3Ry83k6M4H1FrJjES9kBXThcRd",
+        "id": "3sawynPNP8UkeCviGqJGwiwEacfPyxDKRxsEWPpaUqtR",
+        "outcome": {
+          "logs": [],
+          "receipt_ids": [],
+          "gas_burnt": 0,
+          "tokens_burnt": "0",
+          "executor_id": "sender.testnet",
+          "status": {
+            "SuccessValue": ""
+          }
+        }
+      }
+    ]
+  },
+  "id": "dontcare"
+}
+```
+
+</p>
+</details>
+
+#### What could go wrong? {#what-could-go-wrong-1}
+
+When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
+
+
+```json
+{
+    "error": {
+        "name": <ERROR_TYPE>,
+        "cause": {
+            "info": {..},
+            "name": <ERROR_CAUSE>
+        },
+        "code": -32000,
+        "data": String,
+        "message": "Server error",
+    },
+    "id": "dontcare",
+    "jsonrpc": "2.0"
+}
+```
+
+> **Heads up**
+> 
+> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them.
+
+Here is the exhaustive list of the error variants that can be returned by `broadcast_tx_commit` method:
+
+<table class="custom-stripe">
+  <thead>
+    <tr>
+      <th>
+        ERROR_TYPE<br />
+        <code>error.name</code>
+      </th>
+      <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Reason</th>
+      <th>Solution</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2">HANDLER_ERROR</td>
+      <td>INVALID_TRANSACTION</td>
+      <td>An error happened during transaction execution</td>
+      <td>
+        <ul>
+          <li>See <code>error.cause.info</code> for details</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>TIMEOUT_ERROR</td>
+      <td>Transaction was routed, but has not been recorded on chain in 10 seconds.</td>
+      <td>
+        <ul>
+          <li> Re-submit the request with the identical transaction (in NEAR Protocol unique transactions apply exactly once, so if the previously sent transaction gets applied, this request will just return the known result, otherwise, it will route the transaction to the chain once again)</li>
+          <li>Check that your transaction is valid</li>
+          <li>Check that the signer account id has enough tokens to cover the transaction fees (keep in mind that some tokens on each account are locked to cover the storage cost)</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="stripe">
+      <td>REQUEST_VALIDATION_ERROR</td>
+      <td>PARSE_ERROR</td>
+      <td>Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)</td>
+      <td>
+        <ul>
+          <li>Check the arguments passed and pass the correct ones</li>
+          <li>Check <code>error.cause.info</code> for more details</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>INTERNAL_ERROR</td>
+      <td>INTERNAL_ERROR</td>
+      <td>Something went wrong with the node itself or overloaded</td>
+      <td>
+        <ul>
+          <li>Try again later</li>
+          <li>Send a request to a different node</li>
+          <li>Check <code>error.cause.info</code> for more details</li>
         </ul>
       </td>
     </tr>

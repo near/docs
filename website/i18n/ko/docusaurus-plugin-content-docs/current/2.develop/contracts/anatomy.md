@@ -28,7 +28,7 @@ import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
       url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/src/lib.rs"
-      start="7" end="12" />
+      start="13" end="16" />
   </Language>
 </CodeTabs>
 
@@ -97,7 +97,7 @@ In JavaScript you **must always** define a [default state](#default-state)
 
   <Github fname="lib.rs" language="rust"
           url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/src/lib.rs"
-          start="25" end="32" />
+          start="35" end="40" />
 
 :::info
 To make the initialization mandatory use `#[derive(PanicOnDefault)]` in the contract's structure
@@ -131,7 +131,7 @@ Javascript에서는 항상 **모든 클래스의 매개변수**에 값을 할당
   <TabItem value="🦀 Rust">
     <Github fname="lib.rs" language="rust"
             url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/src/lib.rs"
-            start="14" end="21" />
+            start="19" end="26" />
   </TabItem>
 </Tabs>
 

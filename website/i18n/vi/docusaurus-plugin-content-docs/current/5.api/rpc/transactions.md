@@ -11,12 +11,17 @@ Ví dụ:
 
 ---
 
-## Send transaction (async) {#send-transaction-async}
+## Send transaction {#send-tx}
 
-> Send một transaction và lập tức trả về transaction hash.
+> Sends transaction. Returns the guaranteed execution status and the results the blockchain can provide at the moment.
 
-- method: `broadcast_tx_async`
-- các param: [SignedTransaction được encode trong base64]
+- method: `send_tx`
+- các param:
+  - `signed_tx_base64`: SignedTransaction encoded in base64
+  - [Optional] `wait_until`: the required minimal execution level. [Read more here](#tx-status-result). The default value is `EXECUTED_OPTIMISTIC`.
+
+Using `send_tx` with `wait_until = NONE` is equal to legacy `broadcast_tx_async` method.  
+Using `send_tx` with finality `wait_until = EXECUTED_OPTIMISTIC` is equal to legacy `broadcast_tx_commit` method.
 
 Ví dụ về response nhận được:
 
@@ -27,10 +32,11 @@ Ví dụ về response nhận được:
 {
   "jsonrpc": "2.0",
   "id": "dontcare",
-  "method": "broadcast_tx_async",
-  "params": [
-    "DgAAAHNlbmRlci50ZXN0bmV0AOrmAai64SZOv9e/naX4W15pJx0GAap35wTT1T/DwcbbDwAAAAAAAAAQAAAAcmVjZWl2ZXIudGVzdG5ldNMnL7URB1cxPOu3G8jTqlEwlcasagIbKlAJlF5ywVFLAQAAAAMAAACh7czOG8LTAAAAAAAAAGQcOG03xVSFQFjoagOb4NBBqWhERnnz45LY4+52JgZhm1iQKz7qAdPByrGFDQhQ2Mfga8RlbysuQ8D8LlA6bQE="
-  ]
+  "method": "send_tx",
+  "params": {
+    "signed_tx_base64": "DgAAAHNlbmRlci50ZXN0bmV0AOrmAai64SZOv9e/naX4W15pJx0GAap35wTT1T/DwcbbDwAAAAAAAAAQAAAAcmVjZWl2ZXIudGVzdG5ldNMnL7URB1cxPOu3G8jTqlEwlcasagIbKlAJlF5ywVFLAQAAAAMAAACh7czOG8LTAAAAAAAAAGQcOG03xVSFQFjoagOb4NBBqWhERnnz45LY4+52JgZhm1iQKz7qAdPByrGFDQhQ2Mfga8RlbysuQ8D8LlA6bQE=",
+    "wait_until": "INCLUDED_FINAL"
+  }
 }
 ```
 
@@ -38,130 +44,32 @@ Ví dụ về response nhận được:
 <TabItem value="http" label="HTTPie">
 
 ```bash
-http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_async \
-    params:='[
-        "DgAAAHNlbmRlci50ZXN0bmV0AOrmAai64SZOv9e/naX4W15pJx0GAap35wTT1T/DwcbbDwAAAAAAAAAQAAAAcmVjZWl2ZXIudGVzdG5ldNMnL7URB1cxPOu3G8jTqlEwlcasagIbKlAJlF5ywVFLAQAAAAMAAACh7czOG8LTAAAAAAAAAGQcOG03xVSFQFjoagOb4NBBqWhERnnz45LY4+52JgZhm1iQKz7qAdPByrGFDQhQ2Mfga8RlbysuQ8D8LlA6bQE="
-    ]'
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=send_tx \
+    params:='{
+      "signed_tx_base64": "DgAAAHNlbmRlci50ZXN0bmV0AOrmAai64SZOv9e/naX4W15pJx0GAap35wTT1T/DwcbbDwAAAAAAAAAQAAAAcmVjZWl2ZXIudGVzdG5ldNMnL7URB1cxPOu3G8jTqlEwlcasagIbKlAJlF5ywVFLAQAAAAMAAACh7czOG8LTAAAAAAAAAGQcOG03xVSFQFjoagOb4NBBqWhERnnz45LY4+52JgZhm1iQKz7qAdPByrGFDQhQ2Mfga8RlbysuQ8D8LlA6bQE=",
+      "wait_until": "EXECUTED"
+    }'
 ```
-
-</TabItem>
-</Tabs>
-
-Các kết quả cuối cùng của transaction có thể được query qua [Transaction Status](/docs/api/rpc/transactions#transaction-status) hoặc [NEAR Explorer](https://explorer.testnet.near.org/) bằng cách sử dụng `kết quả` hash được trả về như ví dụ sau đây.
-
-```json
-{
-  "jsonrpc": "2.0",
-  "result": "6zgh2u9DqHHiXzdy9ouTP7oGky2T4nugqzqt9wJZwNFm",
-  "id": "dontcare"
-}
-```
-
-Final transaction results can be queried using [Transaction Status](#transaction-status) or [NearBlocks Explorer](https://testnet.nearblocks.io/) using the above `result` hash returning a result similar to the example below.
-
-![NEAR-Explorer-transactionHash](/docs/assets/NEAR-Explorer-transactionHash.png)
-
-#### Sự cố nào có thể xảy ra? {#what-could-go-wrong}
-
-Khi API request không thành công, RPC server sẽ trả về một error response được cấu trúc sẵn, với một số lượng giới hạn các error variant đã được định nghĩa rõ ràng, từ đó client code có thể handle toàn bộ các error case có thể xảy ra. Các JSON-RPC error của chúng tôi tuân theo quy ước [verror](https://github.com/joyent/node-verror) để cấu trúc cho error response:
-
-
-```json
-{
-    "error": {
-        "name": <ERROR_TYPE>,
-        "cause": {
-            "info": {..},
-            "name": <ERROR_CAUSE>
-        },
-        "code": -32000,
-        "data": String,
-        "message": "Server error",
-    },
-    "id": "dontcare",
-    "jsonrpc": "2.0"
-}
-```
-
-> **Chú ý**
-> 
-> Các field `code`, `data`, và `message` trong structure trên là những field kế thừa từ Verror và có thể không được dùng nữa trong tương lai. Do đó vui lòng không sử dụng chúng.
-
-Ví dụ:
-
-<table className="custom-stripe">
-  <thead>
-    <tr>
-      <th>
-        ERROR_TYPE<br />
-        <code>error.name</code>
-      </th>
-      <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
-      <th>Nguyên nhân</th>
-      <th>Giải pháp</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr className="stripe">
-      <td>REQUEST_VALIDATION_ERROR</td>
-      <td>PARSE_ERROR</td>
-      <td>Đã pass các argument mà JSON RPC server không thể parse được (thiếu các argument, sai format, v.v...)</td>
-      <td>
-        <ul>
-          <li>Kiểm tra lại các argument đã pass và pass lại cho đúng</li>
-          <li>Kiểm tra <code>error.cause.info</code> để biết thêm chi tiết</li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
----
-
-## Send transaction (await) {#send-transaction-await}
-
-> Send một transaction và đợi đến khi transaction hoàn tất. _(Có timeout là 10 giây)_
-
-- method: `broadcast_tx_commit`
-- các param: `[SignedTransaction được encode dưới dạng base64]`
-
-Dưới đây là danh sách đầy đủ các error variant có thể được trả về theo loại request `view_access_key_list`:
-
-<Tabs>
-<TabItem value="json" label="JSON" default>
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": "dontcare",
-  "method": "broadcast_tx_commit",
-  "params": [
-    "DgAAAHNlbmRlci50ZXN0bmV0AOrmAai64SZOv9e/naX4W15pJx0GAap35wTT1T/DwcbbDQAAAAAAAAAQAAAAcmVjZWl2ZXIudGVzdG5ldIODI4YfV/QS++blXpQYT+bOsRblTRW4f547y/LkvMQ9AQAAAAMAAACh7czOG8LTAAAAAAAAAAXcaTJzu9GviPT7AD4mNJGY79jxTrjFLoyPBiLGHgBi8JK1AnhK8QknJ1ourxlvOYJA2xEZE8UR24THmSJcLQw="
-  ]
-}
-```
-
-</TabItem>
-<TabItem value="http" label="HTTPie">
 
 ```bash
-http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
-    params:='[
-        "DwAAAG5lYXJrYXQudGVzdG5ldABuTi5L1rwnlb35hc9tn5WELkxfiGfGh1Q5aeGNQDejo0QAAAAAAAAAEAAAAGpvc2hmb3JkLnRlc3RuZXSiWAc6W9KlqXS5fK+vjFRDV5pAxHRKU0srKX/cmdRTBgEAAAADAAAAoe3MzhvC0wAAAAAAAAB9rOE9zc5zQYLL1j6VTh3I4fQbERs6I07gJfrAC6jo8DB4HolR9Xps3v4qrZxkgZjwv6wB0QOROM4UEbeOaBoB"
-    ]'
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=send_tx \
+    params:='{
+      "signed_tx_base64": "DgAAAHNlbmRlci50ZXN0bmV0AOrmAai64SZOv9e/naX4W15pJx0GAap35wTT1T/DwcbbDwAAAAAAAAAQAAAAcmVjZWl2ZXIudGVzdG5ldNMnL7URB1cxPOu3G8jTqlEwlcasagIbKlAJlF5ywVFLAQAAAAMAAACh7czOG8LTAAAAAAAAAGQcOG03xVSFQFjoagOb4NBBqWhERnnz45LY4+52JgZhm1iQKz7qAdPByrGFDQhQ2Mfga8RlbysuQ8D8LlA6bQE="
+    }'
 ```
 
 </TabItem>
 </Tabs>
 
 <details>
-<summary>Ví dụ về response nhận được: </summary>
+<summary>Các kết quả cuối cùng của transaction có thể được query qua <a href="/docs/api/rpc/transactions#transaction-status">Transaction Status</a> hoặc <a href="https://explorer.testnet.near.org/">NEAR Explorer</a> bằng cách sử dụng <code>kết quả</code> hash được trả về như ví dụ sau đây. </summary>
 <p>
 
 ```json
 {
   "jsonrpc": "2.0",
   "result": {
+    "final_execution_status": "FINAL",
     "status": {
       "SuccessValue": ""
     },
@@ -235,9 +143,9 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_
 </p>
 </details>
 
-#### Sự cố nào có thể xảy ra? {#what-could-go-wrong-1}
+#### Sự cố nào có thể xảy ra? {#what-could-go-wrong-send-tx}
 
-Khi API request không thành công, RPC server sẽ trả về một error response được cấu trúc sẵn, với một số lượng giới hạn các error variant đã được định nghĩa rõ ràng, từ đó client code có thể handle toàn bộ các error case có thể xảy ra. Các JSON-RPC error của chúng tôi tuân theo convention [verror](https://github.com/joyent/node-verror) để cấu trúc cho error response:
+Khi API request không thành công, RPC server sẽ trả về một error response được cấu trúc sẵn, với một số lượng giới hạn các error variant đã được định nghĩa rõ ràng, từ đó client code có thể handle toàn bộ các error case có thể xảy ra. Các JSON-RPC error của chúng tôi tuân theo quy ước [verror](https://github.com/joyent/node-verror) để cấu trúc cho error response:
 
 
 ```json
@@ -331,8 +239,11 @@ Ví dụ:
 
 - method: `tx`
 - các param:
-  - `transaction hash` _(see [NearBlocks Explorer](https://testnet.nearblocks.io) for a valid transaction hash)_
-  - `sender account id`
+  - `tx_hash` _(see [NearBlocks Explorer](https://testnet.nearblocks.io) for a valid transaction hash)_
+  - `sender_account_id` _(used to determine which shard to query for transaction)_
+  - [Optional] `wait_until`: the required minimal execution level. Read more [here](/api/rpc/transactions#tx-status-result). The default value is `EXECUTED_OPTIMISTIC`.
+
+A Transaction status request with `wait_until != NONE` will wait until the transaction appears on the blockchain. If the transaction does not exist, the method will wait until the timeout is reached. If you only need to check whether the transaction exists, use `wait_until = NONE`, it will return the response immediately.
 
 Dưới đây là danh sách đầy đủ các error variant có thể được trả về theo loại request `view_access_key_list`:
 
@@ -344,18 +255,12 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
   "jsonrpc": "2.0",
   "id": "dontcare",
   "method": "tx",
-  "params": ["6zgh2u9DqHHiXzdy9ouTP7oGky2T4nugqzqt9wJZwNFm", "sender.testnet"]
+  "params": {
+    "tx_hash": "6zgh2u9DqHHiXzdy9ouTP7oGky2T4nugqzqt9wJZwNFm",
+    "sender_account_id": "sender.testnet",
+    "wait_until": "EXECUTED"
+  }
 }
-```
-
-</TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
-
-```js
-const response = await near.connection.provider.txStatus(
-  "6zgh2u9DqHHiXzdy9ouTP7oGky2T4nugqzqt9wJZwNFm",
-  "sender.testnet"
-);
 ```
 
 </TabItem>
@@ -363,7 +268,7 @@ const response = await near.connection.provider.txStatus(
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=tx \
-    params:='[ "6zgh2u9DqHHiXzdy9ouTP7oGky2T4nugqzqt9wJZwNFm", "sender.testnet"]'
+    params:='{"tx_hash": "6zgh2u9DqHHiXzdy9ouTP7oGky2T4nugqzqt9wJZwNFm", "sender_account_id": "sender.testnet"}'
 ```
 
 </TabItem>
@@ -377,6 +282,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=tx \
 {
   "jsonrpc": "2.0",
   "result": {
+    "final_execution_status": "FINAL",
     "status": {
       "SuccessValue": ""
     },
@@ -575,8 +481,12 @@ Ví dụ:
 
 - method: `EXPERIMENTAL_tx_status`
 - các param:
-  - `transaction hash` _(see [NearBlocks Explorer](https://testnet.nearblocks.io) for a valid transaction hash)_
-  - `sender account id` _(được sử dụng để xác định shard nào cần query cho transaction)_
+  - `tx_hash` _(see [NearBlocks Explorer](https://testnet.nearblocks.io) for a valid transaction hash)_
+  - `sender_account_id` _(used to determine which shard to query for transaction)_
+  - [Optional] `wait_until`: the required minimal execution level. Read more [here](/api/rpc/transactions#tx-status-result). The default value is `EXECUTED_OPTIMISTIC`.
+
+A Transaction status request with `wait_until != NONE` will wait until the transaction appears on the blockchain. If the transaction does not exist, the method will wait until the timeout is reached. If you only need to check whether the transaction exists, use `wait_until = NONE`, it will return the response immediately.
+
 
 Dưới đây là danh sách đầy đủ các error variant có thể được trả về theo loại request `view_access_key_list`:
 
@@ -588,25 +498,19 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
   "jsonrpc": "2.0",
   "id": "dontcare",
   "method": "EXPERIMENTAL_tx_status",
-  "params": ["HEgnVQZfs9uJzrqTob4g2Xmebqodq9waZvApSkrbcAhd", "bowen"]
+  "params": {
+    "tx_hash": "HEgnVQZfs9uJzrqTob4g2Xmebqodq9waZvApSkrbcAhd",
+    "sender_account_id": "bowen",
+    "wait_until": "EXECUTED"
+  }
 }
-```
-
-</TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
-
-```js
-const response = await near.connection.provider.experimental_txStatus(
-  "HEgnVQZfs9uJzrqTob4g2Xmebqodq9waZvApSkrbcAhd",
-  "bowen"
-);
 ```
 
 </TabItem>
 <TabItem value="http" label="HTTPie">
 
 ```bash
-http post https://rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_tx_status params:='["HEgnVQZfs9uJzrqTob4g2Xmebqodq9waZvApSkrbcAhd", "bowen"]' id=dontcare
+http post https://rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_tx_status params:='{"tx_hash": "HEgnVQZfs9uJzrqTob4g2Xmebqodq9waZvApSkrbcAhd", "sender_account_id": "bowen"}' id=dontcare
 ```
 
 </TabItem>
@@ -621,6 +525,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_tx_status
   "id": "123",
   "jsonrpc": "2.0",
   "result": {
+    "final_execution_status": "FINAL",
     "receipts": [
       {
         "predecessor_id": "bowen",
@@ -951,7 +856,7 @@ Ví dụ:
 > Fetche một receipt thông qua ID của nó (như vậy, không có status hoặc kết quả của execute)
 
 - method: `EXPERIMENTAL_receipt`
-- các param:
+- params:
   - `receipt_id` _(see [NearBlocks Explorer](https://testnet.nearblocks.io) for a valid receipt id)_
 
 Dưới đây là danh sách đầy đủ các error variant có thể được trả về theo loại request `view_access_key_list`:
@@ -1085,6 +990,355 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
           <li>Hãy thử lại sau</li>
           <li>Gởi một request đến một node khác</li>
           <li>Kiểm tra <code>error.cause.info</code> để biết thêm chi tiết</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## Transaction Execution Levels {#tx-status-result}
+
+All the methods listed above have `wait_until` request parameter, and `final_execution_status` response value. They correspond to the same enum `TxExecutionStatus`. See the detailed explanation for all the options:
+
+```rust
+#[serde(rename_all = "SCREAMING_SNAKE_CASE")]
+pub enum TxExecutionStatus {
+  /// Transaction is waiting to be included into the block
+  None,
+  /// Transaction is included into the block. The block may be not finalized yet
+  Included,
+  /// Transaction is included into the block +
+  /// All the transaction receipts finished their execution.
+  /// The corresponding blocks for tx and each receipt may be not finalized yet
+  #[default]
+  ExecutedOptimistic,
+  /// Transaction is included into finalized block
+  IncludedFinal,
+  /// Transaction is included into finalized block +
+  /// All the transaction receipts finished their execution.
+  /// The corresponding blocks for each receipt may be not finalized yet
+  Executed,
+  /// Transaction is included into finalized block +
+  /// Execution of transaction receipts is finalized
+  Final,
+}
+```
+
+---
+
+# Deprecated methods {#deprecated}
+
+## [deprecated] Send transaction (async) {#send-transaction-async}
+
+> Consider using [`send_tx`](/api/rpc/transactions#send-tx) instead
+
+> Send một transaction và lập tức trả về transaction hash.
+
+- method: `broadcast_tx_async`
+- các param: [SignedTransaction được encode trong base64]
+
+Dưới đây là danh sách đầy đủ các error variant có thể được trả về theo loại request `view_access_key_list`:
+
+<Tabs>
+<TabItem value="json" label="JSON" default>
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "dontcare",
+  "method": "broadcast_tx_async",
+  "params": [
+    "DgAAAHNlbmRlci50ZXN0bmV0AOrmAai64SZOv9e/naX4W15pJx0GAap35wTT1T/DwcbbDwAAAAAAAAAQAAAAcmVjZWl2ZXIudGVzdG5ldNMnL7URB1cxPOu3G8jTqlEwlcasagIbKlAJlF5ywVFLAQAAAAMAAACh7czOG8LTAAAAAAAAAGQcOG03xVSFQFjoagOb4NBBqWhERnnz45LY4+52JgZhm1iQKz7qAdPByrGFDQhQ2Mfga8RlbysuQ8D8LlA6bQE="
+  ]
+}
+```
+
+</TabItem>
+<TabItem value="http" label="HTTPie">
+
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_async \
+    params:='[
+        "DgAAAHNlbmRlci50ZXN0bmV0AOrmAai64SZOv9e/naX4W15pJx0GAap35wTT1T/DwcbbDwAAAAAAAAAQAAAAcmVjZWl2ZXIudGVzdG5ldNMnL7URB1cxPOu3G8jTqlEwlcasagIbKlAJlF5ywVFLAQAAAAMAAACh7czOG8LTAAAAAAAAAGQcOG03xVSFQFjoagOb4NBBqWhERnnz45LY4+52JgZhm1iQKz7qAdPByrGFDQhQ2Mfga8RlbysuQ8D8LlA6bQE="
+    ]'
+```
+
+</TabItem>
+</Tabs>
+
+Ví dụ về response nhận được:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "result": "6zgh2u9DqHHiXzdy9ouTP7oGky2T4nugqzqt9wJZwNFm",
+  "id": "dontcare"
+}
+```
+
+Final transaction results can be queried using [Transaction Status](#transaction-status) or [NearBlocks Explorer](https://testnet.nearblocks.io/) using the above `result` hash returning a result similar to the example below.
+
+![NEAR-Explorer-transactionHash](/docs/assets/NEAR-Explorer-transactionHash.png)
+
+#### Sự cố nào có thể xảy ra? {#what-could-go-wrong}
+
+Khi API request không thành công, RPC server sẽ trả về một error response được cấu trúc sẵn, với một số lượng giới hạn các error variant đã được định nghĩa rõ ràng, từ đó client code có thể handle toàn bộ các error case có thể xảy ra. Các JSON-RPC error của chúng tôi tuân theo convention [verror](https://github.com/joyent/node-verror) để cấu trúc cho error response:
+
+
+```json
+{
+    "error": {
+        "name": <ERROR_TYPE>,
+        "cause": {
+            "info": {..},
+            "name": <ERROR_CAUSE>
+        },
+        "code": -32000,
+        "data": String,
+        "message": "Server error",
+    },
+    "id": "dontcare",
+    "jsonrpc": "2.0"
+}
+```
+
+> **Chú ý**
+> 
+> Các field `code`, `data`, và `message` trong structure trên là những field kế thừa từ Verror và có thể không được dùng nữa trong tương lai. Do đó vui lòng không sử dụng chúng.
+
+Ví dụ:
+
+<table class="custom-stripe">
+  <thead>
+    <tr>
+      <th>
+        ERROR_TYPE<br />
+        <code>error.name</code>
+      </th>
+      <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Nguyên nhân</th>
+      <th>Giải pháp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="stripe">
+      <td>REQUEST_VALIDATION_ERROR</td>
+      <td>PARSE_ERROR</td>
+      <td>Đã pass các argument mà JSON RPC server không thể parse được (thiếu các argument, sai format, v.v...)</td>
+      <td>
+        <ul>
+          <li>Kiểm tra lại các argument đã pass và pass lại cho đúng</li>
+          <li>Kiểm tra <code>error.cause.info</code> để biết thêm chi tiết</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+## [deprecated] Send transaction (await) {#send-transaction-await}
+
+> Consider using [`send_tx`](/api/rpc/transactions#send-tx) instead
+
+> Send một transaction và đợi đến khi transaction hoàn tất. _(Có timeout là 10 giây)_
+
+- method: `broadcast_tx_commit`
+- các param: `[SignedTransaction được encode dưới dạng base64]`
+
+Example:
+
+<Tabs>
+<TabItem value="json" label="JSON" default>
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "dontcare",
+  "method": "broadcast_tx_commit",
+  "params": [
+    "DgAAAHNlbmRlci50ZXN0bmV0AOrmAai64SZOv9e/naX4W15pJx0GAap35wTT1T/DwcbbDQAAAAAAAAAQAAAAcmVjZWl2ZXIudGVzdG5ldIODI4YfV/QS++blXpQYT+bOsRblTRW4f547y/LkvMQ9AQAAAAMAAACh7czOG8LTAAAAAAAAAAXcaTJzu9GviPT7AD4mNJGY79jxTrjFLoyPBiLGHgBi8JK1AnhK8QknJ1ourxlvOYJA2xEZE8UR24THmSJcLQw="
+  ]
+}
+```
+
+</TabItem>
+<TabItem value="http" label="HTTPie">
+
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
+    params:='[
+        "DwAAAG5lYXJrYXQudGVzdG5ldABuTi5L1rwnlb35hc9tn5WELkxfiGfGh1Q5aeGNQDejo0QAAAAAAAAAEAAAAGpvc2hmb3JkLnRlc3RuZXSiWAc6W9KlqXS5fK+vjFRDV5pAxHRKU0srKX/cmdRTBgEAAAADAAAAoe3MzhvC0wAAAAAAAAB9rOE9zc5zQYLL1j6VTh3I4fQbERs6I07gJfrAC6jo8DB4HolR9Xps3v4qrZxkgZjwv6wB0QOROM4UEbeOaBoB"
+    ]'
+```
+
+</TabItem>
+</Tabs>
+
+<details>
+<summary>Example response: </summary>
+<p>
+
+```json
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "final_execution_status": "FINAL",
+    "status": {
+      "SuccessValue": ""
+    },
+    "transaction": {
+      "signer_id": "sender.testnet",
+      "public_key": "ed25519:Gowpa4kXNyTMRKgt5W7147pmcc2PxiFic8UHW9rsNvJ6",
+      "nonce": 13,
+      "receiver_id": "receiver.testnet",
+      "actions": [
+        {
+          "Transfer": {
+            "deposit": "1000000000000000000000000"
+          }
+        }
+      ],
+      "signature": "ed25519:7oCBMfSHrZkT7tzPDBxxCd3tWFhTES38eks3MCZMpYPJRfPWKxJsvmwQiVBBxRLoxPTnXVaMU2jPV3MdFKZTobH",
+      "hash": "ASS7oYwGiem9HaNwJe6vS2kznx2CxueKDvU9BAYJRjNR"
+    },
+    "transaction_outcome": {
+      "proof": [],
+      "block_hash": "9MzuZrRPW1BGpFnZJUJg6SzCrixPpJDfjsNeUobRXsLe",
+      "id": "ASS7oYwGiem9HaNwJe6vS2kznx2CxueKDvU9BAYJRjNR",
+      "outcome": {
+        "logs": [],
+        "receipt_ids": ["BLV2q6p8DX7pVgXRtGtBkyUNrnqkNyU7iSksXG7BjVZh"],
+        "gas_burnt": 223182562500,
+        "tokens_burnt": "22318256250000000000",
+        "executor_id": "sender.testnet",
+        "status": {
+          "SuccessReceiptId": "BLV2q6p8DX7pVgXRtGtBkyUNrnqkNyU7iSksXG7BjVZh"
+        }
+      }
+    },
+    "receipts_outcome": [
+      {
+        "proof": [],
+        "block_hash": "5Hpj1PeCi32ZkNXgiD1DrW4wvW4Xtic74DJKfyJ9XL3a",
+        "id": "BLV2q6p8DX7pVgXRtGtBkyUNrnqkNyU7iSksXG7BjVZh",
+        "outcome": {
+          "logs": [],
+          "receipt_ids": ["3sawynPNP8UkeCviGqJGwiwEacfPyxDKRxsEWPpaUqtR"],
+          "gas_burnt": 223182562500,
+          "tokens_burnt": "22318256250000000000",
+          "executor_id": "receiver.testnet",
+          "status": {
+            "SuccessValue": ""
+          }
+        }
+      },
+      {
+        "proof": [],
+        "block_hash": "CbwEqMpPcu6KwqVpBM3Ry83k6M4H1FrJjES9kBXThcRd",
+        "id": "3sawynPNP8UkeCviGqJGwiwEacfPyxDKRxsEWPpaUqtR",
+        "outcome": {
+          "logs": [],
+          "receipt_ids": [],
+          "gas_burnt": 0,
+          "tokens_burnt": "0",
+          "executor_id": "sender.testnet",
+          "status": {
+            "SuccessValue": ""
+          }
+        }
+      }
+    ]
+  },
+  "id": "dontcare"
+}
+```
+
+</p>
+</details>
+
+#### What could go wrong? {#what-could-go-wrong-1}
+
+When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
+
+
+```json
+{
+    "error": {
+        "name": <ERROR_TYPE>,
+        "cause": {
+            "info": {..},
+            "name": <ERROR_CAUSE>
+        },
+        "code": -32000,
+        "data": String,
+        "message": "Server error",
+    },
+    "id": "dontcare",
+    "jsonrpc": "2.0"
+}
+```
+
+> **Heads up**
+> 
+> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them.
+
+Here is the exhaustive list of the error variants that can be returned by `broadcast_tx_commit` method:
+
+<table class="custom-stripe">
+  <thead>
+    <tr>
+      <th>
+        ERROR_TYPE<br />
+        <code>error.name</code>
+      </th>
+      <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Reason</th>
+      <th>Solution</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2">HANDLER_ERROR</td>
+      <td>INVALID_TRANSACTION</td>
+      <td>An error happened during transaction execution</td>
+      <td>
+        <ul>
+          <li>See <code>error.cause.info</code> for details</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>TIMEOUT_ERROR</td>
+      <td>Transaction was routed, but has not been recorded on chain in 10 seconds.</td>
+      <td>
+        <ul>
+          <li> Re-submit the request with the identical transaction (in NEAR Protocol unique transactions apply exactly once, so if the previously sent transaction gets applied, this request will just return the known result, otherwise, it will route the transaction to the chain once again)</li>
+          <li>Check that your transaction is valid</li>
+          <li>Check that the signer account id has enough tokens to cover the transaction fees (keep in mind that some tokens on each account are locked to cover the storage cost)</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="stripe">
+      <td>REQUEST_VALIDATION_ERROR</td>
+      <td>PARSE_ERROR</td>
+      <td>Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)</td>
+      <td>
+        <ul>
+          <li>Check the arguments passed and pass the correct ones</li>
+          <li>Check <code>error.cause.info</code> for more details</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>INTERNAL_ERROR</td>
+      <td>INTERNAL_ERROR</td>
+      <td>Something went wrong with the node itself or overloaded</td>
+      <td>
+        <ul>
+          <li>Try again later</li>
+          <li>Send a request to a different node</li>
+          <li>Check <code>error.cause.info</code> for more details</li>
         </ul>
       </td>
     </tr>

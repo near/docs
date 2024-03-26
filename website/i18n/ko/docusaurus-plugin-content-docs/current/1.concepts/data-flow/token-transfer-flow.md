@@ -13,9 +13,9 @@ sidebar_label: 토큰 전송
 
 이전 설명에서 누락된 것이 무엇인지 물을 수 있습니다. 짧은 대답은 **가스 환불** 또는 간단히 **환불** 입니다.
 
-**가스**가 무엇인지 모르는 경우, 먼저 문서에서 [가스에 대한 글을 읽어보길 바랍니다](https://docs.near.org/concepts/basics/transactions/gas).
+If you don't know what **Gas** is, please [read first the article about Gas](https://docs.near.org/concepts/protocol/gas) from our docs.
 
-*환불* 에 관해서 는 [가스](https://docs.near.org/concepts/basics/transactions/gas) 글 에서 인용한 내용입니다.
+As for *Refunds*, here's a quote from the [Gas](https://docs.near.org/concepts/protocol/gas) article:
 
 > 여분의 가스는 환불됩니다!
 > 
@@ -25,7 +25,7 @@ sidebar_label: 토큰 전송
 > 
 > ...
 > 
-> *NEAR 프로토콜 문서 [가스. 여분의 가스는 환불됩니다!](https://docs.near.org/concepts/basics/transactions/gas#attach-extra-gas-get-refunded)에서*
+> *From NEAR Protocol docs [Gas. 여분의 가스는 환불됩니다!](https://docs.near.org/concepts/protocol/gas#attach-extra-gas-get-refunded)에서*
 
 
 :::note 데이터 흐름 측면에서 환불의 의미

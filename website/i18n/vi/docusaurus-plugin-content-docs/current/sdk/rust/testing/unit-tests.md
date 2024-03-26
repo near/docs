@@ -31,7 +31,7 @@ mod tests {
 }
 ```
 
-Where `VMContextBuilder` allows for modifying the context of the mocked blockchain to simulate the environment that a transaction would be run. The documentation for what can be modified with this context can be found [here](https://docs.rs/near-sdk/latest/near_sdk/struct.VMContext.html).
+Where `VMContextBuilder` allows for modifying the context of the mocked blockchain to simulate the environment that a transaction would be run. The documentation for what can be modified with this context can be found [here](https://docs.rs/near-sdk/4.1.1/near_sdk/struct.VMContext.html).
 
 The `testing_env!` macro will initialize the blockchain interface with the `VMContext` which is either initialized through `VMContextBuilder` or manually through itself.
 

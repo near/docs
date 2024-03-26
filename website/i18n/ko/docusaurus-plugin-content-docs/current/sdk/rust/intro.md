@@ -24,10 +24,10 @@ rustup target add wasm32-unknown-unknown
 
 ## 새 프로젝트 생성
 
-프론트엔드와 연결된 새 NEAR 앱을 만드는 가장 좋은 방법은 [create-near-app](https://github.com/near/create-near-app)을 사용하는 것입니다. 프로젝트를 초기화할 때 Rust SDK를 사용하려면 `--contract=rust` 플래그를 반드시 포함해야 합니다. React를 사용하려면 `--frontend=react`를 추가하세요. 기본값은 바닐라 HTML입니다.
+프론트엔드와 연결된 새 NEAR 앱을 만드는 가장 좋은 방법은 [create-near-app](https://github.com/near/create-near-app)을 사용하는 것입니다. When initializing the project, your option are `npx create-near-app <projectName> [--frontend next|vanilla|none] [--contract rs|ts|none --tests rs|ts|none]`.
 
 ```bash
-npx create-near-app my-project --contract rust --frontend none --tests rust
+npx create-near-app my-project --contract rs --frontend none --tests rs
 ```
 
 Rust 컨트랙트만 개발하고 배포하려는 경우, [상태 메시지 예제](https://github.com/near-examples/rust-status-message)를 템플릿으로 사용하거나, [cargo-generate](https://github.com/cargo-generate/cargo-generate)를 통해 사용하는 것이 좋습니다.

@@ -402,7 +402,7 @@
           },
           {
             "type": "link",
-            "label": "Cross-Chain Signatures",
+            "label": "Chain Signatures",
             "href": "/zh-CN/abstraction/chain-signatures",
             "docId": "abstraction/chain-signatures",
             "unlisted": false
@@ -950,7 +950,7 @@
       },
       {
         "type": "link",
-        "label": "Home",
+        "label": "Rollup Data Availability",
         "href": "/zh-CN/data-availability/welcome",
         "docId": "data-availability/welcome",
         "unlisted": false
@@ -2844,14 +2844,14 @@
   "docs": {
     "abstraction/chain-signatures": {
       "id": "abstraction/chain-signatures",
-      "title": "Cross-Chain Signatures",
-      "description": "Chain Signatures unlock the ability for a single account to transact across multiple blockchain protocols, giving ownership of cross-chain accounts, data, and assets to one NEAR account.",
+      "title": "Chain Signatures",
+      "description": "Chain signatures enable NEAR accounts, including smart contracts, to sign and execute transactions across many blockchain protocols.",
       "sidebar": "build"
     },
     "abstraction/chain-signatures/wallet": {
       "id": "abstraction/chain-signatures/wallet",
       "title": "Wallet Chain Key Rules",
-      "description": "Overview",
+      "description": "This technology is currently in Alpha and should only be used in a testnet environment.",
       "sidebar": "build"
     },
     "abstraction/what-is": {
@@ -3135,8 +3135,8 @@
     },
     "concepts/abstraction/chain-signatures": {
       "id": "concepts/abstraction/chain-signatures",
-      "title": "Chain Signatures",
-      "description": "Chain Signatures unlock the ability for a single account to transact across multiple blockchain protocols, giving ownership of cross-chain accounts, data, and assets to one NEAR account.",
+      "title": "What are Chain Signatures?",
+      "description": "Chain signatures enable NEAR accounts, including smart contracts, to sign and execute transactions across many blockchain protocols.",
       "sidebar": "concepts"
     },
     "concepts/abstraction/introduction": {
@@ -3159,13 +3159,13 @@
     "concepts/abstraction/relayers": {
       "id": "concepts/abstraction/relayers",
       "title": "Relayers",
-      "description": "A relayer is a simple web service that receives transactions from NEAR users, and relays them to the network while attaching tokens to cover their GAS expenses. In this document we present a high-level overview on how relayers work. Please check the build a relayer page if you want to learn how to build your own relayer.",
+      "description": "A relayer is a simple web service that receives signed transactions from NEAR users, and relays them to the network while attaching tokens to sponsor their GAS expenses. This can be useful to create applications in which the users are not required to purchase NEAR in order to be able to transact. In this document we present a high-level overview on how relayers work. Please check the build a relayer page if you want to learn how to build your own relayer.",
       "sidebar": "concepts"
     },
     "concepts/abstraction/signatures/use-cases": {
       "id": "concepts/abstraction/signatures/use-cases",
       "title": "Use cases for Chain Signatures",
-      "description": "Chain signatures enable you to implement multichain and cross-chain workflows in a simple way.",
+      "description": "This technology is currently in Alpha and should only be used in a testnet environment.",
       "sidebar": "concepts"
     },
     "concepts/advanced/indexers": {
@@ -3664,20 +3664,20 @@
     },
     "develop/relayers/build-relayer": {
       "id": "develop/relayers/build-relayer",
-      "title": "Building a Meta Transaction Relayer with NextJS",
-      "description": "This guide will walk you through the steps required to construct a meta transaction relayer using NextJS 13.",
+      "title": "Building a Meta Transaction Relayer",
+      "description": "Relayers serve to delegate gas fees to a web service, allowing users to transact on NEAR without the need to acquire the token themselves while still retaining the security of signing their own transactions. This guide will lead you through the components necessary to construct a relayer capable of handling meta transactions.",
       "sidebar": "build"
     },
     "develop/relayers/gas-station": {
       "id": "develop/relayers/gas-station",
       "title": "Multichain Gas Station Contract",
-      "description": "The multichain gas station smart contract accepts payments in NEAR tokens in exchange for gas funding on non-NEAR foreign chains. Part of the NEAR Multichain effort, it works in conjunction with the MPC recovery service to generate on-chain signatures.",
+      "description": "This technology is currently in Alpha and should only be used in a testnet environment.",
       "sidebar": "build"
     },
     "develop/relayers/multichain-server": {
       "id": "develop/relayers/multichain-server",
       "title": "Multichain Relayer Server",
-      "description": "The Multichain Relayer Server facilitates cross-chain transactions and enables Chain Abstraction.",
+      "description": "This technology is currently in Alpha and should only be used in a testnet environment.",
       "sidebar": "build"
     },
     "develop/relayers/relayer-gas-example": {
@@ -4851,7 +4851,7 @@
     "tutorials/examples/donation": {
       "id": "tutorials/examples/donation",
       "title": "Donation",
-      "description": "Our donation example enables to forward money to an account while keeping track of it. It is one of the simplest examples on making a contract handle tranfers.",
+      "description": "Our donation example enables to forward NEAR Tokens to an account while keeping track of it. It is one of the simplest examples on making a contract handle tranfers.",
       "sidebar": "tutorials"
     },
     "tutorials/examples/escrow": {

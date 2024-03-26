@@ -13,7 +13,7 @@ NEAR uses human-readable account names such as `alice.near` or `bob.near` instea
 
 Những account này đồng thời cũng có quyền tạo các subaccount như `nft.alice.near` hoặc `example2.bob.near`. Cần hiểu rằng chỉ có root account mới có thể tạo subaccount. Do vậy chỉ có `alice.near` có thể tạo `nft.alice.near` và chỉ có `nft.alice.near` mới có thể tạo `example.nft.alice.near`. Lưu ý rằng `alice.near` ***không*** có quyền tạo `example.nft.alice.near`. Chỉ account mẹ trực tiếp mới có quyền tạo subaccount.
 
-:::tip Để biết thêm chi tiết vui lòng xem **[session các account](/concepts/basics/accounts/model)**. :::
+:::tip For more information see the **[accounts section](/concepts/protocol/account-model)**. :::
 
 <hr className="subsection" />
 
@@ -21,18 +21,18 @@ Những account này đồng thời cũng có quyền tạo các subaccount như
 
 Trên hầu hết các blockchain, chỉ có một [cặp public/private key](https://en.wikipedia.org/wiki/Public-key_cryptography) cho mỗi account. Thế nhưng trên NEAR, mỗi account có thể có nhiều cặp key được kết hợp với chúng gọi là "các Access Key". Có hai loại "Access Key":
 
-- [Full Access](/concepts/basics/accounts/access-keys#full-access-keys) _(Có toàn quyền kiểm soát account)_
-- [Function Call](/concepts/basics/accounts/access-keys#function-call-keys) _(Chỉ được sign transaction không ảnh hưởng đến tiền)_
+- [Full Access](/concepts/protocol/access-keys#full-access-keys) _(Grants full control to the account)_
+- [Function Call](/concepts/protocol/access-keys#function-call-keys) _(Allows for only non-monetary transaction signing)_
 
 Các Full access key cho phép kiểm soát hoàn toàn account. Bạn có thể gửi fund, tạo các sub-account, xoá account, và hơn thế nữa. Các Function call key chỉ cho phép call các method nhất định của một smart contract xác định, và **không** cho phép tranfer tiền. Các key này có thể được những dApp developer sử dụng để cho phép người dùng sign các transaction đơn giản thay đổi state trên blockchain, mà không cần phải liên tục chuyển hướng đến ví của họ để yêu cầu cấp quyền. Chúng có thể được mở rộng hoặc thu hẹp phạm vi tùy thuộc vào từng trường hợp sử dụng.
 
-:::tip Để biết thêm chi tiết xin vui lòng xem tại **[phần các access key](/concepts/basics/accounts/access-keys)**. :::
+:::tip For more information see the **[access keys section](/concepts/protocol/access-keys)**. :::
 
 <hr className="subsection" />
 
 ### Contracts
 
-Every NEAR account can hold **a** smart contract, which is a small piece of logic embedded directly in the account. Smart contracts in NEAR can be developed using either Javascript or [Rust](https://www.rust-lang.org/). Các Smart contract đã được deploy có thể được [update](/sdk/rust/building/prototyping) mọi lúc nhưng không được xóa. Đây chính là nơi [các sub-account](#concepts/basics/accounts/model#subaccounts) có thể tồn tại. NEAR cho phép người dùng tổ chức và tạo hệ thống phân cấp cho các tài khoản của họ.
+Every NEAR account can hold **a** smart contract, which is a small piece of logic embedded directly in the account. Smart contracts in NEAR can be developed using either Javascript or [Rust](https://www.rust-lang.org/). Các Smart contract đã được deploy có thể được [update](/sdk/rust/building/prototyping) mọi lúc nhưng không được xóa. This is where [sub-accounts](#concepts/protocol/account-model#subaccounts) can come in handy. NEAR cho phép người dùng tổ chức và tạo hệ thống phân cấp cho các tài khoản của họ.
 
 Ví dụ như, benji có thể sở hữu root account `benji.near`. Sau đó anh ta chứa tất cả các NFT contract của mình như các sub-account của `nft.benji.near`. Ví dụ, anh ấy đã làm việc trên một cool lazy minting contract được deploy vào `lazy.nft.benji.near`. Điều này không chỉ cho phép tổ chức tốt hơn mà còn cho phép các developer dễ dàng xóa và tạo lại các account để xóa state.
 

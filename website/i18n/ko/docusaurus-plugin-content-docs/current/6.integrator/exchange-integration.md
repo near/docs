@@ -13,7 +13,7 @@ sidebar_label: 거래 통합
 
 ### 트랜잭션 레퍼런스 링크 {#transaction-reference-links}
 
- - [기초](/concepts/basics/transactions/overview)
+ - [기초](/concepts/protocol/transactions)
  - [사양](https://nomicon.io/RuntimeSpec/Transactions)
  - [트랜잭션 구성](/integrator/create-transactions)
 

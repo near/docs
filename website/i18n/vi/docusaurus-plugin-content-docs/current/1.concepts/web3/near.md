@@ -10,14 +10,13 @@ For the beginners, it’s always better to start with [documentation](/concepts/
 ## Accounts & Transactions
 NEAR's account system is very powerful and differs substantially from other blockchains, like Bitcoin or Ethereum. Instead of identifying users by their public/private key pairs, it defines accounts as first-class entities. This has a few important implications:
 - Instead of public keys, users can use readable account names.
-- Multiple key pairs with [different permissions](../basics/accounts/access-keys.md) can be used. This provides a better security model for users, since loss of one key pair doesn’t compromise an entire account and has a quite limited impact.
+- Multiple key pairs with [different permissions](../protocol/access-keys.md) can be used. This provides a better security model for users, since loss of one key pair doesn’t compromise an entire account and has a quite limited impact.
 - Hierarchical accounts structure is supported. This is useful if we want to manage multiple smart contracts under one parent account.
 - Accounts/public keys are created using transactions, since they are stored on the blockchain.
 
-More information on NEAR accounts can be [found in the docs](https://docs.near.org/docs/concepts/account).
+More information on NEAR accounts can be [found in the docs](../protocol/account-model.md).
 
-
-But an account by itself won’t get us anywhere, its [transactions](../basics/transactions/overview.md) that make things happen. In NEAR, we have only one transaction type, but the transaction itself may have different actions included. For most practical purposes, transactions will have a single action included, so for simplicity we’ll use “action” and “transaction” terms interchangeably further down the road. Each transaction always has sender and receiver accounts (and it is cryptographically signed by the sender’s key). The following transaction (action) types are supported:
+But an account by itself won’t get us anywhere, its [transactions](../protocol/transactions.md) that make things happen. In NEAR, we have only one transaction type, but the transaction itself may have different actions included. For most practical purposes, transactions will have a single action included, so for simplicity we’ll use “action” and “transaction” terms interchangeably further down the road. Each transaction always has sender and receiver accounts (and it is cryptographically signed by the sender’s key). The following transaction (action) types are supported:
 
 - CreateAccount/DeleteAccount, AddKey/DeleteKey - accounts and key management transactions.
 - Transfer - send NEAR tokens from one account to another. The basic command of any blockchain.
@@ -36,7 +35,7 @@ The second method should always be used whenever possible since it doesn’t inc
 
 ## Gas and Storage
 
-As we already discussed, users should pay computational costs for each transaction. This cost is called “gas” and is measured in [gas units](../basics/transactions/gas.md) (this is an established term in the blockchain world). Each time a transaction is posted, an amount of gas is attached to it to cover the cost. For simple transactions, gas can be calculated ahead of time to attach an exact amount. For FunctionCall transactions, however, exact cost is impossible to automatically calculate beforehand, so the usual approach is to attach a large enough amount of gas to cover the cost, and any excess will get automatically refunded.
+As we already discussed, users should pay computational costs for each transaction. This cost is called “gas” and is measured in [gas units](../protocol/gas.md) (this is an established term in the blockchain world). Each time a transaction is posted, an amount of gas is attached to it to cover the cost. For simple transactions, gas can be calculated ahead of time to attach an exact amount. For FunctionCall transactions, however, exact cost is impossible to automatically calculate beforehand, so the usual approach is to attach a large enough amount of gas to cover the cost, and any excess will get automatically refunded.
 
 
 ![image](/docs/assets/web3/web3-7.png)
@@ -71,7 +70,7 @@ The general flow for transactions signing looks like this:
 
 
 
-Each time we want to post a transaction, the client redirects the user to a wallet, where the transaction is approved and wallet returns a signed transaction back to the client (via redirect). This is a quite secure way of signing, since the private key is not exposed to the client, but constant redirects might quickly get annoying for users, especially if we just want to call smart contract functions that incur only small gas fees. That’s why NEAR introduced [two types of access keys](../../1.concepts/basics/accounts/access-keys.md) - full keys and functional call keys. Full access keys, as the name implies, can be used to sign any types of transactions. Functional call keys, on the other hand, aim to solve this UX problem. They are tied to a specific contract, and have a budget for gas fees. Such a key can’t be used to sign transactions that transfers NEAR tokens (payable transactions), and can only be used to cover gas fees, that’s why it’s not so security-critical and can be stored on the client. Because of this, we can create a simplified signing flow for non-payable transactions. First of all, a login flow to obtain a Functional Call key is used.
+Each time we want to post a transaction, the client redirects the user to a wallet, where the transaction is approved and wallet returns a signed transaction back to the client (via redirect). This is a quite secure way of signing, since the private key is not exposed to the client, but constant redirects might quickly get annoying for users, especially if we just want to call smart contract functions that incur only small gas fees. That’s why NEAR introduced [two types of access keys](../../1.concepts/protocol/access-keys.md) - full keys and functional call keys. Full access keys, as the name implies, can be used to sign any types of transactions. Functional call keys, on the other hand, aim to solve this UX problem. They are tied to a specific contract, and have a budget for gas fees. Such a key can’t be used to sign transactions that transfers NEAR tokens (payable transactions), and can only be used to cover gas fees, that’s why it’s not so security-critical and can be stored on the client. Because of this, we can create a simplified signing flow for non-payable transactions. First of all, a login flow to obtain a Functional Call key is used.
 
 
 ![image](/docs/assets/web3/web3-10.png)
@@ -176,7 +175,7 @@ Below this, we can inspect transaction actions (recall, that transactions may ha
 ![image](/docs/assets/web3/web3-18.png)
 
 
-At the end, transaction execution details, including token transfers, logs, cross-contract calls and gas refunds are provided. One thing that we haven’t covered yet is shown here - [receipts](../basics/transactions/overview.md#receipt-receipt). For most practical purposes they are just a transaction implementation detail. They are quite useful in a transaction explorer to understand how a transaction was executed, but aren’t really relevant outside of it.
+At the end, transaction execution details, including token transfers, logs, cross-contract calls and gas refunds are provided. One thing that we haven’t covered yet is shown here - [receipts](../protocol/transactions.md#receipt-receipt). For most practical purposes they are just a transaction implementation detail. They are quite useful in a transaction explorer to understand how a transaction was executed, but aren’t really relevant outside of it.
 
 ![image](/docs/assets/web3/web3-19.png)
 

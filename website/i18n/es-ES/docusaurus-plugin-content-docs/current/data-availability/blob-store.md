@@ -5,7 +5,13 @@ title: Blob Store Contract
 
 This contract provides the store for arbitrary DA blobs. In practice, these "blobs" are sequencing data from rollups, but they can be any data.
 
-***
+:::info
+
+Due to protocol limitations, the maximum transaction size is 4 MB.
+
+:::
+
+## Overview
 
 NEAR blockchain state storage is pretty cheap. At the time of writing, 100KiB is a flat fee of 1NEAR.
 

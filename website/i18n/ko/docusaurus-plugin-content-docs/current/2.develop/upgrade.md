@@ -11,7 +11,7 @@ NEAR 계정은 로직(컨트랙트의 코드)을 상태(스토리지)와 분리�
 
 컨트랙트는 두 가지 방법으로 업데이트할 수 있습니다.
 
-1. **Through tools** such as [NEAR CLI](../4.tools/cli.md) or [near-api-js](../4.tools/near-api-js/quick-reference.md) (if you hold the account's [full access key](../1.concepts/basics/accounts/access-keys.md)).
+1. **Through tools** such as [NEAR CLI](../4.tools/cli.md) or [near-api-js](../4.tools/near-api-js/quick-reference.md) (if you hold the account's [full access key](../1.concepts/protocol/access-keys.md)).
 2. **Programmatically**, by implementing a method that [takes the new code and deploys it](#programmatic-update).
 
 ---

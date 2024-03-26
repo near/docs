@@ -1,0 +1,27 @@
+{
+  "id": "concepts/protocol/transaction-anatomy",
+  "title": "Anatomy of a Transaction",
+  "description": "A transaction is a request from a user to the network to perform a set of actions. To create a transaction, the user must specify the following fields:",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/1.concepts/protocol/transaction-anatomy.md",
+  "sourceDirName": "1.concepts/protocol",
+  "slug": "/concepts/protocol/transaction-anatomy",
+  "permalink": "/ko/concepts/protocol/transaction-anatomy",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/protocol/transaction-anatomy.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "transaction-anatomy",
+    "title": "Anatomy of a Transaction"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Transactions",
+    "permalink": "/ko/concepts/protocol/transactions"
+  },
+  "next": {
+    "title": "Gas (Execution Fees)",
+    "permalink": "/ko/concepts/protocol/gas"
+  }
+}

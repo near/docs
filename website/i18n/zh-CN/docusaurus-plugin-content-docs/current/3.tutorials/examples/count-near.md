@@ -55,14 +55,10 @@ The example is divided in two main components:
   <TabItem value="🦀 Rust">
 
 ```bash
-┌── sandbox-ts # sandbox testing
-│    ├── src
-│    │    └── main.ava.ts
-│    ├── ava.config.cjs
-│    └── package.json
-├── src # contract's code
+┌── src # contract's code
 │    └── lib.rs
-├── build.sh # build script
+├── tests # sandbox test
+│    └── test_basics.rs
 ├── Cargo.toml # package manager
 ├── README.md
 └── rust-toolchain.toml
@@ -127,7 +123,7 @@ The contract presents 4 methods: `get_num`, `increment`, `decrement`, and `reset
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/counters/blob/main/contract-rs/src/lib.rs"
-            start="5" end="35" />
+            start="5" end="39" />
   </Language>
 </CodeTabs>
 
@@ -151,7 +147,7 @@ yarn test
   
   ```bash
   cd contract-rs
-  ./test.sh
+  cargo test
   ```
 
   </TabItem>
@@ -188,7 +184,7 @@ near create-account <accountId> --useFaucet
 
 # Deploy the contract
 cd contract-rs
-./build.sh
+cargo build
 near deploy <accountId> ./target/wasm32-unknown-unknown/release/counter.wasm
 ```
 

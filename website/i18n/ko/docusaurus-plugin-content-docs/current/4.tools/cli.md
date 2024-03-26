@@ -121,14 +121,17 @@ near send-near ... --networkId mainnet
 ---
 
 ### Custom RPC server selection
-You can set custom RPC server URL by setting this env variables:
+You can set custom RPC server URL by setting these env variables:
+
 ```bash
 NEAR_MAINNET_RPC
 NEAR_TESTNET_RPC
 ```
+
 Clear them in case you want to get back to the default RPC server.
 
 예시:
+
 ```bash
 export NEAR_TESTNET_RPC=<put_your_rpc_server_url_here>
 ```
@@ -183,10 +186,12 @@ near add-key example-acct.testnet Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1S
 <summary><strong>응답 예시</strong></summary>
 <p>
 
+```
     Adding full access key = Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1S to example-acct.testnet.
     Transaction Id EwU1ooEvkR42HvGoJHu5ou3xLYT3JcgQwFV3fAwevGJg
     To see the transaction in the transaction explorer, please open this url in your browser
     https://testnet.nearblocks.io/txns/EwU1ooEvkR42HvGoJHu5ou3xLYT3JcgQwFV3fAwevGJg
+```
 
 </p>
 </details>
@@ -216,10 +221,12 @@ near add-key example-acct.testnet GkMNfc92fwM1AmwH1MTjF4b7UZuceamsq96XPkHsQ9vi -
 <summary><strong>Example Response</strong></summary>
 <p>
 
+```
     Adding function call access key = GkMNfc92fwM1AmwH1MTjF4b7UZuceamsq96XPkHsQ9vi to example-acct.testnet.
     Transaction Id H2BQL9fXVmdTbwkXcMFfZ7qhZqC8fFhsA8KDHFdT9q2r
     To see the transaction in the transaction explorer, please open this url in your browser
     https://testnet.nearblocks.io/txns/H2BQL9fXVmdTbwkXcMFfZ7qhZqC8fFhsA8KDHFdT9q2r
+```
 
 </p>
 </details>
@@ -245,9 +252,11 @@ near delete-key example-acct.testnet Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1
 <summary><strong>Example Response</strong></summary>
 <p>
 
+```
     Transaction Id 4PwW7vjzTCno7W433nu4ieA6FvsAjp7zNFwicNLKjQFT
     To see the transaction in the transaction explorer, please open this url in your browser
     https://testnet.nearblocks.io/txns/4PwW7vjzTCno7W433nu4ieA6FvsAjp7zNFwicNLKjQFT
+```
 
 </p>
 </details>
@@ -343,7 +352,7 @@ Saving key to '~/.near-credentials/testnet/example.testnet.json'
 
 #### 3a) `near generate-key --fromSeedPhrase="your seed phrase"`
 
-> Uses a seed phrase to display a public key and [implicit account](../1.concepts/basics/accounts/account-id.md#implicit-accounts-implicit-accounts)
+> Uses a seed phrase to display a public key and [implicit account](../1.concepts/protocol/account-id.md#implicit-accounts-implicit-accounts)
 
 ```bash
 near generate-key --seedPhrase="antique attitude say evolve ring arrive hollow auto wide bronze usual unfold"
@@ -383,7 +392,7 @@ Implicit account: 9c07afc7673ea0f9a20c8a279e8bbe1dd1e283254263bb3b07403e4b6fd7a4
 
 #### 4a) `near generate-key --queryLedgerPK`
 
-> Uses a connected Ledger device to display a public key and [implicit account](http://docs.near.org/docs/roles/integrator/implicit-accounts) using the default HD path (`"44'/397'/0'/0'/1'"`)
+> Uses a connected Ledger device to display a public key and [implicit account](http://docs.near.org/integrator/implicit-accounts) using the default HD path (`"44'/397'/0'/0'/1'"`)
 
 ```bash
 near generate-key --queryLedgerPK
@@ -391,7 +400,10 @@ near generate-key --queryLedgerPK
 
 You should then see the following prompt to confirm this request on your Ledger device:
 
-  Make sure to connect your Ledger and open NEAR app Getting Public Key from Ledger...
+```
+  Make sure to connect your Ledger and open NEAR app
+  Getting Public Key from Ledger...
+```
 
 After confirming the request on your Ledger device, a public key and implicit accountId will be displayed.
 
@@ -411,7 +423,7 @@ Implicit account: 42c320xc20739fd9a6bqf2f89z61rd14efe5d3de234199bc771235a4bb8b0e
 
 #### 3b) `near generate-key --queryLedgerPK --ledgerPath="HD path you specify"`
 
-> Uses a connected Ledger device to display a public key and [implicit account](http://docs.near.org/docs/roles/integrator/implicit-accounts) using a custom HD path.
+> Uses a connected Ledger device to display a public key and [implicit account](http://docs.near.org/integrator/implicit-accounts) using a custom HD path.
 
 ```bash
 near generate-key --queryLedgerPK --ledgerPath="44'/397'/0'/0'/2'"
@@ -419,8 +431,10 @@ near generate-key --queryLedgerPK --ledgerPath="44'/397'/0'/0'/2'"
 
 You should then see the following prompt to confirm this request on your Ledger device:
 
+```
     Make sure to connect your Ledger and open NEAR app
     Waiting for confirmation on Ledger...
+```
 
 After confirming the request on your Ledger device, a public key and implicit accountId will be displayed.
 
@@ -444,7 +458,7 @@ Implicit account: 42c320xc20739ASD9a6bqf2Dsaf289z61rd14efe5d3de23213789009afDsd5
 
 -   인자: `accountId`
 
-**예시:**
+**Example:**
 
 ```bash
 near list-keys client.chainlink.testnet
@@ -490,7 +504,7 @@ Keys for account client.chainlink.testnet
 -   인자: `none`
 -   options: `--networkId`
 
-**예시:**
+**Example:**
 
 ```bash
 near login
@@ -498,7 +512,7 @@ near login
 
 **Custom wallet url:**
 
-Default wallet url is `https://testnet.mynearwallet.com/`. But if you want to change to a different wallet url, you can setup the environmental variable `NEAR_MAINNET_WALLET` or `NEAR_TESTNET_WALLET`.
+The default wallet URL is `https://testnet.mynearwallet.com/`. However, if you want to change to a different wallet URL, you can set the environmental variable `NEAR_MAINNET_WALLET` or `NEAR_TESTNET_WALLET`.
 
 ```bash
 export NEAR_TESTNET_WALLET=https://wallet.testnet.near.org/
@@ -538,7 +552,7 @@ near create-account new-acc.testnet --useFaucet --useLedgerPK
 near create-account new-acc.testnet --useAccount ledger-acct.testnet --signWithLedger
 ```
 
-**하위 계정 예시:**
+**Subaccount example:**
 
 ```bash
 # Using an account to create a sub-account
@@ -550,7 +564,7 @@ near create-account sub-acct.example-acct.testnet --useAccount example-acct.test
 near create-account sub.acc.testnet --useAccount sub.acc.testnet --signWithLedger --useLedgerPK
 ```
 
-**`--initialBalance` 사용 예시:**
+**Example using `--initialBalance`:**
 
 ```bash
 near create-account sub-acct2.example-acct.testnet --useAccount example-acct.testnet --initialBalance 10
@@ -560,8 +574,10 @@ near create-account sub-acct2.example-acct.testnet --useAccount example-acct.tes
 <summary><strong>Example Response</strong></summary>
 <p>
 
+```
     Saving key to '/HOME_DIR/.near-credentials/default/sub-acct2.example-acct.testnet.json'
     Account sub-acct2.example-acct.testnet for network "default" was created.
+```
 
 </p>
 </details>
@@ -585,11 +601,13 @@ near delete-account sub-acct2.example-acct.testnet example-acct.testnet
 <summary><strong>Example Response</strong></summary>
 <p>
 
+```
     Deleting account. Account id: sub-acct2.example-acct.testnet, node: https://rpc.testnet.near.org, helper: https://helper.testnet.near.org, beneficiary: example-acct.testnet
     Transaction Id 4x8xohER1E3yxeYdXPfG8GvXin1ShiaroqE5GdCd5YxX
     To see the transaction in the transaction explorer, please open this url in your browser
     https://testnet.nearblocks.io/txns/4x8xohER1E3yxeYdXPfG8GvXin1ShiaroqE5GdCd5YxX
     Account sub-acct2.example-acct.testnet for network "default" was deleted.
+```
 
 </p>
 </details>
@@ -616,10 +634,12 @@ near send-near sender.testnet receiver.testnet 10
 <summary><strong>Example Response</strong></summary>
 <p>
 
+```
     Sending 10 NEAR to receiver.testnet from sender.testnet
     Transaction Id BYTr6WNyaEy2ykAiQB9P5VvTyrJcFk6Yw95HPhXC6KfN
     To see the transaction in the transaction explorer, please open this url in your browser
     https://testnet.nearblocks.io/txns/BYTr6WNyaEy2ykAiQB9P5VvTyrJcFk6Yw95HPhXC6KfN
+```
 
 </p>
 </details>
@@ -719,11 +739,13 @@ near deploy example-contract.testnet out/example.wasm --initFunction new --initA
 <summary><strong>Example Response</strong></summary>
 <p>
 
+```
     Starting deployment. Account id: example-contract.testnet, node: https://rpc.testnet.near.org, helper: https://helper.testnet.near.org, file: main.wasm
     Transaction Id G8GhhPuujMHTRnwursPXE1Lv5iUZ8WUecwiST1PcKWMt
     To see the transaction in the transaction explorer, please open this url in your browser
     https://testnet.nearblocks.io/txns/G8GhhPuujMHTRnwursPXE1Lv5iUZ8WUecwiST1PcKWMt
     Done deploying to example-contract.testnet
+```
 
 </p>
 </details>

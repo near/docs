@@ -10,7 +10,7 @@ sidebar_label: Pre-deployed Contract
 
 To complete this tutorial successfully, you'll need:
 
-- [A NEAR TestNet account](/concepts/basics/accounts/creating-accounts)
+- [A NEAR testnet account](https://testnet.mynearwallet.com)
 - [NEAR-CLI](/tools/near-cli#setup)
 
 ## Using the FT contract

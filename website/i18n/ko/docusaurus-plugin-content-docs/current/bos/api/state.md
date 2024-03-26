@@ -5,7 +5,7 @@ title: Basics
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {WidgetEditor} from "@site/src/components/social-widget"
+import {WidgetEditor} from "@site/src/components/widget-editor"
 
 Borrowing from React, Near Components use hooks such as [**`useState`**](#state) and [**`useEffect`**](#useeffect-hook) to handle the state's logic, and [**props**](#props) to receive parameters.
 

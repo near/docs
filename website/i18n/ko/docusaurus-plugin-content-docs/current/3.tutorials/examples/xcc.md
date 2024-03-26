@@ -13,102 +13,176 @@ import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 ---
 
-## 프로젝트 시작
-프로젝트 사용을 시작하는 데는 두 가지 옵션이 있습니다. 첫 번째 권장 사항은 웹 기반 대화형 환경을 여는 Gitpod를 통해 앱을 사용하는 것입니다. 두 번째 옵션은 레퍼지토리를 로컬로 복제하는 것으로, 모든 [필수 구성 요소](../../2.develop/prerequisites.md)를 설치해야 합니다.
+## Obtaining the Cross Contract Call Example
 
+You have two options to start the project:
 
-<Tabs className="language-tabs" groupId="code-tabs">
+1. You can use the app through `Github Codespaces`, which will open a web-based interactive environment.
+2. Clone the repository locally and use it from your computer.
 
-  <TabItem value="🌐 JavaScript"> 
+| Codespaces                                                                                                                                      | Clone locally                                             |
+| ----------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
+| [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/near-examples/cross-contract-calls?quickstart=1) | 🌐 `https://github.com/near-examples/cross-contract-calls` |
 
-  | Gitpod                                                                                                                                                                                           | 로컬로 복제                                                                 |
-  | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- |
-  | <a href="https://gitpod.io/#https://github.com/near-examples/cross-contract-hello-js"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🌐 `https://github.com/near-examples/cross-contract-hello-js.git` |
+---
+
+## Structure of the Example
+
+The smart contract is available in two flavors: Rust and JavaScript
+
+<Tabs>
+
+  <TabItem value="🌐 JavaScript">
+
+```bash
+┌── sandbox-ts # sandbox testing
+│    ├── hello-near
+│    │    └── hello-near.wasm
+│    └── main.ava.ts
+├── src # contract's code
+│    └── contract.ts
+├── package.json
+├── README.md
+└── tsconfig.json
+```
 
   </TabItem>
 
   <TabItem value="🦀 Rust">
 
-  | Gitpod                                                                                                                                                                                           | 로컬로 복제                                                                 |
-  | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- |
-  | <a href="https://gitpod.io/#https://github.com/near-examples/cross-contract-hello-rust"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🦀 `https://github.com/near-examples/cross-contract-hello-rust.git` |
+```bash
+┌── tests # sandbox testing
+│    ├── hello-near
+│    │    └── hello-near.wasm
+│    └── tests.rs
+├── src # contract's code
+│    ├── external.rs
+│    └── lib.rs
+├── Cargo.toml # package manager
+├── README.md
+└── rust-toolchain.toml
+```
 
   </TabItem>
+
 </Tabs>
 
 ---
 
-### 컨트랙트와 상호 작용
-이 예제에는 프론트엔드가 없으므로, [NEAR CLI](../../4.tools/cli.md)를 통해 상호 작용합니다.
+## Smart Contract
 
-<!-- Expand on this explanation adding snippets  -->
-README.md를 확인하세요. 간단히 말해서 다음과 같은 것들을 수행해야 합니다.
-
-#### 1. 컨트랙트 구축 및 배포
-다음을 실행하여 NEAR 테스트넷에서 컨트랙트를 자동으로 컴파일하고 배포할 수 있습니다.
-
-```bash
-./contract/deploy.sh
-```
-
-완료되면, `neardev/dev-account` 파일을 확인하여 컨트랙트가 배포된 주소를 찾습니다.
-
-```bash
-cat ./contract/neardev/dev-account # e.g. dev-1659899566943-21539992274727
-```
-
-#### 2. 인사 가져오기
-
-`query_greeting`은 `hello-nearverse.testnet`에서 `get_greeting()` 메서드를 호출하여 교차 컨트랙트 호출을 실행합니다.
-
-`Call` 메서드는 NEAR 계정을 통해서만 호출할 수 있습니다. 계정은 트랜잭션에 대해 가스를 지불해야 하기 때문입니다.
-
-```bash
-# Use near-cli to ask the contract to query the greeting
-near call <dev-account> query_greeting --accountId <dev-account>
-```
-
----
-
-### 컨트랙트
+### Contract
 컨트랙트는 인사말을 쿼리하고 변경하는 메서드를 공개합니다. 이러한 메서드는 `hello-near` 예제에서 `get_greeting` 및 `set_greeting` 호출만 수행합니다.
 
 <CodeTabs>
 <Language value="🌐 JavaScript" language="ts">
-    <Github fname="contract.ts" 
-            url="https://github.com/near-examples/cross-contract-hello-js/blob/master/contract/src/contract.ts"
+    <Github fname="contract.ts"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/src/contract.ts"
             start="17" end="39" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/cross-contract-hello-rust/blob/main/contract/src/lib.rs"
-            start="24" end="49" />
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/lib.rs"
+            start="25" end="50" />
+            <Github fname="external.rs"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/external.rs" />
   </Language>
 </CodeTabs>
 
----
+### Testing the Contract
 
-## 테스트
+The contract readily includes a set of unit and sandbox testing to validate its functionality. To execute the tests, run the following commands:
 
-스마트 컨트랙트를 작성할 때 모든 메서드를 철저하게 테스트하는 것이 매우 중요합니다. 이 프로젝트에는 단위(unit) 및 통합(integration)이라는 두 가지 유형의 테스트가 있습니다. 이에 대해 자세히 알아보기 전에, `yarn test` 명령을 통해 dApp에 있는 테스트를 수행하세요.
+<Tabs>
+  <TabItem value="🌐 JavaScript">
 
-### 단위 테스트
+```bash
+cd contract-simple-ts
+yarn
+yarn test
+```
 
-단위 테스트는 스마트 컨트랙트 내 개별 함수를 확인합니다. 현재 Rust에서만 단위 테스트가 구현되어 있습니다.
+  </TabItem>
+  <TabItem value="🦀 Rust">
+  
+  ```bash
+  cd contract-simple-rs
+  cargo test
+  ```
 
-이 예제는 교차 컨트랙트 호출을 처리하므로, 단위 테스트에서는 `initialize` 메서드만 작동 여부를 테스트합니다. 이는 단위 테스트가 컨트랙트 간 호출을 테스트할 수 **없기** 때문입니다.
+  </TabItem>
 
-### 통합 테스트
+</Tabs>
 
-특히 이 프로젝트에서 통합 테스트는 먼저 `hello-near` 컨트랙트를 배포합니다. 그런 다음 교차 컨트랙트 호출이 메시지를 올바르게 설정하고 검색하는지 테스트합니다. `integration-tests/`에서 통합 테스트를 찾을 수 있습니다.
+:::tip The `integration tests` use a sandbox to create NEAR users and simulate interactions with the contract. :::
+
+In this project in particular, the integration tests first deploy the `hello-near` contract. Then, they test that the cross-contract call correctly sets and retrieves the message. You will find the integration tests in `sandbox-ts/` for the JavaScript version and in `tests/` for the Rust version.
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="rust">
-    <Github fname="main.test.js"
-            url="https://github.com/near-examples/cross-contract-hello-js/blob/master/integration-tests/src/main.ava.ts"
-            start="9" end="59" />
+    <Github fname="main.ava.ts"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/sandbox-ts/main.ava.ts"
+            start="8" end="52" />
+  </Language>
+  <Language value="🦀 Rust" language="rust">
+    <Github fname="lib.rs"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/tests/tests.rs"
+            start="4" end="77" />
   </Language>
 </CodeTabs>
+
+<hr class="subsection" />
+
+### Deploying the Contract to the NEAR network
+
+In order to deploy the contract you will need to [create a NEAR account](/develop/contracts/quickstart#create-a-testnet-account).
+
+<Tabs>
+  <TabItem value="🌐 JavaScript">
+
+```bash
+# Optional - create an account
+near create-account <accountId> --useFaucet
+
+# Deploy the contract
+cd contract-simple-ts
+yarn build
+near deploy <accountId> ./build/cross_contract.wasm init --initFunction init --initArgs '{"hello_account":"hello.near-example.testnet"}'
+```
+
+  </TabItem>
+  <TabItem value="🦀 Rust">
+
+```bash
+# Optional - create an account
+near create-account <accountId> --useFaucet
+
+# Deploy the contract
+cd contract-simple-rs
+
+cargo near build
+
+# During deploying pass {"hello_account":"hello.near-example.testnet"} as init arguments
+cargo near deploy <accountId>
+```
+  </TabItem>
+</Tabs>
+
+<hr class="subsection" />
+
+### CLI: Interacting with the Contract
+
+To interact with the contract through the console, you can use the following commands:
+
+```bash
+# Get message from the hello-near contract
+# Replace <accountId> with your account ID
+near call <accountId> query_greeting --accountId <accountId>
+
+# Set a new message for the hello-near contract
+# Replace <accountId> with your account ID
+near call <accountId> change_greeting '{"new_greeting":"XCC Hi"}' --accountId <accountId>
+```
 
 ---
 
@@ -117,4 +191,5 @@ near call <dev-account> query_greeting --accountId <dev-account>
 배울 수 있는 좋은 방법은 컨트랙트를 확장하는 것입니다. [방명록](guest-book.md) 컨트랙트를 사용하도록 교차 컨트랙트 예제를 수정합니다! 이런 식으로 돈을 붙이는 교차 컨트랙트 호출을 시도할 수 있습니다. [콜백을 올바르게 처리](../../2.develop/contracts/crosscontract.md#callback-method)하고, 오류가 발생한 경우 사용자에게 금액을 반환해야 합니다.
 
 ### 고급 교차 컨트랙트 호출
+
 컨트랙트 여러 교차 컨트랙트 호출을 동시에 수행할 수 있고, 이를 병렬로 실행되는 Promise 생성 혹은 배치(Batch) 트랜잭션으로 수행할 수 있습니다. Check the [advanced cross contract calls tutorial](./advanced-xcc) to learn more.

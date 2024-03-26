@@ -4,6 +4,12 @@ title: Multichain Relayer Server
 sidebar_label: Multichain Relayer Server
 ---
 
+:::caution
+
+This technology is currently in `Alpha` and should only be used in a `testnet` environment.
+
+:::
+
 The [Multichain Relayer Server](https://github.com/near/multichain-relayer-server) facilitates cross-chain transactions and enables Chain Abstraction.
 
 ## Overview
@@ -26,6 +32,14 @@ Below is a design diagram of the entire multichain relayer system:
 - This multichain relayer server focuses on the purple/blue Multichain Relayer Core Backend Services Box in the middle and the connections to the XChain systems in the red box via RPCs.
 - The XChain Settlement that's happening in the yellow box is currently manual and will be automated in the future.
 
+## Paymaster
+
+A paymaster represents an address on a destination chain that holds a balance of that chain’s native gas token:
+
+- User addresses on destination chains will be funded directly from paymaster accounts.
+- Partners that want to integrate with the Multichain Gas Relayer service need to create, fund, and manage paymaster accounts on the destination chains that they want to have support for.
+- [Manual settlement](gas-station.md#settlement) between the [NEAR Gas Station contract](gas-station.md) and paymaster accounts are also required on a regular basis to ensure a consistent balance of funds.
+
 ## System workflow
 
 1. The wallet sends a NEAR transaction to the gas station contract that contains 2 actions:
@@ -46,14 +60,25 @@ Below is a design diagram of the entire multichain relayer system:
 ## Supported Chains
 
 - BSC testnet
-- BSC Mainnet (March 31 2024)
-- Solana Testnet (March 31 2024)
-- Solana Mainnet (March 31 2024)
-- More chains coming soon!
+- BSC mainnet, Ethereum mainnet, and more chains coming soon!
 
 :::info
 Check the Relayer's [GitHub repository](https://github.com/near/multichain-relayer-server) to learn more about upcoming features and updates.
 :::
+
+## Limitations
+
+When using the Multichain Gas relayer solution, some limitations should be considered. Here's a list of potential issues you might encounter, and suggested ways to mitigate them:
+
+- Not enough gas for a cross-chain transaction to get included in time.
+  - **Solution:** overcharge for gas at the gas station and when constructing the transaction include more than the average gas price.
+- Slippage violations causing the gas token or foreign chain Fungible Token to get refunded to the user's foreign chain address.
+  - **Solution:** encourage your users to use high slippage settings in volatile or low liquidity market conditions.
+  - **Solution:** if such error occurs, make the user aware of what happened and that funds were not lost.
+  - **Note:** in future versions the solution will support retrying transactions.
+- Nonce issues if Paymaster rotation isn't done properly. This issue is a function of concurrent usage, blockchain finality time, and the number of paymaster treasury accounts that the [Gas Station](gas-station.md) is rotating through.
+  - **Solution:** use a blockchain that has faster finality.
+  - **Solution:** increase the number of paymaster treasury accounts through which the gas station rotates.
 
 ## Total Time expectations for end users
 

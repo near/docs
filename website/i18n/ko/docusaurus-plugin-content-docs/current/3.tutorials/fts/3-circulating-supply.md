@@ -216,7 +216,7 @@ export EVENTS_FT_CONTRACT_ID=events.$FT_CONTRACT_ID
 빌드 스크립트를 사용하여 이전 튜토리얼에서와 같이 컨트랙트 배포를 빌드합니다.
 
 ```bash
-cd 1.skeleton && ./build.sh && cd .. && near deploy --wasmFile out/contract.wasm --accountId $EVENTS_FT_CONTRACT_ID
+cd 2.define-a-token && ./build.sh && cd .. && near deploy $EVENTS_FT_CONTRACT_ID out/contract.wasm 
 ```
 
 ### 초기화 {#initialization}

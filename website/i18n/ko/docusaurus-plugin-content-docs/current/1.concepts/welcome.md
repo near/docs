@@ -15,13 +15,13 @@ import ContactUs from '@site/src/components/ContactUs.mdx';
 <FeatureList>
   <Column title="NEAR 소개">
     <Feature url="/concepts/basics/protocol" title="NEAR란 무엇인가요?" subtitle="Learn the Basics about NEAR" image="near-logo.png" />
-    <Feature url="/concepts/basics/accounts/account-id" title="이름 붙은 계정" subtitle="NEAR uses human-readable accounts" image="user.png" />
-    <Feature url="/concepts/basics/accounts/access-keys" title="다중 액세스 키" subtitle="More keys means more security" image="key.png" />
-    <Feature url="/concepts/basics/accounts/smartcontract" title="스마트 컨트랙트" subtitle="Learn about our contract technology" image="contract.png" />
+    <Feature url="/concepts/protocol/account-id" title="이름 붙은 계정" subtitle="NEAR uses human-readable accounts" image="user.png" />
+    <Feature url="/concepts/protocol/access-keys" title="다중 액세스 키" subtitle="More keys means more security" image="key.png" />
+    <Feature url="/concepts/protocol/smartcontract" title="스마트 컨트랙트" subtitle="Learn about our contract technology" image="contract.png" />
   </Column>
   <Column title="네트워크">
     <Feature url="/concepts/basics/tokens" title="The NEAR Token" subtitle="Learn about the NEAR token" image="ft.png" />
-    <Feature url="/concepts/basics/transactions/overview" title="트랜잭션" subtitle="Fast and Inexpensive" image="transaction.png" />
+    <Feature url="/concepts/protocol/transactions" title="트랜잭션" subtitle="Fast and Inexpensive" image="transaction.png" />
     <Feature url="/concepts/basics/validators" title="밸리데이터" subtitle="Learn how the network stays safe" image="validation.png" />
   </Column>
   <Column title="추가 자료">

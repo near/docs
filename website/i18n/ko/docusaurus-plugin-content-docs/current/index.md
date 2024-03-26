@@ -99,9 +99,9 @@ Welcome, this is the starting point for all NEAR documentation. Learn to build a
 <FeatureList>
   <Column title="NEAR 이해하기" size="3">
     <Feature url="/concepts/basics/protocol" title="NEAR란 무엇인가요?" subtitle="Learn the Basics about NEAR" image="near-logo.png" />
-    <Feature url="/concepts/basics/accounts/account-id" title="명명된 계정" subtitle="NEAR uses human-readable accounts" image="user.png" />
-    <Feature url="/concepts/basics/accounts/access-keys" title="다중 액세스 키" subtitle="More keys means more security" image="key.png" />
-    <Feature url="/concepts/basics/accounts/smartcontract" title="스마트 컨트랙트" subtitle="Learn about our contract technology" image="contract.png" />
+    <Feature url="/concepts/protocol/account-id" title="명명된 계정" subtitle="NEAR uses human-readable accounts" image="user.png" />
+    <Feature url="/concepts/protocol/access-keys" title="다중 액세스 키" subtitle="More keys means more security" image="key.png" />
+    <Feature url="/concepts/protocol/smartcontract" title="스마트 컨트랙트" subtitle="Learn about our contract technology" image="contract.png" />
   </Column>
   <Column title="Developer Docs" size="3">
     <Feature url="/develop/integrate/quickstart-frontend" title="Quickstart: WebApp" subtitle="Spin-up your first dApp" image="quickstart.png" />

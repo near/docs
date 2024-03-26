@@ -26,7 +26,7 @@ Khi mỗi transaction chuẩn bị xử lý thêm dữ liệu.
 Chúng ta hãy cùng xem qua một ví dụ sau:
 
 1. Bạn chạy [ứng dụng guest book](https://examples.near.org/guest-book), deploy smart contract của ứng dụng bằng tài khoản `example.near`
-2. Những người dùng ứng dụng của bạn có thể thêm tin nhắn của họ vào guest book. Điều này nghĩa là người dùng của bạn sẽ, [mặc định](/concepts/basics/transactions/gas#what-about-prepaid-gas), trả một khoản phí gas nhỏ để gửi tin nhắn của họ vào contract của bạn.
+2. Những người dùng ứng dụng của bạn có thể thêm tin nhắn của họ vào guest book. This means your users will, [by default](/concepts/protocol/gas#what-about-prepaid-gas), pay a small gas fee to send their message to your contract.
 3. Khi có một call xảy ra, NEAR sẽ kiểm tra số dư của account `example.near` có đủ số dư dể stake một lượng token nhằm đảm bảo cho các nhu cầu lưu trữ phát sinh hay không. Nếu nó không đủ, transaction sẽ thất bại.
 
 ## The "million cheap data additions" attack

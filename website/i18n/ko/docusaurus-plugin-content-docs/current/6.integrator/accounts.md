@@ -6,7 +6,7 @@ sidebar_label: 계정
 
 ## 소개 {#introduction}
 
-기본적인 정보는 [계정에 대한 문서](/concepts/basics/accounts/model)를 참고하세요.
+Please see the [documentation for accounts](/concepts/protocol/account-model) for basic information.
 
 - 거래소의 경우, NEAR는 트랜잭션 비용을 지불하지 않고 계정을 생성할 수 있는 [암시적 계정(Implicit Account)](https://nomicon.io/DataStructures/Account.html#implicit-account-ids) 생성을 지원합니다.
 - [이 가이드](/integrator/implicit-accounts)의 단계에 따라 암시적 계정을 만들 수 있습니다.

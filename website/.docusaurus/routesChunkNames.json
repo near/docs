@@ -5,17 +5,17 @@
       "plugin": "82d98fd4"
     }
   },
-  "/zh-CN/-96c": {
+  "/zh-CN/-340": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "8b378508"
     }
   },
-  "/zh-CN/-4f7": {
+  "/zh-CN/-810": {
     "__comp": "a7bd4aaa",
     "version": "935f2afb"
   },
-  "/zh-CN/-308": {
+  "/zh-CN/-640": {
     "__comp": "a94703ab"
   },
   "/zh-CN/abstraction/chain-signatures-b84": {
@@ -222,9 +222,9 @@
     "__comp": "17896441",
     "content": "7f30b888"
   },
-  "/zh-CN/concepts/abstraction/meta-transactions-c5d": {
+  "/zh-CN/concepts/abstraction/meta-transactions-5e1": {
     "__comp": "17896441",
-    "content": "6768d52a"
+    "content": "c33a37be"
   },
   "/zh-CN/concepts/abstraction/mpc-82b": {
     "__comp": "17896441",
@@ -306,37 +306,37 @@
     "__comp": "17896441",
     "content": "f5963d80"
   },
-  "/zh-CN/concepts/protocol/access-keys-ae8": {
+  "/zh-CN/concepts/protocol/access-keys-dc9": {
     "__comp": "17896441",
-    "content": "c15c48c8"
+    "content": "b4d6b070"
   },
-  "/zh-CN/concepts/protocol/account-id-823": {
+  "/zh-CN/concepts/protocol/account-id-673": {
     "__comp": "17896441",
-    "content": "ca3a7f64"
+    "content": "4e57260f"
   },
-  "/zh-CN/concepts/protocol/account-model-b72": {
+  "/zh-CN/concepts/protocol/account-model-d57": {
     "__comp": "17896441",
-    "content": "d8a6fb23"
+    "content": "79a089bf"
   },
-  "/zh-CN/concepts/protocol/gas-279": {
+  "/zh-CN/concepts/protocol/gas-0de": {
     "__comp": "17896441",
-    "content": "0d2ed750"
+    "content": "4361f252"
   },
-  "/zh-CN/concepts/protocol/smartcontract-32c": {
+  "/zh-CN/concepts/protocol/smartcontract-3d3": {
     "__comp": "17896441",
-    "content": "8a566151"
+    "content": "f385ad7d"
   },
-  "/zh-CN/concepts/protocol/transaction-anatomy-91b": {
+  "/zh-CN/concepts/protocol/transaction-anatomy-57c": {
     "__comp": "17896441",
-    "content": "483e6703"
+    "content": "f22cdf19"
   },
-  "/zh-CN/concepts/protocol/transaction-execution-4f6": {
+  "/zh-CN/concepts/protocol/transaction-execution-aeb": {
     "__comp": "17896441",
-    "content": "efbfc4c4"
+    "content": "661bb43c"
   },
-  "/zh-CN/concepts/protocol/transactions-731": {
+  "/zh-CN/concepts/protocol/transactions-50e": {
     "__comp": "17896441",
-    "content": "b2b0a5db"
+    "content": "195b6fb6"
   },
   "/zh-CN/concepts/storage/data-storage-745": {
     "__comp": "17896441",
@@ -586,9 +586,9 @@
     "__comp": "17896441",
     "content": "42bf8185"
   },
-  "/zh-CN/develop/relayers/relayer-gas-example-500": {
+  "/zh-CN/develop/relayers/relayer-gas-example-f52": {
     "__comp": "17896441",
-    "content": "b6537809"
+    "content": "36aed21f"
   },
   "/zh-CN/develop/relevant-contracts/dao-177": {
     "__comp": "17896441",

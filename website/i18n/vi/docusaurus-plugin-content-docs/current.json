@@ -462,5 +462,21 @@
   "sidebar.concepts.link.Papers": {
     "message": "Papers",
     "description": "The label for link Papers in sidebar concepts, linking to https://near.org/papers"
+  },
+  "sidebar.tools.link.Testnet Faucet": {
+    "message": "Testnet Faucet",
+    "description": "The label for link Testnet Faucet in sidebar tools, linking to https://near-faucet.io/"
+  },
+  "sidebar.concepts.category.Accounts / Contracts": {
+    "message": "Accounts / Contracts",
+    "description": "The label for category Accounts / Contracts in sidebar concepts"
+  },
+  "sidebar.build.category.Data Availability": {
+    "message": "Data Availability",
+    "description": "The label for category Data Availability in sidebar build"
+  },
+  "sidebar.build.category.Integrations": {
+    "message": "Integrations",
+    "description": "The label for category Integrations in sidebar build"
   }
 }

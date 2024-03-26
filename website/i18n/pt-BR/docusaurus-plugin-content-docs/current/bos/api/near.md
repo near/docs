@@ -5,7 +5,7 @@ title: Interacting with Near
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {WidgetEditor} from "@site/src/components/social-widget"
+import {WidgetEditor} from "@site/src/components/widget-editor"
 
 The components can use the `Near` object to interact with smart contracts in the NEAR blockchain. There are three methods:
 

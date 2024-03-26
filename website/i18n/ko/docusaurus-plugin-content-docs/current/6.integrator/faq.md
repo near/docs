@@ -249,7 +249,7 @@ NEAR는 일반적으로 네트워크 혼잡도에 따라 가격이 결정론적�
 
 트랜잭션은 오프라인에서 구성하고 서명할 수 있습니다. 서명에는 노드가 필요하지 않습니다. 다양한 리플레이 공격을 방지하기 위해, 선택적으로 최근 블록 해시를 추가할 계획입니다.
 
-문서의 개념 섹션에서 [트랜잭션](/concepts/basics/transactions/overview) 문서를 참고하세요.
+See [transactions](/concepts/protocol/transactions) in the concepts section of our documentation.
 
 ### How is the hash preimage generated? Which fields does the raw transaction consist of?
 

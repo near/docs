@@ -31,7 +31,7 @@ mod tests {
 }
 ```
 
-여기서 `VMContextBuilder`는 모의 블록체인의 컨텍스트를 수정하여 트랜잭션이 실행되는 환경을 시뮬레이션할 수 있습니다. 이 컨텍스트로 수정할 수 있는 문서는 [여기](https://docs.rs/near-sdk/latest/near_sdk/struct.VMContext.html)에서 찾을 수 있습니다.
+여기서 `VMContextBuilder`는 모의 블록체인의 컨텍스트를 수정하여 트랜잭션이 실행되는 환경을 시뮬레이션할 수 있습니다. The documentation for what can be modified with this context can be found [here](https://docs.rs/near-sdk/4.1.1/near_sdk/struct.VMContext.html).
 
 `testing_env!` 매크로는 `VMContextBuilder` 또는 수동으로 초기화되는 `VMContext`와 함께 블록체인 인터페이스를 초기화합니다.
 

@@ -10,7 +10,7 @@ sidebar_label: Contract đã được deploy sẵn
 
 Để hoàn thành tốt hướng dẫn này, bạn sẽ cần:
 
-- [A NEAR TestNet account](/concepts/basics/accounts/creating-accounts)
+- [A NEAR testnet account](https://testnet.mynearwallet.com)
 - [NEAR-CLI](/tools/near-cli#setup)
 
 ## Sử dụng FT contract

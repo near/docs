@@ -59,18 +59,13 @@ The example is divided in two main components:
   <TabItem value="🦀 Rust">
 
 ```bash
-┌── sandbox-ts # sandbox testing
-│    ├── src
-│    │    └── main.ava.ts
-│    ├── ava.config.cjs
-│    └── package.json
+┌── tests # workspaces testing
+│    ├── workspaces.rs
 ├── src # contract's code
 │    └── lib.rs
-├── build.sh # build script
 ├── Cargo.toml # package manager
 ├── README.md
-├── rust-toolchain.toml
-└── test.sh # test script
+└── rust-toolchain.toml
 ```
 
   </TabItem>
@@ -103,13 +98,12 @@ NEAR 계정으로 로그인하세요. 계정이 없는 경우 즉시 만들 수 
 
 The frontend is composed by a single HTML file (`/index.html`) and uses REACT. Check `/App.js` and `/index.js` to understand how components are displayed in the screen.
 
-You will notice in `/index.js` the following code:
+You will notice in `/src/App.jsx` the following code:
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
-    <Github fname="index.js"
-            url="https://github.com/near-examples/guest-book-examples/blob/main/frontend/index.js"
-            start="17" end="27" />
+    <Github fname="App.jsx"
+            url="https://github.com/near-examples/guest-book-examples/blob/main/frontend/src/App.jsx"/>
   </Language>
 </CodeTabs>
 
@@ -130,7 +124,7 @@ The contract presents 3 methods: `add_message`, `get_message` and `total_message
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/guest-book-examples/blob/main/contract-rs/src/lib.rs"
-            start="29" end="53" />
+            start="37" end="70" />
   </Language>
   
 </CodeTabs>
@@ -155,7 +149,7 @@ yarn test
   
   ```bash
   cd contract-rs
-  ./test.sh
+  cargo test
   ```
 
   </TabItem>
@@ -192,7 +186,7 @@ near create-account <accountId> --useFaucet
 
 # Deploy the contract
 cd contract-rs
-./build.sh
+cargo near build
 near deploy <accountId> ./target/wasm32-unknown-unknown/release/guestbook.wasm
 ```
 

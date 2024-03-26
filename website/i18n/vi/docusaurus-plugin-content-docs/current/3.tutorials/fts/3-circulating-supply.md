@@ -216,7 +216,7 @@ export EVENTS_FT_CONTRACT_ID=events.$FT_CONTRACT_ID
 Sử dụng build script, deploy contract như bạn đã làm ở các hướng dẫn trước:
 
 ```bash
-cd 1.skeleton && ./build.sh && cd .. && near deploy --wasmFile out/contract.wasm --accountId $EVENTS_FT_CONTRACT_ID
+cd 2.define-a-token && ./build.sh && cd .. && near deploy $EVENTS_FT_CONTRACT_ID out/contract.wasm 
 ```
 
 ### Initialization {#initialization}

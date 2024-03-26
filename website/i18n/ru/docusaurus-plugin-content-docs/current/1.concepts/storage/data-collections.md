@@ -32,7 +32,7 @@ For information on storage costs, please see [ **[storage staking](/concepts/sto
 
 ### Big-O Notation {#big-o-notation-1}
 
-> The [Big-O notation](https://en.wikipedia.org/wiki/Big_O_notation) values in the chart below describe the [time complexity](https://en.wikipedia.org/wiki/Time_complexity) of the various collection methods found in `near-sdk-rs`. These method complexities correlate with [gas](/concepts/basics/transactions/gas) consumption on NEAR, helping you decide which collection to utilize in your project. There are three types found in our collection methods:
+> The [Big-O notation](https://en.wikipedia.org/wiki/Big_O_notation) values in the chart below describe the [time complexity](https://en.wikipedia.org/wiki/Time_complexity) of the various collection methods found in `near-sdk-rs`. These method complexities correlate with [gas](/concepts/protocol/gas) consumption on NEAR, helping you decide which collection to utilize in your project. There are three types found in our collection methods:
 
 - O(1) - _[constant](https://en.wikipedia.org/wiki/Time_complexity#Constant_time)_
 - O(n) - _[linear](https://en.wikipedia.org/wiki/Time_complexity#Linear_time)_

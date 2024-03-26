@@ -13,7 +13,7 @@ sidebar_label: Tích hợp sàn giao dịch
 
 ### Các link tham chiếu Transaction {#transaction-reference-links}
 
- - [Cơ bản](/concepts/basics/transactions/overview)
+ - [Cơ bản](/concepts/protocol/transactions)
  - [Thông số kỹ thuật](https://nomicon.io/RuntimeSpec/Transactions)
  - [Khởi tạo các transaction](/integrator/create-transactions)
 

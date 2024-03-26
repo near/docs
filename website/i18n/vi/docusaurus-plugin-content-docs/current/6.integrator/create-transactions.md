@@ -15,7 +15,7 @@ Về cốt lõi, tất cả các transaction yêu cầu những phần sau:
 - `signerPublicKey`
 - `receiverId` _(account ID của người nhận transaction)_
 - `nonceForPublicKey` _(mỗi lần key được sử dụng, giá trị nonce này sẽ được tăng lên 1)_
-- `actions` _( [[bấm vào đây]](/concepts/basics/transactions/overview#action) để biết về những argument được hỗ trợ)_
+- `actions` _( [[click here]](/concepts/protocol/transactions#action) for supported arguments)_
 - `blockHash` _(hash của block hiện tại (trong vòng 24 giờ) để chứng minh transaction đó vừa được tạo)_
 
 See [Transaction Class](https://near.github.io/near-api-js/classes/near_api_js.transaction.Transaction.html) for a more in depth outline.
@@ -76,7 +76,7 @@ const amount = nearAPI.utils.format.parseNearAmount("1.5");
 
 ### Create a Key Store
 
-In order to sign transactions you will need to create a "Key Store" that will hold a [full access key](/concepts/basics/accounts/access-keys#full-access-keys) to sign your transactions. Có một vài cách để hoàn tất việc này, nhưng trong ví dụ này chúng ta sẽ sử dụng private key đã được lưu trong file `.env` trong project của bạn, hoặc một environment variable được export toàn cục.
+In order to sign transactions you will need to create a "Key Store" that will hold a [full access key](/concepts/protocol/access-keys#full-access-keys) to sign your transactions. Có một vài cách để hoàn tất việc này, nhưng trong ví dụ này chúng ta sẽ sử dụng private key đã được lưu trong file `.env` trong project của bạn, hoặc một environment variable được export toàn cục.
 
 - Nếu bạn đã tạo account bằng cách dùng [`near-cli`](/tools/near-cli) hoặc đã chạy [`near login`](/tools/near-cli#for-accounts) trong terminal của bạn, thì private key của bạn có thể được tìm thấy trong file `.json` nằm tại `/HOME/.near-credentials`.
 - If you created an account using [NEAR Wallet](https://testnet.mynearwallet.com/), your key will be found in your browser's `Local Storage`.
@@ -208,7 +208,7 @@ Một khi bạn có quyền truy cập vào private key của account người g
 
 ```js
 const privateKey = process.env.SENDER_PRIVATE_KEY;
-const keyPair = nearAPI.utils.key_pair.KeyPairEd25519.fromString(privateKey);
+const keyPair = nearAPI.KeyPair.fromString(privateKey);
 ```
 
 ---
@@ -221,7 +221,7 @@ Như đã nêu ở trên, tất cả các transaction yêu cầu sáu phần sau
 2. [`signerPublicKey`](#2-signerpublickey)
 3. [`receiverId`](#3-receiverid)
 4. [`nonceForPublicKey`](#4-nonceforpublickey)
-5. [`actions`](/concepts/basics/transactions/overview#action)
+5. [`actions`](/concepts/protocol/transactions#action)
 6. [`blockHash`](#6-blockhash)
 
 ### 1 `signerId`
@@ -306,7 +306,7 @@ const nonce = ++accessKey.nonce;
 
 ### 5 `actions`
 
-- Hiện tại, có tám loại `Action` được hỗ trợ. [[xem thêm tại đây]](/concepts/basics/transactions/overview#action)
+- Hiện tại, có tám loại `Action` được hỗ trợ. [[see here]](/concepts/protocol/transactions#action)
 - Trong ví dụ này, chúng ta sử dụng `Transfer`
 - Action transfer này có thể được tạo bằng cách sử dụng [object `nearAPI` đã được import](#imports) và[amount Ⓝ đã được format](#formatting-token-amounts) được tạo ra trước đó.
 
@@ -360,7 +360,7 @@ Bây giờ transaction đã được tạo ra, chúng ta sign nó trước khi g
 
 ```js
 const serializedTx = nearAPI.utils.serialize.serialize(
-  nearAPI.transactions.SCHEMA,
+  nearAPI.transactions.SCHEMA.Transaction,
   transaction
 );
 ```

@@ -1,7 +1,7 @@
 {
   "id": "concepts/abstraction/relayers",
   "title": "Relayers",
-  "description": "A relayer is a simple web service that receives transactions from NEAR users, and relays them to the network while attaching tokens to cover their GAS expenses. In this document we present a high-level overview on how relayers work. Please check the build a relayer page if you want to learn how to build your own relayer.",
+  "description": "A relayer is a simple web service that receives signed transactions from NEAR users, and relays them to the network while attaching tokens to sponsor their GAS expenses. This can be useful to create applications in which the users are not required to purchase NEAR in order to be able to transact. In this document we present a high-level overview on how relayers work. Please check the build a relayer page if you want to learn how to build your own relayer.",
   "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/1.concepts/abstraction/relayers.md",
   "sourceDirName": "1.concepts/abstraction",
   "slug": "/concepts/abstraction/relayers",

@@ -32,7 +32,7 @@ For information on storage costs, please see [ **[storage staking](/concepts/sto
 
 ### Chú thích Big-O {#big-o-notation-1}
 
-> Các value [Big-O notation](https://en.wikipedia.org/wiki/Big_O_notation) trong biểu đồ bên dưới mô tả [time complexity](https://en.wikipedia.org/wiki/Time_complexity) của nhiều collection method trong `near-sdk-rs`. Sự phức tạp của các method này liên quan tới sự tiêu thụ [gas](/concepts/basics/transactions/gas) trên NEAR, từ đó giúp bạn quyết định collection nào sẽ được dùng trong dự án của bạn. Có 3 loại trong các collection method của chúng tôi:
+> Các value [Big-O notation](https://en.wikipedia.org/wiki/Big_O_notation) trong biểu đồ bên dưới mô tả [time complexity](https://en.wikipedia.org/wiki/Time_complexity) của nhiều collection method trong `near-sdk-rs`. These method complexities correlate with [gas](/concepts/protocol/gas) consumption on NEAR, helping you decide which collection to utilize in your project. Có 3 loại trong các collection method của chúng tôi:
 
 - O(1) - _[constant](https://en.wikipedia.org/wiki/Time_complexity#Constant_time)_
 - O(n) - _[linear](https://en.wikipedia.org/wiki/Time_complexity#Linear_time)_

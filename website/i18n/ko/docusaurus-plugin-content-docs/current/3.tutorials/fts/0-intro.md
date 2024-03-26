@@ -13,7 +13,7 @@ sidebar_label: 소개
 이 튜토리얼을 성공적으로 완료하려면 다음이 필요합니다.
 
 - [Rust](/develop/prerequisites)
-- [NEAR TestNet 계정](/concepts/basics/accounts/creating-accounts)
+- [A NEAR testnet account](https://testnet.mynearwallet.com)
 - [NEAR-CLI](/tools/near-cli#setup)
 
 :::info Rust가 처음이신가요?

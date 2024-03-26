@@ -1,7 +1,7 @@
 {
   "id": "develop/contracts/security/one-yocto",
   "title": "사용자가 맞는지 확인 (1yⓃ)",
-  "description": "NEAR는 액세스 키 시스템을 사용하여 계정 처리를 단순화합니다. 전체 액세스 키는 계정에 대한 완전한 제어권(즉, 모든 Action을 수행할 수 있음)을 가지고 있고, 함수 호출 키는 Ⓝ를 보증금으로 첨부하지 않는 지정된 스마트 컨트랙트 내 메서드를 호출할 수 있는 권한만 있는 키입니다.",
+  "description": "NEAR uses a system of Access Keys to simplify handling accounts. 전체 액세스 키는 계정에 대한 완전한 제어권(즉, 모든 Action을 수행할 수 있음)을 가지고 있고, 함수 호출 키는 Ⓝ를 보증금으로 첨부하지 않는 지정된 스마트 컨트랙트 내 메서드를 호출할 수 있는 권한만 있는 키입니다.",
   "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.develop/contracts/security/one_yocto.md",
   "sourceDirName": "2.develop/contracts/security",
   "slug": "/develop/contracts/security/one-yocto",

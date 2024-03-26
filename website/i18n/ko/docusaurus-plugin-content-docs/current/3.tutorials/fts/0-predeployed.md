@@ -10,7 +10,7 @@ sidebar_label: 사전 배포된 컨트랙트
 
 이 튜토리얼을 성공적으로 완료하려면 다음이 필요합니다.
 
-- [NEAR TestNet 계정](/concepts/basics/accounts/creating-accounts)
+- [A NEAR testnet account](https://testnet.mynearwallet.com)
 - [NEAR-CLI](/tools/near-cli#setup)
 
 ## FT 컨트랙트 사용

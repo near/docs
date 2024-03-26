@@ -1,0 +1,27 @@
+{
+  "id": "concepts/protocol/transactions",
+  "title": "Transactions",
+  "description": "Users interact with NEAR by creating transactions. Specifically, user's use their account's private keys to sign transactions, which are then broadcasted and processed by the network.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/1.concepts/protocol/transactions.md",
+  "sourceDirName": "1.concepts/protocol",
+  "slug": "/concepts/protocol/transactions",
+  "permalink": "/vi/concepts/protocol/transactions",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/protocol/transactions.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "transactions",
+    "title": "Transactions"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Smart Contract",
+    "permalink": "/vi/concepts/protocol/smartcontract"
+  },
+  "next": {
+    "title": "Anatomy of a Transaction",
+    "permalink": "/vi/concepts/protocol/transaction-anatomy"
+  }
+}

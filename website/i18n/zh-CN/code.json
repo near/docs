@@ -138,7 +138,7 @@
     "description": "The label for the navbar versions dropdown on mobile view"
   },
   "theme.NotFound.title": {
-    "message": "Page Not Found",
+    "message": "📕 Oops! We Couldn't Find That Page",
     "description": "The title of the 404 page"
   },
   "theme.tags.tagsListLabel": {
@@ -210,7 +210,7 @@
     "description": "The label for the mobile language switcher dropdown"
   },
   "theme.NotFound.p1": {
-    "message": "We could not find what you were looking for.",
+    "message": "Where you following a link? Let us know using the Feedback button and we will setup a redirect for you in no time",
     "description": "The first paragraph of the 404 page"
   },
   "theme.NotFound.p2": {

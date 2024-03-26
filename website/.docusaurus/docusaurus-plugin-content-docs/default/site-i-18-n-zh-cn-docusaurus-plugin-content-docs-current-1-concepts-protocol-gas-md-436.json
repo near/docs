@@ -1,0 +1,27 @@
+{
+  "id": "concepts/protocol/gas",
+  "title": "Gas (Execution Fees)",
+  "description": "On every transaction the NEAR network charges a tiny fee known as gas. This fee is a simple mechanism that allows us to:",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/1.concepts/protocol/gas.md",
+  "sourceDirName": "1.concepts/protocol",
+  "slug": "/concepts/protocol/gas",
+  "permalink": "/zh-CN/concepts/protocol/gas",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/protocol/gas.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "gas",
+    "title": "Gas (Execution Fees)"
+  },
+  "sidebar": "concepts",
+  "previous": {
+    "title": "Anatomy of a Transaction",
+    "permalink": "/zh-CN/concepts/protocol/transaction-anatomy"
+  },
+  "next": {
+    "title": "Lifecycle of a Transaction",
+    "permalink": "/zh-CN/concepts/protocol/transaction-execution"
+  }
+}

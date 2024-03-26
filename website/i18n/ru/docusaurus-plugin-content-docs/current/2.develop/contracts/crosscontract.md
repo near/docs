@@ -23,17 +23,17 @@ There is a delay between the call and the callback in which everyone can still i
 While making your contract, it is likely that you will want to query information from another contract. Below, you can see a basic example in which we query the greeting message from our [Hello NEAR](quickstart.md) example.
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="ts">
-    <Github fname="contract.ts"
-            url="https://github.com/near-examples/cross-contract-hello-js/blob/master/contract/src/contract.ts"
+<Language value="🌐 JavaScript" language="ts">
+    <Github fname="contract.ts" 
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/src/contract.ts"
             start="17" end="39" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/cross-contract-hello-rust/blob/main/contract/src/lib.rs"
-            start="24" end="49" />
-    <Github fname="external.rs"
-            url="https://github.com/near-examples/cross-contract-hello-rust/blob/main/contract/src/external.rs" />
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/lib.rs"
+            start="25" end="48" />
+            <Github fname="external.rs"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/external.rs" />
   </Language>
 </CodeTabs>
 
@@ -45,15 +45,15 @@ Calling another contract passing information is also a common scenario. Bellow y
 <CodeTabs>
 <Language value="🌐 JavaScript" language="ts">
     <Github fname="contract.ts"
-            url="https://github.com/near-examples/cross-contract-hello-js/blob/master/contract/src/contract.ts"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/src/contract.ts"
             start="41" end="64" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/cross-contract-hello-rust/blob/main/contract/src/lib.rs"
-            start="51" end="74" />
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/lib.rs"
+            start="52" end="75" />
     <Github fname="external.rs"
-            url="https://github.com/near-examples/cross-contract-hello-rust/blob/main/contract/src/external.rs" />
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/external.rs" />
   </Language>
 </CodeTabs>
 
@@ -112,13 +112,13 @@ In the callback method you will have access to the result, which contains two im
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="contract.ts"
-            url="https://github.com/near-examples/cross-contract-hello-js/blob/master/contract/src/contract.ts"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/src/contract.ts"
             start="31" end="38" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/cross-contract-hello-rust/blob/main/contract/src/lib.rs"
-            start="67" end="73" />
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/lib.rs"
+            start="67" end="74" />
   </Language>
 </CodeTabs>
 
@@ -128,13 +128,13 @@ In case the call finishes successfully, the resulting object will have a `status
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="contract.ts"
-            url="https://github.com/near-examples/cross-contract-hello-js/blob/master/contract/src/contract.ts"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/src/contract.ts"
             start="31" end="31" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.ts"
-            url="https://github.com/near-examples/cross-contract-hello-rust/blob/main/contract/src/lib.rs"
-            start="47" end="47" />
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/lib.rs"
+            start="47" end="49" />
   </Language>
 </CodeTabs>
 

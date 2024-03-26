@@ -15,7 +15,7 @@ At the core, all transactions require the following:
 - `signerPublicKey`
 - `receiverId` _(account ID of the transaction recipient)_
 - `nonceForPublicKey` _(each time a key is used the nonce value should be incremented by 1)_
-- `actions` _( [[click here]](/concepts/basics/transactions/overview#action) for supported arguments)_
+- `actions` _( [[click here]](/concepts/protocol/transactions#action) for supported arguments)_
 - `blockHash` _(a current block hash (within 24hrs) to prove the transaction was recently created)_
 
 See [Transaction Class](https://near.github.io/near-api-js/classes/near_api_js.transaction.Transaction.html) for a more in depth outline.
@@ -76,7 +76,7 @@ const amount = nearAPI.utils.format.parseNearAmount("1.5");
 
 ### Create a Key Store
 
-In order to sign transactions you will need to create a "Key Store" that will hold a [full access key](/concepts/basics/accounts/access-keys#full-access-keys) to sign your transactions. There are several ways to accomplish this, but for this example we will use a private key stored in either an `.env` file in your project or an environment variable exported globally.
+In order to sign transactions you will need to create a "Key Store" that will hold a [full access key](/concepts/protocol/access-keys#full-access-keys) to sign your transactions. There are several ways to accomplish this, but for this example we will use a private key stored in either an `.env` file in your project or an environment variable exported globally.
 
 - If you created the account using [`near-cli`](/tools/near-cli) or ran [`near login`](/tools/near-cli#for-accounts) in your terminal, your private key can be found in a `.json` file located in `/HOME/.near-credentials`.
 - If you created an account using [NEAR Wallet](https://testnet.mynearwallet.com/), your key will be found in your browser's `Local Storage`.
@@ -208,7 +208,7 @@ Once you have access to the private key of the sender's account, create an envir
 
 ```js
 const privateKey = process.env.SENDER_PRIVATE_KEY;
-const keyPair = nearAPI.utils.key_pair.KeyPairEd25519.fromString(privateKey);
+const keyPair = nearAPI.KeyPair.fromString(privateKey);
 ```
 
 ---
@@ -221,7 +221,7 @@ As stated before, all transactions require six parts:
 2. [`signerPublicKey`](#2-signerpublickey)
 3. [`receiverId`](#3-receiverid)
 4. [`nonceForPublicKey`](#4-nonceforpublickey)
-5. [`actions`](/concepts/basics/transactions/overview#action)
+5. [`actions`](/concepts/protocol/transactions#action)
 6. [`blockHash`](#6-blockhash)
 
 ### 1 `signerId`
@@ -306,7 +306,7 @@ const nonce = ++accessKey.nonce;
 
 ### 5 `actions`
 
-- There are currently eight supported `Action` types. [[see here]](/concepts/basics/transactions/overview#action)
+- There are currently eight supported `Action` types. [[see here]](/concepts/protocol/transactions#action)
 - For this example, we are using `Transfer`
 - This transfer action can be created using the [imported `nearAPI` object](#imports) and the [formatted Ⓝ amount](#formatting-token-amounts) created earlier.
 
@@ -360,7 +360,7 @@ Now that the transaction is created, we sign it before sending it to the NEAR bl
 
 ```js
 const serializedTx = nearAPI.utils.serialize.serialize(
-  nearAPI.transactions.SCHEMA,
+  nearAPI.transactions.SCHEMA.Transaction,
   transaction
 );
 ```

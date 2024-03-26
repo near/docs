@@ -132,7 +132,7 @@ NEAR 블록체인은 [에포크](../../../1.concepts/basics/epoch.md) 단위로 
 
 ## 가스
 
-컨트랙트에는 각 호출에 사용할 **컴퓨팅 리소스가 제한**되어 있습니다. 이러한 자원은 [가스](/concepts/basics/transactions/gas) 단위로 측정됩니다.
+컨트랙트에는 각 호출에 사용할 **컴퓨팅 리소스가 제한**되어 있습니다. Such resources are measured in [Gas](/concepts/protocol/gas).
 
 가스는 실제 걸린 시간으로 생각할 수 있습니다. 1 PetaGas(1_000 TGas)는 약 1초의 계산 시간을 의미합니다.
 
@@ -148,7 +148,7 @@ NEAR 블록체인은 [에포크](../../../1.concepts/basics/epoch.md) 단위로 
 
 :::warning [교차 컨트랙트 호출](/develop/contracts/crosscontract) 중 콜백에 완전히 실행하기에 충분한 가스가 있는지 항상 확인하세요. :::
 
-:::tip 메서드에 필요한 [가스를 이미 추정](/concepts/basics/transactions/gas#accurate-estimates-with-automated-tests)한 경우, `assert`를 사용하여 가스가 부족하지 않도록 할 수 있습니다.
+:::tip If you already [estimated the Gas](/concepts/protocol/gas#accurate-estimates-with-automated-tests) a method needs, you can ensure it never runs out of Gas by using `assert`
 
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="🦀 Rust">
