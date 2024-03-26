@@ -12,6 +12,7 @@ Chain signatures enable NEAR accounts, including smart contracts, to sign and ex
 This unlocks the next level of blockchain interoperability by giving ownership of diverse assets, cross-chain accounts, and data to a single NEAR account.
 
 :::info
+
 This guide will take you through a step by step process for creating a Chain Signature.
 
 ⭐️ For a deep dive into the concepts of Chain Signatures see [What are Chain Signatures?](/concepts/abstraction/chain-signatures)
@@ -20,10 +21,13 @@ This guide will take you through a step by step process for creating a Chain Sig
 
 - [web-app example](https://github.com/near-examples/near-multichain)
 - [component example](https://test.near.social/bot.testnet/widget/chainsig-sign-eth-tx) 
+
 :::
 
 :::caution
+
 This technology is currently in `alpha` and should only be used in a `testnet` environment.
+
 :::
 
 ---
@@ -57,19 +61,24 @@ We provide code to derive the address, as it's a complex process that involves m
   <TabItem value="Ξ Ethereum">
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/services/ethereum.js" start="14" end="18" />
-  </TabItem>
 
-  <TabItem value="₿ Bitcoin">
+</TabItem>
+
+<TabItem value="₿ Bitcoin">
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/services/bitcoin.js" start="14" end="18" />
-  </TabItem>
+
+</TabItem>
+
 </Tabs>
 
 :::tip
+
 The same NEAR account and path will always produce the same address on the target blockchain.
 
 - `example.near` + `ethereum-1` = `0x1b48b83a308ea4beb845db088180dc3389f8aa3b`
 - `example.near` + `ethereum-2` = `0x99c5d3025dc736541f2d97c3ef3c90de4d221315`
+
 :::
 
 ---
@@ -84,15 +93,19 @@ Constructing the transaction to be signed (transaction, message, data, etc.) var
       url="https://github.com/near-examples/near-multichain/blob/main/src/services/ethereum.js"
       start="32" end="48" />
     
-    In Ethereum, constructing the transaction is simple since you only need to specify the address of the receiver and how much you want to send.
-  </TabItem>
-  <TabItem value="₿ Bitcoin">
+In Ethereum, constructing the transaction is simple since you only need to specify the address of the receiver and how much you want to send.
+
+</TabItem>
+
+<TabItem value="₿ Bitcoin">
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/services/bitcoin.js"
       start="28" end="80" />
 
-    In bitcoin, you construct a new transaction by using all the Unspent Transaction Outputs (UTXOs) of the account as input, and then specify the output address and amount you want to send.
-  </TabItem>
+In bitcoin, you construct a new transaction by using all the Unspent Transaction Outputs (UTXOs) of the account as input, and then specify the output address and amount you want to send.
+
+</TabItem>
+
 </Tabs>
 
 ---
@@ -111,15 +124,18 @@ The method requires two parameters:
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/services/ethereum.js"
       start="57" end="61" />
-  </TabItem>
+
+</TabItem>
 
   <TabItem value="₿ Bitcoin">
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/services/bitcoin.js"
       start="87" end="98" />
 
-    For bitcoin, all UTXOs are signed independently and then combined into a single transaction.
-  </TabItem>
+For bitcoin, all UTXOs are signed independently and then combined into a single transaction.
+
+</TabItem>
+
 </Tabs>
 
 :::tip
@@ -155,17 +171,21 @@ This allows the contract to generalize the signing process for multiple blockcha
       url="https://github.com/near-examples/near-multichain/blob/main/src/services/ethereum.js"
       start="62" end="71" />
 
-    In Ethereum, the signature is reconstructed by concatenating the `r`, `s`, and `v` values returned by the contract.
-    
-    The `v` parameter is a parity bit that depends on the `sender` address. We reconstruct the signature using both possible values (`v=0` and `v=1`) and check which one corresponds to our `sender` address.
-  </TabItem>
-  <TabItem value="₿ Bitcoin">
+In Ethereum, the signature is reconstructed by concatenating the `r`, `s`, and `v` values returned by the contract.
+
+The `v` parameter is a parity bit that depends on the `sender` address. We reconstruct the signature using both possible values (`v=0` and `v=1`) and check which one corresponds to our `sender` address.
+
+</TabItem>
+
+<TabItem value="₿ Bitcoin">
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/services/bitcoin.js"
       start="105" end="116" />
 
-    In Bitcoin, the signature is reconstructed by concatenating the `r` and `s` values returned by the contract.
-  </TabItem>
+In Bitcoin, the signature is reconstructed by concatenating the `r` and `s` values returned by the contract.
+
+</TabItem>
+
 </Tabs>
 
 ---
@@ -179,12 +199,16 @@ Once we have reconstructed the signature, we can relay it to the corresponding n
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/services/ethereum.js"
       start="80" end="84" />
-  </TabItem>
-  <TabItem value="₿ Bitcoin">
+
+</TabItem>
+
+<TabItem value="₿ Bitcoin">
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/services/bitcoin.js"
       start="119" end="127" />
-  </TabItem>
+
+</TabItem>
+
 </Tabs>
 
 :::info
@@ -194,4 +218,5 @@ Once we have reconstructed the signature, we can relay it to the corresponding n
 
 - [web-app example](https://github.com/near-examples/near-multichain)
 - [component example](https://test.near.social/bot.testnet/widget/chainsig-sign-eth-tx) 
+
 :::
