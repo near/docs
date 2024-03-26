@@ -18,9 +18,9 @@
     "id": "blob-contract",
     "title": "Blob Store Contract"
   },
-  "sidebar": "data-availability",
+  "sidebar": "build",
   "previous": {
-    "title": "Home",
+    "title": "Rollup Data Availability",
     "permalink": "/data-availability/welcome"
   },
   "next": {

@@ -451,42 +451,42 @@
             {
               "id": "data-availability/arbitrum",
               "path": "/zh-CN/data-availability/arbitrum",
-              "sidebar": "data-availability"
+              "sidebar": "build"
             },
             {
               "id": "data-availability/blob-contract",
               "path": "/zh-CN/data-availability/blob-contract",
-              "sidebar": "data-availability"
+              "sidebar": "build"
             },
             {
               "id": "data-availability/cdk-integration",
               "path": "/zh-CN/data-availability/cdk-integration",
-              "sidebar": "data-availability"
+              "sidebar": "build"
             },
             {
               "id": "data-availability/integrations",
               "path": "/zh-CN/data-availability/integrations",
-              "sidebar": "data-availability"
+              "sidebar": "build"
             },
             {
               "id": "data-availability/light-client",
               "path": "/zh-CN/data-availability/light-client",
-              "sidebar": "data-availability"
+              "sidebar": "build"
             },
             {
               "id": "data-availability/optimism",
               "path": "/zh-CN/data-availability/optimism",
-              "sidebar": "data-availability"
+              "sidebar": "build"
             },
             {
               "id": "data-availability/rpc",
               "path": "/zh-CN/data-availability/rpc",
-              "sidebar": "data-availability"
+              "sidebar": "build"
             },
             {
               "id": "data-availability/welcome",
               "path": "/zh-CN/data-availability/welcome",
-              "sidebar": "data-availability"
+              "sidebar": "build"
             },
             {
               "id": "develop/contracts/actions",
@@ -1965,12 +1965,6 @@
               "link": {
                 "path": "/zh-CN/api/rpc/introduction",
                 "label": "api/rpc/introduction"
-              }
-            },
-            "data-availability": {
-              "link": {
-                "path": "/zh-CN/data-availability/welcome",
-                "label": "data-availability/welcome"
               }
             },
             "exchanges": {

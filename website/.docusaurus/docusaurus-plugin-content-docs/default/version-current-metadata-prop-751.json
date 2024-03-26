@@ -946,6 +946,86 @@
       },
       {
         "type": "html",
+        "value": "<span class='menu__link'><b><small> Data Availability </small></b></span>"
+      },
+      {
+        "type": "link",
+        "label": "Home",
+        "href": "/zh-CN/data-availability/welcome",
+        "docId": "data-availability/welcome",
+        "unlisted": false
+      },
+      {
+        "type": "category",
+        "label": "Data Availability",
+        "items": [
+          {
+            "type": "link",
+            "label": "Blob Store Contract",
+            "href": "/zh-CN/data-availability/blob-contract",
+            "docId": "data-availability/blob-contract",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Light Client",
+            "href": "/zh-CN/data-availability/light-client",
+            "docId": "data-availability/light-client",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "RPC Client",
+            "href": "/zh-CN/data-availability/rpc",
+            "docId": "data-availability/rpc",
+            "unlisted": false
+          }
+        ],
+        "collapsed": true,
+        "collapsible": true
+      },
+      {
+        "type": "category",
+        "label": "Integrations",
+        "items": [
+          {
+            "type": "link",
+            "label": "Integrations",
+            "href": "/zh-CN/data-availability/integrations",
+            "docId": "data-availability/integrations",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Arbitrum Nitro",
+            "href": "/zh-CN/data-availability/arbitrum",
+            "docId": "data-availability/arbitrum",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Optimism",
+            "href": "/zh-CN/data-availability/optimism",
+            "docId": "data-availability/optimism",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "CDK Stack",
+            "href": "/zh-CN/data-availability/cdk-integration",
+            "docId": "data-availability/cdk-integration",
+            "unlisted": false
+          }
+        ],
+        "collapsed": true,
+        "collapsible": true
+      },
+      {
+        "type": "html",
+        "value": "<hr/>"
+      },
+      {
+        "type": "html",
         "value": "<span class='menu__link'><b><small> Data Infrastructure </small></b></span>"
       },
       {
@@ -2672,80 +2752,6 @@
         "unlisted": false
       }
     ],
-    "data-availability": [
-      {
-        "type": "link",
-        "label": "Home",
-        "href": "/zh-CN/data-availability/welcome",
-        "docId": "data-availability/welcome",
-        "unlisted": false
-      },
-      {
-        "type": "html",
-        "value": "<hr/>"
-      },
-      {
-        "type": "html",
-        "value": "<span class='menu__link'><b><small> DA Docs </small></b></span>"
-      },
-      {
-        "type": "link",
-        "label": "Blob Store Contract",
-        "href": "/zh-CN/data-availability/blob-contract",
-        "docId": "data-availability/blob-contract",
-        "unlisted": false
-      },
-      {
-        "type": "link",
-        "label": "Light Client",
-        "href": "/zh-CN/data-availability/light-client",
-        "docId": "data-availability/light-client",
-        "unlisted": false
-      },
-      {
-        "type": "link",
-        "label": "RPC Client",
-        "href": "/zh-CN/data-availability/rpc",
-        "docId": "data-availability/rpc",
-        "unlisted": false
-      },
-      {
-        "type": "category",
-        "label": "Integrations",
-        "items": [
-          {
-            "type": "link",
-            "label": "Integrations",
-            "href": "/zh-CN/data-availability/integrations",
-            "docId": "data-availability/integrations",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Arbitrum Nitro",
-            "href": "/zh-CN/data-availability/arbitrum",
-            "docId": "data-availability/arbitrum",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Optimism",
-            "href": "/zh-CN/data-availability/optimism",
-            "docId": "data-availability/optimism",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "CDK Stack",
-            "href": "/zh-CN/data-availability/cdk-integration",
-            "docId": "data-availability/cdk-integration",
-            "unlisted": false
-          }
-        ],
-        "collapsed": true,
-        "collapsible": true
-      }
-    ],
     "exchanges": [
       {
         "type": "category",
@@ -3367,49 +3373,49 @@
       "id": "data-availability/arbitrum",
       "title": "Arbitrum Nitro",
       "description": "To support Arbitrum Nitro, we have integrated a small plugin into the DAC daserver. This is much like our http sidecar and provides a very modular integration into NEAR DA whilst supporting Arbitrum",
-      "sidebar": "data-availability"
+      "sidebar": "build"
     },
     "data-availability/blob-contract": {
       "id": "data-availability/blob-contract",
       "title": "Blob Store Contract",
       "description": "This contract provides the store for arbitrary DA blobs. In practice, these \"blobs\" are sequencing data from rollups, but they can be any data.",
-      "sidebar": "data-availability"
+      "sidebar": "build"
     },
     "data-availability/cdk-integration": {
       "id": "data-availability/cdk-integration",
       "title": "CDK Stack",
       "description": "The folder ./cdk-stack contains some projects, too:",
-      "sidebar": "data-availability"
+      "sidebar": "build"
     },
     "data-availability/integrations": {
       "id": "data-availability/integrations",
       "title": "Integrations",
       "description": "We have some proof of concept works for integrating with roll-ups. We are working to prove the system's capabilities and provide a reference implementation for others to follow.",
-      "sidebar": "data-availability"
+      "sidebar": "build"
     },
     "data-availability/light-client": {
       "id": "data-availability/light-client",
       "title": "Light Client",
       "description": "A trustless off-chain light client for NEAR with DA-enabled features, such as KZG commitments, Reed-Solomon erasure coding & storage connectors.",
-      "sidebar": "data-availability"
+      "sidebar": "build"
     },
     "data-availability/optimism": {
       "id": "data-availability/optimism",
       "title": "Container diagram for optimism",
       "description": "We have integrated with the Optimism OP stack. Utilizing the Batcher for submissions to NEAR and the proposer for submitting NEAR commitment data to Ethereum.",
-      "sidebar": "data-availability"
+      "sidebar": "build"
     },
     "data-availability/rpc": {
       "id": "data-availability/rpc",
       "title": "RPC Client",
       "description": "This client is the defacto client for submitting blobs to NEAR.",
-      "sidebar": "data-availability"
+      "sidebar": "build"
     },
     "data-availability/welcome": {
       "id": "data-availability/welcome",
       "title": "Rollup Data Availability",
       "description": "Utilizing NEAR as storage data availability with a focus on lowering rollup DA fees.",
-      "sidebar": "data-availability"
+      "sidebar": "build"
     },
     "develop/contracts/actions": {
       "id": "develop/contracts/actions",

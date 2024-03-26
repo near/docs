@@ -470,5 +470,13 @@
   "sidebar.concepts.category.Accounts / Contracts": {
     "message": "Accounts / Contracts",
     "description": "The label for category Accounts / Contracts in sidebar concepts"
+  },
+  "sidebar.build.category.Data Availability": {
+    "message": "Data Availability",
+    "description": "The label for category Data Availability in sidebar build"
+  },
+  "sidebar.build.category.Integrations": {
+    "message": "Integrations",
+    "description": "The label for category Integrations in sidebar build"
   }
 }

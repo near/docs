@@ -19,7 +19,7 @@
     "title": "Arbitrum Nitro",
     "sidebar_label": "Arbitrum Nitro"
   },
-  "sidebar": "data-availability",
+  "sidebar": "build",
   "previous": {
     "title": "Integrations",
     "permalink": "/data-availability/integrations"

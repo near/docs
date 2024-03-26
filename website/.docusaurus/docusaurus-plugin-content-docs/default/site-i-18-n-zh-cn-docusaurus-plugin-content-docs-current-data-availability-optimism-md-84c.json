@@ -19,7 +19,7 @@
     "title": "Container diagram for optimism",
     "sidebar_label": "Optimism"
   },
-  "sidebar": "data-availability",
+  "sidebar": "build",
   "previous": {
     "title": "Arbitrum Nitro",
     "permalink": "/zh-CN/data-availability/arbitrum"

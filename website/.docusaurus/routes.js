@@ -9,15 +9,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '282'),
+    component: ComponentCreator('/zh-CN/', '96c'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '35b'),
+        component: ComponentCreator('/zh-CN/', '4f7'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '700'),
+            component: ComponentCreator('/zh-CN/', '308'),
             routes: [
               {
                 path: '/zh-CN/abstraction/chain-signatures',
@@ -548,51 +548,51 @@ export default [
               },
               {
                 path: '/zh-CN/data-availability/arbitrum',
-                component: ComponentCreator('/zh-CN/data-availability/arbitrum', '7dd'),
+                component: ComponentCreator('/zh-CN/data-availability/arbitrum', 'aea'),
                 exact: true,
-                sidebar: "data-availability"
+                sidebar: "build"
               },
               {
                 path: '/zh-CN/data-availability/blob-contract',
-                component: ComponentCreator('/zh-CN/data-availability/blob-contract', '88c'),
+                component: ComponentCreator('/zh-CN/data-availability/blob-contract', 'd1a'),
                 exact: true,
-                sidebar: "data-availability"
+                sidebar: "build"
               },
               {
                 path: '/zh-CN/data-availability/cdk-integration',
-                component: ComponentCreator('/zh-CN/data-availability/cdk-integration', '98d'),
+                component: ComponentCreator('/zh-CN/data-availability/cdk-integration', 'eff'),
                 exact: true,
-                sidebar: "data-availability"
+                sidebar: "build"
               },
               {
                 path: '/zh-CN/data-availability/integrations',
-                component: ComponentCreator('/zh-CN/data-availability/integrations', '32a'),
+                component: ComponentCreator('/zh-CN/data-availability/integrations', '26d'),
                 exact: true,
-                sidebar: "data-availability"
+                sidebar: "build"
               },
               {
                 path: '/zh-CN/data-availability/light-client',
-                component: ComponentCreator('/zh-CN/data-availability/light-client', '8ad'),
+                component: ComponentCreator('/zh-CN/data-availability/light-client', 'c15'),
                 exact: true,
-                sidebar: "data-availability"
+                sidebar: "build"
               },
               {
                 path: '/zh-CN/data-availability/optimism',
-                component: ComponentCreator('/zh-CN/data-availability/optimism', '308'),
+                component: ComponentCreator('/zh-CN/data-availability/optimism', '61b'),
                 exact: true,
-                sidebar: "data-availability"
+                sidebar: "build"
               },
               {
                 path: '/zh-CN/data-availability/rpc',
-                component: ComponentCreator('/zh-CN/data-availability/rpc', '523'),
+                component: ComponentCreator('/zh-CN/data-availability/rpc', '9be'),
                 exact: true,
-                sidebar: "data-availability"
+                sidebar: "build"
               },
               {
                 path: '/zh-CN/data-availability/welcome',
-                component: ComponentCreator('/zh-CN/data-availability/welcome', '370'),
+                component: ComponentCreator('/zh-CN/data-availability/welcome', '96f'),
                 exact: true,
-                sidebar: "data-availability"
+                sidebar: "build"
               },
               {
                 path: '/zh-CN/develop/contracts/actions',

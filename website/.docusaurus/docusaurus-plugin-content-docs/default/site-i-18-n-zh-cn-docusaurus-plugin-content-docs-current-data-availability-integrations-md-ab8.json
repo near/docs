@@ -18,7 +18,7 @@
     "id": "integrations",
     "title": "Integrations"
   },
-  "sidebar": "data-availability",
+  "sidebar": "build",
   "previous": {
     "title": "RPC Client",
     "permalink": "/zh-CN/data-availability/rpc"

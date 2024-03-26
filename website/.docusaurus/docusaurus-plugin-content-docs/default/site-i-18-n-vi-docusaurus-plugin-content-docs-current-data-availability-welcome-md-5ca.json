@@ -19,7 +19,11 @@
     "title": "Rollup Data Availability",
     "sidebar_label": "Home"
   },
-  "sidebar": "data-availability",
+  "sidebar": "build",
+  "previous": {
+    "title": "Decentralized Exchanges (DEX)",
+    "permalink": "/vi/primitives/dex"
+  },
   "next": {
     "title": "Blob Store Contract",
     "permalink": "/vi/data-availability/blob-contract"

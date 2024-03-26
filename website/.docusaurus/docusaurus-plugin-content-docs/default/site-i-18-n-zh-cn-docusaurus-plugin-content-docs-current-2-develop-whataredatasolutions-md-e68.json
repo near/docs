@@ -20,8 +20,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Decentralized Exchanges (DEX)",
-    "permalink": "/zh-CN/primitives/dex"
+    "title": "CDK Stack",
+    "permalink": "/zh-CN/data-availability/cdk-integration"
   },
   "next": {
     "title": "BigQuery",

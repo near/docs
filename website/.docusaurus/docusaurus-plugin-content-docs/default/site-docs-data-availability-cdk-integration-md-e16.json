@@ -18,9 +18,13 @@
     "id": "cdk-integration",
     "title": "CDK Stack"
   },
-  "sidebar": "data-availability",
+  "sidebar": "build",
   "previous": {
     "title": "Optimism",
     "permalink": "/data-availability/optimism"
+  },
+  "next": {
+    "title": "What is Data Infrastructure?",
+    "permalink": "/develop/whataredatasolutions"
   }
 }

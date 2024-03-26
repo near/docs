@@ -18,7 +18,7 @@
     "id": "rpc",
     "title": "RPC Client"
   },
-  "sidebar": "data-availability",
+  "sidebar": "build",
   "previous": {
     "title": "Light Client",
     "permalink": "/zh-CN/data-availability/light-client"

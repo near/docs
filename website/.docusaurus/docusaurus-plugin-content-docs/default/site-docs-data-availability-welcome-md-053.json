@@ -12,14 +12,18 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Damián Parrino",
-  "lastUpdatedAt": 1709813405,
-  "formattedLastUpdatedAt": "Mar 7, 2024",
+  "lastUpdatedAt": 1711460711,
+  "formattedLastUpdatedAt": "Mar 26, 2024",
   "frontMatter": {
     "id": "welcome",
     "title": "Rollup Data Availability",
-    "sidebar_label": "Home"
+    "sidebar_label": "Rollup Data Availability"
   },
-  "sidebar": "data-availability",
+  "sidebar": "build",
+  "previous": {
+    "title": "Decentralized Exchanges (DEX)",
+    "permalink": "/primitives/dex"
+  },
   "next": {
     "title": "Blob Store Contract",
     "permalink": "/data-availability/blob-contract"
