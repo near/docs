@@ -323,6 +323,30 @@ const sidebar = {
     },
     {
       "type": "html",
+      "value": "<span class='menu__link'><b><small> Data Availability </small></b></span>"
+    },
+    "data-availability/welcome",
+    {
+      "Data Availability": [
+        "data-availability/blob-contract",
+        "data-availability/light-client",
+        "data-availability/rpc",
+      ]
+    },
+    {
+      "Integrations": [
+        "data-availability/integrations",
+        "data-availability/arbitrum",
+        "data-availability/optimism",
+        "data-availability/cdk-integration"
+      ]
+    },
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
       "value": "<span class='menu__link'><b><small> Data Infrastructure </small></b></span>"
     },
     "develop/whataredatasolutions",
@@ -826,28 +850,6 @@ const sidebar = {
     "api/rpc/protocol",
     "api/rpc/network",
     "api/rpc/transactions"
-  ],
-  "data-availability": [
-    "data-availability/welcome",
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> DA Docs </small></b></span>"
-    },
-    "data-availability/blob-contract",
-    "data-availability/light-client",
-    "data-availability/rpc",
-    {
-      "Integrations": [
-        "data-availability/integrations",
-        "data-availability/arbitrum",
-        "data-availability/optimism",
-        "data-availability/cdk-integration"
-      ]
-    }
   ],
   "exchanges": [
     {
