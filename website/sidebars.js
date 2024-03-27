@@ -786,7 +786,20 @@ const sidebar = {
       "href": "https://near-faucet.io/"
     },
     "tools/explorer",
-    "tools/indexing"
+    "tools/indexing",
+    {
+      "Enhanced API": [
+        "pagoda/rpc/api",
+      ]
+    },
+    {
+      "Alerts & Triggers": [
+        "pagoda/alerts/intro",
+        "pagoda/alerts/setup",
+        "pagoda/alerts/webhooks",
+      ]
+    }
+
   ],
   "integrate": [
     "develop/integrate/welcome",
@@ -849,7 +862,23 @@ const sidebar = {
     "api/rpc/gas",
     "api/rpc/protocol",
     "api/rpc/network",
-    "api/rpc/transactions"
+    "api/rpc/transactions",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> PAGODA CONSOLE </small></b></span>"
+    },
+    {
+      "Pagoda RPC": [
+        "pagoda/rpc/intro",
+        "pagoda/rpc/get-keys",
+        "pagoda/rpc/setup",
+        "pagoda/rpc/stats",
+      ]
+    }
   ],
   "exchanges": [
     {
