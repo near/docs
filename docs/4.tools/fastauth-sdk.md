@@ -166,7 +166,7 @@ You should do this on a VM server of your choice. We will refer to the URL of th
 #### Deploying the signer app
 
 - Go to GCP's Cloud Run console and press "Create Service".
-- In the field "Container image URL", paste `gcr.io/fa-signer/signer-app:version2`.
+- In the field "Container image URL", paste `nearprotocol/fast-auth-sdk-frontend:latest`.
 - Go to the "Container, Networking, Security" fold out and then "Environment Variables"
 - Click on "Add Variable"
 - Set the following environment variables from the `firebaseConfig` you generated earlier.
