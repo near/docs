@@ -39,7 +39,7 @@ Returning to the data flow itself. The best we can do is to imagine tracks like 
 
 ![Timeline as tracks](/docs/flow/02-tracks.png)
 
-But what do we mean by saying something is happening? We mean that something has triggered some changes in the blockchain. And the most well-known method to trigger any changes is to send a [Transaction](https://docs.near.org/develop/lake/structures/protocol/transaction) to the blockchain with instructions of what we want to change and who has requested those changes.
+But what do we mean by saying something is happening? We mean that something has triggered some changes in the blockchain. And the most well-known method to trigger any changes is to send a [Transaction](https://docs.near.org/develop/lake/structures/transaction) to the blockchain with instructions of what we want to change and who has requested those changes.
 
 A transaction needs to be constructed, signed and sent to the blockchain. Once it is executed we expect to have a result - [ExecutionOutcome](https://docs.near.org/develop/lake/structures/execution-outcome). Oh, that is simple. But it’s not really accurate for NEAR Blockchain.
 
