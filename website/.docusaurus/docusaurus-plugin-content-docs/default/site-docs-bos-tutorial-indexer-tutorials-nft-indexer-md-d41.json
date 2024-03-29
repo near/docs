@@ -11,9 +11,9 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/bos/tutorial/indexer-tutorials/nft-indexer.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "gagdiez",
-  "lastUpdatedAt": 1706698360,
-  "formattedLastUpdatedAt": "Jan 31, 2024",
+  "lastUpdatedBy": "Vadim Volodin",
+  "lastUpdatedAt": 1711720687,
+  "formattedLastUpdatedAt": "Mar 29, 2024",
   "frontMatter": {
     "id": "nft-indexer",
     "title": "Minted NFTs Indexer",
