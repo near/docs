@@ -43,11 +43,11 @@ Basically it is an extension of the example from the [NEAR Data Flow](near-data-
 
 Assume we have two accounts **alice.near** and **bob.near**. They belong to different [Shards](https://docs.near.org/develop/lake/structures/shard). **alice.near** sends a few tokens to **bob.near**.
 
-A [Transaction](https://docs.near.org/concepts/protocol/transactions) signed by **alice.near** is sent to the network. It is immediately executed, [ExecutionOutcome](https://docs.near.org/develop/lake/structures/execution-outcome) is the output or result from converting the transaction into a [Receipt](https://docs.near.org/develop/lake/structures/receipt).
+A [Transaction](https://docs.near.org/develop/lake/structures/transaction) signed by **alice.near** is sent to the network. It is immediately executed, [ExecutionOutcome](https://docs.near.org/develop/lake/structures/execution-outcome) is the output or result from converting the transaction into a [Receipt](https://docs.near.org/develop/lake/structures/receipt).
 
 ![Transaction execution](/docs/flow/03-tx-outcome-receipt.png)
 
-During the above process **alice.near**, the sender, was charged a fee (gas). The [Receipt](https://docs.near.org/develop/lake/structures/receipt) created as result of the [Transaction](https://docs.near.org/concepts/protocol/transactions) follows these rules:
+During the above process **alice.near**, the sender, was charged a fee (gas). The [Receipt](https://docs.near.org/develop/lake/structures/receipt) created as result of the [Transaction](https://docs.near.org/develop/lake/structures/transaction) follows these rules:
 
 1. It will be executed not earlier than next [Block](https://docs.near.org/develop/lake/structures/block)
 2. It **must** be executed on the receiver's [Shard](https://docs.near.org/develop/lake/structures/shard)
@@ -71,7 +71,7 @@ This is it. Tokens has been transferred from the account on one Shard to the acc
 
 Let's have a look at the example where both accounts are on the same [Shard](https://docs.near.org/develop/lake/structures/shard). The process is the same as in the previous example, except there are no Receipts moving from one Shard to another.
 
-A [Transaction](https://docs.near.org/concepts/protocol/transactions) signed by **alice.near** is sent to the network. It is immediately executed, [ExecutionOutcome](https://docs.near.org/develop/lake/structures/execution-outcome) is the result of converting the transaction into a [Receipt](https://docs.near.org/develop/lake/structures/receipt).
+A [Transaction](https://docs.near.org/develop/lake/structures/transaction) signed by **alice.near** is sent to the network. It is immediately executed, [ExecutionOutcome](https://docs.near.org/develop/lake/structures/execution-outcome) is the result of converting the transaction into a [Receipt](https://docs.near.org/develop/lake/structures/receipt).
 
 ![Transaction execution](/docs/flow/03-tx-outcome-receipt.png)
 
