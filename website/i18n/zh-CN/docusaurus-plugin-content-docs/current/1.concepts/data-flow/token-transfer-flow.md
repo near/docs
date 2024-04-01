@@ -41,24 +41,24 @@ OK, this should be enough for introduction, now let's move on to examples.
 
 Basically it is an extension of the example from the [NEAR Data Flow](near-data-flow.md) article.
 
-Assume we have two accounts **alice.near** and **bob.near**. They belong to different [Shards](https://near-indexers.io/docs/data-flow-and-structures/structures/shard). **alice.near** sends a few tokens to **bob.near**.
+Assume we have two accounts **alice.near** and **bob.near**. They belong to different [Shards](https://docs.near.org/develop/lake/structures/shard). **alice.near** sends a few tokens to **bob.near**.
 
-A [Transaction](https://near-indexers.io/docs/data-flow-and-structures/structures/transaction) signed by **alice.near** is sent to the network. It is immediately executed, [ExecutionOutcome](https://near-indexers.io/docs/data-flow-and-structures/structures/execution_outcome) is the output or result from converting the transaction into a [Receipt](https://near-indexers.io/docs/data-flow-and-structures/structures/receipt).
+A [Transaction](https://docs.near.org/develop/lake/structures/transaction) signed by **alice.near** is sent to the network. It is immediately executed, [ExecutionOutcome](https://docs.near.org/develop/lake/structures/execution-outcome) is the output or result from converting the transaction into a [Receipt](https://docs.near.org/develop/lake/structures/receipt).
 
 ![Transaction execution](/docs/flow/03-tx-outcome-receipt.png)
 
-During the above process **alice.near**, the sender, was charged a fee (gas). The [Receipt](https://near-indexers.io/docs/data-flow-and-structures/structures/receipt) created as result of the [Transaction](https://near-indexers.io/docs/data-flow-and-structures/structures/transaction) follows these rules:
+During the above process **alice.near**, the sender, was charged a fee (gas). The [Receipt](https://docs.near.org/develop/lake/structures/receipt) created as result of the [Transaction](https://docs.near.org/develop/lake/structures/transaction) follows these rules:
 
-1. It will be executed not earlier than next [Block](https://near-indexers.io/docs/data-flow-and-structures/structures/block)
-2. It **must** be executed on the receiver's [Shard](https://near-indexers.io/docs/data-flow-and-structures/structures/shard)
+1. It will be executed not earlier than next [Block](https://docs.near.org/develop/lake/structures/block)
+2. It **must** be executed on the receiver's [Shard](https://docs.near.org/develop/lake/structures/shard)
 
-So, in our case the receiver is **bob.near** and that account belongs to a different [Shard](https://near-indexers.io/docs/data-flow-and-structures/structures/shard) that's why the [Receipt](https://near-indexers.io/docs/data-flow-and-structures/structures/receipt) moves to the receiver's Shard and is put in the execution queue.
+So, in our case the receiver is **bob.near** and that account belongs to a different [Shard](https://docs.near.org/develop/lake/structures/shard) that's why the [Receipt](https://docs.near.org/develop/lake/structures/receipt) moves to the receiver's Shard and is put in the execution queue.
 
 In our example the Receipt is executed in the very next Block.
 
 ![The Receipt is executed in the next Block](/docs/flow/04-send-nears-flow.png)
 
-Almost done. Remember the refund? So the [ExecutionOutcome](https://near-indexers.io/docs/data-flow-and-structures/structures/execution_outcome) for the Receipt will be another Receipt that is refunding the Gas to the sender. **bob.near** has received tokens from **alice.near**. Now, **alice.near** becomes the receiver for a new (and last) Receipt (keep in mind the sender in this Receipt is always **system**).
+Almost done. Remember the refund? So the [ExecutionOutcome](https://docs.near.org/develop/lake/structures/execution-outcome) for the Receipt will be another Receipt that is refunding the Gas to the sender. **bob.near** has received tokens from **alice.near**. Now, **alice.near** becomes the receiver for a new (and last) Receipt (keep in mind the sender in this Receipt is always **system**).
 
 Keep in mind rule #2: the Receipt must be executed on the receiver's Shard. So this Receipt moves to the Shard where **alice.near** belongs to. And it is the last execution in this process.
 
@@ -69,13 +69,13 @@ This is it. Tokens has been transferred from the account on one Shard to the acc
 
 ## Token transfer between accounts found on the same shard
 
-Let's have a look at the example where both accounts are on the same [Shard](https://near-indexers.io/docs/data-flow-and-structures/structures/shard). The process is the same as in the previous example, except there are no Receipts moving from one Shard to another.
+Let's have a look at the example where both accounts are on the same [Shard](https://docs.near.org/develop/lake/structures/shard). The process is the same as in the previous example, except there are no Receipts moving from one Shard to another.
 
-A [Transaction](https://near-indexers.io/docs/data-flow-and-structures/structures/transaction) signed by **alice.near** is sent to the network. It is immediately executed, [ExecutionOutcome](https://near-indexers.io/docs/data-flow-and-structures/structures/execution_outcome) is the result of converting the transaction into a [Receipt](https://near-indexers.io/docs/data-flow-and-structures/structures/receipt).
+A [Transaction](https://docs.near.org/develop/lake/structures/transaction) signed by **alice.near** is sent to the network. It is immediately executed, [ExecutionOutcome](https://docs.near.org/develop/lake/structures/execution-outcome) is the result of converting the transaction into a [Receipt](https://docs.near.org/develop/lake/structures/receipt).
 
 ![Transaction execution](/docs/flow/03-tx-outcome-receipt.png)
 
-The Receipt is already on the receiver's Shard, so it is put in the execution queue of the next [Block](https://near-indexers.io/docs/data-flow-and-structures/structures/block). It is executed in the next Block, and the [ExecutionOutcome](https://near-indexers.io/docs/data-flow-and-structures/structures/execution_outcome) result is a new Receipt with the refund to the initial sender, **alice.near**. The Same rules apply to this Receipt, it is put into the execution queue and executed in the next Block.
+The Receipt is already on the receiver's Shard, so it is put in the execution queue of the next [Block](https://docs.near.org/develop/lake/structures/block). It is executed in the next Block, and the [ExecutionOutcome](https://docs.near.org/develop/lake/structures/execution-outcome) result is a new Receipt with the refund to the initial sender, **alice.near**. The Same rules apply to this Receipt, it is put into the execution queue and executed in the next Block.
 
 ![Complete scheme of Token transfer between the account from the same Shards](/docs/flow-token-transfer/02-same-shard-complete.png)
 

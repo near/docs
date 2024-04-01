@@ -14,7 +14,7 @@ sidebar_label: "NFT indexer for Python"
 ## The Goal
 
 This tutorial ends with a working NFT indexer built on top [NEAR Lake Framework for Python](https://near-indexers.io/docs/projects/near-lake-framework). The indexer is watching for `nft_mint` [Events](https://nomicon.io/Standards/EventsFormat) and prints some relevant data:
-- `receipt_id` of the [Receipt](https://near-indexers.io/docs/data-flow-and-structures/structures/receipt) where the mint has happened
+- `receipt_id` of the [Receipt](https://docs.near.org/develop/lake/structures/receipt) where the mint has happened
 - Marketplace
 - NFT owner account name
 - Links to the NFTs on the marketplaces
@@ -23,7 +23,7 @@ The final source code is available on the GitHub [`frolvanya/near-lake-nft-index
 
 ## Motivation
 
-NEAR Protocol had introduced a nice feature [Events](https://nomicon.io/Standards/EventsFormat). The Events allow a contract developer to add standardized logs to the [`ExecutionOutcomes`](https://near-indexers.io/docs/data-flow-and-structures/structures/execution_outcome) thus allowing themselves or other developers to read those logs in more convenient manner via API or indexers.
+NEAR Protocol had introduced a nice feature [Events](https://nomicon.io/Standards/EventsFormat). The Events allow a contract developer to add standardized logs to the [`ExecutionOutcomes`](https://docs.near.org/develop/lake/structures/execution-outcome) thus allowing themselves or other developers to read those logs in more convenient manner via API or indexers.
 
 The Events have a field `standard` which aligns with NEPs. In this tutorial we'll be talking about [NEP-171 Non-Fungible Token standard](https://github.com/near/NEPs/discussions/171).
 
@@ -121,8 +121,8 @@ async def handle_streamer_message(streamer_message: near_primitives.StreamerMess
 
 First of all let's find out where we can catch the Events. We hope you are familiar with how the [Data Flow in NEAR Blockchain](https://near-indexers.io/docs/data-flow-and-structures/flow/near-data-flow), but let's revise our knowledge:
 - Mint an NFT is an action in an NFT contract (doesn't matter which one)
-- Actions are located in a [Receipt](https://near-indexers.io/docs/data-flow-and-structures/structures/receipt)
-- A result of the Receipt execution is [ExecutionOutcome](https://near-indexers.io/docs/data-flow-and-structures/structures/execution_outcome)
+- Actions are located in a [Receipt](https://docs.near.org/develop/lake/structures/receipt)
+- A result of the Receipt execution is [ExecutionOutcome](https://docs.near.org/develop/lake/structures/execution-outcome)
 - `ExecutionOutcome` in turn, catches the logs a contract "prints"
 - [Events](https://nomicon.io/Standards/EventsFormat) built on top of the logs
 
@@ -141,7 +141,7 @@ async def handle_streamer_message(streamer_message: near_primitives.StreamerMess
                 pass
 ```
 
-We have iterated through the logs of all ExecutionOutcomes of [Shards](https://near-indexers.io/docs/data-flow-and-structures/structures/shard) (in our case we don't care on which Shard did the mint happen)
+We have iterated through the logs of all ExecutionOutcomes of [Shards](https://docs.near.org/develop/lake/structures/shard) (in our case we don't care on which Shard did the mint happen)
 
 Now we want to deal only with those ExecutionOutcomes that contain logs of Events format. Such logs start with `EVENT_JSON:` according to the [Events docs](https://nomicon.io/Standards/EventsFormat#events).
 

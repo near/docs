@@ -16,7 +16,7 @@ You can request access through [this link](http://bit.ly/near-queryapi-beta).
 
 This tutorial creates a working NFT indexer using [NEAR QueryAPI](../../queryapi/intro.md), and builds a [NEAR component](../../../bos/tutorial/quickstart.md) that presents the data. The indexer is watching for `nft_mint` [Events](https://nomicon.io/Standards/EventsFormat) and captures some relevant data:
 
-- `receiptId` of the [Receipt](https://near-indexers.io/docs/data-flow-and-structures/structures/receipt) where the mint has happened
+- `receiptId` of the [Receipt](https://docs.near.org/develop/lake/structures/receipt) where the mint has happened
 - `receiverId`
 - Marketplace
 - Links to the transaction on NEAR Explorer
@@ -31,7 +31,7 @@ The indexer's source code can be found by [following this link](https://near.org
 
 ### NFT Events
 
-NEAR Protocol supports [Events](https://nomicon.io/Standards/EventsFormat). These `Events` allow a contract developer to add standardized logs to the [`ExecutionOutcomes`](https://near-indexers.io/docs/data-flow-and-structures/structures/execution_outcome) thus allowing themselves or other developers to read those logs in more convenient manner via API or indexers. Events have a field `standard` which aligns with NEPs. In this tutorial we'll be talking about [NEP-171 Non-Fungible Token standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core).
+NEAR Protocol supports [Events](https://nomicon.io/Standards/EventsFormat). These `Events` allow a contract developer to add standardized logs to the [`ExecutionOutcomes`](https://docs.near.org/develop/lake/structures/execution-outcome) thus allowing themselves or other developers to read those logs in more convenient manner via API or indexers. Events have a field `standard` which aligns with NEPs. In this tutorial we'll be talking about [NEP-171 Non-Fungible Token standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core).
 
 The indexer watches all the NFTs minted following the [NEP-171 Events](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event) standard. It should detect every single NFT minted, and store a basic set of data like: in what Receipt it was minted, and which marketplace created it (for example, [Paras](https://paras.id), [ShardDog](https://shard.dog), and [Mintbase](https://mintbase.io)).
 

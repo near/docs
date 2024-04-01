@@ -19,6 +19,7 @@ This guide will take you through a step by step process for creating a Chain Sig
 
 ⭐️ For complete examples of a NEAR account performing Eth transactions:
 
+- [CLI script](https://github.com/mattlockyer/mpc-script)
 - [web-app example](https://github.com/near-examples/near-multichain)
 - [component example](https://test.near.social/bot.testnet/widget/chainsig-sign-eth-tx)
 
