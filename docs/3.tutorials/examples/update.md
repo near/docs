@@ -18,14 +18,14 @@ The [State Migration example](https://github.com/near-examples/update-migrate-ru
 between contract updates.
 
 It is composed by 2 contracts:
-1. Base: A Guest Book were people can write messages.
+1. Base: A Guest Book where people can write messages.
 2. Update: An update in which we remove a parameter and change the internal structure.
 
 <CodeTabs>
   <Language value="🦀 Rust" language="rust">
     <Github fname="migrate.rs"
             url="https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/update/src/migrate.rs"
-            start="20" end="45" />
+            start="18" end="45" />
   </Language>
 </CodeTabs>
 
@@ -54,7 +54,7 @@ The example is composed by 2 contracts:
   <Language value="🦀 Rust" language="rust">
     <Github fname="versioned_msg.rs"
             url="https://github.com/near-examples/update-migrate-rust/blob/main/enum-updates/update/src/versioned_msg.rs"
-            start="19" end="36" />
+            start="18" end="36" />
   </Language>
 </CodeTabs>
 
