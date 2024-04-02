@@ -3,11 +3,7 @@ id: gas-station
 title: Multichain Gas Station Contract
 sidebar_label: Multichain Gas Station
 ---
-:::caution
 
-This technology is currently in `Alpha` and should only be used in a `testnet` environment.
-
-:::
 
 The [multichain gas station smart contract](https://github.com/near/multichain-gas-station-contract) accepts payments in NEAR tokens in exchange for gas funding on non-NEAR foreign chains. Part of the NEAR Multichain effort, it works in conjunction with the [MPC recovery service](https://github.com/near/mpc-recovery) to generate on-chain signatures.
 

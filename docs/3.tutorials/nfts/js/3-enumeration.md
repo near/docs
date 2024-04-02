@@ -9,11 +9,7 @@ In the previous tutorials, you looked at ways to integrate the minting functiona
 Now you'll extend the NFT smart contract and add a couple of enumeration methods that can be used to return the contract's state.
 
 
-:::caution
 
-The JS-SDK is currently in **[`Alpha`](https://github.com/near/near-sdk-js/releases/)**. 
-
-:::
 
 ## Introduction
 

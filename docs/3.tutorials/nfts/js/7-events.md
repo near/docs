@@ -7,11 +7,7 @@ import {Github} from "@site/src/components/codetabs"
 
 In this tutorial, you'll learn about the [events standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event) and how to implement it in your smart contract.
 
-:::caution
 
-The JS-SDK is currently in **[`Alpha`](https://github.com/near/near-sdk-js/releases/)**. 
-
-:::
 
 ## Introduction
 
