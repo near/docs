@@ -11,9 +11,9 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/abstraction/signatures/use-case.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Josh Ford",
-  "lastUpdatedAt": 1711076299,
-  "formattedLastUpdatedAt": "Mar 22, 2024",
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1712088378,
+  "formattedLastUpdatedAt": "Apr 2, 2024",
   "frontMatter": {
     "id": "use-cases",
     "title": "Use cases for Chain Signatures",
