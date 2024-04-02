@@ -239,3 +239,13 @@ If you're using your own account, replace `donation.near-examples.testnet` with 
 
 A nice way to learn is by trying to expand a contract. Modify the donation example so it accumulates the tokens in the contract
 instead of sending it immediately. Then, make a method that only the `beneficiary` can call to retrieve the tokens.
+
+:::note Versioning for this article
+
+At the time of this writing, this example works with the following versions:
+
+- near-cli: `4.0.13`
+- node: `18.19.1`
+- rustc: `1.77.0`
+
+:::
