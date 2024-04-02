@@ -1,7 +1,7 @@
 {
   "id": "concepts/abstraction/signatures/use-cases",
   "title": "Use cases for Chain Signatures",
-  "description": "This technology is currently in Alpha and should only be used in a testnet environment.",
+  "description": "Chain signatures enable you to implement multichain and cross-chain workflows in a simple way.",
   "source": "@site/../docs/1.concepts/abstraction/signatures/use-case.md",
   "sourceDirName": "1.concepts/abstraction/signatures",
   "slug": "/concepts/abstraction/signatures/use-cases",
@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/abstraction/signatures/use-case.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Damián Parrino",
-  "lastUpdatedAt": 1712088378,
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1712093018,
   "formattedLastUpdatedAt": "Apr 2, 2024",
   "frontMatter": {
     "id": "use-cases",
