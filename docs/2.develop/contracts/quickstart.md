@@ -398,7 +398,7 @@ Happy coding! 🚀
 At the time of this writing, this example works with the following versions:
 
 - near-cli: `4.0.13`
-- node: `20.12.0`
+- node: `18.19.1`
 - rustc: `1.77.0`
 - near-cli-rs: `0.8.1`
 - cargo-near: `0.6.1`
