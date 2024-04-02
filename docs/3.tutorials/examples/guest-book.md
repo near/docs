@@ -125,7 +125,7 @@ The contract presents 3 methods: `add_message`, `get_message` and `total_message
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/guest-book-examples/blob/main/contract-rs/src/lib.rs"
-            start="37" end="70" />
+            start="31" end="64" />
   </Language>
   
 </CodeTabs>
