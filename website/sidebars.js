@@ -492,10 +492,9 @@ const sidebar = {
                 "tutorials/nfts/minting",
                 "tutorials/nfts/upgrade-contract",
                 "tutorials/nfts/enumeration",
-                "tutorials/nfts/core",
-                "tutorials/nfts/events"
-              ]
+                "tutorials/nfts/core",              ]
             },
+            "tutorials/nfts/events",
             {
               "Marketplace": [
                 "tutorials/nfts/approvals",

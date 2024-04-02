@@ -201,7 +201,7 @@ You'll learn more about these functions in the [royalty section](/tutorials/nfts
 | **NftTransferLog**      | An event log to capture token transfer.              |
 
 <Github language="rust" start="7" end="79" url="https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/events.rs" />
-<Github language="rust" start="5" end="79" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-skeleton/src/events.rs" />
+<Github language="rust" start="5" end="79" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-events/src/events.rs" />
 
 You'll learn more about these functions in the [events section](/tutorials/nfts/events) of the tutorial series.
 

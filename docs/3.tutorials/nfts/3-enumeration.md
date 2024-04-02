@@ -33,7 +33,7 @@ Rust has useful methods for pagination, allowing you to skip to a starting index
 :::
 
 <Github language="rust" start="11" end="27" url="https://github.com/near-examples/nft-tutorial/blob/3.enumeration/nft-contract/src/enumeration.rs" />
-<Github language="rust" start="11" end="17" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/enumeration.rs" />
+<Github language="rust" start="11" end="26" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/enumeration.rs" />
 
 **nft_supply_for_owner**
 

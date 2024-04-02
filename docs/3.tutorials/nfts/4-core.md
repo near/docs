@@ -44,7 +44,7 @@ Let's start our journey in the `nft-contract-skeleton/src/nft_core.rs` file.
 You'll start by implementing the `nft_transfer` logic. This function will transfer the specified `token_id` to the `receiver_id` with an optional `memo` such as `"Happy Birthday Mike!"`.
 
 <Github language="rust" start="62" end="82" url="https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/nft_core.rs" />
-<Github language="rust" start="62" end="82" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/nft_core.rs" />
+<Github language="rust" start="60" end="79" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/nft_core.rs" />
 
 There are a couple things to notice here. Firstly, we've introduced a new function called `assert_one_yocto()`. This method will ensure that the user has attached exactly one yoctoNEAR to the call. If a function requires a deposit, you need a full access key to sign that transaction. By adding the one yoctoNEAR deposit requirement, you're essentially forcing the user to sign the transaction with a full access key.
 
@@ -60,35 +60,33 @@ Let's start with the easier one, `assert_one_yocto()`.
 
 #### assert_one_yocto
 
-You can put this function anywhere in the `internal.rs` file but in our case, we'll put it after the `hash_account_id` function:
-
 <Github language="rust" start="14" end="21" url="https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/internal.rs" />
 <Github language="rust" start="14" end="21" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/internal.rs" />
 
 #### internal_transfer
 
-It's now time to implement the `internal_transfer` function which is the core of this tutorial. This function will take the following parameters:
+It's now time to explore the `internal_transfer` function which is the core of this tutorial. This function takes the following parameters:
 
 - **sender_id**: the account that's attempting to transfer the token.
 - **receiver_id**: the account that's receiving the token.
 - **token_id**: the token ID being transferred.
 - **memo**: an optional memo to include.
 
-The first thing you'll want to do is to make sure that the sender is authorized to transfer the token. In this case, you'll just make sure that the sender is the owner of the token. You'll do that by getting the `Token` object using the `token_id` and making sure that the sender is equal to the token's `owner_id`.
+The first thing we have to do is to make sure that the sender is authorized to transfer the token. In this case, we just make sure that the sender is the owner of the token. We do that by getting the `Token` object using the `token_id` and making sure that the sender is equal to the token's `owner_id`.
 
-Second, you'll remove the token ID from the sender's list and add the token ID to the receiver's list of tokens. Finally, you'll create a new `Token` object with the receiver as the owner and remap the token ID to that newly created object.
+Second, we remove the token ID from the sender's list and add the token ID to the receiver's list of tokens. Finally, we create a new `Token` object with the receiver as the owner and remap the token ID to that newly created object.
 
-You'll want to create this function within the contract implementation (below the `internal_add_token_to_owner` you created in the minting tutorial).
+We want to create this function within the contract implementation (below the `internal_add_token_to_owner` you created in the minting tutorial).
 
 <Github language="rust" start="98" end="138" url="https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/internal.rs" />
-<Github language="rust" start="98" end="138" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/internal.rs" />
+<Github language="rust" start="96" end="126" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/internal.rs" />
 
-You've previously implemented functionality for adding a token ID to an owner's set but you haven't created the functionality for removing a token ID from an owner's set. Let's do that now by created a new function called `internal_remove_token_from_owner` which we'll place right above our `internal_transfer` and below the `internal_add_token_to_owner` function.
+Now let's look at the function called `internal_remove_token_from_owner`. That function implements the functionality for removing a token ID from an owner's set. 
 
-In the remove function, you'll get the set of tokens for a given account ID and then remove the passed in token ID. If the account's set is empty after the removal, you'll simply remove the account from the `tokens_per_owner` data structure.
+In the remove function, we get the set of tokens for a given account ID and then remove the passed in token ID. If the account's set is empty after the removal, we simply remove the account from the `tokens_per_owner` data structure.
 
 <Github language="rust" start="73" end="96" url="https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/internal.rs" />
-<Github language="rust" start="73" end="96" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/internal.rs" />
+<Github language="rust" start="71" end="94" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/internal.rs" />
 
 Your `internal.rs` file should now have the following outline:
 
@@ -103,7 +101,7 @@ internal.rs
     └── internal_transfer
 ```
 
-With these internal functions complete, the logic for transferring NFTs is finished. It's now time to move on and implement `nft_transfer_call`, one of the most integral yet complicated functions of the standard.
+It's now time to move on and implement `nft_transfer_call`, one of the most integral yet complicated functions of the standard.
 
 ### Transfer call function {#transfer-call-function}
 
@@ -114,14 +112,14 @@ This allowance workflow takes multiple transactions. If we introduce a “transf
 For this reason, we have a function `nft_transfer_call` which will transfer an NFT to a receiver and also call a method on the receiver's contract all in the same transaction.
 
 <Github language="rust" start="84" end="127" url="https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/nft_core.rs" />
-<Github language="rust" start="84" end="127" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/nft_core.rs" />
+<Github language="rust" start="81" end="124" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/nft_core.rs" />
 
 The function will first assert that the caller attached exactly 1 yocto for security purposes. It will then transfer the NFT using `internal_transfer` and start the cross contract call. It will call the method `nft_on_transfer` on the `receiver_id`'s contract which returns a promise. After the promise finishes executing, the function `nft_resolve_transfer` is called. This is a very common workflow when dealing with cross contract calls. You first initiate the call and wait for it to finish executing. You then invoke a function that resolves the result of the promise and act accordingly.
 
 In our case, when calling `nft_on_transfer`, that function will return whether or not you should return the NFT to it's original owner in the form of a boolean. This is logic will be executed in the `nft_resolve_transfer` function.
 
 <Github language="rust" start="149" end="201" url="https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/nft_core.rs" />
-<Github language="rust" start="149" end="201" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/nft_core.rs" />
+<Github language="rust" start="146" end="198" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/nft_core.rs" />
 
 If `nft_on_transfer` returned true, you should send the token back to it's original owner. On the contrary, if false was returned, no extra logic is needed. As for the return value of `nft_resolve_transfer`, the standard dictates that the function should return a boolean indicating whether or not the receiver successfully received the token or not.
 

@@ -215,7 +215,7 @@ For example, if you wanted to relay the edition number for a given NFT in its ti
 
 To do this, here's a way of modifying the `nft_token` function as it's central to all enumeration methods.
 
-<Github language="rust" start="156" end="193" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/nft_core.rs" />
+<Github language="rust" start="156" end="192" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/nft_core.rs" />
 
 For example if a token had a title `"My Amazing Go Team Gif"` and the NFT was edition 42, the new title returned would be `"My Amazing Go Team Gif - 42"`. If the NFT didn't have a title in the metadata, the series and edition number would be returned in the form of `Series {} : Edition {}`.
 
