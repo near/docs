@@ -125,7 +125,7 @@ The contract presents 3 methods: `add_message`, `get_message` and `total_message
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/guest-book-examples/blob/main/contract-rs/src/lib.rs"
-            start="37" end="70" />
+            start="31" end="64" />
   </Language>
   
 </CodeTabs>
@@ -235,7 +235,7 @@ A nice way to learn is by trying to expand a contract. You can modify the guestb
 At the time of this writing, this example works with the following versions:
 
 - near-cli: `4.0.13`
-- node: `20.12.0`
+- node: `18.19.1`
 - rustc: `1.77.0`
 
 :::

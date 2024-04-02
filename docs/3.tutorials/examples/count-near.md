@@ -239,7 +239,7 @@ and [storage](../../2.develop/contracts/storage.md) sections.
 At the time of this writing, this example works with the following versions:
 
 - near-cli: `4.0.13`
-- node: `20.12.0`
+- node: `18.19.1`
 - rustc: `1.77.0`
 
 :::
