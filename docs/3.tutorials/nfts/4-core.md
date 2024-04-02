@@ -5,15 +5,7 @@ sidebar_label: Core
 ---
 import {Github} from "@site/src/components/codetabs"
 
-In this tutorial you'll learn how to implement the [core standards](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core) into your smart contract. If you're joining us for the first time, feel free to clone [this repo](https://github.com/near-examples/nft-tutorial) and checkout the `3.enumeration` branch to follow along.
-
-```bash
-git checkout 3.enumeration
-```
-
-:::tip
-If you wish to see the finished code for this _Core_ tutorial, you can find it on the `4.core` branch.
-:::
+In this tutorial you'll learn how to implement the [core standards](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core) into your smart contract.
 
 ## Introduction {#introduction}
 
@@ -45,13 +37,14 @@ At this point, you're ready to move on and make the necessary modifications to y
 
 ## Modifications to the contract
 
-Let's start our journey in the `nft-contract/src/nft_core.rs` file.
+Let's start our journey in the `nft-contract-skeleton/src/nft_core.rs` file.
 
 ### Transfer function {#transfer-function}
 
 You'll start by implementing the `nft_transfer` logic. This function will transfer the specified `token_id` to the `receiver_id` with an optional `memo` such as `"Happy Birthday Mike!"`.
 
 <Github language="rust" start="62" end="82" url="https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/nft_core.rs" />
+<Github language="rust" start="62" end="82" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/nft_core.rs" />
 
 There are a couple things to notice here. Firstly, we've introduced a new function called `assert_one_yocto()`. This method will ensure that the user has attached exactly one yoctoNEAR to the call. If a function requires a deposit, you need a full access key to sign that transaction. By adding the one yoctoNEAR deposit requirement, you're essentially forcing the user to sign the transaction with a full access key.
 
@@ -70,6 +63,7 @@ Let's start with the easier one, `assert_one_yocto()`.
 You can put this function anywhere in the `internal.rs` file but in our case, we'll put it after the `hash_account_id` function:
 
 <Github language="rust" start="14" end="21" url="https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/internal.rs" />
+<Github language="rust" start="14" end="21" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/internal.rs" />
 
 #### internal_transfer
 
@@ -87,12 +81,14 @@ Second, you'll remove the token ID from the sender's list and add the token ID t
 You'll want to create this function within the contract implementation (below the `internal_add_token_to_owner` you created in the minting tutorial).
 
 <Github language="rust" start="98" end="138" url="https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/internal.rs" />
+<Github language="rust" start="98" end="138" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/internal.rs" />
 
 You've previously implemented functionality for adding a token ID to an owner's set but you haven't created the functionality for removing a token ID from an owner's set. Let's do that now by created a new function called `internal_remove_token_from_owner` which we'll place right above our `internal_transfer` and below the `internal_add_token_to_owner` function.
 
 In the remove function, you'll get the set of tokens for a given account ID and then remove the passed in token ID. If the account's set is empty after the removal, you'll simply remove the account from the `tokens_per_owner` data structure.
 
 <Github language="rust" start="73" end="96" url="https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/internal.rs" />
+<Github language="rust" start="73" end="96" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/internal.rs" />
 
 Your `internal.rs` file should now have the following outline:
 
@@ -118,12 +114,14 @@ This allowance workflow takes multiple transactions. If we introduce a “transf
 For this reason, we have a function `nft_transfer_call` which will transfer an NFT to a receiver and also call a method on the receiver's contract all in the same transaction.
 
 <Github language="rust" start="84" end="127" url="https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/nft_core.rs" />
+<Github language="rust" start="84" end="127" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/nft_core.rs" />
 
 The function will first assert that the caller attached exactly 1 yocto for security purposes. It will then transfer the NFT using `internal_transfer` and start the cross contract call. It will call the method `nft_on_transfer` on the `receiver_id`'s contract which returns a promise. After the promise finishes executing, the function `nft_resolve_transfer` is called. This is a very common workflow when dealing with cross contract calls. You first initiate the call and wait for it to finish executing. You then invoke a function that resolves the result of the promise and act accordingly.
 
 In our case, when calling `nft_on_transfer`, that function will return whether or not you should return the NFT to it's original owner in the form of a boolean. This is logic will be executed in the `nft_resolve_transfer` function.
 
 <Github language="rust" start="149" end="201" url="https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/nft_core.rs" />
+<Github language="rust" start="149" end="201" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/nft_core.rs" />
 
 If `nft_on_transfer` returned true, you should send the token back to it's original owner. On the contrary, if false was returned, no extra logic is needed. As for the return value of `nft_resolve_transfer`, the standard dictates that the function should return a boolean indicating whether or not the receiver successfully received the token or not.
 
@@ -133,16 +131,10 @@ With that finished, you've now successfully added the necessary logic to allow u
 
 ## Redeploying the contract {#redeploying-contract}
 
-Using the build script, build and deploy the contract as you did in the previous tutorials:
+Using the cargo-near, deploy the contract as you did in the previous tutorials:
 
 ```bash
-yarn build && near deploy $NFT_CONTRACT_ID out/main.wasm
-```
-
-This should output a warning saying that the account has a deployed contract and will ask if you'd like to proceed. Simply type `y` and hit enter.
-
-```
-This account already has a deployed contract [ AKJK7sCysrWrFZ976YVBnm6yzmJuKLzdAyssfzK9yLsa ]. Do you want to proceed? (y/n)
+cargo near deploy $NFT_CONTRACT_ID without-init-call network-config testnet sign-with-keychain send
 ```
 
 :::tip
@@ -201,7 +193,8 @@ In the [next tutorial](/tutorials/nfts/approvals), you'll learn about the approv
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `4.0.4`
+- near-cli: `4.0.13`
+- cargo-near `0.6.1`
 - NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 - Enumeration standard: [NEP181](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration), version `1.0.0`
 

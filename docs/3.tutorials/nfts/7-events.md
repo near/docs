@@ -5,19 +5,9 @@ sidebar_label: Events
 ---
 import {Github} from "@site/src/components/codetabs"
 
-In this tutorial, you'll learn about the [events standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event) and how to implement it in your smart contract.
-
 ## Introduction
 
-To get started, either switch to the `6.royalty` branch from our [GitHub repository](https://github.com/near-examples/nft-tutorial/), or continue your work from the previous tutorials.
-
-```bash
-git checkout 6.royalty
-```
-
-:::tip
-If you wish to see the finished code for this _Events_ tutorial, you can find it on the `7.events` branch.
-:::
+In this tutorial, you'll learn about the [events standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event) and how to implement it in your smart contract.
 
 ## Understanding the use case {#understanding-the-use-case}
 
@@ -117,28 +107,33 @@ At this point, you should have a good understanding of what the end goal should 
 Copy the following into your file. This will outline the structs for your `EventLog`, `NftMintLog`, and `NftTransferLog`. In addition, we've added a way for `EVENT_JSON:` to be prefixed whenever you log the `EventLog`. 
 
 <Github language="rust" start="1" end="79" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/events.rs" />
+<Github language="rust" start="1" end="79" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/events.rs" />
 
-This requires the `serde_json` package which you can easily add to your `nft-contract/Cargo.toml` file: 
+This requires the `serde_json` package which you can easily add to your `nft-contract-skeleton/Cargo.toml` file: 
 
 <Github language="rust" start="1" end="20" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/Cargo.toml" />
+<Github language="rust" start="1" end="79" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/Cargo.toml" />
 
 ### Adding modules and constants {#lib-rs}
 
 Now that you've created a new file, you need to add the module to the `lib.rs` file. In addition, you can define two constants for the standard and version that will be used across our contract.
 
 <Github language="rust" start="10" end="30" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/lib.rs" />
+<Github language="rust" start="10" end="30" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/lib.rs" />
 
 ### Logging minted tokens {#logging-minted-tokens}
 
-Now that all the tools are set in place, you can now implement the actual logging functionality. Since the contract will only be minting tokens in one place, it's trivial where you should place the log. Open the `nft-contract/src/mint.rs` file and navigate to the bottom of the file. This is where you'll construct the log for minting. Anytime someone successfully mints an NFT, it will now correctly emit a log.
+Now that all the tools are set in place, you can now implement the actual logging functionality. Since the contract will only be minting tokens in one place, it's trivial where you should place the log. Open the `nft-contract-skeleton/src/mint.rs` file and navigate to the bottom of the file. This is where you'll construct the log for minting. Anytime someone successfully mints an NFT, it will now correctly emit a log.
 
 <Github language="rust" start="5" end="80" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/mint.rs" />
+<Github language="rust" start="5" end="80" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/mint.rs" />
 
 ### Logging transfers {#logging-transfers}
 
-Let's open the `nft-contract/src/internal.rs` file and navigate to the `internal_transfer` function. This is the location where you'll build your transfer logs. Whenever an NFT is transferred, this function is called and so you'll correctly be logging the transfers.
+Let's open the `nft-contract-skeleton/src/internal.rs` file and navigate to the `internal_transfer` function. This is the location where you'll build your transfer logs. Whenever an NFT is transferred, this function is called and so you'll correctly be logging the transfers.
 
 <Github language="rust" start="140" end="239" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/internal.rs" />
+<Github language="rust" start="140" end="239" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/internal.rs" />
 
 This solution, unfortunately, has an edge case which will break things. If an NFT is transferred via the `nft_transfer_call` function, there's a chance that the transfer will be reverted if the `nft_on_transfer` function returns `true`. Taking a look at the logic for `nft_transfer_call`, you can see why this is a problem.
 
@@ -151,14 +146,17 @@ When `nft_transfer_call` is invoked, it will:
 If you only place the log in the `internal_transfer` function, the log will be emitted and the indexer will think that the NFT was transferred. If the transfer is reverted during `nft_resolve_transfer`, however, that event should **also** be emitted. Anywhere that an NFT **could** be transferred, we should add logs. Replace the `nft_resolve_transfer` with the following code.
 
 <Github language="rust" start="182" end="279" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/nft_core.rs" />
+<Github language="rust" start="182" end="279" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/nft_core.rs" />
 
 In addition, you need to add an `authorized_id` and `memo` to the parameters for `nft_resolve_transfer` as shown below.
 
 <Github language="rust" start="47" end="66" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/nft_core.rs" />
+<Github language="rust" start="47" end="66" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/nft_core.rs" />
 
 The last step is to modify the `nft_transfer_call` logic to include these new parameters:
 
 <Github language="rust" start="102" end="159" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/nft_core.rs" />
+<Github language="rust" start="102" end="159" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/nft_core.rs" />
 
 With that finished, you've successfully implemented the events standard and it's time to start testing.
 
@@ -175,19 +173,13 @@ export EVENTS_NFT_CONTRACT_ID=<accountId>
 near create-account $EVENTS_NFT_CONTRACT_ID --useFaucet
 ```
 
-Using the build script, build the deploy the contract as you did in the previous tutorials:
+Using the cargo-near, deploy and initialize the contract as you did in the previous tutorials:
 
 ```bash
-yarn build && near deploy $EVENTS_NFT_CONTRACT_ID out/main.wasm
+cargo near deploy $EVENTS_NFT_CONTRACT_ID with-init-call new_default_meta json-args '{"owner_id": "'$EVENTS_NFT_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
 ```
 
-### Initialization and minting {#initialization-and-minting}
-
-Since this is a new contract, you'll need to initialize and mint a token. Use the following command to initialize the contract:
-
-```bash
-near call $EVENTS_NFT_CONTRACT_ID new_default_meta '{"owner_id": "'$EVENTS_NFT_CONTRACT_ID'"}' --accountId $EVENTS_NFT_CONTRACT_ID
-```
+### Minting {#minting}
 
 Next, you'll need to mint a token. By running this command, you'll mint a token with a token ID `"events-token"` and the receiver will be your new account. In addition, you're passing in a map with two accounts that will get perpetual royalties whenever your token is sold.
 
@@ -242,7 +234,8 @@ In the next tutorial, you'll look at the basics of a marketplace contract and ho
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `4.0.4`
+- near-cli: `4.0.13`
+- cargo-near `0.6.1`
 - NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 - Events standard: [NEP297 extension](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event), version `1.1.0`
 

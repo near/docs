@@ -12,17 +12,6 @@ Now you'll extend the NFT smart contract and add a couple of enumeration methods
 
 As mentioned in the [Upgrade a Contract](/tutorials/nfts/upgrade-contract/) tutorial, you can deploy patches and fixes to smart contracts. This time, you'll use that knowledge to implement the `nft_total_supply`, `nft_tokens` and `nft_supply_for_owner` enumeration functions.
 
-To get started, either switch to the `2.minting` branch from our [GitHub repository](https://github.com/near-examples/nft-tutorial/), or continue your work from the previous tutorials.
-If you haven't cloned it yet, refer to the [Contract Architecture](/tutorials/nfts/skeleton#building-the-skeleton) to check out the repository.
-
-```bash
-git checkout 2.minting
-```
-
-:::tip
-If you wish to see the finished code for this _Enumeration_ tutorial, you can find it on the `3.enumeration` branch.
-:::
-
 ## Modifications to the contract
 
 Let's start by opening the  `src/enumeration.rs` file and locating the empty `nft_total_supply` function. 
@@ -32,6 +21,7 @@ Let's start by opening the  `src/enumeration.rs` file and locating the empty `nf
 This function should return the total number of NFTs stored on the contract. You can easily achieve this functionality by simply returning the length of the `nft_metadata_by_id` data structure.
 
 <Github language="rust" start="5" end="9" url="https://github.com/near-examples/nft-tutorial/blob/3.enumeration/nft-contract/src/enumeration.rs" />
+<Github language="rust" start="5" end="9" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/enumeration.rs" />
 
 **nft_token**
 
@@ -43,6 +33,7 @@ Rust has useful methods for pagination, allowing you to skip to a starting index
 :::
 
 <Github language="rust" start="11" end="27" url="https://github.com/near-examples/nft-tutorial/blob/3.enumeration/nft-contract/src/enumeration.rs" />
+<Github language="rust" start="11" end="17" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/enumeration.rs" />
 
 **nft_supply_for_owner**
 
@@ -50,21 +41,16 @@ This function should look for all the non-fungible tokens for a user-defined own
 If there isn't a set of tokens for the provided `AccountID`, then the function shall return `0`.
 
 <Github language="rust" start="28" end="43" url="https://github.com/near-examples/nft-tutorial/blob/3.enumeration/nft-contract/src/enumeration.rs" />
+<Github language="rust" start="28" end="43" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/enumeration.rs" />
 
 Next, you can use the CLI to query these new methods and validate that they work correctly.
 
 ## Redeploying the contract {#redeploying-contract}
 
-Now that you've implemented the necessary logic for `nft_tokens_for_owner`, it's time to build and re-deploy the contract to your account. Using the build script, deploy the contract as you did in the previous tutorials:
+Now that you've implemented the necessary logic for `nft_tokens_for_owner`, it's time to build and re-deploy the contract to your account. Using the cargo-near, deploy the contract as you did in the previous tutorials:
 
 ```bash
-yarn build && near deploy $NFT_CONTRACT_ID out/main.wasm
-```
-
-This should output a warning saying that the account has a deployed contract and will ask if you'd like to proceed. Simply type `y` and hit enter.
-
-```
-This account already has a deployed contract [ AKJK7sCysrWrFZ976YVBnm6yzmJuKLzdAyssfzK9yLsa ]. Do you want to proceed? (y/n)
+cargo near deploy $NFT_CONTRACT_ID without-init-call network-config testnet sign-with-keychain send
 ```
 
 ## Enumerating tokens
@@ -119,15 +105,12 @@ In this tutorial, you have added two [new enumeration functions](/tutorials/nfts
 
 In the [next tutorial](/tutorials/nfts/core), you'll implement the core functions needed to allow users to transfer the minted tokens.
 
-:::info Remember
-If you want to see the finished code from this tutorial, you can checkout the `3.enumeration` branch. 
-:::
-
 :::note Versioning for this article
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `4.0.4`
+- near-cli: `4.0.13`
+- cargo-near `0.6.1`
 - NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 - Enumeration standard: [NEP181](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration), version `1.0.0`
 

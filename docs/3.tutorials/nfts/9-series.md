@@ -243,10 +243,8 @@ There are some other smaller changes made to the contract that you can check out
 Now that you hopefully have a good understanding of the contract, let's get started building it. Run the following build command to compile the contract to wasm.
 
 ```bash
-yarn build
+cargo near build
 ```
-
-This should create a new wasm file in the `out/series.wasm` directory. This is what you'll be deploying on-chain. 
 
 ## Deployment and Initialization
 
@@ -255,7 +253,6 @@ Next, you'll deploy this contract to the network.
 ```bash
 export NFT_CONTRACT_ID=<accountId>
 near create-account $NFT_CONTRACT_ID --useFaucet
-near deploy $NFT_CONTRACT_ID out/series.wasm
 ```
 
 Check if this worked correctly by echoing the environment variable.
@@ -265,7 +262,7 @@ echo $NFT_CONTRACT_ID
 This should return your `<accountId>`. The next step is to initialize the contract with some default metadata.
 
 ```bash
-near call $NFT_CONTRACT_ID new_default_meta '{"owner_id": "'$NFT_CONTRACT_ID'"}' --accountId $NFT_CONTRACT_ID
+cargo near deploy $NFT_CONTRACT_ID with-init-call new_default_meta json-args '{"owner_id": "'$NFT_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
 ```
 
 If you now query for the metadata of the contract, it should return our default metadata.
@@ -470,7 +467,8 @@ Thank you so much for going through this journey with us! I wish you all the bes
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `4.0.4`
+- near-cli: `4.0.13`
+- cargo-near `0.6.1`
 - NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 
 :::

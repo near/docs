@@ -9,13 +9,13 @@ This is the first of many tutorials in a series where you'll be creating a compl
 
 ## Introduction
 
-To get started, switch to the `1.skeleton` branch in our repo. If you haven't cloned the repository, refer to the [Contract Architecture](/tutorials/nfts/skeleton) to get started.
+To get started, go to the `nft-contract-skeleton` folder in our repo. If you haven't cloned the repository, refer to the [Contract Architecture](/tutorials/nfts/skeleton) to get started.
 
 ```
-git checkout 1.skeleton
+cd nft-contract-skeleton/
 ```
 
-If you wish to see the finished code for the minting portion of the tutorial, that can be found on the `2.minting` branch.
+If you wish to see the finished code of this step-by-step basic NFT contract tutorial, that can be found on the `nft-contract-basic` folder.
 
 ## Modifications to the skeleton contract {#what-does-minting-mean}
 
@@ -31,14 +31,14 @@ That's it! We've now broken down the larger problem into some smaller, less daun
 
 ### Storing information on the contract {#storing-information}
 
-Start by navigating to `nft-contract/src/lib.rs` and filling in some of the code blocks.
+Start by navigating to `nft-contract-skeleton/src/lib.rs` and filling in some of the code blocks.
 You need to be able to store important information on the contract such as the list of tokens that an account has.
 
 #### Contract Struct
 
 The first thing to do is modifying the contract `struct` as follows:
-
 <Github language="rust" start="25" end="42" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/lib.rs" />
+<Github language="rust" start="25" end="42" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/lib.rs" />
 
 This allows you to get the information stored in these data structures from anywhere in the contract. The code above has created 3 token specific storages:
 
@@ -63,10 +63,12 @@ Don't forget to add the `owner_id` and `metadata` fields as parameters to the fu
 This function will default all the collections to be empty and set the `owner` and `metadata` equal to what you pass in.
 
 <Github language="rust" start="86" end="106" url="https://github.com/near-examples/nft-tutorial/tree/2.minting/nft-contract/src/lib.rs" />
+<Github language="rust" start="86" end="106" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/lib.rs" />
 
 More often than not when doing development, you'll need to deploy contracts several times. You can imagine that it might get tedious to have to pass in metadata every single time you want to initialize the contract. For this reason, let's create a function that can initialize the contract with a set of default `metadata`. You can call it `new_default_meta` and it'll only take the `owner_id` as a parameter.
 
 <Github language="rust" start="64" end="79" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/lib.rs" />
+<Github language="rust" start="64" end="79" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/lib.rs" />
 
 This function is simply calling the previous `new` function and passing in the owner that you specify and also passes in some default metadata.
 
@@ -74,19 +76,22 @@ This function is simply calling the previous `new` function and passing in the o
 
 Now that you've defined what information to store on the contract itself and you've defined some ways to initialize the contract, you need to define what information should go in the `Token`, `TokenMetadata`, and `NFTContractMetadata` data types.
 
-Let's switch over to the `nft-contract/src/metadata.rs` file as this is where that information will go. If you look at the [standards for metadata](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata), you'll find all the necessary information that you need to store for both `TokenMetadata` and `NFTContractMetadata`. Simply fill in the following code.
+Let's switch over to the `nft-contract-skeleton/src/metadata.rs` file as this is where that information will go. If you look at the [standards for metadata](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata), you'll find all the necessary information that you need to store for both `TokenMetadata` and `NFTContractMetadata`. Simply fill in the following code.
 
 <Github language="rust" start="10" end="37" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs" />
+<Github language="rust" start="10" end="37" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/metadata.rs" />
 
 This now leaves you with the `Token` struct and something called a `JsonToken`. The `Token` struct will hold all the information directly related to the token excluding the metadata. The metadata, if you remember, is stored in a map on the contract in a data structure called `token_metadata_by_id`. This allows you to quickly get the metadata for any token by simply passing in the token's ID.
 
 For the `Token` struct, you'll just keep track of the owner for now.
 
 <Github language="rust" start="39" end="43" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs" />
+<Github language="rust" start="39" end="43" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/metadata.rs" />
 
 The purpose of the `JsonToken` is to hold all the information for an NFT that you want to send back as JSON whenever someone does a view call. This means you'll want to store the owner, token ID, and metadata.
 
 <Github language="rust" start="45" end="55" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs" />
+<Github language="rust" start="45" end="55" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/metadata.rs" />
 
 :::tip
 Some of you might be thinking _"how come we don't just store all the information in the `Token` struct?"_.
@@ -99,6 +104,7 @@ In addition, some operations might only need the metadata for a token and so hav
 Now that you've defined some of the types that were used in the previous section, let's move on and create the first view function `nft_metadata`. This will allow users to query for the contract's metadata as per the [metadata standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata).
 
 <Github language="rust" start="57" end="67" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs" />
+<Github language="rust" start="57" end="67" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/metadata.rs" />
 
 This function will get the `metadata` object from the contract which is of type `NFTContractMetadata` and will return it.
 
@@ -131,6 +137,7 @@ With those steps outlined, it's important to take into consideration the storage
 Now that you've got a good understanding of how everything should play out, let's fill in the necessary code.
 
 <Github language="rust" start="3" end="45" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/mint.rs" />
+<Github language="rust" start="3" end="45" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/mint.rs" />
 
 You'll notice that we're using some internal methods such as `refund_deposit` and `internal_add_token_to_owner`. We've described the function of `refund_deposit` and as for `internal_add_token_to_owner`, this will add a token to the set of tokens an account owns for the contract's `tokens_per_owner` data structure. You can create these functions in a file called `internal.rs`. Go ahead and create the file. Your new contract architecture should look as follows:
 
@@ -148,16 +155,19 @@ nft-contract
     ├── metadata.rs
     ├── mint.rs
     ├── nft_core.rs
+    ├── events.rs
     └── royalty.rs
 ```
 
 Add the following to your newly created `internal.rs` file.
 
 <Github language="rust" start="1" end="63" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/internal.rs" />
+<Github language="rust" start="1" end="63" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/internal.rs" />
 
 Let's now quickly move to the `lib.rs` file and make the functions we just created invokable in other files. We'll add the internal crates and mod the file as shown below:
 
 <Github language="rust" start="10" end="23" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/lib.rs" />
+<Github language="rust" start="10" end="23" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/lib.rs" />
 
 At this point, the core logic is all in place so that you can mint NFTs. You can use the function `nft_mint` which takes the following parameters:
 
@@ -176,11 +186,12 @@ Behind the scenes, the function will:
 
 ### Querying for token information
 
-If you were to go ahead and deploy this contract, initialize it, and mint an NFT, you would have no way of knowing or querying for the information about the token you just minted. Let's quickly add a way to query for the information of a specific NFT. You'll move to the `nft-contract/src/nft_core.rs` file and edit the `nft_token` function.
+If you were to go ahead and deploy this contract, initialize it, and mint an NFT, you would have no way of knowing or querying for the information about the token you just minted. Let's quickly add a way to query for the information of a specific NFT. You'll move to the `nft-contract-skeleton/src/nft_core.rs` file and edit the `nft_token` function.
 
 It will take a token ID as a parameter and return the information for that token. The `JsonToken` contains the token ID, the owner ID, and the token's metadata.
 
 <Github language="rust" start="89" end="104" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/nft_core.rs" />
+<Github language="rust" start="89" end="104" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/nft_core.rs" />
 
 With that finished, it's finally time to build and deploy the contract so you can mint your first NFT.
 
@@ -189,14 +200,6 @@ With that finished, it's finally time to build and deploy the contract so you ca
 Now that the logic for minting is complete and you've added a way to query for information about specific tokens, it's time to build and deploy your contract to the blockchain.
 
 ### Deploying the contract {#deploy-the-contract}
-
-We've included a very simple way to build the smart contracts throughout this tutorial using `yarn`. The following command will build the contract and copy over the `.wasm` file to a folder `out/main.wasm`. This uses a build script which can be found in the `nft-contract/build.sh` file.
-
-```bash
-yarn build
-```
-
-There will be a list of warnings on your console, but as the tutorial progresses, these warnings will go away. You should now see the folder `out/` with the file `main.wasm` inside. This is what we will be deploying to the blockchain.
 
 For deployment, you will need a NEAR account with the keys stored on your local machine. Navigate to the [NEAR wallet](https://testnet.mynearwallet.com//) site and create an account.
 
@@ -223,23 +226,29 @@ echo $NFT_CONTRACT_ID
 ```
 
 Verify that the correct account ID is printed in the terminal. If everything looks correct you can now deploy your contract.
-In the root of your NFT project run the following command to deploy your smart contract.
+In the root of your NFT project run the following command to deploy your smart contract and answer questions:
 
 ```bash
-near deploy $NFT_CONTRACT_ID out/main.wasm
+cargo near deploy $NFT_CONTRACT_ID
+
+> Select the need for initialization: with-init-call     - Add an initialize
+> What is the name of the function? new_default_meta
+> How would you like to pass the function arguments? json-args
+> Enter the arguments to this function: {"owner_id": "<YOUR_NFT_CONTRACT_ID>"}
+> Enter gas for function call: 100 TeraGas
+> Enter deposit for a function call (example: 10NEAR or 0.5near or 10000yoctonear): 0 NEAR
+> What is the name of the network? testnet
+> Select a tool for signing the transaction: sign-with-keychain
+> How would you like to proceed? send
 ```
 
-At this point, the contract should have been deployed to your account and you're ready to move onto testing and minting NFTs.
-
-### Initializing the contract {#initialize-contract}
-
-The very first thing you need to do once the contract has been deployed is to initialize it. For simplicity, let's call the default metadata initialization function you wrote earlier so that you don't have to type the metadata manually in the CLI.
+You don't need to answer these questions every time. If you look at the results you will find the message `Here is the console command if you ever need to re-run it again`. The next line is the command which you may use instead of answering to interactive questions:
 
 ```bash
-near call $NFT_CONTRACT_ID new_default_meta '{"owner_id": "'$NFT_CONTRACT_ID'"}' --accountId $NFT_CONTRACT_ID
+cargo near deploy $NFT_CONTRACT_ID with-init-call new_default_meta json-args '{"owner_id": "'$NFT_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
 ```
 
-You've just initialized the contract with some default metadata and set your account ID as the owner. At this point, you're ready to call your first view function.
+You've just deployed and initialized the contract with some default metadata and set your account ID as the owner. At this point, you're ready to call your first view function.
 
 ### Viewing the contract's metadata
 
@@ -270,6 +279,7 @@ At this point, you're ready to move on and mint your first NFT.
 Let's now call the minting function that you've created. This requires a `token_id` and `metadata`. If you look back at the `TokenMetadata` struct you created earlier, there are many fields that could potentially be stored on-chain:
 
 <Github language="rust" start="24" end="37" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs" />
+<Github language="rust" start="24" end="37" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/metadata.rs" />
 
 Let's mint an NFT with a title, description, and media to start. The media field can be any URL pointing to a media file. We've got an excellent GIF to mint but if you'd like to mint a custom NFT, simply replace our media link with one of your choosing. If you run the following command, it will mint an NFT with the following parameters:
 
@@ -353,7 +363,8 @@ In the [next tutorial](/tutorials/nfts/upgrade-contract), you'll find out how to
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `4.0.4`
+- near-cli: `4.0.13`
+- cargo-near `0.6.1`
 - NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 - Metadata standard: [NEP177](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata), version `2.1.0`
 
