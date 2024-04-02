@@ -11,9 +11,9 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/5.api/rpc/providers.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Damián Parrino",
-  "lastUpdatedAt": 1711368553,
-  "formattedLastUpdatedAt": "Mar 25, 2024",
+  "lastUpdatedBy": "Martin",
+  "lastUpdatedAt": 1712057398,
+  "formattedLastUpdatedAt": "Apr 2, 2024",
   "frontMatter": {
     "id": "providers",
     "title": "RPC Providers"
