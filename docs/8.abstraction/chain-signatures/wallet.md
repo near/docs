@@ -3,11 +3,7 @@ id: wallet
 title: Wallet Chain Key Rules 
 ---
 
-:::caution
 
-This technology is currently in `Alpha` and should only be used in a `testnet` environment.
-
-:::
 
 ## Overview
 

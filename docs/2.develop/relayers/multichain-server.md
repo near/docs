@@ -4,11 +4,7 @@ title: Multichain Relayer Server
 sidebar_label: Multichain Relayer Server
 ---
 
-:::caution
 
-This technology is currently in `Alpha` and should only be used in a `testnet` environment.
-
-:::
 
 The [Multichain Relayer Server](https://github.com/near/multichain-relayer-server) facilitates cross-chain transactions and enables Chain Abstraction.
 
