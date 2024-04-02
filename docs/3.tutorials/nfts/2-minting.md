@@ -38,7 +38,7 @@ You need to be able to store important information on the contract such as the l
 
 The first thing to do is modifying the contract `struct` as follows:
 <Github language="rust" start="25" end="42" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/lib.rs" />
-<Github language="rust" start="25" end="42" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/lib.rs" />
+<Github language="rust" start="35" end="53" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/lib.rs" />
 
 This allows you to get the information stored in these data structures from anywhere in the contract. The code above has created 3 token specific storages:
 
@@ -63,12 +63,12 @@ Don't forget to add the `owner_id` and `metadata` fields as parameters to the fu
 This function will default all the collections to be empty and set the `owner` and `metadata` equal to what you pass in.
 
 <Github language="rust" start="86" end="106" url="https://github.com/near-examples/nft-tutorial/tree/2.minting/nft-contract/src/lib.rs" />
-<Github language="rust" start="86" end="106" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/lib.rs" />
+<Github language="rust" start="98" end="116" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/lib.rs" />
 
 More often than not when doing development, you'll need to deploy contracts several times. You can imagine that it might get tedious to have to pass in metadata every single time you want to initialize the contract. For this reason, let's create a function that can initialize the contract with a set of default `metadata`. You can call it `new_default_meta` and it'll only take the `owner_id` as a parameter.
 
 <Github language="rust" start="64" end="79" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/lib.rs" />
-<Github language="rust" start="64" end="79" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/lib.rs" />
+<Github language="rust" start="76" end="91" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/lib.rs" />
 
 This function is simply calling the previous `new` function and passing in the owner that you specify and also passes in some default metadata.
 
@@ -79,19 +79,19 @@ Now that you've defined what information to store on the contract itself and you
 Let's switch over to the `nft-contract-skeleton/src/metadata.rs` file as this is where that information will go. If you look at the [standards for metadata](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata), you'll find all the necessary information that you need to store for both `TokenMetadata` and `NFTContractMetadata`. Simply fill in the following code.
 
 <Github language="rust" start="10" end="37" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs" />
-<Github language="rust" start="10" end="37" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/metadata.rs" />
+<Github language="rust" start="10" end="39" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/metadata.rs" />
 
 This now leaves you with the `Token` struct and something called a `JsonToken`. The `Token` struct will hold all the information directly related to the token excluding the metadata. The metadata, if you remember, is stored in a map on the contract in a data structure called `token_metadata_by_id`. This allows you to quickly get the metadata for any token by simply passing in the token's ID.
 
 For the `Token` struct, you'll just keep track of the owner for now.
 
 <Github language="rust" start="39" end="43" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs" />
-<Github language="rust" start="39" end="43" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/metadata.rs" />
+<Github language="rust" start="41" end="46" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/metadata.rs" />
 
 The purpose of the `JsonToken` is to hold all the information for an NFT that you want to send back as JSON whenever someone does a view call. This means you'll want to store the owner, token ID, and metadata.
 
 <Github language="rust" start="45" end="55" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs" />
-<Github language="rust" start="45" end="55" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/metadata.rs" />
+<Github language="rust" start="49" end="58" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/metadata.rs" />
 
 :::tip
 Some of you might be thinking _"how come we don't just store all the information in the `Token` struct?"_.
@@ -104,7 +104,7 @@ In addition, some operations might only need the metadata for a token and so hav
 Now that you've defined some of the types that were used in the previous section, let's move on and create the first view function `nft_metadata`. This will allow users to query for the contract's metadata as per the [metadata standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata).
 
 <Github language="rust" start="57" end="67" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs" />
-<Github language="rust" start="57" end="67" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/metadata.rs" />
+<Github language="rust" start="60" end="70" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/metadata.rs" />
 
 This function will get the `metadata` object from the contract which is of type `NFTContractMetadata` and will return it.
 
@@ -138,6 +138,50 @@ Now that you've got a good understanding of how everything should play out, let'
 
 <Github language="rust" start="3" end="45" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/mint.rs" />
 <Github language="rust" start="3" end="45" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/mint.rs" />
+
+```rust
+// Put that code into nft-contract-skeleton/srs/mint.rs file
+#[near_bindgen]
+impl Contract {
+    #[payable]
+    pub fn nft_mint(
+        &mut self,
+        token_id: TokenId,
+        metadata: TokenMetadata,
+        receiver_id: AccountId,
+        //we add an optional parameter for perpetual royalties
+        perpetual_royalties: Option<HashMap<AccountId, u32>>,
+    ) {
+        //measure the initial storage being used on the contract
+        let initial_storage_usage = env::storage_usage();
+    
+        //specify the token struct that contains the owner ID 
+        let token = Token {
+            //set the owner ID equal to the receiver ID passed into the function
+            owner_id: receiver_id,
+        };
+    
+        //insert the token ID and token struct and make sure that the token doesn't exist
+        assert!(
+            self.tokens_by_id.insert(&token_id, &token).is_none(),
+            "Token already exists"
+        );
+    
+        //insert the token ID and metadata
+        self.token_metadata_by_id.insert(&token_id, &metadata);
+    
+        //call the internal method for adding the token to the owner
+        self.internal_add_token_to_owner(&token.owner_id, &token_id);
+    
+        //calculate the required storage which was the used - initial
+        let required_storage_in_bytes = env::storage_usage() - initial_storage_usage;
+    
+        //refund any excess storage if the user attached too much. Panic if they didn't attach enough to cover the required.
+        refund_deposit(required_storage_in_bytes.into());
+    }
+}
+```
+
 
 You'll notice that we're using some internal methods such as `refund_deposit` and `internal_add_token_to_owner`. We've described the function of `refund_deposit` and as for `internal_add_token_to_owner`, this will add a token to the set of tokens an account owns for the contract's `tokens_per_owner` data structure. You can create these functions in a file called `internal.rs`. Go ahead and create the file. Your new contract architecture should look as follows:
 

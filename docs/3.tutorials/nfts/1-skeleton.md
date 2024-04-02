@@ -96,7 +96,7 @@ You'll learn more about these functions in the [approvals section](/tutorials/nf
 | **nft_tokens_for_owner** | Returns a paginated list of NFTs owned by any given user.                          |
 
 <Github language="rust" start="4" end="44" url="https://github.com/near-examples/nft-tutorial/blob/1.skeleton/nft-contract/src/enumeration.rs" />
-<Github language="rust" start="4" end="44" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/enumeration.rs" />
+<Github language="rust" start="4" end="44" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-skeleton/src/enumeration.rs" />
 
 You'll learn more about these functions in the [enumeration section](/tutorials/nfts/enumeration) of the tutorial series.
 
@@ -116,7 +116,7 @@ The initialization functions (`new`, `new_default_meta`) can only be called once
 :::
 
 <Github language="rust" start="45" end="71" url="https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/lib.rs" />
-<Github language="rust" start="50" end="76" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/lib.rs" />
+<Github language="rust" start="47" end="73" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-skeleton/src/lib.rs" />
 
 You'll learn more about these functions in the [minting section](/tutorials/nfts/minting) of the tutorial series.
 
@@ -135,7 +135,7 @@ You'll learn more about these functions in the [minting section](/tutorials/nfts
 | **nft_metadata**  | This function allows users to query for the contact's internal metadata.                                      |
 
 <Github language="rust" start="10" end="55" url="https://github.com/near-examples/nft-tutorial/blob/1.skeleton/nft-contract/src/metadata.rs" />
-<Github language="rust" start="12" end="72" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/metadata.rs" />
+<Github language="rust" start="12" end="60" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-skeleton/src/metadata.rs" />
 
 You'll learn more about these functions in the [minting section](/tutorials/nfts/minting) of the tutorial series.
 
@@ -150,7 +150,7 @@ You'll learn more about these functions in the [minting section](/tutorials/nfts
 | **nft_mint** | This function mints a non-fungible token. |
 
 <Github language="rust" start="4" end="16" url="https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/mint.rs" />
-<Github language="rust" start="4" end="16" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/mint.rs" />
+<Github language="rust" start="4" end="16" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-skeleton/src/mint.rs" />
 
 ---
 
@@ -167,7 +167,7 @@ You'll learn more about these functions in the [minting section](/tutorials/nfts
 | **nft_resolve_transfer** | When you start the `nft_transfer_call` and transfer an NFT, the standard also calls a method on the receiver's contract. If the receiver needs you to return the NFT to the sender (as per the return value of the `nft_on_transfer` method), this function allows you to execute that logic. |
 
 <Github language="rust" start="7" end="56" url="https://github.com/near-examples/nft-tutorial/blob/1.skeleton/nft-contract/src/nft_core.rs" />
-<Github language="rust" start="7" end="56" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/nft_core.rs" />
+<Github language="rust" start="7" end="56" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-skeleton/src/nft_core.rs" />
 
 You'll learn more about these functions in the [core section](/tutorials/nfts/core) of the tutorial series.
 
@@ -183,7 +183,7 @@ You'll learn more about these functions in the [core section](/tutorials/nfts/co
 | **nft_transfer_payout** | Transfers the token to the receiver ID and returns the payout object that should be paid for a given balance. |
 
 <Github language="rust" start="3" end="17" url="https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/royalty.rs" />
-<Github language="rust" start="3" end="17" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/royalty.rs" />
+<Github language="rust" start="3" end="17" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-skeleton/src/royalty.rs" />
 
 You'll learn more about these functions in the [royalty section](/tutorials/nfts/royalty) of the tutorial series.
 
@@ -201,7 +201,7 @@ You'll learn more about these functions in the [royalty section](/tutorials/nfts
 | **NftTransferLog**      | An event log to capture token transfer.              |
 
 <Github language="rust" start="7" end="79" url="https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/events.rs" />
-<Github language="rust" start="7" end="79" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/events.rs" />
+<Github language="rust" start="5" end="79" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-skeleton/src/events.rs" />
 
 You'll learn more about these functions in the [events section](/tutorials/nfts/events) of the tutorial series.
 
