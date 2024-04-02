@@ -16,8 +16,9 @@ In this quickstart tutorial, we will guide you in creating your first smart cont
 
 ## Prerequisites
 
-<CodeTabs>
-<Language value="🌐 JavaScript" language="js">
+
+<Tabs groupId="code-tabs">
+  <TabItem value="🌐 JavaScript">
 
 Before starting, make sure you have the following installed:
 
@@ -34,9 +35,9 @@ Before starting, make sure you have the following installed:
 
 :::
 
-</Language>
+</TabItem>
 
-<Language value="🦀 Rust" language="rust">
+<TabItem value="🦀 Rust">
 
 Before starting, make sure you have the following installed:
 
@@ -49,20 +50,22 @@ Before starting, make sure you have the following installed:
 
 - **NEAR-CLI-RS:** Install both `near-cli-rs` and `cargo-near` tools using
 
-  ```bash
-  # Using node
-  npm i -g near-cli-rs cargo-near
+```bash
+# Using node
+npm i -g near-cli-rs cargo-near
 
-  # Using macOS, Linux, WSL
-  curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releases/latest/download/near-cli-rs-installer.sh | sh
-  curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/cargo-near/releases/latest/download/cargo-near-installer.sh | sh
-  ```
+# Using macOS, Linux, WSL
+curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releases/latest/download/near-cli-rs-installer.sh | sh
+curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/cargo-near/releases/latest/download/cargo-near-installer.sh | sh
+```
 
-  :::
+:::
 
-</Language>
+</TabItem>
 
-</CodeTabs>
+</Tabs>
+
+
 
 :::info Testnet Account
 
@@ -76,10 +79,15 @@ However, if you want to create one, you can do so through [a wallet](https://tes
 
 ## Creating the Contract
 
-<CodeTabs>
-<Language value="🌐 JavaScript" language="js">
+
+<Tabs groupId="code-tabs">
+  <TabItem value="🌐 JavaScript">
 
 Create a smart contract by running our `create-near-app` scaffolding tool and following the interactive menu.
+
+- What do you want to build? › `A Near Smart Contract`
+- Select a smart contract template for your project › `JS/TS Contract`
+- Name your project › `hello-near`
 
 ```bash
   npx create-near-app@latest
@@ -103,12 +111,11 @@ The resulting folder structure will change slightly depending on the chosen lang
 └── tsconfig.json
 ```
 
+</TabItem>
 
-</Language>
+<TabItem value="🦀 Rust">
 
-<Language value="🦀 Rust" language="rust">
-
-Create a smart contract by running our `create-near-app` scaffolding tool and following the interactive menu.
+Create a smart contract by running our `near` Rust CLI tool and following the interactive menu.
 
 ```bash
   cargo near new <project_name>
@@ -129,9 +136,10 @@ The resulting folder structure will change slightly depending on the chosen lang
 └── rust-toolchain.toml
 ```
 
-</Language>
+</TabItem>
 
-</CodeTabs>
+</Tabs>
+
 
 ---
 
@@ -219,9 +227,9 @@ Now that we know the contract is passing the tests, let's create a testnet accou
 
 While there are different ways to create accounts in NEAR, in this quickstart we will use the `cargo-near` tool to create a new random [`named account`](/concepts/protocol/account-id).
 
-<CodeTabs>
 
-<Language value="🌐 JavaScript" language="js">
+<Tabs groupId="code-tabs">
+  <TabItem value="🌐 JavaScript">
 
 ```bash
 # Create a new testnet account
@@ -240,16 +248,16 @@ New account "lovely-event.testnet" created successfully. # Response
 
 </details>
 
-</Language>
+</TabItem>
 
-<Language value="🦀 Rust" language="rust">
+<TabItem value="🦀 Rust">
 
 ```bash
 # Create a new testnet account with a random name
 cargo-near near create-dev-account use-random-account-id autogenerate-new-keypair save-to-legacy-keychain network-config testnet create
 
 # Create a new testnet account
-# Replace <created-account> with a custom name
+# Replace <lovely-event.testnet> with a custom name
 cargo-near near create-dev-account use-specific-account-id lovely-event.testnet autogenerate-new-keypair save-to-keychain network-config testnet create
 ````
 
@@ -270,9 +278,10 @@ New account "lovely-event.testnet" created successfully. # Response
 
 </details>
 
-</Language>
+</TabItem>
 
-</CodeTabs>
+</Tabs>
+
 
 :::tip
 
@@ -383,3 +392,15 @@ Go ahead and check other [examples](/tutorials/examples/guest-book) or proceed s
 If you have any questions, do not hesitate to join us on [Discord](https://near.chat). We regularly host Office Hours, in which you can join our voice channel and ask questions.
 
 Happy coding! 🚀
+
+:::note Versioning for this article
+
+At the time of this writing, this example works with the following versions:
+
+- near-cli: `4.0.13`
+- node: `18.19.1`
+- rustc: `1.77.0`
+- near-cli-rs: `0.8.1`
+- cargo-near: `0.6.1`
+
+:::

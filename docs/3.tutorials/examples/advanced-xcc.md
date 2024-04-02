@@ -323,3 +323,13 @@ near call <accountId> similar_contracts --accountId <accountId> --gas 3000000000
 :::info Note
 If the contract exceeds the execution time, additional gas must be provided. For further details [click here](/develop/contracts/environment/#gas).
 :::
+
+:::note Versioning for this article
+
+At the time of this writing, this example works with the following versions:
+
+- near-cli: `4.0.13`
+- node: `18.19.1`
+- rustc: `1.77.0`
+
+:::
