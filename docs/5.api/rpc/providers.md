@@ -32,3 +32,5 @@ If you want to use a custom RPC provider with NEAR Wallet Selector, [check this 
 | [QuickNode](https://www.quicknode.com/chains/near)                         | -                                                            |
 | [Seracle](https://docs.seracle.com/)                                       | `https://api.seracle.com/saas/baas/rpc/near/mainnet/public/` |
 | [Zeeve](https://www.zeeve.io/)                                             | -                                                            |
+| [dRPC](https://drpc.org/)                                                  | `https://near.drpc.org`                                      |
+
