@@ -403,23 +403,6 @@ iframe+em {
     }
 }
 
-@media (min-width: 996px) {
-
-    /* columns */
-    .col,
-    .col:only-child {
-        padding: 0 calc(var(--ifm-spacing-horizontal)/2);
-    }
-
-    .col:last-child {
-        padding: 0 0 0 calc(var(--ifm-spacing-horizontal)/2);
-    }
-
-    .col:first-child {
-        padding: 0 calc(var(--ifm-spacing-horizontal)/2) 0 0;
-    }
-}
-
 /* BOOTSTRAP */
 /* TODO: Include this from file */
 @import './bootstrap.scss';
