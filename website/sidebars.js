@@ -145,7 +145,7 @@ const sidebar = {
             "develop/relayers/relayer-gas-example",
           ]
         },
-        "data-availability/welcome",
+        "abstraction/data-availability",
       ]
     },
     {

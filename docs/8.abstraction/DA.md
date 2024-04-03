@@ -1,5 +1,5 @@
 ---
-id: welcome
+id: data-availability
 title: Rollup Data Availability
 sidebar_label: Rollup Data Availability
 ---
