@@ -7,7 +7,6 @@ import { withRouter } from 'react-router-dom';
 import useIsBrowser from '@docusaurus/useIsBrowser'; // https://docusaurus.io/docs/advanced/ssg#useisbrowser
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
-import { setupAlgoliaEvents } from '@theme/scripts/algolia-events';
 import { useInitWallet } from '@theme/scripts/wallet-selector';
 
 function Root({ children, location, history }) {
@@ -18,7 +17,6 @@ function Root({ children, location, history }) {
         const { initRudderAnalytics, recordPageView } = require('./scripts/rudderstack');
 
         Gleap.initialize('K2v3kvAJ5XtPzNYSgk4Ulpe5ptgBkIMv');
-        setupAlgoliaEvents(docusaurusContext, history);
 
         const rudderAnalytics = initRudderAnalytics();
         recordPageView(rudderAnalytics, location.pathname);
