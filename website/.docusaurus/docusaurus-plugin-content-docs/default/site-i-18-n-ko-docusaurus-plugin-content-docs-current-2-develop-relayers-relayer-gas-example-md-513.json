@@ -25,7 +25,7 @@
     "permalink": "/ko/develop/relayers/gas-station"
   },
   "next": {
-    "title": "What is a Contract?",
-    "permalink": "/ko/develop/contracts/whatisacontract"
+    "title": "Rollup Data Availability",
+    "permalink": "/ko/abstraction/data-availability"
   }
 }

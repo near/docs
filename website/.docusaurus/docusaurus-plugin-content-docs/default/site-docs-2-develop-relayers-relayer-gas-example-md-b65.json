@@ -25,7 +25,7 @@
     "permalink": "/develop/relayers/gas-station"
   },
   "next": {
-    "title": "What is a Contract?",
-    "permalink": "/develop/contracts/whatisacontract"
+    "title": "Rollup Data Availability",
+    "permalink": "/abstraction/data-availability"
   }
 }

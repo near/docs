@@ -442,6 +442,13 @@
             ],
             "collapsed": true,
             "collapsible": true
+          },
+          {
+            "type": "link",
+            "label": "Rollup Data Availability",
+            "href": "/zh-CN/abstraction/data-availability",
+            "docId": "abstraction/data-availability",
+            "unlisted": false
           }
         ],
         "collapsed": true,
@@ -935,86 +942,6 @@
           {
             "type": "html",
             "value": "<a class='menu__link internal' href='/tutorials/nfts/minting-nfts'> 📖 Tutorials </a>"
-          }
-        ],
-        "collapsed": true,
-        "collapsible": true
-      },
-      {
-        "type": "html",
-        "value": "<hr/>"
-      },
-      {
-        "type": "html",
-        "value": "<span class='menu__link'><b><small> Data Availability </small></b></span>"
-      },
-      {
-        "type": "link",
-        "label": "Rollup Data Availability",
-        "href": "/zh-CN/data-availability/welcome",
-        "docId": "data-availability/welcome",
-        "unlisted": false
-      },
-      {
-        "type": "category",
-        "label": "Data Availability",
-        "items": [
-          {
-            "type": "link",
-            "label": "Blob Store Contract",
-            "href": "/zh-CN/data-availability/blob-contract",
-            "docId": "data-availability/blob-contract",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Light Client",
-            "href": "/zh-CN/data-availability/light-client",
-            "docId": "data-availability/light-client",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "RPC Client",
-            "href": "/zh-CN/data-availability/rpc",
-            "docId": "data-availability/rpc",
-            "unlisted": false
-          }
-        ],
-        "collapsed": true,
-        "collapsible": true
-      },
-      {
-        "type": "category",
-        "label": "Integrations",
-        "items": [
-          {
-            "type": "link",
-            "label": "Integrations",
-            "href": "/zh-CN/data-availability/integrations",
-            "docId": "data-availability/integrations",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Arbitrum Nitro",
-            "href": "/zh-CN/data-availability/arbitrum",
-            "docId": "data-availability/arbitrum",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Optimism",
-            "href": "/zh-CN/data-availability/optimism",
-            "docId": "data-availability/optimism",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "CDK Stack",
-            "href": "/zh-CN/data-availability/cdk-integration",
-            "docId": "data-availability/cdk-integration",
-            "unlisted": false
           }
         ],
         "collapsed": true,
@@ -2671,7 +2598,6 @@
         "href": "https://github.com/near/near-seed-phrase"
       }
     ],
-    "indexers": [],
     "api": [
       {
         "type": "link",
@@ -2852,6 +2778,12 @@
       "id": "abstraction/chain-signatures/wallet",
       "title": "Wallet Chain Key Rules",
       "description": "This technology is currently in Alpha and should only be used in a testnet environment.",
+      "sidebar": "build"
+    },
+    "abstraction/data-availability": {
+      "id": "abstraction/data-availability",
+      "title": "Rollup Data Availability",
+      "description": "Utilizing NEAR as storage data availability with a focus on lowering rollup DA fees.",
       "sidebar": "build"
     },
     "abstraction/what-is": {
@@ -3368,54 +3300,6 @@
       "title": "NEAR Protocol Overview",
       "description": "Welcome! Here we will explain you what NEAR Protocol is, its components, and how it works.",
       "sidebar": "concepts"
-    },
-    "data-availability/arbitrum": {
-      "id": "data-availability/arbitrum",
-      "title": "Arbitrum Nitro",
-      "description": "To support Arbitrum Nitro, we have integrated a small plugin into the DAC daserver. This is much like our http sidecar and provides a very modular integration into NEAR DA whilst supporting Arbitrum",
-      "sidebar": "build"
-    },
-    "data-availability/blob-contract": {
-      "id": "data-availability/blob-contract",
-      "title": "Blob Store Contract",
-      "description": "This contract provides the store for arbitrary DA blobs. In practice, these \"blobs\" are sequencing data from rollups, but they can be any data.",
-      "sidebar": "build"
-    },
-    "data-availability/cdk-integration": {
-      "id": "data-availability/cdk-integration",
-      "title": "CDK Stack",
-      "description": "The folder ./cdk-stack contains some projects, too:",
-      "sidebar": "build"
-    },
-    "data-availability/integrations": {
-      "id": "data-availability/integrations",
-      "title": "Integrations",
-      "description": "We have some proof of concept works for integrating with roll-ups. We are working to prove the system's capabilities and provide a reference implementation for others to follow.",
-      "sidebar": "build"
-    },
-    "data-availability/light-client": {
-      "id": "data-availability/light-client",
-      "title": "Light Client",
-      "description": "A trustless off-chain light client for NEAR with DA-enabled features, such as KZG commitments, Reed-Solomon erasure coding & storage connectors.",
-      "sidebar": "build"
-    },
-    "data-availability/optimism": {
-      "id": "data-availability/optimism",
-      "title": "Container diagram for optimism",
-      "description": "We have integrated with the Optimism OP stack. Utilizing the Batcher for submissions to NEAR and the proposer for submitting NEAR commitment data to Ethereum.",
-      "sidebar": "build"
-    },
-    "data-availability/rpc": {
-      "id": "data-availability/rpc",
-      "title": "RPC Client",
-      "description": "This client is the defacto client for submitting blobs to NEAR.",
-      "sidebar": "build"
-    },
-    "data-availability/welcome": {
-      "id": "data-availability/welcome",
-      "title": "Rollup Data Availability",
-      "description": "Utilizing NEAR as storage data availability with a focus on lowering rollup DA fees.",
-      "sidebar": "build"
     },
     "develop/contracts/actions": {
       "id": "develop/contracts/actions",

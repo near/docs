@@ -21,8 +21,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Relayer + Gas Station",
-    "permalink": "/vi/develop/relayers/relayer-gas-example"
+    "title": "Rollup Data Availability",
+    "permalink": "/vi/abstraction/data-availability"
   },
   "next": {
     "title": "Quickstart ✨",
