@@ -23,7 +23,7 @@ NEAR is a technical marvel, offering built-in features such as named accounts an
 3. Transactions are **incredibly fast** _(~1.3s transactions)_ and **cheap** _(< 1¢ in fees)_
 4. No need to acquire crypto thanks to **built-in account abstraction**
 5. Enhanced usability and security thanks to a rich [Access Keys](../protocol/access-keys.md) system
-6. Control accounts on **other chains** thanks to [chain signatures](../abstraction/chain-signatures.md)
+6. Control accounts on **other chains** thanks to [chain signatures](../../2.build/chain-abstraction-services/chain-signatures.md)
 
 ### 🛡️ Battle-Tested 
 1. 4 years of **100% uptime** with more than [**800M** transactions](https://pikespeak.ai/near-world/overview) processed

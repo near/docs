@@ -122,7 +122,7 @@ const sidebar = {
     ]
   ],
   "build": [
-    "develop/welcome",
+    "build/welcome",
     {
       "type": "html",
       "value": "<hr/>"
@@ -131,21 +131,21 @@ const sidebar = {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Chain Abstraction ✨ </small></b></span>"
     },
-    'abstraction/what-is',
+    'build/chain-abstraction-services/what-is',
     {
       "Chain Abstraction Services": [
-        "develop/relayers/build-relayer",
-        'tools/fastauth-sdk',
-        'abstraction/chain-signatures',
-        'abstraction/chain-signatures/wallet',
+        "build/chain-abstraction-services/welcome",
+        'build/chain-abstraction-services/fastauth-sdk',
+        'build/chain-abstraction-services/chain-signatures',
+        'build/chain-abstraction-services/wallet',
         {
           "Multichain Gas Relayer": [
-            "develop/relayers/multichain-server",
-            "develop/relayers/gas-station",
-            "develop/relayers/relayer-gas-example",
+            "build/chain-abstraction-services/multichain-gas-relayer/multichain-server",
+            "build/chain-abstraction-services/multichain-gas-relayer/gas-station",
+            "build/chain-abstraction-services/multichain-gas-relayer/relayer-gas-example",
           ]
         },
-        "abstraction/data-availability",
+        "build/chain-abstraction-services/data-availability",
       ]
     },
     {
@@ -156,43 +156,43 @@ const sidebar = {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Smart Contracts </small></b></span>"
     },
-    "develop/contracts/whatisacontract",
+    "build/building-smart-contracts/what-is",
     {
       "Building Smart Contracts": [
-        "develop/contracts/quickstart",
+        "build/building-smart-contracts/quickstart",
         {
           "Anatomy of a Contract": [
-            "develop/contracts/basics",
-            "develop/contracts/anatomy",
-            "develop/contracts/environment/environment",
-            "develop/contracts/storage",
-            "develop/contracts/actions",
-            "develop/contracts/crosscontract",
-            "develop/contracts/security/checklist",
+            "build/building-smart-contracts/anatomy-of-a-contract/basics",
+            "build/building-smart-contracts/anatomy-of-a-contract/anatomy",
+            "build/building-smart-contracts/anatomy-of-a-contract/environment",
+            "build/building-smart-contracts/anatomy-of-a-contract/storage",
+            "build/building-smart-contracts/anatomy-of-a-contract/actions",
+            "build/building-smart-contracts/anatomy-of-a-contract/crosscontract",
+            "build/building-smart-contracts/anatomy-of-a-contract/checklist",
             {
               "type": "html",
               "value": "<hr/>"
             },
-            "develop/contracts/serialization"
+            "build/building-smart-contracts/anatomy-of-a-contract/serialization"
           ]
         },
         {
           "Test the Contract": [
-            "develop/testing/introduction",
-            "develop/testing/unit-test",
-            "develop/testing/integration-test",
+            "build/building-smart-contracts/test-the-contract/introduction",
+            "build/building-smart-contracts/test-the-contract/unit-test",
+            "build/building-smart-contracts/test-the-contract/integration-test",
             {
               "type": "html",
               "value": "<hr/>"
             },
-            "develop/testing/kurtosis-localnet",
+            "build/building-smart-contracts/test-the-contract/kurtosis-localnet",
           ]
         },
         {
           "Deploy, Update & Lock": [
-            "develop/deploy",
-            "develop/upgrade",
-            "develop/lock"
+            "build/building-smart-contracts/deploy-update-and-lock/deploy",
+            "build/building-smart-contracts/deploy-update-and-lock/upgrade",
+            "build/building-smart-contracts/deploy-update-and-lock/lock"
           ]
         },
         {
@@ -200,22 +200,23 @@ const sidebar = {
           "label": "Security",
           "link": {
             "type": "doc",
-            "id": "develop/contracts/security/welcome"
+            "id": "build/building-smart-contracts/security/welcome"
           },
           "items": [
-            "develop/contracts/security/checklist",
-            "develop/contracts/security/storage",
-            "develop/contracts/security/callbacks",
-            "develop/contracts/security/one-yocto",
-            "develop/contracts/security/sybil",
-            "develop/contracts/security/frontrunning",
-            "develop/contracts/security/reentrancy",
-            "develop/contracts/security/random",
+            // repeated
+            "build/building-smart-contracts/anatomy-of-a-contract/checklist",
+            "build/building-smart-contracts/security/storage",
+            "build/building-smart-contracts/security/callbacks",
+            "build/building-smart-contracts/security/one-yocto",
+            "build/building-smart-contracts/security/sybil",
+            "build/building-smart-contracts/security/frontrunning",
+            "build/building-smart-contracts/security/reentrancy",
+            "build/building-smart-contracts/security/random",
             {
               "type": "html",
               "value": "<hr/>"
             },
-            "develop/contracts/security/bounty"
+            "build/building-smart-contracts/security/bounty"
           ]
         },
         {
@@ -236,22 +237,22 @@ const sidebar = {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Multi-Chain Components </small></b></span>"
     },
-    "bos/tutorial/quickstart",
+    "build/building-web3-components/what-is",
     {
       "Building Web3 Components": [
-        "bos/dev/intro",
+        "build/building-web3-components/intro",
         {
           "Anatomy of a Component": [
-            "bos/api/state",
-            "bos/api/web-methods",
-            "bos/api/builtin-components",
-            "bos/api/near",
-            "bos/api/social",
-            "bos/api/notifications",
-            "bos/queryapi/bos-components"
+            "build/building-web3-components/anatomy-of-a-component/state",
+            "build/building-web3-components/anatomy-of-a-component/web-methods",
+            "build/building-web3-components/anatomy-of-a-component/builtin-components",
+            "build/building-web3-components/anatomy-of-a-component/near",
+            "build/building-web3-components/anatomy-of-a-component/social",
+            "build/building-web3-components/anatomy-of-a-component/notifications",
+            "build/building-web3-components/anatomy-of-a-component/bos-components"
           ]
         },
-        "bos/tutorial/bos-gateway",
+        "build/building-web3-components/bos-gateway",
         {
           "type": "html",
           "value": "<hr/>"
@@ -270,15 +271,15 @@ const sidebar = {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Web3 Applications </small></b></span>"
     },
-    "develop/web3-apps/whatareweb3apps",
+    "build/building-web3-applications/what-is",
     {
       "Building Web3 Applications": [
-        "develop/integrate/quickstart-frontend",
-        "develop/integrate/frontend",
-        "develop/integrate/frontend-components",
+        "build/building-web3-applications/quickstart-frontend",
+        "build/building-web3-applications/frontend",
+        "build/building-web3-applications/frontend-components",
         {
           "Backend": [
-            "develop/integrate/backend-login",
+            "build/building-web3-applications/backend/backend-login",
           ]
         },
         {
@@ -299,15 +300,15 @@ const sidebar = {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Primitives (FT, NFT, ...) </small></b></span>"
     },
-    "primitives/whatareprimitives",
+    "build/primitives-and-standards/what-is",
     {
       "Primitives & Standards": [
-        "primitives/ft",
-        "primitives/nft",
-        "primitives/linkdrop",
-        "primitives/oracles",
-        "primitives/dao",
-        "primitives/dex",
+        "build/primitives-and-standards/ft",
+        "build/primitives-and-standards/nft",
+        "build/primitives-and-standards/linkdrop",
+        "build/primitives-and-standards/oracles",
+        "build/primitives-and-standards/dao",
+        "build/primitives-and-standards/dex",
         {
           "type": "html",
           "value": "<hr/>"
@@ -326,63 +327,63 @@ const sidebar = {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Data Infrastructure </small></b></span>"
     },
-    "develop/whataredatasolutions",
+    "build/near-data-infrastructure/what-is",
     {
       "NEAR Data Infrastructure": [
-        "bos/queryapi/big-query",
+        "build/near-data-infrastructure/big-query",
         {
           "QueryAPI": [
-            "bos/queryapi/intro",
-            "bos/queryapi/how-it-works",
+            "build/near-data-infrastructure/query-api/intro",
+            "build/near-data-infrastructure/query-api/how-it-works",
             {
               "type": "link",
               "label": "Limitations",
-              "href": "/bos/queryapi/intro#known-limitations"
+              "href": "/build/near-data-infrastructure/query-api/intro#known-limitations"
             },
-            "bos/community/indexers",
-            "bos/queryapi/best-practices",
-            "bos/queryapi/index-functions",
-            "bos/queryapi/context-object",
-            "bos/queryapi/query-data",
-            "bos/queryapi/migrate-from-near-lake",
+            "build/near-data-infrastructure/query-api/indexers",
+            "build/near-data-infrastructure/query-api/best-practices",
+            "build/near-data-infrastructure/query-api/index-functions",
+            "build/near-data-infrastructure/query-api/context-object",
+            "build/near-data-infrastructure/query-api/query-data",
+            "build/near-data-infrastructure/query-api/migrate-from-near-lake",
           ]
         },
         {
           "Lake Framework": [
-            "tools/near-lake",
-            "tutorials/indexer/near-lake-state-changes-indexer",
-            "tutorials/indexer/migrating-to-near-lake-framework",
+            "build/near-data-infrastructure/lake-framework/near-lake",
+            "build/near-data-infrastructure/lake-framework/near-lake-state-changes-indexer",
+            "build/near-data-infrastructure/lake-framework/migrating-to-near-lake-framework",
             {
               "Building Indexers": [
-                "develop/lake/primitives",
+                "build/near-data-infrastructure/lake-framework/building-indexers/primitives",
                 {
                   "type": "link",
                   "label": "NEAR Lake Primitives",
                   "href": "https://near.github.io/near-lake-framework-js/"
                 },
-                "tutorials/indexer/js-lake-indexer",
-                "tutorials/indexer/python-lake-indexer",
-                "tutorials/indexer/nft-indexer",
-                "tutorials/indexer/python-nft-indexer"
+                "build/near-data-infrastructure/lake-framework/building-indexers/js-lake-indexer",
+                "build/near-data-infrastructure/lake-framework/building-indexers/python-lake-indexer",
+                "build/near-data-infrastructure/lake-framework/building-indexers/nft-indexer",
+                "build/near-data-infrastructure/lake-framework/building-indexers/python-nft-indexer"
               ]
             },
             {
               "Running NEAR Lake": [
-                "tutorials/indexer/run-lake-indexer",
-                "tutorials/indexer/lake-start-options",
-                "tutorials/indexer/credentials"
+                "build/near-data-infrastructure/lake-framework/running-near-lake/run-lake-indexer",
+                "build/near-data-infrastructure/lake-framework/running-near-lake/lake-start-options",
+                "build/near-data-infrastructure/lake-framework/running-near-lake/credentials"
               ]
             },
             {
               "Lake Data Structures": [
-                "develop/lake/structures/toc",
-                "develop/lake/structures/block",
-                "develop/lake/structures/chunk",
-                "develop/lake/structures/shard",
-                "develop/lake/structures/transaction",
-                "develop/lake/structures/receipt",
-                "develop/lake/structures/execution-outcome",
-                "develop/lake/structures/state-change"
+                "build/near-data-infrastructure/lake-data-structures/toc",
+                "build/near-data-infrastructure/lake-data-structures/block",
+                "build/near-data-infrastructure/lake-data-structures/chunk",
+                "build/near-data-infrastructure/lake-data-structures/shard",
+                "build/near-data-infrastructure/lake-data-structures/transaction",
+                "build/near-data-infrastructure/lake-data-structures/receipt",
+                "build/near-data-infrastructure/lake-data-structures/execution-outcome",
+                "build/near-data-infrastructure/lake-data-structures/state-change"
               ]
             },
           ]
@@ -544,27 +545,27 @@ const sidebar = {
           "bos/tutorial/indexer-tutorials/hype-indexer",
           "bos/tutorial/indexer-tutorials/nft-indexer",
           "bos/tutorial/indexer-tutorials/feed-indexer",
-          "tutorials/indexer/near-lake-state-changes-indexer",
-          "tutorials/indexer/migrating-to-near-lake-framework",
+          "build/near-data-infrastructure/lake-framework/near-lake-state-changes-indexer",
+          "build/near-data-infrastructure/lake-framework/migrating-to-near-lake-framework",
           {
             "Building Indexers": [
-              "develop/lake/primitives",
+              "build/near-data-infrastructure/lake-framework/building-indexers/primitives",
               {
                 "type": "link",
                 "label": "NEAR Lake Primitives",
                 "href": "https://near.github.io/near-lake-framework-js/"
               },
-              "tutorials/indexer/js-lake-indexer",
-              "tutorials/indexer/python-lake-indexer",
-              "tutorials/indexer/nft-indexer",
-              "tutorials/indexer/python-nft-indexer"
+              "build/near-data-infrastructure/lake-framework/building-indexers/js-lake-indexer",
+              "build/near-data-infrastructure/lake-framework/building-indexers/python-lake-indexer",
+              "build/near-data-infrastructure/lake-framework/building-indexers/nft-indexer",
+              "build/near-data-infrastructure/lake-framework/building-indexers/python-nft-indexer"
             ]
           },
           {
             "Running NEAR Lake": [
-              "tutorials/indexer/run-lake-indexer",
-              "tutorials/indexer/lake-start-options",
-              "tutorials/indexer/credentials"
+              "build/near-data-infrastructure/lake-framework/running-near-lake/run-lake-indexer",
+              "build/near-data-infrastructure/lake-framework/running-near-lake/lake-start-options",
+              "build/near-data-infrastructure/lake-framework/running-near-lake/credentials"
             ]
           },
         ]

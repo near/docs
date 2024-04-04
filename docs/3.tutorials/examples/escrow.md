@@ -36,7 +36,7 @@ You have two options to start using the project:
 ---
 
 ### Interacting With the Contract
-Since this example does not have a frontend, we will interact with it using the [NEAR CLI](../../4.tools/cli.md) or writing tests using [`workspaces-js`](../../2.develop/testing/integration.md).
+Since this example does not have a frontend, we will interact with it using the [NEAR CLI](../../4.tools/cli.md) or writing tests using [`workspaces-js`](../../2.build/2.building-smart-contracts/test-the-contract/integration-test.md).
 
 Check the project's [README.md](https://github.com/near-examples/escrow-js/blob/master/README.md). Briefly, you will need to:
 
@@ -149,5 +149,5 @@ go ahead and perform the tests present in the dApp through the command `npm test
 ## Moving Forward
 
 A nice way to learn is by trying to expand a contract. Modify the `escrow-js` example to use an [NFT](../nfts/0-intro.md)
-contract!. In this way, you can try to make functionality where a user purchases an NFT in escrow! Remember to correctly [handle the callback](../../2.develop/contracts/crosscontract.md#callback-method),
+contract!. In this way, you can try to make functionality where a user purchases an NFT in escrow! Remember to correctly [handle the callback](../../2.build/2.building-smart-contracts/anatomy-of-a-contract/crosscontract.md#callback-method),
 and to return the money to the user in case of errors.

@@ -13,7 +13,7 @@ This unlocks the next level of blockchain interoperability by giving ownership o
 _Diagram of a chain signature in NEAR_
 
 :::info Looking for code?
-To get started using Chain Signatures in your project see **[Create a Chain Signature](../../8.abstraction/chain-signatures.md)**.
+To get started using Chain Signatures in your project see **[Create a Chain Signature](../../2.build/1.chain-abstraction-services/chain-signatures.md)**.
 :::
 
 :::caution
@@ -51,7 +51,7 @@ In practice, the external address is deterministically derived using the NEAR ad
 :::
 
 :::info
-See [**Create a Chain Signature - how the derivation is implemented**](../../8.abstraction/chain-signatures.md#1-deriving-the-foreign-address) for an example implementation
+See [**Create a Chain Signature - how the derivation is implemented**](../../2.build/1.chain-abstraction-services/chain-signatures.md#1-deriving-the-foreign-address) for an example implementation
 :::
 
 <hr class="subsection" />
@@ -81,7 +81,7 @@ NEAR smart contracts are unable to halt execution and await the completion of a 
 </details>
 
 :::info
-See [**Create a Chain Signature - requesting the signature**](../../8.abstraction/chain-signatures.md#3-requesting-the-signature) for an example implementation
+See [**Create a Chain Signature - requesting the signature**](../../2.build/1.chain-abstraction-services/chain-signatures.md#3-requesting-the-signature) for an example implementation
 :::
 
 <hr class="subsection" />

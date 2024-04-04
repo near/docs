@@ -54,8 +54,8 @@ export default function NotFoundContent({ className }) {
                       <a href="/develop/contracts/whatisacontract"><li>Smart Contracts</li></a>
                       <a href="/bos/tutorial/quickstart"><li>NEAR Components</li></a>
                       <a href="/develop/web3-apps/whatareweb3apps"><li>Web3 Applications</li></a>
-                      <a href="/abstraction/what-is"><li>Relayers</li></a>
-                      <a href="/abstraction/what-is"><li>Multi-Chain Signatures</li></a>
+                      <a href="/build/what-is"><li>Relayers</li></a>
+                      <a href="/build/what-is"><li>Multi-Chain Signatures</li></a>
                       <a href="/primitives/whatareprimitives"><li>Primitives (FT, NFT, ...)</li></a>
                       <a href="/develop/whataredatasolutions"><li>Indexers & Data Solutions</li></a>
                     </ul>

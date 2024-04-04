@@ -39,7 +39,7 @@ Welcome! Here you will find documentation on how to build Web3 applications usin
       </a>
     </div>
     <div className="col col--3">
-      <a href="/develop/relayers/build-relayer">
+      <a href="/build/chain-abstraction-services/welcome">
         <div className="card">
           <div className="card__image">
             <img src={require("@site/static/docs/assets/welcome-pages/relayer.png").default} alt="Relayers" />

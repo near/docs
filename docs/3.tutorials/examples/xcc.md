@@ -198,7 +198,7 @@ near call <accountId> change_greeting '{"new_greeting":"XCC Hi"}' --accountId <a
 ## Moving Forward
 
 A nice way to learn is by trying to expand a contract. Modify the cross contract example to use the [guest-book](guest-book.md)
-contract!. In this way, you can try to make a cross-contract call that attaches money. Remember to correctly [handle the callback](../../2.develop/contracts/crosscontract.md#callback-method),
+contract!. In this way, you can try to make a cross-contract call that attaches money. Remember to correctly [handle the callback](../../2.build/2.building-smart-contracts/anatomy-of-a-contract/crosscontract.md#callback-method),
 and to return the money to the user in case of error.
 
 ### Advanced Cross Contract Calls
