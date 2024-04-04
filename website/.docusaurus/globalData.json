@@ -1438,6 +1438,11 @@
               "sidebar": "build"
             },
             {
+              "id": "tools/fastnear-api",
+              "path": "/zh-CN/tools/fastnear-api",
+              "sidebar": "tools"
+            },
+            {
               "id": "tools/indexer-for-explorer",
               "path": "/zh-CN/tools/indexer-for-explorer"
             },

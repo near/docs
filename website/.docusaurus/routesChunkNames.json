@@ -5,17 +5,17 @@
       "plugin": "82d98fd4"
     }
   },
-  "/zh-CN/-57e": {
+  "/zh-CN/-047": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "8b378508"
     }
   },
-  "/zh-CN/-7ce": {
+  "/zh-CN/-8f4": {
     "__comp": "a7bd4aaa",
     "version": "935f2afb"
   },
-  "/zh-CN/-82f": {
+  "/zh-CN/-634": {
     "__comp": "a94703ab"
   },
   "/zh-CN/abstraction/chain-signatures-b84": {
@@ -1253,6 +1253,10 @@
   "/zh-CN/tools/fastauth-sdk-6ad": {
     "__comp": "17896441",
     "content": "6ce53e61"
+  },
+  "/zh-CN/tools/fastnear-api-37f": {
+    "__comp": "17896441",
+    "content": "53028750"
   },
   "/zh-CN/tools/indexer-for-explorer-fc7": {
     "__comp": "17896441",

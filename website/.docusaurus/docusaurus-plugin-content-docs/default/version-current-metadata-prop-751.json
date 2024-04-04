@@ -2533,6 +2533,13 @@
       },
       {
         "type": "link",
+        "label": "FastNEAR API",
+        "href": "/zh-CN/tools/fastnear-api",
+        "docId": "tools/fastnear-api",
+        "unlisted": false
+      },
+      {
+        "type": "link",
         "label": "Explorers",
         "href": "/zh-CN/tools/explorer",
         "docId": "tools/explorer",
@@ -4503,6 +4510,12 @@
       "title": "FastAuth SDK",
       "description": "FastAuth is a key management system that allows users to recover or sign-up for a NEAR account using their email address. Furthermore, it allows to subsidize gas for a certain smart contract, so users can interact with it without having to fund their account.",
       "sidebar": "build"
+    },
+    "tools/fastnear-api": {
+      "id": "tools/fastnear-api",
+      "title": "FastNEAR API",
+      "description": "A fast RPC for the NEAR blockchain, based on Redis and LMDB.",
+      "sidebar": "tools"
     },
     "tools/indexer-for-explorer": {
       "id": "tools/indexer-for-explorer",

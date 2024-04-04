@@ -9,15 +9,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '57e'),
+    component: ComponentCreator('/zh-CN/', '047'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '7ce'),
+        component: ComponentCreator('/zh-CN/', '8f4'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '82f'),
+            component: ComponentCreator('/zh-CN/', '634'),
             routes: [
               {
                 path: '/zh-CN/abstraction/chain-signatures',
@@ -1754,6 +1754,12 @@ export default [
                 component: ComponentCreator('/zh-CN/tools/fastauth-sdk', '6ad'),
                 exact: true,
                 sidebar: "build"
+              },
+              {
+                path: '/zh-CN/tools/fastnear-api',
+                component: ComponentCreator('/zh-CN/tools/fastnear-api', '37f'),
+                exact: true,
+                sidebar: "tools"
               },
               {
                 path: '/zh-CN/tools/indexer-for-explorer',
