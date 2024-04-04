@@ -12,8 +12,7 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "matiasbenary",
-  "lastUpdatedAt": 1711383477,
-  "formattedLastUpdatedAt": "Mar 25, 2024",
+  "lastUpdatedAt": 1711383477000,
   "frontMatter": {
     "id": "crosscontract",
     "title": "Cross-Contract Calls"

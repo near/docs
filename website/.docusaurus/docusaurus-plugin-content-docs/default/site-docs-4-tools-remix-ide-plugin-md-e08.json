@@ -12,8 +12,7 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "gagdiez",
-  "lastUpdatedAt": 1685430413,
-  "formattedLastUpdatedAt": "May 30, 2023",
+  "lastUpdatedAt": 1685430413000,
   "frontMatter": {
     "id": "remix-ide-plugin",
     "sidebar_label": "Remix IDE Plugin"

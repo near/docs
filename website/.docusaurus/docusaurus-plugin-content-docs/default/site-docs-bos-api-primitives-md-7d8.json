@@ -12,8 +12,7 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Damián Parrino",
-  "lastUpdatedAt": 1682457647,
-  "formattedLastUpdatedAt": "Apr 25, 2023",
+  "lastUpdatedAt": 1682457647000,
   "frontMatter": {
     "id": "primitives",
     "title": "Primitives API",

@@ -12,8 +12,7 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Damián Parrino",
-  "lastUpdatedAt": 1705668999,
-  "formattedLastUpdatedAt": "Jan 19, 2024",
+  "lastUpdatedAt": 1705668999000,
   "frontMatter": {
     "id": "contract-size",
     "title": "Reducing Contract Size"

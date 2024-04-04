@@ -12,8 +12,7 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Damian Parrino",
-  "lastUpdatedAt": 1711462581,
-  "formattedLastUpdatedAt": "Mar 26, 2024",
+  "lastUpdatedAt": 1711462581000,
   "frontMatter": {
     "id": "build-relayer",
     "title": "Building a Meta Transaction Relayer",

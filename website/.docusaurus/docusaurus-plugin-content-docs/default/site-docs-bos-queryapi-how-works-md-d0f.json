@@ -12,8 +12,7 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Damián Parrino",
-  "lastUpdatedAt": 1701884814,
-  "formattedLastUpdatedAt": "Dec 6, 2023",
+  "lastUpdatedAt": 1701884814000,
   "frontMatter": {
     "id": "how-it-works",
     "title": "How QueryAPI works",

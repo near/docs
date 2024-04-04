@@ -12,8 +12,7 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "gagdiez",
-  "lastUpdatedAt": 1707477797,
-  "formattedLastUpdatedAt": "Feb 9, 2024",
+  "lastUpdatedAt": 1707477797000,
   "frontMatter": {
     "id": "backend-login",
     "title": "Authenticate NEAR Users"

@@ -12,8 +12,7 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Github Actions",
-  "lastUpdatedAt": 1705334457,
-  "formattedLastUpdatedAt": "2024年1月15日",
+  "lastUpdatedAt": 1705334457000,
   "frontMatter": {
     "id": "bos-gateway",
     "title": "Using components on WebApps"

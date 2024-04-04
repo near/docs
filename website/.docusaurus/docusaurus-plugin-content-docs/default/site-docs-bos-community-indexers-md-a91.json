@@ -12,8 +12,7 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Morgan McCauley",
-  "lastUpdatedAt": 1708560849,
-  "formattedLastUpdatedAt": "Feb 22, 2024",
+  "lastUpdatedAt": 1708560849000,
   "frontMatter": {
     "id": "indexers",
     "title": "QueryAPI Indexing Example",

@@ -12,8 +12,7 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Osman Abdelnasir",
-  "lastUpdatedAt": 1712015274,
-  "formattedLastUpdatedAt": "Apr 1, 2024",
+  "lastUpdatedAt": 1712015274000,
   "frontMatter": {
     "id": "fastauth-sdk",
     "title": "FastAuth SDK",

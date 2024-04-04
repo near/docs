@@ -12,8 +12,7 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Github Actions",
-  "lastUpdatedAt": 1709152665,
-  "formattedLastUpdatedAt": "2024年2月28日",
+  "lastUpdatedAt": 1709152665000,
   "frontMatter": {
     "id": "quickstart-guide",
     "title": "Hello NEAR 👋",

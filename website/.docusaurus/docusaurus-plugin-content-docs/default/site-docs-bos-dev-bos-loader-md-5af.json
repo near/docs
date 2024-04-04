@@ -12,8 +12,7 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Vlad Frolov",
-  "lastUpdatedAt": 1695039275,
-  "formattedLastUpdatedAt": "Sep 18, 2023",
+  "lastUpdatedAt": 1695039275000,
   "frontMatter": {
     "id": "bos-loader",
     "title": "BOS Loader"

@@ -12,8 +12,7 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Olga Telezhnaya",
-  "lastUpdatedAt": 1710356654,
-  "formattedLastUpdatedAt": "Mar 13, 2024",
+  "lastUpdatedAt": 1710356654000,
   "frontMatter": {
     "id": "transactions",
     "title": "RPC Endpoints",

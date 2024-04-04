@@ -436,13 +436,28 @@ export default {
       "apiKey": "129d0f429e1bb0510f0261dda1e88ed4",
       "indexName": "near",
       "contextualSearch": true,
-      "externalUrlRegex": "near-sdk\\.io",
       "searchParameters": {
         "clickAnalytics": true,
         "analytics": true,
-        "enableReRanking": true
+        "enableReRanking": true,
+        "attributesToRetrieve": [
+          "hierarchy.lvl0",
+          "hierarchy.lvl1",
+          "hierarchy.lvl2",
+          "hierarchy.lvl3",
+          "hierarchy.lvl4",
+          "hierarchy.lvl5",
+          "hierarchy.lvl6",
+          "type",
+          "url",
+          "title",
+          "description",
+          "headers",
+          "headersLevels"
+        ]
       },
       "placeholder": "Search the Docs...",
+      "insights": true,
       "searchPagePath": "search"
     },
     "docs": {

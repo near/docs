@@ -12,8 +12,7 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Martin",
-  "lastUpdatedAt": 1712057398,
-  "formattedLastUpdatedAt": "Apr 2, 2024",
+  "lastUpdatedAt": 1712057398000,
   "frontMatter": {
     "id": "providers",
     "title": "RPC Providers"

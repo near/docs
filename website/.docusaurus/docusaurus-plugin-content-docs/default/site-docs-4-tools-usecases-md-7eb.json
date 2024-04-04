@@ -12,8 +12,7 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Max Harpunsky",
-  "lastUpdatedAt": 1659444857,
-  "formattedLastUpdatedAt": "Aug 2, 2022",
+  "lastUpdatedAt": 1659444857000,
   "frontMatter": {
     "id": "usecases",
     "title": "Interacting with a Contract",

@@ -1,7 +1,7 @@
 {
   "id": "tools/near-cli",
   "title": "NEAR CLI",
-  "description": "The NEAR Command Line Interface (CLI) is a tool that enables to interact with the NEAR network directly from the shell. Among other things,",
+  "description": "The NEAR Command Line Interface (CLI) is a tool that enables to interact with the NEAR network directly from the shell. Among other things, the NEAR CLI enables you to:",
   "source": "@site/../docs/4.tools/cli.md",
   "sourceDirName": "4.tools",
   "slug": "/tools/near-cli",
@@ -12,8 +12,7 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "gagdiez",
-  "lastUpdatedAt": 1711375194,
-  "formattedLastUpdatedAt": "Mar 25, 2024",
+  "lastUpdatedAt": 1712244029000,
   "frontMatter": {
     "id": "near-cli",
     "title": "NEAR CLI"

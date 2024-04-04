@@ -12,8 +12,7 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Github Actions",
-  "lastUpdatedAt": 1711963490,
-  "formattedLastUpdatedAt": "2024年4月1日",
+  "lastUpdatedAt": 1711963490000,
   "frontMatter": {
     "sidebar_label": "NFT indexer for Python"
   },

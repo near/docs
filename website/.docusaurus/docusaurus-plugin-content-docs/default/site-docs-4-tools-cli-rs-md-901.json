@@ -12,8 +12,7 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "solnyszczko",
-  "lastUpdatedAt": 1694696323,
-  "formattedLastUpdatedAt": "Sep 14, 2023",
+  "lastUpdatedAt": 1694696323000,
   "frontMatter": {
     "id": "near-cli-rs",
     "title": "NEAR CLI RS"

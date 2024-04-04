@@ -12,8 +12,7 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Github Actions",
-  "lastUpdatedAt": 1709152665,
-  "formattedLastUpdatedAt": "2024년 2월 28일",
+  "lastUpdatedAt": 1709152665000,
   "frontMatter": {
     "id": "wallet",
     "title": "지갑과 상호 작용",

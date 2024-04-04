@@ -12,8 +12,7 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "gagdiez",
-  "lastUpdatedAt": 1701811626,
-  "formattedLastUpdatedAt": "Dec 5, 2023",
+  "lastUpdatedAt": 1701811626000,
   "frontMatter": {
     "id": "run-lake-indexer",
     "sidebar_label": "Running Lake Indexer"

@@ -40,7 +40,7 @@
   "theme.common.editThisPage": "Edit this page",
   "theme.common.headingLinkTitle": "Direct link to {heading}",
   "theme.common.skipToMainContent": "Skip to main content",
-  "theme.docs.DocCard.categoryDescription": "{count} items",
+  "theme.docs.DocCard.categoryDescription.plurals": "{count} 个项目",
   "theme.docs.breadcrumbs.home": "Home page",
   "theme.docs.breadcrumbs.navAriaLabel": "Breadcrumbs",
   "theme.docs.paginator.navAriaLabel": "Docs pages",
@@ -103,5 +103,6 @@
   "theme.SearchPage.fetchingNewResults": "Fetching new results...",
   "theme.SearchPage.inputLabel": "Search",
   "theme.SearchPage.inputPlaceholder": "Type your search here",
-  "theme.SearchPage.noResultsText": "No results were found"
+  "theme.SearchPage.noResultsText": "No results were found",
+  "theme.docs.DocCard.categoryDescription": "{count} items"
 }
