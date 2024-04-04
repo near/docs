@@ -3,10 +3,8 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 export function FeatureList({ children }) {
   return <>
-    <div className="container features">
-      <div className="row">
-        {children}
-      </div>
+    <div className="row">
+      {children}
     </div>
   </>
 }

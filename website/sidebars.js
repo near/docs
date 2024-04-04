@@ -11,28 +11,23 @@ const sidebar = {
       "value": "<span class='menu__link'><b><small> The NEAR Protocol </small></b></span>"
     },
     {
-      "Accounts": [
-        "concepts/basics/accounts/model",
-        "concepts/basics/accounts/account-id",
-        "concepts/basics/accounts/access-keys",
-        "concepts/basics/accounts/smartcontract",
-        "concepts/basics/accounts/state",
-        {
-          "type": "html",
-          "value": "<hr/>"
-        },
-        "concepts/basics/accounts/creating-accounts"
+      type: 'category',
+      label: 'Accounts / Contracts',
+      link: { type: 'doc', id: 'concepts/protocol/account-model' },
+      items: [
+        "concepts/protocol/account-id",
+        "concepts/protocol/access-keys",
+        "concepts/protocol/smartcontract",
       ]
     },
     {
-      "Transactions": [
-        "concepts/basics/transactions/overview",
-        {
-          "Gas": [
-            "concepts/basics/transactions/gas",
-            "concepts/basics/transactions/gas-advanced"
-          ]
-        }
+      type: 'category',
+      label: 'Transactions',
+      link: { type: 'doc', id: 'concepts/protocol/transactions' },
+      items: [
+        "concepts/protocol/transaction-anatomy",
+        "concepts/protocol/gas",
+        "concepts/protocol/transaction-execution",
       ]
     },
     {
@@ -67,6 +62,7 @@ const sidebar = {
       "value": "<span class='menu__link'><b><small> Chain Abstraction ✨</small></b></span>"
     },
     "concepts/abstraction/introduction",
+    "concepts/abstraction/meta-transactions",
     "concepts/abstraction/relayers",
     {
       "Chain Signatures": [
@@ -146,8 +142,10 @@ const sidebar = {
           "Multichain Gas Relayer": [
             "develop/relayers/multichain-server",
             "develop/relayers/gas-station",
+            "develop/relayers/relayer-gas-example",
           ]
         },
+        "abstraction/data-availability",
       ]
     },
     {
@@ -764,6 +762,7 @@ const sidebar = {
       "label": "Testnet Faucet",
       "href": "https://near-faucet.io/"
     },
+    'tools/fastnear-api',
     "tools/explorer",
     "tools/indexing",
     {
@@ -820,9 +819,6 @@ const sidebar = {
       "href": "https://github.com/near/near-seed-phrase"
     }
   ],
-  "indexers": [
-
-  ],
   "api": [
     "api/rpc/introduction",
     "api/rpc/providers",
@@ -856,28 +852,6 @@ const sidebar = {
         "pagoda/rpc/get-keys",
         "pagoda/rpc/setup",
         "pagoda/rpc/stats",
-      ]
-    }
-  ],
-  "data-availability": [
-    "data-availability/welcome",
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> DA Docs </small></b></span>"
-    },
-    "data-availability/blob-contract",
-    "data-availability/light-client",
-    "data-availability/rpc",
-    {
-      "Integrations": [
-        "data-availability/integrations",
-        "data-availability/arbitrum",
-        "data-availability/optimism",
-        "data-availability/cdk-integration"
       ]
     }
   ],

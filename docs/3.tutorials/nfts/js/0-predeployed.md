@@ -7,11 +7,7 @@ sidebar_label: Pre-deployed Contract
 > Learn how to easily create your own non-fungible tokens without doing any software development by using a readily-available NFT smart contract.
 
 
-:::caution
 
-The JS-SDK is currently in **[`Alpha`](https://github.com/near/near-sdk-js/releases/)**. 
-
-:::
 
 ## Prerequisites
 

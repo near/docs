@@ -86,6 +86,14 @@ const config = {
     ],
   ],
   themeConfig: {
+    announcementBar: {
+      id: 'abstraction',
+      content:
+        '⛓️ <a href="/concepts/abstraction/chain-signatures">Chain Signatures</a> ⛓️ - Sign and send transactions on Bitcoin, Ethereum, and more! 🔑 ',
+      backgroundColor: '#fafbfc',
+      textColor: '#333',
+      isCloseable: true,
+    },
     prism: {
       additionalLanguages: [
         'rust',
@@ -110,7 +118,7 @@ const config = {
       items: [
         {
           to: '/concepts/welcome',
-          label: 'Learn',
+          label: 'Concepts',
           position: 'left',
         },
         {
