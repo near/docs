@@ -58,7 +58,7 @@ const config = {
           showReadingTime: false,
           routeBasePath: 'changelog',
           path: '../changelog',
-          
+
         },
         theme: {
           customCss: './src/css/custom.scss',
@@ -242,16 +242,30 @@ const config = {
       indexName: 'near',
       // Optional: see doc section below
       contextualSearch: true,
-      // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
-      externalUrlRegex: 'near-sdk\\.io',
       // Optional: Algolia search parameters
       searchParameters: {
         clickAnalytics: true,
         analytics: true,
         enableReRanking: true,
+        attributesToRetrieve: [
+          'hierarchy.lvl0',
+          'hierarchy.lvl1',
+          'hierarchy.lvl2',
+          'hierarchy.lvl3',
+          'hierarchy.lvl4',
+          'hierarchy.lvl5',
+          'hierarchy.lvl6',
+          'type',
+          'url',
+          'title',
+          'description',
+          'headers',
+          'headersLevels'
+        ],
       },
       //... other Algolia params
       placeholder: 'Search the Docs...',
+      insights: true,
     },
   },
   i18n: {
