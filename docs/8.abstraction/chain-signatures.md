@@ -25,11 +25,7 @@ This guide will take you through a step by step process for creating a Chain Sig
 
 :::
 
-:::caution
 
-This technology is currently in `alpha` and should only be used in a `testnet` environment.
-
-:::
 
 ---
 

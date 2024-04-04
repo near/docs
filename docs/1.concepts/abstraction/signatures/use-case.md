@@ -4,11 +4,7 @@ title: Use cases for Chain Signatures
 sidebar_label: Use cases
 ---
 
-:::caution
 
-This technology is currently in `Alpha` and should only be used in a `testnet` environment.
-
-:::
 
 Chain signatures enable you to implement multichain and cross-chain workflows in a simple way.
 Take a look at a few possible use cases:
@@ -19,9 +15,17 @@ Take a look at a few possible use cases:
 
 Trading assets across different blockchains usually require using a bridge that supports them, bringing longer settlement times as the trades are not atomic and require confirmation on both blockchains.
 
-Using Chain signatures you have the ability to change the ownership of different blockchain accounts (e.g., Bitcoin and Ethereum) to trade assets across chains without doing on-chain transactions.
-This way you can keep native tokens on their native blockchain (e.g., `BTC` on Bitcoin, `ETH` on Ethereum, `ARB` on Arbitrum), and trade them without bridges.
-As an added bonus, trades are atomic across chains, settlement takes just 2 seconds, and it supports any token on any chain.
+Using Chain signatures, you can trade assets across chains simply swapping the ownership of NEAR accounts that control funds on different blockchains. For example, you could trade a NEAR account that controls a Bitcoin account with `X BTC` for another NEAR account that controls an Ethereum account with `Y ETH`.
+
+This way, you can keep native tokens on their native blockchain (e.g., `BTC` on Bitcoin, `ETH` on Ethereum, `ARB` on Arbitrum) and trade them without bridges.
+As an added bonus, trades are atomic across chains, settlement takes just 2 seconds, and supports any token on any chain.
+
+:::tip Keep in mind
+
+ There are transactions happening on different blockchains.
+ The difference is that a [Multi-Party Computation service](../chain-signatures.md#multi-party-computation-service) (MPC) signs a transaction for you, and that transaction is then broadcast to another blockchain RPC node or API.
+
+:::
 
 For example, a basic trade flow could be:
 

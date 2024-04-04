@@ -145,6 +145,7 @@ const sidebar = {
             "develop/relayers/relayer-gas-example",
           ]
         },
+        "abstraction/data-availability",
       ]
     },
     {
@@ -315,30 +316,6 @@ const sidebar = {
           "type": "html",
           "value": "<a class='menu__link internal' href='/tutorials/nfts/minting-nfts'> 📖 Tutorials </a>",
         },
-      ]
-    },
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Data Availability </small></b></span>"
-    },
-    "data-availability/welcome",
-    {
-      "Data Availability": [
-        "data-availability/blob-contract",
-        "data-availability/light-client",
-        "data-availability/rpc",
-      ]
-    },
-    {
-      "Integrations": [
-        "data-availability/integrations",
-        "data-availability/arbitrum",
-        "data-availability/optimism",
-        "data-availability/cdk-integration"
       ]
     },
     {
@@ -828,9 +805,6 @@ const sidebar = {
       "label": "Seed Phrase Generator",
       "href": "https://github.com/near/near-seed-phrase"
     }
-  ],
-  "indexers": [
-
   ],
   "api": [
     "api/rpc/introduction",

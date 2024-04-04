@@ -7,11 +7,7 @@ import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-:::caution
 
-This technology is currently in `Alpha` and should only be used in a `testnet` environment.
-
-:::
 
 In this article you'll learn how to run end-to-end tests on the entire Multichain Relayer system.  
 
