@@ -785,6 +785,7 @@ const sidebar = {
       "label": "Testnet Faucet",
       "href": "https://near-faucet.io/"
     },
+    'tools/fastnear-api',
     "tools/explorer",
     "tools/indexing"
   ],
