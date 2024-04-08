@@ -8,11 +8,7 @@ import {Github} from "@site/src/components/codetabs"
 
 Trong hướng dẫn này bạn sẽ tiếp tục build non-fungible token (NFT) smart contract của mình, và tìm hiểu cách triển khai các perpetual royalty vào các NFT. Việc này sẽ cho phép mọi người nhận được phần trăm của giá mua khi NFT được bán.
 
-:::caution
 
-The JS-SDK is currently in **[`Alpha`](https://github.com/near/near-sdk-js/releases/)**.
-
-:::
 
 ## Giới thiệu
 

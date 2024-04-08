@@ -87,17 +87,17 @@ When writing smart contracts, it is very important to test all methods exhaustiv
 
 ### Integration test
 
-Integration tests can be written in both Rust and JavaScript. They automatically deploy a new contract and execute methods on it. In this way, integration tests simulate interactions from users in a realistic scenario. You will find the integration tests for the `coin-flip` in `contract-ts/integration-tests` (for the JavaScript contract) and `contract-rs/sandbox-rs` (for the Rust contract).
+Integration tests can be written in both Rust and JavaScript. They automatically deploy a new contract and execute methods on it. In this way, integration tests simulate interactions from users in a realistic scenario. You will find the integration tests for the `coin-flip` in `contract-ts/sandbox-ts` (for the JavaScript contract) and `contract-rs/tests` (for the Rust contract).
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="main.test.js"
-            url="https://github.com/near-examples/coin-flip-examples/blob/main/contract-ts/integration-tests/src/main.ava.ts"
+            url="https://github.com/near-examples/coin-flip-examples/blob/main/contract-ts/sandbox-ts/main.ava.ts"
             start="32" end="57" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs" 
-            url="https://github.com/near-examples/coin-flip-examples/blob/main/contract-rs/sandbox-rs/src/tests.rs"
+            url="https://github.com/near-examples/coin-flip-examples/blob/main/contract-rs/tests/tests.rs"
             start="27" end="83" />
   </Language>
 </CodeTabs>
@@ -107,3 +107,13 @@ Integration tests can be written in both Rust and JavaScript. They automatically
 ## A Note On Randomness
 
 Randomness in the blockchain is a complex subject. We recommend you to read and investigate about it. You can start with our [security page on it](../../2.develop/contracts/security/random.md).
+
+:::note Versioning for this article
+
+At the time of this writing, this example works with the following versions:
+
+- near-cli: `4.0.13`
+- node: `18.19.1`
+- rustc: `1.77.0`
+
+:::

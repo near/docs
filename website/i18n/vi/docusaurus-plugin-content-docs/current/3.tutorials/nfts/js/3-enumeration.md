@@ -9,11 +9,7 @@ import {Github} from "@site/src/components/codetabs"
 Trong các hướng dẫn trước, bạn đã xem xét các cách tích hợp chức năng mint vào một skeleton smart contract. Để NFT của bạn hiển thị trong ví, bạn cũng phải deploy một bản vá lỗi đã được implement một trong các enumeration method. In this tutorial, you'll expand on and finish the rest of the enumeration methods as per the [standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration) Now you'll extend the NFT smart contract and add a couple of enumeration methods that can be used to return the contract's state.
 
 
-:::caution
 
-The JS-SDK is currently in **[`Alpha`](https://github.com/near/near-sdk-js/releases/)**.
-
-:::
 
 ## Giới thiệu
 

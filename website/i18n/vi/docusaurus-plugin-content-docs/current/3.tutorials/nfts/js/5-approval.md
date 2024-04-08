@@ -8,12 +8,6 @@ import {Github} from "@site/src/components/codetabs"
 
 Trong bài hướng dẫn này bạn sẽ học được những điều cơ bản của một hệ thống approval management, nó sẽ cho phép bạn cấp quyền truy cập cho người khác để transfer các NFT thay mình. Đây là xương sống của tất cả các NFT marketplace và cho phép một số tình huống phức tạp nhưng cần thiết xảy ra. Nếu bạn tham gia với chúng tôi lần đầu, đừng ngại clone [repository này](https://github.com/near-examples/nft-tutorial) và checkout branch `4.core` để theo dõi.
 
-:::caution
-
-The JS-SDK is currently in **[`Alpha`](https://github.com/near/near-sdk-js/releases/)**.
-
-:::
-
 
 ```bash
 git checkout 4.core

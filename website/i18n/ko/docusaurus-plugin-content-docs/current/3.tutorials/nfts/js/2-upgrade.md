@@ -9,11 +9,7 @@ import {Github} from "@site/src/components/codetabs"
 이 튜토리얼에서는 이전에 스마트 컨트랙트 뼈대에서 [발행 기능](/tutorials/nfts/js/minting)을 구현하기 위해 수행한 작업들을 빌드합니다. NFT를 발행할 수 있는 지점에 도달했지만, 컨트랙트가 지갑이 호출하려는 메서드를 구현하지 않았기 때문에 지갑은 토큰을 표시할 방법이 없습니다.
 
 
-:::caution
 
-JS-SDK는 현재 **[`Alpha`](https://github.com/near/near-sdk-js/releases/)** 버전입니다.
-
-:::
 
 ## 소개
 

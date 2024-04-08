@@ -9,11 +9,7 @@ import {Github} from "@site/src/components/codetabs"
 > Trong chủ đề này, bạn sẽ tìm hiểu về kiến trúc cơ bản đằng sau một NFT contract mà bạn sẽ develop khi tham gia serie _"Từ Zero đến Hero"_ này. You'll discover the contract's layout and you'll see how the JavaScript files are structured in order to build a feature-complete smart contract.
 
 
-:::caution
 
-The JS-SDK is currently in **[`Alpha`](https://github.com/near/near-sdk-js/releases/)**.
-
-:::
 
 ## Giới thiệu
 

@@ -9,11 +9,7 @@ import {Github} from "@site/src/components/codetabs"
 > 이 글에서는 이 _"Zero to Hero"_ 시리즈를 진행하면서 개발하게 될 NFT 컨트랙트의 기본 아키텍처에 대해 알아봅니다. 컨트랙트의 레이아웃을 발견하고 완전한 기능을 갖춘 스마트 컨트랙트를 구축하기 위해 JavaScript 파일이 어떻게 구성되어 있는지 확인할 수 있습니다.
 
 
-:::caution
 
-JS-SDK는 현재 **[`Alpha`](https://github.com/near/near-sdk-js/releases/)** 버전입니다.
-
-:::
 
 ## 소개
 

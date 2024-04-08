@@ -7,11 +7,7 @@ sidebar_label: Contract đã được deploy sẵn
 > Bạn sẽ biết cách dễ dàng tạo ra các non-fungible token của riêng mình mà không dùng bất cứ phần mềm phát triển nào, bằng cách sử dụng một NFT smart contract đã có sẵn.
 
 
-:::caution
 
-The JS-SDK is currently in **[`Alpha`](https://github.com/near/near-sdk-js/releases/)**.
-
-:::
 
 ## Điều kiện cần
 

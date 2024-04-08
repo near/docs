@@ -193,3 +193,13 @@ near call <accountId> change_greeting '{"new_greeting":"XCC Hi"}' --accountId <a
 ### 고급 교차 컨트랙트 호출
 
 컨트랙트 여러 교차 컨트랙트 호출을 동시에 수행할 수 있고, 이를 병렬로 실행되는 Promise 생성 혹은 배치(Batch) 트랜잭션으로 수행할 수 있습니다. Check the [advanced cross contract calls tutorial](./advanced-xcc) to learn more.
+
+:::note Versioning for this article
+
+At the time of this writing, this example works with the following versions:
+
+- near-cli: `4.0.13`
+- node: `18.19.1`
+- rustc: `1.77.0`
+
+:::

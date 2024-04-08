@@ -124,7 +124,7 @@ The contract presents 3 methods: `add_message`, `get_message` and `total_message
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/guest-book-examples/blob/main/contract-rs/src/lib.rs"
-            start="37" end="70" />
+            start="31" end="64" />
   </Language>
   
 </CodeTabs>
@@ -222,3 +222,13 @@ near call guestbook.near-examples.testnet add_message '{"text":"Hello Near"}' --
 ## Moving Forward
 
 A nice way to learn is by trying to expand a contract. You can modify the guestbook example to incorporate a feature where users can give likes to messages. Additionally, implement a method to toggle the like.
+
+:::note Versioning for this article
+
+At the time of this writing, this example works with the following versions:
+
+- near-cli: `4.0.13`
+- node: `18.19.1`
+- rustc: `1.77.0`
+
+:::

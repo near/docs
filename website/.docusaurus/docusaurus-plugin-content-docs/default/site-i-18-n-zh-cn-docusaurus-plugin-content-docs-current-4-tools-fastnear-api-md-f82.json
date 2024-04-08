@@ -1,0 +1,28 @@
+{
+  "id": "tools/fastnear-api",
+  "title": "FastNEAR API",
+  "description": "A fast RPC for the NEAR blockchain, based on Redis and LMDB.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/4.tools/fastnear-api.md",
+  "sourceDirName": "4.tools",
+  "slug": "/tools/fastnear-api",
+  "permalink": "/zh-CN/tools/fastnear-api",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/4.tools/fastnear-api.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "fastnear-api",
+    "title": "FastNEAR API",
+    "sidebar_label": "FastNEAR API"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "Wallet Selector",
+    "permalink": "/zh-CN/tools/wallet-selector"
+  },
+  "next": {
+    "title": "Explorers",
+    "permalink": "/zh-CN/tools/explorer"
+  }
+}

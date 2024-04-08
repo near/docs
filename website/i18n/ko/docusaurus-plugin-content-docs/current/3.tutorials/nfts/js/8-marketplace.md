@@ -8,11 +8,7 @@ import {Github} from "@site/src/components/codetabs"
 
 이 튜토리얼에서는 $NEAR에 대해 대체 불가능 토큰(NFT)을 사고 팔 수 있는 NFT 마켓플레이스 컨트랙트의 기본 사항을 배웁니다. 이전 튜토리얼에서는 [NFT 표준](https://nomicon.io/Standards/NonFungibleToken)에 있는 모든 표준을 통합하는 완전한 NFT 컨트랙트를 작성했습니다.
 
-:::caution
 
-JS-SDK는 현재 **[`Alpha`](https://github.com/near/near-sdk-js/releases/)** 버전입니다.
-
-:::
 
 ## 소개
 

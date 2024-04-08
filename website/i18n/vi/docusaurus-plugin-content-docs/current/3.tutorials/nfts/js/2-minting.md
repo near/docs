@@ -9,11 +9,7 @@ import {Github} from "@site/src/components/codetabs"
 Đây là hướng dẫn đầu tiên trong một loạt serie chỉ bạn cách tạo một NFT smart contract hoàn chỉnh từ đầu, phù hợp với tất cả [các chuẩn NFT](https://nomicon.io/Standards/NonFungibleToken/) của NEAR. Hôm nay bạn sẽ học cách tạo logic cần thiết để mint (đúc) NFT và để chúng hiển thị trong ví NEAR của bạn. Bạn sẽ sửa đổi một phần của [skeleton smart contract](/tutorials/nfts/js/skeleton) bằng cách điền vào các code snippet cần thiết cần thiết để thêm các chức năng mint.
 
 
-:::caution
 
-The JS-SDK is currently in **[`Alpha`](https://github.com/near/near-sdk-js/releases/)**.
-
-:::
 
 ## Giới thiệu
 

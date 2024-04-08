@@ -8,11 +8,7 @@ import {Github} from "@site/src/components/codetabs"
 
 Trong hướng dẫn này, bạn sẽ tìm hiểu những điều cơ bản của một NFT marketplace contract, nơi bạn có thể mua và bán các non-fungible token bằng $NEAR. Trong những hướng dẫn trước, bạn đã đi qua và tạo một NFT contract hoàn chỉnh đầy đủ kết hợp tất cả các tiêu chuẩn có trong [tiêu chuẩn NFT](https://nomicon.io/Standards/NonFungibleToken).
 
-:::caution
 
-The JS-SDK is currently in **[`Alpha`](https://github.com/near/near-sdk-js/releases/)**.
-
-:::
 
 ## Giới thiệu
 

@@ -6,13 +6,7 @@ sidebar_label: Giới thiệu
 
 > Trong serie _Zero to Hero_ này, bạn sẽ thấy một bộ hướng dẫn bao gồm mọi khía cạnh của một non-fungible token (NFT) smart contract. Bạn sẽ bắt đầu bằng cách mint ra một NFT bằng cách sử dụng một contract đã được deploy sẵn, và cuối cùng, bạn sẽ kết thúc việc xây dựng một một NFT smart contract hoàn chỉnh hỗ trợ mọi extension.
 
-:::caution
 
-The JS-SDK is currently in **[`Alpha`](https://github.com/near/near-sdk-js/releases/)**.
-
-The JavaScript runtime has not been fully audited. For creating smart contracts that hold value please use [`near-sdk-rs`](https://github.com/near/near-sdk-rs).
-
-:::
 
 ## Điều kiện cần
 

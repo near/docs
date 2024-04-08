@@ -81,29 +81,39 @@ Both Rust and JavaScript versions of the contract implement the same functionali
 
 ---
 
-## 테스트
+## Testing
 
 스마트 컨트랙트를 작성할 때 모든 메서드를 철저하게 테스트하는 것이 매우 중요합니다. In this project you have integration tests. Before digging into them, go ahead and perform the tests present in the dApp through the command `yarn test` for the JavaScript version, or `./test.sh` for the Rust version.
 
 ### 통합 테스트
 
-Integration tests can be written in both Rust and JavaScript. 이는 자동으로 컨트랙트를 배포하고, 메서드를 실행합니다. 이러한 방식으로 통합 테스트는 현실적인 시나리오에서 사용자의 상호 작용을 시뮬레이션합니다. You will find the integration tests for the `coin-flip` in `contract-ts/integration-tests` (for the JavaScript contract) and `contract-rs/sandbox-rs` (for the Rust contract).
+Integration tests can be written in both Rust and JavaScript. 이는 자동으로 컨트랙트를 배포하고, 메서드를 실행합니다. 이러한 방식으로 통합 테스트는 현실적인 시나리오에서 사용자의 상호 작용을 시뮬레이션합니다. You will find the integration tests for the `coin-flip` in `contract-ts/sandbox-ts` (for the JavaScript contract) and `contract-rs/tests` (for the Rust contract).
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="main.test.js"
-            url="https://github.com/near-examples/coin-flip-examples/blob/main/contract-ts/integration-tests/src/main.ava.ts"
+            url="https://github.com/near-examples/coin-flip-examples/blob/main/contract-ts/sandbox-ts/main.ava.ts"
             start="32" end="57" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs" 
-            url="https://github.com/near-examples/coin-flip-examples/blob/main/contract-rs/sandbox-rs/src/tests.rs"
+            url="https://github.com/near-examples/coin-flip-examples/blob/main/contract-rs/tests/tests.rs"
             start="27" end="83" />
   </Language>
 </CodeTabs>
 
 ---
 
-## 랜덤성에 대한 참고 사항
+## A Note On Randomness
 
-블록체인의 랜덤성은 복잡한 주제이기에, 그것에 대해 읽고 조사하는 것이 좋습니다. [이에 대한 보안 페이지](../../2.develop/contracts/security/random.md)에서 이를 시작할 수 있습니다.
+Randomness in the blockchain is a complex subject. 그것에 대해 읽고 조사하는 것이 좋습니다. You can start with our [security page on it](../../2.develop/contracts/security/random.md).
+
+:::note Versioning for this article
+
+At the time of this writing, this example works with the following versions:
+
+- near-cli: `4.0.13`
+- node: `18.19.1`
+- rustc: `1.77.0`
+
+:::

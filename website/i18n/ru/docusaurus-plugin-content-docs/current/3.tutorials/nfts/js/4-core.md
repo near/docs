@@ -9,12 +9,6 @@ import {Github} from "@site/src/components/codetabs"
 In this tutorial you'll learn how to implement the [core standards](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core) into your smart contract. If you're joining us for the first time, feel free to clone [this repo](https://github.com/near-examples/nft-tutorial) and checkout the `3.enumeration` branch to follow along.
 
 
-:::caution
-
-The JS-SDK is currently in **[`Alpha`](https://github.com/near/near-sdk-js/releases/)**.
-
-:::
-
 ```bash
 git checkout 3.enumeration
 ```

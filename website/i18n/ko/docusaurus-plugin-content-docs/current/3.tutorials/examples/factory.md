@@ -30,10 +30,10 @@ In this page we will focus on the Donation factory, to learn more about the toke
 <CodeTabs>
   <Language value="🦀 Rust" language="rust">
     <Github fname="deploy.rs"
-            url="https://github.com/near-examples/factory-rust/blob/main/contract/src/deploy.rs"
+            url="https://github.com/near-examples/factory-rust/blob/main/src/deploy.rs"
             start="14" end="60" />
-    <Github fname="update.rs"
-            url="https://github.com/near-examples/factory-rust/blob/main/contract/src/manager.rs"
+    <Github fname="manager.rs"
+            url="https://github.com/near-examples/factory-rust/blob/main/src/manager.rs"
             start="5" end="19" />
   </Language>
 </CodeTabs>
@@ -138,3 +138,13 @@ pub fn update_stored_contract(&mut self) {
 2. 이를 필터링하여, 정확하게 구축되었는지 확인합니다.
 
 입력 데이터의 큰 스트림을 처리할 때(저장할 컴파일된 파일과 마찬가지로 `wasm`) 입력을 역직렬화/확인하는 이 프로세스는 트랜잭션에 대해 **전체 가스를 소모합니다**.
+
+:::note Versioning for this article
+
+At the time of this writing, this example works with the following versions:
+
+- near-cli: `4.0.13`
+- node: `18.19.1`
+- rustc: `1.77.0`
+
+:::

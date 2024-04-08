@@ -8,11 +8,7 @@ import {Github} from "@site/src/components/codetabs"
 
 이 튜토리얼에서는 [이벤트 표준](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event)과 이를 스마트 컨트랙트에서 구현하는 방법에 대해 알아봅니다.
 
-:::caution
 
-JS-SDK는 현재 **[`Alpha`](https://github.com/near/near-sdk-js/releases/)** 버전입니다.
-
-:::
 
 ## 소개
 

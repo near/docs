@@ -1,7 +1,7 @@
 {
   "id": "concepts/abstraction/signatures/use-cases",
   "title": "Use cases for Chain Signatures",
-  "description": "This technology is currently in Alpha and should only be used in a testnet environment.",
+  "description": "Chain signatures enable you to implement multichain and cross-chain workflows in a simple way.",
   "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/1.concepts/abstraction/signatures/use-case.md",
   "sourceDirName": "1.concepts/abstraction/signatures",
   "slug": "/concepts/abstraction/signatures/use-cases",

@@ -167,6 +167,7 @@ You should do this on a VM server of your choice. We will refer to the URL of th
 
 - Go to GCP's Cloud Run console and press "Create Service".
 - In the field "Container image URL", paste `nearprotocol/fast-auth-sdk-frontend:latest`.
+- Under **Container(s), Volumes, Networking, Security** set **Container port** to `80`
 - Go to the "Container, Networking, Security" fold out and then "Environment Variables"
 - Click on "Add Variable"
 - Set the following environment variables from the `firebaseConfig` you generated earlier.

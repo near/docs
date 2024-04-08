@@ -8,12 +8,6 @@ import {Github} from "@site/src/components/codetabs"
 
 In this tutorial you'll learn the basics of an approval management system which will allow you to grant others access to transfer NFTs on your behalf. This is the backbone of all NFT marketplaces and allows for some complex yet beautiful scenarios to happen. If you're joining us for the first time, feel free to clone [this repository](https://github.com/near-examples/nft-tutorial) and checkout the `4.core` branch to follow along.
 
-:::caution
-
-The JS-SDK is currently in **[`Alpha`](https://github.com/near/near-sdk-js/releases/)**.
-
-:::
-
 
 ```bash
 git checkout 4.core

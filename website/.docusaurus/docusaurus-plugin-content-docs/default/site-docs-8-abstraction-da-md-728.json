@@ -5,7 +5,7 @@
   "source": "@site/../docs/8.abstraction/DA.md",
   "sourceDirName": "8.abstraction",
   "slug": "/abstraction/data-availability",
-  "permalink": "/zh-CN/abstraction/data-availability",
+  "permalink": "/abstraction/data-availability",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/8.abstraction/DA.md",
@@ -21,10 +21,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Relayer + Gas Station",
-    "permalink": "/zh-CN/develop/relayers/relayer-gas-example"
+    "permalink": "/develop/relayers/relayer-gas-example"
   },
   "next": {
     "title": "What is a Contract?",
-    "permalink": "/zh-CN/develop/contracts/whatisacontract"
+    "permalink": "/develop/contracts/whatisacontract"
   }
 }

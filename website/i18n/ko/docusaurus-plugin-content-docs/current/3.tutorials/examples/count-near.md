@@ -223,3 +223,13 @@ near call counter.near-examples.testnet reset --accountId <accountId>
 ## Moving Forward
 
 A nice way to learn is by trying to expand the contract. `increment` 및 `decrement`에 인자를 추가하여, 사용자가 변화시킬 값의 정도를 선택할 수 있도록 수정해 보세요. For this, you will need to use knowledge from the [anatomy](../../2.develop/contracts/anatomy.md) and [storage](../../2.develop/contracts/storage.md) sections.
+
+:::note Versioning for this article
+
+At the time of this writing, this example works with the following versions:
+
+- near-cli: `4.0.13`
+- node: `18.19.1`
+- rustc: `1.77.0`
+
+:::

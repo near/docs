@@ -9,11 +9,7 @@ import {Github} from "@site/src/components/codetabs"
 Trong hướng dẫn này, bạn sẽ nâng cấp những gì bạn đã làm trước đây để implement [chức năng mint](/tutorials/nfts/js/minting) trên một bộ khung smart contract. You got to the point where NFTs could be minted, however, the wallet had no way of displaying the tokens since your contract didn't implement the method that the wallet was trying to call.
 
 
-:::caution
 
-The JS-SDK is currently in **[`Alpha`](https://github.com/near/near-sdk-js/releases/)**.
-
-:::
 
 ## Giới thiệu
 

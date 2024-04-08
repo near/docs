@@ -30,10 +30,10 @@ The [Generic Factory](https://github.com/near-examples/factory-rust/) presents a
 <CodeTabs>
   <Language value="🦀 Rust" language="rust">
     <Github fname="deploy.rs"
-            url="https://github.com/near-examples/factory-rust/blob/main/contract/src/deploy.rs"
+            url="https://github.com/near-examples/factory-rust/blob/main/src/deploy.rs"
             start="14" end="60" />
-    <Github fname="update.rs"
-            url="https://github.com/near-examples/factory-rust/blob/main/contract/src/manager.rs"
+    <Github fname="manager.rs"
+            url="https://github.com/near-examples/factory-rust/blob/main/src/manager.rs"
             start="5" end="19" />
   </Language>
 </CodeTabs>
@@ -138,3 +138,13 @@ You could implement `update_stored_contract(&mut self, new_code: Vec<u8>)`, whic
 2. Sanitize it, making sure it is correctly built.
 
 When dealing with big streams of input data (as is the compiled `wasm` file to be stored), this process of deserializing/checking the input ends up **consuming the whole GAS** for the transaction.
+
+:::note Versioning for this article
+
+At the time of this writing, this example works with the following versions:
+
+- near-cli: `4.0.13`
+- node: `18.19.1`
+- rustc: `1.77.0`
+
+:::

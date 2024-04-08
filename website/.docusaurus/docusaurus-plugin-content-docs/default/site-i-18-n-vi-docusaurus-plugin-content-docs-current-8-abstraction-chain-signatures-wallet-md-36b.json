@@ -1,7 +1,7 @@
 {
   "id": "abstraction/chain-signatures/wallet",
   "title": "Wallet Chain Key Rules",
-  "description": "This technology is currently in Alpha and should only be used in a testnet environment.",
+  "description": "Overview",
   "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/8.abstraction/chain-signatures/wallet.md",
   "sourceDirName": "8.abstraction/chain-signatures",
   "slug": "/abstraction/chain-signatures/wallet",

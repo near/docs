@@ -25,13 +25,7 @@ This guide will take you through a step by step process for creating a Chain Sig
 
 :::
 
-:::caution
-
-This technology is currently in `alpha` and should only be used in a `testnet` environment.
-
-:::
-
-***
+---
 
 ## Create a Chain Signature
 
@@ -46,7 +40,7 @@ There are five steps to create a Chain Signature:
 ![chain-signatures](/docs/assets/welcome-pages/chain-signatures-overview.png)
 _Diagram of a chain signature in NEAR_
 
-***
+---
 
 ## 1. Deriving the Foreign Address
 
@@ -82,7 +76,7 @@ The same NEAR account and path will always produce the same address on the targe
 
 :::
 
-***
+---
 
 ## 2. Creating the Transaction
 
@@ -109,7 +103,7 @@ In bitcoin, you construct a new transaction by using all the Unspent Transaction
 
 </Tabs>
 
-***
+---
 
 ## 3. Requesting the Signature
 
@@ -152,13 +146,13 @@ The contract will take some time to respond, as the `sign` method starts recursi
 
 NEAR smart contracts are unable to halt execution and await the completion of a process. To solve this, one can make the contract call itself again and again checking on each iteration to see if the result is ready.
 
-**Note:** Each call will take one block which equates to \~1 second of waiting. After some time the contract will either return a result that an external party provided or return an error running out of GAS waiting.
+**Note:** Each call will take one block which equates to ~1 second of waiting. After some time the contract will either return a result that an external party provided or return an error running out of GAS waiting.
 
 </details>
 
 :::
 
-***
+---
 
 ## 4. Reconstructing the Signature
 
@@ -189,7 +183,7 @@ In Bitcoin, the signature is reconstructed by concatenating the `r` and `s` valu
 
 </Tabs>
 
-***
+---
 
 ## 5. Relaying the Signature
 

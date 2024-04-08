@@ -9,15 +9,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '19b'),
+    component: ComponentCreator('/zh-CN/', '1d3'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', 'e57'),
+        component: ComponentCreator('/zh-CN/', 'f20'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '7e0'),
+            component: ComponentCreator('/zh-CN/', '5b2'),
             routes: [
               {
                 path: '/zh-CN/',
@@ -38,7 +38,7 @@ export default [
               },
               {
                 path: '/zh-CN/abstraction/data-availability',
-                component: ComponentCreator('/zh-CN/abstraction/data-availability', 'e16'),
+                component: ComponentCreator('/zh-CN/abstraction/data-availability', 'a05'),
                 exact: true,
                 sidebar: "build"
               },
@@ -1762,7 +1762,7 @@ export default [
               },
               {
                 path: '/zh-CN/tools/fastnear-api',
-                component: ComponentCreator('/zh-CN/tools/fastnear-api', '445'),
+                component: ComponentCreator('/zh-CN/tools/fastnear-api', '476'),
                 exact: true,
                 sidebar: "tools"
               },

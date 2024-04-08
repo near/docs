@@ -2784,7 +2784,7 @@
     "abstraction/chain-signatures/wallet": {
       "id": "abstraction/chain-signatures/wallet",
       "title": "Wallet Chain Key Rules",
-      "description": "This technology is currently in Alpha and should only be used in a testnet environment.",
+      "description": "Overview",
       "sidebar": "build"
     },
     "abstraction/data-availability": {
@@ -3104,7 +3104,7 @@
     "concepts/abstraction/signatures/use-cases": {
       "id": "concepts/abstraction/signatures/use-cases",
       "title": "Use cases for Chain Signatures",
-      "description": "This technology is currently in Alpha and should only be used in a testnet environment.",
+      "description": "Chain signatures enable you to implement multichain and cross-chain workflows in a simple way.",
       "sidebar": "concepts"
     },
     "concepts/advanced/indexers": {
@@ -3562,19 +3562,19 @@
     "develop/relayers/gas-station": {
       "id": "develop/relayers/gas-station",
       "title": "Multichain Gas Station Contract",
-      "description": "This technology is currently in Alpha and should only be used in a testnet environment.",
+      "description": "The multichain gas station smart contract accepts payments in NEAR tokens in exchange for gas funding on non-NEAR foreign chains. Part of the NEAR Multichain effort, it works in conjunction with the MPC recovery service to generate on-chain signatures.",
       "sidebar": "build"
     },
     "develop/relayers/multichain-server": {
       "id": "develop/relayers/multichain-server",
       "title": "Multichain Relayer Server",
-      "description": "This technology is currently in Alpha and should only be used in a testnet environment.",
+      "description": "The Multichain Relayer Server facilitates cross-chain transactions and enables Chain Abstraction.",
       "sidebar": "build"
     },
     "develop/relayers/relayer-gas-example": {
       "id": "develop/relayers/relayer-gas-example",
       "title": "Multichain Relayer and Gas Station example",
-      "description": "This technology is currently in Alpha and should only be used in a testnet environment.",
+      "description": "In this article you'll learn how to run end-to-end tests on the entire Multichain Relayer system.",
       "sidebar": "build"
     },
     "develop/relevant-contracts/dao": {

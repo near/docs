@@ -193,3 +193,13 @@ A nice way to learn is by trying to expand a contract. Modify the cross contract
 ### Advanced Cross Contract Calls
 
 Your contract can perform multiple cross-contract calls in simultaneous, creating promises that execute in parallel, or as a batch transaction. Check the [advanced cross contract calls tutorial](./advanced-xcc) to learn more.
+
+:::note Versioning for this article
+
+At the time of this writing, this example works with the following versions:
+
+- near-cli: `4.0.13`
+- node: `18.19.1`
+- rustc: `1.77.0`
+
+:::

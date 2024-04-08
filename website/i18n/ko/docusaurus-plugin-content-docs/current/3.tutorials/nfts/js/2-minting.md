@@ -9,11 +9,7 @@ import {Github} from "@site/src/components/codetabs"
 이것은 모든 NEAR [NFT 표준](https://nomicon.io/Standards/NonFungibleToken/)을 준수하는 완전한 NFT 스마트 컨트랙트를 처음부터 만드는 시리즈의 많은 튜토리얼 중 첫 번째입니다. 오늘은 NFT를 생성하고 NEAR 지갑에 표시하는 데 필요한 로직을 생성하는 방법을 배웁니다. 여기서는, 발행 함수를 추가하는 데 필요한 필수 코드 스니펫을 작성하여 중요한 [스마트 컨트랙트의 뼈대](/tutorials/nfts/js/skeleton)를 수정하게 됩니다.
 
 
-:::caution
 
-JS-SDK는 현재 **[`Alpha`](https://github.com/near/near-sdk-js/releases/)** 버전입니다.
-
-:::
 
 ## 소개
 

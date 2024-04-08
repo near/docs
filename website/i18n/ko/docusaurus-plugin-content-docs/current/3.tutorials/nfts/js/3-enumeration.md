@@ -9,11 +9,7 @@ import {Github} from "@site/src/components/codetabs"
 이전 자습서에서는 발행 함수를 스마트 컨트랙트 뼈대에 통합하는 방법을 살펴보았습니다. NFT를 지갑에 표시하려면 열거 메서드 중 하나를 구현하는 패치 수정 사항도 배포해야 했습니다. 이 튜토리얼에서는 [표준](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration)에 따라 나머지 열거 방법을 확장하고 완료합니다. 이제 NFT 스마트 컨트랙트를 확장하고 컨트랙트 상태를 반환하는 데 사용할 수 있는 몇 가지 열거 메서드를 추가합니다.
 
 
-:::caution
 
-JS-SDK는 현재 **[`Alpha`](https://github.com/near/near-sdk-js/releases/)** 버전입니다.
-
-:::
 
 ## 소개
 

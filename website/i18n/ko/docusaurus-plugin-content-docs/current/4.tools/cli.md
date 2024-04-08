@@ -3,7 +3,7 @@ id: near-cli
 title: NEAR CLI
 ---
 
-NEAR [명령줄(Command Line) 인터페이스](https://github.com/near/near-cli) (CLI)는 쉘에서 직접 NEAR 네트워크와 상호 작용할 수 있는 도구입니다. 무엇보다도, NEAR CLI를 사용하면 다음을 수행할 수 있습니다.
+NEAR [명령줄(Command Line) 인터페이스](https://github.com/near/near-cli) (CLI)는 쉘에서 직접 NEAR 네트워크와 상호 작용할 수 있는 도구입니다. Among other things, the NEAR CLI enables you to:
 
 - NEAR 계정으로 로그인
 - 컨트랙트 배포

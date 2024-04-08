@@ -4,12 +4,6 @@ title: Multichain Relayer Server
 sidebar_label: Multichain Relayer Server
 ---
 
-:::caution
-
-This technology is currently in `Alpha` and should only be used in a `testnet` environment.
-
-:::
-
 The [Multichain Relayer Server](https://github.com/near/multichain-relayer-server) facilitates cross-chain transactions and enables Chain Abstraction.
 
 ## Overview
@@ -86,7 +80,7 @@ It depends on the chain, but in our current estimation 50-90% of the time will b
 The signing service will take 15-30 seconds.
 We assume that both the signing of the foreign chain transaction and the gas funding transaction happen in parallel.
 On BSC mainnet (not beaconchain which has 1 second finality) with 3 second blocktimes there should be 2 blocks for confirmation optimistically bringing the total to 6 seconds optimistically/transaction on BSC.
-We need to make 2 transactions, so that's 12-24 seconds on BSC assuming 2-4 blocks for finality. Add in some network overhead for each step in the process, especially the indexer picking up the emitted event (\~5-7 seconds), and we're at 30-60 seconds/transaction on BSC.
+We need to make 2 transactions, so that's 12-24 seconds on BSC assuming 2-4 blocks for finality. Add in some network overhead for each step in the process, especially the indexer picking up the emitted event (~5-7 seconds), and we're at 30-60 seconds/transaction on BSC.
 For Solana it would be closer to 20-30 seconds (0.4 second block time, 1 block confirmation). See [table 1](https://usa.visa.com/solutions/crypto/deep-dive-on-solana.html) for more confirmation times.
 
 L2 real finality times can over a day for finality unless we trust a centralized sequencer for soft confirmations, which may be as fast as a few seconds as in the case of [zksync era](https://era.zksync.io/docs/reference/concepts/finality.html#instant-confirmations).

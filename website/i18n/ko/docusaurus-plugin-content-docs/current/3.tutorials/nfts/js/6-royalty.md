@@ -8,11 +8,7 @@ import {Github} from "@site/src/components/codetabs"
 
 이 튜토리얼에서는 대체 불가능 토큰(NFT) 스마트 컨트랙트를 계속 구축하고, NFT에 영구 로열티를 구현하는 방법을 배웁니다. 이를 통해 사람들은 NFT가 판매될 때 구매 가격의 일정 비율을 얻을 수 있습니다.
 
-:::caution
 
-JS-SDK는 현재 **[`Alpha`](https://github.com/near/near-sdk-js/releases/)** 버전입니다.
-
-:::
 
 ## 소개
 

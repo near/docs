@@ -53,8 +53,8 @@ NEAR 계정은 로직(컨트랙트의 코드)을 상태(스토리지)와 분리�
 <CodeTabs>
   <Language value="🦀 Rust" language="rust">
     <Github fname="update.rs"
-        url="https://github.com/near-examples/update-migrate-rust/blob/main/contracts/self-updates/base/src/update.rs"
-        start="10" end="28" />
+        url="https://github.com/near-examples/update-migrate-rust/blob/main/self-updates/base/src/update.rs"
+        start="10" end="31" />
   </Language>
 </CodeTabs>
 
@@ -74,11 +74,8 @@ NEAR 계정은 로직(컨트랙트의 코드)을 상태(스토리지)와 분리�
   <TabItem value="near-cli-rs">
 
   ```bash
-  # Load the contract's raw bytes
-  CONTRACT_BYTES=`cat ./path/to/wasm.wasm | base64`
-
   # Call the update_contract method
-  near contract call-function as-transaction <contract-account> update_contract base64-args  "$CONTRACT_BYTES" prepaid-gas '300 TeraGas' attached-deposit '0 NEAR' sign-as <manager-account> network-config testnet sign-with-keychain send
+  near contract call-function as-transaction <contract-account> update_contract file-args </path/to/wasm.wasm> prepaid-gas '300.0 Tgas' attached-deposit '0 NEAR' sign-as <manager-account> network-config testnet sign-with-keychain send
   ```
 
   </TabItem>
@@ -130,8 +127,8 @@ However, deploying a contract that **modifies or removes structures**  stored in
 <CodeTabs>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
-        url="https://github.com/near-examples/update-migrate-rust/blob/main/contracts/basic-updates/base/src/lib.rs"
-        start="9" end="23" />        
+        url="https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/base/src/lib.rs"
+        start="10" end="21" />        
   </Language>
 </CodeTabs>
 
@@ -141,8 +138,8 @@ However, deploying a contract that **modifies or removes structures**  stored in
 <CodeTabs>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
-        url="https://github.com/near-examples/update-migrate-rust/blob/main/contracts/basic-updates/update/src/lib.rs"
-        start="11" end="25" />        
+        url="https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/update/src/lib.rs"
+        start="12" end="23" />        
   </Language>
 </CodeTabs>
 
@@ -160,12 +157,13 @@ However, deploying a contract that **modifies or removes structures**  stored in
 <CodeTabs>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
-        url="https://github.com/near-examples/update-migrate-rust/blob/main/contracts/basic-updates/update/src/migrate.rs"
-        start="3" end="45" />
+        url="https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/update/src/migrate.rs"
+        start="3" end="46" />
   </Language>
 </CodeTabs>
 
 실제로 `migrate`는 기존 상태(`[#init(ignore_state)]`)를 **무시하는**
 
-[공식 마이그레이션 예제](https://github.com/near-examples/update-migrate-rust/tree/main/contracts/basic-updates/base)에서 단계별로 마이그레이션을 진행할 수 있습니다.
+:::tip
+You can follow a migration step by step in the [official migration example](https://github.com/near-examples/update-migrate-rust/tree/main/basic-updates/base)
 :::

@@ -9,12 +9,6 @@ import {Github} from "@site/src/components/codetabs"
 이 튜토리얼에서는 [핵심 표준](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core)을 스마트 컨트랙트에 구현하는 방법을 배웁니다. 처음 해보는 경우 [이 레퍼지토리](https://github.com/near-examples/nft-tutorial)를 복제하고 `3.enumeration` 브랜치를 확인하세요.
 
 
-:::caution
-
-JS-SDK는 현재 **[`Alpha`](https://github.com/near/near-sdk-js/releases/)** 버전입니다.
-
-:::
-
 ```bash
 git checkout 3.enumeration
 ```

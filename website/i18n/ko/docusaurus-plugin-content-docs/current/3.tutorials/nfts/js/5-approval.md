@@ -8,12 +8,6 @@ import {Github} from "@site/src/components/codetabs"
 
 이 튜토리얼에서는 다른 사람이 당신을 대신해 NFT를 전송할 수 있도록 액세스 권한을 부여할 수 있는 승인 관리 시스템의 기본 사항을 배웁니다. 이것은 모든 NFT 마켓플레이스의 중추이며, 복잡하지만 아름다운 시나리오가 발생할 수 있도록 합니다. 처음 가입하는 경우 [이 레퍼지토리](https://github.com/near-examples/nft-tutorial)를 자유롭게 복제하고 `4.core` 브랜치를 확인하세요.
 
-:::caution
-
-JS-SDK는 현재 **[`Alpha`](https://github.com/near/near-sdk-js/releases/)** 버전입니다.
-
-:::
-
 
 ```bash
 git checkout 4.core

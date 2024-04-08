@@ -6,13 +6,7 @@ sidebar_label: 소개
 
 > 이 _Zero to Hero_ 시리즈에서는 대체 불가능 토큰(NFT) 스마트 컨트랙트의 모든 측면을 다루는 일련의 튜토리얼를 찾을 수 있습니다. 미리 배포된 컨트랙트를 사용하여 NFT를 생성하는 것으로 시작하여 마지막에는 모든 확장을 지원하는 완전한 NFT 스마트 컨트랙트를 구축하게 됩니다.
 
-:::caution
 
-JS-SDK는 현재 **[`Alpha`](https://github.com/near/near-sdk-js/releases/)** 버전입니다.
-
-JavaScript 런타임은 완전히 감사되지 않았습니다. 가치를 지닌 스마트 컨트랙트를 생성하려면 [`near-sdk-rs`](https://github.com/near/near-sdk-rs)을 사용하세요.
-
-:::
 
 ## 전제 조건
 

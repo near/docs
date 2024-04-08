@@ -7,11 +7,7 @@ sidebar_label: 사전 배포된 컨트랙트
 > 쉽게 사용할 수 있는 NFT 스마트 컨트랙트를 사용하여 소프트웨어 개발을 하지 않고도 대체 불가능 토큰(NFT)을 쉽게 만드는 방법을 알아보세요.
 
 
-:::caution
 
-JS-SDK는 현재 **[`Alpha`](https://github.com/near/near-sdk-js/releases/)** 버전입니다.
-
-:::
 
 ## 전제 조건
 
