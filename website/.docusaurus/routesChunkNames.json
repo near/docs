@@ -5,17 +5,17 @@
       "plugin": "82d98fd4"
     }
   },
-  "/zh-CN/-c34": {
+  "/zh-CN/-6cb": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "8b378508"
     }
   },
-  "/zh-CN/-fd1": {
+  "/zh-CN/-6a4": {
     "__comp": "a7bd4aaa",
     "version": "935f2afb"
   },
-  "/zh-CN/-ffe": {
+  "/zh-CN/-731": {
     "__comp": "a94703ab"
   },
   "/zh-CN/-251": {
@@ -613,6 +613,10 @@
   "/zh-CN/develop/whataredatasolutions-296": {
     "__comp": "17896441",
     "content": "e681e5c6"
+  },
+  "/zh-CN/help-c80": {
+    "__comp": "17896441",
+    "content": "a8e0337c"
   },
   "/zh-CN/integrator/accounts-d43": {
     "__comp": "17896441",

@@ -9,15 +9,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', 'c34'),
+    component: ComponentCreator('/zh-CN/', '6cb'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', 'fd1'),
+        component: ComponentCreator('/zh-CN/', '6a4'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', 'ffe'),
+            component: ComponentCreator('/zh-CN/', '731'),
             routes: [
               {
                 path: '/zh-CN/',
@@ -893,6 +893,11 @@ export default [
                 component: ComponentCreator('/zh-CN/develop/whataredatasolutions', '296'),
                 exact: true,
                 sidebar: "build"
+              },
+              {
+                path: '/zh-CN/help',
+                component: ComponentCreator('/zh-CN/help', 'c80'),
+                exact: true
               },
               {
                 path: '/zh-CN/integrator/accounts',

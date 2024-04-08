@@ -3645,6 +3645,11 @@
       "description": "NEAR offers ready-to-use solutions to access and monitor on-chain data easily. This is very useful to automate actions based on specific events, cache data to reduce latency, gather usage data of the blockchain, and even study user preferences.",
       "sidebar": "build"
     },
+    "help": {
+      "id": "help",
+      "title": "NEAR - Your Gateway to an Open Web",
+      "description": "DEVHUB"
+    },
     "integrator/accounts": {
       "id": "integrator/accounts",
       "title": "Accounts",

@@ -1,0 +1,20 @@
+{
+  "id": "help",
+  "title": "NEAR - Your Gateway to an Open Web",
+  "description": "DEVHUB",
+  "source": "@site/../docs/help.md",
+  "sourceDirName": ".",
+  "slug": "/help",
+  "permalink": "/zh-CN/help",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/help.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1712609277000,
+  "frontMatter": {
+    "id": "help",
+    "title": "NEAR - Your Gateway to an Open Web"
+  }
+}

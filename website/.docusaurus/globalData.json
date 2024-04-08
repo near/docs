@@ -733,6 +733,10 @@
               "sidebar": "build"
             },
             {
+              "id": "help",
+              "path": "/zh-CN/help"
+            },
+            {
               "id": "integrator/accounts",
               "path": "/zh-CN/integrator/accounts",
               "sidebar": "exchanges"
