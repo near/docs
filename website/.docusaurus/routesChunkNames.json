@@ -5,17 +5,17 @@
       "plugin": "82d98fd4"
     }
   },
-  "/zh-CN/-6cb": {
+  "/zh-CN/-ae2": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "8b378508"
     }
   },
-  "/zh-CN/-6a4": {
+  "/zh-CN/-476": {
     "__comp": "a7bd4aaa",
     "version": "935f2afb"
   },
-  "/zh-CN/-731": {
+  "/zh-CN/-e25": {
     "__comp": "a94703ab"
   },
   "/zh-CN/-251": {
@@ -657,6 +657,38 @@
   "/zh-CN/integrator/implicit-accounts-211": {
     "__comp": "17896441",
     "content": "50ef3a03"
+  },
+  "/zh-CN/pagoda/alerts/intro-5a7": {
+    "__comp": "17896441",
+    "content": "730c8ef6"
+  },
+  "/zh-CN/pagoda/alerts/setup-651": {
+    "__comp": "17896441",
+    "content": "4fcf5b59"
+  },
+  "/zh-CN/pagoda/alerts/webhooks-0d3": {
+    "__comp": "17896441",
+    "content": "5e29bcb4"
+  },
+  "/zh-CN/pagoda/rpc/api-c2c": {
+    "__comp": "17896441",
+    "content": "2f30601d"
+  },
+  "/zh-CN/pagoda/rpc/get-keys-2ae": {
+    "__comp": "17896441",
+    "content": "7e21c74b"
+  },
+  "/zh-CN/pagoda/rpc/intro-21b": {
+    "__comp": "17896441",
+    "content": "d4cb7d24"
+  },
+  "/zh-CN/pagoda/rpc/setup-87d": {
+    "__comp": "17896441",
+    "content": "0f96bde1"
+  },
+  "/zh-CN/pagoda/rpc/stats-28e": {
+    "__comp": "17896441",
+    "content": "ac0647de"
   },
   "/zh-CN/primitives/dao-4c7": {
     "__comp": "17896441",

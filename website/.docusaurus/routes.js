@@ -9,15 +9,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '6cb'),
+    component: ComponentCreator('/zh-CN/', 'ae2'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '6a4'),
+        component: ComponentCreator('/zh-CN/', '476'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '731'),
+            component: ComponentCreator('/zh-CN/', 'e25'),
             routes: [
               {
                 path: '/zh-CN/',
@@ -958,6 +958,54 @@ export default [
                 component: ComponentCreator('/zh-CN/integrator/implicit-accounts', '211'),
                 exact: true,
                 sidebar: "exchanges"
+              },
+              {
+                path: '/zh-CN/pagoda/alerts/intro',
+                component: ComponentCreator('/zh-CN/pagoda/alerts/intro', '5a7'),
+                exact: true,
+                sidebar: "pagoda"
+              },
+              {
+                path: '/zh-CN/pagoda/alerts/setup',
+                component: ComponentCreator('/zh-CN/pagoda/alerts/setup', '651'),
+                exact: true,
+                sidebar: "pagoda"
+              },
+              {
+                path: '/zh-CN/pagoda/alerts/webhooks',
+                component: ComponentCreator('/zh-CN/pagoda/alerts/webhooks', '0d3'),
+                exact: true,
+                sidebar: "pagoda"
+              },
+              {
+                path: '/zh-CN/pagoda/rpc/api',
+                component: ComponentCreator('/zh-CN/pagoda/rpc/api', 'c2c'),
+                exact: true,
+                sidebar: "pagoda"
+              },
+              {
+                path: '/zh-CN/pagoda/rpc/get-keys',
+                component: ComponentCreator('/zh-CN/pagoda/rpc/get-keys', '2ae'),
+                exact: true,
+                sidebar: "pagoda"
+              },
+              {
+                path: '/zh-CN/pagoda/rpc/intro',
+                component: ComponentCreator('/zh-CN/pagoda/rpc/intro', '21b'),
+                exact: true,
+                sidebar: "pagoda"
+              },
+              {
+                path: '/zh-CN/pagoda/rpc/setup',
+                component: ComponentCreator('/zh-CN/pagoda/rpc/setup', '87d'),
+                exact: true,
+                sidebar: "pagoda"
+              },
+              {
+                path: '/zh-CN/pagoda/rpc/stats',
+                component: ComponentCreator('/zh-CN/pagoda/rpc/stats', '28e'),
+                exact: true,
+                sidebar: "pagoda"
               },
               {
                 path: '/zh-CN/primitives/dao',

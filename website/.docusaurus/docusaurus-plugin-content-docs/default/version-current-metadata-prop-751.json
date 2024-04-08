@@ -2685,6 +2685,96 @@
         "unlisted": false
       }
     ],
+    "pagoda": [
+      {
+        "type": "html",
+        "value": "<hr/>"
+      },
+      {
+        "type": "html",
+        "value": "<span class='menu__link'><b><small> PAGODA CONSOLE </small></b></span>"
+      },
+      {
+        "type": "category",
+        "label": "Pagoda RPC",
+        "items": [
+          {
+            "type": "link",
+            "label": "Introduction",
+            "href": "/zh-CN/pagoda/rpc/intro",
+            "docId": "pagoda/rpc/intro",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Get API Keys",
+            "href": "/zh-CN/pagoda/rpc/get-keys",
+            "docId": "pagoda/rpc/get-keys",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Setup",
+            "href": "/zh-CN/pagoda/rpc/setup",
+            "docId": "pagoda/rpc/setup",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Statistics Dashboard",
+            "href": "/zh-CN/pagoda/rpc/stats",
+            "docId": "pagoda/rpc/stats",
+            "unlisted": false
+          }
+        ],
+        "collapsed": true,
+        "collapsible": true
+      },
+      {
+        "type": "category",
+        "label": "Enhanced API",
+        "items": [
+          {
+            "type": "link",
+            "label": "NEAR Enhanced API",
+            "href": "/zh-CN/pagoda/rpc/api",
+            "docId": "pagoda/rpc/api",
+            "unlisted": false
+          }
+        ],
+        "collapsed": true,
+        "collapsible": true
+      },
+      {
+        "type": "category",
+        "label": "Alerts & Triggers",
+        "items": [
+          {
+            "type": "link",
+            "label": "Introduction",
+            "href": "/zh-CN/pagoda/alerts/intro",
+            "docId": "pagoda/alerts/intro",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Setup",
+            "href": "/zh-CN/pagoda/alerts/setup",
+            "docId": "pagoda/alerts/setup",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Webhooks Example",
+            "href": "/zh-CN/pagoda/alerts/webhooks",
+            "docId": "pagoda/alerts/webhooks",
+            "unlisted": false
+          }
+        ],
+        "collapsed": true,
+        "collapsible": true
+      }
+    ],
     "exchanges": [
       {
         "type": "category",
@@ -3709,6 +3799,54 @@
       "title": "Implicit Accounts",
       "description": "Background",
       "sidebar": "exchanges"
+    },
+    "pagoda/alerts/intro": {
+      "id": "pagoda/alerts/intro",
+      "title": "Pagoda Alerts & Triggers",
+      "description": "Please be advised that these tools and services will be discontinued soon.",
+      "sidebar": "pagoda"
+    },
+    "pagoda/alerts/setup": {
+      "id": "pagoda/alerts/setup",
+      "title": "Setup Alerts & Triggers",
+      "description": "Please be advised that these tools and services will be discontinued soon.",
+      "sidebar": "pagoda"
+    },
+    "pagoda/alerts/webhooks": {
+      "id": "pagoda/alerts/webhooks",
+      "title": "Turn on the (Hue) lights with NEAR NFTs and Pagoda Alerts & Triggers",
+      "description": "Please be advised that these tools and services will be discontinued soon.",
+      "sidebar": "pagoda"
+    },
+    "pagoda/rpc/api": {
+      "id": "pagoda/rpc/api",
+      "title": "NEAR Enhanced API",
+      "description": "Please be advised that these tools and services will be discontinued soon.",
+      "sidebar": "pagoda"
+    },
+    "pagoda/rpc/get-keys": {
+      "id": "pagoda/rpc/get-keys",
+      "title": "Get Pagoda API Keys",
+      "description": "Please be advised that these tools and services will be discontinued soon.",
+      "sidebar": "pagoda"
+    },
+    "pagoda/rpc/intro": {
+      "id": "pagoda/rpc/intro",
+      "title": "Pagoda RPC API",
+      "description": "Please be advised that these tools and services will be discontinued soon.",
+      "sidebar": "pagoda"
+    },
+    "pagoda/rpc/setup": {
+      "id": "pagoda/rpc/setup",
+      "title": "RPC Setup",
+      "description": "Please be advised that these tools and services will be discontinued soon.",
+      "sidebar": "pagoda"
+    },
+    "pagoda/rpc/stats": {
+      "id": "pagoda/rpc/stats",
+      "title": "RPC Statistics",
+      "description": "Please be advised that these tools and services will be discontinued soon.",
+      "sidebar": "pagoda"
     },
     "primitives/dao": {
       "id": "primitives/dao",

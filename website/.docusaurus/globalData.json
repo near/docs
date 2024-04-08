@@ -787,6 +787,46 @@
               "sidebar": "exchanges"
             },
             {
+              "id": "pagoda/alerts/intro",
+              "path": "/zh-CN/pagoda/alerts/intro",
+              "sidebar": "pagoda"
+            },
+            {
+              "id": "pagoda/alerts/setup",
+              "path": "/zh-CN/pagoda/alerts/setup",
+              "sidebar": "pagoda"
+            },
+            {
+              "id": "pagoda/alerts/webhooks",
+              "path": "/zh-CN/pagoda/alerts/webhooks",
+              "sidebar": "pagoda"
+            },
+            {
+              "id": "pagoda/rpc/api",
+              "path": "/zh-CN/pagoda/rpc/api",
+              "sidebar": "pagoda"
+            },
+            {
+              "id": "pagoda/rpc/get-keys",
+              "path": "/zh-CN/pagoda/rpc/get-keys",
+              "sidebar": "pagoda"
+            },
+            {
+              "id": "pagoda/rpc/intro",
+              "path": "/zh-CN/pagoda/rpc/intro",
+              "sidebar": "pagoda"
+            },
+            {
+              "id": "pagoda/rpc/setup",
+              "path": "/zh-CN/pagoda/rpc/setup",
+              "sidebar": "pagoda"
+            },
+            {
+              "id": "pagoda/rpc/stats",
+              "path": "/zh-CN/pagoda/rpc/stats",
+              "sidebar": "pagoda"
+            },
+            {
               "id": "primitives/dao",
               "path": "/zh-CN/primitives/dao",
               "sidebar": "build"
@@ -1938,6 +1978,12 @@
               "link": {
                 "path": "/zh-CN/api/rpc/introduction",
                 "label": "api/rpc/introduction"
+              }
+            },
+            "pagoda": {
+              "link": {
+                "path": "/zh-CN/pagoda/rpc/intro",
+                "label": "pagoda/rpc/intro"
               }
             },
             "exchanges": {

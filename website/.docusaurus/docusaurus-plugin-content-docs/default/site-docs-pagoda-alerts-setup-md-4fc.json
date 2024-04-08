@@ -1,0 +1,30 @@
+{
+  "id": "pagoda/alerts/setup",
+  "title": "Setup Alerts & Triggers",
+  "description": "Please be advised that these tools and services will be discontinued soon.",
+  "source": "@site/../docs/pagoda/alerts/setup.md",
+  "sourceDirName": "pagoda/alerts",
+  "slug": "/pagoda/alerts/setup",
+  "permalink": "/zh-CN/pagoda/alerts/setup",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/pagoda/alerts/setup.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1712614736000,
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1,
+    "sidebar_label": "Setup"
+  },
+  "sidebar": "pagoda",
+  "previous": {
+    "title": "Introduction",
+    "permalink": "/zh-CN/pagoda/alerts/intro"
+  },
+  "next": {
+    "title": "Webhooks Example",
+    "permalink": "/zh-CN/pagoda/alerts/webhooks"
+  }
+}
