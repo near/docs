@@ -12,7 +12,6 @@ export default function FooterWrapper(props) {
       <FeedbackComponent />
       </div>
 
-      <hr />
       <HelpComponent />
 
     </>

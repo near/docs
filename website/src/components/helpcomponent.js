@@ -7,7 +7,7 @@ export function HelpComponent({ children }) {
 <div class="theme-admonition theme-admonition-tip admonition_node_modules-@docusaurus-theme-classic-lib-theme-Admonition-Layout-styles-module alert alert--success">
 
 <details>
-<summary><b style={{cursor: 'pointer'}}>Looking for help? 👉 <a href="/help">Check our Resources</a> or <a>chat with us</a>!</b></summary>
+<summary><b style={{cursor: 'pointer'}}>Need some help? <a>Chat with us</a>!</b></summary> or check our <a href="/help">Resources</a>
 
 
 <div class="col">
