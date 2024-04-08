@@ -118,7 +118,7 @@ You can start with our [security page on it](../../2.develop/contracts/security/
 At the time of this writing, this example works with the following versions:
 
 - near-cli: `4.0.13`
-- node: `20.11.0`
+- node: `18.19.1`
 - rustc: `1.77.0`
 
 :::
