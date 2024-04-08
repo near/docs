@@ -3,8 +3,7 @@ id: near-cli
 title: NEAR CLI
 ---
 
-The NEAR [Command Line Interface](https://github.com/near/near-cli) (CLI) is a tool that enables to interact with the NEAR network directly from the shell. Among other things,
-the NEAR CLI enables you to:
+The NEAR [Command Line Interface](https://github.com/near/near-cli) (CLI) is a tool that enables to interact with the NEAR network directly from the shell. Among other things, the NEAR CLI enables you to:
 
 - Login with a NEAR account
 - Deploy a contract

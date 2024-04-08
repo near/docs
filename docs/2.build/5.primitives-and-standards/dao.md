@@ -6,7 +6,6 @@ hide_table_of_contents: false
 ---
 
 import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
-import ContactUs from '@site/src/components/ContactUs.mdx';
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

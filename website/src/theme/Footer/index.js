@@ -5,54 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  */
 import React from 'react';
-import clsx from 'clsx';
-import Link from '@docusaurus/Link';
 import { useThemeConfig } from '@docusaurus/theme-common';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import isInternalUrl from '@docusaurus/isInternalUrl';
 import './footer.scss';
-import ThemedImage from '@theme/ThemedImage';
-//import IconExternalLink from '@theme/IconExternalLink';
-
-function FooterLink({ to, href, label, prependBaseUrlToHref, ...props }) {
-  const toUrl = useBaseUrl(to);
-  const normalizedHref = useBaseUrl(href, {
-    forcePrependBaseUrl: true,
-  });
-  return (
-    <Link
-      className="footer__link-item"
-      {...(href
-        ? {
-          href: prependBaseUrlToHref ? normalizedHref : href,
-        }
-        : {
-          to: toUrl,
-        })}
-      {...props}>
-      {href && !isInternalUrl(href) ? (
-        <span>
-          {label}
-          <IconExternalLink />
-        </span>
-      ) : (
-        label
-      )}
-    </Link>
-  );
-}
-
-const FooterLogo = ({ sources, alt }) => (
-  <ThemedImage className="footer__logo" alt={alt} sources={sources} />
-);
 
 function Footer() {
   const { footer } = useThemeConfig();
-  const { copyright, links = [], logo = {} } = footer || {};
-  const sources = {
-    light: useBaseUrl(logo.src),
-    dark: useBaseUrl(logo.srcDark || logo.src),
-  };
 
   if (!footer) {
     return null;
