@@ -21,7 +21,6 @@ let DocSearchModal = null;
 /* We only modified this */
 function Hit(props) {
   const { hit, children } = props;
-  console.log(hit);
   return <>
     <Link to={hit.url}> {children} <div className='DocSearch-Description'>{hit.description}</div></Link>
   </>;
