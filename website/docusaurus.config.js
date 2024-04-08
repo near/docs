@@ -58,7 +58,7 @@ const config = {
           showReadingTime: false,
           routeBasePath: 'changelog',
           path: '../changelog',
-          
+
         },
         theme: {
           customCss: './src/css/custom.scss',
@@ -86,6 +86,14 @@ const config = {
     ],
   ],
   themeConfig: {
+    announcementBar: {
+      id: 'abstraction',
+      content:
+        '⛓️ <a href="/concepts/abstraction/chain-signatures">Chain Signatures</a> ⛓️ - Sign and send transactions on Bitcoin, Ethereum, and more! 🔑 ',
+      backgroundColor: '#fafbfc',
+      textColor: '#333',
+      isCloseable: true,
+    },
     prism: {
       additionalLanguages: [
         'rust',
@@ -110,7 +118,7 @@ const config = {
       items: [
         {
           to: '/concepts/welcome',
-          label: 'Learn',
+          label: 'Concepts',
           position: 'left',
         },
         {
@@ -234,16 +242,30 @@ const config = {
       indexName: 'near',
       // Optional: see doc section below
       contextualSearch: true,
-      // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
-      externalUrlRegex: 'near-sdk\\.io',
       // Optional: Algolia search parameters
       searchParameters: {
         clickAnalytics: true,
         analytics: true,
         enableReRanking: true,
+        attributesToRetrieve: [
+          'hierarchy.lvl0',
+          'hierarchy.lvl1',
+          'hierarchy.lvl2',
+          'hierarchy.lvl3',
+          'hierarchy.lvl4',
+          'hierarchy.lvl5',
+          'hierarchy.lvl6',
+          'type',
+          'url',
+          'title',
+          'description',
+          'headers',
+          'headersLevels'
+        ],
       },
       //... other Algolia params
       placeholder: 'Search the Docs...',
+      insights: true,
     },
   },
   i18n: {

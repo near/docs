@@ -65,7 +65,7 @@ The example is divided in two main components:
 │    └── lib.rs
 ├── Cargo.toml # package manager
 ├── README.md
-├── rust-toolchain.toml
+└── rust-toolchain.toml
 ```
 
   </TabItem>
@@ -99,13 +99,12 @@ Go ahead and login with your NEAR account. If you don't have one, you will be ab
 The frontend is composed by a single HTML file (`/index.html`) and uses REACT. Check `/App.js` and `/index.js` to understand how
 components are displayed in the screen.
 
-You will notice in `/index.js` the following code:
+You will notice in `/src/App.jsx` the following code:
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
-    <Github fname="index.js"
-            url="https://github.com/near-examples/guest-book-examples/blob/main/frontend/index.js"
-            start="17" end="27" />
+    <Github fname="App.jsx"
+            url="https://github.com/near-examples/guest-book-examples/blob/main/frontend/src/App.jsx"/>
   </Language>
 </CodeTabs>
 
@@ -126,7 +125,7 @@ The contract presents 3 methods: `add_message`, `get_message` and `total_message
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/guest-book-examples/blob/main/contract-rs/src/lib.rs"
-            start="37" end="70" />
+            start="31" end="64" />
   </Language>
   
 </CodeTabs>
@@ -230,3 +229,13 @@ If you're using your own account, replace `guestbook.near-examples.testnet` with
 ## Moving Forward
 
 A nice way to learn is by trying to expand a contract. You can modify the guestbook example to incorporate a feature where users can give likes to messages. Additionally, implement a method to toggle the like.
+
+:::note Versioning for this article
+
+At the time of this writing, this example works with the following versions:
+
+- near-cli: `4.0.13`
+- node: `18.19.1`
+- rustc: `1.77.0`
+
+:::

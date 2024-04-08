@@ -257,7 +257,7 @@ Transactions are a collection of related data that is composed and cryptographic
 
 Transactions can be constructed and signed offline. Nodes are not required for signing. We are planning to add optional recent block hash to help prevent various replay attacks.
 
-See [transactions](/concepts/basics/transactions/overview) in the concepts section of our documentation.
+See [transactions](/concepts/protocol/transactions) in the concepts section of our documentation.
 
 ### How is the hash preimage generated? Which fields does the raw transaction consist of? 
 

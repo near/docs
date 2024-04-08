@@ -70,6 +70,11 @@ ol li::marker {
     font-weight: 600;
 }
 
+ul li::marker {
+    color: var(--near-color-royal);
+    font-weight: 600;
+}
+
 .subsection {
     width: 50%;
     margin: 2.5em auto;
@@ -133,6 +138,8 @@ a:hover {
 /* for image caption */
 img+em,
 .tabs-container+p em,
+table+p em,
+.code_iframe+p em,
 .theme-code-block+p em {
     font-style: normal;
     display: inherit;
@@ -215,7 +222,7 @@ h2 {
 
 h3 {
     font-weight: 600;
-    margin: 1.5em 0 0.5em 0 !important;
+    margin: 1.75em 0 0.5em 0 !important;
 }
 
 h4 {
@@ -396,39 +403,28 @@ iframe+em {
     }
 }
 
-@media (min-width: 996px) {
-
-    /* columns */
-    .col,
-    .col:only-child {
-        padding: 0 calc(var(--ifm-spacing-horizontal)/2);
-    }
-
-    .col:last-child {
-        padding: 0 0 0 calc(var(--ifm-spacing-horizontal)/2);
-    }
-
-    .col:first-child {
-        padding: 0 calc(var(--ifm-spacing-horizontal)/2) 0 0;
-    }
-}
-
 /* BOOTSTRAP */
 /* TODO: Include this from file */
 @import './bootstrap.scss';
 
 #near-wallet-selector-modal {
-  .nws-modal-wrapper .nws-modal .modal-left .modal-left-title h2 {
-    font-family: inherit;
-  }
-  .nws-modal-wrapper .nws-modal .modal-right .nws-modal-header h3.middleTitle {
-    margin: 4px auto !important;
-    font-family: inherit;
-  }
+    .nws-modal-wrapper .nws-modal .modal-left .modal-left-title h2 {
+        font-family: inherit;
+    }
 
-  .nws-modal-wrapper .nws-modal .modal-right .wallet-what .content-side h3 {
-    margin: 0 auto 8px 0 !important;
-  }
+    .nws-modal-wrapper .nws-modal .modal-right .nws-modal-header h3.middleTitle {
+        margin: 4px auto !important;
+        font-family: inherit;
+    }
+
+    .nws-modal-wrapper .nws-modal .modal-right .wallet-what .content-side h3 {
+        margin: 0 auto 8px 0 !important;
+    }
+}
+
+/* 404 page */
+.p404 h4 {
+    font-weight: 400 !important;
 }
 
 /*
@@ -438,12 +434,21 @@ https://www.feelback.dev/docs/guides/stripe-like-documentation-feedback-for-docu
 @import "@feelback/react/styles/feelback.css";
 
 .feelback-container .feelback-btn {
-  background-color: #1a8870;
-  color: white;
+    background-color: #1a8870;
+    color: white;
 }
 
 .feelback-container textarea {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0.5rem;
+}
+
+/* Announcement bar */
+div[class^="announcementBar_"] {
+    --site-announcement-bar-stripe-color1: #ddfde1;
+    --site-announcement-bar-stripe-color2: #c4fbe6;
+    background: repeating-linear-gradient(45deg, var(--site-announcement-bar-stripe-color1), var(--site-announcement-bar-stripe-color1) 20px, var(--site-announcement-bar-stripe-color2) 10px, var(--site-announcement-bar-stripe-color2) 40px);
+    font-size: 16px;
+    font-weight: 600;
 }

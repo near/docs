@@ -8,7 +8,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
-[NEAR accounts](../../1.concepts/basics/accounts/introduction.md) can host programs known as smart contracts. Smart contracts can **store data**, and **expose methods** so other users and contracts interact with them.
+[NEAR accounts](../../1.concepts/protocol/account-model.md) can host programs known as smart contracts. Smart contracts can **store data**, and **expose methods** so other users and contracts interact with them. 
 
 In this quickstart tutorial, we will guide you in creating your first smart contract in the NEAR **testnet** that stores and retrieves a greeting.
 
@@ -16,10 +16,11 @@ In this quickstart tutorial, we will guide you in creating your first smart cont
 
 ## Prerequisites
 
-<CodeTabs>
-  <Language value="🌐 JavaScript" language="js">
-  <>
-  Before starting, make sure you have the following installed:
+
+<Tabs groupId="code-tabs">
+  <TabItem value="🌐 JavaScript">
+
+Before starting, make sure you have the following installed:
 
 1. [Node.js](https://nodejs.org/en/download), to use our scaffolding tool.
 2. [NEAR CLI](/tools/near-cli#installation), to deploy and interact with the contract.
@@ -33,10 +34,11 @@ In this quickstart tutorial, we will guide you in creating your first smart cont
   ```
 
 :::
-</>
-</Language>
-<Language value="🦀 Rust" language="rust">
-<>
+
+</TabItem>
+
+<TabItem value="🦀 Rust">
+
 Before starting, make sure you have the following installed:
 
 1. [NEAR CLI-RS](/tools/near-cli-rs), to deploy and interact with the contract.
@@ -48,20 +50,22 @@ Before starting, make sure you have the following installed:
 
 - **NEAR-CLI-RS:** Install both `near-cli-rs` and `cargo-near` tools using
 
-  ```bash
-  # Using node
-  npm i -g near-cli-rs cargo-near
+```bash
+# Using node
+npm i -g near-cli-rs cargo-near
 
-  # Using macOS, Linux, WSL
-  curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releases/latest/download/near-cli-rs-installer.sh | sh
-  curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/cargo-near/releases/latest/download/cargo-near-installer.sh | sh
-  ```
+# Using macOS, Linux, WSL
+curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releases/latest/download/near-cli-rs-installer.sh | sh
+curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/cargo-near/releases/latest/download/cargo-near-installer.sh | sh
+```
 
-  :::
-  </>
-  </Language>
+:::
 
-</CodeTabs>
+</TabItem>
+
+</Tabs>
+
+
 
 :::info Testnet Account
 
@@ -75,10 +79,15 @@ However, if you want to create one, you can do so through [a wallet](https://tes
 
 ## Creating the Contract
 
-<CodeTabs>
-<Language value="🌐 JavaScript" language="js">
-<>
+
+<Tabs groupId="code-tabs">
+  <TabItem value="🌐 JavaScript">
+
 Create a smart contract by running our `create-near-app` scaffolding tool and following the interactive menu.
+
+- What do you want to build? › `A Near Smart Contract`
+- Select a smart contract template for your project › `JS/TS Contract`
+- Name your project › `hello-near`
 
 ```bash
   npx create-near-app@latest
@@ -102,11 +111,11 @@ The resulting folder structure will change slightly depending on the chosen lang
 └── tsconfig.json
 ```
 
-</>
-</Language>
-<Language value="🦀 Rust" language="rust">
-<>
-Create a smart contract by running our `create-near-app` scaffolding tool and following the interactive menu.
+</TabItem>
+
+<TabItem value="🦀 Rust">
+
+Create a smart contract by running our `near` Rust CLI tool and following the interactive menu.
 
 ```bash
   cargo near new <project_name>
@@ -127,10 +136,10 @@ The resulting folder structure will change slightly depending on the chosen lang
 └── rust-toolchain.toml
 ```
 
-</>
-</Language>
+</TabItem>
 
-</CodeTabs>
+</Tabs>
+
 
 ---
 
@@ -139,17 +148,19 @@ The resulting folder structure will change slightly depending on the chosen lang
 Your new smart contract stores a `greeting: string` attribute in their state, and exposes two methods to interact with it (`set_greeting`, `get_greeting`).
 
 <CodeTabs>
- <Language value="🌐 JavaScript" language="js">
+<Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
             url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts"
             start="4" end="18" />
 
-  </Language>
-  <Language value="🦀 Rust" language="rust">
+</Language>
+
+<Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
             start="6" end="35" />
-  </Language>
+
+</Language>
 
 </CodeTabs>
 
@@ -164,7 +175,7 @@ There are 3 important things to notice:
 Building and testing the contract is as simple as running two commands.
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="js">
+<Language value="🌐 JavaScript" language="js">
 
 ```bash
 npm run build
@@ -175,8 +186,9 @@ npm run test
 # changes the greeting ✅
 ````
 
-  </Language>
-  <Language value="🦀 Rust" language="rust">
+</Language>
+
+<Language value="🦀 Rust" language="rust">
 
 ```bash
 cargo build
@@ -187,7 +199,8 @@ cargo test
 # Passed ✅ changes the greeting
 ```
 
-  </Language>
+</Language>
+
 </CodeTabs>
 
 <details>
@@ -212,13 +225,13 @@ Testing the contracts within a Sandbox allows you to understand how the contract
 
 Now that we know the contract is passing the tests, let's create a testnet account in which to deploy the contract.
 
-While there are different ways to [create accounts](/concepts/basics/accounts/creating-accounts) in NEAR, in this quickstart we will use the `cargo-near` tool to create a new random [`named account`](/concepts/basics/accounts/account-id).
+While there are different ways to create accounts in NEAR, in this quickstart we will use the `cargo-near` tool to create a new random [`named account`](/concepts/protocol/account-id).
 
-<CodeTabs>
 
-  <Language value="🌐 JavaScript" language="js">
-    <>
-    ```bash
+<Tabs groupId="code-tabs">
+  <TabItem value="🌐 JavaScript">
+
+```bash
 # Create a new testnet account
 # Replace <created-account> with a custom name
 near create-account <created-account> --useFaucet
@@ -234,17 +247,17 @@ New account "lovely-event.testnet" created successfully. # Response
 ```
 
 </details>
-    </>
 
-  </Language>
-    <Language value="🦀 Rust" language="rust">
-<>
+</TabItem>
+
+<TabItem value="🦀 Rust">
+
 ```bash
 # Create a new testnet account with a random name
 cargo-near near create-dev-account use-random-account-id autogenerate-new-keypair save-to-legacy-keychain network-config testnet create
 
 # Create a new testnet account
-# Replace <created-account> with a custom name
+# Replace <lovely-event.testnet> with a custom name
 cargo-near near create-dev-account use-specific-account-id lovely-event.testnet autogenerate-new-keypair save-to-keychain network-config testnet create
 ````
 
@@ -265,10 +278,10 @@ New account "lovely-event.testnet" created successfully. # Response
 
 </details>
 
-</>
+</TabItem>
 
-  </Language>
-</CodeTabs>
+</Tabs>
+
 
 :::tip
 
@@ -284,16 +297,20 @@ Having our account created, we can now deploy the contract into it:
 
 <CodeTabs>
 
-  <Language value="🌐 JavaScript" language="js">
+<Language value="🌐 JavaScript" language="js">
   ```bash
   near deploy <created-account> build/release/hello.wasm
   ```
-  </Language>
-   <Language value="🦀 Rust" language="rust">
+
+</Language>
+
+<Language value="🦀 Rust" language="rust">
   ```bash
   near contract deploy <created-account> use-file ./target/wasm32-unknown-unknown/release/contract_rs.wasm without-init-call network-config testnet sign-with-keychain send
   ```
-  </Language>
+
+</Language>
+
 </CodeTabs>
 
 **Congrats**! your contract now lives in the NEAR testnet network.
@@ -375,3 +392,15 @@ Go ahead and check other [examples](/tutorials/examples/guest-book) or proceed s
 If you have any questions, do not hesitate to join us on [Discord](https://near.chat). We regularly host Office Hours, in which you can join our voice channel and ask questions.
 
 Happy coding! 🚀
+
+:::note Versioning for this article
+
+At the time of this writing, this example works with the following versions:
+
+- near-cli: `4.0.13`
+- node: `18.19.1`
+- rustc: `1.77.0`
+- near-cli-rs: `0.8.1`
+- cargo-near: `0.6.1`
+
+:::
