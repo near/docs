@@ -4,6 +4,12 @@ sidebar_label: Setup
 title: RPC Setup
 ---
 
+:::warning
+
+Please be advised that these tools and services will be discontinued soon.
+
+:::
+
 In order to use the RPC API you will need to setup the correct RPC endpoints:
 
 - `POST` for all RPC methods

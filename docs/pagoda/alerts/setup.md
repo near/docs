@@ -5,6 +5,11 @@ sidebar_label: "Setup"
 
 # Setup Alerts & Triggers
 
+:::warning
+
+Please be advised that these tools and services will be discontinued soon.
+
+:::
 
 ## Setting up E-mail alerts
 

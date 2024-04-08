@@ -7,13 +7,19 @@ title: Pagoda RPC API
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+:::warning
+
+Please be advised that these tools and services will be discontinued soon.
+
+:::
+
 ## Overview
 
 The Pagoda RPC provides you with instant access to maintenance free, scalable NEAR infrastructure, powering you on the fastest path from ideas to launch.
 
 Developers can interact with on-chain data and send different types of transactions to the network by utilizing the RPC endpoints.
 
-In addition to the powerful node infrastructure, we also created the Pagoda RPC Stats page so that you can have visibility into your RPC usage and performances and take control of your project from the infrastructure level. What’s more? You can subscribe to the alerts from our Status page so that you can follow the health of Pagoda RPC real time. All accesbile via [Pagoda Console](https://console.pagoda.co/).
+In addition to the powerful node infrastructure, we also created the Pagoda RPC Stats page so that you can have visibility into your RPC usage and performances and take control of your project from the infrastructure level. What’s more? You can subscribe to the alerts from our Status page so that you can follow the health of Pagoda RPC real time. All accesible via [Pagoda Console](https://console.pagoda.co/).
 
 ## Setup
 

@@ -5,6 +5,12 @@ sidebar_label: "Webhooks Example"
 
 # Turn on the (Hue) lights with NEAR NFTs and Pagoda Alerts & Triggers
 
+:::warning
+
+Please be advised that these tools and services will be discontinued soon.
+
+:::
+
 ## Overview 
 
 How cool would it be to have your lights turn on or your favorite song on spotify to play when someone bought your NFT on NEAR? 

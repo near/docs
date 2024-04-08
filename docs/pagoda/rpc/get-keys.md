@@ -4,6 +4,12 @@ sidebar_label: Get API Keys
 title: Get Pagoda API Keys
 ---
 
+:::warning
+
+Please be advised that these tools and services will be discontinued soon.
+
+:::
+
 1. Register an account on [Pagoda Console](https://console.pagoda.co/):
 
    ![](/docs/pagoda/getkey1.png)

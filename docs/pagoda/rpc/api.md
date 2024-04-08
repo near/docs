@@ -21,6 +21,12 @@ import TabItem from '@theme/TabItem';
 
 <!-- Generator: Widdershins v4.0.1 -->
 
+:::warning
+
+Please be advised that these tools and services will be discontinued soon.
+
+:::
+
 > Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
 
 Try out our newly released Enhanced APIs - Balances (in Beta) and get what you need for all kinds of balances and token information at ease.

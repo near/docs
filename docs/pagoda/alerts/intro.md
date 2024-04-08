@@ -5,6 +5,11 @@ sidebar_label: "Introduction"
 
 # Pagoda Alerts & Triggers
 
+:::warning
+
+Please be advised that these tools and services will be discontinued soon.
+
+:::
 
 ## What are Alerts & Triggers?
 

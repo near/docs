@@ -764,20 +764,7 @@ const sidebar = {
     },
     'tools/fastnear-api',
     "tools/explorer",
-    "tools/indexing",
-    {
-      "Enhanced API": [
-        "pagoda/rpc/api",
-      ]
-    },
-    {
-      "Alerts & Triggers": [
-        "pagoda/alerts/intro",
-        "pagoda/alerts/setup",
-        "pagoda/alerts/webhooks",
-      ]
-    }
-
+    "tools/indexing"
   ],
   "integrate": [
     "develop/integrate/welcome",
@@ -837,7 +824,9 @@ const sidebar = {
     "api/rpc/gas",
     "api/rpc/protocol",
     "api/rpc/network",
-    "api/rpc/transactions",
+    "api/rpc/transactions"
+  ],
+  "pagoda": [
     {
       "type": "html",
       "value": "<hr/>"
@@ -853,7 +842,19 @@ const sidebar = {
         "pagoda/rpc/setup",
         "pagoda/rpc/stats",
       ]
-    }
+    },
+    {
+      "Enhanced API": [
+        "pagoda/rpc/api",
+      ]
+    },
+    {
+      "Alerts & Triggers": [
+        "pagoda/alerts/intro",
+        "pagoda/alerts/setup",
+        "pagoda/alerts/webhooks",
+      ]
+    },
   ],
   "exchanges": [
     {

@@ -4,6 +4,12 @@ sidebar_label: Statistics Dashboard
 title: RPC Statistics
 ---
 
+:::warning
+
+Please be advised that these tools and services will be discontinued soon.
+
+:::
+
 Inspect your RPC Usage in the [Statistics Tab](https://console.pagoda.co/apis?tab=statistics):
 
 ![](/docs/pagoda/stats1.png)
