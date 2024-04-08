@@ -2146,9 +2146,9 @@
     "179": {
       "js": [
         {
-          "file": "assets/js/main.935699f0.js",
-          "hash": "8d6c3c0c7e96a896",
-          "publicPath": "/zh-CN/assets/js/main.935699f0.js"
+          "file": "assets/js/main.1d6a1ea1.js",
+          "hash": "38855159a25595a4",
+          "publicPath": "/zh-CN/assets/js/main.1d6a1ea1.js"
         }
       ]
     },
@@ -2674,7 +2674,7 @@
       "js": [
         {
           "file": "assets/js/runtime~main.cbbbbadb.js",
-          "hash": "295862f5f0defd59",
+          "hash": "e586d1f657a3e021",
           "publicPath": "/zh-CN/assets/js/runtime~main.cbbbbadb.js"
         }
       ]
