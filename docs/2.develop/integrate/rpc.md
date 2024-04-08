@@ -125,7 +125,7 @@ In order yo create a transaction you will use `near-api-js.transactions.createTr
 2. `signerPublicKey`: the signer public key, see bellow.
 3. `receiverId`: the account ID of the transaction recipient.
 4. `nonceForPublicKey`: a unique number, see bellow
-5. `actions`: An [action](../contracts/actions.md), built from `near-api-js.transactions`.
+5. `actions`: An [action](../../2.build/2.building-smart-contracts/anatomy-of-a-contract/actions.md), built from `near-api-js.transactions`.
 6. [`blockHash`](/integrator/create-transactions#6-blockhash)
 
 

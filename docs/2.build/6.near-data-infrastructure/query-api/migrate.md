@@ -12,7 +12,7 @@ You can request access through [this link](http://bit.ly/near-queryapi-beta).
 
 :::
 
-In this article you'll learn how to migrate your [NEAR Lake Framework](../../1.concepts/3.advanced/near-lake-framework.md) JavaScript indexer to [Near QueryAPI](intro.md), a fully managed solution to build indexer functions,
+In this article you'll learn how to migrate your [NEAR Lake Framework](../../../1.concepts/3.advanced/near-lake-framework.md) JavaScript indexer to [Near QueryAPI](intro.md), a fully managed solution to build indexer functions,
 extract on-chain data, store it in a database, and be able to query it using GraphQL endpoints.
 
 :::info Supported languages
@@ -20,9 +20,9 @@ Currently QueryAPI only supports JavaScript, so if your indexer code uses TypeSc
 :::
 
 ## Basic migration
-
-Let's take a [basic JS indexer](../../3.tutorials/indexer/js-lake-indexer.md) built with NEAR Lake Framework as an example.
-This indexer simply logs the Block height and the number of shards for each indexed block, using an [indexer handler](../../3.tutorials/indexer/js-lake-indexer.md#create-indexer-handler) function `handleStreamerMessage`.
+build/near-data-infrastructure/lake-framework/building-indexers/js-lake-indexer
+Let's take a [basic JS indexer](../lake-framework/building-indexers/js-lake-indexer.md) built with NEAR Lake Framework as an example.
+This indexer simply logs the Block height and the number of shards for each indexed block, using an [indexer handler](../lake-framework/building-indexers/js-lake-indexer.md#create-indexer-handler) function `handleStreamerMessage`.
 
 Migrating this basic indexer to QueryAPI is simple. You only need to migrate the code from the `handleStreamerMessage` function:
 
@@ -37,7 +37,7 @@ async function handleStreamerMessage(streamerMessage: types.StreamerMessage): Pr
 
 ### Migrating to QueryAPI
 
-1. To start the migration process, [create a new indexer](../community/indexers.md#creating-an-indexer) using [QueryAPI](https://near.org/dataplatform.near/widget/QueryApi.App?view=create-new-indexer). You should see a similar interface like this:
+1. To start the migration process, [create a new indexer](../query-api/indexers.md#creating-an-indexer) using [QueryAPI](https://near.org/dataplatform.near/widget/QueryApi.App?view=create-new-indexer). You should see a similar interface like this:
 
 ![QueryAPI Indexer Dashboard](/docs/assets/QAPIScreen2.png)
 
@@ -102,7 +102,7 @@ CREATE TABLE
 
 ## Advanced migration
 
-For this example, let's take the TypeScript [NFT indexer](../../3.tutorials/indexer/nft-indexer.md) built with NEAR Lake Framework as reference. This indexer is watching for `nft_mint` [Events](https://nomicon.io/Standards/EventsFormat) and prints some relevant data about minted NFTs.
+For this example, let's take the TypeScript [NFT indexer](../lake-framework/building-indexers/nft-indexer.md) built with NEAR Lake Framework as reference. This indexer is watching for `nft_mint` [Events](https://nomicon.io/Standards/EventsFormat) and prints some relevant data about minted NFTs.
 
 As with the previous example, moving this NFT indexer to QueryAPI requires to migrate the code from the [`handleStreamerMessage`](https://github.com/near-examples/near-lake-nft-indexer/blob/5acd543c54ce8025bdc9a88d111df43d8d4d05b8/index.ts#L32) function. But since it was done in TypeScript, it also needs some additional work as it needs to re-written in JavaScript.
 

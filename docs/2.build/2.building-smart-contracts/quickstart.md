@@ -166,9 +166,9 @@ Your new smart contract stores a `greeting: string` attribute in their state, an
 
 There are 3 important things to notice:
 
-1. The `get_greeting` method is a [`view`](./anatomy.md#public-methods) method, meaning it only reads from the contract and can be called for free by anyone.
+1. The `get_greeting` method is a [`view`](../2.building-smart-contracts/anatomy-of-a-contract/anatomy.md/#public-methods) method, meaning it only reads from the contract and can be called for free by anyone.
 2. By default, the contract is initialized with the `greeting` attribute set to `"Hello"`.
-3. The `set_greeting` method is a [`change`](./anatomy.md#public-methods) method, meaning it modifies the contract's state and requires a user to sign a transaction in order to be executed.
+3. The `set_greeting` method is a [`change`](../2.building-smart-contracts/anatomy-of-a-contract/anatomy.md#public-methods) method, meaning it modifies the contract's state and requires a user to sign a transaction in order to be executed.
 
 ## Build and Test
 
@@ -213,7 +213,7 @@ If the tests are failing, make sure that you are using `node v16` and the `toolc
 
 </details>
 
-In the background, these commands are calling the build tools for each language and invoking the [Sandbox](../testing/integration.md) tests from the `sandbox-ts/rs` directory.
+In the background, these commands are calling the build tools for each language and invoking the [Sandbox](../2.building-smart-contracts/test-the-contract/integration-test.md) tests from the `sandbox-ts/rs` directory.
 
 :::tip Sandbox
 Testing the contracts within a Sandbox allows you to understand how the contract will behave once deployed to the network while having total control over the testing environment.
@@ -323,7 +323,7 @@ To interact with your deployed smart contract, you can call its methods using th
 
 ### Get Greeting
 
-The `get_greeting` method is a [`view`](./anatomy.md#public-methods) method, meaning it only reads from the contract's state, and can thus be called for **free**.
+The `get_greeting` method is a [`view`](../2.building-smart-contracts/anatomy-of-a-contract/anatomy.md#public-methods) method, meaning it only reads from the contract's state, and can thus be called for **free**.
 
 <Tabs>
 
@@ -351,7 +351,7 @@ The `get_greeting` method is a [`view`](./anatomy.md#public-methods) method, mea
 
 ### Set Greeting
 
-The `set_greeting` method is a [`change`](./anatomy.md#public-methods) method, meaning it modifies the contract's state, and thus requires a user to sign a transaction in order to be executed.
+The `set_greeting` method is a [`change`](../2.building-smart-contracts/anatomy-of-a-contract/anatomy.md#public-methods) method, meaning it modifies the contract's state, and thus requires a user to sign a transaction in order to be executed.
 
 <Tabs>
 
@@ -387,7 +387,7 @@ In this case, we are asking the account that stores the contract to call its own
 
 That's it for the quickstart tutorial. You have now seen a fully functional contract with a minimal user interface and testing.
 
-Go ahead and check other [examples](/tutorials/examples/guest-book) or proceed straight to the [Develop section](./anatomy.md) to know how to write your own contract.
+Go ahead and check other [examples](/tutorials/examples/guest-book) or proceed straight to the [Develop section](../2.building-smart-contracts/anatomy-of-a-contract/anatomy.md) to know how to write your own contract.
 
 If you have any questions, do not hesitate to join us on [Discord](https://near.chat). We regularly host Office Hours, in which you can join our voice channel and ask questions.
 

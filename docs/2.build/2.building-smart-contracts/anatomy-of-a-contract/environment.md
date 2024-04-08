@@ -75,13 +75,13 @@ The `current_account` contains the address in which your contract is deployed. T
 
 The `predecessor` is the account that called the method in the contract. Meanwhile, the `signer` is the account that _signed_ the initial transaction.
 
-During a simple transaction (no [cross-contract calls](../crosscontract.md)) the `predecessor` is the same as the `signer`. For example, if **alice.near** calls **contract.near**, from the contract's perspective, **alice.near** is both the `signer` and the `predecessor`. However, if **contract.near** creates a [cross-contract call](../crosscontract.md), then the `predecessor` changes down the line. In the example below, when **pool.near** executes, it would see **contract.near** as the `predecessor` and **alice.near** as the `signer`.
+During a simple transaction (no [cross-contract calls](../anatomy-of-a-contract/crosscontract.md)) the `predecessor` is the same as the `signer`. For example, if **alice.near** calls **contract.near**, from the contract's perspective, **alice.near** is both the `signer` and the `predecessor`. However, if **contract.near** creates a [cross-contract call](../anatomy-of-a-contract/crosscontract.md), then the `predecessor` changes down the line. In the example below, when **pool.near** executes, it would see **contract.near** as the `predecessor` and **alice.near** as the `signer`.
 
 ![img](https://miro.medium.com/max/1400/1*LquSNOoRyXpITQF9ugsDpQ.png)
 *You can access information about the users interacting with your smart contract*
 
 :::tip
-In most scenarios you will **only need to know the predecessor**. However, there are situations in which the signer is very useful. For example, when adding [NFTs](../../relevant-contracts/nft.md) into [this marketplace](https://github.com/near-examples/nft-tutorial/blob/7fb267b83899d1f65f1bceb71804430fab62c7a7/market-contract/src/nft_callbacks.rs#L42), the contract checks that the `signer`, i.e. the person who generated the transaction chain, is the NFT owner.
+In most scenarios you will **only need to know the predecessor**. However, there are situations in which the signer is very useful. For example, when adding [NFTs](../../5.primitives-and-standards/nft.md) into [this marketplace](https://github.com/near-examples/nft-tutorial/blob/7fb267b83899d1f65f1bceb71804430fab62c7a7/market-contract/src/nft_callbacks.rs#L42), the contract checks that the `signer`, i.e. the person who generated the transaction chain, is the NFT owner.
 :::
 
 ---
@@ -95,7 +95,7 @@ The environment gives you access to 3 token-related parameters, all expressed in
 This amount is **already deposited** in your contract's account, and is **automatically returned** to the `predecessor` if your **method panics**.
 
 :::warning
-If you make a [cross-contract call](../crosscontract.md) and it panics, the funds are sent back to **your contract**. See how to handle this situation in the [callback section](../crosscontract.md#failed-execution)
+If you make a [cross-contract call](../anatomy-of-a-contract/crosscontract.md) and it panics, the funds are sent back to **your contract**. See how to handle this situation in the [callback section](../anatomy-of-a-contract/crosscontract.md#failed-execution)
 :::
 
 ### Account Balance
@@ -110,7 +110,7 @@ If the contract has any locked $NEAR, it will appear in `account_locked_balance`
 
 ### Storage Used
 
-`storage_used` represents the amount of [storage](../storage.md) that is currently being used by your contract.
+`storage_used` represents the amount of [storage](../anatomy-of-a-contract/storage.md) that is currently being used by your contract.
 
 :::tip
 If you want to know how much storage a structure uses, print the storage before and after storing it.

@@ -8,7 +8,7 @@ import {WidgetEditor} from "@site/src/components/widget-editor"
 
 Borrowing from React, Near Components use hooks such as [**`useState`**](#state) and [**`useEffect`**](#useeffect-hook) to handle the state's logic, and [**props**](#props) to receive parameters.
 
-Near Components are stored in the blockchain, for which you will use the `NEAR VM` to [retrieve and execute them in the browser](../../2.develop/integrate/frontend-components.md).
+Near Components are stored in the blockchain, for which you will use the `NEAR VM` to [retrieve and execute them in the browser](../../4.building-web3-applications/frontend-components.md).
 
 Using a VM enforces components to be sandboxed, making them very secure since they cannot access your `LocalStorage` or other elements in the page they are incorporated to. However, because of this, components cannot import external libraries. However, they can [**import functions**](#import) from other components.
 

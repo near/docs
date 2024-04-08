@@ -5,7 +5,7 @@ sidebar_label: How it works
 ---
 
 QueryApi is a streaming indexer implementation that executes custom indexing logic written by developers on the NEAR blockchain.
-QueryApi allows hosted execution of complex queries (ones that can’t be answered by a [simple RPC](../../5.api/rpc/introduction.md) or [Enhanced API](https://docs.pagoda.co/api) call), data hosting, and its exposure via GraphQL endpoints.
+QueryApi allows hosted execution of complex queries (ones that can’t be answered by a [simple RPC](../../../5.api/rpc/introduction.md) or [Enhanced API](https://docs.pagoda.co/api) call), data hosting, and its exposure via GraphQL endpoints.
 
 
 ## Components involved 

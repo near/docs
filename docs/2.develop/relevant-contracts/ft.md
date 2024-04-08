@@ -148,7 +148,7 @@ Assume you want to attach some FT (🪙) to a call on the receiver contract. The
 
 #### The ft_on_transfer method
 From the workflow above it follows that the receiver we want to call needs to implement the `ft_on_transfer` method. When executed, such method will know:
-- Which FT was transferred, since it is the [`predecessor`](../contracts/environment/environment.md#predecessor-and-signer) account.
+- Which FT was transferred, since it is the [`predecessor`](../../2.build/2.building-smart-contracts/anatomy-of-a-contract/environment.md#predecessor-and-signer) account.
 - Who is sending the FT, since it is a parameter
 - How many FT were transferred, since it is a parameter
 - If there are any parameters encoded as a message

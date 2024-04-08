@@ -60,7 +60,7 @@ return (
 
 ### Using `styled-components`
 
-You can use [`styled-components`](../api/builtin-components.md#styled-components) in combination with Radix UI primitives. Here's an example:
+You can use [`styled-components`](../../2.build/3.building-web3-components/anatomy-of-a-component/builtin-components.md) in combination with Radix UI primitives. Here's an example:
 
 ```js
 const SwitchRoot = styled("Switch.Root")`

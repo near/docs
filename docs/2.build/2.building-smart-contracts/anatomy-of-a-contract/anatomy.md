@@ -42,7 +42,7 @@ Under the hood, the `NEAR Bindgen` decorator/macro traverses the class, generati
 
 ### The State
 
-Each account has its own state (storage), which **only they can modify** but [anyone can see](../../4.tools/cli.md#near-view-state-near-view-state).
+Each account has its own state (storage), which **only they can modify** but [anyone can see](../../../4.tools/cli.md#near-view-state-near-view-state).
 
 The state is defined and modified through the **main class' attributes**.
 
@@ -205,7 +205,7 @@ as `call` methods.
 :::
 
 :::danger
-By default `init` methods are public, make sure to [decorate them as `private`](#private-methods), or [batch call the initialization on deploy](../deploy.md#initializing-the-contract)
+By default `init` methods are public, make sure to [decorate them as `private`](#private-methods), or [batch call the initialization on deploy](../deploy-update-and-lock/deploy.md#initializing-the-contract)
 :::
 
 <hr className="subsection" />

@@ -390,8 +390,7 @@ fn is_tx_receiver_watched(
 ```
 
 ## Credentials
-
-[Configure the Credentials](credentials.md) in order to access the data from NEAR Lake Framework
+[Configure the Credentials](./running-near-lake/credentials.md) in order to access the data from NEAR Lake Framework
 
 ## Conclusion
 

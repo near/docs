@@ -10,7 +10,7 @@ Unit tests allow you to test the contract methods individually. They are suitabl
 If you used one of our [examples](https://github.com/near-examples/docs-examples) as template, then you simply need to navigate to the contract's folder, and use `yarn test`. In case you didn't, then we recommend you copy the necessary node files (e.g. `package.json`) from one of our templates.
 
 :::tip
-You can run `yarn test` from the root folder of each project to run both unit and [integration](integration.md) tests.
+You can run `yarn test` from the root folder of each project to run both unit and [integration](integration-test.md) tests.
 :::
 
 ---
@@ -31,7 +31,7 @@ The tests in the [Counter Example](https://github.com/near-examples/counters) re
 
 ## Snippet II: Modifying the Context
 
-While doing unit testing you can modify the [Environment variables](../contracts/environment/environment.md) through the `VMContextBuilder`. This will enable you to, for example, simulate calls from different users, with specific attached deposit and GAS. Here we present a snippet on how we test the `donate` method from our [Donation Example](https://github.com/near-examples/donation-examples) by manipulating the `predecessor` and `attached_deposit`.
+While doing unit testing you can modify the [Environment variables](../anatomy-of-a-contract/environment.md) through the `VMContextBuilder`. This will enable you to, for example, simulate calls from different users, with specific attached deposit and GAS. Here we present a snippet on how we test the `donate` method from our [Donation Example](https://github.com/near-examples/donation-examples) by manipulating the `predecessor` and `attached_deposit`.
 
 <CodeTabs>
   <Language value="🦀 Rust" language="rust">
@@ -47,9 +47,9 @@ While doing unit testing you can modify the [Environment variables](../contracts
 
 Unit tests are useful to check for code integrity, and detect basic errors on isolated methods. However, since unit tests do not run on a blockchain, there are many things which they cannot detect. Unit tests are not suitable for:
 
-- Testing [gas](../contracts/environment/environment.md) and [storage](../contracts/storage.md) usage
-- Testing [transfers](../contracts/actions.md)
-- Testing [cross-contract calls](../contracts/crosscontract.md)
+- Testing [gas](../anatomy-of-a-contract/environment.md) and [storage](../anatomy-of-a-contract/storage.md) usage
+- Testing [transfers](../anatomy-of-a-contract/actions.md)
+- Testing [cross-contract calls](../anatomy-of-a-contract/crosscontract.md)
 - Testing complex interactions, i.e. multiple users depositing money on the contract
 
-For all these cases it is necessary to **complement** unit tests with [integration tests](integration.md).
+For all these cases it is necessary to **complement** unit tests with [integration tests](integration-test.md).

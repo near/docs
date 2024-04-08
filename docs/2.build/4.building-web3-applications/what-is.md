@@ -6,7 +6,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
-Web3 Applications - also known as decentralized apps (dApps) - leverage [smart contracts](../contracts/whatiscontract.md) and blockchain data to offer **transparency**, **security** and **giving back control** to users over their assets and data.
+Web3 Applications - also known as decentralized apps (dApps) - leverage [smart contracts](../2.building-smart-contracts/what-is.md) and blockchain data to offer **transparency**, **security** and **giving back control** to users over their assets and data.
 
 ![img](/docs/assets/welcome-pages/examples.png)
 

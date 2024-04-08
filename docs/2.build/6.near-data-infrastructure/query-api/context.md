@@ -71,7 +71,7 @@ The above is a snippet from the social feed indexer. In this example, you have a
 
 :::tip
 
-You can find other examples of `context.graphql` in the [social_feed indexers](../tutorial/indexer-tutorials/feed-indexer.md). 
+You can find other examples of `context.graphql` in the [social_feed indexers](../../../bos/tutorial/indexer-tutorials/feed-indexer.md). 
 
 :::
 

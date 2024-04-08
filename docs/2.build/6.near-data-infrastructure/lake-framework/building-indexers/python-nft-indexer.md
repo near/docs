@@ -37,7 +37,7 @@ We will use Python version of [NEAR Lake Framework](https://near-indexers.io/doc
 
 :::danger Credentials
 
-Please, ensure you've the credentials set up as described on the [Credentials](credentials.md) page. Otherwise you won't be able to get the code working.
+Please, ensure you've the credentials set up as described on the [Credentials](../running-near-lake/credentials.md) page. Otherwise you won't be able to get the code working.
 
 :::
 
@@ -222,7 +222,7 @@ python3 main.py
 
 :::note
 
-Having troubles running the indexer? Please, check you haven't skipped the [Credentials](credentials.md) part :)
+Having troubles running the indexer? Please, check you haven't skipped the [Credentials](../running-near-lake/credentials.md) part :)
 
 :::
 
@@ -324,7 +324,7 @@ if receipt_execution_outcome.receipt.receiver_id.endswith(
 
 A few words about what is going on here. If the Receipt's receiver account name ends with `.paras.near` (e.g. `x.paras.near`) we assume it's from Paras marketplace, so we are changing the corresponding variable.
 
-Mintbase turn, we hope [Nate](https://twitter.com/nategeier) and his team have [migrated to NEAR Lake Framework](migrating-to-near-lake-framework.md) already, saying "Hi!" and crafting the link:
+Mintbase turn, we hope [Nate](https://twitter.com/nategeier) and his team have [migrated to NEAR Lake Framework](../migrating-to-near-lake-framework.md) already, saying "Hi!" and crafting the link:
 
 ```python title=main.py
     elif re.search(
@@ -443,7 +443,7 @@ python3 main.py
 
 :::note
 
-Having troubles running the indexer? Please, check you haven't skipped the [Credentials](credentials.md) part :)
+Having troubles running the indexer? Please, check you haven't skipped the [Credentials](../running-near-lake/credentials.md) part :)
 
 :::
 
