@@ -6,7 +6,6 @@ hide_table_of_contents: true
 ---
 
 import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
-import ContactUs from '@site/src/components/ContactUs.mdx';
 
 Explore our collection of Examples and Tutorials
 
@@ -37,7 +36,3 @@ Explore our collection of Examples and Tutorials
              subtitle="Build a Crossword Game from zero" image="crossword.png" />
   </Column>
 </FeatureList>
-
----
-
-<ContactUs />

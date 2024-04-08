@@ -7,7 +7,6 @@ hide_breadcrumb: true
 ---
 
 import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
-import ContactUs from '@site/src/components/ContactUs.mdx';
 
 Welcome! Here you will find all the information on what you can **build** on NEAR and **how to** build it. Do not worry if you are new to Web3 or Blockchain, we are here to **guide you** through the process of learning.
 
@@ -54,9 +53,3 @@ Welcome! Here you will find all the information on what you can **build** on NEA
     <Feature url="/tools/near-lake" title="NEAR Lake" subtitle="An Indexer that stores chain events" image="monitor.png" />
   </Column>
 </FeatureList>
-
-<br/>
-
----
-
-<ContactUs />

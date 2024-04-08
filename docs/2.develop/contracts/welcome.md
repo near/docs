@@ -7,7 +7,6 @@ hide_breadcrumb: true
 ---
 
 import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
-import ContactUs from '@site/src/components/ContactUs.mdx';
 
 Welcome! Smart contracts are pieces of **executable code** that live in a NEAR account. They can **store data**, **perform transactions** in the account’s name, and **expose methods** so other accounts can interact with them.
 
@@ -44,9 +43,3 @@ Welcome! Smart contracts are pieces of **executable code** that live in a NEAR a
     <Feature url="/primitives/dao" title="Autonomous Organizations" subtitle="Understand DAOs" image="dao.png" />
   </Column>
 </FeatureList>
-
-<br/>
-
----
-
-<ContactUs />

@@ -4,7 +4,6 @@ title: NEAR - Your Gateway to an Open Web
 hide_table_of_contents: true
 ---
 import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
-import ContactUs from '@site/src/components/ContactUs.mdx';
 
 Welcome, this is the starting point for all NEAR documentation. Learn to build and publish blockchain applications. Embrace the power of Web3.
 
@@ -192,7 +191,3 @@ Here are more sources from our ecosystem that can help you to learn more about N
     </a>
   </div>
 </div>
-
-<hr className="subsection" />
-
-<ContactUs />
