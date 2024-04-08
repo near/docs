@@ -11,6 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/4.tools/fastnear-api.md",
   "tags": [],
   "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1712567569000,
   "frontMatter": {
     "id": "fastnear-api",
     "title": "FastNEAR API",

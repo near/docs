@@ -5,32 +5,32 @@
       "plugin": "82d98fd4"
     }
   },
-  "/zh-CN/-1d3": {
+  "/zh-CN/-c34": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "8b378508"
     }
   },
-  "/zh-CN/-f20": {
+  "/zh-CN/-fd1": {
     "__comp": "a7bd4aaa",
     "version": "935f2afb"
   },
-  "/zh-CN/-5b2": {
+  "/zh-CN/-ffe": {
     "__comp": "a94703ab"
   },
-  "/zh-CN/-702": {
+  "/zh-CN/-251": {
     "__comp": "17896441",
     "content": "34709271"
   },
-  "/zh-CN/abstraction/chain-signatures-02e": {
+  "/zh-CN/abstraction/chain-signatures-6bd": {
     "__comp": "17896441",
     "content": "bd9debfd"
   },
-  "/zh-CN/abstraction/chain-signatures/wallet-0c3": {
+  "/zh-CN/abstraction/chain-signatures/wallet-424": {
     "__comp": "17896441",
     "content": "08d0b3e9"
   },
-  "/zh-CN/abstraction/data-availability-a05": {
+  "/zh-CN/abstraction/data-availability-41a": {
     "__comp": "17896441",
     "content": "5b4aa17c"
   },
@@ -70,7 +70,7 @@
     "__comp": "17896441",
     "content": "a0c04405"
   },
-  "/zh-CN/api/rpc/providers-1ef": {
+  "/zh-CN/api/rpc/providers-379": {
     "__comp": "17896441",
     "content": "2e63797e"
   },
@@ -242,7 +242,7 @@
     "__comp": "17896441",
     "content": "8132b614"
   },
-  "/zh-CN/concepts/abstraction/signatures/use-cases-86f": {
+  "/zh-CN/concepts/abstraction/signatures/use-cases-98d": {
     "__comp": "17896441",
     "content": "dd2e084b"
   },
@@ -406,7 +406,7 @@
     "__comp": "17896441",
     "content": "6f1879e4"
   },
-  "/zh-CN/develop/contracts/quickstart-8ce": {
+  "/zh-CN/develop/contracts/quickstart-59c": {
     "__comp": "17896441",
     "content": "f3a04dbc"
   },
@@ -554,15 +554,15 @@
     "__comp": "17896441",
     "content": "2be659d2"
   },
-  "/zh-CN/develop/relayers/gas-station-cb6": {
+  "/zh-CN/develop/relayers/gas-station-b0b": {
     "__comp": "17896441",
     "content": "8d3ada0b"
   },
-  "/zh-CN/develop/relayers/multichain-server-6a7": {
+  "/zh-CN/develop/relayers/multichain-server-251": {
     "__comp": "17896441",
     "content": "42bf8185"
   },
-  "/zh-CN/develop/relayers/relayer-gas-example-c79": {
+  "/zh-CN/develop/relayers/relayer-gas-example-70a": {
     "__comp": "17896441",
     "content": "36aed21f"
   },
@@ -598,7 +598,7 @@
     "__comp": "17896441",
     "content": "c7c9882d"
   },
-  "/zh-CN/develop/upgrade-639": {
+  "/zh-CN/develop/upgrade-e25": {
     "__comp": "17896441",
     "content": "ccff57ee"
   },
@@ -1110,7 +1110,7 @@
     "__comp": "17896441",
     "content": "7cea41b8"
   },
-  "/zh-CN/sdk/js/introduction-82b": {
+  "/zh-CN/sdk/js/introduction-90d": {
     "__comp": "17896441",
     "content": "bc40895c"
   },
@@ -1254,11 +1254,11 @@
     "__comp": "17896441",
     "content": "d5edbf82"
   },
-  "/zh-CN/tools/fastauth-sdk-a45": {
+  "/zh-CN/tools/fastauth-sdk-716": {
     "__comp": "17896441",
     "content": "6ce53e61"
   },
-  "/zh-CN/tools/fastnear-api-476": {
+  "/zh-CN/tools/fastnear-api-fa1": {
     "__comp": "17896441",
     "content": "f828a662"
   },
@@ -1402,7 +1402,7 @@
     "__comp": "17896441",
     "content": "c8cc6d2b"
   },
-  "/zh-CN/tutorials/examples/advanced-xcc-a2a": {
+  "/zh-CN/tutorials/examples/advanced-xcc-88c": {
     "__comp": "17896441",
     "content": "a4bb07b0"
   },
@@ -1410,15 +1410,15 @@
     "__comp": "17896441",
     "content": "1edf8cf4"
   },
-  "/zh-CN/tutorials/examples/coin-flip-7f7": {
+  "/zh-CN/tutorials/examples/coin-flip-2a9": {
     "__comp": "17896441",
     "content": "ad3c2cd5"
   },
-  "/zh-CN/tutorials/examples/count-near-36d": {
+  "/zh-CN/tutorials/examples/count-near-572": {
     "__comp": "17896441",
     "content": "e2f4a20c"
   },
-  "/zh-CN/tutorials/examples/donation-c24": {
+  "/zh-CN/tutorials/examples/donation-170": {
     "__comp": "17896441",
     "content": "ad09d313"
   },
@@ -1426,7 +1426,7 @@
     "__comp": "17896441",
     "content": "18601697"
   },
-  "/zh-CN/tutorials/examples/factory-baf": {
+  "/zh-CN/tutorials/examples/factory-a56": {
     "__comp": "17896441",
     "content": "e86349f2"
   },
@@ -1434,7 +1434,7 @@
     "__comp": "17896441",
     "content": "8c8ec5ba"
   },
-  "/zh-CN/tutorials/examples/guest-book-246": {
+  "/zh-CN/tutorials/examples/guest-book-b59": {
     "__comp": "17896441",
     "content": "922b1ba2"
   },
@@ -1442,11 +1442,11 @@
     "__comp": "17896441",
     "content": "36e9c3c8"
   },
-  "/zh-CN/tutorials/examples/update-contract-migrate-state-4d5": {
+  "/zh-CN/tutorials/examples/update-contract-migrate-state-0ed": {
     "__comp": "17896441",
     "content": "c193d505"
   },
-  "/zh-CN/tutorials/examples/xcc-74a": {
+  "/zh-CN/tutorials/examples/xcc-486": {
     "__comp": "17896441",
     "content": "b55b1b7c"
   },
@@ -1542,47 +1542,47 @@
     "__comp": "17896441",
     "content": "afa19ca1"
   },
-  "/zh-CN/tutorials/nfts/js/approvals-f9d": {
+  "/zh-CN/tutorials/nfts/js/approvals-b0a": {
     "__comp": "17896441",
     "content": "e7860590"
   },
-  "/zh-CN/tutorials/nfts/js/core-694": {
+  "/zh-CN/tutorials/nfts/js/core-545": {
     "__comp": "17896441",
     "content": "1f4b7ba7"
   },
-  "/zh-CN/tutorials/nfts/js/enumeration-074": {
+  "/zh-CN/tutorials/nfts/js/enumeration-b44": {
     "__comp": "17896441",
     "content": "403fa534"
   },
-  "/zh-CN/tutorials/nfts/js/events-088": {
+  "/zh-CN/tutorials/nfts/js/events-8e4": {
     "__comp": "17896441",
     "content": "16aaa7d4"
   },
-  "/zh-CN/tutorials/nfts/js/introduction-522": {
+  "/zh-CN/tutorials/nfts/js/introduction-708": {
     "__comp": "17896441",
     "content": "f2f2acd3"
   },
-  "/zh-CN/tutorials/nfts/js/marketplace-eee": {
+  "/zh-CN/tutorials/nfts/js/marketplace-5e0": {
     "__comp": "17896441",
     "content": "d618bb47"
   },
-  "/zh-CN/tutorials/nfts/js/minting-e1d": {
+  "/zh-CN/tutorials/nfts/js/minting-e35": {
     "__comp": "17896441",
     "content": "46741d34"
   },
-  "/zh-CN/tutorials/nfts/js/predeployed-contract-f73": {
+  "/zh-CN/tutorials/nfts/js/predeployed-contract-522": {
     "__comp": "17896441",
     "content": "fa525241"
   },
-  "/zh-CN/tutorials/nfts/js/royalty-ffb": {
+  "/zh-CN/tutorials/nfts/js/royalty-b95": {
     "__comp": "17896441",
     "content": "09307cd6"
   },
-  "/zh-CN/tutorials/nfts/js/skeleton-fcb": {
+  "/zh-CN/tutorials/nfts/js/skeleton-412": {
     "__comp": "17896441",
     "content": "09327a25"
   },
-  "/zh-CN/tutorials/nfts/js/upgrade-contract-d66": {
+  "/zh-CN/tutorials/nfts/js/upgrade-contract-be5": {
     "__comp": "17896441",
     "content": "e2471d63"
   },
