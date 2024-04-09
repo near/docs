@@ -1,5 +1,5 @@
 ---
-id: welcome
+id: meta-transactions
 title: Building a Meta Transaction Relayer
 sidebar_label: Building a Relayer
 ---

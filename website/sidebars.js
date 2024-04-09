@@ -134,7 +134,7 @@ const sidebar = {
     'build/chain-abstraction/what-is',
     {
       "Chain Abstraction Services": [
-        "build/chain-abstraction/welcome",
+        "build/chain-abstraction/meta-transactions",
         'build/chain-abstraction/fastauth-sdk',
         'build/chain-abstraction/chain-signatures',
         'build/chain-abstraction/wallet',
