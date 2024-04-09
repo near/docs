@@ -21,7 +21,7 @@
   "sidebar": "build",
   "previous": {
     "title": "Rollup Data Availability",
-    "permalink": "/ko/abstraction/data-availability"
+    "permalink": "/ko/build/chain-abstraction/data-availability"
   },
   "next": {
     "title": "Quickstart ✨",

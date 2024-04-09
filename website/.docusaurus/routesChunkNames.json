@@ -5,38 +5,22 @@
       "plugin": "82d98fd4"
     }
   },
-  "/zh-CN/-ae2": {
+  "/zh-CN/-b30": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "8b378508"
     }
   },
-  "/zh-CN/-476": {
+  "/zh-CN/-117": {
     "__comp": "a7bd4aaa",
     "version": "935f2afb"
   },
-  "/zh-CN/-e25": {
+  "/zh-CN/-4c8": {
     "__comp": "a94703ab"
   },
   "/zh-CN/-251": {
     "__comp": "17896441",
     "content": "34709271"
-  },
-  "/zh-CN/abstraction/chain-signatures-6bd": {
-    "__comp": "17896441",
-    "content": "bd9debfd"
-  },
-  "/zh-CN/abstraction/chain-signatures/wallet-424": {
-    "__comp": "17896441",
-    "content": "08d0b3e9"
-  },
-  "/zh-CN/abstraction/data-availability-41a": {
-    "__comp": "17896441",
-    "content": "5b4aa17c"
-  },
-  "/zh-CN/abstraction/what-is-a5a": {
-    "__comp": "17896441",
-    "content": "433469e3"
   },
   "/zh-CN/api/rpc/access-keys-bdc": {
     "__comp": "17896441",
@@ -221,6 +205,42 @@
   "/zh-CN/bos/tutorial/using-iframes-a8f": {
     "__comp": "17896441",
     "content": "0c5f3ce8"
+  },
+  "/zh-CN/build/chain-abstraction/chain-signatures-bb6": {
+    "__comp": "17896441",
+    "content": "e66ee456"
+  },
+  "/zh-CN/build/chain-abstraction/data-availability-fc4": {
+    "__comp": "17896441",
+    "content": "ba36fa48"
+  },
+  "/zh-CN/build/chain-abstraction/fastauth-sdk-7a1": {
+    "__comp": "17896441",
+    "content": "c7a41272"
+  },
+  "/zh-CN/build/chain-abstraction/meta-transactions-23a": {
+    "__comp": "17896441",
+    "content": "a3d55c39"
+  },
+  "/zh-CN/build/chain-abstraction/multichain-gas-relayer/gas-station-1c7": {
+    "__comp": "17896441",
+    "content": "083be29f"
+  },
+  "/zh-CN/build/chain-abstraction/multichain-gas-relayer/multichain-server-516": {
+    "__comp": "17896441",
+    "content": "d6c6455d"
+  },
+  "/zh-CN/build/chain-abstraction/multichain-gas-relayer/relayer-gas-example-eea": {
+    "__comp": "17896441",
+    "content": "d2c8f308"
+  },
+  "/zh-CN/build/chain-abstraction/wallet-f10": {
+    "__comp": "17896441",
+    "content": "deff63c8"
+  },
+  "/zh-CN/build/chain-abstraction/what-is-a81": {
+    "__comp": "17896441",
+    "content": "206771fa"
   },
   "/zh-CN/concepts/abstraction/chain-signatures-edb": {
     "__comp": "17896441",
@@ -549,22 +569,6 @@
   "/zh-CN/develop/quickstart-guide-528": {
     "__comp": "17896441",
     "content": "c0033325"
-  },
-  "/zh-CN/develop/relayers/build-relayer-309": {
-    "__comp": "17896441",
-    "content": "2be659d2"
-  },
-  "/zh-CN/develop/relayers/gas-station-b0b": {
-    "__comp": "17896441",
-    "content": "8d3ada0b"
-  },
-  "/zh-CN/develop/relayers/multichain-server-251": {
-    "__comp": "17896441",
-    "content": "42bf8185"
-  },
-  "/zh-CN/develop/relayers/relayer-gas-example-70a": {
-    "__comp": "17896441",
-    "content": "36aed21f"
   },
   "/zh-CN/develop/relevant-contracts/dao-953": {
     "__comp": "17896441",
@@ -1289,10 +1293,6 @@
   "/zh-CN/tools/explorer-958": {
     "__comp": "17896441",
     "content": "d5edbf82"
-  },
-  "/zh-CN/tools/fastauth-sdk-716": {
-    "__comp": "17896441",
-    "content": "6ce53e61"
   },
   "/zh-CN/tools/fastnear-api-fa1": {
     "__comp": "17896441",

@@ -1,0 +1,29 @@
+{
+  "id": "build/chain-abstraction/chain-signatures",
+  "title": "Chain Signatures",
+  "description": "Chain signatures enable NEAR accounts, including smart contracts, to sign and execute transactions across many blockchain protocols.",
+  "source": "@site/../docs/2.build/1.chain-abstraction/chain-signatures.md",
+  "sourceDirName": "2.build/1.chain-abstraction",
+  "slug": "/build/chain-abstraction/chain-signatures",
+  "permalink": "/zh-CN/build/chain-abstraction/chain-signatures",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/1.chain-abstraction/chain-signatures.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1712674517000,
+  "frontMatter": {
+    "id": "chain-signatures",
+    "title": "Chain Signatures"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "FastAuth (Email Login)",
+    "permalink": "/zh-CN/build/chain-abstraction/fastauth-sdk"
+  },
+  "next": {
+    "title": "Wallet Chain Key Rules",
+    "permalink": "/zh-CN/build/chain-abstraction/wallet"
+  }
+}

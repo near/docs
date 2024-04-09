@@ -9,44 +9,20 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', 'ae2'),
+    component: ComponentCreator('/zh-CN/', 'b30'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '476'),
+        component: ComponentCreator('/zh-CN/', '117'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', 'e25'),
+            component: ComponentCreator('/zh-CN/', '4c8'),
             routes: [
               {
                 path: '/zh-CN/',
                 component: ComponentCreator('/zh-CN/', '251'),
                 exact: true
-              },
-              {
-                path: '/zh-CN/abstraction/chain-signatures',
-                component: ComponentCreator('/zh-CN/abstraction/chain-signatures', '6bd'),
-                exact: true,
-                sidebar: "build"
-              },
-              {
-                path: '/zh-CN/abstraction/chain-signatures/wallet',
-                component: ComponentCreator('/zh-CN/abstraction/chain-signatures/wallet', '424'),
-                exact: true,
-                sidebar: "build"
-              },
-              {
-                path: '/zh-CN/abstraction/data-availability',
-                component: ComponentCreator('/zh-CN/abstraction/data-availability', '41a'),
-                exact: true,
-                sidebar: "build"
-              },
-              {
-                path: '/zh-CN/abstraction/what-is',
-                component: ComponentCreator('/zh-CN/abstraction/what-is', 'a5a'),
-                exact: true,
-                sidebar: "build"
               },
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -320,6 +296,60 @@ export default [
                 component: ComponentCreator('/zh-CN/bos/tutorial/using-iframes', 'a8f'),
                 exact: true,
                 sidebar: "tutorials"
+              },
+              {
+                path: '/zh-CN/build/chain-abstraction/chain-signatures',
+                component: ComponentCreator('/zh-CN/build/chain-abstraction/chain-signatures', 'bb6'),
+                exact: true,
+                sidebar: "build"
+              },
+              {
+                path: '/zh-CN/build/chain-abstraction/data-availability',
+                component: ComponentCreator('/zh-CN/build/chain-abstraction/data-availability', 'fc4'),
+                exact: true,
+                sidebar: "build"
+              },
+              {
+                path: '/zh-CN/build/chain-abstraction/fastauth-sdk',
+                component: ComponentCreator('/zh-CN/build/chain-abstraction/fastauth-sdk', '7a1'),
+                exact: true,
+                sidebar: "build"
+              },
+              {
+                path: '/zh-CN/build/chain-abstraction/meta-transactions',
+                component: ComponentCreator('/zh-CN/build/chain-abstraction/meta-transactions', '23a'),
+                exact: true,
+                sidebar: "build"
+              },
+              {
+                path: '/zh-CN/build/chain-abstraction/multichain-gas-relayer/gas-station',
+                component: ComponentCreator('/zh-CN/build/chain-abstraction/multichain-gas-relayer/gas-station', '1c7'),
+                exact: true,
+                sidebar: "build"
+              },
+              {
+                path: '/zh-CN/build/chain-abstraction/multichain-gas-relayer/multichain-server',
+                component: ComponentCreator('/zh-CN/build/chain-abstraction/multichain-gas-relayer/multichain-server', '516'),
+                exact: true,
+                sidebar: "build"
+              },
+              {
+                path: '/zh-CN/build/chain-abstraction/multichain-gas-relayer/relayer-gas-example',
+                component: ComponentCreator('/zh-CN/build/chain-abstraction/multichain-gas-relayer/relayer-gas-example', 'eea'),
+                exact: true,
+                sidebar: "build"
+              },
+              {
+                path: '/zh-CN/build/chain-abstraction/wallet',
+                component: ComponentCreator('/zh-CN/build/chain-abstraction/wallet', 'f10'),
+                exact: true,
+                sidebar: "build"
+              },
+              {
+                path: '/zh-CN/build/chain-abstraction/what-is',
+                component: ComponentCreator('/zh-CN/build/chain-abstraction/what-is', 'a81'),
+                exact: true,
+                sidebar: "build"
               },
               {
                 path: '/zh-CN/concepts/abstraction/chain-signatures',
@@ -801,30 +831,6 @@ export default [
                 path: '/zh-CN/develop/quickstart-guide',
                 component: ComponentCreator('/zh-CN/develop/quickstart-guide', '528'),
                 exact: true
-              },
-              {
-                path: '/zh-CN/develop/relayers/build-relayer',
-                component: ComponentCreator('/zh-CN/develop/relayers/build-relayer', '309'),
-                exact: true,
-                sidebar: "build"
-              },
-              {
-                path: '/zh-CN/develop/relayers/gas-station',
-                component: ComponentCreator('/zh-CN/develop/relayers/gas-station', 'b0b'),
-                exact: true,
-                sidebar: "build"
-              },
-              {
-                path: '/zh-CN/develop/relayers/multichain-server',
-                component: ComponentCreator('/zh-CN/develop/relayers/multichain-server', '251'),
-                exact: true,
-                sidebar: "build"
-              },
-              {
-                path: '/zh-CN/develop/relayers/relayer-gas-example',
-                component: ComponentCreator('/zh-CN/develop/relayers/relayer-gas-example', '70a'),
-                exact: true,
-                sidebar: "build"
               },
               {
                 path: '/zh-CN/develop/relevant-contracts/dao',
@@ -1806,12 +1812,6 @@ export default [
                 component: ComponentCreator('/zh-CN/tools/explorer', '958'),
                 exact: true,
                 sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/tools/fastauth-sdk',
-                component: ComponentCreator('/zh-CN/tools/fastauth-sdk', '716'),
-                exact: true,
-                sidebar: "build"
               },
               {
                 path: '/zh-CN/tools/fastnear-api',

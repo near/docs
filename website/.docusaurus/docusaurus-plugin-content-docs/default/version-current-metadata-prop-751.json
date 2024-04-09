@@ -378,8 +378,8 @@
       {
         "type": "link",
         "label": "What is Chain Abstraction?",
-        "href": "/zh-CN/abstraction/what-is",
-        "docId": "abstraction/what-is",
+        "href": "/zh-CN/build/chain-abstraction/what-is",
+        "docId": "build/chain-abstraction/what-is",
         "unlisted": false
       },
       {
@@ -389,29 +389,29 @@
           {
             "type": "link",
             "label": "Building a Relayer",
-            "href": "/zh-CN/develop/relayers/build-relayer",
-            "docId": "develop/relayers/build-relayer",
+            "href": "/zh-CN/build/chain-abstraction/meta-transactions",
+            "docId": "build/chain-abstraction/meta-transactions",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "FastAuth (Email Login)",
-            "href": "/zh-CN/tools/fastauth-sdk",
-            "docId": "tools/fastauth-sdk",
+            "href": "/zh-CN/build/chain-abstraction/fastauth-sdk",
+            "docId": "build/chain-abstraction/fastauth-sdk",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Chain Signatures",
-            "href": "/zh-CN/abstraction/chain-signatures",
-            "docId": "abstraction/chain-signatures",
+            "href": "/zh-CN/build/chain-abstraction/chain-signatures",
+            "docId": "build/chain-abstraction/chain-signatures",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Wallet Chain Key Rules",
-            "href": "/zh-CN/abstraction/chain-signatures/wallet",
-            "docId": "abstraction/chain-signatures/wallet",
+            "href": "/zh-CN/build/chain-abstraction/wallet",
+            "docId": "build/chain-abstraction/wallet",
             "unlisted": false
           },
           {
@@ -421,22 +421,22 @@
               {
                 "type": "link",
                 "label": "Multichain Relayer Server",
-                "href": "/zh-CN/develop/relayers/multichain-server",
-                "docId": "develop/relayers/multichain-server",
+                "href": "/zh-CN/build/chain-abstraction/multichain-gas-relayer/multichain-server",
+                "docId": "build/chain-abstraction/multichain-gas-relayer/multichain-server",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "Multichain Gas Station",
-                "href": "/zh-CN/develop/relayers/gas-station",
-                "docId": "develop/relayers/gas-station",
+                "href": "/zh-CN/build/chain-abstraction/multichain-gas-relayer/gas-station",
+                "docId": "build/chain-abstraction/multichain-gas-relayer/gas-station",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "Relayer + Gas Station",
-                "href": "/zh-CN/develop/relayers/relayer-gas-example",
-                "docId": "develop/relayers/relayer-gas-example",
+                "href": "/zh-CN/build/chain-abstraction/multichain-gas-relayer/relayer-gas-example",
+                "docId": "build/chain-abstraction/multichain-gas-relayer/relayer-gas-example",
                 "unlisted": false
               }
             ],
@@ -446,8 +446,8 @@
           {
             "type": "link",
             "label": "Rollup Data Availability",
-            "href": "/zh-CN/abstraction/data-availability",
-            "docId": "abstraction/data-availability",
+            "href": "/zh-CN/build/chain-abstraction/data-availability",
+            "docId": "build/chain-abstraction/data-availability",
             "unlisted": false
           }
         ],
@@ -2865,30 +2865,6 @@
     ]
   },
   "docs": {
-    "abstraction/chain-signatures": {
-      "id": "abstraction/chain-signatures",
-      "title": "Chain Signatures",
-      "description": "Chain signatures enable NEAR accounts, including smart contracts, to sign and execute transactions across many blockchain protocols.",
-      "sidebar": "build"
-    },
-    "abstraction/chain-signatures/wallet": {
-      "id": "abstraction/chain-signatures/wallet",
-      "title": "Wallet Chain Key Rules",
-      "description": "Overview",
-      "sidebar": "build"
-    },
-    "abstraction/data-availability": {
-      "id": "abstraction/data-availability",
-      "title": "Rollup Data Availability",
-      "description": "Utilizing NEAR as storage data availability with a focus on lowering rollup DA fees.",
-      "sidebar": "build"
-    },
-    "abstraction/what-is": {
-      "id": "abstraction/what-is",
-      "title": "What is Chain Abstraction?",
-      "description": "The idea behind chain abstraction is quite simple: blockchain technology should be abstracted away from the user experience. In other words, people should not realize when they are using a blockchain, nor which blockchain they are using.",
-      "sidebar": "build"
-    },
     "api/rpc/access-keys": {
       "id": "api/rpc/access-keys",
       "title": "Access Keys",
@@ -3161,6 +3137,60 @@
       "title": "Using IFrames",
       "description": "In this tutorial you'll learn how to use the iframe VM tag and the Iframe resizer library, so you can embed external HTML or use custom DOM elements when building NEAR components. You can use it along the rest of approved VM tags to simplify your component development.",
       "sidebar": "tutorials"
+    },
+    "build/chain-abstraction/chain-signatures": {
+      "id": "build/chain-abstraction/chain-signatures",
+      "title": "Chain Signatures",
+      "description": "Chain signatures enable NEAR accounts, including smart contracts, to sign and execute transactions across many blockchain protocols.",
+      "sidebar": "build"
+    },
+    "build/chain-abstraction/data-availability": {
+      "id": "build/chain-abstraction/data-availability",
+      "title": "Rollup Data Availability",
+      "description": "Utilizing NEAR as storage data availability with a focus on lowering rollup DA fees.",
+      "sidebar": "build"
+    },
+    "build/chain-abstraction/fastauth-sdk": {
+      "id": "build/chain-abstraction/fastauth-sdk",
+      "title": "FastAuth SDK",
+      "description": "FastAuth is a key management system that allows users to recover or sign-up for a NEAR account using their email address. Furthermore, it allows to subsidize gas for a certain smart contract, so users can interact with it without having to fund their account.",
+      "sidebar": "build"
+    },
+    "build/chain-abstraction/meta-transactions": {
+      "id": "build/chain-abstraction/meta-transactions",
+      "title": "Building a Meta Transaction Relayer",
+      "description": "Relayers serve to delegate gas fees to a web service, allowing users to transact on NEAR without the need to acquire the token themselves while still retaining the security of signing their own transactions. This guide will lead you through the components necessary to construct a relayer capable of handling meta transactions.",
+      "sidebar": "build"
+    },
+    "build/chain-abstraction/multichain-gas-relayer/gas-station": {
+      "id": "build/chain-abstraction/multichain-gas-relayer/gas-station",
+      "title": "Multichain Gas Station Contract",
+      "description": "The multichain gas station smart contract accepts payments in NEAR tokens in exchange for gas funding on non-NEAR foreign chains. Part of the NEAR Multichain effort, it works in conjunction with the MPC recovery service to generate on-chain signatures.",
+      "sidebar": "build"
+    },
+    "build/chain-abstraction/multichain-gas-relayer/multichain-server": {
+      "id": "build/chain-abstraction/multichain-gas-relayer/multichain-server",
+      "title": "Multichain Relayer Server",
+      "description": "The Multichain Relayer Server facilitates cross-chain transactions and enables Chain Abstraction.",
+      "sidebar": "build"
+    },
+    "build/chain-abstraction/multichain-gas-relayer/relayer-gas-example": {
+      "id": "build/chain-abstraction/multichain-gas-relayer/relayer-gas-example",
+      "title": "Multichain Relayer and Gas Station example",
+      "description": "In this article you'll learn how to run end-to-end tests on the entire Multichain Relayer system.",
+      "sidebar": "build"
+    },
+    "build/chain-abstraction/wallet": {
+      "id": "build/chain-abstraction/wallet",
+      "title": "Wallet Chain Key Rules",
+      "description": "Overview",
+      "sidebar": "build"
+    },
+    "build/chain-abstraction/what-is": {
+      "id": "build/chain-abstraction/what-is",
+      "title": "What is Chain Abstraction?",
+      "description": "The idea behind chain abstraction is quite simple: blockchain technology should be abstracted away from the user experience. In other words, people should not realize when they are using a blockchain, nor which blockchain they are using.",
+      "sidebar": "build"
     },
     "concepts/abstraction/chain-signatures": {
       "id": "concepts/abstraction/chain-signatures",
@@ -3642,30 +3672,6 @@
       "id": "develop/quickstart-guide",
       "title": "Hello NEAR 👋",
       "description": "Hi! Let us guide you in starting and interacting with your first decentralized app (dApp) in NEAR: Hello NEAR."
-    },
-    "develop/relayers/build-relayer": {
-      "id": "develop/relayers/build-relayer",
-      "title": "Building a Meta Transaction Relayer",
-      "description": "Relayers serve to delegate gas fees to a web service, allowing users to transact on NEAR without the need to acquire the token themselves while still retaining the security of signing their own transactions. This guide will lead you through the components necessary to construct a relayer capable of handling meta transactions.",
-      "sidebar": "build"
-    },
-    "develop/relayers/gas-station": {
-      "id": "develop/relayers/gas-station",
-      "title": "Multichain Gas Station Contract",
-      "description": "The multichain gas station smart contract accepts payments in NEAR tokens in exchange for gas funding on non-NEAR foreign chains. Part of the NEAR Multichain effort, it works in conjunction with the MPC recovery service to generate on-chain signatures.",
-      "sidebar": "build"
-    },
-    "develop/relayers/multichain-server": {
-      "id": "develop/relayers/multichain-server",
-      "title": "Multichain Relayer Server",
-      "description": "The Multichain Relayer Server facilitates cross-chain transactions and enables Chain Abstraction.",
-      "sidebar": "build"
-    },
-    "develop/relayers/relayer-gas-example": {
-      "id": "develop/relayers/relayer-gas-example",
-      "title": "Multichain Relayer and Gas Station example",
-      "description": "In this article you'll learn how to run end-to-end tests on the entire Multichain Relayer system.",
-      "sidebar": "build"
     },
     "develop/relevant-contracts/dao": {
       "id": "develop/relevant-contracts/dao",
@@ -4647,12 +4653,6 @@
       "title": "Explorer",
       "description": "An Explorer allows you to quickly obtain information from the blockchain through a friendly user interface. These useful tools enable for example to:",
       "sidebar": "tools"
-    },
-    "tools/fastauth-sdk": {
-      "id": "tools/fastauth-sdk",
-      "title": "FastAuth SDK",
-      "description": "FastAuth is a key management system that allows users to recover or sign-up for a NEAR account using their email address. Furthermore, it allows to subsidize gas for a certain smart contract, so users can interact with it without having to fund their account.",
-      "sidebar": "build"
     },
     "tools/fastnear-api": {
       "id": "tools/fastnear-api",

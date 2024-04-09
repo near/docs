@@ -1,0 +1,29 @@
+{
+  "id": "build/chain-abstraction/what-is",
+  "title": "What is Chain Abstraction?",
+  "description": "The idea behind chain abstraction is quite simple: blockchain technology should be abstracted away from the user experience. In other words, people should not realize when they are using a blockchain, nor which blockchain they are using.",
+  "source": "@site/../docs/2.build/1.chain-abstraction/what-is.md",
+  "sourceDirName": "2.build/1.chain-abstraction",
+  "slug": "/build/chain-abstraction/what-is",
+  "permalink": "/zh-CN/build/chain-abstraction/what-is",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/1.chain-abstraction/what-is.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1712674517000,
+  "frontMatter": {
+    "id": "what-is",
+    "title": "What is Chain Abstraction?"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Home",
+    "permalink": "/zh-CN/develop/welcome"
+  },
+  "next": {
+    "title": "Building a Relayer",
+    "permalink": "/zh-CN/build/chain-abstraction/meta-transactions"
+  }
+}

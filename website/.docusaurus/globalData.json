@@ -11,26 +11,6 @@
           "mainDocId": "welcome",
           "docs": [
             {
-              "id": "abstraction/chain-signatures",
-              "path": "/zh-CN/abstraction/chain-signatures",
-              "sidebar": "build"
-            },
-            {
-              "id": "abstraction/chain-signatures/wallet",
-              "path": "/zh-CN/abstraction/chain-signatures/wallet",
-              "sidebar": "build"
-            },
-            {
-              "id": "abstraction/data-availability",
-              "path": "/zh-CN/abstraction/data-availability",
-              "sidebar": "build"
-            },
-            {
-              "id": "abstraction/what-is",
-              "path": "/zh-CN/abstraction/what-is",
-              "sidebar": "build"
-            },
-            {
               "id": "api/rpc/access-keys",
               "path": "/zh-CN/api/rpc/access-keys",
               "sidebar": "api"
@@ -256,6 +236,51 @@
               "id": "bos/tutorial/using-iframes",
               "path": "/zh-CN/bos/tutorial/using-iframes",
               "sidebar": "tutorials"
+            },
+            {
+              "id": "build/chain-abstraction/chain-signatures",
+              "path": "/zh-CN/build/chain-abstraction/chain-signatures",
+              "sidebar": "build"
+            },
+            {
+              "id": "build/chain-abstraction/data-availability",
+              "path": "/zh-CN/build/chain-abstraction/data-availability",
+              "sidebar": "build"
+            },
+            {
+              "id": "build/chain-abstraction/fastauth-sdk",
+              "path": "/zh-CN/build/chain-abstraction/fastauth-sdk",
+              "sidebar": "build"
+            },
+            {
+              "id": "build/chain-abstraction/meta-transactions",
+              "path": "/zh-CN/build/chain-abstraction/meta-transactions",
+              "sidebar": "build"
+            },
+            {
+              "id": "build/chain-abstraction/multichain-gas-relayer/gas-station",
+              "path": "/zh-CN/build/chain-abstraction/multichain-gas-relayer/gas-station",
+              "sidebar": "build"
+            },
+            {
+              "id": "build/chain-abstraction/multichain-gas-relayer/multichain-server",
+              "path": "/zh-CN/build/chain-abstraction/multichain-gas-relayer/multichain-server",
+              "sidebar": "build"
+            },
+            {
+              "id": "build/chain-abstraction/multichain-gas-relayer/relayer-gas-example",
+              "path": "/zh-CN/build/chain-abstraction/multichain-gas-relayer/relayer-gas-example",
+              "sidebar": "build"
+            },
+            {
+              "id": "build/chain-abstraction/wallet",
+              "path": "/zh-CN/build/chain-abstraction/wallet",
+              "sidebar": "build"
+            },
+            {
+              "id": "build/chain-abstraction/what-is",
+              "path": "/zh-CN/build/chain-abstraction/what-is",
+              "sidebar": "build"
             },
             {
               "id": "concepts/abstraction/chain-signatures",
@@ -655,26 +680,6 @@
             {
               "id": "develop/quickstart-guide",
               "path": "/zh-CN/develop/quickstart-guide"
-            },
-            {
-              "id": "develop/relayers/build-relayer",
-              "path": "/zh-CN/develop/relayers/build-relayer",
-              "sidebar": "build"
-            },
-            {
-              "id": "develop/relayers/gas-station",
-              "path": "/zh-CN/develop/relayers/gas-station",
-              "sidebar": "build"
-            },
-            {
-              "id": "develop/relayers/multichain-server",
-              "path": "/zh-CN/develop/relayers/multichain-server",
-              "sidebar": "build"
-            },
-            {
-              "id": "develop/relayers/relayer-gas-example",
-              "path": "/zh-CN/develop/relayers/relayer-gas-example",
-              "sidebar": "build"
             },
             {
               "id": "develop/relevant-contracts/dao",
@@ -1475,11 +1480,6 @@
               "id": "tools/explorer",
               "path": "/zh-CN/tools/explorer",
               "sidebar": "tools"
-            },
-            {
-              "id": "tools/fastauth-sdk",
-              "path": "/zh-CN/tools/fastauth-sdk",
-              "sidebar": "build"
             },
             {
               "id": "tools/fastnear-api",
