@@ -17,7 +17,7 @@ Welcome! Smart contracts are pieces of **executable code** that live in a NEAR a
     <Feature url="/develop/contracts/quickstart" title="Build a Contract"
              subtitle="Spin-up your first smart contract" image="smartcontract.png" />
     <Feature url="/develop/testing/introduction" title="Test a Contract" subtitle="Write unit & integration tests" image="test.png" />
-    <Feature url="/develop/contracts/security/checklist" title="Security Checklist"
+    <Feature url="/build/contracts/security/checklist" title="Security Checklist"
              subtitle="Make sure your contract is safe" image="validation.png" />
     <Feature url="/develop/deploy" title="Deploy a Contract" subtitle="Deploy the contract to the network" image="blocks.png" />
   </Column>

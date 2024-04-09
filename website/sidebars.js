@@ -168,7 +168,7 @@ const sidebar = {
             "build/smart-contracts/anatomy-of-a-contract/storage",
             "build/smart-contracts/anatomy-of-a-contract/actions",
             "build/smart-contracts/anatomy-of-a-contract/crosscontract",
-            "build/smart-contracts/anatomy-of-a-contract/checklist", 
+            "build/smart-contracts/security/checklist", 
             {
               "type": "html",
               "value": "<hr/>"
