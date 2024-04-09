@@ -231,8 +231,8 @@ If you're using your own account, replace `counter.near-examples.testnet` with y
 ## Moving Forward
 
 A nice way to learn is by trying to expand the contract. Modify it by adding a parameter to `increment` and `decrement`,
-so the user can choose by how much to change the value. For this, you will need to use knowledge from the [anatomy](../../2.develop/contracts/anatomy.md)
-and [storage](../../2.develop/contracts/storage.md) sections.
+so the user can choose by how much to change the value. For this, you will need to use knowledge from the [anatomy](../../2.build/2.smart-contracts/anatomy-of-a-contract/anatomy.md)
+and [storage](../../2.build/2.smart-contracts/anatomy-of-a-contract/storage.md) sections.
 
 :::note Versioning for this article
 

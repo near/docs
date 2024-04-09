@@ -4,7 +4,7 @@ title: State & Data Structures
 ---
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
-Each contract has its own state (storage), which **only they can modify** but [anyone can see](../../4.tools/cli.md#near-view-state-near-view-state).
+Each contract has its own state (storage), which **only they can modify** but [anyone can see](../../../4.tools/cli.md#near-view-state-near-view-state).
 
 A contract stores all its data in a `key-value` storage. This however is abstracted from you by the SDK through [serialization](./serialization.md).
 
@@ -14,7 +14,7 @@ Contracts [pay for their storage](#storage-cost) by locking part of their balanc
 ---
 
 ## Defining the State
-The contract's state is defined by the [main class attributes](./anatomy.md#defining-the-contract), and accessed through them.
+The contract's state is defined by the [main class attributes](../anatomy-of-a-contract/anatomy.md#defining-the-contract), and accessed through them.
 
 In the state you can store constants, native types, and complex objects. When in doubt, prefer to use [SDK collections](#data-structures)
 over native ones, because they are optimized for the [serialized key-value storage](./serialization.md#borsh-state-serialization).
@@ -187,5 +187,5 @@ An error will raise if your contract tries to increase its state while not havin
 :::
 
 :::warning
-Be mindful of potential [small deposit attacks](security/storage.md)
+Be mindful of potential [small deposit attacks](../security/storage.md)
 :::
