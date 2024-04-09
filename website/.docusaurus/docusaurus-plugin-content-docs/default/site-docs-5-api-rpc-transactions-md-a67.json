@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/5.api/rpc/transactions.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Olga Telezhnaya",
-  "lastUpdatedAt": 1710356654000,
+  "lastUpdatedBy": "telezhnaya",
+  "lastUpdatedAt": 1712690859000,
   "frontMatter": {
     "id": "transactions",
     "title": "RPC Endpoints",
