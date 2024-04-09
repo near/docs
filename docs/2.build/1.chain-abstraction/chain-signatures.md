@@ -46,7 +46,7 @@ _Diagram of a chain signature in NEAR_
 
 ## 1. Deriving the Foreign Address
 
-Chain Signatures use [`derivation paths`](../1.concepts/abstraction/chain-signatures.md#one-account-multiple-chains) to represent accounts on the target blockchain. The external address to be controlled can be deterministically derived from:
+Chain Signatures use [`derivation paths`](../../1.concepts/abstraction/chain-signatures.md#one-account-multiple-chains) to represent accounts on the target blockchain. The external address to be controlled can be deterministically derived from:
 
 - The NEAR address (e.g., `example.near`, `example.testnet`, etc.)
 - A derivation path (a string such as `ethereum-1`, `ethereum-2`, etc.)
