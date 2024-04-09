@@ -131,21 +131,21 @@ const sidebar = {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Chain Abstraction ✨ </small></b></span>"
     },
-    'abstraction/what-is',
+    'build/chain-abstraction/what-is',
     {
       "Chain Abstraction Services": [
-        "develop/relayers/build-relayer",
-        'tools/fastauth-sdk',
-        'abstraction/chain-signatures',
-        'abstraction/chain-signatures/wallet',
+        "build/chain-abstraction/welcome",
+        'build/chain-abstraction/fastauth-sdk',
+        'build/chain-abstraction/chain-signatures',
+        'build/chain-abstraction/wallet',
         {
           "Multichain Gas Relayer": [
-            "develop/relayers/multichain-server",
-            "develop/relayers/gas-station",
-            "develop/relayers/relayer-gas-example",
+            "build/chain-abstraction/multichain-gas-relayer/multichain-server",
+            "build/chain-abstraction/multichain-gas-relayer/gas-station",
+            "build/chain-abstraction/multichain-gas-relayer/relayer-gas-example",
           ]
         },
-        "abstraction/data-availability",
+        "build/chain-abstraction/data-availability",
       ]
     },
     {
