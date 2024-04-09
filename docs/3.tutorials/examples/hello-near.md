@@ -127,6 +127,6 @@ Integration tests are generally written in javascript. They automatically deploy
 ## Moving Forward
 
 A nice way to learn is by trying to expand the contract. Modify it so that you store one greeting message
-**per user**. For this, you will need to use knowledge from the [environment](../../2.develop/contracts/environment/environment.md)
-and [storage](../../2.develop/contracts/storage.md) sections. You can also use the [guest book](guest-book.md)
+**per user**. For this, you will need to use knowledge from the [environment](../../2.build/2.smart-contracts/anatomy-of-a-contract/environment.md)
+and [storage](../../2.build/2.smart-contracts/anatomy-of-a-contract/storage.md) sections. You can also use the [guest book](guest-book.md)
 example, since it does something similar.

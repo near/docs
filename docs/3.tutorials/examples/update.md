@@ -34,7 +34,7 @@ The migration method deserializes the current state (`OldState`) and iterates th
 to the new `PostedMessage` that includes the `payment` field.
 
 :::tip
-Notice that migrate is actually an [initialization method](../../2.develop/contracts/anatomy.md#initialization-method) that ignores the existing state (`[#init(ignore_state)]`), thus being able to execute and rewrite the state.
+Notice that migrate is actually an [initialization method](../../2.build/2.smart-contracts/anatomy-of-a-contract/anatomy.md#initialization-method) that ignores the existing state (`[#init(ignore_state)]`), thus being able to execute and rewrite the state.
 :::
 
 ---

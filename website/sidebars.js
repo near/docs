@@ -162,18 +162,18 @@ const sidebar = {
         "develop/contracts/quickstart",
         {
           "Anatomy of a Contract": [
-            "develop/contracts/basics",
-            "develop/contracts/anatomy",
-            "develop/contracts/environment/environment",
-            "develop/contracts/storage",
-            "develop/contracts/actions",
-            "develop/contracts/crosscontract",
-            "develop/contracts/security/checklist",
+            "build/smart-contracts/anatomy-of-a-contract/basics",
+            "build/smart-contracts/anatomy-of-a-contract/anatomy",
+            "build/smart-contracts/anatomy-of-a-contract/environment",
+            "build/smart-contracts/anatomy-of-a-contract/storage",
+            "build/smart-contracts/anatomy-of-a-contract/actions",
+            "build/smart-contracts/anatomy-of-a-contract/crosscontract",
+            "build/smart-contracts/security/checklist", 
             {
               "type": "html",
               "value": "<hr/>"
             },
-            "develop/contracts/serialization"
+            "build/smart-contracts/anatomy-of-a-contract/serialization"
           ]
         },
         {

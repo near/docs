@@ -18,7 +18,7 @@ When writing smart contracts you will leverage common programming concepts such:
 
 Modules help you to organize your code and reuse third-party libraries.
 
-The main module you will use in your contract will be the **NEAR SDK**, which: gives you access to the [execution environment](./environment/environment.md), allows you to [call other contracts](./crosscontract.md), [transfer tokens](./actions.md), and much more.
+The main module you will use in your contract will be the **NEAR SDK**, which: gives you access to the [execution environment](./environment.md), allows you to [call other contracts](./crosscontract.md), [transfer tokens](./actions.md), and much more.
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
@@ -91,7 +91,7 @@ to help you store complex data in the contract's state.
 </CodeTabs>
 
 :::tip
-Always prefer **SDK collections** over native ones in the contract's **[attributes (state)](./anatomy.md#defining-the-state)**.
+Always prefer **SDK collections** over native ones in the contract's **[attributes (state)](../anatomy-of-a-contract/anatomy.md#defining-the-state)**.
 :::
 
 ---
