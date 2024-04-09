@@ -19,8 +19,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "직렬화에 대한 참고 사항",
-    "permalink": "/ko/develop/contracts/serialization"
+    "title": "Notes on Serialization",
+    "permalink": "/ko/build/smart-contracts/anatomy-of-a-contract/serialization"
   },
   "next": {
     "title": "단위 테스트(Unit Testing)",

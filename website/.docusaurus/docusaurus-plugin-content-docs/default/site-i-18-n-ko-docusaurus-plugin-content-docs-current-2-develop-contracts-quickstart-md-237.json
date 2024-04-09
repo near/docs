@@ -24,7 +24,7 @@
     "permalink": "/ko/develop/contracts/whatisacontract"
   },
   "next": {
-    "title": "모듈, 자료형 및 구조",
-    "permalink": "/ko/develop/contracts/basics"
+    "title": "Modules, Types & Structs",
+    "permalink": "/ko/build/smart-contracts/anatomy-of-a-contract/basics"
   }
 }

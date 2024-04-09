@@ -9,15 +9,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', 'b30'),
+    component: ComponentCreator('/zh-CN/', '763'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '117'),
+        component: ComponentCreator('/zh-CN/', '230'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '4c8'),
+            component: ComponentCreator('/zh-CN/', '693'),
             routes: [
               {
                 path: '/zh-CN/',
@@ -352,6 +352,54 @@ export default [
                 sidebar: "build"
               },
               {
+                path: '/zh-CN/build/smart-contracts/anatomy-of-a-contract/actions',
+                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy-of-a-contract/actions', '2d5'),
+                exact: true,
+                sidebar: "build"
+              },
+              {
+                path: '/zh-CN/build/smart-contracts/anatomy-of-a-contract/anatomy',
+                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy-of-a-contract/anatomy', 'b4c'),
+                exact: true,
+                sidebar: "build"
+              },
+              {
+                path: '/zh-CN/build/smart-contracts/anatomy-of-a-contract/basics',
+                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy-of-a-contract/basics', 'aa1'),
+                exact: true,
+                sidebar: "build"
+              },
+              {
+                path: '/zh-CN/build/smart-contracts/anatomy-of-a-contract/crosscontract',
+                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy-of-a-contract/crosscontract', '844'),
+                exact: true,
+                sidebar: "build"
+              },
+              {
+                path: '/zh-CN/build/smart-contracts/anatomy-of-a-contract/environment',
+                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy-of-a-contract/environment', 'a81'),
+                exact: true,
+                sidebar: "build"
+              },
+              {
+                path: '/zh-CN/build/smart-contracts/anatomy-of-a-contract/serialization',
+                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy-of-a-contract/serialization', 'a70'),
+                exact: true,
+                sidebar: "build"
+              },
+              {
+                path: '/zh-CN/build/smart-contracts/anatomy-of-a-contract/storage',
+                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy-of-a-contract/storage', '452'),
+                exact: true,
+                sidebar: "build"
+              },
+              {
+                path: '/zh-CN/build/smart-contracts/security/checklist',
+                component: ComponentCreator('/zh-CN/build/smart-contracts/security/checklist', '119'),
+                exact: true,
+                sidebar: "build"
+              },
+              {
                 path: '/zh-CN/concepts/abstraction/chain-signatures',
                 component: ComponentCreator('/zh-CN/concepts/abstraction/chain-signatures', 'edb'),
                 exact: true,
@@ -588,36 +636,6 @@ export default [
                 sidebar: "concepts"
               },
               {
-                path: '/zh-CN/develop/contracts/actions',
-                component: ComponentCreator('/zh-CN/develop/contracts/actions', 'ef4'),
-                exact: true,
-                sidebar: "build"
-              },
-              {
-                path: '/zh-CN/develop/contracts/anatomy',
-                component: ComponentCreator('/zh-CN/develop/contracts/anatomy', '496'),
-                exact: true,
-                sidebar: "build"
-              },
-              {
-                path: '/zh-CN/develop/contracts/basics',
-                component: ComponentCreator('/zh-CN/develop/contracts/basics', '348'),
-                exact: true,
-                sidebar: "build"
-              },
-              {
-                path: '/zh-CN/develop/contracts/crosscontract',
-                component: ComponentCreator('/zh-CN/develop/contracts/crosscontract', 'd6d'),
-                exact: true,
-                sidebar: "build"
-              },
-              {
-                path: '/zh-CN/develop/contracts/environment/',
-                component: ComponentCreator('/zh-CN/develop/contracts/environment/', 'e28'),
-                exact: true,
-                sidebar: "build"
-              },
-              {
                 path: '/zh-CN/develop/contracts/introduction',
                 component: ComponentCreator('/zh-CN/develop/contracts/introduction', 'a58'),
                 exact: true
@@ -637,12 +655,6 @@ export default [
               {
                 path: '/zh-CN/develop/contracts/security/callbacks',
                 component: ComponentCreator('/zh-CN/develop/contracts/security/callbacks', 'c22'),
-                exact: true,
-                sidebar: "build"
-              },
-              {
-                path: '/zh-CN/develop/contracts/security/checklist',
-                component: ComponentCreator('/zh-CN/develop/contracts/security/checklist', '932'),
                 exact: true,
                 sidebar: "build"
               },
@@ -685,18 +697,6 @@ export default [
               {
                 path: '/zh-CN/develop/contracts/security/welcome',
                 component: ComponentCreator('/zh-CN/develop/contracts/security/welcome', '985'),
-                exact: true,
-                sidebar: "build"
-              },
-              {
-                path: '/zh-CN/develop/contracts/serialization',
-                component: ComponentCreator('/zh-CN/develop/contracts/serialization', 'acc'),
-                exact: true,
-                sidebar: "build"
-              },
-              {
-                path: '/zh-CN/develop/contracts/storage',
-                component: ComponentCreator('/zh-CN/develop/contracts/storage', 'a65'),
                 exact: true,
                 sidebar: "build"
               },

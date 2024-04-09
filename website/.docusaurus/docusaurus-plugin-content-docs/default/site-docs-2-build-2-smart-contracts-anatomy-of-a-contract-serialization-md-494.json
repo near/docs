@@ -1,0 +1,29 @@
+{
+  "id": "build/smart-contracts/anatomy-of-a-contract/serialization",
+  "title": "Notes on Serialization",
+  "description": "Smart contracts need to be able to communicate complex data in a simple way, while",
+  "source": "@site/../docs/2.build/2.smart-contracts/anatomy-of-a-contract/serialization.md",
+  "sourceDirName": "2.build/2.smart-contracts/anatomy-of-a-contract",
+  "slug": "/build/smart-contracts/anatomy-of-a-contract/serialization",
+  "permalink": "/zh-CN/build/smart-contracts/anatomy-of-a-contract/serialization",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/anatomy-of-a-contract/serialization.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1712679124000,
+  "frontMatter": {
+    "id": "serialization",
+    "title": "Notes on Serialization"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "✅ Checklist",
+    "permalink": "/zh-CN/build/smart-contracts/security/checklist"
+  },
+  "next": {
+    "title": "Introduction",
+    "permalink": "/zh-CN/develop/testing/introduction"
+  }
+}

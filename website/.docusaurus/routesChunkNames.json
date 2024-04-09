@@ -5,17 +5,17 @@
       "plugin": "82d98fd4"
     }
   },
-  "/zh-CN/-b30": {
+  "/zh-CN/-763": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "8b378508"
     }
   },
-  "/zh-CN/-117": {
+  "/zh-CN/-230": {
     "__comp": "a7bd4aaa",
     "version": "935f2afb"
   },
-  "/zh-CN/-4c8": {
+  "/zh-CN/-693": {
     "__comp": "a94703ab"
   },
   "/zh-CN/-251": {
@@ -242,6 +242,38 @@
     "__comp": "17896441",
     "content": "206771fa"
   },
+  "/zh-CN/build/smart-contracts/anatomy-of-a-contract/actions-2d5": {
+    "__comp": "17896441",
+    "content": "174128f5"
+  },
+  "/zh-CN/build/smart-contracts/anatomy-of-a-contract/anatomy-b4c": {
+    "__comp": "17896441",
+    "content": "f8bb0b8f"
+  },
+  "/zh-CN/build/smart-contracts/anatomy-of-a-contract/basics-aa1": {
+    "__comp": "17896441",
+    "content": "d501f1f6"
+  },
+  "/zh-CN/build/smart-contracts/anatomy-of-a-contract/crosscontract-844": {
+    "__comp": "17896441",
+    "content": "e908f428"
+  },
+  "/zh-CN/build/smart-contracts/anatomy-of-a-contract/environment-a81": {
+    "__comp": "17896441",
+    "content": "5a7a4837"
+  },
+  "/zh-CN/build/smart-contracts/anatomy-of-a-contract/serialization-a70": {
+    "__comp": "17896441",
+    "content": "494d17f8"
+  },
+  "/zh-CN/build/smart-contracts/anatomy-of-a-contract/storage-452": {
+    "__comp": "17896441",
+    "content": "63a57855"
+  },
+  "/zh-CN/build/smart-contracts/security/checklist-119": {
+    "__comp": "17896441",
+    "content": "1c00a7f7"
+  },
   "/zh-CN/concepts/abstraction/chain-signatures-edb": {
     "__comp": "17896441",
     "content": "aaff0a8d"
@@ -402,26 +434,6 @@
     "__comp": "17896441",
     "content": "9ece1cec"
   },
-  "/zh-CN/develop/contracts/actions-ef4": {
-    "__comp": "17896441",
-    "content": "045fe516"
-  },
-  "/zh-CN/develop/contracts/anatomy-496": {
-    "__comp": "17896441",
-    "content": "60081021"
-  },
-  "/zh-CN/develop/contracts/basics-348": {
-    "__comp": "17896441",
-    "content": "bef88986"
-  },
-  "/zh-CN/develop/contracts/crosscontract-d6d": {
-    "__comp": "17896441",
-    "content": "2f32b3ea"
-  },
-  "/zh-CN/develop/contracts/environment/-e28": {
-    "__comp": "17896441",
-    "content": "35a9ffce"
-  },
   "/zh-CN/develop/contracts/introduction-a58": {
     "__comp": "17896441",
     "content": "6f1879e4"
@@ -437,10 +449,6 @@
   "/zh-CN/develop/contracts/security/callbacks-c22": {
     "__comp": "17896441",
     "content": "8f44653a"
-  },
-  "/zh-CN/develop/contracts/security/checklist-932": {
-    "__comp": "17896441",
-    "content": "92ab9939"
   },
   "/zh-CN/develop/contracts/security/frontrunning-05a": {
     "__comp": "17896441",
@@ -469,14 +477,6 @@
   "/zh-CN/develop/contracts/security/welcome-985": {
     "__comp": "17896441",
     "content": "1c82d5f5"
-  },
-  "/zh-CN/develop/contracts/serialization-acc": {
-    "__comp": "17896441",
-    "content": "29b88f11"
-  },
-  "/zh-CN/develop/contracts/storage-a65": {
-    "__comp": "17896441",
-    "content": "9979b6b9"
   },
   "/zh-CN/develop/contracts/welcome-856": {
     "__comp": "17896441",

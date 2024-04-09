@@ -1,0 +1,29 @@
+{
+  "id": "build/smart-contracts/anatomy-of-a-contract/environment",
+  "title": "Environment",
+  "description": "Every method execution has an environment associated with information such as:",
+  "source": "@site/../docs/2.build/2.smart-contracts/anatomy-of-a-contract/environment.md",
+  "sourceDirName": "2.build/2.smart-contracts/anatomy-of-a-contract",
+  "slug": "/build/smart-contracts/anatomy-of-a-contract/environment",
+  "permalink": "/zh-CN/build/smart-contracts/anatomy-of-a-contract/environment",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/anatomy-of-a-contract/environment.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1712679124000,
+  "frontMatter": {
+    "id": "environment",
+    "title": "Environment"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "The Contract Class",
+    "permalink": "/zh-CN/build/smart-contracts/anatomy-of-a-contract/anatomy"
+  },
+  "next": {
+    "title": "State & Data Structures",
+    "permalink": "/zh-CN/build/smart-contracts/anatomy-of-a-contract/storage"
+  }
+}

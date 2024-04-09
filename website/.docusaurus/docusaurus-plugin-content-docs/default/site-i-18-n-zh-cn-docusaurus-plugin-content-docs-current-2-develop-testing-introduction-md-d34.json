@@ -20,7 +20,7 @@
   "sidebar": "build",
   "previous": {
     "title": "Notes on Serialization",
-    "permalink": "/zh-CN/develop/contracts/serialization"
+    "permalink": "/zh-CN/build/smart-contracts/anatomy-of-a-contract/serialization"
   },
   "next": {
     "title": "Unit Testing",

@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/examples/update.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "dj8yf0μl",
-  "lastUpdatedAt": 1712090069000,
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1712679124000,
   "frontMatter": {
     "id": "update-contract-migrate-state",
     "title": "Self Upgrade & State Migration"

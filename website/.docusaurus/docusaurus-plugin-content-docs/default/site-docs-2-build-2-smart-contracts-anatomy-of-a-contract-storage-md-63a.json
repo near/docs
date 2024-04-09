@@ -1,0 +1,29 @@
+{
+  "id": "build/smart-contracts/anatomy-of-a-contract/storage",
+  "title": "State & Data Structures",
+  "description": "Each contract has its own state (storage), which only they can modify but anyone can see.",
+  "source": "@site/../docs/2.build/2.smart-contracts/anatomy-of-a-contract/storage.md",
+  "sourceDirName": "2.build/2.smart-contracts/anatomy-of-a-contract",
+  "slug": "/build/smart-contracts/anatomy-of-a-contract/storage",
+  "permalink": "/zh-CN/build/smart-contracts/anatomy-of-a-contract/storage",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/anatomy-of-a-contract/storage.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1712679124000,
+  "frontMatter": {
+    "id": "storage",
+    "title": "State & Data Structures"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Environment",
+    "permalink": "/zh-CN/build/smart-contracts/anatomy-of-a-contract/environment"
+  },
+  "next": {
+    "title": "Transfers & Actions",
+    "permalink": "/zh-CN/build/smart-contracts/anatomy-of-a-contract/actions"
+  }
+}

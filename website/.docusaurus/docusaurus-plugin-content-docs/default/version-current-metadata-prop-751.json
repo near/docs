@@ -487,50 +487,50 @@
               {
                 "type": "link",
                 "label": "Modules, Types & Structs",
-                "href": "/zh-CN/develop/contracts/basics",
-                "docId": "develop/contracts/basics",
+                "href": "/zh-CN/build/smart-contracts/anatomy-of-a-contract/basics",
+                "docId": "build/smart-contracts/anatomy-of-a-contract/basics",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "The Contract Class",
-                "href": "/zh-CN/develop/contracts/anatomy",
-                "docId": "develop/contracts/anatomy",
+                "href": "/zh-CN/build/smart-contracts/anatomy-of-a-contract/anatomy",
+                "docId": "build/smart-contracts/anatomy-of-a-contract/anatomy",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "Environment",
-                "href": "/zh-CN/develop/contracts/environment/",
-                "docId": "develop/contracts/environment/environment",
+                "href": "/zh-CN/build/smart-contracts/anatomy-of-a-contract/environment",
+                "docId": "build/smart-contracts/anatomy-of-a-contract/environment",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "State & Data Structures",
-                "href": "/zh-CN/develop/contracts/storage",
-                "docId": "develop/contracts/storage",
+                "href": "/zh-CN/build/smart-contracts/anatomy-of-a-contract/storage",
+                "docId": "build/smart-contracts/anatomy-of-a-contract/storage",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "Transfers & Actions",
-                "href": "/zh-CN/develop/contracts/actions",
-                "docId": "develop/contracts/actions",
+                "href": "/zh-CN/build/smart-contracts/anatomy-of-a-contract/actions",
+                "docId": "build/smart-contracts/anatomy-of-a-contract/actions",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "Cross-Contract Calls",
-                "href": "/zh-CN/develop/contracts/crosscontract",
-                "docId": "develop/contracts/crosscontract",
+                "href": "/zh-CN/build/smart-contracts/anatomy-of-a-contract/crosscontract",
+                "docId": "build/smart-contracts/anatomy-of-a-contract/crosscontract",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "✅ Checklist",
-                "href": "/zh-CN/develop/contracts/security/checklist",
-                "docId": "develop/contracts/security/checklist",
+                "href": "/zh-CN/build/smart-contracts/security/checklist",
+                "docId": "build/smart-contracts/security/checklist",
                 "unlisted": false
               },
               {
@@ -540,8 +540,8 @@
               {
                 "type": "link",
                 "label": "Notes on Serialization",
-                "href": "/zh-CN/develop/contracts/serialization",
-                "docId": "develop/contracts/serialization",
+                "href": "/zh-CN/build/smart-contracts/anatomy-of-a-contract/serialization",
+                "docId": "build/smart-contracts/anatomy-of-a-contract/serialization",
                 "unlisted": false
               }
             ],
@@ -624,8 +624,8 @@
               {
                 "type": "link",
                 "label": "✅ Checklist",
-                "href": "/zh-CN/develop/contracts/security/checklist",
-                "docId": "develop/contracts/security/checklist",
+                "href": "/zh-CN/build/smart-contracts/security/checklist",
+                "docId": "build/smart-contracts/security/checklist",
                 "unlisted": false
               },
               {
@@ -3192,6 +3192,54 @@
       "description": "The idea behind chain abstraction is quite simple: blockchain technology should be abstracted away from the user experience. In other words, people should not realize when they are using a blockchain, nor which blockchain they are using.",
       "sidebar": "build"
     },
+    "build/smart-contracts/anatomy-of-a-contract/actions": {
+      "id": "build/smart-contracts/anatomy-of-a-contract/actions",
+      "title": "Transfers & Actions",
+      "description": "Smart contracts can perform specific Actions such as transferring NEAR, or calling other contracts.",
+      "sidebar": "build"
+    },
+    "build/smart-contracts/anatomy-of-a-contract/anatomy": {
+      "id": "build/smart-contracts/anatomy-of-a-contract/anatomy",
+      "title": "The Contract Class",
+      "description": "Your contract's logic and state (storage) is defined by the main class, in which:",
+      "sidebar": "build"
+    },
+    "build/smart-contracts/anatomy-of-a-contract/basics": {
+      "id": "build/smart-contracts/anatomy-of-a-contract/basics",
+      "title": "Modules, Types & Structs",
+      "description": "When writing smart contracts you will leverage common programming concepts such:",
+      "sidebar": "build"
+    },
+    "build/smart-contracts/anatomy-of-a-contract/crosscontract": {
+      "id": "build/smart-contracts/anatomy-of-a-contract/crosscontract",
+      "title": "Cross-Contract Calls",
+      "description": "Cross-contract calls allow your contract to interact with other deployed contracts. This is useful for:",
+      "sidebar": "build"
+    },
+    "build/smart-contracts/anatomy-of-a-contract/environment": {
+      "id": "build/smart-contracts/anatomy-of-a-contract/environment",
+      "title": "Environment",
+      "description": "Every method execution has an environment associated with information such as:",
+      "sidebar": "build"
+    },
+    "build/smart-contracts/anatomy-of-a-contract/serialization": {
+      "id": "build/smart-contracts/anatomy-of-a-contract/serialization",
+      "title": "Notes on Serialization",
+      "description": "Smart contracts need to be able to communicate complex data in a simple way, while",
+      "sidebar": "build"
+    },
+    "build/smart-contracts/anatomy-of-a-contract/storage": {
+      "id": "build/smart-contracts/anatomy-of-a-contract/storage",
+      "title": "State & Data Structures",
+      "description": "Each contract has its own state (storage), which only they can modify but anyone can see.",
+      "sidebar": "build"
+    },
+    "build/smart-contracts/security/checklist": {
+      "id": "build/smart-contracts/security/checklist",
+      "title": "✅ Checklist",
+      "description": "Once you finished developing your smart contract please go through the following list in order to ensure everything is safe for the end user.",
+      "sidebar": "build"
+    },
     "concepts/abstraction/chain-signatures": {
       "id": "concepts/abstraction/chain-signatures",
       "title": "What are Chain Signatures?",
@@ -3428,36 +3476,6 @@
       "description": "Welcome! Here we will explain you what NEAR Protocol is, its components, and how it works.",
       "sidebar": "concepts"
     },
-    "develop/contracts/actions": {
-      "id": "develop/contracts/actions",
-      "title": "Transfers & Actions",
-      "description": "Smart contracts can perform specific Actions such as transferring NEAR, or calling other contracts.",
-      "sidebar": "build"
-    },
-    "develop/contracts/anatomy": {
-      "id": "develop/contracts/anatomy",
-      "title": "The Contract Class",
-      "description": "Your contract's logic and state (storage) is defined by the main class, in which:",
-      "sidebar": "build"
-    },
-    "develop/contracts/basics": {
-      "id": "develop/contracts/basics",
-      "title": "Modules, Types & Structs",
-      "description": "When writing smart contracts you will leverage common programming concepts such:",
-      "sidebar": "build"
-    },
-    "develop/contracts/crosscontract": {
-      "id": "develop/contracts/crosscontract",
-      "title": "Cross-Contract Calls",
-      "description": "Cross-contract calls allow your contract to interact with other deployed contracts. This is useful for:",
-      "sidebar": "build"
-    },
-    "develop/contracts/environment/environment": {
-      "id": "develop/contracts/environment/environment",
-      "title": "Environment",
-      "description": "Every method execution has an environment associated with information such as:",
-      "sidebar": "build"
-    },
     "develop/contracts/introduction": {
       "id": "develop/contracts/introduction",
       "title": "Prerequisites",
@@ -3479,12 +3497,6 @@
       "id": "develop/contracts/security/callbacks",
       "title": "Cross-Contract Calls",
       "description": "While writing cross-contract calls there is a significant aspect to keep in mind",
-      "sidebar": "build"
-    },
-    "develop/contracts/security/checklist": {
-      "id": "develop/contracts/security/checklist",
-      "title": "✅ Checklist",
-      "description": "Once you finished developing your smart contract please go through the following list in order to ensure everything is safe for the end user.",
       "sidebar": "build"
     },
     "develop/contracts/security/frontrunning": {
@@ -3527,18 +3539,6 @@
       "id": "develop/contracts/security/welcome",
       "title": "Security",
       "description": "Here you will find information on how to keep your smart contract and decentralized applications secure.",
-      "sidebar": "build"
-    },
-    "develop/contracts/serialization": {
-      "id": "develop/contracts/serialization",
-      "title": "Notes on Serialization",
-      "description": "Smart contracts need to be able to communicate complex data in a simple way, while also reading and storing such data into their states efficiently.",
-      "sidebar": "build"
-    },
-    "develop/contracts/storage": {
-      "id": "develop/contracts/storage",
-      "title": "State & Data Structures",
-      "description": "Each contract has its own state (storage), which only they can modify but anyone can see.",
       "sidebar": "build"
     },
     "develop/contracts/welcome": {

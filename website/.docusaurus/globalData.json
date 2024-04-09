@@ -283,6 +283,46 @@
               "sidebar": "build"
             },
             {
+              "id": "build/smart-contracts/anatomy-of-a-contract/actions",
+              "path": "/zh-CN/build/smart-contracts/anatomy-of-a-contract/actions",
+              "sidebar": "build"
+            },
+            {
+              "id": "build/smart-contracts/anatomy-of-a-contract/anatomy",
+              "path": "/zh-CN/build/smart-contracts/anatomy-of-a-contract/anatomy",
+              "sidebar": "build"
+            },
+            {
+              "id": "build/smart-contracts/anatomy-of-a-contract/basics",
+              "path": "/zh-CN/build/smart-contracts/anatomy-of-a-contract/basics",
+              "sidebar": "build"
+            },
+            {
+              "id": "build/smart-contracts/anatomy-of-a-contract/crosscontract",
+              "path": "/zh-CN/build/smart-contracts/anatomy-of-a-contract/crosscontract",
+              "sidebar": "build"
+            },
+            {
+              "id": "build/smart-contracts/anatomy-of-a-contract/environment",
+              "path": "/zh-CN/build/smart-contracts/anatomy-of-a-contract/environment",
+              "sidebar": "build"
+            },
+            {
+              "id": "build/smart-contracts/anatomy-of-a-contract/serialization",
+              "path": "/zh-CN/build/smart-contracts/anatomy-of-a-contract/serialization",
+              "sidebar": "build"
+            },
+            {
+              "id": "build/smart-contracts/anatomy-of-a-contract/storage",
+              "path": "/zh-CN/build/smart-contracts/anatomy-of-a-contract/storage",
+              "sidebar": "build"
+            },
+            {
+              "id": "build/smart-contracts/security/checklist",
+              "path": "/zh-CN/build/smart-contracts/security/checklist",
+              "sidebar": "build"
+            },
+            {
               "id": "concepts/abstraction/chain-signatures",
               "path": "/zh-CN/concepts/abstraction/chain-signatures",
               "sidebar": "concepts"
@@ -479,31 +519,6 @@
               "sidebar": "concepts"
             },
             {
-              "id": "develop/contracts/actions",
-              "path": "/zh-CN/develop/contracts/actions",
-              "sidebar": "build"
-            },
-            {
-              "id": "develop/contracts/anatomy",
-              "path": "/zh-CN/develop/contracts/anatomy",
-              "sidebar": "build"
-            },
-            {
-              "id": "develop/contracts/basics",
-              "path": "/zh-CN/develop/contracts/basics",
-              "sidebar": "build"
-            },
-            {
-              "id": "develop/contracts/crosscontract",
-              "path": "/zh-CN/develop/contracts/crosscontract",
-              "sidebar": "build"
-            },
-            {
-              "id": "develop/contracts/environment/environment",
-              "path": "/zh-CN/develop/contracts/environment/",
-              "sidebar": "build"
-            },
-            {
               "id": "develop/contracts/introduction",
               "path": "/zh-CN/develop/contracts/introduction"
             },
@@ -520,11 +535,6 @@
             {
               "id": "develop/contracts/security/callbacks",
               "path": "/zh-CN/develop/contracts/security/callbacks",
-              "sidebar": "build"
-            },
-            {
-              "id": "develop/contracts/security/checklist",
-              "path": "/zh-CN/develop/contracts/security/checklist",
               "sidebar": "build"
             },
             {
@@ -560,16 +570,6 @@
             {
               "id": "develop/contracts/security/welcome",
               "path": "/zh-CN/develop/contracts/security/welcome",
-              "sidebar": "build"
-            },
-            {
-              "id": "develop/contracts/serialization",
-              "path": "/zh-CN/develop/contracts/serialization",
-              "sidebar": "build"
-            },
-            {
-              "id": "develop/contracts/storage",
-              "path": "/zh-CN/develop/contracts/storage",
               "sidebar": "build"
             },
             {

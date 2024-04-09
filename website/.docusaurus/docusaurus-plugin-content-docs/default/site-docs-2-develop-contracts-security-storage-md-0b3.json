@@ -20,7 +20,7 @@
   "sidebar": "build",
   "previous": {
     "title": "✅ Checklist",
-    "permalink": "/develop/contracts/security/checklist"
+    "permalink": "/build/smart-contracts/security/checklist"
   },
   "next": {
     "title": "Cross-Contract Calls",
