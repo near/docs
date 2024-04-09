@@ -122,7 +122,7 @@ const config = {
           position: 'left',
         },
         {
-          to: '/develop/welcome',
+          to: '/build/welcome',
           label: 'Build',
           position: 'left',
         },
@@ -158,7 +158,7 @@ const config = {
             },
             { label: 'Wallet Selector', href: '/tools/wallet-selector' },
             { label: 'FastAuth (Email Login)', href: '/tools/fastauth-sdk' },
-            { label: 'Relayers', href: '/develop/relayers/build-relayer' },
+            { label: 'Relayers', href: '/build/chain-abstraction-services/welcome' },
             {
               type: 'html',
               value: '<hr/> <small class="subtitle"> IDEs </small>',

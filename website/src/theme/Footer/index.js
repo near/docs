@@ -199,7 +199,7 @@ function Footer() {
               </div>
               <div className="col sm:w-1/3 mt-50">
                 <h2 className="text-24 font-black text-blue-light">
-                  <a href="https://docs.near.org/develop/welcome">
+                  <a href="https://docs.near.org/build/welcome">
                     Build
                   </a>
                 </h2>
@@ -208,7 +208,7 @@ function Footer() {
                   className="footer-menu list-reset mt-5 text-16 md:text-16"
                 >
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://docs.near.org/abstraction/what-is">
+                    <a href="https://docs.near.org/build/what-is">
                       Chain Abstraction
                     </a>
                   </li>
@@ -354,7 +354,7 @@ function Footer() {
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="http://docs.near.org/develop/relayers/build-relayer">
+                    <a href="http://docs.near.org/build/chain-abstraction-services/welcome">
                       Relayers
                     </a>
                   </li>
