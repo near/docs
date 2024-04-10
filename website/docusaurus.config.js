@@ -87,9 +87,9 @@ const config = {
   ],
   themeConfig: {
     announcementBar: {
-      id: 'abstraction',
+      id: 'id-0001',
       content:
-        '⛓️ <a href="/concepts/abstraction/chain-signatures">Chain Signatures</a> ⛓️ - Sign and send transactions on Bitcoin, Ethereum, and more! 🔑 ',
+        '🎉 We have reorganized our docs to make them simpler to navigate, please report any broken links 🎉',
       backgroundColor: '#fafbfc',
       textColor: '#333',
       isCloseable: true,
