@@ -153,11 +153,11 @@ The environment gives you access to two gas-related arguments: `prepaid_gas` and
 `used_gas` contains the amount of Gas that has been used so far. It is useful to estimate the Gas cost of running a method.
 
 :::warning
-During [cross-contract calls](/build/contracts/anatomy/crosscontract) always make sure the callback has enough Gas to fully execute.
+During [cross-contract calls](./crosscontract.md) always make sure the callback has enough Gas to fully execute.
 :::
 
 :::tip
-If you already [estimated the Gas](/concepts/protocol/gas#accurate-estimates-with-automated-tests) a method needs, you can ensure it never runs out of Gas by using `assert`
+If you already [estimated the Gas](../../../1.concepts/protocol/gas.md#estimating-costs-for-a-call) a method needs, you can ensure it never runs out of Gas by using `assert`
 
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="🦀 Rust">

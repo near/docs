@@ -329,7 +329,7 @@ function Footer() {
                   className="footer-menu list-reset mt-5 text-16 md:text-16"
                 >
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="http://docs.near.org/tools/near-api-js/quick-reference">
+                    <a href="/tools/near-api-js/quick-reference">
                       API
                     </a>
                   </li>
@@ -344,23 +344,18 @@ function Footer() {
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="http://docs.near.org/tools/wallet-selector">
+                    <a href="/tools/wallet-selector">
                       Wallet Selector
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="http://docs.near.org/tools/fastauth-sdk">
+                    <a href="/build/chain-abstraction/fastauth-sdk">
                       FastAuth
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="http://docs.near.org/build/chain-abstraction-services/welcome">
+                    <a href="/build/chain-abstraction-services/welcome">
                       Relayers
-                    </a>
-                  </li>
-                  <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="http://docs.near.org/bos/dev/vscode">
-                      VSCode
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">

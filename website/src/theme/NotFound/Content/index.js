@@ -58,7 +58,7 @@ export default function NotFoundContent({ className }) {
                       <a href="/build/chain-abstraction/chain-signatures"><li>Multi-Chain Signatures</li></a>
                       <a href="/build/primitives/what-is"><li>Primitives (FT, NFT, ...)</li></a>
                       <a href="/build/data-infrastructure/what-is"><li>Indexers & Data Solutions</li></a>
-                      <a href="/build/chain-abstraction/data-availability"> Data Availability </a>
+                      <a href="/build/chain-abstraction/data-availability"> Data Availability .</a>
                     </ul>
                   </div>
                 </div>

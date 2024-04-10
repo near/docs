@@ -18,10 +18,3 @@ Create your first **Javascript contract** in minutes:
 1. Download and install [Node.js](https://nodejs.org/en/download/).
 2. Create a new **javascript** project using our [quickstart guide](../../2.build/2.smart-contracts/quickstart.md).
 3. Read our docs on **[how to write smart contract](../../2.build/2.smart-contracts/anatomy/anatomy.md)**.
-
----
-
-## Resources
-1. Documentation: https://docs.near.org/build/contracts/anatomy/anatomy
-2. Examples: https://docs.near.org/tutorials/welcome
-3. Github: https://github.com/near/near-sdk-js/

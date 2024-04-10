@@ -292,4 +292,3 @@ For this purpose, there are ecosystem apps such as [Paras](https://paras.id/) or
 4. [Paras API documentation](https://parashq.github.io/).
 5. [Mintbase API documentation](https://docs.mintbase.xyz/dev/mintbase-graph).
 6. [Mintbase JS SDK](https://docs.mintbase.xyz/dev/mintbase-sdk-ref) - a set of methods to get data from blockchain, interact with Mintbase contracts, etc.
-7. [Examples](/develop/5.primitives/nft) on how to mint NFT, query metadata, attach NFTs to a contract call using `near-cli`.

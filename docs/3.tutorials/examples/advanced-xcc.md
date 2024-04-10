@@ -320,8 +320,8 @@ near call <accountId>  multiple_contracts --accountId <accountId> --gas 30000000
 near call <accountId> similar_contracts --accountId <accountId> --gas 300000000000000   
 ```
 
-:::info Note
-If the contract exceeds the execution time, additional gas must be provided. For further details [click here](/develop/contracts/environment/#gas).
+:::info
+If at some point you get an "Exceeded the prepaid gas" error, try to increase the gas amount used within the functions when calling other contracts
 :::
 
 :::note Versioning for this article

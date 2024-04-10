@@ -10,7 +10,7 @@ await wallet.callMethod({
   method: 'add_proposal',
   args: {
     proposal: {
-      description: "My first proposal$$$$https://docs.near.org/",
+      description: "My first proposal",
       kind: {
         Transfer: {
           token_id: "",

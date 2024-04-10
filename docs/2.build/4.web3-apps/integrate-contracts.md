@@ -278,7 +278,7 @@ function formatAmount(amount) {
 NEAR API JS does not limit itself to simply calling methods in a contract. In fact, you can use it to transform your web-app into a rich user experience. While we will not cover these topics in depth, it is important for you to know that with NEAR API JS you can also:
 
 - **[Sign and verify messages](https://github.com/near/near-api-js/blob/master/packages/cookbook/utils/verify-signature.js)**: this is very useful to prove that a message was created by the user.
-- **[Create batch transactions](https://github.com/near/near-api-js/tree/master/packages/cookbook/transactions/batch-transactions.js)**: this enables to link multiple [actions](/build/contracts/anatomy/actions) (e.g. multiple function calls). If one of the transactions fails, then they are all reverted.
+- **[Create batch transactions](https://github.com/near/near-api-js/tree/master/packages/cookbook/transactions/batch-transactions.js)**: this enables to link multiple [actions](../../1.concepts/protocol/transaction-anatomy.md#actions) (e.g. multiple function calls). If one of the transactions fails, then they are all reverted.
 - **[Create accounts](https://github.com/near/near-api-js/tree/master/packages/cookbook/accounts/create-testnet-account.js)**: deploy accounts for your users!
 
 Check the [cookbook](/tools/near-api-js/cookbook) to learn how to supercharge your webapp.
