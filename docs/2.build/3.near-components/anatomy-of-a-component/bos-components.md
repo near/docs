@@ -18,9 +18,9 @@ Learn more about QueryAPI in this [QueryAPI Overview](../intro.md) article.
 
 For a technical implementation deep-dive, check these QueryAPI tutorials:
 
-  - [Posts Indexer tutorial](../../../bos/tutorial/indexer-tutorials/posts-indexer.md): this indexer creates a new row in a pre-defined database for every new Social post found on the blockchain.
-  - [Hype Indexer tutorial](../../../bos/tutorial/indexer-tutorials/hype-indexer.md): this indexer creates a new row in a pre-defined database for every new Social post or comment found on the blockchain that contains either `PEPE` or `DOGE` in the contents.
-  - [Social Feed Indexer tutorial](../../../bos/tutorial/indexer-tutorials/feed-indexer.md): this indexer keeps track of new posts, comments, and likes on Social, so a social feed can be rendered quickly.
+  - [Posts Indexer tutorial](../../../3.tutorials/near-components/indexer-tutorials/posts-indexer.md): this indexer creates a new row in a pre-defined database for every new Social post found on the blockchain.
+  - [Hype Indexer tutorial](../../../3.tutorials/near-components/indexer-tutorials/hype-indexer.md): this indexer creates a new row in a pre-defined database for every new Social post or comment found on the blockchain that contains either `PEPE` or `DOGE` in the contents.
+  - [Social Feed Indexer tutorial](../../../3.tutorials/near-components/indexer-tutorials/feed-indexer.md): this indexer keeps track of new posts, comments, and likes on Social, so a social feed can be rendered quickly.
 
 ---
 

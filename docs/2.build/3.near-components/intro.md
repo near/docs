@@ -29,10 +29,10 @@ The [near website](https://near.org/) contains its own [sandbox editor](https://
 
 If you want to collaborate with a team or work on a larger project, you will likely want more **version control**, automated testing and deployment, and other workflows. For this, the NEAR ecosystem offers a set of tools to easily develop and test your components entirely locally.
 
-#### [NEAR VSCode Extension](../../bos/dev/vscode.md)
-The [NEAR VSCode Extension](../../bos/dev/vscode.md) integrates with the VSCode IDE to help you develop, preview and deploy components all within VSCode.
+#### [NEAR VSCode Extension](https://marketplace.visualstudio.com/items?itemName=near-protocol.near-discovery-ide)
+The [NEAR VSCode Extension](https://marketplace.visualstudio.com/items?itemName=near-protocol.near-discovery-ide) integrates with the VSCode IDE to help you develop, preview and deploy components all within VSCode.
 
-#### [BOS Loader](../../bos/dev/bos-loader.md)
+#### [BOS Loader](../../3.tutorials/near-components/bos-loader.md)
 A CLI tool to preview local components in NEAR BOS. A perfect companion to the [BOS CLI](https://github.com/FroVolod/bos-cli-rs).
 
 #### [BOS CLI](https://github.com/FroVolod/bos-cli-rs)

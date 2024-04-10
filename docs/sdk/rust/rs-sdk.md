@@ -14,7 +14,7 @@ If you're getting started with Rust, we recommend you look through [this overvie
 ## Create Your First Rust Contract
 Create your first **Rust contract** in minutes:
 1. Download and install [Rust](https://doc.rust-lang.org/book/ch01-01-installation.html).
-2. Create a new **rust** project using our [quickstart guide](../../2.build/quickstart.md).
+2. Create a new **rust** project using our [quickstart guide](../../2.build/2.smart-contracts/quickstart.md).
 3. Read our docs on **[how to write smart contracts](../../2.build/2.smart-contracts/anatomy-of-a-contract/anatomy.md)**.
 
 ---

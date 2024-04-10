@@ -10,7 +10,7 @@ Smart contracts are pieces of **executable code** that live in a NEAR account. T
 Developers can choose between using Javascript or Rust to write smart contracts in NEAR. Indistinctly from the language chosen, the contract will be compiled into WebAssembly, from which point it can be deployed and executed on the NEAR platform.
 
 :::tip Want to build a smart contract?
-Check our [**Quickstart Guide**](../../2.build/2.building-smart-contracts/quickstart.md) to build your first smart contract in NEAR.
+Check our [**Quickstart Guide**](../../2.build/2.smart-contracts/quickstart.md) to build your first smart contract in NEAR.
 :::
 
 ---
