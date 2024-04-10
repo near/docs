@@ -142,6 +142,7 @@ const sidebar = {
           "Multichain Gas Relayer": [
             "build/chain-abstraction/multichain-gas-relayer/multichain-server",
             "build/chain-abstraction/multichain-gas-relayer/gas-station",
+            "build/chain-abstraction/multichain-gas-relayer/run-relayer",
             "build/chain-abstraction/multichain-gas-relayer/relayer-gas-example",
           ]
         },
