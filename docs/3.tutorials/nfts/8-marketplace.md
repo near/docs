@@ -11,22 +11,17 @@ In this tutorial, you'll learn the basics of an NFT marketplace contract where y
 
 Throughout this tutorial, you'll learn how a marketplace contract could work on NEAR. This is meant to be an example and there is no canonical implementation. Feel free to branch off and modify this contract to meet your specific needs.
 
-Using the same repository as the previous tutorials, if you checkout the `8.marketplace` branch, you should have the necessary files to complete the tutorial.
-
 ```bash
-git checkout 8.marketplace
+cd market-contract/
 ```
 
-## File structure {#file-structure}
-
-The changes made include a new root level directory called `market-contract`. This contains both the build script, dependencies as well as the actual contract code as outlined below.
+This folder contains both the actual contract code and dependencies as outlined below.
 
 ```
 market-contract
 ├── Cargo.lock
 ├── Cargo.toml
 ├── README.md
-├── build.sh
 └── src
     ├── external.rs
     ├── internal.rs
@@ -34,20 +29,6 @@ market-contract
     ├── nft_callbacks.rs
     ├── sale.rs
     └── sale_views.rs
-```
-
-Usually, when doing work on multiple smart contracts that all pertain to the same repository, it's a good idea to structure them in their own folders as done in this tutorial. To make your work easier when building the smart contracts, we've also modified the repository's `package.json` file so that building both smart contracts can be easily done by running the following command.
-
-```bash
-yarn build
-```
-This will install the dependencies for both contracts and compile them to `wasm` files that are stored in the following directory.
-
-```
-nft-tutorial
-└── out
-    ├── main.wasm
-    └── market.wasm
 ```
 
 ## Understanding the contract
@@ -64,7 +45,7 @@ This file outlines what information is stored on the contract as well as some ot
 
 The first function you'll look at is the initialization function. This takes an `owner_id` as the only parameter and will default all the storage collections to their default values.
 
-<Github language="rust" start="85" end="105" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/lib.rs" />
+<Github language="rust" start="86" end="106" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/market-contract/src/lib.rs" />
 
 ### Storage management model {#storage-management-model}
 
@@ -90,7 +71,7 @@ You might be thinking about the scenario when a sale is purchased. What happens 
 
 With this behavior in mind, the following two functions outline the logic.
 
-<Github language="rust" start="110" end="170" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/lib.rs" />
+<Github language="rust" start="111" end="171" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/market-contract/src/lib.rs" />
 
 In this contract, the storage required for each sale is 0.01 NEAR but you can query that information using the `storage_minimum_balance` function. In addition, if you wanted to check how much storage a given account has paid, you can query the `storage_balance_of` function.
 
@@ -98,17 +79,22 @@ With that out of the way, it's time to move onto the `nft_callbacks.rs` file whe
 
 ## nft_callbacks.rs {#nft_callbacks-rs}
 
-This file is responsible for the logic used to put NFTs for sale. If you remember from the [marketplaces section](/tutorials/nfts/approvals#marketplace-integrations) of the approvals tutorial, when users call `nft_approve` and pass in a message, it will perform a cross-contract call to the `receiver_id`'s contract and call the method `nft_on_approve`. This `nft_callbacks.rs` file will implement that function.
+This file is responsible for the internal marketplace logic, the trigger for which is approving the marketplace contract on the NFT contract. If you remember from the [marketplaces section](/tutorials/nfts/approvals#marketplace-integrations) of the approvals tutorial, when users call `nft_approve` and pass in a message, it will perform a cross-contract call to the `receiver_id`'s contract and call the method `nft_on_approve`. This `nft_callbacks.rs` file will implement that function.
 
 ### Listing logic {#listing-logic}
 
-The first important thing to note is the `SaleArgs` struct. This is what the market contract is expecting the message that the user passes into `nft_approve` on the NFT contract to be. This outlines the sale price in yoctoNEAR for the NFT that is listed.
+In order to put an NFT on sale, a user should:
 
-<Github language="rust" start="5" end="10" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/nft_callbacks.rs" />
+1. Approve the marketplace contract on an NFT token (by calling `nft_approve` method on the NFT contract)
+2. Call the `list_nft_for_sale` method on the marketplace contract.
 
-Next, we'll look at the `nft_on_approve` function which is called via a cross-contract call by the NFT contract. This will make sure that the signer has enough storage to cover adding another sale. It will then attempt to get the `SaleArgs` from the message and create the listing.
+The first important thing to note is the `SaleArgs` struct. This is what the market contract is expecting the message that the user passes into `list_nft_for_sale` on the marketplace contract to be. This outlines the sale price in yoctoNEAR for the NFT that is listed.
 
-<Github language="rust" start="32" end="134" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/nft_callbacks.rs" />
+<Github language="rust" start="30" end="35" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/market-contract/src/sale.rs" />
+
+Next, we'll look at the `nft_on_approve` function, which is called via a cross-contract call by the NFT contract. We won't put any logic there, but you can if you want to execute some additional logic on the marketplace contract after approving it on the NFT contract.
+
+<Github language="rust" start="23" end="33" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/market-contract/src/nft_callbacks.rs" />
 
 ## sale.rs {#sale-rs}
 
@@ -118,19 +104,19 @@ Now that you're familiar with the process of both adding storage and listing NFT
 
 It's important to understand what information the contract is storing for each sale object. Since the marketplace has many NFTs listed that come from different NFT contracts, simply storing the token ID would not be enough to distinguish between different NFTs. This is why you need to keep track of both the token ID and the contract by which the NFT came from. In addition, for each listing, the contract must keep track of the approval ID it was given to transfer the NFT. Finally, the owner and sale conditions are needed.
 
-<Github language="rust" start="7" end="18" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/sale.rs" />
+<Github language="rust" start="5" end="20" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/market-contract/src/sale.rs" />
 
 ### Removing sales {#removing-sales}
 
 In order to remove a listing, the owner must call the `remove_sale` function and pass the NFT contract and token ID. Behind the scenes, this calls the `internal_remove_sale` function which you can find in the `internal.rs` file. This will assert one yoctoNEAR for security reasons.
 
-<Github language="rust" start="23" end="34" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/sale.rs" />
+<Github language="rust" start="67" end="78" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/market-contract/src/sale.rs" />
 
 ### Updating price {#updating-price}
 
 In order to update the list price of a token, the owner must call the `update_price` function and pass in the contract, token ID, and desired price. This will get the sale object, change the sale conditions, and insert it back. For security reasons, this function will assert one yoctoNEAR.
 
-<Github language="rust" start="36" end="65" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/sale.rs" />
+<Github language="rust" start="80" end="109" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/market-contract/src/sale.rs" />
 
 ### Purchasing NFTs {#purchasing-nfts}
 
@@ -138,13 +124,13 @@ For purchasing NFTs, you must call the `offer` function. It takes an `nft_contra
 
 The marketplace will then call `resolve_purchase` where it will check for malicious payout objects and then if everything went well, it will pay the correct accounts.
 
-<Github language="rust" start="67" end="99" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/sale.rs" />
+<Github language="rust" start="111" end="142" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/market-contract/src/sale.rs" />
 
 ## sale_view.rs {#sale_view-rs}
 
 The final file we'll go through is the `sale_view.rs` file. This is where some of the enumeration methods are outlined. It allows users to query for important information regarding sales.
 
-### Deployment
+### Deployment and Initialization
 
 Next, you'll deploy this contract to the network.
 
@@ -157,14 +143,23 @@ Using the build script, deploy the contract as you did in the previous tutorials
 
 ```bash
 near deploy $MARKETPLACE_CONTRACT_ID out/market.wasm
+cargo near deploy $MARKETPLACE_CONTRACT_ID with-init-call new json-args '{"owner_id": "'$MARKETPLACE_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
 ```
 
-### Initialization and minting
+### Minting and approving
 
-Since this is a new contract, you'll need to initialize it. Use the following command to initialize the contract:
+Let's mint a new NFT token and approve a marketplace contract:
 
 ```bash
-near call $MARKETPLACE_CONTRACT_ID new '{"owner_id": "'$MARKETPLACE_CONTRACT_ID'"}' --accountId $MARKETPLACE_CONTRACT_ID
+near call $NFT_CONTRACT_ID nft_mint '{"token_id": "token-1", "metadata": {"title": "My Non Fungible Team Token", "description": "The Team Most Certainly Goes :)", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$NFT_CONTRACT_ID'"}' --accountId $NFT_CONTRACT_ID --amount 0.1
+
+near call $NFT_CONTRACT_ID nft_approve '{"token_id": "token-1", "account_id": "'$MARKETPLACE_CONTRACT_ID'"}' --accountId $NFT_CONTRACT_ID --deposit 0.1
+```
+
+### Listing NFT on sale
+
+```bash
+near call $MARKETPLACE_CONTRACT_ID list_nft_for_sale '{"nft_contract_id": "'$NFT_CONTRACT_ID'", "token_id": "token-1", "approval_id": 0, "msg": "{\"sale_conditions\": \"1\"}"}' --accountId $NFT_CONTRACT_ID --gas 30000000000000
 ```
 
 ### Total supply {#total-supply}
@@ -180,7 +175,7 @@ near view $MARKETPLACE_CONTRACT_ID get_supply_sales
 To query for the total supply of NFTs listed by a specific owner on the marketplace, you can call the `get_supply_by_owner_id` function. An example can be seen below.
 
 ```bash
-near view $MARKETPLACE_CONTRACT_ID get_supply_by_owner_id '{"account_id": "benji.testnet"}'
+near view $MARKETPLACE_CONTRACT_ID get_supply_by_owner_id '{"account_id": "'$NFT_CONTRACT_ID'"}'
 ```
 
 ### Total supply by contract {#total-supply-by-contract}
@@ -188,7 +183,7 @@ near view $MARKETPLACE_CONTRACT_ID get_supply_by_owner_id '{"account_id": "benji
 To query for the total supply of NFTs that belong to a specific contract, you can call the `get_supply_by_nft_contract_id` function. An example can be seen below.
 
 ```bash
-near view $MARKETPLACE_CONTRACT_ID get_supply_by_nft_contract_id '{"nft_contract_id": "fayyr-nft.testnet"}'
+near view $MARKETPLACE_CONTRACT_ID get_supply_by_nft_contract_id '{"nft_contract_id": "'$NFT_CONTRACT_ID'"}'
 ```
 
 ### Query for listing information {#query-listing-information}
@@ -196,26 +191,26 @@ near view $MARKETPLACE_CONTRACT_ID get_supply_by_nft_contract_id '{"nft_contract
 To query for important information for a specific listing, you can call the `get_sale` function. This requires that you pass in the `nft_contract_token`. This is essentially the unique identifier for sales on the market contract as explained earlier. It consists of the NFT contract followed by a `DELIMITER` followed by the token ID. In this contract, the `DELIMITER` is simply a period: `.`.  An example of this query can be seen below.
 
 ```bash
-near view $MARKETPLACE_CONTRACT_ID get_sale '{"nft_contract_token": "fayyr-nft.testnet.token-42"}'
+near view $MARKETPLACE_CONTRACT_ID get_sale '{"nft_contract_token": "'$NFT_CONTRACT_ID'.token-1"}'
 ```
 
 In addition, you can query for paginated information about the listings for a given owner by calling the `get_sales_by_owner_id` function.
 
 ```bash
-near view $MARKETPLACE_CONTRACT_ID get_sales_by_owner_id '{"account_id": "benji.testnet", "from_index": "5", "limit": 10}'
+near view $MARKETPLACE_CONTRACT_ID get_sales_by_owner_id '{"account_id": "'$NFT_CONTRACT_ID'", "from_index": "0", "limit": 5}'
 ```
 
 Finally, you can query for paginated information about the listings that originate from a given NFT contract by calling the `get_sales_by_nft_contract_id` function.
 
 ```bash
-near view $MARKETPLACE_CONTRACT_ID get_sales_by_nft_contract_id '{"nft_contract_id": "fayyr-nft.testnet", "from_index": "5", "limit": 10}'
+near view $MARKETPLACE_CONTRACT_ID get_sales_by_nft_contract_id '{"nft_contract_id": "'$NFT_CONTRACT_ID'", "from_index": "0", "limit": 5}'
 ```
 
 ## Conclusion
 
 In this tutorial, you learned about the basics of a marketplace contract and how it works. You went through the [lib.rs](#lib-rs) file and learned about the [initialization function](#initialization-function) in addition to the [storage management](#storage-management-model) model. 
 
-You then went through the [nft_callbacks](#nft_callbacks-rs) file to understand how to [list NFTs](#listing-logic). In addition, you went through some important functions needed for after you've listed an NFT. This includes [removing sales](#removing-sales), [updating the price](#updating-price), and [purchasing NFTs](#purchasing-nfts).
+You went through the [nft_callbacks](#nft_callbacks-rs) file and [NFTs listing process](#listing-logic). In addition, you went through some important functions needed after you've listed an NFT. This includes [removing sales](#removing-sales), [updating the price](#updating-price), and [purchasing NFTs](#purchasing-nfts).
 
 Finally, you went through the enumeration methods found in the [`sale_view`](#sale_view-rs) file. These allow you to query for important information found on the marketplace contract. 
 
@@ -229,7 +224,8 @@ You should now have a solid understanding of NFTs and marketplaces on NEAR. Feel
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `4.0.4`
+- near-cli: `4.0.13`
+- cargo-near `0.6.1`
 - NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 
 :::
