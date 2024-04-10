@@ -258,7 +258,7 @@ const sidebar = {
         },
         {
           "type": "html",
-          "value": "<a class='menu__link internal' href='/bos/dev/bos-loader'> 📖 Tutorials </a>",
+          "value": "<a class='menu__link internal' href='/tutorials/near-components/bos-loader'> 📖 Tutorials </a>",
         },
       ]
     },
@@ -334,11 +334,6 @@ const sidebar = {
           "QueryAPI": [
             "build/data-infrastructure/query-api/intro",
             "build/data-infrastructure/query-api/how-it-works",
-            {
-              "type": "link",
-              "label": "Limitations",
-              "href": "/build/data-infrastructure/query-api/intro#known-limitations"
-            },
             "build/data-infrastructure/query-api/indexers",
             "build/data-infrastructure/query-api/best-practices",
             "build/data-infrastructure/query-api/index-functions",
@@ -544,29 +539,6 @@ const sidebar = {
           "tutorials/near-components/indexer-tutorials/hype-indexer",
           "tutorials/near-components/indexer-tutorials/nft-indexer",
           "tutorials/near-components/indexer-tutorials/feed-indexer",
-          "build/data-infrastructure/lake-framework/near-lake-state-changes-indexer",
-          "build/data-infrastructure/lake-framework/migrating-to-near-lake-framework",
-          {
-            "Building Indexers": [
-              "build/data-infrastructure/lake-framework/building-indexers/primitives",
-              {
-                "type": "link",
-                "label": "NEAR Lake Primitives",
-                "href": "https://near.github.io/near-lake-framework-js/"
-              },
-              "build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer",
-              "build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer",
-              "build/data-infrastructure/lake-framework/building-indexers/nft-indexer",
-              "build/data-infrastructure/lake-framework/building-indexers/python-nft-indexer"
-            ]
-          },
-          {
-            "Running NEAR Lake": [
-              "build/data-infrastructure/lake-framework/running-near-lake/run-lake-indexer",
-              "build/data-infrastructure/lake-framework/running-near-lake/lake-start-options",
-              "build/data-infrastructure/lake-framework/running-near-lake/credentials"
-            ]
-          },
         ]
     },
 

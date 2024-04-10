@@ -1,9 +1,7 @@
 ---
-sidebar_label: Getting started
+id: near-lake-state-changes-indexer
+title: NEAR Lake Indexer Tutorial
 ---
-
-# NEAR Lake StateChanges indexer tutorial
-
 
 :::note Source code for the tutorial
 

@@ -275,7 +275,7 @@ function Footer() {
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/tutorials/indexer/near-lake-state-changes-indexer">
+                    <a href="/build/data-infrastructure/lake-framework/near-lake-state-changes-indexer">
                       Indexers
                     </a>
                   </li>
@@ -354,7 +354,7 @@ function Footer() {
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/build/chain-abstraction-services/welcome">
+                    <a href="/build/chain-abstraction/what-is">
                       Relayers
                     </a>
                   </li>

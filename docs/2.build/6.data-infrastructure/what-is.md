@@ -14,7 +14,7 @@ NEAR offers three main solutions to access and monitor on-chain data: [**BigQuer
  
 ---
 
-## [BigQuery: Public Dataset](/bos/queryapi/big-query)
+## [BigQuery: Public Dataset](./big-query.md)
 A large dataset with on-chain data publicly available on Google Cloud Platform. Obtain near real-time blockchain data using simple SQL queries. **All the data, zero setup**.
 
 - Instant insights: Historic on-chain data queried at scale. No need to run your own infrastructure.
@@ -23,7 +23,7 @@ A large dataset with on-chain data publicly available on Google Cloud Platform. 
 
 <hr subclass="subsection" />
 
-## [QueryAPI: Indexers Made Simple](/bos/queryapi/intro)
+## [QueryAPI: Indexers Made Simple](./query-api/intro.md)
 
 A fully managed solution to build indexer functions, extract on-chain data, and easily query it using GraphQL endpoints and subscriptions.
 
@@ -33,7 +33,7 @@ A fully managed solution to build indexer functions, extract on-chain data, and 
 
 <hr subclass="subsection" />
 
-## [NEAR Lake](/tools/near-lake)
+## [NEAR Lake](./lake-framework/near-lake.md)
 A solution that watches over the NEAR network and stores all the events for your easy access.
 
 - Cost-efficient solution: Cost-efficient solution for building self-hosted indexers in Rust, JavaScript, Python, Go and other languages

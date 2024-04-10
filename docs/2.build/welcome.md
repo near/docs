@@ -20,13 +20,13 @@ Welcome! Here you will find all the information on what you can **build** on NEA
     <Feature url="/build/smart-contracts/release/deploy" title="Deploy a Contract" subtitle="Deploy the contract to the network" image="near-cli.png" />
   </Column>
   <Column title="Components">
-    <Feature url="build/near-components/what-is" title="What is a Component?"
+    <Feature url="/build/near-components/what-is" title="What is a Component?"
              subtitle="Learn about multi-chain components" image="bos-lido.png" />
     <Feature url="/build/near-components/dev-environment" title="Dev Environment"
              subtitle="Choose your dev environment" image="update.png" />
     <Feature url="/build/near-components/anatomy/state" title="Build a Component"
              subtitle="Learn everything a Component can do" image="multiple.png" />
-    <Feature url="/build/web3-apps/frontend-components" title="Use Components in a WebApp"
+    <Feature url="/build/web3-apps/integrate-components" title="Use Components in a WebApp"
              subtitle="Use the contract in a frontend" image="frontend-bos.png"  />
   </Column>
   <Column title="Applications">

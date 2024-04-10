@@ -166,7 +166,7 @@ Your new smart contract stores a `greeting: string` attribute in their state, an
 
 There are 3 important things to notice:
 
-1. The `get_greeting` method is a [`view`](./anatomy/anatomy.md/#public-methods) method, meaning it only reads from the contract and can be called for free by anyone.
+1. The `get_greeting` method is a [`view`](./anatomy/anatomy.md#public-methods) method, meaning it only reads from the contract and can be called for free by anyone.
 2. By default, the contract is initialized with the `greeting` attribute set to `"Hello"`.
 3. The `set_greeting` method is a [`change`](./anatomy/anatomy.md#public-methods) method, meaning it modifies the contract's state and requires a user to sign a transaction in order to be executed.
 

@@ -141,7 +141,7 @@ You can get `name`, `decimals`, `icon` and other parameters by calling the next 
 
 ## Simple transfer {#simple-transfer}
 
-To follow this guide, please check the [step by step instructions](/integrator/create-transactions#low-level----create-a-transaction) on how to create a transaction first.
+To follow this guide, please check the [step by step instructions](/integrations/create-transactions#low-level----create-a-transaction) on how to create a transaction first.
 
 In order to send a fungible token to an account, the receiver must have a storage deposit. This is because each smart contract on NEAR must account for storage used, and each account on a fungible token contract is a key-value pair, taking up a small amount of storage. For more information, please see [how storage works in NEAR](/concepts/storage/storage-staking). To check if account has deposited the storage for this FT do the following:
 
@@ -273,7 +273,7 @@ If there is not enough deposit for the storage or returned value is `null` - you
 
   - with JSON RPC call:
 
-  At the top of this section is a link detailing how to [construct a transaction](/integrator/create-transactions#low-level----create-a-transaction) without the full abstraction of the [`near-api-js` library](https://www.npmjs.com/package/near-api-js). For this and future examples that use the [RPC method `broadcast_tx_commit`](https://docs.near.org/api/rpc/setup#send-transaction-await) we will provide a JSON-like object meant to act similar to [pseudocode](https://en.wikipedia.org/wiki/Pseudocode), only imparting high-level details of a transaction. This code block below is the first example of this, detailing what goes into the transaction discussed currently, involving the method `storage_deposit`.
+  At the top of this section is a link detailing how to [construct a transaction](/integrations/create-transactions#low-level----create-a-transaction) without the full abstraction of the [`near-api-js` library](https://www.npmjs.com/package/near-api-js). For this and future examples that use the [RPC method `broadcast_tx_commit`](https://docs.near.org/api/rpc/setup#send-transaction-await) we will provide a JSON-like object meant to act similar to [pseudocode](https://en.wikipedia.org/wiki/Pseudocode), only imparting high-level details of a transaction. This code block below is the first example of this, detailing what goes into the transaction discussed currently, involving the method `storage_deposit`.
 
 ```yaml
 Transaction: {

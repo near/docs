@@ -76,7 +76,7 @@ export default function NotFoundContent({ className }) {
                         <a href="/tutorials/examples/count-near"><li>Basic dApps</li></a>
                         <a href="/tutorials/examples/factory"><li>Advanced Contracts</li></a>
                         <a href="/tutorials/nfts/introduction"><li>NFT: Zero to Hero</li></a>
-                        <a href="/bos/tutorial/indexer-tutorials/nft-indexer"><li>Indexer Tutorials</li></a>
+                        <a href="/tutorials/near-components/indexer-tutorials/nft-indexer"><li>Indexer Tutorials</li></a>
                       </ul>
                     </div>
                   </div>

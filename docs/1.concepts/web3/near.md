@@ -150,7 +150,7 @@ By now, we should be familiar with necessary concepts to start developing WEB 3.
 
 First of all, we need a development and testing environment. Of course, we could theoraticaly perform development and testing on the main blockchain network, but this would not be cheap. For this reason, NEAR provides [several networks](../../1.concepts/basics/networks.md) that can be used during development:
 - testnet - public NEAR network which is identical to mainnet and can be used for free.
-- localnet - you can deploy your personal NEAR network on your own environment. Because it’s owned by you, data and code can be kept private during development. More info on how you can run your own node can be [found here](https://docs.near.org/docs/develop/node/validator/running-a-node). Alternatively, you can bootstrap an entire testing infrastructure in Docker on your local machine using Kurtosis - [guide is here](/develop/testing/kurtosis-localnet).
+- localnet - you can deploy your personal NEAR network on your own environment. Because it’s owned by you, data and code can be kept private during development. More info on how you can run your own node can be [found here](https://docs.near.org/docs/develop/node/validator/running-a-node). Alternatively, you can bootstrap an entire testing infrastructure in Docker on your local machine using Kurtosis - [guide is here](../../2.build/2.smart-contracts/testing/kurtosis-localnet.md).
 - workspaces - you can start your own local network to perform e2e testing. More info [here](../../2.build/2.smart-contracts/testing/integration-test.md).
 
 Once we’ve chosen a network to use, we need a way to interact with it. Of course, transactions can be constructed manually and posted into [node’s API](https://docs.near.org/api/rpc/setup). But [this is tedious](https://github.com/near-examples/transaction-examples) and isn’t fun at all. That’s why, NEAR [provides a CLI](../../4.tools/cli.md) which automates all of the necessary actions. It can be used locally for development purposes or on build machines for CI/CD scenarios.
@@ -204,6 +204,6 @@ For a deep dive into NEAR, the following links will be useful:
 
 - [NEAR docs](https://docs.near.org)
 - [Rust Smart Contract docs](/sdk/rust/introduction)
-    - [Smart Contract quick start guide](/develop/quickstart-guide)
+- [Smart Contract quick start guide](../../2.build/2.smart-contracts/quickstart.md)
 - [NEAR Protocol Specification](https://nomicon.io/)
 - [How to build a dApp on NEAR](../../3.tutorials/examples/guest-book.md)
