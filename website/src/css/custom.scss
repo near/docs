@@ -446,8 +446,8 @@ https://www.feelback.dev/docs/guides/stripe-like-documentation-feedback-for-docu
 
 /* Announcement bar */
 div[class^="announcementBar_"] {
-    --site-announcement-bar-stripe-color1: #ddfde1;
-    --site-announcement-bar-stripe-color2: #c4fbe6;
+    --site-announcement-bar-stripe-color1: #fdebdd;
+    --site-announcement-bar-stripe-color2: #fbd6c4;
     background: repeating-linear-gradient(45deg, var(--site-announcement-bar-stripe-color1), var(--site-announcement-bar-stripe-color1) 20px, var(--site-announcement-bar-stripe-color2) 10px, var(--site-announcement-bar-stripe-color2) 40px);
     font-size: 16px;
     font-weight: 600;

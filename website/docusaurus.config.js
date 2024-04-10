@@ -87,9 +87,9 @@ const config = {
   ],
   themeConfig: {
     announcementBar: {
-      id: 'abstraction',
+      id: 'id-0001',
       content:
-        '⛓️ <a href="/concepts/abstraction/chain-signatures">Chain Signatures</a> ⛓️ - Sign and send transactions on Bitcoin, Ethereum, and more! 🔑 ',
+        '🎉 We have reorganized our docs to make them simpler to navigate, please report any broken links 🎉',
       backgroundColor: '#fafbfc',
       textColor: '#333',
       isCloseable: true,
@@ -122,7 +122,7 @@ const config = {
           position: 'left',
         },
         {
-          to: '/develop/welcome',
+          to: '/build/welcome',
           label: 'Build',
           position: 'left',
         },
@@ -154,16 +154,14 @@ const config = {
             { label: 'NEAR CLI', href: '/tools/near-cli' },
             {
               type: 'html',
-              value: '<hr/> <small class="subtitle"> Onboarding </small>',
+              value: '<hr/> <small class="subtitle"> Wallet Integration </small>',
             },
             { label: 'Wallet Selector', href: '/tools/wallet-selector' },
-            { label: 'FastAuth (Email Login)', href: '/tools/fastauth-sdk' },
-            { label: 'Relayers', href: '/develop/relayers/build-relayer' },
             {
               type: 'html',
               value: '<hr/> <small class="subtitle"> IDEs </small>',
             },
-            { label: 'VSCode Extension ', href: '/bos/dev/vscode' },
+            { label: 'VSCode Extension ', href: 'https://marketplace.visualstudio.com/items?itemName=near-protocol.near-discovery-ide' },
             { label: 'BOS Web IDE (Jutsu)', href: 'https://jutsu.ai/editor' },
             {
               label: 'Remix IDE Plugin',
@@ -197,6 +195,10 @@ const config = {
             {
               type: 'html',
               value: '<hr /><div class="subtitle"> Other Docs </dib>',
+            },
+            {
+              href: '/integrations/exchange-integration',
+              label: 'Exchange Integrations',
             },
             {
               href: 'https://nomicon.io',

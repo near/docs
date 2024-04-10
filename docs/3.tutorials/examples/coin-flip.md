@@ -111,7 +111,7 @@ in `contract-ts/sandbox-ts` (for the JavaScript contract) and `contract-rs/tests
 ## A Note On Randomness
 
 Randomness in the blockchain is a complex subject. We recommend you to read and investigate about it.
-You can start with our [security page on it](../../2.develop/contracts/security/random.md).
+You can start with our [security page on it](../../2.build/2.smart-contracts/security/random.md).
 
 :::note Versioning for this article
 

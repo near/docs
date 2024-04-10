@@ -21,10 +21,10 @@ Explore our collection of Examples and Tutorials
 
   </Column>
   <Column title="Popular Tutorials">
-    <Feature url="/bos/tutorial/interaction" title="Components & Contracts" subtitle="Use a contract from your component" image="bos-contract.png" />
-    <Feature url="/bos/tutorial/lido" title="ETH Component" subtitle="Build an Ethereum Component" image="bos-lido.png" />
+    <Feature url="/tutorials/near-components/interaction" title="Components & Contracts" subtitle="Use a contract from your component" image="bos-contract.png" />
+    <Feature url="/tutorials/near-components/lido" title="ETH Component" subtitle="Build an Ethereum Component" image="bos-lido.png" />
     <Feature url="/tutorials/nfts/minting-nfts" title="NFT Mint" subtitle="Mint an NFT without using code" image="frontend-bos.png" />
-    <Feature url="/tutorials/indexer/nft-indexer" title="Events (NEAR Lake)"
+    <Feature url="/tutorials/near-components/indexer-tutorials/nft-indexer" title="Events (NEAR Lake)"
              subtitle="Use our Data Lake to listen for events" image="monitor.png" />
   </Column>
   <Column title="From Zero to Hero">

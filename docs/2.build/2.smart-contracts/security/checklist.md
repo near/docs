@@ -6,7 +6,7 @@ title: ✅ Checklist
 Once you finished developing your smart contract please go through the following list in order to ensure everything is safe for the end user.
 
 :::info
-Check our [security articles](/develop/contracts/security/welcome) to understand how to improve the security of your contract.
+Check our [security articles](./welcome.md) to understand how to improve the security of your contract.
 :::
 
 ---
