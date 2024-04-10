@@ -51,7 +51,7 @@ And yes, it is executed there immediately BUT the immediate result of the transa
 
 Let’s get back to the tracks to look at the example.
 
-Assuming we have two accounts living on different [Shards](../../2.build/6.data-infrastructure/lake-data-structures/shard.mdx) **alice.near** and **bob.near**. **alice.near** creates a [Transaction](../../2.build/6.data-infrastructure/lake-data-structures/transaction.mdx) to send a few tokens to **bob.near**. The [Transaction](../../2.build/6.data-infrastructure/lake-data-structures/transaction.mdx) is immediately executed and the [ExecutionOutcome](../../2.build/6.data-infrastructure/lake-data-structures/execution-outcome.mdx) for the [Transaction](../../2.build/6.data-infrastructure/lake-data-structures/transaction.mdx) is always a [Receipt](../../2.build/6.data-infrastructure/lake-data-structures/receipt.mdx).
+Assuming we have two accounts living on different [Shards](../../2.build/6.data-infrastructure/lake-data-structures/shard.mdx) **alice.near** and **bob.near**. **alice.near** creates a [Transaction](../../2.build/6.data-infrastructure/lake-data-structures/transaction.mdx) to send a few tokens to **bob.near**. The [Transaction](../../2.build/6.data-infrastructure/lake-data-structures/transaction.mdx) is immediately executed and the [ExecutionOutcome](../../2.build/6.data-infrastructure/lake-data-structures/execution_outcome.mdx) for the [Transaction](../../2.build/6.data-infrastructure/lake-data-structures/transaction.mdx) is always a [Receipt](../../2.build/6.data-infrastructure/lake-data-structures/receipt.mdx).
 
 But this [Receipt](../../2.build/6.data-infrastructure/lake-data-structures/receipt.mdx) cannot be executed here, because **bob.near** doesn’t live on the same Shard as **alice.near**, so **the Receipt must be executed on the receiver’s Shard**. So the Receipt is moving to the Shard where **bob.near** belongs to.
 
@@ -69,7 +69,7 @@ So the final scheme will look like:
 
 ## Summary
 
-We have learnt the main principles of how data is flowing in NEAR Protocol. We have found out that [Transactions](../../2.build/6.data-infrastructure/lake-data-structures/transaction.mdx) execute and the [ExecutionOutcome](../../2.build/6.data-infrastructure/lake-data-structures/execution-outcome.mdx) of the Transaction is always a [Receipt](../../2.build/6.data-infrastructure/lake-data-structures/receipt.mdx).
+We have learnt the main principles of how data is flowing in NEAR Protocol. We have found out that [Transactions](../../2.build/6.data-infrastructure/lake-data-structures/transaction.mdx) execute and the [ExecutionOutcome](../../2.build/6.data-infrastructure/lake-data-structures/execution_outcome.mdx) of the Transaction is always a [Receipt](../../2.build/6.data-infrastructure/lake-data-structures/receipt.mdx).
 
 Now we know that [Receipt](../../2.build/6.data-infrastructure/lake-data-structures/receipt.mdx) is a main internal asset for NEAR Protocol blockchain and it has a power of traveling between [Shards](../../2.build/6.data-infrastructure/lake-data-structures/shard.mdx). We learnt the NEAR Data flow on a simple example. Of course in real life with more complex transactions, that involve cross-contract calls, there will be more Receipts and ExecutionOutcomes.
 
