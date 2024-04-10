@@ -37,12 +37,12 @@ Storing 100kb costs 1Ⓝ, so deploying a contract generally costs only a few $NE
 Just like any piece of software, smart contracts have a development flow - starting with its creation and ending with monitoring it, all of which we cover in our documentation.
 
 ![img](/docs/assets/welcome-pages/contract-lifecycle.png)
- "build/building-smart-contracts/test-the-contract/introduction",
+ "build/building-smart-contracts/testing/introduction",
 The development flow can be summarized as follows:
 - [**Scaffold**](./quickstart.md): The simplest way to create a project is by starting from a template.
-- [**Build**](./anatomy-of-a-contract/basics.md): Write a contract using Rust or Javascript.
-- [**Test**](./test-the-contract/introduction.md): Our Sandbox enables to simulate interactions with one or multiple contracts in a realistic environment.
-- [**Deploy**](./deploy-update-and-lock/deploy.md): After making sure the contract is secure, developers can deploy the contract into their accounts.
+- [**Build**](./anatomy/basics.md): Write a contract using Rust or Javascript.
+- [**Test**](./testing/introduction.md): Our Sandbox enables to simulate interactions with one or multiple contracts in a realistic environment.
+- [**Deploy**](./release/deploy.md): After making sure the contract is secure, developers can deploy the contract into their accounts.
 - [**Use**](https://mynearwallet.com): Any user can interact with the contract through their NEAR Wallet.
 - [**Monitor**](../6.data-infrastructure/what-is.md): The contract's activity can be monitored through simple APIs.
 

@@ -88,7 +88,7 @@ Note that you can get this down to Ⓝ330 just by changing the prefix from `t2o`
 
 Doing manual byte math as shown above is difficult and error-prone. Good news: you don't have to!
 
-You can test the storage used using the [SDK environment](../../2.build/2.smart-contracts/anatomy-of-a-contract/environment.md) and checking `env.storage_usage()`
+You can test the storage used using the [SDK environment](../../2.build/2.smart-contracts/anatomy/environment.md) and checking `env.storage_usage()`
 
 ## Other ways to keep costs down
 

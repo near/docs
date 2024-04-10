@@ -248,4 +248,4 @@ contract will fail to deserialize the `STATE` key and panic `Cannot deserialize 
 
 To solve this, you can either:
 1. Rollback to the previous contract code
-2. Implement a method to [migrate the contract's state](../deploy-update-and-lock/upgrade.md)
+2. Implement a method to [migrate the contract's state](../release/upgrade.md)

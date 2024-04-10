@@ -168,7 +168,7 @@ adds the information to the `PostedMessages`:
   </Language>
 </CodeTabs>
 
-Notice that `migrate` is actually an [initialization method](../anatomy-of-a-contract/anatomy.md#initialization-method) that **ignores** the existing state (`[#init(ignore_state)]`), thus being able to execute and rewrite the state.
+Notice that `migrate` is actually an [initialization method](../anatomy/anatomy.md#initialization-method) that **ignores** the existing state (`[#init(ignore_state)]`), thus being able to execute and rewrite the state.
 
 :::tip
 You can follow a migration step by step in the [official migration example](https://github.com/near-examples/update-migrate-rust/tree/main/basic-updates/base)

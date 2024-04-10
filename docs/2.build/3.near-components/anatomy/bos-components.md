@@ -6,10 +6,10 @@ sidebar_label: Handling Historical data
 
 Building components that handle historical blockchain data require dedicated solutions that manage the data and reduce the latency of requests, as it's not possible to scan the whole blockchain when a user makes a request.
 
-A simple solution for developers building on NEAR is using [QueryAPI](../intro.md), a fully managed solution to build indexer functions, extract on-chain data, store it in a database, and be able to query it using GraphQL endpoints.
+A simple solution for developers building on NEAR is using [QueryAPI](../environment.md), a fully managed solution to build indexer functions, extract on-chain data, store it in a database, and be able to query it using GraphQL endpoints.
 
 :::tip
-Learn more about QueryAPI in this [QueryAPI Overview](../intro.md) article.
+Learn more about QueryAPI in this [QueryAPI Overview](../environment.md) article.
 :::
 
 ---

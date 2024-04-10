@@ -12,44 +12,44 @@ Welcome! Here you will find all the information on what you can **build** on NEA
 
 <FeatureList>
   <Column title="Contracts">
-    <Feature url="/develop/contracts/whatisacontract" title="What is a Contract?"
+    <Feature url="/build/smart-contracts/what-is" title="What is a Contract?"
              subtitle="Learn what a smart contract is" image="contract.png" />
-    <Feature url="/develop/contracts/quickstart" title="Build a Contract"
+    <Feature url="/build/smart-contracts/quickstart" title="Build a Contract"
              subtitle="Spin-up your first smart contract" image="smartcontract.png" />
-    <Feature url="/develop/testing/introduction" title="Test a Contract" subtitle="Write unit & integration tests" image="test.png" />
-    <Feature url="/develop/deploy" title="Deploy a Contract" subtitle="Deploy the contract to the network" image="near-cli.png" />
+    <Feature url="/build/smart-contracts/testing/introduction" title="Test a Contract" subtitle="Write unit & integration tests" image="test.png" />
+    <Feature url="/build/smart-contracts/release/deploy" title="Deploy a Contract" subtitle="Deploy the contract to the network" image="near-cli.png" />
   </Column>
   <Column title="Components">
-    <Feature url="/bos/tutorial/quickstart" title="What is a Component?"
+    <Feature url="build/near-components/what-is" title="What is a Component?"
              subtitle="Learn about multi-chain components" image="bos-lido.png" />
-    <Feature url="/bos/dev/intro" title="Dev Environment"
+    <Feature url="/build/near-components/dev-environment" title="Dev Environment"
              subtitle="Choose your dev environment" image="update.png" />
-    <Feature url="/bos/api/state" title="Build a Component"
+    <Feature url="/build/near-components/anatomy/state" title="Build a Component"
              subtitle="Learn everything a Component can do" image="multiple.png" />
-    <Feature url="/develop/integrate/frontend-components" title="Use Components in a WebApp"
+    <Feature url="/build/web3-apps/frontend-components" title="Use Components in a WebApp"
              subtitle="Use the contract in a frontend" image="frontend-bos.png"  />
   </Column>
   <Column title="Applications">
-    <Feature url="/develop/web3-apps/whatareweb3apps" title="What are Web3 Apps?"
+    <Feature url="/build/web3-apps/what-is" title="What are Web3 Apps?"
              subtitle="Learn about decentralized apps" image="near-logo.png" />
-    <Feature url="/develop/integrate/quickstart-frontend" title="Quickstart a Web3 App"
+    <Feature url="/build/web3-apps/quickstart" title="Quickstart a Web3 App"
              subtitle="Use the contract in a frontend" image="quickstart.png"  />
-    <Feature url="/develop/integrate/frontend" title="Integrate Contracts"
+    <Feature url="/build/web3-apps/integrate-contracts" title="Integrate Contracts"
              subtitle="Integrate with Contracts" image="bos-contract.png"  />
-    <Feature url="/develop/integrate/frontend" title="Build a Web Frontend"
+    <Feature url="/build/web3-apps/integrate-components" title="Integrate Components"
              subtitle="Use the contract in a frontend" image="frontend.png"  />
   </Column>
   <Column title="Primitives">
-    <Feature url="/primitives/ft" title="Fungible Tokens" subtitle="Learn how to use and make FT" image="ft.png" />
-    <Feature url="/primitives/nft" title="Non-Fungible Tokens" subtitle="Enter the NFT space" image="nft.png" />
-    <Feature url="/primitives/dao" title="Autonomous Organizations" subtitle="Understand DAOs" image="dao.png" />
-    <Feature url="/primitives/linkdrop" title="Linkdrops" subtitle="Drop assets & onboard users" image="key.png" />
-    <Feature url="/primitives/oracles" title="Oracles" subtitle="On-chain oracles to query prices" image="oracle.png" />
+    <Feature url="/build/primitives/ft" title="Fungible Tokens" subtitle="Learn how to use and make FT" image="ft.png" />
+    <Feature url="/build/primitives/nft" title="Non-Fungible Tokens" subtitle="Enter the NFT space" image="nft.png" />
+    <Feature url="/build/primitives/dao" title="Autonomous Organizations" subtitle="Understand DAOs" image="dao.png" />
+    <Feature url="/build/primitives/linkdrop" title="Linkdrops" subtitle="Drop assets & onboard users" image="key.png" />
+    <Feature url="/build/primitives/oracles" title="Oracles" subtitle="On-chain oracles to query prices" image="oracle.png" />
   </Column>
   <Column title="Data Infrastructure">
-    <Feature url="/bos/queryapi/big-query" title="Google BigQuery" 
+    <Feature url="/build/data-infrastructure/big-query" title="Google BigQuery" 
              subtitle="Query network data efficiently" image="experiment.png" />
-    <Feature url="/bos/queryapi/intro" title="QueryAPI" subtitle="The simplest way to build indexers" image="blocks.png" />
-    <Feature url="/tools/near-lake" title="NEAR Lake" subtitle="An Indexer that stores chain events" image="monitor.png" />
+    <Feature url="/build/data-infrastructure/query-api/intro" title="QueryAPI" subtitle="The simplest way to build indexers" image="blocks.png" />
+    <Feature url="/build/data-infrastructure/lake-framework/near-lake" title="NEAR Lake" subtitle="An Indexer that stores chain events" image="monitor.png" />
   </Column>
 </FeatureList>

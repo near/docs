@@ -1,5 +1,5 @@
 ---
-id: intro
+id: dev-environment
 title: Choose your Dev Environment
 ---
 

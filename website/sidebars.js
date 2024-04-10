@@ -162,37 +162,37 @@ const sidebar = {
         "build/smart-contracts/quickstart",
         {
           "Anatomy of a Contract": [
-            "build/smart-contracts/anatomy-of-a-contract/basics",
-            "build/smart-contracts/anatomy-of-a-contract/anatomy",
-            "build/smart-contracts/anatomy-of-a-contract/environment",
-            "build/smart-contracts/anatomy-of-a-contract/storage",
-            "build/smart-contracts/anatomy-of-a-contract/actions",
-            "build/smart-contracts/anatomy-of-a-contract/crosscontract",
+            "build/smart-contracts/anatomy/basics",
+            "build/smart-contracts/anatomy/anatomy",
+            "build/smart-contracts/anatomy/environment",
+            "build/smart-contracts/anatomy/storage",
+            "build/smart-contracts/anatomy/actions",
+            "build/smart-contracts/anatomy/crosscontract",
             "build/smart-contracts/security/checklist", 
             {
               "type": "html",
               "value": "<hr/>"
             },
-            "build/smart-contracts/anatomy-of-a-contract/serialization"
+            "build/smart-contracts/anatomy/serialization"
           ]
         },
         {
           "Test the Contract": [
-            "build/smart-contracts/test-the-contract/introduction",
-            "build/smart-contracts/test-the-contract/unit-test",
-            "build/smart-contracts/test-the-contract/integration-test",
+            "build/smart-contracts/testing/introduction",
+            "build/smart-contracts/testing/unit-test",
+            "build/smart-contracts/testing/integration-test",
             {
               "type": "html",
               "value": "<hr/>"
             },
-            "build/smart-contracts/test-the-contract/kurtosis-localnet",
+            "build/smart-contracts/testing/kurtosis-localnet",
           ]
         },
         {
           "Deploy, Update & Lock": [
-            "build/smart-contracts/deploy-update-and-lock/deploy",
-            "build/smart-contracts/deploy-update-and-lock/upgrade",
-            "build/smart-contracts/deploy-update-and-lock/lock"
+            "build/smart-contracts/release/deploy",
+            "build/smart-contracts/release/upgrade",
+            "build/smart-contracts/release/lock"
           ]
         },
         {
@@ -239,16 +239,16 @@ const sidebar = {
     "build/near-components/what-is",
     {
       "Building Web3 Components": [
-        "build/near-components/intro",
+        "build/near-components/dev-environment",
         {
           "Anatomy of a Component": [
-            "build/near-components/anatomy-of-a-component/state",
-            "build/near-components/anatomy-of-a-component/web-methods",
-            "build/near-components/anatomy-of-a-component/builtin-components",
-            "build/near-components/anatomy-of-a-component/near",
-            "build/near-components/anatomy-of-a-component/social",
-            "build/near-components/anatomy-of-a-component/notifications",
-            "build/near-components/anatomy-of-a-component/bos-components"
+            "build/near-components/anatomy/state",
+            "build/near-components/anatomy/web-methods",
+            "build/near-components/anatomy/builtin-components",
+            "build/near-components/anatomy/near",
+            "build/near-components/anatomy/social",
+            "build/near-components/anatomy/notifications",
+            "build/near-components/anatomy/bos-components"
           ]
         },
         "build/near-components/bos-gateway",
@@ -273,9 +273,9 @@ const sidebar = {
     "build/web3-apps/what-is",
     {
       "Building Web3 Applications": [
-        "build/web3-apps/quickstart-frontend",
-        "build/web3-apps/frontend",
-        "build/web3-apps/frontend-components",
+        "build/web3-apps/quickstart",
+        "build/web3-apps/integrate-contracts",
+        "build/web3-apps/integrate-components",
         {
           "Backend": [
             "build/web3-apps/backend/backend-login",

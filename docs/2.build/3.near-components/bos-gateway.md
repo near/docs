@@ -22,7 +22,7 @@ npx create-near-app@latest
 ```
 
 :::tip Tutorial
-To learn more about the template created by `create-near-app` see our [Quickstart a WebApp](../../2.build/4.web3-apps/quickstart-frontend.md) tutorial.
+To learn more about the template created by `create-near-app` see our [Quickstart a WebApp](../../2.build/4.web3-apps/quickstart.md) tutorial.
 :::
 
 ---
@@ -36,5 +36,5 @@ In order to integrate components into your WebApp you will leverage two librarie
 The best way to learn how to integrate components into your WebApp is by following our tutorial:
 
 :::tip Tutorial
-To learn step-by-step how to integrate them, please visit our [integrating components into a WebApp](../../2.build/4.web3-apps/frontend-components.md) tutorial.
+To learn step-by-step how to integrate them, please visit our [integrating components into a WebApp](../../2.build/4.web3-apps/integrate-components.md) tutorial.
 :::

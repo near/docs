@@ -1,5 +1,5 @@
 ---
-id: frontend-components
+id: integrate-components
 title: Integrating Components
 ---
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
@@ -100,5 +100,5 @@ Then use it during the call to `initNear`:
 ```
 
 :::tip
-To learn more about the wallet selector and how it can be used, please see the [integrating NEAR to your WebApp tutorial](./frontend.md)
+To learn more about the wallet selector and how it can be used, please see the [integrating NEAR to your WebApp tutorial](./integrate-contracts.md)
 :::

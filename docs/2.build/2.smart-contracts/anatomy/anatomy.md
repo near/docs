@@ -205,7 +205,7 @@ as `call` methods.
 :::
 
 :::danger
-By default `init` methods are public, make sure to [decorate them as `private`](#private-methods), or [batch call the initialization on deploy](../deploy-update-and-lock/deploy.md#initializing-the-contract)
+By default `init` methods are public, make sure to [decorate them as `private`](#private-methods), or [batch call the initialization on deploy](../release/deploy.md#initializing-the-contract)
 :::
 
 <hr className="subsection" />

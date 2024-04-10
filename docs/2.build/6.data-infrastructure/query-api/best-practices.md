@@ -37,7 +37,7 @@ Using exploring tools such as [NearBlocks](https://nearblocks.io/), you can find
 
 ### Write JS code and debug
 
-1. Start from a simple [`indexingLogic.js`](index-function.md) to get blockchain data dumped in a database, in a raw form. For example, start by getting the [FunctionCall](../../2.smart-contracts/anatomy-of-a-contract/actions.md#function-call)'s arguments from the smart contract that you want to index. Then, use the [GraphQL playground](index-function.md#mutations-in-graphql) to understand the raw dump and further analyze the data.
+1. Start from a simple [`indexingLogic.js`](index-function.md) to get blockchain data dumped in a database, in a raw form. For example, start by getting the [FunctionCall](../../2.smart-contracts/anatomy/actions.md#function-call)'s arguments from the smart contract that you want to index. Then, use the [GraphQL playground](index-function.md#mutations-in-graphql) to understand the raw dump and further analyze the data.
 
    ![Playground](/docs/assets/QAPIScreen.gif)
 

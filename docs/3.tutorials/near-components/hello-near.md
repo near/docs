@@ -104,7 +104,7 @@ There are two important things to notice in the code above:
 Having our component's view ready, we now need to define the logic for when the user inputs a new greeting and presses the `Submit` button. This is, we need to define the `onInputChange` and `onBtnClick` methods.
 
 #### onInputChange
-When the user inputs a new greeting, we want to store it somewhere until the `Submit` button is pressed, for this, we can use the [application's State](../../2.build/3.near-components/anatomy-of-a-component/state.md).
+When the user inputs a new greeting, we want to store it somewhere until the `Submit` button is pressed, for this, we can use the [application's State](../../2.build/3.near-components/anatomy/state.md).
 
 In BOS, the state is initialized through `State.init`, updated with `State.update`, and accessed through the `state` variable (notice the lowercase). Lets store the new greeting in the App's state:
 

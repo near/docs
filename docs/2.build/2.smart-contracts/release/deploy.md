@@ -99,7 +99,7 @@ Considering this, we advise to name methods using `snake_case` in all SDKs as th
 ---
 
 ## Initializing the Contract
-If your contract has an [initialization method](../anatomy-of-a-contract/anatomy.md#initialization-functions) you can call it to
+If your contract has an [initialization method](../anatomy/anatomy.md#initialization-functions) you can call it to
 initialize the state. This is not necessary if your contract implements `default` values for the state. 
 
 <Tabs className="language-tabs" groupId="code-tabs">
