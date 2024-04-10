@@ -154,16 +154,14 @@ const config = {
             { label: 'NEAR CLI', href: '/tools/near-cli' },
             {
               type: 'html',
-              value: '<hr/> <small class="subtitle"> Onboarding </small>',
+              value: '<hr/> <small class="subtitle"> Wallet Integration </small>',
             },
             { label: 'Wallet Selector', href: '/tools/wallet-selector' },
-            { label: 'FastAuth (Email Login)', href: '/tools/fastauth-sdk' },
-            { label: 'Relayers', href: '/build/chain-abstraction-services/welcome' },
             {
               type: 'html',
               value: '<hr/> <small class="subtitle"> IDEs </small>',
             },
-            { label: 'VSCode Extension ', href: '/bos/dev/vscode' },
+            { label: 'VSCode Extension ', href: 'https://marketplace.visualstudio.com/items?itemName=near-protocol.near-discovery-ide' },
             { label: 'BOS Web IDE (Jutsu)', href: 'https://jutsu.ai/editor' },
             {
               label: 'Remix IDE Plugin',

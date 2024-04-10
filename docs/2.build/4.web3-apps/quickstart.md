@@ -9,7 +9,7 @@ import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 Most interactions with the NEAR ecosystem can be grouped in 2 categories: 
 1. Interacting with a [NEAR smart contract](/develop/contracts/quickstart).
-2. Interacting with a [NEAR component](/bos/tutorial/quickstart).
+2. Interacting with a [NEAR component](/build/near-components/what-is).
 
 In this guide we will show you how to quickly spin-up an application where users can **login** using their wallets and interact with both **contracts** and **components**.
 
