@@ -164,7 +164,7 @@ The `integration tests` use a sandbox to create NEAR users and simulate interact
 
 ### Deploying the Contract to the NEAR network
 
-In order to deploy the contract you will need to [create a NEAR account](/develop/contracts/quickstart#create-a-testnet-account).
+In order to deploy the contract you will need to create a NEAR account.
 
 <Tabs>
   <TabItem value="🌐 JavaScript">
@@ -231,8 +231,8 @@ If you're using your own account, replace `counter.near-examples.testnet` with y
 ## Moving Forward
 
 A nice way to learn is by trying to expand the contract. Modify it by adding a parameter to `increment` and `decrement`,
-so the user can choose by how much to change the value. For this, you will need to use knowledge from the [anatomy](../../2.develop/contracts/anatomy.md)
-and [storage](../../2.develop/contracts/storage.md) sections.
+so the user can choose by how much to change the value. For this, you will need to use knowledge from the [anatomy](../../2.build/2.smart-contracts/anatomy/anatomy.md)
+and [storage](../../2.build/2.smart-contracts/anatomy/storage.md) sections.
 
 :::note Versioning for this article
 

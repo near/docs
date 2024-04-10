@@ -51,13 +51,14 @@ export default function NotFoundContent({ className }) {
                     <h3>Build</h3>
                     Build awesome applications on NEAR
                     <ul className='margin-vert--sm'>
-                      <a href="/develop/contracts/whatisacontract"><li>Smart Contracts</li></a>
-                      <a href="/bos/tutorial/quickstart"><li>NEAR Components</li></a>
-                      <a href="/develop/web3-apps/whatareweb3apps"><li>Web3 Applications</li></a>
-                      <a href="/abstraction/what-is"><li>Relayers</li></a>
-                      <a href="/abstraction/what-is"><li>Multi-Chain Signatures</li></a>
-                      <a href="/primitives/whatareprimitives"><li>Primitives (FT, NFT, ...)</li></a>
-                      <a href="/develop/whataredatasolutions"><li>Indexers & Data Solutions</li></a>
+                      <a href="/build/smart-contracts/what-is"><li>Smart Contracts</li></a>
+                      <a href="/build/near-components/what-is"><li>NEAR Components</li></a>
+                      <a href="/build/web3-apps/what-is"><li>Web3 Applications</li></a>
+                      <a href="/build/chain-abstraction/meta-transactions"><li>Relayers</li></a>
+                      <a href="/build/chain-abstraction/chain-signatures"><li>Multi-Chain Signatures</li></a>
+                      <a href="/build/primitives/what-is"><li>Primitives (FT, NFT, ...)</li></a>
+                      <a href="/build/data-infrastructure/what-is"><li>Indexers & Data Solutions</li></a>
+                      <a href="/build/chain-abstraction/data-availability"> Data Availability .</a>
                     </ul>
                   </div>
                 </div>
@@ -75,7 +76,7 @@ export default function NotFoundContent({ className }) {
                         <a href="/tutorials/examples/count-near"><li>Basic dApps</li></a>
                         <a href="/tutorials/examples/factory"><li>Advanced Contracts</li></a>
                         <a href="/tutorials/nfts/introduction"><li>NFT: Zero to Hero</li></a>
-                        <a href="/bos/tutorial/indexer-tutorials/nft-indexer"><li>Indexer Tutorials</li></a>
+                        <a href="/tutorials/near-components/indexer-tutorials/nft-indexer"><li>Indexer Tutorials</li></a>
                       </ul>
                     </div>
                   </div>
