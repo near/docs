@@ -199,7 +199,7 @@ Notice that the fee comes from the gas burned during the function execution, and
 ## Estimating Costs for a Call
 
 :::warning
-This section will soon be moved from here to the [build documentation](../../2.build/2.smart-contracts/anatomy-of-a-contract/environment.md).
+This section will soon be moved from here to the [build documentation](../../2.build/2.smart-contracts/anatomy/environment.md).
 :::
 
 If you developing a smart contract, you might want to estimate how much gas a function call will consume. This is useful to estimate limits for your function and avoid running into out-of-gas errors.
