@@ -199,6 +199,10 @@ const config = {
               value: '<hr /><div class="subtitle"> Other Docs </dib>',
             },
             {
+              href: '/integrations/exchange-integration',
+              label: 'Exchange Integrations',
+            },
+            {
               href: 'https://nomicon.io',
               label: 'Protocol Docs',
             },

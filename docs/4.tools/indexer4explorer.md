@@ -100,7 +100,7 @@ This is if you use Explorer DB to build internal or external dashboards. Pagoda 
 
 :::tip
 
-Find more information about our [BigQuery solution here](../2.build/6.near-data-infrastructure/big-query.md).
+Find more information about our [BigQuery solution here](../2.build/6.data-infrastructure/big-query.md).
 
 :::
 

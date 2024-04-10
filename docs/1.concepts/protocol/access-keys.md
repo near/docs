@@ -69,7 +69,7 @@ First create a contract that has a method called `create_account`. This method s
 You can then create multiple `Function-Call` in the contract's account, that only allow to call `create_account`. Drop these keys to your friends, so they can call the method, and easily create an account with some tokens.
 
 :::tip
-This is the basic principle behind [NEAR Drops](../../2.build/5.primitives-and-standards/linkdrop.md), a way to distribute assets to a large number of users
+This is the basic principle behind [NEAR Drops](../../2.build/5.primitives/linkdrop.md), a way to distribute assets to a large number of users
 :::
 
 <hr class="subsection" />

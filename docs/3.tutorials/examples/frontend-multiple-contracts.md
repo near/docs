@@ -54,7 +54,7 @@ transactions remain **independent**. This is, if one fails, the other is **NOT**
 
 ## Batch Actions
 
-You can aggregate multiple [actions](../../2.build/2.building-smart-contracts/anatomy-of-a-contract/actions.md) directed towards a same contract into a single transaction. Batched actions execute **sequentially**, with the added benefit that, if **one fails** then they **all** get reverted.
+You can aggregate multiple [actions](../../2.build/2.smart-contracts/anatomy-of-a-contract/actions.md) directed towards a same contract into a single transaction. Batched actions execute **sequentially**, with the added benefit that, if **one fails** then they **all** get reverted.
 
 ```js
   // Register a user and transfer them FT on a single take
