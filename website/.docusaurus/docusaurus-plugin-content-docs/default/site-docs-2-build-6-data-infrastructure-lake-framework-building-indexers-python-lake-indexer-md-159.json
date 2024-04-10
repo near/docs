@@ -1,0 +1,28 @@
+{
+  "id": "build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer",
+  "title": "NEAR Lake indexer basic tutorial",
+  "description": "frolvanya/near-lake-raw-printer: source code for the tutorial on how to create an indexer that prints block height and number of shards",
+  "source": "@site/../docs/2.build/6.data-infrastructure/lake-framework/building-indexers/python-lake-indexer.md",
+  "sourceDirName": "2.build/6.data-infrastructure/lake-framework/building-indexers",
+  "slug": "/build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer",
+  "permalink": "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/lake-framework/building-indexers/python-lake-indexer.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1712759479000,
+  "frontMatter": {
+    "sidebar_label": "Python tutorial"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "JS basic tutorial",
+    "permalink": "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer"
+  },
+  "next": {
+    "title": "NFT Indexer",
+    "permalink": "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/nft-indexer"
+  }
+}

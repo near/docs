@@ -1,0 +1,30 @@
+{
+  "id": "build/data-infrastructure/query-api/index-functions",
+  "title": "Indexing Functions",
+  "description": "QueryAPI is a fully managed service that allows you to create and manage indexers on-chain seamlessly.",
+  "source": "@site/../docs/2.build/6.data-infrastructure/query-api/index-function.md",
+  "sourceDirName": "2.build/6.data-infrastructure/query-api",
+  "slug": "/build/data-infrastructure/query-api/index-functions",
+  "permalink": "/zh-CN/build/data-infrastructure/query-api/index-functions",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/query-api/index-function.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1712759479000,
+  "frontMatter": {
+    "id": "index-functions",
+    "title": "Indexing Functions",
+    "sidebar_label": "Indexing Functions"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Best Practices",
+    "permalink": "/zh-CN/build/data-infrastructure/query-api/best-practices"
+  },
+  "next": {
+    "title": "Context object",
+    "permalink": "/zh-CN/build/data-infrastructure/query-api/context-object"
+  }
+}

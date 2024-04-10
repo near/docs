@@ -1,0 +1,17 @@
+{
+  "id": "build/primitives/linkdrop/web-app/create-function-call-drop",
+  "title": "create-function-call-drop",
+  "description": "The Wallet object comes from our quickstart template",
+  "source": "@site/../docs/2.build/5.primitives/linkdrop/web-app/create-function-call-drop.md",
+  "sourceDirName": "2.build/5.primitives/linkdrop/web-app",
+  "slug": "/build/primitives/linkdrop/web-app/create-function-call-drop",
+  "permalink": "/zh-CN/build/primitives/linkdrop/web-app/create-function-call-drop",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/linkdrop/web-app/create-function-call-drop.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1712759479000,
+  "frontMatter": {}
+}

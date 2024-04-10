@@ -1,0 +1,30 @@
+{
+  "id": "build/primitives/nft",
+  "title": "Non-Fungible Tokens (NFT)",
+  "description": "In contrast with fungible tokens, non-fungible tokens (NFT) are unitary and therefore unique. This makes NFTs ideal to represent ownership of assets such as a piece of digital content, or a ticket for an event.",
+  "source": "@site/../docs/2.build/5.primitives/nft.md",
+  "sourceDirName": "2.build/5.primitives",
+  "slug": "/build/primitives/nft",
+  "permalink": "/zh-CN/build/primitives/nft",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/nft.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1712759479000,
+  "frontMatter": {
+    "id": "nft",
+    "title": "Non-Fungible Tokens (NFT)",
+    "hide_table_of_contents": false
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Fungible Tokens (FT)",
+    "permalink": "/zh-CN/build/primitives/ft"
+  },
+  "next": {
+    "title": "Linkdrops",
+    "permalink": "/zh-CN/build/primitives/linkdrop"
+  }
+}

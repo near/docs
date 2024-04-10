@@ -22,7 +22,7 @@
   "sidebar": "tutorials",
   "previous": {
     "title": "Lido Example",
-    "permalink": "/zh-CN/bos/tutorial/lido"
+    "permalink": "/zh-CN/tutorials/near-components/lido"
   },
   "next": {
     "title": "Pre-deployed Contract",

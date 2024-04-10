@@ -1,0 +1,29 @@
+{
+  "id": "build/smart-contracts/security/reentrancy",
+  "title": "Reentrancy Attacks",
+  "description": "Between a cross-contract call and its callback any method of your contract can be executed. Not taking this into account is one of the main sources of exploits. It is so common that it has its own name: reentrancy attacks.",
+  "source": "@site/../docs/2.build/2.smart-contracts/security/reentrancy.md",
+  "sourceDirName": "2.build/2.smart-contracts/security",
+  "slug": "/build/smart-contracts/security/reentrancy",
+  "permalink": "/zh-CN/build/smart-contracts/security/reentrancy",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/security/reentrancy.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1712759479000,
+  "frontMatter": {
+    "id": "reentrancy",
+    "title": "Reentrancy Attacks"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Front Running",
+    "permalink": "/zh-CN/build/smart-contracts/security/frontrunning"
+  },
+  "next": {
+    "title": "Random Numbers",
+    "permalink": "/zh-CN/build/smart-contracts/security/random"
+  }
+}

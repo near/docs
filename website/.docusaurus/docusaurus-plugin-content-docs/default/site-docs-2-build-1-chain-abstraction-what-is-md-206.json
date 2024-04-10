@@ -20,7 +20,7 @@
   "sidebar": "build",
   "previous": {
     "title": "Home",
-    "permalink": "/zh-CN/develop/welcome"
+    "permalink": "/zh-CN/build/welcome"
   },
   "next": {
     "title": "Building a Relayer",

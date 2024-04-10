@@ -109,8 +109,8 @@ export default {
   ],
   "themeConfig": {
     "announcementBar": {
-      "id": "abstraction",
-      "content": "⛓️ <a href=\"/concepts/abstraction/chain-signatures\">Chain Signatures</a> ⛓️ - Sign and send transactions on Bitcoin, Ethereum, and more! 🔑 ",
+      "id": "id-0001",
+      "content": "🎉 We have reorganized our docs to make them simpler to navigate, please report any broken links 🎉",
       "backgroundColor": "#fafbfc",
       "textColor": "#333",
       "isCloseable": true
@@ -283,7 +283,7 @@ export default {
           "position": "left"
         },
         {
-          "to": "/develop/welcome",
+          "to": "/build/welcome",
           "label": "Build",
           "position": "left"
         },
@@ -329,19 +329,11 @@ export default {
             },
             {
               "type": "html",
-              "value": "<hr/> <small class=\"subtitle\"> Onboarding </small>"
+              "value": "<hr/> <small class=\"subtitle\"> Wallet Integration </small>"
             },
             {
               "label": "Wallet Selector",
               "href": "/tools/wallet-selector"
-            },
-            {
-              "label": "FastAuth (Email Login)",
-              "href": "/tools/fastauth-sdk"
-            },
-            {
-              "label": "Relayers",
-              "href": "/develop/relayers/build-relayer"
             },
             {
               "type": "html",
@@ -349,7 +341,7 @@ export default {
             },
             {
               "label": "VSCode Extension ",
-              "href": "/bos/dev/vscode"
+              "href": "https://marketplace.visualstudio.com/items?itemName=near-protocol.near-discovery-ide"
             },
             {
               "label": "BOS Web IDE (Jutsu)",
@@ -390,6 +382,10 @@ export default {
             {
               "type": "html",
               "value": "<hr /><div class=\"subtitle\"> Other Docs </dib>"
+            },
+            {
+              "href": "/integrations/exchange-integration",
+              "label": "Exchange Integrations"
             },
             {
               "href": "https://nomicon.io",

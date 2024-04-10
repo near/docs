@@ -1,0 +1,17 @@
+{
+  "id": "build/primitives/dao/web-app/get-proposal-list",
+  "title": "get-proposal-list",
+  "description": "The Wallet object comes from our quickstart template",
+  "source": "@site/../docs/2.build/5.primitives/dao/web-app/get-proposal-list.md",
+  "sourceDirName": "2.build/5.primitives/dao/web-app",
+  "slug": "/build/primitives/dao/web-app/get-proposal-list",
+  "permalink": "/zh-CN/build/primitives/dao/web-app/get-proposal-list",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/dao/web-app/get-proposal-list.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1712759479000,
+  "frontMatter": {}
+}

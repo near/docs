@@ -1,0 +1,17 @@
+{
+  "id": "build/primitives/dao/web-app/create-dao",
+  "title": "create-dao",
+  "description": "The full list of roles and permissions you can find here.",
+  "source": "@site/../docs/2.build/5.primitives/dao/web-app/create-dao.md",
+  "sourceDirName": "2.build/5.primitives/dao/web-app",
+  "slug": "/build/primitives/dao/web-app/create-dao",
+  "permalink": "/zh-CN/build/primitives/dao/web-app/create-dao",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/dao/web-app/create-dao.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1712759479000,
+  "frontMatter": {}
+}

@@ -363,8 +363,8 @@
       {
         "type": "link",
         "label": "Home",
-        "href": "/zh-CN/develop/welcome",
-        "docId": "develop/welcome",
+        "href": "/zh-CN/build/welcome",
+        "docId": "build/welcome",
         "unlisted": false
       },
       {
@@ -465,8 +465,8 @@
       {
         "type": "link",
         "label": "What is a Contract?",
-        "href": "/zh-CN/develop/contracts/whatisacontract",
-        "docId": "develop/contracts/whatisacontract",
+        "href": "/zh-CN/build/smart-contracts/what-is",
+        "docId": "build/smart-contracts/what-is",
         "unlisted": false
       },
       {
@@ -476,8 +476,8 @@
           {
             "type": "link",
             "label": "Quickstart ✨",
-            "href": "/zh-CN/develop/contracts/quickstart",
-            "docId": "develop/contracts/quickstart",
+            "href": "/zh-CN/build/smart-contracts/quickstart",
+            "docId": "build/smart-contracts/quickstart",
             "unlisted": false
           },
           {
@@ -487,43 +487,43 @@
               {
                 "type": "link",
                 "label": "Modules, Types & Structs",
-                "href": "/zh-CN/build/smart-contracts/anatomy-of-a-contract/basics",
-                "docId": "build/smart-contracts/anatomy-of-a-contract/basics",
+                "href": "/zh-CN/build/smart-contracts/anatomy/basics",
+                "docId": "build/smart-contracts/anatomy/basics",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "The Contract Class",
-                "href": "/zh-CN/build/smart-contracts/anatomy-of-a-contract/anatomy",
-                "docId": "build/smart-contracts/anatomy-of-a-contract/anatomy",
+                "href": "/zh-CN/build/smart-contracts/anatomy/",
+                "docId": "build/smart-contracts/anatomy/anatomy",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "Environment",
-                "href": "/zh-CN/build/smart-contracts/anatomy-of-a-contract/environment",
-                "docId": "build/smart-contracts/anatomy-of-a-contract/environment",
+                "href": "/zh-CN/build/smart-contracts/anatomy/environment",
+                "docId": "build/smart-contracts/anatomy/environment",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "State & Data Structures",
-                "href": "/zh-CN/build/smart-contracts/anatomy-of-a-contract/storage",
-                "docId": "build/smart-contracts/anatomy-of-a-contract/storage",
+                "href": "/zh-CN/build/smart-contracts/anatomy/storage",
+                "docId": "build/smart-contracts/anatomy/storage",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "Transfers & Actions",
-                "href": "/zh-CN/build/smart-contracts/anatomy-of-a-contract/actions",
-                "docId": "build/smart-contracts/anatomy-of-a-contract/actions",
+                "href": "/zh-CN/build/smart-contracts/anatomy/actions",
+                "docId": "build/smart-contracts/anatomy/actions",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "Cross-Contract Calls",
-                "href": "/zh-CN/build/smart-contracts/anatomy-of-a-contract/crosscontract",
-                "docId": "build/smart-contracts/anatomy-of-a-contract/crosscontract",
+                "href": "/zh-CN/build/smart-contracts/anatomy/crosscontract",
+                "docId": "build/smart-contracts/anatomy/crosscontract",
                 "unlisted": false
               },
               {
@@ -540,8 +540,8 @@
               {
                 "type": "link",
                 "label": "Notes on Serialization",
-                "href": "/zh-CN/build/smart-contracts/anatomy-of-a-contract/serialization",
-                "docId": "build/smart-contracts/anatomy-of-a-contract/serialization",
+                "href": "/zh-CN/build/smart-contracts/anatomy/serialization",
+                "docId": "build/smart-contracts/anatomy/serialization",
                 "unlisted": false
               }
             ],
@@ -555,22 +555,22 @@
               {
                 "type": "link",
                 "label": "Introduction",
-                "href": "/zh-CN/develop/testing/introduction",
-                "docId": "develop/testing/introduction",
+                "href": "/zh-CN/build/smart-contracts/testing/introduction",
+                "docId": "build/smart-contracts/testing/introduction",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "Unit Testing",
-                "href": "/zh-CN/develop/testing/unit-test",
-                "docId": "develop/testing/unit-test",
+                "href": "/zh-CN/build/smart-contracts/testing/unit-test",
+                "docId": "build/smart-contracts/testing/unit-test",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "Integration Tests",
-                "href": "/zh-CN/develop/testing/integration-test",
-                "docId": "develop/testing/integration-test",
+                "href": "/zh-CN/build/smart-contracts/testing/integration-test",
+                "docId": "build/smart-contracts/testing/integration-test",
                 "unlisted": false
               },
               {
@@ -580,8 +580,8 @@
               {
                 "type": "link",
                 "label": "Local Development",
-                "href": "/zh-CN/develop/testing/kurtosis-localnet",
-                "docId": "develop/testing/kurtosis-localnet",
+                "href": "/zh-CN/build/smart-contracts/testing/kurtosis-localnet",
+                "docId": "build/smart-contracts/testing/kurtosis-localnet",
                 "unlisted": false
               }
             ],
@@ -595,22 +595,22 @@
               {
                 "type": "link",
                 "label": "Deploying and Using",
-                "href": "/zh-CN/develop/deploy",
-                "docId": "develop/deploy",
+                "href": "/zh-CN/build/smart-contracts/release/deploy",
+                "docId": "build/smart-contracts/release/deploy",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "Updating Contracts",
-                "href": "/zh-CN/develop/upgrade",
-                "docId": "develop/upgrade",
+                "href": "/zh-CN/build/smart-contracts/release/upgrade",
+                "docId": "build/smart-contracts/release/upgrade",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "Locking Accounts",
-                "href": "/zh-CN/develop/lock",
-                "docId": "develop/lock",
+                "href": "/zh-CN/build/smart-contracts/release/lock",
+                "docId": "build/smart-contracts/release/lock",
                 "unlisted": false
               }
             ],
@@ -631,50 +631,50 @@
               {
                 "type": "link",
                 "label": "Million Small Deposits",
-                "href": "/zh-CN/develop/contracts/security/storage",
-                "docId": "develop/contracts/security/storage",
+                "href": "/zh-CN/build/smart-contracts/security/storage",
+                "docId": "build/smart-contracts/security/storage",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "Cross-Contract Calls",
-                "href": "/zh-CN/develop/contracts/security/callbacks",
-                "docId": "develop/contracts/security/callbacks",
+                "href": "/zh-CN/build/smart-contracts/security/callbacks",
+                "docId": "build/smart-contracts/security/callbacks",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "Ensure it is the User (1yⓃ)",
-                "href": "/zh-CN/develop/contracts/security/one-yocto",
-                "docId": "develop/contracts/security/one-yocto",
+                "href": "/zh-CN/build/smart-contracts/security/one-yocto",
+                "docId": "build/smart-contracts/security/one-yocto",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "Sybil Attacks",
-                "href": "/zh-CN/develop/contracts/security/sybil",
-                "docId": "develop/contracts/security/sybil",
+                "href": "/zh-CN/build/smart-contracts/security/sybil",
+                "docId": "build/smart-contracts/security/sybil",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "Front Running",
-                "href": "/zh-CN/develop/contracts/security/frontrunning",
-                "docId": "develop/contracts/security/frontrunning",
+                "href": "/zh-CN/build/smart-contracts/security/frontrunning",
+                "docId": "build/smart-contracts/security/frontrunning",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "Reentrancy Attacks",
-                "href": "/zh-CN/develop/contracts/security/reentrancy",
-                "docId": "develop/contracts/security/reentrancy",
+                "href": "/zh-CN/build/smart-contracts/security/reentrancy",
+                "docId": "build/smart-contracts/security/reentrancy",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "Random Numbers",
-                "href": "/zh-CN/develop/contracts/security/random",
-                "docId": "develop/contracts/security/random",
+                "href": "/zh-CN/build/smart-contracts/security/random",
+                "docId": "build/smart-contracts/security/random",
                 "unlisted": false
               },
               {
@@ -684,14 +684,14 @@
               {
                 "type": "link",
                 "label": "Bug Bounty Program",
-                "href": "/zh-CN/develop/contracts/security/bounty",
-                "docId": "develop/contracts/security/bounty",
+                "href": "/zh-CN/build/smart-contracts/security/bounty",
+                "docId": "build/smart-contracts/security/bounty",
                 "unlisted": false
               }
             ],
             "collapsed": true,
             "collapsible": true,
-            "href": "/zh-CN/develop/contracts/security/welcome"
+            "href": "/zh-CN/build/smart-contracts/security/welcome"
           },
           {
             "type": "html",
@@ -716,8 +716,8 @@
       {
         "type": "link",
         "label": "What is a Component?",
-        "href": "/zh-CN/bos/tutorial/quickstart",
-        "docId": "bos/tutorial/quickstart",
+        "href": "/zh-CN/build/near-components/what-is",
+        "docId": "build/near-components/what-is",
         "unlisted": false
       },
       {
@@ -727,8 +727,8 @@
           {
             "type": "link",
             "label": "Choose your Dev Environment",
-            "href": "/zh-CN/bos/dev/intro",
-            "docId": "bos/dev/intro",
+            "href": "/zh-CN/build/near-components/dev-environment",
+            "docId": "build/near-components/dev-environment",
             "unlisted": false
           },
           {
@@ -738,50 +738,50 @@
               {
                 "type": "link",
                 "label": "Basics",
-                "href": "/zh-CN/bos/api/state",
-                "docId": "bos/api/state",
+                "href": "/zh-CN/build/near-components/anatomy/state",
+                "docId": "build/near-components/anatomy/state",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "Web Browser Methods",
-                "href": "/zh-CN/bos/api/web-methods",
-                "docId": "bos/api/web-methods",
+                "href": "/zh-CN/build/near-components/anatomy/web-methods",
+                "docId": "build/near-components/anatomy/web-methods",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "List of Native Components",
-                "href": "/zh-CN/bos/api/builtin-components",
-                "docId": "bos/api/builtin-components",
+                "href": "/zh-CN/build/near-components/anatomy/builtin-components",
+                "docId": "build/near-components/anatomy/builtin-components",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "Interacting with Near",
-                "href": "/zh-CN/bos/api/near",
-                "docId": "bos/api/near",
+                "href": "/zh-CN/build/near-components/anatomy/near",
+                "docId": "build/near-components/anatomy/near",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "Social Interactions",
-                "href": "/zh-CN/bos/api/social",
-                "docId": "bos/api/social",
+                "href": "/zh-CN/build/near-components/anatomy/social",
+                "docId": "build/near-components/anatomy/social",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "Social Notifications",
-                "href": "/zh-CN/bos/api/notifications",
-                "docId": "bos/api/notifications",
+                "href": "/zh-CN/build/near-components/anatomy/notifications",
+                "docId": "build/near-components/anatomy/notifications",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "Handling Historical data",
-                "href": "/zh-CN/bos/queryapi/bos-components",
-                "docId": "bos/queryapi/bos-components",
+                "href": "/zh-CN/build/near-components/anatomy/bos-components",
+                "docId": "build/near-components/anatomy/bos-components",
                 "unlisted": false
               }
             ],
@@ -791,8 +791,8 @@
           {
             "type": "link",
             "label": "Using components on WebApps",
-            "href": "/zh-CN/bos/tutorial/bos-gateway",
-            "docId": "bos/tutorial/bos-gateway",
+            "href": "/zh-CN/build/near-components/bos-gateway",
+            "docId": "build/near-components/bos-gateway",
             "unlisted": false
           },
           {
@@ -801,7 +801,7 @@
           },
           {
             "type": "html",
-            "value": "<a class='menu__link internal' href='/bos/dev/bos-loader'> 📖 Tutorials </a>"
+            "value": "<a class='menu__link internal' href='/tutorials/near-components/bos-loader'> 📖 Tutorials </a>"
           }
         ],
         "collapsed": true,
@@ -818,8 +818,8 @@
       {
         "type": "link",
         "label": "What are Web3 Apps?",
-        "href": "/zh-CN/develop/web3-apps/whatareweb3apps",
-        "docId": "develop/web3-apps/whatareweb3apps",
+        "href": "/zh-CN/build/web3-apps/what-is",
+        "docId": "build/web3-apps/what-is",
         "unlisted": false
       },
       {
@@ -829,22 +829,22 @@
           {
             "type": "link",
             "label": "⭐ Quickstart a WebApp",
-            "href": "/zh-CN/develop/integrate/quickstart-frontend",
-            "docId": "develop/integrate/quickstart-frontend",
+            "href": "/zh-CN/build/web3-apps/quickstart",
+            "docId": "build/web3-apps/quickstart",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Integrating Contracts",
-            "href": "/zh-CN/develop/integrate/frontend",
-            "docId": "develop/integrate/frontend",
+            "href": "/zh-CN/build/web3-apps/integrate-contracts",
+            "docId": "build/web3-apps/integrate-contracts",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Integrating Components",
-            "href": "/zh-CN/develop/integrate/frontend-components",
-            "docId": "develop/integrate/frontend-components",
+            "href": "/zh-CN/build/web3-apps/integrate-components",
+            "docId": "build/web3-apps/integrate-components",
             "unlisted": false
           },
           {
@@ -854,8 +854,8 @@
               {
                 "type": "link",
                 "label": "Authenticate NEAR Users",
-                "href": "/zh-CN/develop/integrate/backend-login",
-                "docId": "develop/integrate/backend-login",
+                "href": "/zh-CN/build/web3-apps/backend/",
+                "docId": "build/web3-apps/backend/backend-login",
                 "unlisted": false
               }
             ],
@@ -885,8 +885,8 @@
       {
         "type": "link",
         "label": "What are Primitives?",
-        "href": "/zh-CN/primitives/whatareprimitives",
-        "docId": "primitives/whatareprimitives",
+        "href": "/zh-CN/build/primitives/what-is",
+        "docId": "build/primitives/what-is",
         "unlisted": false
       },
       {
@@ -896,43 +896,43 @@
           {
             "type": "link",
             "label": "Fungible Tokens (FT)",
-            "href": "/zh-CN/primitives/ft",
-            "docId": "primitives/ft",
+            "href": "/zh-CN/build/primitives/ft",
+            "docId": "build/primitives/ft",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Non-Fungible Tokens (NFT)",
-            "href": "/zh-CN/primitives/nft",
-            "docId": "primitives/nft",
+            "href": "/zh-CN/build/primitives/nft",
+            "docId": "build/primitives/nft",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Linkdrops",
-            "href": "/zh-CN/primitives/linkdrop",
-            "docId": "primitives/linkdrop",
+            "href": "/zh-CN/build/primitives/linkdrop",
+            "docId": "build/primitives/linkdrop",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Price Oracles",
-            "href": "/zh-CN/primitives/oracles",
-            "docId": "primitives/oracles",
+            "href": "/zh-CN/build/primitives/oracles",
+            "docId": "build/primitives/oracles",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Autonomous Organizations (DAO)",
-            "href": "/zh-CN/primitives/dao",
-            "docId": "primitives/dao",
+            "href": "/zh-CN/build/primitives/dao",
+            "docId": "build/primitives/dao",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Decentralized Exchanges (DEX)",
-            "href": "/zh-CN/primitives/dex",
-            "docId": "primitives/dex",
+            "href": "/zh-CN/build/primitives/dex",
+            "docId": "build/primitives/dex",
             "unlisted": false
           },
           {
@@ -958,8 +958,8 @@
       {
         "type": "link",
         "label": "What is Data Infrastructure?",
-        "href": "/zh-CN/develop/whataredatasolutions",
-        "docId": "develop/whataredatasolutions",
+        "href": "/zh-CN/build/data-infrastructure/what-is",
+        "docId": "build/data-infrastructure/what-is",
         "unlisted": false
       },
       {
@@ -969,8 +969,8 @@
           {
             "type": "link",
             "label": "BigQuery",
-            "href": "/zh-CN/bos/queryapi/big-query",
-            "docId": "bos/queryapi/big-query",
+            "href": "/zh-CN/build/data-infrastructure/big-query",
+            "docId": "build/data-infrastructure/big-query",
             "unlisted": false
           },
           {
@@ -980,62 +980,57 @@
               {
                 "type": "link",
                 "label": "Introduction",
-                "href": "/zh-CN/bos/queryapi/intro",
-                "docId": "bos/queryapi/intro",
+                "href": "/zh-CN/build/data-infrastructure/query-api/intro",
+                "docId": "build/data-infrastructure/query-api/intro",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "How it works",
-                "href": "/zh-CN/bos/queryapi/how-it-works",
-                "docId": "bos/queryapi/how-it-works",
+                "href": "/zh-CN/build/data-infrastructure/query-api/how-it-works",
+                "docId": "build/data-infrastructure/query-api/how-it-works",
                 "unlisted": false
               },
               {
                 "type": "link",
-                "label": "Limitations",
-                "href": "/bos/queryapi/intro#known-limitations"
-              },
-              {
-                "type": "link",
                 "label": "Getting Started",
-                "href": "/zh-CN/bos/community/indexers",
-                "docId": "bos/community/indexers",
+                "href": "/zh-CN/build/data-infrastructure/query-api/indexers",
+                "docId": "build/data-infrastructure/query-api/indexers",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "Best Practices",
-                "href": "/zh-CN/bos/queryapi/best-practices",
-                "docId": "bos/queryapi/best-practices",
+                "href": "/zh-CN/build/data-infrastructure/query-api/best-practices",
+                "docId": "build/data-infrastructure/query-api/best-practices",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "Indexing Functions",
-                "href": "/zh-CN/bos/queryapi/index-functions",
-                "docId": "bos/queryapi/index-functions",
+                "href": "/zh-CN/build/data-infrastructure/query-api/index-functions",
+                "docId": "build/data-infrastructure/query-api/index-functions",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "Context object",
-                "href": "/zh-CN/bos/queryapi/context-object",
-                "docId": "bos/queryapi/context-object",
+                "href": "/zh-CN/build/data-infrastructure/query-api/context-object",
+                "docId": "build/data-infrastructure/query-api/context-object",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "Access & Query Historical data",
-                "href": "/zh-CN/bos/queryapi/query-data",
-                "docId": "bos/queryapi/query-data",
+                "href": "/zh-CN/build/data-infrastructure/query-api/query-data",
+                "docId": "build/data-infrastructure/query-api/query-data",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "Migrate from Lake framework",
-                "href": "/zh-CN/bos/queryapi/migrate-from-near-lake",
-                "docId": "bos/queryapi/migrate-from-near-lake",
+                "href": "/zh-CN/build/data-infrastructure/query-api/migrate-from-near-lake",
+                "docId": "build/data-infrastructure/query-api/migrate-from-near-lake",
                 "unlisted": false
               }
             ],
@@ -1049,22 +1044,22 @@
               {
                 "type": "link",
                 "label": "Lake Overview",
-                "href": "/zh-CN/tools/near-lake",
-                "docId": "tools/near-lake",
+                "href": "/zh-CN/build/data-infrastructure/lake-framework/near-lake",
+                "docId": "build/data-infrastructure/lake-framework/near-lake",
                 "unlisted": false
               },
               {
                 "type": "link",
-                "label": "Getting started",
-                "href": "/zh-CN/tutorials/indexer/near-lake-state-changes-indexer",
-                "docId": "tutorials/indexer/near-lake-state-changes-indexer",
+                "label": "NEAR Lake Indexer Tutorial",
+                "href": "/zh-CN/build/data-infrastructure/lake-framework/near-lake-state-changes-indexer",
+                "docId": "build/data-infrastructure/lake-framework/near-lake-state-changes-indexer",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "Migrating to NEAR Lake framework",
-                "href": "/zh-CN/tutorials/indexer/migrating-to-near-lake-framework",
-                "docId": "tutorials/indexer/migrating-to-near-lake-framework",
+                "href": "/zh-CN/build/data-infrastructure/lake-framework/migrating-to-near-lake-framework",
+                "docId": "build/data-infrastructure/lake-framework/migrating-to-near-lake-framework",
                 "unlisted": false
               },
               {
@@ -1074,8 +1069,8 @@
                   {
                     "type": "link",
                     "label": "Lake Primitive Types",
-                    "href": "/zh-CN/develop/lake/primitives",
-                    "docId": "develop/lake/primitives",
+                    "href": "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/primitives",
+                    "docId": "build/data-infrastructure/lake-framework/building-indexers/primitives",
                     "unlisted": false
                   },
                   {
@@ -1086,29 +1081,29 @@
                   {
                     "type": "link",
                     "label": "JS basic tutorial",
-                    "href": "/zh-CN/tutorials/indexer/js-lake-indexer",
-                    "docId": "tutorials/indexer/js-lake-indexer",
+                    "href": "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer",
+                    "docId": "build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer",
                     "unlisted": false
                   },
                   {
                     "type": "link",
                     "label": "Python tutorial",
-                    "href": "/zh-CN/tutorials/indexer/python-lake-indexer",
-                    "docId": "tutorials/indexer/python-lake-indexer",
+                    "href": "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer",
+                    "docId": "build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer",
                     "unlisted": false
                   },
                   {
                     "type": "link",
                     "label": "NFT Indexer",
-                    "href": "/zh-CN/tutorials/indexer/nft-indexer",
-                    "docId": "tutorials/indexer/nft-indexer",
+                    "href": "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/nft-indexer",
+                    "docId": "build/data-infrastructure/lake-framework/building-indexers/nft-indexer",
                     "unlisted": false
                   },
                   {
                     "type": "link",
                     "label": "NFT indexer for Python",
-                    "href": "/zh-CN/tutorials/indexer/python-nft-indexer",
-                    "docId": "tutorials/indexer/python-nft-indexer",
+                    "href": "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/python-nft-indexer",
+                    "docId": "build/data-infrastructure/lake-framework/building-indexers/python-nft-indexer",
                     "unlisted": false
                   }
                 ],
@@ -1122,22 +1117,22 @@
                   {
                     "type": "link",
                     "label": "Running Lake Indexer",
-                    "href": "/zh-CN/tutorials/indexer/run-lake-indexer",
-                    "docId": "tutorials/indexer/run-lake-indexer",
+                    "href": "/zh-CN/build/data-infrastructure/lake-framework/running-near-lake/run-lake-indexer",
+                    "docId": "build/data-infrastructure/lake-framework/running-near-lake/run-lake-indexer",
                     "unlisted": false
                   },
                   {
                     "type": "link",
                     "label": "Start options",
-                    "href": "/zh-CN/tutorials/indexer/lake-start-options",
-                    "docId": "tutorials/indexer/lake-start-options",
+                    "href": "/zh-CN/build/data-infrastructure/lake-framework/running-near-lake/lake-start-options",
+                    "docId": "build/data-infrastructure/lake-framework/running-near-lake/lake-start-options",
                     "unlisted": false
                   },
                   {
                     "type": "link",
                     "label": "Credentials",
-                    "href": "/zh-CN/tutorials/indexer/credentials",
-                    "docId": "tutorials/indexer/credentials",
+                    "href": "/zh-CN/build/data-infrastructure/lake-framework/running-near-lake/credentials",
+                    "docId": "build/data-infrastructure/lake-framework/running-near-lake/credentials",
                     "unlisted": false
                   }
                 ],
@@ -1151,57 +1146,57 @@
                   {
                     "type": "link",
                     "label": "Table of contents",
-                    "href": "/zh-CN/develop/lake/structures/toc",
-                    "docId": "develop/lake/structures/toc",
+                    "href": "/zh-CN/build/data-infrastructure/lake-data-structures/toc",
+                    "docId": "build/data-infrastructure/lake-data-structures/toc",
                     "unlisted": false
                   },
                   {
                     "type": "link",
                     "label": "Block",
-                    "href": "/zh-CN/develop/lake/structures/block",
-                    "docId": "develop/lake/structures/block",
+                    "href": "/zh-CN/build/data-infrastructure/lake-data-structures/block",
+                    "docId": "build/data-infrastructure/lake-data-structures/block",
                     "unlisted": false
                   },
                   {
                     "type": "link",
                     "label": "Chunk",
-                    "href": "/zh-CN/develop/lake/structures/chunk",
-                    "docId": "develop/lake/structures/chunk",
+                    "href": "/zh-CN/build/data-infrastructure/lake-data-structures/chunk",
+                    "docId": "build/data-infrastructure/lake-data-structures/chunk",
                     "unlisted": false
                   },
                   {
                     "type": "link",
                     "label": "Shard",
-                    "href": "/zh-CN/develop/lake/structures/shard",
-                    "docId": "develop/lake/structures/shard",
+                    "href": "/zh-CN/build/data-infrastructure/lake-data-structures/shard",
+                    "docId": "build/data-infrastructure/lake-data-structures/shard",
                     "unlisted": false
                   },
                   {
                     "type": "link",
                     "label": "Transaction",
-                    "href": "/zh-CN/develop/lake/structures/transaction",
-                    "docId": "develop/lake/structures/transaction",
+                    "href": "/zh-CN/build/data-infrastructure/lake-data-structures/transaction",
+                    "docId": "build/data-infrastructure/lake-data-structures/transaction",
                     "unlisted": false
                   },
                   {
                     "type": "link",
                     "label": "Receipt",
-                    "href": "/zh-CN/develop/lake/structures/receipt",
-                    "docId": "develop/lake/structures/receipt",
+                    "href": "/zh-CN/build/data-infrastructure/lake-data-structures/receipt",
+                    "docId": "build/data-infrastructure/lake-data-structures/receipt",
                     "unlisted": false
                   },
                   {
                     "type": "link",
                     "label": "ExecutionOutcome",
-                    "href": "/zh-CN/develop/lake/structures/execution-outcome",
-                    "docId": "develop/lake/structures/execution-outcome",
+                    "href": "/zh-CN/build/data-infrastructure/lake-data-structures/execution-outcome",
+                    "docId": "build/data-infrastructure/lake-data-structures/execution-outcome",
                     "unlisted": false
                   },
                   {
                     "type": "link",
                     "label": "StateChange",
-                    "href": "/zh-CN/develop/lake/structures/state-change",
-                    "docId": "develop/lake/structures/state-change",
+                    "href": "/zh-CN/build/data-infrastructure/lake-data-structures/state-change",
+                    "docId": "build/data-infrastructure/lake-data-structures/state-change",
                     "unlisted": false
                   }
                 ],
@@ -1327,64 +1322,64 @@
           {
             "type": "link",
             "label": "BOS Loader",
-            "href": "/zh-CN/bos/dev/bos-loader",
-            "docId": "bos/dev/bos-loader",
+            "href": "/zh-CN/tutorials/near-components/bos-loader",
+            "docId": "tutorials/near-components/bos-loader",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Smart Contract Interaction",
-            "href": "/zh-CN/bos/tutorial/interaction",
-            "docId": "bos/tutorial/interaction",
+            "href": "/zh-CN/tutorials/near-components/interaction",
+            "docId": "tutorials/near-components/interaction",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Design Components",
-            "href": "/zh-CN/bos/tutorial/ds-components",
-            "docId": "bos/tutorial/ds-components",
+            "href": "/zh-CN/tutorials/near-components/ds-components",
+            "docId": "tutorials/near-components/ds-components",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Using IFrames",
-            "href": "/zh-CN/bos/tutorial/using-iframes",
-            "docId": "bos/tutorial/using-iframes",
+            "href": "/zh-CN/tutorials/near-components/using-iframes",
+            "docId": "tutorials/near-components/using-iframes",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Push Notifications",
-            "href": "/zh-CN/bos/tutorial/push-notifications",
-            "docId": "bos/tutorial/push-notifications",
+            "href": "/zh-CN/tutorials/near-components/push-notifications",
+            "docId": "tutorials/near-components/push-notifications",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "WebSockets & QueryAPI",
-            "href": "/zh-CN/bos/tutorial/queryapi-websockets",
-            "docId": "bos/tutorial/queryapi-websockets",
+            "href": "/zh-CN/tutorials/near-components/queryapi-websockets",
+            "docId": "tutorials/near-components/queryapi-websockets",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "NEAR for Ethereum developers",
-            "href": "/zh-CN/bos/tutorial/ethers-js",
-            "docId": "bos/tutorial/ethers-js",
+            "href": "/zh-CN/tutorials/near-components/ethers-js",
+            "docId": "tutorials/near-components/ethers-js",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Best Practices for Ethereum developers on NEAR",
-            "href": "/zh-CN/bos/tutorial/ethers-js-best-practices",
-            "docId": "bos/tutorial/ethers-js-best-practices",
+            "href": "/zh-CN/tutorials/near-components/ethers-js-best-practices",
+            "docId": "tutorials/near-components/ethers-js-best-practices",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Lido Example",
-            "href": "/zh-CN/bos/tutorial/lido",
-            "docId": "bos/tutorial/lido",
+            "href": "/zh-CN/tutorials/near-components/lido",
+            "docId": "tutorials/near-components/lido",
             "unlisted": false
           }
         ],
@@ -1835,121 +1830,30 @@
           {
             "type": "link",
             "label": "Posts Indexer",
-            "href": "/zh-CN/bos/tutorial/indexer-tutorials/posts-indexer",
-            "docId": "bos/tutorial/indexer-tutorials/posts-indexer",
+            "href": "/zh-CN/tutorials/near-components/indexer-tutorials/posts-indexer",
+            "docId": "tutorials/near-components/indexer-tutorials/posts-indexer",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Hype Indexer",
-            "href": "/zh-CN/bos/tutorial/indexer-tutorials/hype-indexer",
-            "docId": "bos/tutorial/indexer-tutorials/hype-indexer",
+            "href": "/zh-CN/tutorials/near-components/indexer-tutorials/hype-indexer",
+            "docId": "tutorials/near-components/indexer-tutorials/hype-indexer",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "NFTs Indexer",
-            "href": "/zh-CN/bos/tutorial/indexer-tutorials/nft-indexer",
-            "docId": "bos/tutorial/indexer-tutorials/nft-indexer",
+            "href": "/zh-CN/tutorials/near-components/indexer-tutorials/nft-indexer",
+            "docId": "tutorials/near-components/indexer-tutorials/nft-indexer",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Social Feed Indexer",
-            "href": "/zh-CN/bos/tutorial/indexer-tutorials/feed-indexer",
-            "docId": "bos/tutorial/indexer-tutorials/feed-indexer",
+            "href": "/zh-CN/tutorials/near-components/indexer-tutorials/feed-indexer",
+            "docId": "tutorials/near-components/indexer-tutorials/feed-indexer",
             "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Getting started",
-            "href": "/zh-CN/tutorials/indexer/near-lake-state-changes-indexer",
-            "docId": "tutorials/indexer/near-lake-state-changes-indexer",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Migrating to NEAR Lake framework",
-            "href": "/zh-CN/tutorials/indexer/migrating-to-near-lake-framework",
-            "docId": "tutorials/indexer/migrating-to-near-lake-framework",
-            "unlisted": false
-          },
-          {
-            "type": "category",
-            "label": "Building Indexers",
-            "items": [
-              {
-                "type": "link",
-                "label": "Lake Primitive Types",
-                "href": "/zh-CN/develop/lake/primitives",
-                "docId": "develop/lake/primitives",
-                "unlisted": false
-              },
-              {
-                "type": "link",
-                "label": "NEAR Lake Primitives",
-                "href": "https://near.github.io/near-lake-framework-js/"
-              },
-              {
-                "type": "link",
-                "label": "JS basic tutorial",
-                "href": "/zh-CN/tutorials/indexer/js-lake-indexer",
-                "docId": "tutorials/indexer/js-lake-indexer",
-                "unlisted": false
-              },
-              {
-                "type": "link",
-                "label": "Python tutorial",
-                "href": "/zh-CN/tutorials/indexer/python-lake-indexer",
-                "docId": "tutorials/indexer/python-lake-indexer",
-                "unlisted": false
-              },
-              {
-                "type": "link",
-                "label": "NFT Indexer",
-                "href": "/zh-CN/tutorials/indexer/nft-indexer",
-                "docId": "tutorials/indexer/nft-indexer",
-                "unlisted": false
-              },
-              {
-                "type": "link",
-                "label": "NFT indexer for Python",
-                "href": "/zh-CN/tutorials/indexer/python-nft-indexer",
-                "docId": "tutorials/indexer/python-nft-indexer",
-                "unlisted": false
-              }
-            ],
-            "collapsed": true,
-            "collapsible": true
-          },
-          {
-            "type": "category",
-            "label": "Running NEAR Lake",
-            "items": [
-              {
-                "type": "link",
-                "label": "Running Lake Indexer",
-                "href": "/zh-CN/tutorials/indexer/run-lake-indexer",
-                "docId": "tutorials/indexer/run-lake-indexer",
-                "unlisted": false
-              },
-              {
-                "type": "link",
-                "label": "Start options",
-                "href": "/zh-CN/tutorials/indexer/lake-start-options",
-                "docId": "tutorials/indexer/lake-start-options",
-                "unlisted": false
-              },
-              {
-                "type": "link",
-                "label": "Credentials",
-                "href": "/zh-CN/tutorials/indexer/credentials",
-                "docId": "tutorials/indexer/credentials",
-                "unlisted": false
-              }
-            ],
-            "collapsed": true,
-            "collapsible": true
           }
         ],
         "collapsed": true,
@@ -2553,58 +2457,6 @@
         "unlisted": false
       }
     ],
-    "integrate": [
-      {
-        "type": "link",
-        "label": "Home",
-        "href": "/zh-CN/develop/integrate/welcome",
-        "docId": "develop/integrate/welcome",
-        "unlisted": false
-      },
-      {
-        "type": "html",
-        "value": "<hr/>"
-      },
-      {
-        "type": "html",
-        "value": "<span class='menu__link'><b><small> Composable Apps </small></b></span>"
-      },
-      {
-        "type": "html",
-        "value": "<hr/>"
-      },
-      {
-        "type": "html",
-        "value": "<span class='menu__link'><b><small> Related Tools </small></b></span>"
-      },
-      {
-        "type": "link",
-        "label": "Wallet Selector ↗",
-        "href": "/tools/wallet-selector"
-      },
-      {
-        "type": "link",
-        "label": "QueryAPI ↗",
-        "href": "/bos/queryapi/intro"
-      },
-      {
-        "type": "link",
-        "label": "BOS CLI",
-        "href": "https://github.com/FroVolod/bos-cli-rs"
-      },
-      {
-        "type": "link",
-        "label": "VS Code Extension",
-        "href": "/zh-CN/bos/dev/vscode",
-        "docId": "bos/dev/vscode",
-        "unlisted": false
-      },
-      {
-        "type": "link",
-        "label": "Seed Phrase Generator",
-        "href": "https://github.com/near/near-seed-phrase"
-      }
-    ],
     "api": [
       {
         "type": "link",
@@ -2783,43 +2635,43 @@
           {
             "type": "link",
             "label": "Exchange Integration",
-            "href": "/zh-CN/integrator/exchange-integration",
-            "docId": "integrator/exchange-integration",
+            "href": "/zh-CN/integrations/exchange-integration",
+            "docId": "integrations/exchange-integration",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Balance Changes",
-            "href": "/zh-CN/integrator/balance-changes",
-            "docId": "integrator/balance-changes",
+            "href": "/zh-CN/integrations/balance-changes",
+            "docId": "integrations/balance-changes",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Accounts",
-            "href": "/zh-CN/integrator/accounts",
-            "docId": "integrator/accounts",
+            "href": "/zh-CN/integrations/accounts",
+            "docId": "integrations/accounts",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Create a Transaction",
-            "href": "/zh-CN/integrator/create-transactions",
-            "docId": "integrator/create-transactions",
+            "href": "/zh-CN/integrations/create-transactions",
+            "docId": "integrations/create-transactions",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Fungible Tokens",
-            "href": "/zh-CN/integrator/fungible-tokens",
-            "docId": "integrator/fungible-tokens",
+            "href": "/zh-CN/integrations/fungible-tokens",
+            "docId": "integrations/fungible-tokens",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Implicit Accounts",
-            "href": "/zh-CN/integrator/implicit-accounts",
-            "docId": "integrator/implicit-accounts",
+            "href": "/zh-CN/integrations/implicit-accounts",
+            "docId": "integrations/implicit-accounts",
             "unlisted": false
           }
         ],
@@ -2833,22 +2685,22 @@
           {
             "type": "link",
             "label": "Introduction",
-            "href": "/zh-CN/integrator/errors/introduction",
-            "docId": "integrator/errors/introduction",
+            "href": "/zh-CN/integrations/errors/introduction",
+            "docId": "integrations/errors/introduction",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Source Code Survey",
-            "href": "/zh-CN/integrator/errors/error-implementation",
-            "docId": "integrator/errors/error-implementation",
+            "href": "/zh-CN/integrations/errors/error-implementation",
+            "docId": "integrations/errors/error-implementation",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Avoiding Token Loss",
-            "href": "/zh-CN/integrator/errors/token-loss",
-            "docId": "integrator/errors/token-loss",
+            "href": "/zh-CN/integrations/errors/token-loss",
+            "docId": "integrations/errors/token-loss",
             "unlisted": false
           }
         ],
@@ -2858,8 +2710,8 @@
       {
         "type": "link",
         "label": "Integrator FAQ",
-        "href": "/zh-CN/integrator/faq",
-        "docId": "integrator/faq",
+        "href": "/zh-CN/integrations/faq",
+        "docId": "integrations/faq",
         "unlisted": false
       }
     ]
@@ -2930,214 +2782,6 @@
       "description": "The RPC API enables you to send transactions and query their status.",
       "sidebar": "api"
     },
-    "bos/api/builtin-components": {
-      "id": "bos/api/builtin-components",
-      "title": "List of Native Components",
-      "description": "A list of all the built-in components to be used on Near Components.",
-      "sidebar": "build"
-    },
-    "bos/api/near": {
-      "id": "bos/api/near",
-      "title": "Interacting with Near",
-      "description": "The components can use the Near object to interact with smart contracts in the NEAR blockchain. There are three methods:",
-      "sidebar": "build"
-    },
-    "bos/api/notifications": {
-      "id": "bos/api/notifications",
-      "title": "Social Notifications",
-      "description": "Applications such as NEAR Social and the NEAR Dev Portal allow components to send notifications to their users.",
-      "sidebar": "build"
-    },
-    "bos/api/primitives": {
-      "id": "bos/api/primitives",
-      "title": "Primitives API",
-      "description": "Near Social VM provides a set of custom APIs that can be used by the components."
-    },
-    "bos/api/social": {
-      "id": "bos/api/social",
-      "title": "Social Interactions",
-      "description": "NEAR components can natively communicate with the SocialDB smart contract (currently deployed at social.near).",
-      "sidebar": "build"
-    },
-    "bos/api/state": {
-      "id": "bos/api/state",
-      "title": "Basics",
-      "description": "Borrowing from React, Near Components use hooks such as useState and useEffect to handle the state's logic, and props to receive parameters.",
-      "sidebar": "build"
-    },
-    "bos/api/web-methods": {
-      "id": "bos/api/web-methods",
-      "title": "Web Browser Methods",
-      "description": "NEAR Components have access to classic web methods that enable them to:",
-      "sidebar": "build"
-    },
-    "bos/community/indexers": {
-      "id": "bos/community/indexers",
-      "title": "QueryAPI Indexing Example",
-      "description": "With QueryAPI you can quickly create your own indexer by:",
-      "sidebar": "build"
-    },
-    "bos/dev/bos-loader": {
-      "id": "bos/dev/bos-loader",
-      "title": "BOS Loader",
-      "description": "In this article you'll learn how to develop, test, and deploy BOS components using CLI tools. You can use this workflow to tap into the colaboration, pull-request, and other GitHub benefits while still deploying components to the BOS.",
-      "sidebar": "tutorials"
-    },
-    "bos/dev/intro": {
-      "id": "bos/dev/intro",
-      "title": "Choose your Dev Environment",
-      "description": "The environments in which you can develop Components are divided into two categories:",
-      "sidebar": "build"
-    },
-    "bos/dev/vscode": {
-      "id": "bos/dev/vscode",
-      "title": "VS Code Extension",
-      "description": "A VS Code extension to help you develop components for NEAR BOS using Visual Studio Code.",
-      "sidebar": "integrate"
-    },
-    "bos/overview": {
-      "id": "bos/overview",
-      "title": "Overview",
-      "description": "NEAR simplifies building, deploying and accessing decentralized frontends. Embrace the power of community and Web 3."
-    },
-    "bos/queryapi/best-practices": {
-      "id": "bos/queryapi/best-practices",
-      "title": "Indexing best practices",
-      "description": "In this article you can find suggested best practices when building blockchain indexers using QueryAPI.",
-      "sidebar": "build"
-    },
-    "bos/queryapi/big-query": {
-      "id": "bos/queryapi/big-query",
-      "title": "BigQuery Public Dataset",
-      "description": "Blockchain data indexing in NEAR Public Lakehouse is for anyone wanting to understand blockchain data. This includes:",
-      "sidebar": "build"
-    },
-    "bos/queryapi/bos-components": {
-      "id": "bos/queryapi/bos-components",
-      "title": "Historical data",
-      "description": "Building components that handle historical blockchain data require dedicated solutions that manage the data and reduce the latency of requests, as it's not possible to scan the whole blockchain when a user makes a request.",
-      "sidebar": "build"
-    },
-    "bos/queryapi/context-object": {
-      "id": "bos/queryapi/context-object",
-      "title": "QueryAPI Context object",
-      "description": "Overview",
-      "sidebar": "build"
-    },
-    "bos/queryapi/how-it-works": {
-      "id": "bos/queryapi/how-it-works",
-      "title": "How QueryAPI works",
-      "description": "QueryApi is a streaming indexer implementation that executes custom indexing logic written by developers on the NEAR blockchain. QueryApi allows hosted execution of complex queries (ones that can’t be answered by a simple RPC or Enhanced API call), data hosting, and its exposure via GraphQL endpoints.",
-      "sidebar": "build"
-    },
-    "bos/queryapi/index-functions": {
-      "id": "bos/queryapi/index-functions",
-      "title": "Indexing Functions",
-      "description": "QueryAPI is a fully managed service that allows you to create and manage indexers on-chain seamlessly.",
-      "sidebar": "build"
-    },
-    "bos/queryapi/intro": {
-      "id": "bos/queryapi/intro",
-      "title": "QueryAPI Overview",
-      "description": "Near QueryAPI is a fully managed solution to build indexer functions, extract on-chain data, store it in a database, and be able to query it using GraphQL endpoints.",
-      "sidebar": "build"
-    },
-    "bos/queryapi/migrate-from-near-lake": {
-      "id": "bos/queryapi/migrate-from-near-lake",
-      "title": "Migrate from NEAR Lake framework",
-      "description": "NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers.",
-      "sidebar": "build"
-    },
-    "bos/queryapi/query-data": {
-      "id": "bos/queryapi/query-data",
-      "title": "Accessing and Querying Historical data",
-      "description": "In this article, you'll find a high-level overview about the two most common use-cases for blockchain indexing, and how they can be solved using NEAR QueryAPI and BigQuery.",
-      "sidebar": "build"
-    },
-    "bos/tutorial/bos-gateway": {
-      "id": "bos/tutorial/bos-gateway",
-      "title": "Using components on WebApps",
-      "description": "In order to use the components you create in a WebApp you need to use what is known as the NEAR VM. This virtual machine helps you to easily fetch components from the blockchain and transform them into executable code.",
-      "sidebar": "build"
-    },
-    "bos/tutorial/ds-components": {
-      "id": "bos/tutorial/ds-components",
-      "title": "Design Components",
-      "description": "When building components, the NEAR VM provides a complete set of Radix primitives to simplify UI development.",
-      "sidebar": "tutorials"
-    },
-    "bos/tutorial/ethers-js": {
-      "id": "bos/tutorial/ethers-js",
-      "title": "NEAR for Ethereum developers",
-      "description": "NEAR components are chain-agnostic, enabling you to create decentralized frontends tailored for any Ethereum dApps. Throughout this article, we'll navigate prevalent use-cases with code snippets. You’ll also find links to exemplary NEAR components for reference.",
-      "sidebar": "tutorials"
-    },
-    "bos/tutorial/ethers-js-best-practices": {
-      "id": "bos/tutorial/ethers-js-best-practices",
-      "title": "Best Practices for Ethereum developers on NEAR",
-      "description": "In this example, we will create an Ethereum dApp on NEAR that functions as a portfolio manager, displaying the current balances for a list of tokens. Additionally, we will display current market value of each asset in the portfolio.",
-      "sidebar": "tutorials"
-    },
-    "bos/tutorial/indexer-tutorials/feed-indexer": {
-      "id": "bos/tutorial/indexer-tutorials/feed-indexer",
-      "title": "Social Feed Indexer",
-      "description": "NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers.",
-      "sidebar": "tutorials"
-    },
-    "bos/tutorial/indexer-tutorials/hype-indexer": {
-      "id": "bos/tutorial/indexer-tutorials/hype-indexer",
-      "title": "Hype Indexer",
-      "description": "NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers.",
-      "sidebar": "tutorials"
-    },
-    "bos/tutorial/indexer-tutorials/nft-indexer": {
-      "id": "bos/tutorial/indexer-tutorials/nft-indexer",
-      "title": "Minted NFTs Indexer",
-      "description": "NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers.",
-      "sidebar": "tutorials"
-    },
-    "bos/tutorial/indexer-tutorials/posts-indexer": {
-      "id": "bos/tutorial/indexer-tutorials/posts-indexer",
-      "title": "Posts Indexer",
-      "description": "NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers.",
-      "sidebar": "tutorials"
-    },
-    "bos/tutorial/interaction": {
-      "id": "bos/tutorial/interaction",
-      "title": "Smart Contract Interaction",
-      "description": "Your frontend can interact with different blockchains using the built-in BOS API. Let's see how to create an application that reads and stores a greeting from a NEAR smart contract.",
-      "sidebar": "tutorials"
-    },
-    "bos/tutorial/lido": {
-      "id": "bos/tutorial/lido",
-      "title": "Lido Example",
-      "description": "If you are ready to explore further, the Lido component serves as an excellent fully-fledged example, as it demonstrates how to interact with a smart contract deployed on the Ethereum mainnet.",
-      "sidebar": "tutorials"
-    },
-    "bos/tutorial/push-notifications": {
-      "id": "bos/tutorial/push-notifications",
-      "title": "Push Notifications",
-      "description": "Push messages enable your gateway to send notifications on desktop and mobile devices even when the users are not active.",
-      "sidebar": "tutorials"
-    },
-    "bos/tutorial/queryapi-websockets": {
-      "id": "bos/tutorial/queryapi-websockets",
-      "title": "WebSocket-enabled Components with QueryAPI",
-      "description": "In this article you'll learn how to create a NEAR component that gathers information from a QueryAPI indexer using WebSockets. In this example, the QueryAPI indexer monitors the widget activity on the blockchain, and the NEAR component gets that information using WebSockets.",
-      "sidebar": "tutorials"
-    },
-    "bos/tutorial/quickstart": {
-      "id": "bos/tutorial/quickstart",
-      "title": "What are NEAR Components?",
-      "description": "NEAR Components are a new way to build web applications. They are composable, reusable and decentralized.",
-      "sidebar": "build"
-    },
-    "bos/tutorial/using-iframes": {
-      "id": "bos/tutorial/using-iframes",
-      "title": "Using IFrames",
-      "description": "In this tutorial you'll learn how to use the iframe VM tag and the Iframe resizer library, so you can embed external HTML or use custom DOM elements when building NEAR components. You can use it along the rest of approved VM tags to simplify your component development.",
-      "sidebar": "tutorials"
-    },
     "build/chain-abstraction/chain-signatures": {
       "id": "build/chain-abstraction/chain-signatures",
       "title": "Chain Signatures",
@@ -3192,52 +2836,947 @@
       "description": "The idea behind chain abstraction is quite simple: blockchain technology should be abstracted away from the user experience. In other words, people should not realize when they are using a blockchain, nor which blockchain they are using.",
       "sidebar": "build"
     },
-    "build/smart-contracts/anatomy-of-a-contract/actions": {
-      "id": "build/smart-contracts/anatomy-of-a-contract/actions",
+    "build/data-infrastructure/big-query": {
+      "id": "build/data-infrastructure/big-query",
+      "title": "BigQuery Public Dataset",
+      "description": "Blockchain data indexing in NEAR Public Lakehouse is for anyone wanting to understand blockchain data. This includes:",
+      "sidebar": "build"
+    },
+    "build/data-infrastructure/lake-data-structures/block": {
+      "id": "build/data-infrastructure/lake-data-structures/block",
+      "title": "Block Structure",
+      "description": "Definition",
+      "sidebar": "build"
+    },
+    "build/data-infrastructure/lake-data-structures/chunk": {
+      "id": "build/data-infrastructure/lake-data-structures/chunk",
+      "title": "Chunk Structure",
+      "description": "Definition",
+      "sidebar": "build"
+    },
+    "build/data-infrastructure/lake-data-structures/execution-outcome": {
+      "id": "build/data-infrastructure/lake-data-structures/execution-outcome",
+      "title": "ExecutionOutcome Structure",
+      "description": "Definition",
+      "sidebar": "build"
+    },
+    "build/data-infrastructure/lake-data-structures/receipt": {
+      "id": "build/data-infrastructure/lake-data-structures/receipt",
+      "title": "Receipt Structure",
+      "description": "Definition",
+      "sidebar": "build"
+    },
+    "build/data-infrastructure/lake-data-structures/shard": {
+      "id": "build/data-infrastructure/lake-data-structures/shard",
+      "title": "Shard structure",
+      "description": "Definition",
+      "sidebar": "build"
+    },
+    "build/data-infrastructure/lake-data-structures/state-change": {
+      "id": "build/data-infrastructure/lake-data-structures/state-change",
+      "title": "StateChange Structure",
+      "description": "Definition",
+      "sidebar": "build"
+    },
+    "build/data-infrastructure/lake-data-structures/toc": {
+      "id": "build/data-infrastructure/lake-data-structures/toc",
+      "title": "Structures. Table of Contents",
+      "description": "The structures described in this section of the docs are indexer-related more than nearcore related. Some of the are artificial and are not a part of nearcore",
+      "sidebar": "build"
+    },
+    "build/data-infrastructure/lake-data-structures/transaction": {
+      "id": "build/data-infrastructure/lake-data-structures/transaction",
+      "title": "Transaction Structure",
+      "description": "Definition",
+      "sidebar": "build"
+    },
+    "build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer": {
+      "id": "build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer",
+      "title": "JS basic tutorial",
+      "description": "near-examples/near-lake-raw-printer-js: source code for the tutorial on how to create an indexer that prints block height and number of shards",
+      "sidebar": "build"
+    },
+    "build/data-infrastructure/lake-framework/building-indexers/nft-indexer": {
+      "id": "build/data-infrastructure/lake-framework/building-indexers/nft-indexer",
+      "title": "Building an NFT indexer",
+      "description": "near-examples/near-lake-nft-indexer: source code for this tutorial",
+      "sidebar": "build"
+    },
+    "build/data-infrastructure/lake-framework/building-indexers/primitives": {
+      "id": "build/data-infrastructure/lake-framework/building-indexers/primitives",
+      "title": "NEAR Lake Primitive Types",
+      "description": "This article contains the primitive types used by the NEAR Lake Framework package. These types are used to define the data structures used by the framework as well as provide some popular helper functions.",
+      "sidebar": "build"
+    },
+    "build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer": {
+      "id": "build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer",
+      "title": "NEAR Lake indexer basic tutorial",
+      "description": "frolvanya/near-lake-raw-printer: source code for the tutorial on how to create an indexer that prints block height and number of shards",
+      "sidebar": "build"
+    },
+    "build/data-infrastructure/lake-framework/building-indexers/python-nft-indexer": {
+      "id": "build/data-infrastructure/lake-framework/building-indexers/python-nft-indexer",
+      "title": "Building an NFT indexer for Python",
+      "description": "frolvanya/near-lake-nft-indexer: source code for this tutorial",
+      "sidebar": "build"
+    },
+    "build/data-infrastructure/lake-framework/migrating-to-near-lake-framework": {
+      "id": "build/data-infrastructure/lake-framework/migrating-to-near-lake-framework",
+      "title": "Migrating to NEAR Lake Framework",
+      "description": "We encourage everyone who don't have a hard requirement to use NEAR Indexer Framework consider the migration to NEAR Lake Framework.",
+      "sidebar": "build"
+    },
+    "build/data-infrastructure/lake-framework/near-lake": {
+      "id": "build/data-infrastructure/lake-framework/near-lake",
+      "title": "NEAR Lake Indexer",
+      "description": "NEAR Lake is an indexer built on top of NEAR Indexer Framework to watch the network and store all the events as JSON files on AWS S3.",
+      "sidebar": "build"
+    },
+    "build/data-infrastructure/lake-framework/near-lake-state-changes-indexer": {
+      "id": "build/data-infrastructure/lake-framework/near-lake-state-changes-indexer",
+      "title": "NEAR Lake Indexer Tutorial",
+      "description": "near-examples/near-lake-accounts-watcher: source code for a video tutorial on how to use the NEAR Lake Framework",
+      "sidebar": "build"
+    },
+    "build/data-infrastructure/lake-framework/running-near-lake/credentials": {
+      "id": "build/data-infrastructure/lake-framework/running-near-lake/credentials",
+      "title": "Credentials",
+      "description": "Please, keep in mind, currently using the AWS Credentials is the only way to access the data provided by NEAR Lake ecosystem. But it is about to change with Pagoda DevConsole release. Stay tuned!",
+      "sidebar": "build"
+    },
+    "build/data-infrastructure/lake-framework/running-near-lake/lake-start-options": {
+      "id": "build/data-infrastructure/lake-framework/running-near-lake/lake-start-options",
+      "title": "Extending Lake indexer with start options",
+      "description": "The End",
+      "sidebar": "build"
+    },
+    "build/data-infrastructure/lake-framework/running-near-lake/run-lake-indexer": {
+      "id": "build/data-infrastructure/lake-framework/running-near-lake/run-lake-indexer",
+      "title": "Running NEAR Lake Indexer",
+      "description": "NEAR Lake is a blockchain indexer built on top of NEAR Indexer microframework",
+      "sidebar": "build"
+    },
+    "build/data-infrastructure/query-api/best-practices": {
+      "id": "build/data-infrastructure/query-api/best-practices",
+      "title": "Indexing best practices",
+      "description": "In this article you can find suggested best practices when building blockchain indexers using QueryAPI.",
+      "sidebar": "build"
+    },
+    "build/data-infrastructure/query-api/context-object": {
+      "id": "build/data-infrastructure/query-api/context-object",
+      "title": "QueryAPI Context object",
+      "description": "Overview",
+      "sidebar": "build"
+    },
+    "build/data-infrastructure/query-api/how-it-works": {
+      "id": "build/data-infrastructure/query-api/how-it-works",
+      "title": "How QueryAPI works",
+      "description": "QueryApi is a streaming indexer implementation that executes custom indexing logic written by developers on the NEAR blockchain.",
+      "sidebar": "build"
+    },
+    "build/data-infrastructure/query-api/index-functions": {
+      "id": "build/data-infrastructure/query-api/index-functions",
+      "title": "Indexing Functions",
+      "description": "QueryAPI is a fully managed service that allows you to create and manage indexers on-chain seamlessly.",
+      "sidebar": "build"
+    },
+    "build/data-infrastructure/query-api/indexers": {
+      "id": "build/data-infrastructure/query-api/indexers",
+      "title": "QueryAPI Indexing Example",
+      "description": "With QueryAPI you can quickly create your own indexer by:",
+      "sidebar": "build"
+    },
+    "build/data-infrastructure/query-api/intro": {
+      "id": "build/data-infrastructure/query-api/intro",
+      "title": "QueryAPI Overview",
+      "description": "Near QueryAPI is a fully managed solution to build indexer functions,",
+      "sidebar": "build"
+    },
+    "build/data-infrastructure/query-api/migrate-from-near-lake": {
+      "id": "build/data-infrastructure/query-api/migrate-from-near-lake",
+      "title": "Migrate from NEAR Lake framework",
+      "description": "NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers.",
+      "sidebar": "build"
+    },
+    "build/data-infrastructure/query-api/query-data": {
+      "id": "build/data-infrastructure/query-api/query-data",
+      "title": "Accessing and Querying Historical data",
+      "description": "In this article, you'll find a high-level overview about the two most common use-cases for blockchain indexing, and how they can be solved using NEAR QueryAPI and BigQuery.",
+      "sidebar": "build"
+    },
+    "build/data-infrastructure/what-is": {
+      "id": "build/data-infrastructure/what-is",
+      "title": "What is Data Infrastructure?",
+      "description": "NEAR offers ready-to-use solutions to access and monitor on-chain data easily. This is very useful to automate actions based on specific events, cache data to reduce latency, gather usage data of the blockchain, and even study user preferences.",
+      "sidebar": "build"
+    },
+    "build/near-components/anatomy/bos-components": {
+      "id": "build/near-components/anatomy/bos-components",
+      "title": "Historical data",
+      "description": "Building components that handle historical blockchain data require dedicated solutions that manage the data and reduce the latency of requests, as it's not possible to scan the whole blockchain when a user makes a request.",
+      "sidebar": "build"
+    },
+    "build/near-components/anatomy/builtin-components": {
+      "id": "build/near-components/anatomy/builtin-components",
+      "title": "List of Native Components",
+      "description": "A list of all the built-in components to be used on Near Components.",
+      "sidebar": "build"
+    },
+    "build/near-components/anatomy/near": {
+      "id": "build/near-components/anatomy/near",
+      "title": "Interacting with Near",
+      "description": "The components can use the Near object to interact with smart contracts in the NEAR blockchain. There are three methods:",
+      "sidebar": "build"
+    },
+    "build/near-components/anatomy/notifications": {
+      "id": "build/near-components/anatomy/notifications",
+      "title": "Social Notifications",
+      "description": "Applications such as NEAR Social and the NEAR Dev Portal allow components to send notifications to their users.",
+      "sidebar": "build"
+    },
+    "build/near-components/anatomy/social": {
+      "id": "build/near-components/anatomy/social",
+      "title": "Social Interactions",
+      "description": "NEAR components can natively communicate with the SocialDB smart contract (currently deployed at social.near).",
+      "sidebar": "build"
+    },
+    "build/near-components/anatomy/state": {
+      "id": "build/near-components/anatomy/state",
+      "title": "Basics",
+      "description": "Borrowing from React, Near Components use hooks such as useState and useEffect to handle the state's logic, and props to receive parameters.",
+      "sidebar": "build"
+    },
+    "build/near-components/anatomy/web-methods": {
+      "id": "build/near-components/anatomy/web-methods",
+      "title": "Web Browser Methods",
+      "description": "NEAR Components have access to classic web methods that enable them to:",
+      "sidebar": "build"
+    },
+    "build/near-components/bos-gateway": {
+      "id": "build/near-components/bos-gateway",
+      "title": "Using components on WebApps",
+      "description": "In order to use the components you create in a WebApp you need to use what is known as the NEAR VM. This virtual machine helps you to easily fetch components from the blockchain and transform them into executable code.",
+      "sidebar": "build"
+    },
+    "build/near-components/dev-environment": {
+      "id": "build/near-components/dev-environment",
+      "title": "Choose your Dev Environment",
+      "description": "The environments in which you can develop Components are divided into two categories:",
+      "sidebar": "build"
+    },
+    "build/near-components/what-is": {
+      "id": "build/near-components/what-is",
+      "title": "What are NEAR Components?",
+      "description": "NEAR Components are a new way to build web applications. They are composable, reusable and decentralized.",
+      "sidebar": "build"
+    },
+    "build/primitives/dao": {
+      "id": "build/primitives/dao",
+      "title": "Decentralized Autonomous Organizations",
+      "description": "Decentralized Autonomous Organizations (DAOs) are self-organized groups that form around common purposes. Membership, decision making, and funding are coordinated by publicly voting on proposals through a smart contract.",
+      "sidebar": "build"
+    },
+    "build/primitives/dao/bos/create-dao": {
+      "id": "build/primitives/dao/bos/create-dao",
+      "title": "create-dao",
+      "description": "The full list of roles and permissions you can find here."
+    },
+    "build/primitives/dao/bos/create-proposal": {
+      "id": "build/primitives/dao/bos/create-proposal",
+      "title": "create-proposal",
+      "description": ""
+    },
+    "build/primitives/dao/bos/get-dao-list": {
+      "id": "build/primitives/dao/bos/get-dao-list",
+      "title": "get-dao-list",
+      "description": "Example response"
+    },
+    "build/primitives/dao/bos/get-proposal-list": {
+      "id": "build/primitives/dao/bos/get-proposal-list",
+      "title": "get-proposal-list",
+      "description": "Example response"
+    },
+    "build/primitives/dao/bos/vote-for-proposal": {
+      "id": "build/primitives/dao/bos/vote-for-proposal",
+      "title": "vote-for-proposal",
+      "description": "Available vote options: VoteApprove, VoteReject, VoteRemove."
+    },
+    "build/primitives/dao/near-cli/create-dao": {
+      "id": "build/primitives/dao/near-cli/create-dao",
+      "title": "create-dao",
+      "description": "The full list of roles and permissions you can find here."
+    },
+    "build/primitives/dao/near-cli/create-proposal": {
+      "id": "build/primitives/dao/near-cli/create-proposal",
+      "title": "create-proposal",
+      "description": ""
+    },
+    "build/primitives/dao/near-cli/get-dao-list": {
+      "id": "build/primitives/dao/near-cli/get-dao-list",
+      "title": "get-dao-list",
+      "description": "Example response"
+    },
+    "build/primitives/dao/near-cli/get-proposal-list": {
+      "id": "build/primitives/dao/near-cli/get-proposal-list",
+      "title": "get-proposal-list",
+      "description": "Example response"
+    },
+    "build/primitives/dao/near-cli/vote-for-proposal": {
+      "id": "build/primitives/dao/near-cli/vote-for-proposal",
+      "title": "vote-for-proposal",
+      "description": "Available vote options: VoteApprove, VoteReject, VoteRemove."
+    },
+    "build/primitives/dao/smart-contract/create-dao": {
+      "id": "build/primitives/dao/smart-contract/create-dao",
+      "title": "create-dao",
+      "description": ""
+    },
+    "build/primitives/dao/smart-contract/create-proposal": {
+      "id": "build/primitives/dao/smart-contract/create-proposal",
+      "title": "create-proposal",
+      "description": ""
+    },
+    "build/primitives/dao/smart-contract/vote-for-proposal": {
+      "id": "build/primitives/dao/smart-contract/vote-for-proposal",
+      "title": "vote-for-proposal",
+      "description": ""
+    },
+    "build/primitives/dao/web-app/create-dao": {
+      "id": "build/primitives/dao/web-app/create-dao",
+      "title": "create-dao",
+      "description": "The full list of roles and permissions you can find here."
+    },
+    "build/primitives/dao/web-app/create-proposal": {
+      "id": "build/primitives/dao/web-app/create-proposal",
+      "title": "create-proposal",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "build/primitives/dao/web-app/get-dao-list": {
+      "id": "build/primitives/dao/web-app/get-dao-list",
+      "title": "get-dao-list",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "build/primitives/dao/web-app/get-proposal-list": {
+      "id": "build/primitives/dao/web-app/get-proposal-list",
+      "title": "get-proposal-list",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "build/primitives/dao/web-app/vote-for-proposal": {
+      "id": "build/primitives/dao/web-app/vote-for-proposal",
+      "title": "vote-for-proposal",
+      "description": "Available vote options: VoteApprove, VoteReject, VoteRemove."
+    },
+    "build/primitives/dex": {
+      "id": "build/primitives/dex",
+      "title": "Decentralized Exchanges (DEX)",
+      "description": "A Decentralized Exchange (DEX) is an application that allows users to trade tokens (native & fungible tokens) through smart contracts.",
+      "sidebar": "build"
+    },
+    "build/primitives/dex/bos/get-deposit-balances": {
+      "id": "build/primitives/dex/bos/get-deposit-balances",
+      "title": "get-deposit-balances",
+      "description": "Example response"
+    },
+    "build/primitives/dex/bos/get-pools": {
+      "id": "build/primitives/dex/bos/get-pools",
+      "title": "get-pools",
+      "description": "Example response"
+    },
+    "build/primitives/dex/bos/get-price": {
+      "id": "build/primitives/dex/bos/get-price",
+      "title": "get-price",
+      "description": "Example response"
+    },
+    "build/primitives/dex/bos/swap": {
+      "id": "build/primitives/dex/bos/swap",
+      "title": "swap",
+      "description": "Example response"
+    },
+    "build/primitives/dex/near-cli/get-deposit-balances": {
+      "id": "build/primitives/dex/near-cli/get-deposit-balances",
+      "title": "get-deposit-balances",
+      "description": "Example response"
+    },
+    "build/primitives/dex/near-cli/get-pools": {
+      "id": "build/primitives/dex/near-cli/get-pools",
+      "title": "get-pools",
+      "description": "Example response"
+    },
+    "build/primitives/dex/near-cli/swap": {
+      "id": "build/primitives/dex/near-cli/swap",
+      "title": "swap",
+      "description": "Example response"
+    },
+    "build/primitives/dex/smart-contract/get-deposit-balances": {
+      "id": "build/primitives/dex/smart-contract/get-deposit-balances",
+      "title": "get-deposit-balances",
+      "description": ""
+    },
+    "build/primitives/dex/smart-contract/get-pools": {
+      "id": "build/primitives/dex/smart-contract/get-pools",
+      "title": "get-pools",
+      "description": ""
+    },
+    "build/primitives/dex/smart-contract/swap": {
+      "id": "build/primitives/dex/smart-contract/swap",
+      "title": "swap",
+      "description": ""
+    },
+    "build/primitives/dex/web-app/get-deposit-balances": {
+      "id": "build/primitives/dex/web-app/get-deposit-balances",
+      "title": "get-deposit-balances",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "build/primitives/dex/web-app/get-pools": {
+      "id": "build/primitives/dex/web-app/get-pools",
+      "title": "get-pools",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "build/primitives/dex/web-app/get-price": {
+      "id": "build/primitives/dex/web-app/get-price",
+      "title": "get-price",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "build/primitives/dex/web-app/swap": {
+      "id": "build/primitives/dex/web-app/swap",
+      "title": "swap",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "build/primitives/ft": {
+      "id": "build/primitives/ft",
+      "title": "Fungible Tokens (FT)",
+      "description": "Besides the native NEAR token, NEAR accounts have access to a multitude of tokens to use thoughtout the ecosystem. Moreover, it is even possible for users to create their own fungible tokens.",
+      "sidebar": "build"
+    },
+    "build/primitives/ft/bos/attach-to-call": {
+      "id": "build/primitives/ft/bos/attach-to-call",
+      "title": "attach-to-call",
+      "description": "Example response"
+    },
+    "build/primitives/ft/bos/check-balance": {
+      "id": "build/primitives/ft/bos/check-balance",
+      "title": "check-balance",
+      "description": "Remember about fungible token precision. You may need this value to show a response of balance requests in an understandable-to-user way in your app. How to get precision value (decimals) you may find above."
+    },
+    "build/primitives/ft/bos/create": {
+      "id": "build/primitives/ft/bos/create",
+      "title": "create",
+      "description": ""
+    },
+    "build/primitives/ft/bos/get-metadata": {
+      "id": "build/primitives/ft/bos/get-metadata",
+      "title": "get-metadata",
+      "description": "Example response"
+    },
+    "build/primitives/ft/bos/register": {
+      "id": "build/primitives/ft/bos/register",
+      "title": "register",
+      "description": ""
+    },
+    "build/primitives/ft/bos/send": {
+      "id": "build/primitives/ft/bos/send",
+      "title": "send",
+      "description": ""
+    },
+    "build/primitives/ft/near-cli/attach-to-call": {
+      "id": "build/primitives/ft/near-cli/attach-to-call",
+      "title": "attach-to-call",
+      "description": "Example response"
+    },
+    "build/primitives/ft/near-cli/check-balance": {
+      "id": "build/primitives/ft/near-cli/check-balance",
+      "title": "check-balance",
+      "description": "Example response"
+    },
+    "build/primitives/ft/near-cli/create": {
+      "id": "build/primitives/ft/near-cli/create",
+      "title": "create",
+      "description": ""
+    },
+    "build/primitives/ft/near-cli/get-metadata": {
+      "id": "build/primitives/ft/near-cli/get-metadata",
+      "title": "get-metadata",
+      "description": "Example response"
+    },
+    "build/primitives/ft/near-cli/register": {
+      "id": "build/primitives/ft/near-cli/register",
+      "title": "register",
+      "description": ""
+    },
+    "build/primitives/ft/near-cli/send": {
+      "id": "build/primitives/ft/near-cli/send",
+      "title": "send",
+      "description": ""
+    },
+    "build/primitives/ft/smart-contract/attach-to-call": {
+      "id": "build/primitives/ft/smart-contract/attach-to-call",
+      "title": "attach-to-call",
+      "description": ""
+    },
+    "build/primitives/ft/smart-contract/send": {
+      "id": "build/primitives/ft/smart-contract/send",
+      "title": "send",
+      "description": "This snippet assumes that the contract is already holding some FTs and that you want to send them to another account."
+    },
+    "build/primitives/ft/web-app/attach-to-call": {
+      "id": "build/primitives/ft/web-app/attach-to-call",
+      "title": "attach-to-call",
+      "description": "Example response"
+    },
+    "build/primitives/ft/web-app/check-balance": {
+      "id": "build/primitives/ft/web-app/check-balance",
+      "title": "check-balance",
+      "description": "Remember about fungible token precision. You may need this value to show a response of balance requests in an understandable-to-user way in your app. How to get precision value (decimals) you may find above."
+    },
+    "build/primitives/ft/web-app/create": {
+      "id": "build/primitives/ft/web-app/create",
+      "title": "create",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "build/primitives/ft/web-app/get-metadata": {
+      "id": "build/primitives/ft/web-app/get-metadata",
+      "title": "get-metadata",
+      "description": "Example response"
+    },
+    "build/primitives/ft/web-app/register": {
+      "id": "build/primitives/ft/web-app/register",
+      "title": "register",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "build/primitives/ft/web-app/send": {
+      "id": "build/primitives/ft/web-app/send",
+      "title": "send",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "build/primitives/linkdrop": {
+      "id": "build/primitives/linkdrop",
+      "title": "Linkdrops",
+      "description": "Linkdrops allow users to distribute assets and onboard people to Web3 apps through a simple web link.",
+      "sidebar": "build"
+    },
+    "build/primitives/linkdrop/bos/create-ft-drop": {
+      "id": "build/primitives/linkdrop/bos/create-ft-drop",
+      "title": "create-ft-drop",
+      "description": ""
+    },
+    "build/primitives/linkdrop/bos/create-function-call-drop": {
+      "id": "build/primitives/linkdrop/bos/create-function-call-drop",
+      "title": "create-function-call-drop",
+      "description": ""
+    },
+    "build/primitives/linkdrop/bos/create-nft-drop": {
+      "id": "build/primitives/linkdrop/bos/create-nft-drop",
+      "title": "create-nft-drop",
+      "description": ""
+    },
+    "build/primitives/linkdrop/bos/get-drop-id": {
+      "id": "build/primitives/linkdrop/bos/get-drop-id",
+      "title": "get-drop-id",
+      "description": ""
+    },
+    "build/primitives/linkdrop/bos/get-key-pairs": {
+      "id": "build/primitives/linkdrop/bos/get-key-pairs",
+      "title": "get-key-pairs",
+      "description": ""
+    },
+    "build/primitives/linkdrop/bos/simple-drop": {
+      "id": "build/primitives/linkdrop/bos/simple-drop",
+      "title": "simple-drop",
+      "description": ""
+    },
+    "build/primitives/linkdrop/bos/transfer-ft": {
+      "id": "build/primitives/linkdrop/bos/transfer-ft",
+      "title": "transfer-ft",
+      "description": ""
+    },
+    "build/primitives/linkdrop/bos/transfer-nft": {
+      "id": "build/primitives/linkdrop/bos/transfer-nft",
+      "title": "transfer-nft",
+      "description": ""
+    },
+    "build/primitives/linkdrop/near-cli/create-ft-drop": {
+      "id": "build/primitives/linkdrop/near-cli/create-ft-drop",
+      "title": "create-ft-drop",
+      "description": ""
+    },
+    "build/primitives/linkdrop/near-cli/create-function-call-drop": {
+      "id": "build/primitives/linkdrop/near-cli/create-function-call-drop",
+      "title": "create-function-call-drop",
+      "description": ""
+    },
+    "build/primitives/linkdrop/near-cli/create-nft-drop": {
+      "id": "build/primitives/linkdrop/near-cli/create-nft-drop",
+      "title": "create-nft-drop",
+      "description": ""
+    },
+    "build/primitives/linkdrop/near-cli/get-drop-id": {
+      "id": "build/primitives/linkdrop/near-cli/get-drop-id",
+      "title": "get-drop-id",
+      "description": ""
+    },
+    "build/primitives/linkdrop/near-cli/get-key-pairs": {
+      "id": "build/primitives/linkdrop/near-cli/get-key-pairs",
+      "title": "get-key-pairs",
+      "description": "Example response:"
+    },
+    "build/primitives/linkdrop/near-cli/simple-drop": {
+      "id": "build/primitives/linkdrop/near-cli/simple-drop",
+      "title": "simple-drop",
+      "description": ""
+    },
+    "build/primitives/linkdrop/near-cli/transfer-ft": {
+      "id": "build/primitives/linkdrop/near-cli/transfer-ft",
+      "title": "transfer-ft",
+      "description": ""
+    },
+    "build/primitives/linkdrop/near-cli/transfer-nft": {
+      "id": "build/primitives/linkdrop/near-cli/transfer-nft",
+      "title": "transfer-nft",
+      "description": ""
+    },
+    "build/primitives/linkdrop/web-app/create-ft-drop": {
+      "id": "build/primitives/linkdrop/web-app/create-ft-drop",
+      "title": "create-ft-drop",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "build/primitives/linkdrop/web-app/create-function-call-drop": {
+      "id": "build/primitives/linkdrop/web-app/create-function-call-drop",
+      "title": "create-function-call-drop",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "build/primitives/linkdrop/web-app/create-nft-drop": {
+      "id": "build/primitives/linkdrop/web-app/create-nft-drop",
+      "title": "create-nft-drop",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "build/primitives/linkdrop/web-app/get-drop-id": {
+      "id": "build/primitives/linkdrop/web-app/get-drop-id",
+      "title": "get-drop-id",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "build/primitives/linkdrop/web-app/get-key-pairs": {
+      "id": "build/primitives/linkdrop/web-app/get-key-pairs",
+      "title": "get-key-pairs",
+      "description": ""
+    },
+    "build/primitives/linkdrop/web-app/simple-drop": {
+      "id": "build/primitives/linkdrop/web-app/simple-drop",
+      "title": "simple-drop",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "build/primitives/linkdrop/web-app/transfer-ft": {
+      "id": "build/primitives/linkdrop/web-app/transfer-ft",
+      "title": "transfer-ft",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "build/primitives/linkdrop/web-app/transfer-nft": {
+      "id": "build/primitives/linkdrop/web-app/transfer-nft",
+      "title": "transfer-nft",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "build/primitives/nft": {
+      "id": "build/primitives/nft",
+      "title": "Non-Fungible Tokens (NFT)",
+      "description": "In contrast with fungible tokens, non-fungible tokens (NFT) are unitary and therefore unique. This makes NFTs ideal to represent ownership of assets such as a piece of digital content, or a ticket for an event.",
+      "sidebar": "build"
+    },
+    "build/primitives/nft/bos/buy": {
+      "id": "build/primitives/nft/bos/buy",
+      "title": "buy",
+      "description": "Example response:"
+    },
+    "build/primitives/nft/bos/list-for-sale": {
+      "id": "build/primitives/nft/bos/list-for-sale",
+      "title": "list-for-sale",
+      "description": "The method nftapprove will call nfton_approve in marketplace.paras.near."
+    },
+    "build/primitives/nft/bos/mint": {
+      "id": "build/primitives/nft/bos/mint",
+      "title": "mint",
+      "description": "In order to use nft_mint method of the x.paras.near contract you have to be a creator of a particular token series."
+    },
+    "build/primitives/nft/bos/query": {
+      "id": "build/primitives/nft/bos/query",
+      "title": "query",
+      "description": "Example response"
+    },
+    "build/primitives/nft/bos/transfer": {
+      "id": "build/primitives/nft/bos/transfer",
+      "title": "transfer",
+      "description": ""
+    },
+    "build/primitives/nft/near-cli/buy": {
+      "id": "build/primitives/nft/near-cli/buy",
+      "title": "buy",
+      "description": "Example response:"
+    },
+    "build/primitives/nft/near-cli/list-for-sale": {
+      "id": "build/primitives/nft/near-cli/list-for-sale",
+      "title": "list-for-sale",
+      "description": "Method nftapprove of a NFT contract also calls the nfton_approve method in marketplace.paras.near as a callback."
+    },
+    "build/primitives/nft/near-cli/mint": {
+      "id": "build/primitives/nft/near-cli/mint",
+      "title": "mint",
+      "description": "In order to use nft_mint method of the x.paras.near contract you have to be a creator of a particular token series."
+    },
+    "build/primitives/nft/near-cli/query": {
+      "id": "build/primitives/nft/near-cli/query",
+      "title": "query",
+      "description": "Example response"
+    },
+    "build/primitives/nft/near-cli/transfer": {
+      "id": "build/primitives/nft/near-cli/transfer",
+      "title": "transfer",
+      "description": ""
+    },
+    "build/primitives/nft/smart-contract/buy": {
+      "id": "build/primitives/nft/smart-contract/buy",
+      "title": "buy",
+      "description": "This is an example on how you can make your smart contract buy a NFT on some marketplace (Paras this case)."
+    },
+    "build/primitives/nft/smart-contract/mint": {
+      "id": "build/primitives/nft/smart-contract/mint",
+      "title": "mint",
+      "description": ""
+    },
+    "build/primitives/nft/smart-contract/query": {
+      "id": "build/primitives/nft/smart-contract/query",
+      "title": "query",
+      "description": ""
+    },
+    "build/primitives/nft/smart-contract/transfer": {
+      "id": "build/primitives/nft/smart-contract/transfer",
+      "title": "transfer",
+      "description": "Please notice that a contract can only transfer an NFT that they own, or an NFT that they were approved to transfer."
+    },
+    "build/primitives/nft/web-app/buy": {
+      "id": "build/primitives/nft/web-app/buy",
+      "title": "buy",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "build/primitives/nft/web-app/list-for-sale": {
+      "id": "build/primitives/nft/web-app/list-for-sale",
+      "title": "list-for-sale",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "build/primitives/nft/web-app/mint": {
+      "id": "build/primitives/nft/web-app/mint",
+      "title": "mint",
+      "description": "In order to use nft_mint method of the x.paras.near contract you have to be a creator of a particular token series."
+    },
+    "build/primitives/nft/web-app/query": {
+      "id": "build/primitives/nft/web-app/query",
+      "title": "query",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "build/primitives/nft/web-app/transfer": {
+      "id": "build/primitives/nft/web-app/transfer",
+      "title": "transfer",
+      "description": "The Wallet object comes from our quickstart template"
+    },
+    "build/primitives/oracles": {
+      "id": "build/primitives/oracles",
+      "title": "Price Oracles",
+      "description": "Oracles are smart contracts that enable you to query the current price of an asset.",
+      "sidebar": "build"
+    },
+    "build/primitives/what-is": {
+      "id": "build/primitives/what-is",
+      "title": "What are Primitives?",
+      "description": "Primitives are fundamental building blocks that can be combined to create a fully functional application. Blockchain primitives include Fungible Tokens (FT), Non Fungible Tokens (NFT), Decentralized Autonomous organizations (DAO), Link Drops and more.",
+      "sidebar": "build"
+    },
+    "build/smart-contracts/anatomy/actions": {
+      "id": "build/smart-contracts/anatomy/actions",
       "title": "Transfers & Actions",
       "description": "Smart contracts can perform specific Actions such as transferring NEAR, or calling other contracts.",
       "sidebar": "build"
     },
-    "build/smart-contracts/anatomy-of-a-contract/anatomy": {
-      "id": "build/smart-contracts/anatomy-of-a-contract/anatomy",
+    "build/smart-contracts/anatomy/anatomy": {
+      "id": "build/smart-contracts/anatomy/anatomy",
       "title": "The Contract Class",
       "description": "Your contract's logic and state (storage) is defined by the main class, in which:",
       "sidebar": "build"
     },
-    "build/smart-contracts/anatomy-of-a-contract/basics": {
-      "id": "build/smart-contracts/anatomy-of-a-contract/basics",
+    "build/smart-contracts/anatomy/basics": {
+      "id": "build/smart-contracts/anatomy/basics",
       "title": "Modules, Types & Structs",
       "description": "When writing smart contracts you will leverage common programming concepts such:",
       "sidebar": "build"
     },
-    "build/smart-contracts/anatomy-of-a-contract/crosscontract": {
-      "id": "build/smart-contracts/anatomy-of-a-contract/crosscontract",
+    "build/smart-contracts/anatomy/crosscontract": {
+      "id": "build/smart-contracts/anatomy/crosscontract",
       "title": "Cross-Contract Calls",
       "description": "Cross-contract calls allow your contract to interact with other deployed contracts. This is useful for:",
       "sidebar": "build"
     },
-    "build/smart-contracts/anatomy-of-a-contract/environment": {
-      "id": "build/smart-contracts/anatomy-of-a-contract/environment",
+    "build/smart-contracts/anatomy/environment": {
+      "id": "build/smart-contracts/anatomy/environment",
       "title": "Environment",
       "description": "Every method execution has an environment associated with information such as:",
       "sidebar": "build"
     },
-    "build/smart-contracts/anatomy-of-a-contract/serialization": {
-      "id": "build/smart-contracts/anatomy-of-a-contract/serialization",
+    "build/smart-contracts/anatomy/serialization": {
+      "id": "build/smart-contracts/anatomy/serialization",
       "title": "Notes on Serialization",
       "description": "Smart contracts need to be able to communicate complex data in a simple way, while",
       "sidebar": "build"
     },
-    "build/smart-contracts/anatomy-of-a-contract/storage": {
-      "id": "build/smart-contracts/anatomy-of-a-contract/storage",
+    "build/smart-contracts/anatomy/storage": {
+      "id": "build/smart-contracts/anatomy/storage",
       "title": "State & Data Structures",
       "description": "Each contract has its own state (storage), which only they can modify but anyone can see.",
+      "sidebar": "build"
+    },
+    "build/smart-contracts/quickstart": {
+      "id": "build/smart-contracts/quickstart",
+      "title": "Hello Contract",
+      "description": "NEAR accounts can host programs known as smart contracts. Smart contracts can store data, and expose methods so other users and contracts interact with them.",
+      "sidebar": "build"
+    },
+    "build/smart-contracts/release/deploy": {
+      "id": "build/smart-contracts/release/deploy",
+      "title": "NEAR CLI - Basics",
+      "description": "After your contract is ready you can deploy it in the NEAR network for everyone to use it.",
+      "sidebar": "build"
+    },
+    "build/smart-contracts/release/lock": {
+      "id": "build/smart-contracts/release/lock",
+      "title": "Locking Accounts",
+      "description": "Removing all full access keys from an account will effectively lock it.",
+      "sidebar": "build"
+    },
+    "build/smart-contracts/release/upgrade": {
+      "id": "build/smart-contracts/release/upgrade",
+      "title": "Updating Contracts",
+      "description": "NEAR accounts separate their logic (contract's code) from their state (storage), allowing the code to be changed.",
+      "sidebar": "build"
+    },
+    "build/smart-contracts/security/bounty": {
+      "id": "build/smart-contracts/security/bounty",
+      "title": "Bug Bounty Program",
+      "description": "NEAR has a revamped bug bounty program!",
+      "sidebar": "build"
+    },
+    "build/smart-contracts/security/callbacks": {
+      "id": "build/smart-contracts/security/callbacks",
+      "title": "Cross-Contract Calls",
+      "description": "While writing cross-contract calls there is a significant aspect to keep in mind",
       "sidebar": "build"
     },
     "build/smart-contracts/security/checklist": {
       "id": "build/smart-contracts/security/checklist",
       "title": "✅ Checklist",
       "description": "Once you finished developing your smart contract please go through the following list in order to ensure everything is safe for the end user.",
+      "sidebar": "build"
+    },
+    "build/smart-contracts/security/frontrunning": {
+      "id": "build/smart-contracts/security/frontrunning",
+      "title": "Front Running",
+      "description": "In the NEAR network, validators have access to the transaction pool, and can therefore see them before they execute. This enables validators to analyze transactions for a potential profit and frontrun them with a transaction of their own.",
+      "sidebar": "build"
+    },
+    "build/smart-contracts/security/one-yocto": {
+      "id": "build/smart-contracts/security/one-yocto",
+      "title": "Ensure it is the User (1yⓃ)",
+      "description": "NEAR uses a system of Access Keys to simplify handling accounts.",
+      "sidebar": "build"
+    },
+    "build/smart-contracts/security/random": {
+      "id": "build/smart-contracts/security/random",
+      "title": "Random Numbers",
+      "description": "When writing smart contracts in NEAR you have access to a random seed that enables you to create random numbers/strings",
+      "sidebar": "build"
+    },
+    "build/smart-contracts/security/reentrancy": {
+      "id": "build/smart-contracts/security/reentrancy",
+      "title": "Reentrancy Attacks",
+      "description": "Between a cross-contract call and its callback any method of your contract can be executed. Not taking this into account is one of the main sources of exploits. It is so common that it has its own name: reentrancy attacks.",
+      "sidebar": "build"
+    },
+    "build/smart-contracts/security/storage": {
+      "id": "build/smart-contracts/security/storage",
+      "title": "Million Small Deposits",
+      "description": "On NEAR, your contract pays for the storage it uses. This means that the more data you store, the more balance you need to cover for storage. If you don't handle these costs correctly (e.g. asking the user to cover their storage usage), then a million little deposits can drain your contract of its funds.",
+      "sidebar": "build"
+    },
+    "build/smart-contracts/security/sybil": {
+      "id": "build/smart-contracts/security/sybil",
+      "title": "Sybil Attacks",
+      "description": "While developing your smart contract, keep in mind that an individual can potentially create multiple NEAR accounts. This is especially relevant in ecosystems involving crowd decisions, such as DAOs.",
+      "sidebar": "build"
+    },
+    "build/smart-contracts/security/welcome": {
+      "id": "build/smart-contracts/security/welcome",
+      "title": "Security",
+      "description": "Here you will find information on how to keep your smart contract and decentralized applications secure.",
+      "sidebar": "build"
+    },
+    "build/smart-contracts/testing/integration-test": {
+      "id": "build/smart-contracts/testing/integration-test",
+      "title": "Integration Tests",
+      "description": "Integration tests enable to deploy your contract in the NEAR testnet or a local sandbox, and create test-users to interact with it. In this way, you can thoroughly test your contract in a realistic environment.",
+      "sidebar": "build"
+    },
+    "build/smart-contracts/testing/introduction": {
+      "id": "build/smart-contracts/testing/introduction",
+      "title": "Introduction",
+      "description": "While developing your smart contract you will want to test that it works as it is supposed to, and moreover, does so securely. In NEAR we have developed tools to help you carry out such tests. Basically, there are two types of tests you can perform:",
+      "sidebar": "build"
+    },
+    "build/smart-contracts/testing/kurtosis-localnet": {
+      "id": "build/smart-contracts/testing/kurtosis-localnet",
+      "title": "Creating a Local Development Environment",
+      "description": "Using Kurtosis NEAR Package to develop locally",
+      "sidebar": "build"
+    },
+    "build/smart-contracts/testing/unit-test": {
+      "id": "build/smart-contracts/testing/unit-test",
+      "title": "Unit Testing",
+      "description": "Unit tests allow you to test the contract methods individually. They are suitable to check the storage is updated correctly, and that methods return their expected values. They are written in the contract's language and execute locally.",
+      "sidebar": "build"
+    },
+    "build/smart-contracts/what-is": {
+      "id": "build/smart-contracts/what-is",
+      "title": "What is a Smart Contract?",
+      "description": "Smart contracts are pieces of executable code that live in a NEAR account. They can store data, perform transactions in the account’s name, and expose methods so other accounts can interact with them.",
+      "sidebar": "build"
+    },
+    "build/web3-apps/backend/backend-login": {
+      "id": "build/web3-apps/backend/backend-login",
+      "title": "Authenticate NEAR Users",
+      "description": "Recently NEAR has approved a new standard that, among other things, enables users to authenticate into a backend service.",
+      "sidebar": "build"
+    },
+    "build/web3-apps/integrate-components": {
+      "id": "build/web3-apps/integrate-components",
+      "title": "Integrating Components",
+      "description": "To integrate Components to your frontend, you will leverage two tools:",
+      "sidebar": "build"
+    },
+    "build/web3-apps/integrate-contracts": {
+      "id": "build/web3-apps/integrate-contracts",
+      "title": "Integrating Contracts",
+      "description": "To integrate NEAR to your frontend, you will leverage two tools:",
+      "sidebar": "build"
+    },
+    "build/web3-apps/quickstart": {
+      "id": "build/web3-apps/quickstart",
+      "title": "Hello WebApp",
+      "description": "Most interactions with the NEAR ecosystem can be grouped in 2 categories:",
+      "sidebar": "build"
+    },
+    "build/web3-apps/what-is": {
+      "id": "build/web3-apps/what-is",
+      "title": "What are Web3 Apps?",
+      "description": "Web3 Applications - also known as decentralized apps (dApps) - leverage smart contracts and blockchain data to offer transparency, security and giving back control to users over their assets and data.",
+      "sidebar": "build"
+    },
+    "build/welcome": {
+      "id": "build/welcome",
+      "title": "Build on NEAR",
+      "description": "Welcome! Here you will find all the information on what you can build on NEAR and how to build it. Do not worry if you are new to Web3 or Blockchain, we are here to guide you through the process of learning.",
       "sidebar": "build"
     },
     "concepts/abstraction/chain-signatures": {
@@ -3476,332 +4015,67 @@
       "description": "Welcome! Here we will explain you what NEAR Protocol is, its components, and how it works.",
       "sidebar": "concepts"
     },
-    "develop/contracts/introduction": {
-      "id": "develop/contracts/introduction",
-      "title": "Prerequisites",
-      "description": "To develop a smart contract you will need to install Node.js."
-    },
-    "develop/contracts/quickstart": {
-      "id": "develop/contracts/quickstart",
-      "title": "Hello Contract",
-      "description": "NEAR accounts can host programs known as smart contracts. Smart contracts can store data, and expose methods so other users and contracts interact with them.",
-      "sidebar": "build"
-    },
-    "develop/contracts/security/bounty": {
-      "id": "develop/contracts/security/bounty",
-      "title": "Bug Bounty Program",
-      "description": "NEAR has a revamped bug bounty program!",
-      "sidebar": "build"
-    },
-    "develop/contracts/security/callbacks": {
-      "id": "develop/contracts/security/callbacks",
-      "title": "Cross-Contract Calls",
-      "description": "While writing cross-contract calls there is a significant aspect to keep in mind",
-      "sidebar": "build"
-    },
-    "develop/contracts/security/frontrunning": {
-      "id": "develop/contracts/security/frontrunning",
-      "title": "Front Running",
-      "description": "In the NEAR network, validators have access to the transaction pool, and can therefore see them before they execute. This enables validators to analyze transactions for a potential profit and frontrun them with a transaction of their own.",
-      "sidebar": "build"
-    },
-    "develop/contracts/security/one-yocto": {
-      "id": "develop/contracts/security/one-yocto",
-      "title": "Ensure it is the User (1yⓃ)",
-      "description": "NEAR uses a system of Access Keys to simplify handling accounts. There are basically two type of keys: Full Access, that have full control over an account (i.e. can perform all actions), and Function Call, that only have permission to call a specified smart contract's method(s) that do not attach Ⓝ as a deposit.",
-      "sidebar": "build"
-    },
-    "develop/contracts/security/random": {
-      "id": "develop/contracts/security/random",
-      "title": "Random Numbers",
-      "description": "When writing smart contracts in NEAR you have access to a random seed that enables you to create random numbers/strings within your contract.",
-      "sidebar": "build"
-    },
-    "develop/contracts/security/reentrancy": {
-      "id": "develop/contracts/security/reentrancy",
-      "title": "Reentrancy Attacks",
-      "description": "Between a cross-contract call and its callback any method of your contract can be executed. Not taking this into account is one of the main sources of exploits. It is so common that it has its own name: reentrancy attacks.",
-      "sidebar": "build"
-    },
-    "develop/contracts/security/storage": {
-      "id": "develop/contracts/security/storage",
-      "title": "Million Small Deposits",
-      "description": "On NEAR, your contract pays for the storage it uses. This means that the more data you store, the more balance you need to cover for storage. If you don't handle these costs correctly (e.g. asking the user to cover their storage usage), then a million little deposits can drain your contract of its funds.",
-      "sidebar": "build"
-    },
-    "develop/contracts/security/sybil": {
-      "id": "develop/contracts/security/sybil",
-      "title": "Sybil Attacks",
-      "description": "While developing your smart contract, keep in mind that an individual can potentially create multiple NEAR accounts. This is especially relevant in ecosystems involving crowd decisions, such as DAOs.",
-      "sidebar": "build"
-    },
-    "develop/contracts/security/welcome": {
-      "id": "develop/contracts/security/welcome",
-      "title": "Security",
-      "description": "Here you will find information on how to keep your smart contract and decentralized applications secure.",
-      "sidebar": "build"
-    },
-    "develop/contracts/welcome": {
-      "id": "develop/contracts/welcome",
-      "title": "NEAR Smart Contracts",
-      "description": "Welcome! Smart contracts are pieces of executable code that live in a NEAR account. They can store data, perform transactions in the account’s name, and expose methods so other accounts can interact with them."
-    },
-    "develop/contracts/whatisacontract": {
-      "id": "develop/contracts/whatisacontract",
-      "title": "What is a Smart Contract?",
-      "description": "Smart contracts are pieces of executable code that live in a NEAR account. They can store data, perform transactions in the account’s name, and expose methods so other accounts can interact with them.",
-      "sidebar": "build"
-    },
-    "develop/deploy": {
-      "id": "develop/deploy",
-      "title": "NEAR CLI - Basics",
-      "description": "After your contract is ready you can deploy it in the NEAR network for everyone to use it.",
-      "sidebar": "build"
-    },
-    "develop/github-overview": {
-      "id": "develop/github-overview",
-      "title": "NEAR Developer Repositories",
-      "description": "An overview of essential repositories when building on NEAR Protocol."
-    },
-    "develop/integrate/backend-login": {
-      "id": "develop/integrate/backend-login",
-      "title": "Authenticate NEAR Users",
-      "description": "Recently NEAR has approved a new standard that, among other things, enables users to authenticate into a backend service.",
-      "sidebar": "build"
-    },
-    "develop/integrate/frontend": {
-      "id": "develop/integrate/frontend",
-      "title": "Integrating Contracts",
-      "description": "To integrate NEAR to your frontend, you will leverage two tools:",
-      "sidebar": "build"
-    },
-    "develop/integrate/frontend-components": {
-      "id": "develop/integrate/frontend-components",
-      "title": "Integrating Components",
-      "description": "To integrate Components to your frontend, you will leverage two tools:",
-      "sidebar": "build"
-    },
-    "develop/integrate/quickstart-frontend": {
-      "id": "develop/integrate/quickstart-frontend",
-      "title": "Hello WebApp",
-      "description": "Most interactions with the NEAR ecosystem can be grouped in 2 categories:",
-      "sidebar": "build"
-    },
-    "develop/integrate/rpc": {
-      "id": "develop/integrate/rpc",
-      "title": "Remote Procedural Call",
-      "description": "Here we will only briefly mention how to use the NEAR RPC. If you want to find the full documentation on NEAR RPC please follow this link."
-    },
-    "develop/integrate/welcome": {
-      "id": "develop/integrate/welcome",
-      "title": "Build Web3 Applications",
-      "description": "Welcome! Here you will find documentation on how to build Web3 applications using NEAR. What are you planning to build?",
-      "sidebar": "integrate"
-    },
-    "develop/lake/primitives": {
-      "id": "develop/lake/primitives",
-      "title": "NEAR Lake Primitive Types",
-      "description": "This article contains the primitive types used by the NEAR Lake Framework package. These types are used to define the data structures used by the framework as well as provide some popular helper functions.",
-      "sidebar": "tutorials"
-    },
-    "develop/lake/structures/block": {
-      "id": "develop/lake/structures/block",
-      "title": "Block Structure",
-      "description": "Definition",
-      "sidebar": "build"
-    },
-    "develop/lake/structures/chunk": {
-      "id": "develop/lake/structures/chunk",
-      "title": "Chunk Structure",
-      "description": "Definition",
-      "sidebar": "build"
-    },
-    "develop/lake/structures/execution-outcome": {
-      "id": "develop/lake/structures/execution-outcome",
-      "title": "ExecutionOutcome Structure",
-      "description": "Definition",
-      "sidebar": "build"
-    },
-    "develop/lake/structures/receipt": {
-      "id": "develop/lake/structures/receipt",
-      "title": "Receipt Structure",
-      "description": "Definition",
-      "sidebar": "build"
-    },
-    "develop/lake/structures/shard": {
-      "id": "develop/lake/structures/shard",
-      "title": "Shard structure",
-      "description": "Definition",
-      "sidebar": "build"
-    },
-    "develop/lake/structures/state-change": {
-      "id": "develop/lake/structures/state-change",
-      "title": "StateChange Structure",
-      "description": "Definition",
-      "sidebar": "build"
-    },
-    "develop/lake/structures/toc": {
-      "id": "develop/lake/structures/toc",
-      "title": "Structures. Table of Contents",
-      "description": "The structures described in this section of the docs are indexer-related more than nearcore related. Some of the are artificial and are not a part of nearcore",
-      "sidebar": "build"
-    },
-    "develop/lake/structures/transaction": {
-      "id": "develop/lake/structures/transaction",
-      "title": "Transaction Structure",
-      "description": "Definition",
-      "sidebar": "build"
-    },
-    "develop/lock": {
-      "id": "develop/lock",
-      "title": "Locking Accounts",
-      "description": "Removing all full access keys from an account will effectively lock it.",
-      "sidebar": "build"
-    },
-    "develop/monitor": {
-      "id": "develop/monitor",
-      "title": "Monitor the Network",
-      "description": "Welcome! Here you will find documentation on how to query past data and real time events from the NEAR network."
-    },
-    "develop/prerequisites": {
-      "id": "develop/prerequisites",
-      "title": "Prerequisites",
-      "description": "In order to develop smart contracts you will need Node.js for javascript, and the rust toolchain for Rust."
-    },
-    "develop/quickstart-guide": {
-      "id": "develop/quickstart-guide",
-      "title": "Hello NEAR 👋",
-      "description": "Hi! Let us guide you in starting and interacting with your first decentralized app (dApp) in NEAR: Hello NEAR."
-    },
-    "develop/relevant-contracts/dao": {
-      "id": "develop/relevant-contracts/dao",
-      "title": "Decentralized Autonomous Organizations",
-      "description": "Decentralized Autonomous Organizations (DAOs) are self-organized groups that form around common purposes. Membership, decision making, and funding are coordinated by publicly voting on proposals through a smart contract."
-    },
-    "develop/relevant-contracts/ft": {
-      "id": "develop/relevant-contracts/ft",
-      "title": "Fungible Tokens (FT)",
-      "description": "Besides the native NEAR token, NEAR accounts have access to a multitude of fungible tokens (e.g. these whitelisted tokens). Moreover, it is even possible for users to create their own fungible tokens."
-    },
-    "develop/relevant-contracts/nft": {
-      "id": "develop/relevant-contracts/nft",
-      "title": "Non Fungible Tokens (NFT)",
-      "description": "In contrast with fungible tokens, non-fungible tokens (NFT) are unitary and therefore unique. This makes NFTs ideal to represent ownership of assets such as a piece of digital content, or a ticket for an event."
-    },
-    "develop/relevant-contracts/oracles": {
-      "id": "develop/relevant-contracts/oracles",
-      "title": "Decentralized Oracles",
-      "description": "Oracles are smart contracts that enable you to query the current price of an asset. Since smart contracts cannot connect to internet and pull information, Oracles rely on having someone constantly updating their prices. Because of that, be mindful when using an oracle that there might be a delay between the market's latest information and the Oracles data."
-    },
-    "develop/testing/integration-test": {
-      "id": "develop/testing/integration-test",
-      "title": "Integration Tests",
-      "description": "Integration tests enable to deploy your contract in the NEAR testnet or a local sandbox, and create test-users to interact with it. In this way, you can thoroughly test your contract in a realistic environment.",
-      "sidebar": "build"
-    },
-    "develop/testing/introduction": {
-      "id": "develop/testing/introduction",
-      "title": "Introduction",
-      "description": "While developing your smart contract you will want to test that it works as it is supposed to, and moreover, does so securely. In NEAR we have developed tools to help you carry out such tests. Basically, there are two types of tests you can perform:",
-      "sidebar": "build"
-    },
-    "develop/testing/kurtosis-localnet": {
-      "id": "develop/testing/kurtosis-localnet",
-      "title": "Creating a Local Development Environment",
-      "description": "Using Kurtosis NEAR Package to develop locally",
-      "sidebar": "build"
-    },
-    "develop/testing/unit-test": {
-      "id": "develop/testing/unit-test",
-      "title": "Unit Testing",
-      "description": "Unit tests allow you to test the contract methods individually. They are suitable to check the storage is updated correctly, and that methods return their expected values. They are written in the contract's language and execute locally.",
-      "sidebar": "build"
-    },
-    "develop/upgrade": {
-      "id": "develop/upgrade",
-      "title": "Updating Contracts",
-      "description": "NEAR accounts separate their logic (contract's code) from their state (storage), allowing the code to be changed.",
-      "sidebar": "build"
-    },
-    "develop/web3-apps/whatareweb3apps": {
-      "id": "develop/web3-apps/whatareweb3apps",
-      "title": "What are Web3 Apps?",
-      "description": "Web3 Applications - also known as decentralized apps (dApps) - leverage smart contracts and blockchain data to offer transparency, security and giving back control to users over their assets and data.",
-      "sidebar": "build"
-    },
-    "develop/welcome": {
-      "id": "develop/welcome",
-      "title": "Build on NEAR",
-      "description": "Welcome! Here you will find all the information on what you can build on NEAR and how to build it. Do not worry if you are new to Web3 or Blockchain, we are here to guide you through the process of learning.",
-      "sidebar": "build"
-    },
-    "develop/whataredatasolutions": {
-      "id": "develop/whataredatasolutions",
-      "title": "What is Data Infrastructure?",
-      "description": "NEAR offers ready-to-use solutions to access and monitor on-chain data easily. This is very useful to automate actions based on specific events, cache data to reduce latency, gather usage data of the blockchain, and even study user preferences.",
-      "sidebar": "build"
-    },
     "help": {
       "id": "help",
       "title": "NEAR - Your Gateway to an Open Web",
       "description": "DEVHUB"
     },
-    "integrator/accounts": {
-      "id": "integrator/accounts",
+    "integrations/accounts": {
+      "id": "integrations/accounts",
       "title": "Accounts",
       "description": "Introduction",
       "sidebar": "exchanges"
     },
-    "integrator/balance-changes": {
-      "id": "integrator/balance-changes",
+    "integrations/balance-changes": {
+      "id": "integrations/balance-changes",
       "title": "Balance changes",
       "description": "Prerequisites",
       "sidebar": "exchanges"
     },
-    "integrator/create-transactions": {
-      "id": "integrator/create-transactions",
+    "integrations/create-transactions": {
+      "id": "integrations/create-transactions",
       "title": "Create Transactions",
       "description": "To construct & process transactions you will need our API JavaScript library: near-api-js. There are many ways to create transactions but for this example we'll show you two ways to create a simple token transfer transaction.",
       "sidebar": "exchanges"
     },
-    "integrator/errors/error-implementation": {
-      "id": "integrator/errors/error-implementation",
+    "integrations/errors/error-implementation": {
+      "id": "integrations/errors/error-implementation",
       "title": "Source Code Survey",
       "description": "This page provides a very high level, sometimes \"pseudocode\", view of error types and related messages as implemented by the NEAR platform.",
       "sidebar": "exchanges"
     },
-    "integrator/errors/introduction": {
-      "id": "integrator/errors/introduction",
+    "integrations/errors/introduction": {
+      "id": "integrations/errors/introduction",
       "title": "Introduction",
       "description": "did you know?",
       "sidebar": "exchanges"
     },
-    "integrator/errors/token-loss": {
-      "id": "integrator/errors/token-loss",
+    "integrations/errors/token-loss": {
+      "id": "integrations/errors/token-loss",
       "title": "Avoiding Token Loss",
       "description": "Careful! Losing tokens means losing money!",
       "sidebar": "exchanges"
     },
-    "integrator/exchange-integration": {
-      "id": "integrator/exchange-integration",
+    "integrations/exchange-integration": {
+      "id": "integrations/exchange-integration",
       "title": "Exchange Integration",
       "description": "Integration Reference",
       "sidebar": "exchanges"
     },
-    "integrator/faq": {
-      "id": "integrator/faq",
+    "integrations/faq": {
+      "id": "integrations/faq",
       "title": "Integrator FAQ",
       "description": "Orientation",
       "sidebar": "exchanges"
     },
-    "integrator/fungible-tokens": {
-      "id": "integrator/fungible-tokens",
+    "integrations/fungible-tokens": {
+      "id": "integrations/fungible-tokens",
       "title": "Fungible tokens",
       "description": "Introduction",
       "sidebar": "exchanges"
     },
-    "integrator/implicit-accounts": {
-      "id": "integrator/implicit-accounts",
+    "integrations/implicit-accounts": {
+      "id": "integrations/implicit-accounts",
       "title": "Implicit Accounts",
       "description": "Background",
       "sidebar": "exchanges"
@@ -3853,523 +4127,6 @@
       "title": "RPC Statistics",
       "description": "Please be advised that these tools and services will be discontinued soon.",
       "sidebar": "pagoda"
-    },
-    "primitives/dao": {
-      "id": "primitives/dao",
-      "title": "Decentralized Autonomous Organizations",
-      "description": "Decentralized Autonomous Organizations (DAOs) are self-organized groups that form around common purposes. Membership, decision making, and funding are coordinated by publicly voting on proposals through a smart contract.",
-      "sidebar": "build"
-    },
-    "primitives/dao/bos/create-dao": {
-      "id": "primitives/dao/bos/create-dao",
-      "title": "create-dao",
-      "description": "The full list of roles and permissions you can find here."
-    },
-    "primitives/dao/bos/create-proposal": {
-      "id": "primitives/dao/bos/create-proposal",
-      "title": "create-proposal",
-      "description": ""
-    },
-    "primitives/dao/bos/get-dao-list": {
-      "id": "primitives/dao/bos/get-dao-list",
-      "title": "get-dao-list",
-      "description": "Example response"
-    },
-    "primitives/dao/bos/get-proposal-list": {
-      "id": "primitives/dao/bos/get-proposal-list",
-      "title": "get-proposal-list",
-      "description": "Example response"
-    },
-    "primitives/dao/bos/vote-for-proposal": {
-      "id": "primitives/dao/bos/vote-for-proposal",
-      "title": "vote-for-proposal",
-      "description": "Available vote options: VoteApprove, VoteReject, VoteRemove."
-    },
-    "primitives/dao/near-cli/create-dao": {
-      "id": "primitives/dao/near-cli/create-dao",
-      "title": "create-dao",
-      "description": "The full list of roles and permissions you can find here."
-    },
-    "primitives/dao/near-cli/create-proposal": {
-      "id": "primitives/dao/near-cli/create-proposal",
-      "title": "create-proposal",
-      "description": ""
-    },
-    "primitives/dao/near-cli/get-dao-list": {
-      "id": "primitives/dao/near-cli/get-dao-list",
-      "title": "get-dao-list",
-      "description": "Example response"
-    },
-    "primitives/dao/near-cli/get-proposal-list": {
-      "id": "primitives/dao/near-cli/get-proposal-list",
-      "title": "get-proposal-list",
-      "description": "Example response"
-    },
-    "primitives/dao/near-cli/vote-for-proposal": {
-      "id": "primitives/dao/near-cli/vote-for-proposal",
-      "title": "vote-for-proposal",
-      "description": "Available vote options: VoteApprove, VoteReject, VoteRemove."
-    },
-    "primitives/dao/smart-contract/create-dao": {
-      "id": "primitives/dao/smart-contract/create-dao",
-      "title": "create-dao",
-      "description": ""
-    },
-    "primitives/dao/smart-contract/create-proposal": {
-      "id": "primitives/dao/smart-contract/create-proposal",
-      "title": "create-proposal",
-      "description": ""
-    },
-    "primitives/dao/smart-contract/vote-for-proposal": {
-      "id": "primitives/dao/smart-contract/vote-for-proposal",
-      "title": "vote-for-proposal",
-      "description": ""
-    },
-    "primitives/dao/web-app/create-dao": {
-      "id": "primitives/dao/web-app/create-dao",
-      "title": "create-dao",
-      "description": "The full list of roles and permissions you can find here."
-    },
-    "primitives/dao/web-app/create-proposal": {
-      "id": "primitives/dao/web-app/create-proposal",
-      "title": "create-proposal",
-      "description": "The Wallet object comes from our quickstart template"
-    },
-    "primitives/dao/web-app/get-dao-list": {
-      "id": "primitives/dao/web-app/get-dao-list",
-      "title": "get-dao-list",
-      "description": "The Wallet object comes from our quickstart template"
-    },
-    "primitives/dao/web-app/get-proposal-list": {
-      "id": "primitives/dao/web-app/get-proposal-list",
-      "title": "get-proposal-list",
-      "description": "The Wallet object comes from our quickstart template"
-    },
-    "primitives/dao/web-app/vote-for-proposal": {
-      "id": "primitives/dao/web-app/vote-for-proposal",
-      "title": "vote-for-proposal",
-      "description": "Available vote options: VoteApprove, VoteReject, VoteRemove."
-    },
-    "primitives/dex": {
-      "id": "primitives/dex",
-      "title": "Decentralized Exchanges (DEX)",
-      "description": "A Decentralized Exchange (DEX) is an application that allows users to trade tokens (native & fungible tokens) through smart contracts.",
-      "sidebar": "build"
-    },
-    "primitives/dex/bos/get-deposit-balances": {
-      "id": "primitives/dex/bos/get-deposit-balances",
-      "title": "get-deposit-balances",
-      "description": "Example response"
-    },
-    "primitives/dex/bos/get-pools": {
-      "id": "primitives/dex/bos/get-pools",
-      "title": "get-pools",
-      "description": "Example response"
-    },
-    "primitives/dex/bos/get-price": {
-      "id": "primitives/dex/bos/get-price",
-      "title": "get-price",
-      "description": "Example response"
-    },
-    "primitives/dex/bos/swap": {
-      "id": "primitives/dex/bos/swap",
-      "title": "swap",
-      "description": "Example response"
-    },
-    "primitives/dex/near-cli/get-deposit-balances": {
-      "id": "primitives/dex/near-cli/get-deposit-balances",
-      "title": "get-deposit-balances",
-      "description": "Example response"
-    },
-    "primitives/dex/near-cli/get-pools": {
-      "id": "primitives/dex/near-cli/get-pools",
-      "title": "get-pools",
-      "description": "Example response"
-    },
-    "primitives/dex/near-cli/swap": {
-      "id": "primitives/dex/near-cli/swap",
-      "title": "swap",
-      "description": "Example response"
-    },
-    "primitives/dex/smart-contract/get-deposit-balances": {
-      "id": "primitives/dex/smart-contract/get-deposit-balances",
-      "title": "get-deposit-balances",
-      "description": ""
-    },
-    "primitives/dex/smart-contract/get-pools": {
-      "id": "primitives/dex/smart-contract/get-pools",
-      "title": "get-pools",
-      "description": ""
-    },
-    "primitives/dex/smart-contract/swap": {
-      "id": "primitives/dex/smart-contract/swap",
-      "title": "swap",
-      "description": ""
-    },
-    "primitives/dex/web-app/get-deposit-balances": {
-      "id": "primitives/dex/web-app/get-deposit-balances",
-      "title": "get-deposit-balances",
-      "description": "The Wallet object comes from our quickstart template"
-    },
-    "primitives/dex/web-app/get-pools": {
-      "id": "primitives/dex/web-app/get-pools",
-      "title": "get-pools",
-      "description": "The Wallet object comes from our quickstart template"
-    },
-    "primitives/dex/web-app/get-price": {
-      "id": "primitives/dex/web-app/get-price",
-      "title": "get-price",
-      "description": "The Wallet object comes from our quickstart template"
-    },
-    "primitives/dex/web-app/swap": {
-      "id": "primitives/dex/web-app/swap",
-      "title": "swap",
-      "description": "The Wallet object comes from our quickstart template"
-    },
-    "primitives/ft": {
-      "id": "primitives/ft",
-      "title": "Fungible Tokens (FT)",
-      "description": "Besides the native NEAR token, NEAR accounts have access to a multitude of tokens to use thoughtout the ecosystem. Moreover, it is even possible for users to create their own fungible tokens.",
-      "sidebar": "build"
-    },
-    "primitives/ft/bos/attach-to-call": {
-      "id": "primitives/ft/bos/attach-to-call",
-      "title": "attach-to-call",
-      "description": "Example response"
-    },
-    "primitives/ft/bos/check-balance": {
-      "id": "primitives/ft/bos/check-balance",
-      "title": "check-balance",
-      "description": "Remember about fungible token precision. You may need this value to show a response of balance requests in an understandable-to-user way in your app. How to get precision value (decimals) you may find above."
-    },
-    "primitives/ft/bos/create": {
-      "id": "primitives/ft/bos/create",
-      "title": "create",
-      "description": ""
-    },
-    "primitives/ft/bos/get-metadata": {
-      "id": "primitives/ft/bos/get-metadata",
-      "title": "get-metadata",
-      "description": "Example response"
-    },
-    "primitives/ft/bos/register": {
-      "id": "primitives/ft/bos/register",
-      "title": "register",
-      "description": ""
-    },
-    "primitives/ft/bos/send": {
-      "id": "primitives/ft/bos/send",
-      "title": "send",
-      "description": ""
-    },
-    "primitives/ft/near-cli/attach-to-call": {
-      "id": "primitives/ft/near-cli/attach-to-call",
-      "title": "attach-to-call",
-      "description": "Example response"
-    },
-    "primitives/ft/near-cli/check-balance": {
-      "id": "primitives/ft/near-cli/check-balance",
-      "title": "check-balance",
-      "description": "Example response"
-    },
-    "primitives/ft/near-cli/create": {
-      "id": "primitives/ft/near-cli/create",
-      "title": "create",
-      "description": ""
-    },
-    "primitives/ft/near-cli/get-metadata": {
-      "id": "primitives/ft/near-cli/get-metadata",
-      "title": "get-metadata",
-      "description": "Example response"
-    },
-    "primitives/ft/near-cli/register": {
-      "id": "primitives/ft/near-cli/register",
-      "title": "register",
-      "description": ""
-    },
-    "primitives/ft/near-cli/send": {
-      "id": "primitives/ft/near-cli/send",
-      "title": "send",
-      "description": ""
-    },
-    "primitives/ft/smart-contract/attach-to-call": {
-      "id": "primitives/ft/smart-contract/attach-to-call",
-      "title": "attach-to-call",
-      "description": ""
-    },
-    "primitives/ft/smart-contract/send": {
-      "id": "primitives/ft/smart-contract/send",
-      "title": "send",
-      "description": "This snippet assumes that the contract is already holding some FTs and that you want to send them to another account."
-    },
-    "primitives/ft/web-app/attach-to-call": {
-      "id": "primitives/ft/web-app/attach-to-call",
-      "title": "attach-to-call",
-      "description": "Example response"
-    },
-    "primitives/ft/web-app/check-balance": {
-      "id": "primitives/ft/web-app/check-balance",
-      "title": "check-balance",
-      "description": "Remember about fungible token precision. You may need this value to show a response of balance requests in an understandable-to-user way in your app. How to get precision value (decimals) you may find above."
-    },
-    "primitives/ft/web-app/create": {
-      "id": "primitives/ft/web-app/create",
-      "title": "create",
-      "description": "The Wallet object comes from our quickstart template"
-    },
-    "primitives/ft/web-app/get-metadata": {
-      "id": "primitives/ft/web-app/get-metadata",
-      "title": "get-metadata",
-      "description": "Example response"
-    },
-    "primitives/ft/web-app/register": {
-      "id": "primitives/ft/web-app/register",
-      "title": "register",
-      "description": "The Wallet object comes from our quickstart template"
-    },
-    "primitives/ft/web-app/send": {
-      "id": "primitives/ft/web-app/send",
-      "title": "send",
-      "description": "The Wallet object comes from our quickstart template"
-    },
-    "primitives/linkdrop": {
-      "id": "primitives/linkdrop",
-      "title": "Linkdrops",
-      "description": "Linkdrops allow users to distribute assets and onboard people to Web3 apps through a simple web link.",
-      "sidebar": "build"
-    },
-    "primitives/linkdrop/bos/create-ft-drop": {
-      "id": "primitives/linkdrop/bos/create-ft-drop",
-      "title": "create-ft-drop",
-      "description": ""
-    },
-    "primitives/linkdrop/bos/create-function-call-drop": {
-      "id": "primitives/linkdrop/bos/create-function-call-drop",
-      "title": "create-function-call-drop",
-      "description": ""
-    },
-    "primitives/linkdrop/bos/create-nft-drop": {
-      "id": "primitives/linkdrop/bos/create-nft-drop",
-      "title": "create-nft-drop",
-      "description": ""
-    },
-    "primitives/linkdrop/bos/get-drop-id": {
-      "id": "primitives/linkdrop/bos/get-drop-id",
-      "title": "get-drop-id",
-      "description": ""
-    },
-    "primitives/linkdrop/bos/get-key-pairs": {
-      "id": "primitives/linkdrop/bos/get-key-pairs",
-      "title": "get-key-pairs",
-      "description": ""
-    },
-    "primitives/linkdrop/bos/simple-drop": {
-      "id": "primitives/linkdrop/bos/simple-drop",
-      "title": "simple-drop",
-      "description": ""
-    },
-    "primitives/linkdrop/bos/transfer-ft": {
-      "id": "primitives/linkdrop/bos/transfer-ft",
-      "title": "transfer-ft",
-      "description": ""
-    },
-    "primitives/linkdrop/bos/transfer-nft": {
-      "id": "primitives/linkdrop/bos/transfer-nft",
-      "title": "transfer-nft",
-      "description": ""
-    },
-    "primitives/linkdrop/near-cli/create-ft-drop": {
-      "id": "primitives/linkdrop/near-cli/create-ft-drop",
-      "title": "create-ft-drop",
-      "description": ""
-    },
-    "primitives/linkdrop/near-cli/create-function-call-drop": {
-      "id": "primitives/linkdrop/near-cli/create-function-call-drop",
-      "title": "create-function-call-drop",
-      "description": ""
-    },
-    "primitives/linkdrop/near-cli/create-nft-drop": {
-      "id": "primitives/linkdrop/near-cli/create-nft-drop",
-      "title": "create-nft-drop",
-      "description": ""
-    },
-    "primitives/linkdrop/near-cli/get-drop-id": {
-      "id": "primitives/linkdrop/near-cli/get-drop-id",
-      "title": "get-drop-id",
-      "description": ""
-    },
-    "primitives/linkdrop/near-cli/get-key-pairs": {
-      "id": "primitives/linkdrop/near-cli/get-key-pairs",
-      "title": "get-key-pairs",
-      "description": "Example response:"
-    },
-    "primitives/linkdrop/near-cli/simple-drop": {
-      "id": "primitives/linkdrop/near-cli/simple-drop",
-      "title": "simple-drop",
-      "description": ""
-    },
-    "primitives/linkdrop/near-cli/transfer-ft": {
-      "id": "primitives/linkdrop/near-cli/transfer-ft",
-      "title": "transfer-ft",
-      "description": ""
-    },
-    "primitives/linkdrop/near-cli/transfer-nft": {
-      "id": "primitives/linkdrop/near-cli/transfer-nft",
-      "title": "transfer-nft",
-      "description": ""
-    },
-    "primitives/linkdrop/web-app/create-ft-drop": {
-      "id": "primitives/linkdrop/web-app/create-ft-drop",
-      "title": "create-ft-drop",
-      "description": "The Wallet object comes from our quickstart template"
-    },
-    "primitives/linkdrop/web-app/create-function-call-drop": {
-      "id": "primitives/linkdrop/web-app/create-function-call-drop",
-      "title": "create-function-call-drop",
-      "description": "The Wallet object comes from our quickstart template"
-    },
-    "primitives/linkdrop/web-app/create-nft-drop": {
-      "id": "primitives/linkdrop/web-app/create-nft-drop",
-      "title": "create-nft-drop",
-      "description": "The Wallet object comes from our quickstart template"
-    },
-    "primitives/linkdrop/web-app/get-drop-id": {
-      "id": "primitives/linkdrop/web-app/get-drop-id",
-      "title": "get-drop-id",
-      "description": "The Wallet object comes from our quickstart template"
-    },
-    "primitives/linkdrop/web-app/get-key-pairs": {
-      "id": "primitives/linkdrop/web-app/get-key-pairs",
-      "title": "get-key-pairs",
-      "description": ""
-    },
-    "primitives/linkdrop/web-app/simple-drop": {
-      "id": "primitives/linkdrop/web-app/simple-drop",
-      "title": "simple-drop",
-      "description": "The Wallet object comes from our quickstart template"
-    },
-    "primitives/linkdrop/web-app/transfer-ft": {
-      "id": "primitives/linkdrop/web-app/transfer-ft",
-      "title": "transfer-ft",
-      "description": "The Wallet object comes from our quickstart template"
-    },
-    "primitives/linkdrop/web-app/transfer-nft": {
-      "id": "primitives/linkdrop/web-app/transfer-nft",
-      "title": "transfer-nft",
-      "description": "The Wallet object comes from our quickstart template"
-    },
-    "primitives/nft": {
-      "id": "primitives/nft",
-      "title": "Non-Fungible Tokens (NFT)",
-      "description": "In contrast with fungible tokens, non-fungible tokens (NFT) are unitary and therefore unique. This makes NFTs ideal to represent ownership of assets such as a piece of digital content, or a ticket for an event.",
-      "sidebar": "build"
-    },
-    "primitives/nft/bos/buy": {
-      "id": "primitives/nft/bos/buy",
-      "title": "buy",
-      "description": "Example response:"
-    },
-    "primitives/nft/bos/list-for-sale": {
-      "id": "primitives/nft/bos/list-for-sale",
-      "title": "list-for-sale",
-      "description": "The method nftapprove will call nfton_approve in marketplace.paras.near."
-    },
-    "primitives/nft/bos/mint": {
-      "id": "primitives/nft/bos/mint",
-      "title": "mint",
-      "description": "In order to use nft_mint method of the x.paras.near contract you have to be a creator of a particular token series."
-    },
-    "primitives/nft/bos/query": {
-      "id": "primitives/nft/bos/query",
-      "title": "query",
-      "description": "Example response"
-    },
-    "primitives/nft/bos/transfer": {
-      "id": "primitives/nft/bos/transfer",
-      "title": "transfer",
-      "description": ""
-    },
-    "primitives/nft/near-cli/buy": {
-      "id": "primitives/nft/near-cli/buy",
-      "title": "buy",
-      "description": "Example response:"
-    },
-    "primitives/nft/near-cli/list-for-sale": {
-      "id": "primitives/nft/near-cli/list-for-sale",
-      "title": "list-for-sale",
-      "description": "Method nftapprove of a NFT contract also calls the nfton_approve method in marketplace.paras.near as a callback."
-    },
-    "primitives/nft/near-cli/mint": {
-      "id": "primitives/nft/near-cli/mint",
-      "title": "mint",
-      "description": "In order to use nft_mint method of the x.paras.near contract you have to be a creator of a particular token series."
-    },
-    "primitives/nft/near-cli/query": {
-      "id": "primitives/nft/near-cli/query",
-      "title": "query",
-      "description": "Example response"
-    },
-    "primitives/nft/near-cli/transfer": {
-      "id": "primitives/nft/near-cli/transfer",
-      "title": "transfer",
-      "description": ""
-    },
-    "primitives/nft/smart-contract/buy": {
-      "id": "primitives/nft/smart-contract/buy",
-      "title": "buy",
-      "description": "This is an example on how you can make your smart contract buy a NFT on some marketplace (Paras this case)."
-    },
-    "primitives/nft/smart-contract/mint": {
-      "id": "primitives/nft/smart-contract/mint",
-      "title": "mint",
-      "description": ""
-    },
-    "primitives/nft/smart-contract/query": {
-      "id": "primitives/nft/smart-contract/query",
-      "title": "query",
-      "description": ""
-    },
-    "primitives/nft/smart-contract/transfer": {
-      "id": "primitives/nft/smart-contract/transfer",
-      "title": "transfer",
-      "description": "Please notice that a contract can only transfer an NFT that they own, or an NFT that they were approved to transfer."
-    },
-    "primitives/nft/web-app/buy": {
-      "id": "primitives/nft/web-app/buy",
-      "title": "buy",
-      "description": "The Wallet object comes from our quickstart template"
-    },
-    "primitives/nft/web-app/list-for-sale": {
-      "id": "primitives/nft/web-app/list-for-sale",
-      "title": "list-for-sale",
-      "description": "The Wallet object comes from our quickstart template"
-    },
-    "primitives/nft/web-app/mint": {
-      "id": "primitives/nft/web-app/mint",
-      "title": "mint",
-      "description": "In order to use nft_mint method of the x.paras.near contract you have to be a creator of a particular token series."
-    },
-    "primitives/nft/web-app/query": {
-      "id": "primitives/nft/web-app/query",
-      "title": "query",
-      "description": "The Wallet object comes from our quickstart template"
-    },
-    "primitives/nft/web-app/transfer": {
-      "id": "primitives/nft/web-app/transfer",
-      "title": "transfer",
-      "description": "The Wallet object comes from our quickstart template"
-    },
-    "primitives/oracles": {
-      "id": "primitives/oracles",
-      "title": "Price Oracles",
-      "description": "Oracles are smart contracts that enable you to query the current price of an asset.",
-      "sidebar": "build"
-    },
-    "primitives/whatareprimitives": {
-      "id": "primitives/whatareprimitives",
-      "title": "What are Primitives?",
-      "description": "Primitives are fundamental building blocks that can be combined to create a fully functional application. Blockchain primitives include Fungible Tokens (FT), Non Fungible Tokens (NFT), Decentralized Autonomous organizations (DAO), Link Drops and more.",
-      "sidebar": "build"
     },
     "sdk/js/building/basics": {
       "id": "sdk/js/building/basics",
@@ -4628,26 +4385,6 @@
       "description": "Explore our language-specific SDK documentation",
       "sidebar": "tools"
     },
-    "social/contract": {
-      "id": "social/contract",
-      "title": "SocialDB",
-      "description": "SocialDB is a smart contract to store social data on NEAR protocol."
-    },
-    "social/intro": {
-      "id": "social/intro",
-      "title": "NEAR Social",
-      "description": "Take whatever is useful from \"past, present and future of social media\""
-    },
-    "social/standards": {
-      "id": "social/standards",
-      "title": "Standards",
-      "description": "The data in SocialDB is organized as a simple JSON tree. The only enforced rule is that the keys in the root are the account IDs that store the data. This is done on purpose, so the SocialDB contract is not enforcing any structure or a schema. Otherwise, the contract has to be modified for every schema change. The control of the contract schemas can lead to the centralization and restrictions. Instead, Near Social Standards live outside the SocialDB contract."
-    },
-    "social/tech": {
-      "id": "social/tech",
-      "title": "Technical Documentation",
-      "description": "This document goes into technical details of the Near Social."
-    },
     "tools/explorer": {
       "id": "tools/explorer",
       "title": "Explorer",
@@ -4723,12 +4460,6 @@
       "title": "NEAR CLI RS",
       "description": "Quick Start Guide",
       "sidebar": "tools"
-    },
-    "tools/near-lake": {
-      "id": "tools/near-lake",
-      "title": "NEAR Lake Indexer",
-      "description": "NEAR Lake is an indexer built on top of NEAR Indexer Framework to watch the network and store all the events as JSON files on AWS S3.",
-      "sidebar": "build"
     },
     "tools/realtime": {
       "id": "tools/realtime",
@@ -4894,11 +4625,6 @@
       "description": "Our donation example enables to forward NEAR Tokens to an account while keeping track of it. It is one of the simplest examples on making a contract handle tranfers.",
       "sidebar": "tutorials"
     },
-    "tutorials/examples/escrow": {
-      "id": "tutorials/examples/escrow",
-      "title": "Escrow Contract",
-      "description": "This example provides a simple implementation of an escrow contract, with a timeout callable function that concludes the transaction if the buyer has not provided approval within a given timeframe."
-    },
     "tutorials/examples/factory": {
       "id": "tutorials/examples/factory",
       "title": "Factory",
@@ -4987,58 +4713,82 @@
       "description": "In this tutorial, you'll learn how to implement the core standards into your smart contract. You'll implement the logic that allows you to transfer and receive tokens. If you're joining us for the first time, feel free to clone this repository and follow along in the 4.storage folder.",
       "sidebar": "tutorials"
     },
-    "tutorials/indexer/credentials": {
-      "id": "tutorials/indexer/credentials",
-      "title": "Credentials",
-      "description": "Please, keep in mind, currently using the AWS Credentials is the only way to access the data provided by NEAR Lake ecosystem. But it is about to change with Pagoda DevConsole release. Stay tuned!",
+    "tutorials/near-components/bos-loader": {
+      "id": "tutorials/near-components/bos-loader",
+      "title": "BOS Loader",
+      "description": "In this article you'll learn how to develop, test, and deploy BOS components using CLI tools. You can use this workflow to tap into the colaboration, pull-request, and other GitHub benefits while still deploying components to the BOS.",
       "sidebar": "tutorials"
     },
-    "tutorials/indexer/js-lake-indexer": {
-      "id": "tutorials/indexer/js-lake-indexer",
-      "title": "NEAR Lake indexer basic tutorial",
-      "description": "near-examples/near-lake-raw-printer-js: source code for the tutorial on how to create an indexer that prints block height and number of shards",
+    "tutorials/near-components/ds-components": {
+      "id": "tutorials/near-components/ds-components",
+      "title": "Design Components",
+      "description": "When building components, the NEAR VM provides a complete set of Radix primitives to simplify UI development.",
       "sidebar": "tutorials"
     },
-    "tutorials/indexer/lake-start-options": {
-      "id": "tutorials/indexer/lake-start-options",
-      "title": "Extending Lake indexer with start options",
-      "description": "The End",
+    "tutorials/near-components/ethers-js": {
+      "id": "tutorials/near-components/ethers-js",
+      "title": "NEAR for Ethereum developers",
+      "description": "NEAR components are chain-agnostic, enabling you to create decentralized frontends tailored for any Ethereum dApps. Throughout this article, we'll navigate prevalent use-cases with code snippets. You’ll also find links to exemplary NEAR components for reference.",
       "sidebar": "tutorials"
     },
-    "tutorials/indexer/migrating-to-near-lake-framework": {
-      "id": "tutorials/indexer/migrating-to-near-lake-framework",
-      "title": "Migrating to NEAR Lake Framework",
-      "description": "We encourage everyone who don't have a hard requirement to use NEAR Indexer Framework consider the migration to NEAR Lake Framework.",
+    "tutorials/near-components/ethers-js-best-practices": {
+      "id": "tutorials/near-components/ethers-js-best-practices",
+      "title": "Best Practices for Ethereum developers on NEAR",
+      "description": "In this example, we will create an Ethereum dApp on NEAR that functions as a portfolio manager, displaying the current balances for a list of tokens. Additionally, we will display current market value of each asset in the portfolio.",
       "sidebar": "tutorials"
     },
-    "tutorials/indexer/near-lake-state-changes-indexer": {
-      "id": "tutorials/indexer/near-lake-state-changes-indexer",
-      "title": "NEAR Lake StateChanges indexer tutorial",
-      "description": "near-examples/near-lake-accounts-watcher: source code for a video tutorial on how to use the NEAR Lake Framework",
+    "tutorials/near-components/indexer-tutorials/feed-indexer": {
+      "id": "tutorials/near-components/indexer-tutorials/feed-indexer",
+      "title": "Social Feed Indexer",
+      "description": "NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers.",
       "sidebar": "tutorials"
     },
-    "tutorials/indexer/nft-indexer": {
-      "id": "tutorials/indexer/nft-indexer",
-      "title": "Building an NFT indexer",
-      "description": "near-examples/near-lake-nft-indexer: source code for this tutorial",
+    "tutorials/near-components/indexer-tutorials/hype-indexer": {
+      "id": "tutorials/near-components/indexer-tutorials/hype-indexer",
+      "title": "Hype Indexer",
+      "description": "NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers.",
       "sidebar": "tutorials"
     },
-    "tutorials/indexer/python-lake-indexer": {
-      "id": "tutorials/indexer/python-lake-indexer",
-      "title": "NEAR Lake indexer basic tutorial",
-      "description": "frolvanya/near-lake-raw-printer: source code for the tutorial on how to create an indexer that prints block height and number of shards",
+    "tutorials/near-components/indexer-tutorials/nft-indexer": {
+      "id": "tutorials/near-components/indexer-tutorials/nft-indexer",
+      "title": "Minted NFTs Indexer",
+      "description": "NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers.",
       "sidebar": "tutorials"
     },
-    "tutorials/indexer/python-nft-indexer": {
-      "id": "tutorials/indexer/python-nft-indexer",
-      "title": "Building an NFT indexer for Python",
-      "description": "frolvanya/near-lake-nft-indexer: source code for this tutorial",
+    "tutorials/near-components/indexer-tutorials/posts-indexer": {
+      "id": "tutorials/near-components/indexer-tutorials/posts-indexer",
+      "title": "Posts Indexer",
+      "description": "NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers.",
       "sidebar": "tutorials"
     },
-    "tutorials/indexer/run-lake-indexer": {
-      "id": "tutorials/indexer/run-lake-indexer",
-      "title": "Running NEAR Lake Indexer",
-      "description": "NEAR Lake is a blockchain indexer built on top of NEAR Indexer microframework to watch the network and store all the events as JSON files on AWS S3.",
+    "tutorials/near-components/interaction": {
+      "id": "tutorials/near-components/interaction",
+      "title": "Smart Contract Interaction",
+      "description": "Your frontend can interact with different blockchains using the built-in BOS API. Let's see how to create an application that reads and stores a greeting from a NEAR smart contract.",
+      "sidebar": "tutorials"
+    },
+    "tutorials/near-components/lido": {
+      "id": "tutorials/near-components/lido",
+      "title": "Lido Example",
+      "description": "If you are ready to explore further, the Lido component serves as an excellent fully-fledged example, as it demonstrates how to interact with a smart contract deployed on the Ethereum mainnet.",
+      "sidebar": "tutorials"
+    },
+    "tutorials/near-components/push-notifications": {
+      "id": "tutorials/near-components/push-notifications",
+      "title": "Push Notifications",
+      "description": "Push messages enable your gateway to send notifications on desktop and mobile devices even when the users are not active.",
+      "sidebar": "tutorials"
+    },
+    "tutorials/near-components/queryapi-websockets": {
+      "id": "tutorials/near-components/queryapi-websockets",
+      "title": "WebSocket-enabled Components with QueryAPI",
+      "description": "In this article you'll learn how to create a NEAR component that gathers information from a QueryAPI indexer using WebSockets.",
+      "sidebar": "tutorials"
+    },
+    "tutorials/near-components/using-iframes": {
+      "id": "tutorials/near-components/using-iframes",
+      "title": "Using IFrames",
+      "description": "In this tutorial you'll learn how to use the iframe VM tag and the Iframe resizer library, so you can embed external HTML or use custom DOM elements when building NEAR components.",
       "sidebar": "tutorials"
     },
     "tutorials/nfts/approvals": {

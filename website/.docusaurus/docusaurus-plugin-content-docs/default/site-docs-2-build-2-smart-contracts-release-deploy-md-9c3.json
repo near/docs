@@ -1,0 +1,30 @@
+{
+  "id": "build/smart-contracts/release/deploy",
+  "title": "NEAR CLI - Basics",
+  "description": "After your contract is ready you can deploy it in the NEAR network for everyone to use it.",
+  "source": "@site/../docs/2.build/2.smart-contracts/release/deploy.md",
+  "sourceDirName": "2.build/2.smart-contracts/release",
+  "slug": "/build/smart-contracts/release/deploy",
+  "permalink": "/zh-CN/build/smart-contracts/release/deploy",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/release/deploy.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1712759479000,
+  "frontMatter": {
+    "id": "deploy",
+    "title": "NEAR CLI - Basics",
+    "sidebar_label": "Deploying and Using"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Local Development",
+    "permalink": "/zh-CN/build/smart-contracts/testing/kurtosis-localnet"
+  },
+  "next": {
+    "title": "Updating Contracts",
+    "permalink": "/zh-CN/build/smart-contracts/release/upgrade"
+  }
+}

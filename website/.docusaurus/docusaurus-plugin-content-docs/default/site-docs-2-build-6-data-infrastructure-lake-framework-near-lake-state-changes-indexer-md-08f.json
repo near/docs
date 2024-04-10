@@ -1,0 +1,29 @@
+{
+  "id": "build/data-infrastructure/lake-framework/near-lake-state-changes-indexer",
+  "title": "NEAR Lake Indexer Tutorial",
+  "description": "near-examples/near-lake-accounts-watcher: source code for a video tutorial on how to use the NEAR Lake Framework",
+  "source": "@site/../docs/2.build/6.data-infrastructure/lake-framework/near-lake-state-changes-indexer.md",
+  "sourceDirName": "2.build/6.data-infrastructure/lake-framework",
+  "slug": "/build/data-infrastructure/lake-framework/near-lake-state-changes-indexer",
+  "permalink": "/zh-CN/build/data-infrastructure/lake-framework/near-lake-state-changes-indexer",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/lake-framework/near-lake-state-changes-indexer.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1712759479000,
+  "frontMatter": {
+    "id": "near-lake-state-changes-indexer",
+    "title": "NEAR Lake Indexer Tutorial"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Lake Overview",
+    "permalink": "/zh-CN/build/data-infrastructure/lake-framework/near-lake"
+  },
+  "next": {
+    "title": "Migrating to NEAR Lake framework",
+    "permalink": "/zh-CN/build/data-infrastructure/lake-framework/migrating-to-near-lake-framework"
+  }
+}

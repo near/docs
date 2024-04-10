@@ -1,0 +1,17 @@
+{
+  "id": "build/primitives/nft/bos/list-for-sale",
+  "title": "list-for-sale",
+  "description": "The method nftapprove will call nfton_approve in marketplace.paras.near.",
+  "source": "@site/../docs/2.build/5.primitives/nft/bos/list-for-sale.md",
+  "sourceDirName": "2.build/5.primitives/nft/bos",
+  "slug": "/build/primitives/nft/bos/list-for-sale",
+  "permalink": "/zh-CN/build/primitives/nft/bos/list-for-sale",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/nft/bos/list-for-sale.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1712759479000,
+  "frontMatter": {}
+}

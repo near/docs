@@ -12,7 +12,7 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "gagdiez",
-  "lastUpdatedAt": 1711375194000,
+  "lastUpdatedAt": 1712759479000,
   "sidebarPosition": 0,
   "frontMatter": {
     "id": "introduction",
@@ -22,7 +22,7 @@
   "sidebar": "tutorials",
   "previous": {
     "title": "Lido Example",
-    "permalink": "/bos/tutorial/lido"
+    "permalink": "/tutorials/near-components/lido"
   },
   "next": {
     "title": "Pre-deployed Contract",

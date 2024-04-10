@@ -1,0 +1,30 @@
+{
+  "id": "build/smart-contracts/what-is",
+  "title": "What is a Smart Contract?",
+  "description": "Smart contracts are pieces of executable code that live in a NEAR account. They can store data, perform transactions in the account’s name, and expose methods so other accounts can interact with them.",
+  "source": "@site/../docs/2.build/2.smart-contracts/what-is.md",
+  "sourceDirName": "2.build/2.smart-contracts",
+  "slug": "/build/smart-contracts/what-is",
+  "permalink": "/zh-CN/build/smart-contracts/what-is",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/what-is.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1712759479000,
+  "frontMatter": {
+    "id": "what-is",
+    "title": "What is a Smart Contract?",
+    "sidebar_label": "What is a Contract?"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Rollup Data Availability",
+    "permalink": "/zh-CN/build/chain-abstraction/data-availability"
+  },
+  "next": {
+    "title": "Quickstart ✨",
+    "permalink": "/zh-CN/build/smart-contracts/quickstart"
+  }
+}

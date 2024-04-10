@@ -1,0 +1,17 @@
+{
+  "id": "build/primitives/linkdrop/bos/get-drop-id",
+  "title": "get-drop-id",
+  "description": "",
+  "source": "@site/../docs/2.build/5.primitives/linkdrop/bos/get-drop-id.md",
+  "sourceDirName": "2.build/5.primitives/linkdrop/bos",
+  "slug": "/build/primitives/linkdrop/bos/get-drop-id",
+  "permalink": "/zh-CN/build/primitives/linkdrop/bos/get-drop-id",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/linkdrop/bos/get-drop-id.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1712759479000,
+  "frontMatter": {}
+}

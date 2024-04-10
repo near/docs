@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/near-components/bos-loader",
+  "title": "BOS Loader",
+  "description": "In this article you'll learn how to develop, test, and deploy BOS components using CLI tools. You can use this workflow to tap into the colaboration, pull-request, and other GitHub benefits while still deploying components to the BOS.",
+  "source": "@site/../docs/3.tutorials/near-components/bos-loader.md",
+  "sourceDirName": "3.tutorials/near-components",
+  "slug": "/tutorials/near-components/bos-loader",
+  "permalink": "/zh-CN/tutorials/near-components/bos-loader",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/near-components/bos-loader.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1712759479000,
+  "frontMatter": {
+    "id": "bos-loader",
+    "title": "BOS Loader"
+  },
+  "sidebar": "tutorials",
+  "previous": {
+    "title": "Frontend & Multiple Contracts",
+    "permalink": "/zh-CN/tutorials/examples/frontend-multiple-contracts"
+  },
+  "next": {
+    "title": "Smart Contract Interaction",
+    "permalink": "/zh-CN/tutorials/near-components/interaction"
+  }
+}

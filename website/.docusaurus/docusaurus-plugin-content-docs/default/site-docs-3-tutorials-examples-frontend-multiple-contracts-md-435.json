@@ -12,7 +12,7 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "gagdiez",
-  "lastUpdatedAt": 1712679124000,
+  "lastUpdatedAt": 1712759479000,
   "frontMatter": {
     "id": "frontend-multiple-contracts",
     "title": "Frontend Interacting with Multiple Contracts",
@@ -25,6 +25,6 @@
   },
   "next": {
     "title": "BOS Loader",
-    "permalink": "/bos/dev/bos-loader"
+    "permalink": "/tutorials/near-components/bos-loader"
   }
 }

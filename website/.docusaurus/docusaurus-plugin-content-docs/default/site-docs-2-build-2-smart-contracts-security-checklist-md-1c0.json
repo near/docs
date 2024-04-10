@@ -12,7 +12,7 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "gagdiez",
-  "lastUpdatedAt": 1712679124000,
+  "lastUpdatedAt": 1712759479000,
   "frontMatter": {
     "id": "checklist",
     "title": "✅ Checklist"
@@ -20,10 +20,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Cross-Contract Calls",
-    "permalink": "/zh-CN/build/smart-contracts/anatomy-of-a-contract/crosscontract"
+    "permalink": "/zh-CN/build/smart-contracts/anatomy/crosscontract"
   },
   "next": {
     "title": "Notes on Serialization",
-    "permalink": "/zh-CN/build/smart-contracts/anatomy-of-a-contract/serialization"
+    "permalink": "/zh-CN/build/smart-contracts/anatomy/serialization"
   }
 }

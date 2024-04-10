@@ -1,0 +1,17 @@
+{
+  "id": "build/primitives/dex/web-app/get-deposit-balances",
+  "title": "get-deposit-balances",
+  "description": "The Wallet object comes from our quickstart template",
+  "source": "@site/../docs/2.build/5.primitives/dex/web-app/get-deposit-balances.md",
+  "sourceDirName": "2.build/5.primitives/dex/web-app",
+  "slug": "/build/primitives/dex/web-app/get-deposit-balances",
+  "permalink": "/zh-CN/build/primitives/dex/web-app/get-deposit-balances",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/dex/web-app/get-deposit-balances.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1712759479000,
+  "frontMatter": {}
+}

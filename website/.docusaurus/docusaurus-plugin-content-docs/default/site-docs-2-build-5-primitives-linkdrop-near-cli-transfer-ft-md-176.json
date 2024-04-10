@@ -1,0 +1,17 @@
+{
+  "id": "build/primitives/linkdrop/near-cli/transfer-ft",
+  "title": "transfer-ft",
+  "description": "",
+  "source": "@site/../docs/2.build/5.primitives/linkdrop/near-cli/transfer-ft.md",
+  "sourceDirName": "2.build/5.primitives/linkdrop/near-cli",
+  "slug": "/build/primitives/linkdrop/near-cli/transfer-ft",
+  "permalink": "/zh-CN/build/primitives/linkdrop/near-cli/transfer-ft",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/linkdrop/near-cli/transfer-ft.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1712759479000,
+  "frontMatter": {}
+}

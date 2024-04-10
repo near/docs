@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/near-components/ethers-js-best-practices",
+  "title": "Best Practices for Ethereum developers on NEAR",
+  "description": "In this example, we will create an Ethereum dApp on NEAR that functions as a portfolio manager, displaying the current balances for a list of tokens. Additionally, we will display current market value of each asset in the portfolio.",
+  "source": "@site/../docs/3.tutorials/near-components/bos-ethersjs-best-practices.md",
+  "sourceDirName": "3.tutorials/near-components",
+  "slug": "/tutorials/near-components/ethers-js-best-practices",
+  "permalink": "/zh-CN/tutorials/near-components/ethers-js-best-practices",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/near-components/bos-ethersjs-best-practices.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1712759479000,
+  "frontMatter": {
+    "id": "ethers-js-best-practices",
+    "title": "Best Practices for Ethereum developers on NEAR"
+  },
+  "sidebar": "tutorials",
+  "previous": {
+    "title": "NEAR for Ethereum developers",
+    "permalink": "/zh-CN/tutorials/near-components/ethers-js"
+  },
+  "next": {
+    "title": "Lido Example",
+    "permalink": "/zh-CN/tutorials/near-components/lido"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "build/primitives/dex/bos/swap",
+  "title": "swap",
+  "description": "Example response",
+  "source": "@site/../docs/2.build/5.primitives/dex/bos/swap.md",
+  "sourceDirName": "2.build/5.primitives/dex/bos",
+  "slug": "/build/primitives/dex/bos/swap",
+  "permalink": "/zh-CN/build/primitives/dex/bos/swap",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/dex/bos/swap.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1712759479000,
+  "frontMatter": {}
+}

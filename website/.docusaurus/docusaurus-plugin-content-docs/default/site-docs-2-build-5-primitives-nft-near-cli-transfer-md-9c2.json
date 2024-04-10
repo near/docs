@@ -1,0 +1,17 @@
+{
+  "id": "build/primitives/nft/near-cli/transfer",
+  "title": "transfer",
+  "description": "",
+  "source": "@site/../docs/2.build/5.primitives/nft/near-cli/transfer.md",
+  "sourceDirName": "2.build/5.primitives/nft/near-cli",
+  "slug": "/build/primitives/nft/near-cli/transfer",
+  "permalink": "/zh-CN/build/primitives/nft/near-cli/transfer",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/nft/near-cli/transfer.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1712759479000,
+  "frontMatter": {}
+}

@@ -1,0 +1,17 @@
+{
+  "id": "build/primitives/nft/bos/query",
+  "title": "query",
+  "description": "Example response",
+  "source": "@site/../docs/2.build/5.primitives/nft/bos/query.md",
+  "sourceDirName": "2.build/5.primitives/nft/bos",
+  "slug": "/build/primitives/nft/bos/query",
+  "permalink": "/zh-CN/build/primitives/nft/bos/query",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/nft/bos/query.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1712759479000,
+  "frontMatter": {}
+}

@@ -21,8 +21,8 @@
   },
   "sidebar": "tutorials",
   "previous": {
-    "title": "Lido 예시",
-    "permalink": "/ko/bos/tutorial/lido"
+    "title": "Lido Example",
+    "permalink": "/ko/tutorials/near-components/lido"
   },
   "next": {
     "title": "사전 배포된 컨트랙트",

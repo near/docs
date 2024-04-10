@@ -1,0 +1,30 @@
+{
+  "id": "build/data-infrastructure/query-api/intro",
+  "title": "QueryAPI Overview",
+  "description": "Near QueryAPI is a fully managed solution to build indexer functions,",
+  "source": "@site/../docs/2.build/6.data-infrastructure/query-api/intro.md",
+  "sourceDirName": "2.build/6.data-infrastructure/query-api",
+  "slug": "/build/data-infrastructure/query-api/intro",
+  "permalink": "/zh-CN/build/data-infrastructure/query-api/intro",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/query-api/intro.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1712759479000,
+  "frontMatter": {
+    "id": "intro",
+    "title": "QueryAPI Overview",
+    "sidebar_label": "Introduction"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "BigQuery",
+    "permalink": "/zh-CN/build/data-infrastructure/big-query"
+  },
+  "next": {
+    "title": "How it works",
+    "permalink": "/zh-CN/build/data-infrastructure/query-api/how-it-works"
+  }
+}

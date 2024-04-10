@@ -1,0 +1,30 @@
+{
+  "id": "build/near-components/anatomy/bos-components",
+  "title": "Historical data",
+  "description": "Building components that handle historical blockchain data require dedicated solutions that manage the data and reduce the latency of requests, as it's not possible to scan the whole blockchain when a user makes a request.",
+  "source": "@site/../docs/2.build/3.near-components/anatomy/bos-components.md",
+  "sourceDirName": "2.build/3.near-components/anatomy",
+  "slug": "/build/near-components/anatomy/bos-components",
+  "permalink": "/zh-CN/build/near-components/anatomy/bos-components",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/3.near-components/anatomy/bos-components.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1712759479000,
+  "frontMatter": {
+    "id": "bos-components",
+    "title": "Historical data",
+    "sidebar_label": "Handling Historical data"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Social Notifications",
+    "permalink": "/zh-CN/build/near-components/anatomy/notifications"
+  },
+  "next": {
+    "title": "Using components on WebApps",
+    "permalink": "/zh-CN/build/near-components/bos-gateway"
+  }
+}

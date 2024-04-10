@@ -1,0 +1,29 @@
+{
+  "id": "build/smart-contracts/anatomy/anatomy",
+  "title": "The Contract Class",
+  "description": "Your contract's logic and state (storage) is defined by the main class, in which:",
+  "source": "@site/../docs/2.build/2.smart-contracts/anatomy/anatomy.md",
+  "sourceDirName": "2.build/2.smart-contracts/anatomy",
+  "slug": "/build/smart-contracts/anatomy/",
+  "permalink": "/zh-CN/build/smart-contracts/anatomy/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/anatomy/anatomy.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1712759479000,
+  "frontMatter": {
+    "id": "anatomy",
+    "title": "The Contract Class"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Modules, Types & Structs",
+    "permalink": "/zh-CN/build/smart-contracts/anatomy/basics"
+  },
+  "next": {
+    "title": "Environment",
+    "permalink": "/zh-CN/build/smart-contracts/anatomy/environment"
+  }
+}

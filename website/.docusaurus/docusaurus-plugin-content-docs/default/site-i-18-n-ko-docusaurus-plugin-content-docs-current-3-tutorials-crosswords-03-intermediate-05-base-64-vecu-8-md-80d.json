@@ -25,7 +25,7 @@
     "permalink": "/ko/tutorials/crosswords/intermediate/cross-contract-calls"
   },
   "next": {
-    "title": "Posts 인덱서",
-    "permalink": "/ko/bos/tutorial/indexer-tutorials/posts-indexer"
+    "title": "Posts Indexer",
+    "permalink": "/ko/tutorials/near-components/indexer-tutorials/posts-indexer"
   }
 }

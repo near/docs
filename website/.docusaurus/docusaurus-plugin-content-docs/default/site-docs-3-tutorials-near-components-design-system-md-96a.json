@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/near-components/ds-components",
+  "title": "Design Components",
+  "description": "When building components, the NEAR VM provides a complete set of Radix primitives to simplify UI development.",
+  "source": "@site/../docs/3.tutorials/near-components/design-system.md",
+  "sourceDirName": "3.tutorials/near-components",
+  "slug": "/tutorials/near-components/ds-components",
+  "permalink": "/zh-CN/tutorials/near-components/ds-components",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/near-components/design-system.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1712759479000,
+  "frontMatter": {
+    "id": "ds-components",
+    "title": "Design Components"
+  },
+  "sidebar": "tutorials",
+  "previous": {
+    "title": "Smart Contract Interaction",
+    "permalink": "/zh-CN/tutorials/near-components/interaction"
+  },
+  "next": {
+    "title": "Using IFrames",
+    "permalink": "/zh-CN/tutorials/near-components/using-iframes"
+  }
+}

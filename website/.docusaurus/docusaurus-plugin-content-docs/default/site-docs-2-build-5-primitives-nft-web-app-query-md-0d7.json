@@ -1,0 +1,17 @@
+{
+  "id": "build/primitives/nft/web-app/query",
+  "title": "query",
+  "description": "The Wallet object comes from our quickstart template",
+  "source": "@site/../docs/2.build/5.primitives/nft/web-app/query.md",
+  "sourceDirName": "2.build/5.primitives/nft/web-app",
+  "slug": "/build/primitives/nft/web-app/query",
+  "permalink": "/zh-CN/build/primitives/nft/web-app/query",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/nft/web-app/query.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "gagdiez",
+  "lastUpdatedAt": 1712759479000,
+  "frontMatter": {}
+}
