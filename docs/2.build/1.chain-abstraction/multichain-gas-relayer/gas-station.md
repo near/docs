@@ -14,7 +14,7 @@ This smart contract is a piece of the NEAR Multichain project, which makes NEAR 
 - The [MPC recovery service](https://github.com/near/mpc-recovery), also called the _"MPC signer service"_, includes a network of trusted MPC signers, which hold keyshares and cooperatively sign transactions on behalf of the MPC network. It also includes an on-chain component, called the _"MPC signer contract,"_ which accepts on-chain signature requests and returns signatures computed by the MPC network.
 - The [multichain relayer server](multichain-server.md) scans this smart contract for signed transaction payloads and emits them to foreign chain RPCs.
 
-## How does it work?
+## How it works
 
 Currently, relaying one transaction to a foreign chain requires three transactions.
 Three transactions are required because of the gas restrictions imposed by the protocol. Currently (pre-NEP-516), the MPC signing function requires a _lot_ of gas, so dividing up the signing process into three parts is required to maximize the amount of gas available to each signing call.
