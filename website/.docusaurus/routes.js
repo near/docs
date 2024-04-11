@@ -9,15 +9,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '27a'),
+    component: ComponentCreator('/zh-CN/', '592'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '1b5'),
+        component: ComponentCreator('/zh-CN/', '899'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '037'),
+            component: ComponentCreator('/zh-CN/', '0e9'),
             routes: [
               {
                 path: '/zh-CN/',
@@ -367,7 +367,7 @@ export default [
               },
               {
                 path: '/zh-CN/build/near-components/dev-environment',
-                component: ComponentCreator('/zh-CN/build/near-components/dev-environment', '6ca'),
+                component: ComponentCreator('/zh-CN/build/near-components/dev-environment', '760'),
                 exact: true,
                 sidebar: "build"
               },
