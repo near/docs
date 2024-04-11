@@ -34,14 +34,15 @@ The open-source Rust [reference implementation of a Relayer server](https://gith
 Features can be combined as needed. Use of one feature does not preclude the use of any other feature unless specified.
 :::
 
-1. Cover the gas costs of end users while allowing them to maintain custody of their funds and approve transactions (`/relay`, `/send_meta_tx`, `/send_meta_tx_async`, `/send_meta_tx_nopoll`)
-2. Only pay for users interacting with certain contracts by whitelisting contracts addresses (`whitelisted_contracts` in `config.toml`) 
-3. Specify gas cost allowances for all accounts (`/update_all_allowances`) or on a per-user account basis (`/create_account_atomic`, `/register_account`, `/update_allowance`) and keep track of allowances (`/get_allowance`)
-4. Specify the accounts for which the relayer will cover gas fees (`whitelisted_delegate_action_receiver_ids` in `config.toml`)
-5. Only allow users to register if they have a unique Oauth Token (`/create_account_atomic`, `/register_account`)
-6. Relayer Key Rotation: `keys_filenames` in `config.toml`
-7. Integrate with [FastAuth SDK](../fastauth-sdk.md)
-8. Mix and Match configuration options
+1. Sign and send Meta Transactions to the RPC to cover the gas costs of end users while allowing them to maintain custody of their funds and approve transactions (`/relay`, `/send_meta_tx`, `/send_meta_tx_async`, `/send_meta_tx_nopoll`)
+2. Sign Meta Transactions returning a Signed Meta Transaction to be sent to the RPC later - (`/sign_meta_tx`, `/sign_meta_tx_no_filter`)
+3. Only pay for users interacting with certain contracts by whitelisting contracts addresses (`whitelisted_contracts` in `config.toml`) 
+4. Specify gas cost allowances for all accounts (`/update_all_allowances`) or on a per-user account basis (`/create_account_atomic`, `/register_account`, `/update_allowance`) and keep track of allowances (`/get_allowance`)
+5. Specify the accounts for which the relayer will cover gas fees (`whitelisted_delegate_action_receiver_ids` in `config.toml`)
+6. Only allow users to register if they have a unique Oauth Token (`/create_account_atomic`, `/register_account`)
+7. Relayer Key Rotation: `keys_filenames` in `config.toml`
+8. Integrate with [FastAuth SDK](../fastauth-sdk.md)
+9. Mix and Match configuration options
 
 :::tip
 Check the [Use cases section](#use-cases) for example configuration files corresponding to different usage scenarios.
@@ -55,7 +56,7 @@ You can follow these steps to set up your local Relayer server development envir
 2. If you don't have a NEAR account, [create one](../../../1.concepts/protocol/account-model.md)
 3. With the account from step 2, create a JSON file in this directory in the format
    ```js
-   {"account_id":"example.testnet","public_key":"ed25519:98GtfFzez3opomVpwa7i4m3nptHtc7Ha514XHMWszLtQ","private_key":"ed25519:YWuyKVQHE3rJQYRC3pRGV56o1qEtA1PnMYPDEtroc5kX4A4mWrJwF7XkzGe7JWNMABbtY4XFDBJEzgLyfPkwpzC"}
+   [{"account_id":"example.testnet","public_key":"ed25519:98GtfFzez3opomVpwa7i4m3nptHtc7Ha514XHMWszLtQ","private_key":"ed25519:YWuyKVQHE3rJQYRC3pRGV56o1qEtA1PnMYPDEtroc5kX4A4mWrJwF7XkzGe7JWNMABbtY4XFDBJEzgLyfPkwpzC"}]
    ```
    using a [Full Access Key](../../../1.concepts/protocol/access-keys.md#full-access-keys) from an account that has enough NEAR to cover the gas costs of transactions your server will be relaying. Usually, this will be a copy of the json file found in the `.near-credentials` directory. 
 4. Update values in `config.toml`
