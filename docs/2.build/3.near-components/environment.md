@@ -37,3 +37,6 @@ A CLI tool to preview local components in NEAR BOS. A perfect companion to the [
 
 #### [BOS CLI](https://github.com/FroVolod/bos-cli-rs)
 A command line utility that simplifies local component development for NEAR BOS.
+
+#### [BOS Workspace](https://github.com/nearbuilders/bos-workspace)
+A comprehensive toolset for simplifying the local development of NEAR components and applications, featuring hot reload, TypeScript support, multi-app management, and a local gateway.
