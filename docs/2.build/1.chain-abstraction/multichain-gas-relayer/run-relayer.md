@@ -100,7 +100,7 @@ You can find the complete Relayer server API specification on the [GitHub reposi
 
 ## Use cases
 
-The [examples folder](https://github.com/near/pagoda-relayer-rs/tree/main/examples) on the GitHub repository contains example configs corresponding to different use cases. 
+The [examples folder](https://github.com/near/pagoda-relayer-rs/tree/main/examples) on the GitHub repository contains example configuration files corresponding to different use cases. 
 
 :::info
 These files are for reference only and you should update the `config.toml` values before using it on your development environment.
@@ -113,18 +113,18 @@ This is a config for a relayer that covers gas for all user transactions to all 
 
 ### Basic whitelist
 
-This is a config for a basic relayer that covers gas for user transactions to interact with a whitelisted set of contracts
+This is a configuration for a basic relayer that covers gas for user transactions to interact with a whitelisted set of contracts
 - [`basic_whitelist.toml`](https://github.com/near/pagoda-relayer-rs/blob/main/examples/configs/basic_whitelist.toml)
 
 ### Redis
 
-This is a config for a relayer that covers gas for user transactions up to a allowance specified in Redis to interact with a whitelisted set of contracts. 
+This is a configuration for a relayer that covers gas for user transactions up to a allowance specified in Redis to interact with a whitelisted set of contracts. 
 - Allowances are on a per-account id basis and on signup (account creation in Redis and on-chain) an OAuth token is required to help with sybil resistance
 - [`redis.toml`](https://github.com/near/pagoda-relayer-rs/blob/main/examples/configs/redis.toml)
 
 ### FastAuth
 
-This is a config for use if you intend to integrate with [FastAuth SDK](../fastauth-sdk.md)
+This is a configuration for use if you intend to integrate with [FastAuth SDK](../fastauth-sdk.md)
 - It covers gas for user transactions up to a allowance specified in Redis to interact with a whitelisted set of contracts. 
 - Allowances are on a per-account id basis and on signup (account creation in Redis and on-chain) an OAuth token is required to help with sybil resistance 
 - This also makes use of a shared storage functionality on the Near Social DB contract 
@@ -133,7 +133,7 @@ This is a config for use if you intend to integrate with [FastAuth SDK](../fasta
 
 ### Pay with fungible tokens
 
-This is a config for a relayer that ensures there's FTs sent to a burn address used to cover the equivalent amount of gas for user transactions to interact with a whitelisted set of contracts 
+This is a configuration for a relayer that ensures there's FTs sent to a burn address used to cover the equivalent amount of gas for user transactions to interact with a whitelisted set of contracts 
 - [`pay_with_ft.toml`](https://github.com/near/pagoda-relayer-rs/blob/main/examples/configs/pay_with_ft.toml)
 
 ### Whitelist senders
@@ -143,13 +143,13 @@ This is a config for a relayer that covers gas for a whitelisted set of users' t
 
 ### Shared storage
 
-This is a config for a relayer that covers BOTH gas AND storage fees for user transactions to interact with a whitelisted set of contracts
+This is a configuration for a relayer that covers BOTH gas AND storage fees for user transactions to interact with a whitelisted set of contracts
 
 - be sure to include shared storage logic based on [`shared_storage.rs`](https://github.com/NearSocial/social-db/blob/master/contract/src/shared_storage.rs) in your contract that is being whitelisted
 - [`shared_storage.toml`](https://github.com/near/pagoda-relayer-rs/blob/main/examples/configs/shared_storage.toml)
 
 ### Exchange withdraw
 
-This is a config for a relayer where an exchange running the relayer covers user withdraw fees when they are withdrawing stablecoins on NEAR (e.g., `USDT` or `USDC`)
+This is a configuration for a relayer where an exchange running the relayer covers user withdraw fees when they are withdrawing stablecoins on NEAR (e.g., `USDT` or `USDC`)
 
 - [`exchange_withdraw.toml`](https://github.com/near/pagoda-relayer-rs/blob/main/examples/configs/exchange_withdraw.toml)
