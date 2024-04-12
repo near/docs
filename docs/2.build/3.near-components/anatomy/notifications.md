@@ -60,7 +60,7 @@ While there is no standard for notifications, we recommend using the following t
 <Tabs>
   <TabItem value="Custom" default>
 
-  ```js
+```js
   Social.set({
     index: JSON.stringify({
       notify: {
@@ -74,15 +74,15 @@ While there is no standard for notifications, we recommend using the following t
       }
     })
   });
-  ```
+```
 
-  **Note**: currently, only near.org implements custom notifications
+**Note**: currently, only near.org implements custom notifications
 
-  </TabItem>
+</TabItem>
 
-  <TabItem value="Like">
+<TabItem value="Like">
 
-  ```js
+```js
   Social.set({
     index: JSON.stringify({
       notify: {
@@ -98,14 +98,15 @@ While there is no standard for notifications, we recommend using the following t
       }
     })
   })
-  ```
+```
 
-  **Reference**: [LikeButton](https://near.org/near/widget/ComponentDetailsPage?src=near/widget/LikeButton&tab=source)
+**Reference**: [LikeButton](https://near.org/near/widget/ComponentDetailsPage?src=near/widget/LikeButton&tab=source)
 
-  </TabItem>
-  <TabItem value="Comment">
+</TabItem>
 
-  ```js
+<TabItem value="Comment">
+
+```js
   Social.set({
     index: JSON.stringify({
       notify: {
@@ -121,14 +122,15 @@ While there is no standard for notifications, we recommend using the following t
       }
     })
   })
-  ```
+```
 
-  **Reference**: [CommentButton](https://near.org/near/widget/ComponentDetailsPage?src=near/widget/Comments.Compose&tab=source)
+**Reference**: [CommentButton](https://near.org/near/widget/ComponentDetailsPage?src=near/widget/Comments.Compose&tab=source)
 
-  </TabItem>
-    <TabItem value="Follow">
+</TabItem>
 
-  ```js
+<TabItem value="Follow">
+
+```js
   Social.set({
     index: JSON.stringify({
       notify: {
@@ -139,11 +141,11 @@ While there is no standard for notifications, we recommend using the following t
       }
     })
   })
-  ```
+```
 
-  **Reference**: [FollowButton](https://near.org/near/widget/ComponentDetailsPage?src=near/widget/FollowButton&tab=source)
+**Reference**: [FollowButton](https://near.org/near/widget/ComponentDetailsPage?src=near/widget/FollowButton&tab=source)
 
-  </TabItem>
+</TabItem>
 
 </Tabs>
 

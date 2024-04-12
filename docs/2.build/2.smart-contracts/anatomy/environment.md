@@ -214,6 +214,7 @@ assert!(env::prepaid_gas() >= REQUIRED_GAS, "Please attach at least 20 TGas");
 | Validator Total Stake | `env::validator_total_stake()`                          | Returns the total stake of validators in the current epoch.                                                                                                                                                                                                                                                                      |
 
 </TabItem>
+
 </Tabs>
 
 :::info 
