@@ -36,6 +36,7 @@ npm install \
 ```
 
 <details>
+
 <summary>Using `near-api-js` in plain HTML</summary>
 
 You can add `near-api-js` as a script tag in your html.
@@ -59,7 +60,9 @@ To create a wallet, simply import the `Wallet` object from the module and initia
     <Github fname="index.js"
             url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/index.js"
             start="2" end="8" />
-  </Language>
+
+</Language>
+
 </CodeTabs>
 
 When instantiating the wallet you can choose if you want to **create a [FunctionCall Key](../../1.concepts/protocol/access-keys.md#function-call-keys-function-call-keys)**.
@@ -90,7 +93,8 @@ const my_network = {
 const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS, network: my_network });
 ```
 
-  </Language>
+</Language>
+
 </CodeTabs>
 
 :::tip
@@ -114,10 +118,13 @@ For this, override the `window.onload` method with a function that calls the `wa
     <Github fname="index.js"
             url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/index.js"
             start="10" end="21" />
+
     <Github fname="near-wallet.js"
             url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/near-wallet.js"
             start="36" end="52" />
-  </Language>
+
+</Language>
+
 </CodeTabs>
 
 Under the hood (check the `near-wallet` tab) you can see that we are actually setting up the wallet selector, and asking it if the user logged-in already.
@@ -135,10 +142,13 @@ Because of their read-only nature, view methods are **free** to call, and do **n
     <Github fname="index.js"
             url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/index.js"
             start="46" end="46" />
+
     <Github fname="near-wallet.js"
             url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/near-wallet.js"
             start="68" end="81" />
-  </Language>
+
+</Language>
+
 </CodeTabs>
 
 The snippet above shows how we call view methods in our examples. Switch to the `near-wallet` tab to see under the hood: we are actually making a **direct call to the RPC** using `near-api-js`.
@@ -162,10 +172,13 @@ Signing in is as simple as requesting the `wallet` object to `signIn`, the same 
     <Github fname="index.js"
             url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/index.js"
             start="25" end="26" />
+
     <Github fname="near-wallet.js"
             url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/near-wallet.js"
             start="54" end="66" />
-  </Language>
+
+</Language>
+
 </CodeTabs>
 
 When the user clicks in the button, it will be asked to select a wallet and use it to login.
@@ -181,7 +194,9 @@ If you instantiated the `Wallet` passing an account for the `createAccessKeyFor`
     <Github fname="index.js"
             url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/index.js"
             start="8" end="8" />
-  </Language>
+
+</Language>
+
 </CodeTabs>
 
 By default, such key enables to expend a maximum of `0.25Ⓝ` on GAS calling methods in **the specified** contract **without prompting** the user to sign them.
@@ -207,10 +222,13 @@ It is important to notice that, if you ask for money to be attached in the call,
     <Github fname="index.js"
             url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/index.js"
             start="36" end="36" />
+
     <Github fname="near-wallet.js"
             url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/near-wallet.js"
             start="83" end="103" />
-  </Language>
+
+</Language>
+
 </CodeTabs>
 
 Under the hood (see `near-wallet` tab) we can see that we are actually asking the **wallet** to **sign a FunctionCall transaction** for us.
@@ -234,10 +252,13 @@ If the method invoked returned a result, you can use the transaction hash to ret
   <Github fname="index.js"
             url="https://github.com/near-examples/donation-examples/blob/main/frontend/src/index.js"
             start="71" end="92" />
+
     <Github fname="utils.js"
             url="https://github.com/near-examples/donation-examples/blob/main/frontend/src/near-wallet.js"
             start="105" end="113" />
-  </Language>
+
+</Language>
+
 </CodeTabs>
 
 ---

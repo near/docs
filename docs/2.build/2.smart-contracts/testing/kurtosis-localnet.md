@@ -64,7 +64,6 @@ If you're running your NEAR-in-Kurtosis cluster on a machine you intend to acces
 
 <details>
 <summary>Example response: </summary>
-<p>
 
 ```bash
 Created directory '/Users/zerix/.neartosis' for storing all NEAR-in-Kurtosis output
@@ -285,7 +284,6 @@ If you're running Kurtosis on a remote machine, you'll also need to:
 
 :::
 
-</p>
 </details>
 
 If you ever forget the above URLs, you can inspect the cluster:
@@ -402,7 +400,6 @@ local_near send $ACCOUNT_ID test.near 1
 
 <details>
 <summary>Example response: </summary>
-<p>
 
 ```bash
 Sending 1 NEAR to test.near from kevin.test.near
@@ -412,7 +409,6 @@ To see the transaction in the transaction explorer, please open this url in your
 http://127.0.0.1:8331/transactions/3e3H5zqj9noKGYTCMqeZ5pb4NWK7tQsjYKak6ybtpgvD
 ```
 
-</p>
 </details>
 
 ### Local NEAR Explorer
@@ -467,7 +463,6 @@ local_near deploy --wasmFile ~/main.wasm --accountId $ACCOUNT_ID
 
 <details>
 <summary>Example response: </summary>
-<p>
 
 ```
 Loaded master account test.near key from /Users/benjaminkurrek/.neartosis/2021-12-02T13.37.41/validator-key.json with public key = ed25519:AnLHi4ZAxfxFAQSXniycyZS6dpBqxhmVZH3zBCZbqAS6
@@ -478,7 +473,6 @@ http://127.0.0.1:62290/transactions/7atHm2piVehEitYeMF2FxWuRJVd6ZdRQEo3K83P98GuR
 Done deploying to goteam.test.near
 ```
 
-</p>
 </details>
 
 - Click on the clink to the Explorer and verify that the contract was deployed:

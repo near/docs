@@ -73,6 +73,7 @@ Cross-contract calls work by creating two promises in the network:
 2. A promise to call back a **different** method in your contract with the result (`Promise.then`).
 
 Both promises take the same arguments:
+
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
     
