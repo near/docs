@@ -23,7 +23,7 @@ You can send $NEAR from your contract to any other account on the network. The G
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="🌐 JavaScript">
 
-  ```js
+```js
   import { NearBindgen, NearPromise, call } from 'near-sdk-js'
   import { AccountId } from 'near-sdk-js/lib/types'
 
@@ -34,12 +34,13 @@ You can send $NEAR from your contract to any other account on the network. The G
       NearPromise.new(to).transfer(amount);
     }
   }
-  ```
+```
 
-  </TabItem>
-  <TabItem value="🦀 Rust">
+</TabItem>
 
-  ```rust
+<TabItem value="🦀 Rust">
+
+```rust
   use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
   use near_sdk::{near_bindgen, AccountId, Promise, Balance};
 
@@ -53,9 +54,10 @@ You can send $NEAR from your contract to any other account on the network. The G
       Promise::new(to).transfer(amount);
     }
   }
-  ```
+```
 
-  </TabItem>
+</TabItem>
+
 </Tabs>
 
 :::tip
@@ -77,7 +79,7 @@ right in the callback.
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="🌐 JavaScript">
 
-  ```js
+```js
   import { NearBindgen, near, call, bytes, NearPromise } from 'near-sdk-js'
   import { AccountId } from 'near-sdk-js/lib/types'
 
@@ -116,12 +118,13 @@ right in the callback.
       }
     }
   }
-  ```
+```
 
-  </TabItem>
-  <TabItem value="🦀 Rust">
+</TabItem>
 
-  ```rust
+<TabItem value="🦀 Rust">
+
+```rust
   use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
   use near_sdk::{near_bindgen, env, log, Promise, Gas, PromiseError};
   use serde_json::json;
@@ -156,9 +159,10 @@ right in the callback.
       }
     }
   }
-  ```
+```
 
-  </TabItem>
+</TabItem>
+
 </Tabs>
 
 :::warning
@@ -178,7 +182,7 @@ Sub-accounts are simply useful for organizing your accounts (e.g. `dao.project.n
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="🌐 JavaScript">
 
-  ```js
+```js
   import { NearBindgen, near, call, NearPromise } from 'near-sdk-js'
 
   const MIN_STORAGE: bigint = BigInt("1000000000000000000000") // 0.001Ⓝ
@@ -194,12 +198,13 @@ Sub-accounts are simply useful for organizing your accounts (e.g. `dao.project.n
       .transfer(MIN_STORAGE)
     }
   }
-  ```
+```
 
-  </TabItem>
-  <TabItem value="🦀 Rust">
+</TabItem>
 
-  ```rust
+<TabItem value="🦀 Rust">
+
+```rust
   use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
   use near_sdk::{near_bindgen, env, Promise, Balance};
 
@@ -218,9 +223,10 @@ Sub-accounts are simply useful for organizing your accounts (e.g. `dao.project.n
       .transfer(MIN_STORAGE);
     }
   }
-  ```
+```
 
-  </TabItem>
+</TabItem>
+
 </Tabs>
 
 :::tip
@@ -228,12 +234,15 @@ Sub-accounts are simply useful for organizing your accounts (e.g. `dao.project.n
 :::
 
 :::caution
-  When you create an account from within a contract, it has no keys by default. If you don't explicitly [add keys](#add-keys) to it or [deploy a contract](#deploy-a-contract) on creation then it will be [locked](../../../1.concepts/protocol/access-keys.md#locked-accounts).
+
+When you create an account from within a contract, it has no keys by default. If you don't explicitly [add keys](#add-keys) to it or [deploy a contract](#deploy-a-contract) on creation then it will be [locked](../../../1.concepts/protocol/access-keys.md#locked-accounts).
+
 :::
 
 <hr className="subsection" />
 
 #### Creating Other Accounts
+
 Accounts can only create immediate sub-accounts of themselves.
 
 If your contract wants to create a `.mainnet` or `.testnet` account, then it needs to [call](#function-call)
@@ -242,7 +251,7 @@ the `create_account` method of `near` or `testnet` root contracts.
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="🌐 JavaScript">
 
-  ```js
+```js
   import { NearBindgen, near, call, bytes, NearPromise } from 'near-sdk-js'
 
   const MIN_STORAGE: bigint = BigInt("1820000000000000000000"); //0.00182Ⓝ
@@ -261,12 +270,13 @@ the `create_account` method of `near` or `testnet` root contracts.
       .functionCall("create_account", args, MIN_STORAGE, CALL_GAS);
     }
   }
-  ```
+```
 
-  </TabItem>
-  <TabItem value="🦀 Rust">
+</TabItem>
 
-  ```rust
+<TabItem value="🦀 Rust">
+
+```rust
   use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
   use near_sdk::{near_bindgen, Promise, Gas, Balance };
   use serde_json::json;
@@ -291,9 +301,10 @@ the `create_account` method of `near` or `testnet` root contracts.
       .function_call("create_account".to_string(), args, MIN_STORAGE, CALL_GAS);
     }
   }
-  ```
+```
 
-  </TabItem>
+</TabItem>
+
 </Tabs>
 
 ---
@@ -305,7 +316,7 @@ When creating an account you can also batch the action of deploying a contract t
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="🦀 Rust">
 
-  ```rust
+```rust
   use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
   use near_sdk::{near_bindgen, env, Promise, Balance};
 
@@ -326,9 +337,10 @@ When creating an account you can also batch the action of deploying a contract t
       .deploy_contract(HELLO_CODE.to_vec());
     }
   }
-  ```
+```
 
-  </TabItem>
+</TabItem>
+
 </Tabs>
 
 :::tip
@@ -350,7 +362,7 @@ There are two options for adding keys to the account:
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="🌐 JavaScript">
 
-  ```js
+```js
   import { NearBindgen, near, call, NearPromise } from 'near-sdk-js'
   import { PublicKey } from 'near-sdk-js/lib/types'
 
@@ -368,12 +380,13 @@ There are two options for adding keys to the account:
       .addFullAccessKey(public_key)
     }
   }
-  ```
+```
 
-  </TabItem>
-  <TabItem value="🦀 Rust">
+</TabItem>
 
-  ```rust
+<TabItem value="🦀 Rust">
+
+```rust
   use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
   use near_sdk::{near_bindgen, env, Promise, Balance, PublicKey};
 
@@ -395,9 +408,10 @@ There are two options for adding keys to the account:
       .add_full_access_key(public_key);
     }
   }
-  ```
+```
 
-  </TabItem>
+</TabItem>
+
 </Tabs>
 
 Notice that what you actually add is a "public key". Whoever holds its private counterpart, i.e. the private-key, will be able to use the newly access key.
@@ -417,7 +431,7 @@ There are two scenarios in which you can use the `delete_account` action:
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="🌐 JavaScript">
 
-  ```js
+```js
   import { NearBindgen, near, call, NearPromise } from 'near-sdk-js'
   import { AccountId } from 'near-sdk-js/lib/types'
 
@@ -441,12 +455,13 @@ There are two scenarios in which you can use the `delete_account` action:
       .deleteAccount(beneficiary)
     }
   }
-  ```
+```
 
-  </TabItem>
-  <TabItem value="🦀 Rust">
+</TabItem>
 
-  ```rust
+<TabItem value="🦀 Rust">
+
+```rust
   use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
   use near_sdk::{near_bindgen, env, Promise, Balance, AccountId};
 
@@ -471,9 +486,10 @@ There are two scenarios in which you can use the `delete_account` action:
       .delete_account(beneficiary);
     }
   }
-  ```
+```
 
-  </TabItem>
+</TabItem>
+
 </Tabs>
 
 :::warning Token Loss

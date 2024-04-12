@@ -27,14 +27,18 @@ While making your contract, it is likely that you will want to query information
     <Github fname="contract.ts" 
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/src/contract.ts"
             start="17" end="39" />
-  </Language>
-  <Language value="🦀 Rust" language="rust">
+
+</Language>
+
+<Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/lib.rs"
             start="25" end="48" />
             <Github fname="external.rs"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/external.rs" />
-  </Language>
+
+</Language>
+
 </CodeTabs>
 
 ---
@@ -47,14 +51,18 @@ Calling another contract passing information is also a common scenario. Bellow y
     <Github fname="contract.ts"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/src/contract.ts"
             start="41" end="64" />
-  </Language>
-  <Language value="🦀 Rust" language="rust">
+
+</Language>
+
+<Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/lib.rs"
             start="52" end="75" />
     <Github fname="external.rs"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/external.rs" />
-  </Language>
+
+</Language>
+
 </CodeTabs>
 
 ---
@@ -68,21 +76,23 @@ Both promises take the same arguments:
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
     
-  ```ts
-  NearPromise.new("external_address").functionCall("method", JSON.stringify(arguments), DEPOSIT, GAS);
-  ```
+```ts
+NearPromise.new("external_address").functionCall("method", JSON.stringify(arguments), DEPOSIT, GAS);
+```
 
-  </Language>
-  <Language value="🦀 Rust" language="rust">
+</Language>
 
-  ```rust
-  external_trait::ext("external_address")
-  .with_attached_deposit(DEPOSIT)
-  .with_static_gas(GAS)
-  .method(arguments);
-  ```
+<Language value="🦀 Rust" language="rust">
 
-  </Language>
+```rust
+external_trait::ext("external_address")
+.with_attached_deposit(DEPOSIT)
+.with_static_gas(GAS)
+.method(arguments);
+```
+
+</Language>
+
 </CodeTabs>
 
    - The address of the contract you want to interact with
@@ -115,17 +125,22 @@ The callback methods in your contract must be public, so it can be called when t
 :::
 
 ### Checking Execution Status
+
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="contract.ts"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/src/contract.ts"
             start="31" end="38" />
-  </Language>
-  <Language value="🦀 Rust" language="rust">
+
+</Language>
+
+<Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/lib.rs"
             start="67" end="74" />
-  </Language>
+
+</Language>
+
 </CodeTabs>
 
 ### Successful Execution
@@ -136,12 +151,16 @@ In case the call finishes successfully, the resulting object will have a `status
     <Github fname="contract.ts"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/src/contract.ts"
             start="31" end="31" />
-  </Language>
-  <Language value="🦀 Rust" language="rust">
+
+</Language>
+
+<Language value="🦀 Rust" language="rust">
     <Github fname="lib.ts"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/lib.rs"
             start="47" end="49" />
-  </Language>
+
+</Language>
+
 </CodeTabs>
 
 ### Failed Execution

@@ -25,12 +25,16 @@ The main module you will use in your contract will be the **NEAR SDK**, which: g
     <Github fname="contract.ts"
       url="https://github.com/near-examples/donation-examples/blob/main/contract-ts/src/contract.ts"
       start="1" end="3" />
-  </Language>
-  <Language value="🦀 Rust" language="rust">
+
+</Language>
+
+<Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
       url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/src/lib.rs"
       start="1" end="6" />
-  </Language>
+
+</Language>
+
 </CodeTabs>
 
 :::info Using external libraries
@@ -49,18 +53,20 @@ When writing contracts you have access to **all** the language's **native types*
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="🌐 JavaScript">
 
-  ```ts
-  number, bigint, string, [], {} ...
-  ```
+```ts
+number, bigint, string, [], {} ...
+```
 
-  </TabItem>
-  <TabItem value="🦀 Rust">
+</TabItem>
 
-  ```rust
-  u8, u16, u32, u64, u128, i8, i16, i32, i64, i128, Vec<T>, HashMap<K,V> ...
-  ```
+<TabItem value="🦀 Rust">
 
-  </TabItem>
+```rust
+u8, u16, u32, u64, u128, i8, i16, i32, i64, i128, Vec<T>, HashMap<K,V> ...
+```
+
+</TabItem>
+
 </Tabs>
 
 :::tip
@@ -83,11 +89,15 @@ to help you store complex data in the contract's state.
     <Github fname="index.js"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-js/src/index.ts"
           start="8" end="11" />
-  </Language>
-  <Language value="🦀 Rust" language="rust">
+
+</Language>
+
+<Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/lib.rs" start="33" end="36"/>
-  </Language>
+
+</Language>
+
 </CodeTabs>
 
 :::tip
@@ -105,12 +115,16 @@ You can define and instantiate complex objects through classes and structures.
     <Github fname="model.ts" language="ts"
       url="https://github.com/near-examples/donation-examples/blob/main/contract-ts/src/model.ts"
       start="3" end="11" />
-  </TabItem>
-  <TabItem value="🦀 Rust">
+
+</TabItem>
+
+<TabItem value="🦀 Rust">
     <Github fname="lib.rs" language="rust"
       url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/src/donation.rs"
       start="11" end="16" />
-  </TabItem>
+
+</TabItem>
+
 </Tabs>
 
   🦀 Notice that the class is decorated with multiple macros:

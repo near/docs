@@ -24,12 +24,16 @@ internal classes simply decorate it using the [`NEAR Bindgen` decorator/macro](#
     <Github fname="contract.ts"
       url="https://github.com/near-examples/donation-examples/blob/main/contract-ts/src/contract.ts"
       start="6" end="9" />
-  </Language>
-  <Language value="🦀 Rust" language="rust">
+
+</Language>
+
+<Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
       url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/src/lib.rs"
       start="13" end="16" />
-  </Language>
+
+</Language>
+
 </CodeTabs>
 
 Under the hood, the `NEAR Bindgen` decorator/macro traverses the class, generating the necessary code to:
@@ -94,8 +98,9 @@ To make the initialization mandatory use `@NearBindgen({requireInit: true})`
 In JavaScript you **must always** define a [default state](#default-state)
 :::
 
-  </TabItem>
-  <TabItem value="🦀 Rust">
+</TabItem>
+
+<TabItem value="🦀 Rust">
 
   <Github fname="lib.rs" language="rust"
           url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/src/lib.rs"
@@ -105,7 +110,8 @@ In JavaScript you **must always** define a [default state](#default-state)
 To make the initialization mandatory use `#[derive(PanicOnDefault)]` in the contract's structure
 :::
 
-  </TabItem>
+</TabItem>
+
 </Tabs>
 
 <hr className="subsection" />
@@ -130,12 +136,15 @@ Once any method writes into the state, the state will be considered initialized.
 In Javascript you **must always** assign values to **all the class' parameters**. This ensures they get correctly [deserialized](./serialization.md) to their intended type.
 :::
 
-  </TabItem>
-  <TabItem value="🦀 Rust">
+</TabItem>
+
+<TabItem value="🦀 Rust">
     <Github fname="lib.rs" language="rust"
             url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/src/lib.rs"
             start="19" end="26" />
-  </TabItem>
+
+</TabItem>
+
 </Tabs>
 
 ---
@@ -147,7 +156,7 @@ All the **public methods** are exposed to the network as the contract's interfac
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="🌐 JavaScript">
 
-  ```ts
+```ts
   @NearBindgen({})
   class Contract {
 
@@ -165,12 +174,13 @@ All the **public methods** are exposed to the network as the contract's interfac
     @call({privateFunction: true})
     set_owner({ ... }) { /* public, panics when caller is not the contract's account */ }
   }
-  ```
+```
 
-  </TabItem>
-  <TabItem value="🦀 Rust">
+</TabItem>
 
-  ```rust
+<TabItem value="🦀 Rust">
+
+```rust
   #[near_bindgen]
   impl Contract {
     #[init]
@@ -182,9 +192,10 @@ All the **public methods** are exposed to the network as the contract's interfac
     #[private]
     pub fn set_owner(&mut self, ... ) { /* public, panics when caller is not the contract's account */ }
   }
-  ```
+```
 
-  </TabItem>
+</TabItem>
+
 </Tabs>
 
 <hr className="subsection" />
@@ -220,24 +231,26 @@ For this, you can use the `private` macro/decorator.
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="🌐 JavaScript">
 
-  ```ts
+```ts
   @call({privateFunction: true})
   callback( ... ){
     // this method can only be called by the contract's account
   }
-  ```
+```
 
-  </TabItem>
-  <TabItem value="🦀 Rust">
+</TabItem>
 
-  ```rust
+<TabItem value="🦀 Rust">
+
+```rust
   #[private]
   pub fn callback(&mut self, ... ){
     // this method can only be called by the contract's account
   }
-  ```
+```
 
-  </TabItem>
+</TabItem>
+
 </Tabs>
 
 <hr className="subsection" />
@@ -250,24 +263,26 @@ method to receive money use the payable decorator.
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="🌐 JavaScript">
 
-  ```ts
+```ts
   @call({payableFunction: true})
   deposit_and_stake( ... ){
     // this method can receive money from the user
   }
-  ```
+```
 
-  </TabItem>
-  <TabItem value="🦀 Rust">
+</TabItem>
 
-  ```rust
+<TabItem value="🦀 Rust">
+
+```rust
   #[payable]
   pub fn deposit_and_stake(&mut self, ... ){
     // this method can receive money from the user
   }
-  ```
+```
 
-  </TabItem>
+</TabItem>
+
 </Tabs>
 
 <hr className="subsection" />

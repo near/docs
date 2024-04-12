@@ -14,6 +14,7 @@ Contracts [pay for their storage](#storage-cost) by locking part of their balanc
 ---
 
 ## Defining the State
+
 The contract's state is defined by the [main class attributes](../anatomy/anatomy.md#defining-the-contract), and accessed through them.
 
 In the state you can store constants, native types, and complex objects. When in doubt, prefer to use [SDK collections](#data-structures)
@@ -24,11 +25,15 @@ over native ones, because they are optimized for the [serialized key-value stora
     <Github fname="index.js"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-js/src/index.ts"
           start="6" end="12" />
-  </Language>
-  <Language value="🦀 Rust" language="rust">
+
+</Language>
+
+<Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/lib.rs" start="14" end="24"/>
-  </Language>
+
+</Language>
+
 </CodeTabs>
 
 ---
@@ -38,6 +43,7 @@ The NEAR SDK exposes a series of structures ([Vectors](#vector), [Sets](#set), [
 to simplify storing data in an efficient way.
 
 :::info Instantiation
+
 All structures need to be initialized using a **unique `prefix`**, which will be used to identify the structure's keys
 in the [serialized state](./serialization.md#borsh-state-serialization)
 
@@ -46,12 +52,17 @@ in the [serialized state](./serialization.md#borsh-state-serialization)
     <Github fname="index.js"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-js/src/index.ts"
           start="8" end="11" />
-  </Language>
-  <Language value="🦀 Rust" language="rust">
+
+</Language>
+
+<Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/lib.rs" start="33" end="38"/>
-  </Language>
+
+</Language>
+
 </CodeTabs>
+
 :::
 
 <hr className="subsection" />
@@ -65,13 +76,17 @@ Implements a [vector/array](https://en.wikipedia.org/wiki/Array_data_structure) 
     <Github fname="index.js"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-js/src/index.ts"
           start="25" end="28" />
-  </Language>
-  <Language value="🦀 Rust" language="rust">
+
+</Language>
+
+<Language value="🦀 Rust" language="rust">
     <Github fname="vector.rs"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/vector.rs" start="12" end="30"/>
     <Github fname="lib.rs"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/lib.rs" start="7" end="24"/>
-  </Language>
+
+</Language>
+
 </CodeTabs>
 
 <hr className="subsection" />
@@ -85,13 +100,17 @@ Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) w
     <Github fname="index.js"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-js/src/index.ts"
           start="33" end="37" />
-  </Language>
-  <Language value="🦀 Rust" language="rust">
+
+</Language>
+
+<Language value="🦀 Rust" language="rust">
     <Github fname="map.rs"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/map.rs" start="9" end="24"/>
     <Github fname="lib.rs"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/lib.rs" start="7" end="24"/>
-  </Language>
+
+</Language>
+
 </CodeTabs>
 
 <details>
@@ -133,7 +152,9 @@ class StatusMessage {
   }
 }
 ```
+
 </details>
+
 <hr className="subsection" />
 
 ### Set
@@ -145,13 +166,17 @@ Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type)) which
     <Github fname="index.js"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-js/src/index.ts"
           start="42" end="46" />
-  </Language>
-  <Language value="🦀 Rust" language="rust">
+
+</Language>
+
+<Language value="🦀 Rust" language="rust">
     <Github fname="set.rs"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/set.rs" start="9" end="16"/>
     <Github fname="lib.rs"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/lib.rs" start="7" end="24"/>
-  </Language>
+
+</Language>
+
 </CodeTabs>
 
 <hr className="subsection" />
@@ -166,7 +191,9 @@ An ordered equivalent of Map. The underlying implementation is based on an [AVL]
           url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/tree.rs" start="9" end="24"/>
     <Github fname="lib.rs"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/lib.rs" start="7" end="24"/>
-  </Language>
+
+</Language>
+
 </CodeTabs>
 
 ---
