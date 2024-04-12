@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/2.smart-contracts/security/one_yocto.md",
   "sourceDirName": "2.build/2.smart-contracts/security",
   "slug": "/build/smart-contracts/security/one-yocto",
-  "permalink": "/zh-CN/build/smart-contracts/security/one-yocto",
+  "permalink": "/build/smart-contracts/security/one-yocto",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/security/one_yocto.md",
@@ -20,10 +20,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Cross-Contract Calls",
-    "permalink": "/zh-CN/build/smart-contracts/security/callbacks"
+    "permalink": "/build/smart-contracts/security/callbacks"
   },
   "next": {
     "title": "Sybil Attacks",
-    "permalink": "/zh-CN/build/smart-contracts/security/sybil"
+    "permalink": "/build/smart-contracts/security/sybil"
   }
 }

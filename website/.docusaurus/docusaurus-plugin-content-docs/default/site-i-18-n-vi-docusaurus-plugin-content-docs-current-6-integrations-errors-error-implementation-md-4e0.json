@@ -1,0 +1,28 @@
+{
+  "id": "integrations/errors/error-implementation",
+  "title": "Source Code Survey",
+  "description": "This page provides a very high level, sometimes \"pseudocode\", view of error types and related messages as implemented by the NEAR platform.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/6.integrations/errors/error-implementation.md",
+  "sourceDirName": "6.integrations/errors",
+  "slug": "/integrations/errors/error-implementation",
+  "permalink": "/vi/integrations/errors/error-implementation",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/6.integrations/errors/error-implementation.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "error-implementation",
+    "title": "Source Code Survey",
+    "sidebar_label": "Source Code Survey"
+  },
+  "sidebar": "exchanges",
+  "previous": {
+    "title": "Introduction",
+    "permalink": "/vi/integrations/errors/introduction"
+  },
+  "next": {
+    "title": "Avoiding Token Loss",
+    "permalink": "/vi/integrations/errors/token-loss"
+  }
+}

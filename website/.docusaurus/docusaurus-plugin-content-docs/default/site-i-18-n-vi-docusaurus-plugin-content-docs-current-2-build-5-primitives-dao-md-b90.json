@@ -1,0 +1,29 @@
+{
+  "id": "build/primitives/dao",
+  "title": "Decentralized Autonomous Organizations",
+  "description": "Decentralized Autonomous Organizations (DAOs) are self-organized groups that form around common purposes. Membership, decision making, and funding are coordinated by publicly voting on proposals through a smart contract.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.build/5.primitives/dao.md",
+  "sourceDirName": "2.build/5.primitives",
+  "slug": "/build/primitives/dao",
+  "permalink": "/vi/build/primitives/dao",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/dao.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "dao",
+    "title": "Decentralized Autonomous Organizations",
+    "sidebar_label": "Autonomous Organizations (DAO)",
+    "hide_table_of_contents": false
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Price Oracles",
+    "permalink": "/vi/build/primitives/oracles"
+  },
+  "next": {
+    "title": "Decentralized Exchanges (DEX)",
+    "permalink": "/vi/build/primitives/dex"
+  }
+}

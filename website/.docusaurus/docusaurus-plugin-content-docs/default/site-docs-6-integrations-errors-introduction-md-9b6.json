@@ -5,7 +5,7 @@
   "source": "@site/../docs/6.integrations/errors/introduction.md",
   "sourceDirName": "6.integrations/errors",
   "slug": "/integrations/errors/introduction",
-  "permalink": "/zh-CN/integrations/errors/introduction",
+  "permalink": "/integrations/errors/introduction",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/6.integrations/errors/introduction.md",
@@ -21,10 +21,10 @@
   "sidebar": "exchanges",
   "previous": {
     "title": "Implicit Accounts",
-    "permalink": "/zh-CN/integrations/implicit-accounts"
+    "permalink": "/integrations/implicit-accounts"
   },
   "next": {
     "title": "Source Code Survey",
-    "permalink": "/zh-CN/integrations/errors/error-implementation"
+    "permalink": "/integrations/errors/error-implementation"
   }
 }

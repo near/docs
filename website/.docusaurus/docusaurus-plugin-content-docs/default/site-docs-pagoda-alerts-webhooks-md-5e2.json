@@ -5,7 +5,7 @@
   "source": "@site/../docs/pagoda/alerts/webhooks.md",
   "sourceDirName": "pagoda/alerts",
   "slug": "/pagoda/alerts/webhooks",
-  "permalink": "/zh-CN/pagoda/alerts/webhooks",
+  "permalink": "/pagoda/alerts/webhooks",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/pagoda/alerts/webhooks.md",
@@ -21,6 +21,6 @@
   "sidebar": "pagoda",
   "previous": {
     "title": "Setup",
-    "permalink": "/zh-CN/pagoda/alerts/setup"
+    "permalink": "/pagoda/alerts/setup"
   }
 }

@@ -5,7 +5,7 @@
   "source": "@site/../docs/6.integrations/balance.md",
   "sourceDirName": "6.integrations",
   "slug": "/integrations/balance-changes",
-  "permalink": "/zh-CN/integrations/balance-changes",
+  "permalink": "/integrations/balance-changes",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/6.integrations/balance.md",
@@ -21,10 +21,10 @@
   "sidebar": "exchanges",
   "previous": {
     "title": "Exchange Integration",
-    "permalink": "/zh-CN/integrations/exchange-integration"
+    "permalink": "/integrations/exchange-integration"
   },
   "next": {
     "title": "Accounts",
-    "permalink": "/zh-CN/integrations/accounts"
+    "permalink": "/integrations/accounts"
   }
 }

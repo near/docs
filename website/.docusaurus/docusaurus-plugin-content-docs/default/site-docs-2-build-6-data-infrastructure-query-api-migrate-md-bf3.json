@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/6.data-infrastructure/query-api/migrate.md",
   "sourceDirName": "2.build/6.data-infrastructure/query-api",
   "slug": "/build/data-infrastructure/query-api/migrate-from-near-lake",
-  "permalink": "/zh-CN/build/data-infrastructure/query-api/migrate-from-near-lake",
+  "permalink": "/build/data-infrastructure/query-api/migrate-from-near-lake",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/query-api/migrate.md",
@@ -21,10 +21,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Access & Query Historical data",
-    "permalink": "/zh-CN/build/data-infrastructure/query-api/query-data"
+    "permalink": "/build/data-infrastructure/query-api/query-data"
   },
   "next": {
     "title": "Lake Overview",
-    "permalink": "/zh-CN/build/data-infrastructure/lake-framework/near-lake"
+    "permalink": "/build/data-infrastructure/lake-framework/near-lake"
   }
 }

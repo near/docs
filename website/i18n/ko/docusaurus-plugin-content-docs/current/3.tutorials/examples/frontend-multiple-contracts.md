@@ -54,7 +54,7 @@ import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 ## 일괄 Action
 
-동일한 컨트랙트에 대한 여러 [Action](../../2.develop/contracts/actions.md)을 하나의 트랜잭션으로 모을 수 있습니다. 일괄 Action은 **순차적으로** 실행되며, 하나가 실패 하면 **모두** 되돌려진다는 추가 이점이 있습니다.
+You can aggregate multiple [actions](../../2.build/2.smart-contracts/anatomy/actions.md) directed towards a same contract into a single transaction. 일괄 Action은 **순차적으로** 실행되며, 하나가 실패 하면 **모두** 되돌려진다는 추가 이점이 있습니다.
 
 ```js
   // Register a user and transfer them FT on a single take

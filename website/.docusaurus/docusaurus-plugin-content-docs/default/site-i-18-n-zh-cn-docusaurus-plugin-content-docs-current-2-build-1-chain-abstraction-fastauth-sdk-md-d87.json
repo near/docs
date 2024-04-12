@@ -1,0 +1,28 @@
+{
+  "id": "build/chain-abstraction/fastauth-sdk",
+  "title": "FastAuth SDK",
+  "description": "FastAuth is a key management system that allows users to recover or sign-up for a NEAR account using their email address. Furthermore, it allows to subsidize gas for a certain smart contract, so users can interact with it without having to fund their account.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.build/1.chain-abstraction/fastauth-sdk.md",
+  "sourceDirName": "2.build/1.chain-abstraction",
+  "slug": "/build/chain-abstraction/fastauth-sdk",
+  "permalink": "/zh-CN/build/chain-abstraction/fastauth-sdk",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/1.chain-abstraction/fastauth-sdk.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "fastauth-sdk",
+    "title": "FastAuth SDK",
+    "sidebar_label": "FastAuth (Email Login)"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Building a Relayer",
+    "permalink": "/zh-CN/build/chain-abstraction/meta-transactions"
+  },
+  "next": {
+    "title": "Chain Signatures",
+    "permalink": "/zh-CN/build/chain-abstraction/chain-signatures"
+  }
+}

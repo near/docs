@@ -1,0 +1,28 @@
+{
+  "id": "build/web3-apps/quickstart",
+  "title": "Hello WebApp",
+  "description": "Most interactions with the NEAR ecosystem can be grouped in 2 categories:",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.build/4.web3-apps/quickstart.md",
+  "sourceDirName": "2.build/4.web3-apps",
+  "slug": "/build/web3-apps/quickstart",
+  "permalink": "/vi/build/web3-apps/quickstart",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/4.web3-apps/quickstart.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "quickstart",
+    "title": "Hello WebApp",
+    "sidebar_label": "⭐ Quickstart a WebApp"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "What are Web3 Apps?",
+    "permalink": "/vi/build/web3-apps/what-is"
+  },
+  "next": {
+    "title": "Integrating Contracts",
+    "permalink": "/vi/build/web3-apps/integrate-contracts"
+  }
+}

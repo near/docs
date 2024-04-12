@@ -1,0 +1,26 @@
+{
+  "id": "build/data-infrastructure/lake-framework/building-indexers/nft-indexer",
+  "title": "Building an NFT indexer",
+  "description": "near-examples/near-lake-nft-indexer: source code for this tutorial",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.build/6.data-infrastructure/lake-framework/building-indexers/nft-indexer.md",
+  "sourceDirName": "2.build/6.data-infrastructure/lake-framework/building-indexers",
+  "slug": "/build/data-infrastructure/lake-framework/building-indexers/nft-indexer",
+  "permalink": "/vi/build/data-infrastructure/lake-framework/building-indexers/nft-indexer",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/lake-framework/building-indexers/nft-indexer.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "sidebar_label": "NFT Indexer"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Python tutorial",
+    "permalink": "/vi/build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer"
+  },
+  "next": {
+    "title": "NFT indexer for Python",
+    "permalink": "/vi/build/data-infrastructure/lake-framework/building-indexers/python-nft-indexer"
+  }
+}

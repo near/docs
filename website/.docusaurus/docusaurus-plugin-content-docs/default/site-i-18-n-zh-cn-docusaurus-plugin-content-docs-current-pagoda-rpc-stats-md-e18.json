@@ -1,0 +1,29 @@
+{
+  "id": "pagoda/rpc/stats",
+  "title": "RPC Statistics",
+  "description": "Please be advised that these tools and services will be discontinued soon.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/pagoda/rpc/stats.md",
+  "sourceDirName": "pagoda/rpc",
+  "slug": "/pagoda/rpc/stats",
+  "permalink": "/zh-CN/pagoda/rpc/stats",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/pagoda/rpc/stats.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3,
+    "sidebar_label": "Statistics Dashboard",
+    "title": "RPC Statistics"
+  },
+  "sidebar": "pagoda",
+  "previous": {
+    "title": "Setup",
+    "permalink": "/zh-CN/pagoda/rpc/setup"
+  },
+  "next": {
+    "title": "NEAR Enhanced API",
+    "permalink": "/zh-CN/pagoda/rpc/api"
+  }
+}

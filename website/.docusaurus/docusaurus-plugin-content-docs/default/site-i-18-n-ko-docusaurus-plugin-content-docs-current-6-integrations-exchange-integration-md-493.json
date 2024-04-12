@@ -1,0 +1,24 @@
+{
+  "id": "integrations/exchange-integration",
+  "title": "거래 통합",
+  "description": "통합 레퍼런스",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/6.integrations/exchange-integration.md",
+  "sourceDirName": "6.integrations",
+  "slug": "/integrations/exchange-integration",
+  "permalink": "/ko/integrations/exchange-integration",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/6.integrations/exchange-integration.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "exchange-integration",
+    "title": "거래 통합",
+    "sidebar_label": "거래 통합"
+  },
+  "sidebar": "exchanges",
+  "next": {
+    "title": "잔고 변경",
+    "permalink": "/ko/integrations/balance-changes"
+  }
+}

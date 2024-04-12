@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/1.chain-abstraction/chain-signatures.md",
   "sourceDirName": "2.build/1.chain-abstraction",
   "slug": "/build/chain-abstraction/chain-signatures",
-  "permalink": "/zh-CN/build/chain-abstraction/chain-signatures",
+  "permalink": "/build/chain-abstraction/chain-signatures",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/1.chain-abstraction/chain-signatures.md",
@@ -20,10 +20,10 @@
   "sidebar": "build",
   "previous": {
     "title": "FastAuth (Email Login)",
-    "permalink": "/zh-CN/build/chain-abstraction/fastauth-sdk"
+    "permalink": "/build/chain-abstraction/fastauth-sdk"
   },
   "next": {
     "title": "Wallet Chain Key Rules",
-    "permalink": "/zh-CN/build/chain-abstraction/wallet"
+    "permalink": "/build/chain-abstraction/wallet"
   }
 }

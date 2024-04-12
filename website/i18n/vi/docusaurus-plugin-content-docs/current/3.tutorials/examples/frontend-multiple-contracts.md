@@ -54,7 +54,7 @@ Even when the user accepts signing the transactions at the same time, the transa
 
 ## Batch Actions
 
-You can aggregate multiple [actions](../../2.develop/contracts/actions.md) directed towards a same contract into a single transaction. Batched actions execute **sequentially**, with the added benefit that, if **one fails** then they **all** get reverted.
+You can aggregate multiple [actions](../../2.build/2.smart-contracts/anatomy/actions.md) directed towards a same contract into a single transaction. Batched actions execute **sequentially**, with the added benefit that, if **one fails** then they **all** get reverted.
 
 ```js
   // Register a user and transfer them FT on a single take

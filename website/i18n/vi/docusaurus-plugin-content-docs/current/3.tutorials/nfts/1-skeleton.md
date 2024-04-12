@@ -8,7 +8,7 @@ import {Github} from "@site/src/components/codetabs"
 
 > Trong chủ đề này, bạn sẽ tìm hiểu về kiến trúc cơ bản đằng sau một NFT contract mà bạn sẽ develop khi tham gia serie _"Từ Zero đến Hero"_ này. Bạn sẽ khám phá layout của contract và sẽ thấy cách mà các file Rust được cấu trúc để build một smart contract đầy đủ tính năng.
 
-:::info Bạn mới đến với Rust? Nếu bạn là người mới đến với ngôn ngữ Rust và mong muốn tiến sâu hơn nữa vào lập trình smart contract, phần [Hướng dẫn nhanh](/develop/quickstart-guide) của chúng tôi là một điểm khởi đầu tốt. :::
+:::info Bạn mới đến với Rust? If you are new to Rust and want to dive into smart contract development, our [Quick-start guide](../../2.build/2.smart-contracts/quickstart.md) is a great place to start. :::
 
 ---
 

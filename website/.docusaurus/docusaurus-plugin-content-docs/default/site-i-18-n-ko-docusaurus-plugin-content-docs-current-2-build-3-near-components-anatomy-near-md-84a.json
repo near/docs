@@ -1,0 +1,27 @@
+{
+  "id": "build/near-components/anatomy/near",
+  "title": "Interacting with Near",
+  "description": "The components can use the Near object to interact with smart contracts in the NEAR blockchain. 세 가지 메서드가 존재합니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/3.near-components/anatomy/near.md",
+  "sourceDirName": "2.build/3.near-components/anatomy",
+  "slug": "/build/near-components/anatomy/near",
+  "permalink": "/ko/build/near-components/anatomy/near",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/3.near-components/anatomy/near.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "near",
+    "title": "Interacting with Near"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "List of Native Components",
+    "permalink": "/ko/build/near-components/anatomy/builtin-components"
+  },
+  "next": {
+    "title": "Social Interactions",
+    "permalink": "/ko/build/near-components/anatomy/social"
+  }
+}

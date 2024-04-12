@@ -5,7 +5,7 @@
   "source": "@site/../docs/3.tutorials/near-components/bos-ethersjs.md",
   "sourceDirName": "3.tutorials/near-components",
   "slug": "/tutorials/near-components/ethers-js",
-  "permalink": "/zh-CN/tutorials/near-components/ethers-js",
+  "permalink": "/tutorials/near-components/ethers-js",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/near-components/bos-ethersjs.md",
@@ -20,10 +20,10 @@
   "sidebar": "tutorials",
   "previous": {
     "title": "WebSockets & QueryAPI",
-    "permalink": "/zh-CN/tutorials/near-components/queryapi-websockets"
+    "permalink": "/tutorials/near-components/queryapi-websockets"
   },
   "next": {
     "title": "Best Practices for Ethereum developers on NEAR",
-    "permalink": "/zh-CN/tutorials/near-components/ethers-js-best-practices"
+    "permalink": "/tutorials/near-components/ethers-js-best-practices"
   }
 }

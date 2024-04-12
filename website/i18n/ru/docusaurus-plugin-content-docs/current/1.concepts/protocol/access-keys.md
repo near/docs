@@ -12,7 +12,7 @@ NEAR accounts present the **unique** feature of being able to hold multiple [Acc
 1. `Full-Access Keys`: Have full control over the account, and should **never be shared**
 2. `Function-Call Keys`: Can sign calls to specific contract, and are **meant to be shared**
 
-***
+---
 
 ## Full-Access Keys {#full-access-keys}
 
@@ -30,7 +30,7 @@ You should never share your `Full-Access`, otherwise you are giving **total cont
 The **first** Full-Access Key of an account is added when the account is **created**
 :::
 
-***
+---
 
 ## Function-Call Keys {#function-call-keys}
 
@@ -46,7 +46,7 @@ Function-Call keys have the main purpose of being shared, so third-parties can m
 `Function-Call` keys are secure to share, as they only permit calls to a specific contract and prohibit NEAR token transfers.
 :::
 
-***
+---
 
 ## Benefits of Function-Call Keys
 
@@ -73,7 +73,7 @@ First create a contract that has a method called `create_account`. This method s
 You can then create multiple `Function-Call` in the contract's account, that only allow to call `create_account`. Drop these keys to your friends, so they can call the method, and easily create an account with some tokens.
 
 :::tip
-This is the basic principle behind [NEAR Drops](../../7.primitives/linkdrop.md), a way to distribute assets to a large number of users
+This is the basic principle behind [NEAR Drops](../../2.build/5.primitives/linkdrop.md), a way to distribute assets to a large number of users
 :::
 
 <hr class="subsection" />
@@ -86,7 +86,7 @@ You can also establish a key-recovery contract in your account and generate a "r
 
 In case of necessity, the trusted party can trigger the recovery process, assisting in the creation of a new full-access key for you.
 
-***
+---
 
 ## Locked Accounts
 

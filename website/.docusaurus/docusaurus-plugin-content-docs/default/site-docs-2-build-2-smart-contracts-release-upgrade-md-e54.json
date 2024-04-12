@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/2.smart-contracts/release/upgrade.md",
   "sourceDirName": "2.build/2.smart-contracts/release",
   "slug": "/build/smart-contracts/release/upgrade",
-  "permalink": "/zh-CN/build/smart-contracts/release/upgrade",
+  "permalink": "/build/smart-contracts/release/upgrade",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/release/upgrade.md",
@@ -20,10 +20,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Deploying and Using",
-    "permalink": "/zh-CN/build/smart-contracts/release/deploy"
+    "permalink": "/build/smart-contracts/release/deploy"
   },
   "next": {
     "title": "Locking Accounts",
-    "permalink": "/zh-CN/build/smart-contracts/release/lock"
+    "permalink": "/build/smart-contracts/release/lock"
   }
 }

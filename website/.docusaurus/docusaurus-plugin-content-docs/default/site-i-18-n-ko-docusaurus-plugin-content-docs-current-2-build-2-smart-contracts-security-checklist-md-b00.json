@@ -1,0 +1,27 @@
+{
+  "id": "build/smart-contracts/security/checklist",
+  "title": "✅ 체크리스트",
+  "description": "Once you finished developing your smart contract please go through the following list in order to ensure everything is safe for the end user.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/2.smart-contracts/security/checklist.md",
+  "sourceDirName": "2.build/2.smart-contracts/security",
+  "slug": "/build/smart-contracts/security/checklist",
+  "permalink": "/ko/build/smart-contracts/security/checklist",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/security/checklist.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "checklist",
+    "title": "✅ 체크리스트"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "교차 컨트랙트 호출",
+    "permalink": "/ko/build/smart-contracts/anatomy/crosscontract"
+  },
+  "next": {
+    "title": "직렬화에 대한 참고 사항",
+    "permalink": "/ko/build/smart-contracts/anatomy/serialization"
+  }
+}

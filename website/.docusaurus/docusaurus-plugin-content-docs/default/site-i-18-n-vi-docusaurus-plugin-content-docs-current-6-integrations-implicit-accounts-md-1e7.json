@@ -1,0 +1,28 @@
+{
+  "id": "integrations/implicit-accounts",
+  "title": "Implicit Accounts",
+  "description": "Background",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/6.integrations/implicit-accounts.md",
+  "sourceDirName": "6.integrations",
+  "slug": "/integrations/implicit-accounts",
+  "permalink": "/vi/integrations/implicit-accounts",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/6.integrations/implicit-accounts.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "implicit-accounts",
+    "title": "Implicit Accounts",
+    "sidebar_label": "Implicit Accounts"
+  },
+  "sidebar": "exchanges",
+  "previous": {
+    "title": "Fungible Tokens",
+    "permalink": "/vi/integrations/fungible-tokens"
+  },
+  "next": {
+    "title": "Introduction",
+    "permalink": "/vi/integrations/errors/introduction"
+  }
+}

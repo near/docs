@@ -1,0 +1,27 @@
+{
+  "id": "build/smart-contracts/security/welcome",
+  "title": "Security",
+  "description": "Here you will find information on how to keep your smart contract and decentralized applications secure.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.build/2.smart-contracts/security/welcome.md",
+  "sourceDirName": "2.build/2.smart-contracts/security",
+  "slug": "/build/smart-contracts/security/welcome",
+  "permalink": "/zh-CN/build/smart-contracts/security/welcome",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/security/welcome.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "welcome",
+    "title": "Security"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Locking Accounts",
+    "permalink": "/zh-CN/build/smart-contracts/release/lock"
+  },
+  "next": {
+    "title": "✅ Checklist",
+    "permalink": "/zh-CN/build/smart-contracts/security/checklist"
+  }
+}

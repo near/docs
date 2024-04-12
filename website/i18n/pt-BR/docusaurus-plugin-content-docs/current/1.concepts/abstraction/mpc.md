@@ -18,7 +18,7 @@ In secret sharing, the key has to get reassembled. At some point, some trusted p
 Want to learn more about multi-party computation? Check [this article](https://www.zellic.io/blog/mpc-from-scratch/).
 :::
 
-***
+---
 
 ## MPC signature generation
 

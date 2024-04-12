@@ -1,0 +1,27 @@
+{
+  "id": "build/web3-apps/what-is",
+  "title": "What are Web3 Apps?",
+  "description": "Web3 Applications - also known as decentralized apps (dApps) - leverage smart contracts and blockchain data to offer transparency, security and giving back control to users over their assets and data.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/4.web3-apps/what-is.md",
+  "sourceDirName": "2.build/4.web3-apps",
+  "slug": "/build/web3-apps/what-is",
+  "permalink": "/ko/build/web3-apps/what-is",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/4.web3-apps/what-is.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "what-is",
+    "title": "What are Web3 Apps?"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Using components on WebApps",
+    "permalink": "/ko/build/near-components/bos-gateway"
+  },
+  "next": {
+    "title": "⭐ Quickstart a WebApp",
+    "permalink": "/ko/build/web3-apps/quickstart"
+  }
+}

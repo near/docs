@@ -1,0 +1,27 @@
+{
+  "id": "build/smart-contracts/anatomy/crosscontract",
+  "title": "Cross-Contract Calls",
+  "description": "Cross-contract calls allow your contract to interact with other deployed contracts. This is useful for:",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.build/2.smart-contracts/anatomy/crosscontract.md",
+  "sourceDirName": "2.build/2.smart-contracts/anatomy",
+  "slug": "/build/smart-contracts/anatomy/crosscontract",
+  "permalink": "/zh-CN/build/smart-contracts/anatomy/crosscontract",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/anatomy/crosscontract.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "crosscontract",
+    "title": "Cross-Contract Calls"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Transfers & Actions",
+    "permalink": "/zh-CN/build/smart-contracts/anatomy/actions"
+  },
+  "next": {
+    "title": "✅ Checklist",
+    "permalink": "/zh-CN/build/smart-contracts/security/checklist"
+  }
+}

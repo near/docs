@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/2.smart-contracts/quickstart.md",
   "sourceDirName": "2.build/2.smart-contracts",
   "slug": "/build/smart-contracts/quickstart",
-  "permalink": "/zh-CN/build/smart-contracts/quickstart",
+  "permalink": "/build/smart-contracts/quickstart",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/quickstart.md",
@@ -21,10 +21,10 @@
   "sidebar": "build",
   "previous": {
     "title": "What is a Contract?",
-    "permalink": "/zh-CN/build/smart-contracts/what-is"
+    "permalink": "/build/smart-contracts/what-is"
   },
   "next": {
     "title": "Modules, Types & Structs",
-    "permalink": "/zh-CN/build/smart-contracts/anatomy/basics"
+    "permalink": "/build/smart-contracts/anatomy/basics"
   }
 }

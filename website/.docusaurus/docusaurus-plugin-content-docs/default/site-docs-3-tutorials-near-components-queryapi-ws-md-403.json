@@ -5,7 +5,7 @@
   "source": "@site/../docs/3.tutorials/near-components/queryapi-ws.md",
   "sourceDirName": "3.tutorials/near-components",
   "slug": "/tutorials/near-components/queryapi-websockets",
-  "permalink": "/zh-CN/tutorials/near-components/queryapi-websockets",
+  "permalink": "/tutorials/near-components/queryapi-websockets",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/near-components/queryapi-ws.md",
@@ -21,10 +21,10 @@
   "sidebar": "tutorials",
   "previous": {
     "title": "Push Notifications",
-    "permalink": "/zh-CN/tutorials/near-components/push-notifications"
+    "permalink": "/tutorials/near-components/push-notifications"
   },
   "next": {
     "title": "NEAR for Ethereum developers",
-    "permalink": "/zh-CN/tutorials/near-components/ethers-js"
+    "permalink": "/tutorials/near-components/ethers-js"
   }
 }

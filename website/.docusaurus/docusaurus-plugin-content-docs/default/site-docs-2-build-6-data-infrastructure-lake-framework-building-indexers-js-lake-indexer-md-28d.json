@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/6.data-infrastructure/lake-framework/building-indexers/js-lake-indexer.md",
   "sourceDirName": "2.build/6.data-infrastructure/lake-framework/building-indexers",
   "slug": "/build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer",
-  "permalink": "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer",
+  "permalink": "/build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/lake-framework/building-indexers/js-lake-indexer.md",
@@ -21,10 +21,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Lake Primitive Types",
-    "permalink": "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/primitives"
+    "permalink": "/build/data-infrastructure/lake-framework/building-indexers/primitives"
   },
   "next": {
     "title": "Python tutorial",
-    "permalink": "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer"
+    "permalink": "/build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer"
   }
 }

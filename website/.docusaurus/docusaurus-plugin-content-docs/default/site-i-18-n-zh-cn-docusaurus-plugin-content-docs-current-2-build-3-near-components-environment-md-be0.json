@@ -1,0 +1,27 @@
+{
+  "id": "build/near-components/dev-environment",
+  "title": "Choose your Dev Environment",
+  "description": "The environments in which you can develop Components are divided into two categories:",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.build/3.near-components/environment.md",
+  "sourceDirName": "2.build/3.near-components",
+  "slug": "/build/near-components/dev-environment",
+  "permalink": "/zh-CN/build/near-components/dev-environment",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/3.near-components/environment.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "dev-environment",
+    "title": "Choose your Dev Environment"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "What is a Component?",
+    "permalink": "/zh-CN/build/near-components/what-is"
+  },
+  "next": {
+    "title": "Basics",
+    "permalink": "/zh-CN/build/near-components/anatomy/state"
+  }
+}

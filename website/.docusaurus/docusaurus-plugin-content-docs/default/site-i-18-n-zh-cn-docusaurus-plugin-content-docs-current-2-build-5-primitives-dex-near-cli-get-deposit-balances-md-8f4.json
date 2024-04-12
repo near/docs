@@ -1,0 +1,15 @@
+{
+  "id": "build/primitives/dex/near-cli/get-deposit-balances",
+  "title": "get-deposit-balances",
+  "description": "Example response",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.build/5.primitives/dex/near-cli/get-deposit-balances.md",
+  "sourceDirName": "2.build/5.primitives/dex/near-cli",
+  "slug": "/build/primitives/dex/near-cli/get-deposit-balances",
+  "permalink": "/zh-CN/build/primitives/dex/near-cli/get-deposit-balances",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/dex/near-cli/get-deposit-balances.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

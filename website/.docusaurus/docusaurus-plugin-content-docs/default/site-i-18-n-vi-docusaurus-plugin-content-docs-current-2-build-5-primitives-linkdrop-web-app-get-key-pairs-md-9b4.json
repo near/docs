@@ -1,0 +1,15 @@
+{
+  "id": "build/primitives/linkdrop/web-app/get-key-pairs",
+  "title": "get-key-pairs",
+  "description": "",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.build/5.primitives/linkdrop/web-app/get-key-pairs.md",
+  "sourceDirName": "2.build/5.primitives/linkdrop/web-app",
+  "slug": "/build/primitives/linkdrop/web-app/get-key-pairs",
+  "permalink": "/vi/build/primitives/linkdrop/web-app/get-key-pairs",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/linkdrop/web-app/get-key-pairs.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

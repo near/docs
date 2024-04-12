@@ -7,7 +7,7 @@ title: RPC 제공자
 
 :::tip
 
-만약 NEAR 지갑 선택기(Wallet Selector)로 사용자 정의 RPC 공급자를 사용하려면, [다음 예제](../../2.develop/integrate/frontend.md/#사용자-정의-rpc-엔드포인트-설정)를 참고하세요.
+If you want to use a custom RPC provider with NEAR Wallet Selector, [check this example](../../2.build/4.web3-apps/integrate-contracts.md#setting-customs-rpc-endpoints).
 
 :::
 

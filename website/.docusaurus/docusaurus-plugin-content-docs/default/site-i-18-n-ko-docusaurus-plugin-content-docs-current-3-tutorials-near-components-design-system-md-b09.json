@@ -1,0 +1,27 @@
+{
+  "id": "tutorials/near-components/ds-components",
+  "title": "디자인 구성 요소",
+  "description": "구성 요소를 구축할 때, NEAR VM은 UI 개발을 단순화하기 위해 Radix primitives를 제공합니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/near-components/design-system.md",
+  "sourceDirName": "3.tutorials/near-components",
+  "slug": "/tutorials/near-components/ds-components",
+  "permalink": "/ko/tutorials/near-components/ds-components",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/near-components/design-system.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "ds-components",
+    "title": "디자인 구성 요소"
+  },
+  "sidebar": "tutorials",
+  "previous": {
+    "title": "스마트 컨트랙트 상호작용",
+    "permalink": "/ko/tutorials/near-components/interaction"
+  },
+  "next": {
+    "title": "IFrame 사용하기",
+    "permalink": "/ko/tutorials/near-components/using-iframes"
+  }
+}

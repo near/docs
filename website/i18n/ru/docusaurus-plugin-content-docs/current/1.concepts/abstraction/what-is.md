@@ -12,7 +12,7 @@ We believe that **same should be true for blockchain apps**, users should be abl
 
 To help make this a reality, NEAR provides a set of services that allow to **abstract away** the blockchain from the user experience. This means that users can use blockchain-based application - both in NEAR and **other chains** - without needing to understand the technical details.
 
-***
+---
 
 ## Abstraction services
 
@@ -24,7 +24,7 @@ This is achieved through a combination of multiple services:
 - **FastAuth**: A service that allows users to create and recover accounts using their email address through multi-party computation (MPC).
 - **Multi-chain signatures**: A service that allows users to use their NEAR account to sign transactions in other chains.
 
-***
+---
 
 ## A holistic view
 

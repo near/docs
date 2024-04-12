@@ -5,7 +5,7 @@
   "source": "@site/../docs/pagoda/rpc/api.md",
   "sourceDirName": "pagoda/rpc",
   "slug": "/pagoda/rpc/api",
-  "permalink": "/zh-CN/pagoda/rpc/api",
+  "permalink": "/pagoda/rpc/api",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/pagoda/rpc/api.md",
@@ -50,10 +50,10 @@
   "sidebar": "pagoda",
   "previous": {
     "title": "Statistics Dashboard",
-    "permalink": "/zh-CN/pagoda/rpc/stats"
+    "permalink": "/pagoda/rpc/stats"
   },
   "next": {
     "title": "Introduction",
-    "permalink": "/zh-CN/pagoda/alerts/intro"
+    "permalink": "/pagoda/alerts/intro"
   }
 }

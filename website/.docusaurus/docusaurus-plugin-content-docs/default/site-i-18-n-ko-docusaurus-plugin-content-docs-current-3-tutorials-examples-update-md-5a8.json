@@ -1,7 +1,7 @@
 {
   "id": "tutorials/examples/update-contract-migrate-state",
   "title": "자체 업그레이드 및 상태 마이그레이션",
-  "description": "업데이트 및 상태 마이그레이션을 처리하는 방법에 대한 세 가지 예는 다음과 같습니다.",
+  "description": "Three examples on how to handle updates and state migration:",
   "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/examples/update.md",
   "sourceDirName": "3.tutorials/examples",
   "slug": "/tutorials/examples/update-contract-migrate-state",

@@ -11,7 +11,7 @@ In this page we will explore the lifecycle of a transaction, from its creation t
 To dig deeper into transaction routing we recommend to read the [nearcore documentation](https://near.github.io/nearcore/architecture/how/tx_routing.html)
 :::
 
-***
+---
 
 ## Receipts & Finality
 
@@ -52,7 +52,7 @@ Most transactions will just spawn a receipt to process the actions, and a receip
 Function calls might take longer, as they can spawn multiple receipts. Network congestion can also increase the time to process a receipt, and thus a transaction.
 :::
 
-***
+---
 
 ## Transaction Status
 

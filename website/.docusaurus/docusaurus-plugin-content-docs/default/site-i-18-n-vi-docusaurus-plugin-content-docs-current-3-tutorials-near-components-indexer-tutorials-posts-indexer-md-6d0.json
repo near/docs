@@ -1,0 +1,28 @@
+{
+  "id": "tutorials/near-components/indexer-tutorials/posts-indexer",
+  "title": "Posts Indexer",
+  "description": "NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/3.tutorials/near-components/indexer-tutorials/posts-indexer.md",
+  "sourceDirName": "3.tutorials/near-components/indexer-tutorials",
+  "slug": "/tutorials/near-components/indexer-tutorials/posts-indexer",
+  "permalink": "/vi/tutorials/near-components/indexer-tutorials/posts-indexer",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/near-components/indexer-tutorials/posts-indexer.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "posts-indexer",
+    "title": "Posts Indexer",
+    "sidebar_label": "Posts Indexer"
+  },
+  "sidebar": "tutorials",
+  "previous": {
+    "title": "Base64 params, wrap up",
+    "permalink": "/vi/tutorials/crosswords/intermediate/base64vecu8"
+  },
+  "next": {
+    "title": "Hype Indexer",
+    "permalink": "/vi/tutorials/near-components/indexer-tutorials/hype-indexer"
+  }
+}

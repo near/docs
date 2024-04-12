@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/2.smart-contracts/what-is.md",
   "sourceDirName": "2.build/2.smart-contracts",
   "slug": "/build/smart-contracts/what-is",
-  "permalink": "/zh-CN/build/smart-contracts/what-is",
+  "permalink": "/build/smart-contracts/what-is",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/what-is.md",
@@ -21,10 +21,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Rollup Data Availability",
-    "permalink": "/zh-CN/build/chain-abstraction/data-availability"
+    "permalink": "/build/chain-abstraction/data-availability"
   },
   "next": {
     "title": "Quickstart ✨",
-    "permalink": "/zh-CN/build/smart-contracts/quickstart"
+    "permalink": "/build/smart-contracts/quickstart"
   }
 }

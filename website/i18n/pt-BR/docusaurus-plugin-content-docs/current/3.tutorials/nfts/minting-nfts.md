@@ -14,7 +14,7 @@ This article will guide you in setting up an [NFT smart contract](#non-fungible-
 
 To complete this tutorial successfully, you'll need:
 
-- [Rust toolchain](/develop/prerequisites)
+- [Rust toolchain](/build/smart-contracts/quickstart#prerequisites)
 - [A NEAR account](#wallet)
 - [nft.storage account](#uploading-the-image)
 - [NEAR command-line interface](/tools/near-cli#setup) (`near-cli`)
@@ -142,7 +142,7 @@ To build your contract run the following command in your terminal which builds y
 
 This will generate WASM binaries into your `res/` directory. This WASM file is the smart contract we'll be deploying onto the NEAR blockchain.
 
-> **Tip:** If you run into errors make sure you have [Rust installed](/develop/prerequisites) and are in the root directory of the NFT example.
+> **Tip:** If you run into errors make sure you have [Rust installed](/build/smart-contracts/quickstart#prerequisites) and are in the root directory of the NFT example.
 
 ### Testing the contract {#testing-the-contract}
 
@@ -328,7 +328,7 @@ near view $ID nft_tokens_for_owner '{"account_id": "'$ID'"}'
 
 This basic example illustrates all the required steps to deploy an NFT smart contract, store media files on IPFS, and start minting your own non-fungible tokens.
 
-Now that you're familiar with the process, you can check out our [NFT Example](https://examples.near.org/NFT) and learn more about the smart contract code and how you can transfer minted tokens to other accounts. Finally, if you are new to Rust and want to dive into smart contract development, our [Quick-start guide](/develop/quickstart-guide) is a great place to start.
+Now that you're familiar with the process, you can check out our [NFT Example](https://examples.near.org/NFT) and learn more about the smart contract code and how you can transfer minted tokens to other accounts. Finally, if you are new to Rust and want to dive into smart contract development, our [Quick-start guide](../../2.build/2.smart-contracts/quickstart.md) is a great place to start.
 
 **_Happy minting!_** 🪙
 

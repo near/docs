@@ -14,7 +14,7 @@ Bài viết này sẽ hướng dẫn bạn cài đặt một [NFT smart contract
 
 Để hoàn thành tốt hướng dẫn này, bạn sẽ cần:
 
-- [Rust toolchain](/develop/prerequisites)
+- [Rust toolchain](/build/smart-contracts/quickstart#prerequisites)
 - [Một NEAR account](#wallet)
 - [nft.storage account](#uploading-the-image)
 - [NEAR command-line interface](/docs/develop/contracts/rust/intro#installing-the-near-cli) (`near-cli`)
@@ -142,7 +142,7 @@ Chạy lệnh sau trong terminal của bạn để build contract, sử dụng R
 
 Lệnh này sẽ tạo ra WASM binary ở trong thư mục `res/`. File WASM này là một smart contract mà chúng ta sẽ deploy lên trên NEAR blockchain.
 
-> **Tip:** Nếu bạn gặp lỗi, hãy đảm bảo rằng bạn đã [cài đặt Rust](/docs/develop/contracts/rust/intro#installing-the-rust-toolchain) và đang ở trong thư mục root của ví dụ NFT này.
+> **Tip:** If you run into errors make sure you have [Rust installed](/build/smart-contracts/quickstart#prerequisites) and are in the root directory of the NFT example.
 
 ### Test contract {#testing-the-contract}
 
@@ -328,7 +328,7 @@ near view $ID nft_tokens_for_owner '{"account_id": "'$ID'"}'
 
 Ví dụ cơ bản này minh họa tất cả các bước cần thiết để deploy một NFT smart contract, lưu các file media trên IPFS, và bắt đầu mint các non-fungible token của riêng bạn.
 
-Bây giờ bạn đã quen với quy trình này, bạn có thể kiểm tra [Ví dụ NFT](https://examples.near.org/NFT) của chúng tôi và tìm hiểu thêm về code của smart contract và cách bạn có thể chuyển các token đã mint đến các account khác. Finally, if you are new to Rust and want to dive into smart contract development, our [Quick-start guide](/develop/quickstart-guide) is a great place to start.
+Bây giờ bạn đã quen với quy trình này, bạn có thể kiểm tra [Ví dụ NFT](https://examples.near.org/NFT) của chúng tôi và tìm hiểu thêm về code của smart contract và cách bạn có thể chuyển các token đã mint đến các account khác. Finally, if you are new to Rust and want to dive into smart contract development, our [Quick-start guide](../../2.build/2.smart-contracts/quickstart.md) is a great place to start.
 
 **_Chúc bạn mint thành công!_** 🪙
 

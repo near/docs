@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/4.web3-apps/integrate-components.md",
   "sourceDirName": "2.build/4.web3-apps",
   "slug": "/build/web3-apps/integrate-components",
-  "permalink": "/zh-CN/build/web3-apps/integrate-components",
+  "permalink": "/build/web3-apps/integrate-components",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/4.web3-apps/integrate-components.md",
@@ -20,10 +20,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Integrating Contracts",
-    "permalink": "/zh-CN/build/web3-apps/integrate-contracts"
+    "permalink": "/build/web3-apps/integrate-contracts"
   },
   "next": {
     "title": "Authenticate NEAR Users",
-    "permalink": "/zh-CN/build/web3-apps/backend/"
+    "permalink": "/build/web3-apps/backend/"
   }
 }

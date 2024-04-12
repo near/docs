@@ -1,0 +1,15 @@
+{
+  "id": "build/primitives/dex/near-cli/get-pools",
+  "title": "get-pools",
+  "description": "Example response",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.build/5.primitives/dex/near-cli/get-pools.md",
+  "sourceDirName": "2.build/5.primitives/dex/near-cli",
+  "slug": "/build/primitives/dex/near-cli/get-pools",
+  "permalink": "/zh-CN/build/primitives/dex/near-cli/get-pools",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/dex/near-cli/get-pools.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

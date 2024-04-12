@@ -1,0 +1,27 @@
+{
+  "id": "build/data-infrastructure/lake-framework/running-near-lake/run-lake-indexer",
+  "title": "Running NEAR Lake Indexer",
+  "description": "NEAR Lake is a blockchain indexer built on top of NEAR Indexer microframework",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.build/6.data-infrastructure/lake-framework/running-near-lake/run-near-lake.md",
+  "sourceDirName": "2.build/6.data-infrastructure/lake-framework/running-near-lake",
+  "slug": "/build/data-infrastructure/lake-framework/running-near-lake/run-lake-indexer",
+  "permalink": "/vi/build/data-infrastructure/lake-framework/running-near-lake/run-lake-indexer",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/lake-framework/running-near-lake/run-near-lake.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "run-lake-indexer",
+    "sidebar_label": "Running Lake Indexer"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "NFT indexer for Python",
+    "permalink": "/vi/build/data-infrastructure/lake-framework/building-indexers/python-nft-indexer"
+  },
+  "next": {
+    "title": "Start options",
+    "permalink": "/vi/build/data-infrastructure/lake-framework/running-near-lake/lake-start-options"
+  }
+}

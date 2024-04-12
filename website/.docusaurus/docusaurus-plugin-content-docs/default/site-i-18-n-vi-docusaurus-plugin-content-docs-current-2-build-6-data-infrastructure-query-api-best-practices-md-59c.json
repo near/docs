@@ -1,0 +1,28 @@
+{
+  "id": "build/data-infrastructure/query-api/best-practices",
+  "title": "Indexing best practices",
+  "description": "In this article you can find suggested best practices when building blockchain indexers using QueryAPI.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.build/6.data-infrastructure/query-api/best-practices.md",
+  "sourceDirName": "2.build/6.data-infrastructure/query-api",
+  "slug": "/build/data-infrastructure/query-api/best-practices",
+  "permalink": "/vi/build/data-infrastructure/query-api/best-practices",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/query-api/best-practices.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "best-practices",
+    "title": "Indexing best practices",
+    "sidebar_label": "Best Practices"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Getting Started",
+    "permalink": "/vi/build/data-infrastructure/query-api/indexers"
+  },
+  "next": {
+    "title": "Indexing Functions",
+    "permalink": "/vi/build/data-infrastructure/query-api/index-functions"
+  }
+}

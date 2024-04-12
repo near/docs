@@ -1,0 +1,27 @@
+{
+  "id": "build/smart-contracts/security/one-yocto",
+  "title": "Ensure it is the User (1yⓃ)",
+  "description": "NEAR uses a system of Access Keys to simplify handling accounts.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.build/2.smart-contracts/security/one_yocto.md",
+  "sourceDirName": "2.build/2.smart-contracts/security",
+  "slug": "/build/smart-contracts/security/one-yocto",
+  "permalink": "/vi/build/smart-contracts/security/one-yocto",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/security/one_yocto.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "one-yocto",
+    "title": "Ensure it is the User (1yⓃ)"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Cross-Contract Calls",
+    "permalink": "/vi/build/smart-contracts/security/callbacks"
+  },
+  "next": {
+    "title": "Sybil Attacks",
+    "permalink": "/vi/build/smart-contracts/security/sybil"
+  }
+}

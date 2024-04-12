@@ -1,0 +1,27 @@
+{
+  "id": "build/chain-abstraction/data-availability",
+  "title": "Rollup Data Availability",
+  "description": "Utilizing NEAR as storage data availability with a focus on lowering rollup DA fees.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.build/1.chain-abstraction/data-availability.md",
+  "sourceDirName": "2.build/1.chain-abstraction",
+  "slug": "/build/chain-abstraction/data-availability",
+  "permalink": "/zh-CN/build/chain-abstraction/data-availability",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/1.chain-abstraction/data-availability.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "data-availability",
+    "title": "Rollup Data Availability"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Relayer + Gas Station",
+    "permalink": "/zh-CN/build/chain-abstraction/multichain-gas-relayer/relayer-gas-example"
+  },
+  "next": {
+    "title": "What is a Contract?",
+    "permalink": "/zh-CN/build/smart-contracts/what-is"
+  }
+}

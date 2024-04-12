@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/2.smart-contracts/security/frontrunning.md",
   "sourceDirName": "2.build/2.smart-contracts/security",
   "slug": "/build/smart-contracts/security/frontrunning",
-  "permalink": "/zh-CN/build/smart-contracts/security/frontrunning",
+  "permalink": "/build/smart-contracts/security/frontrunning",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/security/frontrunning.md",
@@ -20,10 +20,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Sybil Attacks",
-    "permalink": "/zh-CN/build/smart-contracts/security/sybil"
+    "permalink": "/build/smart-contracts/security/sybil"
   },
   "next": {
     "title": "Reentrancy Attacks",
-    "permalink": "/zh-CN/build/smart-contracts/security/reentrancy"
+    "permalink": "/build/smart-contracts/security/reentrancy"
   }
 }

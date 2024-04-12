@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/6.data-infrastructure/lake-framework/building-indexers/python-nft-indexer.md",
   "sourceDirName": "2.build/6.data-infrastructure/lake-framework/building-indexers",
   "slug": "/build/data-infrastructure/lake-framework/building-indexers/python-nft-indexer",
-  "permalink": "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/python-nft-indexer",
+  "permalink": "/build/data-infrastructure/lake-framework/building-indexers/python-nft-indexer",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/lake-framework/building-indexers/python-nft-indexer.md",
@@ -19,10 +19,10 @@
   "sidebar": "build",
   "previous": {
     "title": "NFT Indexer",
-    "permalink": "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/nft-indexer"
+    "permalink": "/build/data-infrastructure/lake-framework/building-indexers/nft-indexer"
   },
   "next": {
     "title": "Running Lake Indexer",
-    "permalink": "/zh-CN/build/data-infrastructure/lake-framework/running-near-lake/run-lake-indexer"
+    "permalink": "/build/data-infrastructure/lake-framework/running-near-lake/run-lake-indexer"
   }
 }

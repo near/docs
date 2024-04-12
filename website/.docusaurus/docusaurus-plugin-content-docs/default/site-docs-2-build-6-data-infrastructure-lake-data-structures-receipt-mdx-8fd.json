@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/6.data-infrastructure/lake-data-structures/receipt.mdx",
   "sourceDirName": "2.build/6.data-infrastructure/lake-data-structures",
   "slug": "/build/data-infrastructure/lake-data-structures/receipt",
-  "permalink": "/zh-CN/build/data-infrastructure/lake-data-structures/receipt",
+  "permalink": "/build/data-infrastructure/lake-data-structures/receipt",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/lake-data-structures/receipt.mdx",
@@ -21,10 +21,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Transaction",
-    "permalink": "/zh-CN/build/data-infrastructure/lake-data-structures/transaction"
+    "permalink": "/build/data-infrastructure/lake-data-structures/transaction"
   },
   "next": {
     "title": "ExecutionOutcome",
-    "permalink": "/zh-CN/build/data-infrastructure/lake-data-structures/execution-outcome"
+    "permalink": "/build/data-infrastructure/lake-data-structures/execution-outcome"
   }
 }

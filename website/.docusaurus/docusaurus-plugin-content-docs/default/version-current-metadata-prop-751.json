@@ -1050,7 +1050,7 @@
               },
               {
                 "type": "link",
-                "label": "NEAR Lake Indexer Tutorial",
+                "label": "NEAR Lake StateChanges indexer tutorial",
                 "href": "/zh-CN/build/data-infrastructure/lake-framework/near-lake-state-changes-indexer",
                 "docId": "build/data-infrastructure/lake-framework/near-lake-state-changes-indexer",
                 "unlisted": false
@@ -2934,7 +2934,7 @@
     },
     "build/data-infrastructure/lake-framework/near-lake-state-changes-indexer": {
       "id": "build/data-infrastructure/lake-framework/near-lake-state-changes-indexer",
-      "title": "NEAR Lake Indexer Tutorial",
+      "title": "NEAR Lake StateChanges indexer tutorial",
       "description": "near-examples/near-lake-accounts-watcher: source code for a video tutorial on how to use the NEAR Lake Framework",
       "sidebar": "build"
     },
@@ -2953,7 +2953,7 @@
     "build/data-infrastructure/lake-framework/running-near-lake/run-lake-indexer": {
       "id": "build/data-infrastructure/lake-framework/running-near-lake/run-lake-indexer",
       "title": "Running NEAR Lake Indexer",
-      "description": "NEAR Lake is a blockchain indexer built on top of NEAR Indexer microframework",
+      "description": "NEAR Lake is a blockchain indexer built on top of NEAR Indexer microframework to watch the network and store all the events as JSON files on AWS S3.",
       "sidebar": "build"
     },
     "build/data-infrastructure/query-api/best-practices": {
@@ -2989,7 +2989,7 @@
     "build/data-infrastructure/query-api/intro": {
       "id": "build/data-infrastructure/query-api/intro",
       "title": "QueryAPI Overview",
-      "description": "Near QueryAPI is a fully managed solution to build indexer functions,",
+      "description": "Near QueryAPI is a fully managed solution to build indexer functions, extract on-chain data, store it in a database, and be able to query it using GraphQL endpoints.",
       "sidebar": "build"
     },
     "build/data-infrastructure/query-api/migrate-from-near-lake": {
@@ -3620,7 +3620,7 @@
     "build/smart-contracts/anatomy/serialization": {
       "id": "build/smart-contracts/anatomy/serialization",
       "title": "Notes on Serialization",
-      "description": "Smart contracts need to be able to communicate complex data in a simple way, while",
+      "description": "Smart contracts need to be able to communicate complex data in a simple way, while also reading and storing such data into their states efficiently.",
       "sidebar": "build"
     },
     "build/smart-contracts/anatomy/storage": {
@@ -3686,7 +3686,7 @@
     "build/smart-contracts/security/random": {
       "id": "build/smart-contracts/security/random",
       "title": "Random Numbers",
-      "description": "When writing smart contracts in NEAR you have access to a random seed that enables you to create random numbers/strings",
+      "description": "When writing smart contracts in NEAR you have access to a random seed that enables you to create random numbers/strings within your contract.",
       "sidebar": "build"
     },
     "build/smart-contracts/security/reentrancy": {

@@ -5,7 +5,7 @@
   "source": "@site/../docs/3.tutorials/near-components/indexer-tutorials/nft-indexer.md",
   "sourceDirName": "3.tutorials/near-components/indexer-tutorials",
   "slug": "/tutorials/near-components/indexer-tutorials/nft-indexer",
-  "permalink": "/zh-CN/tutorials/near-components/indexer-tutorials/nft-indexer",
+  "permalink": "/tutorials/near-components/indexer-tutorials/nft-indexer",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/near-components/indexer-tutorials/nft-indexer.md",
@@ -21,10 +21,10 @@
   "sidebar": "tutorials",
   "previous": {
     "title": "Hype Indexer",
-    "permalink": "/zh-CN/tutorials/near-components/indexer-tutorials/hype-indexer"
+    "permalink": "/tutorials/near-components/indexer-tutorials/hype-indexer"
   },
   "next": {
     "title": "Social Feed Indexer",
-    "permalink": "/zh-CN/tutorials/near-components/indexer-tutorials/feed-indexer"
+    "permalink": "/tutorials/near-components/indexer-tutorials/feed-indexer"
   }
 }

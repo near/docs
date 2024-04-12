@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/5.primitives/ft.md",
   "sourceDirName": "2.build/5.primitives",
   "slug": "/build/primitives/ft",
-  "permalink": "/zh-CN/build/primitives/ft",
+  "permalink": "/build/primitives/ft",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/ft.md",
@@ -21,10 +21,10 @@
   "sidebar": "build",
   "previous": {
     "title": "What are Primitives?",
-    "permalink": "/zh-CN/build/primitives/what-is"
+    "permalink": "/build/primitives/what-is"
   },
   "next": {
     "title": "Non-Fungible Tokens (NFT)",
-    "permalink": "/zh-CN/build/primitives/nft"
+    "permalink": "/build/primitives/nft"
   }
 }

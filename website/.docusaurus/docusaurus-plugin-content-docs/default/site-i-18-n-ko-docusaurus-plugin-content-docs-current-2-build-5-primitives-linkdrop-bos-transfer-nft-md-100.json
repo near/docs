@@ -1,0 +1,15 @@
+{
+  "id": "build/primitives/linkdrop/bos/transfer-nft",
+  "title": "transfer-nft",
+  "description": "",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/5.primitives/linkdrop/bos/transfer-nft.md",
+  "sourceDirName": "2.build/5.primitives/linkdrop/bos",
+  "slug": "/build/primitives/linkdrop/bos/transfer-nft",
+  "permalink": "/ko/build/primitives/linkdrop/bos/transfer-nft",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/linkdrop/bos/transfer-nft.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

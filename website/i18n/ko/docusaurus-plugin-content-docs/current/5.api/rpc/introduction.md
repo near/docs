@@ -6,7 +6,6 @@ title: NEAR RPC API
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import ContactUs from '@site/src/components/ContactUs.mdx';
 
 RPC API를 사용하면 NEAR 네트워크와 직접 통신할 수 있습니다. 예를 들어, [near-api-js](/tools/near-api-js/quick-reference)와 같은 도구는 RPC 호출을 만드는 추상화일 뿐입니다.
 
@@ -32,7 +31,3 @@ RPC API를 사용하면 NEAR 네트워크와 직접 통신할 수 있습니다. 
 | [유지 관리 기간(Maintenance Window)](/api/rpc/maintenance-windows) | 밸리데이터에 대해 현재 에포크 내 유지 관리 기간을 쿼리합니다.     |
 
 :::tip [Postman](/api/rpc/setup#postman-setup), [JavaScript](/api/rpc/setup#javascript-setup) 및 [HTTPie](/api/rpc/setup#httpie-setup)를 사용하여 JSON RPC 2.0 엔드포인트에 액세스할 수 있습니다. :::
-
-<hr className="subsection" />
-
-<ContactUs />

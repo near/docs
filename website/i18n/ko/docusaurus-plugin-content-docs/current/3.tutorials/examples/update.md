@@ -7,7 +7,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
-업데이트 및 [상태 마이그레이션](../../2.develop/upgrade.md)을 처리하는 방법에 대한 세 가지 예는 다음과 같습니다.
+Three examples on how to handle updates and [state migration](../../2.build/2.smart-contracts/release/upgrade.md):
 1. [State Migration](https://github.com/near-examples/update-migrate-rust/tree/main/basic-updates): How to implement a `migrate` method to migrate state between contract updates.
 2. [State Versioning](https://github.com/near-examples/update-migrate-rust/tree/main/enum-updates): How to use readily use versioning on a state, to simplify updating it later.
 3. [Self Update](https://github.com/near-examples/update-migrate-rust/tree/main/self-updates): How to implement a contract that can update itself.
@@ -33,7 +33,7 @@ The [State Migration example](https://github.com/near-examples/update-migrate-ru
 마이그레이션 메서드는 현재 상태(`OldState`)를 역직렬화하고 메시지를 반복하여, `payment` 필드를 포함하는 새 `PostedMessage` 메시지로 업데이트합니다.
 
 :::tip
-Notice that migrate is actually an [initialization method](../../2.develop/contracts/anatomy.md#initialization-method) that ignores the existing state (`[#init(ignore_state)]`), thus being able to execute and rewrite the state.
+Notice that migrate is actually an [initialization method](../../2.build/2.smart-contracts/anatomy/anatomy.md#initialization-method) that ignores the existing state (`[#init(ignore_state)]`), thus being able to execute and rewrite the state.
 :::
 
 ---

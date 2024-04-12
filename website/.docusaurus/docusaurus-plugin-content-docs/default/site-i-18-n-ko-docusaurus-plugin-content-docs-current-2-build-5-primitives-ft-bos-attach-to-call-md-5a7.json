@@ -1,0 +1,15 @@
+{
+  "id": "build/primitives/ft/bos/attach-to-call",
+  "title": "attach-to-call",
+  "description": "Example response",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/5.primitives/ft/bos/attach-to-call.md",
+  "sourceDirName": "2.build/5.primitives/ft/bos",
+  "slug": "/build/primitives/ft/bos/attach-to-call",
+  "permalink": "/ko/build/primitives/ft/bos/attach-to-call",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/ft/bos/attach-to-call.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

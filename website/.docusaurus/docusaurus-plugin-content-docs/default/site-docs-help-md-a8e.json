@@ -5,7 +5,7 @@
   "source": "@site/../docs/help.md",
   "sourceDirName": ".",
   "slug": "/help",
-  "permalink": "/zh-CN/help",
+  "permalink": "/help",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/help.md",

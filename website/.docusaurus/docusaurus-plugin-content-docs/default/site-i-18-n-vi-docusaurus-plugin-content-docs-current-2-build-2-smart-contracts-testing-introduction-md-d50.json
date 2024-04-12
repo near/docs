@@ -1,0 +1,27 @@
+{
+  "id": "build/smart-contracts/testing/introduction",
+  "title": "Introduction",
+  "description": "While developing your smart contract you will want to test that it works as it is supposed to, and moreover, does so securely. In NEAR we have developed tools to help you carry out such tests. Basically, there are two types of tests you can perform:",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.build/2.smart-contracts/testing/introduction.md",
+  "sourceDirName": "2.build/2.smart-contracts/testing",
+  "slug": "/build/smart-contracts/testing/introduction",
+  "permalink": "/vi/build/smart-contracts/testing/introduction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/testing/introduction.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "introduction",
+    "title": "Introduction"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Notes on Serialization",
+    "permalink": "/vi/build/smart-contracts/anatomy/serialization"
+  },
+  "next": {
+    "title": "Unit Testing",
+    "permalink": "/vi/build/smart-contracts/testing/unit-test"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "build/primitives/linkdrop/bos/create-ft-drop",
+  "title": "create-ft-drop",
+  "description": "",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.build/5.primitives/linkdrop/bos/create-ft-drop.md",
+  "sourceDirName": "2.build/5.primitives/linkdrop/bos",
+  "slug": "/build/primitives/linkdrop/bos/create-ft-drop",
+  "permalink": "/vi/build/primitives/linkdrop/bos/create-ft-drop",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/linkdrop/bos/create-ft-drop.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

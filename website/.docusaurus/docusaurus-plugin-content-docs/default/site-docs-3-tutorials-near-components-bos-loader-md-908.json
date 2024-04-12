@@ -5,7 +5,7 @@
   "source": "@site/../docs/3.tutorials/near-components/bos-loader.md",
   "sourceDirName": "3.tutorials/near-components",
   "slug": "/tutorials/near-components/bos-loader",
-  "permalink": "/zh-CN/tutorials/near-components/bos-loader",
+  "permalink": "/tutorials/near-components/bos-loader",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/near-components/bos-loader.md",
@@ -20,10 +20,10 @@
   "sidebar": "tutorials",
   "previous": {
     "title": "Frontend & Multiple Contracts",
-    "permalink": "/zh-CN/tutorials/examples/frontend-multiple-contracts"
+    "permalink": "/tutorials/examples/frontend-multiple-contracts"
   },
   "next": {
     "title": "Smart Contract Interaction",
-    "permalink": "/zh-CN/tutorials/near-components/interaction"
+    "permalink": "/tutorials/near-components/interaction"
   }
 }

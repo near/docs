@@ -163,7 +163,7 @@ The contract readily includes a set of unit and sandbox testing to validate its 
 
 ### Deploying the Contract to the NEAR network
 
-In order to deploy the contract you will need to [create a NEAR account](/develop/contracts/quickstart#create-a-testnet-account).
+In order to deploy the contract you will need to create a NEAR account.
 
 <Tabs>
   <TabItem value="🌐 JavaScript">

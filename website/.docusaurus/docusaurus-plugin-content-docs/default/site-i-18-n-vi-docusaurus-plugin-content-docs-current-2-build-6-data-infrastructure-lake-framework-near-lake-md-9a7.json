@@ -1,0 +1,28 @@
+{
+  "id": "build/data-infrastructure/lake-framework/near-lake",
+  "title": "NEAR Lake Indexer",
+  "description": "NEAR Lake is an indexer built on top of NEAR Indexer Framework to watch the network and store all the events as JSON files on AWS S3.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.build/6.data-infrastructure/lake-framework/near-lake.md",
+  "sourceDirName": "2.build/6.data-infrastructure/lake-framework",
+  "slug": "/build/data-infrastructure/lake-framework/near-lake",
+  "permalink": "/vi/build/data-infrastructure/lake-framework/near-lake",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/lake-framework/near-lake.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "near-lake",
+    "sidebar_label": "Lake Overview",
+    "title": "NEAR Lake Indexer"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Migrate from Lake framework",
+    "permalink": "/vi/build/data-infrastructure/query-api/migrate-from-near-lake"
+  },
+  "next": {
+    "title": "NEAR Lake Indexer Tutorial",
+    "permalink": "/vi/build/data-infrastructure/lake-framework/near-lake-state-changes-indexer"
+  }
+}

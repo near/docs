@@ -5,7 +5,7 @@
   "source": "@site/../docs/6.integrations/tokens.md",
   "sourceDirName": "6.integrations",
   "slug": "/integrations/fungible-tokens",
-  "permalink": "/zh-CN/integrations/fungible-tokens",
+  "permalink": "/integrations/fungible-tokens",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/6.integrations/tokens.md",
@@ -21,10 +21,10 @@
   "sidebar": "exchanges",
   "previous": {
     "title": "Create a Transaction",
-    "permalink": "/zh-CN/integrations/create-transactions"
+    "permalink": "/integrations/create-transactions"
   },
   "next": {
     "title": "Implicit Accounts",
-    "permalink": "/zh-CN/integrations/implicit-accounts"
+    "permalink": "/integrations/implicit-accounts"
   }
 }

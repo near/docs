@@ -5,7 +5,7 @@
   "source": "@site/../docs/3.tutorials/near-components/hello-lido.md",
   "sourceDirName": "3.tutorials/near-components",
   "slug": "/tutorials/near-components/lido",
-  "permalink": "/zh-CN/tutorials/near-components/lido",
+  "permalink": "/tutorials/near-components/lido",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/near-components/hello-lido.md",
@@ -20,10 +20,10 @@
   "sidebar": "tutorials",
   "previous": {
     "title": "Best Practices for Ethereum developers on NEAR",
-    "permalink": "/zh-CN/tutorials/near-components/ethers-js-best-practices"
+    "permalink": "/tutorials/near-components/ethers-js-best-practices"
   },
   "next": {
     "title": "Introduction",
-    "permalink": "/zh-CN/tutorials/fts/introduction"
+    "permalink": "/tutorials/fts/introduction"
   }
 }

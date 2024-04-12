@@ -1,0 +1,27 @@
+{
+  "id": "build/near-components/anatomy/social",
+  "title": "Social Interactions",
+  "description": "NEAR components can natively communicate with the SocialDB smart contract (currently deployed at social.near).",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.build/3.near-components/anatomy/social.md",
+  "sourceDirName": "2.build/3.near-components/anatomy",
+  "slug": "/build/near-components/anatomy/social",
+  "permalink": "/vi/build/near-components/anatomy/social",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/3.near-components/anatomy/social.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "social",
+    "title": "Social Interactions"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Interacting with Near",
+    "permalink": "/vi/build/near-components/anatomy/near"
+  },
+  "next": {
+    "title": "Social Notifications",
+    "permalink": "/vi/build/near-components/anatomy/notifications"
+  }
+}

@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/2.smart-contracts/anatomy/storage.md",
   "sourceDirName": "2.build/2.smart-contracts/anatomy",
   "slug": "/build/smart-contracts/anatomy/storage",
-  "permalink": "/zh-CN/build/smart-contracts/anatomy/storage",
+  "permalink": "/build/smart-contracts/anatomy/storage",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/anatomy/storage.md",
@@ -20,10 +20,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Environment",
-    "permalink": "/zh-CN/build/smart-contracts/anatomy/environment"
+    "permalink": "/build/smart-contracts/anatomy/environment"
   },
   "next": {
     "title": "Transfers & Actions",
-    "permalink": "/zh-CN/build/smart-contracts/anatomy/actions"
+    "permalink": "/build/smart-contracts/anatomy/actions"
   }
 }

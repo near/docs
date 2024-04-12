@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/1.chain-abstraction/data-availability.md",
   "sourceDirName": "2.build/1.chain-abstraction",
   "slug": "/build/chain-abstraction/data-availability",
-  "permalink": "/zh-CN/build/chain-abstraction/data-availability",
+  "permalink": "/build/chain-abstraction/data-availability",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/1.chain-abstraction/data-availability.md",
@@ -20,10 +20,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Relayer + Gas Station",
-    "permalink": "/zh-CN/build/chain-abstraction/multichain-gas-relayer/relayer-gas-example"
+    "permalink": "/build/chain-abstraction/multichain-gas-relayer/relayer-gas-example"
   },
   "next": {
     "title": "What is a Contract?",
-    "permalink": "/zh-CN/build/smart-contracts/what-is"
+    "permalink": "/build/smart-contracts/what-is"
   }
 }

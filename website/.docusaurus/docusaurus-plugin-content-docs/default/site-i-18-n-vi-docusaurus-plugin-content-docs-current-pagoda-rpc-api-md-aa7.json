@@ -1,0 +1,57 @@
+{
+  "id": "pagoda/rpc/api",
+  "title": "NEAR Enhanced API",
+  "description": "Please be advised that these tools and services will be discontinued soon.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/pagoda/rpc/api.md",
+  "sourceDirName": "pagoda/rpc",
+  "slug": "/pagoda/rpc/api",
+  "permalink": "/vi/pagoda/rpc/api",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/pagoda/rpc/api.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "NEAR Enhanced API",
+    "language_tabs": [
+      {
+        "shell": "Shell"
+      },
+      {
+        "http": "HTTP"
+      },
+      {
+        "javascript": "JavaScript"
+      },
+      {
+        "ruby": "Ruby"
+      },
+      {
+        "python": "Python"
+      },
+      {
+        "php": "PHP"
+      },
+      {
+        "java": "Java"
+      },
+      {
+        "go": "Go"
+      }
+    ],
+    "toc_footers": [],
+    "includes": [],
+    "search": true,
+    "highlight_theme": "darkula",
+    "headingLevel": 2
+  },
+  "sidebar": "pagoda",
+  "previous": {
+    "title": "Statistics Dashboard",
+    "permalink": "/vi/pagoda/rpc/stats"
+  },
+  "next": {
+    "title": "Introduction",
+    "permalink": "/vi/pagoda/alerts/intro"
+  }
+}

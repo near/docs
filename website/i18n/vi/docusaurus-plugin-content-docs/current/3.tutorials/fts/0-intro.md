@@ -12,12 +12,12 @@ sidebar_label: Giới thiệu
 
 Để hoàn thành tốt các hướng dẫn này, bạn sẽ cần:
 
-- [Rust](/develop/prerequisites)
+- [Rust](/build/smart-contracts/quickstart#prerequisites)
 - [A NEAR testnet account](https://testnet.mynearwallet.com)
 - [NEAR-CLI](/tools/near-cli#setup)
 
 :::info New to Rust?
-If you are new to Rust and want to dive into smart contract development, our [Quick-start guide](/develop/quickstart-guide) is a great place to start.
+If you are new to Rust and want to dive into smart contract development, our [Quick-start guide](../../2.build/2.smart-contracts/quickstart.md) is a great place to start.
 :::
 
 ---

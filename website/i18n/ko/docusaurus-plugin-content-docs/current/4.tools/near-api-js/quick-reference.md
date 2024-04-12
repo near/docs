@@ -31,7 +31,7 @@ import TabItem from '@theme/TabItem';
 
 라이브러리에는 일부 [utils](naj-utils.md) 함수도 포함되어 있습니다.
 
-:::tip 웹 브라우저에서 NEAR 통합을 빠르게 시작하려면 [웹 프론트엔드 통합](/develop/integrate/frontend) 문서를 읽어보세요. :::
+:::tip To quickly get started with integrating NEAR in a web browser, read our [Web Frontend integration](/build/web3-apps/integrate-contracts) article. :::
 
 :::info `near-api-js`와 `near-sdk-js`의 차이점에 유의하세요:
 

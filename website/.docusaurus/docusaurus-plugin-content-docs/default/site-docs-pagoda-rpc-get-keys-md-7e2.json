@@ -5,7 +5,7 @@
   "source": "@site/../docs/pagoda/rpc/get-keys.md",
   "sourceDirName": "pagoda/rpc",
   "slug": "/pagoda/rpc/get-keys",
-  "permalink": "/zh-CN/pagoda/rpc/get-keys",
+  "permalink": "/pagoda/rpc/get-keys",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/pagoda/rpc/get-keys.md",
@@ -22,10 +22,10 @@
   "sidebar": "pagoda",
   "previous": {
     "title": "Introduction",
-    "permalink": "/zh-CN/pagoda/rpc/intro"
+    "permalink": "/pagoda/rpc/intro"
   },
   "next": {
     "title": "Setup",
-    "permalink": "/zh-CN/pagoda/rpc/setup"
+    "permalink": "/pagoda/rpc/setup"
   }
 }

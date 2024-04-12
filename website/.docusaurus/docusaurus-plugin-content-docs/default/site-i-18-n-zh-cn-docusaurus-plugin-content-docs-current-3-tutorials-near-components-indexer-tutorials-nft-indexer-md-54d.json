@@ -1,0 +1,28 @@
+{
+  "id": "tutorials/near-components/indexer-tutorials/nft-indexer",
+  "title": "Minted NFTs Indexer",
+  "description": "NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/3.tutorials/near-components/indexer-tutorials/nft-indexer.md",
+  "sourceDirName": "3.tutorials/near-components/indexer-tutorials",
+  "slug": "/tutorials/near-components/indexer-tutorials/nft-indexer",
+  "permalink": "/zh-CN/tutorials/near-components/indexer-tutorials/nft-indexer",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/near-components/indexer-tutorials/nft-indexer.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "nft-indexer",
+    "title": "Minted NFTs Indexer",
+    "sidebar_label": "NFTs Indexer"
+  },
+  "sidebar": "tutorials",
+  "previous": {
+    "title": "Hype Indexer",
+    "permalink": "/zh-CN/tutorials/near-components/indexer-tutorials/hype-indexer"
+  },
+  "next": {
+    "title": "Social Feed Indexer",
+    "permalink": "/zh-CN/tutorials/near-components/indexer-tutorials/feed-indexer"
+  }
+}

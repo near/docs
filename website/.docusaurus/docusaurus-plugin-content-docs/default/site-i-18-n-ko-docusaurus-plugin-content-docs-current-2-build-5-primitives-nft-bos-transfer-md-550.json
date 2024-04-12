@@ -1,0 +1,15 @@
+{
+  "id": "build/primitives/nft/bos/transfer",
+  "title": "transfer",
+  "description": "",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/5.primitives/nft/bos/transfer.md",
+  "sourceDirName": "2.build/5.primitives/nft/bos",
+  "slug": "/build/primitives/nft/bos/transfer",
+  "permalink": "/ko/build/primitives/nft/bos/transfer",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/nft/bos/transfer.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

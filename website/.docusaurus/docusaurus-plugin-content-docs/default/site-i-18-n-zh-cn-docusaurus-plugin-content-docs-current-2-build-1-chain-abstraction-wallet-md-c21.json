@@ -1,0 +1,27 @@
+{
+  "id": "build/chain-abstraction/wallet",
+  "title": "Wallet Chain Key Rules",
+  "description": "Overview",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.build/1.chain-abstraction/wallet.md",
+  "sourceDirName": "2.build/1.chain-abstraction",
+  "slug": "/build/chain-abstraction/wallet",
+  "permalink": "/zh-CN/build/chain-abstraction/wallet",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/1.chain-abstraction/wallet.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "wallet",
+    "title": "Wallet Chain Key Rules"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Chain Signatures",
+    "permalink": "/zh-CN/build/chain-abstraction/chain-signatures"
+  },
+  "next": {
+    "title": "Multichain Relayer Server",
+    "permalink": "/zh-CN/build/chain-abstraction/multichain-gas-relayer/multichain-server"
+  }
+}

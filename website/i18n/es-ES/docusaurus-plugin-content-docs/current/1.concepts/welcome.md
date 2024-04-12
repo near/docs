@@ -6,7 +6,6 @@ hide_table_of_contents: true
 ---
 
 import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
-import ContactUs from '@site/src/components/ContactUs.mdx';
 
 Welcome! Here we will explain you what NEAR Protocol is, its components, and how it works.
 
@@ -30,7 +29,3 @@ Do not worry if you are new to blockchains, we are here to guide you.
     <Feature url="/concepts/advanced/indexers" title="Indexing blockchain data" subtitle="Query usage information for a contract" image="blocks.png" />
   </Column>
 </FeatureList>
-
----
-
-<ContactUs />

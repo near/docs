@@ -1,0 +1,27 @@
+{
+  "id": "build/near-components/anatomy/web-methods",
+  "title": "Web Browser Methods",
+  "description": "NEAR Components have access to classic web methods that enable them to:",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.build/3.near-components/anatomy/web-methods.md",
+  "sourceDirName": "2.build/3.near-components/anatomy",
+  "slug": "/build/near-components/anatomy/web-methods",
+  "permalink": "/zh-CN/build/near-components/anatomy/web-methods",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/3.near-components/anatomy/web-methods.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "web-methods",
+    "title": "Web Browser Methods"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Basics",
+    "permalink": "/zh-CN/build/near-components/anatomy/state"
+  },
+  "next": {
+    "title": "List of Native Components",
+    "permalink": "/zh-CN/build/near-components/anatomy/builtin-components"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "build/near-components/bos-gateway",
+  "title": "Using components on WebApps",
+  "description": "In order to use the components you create in a WebApp you need to use what is known as the NEAR VM. This virtual machine helps you to easily fetch components from the blockchain and transform them into executable code.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.build/3.near-components/bos-gateway.md",
+  "sourceDirName": "2.build/3.near-components",
+  "slug": "/build/near-components/bos-gateway",
+  "permalink": "/vi/build/near-components/bos-gateway",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/3.near-components/bos-gateway.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "bos-gateway",
+    "title": "Using components on WebApps"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Handling Historical data",
+    "permalink": "/vi/build/near-components/anatomy/bos-components"
+  },
+  "next": {
+    "title": "What are Web3 Apps?",
+    "permalink": "/vi/build/web3-apps/what-is"
+  }
+}

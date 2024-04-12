@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/5.primitives/dao.md",
   "sourceDirName": "2.build/5.primitives",
   "slug": "/build/primitives/dao",
-  "permalink": "/zh-CN/build/primitives/dao",
+  "permalink": "/build/primitives/dao",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/dao.md",
@@ -22,10 +22,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Price Oracles",
-    "permalink": "/zh-CN/build/primitives/oracles"
+    "permalink": "/build/primitives/oracles"
   },
   "next": {
     "title": "Decentralized Exchanges (DEX)",
-    "permalink": "/zh-CN/build/primitives/dex"
+    "permalink": "/build/primitives/dex"
   }
 }

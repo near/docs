@@ -1,0 +1,28 @@
+{
+  "id": "build/data-infrastructure/big-query",
+  "title": "BigQuery Public Dataset",
+  "description": "Blockchain data indexing in NEAR Public Lakehouse is for anyone wanting to understand blockchain data. This includes:",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/6.data-infrastructure/big-query.md",
+  "sourceDirName": "2.build/6.data-infrastructure",
+  "slug": "/build/data-infrastructure/big-query",
+  "permalink": "/ko/build/data-infrastructure/big-query",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/big-query.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "big-query",
+    "title": "BigQuery Public Dataset",
+    "sidebar_label": "BigQuery"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "What is Data Infrastructure?",
+    "permalink": "/ko/build/data-infrastructure/what-is"
+  },
+  "next": {
+    "title": "Introduction",
+    "permalink": "/ko/build/data-infrastructure/query-api/intro"
+  }
+}

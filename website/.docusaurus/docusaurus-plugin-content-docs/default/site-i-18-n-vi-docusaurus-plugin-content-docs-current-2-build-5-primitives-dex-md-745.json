@@ -1,0 +1,28 @@
+{
+  "id": "build/primitives/dex",
+  "title": "Decentralized Exchanges (DEX)",
+  "description": "A Decentralized Exchange (DEX) is an application that allows users to trade tokens (native & fungible tokens) through smart contracts.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.build/5.primitives/dex.md",
+  "sourceDirName": "2.build/5.primitives",
+  "slug": "/build/primitives/dex",
+  "permalink": "/vi/build/primitives/dex",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/dex.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "dex",
+    "title": "Decentralized Exchanges (DEX)",
+    "hide_table_of_contents": false
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Autonomous Organizations (DAO)",
+    "permalink": "/vi/build/primitives/dao"
+  },
+  "next": {
+    "title": "What is Data Infrastructure?",
+    "permalink": "/vi/build/data-infrastructure/what-is"
+  }
+}

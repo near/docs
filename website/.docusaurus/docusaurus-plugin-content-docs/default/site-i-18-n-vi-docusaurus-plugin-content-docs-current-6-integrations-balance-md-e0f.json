@@ -1,0 +1,28 @@
+{
+  "id": "integrations/balance-changes",
+  "title": "Balance changes",
+  "description": "Prerequisites",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/6.integrations/balance.md",
+  "sourceDirName": "6.integrations",
+  "slug": "/integrations/balance-changes",
+  "permalink": "/vi/integrations/balance-changes",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/6.integrations/balance.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "balance-changes",
+    "title": "Balance changes",
+    "sidebar_label": "Balance Changes"
+  },
+  "sidebar": "exchanges",
+  "previous": {
+    "title": "Exchange Integration",
+    "permalink": "/vi/integrations/exchange-integration"
+  },
+  "next": {
+    "title": "Accounts",
+    "permalink": "/vi/integrations/accounts"
+  }
+}

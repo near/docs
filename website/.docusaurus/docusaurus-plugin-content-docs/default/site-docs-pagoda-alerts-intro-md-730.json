@@ -5,7 +5,7 @@
   "source": "@site/../docs/pagoda/alerts/intro.md",
   "sourceDirName": "pagoda/alerts",
   "slug": "/pagoda/alerts/intro",
-  "permalink": "/zh-CN/pagoda/alerts/intro",
+  "permalink": "/pagoda/alerts/intro",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/pagoda/alerts/intro.md",
@@ -21,10 +21,10 @@
   "sidebar": "pagoda",
   "previous": {
     "title": "NEAR Enhanced API",
-    "permalink": "/zh-CN/pagoda/rpc/api"
+    "permalink": "/pagoda/rpc/api"
   },
   "next": {
     "title": "Setup",
-    "permalink": "/zh-CN/pagoda/alerts/setup"
+    "permalink": "/pagoda/alerts/setup"
   }
 }

@@ -5,7 +5,6 @@ hide_table_of_contents: true
 ---
 
 import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
-import ContactUs from '@site/src/components/ContactUs.mdx';
 
 Welcome, this is the starting point for all NEAR documentation. Learn to build and publish blockchain applications. Embrace the power of Web3.
 
@@ -24,7 +23,7 @@ Welcome, this is the starting point for all NEAR documentation. Learn to build a
     </a>
   </div>
   <div className="col col--4">
-    <a href="/develop/contracts/whatisacontract">
+    <a href="/build/smart-contracts/what-is">
       <div className="card">
         <div className="card__image">
           <img src={require("@site/static/docs/assets/welcome-pages/contracts.png").default} alt="Contracts" />
@@ -37,7 +36,7 @@ Welcome, this is the starting point for all NEAR documentation. Learn to build a
     </a>
   </div>
   <div className="col col--4">
-    <a href="/bos/tutorial/quickstart">
+    <a href="/build/near-components/what-is">
       <div className="card">
         <div className="card__image">
           <img src={require("@site/static/docs/assets/welcome-pages/bos-big.png").default} alt="Web3 Components" />
@@ -50,7 +49,7 @@ Welcome, this is the starting point for all NEAR documentation. Learn to build a
     </a>
   </div>
   <div className="col col--4">
-    <a href="/develop/web3-apps/whatareweb3apps">
+    <a href="/build/web3-apps/what-is">
       <div className="card">
         <div className="card__image">
           <img src={require("@site/static/docs/assets/welcome-pages/examples.png").default} alt="Solutions" />
@@ -76,7 +75,7 @@ Welcome, this is the starting point for all NEAR documentation. Learn to build a
     </a>
   </div>
   <div className="col col--4">
-    <a href="/develop/monitor">
+    <a href="/build/data-infrastructure/what-is">
       <div className="card">
         <div className="card__image">
           <img src={require("@site/static/docs/assets/welcome-pages/data-lake.png").default} alt="Data Lake" />
@@ -102,12 +101,12 @@ Welcome, this is the starting point for all NEAR documentation. Learn to build a
     <Feature url="/concepts/protocol/smartcontract" title="스마트 컨트랙트" subtitle="Learn about our contract technology" image="contract.png" />
   </Column>
   <Column title="Developer Docs" size="3">
-    <Feature url="/develop/integrate/quickstart-frontend" title="Quickstart: WebApp" subtitle="Spin-up your first dApp" image="quickstart.png" />
-    <Feature url="/develop/contracts/quickstart" title="Quickstart: Contract"
+    <Feature url="/build/web3-apps/quickstart" title="Quickstart: WebApp" subtitle="Spin-up your first dApp" image="quickstart.png" />
+    <Feature url="/build/smart-contracts/quickstart" title="Quickstart: Contract"
              subtitle="Learn how to write smart contracts" image="smartcontract.png" />
-    <Feature url="/bos/tutorial/quickstart" title="Multi-chain Components"
+    <Feature url="/build/near-components/anatomy/state" title="Multi-chain Components"
              subtitle="Learn about multi-chain components" image="bos-lido.png" />
-    <Feature url="/bos/queryapi/intro" title="QueryAPI" subtitle="The simplest way to build indexers" image="blocks.png" />
+    <Feature url="/build/data-infrastructure/query-api/intro" title="QueryAPI" subtitle="The simplest way to build indexers" image="blocks.png" />
   </Column>
   <Column title="개발자 도구" size="3">
     <Feature url="/sdk/js/introduction" title="JavaScript SDK" subtitle="Write contracts in JavaScript" image="smartcontract-js.png" />
@@ -193,7 +192,3 @@ Welcome, this is the starting point for all NEAR documentation. Learn to build a
     </a>
   </div>
 </div>
-
-<hr className="subsection" />
-
-<ContactUs />

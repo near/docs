@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/1.chain-abstraction/multichain-gas-relayer/multichain-server.md",
   "sourceDirName": "2.build/1.chain-abstraction/multichain-gas-relayer",
   "slug": "/build/chain-abstraction/multichain-gas-relayer/multichain-server",
-  "permalink": "/zh-CN/build/chain-abstraction/multichain-gas-relayer/multichain-server",
+  "permalink": "/build/chain-abstraction/multichain-gas-relayer/multichain-server",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/1.chain-abstraction/multichain-gas-relayer/multichain-server.md",
@@ -21,10 +21,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Wallet Chain Key Rules",
-    "permalink": "/zh-CN/build/chain-abstraction/wallet"
+    "permalink": "/build/chain-abstraction/wallet"
   },
   "next": {
     "title": "Multichain Gas Station",
-    "permalink": "/zh-CN/build/chain-abstraction/multichain-gas-relayer/gas-station"
+    "permalink": "/build/chain-abstraction/multichain-gas-relayer/gas-station"
   }
 }

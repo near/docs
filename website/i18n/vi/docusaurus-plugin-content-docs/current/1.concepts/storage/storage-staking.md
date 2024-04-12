@@ -88,7 +88,7 @@ Lưu ý rằng bạn có thể giảm con số này xuống Ⓝ330 chỉ bằng 
 
 Tự tính toán số byte như ở trên sẽ khó và dễ xảy ra lỗi. Tin vui là: bạn không cần phải tính!
 
-Bạn có thể kiểm tra chi phí lưu trữ được dùng ở ngay bên trong những unit test của bạn:
+You can test the storage used using the [SDK environment](../../2.build/2.smart-contracts/anatomy/environment.md) and checking `env.storage_usage()`
 
 ## Other ways to keep costs down
 

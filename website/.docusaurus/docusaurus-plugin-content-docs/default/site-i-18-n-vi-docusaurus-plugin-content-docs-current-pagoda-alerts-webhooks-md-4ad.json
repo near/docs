@@ -1,0 +1,24 @@
+{
+  "id": "pagoda/alerts/webhooks",
+  "title": "Turn on the (Hue) lights with NEAR NFTs and Pagoda Alerts & Triggers",
+  "description": "Please be advised that these tools and services will be discontinued soon.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/pagoda/alerts/webhooks.md",
+  "sourceDirName": "pagoda/alerts",
+  "slug": "/pagoda/alerts/webhooks",
+  "permalink": "/vi/pagoda/alerts/webhooks",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/pagoda/alerts/webhooks.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2,
+    "sidebar_label": "Webhooks Example"
+  },
+  "sidebar": "pagoda",
+  "previous": {
+    "title": "Setup",
+    "permalink": "/vi/pagoda/alerts/setup"
+  }
+}

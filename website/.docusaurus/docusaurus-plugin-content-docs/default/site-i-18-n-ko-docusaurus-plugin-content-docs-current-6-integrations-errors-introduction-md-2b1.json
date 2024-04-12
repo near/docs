@@ -1,0 +1,28 @@
+{
+  "id": "integrations/errors/introduction",
+  "title": "소개",
+  "description": "알고 계셨나요?",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/6.integrations/errors/introduction.md",
+  "sourceDirName": "6.integrations/errors",
+  "slug": "/integrations/errors/introduction",
+  "permalink": "/ko/integrations/errors/introduction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/6.integrations/errors/introduction.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "introduction",
+    "title": "소개",
+    "sidebar_label": "소개"
+  },
+  "sidebar": "exchanges",
+  "previous": {
+    "title": "암시적 계정(Implicit Account)",
+    "permalink": "/ko/integrations/implicit-accounts"
+  },
+  "next": {
+    "title": "소스 코드 조사",
+    "permalink": "/ko/integrations/errors/error-implementation"
+  }
+}

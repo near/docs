@@ -1,0 +1,28 @@
+{
+  "id": "build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer",
+  "title": "비동기식",
+  "description": "near-examples/near-lake-raw-printer-js: source code for the tutorial on how to create an indexer that prints block height and number of shards",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/6.data-infrastructure/lake-framework/building-indexers/js-lake-indexer.md",
+  "sourceDirName": "2.build/6.data-infrastructure/lake-framework/building-indexers",
+  "slug": "/build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer",
+  "permalink": "/ko/build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/lake-framework/building-indexers/js-lake-indexer.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "js-lake-indexer",
+    "title": "비동기식",
+    "sidebar_label": "JS 기본 튜토리얼"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Lake Primitive Types",
+    "permalink": "/ko/build/data-infrastructure/lake-framework/building-indexers/primitives"
+  },
+  "next": {
+    "title": "Python 튜토리얼",
+    "permalink": "/ko/build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer"
+  }
+}

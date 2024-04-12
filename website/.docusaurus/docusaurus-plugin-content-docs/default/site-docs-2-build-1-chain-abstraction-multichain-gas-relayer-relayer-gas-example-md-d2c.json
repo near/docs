@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/1.chain-abstraction/multichain-gas-relayer/relayer-gas-example.md",
   "sourceDirName": "2.build/1.chain-abstraction/multichain-gas-relayer",
   "slug": "/build/chain-abstraction/multichain-gas-relayer/relayer-gas-example",
-  "permalink": "/zh-CN/build/chain-abstraction/multichain-gas-relayer/relayer-gas-example",
+  "permalink": "/build/chain-abstraction/multichain-gas-relayer/relayer-gas-example",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/1.chain-abstraction/multichain-gas-relayer/relayer-gas-example.md",
@@ -21,10 +21,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Multichain Gas Station",
-    "permalink": "/zh-CN/build/chain-abstraction/multichain-gas-relayer/gas-station"
+    "permalink": "/build/chain-abstraction/multichain-gas-relayer/gas-station"
   },
   "next": {
     "title": "Rollup Data Availability",
-    "permalink": "/zh-CN/build/chain-abstraction/data-availability"
+    "permalink": "/build/chain-abstraction/data-availability"
   }
 }

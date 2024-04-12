@@ -12,7 +12,7 @@ sidebar_label: 소개
 
 이 튜토리얼을 성공적으로 완료하려면 다음이 필요합니다.
 
-- [Node.js](/develop/prerequisites#nodejs)
+- [Node.js](/build/smart-contracts/quickstart#prerequisites#nodejs)
 - [NEAR 지갑](https://testnet.mynearwallet.com/create)
 - [NEAR-CLI](/tools/near-cli#setup)
 

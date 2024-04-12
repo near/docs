@@ -1,0 +1,27 @@
+{
+  "id": "build/primitives/what-is",
+  "title": "What are Primitives?",
+  "description": "Primitives are fundamental building blocks that can be combined to create a fully functional application. Blockchain primitives include Fungible Tokens (FT), Non Fungible Tokens (NFT), Decentralized Autonomous organizations (DAO), Link Drops and more.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/5.primitives/what-is.md",
+  "sourceDirName": "2.build/5.primitives",
+  "slug": "/build/primitives/what-is",
+  "permalink": "/ko/build/primitives/what-is",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/what-is.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "what-is",
+    "title": "What are Primitives?"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Authenticate NEAR Users",
+    "permalink": "/ko/build/web3-apps/backend/"
+  },
+  "next": {
+    "title": "Fungible Tokens (FT)",
+    "permalink": "/ko/build/primitives/ft"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "build/smart-contracts/release/upgrade",
+  "title": "Updating Contracts",
+  "description": "NEAR 계정은 로직(컨트랙트의 코드)을 상태(스토리지)와 분리하여, 코드를 변경할 수 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/2.smart-contracts/release/upgrade.md",
+  "sourceDirName": "2.build/2.smart-contracts/release",
+  "slug": "/build/smart-contracts/release/upgrade",
+  "permalink": "/ko/build/smart-contracts/release/upgrade",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/release/upgrade.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "upgrade",
+    "title": "Updating Contracts"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "배포 및 사용",
+    "permalink": "/ko/build/smart-contracts/release/deploy"
+  },
+  "next": {
+    "title": "계정 잠금",
+    "permalink": "/ko/build/smart-contracts/release/lock"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "integrations/exchange-integration",
+  "title": "Exchange Integration",
+  "description": "Integration Reference",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/6.integrations/exchange-integration.md",
+  "sourceDirName": "6.integrations",
+  "slug": "/integrations/exchange-integration",
+  "permalink": "/zh-CN/integrations/exchange-integration",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/6.integrations/exchange-integration.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "exchange-integration",
+    "title": "Exchange Integration",
+    "sidebar_label": "Exchange Integration"
+  },
+  "sidebar": "exchanges",
+  "next": {
+    "title": "Balance Changes",
+    "permalink": "/zh-CN/integrations/balance-changes"
+  }
+}

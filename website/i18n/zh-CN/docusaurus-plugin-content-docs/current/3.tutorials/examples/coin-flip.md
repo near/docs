@@ -60,7 +60,7 @@ The contract presents 2 methods: `flip_coin`, and `points_of`.
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs" 
             url="https://github.com/near-examples/coin-flip-examples/blob/main/contract-rs/src/lib.rs"
-            start="49" end="81" />
+            start="46" end="70" />
   </Language>
 </CodeTabs>
 
@@ -93,12 +93,12 @@ Integration tests can be written in both Rust and JavaScript. They automatically
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="main.test.js"
             url="https://github.com/near-examples/coin-flip-examples/blob/main/contract-ts/sandbox-ts/main.ava.ts"
-            start="32" end="57" />
+            start="30" end="53" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs" 
             url="https://github.com/near-examples/coin-flip-examples/blob/main/contract-rs/tests/tests.rs"
-            start="27" end="83" />
+            start="25" end="82" />
   </Language>
 </CodeTabs>
 
@@ -106,7 +106,7 @@ Integration tests can be written in both Rust and JavaScript. They automatically
 
 ## A Note On Randomness
 
-Randomness in the blockchain is a complex subject. We recommend you to read and investigate about it. You can start with our [security page on it](../../2.develop/contracts/security/random.md).
+Randomness in the blockchain is a complex subject. We recommend you to read and investigate about it. You can start with our [security page on it](../../2.build/2.smart-contracts/security/random.md).
 
 :::note Versioning for this article
 

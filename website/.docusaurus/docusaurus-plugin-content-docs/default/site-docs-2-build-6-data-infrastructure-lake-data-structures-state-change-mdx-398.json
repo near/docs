@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/6.data-infrastructure/lake-data-structures/state_change.mdx",
   "sourceDirName": "2.build/6.data-infrastructure/lake-data-structures",
   "slug": "/build/data-infrastructure/lake-data-structures/state-change",
-  "permalink": "/zh-CN/build/data-infrastructure/lake-data-structures/state-change",
+  "permalink": "/build/data-infrastructure/lake-data-structures/state-change",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/lake-data-structures/state_change.mdx",
@@ -22,6 +22,6 @@
   "sidebar": "build",
   "previous": {
     "title": "ExecutionOutcome",
-    "permalink": "/zh-CN/build/data-infrastructure/lake-data-structures/execution-outcome"
+    "permalink": "/build/data-infrastructure/lake-data-structures/execution-outcome"
   }
 }

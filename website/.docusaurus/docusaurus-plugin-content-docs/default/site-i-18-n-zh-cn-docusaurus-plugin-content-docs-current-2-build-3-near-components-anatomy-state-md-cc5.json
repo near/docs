@@ -1,0 +1,27 @@
+{
+  "id": "build/near-components/anatomy/state",
+  "title": "Basics",
+  "description": "Borrowing from React, Near Components use hooks such as useState and useEffect to handle the state's logic, and props to receive parameters.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.build/3.near-components/anatomy/state.md",
+  "sourceDirName": "2.build/3.near-components/anatomy",
+  "slug": "/build/near-components/anatomy/state",
+  "permalink": "/zh-CN/build/near-components/anatomy/state",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/3.near-components/anatomy/state.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "state",
+    "title": "Basics"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Choose your Dev Environment",
+    "permalink": "/zh-CN/build/near-components/dev-environment"
+  },
+  "next": {
+    "title": "Web Browser Methods",
+    "permalink": "/zh-CN/build/near-components/anatomy/web-methods"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "build/smart-contracts/security/callbacks",
+  "title": "Cross-Contract Calls",
+  "description": "While writing cross-contract calls there is a significant aspect to keep in mind",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.build/2.smart-contracts/security/callbacks.md",
+  "sourceDirName": "2.build/2.smart-contracts/security",
+  "slug": "/build/smart-contracts/security/callbacks",
+  "permalink": "/vi/build/smart-contracts/security/callbacks",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/security/callbacks.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "callbacks",
+    "title": "Cross-Contract Calls"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Million Small Deposits",
+    "permalink": "/vi/build/smart-contracts/security/storage"
+  },
+  "next": {
+    "title": "Ensure it is the User (1yⓃ)",
+    "permalink": "/vi/build/smart-contracts/security/one-yocto"
+  }
+}

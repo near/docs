@@ -5,7 +5,7 @@
   "source": "@site/../docs/6.integrations/errors/error-implementation.md",
   "sourceDirName": "6.integrations/errors",
   "slug": "/integrations/errors/error-implementation",
-  "permalink": "/zh-CN/integrations/errors/error-implementation",
+  "permalink": "/integrations/errors/error-implementation",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/6.integrations/errors/error-implementation.md",
@@ -21,10 +21,10 @@
   "sidebar": "exchanges",
   "previous": {
     "title": "Introduction",
-    "permalink": "/zh-CN/integrations/errors/introduction"
+    "permalink": "/integrations/errors/introduction"
   },
   "next": {
     "title": "Avoiding Token Loss",
-    "permalink": "/zh-CN/integrations/errors/token-loss"
+    "permalink": "/integrations/errors/token-loss"
   }
 }

@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/6.data-infrastructure/query-api/best-practices.md",
   "sourceDirName": "2.build/6.data-infrastructure/query-api",
   "slug": "/build/data-infrastructure/query-api/best-practices",
-  "permalink": "/zh-CN/build/data-infrastructure/query-api/best-practices",
+  "permalink": "/build/data-infrastructure/query-api/best-practices",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/query-api/best-practices.md",
@@ -21,10 +21,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Getting Started",
-    "permalink": "/zh-CN/build/data-infrastructure/query-api/indexers"
+    "permalink": "/build/data-infrastructure/query-api/indexers"
   },
   "next": {
     "title": "Indexing Functions",
-    "permalink": "/zh-CN/build/data-infrastructure/query-api/index-functions"
+    "permalink": "/build/data-infrastructure/query-api/index-functions"
   }
 }

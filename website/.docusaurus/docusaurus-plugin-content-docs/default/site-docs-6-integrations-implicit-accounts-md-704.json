@@ -5,7 +5,7 @@
   "source": "@site/../docs/6.integrations/implicit-accounts.md",
   "sourceDirName": "6.integrations",
   "slug": "/integrations/implicit-accounts",
-  "permalink": "/zh-CN/integrations/implicit-accounts",
+  "permalink": "/integrations/implicit-accounts",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/6.integrations/implicit-accounts.md",
@@ -21,10 +21,10 @@
   "sidebar": "exchanges",
   "previous": {
     "title": "Fungible Tokens",
-    "permalink": "/zh-CN/integrations/fungible-tokens"
+    "permalink": "/integrations/fungible-tokens"
   },
   "next": {
     "title": "Introduction",
-    "permalink": "/zh-CN/integrations/errors/introduction"
+    "permalink": "/integrations/errors/introduction"
   }
 }

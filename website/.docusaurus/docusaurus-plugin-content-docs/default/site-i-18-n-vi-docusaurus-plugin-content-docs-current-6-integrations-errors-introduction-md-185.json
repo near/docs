@@ -1,0 +1,28 @@
+{
+  "id": "integrations/errors/introduction",
+  "title": "Introduction",
+  "description": "did you know?",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/6.integrations/errors/introduction.md",
+  "sourceDirName": "6.integrations/errors",
+  "slug": "/integrations/errors/introduction",
+  "permalink": "/vi/integrations/errors/introduction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/6.integrations/errors/introduction.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "introduction",
+    "title": "Introduction",
+    "sidebar_label": "Introduction"
+  },
+  "sidebar": "exchanges",
+  "previous": {
+    "title": "Implicit Accounts",
+    "permalink": "/vi/integrations/implicit-accounts"
+  },
+  "next": {
+    "title": "Source Code Survey",
+    "permalink": "/vi/integrations/errors/error-implementation"
+  }
+}

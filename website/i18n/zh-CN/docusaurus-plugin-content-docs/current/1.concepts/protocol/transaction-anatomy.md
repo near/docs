@@ -21,7 +21,7 @@ Users create transactions and sign them with their private keys. Then, the **tra
 Each transaction has exactly one `Signer` and `Receiver`, but can have multiple `Actions`
 :::
 
-***
+---
 
 ## Actions
 

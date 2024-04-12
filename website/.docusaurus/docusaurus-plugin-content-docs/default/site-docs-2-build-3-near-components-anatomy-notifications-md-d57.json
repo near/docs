@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/3.near-components/anatomy/notifications.md",
   "sourceDirName": "2.build/3.near-components/anatomy",
   "slug": "/build/near-components/anatomy/notifications",
-  "permalink": "/zh-CN/build/near-components/anatomy/notifications",
+  "permalink": "/build/near-components/anatomy/notifications",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/3.near-components/anatomy/notifications.md",
@@ -20,10 +20,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Social Interactions",
-    "permalink": "/zh-CN/build/near-components/anatomy/social"
+    "permalink": "/build/near-components/anatomy/social"
   },
   "next": {
     "title": "Handling Historical data",
-    "permalink": "/zh-CN/build/near-components/anatomy/bos-components"
+    "permalink": "/build/near-components/anatomy/bos-components"
   }
 }

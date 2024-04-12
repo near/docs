@@ -1,0 +1,139 @@
+---
+sidebar_position: 2
+sidebar_label: Block
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# `Block` Structure
+
+## Definition
+
+`Block` is the main entity in NEAR Protocol blockchain. `Blocks` are produced in NEAR Protocol every second.
+
+It contains the info:
+
+- about the `Block` producer (`AccountId` of the validator responsible for particular `Block` production)
+- Block Header
+- List of Chunk Headers
+
+## Representation
+
+### `Block`
+
+<Tabs>
+  <TabItem value="rust" label="Rust" default>
+
+```rust links=1
+pub struct BlockView {
+    pub author: AccountId,
+    pub header: BlockHeaderView,
+    pub chunks: Vec<ChunkHeaderView>,
+}
+```
+
+</TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```ts links=1
+export interface Block {
+  author: string;
+  header: BlockHeader;
+  chunks: ChunkHeader[];
+};
+```
+
+</TabItem>
+</Tabs>
+
+### `BlockHeaderView`
+
+`BlockHeaderView` contains main info about the block.
+
+<Tabs>
+  <TabItem value="rust" label="Rust">
+
+```rust
+pub struct BlockHeaderView {
+    pub height: BlockHeight,
+    pub prev_height: Option<BlockHeight>,
+    pub epoch_id: CryptoHash,
+    pub next_epoch_id: CryptoHash,
+    pub hash: CryptoHash,
+    pub prev_hash: CryptoHash,
+    pub prev_state_root: CryptoHash,
+    pub chunk_receipts_root: CryptoHash,
+    pub chunk_headers_root: CryptoHash,
+    pub chunk_tx_root: CryptoHash,
+    pub outcome_root: CryptoHash,
+    pub chunks_included: u64,
+    pub challenges_root: CryptoHash,
+    /// Legacy json number. Should not be used.
+    pub timestamp: u64,
+    pub timestamp_nanosec: u64,
+    pub random_value: CryptoHash,
+    pub validator_proposals: Vec<ValidatorStakeView>,
+    pub chunk_mask: Vec<bool>,
+    pub gas_price: Balance,
+    pub block_ordinal: Option<NumBlocks>,
+    /// TODO(2271): deprecated.
+    pub rent_paid: Balance,
+    /// TODO(2271): deprecated.
+    pub validator_reward: Balance,
+    pub total_supply: Balance,
+    pub challenges_result: ChallengesResult,
+    pub last_final_block: CryptoHash,
+    pub last_ds_final_block: CryptoHash,
+    pub next_bp_hash: CryptoHash,
+    pub block_merkle_root: CryptoHash,
+    pub epoch_sync_data_hash: Option<CryptoHash>,
+    pub approvals: Vec<Option<Signature>>,
+    pub signature: Signature,
+    pub latest_protocol_version: ProtocolVersion,
+}
+```
+
+</TabItem>
+
+<TabItem value="typescript" label="TypeScript">
+
+```ts links=1
+export interface BlockHeader {
+  approvals: (string | null)[];
+  blockMerkleRoot: string;
+  blockOrdinal: number;
+  challengesResult: ChallengeResult[];
+  challengesRoot: string;
+  chunkHeadersRoot: string;
+  chunkMask: boolean[];
+  chunkReceiptsRoot: string;
+  chunkTxRoot: string;
+  chunksIncluded: number;
+  epochId: string;
+  epochSyncDataHash: string | null;
+  gasPrice: string;
+  hash: string;
+  height: number;
+  lastDsFinalBlock: string;
+  lastFinalBlock: string;
+  latestProtocolVersion: number;
+  nextBpHash: string;
+  nextEpochId: string;
+  outcomeRoot: string;
+  prevHash: string;
+  prevHeight: number;
+  prevStateRoot: string;
+  randomValue: string;
+  rentPaid: string;
+  signature: string;
+  timestamp: number;
+  timestampNanosec: string;
+  totalSupply: string;
+  validatorProposals: [];
+  validatorReward: string;
+};
+```
+
+</TabItem>
+</Tabs>

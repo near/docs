@@ -1,0 +1,15 @@
+{
+  "id": "build/primitives/linkdrop/near-cli/create-function-call-drop",
+  "title": "create-function-call-drop",
+  "description": "",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.build/5.primitives/linkdrop/near-cli/create-function-call-drop.md",
+  "sourceDirName": "2.build/5.primitives/linkdrop/near-cli",
+  "slug": "/build/primitives/linkdrop/near-cli/create-function-call-drop",
+  "permalink": "/zh-CN/build/primitives/linkdrop/near-cli/create-function-call-drop",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/linkdrop/near-cli/create-function-call-drop.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

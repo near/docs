@@ -1,0 +1,27 @@
+{
+  "id": "build/smart-contracts/security/reentrancy",
+  "title": "재진입 공격",
+  "description": "교차 컨트랙트 호출과 콜백 사이에서 컨트랙트의 모든 메서드를 실행할 수 있습니다. 이것을 고려하지 않는 것은 해킹의 주요 소스 중 하나입니다. 재진입 공격이라는 자체 이름이 있을 정도로, 이는 매우 기본적인 해킹 방식입니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/2.smart-contracts/security/reentrancy.md",
+  "sourceDirName": "2.build/2.smart-contracts/security",
+  "slug": "/build/smart-contracts/security/reentrancy",
+  "permalink": "/ko/build/smart-contracts/security/reentrancy",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/security/reentrancy.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "reentrancy",
+    "title": "재진입 공격"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "프론트러닝",
+    "permalink": "/ko/build/smart-contracts/security/frontrunning"
+  },
+  "next": {
+    "title": "Random Numbers",
+    "permalink": "/ko/build/smart-contracts/security/random"
+  }
+}

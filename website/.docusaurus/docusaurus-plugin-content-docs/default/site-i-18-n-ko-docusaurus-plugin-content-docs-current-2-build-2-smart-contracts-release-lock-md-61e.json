@@ -1,0 +1,27 @@
+{
+  "id": "build/smart-contracts/release/lock",
+  "title": "계정 잠금",
+  "description": "계정에서 전체 액세스 키를 모두 제거하면, 계정이 효과적으로 잠깁니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/2.smart-contracts/release/lock.md",
+  "sourceDirName": "2.build/2.smart-contracts/release",
+  "slug": "/build/smart-contracts/release/lock",
+  "permalink": "/ko/build/smart-contracts/release/lock",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/release/lock.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "lock",
+    "title": "계정 잠금"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Updating Contracts",
+    "permalink": "/ko/build/smart-contracts/release/upgrade"
+  },
+  "next": {
+    "title": "보안",
+    "permalink": "/ko/build/smart-contracts/security/welcome"
+  }
+}

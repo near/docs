@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/6.data-infrastructure/lake-data-structures/shard.mdx",
   "sourceDirName": "2.build/6.data-infrastructure/lake-data-structures",
   "slug": "/build/data-infrastructure/lake-data-structures/shard",
-  "permalink": "/zh-CN/build/data-infrastructure/lake-data-structures/shard",
+  "permalink": "/build/data-infrastructure/lake-data-structures/shard",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/lake-data-structures/shard.mdx",
@@ -21,10 +21,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Chunk",
-    "permalink": "/zh-CN/build/data-infrastructure/lake-data-structures/chunk"
+    "permalink": "/build/data-infrastructure/lake-data-structures/chunk"
   },
   "next": {
     "title": "Transaction",
-    "permalink": "/zh-CN/build/data-infrastructure/lake-data-structures/transaction"
+    "permalink": "/build/data-infrastructure/lake-data-structures/transaction"
   }
 }

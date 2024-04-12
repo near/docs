@@ -1,0 +1,27 @@
+{
+  "id": "build/primitives/oracles",
+  "title": "Price Oracles",
+  "description": "Oracles are smart contracts that enable you to query the current price of an asset.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.build/5.primitives/oracles.md",
+  "sourceDirName": "2.build/5.primitives",
+  "slug": "/build/primitives/oracles",
+  "permalink": "/zh-CN/build/primitives/oracles",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/oracles.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "oracles",
+    "title": "Price Oracles"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Linkdrops",
+    "permalink": "/zh-CN/build/primitives/linkdrop"
+  },
+  "next": {
+    "title": "Autonomous Organizations (DAO)",
+    "permalink": "/zh-CN/build/primitives/dao"
+  }
+}

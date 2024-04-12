@@ -1,0 +1,28 @@
+{
+  "id": "build/data-infrastructure/lake-data-structures/receipt",
+  "title": "Receipt Structure",
+  "description": "Definition",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.build/6.data-infrastructure/lake-data-structures/receipt.mdx",
+  "sourceDirName": "2.build/6.data-infrastructure/lake-data-structures",
+  "slug": "/build/data-infrastructure/lake-data-structures/receipt",
+  "permalink": "/vi/build/data-infrastructure/lake-data-structures/receipt",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/lake-data-structures/receipt.mdx",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 7,
+  "frontMatter": {
+    "sidebar_position": 7,
+    "sidebar_label": "Receipt"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Transaction",
+    "permalink": "/vi/build/data-infrastructure/lake-data-structures/transaction"
+  },
+  "next": {
+    "title": "ExecutionOutcome",
+    "permalink": "/vi/build/data-infrastructure/lake-data-structures/execution-outcome"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "build/primitives/dex/web-app/get-pools",
+  "title": "get-pools",
+  "description": "The Wallet object comes from our quickstart template",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/5.primitives/dex/web-app/get-pools.md",
+  "sourceDirName": "2.build/5.primitives/dex/web-app",
+  "slug": "/build/primitives/dex/web-app/get-pools",
+  "permalink": "/ko/build/primitives/dex/web-app/get-pools",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/dex/web-app/get-pools.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

@@ -1,0 +1,28 @@
+{
+  "id": "integrations/errors/token-loss",
+  "title": "토큰 손실 피하기",
+  "description": "주의하세요! 토큰을 잃는다는 것은 돈을 잃는다는 것을 의미합니다!",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/6.integrations/errors/token-loss.md",
+  "sourceDirName": "6.integrations/errors",
+  "slug": "/integrations/errors/token-loss",
+  "permalink": "/ko/integrations/errors/token-loss",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/6.integrations/errors/token-loss.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "token-loss",
+    "title": "토큰 손실 피하기",
+    "sidebar_label": "토큰 손실 피하기"
+  },
+  "sidebar": "exchanges",
+  "previous": {
+    "title": "소스 코드 조사",
+    "permalink": "/ko/integrations/errors/error-implementation"
+  },
+  "next": {
+    "title": "통합 FAQ",
+    "permalink": "/ko/integrations/faq"
+  }
+}

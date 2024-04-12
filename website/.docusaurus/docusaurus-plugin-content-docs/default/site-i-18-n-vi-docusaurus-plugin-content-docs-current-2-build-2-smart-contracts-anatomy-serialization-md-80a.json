@@ -1,0 +1,27 @@
+{
+  "id": "build/smart-contracts/anatomy/serialization",
+  "title": "Notes on Serialization",
+  "description": "Smart contracts need to be able to communicate complex data in a simple way, while",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.build/2.smart-contracts/anatomy/serialization.md",
+  "sourceDirName": "2.build/2.smart-contracts/anatomy",
+  "slug": "/build/smart-contracts/anatomy/serialization",
+  "permalink": "/vi/build/smart-contracts/anatomy/serialization",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/anatomy/serialization.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "serialization",
+    "title": "Notes on Serialization"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "✅ Checklist",
+    "permalink": "/vi/build/smart-contracts/security/checklist"
+  },
+  "next": {
+    "title": "Introduction",
+    "permalink": "/vi/build/smart-contracts/testing/introduction"
+  }
+}

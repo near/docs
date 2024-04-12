@@ -1,0 +1,27 @@
+{
+  "id": "build/smart-contracts/release/lock",
+  "title": "Locking Accounts",
+  "description": "Removing all full access keys from an account will effectively lock it.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.build/2.smart-contracts/release/lock.md",
+  "sourceDirName": "2.build/2.smart-contracts/release",
+  "slug": "/build/smart-contracts/release/lock",
+  "permalink": "/vi/build/smart-contracts/release/lock",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/release/lock.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "lock",
+    "title": "Locking Accounts"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Updating Contracts",
+    "permalink": "/vi/build/smart-contracts/release/upgrade"
+  },
+  "next": {
+    "title": "Security",
+    "permalink": "/vi/build/smart-contracts/security/welcome"
+  }
+}

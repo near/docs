@@ -1,0 +1,25 @@
+{
+  "id": "build/data-infrastructure/lake-data-structures/state-change",
+  "title": "StateChange Structure",
+  "description": "Definition",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/6.data-infrastructure/lake-data-structures/state_change.mdx",
+  "sourceDirName": "2.build/6.data-infrastructure/lake-data-structures",
+  "slug": "/build/data-infrastructure/lake-data-structures/state-change",
+  "permalink": "/ko/build/data-infrastructure/lake-data-structures/state-change",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/lake-data-structures/state_change.mdx",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 9,
+  "frontMatter": {
+    "id": "state-change",
+    "sidebar_position": 9,
+    "sidebar_label": "StateChange"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "ExecutionOutcome",
+    "permalink": "/ko/build/data-infrastructure/lake-data-structures/execution-outcome"
+  }
+}

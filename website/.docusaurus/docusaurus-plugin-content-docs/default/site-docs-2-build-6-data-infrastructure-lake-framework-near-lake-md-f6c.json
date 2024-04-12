@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/6.data-infrastructure/lake-framework/near-lake.md",
   "sourceDirName": "2.build/6.data-infrastructure/lake-framework",
   "slug": "/build/data-infrastructure/lake-framework/near-lake",
-  "permalink": "/zh-CN/build/data-infrastructure/lake-framework/near-lake",
+  "permalink": "/build/data-infrastructure/lake-framework/near-lake",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/lake-framework/near-lake.md",
@@ -21,10 +21,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Migrate from Lake framework",
-    "permalink": "/zh-CN/build/data-infrastructure/query-api/migrate-from-near-lake"
+    "permalink": "/build/data-infrastructure/query-api/migrate-from-near-lake"
   },
   "next": {
     "title": "NEAR Lake Indexer Tutorial",
-    "permalink": "/zh-CN/build/data-infrastructure/lake-framework/near-lake-state-changes-indexer"
+    "permalink": "/build/data-infrastructure/lake-framework/near-lake-state-changes-indexer"
   }
 }

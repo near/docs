@@ -12,14 +12,14 @@ This unlocks the next level of blockchain interoperability by giving ownership o
 _Diagram of a chain signature in NEAR_
 
 :::info Looking for code?
-To get started using Chain Signatures in your project see **[Create a Chain Signature](../../8.abstraction/chain-signatures.md)**.
+To get started using Chain Signatures in your project see **[Create a Chain Signature](../../2.build/1.chain-abstraction/chain-signatures.md)**.
 :::
 
 :::caution
 This technology is currently in `alpha` and should only be used in a `testnet` environment.
 :::
 
-***
+---
 
 ## How It Works
 
@@ -50,7 +50,7 @@ In practice, the external address is deterministically derived using the NEAR ad
 :::
 
 :::info
-See [**Create a Chain Signature - how the derivation is implemented**](../../8.abstraction/chain-signatures.md#1-deriving-the-foreign-address) for an example implementation
+See [**Create a Chain Signature - how the derivation is implemented**](../../2.build/1.chain-abstraction/chain-signatures.md#1-deriving-the-foreign-address) for an example implementation
 :::
 
 <hr class="subsection" />
@@ -75,12 +75,12 @@ Once the signature is ready, the contract gains access to it and returns it to t
 
 NEAR smart contracts are unable to halt execution and await the completion of a process. To solve this, one can make the contract call itself again and again checking on each iteration to see if the result is ready.
 
-**Note:** Each call will take one block which equates to \~1 second of waiting. After some time the contract will either return a result that an external party provided or return an error running out of GAS waiting.
+**Note:** Each call will take one block which equates to ~1 second of waiting. After some time the contract will either return a result that an external party provided or return an error running out of GAS waiting.
 
 </details>
 
 :::info
-See [**Create a Chain Signature - requesting the signature**](../../8.abstraction/chain-signatures.md#3-requesting-the-signature) for an example implementation
+See [**Create a Chain Signature - requesting the signature**](../../2.build/1.chain-abstraction/chain-signatures.md#3-requesting-the-signature) for an example implementation
 :::
 
 <hr class="subsection" />
@@ -105,7 +105,7 @@ NEAR's MPC service allows for nodes to safely join and leave, without needing to
 Want to learn more about the mathematics that enable MPC? [**Check this awesome article**](https://www.zellic.io/blog/mpc-from-scratch/)
 :::
 
-***
+---
 
 ## Concluding Remarks
 

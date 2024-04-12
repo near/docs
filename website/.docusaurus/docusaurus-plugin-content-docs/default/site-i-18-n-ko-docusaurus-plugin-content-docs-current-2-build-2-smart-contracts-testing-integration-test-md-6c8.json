@@ -1,0 +1,27 @@
+{
+  "id": "build/smart-contracts/testing/integration-test",
+  "title": "Integration Tests",
+  "description": "통합 테스트를 사용하면 NEAR testnet 또는 로컬 sandbox에 컨트랙트를 배포하고, 컨트랙트와 상호 작용할 테스트 사용자를 만들 수 있습니다. 그러한 방식으로, 현실적인 환경에서 컨트랙트를 철저하게 테스트할 수 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/2.smart-contracts/testing/integration-test.md",
+  "sourceDirName": "2.build/2.smart-contracts/testing",
+  "slug": "/build/smart-contracts/testing/integration-test",
+  "permalink": "/ko/build/smart-contracts/testing/integration-test",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/testing/integration-test.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "integration-test",
+    "title": "Integration Tests"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "단위 테스트(Unit Testing)",
+    "permalink": "/ko/build/smart-contracts/testing/unit-test"
+  },
+  "next": {
+    "title": "로컬 개발 환경",
+    "permalink": "/ko/build/smart-contracts/testing/kurtosis-localnet"
+  }
+}

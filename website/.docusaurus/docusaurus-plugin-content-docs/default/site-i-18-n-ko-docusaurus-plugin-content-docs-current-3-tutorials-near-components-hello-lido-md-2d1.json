@@ -1,0 +1,27 @@
+{
+  "id": "tutorials/near-components/lido",
+  "title": "Lido 예시",
+  "description": "If you are ready to explore further, the Lido component serves as an excellent fully-fledged example, as it demonstrates how to interact with a smart contract deployed on the Ethereum mainnet.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/near-components/hello-lido.md",
+  "sourceDirName": "3.tutorials/near-components",
+  "slug": "/tutorials/near-components/lido",
+  "permalink": "/ko/tutorials/near-components/lido",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/near-components/hello-lido.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "lido",
+    "title": "Lido 예시"
+  },
+  "sidebar": "tutorials",
+  "previous": {
+    "title": "Best Practices for Ethereum developers on NEAR",
+    "permalink": "/ko/tutorials/near-components/ethers-js-best-practices"
+  },
+  "next": {
+    "title": "소개",
+    "permalink": "/ko/tutorials/fts/introduction"
+  }
+}

@@ -135,7 +135,7 @@ In this project in particular, the integration tests first deploy the `hello-nea
 
 ### Deploying the Contract to the NEAR network
 
-In order to deploy the contract you will need to [create a NEAR account](/develop/contracts/quickstart#create-a-testnet-account).
+In order to deploy the contract you will need to create a NEAR account.
 
 <Tabs>
   <TabItem value="🌐 JavaScript">
@@ -188,7 +188,7 @@ near call <accountId> change_greeting '{"new_greeting":"XCC Hi"}' --accountId <a
 
 ## 더 알아보기
 
-배울 수 있는 좋은 방법은 컨트랙트를 확장하는 것입니다. [방명록](guest-book.md) 컨트랙트를 사용하도록 교차 컨트랙트 예제를 수정합니다! 이런 식으로 돈을 붙이는 교차 컨트랙트 호출을 시도할 수 있습니다. [콜백을 올바르게 처리](../../2.develop/contracts/crosscontract.md#callback-method)하고, 오류가 발생한 경우 사용자에게 금액을 반환해야 합니다.
+배울 수 있는 좋은 방법은 컨트랙트를 확장하는 것입니다. [방명록](guest-book.md) 컨트랙트를 사용하도록 교차 컨트랙트 예제를 수정합니다! 이런 식으로 돈을 붙이는 교차 컨트랙트 호출을 시도할 수 있습니다. Remember to correctly [handle the callback](../../2.build/2.smart-contracts/anatomy/crosscontract.md#callback-method), and to return the money to the user in case of error.
 
 ### 고급 교차 컨트랙트 호출
 

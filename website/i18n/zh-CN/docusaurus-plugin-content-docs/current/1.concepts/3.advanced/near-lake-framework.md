@@ -34,7 +34,7 @@ Please, read the post [there](https://gov.near.org/t/announcement-near-lake-fram
 | Estimated cost of infrastructure                                    | [$500+/mo](https://near-nodes.io/rpc/hardware-rpc)                                           | [**$20/mo**](#what-is-the-cost-of-running-a-custom-indexer-based-on-near-lake)                                                                                                                                                                   |
 | Ease of maintenance                                                 | Advanced<br />(need to follow every nearcore upgrade, and sync state)                  | **Easy**<br />(deploy once and forget)                                                                                                                                                                                                     |
 | How long will it take to start?                                     | days (on mainnet/testnet)                                                                    | **seconds**                                                                                                                                                                                                                                      |
-| Ease of local development                                           | Advanced<br />(localnet is a good option, but testing on testnet/mainnet is too heavy) | **Easy**<br />(see [tutorials](/tutorials/indexer/near-lake-state-changes-indexer))                                                                                                                                                        |
+| Ease of local development                                           | Advanced<br />(localnet is a good option, but testing on testnet/mainnet is too heavy) | **Easy**<br />(see [tutorials](/build/data-infrastructure/lake-framework/near-lake-state-changes-indexer))                                                                                                                                 |
 | Programming languages that a custom indexer can be implemented with | Rust only                                                                                    | **Any**<br />(currently, helper packages are released in [Python](http://pypi.org/project/near-lake-framework), [JavaScript](https://www.npmjs.com/package/near-lake-framework), and [Rust](https://crates.io/crates/near-lake-framework)) |
 
 
@@ -81,6 +81,6 @@ Note, the price depends on the number of shards.
 
 :::note Tutorials
 
-See [Tutorials page](/tutorials/indexer/near-lake-state-changes-indexer)
+See [Tutorials page](/build/data-infrastructure/lake-framework/near-lake-state-changes-indexer)
 
 :::

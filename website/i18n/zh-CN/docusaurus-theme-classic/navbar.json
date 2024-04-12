@@ -170,5 +170,9 @@
   "item.label.Concepts": {
     "message": "Concepts",
     "description": "Navbar item with label Concepts"
+  },
+  "item.label.Exchange Integrations": {
+    "message": "Exchange Integrations",
+    "description": "Navbar item with label Exchange Integrations"
   }
 }

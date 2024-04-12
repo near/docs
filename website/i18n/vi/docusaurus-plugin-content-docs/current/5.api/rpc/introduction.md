@@ -6,7 +6,6 @@ title: NEAR RPC API
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import ContactUs from '@site/src/components/ContactUs.mdx';
 
 The RPC API allows you to communicate directly with the NEAR network. For example, tools such as [near-api-js](/tools/near-api-js/quick-reference) are just abstractions making RPC calls.
 
@@ -32,7 +31,3 @@ There are multiple [RPC providers which you can choose from](./providers.md). Th
 | [Maintenance Windows](/api/rpc/maintenance-windows) | Query the maintenance windows in current epoch for a validator.                |
 
 :::tip You can access the JSON RPC 2.0 endpoints using [Postman](/api/rpc/setup#postman-setup), [JavaScript](/api/rpc/setup#javascript-setup), and [HTTPie](/api/rpc/setup#httpie-setup). :::
-
-<hr className="subsection" />
-
-<ContactUs />

@@ -1,0 +1,27 @@
+{
+  "id": "build/smart-contracts/testing/integration-test",
+  "title": "Integration Tests",
+  "description": "Integration tests enable to deploy your contract in the NEAR testnet or a local sandbox, and create test-users to interact with it. In this way, you can thoroughly test your contract in a realistic environment.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.build/2.smart-contracts/testing/integration-test.md",
+  "sourceDirName": "2.build/2.smart-contracts/testing",
+  "slug": "/build/smart-contracts/testing/integration-test",
+  "permalink": "/zh-CN/build/smart-contracts/testing/integration-test",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/testing/integration-test.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "integration-test",
+    "title": "Integration Tests"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Unit Testing",
+    "permalink": "/zh-CN/build/smart-contracts/testing/unit-test"
+  },
+  "next": {
+    "title": "Local Development",
+    "permalink": "/zh-CN/build/smart-contracts/testing/kurtosis-localnet"
+  }
+}

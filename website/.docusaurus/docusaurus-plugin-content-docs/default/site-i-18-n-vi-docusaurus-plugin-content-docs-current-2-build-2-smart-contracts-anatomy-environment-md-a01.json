@@ -1,0 +1,27 @@
+{
+  "id": "build/smart-contracts/anatomy/environment",
+  "title": "Environment",
+  "description": "Every method execution has an environment associated with information such as:",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.build/2.smart-contracts/anatomy/environment.md",
+  "sourceDirName": "2.build/2.smart-contracts/anatomy",
+  "slug": "/build/smart-contracts/anatomy/environment",
+  "permalink": "/vi/build/smart-contracts/anatomy/environment",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/anatomy/environment.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "environment",
+    "title": "Environment"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "The Contract Class",
+    "permalink": "/vi/build/smart-contracts/anatomy/"
+  },
+  "next": {
+    "title": "State & Data Structures",
+    "permalink": "/vi/build/smart-contracts/anatomy/storage"
+  }
+}

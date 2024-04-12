@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/5.primitives/linkdrop.md",
   "sourceDirName": "2.build/5.primitives",
   "slug": "/build/primitives/linkdrop",
-  "permalink": "/zh-CN/build/primitives/linkdrop",
+  "permalink": "/build/primitives/linkdrop",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/linkdrop.md",
@@ -21,10 +21,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Non-Fungible Tokens (NFT)",
-    "permalink": "/zh-CN/build/primitives/nft"
+    "permalink": "/build/primitives/nft"
   },
   "next": {
     "title": "Price Oracles",
-    "permalink": "/zh-CN/build/primitives/oracles"
+    "permalink": "/build/primitives/oracles"
   }
 }

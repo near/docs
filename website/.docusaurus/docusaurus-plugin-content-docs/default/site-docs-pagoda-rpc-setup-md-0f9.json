@@ -5,7 +5,7 @@
   "source": "@site/../docs/pagoda/rpc/setup.md",
   "sourceDirName": "pagoda/rpc",
   "slug": "/pagoda/rpc/setup",
-  "permalink": "/zh-CN/pagoda/rpc/setup",
+  "permalink": "/pagoda/rpc/setup",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/pagoda/rpc/setup.md",
@@ -22,10 +22,10 @@
   "sidebar": "pagoda",
   "previous": {
     "title": "Get API Keys",
-    "permalink": "/zh-CN/pagoda/rpc/get-keys"
+    "permalink": "/pagoda/rpc/get-keys"
   },
   "next": {
     "title": "Statistics Dashboard",
-    "permalink": "/zh-CN/pagoda/rpc/stats"
+    "permalink": "/pagoda/rpc/stats"
   }
 }

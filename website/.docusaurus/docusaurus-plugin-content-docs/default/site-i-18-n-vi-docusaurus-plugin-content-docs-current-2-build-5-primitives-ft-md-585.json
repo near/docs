@@ -1,0 +1,28 @@
+{
+  "id": "build/primitives/ft",
+  "title": "Fungible Tokens (FT)",
+  "description": "Besides the native NEAR token, NEAR accounts have access to a multitude of tokens to use thoughtout the ecosystem. Moreover, it is even possible for users to create their own fungible tokens.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.build/5.primitives/ft.md",
+  "sourceDirName": "2.build/5.primitives",
+  "slug": "/build/primitives/ft",
+  "permalink": "/vi/build/primitives/ft",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/ft.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "ft",
+    "title": "Fungible Tokens (FT)",
+    "hide_table_of_contents": false
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "What are Primitives?",
+    "permalink": "/vi/build/primitives/what-is"
+  },
+  "next": {
+    "title": "Non-Fungible Tokens (NFT)",
+    "permalink": "/vi/build/primitives/nft"
+  }
+}

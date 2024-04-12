@@ -1,0 +1,29 @@
+{
+  "id": "build/data-infrastructure/lake-data-structures/execution-outcome",
+  "title": "ExecutionOutcome Structure",
+  "description": "Definition",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.build/6.data-infrastructure/lake-data-structures/execution_outcome.mdx",
+  "sourceDirName": "2.build/6.data-infrastructure/lake-data-structures",
+  "slug": "/build/data-infrastructure/lake-data-structures/execution-outcome",
+  "permalink": "/zh-CN/build/data-infrastructure/lake-data-structures/execution-outcome",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/lake-data-structures/execution_outcome.mdx",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 6,
+  "frontMatter": {
+    "id": "execution-outcome",
+    "sidebar_position": 6,
+    "sidebar_label": "ExecutionOutcome"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Receipt",
+    "permalink": "/zh-CN/build/data-infrastructure/lake-data-structures/receipt"
+  },
+  "next": {
+    "title": "StateChange",
+    "permalink": "/zh-CN/build/data-infrastructure/lake-data-structures/state-change"
+  }
+}

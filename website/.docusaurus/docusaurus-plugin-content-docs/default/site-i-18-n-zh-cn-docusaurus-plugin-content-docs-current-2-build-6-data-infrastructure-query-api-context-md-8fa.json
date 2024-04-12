@@ -1,0 +1,28 @@
+{
+  "id": "build/data-infrastructure/query-api/context-object",
+  "title": "QueryAPI Context object",
+  "description": "Overview",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.build/6.data-infrastructure/query-api/context.md",
+  "sourceDirName": "2.build/6.data-infrastructure/query-api",
+  "slug": "/build/data-infrastructure/query-api/context-object",
+  "permalink": "/zh-CN/build/data-infrastructure/query-api/context-object",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/query-api/context.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "context-object",
+    "title": "QueryAPI Context object",
+    "sidebar_label": "Context object"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Indexing Functions",
+    "permalink": "/zh-CN/build/data-infrastructure/query-api/index-functions"
+  },
+  "next": {
+    "title": "Access & Query Historical data",
+    "permalink": "/zh-CN/build/data-infrastructure/query-api/query-data"
+  }
+}

@@ -22,7 +22,7 @@ import TabItem from '@theme/TabItem';
 
 아직 연구 및 개발 단계에 있는 경우, 프로토타입을 빌드하고 로컬 또는 [테스트넷](/concepts/basics/networks)에 배포하면 변경 사항을 수정할 때 이전 컨트랙트 상태를 모두 삭제할 수 있습니다. 이를 수행하는 몇 가지 방법은 아래를 참고하세요.
 
-보다 안정적인 컨트랙트를 배포할 준비가 되면, 상태를 모두 삭제하지 않고 업데이트하는 데 도움이 되는 몇 가지 [생산 전략](../../../2.develop/upgrade.md#migrating-the-state)이 있습니다. And once your contract graduates from "trusted mode" (when maintainers control a [Full Access key](/concepts/protocol/access-keys)) to community-governed mode (no more Full Access keys), you can set up your contract to [upgrade itself](../../../2.develop/upgrade.md#programmatic-update).
+When you're ready to deploy a more stable contract, there are a couple of [production strategies](../../../2.build/2.smart-contracts/release/upgrade.md#migrating-the-state) that will help you update the contract state without deleting it all. And once your contract graduates from "trusted mode" (when maintainers control a [Full Access key](/concepts/protocol/access-keys)) to community-governed mode (no more Full Access keys), you can set up your contract to [upgrade itself](../../../2.build/2.smart-contracts/release/upgrade.md#programmatic-update).
 
 
 ## 신속한 프로토타이핑: 항상 모든 항목 삭제

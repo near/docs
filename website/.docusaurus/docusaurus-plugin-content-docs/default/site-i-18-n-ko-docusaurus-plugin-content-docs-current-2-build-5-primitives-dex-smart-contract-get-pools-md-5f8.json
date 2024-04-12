@@ -1,0 +1,15 @@
+{
+  "id": "build/primitives/dex/smart-contract/get-pools",
+  "title": "get-pools",
+  "description": "",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/5.primitives/dex/smart-contract/get-pools.md",
+  "sourceDirName": "2.build/5.primitives/dex/smart-contract",
+  "slug": "/build/primitives/dex/smart-contract/get-pools",
+  "permalink": "/ko/build/primitives/dex/smart-contract/get-pools",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/dex/smart-contract/get-pools.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

@@ -1,0 +1,15 @@
+{
+  "id": "build/primitives/ft/web-app/register",
+  "title": "register",
+  "description": "The Wallet object comes from our quickstart template",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.build/5.primitives/ft/web-app/register.md",
+  "sourceDirName": "2.build/5.primitives/ft/web-app",
+  "slug": "/build/primitives/ft/web-app/register",
+  "permalink": "/vi/build/primitives/ft/web-app/register",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/ft/web-app/register.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

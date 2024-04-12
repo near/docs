@@ -1,0 +1,15 @@
+{
+  "id": "build/primitives/dex/near-cli/swap",
+  "title": "swap",
+  "description": "Example response",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/5.primitives/dex/near-cli/swap.md",
+  "sourceDirName": "2.build/5.primitives/dex/near-cli",
+  "slug": "/build/primitives/dex/near-cli/swap",
+  "permalink": "/ko/build/primitives/dex/near-cli/swap",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/dex/near-cli/swap.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

@@ -1,0 +1,27 @@
+{
+  "id": "build/near-components/anatomy/builtin-components",
+  "title": "List of Native Components",
+  "description": "A list of all the built-in components to be used on Near Components.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.build/3.near-components/anatomy/builtin-components.md",
+  "sourceDirName": "2.build/3.near-components/anatomy",
+  "slug": "/build/near-components/anatomy/builtin-components",
+  "permalink": "/vi/build/near-components/anatomy/builtin-components",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/3.near-components/anatomy/builtin-components.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "builtin-components",
+    "title": "List of Native Components"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Web Browser Methods",
+    "permalink": "/vi/build/near-components/anatomy/web-methods"
+  },
+  "next": {
+    "title": "Interacting with Near",
+    "permalink": "/vi/build/near-components/anatomy/near"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "tutorials/near-components/indexer-tutorials/feed-indexer",
+  "title": "Social Feed Indexer",
+  "description": "NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/3.tutorials/near-components/indexer-tutorials/feed-indexer.md",
+  "sourceDirName": "3.tutorials/near-components/indexer-tutorials",
+  "slug": "/tutorials/near-components/indexer-tutorials/feed-indexer",
+  "permalink": "/zh-CN/tutorials/near-components/indexer-tutorials/feed-indexer",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/near-components/indexer-tutorials/feed-indexer.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "feed-indexer",
+    "title": "Social Feed Indexer",
+    "sidebar_label": "Social Feed Indexer"
+  },
+  "sidebar": "tutorials",
+  "previous": {
+    "title": "NFTs Indexer",
+    "permalink": "/zh-CN/tutorials/near-components/indexer-tutorials/nft-indexer"
+  }
+}

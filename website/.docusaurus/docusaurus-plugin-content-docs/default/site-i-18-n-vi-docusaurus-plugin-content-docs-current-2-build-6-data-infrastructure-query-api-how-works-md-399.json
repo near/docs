@@ -1,0 +1,28 @@
+{
+  "id": "build/data-infrastructure/query-api/how-it-works",
+  "title": "How QueryAPI works",
+  "description": "QueryApi is a streaming indexer implementation that executes custom indexing logic written by developers on the NEAR blockchain.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.build/6.data-infrastructure/query-api/how-works.md",
+  "sourceDirName": "2.build/6.data-infrastructure/query-api",
+  "slug": "/build/data-infrastructure/query-api/how-it-works",
+  "permalink": "/vi/build/data-infrastructure/query-api/how-it-works",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/query-api/how-works.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "how-it-works",
+    "title": "How QueryAPI works",
+    "sidebar_label": "How it works"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Introduction",
+    "permalink": "/vi/build/data-infrastructure/query-api/intro"
+  },
+  "next": {
+    "title": "Getting Started",
+    "permalink": "/vi/build/data-infrastructure/query-api/indexers"
+  }
+}

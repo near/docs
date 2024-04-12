@@ -1008,18 +1008,18 @@ pub enum TxExecutionStatus {
   /// Transaction is included into the block. The block may be not finalized yet
   Included,
   /// Transaction is included into the block +
-  /// All the transaction receipts finished their execution.
+  /// All non-refund transaction receipts finished their execution.
   /// The corresponding blocks for tx and each receipt may be not finalized yet
   #[default]
   ExecutedOptimistic,
   /// Transaction is included into finalized block
   IncludedFinal,
   /// Transaction is included into finalized block +
-  /// All the transaction receipts finished their execution.
+  /// All non-refund transaction receipts finished their execution.
   /// The corresponding blocks for each receipt may be not finalized yet
   Executed,
   /// Transaction is included into finalized block +
-  /// Execution of transaction receipts is finalized
+  /// Execution of all transaction receipts is finalized, including refund receipts
   Final,
 }
 ```

@@ -1,0 +1,27 @@
+{
+  "id": "build/smart-contracts/anatomy/serialization",
+  "title": "직렬화에 대한 참고 사항",
+  "description": "스마트 컨트랙트는 복잡한 데이터를 간단한 방법으로 전달하는 동시에, 이러한 데이터를 효율적으로 읽고 상태에 저장할 수 있어야 합니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/2.smart-contracts/anatomy/serialization.md",
+  "sourceDirName": "2.build/2.smart-contracts/anatomy",
+  "slug": "/build/smart-contracts/anatomy/serialization",
+  "permalink": "/ko/build/smart-contracts/anatomy/serialization",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/anatomy/serialization.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "serialization",
+    "title": "직렬화에 대한 참고 사항"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "✅ 체크리스트",
+    "permalink": "/ko/build/smart-contracts/security/checklist"
+  },
+  "next": {
+    "title": "소개",
+    "permalink": "/ko/build/smart-contracts/testing/introduction"
+  }
+}

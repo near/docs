@@ -1,0 +1,27 @@
+{
+  "id": "build/smart-contracts/security/random",
+  "title": "Random Numbers",
+  "description": "NEAR에서 스마트 컨트랙트를 작성할 때, 컨트랙트 내에서 임의의 숫자/문자열을 생성할 수 있는 random seed에 액세스할 수 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/2.smart-contracts/security/random.md",
+  "sourceDirName": "2.build/2.smart-contracts/security",
+  "slug": "/build/smart-contracts/security/random",
+  "permalink": "/ko/build/smart-contracts/security/random",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/security/random.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "random",
+    "title": "Random Numbers"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "재진입 공격",
+    "permalink": "/ko/build/smart-contracts/security/reentrancy"
+  },
+  "next": {
+    "title": "버그 바운티 프로그램",
+    "permalink": "/ko/build/smart-contracts/security/bounty"
+  }
+}

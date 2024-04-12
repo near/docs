@@ -1,0 +1,28 @@
+{
+  "id": "build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer",
+  "title": "JS basic tutorial",
+  "description": "near-examples/near-lake-raw-printer-js: source code for the tutorial on how to create an indexer that prints block height and number of shards",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.build/6.data-infrastructure/lake-framework/building-indexers/js-lake-indexer.md",
+  "sourceDirName": "2.build/6.data-infrastructure/lake-framework/building-indexers",
+  "slug": "/build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer",
+  "permalink": "/vi/build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/lake-framework/building-indexers/js-lake-indexer.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "js-lake-indexer",
+    "title": "JS basic tutorial",
+    "sidebar_label": "JS basic tutorial"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Lake Primitive Types",
+    "permalink": "/vi/build/data-infrastructure/lake-framework/building-indexers/primitives"
+  },
+  "next": {
+    "title": "Python tutorial",
+    "permalink": "/vi/build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer"
+  }
+}

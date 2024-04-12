@@ -12,7 +12,7 @@ sidebar_label: Giới thiệu
 
 Để hoàn thành tốt các hướng dẫn này, bạn sẽ cần:
 
-- [Node.js](/develop/prerequisites#nodejs)
+- [Node.js](/build/smart-contracts/quickstart#prerequisites#nodejs)
 - [Một NEAR Wallet](https://testnet.mynearwallet.com/create)
 - [NEAR-CLI](/tools/near-cli#setup)
 

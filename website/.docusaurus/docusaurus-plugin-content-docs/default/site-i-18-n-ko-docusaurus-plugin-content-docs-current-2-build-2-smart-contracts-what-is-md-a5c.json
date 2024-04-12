@@ -1,0 +1,28 @@
+{
+  "id": "build/smart-contracts/what-is",
+  "title": "스마트 컨트랙트란 무엇인가요?",
+  "description": "Smart contracts are pieces of executable code that live in a NEAR account. They can store data, perform transactions in the account’s name, and expose methods so other accounts can interact with them.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/2.smart-contracts/what-is.md",
+  "sourceDirName": "2.build/2.smart-contracts",
+  "slug": "/build/smart-contracts/what-is",
+  "permalink": "/ko/build/smart-contracts/what-is",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/what-is.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "what-is",
+    "title": "스마트 컨트랙트란 무엇인가요?",
+    "sidebar_label": "What is a Contract?"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Rollup Data Availability",
+    "permalink": "/ko/build/chain-abstraction/data-availability"
+  },
+  "next": {
+    "title": "Quickstart ✨",
+    "permalink": "/ko/build/smart-contracts/quickstart"
+  }
+}

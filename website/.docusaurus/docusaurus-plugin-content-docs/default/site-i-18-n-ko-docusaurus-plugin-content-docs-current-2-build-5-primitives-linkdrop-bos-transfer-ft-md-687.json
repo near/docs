@@ -1,0 +1,15 @@
+{
+  "id": "build/primitives/linkdrop/bos/transfer-ft",
+  "title": "transfer-ft",
+  "description": "",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/5.primitives/linkdrop/bos/transfer-ft.md",
+  "sourceDirName": "2.build/5.primitives/linkdrop/bos",
+  "slug": "/build/primitives/linkdrop/bos/transfer-ft",
+  "permalink": "/ko/build/primitives/linkdrop/bos/transfer-ft",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/linkdrop/bos/transfer-ft.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

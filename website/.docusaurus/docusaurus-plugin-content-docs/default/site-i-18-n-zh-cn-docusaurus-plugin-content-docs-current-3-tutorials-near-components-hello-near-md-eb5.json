@@ -1,0 +1,27 @@
+{
+  "id": "tutorials/near-components/interaction",
+  "title": "Smart Contract Interaction",
+  "description": "Your frontend can interact with different blockchains using the built-in BOS API. Let's see how to create an application that reads and stores a greeting from a NEAR smart contract.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/3.tutorials/near-components/hello-near.md",
+  "sourceDirName": "3.tutorials/near-components",
+  "slug": "/tutorials/near-components/interaction",
+  "permalink": "/zh-CN/tutorials/near-components/interaction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/near-components/hello-near.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "interaction",
+    "title": "Smart Contract Interaction"
+  },
+  "sidebar": "tutorials",
+  "previous": {
+    "title": "BOS Loader",
+    "permalink": "/zh-CN/tutorials/near-components/bos-loader"
+  },
+  "next": {
+    "title": "Design Components",
+    "permalink": "/zh-CN/tutorials/near-components/ds-components"
+  }
+}

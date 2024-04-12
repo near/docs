@@ -1,0 +1,28 @@
+{
+  "id": "pagoda/alerts/intro",
+  "title": "Pagoda Alerts & Triggers",
+  "description": "Please be advised that these tools and services will be discontinued soon.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/pagoda/alerts/intro.md",
+  "sourceDirName": "pagoda/alerts",
+  "slug": "/pagoda/alerts/intro",
+  "permalink": "/vi/pagoda/alerts/intro",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/pagoda/alerts/intro.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1,
+    "sidebar_label": "Introduction"
+  },
+  "sidebar": "pagoda",
+  "previous": {
+    "title": "NEAR Enhanced API",
+    "permalink": "/vi/pagoda/rpc/api"
+  },
+  "next": {
+    "title": "Setup",
+    "permalink": "/vi/pagoda/alerts/setup"
+  }
+}

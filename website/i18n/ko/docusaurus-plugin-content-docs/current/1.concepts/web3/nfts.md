@@ -573,7 +573,7 @@ Another option to simplify onboarding is usage of the [Prepaid Gas](../protocol/
 
 코드의 테스트 자동화는 최신 소프트웨어 개발의 기둥 중 하나입니다. 그러나 dApp을 어떻게 테스트할까요?
 
-스마트 컨트랙트는 순수 함수이며, 단위 테스트를 사용하여 쉽게 테스트할 수 있습니다. 작성 방법에 대한 안내는 [여기](../../2.develop/testing/unit.md)에서 볼 수 있으며 몇 가지 예는 여기에서 찾을 수 있습니다. NEAR에서 지원하는 또 다른 중요한 종류의 테스트는 E2E 테스트이며, 컨트랙트 코드를 로컬 네트워크 환경(자세한 내용 은 [여기](../../2.develop/testing/introduction.md))에 배포하거나 직접 testnet(자세한 내용은 [여기](../../2.develop/testing/integration.md))에서 실행할 수 있습니다.
+스마트 컨트랙트는 순수 함수이며, 단위 테스트를 사용하여 쉽게 테스트할 수 있습니다. Guide on how to write them is available [here](../../2.build/2.smart-contracts/testing/unit-test.md), and some examples can be found here. Another important kind of tests that is supported by NEAR are E2E tests, they can be executed either deploying contract code to either the local network environment (more info [here](../../2.build/2.smart-contracts/testing/introduction.md)), or directly to `testnet`, more info [here](../../2.build/2.smart-contracts/testing/integration-test.md)).
 
 두 가지 유형의 테스트를 모두 해보는 것은 스마트 컨트랙트의 지속적인 품질을 보장하기 위해 똑같이 중요합니다. 특히 컨트랙트 업그레이드는 일반적으로 수행하기 쉽지 않기 때문입니다(DAO에서 업그레이드 자체는 커뮤니티 투표에 의해 관리될 수 있음을 기억하세요).
 

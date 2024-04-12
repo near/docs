@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/welcome.md",
   "sourceDirName": "2.build",
   "slug": "/build/welcome",
-  "permalink": "/zh-CN/build/welcome",
+  "permalink": "/build/welcome",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/welcome.md",
@@ -23,6 +23,6 @@
   "sidebar": "build",
   "next": {
     "title": "What is Chain Abstraction?",
-    "permalink": "/zh-CN/build/chain-abstraction/what-is"
+    "permalink": "/build/chain-abstraction/what-is"
   }
 }

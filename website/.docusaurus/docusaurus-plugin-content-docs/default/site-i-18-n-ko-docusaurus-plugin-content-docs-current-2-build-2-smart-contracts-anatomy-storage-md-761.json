@@ -1,0 +1,27 @@
+{
+  "id": "build/smart-contracts/anatomy/storage",
+  "title": "상태 & 자료구조",
+  "description": "각 컨트랙트에는 고유한 상태(스토리지)가 있으며, 이는 해당 컨트랙트에 의해서만 수정 가능하지만 누구나 볼 수 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/2.smart-contracts/anatomy/storage.md",
+  "sourceDirName": "2.build/2.smart-contracts/anatomy",
+  "slug": "/build/smart-contracts/anatomy/storage",
+  "permalink": "/ko/build/smart-contracts/anatomy/storage",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/anatomy/storage.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "storage",
+    "title": "상태 & 자료구조"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "환경",
+    "permalink": "/ko/build/smart-contracts/anatomy/environment"
+  },
+  "next": {
+    "title": "전송 & Action",
+    "permalink": "/ko/build/smart-contracts/anatomy/actions"
+  }
+}

@@ -5,7 +5,7 @@
   "source": "@site/../docs/3.tutorials/near-components/indexer-tutorials/posts-indexer.md",
   "sourceDirName": "3.tutorials/near-components/indexer-tutorials",
   "slug": "/tutorials/near-components/indexer-tutorials/posts-indexer",
-  "permalink": "/zh-CN/tutorials/near-components/indexer-tutorials/posts-indexer",
+  "permalink": "/tutorials/near-components/indexer-tutorials/posts-indexer",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/near-components/indexer-tutorials/posts-indexer.md",
@@ -21,10 +21,10 @@
   "sidebar": "tutorials",
   "previous": {
     "title": "Base64 params, wrap up",
-    "permalink": "/zh-CN/tutorials/crosswords/intermediate/base64vecu8"
+    "permalink": "/tutorials/crosswords/intermediate/base64vecu8"
   },
   "next": {
     "title": "Hype Indexer",
-    "permalink": "/zh-CN/tutorials/near-components/indexer-tutorials/hype-indexer"
+    "permalink": "/tutorials/near-components/indexer-tutorials/hype-indexer"
   }
 }

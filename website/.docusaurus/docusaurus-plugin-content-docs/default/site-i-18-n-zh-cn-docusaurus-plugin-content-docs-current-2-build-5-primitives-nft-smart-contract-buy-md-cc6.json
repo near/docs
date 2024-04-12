@@ -1,0 +1,15 @@
+{
+  "id": "build/primitives/nft/smart-contract/buy",
+  "title": "buy",
+  "description": "This is an example on how you can make your smart contract buy a NFT on some marketplace (Paras this case).",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.build/5.primitives/nft/smart-contract/buy.md",
+  "sourceDirName": "2.build/5.primitives/nft/smart-contract",
+  "slug": "/build/primitives/nft/smart-contract/buy",
+  "permalink": "/zh-CN/build/primitives/nft/smart-contract/buy",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/nft/smart-contract/buy.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

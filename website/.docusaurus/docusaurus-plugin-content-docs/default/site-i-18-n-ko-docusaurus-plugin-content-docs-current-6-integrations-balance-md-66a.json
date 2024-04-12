@@ -1,0 +1,28 @@
+{
+  "id": "integrations/balance-changes",
+  "title": "잔고 변경",
+  "description": "전제 조건",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/6.integrations/balance.md",
+  "sourceDirName": "6.integrations",
+  "slug": "/integrations/balance-changes",
+  "permalink": "/ko/integrations/balance-changes",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/6.integrations/balance.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "balance-changes",
+    "title": "잔고 변경",
+    "sidebar_label": "잔고 변경"
+  },
+  "sidebar": "exchanges",
+  "previous": {
+    "title": "거래 통합",
+    "permalink": "/ko/integrations/exchange-integration"
+  },
+  "next": {
+    "title": "계정",
+    "permalink": "/ko/integrations/accounts"
+  }
+}

@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/3.near-components/what-is.md",
   "sourceDirName": "2.build/3.near-components",
   "slug": "/build/near-components/what-is",
-  "permalink": "/zh-CN/build/near-components/what-is",
+  "permalink": "/build/near-components/what-is",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/3.near-components/what-is.md",
@@ -21,10 +21,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Bug Bounty Program",
-    "permalink": "/zh-CN/build/smart-contracts/security/bounty"
+    "permalink": "/build/smart-contracts/security/bounty"
   },
   "next": {
     "title": "Choose your Dev Environment",
-    "permalink": "/zh-CN/build/near-components/dev-environment"
+    "permalink": "/build/near-components/dev-environment"
   }
 }

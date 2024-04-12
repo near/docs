@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/5.primitives/nft.md",
   "sourceDirName": "2.build/5.primitives",
   "slug": "/build/primitives/nft",
-  "permalink": "/zh-CN/build/primitives/nft",
+  "permalink": "/build/primitives/nft",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/nft.md",
@@ -21,10 +21,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Fungible Tokens (FT)",
-    "permalink": "/zh-CN/build/primitives/ft"
+    "permalink": "/build/primitives/ft"
   },
   "next": {
     "title": "Linkdrops",
-    "permalink": "/zh-CN/build/primitives/linkdrop"
+    "permalink": "/build/primitives/linkdrop"
   }
 }

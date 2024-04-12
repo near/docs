@@ -88,7 +88,7 @@ NEAR 블록체인에 저장된 모든 데이터는 키-값 데이터베이스에
 
 위에 표시된 대로 수동으로 바이트 연산을 수행하는 것은 어렵고 오류가 발생하기 쉽습니다. 좋은 소식은 그럴 필요가 없다는 것입니다!
 
-[SDK 환경](../../2.develop/contracts/environment/environment.md)을 이용하고 `env.storage_usage()`를 체크하는 것으로 사용 스토리지를 테스트 할 수 있습니다.
+You can test the storage used using the [SDK environment](../../2.build/2.smart-contracts/anatomy/environment.md) and checking `env.storage_usage()`
 
 ## Other ways to keep costs down
 

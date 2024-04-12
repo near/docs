@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/3.near-components/anatomy/builtin-components.md",
   "sourceDirName": "2.build/3.near-components/anatomy",
   "slug": "/build/near-components/anatomy/builtin-components",
-  "permalink": "/zh-CN/build/near-components/anatomy/builtin-components",
+  "permalink": "/build/near-components/anatomy/builtin-components",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/3.near-components/anatomy/builtin-components.md",
@@ -20,10 +20,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Web Browser Methods",
-    "permalink": "/zh-CN/build/near-components/anatomy/web-methods"
+    "permalink": "/build/near-components/anatomy/web-methods"
   },
   "next": {
     "title": "Interacting with Near",
-    "permalink": "/zh-CN/build/near-components/anatomy/near"
+    "permalink": "/build/near-components/anatomy/near"
   }
 }

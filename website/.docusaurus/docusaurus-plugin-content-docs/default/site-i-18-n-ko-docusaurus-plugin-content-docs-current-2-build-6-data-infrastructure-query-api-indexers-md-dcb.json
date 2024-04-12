@@ -1,0 +1,28 @@
+{
+  "id": "build/data-infrastructure/query-api/indexers",
+  "title": "QueryAPI Indexing Example",
+  "description": "QueryAPI를 통해 다음과 같은 방식으로 자신만의 인덱서를 빠르게 생성할 수 있습니다:",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/6.data-infrastructure/query-api/indexers.md",
+  "sourceDirName": "2.build/6.data-infrastructure/query-api",
+  "slug": "/build/data-infrastructure/query-api/indexers",
+  "permalink": "/ko/build/data-infrastructure/query-api/indexers",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/query-api/indexers.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "indexers",
+    "title": "QueryAPI Indexing Example",
+    "sidebar_label": "Getting Started"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "How it works",
+    "permalink": "/ko/build/data-infrastructure/query-api/how-it-works"
+  },
+  "next": {
+    "title": "Best Practices",
+    "permalink": "/ko/build/data-infrastructure/query-api/best-practices"
+  }
+}

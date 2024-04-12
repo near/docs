@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/1.chain-abstraction/multichain-gas-relayer/gas-station.md",
   "sourceDirName": "2.build/1.chain-abstraction/multichain-gas-relayer",
   "slug": "/build/chain-abstraction/multichain-gas-relayer/gas-station",
-  "permalink": "/zh-CN/build/chain-abstraction/multichain-gas-relayer/gas-station",
+  "permalink": "/build/chain-abstraction/multichain-gas-relayer/gas-station",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/1.chain-abstraction/multichain-gas-relayer/gas-station.md",
@@ -21,10 +21,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Multichain Relayer Server",
-    "permalink": "/zh-CN/build/chain-abstraction/multichain-gas-relayer/multichain-server"
+    "permalink": "/build/chain-abstraction/multichain-gas-relayer/multichain-server"
   },
   "next": {
     "title": "Relayer + Gas Station",
-    "permalink": "/zh-CN/build/chain-abstraction/multichain-gas-relayer/relayer-gas-example"
+    "permalink": "/build/chain-abstraction/multichain-gas-relayer/relayer-gas-example"
   }
 }

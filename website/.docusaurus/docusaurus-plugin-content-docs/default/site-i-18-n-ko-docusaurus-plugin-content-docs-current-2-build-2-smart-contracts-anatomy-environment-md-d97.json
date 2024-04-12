@@ -1,0 +1,27 @@
+{
+  "id": "build/smart-contracts/anatomy/environment",
+  "title": "환경",
+  "description": "모든 메서드 실행에는 다음과 같은 것들과 관련된 환경이 있습니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/2.smart-contracts/anatomy/environment.md",
+  "sourceDirName": "2.build/2.smart-contracts/anatomy",
+  "slug": "/build/smart-contracts/anatomy/environment",
+  "permalink": "/ko/build/smart-contracts/anatomy/environment",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/anatomy/environment.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "environment",
+    "title": "환경"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "The Contract Class",
+    "permalink": "/ko/build/smart-contracts/anatomy/"
+  },
+  "next": {
+    "title": "상태 & 자료구조",
+    "permalink": "/ko/build/smart-contracts/anatomy/storage"
+  }
+}

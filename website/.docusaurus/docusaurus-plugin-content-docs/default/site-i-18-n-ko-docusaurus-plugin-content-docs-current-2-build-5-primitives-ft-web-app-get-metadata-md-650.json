@@ -1,0 +1,15 @@
+{
+  "id": "build/primitives/ft/web-app/get-metadata",
+  "title": "get-metadata",
+  "description": "Example response",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/5.primitives/ft/web-app/get-metadata.md",
+  "sourceDirName": "2.build/5.primitives/ft/web-app",
+  "slug": "/build/primitives/ft/web-app/get-metadata",
+  "permalink": "/ko/build/primitives/ft/web-app/get-metadata",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/ft/web-app/get-metadata.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

@@ -1,0 +1,27 @@
+{
+  "id": "build/near-components/anatomy/notifications",
+  "title": "Social Notifications",
+  "description": "Applications such as NEAR Social and the NEAR Dev Portal allow components to send notifications to their users.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.build/3.near-components/anatomy/notifications.md",
+  "sourceDirName": "2.build/3.near-components/anatomy",
+  "slug": "/build/near-components/anatomy/notifications",
+  "permalink": "/zh-CN/build/near-components/anatomy/notifications",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/3.near-components/anatomy/notifications.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "notifications",
+    "title": "Social Notifications"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Social Interactions",
+    "permalink": "/zh-CN/build/near-components/anatomy/social"
+  },
+  "next": {
+    "title": "Handling Historical data",
+    "permalink": "/zh-CN/build/near-components/anatomy/bos-components"
+  }
+}

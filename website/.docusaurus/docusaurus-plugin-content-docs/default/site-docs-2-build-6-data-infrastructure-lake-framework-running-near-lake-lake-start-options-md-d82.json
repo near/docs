@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/6.data-infrastructure/lake-framework/running-near-lake/lake-start-options.md",
   "sourceDirName": "2.build/6.data-infrastructure/lake-framework/running-near-lake",
   "slug": "/build/data-infrastructure/lake-framework/running-near-lake/lake-start-options",
-  "permalink": "/zh-CN/build/data-infrastructure/lake-framework/running-near-lake/lake-start-options",
+  "permalink": "/build/data-infrastructure/lake-framework/running-near-lake/lake-start-options",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/lake-framework/running-near-lake/lake-start-options.md",
@@ -19,10 +19,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Running Lake Indexer",
-    "permalink": "/zh-CN/build/data-infrastructure/lake-framework/running-near-lake/run-lake-indexer"
+    "permalink": "/build/data-infrastructure/lake-framework/running-near-lake/run-lake-indexer"
   },
   "next": {
     "title": "Credentials",
-    "permalink": "/zh-CN/build/data-infrastructure/lake-framework/running-near-lake/credentials"
+    "permalink": "/build/data-infrastructure/lake-framework/running-near-lake/credentials"
   }
 }

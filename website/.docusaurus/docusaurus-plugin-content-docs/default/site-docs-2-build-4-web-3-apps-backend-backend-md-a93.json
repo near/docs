@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/4.web3-apps/backend/backend.md",
   "sourceDirName": "2.build/4.web3-apps/backend",
   "slug": "/build/web3-apps/backend/",
-  "permalink": "/zh-CN/build/web3-apps/backend/",
+  "permalink": "/build/web3-apps/backend/",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/4.web3-apps/backend/backend.md",
@@ -20,10 +20,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Integrating Components",
-    "permalink": "/zh-CN/build/web3-apps/integrate-components"
+    "permalink": "/build/web3-apps/integrate-components"
   },
   "next": {
     "title": "What are Primitives?",
-    "permalink": "/zh-CN/build/primitives/what-is"
+    "permalink": "/build/primitives/what-is"
   }
 }

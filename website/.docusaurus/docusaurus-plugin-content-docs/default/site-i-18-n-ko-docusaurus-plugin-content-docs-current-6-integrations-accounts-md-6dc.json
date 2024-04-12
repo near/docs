@@ -1,0 +1,28 @@
+{
+  "id": "integrations/accounts",
+  "title": "계정",
+  "description": "소개",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/6.integrations/accounts.md",
+  "sourceDirName": "6.integrations",
+  "slug": "/integrations/accounts",
+  "permalink": "/ko/integrations/accounts",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/6.integrations/accounts.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "accounts",
+    "title": "계정",
+    "sidebar_label": "계정"
+  },
+  "sidebar": "exchanges",
+  "previous": {
+    "title": "잔고 변경",
+    "permalink": "/ko/integrations/balance-changes"
+  },
+  "next": {
+    "title": "트랜잭션 생성",
+    "permalink": "/ko/integrations/create-transactions"
+  }
+}

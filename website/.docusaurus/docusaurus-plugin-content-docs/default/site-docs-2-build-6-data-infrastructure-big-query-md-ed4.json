@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/6.data-infrastructure/big-query.md",
   "sourceDirName": "2.build/6.data-infrastructure",
   "slug": "/build/data-infrastructure/big-query",
-  "permalink": "/zh-CN/build/data-infrastructure/big-query",
+  "permalink": "/build/data-infrastructure/big-query",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/big-query.md",
@@ -21,10 +21,10 @@
   "sidebar": "build",
   "previous": {
     "title": "What is Data Infrastructure?",
-    "permalink": "/zh-CN/build/data-infrastructure/what-is"
+    "permalink": "/build/data-infrastructure/what-is"
   },
   "next": {
     "title": "Introduction",
-    "permalink": "/zh-CN/build/data-infrastructure/query-api/intro"
+    "permalink": "/build/data-infrastructure/query-api/intro"
   }
 }

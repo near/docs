@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/3.near-components/bos-gateway.md",
   "sourceDirName": "2.build/3.near-components",
   "slug": "/build/near-components/bos-gateway",
-  "permalink": "/zh-CN/build/near-components/bos-gateway",
+  "permalink": "/build/near-components/bos-gateway",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/3.near-components/bos-gateway.md",
@@ -20,10 +20,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Handling Historical data",
-    "permalink": "/zh-CN/build/near-components/anatomy/bos-components"
+    "permalink": "/build/near-components/anatomy/bos-components"
   },
   "next": {
     "title": "What are Web3 Apps?",
-    "permalink": "/zh-CN/build/web3-apps/what-is"
+    "permalink": "/build/web3-apps/what-is"
   }
 }

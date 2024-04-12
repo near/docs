@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/6.data-infrastructure/query-api/query-data.md",
   "sourceDirName": "2.build/6.data-infrastructure/query-api",
   "slug": "/build/data-infrastructure/query-api/query-data",
-  "permalink": "/zh-CN/build/data-infrastructure/query-api/query-data",
+  "permalink": "/build/data-infrastructure/query-api/query-data",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/query-api/query-data.md",
@@ -21,10 +21,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Context object",
-    "permalink": "/zh-CN/build/data-infrastructure/query-api/context-object"
+    "permalink": "/build/data-infrastructure/query-api/context-object"
   },
   "next": {
     "title": "Migrate from Lake framework",
-    "permalink": "/zh-CN/build/data-infrastructure/query-api/migrate-from-near-lake"
+    "permalink": "/build/data-infrastructure/query-api/migrate-from-near-lake"
   }
 }

@@ -1,0 +1,15 @@
+{
+  "id": "build/primitives/dao/bos/get-proposal-list",
+  "title": "get-proposal-list",
+  "description": "Example response",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.build/5.primitives/dao/bos/get-proposal-list.md",
+  "sourceDirName": "2.build/5.primitives/dao/bos",
+  "slug": "/build/primitives/dao/bos/get-proposal-list",
+  "permalink": "/zh-CN/build/primitives/dao/bos/get-proposal-list",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/dao/bos/get-proposal-list.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

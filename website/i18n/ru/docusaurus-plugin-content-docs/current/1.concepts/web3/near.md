@@ -146,8 +146,8 @@ By now, we should be familiar with necessary concepts to start developing WEB 3.
 
 First of all, we need a development and testing environment. Of course, we could theoraticaly perform development and testing on the main blockchain network, but this would not be cheap. For this reason, NEAR provides [several networks](../../1.concepts/basics/networks.md) that can be used during development:
 - testnet - public NEAR network which is identical to mainnet and can be used for free.
-- localnet - you can deploy your personal NEAR network on your own environment. Because it’s owned by you, data and code can be kept private during development. More info on how you can run your own node can be [found here](https://docs.near.org/docs/develop/node/validator/running-a-node). Alternatively, you can bootstrap an entire testing infrastructure in Docker on your local machine using Kurtosis - [guide is here](/develop/testing/kurtosis-localnet).
-- workspaces - you can start your own local network to perform e2e testing. More info [here](../../2.develop/testing/integration.md).
+- localnet - you can deploy your personal NEAR network on your own environment. Because it’s owned by you, data and code can be kept private during development. More info on how you can run your own node can be [found here](https://docs.near.org/docs/develop/node/validator/running-a-node). Alternatively, you can bootstrap an entire testing infrastructure in Docker on your local machine using Kurtosis - [guide is here](../../2.build/2.smart-contracts/testing/kurtosis-localnet.md).
+- workspaces - you can start your own local network to perform e2e testing. More info [here](../../2.build/2.smart-contracts/testing/integration-test.md).
 
 Once we’ve chosen a network to use, we need a way to interact with it. Of course, transactions can be constructed manually and posted into [node’s API](https://docs.near.org/api/rpc/setup). But [this is tedious](https://github.com/near-examples/transaction-examples) and isn’t fun at all. That’s why, NEAR [provides a CLI](../../4.tools/cli.md) which automates all of the necessary actions. It can be used locally for development purposes or on build machines for CI/CD scenarios.
 
@@ -187,9 +187,9 @@ During the development, and sometimes even in production, updates to a contract�
 
 While developing the contract, we recommend just creating a new account each time you need to deploy a contract (the [create-account](../../4.tools/cli.md#near-create-account) command in NEAR CLI exists for this). With such an approach, you will start with a clean state each time.
 
-However, once we move to a more stable environment, like testing or production, more sophisticated methods are needed. Redeployment of code is quite simple: we just issue another `DeployContract` transaction, and NEAR will handle the rest. The biggest challenge is to migrate contract state - [several approaches are possible](../../2.develop/upgrade.md#migrating-the-state), but all of them involve some kind of migration code.
+However, once we move to a more stable environment, like testing or production, more sophisticated methods are needed. Redeployment of code is quite simple: we just issue another `DeployContract` transaction, and NEAR will handle the rest. The biggest challenge is to migrate contract state - [several approaches are possible](../../2.build/2.smart-contracts/release/upgrade.md#migrating-the-state), but all of them involve some kind of migration code.
 
-But we can take our upgrade strategy one step further. In the previous strategies, developers are fully in control of code upgrades. This is fine for many applications, but it requires some level of trust between users and developers, since malicious changes could be made at any moment and without the user’s consent (as it [sometimes happens](https://www.bleepingcomputer.com/news/security/dev-corrupts-npm-libs-colors-and-faker-breaking-thousands-of-apps/) in npm world). To solve this, a contract update process itself can also be decentralized - this is called [Programmatic Updates](../../2.develop/upgrade.md#programmatic-update). The exact strategy may vary, but the basic idea is that the contract update code is implemented in a smart contract itself, and a Full Access key to the contract account is removed from a blockchain (via DeleteKey transaction). In this way, an update strategy is transparent to everyone and cannot be changed by developers at will.
+But we can take our upgrade strategy one step further. In the previous strategies, developers are fully in control of code upgrades. This is fine for many applications, but it requires some level of trust between users and developers, since malicious changes could be made at any moment and without the user’s consent (as it [sometimes happens](https://www.bleepingcomputer.com/news/security/dev-corrupts-npm-libs-colors-and-faker-breaking-thousands-of-apps/) in npm world). To solve this, a contract update process itself can also be decentralized - this is called [Programmatic Updates](../../2.build/2.smart-contracts/release/upgrade.md#programmatic-update). The exact strategy may vary, but the basic idea is that the contract update code is implemented in a smart contract itself, and a Full Access key to the contract account is removed from a blockchain (via DeleteKey transaction). In this way, an update strategy is transparent to everyone and cannot be changed by developers at will.
 
 ## Further reading
 
@@ -197,6 +197,6 @@ For a deep dive into NEAR, the following links will be useful:
 
 - [NEAR docs](https://docs.near.org)
 - [Rust Smart Contract docs](/sdk/rust/introduction)
-    - [Smart Contract quick start guide](/develop/quickstart-guide)
+- [Smart Contract quick start guide](../../2.build/2.smart-contracts/quickstart.md)
 - [NEAR Protocol Specification](https://nomicon.io/)
 - [How to build a dApp on NEAR](../../3.tutorials/examples/guest-book.md)

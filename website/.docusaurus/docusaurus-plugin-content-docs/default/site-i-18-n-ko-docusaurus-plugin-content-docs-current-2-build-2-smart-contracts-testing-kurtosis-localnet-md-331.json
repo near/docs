@@ -1,0 +1,29 @@
+{
+  "id": "build/smart-contracts/testing/kurtosis-localnet",
+  "title": "로컬 개발 환경 만들기",
+  "description": "로컬 개발을 위해 Kurtosis NEAR 패키지 사용",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/2.smart-contracts/testing/kurtosis-localnet.md",
+  "sourceDirName": "2.build/2.smart-contracts/testing",
+  "slug": "/build/smart-contracts/testing/kurtosis-localnet",
+  "permalink": "/ko/build/smart-contracts/testing/kurtosis-localnet",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/testing/kurtosis-localnet.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "kurtosis-localnet",
+    "title": "로컬 개발 환경 만들기",
+    "sidebar_label": "로컬 개발 환경",
+    "description": "로컬 개발을 위해 Kurtosis NEAR 패키지 사용"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Integration Tests",
+    "permalink": "/ko/build/smart-contracts/testing/integration-test"
+  },
+  "next": {
+    "title": "배포 및 사용",
+    "permalink": "/ko/build/smart-contracts/release/deploy"
+  }
+}

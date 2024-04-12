@@ -1,0 +1,27 @@
+{
+  "id": "build/smart-contracts/security/one-yocto",
+  "title": "사용자가 맞는지 확인 (1yⓃ)",
+  "description": "NEAR uses a system of Access Keys to simplify handling accounts.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/2.smart-contracts/security/one_yocto.md",
+  "sourceDirName": "2.build/2.smart-contracts/security",
+  "slug": "/build/smart-contracts/security/one-yocto",
+  "permalink": "/ko/build/smart-contracts/security/one-yocto",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/security/one_yocto.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "one-yocto",
+    "title": "사용자가 맞는지 확인 (1yⓃ)"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "교차 컨트랙트 호출",
+    "permalink": "/ko/build/smart-contracts/security/callbacks"
+  },
+  "next": {
+    "title": "시빌 공격",
+    "permalink": "/ko/build/smart-contracts/security/sybil"
+  }
+}

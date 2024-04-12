@@ -31,7 +31,7 @@ You'll typically first create a connection to NEAR with [`connect`](#connect) us
 
 The library also contains some [utility functions](naj-utils.md).
 
-:::tip To quickly get started with integrating NEAR in a web browser, read our [Web Frontend integration](/develop/integrate/frontend) article. :::
+:::tip To quickly get started with integrating NEAR in a web browser, read our [Web Frontend integration](/build/web3-apps/integrate-contracts) article. :::
 
 :::info Note the difference between `near-api-js` and `near-sdk-js`:
 

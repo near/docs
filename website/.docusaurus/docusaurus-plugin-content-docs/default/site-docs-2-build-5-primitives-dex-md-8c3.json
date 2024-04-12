@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/5.primitives/dex.md",
   "sourceDirName": "2.build/5.primitives",
   "slug": "/build/primitives/dex",
-  "permalink": "/zh-CN/build/primitives/dex",
+  "permalink": "/build/primitives/dex",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/dex.md",
@@ -21,10 +21,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Autonomous Organizations (DAO)",
-    "permalink": "/zh-CN/build/primitives/dao"
+    "permalink": "/build/primitives/dao"
   },
   "next": {
     "title": "What is Data Infrastructure?",
-    "permalink": "/zh-CN/build/data-infrastructure/what-is"
+    "permalink": "/build/data-infrastructure/what-is"
   }
 }

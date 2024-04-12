@@ -1,0 +1,27 @@
+{
+  "id": "build/smart-contracts/security/bounty",
+  "title": "버그 바운티 프로그램",
+  "description": "NEAR에는 개선된 버그 바운티 프로그램이 있습니다!",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/2.smart-contracts/security/bounty.md",
+  "sourceDirName": "2.build/2.smart-contracts/security",
+  "slug": "/build/smart-contracts/security/bounty",
+  "permalink": "/ko/build/smart-contracts/security/bounty",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/security/bounty.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "bounty",
+    "title": "버그 바운티 프로그램"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Random Numbers",
+    "permalink": "/ko/build/smart-contracts/security/random"
+  },
+  "next": {
+    "title": "What is a Component?",
+    "permalink": "/ko/build/near-components/what-is"
+  }
+}

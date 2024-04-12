@@ -1,0 +1,28 @@
+{
+  "id": "build/data-infrastructure/query-api/query-data",
+  "title": "Accessing and Querying Historical data",
+  "description": "In this article, you'll find a high-level overview about the two most common use-cases for blockchain indexing, and how they can be solved using NEAR QueryAPI and BigQuery.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/6.data-infrastructure/query-api/query-data.md",
+  "sourceDirName": "2.build/6.data-infrastructure/query-api",
+  "slug": "/build/data-infrastructure/query-api/query-data",
+  "permalink": "/ko/build/data-infrastructure/query-api/query-data",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/query-api/query-data.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "query-data",
+    "title": "Accessing and Querying Historical data",
+    "sidebar_label": "Access & Query Historical data"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Context object",
+    "permalink": "/ko/build/data-infrastructure/query-api/context-object"
+  },
+  "next": {
+    "title": "Migrate from Lake framework",
+    "permalink": "/ko/build/data-infrastructure/query-api/migrate-from-near-lake"
+  }
+}

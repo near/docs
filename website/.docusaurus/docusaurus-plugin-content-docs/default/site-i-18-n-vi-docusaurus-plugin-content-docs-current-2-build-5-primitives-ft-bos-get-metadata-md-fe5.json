@@ -1,0 +1,15 @@
+{
+  "id": "build/primitives/ft/bos/get-metadata",
+  "title": "get-metadata",
+  "description": "Example response",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.build/5.primitives/ft/bos/get-metadata.md",
+  "sourceDirName": "2.build/5.primitives/ft/bos",
+  "slug": "/build/primitives/ft/bos/get-metadata",
+  "permalink": "/vi/build/primitives/ft/bos/get-metadata",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/ft/bos/get-metadata.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

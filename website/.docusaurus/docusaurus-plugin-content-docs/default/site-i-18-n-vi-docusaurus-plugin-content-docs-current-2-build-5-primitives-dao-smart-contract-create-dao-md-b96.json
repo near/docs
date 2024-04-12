@@ -1,0 +1,15 @@
+{
+  "id": "build/primitives/dao/smart-contract/create-dao",
+  "title": "create-dao",
+  "description": "",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.build/5.primitives/dao/smart-contract/create-dao.md",
+  "sourceDirName": "2.build/5.primitives/dao/smart-contract",
+  "slug": "/build/primitives/dao/smart-contract/create-dao",
+  "permalink": "/vi/build/primitives/dao/smart-contract/create-dao",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/dao/smart-contract/create-dao.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

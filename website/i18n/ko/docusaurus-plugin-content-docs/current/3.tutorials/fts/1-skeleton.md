@@ -8,8 +8,8 @@ import {Github} from "@site/src/components/codetabs"
 
 > 이 글에서는 이 _"Zero to Hero"_ 시리즈를 진행하면서 개발하게 될 NFT 컨트랙트의 기본 아키텍처에 대해 알아봅니다. 컨트랙트의 레이아웃을 발견하고 완전한 기능을 갖춘 스마트 컨트랙트를 구축하기 위해 Rust 파일이 어떻게 구성되어 있는지 확인할 수 있습니다.
 
-:::info Rust가 처음이신가요?
-Rust를 처음 사용하고 스마트 컨트랙트 개발에 뛰어들고 싶다면 [빠른 시작 가이드](/develop/quickstart-guide)가 시작하기에 좋은 곳입니다.
+:::info New to Rust?
+If you are new to Rust and want to dive into smart contract development, our [Quick-start guide](../../2.build/2.smart-contracts/quickstart.md) is a great place to start.
 :::
 
 ---

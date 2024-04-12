@@ -1,0 +1,28 @@
+{
+  "id": "build/near-components/what-is",
+  "title": "What are NEAR Components?",
+  "description": "NEAR Components are a new way to build web applications. They are composable, reusable and decentralized.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.build/3.near-components/what-is.md",
+  "sourceDirName": "2.build/3.near-components",
+  "slug": "/build/near-components/what-is",
+  "permalink": "/vi/build/near-components/what-is",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/3.near-components/what-is.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "what-is",
+    "title": "What are NEAR Components?",
+    "sidebar_label": "What is a Component?"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Bug Bounty Program",
+    "permalink": "/vi/build/smart-contracts/security/bounty"
+  },
+  "next": {
+    "title": "Choose your Dev Environment",
+    "permalink": "/vi/build/near-components/dev-environment"
+  }
+}

@@ -14,7 +14,7 @@ sidebar_label: NFT 발행
 
 이 튜토리얼을 성공적으로 완료하려면 다음이 필요합니다.
 
-- [Rust 툴체인](/develop/prerequisites)
+- [Rust 툴체인](/build/smart-contracts/quickstart#prerequisites)
 - [NEAR 계정](#wallet)
 - [nft.storage 계정](#uploading-the-image)
 - [NEAR 명령줄 인터페이스](/tools/near-cli#설정) (`near-cli`)
@@ -142,7 +142,7 @@ self.owner_by_id.insert(&token_id, &owner_id);
 
 이렇게 하면 `res/` 디렉토리에 WASM 바이너리가 생성됩니다. 이 WASM 파일은 NEAR 블록체인에 배포할 스마트 컨트랙트입니다.
 
-> **팁:** 오류가 발생하면 [Rust가 설치](/develop/prerequisites)되어 있는지, NFT 예제 내 루트 디렉토리에 있는지 확인하세요.
+> **Tip:** If you run into errors make sure you have [Rust installed](/build/smart-contracts/quickstart#prerequisites) and are in the root directory of the NFT example.
 
 ### 컨트랙트 테스트 {#testing-the-contract}
 
@@ -328,7 +328,7 @@ near view $ID nft_tokens_for_owner '{"account_id": "'$ID'"}'
 
 이 기본 예제는 NFT 스마트 컨트랙트를 배포하고, IPFS에 미디어 파일을 저장하며, 대체 불가능 토큰을 만들기 시작하는 데 필요한 모든 단계를 보여줍니다.
 
-이제 프로세스에 익숙해졌으므로, [NFT 예제](https://examples.near.org/NFT)를 확인하고 스마트 컨트랙트 코드와 발행된 토큰을 다른 계정으로 전송하는 방법에 대해 자세히 알아볼 수 있습니다. 마지막으로 Rust를 처음 사용하고, 스마트 컨트랙트 개발에 뛰어들고 싶다면 [빠른 시작 가이드](/develop/quickstart-guide)로 시작하는 것을 추천드립니다.
+이제 프로세스에 익숙해졌으므로, [NFT 예제](https://examples.near.org/NFT)를 확인하고 스마트 컨트랙트 코드와 발행된 토큰을 다른 계정으로 전송하는 방법에 대해 자세히 알아볼 수 있습니다. Finally, if you are new to Rust and want to dive into smart contract development, our [Quick-start guide](../../2.build/2.smart-contracts/quickstart.md) is a great place to start.
 
 **_즐거운 민팅 되세요!_** 🪙
 

@@ -34,7 +34,7 @@ NEAR 거버넌스 포럼에서 NEAR Lake 프레임워크의 출시를 발표했�
 | 예상 인프라 비용                       | [$500+/월](https://near-nodes.io/rpc/hardware-rpc)              | [**$20/월**](#what-is-the-cost-of-running-a-custom-indexer-based-on-near-lake)                                                                                                                                     |
 | 유지 보수 용이성                       | 어려움<br />(모든 nearcore 업그레이드 및 동기화 상태를 따라야 함)             | **쉬움**<br />(한 번 배포하기만 하면 됨)                                                                                                                                                                                |
 | 시작하는 데 얼마나 걸리는지                 | 며칠 (on mainnet/testnet)                                        | **몇 초**                                                                                                                                                                                                           |
-| 로컬 개발 용이                        | 어려움<br />(로컬넷에 대해서는 좋은 옵션이지만 테스트넷/메인넷에서 테스트하는 것은 너무 무거움) | **쉬움**<br />([튜토리얼](/tutorials/indexer/near-lake-state-changes-indexer) 참조)                                                                                                                                 |
+| 로컬 개발 용이                        | 어려움<br />(로컬넷에 대해서는 좋은 옵션이지만 테스트넷/메인넷에서 테스트하는 것은 너무 무거움) | **Easy**<br />(see [tutorials](/build/data-infrastructure/lake-framework/near-lake-state-changes-indexer))                                                                                                  |
 | 사용자 지정 인덱서를 구현할 수 있는 프로그래밍 언어   | Rust만                                                          | **모두**<br />(현재 헬퍼 패키지는 [Python](http://pypi.org/project/near-lake-framework), [JavaScript](https://www.npmjs.com/package/near-lake-framework) 및 [Rust](https://crates.io/crates/near-lake-framework)로 구현됨) |
 
 
@@ -81,6 +81,6 @@ $5.19 + $12.96 = $18.15
 
 :::note 튜토리얼
 
-[튜토리얼 페이지](/tutorials/indexer/near-lake-state-changes-indexer)를 참고하세요.
+See [Tutorials page](/build/data-infrastructure/lake-framework/near-lake-state-changes-indexer)
 
 :::

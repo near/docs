@@ -5,7 +5,6 @@ hide_table_of_contents: false
 ---
 
 import {FeatureList, Column, Feature} from "@site/src/components/featurelist";
-import ContactUs from '@site/src/components/ContactUs.mdx';
 
 언어별 SDK 문서를 살펴보세요.
 
@@ -17,7 +16,3 @@ import ContactUs from '@site/src/components/ContactUs.mdx';
     <Feature url="/sdk/js/introduction" title="JavaScript SDK" subtitle="Write Contracts in JavaScript" image="smartcontract-js.png" />
   </Column>
 </FeatureList>
-
----
-
-<ContactUs />

@@ -1,0 +1,26 @@
+{
+  "id": "build/data-infrastructure/lake-framework/migrating-to-near-lake-framework",
+  "title": "Migrating to NEAR Lake Framework",
+  "description": "We encourage everyone who don't have a hard requirement to use NEAR Indexer Framework consider the migration to NEAR Lake Framework.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.build/6.data-infrastructure/lake-framework/migrating-to-near-lake-framework.md",
+  "sourceDirName": "2.build/6.data-infrastructure/lake-framework",
+  "slug": "/build/data-infrastructure/lake-framework/migrating-to-near-lake-framework",
+  "permalink": "/vi/build/data-infrastructure/lake-framework/migrating-to-near-lake-framework",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/lake-framework/migrating-to-near-lake-framework.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "sidebar_label": "Migrating to NEAR Lake framework"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "NEAR Lake Indexer Tutorial",
+    "permalink": "/vi/build/data-infrastructure/lake-framework/near-lake-state-changes-indexer"
+  },
+  "next": {
+    "title": "Lake Primitive Types",
+    "permalink": "/vi/build/data-infrastructure/lake-framework/building-indexers/primitives"
+  }
+}

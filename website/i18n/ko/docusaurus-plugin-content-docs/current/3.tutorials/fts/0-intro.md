@@ -12,12 +12,12 @@ sidebar_label: 소개
 
 이 튜토리얼을 성공적으로 완료하려면 다음이 필요합니다.
 
-- [Rust](/develop/prerequisites)
+- [Rust](/build/smart-contracts/quickstart#prerequisites)
 - [A NEAR testnet account](https://testnet.mynearwallet.com)
 - [NEAR-CLI](/tools/near-cli#setup)
 
-:::info Rust가 처음이신가요?
-Rust를 처음 사용하고 스마트 컨트랙트 개발에 뛰어들고 싶다면 [빠른 시작 가이드](/develop/quickstart-guide)가 시작하기에 좋은 곳입니다.
+:::info New to Rust?
+If you are new to Rust and want to dive into smart contract development, our [Quick-start guide](../../2.build/2.smart-contracts/quickstart.md) is a great place to start.
 :::
 
 ---

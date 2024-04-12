@@ -1,0 +1,28 @@
+{
+  "id": "pagoda/alerts/setup",
+  "title": "Setup Alerts & Triggers",
+  "description": "Please be advised that these tools and services will be discontinued soon.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/pagoda/alerts/setup.md",
+  "sourceDirName": "pagoda/alerts",
+  "slug": "/pagoda/alerts/setup",
+  "permalink": "/ko/pagoda/alerts/setup",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/pagoda/alerts/setup.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1,
+    "sidebar_label": "Setup"
+  },
+  "sidebar": "pagoda",
+  "previous": {
+    "title": "Introduction",
+    "permalink": "/ko/pagoda/alerts/intro"
+  },
+  "next": {
+    "title": "Webhooks Example",
+    "permalink": "/ko/pagoda/alerts/webhooks"
+  }
+}

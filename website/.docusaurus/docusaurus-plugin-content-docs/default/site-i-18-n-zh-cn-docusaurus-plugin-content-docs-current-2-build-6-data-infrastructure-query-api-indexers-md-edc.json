@@ -1,0 +1,28 @@
+{
+  "id": "build/data-infrastructure/query-api/indexers",
+  "title": "QueryAPI Indexing Example",
+  "description": "With QueryAPI you can quickly create your own indexer by:",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.build/6.data-infrastructure/query-api/indexers.md",
+  "sourceDirName": "2.build/6.data-infrastructure/query-api",
+  "slug": "/build/data-infrastructure/query-api/indexers",
+  "permalink": "/zh-CN/build/data-infrastructure/query-api/indexers",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/query-api/indexers.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "indexers",
+    "title": "QueryAPI Indexing Example",
+    "sidebar_label": "Getting Started"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "How it works",
+    "permalink": "/zh-CN/build/data-infrastructure/query-api/how-it-works"
+  },
+  "next": {
+    "title": "Best Practices",
+    "permalink": "/zh-CN/build/data-infrastructure/query-api/best-practices"
+  }
+}

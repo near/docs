@@ -1,0 +1,15 @@
+{
+  "id": "build/primitives/ft/web-app/attach-to-call",
+  "title": "attach-to-call",
+  "description": "Example response",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.build/5.primitives/ft/web-app/attach-to-call.md",
+  "sourceDirName": "2.build/5.primitives/ft/web-app",
+  "slug": "/build/primitives/ft/web-app/attach-to-call",
+  "permalink": "/zh-CN/build/primitives/ft/web-app/attach-to-call",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/ft/web-app/attach-to-call.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

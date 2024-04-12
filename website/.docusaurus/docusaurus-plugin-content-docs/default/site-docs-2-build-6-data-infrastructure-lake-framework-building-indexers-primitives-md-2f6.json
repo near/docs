@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/6.data-infrastructure/lake-framework/building-indexers/primitives.md",
   "sourceDirName": "2.build/6.data-infrastructure/lake-framework/building-indexers",
   "slug": "/build/data-infrastructure/lake-framework/building-indexers/primitives",
-  "permalink": "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/primitives",
+  "permalink": "/build/data-infrastructure/lake-framework/building-indexers/primitives",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/lake-framework/building-indexers/primitives.md",
@@ -21,10 +21,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Migrating to NEAR Lake framework",
-    "permalink": "/zh-CN/build/data-infrastructure/lake-framework/migrating-to-near-lake-framework"
+    "permalink": "/build/data-infrastructure/lake-framework/migrating-to-near-lake-framework"
   },
   "next": {
     "title": "JS basic tutorial",
-    "permalink": "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer"
+    "permalink": "/build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer"
   }
 }

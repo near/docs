@@ -1,0 +1,29 @@
+{
+  "id": "pagoda/rpc/setup",
+  "title": "RPC Setup",
+  "description": "Please be advised that these tools and services will be discontinued soon.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/pagoda/rpc/setup.md",
+  "sourceDirName": "pagoda/rpc",
+  "slug": "/pagoda/rpc/setup",
+  "permalink": "/vi/pagoda/rpc/setup",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/pagoda/rpc/setup.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3,
+    "sidebar_label": "Setup",
+    "title": "RPC Setup"
+  },
+  "sidebar": "pagoda",
+  "previous": {
+    "title": "Get API Keys",
+    "permalink": "/vi/pagoda/rpc/get-keys"
+  },
+  "next": {
+    "title": "Statistics Dashboard",
+    "permalink": "/vi/pagoda/rpc/stats"
+  }
+}

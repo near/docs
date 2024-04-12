@@ -1,0 +1,110 @@
+---
+sidebar_position: 3
+sidebar_label: Chunk
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# `Chunk` Structure
+
+## Definition
+
+`Chunk` of a [`Block`](block.mdx) is a part of a [`Block`](block.mdx) from a [Shard](shard.mdx). The collection of Chunks of the Block forms the NEAR Protocol [`Block`](block.mdx)
+
+Chunk contains all the structures that make the Block:
+
+- [Transactions](transaction.mdx)
+- [Receipts](receipt.mdx)
+- [ChunkHeader](#chunkheaderview)
+
+## `IndexerChunkView`
+
+<Tabs>
+  <TabItem value="rust" label="Rust">
+
+```rust links=1
+pub struct ChunkView {
+    pub author: AccountId,
+    pub header: ChunkHeaderView,
+    pub transactions: Vec<IndexerTransactionWithOutcome>,
+    pub receipts: Vec<ReceiptView>,
+}
+```
+
+</TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```ts links=1
+export interface Chunk {
+  author: string;
+  header: ChunkHeader;
+  transactions: IndexerTransactionWithOutcome[];
+  receipts: Receipt[],
+}
+```
+
+</TabItem>
+</Tabs>
+
+## `ChunkHeaderView`
+
+<Tabs>
+  <TabItem value="rust" label="value">
+
+```rust links=1
+pub struct ChunkHeaderView {
+    pub chunk_hash: CryptoHash,
+    pub prev_block_hash: CryptoHash,
+    pub outcome_root: CryptoHash,
+    pub prev_state_root: StateRoot,
+    pub encoded_merkle_root: CryptoHash,
+    pub encoded_length: u64,
+    pub height_created: BlockHeight,
+    pub height_included: BlockHeight,
+    pub shard_id: ShardId,
+    pub gas_used: Gas,
+    pub gas_limit: Gas,
+    /// TODO(2271): deprecated.
+    #[serde(with = "u128_dec_format")]
+    pub rent_paid: Balance,
+    /// TODO(2271): deprecated.
+    #[serde(with = "u128_dec_format")]
+    pub validator_reward: Balance,
+    #[serde(with = "u128_dec_format")]
+    pub balance_burnt: Balance,
+    pub outgoing_receipts_root: CryptoHash,
+    pub tx_root: CryptoHash,
+    pub validator_proposals: Vec<ValidatorStakeView>,
+    pub signature: Signature,
+}
+```
+
+</TabItem>
+  <TabItem value="typescript" value="TypeScript">
+
+```ts links=1
+export interface ChunkHeader {
+  balanceBurnt: number;
+  chunkHash: string;
+  encodedLength: number;
+  encodedMerkleRoot: string;
+  gasLimit: number;
+  gasUsed: number;
+  heightCreated: number;
+  heightIncluded: number;
+  outcomeRoot: string;
+  outgoingReceiptsRoot: string;
+  prevBlockHash: string;
+  prevStateRoot: string;
+  rentPaid: string;
+  shardId: number;
+  signature: string;
+  txRoot: string;
+  validatorProposals: ValidatorProposal[];
+  validatorReward: string;
+};
+```
+
+</TabItem>
+</Tabs>

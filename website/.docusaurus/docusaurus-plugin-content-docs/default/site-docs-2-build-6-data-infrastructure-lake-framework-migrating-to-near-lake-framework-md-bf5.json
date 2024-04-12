@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/6.data-infrastructure/lake-framework/migrating-to-near-lake-framework.md",
   "sourceDirName": "2.build/6.data-infrastructure/lake-framework",
   "slug": "/build/data-infrastructure/lake-framework/migrating-to-near-lake-framework",
-  "permalink": "/zh-CN/build/data-infrastructure/lake-framework/migrating-to-near-lake-framework",
+  "permalink": "/build/data-infrastructure/lake-framework/migrating-to-near-lake-framework",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/lake-framework/migrating-to-near-lake-framework.md",
@@ -19,10 +19,10 @@
   "sidebar": "build",
   "previous": {
     "title": "NEAR Lake Indexer Tutorial",
-    "permalink": "/zh-CN/build/data-infrastructure/lake-framework/near-lake-state-changes-indexer"
+    "permalink": "/build/data-infrastructure/lake-framework/near-lake-state-changes-indexer"
   },
   "next": {
     "title": "Lake Primitive Types",
-    "permalink": "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/primitives"
+    "permalink": "/build/data-infrastructure/lake-framework/building-indexers/primitives"
   }
 }

@@ -122,4 +122,4 @@ It indicates our app, when it starts, to check if the user is already logged in 
 
 ## 더 알아보기
 
-배울 수 있는 좋은 방법은 컨트랙트를 확장하는 것입니다. **사용자 당** 하나의 인사말 메시지를 저장하도록 수정해 보세요. 이를 위해서는 [환경](../../2.develop/contracts/environment/environment.md) 및 [스토리지](../../2.develop/contracts/storage.md) 섹션의 지식을 사용해야 합니다. [방명록](guest-book.md) 예제도 유사한 작업을 수행하므로, 이를 사용할 수도 있습니다.
+배울 수 있는 좋은 방법은 컨트랙트를 확장하는 것입니다. **사용자 당** 하나의 인사말 메시지를 저장하도록 수정해 보세요. For this, you will need to use knowledge from the [environment](../../2.build/2.smart-contracts/anatomy/environment.md) and [storage](../../2.build/2.smart-contracts/anatomy/storage.md) sections. [방명록](guest-book.md) 예제도 유사한 작업을 수행하므로, 이를 사용할 수도 있습니다.

@@ -1,0 +1,15 @@
+{
+  "id": "build/primitives/dao/bos/create-proposal",
+  "title": "create-proposal",
+  "description": "",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.build/5.primitives/dao/bos/create-proposal.md",
+  "sourceDirName": "2.build/5.primitives/dao/bos",
+  "slug": "/build/primitives/dao/bos/create-proposal",
+  "permalink": "/vi/build/primitives/dao/bos/create-proposal",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/dao/bos/create-proposal.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

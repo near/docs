@@ -1,0 +1,26 @@
+{
+  "id": "build/welcome",
+  "title": "Build on NEAR",
+  "description": "Welcome! Here you will find all the information on what you can build on NEAR and how to build it. Do not worry if you are new to Web3 or Blockchain, we are here to guide you through the process of learning.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.build/welcome.md",
+  "sourceDirName": "2.build",
+  "slug": "/build/welcome",
+  "permalink": "/vi/build/welcome",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/welcome.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "welcome",
+    "title": "Build on NEAR",
+    "sidebar_label": "Home",
+    "hide_table_of_contents": true,
+    "hide_breadcrumb": true
+  },
+  "sidebar": "build",
+  "next": {
+    "title": "What is Chain Abstraction?",
+    "permalink": "/vi/build/chain-abstraction/what-is"
+  }
+}

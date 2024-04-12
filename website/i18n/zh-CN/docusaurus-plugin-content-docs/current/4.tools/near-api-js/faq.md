@@ -239,7 +239,7 @@ Interaction with the wallet is only possible in a web-browser environment becaus
 
 ### How to create implicit accounts?
 
-You can read about it in the article about [Implicit Accounts](https://docs.near.org/integrator/implicit-accounts).
+You can read about it in the article about [Implicit Accounts](https://docs.near.org/integrations/implicit-accounts).
 
 ---
 

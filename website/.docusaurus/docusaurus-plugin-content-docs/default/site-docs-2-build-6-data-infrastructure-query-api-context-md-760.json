@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/6.data-infrastructure/query-api/context.md",
   "sourceDirName": "2.build/6.data-infrastructure/query-api",
   "slug": "/build/data-infrastructure/query-api/context-object",
-  "permalink": "/zh-CN/build/data-infrastructure/query-api/context-object",
+  "permalink": "/build/data-infrastructure/query-api/context-object",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/query-api/context.md",
@@ -21,10 +21,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Indexing Functions",
-    "permalink": "/zh-CN/build/data-infrastructure/query-api/index-functions"
+    "permalink": "/build/data-infrastructure/query-api/index-functions"
   },
   "next": {
     "title": "Access & Query Historical data",
-    "permalink": "/zh-CN/build/data-infrastructure/query-api/query-data"
+    "permalink": "/build/data-infrastructure/query-api/query-data"
   }
 }

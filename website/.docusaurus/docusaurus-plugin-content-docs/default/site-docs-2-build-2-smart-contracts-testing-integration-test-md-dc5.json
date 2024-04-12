@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/2.smart-contracts/testing/integration-test.md",
   "sourceDirName": "2.build/2.smart-contracts/testing",
   "slug": "/build/smart-contracts/testing/integration-test",
-  "permalink": "/zh-CN/build/smart-contracts/testing/integration-test",
+  "permalink": "/build/smart-contracts/testing/integration-test",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/testing/integration-test.md",
@@ -20,10 +20,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Unit Testing",
-    "permalink": "/zh-CN/build/smart-contracts/testing/unit-test"
+    "permalink": "/build/smart-contracts/testing/unit-test"
   },
   "next": {
     "title": "Local Development",
-    "permalink": "/zh-CN/build/smart-contracts/testing/kurtosis-localnet"
+    "permalink": "/build/smart-contracts/testing/kurtosis-localnet"
   }
 }

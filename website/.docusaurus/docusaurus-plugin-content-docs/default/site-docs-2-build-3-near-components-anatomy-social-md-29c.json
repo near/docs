@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/3.near-components/anatomy/social.md",
   "sourceDirName": "2.build/3.near-components/anatomy",
   "slug": "/build/near-components/anatomy/social",
-  "permalink": "/zh-CN/build/near-components/anatomy/social",
+  "permalink": "/build/near-components/anatomy/social",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/3.near-components/anatomy/social.md",
@@ -20,10 +20,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Interacting with Near",
-    "permalink": "/zh-CN/build/near-components/anatomy/near"
+    "permalink": "/build/near-components/anatomy/near"
   },
   "next": {
     "title": "Social Notifications",
-    "permalink": "/zh-CN/build/near-components/anatomy/notifications"
+    "permalink": "/build/near-components/anatomy/notifications"
   }
 }

@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/2.smart-contracts/testing/kurtosis-localnet.md",
   "sourceDirName": "2.build/2.smart-contracts/testing",
   "slug": "/build/smart-contracts/testing/kurtosis-localnet",
-  "permalink": "/zh-CN/build/smart-contracts/testing/kurtosis-localnet",
+  "permalink": "/build/smart-contracts/testing/kurtosis-localnet",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/testing/kurtosis-localnet.md",
@@ -22,10 +22,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Integration Tests",
-    "permalink": "/zh-CN/build/smart-contracts/testing/integration-test"
+    "permalink": "/build/smart-contracts/testing/integration-test"
   },
   "next": {
     "title": "Deploying and Using",
-    "permalink": "/zh-CN/build/smart-contracts/release/deploy"
+    "permalink": "/build/smart-contracts/release/deploy"
   }
 }

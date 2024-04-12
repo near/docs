@@ -1,0 +1,27 @@
+{
+  "id": "build/web3-apps/backend/backend-login",
+  "title": "Authenticate NEAR Users",
+  "description": "Recently NEAR has approved a new standard that, among other things, enables users to authenticate into a backend service.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/4.web3-apps/backend/backend.md",
+  "sourceDirName": "2.build/4.web3-apps/backend",
+  "slug": "/build/web3-apps/backend/",
+  "permalink": "/ko/build/web3-apps/backend/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/4.web3-apps/backend/backend.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "backend-login",
+    "title": "Authenticate NEAR Users"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Integrating Components",
+    "permalink": "/ko/build/web3-apps/integrate-components"
+  },
+  "next": {
+    "title": "What are Primitives?",
+    "permalink": "/ko/build/primitives/what-is"
+  }
+}

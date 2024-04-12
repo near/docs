@@ -1,0 +1,27 @@
+{
+  "id": "build/smart-contracts/anatomy/basics",
+  "title": "모듈, 자료형 및 구조",
+  "description": "스마트 컨트랙트를 작성할 때, 다음과 같은 일반적인 프로그래밍 개념을 활용합니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/2.smart-contracts/anatomy/basics.md",
+  "sourceDirName": "2.build/2.smart-contracts/anatomy",
+  "slug": "/build/smart-contracts/anatomy/basics",
+  "permalink": "/ko/build/smart-contracts/anatomy/basics",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/anatomy/basics.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "basics",
+    "title": "모듈, 자료형 및 구조"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Quickstart ✨",
+    "permalink": "/ko/build/smart-contracts/quickstart"
+  },
+  "next": {
+    "title": "The Contract Class",
+    "permalink": "/ko/build/smart-contracts/anatomy/"
+  }
+}

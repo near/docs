@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/4.web3-apps/quickstart.md",
   "sourceDirName": "2.build/4.web3-apps",
   "slug": "/build/web3-apps/quickstart",
-  "permalink": "/zh-CN/build/web3-apps/quickstart",
+  "permalink": "/build/web3-apps/quickstart",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/4.web3-apps/quickstart.md",
@@ -21,10 +21,10 @@
   "sidebar": "build",
   "previous": {
     "title": "What are Web3 Apps?",
-    "permalink": "/zh-CN/build/web3-apps/what-is"
+    "permalink": "/build/web3-apps/what-is"
   },
   "next": {
     "title": "Integrating Contracts",
-    "permalink": "/zh-CN/build/web3-apps/integrate-contracts"
+    "permalink": "/build/web3-apps/integrate-contracts"
   }
 }

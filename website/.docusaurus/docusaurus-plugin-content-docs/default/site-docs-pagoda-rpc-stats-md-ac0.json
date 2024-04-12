@@ -5,7 +5,7 @@
   "source": "@site/../docs/pagoda/rpc/stats.md",
   "sourceDirName": "pagoda/rpc",
   "slug": "/pagoda/rpc/stats",
-  "permalink": "/zh-CN/pagoda/rpc/stats",
+  "permalink": "/pagoda/rpc/stats",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/pagoda/rpc/stats.md",
@@ -22,10 +22,10 @@
   "sidebar": "pagoda",
   "previous": {
     "title": "Setup",
-    "permalink": "/zh-CN/pagoda/rpc/setup"
+    "permalink": "/pagoda/rpc/setup"
   },
   "next": {
     "title": "NEAR Enhanced API",
-    "permalink": "/zh-CN/pagoda/rpc/api"
+    "permalink": "/pagoda/rpc/api"
   }
 }

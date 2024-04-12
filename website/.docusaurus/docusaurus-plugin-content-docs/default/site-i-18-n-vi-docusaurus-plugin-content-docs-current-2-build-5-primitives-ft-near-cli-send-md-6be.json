@@ -1,0 +1,15 @@
+{
+  "id": "build/primitives/ft/near-cli/send",
+  "title": "send",
+  "description": "",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.build/5.primitives/ft/near-cli/send.md",
+  "sourceDirName": "2.build/5.primitives/ft/near-cli",
+  "slug": "/build/primitives/ft/near-cli/send",
+  "permalink": "/vi/build/primitives/ft/near-cli/send",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/ft/near-cli/send.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

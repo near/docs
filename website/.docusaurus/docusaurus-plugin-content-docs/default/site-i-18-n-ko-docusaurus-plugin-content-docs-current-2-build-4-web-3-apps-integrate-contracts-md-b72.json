@@ -1,0 +1,27 @@
+{
+  "id": "build/web3-apps/integrate-contracts",
+  "title": "Integrating Contracts",
+  "description": "To integrate NEAR to your frontend, you will leverage two tools:",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/4.web3-apps/integrate-contracts.md",
+  "sourceDirName": "2.build/4.web3-apps",
+  "slug": "/build/web3-apps/integrate-contracts",
+  "permalink": "/ko/build/web3-apps/integrate-contracts",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/4.web3-apps/integrate-contracts.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "integrate-contracts",
+    "title": "Integrating Contracts"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "⭐ Quickstart a WebApp",
+    "permalink": "/ko/build/web3-apps/quickstart"
+  },
+  "next": {
+    "title": "Integrating Components",
+    "permalink": "/ko/build/web3-apps/integrate-components"
+  }
+}

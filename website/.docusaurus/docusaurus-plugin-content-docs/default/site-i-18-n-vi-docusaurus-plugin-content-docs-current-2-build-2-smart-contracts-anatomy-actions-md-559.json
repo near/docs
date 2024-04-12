@@ -1,0 +1,27 @@
+{
+  "id": "build/smart-contracts/anatomy/actions",
+  "title": "Transfers & Actions",
+  "description": "Smart contracts can perform specific Actions such as transferring NEAR, or calling other contracts.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.build/2.smart-contracts/anatomy/actions.md",
+  "sourceDirName": "2.build/2.smart-contracts/anatomy",
+  "slug": "/build/smart-contracts/anatomy/actions",
+  "permalink": "/vi/build/smart-contracts/anatomy/actions",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/anatomy/actions.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "actions",
+    "title": "Transfers & Actions"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "State & Data Structures",
+    "permalink": "/vi/build/smart-contracts/anatomy/storage"
+  },
+  "next": {
+    "title": "Cross-Contract Calls",
+    "permalink": "/vi/build/smart-contracts/anatomy/crosscontract"
+  }
+}

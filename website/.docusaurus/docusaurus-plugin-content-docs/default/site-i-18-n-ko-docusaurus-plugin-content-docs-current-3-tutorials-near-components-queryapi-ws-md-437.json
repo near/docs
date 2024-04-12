@@ -1,0 +1,28 @@
+{
+  "id": "tutorials/near-components/queryapi-websockets",
+  "title": "WebSocket-enabled Components with QueryAPI",
+  "description": "In this article you'll learn how to create a NEAR component that gathers information from a QueryAPI indexer using WebSockets.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/near-components/queryapi-ws.md",
+  "sourceDirName": "3.tutorials/near-components",
+  "slug": "/tutorials/near-components/queryapi-websockets",
+  "permalink": "/ko/tutorials/near-components/queryapi-websockets",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/near-components/queryapi-ws.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "queryapi-websockets",
+    "title": "WebSocket-enabled Components with QueryAPI",
+    "sidebar_label": "WebSockets & QueryAPI"
+  },
+  "sidebar": "tutorials",
+  "previous": {
+    "title": "Push Notifications",
+    "permalink": "/ko/tutorials/near-components/push-notifications"
+  },
+  "next": {
+    "title": "NEAR for Ethereum developers",
+    "permalink": "/ko/tutorials/near-components/ethers-js"
+  }
+}

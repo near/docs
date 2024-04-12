@@ -392,7 +392,7 @@ Implicit account: 9c07afc7673ea0f9a20c8a279e8bbe1dd1e283254263bb3b07403e4b6fd7a4
 
 #### 4a) `near generate-key --queryLedgerPK`
 
-> Uses a connected Ledger device to display a public key and [implicit account](http://docs.near.org/integrator/implicit-accounts) using the default HD path (`"44'/397'/0'/0'/1'"`)
+> Uses a connected Ledger device to display a public key and [implicit account](http://docs.near.org/integrations/implicit-accounts) using the default HD path (`"44'/397'/0'/0'/1'"`)
 
 ```bash
 near generate-key --queryLedgerPK
@@ -423,7 +423,7 @@ Implicit account: 42c320xc20739fd9a6bqf2f89z61rd14efe5d3de234199bc771235a4bb8b0e
 
 #### 3b) `near generate-key --queryLedgerPK --ledgerPath="HD path you specify"`
 
-> Uses a connected Ledger device to display a public key and [implicit account](http://docs.near.org/integrator/implicit-accounts) using a custom HD path.
+> Uses a connected Ledger device to display a public key and [implicit account](http://docs.near.org/integrations/implicit-accounts) using a custom HD path.
 
 ```bash
 near generate-key --queryLedgerPK --ledgerPath="44'/397'/0'/0'/2'"

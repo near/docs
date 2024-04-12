@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/1.chain-abstraction/fastauth-sdk.md",
   "sourceDirName": "2.build/1.chain-abstraction",
   "slug": "/build/chain-abstraction/fastauth-sdk",
-  "permalink": "/zh-CN/build/chain-abstraction/fastauth-sdk",
+  "permalink": "/build/chain-abstraction/fastauth-sdk",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/1.chain-abstraction/fastauth-sdk.md",
@@ -21,10 +21,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Building a Relayer",
-    "permalink": "/zh-CN/build/chain-abstraction/meta-transactions"
+    "permalink": "/build/chain-abstraction/meta-transactions"
   },
   "next": {
     "title": "Chain Signatures",
-    "permalink": "/zh-CN/build/chain-abstraction/chain-signatures"
+    "permalink": "/build/chain-abstraction/chain-signatures"
   }
 }

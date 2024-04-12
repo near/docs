@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/2.smart-contracts/security/sybil.md",
   "sourceDirName": "2.build/2.smart-contracts/security",
   "slug": "/build/smart-contracts/security/sybil",
-  "permalink": "/zh-CN/build/smart-contracts/security/sybil",
+  "permalink": "/build/smart-contracts/security/sybil",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/security/sybil.md",
@@ -20,10 +20,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Ensure it is the User (1yⓃ)",
-    "permalink": "/zh-CN/build/smart-contracts/security/one-yocto"
+    "permalink": "/build/smart-contracts/security/one-yocto"
   },
   "next": {
     "title": "Front Running",
-    "permalink": "/zh-CN/build/smart-contracts/security/frontrunning"
+    "permalink": "/build/smart-contracts/security/frontrunning"
   }
 }

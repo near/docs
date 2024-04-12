@@ -1,0 +1,15 @@
+{
+  "id": "build/primitives/nft/smart-contract/mint",
+  "title": "mint",
+  "description": "",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.build/5.primitives/nft/smart-contract/mint.md",
+  "sourceDirName": "2.build/5.primitives/nft/smart-contract",
+  "slug": "/build/primitives/nft/smart-contract/mint",
+  "permalink": "/zh-CN/build/primitives/nft/smart-contract/mint",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/nft/smart-contract/mint.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

@@ -11,15 +11,8 @@ Rust가 처음이라면, [`nearcore` 레퍼지토리에 있는 개요](https://g
 
 ---
 
-## 첫 번째 Rust 컨트랙트 작성
+## Create Your First Rust Contract
 몇 분 만에 첫 번째 **Rust 컨트랙트**를 생성하세요:
-1. [Rust](https://doc.rust-lang.org/book/ch01-01-installation.html)를 다운로드하고 설치합니다.
-2. [빠른 시작 가이드](../../2.develop/quickstart.md)를 사용해 새 **Rust** 프로젝트를 생성하세요.
-3. **[스마트 컨트랙트 작성 방법](../../2.develop/contracts/anatomy.md)**에 대한 문서를 읽어보세요.
-
----
-
-## 리소스
-1. 문서: https://docs.near.org/develop/contracts/anatomy
-2. 예제: https://docs.near.org/tutorials/welcome
-3. Github: https://github.com/near/near-sdk-rs
+1. Download and install [Rust](https://doc.rust-lang.org/book/ch01-01-installation.html).
+2. Create a new **rust** project using our [quickstart guide](../../2.build/2.smart-contracts/quickstart.md).
+3. Read our docs on **[how to write smart contracts](../../2.build/2.smart-contracts/anatomy/anatomy.md)**.

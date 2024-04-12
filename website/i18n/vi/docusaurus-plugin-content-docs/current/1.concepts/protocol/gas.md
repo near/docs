@@ -10,7 +10,7 @@ On every transaction the NEAR network charges a tiny fee known as **gas**. This 
 1. **Prevent** bad actors from **spamming** the network with useless transactions
 2. **Burn** a minuscule fraction of the **token supply** on each transaction
 3. **Incentivize developers** by giving contracts 30% of the gas they burn while executing
-4. Implement a **wall time** by capping transactions to `300Tgas` (\~`300ms` of compute time)
+4. Implement a **wall time** by capping transactions to `300Tgas` (~`300ms` of compute time)
 
 Gas in NEAR is computed on [**gas units**](#gas-units--gas-price) and charged using $NEAR tokens based on the network's [**gas price**](#gas-units--gas-price).
 
@@ -18,7 +18,7 @@ Gas in NEAR is computed on [**gas units**](#gas-units--gas-price) and charged us
 In NEAR, attaching extra gas to a transaction does **not** make it faster. Actions cost a fixed amount of gas, and any extra gas attached is simply sent back to the user
 :::
 
-***
+---
 
 ## Understanding Gas Fees
 
@@ -84,14 +84,14 @@ return `Right now, 1 Tgas costs ${Number(yocto) / 1e12}Ⓝ`
 
 Knowing that actions have a fixed cost in gas units, we can calculate the cost of common operations at the minimum gas price of `1Tgas = 0.0001Ⓝ`.
 
-| Action                         | TGas           | Fee (Ⓝ) |
-| ------------------------------ | -------------- | -------------------------- |
-| Create Account                 | 0.42           | 0.000042                   |
-| Transfer NEAR                  | 0.45           | 0.000045                   |
-| Add Full Access Key            | 0.42           | 0.000042                   |
-| Delete Key                     | 0.41           | 0.000041                   |
-| Function Call\*                | ≤ 300          | ≤ 0.03                     |
-| Deploying a `16`kb contract    | 2.65           | 0.000265                   |
+| Action                         | TGas                                           | Fee (Ⓝ) |
+| ------------------------------ | ---------------------------------------------- | -------------------------- |
+| Create Account                 | 0.42                           | 0.000042   |
+| Transfer NEAR                  | 0.45                           | 0.000045   |
+| Add Full Access Key            | 0.42                           | 0.000042   |
+| Delete Key                     | 0.41                           | 0.000041   |
+| Function Call\*                | ≤ 300                                          | ≤ 0.03     |
+| Deploying a `16`kb contract    | 2.65                           | 0.000265   |
 | Deploying a `X`kb contract\*\* | 0.58 + 0.13`X` |                            |
 
 _Note that the fee is in $NEAR, to obtain the cost in dollars multiply by the current price of $NEAR_
@@ -144,7 +144,7 @@ The "transfer" action won't be finalized until the next block. At this point, th
 
 </details>
 
-***
+---
 
 ## How Do I Buy Gas?
 
@@ -183,7 +183,7 @@ This 60% up comes from assuming that the price of gas will go up by 1% on each b
 In other chains paying a higher gas price to get your transaction processed faster. In NEAR, **gas costs are deterministic**, and you **can't pay extra**. Any extra gas attached to a transaction is simply sent back to the user.
 :::
 
-***
+---
 
 ## Gas as a Developer Incentive
 
@@ -191,16 +191,16 @@ In NEAR, 30% of the gas fees burn while executing a contract go to the contract'
 
 For example, in [this transaction](https://testnet.nearblocks.io/txns/JD8Bg4u8kaYeaSsGBqkvhSDCEPgXhtwJRBBPKicCEPMs) the user calls a function in the `guestbook.near-examples.testnet` contract.
 
-Executing the function call burned a total of \~0.00032Ⓝ, from which 30% goes to the contract's account. This means that the contract's account received 0.000096Ⓝ.
+Executing the function call burned a total of ~0.00032Ⓝ, from which 30% goes to the contract's account. This means that the contract's account received 0.000096Ⓝ.
 
 Notice that the fee comes from the gas burned during the function execution, and not from the total gas used.
 
-***
+---
 
 ## Estimating Costs for a Call
 
 :::warning
-This section will soon be moved from here to the [build documentation](../../2.develop/contracts/environment/environment.md).
+This section will soon be moved from here to the [build documentation](../../2.build/2.smart-contracts/anatomy/environment.md).
 :::
 
 If you developing a smart contract, you might want to estimate how much gas a function call will consume. This is useful to estimate limits for your function and avoid running into out-of-gas errors.

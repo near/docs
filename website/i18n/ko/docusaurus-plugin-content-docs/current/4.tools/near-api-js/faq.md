@@ -239,7 +239,7 @@ NEAR의 지갑은 웹 기반이기 때문에 지갑과의 상호 작용은 웹 �
 
 ### 암시적 계정(Implicit Account)은 어떻게 생성하나요?
 
-이에 대해서는 [암시적 계정](https://docs.near.org/integrator/implicit-accounts)에 대한 문서에서 읽을 수 있습니다.
+You can read about it in the article about [Implicit Accounts](https://docs.near.org/integrations/implicit-accounts).
 
 ---
 

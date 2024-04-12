@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/2.smart-contracts/security/bounty.md",
   "sourceDirName": "2.build/2.smart-contracts/security",
   "slug": "/build/smart-contracts/security/bounty",
-  "permalink": "/zh-CN/build/smart-contracts/security/bounty",
+  "permalink": "/build/smart-contracts/security/bounty",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/security/bounty.md",
@@ -20,10 +20,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Random Numbers",
-    "permalink": "/zh-CN/build/smart-contracts/security/random"
+    "permalink": "/build/smart-contracts/security/random"
   },
   "next": {
     "title": "What is a Component?",
-    "permalink": "/zh-CN/build/near-components/what-is"
+    "permalink": "/build/near-components/what-is"
   }
 }

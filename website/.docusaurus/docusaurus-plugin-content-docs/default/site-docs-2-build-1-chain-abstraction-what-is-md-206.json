@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/1.chain-abstraction/what-is.md",
   "sourceDirName": "2.build/1.chain-abstraction",
   "slug": "/build/chain-abstraction/what-is",
-  "permalink": "/zh-CN/build/chain-abstraction/what-is",
+  "permalink": "/build/chain-abstraction/what-is",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/1.chain-abstraction/what-is.md",
@@ -20,10 +20,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Home",
-    "permalink": "/zh-CN/build/welcome"
+    "permalink": "/build/welcome"
   },
   "next": {
     "title": "Building a Relayer",
-    "permalink": "/zh-CN/build/chain-abstraction/meta-transactions"
+    "permalink": "/build/chain-abstraction/meta-transactions"
   }
 }

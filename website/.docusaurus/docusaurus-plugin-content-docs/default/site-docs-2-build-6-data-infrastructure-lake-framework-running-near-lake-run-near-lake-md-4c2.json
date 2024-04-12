@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/6.data-infrastructure/lake-framework/running-near-lake/run-near-lake.md",
   "sourceDirName": "2.build/6.data-infrastructure/lake-framework/running-near-lake",
   "slug": "/build/data-infrastructure/lake-framework/running-near-lake/run-lake-indexer",
-  "permalink": "/zh-CN/build/data-infrastructure/lake-framework/running-near-lake/run-lake-indexer",
+  "permalink": "/build/data-infrastructure/lake-framework/running-near-lake/run-lake-indexer",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/lake-framework/running-near-lake/run-near-lake.md",
@@ -20,10 +20,10 @@
   "sidebar": "build",
   "previous": {
     "title": "NFT indexer for Python",
-    "permalink": "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/python-nft-indexer"
+    "permalink": "/build/data-infrastructure/lake-framework/building-indexers/python-nft-indexer"
   },
   "next": {
     "title": "Start options",
-    "permalink": "/zh-CN/build/data-infrastructure/lake-framework/running-near-lake/lake-start-options"
+    "permalink": "/build/data-infrastructure/lake-framework/running-near-lake/lake-start-options"
   }
 }

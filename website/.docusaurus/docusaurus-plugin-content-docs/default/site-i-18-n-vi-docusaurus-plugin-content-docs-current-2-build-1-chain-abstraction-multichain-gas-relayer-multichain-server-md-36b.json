@@ -1,0 +1,28 @@
+{
+  "id": "build/chain-abstraction/multichain-gas-relayer/multichain-server",
+  "title": "Multichain Relayer Server",
+  "description": "The Multichain Relayer Server facilitates cross-chain transactions and enables Chain Abstraction.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.build/1.chain-abstraction/multichain-gas-relayer/multichain-server.md",
+  "sourceDirName": "2.build/1.chain-abstraction/multichain-gas-relayer",
+  "slug": "/build/chain-abstraction/multichain-gas-relayer/multichain-server",
+  "permalink": "/vi/build/chain-abstraction/multichain-gas-relayer/multichain-server",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/1.chain-abstraction/multichain-gas-relayer/multichain-server.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "multichain-server",
+    "title": "Multichain Relayer Server",
+    "sidebar_label": "Multichain Relayer Server"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Wallet Chain Key Rules",
+    "permalink": "/vi/build/chain-abstraction/wallet"
+  },
+  "next": {
+    "title": "Multichain Gas Station",
+    "permalink": "/vi/build/chain-abstraction/multichain-gas-relayer/gas-station"
+  }
+}

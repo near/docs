@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/6.data-infrastructure/lake-data-structures/block.mdx",
   "sourceDirName": "2.build/6.data-infrastructure/lake-data-structures",
   "slug": "/build/data-infrastructure/lake-data-structures/block",
-  "permalink": "/zh-CN/build/data-infrastructure/lake-data-structures/block",
+  "permalink": "/build/data-infrastructure/lake-data-structures/block",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/lake-data-structures/block.mdx",
@@ -21,10 +21,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Table of contents",
-    "permalink": "/zh-CN/build/data-infrastructure/lake-data-structures/toc"
+    "permalink": "/build/data-infrastructure/lake-data-structures/toc"
   },
   "next": {
     "title": "Chunk",
-    "permalink": "/zh-CN/build/data-infrastructure/lake-data-structures/chunk"
+    "permalink": "/build/data-infrastructure/lake-data-structures/chunk"
   }
 }

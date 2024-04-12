@@ -146,8 +146,8 @@ NEAR의 스마트 컨트랙트는 Rust 또는 JavaScript로 작성되고, [WebAs
 
 우선 개발 및 테스트 환경이 필요합니다. 물론 이론상 메인 블록체인 네트워크에서 개발과 테스트를 수행할 수 있지만 비용이 저렴하지는 않습니다. 이러한 이유로 NEAR는 개발 중에 사용할 수 있는 [여러 네트워크](../../1.concepts/basics/networks.md)를 제공합니다.
 - testnet - 메인넷과 동일하고 무료로 사용할 수 있는 퍼블릭 NEAR 네트워크입니다.
-- localnet - 로컬 환경에 개인 NEAR 네트워크를 배포할 수 있습니다. 이는 당신의 소유이기 때문에, 개발 중에 데이터와 코드를 비공개로 유지할 수 있습니다. 자신의 노드를 실행하는 방법에 대한 자세한 정보는 [여기](https://docs.near.org/docs/develop/node/validator/running-a-node)에서 찾을 수 있습니다. 또는 Kurtosis([가이드](/develop/testing/kurtosis-localnet))를 사용하여 로컬 시스템의 Docker에서 전체 테스트 인프라를 부트스트랩할 수 있습니다.
-- 작업 공간 - 자체 로컬 네트워크를 시작하여 e2e 테스트를 수행할 수 있습니다. [여기](../../2.develop/testing/integration.md)에서 더 많은 정보를 얻을 수 있습니다.
+- localnet - 로컬 환경에 개인 NEAR 네트워크를 배포할 수 있습니다. 이는 당신의 소유이기 때문에, 개발 중에 데이터와 코드를 비공개로 유지할 수 있습니다. 자신의 노드를 실행하는 방법에 대한 자세한 정보는 [여기](https://docs.near.org/docs/develop/node/validator/running-a-node)에서 찾을 수 있습니다. Alternatively, you can bootstrap an entire testing infrastructure in Docker on your local machine using Kurtosis - [guide is here](../../2.build/2.smart-contracts/testing/kurtosis-localnet.md).
+- 작업 공간 - 자체 로컬 네트워크를 시작하여 e2e 테스트를 수행할 수 있습니다. More info [here](../../2.build/2.smart-contracts/testing/integration-test.md).
 
 사용할 네트워크를 선택한 후에는 네트워크와 상호 작용할 방법이 필요합니다. 물론 트랜잭션을 수동으로 구성하고 [노드의 API](https://docs.near.org/api/rpc/setup)에 전달할 수도 있습니다. 그러나 이것은 [지루하고](https://github.com/near-examples/transaction-examples) 전혀 재미가 없습니다. 그렇기 때문에 NEAR 는 필요한 모든 작업을 자동화 하는 [CLI를 제공합니다](../../4.tools/cli.md). 이를 개발 목적으로 로컬에서 사용하거나 CI/CD 시나리오용 빌드 머신에서 사용할 수 있습니다.
 
@@ -187,9 +187,9 @@ https://testnet.mynearwallet.com/auto-import-secret-key#YOUR_ACCOUNT_ID/YOUR_PRI
 
 While developing the contract, we recommend just creating a new account each time you need to deploy a contract (the [create-account](../../4.tools/cli.md#near-create-account) command in NEAR CLI exists for this). With such an approach, you will start with a clean state each time.
 
-그러나 테스트나 프로덕션과 같은 안정적인 환경으로 이동하면 보다 정교한 방법이 필요합니다. 코드 재배치는 매우 간단합니다. 다른 `DeployContract` 트랜잭션을 발행하면 NEAR가 처리해 줄 것입니다. 가장 큰 문제는 컨트랙트 상태를 마이그레이션하는 것입니다. [여러 접근 방식이 가능](../../2.develop/upgrade.md#migrating-the-state)하지만, 모두 일종의 마이그레이션 코드가 필요합니다.
+그러나 테스트나 프로덕션과 같은 안정적인 환경으로 이동하면 보다 정교한 방법이 필요합니다. 코드 재배치는 매우 간단합니다. 다른 `DeployContract` 트랜잭션을 발행하면 NEAR가 처리해 줄 것입니다. The biggest challenge is to migrate contract state - [several approaches are possible](../../2.build/2.smart-contracts/release/upgrade.md#migrating-the-state), but all of them involve some kind of migration code.
 
-그러나 우리는 업그레이드 전략을 한 단계 더 발전시킬 수 있습니다. 이전 전략에서는 개발자가 코드 업그레이드를 완전히 제어할 수 있습니다. 이것은 많은 애플리케이션에 적합하지만, 사용자의 동의 없이 언제든지 악의적인 변경이 이루어질 수 있기 때문에(npm 세계에서 [때때로](https://www.bleepingcomputer.com/news/security/dev-corrupts-npm-libs-colors-and-faker-breaking-thousands-of-apps/) 발생 하는 것처럼) 사용자와 개발자 사이에 일정 수준의 신뢰가 필요합니다. 이를 해결하기 위해 컨트랙트 업데이트 프로세스 자체를 분산화할 수도 있습니다. 이를 [프로그래밍 방식 업데이트](../../2.develop/upgrade.md#programmatic-update)라고 합니다. 정확한 전략은 다를 수 있지만, 기본 아이디어는 컨트랙트 업데이트 코드가 스마트 컨트랙트 자체에서 구현되고, 컨트랙트 계정에 대한 전체 액세스 키가 블록체인에서 제거된다는 것입니다(DeleteKey 트랜잭션을 통해). 이러한 방식으로 업데이트 전략은 모든 사람에게 투명하며 개발자가 마음대로 변경할 수 없습니다.
+그러나 우리는 업그레이드 전략을 한 단계 더 발전시킬 수 있습니다. 이전 전략에서는 개발자가 코드 업그레이드를 완전히 제어할 수 있습니다. 이것은 많은 애플리케이션에 적합하지만, 사용자의 동의 없이 언제든지 악의적인 변경이 이루어질 수 있기 때문에(npm 세계에서 [때때로](https://www.bleepingcomputer.com/news/security/dev-corrupts-npm-libs-colors-and-faker-breaking-thousands-of-apps/) 발생 하는 것처럼) 사용자와 개발자 사이에 일정 수준의 신뢰가 필요합니다. To solve this, a contract update process itself can also be decentralized - this is called [Programmatic Updates](../../2.build/2.smart-contracts/release/upgrade.md#programmatic-update). 정확한 전략은 다를 수 있지만, 기본 아이디어는 컨트랙트 업데이트 코드가 스마트 컨트랙트 자체에서 구현되고, 컨트랙트 계정에 대한 전체 액세스 키가 블록체인에서 제거된다는 것입니다(DeleteKey 트랜잭션을 통해). 이러한 방식으로 업데이트 전략은 모든 사람에게 투명하며 개발자가 마음대로 변경할 수 없습니다.
 
 ## 더 많은 정보
 
@@ -197,6 +197,6 @@ NEAR에 대해 자세히 알아보려면 다음 링크들이 유용합니다.
 
 - [NEAR 문서](https://docs.near.org)
 - [Rust 스마트 컨트랙트 문서](/sdk/rust/introduction)
-    - [스마트 컨트랙트 빠른 시작 가이드](/develop/quickstart-guide)
-- [NEAR 프로토콜 사양](https://nomicon.io/)
-- [NEAR에서 DApp을 만드는 방법](../../3.tutorials/examples/guest-book.md)
+- [Smart Contract quick start guide](../../2.build/2.smart-contracts/quickstart.md)
+- [NEAR Protocol Specification](https://nomicon.io/)
+- [How to build a dApp on NEAR](../../3.tutorials/examples/guest-book.md)

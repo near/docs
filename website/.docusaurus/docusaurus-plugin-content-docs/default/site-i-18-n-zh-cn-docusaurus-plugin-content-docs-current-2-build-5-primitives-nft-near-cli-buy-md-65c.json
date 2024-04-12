@@ -1,0 +1,15 @@
+{
+  "id": "build/primitives/nft/near-cli/buy",
+  "title": "buy",
+  "description": "Example response:",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.build/5.primitives/nft/near-cli/buy.md",
+  "sourceDirName": "2.build/5.primitives/nft/near-cli",
+  "slug": "/build/primitives/nft/near-cli/buy",
+  "permalink": "/zh-CN/build/primitives/nft/near-cli/buy",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/nft/near-cli/buy.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

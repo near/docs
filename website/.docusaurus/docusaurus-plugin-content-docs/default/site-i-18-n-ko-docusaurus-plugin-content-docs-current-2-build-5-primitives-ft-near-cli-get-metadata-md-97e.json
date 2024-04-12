@@ -1,0 +1,15 @@
+{
+  "id": "build/primitives/ft/near-cli/get-metadata",
+  "title": "get-metadata",
+  "description": "Example response",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/5.primitives/ft/near-cli/get-metadata.md",
+  "sourceDirName": "2.build/5.primitives/ft/near-cli",
+  "slug": "/build/primitives/ft/near-cli/get-metadata",
+  "permalink": "/ko/build/primitives/ft/near-cli/get-metadata",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/5.primitives/ft/near-cli/get-metadata.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

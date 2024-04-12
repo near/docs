@@ -5,7 +5,7 @@
   "source": "@site/../docs/3.tutorials/near-components/hello-near.md",
   "sourceDirName": "3.tutorials/near-components",
   "slug": "/tutorials/near-components/interaction",
-  "permalink": "/zh-CN/tutorials/near-components/interaction",
+  "permalink": "/tutorials/near-components/interaction",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/near-components/hello-near.md",
@@ -20,10 +20,10 @@
   "sidebar": "tutorials",
   "previous": {
     "title": "BOS Loader",
-    "permalink": "/zh-CN/tutorials/near-components/bos-loader"
+    "permalink": "/tutorials/near-components/bos-loader"
   },
   "next": {
     "title": "Design Components",
-    "permalink": "/zh-CN/tutorials/near-components/ds-components"
+    "permalink": "/tutorials/near-components/ds-components"
   }
 }

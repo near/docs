@@ -573,7 +573,7 @@ Usually, an indexer works by extracting data from [Events](https://nomicon.io/St
 
 Automated testing of the code is one of the pillars of modern software development. But how do we test our dApp?
 
-Recall that a smart contract is a pure function, which can be easily tested using Unit Tests. Guide on how to write them is available [here](../../2.develop/testing/unit.md), and some examples can be found here. Another important kind of tests that is supported by NEAR are E2E tests, they can be executed either deploying contract code to either the local network environment (more info [here](../../2.develop/testing/introduction.md)), or directly to `testnet`, more info [here](../../2.develop/testing/integration.md)).
+Recall that a smart contract is a pure function, which can be easily tested using Unit Tests. Guide on how to write them is available [here](../../2.build/2.smart-contracts/testing/unit-test.md), and some examples can be found here. Another important kind of tests that is supported by NEAR are E2E tests, they can be executed either deploying contract code to either the local network environment (more info [here](../../2.build/2.smart-contracts/testing/introduction.md)), or directly to `testnet`, more info [here](../../2.build/2.smart-contracts/testing/integration-test.md)).
 
 Having both types of tests is equally important to ensure continuous quality of smart contracts, especially since contract upgrades usually aren’t easy to perform (remember, that in DAOs upgrade itself might be governed by a community vote).
 

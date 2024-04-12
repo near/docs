@@ -5,7 +5,7 @@
   "source": "@site/../docs/3.tutorials/near-components/push-notifications.md",
   "sourceDirName": "3.tutorials/near-components",
   "slug": "/tutorials/near-components/push-notifications",
-  "permalink": "/zh-CN/tutorials/near-components/push-notifications",
+  "permalink": "/tutorials/near-components/push-notifications",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/near-components/push-notifications.md",
@@ -20,10 +20,10 @@
   "sidebar": "tutorials",
   "previous": {
     "title": "Using IFrames",
-    "permalink": "/zh-CN/tutorials/near-components/using-iframes"
+    "permalink": "/tutorials/near-components/using-iframes"
   },
   "next": {
     "title": "WebSockets & QueryAPI",
-    "permalink": "/zh-CN/tutorials/near-components/queryapi-websockets"
+    "permalink": "/tutorials/near-components/queryapi-websockets"
   }
 }

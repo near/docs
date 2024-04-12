@@ -6,7 +6,6 @@ hide_table_of_contents: true
 ---
 
 import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
-import ContactUs from '@site/src/components/ContactUs.mdx';
 
 어서오세요! 여기에서는 NEAR 프로토콜이 무엇인지, 어떻게 구성되었고 어떻게 작동되는지에 대해 설명합니다.
 
@@ -30,7 +29,3 @@ import ContactUs from '@site/src/components/ContactUs.mdx';
     <Feature url="/concepts/advanced/indexers" title="블록체인 데이터 인덱싱" subtitle="Query usage information for a contract" image="blocks.png" />
   </Column>
 </FeatureList>
-
----
-
-<ContactUs />

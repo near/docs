@@ -1,0 +1,27 @@
+{
+  "id": "tutorials/near-components/using-iframes",
+  "title": "Using IFrames",
+  "description": "In this tutorial you'll learn how to use the iframe VM tag and the Iframe resizer library, so you can embed external HTML or use custom DOM elements when building NEAR components.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/3.tutorials/near-components/iframes.md",
+  "sourceDirName": "3.tutorials/near-components",
+  "slug": "/tutorials/near-components/using-iframes",
+  "permalink": "/zh-CN/tutorials/near-components/using-iframes",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/near-components/iframes.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "using-iframes",
+    "title": "Using IFrames"
+  },
+  "sidebar": "tutorials",
+  "previous": {
+    "title": "Design Components",
+    "permalink": "/zh-CN/tutorials/near-components/ds-components"
+  },
+  "next": {
+    "title": "Push Notifications",
+    "permalink": "/zh-CN/tutorials/near-components/push-notifications"
+  }
+}

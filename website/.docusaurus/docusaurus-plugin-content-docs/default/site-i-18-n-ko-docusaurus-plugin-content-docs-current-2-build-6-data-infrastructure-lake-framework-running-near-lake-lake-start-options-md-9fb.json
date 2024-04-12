@@ -1,0 +1,26 @@
+{
+  "id": "build/data-infrastructure/lake-framework/running-near-lake/lake-start-options",
+  "title": "시작 옵션으로 Lake 인덱서 확장",
+  "description": "끝",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/6.data-infrastructure/lake-framework/running-near-lake/lake-start-options.md",
+  "sourceDirName": "2.build/6.data-infrastructure/lake-framework/running-near-lake",
+  "slug": "/build/data-infrastructure/lake-framework/running-near-lake/lake-start-options",
+  "permalink": "/ko/build/data-infrastructure/lake-framework/running-near-lake/lake-start-options",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/lake-framework/running-near-lake/lake-start-options.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "sidebar_label": "시작 옵션"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Running Lake Indexer",
+    "permalink": "/ko/build/data-infrastructure/lake-framework/running-near-lake/run-lake-indexer"
+  },
+  "next": {
+    "title": "자격 증명",
+    "permalink": "/ko/build/data-infrastructure/lake-framework/running-near-lake/credentials"
+  }
+}

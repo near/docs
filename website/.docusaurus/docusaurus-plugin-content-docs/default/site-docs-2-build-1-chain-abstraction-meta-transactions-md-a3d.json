@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/1.chain-abstraction/meta-transactions.md",
   "sourceDirName": "2.build/1.chain-abstraction",
   "slug": "/build/chain-abstraction/meta-transactions",
-  "permalink": "/zh-CN/build/chain-abstraction/meta-transactions",
+  "permalink": "/build/chain-abstraction/meta-transactions",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/1.chain-abstraction/meta-transactions.md",
@@ -21,10 +21,10 @@
   "sidebar": "build",
   "previous": {
     "title": "What is Chain Abstraction?",
-    "permalink": "/zh-CN/build/chain-abstraction/what-is"
+    "permalink": "/build/chain-abstraction/what-is"
   },
   "next": {
     "title": "FastAuth (Email Login)",
-    "permalink": "/zh-CN/build/chain-abstraction/fastauth-sdk"
+    "permalink": "/build/chain-abstraction/fastauth-sdk"
   }
 }

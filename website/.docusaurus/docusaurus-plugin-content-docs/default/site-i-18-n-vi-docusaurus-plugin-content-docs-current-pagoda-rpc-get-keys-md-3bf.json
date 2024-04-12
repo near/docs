@@ -1,0 +1,29 @@
+{
+  "id": "pagoda/rpc/get-keys",
+  "title": "Get Pagoda API Keys",
+  "description": "Please be advised that these tools and services will be discontinued soon.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/pagoda/rpc/get-keys.md",
+  "sourceDirName": "pagoda/rpc",
+  "slug": "/pagoda/rpc/get-keys",
+  "permalink": "/vi/pagoda/rpc/get-keys",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/pagoda/rpc/get-keys.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3,
+    "sidebar_label": "Get API Keys",
+    "title": "Get Pagoda API Keys"
+  },
+  "sidebar": "pagoda",
+  "previous": {
+    "title": "Introduction",
+    "permalink": "/vi/pagoda/rpc/intro"
+  },
+  "next": {
+    "title": "Setup",
+    "permalink": "/vi/pagoda/rpc/setup"
+  }
+}

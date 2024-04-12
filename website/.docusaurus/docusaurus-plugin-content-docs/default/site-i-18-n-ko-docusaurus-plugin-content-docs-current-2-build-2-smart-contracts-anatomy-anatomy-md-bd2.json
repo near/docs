@@ -1,0 +1,27 @@
+{
+  "id": "build/smart-contracts/anatomy/anatomy",
+  "title": "The Contract Class",
+  "description": "컨트랙트의 로직 및 상태(스토리지)는 핵심 클래스에 의해 정의됩니다.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/2.smart-contracts/anatomy/anatomy.md",
+  "sourceDirName": "2.build/2.smart-contracts/anatomy",
+  "slug": "/build/smart-contracts/anatomy/",
+  "permalink": "/ko/build/smart-contracts/anatomy/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/anatomy/anatomy.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "anatomy",
+    "title": "The Contract Class"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "모듈, 자료형 및 구조",
+    "permalink": "/ko/build/smart-contracts/anatomy/basics"
+  },
+  "next": {
+    "title": "환경",
+    "permalink": "/ko/build/smart-contracts/anatomy/environment"
+  }
+}

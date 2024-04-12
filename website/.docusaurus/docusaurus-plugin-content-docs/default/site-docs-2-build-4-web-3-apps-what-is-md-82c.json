@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/4.web3-apps/what-is.md",
   "sourceDirName": "2.build/4.web3-apps",
   "slug": "/build/web3-apps/what-is",
-  "permalink": "/zh-CN/build/web3-apps/what-is",
+  "permalink": "/build/web3-apps/what-is",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/4.web3-apps/what-is.md",
@@ -20,10 +20,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Using components on WebApps",
-    "permalink": "/zh-CN/build/near-components/bos-gateway"
+    "permalink": "/build/near-components/bos-gateway"
   },
   "next": {
     "title": "⭐ Quickstart a WebApp",
-    "permalink": "/zh-CN/build/web3-apps/quickstart"
+    "permalink": "/build/web3-apps/quickstart"
   }
 }

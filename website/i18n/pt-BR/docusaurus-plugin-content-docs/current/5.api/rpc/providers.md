@@ -7,7 +7,7 @@ There are multiple RPC providers from which you can choose from. These providers
 
 :::tip
 
-If you want to use a custom RPC provider with NEAR Wallet Selector, [check this example](../../2.develop/integrate/frontend.md#setting-customs-rpc-endpoints).
+If you want to use a custom RPC provider with NEAR Wallet Selector, [check this example](../../2.build/4.web3-apps/integrate-contracts.md#setting-customs-rpc-endpoints).
 
 :::
 

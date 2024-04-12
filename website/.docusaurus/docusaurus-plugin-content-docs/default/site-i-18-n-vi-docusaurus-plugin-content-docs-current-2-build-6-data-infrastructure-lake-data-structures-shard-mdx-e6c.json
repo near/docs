@@ -1,0 +1,28 @@
+{
+  "id": "build/data-infrastructure/lake-data-structures/shard",
+  "title": "Shard structure",
+  "description": "Definition",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.build/6.data-infrastructure/lake-data-structures/shard.mdx",
+  "sourceDirName": "2.build/6.data-infrastructure/lake-data-structures",
+  "slug": "/build/data-infrastructure/lake-data-structures/shard",
+  "permalink": "/vi/build/data-infrastructure/lake-data-structures/shard",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/lake-data-structures/shard.mdx",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_position": 4,
+    "sidebar_label": "Shard"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Chunk",
+    "permalink": "/vi/build/data-infrastructure/lake-data-structures/chunk"
+  },
+  "next": {
+    "title": "Transaction",
+    "permalink": "/vi/build/data-infrastructure/lake-data-structures/transaction"
+  }
+}

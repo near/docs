@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/6.data-infrastructure/lake-framework/building-indexers/python-lake-indexer.md",
   "sourceDirName": "2.build/6.data-infrastructure/lake-framework/building-indexers",
   "slug": "/build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer",
-  "permalink": "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer",
+  "permalink": "/build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/lake-framework/building-indexers/python-lake-indexer.md",
@@ -19,10 +19,10 @@
   "sidebar": "build",
   "previous": {
     "title": "JS basic tutorial",
-    "permalink": "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer"
+    "permalink": "/build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer"
   },
   "next": {
     "title": "NFT Indexer",
-    "permalink": "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/nft-indexer"
+    "permalink": "/build/data-infrastructure/lake-framework/building-indexers/nft-indexer"
   }
 }

@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/4.web3-apps/integrate-contracts.md",
   "sourceDirName": "2.build/4.web3-apps",
   "slug": "/build/web3-apps/integrate-contracts",
-  "permalink": "/zh-CN/build/web3-apps/integrate-contracts",
+  "permalink": "/build/web3-apps/integrate-contracts",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/4.web3-apps/integrate-contracts.md",
@@ -20,10 +20,10 @@
   "sidebar": "build",
   "previous": {
     "title": "⭐ Quickstart a WebApp",
-    "permalink": "/zh-CN/build/web3-apps/quickstart"
+    "permalink": "/build/web3-apps/quickstart"
   },
   "next": {
     "title": "Integrating Components",
-    "permalink": "/zh-CN/build/web3-apps/integrate-components"
+    "permalink": "/build/web3-apps/integrate-components"
   }
 }

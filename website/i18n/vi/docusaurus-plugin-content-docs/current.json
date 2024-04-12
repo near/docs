@@ -478,5 +478,17 @@
   "sidebar.build.category.Integrations": {
     "message": "Integrations",
     "description": "The label for category Integrations in sidebar build"
+  },
+  "sidebar.pagoda.category.Pagoda RPC": {
+    "message": "Pagoda RPC",
+    "description": "The label for category Pagoda RPC in sidebar pagoda"
+  },
+  "sidebar.pagoda.category.Enhanced API": {
+    "message": "Enhanced API",
+    "description": "The label for category Enhanced API in sidebar pagoda"
+  },
+  "sidebar.pagoda.category.Alerts & Triggers": {
+    "message": "Alerts & Triggers",
+    "description": "The label for category Alerts & Triggers in sidebar pagoda"
   }
 }

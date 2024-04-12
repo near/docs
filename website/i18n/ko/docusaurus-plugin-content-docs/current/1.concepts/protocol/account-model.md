@@ -17,7 +17,7 @@ By signing [transactions](./transactions.md) with their account, users can:
 You have multiple ways to create an account, you can [sign-up using your email](https://near.org/), get a mobile wallet through [telegram](https://web.telegram.org/k/#@herewalletbot), or create a [web wallet](https://app.mynearwallet.com).
 :::
 
-***
+---
 
 ## Account Model Overview
 
@@ -37,7 +37,7 @@ NEAR accounts can have multiple [keys](access-keys.md), each with their own set 
 
 NEAR accounts can optionally hold a simple program, known as a [smart contract](smart-contract.md). In NEAR, developers can create smart contracts using languages such as Javascript or Rust.
 
-***
+---
 
 ## Comparison With Ethereum {#compared-to-ethereum}
 
@@ -46,5 +46,5 @@ If you're familiar with development on Ethereum, it's worth making a quick note 
 |                   | Ethereum Wallet                                                                             | NEAR Account                                                                                                 |
 | ----------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
 | Public Identifier | Public Key (`0x123...`)                                                  | Named IDs (`alice.near`) and implicit accounts (Public Key `0x123...`) |
-| Secret Key        | Private Key (`0x456...`)                                                 | Multiple key-pairs with permissions:<br />- `FullAccess` key<br />- `FunctionCall` key                       |
+| Secret Key        | Private Key (`0x456...`)                                                 | Multiple key-pairs with permissions:<br />- `FullAccess` key<br />- `FunctionCall` key       |
 | Characteristics   | - Private key gives full access<br />- Account doesn't have to be created via a transaction | * Permission-based keypair<br />- Account ID must be created via blockchain transaction                      |

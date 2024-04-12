@@ -12,7 +12,7 @@ NEAR accounts are identified by a unique address, which take one of two forms:
 You have multiple ways to create an account, you can [sign-up using your email](https://near.org/), get a mobile wallet through [telegram](https://web.telegram.org/k/#@herewalletbot), or create a [web wallet](https://app.mynearwallet.com).
 :::
 
-***
+---
 
 ## Implicit Address
 
@@ -43,7 +43,7 @@ near generate-key
 
 </details>
 
-***
+---
 
 ## Named Address
 
@@ -59,13 +59,13 @@ Another advantage of named accounts is that they can create **sub-accounts** of 
    - `account.near` **cannot** create `sub.another-account.near`
 5. Accounts have **no control** over their sub-account, they are different entities
 
-Anyone can create a `.near` or `.testnet` account, you just to call the `create_account` method of the corresponding top-level account - `tesnet` on testnet, and `near` on mainnet.
+Anyone can create a `.near` or `.testnet` account, you just to call the `create_account` method of the corresponding top-level account - `testnet` on testnet, and `near` on mainnet.
 
 <details>
 
 <summary> 🧑‍💻 Technical: How to create a named account  </summary>
 
-Named accounts are created by calling the `create_account` method of the network's top-level account - `tesnet` on testnet, and `near` on mainnet.
+Named accounts are created by calling the `create_account` method of the network's top-level account - `testnet` on testnet, and `near` on mainnet.
 
 ```bash
 near call testnet create_account '{"new_account_id": "new-acc.testnet", "new_public_key": "ed25519:<data>"}' --deposit 0.00182 --accountId funding-account.testnet

@@ -135,7 +135,7 @@ In this project in particular, the integration tests first deploy the `hello-nea
 
 ### Deploying the Contract to the NEAR network
 
-In order to deploy the contract you will need to [create a NEAR account](/develop/contracts/quickstart#create-a-testnet-account).
+In order to deploy the contract you will need to create a NEAR account.
 
 <Tabs>
   <TabItem value="🌐 JavaScript">
@@ -188,7 +188,7 @@ near call <accountId> change_greeting '{"new_greeting":"XCC Hi"}' --accountId <a
 
 ## Moving Forward
 
-A nice way to learn is by trying to expand a contract. Modify the cross contract example to use the [guest-book](guest-book.md) contract!. In this way, you can try to make a cross-contract call that attaches money. Remember to correctly [handle the callback](../../2.develop/contracts/crosscontract.md#callback-method), and to return the money to the user in case of error.
+A nice way to learn is by trying to expand a contract. Modify the cross contract example to use the [guest-book](guest-book.md) contract!. In this way, you can try to make a cross-contract call that attaches money. Remember to correctly [handle the callback](../../2.build/2.smart-contracts/anatomy/crosscontract.md#callback-method), and to return the money to the user in case of error.
 
 ### Advanced Cross Contract Calls
 

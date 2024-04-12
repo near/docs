@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/2.smart-contracts/security/reentrancy.md",
   "sourceDirName": "2.build/2.smart-contracts/security",
   "slug": "/build/smart-contracts/security/reentrancy",
-  "permalink": "/zh-CN/build/smart-contracts/security/reentrancy",
+  "permalink": "/build/smart-contracts/security/reentrancy",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/security/reentrancy.md",
@@ -20,10 +20,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Front Running",
-    "permalink": "/zh-CN/build/smart-contracts/security/frontrunning"
+    "permalink": "/build/smart-contracts/security/frontrunning"
   },
   "next": {
     "title": "Random Numbers",
-    "permalink": "/zh-CN/build/smart-contracts/security/random"
+    "permalink": "/build/smart-contracts/security/random"
   }
 }
