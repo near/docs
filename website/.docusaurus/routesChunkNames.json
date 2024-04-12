@@ -5,17 +5,17 @@
       "plugin": "82d98fd4"
     }
   },
-  "/zh-CN/-54d": {
+  "/zh-CN/-01c": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "8b378508"
     }
   },
-  "/zh-CN/-bb4": {
+  "/zh-CN/-444": {
     "__comp": "a7bd4aaa",
     "version": "935f2afb"
   },
-  "/zh-CN/-c6b": {
+  "/zh-CN/-e77": {
     "__comp": "a94703ab"
   },
   "/zh-CN/-251": {
@@ -230,7 +230,7 @@
     "__comp": "17896441",
     "content": "1074af27"
   },
-  "/zh-CN/build/near-components/anatomy/notifications-23f": {
+  "/zh-CN/build/near-components/anatomy/notifications-22c": {
     "__comp": "17896441",
     "content": "d5724e04"
   },
@@ -678,11 +678,11 @@
     "__comp": "17896441",
     "content": "a72d4b49"
   },
-  "/zh-CN/build/smart-contracts/anatomy/crosscontract-0f0": {
+  "/zh-CN/build/smart-contracts/anatomy/crosscontract-707": {
     "__comp": "17896441",
     "content": "f0eab1fd"
   },
-  "/zh-CN/build/smart-contracts/anatomy/environment-392": {
+  "/zh-CN/build/smart-contracts/anatomy/environment-a93": {
     "__comp": "17896441",
     "content": "d3aa939b"
   },
@@ -698,15 +698,15 @@
     "__comp": "17896441",
     "content": "fc12e567"
   },
-  "/zh-CN/build/smart-contracts/release/deploy-712": {
+  "/zh-CN/build/smart-contracts/release/deploy-cb9": {
     "__comp": "17896441",
     "content": "9c35673c"
   },
-  "/zh-CN/build/smart-contracts/release/lock-b76": {
+  "/zh-CN/build/smart-contracts/release/lock-792": {
     "__comp": "17896441",
     "content": "e0456d19"
   },
-  "/zh-CN/build/smart-contracts/release/upgrade-882": {
+  "/zh-CN/build/smart-contracts/release/upgrade-33f": {
     "__comp": "17896441",
     "content": "e54e59e1"
   },
@@ -758,7 +758,7 @@
     "__comp": "17896441",
     "content": "9afbfc1e"
   },
-  "/zh-CN/build/smart-contracts/testing/kurtosis-localnet-c96": {
+  "/zh-CN/build/smart-contracts/testing/kurtosis-localnet-c1b": {
     "__comp": "17896441",
     "content": "8f288929"
   },
@@ -778,7 +778,7 @@
     "__comp": "17896441",
     "content": "26ced4c1"
   },
-  "/zh-CN/build/web3-apps/integrate-contracts-5a1": {
+  "/zh-CN/build/web3-apps/integrate-contracts-82c": {
     "__comp": "17896441",
     "content": "1014709e"
   },

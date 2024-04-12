@@ -9,15 +9,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '54d'),
+    component: ComponentCreator('/zh-CN/', '01c'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', 'bb4'),
+        component: ComponentCreator('/zh-CN/', '444'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', 'c6b'),
+            component: ComponentCreator('/zh-CN/', 'e77'),
             routes: [
               {
                 path: '/zh-CN/',
@@ -337,7 +337,7 @@ export default [
               },
               {
                 path: '/zh-CN/build/near-components/anatomy/notifications',
-                component: ComponentCreator('/zh-CN/build/near-components/anatomy/notifications', '23f'),
+                component: ComponentCreator('/zh-CN/build/near-components/anatomy/notifications', '22c'),
                 exact: true,
                 sidebar: "build"
               },
@@ -914,13 +914,13 @@ export default [
               },
               {
                 path: '/zh-CN/build/smart-contracts/anatomy/crosscontract',
-                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/crosscontract', '0f0'),
+                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/crosscontract', '707'),
                 exact: true,
                 sidebar: "build"
               },
               {
                 path: '/zh-CN/build/smart-contracts/anatomy/environment',
-                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/environment', '392'),
+                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/environment', 'a93'),
                 exact: true,
                 sidebar: "build"
               },
@@ -944,19 +944,19 @@ export default [
               },
               {
                 path: '/zh-CN/build/smart-contracts/release/deploy',
-                component: ComponentCreator('/zh-CN/build/smart-contracts/release/deploy', '712'),
+                component: ComponentCreator('/zh-CN/build/smart-contracts/release/deploy', 'cb9'),
                 exact: true,
                 sidebar: "build"
               },
               {
                 path: '/zh-CN/build/smart-contracts/release/lock',
-                component: ComponentCreator('/zh-CN/build/smart-contracts/release/lock', 'b76'),
+                component: ComponentCreator('/zh-CN/build/smart-contracts/release/lock', '792'),
                 exact: true,
                 sidebar: "build"
               },
               {
                 path: '/zh-CN/build/smart-contracts/release/upgrade',
-                component: ComponentCreator('/zh-CN/build/smart-contracts/release/upgrade', '882'),
+                component: ComponentCreator('/zh-CN/build/smart-contracts/release/upgrade', '33f'),
                 exact: true,
                 sidebar: "build"
               },
@@ -1034,7 +1034,7 @@ export default [
               },
               {
                 path: '/zh-CN/build/smart-contracts/testing/kurtosis-localnet',
-                component: ComponentCreator('/zh-CN/build/smart-contracts/testing/kurtosis-localnet', 'c96'),
+                component: ComponentCreator('/zh-CN/build/smart-contracts/testing/kurtosis-localnet', 'c1b'),
                 exact: true,
                 sidebar: "build"
               },
@@ -1064,7 +1064,7 @@ export default [
               },
               {
                 path: '/zh-CN/build/web3-apps/integrate-contracts',
-                component: ComponentCreator('/zh-CN/build/web3-apps/integrate-contracts', '5a1'),
+                component: ComponentCreator('/zh-CN/build/web3-apps/integrate-contracts', '82c'),
                 exact: true,
                 sidebar: "build"
               },
