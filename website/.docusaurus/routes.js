@@ -9,15 +9,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '621'),
+    component: ComponentCreator('/zh-CN/', '54d'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '837'),
+        component: ComponentCreator('/zh-CN/', 'bb4'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '5c3'),
+            component: ComponentCreator('/zh-CN/', 'c6b'),
             routes: [
               {
                 path: '/zh-CN/',
@@ -896,31 +896,31 @@ export default [
               },
               {
                 path: '/zh-CN/build/smart-contracts/anatomy/',
-                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/', '941'),
+                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/', '4a5'),
                 exact: true,
                 sidebar: "build"
               },
               {
                 path: '/zh-CN/build/smart-contracts/anatomy/actions',
-                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/actions', 'eb8'),
+                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/actions', '6be'),
                 exact: true,
                 sidebar: "build"
               },
               {
                 path: '/zh-CN/build/smart-contracts/anatomy/basics',
-                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/basics', '5cb'),
+                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/basics', '210'),
                 exact: true,
                 sidebar: "build"
               },
               {
                 path: '/zh-CN/build/smart-contracts/anatomy/crosscontract',
-                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/crosscontract', 'ddf'),
+                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/crosscontract', '0f0'),
                 exact: true,
                 sidebar: "build"
               },
               {
                 path: '/zh-CN/build/smart-contracts/anatomy/environment',
-                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/environment', 'b3e'),
+                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/environment', '392'),
                 exact: true,
                 sidebar: "build"
               },
@@ -932,7 +932,7 @@ export default [
               },
               {
                 path: '/zh-CN/build/smart-contracts/anatomy/storage',
-                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/storage', '2d4'),
+                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/storage', 'cbd'),
                 exact: true,
                 sidebar: "build"
               },
