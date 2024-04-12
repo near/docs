@@ -22,43 +22,45 @@ Every method execution has an environment associated with information such as:
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="🌐 JavaScript">
 
-  | Variable Name          | SDK Variable                  | Description                                                                          |
-  | ---------------------- | ----------------------------- | ------------------------------------------------------------------------------------ |
-  | Predecessor            | `near.predecessorAccountId()` | Account ID that called this method                                                   |
-  | Current Account        | `near.currentAccountId()`     | Account ID of this smart contract                                                    |
-  | Signer                 | `near.signerAccountId()`      | Account ID that signed the transaction leading to this execution                     |
-  | Attached Deposit       | `near.attachedDeposit()`      | Amount in NEAR attached to the call by the predecessor                               |
-  | Account Balance        | `near.accountBalance()`       | Balance of this smart contract (including Attached Deposit)                          |
-  | Prepaid Gas            | `near.prepaidGas()`           | Amount of gas available for execution                                                |
-  | Timestamp              | `near.blockTimestamp()`       | Current timestamp (number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC) |
-  | Current Epoch          | `near.epochHeight()`          | Current epoch in the blockchain                                                      |
-  | Block Index            | `near.blockIndex()`           | Current block index (a.k.a. block height)                                            |
-  | Storage Used           | `near.storageUsage()`         | Current storage used by this smart contract                                          |
-  | Used Gas               | `near.usedGas()`              | Amount of gas used for execution                                                     |
-  | Signer Public Key      | `near.signerAccountPk()`      | Sender Public Key                                                                    |
-  | Account Locked Balance | `near.accountLockedBalance()` | Balance of this smart contract that is locked                                        |
+| Variable Name          | SDK Variable                  | Description                                                                          |
+| ---------------------- | ----------------------------- | ------------------------------------------------------------------------------------ |
+| Predecessor            | `near.predecessorAccountId()` | Account ID that called this method                                                   |
+| Current Account        | `near.currentAccountId()`     | Account ID of this smart contract                                                    |
+| Signer                 | `near.signerAccountId()`      | Account ID that signed the transaction leading to this execution                     |
+| Attached Deposit       | `near.attachedDeposit()`      | Amount in NEAR attached to the call by the predecessor                               |
+| Account Balance        | `near.accountBalance()`       | Balance of this smart contract (including Attached Deposit)                          |
+| Prepaid Gas            | `near.prepaidGas()`           | Amount of gas available for execution                                                |
+| Timestamp              | `near.blockTimestamp()`       | Current timestamp (number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC) |
+| Current Epoch          | `near.epochHeight()`          | Current epoch in the blockchain                                                      |
+| Block Index            | `near.blockIndex()`           | Current block index (a.k.a. block height)                                            |
+| Storage Used           | `near.storageUsage()`         | Current storage used by this smart contract                                          |
+| Used Gas               | `near.usedGas()`              | Amount of gas used for execution                                                     |
+| Signer Public Key      | `near.signerAccountPk()`      | Sender Public Key                                                                    |
+| Account Locked Balance | `near.accountLockedBalance()` | Balance of this smart contract that is locked                                        |
 
-  </TabItem>
-  <TabItem value="🦀 Rust">
+</TabItem>
 
-  | Variable Name          | SDK Variable                    | Description                                                                          |
-  |------------------------|---------------------------------|--------------------------------------------------------------------------------------|
-  | Predecessor            | `env::predecessor_account_id()` | Account ID that called this method                                                   |
-  | Current Account        | `env::current_account_id()`     | Account ID of this smart contract                                                    |
-  | Signer                 | `env::signer_account_id()`      | Account ID that signed the transaction leading to this execution                     |
-  | Attached Deposit       | `env::attached_deposit()`       | Amount in NEAR attached to the call by the predecessor                               |
-  | Account Balance        | `env::account_balance()`        | Balance of this smart contract (including Attached Deposit)                          |
-  | Prepaid Gas            | `env::prepaid_gas()`            | Amount of gas available for execution                                                |
-  | Timestamp              | `env::block_timestamp()`        | Current timestamp (number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC) |
-  | Current Epoch          | `env::epoch_height()`           | Current epoch in the blockchain                                                      |
-  | Block Index            | `env::block_index()`            | Current block index (a.k.a. block height)                                            |
-  | Storage Used           | `env::storage_usage()`          | Current storage used by this smart contract in bytes                                 |
-  | Storage Byte Cost      | `env::storage_byte_cost()`      | Current storage cost per byte in yoctoNEAR                                           |
-  | Used Gas               | `env::used_gas()`               | Amount of gas used for execution                                                     |
-  | Signer Public Key      | `env::signer_account_pk()`      | Sender Public Key                                                                    |
-  | Account Locked Balance | `env::account_locked_balance()` | Balance of this smart contract that is locked                                        |
+<TabItem value="🦀 Rust">
 
-  </TabItem>
+| Variable Name          | SDK Variable                    | Description                                                                          |
+|------------------------|---------------------------------|--------------------------------------------------------------------------------------|
+| Predecessor            | `env::predecessor_account_id()` | Account ID that called this method                                                   |
+| Current Account        | `env::current_account_id()`     | Account ID of this smart contract                                                    |
+| Signer                 | `env::signer_account_id()`      | Account ID that signed the transaction leading to this execution                     |
+| Attached Deposit       | `env::attached_deposit()`       | Amount in NEAR attached to the call by the predecessor                               |
+| Account Balance        | `env::account_balance()`        | Balance of this smart contract (including Attached Deposit)                          |
+| Prepaid Gas            | `env::prepaid_gas()`            | Amount of gas available for execution                                                |
+| Timestamp              | `env::block_timestamp()`        | Current timestamp (number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC) |
+| Current Epoch          | `env::epoch_height()`           | Current epoch in the blockchain                                                      |
+| Block Index            | `env::block_index()`            | Current block index (a.k.a. block height)                                            |
+| Storage Used           | `env::storage_usage()`          | Current storage used by this smart contract in bytes                                 |
+| Storage Byte Cost      | `env::storage_byte_cost()`      | Current storage cost per byte in yoctoNEAR                                           |
+| Used Gas               | `env::used_gas()`               | Amount of gas used for execution                                                     |
+| Signer Public Key      | `env::signer_account_pk()`      | Sender Public Key                                                                    |
+| Account Locked Balance | `env::account_locked_balance()` | Balance of this smart contract that is locked                                        |
+
+</TabItem>
+
 </Tabs>
 
 ---
@@ -157,17 +159,21 @@ During [cross-contract calls](./crosscontract.md) always make sure the callback 
 :::
 
 :::tip
+
 If you already [estimated the Gas](../../../1.concepts/protocol/gas.md#estimating-costs-for-a-call) a method needs, you can ensure it never runs out of Gas by using `assert`
 
 <Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value="🦀 Rust">
+<TabItem value="🦀 Rust">
 
-  ```rust
-  const REQUIRED_GAS: Gas = Gas(20_000_000_000_000); // 20 TGas
-  assert!(env::prepaid_gas() >= REQUIRED_GAS, "Please attach at least 20 TGas");
-  ```
-  </TabItem>
+```rust
+const REQUIRED_GAS: Gas = Gas(20_000_000_000_000); // 20 TGas
+assert!(env::prepaid_gas() >= REQUIRED_GAS, "Please attach at least 20 TGas");
+```
+
+</TabItem>
+
 </Tabs>
+
 :::
 
 ---
@@ -177,36 +183,37 @@ If you already [estimated the Gas](../../../1.concepts/protocol/gas.md#estimatin
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="🌐 JavaScript">
 
-  | Function Name         | SDK method                                       | Description                                                                                                                                                                                                                                                                                                                      |
-  |-----------------------|--------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | SHA 256               | `near.sha256(value)`                             | Hashes a sequence of bytes using sha256.                                                                                                                                                                                                                                                                                         |
-  | Keccak 256            | `near.keccak256(value)`                          | Hashes a sequence of bytes using keccak256.                                                                                                                                                                                                                                                                                      |
-  | Keccak 512            | `near.keccak512(value)`                          | Hashes a sequence of bytes using keccak512.                                                                                                                                                                                                                                                                                      |
-  | RIPEMD 160            | `near.ripemd160(value)`                          | Hashes the bytes using the RIPEMD-160 hash function.                                                                                                                                                                                                                                                                             |
-  | EC Recover            | `near.ecrecover(hash, sig, v, malleabilityFlag)` | Recovers an ECDSA signer address from a 32-byte message `hash` and a corresponding `signature` along with `v` recovery byte. Takes in an additional flag to check for malleability of the signature which is generally only ideal for transactions. Returns 64 bytes representing the public key if the recovery was successful. |
-  | Log String            | `near.log(msg)`                                  | Logs the string message. This message is stored on chain.                                                                                                                                                                                                                                                                        |
-  | Validator Stake       | `near.validatorStake(accountId)`                 | For a given account return its current stake. If the account is not a validator, returns 0.                                                                                                                                                                                                                                      |
-  | Validator Total Stake | `near.validatorTotalStake()`                     | Returns the total stake of validators in the current epoch.                                                                                                                                                                                                                                                                      |
+| Function Name         | SDK method                                       | Description                                                                                                                                                                                                                                                                                                                      |
+|-----------------------|--------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| SHA 256               | `near.sha256(value)`                             | Hashes a sequence of bytes using sha256.                                                                                                                                                                                                                                                                                         |
+| Keccak 256            | `near.keccak256(value)`                          | Hashes a sequence of bytes using keccak256.                                                                                                                                                                                                                                                                                      |
+| Keccak 512            | `near.keccak512(value)`                          | Hashes a sequence of bytes using keccak512.                                                                                                                                                                                                                                                                                      |
+| RIPEMD 160            | `near.ripemd160(value)`                          | Hashes the bytes using the RIPEMD-160 hash function.                                                                                                                                                                                                                                                                             |
+| EC Recover            | `near.ecrecover(hash, sig, v, malleabilityFlag)` | Recovers an ECDSA signer address from a 32-byte message `hash` and a corresponding `signature` along with `v` recovery byte. Takes in an additional flag to check for malleability of the signature which is generally only ideal for transactions. Returns 64 bytes representing the public key if the recovery was successful. |
+| Log String            | `near.log(msg)`                                  | Logs the string message. This message is stored on chain.                                                                                                                                                                                                                                                                        |
+| Validator Stake       | `near.validatorStake(accountId)`                 | For a given account return its current stake. If the account is not a validator, returns 0.                                                                                                                                                                                                                                      |
+| Validator Total Stake | `near.validatorTotalStake()`                     | Returns the total stake of validators in the current epoch.                                                                                                                                                                                                                                                                      |
 
-  </TabItem>
-  <TabItem value="🦀 Rust">
+</TabItem>
 
-  | Function Name         | SDK method                                              | Description                                                                                                                                                                                                                                                                                                                      |
-  |-----------------------|---------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | SHA 256               | `env::sha256(value)`                                    | Hashes a sequence of bytes using sha256.                                                                                                                                                                                                                                                                                         |
-  | Keccak 256            | `env::keccak256(value)`                                 | Hashes a sequence of bytes using keccak256.                                                                                                                                                                                                                                                                                      |
-  | Keccak 512            | `env::keccak512(value)`                                 | Hashes a sequence of bytes using keccak512.                                                                                                                                                                                                                                                                                      |
-  | SHA 256 (Array)       | `env::sha256_array(value)`                              | Hashes the bytes using the SHA-256 hash function. This returns a 32 byte hash.                                                                                                                                                                                                                                                   |
-  | Keccak 256 (Array)    | `env::keccak256_array(value)`                           | Hashes the bytes using the Keccak-256 hash function. This returns a 32 byte hash.                                                                                                                                                                                                                                                |
-  | Keccak 512 (Array)    | `env::keccak512_array(value)`                           | Hashes the bytes using the Keccak-512 hash function. This returns a 64 byte hash.                                                                                                                                                                                                                                                |
-  | RIPEMD 160 (Array)    | `env::ripemd160_array(value)`                           | Hashes the bytes using the RIPEMD-160 hash function. This returns a 20 byte hash.                                                                                                                                                                                                                                                |
-  | EC Recover            | `env::ecrecover(hash, signature, v, malleability_flag)` | Recovers an ECDSA signer address from a 32-byte message `hash` and a corresponding `signature` along with `v` recovery byte. Takes in an additional flag to check for malleability of the signature which is generally only ideal for transactions. Returns 64 bytes representing the public key if the recovery was successful. |
-  | Panic String          | `env::panic_str(message)`                               | Terminates the execution of the program with the UTF-8 encoded message.                                                                                                                                                                                                                                                          |
-  | Log String            | `env::log_str(message)`                                 | Logs the string message. This message is stored on chain.                                                                                                                                                                                                                                                                        |
-  | Validator Stake       | `env::validator_stake(account_id)`                      | For a given account return its current stake. If the account is not a validator, returns 0.                                                                                                                                                                                                                                      |
-  | Validator Total Stake | `env::validator_total_stake()`                          | Returns the total stake of validators in the current epoch.                                                                                                                                                                                                                                                                      |
+<TabItem value="🦀 Rust">
 
-  </TabItem>
+| Function Name         | SDK method                                              | Description                                                                                                                                                                                                                                                                                                                      |
+|-----------------------|---------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| SHA 256               | `env::sha256(value)`                                    | Hashes a sequence of bytes using sha256.                                                                                                                                                                                                                                                                                         |
+| Keccak 256            | `env::keccak256(value)`                                 | Hashes a sequence of bytes using keccak256.                                                                                                                                                                                                                                                                                      |
+| Keccak 512            | `env::keccak512(value)`                                 | Hashes a sequence of bytes using keccak512.                                                                                                                                                                                                                                                                                      |
+| SHA 256 (Array)       | `env::sha256_array(value)`                              | Hashes the bytes using the SHA-256 hash function. This returns a 32 byte hash.                                                                                                                                                                                                                                                   |
+| Keccak 256 (Array)    | `env::keccak256_array(value)`                           | Hashes the bytes using the Keccak-256 hash function. This returns a 32 byte hash.                                                                                                                                                                                                                                                |
+| Keccak 512 (Array)    | `env::keccak512_array(value)`                           | Hashes the bytes using the Keccak-512 hash function. This returns a 64 byte hash.                                                                                                                                                                                                                                                |
+| RIPEMD 160 (Array)    | `env::ripemd160_array(value)`                           | Hashes the bytes using the RIPEMD-160 hash function. This returns a 20 byte hash.                                                                                                                                                                                                                                                |
+| EC Recover            | `env::ecrecover(hash, signature, v, malleability_flag)` | Recovers an ECDSA signer address from a 32-byte message `hash` and a corresponding `signature` along with `v` recovery byte. Takes in an additional flag to check for malleability of the signature which is generally only ideal for transactions. Returns 64 bytes representing the public key if the recovery was successful. |
+| Panic String          | `env::panic_str(message)`                               | Terminates the execution of the program with the UTF-8 encoded message.                                                                                                                                                                                                                                                          |
+| Log String            | `env::log_str(message)`                                 | Logs the string message. This message is stored on chain.                                                                                                                                                                                                                                                                        |
+| Validator Stake       | `env::validator_stake(account_id)`                      | For a given account return its current stake. If the account is not a validator, returns 0.                                                                                                                                                                                                                                      |
+| Validator Total Stake | `env::validator_total_stake()`                          | Returns the total stake of validators in the current epoch.                                                                                                                                                                                                                                                                      |
+
+</TabItem>
 </Tabs>
 
 :::info 
