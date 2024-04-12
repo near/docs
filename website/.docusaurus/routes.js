@@ -9,15 +9,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '592'),
+    component: ComponentCreator('/zh-CN/', '621'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '899'),
+        component: ComponentCreator('/zh-CN/', '837'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '0e9'),
+            component: ComponentCreator('/zh-CN/', '5c3'),
             routes: [
               {
                 path: '/zh-CN/',
@@ -1407,7 +1407,7 @@ export default [
               },
               {
                 path: '/zh-CN/pagoda/rpc/api',
-                component: ComponentCreator('/zh-CN/pagoda/rpc/api', 'c2c'),
+                component: ComponentCreator('/zh-CN/pagoda/rpc/api', '8b6'),
                 exact: true,
                 sidebar: "pagoda"
               },
