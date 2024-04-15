@@ -48,8 +48,8 @@ jobs:
       - name: Install dependencies and build
         run: |
           cd website
-          rm -Rf build
           yarn
+          yarn docusaurus clear
           yarn build
           yarn crowdin:upload
 
