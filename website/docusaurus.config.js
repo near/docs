@@ -52,12 +52,12 @@ const config = {
           anonymizeIP: true,
         },
         blog: {
-          blogTitle: 'NEAR Developer Changelog',
-          blogSidebarTitle: 'Developer Changelog',
+          blogTitle: 'NEAR Docs Blog',
+          blogSidebarTitle: 'Documentation Blog',
           blogSidebarCount: 'ALL',
-          showReadingTime: false,
-          routeBasePath: 'changelog',
-          path: '../changelog',
+          showReadingTime: true,
+          routeBasePath: 'blog',
+          path: '../blog',
 
         },
         theme: {
@@ -76,7 +76,7 @@ const config = {
         name: 'near-changelog',
         sourceBaseUrl:
           'https://raw.githubusercontent.com/near/near-releases/main/reports/',
-        outDir: '../changelog',
+        outDir: '../blog',
         documents: changelogs,
         noRuntimeDownloads: true,
         modifyContent(filename, content) {
@@ -174,7 +174,6 @@ const config = {
           label: 'Resources',
           position: 'left',
           items: [
-            { label: '🎉 Dev Changelog', href: '/changelog' },
             {
               label: 'Github',
               href: 'https://github.com/near',
@@ -218,6 +217,7 @@ const config = {
           type: 'search',
           position: 'right',
         },
+        { label: 'Blog', href: '/blog' },
         {
           type: 'localeDropdown',
           position: 'right',

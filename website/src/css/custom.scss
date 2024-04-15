@@ -282,10 +282,6 @@ footer .menu-item a {
     color: white;
 }
 
-footer a {
-    color: white;
-}
-
 .theme-edit-this-page {
     color: var(--near-color-royal);
 }
@@ -452,3 +448,11 @@ div[class^="announcementBar_"] {
     font-size: 16px;
     font-weight: 600;
 }
+
+/* Blog Post */
+
+#__blog-post-container {
+    h2 {
+        margin-top: 4rem;
+    }
+} 
