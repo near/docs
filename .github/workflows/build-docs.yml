@@ -1,6 +1,8 @@
 name: Build docs on PR merge
 
 on:
+  pull_request:
+    types: [opened, reopened, synchronize]
   push:
     branches:
       - master
