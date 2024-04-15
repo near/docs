@@ -48,6 +48,7 @@ jobs:
       - name: Install dependencies and build
         run: |
           cd website
+          rm -Rf build
           yarn
           yarn build
           yarn crowdin:upload
