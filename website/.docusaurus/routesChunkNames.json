@@ -1,21 +1,21 @@
 {
-  "/zh-CN/search-294": {
+  "/zh-CN/search-5cd": {
     "__comp": "1a4e3797",
     "__context": {
-      "plugin": "78785305"
+      "plugin": "82d98fd4"
     }
   },
-  "/zh-CN/-7a4": {
+  "/zh-CN/-61d": {
     "__comp": "5e95c892",
     "__context": {
-      "plugin": "a4b1b25a"
+      "plugin": "8b378508"
     }
   },
-  "/zh-CN/-6b6": {
+  "/zh-CN/-81c": {
     "__comp": "a7bd4aaa",
     "version": "935f2afb"
   },
-  "/zh-CN/-b4e": {
+  "/zh-CN/-8c8": {
     "__comp": "a94703ab"
   },
   "/zh-CN/-ccb": {
@@ -138,11 +138,11 @@
     "__comp": "17896441",
     "content": "93c09fdc"
   },
-  "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer-9e7": {
+  "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer-f8d": {
     "__comp": "17896441",
     "content": "9263ab35"
   },
-  "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/nft-indexer-955": {
+  "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/nft-indexer-533": {
     "__comp": "17896441",
     "content": "6cddc2ba"
   },
@@ -150,11 +150,11 @@
     "__comp": "17896441",
     "content": "9d890403"
   },
-  "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer-cfa": {
+  "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer-42b": {
     "__comp": "17896441",
     "content": "daa2b923"
   },
-  "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/python-nft-indexer-c96": {
+  "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/python-nft-indexer-720": {
     "__comp": "17896441",
     "content": "7d702db3"
   },
@@ -182,7 +182,7 @@
     "__comp": "17896441",
     "content": "ea183b16"
   },
-  "/zh-CN/build/data-infrastructure/query-api/best-practices-677": {
+  "/zh-CN/build/data-infrastructure/query-api/best-practices-d00": {
     "__comp": "17896441",
     "content": "c9046143"
   },
@@ -210,7 +210,7 @@
     "__comp": "17896441",
     "content": "435c95a5"
   },
-  "/zh-CN/build/data-infrastructure/query-api/query-data-cdb": {
+  "/zh-CN/build/data-infrastructure/query-api/query-data-e1a": {
     "__comp": "17896441",
     "content": "335d733b"
   },
@@ -230,7 +230,7 @@
     "__comp": "17896441",
     "content": "5ecd9e65"
   },
-  "/zh-CN/build/near-components/anatomy/notifications-59c": {
+  "/zh-CN/build/near-components/anatomy/notifications-e83": {
     "__comp": "17896441",
     "content": "cc7125fd"
   },
@@ -478,7 +478,7 @@
     "__comp": "17896441",
     "content": "3d04c243"
   },
-  "/zh-CN/build/primitives/linkdrop-ff4": {
+  "/zh-CN/build/primitives/linkdrop-4e8": {
     "__comp": "17896441",
     "content": "266dd48f"
   },
@@ -666,31 +666,31 @@
     "__comp": "17896441",
     "content": "876e5262"
   },
-  "/zh-CN/build/smart-contracts/anatomy/-4ef": {
+  "/zh-CN/build/smart-contracts/anatomy/-b02": {
     "__comp": "17896441",
     "content": "bf1fab3f"
   },
-  "/zh-CN/build/smart-contracts/anatomy/actions-4e3": {
+  "/zh-CN/build/smart-contracts/anatomy/actions-0fd": {
     "__comp": "17896441",
     "content": "4730762f"
   },
-  "/zh-CN/build/smart-contracts/anatomy/basics-926": {
+  "/zh-CN/build/smart-contracts/anatomy/basics-5f0": {
     "__comp": "17896441",
     "content": "9a9d33e8"
   },
-  "/zh-CN/build/smart-contracts/anatomy/crosscontract-a1b": {
+  "/zh-CN/build/smart-contracts/anatomy/crosscontract-8f7": {
     "__comp": "17896441",
     "content": "295fdd25"
   },
-  "/zh-CN/build/smart-contracts/anatomy/environment-81c": {
+  "/zh-CN/build/smart-contracts/anatomy/environment-fb3": {
     "__comp": "17896441",
     "content": "104558c2"
   },
-  "/zh-CN/build/smart-contracts/anatomy/serialization-b81": {
+  "/zh-CN/build/smart-contracts/anatomy/serialization-18b": {
     "__comp": "17896441",
     "content": "28938dcf"
   },
-  "/zh-CN/build/smart-contracts/anatomy/storage-d58": {
+  "/zh-CN/build/smart-contracts/anatomy/storage-a79": {
     "__comp": "17896441",
     "content": "efdaf444"
   },
@@ -698,15 +698,15 @@
     "__comp": "17896441",
     "content": "9e8d3d30"
   },
-  "/zh-CN/build/smart-contracts/release/deploy-934": {
+  "/zh-CN/build/smart-contracts/release/deploy-adf": {
     "__comp": "17896441",
     "content": "78941c67"
   },
-  "/zh-CN/build/smart-contracts/release/lock-99b": {
+  "/zh-CN/build/smart-contracts/release/lock-d20": {
     "__comp": "17896441",
     "content": "aaa2b25e"
   },
-  "/zh-CN/build/smart-contracts/release/upgrade-227": {
+  "/zh-CN/build/smart-contracts/release/upgrade-926": {
     "__comp": "17896441",
     "content": "5b6eb6ed"
   },
@@ -718,7 +718,7 @@
     "__comp": "17896441",
     "content": "55b51b46"
   },
-  "/zh-CN/build/smart-contracts/security/checklist-3ee": {
+  "/zh-CN/build/smart-contracts/security/checklist-ae1": {
     "__comp": "17896441",
     "content": "23d58fca"
   },
@@ -726,7 +726,7 @@
     "__comp": "17896441",
     "content": "407b8698"
   },
-  "/zh-CN/build/smart-contracts/security/one-yocto-81d": {
+  "/zh-CN/build/smart-contracts/security/one-yocto-677": {
     "__comp": "17896441",
     "content": "b8a27f00"
   },
@@ -742,7 +742,7 @@
     "__comp": "17896441",
     "content": "a37b8f71"
   },
-  "/zh-CN/build/smart-contracts/security/sybil-be0": {
+  "/zh-CN/build/smart-contracts/security/sybil-bde": {
     "__comp": "17896441",
     "content": "9d61f439"
   },
@@ -750,7 +750,7 @@
     "__comp": "17896441",
     "content": "be8847e4"
   },
-  "/zh-CN/build/smart-contracts/testing/integration-test-1b5": {
+  "/zh-CN/build/smart-contracts/testing/integration-test-6c6": {
     "__comp": "17896441",
     "content": "87e029fa"
   },
@@ -758,15 +758,15 @@
     "__comp": "17896441",
     "content": "e33ddbfe"
   },
-  "/zh-CN/build/smart-contracts/testing/kurtosis-localnet-584": {
+  "/zh-CN/build/smart-contracts/testing/kurtosis-localnet-750": {
     "__comp": "17896441",
     "content": "8b471c05"
   },
-  "/zh-CN/build/smart-contracts/testing/unit-test-946": {
+  "/zh-CN/build/smart-contracts/testing/unit-test-3d7": {
     "__comp": "17896441",
     "content": "ce1ba413"
   },
-  "/zh-CN/build/smart-contracts/what-is-20a": {
+  "/zh-CN/build/smart-contracts/what-is-b3a": {
     "__comp": "17896441",
     "content": "ef64b690"
   },
@@ -774,19 +774,19 @@
     "__comp": "17896441",
     "content": "5a0e3338"
   },
-  "/zh-CN/build/web3-apps/integrate-components-b07": {
+  "/zh-CN/build/web3-apps/integrate-components-e37": {
     "__comp": "17896441",
     "content": "1650fbff"
   },
-  "/zh-CN/build/web3-apps/integrate-contracts-61e": {
+  "/zh-CN/build/web3-apps/integrate-contracts-ade": {
     "__comp": "17896441",
     "content": "9e7d9b9b"
   },
-  "/zh-CN/build/web3-apps/quickstart-fc4": {
+  "/zh-CN/build/web3-apps/quickstart-e8c": {
     "__comp": "17896441",
     "content": "5e4da908"
   },
-  "/zh-CN/build/web3-apps/what-is-014": {
+  "/zh-CN/build/web3-apps/what-is-cee": {
     "__comp": "17896441",
     "content": "36b2e07d"
   },
@@ -958,43 +958,43 @@
     "__comp": "17896441",
     "content": "932f2495"
   },
-  "/zh-CN/integrations/accounts-2ca": {
+  "/zh-CN/integrations/accounts-698": {
     "__comp": "17896441",
     "content": "f469374d"
   },
-  "/zh-CN/integrations/balance-changes-7b1": {
+  "/zh-CN/integrations/balance-changes-8cb": {
     "__comp": "17896441",
     "content": "40c6006f"
   },
-  "/zh-CN/integrations/create-transactions-da5": {
+  "/zh-CN/integrations/create-transactions-9d9": {
     "__comp": "17896441",
     "content": "c846fa1a"
   },
-  "/zh-CN/integrations/errors/error-implementation-8a1": {
+  "/zh-CN/integrations/errors/error-implementation-964": {
     "__comp": "17896441",
     "content": "5a887422"
   },
-  "/zh-CN/integrations/errors/introduction-eb2": {
+  "/zh-CN/integrations/errors/introduction-ce8": {
     "__comp": "17896441",
     "content": "c5d7c80e"
   },
-  "/zh-CN/integrations/errors/token-loss-04b": {
+  "/zh-CN/integrations/errors/token-loss-9f6": {
     "__comp": "17896441",
     "content": "0d73bb3d"
   },
-  "/zh-CN/integrations/exchange-integration-e56": {
+  "/zh-CN/integrations/exchange-integration-ebb": {
     "__comp": "17896441",
     "content": "c9b5aa72"
   },
-  "/zh-CN/integrations/faq-9df": {
+  "/zh-CN/integrations/faq-ba7": {
     "__comp": "17896441",
     "content": "33559028"
   },
-  "/zh-CN/integrations/fungible-tokens-da9": {
+  "/zh-CN/integrations/fungible-tokens-707": {
     "__comp": "17896441",
     "content": "1eff706f"
   },
-  "/zh-CN/integrations/implicit-accounts-c61": {
+  "/zh-CN/integrations/implicit-accounts-32f": {
     "__comp": "17896441",
     "content": "16cb5879"
   },
@@ -1430,7 +1430,7 @@
     "__comp": "17896441",
     "content": "070ed26a"
   },
-  "/zh-CN/tutorials/near-components/ds-components-c6d": {
+  "/zh-CN/tutorials/near-components/ds-components-3a4": {
     "__comp": "17896441",
     "content": "14c6c302"
   },
@@ -1446,15 +1446,15 @@
     "__comp": "17896441",
     "content": "ad9a9498"
   },
-  "/zh-CN/tutorials/near-components/indexer-tutorials/hype-indexer-95d": {
+  "/zh-CN/tutorials/near-components/indexer-tutorials/hype-indexer-6a8": {
     "__comp": "17896441",
     "content": "62db7f9e"
   },
-  "/zh-CN/tutorials/near-components/indexer-tutorials/nft-indexer-646": {
+  "/zh-CN/tutorials/near-components/indexer-tutorials/nft-indexer-9e8": {
     "__comp": "17896441",
     "content": "54d5eb84"
   },
-  "/zh-CN/tutorials/near-components/indexer-tutorials/posts-indexer-900": {
+  "/zh-CN/tutorials/near-components/indexer-tutorials/posts-indexer-a45": {
     "__comp": "17896441",
     "content": "4e7b8369"
   },
@@ -1470,7 +1470,7 @@
     "__comp": "17896441",
     "content": "02738de1"
   },
-  "/zh-CN/tutorials/near-components/queryapi-websockets-04e": {
+  "/zh-CN/tutorials/near-components/queryapi-websockets-188": {
     "__comp": "17896441",
     "content": "6728d5ba"
   },
