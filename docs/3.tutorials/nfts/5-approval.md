@@ -16,6 +16,8 @@ cd nft-contract-basic/
 If you wish to see the finished code for this _Approval_ tutorial, you can find it on the `nft-contract-approval/` folder.
 :::
 
+---
+
 ## Introduction
 
 Up until this point you've created a smart contract that allows users to mint and transfer NFTs as well as query for information using the [enumeration standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration). As we've been doing in the previous tutorials, let's break down the problem into smaller, more digestible, tasks. Let's first define some of the end goals that we want to accomplish as per the [approval management](https://nomicon.io/Standards/Tokens/NonFungibleToken/ApprovalManagement) extension of the standard. We want a user to have the ability to:
@@ -27,6 +29,8 @@ Up until this point you've created a smart contract that allows users to mint an
 
 If you look at all these goals, they are all on a per token basis. This is a strong indication that you should change the `Token` struct which keeps track of information for each token.
 
+---
+
 ## Allow an account to transfer your NFT
 
 Let's start by trying to accomplish the first goal. How can you grant another account access to transfer an NFT on your behalf?
@@ -34,6 +38,8 @@ Let's start by trying to accomplish the first goal. How can you grant another ac
 The simplest way that you can achieve this is to add a list of approved accounts to the `Token` struct. When transferring the NFT, if the caller is not the owner, you could check if they're in the list.
 
 Before transferring, you would need to clear the list of approved accounts since the new owner wouldn't expect the accounts approved by the original owner to still have access to transfer their new NFT.
+
+<hr className="subsection" />
 
 ### The problem {#the-problem}
 
@@ -69,6 +75,8 @@ Token: {
 ```
 
 If Mike then comes along and purchases the NFT for only 1 NEAR on marketplace B, the marketplace would go to try and transfer the NFT and since technically, Josh approved the marketplace and it's in the list of approved accounts, the transaction would go through properly.
+
+<hr className="subsection" />
 
 ### The solution {#the-solution}
 
@@ -115,6 +123,8 @@ Token: {
 
 The marketplace is inserted into the map and the next approval ID is incremented. From marketplace B's perspective it stores it's original approval ID from when Benji put the NFT up for sale which has a value of 1. If Mike were to go and purchase the NFT on marketplace B for the original 1 NEAR sale price, the NFT contract should panic. This is because the marketplace is trying to transfer the NFT with an approval ID 1 but the token struct shows that it **should** have an approval ID of 2.
 
+<hr className="subsection" />
+
 ### Expanding the `Token` and `JsonToken` structs
 
 Now that you understand the proposed solution to the original problem of allowing an account to transfer your NFT, it's time to implement some of the logic. The first thing you should do is modify the `Token` and `JsonToken` structs to reflect the new changes. Let's switch over to the `nft-contract-basic/src/metadata.rs` file:
@@ -124,6 +134,8 @@ Now that you understand the proposed solution to the original problem of allowin
 You'll then need to initialize both the `approved_account_ids` and `next_approval_id` to their default values when a token is minted. Switch to the `nft-contract-basic/src/mint.rs` file and when creating the `Token` struct to store in the contract, let's set the next approval ID to be 0 and the approved account IDs to be an empty map:
 
 <Github language="rust" start="31" end="38" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-approval/src/mint.rs" />
+
+<hr className="subsection" />
 
 ### Approving accounts
 
@@ -141,7 +153,9 @@ You'll notice that the function contains an optional `msg` parameter. This messa
 
 It is up to the approving person to provide a properly encoded message that the marketplace can decode and use. This is usually done through the marketplace's frontend app which would know how to construct the `msg` in a useful way.
 
-#### Internal functions
+<hr className="subsection" />
+
+### Internal functions
 
 Now that the core logic for approving an account is finished, you need to implement the `assert_at_least_one_yocto` and `bytes_for_approved_account` functions. Move to the `nft-contract/src/internal.rs` file and copy the following function right below the `assert_one_yocto` function.
 
@@ -153,7 +167,9 @@ Next, you'll need to copy the logic for calculating how many bytes it costs to s
 
 Now that the logic for approving accounts is finished, you need to change the restrictions for transferring.
 
-### Changing the restrictions for transferring NFTs
+<hr className="subsection" />
+
+#### Changing the restrictions for transferring NFTs
 
 Currently, an NFT can **only** be transferred by its owner. You need to change that restriction so that people that have been approved can also transfer NFTs. In addition, you'll make it so that if an approval ID is passed, you can increase the security and check if both the account trying to transfer is in the approved list **and** they correspond to the correct approval ID. This is to address the problem we ran into earlier.
 
@@ -162,6 +178,8 @@ In the `internal.rs` file, you need to change the logic of the `internal_transfe
 <Github language="rust" start="130" end="227" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-approval/src/internal.rs" />
 
 This will check if the sender isn't the owner and then if they're not, it will check if the sender is in the approval list. If an approval ID was passed into the function, it will check if the sender's actual approval ID stored on the contract matches the one passed in.
+
+<hr className="subsection" />
 
 #### Refunding storage on transfer
 
@@ -172,6 +190,8 @@ Right below the `bytes_for_approved_account_id` function, copy the following two
 <Github language="rust" start="11" end="29" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-approval/src/internal.rs" />
 
 These will be useful in the next section where you'll be changing the `nft_core` functions to include the new approval logic.
+
+<hr className="subsection" />
 
 ### Changes to `nft_core.rs`
 
@@ -201,6 +221,8 @@ Finally, you need to add the logic for refunding the approved account IDs in `nf
 
 With that finished, it's time to move on and complete the next task.
 
+---
+
 ## Check if an account is approved
 
 Now that the core logic is in place for approving and refunding accounts, it should be smooth sailing from this point on. You now need to implement the logic for checking if an account has been approved. This should take an account and token ID as well as an optional approval ID. If no approval ID was provided, it should simply return whether or not the account is approved.
@@ -211,11 +233,15 @@ If an approval ID was provided, it should return whether or not the account is a
 
 Let's now move on and add the logic for revoking an account
 
+---
+
 ## Revoke an account
 
 The next step in the tutorial is to allow a user to revoke a specific account from having access to their NFT. The first thing you'll want to do is assert one yocto for security purposes. You'll then need to make sure that the caller is the owner of the token. If those checks pass, you'll need to remove the passed in account from the tokens approved account IDs and refund the owner for the storage being released.
 
 <Github language="rust" start="127" end="151" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-approval/src/approval.rs" />
+
+---
 
 ## Revoke all accounts
 
@@ -225,9 +251,13 @@ The final step in the tutorial is to allow a user to revoke all accounts from ha
 
 With that finished, it's time to deploy and start testing the contract.
 
+---
+
 ## Testing the new changes {#testing-changes}
 
 Since these changes affect all the other tokens and the state won't be able to automatically be inherited by the new code, simply redeploying the contract will lead to errors. For this reason, it's best practice to create a new account and deploy the contract there.
+
+<hr className="subsection" />
 
 ### Deployment and initialization
 
@@ -243,6 +273,8 @@ Using the cargo-near, deploy and initialize the contract as you did in the previ
 ```bash
 cargo near deploy $APPROVAL_NFT_CONTRACT_ID with-init-call new_default_meta json-args '{"owner_id": "'$APPROVAL_NFT_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
 ```
+
+<hr className="subsection" />
 
 ### Minting {#minting}
 
@@ -286,6 +318,8 @@ This should return an output similar to the following:
 
 Notice how the approved account IDs are now being returned from the function? This is a great sign! You're now ready to move on and approve an account to have access to your token.
 
+<hr className="subsection" />
+
 ### Approving an account {#approving-an-account}
 
 At this point, you should have two accounts. One stored under `$NFT_CONTRACT_ID` and the other under the `$APPROVAL_NFT_CONTRACT_ID` environment variable. You can use both of these accounts to test things out. If you approve your old account, it should have the ability to transfer the NFT to itself.
@@ -327,6 +361,8 @@ This should return an output similar to the following:
   }
 ]
 ```
+
+<hr className="subsection" />
 
 ### Transferring an NFT as an approved account {#transferring-the-nft}
 
@@ -427,6 +463,8 @@ near view $APPROVAL_NFT_CONTRACT_ID nft_tokens_for_owner '{"account_id": "'$NFT_
 </details>
 
 With the testing finished, you've successfully implemented the approvals extension to the standard!
+
+---
 
 ## Conclusion
 
