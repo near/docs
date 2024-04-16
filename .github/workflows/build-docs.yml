@@ -50,6 +50,7 @@ jobs:
       - name: Install dependencies and build
         run: |
           cd website
+          curl https://raw.githubusercontent.com/near/docs/bucanero-patch-1/website/docusaurus.config.js > docusaurus.config.js
           yarn
           yarn docusaurus clear
           yarn build
