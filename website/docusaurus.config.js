@@ -273,10 +273,6 @@ const config = {
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'ko', 'vi'],
-    localeConfigs: {
-      'zh-CN': {
-        label: '简体中文',
-      },
     },
   },
 };
