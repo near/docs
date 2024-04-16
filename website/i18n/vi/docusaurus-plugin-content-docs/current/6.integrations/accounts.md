@@ -1,37 +1,30 @@
 ---
 id: accounts
-title: Accounts
+title: Account
 sidebar_label: Accounts
 ---
 
-## Introduction {#introduction}
+## Giới thiệu {#introduction}
 
 Please see the [documentation for accounts](/concepts/protocol/account-model) for basic information.
 
-- For exchanges, NEAR supports [implicit account](https://nomicon.io/DataStructures/Account.html#implicit-account-ids) creation which allows the creation of accounts without paying for transactions.
-- You can create an implicit account by following the steps in [this guide](/integrations/implicit-accounts).
-- Accounts must have enough tokens to cover its storage which currently costs `0.0001 NEAR` per byte. This equates to a minimum balance of `0.00182 NEAR` for an account with one access key. You can query the live storage price using the [`protocol-config`](https://docs.near.org/api/rpc/setup#protocol-config) RPC endpoint. For more details on storage fees see [this section of the economics paper](https://pages.near.org/papers/economics-in-sharded-blockchain/#transaction-and-storage-fees).
+- Đối với các sàn giao dịch, NEAR hỗ trợ tạo [implicit account](https://nomicon.io/DataStructures/Account.html#implicit-account-ids) cho phép việc tạo các account mà không cần trả phí cho bất kỳ transaction nào.
+- Bạn có thể tạo một implicit account bằng cách làm theo các bước trong [hướng dẫn này](/docs/roles/integrator/implicit-accounts).
+- Accounts must have enough tokens to cover its storage which currently costs `0.0001 NEAR` per byte. This equates to a minimum balance of `0.00182 NEAR` for an account with one access key. Bạn có thể truy vấn giá storage trực tiếp bằng cách sử dụng [`protocol-config`](https://docs.near.org/api/rpc/setup#protocol-config) RPC endpoint. For more details on storage fees see [this section of the economics paper](https://pages.near.org/papers/economics-in-sharded-blockchain/#transaction-and-storage-fees).
 
-## Transfer from Function Call {#transfer-from-function-call}
+## Transfer từ Function Call {#transfer-from-function-call}
 
-NEAR allows transfers to happen within a function call. More importantly, when an account is deployed with some contract, it is possible that the only way to transfer tokens from that account is through a function call. Therefore, exchanges need to support transfers through function calls as well. We recommend the following approach:
+NEAR cho phép các transfer diễn ra trong một function call. Quan trọng hơn, khi một account được deploy với một contract nào đó, có thể cách duy nhất để transfer các token từ account đó là thông qua một function call. Tuy nhiên, các sàn giao dịch cũng cần phải hỗ trợ việc transfer thông qua các function call tương tự. Chúng tôi đề xuất cách tiếp cận sau:
 
-Exchange can [query block by height](/api/rpc/setup#block) to get blocks on each height, and for every block,
-[query its chunk](/api/rpc/setup#chunk) to obtain the transactions included in the block. For each transaction,
-[query its status](/api/rpc/setup#transaction-status-with-receipts) to see the receipts generated from
-transactions. Since exchanges are only interested in transfers to their addresses, they only need to filter receipts that
-only contain `Transfer` action and whose `predecessor_id` is not `system` (receipts with `predecessor_id` equal to `system`
-are [refunds](https://nomicon.io/RuntimeSpec/Refunds.html)). Then, to check whether the receipt succeeds, it is sufficient
-to look for the `receipt_id` in `receipts_outcome` and see if its status is `SuccessValue`.
+Sàn giao dịch có thể [truy vấn block by height](/api/rpc/setup#block) để lấy thông tin các block trên mỗi height, và đối với mỗi block, [truy vấn chunk của nó](/api/rpc/setup#chunk) để thu thâp được các transtraction được đính kèm trong mỗi block. Đối với mỗi transaction, [truy vấn status của nó](/api/rpc/setup#transaction-status-with-receipts) để thấy được các receipt được tạo ra từ các transaction. Bởi vì các sàn giao dịch chỉ quan tâm đến các transfer đến địa chỉ của họ, họ chỉ cần lọc các receipt mà chỉ chứa action `Transfer` và `predecessor_id` không phải là `system` (các receipts với `predecessor_id` bằng `system` là [các refund](https://nomicon.io/RuntimeSpec/Refunds.html)). Sau đó, để kiểm tra receipt có thành công hay không, chỉ cần tìm `receipt_id` trong `receipts_outcome` và xem status của nó là `SuccessValue`.
 
-Alternatively, exchange can use [the indexer framework](https://github.com/near/nearcore/tree/master/chain/indexer)
-to help index on-chain data which include receipts. An example usage of the indexer can be found [here](https://github.com/near/nearcore/tree/master/tools/indexer/example).
+Ngoài ra, sàn giao dịch có thể sử dụng [indexer framework](https://github.com/near/nearcore/tree/master/chain/indexer) để giúp index on-chain data bao gồm các receipt. Một ví dụ sử dụng indexer có thể tìm thấy [tại đây](https://github.com/near/nearcore/tree/master/tools/indexer/example).
 
-Below we include examples from the contracts that are likely to be used to perform transfers through function calls.
+Dưới đây, chúng tôi kể ra các ví dụ từ các contract có khả năng được sử dụng để thực hiện transfer thông qua các function call.
 
-**Example of transfer from a lockup contract**
+**Ví dụ về transfer từ một lockup contract**
 
-A contract `evgeny.lockup.near` is deployed and we can check its owner by
+Một contract `evgeny.lockup.near` đã được deploy và chúng ta có thể kiểm tra chủ sở hữu của nó bằng cách
 
 ```bash
 > near view evgeny.lockup.near get_owner_account_id
@@ -39,13 +32,13 @@ View call: evgeny.lockup.near.get_owner_account_id()
 'evgeny.near'
 ```
 
-Now we want to transfer some unlocked tokens (1 NEAR) with the following call
+Bây giờ chúng ta muốn chuyển một số các unlocked token (1 NEAR) bằng lệnh call sau
 
 ```bash
 near call evgeny.lockup.near transfer '{"amount":"1000000000000000000000000", "receiver_id": "evgeny.near"}' --accountId=evgeny.near
 ```
 
-**Note**: the response below can be obtained by hitting the RPC with the transaction hash and NEAR account like this:
+**Lưu ý**: response dưới đây có thể nhận được bằng cách thực hiện RPC với transaction hash và NEAR account như sau:
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=txstatus method=EXPERIMENTAL_tx_status \
@@ -53,7 +46,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=txstatus method=EXPERIMENT
 ```
 
 <details>
-<summary>**Example Response:**</summary>
+<summary>**Ví dụ về response như sau:**</summary>
 
 ```json
 {
@@ -265,11 +258,9 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=txstatus method=EXPERIMENT
   }
 }
 ```
-
 </details>
 
-As we can see, there are four receipts generated in this function call. If we apply the criteria mentioned above, we can
-find in `receipts` field this object
+Như chúng ta có thể thấy, có bốn receipt được tạo ra trong function call này. Nếu chúng ta áp dụng các tiêu chí đã đề cập ở trên, chúng ta có thể tìm trong `các receipt` field object này
 
 ```json
 {
@@ -295,9 +286,7 @@ find in `receipts` field this object
 }
 ```
 
-which contains only `Transfer` action and whose `predecessor_id` is not `system`. Now we can check the status of the
-execution by looking for the same receipt id `EvHfj4fUyVuLBRKNdCZmFGr4WfqwYf7YCbzFsRGFTFJC` in `receipts_outcome` field
-of the rpc return result, this leads us to this execution outcome
+chỉ chứa `Transfer` action và có `predecessor_id` không phải là `system`. Bây giờ chúng ta có thể kiểm tra status của quá trình thực thi bằng cách tìm một receipt id tương tự `EvHfj4fUyVuLBRKNdCZmFGr4WfqwYf7YCbzFsRGFTFJC` trong `receipts_outcome` field của kết quả được trả về từ rpc, điều này dẫn chúng ta đến kết quả thực thi này
 
 ```json
 {
@@ -322,18 +311,13 @@ of the rpc return result, this leads us to this execution outcome
 }
 ```
 
-and its status contains `SuccessValue`, which indicates that the receipt has succeeded. Therefore we know that
-`1000000000000000000000000` yoctoNEAR, or 1 NEAR has been successfully transferred.
+và status của nó chứa ` SuccessValue `, điều này cho biết rằng receipt đã thành công. Do đó chúng ta biết rằng `1000000000000000000000000` yoctoNEAR, hay 1 NEAR đã được chuyển thành công.
 
-**Example of transfer from a multisig contract**
+**Ví dụ về transfer từ một multisig contract**
 
-Mutisig contract, as the name suggests, uses multiple signatures to confirm a transaction and therefore, actions performed
-by the multisig contract involves multiple transactions. In the following example, we will show how a transfer is done from
-a multisig contract that requires two confirmations.
+Mutisig contract, giống như tên của nó, sử dụng nhiều chữ ký để xác nhận một transaction và do đó, các hành động được thực hiện bởi multisig contract bao gồm nhiều transaction. In the following example, we will show how a transfer is done from a multisig contract that requires two confirmations.
 
-- First step: `add_request_and_confirm`. This initiates the action that the multisig contract wants to perform with one
-  confirmation. The multisig contract `multsigtest.testnet` wants to transfer 1 NEAR to `bowen` and it first
-  sends a transaction that calls `add_request_and_confirm` with a request
+- Bước đầu tiên: `add_request_and_confirm`. Việc này bắt đầu hành động mà multisig contract muốn thực hiện với một xác nhận. Multisig contract `multsigtest.testnet` muốn transfer 1 NEAR tới `bowen` và đầu tiên nó gửi một transaction, call `add_request_and_confirm` với một request
 
 ```json
 {
@@ -349,11 +333,10 @@ a multisig contract that requires two confirmations.
 }
 ```
 
-that indicates it wants to transfer 1 NEAR to `bowen`. Notice that this transaction only records the action
-but does not perform the actual transfer. The transaction result is as follows:
+điều đó cho thấy nó muốn chuyển 1 NEAR tới `bowen`. Lưu ý rằng transaction này chỉ ghi lại hành động mà không thực hiện transfer thực tế. Kết quả transaction như sau:
 
 <details>
-<summary>**Example Response:**</summary>
+<summary>**Ví dụ về response nhận được:**</summary>
 
 ```json
 {
@@ -472,14 +455,12 @@ but does not perform the actual transfer. The transaction result is as follows:
   }
 }
 ```
-
 </details>
 
-- Second step: `confirm`. A second transaction is sent to confirm the transfer. This transaction takes the request id
-  returned by the first transaction and does the actual transfer. The transaction result is as follows
+- Bước thứ 2: `confirm`. Transaction thứ hai được gửi để xác nhận transfer. Transaction này sử dụng request id được trả lại bởi transaction đầu tiên và thực hiện actual transfer. Kết quả transaction như sau
 
 <details>
-<summary>**Example Response:**</summary>
+<summary>** Ví dụ về response nhận được:**</summary>
 
 ```json
 {
@@ -675,11 +656,9 @@ but does not perform the actual transfer. The transaction result is as follows:
   }
 }
 ```
-
 </details>
 
-Notice that similar to the transfer from lockup contract, there is also one receipt in the `receipts` field that meet
-our requirements:
+Lưu ý rằng tương tự như transfer từ lockup contract, cũng có một receipt trong `receipts` field đáp ứng yêu cầu của chúng ta:
 
 ```json
 {
@@ -705,7 +684,7 @@ our requirements:
 }
 ```
 
-and we can find its outcome in `receipts_outcome`:
+và chúng ta có thể tìm thấy kết quả của nó trong `receipts_outcome`:
 
 ```json
 {
@@ -730,7 +709,8 @@ and we can find its outcome in `receipts_outcome`:
 }
 ```
 
-which indicates that the transaction is successful.
+cho biết rằng transaction đã thành công.
 
-:::tip Got a question? <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
+:::tip Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
 :::

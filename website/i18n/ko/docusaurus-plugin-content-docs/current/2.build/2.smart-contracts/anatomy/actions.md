@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 
 스마트 컨트랙트는 NEAR 전송 또는 다른 컨트랙트 호출과 같은 특정 `Actions`를 수행할 수 있습니다.
 
-`Actions`의 중요한 속성은, 동일한 컨트랙트에서 작업할 때 일괄적으로 처리될 수 있다는 것입니다. **Batched actions** act as a unit: they execute in the same [receipt](../../1.concepts/protocol/transactions.md#receipt-receipt), and if **any fails**, then they **all get reverted**.
+`Actions`의 중요한 속성은, 동일한 컨트랙트에서 작업할 때 일괄적으로 처리될 수 있다는 것입니다. **Batched actions** act as a unit: they execute in the same [receipt](../../../1.concepts/protocol/transactions.md#receipt-receipt), and if **any fails**, then they **all get reverted**.
 
 :::info
 `Actions`는 **동일한 컨트랙트**에 따라 행동하는 경우에만 일괄 처리될 수 있습니다. 컨트랙트에서 두 메서드를 일괄적으로 호출할 수 있지만, 서로 다른 컨트랙트에서 두 메서드를 일괄적으로 호출 할 수는 **없습니다**.
@@ -73,7 +73,7 @@ import TabItem from '@theme/TabItem';
 
 ## 함수 호출
 
-스마트 컨트랙트는 다른 컨트랙트의 메서드를 호출할 수 있습니다. In the snippet bellow we call a method in a deployed [Hello NEAR](quickstart.md) contract, and check if everything went right in the callback.
+스마트 컨트랙트는 다른 컨트랙트의 메서드를 호출할 수 있습니다. In the snippet bellow we call a method in a deployed [Hello NEAR](../quickstart.md) contract, and check if everything went right in the callback.
 
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="🌐 JavaScript">
@@ -235,7 +235,7 @@ import TabItem from '@theme/TabItem';
 
 :::caution
 
-컨트랙트 내에서 계정을 생성하면 기본적으로 키가 없습니다. If you don't explicitly [add keys](#add-keys) to it or [deploy a contract](#deploy-a-contract) on creation then it will be [locked](../../1.concepts/protocol/access-keys.md#locked-accounts).
+컨트랙트 내에서 계정을 생성하면 기본적으로 키가 없습니다. If you don't explicitly [add keys](#add-keys) to it or [deploy a contract](#deploy-a-contract) on creation then it will be [locked](../../../1.concepts/protocol/access-keys.md#locked-accounts).
 
 :::
 
@@ -350,7 +350,7 @@ import TabItem from '@theme/TabItem';
 
 ## 키 추가
 
-When you use actions to create a new account, the created account does not have any [access keys](../../1.concepts/protocol/access-keys.md), meaning that it **cannot sign transactions** (e.g. to update its contract, delete itself, transfer money).
+When you use actions to create a new account, the created account does not have any [access keys](../../../1.concepts/protocol/access-keys.md), meaning that it **cannot sign transactions** (e.g. to update its contract, delete itself, transfer money).
 
 계정에 키를 추가하려면, 다음 두 가지 옵션 중 하나를 사용하면 됩니다.
 

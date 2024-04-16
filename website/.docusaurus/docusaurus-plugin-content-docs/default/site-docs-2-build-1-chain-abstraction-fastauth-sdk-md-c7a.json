@@ -20,7 +20,7 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Building a Relayer",
+    "title": "Meta Transaction Relayers",
     "permalink": "/build/chain-abstraction/meta-transactions"
   },
   "next": {

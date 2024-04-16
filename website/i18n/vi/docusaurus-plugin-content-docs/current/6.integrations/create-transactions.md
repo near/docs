@@ -1,22 +1,22 @@
 ---
 id: create-transactions
-title: Create Transactions
-sidebar_label: Create a Transaction
+title: Tạo Các Transaction
+sidebar_label: Tạo Transaction
 ---
 
-To construct & process transactions you will need our API JavaScript library: [`near-api-js`](/build/web3-apps/integrate-contracts). There are many ways to create transactions but for this example we'll show you two ways to create a simple token transfer transaction.
+Để tạo & xử lý các transaction bạn sẽ cần đến thư viện API JavaScript của chúng tôi: [`near-api-js`](/develop/integrate/frontend). Có rất nhiều cách để tạo các transaction nhưng trong ví dụ này chúng tôi sẽ chỉ cho bạn hai cách để tạo một transaction đơn giản để transfer token.
 
-- [HIGH LEVEL](#high-level----create-a-transaction) - _easiest way to create a transaction_
-- [LOW LEVEL](#low-level----create-a-transaction) - _performs the exact same transaction as above, but deconstructs the entire process for those curious about each step_
+- [HIGH LEVEL](#high-level----create-a-transaction) - _Cách dễ dàng nhất để tạo một transaction_
+- [LOW LEVEL](#low-level----create-a-transaction) - _thực hiện chính xác những gì transaction ở trên đang làm, nhưng sẽ đi vào chi tiết từng bước cụ thể của toàn bộ quy trình cho những ai quan tâm_
 
-At the core, all transactions require the following:
+Về cốt lõi, tất cả các transaction yêu cầu những phần sau:
 
-- `signerId` _(account ID of the transaction originator)_
+- `signerId` _(account ID của người khởi tạo transaction)_
 - `signerPublicKey`
-- `receiverId` _(account ID of the transaction recipient)_
-- `nonceForPublicKey` _(each time a key is used the nonce value should be incremented by 1)_
+- `receiverId` _(account ID của người nhận transaction)_
+- `nonceForPublicKey` _(mỗi lần key được sử dụng, giá trị nonce này sẽ được tăng lên 1)_
 - `actions` _( [[click here]](/concepts/protocol/transactions#action) for supported arguments)_
-- `blockHash` _(a current block hash (within 24hrs) to prove the transaction was recently created)_
+- `blockHash` _(hash của block hiện tại (trong vòng 24 giờ) để chứng minh transaction đó vừa được tạo)_
 
 See [Transaction Class](https://near.github.io/near-api-js/classes/near_api_js.transaction.Transaction.html) for a more in depth outline.
 
@@ -26,7 +26,7 @@ See [Transaction Class](https://near.github.io/near-api-js/classes/near_api_js.t
 
 ### Setup
 
-1. Clone the [transaction-examples](https://github.com/near-examples/transaction-examples) repository by running:
+1. Clone repository [transaction-examples](https://github.com/near-examples/transaction-examples) bằng cách chạy:
 
 ```bash
 git clone https://github.com/near-examples/transaction-examples.git
@@ -36,10 +36,10 @@ git clone https://github.com/near-examples/transaction-examples.git
 
 ### Imports
 
-In [`send-tokens-easy.js`](https://github.com/near-examples/transaction-examples/blob/9e999253aafa2c3e3b537810a0b8ce7596c3506c/send-tokens-easy.js#L1-L5) we use two dependencies:
+Trong file [`send-tokens-easy.js`](https://github.com/near-examples/transaction-examples/blob/9e999253aafa2c3e3b537810a0b8ce7596c3506c/send-tokens-easy.js#L1-L5) chúng ta sử dụng hai dependency:
 
-1. [NEAR API JavaScript library](https://github.com/near/near-api-js)
-2. [`dotenv`](https://www.npmjs.com/package/dotenv) (used to load environment variables for private key)
+1. [Thư viện API JavaScript của NEAR](https://github.com/near/near-api-js)
+2. [`dotenv`](https://www.npmjs.com/package/dotenv) (dùng để load những environment variable cho private key)
 
 ```js
 const nearAPI = require("near-api-js");
@@ -47,16 +47,16 @@ const { connect, KeyPair, keyStores, utils } = nearAPI;
 require("dotenv").config();
 ```
 
-The second line above deconstructs several utilities from nearAPI that you will use to interact with the blockchain.
+Dòng thứ hai ở trên phân giải môt vài tiện ích trong nearAPI, mà bạn sẽ sử dụng chúng để thao tác với blockchain.
 
-- `connect` - create a connection to NEAR passing configuration variables
-- `KeyPair` - creates a keyPair from the private key you'll provide in an `.env` file
-- `keyStores` - stores the keyPair that you will create from the private key and used to sign Transactions
-- `utils` - used to format NEAR amounts
+- `connect` - truyền vào các variable thiết lập để tạo kết nối tới NEAR
+- `KeyPair` - tạo một keyPair từ private key mà bạn sẽ đưa vào trong một file `.env`
+- `keyStores` - lưu trữ keyPair mà bạn sẽ tạo từ private key và dùng nó để sign các Transaction
+- `utils` - được dùng để format các khoản tiền trong NEAR
 
 ### Accounts & Network
 
-Next, you'll need to enter the `accountId` of the `sender` and `receiver`, as well as the `networkId` (`betanet`, `testnet`, or `mainnet`).
+Tiếp theo, bạn sẽ cần điền `accountId` của `sender` và `receiver`, cũng như là `networkId` (`betanet`, `testnet`, hoặc `mainnet`).
 
 ```js
 const sender = "sender.testnet";
@@ -66,9 +66,9 @@ const networkId = "testnet";
 
 ### Formatting Token Amounts
 
-When sending NEAR tokens (Ⓝ) during a transaction, the amount needs to be converted into [Yocto](https://en.wikipedia.org/wiki/Yocto-) Ⓝ or (10^-24).
+Khi gửi các NEAR token (Ⓝ) trong một transaction, khoản tiền này cần được chuyền thành [Yocto](https://en.wikipedia.org/wiki/Yocto-) Ⓝ hay (10^-24).
 
-- To perform this you will use the [`near-api-js`](https://github.com/near/near-api-js) method [`parseNearAmount()`](https://github.com/near/near-api-js/blob/d4d4cf1ac3182fa998b1e004e6782219325a641b/src/utils/format.ts#L53-L63) (located in `utils/format`)
+- Để làm điều này bạn sẽ dùng method [`parseNearAmount()`](https://github.com/near/near-api-js/blob/d4d4cf1ac3182fa998b1e004e6782219325a641b/src/utils/format.ts#L53-L63) của [`near-api-js`](https://github.com/near/near-api-js) (nằm tại `utils/format`)
 
 ```js
 const amount = nearAPI.utils.format.parseNearAmount("1.5");
@@ -76,24 +76,24 @@ const amount = nearAPI.utils.format.parseNearAmount("1.5");
 
 ### Create a Key Store
 
-In order to sign transactions you will need to create a "Key Store" that will hold a [full access key](/concepts/protocol/access-keys#full-access-keys) to sign your transactions. There are several ways to accomplish this, but for this example we will use a private key stored in either an `.env` file in your project or an environment variable exported globally.
+In order to sign transactions you will need to create a "Key Store" that will hold a [full access key](/concepts/protocol/access-keys#full-access-keys) to sign your transactions. Có một vài cách để hoàn tất việc này, nhưng trong ví dụ này chúng ta sẽ sử dụng private key đã được lưu trong file `.env` trong project của bạn, hoặc một environment variable được export toàn cục.
 
-- If you created the account using [`near-cli`](/tools/near-cli) or ran [`near login`](/tools/near-cli#for-accounts) in your terminal, your private key can be found in a `.json` file located in `/HOME/.near-credentials`.
+- Nếu bạn đã tạo account bằng cách dùng [`near-cli`](/tools/near-cli) hoặc đã chạy [`near login`](/tools/near-cli#for-accounts) trong terminal của bạn, thì private key của bạn có thể được tìm thấy trong file `.json` nằm tại `/HOME/.near-credentials`.
 - If you created an account using [NEAR Wallet](https://testnet.mynearwallet.com/), your key will be found in your browser's `Local Storage`.
-  - In your browser's dev tools... `Application` >> `Storage` >> `Local Storage`
+  - Trong dev tools của browser... `Application` >> `Storage` >> `Local Storage`
 
 ```js
-// sets up an empty keyStore object in memory using near-api-js
+// thiết lập một object keyStore trống trong memory bằng near-api-js
 const keyStore = new keyStores.InMemoryKeyStore();
-// creates a keyPair from the private key provided in your .env file
+// tạo một keyPair từ private key được cung cấp trong file .env của bạn
 const keyPair = KeyPair.fromString(process.env.SENDER_PRIVATE_KEY);
-// adds the key you just created to your keyStore which can hold multiple keys (must be inside an async function)
+// thêm key bạn vừa tạo vào keyStore của bạn, nó có thể giữ nhiều key (phải nằm trong một async function)
 await keyStore.setKey(networkId, sender, keyPair);
 ```
 
 ### Setting up a connection to NEAR
 
-Now create a connection to NEAR using a configuration object that will contain your `networkId` setup earlier as well as your `keyStore`.
+Bây giờ tạo một kết nối tới NEAR sử dụng một configuration object, nó sẽ chứa `networkId` đã được cài đặt trước đó cũng như `keyStore` của bạn.
 
 ```js
 // configuration used to connect to NEAR
@@ -110,21 +110,21 @@ const config = {
 
 // connect to NEAR! :)
 const near = await connect(config);
-// create a NEAR account object
+// tạo một object NEAR account
 const senderAccount = await near.account(sender);
 ```
 
-You'll notice the last line uses your NEAR connection to create a `senderAccount` object that you'll use to perform the transaction.
+Bạn sẽ báo cho dòng cuối sử dụng kết nối tới NEAR của bạn để tạo một object `senderAccount` mà bạn sẽ dùng để thực hiện một transaction.
 
 ### Create, Sign, & Send Transaction
 
-Now that everything is setup, creating the transaction is a single line of code.
+Bây giờ bạn đã cài đặt mọi thứ, khởi tạo transaction bằng chỉ bằng một dòng code.
 
 ```js
 const result = await senderAccount.sendMoney(receiver, amount);
 ```
 
-This simple command constructs, signs, and sends a token transfer transaction on the NEAR blockchain. There is no need to create a `result` variable aside from inspecting the response details from your transaction and even create a link to [NearBlocks Explorer](https://testnet.nearblocks.io/) to view a GUI version of the transaction details.
+Command đơn giản này sẽ khởi tạo, sign, và gửi một transaction về việc transfer token trên NEAR blockchain. There is no need to create a `result` variable aside from inspecting the response details from your transaction and even create a link to [NearBlocks Explorer](https://testnet.nearblocks.io/) to view a GUI version of the transaction details.
 
 ---
 
@@ -132,7 +132,7 @@ This simple command constructs, signs, and sends a token transfer transaction on
 
 ### Setup
 
-1. Clone the [transaction-examples](https://github.com/near-examples/transaction-examples) repository by running:
+1. Clone repository [transaction-examples](https://github.com/near-examples/transaction-examples) bằng cách chạy:
 
 ```bash
 git clone https://github.com/near-examples/transaction-examples.git
@@ -144,11 +144,11 @@ git clone https://github.com/near-examples/transaction-examples.git
 
 ### Imports
 
-In [`send-tokens-deconstructed.js`](https://github.com/near-examples/transaction-examples/blob/master/send-tokens-deconstructed.js#L1-L4) we use three dependencies:
+Trong file [`send-tokens-deconstructed.js`](https://github.com/near-examples/transaction-examples/blob/master/send-tokens-deconstructed.js#L1-L4) chúng ta sử dụng ba dependency:
 
-1. [NEAR API JavaScript library](https://github.com/near/near-api-js)
-2. [`js-sha256`](https://www.npmjs.com/package/js-sha256) (cryptographic hashing algorithm)
-3. [`dotenv`](https://www.npmjs.com/package/dotenv) (used to load environment variables)
+1. [Thư viện API JavaScript của NEAR](https://github.com/near/near-api-js)
+2. [`js-sha256`](https://www.npmjs.com/package/js-sha256) (giải thuật hash mã hóa)
+3. [`dotenv`](https://www.npmjs.com/package/dotenv) (dùng để load các environment variable)
 
 ```js
 const nearAPI = require("near-api-js");
@@ -160,7 +160,7 @@ require("dotenv").config();
 
 ### Accounts & Network
 
-Next, you'll need to enter the `accountId` of the `sender` and `receiver`, as well as the `networkId` (`betanet`, `testnet`, or `mainnet`).
+Tiếp theo, bạn sẽ cần điền `accountId` của `sender` và `receiver`, cũng như là `networkId` (`betanet`, `testnet`, hoặc `mainnet`).
 
 ```js
 const sender = "sender.testnet";
@@ -172,9 +172,9 @@ const networkId = "testnet";
 
 ### Formatting Token Amounts
 
-When sending NEAR tokens (Ⓝ) during a transaction, the amount needs to be converted into [Yocto](https://en.wikipedia.org/wiki/Yocto-) Ⓝ or (10^-24).
+Khi gửi các NEAR token (Ⓝ) trong một transaction, khoản tiền này cần được chuyền thành [Yocto](https://en.wikipedia.org/wiki/Yocto-) Ⓝ hay (10^-24).
 
-- To perform this you will use the [`near-api-js`](https://github.com/near/near-api-js) method [`parseNearAmount()`](https://github.com/near/near-api-js/blob/d4d4cf1ac3182fa998b1e004e6782219325a641b/src/utils/format.ts#L53-L63) (located in `utils/format`)
+- Để làm điều này bạn sẽ dùng method [`parseNearAmount()`](https://github.com/near/near-api-js/blob/d4d4cf1ac3182fa998b1e004e6782219325a641b/src/utils/format.ts#L53-L63) của [`near-api-js`](https://github.com/near/near-api-js) (nằm tại `utils/format`)
 
 ```js
 const amount = nearAPI.utils.format.parseNearAmount("1.5");
@@ -184,7 +184,7 @@ const amount = nearAPI.utils.format.parseNearAmount("1.5");
 
 ### Setting up a connection to NEAR
 
-In this example, we will create a NEAR RPC `provider` that allows us to interact with the chain via [RPC endpoints](/api/rpc/introduction).
+Trong ví dụ này, chúng ta sẽ tạo một NEAR RPC `provider`, nó sẽ cho phép chúng ta tương tác với chain thông qua [các RPC endpoint](/api/rpc/introduction).
 
 ```js
 const provider = new nearAPI.providers.JsonRpcProvider(
@@ -196,15 +196,15 @@ const provider = new nearAPI.providers.JsonRpcProvider(
 
 ### Access Keys
 
-To sign a transaction to send NEAR Ⓝ, we will need a `FullAccess` key to the sender's account.
+Để sign một transaction để gửi NEAR Ⓝ, chúng ta cần một `FullAccess` key vào account của người gửi.
 
-- If you created the account using [`near-cli`](/tools/near-cli) or ran [`near login`](/tools/near-cli#for-accounts) in your terminal, your private key can be found in a `.json` file located in `/HOME/.near-credentials`.
+- Nếu bạn đã tạo account bằng cách dùng [`near-cli`](/tools/near-cli) hoặc đã chạy [`near login`](/tools/near-cli#for-accounts) trong terminal của bạn, thì private key của bạn có thể được tìm thấy trong file `.json` nằm tại `/HOME/.near-credentials`.
 - If you created an account using [NEAR Wallet](https://testnet.mynearwallet.com/), your key will be found in your browser's `Local Storage`.
-  - In your browser's dev tools... `Application` >> `Storage` >> `Local Storage`
+  - Trong dev tools của browser... `Application` >> `Storage` >> `Local Storage`
 
-Once you have access to the private key of the sender's account, create an environment variable `SENDER_PRIVATE_KEY` or hard code it as a string on [line 18](https://github.com/near-examples/transaction-examples/blob/master/send-tokens-deconstructed.js#L18) of `send-tokens.js`.
+Một khi bạn có quyền truy cập vào private key của account người gửi, tạo một environment variable `SENDER_PRIVATE_KEY` hoặc hard code nó trong một string như trong [dòng 18](https://github.com/near-examples/transaction-examples/blob/master/send-tokens-deconstructed.js#L18) của file `send-tokens.js`.
 
-- With this `privateKey`, we can now construct a `keyPair` object to sign transactions.
+- Với `privateKey` này, chúng ta có thể khởi tạo một object `keyPair` để sign các transaction.
 
 ```js
 const privateKey = process.env.SENDER_PRIVATE_KEY;
@@ -215,7 +215,7 @@ const keyPair = nearAPI.KeyPair.fromString(privateKey);
 
 ### Transaction Requirements
 
-As stated before, all transactions require six parts:
+Như đã nêu ở trên, tất cả các transaction yêu cầu sáu phần sau:
 
 1. [`signerId`](#1-signerid)
 2. [`signerPublicKey`](#2-signerpublickey)
@@ -226,12 +226,12 @@ As stated before, all transactions require six parts:
 
 ### 1 `signerId`
 
-- The `signerId` is the account ID of the transaction originator.
-- This value is passed as a string (ex. `'example.testnet'` or `'bob.near'`)
+- `signerId` là một account ID của người khởi tạo transaction.
+- Giá trị này được truyền vào dưới dạng một string (ví dụ: `'example.testnet'` hoặc `'bob.near'`)
 
 ### 2 `signerPublicKey`
 
-- The `signerPublicKey` is required to be an object with two key value pairs: `keyType` and `data`.
+- `signerPublicKey` được yêu cầu dưới dạng một object với hai cặp key value: `keyType` and `data`.
 
 ```js
 PublicKey = {
@@ -273,7 +273,7 @@ PublicKey = {
 };
 ```
 
-- This can be constructed by calling `getPublicKey()` using the `keyPair` we [setup earlier](#access-keys).
+- Điều này có thể được khởi tạo bằng cách gọi method `getPublicKey()` sử dụng variable `keyPair` mà chúng ta [đã cài đặt trước đó](#access-keys).
 
 ```js
 const publicKey = keyPair.getPublicKey();
@@ -281,15 +281,15 @@ const publicKey = keyPair.getPublicKey();
 
 ### 3 `receiverId`
 
-- The `receiverId` is the account ID of the transaction recipient.
-- This value is passed as a string (ex. `'example.testnet'` or `'bob.near'`)
-- The certain cases, the `signerId` and the `receiverId` can be the same account.
+- `receiverId` là account ID của người nhận transaction.
+- Giá trị này được truyền vào dưới dạng một string (ví dụ: `'example.testnet'` hoặc `'bob.near'`)
+- Trong một số trường hợp nhất định, `signerId` và `receiverId` có thể là cùng một account.
 
 ### 4 `nonceForPublicKey`
 
-- A unique number or `nonce` is required for each transaction signed with an access key.
-- To ensure a unique number is created for each transaction, the current `nonce` should be queried and then incremented by 1.
-- Current nonce can be retrieved using the `provider` we [created earlier](#setting-up-a-connection-to-near).
+- Một số duy nhất hoặc một giá trị `nonce` được yêu cầu cho mỗi transaction, được sign bởi một access key.
+- Để đảm bảo chỉ một số duy nhất được tạo ra cho mỗi transaction, giá trị `nonce` hiện tại phải được query và sau đó tăng lên 1.
+- Giá trị nonce hiện tại có thể nhận được bằng cách sử dụng variable `provider` mà chúng ta [đã tạo trước đó](#setting-up-a-connection-to-near).
 
 ```js
 const accessKey = await provider.query(
@@ -298,7 +298,7 @@ const accessKey = await provider.query(
 );
 ```
 
-- now we can create a unique number for our transaction by incrementing the current `nonce`.
+- bây giờ chúng ta có thể tạo một số duy nhất cho transaction của chúng ta bằng cách tăng giá trị `nonce` hiện tại.
 
 ```js
 const nonce = ++accessKey.nonce;
@@ -306,20 +306,20 @@ const nonce = ++accessKey.nonce;
 
 ### 5 `actions`
 
-- There are currently eight supported `Action` types. [[see here]](/concepts/protocol/transactions#action)
-- For this example, we are using `Transfer`
-- This transfer action can be created using the [imported `nearAPI` object](#imports) and the [formatted Ⓝ amount](#formatting-token-amounts) created earlier.
+- Hiện tại, có tám loại `Action` được hỗ trợ. [[see here]](/concepts/protocol/transactions#action)
+- Trong ví dụ này, chúng ta sử dụng `Transfer`
+- Action transfer này có thể được tạo bằng cách sử dụng [object `nearAPI` đã được import](#imports) và[amount Ⓝ đã được format](#formatting-token-amounts) được tạo ra trước đó.
 
 ```js
 const actions = [nearAPI.transactions.transfer(amount)];
 ```
 
-[[click here]](https://github.com/near/near-api-js/blob/d4d4cf1ac3182fa998b1e004e6782219325a641b/src/transaction.ts#L70-L72) to view source for `transfer()`.
+[[bấm vào đây]](https://github.com/near/near-api-js/blob/d4d4cf1ac3182fa998b1e004e6782219325a641b/src/transaction.ts#L70-L72) để xem source của method `transfer()`.
 
 ### 6 `blockHash`
 
-- Each transaction requires a current block hash (within 24hrs) to prove that the transaction was created recently.
-- Hash must be converted to an array of bytes using the `base_decode` method found in [`nearAPI`](#imports).
+- Mỗi transaction yêu cầu một hash của block hiện tại (trong 24 giờ) để chứng mình rằng transaction này vừa được tạo.
+- Hash phải được chuyển thành một byte array bằng các dùng method `base_decode` nằm trong [`nearAPI`](#imports).
 
 ```js
 const recentBlockHash = nearAPI.utils.serialize.base_decode(
@@ -327,15 +327,15 @@ const recentBlockHash = nearAPI.utils.serialize.base_decode(
 );
 ```
 
-[[click here]](https://github.com/near/near-api-js/blob/d4d4cf1ac3182fa998b1e004e6782219325a641b/src/utils/serialize.ts#L16-L17) to view source for `base_decode()`.
+[[bấm vào đây]](https://github.com/near/near-api-js/blob/d4d4cf1ac3182fa998b1e004e6782219325a641b/src/utils/serialize.ts#L16-L17) để view source của method `base_decode()`.
 
 ---
 
 ### Constructing the Transaction
 
-With all of our [required arguments](#transaction-requirements), we can construct the transaction.
+Bây giờ, chúng ta có thể tạo transaction bằng tất cả [các tham số yêu cầu](#transaction-requirements) ở trên.
 
-- Using [`nearAPI`](#imports), we call on `createTransaction()` to perform this task.
+- Sử dụng [`nearAPI`](#imports), chúng ta call method `createTransaction()` để thực hiện công việc này.
 
 ```js
 const transaction = nearAPI.transactions.createTransaction(
@@ -348,15 +348,15 @@ const transaction = nearAPI.transactions.createTransaction(
 );
 ```
 
-[[click here]](https://github.com/near/near-api-js/blob/d4d4cf1ac3182fa998b1e004e6782219325a641b/src/transaction.ts#L95-L110) to view source code for the Transaction class
+[[bấm vào đây]](https://github.com/near/near-api-js/blob/d4d4cf1ac3182fa998b1e004e6782219325a641b/src/transaction.ts#L95-L110) để xem source code của class Transaction
 
 ---
 
 ### Sign Transaction
 
-Now that the transaction is created, we sign it before sending it to the NEAR blockchain. At the lowest level, there are four steps to this process.
+Bây giờ transaction đã được tạo ra, chúng ta sign nó trước khi gửi nó đến NEAR blockchain. Ở tầng thấp nhất, có bốn bước cho quá trình này.
 
-1. Using [`nearAPI`](#imports), we call on `serialize()` to serialize the transaction in [Borsh](https://borsh.io/).
+1. Sử dụng [`nearAPI`](#imports), chúng ta call method `serialize()` để serialize transaction bằng [Borsh](https://borsh.io/).
 
 ```js
 const serializedTx = nearAPI.utils.serialize.serialize(
@@ -365,19 +365,19 @@ const serializedTx = nearAPI.utils.serialize.serialize(
 );
 ```
 
-2. Hash the serialized transaction using a `sha256` cryptographic hashing algorithm.
+2. Hash transaction đã được serialize sử dụng giải thuật hash mã hóa `sha256`.
 
 ```js
 const serializedTxHash = new Uint8Array(sha256.sha256.array(serializedTx));
 ```
 
-3. Create a signature with the `keyPair`.
+3. Tạo một signature với `keyPair`.
 
 ```js
 const signature = keyPair.sign(serializedTxHash);
 ```
 
-4. Construct the signed transaction using `near-api-js` [SignedTransaction class](https://github.com/near/near-api-js/blob/d4d4cf1ac3182fa998b1e004e6782219325a641b/src/transaction.ts#L112-L123).
+4. Tạo một transaction đã sign bằng cách sử dụng [class SignedTransaction](https://github.com/near/near-api-js/blob/d4d4cf1ac3182fa998b1e004e6782219325a641b/src/transaction.ts#L112-L123) của `near-api-js`.
 
 ```js
 const signedTransaction = new nearAPI.transactions.SignedTransaction({
@@ -391,15 +391,15 @@ const signedTransaction = new nearAPI.transactions.SignedTransaction({
 
 ### Send Transaction
 
-Final step is to encode and send the transaction.
+Bước cuối cùng là encode và gửi transaction này.
 
-- First we serialize transaction into [Borsh](https://borsh.io/), and store the result as `signedSerializedTx`. _(required for all transactions)_
-- Then we send the transaction via [RPC call](/api/rpc/introduction) using the `sendJsonRpc()` method nested inside [`near`](#setting-up-connection-to-near).
+- Đầu tiên chúng ta serialize transaction bằng [Borsh](https://borsh.io/), và lưu kết quả trong variable `signedSerializedTx`. _(bắt buộc với tất cả các transaction)_
+- Sau đó chúng ta gửi transaction thông qua một [RPC call](/api/rpc/introduction) sử dụng method `sendJsonRpc()` nằm trong [`near`](#setting-up-connection-to-near).
 
 ```js
-// encodes transaction to serialized Borsh (required for all transactions)
+// encode transaction bằng Borsh serialize (bắt buộc với tất cả các transaction)
 const signedSerializedTx = signedTransaction.encode();
-// sends transaction to NEAR blockchain via JSON RPC call and records the result
+// gửi transaction tới NEAR blockchain thông qua JSON RPC call và ghi lại kết quả
 const result = await provider.sendJsonRpc("broadcast_tx_commit", [
   Buffer.from(signedSerializedTx).toString("base64"),
 ]);
@@ -407,7 +407,7 @@ const result = await provider.sendJsonRpc("broadcast_tx_commit", [
 
 ### Transaction Results
 
-Detailed transaction results of the transaction are returned in the following format:
+Các kết quả chi tiết của transction được trả về dưới dạng sau:
 
 ```bash
 {
@@ -460,17 +460,18 @@ Transaction Results:  {
 }
 ```
 
-For detailed information on transaction receipts [[click here]](https://nomicon.io/RuntimeSpec/Receipts.html)
+Để biết thêm thông tin chi tiết của các transaction receipt [[bấm vào đây]](https://nomicon.io/RuntimeSpec/Receipts.html)
 
 - To view the transaction in [NearBlocks Explorer](https://testnet.nearblocks.io/), enter the `hash` located under `transaction` / `Transaction Results`.
-- In addition, you can create a link in JS using the `networkId` and `result.transaction.hash`.
+- Hơn nữa, bạn có thể tạo một link trong JS bằng cách sử dụng `networkId` và `result.transaction.hash`.
 
 ```js
 const prefix = (networkId === "testnet") ? "testnet." : "";
 const transactionLink = `https://${prefix}nearblocks.io/txns/${result.transaction.hash}`;
 ```
 
-:::tip Got a question? <a href="https://stackoverflow.com/questions/tagged/nearprotocol"><h8>Ask it on StackOverflow!</h8></a>
+:::tip Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol"><h8>Ask it on StackOverflow!</h8></a>
 :::
 
 Happy Coding! 🚀

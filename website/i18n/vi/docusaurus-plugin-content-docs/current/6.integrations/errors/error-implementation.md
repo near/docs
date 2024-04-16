@@ -1,88 +1,89 @@
 ---
 id: error-implementation
-title: Source Code Survey
-sidebar_label: Source Code Survey
+title: Đánh Giá Source Code
+sidebar_label: Đánh Giá Source Code
 ---
 
-This page provides a very high level, sometimes "pseudocode", view of error types and related messages as implemented by the NEAR platform.
+Bài viết này cung cấp một cái nhìn rất tổng quát về các loại lỗi và thông điệp tương ứng được thực hiện bởi nền tảng NEAR, đôi khi là "pseudocode".
 
-Errors raised by the NEAR platform are implemented in the following locations in `nearcore`:
+Các lỗi do NEAR platform đưa ra được thực hiện ở các file sau trong `nearcore`:
 
 - [nearcore/core/primitives/src/errors.rs](https://github.com/near/nearcore/blob/master/core/primitives/src/errors.rs)
 - [nearcore/runtime/near-vm-errors/src/lib.rs](https://github.com/near/nearcore/blob/master/runtime/near-vm-errors/src/lib.rs)
 
 ---
 
-## RuntimeError and subtypes {#runtimeerror-and-subtypes}
+## RuntimeError và các subtype {#runtimeerror-and-subtypes}
 
 ### RuntimeError {#runtimeerror}
 
-#### Definition {#definition}
+#### Định nghĩa {#definition}
 
 ```rust
-/// Error returned from `Runtime::apply`
+/// Lỗi được trả về từ `Runtime::apply`
 pub enum RuntimeError {
-    /// An unexpected integer overflow occurred. The likely issue is an invalid state or the transition.
+    ///  Đã xảy ra lỗi tràn số integer không mong muốn. Vấn đề có thể là một state hoặc một quá trình chuyển đổi không hợp lệ.
     UnexpectedIntegerOverflow,
-    /// An error happened during TX verification and account charging. It's likely the chunk is invalid.
-    /// and should be challenged.
+    /// Lỗi đã xảy ra trong quá trình xác thực TX và tính phí account. Có thể là chunk không hợp lệ.
+    /// và cần được challenge.
     InvalidTxError(InvalidTxError),
-    /// Unexpected error which is typically related to the node storage corruption.account
-    /// That it's possible the input state is invalid or malicious.
+    /// Lỗi không mong muốn thường liên quan đến lỗi storage của node.
+    /// Đó có thể là input state không hợp lệ hoặc độc hại.
     StorageError(StorageError),
-    /// An error happens if `check_balance` fails, which is likely an indication of an invalid state.
+    /// Lỗi xảy ra nếu `check_balance` thất bại, nó có thể là dấu hiệu của một state không hợp lệ.
     BalanceMismatchError(BalanceMismatchError),
 }
 ```
 
-#### Error Messages {#error-messages}
+#### Thông Báo Lỗi {#error-messages}
 
-- see below: `InvalidTxError`, `StorageError` and `BalanceMismatchError`
+- xem dưới đây: `InvalidTxError`, `StorageError` và `BalanceMismatchError`
 
 ### InvalidTxError {#invalidtxerror}
 
-#### Definition {#definition-1}
+#### Định nghĩa {#definition-1}
 
 ```rust
-/// An error happened during TX execution
+/// Lỗi đã xảy ra trong quá trình thực thi TX
 pub enum InvalidTxError {
-    /// Happens if a wrong AccessKey used or AccessKey has not enough permissions
+    /// Xảy ra nếu sử dụng sai AccessKey hoặc AccessKey không có đủ permission.
     InvalidAccessKeyError(InvalidAccessKeyError),
-    /// TX signer_id is not in a valid format or not satisfy requirements see `near_core::primitives::utils::is_valid_account_id`
+    /// TX signer_id không có format hợp lệ hoặc không thỏa mãn các yêu cầu, xem thêm `near_core::primitives::utils::is_valid_account_id`
     InvalidSignerId { signer_id: AccountId },
-    /// TX signer_id is not found in a storage
+    /// TX signer_id không được tìm thấy trong storage
     SignerDoesNotExist { signer_id: AccountId },
-    /// Transaction nonce must be account[access_key].nonce + 1
+    /// Transaction nonce phải là account[access_key].nonce + 1
     InvalidNonce { tx_nonce: Nonce, ak_nonce: Nonce },
-    /// TX receiver_id is not in a valid format or not satisfy requirements see `near_core::primitives::utils::is_valid_account_id`
+    /// TX receiver_id không có format hợp lệ hoặc không thỏa mãn các yêu cầu, xem thêm `near_core::primitives::utils::is_valid_account_id`
     InvalidReceiverId { receiver_id: AccountId },
-    /// TX signature is not valid
+    /// TX signature không hợp lệ
     InvalidSignature,
-    /// Account does not have enough balance to cover TX cost
+    /// Account không đủ số dư để trang trải chi phí TX
     NotEnoughBalance {
         signer_id: AccountId,
         balance: Balance,
         cost: Balance,
     },
-    /// Signer account rent is unpaid
+    /// Signer account chưa trả tiền thuê
     RentUnpaid {
-        /// An account which is required to pay the rent
+        /// Account được yêu cầu trả tiền thuê
         signer_id: AccountId,
-        /// Required balance to cover the state rent
+        /// Số dư yêu cầu để trang trải cho tiền thuê của state
         amount: Balance,
     },
-    /// An integer overflow occurred during transaction cost estimation.
+    /// Lỗi tràn số integer đã xảy ra trong quá trình ước tính chi phí của transaction.
     CostOverflow,
-    /// Transaction parent block hash doesn't belong to the current chain
+    /// Parent block hash của transaction không thuộc về chain hiện tại
     InvalidChain,
-    /// Transaction has expired
+    /// Transaction đã hết hạn
     Expired,
-    /// An error occurred while validating actions of a Transaction.
+    /// Lỗi đã xảy ra trong quá trình xác nhận các action của một Transaction.
     ActionsValidation(ActionsValidationError),
 }
 ```
 
-#### Error Messages {#error-messages-1}
+
+#### Thông Báo Lỗi {#error-messages-1}
 
 ```rust
 InvalidTxError::InvalidSignerId { signer_id }
@@ -123,37 +124,37 @@ InvalidTxError::ActionsValidation(error)
 
 ### StorageError {#storageerror}
 
-#### Definition {#definition-2}
+#### Định nghĩa {#definition-2}
 
 ```rust
 pub enum StorageError {
-    /// Key-value db internal failure
+    /// Lỗi xảy ra bên trong của key-value db
     StorageInternalError,
-    /// Storage is PartialStorage and requested a missing trie node
+    /// Storage là PartialStorage và yêu cầu một trie node bị thiếu
     TrieNodeMissing,
-    /// Either invalid state or key-value db is corrupted.
-    /// For PartialStorage it cannot be corrupted.
-    /// Error message is unreliable and for debugging purposes only. It's also probably ok to
-    /// panic in every place that produces this error.
-    /// We can check if db is corrupted by verifying everything in the state trie.
+    /// State không hợp lệ hoặc key-value db bị lỗi.
+    /// Đối với PartialStorage nó không thể bị lỗi.
+    /// Thông báo lỗi không đáng tin cậy và chỉ dành cho mục đích debug. Nó cũng có thể ổn khi
+    /// panic tại bất cứ nơi nào tạo ra lỗi này.
+    /// Chúng ta có thể kiểm tra nếu db bị lỗi hay không bằng cách xác minh mọi thứ trong state trie.
     StorageInconsistentState(String),
 }
 ```
 
 ### BalanceMismatchError {#balancemismatcherror}
 
-#### Definition {#definition-3}
+#### Định nghĩa {#definition-3}
 
 ```rust
-/// Happens when the input balance doesn't match the output balance in Runtime apply.
+/// Xảy ra khi số dư đầu vào không khớp với số dư đầu ra khi áp dụng Runtime.
 pub struct BalanceMismatchError {
-    // Input balances
+    // Các số dư đầu vào
     pub incoming_validator_rewards: Balance,
     pub initial_accounts_balance: Balance,
     pub incoming_receipts_balance: Balance,
     pub processed_delayed_receipts_balance: Balance,
     pub initial_postponed_receipts_balance: Balance,
-    // Output balances
+    // Các số dư đầu ra
     pub final_accounts_balance: Balance,
     pub outgoing_receipts_balance: Balance,
     pub new_delayed_receipts_balance: Balance,
@@ -165,7 +166,7 @@ pub struct BalanceMismatchError {
 }
 ```
 
-#### Error Messages {#error-messages-2}
+#### Thông Báo Lỗi {#error-messages-2}
 
 ```rust
 "Balance Mismatch Error. The input balance {} doesn't match output balance {}\n\
@@ -188,31 +189,31 @@ Outputs:\n\
 
 ### InvalidAccessKeyError {#invalidaccesskeyerror}
 
-#### Definition {#definition-4}
+#### Định nghĩa {#definition-4}
 
 ```rust
 pub enum InvalidAccessKeyError {
-    /// The access key identified by the `public_key` doesn't exist for the account
+    /// Access key xác định bởi `public_key` không tồn tại với account
     AccessKeyNotFound { account_id: AccountId, public_key: PublicKey },
-    /// Transaction `receiver_id` doesn't match the access key receiver_id
+    /// `receiver_id` của transaction không khớp với receiver_id của access key
     ReceiverMismatch { tx_receiver: AccountId, ak_receiver: AccountId },
-    /// Transaction method name isn't allowed by the access key
+    /// Tên method của transaction không được cho phép bởi access key
     MethodNameMismatch { method_name: String },
-    /// Transaction requires a full permission access key.
+    /// Transaction yêu cầu một full permission access key.
     RequiresFullAccess,
-    /// Access Key does not have enough allowance to cover transaction cost
+    /// Access Key không đủ khoản tiền cho phép để chi trả cho chi phí của transaction
     NotEnoughAllowance {
         account_id: AccountId,
         public_key: PublicKey,
         allowance: Balance,
         cost: Balance,
     },
-    /// Having a deposit with a function call action is not allowed with a function call access key.
+    /// Có khoản tiền gửi trong một function call action không được cho phép với một function call access key.
     DepositWithFunctionCall,
 }
 ```
 
-#### Error Messages {#error-messages-3}
+#### Thông Báo Lỗi {#error-messages-3}
 
 ```rust
 InvalidAccessKeyError::AccessKeyNotFound { account_id, public_key }
@@ -238,146 +239,145 @@ InvalidAccessKeyError::DepositWithFunctionCall
 
 ### ActionsValidationError {#actionsvalidationerror}
 
-#### Definition {#definition-5}
+#### Định nghĩa {#definition-5}
 
 ```rust
-/// Describes the error for validating a list of actions.
+/// Mô tả lỗi của việc xác nhận một danh sách các action.
 pub enum ActionsValidationError {
-    /// The total prepaid gas (for all given actions) exceeded the limit.
+    /// Tổng gas trả trước (của tất cả các action) đã vượt quá giới hạn.
     TotalPrepaidGasExceeded { total_prepaid_gas: Gas, limit: Gas },
-    /// The number of actions exceeded the given limit.
+    /// Số lượng các action vượt quá giới hạn cho trước.
     TotalNumberOfActionsExceeded { total_number_of_actions: u64, limit: u64 },
-    /// The total number of bytes of the method names exceeded the limit in a Add Key action.
+    /// Tổng số byte của các tên method đã vượt quá giới hạn trong action Add Key.
     AddKeyMethodNamesNumberOfBytesExceeded { total_number_of_bytes: u64, limit: u64 },
-    /// The length of some method name exceeded the limit in a Add Key action.
+    /// Chiều dài của một số tên method đã vượt quá giới hạn trong action Add Key.
     AddKeyMethodNameLengthExceeded { length: u64, limit: u64 },
-    /// Integer overflow during a compute.
+    /// Lỗi tràn số integer trong quá trình tính toán.
     IntegerOverflow,
-    /// Invalid account ID.
+    /// Account ID không hợp lệ.
     InvalidAccountId { account_id: AccountId },
-    /// The size of the contract code exceeded the limit in a DeployContract action.
+    /// Kích thước code của contract đã vượt quá giới hạn trong action DeployContract.
     ContractSizeExceeded { size: u64, limit: u64 },
-    /// The length of the method name exceeded the limit in a Function Call action.
+    /// Chiều dài của một số tên method đã vượt quá giới hạn trong action Function Call.
     FunctionCallMethodNameLengthExceeded { length: u64, limit: u64 },
-    /// The length of the arguments exceeded the limit in a Function Call action.
+    /// Chiều dài của các tham số đã vượt quá giới hạn trong action Function Call.
     FunctionCallArgumentsLengthExceeded { length: u64, limit: u64 },
 }
 ```
 
-#### Error Messages {#error-messages-4}
+#### Thông Báo Lỗi {#error-messages-4}
 
 ```rust
 ActionsValidationError::TotalPrepaidGasExceeded     { total_prepaid_gas, limit }
      "The total prepaid gas {} exceeds the limit {}"
-     
+
 ActionsValidationError::TotalNumberOfActionsExceeded {total_number_of_actions, limit }
      "The total number of actions {} exceeds the limit {}"
-     
+
 ActionsValidationError::AddKeyMethodNamesNumberOfBytesExceeded { total_number_of_bytes, limit }
      "The total number of bytes in allowed method names {} exceeds the maximum allowed number {} in a AddKey action"
-     
+
 ActionsValidationError::AddKeyMethodNameLengthExceeded { length, limit }
      "The length of some method name {} exceeds the maximum allowed length {} in a AddKey action"
-     
+
 ActionsValidationError::IntegerOverflow
      "Integer overflow during a compute"
-     
+
 ActionsValidationError::InvalidAccountId { account_id }
      "Invalid account ID `{}`"
-     
+
 ActionsValidationError::ContractSizeExceeded { size, limit }
      "The length of the contract size {} exceeds the maximum allowed size {} in a DeployContract action"
-     
+
 ActionsValidationError::FunctionCallMethodNameLengthExceeded { length, limit }
      "The length of the method name {} exceeds the maximum allowed length {} in a FunctionCall action"
-     
+
 ActionsValidationError::FunctionCallArgumentsLengthExceeded { length, limit }
      "The length of the arguments {} exceeds the maximum allowed length {} in a FunctionCall action"
-     
+
 ```
 
-## TxExecutionError and subtypes {#txexecutionerror-and-subtypes}
+## TxExecutionError và các subtype {#txexecutionerror-and-subtypes}
 
 ### TxExecutionError {#txexecutionerror}
 
-#### Definition {#definition-6}
-
+#### Định nghĩa {#definition-6}
 ```rust
-/// Error returned in the ExecutionOutcome in case of failure
+/// Có lỗi trả về của ExecutionOutcome trong trường hợp thất bại
 pub enum TxExecutionError {
-    /// An error happened during Acton execution
+    /// Lỗi đã xảy ra trong quá trình thực thi Action
     ActionError(ActionError),
-    /// An error happened during Transaction execution
+    /// Lỗi đã xảy ra trong quá trình thực thi Transaction
     InvalidTxError(InvalidTxError),
 }
 ```
 
 ### ActionError {#actionerror}
 
-#### Definition {#definition-7}
+#### Định nghĩa {#definition-7}
 
 ```rust
 ActionError
 pub struct ActionError {
-    /// Index of the failed action in the transaction.
-    /// Action index is not defined if ActionError.kind is `ActionErrorKind::RentUnpaid`
+    /// Index của action thất bại trong transaction.
+    /// Action index không được xác định nếu ActionError.kind là `ActionErrorKind::RentUnpaid`
     pub index: Option<u64>,
-    /// The kind of ActionError happened
+    /// Loại ActionError đã xảy ra
     pub kind: ActionErrorKind,
 }
 ```
 
 ### ActionErrorKind {#actionerrorkind}
 
-#### Definition {#definition-8}
+#### Định nghĩa {#definition-8}
 
 ```rust
 pub enum ActionErrorKind {
-    /// Happens when CreateAccount action tries to create an account with account_id which is already exists in the storage
+    /// Xảy ra khi action CreateAccount cố gắng tạo account với account_id đã tồn tại trong storage
     AccountAlreadyExists { account_id: AccountId },
-    /// Happens when TX receiver_id doesn't exist (but action is not Action::CreateAccount)
+    /// Xảy ra khi receiver_id của TX không tồn tại (nhưng action không phải là Action::CreateAccount)
     AccountDoesNotExist { account_id: AccountId },
-    /// A newly created account must be under a namespace of the creator account
+    /// Account mới vừa được tạo phải nằm dưới namespace của account người tạo
     CreateAccountNotAllowed { account_id: AccountId, predecessor_id: AccountId },
-    /// Administrative actions like `DeployContract`, `Stake`, `AddKey`, `DeleteKey`. can be proceed only if sender=receiver
-    /// or the first TX action is a `CreateAccount` action
+    /// Các action quản trị như `DeployContract`, `Stake`, `AddKey`, `DeleteKey`. chỉ có thể tiến hành nếu sender=receiver
+    /// hoặc action đầu tiên của TX là action `CreateAccount`
     ActorNoPermission { account_id: AccountId, actor_id: AccountId },
-    /// Account tries to remove an access key that doesn't exist
+    /// Account cố gắng xóa một access key không tồn tại
     DeleteKeyDoesNotExist { account_id: AccountId, public_key: PublicKey },
-    /// The public key is already used for an existing access key
+    /// Public key được dùng cho một access key đã tồn tại
     AddKeyAlreadyExists { account_id: AccountId, public_key: PublicKey },
-    /// Account is staking and can not be deleted
+    /// Account đang stake và không thể xóa được.
     DeleteAccountStaking { account_id: AccountId },
-    /// Foreign sender (sender=!receiver) can delete an account only if a target account hasn't enough tokens to pay rent
+    /// Foreign sender (sender=!receiver) chỉ có thể xóa một account nếu account đó không có đủ token để trả phí thuê
     DeleteAccountHasRent {
         account_id: AccountId,
         balance: Balance,
     },
-    /// ActionReceipt can't be completed, because the remaining balance will not be enough to pay rent.
+    /// ActionReceipt không thể được hoàn tất, bởi vì số dư còn lại không đủ để trả phí thuê.
     RentUnpaid {
-        /// An account which is required to pay the rent
+        /// Account được yêu cầu để trả phí thuê
         account_id: AccountId,
-        /// Rent due to pay.
+        /// Phí thuê phải trả.
         amount: Balance,
     },
-    /// Account is not yet staked, but tries to unstake
+    /// Account không stake, nhưng cố gắng unstake
     TriesToUnstake { account_id: AccountId },
-    /// The account doesn't have enough balance to increase the stake.
+    /// Account không đủ số dư để tăng khoản tiền stake.
     TriesToStake {
         account_id: AccountId,
         stake: Balance,
         locked: Balance,
         balance: Balance,
     },
-    /// An error occurred during a `FunctionCall` Action.
+    /// Lỗi đã xảy ra trong Action `FunctionCall`.
     FunctionCallError(FunctionCallError),
-    /// Error occurs when a new `ActionReceipt` created by the `FunctionCall` action fails
-    /// receipt validation.
+    /// Lỗi xảy ra khi `ActionReceipt` mới được tạo bởi action `FunctionCall` thất bại
+    /// trong quá trình xác nhận receipt.
     NewReceiptValidationError(ReceiptValidationError),
 }
 ```
 
-#### Error Messages {#error-messages-5}
+#### Thông Báo Lỗi {#error-messages-5}
 
 ```rust
 ActionErrorKind::AccountAlreadyExists { account_id } 
@@ -419,31 +419,32 @@ ActionErrorKind::NewReceiptValidationError(e)
 "An new action receipt created during a FunctionCall is not valid: {}"
 ```
 
+
 ### ReceiptValidationError {#receiptvalidationerror}
 
-#### Definition {#definition-9}
+#### Định nghĩa {#definition-9}
 
 ```rust
-/// Describes the error for validating a receipt.
+/// Mô tả lỗi cho quá trình xác nhận receipt.
 pub enum ReceiptValidationError {
-    /// The `predecessor_id` of a Receipt is not valid.
+    /// `predecessor_id` của Receipt không hợp lệ.
     InvalidPredecessorId { account_id: AccountId },
-    /// The `receiver_id` of a Receipt is not valid.
+    /// `receiver_id` của Receipt không hợp lệ.
     InvalidReceiverId { account_id: AccountId },
-    /// The `signer_id` of an ActionReceipt is not valid.
+    /// `signer_id` của ActionReceipt không hợp lệ.
     InvalidSignerId { account_id: AccountId },
-    /// The `receiver_id` of a DataReceiver within an ActionReceipt is not valid.
+    /// `receiver_id` của DataReceiver nằm trong ActionReceipt không hợp lệ.
     InvalidDataReceiverId { account_id: AccountId },
-    /// The length of the returned data exceeded the limit in a DataReceipt.
+    /// Chiều dài của dữ liệu trả về đã vượt quá giới hạn trong DataReceipt.
     ReturnedValueLengthExceeded { length: u64, limit: u64 },
-    /// The number of input data dependencies exceeds the limit in an ActionReceipt.
+    /// Số lượng các dependency của dữ liệu đầu vào đã vượt quá giới hạn trong ActionReceipt.
     NumberInputDataDependenciesExceeded { number_of_input_data_dependencies: u64, limit: u64 },
-    /// An error occurred while validating actions of an ActionReceipt.
+    /// Lỗi đã xảy ra trong quá trình xác nhận các action của một ActionReceipt.
     ActionsValidation(ActionsValidationError),
 }
 ```
 
-#### Error Messages {#error-messages-6}
+#### Thông Báo Lỗi {#error-messages-6}
 
 ```rust
 ReceiptValidationError::InvalidPredecessorId { account_id } 
@@ -467,24 +468,25 @@ ReceiptValidationError::NumberInputDataDependenciesExceeded { number_of_input_da
 ReceiptValidationError::ActionsValidation(e) 
 ```
 
-## VMError and subtypes {#vmerror-and-subtypes}
+
+## VMError và các subtype {#vmerror-and-subtypes}
 
 ### VMError {#vmerror}
 
-#### Definition {#definition-10}
+#### Định nghĩa {#definition-10}
 
 ```rust
 pub enum VMError {
     FunctionCallError(FunctionCallError),
-    /// Serialized external error from External trait implementation.
+    /// Lỗi bên ngoài từ việc thực hiện External trait được serialize.
     ExternalError(Vec<u8>),
-    /// An error that is caused by an operation on an inconsistent state.
-    /// E.g. an integer overflow by using a value from the given context.
+    /// Lỗi xảy ra bởi hoạt động trên một state không đồng nhất.
+    /// Ví dụ lỗi tràn số integer khi sử dụng một giá trị từ một context cho trước.
     InconsistentStateError(InconsistentStateError),
 }
 ```
 
-#### Error Messages {#error-messages-7}
+#### Thông Báo Lỗi {#error-messages-7}
 
 ```rust
 VMError::ExternalError
@@ -493,7 +495,7 @@ VMError::ExternalError
 
 ### FunctionCallError {#functioncallerror}
 
-#### Definition {#definition-11}
+#### Định nghĩa {#definition-11}
 
 ```rust
 pub enum FunctionCallError {
@@ -505,7 +507,7 @@ pub enum FunctionCallError {
 }
 ```
 
-#### Error Messages {#error-messages-8}
+#### Thông Báo Lỗi {#error-messages-8}
 
 ```rust
 FunctionCallError::WasmTrap
@@ -514,7 +516,7 @@ FunctionCallError::WasmTrap
 
 ### MethodResolveError {#methodresolveerror}
 
-#### Definition {#definition-12}
+#### Định nghĩa {#definition-12}
 
 ```rust
 pub enum MethodResolveError {
@@ -527,7 +529,7 @@ pub enum MethodResolveError {
 
 ### CompilationError {#compilationerror}
 
-#### Definition {#definition-13}
+#### Định nghĩa {#definition-13}
 
 ```rust
 pub enum CompilationError {
@@ -536,8 +538,7 @@ pub enum CompilationError {
     WasmerCompileError { msg: String },
 }
 ```
-
-#### Error Messages {#error-messages-9}
+#### Thông Báo Lỗi {#error-messages-9}
 
 ```rust
 CompilationError::CodeDoesNotExist
@@ -552,36 +553,36 @@ CompilationError::WasmerCompileError
 
 ### PrepareError {#prepareerror}
 
-#### Definition {#definition-14}
+#### Định nghĩa {#definition-14}
 
 ```rust
-/// Error that can occur while preparing or executing Wasm smart-contract.
+/// Lỗi xảy ra khi chuẩn bị hoặc thực thi Wasm smart-contract.
 pub enum PrepareError {
-    /// Error happened while serializing the module.
+    /// Lỗi đã xảy ra trong khi serialize module.
     Serialization,
-    /// Error happened while deserializing the module.
+    /// Lỗi đã xảy ra trong khi deserialize module.
     Deserialization,
-    /// Internal memory declaration has been found in the module.
+    /// Khai báo bộ nhớ bên trong đã được tìm thấy trong module.
     InternalMemoryDeclared,
-    /// Gas instrumentation failed.
+    /// Thất bại trong việc đo đạc gas.
     ///
-    /// This most likely indicates the module isn't valid.
+    /// Điều này cho thấy rất có thể module không hợp lệ.
     GasInstrumentation,
-    /// Stack instrumentation failed.
+    /// Thất bại trong việc đo đạc stack.
     ///
-    /// This  most likely indicates the module isn't valid.
+    /// Điều này cho thấy rất có thể module không hợp lệ.
     StackHeightInstrumentation,
-    /// Error happened during instantiation.
+    /// Lỗi đã xảy ra trong quá trình khởi tạo.
     ///
-    /// This might indicate that `start` function trapped, or module isn't
-    /// instantiable and/or unlinkable.
+    /// Điều này chỉ ra rằng có thể function `start` bị kẹt, hoặc module không
+    /// thể khởi tạo và/hoặc không thể kết nối được.
     Instantiate,
-    /// Error creating memory.
+    /// Lỗi khi tạo bộ nhớ.
     Memory,
 }
 ```
 
-#### Error Messages {#error-messages-10}
+#### Thông Báo Lỗi {#error-messages-10}
 
 ```rust
 Serialization
@@ -608,73 +609,71 @@ Memory
 
 ### HostError {#hosterror}
 
-#### Definition {#definition-15}
+#### Định nghĩa {#definition-15}
 
 ```rust
 pub enum HostError {
-    /// String encoding is bad UTF-16 sequence
+    /// String encoding không phải là một chuỗi UTF-16
     BadUTF16,
-    /// String encoding is bad UTF-8 sequence
+    /// String encoding không phải là một chuỗi UTF-8
     BadUTF8,
-    /// Exceeded the prepaid gas
+    /// Đã vượt quá lượng gas trả trước
     GasExceeded,
-    /// Exceeded the maximum amount of gas allowed to burn per contract
+    /// Đã vượt quá số lượng gas tối đa được cho phép burn cho mỗi contract
     GasLimitExceeded,
-    /// Exceeded the account balance
+    /// Đã vượt quá số dư của account
     BalanceExceeded,
-    /// Tried to call an empty method name
+    /// Đã cố gắng call tên method rỗng
     EmptyMethodName,
-    /// Smart contract panicked
+    /// Smart contract đã panic
     GuestPanic { panic_msg: String },
-    /// IntegerOverflow happened during a contract execution
+    /// IntegerOverflow đã xảy ra trong quá trình thực thi contract
     IntegerOverflow,
-    /// `promise_idx` does not correspond to existing promises
+    /// `promise_idx` không tương ứng với các promise hiện có
     InvalidPromiseIndex { promise_idx: u64 },
-    /// Actions can only be appended to non-joint promise.
+    /// Các action chỉ có thể nối thêm với các non-joint promise.
     CannotAppendActionToJointPromise,
-    /// Returning joint promise is currently prohibited
+    /// Trả về joint promise đang bị cấm
     CannotReturnJointPromise,
-    /// Accessed invalid promise result index
+    /// Đã truy cập vào index kết quả không hợp lệ của promise
     InvalidPromiseResultIndex { result_idx: u64 },
-    /// Accessed invalid register id
+    /// Đã truy cập vào register id không hợp lệ
     InvalidRegisterId { register_id: u64 },
-    /// Iterator `iterator_index` was invalidated after its creation by performing a mutable operation on trie
+    /// Iterator `iterator_index` đã bị vô hiệu sau khi nó được tạo ra bằng cách thực thi một hành động mutable trên trie
     IteratorWasInvalidated { iterator_index: u64 },
-    /// Accessed memory outside the bounds
+    /// Đã truy cập ngoài vùng nhớ
     MemoryAccessViolation,
-    /// VM Logic returned an invalid receipt index
+    /// VM Logic đã trả về một receipt index không hợp lệ
     InvalidReceiptIndex { receipt_index: u64 },
-    /// Iterator index `iterator_index` does not exist
+    /// Iterator index `iterator_index` không tồn tại
     InvalidIteratorIndex { iterator_index: u64 },
-    /// VM Logic returned an invalid account id
+    /// VM Logic đã trả về account id không hợp lệ
     InvalidAccountId,
-    /// VM Logic returned an invalid method name
+    /// VM Logic đã trả về tên method không hợp lệ
     InvalidMethodName,
-    /// VM Logic provided an invalid public key
+    /// VM Logic đã cung cấp public key không hợp lệ
     InvalidPublicKey,
-    /// `method_name` is not allowed in view calls
+    /// `method_name` không được cho phép trong view call
     ProhibitedInView { method_name: String },
-    /// The total number of logs will exceed the limit.
+    /// Tổng số lượng log sẽ vượt quá giới hạn.
     NumberOfLogsExceeded { limit: u64 },
-    /// The storage key length exceeded the limit.
+    /// Chiều dài của storage key đã vượt quá giới hạn.
     KeyLengthExceeded { length: u64, limit: u64 },
-    /// The storage value length exceeded the limit.
+    /// Chiều dài của storage value đã vượt quá giới hạn.
     ValueLengthExceeded { length: u64, limit: u64 },
-    /// The total log length exceeded the limit.
+    /// Tổng số chiều dài của log đã vượt quá giới hạn.
     TotalLogLengthExceeded { length: u64, limit: u64 },
-    /// The maximum number of promises within a FunctionCall exceeded the limit.
+    /// Số lượng promise tối đa trong một FunctionCall đã vượt quá giới hạn.
     NumberPromisesExceeded { number_of_promises: u64, limit: u64 },
-    /// The maximum number of input data dependencies exceeded the limit.
+    /// Số lượng dependency tối đa của dữ liệu đầu vào đã vượt quá giới hạn.
     NumberInputDataDependenciesExceeded { number_of_input_data_dependencies: u64, limit: u64 },
-    /// The returned value length exceeded the limit.
+    /// Chiều dài của giá trị trả về đã vượt quá giới hạn.
     ReturnedValueLengthExceeded { length: u64, limit: u64 },
-    /// The contract size for DeployContract action exceeded the limit.
+    /// Kích thước contract cho action DeployContract đã vượt quá giới hạn.
     ContractSizeExceeded { size: u64, limit: u64 },
 }
 ```
-
-#### Error Messages {#error-messages-11}
-
+#### Thông Báo Lỗi {#error-messages-11}
 ```rust
 BadUTF8 
   "String encoding is bad UTF-8 sequence."
@@ -765,45 +764,46 @@ ContractSizeExceeded { size, limit }
 
 ```
 
+
 ### VMLogicError {#vmlogicerror}
 
-#### Definition {#definition-16}
+#### Định nghĩa {#definition-16}
 
 ```rust
 pub enum VMLogicError {
     HostError(HostError),
-    /// Serialized external error from External trait implementation.
+    /// Lỗi bên ngoài từ việc thực hiện External trait được serialize.
     ExternalError(Vec<u8>),
-    /// An error that is caused by an operation on an inconsistent state.
+    /// Lỗi xảy ra bởi hoạt động trên một state không đồng nhất.
     InconsistentStateError(InconsistentStateError),
 }
 ```
 
 ### InconsistentStateError {#inconsistentstateerror}
 
-#### Definition {#definition-17}
+#### Định nghĩa {#definition-17}
 
 ```rust
 pub enum InconsistentStateError {
-    /// Math operation with a value from the state resulted in a integer overflow.
+    /// Hoạt động tính toán với giá trị từ state đã trả về một lỗi tràn số integer.
     IntegerOverflow,
 }
 ```
 
-#### Error Messages {#error-messages-12}
-
+#### Thông Báo Lỗi {#error-messages-12}
 ```rust
 InconsistentStateError::IntegerOverflow
     "Math operation with a value from the state resulted in a integer overflow."
 ```
 
+
 ## RPC interface {#rpc-interface}
 
-- error name
-- error subtype(s)
-- error properties
+- tên lỗi
+- (các) subtype của lỗi
+- các thuộc tính của lỗi
 
-### Error Schema {#error-schema}
+### Schema của lỗi {#error-schema}
 
 ```json
 {
@@ -1441,5 +1441,6 @@ InconsistentStateError::IntegerOverflow
 }
 ```
 
-:::tip Got a question? <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
+:::tip Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
 :::

@@ -4,6 +4,7 @@ title: Balance changes
 sidebar_label: Balance Changes
 ---
 
+
 ## Prerequisites {#prerequisites}
 
 - [NEAR Account](https://testnet.mynearwallet.com/create)
@@ -77,7 +78,6 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
   }
 }
 ```
-
 </details>
 
 ---
@@ -86,14 +86,14 @@ Alternatively, you can view account balances by [querying `view_account`](/api/r
 
 **Example HTTPie Request:**
 
-```bash
-http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
-params:='{
-  "request_type": "view_account",
-  "finality": "final",
-  "account_id": "sender.testnet"
-}'
-```
+  ```bash
+  http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
+  params:='{
+    "request_type": "view_account",
+    "finality": "final",
+    "account_id": "sender.testnet"
+  }'
+  ```
 
 **Example Response:**
 
@@ -117,5 +117,6 @@ params:='{
 
 ---
 
-:::tip Got a question? <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
+:::tip Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
 :::

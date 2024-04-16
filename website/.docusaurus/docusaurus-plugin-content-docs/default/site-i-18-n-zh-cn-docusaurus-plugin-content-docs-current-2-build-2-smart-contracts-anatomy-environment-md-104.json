@@ -11,6 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/anatomy/environment.md",
   "tags": [],
   "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1712954223000,
   "frontMatter": {
     "id": "environment",
     "title": "Environment"

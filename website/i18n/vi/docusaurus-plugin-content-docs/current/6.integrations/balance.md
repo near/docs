@@ -4,25 +4,26 @@ title: Balance changes
 sidebar_label: Balance Changes
 ---
 
-## Prerequisites {#prerequisites}
+
+## Các điều kiện tiên quyết {#prerequisites}
 
 - [NEAR Account](https://testnet.mynearwallet.com/create)
 - [NEAR-CLI](/tools/near-cli)
-- Credentials for sender account stored locally by running [`near login`](/tools/near-cli#near-login)
+- Thông tin xác thực cho sender account được lưu trữ trên local bằng cách chạy [`near login`](/docs/tools/near-cli#near-login)
 
 ### Native NEAR (Ⓝ) {#native-near}
 
-> Balance changes on accounts can be tracked by using our [changes RPC endpoint](/api/rpc/setup#view-account-changes). You can test this out by sending tokens to an account using [NEAR-CLI](/tools/near-cli#near-send) and then viewing the changes made.
+> Các thay đổi số dư trên các account có thể được theo dõi bằng cách sử dụng [changes RPC endpoint](/api/rpc/setup#view-account-changes) của chúng tôi. Bạn có thể kiểm tra điều này bằng cách gửi các token đến một account sử dụng [NEAR-CLI](/tools/near-cli#near-send) và sau đó xem các thay đổi đã thực hiện.
 
 ## Send Tokens {#send-tokens}
 
-- Send tokens using [`near send`](/tools/near-cli#near-send)
+- Gửi các token sử dụng [`near send`](/docs/tools/near-cli#near-send)
 
 ```bash
 near send sender.testnet receiver.testnet 1
 ```
 
-- You should see a result in your terminal that looks something like this:
+- Bạn sẽ thấy một kết quả trong terminal của mình trông giống như sau:
 
 ```bash
 Sending 1 NEAR to receiver.testnet from sender.testnet
@@ -34,9 +35,9 @@ https://testnet.nearblocks.io/txns/4To336bYcoGc3LMucJPMk6fMk5suKfCrdNotrRtTxqDy
 ## View Balance Changes {#view-balance-changes}
 
 - Open the transaction URL in [NearBlocks Explorer](https://testnet.nearblocks.io/) and copy the `BLOCK HASH`.
-- Using the `BLOCK HASH` and the accountId, query the [changes RPC endpoint](/api/rpc/setup#view-account-changes) to view changes.
+- Sử dụng `BLOCK HASH` và accountId, truy vấn [changes RPC endpoint](/docs/api/rpc#view-account-changes) để xem những thay đổi.
 
-**Example Query using HTTPie:**
+**Ví dụ Query sử dụng HTTPie:**
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
@@ -49,7 +50,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
 ```
 
 <details>
-<summary>**Example Response:**</summary>
+<summary>**Ví dụ về response nhận được:**</summary>
 
 ```json
 {
@@ -77,25 +78,24 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
   }
 }
 ```
-
 </details>
 
 ---
 
-Alternatively, you can view account balances by [querying `view_account`](/api/rpc/setup#view-account) which only requires an accountId.
+Ngoài ra, bạn có thể xem số dư của account bằng cách [truy vấn `view_account`](/docs/api/rpc#view-account) mà chỉ yêu cầu một accountId.
 
-**Example HTTPie Request:**
+**Ví dụ HTTPie Request:**
 
-```bash
-http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
-params:='{
-  "request_type": "view_account",
-  "finality": "final",
-  "account_id": "sender.testnet"
-}'
-```
+  ```bash
+  http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
+  params:='{
+    "request_type": "view_account",
+    "finality": "final",
+    "account_id": "sender.testnet"
+  }'
+  ```
 
-**Example Response:**
+**Ví dụ về response nhận được là:**
 
 ```json
 {
@@ -113,9 +113,10 @@ params:='{
 }
 ```
 
-**Note:** Gas prices can change between blocks. Even for transactions with deterministic gas cost the cost in NEAR could also be different. You can query the gas price for recent blocks using the [`gas_price` RPC endpoint](https://docs.near.org/api/rpc/setup#gas-price).
+** Lưu ý:** Biểu phí Gas có thể thay đổi giữa các block. Ngay cả đối với các transaction đã xác định giá gas, chi phí trong NEAR cũng có thể khác. You can query the gas price for recent blocks using the [`gas_price` RPC endpoint](https://docs.near.org/api/rpc/setup#gas-price).
 
 ---
 
-:::tip Got a question? <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
+:::tip Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
 :::

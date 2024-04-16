@@ -31,7 +31,7 @@ The tests in the [Counter Example](https://github.com/near-examples/counters) re
 
 ## Snippet II: Modifying the Context
 
-While doing unit testing you can modify the [Environment variables](../contracts/environment/environment.md) through the `VMContextBuilder`. 이를 통해, 예를 들어 보증금 및 가스가 첨부된 다른 사용자의 호출을 시뮬레이션할 수 있습니다. Here we present a snippet on how we test the `donate` method from our [Donation Example](https://github.com/near-examples/donation-examples) by manipulating the `predecessor` and `attached_deposit`.
+While doing unit testing you can modify the [Environment variables](../anatomy/environment.md) through the `VMContextBuilder`. 이를 통해, 예를 들어 보증금 및 가스가 첨부된 다른 사용자의 호출을 시뮬레이션할 수 있습니다. Here we present a snippet on how we test the `donate` method from our [Donation Example](https://github.com/near-examples/donation-examples) by manipulating the `predecessor` and `attached_deposit`.
 
 <CodeTabs>
   <Language value="🦀 Rust" language="rust">
@@ -46,9 +46,9 @@ While doing unit testing you can modify the [Environment variables](../contracts
 
 단위 테스트는 코드 무결성을 확인하고 격리된 메서드에서 기본적인 오류를 감지하는 데 유용합니다. 그러나 단위 테스트는 블록체인에서 실행되지 않기 때문에 감지할 수 없는 것이 많습니다. 단위 테스트는 다음과 같은 상황에 적합하지 않습니다.
 
-- [가스](../contracts/environment/environment.md) 및 [스토리지](../contracts/storage.md) 사용량 테스트
-- [전송](../contracts/actions.md) 테스트
-- [교차 컨트랙트 호출(Cross-contract Call)](../contracts/crosscontract.md) 테스트
+- [가스](../anatomy/environment.md) 및 [스토리지](../anatomy/storage.md) 사용량 테스트
+- [전송](../anatomy/actions.md) 테스트
+- [교차 컨트랙트 호출(Cross-contract Call)](../anatomy/crosscontract.md) 테스트
 - 복잡한 상호 작용 테스트(예: 컨트랙트에 여러 사용자들이 자금을 예치하는 경우)
 
-이러한 모든 경우에 대해서, [통합 테스트](integration.md)로 단위 테스트를 **보완**해야 합니다.
+이러한 모든 경우에 대해서, [통합 테스트](./integration-test.md)로 단위 테스트를 **보완**해야 합니다.

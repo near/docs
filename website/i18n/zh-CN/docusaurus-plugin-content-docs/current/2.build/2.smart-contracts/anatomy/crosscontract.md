@@ -22,7 +22,7 @@ There is a delay between the call and the callback in which everyone can still i
 
 ## Snippet: Querying Information
 
-While making your contract, it is likely that you will want to query information from another contract. Below, you can see a basic example in which we query the greeting message from our [Hello NEAR](quickstart.md) example.
+While making your contract, it is likely that you will want to query information from another contract. Below, you can see a basic example in which we query the greeting message from our [Hello NEAR](../quickstart.md) example.
 
 <CodeTabs>
 <Language value="🌐 JavaScript" language="ts">
@@ -108,15 +108,14 @@ external_trait::ext("external_address")
 - The amount of NEAR to attach (deducted from **your contract’s balance**)
 
 :::tip
-Notice that the callback could be made to **any** contract. This means that, if you want, the result could be potentially handled by another contract.
+:::tip Notice that the callback could be made to **any** contract. This means that, if you want, the result could be potentially handled by another contract.
 :::
 
 :::caution
 The fact that you are creating a Promise means that both the cross-contract call and callback will **not execute immediately**. In fact:
 
 - The cross-contract call will execute 1 or 2 blocks after your method finishes **correctly**.
-- The callback will then execute 1 or 2 blocks after the **external** method finishes (**correctly or not**)
-  :::
+- The callback will then execute 1 or 2 blocks after the **external** method finishes (**correctly or not**) :::
 
 ---
 
@@ -130,7 +129,7 @@ In the callback method you will have access to the result, which contains two im
 - `buffer`: Having the value returned by the external method (if any)
 
 :::tip
-The callback methods in your contract must be public, so it can be called when the second promise executes. However, they should be only callable by **your contract**. Always make sure to make it private by asserting that the `predecessor` is `current_account_id`. In rust this can be achieved using the `#[private]` decorator.
+:::tip The callback methods in your contract must be public, so it can be called when the second promise executes. However, they should be only callable by **your contract**. Always make sure to make it private by asserting that the `predecessor` is `current_account_id`. In rust this can be achieved using the `#[private]` decorator.
 :::
 
 ### Checking Execution Status
@@ -175,16 +174,13 @@ In case the call finishes successfully, the resulting object will have a `status
 
 ### Failed Execution
 
-If the external method fails (i.e. it panics), then your callback will be **executed anyway**. Here you need to **manually rollback** any changes made in your
-contract during the original call. Particularly:
+If the external method fails (i.e. it panics), then your callback will be **executed anyway**. Here you need to **manually rollback** any changes made in your contract during the original call. Particularly:
 
 1. If the contract attached NEAR to the call, the funds are sent back to **the contract's account**.
 2. If the original method made any state changes (i.e. changed or stored data), they **won't be automatically reverted**.
 
 :::warning
-If your original method finishes correctly then the callback executes **even if the external method panics**. Your state will **not** rollback automatically,
-and $NEAR will **not** be returned to the signer automatically. Always make sure to check in the callback if the external method failed, and manually rollback any
-operation if necessary.
+:::warning If your original method finishes correctly then the callback executes **even if the external method panics**. Your state will **not** rollback automatically, and $NEAR will **not** be returned to the signer automatically. Always make sure to check in the callback if the external method failed, and manually rollback any operation if necessary.
 :::
 
 ---
@@ -204,5 +200,5 @@ This has important implications on how you should handle the callbacks. Particul
 We have a whole [security section](../security/callbacks.md) dedicated to these specific errors, so please go and check it.
 
 :::warning
-Not following these basic security guidelines could expose your contract to exploits. Please check the [security section](../security/callbacks.md), and if still in doubt, [join us in Discord](https://near.chat).
+:::warning Not following these basic security guidelines could expose your contract to exploits. Please check the [security section](../security/callbacks.md), and if still in doubt, [join us in Discord](https://near.chat).
 :::

@@ -73,7 +73,7 @@ This would copy the Wasm bytes and contract state from [v2.ref-finance.near](htt
 
 :::note
 
-`withData` will only work out-of-the-box if the contract's data is 50kB or less. This is due to the default configuration of RPC servers; see [the "Heads Up" note here](../../5.api/rpc/contracts.md#view-contract-state-view-contract-state).
+`withData` will only work out-of-the-box if the contract's data is 50kB or less. This is due to the default configuration of RPC servers; see [the "Heads Up" note here](../../../5.api/rpc/contracts.md#view-contract-state-view-contract-state).
 
 :::
 
@@ -263,7 +263,7 @@ _[See the full example on Github](https://github.com/near/workspaces-rs/blob/mai
 
 ## Using Testnet
 
-NEAR Workspaces is set up so that you can write tests once and run them against a local Sandbox node (the default behavior) or against [NEAR TestNet](../../1.concepts/basics/networks.md). Some reasons this might be helpful:
+NEAR Workspaces is set up so that you can write tests once and run them against a local Sandbox node (the default behavior) or against [NEAR TestNet](../../../1.concepts/basics/networks.md). Some reasons this might be helpful:
 
 - Gives higher confidence that your contracts work as expected
 - You can test against deployed testnet contracts

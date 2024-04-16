@@ -1,40 +1,40 @@
 {
-  "docusaurusVersion": "3.2.0",
+  "docusaurusVersion": "3.2.1",
   "pluginVersions": {
     "docusaurus-plugin-content-docs": {
       "type": "package",
       "name": "@docusaurus/plugin-content-docs",
-      "version": "3.2.0"
+      "version": "3.2.1"
     },
     "docusaurus-plugin-content-blog": {
       "type": "package",
       "name": "@docusaurus/plugin-content-blog",
-      "version": "3.2.0"
+      "version": "3.2.1"
     },
     "docusaurus-plugin-content-pages": {
       "type": "package",
       "name": "@docusaurus/plugin-content-pages",
-      "version": "3.2.0"
+      "version": "3.2.1"
     },
     "docusaurus-plugin-google-analytics": {
       "type": "package",
       "name": "@docusaurus/plugin-google-analytics",
-      "version": "3.2.0"
+      "version": "3.2.1"
     },
     "docusaurus-plugin-sitemap": {
       "type": "package",
       "name": "@docusaurus/plugin-sitemap",
-      "version": "3.2.0"
+      "version": "3.2.1"
     },
     "docusaurus-theme-classic": {
       "type": "package",
       "name": "@docusaurus/theme-classic",
-      "version": "3.2.0"
+      "version": "3.2.1"
     },
     "docusaurus-theme-search-algolia": {
       "type": "package",
       "name": "@docusaurus/theme-search-algolia",
-      "version": "3.2.0"
+      "version": "3.2.1"
     },
     "monaco-editor": {
       "type": "project"
@@ -60,7 +60,7 @@
     "docusaurus-theme-mermaid": {
       "type": "package",
       "name": "@docusaurus/theme-mermaid",
-      "version": "3.2.0"
+      "version": "3.2.1"
     }
   }
 }

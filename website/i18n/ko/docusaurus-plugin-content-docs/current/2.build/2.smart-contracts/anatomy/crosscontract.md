@@ -22,7 +22,7 @@ Cross-contract calls allow your contract to interact with other deployed contrac
 
 ## 스니펫: 정보 조회
 
-While making your contract, it is likely that you will want to query information from another contract. Below, you can see a basic example in which we query the greeting message from our [Hello NEAR](quickstart.md) example.
+While making your contract, it is likely that you will want to query information from another contract. Below, you can see a basic example in which we query the greeting message from our [Hello NEAR](../quickstart.md) example.
 
 <CodeTabs>
 <Language value="🌐 JavaScript" language="ts">

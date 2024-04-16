@@ -91,7 +91,7 @@ const CONTRACT_ACCOUNT: &str = "contract_account_name_on_testnet.testnet";
 const BLOCK_HEIGHT: BlockHeight = 12345;
 ````
 
-이에 대해서는 ["주의" 메모](../../5.api/rpc/contracts.md#view-contract-state-view-contract-state)를 참조하시기 바랍니다. You'll have to re-initialize it with all the data to run tests.
+이에 대해서는 ["주의" 메모](../../../5.api/rpc/contracts.md#view-contract-state-view-contract-state)를 참조하시기 바랍니다. You'll have to re-initialize it with all the data to run tests.
 
 ````rust
 체인 내 컨트랙트의 `.wasm` 파일을 가져오는 `pull_contract` 함수를 만듭니다. 테스트를 실행하려면 모든 데이터를 다시 초기화해야 합니다.

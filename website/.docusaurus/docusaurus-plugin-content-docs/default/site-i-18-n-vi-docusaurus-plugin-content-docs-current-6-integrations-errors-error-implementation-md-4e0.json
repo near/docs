@@ -1,7 +1,7 @@
 {
   "id": "integrations/errors/error-implementation",
-  "title": "Source Code Survey",
-  "description": "This page provides a very high level, sometimes \"pseudocode\", view of error types and related messages as implemented by the NEAR platform.",
+  "title": "Đánh Giá Source Code",
+  "description": "Bài viết này cung cấp một cái nhìn rất tổng quát về các loại lỗi và thông điệp tương ứng được thực hiện bởi nền tảng NEAR, đôi khi là \"pseudocode\".",
   "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/6.integrations/errors/error-implementation.md",
   "sourceDirName": "6.integrations/errors",
   "slug": "/integrations/errors/error-implementation",
@@ -11,18 +11,20 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/6.integrations/errors/error-implementation.md",
   "tags": [],
   "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1712954223000,
   "frontMatter": {
     "id": "error-implementation",
-    "title": "Source Code Survey",
-    "sidebar_label": "Source Code Survey"
+    "title": "Đánh Giá Source Code",
+    "sidebar_label": "Đánh Giá Source Code"
   },
   "sidebar": "exchanges",
   "previous": {
-    "title": "Introduction",
+    "title": "Giới thiệu",
     "permalink": "/vi/integrations/errors/introduction"
   },
   "next": {
-    "title": "Avoiding Token Loss",
+    "title": "Token Loss",
     "permalink": "/vi/integrations/errors/token-loss"
   }
 }

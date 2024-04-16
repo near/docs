@@ -46,7 +46,7 @@ Under the hood, the `NEAR Bindgen` decorator/macro traverses the class, generati
 
 ### The State
 
-Each account has its own state (storage), which **only they can modify** but [anyone can see](../../../4.tools/cli.md#near-view-state-near-view-state).
+Each account has its own state (storage), which **only they can modify** but [anyone can see](../../4.tools/cli.md#near-view-state-near-view-state).
 
 The state is defined and modified through the **main class' attributes**.
 
@@ -54,8 +54,7 @@ Contracts [**pay for their storage**](./storage.md#storage-cost) by locking part
 
 :::info Key-Value Storage
 
-The contract actually uses a `key-value` storage to persist values. This however is abstracted from you
-by the SDK through [serialization](./serialization.md).
+The contract actually uses a `key-value` storage to persist values. This however is abstracted from you by the SDK through [serialization](./serialization.md).
 
 :::
 
@@ -80,8 +79,7 @@ There are two ways to initialize the account's state, and they can co-exist:
 
 To define an initialization method simply decorate it with the [initialization macro](#decorators--macros).
 
-The method will now be able to define the initial state's values, raising an error if invoked
-while **the state is already initialized**.
+The method will now be able to define the initial state's values, raising an error if invoked while **the state is already initialized**.
 
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="🌐 JavaScript">
@@ -156,23 +154,23 @@ All the **public methods** are exposed to the network as the contract's interfac
   <TabItem value="🌐 JavaScript">
 
 ```ts
-  @NearBindgen({})
-  class Contract {
+@NearBindgen({})
+class Contract {
 
-    @initialize({ ... })
-    init({ ... }) { /* public `init` method */ }
+  @initialize({ ... })
+  init({ ... }) { /* public `init` method */ }
 
-    @view({})
-    get_message({ ...  }) { /* public `view` method */ }
-  
-    @call({})
-    add_message({ ... }) { /* public `call` method */ }
+  @view({})
+  get_message({ ...  }) { /* public `view` method */ }
 
-    private internal_search( ... ) { /* private internal method */ }
+  @call({})
+  add_message({ ... }) { /* public `call` method */ }
 
-    @call({privateFunction: true})
-    set_owner({ ... }) { /* public, panics when caller is not the contract's account */ }
-  }
+  private internal_search( ... ) { /* private internal method */ }
+
+  @call({privateFunction: true})
+  set_owner({ ... }) { /* public, panics when caller is not the contract's account */ }
+}
 ```
 
 </TabItem>
@@ -180,17 +178,17 @@ All the **public methods** are exposed to the network as the contract's interfac
 <TabItem value="🦀 Rust">
 
 ```rust
-  #[near_bindgen]
-  impl Contract {
-    #[init]
-    pub fn init( ... ) -> Self { /* public `init` method */ }
-    pub fn get_message(&self, ... ) { /* public `view` method */ }
-    pub fn add_message(&mut self, ... ) { /* public `call` method */ }
-    fn internal_search(&self, ... ) { /* private internal method */ }
+#[near_bindgen]
+impl Contract {
+  #[init]
+  pub fn init( ... ) -> Self { /* public `init` method */ }
+  pub fn get_message(&self, ... ) { /* public `view` method */ }
+  pub fn add_message(&mut self, ... ) { /* public `call` method */ }
+  fn internal_search(&self, ... ) { /* private internal method */ }
 
-    #[private]
-    pub fn set_owner(&mut self, ... ) { /* public, panics when caller is not the contract's account */ }
-  }
+  #[private]
+  pub fn set_owner(&mut self, ... ) { /* public, panics when caller is not the contract's account */ }
+}
 ```
 
 </TabItem>
@@ -227,10 +225,10 @@ For this, you can use the `private` macro/decorator.
   <TabItem value="🌐 JavaScript">
 
 ```ts
-  @call({privateFunction: true})
-  callback( ... ){
-    // this method can only be called by the contract's account
-  }
+@call({privateFunction: true})
+callback( ... ){
+  // this method can only be called by the contract's account
+}
 ```
 
 </TabItem>
@@ -238,10 +236,10 @@ For this, you can use the `private` macro/decorator.
 <TabItem value="🦀 Rust">
 
 ```rust
-  #[private]
-  pub fn callback(&mut self, ... ){
-    // this method can only be called by the contract's account
-  }
+#[private]
+pub fn callback(&mut self, ... ){
+  // this method can only be called by the contract's account
+}
 ```
 
 </TabItem>
@@ -258,10 +256,10 @@ By default **all methods panic** if a user **attaches money** while calling them
   <TabItem value="🌐 JavaScript">
 
 ```ts
-  @call({payableFunction: true})
-  deposit_and_stake( ... ){
-    // this method can receive money from the user
-  }
+@call({payableFunction: true})
+deposit_and_stake( ... ){
+  // this method can receive money from the user
+}
 ```
 
 </TabItem>
@@ -269,10 +267,10 @@ By default **all methods panic** if a user **attaches money** while calling them
 <TabItem value="🦀 Rust">
 
 ```rust
-  #[payable]
-  pub fn deposit_and_stake(&mut self, ... ){
-    // this method can receive money from the user
-  }
+#[payable]
+pub fn deposit_and_stake(&mut self, ... ){
+  // this method can receive money from the user
+}
 ```
 
 </TabItem>

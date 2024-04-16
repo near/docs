@@ -18,7 +18,7 @@ In this guide we will show you how to quickly spin-up an application where users
 Furthermore, the application readily integrates a `Web3 wallet`, allowing people to use `Metamask` to interact with multi-chain components.
 
 :::tip Searching to integrate NEAR in your App?
-If you already have an application and want to integrate NEAR into it, we recommend you to first go through this guide and then check our documentation on [integrating NEAR to a frontend](./frontend.md)
+If you already have an application and want to integrate NEAR into it, we recommend you to first go through this guide and then check our documentation on [integrating NEAR to a frontend](./integrate-contracts.md)
 :::
 
 ---

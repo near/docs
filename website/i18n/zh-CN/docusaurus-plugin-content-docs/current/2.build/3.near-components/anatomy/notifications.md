@@ -61,19 +61,19 @@ While there is no standard for notifications, we recommend using the following t
   <TabItem value="Custom" default>
 
 ```js
-  Social.set({
-    index: JSON.stringify({
-      notify: {
-        key: "mob.near",
-        value: {
-          type: "custom",
-          message: "A message in the notification",
-          widget: "The widget to open when clicking on the notification",
-          params: { parameters: "to pass to the widget", ... },
-        },
-      }
-    })
-  });
+Social.set({
+  index: JSON.stringify({
+    notify: {
+      key: "mob.near",
+      value: {
+        type: "custom",
+        message: "A message in the notification",
+        widget: "The widget to open when clicking on the notification",
+        params: { parameters: "to pass to the widget", ... },
+      },
+    }
+  })
+});
 ```
 
 **Note**: currently, only near.org implements custom notifications
@@ -83,21 +83,21 @@ While there is no standard for notifications, we recommend using the following t
 <TabItem value="Like">
 
 ```js
-  Social.set({
-    index: JSON.stringify({
-      notify: {
-        key: "mob.near",
-        value: {
-          type: "like",
-          item: {
-            type: "social",
-            path: "mob.near/post/main",
-            blockHeight: 102169725
-          }
+Social.set({
+  index: JSON.stringify({
+    notify: {
+      key: "mob.near",
+      value: {
+        type: "like",
+        item: {
+          type: "social",
+          path: "mob.near/post/main",
+          blockHeight: 102169725
         }
       }
-    })
+    }
   })
+})
 ```
 
 **Reference**: [LikeButton](https://near.org/near/widget/ComponentDetailsPage?src=near/widget/LikeButton\&tab=source)
@@ -107,21 +107,21 @@ While there is no standard for notifications, we recommend using the following t
 <TabItem value="Comment">
 
 ```js
-  Social.set({
-    index: JSON.stringify({
-      notify: {
-        key: "nearhacks.near",
-        value: {
-          type: "comment",
-          item: {
-            type: "social",
-            path: "nearhacks.near/post/main",
-            blockHeight: 102224773
-          }
+Social.set({
+  index: JSON.stringify({
+    notify: {
+      key: "nearhacks.near",
+      value: {
+        type: "comment",
+        item: {
+          type: "social",
+          path: "nearhacks.near/post/main",
+          blockHeight: 102224773
         }
       }
-    })
+    }
   })
+})
 ```
 
 **Reference**: [CommentButton](https://near.org/near/widget/ComponentDetailsPage?src=near/widget/Comments.Compose\&tab=source)
@@ -131,16 +131,16 @@ While there is no standard for notifications, we recommend using the following t
 <TabItem value="Follow">
 
 ```js
-  Social.set({
-    index: JSON.stringify({
-      notify: {
-        key: "mob.near",
-        value: {
-          type: "follow",
-        }
+Social.set({
+  index: JSON.stringify({
+    notify: {
+      key: "mob.near",
+      value: {
+        type: "follow",
       }
-    })
+    }
   })
+})
 ```
 
 **Reference**: [FollowButton](https://near.org/near/widget/ComponentDetailsPage?src=near/widget/FollowButton\&tab=source)

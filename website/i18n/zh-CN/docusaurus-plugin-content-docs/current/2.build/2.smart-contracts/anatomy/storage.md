@@ -39,13 +39,11 @@ In the state you can store constants, native types, and complex objects. When in
 
 ## Data Structures
 
-The NEAR SDK exposes a series of structures ([Vectors](#vector), [Sets](#set), [Maps](#map) and [Trees](#tree))
-to simplify storing data in an efficient way.
+The NEAR SDK exposes a series of structures ([Vectors](#vector), [Sets](#set), [Maps](#map) and [Trees](#tree)) to simplify storing data in an efficient way.
 
 :::info Instantiation
 
-All structures need to be initialized using a **unique `prefix`**, which will be used to identify the structure's keys
-in the [serialized state](./serialization.md#borsh-state-serialization)
+:::info Instantiation All structures need to be initialized using a **unique `prefix`**, which will be used to identify the structure's keys in the [serialized state](./serialization.md#borsh-state-serialization)
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
@@ -211,10 +209,10 @@ Currently, it cost approximately **1 Ⓝ** to store **100kb** of data.
 You can save on smart contract storage if using NEAR Account IDs by encoding them using base32. Since they consist of `[a-z.-_]` characters with a maximum length of 64 characters, they can be encoded using 5 bits per character, with terminal `\0`. Going to a size of 65 \* 5 = 325 bits from the original (64 + 4) \* 8 = 544 bits. This is a 40% reduction in storage costs.
 :::
 
-:::caution
+:::caution:::caution
 An error will raise if your contract tries to increase its state while not having NEAR to cover for storage.
 :::
 
 :::warning
-Be mindful of potential [small deposit attacks](../security/storage.md)
+:::warning Be mindful of potential [small deposit attacks](security/storage.md) :::
 :::

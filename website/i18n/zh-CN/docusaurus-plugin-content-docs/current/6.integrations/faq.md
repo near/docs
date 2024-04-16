@@ -58,14 +58,11 @@ A validator will stop being a validator for the following reasons:
 
 - Not producing enough blocks or chunks.
 - Not getting elected in the auction for next epoch because their stake is not large enough.
-- Getting slashed.
-  Otherwise a validator will remain a validator indefinitely.
+- Getting slashed. Otherwise a validator will remain a validator indefinitely.
 
 Validator election happens in epochs. The [Nightshade whitepaper](/docs/Nightshade.pdf) introduces epochs this way: "the maintenance of the network is done in epochs" where an epoch is a period of time on the order of half a day.
 
-At the beginning of each epoch, some computation produces a list of validators for the _very next epoch_.
-The input to this computation includes all accounts that have "raised their hand to be a validator" by submitting a special transaction ([`StakeAction`](https://nomicon.io/RuntimeSpec/Actions.html#stakeaction)) expressing the commitment of some amount of tokens over the system's staking threshold, as well as validators from the previous epoch.
-The output of this computation is a list of the validators for the very next epoch.
+At the beginning of each epoch, some computation produces a list of validators for the _very next epoch_. The input to this computation includes all accounts that have "raised their hand to be a validator" by submitting a special transaction ([`StakeAction`](https://nomicon.io/RuntimeSpec/Actions.html#stakeaction)) expressing the commitment of some amount of tokens over the system's staking threshold, as well as validators from the previous epoch. The output of this computation is a list of the validators for the very next epoch.
 
 ### What is the penalty for misbehaving validators?
 
@@ -167,11 +164,11 @@ NEAR is a sharded **proof-of-stake** blockchain.
 _You can read more in our [Nightshade whitepaper](/docs/Nightshade.pdf)._
 
 > _A few relevant details have been extracted here for convenience:_
->
+> 
 > [Since NEAR is a sharded blockchain, there are challenges that need to be overcome] including state validity and data availability problems. _Nightshade_ is the solution NEAR Protocol is built upon that addresses these issues.
->
+> 
 > Nightshade uses the heaviest chain consensus. Specifically when a block producer produces a block (see section 3.3), they can collect signatures from other block producers and validators attesting to the previous block. The weight of a block is then the cumulative stake of all the signers whose signatures are included in the block. The weight of a chain is the sum of the block weights.
->
+> 
 > On top of the heaviest chain consensus we use a finality gadget that uses the attestations to finalize the blocks. To reduce the complexity of the system, we use a finality gadget that doesn’t influence the fork choice rule in any way, and instead only introduces extra slashing conditions, such that once a block is finalized by the finality gadget, a fork is impossible unless a very large percentage of the total stake is slashed.
 
 ### How does on-chain transaction finality work?
@@ -286,5 +283,6 @@ We use a simple binary serialization format that's deterministic: https://borsh.
 - Github
   - https://www.github.com/near
 
-:::tip Got a question? <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
+:::tip Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
 :::

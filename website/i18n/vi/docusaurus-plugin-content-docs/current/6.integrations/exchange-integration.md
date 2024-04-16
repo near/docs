@@ -1,48 +1,44 @@
 ---
 id: exchange-integration
-title: Exchange Integration
-sidebar_label: Exchange Integration
+title: Tích hợp sàn giao dịch
+sidebar_label: Tích hợp sàn giao dịch
 ---
 
-## Integration Reference {#integration-reference}
+## Tham chiếu tích hợp {#integration-reference}
 
-- [Balance Changes](/integrations/balance-changes)
-- [Accounts](/integrations/accounts)
-- [Fungible Tokens](/integrations/fungible-tokens)
-- [Implicit Accounts](/integrations/implicit-accounts)
+- [Các thay đổi về số dư](/integrator/balance-changes)
+- [Các account](/integrator/accounts)
+- [Các Fungible Token](/integrator/fungible-tokens)
+- [Các Implicit Account](/integrator/implicit-accounts)
 
-### Transaction Reference Links {#transaction-reference-links}
+### Các link tham chiếu Transaction {#transaction-reference-links}
 
-- [Basics](/concepts/protocol/transactions)
-- [Specifications](https://nomicon.io/RuntimeSpec/Transactions)
-- [Constructing Transactions](/integrations/create-transactions)
+ - [Cơ bản](/concepts/protocol/transactions)
+ - [Thông số kỹ thuật](https://nomicon.io/RuntimeSpec/Transactions)
+ - [Khởi tạo các transaction](/integrator/create-transactions)
 
-## Blocks and Finality {#blocks-and-finality}
+## Các Block và Finality {#blocks-and-finality}
 
-Some important pieces of information regarding blocks and finality include:
+Một vài phần thông tin quan trọng liên quan đến các block và finality bao gồm:
 
-- Expected block time is around 1s and expected time to finality is around 2s. The last final block can be queried by
-  specifying `{"finality": "final"}` in the block query. For example, to get the latest final block on mainnet, one can run
+- Block time được kỳ vọng trong vòng 1s và thời gian được kỳ vọng để finality trong vòng 2s. Block cuối cùng có thể được query bằng việc chỉ định `{"finality": "final"}` trong block query. Ví dụ, để lấy final block mới nhất trên mainet, có thể chạy
 
 ```bash
 http post https://rpc.mainnet.near.org method=block params:='{"finality":"final"}' id=123 jsonrpc=2.0
 ```
 
-- Block height are not necessarily continuous and certain heights may be skipped if, for example, a block producer for that height is offline. For example, after a block at height 100 is produced, the block at height 101 may be skipped. When block at height 102 is produced, its previous block is the block at height 100.
+- Block height không nhất thiết phải liên tiếp và một số height nhất định có thể được bỏ qua nếu, ví dụ, một block producer cho height này offline. Ví dụ, sau khi một block tại height là 100 được sản xuất, block tại height 101 có thể bị bỏ qua. Khi block tại height 102 được sản xuất, block phía trước nó là block tại height 100.
 
-- Some blocks may not include new chunks if, for example, the previous chunk producer is offline. Even though in the RPC
-  return result every block will have non-empty `chunks` field, it does not imply that there is a new chunk included in the block.
-  The way to tell whether the chunk is included in the block is to check whether `height_included` in the chunk is the same
-  as the height of the block.
+- Một vài block có thể không bao gồm các chunk mới nếu, ví dụ, chunk producer phía trước đó offline. Kể cả trong RPC trả về kết quả của mọi block sẽ không có các field `chunk` là non-empty, thì cũng không có nghĩa rằng đó là một chunk mới được đính kèm trong block. Cách để biết chunk được đính kèm trong block hay không đó là kiểm tra liệu rằng `height_included` trong chunk có bằng height của block hay không.
 
-## Running an Archival Node {#running-an-archival-node}
+## Chạy một Archival Node {#running-an-archival-node}
+Vui lòng tham khảo các thay đổi cấu hình được yêu cầu trong `config.json` cho archival node bằng cách tham khảo tài liệu trên [Run an Archival Node](https://near-nodes.io/archival/run-archival-node-with-nearup).
 
-Please refer to configuration changes required in `config.json` for archival node by referring to the documentation on [Run an Archival Node](https://near-nodes.io/archival/run-archival-node-with-nearup).
-
-## Staking and Delegation {#staking-and-delegation}
+## Staking và Delegation {#staking-and-delegation}
 
 - [https://github.com/nearprotocol/stakewars](https://github.com/nearprotocol/stakewars)
 - [https://github.com/near/core-contracts](https://github.com/near/core-contracts)
 
-:::tip Got a question? <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
+:::tip Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
 :::

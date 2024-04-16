@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 
 Smart contracts can perform specific `Actions` such as transferring NEAR, or calling other contracts.
 
-An important property of `Actions` is that they can be batched together when acting on the same contract. **Batched actions** act as a unit: they execute in the same [receipt](../../1.concepts/protocol/transactions.md#receipt-receipt), and if **any fails**, then they **all get reverted**.
+An important property of `Actions` is that they can be batched together when acting on the same contract. **Batched actions** act as a unit: they execute in the same [receipt](../../../1.concepts/protocol/transactions.md#receipt-receipt), and if **any fails**, then they **all get reverted**.
 
 :::info
 `Actions` can be batched only when they act on the **same contract**. You can batch calling two methods on a contract, but **cannot** call two methods on different contracts.
@@ -24,16 +24,16 @@ You can send $NEAR from your contract to any other account on the network. The G
   <TabItem value="🌐 JavaScript">
 
 ```js
-  import { NearBindgen, NearPromise, call } from 'near-sdk-js'
-  import { AccountId } from 'near-sdk-js/lib/types'
+import { NearBindgen, NearPromise, call } from 'near-sdk-js'
+import { AccountId } from 'near-sdk-js/lib/types'
 
-  @NearBindgen({})
-  class Contract{
-    @call({})
-    transfer({ to, amount }: { to: AccountId, amount: bigint }) {
-      NearPromise.new(to).transfer(amount);
-    }
+@NearBindgen({})
+class Contract{
+  @call({})
+  transfer({ to, amount }: { to: AccountId, amount: bigint }) {
+    NearPromise.new(to).transfer(amount);
   }
+}
 ```
 
 </TabItem>
@@ -41,19 +41,19 @@ You can send $NEAR from your contract to any other account on the network. The G
 <TabItem value="🦀 Rust">
 
 ```rust
-  use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
-  use near_sdk::{near_bindgen, AccountId, Promise, Balance};
+use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
+use near_sdk::{near_bindgen, AccountId, Promise, Balance};
 
-  #[near_bindgen]
-  #[derive(Default, BorshDeserialize, BorshSerialize)]
-  pub struct Contract { }
+#[near_bindgen]
+#[derive(Default, BorshDeserialize, BorshSerialize)]
+pub struct Contract { }
 
-  #[near_bindgen]
-  impl Contract {
-    pub fn transfer(&self, to: AccountId, amount: Balance){
-      Promise::new(to).transfer(amount);
-    }
+#[near_bindgen]
+impl Contract {
+  pub fn transfer(&self, to: AccountId, amount: Balance){
+    Promise::new(to).transfer(amount);
   }
+}
 ```
 
 </TabItem>
@@ -73,50 +73,50 @@ Remember that your balance is used to cover for the contract's storage. When sen
 
 ## Function Call
 
-Your smart contract can call methods in another contract. In the snippet bellow we call a method in a deployed [Hello NEAR](quickstart.md) contract, and check if everything went right in the callback.
+Your smart contract can call methods in another contract. In the snippet bellow we call a method in a deployed [Hello NEAR](../quickstart.md) contract, and check if everything went right in the callback.
 
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="🌐 JavaScript">
 
 ```js
-  import { NearBindgen, near, call, bytes, NearPromise } from 'near-sdk-js'
-  import { AccountId } from 'near-sdk-js/lib/types'
+import { NearBindgen, near, call, bytes, NearPromise } from 'near-sdk-js'
+import { AccountId } from 'near-sdk-js/lib/types'
 
-  const HELLO_NEAR: AccountId = "hello-nearverse.testnet";
-  const NO_DEPOSIT: bigint = BigInt(0);
-  const CALL_GAS: bigint = BigInt("10000000000000");
+const HELLO_NEAR: AccountId = "hello-nearverse.testnet";
+const NO_DEPOSIT: bigint = BigInt(0);
+const CALL_GAS: bigint = BigInt("10000000000000");
 
-  @NearBindgen({})
-  class Contract {
-    @call({})
-    call_method({}): NearPromise {
-      const args = bytes(JSON.stringify({ message: "howdy" }))
+@NearBindgen({})
+class Contract {
+  @call({})
+  call_method({}): NearPromise {
+    const args = bytes(JSON.stringify({ message: "howdy" }))
 
-      return NearPromise.new(HELLO_NEAR)
-      .functionCall("set_greeting", args, NO_DEPOSIT, CALL_GAS)
-      .then(
-        NearPromise.new(near.currentAccountId())
-        .functionCall("callback", bytes(JSON.stringify({})), NO_DEPOSIT, CALL_GAS)
-      )
-      .asReturn()
-    }
+    return NearPromise.new(HELLO_NEAR)
+    .functionCall("set_greeting", args, NO_DEPOSIT, CALL_GAS)
+    .then(
+      NearPromise.new(near.currentAccountId())
+      .functionCall("callback", bytes(JSON.stringify({})), NO_DEPOSIT, CALL_GAS)
+    )
+    .asReturn()
+  }
 
-    @call({privateFunction: true})
-    callback({}): boolean {
-      let result, success;
-    
-      try{ result = near.promiseResult(0); success = true }
-      catch{ result = undefined; success = false }
-    
-      if (success) {
-        near.log(`Success!`)
-        return true
-      } else {
-        near.log("Promise failed...")
-        return false
-      }
+  @call({privateFunction: true})
+  callback({}): boolean {
+    let result, success;
+  
+    try{ result = near.promiseResult(0); success = true }
+    catch{ result = undefined; success = false }
+  
+    if (success) {
+      near.log(`Success!`)
+      return true
+    } else {
+      near.log("Promise failed...")
+      return false
     }
   }
+}
 ```
 
 </TabItem>
@@ -124,40 +124,40 @@ Your smart contract can call methods in another contract. In the snippet bellow 
 <TabItem value="🦀 Rust">
 
 ```rust
-  use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
-  use near_sdk::{near_bindgen, env, log, Promise, Gas, PromiseError};
-  use serde_json::json;
+use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
+use near_sdk::{near_bindgen, env, log, Promise, Gas, PromiseError};
+use serde_json::json;
 
-  #[near_bindgen]
-  #[derive(Default, BorshDeserialize, BorshSerialize)]
-  pub struct Contract { }
+#[near_bindgen]
+#[derive(Default, BorshDeserialize, BorshSerialize)]
+pub struct Contract { }
 
-  const HELLO_NEAR: &str = "hello-nearverse.testnet";
-  const NO_DEPOSIT: u128 = 0;
-  const CALL_GAS: Gas = Gas(5_000_000_000_000);
+const HELLO_NEAR: &str = "hello-nearverse.testnet";
+const NO_DEPOSIT: u128 = 0;
+const CALL_GAS: Gas = Gas(5_000_000_000_000);
 
-  #[near_bindgen]
-  impl Contract {
-    pub fn call_method(&self){
-      let args = json!({ "message": "howdy".to_string() })
-                .to_string().into_bytes().to_vec();
+#[near_bindgen]
+impl Contract {
+  pub fn call_method(&self){
+    let args = json!({ "message": "howdy".to_string() })
+              .to_string().into_bytes().to_vec();
 
-      Promise::new(HELLO_NEAR.parse().unwrap())
-      .function_call("set_greeting".to_string(), args, NO_DEPOSIT, CALL_GAS)
-      .then(
-        Promise::new(env::current_account_id())
-        .function_call("callback".to_string(), Vec::new(), NO_DEPOSIT, CALL_GAS)
-      );
-    }
+    Promise::new(HELLO_NEAR.parse().unwrap())
+    .function_call("set_greeting".to_string(), args, NO_DEPOSIT, CALL_GAS)
+    .then(
+      Promise::new(env::current_account_id())
+      .function_call("callback".to_string(), Vec::new(), NO_DEPOSIT, CALL_GAS)
+    );
+  }
 
-    pub fn callback(&self, #[callback_result] result: Result<(), PromiseError>){
-      if result.is_err(){
-          log!("Something went wrong")
-      }else{
-          log!("Message changed")
-      }
+  pub fn callback(&self, #[callback_result] result: Result<(), PromiseError>){
+    if result.is_err(){
+        log!("Something went wrong")
+    }else{
+        log!("Message changed")
     }
   }
+}
 ```
 
 </TabItem>
@@ -182,21 +182,21 @@ Sub-accounts are simply useful for organizing your accounts (e.g. `dao.project.n
   <TabItem value="🌐 JavaScript">
 
 ```js
-  import { NearBindgen, near, call, NearPromise } from 'near-sdk-js'
+import { NearBindgen, near, call, NearPromise } from 'near-sdk-js'
 
-  const MIN_STORAGE: bigint = BigInt("1000000000000000000000") // 0.001Ⓝ
+const MIN_STORAGE: bigint = BigInt("1000000000000000000000") // 0.001Ⓝ
 
-  @NearBindgen({})
-  class Contract {
-    @call({payableFunction:true})
-    create({prefix}:{prefix: String}) {
-      const account_id = `${prefix}.${near.currentAccountId()}`
+@NearBindgen({})
+class Contract {
+  @call({payableFunction:true})
+  create({prefix}:{prefix: String}) {
+    const account_id = `${prefix}.${near.currentAccountId()}`
 
-      NearPromise.new(account_id)
-      .createAccount()
-      .transfer(MIN_STORAGE)
-    }
+    NearPromise.new(account_id)
+    .createAccount()
+    .transfer(MIN_STORAGE)
   }
+}
 ```
 
 </TabItem>
@@ -204,24 +204,24 @@ Sub-accounts are simply useful for organizing your accounts (e.g. `dao.project.n
 <TabItem value="🦀 Rust">
 
 ```rust
-  use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
-  use near_sdk::{near_bindgen, env, Promise, Balance};
+use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
+use near_sdk::{near_bindgen, env, Promise, Balance};
 
-  #[near_bindgen]
-  #[derive(Default, BorshDeserialize, BorshSerialize)]
-  pub struct Contract { }
-                            
-  const MIN_STORAGE: Balance = 1_000_000_000_000_000_000_000; //0.001Ⓝ
+#[near_bindgen]
+#[derive(Default, BorshDeserialize, BorshSerialize)]
+pub struct Contract { }
+                          
+const MIN_STORAGE: Balance = 1_000_000_000_000_000_000_000; //0.001Ⓝ
 
-  #[near_bindgen]
-  impl Contract {
-    pub fn create(&self, prefix: String){
-      let account_id = prefix + "." + &env::current_account_id().to_string();
-      Promise::new(account_id.parse().unwrap())
-      .create_account()
-      .transfer(MIN_STORAGE);
-    }
+#[near_bindgen]
+impl Contract {
+  pub fn create(&self, prefix: String){
+    let account_id = prefix + "." + &env::current_account_id().to_string();
+    Promise::new(account_id.parse().unwrap())
+    .create_account()
+    .transfer(MIN_STORAGE);
   }
+}
 ```
 
 </TabItem>
@@ -236,7 +236,7 @@ Notice that in the snippet we are transferring some money to the new account for
 
 :::caution
 
-:::caution When you create an account from within a contract, it has no keys by default. If you don't explicitly [add keys](#add-keys) to it or [deploy a contract](#deploy-a-contract) on creation then it will be [locked](../../1.concepts/protocol/access-keys.md#locked-accounts).
+:::caution When you create an account from within a contract, it has no keys by default. If you don't explicitly [add keys](#add-keys) to it or [deploy a contract](#deploy-a-contract) on creation then it will be [locked](../../../1.concepts/protocol/access-keys.md#locked-accounts).
 
 :::
 
@@ -252,24 +252,24 @@ If your contract wants to create a `.mainnet` or `.testnet` account, then it nee
   <TabItem value="🌐 JavaScript">
 
 ```js
-  import { NearBindgen, near, call, bytes, NearPromise } from 'near-sdk-js'
+import { NearBindgen, near, call, bytes, NearPromise } from 'near-sdk-js'
 
-  const MIN_STORAGE: bigint = BigInt("1820000000000000000000"); //0.00182Ⓝ
-  const CALL_GAS: bigint = BigInt("28000000000000");
+const MIN_STORAGE: bigint = BigInt("1820000000000000000000"); //0.00182Ⓝ
+const CALL_GAS: bigint = BigInt("28000000000000");
 
-  @NearBindgen({})
-  class Contract {
-    @call({})
-    create_account({account_id, public_key}:{account_id: String, public_key: String}) {
-      const args = bytes(JSON.stringify({ 
-        "new_account_id": account_id,
-        "new_public_key": public_key 
-      }))
+@NearBindgen({})
+class Contract {
+  @call({})
+  create_account({account_id, public_key}:{account_id: String, public_key: String}) {
+    const args = bytes(JSON.stringify({ 
+      "new_account_id": account_id,
+      "new_public_key": public_key 
+    }))
 
-      NearPromise.new("testnet")
-      .functionCall("create_account", args, MIN_STORAGE, CALL_GAS);
-    }
+    NearPromise.new("testnet")
+    .functionCall("create_account", args, MIN_STORAGE, CALL_GAS);
   }
+}
 ```
 
 </TabItem>
@@ -277,30 +277,30 @@ If your contract wants to create a `.mainnet` or `.testnet` account, then it nee
 <TabItem value="🦀 Rust">
 
 ```rust
-  use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
-  use near_sdk::{near_bindgen, Promise, Gas, Balance };
-  use serde_json::json;
+use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
+use near_sdk::{near_bindgen, Promise, Gas, Balance };
+use serde_json::json;
 
-  #[near_bindgen]
-  #[derive(Default, BorshDeserialize, BorshSerialize)]
-  pub struct Contract { }
+#[near_bindgen]
+#[derive(Default, BorshDeserialize, BorshSerialize)]
+pub struct Contract { }
 
-  const CALL_GAS: Gas = Gas(28_000_000_000_000);
-  const MIN_STORAGE: Balance = 1_820_000_000_000_000_000_000; //0.00182Ⓝ
+const CALL_GAS: Gas = Gas(28_000_000_000_000);
+const MIN_STORAGE: Balance = 1_820_000_000_000_000_000_000; //0.00182Ⓝ
 
-  #[near_bindgen]
-  impl Contract {
-    pub fn create_account(&self, account_id: String, public_key: String){
-      let args = json!({
-                  "new_account_id": account_id,
-                  "new_public_key": public_key,
-                }).to_string().into_bytes().to_vec();
+#[near_bindgen]
+impl Contract {
+  pub fn create_account(&self, account_id: String, public_key: String){
+    let args = json!({
+                "new_account_id": account_id,
+                "new_public_key": public_key,
+              }).to_string().into_bytes().to_vec();
 
-      // Use "near" to create mainnet accounts
-      Promise::new("testnet".parse().unwrap())
-      .function_call("create_account".to_string(), args, MIN_STORAGE, CALL_GAS);
-    }
+    // Use "near" to create mainnet accounts
+    Promise::new("testnet".parse().unwrap())
+    .function_call("create_account".to_string(), args, MIN_STORAGE, CALL_GAS);
   }
+}
 ```
 
 </TabItem>
@@ -317,26 +317,26 @@ When creating an account you can also batch the action of deploying a contract t
   <TabItem value="🦀 Rust">
 
 ```rust
-  use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
-  use near_sdk::{near_bindgen, env, Promise, Balance};
+use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
+use near_sdk::{near_bindgen, env, Promise, Balance};
 
-  #[near_bindgen]
-  #[derive(Default, BorshDeserialize, BorshSerialize)]
-  pub struct Contract { }
+#[near_bindgen]
+#[derive(Default, BorshDeserialize, BorshSerialize)]
+pub struct Contract { }
 
-  const MIN_STORAGE: Balance = 1_100_000_000_000_000_000_000_000; //1.1Ⓝ
-  const HELLO_CODE: &[u8] = include_bytes!("./hello.wasm");
+const MIN_STORAGE: Balance = 1_100_000_000_000_000_000_000_000; //1.1Ⓝ
+const HELLO_CODE: &[u8] = include_bytes!("./hello.wasm");
 
-  #[near_bindgen]
-  impl Contract {
-    pub fn create_hello(&self, prefix: String){
-      let account_id = prefix + "." + &env::current_account_id().to_string();
-      Promise::new(account_id.parse().unwrap())
-      .create_account()
-      .transfer(MIN_STORAGE)
-      .deploy_contract(HELLO_CODE.to_vec());
-    }
+#[near_bindgen]
+impl Contract {
+  pub fn create_hello(&self, prefix: String){
+    let account_id = prefix + "." + &env::current_account_id().to_string();
+    Promise::new(account_id.parse().unwrap())
+    .create_account()
+    .transfer(MIN_STORAGE)
+    .deploy_contract(HELLO_CODE.to_vec());
   }
+}
 ```
 
 </TabItem>
@@ -351,7 +351,7 @@ When creating an account you can also batch the action of deploying a contract t
 
 ## Add Keys
 
-When you use actions to create a new account, the created account does not have any [access keys](../../1.concepts/protocol/access-keys.md), meaning that it **cannot sign transactions** (e.g. to update its contract, delete itself, transfer money).
+When you use actions to create a new account, the created account does not have any [access keys](../../../1.concepts/protocol/access-keys.md), meaning that it **cannot sign transactions** (e.g. to update its contract, delete itself, transfer money).
 
 There are two options for adding keys to the account:
 
@@ -364,23 +364,23 @@ There are two options for adding keys to the account:
   <TabItem value="🌐 JavaScript">
 
 ```js
-  import { NearBindgen, near, call, NearPromise } from 'near-sdk-js'
-  import { PublicKey } from 'near-sdk-js/lib/types'
+import { NearBindgen, near, call, NearPromise } from 'near-sdk-js'
+import { PublicKey } from 'near-sdk-js/lib/types'
 
-  const MIN_STORAGE: bigint = BigInt("1000000000000000000000") // 0.001Ⓝ
+const MIN_STORAGE: bigint = BigInt("1000000000000000000000") // 0.001Ⓝ
 
-  @NearBindgen({})
-  class Contract {
-    @call({})
-    create_hello({prefix, public_key}:{prefix: String, public_key: PublicKey}) {
-      const account_id = `${prefix}.${near.currentAccountId()}`
+@NearBindgen({})
+class Contract {
+  @call({})
+  create_hello({prefix, public_key}:{prefix: String, public_key: PublicKey}) {
+    const account_id = `${prefix}.${near.currentAccountId()}`
 
-      NearPromise.new(account_id)
-      .createAccount()
-      .transfer(MIN_STORAGE)
-      .addFullAccessKey(public_key)
-    }
+    NearPromise.new(account_id)
+    .createAccount()
+    .transfer(MIN_STORAGE)
+    .addFullAccessKey(public_key)
   }
+}
 ```
 
 </TabItem>
@@ -388,27 +388,27 @@ There are two options for adding keys to the account:
 <TabItem value="🦀 Rust">
 
 ```rust
-  use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
-  use near_sdk::{near_bindgen, env, Promise, Balance, PublicKey};
+use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
+use near_sdk::{near_bindgen, env, Promise, Balance, PublicKey};
 
-  #[near_bindgen]
-  #[derive(Default, BorshDeserialize, BorshSerialize)]
-  pub struct Contract { }
+#[near_bindgen]
+#[derive(Default, BorshDeserialize, BorshSerialize)]
+pub struct Contract { }
 
-  const MIN_STORAGE: Balance = 1_100_000_000_000_000_000_000_000; //1.1Ⓝ
-  const HELLO_CODE: &[u8] = include_bytes!("./hello.wasm");
+const MIN_STORAGE: Balance = 1_100_000_000_000_000_000_000_000; //1.1Ⓝ
+const HELLO_CODE: &[u8] = include_bytes!("./hello.wasm");
 
-  #[near_bindgen]
-  impl Contract {
-    pub fn create_hello(&self, prefix: String, public_key: PublicKey){
-      let account_id = prefix + "." + &env::current_account_id().to_string();
-      Promise::new(account_id.parse().unwrap())
-      .create_account()
-      .transfer(MIN_STORAGE)
-      .deploy_contract(HELLO_CODE.to_vec())
-      .add_full_access_key(public_key);
-    }
+#[near_bindgen]
+impl Contract {
+  pub fn create_hello(&self, prefix: String, public_key: PublicKey){
+    let account_id = prefix + "." + &env::current_account_id().to_string();
+    Promise::new(account_id.parse().unwrap())
+    .create_account()
+    .transfer(MIN_STORAGE)
+    .deploy_contract(HELLO_CODE.to_vec())
+    .add_full_access_key(public_key);
   }
+}
 ```
 
 </TabItem>
@@ -434,29 +434,29 @@ There are two scenarios in which you can use the `delete_account` action:
   <TabItem value="🌐 JavaScript">
 
 ```js
-  import { NearBindgen, near, call, NearPromise } from 'near-sdk-js'
-  import { AccountId } from 'near-sdk-js/lib/types'
+import { NearBindgen, near, call, NearPromise } from 'near-sdk-js'
+import { AccountId } from 'near-sdk-js/lib/types'
 
-  const MIN_STORAGE: bigint = BigInt("1000000000000000000000") // 0.001Ⓝ
+const MIN_STORAGE: bigint = BigInt("1000000000000000000000") // 0.001Ⓝ
 
-  @NearBindgen({})
-  class Contract {
-    @call({})
-    create_delete({prefix, beneficiary}:{prefix: String, beneficiary: AccountId}) {
-      const account_id = `${prefix}.${near.currentAccountId()}`
+@NearBindgen({})
+class Contract {
+  @call({})
+  create_delete({prefix, beneficiary}:{prefix: String, beneficiary: AccountId}) {
+    const account_id = `${prefix}.${near.currentAccountId()}`
 
-      NearPromise.new(account_id)
-      .createAccount()
-      .transfer(MIN_STORAGE)
-      .deleteAccount(beneficiary)
-    }
-
-    @call({})
-    self_delete({beneficiary}:{beneficiary: AccountId}) {
-      NearPromise.new(near.currentAccountId())
-      .deleteAccount(beneficiary)
-    }
+    NearPromise.new(account_id)
+    .createAccount()
+    .transfer(MIN_STORAGE)
+    .deleteAccount(beneficiary)
   }
+
+  @call({})
+  self_delete({beneficiary}:{beneficiary: AccountId}) {
+    NearPromise.new(near.currentAccountId())
+    .deleteAccount(beneficiary)
+  }
+}
 ```
 
 </TabItem>
@@ -464,30 +464,30 @@ There are two scenarios in which you can use the `delete_account` action:
 <TabItem value="🦀 Rust">
 
 ```rust
-  use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
-  use near_sdk::{near_bindgen, env, Promise, Balance, AccountId};
+use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
+use near_sdk::{near_bindgen, env, Promise, Balance, AccountId};
 
-  #[near_bindgen]
-  #[derive(Default, BorshDeserialize, BorshSerialize)]
-  pub struct Contract { }
-                            
-  const MIN_STORAGE: Balance = 1_000_000_000_000_000_000_000; //0.001Ⓝ
+#[near_bindgen]
+#[derive(Default, BorshDeserialize, BorshSerialize)]
+pub struct Contract { }
+                          
+const MIN_STORAGE: Balance = 1_000_000_000_000_000_000_000; //0.001Ⓝ
 
-  #[near_bindgen]
-  impl Contract {
-    pub fn create_delete(&self, prefix: String, beneficiary: AccountId){
-      let account_id = prefix + "." + &env::current_account_id().to_string();
-      Promise::new(account_id.parse().unwrap())
-      .create_account()
-      .transfer(MIN_STORAGE)
-      .delete_account(beneficiary);
-    }
-
-    pub fn self_delete(beneficiary: AccountId){
-      Promise::new(env::current_account_id())
-      .delete_account(beneficiary);
-    }
+#[near_bindgen]
+impl Contract {
+  pub fn create_delete(&self, prefix: String, beneficiary: AccountId){
+    let account_id = prefix + "." + &env::current_account_id().to_string();
+    Promise::new(account_id.parse().unwrap())
+    .create_account()
+    .transfer(MIN_STORAGE)
+    .delete_account(beneficiary);
   }
+
+  pub fn self_delete(beneficiary: AccountId){
+    Promise::new(env::current_account_id())
+    .delete_account(beneficiary);
+  }
+}
 ```
 
 </TabItem>
@@ -495,7 +495,7 @@ There are two scenarios in which you can use the `delete_account` action:
 </Tabs>
 
 :::warning Token Loss
-:::warning Token Loss If the beneficiary account does not exist the funds will be [**dispersed among validators**](../../1.concepts/basics/token-loss.md).
+:::warning Token Loss If the beneficiary account does not exist the funds will be [**dispersed among validators**](../../../1.concepts/basics/token-loss.md).
 :::
 
 :::warning Token Loss

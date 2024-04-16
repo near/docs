@@ -23,7 +23,7 @@
     "permalink": "/build/welcome"
   },
   "next": {
-    "title": "Building a Relayer",
+    "title": "Meta Transaction Relayers",
     "permalink": "/build/chain-abstraction/meta-transactions"
   }
 }

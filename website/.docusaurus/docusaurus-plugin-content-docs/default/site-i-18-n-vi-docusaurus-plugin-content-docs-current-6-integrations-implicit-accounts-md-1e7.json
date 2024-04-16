@@ -1,6 +1,6 @@
 {
   "id": "integrations/implicit-accounts",
-  "title": "Implicit Accounts",
+  "title": "Implicit Account",
   "description": "Background",
   "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/6.integrations/implicit-accounts.md",
   "sourceDirName": "6.integrations",
@@ -11,10 +11,12 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/6.integrations/implicit-accounts.md",
   "tags": [],
   "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1712954223000,
   "frontMatter": {
     "id": "implicit-accounts",
-    "title": "Implicit Accounts",
-    "sidebar_label": "Implicit Accounts"
+    "title": "Implicit Account",
+    "sidebar_label": "Implicit Account"
   },
   "sidebar": "exchanges",
   "previous": {
@@ -22,7 +24,7 @@
     "permalink": "/vi/integrations/fungible-tokens"
   },
   "next": {
-    "title": "Introduction",
+    "title": "Giới thiệu",
     "permalink": "/vi/integrations/errors/introduction"
   }
 }

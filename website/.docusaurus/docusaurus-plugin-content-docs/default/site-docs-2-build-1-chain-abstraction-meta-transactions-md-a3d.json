@@ -11,12 +11,12 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/1.chain-abstraction/meta-transactions.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "gagdiez",
-  "lastUpdatedAt": 1712674517000,
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1712954754000,
   "frontMatter": {
     "id": "meta-transactions",
     "title": "Building a Meta Transaction Relayer",
-    "sidebar_label": "Building a Relayer"
+    "sidebar_label": "Meta Transaction Relayers"
   },
   "sidebar": "build",
   "previous": {

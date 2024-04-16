@@ -6,7 +6,7 @@ title: 계정 잠금
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-계정에서 [전체 액세스 키](../4.tools/cli.md#near-delete-key-near-delete-key)를 모두 제거하면, 계정이 효과적으로 **잠깁니다**.
+계정에서 [전체 액세스 키](../../../4.tools/cli.md#near-delete-key-near-delete-key)를 모두 제거하면, 계정이 효과적으로 **잠깁니다**.
 
 계정이 잠기면 아무도 계정 이름으로 트랜잭션을 수행할 수 없습니다(예: 코드 업데이트 또는 송금).
 

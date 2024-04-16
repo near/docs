@@ -1,7 +1,7 @@
 {
   "id": "integrations/balance-changes",
   "title": "Balance changes",
-  "description": "Prerequisites",
+  "description": "Các điều kiện tiên quyết",
   "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/6.integrations/balance.md",
   "sourceDirName": "6.integrations",
   "slug": "/integrations/balance-changes",
@@ -11,6 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/6.integrations/balance.md",
   "tags": [],
   "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1712954223000,
   "frontMatter": {
     "id": "balance-changes",
     "title": "Balance changes",
@@ -18,7 +20,7 @@
   },
   "sidebar": "exchanges",
   "previous": {
-    "title": "Exchange Integration",
+    "title": "Tích hợp sàn giao dịch",
     "permalink": "/vi/integrations/exchange-integration"
   },
   "next": {

@@ -22,6 +22,7 @@ The [NEAR Platform overview](/concepts/welcome) clarifies much of the language i
 - Before producing a chunk, transactions are ordered and validated again. This is done to produce chunks with only valid transactions across a distributed system.
 - While a transaction is being processed on to a chunk, any errors raised by the application of its actions are also returned via RPC.
 
+
 ## NEAR Platform Errors {#near-platform-errors}
 
 Errors raised by the NEAR platform are implemented in the following locations in `nearcore`:
@@ -30,7 +31,6 @@ Errors raised by the NEAR platform are implemented in the following locations in
 - [nearcore/runtime/near-vm-errors/src/lib.rs](https://github.com/near/nearcore/blob/master/runtime/near-vm-errors/src/lib.rs)
 
 This page includes:
-
 - **RuntimeError and subtypes**: errors raised when a transaction is first received by the destination node and again before it's processed and applied to a chunk
 - **TxExecutionError and subtypes**: errors raised while a transaction and its component action(s) are being validated and applied to a chunk
 - **VMerror and subtypes**: errors raised during the execution of a Wasm contract by the NEAR VM
@@ -86,6 +86,7 @@ TxExecutionError                                          Error returned in the 
           FunctionCallMethodNameLengthExceeded            The length of the method name exceeded the limit in a Function Call action.
           FunctionCallArgumentsLengthExceeded             The length of the arguments exceeded the limit in a Function Call action.
 ```
+
 
 ### VMerror and subtypes {#vmerror-and-subtypes}
 
@@ -145,5 +146,6 @@ VMerror                                                   An error that occurs i
         Memory                                            Error creating memory
 ```
 
-:::tip Got a question? <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
+:::tip Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
 :::

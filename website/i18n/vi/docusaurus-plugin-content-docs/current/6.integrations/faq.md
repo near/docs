@@ -1,40 +1,40 @@
 ---
 id: faq
-title: Integrator FAQ
-sidebar_label: Integrator FAQ
+title: Tích hợp FAQ
+sidebar_label: Tích hợp FAQ
 ---
 
 ## Orientation
 
 ### What is a good project summary for NEAR?
 
-NEAR is a sharded, public, proof-of-stake blockchain and smart contract platform. It is built in Rust and contracts compile to WASM. It is conceptually similar to Ethereum 2.0.
+NEAR là một sharded, public, proof-of-stake blockchain và smart contract platform. Nó được build trên Rust và các contract compile thành WASM. Về mặt khái niệm, nó tương tự như Ethereum 2.0.
 
 ### What's special about NEAR?
 
-NEAR is the blockchain for builders.
+NEAR là một blockchain dành cho các builder.
 
-If you understand the basics of web development, you can write, test and deploy scalable decentralized applications in minutes on the most developer-friendly blockchain without having to learn new tools or languages.
+Nếu bạn hiểu những điều cơ bản về phát triển web, bạn có thể viết, test và triển khai các ứng dụng phi tập trung có thể mở rộng trong vài phút trên blockchain thân thiện với developer nhất mà không cần phải học các công cụ hoặc ngôn ngữ mới.
 
 ### Is NEAR open source?
 
-Yes. Have a look at our [GitHub organization](https://github.com/near).
+Đúng. Have a look at our [GitHub organization](https://github.com/near).
 
 ### How are cryptographic functions used?
 
-We support both `secp256k1` and `ed25519` for account keys and `ed25519` for signing transactions. We currently use the `ed25519_dalek` and `sha2` libraries for crypto.
+Chúng tôi hỗ trợ cả `secp256k1` và `ed25519` cho các account key và `ed25519` cho các signing transaction. Chúng tôi hiện đang sử dụng các library `ed25519_dalek` và `sha2` cho crypto.
 
 ### Do you have any on-chain governance mechanisms?
 
-NEAR does not have any on-chain governance at the moment. Any changes to state or state transition function must be done through a hard fork.
+NEAR không có bất kỳ on-chain governace nào tại thời điểm này. Bất kỳ thay đổi nào đối với state hoặc state transition function phải được thực hiện thông qua một hard fork.
 
 ### Do you have a bug-bounty program?
 
-Our plan is to have a transparent Bug Bounty program with clear guidelines for paying out to those reporting issues. Payments will likely be based on publicly available rankings provided by protocol developers based on issue severity.
+Kế hoạch của chúng tôi là có một Bug Bounty program minh bạch với các hướng dẫn rõ ràng để tưởng thưởng cho các báo cáo đó. Các khoản thưởng có thể sẽ dựa trên các bảng xếp hạng có sẵn công khai do các protocol developer cung cấp dựa trên mức độ nghiêm trọng của issue.
 
 ### What contracts should we be aware of right now?
 
-We have developed a number of [initial contracts](https://github.com/near/core-contracts) with **ones in bold** being most mature at time of writing
+Chúng tôi đã phát triển một số [initial contracts](https://github.com/near/core-contracts) với **những contract được in đậm** là những contract phát triển nhất tại thời điểm viết bài
 
 - **Staking Pool / Delegation contract**
 - **Lockup / Vesting contract**
@@ -50,56 +50,49 @@ https://github.com/near/near-ledger-app
 
 ### What is the process for becoming a validator?
 
-Validation is permissionless and determined via auction. Parties who want to become a validator submit a special transaction to the chain one day ahead which indicates how many tokens they want to stake. An auction is run which determines the minimum necessary stake to get a validation seat during the next epoch and, if the amount submitted is greater than the minimum threshold, the submitter will validate at least one shard during the next epoch.
+Validation là không cần cấp phép và được xác định thông qua đấu giá. Các bên muốn trở thành validator sẽ gửi một transaction đặc biệt đến chain một ngày trước đó cho biết họ muốn stake bao nhiêu token. Một auction được thực hiện để xác định số stake cần thiết tối thiểu để đạt được validation seat trong thời gian tiếp theo và nếu số tiền được gửi lớn hơn ngưỡng tối thiểu, người gửi sẽ xác thực ít nhất một shard trong epoch tiếp theo.
 
 ### How long does a validator remain a validator?
 
-A validator will stop being a validator for the following reasons:
+Một validator sẽ không còn là validator vì những lý do sau:
 
-- Not producing enough blocks or chunks.
-- Not getting elected in the auction for next epoch because their stake is not large enough.
-- Getting slashed.
-  Otherwise a validator will remain a validator indefinitely.
+- Không sản xuất đủ các block hoặc các chunk.
+- Không được bầu trong cuộc đấu giá cho epoch tiếp theo vì stake của họ không đủ lớn.
+- Bị slash. Nếu không thì một validator sẽ vẫn là một validator vô thời hạn.
 
-Validator election happens in epochs. The [Nightshade whitepaper](/docs/Nightshade.pdf) introduces epochs this way: "the maintenance of the network is done in epochs" where an epoch is a period of time on the order of half a day.
+Việc bầu chọn validator diễn ra theo từng epoch. The [Nightshade whitepaper](/docs/Nightshade.pdf) introduces epochs this way: "the maintenance of the network is done in epochs" where an epoch is a period of time on the order of half a day.
 
-At the beginning of each epoch, some computation produces a list of validators for the _very next epoch_.
-The input to this computation includes all accounts that have "raised their hand to be a validator"
-by submitting a special transaction ([`StakeAction`](https://nomicon.io/RuntimeSpec/Actions.html#stakeaction))
-expressing the commitment of some amount of tokens over the system's staking threshold,
-as well as validators from the previous epoch.
-The output of this computation is a list of the validators for the very next epoch.
+Vào đầu mỗi epoch, một số phép tính tạo ra danh sách các validators cho _epoch tiếp theo_. Input cho phép tính này bao gồm tất cả các account đã "giơ tay trở thành một validator" bằng cách gửi một transaction đặc biệt ([`StakeAction`](https://nomicon.io/RuntimeSpec/Actions.html#stakeaction)) thể hiện cam kết về một số lượng các token vượt quá ngưỡng staking của hệ thống, cũng như các validator từ epoch trước đó. Output của phép tính là danh sách các validator cho epoch tiếp theo.
 
 ### What is the penalty for misbehaving validators?
 
-Validators are not slashed for being offline but they do miss out on the rewards of validating. Validators who miss too many blocks or chunks will be removed from the validation set in the next auction and not get any reward (but, again, without slashing).
+Các validator không bị slash vì offline nhưng họ bỏ lỡ phần thưởng của việc validating. Các validator bỏ lỡ quá nhiều các block hoặc các chunk cũng sẽ bị xóa khỏi bộ validation trong auction tiếp theo và không nhận được bất kỳ phần thưởng nào (nhưng, mặt khác, không bị slash).
 
-Any foul play on the part of the validator that is detected by the system may result in a "slashing event" where the validator is marked as out of integrity and forfeit their stake (according to some formula of progressive severity). The slashed stake is burnt.
+Any foul play on the part of the validator that is detected by the system may result in a "slashing event" where the validator is marked as out of integrity and forfeit their stake (according to some formula of progressive severity). Slashed stake bị đốt cháy.
 
 ### What is the mechanism for delegating stake to validators?
 
-NEAR supports separate validation keys that can be used in smart contracts to delegate stake. Delegation is done via smart contract which allows for a validator to define a custom way to collect stake, manage it and split rewards. This also allows validators to provide leverage or derivatives on stake. Delegated stake will be slashed like any other stake if the node misbehaves.
+NEAR hỗ trợ các validation key riêng biệt có thể được sử dụng trong các smart contract để delegate stake. Việc delegate được thực hiện thông qua smart contract, cho phép một validator xác định một cách tùy chỉnh để thu thập stake, quản lý và chia phần thưởng. Điều này cũng cho phép các validator cung cấp đòn bẩy hoặc các phái sinh trên stake. Stake được delegate sẽ bị slash như bất kỳ stake khác nếu node hoạt động sai.
 
-If a validator misbehaves the funds of the delegators are also slashed. There is no waiting period for delegators to withdraw their stake.
+Nếu validator sử dụng sai thì quỹ của người delegate cũng sẽ bị slash. Không có thời gian chờ đợi để người được ủy quyền rút stake của họ.
 
 ### Does a validator control funds that have been delegated to them?
 
-Delegation is custodial (you are transferring funds to a different account, the smart contract that implements staking pool). We provide a reference implementation being security reviewed and tested by 100 validators at time of writing.
+Sự ủy quyền là quyền giám sát (bạn đang chuyển tiền vào một tài khoản khác, smart contract triển khai staking pool). Chúng tôi cung cấp một reference implementation được xem xét và kiểm tra bảo mật bởi 100 validator tại thời điểm viết bài.
 
-We allow validators to write and deploy new contracts but it is up to users to decide if they want to delegate. Validators can compete for delegation by choosing different logic and conditions around tax optimization, etc.
+Chúng tôi cho validator viết và triển khai các contract mới nhưng tuỳ thuộc vào người dùng quyết định xem họ có muốn delegate hay không. Các validator có thể cạnh tranh để được delegate bằng cách chọn các logic và điều kiện khác nhau xung quanh việc tối ưu hóa thuế, v. v.
 
-Currently no slashing but will be added as we add shards into the system. At some point validators will be able to add an option to shield delegators from slashing (similar to Tezos model).
+Hiện tại không có slashing nhưng chúng sẽ được thêm vào khi chúng tôi thêm các shard vào hệ thống. Tại một số thời điểm các validator sẽ có thể thêm một tùy chọn để bảo vệ các delegator khỏi bị slashing (tương tự như Tezos model).
 
 ### How do we get the balance of an account after it has delegated funds?
 
-One would need to query the staking pool contract to get balance.
+Một người sẽ cần phải truy vấn staking pool contract để có được số dư.
 
 ## Nodes
 
 ### Can a node be configured to archive all blockchain data since genesis?
 
-v
-Yes. Start the node using the following command:
+v Có. Khởi động node bằng dòng lệnh sau:
 
 ```sh
 ./target/release/near run --archive
@@ -107,28 +100,28 @@ Yes. Start the node using the following command:
 
 ### Can a node be configured to expose an RPC (ex: HTTP) interface?
 
-Yes. All nodes expose this interface by default which can be configured by setting the value of `listen_addr:port` in the node's `config.json` file.
+Có. Tất cả các node expose interface này theo mặc định, có thể được cấu hình bằng cách đặt giá trị của `listen_addr:port` trong file `config.json` của node.
 
 ### Can a node be gracefully terminated and restarted (using archived data on disk to continue syncing)?
 
-Yes.
+Có.
 
 ### Does a node expose an interface for retrieving health telemetry in a structured format (ex: JSON) over RPC?
 
-Yes. `GET /status` and `GET /health` provide this interface.
+Có. `GET /status` và `GET /health` cung cấp interface này.
 
-- `/status`: block height, syncing status, peer count, etc
-- `/health`: success/failure if node is up running & progressing
+- `/status`: block height, syncing status, peer count, v.v...
+- `/health`: success/failure nếu node đang run & progress
 
 ### Can a node be started using a Dockerfile without human supervision?
 
-Yes.
+Có.
 
 ```sh
 docker run <port mapping> <mount data folder> <ENV vars> nearprotocol/nearcore:latest
 ```
 
-See `nearcore/scripts/nodelib.py` for different examples of configuration.
+Xem `nearcore/scripts/subselib.py` để biết các ví dụ khác nhau về cấu hình.
 
 ### What is the source of truth for current block height exposed via API?
 
@@ -141,72 +134,71 @@ See `nearcore/scripts/nodelib.py` for different examples of configuration.
 
 ### How old can the referenced block hash be before it's invalid?
 
-There is a genesis parameter which can be discovered for any network using:
+Có một tham số genesis có thể được tham khảo trong bất kỳ network nào bằng cách sử dụng:
 
 ```sh
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENTAL_genesis_config
 # in the line above, testnet may be replaced with mainnet or betanet
 ```
 
-It's `43200` seconds or `~12` hours. You can view the live configuration for `epoch_length` using the [`protocol_config` RPC endpoint](/api/rpc/setup#protocol-config).
+Đó là `43200` giây hoặc `~12` tiếng. Bạn có thể xem cấu hình trực tiếp cho `epoch_length` bằng cách sử dụng [`protocol_config` RPC endpoint](/api/rpc/setup#protocol-config).
 
-In the response we find `transaction_validity_period": 86400` (and since it takes about 1 second to produce a block, this period is about 24 hrs)
+Trong response, chúng tôi tìm thấy `transaction_validity_period": 86400` (và vì mất khoảng 1 giây để tạo một block, nên khoảng thời gian này là khoảng 24 giờ)
 
 ## Blockchain
 
 ### How will the network will be bootstrapped?
 
-Distribution at genesis will be spread among the NEAR team, our contributors, project partners (ie. contributor, beta applications, infrastructure developers, etc.) and the NEAR foundation (with many portions of that segregated for post-MainNet distribution activity and unavailable to stake so the foundation isn’t able to control the network).
+Việc phân phối tại thời điểm genesis sẽ được mở rộng trong NEAR team, những contributor của chúng tôi, các đối tác dự án (tức là contributor, các beta application, các infrastructure developer, v. v.) và NEAR foundation (với nhiều phần được tách biệt cho hoạt động phân phối post-MainNet và không có sẵn cho stake do vậy NEAR foundation không thể kiểm soát network).
 
-There will be auctions occurring on the platform after launch which will allocate large amounts of tokens over the next 2 years. Additionally we are planning to run TestNet where any validator who participates will receive rewards in real tokens. We are planning to onboard at least 50 separate entities to be validators at launch.
+Sẽ có các auction diễn ra trên platform sau khi khởi chạy, sẽ phân bổ số lượng lớn token trong 2 năm tới. Ngoài ra, chúng tôi đang có kế hoạch chạy TestNet nơi bất kỳ validator nào tham gia sẽ nhận được phần thưởng bằng các token thực. Chúng tôi đang có kế hoạch đưa ít nhất 50 separate entity trở thành các validator khi ra mắt.
 
 ### What is the network upgrade process?
 
-We are currently upgrading via restarting with a new genesis block.
+Chúng tôi hiện đang nâng cấp thông qua việc khởi động lại với một genesis block mới.
 
 ### Which consensus algorithm does NEAR use?
 
-NEAR is a sharded **proof-of-stake** blockchain.
+NEAR là một sharded **proof-of-stake** blockchain.
 
 _You can read more in our [Nightshade whitepaper](/docs/Nightshade.pdf)._
 
 > _A few relevant details have been extracted here for convenience:_
->
-> [Since NEAR is a sharded blockchain, there are challenges that need to be overcome] including state validity and data
-> availability problems. _Nightshade_ is the solution NEAR Protocol is built upon that addresses these issues.
->
-> Nightshade uses the heaviest chain consensus. Specifically when a block producer produces a block (see section 3.3), they can collect signatures from other block producers and validators attesting to the previous block. The weight of a block is then the cumulative stake of all the signers whose signatures are included in the block. The weight of a chain is the sum of the block weights.
->
-> On top of the heaviest chain consensus we use a finality gadget that uses the attestations to finalize the blocks. To reduce the complexity of the system, we use a finality gadget that doesn’t influence the fork choice rule in any way, and instead only introduces extra slashing conditions, such that once a block is finalized by the finality gadget, a fork is impossible unless a very large percentage of the total stake is slashed.
+> 
+> [Vì NEAR là một sharded blockchain, nên có những thách thức cần phải vượt qua] bao gồm tính hợp lệ của state và tính khả dụng của dữ liệu. _Nightshade_ là giải pháp NEAR Protocol được xây dựng để giải quyết những vấn đề này.
+> 
+> Nightshade sử dụng chain consensus nặng nhất. Cụ thể khi block producer tạo ra một block (xem phần 3.3), họ có thể thu thập chữ ký từ các block producer khác và các validator chứng thực block trước đó. Trọng lượng của một block sau đó là stake tích lũy của tất cả những người ký có chữ ký được bao gồm trong block. Trọng lượng của chain là tổng trọng lượng của block.
+> 
+> Ngoài chain consensus nặng nhất, chúng tôi sử dụng một finality gadget để sử dụng các chứng thực cho việc hoàn thiện các block. Để giảm độ phức tạp của hệ thống, chúng tôi sử dụng finality gadget mà không ảnh hưởng đến quy tắc lựa chọn fork theo bất kỳ cách nào, và thay vào đó chỉ đưa ra các điều kiện slashing bổ sung, chẳng hạn như sau khi một block được hoàn thiện bởi finality gadget, thì fork là không thể xảy ra trừ khi một tỷ lệ rất lớn trên tổng số stake bị slash.
 
 ### How does on-chain transaction finality work?
 
-Finality is deterministic, and requires at least 3 blocks as well as (2/3 +1) signatures of the current validator set.
+Finality là xác định và yêu cầu ít nhất 3 block cũng như (2/3 +1) chữ ký của bộ validator hiện tại.
 
-In a normal operation, we expect this to happen right at 3 blocks but it is not guaranteed.
+Trong điều kiện bình thường, chúng tôi mong finality xảy ra tại đúng 3 block, nhưng điều này không được đảm bảo.
 
-Finality will be exposed via RPC when querying block or transaction.
+Finality sẽ được expose thông qua RPC khi truy vấn block hoặc transaction.
 
-Our definition of finality is BOTH:
+Định nghĩa của chúng tôi về finality là CẢ HAI:
 
-- Block has quorum pre-commit from the finality gadget. See details of the finality gadget [[here]](/docs/PoST.pdf)
-- At least 120 blocks (2-3 minutes) built on top of the block of interest. This is relevant in case of invalid state transition in some shard and provides enough time for state change challenges. In case all shards are tracked and some mechanics to pause across nodes is employed, this is not needed. We recommend exchanges track all shards.
+- Block có một số lượng cam kết trước từ finality gadget. See details of the finality gadget [[here]](/docs/PoST.pdf)
+- Ít nhất 120 block (2-3 phút) được build on top của block of interest. Điều này có liên quan trong trường hợp chuyển đổi state không hợp lệ trong một số shard và cung cấp đủ thời gian cho các challenge thay đổi state. Trong trường hợp tất cả các shard được theo dõi và một vài cơ chế tạm dừng giữa các node được sử dụng, thì điều này là không cần thiết. Chúng tôi khuyên các sàn giao dịch nên theo dõi toàn bộ các shard.
 
 ## Accounts
 
 ### How are addresses generated?
 
-Please check out the spec here on accounts https://nomicon.io/DataStructures/Account.html.
+Vui lòng kiểm tra tiêu chuẩn kỹ thuật tại đây về các account https://nomicon.io/DataStructures/Account.html.
 
 ### What is the balance record-keeping model on the NEAR platform?
 
-NEAR uses an `Account`-based model. All users and contracts are associated with at least 1 account. Each account lives on a single shard. Each account can have multiple keys for signing transactions.
+NEAR sử dụng mô hình `Account`-based. Tất cả các user và các contract được liên kết với ít nhất 1 account. Mỗi account hoạt động trên một single shard. Mỗi account có thể có nhiều key để sign các transaction.
 
-_You can read [more about NEAR accounts here](https://nomicon.io/DataStructures/Account.html)_
+_Bạn có thể đọc thêm [về NEAR accounts tại đây](https://nomicon.io/DataStructures/Account.html)_
 
 ### How are user accounts represented on-chain?
 
-Users create accounts with human-readable names (eg `alice`) which can contain multiple keypairs with individual permissions. Accounts can be atomically and securely transferred between parties as a native transaction on the network. Permissions are programmable with smart contracts as well. For example, a lock up contract is just an account with permission on the key that does not allow to transfer funds greater than those unlocked.
+Các user tạo account với human-readable name (ví dụ `alice`) mà có thể chứa nhiều cặp key với các quyền riêng lẻ. Các account có thể được transfer tự động và an toàn giữa các bên như một native transaction trên network. Các quyền cũng có thể lập trình được với các smart contract. Ví dụ, một lockup contract chỉ là một account có với các quyền hạn trên key không cho phép chuyển các khoản tiền lớn hơn những khoản đã được mở khóa.
 
 ### Is there a minimum account balance?
 
@@ -216,13 +208,13 @@ There will be a restoration mechanism for accounts removed (or slept) in this wa
 
 ### How many keys are used?
 
-An account can have arbitrarily many keys, as long as it has enough tokens for their storage.
+Một tài khoản có thể có nhiều key tùy ý, miễn là nó có đủ token cho storage của chúng.
 
 ### Which balance look-ups exists? What is required?
 
-We have an [RPC method for viewing account](/api/rpc/setup#view_account).
+Chúng tôi có một [RPC method để xem account](/docs/api/rpc#view_account).
 
-The [JS implementation is here](https://github.com/near/near-api-js/blob/d7f0cb87ec320b723734045a4ee9d17d94574a19/src/providers/json-rpc-provider.ts#L73). Note that in this RPC interface you can specify the finality requirement (whether to query the latest state or finalized state).
+[ JS implementation tại đây](https://github.com/near/near-api-js/blob/d7f0cb87ec320b723734045a4ee9d17d94574a19/src/providers/json-rpc-provider.ts#L73). Lưu ý rằng trong RPC interface này, bạn có thể chỉ định yêu cầu về finality (truy vấn state mới nhất hay state đã hoàn thiện).
 
 For custody purposes, it is recommended not to rely on latest state but only what is finalized.
 
@@ -230,67 +222,67 @@ For custody purposes, it is recommended not to rely on latest state but only wha
 
 ### What is the fee structure for on-chain transactions?
 
-NEAR uses a gas-based model where prices are generally deterministically adjusted based on congestion of the network.
+NEAR sử dụng một mô hình gas-based trong đó biểu phí thường được điều chỉnh một cách xác định dựa trên sự tắc nghẽn của network.
 
-We avoid making changes that are too large through re-sharding by changing number of available shards (and thus throughput).
+Chúng tôi tránh thực hiện các thay đổi quá lớn thông qua việc re-sharding bằng cách thay đổi số lượng các shard có sẵn (và do đó là thông lượng).
 
-Accounts don’t have associated resources. Gas amount is predetermined for all transactions except function calls. For function call transactions the user (or more likely the developer) attaches the required amount of gas. If some gas is left over after the function call, it is converted back to NEAR and refunded to the original funding account.
+Tài khoản không có các tài nguyên được liên kết. Lượng gas được xác định trước cho tất cả các transaction ngoại trừ các function call. Đối với các function call transaction, user (hoặc nhiều khả năng là developer) đính kèm lượng gas cần thiết. Nếu một số gas còn lại sau function call, nó sẽ được chuyển đổi trở lại NEAR và được hoàn lại vào account trả phí ban đầu.
 
 ### How do we know how much gas to add to a transaction?
 
-- See reference documentation here: https://nomicon.io/Economics/
-- See API documentation for [discovering gas price via RPC here](/api/rpc/setup#gas-price).
+- Xem tài liệu tham khảo tại đây: https://nomicon.io/Economics/
+- Xem tài liệu API để [khám phá biểu phí gas qua RPC tại đây](/docs/api/rpc#gas-price).
 
-The issuer of a transaction should attach some amount of gas by taking a guess at budget which will get the transaction processed. The contract knows how much to fund different cross contract calls. Gas price is calculated and fixed per block, but may change from block to block depending on how full / busy the block is. If blocks become more than half full then gas price increases.
+Người phát hành một transaction nên đính kèm một số lượng gas bằng cách phỏng đoán ngân sách sẽ giúp transaction được xử lý. Contract biết cần bao nhiêu tiền cho các contract call chéo khác nhau. Biểu phí gas được tính toán và cố định cho mỗi block, nhưng có thể thay đổi từ block này sang block khác tùy thuộc vào mức độ đầy / bận của block. Nếu các block trở nên đầy hơn một nửa thì giá gas sẽ tăng.
 
-We're also considering adding a max gas price limit.
+Chúng tôi cũng đang xem xét thêm giới hạn giá gas tối đa.
 
 ## Transactions
 
 ### How do we follow Tx status?
 
-See related [RPC interface for fetching transaction status here](/api/rpc/setup#transaction-status).
+Xem [RPC interface liên quan để tìm status của transaction tại đây](/docs/api/rpc#transaction-status).
 
 ### How are transactions constructed and signed?
 
-Transactions are a collection of related data that is composed and cryptographically signed by the sender using their private key. The related public key is part of the transaction and used for signature verification. Only signed transactions may be sent to the network for processing.
+Transaction là tập hợp của các data liên quan được tạo và ký bằng mật mã bởi người gửi bằng cách sử dụng key cá nhân của họ. Public key liên quan là một phần của transaction và được sử dụng để xác minh chữ ký. Chỉ các transaction đã ký mới có thể được gửi đến network để xử lý.
 
-Transactions can be constructed and signed offline. Nodes are not required for signing. We are planning to add optional recent block hash to help prevent various replay attacks.
+Các transaction có thể được tạo và ký offline. Nodes không yêu cầu phải ký. Chúng tôi có kế hoạch thêm block hash tùy chọn gần đây để giúp ngăn chặn các replay attack.
 
 See [transactions](/concepts/protocol/transactions) in the concepts section of our documentation.
 
 ### How is the hash preimage generated? Which fields does the raw transaction consist of?
 
-For a transaction, we sign the hash of the transaction. More specifically, what is signed is the `sha256` of the transaction object serialized in borsh (https://github.com/near/borsh).
+Đối với một transaction, chúng tôi sign phần hash của transaction. Cụ thể hơn, những gì được sign là `sha256` của object transaction được tuần tự hóa trong borsh (https://github.com/near/borsh).
 
 ### How do transactions work on the NEAR platform?
 
-A `Transaction` is made up of one or more `Action`s. An action can (currently) be one of 8 types: `CreateAccount`,
-`DeployContract`, `FunctionCall`, `Transfer`, `Stake`, `AddKey`, `DeleteKey` and `DeleteAccount`. Transactions are composed by a sender and then signed using the private keys of a valid NEAR account to create a `SignedTransaction`. This signed transaction is considered ready to send to the network for processing.
+A `Transaction` is made up of one or more `Action`s. Một action có thể (hiện tại) là một trong 8 loại: `CreateAccount`, `DeployContract`, `FunctionCall`, `Transfer`, `Stake`, `AddKey`, `DeleteKey` và `DeleteAccount`. Các transaction do người gửi soạn thảo và sau đó được sign bằng các key riêng của NEAR account hợp lệ để tạo một `SignedTransaction`. Signed transaction này được coi là đã sẵn sàng để gửi đến network để xử lý.
 
-Transactions are received via our JSON-RPC endpoint and routed to the shared where the `sender` account lives. This "home shard" for the sender account is then responsible for processing the transaction and generating related receipts to be applied across the network.
+Transactions được nhận thông qua JSON-RPC endpoint của chúng tôi và được chuyển đến shard nơi `sender` account hoạt động. Sau đó, "home shard" này cho sender account chịu trách nhiệm xử lý transaction và tạo các receipt liên quan để áp dụng trên toàn network.
 
-Once received by the network, signed transactions are verified (using the embedded public key of the signer) and transformed into a collection of `Receipt`s, one per action. Receipts are of two types: `Action Receipt` is the most common and represents almost all actions on the network while `Data Receipt` handles the very special case of "a `FunctionCallAction` which includes a Promise". These receipts are then propagated and applied across the network according to the "home shard" rule for all affected receiver accounts.
+Sau khi được network tiếp nhận, các signed transaction sẽ được xác minh (sử dụng key public được nhúng của người ký) và được chuyển thành tập hợp các `Receipt`, cho một action. Receipt có hai loại: `Action Receipt` là loại phổ biến nhất và đại diện cho hầu hết các hoạt động trên network trong khi `Data Receipt` xử lý trường hợp rất đặc biệt của "một ` FunctionCallAction ` bao gồm một Promise ". Các receipt này sau đó sẽ được phổ biến và áp dụng trên toàn network theo quy tắc "home shard" cho tất cả các account người nhận bị ảnh hưởng.
 
-These receipts are then propagated around the network using the receiver account's "home shard" since each account lives on one and only one shard. Once located on the correct shard, receipts are pulled from a nonce-based [queue](https://nomicon.io/ChainSpec/Transactions#pool-iterator).
+Các receipt này sau đó được truyền đi khắp network bằng cách sử dụng "home shard" của account người nhận vì mỗi account tồn tại trên một và chỉ một shard. Sau khi được định vị trên shard chính xác, receipt được lấy từ một nonce-based [queue](https://nomicon.io/ChainSpec/Transactions#pool-iterator).
 
-Receipts may generate other, new receipts which in turn are propagated around the network until all receipts have been applied. If any action within a transaction fails, the entire transaction is rolled back and any unburnt fees are refunded to the proper accounts.
+Các receipt có thể tạo ra các receipt khác, các receipt mới mà chúng lần lượt được truyền đi khắp network cho đến khi tất cả các receipt đã được áp dụng. Nếu bất kỳ action nào trong một transaction không thành công, toàn bộ transaction sẽ được khôi phục và mọi khoản phí chưa thanh toán sẽ được hoàn trả vào account thích hợp.
 
-For more detail, see specs on [`Transactions`](https://nomicon.io/RuntimeSpec/Transactions), [`Actions`](https://nomicon.io/RuntimeSpec/Actions.html), [`Receipts`](https://nomicon.io/RuntimeSpec/Receipts)
+Để biết thêm chi tiết, hãy xem các thông số kỹ thuật tại [`Transactions`](https://nomicon.io/RuntimeSpec/Transactions.html), [`Actions`](https://nomicon.io/RuntimeSpec/Actions.html), [`Receipts`](https://nomicon.io/RuntimeSpec/Receipts.html)
 
 ### How does NEAR serialize transactions?
 
-We use a simple binary serialization format that's deterministic: https://borsh.io
+Chúng tôi sử dụng một format binary serialize đơn giản có tính xác định: https://borsh.io
 
 ## Additional Resources
 
 - Whitepaper
 
-  - General overview at [The Beginner's Guide to the NEAR Blockchain](https://near.org/blog/the-beginners-guide-to-the-near-blockchain)
+  - Tổng quan chung xem tại [Hướng dẫn dành cho người mới bắt đầu về NEAR Blockchain](https://near.org/blog/the-beginners-guide-to-the-near-blockchain)
   - [NEAR Whitepaper](https://pages.near.org/papers/the-official-near-white-paper/)
 
 - Github
   - https://www.github.com/near
 
-:::tip Got a question? <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
+:::tip Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
 :::

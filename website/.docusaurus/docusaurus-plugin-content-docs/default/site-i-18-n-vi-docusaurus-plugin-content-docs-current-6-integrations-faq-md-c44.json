@@ -1,6 +1,6 @@
 {
   "id": "integrations/faq",
-  "title": "Integrator FAQ",
+  "title": "Tích hợp FAQ",
   "description": "Orientation",
   "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/6.integrations/faq.md",
   "sourceDirName": "6.integrations",
@@ -11,14 +11,16 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/6.integrations/faq.md",
   "tags": [],
   "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1712954223000,
   "frontMatter": {
     "id": "faq",
-    "title": "Integrator FAQ",
-    "sidebar_label": "Integrator FAQ"
+    "title": "Tích hợp FAQ",
+    "sidebar_label": "Tích hợp FAQ"
   },
   "sidebar": "exchanges",
   "previous": {
-    "title": "Avoiding Token Loss",
+    "title": "Token Loss",
     "permalink": "/vi/integrations/errors/token-loss"
   }
 }

@@ -19,7 +19,7 @@ import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 모듈은 코드를 구성하고, 남이 만든 라이브러리를 재사용하는 데 도움이 됩니다.
 
-이 컨트랙트에서 사용할 기본 모듈은 **NEAR SDK**로, 이를 통해 [실행 환경](./environment/environment.md)에 대한 액세스를 제공하고 [다른 컨트랙트를 호출](./crosscontract.md)하며 [토큰을 전송](./actions.md)하는 등의 작업을 수행할 수 있습니다.
+이 컨트랙트에서 사용할 기본 모듈은 **NEAR SDK**로, 이를 통해 [실행 환경](environment.md)에 대한 액세스를 제공하고 [다른 컨트랙트를 호출](./crosscontract.md)하며 [토큰을 전송](./actions.md)하는 등의 작업을 수행할 수 있습니다.
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">

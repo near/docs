@@ -203,7 +203,7 @@ The logic for this looks like:
 
 #### `createPost`
 
-Creating a post is done by using the [`context.db.Posts.insert()`](../../queryapi/context.md#insert) function:
+Creating a post is done by using the [`context.db.Posts.insert()`](../../../2.build/6.data-infrastructure/query-api/context.md#insert) function:
 
 ```js
   async function createPost(
@@ -233,7 +233,7 @@ Creating a post is done by using the [`context.db.Posts.insert()`](../../queryap
 
 #### `createComment`
 
-Creating a comment is done by using the [`context.db.Comments.insert()`](../../queryapi/context.md#insert) function:
+Creating a comment is done by using the [`context.db.Comments.insert()`](../../../2.build/6.data-infrastructure/query-api/context.md#insert) function:
 
 ```js
   async function createComment(

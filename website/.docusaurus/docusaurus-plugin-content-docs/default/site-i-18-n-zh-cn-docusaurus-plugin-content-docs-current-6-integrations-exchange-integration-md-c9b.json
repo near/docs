@@ -11,6 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/6.integrations/exchange-integration.md",
   "tags": [],
   "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1712954223000,
   "frontMatter": {
     "id": "exchange-integration",
     "title": "Exchange Integration",

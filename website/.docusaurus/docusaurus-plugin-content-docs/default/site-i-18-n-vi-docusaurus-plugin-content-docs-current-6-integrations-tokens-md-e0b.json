@@ -1,7 +1,7 @@
 {
   "id": "integrations/fungible-tokens",
   "title": "Fungible tokens",
-  "description": "Introduction",
+  "description": "Giới thiệu",
   "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/6.integrations/tokens.md",
   "sourceDirName": "6.integrations",
   "slug": "/integrations/fungible-tokens",
@@ -11,6 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/6.integrations/tokens.md",
   "tags": [],
   "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1712954223000,
   "frontMatter": {
     "id": "fungible-tokens",
     "title": "Fungible tokens",
@@ -18,11 +20,11 @@
   },
   "sidebar": "exchanges",
   "previous": {
-    "title": "Create a Transaction",
+    "title": "Tạo Transaction",
     "permalink": "/vi/integrations/create-transactions"
   },
   "next": {
-    "title": "Implicit Accounts",
+    "title": "Implicit Account",
     "permalink": "/vi/integrations/implicit-accounts"
   }
 }

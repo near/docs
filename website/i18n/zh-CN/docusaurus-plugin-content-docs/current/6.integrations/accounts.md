@@ -258,7 +258,6 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=txstatus method=EXPERIMENT
   }
 }
 ```
-
 </details>
 
 As we can see, there are four receipts generated in this function call. If we apply the criteria mentioned above, we can find in `receipts` field this object
@@ -456,7 +455,6 @@ that indicates it wants to transfer 1 NEAR to `bowen`. Notice that this transact
   }
 }
 ```
-
 </details>
 
 - Second step: `confirm`. A second transaction is sent to confirm the transfer. This transaction takes the request id returned by the first transaction and does the actual transfer. The transaction result is as follows
@@ -658,7 +656,6 @@ that indicates it wants to transfer 1 NEAR to `bowen`. Notice that this transact
   }
 }
 ```
-
 </details>
 
 Notice that similar to the transfer from lockup contract, there is also one receipt in the `receipts` field that meet our requirements:
@@ -714,5 +711,6 @@ and we can find its outcome in `receipts_outcome`:
 
 which indicates that the transaction is successful.
 
-:::tip Got a question? <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
+:::tip Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
 :::

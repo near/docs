@@ -65,6 +65,7 @@ If you're running your NEAR-in-Kurtosis cluster on a machine you intend to acces
 <details>
 <summary>Example response: </summary>
 
+
 ```bash
 Created directory '/Users/zerix/.neartosis' for storing all NEAR-in-Kurtosis output
 INFO[2022-12-06T12:59:04+05:30] Creating a new enclave for Starlark to run inside...
@@ -401,6 +402,7 @@ local_near send $ACCOUNT_ID test.near 1
 <details>
 <summary>Example response: </summary>
 
+
 ```bash
 Sending 1 NEAR to test.near from kevin.test.near
 Loaded master account test.near key from /Users/zerix/.neartosis/2022-06-03T18.04.32/validator-key.json with public key = ed25519:3Kuyi2DUXdoHgoaNEvCxa1m6G8xqc6Xs7WGajaqLhNmW
@@ -463,6 +465,7 @@ local_near deploy --wasmFile ~/main.wasm --accountId $ACCOUNT_ID
 
 <details>
 <summary>Example response: </summary>
+
 
 ```
 Loaded master account test.near key from /Users/benjaminkurrek/.neartosis/2021-12-02T13.37.41/validator-key.json with public key = ed25519:AnLHi4ZAxfxFAQSXniycyZS6dpBqxhmVZH3zBCZbqAS6

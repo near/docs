@@ -76,12 +76,12 @@ import TabItem from '@theme/TabItem';
 
 `predecessor`는 컨트랙트에서 메서드를 호출한 계정입니다. 한편, `signer`는 최초 트랜잭션에 _서명한_ 계정을 의미합니다.
 
-단순 트랜잭션([교차 컨트랙트 호출](../crosscontract.md) 없음) 중에는 `predecessor`와 `signer`가 동일합니다. 예를 들어 **alice.near**가 **contract.near**를 호출하는 경우, 컨트랙트의 관점에서 **alice.near**는 `predecessor`인 동시에 `signer`인 것입니다. 그러나 **contract.near**가 [교차 컨트랙트 호출](../crosscontract.md)을 생성하면, `predecessor`에 변경 사항이 발생합니다. In the example below, when **pool.near** executes, it would see **contract.near** as the `predecessor` and **alice.near** as the `signer`.
+단순 트랜잭션([교차 컨트랙트 호출](crosscontract.md) 없음) 중에는 `predecessor`와 `signer`가 동일합니다. 예를 들어 **alice.near**가 **contract.near**를 호출하는 경우, 컨트랙트의 관점에서 **alice.near**는 `predecessor`인 동시에 `signer`인 것입니다. 그러나 **contract.near**가 [교차 컨트랙트 호출](crosscontract.md)을 생성하면, `predecessor`에 변경 사항이 발생합니다. In the example below, when **pool.near** executes, it would see **contract.near** as the `predecessor` and **alice.near** as the `signer`.
 
 ![img](https://miro.medium.com/max/1400/1*LquSNOoRyXpITQF9ugsDpQ.png) _스마트 컨트랙트와 상호 작용하는 사용자에 대한 정보에 액세스할 수 있습니다._
 
 :::tip
-대부분의 시나리오에서는 \*\*predecessor(전임자)\*\*만 알면 됩니다. 그러나, signer(서명자)가 매우 필요한 상황도 있습니다. 예를 들어, [이 마켓플레이스](https://github.com/near-examples/nft-tutorial/blob/7fb267b83899d1f65f1bceb71804430fab62c7a7/market-contract/src/nft_callbacks.rs#L42)에 [NFT](../../relevant-contracts/nft.md)를 추가할 때, 컨트랙트는 `signer`를 통해 트랜잭션을 생성한 사람이 NFT 소유자인지 확인합니다.
+대부분의 시나리오에서는 \*\*predecessor(전임자)\*\*만 알면 됩니다. 그러나, signer(서명자)가 매우 필요한 상황도 있습니다. 예를 들어, [이 마켓플레이스](https://github.com/near-examples/nft-tutorial/blob/7fb267b83899d1f65f1bceb71804430fab62c7a7/market-contract/src/nft_callbacks.rs#L42)에 [NFT](../../5.primitives/nft.md)를 추가할 때, 컨트랙트는 `signer`를 통해 트랜잭션을 생성한 사람이 NFT 소유자인지 확인합니다.
 :::
 
 ---
@@ -97,7 +97,7 @@ import TabItem from '@theme/TabItem';
 이 금액은 컨트랙트 계정에 **이미 예치되어** 있으며, **메서드 패닉**이 발생하면 `predecessor`에게 **자동으로 반환** 됩니다.
 
 :::warning
-:::warning [교차 컨트랙트 호출](../crosscontract.md)을 했는데 패닉이 발생하면 자금이 **컨트랙트로** 다시 전송됩니다. [콜백 섹션](../crosscontract.md#failed-execution)에서 이 상황을 처리하는 방법을 참고하세요.
+:::warning [교차 컨트랙트 호출](crosscontract.md)을 했는데 패닉이 발생하면 자금이 **컨트랙트로** 다시 전송됩니다. [콜백 섹션](crosscontract.md#failed-execution)에서 이 상황을 처리하는 방법을 참고하세요.
 :::
 
 ### Account Balance
@@ -112,7 +112,7 @@ import TabItem from '@theme/TabItem';
 
 ### Storage Used
 
-`storage_used`는 현재 컨트랙트에서 사용되고 있는 [스토리지](../storage.md)의 양을 나타냅니다.
+`storage_used`는 현재 컨트랙트에서 사용되고 있는 [스토리지](storage.md)의 양을 나타냅니다.
 
 :::tip
 :::tip
@@ -158,7 +158,7 @@ NEAR 블록체인은 [에포크](../../../1.concepts/basics/epoch.md) 단위로 
 `used_gas`는 지금까지 사용한 Gas의 양을 포함합니다. 이는 메서드를 실행하는 가스 비용을 추정하는 데에 유용합니다.
 
 :::warning
-[교차 컨트랙트 호출](/develop/contracts/crosscontract) 중 콜백에 완전히 실행하기에 충분한 가스가 있는지 항상 확인하세요.
+[교차 컨트랙트 호출](/build/smart-contracts/anatomy/crosscontract) 중 콜백에 완전히 실행하기에 충분한 가스가 있는지 항상 확인하세요.
 :::
 
 :::tip

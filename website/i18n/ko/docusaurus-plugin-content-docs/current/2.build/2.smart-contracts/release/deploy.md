@@ -9,10 +9,10 @@ import TabItem from '@theme/TabItem';
 
 컨트랙트가 준비되면, 모든 사람이 사용할 수 있도록 NEAR 네트워크에 배포할 수 있습니다.
 
-[NEAR CLI](../4.tools/cli.md)를 사용하여 컨트랙트를 배포하고, 컨트랙트 내 메서드를 호출하는 방법을 안내해 드립니다.
+[NEAR CLI](../../../4.tools/cli.md)를 사용하여 컨트랙트를 배포하고, 컨트랙트 내 메서드를 호출하는 방법을 안내해 드립니다.
 
 :::info
-:::info 이 페이지에서는 NEAR CLI의 기본 사항만 다룹니다. 자세한 내용은 [NEAR CLI 설명서 페이지](../4.tools/cli.md)를 참조하세요.
+:::info 이 페이지에서는 NEAR CLI의 기본 사항만 다룹니다. 자세한 내용은 [NEAR CLI 설명서 페이지](../../../4.tools/cli.md)를 참조하세요.
 :::
 
 ---
@@ -22,7 +22,7 @@ import TabItem from '@theme/TabItem';
 `NEAR CLI` 덕분에 컨트랙트 배포는 다음과 같이 간단하게 수행될 수 있습니다.
 
 1. 컨트랙트를 wasm으로 컴파일합니다(템플릿 내 `yarn build`를 통해 자동으로 수행됨).
-2. [Create an account](../4.tools/cli.md#near-create-account) and [deploy the contract](../4.tools/cli.md#near-deploy) into it using `NEAR CLI`.
+2. [Create an account](../../../4.tools/cli.md#near-create-account) and [deploy the contract](../../../4.tools/cli.md#near-deploy) into it using `NEAR CLI`.
 
 #### 계정 생성 및 배포
 
@@ -99,7 +99,7 @@ You can overwrite a contract by deploying another on top of it. 이 경우 계�
 
 ## Initializing the Contract
 
-컨트랙트에 [초기화 메서드](./contracts/anatomy.md#initialization-functions)가 있는 경우, 이를 호출하여 상태를 초기화할 수 있습니다. 컨트랙트가 상태에 대한 `default` 값을 구현하는 경우에는 필요하지 않습니다.
+컨트랙트에 [초기화 메서드](../anatomy/anatomy.md#initialization-functions)가 있는 경우, 이를 호출하여 상태를 초기화할 수 있습니다. 컨트랙트가 상태에 대한 `default` 값을 구현하는 경우에는 필요하지 않습니다.
 
 <Tabs className="language-tabs" groupId="code-tabs">
 <TabItem value="near-cli">
@@ -130,7 +130,7 @@ near contract call-function as-transaction <contractId> <initMethod> json-args [
 
 ## Calling the Contract
 
-컨트랙트가 배포되고 나면, [NEAR CLI](../4.tools/cli.md)를 통해 바로 컨트랙트와 상호 작용할 수 있습니다.
+컨트랙트가 배포되고 나면, [NEAR CLI](../../../4.tools/cli.md)를 통해 바로 컨트랙트와 상호 작용할 수 있습니다.
 
 <hr className="subsection" />
 

@@ -40,12 +40,12 @@ Just like any piece of software, smart contracts have a development flow - start
 
 The development flow can be summarized as follows:
 
-- [**Scaffold**](../contracts/quickstart.md): The simplest way to create a project is by starting from a template.
-- [**Build**](../contracts/welcome.md): To write a contract developers can choose between Javascript and Rust.
-- [**Test**](../testing/introduction.md): Our Sandbox enables to simulate interactions with one or multiple contracts in a realistic environment.
-- [**Deploy**](../deploy.md): After making sure the contract is secure, developers can deploy the contract into their accounts.
+- [**Scaffold**](quickstart.md): The simplest way to create a project is by starting from a template.
+- [**Build**](./anatomy/basics.md): To write a contract developers can choose between Javascript and Rust.
+- [**Test**](./testing/introduction.md): Our Sandbox enables to simulate interactions with one or multiple contracts in a realistic environment.
+- [**Deploy**](./release/deploy.md): After making sure the contract is secure, developers can deploy the contract into their accounts.
 - [**Use**](https://mynearwallet.com): Any user can interact with the contract through their NEAR Wallet.
-- [**Monitor**](../monitor.md): The contract's activity can be monitored through simple APIs.
+- [**Monitor**](../6.data-infrastructure/what-is.md): The contract's activity can be monitored through simple APIs.
 
 #### Supported Languages
 
@@ -68,6 +68,6 @@ Contract primitives such as FT, NFT, and DAOs are fundamental building blocks th
 
 :::tip
 
-Check our section on [primitives](../../7.primitives/whatareprimitives.md) to learn more about them
+Check our section on [primitives](../5.primitives/what-is.md) to learn more about them
 
 :::

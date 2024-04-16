@@ -109,7 +109,7 @@ async function getBlock(block: Block, context) {
 
 ### 데이터베이스에 데이터 저장
 
-로직의 두 번째 부분은 필터링된 트랜잭션의 데이터를 데이터베이스에 저장하는 것입니다. This is done by using the [`context.db.Posts.insert()`](../../queryapi/context.md#insert) function. The `context.db.Posts.insert()` function will be called for every filtered transaction as defined by the `.map()` function called on the array of `nearSocialPosts`.
+로직의 두 번째 부분은 필터링된 트랜잭션의 데이터를 데이터베이스에 저장하는 것입니다. This is done by using the [`context.db.Posts.insert()`](../../../2.build/6.data-infrastructure/query-api/context.md#insert) function. The `context.db.Posts.insert()` function will be called for every filtered transaction as defined by the `.map()` function called on the array of `nearSocialPosts`.
 
 The function for this indexer looks like this:
 

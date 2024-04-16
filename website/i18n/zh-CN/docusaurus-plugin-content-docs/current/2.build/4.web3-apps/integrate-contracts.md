@@ -38,6 +38,7 @@ npm install \
 
 <details>
 
+
 <summary>Using `near-api-js` in plain HTML</summary>
 
 You can add `near-api-js` as a script tag in your html.
