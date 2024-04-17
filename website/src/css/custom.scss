@@ -23,21 +23,6 @@
     background-color: #f8f8f8;
 }
 
-article a[href^="http"]::after {
-    content: url("data:image/svg+xml,%3Csvg fill='%235f8afaff' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z'/%3E%3C/svg%3E");
-    width: 0.6rem;
-    display: inline-block;
-    margin-left: 0.3rem;
-}
-
-.internal::after {
-    content: url("data:image/svg+xml,%3Csvg fill='%235f8afaff' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z'/%3E%3C/svg%3E");
-    width: 0.6rem;
-    display: inline-block;
-    margin-left: 0.3rem;
-    color: var(--near-font-body)
-}
-
 body {
     font-family: var(--near-font-body);
     color: var(--ifm-font-color-base);
@@ -286,12 +271,12 @@ footer .menu-item a {
     color: var(--near-color-royal);
 }
 
-.avatar {
+html:not(.blog-post-page) .avatar {
     color: var(--ifm-font-color-base);
     margin: 1rem auto auto;
 }
 
-.avatar img {
+html:not(.blog-post-page) .avatar img {
     border-radius: 0%;
     display: block;
     overflow: hidden;
@@ -299,7 +284,7 @@ footer .menu-item a {
     width: 3rem;
 }
 
-.avatar__photo {
+html:not(.blog-post-page) .avatar__photo {
     border-radius: 0%;
 }
 
@@ -442,8 +427,8 @@ https://www.feelback.dev/docs/guides/stripe-like-documentation-feedback-for-docu
 
 /* Announcement bar */
 div[class^="announcementBar_"] {
-    --site-announcement-bar-stripe-color1: #fdebdd;
-    --site-announcement-bar-stripe-color2: #fbd6c4;
+    --site-announcement-bar-stripe-color1: #f5fddd;
+    --site-announcement-bar-stripe-color2: #c4fbcd;
     background: repeating-linear-gradient(45deg, var(--site-announcement-bar-stripe-color1), var(--site-announcement-bar-stripe-color1) 20px, var(--site-announcement-bar-stripe-color2) 10px, var(--site-announcement-bar-stripe-color2) 40px);
     font-size: 16px;
     font-weight: 600;
@@ -456,3 +441,12 @@ div[class^="announcementBar_"] {
         margin-top: 4rem;
     }
 } 
+
+#__blog-post-container {
+    padding-top: 1rem;
+    text-align: justify;
+}
+
+#__blog-post-container img {
+    width: 100%;
+}

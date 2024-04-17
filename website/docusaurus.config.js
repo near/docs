@@ -87,9 +87,9 @@ const config = {
   ],
   themeConfig: {
     announcementBar: {
-      id: 'id-0001',
+      id: 'id-0002',
       content:
-        '🎉 We have reorganized our docs to make them simpler to navigate, please report any broken links 🎉',
+        '🎉 Come check <a href="/blog">our new blog</a>, where we will share weekly news and updates 🎉',
       backgroundColor: '#fafbfc',
       textColor: '#333',
       isCloseable: true,
