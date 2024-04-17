@@ -18,7 +18,7 @@ ví dụ cho `finality`:
 
 - method: `block`
 - các param:
-  - [`finality`](/docs/api/rpc#using-finality-param) _HOẶC_ [`block_id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/api/rpc/setup#using-finality-param) _HOẶC_ [`block_id`](/api/rpc/setup#using-block_id-param)
 
 ví dụ cho `finality`:
 
@@ -345,7 +345,7 @@ ví dụ cho `finality`:
 
 - method: `EXPERIMENTAL_changes_in_block`
 - các param:
-  - [`finality`](/docs/api/rpc#using-finality-param) _HOẶC_ [`block_id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/api/rpc/setup#using-finality-param) _HOẶC_ [`block_id`](/api/rpc/setup#using-block_id-param)
 
 `finality`
 
@@ -591,7 +591,7 @@ ví dụ cho `chunk_id`:
 
 - method: `chunk`
 - các param:
-  - `chunk_id` _HOẶC_ [`block_id`, `shard_id`](/docs/api/rpc#using-block_id-param)
+  - `chunk_id` _HOẶC_ [`block_id`, `shard_id`](/api/rpc/setup#using-block_id-param)
 
 Ví dụ cho `block_id`, `shard_id`:
 

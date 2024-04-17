@@ -87,7 +87,7 @@ The tables available in the NEAR Public Lakehouse are:
 
 - **blocks**: A structure that represents an entire block in the NEAR blockchain. `Block` is the main entity in NEAR Protocol blockchain. Blocks are produced in NEAR Protocol every second.
 - **chunks**: A structure that represents a chunk in the NEAR blockchain. `Chunk` of a `Block` is a part of a `Block` from a `Shard`. The collection of `Chunks` of the `Block` forms the NEAR Protocol Block. `Chunk` contains all the structures that make the `Block`: `Transactions`, [`Receipts`](https://nomicon.io/RuntimeSpec/Receipts), and `Chunk Header`.
-- **transactions**: [`Transaction`](../../2.develop/lake/structures/transaction.mdx#definition) is the main way of interaction between a user and a blockchain. Transaction contains: Signer account ID, Receiver account ID, and Actions.
+- **transactions**: [`Transaction`](./lake-data-structures/transaction.mdx) is the main way of interaction between a user and a blockchain. Transaction contains: Signer account ID, Receiver account ID, and Actions.
 - **execution_outcomes**: Execution outcome is the result of execution of `Transaction` or `Receipt`. In the result of the Transaction execution will always be a Receipt.
 - **receipt_details**: All cross-contract (we assume that each account lives in its own shard) communication in Near happens through Receipts. Receipts are stateful in a sense that they serve not only as messages between accounts but also can be stored in the account storage to await `DataReceipts`. Each receipt has a `predecessor_id` (who sent it) and `receiver_id` the current account.
 - **receipt_origin**: Tracks the transaction that originated the receipt.
@@ -99,7 +99,7 @@ The tables available in the NEAR Public Lakehouse are:
 
 - [Protocol documentation](../../1.concepts/welcome.md)
 - [Near Data flow](../../1.concepts/data-flow/near-data-flow.md)
-- [Lake Data structures](../../2.develop/lake/structures/toc.mdx)
+- [Lake Data structures](./lake-data-structures/toc.mdx)
 - [Protocol specification](https://nomicon.io/)
 
 :::

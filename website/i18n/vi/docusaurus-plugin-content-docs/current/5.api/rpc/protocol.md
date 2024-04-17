@@ -49,7 +49,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 </Tabs>
 
 <details>
-<summary>Các kết quả cuối cùng của transaction có thể được query qua <a href="/docs/api/rpc/transactions#transaction-status">Transaction Status</a> hoặc <a href="https://explorer.testnet.near.org/">NEAR Explorer</a> bằng cách sử dụng <code>kết quả</code> hash được trả về như ví dụ sau đây. </summary>
+<summary>Các kết quả cuối cùng của transaction có thể được query qua <a href="/api/rpc/transactions#transaction-status">Transaction Status</a> hoặc <a href="https://explorer.testnet.near.org/">NEAR Explorer</a> bằng cách sử dụng <code>kết quả</code> hash được trả về như ví dụ sau đây. </summary>
 <p>
 
 ```json
@@ -351,7 +351,7 @@ Ví dụ:
 
 - method: `EXPERIMENTAL_protocol_config`
 - các param:
-  - [`finality`](/docs/api/rpc#using-finality-param) _HOẶC_ [`block_id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/api/rpc/setup#using-finality-param) _HOẶC_ [`block_id`](/api/rpc/setup#using-block_id-param)
 
 Dưới đây là danh sách đầy đủ các error variant có thể được trả về theo loại request `view_access_key_list`:
 

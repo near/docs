@@ -45,7 +45,7 @@ Lưu ý rằng một call tới smart contract của bạn để xóa dữ liệ
 
 Storage staking được định giá bằng một số cụ thể bởi network, cụ thể được đặt là **1E19 yoctoNEAR mỗi byte**, hay **100kb mỗi NEAR token (Ⓝ)**. [^1] [^2]
 
-JSON RPC API của NEAR cung cấp [một cách để truy vấn initial setting này](/docs/api/rpc#genesis-config) cũng như [một cách để truy vấn live config / những block gần nhất](/docs/api/rpc#protocol-config).
+JSON RPC API của NEAR cung cấp [một cách để truy vấn initial setting này](/api/rpc/setup#genesis-config) cũng như [một cách để truy vấn live config / những block gần nhất](/api/rpc/setup#protocol-config).
 
 ## Example cost breakdown
 

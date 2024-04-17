@@ -105,7 +105,7 @@ This is the JS function that calls the GraphQL mutation `InsertWidgetActivity` a
 
 :::tip
 
-Learn more about [QueryAPI indexing functions](../queryapi/index-function.md) and how to build your own indexers.
+Learn more about [QueryAPI indexing functions](../../2.build/6.data-infrastructure/query-api/index-function.md) and how to build your own indexers.
 
 :::
 

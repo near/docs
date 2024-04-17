@@ -50,7 +50,7 @@ Indeed, when writing a NEAR Component, you focus on writing the body of the comp
 
 ## NEAR Native
 
-NEAR Components can readily [interact with smart contracts](../api/near.md) in the NEAR Blockchain. While `view` methods are free to query by anyone, `call` methods require the user to be logged in.
+NEAR Components can readily [interact with smart contracts](../2.smart-contracts/what-is.md) in the NEAR Blockchain. While `view` methods are free to query by anyone, `call` methods require the user to be logged in.
 
 <WidgetEditor id="2">
 

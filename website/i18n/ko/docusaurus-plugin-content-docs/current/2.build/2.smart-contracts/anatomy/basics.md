@@ -101,7 +101,7 @@ u8, u16, u32, u64, u128, i8, i16, i32, i64, i128, Vec<T>, HashMap<K,V> ...
 </CodeTabs>
 
 :::tip
-Always prefer **SDK collections** over native ones in the contract's **[attributes (state)](./anatomy.md#defining-the-state)**.
+Always prefer **SDK collections** over native ones in the contract's **[attributes (state)](anatomy.md#defining-the-state)**.
 :::
 
 ---

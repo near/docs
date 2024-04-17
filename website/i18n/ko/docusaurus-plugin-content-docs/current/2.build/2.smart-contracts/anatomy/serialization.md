@@ -240,4 +240,4 @@ near call $CONTRACT change_state '{"string":"bye", "number":1}' --accountId $CON
 이 문제를 해결하려면 다음 중 하나를 수행하세요.
 
 1. Rollback to the previous contract code
-2. [컨트랙트 상태를 마이그레이션](../upgrade.md)하는 메서드 구현
+2. [컨트랙트 상태를 마이그레이션](../release/upgrade.md)하는 메서드 구현

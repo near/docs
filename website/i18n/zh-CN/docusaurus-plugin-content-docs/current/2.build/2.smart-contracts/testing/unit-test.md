@@ -10,7 +10,7 @@ Unit tests allow you to test the contract methods individually. They are suitabl
 If you used one of our [examples](https://github.com/near-examples/docs-examples) as template, then you simply need to navigate to the contract's folder, and use `yarn test`. In case you didn't, then we recommend you copy the necessary node files (e.g. `package.json`) from one of our templates.
 
 :::tip
-:::tip You can run `yarn test` from the root folder of each project to run both unit and [integration](integration.md) tests.
+:::tip You can run `yarn test` from the root folder of each project to run both unit and [integration](./integration-test.md) tests.
 :::
 
 ---
@@ -50,4 +50,4 @@ Unit tests are useful to check for code integrity, and detect basic errors on is
 - Testing [cross-contract calls](../anatomy/crosscontract.md)
 - Testing complex interactions, i.e. multiple users depositing money on the contract
 
-For all these cases it is necessary to **complement** unit tests with [integration tests](integration.md).
+For all these cases it is necessary to **complement** unit tests with [integration tests](./integration-test.md).

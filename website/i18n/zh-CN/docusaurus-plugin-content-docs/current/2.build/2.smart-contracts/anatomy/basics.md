@@ -101,7 +101,7 @@ Besides the native types, the NEAR SDK implements [collections](./storage.md) su
 </CodeTabs>
 
 :::tip
-Always prefer **SDK collections** over native ones in the contract's **[attributes (state)](./anatomy.md#defining-the-state)**.
+Always prefer **SDK collections** over native ones in the contract's **[attributes (state)](anatomy.md#defining-the-state)**.
 :::
 
 ---

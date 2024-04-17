@@ -15,7 +15,7 @@ Building a blockchain indexer depends on the kind of historical blockchain data 
 
 :::tip
 
-Want to learn more about indexing? Check the [Introduction to Indexers](../../1.concepts/3.advanced/indexers.md) article.
+Want to learn more about indexing? Check the [Introduction to Indexers](../../../1.concepts/3.advanced/indexers.md) article.
 
 :::
 
@@ -52,7 +52,7 @@ Common Blockchain analytics use cases that can be managed with [BigQuery](../big
 Building Web3 apps that handle historical blockchain data require dedicated solutions that manage the data and reduce the latency of requests, as it's not possible to scan the whole blockchain when a user makes a request.
 For example, if your dApp needs to keep track of minted NFTs from a specific smart contract, you'll need to keep historical data related to that contract, the NFTs, and all the transactions in an optimized way so the dApp can provide fast responses to the user.
 
-A simple solution for developers building dApps on [NEAR](../overview.md) is using [QueryAPI](intro.md), a fully managed solution to build indexer functions, extract on-chain data, store it in a database, and be able to query it using GraphQL endpoints.
+A simple solution for developers building dApps on [NEAR](../../4.web3-apps/what-is.md) is using [QueryAPI](intro.md), a fully managed solution to build indexer functions, extract on-chain data, store it in a database, and be able to query it using GraphQL endpoints.
 
 In the NFT example, with QueryApi you can create an indexer that follow the activity of your `my-nft-contract.near` smart contract, records all activities related to it (such as minting and transfers), and provides simple endpoints to communicate with your dApp, when your application needs to display all the minted NFTs, or the related transactions to a specific NFT.
 
@@ -68,6 +68,6 @@ Learn more about QueryAPI in this [Overview article](intro.md).
 
 For a technical implementation deep-dive, check these QueryAPI tutorials:
 
-- [NFTs Indexer](../tutorial/indexer-tutorials/nft-indexer.md): an indexer that keeps track of newly minted NFT on Near blockchain.
-- [Posts Indexer](../tutorial/indexer-tutorials/posts-indexer.md): this indexer keeps track of every new NEAR Social post found on the blockchain.
-- [Social Feed Indexer](../tutorial/indexer-tutorials/feed-indexer.md): this indexer keeps track of new posts, comments, and likes on NEAR Social, so a social feed can be rendered quickly.
+- [NFTs Indexer](../../../3.tutorials/near-components/indexer-tutorials/nft-indexer.md): an indexer that keeps track of newly minted NFT on Near blockchain.
+- [Posts Indexer](../../../3.tutorials/near-components/indexer-tutorials/posts-indexer.md): this indexer keeps track of every new NEAR Social post found on the blockchain.
+- [Social Feed Indexer](../../../3.tutorials/near-components/indexer-tutorials/feed-indexer.md): this indexer keeps track of new posts, comments, and likes on NEAR Social, so a social feed can be rendered quickly.

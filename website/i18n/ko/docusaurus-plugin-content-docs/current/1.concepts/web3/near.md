@@ -144,7 +144,7 @@ NEAR의 스마트 컨트랙트는 Rust 또는 JavaScript로 작성되고, [WebAs
 
 이제 WEB 3.0 애플리케이션 개발을 시작하는 데 필요한 개념에 익숙해졌으므로 사용 가능한 개발 도구를 살펴보겠습니다.
 
-우선 개발 및 테스트 환경이 필요합니다. 물론 이론상 메인 블록체인 네트워크에서 개발과 테스트를 수행할 수 있지만 비용이 저렴하지는 않습니다. 이러한 이유로 NEAR는 개발 중에 사용할 수 있는 [여러 네트워크](../../1.concepts/basics/networks.md)를 제공합니다.
+우선 개발 및 테스트 환경이 필요합니다. 물론 이론상 메인 블록체인 네트워크에서 개발과 테스트를 수행할 수 있지만 비용이 저렴하지는 않습니다. 이러한 이유로 NEAR는 개발 중에 사용할 수 있는 [여러 네트워크](../basics/networks.md)를 제공합니다.
 - testnet - 메인넷과 동일하고 무료로 사용할 수 있는 퍼블릭 NEAR 네트워크입니다.
 - localnet - 로컬 환경에 개인 NEAR 네트워크를 배포할 수 있습니다. 이는 당신의 소유이기 때문에, 개발 중에 데이터와 코드를 비공개로 유지할 수 있습니다. 자신의 노드를 실행하는 방법에 대한 자세한 정보는 [여기](https://docs.near.org/docs/develop/node/validator/running-a-node)에서 찾을 수 있습니다. Alternatively, you can bootstrap an entire testing infrastructure in Docker on your local machine using Kurtosis - [guide is here](../../2.build/2.smart-contracts/testing/kurtosis-localnet.md).
 - 작업 공간 - 자체 로컬 네트워크를 시작하여 e2e 테스트를 수행할 수 있습니다. More info [here](../../2.build/2.smart-contracts/testing/integration-test.md).

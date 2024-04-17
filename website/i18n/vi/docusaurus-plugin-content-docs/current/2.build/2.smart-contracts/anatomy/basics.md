@@ -102,7 +102,7 @@ to help you store complex data in the contract's state.
 </CodeTabs>
 
 :::tip
-Always prefer **SDK collections** over native ones in the contract's **[attributes (state)](../anatomy/anatomy.md#defining-the-state)**.
+Always prefer **SDK collections** over native ones in the contract's **[attributes (state)](anatomy.md#defining-the-state)**.
 :::
 
 ---

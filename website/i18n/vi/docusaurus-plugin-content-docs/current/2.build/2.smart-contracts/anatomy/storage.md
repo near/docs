@@ -16,7 +16,7 @@ Contracts [pay for their storage](#storage-cost) by locking part of their balanc
 
 ## Defining the State
 
-The contract's state is defined by the [main class attributes](../anatomy/anatomy.md#defining-the-contract), and accessed through them.
+The contract's state is defined by the [main class attributes](anatomy.md#defining-the-contract), and accessed through them.
 
 In the state you can store constants, native types, and complex objects. When in doubt, prefer to use [SDK collections](#data-structures)
 over native ones, because they are optimized for the [serialized key-value storage](./serialization.md#borsh-state-serialization).

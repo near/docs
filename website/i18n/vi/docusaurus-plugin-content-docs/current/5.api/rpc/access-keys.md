@@ -19,7 +19,7 @@ Nếu `permission` của key là `FunctionCall`, nó sẽ trả về chi tiết 
 - method: `query`
 - các param:
   - `request_type`: `view_access_key`
-  - [`finality`](/docs/api/rpc#using-finality-param) _HOẶC_ [`block_id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/api/rpc/setup#using-finality-param) _HOẶC_ [`block_id`](/api/rpc/setup#using-block_id-param)
   - `account_id`: _`"example.testnet"`_
   - `public_key`: _`"example.testnet's public key"`_
 
@@ -231,7 +231,7 @@ You can query <strong>all</strong> access keys for a given account.
 - method: `query`
 - các param:
   - `request_type`: `view_access_key_list`
-  - [`finality`](/docs/api/rpc#using-finality-param) _HOẶC_ [`block_id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/api/rpc/setup#using-finality-param) _HOẶC_ [`block_id`](/api/rpc/setup#using-block_id-param)
   - `account_id`: _`"example.testnet"`_
 
 Dưới đây là danh sách đầy đủ các error variant có thể được trả về theo loại request `view_access_key_list`:
@@ -538,7 +538,7 @@ Trả về các thay đổi riêng lẻ của access key trong một block cụ 
 - các param:
   - `changes_type`: `single_access_key_changes`
   - `keys`: `[{ account_id, public_key }]`
-  - [`finality`](/docs/api/rpc#using-finality-param) _HOẶC_ [`block_id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/api/rpc/setup#using-finality-param) _HOẶC_ [`block_id`](/api/rpc/setup#using-block_id-param)
 
 Ví dụ:
 
@@ -731,7 +731,7 @@ Trả về các thay đổi đến <strong>tất cả</strong> các access key c
 - các param:
   - `changes_type`: `all_access_key_changes`
   - `account_ids`: `[ "example.testnet", "example2.testnet"]`
-  - [`finality`](/docs/api/rpc#using-finality-param) _HOẶC_ [`block_id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/api/rpc/setup#using-finality-param) _HOẶC_ [`block_id`](/api/rpc/setup#using-block_id-param)
 
 Dưới đây là danh sách đầy đủ các error variant có thể được trả về theo loại request `view_access_key_list`:
 
@@ -778,7 +778,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 </Tabs>
 
 <details>
-<summary>Các kết quả cuối cùng của transaction có thể được query qua <a href="/docs/api/rpc/transactions#transaction-status">Transaction Status</a> hoặc <a href="https://explorer.testnet.near.org/">NEAR Explorer</a> bằng cách sử dụng <code>kết quả</code> hash được trả về như ví dụ sau đây. </summary>
+<summary>Các kết quả cuối cùng của transaction có thể được query qua <a href="/api/rpc/transactions#transaction-status">Transaction Status</a> hoặc <a href="https://explorer.testnet.near.org/">NEAR Explorer</a> bằng cách sử dụng <code>kết quả</code> hash được trả về như ví dụ sau đây. </summary>
 <p>
 
 ```json

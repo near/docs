@@ -63,8 +63,8 @@ This is the interface through which you can create a new Indexer. On here you ca
 To design and create your indexer, you can follow this recommended workflow:
 
 1. Using [nearblocks.io](https://nearblocks.io), find transactions to smart contracts that you want to index
-2. Take the block `height` and put it into the [Debug Mode filter](../queryapi/index-function.md#local-debug-mode), open your browser's _Developer Console_, and hit <kbd>Play</kbd>
-3. Inspect the block and write JavaScript code using [NEAR Lake Primitives](../../2.develop/lake/lake-primitives.md) to extract data from a `block` object. (This JS code will be your [`IndexingLogic.js`](#indexinglogicjs))
+2. Take the block `height` and put it into the [Debug Mode filter](index-function.md#local-debug-mode), open your browser's _Developer Console_, and hit <kbd>Play</kbd>
+3. Inspect the block and write JavaScript code using [NEAR Lake Primitives](../lake-framework/building-indexers/primitives.md) to extract data from a `block` object. (This JS code will be your [`IndexingLogic.js`](#indexinglogicjs))
    > **Tip:** Use `context.log` for debugging to ensure you are getting the right results
 4. Add more blocks for debugging, or start following the blockchain to see how new blocks are handled
 5. Create tables that you need to store the data using Postgres [CREATE table syntax](https://www.postgresql.org/docs/current/sql-createtable.html). (This SQL code will be your [`schema.sql`](#schemasql))
@@ -104,7 +104,7 @@ This editor with this code shows the `indexingLogic.js` file that is selected. T
 
 :::info Saving data
 
-You will likely want to save the data you capture from your indexer to your defined tables in the GraphQL database. You can do this easily by using the [`context.db`](../queryapi/context.md#db) object [`insert`](../queryapi/context.md#insert) method.   For example, if you have a table called `transactions` with columns `id`, `sender`, `receiver`, `amount`, `block_height`, you can insert a mutation query for one new element in the table like this:
+You will likely want to save the data you capture from your indexer to your defined tables in the GraphQL database. You can do this easily by using the [`context.db`](context.md#db) object [`insert`](context.md#insert) method.   For example, if you have a table called `transactions` with columns `id`, `sender`, `receiver`, `amount`, `block_height`, you can insert a mutation query for one new element in the table like this:
 
 ```js
 const tx = {
@@ -156,7 +156,7 @@ CREATE TABLE "indexer_storage" (
 
 This is the database schema that will be used to store the data you specify in `indexingLogic.js`. You can add more tables and columns to this schema as you see fit. They will be created as soon as you create the indexer.
 
-Creating this default table will allow you to use the [`context.set`](../queryapi/context.md#set) helper method to write data. It takes two arguments: a key argument that accepts a string and a value argument,  which will be written to the `key_name` and `value` columns.
+Creating this default table will allow you to use the [`context.set`](context.md#set) helper method to write data. It takes two arguments: a key argument that accepts a string and a value argument,  which will be written to the `key_name` and `value` columns.
 
 :::caution Note on schema migration
 You are able to update `indexingLogic.js` after you have registered/created your indexer, but you are only allowed to specify `schema.sql` once before you submit your indexer. If you want to update your schema, you will have to create a new indexer.

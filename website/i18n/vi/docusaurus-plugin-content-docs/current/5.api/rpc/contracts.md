@@ -17,7 +17,7 @@ Ví dụ:
 - method: `query`
 - các param:
   - `request_type`: `view_account`
-  - [`finality`](/docs/api/rpc#using-finality-param) _HOẶC_ [`block_id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/api/rpc/setup#using-finality-param) _HOẶC_ [`block_id`](/api/rpc/setup#using-block_id-param)
   - `account_id`: _`"example.testnet"`_
 
 Ví dụ về response nhận được:
@@ -65,7 +65,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 </Tabs>
 
 <details>
-<summary>Các kết quả cuối cùng của transaction có thể được query qua <a href="/docs/api/rpc/transactions#transaction-status">Transaction Status</a> hoặc <a href="https://explorer.testnet.near.org/">NEAR Explorer</a> bằng cách sử dụng <code>kết quả</code> hash được trả về như ví dụ sau đây. </summary>
+<summary>Các kết quả cuối cùng của transaction có thể được query qua <a href="/api/rpc/transactions#transaction-status">Transaction Status</a> hoặc <a href="https://explorer.testnet.near.org/">NEAR Explorer</a> bằng cách sử dụng <code>kết quả</code> hash được trả về như ví dụ sau đây. </summary>
 <p>
 
 ```json
@@ -213,7 +213,7 @@ Ví dụ:
 - các param:
   - `changes_type`: `account_changes`
   - `account_ids`: [`"example.testnet"`]
-  - [`finality`](/docs/api/rpc#using-finality-param) _HOẶC_ [`block_id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/api/rpc/setup#using-finality-param) _HOẶC_ [`block_id`](/api/rpc/setup#using-block_id-param)
 
 Dưới đây là danh sách đầy đủ các error variant có thể được trả về theo loại request `view_access_key_list`:
 
@@ -405,7 +405,7 @@ Ví dụ:
 - method: `query`
 - các param:
   - `request_type`: `view_code`
-  - [`finality`](/docs/api/rpc#using-finality-param) _HOẶC_ [`block_id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/api/rpc/setup#using-finality-param) _HOẶC_ [`block_id`](/api/rpc/setup#using-block_id-param)
   - `account_id`: `"guest-book.testnet"`,
 
 Dưới đây là danh sách đầy đủ các error variant có thể được trả về theo loại request `view_access_key_list`:
@@ -453,7 +453,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 </Tabs>
 
 <details>
-<summary>Các kết quả cuối cùng của transaction có thể được query qua <a href="/docs/api/rpc/transactions#transaction-status">Transaction Status</a> hoặc <a href="https://explorer.testnet.near.org/">NEAR Explorer</a> bằng cách sử dụng <code>kết quả</code> hash được trả về như ví dụ sau đây. </summary>
+<summary>Các kết quả cuối cùng của transaction có thể được query qua <a href="/api/rpc/transactions#transaction-status">Transaction Status</a> hoặc <a href="https://explorer.testnet.near.org/">NEAR Explorer</a> bằng cách sử dụng <code>kết quả</code> hash được trả về như ví dụ sau đây. </summary>
 <p>
 
 ```json
@@ -607,7 +607,7 @@ Ví dụ:
 - method: `query`
 - các param:
   - `request_type`: `view_state`
-  - [`finality`](/docs/api/rpc#using-finality-param) _HOẶC_ [`block_id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/api/rpc/setup#using-finality-param) _HOẶC_ [`block_id`](/api/rpc/setup#using-block_id-param)
   - `account_id`: `"guest-book.testnet"`,
   - `prefix_base64`: `""`
 
@@ -1007,7 +1007,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
   - `changes_type`: `data_changes`
   - `account_ids`: `["example.testnet"]`,
   - `key_prefix_base64`: `"base64 encoded key value"`,
-  - [`finality`](/docs/api/rpc#using-finality-param) _HOẶC_ [`block_id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/api/rpc/setup#using-finality-param) _HOẶC_ [`block_id`](/api/rpc/setup#using-block_id-param)
 
 Dưới đây là danh sách đầy đủ các error variant có thể được trả về theo loại request `view_access_key_list`:
 
@@ -1197,7 +1197,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
 - các param:
   - `changes_type`: `contract_code_changes`
   - `account_ids`: `["example.testnet"]`,
-  - [`finality`](/docs/api/rpc#using-finality-param) _HOẶC_ [`block_id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/api/rpc/setup#using-finality-param) _HOẶC_ [`block_id`](/api/rpc/setup#using-block_id-param)
 
 Dưới đây là danh sách đầy đủ các error variant có thể được trả về theo loại request `view_access_key_list`:
 
@@ -1244,7 +1244,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 </Tabs>
 
 <details>
-<summary>Các kết quả cuối cùng của transaction có thể được query qua <a href="/docs/api/rpc/transactions#transaction-status">Transaction Status</a> hoặc <a href="https://explorer.testnet.near.org/">NEAR Explorer</a> bằng cách sử dụng <code>kết quả</code> hash được trả về như ví dụ sau đây. </summary>
+<summary>Các kết quả cuối cùng của transaction có thể được query qua <a href="/api/rpc/transactions#transaction-status">Transaction Status</a> hoặc <a href="https://explorer.testnet.near.org/">NEAR Explorer</a> bằng cách sử dụng <code>kết quả</code> hash được trả về như ví dụ sau đây. </summary>
 <p>
 
 ```json
@@ -1369,7 +1369,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
 - method: `query`
 - các param:
   - `request_type`: `call_function`
-  - [`finality`](/docs/api/rpc#using-finality-param) _HOẶC_ [`block_id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/api/rpc/setup#using-finality-param) _HOẶC_ [`block_id`](/api/rpc/setup#using-block_id-param)
   - `account_id`: _`"example.testnet"`_
   - `method_name`: `name_of_a_example.testnet_method` (example [`view` methods](https://github.com/near/core-contracts/blob/master/staking-pool/src/lib.rs#L317)
   - `args_base64`: `method_arguments_base_64_encoded`

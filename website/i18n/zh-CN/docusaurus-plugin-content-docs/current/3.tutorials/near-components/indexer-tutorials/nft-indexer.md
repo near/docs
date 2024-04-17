@@ -14,7 +14,7 @@ You can request access through [this link](http://bit.ly/near-queryapi-beta).
 
 ## Overview
 
-This tutorial creates a working NFT indexer using [NEAR QueryAPI](../../../2.build/6.data-infrastructure/queryapi/intro.md), and builds a [NEAR component](../../../2.build/3.near-components/what-is.md) that presents the data. The indexer is watching for `nft_mint` [Events](https://nomicon.io/Standards/EventsFormat) and captures some relevant data:
+This tutorial creates a working NFT indexer using [NEAR QueryAPI](../../../2.build/6.data-infrastructure/query-api/intro.md), and builds a [NEAR component](../../../2.build/3.near-components/what-is.md) that presents the data. The indexer is watching for `nft_mint` [Events](https://nomicon.io/Standards/EventsFormat) and captures some relevant data:
 
 - `receiptId` of the [Receipt](https://docs.near.org/develop/lake/structures/receipt) where the mint has happened
 - `receiverId`

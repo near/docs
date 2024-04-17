@@ -12,7 +12,7 @@ We will be using several technologies:
 - NEAR Components for the user interface (UI).
 - [Ethers.js](bos-ethersjs.md) for retrieving balance data from the blockchain.
 - CoinGecko API for fetching static content with information about tokens and their current prices.
-- [Social-DB](../../social/contract.md) for storing the list of tokens to be tracked.
+- [Social-DB](https://github.com/NearSocial/social-db) for storing the list of tokens to be tracked.
 - GitHub Actions for caching static content, speeding up loading, and circumventing rate limits.
 
 ## Step 1: Load balances from chain

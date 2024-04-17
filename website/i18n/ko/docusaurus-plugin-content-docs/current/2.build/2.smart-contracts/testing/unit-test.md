@@ -10,7 +10,7 @@ import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 [예제](https://github.com/near-examples/docs-examples) 중 하나를 템플릿으로 사용한 경우, 컨트랙트 폴더로 이동하여 `yarn test`를 사용하세요. 그렇지 않은 경우 템플릿 중 하나에서 필요한 노드 파일(예: `package.json`)을 복사하는 것이 좋습니다.
 
 :::tip
-:::tip 각 프로젝트의 루트 폴더에서 `yarn test`를 실행하여 단위 테스트와 [통합](integration.md) 테스트를 모두 실행할 수 있습니다 :::
+:::tip 각 프로젝트의 루트 폴더에서 `yarn test`를 실행하여 단위 테스트와 [통합](./integration-test.md) 테스트를 모두 실행할 수 있습니다 :::
 :::
 :::
 

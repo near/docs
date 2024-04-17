@@ -63,7 +63,7 @@ This is the interface through which you can create a new Indexer. On here you ca
 To design and create your indexer, you can follow this recommended workflow:
 
 1. Using [nearblocks.io](https://nearblocks.io), find transactions to smart contracts that you want to index
-2. Take the block `height` and put it into the [Debug Mode filter](../query-api/index-function.md#local-debug-mode), open your browser's _Developer Console_, and hit <kbd>Play</kbd>
+2. Take the block `height` and put it into the [Debug Mode filter](index-function.md#local-debug-mode), open your browser's _Developer Console_, and hit <kbd>Play</kbd>
 3. Inspect the block and write JavaScript code using [NEAR Lake Primitives](../lake-framework/building-indexers/primitives.md) to extract data from a `block` object. (This JS code will be your [`IndexingLogic.js`](#indexinglogicjs))
    > **Tip:** Use `context.log` for debugging to ensure you are getting the right results
 4. Add more blocks for debugging, or start following the blockchain to see how new blocks are handled

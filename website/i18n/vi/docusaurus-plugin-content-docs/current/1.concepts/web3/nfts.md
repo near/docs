@@ -126,7 +126,7 @@ Server can use this data to authenticate a request using the following approach:
 
 1. Signature verification - if the signature is correct, we are sure that the client really has the private key for the provided public key. Also, this proves that request data hasn't been modified in transit.
 2. Timestamp verification - prevents replay attacks. Server can verify that the request’s timestamp is not too old (e.g. has been created no more than 10 seconds ago).
-3. Public key ownership verification - by calling [view_access_key method](https://docs.near.org/docs/api/rpc/access-keys#view-access-key), we can make sure that the provided public key is really associated with the provided account.
+3. Public key ownership verification - by calling [view_access_key method](https://docs.near.org/api/rpc/access-keys#view-access-key), we can make sure that the provided public key is really associated with the provided account.
 
 Such authentication approach is the simplest one, but has a few major drawbacks:
 

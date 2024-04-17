@@ -63,8 +63,8 @@ This should take you to a dashboard that looks like this:
 To design and create your indexer, you can follow this recommended workflow:
 
 1. Using [nearblocks.io](https://nearblocks.io), find transactions to smart contracts that you want to index
-2. Take the block `height` and put it into the [Debug Mode filter](../queryapi/index-function.md#local-debug-mode), open your browser's _Developer Console_, and hit <kbd>Play</kbd>
-3. Inspect the block and write JavaScript code using [NEAR Lake Primitives](../../2.develop/lake/lake-primitives.md) to extract data from a `block` object. (This JS code will be your [`IndexingLogic.js`](#indexinglogicjs))
+2. Take the block `height` and put it into the [Debug Mode filter](index-function.md#local-debug-mode), open your browser's _Developer Console_, and hit <kbd>Play</kbd>
+3. Inspect the block and write JavaScript code using [NEAR Lake Primitives](../lake-framework/building-indexers/primitives.md) to extract data from a `block` object. (This JS code will be your [`IndexingLogic.js`](#indexinglogicjs))
    > **Tip:** Use `context.log` for debugging to ensure you are getting the right results
 4. Add more blocks for debugging, or start following the blockchain to see how new blocks are handled
 5. Create tables that you need to store the data using Postgres [CREATE table syntax](https://www.postgresql.org/docs/current/sql-createtable.html). (This SQL code will be your [`schema.sql`](#schemasql))
@@ -104,7 +104,7 @@ async function getBlock(block: Block, context) {
 
 :::info Saving data
 
-인덱서에서 캡처한 데이터를 GraphQL 데이터베이스의 정의된 테이블에 저장할 수 있습니다. You can do this easily by using the [`context.db`](../queryapi/context.md#db) object [`insert`](../queryapi/context.md#insert) method.   예를 들어, `id`, `sender`, `receiver`, `receiver`, `amount`, `block_height`의 열이 있는 `transactions`라는 테이블이 있는 경우 테이블에 다음과 같이 새 요소 하나에 대한 변환 쿼리를 삽입할 수 있습니다:
+인덱서에서 캡처한 데이터를 GraphQL 데이터베이스의 정의된 테이블에 저장할 수 있습니다. You can do this easily by using the [`context.db`](context.md#db) object [`insert`](context.md#insert) method.   예를 들어, `id`, `sender`, `receiver`, `receiver`, `amount`, `block_height`의 열이 있는 `transactions`라는 테이블이 있는 경우 테이블에 다음과 같이 새 요소 하나에 대한 변환 쿼리를 삽입할 수 있습니다:
 
 ```js
 const tx = {
@@ -156,7 +156,7 @@ CREATE TABLE "indexer_storage" (
 
 이는 `indexingLogic.js`에서 지정한 데이터를 저장하는 데 사용되는 데이터베이스 스키마입니다. 적합하다고 판단되는 대로 이 스키마에 테이블과 열을 추가할 수 있습니다. 인덱서를 작성하는 즉시 생성될 것입니다.
 
-Creating this default table will allow you to use the [`context.set`](../queryapi/context.md#set) helper method to write data. It takes two arguments: a key argument that accepts a string and a value argument,  which will be written to the `key_name` and `value` columns.
+Creating this default table will allow you to use the [`context.set`](context.md#set) helper method to write data. It takes two arguments: a key argument that accepts a string and a value argument,  which will be written to the `key_name` and `value` columns.
 
 :::caution Note on schema migration
 You are able to update `indexingLogic.js` after you have registered/created your indexer, but you are only allowed to specify `schema.sql` once before you submit your indexer. 스키마를 업데이트하려면 새 인덱서를 만들어야 합니다.

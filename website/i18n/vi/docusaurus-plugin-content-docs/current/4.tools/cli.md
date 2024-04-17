@@ -781,7 +781,7 @@ near storage hello.near-examples.testnet --finality optimistic --utf8
 
 > Tạo một contract call mà **chỉ** có thể view state. _(miễn phí)_
 
--   các tham số: `accountId` [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block-id`](/docs/api/rpc#using-block_id-param)
+-   các tham số: `accountId` [`finality`](/api/rpc/setup#using-finality-param) _OR_ [`block-id`](/api/rpc/setup#using-block_id-param)
 -   các tuỳ chọn: `default`
 
 **Dưới đây là danh sách đầy đủ các error variant có thể được trả về theo loại request `view_access_key_list`:**

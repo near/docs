@@ -267,7 +267,7 @@ _[See the full example on Github](https://github.com/near/workspaces-rs/blob/mai
 
 ## 테스트넷 사용
 
-NEAR 작업 공간은 테스트를 작성한 뒤 로컬 샌드박스 노드(기본 동작) 또는 [NEAR TestNet](../../1.concepts/basics/networks.md)에 대해 실행할 수 있도록 설정됩니다. 이것이 도움이 될 수 있는 이유는 다음과 같습니다.
+NEAR 작업 공간은 테스트를 작성한 뒤 로컬 샌드박스 노드(기본 동작) 또는 [NEAR TestNet](../../../1.concepts/basics/networks.md)에 대해 실행할 수 있도록 설정됩니다. 이것이 도움이 될 수 있는 이유는 다음과 같습니다.
 
 - 컨트랙트가 예상대로 작동한다는 높은 신뢰성 제공
 - 배포된 테스트넷 컨트랙트에 대한 테스트 가능

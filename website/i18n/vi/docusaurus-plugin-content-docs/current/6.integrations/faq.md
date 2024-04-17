@@ -212,7 +212,7 @@ Một tài khoản có thể có nhiều key tùy ý, miễn là nó có đủ t
 
 ### Which balance look-ups exists? What is required?
 
-Chúng tôi có một [RPC method để xem account](/docs/api/rpc#view_account).
+Chúng tôi có một [RPC method để xem account](/api/rpc/setup#view_account).
 
 [ JS implementation tại đây](https://github.com/near/near-api-js/blob/d7f0cb87ec320b723734045a4ee9d17d94574a19/src/providers/json-rpc-provider.ts#L73). Lưu ý rằng trong RPC interface này, bạn có thể chỉ định yêu cầu về finality (truy vấn state mới nhất hay state đã hoàn thiện).
 
@@ -231,7 +231,7 @@ Tài khoản không có các tài nguyên được liên kết. Lượng gas đ�
 ### How do we know how much gas to add to a transaction?
 
 - Xem tài liệu tham khảo tại đây: https://nomicon.io/Economics/
-- Xem tài liệu API để [khám phá biểu phí gas qua RPC tại đây](/docs/api/rpc#gas-price).
+- Xem tài liệu API để [khám phá biểu phí gas qua RPC tại đây](/api/rpc/setup#gas-price).
 
 Người phát hành một transaction nên đính kèm một số lượng gas bằng cách phỏng đoán ngân sách sẽ giúp transaction được xử lý. Contract biết cần bao nhiêu tiền cho các contract call chéo khác nhau. Biểu phí gas được tính toán và cố định cho mỗi block, nhưng có thể thay đổi từ block này sang block khác tùy thuộc vào mức độ đầy / bận của block. Nếu các block trở nên đầy hơn một nửa thì giá gas sẽ tăng.
 
@@ -241,7 +241,7 @@ Chúng tôi cũng đang xem xét thêm giới hạn giá gas tối đa.
 
 ### How do we follow Tx status?
 
-Xem [RPC interface liên quan để tìm status của transaction tại đây](/docs/api/rpc#transaction-status).
+Xem [RPC interface liên quan để tìm status của transaction tại đây](/api/rpc/setup#transaction-status).
 
 ### How are transactions constructed and signed?
 

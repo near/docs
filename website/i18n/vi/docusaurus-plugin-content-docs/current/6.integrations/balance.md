@@ -35,7 +35,7 @@ https://testnet.nearblocks.io/txns/4To336bYcoGc3LMucJPMk6fMk5suKfCrdNotrRtTxqDy
 ## View Balance Changes {#view-balance-changes}
 
 - Open the transaction URL in [NearBlocks Explorer](https://testnet.nearblocks.io/) and copy the `BLOCK HASH`.
-- Sử dụng `BLOCK HASH` và accountId, truy vấn [changes RPC endpoint](/docs/api/rpc#view-account-changes) để xem những thay đổi.
+- Sử dụng `BLOCK HASH` và accountId, truy vấn [changes RPC endpoint](/api/rpc/setup#view-account-changes) để xem những thay đổi.
 
 **Ví dụ Query sử dụng HTTPie:**
 
@@ -82,7 +82,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
 
 ---
 
-Ngoài ra, bạn có thể xem số dư của account bằng cách [truy vấn `view_account`](/docs/api/rpc#view-account) mà chỉ yêu cầu một accountId.
+Ngoài ra, bạn có thể xem số dư của account bằng cách [truy vấn `view_account`](/api/rpc/setup#view-account) mà chỉ yêu cầu một accountId.
 
 **Ví dụ HTTPie Request:**
 

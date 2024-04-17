@@ -5,7 +5,7 @@ title: 상태 & 자료구조
 
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
-각 컨트랙트에는 고유한 상태(스토리지)가 있으며, 이는 **해당 컨트랙트에 의해서만 수정 가능**하지만 [누구나 볼 수 있습니다](../../4.tools/cli.md#near-view-state-near-view-state).
+각 컨트랙트에는 고유한 상태(스토리지)가 있으며, 이는 **해당 컨트랙트에 의해서만 수정 가능**하지만 [누구나 볼 수 있습니다](../../../4.tools/cli.md#near-view-state-near-view-state).
 
 컨트랙트는 모든 데이터를 `키-값` 스토리지에 저장합니다. 그러나 이는 SDK에 의한 [직렬화](./serialization.md)를 통해 추상화됩니다.
 
@@ -13,7 +13,7 @@ import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 ## 상태의 정의
 
-컨트랙트의 상태는 [핵심 클래스 속성](./anatomy.md#defining-the-contract)에 의해 정의되며, 이를 통해 접근 가능합니다.
+컨트랙트의 상태는 [핵심 클래스 속성](anatomy.md#defining-the-contract)에 의해 정의되며, 이를 통해 접근 가능합니다.
 
 상태에는 상수, 기본 자료형 및 복합 객체를 저장할 수 있습니다. SDK 컬렉션은 [직렬화된 키-값 스토리지](./serialization.md#borsh-state-serialization)에 최적화되어 있기 때문입니다.
 
