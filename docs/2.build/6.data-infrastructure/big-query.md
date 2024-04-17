@@ -102,4 +102,8 @@ The tables available in the NEAR Public Lakehouse are:
 - [Lake Data structures](./lake-data-structures/toc.mdx)
 - [Protocol specification](https://nomicon.io/)
 
+:::note Additional information about the data
+
+- Skipped Blocks: NEAR Blockchain can contain skipped blocks, e.g. block `57730443`. For these cases we can find the block for the chunk data using the `prev_block_hash` column, e.g. `SELECT * FROM chunks c JOIN blocks b ON c.chunk.header.prev_block_hash = b.header.prev_hash`.
+
 :::
