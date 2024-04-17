@@ -4,11 +4,6 @@ title: NFT Chain Keys Smart Contract
 sidebar_label: NFT Chain Keys Contract
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
-
-
 The NFT Chain Keys smart contract makes the ownership of remote accounts both provable and transferrable. This new paradigm allows you to create new end-user experiences that leverage provable and transferrable remote accounts as a core primitive. 
 
 ## Contract overview
