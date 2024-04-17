@@ -23,7 +23,7 @@
     "permalink": "/build/chain-abstraction/chain-signatures"
   },
   "next": {
-    "title": "Multichain Relayer Server",
-    "permalink": "/build/chain-abstraction/multichain-gas-relayer/multichain-server"
+    "title": "NFT Chain Keys Contract",
+    "permalink": "/build/chain-abstraction/nft-chain-keys"
   }
 }

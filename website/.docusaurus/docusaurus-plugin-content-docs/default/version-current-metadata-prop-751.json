@@ -415,6 +415,13 @@
             "unlisted": false
           },
           {
+            "type": "link",
+            "label": "NFT Chain Keys Contract",
+            "href": "/zh-CN/build/chain-abstraction/nft-chain-keys",
+            "docId": "build/chain-abstraction/nft-chain-keys",
+            "unlisted": false
+          },
+          {
             "type": "category",
             "label": "Multichain Gas Relayer",
             "items": [
@@ -2822,6 +2829,12 @@
       "id": "build/chain-abstraction/multichain-gas-relayer/relayer-gas-example",
       "title": "Multichain Relayer and Gas Station example",
       "description": "In this article you'll learn how to run end-to-end tests on the entire Multichain Relayer system.",
+      "sidebar": "build"
+    },
+    "build/chain-abstraction/nft-chain-keys": {
+      "id": "build/chain-abstraction/nft-chain-keys",
+      "title": "NFT Chain Keys Smart Contract",
+      "description": "The NFT Chain Keys smart contract makes the ownership of remote accounts both provable and transferrable. This new paradigm allows you to create new end-user experiences that leverage provable and transferrable remote accounts as a core primitive.",
       "sidebar": "build"
     },
     "build/chain-abstraction/wallet": {

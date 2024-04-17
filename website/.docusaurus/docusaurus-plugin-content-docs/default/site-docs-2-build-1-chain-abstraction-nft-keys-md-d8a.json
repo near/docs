@@ -1,0 +1,30 @@
+{
+  "id": "build/chain-abstraction/nft-chain-keys",
+  "title": "NFT Chain Keys Smart Contract",
+  "description": "The NFT Chain Keys smart contract makes the ownership of remote accounts both provable and transferrable. This new paradigm allows you to create new end-user experiences that leverage provable and transferrable remote accounts as a core primitive.",
+  "source": "@site/../docs/2.build/1.chain-abstraction/nft-keys.md",
+  "sourceDirName": "2.build/1.chain-abstraction",
+  "slug": "/build/chain-abstraction/nft-chain-keys",
+  "permalink": "/zh-CN/build/chain-abstraction/nft-chain-keys",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/1.chain-abstraction/nft-keys.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1713392118000,
+  "frontMatter": {
+    "id": "nft-chain-keys",
+    "title": "NFT Chain Keys Smart Contract",
+    "sidebar_label": "NFT Chain Keys Contract"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Wallet Chain Key Rules",
+    "permalink": "/zh-CN/build/chain-abstraction/wallet"
+  },
+  "next": {
+    "title": "Multichain Relayer Server",
+    "permalink": "/zh-CN/build/chain-abstraction/multichain-gas-relayer/multichain-server"
+  }
+}

@@ -5,17 +5,17 @@
       "plugin": "82d98fd4"
     }
   },
-  "/zh-CN/-61d": {
+  "/zh-CN/-97a": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "8b378508"
     }
   },
-  "/zh-CN/-81c": {
+  "/zh-CN/-fce": {
     "__comp": "a7bd4aaa",
     "version": "935f2afb"
   },
-  "/zh-CN/-8c8": {
+  "/zh-CN/-f63": {
     "__comp": "a94703ab"
   },
   "/zh-CN/-ccb": {
@@ -94,6 +94,10 @@
     "__comp": "17896441",
     "content": "9b5a6cd9"
   },
+  "/zh-CN/build/chain-abstraction/nft-chain-keys-5e5": {
+    "__comp": "17896441",
+    "content": "d8ab9ee4"
+  },
   "/zh-CN/build/chain-abstraction/wallet-62b": {
     "__comp": "17896441",
     "content": "c210639e"
@@ -102,7 +106,7 @@
     "__comp": "17896441",
     "content": "21dcc369"
   },
-  "/zh-CN/build/data-infrastructure/big-query-f91": {
+  "/zh-CN/build/data-infrastructure/big-query-b1a": {
     "__comp": "17896441",
     "content": "845c1227"
   },
@@ -186,7 +190,7 @@
     "__comp": "17896441",
     "content": "c9046143"
   },
-  "/zh-CN/build/data-infrastructure/query-api/context-object-bd4": {
+  "/zh-CN/build/data-infrastructure/query-api/context-object-df9": {
     "__comp": "17896441",
     "content": "8fa2e89e"
   },
@@ -198,7 +202,7 @@
     "__comp": "17896441",
     "content": "d425d5ca"
   },
-  "/zh-CN/build/data-infrastructure/query-api/indexers-b56": {
+  "/zh-CN/build/data-infrastructure/query-api/indexers-9fa": {
     "__comp": "17896441",
     "content": "edcfb203"
   },
@@ -210,7 +214,7 @@
     "__comp": "17896441",
     "content": "435c95a5"
   },
-  "/zh-CN/build/data-infrastructure/query-api/query-data-e1a": {
+  "/zh-CN/build/data-infrastructure/query-api/query-data-842": {
     "__comp": "17896441",
     "content": "335d733b"
   },
@@ -218,7 +222,7 @@
     "__comp": "17896441",
     "content": "47622e92"
   },
-  "/zh-CN/build/near-components/anatomy/bos-components-f4c": {
+  "/zh-CN/build/near-components/anatomy/bos-components-bac": {
     "__comp": "17896441",
     "content": "67d214cc"
   },
@@ -230,7 +234,7 @@
     "__comp": "17896441",
     "content": "5ecd9e65"
   },
-  "/zh-CN/build/near-components/anatomy/notifications-e83": {
+  "/zh-CN/build/near-components/anatomy/notifications-d0e": {
     "__comp": "17896441",
     "content": "cc7125fd"
   },
@@ -238,7 +242,7 @@
     "__comp": "17896441",
     "content": "8160971f"
   },
-  "/zh-CN/build/near-components/anatomy/state-4da": {
+  "/zh-CN/build/near-components/anatomy/state-31a": {
     "__comp": "17896441",
     "content": "cc524782"
   },
@@ -246,7 +250,7 @@
     "__comp": "17896441",
     "content": "8fc94222"
   },
-  "/zh-CN/build/near-components/bos-gateway-4c5": {
+  "/zh-CN/build/near-components/bos-gateway-e29": {
     "__comp": "17896441",
     "content": "4877637e"
   },
@@ -254,7 +258,7 @@
     "__comp": "17896441",
     "content": "be0c8552"
   },
-  "/zh-CN/build/near-components/what-is-cf5": {
+  "/zh-CN/build/near-components/what-is-3d4": {
     "__comp": "17896441",
     "content": "7ee72218"
   },
@@ -674,7 +678,7 @@
     "__comp": "17896441",
     "content": "4730762f"
   },
-  "/zh-CN/build/smart-contracts/anatomy/basics-5f0": {
+  "/zh-CN/build/smart-contracts/anatomy/basics-246": {
     "__comp": "17896441",
     "content": "9a9d33e8"
   },
@@ -690,11 +694,11 @@
     "__comp": "17896441",
     "content": "28938dcf"
   },
-  "/zh-CN/build/smart-contracts/anatomy/storage-a79": {
+  "/zh-CN/build/smart-contracts/anatomy/storage-e79": {
     "__comp": "17896441",
     "content": "efdaf444"
   },
-  "/zh-CN/build/smart-contracts/quickstart-098": {
+  "/zh-CN/build/smart-contracts/quickstart-e02": {
     "__comp": "17896441",
     "content": "9e8d3d30"
   },
@@ -762,7 +766,7 @@
     "__comp": "17896441",
     "content": "8b471c05"
   },
-  "/zh-CN/build/smart-contracts/testing/unit-test-3d7": {
+  "/zh-CN/build/smart-contracts/testing/unit-test-659": {
     "__comp": "17896441",
     "content": "ce1ba413"
   },
@@ -1274,7 +1278,7 @@
     "__comp": "17896441",
     "content": "03b82f47"
   },
-  "/zh-CN/tutorials/crosswords/basics/add-functions-call-64b": {
+  "/zh-CN/tutorials/crosswords/basics/add-functions-call-7bc": {
     "__comp": "17896441",
     "content": "8bd027df"
   },
@@ -1438,7 +1442,7 @@
     "__comp": "17896441",
     "content": "62c56f09"
   },
-  "/zh-CN/tutorials/near-components/ethers-js-best-practices-914": {
+  "/zh-CN/tutorials/near-components/ethers-js-best-practices-781": {
     "__comp": "17896441",
     "content": "695ed632"
   },
@@ -1450,7 +1454,7 @@
     "__comp": "17896441",
     "content": "62db7f9e"
   },
-  "/zh-CN/tutorials/near-components/indexer-tutorials/nft-indexer-9e8": {
+  "/zh-CN/tutorials/near-components/indexer-tutorials/nft-indexer-bbb": {
     "__comp": "17896441",
     "content": "54d5eb84"
   },
@@ -1470,7 +1474,7 @@
     "__comp": "17896441",
     "content": "02738de1"
   },
-  "/zh-CN/tutorials/near-components/queryapi-websockets-188": {
+  "/zh-CN/tutorials/near-components/queryapi-websockets-e31": {
     "__comp": "17896441",
     "content": "6728d5ba"
   },

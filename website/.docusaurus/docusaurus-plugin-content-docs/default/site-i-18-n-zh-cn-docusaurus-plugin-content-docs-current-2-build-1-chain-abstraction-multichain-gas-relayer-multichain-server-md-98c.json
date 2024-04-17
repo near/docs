@@ -20,8 +20,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Wallet Chain Key Rules",
-    "permalink": "/zh-CN/build/chain-abstraction/wallet"
+    "title": "NFT Chain Keys Contract",
+    "permalink": "/zh-CN/build/chain-abstraction/nft-chain-keys"
   },
   "next": {
     "title": "Multichain Gas Station",

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk=self.webpackChunk||[]).push([[7393],{81838:e=>{e.exports=JSON.parse('{"blogBasePath":"/changelog","blogTitle":"NEAR Developer Changelog"}')}}]);
