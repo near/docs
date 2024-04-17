@@ -138,7 +138,7 @@ const sidebar = {
         'build/chain-abstraction/fastauth-sdk',
         'build/chain-abstraction/chain-signatures',
         'build/chain-abstraction/wallet',
-        'build/chain-abstraction/nft-keys',
+        'build/chain-abstraction/nft-chain-keys',
         {
           "Multichain Gas Relayer": [
             "build/chain-abstraction/multichain-gas-relayer/multichain-server",
