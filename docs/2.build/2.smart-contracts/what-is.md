@@ -52,6 +52,7 @@ During the whole cycle, developers can choose between [JavaScript](https://www.l
 <details>
 
 <summary> Other languages </summary>
+
 Theoretically, you can use any language that compiles to Wasm for developing NEAR smart contract. However, in order to have a user-friendly experience we would need to provide a library that wraps around low-level runtime APIs, while also offering other high-level functionalities.
 
 We envision that in the future, more languages will be supported and the support will be done through the effort from the wider community, not just NEAR alone.

@@ -452,3 +452,13 @@ div[class^="announcementBar_"] {
     font-size: 16px;
     font-weight: 600;
 }
+
+/* Code Explainer */
+
+.col-forced--4 {
+    --ifm-col-width: calc(4 / 12 * 100%) !important;
+}
+
+.col-forced--8 {
+    --ifm-col-width: calc(8 / 12 * 100%) !important;
+}

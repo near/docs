@@ -1,7 +1,7 @@
 import React from "react";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
-import ReferenceCode from "@theme/ReferenceCodeBlock";
+import GitHubInternal from "./github";
 
 export function CodeTabs({ children }) {
   if (!Array.isArray(children)) {
@@ -49,16 +49,8 @@ export function Language({ children, language }) {
   }
 }
 
-export function Github({ url, start, end, language, fname }) {
-  let fullURL = url + "#";
-  if (start && end) {
-    fullURL += "L" + start + "-L" + end + "#";
-  }
-  return (
-    <ReferenceCode language={language} fname={fname}>
-      {fullURL}
-    </ReferenceCode>
-  );
+export function Github({ url, start, end, language, fname, metastring }) {
+  return GitHubInternal({ url, start, end, language, fname, metastring });
 }
 
 /* AUX function */
