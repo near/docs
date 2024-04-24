@@ -402,10 +402,20 @@ function Footer() {
                     <a href="https://near.org/devhub.near/widget/app">
                       DevHub
                     </a>
-                  </li>                  
+                  </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/changelog">
-                      Changelog
+                    <a href="https://learnnear.club/">
+                      Learn NEAR Club 
+                    </a>
+                  </li>
+                  <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
+                    <a href="https://agorapp.dev/catalog/course?difficulty=&chains=near">
+                      AgoraApp 
+                    </a>
+                  </li>    
+                  <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
+                    <a href="/blog">
+                      Blog
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">

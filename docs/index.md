@@ -124,7 +124,7 @@ Welcome, this is the starting point for all NEAR documentation. Learn to build a
 
 ---
 
-## Other Documentation Sites
+## External Resources
 
 Here are more sources from our ecosystem that can help you to learn more about NEAR.
 
@@ -175,14 +175,14 @@ Here are more sources from our ecosystem that can help you to learn more about N
     </a>
   </div>
   <div className="col col--6">
-    <a href="/concepts/advanced/indexers">
+    <a href="https://templates.mintbase.xyz/">
       <div className="card">
         <div className="card__image">
-          <img src={require("@site/static/docs/assets/welcome-pages/indexers.png").default} alt="Indexers" />
+          <img src={require("@site/static/docs/assets/welcome-pages/mintbase-templates.png").default} alt="Templates" />
         </div>
         <div className="card__body">
-          <h3>NEAR Indexers</h3>
-            Indexers help you mine information from the blockchain
+          <h3>Templates</h3>
+            Templates for creating web3 applications
         </div>
       </div>
     </a>
