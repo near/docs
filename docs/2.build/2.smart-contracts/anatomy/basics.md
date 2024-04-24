@@ -70,7 +70,7 @@ u8, u16, u32, u64, u128, i8, i16, i32, i64, i128, Vec<T>, HashMap<K,V> ...
 </Tabs>
 
 :::tip
-Always prefer **native** types in the contract's **interface**. The only exception is values larger than `52 bytes` (such as `u64` and `u128`), for which string-like alternatives are preferred.
+Always prefer **native** types in the contract's **interface**. The only exception is values larger than `52 bits` (such as `u64` and `u128`), for which string-like alternatives are preferred.
 :::
 
 :::warning
@@ -127,7 +127,7 @@ You can define and instantiate complex objects through classes and structures.
 
 </Tabs>
 
-  🦀 Notice that the class is decorated with multiple macros:
+  🦀 Notice that the struct is decorated with multiple macros:
 
 - `BorshDeserialize` & `BorshSerialize` allow the structure to be read and
       written into the contract's state
