@@ -138,7 +138,6 @@ Here are more sources from our ecosystem that can help you to learn more about N
         <div className="card__body">
           <h3>
           Discover
-          <svg width="0.8rem" height="0.8rem" aria-hidden="true" viewBox="0 0 24 24" className="iconExternalLink_node_modules-@docusaurus-theme-classic-lib-theme-Icon-ExternalLink-styles-module"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg>
           </h3>
           Discover awesome apps in the Near ecosystem.
         </div>
@@ -154,9 +153,8 @@ Here are more sources from our ecosystem that can help you to learn more about N
         <div className="card__body">
           <h3>
           Nomicon
-          <svg width="0.8rem" height="0.8rem" aria-hidden="true" viewBox="0 0 24 24" className="iconExternalLink_node_modules-@docusaurus-theme-classic-lib-theme-Icon-ExternalLink-styles-module"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg>
           </h3>
-            See how NEAR is implemented in the official protocol specification.
+          See how NEAR is implemented in the official protocol specification.
         </div>
       </div>
     </a>
@@ -170,7 +168,6 @@ Here are more sources from our ecosystem that can help you to learn more about N
         <div className="card__body">
           <h3>
           Running a Node
-          <svg width="0.8rem" height="0.8rem" aria-hidden="true" viewBox="0 0 24 24" className="iconExternalLink_node_modules-@docusaurus-theme-classic-lib-theme-Icon-ExternalLink-styles-module"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg>
           </h3>
           Documentation on becoming a validator to help keeping the blockchain safe
         </div>
