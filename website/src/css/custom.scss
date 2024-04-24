@@ -348,8 +348,7 @@ iframe+em {
 }
 
 // Navbar collapse before
-// A change in this setting has to be reflected in ./src/theme/Navbar/MobileSidebar/index.js
-@media (max-width: 1100px) {
+@media (max-width: 1140px) {
 
     .navbar>.container,
     .navbar>.container-fluid {
@@ -373,7 +372,7 @@ iframe+em {
     }
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1140px) {
     article {
         margin: 0.5rem 1.5rem;
     }
