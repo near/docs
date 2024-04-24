@@ -240,12 +240,12 @@ const getLinks = () => {
 </details>
 
 :::note
-If you didn't save your linkdrop links before closing NEAR App, you can always find them on [KeyPom app](https://keypom.xyz/drops).
+If you didn't save your linkdrop links before closing NEAR App, you can always find them on [Keypom app](https://keypom.xyz/drops).
 :::
 
 ---
 
 ## Additional Resources
 
-1. [Linkdrop plus](https://near.org/near/widget/ComponentDetailsPage?src=cuongdcdev.near/widget/linkdrop_plus) allows to create a Simple Drop. Powered by [KeyPom](https://keypom.xyz/)
+1. [Linkdrop plus](https://near.org/near/widget/ComponentDetailsPage?src=cuongdcdev.near/widget/linkdrop_plus) allows to create a Simple Drop. Powered by [Keypom](https://keypom.xyz/)
 2. [Keypom Drop Viewer](https://near.org/near/widget/ComponentDetailsPage?src=kiskesis.near/widget/Keypom-Drop-Viewer-fork) shows drops created by current logged in user.
