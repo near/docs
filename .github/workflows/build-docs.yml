@@ -49,7 +49,6 @@ jobs:
         run: |
           cd website
           yarn
-          yarn docusaurus clear
           yarn build
           yarn crowdin:upload
 
