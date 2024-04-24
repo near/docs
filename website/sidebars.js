@@ -403,6 +403,9 @@ const sidebar = {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Examples </small></b></span>"
     },
+    "tutorials/examples/minter",
+    "tutorials/examples/marketplace",
+    "tutorials/examples/blog",
     {
       "Frontend & Smart Contract": [
         "tutorials/examples/count-near",
