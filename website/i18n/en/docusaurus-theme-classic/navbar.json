@@ -174,5 +174,9 @@
   "item.label.Exchange Integrations": {
     "message": "Exchange Integrations",
     "description": "Navbar item with label Exchange Integrations"
+  },
+  "item.label.Blog": {
+    "message": "Blog",
+    "description": "Navbar item with label Blog"
   }
 }

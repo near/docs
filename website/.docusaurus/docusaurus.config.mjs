@@ -64,12 +64,12 @@ export default {
           "anonymizeIP": true
         },
         "blog": {
-          "blogTitle": "NEAR Developer Changelog",
-          "blogSidebarTitle": "Developer Changelog",
+          "blogTitle": "NEAR Docs Blog",
+          "blogSidebarTitle": "Documentation Blog",
           "blogSidebarCount": "ALL",
-          "showReadingTime": false,
-          "routeBasePath": "changelog",
-          "path": "../changelog"
+          "showReadingTime": true,
+          "routeBasePath": "blog",
+          "path": "../blog"
         },
         "theme": {
           "customCss": "./src/css/custom.scss"
@@ -86,7 +86,7 @@ export default {
       {
         "name": "near-changelog",
         "sourceBaseUrl": "https://raw.githubusercontent.com/near/near-releases/main/reports/",
-        "outDir": "../changelog",
+        "outDir": "../blog",
         "documents": [
           "2023-01-31.md",
           "2023-02-28.md",
@@ -109,8 +109,8 @@ export default {
   ],
   "themeConfig": {
     "announcementBar": {
-      "id": "id-0001",
-      "content": "🎉 We have reorganized our docs to make them simpler to navigate, please report any broken links 🎉",
+      "id": "id-0002",
+      "content": "🎉 Come check <a href=\"/blog\">our new blog</a>, where we will share weekly news and updates 🎉",
       "backgroundColor": "#fafbfc",
       "textColor": "#333",
       "isCloseable": true
@@ -359,10 +359,6 @@ export default {
           "position": "left",
           "items": [
             {
-              "label": "🎉 Dev Changelog",
-              "href": "/changelog"
-            },
-            {
               "label": "Github",
               "href": "https://github.com/near",
               "className": "header-github-link"
@@ -404,6 +400,11 @@ export default {
         {
           "type": "search",
           "position": "right"
+        },
+        {
+          "label": "Blog",
+          "href": "/blog",
+          "position": "left"
         },
         {
           "type": "localeDropdown",

@@ -3,6 +3,41 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 
 export default [
   {
+    path: '/zh-CN/blog',
+    component: ComponentCreator('/zh-CN/blog', 'a2c'),
+    exact: true
+  },
+  {
+    path: '/zh-CN/blog/archive',
+    component: ComponentCreator('/zh-CN/blog/archive', '4b0'),
+    exact: true
+  },
+  {
+    path: '/zh-CN/blog/reorganizing-docs',
+    component: ComponentCreator('/zh-CN/blog/reorganizing-docs', '959'),
+    exact: true
+  },
+  {
+    path: '/zh-CN/blog/tags',
+    component: ComponentCreator('/zh-CN/blog/tags', '43f'),
+    exact: true
+  },
+  {
+    path: '/zh-CN/blog/tags/docusaurus',
+    component: ComponentCreator('/zh-CN/blog/tags/docusaurus', 'b8a'),
+    exact: true
+  },
+  {
+    path: '/zh-CN/blog/tags/updates',
+    component: ComponentCreator('/zh-CN/blog/tags/updates', 'f53'),
+    exact: true
+  },
+  {
+    path: '/zh-CN/blog/we-have-a-blog',
+    component: ComponentCreator('/zh-CN/blog/we-have-a-blog', '29a'),
+    exact: true
+  },
+  {
     path: '/zh-CN/search',
     component: ComponentCreator('/zh-CN/search', '5cd'),
     exact: true

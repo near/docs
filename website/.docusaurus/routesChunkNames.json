@@ -1,4 +1,88 @@
 {
+  "/zh-CN/blog-a2c": {
+    "__comp": "a6aa9e1f",
+    "__context": {
+      "plugin": "f4c88952"
+    },
+    "sidebar": "814f3328",
+    "items": [
+      {
+        "content": "3e2d9135"
+      },
+      {
+        "content": "dd49b9c8"
+      }
+    ],
+    "metadata": "8d998be3"
+  },
+  "/zh-CN/blog/archive-4b0": {
+    "__comp": "9e4087bc",
+    "__context": {
+      "plugin": "f4c88952"
+    },
+    "archive": "50bc71d4"
+  },
+  "/zh-CN/blog/reorganizing-docs-959": {
+    "__comp": "ccc49370",
+    "__context": {
+      "data": {
+        "blogMetadata": "acecf23e"
+      },
+      "plugin": "f4c88952"
+    },
+    "sidebar": "814f3328",
+    "content": "82acc1f3"
+  },
+  "/zh-CN/blog/tags-43f": {
+    "__comp": "01a85c17",
+    "__context": {
+      "plugin": "f4c88952"
+    },
+    "sidebar": "814f3328",
+    "tags": "15ad2644"
+  },
+  "/zh-CN/blog/tags/docusaurus-b8a": {
+    "__comp": "6875c492",
+    "__context": {
+      "plugin": "f4c88952"
+    },
+    "sidebar": "814f3328",
+    "items": [
+      {
+        "content": "3e2d9135"
+      }
+    ],
+    "tag": "8bcd5584",
+    "listMetadata": "d8932b65"
+  },
+  "/zh-CN/blog/tags/updates-f53": {
+    "__comp": "6875c492",
+    "__context": {
+      "plugin": "f4c88952"
+    },
+    "sidebar": "814f3328",
+    "items": [
+      {
+        "content": "3e2d9135"
+      },
+      {
+        "content": "dd49b9c8"
+      }
+    ],
+    "tag": "5dcde6ed",
+    "listMetadata": "f9534ce0"
+  },
+  "/zh-CN/blog/we-have-a-blog-29a": {
+    "__comp": "ccc49370",
+    "__context": {
+      "data": {
+        "blogMetadata": "acecf23e"
+      },
+      "plugin": "f4c88952"
+    },
+    "sidebar": "814f3328",
+    "content": "bff79d34"
+  },
   "/zh-CN/search-5cd": {
     "__comp": "1a4e3797",
     "__context": {

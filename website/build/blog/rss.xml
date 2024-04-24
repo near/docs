@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>NEAR Documentation Blog</title>
+        <link>https://docs.near.org/blog</link>
+        <description>NEAR Documentation Blog</description>
+        <lastBuildDate>Wed, 24 Apr 2024 00:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>en</language>
+        <item>
+            <title><![CDATA[Reorganizing our docs]]></title>
+            <link>https://docs.near.org/blog/reorganizing-docs</link>
+            <guid>https://docs.near.org/blog/reorganizing-docs</guid>
+            <pubDate>Wed, 24 Apr 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[We released a mayor reorganization of our repository, so we can improve docs for everyone... including us]]></description>
+            <content:encoded><![CDATA[<p><em>We released a mayor reorganization of our repository, so we can improve docs for everyone... including us</em></p>
+<p><img src="https://img.freepik.com/free-photo/ancient-books-adorn-library-carefully-arranged-with-classics-rare-gems_157027-2332.jpg"></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="organic-growth">Organic growth<a href="https://docs.near.org/blog/reorganizing-docs#organic-growth" class="hash-link" aria-label="Direct link to Organic growth" title="Direct link to Organic growth">​</a></h2>
+<p>Our documentation is the result of multiple people collaborating across the span of four very active years, and it has seen a lot of changes: <a href="https://github.com/near/docs/commits/master/" target="_blank" rel="noopener noreferrer">2942 commits and counting</a>.</p>
+<p>In the beginning, our docs only needed to explain how to create <a href="https://docs.near.org/build/smart-contracts/what-is">smart contracts</a>, and how to <a href="https://docs.near.org/build/web3-apps/quickstart">interact with them through a frontend</a>. Fast forward to today, and we have more than 200 pages of documentation, covering topics such as <a href="https://docs.near.org/build/chain-abstraction/what-is">chain abstraction</a>, <a href="https://docs.near.org/build/near-components/what-is">on-chain components</a>, <a href="https://docs.near.org/build/data-infrastructure/what-is">data infrastructure</a>, and <a href="https://docs.near.org/build/primitives/what-is">primitives such as NFT, FT</a>.</p>
+<p>The best thing is that new features are released every single month. However, all progress comes at a cost, and as our ecosystem grew, so did the disorganization of our documentation.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="what-link-was-that-again">What link was that again?<a href="https://docs.near.org/blog/reorganizing-docs#what-link-was-that-again" class="hash-link" aria-label="Direct link to What link was that again?" title="Direct link to What link was that again?">​</a></h2>
+<p>Let's briefly explain how <a href="https://docusaurus.io/" target="_blank" rel="noopener noreferrer">docusaurus</a> (the framework we use in our docs) works so you can understand the problem.</p>
+<p>In docusaurus, all the pages are written as simple markdown files. These files go inside the <code>./docs</code> folder, and can be organized in folders. Each file has a unique ID on its header that identifies it (e.g. <code>id: what-is</code>), and this ID, alongside its folder path, is used to generate the URL.</p>
+<blockquote>
+<p>For example, the document <a href="https://github.com/near/docs/blob/master/docs/2.build/2.smart-contracts/what-is.md" target="_blank" rel="noopener noreferrer"><code>docs/build/smart-contracts/what-is.md</code></a> has the <code>id: what-is</code>, so it ends ends being served in the URL <a href="https://docs.near.org/build/smart-contracts/what-is" target="_blank" rel="noopener noreferrer">https://docs.near.org/build/smart-contracts/what-is</a>.</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="the-problem">The problem<a href="https://docs.near.org/blog/reorganizing-docs#the-problem" class="hash-link" aria-label="Direct link to The problem" title="Direct link to The problem">​</a></h3>
+<p>About a year ago, we noticed that our organic growth had left us with a very inconsistent URL structure. Basically, we had a lot of folders, and the files related to the same topic (e.g. NEAR components) would be all over the place.</p>
+<p>For example, you would be in the "Build" section reading about "What is a NEAR Component?" and the URL was <code>/bos/tutorial/quickstart</code>. The next page was "Setup an Environment" located at <code>/bos/dev/intro</code>, followed by "Anatomy of a Component -&gt; State" at <code>/bos/api/state</code>. Talk about consistency!</p>
+<p>Of course, we did not do this on purpose, it is just how things evolved. You might even notice that we are now talking about "NEAR Components" but the URL talks about "BOS". This is because when we started, "BOS" (Blockchain Operating System) felt like a good name, but community feedback made us know that, indeed, it was not.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="the-migration">The migration<a href="https://docs.near.org/blog/reorganizing-docs#the-migration" class="hash-link" aria-label="Direct link to The migration" title="Direct link to The migration">​</a></h3>
+<p>We <a href="https://github.com/near/docs/pull/1890/files" target="_blank" rel="noopener noreferrer">re-organized more than 200 files</a> to a new structure that is more consistent. This makes it easier for users to remember the URLs, improves our SEO, and makes it easier for contributors to find where to add new content. No more need to search across multiple folders trying to find the right file!</p>
+<p>In the process, we updated all <strong>internal links</strong>, aided by our <a href="https://github.com/near/docs/blob/master/website/test-links.sh" target="_blank" rel="noopener noreferrer">link-checker script</a> to make sure we left <strong>no broken links</strong>. We also added <strong>URL redirects</strong> in our server, so all users coming from an external site are redirected to the correct URLs.</p>
+<p>Besides checking broken links, we took the time to make sure all the <strong>translations were correctly migrated</strong>. The system Docusaurus uses (called <a href="https://crowdin.com/" target="_blank" rel="noopener noreferrer">Crowdin</a>) is not very good at detecting changes in a file, so migrating all the translations was a huge effort in itself.</p>
+<p>We could write a blog post just about migrating translations in docusaurus + crowdin... but we will spare you the pain.</p>
+<div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>Missing URL</div><div class="admonitionContent_BuS1"><p>If you come across a URL that is not working, please let us know by using the <code>Feedback</code> button on the right side of the page, or by opening an <a href="https://github.com/near/docs/issues" target="_blank" rel="noopener noreferrer">issue in our repository</a></p></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="whats-next">What's next<a href="https://docs.near.org/blog/reorganizing-docs#whats-next" class="hash-link" aria-label="Direct link to What's next" title="Direct link to What's next">​</a></h2>
+<p>Now that most of our documentation is in a better shape, we can focus on improving the content itself. We have a lot of ideas on how to make the docs more interactive, and we are excited to start working on them.</p>
+<p>Stay tuned for more updates, and remember that if you have any feedback or ideas, you can always reach out to us. We are always happy to hear from you!</p>
+<p>See you in the next post! 🚀</p>]]></content:encoded>
+            <category>docusaurus</category>
+            <category>updates</category>
+        </item>
+        <item>
+            <title><![CDATA[We have a blog now!]]></title>
+            <link>https://docs.near.org/blog/we-have-a-blog</link>
+            <guid>https://docs.near.org/blog/we-have-a-blog</guid>
+            <pubDate>Tue, 23 Apr 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Check check check. Is this thing on? Hello, world!]]></description>
+            <content:encoded><![CDATA[<p><em>Check check check. Is this thing on? Hello, world!</em></p>
+<p><img src="https://docs.near.org/assets/images/protocol-b73c2a3ace3307226ee7eb2149ee432f.png"></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="hello-there">Hello there!<a href="https://docs.near.org/blog/we-have-a-blog#hello-there" class="hash-link" aria-label="Direct link to Hello there!" title="Direct link to Hello there!">​</a></h2>
+<p>Welcome to the new NEAR documentation blog! We're excited to inaugurate this new space where we can share news and updates. We know what you are thinking — why a blog? Well, it allows us to interact with you in a different way!</p>
+<p>When writing documentation, it is important for us to keep the content focused and concise. This way, when you read it, you have nothing to distract you, and you can focus on learning a new concept.</p>
+<p>The problem with this is that many times, we want to share ideas, thoughts, or insights into why some things are the way they are. However, this would imply going off on a tangent and explaining why some decisions were made, which will probably add noise to the document. Most of the time, users just want a link to an example or working code. Also, people don't like to read long texts.</p>
+<p>Besides that, sometimes we just want to share what we did during the week. For example, did you notice that we fixed the nightmare that was the URL structure, or that we added new landing pages for all concepts? We want to share these things with you, but they don't really belong in the Docs.</p>
+<div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>tip</div><div class="admonitionContent_BuS1"><p>You would not believe the number of times we said during a review <em>"let's remove that, we are writing technical documentation, not a blog post"</em> ... well, now we can make the blog post!</p></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="what-to-expect">What to expect<a href="https://docs.near.org/blog/we-have-a-blog#what-to-expect" class="hash-link" aria-label="Direct link to What to expect" title="Direct link to What to expect">​</a></h2>
+<p>We will be using this space to share updates about our docs, as well as <strong>complement them</strong> with additional information that we think you'll find interesting.</p>
+<p>Our aim is to keep the blog updated at least once a week, but given the limited amount of time we have, we will see how that goes.</p>
+<p>Moreover, we want to remind you that our Docs are an open source and <strong>collaborative project</strong>. If you feel like you have something to share, or want to contribute to the blog, feel free to reach out. And by reaching out, we mean <a href="https://github.com/near/docs/pulls" target="_blank" rel="noopener noreferrer">opening a PR</a>!</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="a-new-era-for-near-docs">A new era for NEAR docs<a href="https://docs.near.org/blog/we-have-a-blog#a-new-era-for-near-docs" class="hash-link" aria-label="Direct link to A new era for NEAR docs" title="Direct link to A new era for NEAR docs">​</a></h2>
+<p>We are super excited to start this new section and hope it helps us to connect with all of you in a better way. We are looking forward to hearing your thoughts and feedback, and hope you enjoy the content we'll be sharing.</p>
+<p>See you in the next post! 🚀</p>]]></content:encoded>
+            <category>updates</category>
+        </item>
+    </channel>
+</rss>

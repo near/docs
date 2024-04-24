@@ -1,4 +1,15 @@
 {
   "title": "Developer Changelog",
-  "items": []
+  "items": [
+    {
+      "title": "Reorganizing our docs",
+      "permalink": "/zh-CN/blog/reorganizing-docs",
+      "unlisted": false
+    },
+    {
+      "title": "We have a blog now!",
+      "permalink": "/zh-CN/blog/we-have-a-blog",
+      "unlisted": false
+    }
+  ]
 }
