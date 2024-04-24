@@ -74,7 +74,7 @@ JSON Web Tokens are a standard RFC 7519 method for representing claims securely 
 
 ## Cross-chain Zero-friction onboarding
 
-Using unique features of the NEAR account model, [Keypom](https://keypom.xyz/) provides zero-friction onboarding and transactions on NEAR. They are generally used for NFT drops, FT drops, and ticketing.
+Using unique features of the NEAR account model, [Keypom](https://docs.keypom.xyz/) provides zero-friction onboarding and transactions on NEAR. They are generally used for NFT drops, FT drops, and ticketing.
 
 A generic Keypom user-flow could be: 
 
