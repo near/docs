@@ -108,6 +108,7 @@ export default {
     ]
   ],
   "themeConfig": {
+    "image": "img/near_logo.svg",
     "announcementBar": {
       "id": "id-0002",
       "content": "🎉 Come check <a href=\"/blog\">our new blog</a>, where we will share weekly news and updates 🎉",
@@ -377,11 +378,19 @@ export default {
             },
             {
               "type": "html",
-              "value": "<hr /><div class=\"subtitle\"> Other Docs </dib>"
+              "value": "<hr /><div class=\"subtitle\"> Education </dib>"
             },
             {
-              "href": "/integrations/exchange-integration",
-              "label": "Exchange Integrations"
+              "href": "https://agorapp.dev/catalog/course?difficulty=&chains=near",
+              "label": "Agor"
+            },
+            {
+              "href": "https://learnnear.club/",
+              "label": "Learn NEAR Club"
+            },
+            {
+              "type": "html",
+              "value": "<hr /><div class=\"subtitle\"> Other Docs </dib>"
             },
             {
               "href": "https://nomicon.io",
@@ -392,8 +401,8 @@ export default {
               "label": "Validator Docs"
             },
             {
-              "href": "https://aurora.dev",
-              "label": "Aurora (EVM)"
+              "href": "/integrations/exchange-integration",
+              "label": "Exchange Integrations"
             }
           ]
         },
@@ -419,7 +428,6 @@ export default {
       ],
       "hideOnScroll": false
     },
-    "image": "img/near_logo.svg",
     "footer": {
       "links": [],
       "copyright": "Copyright © 2023 NEAR Protocol",
