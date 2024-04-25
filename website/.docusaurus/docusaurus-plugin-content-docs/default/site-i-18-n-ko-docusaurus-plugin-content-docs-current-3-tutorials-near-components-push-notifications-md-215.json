@@ -19,8 +19,8 @@
   },
   "sidebar": "tutorials",
   "previous": {
-    "title": "IFrame 사용하기",
-    "permalink": "/ko/tutorials/near-components/using-iframes"
+    "title": "Blog Posts",
+    "permalink": "/ko/tutorials/near-components/blog-posts"
   },
   "next": {
     "title": "WebSockets & QueryAPI",

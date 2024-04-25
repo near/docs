@@ -44,15 +44,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '97a'),
+    component: ComponentCreator('/zh-CN/', '33d'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', 'fce'),
+        component: ComponentCreator('/zh-CN/', '563'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', 'f63'),
+            component: ComponentCreator('/zh-CN/', 'ca0'),
             routes: [
               {
                 path: '/zh-CN/',
@@ -2058,6 +2058,12 @@ export default [
               {
                 path: '/zh-CN/tutorials/fts/transfers',
                 component: ComponentCreator('/zh-CN/tutorials/fts/transfers', '48b'),
+                exact: true,
+                sidebar: "tutorials"
+              },
+              {
+                path: '/zh-CN/tutorials/near-components/blog-posts',
+                component: ComponentCreator('/zh-CN/tutorials/near-components/blog-posts', '366'),
                 exact: true,
                 sidebar: "tutorials"
               },

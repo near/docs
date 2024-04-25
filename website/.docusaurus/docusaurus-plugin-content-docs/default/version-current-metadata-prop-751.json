@@ -1356,6 +1356,13 @@
           },
           {
             "type": "link",
+            "label": "Blog Posts",
+            "href": "/zh-CN/tutorials/near-components/blog-posts",
+            "docId": "tutorials/near-components/blog-posts",
+            "unlisted": false
+          },
+          {
+            "type": "link",
             "label": "Push Notifications",
             "href": "/zh-CN/tutorials/near-components/push-notifications",
             "docId": "tutorials/near-components/push-notifications",
@@ -4724,6 +4731,12 @@
       "id": "tutorials/fts/transfers",
       "title": "Transferring Fungible Tokens",
       "description": "In this tutorial, you'll learn how to implement the core standards into your smart contract. You'll implement the logic that allows you to transfer and receive tokens. If you're joining us for the first time, feel free to clone this repository and follow along in the 4.storage folder.",
+      "sidebar": "tutorials"
+    },
+    "tutorials/near-components/blog-posts": {
+      "id": "tutorials/near-components/blog-posts",
+      "title": "Blog Posts",
+      "description": "The Blog post components enable your gateway to promote regular Near Social posts into fully fledged blog posts.",
       "sidebar": "tutorials"
     },
     "tutorials/near-components/bos-loader": {

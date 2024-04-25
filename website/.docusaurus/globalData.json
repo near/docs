@@ -1661,6 +1661,11 @@
               "sidebar": "tutorials"
             },
             {
+              "id": "tutorials/near-components/blog-posts",
+              "path": "/zh-CN/tutorials/near-components/blog-posts",
+              "sidebar": "tutorials"
+            },
+            {
               "id": "tutorials/near-components/bos-loader",
               "path": "/zh-CN/tutorials/near-components/bos-loader",
               "sidebar": "tutorials"

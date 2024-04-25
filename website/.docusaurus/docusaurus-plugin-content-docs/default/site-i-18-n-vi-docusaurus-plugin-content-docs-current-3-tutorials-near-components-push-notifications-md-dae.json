@@ -19,8 +19,8 @@
   },
   "sidebar": "tutorials",
   "previous": {
-    "title": "Using IFrames",
-    "permalink": "/vi/tutorials/near-components/using-iframes"
+    "title": "Blog Posts",
+    "permalink": "/vi/tutorials/near-components/blog-posts"
   },
   "next": {
     "title": "WebSockets & QueryAPI",

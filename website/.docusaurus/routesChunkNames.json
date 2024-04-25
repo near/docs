@@ -89,17 +89,17 @@
       "plugin": "82d98fd4"
     }
   },
-  "/zh-CN/-97a": {
+  "/zh-CN/-33d": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "8b378508"
     }
   },
-  "/zh-CN/-fce": {
+  "/zh-CN/-563": {
     "__comp": "a7bd4aaa",
     "version": "935f2afb"
   },
-  "/zh-CN/-f63": {
+  "/zh-CN/-ca0": {
     "__comp": "a94703ab"
   },
   "/zh-CN/-ccb": {
@@ -1513,6 +1513,10 @@
   "/zh-CN/tutorials/fts/transfers-48b": {
     "__comp": "17896441",
     "content": "1b9e8bfc"
+  },
+  "/zh-CN/tutorials/near-components/blog-posts-366": {
+    "__comp": "17896441",
+    "content": "256ff2a5"
   },
   "/zh-CN/tutorials/near-components/bos-loader-a0e": {
     "__comp": "17896441",
