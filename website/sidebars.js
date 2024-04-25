@@ -396,9 +396,6 @@ const sidebar = {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Examples </small></b></span>"
     },
-    "tutorials/examples/minter",
-    "tutorials/examples/marketplace",
-    "tutorials/examples/blog",
     {
       "Frontend & Smart Contract": [
         "tutorials/examples/count-near",
@@ -416,6 +413,17 @@ const sidebar = {
       ]
     },
     "tutorials/examples/frontend-multiple-contracts",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Templates </small></b></span>"
+    },
+    "tutorials/templates/minter",
+    "tutorials/templates/marketplace",
+    "tutorials/templates/blog",
     {
       "type": "html",
       "value": "<hr/>"

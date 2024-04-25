@@ -4,12 +4,19 @@ title: NFT minter
 ---
 
 # NFT Minter
-<img src="https://i.imgur.com/QDJPsAA.png" alt="cover_image" width="700" />
-This is a Next.js 14 frontend minter example that includes a simple interface from which you can mint nfts easily
 
 [![Demo](https://img.shields.io/badge/Demo-Visit%20Demo-brightgreen)](https://minter.mintbase.xyz/)
 [![Deploy](https://img.shields.io/badge/Deploy-on%20Vercel-blue)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FMintbase%2Ftemplates%2Fblob%2Fmain%2Fminter)
 
+This is a Next.js 14 frontend minter example that includes a simple interface from which you can mint nfts easily
+
+![img](https://i.imgur.com/QDJPsAA.png)
+
+:::tip Mintbase Templates
+This is part of the [Mintbase Templates](https://templates.mintbase.xyz/), a collection of templates that you can use to scaffold your own project
+:::
+
+---
 
 ## Project Walkthrough
 
@@ -18,6 +25,8 @@ This is a simple minter example built on top of **Next.js 14** using some of [@m
 *NOTE: As a standard on Mintbase as we use the latest versions of Next.js we recommend using pnpm, but the package manager is up to your personal choice.*
 
 if you dont have a store you can [deploy a new contract](https://www.mintbase.xyz/launchpad/contracts/0) on our launchpad
+
+---
 
 ## Pre-Setup
 If you would like the minter to use your own NFT contract you can easily deploy one through the mintbase market UI, additionally if you want to open up minting to be available for any person you will need to connect it to a proxy contract
@@ -30,11 +39,15 @@ If you would like the minter to use your own NFT contract you can easily deploy 
 5. Succeeded
 6. Go to Contract Settings
 
+<hr class="subsection" />
+
 ### Add Proxy Minter Contract
 1. Under Contract Settings go to Minters
 2. add `0.drop.proxy.mintbase.near` (this is the contract address that need to be added on `process.env.NEXT_PUBLIC_PROXY_MINTER_CONTRACT_ADDRESS`), and click Add Minters.
 3. Proceed to transaction.
 4. Succeeded
+
+<hr class="subsection" />
 
 ### Step 1: Get the wallet connection
 
@@ -50,6 +63,8 @@ This method will get the wallet instance used to send the mint transaction. To l
     }
   };
   ```
+
+<hr class="subsection" />
 
 ### Step 2: Use the onSubmit method 
 
@@ -77,31 +92,34 @@ const onSubmit = async (data: SubmitData) => {
   };
   ```
 
-  ### Step 3: Upload the NFT reference
+<hr class="subsection" />
 
-  The nft reference represents the offchain data which permanently stored on IPFS on Arweave in this case you can use [@mintbase-js/data](https://docs.mintbase.xyz/dev/mintbase-sdk-ref/data) to easily upload it to arweave.
+### Step 3: Upload the NFT reference
 
-  In this not only are we uploading an offchain JSON object which contains the media as well as the title but also uploading a separate media file to be included onchain.
+The nft reference represents the offchain data which permanently stored on IPFS on Arweave in this case you can use [@mintbase-js/data](https://docs.mintbase.xyz/dev/mintbase-sdk-ref/data) to easily upload it to arweave.
 
-  [Learn more about how references work here](https://docs.mintbase.xyz/dev/getting-started/anatomy-of-a-non-fungible-token)
+In this not only are we uploading an offchain JSON object which contains the media as well as the title but also uploading a separate media file to be included onchain.
 
-  ```typescript
-  const reference = await uploadReference({
-      title: typeof data?.title === "string" ? data.title : "",
-      media: data?.media as unknown as File,
-    });
+[Learn more about how references work here](https://docs.mintbase.xyz/dev/getting-started/anatomy-of-a-non-fungible-token)
 
-    const file = uploadFile(data?.media as unknown as File);
+```typescript
+const reference = await uploadReference({
+    title: typeof data?.title === "string" ? data.title : "",
+    media: data?.media as unknown as File,
+  });
 
+  const file = uploadFile(data?.media as unknown as File);
 ```
 
-### Step 3: Handling the mint
+<hr class="subsection" />
 
-    Here we start by configuring the callback which is the link and params to where the user will be redirected after minting after signing the mint transaction on the wallet.
+### Step 4: Handling the mint
 
-    In this case a number of params are included to be able to show a better success page.
+Here we start by configuring the callback which is the link and params to where the user will be redirected after minting after signing the mint transaction on the wallet.
 
-    The argument for calling the contracts "mint" function is then built. This transaction will be sent to the proxy contract which then calls the nft contracts nft_batch_mint method
+In this case a number of params are included to be able to show a better success page.
+
+The argument for calling the contracts "mint" function is then built. This transaction will be sent to the proxy contract which then calls the nft contracts nft_batch_mint method
 
 
   ```typescript
@@ -154,11 +172,12 @@ const onSubmit = async (data: SubmitData) => {
 
 This sums up the blockchain portion of the code
 
+<hr class="subsection" />
 
 ### Setup
-
-
 In the `minter/src/config/setup.ts` file, we define several key configurations for interacting with the Mintbase platform. This setup is crucial for ensuring that our application communicates correctly with Mintbase smart contracts.
+
+---
 
 ## ENV Variables
 
@@ -170,7 +189,6 @@ In the `minter/src/config/setup.ts` file, we define several key configurations f
 
 - `callbackUrl`: A URL used for callbacks, constructed dynamically based on the `network` variable. If we are on the testnet, it uses the testnet URL; otherwise, it defaults to the mainnet URL.
 
-
 To customize these configurations for different environments, you can set the following environment variables in your `.env` file:
 
 `NOTE: the env variables need to have the NEXT_PUBLIC_ on the variable name due to be available for the browser to process`
@@ -179,29 +197,23 @@ To customize these configurations for different environments, you can set the fo
 - `NEXT_PUBLIC_MINT_CONTRACT_ADDRESS`: Your mint contract address on Mintbase.
 - `NEXT_PUBLIC_NETWORK`: The network you want to interact with (`"testnet"` or `"mainnet"`).
 
-
-
-
-
 after that you can run
-```
-pnpm install
-```
-and
 
-```
+```bash
+pnpm install
 pnpm dev
 ```
 
+---
 
 ## Extending
 
-This project is setup using Next.js + @mintbase/js + shadcn ui + react hook form
+This project is setup using Next.js + @mintbase/js
 You can use this project as a reference to build your own, and use or remove any library you think it would suit your needs.
 
-
-## Get in touch
+:::info Get in touch
+You can get in touch with the mintbase team using the following channels:
 
 - Support: [Join the Telegram](https://tg.me/mintdev)
 - Twitter: [@mintbase](https://twitter.com/mintbase)
-
+:::

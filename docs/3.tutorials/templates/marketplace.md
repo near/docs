@@ -1,13 +1,17 @@
 # Marketplace Frontend
 
-<img src="https://i.imgur.com/FjcUss9.png" alt="cover_image" width="700" />
+[![Demo](https://img.shields.io/badge/Demo-Visit%20Demo-brightgreen)](https://marketplace-template.mintbase.xyz/)
+[![Deploy](https://img.shields.io/badge/Deploy-on%20Vercel-blue)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FMintbase%2Ftemplates%2Ftree%2Fmain%2Fmarketplace)
 
 Unlock Your NFT Storefront: Clone & Customize Your Path to Blockchain Success with this whitelabel marketplace template!
 
-If you find this example helpful checkout [Mintbase Templates](https://templates.mintbase.xyz/)
+![img](https://i.imgur.com/FjcUss9.png)
 
-[![Demo](https://img.shields.io/badge/Demo-Visit%20Demo-brightgreen)](https://marketplace-template.mintbase.xyz/)
-[![Deploy](https://img.shields.io/badge/Deploy-on%20Vercel-blue)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FMintbase%2Ftemplates%2Ftree%2Fmain%2Fmarketplace)
+:::tip Mintbase Templates
+This is part of the [Mintbase Templates](https://templates.mintbase.xyz/), a collection of templates that you can use to scaffold your own project
+:::
+
+---
 
 ## Project Walkthrough
 
@@ -22,21 +26,23 @@ A live demo of the marketplace can be found here: [Live demo link](https://marke
 
 ### Setup
 
-install dependencies
-```
+```bash
+# install dependencies
 pnpm install
-```
-and
-run the project
-```
+
+#run the project
 pnpm dev
 ```
 
-## Step 1: Connect Wallet
+<hr class="subsection" />
+
+### Step 1: Connect Wallet
 
 Before proceeding, it is important to have a wallet connection feature implemented in your application in order to interact with the contract. To do this, you can check our guide [Wallet Connection Guide](https://docs.mintbase.xyz/dev/getting-started/add-wallet-connection-to-your-react-app).
 
-## Step 2: Get NFTs from Store
+<hr class="subsection" />
+
+### Step 2: Get NFTs from Store
 
 In this example, we utilized react-query to manage the loading state when retrieving NFTs from the contract via the storeNfts method. This method returns all listed NFTs from the specified contract, allowing you to display them in the user interface.
 
@@ -61,7 +67,9 @@ const useStoreNfts = (store?: string) => {
 export { useStoreNfts };
 ```
 
-## Step 3: Get Store Data
+<hr class="subsection" />
+
+### Step 3: Get Store Data
 
 To control the tabs, we need to retrieve store data using the storeData method. This method returns the data from the specified contract, enabling you to display it in the user interface.
 
@@ -86,7 +94,10 @@ const useStoreData = () => {
 export { useStoreData };
 
 ```
-## Step 4: Get Metadata from an NFT
+
+<hr class="subsection" />
+
+### Step 4: Get Metadata from an NFT
 
 To display NFT pricing information, available quantities, and other details in the user interface, it is necessary to access the NFT metadata using the metadataByMetadataId method.
 
@@ -108,7 +119,9 @@ const useMetadataByMetadataId = ({ metadataId }) => {
 export { useMetadataByMetadataId };
 ```
 
-## Step 5: Get Current NEAR Price
+<hr class="subsection" />
+
+### Step 5: Get Current NEAR Price
 
 To obtain the current price of the NFT in USD, it is necessary to retrieve the current Near price. We accomplish this by using the nearPrice method.
 
@@ -133,13 +146,15 @@ const useNearPrice = () => {
 };
 
 export { useNearPrice };
-``````
+```
 
-## Step 6: Execute the Contract Call - Buy
+<hr class="subsection" />
+
+### Step 6: Execute the Contract Call - Buy
 
 The execute method accepts one or more contract call objects and executes them using a specified wallet instance. In this example, we need to use the execute method to execute the "buy" call, allowing the user to purchase the desired NFT.
 
-````ts
+```ts
 const singleBuy = async () => {
     const wallet = await selector.wallet();
 
@@ -160,7 +175,9 @@ const singleBuy = async () => {
       )) as FinalExecutionOutcome;
     }
   };
-``````
+```
+
+---
 
 ## Set ENV variables
 
@@ -203,7 +220,14 @@ NEXT_PUBLIC_STORES=latium.mintspace2.testnet,mufasa.mintspace2.testnet
 NEXT_PUBLIC_AFFILIATE_ACCOUNT=your_near_account.near
 ```
 
-## Get in touch
+## Extending
+
+This project is setup using Next.js + @mintbase/js
+You can use this project as a reference to build your own, and use or remove any library you think it would suit your needs.
+
+:::info Get in touch
+You can get in touch with the mintbase team using the following channels:
 
 - Support: [Join the Telegram](https://tg.me/mintdev)
 - Twitter: [@mintbase](https://twitter.com/mintbase)
+:::
