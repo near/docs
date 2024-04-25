@@ -4,7 +4,7 @@ title: Blog Posts
 ---
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
-The Blog post components enable your gateway to promote regular social posts into fully fledged blog posts.
+The Blog post components enable your gateway to promote regular Near Social posts into fully fledged blog posts.
 In this article you'll learn how to set up the required components so you can define a custom URL to show a clean feed of blog posts.
 
 ## Setup
@@ -51,7 +51,6 @@ In this code example, only promoted blog posts from users `near` and `jacksonthe
 
 ## Blog post formatting
 
-
 When writing blog posts, you can format the content using standard [Markdown syntax](https://www.markdownguide.org/basic-syntax/).
 Markdown is an easy-to-read, easy-to-write language for formatting plain text.
 
@@ -86,7 +85,7 @@ If you're new to Markdown, you might want to check this page about [basic writin
 ## Writing a blog post
 
 Adding a new blog post is simple. To publish a new blog post, you only need to:
-1. Write a regular social message
+1. Write a regular Near Social message
 2. Promote the message and convert it to a Blog post
 
 <img src="/docs/bosblog/blog-promote1.png" width="60%" />
