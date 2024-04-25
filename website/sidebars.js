@@ -169,7 +169,7 @@ const sidebar = {
             "build/smart-contracts/anatomy/storage",
             "build/smart-contracts/anatomy/actions",
             "build/smart-contracts/anatomy/crosscontract",
-            "build/smart-contracts/security/checklist", 
+            "build/smart-contracts/security/checklist",
             {
               "type": "html",
               "value": "<hr/>"
@@ -427,6 +427,7 @@ const sidebar = {
         "tutorials/near-components/interaction",
         "tutorials/near-components/ds-components",
         "tutorials/near-components/using-iframes",
+        "tutorials/near-components/blog-posts",
         "tutorials/near-components/push-notifications",
         "tutorials/near-components/queryapi-websockets",
         "tutorials/near-components/ethers-js",
