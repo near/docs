@@ -33,7 +33,7 @@ With the connection object you now can:
 The library also contains some [utility functions](naj-utils.md).
 
 :::tip
-To quickly get started with integrating NEAR in a web browser, read our [Web Frontend integration](/develop/integrate/frontend) article.
+To quickly get started with integrating NEAR in a web browser, read our [Web Frontend integration](/build/web3-apps/integrate-contracts) article.
 :::
 
 :::info

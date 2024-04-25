@@ -13,13 +13,13 @@ sidebar_label: Introduction
 
 To complete these tutorials successfully, you'll need:
 
-- [Rust](/develop/prerequisites)
+- [Rust](/build/smart-contracts/quickstart#prerequisites)
 - [A NEAR Wallet](https://testnet.mynearwallet.com/create)
 - [NEAR-CLI JS](/tools/near-cli#setup)
 - [NEAR-CLI RS](/tools/near-cli-rs#install)
 
 :::info New to Rust?
-If you are new to Rust and want to dive into smart contract development, our [Quick-start guide](/develop/quickstart-guide) is a great place to start.
+If you are new to Rust and want to dive into smart contract development, our [Quick-start guide](../../2.build/2.smart-contracts/quickstart.md) is a great place to start.
 :::
 
 ---

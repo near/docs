@@ -6,7 +6,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
-Three examples on how to handle updates and [state migration](../../2.develop/upgrade.md):
+Three examples on how to handle updates and [state migration](../../2.build/2.smart-contracts/release/upgrade.md):
 1. [State Migration](https://github.com/near-examples/update-migrate-rust/tree/main/basic-updates): How to implement a `migrate` method to migrate state between contract updates.
 2. [State Versioning](https://github.com/near-examples/update-migrate-rust/tree/main/enum-updates): How to use readily use versioning on a state, to simplify updating it later.
 3. [Self Update](https://github.com/near-examples/update-migrate-rust/tree/main/self-updates): How to implement a contract that can update itself.
@@ -34,7 +34,7 @@ The migration method deserializes the current state (`OldState`) and iterates th
 to the new `PostedMessage` that includes the `payment` field.
 
 :::tip
-Notice that migrate is actually an [initialization method](../../2.develop/contracts/anatomy.md#initialization-method) that ignores the existing state (`[#init(ignore_state)]`), thus being able to execute and rewrite the state.
+Notice that migrate is actually an [initialization method](../../2.build/2.smart-contracts/anatomy/anatomy.md#initialization-method) that ignores the existing state (`[#init(ignore_state)]`), thus being able to execute and rewrite the state.
 :::
 
 ---

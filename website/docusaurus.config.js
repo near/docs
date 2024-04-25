@@ -52,12 +52,12 @@ const config = {
           anonymizeIP: true,
         },
         blog: {
-          blogTitle: 'NEAR Developer Changelog',
-          blogSidebarTitle: 'Developer Changelog',
+          blogTitle: 'NEAR Docs Blog',
+          blogSidebarTitle: 'Documentation Blog',
           blogSidebarCount: 'ALL',
-          showReadingTime: false,
-          routeBasePath: 'changelog',
-          path: '../changelog',
+          showReadingTime: true,
+          routeBasePath: 'blog',
+          path: '../blog',
 
         },
         theme: {
@@ -76,7 +76,7 @@ const config = {
         name: 'near-changelog',
         sourceBaseUrl:
           'https://raw.githubusercontent.com/near/near-releases/main/reports/',
-        outDir: '../changelog',
+        outDir: '../blog',
         documents: changelogs,
         noRuntimeDownloads: true,
         modifyContent(filename, content) {
@@ -86,10 +86,11 @@ const config = {
     ],
   ],
   themeConfig: {
+    image: 'docs/assets/welcome-pages/protocol.png',
     announcementBar: {
-      id: 'abstraction',
+      id: 'id-0002',
       content:
-        '⛓️ <a href="/concepts/abstraction/chain-signatures">Chain Signatures</a> ⛓️ - Sign and send transactions on Bitcoin, Ethereum, and more! 🔑 ',
+        '🎉 Come check <a href="/blog">our new blog</a>, where we will share weekly news and updates 🎉',
       backgroundColor: '#fafbfc',
       textColor: '#333',
       isCloseable: true,
@@ -122,7 +123,7 @@ const config = {
           position: 'left',
         },
         {
-          to: '/develop/welcome',
+          to: '/build/welcome',
           label: 'Build',
           position: 'left',
         },
@@ -154,16 +155,14 @@ const config = {
             { label: 'NEAR CLI', href: '/tools/near-cli' },
             {
               type: 'html',
-              value: '<hr/> <small class="subtitle"> Onboarding </small>',
+              value: '<hr/> <small class="subtitle"> Wallet Integration </small>',
             },
             { label: 'Wallet Selector', href: '/tools/wallet-selector' },
-            { label: 'FastAuth (Email Login)', href: '/tools/fastauth-sdk' },
-            { label: 'Relayers', href: '/develop/relayers/build-relayer' },
             {
               type: 'html',
               value: '<hr/> <small class="subtitle"> IDEs </small>',
             },
-            { label: 'VSCode Extension ', href: '/bos/dev/vscode' },
+            { label: 'VSCode Extension ', href: 'https://marketplace.visualstudio.com/items?itemName=near-protocol.near-discovery-ide' },
             { label: 'BOS Web IDE (Jutsu)', href: 'https://jutsu.ai/editor' },
             {
               label: 'Remix IDE Plugin',
@@ -176,7 +175,6 @@ const config = {
           label: 'Resources',
           position: 'left',
           items: [
-            { label: '🎉 Dev Changelog', href: '/changelog' },
             {
               label: 'Github',
               href: 'https://github.com/near',
@@ -196,6 +194,18 @@ const config = {
             },
             {
               type: 'html',
+              value: '<hr /><div class="subtitle"> Education </dib>',
+            },
+            {
+              href: 'https://agorapp.dev/catalog/course?difficulty=&chains=near',
+              label: 'Agor',
+            },
+            {
+              href: 'https://learnnear.club/',
+              label: 'Learn NEAR Club',
+            },
+            {
+              type: 'html',
               value: '<hr /><div class="subtitle"> Other Docs </dib>',
             },
             {
@@ -207,8 +217,8 @@ const config = {
               label: 'Validator Docs',
             },
             {
-              href: 'https://aurora.dev',
-              label: 'Aurora (EVM)',
+              href: '/integrations/exchange-integration',
+              label: 'Exchange Integrations',
             },
           ],
         },
@@ -216,6 +226,7 @@ const config = {
           type: 'search',
           position: 'right',
         },
+        { label: 'Blog', href: '/blog' },
         {
           type: 'localeDropdown',
           position: 'right',

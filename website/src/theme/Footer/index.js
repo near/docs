@@ -132,7 +132,7 @@ function Footer() {
             <div className="row">
             <div className="col sm:w-1/3 mt-50">
                 <h2 className="text-24 font-black text-blue-light">
-                  <a href="https://docs.near.org/concepts/welcome">
+                  <a href="/concepts/welcome">
                     Concepts
                   </a>
                 </h2>
@@ -141,57 +141,57 @@ function Footer() {
                   className="footer-menu list-reset mt-5 text-16 md:text-16"
                 >
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://docs.near.org/concepts/basics/protocol">
+                    <a href="/concepts/basics/protocol">
                       What is Near?
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://docs.near.org/concepts/protocol/account-model">
+                    <a href="/concepts/protocol/account-model">
                       Accounts
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://docs.near.org/concepts/protocol/transactions">
+                    <a href="/concepts/protocol/transactions">
                       Transactions
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://docs.near.org/concepts/data-flow/near-data-flow">
+                    <a href="/concepts/data-flow/near-data-flow">
                       Data Flow
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://docs.near.org/concepts/basics/tokens">
+                    <a href="/concepts/basics/tokens">
                       Token
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://docs.near.org/concepts/storage/data-storage">
+                    <a href="/concepts/storage/data-storage">
                       Storage
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://docs.near.org/concepts/basics/validators">
+                    <a href="/concepts/basics/validators">
                       Validators
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://docs.near.org/concepts/abstraction/introduction">
+                    <a href="/concepts/abstraction/introduction">
                       Chain Abstraction
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://docs.near.org/concepts/data-flow/data-storage">
+                    <a href="/concepts/data-flow/data-storage">
                       Data on Blockchain
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://docs.near.org/concepts/basics/runtime">
+                    <a href="/concepts/basics/runtime">
                       Runtime
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://docs.near.org/concepts/web3/intro">
+                    <a href="/concepts/web3/intro">
                       Web3 Intro
                     </a>
                   </li>
@@ -199,7 +199,7 @@ function Footer() {
               </div>
               <div className="col sm:w-1/3 mt-50">
                 <h2 className="text-24 font-black text-blue-light">
-                  <a href="https://docs.near.org/develop/welcome">
+                  <a href="/build/welcome">
                     Build
                   </a>
                 </h2>
@@ -208,37 +208,37 @@ function Footer() {
                   className="footer-menu list-reset mt-5 text-16 md:text-16"
                 >
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://docs.near.org/abstraction/what-is">
+                    <a href="/build/chain-abstraction/what-is">
                       Chain Abstraction
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://docs.near.org/develop/contracts/whatisacontract">
+                    <a href="/build/smart-contracts/what-is">
                       Smart Contracts
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://docs.near.org/bos/tutorial/quickstart">
+                    <a href="/build/near-components/what-is">
                       Components
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://docs.near.org/develop/web3-apps/whatareweb3apps">
+                    <a href="/build/web3-apps/what-is">
                       Web3 Apps
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://docs.near.org/primitives/whatareprimitives">
+                    <a href="/build/primitives/what-is">
                       Primitives
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://docs.near.org/data-availability/welcome">
+                    <a href="/build/chain-abstraction/data-availability">
                       Data Availability
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://docs.near.org/develop/whataredatasolutions">
+                    <a href="/build/data-infrastructure/what-is">
                       Data Infrastructure
                     </a>
                   </li>
@@ -246,7 +246,7 @@ function Footer() {
               </div>
               <div className="col sm:w-1/3 mt-50">
                 <h2 className="text-24 font-black text-blue-light">
-                  <a href="https://docs.near.org/tutorials/welcome">
+                  <a href="/tutorials/welcome">
                     Tutorials
                   </a>
                 </h2>
@@ -255,27 +255,27 @@ function Footer() {
                   className="footer-menu list-reset mt-5 text-16 md:text-16"
                 >
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://docs.near.org/tutorials/examples/count-near">
+                    <a href="/tutorials/examples/count-near">
                     Smart Contract
                     </a>
                   </li>                                 
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://docs.near.org/tutorials/nfts/minting-nfts">
+                    <a href="/tutorials/nfts/minting-nfts">
                       Mint NFTs
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://docs.near.org/tutorials/fts/introduction">
+                    <a href="/tutorials/fts/introduction">
                       FTs
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://docs.near.org/bos/dev/bos-loader">
+                    <a href="/tutorials/near-components/bos-loader">
                       Components
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://docs.near.org/tutorials/indexer/near-lake-state-changes-indexer">
+                    <a href="/build/data-infrastructure/lake-framework/near-lake-state-changes-indexer">
                       Indexers
                     </a>
                   </li>
@@ -288,7 +288,7 @@ function Footer() {
               </div>
               <div className="col sm:w-1/3 mt-50">
                 <h2 className="text-24 font-black text-blue-light">
-                  <a href="https://docs.near.org/api/rpc/introduction">
+                  <a href="/api/rpc/introduction">
                     RPC
                   </a>
                 </h2>
@@ -297,22 +297,22 @@ function Footer() {
                   className="footer-menu list-reset mt-5 text-16 md:text-16"
                 >
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://docs.near.org/api/rpc/providers">
+                    <a href="/api/rpc/providers">
                       RPC Providers
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://docs.near.org/api/rpc/setup">
+                    <a href="/api/rpc/setup">
                       Setup
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://docs.near.org/api/rpc/access-keys">
+                    <a href="/api/rpc/access-keys">
                       Access Keys
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://docs.near.org/api/rpc/contracts">
+                    <a href="/api/rpc/contracts">
                       Contracts
                     </a>
                   </li>
@@ -320,7 +320,7 @@ function Footer() {
               </div>
               <div className="col sm:w-1/3 mt-50">
                 <h2 className="text-24 font-black text-blue-light">
-                  <a href="https://docs.near.org/tools/welcome">
+                  <a href="/tools/welcome">
                     Tools
                   </a>
                 </h2>
@@ -329,38 +329,33 @@ function Footer() {
                   className="footer-menu list-reset mt-5 text-16 md:text-16"
                 >
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="http://docs.near.org/tools/near-api-js/quick-reference">
+                    <a href="/tools/near-api-js/quick-reference">
                       API
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://docs.near.org/sdk/welcome">
+                    <a href="/sdk/welcome">
                       SDK
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://docs.near.org/tools/near-cli">
+                    <a href="/tools/near-cli">
                       CLI
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="http://docs.near.org/tools/wallet-selector">
+                    <a href="/tools/wallet-selector">
                       Wallet Selector
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="http://docs.near.org/tools/fastauth-sdk">
+                    <a href="/build/chain-abstraction/fastauth-sdk">
                       FastAuth
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="http://docs.near.org/develop/relayers/build-relayer">
+                    <a href="/build/chain-abstraction/what-is">
                       Relayers
-                    </a>
-                  </li>
-                  <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="http://docs.near.org/bos/dev/vscode">
-                      VSCode
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
@@ -384,12 +379,12 @@ function Footer() {
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://docs.near.org/tools/explorer">
+                    <a href="/tools/explorer">
                       Explorers
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://docs.near.org/tools/indexing">
+                    <a href="/tools/indexing">
                       Indexing
                     </a>
                   </li>
@@ -407,10 +402,20 @@ function Footer() {
                     <a href="https://near.org/devhub.near/widget/app">
                       DevHub
                     </a>
-                  </li>                  
+                  </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://docs.near.org/changelog">
-                      Changelog
+                    <a href="https://learnnear.club/">
+                      Learn NEAR Club 
+                    </a>
+                  </li>
+                  <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
+                    <a href="https://agorapp.dev/catalog/course?difficulty=&chains=near">
+                      AgorApp 
+                    </a>
+                  </li>    
+                  <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
+                    <a href="/blog">
+                      Blog
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
