@@ -410,7 +410,7 @@ function Footer() {
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
                     <a href="https://agorapp.dev/catalog/course?difficulty=&chains=near">
-                      AgoraApp 
+                      AgorApp 
                     </a>
                   </li>    
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">

@@ -198,7 +198,7 @@ const config = {
             },
             {
               href: 'https://agorapp.dev/catalog/course?difficulty=&chains=near',
-              label: 'Agora',
+              label: 'Agor',
             },
             {
               href: 'https://learnnear.club/',
