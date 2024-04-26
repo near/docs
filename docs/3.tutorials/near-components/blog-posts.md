@@ -144,6 +144,61 @@ In this code example, only promoted blog posts from users `near` and `jacksonthe
 
 :::
 
+### Promoting posts
+
+If you're using `near-discovery` you're all set, the <kbd>Promote</kbd> menu is already available using the [`v1.Posts.Feed`](https://near.org/near/widget/ComponentDetailsPage?src=near/widget/v1.Posts.Feed) component.
+
+If you're using a different gateway or your own custom feed, and you want to allow users to promote social messages into blog posts, you can integrate this `promoteToBlog` code snippet:
+
+```js
+const { accountId, blockHeight, item } = props;
+
+const promoteToBlog = () => {
+  if (state.loading) {
+    return;
+  }
+
+  if (!context.accountId && props.requestAuthentication) {
+    props.requestAuthentication();
+    return;
+  } else if (!context.accountId) {
+    return;
+  }
+
+  State.update({
+    loading: true,
+  });
+
+  const data = {
+    index: {
+      promote: JSON.stringify({
+        key: context.accountId,
+        value: {
+          operation: "add",
+          type: "blog",
+          post: item,
+          blockHeight,
+        },
+      }),
+    },
+  };
+
+  Social.set(data, {
+    onCommit: () => State.update({ loading: false }),
+    onCancel: () =>
+      State.update({
+        loading: false,
+      }),
+  });
+};
+```
+
+:::tip
+
+Check the [`Posts.Menu`](https://near.org/near/widget/ComponentDetailsPage?src=near/widget/Posts.Menu&tab=source) component for a complete implementation that includes a drop-down menu and a button to promote a blog post.
+
+:::
+
 ---
 
 ## Blog post formatting
