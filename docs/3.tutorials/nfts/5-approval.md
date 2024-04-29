@@ -5,8 +5,9 @@ sidebar_label: Approvals
 ---
 import {Github} from "@site/src/components/codetabs"
 
-In this tutorial you'll learn the basics of an approval management system which will allow you to grant others access to transfer NFTs on your behalf. This is the backbone of all NFT marketplaces and allows for some complex yet beautiful scenarios to happen. If you're joining us for the first time, feel free to clone [this repository](https://github.com/near-examples/nft-tutorial) and go to the `nft-contract-basic/` folder to follow along.
+In this tutorial you'll learn the basics of an approval management system which will allow you to grant others access to transfer NFTs on your behalf.
 
+This is the backbone of all NFT marketplaces and allows for some complex yet beautiful scenarios to happen. If you're joining us for the first time, feel free to clone [this repository](https://github.com/near-examples/nft-tutorial) and go to the `nft-contract-basic/` folder to follow along.
 
 ```bash
 cd nft-contract-basic/
@@ -20,7 +21,9 @@ If you wish to see the finished code for this _Approval_ tutorial, you can find 
 
 ## Introduction
 
-Up until this point you've created a smart contract that allows users to mint and transfer NFTs as well as query for information using the [enumeration standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration). As we've been doing in the previous tutorials, let's break down the problem into smaller, more digestible, tasks. Let's first define some of the end goals that we want to accomplish as per the [approval management](https://nomicon.io/Standards/Tokens/NonFungibleToken/ApprovalManagement) extension of the standard. We want a user to have the ability to:
+Up until this point you've created a smart contract that allows users to mint and transfer NFTs as well as query for information using the [enumeration standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration). As we've been doing in the previous tutorials, let's break down the problem into smaller, more digestible, tasks.
+
+Let's first define some of the end goals that we want to accomplish as per the [approval management](https://nomicon.io/Standards/Tokens/NonFungibleToken/ApprovalManagement) extension of the standard. We want a user to have the ability to:
 
 - Grant other accounts access to transfer their NFTs on a per token basis.
 - Check if an account has access to a specific token.
@@ -167,7 +170,6 @@ Next, you'll need to copy the logic for calculating how many bytes it costs to s
 
 Now that the logic for approving accounts is finished, you need to change the restrictions for transferring.
 
-<hr className="subsection" />
 
 #### Changing the restrictions for transferring NFTs
 

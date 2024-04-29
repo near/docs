@@ -7,9 +7,13 @@ import {Github} from "@site/src/components/codetabs"
 
 In this tutorial, you'll build off the work you previously did to implement the [minting functionality](/tutorials/nfts/minting) on a skeleton smart contract. You got to the point where NFTs could be minted and the wallet correctly picked up on the fact that you owned an NFT. However, it had no way of displaying the tokens since your contract didn't implement the method that the wallet was trying to call.
 
+---
+
 ## Introduction
 
 Today you'll learn about deploying patch fixes to smart contracts and you'll use that knowledge to implement the `nft_tokens_for_owner` function on the contract you deployed in the previous tutorial.
+
+---
 
 ## Upgrading contracts overview {#upgrading-contracts}
 
@@ -18,6 +22,8 @@ Upgrading contracts, when done right, can be an immensely powerful tool. If done
 The NEAR Runtime will read the serialized state from disk and it will attempt to load it using the current contract code. When your code changes, it might not be able to figure out how to do this.
 
 You need to strategically upgrade your contracts and make sure that the runtime will be able to read your current state with the new contract code. For more information about upgrading contracts and some best practices, see the NEAR SDK's [upgrading contracts](/sdk/rust/building/prototyping) write-up.
+
+---
 
 ## Modifications to our contract {#modifications-to-contract}
 
@@ -31,8 +37,9 @@ As for the pagination, Rust has some awesome functions for skipping to a startin
 
 Let's move over to the `enumeration.rs` file and implement that logic:
 
-<Github language="rust" start="32" end="62" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/enumeration.rs" />
 <Github language="rust" start="45" end="76" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/enumeration.rs" />
+
+---
 
 ## Redeploying the contract {#redeploying-contract}
 
@@ -98,11 +105,15 @@ near view $NFT_CONTRACT_ID nft_tokens_for_owner '{"account_id": "'$NFT_CONTRACT_
 </p>
 </details>
 
+---
+
 ## Viewing NFTs in the wallet {#viewing-nfts-in-wallet}
 
 Now that your contract implements the necessary functions that the wallet uses to display NFTs, you should be able to see your tokens on display in the [collectibles tab](https://testnet.mynearwallet.com//?tab=collectibles).
 
 ![filled-nft-in-wallet](/docs/assets/nfts/filled-nft-in-wallet.png)
+
+---
 
 ## Conclusion
 

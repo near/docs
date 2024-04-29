@@ -4,8 +4,8 @@ title: NFT Zero to Hero
 sidebar_label: Introduction
 ---
 
-> In this _Zero to Hero_ series, you'll find a set of tutorials that will cover every aspect of a non-fungible token (NFT) smart contract.
-> You'll start by minting an NFT using a pre-deployed contract and by the end you'll end up building a fully-fledged NFT smart contract that supports every extension.
+In this _Zero to Hero_ series, you'll find a set of tutorials that will cover every aspect of a non-fungible token (NFT) smart contract.
+You'll start by minting an NFT using a pre-deployed contract and by the end you'll end up building a fully-fledged NFT smart contract that supports every extension.
 
 ---
 
@@ -13,13 +13,12 @@ sidebar_label: Introduction
 
 To complete these tutorials successfully, you'll need:
 
-- [Rust](/build/smart-contracts/quickstart#prerequisites)
-- [A NEAR Wallet](https://testnet.mynearwallet.com/create)
-- [NEAR-CLI JS](/tools/near-cli#setup)
-- [NEAR-CLI RS](/tools/near-cli-rs#install)
+- [Rust](https://www.rust-lang.org/tools/install)
+- [A Testnet wallet](https://testnet.mynearwallet.com/create)
+- [NEAR-CLI](/tools/near-cli#setup)
 
 :::info New to Rust?
-If you are new to Rust and want to dive into smart contract development, our [Quick-start guide](../../2.build/2.smart-contracts/quickstart.md) is a great place to start.
+If you are new to Rust and want to dive into smart contract development, our [Quick-start guide](../../2.build/2.smart-contracts/quickstart.md) is a great place to start
 :::
 
 ---
@@ -52,11 +51,3 @@ These are the steps that will bring you from **_Zero_** to **_Hero_** in no time
 Ready to start? Jump to the [Pre-deployed Contract](/tutorials/nfts/predeployed-contract) tutorial and begin your learning journey!
 
 If you already know about non-fungible tokens and smart contracts, feel free to skip and jump directly to the tutorial of your interest. The tutorials have been designed so you can start at any given point!
-
-:::info Questions?
-👉 Join us on [Discord](https://near.chat/) and let us know in the `#development` channels. 👈
-
-We also host daily [Office Hours](https://pages.near.org/developers/get-help/office-hours/) live where the DevRel team will answer any questions you may have. 🤔
-
-Monday – Friday 11AM – 12PM Pacific (6PM – 7PM UTC)
-:::

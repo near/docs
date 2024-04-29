@@ -6,11 +6,16 @@ sidebar_label: Enumeration
 import {Github} from "@site/src/components/codetabs"
 
 In the previous tutorials, you looked at ways to integrate the minting functionality into a skeleton smart contract. In order to get your NFTs to show in the wallet, you also had to deploy a patch fix that implemented one of the enumeration methods. In this tutorial, you'll expand on and finish the rest of the enumeration methods as per the [standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration)
+
 Now you'll extend the NFT smart contract and add a couple of enumeration methods that can be used to return the contract's state.
+
+---
 
 ## Introduction
 
 As mentioned in the [Upgrade a Contract](/tutorials/nfts/upgrade-contract/) tutorial, you can deploy patches and fixes to smart contracts. This time, you'll use that knowledge to implement the `nft_total_supply`, `nft_tokens` and `nft_supply_for_owner` enumeration functions.
+
+---
 
 ## Modifications to the contract
 
@@ -20,7 +25,6 @@ Let's start by opening the  `src/enumeration.rs` file and locating the empty `nf
 
 This function should return the total number of NFTs stored on the contract. You can easily achieve this functionality by simply returning the length of the `nft_metadata_by_id` data structure.
 
-<Github language="rust" start="5" end="9" url="https://github.com/near-examples/nft-tutorial/blob/3.enumeration/nft-contract/src/enumeration.rs" />
 <Github language="rust" start="5" end="9" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/enumeration.rs" />
 
 **nft_token**
@@ -32,7 +36,6 @@ If the user provides a `from_index` parameter, you should use that as the starti
 Rust has useful methods for pagination, allowing you to skip to a starting index and taking the first `n` elements of an iterator.
 :::
 
-<Github language="rust" start="11" end="27" url="https://github.com/near-examples/nft-tutorial/blob/3.enumeration/nft-contract/src/enumeration.rs" />
 <Github language="rust" start="11" end="26" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/enumeration.rs" />
 
 **nft_supply_for_owner**
@@ -40,10 +43,11 @@ Rust has useful methods for pagination, allowing you to skip to a starting index
 This function should look for all the non-fungible tokens for a user-defined owner, and return the length of the resulting set.
 If there isn't a set of tokens for the provided `AccountID`, then the function shall return `0`.
 
-<Github language="rust" start="28" end="43" url="https://github.com/near-examples/nft-tutorial/blob/3.enumeration/nft-contract/src/enumeration.rs" />
 <Github language="rust" start="28" end="43" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/enumeration.rs" />
 
 Next, you can use the CLI to query these new methods and validate that they work correctly.
+
+---
 
 ## Redeploying the contract {#redeploying-contract}
 
@@ -52,6 +56,8 @@ Now that you've implemented the necessary logic for `nft_tokens_for_owner`, it's
 ```bash
 cargo near deploy $NFT_CONTRACT_ID without-init-call network-config testnet sign-with-keychain send
 ```
+
+---
 
 ## Enumerating tokens
 
@@ -78,6 +84,8 @@ This command should return an output similar to the following:
 </p>
 </details>
 
+<hr class="subsection" />
+
 ### Tokens by owner
 
 To get the total supply of NFTs owned by the `goteam.testnet` account, call the `nft_supply_for_owner` function and set the `account_id` parameter:
@@ -98,6 +106,8 @@ This should return an output similar to the following:
 
 </p>
 </details>
+
+---
 
 ## Conclusion
 
