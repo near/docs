@@ -19,8 +19,8 @@
   },
   "sidebar": "tutorials",
   "previous": {
-    "title": "Frontend & Multiple Contracts",
-    "permalink": "/vi/tutorials/examples/frontend-multiple-contracts"
+    "title": "Onchain Blog",
+    "permalink": "/vi/tutorials/templates/blog"
   },
   "next": {
     "title": "Smart Contract Interaction",

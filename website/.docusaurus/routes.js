@@ -44,15 +44,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '33d'),
+    component: ComponentCreator('/zh-CN/', 'a4c'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '563'),
+        component: ComponentCreator('/zh-CN/', '4d0'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', 'ca0'),
+            component: ComponentCreator('/zh-CN/', '772'),
             routes: [
               {
                 path: '/zh-CN/',
@@ -2298,6 +2298,24 @@ export default [
               {
                 path: '/zh-CN/tutorials/nfts/upgrade-contract',
                 component: ComponentCreator('/zh-CN/tutorials/nfts/upgrade-contract', '004'),
+                exact: true,
+                sidebar: "tutorials"
+              },
+              {
+                path: '/zh-CN/tutorials/templates/blog',
+                component: ComponentCreator('/zh-CN/tutorials/templates/blog', '71a'),
+                exact: true,
+                sidebar: "tutorials"
+              },
+              {
+                path: '/zh-CN/tutorials/templates/marketplace',
+                component: ComponentCreator('/zh-CN/tutorials/templates/marketplace', '63f'),
+                exact: true,
+                sidebar: "tutorials"
+              },
+              {
+                path: '/zh-CN/tutorials/templates/minter',
+                component: ComponentCreator('/zh-CN/tutorials/templates/minter', '7f0'),
                 exact: true,
                 sidebar: "tutorials"
               },

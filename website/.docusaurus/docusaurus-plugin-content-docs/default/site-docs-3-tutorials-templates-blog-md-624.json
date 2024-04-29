@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/templates/blog",
+  "title": "Onchain Blog",
+  "description": "Demo",
+  "source": "@site/../docs/3.tutorials/templates/blog.md",
+  "sourceDirName": "3.tutorials/templates",
+  "slug": "/tutorials/templates/blog",
+  "permalink": "/zh-CN/tutorials/templates/blog",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/templates/blog.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Guille",
+  "lastUpdatedAt": 1714414464000,
+  "frontMatter": {
+    "id": "blog",
+    "title": "Onchain Blog"
+  },
+  "sidebar": "tutorials",
+  "previous": {
+    "title": "Marketplace Frontend",
+    "permalink": "/zh-CN/tutorials/templates/marketplace"
+  },
+  "next": {
+    "title": "BOS Loader",
+    "permalink": "/zh-CN/tutorials/near-components/bos-loader"
+  }
+}

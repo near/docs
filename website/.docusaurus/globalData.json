@@ -1861,6 +1861,21 @@
               "sidebar": "tutorials"
             },
             {
+              "id": "tutorials/templates/blog",
+              "path": "/zh-CN/tutorials/templates/blog",
+              "sidebar": "tutorials"
+            },
+            {
+              "id": "tutorials/templates/marketplace",
+              "path": "/zh-CN/tutorials/templates/marketplace",
+              "sidebar": "tutorials"
+            },
+            {
+              "id": "tutorials/templates/minter",
+              "path": "/zh-CN/tutorials/templates/minter",
+              "sidebar": "tutorials"
+            },
+            {
               "id": "tutorials/welcome",
               "path": "/zh-CN/tutorials/welcome",
               "sidebar": "tutorials"

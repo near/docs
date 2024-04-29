@@ -89,17 +89,17 @@
       "plugin": "82d98fd4"
     }
   },
-  "/zh-CN/-33d": {
+  "/zh-CN/-a4c": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "8b378508"
     }
   },
-  "/zh-CN/-563": {
+  "/zh-CN/-4d0": {
     "__comp": "a7bd4aaa",
     "version": "935f2afb"
   },
-  "/zh-CN/-ca0": {
+  "/zh-CN/-772": {
     "__comp": "a94703ab"
   },
   "/zh-CN/-ccb": {
@@ -1673,6 +1673,18 @@
   "/zh-CN/tutorials/nfts/upgrade-contract-004": {
     "__comp": "17896441",
     "content": "ba42afc7"
+  },
+  "/zh-CN/tutorials/templates/blog-71a": {
+    "__comp": "17896441",
+    "content": "62482602"
+  },
+  "/zh-CN/tutorials/templates/marketplace-63f": {
+    "__comp": "17896441",
+    "content": "4b690e73"
+  },
+  "/zh-CN/tutorials/templates/minter-7f0": {
+    "__comp": "17896441",
+    "content": "0b7fa1b6"
   },
   "/zh-CN/tutorials/welcome-aa6": {
     "__comp": "17896441",

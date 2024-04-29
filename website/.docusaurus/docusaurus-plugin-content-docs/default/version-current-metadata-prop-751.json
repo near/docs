@@ -1320,6 +1320,35 @@
       },
       {
         "type": "html",
+        "value": "<span class='menu__link'><b><small> Templates </small></b></span>"
+      },
+      {
+        "type": "link",
+        "label": "NFT minter",
+        "href": "/zh-CN/tutorials/templates/minter",
+        "docId": "tutorials/templates/minter",
+        "unlisted": false
+      },
+      {
+        "type": "link",
+        "label": "Marketplace Frontend",
+        "href": "/zh-CN/tutorials/templates/marketplace",
+        "docId": "tutorials/templates/marketplace",
+        "unlisted": false
+      },
+      {
+        "type": "link",
+        "label": "Onchain Blog",
+        "href": "/zh-CN/tutorials/templates/blog",
+        "docId": "tutorials/templates/blog",
+        "unlisted": false
+      },
+      {
+        "type": "html",
+        "value": "<hr/>"
+      },
+      {
+        "type": "html",
         "value": "<span class='menu__link'><b><small> Tutorials </small></b></span>"
       },
       {
@@ -4971,6 +5000,24 @@
       "id": "tutorials/nfts/upgrade-contract",
       "title": "Upgrading the Contract",
       "description": "In this tutorial, you'll build off the work you previously did to implement the minting functionality on a skeleton smart contract. You got to the point where NFTs could be minted and the wallet correctly picked up on the fact that you owned an NFT. However, it had no way of displaying the tokens since your contract didn't implement the method that the wallet was trying to call.",
+      "sidebar": "tutorials"
+    },
+    "tutorials/templates/blog": {
+      "id": "tutorials/templates/blog",
+      "title": "Onchain Blog",
+      "description": "Demo",
+      "sidebar": "tutorials"
+    },
+    "tutorials/templates/marketplace": {
+      "id": "tutorials/templates/marketplace",
+      "title": "Marketplace Frontend",
+      "description": "Demo",
+      "sidebar": "tutorials"
+    },
+    "tutorials/templates/minter": {
+      "id": "tutorials/templates/minter",
+      "title": "NFT minter",
+      "description": "Demo",
       "sidebar": "tutorials"
     },
     "tutorials/welcome": {

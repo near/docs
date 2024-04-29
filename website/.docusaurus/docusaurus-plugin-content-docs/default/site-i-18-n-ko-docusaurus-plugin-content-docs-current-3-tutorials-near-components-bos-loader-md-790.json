@@ -19,8 +19,8 @@
   },
   "sidebar": "tutorials",
   "previous": {
-    "title": "Frontend & Multiple Contracts",
-    "permalink": "/ko/tutorials/examples/frontend-multiple-contracts"
+    "title": "Onchain Blog",
+    "permalink": "/ko/tutorials/templates/blog"
   },
   "next": {
     "title": "스마트 컨트랙트 상호작용",

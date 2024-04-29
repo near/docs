@@ -24,7 +24,7 @@
     "permalink": "/zh-CN/tutorials/examples/update-contract-migrate-state"
   },
   "next": {
-    "title": "BOS Loader",
-    "permalink": "/zh-CN/tutorials/near-components/bos-loader"
+    "title": "NFT minter",
+    "permalink": "/zh-CN/tutorials/templates/minter"
   }
 }

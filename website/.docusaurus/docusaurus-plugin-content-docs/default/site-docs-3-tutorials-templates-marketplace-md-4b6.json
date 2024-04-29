@@ -1,0 +1,26 @@
+{
+  "id": "tutorials/templates/marketplace",
+  "title": "Marketplace Frontend",
+  "description": "Demo",
+  "source": "@site/../docs/3.tutorials/templates/marketplace.md",
+  "sourceDirName": "3.tutorials/templates",
+  "slug": "/tutorials/templates/marketplace",
+  "permalink": "/zh-CN/tutorials/templates/marketplace",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/templates/marketplace.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Guille",
+  "lastUpdatedAt": 1714414464000,
+  "frontMatter": {},
+  "sidebar": "tutorials",
+  "previous": {
+    "title": "NFT minter",
+    "permalink": "/zh-CN/tutorials/templates/minter"
+  },
+  "next": {
+    "title": "Onchain Blog",
+    "permalink": "/zh-CN/tutorials/templates/blog"
+  }
+}
