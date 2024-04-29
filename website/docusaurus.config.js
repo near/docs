@@ -52,12 +52,12 @@ const config = {
           anonymizeIP: true,
         },
         blog: {
-          blogTitle: 'NEAR Developer Changelog',
-          blogSidebarTitle: 'Developer Changelog',
+          blogTitle: 'NEAR Docs Blog',
+          blogSidebarTitle: 'Documentation Blog',
           blogSidebarCount: 'ALL',
-          showReadingTime: false,
-          routeBasePath: 'changelog',
-          path: '../changelog',
+          showReadingTime: true,
+          routeBasePath: 'blog',
+          path: '../blog',
 
         },
         theme: {
@@ -76,7 +76,7 @@ const config = {
         name: 'near-changelog',
         sourceBaseUrl:
           'https://raw.githubusercontent.com/near/near-releases/main/reports/',
-        outDir: '../changelog',
+        outDir: '../blog',
         documents: changelogs,
         noRuntimeDownloads: true,
         modifyContent(filename, content) {
@@ -86,10 +86,11 @@ const config = {
     ],
   ],
   themeConfig: {
+    image: 'docs/assets/welcome-pages/protocol.png',
     announcementBar: {
-      id: 'id-0001',
+      id: 'id-0002',
       content:
-        '🎉 We have reorganized our docs to make them simpler to navigate, please report any broken links 🎉',
+        '🎉 Come check <a href="/blog">our new blog</a>, where we will share weekly news and updates 🎉',
       backgroundColor: '#fafbfc',
       textColor: '#333',
       isCloseable: true,
@@ -174,7 +175,6 @@ const config = {
           label: 'Resources',
           position: 'left',
           items: [
-            { label: '🎉 Dev Changelog', href: '/changelog' },
             {
               label: 'Github',
               href: 'https://github.com/near',
@@ -194,11 +194,19 @@ const config = {
             },
             {
               type: 'html',
-              value: '<hr /><div class="subtitle"> Other Docs </dib>',
+              value: '<hr /><div class="subtitle"> Education </dib>',
             },
             {
-              href: '/integrations/exchange-integration',
-              label: 'Exchange Integrations',
+              href: 'https://agorapp.dev/catalog/course?difficulty=&chains=near',
+              label: 'Agor',
+            },
+            {
+              href: 'https://learnnear.club/',
+              label: 'Learn NEAR Club',
+            },
+            {
+              type: 'html',
+              value: '<hr /><div class="subtitle"> Other Docs </dib>',
             },
             {
               href: 'https://nomicon.io',
@@ -209,8 +217,8 @@ const config = {
               label: 'Validator Docs',
             },
             {
-              href: 'https://aurora.dev',
-              label: 'Aurora (EVM)',
+              href: '/integrations/exchange-integration',
+              label: 'Exchange Integrations',
             },
           ],
         },
@@ -218,6 +226,7 @@ const config = {
           type: 'search',
           position: 'right',
         },
+        { label: 'Blog', href: '/blog' },
         {
           type: 'localeDropdown',
           position: 'right',
