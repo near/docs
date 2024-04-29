@@ -5,18 +5,18 @@ title: Lifecycle of a Transaction
 
 `Transactions` are constructed by users to express the intent of performing actions in the network. Once in the network, transactions are converted into `Receipts`, which are messages exchanged between network nodes.
 
-In this page we will explore the lifecycle of a transaction, from its creation to its final status.
+On this page, we will explore the lifecycle of a transaction, from its creation to its final status.
 
 
 :::tip Recommended Reading
-To dig deeper into transaction routing we recommend to read the [nearcore documentation](https://near.github.io/nearcore/architecture/how/tx_routing.html)
+To dig deeper into transaction routing, we recommend reading the [nearcore documentation](https://near.github.io/nearcore/architecture/how/tx_routing.html)
 :::
 
 ---
 
 ## Receipts & Finality
 
-Lets walk through the lifecycle of a complex transaction, and see how it is processed by the network using blocks as **time units**.
+Let's walk through the lifecycle of a complex transaction and see how it is processed by the network using blocks as **time units**.
 
 #### Block #1: The Transaction Arrives
 After a transaction arrives, the network takes one block to validate it and transform it into a single `Receipt` that contains all the [actions](./transaction-anatomy.md) to be executed.
@@ -44,24 +44,24 @@ A transaction is considered **final** when all its receipts are processed.
 Most transactions will just spawn a receipt to process the actions, and a receipt to refund the gas, being final in 1-3 blocks (~1-3 seconds):
 
 - [One block](https://testnet.nearblocks.io/txns/8MAvH96aMfDxPb3kVDrgj8nvJS7CAXP1GgtiivKAMGkF#execution) if the `signer` and `receiver` coincide - e.g. when adding a key
-- [Three blocks](https://testnet.nearblocks.io/txns/B7gxJNxav1A9WhWvaNWYLrSTub1Mkfj3tAudoASVM5tG#) if the `signer` and `receiver` differ, since the first block creates the `Receipt`, and the last reimburses gas
+- [Three blocks](https://testnet.nearblocks.io/txns/B7gxJNxav1A9WhWvaNWYLrSTub1Mkfj3tAudoASVM5tG#) if the `signer` and `receiver` differ, since the first block creates the `Receipt`, and the last reimburse gas
 
-Function calls might take longer, as they can spawn multiple receipts. Network congestion can also increase the time to process a receipt, and thus a transaction.
+Function calls might take longer, as they can spawn multiple receipts. Network congestion can also increase the time to process a receipt and, thus, a transaction.
 :::
 
 ---
 
 ## Transaction Status
 
-As the `Receipts` of a `Transaction` are processed they get an status:
+As the `Receipts` of a `Transaction` are processed, they get a status:
 
 - `Success`: the actions on the receipt were executed successfully
 - `Failed`: an action on the receipt failed
 - `Unknown`: the receipt is not known by the network
 
-If an action in a `Receipt` fails, all the actions in that `Receipt` are rollback. Notice that we are talking about the `Receipt` status, and not the `Transaction` status.
+If an action in a `Receipt` fails, all the actions in that `Receipt` are rolled back. Notice that we are talking about the `Receipt` status, and not the `Transaction` status.
 
-The status of a transaction is determined by its first receipt, i.e. the one that contains all its actions. If any of the actions in the first receipt fail, the transaction would be mark as failed.
+The status of a transaction is determined by its first receipt, which contains all its actions. If any of the actions in the first receipt fail, the transaction is marked as failed.
 
 Notice that, it could happen that a transaction is marked as successful, but some of its receipt fails. This happens when a `FunctionCall` successfully spawns a new receipt, but the consequent function call fails. In this case, the transaction is marked as successful because the original function call was successful.
 
