@@ -28,7 +28,7 @@ If the `signer` and `receiver` coincide - e.g. the `signer` is adding a Key - th
 #### Block #2: The Receipt is Processed
 If the `signer` and `receiver` differs - e.g. the `signer` transfers NEAR to the `receiver` - the `Receipt` is processed in a second block. 
 
-During this process a `FunctionCall` could span a **cross-contract calls**, creating one or multiple new `Receipts`.
+During this process a `FunctionCall` could span a **cross-contract call**, creating one or multiple new `Receipts`.
 
 #### Block #3...: Function Calls
 Each `Receipt` created from the function call take an additional block to be processed. Notice that, if those `Receipts` are `FunctionCall` they could spawn new `Receipts` and so on.
