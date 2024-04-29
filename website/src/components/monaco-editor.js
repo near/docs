@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import CodeBlock from "@theme/CodeBlock";
 import { Github } from "./codetabs";
 
 export function ExplainCode({ children, id = 1 }) {
