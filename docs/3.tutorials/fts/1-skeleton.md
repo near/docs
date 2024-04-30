@@ -179,4 +179,5 @@ At the time of this writing, this example works with the following versions:
 
 - rustc: `1.76.0`
 - near-sdk-rs: `5.1.0` (with enabled `legacy` feature)
+- cargo-near: `0.6.1`
 :::
