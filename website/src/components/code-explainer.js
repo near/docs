@@ -8,6 +8,7 @@ export function ExplainCode({ children, alternativeURL }) {
   const [lineNumber, setLineNumber] = useState(0);
   const [activeBlock, setActiveBlock] = useState(0);
   const [selectedFile, setSelectedFile] = useState(null);
+  const [isWideEnough, setIsWideEnough] = useState(true);
 
   let blocks = [];
   let files = []
@@ -32,6 +33,9 @@ export function ExplainCode({ children, alternativeURL }) {
   }, [lineNumber]);
 
   useEffect(() => {
+    // check if the window is wide enough to render the code explainer
+    setIsWideEnough(window.innerWidth > 768);
+
     // #files is sticky, and it "sticks" at the height of the .navbar
     const nav = document.querySelector('.navbar');
     const files = document.getElementById('files');
@@ -84,7 +88,6 @@ export function ExplainCode({ children, alternativeURL }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const isWideEnough = window.innerWidth > 768;
 
   return (
     <>
@@ -102,7 +105,7 @@ export function ExplainCode({ children, alternativeURL }) {
         <div className="col-forced--8 col">
           <div id="files"
             style={{ position: 'sticky', height: '100vh', overflow: 'scroll' }}>
-            <Tabs className="file-tabs" selectedValue={selectedFile || blocks[0].fname } selectValue={(e) => setSelectedFile(e)}>
+            <Tabs className="file-tabs" selectedValue={selectedFile || blocks[0].fname} selectValue={(e) => setSelectedFile(e)}>
               {files.map(file =>
                 <TabItem value={file.fname} >
                   <InnerFile {...file} lineNumber={lineNumber} />
