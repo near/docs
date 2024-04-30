@@ -25,7 +25,7 @@ Let's start by opening the  `src/enumeration.rs` file and locating the empty `nf
 
 This function should return the total number of NFTs stored on the contract. You can easily achieve this functionality by simply returning the length of the `nft_metadata_by_id` data structure.
 
-<Github language="rust" start="5" end="9" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/enumeration.rs" />
+<Github language="rust" start="5" end="9" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-basic/src/enumeration.rs" />
 
 **nft_token**
 
@@ -36,14 +36,14 @@ If the user provides a `from_index` parameter, you should use that as the starti
 Rust has useful methods for pagination, allowing you to skip to a starting index and taking the first `n` elements of an iterator.
 :::
 
-<Github language="rust" start="11" end="26" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/enumeration.rs" />
+<Github language="rust" start="11" end="26" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-basic/src/enumeration.rs" />
 
 **nft_supply_for_owner**
 
 This function should look for all the non-fungible tokens for a user-defined owner, and return the length of the resulting set.
 If there isn't a set of tokens for the provided `AccountID`, then the function shall return `0`.
 
-<Github language="rust" start="28" end="43" url="https://github.com/garikbesson/nft-tutorial/blob/migrate-and-reorganize/nft-contract-basic/src/enumeration.rs" />
+<Github language="rust" start="28" end="43" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-basic/src/enumeration.rs" />
 
 Next, you can use the CLI to query these new methods and validate that they work correctly.
 

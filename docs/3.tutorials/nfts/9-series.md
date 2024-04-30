@@ -5,7 +5,7 @@ sidebar_label: Lazy Minting, Collections, and More!
 ---
 import {Github} from "@site/src/components/codetabs"
 
-In this tutorial, you'll learn how to take the [existing NFT contract](https://github.com/garikbesson/nft-tutorial) you've been working with and modify it to meet some of the most common needs in the ecosystem. This includes:
+In this tutorial, you'll learn how to take the [existing NFT contract](https://github.com/near-examples/nft-tutorial) you've been working with and modify it to meet some of the most common needs in the ecosystem. This includes:
 - Lazy Minting NFTs
 - Creating Collections
 - Restricting Minting Access
@@ -70,7 +70,7 @@ With this example laid out, a high level overview of lazy minting is that it giv
 
 Let's now take a look at how we've implemented solutions to the issues we've discussed so far. 
 	
-In your locally cloned example of the [`nft-tutorial`](https://github.com/garikbesson/nft-tutorial) check out the `main` branch and be sure to pull the most recent version.
+In your locally cloned example of the [`nft-tutorial`](https://github.com/near-examples/nft-tutorial) check out the `main` branch and be sure to pull the most recent version.
 
 ```bash
 git checkout main && git pull
@@ -157,7 +157,7 @@ We've also added a field `tokens` which keeps track of all the token IDs that ha
 
 `series.rs` is a new file that replaces the old [minting](2-minting.md) logic. This file has been created to combine both the series creation and minting logic into one.
 
-<Github language="rust" start="7" end="58" url="https://github.com/garikbesson/nft-tutorial/blob/main/nft-series/src/series.rs" />
+<Github language="rust" start="10" end="56" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/series.rs" />
 
 The function takes in a series ID in the form of a [u64](https://doc.rust-lang.org/std/primitive.u64.html), the metadata, royalties, and the price for tokens in the series. It will then create the [Series object](#series-object) and insert it into the contract's series_by_id data structure. It's important to note that the caller must be an approved creator and they must attach enough $NEAR to cover storage costs.
 
@@ -191,7 +191,7 @@ If **no price** was specified in the series and the user attaches more deposit t
 Notice how the token ID isn't required? This is because the token ID is automatically generated when minting. The ID stored on the contract is `${series_id}:${token_id}` where the token ID is a nonce that increases each time a new token is minted in a series. This not only reduces the amount of information stored on the contract but it also acts as a way to check the specific edition number.
 :::
 
-<Github language="rust" start="60" end="149" url="https://github.com/garikbesson/nft-tutorial/blob/main/nft-series/src/series.rs" />
+<Github language="rust" start="60" end="147" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/series.rs" />
 
 <hr class="subsection" />
 
@@ -206,18 +206,18 @@ The common practice is to return everything **except** the `UnorderedSet` in a s
 <!-- TODO: add a learn more here call to action -->
 :::
 
-<Github language="rust" start="5" end="16" url="https://github.com/garikbesson/nft-tutorial/blob/main/nft-series/src/enumeration.rs" />
+<Github language="rust" start="6" end="17" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs" />
 
 The view functions are listed below.
-- **[get_series_total_supply](https://github.com/garikbesson/nft-tutorial/blob/main/nft-series/src/enumeration.rs#L92)**: Get the total number of series currently on the contract.
+- **[get_series_total_supply](https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs#L92)**: Get the total number of series currently on the contract.
   - Arguments: None.
-- **[get_series](https://github.com/garikbesson/nft-tutorial/blob/main/nft-series/src/enumeration.rs#L97)**: Paginate through all the series in the contract and return a vector of `JsonSeries` objects.
+- **[get_series](https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs#L97)**: Paginate through all the series in the contract and return a vector of `JsonSeries` objects.
   - Arguments: `from_index: String | null`, `limit: number | null`.
-- **[get_series_details](https://github.com/garikbesson/nft-tutorial/blob/main/nft-series/src/enumeration.rs#L115)**: Get the `JsonSeries` details for a specific series.
+- **[get_series_details](https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs#L115)**: Get the `JsonSeries` details for a specific series.
   - Arguments: `id: number`.
-- **[nft_supply_for_series](https://github.com/garikbesson/nft-tutorial/blob/main/nft-series/src/enumeration.rs#L133)**: View the total number of NFTs minted for a specific series.
+- **[nft_supply_for_series](https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs#L133)**: View the total number of NFTs minted for a specific series.
   - Arguments: `id: number`.
-- **[nft_tokens_for_series](https://github.com/garikbesson/nft-tutorial/blob/main/nft-series/src/enumeration.rs#L146)**: Paginate through all NFTs for a specific series and return a vector of `JsonToken` objects.
+- **[nft_tokens_for_series](https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs#L146)**: Paginate through all NFTs for a specific series and return a vector of `JsonToken` objects.
   - Arguments: `id: number`, `from_index: String | null`, `limit: number | null`.
 
 :::info
@@ -234,7 +234,7 @@ For example, if you wanted to relay the edition number for a given NFT in its ti
 
 To do this, here's a way of modifying the `nft_token` function as it's central to all enumeration methods.
 
-<Github language="rust" start="156" end="192" url="https://github.com/garikbesson/nft-tutorial/blob/main/nft-series/src/nft_core.rs" />
+<Github language="rust" start="156" end="192" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/nft_core.rs" />
 
 For example if a token had a title `"My Amazing Go Team Gif"` and the NFT was edition 42, the new title returned would be `"My Amazing Go Team Gif - 42"`. If the NFT didn't have a title in the metadata, the series and edition number would be returned in the form of `Series {} : Edition {}`.
 
@@ -254,9 +254,9 @@ The last file we'll look at is the owner file found at `owner.rs`. This file sim
 
 :::info
 There are some other smaller changes made to the contract that you can check out if you'd like. The most notable are:
-- The `Token` and `JsonToken` objects have been [changed](https://github.com/garikbesson/nft-tutorial/blob/main/nft-series/src/metadata.rs#L40) to reflect the new series IDs.
-- All references to `token_metadata_by_id` have been [changed](https://github.com/garikbesson/nft-tutorial/blob/main/nft-series/src/enumeration.rs#L23) to `tokens_by_id`
-- Royalty functions [now](https://github.com/garikbesson/nft-tutorial/blob/main/nft-series/src/royalty.rs#L43) calculate the payout objects by using the series' royalties rather than the token's royalties.
+- The `Token` and `JsonToken` objects have been [changed](https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/metadata.rs#L40) to reflect the new series IDs.
+- All references to `token_metadata_by_id` have been [changed](https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs#L23) to `tokens_by_id`
+- Royalty functions [now](https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/royalty.rs#L43) calculate the payout objects by using the series' royalties rather than the token's royalties.
 :::
 
 ---
