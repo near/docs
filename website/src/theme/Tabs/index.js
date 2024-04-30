@@ -8,7 +8,6 @@ import {
 import useIsBrowser from '@docusaurus/useIsBrowser';
 import styles from './styles.module.css';
 function TabList({className, block, selectedValue, selectValue, tabValues}) {
-  console.log('tablist', selectedValue, selectValue);
   const tabRefs = [];
   const {blockElementScrollPositionUntilNextRender} =
     useScrollPositionBlocker();
@@ -75,8 +74,6 @@ function TabList({className, block, selectedValue, selectValue, tabValues}) {
   );
 }
 function TabContent({lazy, children, selectedValue}) {
-  console.log('TabContent', selectedValue);
-
   const childTabs = (Array.isArray(children) ? children : [children]).filter(
     Boolean,
   );
@@ -105,14 +102,13 @@ function TabsComponent(props) {
   const tabs = useTabs(props);
   return (
     <div className={clsx('tabs-container', styles.tabList)}>
-      <TabList {...props} {...tabs} />
-      <TabContent {...props} {...tabs} />
+      <TabList {...tabs} {...props} />
+      <TabContent {...tabs} {...props} />
     </div>
   );
 }
 export default function Tabs(props) {
   const isBrowser = useIsBrowser();
-  console.log('Tabs', props)
   return (
     <TabsComponent
       // Remount tabs after hydration

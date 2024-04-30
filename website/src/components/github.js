@@ -71,11 +71,20 @@ export function GitHubInternal({ url, start, end, language, fname, metastring })
     const promise = fetchCode(parsed);
     promise.then(res => setCode(res));
   })
-  return (
+  return <>
     <CodeBlock language={language} fname={fname} metastring={metastring}>
-      {code}    
+      {code}
     </CodeBlock>
-  );
+    <div style={{
+      fontSize: '0.9em',
+      fontWeight: 600,
+      color: 'rgb(14, 117, 221)',
+      textAlign: 'center',
+      paddingBottom: '13px',
+      textDecoration: 'underline'
+    }}>
+      <a href={fullURL} target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
+  </>;
 }
 
 export default GitHubInternal;
