@@ -7,6 +7,7 @@ import Admonition from '@theme/Admonition';
 export function ExplainCode({ children, alternativeURL }) {
   const [lineNumber, setLineNumber] = useState(0);
   const [activeBlock, setActiveBlock] = useState(0);
+  const [selectedFile, setSelectedFile] = useState(null);
 
   let blocks = [];
   let files = []
@@ -52,10 +53,10 @@ export function ExplainCode({ children, alternativeURL }) {
     }
 
     // add some padding to the end of the blocks so we can always scroll
-    if ( files.clientHeight > blocksHeight) {
-      const oneEm = parseFloat(getComputedStyle(document.documentElement).fontSize);
-      const tN = document.getElementById(`block${blocks.length - 1}`).getBoundingClientRect().top;
+    const oneEm = parseFloat(getComputedStyle(document.documentElement).fontSize);
 
+    if (files.clientHeight > blocksHeight) {
+      const tN = document.getElementById(`block${blocks.length - 1}`).getBoundingClientRect().top;
       document.getElementById('extra-padding').style.height = `${files.clientHeight - Math.abs(tN - bN) + oneEm}px`;
     }
 
@@ -69,9 +70,10 @@ export function ExplainCode({ children, alternativeURL }) {
         const blockHeight = block.clientHeight;
         acc += blockHeight / blocksHeight;
 
-        if (acc > scrollPercentage) {
+        if (acc > scrollPercentage && block.getBoundingClientRect().top < window.innerHeight - 2 * oneEm) {
           setLineNumber(blocks[i].highlight);
           setActiveBlock(i);
+          setSelectedFile(blocks[i].fname);
           break;
         }
       }
@@ -86,30 +88,30 @@ export function ExplainCode({ children, alternativeURL }) {
 
   return (
     <>
-    <div hidden={isWideEnough}>
-      <Admonition type="danger">
-        This page will not render correctly in small screen, consider using the <a href={alternativeURL}>plain text version</a>
-      </Admonition>
-    </div>
-
-    <div className="row code-explain">
-      <div className="col-forced--4 col" id="codeblocks">
-        {blocks.map((block, index) => <InnerBlock selected={activeBlock === index} index={index} text={block.text} />)}
-        <div id="extra-padding" style={{width: "100%"}}></div>
+      <div hidden={isWideEnough}>
+        <Admonition type="danger">
+          This page will not render correctly in small screen, consider using the <a href={alternativeURL}>plain text version</a>
+        </Admonition>
       </div>
-      <div className="col-forced--8 col">
-        <div id="files"
-          style={{ position: 'sticky', height: '100vh', overflow: 'scroll' }}>
-          <Tabs className="file-tabs" selectedValue={blocks[activeBlock].fname}>
-            {files.map(file =>
-              <TabItem value={file.fname} >
-                <InnerFile {...file} lineNumber={lineNumber} />
-              </TabItem>
-            )}
-          </Tabs>
+
+      <div className="row code-explain">
+        <div className="col-forced--4 col" id="codeblocks">
+          {blocks.map((block, index) => <InnerBlock selected={activeBlock === index} index={index} text={block.text} />)}
+          <div id="extra-padding" style={{ width: "100%" }}></div>
+        </div>
+        <div className="col-forced--8 col">
+          <div id="files"
+            style={{ position: 'sticky', height: '100vh', overflow: 'scroll' }}>
+            <Tabs className="file-tabs" selectedValue={selectedFile || blocks[0].fname } selectValue={(e) => setSelectedFile(e)}>
+              {files.map(file =>
+                <TabItem value={file.fname} >
+                  <InnerFile {...file} lineNumber={lineNumber} />
+                </TabItem>
+              )}
+            </Tabs>
+          </div>
         </div>
       </div>
-    </div>
     </>
   );
 }
