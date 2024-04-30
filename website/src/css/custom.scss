@@ -457,8 +457,14 @@ div[class^="announcementBar_"] {
 
 .col-forced--4 {
     --ifm-col-width: calc(4 / 12 * 100%) !important;
+    padding-right: 0;
 }
 
 .col-forced--8 {
     --ifm-col-width: calc(8 / 12 * 100%) !important;
+}
+
+.block-selected {
+    border-left: 3px solid var(--near-color-royal);
+    padding-left: 1rem !important;
 }
