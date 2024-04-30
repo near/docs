@@ -21,11 +21,11 @@
   },
   "sidebar": "tutorials",
   "previous": {
-    "title": "Approvals",
-    "permalink": "/zh-CN/tutorials/nfts/approvals"
+    "title": "Marketplace",
+    "permalink": "/zh-CN/tutorials/nfts/marketplace"
   },
   "next": {
-    "title": "Events",
-    "permalink": "/zh-CN/tutorials/nfts/events"
+    "title": "Lazy Minting, Collections, and More!",
+    "permalink": "/zh-CN/tutorials/nfts/series"
   }
 }

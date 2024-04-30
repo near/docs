@@ -1,7 +1,7 @@
 {
   "id": "tutorials/nfts/predeployed-contract",
   "title": "Pre-deployed Contract",
-  "description": "Learn how to easily create your own non-fungible tokens without doing any software development by using a readily-available NFT smart contract.",
+  "description": "Create your first non-fungible token by using a pre-deployed NFT smart contract which works exactly as the one you will build on this tutorial.",
   "source": "@site/../docs/3.tutorials/nfts/0-predeployed.md",
   "sourceDirName": "3.tutorials/nfts",
   "slug": "/tutorials/nfts/predeployed-contract",
@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/0-predeployed.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "garikbesson",
-  "lastUpdatedAt": 1708095721000,
+  "lastUpdatedBy": "Guille",
+  "lastUpdatedAt": 1714487707000,
   "sidebarPosition": 0,
   "frontMatter": {
     "id": "predeployed-contract",

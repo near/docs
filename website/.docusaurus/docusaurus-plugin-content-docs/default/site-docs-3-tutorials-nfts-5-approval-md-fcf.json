@@ -1,7 +1,7 @@
 {
   "id": "tutorials/nfts/approvals",
   "title": "Approvals",
-  "description": "In this tutorial you'll learn the basics of an approval management system which will allow you to grant others access to transfer NFTs on your behalf. This is the backbone of all NFT marketplaces and allows for some complex yet beautiful scenarios to happen. If you're joining us for the first time, feel free to clone this repository and checkout the 4.core branch to follow along.",
+  "description": "In this tutorial you'll learn the basics of an approval management system which will allow you to grant others access to transfer NFTs on your behalf.",
   "source": "@site/../docs/3.tutorials/nfts/5-approval.md",
   "sourceDirName": "3.tutorials/nfts",
   "slug": "/tutorials/nfts/approvals",
@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/5-approval.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "garikbesson",
-  "lastUpdatedAt": 1708095721000,
+  "lastUpdatedBy": "Guille",
+  "lastUpdatedAt": 1714487707000,
   "sidebarPosition": 5,
   "frontMatter": {
     "id": "approvals",
@@ -21,11 +21,11 @@
   },
   "sidebar": "tutorials",
   "previous": {
-    "title": "Core",
-    "permalink": "/tutorials/nfts/core"
+    "title": "Events",
+    "permalink": "/tutorials/nfts/events"
   },
   "next": {
-    "title": "Royalty",
-    "permalink": "/tutorials/nfts/royalty"
+    "title": "Marketplace",
+    "permalink": "/tutorials/nfts/marketplace"
   }
 }

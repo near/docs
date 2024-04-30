@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/6-royalty.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "garikbesson",
-  "lastUpdatedAt": 1708095721000,
+  "lastUpdatedBy": "Guille",
+  "lastUpdatedAt": 1714487707000,
   "sidebarPosition": 6,
   "frontMatter": {
     "id": "royalty",
@@ -21,11 +21,11 @@
   },
   "sidebar": "tutorials",
   "previous": {
-    "title": "Approvals",
-    "permalink": "/tutorials/nfts/approvals"
+    "title": "Marketplace",
+    "permalink": "/tutorials/nfts/marketplace"
   },
   "next": {
-    "title": "Events",
-    "permalink": "/tutorials/nfts/events"
+    "title": "Lazy Minting, Collections, and More!",
+    "permalink": "/tutorials/nfts/series"
   }
 }

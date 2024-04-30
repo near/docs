@@ -21,11 +21,11 @@
   },
   "sidebar": "tutorials",
   "previous": {
-    "title": "Core",
-    "permalink": "/zh-CN/tutorials/nfts/core"
+    "title": "Events",
+    "permalink": "/zh-CN/tutorials/nfts/events"
   },
   "next": {
-    "title": "Royalty",
-    "permalink": "/zh-CN/tutorials/nfts/royalty"
+    "title": "Marketplace",
+    "permalink": "/zh-CN/tutorials/nfts/marketplace"
   }
 }

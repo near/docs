@@ -21,11 +21,11 @@
   },
   "sidebar": "tutorials",
   "previous": {
-    "title": "이벤트",
-    "permalink": "/ko/tutorials/nfts/events"
+    "title": "승인",
+    "permalink": "/ko/tutorials/nfts/approvals"
   },
   "next": {
-    "title": "게으른 발행, 컬렉션 등!",
-    "permalink": "/ko/tutorials/nfts/series"
+    "title": "로열티",
+    "permalink": "/ko/tutorials/nfts/royalty"
   }
 }

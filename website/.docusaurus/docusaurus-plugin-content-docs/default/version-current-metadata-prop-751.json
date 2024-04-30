@@ -1624,60 +1624,54 @@
                 "unlisted": false
               },
               {
-                "type": "link",
-                "label": "Pre-deployed Contract",
-                "href": "/zh-CN/tutorials/nfts/predeployed-contract",
-                "docId": "tutorials/nfts/predeployed-contract",
-                "unlisted": false
-              },
-              {
-                "type": "link",
-                "label": "Contract Architecture",
-                "href": "/zh-CN/tutorials/nfts/skeleton",
-                "docId": "tutorials/nfts/skeleton",
-                "unlisted": false
-              },
-              {
-                "type": "link",
-                "label": "Minting",
-                "href": "/zh-CN/tutorials/nfts/minting",
-                "docId": "tutorials/nfts/minting",
-                "unlisted": false
-              },
-              {
-                "type": "link",
-                "label": "Upgrade a Contract",
-                "href": "/zh-CN/tutorials/nfts/upgrade-contract",
-                "docId": "tutorials/nfts/upgrade-contract",
-                "unlisted": false
-              },
-              {
-                "type": "link",
-                "label": "Enumeration",
-                "href": "/zh-CN/tutorials/nfts/enumeration",
-                "docId": "tutorials/nfts/enumeration",
-                "unlisted": false
-              },
-              {
-                "type": "link",
-                "label": "Core",
-                "href": "/zh-CN/tutorials/nfts/core",
-                "docId": "tutorials/nfts/core",
-                "unlisted": false
-              },
-              {
-                "type": "link",
-                "label": "Approvals",
-                "href": "/zh-CN/tutorials/nfts/approvals",
-                "docId": "tutorials/nfts/approvals",
-                "unlisted": false
-              },
-              {
-                "type": "link",
-                "label": "Royalty",
-                "href": "/zh-CN/tutorials/nfts/royalty",
-                "docId": "tutorials/nfts/royalty",
-                "unlisted": false
+                "type": "category",
+                "label": "Basic",
+                "items": [
+                  {
+                    "type": "link",
+                    "label": "Pre-deployed Contract",
+                    "href": "/zh-CN/tutorials/nfts/predeployed-contract",
+                    "docId": "tutorials/nfts/predeployed-contract",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Contract Architecture",
+                    "href": "/zh-CN/tutorials/nfts/skeleton",
+                    "docId": "tutorials/nfts/skeleton",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Minting",
+                    "href": "/zh-CN/tutorials/nfts/minting",
+                    "docId": "tutorials/nfts/minting",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Upgrade a Contract",
+                    "href": "/zh-CN/tutorials/nfts/upgrade-contract",
+                    "docId": "tutorials/nfts/upgrade-contract",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Enumeration",
+                    "href": "/zh-CN/tutorials/nfts/enumeration",
+                    "docId": "tutorials/nfts/enumeration",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Core",
+                    "href": "/zh-CN/tutorials/nfts/core",
+                    "docId": "tutorials/nfts/core",
+                    "unlisted": false
+                  }
+                ],
+                "collapsed": true,
+                "collapsible": true
               },
               {
                 "type": "link",
@@ -1687,10 +1681,32 @@
                 "unlisted": false
               },
               {
-                "type": "link",
+                "type": "category",
                 "label": "Marketplace",
-                "href": "/zh-CN/tutorials/nfts/marketplace",
-                "docId": "tutorials/nfts/marketplace",
+                "items": [
+                  {
+                    "type": "link",
+                    "label": "Approvals",
+                    "href": "/zh-CN/tutorials/nfts/approvals",
+                    "docId": "tutorials/nfts/approvals",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Marketplace",
+                    "href": "/zh-CN/tutorials/nfts/marketplace",
+                    "docId": "tutorials/nfts/marketplace",
+                    "unlisted": false
+                  }
+                ],
+                "collapsed": true,
+                "collapsible": true
+              },
+              {
+                "type": "link",
+                "label": "Royalty",
+                "href": "/zh-CN/tutorials/nfts/royalty",
+                "docId": "tutorials/nfts/royalty",
                 "unlisted": false
               },
               {

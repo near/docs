@@ -1,7 +1,7 @@
 {
   "id": "tutorials/nfts/minting",
   "title": "Minting",
-  "description": "This is the first of many tutorials in a series where you'll be creating a complete NFT smart contract from scratch that conforms with all the NEAR NFT standards. Today you'll learn how to create the logic needed to mint NFTs and have them show up in your NEAR wallet. You will be modifying a bare-bones skeleton smart contract by filling in the necessary code snippets needed to add minting functionalities.",
+  "description": "This is the first of many tutorials in a series where you'll be creating a complete NFT smart contract from scratch that conforms with all the NEAR NFT standards.",
   "source": "@site/../docs/3.tutorials/nfts/2-minting.md",
   "sourceDirName": "3.tutorials/nfts",
   "slug": "/tutorials/nfts/minting",
@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/2-minting.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "garikbesson",
-  "lastUpdatedAt": 1708095721000,
+  "lastUpdatedBy": "Guille",
+  "lastUpdatedAt": 1714487707000,
   "sidebarPosition": 2,
   "frontMatter": {
     "id": "minting",

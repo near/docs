@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/8-marketplace.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "garikbesson",
-  "lastUpdatedAt": 1708095721000,
+  "lastUpdatedBy": "Guille",
+  "lastUpdatedAt": 1714487707000,
   "sidebarPosition": 8,
   "frontMatter": {
     "id": "marketplace",
@@ -21,11 +21,11 @@
   },
   "sidebar": "tutorials",
   "previous": {
-    "title": "Events",
-    "permalink": "/tutorials/nfts/events"
+    "title": "Approvals",
+    "permalink": "/tutorials/nfts/approvals"
   },
   "next": {
-    "title": "Lazy Minting, Collections, and More!",
-    "permalink": "/tutorials/nfts/series"
+    "title": "Royalty",
+    "permalink": "/tutorials/nfts/royalty"
   }
 }

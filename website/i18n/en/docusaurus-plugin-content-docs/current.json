@@ -490,5 +490,13 @@
   "sidebar.pagoda.category.Alerts & Triggers": {
     "message": "Alerts & Triggers",
     "description": "The label for category Alerts & Triggers in sidebar pagoda"
+  },
+  "sidebar.tutorials.category.Basic": {
+    "message": "Basic",
+    "description": "The label for category Basic in sidebar tutorials"
+  },
+  "sidebar.tutorials.category.Marketplace": {
+    "message": "Marketplace",
+    "description": "The label for category Marketplace in sidebar tutorials"
   }
 }

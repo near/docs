@@ -11,21 +11,20 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/7-events.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "garikbesson",
-  "lastUpdatedAt": 1708095721000,
+  "lastUpdatedBy": "Guille",
+  "lastUpdatedAt": 1714487707000,
   "sidebarPosition": 7,
   "frontMatter": {
     "id": "events",
-    "title": "Events",
-    "sidebar_label": "Events"
+    "title": "Events"
   },
   "sidebar": "tutorials",
   "previous": {
-    "title": "Royalty",
-    "permalink": "/tutorials/nfts/royalty"
+    "title": "Transfers",
+    "permalink": "/tutorials/nfts/core"
   },
   "next": {
-    "title": "Marketplace",
-    "permalink": "/tutorials/nfts/marketplace"
+    "title": "Approvals",
+    "permalink": "/tutorials/nfts/approvals"
   }
 }

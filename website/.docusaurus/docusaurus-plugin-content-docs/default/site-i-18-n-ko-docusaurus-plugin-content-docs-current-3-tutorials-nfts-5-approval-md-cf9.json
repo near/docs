@@ -21,11 +21,11 @@
   },
   "sidebar": "tutorials",
   "previous": {
-    "title": "핵심",
-    "permalink": "/ko/tutorials/nfts/core"
+    "title": "이벤트",
+    "permalink": "/ko/tutorials/nfts/events"
   },
   "next": {
-    "title": "로열티",
-    "permalink": "/ko/tutorials/nfts/royalty"
+    "title": "마켓플레이스",
+    "permalink": "/ko/tutorials/nfts/marketplace"
   }
 }

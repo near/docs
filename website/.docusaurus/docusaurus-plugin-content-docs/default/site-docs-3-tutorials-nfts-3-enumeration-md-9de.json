@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/3-enumeration.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "garikbesson",
-  "lastUpdatedAt": 1708095721000,
+  "lastUpdatedBy": "Guille",
+  "lastUpdatedAt": 1714487707000,
   "sidebarPosition": 3,
   "frontMatter": {
     "id": "enumeration",
@@ -25,7 +25,7 @@
     "permalink": "/tutorials/nfts/upgrade-contract"
   },
   "next": {
-    "title": "Core",
+    "title": "Transfers",
     "permalink": "/tutorials/nfts/core"
   }
 }
