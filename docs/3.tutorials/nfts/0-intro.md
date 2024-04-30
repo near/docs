@@ -16,6 +16,7 @@ To complete these tutorials successfully, you'll need:
 - [Rust](https://www.rust-lang.org/tools/install)
 - [A Testnet wallet](https://testnet.mynearwallet.com/create)
 - [NEAR-CLI](/tools/near-cli#setup)
+- [cargo-near](https://github.com/near/cargo-near)
 
 :::info New to Rust?
 If you are new to Rust and want to dive into smart contract development, our [Quick-start guide](../../2.build/2.smart-contracts/quickstart.md) is a great place to start
