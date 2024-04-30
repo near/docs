@@ -14,21 +14,21 @@ NEAR's account system is very powerful and differs substantially from other bloc
 - Hierarchical accounts structure is supported. This is useful if we want to manage multiple smart contracts under one parent account.
 - Accounts/public keys are created using transactions, since they are stored on the blockchain.
 
-More information on NEAR accounts can be [found in the docs](../protocol/account-model.md). 
+More information on NEAR accounts can be [found in the docs](../protocol/account-model.md).
 
 But an account by itself won’t get us anywhere, its [transactions](../protocol/transactions.md) that make things happen. In NEAR, we have only one transaction type, but the transaction itself may have different actions included. For most practical purposes, transactions will have a single action included, so for simplicity we’ll use “action” and “transaction” terms interchangeably further down the road. Each transaction always has sender and receiver accounts (and it is cryptographically signed by the sender’s key). The following transaction (action) types are supported:
 
 - CreateAccount/DeleteAccount, AddKey/DeleteKey - accounts and key management transactions.
 - Transfer - send NEAR tokens from one account to another. The basic command of any blockchain.
-- Stake - needed to become a validator in a Proof-of-Stake blockchain network. We won’t touch this topic in this guideline, more information [can be found here](https://docs.near.org/docs/develop/node/validator/staking-and-delegation).
-- DeployContract - deploy a smart contract to a given account. An important thing to remember - one account can hold only one contract, so the contract is uniquely identified by the account name. If we issue this transaction to an account which already has a deployed contract, a contract update will be triggered. 
-- FunctionCall - the most important action on the blockchain, it allows us to call a function of a smart contract. 
+- Stake - needed to become a validator in a Proof-of-Stake blockchain network. We won’t touch this topic in this guideline, more information [can be found here](https://near-nodes.io/validator/staking-and-delegation).
+- DeployContract - deploy a smart contract to a given account. An important thing to remember - one account can hold only one contract, so the contract is uniquely identified by the account name. If we issue this transaction to an account which already has a deployed contract, a contract update will be triggered.
+- FunctionCall - the most important action on the blockchain, it allows us to call a function of a smart contract.
 
-Smart Contracts on NEAR are written in Rust or JavaScript, and compiled into [WebAssembly](https://developer.mozilla.org/en-US/docs/WebAssembly). Each contract has one or more methods that can be called via a FunctionCall transaction. Methods may have arguments provided, so each smart contract call includes the following payload: account id, method name, and arguments. 
+Smart Contracts on NEAR are written in Rust or JavaScript, and compiled into [WebAssembly](https://developer.mozilla.org/en-US/docs/WebAssembly). Each contract has one or more methods that can be called via a FunctionCall transaction. Methods may have arguments provided, so each smart contract call includes the following payload: account id, method name, and arguments.
 
 There are 2 ways to call a method on a smart contract:
 1. Issue a FunctionCall transaction. This will create a new transaction on a blockchain which may modify a contract state.
-2. Make a smart contract view call. NEAR blockchain [RPC nodes](https://near-nodes.io/intro/node-types#rpc-node) provide a special API that allow execution of methods that do not modify contract state (readonly methods). 
+2. Make a smart contract view call. NEAR blockchain [RPC nodes](https://near-nodes.io/intro/node-types#rpc-node) provide a special API that allow execution of methods that do not modify contract state (readonly methods).
 
 
 The second method should always be used whenever possible since it doesn’t incur any transaction cost (of course, there is some cost of running a node, but it’s still much cheaper than a transaction; public nodes are available which can be used free of charge). Also, since there’s no transactions, we don’t need an account to make a view call, which is quite useful for building client-side applications
@@ -45,8 +45,8 @@ As we already discussed, users should pay computational costs for each transacti
 
 But why do we need separate gas units, why not just pay directly with NEAR tokens? It’s necessary to accommodate for changing infrastructure costs - as the network evolves over time, cost of gas units may change, but the amount of gas required for a transaction will remain constant.
 
-However, computational cost is not everything - most smart contracts also need storage. The storage cost in NEAR is quite different from gas. 
-First of all, it’s not cheap - while gas is very cheap and its cost will be almost unnoticeable by the users, storage is very expensive. As a consequence, the storage budget should be carefully calculated and only necessary data stored on the blockchain. Any auxiliary data (that is not necessary to the contract operations) should be stored off-chain (possible solutions will be covered in later chapters). 
+However, computational cost is not everything - most smart contracts also need storage. The storage cost in NEAR is quite different from gas.
+First of all, it’s not cheap - while gas is very cheap and its cost will be almost unnoticeable by the users, storage is very expensive. As a consequence, the storage budget should be carefully calculated and only necessary data stored on the blockchain. Any auxiliary data (that is not necessary to the contract operations) should be stored off-chain (possible solutions will be covered in later chapters).
 The second important difference - storage is not bought, but leased (in NEAR, it’s called staking). When a smart contract wants to store some data, storage cost is computed and the appropriate amount of NEAR tokens is “locked” on the account. When data is removed, tokens are unlocked. And unlike gas, these tokens are locked on the smart contract’s account, so the user doesn’t directly pay for it.
 
 But what if we want users to pay for the storage (or just pay some fee for using a smart contract)? So far, the only way we’ve seen to transfer a token is a Transfer transaction. It turns out, a FunctionCall transaction also allows us to transfer tokens alongside the call (this is called a deposit). Smart Contracts can verify that an appropriate amount of tokens has been attached, and refuse to perform any actions if there’s not enough (and refund any excess of tokens attached).
@@ -61,7 +61,7 @@ More details on the storage model can be [found in the docs](../storage/storage-
 
 ## Clients Integration
 
-So far, we’ve discussed how to call smart contracts in a client-agnostic way. However, in the real world, calls we’ll be performed from a client side - like web, mobile or a desktop application. 
+So far, we’ve discussed how to call smart contracts in a client-agnostic way. However, in the real world, calls we’ll be performed from a client side - like web, mobile or a desktop application.
 
 As we’ve learned from previous chapters, each transaction should be signed using a key. And since keys are managed by a wallet, each application should integrate with it. At the time of this writing, there’s only one officially supported [NEAR Wallet](https://wallet.near.org/). It is a web application, so integration happens using HTTP redirects. This is relatively straightforward to do in web applications (JavaScript SDK is available), but for mobile or desktop applications it may require deep linking or other more advanced approaches.
 
@@ -79,7 +79,7 @@ Each time we want to post a transaction, the client redirects the user to a wall
 
 
 
-The client generates a new key pair and asks a wallet to add it as a functional call key for a given contract. After this, a login session is established and considered alive until the client has the generated key pair. 
+The client generates a new key pair and asks a wallet to add it as a functional call key for a given contract. After this, a login session is established and considered alive until the client has the generated key pair.
 To provide the best user experience usage of both keys is combined - type of signing is determined based on a transaction type (payable or non-payable). In case of a payable transaction, flow with wallet redirection is used, otherwise simplified local signing flow (using a stored function call key) is applied:
 
 
@@ -118,13 +118,13 @@ Looks simple enough, but there are few gotchas:
     
 
 
-A few notes on failure modes - since smart contracts run on a decentralized environment, which means they are executed on multiple machines and there is no single point of failure, they won’t fail because of environment issues (e.g. because a machine suddenly lost power or network connectivity). The only possible failures come from the code itself, so they can be predicted and proper failover code added. 
+A few notes on failure modes - since smart contracts run on a decentralized environment, which means they are executed on multiple machines and there is no single point of failure, they won’t fail because of environment issues (e.g. because a machine suddenly lost power or network connectivity). The only possible failures come from the code itself, so they can be predicted and proper failover code added.
 
 In general, cross-contract call graphs can be quite complex (one contract may call multiple contracts and even perform some conditional calls selection). The only limiting factor is the amount of gas attached, and there is a hard cap defined by the network of how many gas transactions may have (this is necessary to prevent any kind of DoS attacks on the Network and keep contracts complexity within reasonable bounds).
 
 ## Data Structures, Indexers and Events
 
-We’ve already discussed the storage model on NEAR, but only in abstract terms, without bringing the exact structure, so it’s time to dive a bit deeper. 
+We’ve already discussed the storage model on NEAR, but only in abstract terms, without bringing the exact structure, so it’s time to dive a bit deeper.
 
 Natively, NEAR smart contracts store data as key-value pairs. This is quite limiting, since even simplest applications usually need more advanced data structures. To help in development, NEAR provides [SDK for smart contracts](https://github.com/near/near-sdk-rs), which includes data structures like [vectors, sets and maps](../../1.concepts/storage/data-collections.md#rust-collection-types-rust-collection-types). While they are very useful, it’s important to remember a few things about them:
 - Ultimately, they are stored as binary values, which means it takes some gas to serialize and deserialize them. Also, different operations cost different amounts of gas ([complexity table](../../1.concepts/storage/data-collections.md#big-o-notation-big-o-notation-1)). Because of this, careful choice of data structures is very important. Moving to a different data structure later will not be easy and would probably require data migration.
@@ -138,7 +138,7 @@ To support more complex data retrieval scenarios, smart contract data should be 
     
 
 
-In order to simplify creation of indexers, [NEAR Indexer Framework](https://near-indexers.io/docs/projects/near-indexer-framework) has been created. However, even with a framework available, extracting data from a transaction may not be an easy task, since each smart contract has its unique structure and data storage model. To simplify this process, smart contracts can write structured information about outcome into the logs  (e.g. in the JSON format). Each smart contract can use its own format for such logs, but the general format has been standardized as [Events](https://nomicon.io/Standards/EventsFormat).
+In order to simplify creation of indexers, [NEAR Indexer Framework](/concepts/advanced/near-indexer-framework) has been created. However, even with a framework available, extracting data from a transaction may not be an easy task, since each smart contract has its unique structure and data storage model. To simplify this process, smart contracts can write structured information about outcome into the logs  (e.g. in the JSON format). Each smart contract can use its own format for such logs, but the general format has been standardized as [Events](https://nomicon.io/Standards/EventsFormat).
 
 Such architecture is very similar to Event Sourcing, where blockchain stores events (transactions), and they are materialized to a relational database using an indexer. This means the same drawbacks also apply. For instance, a client should be designed to accommodate indexing delay, which may take a few seconds.
 
@@ -150,10 +150,10 @@ By now, we should be familiar with necessary concepts to start developing WEB 3.
 
 First of all, we need a development and testing environment. Of course, we could theoraticaly perform development and testing on the main blockchain network, but this would not be cheap. For this reason, NEAR provides [several networks](../../1.concepts/basics/networks.md) that can be used during development:
 - testnet - public NEAR network which is identical to mainnet and can be used for free.
-- localnet - you can deploy your personal NEAR network on your own environment. Because it’s owned by you, data and code can be kept private during development. More info on how you can run your own node can be [found here](https://docs.near.org/docs/develop/node/validator/running-a-node). Alternatively, you can bootstrap an entire testing infrastructure in Docker on your local machine using Kurtosis - [guide is here](../../2.build/2.smart-contracts/testing/kurtosis-localnet.md).
+- localnet - you can deploy your personal NEAR network on your own environment. Because it’s owned by you, data and code can be kept private during development. More info on how you can run your own node can be [found here](https://near-nodes.io/validator/running-a-node). Alternatively, you can bootstrap an entire testing infrastructure in Docker on your local machine using Kurtosis - [guide is here](../../2.build/2.smart-contracts/testing/kurtosis-localnet.md).
 - workspaces - you can start your own local network to perform e2e testing. More info [here](../../2.build/2.smart-contracts/testing/integration-test.md).
 
-Once we’ve chosen a network to use, we need a way to interact with it. Of course, transactions can be constructed manually and posted into [node’s API](https://docs.near.org/api/rpc/setup). But [this is tedious](https://github.com/near-examples/transaction-examples) and isn’t fun at all. That’s why, NEAR [provides a CLI](../../4.tools/cli.md) which automates all of the necessary actions. It can be used locally for development purposes or on build machines for CI/CD scenarios.
+Once we’ve chosen a network to use, we need a way to interact with it. Of course, transactions can be constructed manually and posted into [node’s API](/api/rpc/setup). But [this is tedious](https://github.com/near-examples/transaction-examples) and isn’t fun at all. That’s why, NEAR [provides a CLI](../../4.tools/cli.md) which automates all of the necessary actions. It can be used locally for development purposes or on build machines for CI/CD scenarios.
 
 In order to manage accounts on the NEAR network, [Wallet](https://wiki.near.org/overview/tokenomics/creating-a-near-wallet) can be used. It can show an effective account balance and active keys.
 
@@ -188,7 +188,7 @@ At the end, transaction execution details, including token transfers, logs, cros
 
 
 
-## Contract upgrades 
+## Contract upgrades
 
 During the development, and sometimes even in production, updates to a contract’s code (or even data) are needed. That’s why different contract upgrades mechanisms have been created.
 
