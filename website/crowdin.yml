@@ -13,4 +13,9 @@ files: [
     source: '/docs/**/*',
     translation: '/website/i18n/%two_letters_code%/docusaurus-plugin-content-docs/current/**/%original_file_name%',
   },
+  # Blog
+  {
+    source: '/blog/**/*',
+    translation: '/website/i18n/%two_letters_code%/docusaurus-plugin-content-blog/**/%original_file_name%',
+  },
 ]

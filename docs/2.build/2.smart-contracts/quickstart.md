@@ -158,7 +158,7 @@ Your new smart contract stores a `greeting: string` attribute in their state, an
 <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
-            start="6" end="35" />
+            start="6" end="32" />
 
 </Language>
 
@@ -295,23 +295,23 @@ Here we are creating a random account since we do not care about the account's n
 
 Having our account created, we can now deploy the contract into it:
 
-<CodeTabs>
+<Tabs>
 
-<Language value="🌐 JavaScript" language="js">
+<TabItem value="near-cli">
   ```bash
   near deploy <created-account> build/release/hello.wasm
   ```
 
-</Language>
+</TabItem>
 
-<Language value="🦀 Rust" language="rust">
+<TabItem value="near-cli-rs">
   ```bash
   near contract deploy <created-account> use-file ./target/wasm32-unknown-unknown/release/contract_rs.wasm without-init-call network-config testnet sign-with-keychain send
   ```
 
-</Language>
+</TabItem>
 
-</CodeTabs>
+</Tabs>
 
 **Congrats**! your contract now lives in the NEAR testnet network.
 
