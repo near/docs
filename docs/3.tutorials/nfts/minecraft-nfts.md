@@ -4,7 +4,7 @@ title: Create NFTs in Minecraft
 sidebar_label: Minecraft NFTs
 ---
 
-> In this tutorial you'll learn how to take your custom Minecraft creations and mint the schematics into NFTs on the NEAR blockchain! 
+> In this tutorial you'll learn how to take your custom Minecraft creations and mint the schematics into NFTs on the NEAR blockchain!
 
 ## Overview
 
@@ -13,7 +13,7 @@ This tutorial will run you through minting Minecraft structures of any size onto
 ## Prerequisites
 
 :::info
-It is recommended that you first complete the introductory **[minting NFTs tutorial](/tutorials/nfts/minting-nfts)** 
+It is recommended that you first complete the introductory **[minting NFTs tutorial](/tutorials/nfts/minting-nfts)**
 :::
 
 To complete this tutorial successfully, you'll need:
@@ -55,7 +55,7 @@ You'll then want to choose the boundaries of the structure that you'd like to co
 //pos2
 ```
 
-Setting these two positions has now created a cube around your build. 
+Setting these two positions has now created a cube around your build.
 
 - We can now copy the contents of that build by running:
 
@@ -73,7 +73,7 @@ Remember to note the position of your player when copying. If you copy the build
 
 ### Sanity Check
 
-We can check and see if our build is fine by pasting what we just copied elsewhere in our world. 
+We can check and see if our build is fine by pasting what we just copied elsewhere in our world.
 
 - Go to a location that you would like to paste the build and run:
 
@@ -87,13 +87,13 @@ In the example below, we pasted the village house floating above a coral reef bi
 
 ### Creating the Schematics File
 
-When you're happy with the build you've just copied and pasted, it's time to create the schematic file that we'll mint into an NFT. To do this we'll run a WorldEdit command that will save the schematic file on our local machine. 
+When you're happy with the build you've just copied and pasted, it's time to create the schematic file that we'll mint into an NFT. To do this we'll run a WorldEdit command that will save the schematic file on our local machine.
 
 - To do this, run the command `schematic save FILE_NAME` replacing `FILE_NAME` with a name of your choosing.
 
 This will save the file to your Minecraft folder with under `minecraft/config/worldedit/schematics` witha `.schem` extension.
 
-- Now test your file by loading the schematic we just saved using `schematic load FILE_NAME`. 
+- Now test your file by loading the schematic we just saved using `schematic load FILE_NAME`.
 
 This will load the schematic to our clipboard and we're free to paste it in our world.
 
@@ -108,7 +108,7 @@ Web3.storage offers free decentralized storage and bandwidth on [IPFS](https://i
 
 #### Steps
 
-1. Register an account and log in to [web3.storage](https://nft.storage/login/) either via email or your GitHub.
+1. Register an account and log in to [web3.storage](https://web3.storage/) either via email or your GitHub.
 
 2. Go to the [Files](https://web3.storage/) section, and click on the [Upload more Files](https://web3.storage/) button.
 
@@ -119,7 +119,7 @@ Web3.storage offers free decentralized storage and bandwidth on [IPFS](https://i
    https://bafybeidadhfilezx23dcdaueo3bjuafqeehokw33vyepkjtppigorrhbpy.ipfs.dweb.link/
    ```
 
-:::info 
+:::info
 See the [web3.storage docs](https://docs.web3.storage/) for information on uploading multiple files and available API endpoints.
 :::
 
@@ -212,7 +212,7 @@ As a test, we've minted an NFT that contains the village schematic we've been wo
 
 ### Getting the Schematics File
 
-The first thing you'll need to do is view the metadata for the token we've minted that contains the IPFS link to the village schematic. We've minted a token with the ID `village-schematic` under the account `village-schematic.testnet`. 
+The first thing you'll need to do is view the metadata for the token we've minted that contains the IPFS link to the village schematic. We've minted a token with the ID `village-schematic` under the account `village-schematic.testnet`.
 
 - To get the media link, run the following command:
 
@@ -255,7 +255,7 @@ near view nft.examples.testnet nft_tokens_for_owner '{"account_id": "village-sch
 
 ![IPFS Village Schem](/docs/assets/nfts/IPFS-village-schem.png)
 
-- If you click on the file called `village-house.schem`, it will download the file. 
+- If you click on the file called `village-house.schem`, it will download the file.
 - You can then copy the schematics file and paste it into your `minecraft/config/worldedit/schematics` folder.
 
 ### Loading the Schematics File in Minecraft

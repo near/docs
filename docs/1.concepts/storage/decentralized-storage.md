@@ -12,17 +12,17 @@ sidebar_label: Alternative Solutions
 
 ---
 
-## On-Chain Storage Constraints 
+## On-Chain Storage Constraints
 
-For storing data on-chain it's important to keep in mind the following: 
+For storing data on-chain it's important to keep in mind the following:
 
 - You can store an unlimited amount of files, but will cost you 1N per 100KB
-- There is a 4 MB limit on how much you can upload at once 
+- There is a 4 MB limit on how much you can upload at once
 
 
 For example, if you want to store an NFT purely on-chain (rather than using IPFS or some other decentralized storage solution as mentioned below) you'll have almost an unlimited amount of storage but will have to pay 1 $NEAR per 100 KB of storage used (see [Storage Staking](https://docs.near.org/concepts/storage/storage-staking))
 
-Users will be limited to 4MB per contract call upload due to `MAX_GAS` constraints. The maximum amount of gas one can attach to a given `functionCall` is 300TGas. 
+Users will be limited to 4MB per contract call upload due to `MAX_GAS` constraints. The maximum amount of gas one can attach to a given `functionCall` is 300TGas.
 
 ## Arweave
 
@@ -33,7 +33,7 @@ Arweave acts as a collectively owned hard drive, and allows their users to prese
 The Arweave protocol matches a torrent-like swarm of incentivised miners with massive collective hard drive space with those individuals and organizations that need to store data or host content permanently. This is achieved in a decentralized network, and all data stored is backed by block mining rewards and a [sustainable endowment](https://arwiki.wiki/#/en/storage-endowment) ensuring it is available in perpetuity.
 
 :::info
-To learn more about Arweave, check its [mining mechanism](https://arwiki.wiki/#/en/arweave-mining) and its [bandwidth-sharing system](https://arwiki.wiki/#/en/karma). 
+To learn more about Arweave, check its [mining mechanism](https://arwiki.wiki/#/en/arweave-mining) and its [bandwidth-sharing system](https://arwiki.wiki/#/en/karma).
 :::
 
 ### Example implementation
@@ -42,9 +42,9 @@ Let's see how to store some files on Arweave, by running a local Arweave gateway
 
 ### Arlocal setup
 
-[Arlocal](https://github.com/textury/arlocal) essentially creates a simulated version of Arweave. Think of it like a local node that runs on your computer to store information. 
+[Arlocal](https://github.com/textury/arlocal) essentially creates a simulated version of Arweave. Think of it like a local node that runs on your computer to store information.
 
-In this example you'll need to run **two terminals**. 
+In this example you'll need to run **two terminals**.
 
 - Open your first terminal and run:
 
@@ -78,7 +78,7 @@ yarn
 - Next, start the application by running:
 
 ```bash
-yarn start 
+yarn start
 ```
 
 
@@ -96,11 +96,11 @@ If you get an error, make sure your arlocal node is running in a **separate term
 
 ### Mining your transaction
 
-On Arweave your transaction goes through two stages; a pending stage and a confirmed stage. For the transaction to be complete and for you to be able to retrieve your data, your transaction must be confirmed. 
+On Arweave your transaction goes through two stages; a pending stage and a confirmed stage. For the transaction to be complete and for you to be able to retrieve your data, your transaction must be confirmed.
 
 - Visit `http://localhost:1984/mine` in your browser to send a mine request to your local node.
 
-:::tip 
+:::tip
 you may find that you are still able to retrieve your data without this step, but that's because you are running a local node.
 When dealing with a real Arweave node you will have to wait until your transaction has been mined and confirmed.
 :::
@@ -142,7 +142,7 @@ Here's a simple integration example to store a file with Crust and NEAR.
 
 #### 1. Upload the file to IPFS
 
-First, you need to put your files into IPFS. 
+First, you need to put your files into IPFS.
 
 :::tip
 If you want to learn how to upload **files and folders** into IPFS, please refer to [this section](https://wiki.crust.network/docs/en/buildFileStoringWithGWDemo#1-upload-files-to-ipfs-gateway).
@@ -205,7 +205,7 @@ If you want to extend the storage duration, Crust provides a prepaid pool so you
 This pool allows you to put some tokens and will automatically extend the file's storage time.
 
 :::info
-Follow [this link](https://github.com/crustio/crust-demo/blob/main/near/src/index.ts#L114-L142) for a code snippet on how to add prepaid tokens to your files. 
+Follow [this link](https://github.com/crustio/crust-demo/blob/main/near/src/index.ts#L114-L142) for a code snippet on how to add prepaid tokens to your files.
 :::
 
 ---
@@ -216,15 +216,15 @@ The [InterPlanetary File System](https://ipfs.io/) (IPFS) is a protocol and peer
 
 ### Content identifier
 
-When you add a file to IPFS it is split into cryptographically hashed smaller chunks and then given a unique fingerprint called a content identifier (CID). 
+When you add a file to IPFS it is split into cryptographically hashed smaller chunks and then given a unique fingerprint called a content identifier (CID).
 
-:::tip 
+:::tip
 The CID acts as an permanent record of a file as it exists at that point in time.
 :::
 
 ### Look-up
 
-When a node looks up for a file, it ask the peer nodes for the content referenced by the file's CID. When a node views or downloads a file, it caches a copy and become another provider until the cache is cleared. 
+When a node looks up for a file, it ask the peer nodes for the content referenced by the file's CID. When a node views or downloads a file, it caches a copy and become another provider until the cache is cleared.
 
 ### Pinned content
 
@@ -243,45 +243,6 @@ IPFS can find the latest version of your file using the IPNS decentralized namin
 
 ### IPFS providers
 
-- [Web3.Storage](https://web3.storage/): it's a free service that simplifies building on top of IPFS and Filecoin. Web3.Storage is backed by Filecoin and makes content available via IPFS, leveraging the unique properties of each network.
-- [NFT.Storage](https://nft.storage/): this free service is built specifically for storing off-chain NFT data. Data is stored decentralized on IPFS and Filecoin. The data is referenced using content-addressed IPFS URIs that can be used in your smart contracts.
-- [Filebase](https://filebase.com/): a geo-redundant IPFS pinning provider that pins all IPFS files with automatic 3x redundancy across diverse, geographic locations for additional performance, redundancy, and reliability. 
-
-### Example
-
-Let's try a simple IPFS integration using the [NFT.Storage API](https://nft.storage/api-docs/):
-
-1. [Register an account on nft.storage](https://nft.storage/login/) so you can create API access keys.
-
-2. [Create an API access key](https://nft.storage/manage/) and write it down.
-
-3. Submit an `HTTP POST` request to `api.nft.storage/upload`, passing the API key and the file data in the request body:
-
-```
-curl -X POST --data-binary @/path/to/file/art.png -H 'Authorization: Bearer YOUR_API_KEY' https://api.nft.storage/upload
-```
-
-:::tip
-If you want to use a different HTTP client, don't forget to configure and set the Authorization header: `"Authorization": "Bearer YOUR_API_KEY"`
-:::
-
-Successful requests will receive a `HTTP 200` status and `application/json` response like:
-
-```json
-{
-  "ok": true,
-  "value": { "cid": "bafy..." }
-}
-```
-
-4. Using the `cid`, write down the image's URL: `https://<cid>.ipfs.dweb.link/`
-
-```
-https://bafyreiabag3ztnhe5pg7js4bj6sxuvkz3sdf76cjvcuqjoidvnfjz7vwrq.ipfs.dweb.link/
-```
-
-Now that your file has been uploaded to IPFS, it can be retrieved using the `cid` link.
-
-:::tip
-Check the [NFT.Storage Docs](https://nft.storage/api-docs/) for information on uploading multiple files and other available endpoints.
-:::
+- [Web3.Storage](https://web3.storage/): it's a service that simplifies building on top of IPFS and Filecoin. Web3.Storage is backed by Filecoin and makes content available via IPFS, leveraging the unique properties of each network.
+- [NFT.Storage](https://nft.storage/): this service is built specifically for storing off-chain NFT data. Data is stored decentralized on IPFS and Filecoin. The data is referenced using content-addressed IPFS URIs that can be used in your smart contracts.
+- [Filebase](https://filebase.com/): a geo-redundant IPFS pinning provider that pins all IPFS files with automatic 3x redundancy across diverse, geographic locations for additional performance, redundancy, and reliability.
