@@ -490,16 +490,23 @@ const sidebar = {
         {
           "🦀 Contract: Zero to Hero": [
             "tutorials/nfts/introduction",
-            "tutorials/nfts/predeployed-contract",
-            "tutorials/nfts/skeleton",
-            "tutorials/nfts/minting",
-            "tutorials/nfts/upgrade-contract",
-            "tutorials/nfts/enumeration",
-            "tutorials/nfts/core",
-            "tutorials/nfts/approvals",
-            "tutorials/nfts/royalty",
+            {
+              "Basic": [
+                "tutorials/nfts/predeployed-contract",
+                "tutorials/nfts/skeleton",
+                "tutorials/nfts/minting",
+                "tutorials/nfts/upgrade-contract",
+                "tutorials/nfts/enumeration",
+                "tutorials/nfts/core",              ]
+            },
             "tutorials/nfts/events",
-            "tutorials/nfts/marketplace",
+            {
+              "Marketplace": [
+                "tutorials/nfts/approvals",
+                "tutorials/nfts/marketplace",
+              ]
+            },
+            "tutorials/nfts/royalty",
             "tutorials/nfts/series"
           ]
         }
