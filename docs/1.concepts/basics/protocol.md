@@ -8,6 +8,12 @@ NEAR is a **user-friendly** and [**carbon-neutral**](https://near.org/blog/near-
 
 ![img](@site/static/docs/assets/welcome-pages/protocol.png)
 
+
+NEAR is the **blockchain for everyone**.
+
+<details>
+<summary> What do these Technical Terms mean? </summary>
+
 In technical terms, NEAR is a [layer-one](https://coinmarketcap.com/academy/glossary/layer-1-blockchain), [sharded](https://near.org/blog/near-launches-nightshade-sharding-paving-the-way-for-mass-adoption), [proof-of-stake](https://en.wikipedia.org/wiki/Proof_of_stake) blockchain built with usability in mind. 
 
 [Layer-1](https://coinmarketcap.com/academy/glossary/layer-1-blockchain) means NEAR is the foundation that supports everything else built on it. It keeps all the transaction records safe and unchangeable which keeps the network secure and trustworthy.
@@ -15,8 +21,7 @@ In technical terms, NEAR is a [layer-one](https://coinmarketcap.com/academy/glos
 [Sharded](https://near.org/blog/near-launches-nightshade-sharding-paving-the-way-for-mass-adoption) means the network is broken into pieces that work in parallel. This helps NEAR process transactions quickly and efficiently.
 
 [Proof-of-stake](https://en.wikipedia.org/wiki/Proof_of_stake) uses less electricity compared with other blockchains which use proof-of-work. Users show they own NEAR tokens to help run the network. This makes it cheaper and lets more people use it.
-
-NEAR is the **blockchain for everyone**.
+</details>
 
 ---
 
@@ -24,10 +29,10 @@ NEAR is the **blockchain for everyone**.
 NEAR is a technical marvel, offering built-in features such as named accounts and account abstraction. For developers, NEAR offers everything needed for their applications, from smart contracts to indexers. All while being interoperable with other chains.
 
 ### ⭐ Simple to Use 
-1. [**Named accounts**](../protocol/account-model.md) let you use easy names like `alice.near`.
+1. [**Named accounts**](../protocol/account-model.md) let you use easily remember and share names like `alice.near` for your blockchain addresses.
 2. Simple sign-up: make an account using [email](https://near.org/signup) or [telegram](https://web.telegram.org/k/#@herewalletbot)
 3. Transactions are **fast** _(~1.3s transactions)_ and **cheap** _(< 1¢ in fees)_
-4. You don't need to buy crypto to start with **built-in account abstraction**
+4. You don't need to buy crypto thanks to **built-in account abstraction**
 5. [Access Keys](../protocol/access-keys.md) make it safe and easy to use.
 6. Control accounts on **other chains** thanks to [chain signatures](../abstraction/chain-signatures.md)
 
@@ -43,7 +48,7 @@ NEAR is a technical marvel, offering built-in features such as named accounts an
 1. Build smart contracts with **Javascript** or **Rust**
 2. **Simple onboarding**, thanks to its complete documentation and examples
 3. Get answers and learn at NEAR DevRel **office hours**, where anybody can participate
-4. Earn 30% of gas fees
+4. Earn from your contract's gas fees
 5. **EVM compatible** with [Project Aurora](http://www.aurora.dev) _(Deploy your Solidity contracts with ease)_
 
 ### ♻️ Environmentally Friendly
