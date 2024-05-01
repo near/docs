@@ -169,7 +169,7 @@ const sidebar = {
             "build/smart-contracts/anatomy/storage",
             "build/smart-contracts/anatomy/actions",
             "build/smart-contracts/anatomy/crosscontract",
-            "build/smart-contracts/security/checklist", 
+            "build/smart-contracts/security/checklist",
             {
               "type": "html",
               "value": "<hr/>"
@@ -734,6 +734,11 @@ const sidebar = {
       "type": "link",
       "label": "Testnet Faucet",
       "href": "https://near-faucet.io/"
+    },
+    {
+      "type": "link",
+      "label": "Keypom",
+      "href": "https://keypom.xyz/"
     },
     'tools/fastnear-api',
     "tools/explorer",
