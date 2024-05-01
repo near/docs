@@ -419,6 +419,17 @@ const sidebar = {
     },
     {
       "type": "html",
+      "value": "<span class='menu__link'><b><small> Templates </small></b></span>"
+    },
+    "tutorials/templates/minter",
+    "tutorials/templates/marketplace",
+    "tutorials/templates/blog",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
       "value": "<span class='menu__link'><b><small> Tutorials </small></b></span>"
     },
     {
@@ -479,16 +490,23 @@ const sidebar = {
         {
           "🦀 Contract: Zero to Hero": [
             "tutorials/nfts/introduction",
-            "tutorials/nfts/predeployed-contract",
-            "tutorials/nfts/skeleton",
-            "tutorials/nfts/minting",
-            "tutorials/nfts/upgrade-contract",
-            "tutorials/nfts/enumeration",
-            "tutorials/nfts/core",
-            "tutorials/nfts/approvals",
-            "tutorials/nfts/royalty",
+            {
+              "Basic": [
+                "tutorials/nfts/predeployed-contract",
+                "tutorials/nfts/skeleton",
+                "tutorials/nfts/minting",
+                "tutorials/nfts/upgrade-contract",
+                "tutorials/nfts/enumeration",
+                "tutorials/nfts/core",              ]
+            },
             "tutorials/nfts/events",
-            "tutorials/nfts/marketplace",
+            {
+              "Marketplace": [
+                "tutorials/nfts/approvals",
+                "tutorials/nfts/marketplace",
+              ]
+            },
+            "tutorials/nfts/royalty",
             "tutorials/nfts/series"
           ]
         }
@@ -735,6 +753,11 @@ const sidebar = {
       "type": "link",
       "label": "Testnet Faucet",
       "href": "https://near-faucet.io/"
+    },
+    {
+      "type": "link",
+      "label": "Keypom",
+      "href": "https://keypom.xyz/"
     },
     'tools/fastnear-api',
     "tools/explorer",

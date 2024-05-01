@@ -42,7 +42,7 @@ npm install \
 You can add `near-api-js` as a script tag in your html.
 
 ```js
-<script src="https://cdn.jsdelivr.net/npm/near-api-js@0.44.2/dist/near-api-js.min.js" integrity="sha256-W5o4c5DRZZXMKjuL41jsaoBpE/UHMkrGvIxN9HcjNSY=" crossorigin="anonymous"></script>
+<script src=" https://cdn.jsdelivr.net/npm/near-api-js@3.0.4/lib/browser-index.min.js "></script>
 ```
 
 </details>
@@ -51,23 +51,24 @@ You can add `near-api-js` as a script tag in your html.
 
 ## Create a Wallet Object
 
-In our examples we implement a [`./near-wallet.js`](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js) module, where we abstracted the `wallet selector` into a `Wallet` object to simplify using it.
+In our examples we implement a [`./near-wallet.js`](https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/near-wallet.js) module, where we abstracted the `wallet selector` into a `Wallet` object to simplify using it.
 
 To create a wallet, simply import the `Wallet` object from the module and initialize it. This `wallet` will later allows the user to call any contract in NEAR.
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="index.js"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/index.js"
-            start="2" end="8" />
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/layout.js"
+            start="18" end="25" />
 
-</Language>
+    <Github fname="near-wallet.js"
+        url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/near-wallet.js"
+        start="35" end="56" />
 
+  </Language>
 </CodeTabs>
 
-When instantiating the wallet you can choose if you want to **create a [FunctionCall Key](../../1.concepts/protocol/access-keys.md#function-call-keys-function-call-keys)**.
-
-If you create the key, then your dApp will be able to **automatically sign non-payable transactions** for the user on the specified contract.
+Under the hood (check the `near-wallet` tab) you can see that we are actually setting up the wallet selector, and asking it if the user logged-in already. During the setup, we pass a hook to the wallet selector, which will be called each time a user logs in or out.
 
 <details markdown="1">
 
@@ -105,29 +106,10 @@ You can find the entire Wallet Selector [API reference here](https://github.com/
 
 </details>
 
----
+#### Function Call Key
+When instantiating the wallet you can choose if you want to **create a [FunctionCall Key](../../1.concepts/protocol/access-keys.md#function-call-keys-function-call-keys)**.
 
-## Wallet Start Up
-
-In our examples we always implement a simple flow where we start by checking if the user logged-in and act on it. We recommend you to do the same.
-
-For this, override the `window.onload` method with a function that calls the `wallet.startUp()` method. Such method returns if the user is already signed-in:
-
-<CodeTabs>
-  <Language value="🌐 JavaScript" language="ts">
-    <Github fname="index.js"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/index.js"
-            start="10" end="21" />
-
-    <Github fname="near-wallet.js"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/near-wallet.js"
-            start="36" end="52" />
-
-</Language>
-
-</CodeTabs>
-
-Under the hood (check the `near-wallet` tab) you can see that we are actually setting up the wallet selector, and asking it if the user logged-in already.
+If you create the key, then your dApp will be able to **automatically sign non-payable transactions** for the user on the specified contract.
 
 ---
 
@@ -140,12 +122,12 @@ Because of their read-only nature, view methods are **free** to call, and do **n
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="index.js"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/index.js"
-            start="46" end="46" />
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/hello-near/index.js"
+            start="12" end="25" />
 
     <Github fname="near-wallet.js"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/near-wallet.js"
-            start="68" end="81" />
+        url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/near-wallet.js"
+        start="81" end="94" />
 
 </Language>
 
@@ -170,15 +152,14 @@ Signing in is as simple as requesting the `wallet` object to `signIn`, the same 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/index.js"
-            start="25" end="26" />
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/components/navigation.js"
+            start="9" end="23" />
 
     <Github fname="near-wallet.js"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/near-wallet.js"
-            start="54" end="66" />
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/near-wallet.js"
+            start="58" end="72" />
 
-</Language>
-
+  </Language>
 </CodeTabs>
 
 When the user clicks in the button, it will be asked to select a wallet and use it to login.
@@ -192,11 +173,9 @@ If you instantiated the `Wallet` passing an account for the `createAccessKeyFor`
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/index.js"
-            start="8" end="8" />
-
-</Language>
-
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/layout.js"
+            start="22" end="22" />
+  </Language>
 </CodeTabs>
 
 By default, such key enables to expend a maximum of `0.25Ⓝ` on GAS calling methods in **the specified** contract **without prompting** the user to sign them.
@@ -220,12 +199,12 @@ It is important to notice that, if you ask for money to be attached in the call,
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/index.js"
-            start="36" end="36" />
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/hello-near/index.js"
+            start="33" end="33" />
 
     <Github fname="near-wallet.js"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/near-wallet.js"
-            start="83" end="103" />
+        url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/near-wallet.js"
+        start="106" end="122" />
 
 </Language>
 
@@ -249,13 +228,10 @@ If the method invoked returned a result, you can use the transaction hash to ret
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
-  <Github fname="index.js"
-            url="https://github.com/near-examples/donation-examples/blob/main/frontend/src/index.js"
-            start="71" end="92" />
 
     <Github fname="utils.js"
-            url="https://github.com/near-examples/donation-examples/blob/main/frontend/src/near-wallet.js"
-            start="105" end="113" />
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/near-wallet.js"
+            start="132" end="140" />
 
 </Language>
 

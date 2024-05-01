@@ -4,56 +4,57 @@ title: Pre-deployed Contract
 sidebar_label: Pre-deployed Contract
 ---
 
-> Learn how to easily create your own non-fungible tokens without doing any software development by using a readily-available NFT smart contract.
+Create your first non-fungible token by using a pre-deployed NFT smart contract which works exactly as the one you will build on this tutorial.
+
+---
 
 ## Prerequisites
 
-To complete this tutorial successfully, you'll need:
+To complete this tutorial successfully, you'll need [a NEAR Wallet](https://testnet.mynearwallet.com/create) and [NEAR CLI](/tools/near-cli#setup)
 
-- [A NEAR Wallet](https://testnet.mynearwallet.com/create)
-- [NEAR-CLI](/tools/near-cli#setup)
+:::tip
+You can install near-cli through the following command:
+
+```bash
+npm install -g near-cli
+```
+:::
+
+---
 
 ## Using the NFT contract
 
+Minting an NFT token on NEAR is a simple process that involves calling a smart contract function.
+
+To interact with the contract you will need to first login to your NEAR account through `near-cli`.
+
+<hr class="subsection" />
+
 ### Setup
 
-- Log in to your newly created account with `near-cli` by running the following command in your terminal:
+Log in to your newly created account with `near-cli` by running the following command in your terminal:
 
 ```bash
 near login
 ```
 
- - Set an environment variable for your account ID to make it easy to copy and paste commands from this tutorial:
+Set an environment variable for your account ID to make it easy to copy and paste commands from this tutorial:
 
 ```bash
 export NEARID=YOUR_ACCOUNT_NAME
 ```
-:::note
 
-Be sure to replace `YOUR_ACCOUNT_NAME` with the account name you just logged in with including the `.testnet` (or `.near` for `mainnet`).
-
-:::
-
-- Test that the environment variable is set correctly by running:
-
-```bash
-echo $NEARID
-```
+<hr class="subsection" />
 
 ### Minting your NFTs
 
-NEAR has deployed an NFT contract to the account `nft.examples.testnet` which allows users to freely mint tokens. Using this pre-deployed contract, let's mint our first token! 
+We have already deployed an NFT contract to `nft.examples.testnet` which allows users to freely mint tokens. Let's use it to mint our first token.
 
-
-- Run this command in your terminal, however you **must replace the `token_id` value with an UNIQUE string**.
+Run this command in your terminal, remember to replace the `token_id` with a string of your choice. This string will uniquely identify the token you mint. 
 
 ```bash
 near call nft.examples.testnet nft_mint '{"token_id": "TYPE_A_UNIQUE_VALUE_HERE", "receiver_id": "'$NEARID'", "metadata": { "title": "GO TEAM", "description": "The Team Goes", "media": "https://bafybeidl4hjbpdr6u6xvlrizwxbrfcyqurzvcnn5xoilmcqbxfbdwrmp5m.ipfs.dweb.link/", "copies": 1}}' --accountId $NEARID --deposit 0.1
 ```
-
-:::tip
-You can also replace the `media` URL with a link to any image file hosted on your web server.
-:::
 
 <details>
 <summary>Example response: </summary>
@@ -70,7 +71,15 @@ https://testnet.nearblocks.io/txns/8RFWrQvAsm2grEsd1UTASKpfvHKrjtBdEyXu7WqGBPUr
 </p>
 </details>
 
-- To view tokens owned by an account you can call the NFT contract with the following `near-cli` command:
+:::tip
+You can also replace the `media` URL with a link to any image file hosted on your web server.
+:::
+
+<hr class="subsection" />
+
+### Querying your NFT
+
+To view tokens owned by an account you can call the NFT contract with the following `near-cli` command:
 
 ```bash
 near view nft.examples.testnet nft_tokens_for_owner '{"account_id": "'$NEARID'"}'
@@ -107,9 +116,9 @@ near view nft.examples.testnet nft_tokens_for_owner '{"account_id": "'$NEARID'"}
 </p>
 </details>
 
-***Congratulations! You just minted your first NFT token on the NEAR blockchain!*** 🎉
+**Congratulations!** You just minted your first NFT token on the NEAR blockchain! 🎉
 
-👉 Now try going to your [NEAR Wallet](https://testnet.mynearwallet.com) and view your NFT in the "Collectibles" tab. 👈 
+Now try going to your [NEAR Wallet](https://testnet.mynearwallet.com) and view your NFT in the "Collectibles" tab.
 
 ---
 
@@ -125,7 +134,7 @@ Now that you're familiar with the process, you can jump to [Contract Architectur
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `4.0.4`
+- near-cli: `4.0.13`
 - NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 
 :::

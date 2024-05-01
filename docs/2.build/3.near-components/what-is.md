@@ -495,7 +495,7 @@ return (
 </WidgetEditor>
 
 :::danger ETH Disabled in Docs
-For security reasons, interacting with Ethereum is disabled in our documentation. To see a working example please navigate to the [deployed NEAR Component](https://near.social/zavodil.near/widget/Lido).
+For a working example visit the [deployed NEAR Component](https://near.social/zavodil.near/widget/Lido).
 :::
 
 ---
