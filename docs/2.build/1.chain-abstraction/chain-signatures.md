@@ -17,7 +17,7 @@ This guide will take you through a step by step process for creating a Chain Sig
 
 ⭐️ For a deep dive into the concepts of Chain Signatures see [What are Chain Signatures?](/concepts/abstraction/chain-signatures)
 
-⭐️ For complete examples of a NEAR account performing Eth transactions:
+⭐️ For complete examples of a NEAR account performing `ETH` transactions:
 
 - [CLI script](https://github.com/mattlockyer/mpc-script)
 - [web-app example](https://github.com/near-examples/near-multichain)
@@ -41,6 +41,16 @@ There are five steps to create a Chain Signature:
 
 ![chain-signatures](/docs/assets/welcome-pages/chain-signatures-overview.png)
 _Diagram of a chain signature in NEAR_
+
+:::info MPC testnet contracts
+
+If you want to try things out, these are the MPC smart contracts available on `testnet`:
+
+- `multichain-testnet-2.testnet`
+- `canhazgas.testnet`
+- `nft.kagi.testnet`
+
+:::
 
 ---
 
@@ -214,6 +224,6 @@ Once we have reconstructed the signature, we can relay it to the corresponding n
 ⭐️ For complete examples of a NEAR account performing Eth transactions:
 
 - [web-app example](https://github.com/near-examples/near-multichain)
-- [component example](https://test.near.social/bot.testnet/widget/chainsig-sign-eth-tx) 
+- [component example](https://test.near.social/bot.testnet/widget/chainsig-sign-eth-tx)
 
 :::
