@@ -58,7 +58,7 @@ async function fetchCode({ url, fromLine, toLine }, fetchResultStateDispatcher) 
 }
 
 export function GitHubInternal({ url, start, end, language, fname, metastring }) {
-  const [code, setCode] = useState("Loading...");
+  const [code, setCode] = useState('Loading...');
 
   let fullURL = url + "#";
 
@@ -71,6 +71,7 @@ export function GitHubInternal({ url, start, end, language, fname, metastring })
     const promise = fetchCode(parsed);
     promise.then(res => setCode(res));
   })
+
   return <>
     <CodeBlock language={language} fname={fname} metastring={metastring}>
       {code}

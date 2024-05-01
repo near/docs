@@ -4,22 +4,41 @@ import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import Admonition from '@theme/Admonition';
 
-export function ExplainCode({ children, alternativeURL }) {
+const lang2label = {
+  "rust": "🦀 Rust",
+  "js": "🌐 JavaScript",
+  "ts": "🌐 TypeScript",
+}
+
+export function ExplainCode({ children, languages, alternativeURL }) {
   const [lineNumber, setLineNumber] = useState(0);
   const [activeBlock, setActiveBlock] = useState(0);
   const [selectedFile, setSelectedFile] = useState(null);
   const [isWideEnough, setIsWideEnough] = useState(true);
+  const [language, setLanguage] = useState(languages[0]);
+  const [blocks, setBlocks] = useState([]);
+  const [files, setFiles] = useState([]);
 
-  let blocks = [];
-  let files = []
+  // validate languages
+  if (!languages.every(lang => lang in lang2label)) throw new Error("languages must be one of ['rust', 'js', 'ts']");
 
-  for (let child of children) {
-    if (child.type === Block) {
-      blocks.push({ text: child.props.children, highlight: child.props.highlights, fname: child.props.fname });
-    } else {
-      files.push({ ...child.props })
+  useEffect(() => {
+    let blocks = [];
+    let files = []
+
+    for (let child of children) {
+      if (child.type === Block) {
+        if (language in child.props.highlights) {
+          blocks.push({ text: child.props.children, highlight: child.props.highlights[language], fname: child.props.fname });
+        }
+      } else {
+        if (language === child.props.language) files.push({ ...child.props })
+      }
     }
-  }
+
+    setBlocks(blocks);
+    setFiles(files);
+  }, [language]);
 
   useEffect(() => {
     // scroll to the highlighted line
@@ -33,13 +52,15 @@ export function ExplainCode({ children, alternativeURL }) {
   }, [lineNumber]);
 
   useEffect(() => {
+    if (!blocks.length || !files.length) return;
+
     // check if the window is wide enough to render the code explainer
     setIsWideEnough(window.innerWidth > 768);
 
     // #files is sticky, and it "sticks" at the height of the .navbar
     const nav = document.querySelector('.navbar');
-    const files = document.getElementById('files');
-    files.style.top = `${nav.clientHeight}px`;
+    const filesElem = document.getElementById('files');
+    filesElem.style.top = `${nav.clientHeight}px`;
 
     // calculate the size of the code explanations
     const t0 = document.getElementById(`block0`).getBoundingClientRect().top;
@@ -85,9 +106,10 @@ export function ExplainCode({ children, alternativeURL }) {
 
     window.addEventListener('scroll', handleScroll);
 
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    return () => { console.log("removed listener"), window.removeEventListener('scroll', handleScroll) };
+  }, [blocks, files]);
 
+  if (!blocks.length || !files.length) return "Loading...";
 
   return (
     <>
@@ -95,6 +117,12 @@ export function ExplainCode({ children, alternativeURL }) {
         <Admonition type="danger">
           This page will not render correctly in small screen, consider using the <a href={alternativeURL}>plain text version</a>
         </Admonition>
+      </div>
+
+      <div>
+        <Tabs className="language-tabs" selectedValue={language} selectValue={(e) => setLanguage(e)}>
+          {languages.map(lang => <TabItem value={lang} label={lang2label[lang]}></TabItem>)}
+        </Tabs>
       </div>
 
       <div className="row code-explain">
@@ -130,9 +158,9 @@ function InnerBlock({ selected, text, index }) {
 
 function InnerFile({ url, start, end, language, fname, lineNumber }) {
   return <>
-    <Github url={url} start={start} end={end} language={language}
-      fname={fname} metastring={`{${lineNumber}}`}
-    />
+    <Github url={url} start={start} end={end}
+      language={language} fname={fname}
+      metastring={`{${lineNumber}}`} />
   </>
 }
 
