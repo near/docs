@@ -161,11 +161,11 @@ const lakeConfig: types.LakeConfig = {
 
 ## Create indexer handler
 
-Indexer will be streaming the [`StreamerMessage`](https://near-indexers.io/docs/data-flow-and-structures/structures/toc) instances we need to handle according to our needs.
+Indexer will be streaming the [`StreamerMessage`](/build/data-infrastructure/lake-data-structures/toc) instances we need to handle according to our needs.
 
 In `near-lake-framework` JS library the handler have to be presented as a callback function. This function have to:
 - be asynchronous
-- accept an argument of type [`StreamerMessage`](https://near-indexers.io/docs/data-flow-and-structures/structures/toc)
+- accept an argument of type [`StreamerMessage`](/build/data-infrastructure/lake-data-structures/toc)
 - return nothing (`void`)
 
 Creating the callback:
