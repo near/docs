@@ -498,5 +498,9 @@
   "sidebar.tutorials.category.Marketplace": {
     "message": "Marketplace",
     "description": "The label for category Marketplace in sidebar tutorials"
+  },
+  "sidebar.tools.link.Keypom": {
+    "message": "Keypom",
+    "description": "The label for link Keypom in sidebar tools, linking to https://keypom.xyz/"
   }
 }

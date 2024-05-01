@@ -2496,6 +2496,11 @@
       },
       {
         "type": "link",
+        "label": "Keypom",
+        "href": "https://keypom.xyz/"
+      },
+      {
+        "type": "link",
         "label": "FastNEAR API",
         "href": "/zh-CN/tools/fastnear-api",
         "docId": "tools/fastnear-api",
