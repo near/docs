@@ -17,7 +17,7 @@ This guide will take you through a step by step process for creating a Chain Sig
 
 ⭐️ For a deep dive into the concepts of Chain Signatures see [What are Chain Signatures?](/concepts/abstraction/chain-signatures)
 
-⭐️ For complete examples of a NEAR account performing `ETH` transactions:
+⭐️ For complete examples of a NEAR account performing transactions in other chains:
 
 - [CLI script](https://github.com/mattlockyer/mpc-script)
 - [web-app example](https://github.com/near-examples/near-multichain)
