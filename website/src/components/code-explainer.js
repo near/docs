@@ -5,9 +5,9 @@ import TabItem from "@theme/TabItem";
 import Admonition from '@theme/Admonition';
 
 const lang2label = {
-  "rust": "🦀 Rust",
-  "js": "🌐 JavaScript",
-  "ts": "🌐 TypeScript",
+  "rust": "🦀 RS",
+  "js": "🌐 JS",
+  "ts": "🌐 TS",
 }
 
 export function ExplainCode({ children, languages, alternativeURL }) {
@@ -21,6 +21,12 @@ export function ExplainCode({ children, languages, alternativeURL }) {
 
   // validate languages
   if (!languages.every(lang => lang in lang2label)) throw new Error("languages must be one of ['rust', 'js', 'ts']");
+
+  const activateBlock = (index) => {
+    setActiveBlock(index);
+    setLineNumber(blocks[index].highlight);
+    setSelectedFile(blocks[index].fname);
+  }
 
   useEffect(() => {
     let blocks = [];
@@ -38,6 +44,9 @@ export function ExplainCode({ children, languages, alternativeURL }) {
 
     setBlocks(blocks);
     setFiles(files);
+    setActiveBlock(0);
+    setLineNumber(blocks[0].highlight);
+    setSelectedFile(blocks[0].fname);
   }, [language]);
 
   useEffect(() => {
@@ -67,38 +76,23 @@ export function ExplainCode({ children, languages, alternativeURL }) {
     const bN = document.getElementById(`block${blocks.length - 1}`).getBoundingClientRect().bottom;
     let blocksHeight = Math.abs(bN - t0);
 
-    // the scrollable height is the size of the blocks that we cannot see
-    // plus an offset if the window is already scrolled
-    const offset = window.scrollY + t0;
-    let scrollableHeight
-    if (blocksHeight < window.innerHeight + offset) {
-      scrollableHeight = blocksHeight
-    } else {
-      scrollableHeight = blocksHeight - window.innerHeight + offset;
-    }
-
-    // add some padding to the end of the blocks so we can always scroll
-    const oneEm = parseFloat(getComputedStyle(document.documentElement).fontSize);
-
-    if (files.clientHeight > blocksHeight) {
-      const tN = document.getElementById(`block${blocks.length - 1}`).getBoundingClientRect().top;
-      document.getElementById('extra-padding').style.height = `${files.clientHeight - Math.abs(tN - bN) + oneEm}px`;
-    }
+    // we want to count the scroll from the top of the codeblocks
+    const nonTranslatedCodeBlocks = document.getElementById('codeblocks').getBoundingClientRect().top + window.scrollY;
 
     const handleScroll = () => {
-      const scrollPercentage = window.scrollY / scrollableHeight;
+      const scrolled = window.scrollY - nonTranslatedCodeBlocks + nav.clientHeight;
+      const scrollPercentage = window.scrollY ? scrolled / blocksHeight : 0;
 
       // select the block that corresponds the percentage of the scroll bar
-      let acc = 0;
+      let linf = 0;
+      let lsup = 0;
       for (let i = 0; i < blocks.length; i++) {
         const block = document.getElementById(`block${i}`)
-        const blockHeight = block.clientHeight;
-        acc += blockHeight / blocksHeight;
+        linf = lsup;
+        lsup += block.clientHeight / blocksHeight;
 
-        if (acc > scrollPercentage && block.getBoundingClientRect().top < window.innerHeight - 2 * oneEm) {
-          setLineNumber(blocks[i].highlight);
-          setActiveBlock(i);
-          setSelectedFile(blocks[i].fname);
+        if (scrollPercentage > linf && scrollPercentage < lsup) {
+          activateBlock(i);
           break;
         }
       }
@@ -119,20 +113,20 @@ export function ExplainCode({ children, languages, alternativeURL }) {
         </Admonition>
       </div>
 
-      <div>
-        <Tabs className="language-tabs" selectedValue={language} selectValue={(e) => setLanguage(e)}>
-          {languages.map(lang => <TabItem value={lang} label={lang2label[lang]}></TabItem>)}
-        </Tabs>
-      </div>
-
       <div className="row code-explain">
         <div className="col-forced--4 col" id="codeblocks">
-          {blocks.map((block, index) => <InnerBlock selected={activeBlock === index} index={index} text={block.text} />)}
+          <Tabs className="file-tabs" selectedValue={language} selectValue={(e) => setLanguage(e)}>
+            {languages.map(lang => <TabItem value={lang} label={lang2label[lang]}></TabItem>)}
+          </Tabs>
+          {blocks.map(
+            (block, index) =>
+              <InnerBlock selected={activeBlock === index} index={index} text={block.text} activateFn={activateBlock} />)
+          }
           <div id="extra-padding" style={{ width: "100%" }}></div>
         </div>
         <div className="col-forced--8 col">
           <div id="files"
-            style={{ position: 'sticky', height: '100vh', overflow: 'scroll' }}>
+            style={{ position: 'sticky', overflow: 'scroll' }}>
             <Tabs className="file-tabs" selectedValue={selectedFile || blocks[0].fname} selectValue={(e) => setSelectedFile(e)}>
               {files.map(file =>
                 <TabItem value={file.fname} >
@@ -147,10 +141,10 @@ export function ExplainCode({ children, languages, alternativeURL }) {
   );
 }
 
-function InnerBlock({ selected, text, index }) {
+function InnerBlock({ selected, text, index, activateFn }) {
   const cssState = selected ? 'block-selected' : '';
   return <>
-    <div className={`block ${cssState} padding--sm`} key={index} id={`block${index}`}>
+    <div className={`block ${cssState} padding--sm`} key={index} id={`block${index}`} onClick={() => activateFn(index)}>
       {text}
     </div>
   </>;

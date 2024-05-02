@@ -256,7 +256,7 @@ table {
 }
 
 .breadcrumbs__link {
-    border: 1px solid #eee;
+    padding-left: 0;
 }
 
 a {
@@ -436,17 +436,36 @@ div[class^="announcementBar_"] {
 /* Code Explainer */
 
 .col-forced--4 {
-    --ifm-col-width: calc(4 / 12 * 100%) !important;
+    --ifm-col-width: calc(4.5 / 12 * 100%) !important;
     padding-right: 0;
 }
 
 .col-forced--8 {
-    --ifm-col-width: calc(8 / 12 * 100%) !important;
+    --ifm-col-width: calc(7.5 / 12 * 100%) !important;
 }
 
 .block-selected {
-    border-left: 3px solid var(--near-color-royal);
-    padding-left: 1rem !important;
+    border-left: 2px solid var(--near-color-royal) !important;
+}
+
+.block {
+    font-size: .95em;
+    text-align: justify;
+    padding: 0 .8em 0 1em !important;
+    border-left: 2px solid #eee;
+}
+
+.block:hover {
+    border-left: 2px solid #c4ebfb;
+    cursor: pointer;
+}
+
+/* Hide Button */
+
+.collapseSidebarButton_node_modules-\@docusaurus-theme-classic-lib-theme-DocSidebar-Desktop-CollapseButton-styles-module {
+    padding: 0;
+    background-color: #94b2ff90 !important;
+    height: 25px !important;
 }
 
 /* Blog Post */

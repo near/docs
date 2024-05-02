@@ -163,7 +163,6 @@ const sidebar = {
         "build/smart-contracts/quickstart",
         {
           "Anatomy of a Contract": [
-            "build/smart-contracts/anatomy/basics",
             "build/smart-contracts/anatomy/anatomy",
             "build/smart-contracts/anatomy/environment",
             "build/smart-contracts/anatomy/storage",

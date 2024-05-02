@@ -9,69 +9,75 @@ import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 import {ExplainCode, Block, File} from '@site/src/components/code-explainer';
 
+Let's illustrate the basic anatomy of a simple "Hello World" contract. The code on this page comes from our [Hello NEAR repository](https://github.com/near-examples/hello-near-examples) on Github.
+
 <ExplainCode languages={["js", "rust"]} alternativeURL="/build/smart-contracts/anatomy/environment">
-  <Block highlights={{"js": "1-4"}} fname="contract">
-    ## Title
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pellentesque nisi vel orci faucibus ullamcorper. Donec ut tempor erat, in gravida ante. 
-  </Block>
-  <Block highlights={{"rust": "1-4"}} fname="contract">
-    ## ONLY RUST
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pellentesque nisi vel orci faucibus ullamcorper. Donec ut tempor erat, in gravida ante. 
-  </Block>
-  <Block highlights={{"js": "1-4", "rust": "1-4"}} fname="model">
-    ## IN BOTH
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pellentesque nisi vel orci faucibus ullamcorper. Donec ut tempor erat, in gravida ante. 
-  </Block>
-  <Block highlights={{"js": "1-4"}} fname="contract">
-    ## Title
+  <Block highlights={{"js": "1", "rust": "1"}} fname="contract">
+    ### Importing the SDK
+    All contracts will import the **NEAR SDK**, enabling them to [access the execution environment](./environment.md), [call other contracts](./crosscontract.md), [transfer tokens](./actions.md), and much more
 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pellentesque nisi vel orci faucibus ullamcorper. Donec ut tempor erat, in gravida ante. 
+    You can also use third-party libraries, thought some might not work due to the limitations of the contract runtime
   </Block>
-  <Block highlights={{"js": "1-4"}} fname="contract">
+  <Block highlights={{"js": "4-17", "rust":"5-7,20-31"}} fname="contract">
+    ### Contract's Class / Structure
+    The contract is described through a `Class` / `Struct` :
+    - The attributes define which data the contract stores
+    - The functions define its public (and private) interface 
+  </Block>
+  <Block highlights={{"js": "3"}} fname="contract">
+    ### Main Class Decorator
+    
+    Note that the contract's class is decorated with `@NearBindgen`. This decorator tells the SDK which class defines the contract, so it knows:
+    1. What to fetch from storage when the contract is loaded
+    2. What to store when the contract is done executing
+    3. The methods that are exposed to the outside world
 
-      ## Even More
+    **Note:** Only one class can be decorated with the `@NearBindgen` decorator
 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pellentesque nisi vel orci faucibus ullamcorper. Donec ut tempor erat, in gravida ante. In tristique accumsan iaculis. Phasellus varius, nisl in condimentum convallis, magna nisi elementum libero, nec vulputate lacus leo a quam. Duis consectetur condimentum arcu quis dapibus. Sed placerat mattis dolor sed scelerisque. Aliquam ut velit vulputate, lacinia tortor dapibus, interdum lorem. Nulla commodo felis tristique malesuada lacinia. Phasellus condimentum, nulla nec lacinia fermentum, felis enim vestibulum leo, sit amet facilisis tortor magna vel nisi. Donec magna purus, convallis ut facilisis a, iaculis eget elit. 
   </Block>
+  <Block highlights={{"rust": "4,19"}} fname="contract">
+    ### Main Class Macro
+    
+    Note that the contract's struct definition and the implementation are decorated with macros.
+    
+    The `#[near(contract_state)]` macro tell the SDK that this structure defines the contract's state, so it knows:
+    1. What to fetch from storage when the contract is loaded
+    2. What to store when the contract is done executing
 
-  <Block highlights={{"js": "1-4"}} fname="contract">
-    ## Title
+    The `#[near]` macro tells the SDK which functions are exposed to the outside world
 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pellentesque nisi vel orci faucibus ullamcorper. Donec ut tempor erat, in gravida ante. 
+    **Note:** Only one struct can be decorated with the `#[near(contract_state)]` macro
   </Block>
-  <Block highlights={{"js": "1-4"}} fname="contract">
-    ## Even More
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pellentesque nisi vel orci faucibus ullamcorper. Donec ut tempor erat, in gravida ante. In tristique accumsan iaculis. Phasellus varius, nisl in condimentum convallis, magna nisi elementum libero, nec vulputate lacus leo a quam. Duis consectetur condimentum arcu quis dapibus. Sed placerat mattis dolor sed scelerisque. Aliquam ut velit vulputate, lacinia tortor dapibus, interdum lorem. Nulla commodo felis tristique malesuada lacinia. Phasellus condimentum, nulla nec lacinia fermentum, felis enim vestibulum leo, sit amet facilisis tortor magna vel nisi. Donec magna purus, convallis ut facilisis a, iaculis eget elit. 
+  <Block highlights={{"js": "5", "rust": "6,10-16"}} fname="contract">
+    ### Storage (State)
+    We call the data stored in the contract "the contract's state". In this example, the contract stores a single string (`greeting`), and the state starts initialized with the default value `"Hello"` 
+
+    **Note:** We will cover more about the contract's state in the [state section](./state.md)
   </Block>
-  <Block highlights={{"js": "1-4"}} fname="contract">
-    ## Title
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pellentesque nisi vel orci faucibus ullamcorper. Donec ut tempor erat, in gravida ante. 
+  <Block highlights={{"js": "8-10", "rust": "22-24"}} fname="contract">
+    ### Read Only Functions
+    Contract's functions can be read-only, meaning they don't modify the state. Calling them is free for everyone, and does not require to have a NEAR account
+
+    **Note:** We will cover more about function types in the [functions section](./function-types.md)
   </Block>
-  <Block highlights={{"js": "1-4"}} fname="contract">
-    ## Title
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pellentesque nisi vel orci faucibus ullamcorper. Donec ut tempor erat, in gravida ante. 
+  <Block highlights={{"js": "13-16", "rust": "27-30"}} fname="contract">
+    ### State Mutating Functions
+    Functions that modify the state or call other contracts are considered state mutating functions. It is necessary to have a NEAR account to call them, as they require a transaction to be sent to the network
+
+    **Note:** We will cover more about function types in the [functions section](./function-types.md)
   </Block>
   <File
     language="js"
     fname="contract" 
-    url="https://github.com/near-examples/donation-examples/blob/main/contract-ts/src/contract.ts"
+    url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts"
+    start="2"
+    end="18"
   />
   <File
-    language="js"
-    fname="model" 
-    url="https://github.com/near-examples/donation-examples/blob/main/contract-ts/src/model.ts"
-    start="3" end="6"
-  />
-    <File
     language="rust"
     fname="contract" 
-    url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/src/donation.rs"
+    url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
+    start="2"
+    end="32"
   />
-  <File
-    language="rust"
-    fname="model" 
-    url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/src/lib.rs"
-    start="3" end="6"
-  />
-
 </ExplainCode>
