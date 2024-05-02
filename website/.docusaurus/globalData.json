@@ -1603,10 +1603,6 @@
               "sidebar": "tutorials"
             },
             {
-              "id": "tutorials/examples/hello-near",
-              "path": "/zh-CN/tutorials/examples/hello-near"
-            },
-            {
               "id": "tutorials/examples/update-contract-migrate-state",
               "path": "/zh-CN/tutorials/examples/update-contract-migrate-state",
               "sidebar": "tutorials"

@@ -89,17 +89,17 @@
       "plugin": "82d98fd4"
     }
   },
-  "/zh-CN/-a4c": {
+  "/zh-CN/-a8b": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "8b378508"
     }
   },
-  "/zh-CN/-4d0": {
+  "/zh-CN/-6a1": {
     "__comp": "a7bd4aaa",
     "version": "935f2afb"
   },
-  "/zh-CN/-772": {
+  "/zh-CN/-cb8": {
     "__comp": "a94703ab"
   },
   "/zh-CN/-ccb": {
@@ -1466,10 +1466,6 @@
     "__comp": "17896441",
     "content": "922b1ba2"
   },
-  "/zh-CN/tutorials/examples/hello-near-b45": {
-    "__comp": "17896441",
-    "content": "36e9c3c8"
-  },
   "/zh-CN/tutorials/examples/update-contract-migrate-state-a0d": {
     "__comp": "17896441",
     "content": "c193d505"
@@ -1514,7 +1510,7 @@
     "__comp": "17896441",
     "content": "1b9e8bfc"
   },
-  "/zh-CN/tutorials/near-components/blog-posts-366": {
+  "/zh-CN/tutorials/near-components/blog-posts-1bc": {
     "__comp": "17896441",
     "content": "256ff2a5"
   },

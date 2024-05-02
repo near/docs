@@ -4713,11 +4713,6 @@
       "description": "Our Guest Book example is a simple app composed by two main components:",
       "sidebar": "tutorials"
     },
-    "tutorials/examples/hello-near": {
-      "id": "tutorials/examples/hello-near",
-      "title": "Hello NEAR",
-      "description": "Hello NEAR! is a friendly decentralized App that stores a greeting message. It is one of the simplest smart contracts you can create in NEAR, and the perfect gateway to introduce yourself in the world of smart contracts."
-    },
     "tutorials/examples/update-contract-migrate-state": {
       "id": "tutorials/examples/update-contract-migrate-state",
       "title": "Self Upgrade & State Migration",

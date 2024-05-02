@@ -44,15 +44,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', 'a4c'),
+    component: ComponentCreator('/zh-CN/', 'a8b'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '4d0'),
+        component: ComponentCreator('/zh-CN/', '6a1'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '772'),
+            component: ComponentCreator('/zh-CN/', 'cb8'),
             routes: [
               {
                 path: '/zh-CN/',
@@ -1992,11 +1992,6 @@ export default [
                 sidebar: "tutorials"
               },
               {
-                path: '/zh-CN/tutorials/examples/hello-near',
-                component: ComponentCreator('/zh-CN/tutorials/examples/hello-near', 'b45'),
-                exact: true
-              },
-              {
                 path: '/zh-CN/tutorials/examples/update-contract-migrate-state',
                 component: ComponentCreator('/zh-CN/tutorials/examples/update-contract-migrate-state', 'a0d'),
                 exact: true,
@@ -2063,7 +2058,7 @@ export default [
               },
               {
                 path: '/zh-CN/tutorials/near-components/blog-posts',
-                component: ComponentCreator('/zh-CN/tutorials/near-components/blog-posts', '366'),
+                component: ComponentCreator('/zh-CN/tutorials/near-components/blog-posts', '1bc'),
                 exact: true,
                 sidebar: "tutorials"
               },
