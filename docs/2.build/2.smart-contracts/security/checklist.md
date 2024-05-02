@@ -29,8 +29,8 @@ Check our [security articles](./welcome.md) to understand how to improve the sec
 ## Callbacks
 8. All private callbacks are marked as `private`
 9. All cross-contract calls have a callback
-10. All callbacks checks for errors and rolls back the state if necessary
-11. All callbacks returns money to the `predecessor` if necessary
+10. All callbacks check for errors and roll back the state if necessary
+11. All callbacks return money to the `predecessor` if necessary
 12. Callbacks are free of `panic!`
 13. All the callbacks are given enough GAS to execute entirely
-14. The contract is not left in a exploitable state between a cross-contract call and its callback
+14. The contract is not left in an exploitable state between a cross-contract call and its callback
