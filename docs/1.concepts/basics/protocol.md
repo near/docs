@@ -29,7 +29,7 @@ In technical terms, NEAR is a [layer-one](https://coinmarketcap.com/academy/glos
 NEAR is a technical marvel, offering built-in features such as named accounts and account abstraction. For developers, NEAR offers everything needed for their applications, from smart contracts to indexers. All while being interoperable with other chains.
 
 ### ⭐ Simple to Use 
-1. [**Named accounts**](../protocol/account-model.md) let you use easily remember and share names like `alice.near` for your blockchain addresses.
+1. Use [**named accounts**](../protocol/account-model.md) like `alice.near`
 2. Simple sign-up: make an account using [email](https://near.org/signup) or [telegram](https://web.telegram.org/k/#@herewalletbot)
 3. Transactions are **fast** _(~1.3s transactions)_ and **cheap** _(< 1¢ in fees)_
 4. You don't need to buy crypto thanks to **built-in account abstraction**
