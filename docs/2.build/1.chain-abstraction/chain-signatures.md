@@ -44,11 +44,11 @@ _Diagram of a chain signature in NEAR_
 
 :::info MPC testnet contracts
 
-If you want to try things out, these are the MPC smart contracts available on `testnet`:
+If you want to try things out, these are the smart contracts available on `testnet`:
 
-- `multichain-testnet-2.testnet`
-- `canhazgas.testnet`
-- `nft.kagi.testnet`
+- `multichain-testnet-2.testnet`: MPC signer contract
+- `canhazgas.testnet`: [Multichain Gas Station](multichain-gas-relayer/gas-station.md) contract
+- `nft.kagi.testnet`: [NFT Chain Key](nft-keys.md) contract
 
 :::
 

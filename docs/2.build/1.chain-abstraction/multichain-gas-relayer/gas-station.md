@@ -87,6 +87,12 @@ Users who wish to get transactions signed and relayed by this contract and its a
    - Repeat `pending_transactions_count` times.
 4. Relay each signed payload to the foreign chain RPC in the order they were requested.
 
+:::tip testnet contract
+
+If you want to try things out, this smart contract is available on `canhazgas.testnet`.
+
+:::
+
 ## Limitations
 
 When using the Multichain Gas relayer solution, some limitations should be consider. Here's a list of potential issues you might encounter, and suggested ways to mitigate them:
