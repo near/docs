@@ -38,7 +38,7 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
   <Block highlights={{"rust": "4,19"}} fname="contract">
     ### Main Class Macro
     
-    Note that the contract's struct definition and the implementation are decorated with macros.
+    Note that the contract's struct definition and the implementation are decorated with macros
     
     The `#[near(contract_state)]` macro tell the SDK that this structure defines the contract's state, so it knows:
     1. What to fetch from storage when the contract is loaded
@@ -52,19 +52,19 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
     ### Storage (State)
     We call the data stored in the contract "the contract's state". In this example, the contract stores a single string (`greeting`), and the state starts initialized with the default value `"Hello"` 
 
-    **Note:** We will cover more about the contract's state in the [state section](./state.md)
+    **Note:** We will cover more about the contract's state in the [state section](./storage.md)
   </Block>
   <Block highlights={{"js": "8-10", "rust": "22-24"}} fname="contract">
     ### Read Only Functions
     Contract's functions can be read-only, meaning they don't modify the state. Calling them is free for everyone, and does not require to have a NEAR account
 
-    **Note:** We will cover more about function types in the [functions section](./function-types.md)
+    **Note:** We will cover more about function types in the [functions section](./functions.md)
   </Block>
   <Block highlights={{"js": "13-16", "rust": "27-30"}} fname="contract">
     ### State Mutating Functions
     Functions that modify the state or call other contracts are considered state mutating functions. It is necessary to have a NEAR account to call them, as they require a transaction to be sent to the network
 
-    **Note:** We will cover more about function types in the [functions section](./function-types.md)
+    **Note:** We will cover more about function types in the [functions section](./functions.md)
   </Block>
   <File
     language="js"

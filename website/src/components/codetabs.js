@@ -3,6 +3,12 @@ import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import GitHubInternal from "./github";
 
+const lang2label = {
+  "rust": "🦀 Rust",
+  "js": "🌐 Javascript",
+  "ts": "🌐 Typescript",
+}
+
 export function CodeTabs({ children }) {
   if (!Array.isArray(children)) {
     children = [children];
@@ -12,7 +18,7 @@ export function CodeTabs({ children }) {
     <Tabs className="language-tabs" groupId="code-tabs">
       {children.map((component, index) => {
         return (
-          <TabItem value={component.props.value} label={component.props.value}>
+          <TabItem value={component.props.value} label={lang2label[component.props.value]}>
             {component}
           </TabItem>
         );

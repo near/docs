@@ -25,14 +25,14 @@ Modules help you to organize your code and reuse third-party libraries.
 The main module you will use in your contract will be the **NEAR SDK**, which: gives you access to the [execution environment](./environment.md), allows you to [call other contracts](./crosscontract.md), [transfer tokens](./actions.md), and much more.
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="ts">
+  <Language value="js" label="🌐 JavaScript" language="ts">
     <Github fname="contract.ts"
       url="https://github.com/near-examples/donation-examples/blob/main/contract-ts/src/contract.ts"
       start="1" end="3" />
 
 </Language>
 
-<Language value="🦀 Rust" language="rust">
+<Language value="rust"language="rust">
     <Github fname="lib.rs"
       url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/src/lib.rs"
       start="1" end="6" />
@@ -55,7 +55,7 @@ However, we do have a size limit for a compiled contract binary which is ~4.19 M
 When writing contracts you have access to **all** the language's **native types**.
 
 <Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value="🌐 JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
 
 ```ts
 number, bigint, string, [], {} ...
@@ -63,7 +63,7 @@ number, bigint, string, [], {} ...
 
 </TabItem>
 
-<TabItem value="🦀 Rust">
+<TabItem value="rust" label="🦀 Rust">
 
 ```rust
 u8, u16, u32, u64, u128, i8, i16, i32, i64, i128, Vec<T>, HashMap<K,V> ...
@@ -89,14 +89,14 @@ Besides the native types, the NEAR SDK implements [collections](./storage.md) su
 to help you store complex data in the contract's state.
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="js">
+  <Language value="js" label="🌐 JavaScript" language="js">
     <Github fname="index.js"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-js/src/index.ts"
           start="8" end="11" />
 
 </Language>
 
-<Language value="🦀 Rust" language="rust">
+<Language value="rust"language="rust">
     <Github fname="lib.rs"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/lib.rs" start="33" end="36"/>
 
@@ -115,14 +115,14 @@ Always prefer **SDK collections** over native ones in the contract's **[attribut
 You can define and instantiate complex objects through classes and structures.
 
 <Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value="🌐 JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
     <Github fname="model.ts" language="ts"
       url="https://github.com/near-examples/donation-examples/blob/main/contract-ts/src/model.ts"
       start="3" end="11" />
 
 </TabItem>
 
-<TabItem value="🦀 Rust">
+<TabItem value="rust" label="🦀 Rust">
     <Github fname="lib.rs" language="rust"
       url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/src/donation.rs"
       start="11" end="16" />
@@ -152,14 +152,14 @@ The contract is just another class, with its own attributes and methods. To **di
 internal classes simply decorate it using the [`NEAR Bindgen` decorator/macro](#decorators--macros).
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="ts">
+  <Language value="js" label="🌐 JavaScript" language="ts">
     <Github fname="contract.ts"
       url="https://github.com/near-examples/donation-examples/blob/main/contract-ts/src/contract.ts"
       start="6" end="9" />
 
 </Language>
 
-<Language value="🦀 Rust" language="rust">
+<Language value="rust"language="rust">
     <Github fname="lib.rs"
       url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/src/lib.rs"
       start="13" end="16" />
@@ -216,7 +216,7 @@ The method will now be able to define the initial state's values, raising an err
 while **the state is already initialized**.
 
 <Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value="🌐 JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
 
   <Github fname="contract.ts" language="ts"
           url="https://github.com/near-examples/donation-examples/blob/main/contract-ts/src/contract.ts"
@@ -232,7 +232,7 @@ In JavaScript you **must always** define a [default state](#default-state)
 
 </TabItem>
 
-<TabItem value="🦀 Rust">
+<TabItem value="rust" label="🦀 Rust">
 
   <Github fname="lib.rs" language="rust"
           url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/src/lib.rs"
@@ -256,7 +256,7 @@ before an `init` happens, the contract will use the default values.
 Once any method writes into the state, the state will be considered initialized.
 
 <Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value="🌐 JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
 
   <Github fname="contract.ts" language="ts"
           url="https://github.com/near-examples/donation-examples/blob/main/contract-ts/src/contract.ts"
@@ -270,7 +270,7 @@ In Javascript you **must always** assign values to **all the class' parameters**
 
 </TabItem>
 
-<TabItem value="🦀 Rust">
+<TabItem value="rust" label="🦀 Rust">
     <Github fname="lib.rs" language="rust"
             url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/src/lib.rs"
             start="19" end="26" />
@@ -310,7 +310,7 @@ All the **public methods** are exposed to the network as the contract's interfac
 
 </TabItem>
 
-<TabItem value="🦀 Rust">
+<TabItem value="rust" label="🦀 Rust">
 
 ```rust
   #[near_bindgen]
@@ -372,7 +372,7 @@ For this, you can use the `private` macro/decorator.
 
 </TabItem>
 
-<TabItem value="🦀 Rust">
+<TabItem value="rust" label="🦀 Rust">
 
 ```rust
   #[private]
@@ -404,7 +404,7 @@ method to receive money use the payable decorator.
 
 </TabItem>
 
-<TabItem value="🦀 Rust">
+<TabItem value="rust" label="🦀 Rust">
 
 ```rust
   #[payable]

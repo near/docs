@@ -11,11 +11,14 @@ const lang2label = {
 }
 
 export function ExplainCode({ children, languages, alternativeURL }) {
+  const storedLang = localStorage.getItem('docusaurus.tab.code-tabs');
+  const localLang = storedLang && languages.includes(storedLang) ? storedLang : languages[0];
+
   const [lineNumber, setLineNumber] = useState(0);
   const [activeBlock, setActiveBlock] = useState(0);
   const [selectedFile, setSelectedFile] = useState(null);
   const [isWideEnough, setIsWideEnough] = useState(true);
-  const [language, setLanguage] = useState(languages[0]);
+  const [language, setLang] = useState(localLang || languages[0]);
   const [blocks, setBlocks] = useState([]);
   const [files, setFiles] = useState([]);
 
@@ -26,6 +29,11 @@ export function ExplainCode({ children, languages, alternativeURL }) {
     setActiveBlock(index);
     setLineNumber(blocks[index].highlight);
     setSelectedFile(blocks[index].fname);
+  }
+
+  const setLanguage = (lang) => {
+    localStorage.setItem('docusaurus.tab.code-tabs', lang);
+    setLang(lang);
   }
 
   useEffect(() => {
@@ -70,6 +78,7 @@ export function ExplainCode({ children, languages, alternativeURL }) {
     const nav = document.querySelector('.navbar');
     const filesElem = document.getElementById('files');
     filesElem.style.top = `${nav.clientHeight}px`;
+    filesElem.style.maxHeight = `calc(100vh - ${nav.clientHeight}px)`;
 
     // calculate the size of the code explanations
     const t0 = document.getElementById(`block0`).getBoundingClientRect().top;
@@ -78,6 +87,10 @@ export function ExplainCode({ children, languages, alternativeURL }) {
 
     // we want to count the scroll from the top of the codeblocks
     const nonTranslatedCodeBlocks = document.getElementById('codeblocks').getBoundingClientRect().top + window.scrollY;
+
+    // add margin so the last block takes the code with it
+    const tN = document.getElementById(`block${blocks.length - 1}`).getBoundingClientRect().top;
+    document.getElementById('extra-padding').style.height = `${filesElem.clientHeight - Math.abs(tN-bN) - nav.clientHeight}px`;
 
     const handleScroll = () => {
       const scrolled = window.scrollY - nonTranslatedCodeBlocks + nav.clientHeight;
@@ -101,7 +114,7 @@ export function ExplainCode({ children, languages, alternativeURL }) {
     window.addEventListener('scroll', handleScroll);
 
     return () => { console.log("removed listener"), window.removeEventListener('scroll', handleScroll) };
-  }, [blocks, files]);
+  }, [blocks, files, selectedFile]);
 
   if (!blocks.length || !files.length) return "Loading...";
 

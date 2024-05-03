@@ -62,12 +62,12 @@ Now that you understand what the dApp does, let us take a closer look to its str
 The contract presents 2 methods: `set_greeting` and `get_greeting`. The first one stores a `string` in the contract's parameter `greeting`, while the second one retrieves it. By default, the contract returns the message `"Hello"`.
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="ts">
+  <Language value="js" language="ts">
     <Github fname="contract.ts"
             url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts"
             start="4" end="18" />
   </Language>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
             start="21" end="33" />
@@ -81,7 +81,7 @@ The frontend is composed by a single HTML file (`/index.html`). This file define
 The website's logic lives in `/assets/js/index.js`, which communicates with the contract through `/near-interface.js`. You will notice in `/assets/js/index.js` the following code:
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="js">
+  <Language value="js" language="js">
     <Github fname="index.js"
             url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/index.js"
             start="11" end="21" />
@@ -103,7 +103,7 @@ go ahead and perform the tests present in the dApp through the command `yarn tes
 Unit tests check individual functions in the smart contract. Right now only rust implements unit testing.
 
 <CodeTabs>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
             start="43" end="61" />
@@ -115,7 +115,7 @@ Unit tests check individual functions in the smart contract. Right now only rust
 Integration tests are generally written in javascript. They automatically deploy your contract and execute methods on it. In this way, integration tests simulate interactions from users in a realistic scenario. You will find the integration tests for `hello-near` in `integration-tests/`.
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="js">
+  <Language value="js" language="js">
     <Github fname="main.ava.ts"
             url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/sandbox-ts/src/main.ava.ts"
             start="33" end="44" />

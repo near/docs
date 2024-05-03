@@ -164,8 +164,10 @@ const sidebar = {
         {
           "Anatomy of a Contract": [
             "build/smart-contracts/anatomy/anatomy",
-            "build/smart-contracts/anatomy/environment",
             "build/smart-contracts/anatomy/storage",
+            "build/smart-contracts/anatomy/functions",
+            "build/smart-contracts/anatomy/environment",
+            "build/smart-contracts/anatomy/collections",
             "build/smart-contracts/anatomy/actions",
             "build/smart-contracts/anatomy/crosscontract",
             "build/smart-contracts/security/checklist",

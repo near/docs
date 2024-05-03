@@ -56,7 +56,7 @@ In our examples we implement a [`./near-wallet.js`](https://github.com/near-exam
 To create a wallet, simply import the `Wallet` object from the module and initialize it. This `wallet` will later allows the user to call any contract in NEAR.
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="ts">
+  <Language value="js" language="ts">
     <Github fname="index.js"
             url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/layout.js"
             start="18" end="25" />
@@ -78,7 +78,7 @@ If you want to use a user-defined RPC endpoint with the Wallet Selector, you nee
 For example:
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="ts">
+  <Language value="js" language="ts">
 
 ```js title="index.js"
 const CONTRACT_ADDRESS = process.env.CONTRACT_NAME;
@@ -120,7 +120,7 @@ Once the wallet is up we can start calling view methods, i.e. the methods that p
 Because of their read-only nature, view methods are **free** to call, and do **not require** the user to be **logged in**.
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="ts">
+  <Language value="js" language="ts">
     <Github fname="index.js"
             url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/hello-near/index.js"
             start="12" end="25" />
@@ -150,7 +150,7 @@ In order to interact with non-view methods it is necessary for the user to first
 Signing in is as simple as requesting the `wallet` object to `signIn`, the same simplicity applies to signing-out.
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="js">
+  <Language value="js" language="js">
     <Github fname="index.js"
             url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/components/navigation.js"
             start="9" end="23" />
@@ -171,7 +171,7 @@ When the user clicks in the button, it will be asked to select a wallet and use 
 If you instantiated the `Wallet` passing an account for the `createAccessKeyFor` parameter, then the wallet will create a [FunctionCall Key](../../1.concepts/protocol/access-keys.md#function-call-keys-function-call-keys) and store it in the web's local storage.
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="js">
+  <Language value="js" language="js">
     <Github fname="index.js"
             url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/layout.js"
             start="22" end="22" />
@@ -197,7 +197,7 @@ Once the user logs-in they can start calling change methods. Programmatically, c
 It is important to notice that, if you ask for money to be attached in the call, then the user will be redirected to the NEAR wallet to accept the transaction.
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="js">
+  <Language value="js" language="js">
     <Github fname="index.js"
             url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/hello-near/index.js"
             start="33" end="33" />
@@ -227,7 +227,7 @@ If you attach money to a change call, then the user will be redirected to their 
 If the method invoked returned a result, you can use the transaction hash to retrieve the result from the network. Assuming you created the `near` object as in the [example above](#connecting-to-a-contract), then you query the result by doing:
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="js">
+  <Language value="js" language="js">
 
     <Github fname="utils.js"
             url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/near-wallet.js"
