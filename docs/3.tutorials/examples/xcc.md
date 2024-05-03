@@ -127,7 +127,7 @@ they test that the cross-contract call correctly sets and retrieves the message.
 in `sandbox-ts/` for the JavaScript version and in `tests/` for the Rust version.
 
 <CodeTabs>
-  <Language value="rust" language="rust">
+  <Language value="js" language="js">
     <Github fname="main.ava.ts"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/sandbox-ts/main.ava.ts"
             start="8" end="52" />

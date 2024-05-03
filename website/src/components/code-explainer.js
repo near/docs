@@ -11,14 +11,11 @@ const lang2label = {
 }
 
 export function ExplainCode({ children, languages, alternativeURL }) {
-  const storedLang = localStorage.getItem('docusaurus.tab.code-tabs');
-  const localLang = storedLang && languages.includes(storedLang) ? storedLang : languages[0];
-
   const [lineNumber, setLineNumber] = useState(0);
   const [activeBlock, setActiveBlock] = useState(0);
   const [selectedFile, setSelectedFile] = useState(null);
   const [isWideEnough, setIsWideEnough] = useState(true);
-  const [language, setLang] = useState(localLang || languages[0]);
+  const [language, setLang] = useState(languages[0]);
   const [blocks, setBlocks] = useState([]);
   const [files, setFiles] = useState([]);
 
@@ -69,6 +66,9 @@ export function ExplainCode({ children, languages, alternativeURL }) {
   }, [lineNumber]);
 
   useEffect(() => {
+    const storedLang = localStorage.getItem('docusaurus.tab.code-tabs');
+    if (storedLang && languages.includes(storedLang)) setLang(storedLang);
+
     if (!blocks.length || !files.length) return;
 
     // check if the window is wide enough to render the code explainer
