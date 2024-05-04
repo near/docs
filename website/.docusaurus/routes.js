@@ -44,15 +44,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', 'a8b'),
+    component: ComponentCreator('/zh-CN/', '79f'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '6a1'),
+        component: ComponentCreator('/zh-CN/', '582'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', 'cb8'),
+            component: ComponentCreator('/zh-CN/', 'fb4'),
             routes: [
               {
                 path: '/zh-CN/',
@@ -168,7 +168,7 @@ export default [
               },
               {
                 path: '/zh-CN/build/chain-abstraction/nft-chain-keys',
-                component: ComponentCreator('/zh-CN/build/chain-abstraction/nft-chain-keys', '5e5'),
+                component: ComponentCreator('/zh-CN/build/chain-abstraction/nft-chain-keys', 'ba5'),
                 exact: true,
                 sidebar: "build"
               },
