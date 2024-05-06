@@ -1,26 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Github } from "./codetabs";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
-import Admonition from '@theme/Admonition';
+import { lang2label, InnerBlock, InnerFile } from "./code-explainer";
 
-const lang2label = {
-  "rust": "🦀 RS",
-  "js": "🌐 JS",
-  "ts": "🌐 TS",
-}
-
-export function ExplainCode({ children, languages, alternativeURL }) {
-  const [lineNumber, setLineNumber] = useState(0);
+function DesktopView({ props: { blocks, files, languages, language, setLanguage } }) {
+  const [lineNumber, setLineNumber] = useState(blocks[0].highlight);
   const [activeBlock, setActiveBlock] = useState(0);
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [isWideEnough, setIsWideEnough] = useState(true);
-  const [language, setLang] = useState(languages[0]);
-  const [blocks, setBlocks] = useState([]);
-  const [files, setFiles] = useState([]);
-
-  // validate languages
-  if (!languages.every(lang => lang in lang2label)) throw new Error("languages must be one of ['rust', 'js', 'ts']");
+  const [selectedFile, setSelectedFile] = useState(blocks[0].fname);
 
   const activateBlock = (index) => {
     setActiveBlock(index);
@@ -28,31 +14,7 @@ export function ExplainCode({ children, languages, alternativeURL }) {
     setSelectedFile(blocks[index].fname);
   }
 
-  const setLanguage = (lang) => {
-    localStorage.setItem('docusaurus.tab.code-tabs', lang);
-    setLang(lang);
-  }
-
-  useEffect(() => {
-    let blocks = [];
-    let files = []
-
-    for (let child of children) {
-      if (child.type === Block) {
-        if (language in child.props.highlights) {
-          blocks.push({ text: child.props.children, highlight: child.props.highlights[language], fname: child.props.fname });
-        }
-      } else {
-        if (language === child.props.language) files.push({ ...child.props })
-      }
-    }
-
-    setBlocks(blocks);
-    setFiles(files);
-    setActiveBlock(0);
-    setLineNumber(blocks[0].highlight);
-    setSelectedFile(blocks[0].fname);
-  }, [language]);
+  useEffect(() => activateBlock(0), [blocks, files])
 
   useEffect(() => {
     // scroll to the highlighted line
@@ -66,13 +28,7 @@ export function ExplainCode({ children, languages, alternativeURL }) {
   }, [lineNumber]);
 
   useEffect(() => {
-    const storedLang = localStorage.getItem('docusaurus.tab.code-tabs');
-    if (storedLang && languages.includes(storedLang)) setLang(storedLang);
-
     if (!blocks.length || !files.length) return;
-
-    // check if the window is wide enough to render the code explainer
-    setIsWideEnough(window.innerWidth > 768);
 
     // #files is sticky, and it "sticks" at the height of the .navbar
     const nav = document.querySelector('.navbar');
@@ -90,7 +46,7 @@ export function ExplainCode({ children, languages, alternativeURL }) {
 
     // add margin so the last block takes the code with it
     const tN = document.getElementById(`block${blocks.length - 1}`).getBoundingClientRect().top;
-    document.getElementById('extra-padding').style.height = `${filesElem.clientHeight - Math.abs(tN-bN) - nav.clientHeight}px`;
+    document.getElementById('extra-padding').style.height = `${filesElem.clientHeight - Math.abs(tN - bN) - nav.clientHeight}px`;
 
     const handleScroll = () => {
       const scrolled = window.scrollY - nonTranslatedCodeBlocks + nav.clientHeight;
@@ -116,18 +72,10 @@ export function ExplainCode({ children, languages, alternativeURL }) {
     return () => { console.log("removed listener"), window.removeEventListener('scroll', handleScroll) };
   }, [blocks, files, selectedFile]);
 
-  if (!blocks.length || !files.length) return "Loading...";
-
   return (
     <>
-      <div hidden={isWideEnough}>
-        <Admonition type="danger">
-          This page will not render correctly in small screen, consider using the <a href={alternativeURL}>plain text version</a>
-        </Admonition>
-      </div>
-
       <div className="row code-explain">
-        <div className="col-forced--4 col" id="codeblocks">
+        <div className="col-blocks col" id="codeblocks">
           <Tabs className="file-tabs" selectedValue={language} selectValue={(e) => setLanguage(e)}>
             {languages.map(lang => <TabItem value={lang} label={lang2label[lang]}></TabItem>)}
           </Tabs>
@@ -137,7 +85,7 @@ export function ExplainCode({ children, languages, alternativeURL }) {
           }
           <div id="extra-padding" style={{ width: "100%" }}></div>
         </div>
-        <div className="col-forced--8 col">
+        <div className="col-files col">
           <div id="files"
             style={{ position: 'sticky', overflow: 'scroll' }}>
             <Tabs className="file-tabs" selectedValue={selectedFile || blocks[0].fname} selectValue={(e) => setSelectedFile(e)}>
@@ -154,25 +102,4 @@ export function ExplainCode({ children, languages, alternativeURL }) {
   );
 }
 
-function InnerBlock({ selected, text, index, activateFn }) {
-  const cssState = selected ? 'block-selected' : '';
-  return <>
-    <div className={`block ${cssState} padding--sm`} key={index} id={`block${index}`} onClick={() => activateFn(index)}>
-      {text}
-    </div>
-  </>;
-}
-
-function InnerFile({ url, start, end, language, fname, lineNumber }) {
-  return <>
-    <Github url={url} start={start} end={end}
-      language={language} fname={fname}
-      metastring={`{${lineNumber}}`} />
-  </>
-}
-
-export function Block({ children }) { return children; }
-
-export function File({ children }) { return children; }
-
-export default { ExplainCode, Block, File };
+export default DesktopView;

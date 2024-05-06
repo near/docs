@@ -435,12 +435,12 @@ div[class^="announcementBar_"] {
 
 /* Code Explainer */
 
-.col-forced--4 {
+.col-blocks {
     --ifm-col-width: calc(4.5 / 12 * 100%) !important;
     padding-right: 0;
 }
 
-.col-forced--8 {
+.col-files {
     --ifm-col-width: calc(7.5 / 12 * 100%) !important;
 }
 

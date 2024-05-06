@@ -7,11 +7,11 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
-import {ExplainCode, Block, File} from '@site/src/components/code-explainer';
+import {ExplainCode, Block, File} from '@site/src/components/CodeExplainer/code-explainer';
 
 Let's illustrate the basic anatomy of a simple "Hello World" contract. The code on this page comes from our [Hello NEAR repository](https://github.com/near-examples/hello-near-examples) on Github.
 
-<ExplainCode languages={["js", "rust"]} alternativeURL="/build/smart-contracts/anatomy/environment">
+<ExplainCode languages={["js", "rust"]} >
   <Block highlights={{"js": "1", "rust": "1"}} fname="contract">
     ### Importing the SDK
     All contracts will import the **NEAR SDK**, enabling them to [access the execution environment](./environment.md), [call other contracts](./crosscontract.md), [transfer tokens](./actions.md), and much more
@@ -25,7 +25,7 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
     - The functions define its public (and private) interface 
   </Block>
   <Block highlights={{"js": "3"}} fname="contract">
-    ### Main Class Decorator
+    ### Contract Class Decorator
     
     Note that the contract's class is decorated with `@NearBindgen`. This decorator tells the SDK which class defines the contract, so it knows:
     1. What to fetch from storage when the contract is loaded
@@ -36,7 +36,7 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
 
   </Block>
   <Block highlights={{"rust": "4,19"}} fname="contract">
-    ### Main Class Macro
+    ### Contract Struct Macro
     
     Note that the contract's struct definition and the implementation are decorated with macros
     
@@ -50,7 +50,9 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
   </Block>
   <Block highlights={{"js": "5", "rust": "6,10-16"}} fname="contract">
     ### Storage (State)
-    We call the data stored in the contract "the contract's state". In this example, the contract stores a single string (`greeting`), and the state starts initialized with the default value `"Hello"` 
+    We call the data stored in the contract [the contract's state](./storage.md).
+    
+    In our Hello World example, the contract stores a single string (`greeting`), and the state starts initialized with the default value `"Hello"` 
 
     **Note:** We will cover more about the contract's state in the [state section](./storage.md)
   </Block>

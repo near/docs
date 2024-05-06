@@ -1,55 +1,41 @@
 import CodeBlock from '@theme/CodeBlock'
 import { useEffect, useState } from 'react'
 
-function parseReference(ref) {
-  const fullUrl = ref.slice(ref.indexOf('https'), -1)
-  const [url, loc] = fullUrl.split('#')
-
-  /**
-   * webpack causes failures when it tries to render this page
-   */
-  const global = globalThis || {}
-  if (!global.URL) {
-    // @ts-ignore
-    global.URL = URL
-  }
-
-  const [org, repo, blob, branch, ...pathSeg] = new global.URL(url).pathname.split('/').slice(1)
-  const [fromLine, toLine] = loc
-    ? loc.split('-').map((lineNr) => parseInt(lineNr.slice(1), 10) - 1)
-    : [0, Infinity]
-
-  return {
-    url: `https://raw.githubusercontent.com/${org}/${repo}/${branch}/${pathSeg.join('/')}`,
-    fromLine,
-    toLine,
-    title: pathSeg.join('/')
-  }
+function toRaw(ref) {
+  const fullUrl = ref.slice(ref.indexOf('https'));
+  const [url, loc] = fullUrl.split('#');
+  const [org, repo, blob, branch, ...pathSeg] = new URL(url).pathname.split('/').slice(1);
+  return `https://raw.githubusercontent.com/${org}/${repo}/${branch}/${pathSeg.join('/')}`;
 }
 
-async function fetchCode({ url, fromLine, toLine }, fetchResultStateDispatcher) {
+async function fetchCode(url, fromLine, toLine) {
   let res
 
-  try {
-    res = await fetch(url)
-  } catch (err) {
-    return "Loading..."
+  //check if stored in cache
+  const validUntil = localStorage.getItem(`${url}-until`)
+
+  if (validUntil && validUntil < Date.now()) {
+    console.log("using cache")
+    res = localStorage.getItem(url)
+  } else {
+    try {
+      res = await ((await fetch(url)).text())
+      localStorage.setItem(url, res)
+      localStorage.setItem(`${url}-until`, Date.now() + 60000)
+    } catch { return "Loading ..." }
   }
 
-  if (res.status !== 200) {
-    return "Loading..."
-  }
+  let body = res.split('\n')
+  fromLine = fromLine ? Number(fromLine) - 1 : 0;
+  toLine = toLine ? Number(toLine) : body.length;
+  body = body.slice(fromLine, toLine);
 
-  const body = (await res.text()).split('\n').slice(fromLine, (toLine || fromLine) + 1)
+  // Remove indentation on nested code
   const preceedingSpace = body.reduce((prev, line) => {
-    if (line.length === 0) {
-      return prev
-    }
+    if (line.length === 0) return prev
 
     const spaces = line.match(/^\s+/)
-    if (spaces) {
-      return Math.min(prev, spaces[0].length)
-    }
+    if (spaces) return Math.min(prev, spaces[0].length)
 
     return 0
   }, Infinity)
@@ -60,20 +46,14 @@ async function fetchCode({ url, fromLine, toLine }, fetchResultStateDispatcher) 
 export function GitHubInternal({ url, start, end, language, fname, metastring }) {
   const [code, setCode] = useState('Loading...');
 
-  let fullURL = url + "#";
-
-  if (start && end) {
-    fullURL += "L" + start + "-L" + end + "#";
-  }
-
   useEffect(() => {
-    const parsed = parseReference(fullURL);
-    const promise = fetchCode(parsed);
+    const rawUrl = toRaw(url);
+    const promise = fetchCode(rawUrl, start, end);
     promise.then(res => setCode(res));
   })
 
   return <div fname={fname}>
-    <CodeBlock language={language} metastring={metastring}>
+    <CodeBlock language={language} metastring={`${metastring} showLineNumbers`}>
       {code}
     </CodeBlock>
     <div style={{
@@ -84,7 +64,7 @@ export function GitHubInternal({ url, start, end, language, fname, metastring })
       paddingBottom: '13px',
       textDecoration: 'underline'
     }}>
-      <a href={fullURL} target="_blank" rel="noreferrer noopener">See full example on GitHub</a>
+      <a href={url} target="_blank" rel="noreferrer noopener">See full example on GitHub</a>
     </div>
   </div>;
 }
