@@ -4,7 +4,7 @@ title: NFT Chain Keys Smart Contract
 sidebar_label: NFT Chain Keys Contract
 ---
 
-The NFT Chain Keys smart contract makes the ownership of remote accounts both provable and transferrable. This new paradigm allows you to create new end-user experiences that leverage provable and transferrable remote accounts as a core primitive. 
+The NFT Chain Keys smart contract makes the ownership of remote accounts both provable and transferrable. This new paradigm allows you to create new end-user experiences that leverage provable and transferrable remote accounts as a core primitive.
 
 ## Contract overview
 
@@ -37,6 +37,11 @@ Please refer to the smart contract [GitHub documentation](https://github.com/nea
 - [Issuing signatures](https://github.com/near/multichain-gas-station-contract/tree/master/nft_key#issuing-signatures): generate new signatures based on a submitted payload.
 - [Approvals](https://github.com/near/multichain-gas-station-contract/tree/master/nft_key#approvals): implement a separate set of approval management functions for using NFTs, which operate similarly to NEP-178.
 
+:::tip testnet contract
+
+If you want to try things out, this smart contract is available on `nft.kagi.testnet`.
+
+:::
 
 ---
 
