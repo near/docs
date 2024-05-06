@@ -18,14 +18,14 @@ function DesktopView({ props: { blocks, files, languages, language, setLanguage 
 
   useEffect(() => {
     // scroll to the highlighted line
-    const highlightedLine = document.querySelector('.theme-code-block-highlighted-line');
+    const highlightedLine = document.querySelector(`div[fname="${selectedFile}"] .theme-code-block-highlighted-line`)
 
     if (highlightedLine) {
-      const file = document.querySelector('.prism-code');
+      const file = document.querySelector(`div[fname="${selectedFile}"] .prism-code`);
       const scrollTo = highlightedLine.offsetTop - file.clientHeight / 2;
       file.scrollTo({ top: scrollTo, behavior: 'smooth' });
     }
-  }, [lineNumber]);
+  }, [selectedFile, lineNumber]);
 
   useEffect(() => {
     if (!blocks.length || !files.length) return;

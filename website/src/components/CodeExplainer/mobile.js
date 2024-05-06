@@ -18,8 +18,9 @@ function MobileView({ props: { blocks, files, languages, language, setLanguage }
 
   useEffect(() => {
     // scroll to the highlighted line
-    const file = document.querySelector('.prism-code');
-    const highlightedLine = document.querySelector('.theme-code-block-highlighted-line')
+    const file = document.querySelector(`div[fname="${selectedFile}"] .prism-code`);
+    console.log(`div[fname="${selectedFile}"] .theme-code-block-highlighted-line`)
+    const highlightedLine = document.querySelector(`div[fname="${selectedFile}"] .theme-code-block-highlighted-line`)
     if (highlightedLine) file.scrollTo({ top: highlightedLine.offsetTop, behavior: 'smooth' });
   }, [lineNumber]);
 
