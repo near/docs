@@ -23,33 +23,47 @@ function MobileView({ props: { blocks, files, languages, language, setLanguage }
     if (highlightedLine) files.scrollTo({ top: highlightedLine.offsetTop, behavior: 'smooth' });
   }, [lineNumber]);
 
-  const handleScroll = (elem) => {
+  useEffect(() => {
+    if (!blocks.length || !files.length) return;
+
     // calculate the size of the code explanations
     const t0 = document.getElementById(`block0`).getBoundingClientRect().top;
     const bN = document.getElementById(`block${blocks.length - 1}`).getBoundingClientRect().bottom;
     let blocksHeight = Math.abs(bN - t0);
 
-    const scrollPercentage = elem.target.scrollTop / blocksHeight;
+    // we want to count the scroll from the top of the codeblocks
+    const nav = document.querySelector('.navbar');
+    const nonTranslatedCodeBlocks = document.getElementById('codeblocks').getBoundingClientRect().top + window.scrollY;
+    
+    const handleScroll = () => {
+      const scrolled = window.scrollY - nonTranslatedCodeBlocks + nav.clientHeight;
+      const scrollPercentage = window.scrollY ? scrolled / blocksHeight : 0;
 
-    // select the block that corresponds the percentage of the scroll bar
-    let linf = 0;
-    let lsup = 0;
-    for (let i = 0; i < blocks.length; i++) {
-      const block = document.getElementById(`block${i}`)
-      linf = lsup;
-      lsup += block.clientHeight / blocksHeight;
+      // select the block that corresponds the percentage of the scroll bar
+      let linf = 0;
+      let lsup = 0;
+      for (let i = 0; i < blocks.length; i++) {
+        const block = document.getElementById(`block${i}`)
+        linf = lsup;
+        lsup += block.clientHeight / blocksHeight;
 
-      if (scrollPercentage > linf && scrollPercentage < lsup) {
-        activateBlock(i);
-        break;
+        if (scrollPercentage > linf && scrollPercentage < lsup) {
+          activateBlock(i);
+          break;
+        }
       }
-    }
-  };
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => { console.log("removed listener"), window.removeEventListener('scroll', handleScroll) };
+
+  }, [blocks, files, selectedFile]);
 
   return (
     <>
-      <div className="row code-explain">
-        <div className="col--12 col" style={{ height: "63vh", overflowY: "scroll" }} id="codeblocks" onScroll={handleScroll}>
+      <div className="code-explain" style={{position: "relative"}}>
+        <div id="codeblocks">
           <Tabs className="file-tabs" selectedValue={language} selectValue={(e) => setLanguage(e)}>
             {languages.map(lang => <TabItem value={lang} label={lang2label[lang]}></TabItem>)}
           </Tabs>
@@ -58,16 +72,14 @@ function MobileView({ props: { blocks, files, languages, language, setLanguage }
               <InnerBlock selected={activeBlock === index} index={index} text={block.text} activateFn={activateBlock} />)
           }
         </div>
-        <div className="col--12 col">
-          <div id="files" style={{ height: "37vh", overflowY: "scroll" }}>
-            <Tabs className="file-tabs" selectedValue={selectedFile || blocks[0].fname} selectValue={(e) => setSelectedFile(e)}>
-              {files.map(file =>
-                <TabItem value={file.fname} >
-                  <InnerFile {...file} lineNumber={lineNumber} />
-                </TabItem>
-              )}
-            </Tabs>
-          </div>
+        <div id="files" style={{ height: "30vh", overflowY: "scroll", position: "sticky", bottom: 0, backgroundColor: "var(--ifm-background-color)" }}>
+          <Tabs className="file-tabs" selectedValue={selectedFile || blocks[0].fname} selectValue={(e) => setSelectedFile(e)}>
+            {files.map(file =>
+              <TabItem value={file.fname} >
+                <InnerFile {...file} lineNumber={lineNumber} />
+              </TabItem>
+            )}
+          </Tabs>
         </div>
       </div>
     </>

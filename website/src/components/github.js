@@ -11,11 +11,10 @@ function toRaw(ref) {
 async function fetchCode(url, fromLine, toLine) {
   let res
 
-  //check if stored in cache
+  // check if stored in cache
   const validUntil = localStorage.getItem(`${url}-until`)
 
-  if (validUntil && validUntil < Date.now()) {
-    console.log("using cache")
+  if (validUntil && validUntil > Date.now()) {
     res = localStorage.getItem(url)
   } else {
     try {

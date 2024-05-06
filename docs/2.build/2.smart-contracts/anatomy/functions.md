@@ -13,11 +13,11 @@ import {ExplainCode, Block, File} from '@site/src/components/CodeExplainer/code-
 Smart contracts expose functions so users can interact with them. There are different types of functions including `read-only`, `private` and `payable`.
 
 <ExplainCode languages={["js", "rust"]}>
-  <Block highlights={{"js": "14-17,20-39,42-44,47-49", "rust": "18-26,29-52,54-61,63-65"}} fname="auction">
+  <Block highlights={{"js": "14-17,20-39,42-44,47-49", "rust": "22-30,33-58,60-62,64-66"}} fname="auction">
     ### Contract's Interface
     All public functions in the contract are part of its interface. They can be called by anyone, and are the only way to interact with the contract
   </Block>
-  <Block highlights={{"js":"13-17", "rust": "18-26"}} fname="auction">
+  <Block highlights={{"js":"13-17", "rust": "22-30"}} fname="auction">
     ### Initialization Functions
     A contract can opt to have an initialization function. If present, this function must be called before any other to [initialize the contract](./storage.md) 
   </Block>
@@ -25,11 +25,11 @@ Smart contracts expose functions so users can interact with them. There are diff
     #### `@initialize({ privateFunction: true })`
     The initialization function is marked with the `@initialize` decorator
   </Block>
-  <Block highlights={{"rust": "16"}} fname="auction">
+  <Block highlights={{"rust": "20"}} fname="auction">
     #### `#[init]`
     Read-only functions are those that take an **immutable** reference to `self` in Rust
   </Block>
-  <Block highlights={{"js":"13-16", "rust": "29-52"}} fname="auction">
+  <Block highlights={{"js":"13-16", "rust": "33-58"}} fname="auction">
     ### State Changing Functions
     The functions that modify the [state](./storage.md) or perform [actions](./actions.md) need to be called by a user with a NEAR account, since a transaction is required to execute them
   </Block>
@@ -37,14 +37,14 @@ Smart contracts expose functions so users can interact with them. There are diff
     #### `@call`
     State changing functions are marked with the `@call` decorator
   </Block>
-  <Block highlights={{"rust": "29"}} fname="auction">
+  <Block highlights={{"rust": "33"}} fname="auction">
     #### `mut &self`
     State changing functions are those that take a **mutable** reference to `self` in Rust
   </Block>
-  <Block highlights={{"js": "22,26", "rust": "32,38"}} fname="auction">
+  <Block highlights={{"js": "22,26", "rust": "36,42"}} fname="auction">
     **Note:** The SDK provides [contextual information](./environment.md), such as which account is calling the function, or what time it is
   </Block>
-  <Block highlights={{"js":"42-44,47-49", "rust": "54-61,63-65"}} fname="auction">
+  <Block highlights={{"js":"42-44,47-49", "rust": "60-62,64-66"}} fname="auction">
     ### Read-Only Functions
     Contract's functions can be read-only, meaning they don't modify the state. Calling them is free for everyone, and does not require to have a NEAR account
   </Block>
@@ -52,11 +52,11 @@ Smart contracts expose functions so users can interact with them. There are diff
     #### `@view`
     Read-only functions are marked with the `@view` decorator in TS/JS
   </Block>
-  <Block highlights={{"rust": "54,63"}} fname="auction">
+  <Block highlights={{"rust": "60,64"}} fname="auction">
     #### `&self`
     Read-only functions are those that take an **immutable** reference to `self` in Rust
   </Block>
-  <Block highlights={{"js":"13", "rust": "17"}} fname="auction">
+  <Block highlights={{"js":"13", "rust": "21"}} fname="auction">
     ### Private Functions
     Many times you will want to have functions that **are exposed** as part of the contract's interface, but **should not be called directly** by users
 
@@ -68,11 +68,11 @@ Smart contracts expose functions so users can interact with them. There are diff
     #### `decorator({privateFunction: true})`
     Private functions are marked by setting `privateFunction: true` in the `@call` or `@initialization` decorators
   </Block>
-  <Block highlights={{"rust": "17"}} fname="auction">
+  <Block highlights={{"rust": "21"}} fname="auction">
     #### [#private]
     Private functions are marked using the `#[private]` macro in Rust
   </Block>
-  <Block highlights={{"js":"19,25", "rust": "17"}} fname="auction">
+  <Block highlights={{"js":"19,25", "rust": "32,41"}} fname="auction">
     ### Payable Functions
     By default, functions will panic if the user attaches NEAR Tokens to the call. Functions that accept NEAR Tokens must be marked as `payable`
 
@@ -82,7 +82,7 @@ Smart contracts expose functions so users can interact with them. There are diff
     #### `@call({payableFunction: true})`
     Payable functions are marked by setting `payableFunction: true` in the `@call` decorator
   </Block>
-  <Block highlights={{"rust": "37"}} fname="auction">
+  <Block highlights={{"rust": "32,41"}} fname="auction">
     #### [#payable]
     Payable functions are marked using the `#[payable]` macro in Rust
   </Block>
@@ -117,8 +117,8 @@ Smart contracts expose functions so users can interact with them. There are diff
     language="rust"
     fname="auction"
     url="https://github.com/near-examples/auction-examples/blob/main/contract-rs/src/lib.rs"
-    start="11"
-    end="76"
+    start="2"
+    end="68"
   />
   <CodeBlock
     language="js"

@@ -23,7 +23,7 @@ NEAR accounts store data for their contracts. The storage starts **empty** until
 
     **Note:** The SDK also provides [collections](./collections.md) to efficiently store collections of data
   </Block>
-  <Block highlights={{"rust": "2-5,10-11"}} fname="auction">
+  <Block highlights={{"rust": "6-9,14,15"}} fname="auction">
     ### Defining the State
     The attributes of the `struct` marked as the contract define the data that will be stored
 
@@ -35,7 +35,7 @@ NEAR accounts store data for their contracts. The storage starts **empty** until
 
     **Note:** The SDK also provides [collections](./collections.md) to efficiently store collections of data
   </Block>
-  <Block highlights={{"rust": "1"}} fname="auction">
+  <Block highlights={{"rust": "4"}} fname="auction">
     #### [*] Note
     The `structs` that will be persisted need to be marked with a macro, so the SDK knows to [serialize them in Borsh](./serialization.md) before writing them to the state
   </Block>
@@ -87,8 +87,7 @@ NEAR accounts store data for their contracts. The storage starts **empty** until
     #### [!] Important
     In TS/JS you still **must** set default values for the attributes, so the SDK can infer their types
   </Block>
-
-  <Block highlights={{"rust": "8,16-26"}} fname="auction">
+  <Block highlights={{"rust": "12,22-30"}} fname="auction">
     ### II. Initialization Functions
     Another option to initialize the state is to create an `initialization` function, which needs to be called before executing any other function
 
@@ -131,8 +130,8 @@ NEAR accounts store data for their contracts. The storage starts **empty** until
     language="rust"
     fname="auction"
     url="https://github.com/near-examples/auction-examples/blob/main/contract-rs/src/lib.rs"
-    start="11"
-    end="76"
+    start="2"
+    end="68"
   />
   <File
     language="rust"
