@@ -40,3 +40,6 @@ A command line utility that simplifies local component development for NEAR BOS.
 
 #### [BOS Workspace](https://github.com/nearbuilders/bos-workspace)
 A comprehensive toolset for simplifying the local development of NEAR components and applications, featuring hot reload, TypeScript support, multi-app management, and a local gateway.
+
+#### [Além](https://github.com/wpdas/alem)
+A web3 JavaScript/TypeScript library to create web3 applications for Near BOS. It's developer-friendly and uses React patterns, making it easy to organize files and write code. Access the [Além Docs](https://alem.dev/) to get to know more.
