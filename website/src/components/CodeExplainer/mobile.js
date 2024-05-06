@@ -18,9 +18,9 @@ function MobileView({ props: { blocks, files, languages, language, setLanguage }
 
   useEffect(() => {
     // scroll to the highlighted line
-    const files = document.getElementById('files');
-    const highlightedLine = document.querySelector('.theme-code-block-highlighted-line');
-    if (highlightedLine) files.scrollTo({ top: highlightedLine.offsetTop, behavior: 'smooth' });
+    const file = document.querySelector('.prism-code');
+    const highlightedLine = document.querySelector('.theme-code-block-highlighted-line')
+    if (highlightedLine) file.scrollTo({ top: highlightedLine.offsetTop, behavior: 'smooth' });
   }, [lineNumber]);
 
   useEffect(() => {
@@ -31,13 +31,22 @@ function MobileView({ props: { blocks, files, languages, language, setLanguage }
     const bN = document.getElementById(`block${blocks.length - 1}`).getBoundingClientRect().bottom;
     let blocksHeight = Math.abs(bN - t0);
 
+    // each file has a maxHeight
+    const fileTabs = document.querySelector('.file-tabs');
+
+    const allFiles = document.querySelectorAll(`.language-${language}`);
+    allFiles.forEach(
+      elem => elem.style.maxHeight = `calc(33vh - ${fileTabs.clientHeight}px)`
+    );
+
     // we want to count the scroll from the top of the codeblocks
     const nav = document.querySelector('.navbar');
     const nonTranslatedCodeBlocks = document.getElementById('codeblocks').getBoundingClientRect().top + window.scrollY;
-    
+
     const handleScroll = () => {
       const scrolled = window.scrollY - nonTranslatedCodeBlocks + nav.clientHeight;
-      const scrollPercentage = window.scrollY ? scrolled / blocksHeight : 0;
+      const filesElem = document.getElementById('files');
+      const scrollPercentage = window.scrollY ? scrolled / (blocksHeight + filesElem.clientHeight) : 0;
 
       // select the block that corresponds the percentage of the scroll bar
       let linf = 0;
@@ -62,7 +71,7 @@ function MobileView({ props: { blocks, files, languages, language, setLanguage }
 
   return (
     <>
-      <div className="code-explain" style={{position: "relative"}}>
+      <div className="code-explain" style={{ position: "relative" }}>
         <div id="codeblocks">
           <Tabs className="file-tabs" selectedValue={language} selectValue={(e) => setLanguage(e)}>
             {languages.map(lang => <TabItem value={lang} label={lang2label[lang]}></TabItem>)}
@@ -72,7 +81,7 @@ function MobileView({ props: { blocks, files, languages, language, setLanguage }
               <InnerBlock selected={activeBlock === index} index={index} text={block.text} activateFn={activateBlock} />)
           }
         </div>
-        <div id="files" style={{ height: "30vh", overflowY: "scroll", position: "sticky", bottom: 0, backgroundColor: "var(--ifm-background-color)" }}>
+        <div id="files" style={{ height: "33vh", position: "sticky", bottom: 0, backgroundColor: "var(--ifm-background-color)" }}>
           <Tabs className="file-tabs" selectedValue={selectedFile || blocks[0].fname} selectValue={(e) => setSelectedFile(e)}>
             {files.map(file =>
               <TabItem value={file.fname} >

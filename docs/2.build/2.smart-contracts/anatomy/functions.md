@@ -29,7 +29,7 @@ Smart contracts expose functions so users can interact with them. There are diff
     #### `#[init]`
     Read-only functions are those that take an **immutable** reference to `self` in Rust
   </Block>
-  <Block highlights={{"js":"13-16", "rust": "33-58"}} fname="auction">
+  <Block highlights={{"js":"14-17", "rust": "33-58"}} fname="auction">
     ### State Changing Functions
     The functions that modify the [state](./storage.md) or perform [actions](./actions.md) need to be called by a user with a NEAR account, since a transaction is required to execute them
   </Block>

@@ -21,9 +21,9 @@ function DesktopView({ props: { blocks, files, languages, language, setLanguage 
     const highlightedLine = document.querySelector('.theme-code-block-highlighted-line');
 
     if (highlightedLine) {
-      const files = document.getElementById('files');
-      const scrollTo = highlightedLine.offsetTop - files.clientHeight / 2;
-      files.scrollTo({ top: scrollTo, behavior: 'smooth' });
+      const file = document.querySelector('.prism-code');
+      const scrollTo = highlightedLine.offsetTop - file.clientHeight / 2;
+      file.scrollTo({ top: scrollTo, behavior: 'smooth' });
     }
   }, [lineNumber]);
 
@@ -34,7 +34,14 @@ function DesktopView({ props: { blocks, files, languages, language, setLanguage 
     const nav = document.querySelector('.navbar');
     const filesElem = document.getElementById('files');
     filesElem.style.top = `${nav.clientHeight}px`;
-    filesElem.style.maxHeight = `calc(100vh - ${nav.clientHeight}px)`;
+
+    // each file has a maxHeight
+    const fileTabs = document.querySelector('.file-tabs');
+
+    const allFiles = document.querySelectorAll(`.language-${language}`);
+    allFiles.forEach(
+      elem => elem.style.maxHeight = `calc(100vh - ${nav.clientHeight}px - ${fileTabs.clientHeight}px)`
+    );
 
     // calculate the size of the code explanations
     const t0 = document.getElementById(`block0`).getBoundingClientRect().top;
@@ -86,8 +93,7 @@ function DesktopView({ props: { blocks, files, languages, language, setLanguage 
           <div id="extra-padding" style={{ width: "100%" }}></div>
         </div>
         <div className="col-files col">
-          <div id="files"
-            style={{ position: 'sticky', overflow: 'scroll' }}>
+          <div id="files" style={{ position: 'sticky' }}>
             <Tabs className="file-tabs" selectedValue={selectedFile || blocks[0].fname} selectValue={(e) => setSelectedFile(e)}>
               {files.map(file =>
                 <TabItem value={file.fname} >
