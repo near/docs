@@ -179,7 +179,7 @@ This 60% up comes from assuming that the price of gas will go up by 1% on each b
 </details>
 
 :::tip
-In other chains paying a higher gas price to get your transaction processed faster. In NEAR, **gas costs are deterministic**, and you **can't pay extra**. Any extra gas attached to a transaction is simply sent back to the user.
+In other chains, paying a higher gas price gets your transaction processed faster. In NEAR, **gas costs are deterministic**, and you **can't pay extra**. Any extra gas attached to a transaction is simply sent back to the user.
 :::
 
 ---
