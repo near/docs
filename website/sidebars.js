@@ -755,6 +755,11 @@ const sidebar = {
       "label": "Testnet Faucet",
       "href": "https://near-faucet.io/"
     },
+    {
+      "type": "link",
+      "label": "Keypom",
+      "href": "https://keypom.xyz/"
+    },
     'tools/fastnear-api',
     "tools/explorer",
     "tools/indexing"
