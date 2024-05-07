@@ -86,13 +86,7 @@ Smart contracts expose functions so users can interact with them. There are diff
     #### [#payable]
     Payable functions are marked using the `#[payable]` macro in Rust
   </Block>
-  <Block highlights={{"rust": "9-11,13-15"}} fname="example">
-    ## Pure Functions
-    Pure functions are a special kind of function that do not require to access data from the state
-
-    They are useful to return hardcoded values on the contract
-  </Block>
-    <Block highlights={{"js":"3-5"}} fname="example">
+  <Block highlights={{"js":"3-5"}} fname="example">
     ### Internal Functions
     All the functions we covered so far are part of the interface, meaning they can be called by an external actor
 
@@ -107,6 +101,12 @@ Smart contracts expose functions so users can interact with them. There are diff
     However, contracts can also have private internal functions - such as helper or utility functions - that are **not exposed** to the outside world
 
     To create internal private methods in a Rust contract, do not declare them as public (`pub fn`)
+  </Block>
+  <Block highlights={{"rust": "9-11,13-15"}} fname="example">
+    ### Pure Functions
+    Pure functions are a special kind of function that do not require to access data from the state
+
+    They are useful to return hardcoded values on the contract
   </Block>
   <File
     language="js"
