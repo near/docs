@@ -1,6 +1,6 @@
 ---
 id: functions
-title: Types of Functions
+title: External Interface
 hide_table_of_contents: true
 ---
 import Tabs from '@theme/Tabs';

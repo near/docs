@@ -33,7 +33,6 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
     3. The methods that are exposed to the outside world
 
     **Note:** Only one class can be decorated with the `@NearBindgen` decorator
-
   </Block>
   <Block highlights={{"rust": "4,19"}} fname="contract">
     ### Contract Struct Macro
