@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/protocol/gas.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "gagdiez",
-  "lastUpdatedAt": 1712759479000,
+  "lastUpdatedBy": "Raghav Goyal",
+  "lastUpdatedAt": 1715039265000,
   "frontMatter": {
     "id": "gas",
     "title": "Gas (Execution Fees)"
