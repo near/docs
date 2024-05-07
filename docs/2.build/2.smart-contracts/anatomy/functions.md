@@ -88,7 +88,9 @@ Smart contracts expose functions so users can interact with them. There are diff
   </Block>
   <Block highlights={{"rust": "9-11,13-15"}} fname="example">
     ## Pure Functions
-    Payable functions are marked using the `#[payable]` macro in Rust
+    Pure functions are a special kind of function that do not require to access data from the state
+
+    They are useful to return hardcoded values on the contract
   </Block>
     <Block highlights={{"js":"3-5"}} fname="example">
     ### Internal Functions

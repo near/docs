@@ -52,32 +52,12 @@ NEAR accounts store data for their contracts. The storage starts **empty** until
     some initial values
 
     There are two ways to initialize a state:
-      1. By setting default values
-      2. By creating an initilization function
+      1. By creating an initilization function
+      2. By setting default values
   </Block>
-  <Block highlights={{"js": "5"}} fname="hello">
-    ### I. Default State
-    One option to initialize the state is to set default values for the attributes of the class
-
-    Such is the case for our "Hello World" contract, which stores a `greeting` with the default value `"Hello"`
-
-    The first time the contract is called (somebody executes `get_greeting` or `set_greeting`), the default values will be stored in the state, and the state will be considered initialized
-
-    **Note:** The state can only be initialized once
-  </Block>
-  <Block highlights={{"rust": "10-16"}} fname="hello">
-    ### I. Default State
-    Before using the contract, its state needs to be initialized. One option to initialize the state is to create a `Default` version of our contract's `struct`.
-    
-    For example, our "Hello World" contract has a default state with a `greeting` set to `"Hello"`
-
-    The first time the contract executes, the `Default` will be stored in the state, and the state will be considered initialized
-
-    **Note:** The state can only be initialized once
-  </Block>
-  <Block highlights={{"js": "8,13-17"}} fname="auction">
-    ### II. Initialization Functions
-    Another option to initialize the state is to create an `initialization` function, which needs to be called before executing any other function
+    <Block highlights={{"js": "8,13-17"}} fname="auction">
+    ### I. Initialization Functions
+    An option to initialize the state is to create an `initialization` function, which needs to be called before executing any other function
 
     In our Auction example, the contract has an initialization function that sets when the auction ends. Note the `@initialization` decorator, and the forced initialization on `NearBindgen`
     
@@ -88,22 +68,43 @@ NEAR accounts store data for their contracts. The storage starts **empty** until
     In TS/JS you still **must** set default values for the attributes, so the SDK can infer their types
   </Block>
   <Block highlights={{"rust": "12,22-30"}} fname="auction">
-    ### II. Initialization Functions
-    Another option to initialize the state is to create an `initialization` function, which needs to be called before executing any other function
+    ### I. Initialization Functions
+    An option to initialize the state is to create an `initialization` function, which needs to be called before executing any other function
 
     In our Auction example, the contract has an initialization function that sets when the auction ends. The contract derives the `PanicOnDefault`, which forces the user to call the init method denoted by the `#[init]` macro
     
     **Note:** It is a good practice to mark initialization functions as private. We will cover function types in the [functions section](./functions.md)
   </Block>
-  <Block highlights={{"js": "", "rust":""}} fname="auction">
+
+  <Block highlights={{"js": "5"}} fname="hello">
+    ### II. Default State
+    Another option to initialize the state is to set default values for the attributes of the class
+
+    Such is the case for our "Hello World" contract, which stores a `greeting` with the default value `"Hello"`
+
+    The first time the contract is called (somebody executes `get_greeting` or `set_greeting`), the default values will be stored in the state, and the state will be considered initialized
+
+    **Note:** The state can only be initialized once
+  </Block>
+  <Block highlights={{"rust": "10-16"}} fname="hello">
+    ### II. Default State
+    Another option to initialize the state is to create a `Default` version of our contract's `struct`.
+    
+    For example, our "Hello World" contract has a default state with a `greeting` set to `"Hello"`
+
+    The first time the contract executes, the `Default` will be stored in the state, and the state will be considered initialized
+
+    **Note:** The state can only be initialized once
+  </Block>
+  <Block highlights={{"js": "", "rust":""}} fname="hello">
     ### Lifecycle of the State
-    When a method is called in the contract, the state is loaded from the storage and put into memory
+    When a function is called, the contract's state is loaded from the storage and put into memory
 
     The state is actually [stored serialized](./serialization.md), and the SDK takes a bit of time to deserialize it before the method can access it
 
     When the method finishes executing successfully, all the changes to the state are serialized, and saved back to the storage
   </Block>
-  <Block highlights={{"js": "", "rust":""}} fname="auction">
+  <Block highlights={{"js": "", "rust":""}} fname="hello">
     ### State and Code
     In NEAR, the contract's code and contract's storage are **independent**
     

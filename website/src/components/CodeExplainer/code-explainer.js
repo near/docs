@@ -73,17 +73,21 @@ export function InnerBlock({ selected, text, index, activateFn }) {
 
 export function InnerFile({ url, start, end, language, fname, lineNumber, children }) {
   if (!url) {
-    return (
-      <CodeBlock language={language} metastring={`{${lineNumber}}`} >
-        {children.props.children.props.children}
-      </CodeBlock>
-    );
+    return <>
+      <div fname={fname}>
+        <CodeBlock language={language} metastring={`{${lineNumber}}`} >
+          {children.props.children.props.children}
+        </CodeBlock>
+      </div>
+    </>
   }
 
   return <>
-    <Github url={url} start={start} end={end}
-      language={language} fname={fname}
-      metastring={`{${lineNumber}}`} />
+    <div fname={fname}>
+      <Github url={url} start={start} end={end}
+        language={language} fname={fname}
+        metastring={`{${lineNumber}}`} />
+    </div>
   </>
 }
 

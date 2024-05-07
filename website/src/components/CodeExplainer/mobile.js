@@ -14,23 +14,19 @@ function MobileView({ props: { blocks, files, languages, language, setLanguage }
     setSelectedFile(blocks[index].fname);
   }
 
-  useEffect(() => activateBlock(0), [blocks, files])
-
   useEffect(() => {
     // scroll to the highlighted line
-    const file = document.querySelector(`div[fname="${selectedFile}"] .prism-code`);
-    console.log(`div[fname="${selectedFile}"] .theme-code-block-highlighted-line`)
+    console.log(selectedFile, lineNumber)
     const highlightedLine = document.querySelector(`div[fname="${selectedFile}"] .theme-code-block-highlighted-line`)
+    const file = document.querySelector(`div[fname="${selectedFile}"] .prism-code`);
+
     if (highlightedLine) file.scrollTo({ top: highlightedLine.offsetTop, behavior: 'smooth' });
   }, [lineNumber]);
 
   useEffect(() => {
-    if (!blocks.length || !files.length) return;
+    activateBlock(0);
 
-    // calculate the size of the code explanations
-    const t0 = document.getElementById(`block0`).getBoundingClientRect().top;
-    const bN = document.getElementById(`block${blocks.length - 1}`).getBoundingClientRect().bottom;
-    let blocksHeight = Math.abs(bN - t0);
+    const nav = document.querySelector('.navbar');
 
     // each file has a maxHeight
     const fileTabs = document.querySelector('.file-tabs');
@@ -39,9 +35,13 @@ function MobileView({ props: { blocks, files, languages, language, setLanguage }
     allFiles.forEach(
       elem => elem.style.maxHeight = `calc(33vh - ${fileTabs.clientHeight}px)`
     );
+    
+    // calculate the size of the code explanations
+    const t0 = document.getElementById(`block0`).getBoundingClientRect().top;
+    const bN = document.getElementById(`block${blocks.length - 1}`).getBoundingClientRect().bottom;
+    let blocksHeight = Math.abs(bN - t0);
 
     // we want to count the scroll from the top of the codeblocks
-    const nav = document.querySelector('.navbar');
     const nonTranslatedCodeBlocks = document.getElementById('codeblocks').getBoundingClientRect().top + window.scrollY;
 
     const handleScroll = () => {
@@ -68,7 +68,7 @@ function MobileView({ props: { blocks, files, languages, language, setLanguage }
 
     return () => { console.log("removed listener"), window.removeEventListener('scroll', handleScroll) };
 
-  }, [blocks, files, selectedFile]);
+  }, [blocks, files]);
 
   return (
     <>

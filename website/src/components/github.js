@@ -51,7 +51,7 @@ export function GitHubInternal({ url, start, end, language, fname, metastring })
     promise.then(res => setCode(res));
   })
 
-  return <div fname={fname}>
+  return <>
     <CodeBlock language={language} metastring={`${metastring} showLineNumbers`}>
       {code}
     </CodeBlock>
@@ -65,7 +65,7 @@ export function GitHubInternal({ url, start, end, language, fname, metastring })
     }}>
       <a href={url} target="_blank" rel="noreferrer noopener">See full example on GitHub</a>
     </div>
-  </div>;
+  </>;
 }
 
 export default GitHubInternal;

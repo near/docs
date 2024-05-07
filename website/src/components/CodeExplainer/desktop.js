@@ -14,21 +14,19 @@ function DesktopView({ props: { blocks, files, languages, language, setLanguage 
     setSelectedFile(blocks[index].fname);
   }
 
-  useEffect(() => activateBlock(0), [blocks, files])
-
   useEffect(() => {
     // scroll to the highlighted line
     const highlightedLine = document.querySelector(`div[fname="${selectedFile}"] .theme-code-block-highlighted-line`)
+    const file = document.querySelector(`div[fname="${selectedFile}"] .prism-code`);
 
     if (highlightedLine) {
-      const file = document.querySelector(`div[fname="${selectedFile}"] .prism-code`);
       const scrollTo = highlightedLine.offsetTop - file.clientHeight / 2;
       file.scrollTo({ top: scrollTo, behavior: 'smooth' });
     }
-  }, [selectedFile, lineNumber]);
+  }, [lineNumber]);
 
   useEffect(() => {
-    if (!blocks.length || !files.length) return;
+    activateBlock(0);
 
     // #files is sticky, and it "sticks" at the height of the .navbar
     const nav = document.querySelector('.navbar');
@@ -77,7 +75,7 @@ function DesktopView({ props: { blocks, files, languages, language, setLanguage 
     window.addEventListener('scroll', handleScroll);
 
     return () => { console.log("removed listener"), window.removeEventListener('scroll', handleScroll) };
-  }, [blocks, files, selectedFile]);
+  }, [blocks, files]);
 
   return (
     <>

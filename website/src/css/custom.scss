@@ -133,6 +133,11 @@ table+p em,
     margin: 0.5em 0 0 0;
 }
 
+.theme-code-block {
+    max-height: 50vh;
+    overflow: scroll;
+}
+
 .tabs-container+p em {
     margin: -1em 0 0 0;
 }
