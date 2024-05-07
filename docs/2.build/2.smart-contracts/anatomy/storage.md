@@ -46,7 +46,7 @@ NEAR accounts store data for their contracts. The storage starts **empty** until
     
     It currently costs ~**1Ⓝ** to store **100KB** of data
   </Block>
-  <Block highlights={{"js": "", "rust": ""}} fname="hello" >
+  <Block highlights={{"js": "", "rust": ""}} fname="auction" >
     ### Initializing the State
     After the contract is deployed, its state is empty and needs to be initialized with
     some initial values
