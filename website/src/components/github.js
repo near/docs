@@ -21,7 +21,7 @@ async function fetchCode(url, fromLine, toLine) {
       res = await ((await fetch(url)).text())
       localStorage.setItem(url, res)
       localStorage.setItem(`${url}-until`, Date.now() + 60000)
-    } catch { return "Loading ..." }
+    } catch { return "Error fetching code, please try reloading" }
   }
 
   let body = res.split('\n')
