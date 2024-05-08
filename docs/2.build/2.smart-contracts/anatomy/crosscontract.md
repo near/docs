@@ -33,9 +33,10 @@ While making your contract, it is likely that you will want to query information
 <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/lib.rs"
-            start="25" end="48" />
+            start="22" end="51" />
             <Github fname="external.rs"
-            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/external.rs" />
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/external.rs"
+            start="2" end="12" />
 
 </Language>
 
@@ -57,9 +58,10 @@ Calling another contract passing information is also a common scenario. Bellow y
 <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/lib.rs"
-            start="52" end="75" />
+            start="53" end="80" />
     <Github fname="external.rs"
-            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/external.rs" />
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/external.rs"
+            start="2" end="12" />
 
 </Language>
 

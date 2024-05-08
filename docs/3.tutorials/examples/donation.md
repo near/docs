@@ -117,7 +117,7 @@ NEAR wallet to accept a transaction.
 
 ## Smart Contract
 
-The contract exposes methods to donate tokens (`donate`), and methods to retrieve the recorded donations (e.g. `get_donation_by_number`).
+The contract exposes methods to donate tokens (`donate`), and methods to retrieve the recorded donations (e.g. `get_donation_for_account`).
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
@@ -128,7 +128,7 @@ The contract exposes methods to donate tokens (`donate`), and methods to retriev
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/src/donation.rs"
-            start="22" end="65" />
+            start="17" end="74" />
   </Language>
 </CodeTabs>
 
