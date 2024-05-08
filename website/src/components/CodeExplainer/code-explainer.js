@@ -64,22 +64,22 @@ export function File({ children }) { return children; }
 
 export function InnerBlock({ selected, text, index, activateFn }) {
   const cssState = selected ? 'block-selected' : '';
-  return <>
+  return (
     <div className={`block ${cssState} padding--sm`} key={index} id={`block${index}`} onClick={() => activateFn(index)}>
       {text}
     </div>
-  </>;
+  );
 }
 
 export function InnerFile({ url, start, end, language, fname, lineNumber, children }) {
   if (!url) {
-    return <>
+    return (
       <div fname={fname}>
         <CodeBlock language={language} metastring={`{${lineNumber}}`} >
           {children.props.children.props.children}
         </CodeBlock>
       </div>
-    </>
+    );
   }
 
   return <>

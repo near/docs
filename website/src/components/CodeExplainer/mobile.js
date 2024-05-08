@@ -16,12 +16,11 @@ function MobileView({ props: { blocks, files, languages, language, setLanguage }
 
   useEffect(() => {
     // scroll to the highlighted line
-    console.log(selectedFile, lineNumber)
     const highlightedLine = document.querySelector(`div[fname="${selectedFile}"] .theme-code-block-highlighted-line`)
     const file = document.querySelector(`div[fname="${selectedFile}"] .prism-code`);
 
     if (highlightedLine) file.scrollTo({ top: highlightedLine.offsetTop, behavior: 'smooth' });
-  }, [lineNumber]);
+  }, [selectedFile, lineNumber]);
 
   useEffect(() => {
     activateBlock(0);
@@ -68,7 +67,7 @@ function MobileView({ props: { blocks, files, languages, language, setLanguage }
 
     return () => { console.log("removed listener"), window.removeEventListener('scroll', handleScroll) };
 
-  }, [blocks, files]);
+  }, [blocks, files, language, selectedFile]);
 
   return (
     <>

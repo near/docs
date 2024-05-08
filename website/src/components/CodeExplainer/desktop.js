@@ -23,7 +23,7 @@ function DesktopView({ props: { blocks, files, languages, language, setLanguage 
       const scrollTo = highlightedLine.offsetTop - file.clientHeight / 2;
       file.scrollTo({ top: scrollTo, behavior: 'smooth' });
     }
-  }, [lineNumber]);
+  }, [selectedFile, lineNumber]);
 
   useEffect(() => {
     activateBlock(0);
@@ -75,7 +75,7 @@ function DesktopView({ props: { blocks, files, languages, language, setLanguage 
     window.addEventListener('scroll', handleScroll);
 
     return () => { console.log("removed listener"), window.removeEventListener('scroll', handleScroll) };
-  }, [blocks, files]);
+  }, [blocks, files, language, selectedFile]);
 
   return (
     <>

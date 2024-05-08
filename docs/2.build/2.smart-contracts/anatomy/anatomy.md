@@ -12,19 +12,19 @@ import {ExplainCode, Block, File} from '@site/src/components/CodeExplainer/code-
 Let's illustrate the basic anatomy of a simple "Hello World" contract. The code on this page comes from our [Hello NEAR repository](https://github.com/near-examples/hello-near-examples) on Github.
 
 <ExplainCode languages={["js", "rust"]} >
-  <Block highlights={{"js": "1", "rust": "1"}} fname="contract">
+  <Block highlights={{"js": "1", "rust": "1"}} fname="hello-near">
     ### Importing the SDK
     All contracts will import the **NEAR SDK**, enabling them to [access the execution environment](./environment.md), [call other contracts](./crosscontract.md), [transfer tokens](./actions.md), and much more
 
     You can also use third-party libraries, thought some might not work due to the limitations of the contract runtime
   </Block>
-  <Block highlights={{"js": "4-17", "rust":"5-7,20-31"}} fname="contract">
+  <Block highlights={{"js": "4-17", "rust":"5-7,20-31"}} fname="hello-near">
     ### Contract's Class / Structure
     The contract is described through a `Class` / `Struct` :
     - The attributes define which data the contract stores
     - The functions define its public (and private) interface 
   </Block>
-  <Block highlights={{"js": "3"}} fname="contract">
+  <Block highlights={{"js": "3"}} fname="hello-near">
     ### Contract Class Decorator
     
     Note that the contract's class is decorated with `@NearBindgen`. This decorator tells the SDK which class defines the contract, so it knows:
@@ -34,7 +34,7 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
 
     **Note:** Only one class can be decorated with the `@NearBindgen` decorator
   </Block>
-  <Block highlights={{"rust": "4,19"}} fname="contract">
+  <Block highlights={{"rust": "4,19"}} fname="hello-near">
     ### Contract Struct Macro
     
     Note that the contract's struct definition and the implementation are decorated with macros
@@ -47,7 +47,7 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
 
     **Note:** Only one struct can be decorated with the `#[near(contract_state)]` macro
   </Block>
-  <Block highlights={{"js": "5", "rust": "6,10-16"}} fname="contract">
+  <Block highlights={{"js": "5", "rust": "6,10-16"}} fname="hello-near">
     ### Storage (State)
     We call the data stored in the contract [the contract's state](./storage.md).
     
@@ -55,13 +55,13 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
 
     **Note:** We will cover more about the contract's state in the [state section](./storage.md)
   </Block>
-  <Block highlights={{"js": "8-10", "rust": "22-24"}} fname="contract">
+  <Block highlights={{"js": "8-10", "rust": "22-24"}} fname="hello-near">
     ### Read Only Functions
     Contract's functions can be read-only, meaning they don't modify the state. Calling them is free for everyone, and does not require to have a NEAR account
 
     **Note:** We will cover more about function types in the [functions section](./functions.md)
   </Block>
-  <Block highlights={{"js": "13-16", "rust": "27-30"}} fname="contract">
+  <Block highlights={{"js": "13-16", "rust": "27-30"}} fname="hello-near">
     ### State Mutating Functions
     Functions that modify the state or call other contracts are considered state mutating functions. It is necessary to have a NEAR account to call them, as they require a transaction to be sent to the network
 
@@ -69,14 +69,14 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
   </Block>
   <File
     language="js"
-    fname="contract" 
+    fname="hello-near" 
     url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts"
     start="2"
     end="18"
   />
   <File
     language="rust"
-    fname="contract" 
+    fname="hello-near" 
     url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
     start="2"
     end="32"
