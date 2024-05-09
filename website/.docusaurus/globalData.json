@@ -735,8 +735,8 @@
               "sidebar": "build"
             },
             {
-              "id": "build/smart-contracts/anatomy/basics",
-              "path": "/zh-CN/build/smart-contracts/anatomy/basics",
+              "id": "build/smart-contracts/anatomy/collections",
+              "path": "/zh-CN/build/smart-contracts/anatomy/collections",
               "sidebar": "build"
             },
             {
@@ -750,6 +750,11 @@
               "sidebar": "build"
             },
             {
+              "id": "build/smart-contracts/anatomy/functions",
+              "path": "/zh-CN/build/smart-contracts/anatomy/functions",
+              "sidebar": "build"
+            },
+            {
               "id": "build/smart-contracts/anatomy/serialization",
               "path": "/zh-CN/build/smart-contracts/anatomy/serialization",
               "sidebar": "build"
@@ -757,6 +762,11 @@
             {
               "id": "build/smart-contracts/anatomy/storage",
               "path": "/zh-CN/build/smart-contracts/anatomy/storage",
+              "sidebar": "build"
+            },
+            {
+              "id": "build/smart-contracts/anatomy/types",
+              "path": "/zh-CN/build/smart-contracts/anatomy/types",
               "sidebar": "build"
             },
             {

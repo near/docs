@@ -19,11 +19,11 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "The Contract Class",
-    "permalink": "/zh-CN/build/smart-contracts/anatomy/"
+    "title": "SDK Types",
+    "permalink": "/zh-CN/build/smart-contracts/anatomy/types"
   },
   "next": {
-    "title": "State & Data Structures",
-    "permalink": "/zh-CN/build/smart-contracts/anatomy/storage"
+    "title": "Data Structures",
+    "permalink": "/zh-CN/build/smart-contracts/anatomy/collections"
   }
 }

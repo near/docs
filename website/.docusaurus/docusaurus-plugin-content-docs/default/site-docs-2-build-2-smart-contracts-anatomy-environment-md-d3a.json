@@ -11,19 +11,19 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/anatomy/environment.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Damian Parrino",
-  "lastUpdatedAt": 1712950778000,
+  "lastUpdatedBy": "Guille",
+  "lastUpdatedAt": 1715263781000,
   "frontMatter": {
     "id": "environment",
     "title": "Environment"
   },
   "sidebar": "build",
   "previous": {
-    "title": "The Contract Class",
-    "permalink": "/build/smart-contracts/anatomy/"
+    "title": "SDK Types",
+    "permalink": "/build/smart-contracts/anatomy/types"
   },
   "next": {
-    "title": "State & Data Structures",
-    "permalink": "/build/smart-contracts/anatomy/storage"
+    "title": "Data Structures",
+    "permalink": "/build/smart-contracts/anatomy/collections"
   }
 }

@@ -19,11 +19,11 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "The Contract Class",
-    "permalink": "/ko/build/smart-contracts/anatomy/"
+    "title": "SDK Types",
+    "permalink": "/ko/build/smart-contracts/anatomy/types"
   },
   "next": {
-    "title": "상태 & 자료구조",
-    "permalink": "/ko/build/smart-contracts/anatomy/storage"
+    "title": "Data Structures",
+    "permalink": "/ko/build/smart-contracts/anatomy/collections"
   }
 }

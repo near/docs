@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/examples/xcc.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "gagdiez",
-  "lastUpdatedAt": 1712759479000,
+  "lastUpdatedBy": "Damian Parrino",
+  "lastUpdatedAt": 1715268079000,
   "frontMatter": {
     "id": "xcc",
     "title": "Cross Contract Call"

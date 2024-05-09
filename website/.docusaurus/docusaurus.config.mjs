@@ -17,6 +17,9 @@ export default {
       "comments": true,
       "admonitions": true,
       "headingIds": true
+    },
+    "anchors": {
+      "maintainCase": false
     }
   },
   "scripts": [
@@ -108,7 +111,7 @@ export default {
     ]
   ],
   "themeConfig": {
-    "image": "img/near_logo.svg",
+    "image": "docs/assets/welcome-pages/protocol.png",
     "announcementBar": {
       "id": "id-0002",
       "content": "🎉 Come check <a href=\"/blog\">our new blog</a>, where we will share weekly news and updates 🎉",
@@ -270,6 +273,13 @@ export default {
       "defaultMode": "light",
       "respectPrefersColorScheme": true,
       "disableSwitch": false
+    },
+    "docs": {
+      "sidebar": {
+        "hideable": true,
+        "autoCollapseCategories": true
+      },
+      "versionPersistence": "localStorage"
     },
     "navbar": {
       "logo": {
@@ -464,13 +474,6 @@ export default {
       "placeholder": "Search the Docs...",
       "insights": true,
       "searchPagePath": "search"
-    },
-    "docs": {
-      "versionPersistence": "localStorage",
-      "sidebar": {
-        "hideable": false,
-        "autoCollapseCategories": false
-      }
     },
     "metadata": [],
     "tableOfContents": {

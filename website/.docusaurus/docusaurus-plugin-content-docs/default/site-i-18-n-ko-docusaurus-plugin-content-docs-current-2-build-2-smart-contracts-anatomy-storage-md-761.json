@@ -19,11 +19,11 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "환경",
-    "permalink": "/ko/build/smart-contracts/anatomy/environment"
+    "title": "The Contract Class",
+    "permalink": "/ko/build/smart-contracts/anatomy/"
   },
   "next": {
-    "title": "전송 & Action",
-    "permalink": "/ko/build/smart-contracts/anatomy/actions"
+    "title": "External Interface",
+    "permalink": "/ko/build/smart-contracts/anatomy/functions"
   }
 }

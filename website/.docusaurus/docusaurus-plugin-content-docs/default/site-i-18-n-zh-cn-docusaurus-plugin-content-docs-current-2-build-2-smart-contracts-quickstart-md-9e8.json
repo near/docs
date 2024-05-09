@@ -24,7 +24,7 @@
     "permalink": "/zh-CN/build/smart-contracts/what-is"
   },
   "next": {
-    "title": "Modules, Types & Structs",
-    "permalink": "/zh-CN/build/smart-contracts/anatomy/basics"
+    "title": "The Contract Class",
+    "permalink": "/zh-CN/build/smart-contracts/anatomy/"
   }
 }

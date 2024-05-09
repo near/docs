@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk=self.webpackChunk||[]).push([[4228],{97706:e=>{e.exports=JSON.parse('{"permalink":"/vi/blog/tags/updates","page":1,"postsPerPage":10,"totalPages":1,"totalCount":2,"blogDescription":"Blog","blogTitle":"NEAR Docs Blog"}')}}]);

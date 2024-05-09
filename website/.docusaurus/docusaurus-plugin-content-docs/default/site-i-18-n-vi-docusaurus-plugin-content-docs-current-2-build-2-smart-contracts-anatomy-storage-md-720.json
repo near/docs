@@ -19,11 +19,11 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Environment",
-    "permalink": "/vi/build/smart-contracts/anatomy/environment"
+    "title": "The Contract Class",
+    "permalink": "/vi/build/smart-contracts/anatomy/"
   },
   "next": {
-    "title": "Transfers & Actions",
-    "permalink": "/vi/build/smart-contracts/anatomy/actions"
+    "title": "External Interface",
+    "permalink": "/vi/build/smart-contracts/anatomy/functions"
   }
 }

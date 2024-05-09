@@ -4,61 +4,56 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 export default [
   {
     path: '/zh-CN/blog',
-    component: ComponentCreator('/zh-CN/blog', 'a2c'),
+    component: ComponentCreator('/zh-CN/blog', '227'),
     exact: true
   },
   {
     path: '/zh-CN/blog/archive',
-    component: ComponentCreator('/zh-CN/blog/archive', '4b0'),
+    component: ComponentCreator('/zh-CN/blog/archive', 'a8b'),
     exact: true
   },
   {
     path: '/zh-CN/blog/reorganizing-docs',
-    component: ComponentCreator('/zh-CN/blog/reorganizing-docs', '959'),
+    component: ComponentCreator('/zh-CN/blog/reorganizing-docs', '9d0'),
     exact: true
   },
   {
     path: '/zh-CN/blog/tags',
-    component: ComponentCreator('/zh-CN/blog/tags', '43f'),
+    component: ComponentCreator('/zh-CN/blog/tags', '958'),
     exact: true
   },
   {
     path: '/zh-CN/blog/tags/docusaurus',
-    component: ComponentCreator('/zh-CN/blog/tags/docusaurus', 'b8a'),
+    component: ComponentCreator('/zh-CN/blog/tags/docusaurus', '185'),
     exact: true
   },
   {
     path: '/zh-CN/blog/tags/updates',
-    component: ComponentCreator('/zh-CN/blog/tags/updates', 'f53'),
+    component: ComponentCreator('/zh-CN/blog/tags/updates', '834'),
     exact: true
   },
   {
     path: '/zh-CN/blog/we-have-a-blog',
-    component: ComponentCreator('/zh-CN/blog/we-have-a-blog', '29a'),
+    component: ComponentCreator('/zh-CN/blog/we-have-a-blog', 'dc2'),
     exact: true
   },
   {
     path: '/zh-CN/search',
-    component: ComponentCreator('/zh-CN/search', '5cd'),
+    component: ComponentCreator('/zh-CN/search', '4e2'),
     exact: true
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '79f'),
+    component: ComponentCreator('/zh-CN/', 'ff1'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '582'),
+        component: ComponentCreator('/zh-CN/', 'fbb'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', 'fb4'),
+            component: ComponentCreator('/zh-CN/', 'b70'),
             routes: [
-              {
-                path: '/zh-CN/',
-                component: ComponentCreator('/zh-CN/', 'ccb'),
-                exact: true
-              },
               {
                 path: '/zh-CN/api/rpc/access-keys',
                 component: ComponentCreator('/zh-CN/api/rpc/access-keys', 'bdc'),
@@ -948,8 +943,8 @@ export default [
                 sidebar: "build"
               },
               {
-                path: '/zh-CN/build/smart-contracts/anatomy/basics',
-                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/basics', '246'),
+                path: '/zh-CN/build/smart-contracts/anatomy/collections',
+                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/collections', '754'),
                 exact: true,
                 sidebar: "build"
               },
@@ -966,6 +961,12 @@ export default [
                 sidebar: "build"
               },
               {
+                path: '/zh-CN/build/smart-contracts/anatomy/functions',
+                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/functions', 'caa'),
+                exact: true,
+                sidebar: "build"
+              },
+              {
                 path: '/zh-CN/build/smart-contracts/anatomy/serialization',
                 component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/serialization', '18b'),
                 exact: true,
@@ -974,6 +975,12 @@ export default [
               {
                 path: '/zh-CN/build/smart-contracts/anatomy/storage',
                 component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/storage', 'e79'),
+                exact: true,
+                sidebar: "build"
+              },
+              {
+                path: '/zh-CN/build/smart-contracts/anatomy/types',
+                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/types', '63f'),
                 exact: true,
                 sidebar: "build"
               },
@@ -2319,6 +2326,11 @@ export default [
                 component: ComponentCreator('/zh-CN/tutorials/welcome', 'aa6'),
                 exact: true,
                 sidebar: "tutorials"
+              },
+              {
+                path: '/zh-CN/',
+                component: ComponentCreator('/zh-CN/', 'ccb'),
+                exact: true
               }
             ]
           }

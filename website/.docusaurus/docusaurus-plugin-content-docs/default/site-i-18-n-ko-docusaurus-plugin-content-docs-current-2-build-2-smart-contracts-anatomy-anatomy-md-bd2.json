@@ -19,11 +19,11 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "모듈, 자료형 및 구조",
-    "permalink": "/ko/build/smart-contracts/anatomy/basics"
+    "title": "Quickstart ✨",
+    "permalink": "/ko/build/smart-contracts/quickstart"
   },
   "next": {
-    "title": "환경",
-    "permalink": "/ko/build/smart-contracts/anatomy/environment"
+    "title": "상태 & 자료구조",
+    "permalink": "/ko/build/smart-contracts/anatomy/storage"
   }
 }

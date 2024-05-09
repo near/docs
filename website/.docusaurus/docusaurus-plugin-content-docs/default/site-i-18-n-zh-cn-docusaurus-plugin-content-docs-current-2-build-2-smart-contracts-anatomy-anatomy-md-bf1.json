@@ -19,11 +19,11 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Modules, Types & Structs",
-    "permalink": "/zh-CN/build/smart-contracts/anatomy/basics"
+    "title": "Quickstart ✨",
+    "permalink": "/zh-CN/build/smart-contracts/quickstart"
   },
   "next": {
-    "title": "Environment",
-    "permalink": "/zh-CN/build/smart-contracts/anatomy/environment"
+    "title": "State & Data Structures",
+    "permalink": "/zh-CN/build/smart-contracts/anatomy/storage"
   }
 }

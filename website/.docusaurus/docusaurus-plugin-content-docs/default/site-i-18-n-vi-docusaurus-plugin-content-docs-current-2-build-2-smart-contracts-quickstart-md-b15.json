@@ -24,7 +24,7 @@
     "permalink": "/vi/build/smart-contracts/what-is"
   },
   "next": {
-    "title": "Modules, Types & Structs",
-    "permalink": "/vi/build/smart-contracts/anatomy/basics"
+    "title": "The Contract Class",
+    "permalink": "/vi/build/smart-contracts/anatomy/"
   }
 }

@@ -1,8 +1,8 @@
 {
-  "/zh-CN/blog-a2c": {
+  "/zh-CN/blog-227": {
     "__comp": "a6aa9e1f",
     "__context": {
-      "plugin": "f4c88952"
+      "plugin": "36994c47"
     },
     "sidebar": "814f3328",
     "items": [
@@ -13,38 +13,38 @@
         "content": "dd49b9c8"
       }
     ],
-    "metadata": "8d998be3"
+    "__props": "b6f232fb"
   },
-  "/zh-CN/blog/archive-4b0": {
+  "/zh-CN/blog/archive-a8b": {
     "__comp": "9e4087bc",
     "__context": {
-      "plugin": "f4c88952"
+      "plugin": "36994c47"
     },
-    "archive": "50bc71d4"
+    "__props": "e98e7c58"
   },
-  "/zh-CN/blog/reorganizing-docs-959": {
+  "/zh-CN/blog/reorganizing-docs-9d0": {
     "__comp": "ccc49370",
     "__context": {
       "data": {
         "blogMetadata": "acecf23e"
       },
-      "plugin": "f4c88952"
+      "plugin": "36994c47"
     },
     "sidebar": "814f3328",
     "content": "82acc1f3"
   },
-  "/zh-CN/blog/tags-43f": {
+  "/zh-CN/blog/tags-958": {
     "__comp": "01a85c17",
     "__context": {
-      "plugin": "f4c88952"
+      "plugin": "36994c47"
     },
     "sidebar": "814f3328",
-    "tags": "15ad2644"
+    "__props": "8b14544a"
   },
-  "/zh-CN/blog/tags/docusaurus-b8a": {
+  "/zh-CN/blog/tags/docusaurus-185": {
     "__comp": "6875c492",
     "__context": {
-      "plugin": "f4c88952"
+      "plugin": "36994c47"
     },
     "sidebar": "814f3328",
     "items": [
@@ -52,13 +52,12 @@
         "content": "3e2d9135"
       }
     ],
-    "tag": "8bcd5584",
-    "listMetadata": "d8932b65"
+    "__props": "4dbcded4"
   },
-  "/zh-CN/blog/tags/updates-f53": {
+  "/zh-CN/blog/tags/updates-834": {
     "__comp": "6875c492",
     "__context": {
-      "plugin": "f4c88952"
+      "plugin": "36994c47"
     },
     "sidebar": "814f3328",
     "items": [
@@ -69,42 +68,37 @@
         "content": "dd49b9c8"
       }
     ],
-    "tag": "5dcde6ed",
-    "listMetadata": "f9534ce0"
+    "__props": "70ef42d8"
   },
-  "/zh-CN/blog/we-have-a-blog-29a": {
+  "/zh-CN/blog/we-have-a-blog-dc2": {
     "__comp": "ccc49370",
     "__context": {
       "data": {
         "blogMetadata": "acecf23e"
       },
-      "plugin": "f4c88952"
+      "plugin": "36994c47"
     },
     "sidebar": "814f3328",
     "content": "bff79d34"
   },
-  "/zh-CN/search-5cd": {
+  "/zh-CN/search-4e2": {
     "__comp": "1a4e3797",
     "__context": {
-      "plugin": "82d98fd4"
+      "plugin": "c141421f"
     }
   },
-  "/zh-CN/-79f": {
+  "/zh-CN/-ff1": {
     "__comp": "5e95c892",
     "__context": {
-      "plugin": "8b378508"
+      "plugin": "aba21aa0"
     }
   },
-  "/zh-CN/-582": {
+  "/zh-CN/-fbb": {
     "__comp": "a7bd4aaa",
-    "version": "935f2afb"
+    "__props": "2d9c5935"
   },
-  "/zh-CN/-fb4": {
+  "/zh-CN/-b70": {
     "__comp": "a94703ab"
-  },
-  "/zh-CN/-ccb": {
-    "__comp": "17896441",
-    "content": "34709271"
   },
   "/zh-CN/api/rpc/access-keys-bdc": {
     "__comp": "17896441",
@@ -762,9 +756,9 @@
     "__comp": "17896441",
     "content": "4730762f"
   },
-  "/zh-CN/build/smart-contracts/anatomy/basics-246": {
+  "/zh-CN/build/smart-contracts/anatomy/collections-754": {
     "__comp": "17896441",
-    "content": "9a9d33e8"
+    "content": "afd3f382"
   },
   "/zh-CN/build/smart-contracts/anatomy/crosscontract-8f7": {
     "__comp": "17896441",
@@ -774,6 +768,10 @@
     "__comp": "17896441",
     "content": "104558c2"
   },
+  "/zh-CN/build/smart-contracts/anatomy/functions-caa": {
+    "__comp": "17896441",
+    "content": "e8b061dd"
+  },
   "/zh-CN/build/smart-contracts/anatomy/serialization-18b": {
     "__comp": "17896441",
     "content": "28938dcf"
@@ -781,6 +779,10 @@
   "/zh-CN/build/smart-contracts/anatomy/storage-e79": {
     "__comp": "17896441",
     "content": "efdaf444"
+  },
+  "/zh-CN/build/smart-contracts/anatomy/types-63f": {
+    "__comp": "17896441",
+    "content": "10f1d926"
   },
   "/zh-CN/build/smart-contracts/quickstart-e02": {
     "__comp": "17896441",
@@ -1685,5 +1687,9 @@
   "/zh-CN/tutorials/welcome-aa6": {
     "__comp": "17896441",
     "content": "ca8f19a6"
+  },
+  "/zh-CN/-ccb": {
+    "__comp": "17896441",
+    "content": "34709271"
   }
 }

@@ -24,7 +24,7 @@
     "permalink": "/ko/build/smart-contracts/what-is"
   },
   "next": {
-    "title": "모듈, 자료형 및 구조",
-    "permalink": "/ko/build/smart-contracts/anatomy/basics"
+    "title": "The Contract Class",
+    "permalink": "/ko/build/smart-contracts/anatomy/"
   }
 }

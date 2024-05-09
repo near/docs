@@ -1,7 +1,7 @@
 {
   "id": "build/smart-contracts/anatomy/anatomy",
-  "title": "The Contract Class",
-  "description": "Your contract's logic and state (storage) is defined by the main class, in which:",
+  "title": "Basic Anatomy",
+  "description": "Let's illustrate the basic anatomy of a simple \"Hello World\" contract. The code on this page comes from our Hello NEAR repository on Github.",
   "source": "@site/../docs/2.build/2.smart-contracts/anatomy/anatomy.md",
   "sourceDirName": "2.build/2.smart-contracts/anatomy",
   "slug": "/build/smart-contracts/anatomy/",
@@ -11,19 +11,20 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/anatomy/anatomy.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Damian Parrino",
-  "lastUpdatedAt": 1712943830000,
+  "lastUpdatedBy": "Guille",
+  "lastUpdatedAt": 1715263781000,
   "frontMatter": {
     "id": "anatomy",
-    "title": "The Contract Class"
+    "title": "Basic Anatomy",
+    "hide_table_of_contents": true
   },
   "sidebar": "build",
   "previous": {
-    "title": "Modules, Types & Structs",
-    "permalink": "/build/smart-contracts/anatomy/basics"
+    "title": "Quickstart ✨",
+    "permalink": "/build/smart-contracts/quickstart"
   },
   "next": {
-    "title": "Environment",
-    "permalink": "/build/smart-contracts/anatomy/environment"
+    "title": "State (Storage)",
+    "permalink": "/build/smart-contracts/anatomy/storage"
   }
 }

@@ -12,7 +12,7 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Guille",
-  "lastUpdatedAt": 1714414472000,
+  "lastUpdatedAt": 1715263781000,
   "frontMatter": {
     "id": "quickstart",
     "title": "Hello Contract",
@@ -24,7 +24,7 @@
     "permalink": "/build/smart-contracts/what-is"
   },
   "next": {
-    "title": "Modules, Types & Structs",
-    "permalink": "/build/smart-contracts/anatomy/basics"
+    "title": "Basic Anatomy",
+    "permalink": "/build/smart-contracts/anatomy/"
   }
 }
