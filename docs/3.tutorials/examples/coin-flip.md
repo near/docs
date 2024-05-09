@@ -52,12 +52,12 @@ Both Rust and JavaScript versions of the contract implement the same functionali
 The contract presents 2 methods: `flip_coin`, and `points_of`.
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="ts">
+  <Language value="js" language="ts">
     <Github fname="contract.ts" 
             url="https://github.com/near-examples/coin-flip-examples/blob/main/contract-ts/src/contract.ts"
             start="23" end="56" />
   </Language>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="rust" language="rust">
     <Github fname="lib.rs" 
             url="https://github.com/near-examples/coin-flip-examples/blob/main/contract-rs/src/lib.rs"
             start="46" end="70" />
@@ -70,7 +70,7 @@ The frontend is composed by a single HTML file (`/index.html`). This file define
 The website's logic lives in `/assets/js/index.js`, which communicates with the contract through a `wallet`. You will notice in `/assets/js/index.js` the following code:
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="ts">
+  <Language value="js" language="ts">
     <Github fname="index.js"
             url="https://github.com/near-examples/coin-flip-workshop-js/blob/main/frontend/index.js"
             start="10" end="19" />            
@@ -94,12 +94,12 @@ from users in a realistic scenario. You will find the integration tests for the 
 in `contract-ts/sandbox-ts` (for the JavaScript contract) and `contract-rs/tests` (for the Rust contract).
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="ts">
+  <Language value="js" language="ts">
     <Github fname="main.test.js"
             url="https://github.com/near-examples/coin-flip-examples/blob/main/contract-ts/sandbox-ts/main.ava.ts"
             start="30" end="53" />
   </Language>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="rust" language="rust">
     <Github fname="lib.rs" 
             url="https://github.com/near-examples/coin-flip-examples/blob/main/contract-rs/tests/tests.rs"
             start="25" end="82" />

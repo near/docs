@@ -30,7 +30,7 @@ All of our [examples](https://github.com/near-examples/docs-examples) come with 
 Lets take a look at the test of our [Quickstart Project](../quickstart.md) [👋 Hello NEAR](https://github.com/near-examples/hello-near-examples), where we deploy the contract on an account and test it correctly retrieves and sets the greeting.
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="js">
+  <Language value="js" language="js">
     <Github fname="main.ava.ts"
             url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/sandbox-ts/main.ava.ts" start="8" end="43"/>
   </Language>
@@ -43,7 +43,7 @@ Lets take a look at the test of our [Quickstart Project](../quickstart.md) [👋
 In most cases we will want to test complex methods involving multiple users and money transfers. A perfect example for this is our [Donation Example](https://github.com/near-examples/donation-examples), which enables users to `donate` money to a beneficiary. Lets see its integration tests
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="js">
+  <Language value="js" language="js">
     <Github fname="main.ava.ts"
             url="https://github.com/near-examples/donation-examples/blob/main/contract-ts/sandbox-ts/src/main.ava.ts"
             start="50" end="73" />
@@ -61,7 +61,7 @@ NEAR Workspaces allows you to write tests once, and run them either on `testnet`
 [Spooning a blockchain](https://coinmarketcap.com/alexandria/glossary/spoon-blockchain) is copying the data from one network into a different network. NEAR Workspaces makes it easy to copy data from Mainnet or Testnet contracts into your local Sandbox environment:
 
 <Tabs groupId="code-tabs">
-<TabItem value="🌐 JavaScript" default>
+<TabItem value="js" label="🌐 JavaScript" default>
 
 ```ts
 const refFinance = await root.importContract({
@@ -83,7 +83,7 @@ See a [TypeScript example of spooning](https://github.com/near/workspaces-js/blo
 
 </TabItem>
 
-<TabItem value="🦀 Rust">
+<TabItem value="rust" label="🦀 Rust">
 
 Specify the contract name from `testnet` you want to be pulling, and a specific block ID referencing back to a specific time. (Just in case the contract you're referencing has been changed or updated)
 
@@ -144,7 +144,7 @@ You can alter contract code, accounts, and access keys using normal transactions
 Keep in mind that you cannot perform arbitrary mutation on contract state with transactions since transactions can only include contract calls that mutate state in a contract-programmed way. For example, with an NFT contract, you can perform some operation with NFTs you have ownership of, but you cannot manipulate NFTs that are owned by other accounts since the smart contract is coded with checks to reject that. This is the expected behavior of the NFT contract. However, you may want to change another person's NFT for a test setup. This is called "arbitrary mutation on contract state" and can be done with `patchState`:
 
 <Tabs groupId="code-tabs">
-<TabItem value="🌐 JavaScript" >
+<TabItem value="js" label="🌐 JavaScript" >
 
 ```js
     const {contract, ali} = t.context.accounts;
@@ -174,7 +174,7 @@ To see a complete example of how to do this, see the [patch-state test](https://
 
 </TabItem>
 
-<TabItem value="🦀 Rust" >
+<TabItem value="rust" label="🦀 Rust" >
 
 ```rust
     // Grab STATE from the testnet status_message contract. This contract contains the following data:
@@ -231,7 +231,7 @@ This approach is more complex to do and also cannot be performed without restart
 `workspaces` offers support for forwarding the state of the blockchain to the future. This means contracts which require time sensitive data do not need to sit and wait the same amount of time for blocks on the sandbox to be produced. We can simply just call `worker.fast_forward` to get us further in time:
 
 <Tabs groupId="code-tabs">
-<TabItem value="🌐 JavaScript" default>
+<TabItem value="js" label="🌐 JavaScript" default>
 
   <Github fname="fast-forward.ava.ts" language="js"
           url="https://github.com/near/near-workspaces-js/blob/main/__tests__/08.fast-forward.ava.ts"
@@ -239,7 +239,7 @@ This approach is more complex to do and also cannot be performed without restart
 
 </TabItem>
 
-<TabItem value="🦀 Rust">
+<TabItem value="rust" label="🦀 Rust">
 
 ```rust
 #[tokio::test]
@@ -283,7 +283,7 @@ You can switch to testnet mode in three ways.
 1. When creating Worker set network to `testnet` and pass your master account:
 
 <Tabs groupId="code-tabs">
-<TabItem value="🌐 JavaScript"  default>
+<TabItem value="js" label="🌐 JavaScript"  default>
 
 ```ts
 const worker = await Worker.init({
@@ -294,7 +294,7 @@ const worker = await Worker.init({
 
 </TabItem>
 
-<TabItem value="🦀 Rust" >
+<TabItem value="rust" label="🦀 Rust" >
 
 ```rust
 #[tokio::main]  // or whatever runtime we want
@@ -314,7 +314,7 @@ let worker = workspaces::testnet().await?;
 2. Set the `NEAR_WORKSPACES_NETWORK` and `TESTNET_MASTER_ACCOUNT_ID` environment variables when running your tests:
 
 <Tabs groupId="code-tabs">
-<TabItem value="🌐 JavaScript"  default>
+<TabItem value="js" label="🌐 JavaScript"  default>
 
 ```bash
 NEAR_WORKSPACES_NETWORK=testnet TESTNET_MASTER_ACCOUNT_ID=<your master account Id> node test.js
@@ -329,7 +329,7 @@ If you set this environment variables and pass `{network: 'testnet', testnetMast
 3. If using `near-workspaces` with AVA, you can use a custom config file. Other test runners allow similar config files; adjust the following instructions for your situation.
 
 <Tabs groupId="code-tabs">
-<TabItem value="🌐 JavaScript"  default>
+<TabItem value="js" label="🌐 JavaScript"  default>
 
 Create a file in the same directory as your `package.json` called `ava.testnet.config.cjs` with the following contents:
 
