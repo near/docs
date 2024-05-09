@@ -158,7 +158,7 @@ Your new smart contract stores a `greeting: string` attribute in their state, an
 <Language value="rs" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
-            start="6" end="32" />
+            start="4" end="32" />
 
 </Language>
 
