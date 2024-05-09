@@ -23,14 +23,14 @@ There is a delay between the call and the callback in which everyone can still i
 While making your contract, it is likely that you will want to query information from another contract. Below, you can see a basic example in which we query the greeting message from our [Hello NEAR](../quickstart.md) example.
 
 <CodeTabs>
-<Language value="🌐 JavaScript" language="ts">
+<Language value="js" language="ts">
     <Github fname="contract.ts" 
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/src/contract.ts"
             start="17" end="39" />
 
 </Language>
 
-<Language value="🦀 Rust" language="rust">
+<Language value="rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/lib.rs"
             start="22" end="51" />
@@ -48,14 +48,14 @@ While making your contract, it is likely that you will want to query information
 Calling another contract passing information is also a common scenario. Bellow you can see a method that interacts with the [Hello NEAR](../quickstart.md) example to change its greeting message.
 
 <CodeTabs>
-<Language value="🌐 JavaScript" language="ts">
+<Language value="js" language="ts">
     <Github fname="contract.ts"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/src/contract.ts"
             start="41" end="64" />
 
 </Language>
 
-<Language value="🦀 Rust" language="rust">
+<Language value="rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/lib.rs"
             start="53" end="80" />
@@ -77,7 +77,7 @@ Cross-contract calls work by creating two promises in the network:
 Both promises take the same arguments:
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="ts">
+  <Language value="js" language="ts">
     
 ```ts
 NearPromise.new("external_address").functionCall("method", JSON.stringify(arguments), DEPOSIT, GAS);
@@ -85,7 +85,7 @@ NearPromise.new("external_address").functionCall("method", JSON.stringify(argume
 
 </Language>
 
-<Language value="🦀 Rust" language="rust">
+<Language value="rust" language="rust">
 
 ```rust
 external_trait::ext("external_address")
@@ -130,14 +130,14 @@ The callback methods in your contract must be public, so it can be called when t
 ### Checking Execution Status
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="ts">
+  <Language value="js" language="ts">
     <Github fname="contract.ts"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/src/contract.ts"
             start="31" end="38" />
 
 </Language>
 
-<Language value="🦀 Rust" language="rust">
+<Language value="rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/lib.rs"
             start="67" end="74" />
@@ -150,14 +150,14 @@ The callback methods in your contract must be public, so it can be called when t
 In case the call finishes successfully, the resulting object will have a `status` of 1, and the `buffer` will have the encoded result (if any). In order to recover the result you need to decode it from the resulting `buffer`:
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="ts">
+  <Language value="js" language="ts">
     <Github fname="contract.ts"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/src/contract.ts"
             start="31" end="31" />
 
 </Language>
 
-<Language value="🦀 Rust" language="rust">
+<Language value="rust" language="rust">
     <Github fname="lib.ts"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/lib.rs"
             start="47" end="49" />

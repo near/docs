@@ -36,7 +36,7 @@ For both cases, let's consider the following example.
 The [rust-status-message](https://github.com/near-examples/rust-status-message) example contract has the following structure:
 
 <CodeTabs>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/rust-status-message/blob/b5fa6f2a30559d56a3a3ea52da8c26c5d3907606/src/lib.rs" start="5" end="29"/>
   </Language>
