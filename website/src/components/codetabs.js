@@ -1,7 +1,13 @@
 import React from "react";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
-import ReferenceCode from "@theme/ReferenceCodeBlock";
+import GitHubInternal from "./github";
+
+const lang2label = {
+  "rust": "🦀 Rust",
+  "js": "🌐 Javascript",
+  "ts": "🌐 Typescript",
+}
 
 export function CodeTabs({ children }) {
   if (!Array.isArray(children)) {
@@ -12,7 +18,7 @@ export function CodeTabs({ children }) {
     <Tabs className="language-tabs" groupId="code-tabs">
       {children.map((component, index) => {
         return (
-          <TabItem value={component.props.value} label={component.props.value}>
+          <TabItem value={component.props.value} label={lang2label[component.props.value]}>
             {component}
           </TabItem>
         );
@@ -49,16 +55,8 @@ export function Language({ children, language }) {
   }
 }
 
-export function Github({ url, start, end, language, fname }) {
-  let fullURL = url + "#";
-  if (start && end) {
-    fullURL += "L" + start + "-L" + end + "#";
-  }
-  return (
-    <ReferenceCode language={language} fname={fname}>
-      {fullURL}
-    </ReferenceCode>
-  );
+export function Github({ url, start, end, language, fname, metastring }) {
+  return GitHubInternal({ url, start, end, language, fname, metastring });
 }
 
 /* AUX function */

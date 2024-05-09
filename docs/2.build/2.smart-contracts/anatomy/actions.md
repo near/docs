@@ -21,7 +21,7 @@ but **cannot** call two methods on different contracts.
 You can send $NEAR from your contract to any other account on the network. The Gas cost for transferring $NEAR is fixed and is based on the protocol's genesis config. Currently, it costs `~0.45 TGas`.
 
 <Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value="🌐 JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
 
 ```js
   import { NearBindgen, NearPromise, call } from 'near-sdk-js'
@@ -38,7 +38,7 @@ You can send $NEAR from your contract to any other account on the network. The G
 
 </TabItem>
 
-<TabItem value="🦀 Rust">
+<TabItem value="rust" label="🦀 Rust">
 
 ```rust
   use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
@@ -77,7 +77,7 @@ in a deployed [Hello NEAR](../quickstart.md) contract, and check if everything w
 right in the callback.
 
 <Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value="🌐 JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
 
 ```js
   import { NearBindgen, near, call, bytes, NearPromise } from 'near-sdk-js'
@@ -122,7 +122,7 @@ right in the callback.
 
 </TabItem>
 
-<TabItem value="🦀 Rust">
+<TabItem value="rust" label="🦀 Rust">
 
 ```rust
   use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
@@ -180,7 +180,7 @@ Sub-accounts are simply useful for organizing your accounts (e.g. `dao.project.n
 
 
 <Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value="🌐 JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
 
 ```js
   import { NearBindgen, near, call, NearPromise } from 'near-sdk-js'
@@ -202,7 +202,7 @@ Sub-accounts are simply useful for organizing your accounts (e.g. `dao.project.n
 
 </TabItem>
 
-<TabItem value="🦀 Rust">
+<TabItem value="rust" label="🦀 Rust">
 
 ```rust
   use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
@@ -249,7 +249,7 @@ If your contract wants to create a `.mainnet` or `.testnet` account, then it nee
 the `create_account` method of `near` or `testnet` root contracts.
 
 <Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value="🌐 JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
 
 ```js
   import { NearBindgen, near, call, bytes, NearPromise } from 'near-sdk-js'
@@ -274,7 +274,7 @@ the `create_account` method of `near` or `testnet` root contracts.
 
 </TabItem>
 
-<TabItem value="🦀 Rust">
+<TabItem value="rust" label="🦀 Rust">
 
 ```rust
   use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
@@ -314,7 +314,7 @@ the `create_account` method of `near` or `testnet` root contracts.
 When creating an account you can also batch the action of deploying a contract to it. Note that for this, you will need to pre-load the byte-code you want to deploy in your contract.
 
 <Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value="🦀 Rust">
+  <TabItem value="rust" label="🦀 Rust">
 
 ```rust
   use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
@@ -360,7 +360,7 @@ There are two options for adding keys to the account:
 <br/>
 
 <Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value="🌐 JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
 
 ```js
   import { NearBindgen, near, call, NearPromise } from 'near-sdk-js'
@@ -384,7 +384,7 @@ There are two options for adding keys to the account:
 
 </TabItem>
 
-<TabItem value="🦀 Rust">
+<TabItem value="rust" label="🦀 Rust">
 
 ```rust
   use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
@@ -429,7 +429,7 @@ There are two scenarios in which you can use the `delete_account` action:
 2. To make your smart contract delete its own account.
 
 <Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value="🌐 JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
 
 ```js
   import { NearBindgen, near, call, NearPromise } from 'near-sdk-js'
@@ -459,7 +459,7 @@ There are two scenarios in which you can use the `delete_account` action:
 
 </TabItem>
 
-<TabItem value="🦀 Rust">
+<TabItem value="rust" label="🦀 Rust">
 
 ```rust
   use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
