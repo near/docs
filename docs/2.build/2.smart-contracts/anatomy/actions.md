@@ -41,16 +41,15 @@ You can send $NEAR from your contract to any other account on the network. The G
 <TabItem value="rust" label="🦀 Rust">
 
 ```rust
-  use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
-  use near_sdk::{near_bindgen, AccountId, Promise, Balance};
+  use near_sdk::{near, AccountId, Promise, NearToken};
 
-  #[near_bindgen]
-  #[derive(Default, BorshDeserialize, BorshSerialize)]
+  #[near(contract_state)]
+  #[derive(Default)]
   pub struct Contract { }
 
   #[near_bindgen]
   impl Contract {
-    pub fn transfer(&self, to: AccountId, amount: Balance){
+    pub fn transfer(&self, to: AccountId, amount: NearToken){
       Promise::new(to).transfer(amount);
     }
   }
@@ -125,12 +124,11 @@ right in the callback.
 <TabItem value="rust" label="🦀 Rust">
 
 ```rust
-  use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
   use near_sdk::{near_bindgen, env, log, Promise, Gas, PromiseError};
   use serde_json::json;
 
-  #[near_bindgen]
-  #[derive(Default, BorshDeserialize, BorshSerialize)]
+  #[near(contract_state)]
+  #[derive(Default)]
   pub struct Contract { }
 
   const HELLO_NEAR: &str = "hello-nearverse.testnet";
@@ -205,16 +203,15 @@ Sub-accounts are simply useful for organizing your accounts (e.g. `dao.project.n
 <TabItem value="rust" label="🦀 Rust">
 
 ```rust
-  use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
-  use near_sdk::{near_bindgen, env, Promise, Balance};
+  use near_sdk::{near, env, Promise, NearToken};
 
-  #[near_bindgen]
-  #[derive(Default, BorshDeserialize, BorshSerialize)]
+  #[near(contract_state)]
+  #[derive(Default)]
   pub struct Contract { }
                             
   const MIN_STORAGE: Balance = 1_000_000_000_000_000_000_000; //0.001Ⓝ
 
-  #[near_bindgen]
+  #[near]
   impl Contract {
     pub fn create(&self, prefix: String){
       let account_id = prefix + "." + &env::current_account_id().to_string();
@@ -277,18 +274,17 @@ the `create_account` method of `near` or `testnet` root contracts.
 <TabItem value="rust" label="🦀 Rust">
 
 ```rust
-  use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
-  use near_sdk::{near_bindgen, Promise, Gas, Balance };
+  use near_sdk::{near, Promise, Gas, NearToken };
   use serde_json::json;
 
-  #[near_bindgen]
-  #[derive(Default, BorshDeserialize, BorshSerialize)]
+  #[near(contract_state)]
+  #[derive(Default)]
   pub struct Contract { }
 
   const CALL_GAS: Gas = Gas(28_000_000_000_000);
   const MIN_STORAGE: Balance = 1_820_000_000_000_000_000_000; //0.00182Ⓝ
 
-  #[near_bindgen]
+  #[near]
   impl Contract {
     pub fn create_account(&self, account_id: String, public_key: String){
       let args = json!({
@@ -317,17 +313,16 @@ When creating an account you can also batch the action of deploying a contract t
   <TabItem value="rust" label="🦀 Rust">
 
 ```rust
-  use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
-  use near_sdk::{near_bindgen, env, Promise, Balance};
+  use near_sdk::{near_bindgen, env, Promise, NearToken};
 
-  #[near_bindgen]
-  #[derive(Default, BorshDeserialize, BorshSerialize)]
+  #[near(contract_state)]
+  #[derive(Default)]
   pub struct Contract { }
 
   const MIN_STORAGE: Balance = 1_100_000_000_000_000_000_000_000; //1.1Ⓝ
   const HELLO_CODE: &[u8] = include_bytes!("./hello.wasm");
 
-  #[near_bindgen]
+  #[near]
   impl Contract {
     pub fn create_hello(&self, prefix: String){
       let account_id = prefix + "." + &env::current_account_id().to_string();
@@ -462,16 +457,15 @@ There are two scenarios in which you can use the `delete_account` action:
 <TabItem value="rust" label="🦀 Rust">
 
 ```rust
-  use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
-  use near_sdk::{near_bindgen, env, Promise, Balance, AccountId};
+  use near_sdk::{near, env, Promise, Neartoken, AccountId};
 
-  #[near_bindgen]
-  #[derive(Default, BorshDeserialize, BorshSerialize)]
+  #[near(contract_state)]
+  #[derive(Default)]
   pub struct Contract { }
                             
   const MIN_STORAGE: Balance = 1_000_000_000_000_000_000_000; //0.001Ⓝ
 
-  #[near_bindgen]
+  #[near]
   impl Contract {
     pub fn create_delete(&self, prefix: String, beneficiary: AccountId){
       let account_id = prefix + "." + &env::current_account_id().to_string();

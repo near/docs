@@ -125,7 +125,7 @@ The contract presents 4 methods: `get_num`, `increment`, `decrement`, and `reset
   <Language value="rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/counters/blob/main/contract-rs/src/lib.rs"
-            start="5" end="39" />
+            start="5" end="37" />
   </Language>
 </CodeTabs>
 
