@@ -127,7 +127,7 @@ right in the callback.
   use near_sdk::{near_bindgen, env, log, Promise, Gas, PromiseError};
   use serde_json::json;
 
-  #[near(contrct_state)]
+  #[near(contract_state)]
   #[derive(Default)]
   pub struct Contract { }
 
