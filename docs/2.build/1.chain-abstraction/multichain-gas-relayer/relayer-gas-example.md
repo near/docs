@@ -96,7 +96,7 @@ Python and Rust output different hex RLP encoded transactions.
   <Language value="Rust" language="rust">
     <Github fname="test.rs"
         url="https://github.com/near/multichain-relayer-server/blob/5b040611f2dc6c6b405b5ec00d5102e3cc27a65c/tests/tests.rs"
-        start="24" end="33" />
+        start="24" end="38" />
   </Language>
 </CodeTabs>
 

@@ -87,9 +87,10 @@ The contract exposes methods to query the greeting and change it. These methods 
   <Language value="rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/lib.rs"
-            start="25" end="50" />
+            start="22" end="51" />
             <Github fname="external.rs"
-            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/external.rs" />
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/external.rs"
+            start="2" end="12" />
   </Language>
 </CodeTabs>
 
