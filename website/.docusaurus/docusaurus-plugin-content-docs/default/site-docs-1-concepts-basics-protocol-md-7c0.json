@@ -1,7 +1,7 @@
 {
   "id": "concepts/basics/protocol",
   "title": "What is NEAR?",
-  "description": "NEAR is a user-friendly and carbon-neutral blockchain, built to be fast, safe, and able to growth without limit.",
+  "description": "NEAR is a user-friendly and carbon-neutral blockchain, built to be fast, secure, and able to grow without limits.",
   "source": "@site/../docs/1.concepts/basics/protocol.md",
   "sourceDirName": "1.concepts/basics",
   "slug": "/concepts/basics/protocol",
@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/basics/protocol.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "s-n-park",
-  "lastUpdatedAt": 1714658877000,
+  "lastUpdatedBy": "Guille",
+  "lastUpdatedAt": 1715388106000,
   "frontMatter": {
     "id": "protocol",
     "title": "What is NEAR?",
