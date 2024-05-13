@@ -75,7 +75,7 @@ function DesktopView({ props: { blocks, files, languages, language, setLanguage 
     window.addEventListener('scroll', handleScroll);
 
     return () => { window.removeEventListener('scroll', handleScroll) };
-  }, [blocks, files, language, selectedFile]);
+  }, [blocks, files, language]);
 
   return (
     <>
