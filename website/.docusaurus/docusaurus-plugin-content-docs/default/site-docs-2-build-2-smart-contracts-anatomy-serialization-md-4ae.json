@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/anatomy/serialization.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "gagdiez",
-  "lastUpdatedAt": 1712759479000,
+  "lastUpdatedBy": "Lyudmil Ivanov",
+  "lastUpdatedAt": 1715700006000,
   "frontMatter": {
     "id": "serialization",
     "title": "Notes on Serialization"

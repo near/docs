@@ -87,17 +87,17 @@
       "plugin": "c141421f"
     }
   },
-  "/zh-CN/-ff1": {
+  "/zh-CN/-59a": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "aba21aa0"
     }
   },
-  "/zh-CN/-fbb": {
+  "/zh-CN/-305": {
     "__comp": "a7bd4aaa",
     "__props": "2d9c5935"
   },
-  "/zh-CN/-b70": {
+  "/zh-CN/-ab1": {
     "__comp": "a94703ab"
   },
   "/zh-CN/api/rpc/access-keys-bdc": {
@@ -768,7 +768,7 @@
     "__comp": "17896441",
     "content": "104558c2"
   },
-  "/zh-CN/build/smart-contracts/anatomy/functions-caa": {
+  "/zh-CN/build/smart-contracts/anatomy/functions-73b": {
     "__comp": "17896441",
     "content": "e8b061dd"
   },

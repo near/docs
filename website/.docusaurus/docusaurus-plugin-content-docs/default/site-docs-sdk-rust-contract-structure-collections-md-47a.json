@@ -12,14 +12,14 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Lyudmil Ivanov",
-  "lastUpdatedAt": 1715388922000,
+  "lastUpdatedAt": 1715700006000,
   "sidebarPosition": 2,
   "frontMatter": {
     "sidebar_position": 2
   },
   "sidebar": "tools",
   "previous": {
-    "title": "near_bindgen",
+    "title": "near",
     "permalink": "/sdk/rust/contract-structure/near-bindgen"
   },
   "next": {

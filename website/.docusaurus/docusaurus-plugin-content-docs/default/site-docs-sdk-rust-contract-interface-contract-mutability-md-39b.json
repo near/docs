@@ -1,7 +1,7 @@
 {
   "id": "sdk/rust/contract-interface/contract-mutability",
   "title": "Contract Mutability",
-  "description": "Contract state mutability is handled automatically based on how self is used in the function parameters. Depending on which is used, the #[near_bindgen] macro will generate the respective code to load/deserialize state for any function which uses self and serialize/store state only for when &mut self is used.",
+  "description": "Contract state mutability is handled automatically based on how self is used in the function parameters. Depending on which is used, the #[near] macro will generate the respective code to load/deserialize state for any function which uses self and serialize/store state only for when &mut self is used.",
   "source": "@site/../docs/sdk/rust/contract-interface/contract-mutability.md",
   "sourceDirName": "sdk/rust/contract-interface",
   "slug": "/sdk/rust/contract-interface/contract-mutability",
@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/sdk/rust/contract-interface/contract-mutability.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Damián Parrino",
-  "lastUpdatedAt": 1661352815000,
+  "lastUpdatedBy": "Lyudmil Ivanov",
+  "lastUpdatedAt": 1715700006000,
   "sidebarPosition": 2,
   "frontMatter": {
     "sidebar_position": 2
