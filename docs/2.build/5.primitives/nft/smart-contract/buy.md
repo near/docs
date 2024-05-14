@@ -8,8 +8,7 @@ Please note that in this example the contract will be the owner of the NFT, howe
 const NFT_MARKETPLACE_CONTRACT: &str = "paras-marketplace-v2.testnet";
 
 // Define the contract structure
-#[near_bindgen]
-#[derive(BorshDeserialize, BorshSerialize)]
+#[near(contract_state)]
 pub struct Contract {
   nft_marketplace_contract: AccountId
 }
@@ -30,7 +29,7 @@ trait ExternalNftContract {
 }
 
 // Implement the contract structure
-#[near_bindgen]
+#[near]
 impl Contract {
   #[payable]
   pub fn buy(&mut self, nft_contract_id: AccountId, token_id: TokenId, ft_token_id: Option<AccountId>, price: Option<U128>) -> Promise {

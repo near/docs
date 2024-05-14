@@ -10,12 +10,11 @@ Hardcoded prefixes in the constructor using a short one letter prefix that was c
 When using nested collection, the prefix must be constructed manually.
 
 ```rust
-use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
+use near_sdk::borsh::{self};
 use near_sdk::collections::{UnorderedMap, UnorderedSet};
-use near_sdk::{near_bindgen, AccountId};
+use near_sdk::{near, AccountId};
 
-#[near_bindgen]
-#[derive(BorshDeserialize, BorshSerialize)]
+#[near(contract_state)]
 pub struct Contract {
     pub accounts: UnorderedMap<AccountId, UnorderedSet<String>>,
 }
@@ -28,7 +27,7 @@ impl Default for Contract {
     }
 }
 
-#[near_bindgen]
+#[near]
 impl Contract {
     pub fn get_tokens(&self, account_id: &AccountId) -> Vec<String> {
         let tokens = self.accounts.get(account_id).unwrap_or_else(|| {
@@ -65,10 +64,9 @@ It's as efficient as manually constructing them, because with Borsh serializatio
 ```rust
 use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
 use near_sdk::collections::{UnorderedMap, UnorderedSet};
-use near_sdk::{env, near_bindgen, AccountId, BorshStorageKey, CryptoHash};
+use near_sdk::{env, near, AccountId, BorshStorageKey, CryptoHash};
 
-#[near_bindgen]
-#[derive(BorshDeserialize, BorshSerialize)]
+#[near(contract_state)]
 pub struct Contract {
     pub accounts: UnorderedMap<AccountId, UnorderedSet<String>>,
 }
@@ -81,13 +79,13 @@ impl Default for Contract {
     }
 }
 
-#[derive(BorshStorageKey, BorshSerialize)]
+#[near(serializers = [borsh])]
 pub enum StorageKeys {
     Accounts,
     SubAccount { account_hash: CryptoHash },
 }
 
-#[near_bindgen]
+#[near]
 impl Contract {
     pub fn get_tokens(&self, account_id: &AccountId) -> Vec<String> {
         let tokens = self.accounts.get(account_id).unwrap_or_else(|| {

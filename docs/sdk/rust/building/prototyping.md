@@ -69,8 +69,7 @@ At this point the contract is deployed and has some state.
 Now let's say you change the contract to store two kinds of data for each account:
 
 ```rust
-#[near_bindgen]
-#[derive(BorshDeserialize, BorshSerialize)]
+#[near(contract_state)]
 pub struct StatusMessage {
     taglines: LookupMap<AccountId, String>,
     bios: LookupMap<AccountId, String>,
@@ -85,7 +84,7 @@ impl Default for StatusMessage {
     }
 }
 
-#[near_bindgen]
+#[near]
 impl StatusMessage {
     pub fn set_tagline(&mut self, message: String) {
         let account_id = env::signer_account_id();

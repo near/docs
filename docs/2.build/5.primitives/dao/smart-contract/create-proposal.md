@@ -6,9 +6,9 @@
 pub type OldAccountId = String;
 
 // How the voting policy votes get weighted.
-#[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize, Clone, PartialEq)]
+#[near(serializers = [json, borsh])
+#[derive(Clone, PartialEq)]
 #[cfg_attr(not(target_arch = "wasm32"), derive(Debug))]
-#[serde(crate = "near_sdk::serde")]
 pub enum WeightKind {
   // Using token amounts and total delegated at the moment.
   TokenWeight,
@@ -17,9 +17,9 @@ pub enum WeightKind {
 }
 
 // Direct weight or ratio to total weight, used for the voting policy
-#[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize, Clone)]
+#[near(serializers = [json, borsh])
+#[derive(Clone)]
 #[cfg_attr(not(target_arch = "wasm32"), derive(Debug, PartialEq))]
-#[serde(crate = "near_sdk::serde")]
 #[serde(untagged)]
 pub enum WeightOrRatio {
   Weight(U128),
@@ -27,9 +27,9 @@ pub enum WeightOrRatio {
 }
 
 // Defines configuration of the vote
-#[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize, Clone)]
+#[near(serializers = [json, borsh])
+#[derive(Clone)]
 #[cfg_attr(not(target_arch = "wasm32"), derive(Debug, PartialEq))]
-#[serde(crate = "near_sdk::serde")]
 pub struct VotePolicy {
   // Kind of weight to use for votes.
   pub weight_kind: WeightKind,
@@ -43,9 +43,9 @@ pub struct VotePolicy {
   pub threshold: WeightOrRatio,
 }
 
-#[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize, Clone)]
+#[near(serializers = [json, borsh])]
+#[derive(Clone)]
 #[cfg_attr(not(target_arch = "wasm32"), derive(Debug, PartialEq))]
-#[serde(crate = "near_sdk::serde")]
 pub enum RoleKind {
   // Matches everyone, who is not matched by other roles.
   Everyone,
@@ -55,9 +55,9 @@ pub enum RoleKind {
   Group(HashSet<AccountId>),
 }
 
-#[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize, Clone)]
+#[near(serializers = [json, borsh])]
+#[derive(Clone)]
 #[cfg_attr(not(target_arch = "wasm32"), derive(Debug, PartialEq))]
-#[serde(crate = "near_sdk::serde")]
 pub struct RolePermission {
   // Name of the role to display to the user.
   pub name: String,
@@ -71,9 +71,9 @@ pub struct RolePermission {
 }
 
 // Defines voting / decision making policy of this DAO
-#[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize, Clone)]
+#[near(serializers = [json, borsh])]
+#[derive(Clone)]
 #[cfg_attr(not(target_arch = "wasm32"), derive(Debug, PartialEq))]
-#[serde(crate = "near_sdk::serde")]
 pub struct Policy {
   // List of roles and permissions for them in the current policy.
   pub roles: Vec<RolePermission>,
@@ -90,9 +90,9 @@ pub struct Policy {
 }
 
 // Versioned policy
-#[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize, Clone)]
+#[near(serializers = [json, borsh])]
+#[derive(Clone)]
 #[cfg_attr(not(target_arch = "wasm32"), derive(Debug, PartialEq))]
-#[serde(crate = "near_sdk::serde", untagged)]
 pub enum VersionedPolicy {
   // Default policy with given accounts as council.
   Default(Vec<AccountId>),
@@ -100,9 +100,8 @@ pub enum VersionedPolicy {
 }
 
 // Function call arguments
-#[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize)]
+#[near(serializers = [json, borsh])]
 #[cfg_attr(not(target_arch = "wasm32"), derive(Clone, Debug))]
-#[serde(crate = "near_sdk::serde")]
 pub struct ActionCall {
   method_name: String,
   args: Base64VecU8,
@@ -111,9 +110,9 @@ pub struct ActionCall {
 }
 
 // Bounty information.
-#[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize, Clone)]
+#[near(serializers = [json, borsh])]
+#[derive(Clone)]
 #[cfg_attr(not(target_arch = "wasm32"), derive(Debug))]
-#[serde(crate = "near_sdk::serde")]
 pub struct Bounty {
   /// Description of the bounty.
   pub description: String,
@@ -129,18 +128,16 @@ pub struct Bounty {
 }
 
 // Info about factory that deployed this contract and if auto-update is allowed
-#[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize)]
+#[near(serializers = [json, borsh])]
 #[cfg_attr(not(target_arch = "wasm32"), derive(Clone, Debug))]
-#[serde(crate = "near_sdk::serde")]
 pub struct FactoryInfo {
   pub factory_id: AccountId,
   pub auto_update: bool,
 }
 
 // Function call arguments
-#[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize)]
+#[near(serializers = [json, borsh])]
 #[cfg_attr(not(target_arch = "wasm32"), derive(Clone, Debug))]
-#[serde(crate = "near_sdk::serde")]
 pub struct PolicyParameters {
   pub proposal_bond: Option<U128>,
   pub proposal_period: Option<U64>,
@@ -149,8 +146,8 @@ pub struct PolicyParameters {
 }
 
 // Votes recorded in the proposal
-#[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize, Clone, Debug)]
-#[serde(crate = "near_sdk::serde")]
+#[near(serializers = [json, borsh])]
+#[derive(Clone, Debug)]
 pub enum Vote {
   Approve = 0x0,
   Reject = 0x1,
@@ -158,8 +155,8 @@ pub enum Vote {
 }
 
 // Configuration of the DAO
-#[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize, Clone, Debug)]
-#[serde(crate = "near_sdk::serde")]
+#[near(serializers = [json, borsh])]
+#[derive(Clone, Debug)]
 pub struct Config {
   // Name of the DAO.
   pub name: String,
@@ -171,9 +168,8 @@ pub struct Config {
 }
 
 // Kinds of proposals, doing different action
-#[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize)]
+#[near(serializers = [json, borsh])]
 #[cfg_attr(not(target_arch = "wasm32"), derive(Clone, Debug))]
-#[serde(crate = "near_sdk::serde")]
 pub enum ProposalKind {
   // Change the DAO config.
   ChangeConfig { config: Config },
@@ -230,8 +226,7 @@ pub enum ProposalKind {
   ChangePolicyUpdateParameters { parameters: PolicyParameters },
 }
 
-#[derive(Serialize, Deserialize)]
-#[serde(crate = "near_sdk::serde")]
+#[near(serializers = [json])]
 pub struct ProposalInput {
   /// Description of this proposal.
   pub description: String,
@@ -246,7 +241,7 @@ trait ExternalDaoContract {
 }
 
 // Implement the contract structure
-#[near_bindgen]
+#[near]
 impl Contract {
   #[payable]
   pub fn create_proposal(&mut self, proposal: ProposalInput) -> Promise {
