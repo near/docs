@@ -19,14 +19,14 @@ Promise::new("subaccount.example.near".parse().unwrap())
 In the context of a full contract:
 
 ```rust
-use near_sdk::{env, near_bindgen, AccountId, Balance, Promise};
+use near_sdk::{env, near, AccountId, Balance, Promise};
 
 const INITIAL_BALANCE: Balance = 250_000_000_000_000_000_000_000; // 2.5e23yN, 0.25N
 
-#[near_bindgen]
+#[near(contract_state)]
 pub struct Contract {}
 
-#[near_bindgen]
+#[near]
 impl Contract {
     #[private]
     pub fn create_subaccount(prefix: AccountId) -> Promise {

@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Contract Mutability
 
-Contract state mutability is handled automatically based on how [`self`](https://doc.rust-lang.org/std/keyword.self.html) is used in the function parameters. Depending on which is used, the [`#[near_bindgen]`](../contract-structure/near-bindgen.md) macro will generate the respective code to load/deserialize state for any function which uses `self` and serialize/store state only for when `&mut self` is used.
+Contract state mutability is handled automatically based on how [`self`](https://doc.rust-lang.org/std/keyword.self.html) is used in the function parameters. Depending on which is used, the [`#[near]`](../contract-structure/near-bindgen.md) macro will generate the respective code to load/deserialize state for any function which uses `self` and serialize/store state only for when `&mut self` is used.
 
 The following semantics are consistent for all [public methods](public-methods.md).
 
@@ -17,13 +17,14 @@ For more information about `&self` versus `self` see [this section in the Rust b
 Here are some examples of using each:
 
 ```rust
-#[near_bindgen]
-#[derive(BorshDeserialize, BorshSerialize, Default)]
+#[near(contract_state)]
+#[derive(Default)]
 pub struct MyContractStructure {
     integer: u64,
     message: String,
 }
-#[near_bindgen]
+
+#[near]
 impl MyContractStructure {
     pub fn get_values(self) -> (u64, String) {
         (self.integer, self.message)
@@ -85,12 +86,12 @@ Mutable functions allow for loading the existing state, modifying it, then rewri
 An example of a mutable function is as follows:
 
 ```rust
-#[near_bindgen]
-#[derive(BorshDeserialize, BorshSerialize, Default)]
+#[near(contract_state)]
+#[derive(Default)]
 pub struct MyContractStructure {
     integer: u64,
 }
-#[near_bindgen]
+#[near]
 impl MyContractStructure {
     pub fn modify_value(&mut self, new_value: u64) {
         self.integer = new_value;
@@ -110,7 +111,7 @@ Some examples of pure functions are as follows:
 ```rust
 const SOME_VALUE: u64 = 8;
 
-#[near_bindgen]
+#[near]
 impl MyContractStructure {
     pub fn log_message(/* Parameters here */) {
         near_sdk::log!("inside log message");

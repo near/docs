@@ -52,7 +52,6 @@ The core interactions that are important to keep in mind:
 - Exposed functions can omit reading and writing to state if class variables are not accessed in the function
   - This can be useful for some static functionality or returning data embedded in the contract code
 
-<!-- TODO include link to near_bindgen docs, when they aren't empty -->
 
 ## Initialization Methods
 

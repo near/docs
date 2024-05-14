@@ -135,14 +135,14 @@ should arrive soon
 Let's look at this example, written only for educational purposes:
 
 ```rust
-#[near_bindgen]
-#[derive(BorshDeserialize, BorshSerialize, PanicOnDefault)]
+#[near(serializers = [json, borsh])]
+#[derive(PanicOnDefault)]
 pub struct Contract {
   string: String,
   vector: Vector<u8>
 }
 
-#[near_bindgen]
+#[near]
 impl Contract {
   #[init]
   pub fn init(string: String, first_u8: u8) -> Self {

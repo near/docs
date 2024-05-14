@@ -4,14 +4,14 @@ sidebar_position: 1
 
 # Public Method Types
 
-Methods can be called externally by using the `pub` identifier within the [`#[near_bindgen]` macro](../contract-structure/near-bindgen.md) which will expose the method in the compiled WASM bytecode.
+Methods can be called externally by using the `pub` identifier within the [`#[near]` macro](../contract-structure/near-bindgen.md) which will expose the method in the compiled WASM bytecode.
 
 It is important to only mark methods that should be called externally as public. If you need a contract to call itself, you can mark the function as public but add the [`#[private]` annotation](private-methods.md) so that it will panic if called from anything but the contract itself.
 
 A basic usage of this would look like the following:
 
 ```rust
-#[near_bindgen]
+#[near]
 impl MyContractStructure {
     pub fn some_method(&mut self) {
         // .. method logic here
@@ -41,14 +41,14 @@ pub extern "C" fn some_method() {
 
 ## Exposing trait implementations
 
-Functions can also be exposed through trait implementations. This can be useful if implementing a shared interface or standard for a contract. This code generation is handled very similarly to basic `pub` functions, but the `#[near_bindgen]` macro only needs to be attached to the trait implementation, not the trait itself:
+Functions can also be exposed through trait implementations. This can be useful if implementing a shared interface or standard for a contract. This code generation is handled very similarly to basic `pub` functions, but the `#[near]` macro only needs to be attached to the trait implementation, not the trait itself:
 
 ```rust
 pub trait MyTrait {
     fn trait_method(&mut self);
 }
 
-#[near_bindgen]
+#[near]
 impl MyTrait for MyContractStructure {
     fn trait_method(&mut self) {
         // .. method logic here

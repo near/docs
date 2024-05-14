@@ -164,7 +164,7 @@ class Contract {
 ```rs
 const SOME_VALUE: u64 = 8;
 
-#[near_bindgen]
+#[near]
 impl MyContractStructure {
   fn internal_helper(mut &self, params... ){
     // this function cannot be called from the outside
