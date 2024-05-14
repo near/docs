@@ -2,8 +2,8 @@
 
 ```rust
 // Set of possible action to take
-#[derive(BorshSerialize, BorshDeserialize, Serialize, Deserialize, Debug)]
-#[serde(crate = "near_sdk::serde")]
+#[near(serializers = [json, borsh])]
+#[derive(Debug)]
 pub enum Action {
   // Action to add proposal. Used internally.
   AddProposal,
@@ -29,7 +29,7 @@ trait ExternalDaoContract {
 }
 
 // Implement the contract structure
-#[near_bindgen]
+#[near]
 impl Contract {
   #[payable]
   pub fn act_proposal(&mut self, id: u64, action: Action, memo: Option<String>) -> Promise {

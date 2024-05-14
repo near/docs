@@ -100,7 +100,7 @@ they **all get reverted**.
   <Language value="js" language="js">
     <Github fname="contract.ts"
           url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
-          start="37" end="40" />
+          start="38" end="41" />
     <Github fname="batch_actions.ts"
           url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/batch_actions.ts"
           start="5" end="17" />
@@ -108,7 +108,7 @@ they **all get reverted**.
   <Language value="rust" language="rust">
     <Github fname="batch_actions.rs"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/batch_actions.rs"
-            start="7" end="19" />
+            start="8" end="20" />
   </Language>
 </CodeTabs>
 
@@ -121,7 +121,7 @@ action** from the chain.
   <Language value="js" language="js">
     <Github fname="contract.ts"
       url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
-      start="42" end="45" />
+      start="43" end="46" />
     <Github fname="batch_actions.ts"
       url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/batch_actions.ts"
       start="19" end="29" />
@@ -132,7 +132,7 @@ action** from the chain.
   <Language value="rust" language="rust">
     <Github fname="batch_actions.rs"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/batch_actions.rs"
-            start="21" end="34" />
+            start="22" end="35" />
   </Language>
 </CodeTabs>
 
@@ -147,7 +147,7 @@ all in parallel. If one of them fails the rest **ARE NOT REVERTED**.
   <Language value="js" language="js">
     <Github fname="contract.ts"
       url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
-      start="47" end="50" />
+      start="48" end="51" />
     <Github fname="multiple_contracts.ts"
       url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/multiple_contracts.ts"
       start="6" end="21" />
@@ -155,7 +155,7 @@ all in parallel. If one of them fails the rest **ARE NOT REVERTED**.
   <Language value="rust" language="rust">
     <Github fname="multiple_contracts.rs"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/multiple_contracts.rs"
-            start="18" end="56" />
+            start="16" end="55" />
   </Language>
 </CodeTabs>
 
@@ -168,7 +168,7 @@ value returned by each call, or an error message.
   <Language value="js" language="js">
     <Github fname="contract.ts"
       url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
-      start="52" end="55" />
+      start="53" end="58" />
     <Github fname="multiple_contracts.ts"
       url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/multiple_contracts.ts"
       start="24" end="41" />
@@ -196,7 +196,7 @@ In this case, we call multiple contracts that will return the same type:
   <Language value="js" language="js">
     <Github fname="contract.ts"
       url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
-      start="57" end="60" />
+      start="65" end="70" />
     <Github fname="similar_contracts.ts"
       url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/similar_contracts.ts"
       start="6" end="35" />
@@ -204,7 +204,7 @@ In this case, we call multiple contracts that will return the same type:
   <Language value="rust" language="rust">
     <Github fname="similar_contracts.rs"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/similar_contracts.rs"
-            start="7" end="30" />
+            start="8" end="31" />
   </Language>
 </CodeTabs>
 

@@ -19,7 +19,7 @@ overflow-checks = true
 Try to validate the input, context, state and access using `require!` before taking any actions. The earlier you panic, the more [gas](https://docs.near.org/concepts/protocol/gas) you will save for the caller.
 
 ```rust
-#[near_bindgen]
+#[nearn]
 impl Contract {
     pub fn set_fee(&mut self, new_fee: Fee) {
         require!(env::predecessor_account_id() == self.owner_id, "Owner's method");
@@ -33,7 +33,7 @@ impl Contract {
 the Rust `assert!` macro can be used instead of `require!`.
 
 ```rust
-#[near_bindgen]
+#[near]
 impl Contract {
     pub fn set_fee(&mut self, new_fee: Fee) {
         assert_eq!(env::predecessor_account_id(), self.owner_id, "Owner's method");
@@ -69,7 +69,7 @@ This can prevent false-positives when the first or first few transactions in a c
 E.g.
 
 ```rust
-#[near_bindgen]
+#[near]
 impl Contract {
     pub fn withdraw_100(&mut self, receiver_id: AccountId) -> Promise {
         Promise::new(receiver_id).transfer(100)
@@ -94,28 +94,22 @@ When marking structs with `serde::Serialize` you need to use `#[serde(crate = "n
 to point serde to the correct base crate.
 
 ```rust
-/// Import `borsh` from `near_sdk` crate 
-use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
-/// Import `serde` from `near_sdk` crate 
-use near_sdk::serde::{Serialize, Deserialize};
-
 /// Main contract structure serialized with Borsh
-#[near_bindgen]
-#[derive(BorshDeserialize, BorshSerialize, PanicOnDefault)]
+#[near(contract_state)]
+#[derive(PanicOnDefault)]
 pub struct Contract {
     pub pair: Pair,
 }
 
 /// Implements both `serde` and `borsh` serialization.
 /// `serde` is typically useful when returning a struct in JSON format for a frontend.
-#[derive(Serialize, Deserialize, BorshDeserialize, BorshSerialize)]
-#[serde(crate = "near_sdk::serde")]
+#[near(serializers = [json, borsh])]
 pub struct Pair {
     pub a: u32,
     pub b: u32,
 }
 
-#[near_bindgen]
+#[near]
 impl Contract {
     #[init]
     pub fn new(pair: Pair) -> Self {
