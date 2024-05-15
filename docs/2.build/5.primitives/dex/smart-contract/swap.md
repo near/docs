@@ -1,6 +1,5 @@
 ```rust
-#[derive(Serialize, Deserialize)]
-#[serde(crate = "near_sdk::serde")]
+#[near(serializers = [json])]
 pub struct SwapAction {
     /// Pool which should be used for swapping.
     pub pool_id: u64,
@@ -23,7 +22,7 @@ trait ExternalAmmContract {
 }
 
 // Implement the contract structure
-#[near_bindgen]
+#[near]
 impl Contract {
   #[private] // Public - but only callable by env::current_account_id()
   pub fn external_call_callback(&self, #[callback_result] call_result: Result<String, PromiseError>) {

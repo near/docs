@@ -8,7 +8,7 @@ trait ExternalDaoFactoryContract {
 }
 
 // Implement the contract structure
-#[near_bindgen]
+#[near]
 impl Contract {
   #[payable]
   pub fn create_dao(&mut self, name: AccountId, args: Base64VecU8) -> Promise {

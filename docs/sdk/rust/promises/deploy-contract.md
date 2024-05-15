@@ -25,14 +25,14 @@ Promise::new("subaccount.example.near".parse().unwrap())
 Here's what a full contract might look like, showing a naïve way to pass `code` as an argument rather than hard-coding it with `include_bytes!`:
 
 ```rust
-use near_sdk::{env, near_bindgen, AccountId, Balance, Promise};
+use near_sdk::{env, near AccountId, Balance, Promise};
 
 const INITIAL_BALANCE: Balance = 3_000_000_000_000_000_000_000_000; // 3e24yN, 3N
 
-#[near_bindgen]
+#[near(contract_state)]
 pub struct Contract {}
 
-#[near_bindgen]
+#[near]
 impl Contract {
     #[private]
     pub fn create_child_contract(prefix: AccountId, code: Vec<u8>) -> Promise {

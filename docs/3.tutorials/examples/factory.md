@@ -32,7 +32,7 @@ The [Generic Factory](https://github.com/near-examples/factory-rust/) presents a
   <Language value="rust" language="rust">
     <Github fname="deploy.rs"
             url="https://github.com/near-examples/factory-rust/blob/main/src/deploy.rs"
-            start="14" end="60" />
+            start="14" end="66" />
     <Github fname="manager.rs"
             url="https://github.com/near-examples/factory-rust/blob/main/src/manager.rs"
             start="5" end="19" />

@@ -206,10 +206,10 @@ The `ft_on_transfer` must return how many FT tokens have to **be refunded**, so 
 
 ```rust
 // Implement the contract structure
-#[near_bindgen]
+#[near(contract_state)]
 impl Contract {}
 
-#[near_bindgen]
+#[near]
 impl FungibleTokenReceiver for Contract {
   // Callback on receiving tokens by this contract.
   // `msg` format is either "" for deposit or `TokenReceiverMessage`.
