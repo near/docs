@@ -44,15 +44,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '59a'),
+    component: ComponentCreator('/zh-CN/', '5c5'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '305'),
+        component: ComponentCreator('/zh-CN/', '5e5'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', 'ab1'),
+            component: ComponentCreator('/zh-CN/', '53c'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -2305,19 +2305,19 @@ export default [
               },
               {
                 path: '/zh-CN/tutorials/templates/blog',
-                component: ComponentCreator('/zh-CN/tutorials/templates/blog', '71a'),
+                component: ComponentCreator('/zh-CN/tutorials/templates/blog', '5b3'),
                 exact: true,
                 sidebar: "tutorials"
               },
               {
                 path: '/zh-CN/tutorials/templates/marketplace',
-                component: ComponentCreator('/zh-CN/tutorials/templates/marketplace', '63f'),
+                component: ComponentCreator('/zh-CN/tutorials/templates/marketplace', '7a1'),
                 exact: true,
                 sidebar: "tutorials"
               },
               {
                 path: '/zh-CN/tutorials/templates/minter',
-                component: ComponentCreator('/zh-CN/tutorials/templates/minter', '7f0'),
+                component: ComponentCreator('/zh-CN/tutorials/templates/minter', '34e'),
                 exact: true,
                 sidebar: "tutorials"
               },
