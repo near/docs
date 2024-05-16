@@ -265,6 +265,14 @@ table {
     padding-left: 0;
 }
 
+.breadcrumbs__item--active .breadcrumbs__link {
+    background-color: transparent !important;
+}
+
+.breadcrumbs__link:hover {
+    background-color: transparent !important;
+}
+
 a {
     color: var(--near-color-royal);
 }

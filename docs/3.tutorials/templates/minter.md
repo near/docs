@@ -214,6 +214,6 @@ You can use this project as a reference to build your own, and use or remove any
 :::info Get in touch
 You can get in touch with the mintbase team using the following channels:
 
-- Support: [Join the Telegram](https://tg.me/mintdev)
+- Support: [Join the Telegram](https://t.me/mintdev)
 - Twitter: [@mintbase](https://twitter.com/mintbase)
 :::
