@@ -67,7 +67,7 @@ function MobileView({ props: { blocks, files, languages, language, setLanguage }
 
     return () => { window.removeEventListener('scroll', handleScroll) };
 
-  }, [blocks, files, language, selectedFile]);
+  }, [blocks, files, language]);
 
   return (
     <>
