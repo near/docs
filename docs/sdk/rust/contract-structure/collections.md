@@ -140,7 +140,7 @@ assert!(m2.is_empty());
 assert_eq!(m2.get(&1), Some(&"test".to_string()));
 
 // Bug 3: forgetting to save the collection in storage. When the collection is attached to
-// the contract state (`self` in `#[near_bindgen]`) this will be done automatically, but if
+// the contract state (`self` in `#[near]`) this will be done automatically, but if
 // interacting with storage manually or working with nested collections, this is relevant.
 use near_sdk::store::Vector;
 

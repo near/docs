@@ -81,7 +81,7 @@ Because JavaScript only supports integers to value `2^53 - 1`, you will lose pre
 You can convert from `U64` to `u64` and back using `std::convert::Into`, e.g.
 
 ```rust
-#[near_bindgen]
+#[near]
 impl Contract {
     pub fn mult(&self, a: U64, b: U64) -> U128 {
         let a: u64 = a.into();
@@ -95,7 +95,7 @@ impl Contract {
 You can also access inner values and using `.0`:
 
 ```diff
- #[near_bindgen]
+ #[near]
  impl Contract {
      pub fn mult(&self, a: U64, b: U64) -> U128 {
 -        let a: u64 = a.into();
@@ -111,7 +111,7 @@ You can also access inner values and using `.0`:
 And you can cast the lower-case `u` variants to upper-case `U` variants using `U64(...)` and `U128(...)`:
 
 ```diff
- #[near_bindgen]
+ #[near]
  impl Contract {
      pub fn mult(&self, a: U64, b: U64) -> U128 {
          let a = a.0;
@@ -126,7 +126,7 @@ And you can cast the lower-case `u` variants to upper-case `U` variants using `U
 Combining it all:
 
 ```rust
-#[near_bindgen]
+#[near]
 impl Contract {
     pub fn mult(&self, a: U64, b: U64) -> U128 {
         U128(u128::from(a.0) * u128::from(b.0))
@@ -143,13 +143,14 @@ Another example of a type you may want to override the default serialization of 
 Example here:
 
 ```rust
-#[near_bindgen]
-#[derive(BorshDeserialize, BorshSerialize, PanicOnDefault)]
+#[near(contract_state)]
+#[derive(PanicOnDefault)]
 pub struct Contract {
     // Notice, internally we store `Vec<u8>` 
     pub data: Vec<u8>,
 }
-#[near_bindgen]
+
+#[near]
 impl Contract {
     #[init]
     pub fn new(data: Base64VecU8) -> Self {

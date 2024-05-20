@@ -47,7 +47,7 @@ You can send $NEAR from your contract to any other account on the network. The G
   #[derive(Default)]
   pub struct Contract { }
 
-  #[near_bindgen]
+  #[near]
   impl Contract {
     pub fn transfer(&self, to: AccountId, amount: NearToken){
       Promise::new(to).transfer(amount);
@@ -124,7 +124,7 @@ right in the callback.
 <TabItem value="rust" label="🦀 Rust">
 
 ```rust
-  use near_sdk::{near_bindgen, env, log, Promise, Gas, PromiseError};
+  use near_sdk::{near, env, log, Promise, Gas, PromiseError};
   use serde_json::json;
 
   #[near(contract_state)]
@@ -135,7 +135,7 @@ right in the callback.
   const NO_DEPOSIT: u128 = 0;
   const CALL_GAS: Gas = Gas(5_000_000_000_000);
 
-  #[near_bindgen]
+  #[near]
   impl Contract {
     pub fn call_method(&self){
       let args = json!({ "message": "howdy".to_string() })
@@ -313,7 +313,7 @@ When creating an account you can also batch the action of deploying a contract t
   <TabItem value="rust" label="🦀 Rust">
 
 ```rust
-  use near_sdk::{near_bindgen, env, Promise, NearToken};
+  use near_sdk::{near, env, Promise, NearToken};
 
   #[near(contract_state)]
   #[derive(Default)]
@@ -382,17 +382,16 @@ There are two options for adding keys to the account:
 <TabItem value="rust" label="🦀 Rust">
 
 ```rust
-  use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
-  use near_sdk::{near_bindgen, env, Promise, Balance, PublicKey};
+  use near_sdk::{near, env, Promise, Balance, PublicKey};
 
-  #[near_bindgen]
-  #[derive(Default, BorshDeserialize, BorshSerialize)]
+  #[near(serializers = [json, borsh])]
+  #[derive(Default)]
   pub struct Contract { }
 
   const MIN_STORAGE: Balance = 1_100_000_000_000_000_000_000_000; //1.1Ⓝ
   const HELLO_CODE: &[u8] = include_bytes!("./hello.wasm");
 
-  #[near_bindgen]
+  #[near]
   impl Contract {
     pub fn create_hello(&self, prefix: String, public_key: PublicKey){
       let account_id = prefix + "." + &env::current_account_id().to_string();

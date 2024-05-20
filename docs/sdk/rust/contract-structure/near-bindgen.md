@@ -2,23 +2,22 @@
 sidebar_position: 1
 ---
 
-# near_bindgen
+# near
 
-The `#[near_bindgen]` macro is used on a `struct` and the function implementations to generate the necessary code to be a valid NEAR contract and expose the intended functions to be able to be called externally.
+The `#[near]` macro is used on a `struct` and the function implementations to generate the necessary code to be a valid NEAR contract and expose the intended functions to be able to be called externally.
 
 For example, on a simple counter contract, the macro will be applied as such:
 
 ```rust
-use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
-use near_sdk::near_bindgen;
+use near_sdk::near;
 
-#[near_bindgen]
-#[derive(BorshDeserialize, BorshSerialize, Default)]
+#[near(contract_state)]
+#[derive(Default)]
 pub struct Counter {
     value: u64,
 }
 
-#[near_bindgen]
+#[near]
 impl Counter {
     pub fn increment(&mut self) {
         self.value += 1;
@@ -32,7 +31,7 @@ impl Counter {
 
 In this example, the `Counter` struct represents the smart contract state and anything that implements `BorshSerialize` and `BorshDeserialize` can be included, even `collections`, which will be covered in the next section. Whenever a function is called, the state will be loaded and deserialized, so it's important to keep this amount of data loaded as minimal as possible.
 
-`#[near_bindgen]` also annotates the `impl` for `Counter` and this will generate any necessary boilerplate to expose the functions. The core interactions that are important to keep in mind:
+`#[near]` also annotates the `impl` for `Counter` and this will generate any necessary boilerplate to expose the functions. The core interactions that are important to keep in mind:
 - Any `pub` functions will be callable externally from any account/contract.
   - For more information, see [public methods](../contract-interface/public-methods.md)
 - `self` can be used in multiple ways to control the [mutability of the contract](../contract-interface/contract-mutability.md):
@@ -42,14 +41,13 @@ In this example, the `Counter` struct represents the smart contract state and an
   - This can be useful for some static functionality or returning data embedded in the contract code
 - If the function has a return value, it will be serialized and attached as a result through `env::value_return`
 
-<!-- TODO include link to near_bindgen docs, when they aren't empty -->
 
 ## Initialization Methods
 
 By default, the `Default::default()` implementation of a contract will be used to initialize a contract. There can be a custom initialization function which takes parameters or performs custom logic with the following `#[init]` annotation:
 
 ```rust
-#[near_bindgen]
+#[near]
 impl Counter {
     #[init]
     pub fn new(value: u64) -> Self {
@@ -62,8 +60,8 @@ impl Counter {
 All contracts are expected to implement `Default`. If you would like to prohibit the default implementation from being used, the `PanicOnDefault` derive macro can be used:
 
 ```rust
-#[near_bindgen]
-#[derive(BorshDeserialize, BorshSerialize, PanicOnDefault)]
+#[near(contract_state)]
+#[derive(PanicOnDefault)]
 pub struct Counter {
     // ...
 }
@@ -97,6 +95,6 @@ pub fn my_method(&mut self) {
 
 :::info Interaction with other macros
 
-When `near_bindgen` is built for the wasm32 target, it generates the external NEAR contract bindings.  To achieve this it is actually generating another function with the signature `pub extern "C" fn function_name()` that first deserializes the contract struct from NEAR storage and then calls the `contract.function_name(parameter1, parameter2, ...)`.  If you have annotated your function with any attribute-like macros, these are then executed _twice_.  Specifically if the attribute like macro makes any modification to the function signature, or inserts any code that depends on the contract struct (in the form of `&self`, `&mut self`, or `self`) this will fail in the second invocation, because the externally exposed function does not have any concept of this struct.  It is possible to detect this by checking which build target you are building for and limit the execution of the macro to operate only on the first pass.
+When `near` is built for the wasm32 target, it generates the external NEAR contract bindings.  To achieve this it is actually generating another function with the signature `pub extern "C" fn function_name()` that first deserializes the contract struct from NEAR storage and then calls the `contract.function_name(parameter1, parameter2, ...)`.  If you have annotated your function with any attribute-like macros, these are then executed _twice_.  Specifically if the attribute like macro makes any modification to the function signature, or inserts any code that depends on the contract struct (in the form of `&self`, `&mut self`, or `self`) this will fail in the second invocation, because the externally exposed function does not have any concept of this struct.  It is possible to detect this by checking which build target you are building for and limit the execution of the macro to operate only on the first pass.
 
 :::

@@ -6,7 +6,7 @@ trait ExternalAmmContract {
 }
 
 // Implement the contract structure
-#[near_bindgen]
+#[near]
 impl Contract {
   #[private] // Public - but only callable by env::current_account_id()
   pub fn external_get_deposits_callback(&self, #[callback_result] call_result: Result<HashMap<AccountId, U128>, PromiseError>) -> Option<HashMap<AccountId, U128>> {
