@@ -61,6 +61,7 @@ Chain Signatures use [`derivation paths`](../../1.concepts/abstraction/chain-sig
 - The NEAR address (e.g., `example.near`, `example.testnet`, etc.)
 - A derivation path (a string such as `ethereum-1`, `ethereum-2`, etc.)
 - The MPC service's public key
+  - `secp256k1:4NfTiv3UsGahebgTaHyD9vF8KYKMBnfd6kh94mK6xv8fGBiJB8TBtFMP5WWXz6B89Ac1fbpzPwAvoyQebemHFwx3`
 
 We provide code to derive the address, as it's a complex process that involves multiple steps of hashing and encoding:
 
@@ -79,12 +80,21 @@ We provide code to derive the address, as it's a complex process that involves m
 
 </Tabs>
 
-:::tip
+:::info
 
 The same NEAR account and path will always produce the same address on the target blockchain.
 
 - `example.near` + `ethereum-1` = `0x1b48b83a308ea4beb845db088180dc3389f8aa3b`
 - `example.near` + `ethereum-2` = `0x99c5d3025dc736541f2d97c3ef3c90de4d221315`
+
+:::
+
+:::tip
+
+We recommend hardcoding the derivation paths in your application to ensure the signature request is made to the correct account
+
+#### v2.multichain-mpc.testnet
+`secp256k1:4NfTiv3UsGahebgTaHyD9vF8KYKMBnfd6kh94mK6xv8fGBiJB8TBtFMP5WWXz6B89Ac1fbpzPwAvoyQebemHFwx3`
 
 :::
 
