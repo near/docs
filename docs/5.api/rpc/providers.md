@@ -13,6 +13,8 @@ If you want to use a custom RPC provider with NEAR Wallet Selector, [check this 
 
 :::
 
+## Mainnet
+
 | Provider                                                                   | Endpoint Root                                                |
 | -------------------------------------------------------------------------- | ------------------------------------------------------------ |
 | [NEAR](setup.md)                                                           | `https://rpc.mainnet.near.org`                               |
@@ -34,3 +36,10 @@ If you want to use a custom RPC provider with NEAR Wallet Selector, [check this 
 | [QuickNode](https://www.quicknode.com/chains/near)                         | -                                                            |
 | [Seracle](https://docs.seracle.com/)                                       | `https://api.seracle.com/saas/baas/rpc/near/mainnet/public/` |
 | [Zeeve](https://www.zeeve.io/)                                             | -                                                            |
+
+## Testnet
+
+| Provider                                                                   | Endpoint Root                                                |
+| -------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| [NEAR](setup.md)                                                           | `https://rpc.testnet.near.org`                               |
+| [Pagoda](https://www.pagoda.co/console)                                    | `https://near-testnet.api.pagoda.co/rpc/v1`                  |
