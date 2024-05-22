@@ -4,13 +4,17 @@ title: Multichain Relayer Server
 sidebar_label: Multichain Relayer Server
 ---
 
-
-
 The [Multichain Relayer Server](https://github.com/near/multichain-relayer-server) facilitates cross-chain transactions and enables Chain Abstraction.
+
+:::info Alpha stage
+
+The Multichain Relayer solution is currently under development. Users who want to test-drive this solution should keep in mind that the product is in alpha stage, and a code audit is pending.
+
+:::
 
 ## Overview
 
-The main function of this server is interfacing with foreign chain RPCs sending both presigned funding transactions to cover gas and the actual presigned transaction once the funding is done. 
+The main function of this server is interfacing with foreign chain RPCs sending both presigned funding transactions to cover gas and the actual presigned transaction once the funding is done.
 
 Although the multichain relayer is a server in current design of this system, the goal is to package this as a library that can be called on the client side of the wallet. This will make the system more decentralized.
 
@@ -76,12 +80,12 @@ When using the Multichain Gas relayer solution, some limitations should be consi
 
 ## Total Time expectations for end users
 
-It depends on the chain, but in our current estimation 50-90% of the time will be on NEAR calling and waiting for the signing to complete on the MPC service. 
-The signing service will take 15-30 seconds. 
-We assume that both the signing of the foreign chain transaction and the gas funding transaction happen in parallel. 
-On BSC mainnet (not beaconchain which has 1 second finality) with 3 second blocktimes there should be 2 blocks for confirmation optimistically bringing the total to 6 seconds optimistically/transaction on BSC. 
-We need to make 2 transactions, so that's 12-24 seconds on BSC assuming 2-4 blocks for finality. Add in some network overhead for each step in the process, especially the indexer picking up the emitted event (~5-7 seconds), and we're at 30-60 seconds/transaction on BSC. 
-For Solana it would be closer to 20-30 seconds (0.4 second block time, 1 block confirmation). See [table 1](https://usa.visa.com/solutions/crypto/deep-dive-on-solana.html) for more confirmation times. 
+It depends on the chain, but in our current estimation 50-90% of the time will be on NEAR calling and waiting for the signing to complete on the MPC service.
+The signing service will take 15-30 seconds.
+We assume that both the signing of the foreign chain transaction and the gas funding transaction happen in parallel.
+On BSC mainnet (not beaconchain which has 1 second finality) with 3 second blocktimes there should be 2 blocks for confirmation optimistically bringing the total to 6 seconds optimistically/transaction on BSC.
+We need to make 2 transactions, so that's 12-24 seconds on BSC assuming 2-4 blocks for finality. Add in some network overhead for each step in the process, especially the indexer picking up the emitted event (~5-7 seconds), and we're at 30-60 seconds/transaction on BSC.
+For Solana it would be closer to 20-30 seconds (0.4 second block time, 1 block confirmation). See [table 1](https://usa.visa.com/solutions/crypto/deep-dive-on-solana.html) for more confirmation times.
 
 L2 real finality times can over a day for finality unless we trust a centralized sequencer for soft confirmations, which may be as fast as a few seconds as in the case of [zksync era](https://era.zksync.io/docs/reference/concepts/finality.html#instant-confirmations).
 
