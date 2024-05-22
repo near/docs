@@ -1,5 +1,5 @@
 ```rust
-#[near_bindgen]
+#[near]
 impl Contract {
   #[payable]
   pub fn send_tokens(&mut self, receiver_id: AccountId, amount: U128) -> Promise {

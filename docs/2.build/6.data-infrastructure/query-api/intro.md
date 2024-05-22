@@ -54,7 +54,7 @@ If you would like to create a new indexer, simply click [**Create New Indexer**]
 ### Indexers stored on-chain
 
 QueryAPI stores all the indexer logic and schemas used to provision the databases on-chain.
-Whenever you interact with the QueryAPI NEAR component, in the background it's making an RPC query to [`queryapi.dataplatform.near`](https://stats.gallery/mainnet/queryapi.dataplatform.near/contract?t=week),
+Whenever you interact with the QueryAPI NEAR component, in the background it's making an RPC query to `queryapi.dataplatform.near`,
 where a smart contract stores all of your indexer logic as well as your schemas.
 
 For example, if you select the _feed-indexer_ and click on [**View indexer**](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=dataplatform.near/feed-indexer) you'll see all the details about an indexer that powers the [near.org](https://near.org)'s main posts feed.

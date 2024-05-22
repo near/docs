@@ -7,9 +7,7 @@ import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
-
-In this article you'll learn how to run end-to-end tests on the entire Multichain Relayer system.  
+In this article you'll learn how to run end-to-end tests on the entire Multichain Relayer system.
 
 :::info Required tools
 
@@ -24,6 +22,12 @@ For this tutorial, you'll need to have installed:
 ## Setup
 
 Before you start testing, set up your local environment and install the Relayer server, the Event indexer and NEAR CLI.
+
+:::info Alpha stage
+
+The Multichain Relayer solution is currently under development. Users who want to test-drive this solution should keep in mind that the product is in alpha stage, and a code audit is pending.
+
+:::
 
 ### Multichain Relayer server
 
@@ -75,13 +79,13 @@ Find the Gas Station Event indexer source code in [this GitHub repository](https
 
 ## Running tests
 
-The gas station contract supports EIP-1559 transactions. 
+The gas station contract supports EIP-1559 transactions.
 
 1. Set the transaction details of the EVM transaction you want to send in [`generate_rlp_evm_txn.py`](https://github.com/near/multichain-relayer-server/blob/5b040611f2dc6c6b405b5ec00d5102e3cc27a65c/integration_tests/generate_rlp_evm_txn.py), run the script, and save the RLP hex string output.
 
 :::note
 
-Python and Rust output different hex RLP encoded transactions. 
+Python and Rust output different hex RLP encoded transactions.
  - If you're using Rust, use [`generate_eip1559_rlp_hex()`](https://github.com/near/multichain-relayer-server/blob/5b040611f2dc6c6b405b5ec00d5102e3cc27a65c/tests/tests.rs#L24).
  - If you're using Python, use [`generate_rlp_encoded_transaction(is_eip_1559=true)`](https://github.com/near/multichain-relayer-server/blob/5b040611f2dc6c6b405b5ec00d5102e3cc27a65c/integration_tests/generate_rlp_evm_txn.py#L7)
 
@@ -96,7 +100,7 @@ Python and Rust output different hex RLP encoded transactions.
   <Language value="Rust" language="rust">
     <Github fname="test.rs"
         url="https://github.com/near/multichain-relayer-server/blob/5b040611f2dc6c6b405b5ec00d5102e3cc27a65c/tests/tests.rs"
-        start="24" end="33" />
+        start="24" end="38" />
   </Language>
 </CodeTabs>
 

@@ -4,8 +4,13 @@ title: Multichain Gas Station Contract
 sidebar_label: Multichain Gas Station
 ---
 
-
 The [multichain gas station smart contract](https://github.com/near/multichain-gas-station-contract) accepts payments in NEAR tokens in exchange for gas funding on non-NEAR foreign chains. Part of the NEAR Multichain effort, it works in conjunction with the [MPC recovery service](https://github.com/near/mpc-recovery) to generate on-chain signatures.
+
+:::info Alpha stage
+
+The Multichain Relayer solution is currently under development. Users who want to test-drive this solution should keep in mind that the product is in alpha stage, and a code audit is pending.
+
+:::
 
 ## What is it?
 
@@ -86,6 +91,12 @@ Users who wish to get transactions signed and relayed by this contract and its a
    - This transaction will return a signed payload, part of the sequence of transactions necessary to send the user's transaction to the foreign chain.
    - Repeat `pending_transactions_count` times.
 4. Relay each signed payload to the foreign chain RPC in the order they were requested.
+
+:::tip testnet contract
+
+If you want to try things out, this smart contract is available on `canhazgas.testnet`.
+
+:::
 
 ## Limitations
 

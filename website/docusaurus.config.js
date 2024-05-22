@@ -110,6 +110,12 @@ const config = {
       defaultMode: 'light',
       respectPrefersColorScheme: true,
     },
+    docs: {
+      sidebar: {
+        hideable: true,
+        autoCollapseCategories: true
+      }
+    },
     navbar: {
       logo: {
         alt: 'NEAR Logo',
@@ -237,7 +243,6 @@ const config = {
         },
       ],
     },
-    image: 'img/near_logo.svg',
     footer: {
       links: [],
       copyright: 'Copyright © 2023 NEAR Protocol',

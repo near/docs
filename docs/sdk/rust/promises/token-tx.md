@@ -27,12 +27,12 @@ Promise::new(account_id).transfer(amount);
 In the context of a full contract and function call, this could look like:
 
 ```rust
-use near_sdk::{json_types::U128, near_bindgen, AccountId, Promise};
+use near_sdk::{json_types::U128, near, AccountId, Promise};
 
-#[near_bindgen]
+#[near(contract_state)]
 pub struct Contract {}
 
-#[near_bindgen]
+#[near]
 impl Contract {
     pub fn pay(amount: U128, to: AccountId) -> Promise {
         Promise::new(to).transfer(amount.0)
@@ -40,7 +40,7 @@ impl Contract {
 }
 ```
 
-Most of this is boilerplate you're probably familiar with by now – imports, setting up [`near_bindgen`](../contract-structure/near-bindgen.md), [borsh](../contract-interface/serialization-interface.md), etc. Some interesting details related to the transfer itself:
+Most of this is boilerplate you're probably familiar with by now – imports, setting up [`near(contract_state)`](../contract-structure/near-bindgen.md), [borsh](../contract-interface/serialization-interface.md), etc. Some interesting details related to the transfer itself:
 
 * `U128` with a capital `U`: The `pay` method defined here accepts JSON as input, and numbers in JS [cannot be larger than `2^53-1`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER), so for compatibility with deserializing JSON to JS, the integer is serialized as a decimal string. Since the `transfer` method takes a number in [yocto](https://en.wikipedia.org/wiki/Yocto-)NEAR, it's likely to need numbers much larger than `2^53-1`.
 

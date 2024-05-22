@@ -20,7 +20,7 @@ Particularly, this example shows how to:
 
 To query multiple contracts simply perform multiple `view` calls:
 
-<Language value="🌐 JavaScript" language="ts">
+<Language value="js" language="ts">
   <Github fname="index.js"
         url="https://github.com/near-examples/frontend-multiple-contracts/blob/main/frontend/index.js"
         start="70" end="76" />
@@ -34,7 +34,7 @@ The `wallet` object enables to dispatch multiple transactions simultaneously. Ho
 
 Dispatching multiple transactions at once is just a nice way to improve UX, because the user interacts with the wallet only once.
 
-<Language value="🌐 JavaScript" language="ts">
+<Language value="js" language="ts">
   <Github fname="index.js"
           url="https://github.com/near-examples/frontend-multiple-contracts/blob/main/frontend/index.js"
           start="39" end="66" />
