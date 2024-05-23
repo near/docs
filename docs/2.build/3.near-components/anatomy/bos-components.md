@@ -66,10 +66,10 @@ This will set up some boilerplate code to execute the GraphQL query, add the que
 in your playground and then call that query, extract the data and render it using the
 render data function.
 
-Once you have the NEAR component code, you can test it out by going to [the sandbox](https://near.org/sandbox),
-pasting the generated code, and then selecting <kbd>Component Preview</kbd>.
+Once you have the NEAR component code, you can test it out by going to [Jutsu](https://app.jutsu.ai/),
+pasting the generated code, and enabling <kbd>Live Preview</kbd>.
 Next, you can create a nice UI over this boilerplate code, and publish your new NEAR component.
 
 #### Component Examples
 
-- [Activity Feed widget](https://near.org/near/widget/ComponentDetailsPage?src=roshaan.near/widget/user-activity-feed&tab=source) running on [near.org](https://near.org)
+- [Activity Feed widget](https://near.org/near/widget/ComponentDetailsPage?src=roshaan.near/widget/user-activity-feed&tab=source) running on [dev.near.org](https://dev.near.org)

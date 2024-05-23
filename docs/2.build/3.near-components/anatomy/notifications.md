@@ -76,7 +76,7 @@ While there is no standard for notifications, we recommend using the following t
   });
 ```
 
-**Note**: currently, only near.org implements custom notifications
+**Note**: currently, only dev.near.org implements custom notifications
 
 </TabItem>
 

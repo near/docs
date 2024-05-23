@@ -14,7 +14,7 @@ By signing [transactions](./transactions.md) with their account, users can:
 4. Help onboard new users by **covering the costs** of their transactions (gas fees)
 
 :::tip Want to create an account?
-You have multiple ways to create an account, you can [sign-up using your email](https://near.org/), get a mobile wallet through [telegram](https://web.telegram.org/k/#@herewalletbot), or create a [web wallet](https://app.mynearwallet.com).
+You have multiple ways to create an account, you can [sign-up using your email](https://dev.near.org/signup) (note: email-based accounts currently have limited ability to transfer funds or sign transactions), get a mobile wallet through [telegram](https://web.telegram.org/k/#@herewalletbot), or create a [web wallet](https://app.mynearwallet.com).
 :::
 
 ---
