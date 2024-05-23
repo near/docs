@@ -3,19 +3,10 @@ id: linkdrop
 title: Linkdrops
 hide_table_of_contents: false
 ---
-
 import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-import CLIGetKeyPairs from "./linkdrop/near-cli/get-key-pairs.md"
-import CLISimpleDrop from "./linkdrop/near-cli/simple-drop.md"
-import CLICreateNFTDrop from "./linkdrop/near-cli/create-nft-drop.md"
-import CLITransferNFT from "./linkdrop/near-cli/transfer-nft.md"
-import CLICreateFTDrop from "./linkdrop/near-cli/create-ft-drop.md"
-import CLITransferFT from "./linkdrop/near-cli/transfer-ft.md"
-import CLICreateFunctionCallDrop from "./linkdrop/near-cli/create-function-call-drop.md"
 
 Linkdrops allow users to distribute assets and onboard people to Web3 apps through a simple web link.
 
@@ -121,7 +112,37 @@ fetch(keysGeneratorUrl + dropsNumber + "/rootEntrophy").then((res) => {
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
-    <CLIGetKeyPairs />
+
+<Tabs className="file-tabs">
+
+<TabItem value="Near CLI" label="Near CLI">
+
+```bash
+# This command creates a key pair locally in .near-credentials with an implicit account as the accountId (hash representation of the public key)
+
+near generate-key
+```
+
+**Example response:**
+
+```bash
+Key pair with ed25519:33Vn9VtNEtWQPPd1f4jf5HzJ5weLcvGHU8oz7o5UnPqy public key for an account "1e5b1346bdb4fc5ccd465f6757a9082a84bcacfd396e7d80b0c726252fe8b3e8"
+```
+
+</TabItem>
+
+<TabItem value="Keypom API" label="Keypom API">
+
+```bash
+export NUMBER_OF_DROPS=2
+
+curl https://keypom.sctuts.com/keypair/$NUMBER_OF_DROPS/rootEntrophy
+```
+
+</TabItem>
+
+</Tabs>
+
   </TabItem>
 </Tabs>
 
@@ -181,7 +202,11 @@ _The `Wallet` object comes from our [quickstart template](https://github.com/nea
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
-    <CLISimpleDrop />
+
+```bash
+near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_per_use": "10000000000000000000000"}' --depositYocto 23000000000000000000000 --gas 100000000000000 --accountId bob.near
+```
+
   </TabItem>
 </Tabs>
 
@@ -196,6 +221,7 @@ To claim the drop, you will need to send the user a [link with the private key](
 To drop an existing NFT, you will (1) create a drop, and then (2) **transfer the NFT** to keypom.
 
 #### 1. Creating the Drop
+
 To create an NFT drop, you will call the `create_drop` method, now passing a `nft` argument, which will tell the linkdrop contract to wait for an NFT to be transferred.
 
 The contract will then create a drop and **return the numerical ID** that identifies it.
@@ -264,7 +290,11 @@ _The `Wallet` object comes from our [quickstart template](https://github.com/nea
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
-    <CLICreateNFTDrop />
+
+```bash
+near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_per_use": "10000000000000000000000", "nft": {"sender_id": "bob.near", "contract_id": "nft.primitives.near"}}' --depositYocto 23000000000000000000000 --gas 100000000000000 --accountId bob.near
+```
+
   </TabItem>
 </Tabs>
 
@@ -321,7 +351,11 @@ _The `Wallet` object comes from our [quickstart template](https://github.com/nea
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
-    <CLITransferNFT />
+
+```bash
+near call nft.primitives.near nft_transfer_call '{"receiver_id": "v2.keypom.near", "token_id": <YOUR TOKEN ID>, "msg": <YOUR DROP ID>}' --depositYocto 1 --gas 100000000000000 --accountId bob.near
+```
+
   </TabItem>
 </Tabs>
 
@@ -407,7 +441,11 @@ _The `Wallet` object comes from our [quickstart template](https://github.com/nea
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
-    <CLICreateFTDrop />
+
+```bash
+near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_per_use": "10000000000000000000000", "ftData": {"contractId": "ft.primitives.near","senderId": "bob.near", "amount": "1"}}}' --depositYocto 23000000000000000000000 --gas 100000000000000 --accountId bob.near
+```
+
   </TabItem>
 </Tabs>
 
@@ -464,7 +502,11 @@ _The `Wallet` object comes from our [quickstart template](https://github.com/nea
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
-    <CLITransferFT />
+
+```bash
+near call ft.primitives.near ft_transfer '{"receiver_id": "v2.keypom.near", "amount": "1"}' --depositYocto 1 --gas 100000000000000 --accountId bob.near
+```
+
   </TabItem>
 </Tabs>
 
@@ -576,7 +618,11 @@ _The `Wallet` object comes from our [quickstart template](https://github.com/nea
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
-    <CLICreateFunctionCallDrop />
+
+```bash
+near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_per_use": "10000000000000000000000", "fcData": {"methods": [[{"receiverId": "nft.primitives.near","methodName": "nft_mint","args": {"token_id": "1", "metadata": {"title": "My NFT drop","description": "","media": ""}, "accountIdField": "receiver_id", "attachedDeposit": "10000000000000000000000"}]]}}' --depositYocto 23000000000000000000000 --gas 100000000000000 --accountId bob.near
+```
+
   </TabItem>
 </Tabs>
 
