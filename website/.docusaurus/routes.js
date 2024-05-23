@@ -44,15 +44,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '5c5'),
+    component: ComponentCreator('/zh-CN/', '460'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '5e5'),
+        component: ComponentCreator('/zh-CN/', '3fd'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '53c'),
+            component: ComponentCreator('/zh-CN/', '3da'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -696,126 +696,6 @@ export default [
                 component: ComponentCreator('/zh-CN/build/primitives/linkdrop', '4e8'),
                 exact: true,
                 sidebar: "build"
-              },
-              {
-                path: '/zh-CN/build/primitives/linkdrop/bos/create-ft-drop',
-                component: ComponentCreator('/zh-CN/build/primitives/linkdrop/bos/create-ft-drop', 'cc8'),
-                exact: true
-              },
-              {
-                path: '/zh-CN/build/primitives/linkdrop/bos/create-function-call-drop',
-                component: ComponentCreator('/zh-CN/build/primitives/linkdrop/bos/create-function-call-drop', '440'),
-                exact: true
-              },
-              {
-                path: '/zh-CN/build/primitives/linkdrop/bos/create-nft-drop',
-                component: ComponentCreator('/zh-CN/build/primitives/linkdrop/bos/create-nft-drop', 'c00'),
-                exact: true
-              },
-              {
-                path: '/zh-CN/build/primitives/linkdrop/bos/get-drop-id',
-                component: ComponentCreator('/zh-CN/build/primitives/linkdrop/bos/get-drop-id', 'a56'),
-                exact: true
-              },
-              {
-                path: '/zh-CN/build/primitives/linkdrop/bos/get-key-pairs',
-                component: ComponentCreator('/zh-CN/build/primitives/linkdrop/bos/get-key-pairs', '6dc'),
-                exact: true
-              },
-              {
-                path: '/zh-CN/build/primitives/linkdrop/bos/simple-drop',
-                component: ComponentCreator('/zh-CN/build/primitives/linkdrop/bos/simple-drop', '494'),
-                exact: true
-              },
-              {
-                path: '/zh-CN/build/primitives/linkdrop/bos/transfer-ft',
-                component: ComponentCreator('/zh-CN/build/primitives/linkdrop/bos/transfer-ft', 'b91'),
-                exact: true
-              },
-              {
-                path: '/zh-CN/build/primitives/linkdrop/bos/transfer-nft',
-                component: ComponentCreator('/zh-CN/build/primitives/linkdrop/bos/transfer-nft', '564'),
-                exact: true
-              },
-              {
-                path: '/zh-CN/build/primitives/linkdrop/near-cli/create-ft-drop',
-                component: ComponentCreator('/zh-CN/build/primitives/linkdrop/near-cli/create-ft-drop', 'ecf'),
-                exact: true
-              },
-              {
-                path: '/zh-CN/build/primitives/linkdrop/near-cli/create-function-call-drop',
-                component: ComponentCreator('/zh-CN/build/primitives/linkdrop/near-cli/create-function-call-drop', '661'),
-                exact: true
-              },
-              {
-                path: '/zh-CN/build/primitives/linkdrop/near-cli/create-nft-drop',
-                component: ComponentCreator('/zh-CN/build/primitives/linkdrop/near-cli/create-nft-drop', '951'),
-                exact: true
-              },
-              {
-                path: '/zh-CN/build/primitives/linkdrop/near-cli/get-drop-id',
-                component: ComponentCreator('/zh-CN/build/primitives/linkdrop/near-cli/get-drop-id', '033'),
-                exact: true
-              },
-              {
-                path: '/zh-CN/build/primitives/linkdrop/near-cli/get-key-pairs',
-                component: ComponentCreator('/zh-CN/build/primitives/linkdrop/near-cli/get-key-pairs', '0b8'),
-                exact: true
-              },
-              {
-                path: '/zh-CN/build/primitives/linkdrop/near-cli/simple-drop',
-                component: ComponentCreator('/zh-CN/build/primitives/linkdrop/near-cli/simple-drop', '0b5'),
-                exact: true
-              },
-              {
-                path: '/zh-CN/build/primitives/linkdrop/near-cli/transfer-ft',
-                component: ComponentCreator('/zh-CN/build/primitives/linkdrop/near-cli/transfer-ft', '702'),
-                exact: true
-              },
-              {
-                path: '/zh-CN/build/primitives/linkdrop/near-cli/transfer-nft',
-                component: ComponentCreator('/zh-CN/build/primitives/linkdrop/near-cli/transfer-nft', '973'),
-                exact: true
-              },
-              {
-                path: '/zh-CN/build/primitives/linkdrop/web-app/create-ft-drop',
-                component: ComponentCreator('/zh-CN/build/primitives/linkdrop/web-app/create-ft-drop', 'd23'),
-                exact: true
-              },
-              {
-                path: '/zh-CN/build/primitives/linkdrop/web-app/create-function-call-drop',
-                component: ComponentCreator('/zh-CN/build/primitives/linkdrop/web-app/create-function-call-drop', '076'),
-                exact: true
-              },
-              {
-                path: '/zh-CN/build/primitives/linkdrop/web-app/create-nft-drop',
-                component: ComponentCreator('/zh-CN/build/primitives/linkdrop/web-app/create-nft-drop', 'ca2'),
-                exact: true
-              },
-              {
-                path: '/zh-CN/build/primitives/linkdrop/web-app/get-drop-id',
-                component: ComponentCreator('/zh-CN/build/primitives/linkdrop/web-app/get-drop-id', '494'),
-                exact: true
-              },
-              {
-                path: '/zh-CN/build/primitives/linkdrop/web-app/get-key-pairs',
-                component: ComponentCreator('/zh-CN/build/primitives/linkdrop/web-app/get-key-pairs', '522'),
-                exact: true
-              },
-              {
-                path: '/zh-CN/build/primitives/linkdrop/web-app/simple-drop',
-                component: ComponentCreator('/zh-CN/build/primitives/linkdrop/web-app/simple-drop', '700'),
-                exact: true
-              },
-              {
-                path: '/zh-CN/build/primitives/linkdrop/web-app/transfer-ft',
-                component: ComponentCreator('/zh-CN/build/primitives/linkdrop/web-app/transfer-ft', '3e2'),
-                exact: true
-              },
-              {
-                path: '/zh-CN/build/primitives/linkdrop/web-app/transfer-nft',
-                component: ComponentCreator('/zh-CN/build/primitives/linkdrop/web-app/transfer-nft', '425'),
-                exact: true
               },
               {
                 path: '/zh-CN/build/primitives/nft',

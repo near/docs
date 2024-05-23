@@ -87,17 +87,17 @@
       "plugin": "c141421f"
     }
   },
-  "/zh-CN/-5c5": {
+  "/zh-CN/-460": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "aba21aa0"
     }
   },
-  "/zh-CN/-5e5": {
+  "/zh-CN/-3fd": {
     "__comp": "a7bd4aaa",
     "__props": "2d9c5935"
   },
-  "/zh-CN/-53c": {
+  "/zh-CN/-3da": {
     "__comp": "a94703ab"
   },
   "/zh-CN/api/rpc/access-keys-bdc": {
@@ -563,102 +563,6 @@
   "/zh-CN/build/primitives/linkdrop-4e8": {
     "__comp": "17896441",
     "content": "266dd48f"
-  },
-  "/zh-CN/build/primitives/linkdrop/bos/create-ft-drop-cc8": {
-    "__comp": "17896441",
-    "content": "da177d54"
-  },
-  "/zh-CN/build/primitives/linkdrop/bos/create-function-call-drop-440": {
-    "__comp": "17896441",
-    "content": "fe67f0a4"
-  },
-  "/zh-CN/build/primitives/linkdrop/bos/create-nft-drop-c00": {
-    "__comp": "17896441",
-    "content": "f3f34daa"
-  },
-  "/zh-CN/build/primitives/linkdrop/bos/get-drop-id-a56": {
-    "__comp": "17896441",
-    "content": "552becc4"
-  },
-  "/zh-CN/build/primitives/linkdrop/bos/get-key-pairs-6dc": {
-    "__comp": "17896441",
-    "content": "eaf36f5b"
-  },
-  "/zh-CN/build/primitives/linkdrop/bos/simple-drop-494": {
-    "__comp": "17896441",
-    "content": "7f8a0129"
-  },
-  "/zh-CN/build/primitives/linkdrop/bos/transfer-ft-b91": {
-    "__comp": "17896441",
-    "content": "9b2577da"
-  },
-  "/zh-CN/build/primitives/linkdrop/bos/transfer-nft-564": {
-    "__comp": "17896441",
-    "content": "22818b60"
-  },
-  "/zh-CN/build/primitives/linkdrop/near-cli/create-ft-drop-ecf": {
-    "__comp": "17896441",
-    "content": "a7029cc3"
-  },
-  "/zh-CN/build/primitives/linkdrop/near-cli/create-function-call-drop-661": {
-    "__comp": "17896441",
-    "content": "0cc400d1"
-  },
-  "/zh-CN/build/primitives/linkdrop/near-cli/create-nft-drop-951": {
-    "__comp": "17896441",
-    "content": "fc9ccc01"
-  },
-  "/zh-CN/build/primitives/linkdrop/near-cli/get-drop-id-033": {
-    "__comp": "17896441",
-    "content": "01bbf59c"
-  },
-  "/zh-CN/build/primitives/linkdrop/near-cli/get-key-pairs-0b8": {
-    "__comp": "17896441",
-    "content": "efd32b7a"
-  },
-  "/zh-CN/build/primitives/linkdrop/near-cli/simple-drop-0b5": {
-    "__comp": "17896441",
-    "content": "117139cc"
-  },
-  "/zh-CN/build/primitives/linkdrop/near-cli/transfer-ft-702": {
-    "__comp": "17896441",
-    "content": "20810349"
-  },
-  "/zh-CN/build/primitives/linkdrop/near-cli/transfer-nft-973": {
-    "__comp": "17896441",
-    "content": "531cb6aa"
-  },
-  "/zh-CN/build/primitives/linkdrop/web-app/create-ft-drop-d23": {
-    "__comp": "17896441",
-    "content": "e4bea165"
-  },
-  "/zh-CN/build/primitives/linkdrop/web-app/create-function-call-drop-076": {
-    "__comp": "17896441",
-    "content": "66a5beb0"
-  },
-  "/zh-CN/build/primitives/linkdrop/web-app/create-nft-drop-ca2": {
-    "__comp": "17896441",
-    "content": "97ef7443"
-  },
-  "/zh-CN/build/primitives/linkdrop/web-app/get-drop-id-494": {
-    "__comp": "17896441",
-    "content": "7efef889"
-  },
-  "/zh-CN/build/primitives/linkdrop/web-app/get-key-pairs-522": {
-    "__comp": "17896441",
-    "content": "630d5649"
-  },
-  "/zh-CN/build/primitives/linkdrop/web-app/simple-drop-700": {
-    "__comp": "17896441",
-    "content": "ef373584"
-  },
-  "/zh-CN/build/primitives/linkdrop/web-app/transfer-ft-3e2": {
-    "__comp": "17896441",
-    "content": "ac4584f2"
-  },
-  "/zh-CN/build/primitives/linkdrop/web-app/transfer-nft-425": {
-    "__comp": "17896441",
-    "content": "b218c287"
   },
   "/zh-CN/build/primitives/nft-cac": {
     "__comp": "17896441",
