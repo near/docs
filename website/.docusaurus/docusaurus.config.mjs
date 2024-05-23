@@ -448,7 +448,7 @@ export default {
     },
     "algolia": {
       "appId": "0LUM67N2P2",
-      "apiKey": "129d0f429e1bb0510f0261dda1e88ed4",
+      "apiKey": "50a400220b38e2d4bef996c7d0ed4b90",
       "indexName": "near",
       "contextualSearch": true,
       "searchParameters": {
