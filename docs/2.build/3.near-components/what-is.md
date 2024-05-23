@@ -502,4 +502,4 @@ For a working example visit the [deployed NEAR Component](https://near.social/za
 
 
 ## Next Steps
-Build and deploy your first components without leaving the browser. Go to https://near.org/sandbox , create an account and start building!
+Build and deploy your first components without leaving the browser. Go to https://app.jutsu.ai/, create an account and start building!

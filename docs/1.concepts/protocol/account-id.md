@@ -8,7 +8,7 @@ NEAR accounts are identified by a unique address, which take one of two forms:
 2. [**Named addresses**](#named-address), which are simpler to remember and act as domains (e.g. `alice.near`)
 
 :::tip Searching to create an account?
-You have multiple ways to create an account, you can [sign-up using your email](https://near.org/), get a mobile wallet through [telegram](https://web.telegram.org/k/#@herewalletbot), or create a [web wallet](https://app.mynearwallet.com).
+You have multiple ways to create an account, you can [sign-up using your email](https://dev.near.org/signup) (note: email-based accounts currently have limited ability to transfer funds or sign transactions), get a mobile wallet through [telegram](https://web.telegram.org/k/#@herewalletbot), or create a [web wallet](https://app.mynearwallet.com).
 :::
 
 ---

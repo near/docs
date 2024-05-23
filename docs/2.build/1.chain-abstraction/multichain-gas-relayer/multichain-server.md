@@ -89,4 +89,4 @@ For Solana it would be closer to 20-30 seconds (0.4 second block time, 1 block c
 
 L2 real finality times can over a day for finality unless we trust a centralized sequencer for soft confirmations, which may be as fast as a few seconds as in the case of [zksync era](https://era.zksync.io/docs/reference/concepts/finality.html#instant-confirmations).
 
-The difference between optimistic or soft confirmations vs real finality is something we are considering. We may get better finalized guarantees when the [Eigenlayer-Near Partnership is live](https://pages.near.org/blog/near-foundation-and-eigen-labs-partner-to-enable-faster-cheaper-web3-transactions-for-ethereum-rollups-via-eigenlayer/). 3-4 second finality for all ETH L2s is much more manageable.
+The difference between optimistic or soft confirmations vs real finality is something we are considering. We may get better finalized guarantees when the [Eigenlayer-Near Partnership is live](https://near.org/blog/near-foundation-and-eigen-labs-partner-to-enable-faster-cheaper-web3-transactions-for-ethereum-rollups-via-eigenlayer/). 3-4 second finality for all ETH L2s is much more manageable.
