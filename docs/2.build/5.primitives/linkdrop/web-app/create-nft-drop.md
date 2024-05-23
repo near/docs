@@ -7,7 +7,7 @@ const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
 const NFT_CONTRACT_ADDRESS = "nft.primitives.near";
 const DROP_AMOUNT = "10000000000000000000000";
 
-const keypomConnectedWallet = new Wallet({ createAccessKeyFor: KEYPOM_CONTRACT_ADDRESS }); 
+const keypomConnectedWallet = new Wallet({ createAccessKeyFor: KEYPOM_CONTRACT_ADDRESS });
 const nftConnectedWallet = new Wallet({ createAccessKeyFor: NFT_CONTRACT_ADDRESS });
 
 await wallet.callMethod({
@@ -28,4 +28,4 @@ await wallet.callMethod({
 });
 ```
 
-_The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_ 
+_The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/near.js)_ 
