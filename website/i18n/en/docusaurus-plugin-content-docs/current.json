@@ -502,5 +502,9 @@
   "sidebar.tools.link.Keypom": {
     "message": "Keypom",
     "description": "The label for link Keypom in sidebar tools, linking to https://keypom.xyz/"
+  },
+  "sidebar.tools.link.dev.near.org Web Editor": {
+    "message": "dev.near.org Web Editor",
+    "description": "The label for link dev.near.org Web Editor in sidebar tools, linking to https://dev.near.org/sandbox"
   }
 }
