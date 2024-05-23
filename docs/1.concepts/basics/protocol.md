@@ -30,7 +30,7 @@ NEAR is a technical marvel, offering built-in features such as named accounts an
 
 ### ⭐ Simple to Use 
 1. Use [**named accounts**](../protocol/account-model.md) like `alice.near`
-2. Simple sign-up: make an account using [email](https://near.org/signup) or [telegram](https://web.telegram.org/k/#@herewalletbot)
+2. Simple sign-up: make an account using [email](https://dev.near.org/signup) or [telegram](https://web.telegram.org/k/#@herewalletbot)
 3. Transactions are **fast** _(~1.3s transactions)_ and **cheap** _(< 1¢ in fees)_
 4. You don't need to buy crypto thanks to **built-in account abstraction**
 5. [Access Keys](../protocol/access-keys.md) make it safe and easy to use.

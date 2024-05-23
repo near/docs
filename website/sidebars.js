@@ -716,8 +716,8 @@ const sidebar = {
       "items": [
         {
           "type": "link",
-          "label": "near.org Web Editor",
-          "href": "https://near.org/sandbox"
+          "label": "dev.near.org Web Editor",
+          "href": "https://dev.near.org/sandbox"
         },
         {
           "type": "link",
