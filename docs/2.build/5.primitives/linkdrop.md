@@ -9,14 +9,6 @@ import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-import WebAppGetKeyPairs from "./linkdrop/web-app/get-key-pairs.md"
-import WebAppSimpleDrop from "./linkdrop/web-app/simple-drop.md"
-import WebAppCreateNFTDrop from "./linkdrop/web-app/create-nft-drop.md"
-import WebAppTransferNFT from "./linkdrop/web-app/transfer-nft.md"
-import WebAppCreateFTDrop from "./linkdrop/web-app/create-ft-drop.md"
-import WebAppTransferFT from "./linkdrop/web-app/transfer-ft.md"
-import WebAppCreateFunctionCallDrop from "./linkdrop/web-app/create-function-call-drop.md"
-
 import CLIGetKeyPairs from "./linkdrop/near-cli/get-key-pairs.md"
 import CLISimpleDrop from "./linkdrop/near-cli/simple-drop.md"
 import CLICreateNFTDrop from "./linkdrop/near-cli/create-nft-drop.md"
@@ -86,7 +78,47 @@ asyncFetch(keysGeneratorUrl + dropsNumber + "/" + rootEntrophy).then((res) => {
 
   </TabItem>
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
-    <WebAppGetKeyPairs />
+
+<Tabs className="file-tabs">
+
+<TabItem value="near-api-js" label="near-api-js">
+
+```js
+import { KeyPair } from 'near-api-js';
+
+const newKeyPair = KeyPair.fromRandom('ed25519');
+newKeyPair.public_key = newKeyPair.publicKey.toString();
+```
+
+</TabItem>
+
+<TabItem value="Keypom API" label="Keypom API">
+
+```js
+const state = {};
+
+const dropsNumber = "2";
+const keysGeneratorUrl = "https://keypom.sctuts.com/keypair/";
+
+fetch(keysGeneratorUrl + dropsNumber + "/rootEntrophy").then((res) => {
+  const keyPairs = JSON.parse(res.body);
+  const pubKeys = [];
+  const privKeys = [];
+
+  keyPairs.forEach((e) => {
+    pubKeys.push(e.pub);
+    privKeys.push(e.priv);
+  });
+
+  state.publicKeys = pubKeys;
+  state.privKeys = privKeys;
+});
+```
+
+</TabItem>
+
+</Tabs>
+
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
     <CLIGetKeyPairs />
@@ -124,7 +156,29 @@ Near.call([
 
   </TabItem>
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
-    <WebAppSimpleDrop />
+
+```js
+import { Wallet } from './near-wallet';
+
+const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
+const DROP_AMOUNT = "10000000000000000000000"; // 0.1 NEAR
+
+const wallet = new Wallet({ createAccessKeyFor: KEYPOM_CONTRACT_ADDRESS });
+
+await wallet.callMethod({
+  method: "create_drop",
+  contractId: KEYPOM_CONTRACT_ADDRESS,
+  args: {
+    public_keys: state.publicKeys,
+    deposit_per_use: DROP_AMOUNT,
+  },
+  deposit: "23000000000000000000000" // state.publicKeys.length * dropAmount + 3000000000000000000000,
+  gas: "100000000000000",
+});
+```
+
+_The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/near.js)_
+
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
     <CLISimpleDrop />
@@ -177,7 +231,37 @@ const dropAmount = "10000000000000000000000";
 
   </TabItem>
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
-    <WebAppCreateNFTDrop />
+
+```js
+import { Wallet } from './near-wallet';
+
+const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
+const NFT_CONTRACT_ADDRESS = "nft.primitives.near";
+const DROP_AMOUNT = "10000000000000000000000";
+
+const keypomConnectedWallet = new Wallet({ createAccessKeyFor: KEYPOM_CONTRACT_ADDRESS });
+const nftConnectedWallet = new Wallet({ createAccessKeyFor: NFT_CONTRACT_ADDRESS });
+
+await wallet.callMethod({
+  method: "create_drop",
+  contractId: KEYPOM_CONTRACT_ADDRESS,
+  args: {
+    public_keys: state.publicKeys,
+    deposit_per_use: DROP_AMOUNT,
+    nft: {
+      // Who will be sending the NFTs to the Keypom contract
+      sender_id: accountId, // TODO How to get it
+      // NFT Contract Id that the tokens will come from
+      contract_id: NFT_CONTRACT_ADDRESS,
+    },
+  },
+  deposit: "23000000000000000000000" // state.publicKeys.length * dropAmount + 3000000000000000000000,
+  gas: "100000000000000",
+});
+```
+
+_The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/near.js)_
+
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
     <CLICreateNFTDrop />
@@ -209,7 +293,32 @@ Near.call([{
 
   </TabItem>
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
-    <WebAppTransferNFT />
+
+```js
+import { Wallet } from './near-wallet';
+
+const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
+const NFT_CONTRACT_ADDRESS = "nft.primitives.near";
+const NFT_TOKEN_ID = "1";
+const DROP_AMOUNT = "10000000000000000000000";
+
+const nftConnectedWallet = new Wallet({ createAccessKeyFor: NFT_CONTRACT_ADDRESS });
+
+await wallet.callMethod({
+  method: "nft_transfer_call",
+  contractId: NFT_CONTRACT_ADDRESS,
+  args: {
+    receiver_id: keypomContract,
+    token_id: nftTokenId,
+    msg: dropId.toString()
+  },
+  deposit: 1,
+  gas: "100000000000000",
+});
+```
+
+_The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
+
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
     <CLITransferNFT />
@@ -264,7 +373,38 @@ Near.call([
 
   </TabItem>
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
-    <WebAppCreateFTDrop />
+
+```js
+import { Wallet } from './near-wallet';
+
+const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
+const FT_CONTRACT_ADDRESS = "ft.primitives.near";
+const DROP_AMOUNT = "10000000000000000000000";
+
+const wallet = new Wallet({ createAccessKeyFor: KEYPOM_CONTRACT_ADDRESS });
+
+await wallet.callMethod({
+  method: "create_drop",
+  contractId: KEYPOM_CONTRACT_ADDRESS,
+  args: {
+    public_keys: state.publicKeys,
+    deposit_per_use: DROP_AMOUNT,
+    ftData: {
+      contractId: FT_CONTRACT_ADDRESS,
+      senderId: accountId, // TODO How to get account id
+      // This balance per use is balance of human readable FTs per use.
+      amount: "1"
+      // Alternatively, you could use absoluteAmount, which is dependant on the decimals value of the FT
+      // ex. if decimals of an ft = 8, then 1 FT token would be absoluteAmount = 100000000
+    },
+  },
+  deposit: "23000000000000000000000" // state.publicKeys.length * dropAmount + 3000000000000000000000,
+  gas: "100000000000000",
+});
+```
+
+_The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
+
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
     <CLICreateFTDrop />
@@ -299,7 +439,29 @@ Near.call([
 
   </TabItem>
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
-    <WebAppTransferFT />
+
+```js
+import { Wallet } from './near-wallet';
+
+const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
+const FT_CONTRACT_ADDRESS = "ft.primitives.near";
+
+const wallet = new Wallet({ createAccessKeyFor: FT_CONTRACT_ADDRESS });
+
+await wallet.callMethod({
+  method: "ft_transfer",
+  contractId: FT_CONTRACT_ADDRESS,
+  args: {
+    receiver_id: KEYPOM_CONTRACT_ADDRESS,
+    amount: "1"
+  },
+  deposit: "1",
+  gas: "100000000000000"
+});
+```
+
+_The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
+
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
     <CLITransferFT />
@@ -364,7 +526,54 @@ Near.call([
 
   </TabItem>
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
-    <WebAppCreateFunctionCallDrop />
+
+```js
+import { Wallet } from './near-wallet';
+
+const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
+const NFT_CONTRACT_ADDRESS = "nft.primitives.near";
+const NFT_TOKEN_ID = "1";
+const DROP_AMOUNT = "10000000000000000000000";
+
+const wallet = new Wallet({ createAccessKeyFor: DAO_CONTRACT_ADDRESS });
+
+await wallet.callMethod({
+  method: "create_drop",
+  contractId: KEYPOM_CONTRACT_ADDRESS,
+  args: {
+    public_keys: state.publicKeys,
+    deposit_per_use: DROP_AMOUNT,
+    fcData: {
+      // 2D array of function calls. In this case, there is 1 function call to make for a key use
+      // By default, if only one array of methods is present, this array of function calls will be used for all key uses
+      methods: [
+        // Array of functions for Key use 1.
+          [{
+            receiverId: NFT_CONTRACT_ADDRESS,
+            methodName: "nft_mint",
+            args: JSON.stringify({
+            // Change this token_id if it already exists -> check explorer transaction
+                token_id: NFT_TOKEN_ID,
+                metadata: {
+                  title: "My NFT drop",
+                  description: "",
+                  media: "",
+                }
+            }),
+            accountIdField: "receiver_id",
+            // Attached deposit for when the receiver makes this function call
+            attachedDeposit: "10000000000000000000000"
+          }]
+      ]
+    }
+  },
+  deposit: "23000000000000000000000" // state.publicKeys.length * dropAmount + 3000000000000000000000,
+  gas: "100000000000000",
+});
+```
+
+_The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
+
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
     <CLICreateFunctionCallDrop />
