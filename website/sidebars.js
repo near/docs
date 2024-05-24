@@ -746,11 +746,7 @@ const sidebar = {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Ecosystem Tools </small></b></span>"
     },
-    {
-      "type": "link",
-      "label": "Wallets",
-      "href": "https://wallet.near.org"
-    },
+    "tools/wallets",
     {
       "type": "link",
       "label": "Testnet Faucet",
