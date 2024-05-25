@@ -87,17 +87,17 @@
       "plugin": "c141421f"
     }
   },
-  "/zh-CN/-460": {
+  "/zh-CN/-b73": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "aba21aa0"
     }
   },
-  "/zh-CN/-3fd": {
+  "/zh-CN/-9ab": {
     "__comp": "a7bd4aaa",
     "__props": "2d9c5935"
   },
-  "/zh-CN/-3da": {
+  "/zh-CN/-e6d": {
     "__comp": "a94703ab"
   },
   "/zh-CN/api/rpc/access-keys-bdc": {
@@ -1263,6 +1263,10 @@
   "/zh-CN/tools/wallet-selector-13b": {
     "__comp": "17896441",
     "content": "95890914"
+  },
+  "/zh-CN/tools/wallets-098": {
+    "__comp": "17896441",
+    "content": "fe5829e7"
   },
   "/zh-CN/tools/welcome-cf4": {
     "__comp": "17896441",

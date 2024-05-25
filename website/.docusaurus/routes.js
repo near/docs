@@ -44,15 +44,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '460'),
+    component: ComponentCreator('/zh-CN/', 'b73'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '3fd'),
+        component: ComponentCreator('/zh-CN/', '9ab'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '3da'),
+            component: ComponentCreator('/zh-CN/', 'e6d'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -1714,6 +1714,12 @@ export default [
               {
                 path: '/zh-CN/tools/wallet-selector',
                 component: ComponentCreator('/zh-CN/tools/wallet-selector', '13b'),
+                exact: true,
+                sidebar: "tools"
+              },
+              {
+                path: '/zh-CN/tools/wallets',
+                component: ComponentCreator('/zh-CN/tools/wallets', '098'),
                 exact: true,
                 sidebar: "tools"
               },

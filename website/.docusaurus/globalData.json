@@ -1383,6 +1383,11 @@
               "sidebar": "tools"
             },
             {
+              "id": "tools/wallets",
+              "path": "/zh-CN/tools/wallets",
+              "sidebar": "tools"
+            },
+            {
               "id": "tools/welcome",
               "path": "/zh-CN/tools/welcome",
               "sidebar": "tools"
