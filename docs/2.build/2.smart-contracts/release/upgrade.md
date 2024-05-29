@@ -146,6 +146,12 @@ Imagine you have a Guest Book where you store messages, and the users can pay fo
 to be "premium". You keep track of the messages and payments using the following state:
 
 <CodeTabs>
+  <Language value="js" language="js">
+    <Github fname="index.js"
+          url="https://github.com/near/near-sdk-js/blob/develop/examples/src/status-message.js"
+          start="4" end="7" />
+  </Language>
+
   <Language value="rust" language="rust">
     <Github fname="lib.rs"
         url="https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/base/src/lib.rs"
@@ -161,6 +167,12 @@ At some point you realize that you could keep track of the `payments` inside of 
 so you change the contract to:
 
 <CodeTabs>
+  <Language value="js" language="js">
+    <Github fname="index.js"
+          url="https://github.com/near/near-sdk-js/blob/develop/examples/src/status-message-migrate-add-field.js"
+          start="10" end="14" />
+  </Language>
+
   <Language value="rust" language="rust">
     <Github fname="lib.rs"
         url="https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/update/src/lib.rs"
@@ -183,6 +195,12 @@ To fix the problem, you need to implement a method that goes through the old sta
 adds the information to the `PostedMessages`:
 
 <CodeTabs>
+  <Language value="js" language="js">
+    <Github fname="index.js"
+          url="https://github.com/near/near-sdk-js/blob/develop/examples/src/status-message-migrate-add-field.js"
+          start="3" end="51" />
+  </Language>
+
   <Language value="rust" language="rust">
     <Github fname="lib.rs"
         url="https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/update/src/migrate.rs"
