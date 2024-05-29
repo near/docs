@@ -248,7 +248,7 @@ Adding a new blog post is simple. To publish a new blog post, you only need to:
 
    ![blog post](/docs/bosblog/blog-promote2.png)
 
-3. That's it, your blog post has been promoted and published, and you can find it under the `Blog` tab in your [social profile](https://dev.near.org/near/widget/ProfilePage?accountId=bucanero.near&tab=blog):
+3. That's it, your blog post has been published, and you can find it under the `Blog` tab in your [social profile](https://dev.near.org/near/widget/ProfilePage?accountId=bucanero.near&tab=blog):
 
    ![blog post](/docs/bosblog/blog-promote3.png)
 
