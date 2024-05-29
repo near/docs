@@ -1,7 +1,7 @@
 {
   "id": "tutorials/fts/introduction",
   "title": "Fungible Tokens Zero to Hero",
-  "description": "In this Zero to Hero series, you'll find a set of tutorials covering every aspect of a fungible token (FT) smart contract.",
+  "description": "In this Zero to Hero series, you'll find a set of tutorials covering every aspect of a fungible token (FT) smart contract. You'll start by interacting with a pre-deployed contract and by the end you'll have built a fully-fledged FT smart contract that supports every extension of the standards.",
   "source": "@site/../docs/3.tutorials/fts/0-intro.md",
   "sourceDirName": "3.tutorials/fts",
   "slug": "/tutorials/fts/introduction",
@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/fts/0-intro.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "gagdiez",
-  "lastUpdatedAt": 1712759479000,
+  "lastUpdatedBy": "garikbesson",
+  "lastUpdatedAt": 1717023387000,
   "sidebarPosition": 0,
   "frontMatter": {
     "id": "introduction",
