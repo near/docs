@@ -135,6 +135,16 @@ return (
 );
 ```
 
+## UI is Near
+
+[UI is Near](https://www.uiisnear.xyz/) is community-built library offering a comprehensive collection of UI components providing a solid foundation for creating intuitive and visually appealing user interfaces for dApps, wallets or other Web3 solutions.
+
+:::tip
+
+You can find the documentation, available components, and code examples following this [this link](https://www.uiisnear.xyz/).
+
+:::
+
 ## DIG components
 
 These are the Decentralized Interface Guidelines (DIG) components available on the NEAR VM:
