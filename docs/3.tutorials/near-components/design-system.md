@@ -160,7 +160,7 @@ These are the Decentralized Interface Guidelines (DIG) components available on t
 
 :::tip
 
-[DIG Overview](https://dev.near.org/near/widget/DIG.OverviewPage).
+If you want to see working demos of these components, check the [DIG Overview page](https://dev.near.org/near/widget/DIG.OverviewPage).
 
 :::
 
