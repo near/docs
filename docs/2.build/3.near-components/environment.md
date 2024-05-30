@@ -17,9 +17,6 @@ If you plan to collaborate with multiple people, we recommend you to check [this
 ## Web Tools
 The quickest way to start building NEAR Components is by using one of the online tools. They are great for taking your first steps, while they let you find other developers and components in the NEAR ecosystem.
 
-#### [NEAR Sandbox](https://near.org/sandbox)
-The [near website](https://near.org/) contains its own [sandbox editor](https://near.org/sandbox). The sandbox allows you to code, preview and deploy your components directly from your browser.
-
 #### [Jutsu.ai](https://jutsu.ai)
 [Jutsu.ai](https://jutsu.ai) is a web IDE made for NEAR developers. It contains examples and tutorials to help onboarding you.
 

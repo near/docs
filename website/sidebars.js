@@ -716,8 +716,8 @@ const sidebar = {
       "items": [
         {
           "type": "link",
-          "label": "near.org Web Editor",
-          "href": "https://near.org/sandbox"
+          "label": "dev.near.org Web Editor",
+          "href": "https://dev.near.org/sandbox"
         },
         {
           "type": "link",
@@ -746,11 +746,7 @@ const sidebar = {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Ecosystem Tools </small></b></span>"
     },
-    {
-      "type": "link",
-      "label": "Wallets",
-      "href": "https://wallet.near.org"
-    },
+    "tools/wallets",
     {
       "type": "link",
       "label": "Testnet Faucet",
