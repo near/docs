@@ -4,7 +4,7 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 export default [
   {
     path: '/zh-CN/blog',
-    component: ComponentCreator('/zh-CN/blog', '227'),
+    component: ComponentCreator('/zh-CN/blog', '416'),
     exact: true
   },
   {
@@ -28,13 +28,23 @@ export default [
     exact: true
   },
   {
+    path: '/zh-CN/blog/tags/protocol',
+    component: ComponentCreator('/zh-CN/blog/tags/protocol', 'bc3'),
+    exact: true
+  },
+  {
     path: '/zh-CN/blog/tags/updates',
-    component: ComponentCreator('/zh-CN/blog/tags/updates', '834'),
+    component: ComponentCreator('/zh-CN/blog/tags/updates', 'f10'),
     exact: true
   },
   {
     path: '/zh-CN/blog/we-have-a-blog',
     component: ComponentCreator('/zh-CN/blog/we-have-a-blog', 'dc2'),
+    exact: true
+  },
+  {
+    path: '/zh-CN/blog/yield-resume',
+    component: ComponentCreator('/zh-CN/blog/yield-resume', '112'),
     exact: true
   },
   {

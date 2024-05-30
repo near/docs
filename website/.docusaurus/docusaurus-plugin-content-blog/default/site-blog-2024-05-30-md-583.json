@@ -1,0 +1,45 @@
+{
+  "permalink": "/zh-CN/blog/yield-resume",
+  "source": "@site/../blog/2024-05-30.md",
+  "title": "It's gonna be Legen... wait for it...",
+  "description": "dary! Legendary! NEAR protocol is getting updated with the ability to yield and resume computations",
+  "date": "2024-05-30T00:00:00.000Z",
+  "tags": [
+    {
+      "label": "protocol",
+      "permalink": "/zh-CN/blog/tags/protocol"
+    },
+    {
+      "label": "updates",
+      "permalink": "/zh-CN/blog/tags/updates"
+    }
+  ],
+  "readingTime": 4.205,
+  "hasTruncateMarker": true,
+  "authors": [
+    {
+      "name": "Guille",
+      "title": "Docs Maintainer",
+      "url": "https://github.com/gagdiez",
+      "imageURL": "https://github.com/gagdiez.png",
+      "key": "gagdiez"
+    }
+  ],
+  "frontMatter": {
+    "title": "It's gonna be Legen... wait for it...",
+    "authors": [
+      "gagdiez"
+    ],
+    "slug": "yield-resume",
+    "tags": [
+      "protocol",
+      "updates"
+    ],
+    "hide_table_of_contents": true
+  },
+  "unlisted": false,
+  "nextItem": {
+    "title": "Reorganizing our docs",
+    "permalink": "/zh-CN/blog/reorganizing-docs"
+  }
+}

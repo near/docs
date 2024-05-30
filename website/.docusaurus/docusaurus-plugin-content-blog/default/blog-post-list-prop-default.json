@@ -2,6 +2,11 @@
   "title": "Developer Changelog",
   "items": [
     {
+      "title": "It's gonna be Legen... wait for it...",
+      "permalink": "/zh-CN/blog/yield-resume",
+      "unlisted": false
+    },
+    {
       "title": "Reorganizing our docs",
       "permalink": "/zh-CN/blog/reorganizing-docs",
       "unlisted": false
