@@ -44,15 +44,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', 'b73'),
+    component: ComponentCreator('/zh-CN/', 'f2e'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '9ab'),
+        component: ComponentCreator('/zh-CN/', '58d'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', 'e6d'),
+            component: ComponentCreator('/zh-CN/', '2e1'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -1951,7 +1951,7 @@ export default [
               },
               {
                 path: '/zh-CN/tutorials/near-components/blog-posts',
-                component: ComponentCreator('/zh-CN/tutorials/near-components/blog-posts', '1bc'),
+                component: ComponentCreator('/zh-CN/tutorials/near-components/blog-posts', '17c'),
                 exact: true,
                 sidebar: "tutorials"
               },
