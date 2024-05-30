@@ -137,24 +137,77 @@ return (
 
 ## DIG components
 
-These are the Design Interface Guidelines (DIG) components available on the NEAR VM:
+These are the Decentralized Interface Guidelines (DIG) components available on the NEAR VM:
 
-- [DIG.Button](https://near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.Button)
-- [DIG.Theme](https://near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.Theme)
+- [DIG.Accordion](https://dev.near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.Accordion)
+- [DIG.Avatar](https://dev.near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.Avatar)
+- [DIG.Badge](https://dev.near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.Badge)
+- [DIG.Button](https://dev.near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.Button)
+- [DIG.Checkbox](https://dev.near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.Checkbox)
+- [DIG.Chip](https://dev.near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.Chip)
+- [DIG.Dialog](https://dev.near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.Dialog)
+- [DIG.DropdownMenu](https://dev.near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.DropdownMenu)
+- [DIG.Input](https://dev.near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.Input)
+- [DIG.InputSearch](https://dev.near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.InputSearch)
+- [DIG.InputSelect](https://dev.near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.InputSelect)
+- [DIG.InputTags](https://dev.near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.InputTags)
+- [DIG.InputTextarea](https://dev.near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.InputTextarea)
+- [DIG.Tabs](https://dev.near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.Tabs)
+- [DIG.Theme](https://dev.near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.Theme)
+- [DIG.Toast](https://dev.near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.Toast)
+- [DIG.Tooltip](https://dev.near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.Tooltip)
+
+
+:::tip
+
+[DIG Overview](https://dev.near.org/near/widget/DIG.OverviewPage).
+
+:::
+
+
+### `DIG.Accordion`
+
+### `DIG.Avatar`
+
+### `DIG.Badge`
 
 ### `DIG.Button`
 
 A fully featured button component that can act as a `<button>` or `<a>` tag.
 
 :::info DIG.Button properties
-[Click here](https://near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.Button&tab=about) for properties and details.
+[Click here](https://dev.near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.Button&tab=about) for properties and details.
 
 :::
+
+### `DIG.Checkbox`
+
+### `DIG.Chip`
+
+### `DIG.Dialog`
+
+### `DIG.DropdownMenu`
+
+### `DIG.Input`
+
+### `DIG.InputSearch`
+
+### `DIG.InputSelect`
+
+### `DIG.InputTags`
+
+### `DIG.InputTextarea`
+
+### `DIG.Tabs`
 
 ### `DIG.Theme`
 
 This component wraps all of NEAR Components so you don't need to render it yourself.
 
 :::tip
-You can use any of the [CSS variables](https://near.org/near/widget/ComponentDetailsPage?src=near/widget/DIG.Theme&tab=source) defined inside `DIG.Theme`.
+You can use any of the [CSS variables](https://dev.near.org/near/widget/ComponentDetailsPage?src=near/widget/DIG.Theme&tab=source) defined inside `DIG.Theme`.
 :::
+
+### `DIG.Toast`
+
+### `DIG.Tooltip`
