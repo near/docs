@@ -167,9 +167,33 @@ These are the Decentralized Interface Guidelines (DIG) components available on t
 
 ### `DIG.Accordion`
 
+An accordion built with the [Radix primitive](https://www.radix-ui.com/docs/primitives/components/accordion).
+
+:::info DIG.Accordion properties
+
+[Click here](https://dev.near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.Accordion&tab=about) for properties and details.
+
+:::
+
 ### `DIG.Avatar`
 
+This component renders an avatar.
+
+:::info DIG.Avatar properties
+
+[Click here](https://dev.near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.Avatar&tab=about) for properties and details.
+
+:::
+
 ### `DIG.Badge`
+
+This component renders a badge. Badges are not meant to be clickable. Refer to [DIG.Button](#digbutton) or [DIG.Chip](#digchip) for clickable alternatives.
+
+:::info DIG.Badge properties
+
+[Click here](https://dev.near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.Badge&tab=about) for properties and details.
+
+:::
 
 ### `DIG.Button`
 
@@ -182,23 +206,103 @@ A fully featured button component that can act as a `<button>` or `<a>` tag.
 
 ### `DIG.Checkbox`
 
+A checkbox built with the [Radix primitive](https://www.radix-ui.com/docs/primitives/components/checkbox).
+
+:::info DIG.Checkbox properties
+
+[Click here](https://dev.near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.Checkbox&tab=about) for properties and details.
+
+:::
+
 ### `DIG.Chip`
+
+A fully featured chip component that can act as a `<button>` or `<a>` tag.
+
+:::info DIG.Chip properties
+
+[Click here](https://dev.near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.Chip&tab=about) for properties and details.
+
+:::
 
 ### `DIG.Dialog`
 
+This Dialog component is built with the [Radix primitive](https://www.radix-ui.com/primitives/docs/components/dialog).
+
+:::info DIG.Dialog properties
+
+[Click here](https://dev.near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.Dialog&tab=about) for properties and details.
+
+:::
+
 ### `DIG.DropdownMenu`
+
+This dropdown menu is built with the [Radix primitive](https://www.radix-ui.com/primitives/docs/components/dropdown-menu).
+
+:::info DIG.DropdownMenu properties
+
+[Click here](https://dev.near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.DropdownMenu&tab=about) for properties and details.
+
+:::
 
 ### `DIG.Input`
 
+A text input component.
+
+:::info DIG.Input properties
+
+[Click here](https://dev.near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.Input&tab=about) for properties and details.
+
+:::
+
 ### `DIG.InputSearch`
+
+An input component for typing a search query.
+
+:::info DIG.InputSearch properties
+
+[Click here](https://dev.near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.InputSearch&tab=about) for properties and details.
+
+:::
 
 ### `DIG.InputSelect`
 
+A select input component built with the [Radix primitive](https://www.radix-ui.com/docs/primitives/components/select).
+
+:::info DIG.InputSelect properties
+
+[Click here](https://dev.near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.InputSelect&tab=about) for properties and details.
+
+:::
+
 ### `DIG.InputTags`
+
+An input component that handles adding and removing tags.
+
+:::info DIG.InputTags properties
+
+[Click here](https://dev.near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.InputTags&tab=about) for properties and details.
+
+:::
 
 ### `DIG.InputTextarea`
 
+A textarea input component.
+
+:::info DIG.InputTextarea properties
+
+[Click here](https://dev.near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.InputTextarea&tab=about) for properties and details.
+
+:::
+
 ### `DIG.Tabs`
+
+This tabs component is built with the [Radix primitive](https://www.radix-ui.com/docs/primitives/components/tabs).
+
+:::info DIG.Tabs properties
+
+[Click here](https://dev.near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.Tabs&tab=about) for properties and details.
+
+:::
 
 ### `DIG.Theme`
 
@@ -210,4 +314,20 @@ You can use any of the [CSS variables](https://dev.near.org/near/widget/Componen
 
 ### `DIG.Toast`
 
+This toast component is built with [Radix primitive](https://www.radix-ui.com/primitives/docs/components/toast).
+
+:::info DIG.Toast properties
+
+[Click here](https://dev.near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.Toast&tab=about) for properties and details.
+
+:::
+
 ### `DIG.Tooltip`
+
+A tooltip built with the [Radix primitive](https://www.radix-ui.com/docs/primitives/components/tooltip).
+
+:::info DIG.Tooltip properties
+
+[Click here](https://dev.near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.Tooltip&tab=about) for properties and details.
+
+:::
