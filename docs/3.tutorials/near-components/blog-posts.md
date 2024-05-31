@@ -238,23 +238,23 @@ If you're new to Markdown, you might want to check this page about [basic writin
 
 Adding a new blog post is simple. To publish a new blog post, you only need to:
 1. Write a regular Near Social message
-2. Promote the message and convert it to a Blog post
 
-<img src="/docs/bosblog/blog-promote1.png" width="60%" />
+   <img src="/docs/bosblog/blog-promote1.png" width="60%" />
 
-#### Promote a message to blog post
+2. Repost the message and convert it to a Blog post
 
-Once the message has been posted, promoting it to a blog post is straight forward.
-Just click on the 3 dots next to your post (`...`), and select the `Promote this Post to Blog` option:
+   Once the message has been posted, promoting it to a blog post is straight forward.
+   Just click on the repost button, and select the `Blog` option:
 
-![blog post](/docs/bosblog/blog-promote2.png)
+   ![blog post](/docs/bosblog/blog-promote2.png)
+
+3. That's it, your blog post has been published, and you can find it under the `Blog` tab in your [social profile](https://dev.near.org/near/widget/ProfilePage?accountId=bucanero.near&tab=blog):
+
+   ![blog post](/docs/bosblog/blog-promote3.png)
+
 
 :::note
 
 You can find the published blog post example in [this link](https://near.org/near/widget/BlogPostPage?accountId=bucanero.near&blockHeight=117452680&returnLocation=/near/widget/ProfilePage?accountId=bucanero.near&tab=blog).
 
 :::
-
-That's it, your blog post has been promoted and published, and you can find it under the `Blog` tab in your [social profile](https://near.org/near/widget/ProfilePage?accountId=bucanero.near&tab=blog):
-
-![blog post](/docs/bosblog/blog-promote3.png)

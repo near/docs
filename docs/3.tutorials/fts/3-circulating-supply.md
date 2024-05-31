@@ -11,6 +11,8 @@ To get started, either work off the code you wrote in the previous tutorial or s
 
 If you wish to see the finished code for this tutorial, you can find it in the `3.initial-supply` folder.
 
+---
+
 ## Introduction
 
 Every fungible token contract on NEAR has what's known as a circulating supply. This is the number of tokens that exist on the contract and are actively available to trade.
@@ -22,6 +24,8 @@ When creating your contract, there are many different ways you could implement t
 
 The simplest approach, however, is to specify a total supply when initializing the contract. The entire circulating supply is then created and sent to the owner of the contract. The owner would then be able to transfer or sell the tokens as they wish. Once the initial supply is created, no more FTs could be minted. This means that the circulating supply will always be equal to the total supply.
 
+---
+
 ## Modifications to contract
 
 In order to implement this logic, you'll need to keep track of two things in your smart contract:
@@ -30,11 +34,13 @@ In order to implement this logic, you'll need to keep track of two things in you
 
 The mapping is so that you can easily check or modify the tokens owned by any given account at anytime within your contract. You'll also need to keep track of the total supply since it's required by the standard that you have a function to query for the supply of tokens on the contract.
 
+<hr className="subsection" />
+
 ### Setting the supply
 
 Head over to the `src/lib.rs` file and add the following code to the `Contract` struct.
 
-<Github language="rust" start="21" end="32" url="https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/lib.rs" />
+<Github language="rust" start="21" end="33" url="https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/lib.rs" />
 
 You'll now want to add the functionality for depositing the tokens into the owner's account. Do this by creating a helper function that takes an amount and an account ID and performs the deposit logic for you. First create a new file `src/internal.rs` such that your file structure now looks as follows.
 
@@ -47,7 +53,7 @@ src
   └── storage.rs
 ```
 
-In the `internal.rs` file, add the following code to create a function called `internal_deposit` which takes an `AccountId` and a `Balance` and adds the amount to the account's current supply of FTs. 
+In the `internal.rs` file, add the following code to create a function called `internal_deposit` which takes an `AccountId` and an `u128` as a balance and adds the amount to the account's current supply of FTs. 
 
 <Github language="rust" start="1" end="18" url="https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/internal.rs" />
 
@@ -61,17 +67,17 @@ In addition, add the following code to the `new` initialization function.
 #[init]
 pub fn new(
     owner_id: AccountId,
-    total_supply: U128,
+    total_supply: u128,
     metadata: FungibleTokenMetadata,
 ) -> Self {
     // Create a variable of type Self with all the fields initialized. 
     let mut this = Self {
         // Set the total supply
-        total_supply: total_supply.0,
+        total_supply,
         // Storage keys are simply the prefixes used for the collections. This helps avoid data collision
-        accounts: LookupMap::new(StorageKey::Accounts.try_to_vec().unwrap()),
+        accounts: LookupMap::new(StorageKey::Accounts),
         metadata: LazyOption::new(
-            StorageKey::Metadata.try_to_vec().unwrap(),
+            StorageKey::Metadata,
             Some(&metadata),
         ),
     };
@@ -86,6 +92,8 @@ pub fn new(
 
 This will initialize the total supply to what you passed in and will call the `internal_deposit` function to add the total supply to the owner's account.
 
+<hr className="subsection" />
+
 ### Getting the supply
 
 Now that you've created a way to set the total supply, you'll also want a way to query for it as well as the balance for a specific user. The [standard](https://nomicon.io/Standards/Tokens/FungibleToken/Core) dictates that you should have two methods on your smart contract for doing these operations:
@@ -98,15 +106,21 @@ Head on over to the `src/ft_core.rs` file and add the following code to these fu
 
 At this point, you have everything you need to create an initial supply of tokens and query for the balance of a given account. There is, however, a problem that we need to solve. How will the wallet know that the total supply was created and is owned by the contract owner? How would it even know that our contract is a fungible token contract? If you were to deploy the contract and run through the setup process, you would be able to query for the information from the contract but you wouldn't see any FTs in the owner's NEAR wallet.
 
+---
+
 ## Events
 
 Have you ever wondered how the wallet knows which FTs you own and how it can display them in the [balances tab](https://testnet.mynearwallet.com/)? Originally, an [indexer](/tools/indexer-for-explorer) was used and it listened for any functions starting with `ft_` on your account. These contracts were then flagged on your account as likely FT contracts. 
 
 When you navigated to your balances tab, the wallet would then query all those contracts for the number of FTs you owned using the `ft_balance_of` function you just wrote.
 
+<hr className="subsection" />
+
 ### The problem {#the-problem}
 
 This method of flagging contracts was not reliable as each FT-driven application might have its own way of minting or transferring FTs. In addition, it's common for apps to transfer or mint many tokens at a time using batch functions. 
+
+<hr className="subsection" />
 
 ### The solution {#the-solution}
 
@@ -133,6 +147,8 @@ The event interface differs based on whether you're recording transfers or mints
 - **amount**: the amount of FTs being minted.
 - *Optional* - **memo**: an optional message to include with the event.
 
+<hr className="subsection" />
+
 ### Examples {#examples}
 
 In order to solidify your understanding of the standard, let's walk through two scenarios and see what the logs should look like.
@@ -152,6 +168,8 @@ EVENT_JSON:{
 }
 ```
 
+<hr className="subsection" />
+
 #### Scenario B - batch transfer
 
 In this scenario, Benji wants to perform a batch transfer. He will send FTs to Jada, Mike, Josh, and Maria. The log is as follows.
@@ -170,6 +188,8 @@ EVENT_JSON:{
 }
 ```
 
+---
+
 ## Modifications to the contract {#modifications-to-the-contract}
 
 At this point, you should have a good understanding of what the end goal should be so let's get to work! Open the `src` directory and create a new file called `events.rs`. This is where your log structs will live.
@@ -180,19 +200,25 @@ Copy the following into your file. This will outline the structs for your `Event
 
 <Github language="rust" start="1" end="121" url="https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/events.rs" />
 
+<hr className="subsection" />
+
 ### Adding modules and constants {#lib-rs}
 
 Now that you've created a new file, you need to add the module to the `lib.rs` file.
 
 <Github language="rust" start="1" end="13" url="https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/lib.rs" />
 
+<hr className="subsection" />
+
 ### Logging the total supply minted
 
 Now that all the tools are set in place, you can implement the actual logging functionality. Since the contract will only be minting tokens at the very start when it's initialized, it's trivial where you should place the log. Open the `src/lib.rs` file and navigate to the bottom of the `new` initialization function. This is where you'll construct the log for minting.
 
-<Github language="rust" start="63" end="97" url="https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/lib.rs" />
+<Github language="rust" start="67" end="98" url="https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/lib.rs" />
 
 With that finished, you've successfully implemented the backbone of the events standard and it's time to start testing.
+
+---
 
 ## Deploying the contract {#redeploying-contract}
 
@@ -200,10 +226,10 @@ Since the current contract you have is already initialized, let's create a sub-a
 
 ### Creating a sub-account
 
-Run the following command to create a sub-account `events` of your main account with an initial balance of 25 NEAR which will be transferred from the original to your new account.
+Run the following command to create a sub-account `events` of your main account with an initial balance of 3 NEAR which will be transferred from the original to your new account.
 
 ```bash
-near create-account events.$FT_CONTRACT_ID --masterAccount $FT_CONTRACT_ID --initialBalance 25
+near create-account events.$FT_CONTRACT_ID --masterAccount $FT_CONTRACT_ID --initialBalance 3
 ```
 
 Next, you'll want to export an environment variable for ease of development:
@@ -212,34 +238,42 @@ Next, you'll want to export an environment variable for ease of development:
 export EVENTS_FT_CONTRACT_ID=events.$FT_CONTRACT_ID
 ```
 
-Using the build script, build the deploy the contract as you did in the previous tutorials:
+Build the contract as you did in the previous tutorials:
 
 ```bash
-cd 2.define-a-token && ./build.sh && cd .. && near deploy $EVENTS_FT_CONTRACT_ID out/contract.wasm 
+cd 2.define-a-token && cargo near build
 ```
 
-### Initialization {#initialization}
+<hr className="subsection" />
 
-Now that the contract is deployed, it's time to initialize it and mint the total supply. Let's create an initial supply of 1000 `gtNEAR`. Since it has 24 decimal places, you should put `1000` followed by 24 zeros in the total supply field.
+### Deploying and Initialization {#deploying-initialization}
+
+It's time to deploy the contract, initialize it and mint the total supply. Let's create an initial supply of 1000 `gtNEAR`. Since it has 24 decimal places, you should put `1000` followed by 24 zeros in the total supply field.
 
 ```bash
-near call $EVENTS_FT_CONTRACT_ID new_default_meta '{"owner_id": "'$EVENTS_FT_CONTRACT_ID'", "total_supply": "1000000000000000000000000000"}' --accountId $EVENTS_FT_CONTRACT_ID
+cargo near deploy $EVENTS_FT_CONTRACT_ID with-init-call new_default_meta json-args '{"owner_id": "'$EVENTS_FT_CONTRACT_ID'", "total_supply": "1000000000000000000000000000"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
 ```
 
 You can check to see if everything went through properly by looking at the output in your CLI:
 
 ```bash
-Scheduling a call: events.goteam.testnet.new_default_meta({"owner_id": "events.goteam.testnet", "total_supply": "1000000000000000000000000000"})
-Doing account.functionCall()
-Receipt: BmD2hQJCUEMmvaUd45qrt7S55cewUXQSTPWT21Um3gXd
-	Log [events.goteam.testnet]: EVENT_JSON:{"standard":"nep141","version":"1.0.0","event":"ft_mint","data":[{"owner_id":"events.goteam.testnet","amount":"1000000000000000000000000000","memo":"Initial token supply is minted"}]}
-Transaction Id BrEBqE9S3tTBcgDUU6ZyszjAbaR4wkPyEN1viYKaXpgh
-To see the transaction in the transaction explorer, please open this url in your browser
-https://testnet.nearblocks.io/txns/BrEBqE9S3tTBcgDUU6ZyszjAbaR4wkPyEN1viYKaXpgh
-''
+...
+Transaction sent ...
+--- Logs ---------------------------
+Logs [events.aha_3.testnet]:
+  EVENT_JSON:{"standard":"nep141","version":"1.0.0","event":"ft_mint","data":[{"owner_id":"events.goteam.testnet","amount":"1000000000000000000000000000","memo":"Initial token supply is minted"}]}
+--- Result -------------------------
+Empty result
+------------------------------------
+
+Contract code has been successfully deployed.
+The "new_default_meta" call to <events.goteam.testnet> on behalf of <events.goteam.testnet> succeeded.
+...
 ```
 
 You can see that the event was properly logged!
+
+<hr className="subsection" />
 
 ### Querying Supply Information {#testing}
 
@@ -272,6 +306,8 @@ If you query for the balance of some other account, it should return `0`.
 near view $EVENTS_FT_CONTRACT_ID ft_balance_of '{"account_id": "benjiman.testnet"}'
 ```
 
+---
+
 ## Viewing FTs in the wallet {#viewing-fts-in-wallet}
 
 Now that your contract implements the necessary functions that the wallet uses to pickup your contract and display the FTs, you should be able to see your tokens on display in the [balances tab](https://testnet.mynearwallet.com/).
@@ -280,6 +316,7 @@ Now that your contract implements the necessary functions that the wallet uses t
 
 🎉🎉🎉 **This is awesome! Go team!** 🎉🎉🎉 You can now see your very first fungible tokens in the wallet!
 
+---
 
 ## Conclusion
 
