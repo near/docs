@@ -148,8 +148,8 @@ to be "premium". You keep track of the messages and payments using the following
 <CodeTabs>
   <Language value="js" language="js">
     <Github fname="index.js"
-          url="https://github.com/near/near-sdk-js/blob/develop/examples/src/status-message.js"
-          start="4" end="7" />
+          url="https://github.com/fospring/near-sdk-js/blob/feat-migrate-example/examples/src/basic-updates-base.js"
+          start="16" end="37" />
   </Language>
 
   <Language value="rust" language="rust">
@@ -169,8 +169,8 @@ so you change the contract to:
 <CodeTabs>
   <Language value="js" language="js">
     <Github fname="index.js"
-          url="https://github.com/near/near-sdk-js/blob/develop/examples/src/status-message-migrate-add-field.js"
-          start="10" end="14" />
+          url="https://github.com/fospring/near-sdk-js/blob/feat-migrate-example/examples/src/basic-updates-update.js"
+          start="20" end="42" />
   </Language>
 
   <Language value="rust" language="rust">
@@ -197,8 +197,8 @@ adds the information to the `PostedMessages`:
 <CodeTabs>
   <Language value="js" language="js">
     <Github fname="index.js"
-          url="https://github.com/near/near-sdk-js/blob/develop/examples/src/status-message-migrate-add-field.js"
-          start="3" end="51" />
+          url="https://github.com/fospring/near-sdk-js/blob/feat-migrate-example/examples/src/basic-updates-update.js"
+          start="5" end="64" />
   </Language>
 
   <Language value="rust" language="rust">
