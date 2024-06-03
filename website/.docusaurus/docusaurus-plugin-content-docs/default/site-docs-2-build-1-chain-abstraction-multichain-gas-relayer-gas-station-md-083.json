@@ -12,19 +12,19 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Damián Parrino",
-  "lastUpdatedAt": 1716383032000,
+  "lastUpdatedAt": 1717440302000,
   "frontMatter": {
     "id": "gas-station",
     "title": "Multichain Gas Station Contract",
-    "sidebar_label": "Multichain Gas Station"
+    "sidebar_label": "Multichain Gas Station Contract"
   },
   "sidebar": "build",
   "previous": {
-    "title": "Multichain Relayer Server",
-    "permalink": "/build/chain-abstraction/multichain-gas-relayer/multichain-server"
+    "title": "NFT Chain Keys Contract",
+    "permalink": "/build/chain-abstraction/nft-chain-keys"
   },
   "next": {
-    "title": "Relayer + Gas Station",
-    "permalink": "/build/chain-abstraction/multichain-gas-relayer/relayer-gas-example"
+    "title": "Multichain Relayer Server",
+    "permalink": "/build/chain-abstraction/multichain-gas-relayer/multichain-server"
   }
 }

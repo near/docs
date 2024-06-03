@@ -20,11 +20,11 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Multichain Relayer Server",
-    "permalink": "/vi/build/chain-abstraction/multichain-gas-relayer/multichain-server"
+    "title": "NFT Chain Keys Contract",
+    "permalink": "/vi/build/chain-abstraction/nft-chain-keys"
   },
   "next": {
-    "title": "Relayer + Gas Station",
-    "permalink": "/vi/build/chain-abstraction/multichain-gas-relayer/relayer-gas-example"
+    "title": "Multichain Relayer Server",
+    "permalink": "/vi/build/chain-abstraction/multichain-gas-relayer/multichain-server"
   }
 }

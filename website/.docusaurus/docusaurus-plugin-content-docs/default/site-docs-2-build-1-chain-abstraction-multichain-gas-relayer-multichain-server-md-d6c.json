@@ -20,11 +20,11 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "NFT Chain Keys Contract",
-    "permalink": "/build/chain-abstraction/nft-chain-keys"
+    "title": "Multichain Gas Station Contract",
+    "permalink": "/build/chain-abstraction/multichain-gas-relayer/gas-station"
   },
   "next": {
-    "title": "Multichain Gas Station",
-    "permalink": "/build/chain-abstraction/multichain-gas-relayer/gas-station"
+    "title": "Relayer + Gas Station",
+    "permalink": "/build/chain-abstraction/multichain-gas-relayer/relayer-gas-example"
   }
 }

@@ -20,8 +20,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Multichain Gas Station",
-    "permalink": "/build/chain-abstraction/multichain-gas-relayer/gas-station"
+    "title": "Multichain Relayer Server",
+    "permalink": "/build/chain-abstraction/multichain-gas-relayer/multichain-server"
   },
   "next": {
     "title": "Rollup Data Availability",
