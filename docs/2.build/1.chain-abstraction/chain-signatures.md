@@ -129,7 +129,7 @@ In bitcoin, you construct a new transaction by using all the Unspent Transaction
 
 ## 3. Requesting the Signature
 
-Once the transaction is created and ready to be signed, a signature request is made by calling `sign` on the [MPC smart contract](https://github.com/near/mpc-recovery/blob/develop/contract/src/lib.rs#L298).
+Once the transaction is created and ready to be signed, a signature request is made by calling `sign` on the [MPC smart contract](https://github.com/near/mpc-recovery/blob/f31e39f710f2fb76706e7bb638a13cf1fa1dbf26/contract/src/lib.rs#L298).
 
 The method requires two parameters:
 
