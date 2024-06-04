@@ -148,7 +148,7 @@ to be "premium". You keep track of the messages and payments using the following
 <CodeTabs>
   <Language value="js" language="js">
     <Github fname="index.js"
-          url="https://github.com/fospring/near-sdk-js/blob/feat-migrate-example/examples/src/basic-updates-base.js"
+          url="https://github.com/near/near-sdk-js/blob/develop/examples/src/basic-updates-base.js"
           start="16" end="37" />
   </Language>
 
@@ -169,7 +169,7 @@ so you change the contract to:
 <CodeTabs>
   <Language value="js" language="js">
     <Github fname="index.js"
-          url="https://github.com/fospring/near-sdk-js/blob/feat-migrate-example/examples/src/basic-updates-update.js"
+          url="https://github.com/near/near-sdk-js/blob/develop/examples/src/basic-updates-update.js"
           start="23" end="45" />
   </Language>
 
@@ -197,7 +197,7 @@ adds the information to the `PostedMessages`:
 <CodeTabs>
   <Language value="js" language="js">
     <Github fname="index.js"
-          url="https://github.com/fospring/near-sdk-js/blob/feat-migrate-example/examples/src/basic-updates-update.js"
+          url="https://github.com/near/near-sdk-js/blob/develop/examples/src/basic-updates-update.js"
           start="7" end="70" />
   </Language>
 
@@ -215,5 +215,5 @@ Notice that `migrate` is actually an [initialization method](../anatomy/anatomy.
 :::tip
 
 You can follow a migration step by step in the [official migration example](https://github.com/near-examples/update-migrate-rust/tree/main/basic-updates/base)  
-Javascript migration example testfile can be found on here: [test-basic-updates.ava.js](https://github.com/fospring/near-sdk-js/blob/feat-migrate-example/examples/__tests__/test-basic-updates.ava.js), run by this command: `pnpm run test:basic-update` in examples directory.
+Javascript migration example testfile can be found on here: [test-basic-updates.ava.js](https://github.com/near/near-sdk-js/blob/develop/examples/__tests__/test-basic-updates.ava.js), run by this command: `pnpm run test:basic-update` in examples directory.
 :::
