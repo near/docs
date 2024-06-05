@@ -45,7 +45,7 @@ While making your contract, it is likely that you will want to query information
 ---
 
 ## Snippet: Sending Information
-Calling another contract passing information is also a common scenario. Bellow you can see a method that interacts with the [Hello NEAR](../quickstart.md) example to change its greeting message.
+Calling another contract passing information is also a common scenario. Below you can see a method that interacts with the [Hello NEAR](../quickstart.md) example to change its greeting message.
 
 <CodeTabs>
 <Language value="js" language="ts">
