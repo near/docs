@@ -20,7 +20,7 @@ This process of translating **complex objects into simpler single-value** repres
 ## Overview of Serialization Formats
 
 Let's give a quick overview of both serialization formats, including their pros and cons, as well as
-an example on what `their serializations look like.
+an example of what their serializations look like.
 
 <hr className="subsection" />
 
