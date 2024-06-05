@@ -153,19 +153,20 @@ Your new smart contract stores a `greeting: string` attribute in their state, an
 
 <Tabs groupId="code-tabs">
   <TabItem value="js" label="🌐 JavaScript">
-    <Github fname="index.js"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts"
-            start="4" end="18" />
+    <Language value="js" language="js">
+        <Github fname="index.js"
+                url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts"
+                start="4" end="18" />
+    </Language>
+  </TabItem>
 
-</TabItem>
-
-<TabItem value="rust" label="🦀 Rust">
-    <Github fname="lib.rs"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
-            start="4" end="32" />
-
-</TabItem>
-
+  <TabItem value="rust" label="🦀 Rust">
+    <Language value="Rust" language="rust">
+        <Github fname="lib.rs"
+                url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
+                start="4" end="32" />
+    </Language>
+  </TabItem>
 </Tabs>
 
 There are 3 important things to notice:
