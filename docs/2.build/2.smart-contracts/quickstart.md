@@ -65,7 +65,11 @@ curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/cargo-near/release
 
 </Tabs>
 
+<details>
+<summary>Working on Windows?</summary>
 
+See [Getting Started on NEAR Using Windows](/blog/getting-started-on-windows) for a step-by-step guide on how to setup WSL and your environment.
+</details>
 
 :::info Testnet Account
 
