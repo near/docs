@@ -13,7 +13,7 @@ In this article we're going to have a look at the same data flow, but in detail 
 
 You may be asking what was missing in the previous explanation. The short answer is: **Gas Refunds** or simply **Refunds**.
 
-If you don't know what **Gas** is, please [read first the article about Gas](https://docs.near.org/concepts/protocol/gas) from our docs.
+If you don't know what **Gas** is, please [first read the article about Gas](https://docs.near.org/concepts/protocol/gas) from our docs.
 
 As for *Refunds*, here's a quote from the [Gas](https://docs.near.org/concepts/protocol/gas) article:
 
@@ -64,7 +64,7 @@ Keep in mind rule #2: the Receipt must be executed on the receiver's Shard. So t
 
 ![Complete scheme of Token transfer between the accounts from different Shards](/docs/flow-token-transfer/01-diff-shards-complete.png)
 
-This is it. Tokens has been transferred from the account on one Shard to the account on a different Shard, and the initial sender, **alice.near**, received a refund of Gas.
+This is it. Tokens have been transferred from the account on one Shard to the account on a different Shard, and the initial sender, **alice.near**, received a refund of Gas.
 
 
 ## Token transfer between accounts found on the same shard
