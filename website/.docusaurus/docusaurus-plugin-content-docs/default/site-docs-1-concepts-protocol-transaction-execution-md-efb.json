@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/protocol/transaction-execution.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Damián Parrino",
-  "lastUpdatedAt": 1714394112000,
+  "lastUpdatedBy": "Jeremy Bokobza",
+  "lastUpdatedAt": 1717616263000,
   "frontMatter": {
     "id": "transaction-execution",
     "title": "Lifecycle of a Transaction"

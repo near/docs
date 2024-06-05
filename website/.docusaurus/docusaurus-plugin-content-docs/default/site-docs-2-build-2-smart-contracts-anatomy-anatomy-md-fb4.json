@@ -1,7 +1,7 @@
 {
   "id": "build/smart-contracts/anatomy/anatomy",
   "title": "Basic Anatomy",
-  "description": "Let's illustrate the basic anatomy of a simple \"Hello World\" contract. The code on this page comes from our Hello NEAR repository on Github.",
+  "description": "Let's illustrate the basic anatomy of a simple \"Hello World\" contract. The code on this page comes from our Hello NEAR repository on GitHub.",
   "source": "@site/../docs/2.build/2.smart-contracts/anatomy/anatomy.md",
   "sourceDirName": "2.build/2.smart-contracts/anatomy",
   "slug": "/build/smart-contracts/anatomy/",
@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/anatomy/anatomy.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Guille",
-  "lastUpdatedAt": 1715263781000,
+  "lastUpdatedBy": "Jeremy Bokobza",
+  "lastUpdatedAt": 1717616263000,
   "frontMatter": {
     "id": "anatomy",
     "title": "Basic Anatomy",
