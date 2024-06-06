@@ -22,16 +22,6 @@ Although the multichain relayer is a server in current design of this system, th
 The Multichain Relayer is meant to be deployed alongside the [Gas Station Event Indexer](https://github.com/near/gas-station-event-indexer) on the same server so that the gas station event indexer can call the multichain relayer server via IPC instead of having to send the request over the network introducing extra latency to the system.
 :::
 
-## Technical system design
-
-Below is a design diagram of the entire multichain relayer system:
-
-![multichain_relayer_technical_design.png](/docs/multichain_relayer_technical_design.png)
-
-- The [gas station contract](https://github.com/near/multichain-gas-station-contract) and the [MPC signing service contract](https://github.com/near/mpc-recovery/tree/main/contract) are in the green box which take place on NEAR.
-- This multichain relayer server focuses on the purple/blue Multichain Relayer Core Backend Services Box in the middle and the connections to the XChain systems in the red box via RPCs.
-- The XChain Settlement that's happening in the yellow box is currently manual and will be automated in the future.
-
 ## Paymaster
 
 A paymaster represents an address on a destination chain that holds a balance of that chain’s native gas token:
