@@ -25,7 +25,13 @@ This guide will take you through a step by step process for creating a Chain Sig
 
 :::
 
+:::danger Warning
 
+Please note that during this early `alpha` development stage the `testnet` contracts are continually being upgraded and redeployed.
+
+This may result in lost `testnet` keys, accounts, and cross-chain assets.
+
+:::
 
 ---
 
@@ -44,11 +50,15 @@ _Diagram of a chain signature in NEAR_
 
 :::info MPC testnet contracts
 
-If you want to try things out, these are the smart contracts available on `testnet`:
+If you want to try things out, these are the smart contracts available on `testnet`.
 
 - `v2.multichain-mpc.testnet`: MPC signer contract
 - `canhazgas.testnet`: [Multichain Gas Station](multichain-gas-relayer/gas-station.md) contract
 - `nft.kagi.testnet`: [NFT Chain Key](nft-keys.md) contract
+
+Please note that during this early `alpha` development stage the `testnet` contracts are continually being upgraded and redeployed.
+
+This may result in lost `testnet` keys, accounts, and cross-chain assets.
 
 :::
 
@@ -233,7 +243,17 @@ Once we have reconstructed the signature, we can relay it to the corresponding n
 
 ⭐️ For complete examples of a NEAR account performing Eth transactions:
 
+
+- [CLI script](https://github.com/mattlockyer/mpc-script)
 - [web-app example](https://github.com/near-examples/near-multichain)
 - [component example](https://test.near.social/bot.testnet/widget/chainsig-sign-eth-tx)
+
+:::
+
+:::danger Warning
+
+Please note that during this early `alpha` development stage the `testnet` contracts are continually being upgraded and redeployed.
+
+This may result in lost `testnet` keys, accounts, and cross-chain assets.
 
 :::
