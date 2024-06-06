@@ -37,7 +37,7 @@ Dispatching multiple transactions at once is just a nice way to improve UX, beca
 <Language value="js" language="ts">
   <Github fname="index.js"
           url="https://github.com/near-examples/frontend-multiple-contracts/blob/main/frontend/index.js"
-          start="39" end="66" />
+          start="35" end="62" />
 </Language>
 
 In this example, the user signs two independent transactions:

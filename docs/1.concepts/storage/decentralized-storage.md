@@ -16,7 +16,7 @@ sidebar_label: Alternative Solutions
 
 For storing data on-chain it's important to keep in mind the following:
 
-- You can store an unlimited amount of files, but will cost you 1N per 100KB
+- You can store an unlimited amount of files, but will cost you 1Ⓝ per 100KB
 - There is a 4 MB limit on how much you can upload at once
 
 

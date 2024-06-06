@@ -71,6 +71,6 @@ So the final scheme will look like:
 
 We have learnt the main principles of how data is flowing in NEAR Protocol. We have found out that [Transactions](../../2.build/6.data-infrastructure/lake-data-structures/transaction.mdx) execute and the [ExecutionOutcome](../../2.build/6.data-infrastructure/lake-data-structures/execution_outcome.mdx) of the Transaction is always a [Receipt](../../2.build/6.data-infrastructure/lake-data-structures/receipt.mdx).
 
-Now we know that [Receipt](../../2.build/6.data-infrastructure/lake-data-structures/receipt.mdx) is a main internal asset for NEAR Protocol blockchain and it has a power of traveling between [Shards](../../2.build/6.data-infrastructure/lake-data-structures/shard.mdx). We learnt the NEAR Data flow on a simple example. Of course in real life with more complex transactions, that involve cross-contract calls, there will be more Receipts and ExecutionOutcomes.
+Now we know that [Receipt](../../2.build/6.data-infrastructure/lake-data-structures/receipt.mdx) is a main internal asset for NEAR Protocol blockchain and it has a power of traveling between [Shards](../../2.build/6.data-infrastructure/lake-data-structures/shard.mdx). We learnt the NEAR Data flow on a simple example. Of course in real life with more complex transactions that involve cross-contract calls, there will be more Receipts and ExecutionOutcomes.
 
 We hope this article is useful and you will be able to build your dApps and indexers easily with the knowledge of how data if flowing in NEAR Protocol.
