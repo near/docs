@@ -16,6 +16,11 @@ In this quickstart tutorial, we will guide you in creating your first smart cont
 
 ## Prerequisites
 
+<details>
+<summary>Working on Windows?</summary>
+
+See [Getting Started on NEAR Using Windows](/blog/getting-started-on-windows) for a step-by-step guide on how to setup WSL and your environment.
+</details>
 
 <Tabs groupId="code-tabs">
   <TabItem value="js" label="🌐 JavaScript">
@@ -64,7 +69,6 @@ curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/cargo-near/release
 </TabItem>
 
 </Tabs>
-
 
 
 :::info Testnet Account
@@ -147,22 +151,23 @@ The resulting folder structure will change slightly depending on the chosen lang
 
 Your new smart contract stores a `greeting: string` attribute in their state, and exposes two methods to interact with it (`set_greeting`, `get_greeting`).
 
-<CodeTabs>
-<Language value="js" language="js">
-    <Github fname="index.js"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts"
-            start="4" end="18" />
+<Tabs groupId="code-tabs">
+  <TabItem value="js" label="🌐 JavaScript">
+    <Language value="js" language="js">
+        <Github fname="index.js"
+                url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts"
+                start="4" end="18" />
+    </Language>
+  </TabItem>
 
-</Language>
-
-<Language value="rs" language="rust">
-    <Github fname="lib.rs"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
-            start="4" end="32" />
-
-</Language>
-
-</CodeTabs>
+  <TabItem value="rust" label="🦀 Rust">
+    <Language value="Rust" language="rust">
+        <Github fname="lib.rs"
+                url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
+                start="4" end="32" />
+    </Language>
+  </TabItem>
+</Tabs>
 
 There are 3 important things to notice:
 
@@ -254,11 +259,11 @@ New account "lovely-event.testnet" created successfully. # Response
 
 ```bash
 # Create a new testnet account with a random name
-cargo-near near create-dev-account use-random-account-id autogenerate-new-keypair save-to-legacy-keychain network-config testnet create
+cargo near create-dev-account use-random-account-id autogenerate-new-keypair save-to-legacy-keychain network-config testnet create
 
 # Create a new testnet account
 # Replace <lovely-event.testnet> with a custom name
-cargo-near near create-dev-account use-specific-account-id lovely-event.testnet autogenerate-new-keypair save-to-keychain network-config testnet create
+cargo near create-dev-account use-specific-account-id lovely-event.testnet autogenerate-new-keypair save-to-keychain network-config testnet create
 ````
 
 <details>
