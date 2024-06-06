@@ -40,6 +40,8 @@ Once this service and its supporting services are live, the multichain relayer s
 
 There's a premium on the Gas Station in `NEAR` for what the gas will cost on the foreign chain to account for variation in both the exchange rate between transactions, settlement between chains, and to account for variation in gas costs until the transaction is confirmed.
 
+### BSC
+
 This is the formula for calculating the gas fee:
 
 `(gas_limit_of_user_transaction + 21000) * gas_price_of_user_transaction * near_tokens_per_foreign_token * 1.2`
@@ -50,6 +52,9 @@ This is the formula for calculating the gas fee:
 - `1.2` is an arbitrage fee: charge 20% more than market rate to discourage people from using the Gas Station as an arbitrage/DEX.
 
 :::
+
+### Ethereum
+
 
 ## Settlement
 
