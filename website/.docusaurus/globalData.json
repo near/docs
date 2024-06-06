@@ -95,6 +95,11 @@
               "sidebar": "build"
             },
             {
+              "id": "build/chain-abstraction/multichain-gas-relayer/overview",
+              "path": "/zh-CN/build/chain-abstraction/multichain-gas-relayer/overview",
+              "sidebar": "build"
+            },
+            {
               "id": "build/chain-abstraction/multichain-gas-relayer/relayer-gas-example",
               "path": "/zh-CN/build/chain-abstraction/multichain-gas-relayer/relayer-gas-example",
               "sidebar": "build"

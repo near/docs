@@ -1,0 +1,30 @@
+{
+  "id": "build/chain-abstraction/multichain-gas-relayer/overview",
+  "title": "Multichain Gas Relayer Overview",
+  "description": "The Multichain Gas Relayer on NEAR is designed to facilitate cross-chain transactions by managing gas fees and transaction relays across different blockchain networks.",
+  "source": "@site/../docs/2.build/1.chain-abstraction/multichain-gas-relayer/overview.md",
+  "sourceDirName": "2.build/1.chain-abstraction/multichain-gas-relayer",
+  "slug": "/build/chain-abstraction/multichain-gas-relayer/overview",
+  "permalink": "/zh-CN/build/chain-abstraction/multichain-gas-relayer/overview",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/1.chain-abstraction/multichain-gas-relayer/overview.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1717673842000,
+  "frontMatter": {
+    "id": "overview",
+    "title": "Multichain Gas Relayer Overview",
+    "sidebar_label": "Overview"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "NFT Chain Keys Contract",
+    "permalink": "/zh-CN/build/chain-abstraction/nft-chain-keys"
+  },
+  "next": {
+    "title": "Multichain Gas Station",
+    "permalink": "/zh-CN/build/chain-abstraction/multichain-gas-relayer/gas-station"
+  }
+}

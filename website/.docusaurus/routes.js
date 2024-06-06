@@ -54,15 +54,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '6bc'),
+    component: ComponentCreator('/zh-CN/', '840'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '42c'),
+        component: ComponentCreator('/zh-CN/', '32b'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', 'b79'),
+            component: ComponentCreator('/zh-CN/', '38f'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -162,6 +162,12 @@ export default [
               {
                 path: '/zh-CN/build/chain-abstraction/multichain-gas-relayer/multichain-server',
                 component: ComponentCreator('/zh-CN/build/chain-abstraction/multichain-gas-relayer/multichain-server', '6d2'),
+                exact: true,
+                sidebar: "build"
+              },
+              {
+                path: '/zh-CN/build/chain-abstraction/multichain-gas-relayer/overview',
+                component: ComponentCreator('/zh-CN/build/chain-abstraction/multichain-gas-relayer/overview', '525'),
                 exact: true,
                 sidebar: "build"
               },

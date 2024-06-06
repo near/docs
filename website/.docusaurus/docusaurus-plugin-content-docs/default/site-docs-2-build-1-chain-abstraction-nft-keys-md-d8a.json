@@ -24,7 +24,7 @@
     "permalink": "/zh-CN/build/chain-abstraction/wallet"
   },
   "next": {
-    "title": "Multichain Gas Station",
-    "permalink": "/zh-CN/build/chain-abstraction/multichain-gas-relayer/gas-station"
+    "title": "Overview",
+    "permalink": "/zh-CN/build/chain-abstraction/multichain-gas-relayer/overview"
   }
 }

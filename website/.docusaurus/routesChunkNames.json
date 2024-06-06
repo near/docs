@@ -117,17 +117,17 @@
       "plugin": "c141421f"
     }
   },
-  "/zh-CN/-6bc": {
+  "/zh-CN/-840": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "aba21aa0"
     }
   },
-  "/zh-CN/-42c": {
+  "/zh-CN/-32b": {
     "__comp": "a7bd4aaa",
     "__props": "2d9c5935"
   },
-  "/zh-CN/-b79": {
+  "/zh-CN/-38f": {
     "__comp": "a94703ab"
   },
   "/zh-CN/api/rpc/access-keys-bdc": {
@@ -197,6 +197,10 @@
   "/zh-CN/build/chain-abstraction/multichain-gas-relayer/multichain-server-6d2": {
     "__comp": "17896441",
     "content": "98c5f37f"
+  },
+  "/zh-CN/build/chain-abstraction/multichain-gas-relayer/overview-525": {
+    "__comp": "17896441",
+    "content": "dbe6e116"
   },
   "/zh-CN/build/chain-abstraction/multichain-gas-relayer/relayer-gas-example-74a": {
     "__comp": "17896441",

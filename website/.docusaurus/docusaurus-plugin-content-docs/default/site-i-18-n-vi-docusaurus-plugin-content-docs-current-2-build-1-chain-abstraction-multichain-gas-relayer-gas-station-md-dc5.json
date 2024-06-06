@@ -20,8 +20,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "NFT Chain Keys Contract",
-    "permalink": "/vi/build/chain-abstraction/nft-chain-keys"
+    "title": "Overview",
+    "permalink": "/vi/build/chain-abstraction/multichain-gas-relayer/overview"
   },
   "next": {
     "title": "Multichain Relayer Server",
