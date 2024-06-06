@@ -44,7 +44,7 @@ A transaction is considered **final** when all its receipts are processed.
 Most transactions will just spawn a receipt to process the actions, and a receipt to refund the gas, being final in 1-3 blocks (~1-3 seconds):
 
 - [One block](https://testnet.nearblocks.io/txns/8MAvH96aMfDxPb3kVDrgj8nvJS7CAXP1GgtiivKAMGkF#execution) if the `signer` and `receiver` coincide - e.g. when adding a key
-- [Three blocks](https://testnet.nearblocks.io/txns/B7gxJNxav1A9WhWvaNWYLrSTub1Mkfj3tAudoASVM5tG#) if the `signer` and `receiver` differ, since the first block creates the `Receipt`, and the last reimburse gas
+- [Three blocks](https://testnet.nearblocks.io/txns/B7gxJNxav1A9WhWvaNWYLrSTub1Mkfj3tAudoASVM5tG#) if the `signer` and `receiver` differ, since the first block creates the `Receipt`, and the last reimburses gas
 
 Function calls might take longer, as they can spawn multiple receipts. Network congestion can also increase the time to process a receipt and, thus, a transaction.
 :::
@@ -111,5 +111,5 @@ See the examples below for more details.
 </details>
 
 :::tip
-You can check the status of a transactions using the [NearBlocks explorer](https://nearblocks.io/)
+You can check the status of a transaction using the [NearBlocks explorer](https://nearblocks.io/)
 :::
