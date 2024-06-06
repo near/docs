@@ -2,6 +2,11 @@
   "title": "Developer Changelog",
   "items": [
     {
+      "title": "Getting Started on NEAR Using Windows",
+      "permalink": "/zh-CN/blog/getting-started-on-windows",
+      "unlisted": false
+    },
+    {
       "title": "It's gonna be Legen... wait for it...",
       "permalink": "/zh-CN/blog/yield-resume",
       "unlisted": false

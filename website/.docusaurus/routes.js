@@ -4,12 +4,17 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 export default [
   {
     path: '/zh-CN/blog',
-    component: ComponentCreator('/zh-CN/blog', '416'),
+    component: ComponentCreator('/zh-CN/blog', '867'),
     exact: true
   },
   {
     path: '/zh-CN/blog/archive',
     component: ComponentCreator('/zh-CN/blog/archive', 'a8b'),
+    exact: true
+  },
+  {
+    path: '/zh-CN/blog/getting-started-on-windows',
+    component: ComponentCreator('/zh-CN/blog/getting-started-on-windows', '597'),
     exact: true
   },
   {
@@ -28,13 +33,28 @@ export default [
     exact: true
   },
   {
+    path: '/zh-CN/blog/tags/getting-started',
+    component: ComponentCreator('/zh-CN/blog/tags/getting-started', '373'),
+    exact: true
+  },
+  {
     path: '/zh-CN/blog/tags/protocol',
     component: ComponentCreator('/zh-CN/blog/tags/protocol', 'bc3'),
     exact: true
   },
   {
+    path: '/zh-CN/blog/tags/tutorial',
+    component: ComponentCreator('/zh-CN/blog/tags/tutorial', '929'),
+    exact: true
+  },
+  {
     path: '/zh-CN/blog/tags/updates',
     component: ComponentCreator('/zh-CN/blog/tags/updates', 'f10'),
+    exact: true
+  },
+  {
+    path: '/zh-CN/blog/tags/windows',
+    component: ComponentCreator('/zh-CN/blog/tags/windows', '80c'),
     exact: true
   },
   {

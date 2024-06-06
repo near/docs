@@ -38,6 +38,10 @@
     "hide_table_of_contents": true
   },
   "unlisted": false,
+  "prevItem": {
+    "title": "Getting Started on NEAR Using Windows",
+    "permalink": "/zh-CN/blog/getting-started-on-windows"
+  },
   "nextItem": {
     "title": "Reorganizing our docs",
     "permalink": "/zh-CN/blog/reorganizing-docs"

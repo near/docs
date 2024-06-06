@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk=self.webpackChunk||[]).push([[8316],{71518:o=>{o.exports=JSON.parse('{"tags":[{"label":"protocol","permalink":"/ko/blog/tags/protocol","count":1},{"label":"updates","permalink":"/ko/blog/tags/updates","count":3},{"label":"docusaurus","permalink":"/ko/blog/tags/docusaurus","count":1}]}')}}]);
