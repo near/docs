@@ -74,7 +74,7 @@ Once the signature is ready, the contract gains access to it and returns it to t
 <details>
 <summary> A Contract Recursively Calling Itself? </summary>
 
-NEAR smart contracts are unable to halt execution and await the completion of a process. To solve this, one can make the contract call itself again and again checking on each iteration to see if the result is ready.
+NEAR smart contracts are currently unable to halt execution and await the completion of a process. To solve this while we await the ability to [yield & resume](https://docs.near.org/blog/yield-resume), one can make the contract call itself again and again checking on each iteration to see if the result is ready.
 
 **Note:** Each call will take one block which equates to ~1 second of waiting. After some time the contract will either return a result that an external party provided or return an error running out of GAS waiting.
 
