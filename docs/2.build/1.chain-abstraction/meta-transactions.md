@@ -110,7 +110,7 @@ Progress is being made to make this possible in the future.
 ### Gating the relayer
 
 In most production applications it's expected that you want to be able to gate the relayer to only be used in certain cases.
-By taking apart the `delegateAction` object inside the `SignedDelegate`on the server this can be done simply.
+This can be easily accomplished by specifying constraints inside the `SignedDelegate.delegateAction` object.
 
 ```typescript
 export declare class DelegateAction extends Assignable {

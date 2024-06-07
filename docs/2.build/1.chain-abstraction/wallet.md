@@ -40,7 +40,7 @@ Parsed BTC: send 100 BTC to Attacker
 
 The user would approve the `SOL` transaction but the attacker would also get the `BTC` transaction.
 
-This can be solved by having different keys for any chains that you can't prove could have ambiguous transactions. This means that while an attacker may create ambiguous transactions, it will only be for wallets without assets on the target chain.
+This can be solved by having different keys for any chains that could have ambiguous transactions. This means that while an attacker may create ambiguous transactions, it will only be for wallets without assets on the target chain.
 
 
 ## Serialization format
