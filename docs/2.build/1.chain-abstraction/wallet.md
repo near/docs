@@ -40,7 +40,7 @@ Parsed BTC: send 100 BTC to Attacker
 
 The user would approve the `SOL` transaction but the attacker would also get the `BTC` transaction.
 
-This can be solved by having different keys for different chains. That way, even if an attacker makes you sign a transaction that is also valid in a foreign chain, there are no assets to be compromised.
+This can be solved by having unique keys for different chains. That way, even if an attacker makes you sign a transaction that is also valid in a foreign chain, no assets will be compromised.
 
 
 ## Serialization format

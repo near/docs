@@ -12,7 +12,10 @@ This infrastructure consists of a smart contract, a light client, and a Remote P
 - [RPC Client](#da-rpc): The defacto client for submitting data blobs to NEAR.
 - [Integrations](#integrations): Proof of concept works for integrating with L2 rollups.
 
-NEAR DA is notably inexpensive due to several key factors. Firstly, NEAR offers a substantial amount of block space per shard, ensuring efficient utilization. Moreover, NEAR optimizes this space by avoiding unnecessary cryptographic bloat, ensuring that each 4MB allocated equals precisely 4MB of usable data. Additionally, NEAR's scalability is unmatched, as it can readily reshard and scale in response to increasing demand, unlike competitors who would need to resort to constructing rollups or sidechains, thus maintaining a consistently ample and cost-effective data availability solution.
+NEAR DA is notably inexpensive due to several key factors:
+- NEAR offers a substantial amount of block space per shard, ensuring efficient utilization.
+- NEAR optimizes this space by avoiding unnecessary cryptographic bloat, ensuring that each 4MB allocated equals precisely 4MB of usable data.
+- NEAR's scalability is unmatched, as it can readily reshard and scale in response to increasing demand, unlike competitors who would need to resort to constructing rollups or sidechains, thus maintaining a consistently ample and cost-effective data availability solution.
 
 :::tip
 For the latest information, please check the [Near DA](https://github.com/near/rollup-data-availability/) repository.
