@@ -1,7 +1,7 @@
 {
   "id": "build/chain-abstraction/data-availability",
   "title": "Rollup Data Availability",
-  "description": "Utilizing NEAR as storage data availability with a focus on lowering rollup DA fees.",
+  "description": "Every monolithic blockchain has a data availability layer. NEAR's Data Availability (DA) represents a pioneering initiative to modularize the data availability layer from the NEAR blockchain to make it available as a roll-up solution for builders on other chains.",
   "source": "@site/../docs/2.build/1.chain-abstraction/data-availability.md",
   "sourceDirName": "2.build/1.chain-abstraction",
   "slug": "/build/chain-abstraction/data-availability",
@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/1.chain-abstraction/data-availability.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "gagdiez",
-  "lastUpdatedAt": 1712674517000,
+  "lastUpdatedBy": "Charles Garrett",
+  "lastUpdatedAt": 1718027601000,
   "frontMatter": {
     "id": "data-availability",
     "title": "Rollup Data Availability"

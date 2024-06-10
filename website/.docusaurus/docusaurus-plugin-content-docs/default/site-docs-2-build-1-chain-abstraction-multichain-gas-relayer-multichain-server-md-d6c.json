@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/1.chain-abstraction/multichain-gas-relayer/multichain-server.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Damián Parrino",
-  "lastUpdatedAt": 1717701681000,
+  "lastUpdatedBy": "Charles Garrett",
+  "lastUpdatedAt": 1718027601000,
   "frontMatter": {
     "id": "multichain-server",
     "title": "Multichain Relayer Server",
