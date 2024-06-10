@@ -3,12 +3,19 @@ id: data-availability
 title: Rollup Data Availability
 ---
 
-Utilizing NEAR as storage data availability with a focus on lowering rollup DA fees.
+Every monolithic blockchain has a data availability layer. NEAR's Data Availability (DA) represents a pioneering initiative to modularize the data availability layer from the NEAR blockchain to make it available as a roll-up solution for builders on other chains. 
+
+This infrastructure consists of a smart contract, a light client, and a Remote Procedure Call (RPC) node. The smart contract is designed to accept blob data, which is then processed through NEAR's consensus. The RPC node functions as the serving node, where users can transmit their data. Lastly, the light client operates as a node that rollups can verify to ensure the availability of data.
 
 - [Blob Store Contract](#blob-store-contract): A contract that provides the store for arbitrary DA blobs.
 - [Light Client](#light-client): A trustless off-chain light client for NEAR with DA-enabled features.
 - [RPC Client](#da-rpc): The defacto client for submitting data blobs to NEAR.
 - [Integrations](#integrations): Proof of concept works for integrating with L2 rollups.
+
+NEAR DA is notably inexpensive due to several key factors:
+- NEAR offers a substantial amount of block space per shard, ensuring efficient utilization.
+- NEAR optimizes this space by avoiding unnecessary cryptographic bloat, ensuring that each 4MB allocated equals precisely 4MB of usable data.
+- NEAR's scalability is unmatched, as it can readily reshard and scale in response to increasing demand, unlike competitors who would need to resort to constructing rollups or sidechains, thus maintaining a consistently ample and cost-effective data availability solution.
 
 :::tip
 For the latest information, please check the [Near DA](https://github.com/near/rollup-data-availability/) repository.
