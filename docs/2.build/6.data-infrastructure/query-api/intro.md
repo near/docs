@@ -57,7 +57,7 @@ QueryAPI stores all the indexer logic and schemas used to provision the database
 Whenever you interact with the QueryAPI NEAR component, in the background it's making an RPC query to `queryapi.dataplatform.near`,
 where a smart contract stores all of your indexer logic as well as your schemas.
 
-For example, if you select the _feed-indexer_ and click on [**View indexer**](https://dev.near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=dataplatform.near/feed-indexer) you'll see all the details about an indexer that powers the Activity Page on [dev.near.org](https://dev.near.org).
+For example, if you select the social_feed indexer and click on [**View indexer**](https://dev.near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=dataplatform.near/social_feed) you'll see all the details about an indexer that powers the Activity Page on [dev.near.org](https://dev.near.org).
 You're free to review the JavaScript code of the indexer function, or check the SQL that defines the database schema.
 
 
