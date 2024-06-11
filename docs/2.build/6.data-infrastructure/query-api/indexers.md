@@ -32,7 +32,7 @@ QueryAPI works by:
 2. Creating the tables as specified in the schema to the GraphQL database, exposing a GraphQL endpoint to query the data;
 3. Spinning up a cloud process that runs your indexer function, writing to the GraphQL database;
 
-You can access the [NEAR QueryAPI by following this link](https://near.org/dataplatform.near/widget/QueryApi.App).
+You can access the [NEAR QueryAPI by following this link](https://dev.near.org/dataplatform.near/widget/QueryApi.App).
 
 This should take you to a dashboard that looks like this:
 
@@ -259,7 +259,7 @@ fetchGraphQL(transactionQueriesDoc, "TransactionsQuery", {})
   });
 ```
 
-We have just shown how to fetch data from the indexers that we have created from within NEAR. To view a more complex example, see this widget which fetches posts with proper pagination: [Posts Widget powered By QueryAPI](https://near.org/dataplatform.near/widget/QueryApi.Examples.Feed.Posts).
+We have just shown how to fetch data from the indexers that we have created from within NEAR. To view a more complex example, see this widget which fetches posts with proper pagination: [Posts Widget powered By QueryAPI](https://dev.near.org/dataplatform.near/widget/QueryApi.Examples.Feed.Posts).
 
 :::tip Video Walkthrough
 

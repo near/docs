@@ -44,10 +44,10 @@ Near QueryAPI tries to cover most (or all) of these needs, offering an open-sour
 
 ### NEAR Component
 
-QueryAPI has a [`QueryApi.App` NEAR widget](https://dev.near.org/#/dataplatform.near/widget/QueryApi.App), hosted under the `dataplatform.near` account.
+QueryAPI has a [`QueryApi.App` NEAR widget](https://dev.near.org/dataplatform.near/widget/QueryApi.App), hosted under the `dataplatform.near` account.
 With this component, you can see all the public indexers currently available on the Near blockchain.
 
-If you would like to create a new indexer, simply click [**Create New Indexer**](https://dev.near.org/#/dataplatform.near/widget/QueryApi.App/?view=create-new-indexer).
+If you would like to create a new indexer, simply click [**Create New Indexer**](https://dev.near.org/dataplatform.near/widget/QueryApi.App/?view=create-new-indexer).
 
 ![QueryAPI Dashboard](/docs/assets/QAPIScreen.png)
 
