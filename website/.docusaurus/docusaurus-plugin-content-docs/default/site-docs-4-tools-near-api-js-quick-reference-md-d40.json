@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/4.tools/near-api-js/quick-reference.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "gagdiez",
-  "lastUpdatedAt": 1712759479000,
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1718117343000,
   "frontMatter": {
     "id": "quick-reference",
     "title": "Using JavaScript API to interact with NEAR",
