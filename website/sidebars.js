@@ -305,7 +305,8 @@ const sidebar = {
     },
     "build/primitives/what-is",
     {
-      "Primitives & Standards": [
+      //______________________________________________________________
+      "primitives & Standards": [
         "build/primitives/ft",
         "build/primitives/nft",
         "build/primitives/linkdrop",
@@ -313,14 +314,150 @@ const sidebar = {
         "build/primitives/dao",
         "build/primitives/dex",
         {
-          "type": "html",
-          "value": "<hr/>"
-        },
+          "Primitve for DOS": [
+            {
+              "BOS": [
+              "build/primitives/dao/bos/create-dao",
+              "build/primitives/dao/bos/create-proposal",
+              "build/primitives/dao/bos/get-dao-list",
+              "build/primitives/dao/bos/get-proposal-list",
+              "build/primitives/dao/bos/vote-for-proposal",
+            ]},
+            {
+              "Near CLI": [
+              "build/primitives/dao/near-cli/create-dao",
+              "build/primitives/dao/near-cli/create-proposal",
+              "build/primitives/dao/near-cli/get-dao-list",
+              "build/primitives/dao/near-cli/get-proposal-list",
+              "build/primitives/dao/near-cli/vote-for-proposal",            
+            ]},
+            {
+              "smart-contract": [
+              "build/primitives/dao/smart-contract/create-dao",
+              "build/primitives/dao/smart-contract/create-proposal",
+              "build/primitives/dao/smart-contract/vote-for-proposal",            
+            ]},
+            {
+              "Web App": [
+              "build/primitives/dao/web-app/create-dao",
+              "build/primitives/dao/web-app/create-proposal",
+              "build/primitives/dao/web-app/get-dao-list",
+              "build/primitives/dao/web-app/get-proposal-list",
+              "build/primitives/dao/web-app/vote-for-proposal",            
+            ]},
+        ]},
         {
-          "type": "html",
-          "value": "<a class='menu__link internal' href='/tutorials/nfts/minting-nfts'> 📖 Tutorials </a>",
-        },
+          "Primitve for DEX": [
+            {
+              "BOS": [
+              "build/primitives/dex/bos/get-deposit-balances",
+              "build/primitives/dex/bos/get-pools",
+              "build/primitives/dex/bos/get-price",
+              "build/primitives/dex/bos/swap",
+            ]},
+            {
+              "Near CLI": [
+                "build/primitives/dex/near-cli/get-deposit-balances",
+                "build/primitives/dex/near-cli/get-pools",
+                "build/primitives/dex/near-cli/swap",
+            ]},
+            {
+              "smart-contract": [
+              "build/primitives/dex/smart-contract/get-deposit-balances",
+              "build/primitives/dex/smart-contract/get-pools",
+              "build/primitives/dex/smart-contract/swap",
+          ]},
+            {
+              "Web App": [
+              "build/primitives/dex/web-app/get-deposit-balances",
+              "build/primitives/dex/web-app/get-pools",
+              "build/primitives/dex/web-app/get-price",
+              "build/primitives/dex/web-app/swap",
+            ]},
+        ]},
+        {
+          "Primitve for FT": [
+            {
+              "BOS": [
+              "build/primitives/ft/bos/attach-to-call",
+              "build/primitives/ft/bos/check-balance",
+              "build/primitives/ft/bos/create",
+              "build/primitives/ft/bos/get-metadata",
+              "build/primitives/ft/bos/register",
+              "build/primitives/ft/bos/send",
+            ]},
+            {
+              "Near CLI": [
+                "build/primitives/ft/near-cli/attach-to-call",
+                "build/primitives/ft/near-cli/check-balance",
+                "build/primitives/ft/near-cli/create",
+                "build/primitives/ft/near-cli/get-metadata",
+                "build/primitives/ft/near-cli/register",
+                "build/primitives/ft/near-cli/send",
+            ]},
+            {
+              "smart-contract": [
+              "build/primitives/ft/smart-contract/attach-to-call",
+              "build/primitives/ft/smart-contract/send",
+            ]},
+
+            {
+              "Web App": [
+                "build/primitives/ft/web-app/attach-to-call",
+                "build/primitives/ft/web-app/check-balance",
+                "build/primitives/ft/web-app/create",
+                "build/primitives/ft/web-app/get-metadata",
+                "build/primitives/ft/web-app/register",
+                "build/primitives/ft/web-app/send",
+            ]},
+          ]},
+          {
+            "Primitve for NFT": [
+              {
+                "BOS": [
+                "build/primitives/nft/bos/buy",
+                "build/primitives/nft/bos/list-for-sale",
+                "build/primitives/nft/bos/mint",
+                "build/primitives/nft/bos/query",
+                "build/primitives/nft/bos/transfer",
+              ]},
+              {
+                "Near CLI": [
+                  "build/primitives/nft/near-cli/buy",
+                  "build/primitives/nft/near-cli/list-for-sale",
+                  "build/primitives/nft/near-cli/mint",
+                  "build/primitives/nft/near-cli/query",
+                  "build/primitives/nft/near-cli/transfer",
+              ]},
+              {
+                "smart-contract": [
+                  "build/primitives/nft/smart-contract/buy",
+                  "build/primitives/nft/smart-contract/mint",
+                  "build/primitives/nft/smart-contract/query",
+                  "build/primitives/nft/smart-contract/transfer",
+              ]},
+  
+              {
+                "Web App": [
+                  "build/primitives/nft/web-app/buy",
+                  "build/primitives/nft/web-app/list-for-sale",
+                  "build/primitives/nft/web-app/mint",
+                  "build/primitives/nft/web-app/query",
+                  "build/primitives/nft/web-app/transfer",
+              ]},
+            ]},
+  
+            {
+              "type": "html",
+              "value": "<hr/>"
+            },
+            {
+              "type": "html",
+              "value": "<a class='menu__link internal' href='/tutorials/nfts/minting-nfts'> 📖 Tutorials </a>",
+            },      
       ]
+
+      //______________________________________________________________
     },
     {
       "type": "html",
