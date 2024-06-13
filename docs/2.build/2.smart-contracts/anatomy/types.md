@@ -12,8 +12,10 @@ import {ExplainCode, Block, File} from '@site/src/components/CodeExplainer/code-
 
 Lets discuss which types smart contracts use to input and output data, as well as how such data is stored and handled in the contract's code.
 
-<ExplainCode languages={["js", "rust"]}>
-  <Block highlights={{"js":"5,8,13"}} fname="hello-near">
+<ExplainCode languages="js,rust">
+
+<Block highlights='{"js":"5,8,13"}' fname="hello-near">
+
     ### Native Types
     Smart contracts can receive, store and return data using JS native types:
     - `string`
@@ -23,8 +25,11 @@ Lets discuss which types smart contracts use to input and output data, as well a
     - `Map`
     - `Object`
     - `BigInt`
-  </Block>
-  <Block highlights={{"rust":"6,13,22,27"}} fname="hello-near">
+
+</Block>
+
+<Block highlights='{"rust":"6,13,22,27"}' fname="hello-near">
+
     ### Native Types
     Smart contracts can receive, store and return data using the following Rust types:
     - `string`
@@ -33,68 +38,75 @@ Lets discuss which types smart contracts use to input and output data, as well a
     - `bool`
     - `HashMap`
     - `Vector`
-  </Block>
-  <Block highlights={{"rust": "1,15,22,64"}} fname="auction">
+
+</Block>
+
+<Block highlights='{"rust": "1,15,22,64"}' fname="auction">
+
     #### `U64/U128`
     Smart contracts can store `u64` and `u128`, but these types need to be converted to `string` for input/output
 
     To simplify development, the SDK provides the `U64` and `U128` types which are automatically casted to `u64/u128` when stored, and to `string` when used as input/output
-  </Block>
-  <Block highlights={{"js":"3-6", "rust": "6-9"}} fname="auction">
+
+</Block>
+
+<Block highlights='{"js":"3-6", "rust": "6-9"}' fname="auction">
+
     ### Complex Objects
     Smart contracts can store and return complex objects
 
-    **Note:** Objects will always be received and returned as JSON 
-  </Block>
-  <Block highlights={{"rust": "4"}} fname="auction">
+    **Note:** Objects will always be received and returned as JSON
+
+</Block>
+
+<Block highlights='{"rust": "4"}' fname="auction">
+
     #### Serializers
     Objects that will be used as input or output need to be serializable to JSON, add the `#[near(serializer=json)]` macro
 
     Objects that will be stored in the contract's state need to be serializable to Borsh, add the `#[near(serializer=borsh)]` macro
-  </Block>
-  <Block highlights={{"js": "5,11,47"}} fname="auction">
+
+</Block>
+
+<Block highlights='{"js": "5,11,47"}' fname="auction">
+
     ### Handling Tokens
     `$NEAR` tokens are represented using `BigInt` in JS, and they are always represented in `yoctonear`
 
     **Note:** 1 NEAR = 10^24 yoctoNEAR
-  </Block>
-  <Block highlights={{"rust": ""}} fname="auction">
+
+</Block>
+
+<Block highlights='{"rust": ""}' fname="auction">
+
     ### Handling Tokens
     `$NEAR` tokens are handled through the `NearToken` struct, which exposes methods to represent the value in `yoctonear`, `milinear` and `near`
 
     **Note:** 1 NEAR = 10^24 yoctonear
-  </Block>
-  <Block highlights={{"js": "4", "rust": "7"}} fname="auction">
+
+</Block>
+
+<Block highlights='{"js": "4", "rust": "7"}' fname="auction">
+
     ### Account
     The SDK exposes a special type to handle NEAR Accounts, which automatically checks if the account address is valid
-  </Block>
 
-  <File
-    language="js"
-    fname="hello-near" 
+</Block>
+
+<File language="js" fname="hello-near"
     url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts"
-    start="2"
-    end="18"
-  />
-  <File
-    language="rust"
-    fname="hello-near" 
+    start="2" end="18" />
+
+<File language="rust" fname="hello-near"
     url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
-    start="2"
-    end="32"
-  />
-  <File
-    language="js"
-    fname="auction" 
+    start="2" end="32" />
+
+<File language="js" fname="auction"
     url="https://github.com/near-examples/auction-examples/blob/main/contract-ts/src/contract.ts"
-    start="2"
-    end="51"
-  />
-  <File
-    language="rust"
-    fname="auction"
+    start="2" end="51" />
+
+<File language="rust" fname="auction"
     url="https://github.com/near-examples/auction-examples/blob/main/contract-rs/src/lib.rs"
-    start="2"
-    end="68"
-  />
+    start="2" end="68" />
+
 </ExplainCode>
