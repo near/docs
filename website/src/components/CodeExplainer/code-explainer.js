@@ -13,6 +13,7 @@ export const lang2label = {
 }
 
 export function ExplainCode({ children, languages }) {
+  languages = languages.split(",");
   const [language, setLang] = useState(languages[0]);
   const [blocks, setBlocks] = useState([]);
   const [files, setFiles] = useState([]);
@@ -39,8 +40,11 @@ export function ExplainCode({ children, languages }) {
     let files = []
 
     for (let child of children) {
-      if (child.props.highlights && language in child.props.highlights) {
-        blocks.push({ text: child.props.children, highlight: child.props.highlights[language], fname: child.props.fname });
+      if (child.props.highlights) {
+        let props_highlights = JSON.parse(child.props.highlights);
+        if (props_highlights && language in props_highlights) {
+          blocks.push({ text: child.props.children, highlight: props_highlights[language], fname: child.props.fname });
+        }
       }
       if (language === child.props.language) files.push({ ...child.props })
     }
