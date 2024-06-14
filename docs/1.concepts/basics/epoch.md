@@ -17,6 +17,7 @@ An **epoch** is a unit of time when validators of the network remain constant. I
 **Example:**
 
 <Tabs>
+
 <TabItem value="json" label="JSON" default>
 
 ```json
@@ -31,6 +32,7 @@ An **epoch** is a unit of time when validators of the network remain constant. I
 ```
 
 </TabItem>
+
 <TabItem value="http" label="HTTPie">
 
 ```bash
@@ -41,6 +43,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 ```
 
 </TabItem>
+
 </Tabs>
 
 **Example Response:**
@@ -79,5 +82,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 You can learn more about how epochs are used to manage network validation in the [Validator FAQ](https://github.com/near/wiki/blob/master/Archive/validators/faq.md#what-is-an-epoch).
 
 :::tip Got a question?
+
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
+
 :::
