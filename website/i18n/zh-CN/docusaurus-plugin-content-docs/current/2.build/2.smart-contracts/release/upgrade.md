@@ -57,7 +57,7 @@ A smart contract can also update itself by implementing a method that:
 2. Creates a Promise to deploy it on itself
 
 <CodeTabs>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="rust" language="rust">
     <Github fname="update.rs"
         url="https://github.com/near-examples/update-migrate-rust/blob/main/self-updates/base/src/update.rs"
         start="10" end="31" />
@@ -90,7 +90,7 @@ near contract call-function as-transaction <contract-account> update_contract fi
 
 </TabItem>
 
-<TabItem value="🌐 JavaScript">
+<TabItem value="js" label="🌐 JavaScript">
 
 ```js
 // Load the contract's raw bytes
@@ -147,7 +147,12 @@ This is how DAOs [update themselves](https://github.com/near-daos/sputnik-dao-co
 Imagine you have a Guest Book where you store messages, and the users can pay for such messages to be "premium". You keep track of the messages and payments using the following state:
 
 <CodeTabs>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="js" language="js">
+    <Github fname="index.js"
+          url="https://github.com/near/near-sdk-js/blob/develop/examples/src/basic-updates-base.js"
+          start="16" end="37" /></Language>
+
+  <Language value="rust" language="rust">
     <Github fname="lib.rs"
         url="https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/base/src/lib.rs"
         start="10" end="21" />
@@ -158,10 +163,16 @@ Imagine you have a Guest Book where you store messages, and the users can pay fo
 
 #### Update Contract
 
-At some point you realize that you could keep track of the `payments` inside of the `PostedMessage` itself, so you change the contract to:
+At some point you realize that you could keep track of the `payments` inside of the `PostedMessage` itself,
+so you change the contract to:
 
 <CodeTabs>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="js" language="js">
+    <Github fname="index.js"
+          url="https://github.com/near/near-sdk-js/blob/develop/examples/src/basic-updates-update.js"
+          start="23" end="45" /></Language>
+
+  <Language value="rust" language="rust">
     <Github fname="lib.rs"
         url="https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/update/src/lib.rs"
         start="12" end="23" />
@@ -172,17 +183,24 @@ At some point you realize that you could keep track of the `payments` inside of 
 
 #### Incompatible States
 
-If you deploy the update into an initialized account the contract will fail to deserialize the account's state, because:
+If you deploy the update into an initialized account the contract will fail to deserialize the account's state,
+because:
 
 1. There is an extra `payments` vector saved in the state (from the previous contract)
 2. The stored `PostedMessages` are missing the `payment` field (as in the previous contract)
 
 #### Migrating the State
 
-To fix the problem, you need to implement a method that goes through the old state, removes the `payments` vector and adds the information to the `PostedMessages`:
+To fix the problem, you need to implement a method that goes through the old state, removes the `payments` vector and
+adds the information to the `PostedMessages`:
 
 <CodeTabs>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="js" language="js">
+    <Github fname="index.js"
+          url="https://github.com/near/near-sdk-js/blob/develop/examples/src/basic-updates-update.js"
+          start="7" end="70" /></Language>
+
+  <Language value="rust" language="rust">
     <Github fname="lib.rs"
         url="https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/update/src/migrate.rs"
         start="3" end="46" />
@@ -191,10 +209,10 @@ To fix the problem, you need to implement a method that goes through the old sta
 
 </CodeTabs>
 
-Notice that `migrate` is actually an [initialization method](./contracts/anatomy.md#initialization-method) that **ignores** the existing state (`[#init(ignore_state)]`), thus being able to execute and rewrite the state.
+Notice that `migrate` is actually an [initialization method](../anatomy/anatomy.md#initialization-method) that **ignores** the existing state (`[#init(ignore_state)]`), thus being able to execute and rewrite the state.
 
 :::tip
 
-You can follow a migration step by step in the [official migration example](https://github.com/near-examples/update-migrate-rust/tree/main/basic-updates/base)
-
+You can follow a migration step by step in the [official migration example](https://github.com/near-examples/update-migrate-rust/tree/main/basic-updates/base)\
+Javascript migration example testfile can be found on here: [test-basic-updates.ava.js](https://github.com/near/near-sdk-js/blob/develop/examples/__tests__/test-basic-updates.ava.js), run by this command: `pnpm run test:basic-update` in examples directory.
 :::

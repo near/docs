@@ -9,12 +9,12 @@ import multipleCrosswords from '/docs/assets/crosswords/puzzle-piggy-bank--r3v.n
 
 # Diving deeper
 
-In the last chapter we installed Rust and got up and running with a simple smart contract. The contract has a few issues, however, and isn't as powerful as we'd like it to be. For instance, we can only store one crossword puzzle in the smart contract, the frontend is  hardcoded, and we don't offer any incentives to the person who wins.
+In the last chapter we installed Rust and got up and running with a simple smart contract. The contract has a few issues, however, and isn't as powerful as we'd like it to be. In the last chapter we installed Rust and got up and running with a simple smart contract. The contract has a few issues, however, and isn't as powerful as we'd like it to be. For instance, we can only store one crossword puzzle in the smart contract, the frontend is  hardcoded, and we don't offer any incentives to the person who wins.
 
 Let's give the smart contract the ability to store multiple crosswords and offer the winner a prize, paid in NEAR.
 
 <figure>
-    <img src={multipleCrosswords} alt="Man holding a book full of crossword puzzles, in his other hand he's holding a piggy bank. Art created by r3v.near"/>
+    <img src={multipleCrosswords} alt="Man holding a book full of crossword puzzles, in his other hand he's holding a piggy bank. Art created by r3v.near Art created by r3v.near"/>
     <figcaption className="full-width">Art by <a href="https://twitter.com/rev_rodrigueza" target="_blank">r3v.near</a></figcaption>
 </figure>
 

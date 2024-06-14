@@ -20,7 +20,7 @@ Benefits:
 
 1. Login into your [Google Cloud Account](https://console.cloud.google.com/).
 2. Open the [NEAR Protocol BigQuery Public Dataset](https://console.cloud.google.com/marketplace/product/bigquery-public-data/crypto-near-mainnet).
-3. Click in the <kbd>[VIEW DATASET](https://console.cloud.google.com/bigquery?p=bigquery-public-data\&d=crypto_near_mainnet_us\&page=dataset)</kbd> button.
+3. Click in the <kbd>[VIEW DATASET](https://console.cloud.google.com/bigquery?p=bigquery-public-data\\&d=crypto_near_mainnet_us\\&page=dataset)</kbd> button.
 4. Click in the <kbd>+</kbd> to create a new tab and write your query, click in the <kbd>RUN</kbd> button, and check the `Query results` below the query.
 5. Done :)
 
@@ -99,7 +99,11 @@ The tables available in the NEAR Public Lakehouse are:
 
 - [Protocol documentation](../../1.concepts/welcome.md)
 - [Near Data flow](../../1.concepts/data-flow/near-data-flow.md)
-- [Lake Data structures](./lake-data-structures/toc.mdx)
+- [Lake Data structures](../../2.develop/lake/structures/toc.mdx)
 - [Protocol specification](https://nomicon.io/)
+
+:::note Additional information about the data
+
+- Skipped Blocks: NEAR Blockchain can contain skipped blocks, e.g. block `57730443`. For these cases we can find the block for the chunk data using the `prev_block_hash` column, e.g. `SELECT * FROM chunks c JOIN blocks b ON c.chunk.header.prev_block_hash = b.header.prev_hash`.
 
 :::

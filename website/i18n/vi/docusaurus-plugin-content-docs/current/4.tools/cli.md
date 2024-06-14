@@ -15,11 +15,13 @@ The NEAR [Command Line Interface](https://github.com/near/near-cli) (CLI) is a t
 
 :::info
 
-The NEAR CLI also comes with an implementation in Rust called [`near-cli-rs`](https://github.com/near/near-cli-rs). If you want to use `near-cli` while you have `near-cli-rs` installed, prefix the following commands with `npx`. :::
+The NEAR CLI also comes with an implementation in Rust called [`near-cli-rs`](https://github.com/near/near-cli-rs). If you want to use `near-cli` while you have `near-cli-rs` installed, prefix the following commands with `npx`.
+
+:::
 
 ## Overview
 
-_Click vào từng command để xem thông tin chi tiết và các ví dụ._
+_Click on a command for more information and examples._
 
 | Command                                         | Mô tả                                                                                     |
 | ----------------------------------------------- | ----------------------------------------------------------------------------------------- |
@@ -130,7 +132,7 @@ NEAR_TESTNET_RPC
 
 Clear them in case you want to get back to the default RPC server.
 
-Dưới đây là danh sách đầy đủ các error variant có thể được trả về theo loại request `view_access_key_list`:
+Example:
 
 ```bash
 export NEAR_TESTNET_RPC=<put_your_rpc_server_url_here>
@@ -145,7 +147,7 @@ All keys are stored locally at the root of your `HOME` directory:
 
 Inside `.near-credentials`, access keys are organized in network subdirectories: `testnet`, and `mainnet`.
 
-Các thư mục con network này chứa các object`.JSON` với:
+These network subdirectories contain `.JSON` objects with an:
   -   `account_id`
   -   `private_key`
   -   `public_key`
@@ -170,20 +172,20 @@ near add-credentials example-acct.testnet --seedPhrase "antique attitude say evo
 
 > Optionally allows to sign with a Ledger: `--signWithLedger` `--ledgerPath`
 
-**Lưu ý:** Bạn sẽ sử dụng một full access key _đang tồn tại_ cho account mà bạn muốn thêm một key _mới_. ([`near login`](http://docs.near.org/docs/tools/near-cli#near-login))
+**Note:** You will use an _existing_ full access key for the account you would like to add a _new_ key to. ([`near login`](http://docs.near.org/docs/tools/near-cli#near-login))
 
 #### 1) thêm một `full access` key
 
 - các tham số: `accountId` `--masterAccount`
 
-**Dưới đây là danh sách đầy đủ các error variant có thể được trả về theo loại request `view_access_key_list`:**
+**Example:**
 
 ```bash
 near add-key example-acct.testnet Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1S
 ```
 
 <details>
-<summary><strong>Ví dụ response nhận được là</strong></summary>
+<summary><strong>Example Response</strong></summary>
 <p>
 
 ```
@@ -209,9 +211,9 @@ near add-key example-acct.testnet Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1S
 > 
 > `--allowance` is the amount of Ⓝ the key is allowed to spend on gas fees _only_ (default: 0).
 
-**Lưu ý:** Mỗi transaction được thực hiện bằng key này sẽ được khấu trừ phí gas từ khoản tiền cho phép ban đầu và khi hết tiền, bạn phải cấp phát một key mới.
+**Note:** Each transaction made with this key will have gas fees deducted from the initial allowance and once it runs out a new key must be issued.
 
-**Ví dụ:**
+**Example:**
 
 ```bash
 near add-key example-acct.testnet GkMNfc92fwM1AmwH1MTjF4b7UZuceamsq96XPkHsQ9vi --contract-id example-contract.testnet --method-names example_method --allowance 30000000000
@@ -240,9 +242,9 @@ near add-key example-acct.testnet GkMNfc92fwM1AmwH1MTjF4b7UZuceamsq96XPkHsQ9vi -
 -   các tham số: `accountId` `--masterAccount`
 -   options: `--networkId`, `force`
 
-**Note:** Bạn sẽ cần phân biệt full access key cho account mà bạn muốn xóa key. ([`near login`](http://docs.near.org/docs/tools/near-cli#near-login))
+**Note:** You will need separate full access key for the account you would like to delete a key from. ([`near login`](http://docs.near.org/docs/tools/near-cli#near-login))
 
-**Dưới đây là danh sách đầy đủ các error variant có thể được trả về theo loại request `view_access_key_list`:**
+**Example:**
 
 ```bash
 near delete-key example-acct.testnet Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1S
@@ -269,7 +271,7 @@ near delete-key example-acct.testnet Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1
 -   các tham số: `accountId` hoặc `không có`
 -   options: `--fromSeedPhrase`, `--saveImplicit`, `--queryLedgerPK`
 
-**Lưu ý:** Có một vài cách để sử dụng `generate-key` trả về những kết quả rất khác nhau. Hãy tham khảo các ví dụ dưới đây để biết thêm chi tiết.
+**Note:** There are several ways to use `generate-key` that return very different results. Please reference the examples below for further details.
 
 ---
 
@@ -544,7 +546,7 @@ near create-account new-acc.testnet --useFaucet
 
 ```bash
 # Creating a pre-funded account that can be controlled by the Ledger's public key
-near create-account new-acc.testnet --useFaucet --useLedgerPK 
+near create-account new-acc.testnet --useFaucet --useLedgerPK
 ```
 
 ```bash
@@ -591,7 +593,7 @@ near create-account sub-acct2.example-acct.testnet --useAccount example-acct.tes
 -   các tham số: `accountId` `.wasmFile`
 -   options: `force`, `--signWithLedger`, `--ledgerPath`
 
-**Ví dụ:**
+**Example:**
 
 ```bash
 near delete-account sub-acct2.example-acct.testnet example-acct.testnet
@@ -622,9 +624,9 @@ near delete-account sub-acct2.example-acct.testnet example-acct.testnet
 - các tham số: `accountId` `beneficiaryId`
 - options: `--signWithLedger`, `--ledgerPath`
 
-**Lưu ý:** Bạn sẽ cần một full access key cho sending account. ([`near login`](http://docs.near.org/docs/tools/near-cli#near-login))
+**Note:** You will need a full access key for the sending account. ([`near login`](http://docs.near.org/docs/tools/near-cli#near-login))
 
-**Ví dụ:**
+**Example:**
 
 ```bash
 near send-near sender.testnet receiver.testnet 10
@@ -652,7 +654,7 @@ near send-near sender.testnet receiver.testnet 10
 
 -   arguments: `accountId`
 
-**Dưới đây là danh sách đầy đủ các error variant có thể được trả về theo loại request `view_access_key_list`:**
+**Example:**
 
 ```bash
 near state example.testnet
@@ -686,12 +688,12 @@ near state example.testnet
 
 > makes a contract call which can modify _or_ view state.
 
-**Note:** các contract call yêu cầu một transaction fee (gas) vì vậy bạn sẽ cần một access key cho `--accountId` sẽ bị tính phí. ([`near login`](http://docs.near.org/docs/tools/near-cli#near-login))
+**Note:** Contract calls require a transaction fee (gas) so you will need an access key for the `--accountId` that will be charged. ([`near login`](http://docs.near.org/docs/tools/near-cli#near-login))
 
 -   các tham số: `contractName` `method_name` `{ args }` `--accountId`
 -   options: `--gas` `--deposit` `--signWithLedger` `--ledgerPath`
 
-**Ví dụ:**
+**Example:**
 
 ```bash
 near call guest-book.testnet addMessage '{"text": "Aloha"}' --account-id example-acct.testnet
@@ -721,15 +723,15 @@ near call guest-book.testnet addMessage '{"text": "Aloha"}' --account-id example
 -   các tham số: `.wasmFile`
 -   các tuỳ chọn: `default`
 
-**Note:** Bạn sẽ cần có một full access key cho account mà bạn đang deploy contract. ([`near login`](http://docs.near.org/docs/tools/near-cli#near-login))
+**Note:** You will need a full access key for the account you are deploying the contract to. ([`near login`](http://docs.near.org/docs/tools/near-cli#near-login))
 
-**Ví dụ:**
+**Example:**
 
 ```bash
 near deploy example-contract.testnet out/example.wasm
 ```
 
-**Example về việc khởi tạo:**
+**Initialize Example:**
 
 ```bash
 near deploy example-contract.testnet out/example.wasm --initFunction new --initArgs '{"owner_id": "example-contract.testnet", "total_supply": "10000000"}'
@@ -759,7 +761,7 @@ near deploy example-contract.testnet out/example.wasm --initFunction new --initA
 - arguments: `contractName`
 - options: `--finality`, `--utf8`, `--blockId`, `--prefix`
 
-**Ví dụ:**
+**Example:**
 
 ```bash
 near storage hello.near-examples.testnet --finality optimistic --utf8
@@ -784,7 +786,7 @@ near storage hello.near-examples.testnet --finality optimistic --utf8
 -   các tham số: `accountId` [`finality`](/api/rpc/setup#using-finality-param) _OR_ [`block-id`](/api/rpc/setup#using-block_id-param)
 -   các tuỳ chọn: `default`
 
-**Dưới đây là danh sách đầy đủ các error variant có thể được trả về theo loại request `view_access_key_list`:**
+**Example:**
 
 ```bash
 near view guest-book.testnet getMessages '{}'
@@ -829,7 +831,7 @@ near view guest-book.testnet getMessages '{}'
 -   arguments: `txHash` `--accountId`
 -   các tuỳ chọn: `default`
 
-**Dưới đây là danh sách đầy đủ các error variant có thể được trả về theo loại request `view_access_key_list`:**
+**Example:**
 
 ```bash
 near tx-status FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK --accountId guest-book.testnet
@@ -916,8 +918,8 @@ Transaction guest-book.testnet:FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK
 
 ## Global Options
 
-| Tuỳ chọn        | Mô tả                                                     |
-| --------------- | --------------------------------------------------------- |
-| `--help`        | Show help  [boolean]                                      |
-| `--version`     | Show version number  [boolean]                            |
+| Tuỳ chọn        | Mô tả                                                         |
+| --------------- | ------------------------------------------------------------- |
+| `--help`        | Show help  [boolean]                                          |
+| `--version`     | Show version number  [boolean]                                |
 | `-v, --verbose` | Prints out verbose output  \[boolean\] \[default: false\] |

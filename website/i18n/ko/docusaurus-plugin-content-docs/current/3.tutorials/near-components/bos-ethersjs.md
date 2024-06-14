@@ -144,9 +144,9 @@ Yes, there is an article that describes [best practices for creating application
 
 Below is a curated list of NEAR components, developed by the community, that epitomize the best practices for creating NEAR components:
 
-- [Unwrap ETH](https://near.org/near/widget/ComponentDetailsPage?src=zavodil.near/widget/unwrap-weth\&tab=source)
-- [ERC-20 Token sender](https://near.org/near/widget/ComponentDetailsPage?src=zavodil.near/widget/erc20-sender\&tab=source)
-- [Lido Component](https://near.org/near/widget/ComponentDetailsPage?src=zavodil.near/widget/Lido\&tab=source)
-- [Swap component](https://near.org/near/widget/ComponentDetailsPage?src=zavodil.near/widget/swap\&tab=source) (a set of swap dApps for Ethereum Mainnet, Polygon Mainnet, Polygon zkevm, Aurora, NEAR, etc)
+- [Unwrap ETH](https://near.org/near/widget/ComponentDetailsPage?src=zavodil.near/widget/unwrap-weth\\&tab=source)
+- [ERC-20 Token sender](https://near.org/near/widget/ComponentDetailsPage?src=zavodil.near/widget/erc20-sender\\&tab=source)
+- [Lido Component](https://near.org/near/widget/ComponentDetailsPage?src=zavodil.near/widget/Lido\\&tab=source)
+- [Swap component](https://near.org/near/widget/ComponentDetailsPage?src=zavodil.near/widget/swap\\&tab=source) (a set of swap dApps for Ethereum Mainnet, Polygon Mainnet, Polygon zkevm, Aurora, NEAR, etc)
 - [1inch](https://near.org#/near/widget/ComponentDetailsPage?src=chanon.near/widget/1inch)
 - [Liquity](https://near.org/near/widget/ComponentDetailsPage?src=garlicfaucet.near/widget/liquityWidget)

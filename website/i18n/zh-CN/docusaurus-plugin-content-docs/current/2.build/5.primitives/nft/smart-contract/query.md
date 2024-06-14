@@ -6,7 +6,7 @@ trait ExternalNftContract {
 }
 
 // Implement the contract structure
-#[near_bindgen]
+#[near]
 impl Contract {
   pub fn nft_token(&self, token_id: TokenId) -> Promise {
     let promise = ext_nft_contract::ext(self.nft_contract.clone())

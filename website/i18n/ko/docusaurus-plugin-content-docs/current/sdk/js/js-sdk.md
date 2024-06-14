@@ -8,9 +8,7 @@ JavaScript는 전 세계적으로 약 1,400만 명의 개발자가 사용하는 
 :::info Help contribute!
 - [발생한 문제 보고](https://github.com/near/near-sdk-js/issues) 🐞
 - [제안 / 피드백 제공](https://github.com/near/near-sdk-js/discussions) 💡
-- [Show us what you've built!](https://github.com/near/near-sdk-js/discussions/categories/show-and-tell) 💪  
-
-:::
+- [Show us what you've built!](https://github.com/near/near-sdk-js/discussions/categories/show-and-tell) 💪
 
 ---
 

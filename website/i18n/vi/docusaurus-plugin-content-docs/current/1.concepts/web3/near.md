@@ -20,7 +20,7 @@ But an account by itself won’t get us anywhere, its [transactions](../protocol
 
 - CreateAccount/DeleteAccount, AddKey/DeleteKey - accounts and key management transactions.
 - Transfer - send NEAR tokens from one account to another. The basic command of any blockchain.
-- Stake - needed to become a validator in a Proof-of-Stake blockchain network. We won’t touch this topic in this guideline, more information [can be found here](https://docs.near.org/docs/develop/node/validator/staking-and-delegation).
+- Stake - needed to become a validator in a Proof-of-Stake blockchain network. We won’t touch this topic in this guideline, more information [can be found here](https://near-nodes.io/validator/staking-and-delegation).
 - DeployContract - deploy a smart contract to a given account. An important thing to remember - one account can hold only one contract, so the contract is uniquely identified by the account name. If we issue this transaction to an account which already has a deployed contract, a contract update will be triggered.
 - FunctionCall - the most important action on the blockchain, it allows us to call a function of a smart contract.
 
@@ -134,7 +134,7 @@ To support more complex data retrieval scenarios, smart contract data should be 
 
 
 
-In order to simplify creation of indexers, [NEAR Indexer Framework](https://near-indexers.io/docs/projects/near-indexer-framework) has been created. However, even with a framework available, extracting data from a transaction may not be an easy task, since each smart contract has its unique structure and data storage model. To simplify this process, smart contracts can write structured information about outcome into the logs  (e.g. in the JSON format). Each smart contract can use its own format for such logs, but the general format has been standardized as [Events](https://nomicon.io/Standards/EventsFormat).
+In order to simplify creation of indexers, [NEAR Indexer Framework](/concepts/advanced/near-indexer-framework) has been created. However, even with a framework available, extracting data from a transaction may not be an easy task, since each smart contract has its unique structure and data storage model. To simplify this process, smart contracts can write structured information about outcome into the logs  (e.g. in the JSON format). Each smart contract can use its own format for such logs, but the general format has been standardized as [Events](https://nomicon.io/Standards/EventsFormat).
 
 Such architecture is very similar to Event Sourcing, where blockchain stores events (transactions), and they are materialized to a relational database using an indexer. This means the same drawbacks also apply. For instance, a client should be designed to accommodate indexing delay, which may take a few seconds.
 
@@ -146,10 +146,10 @@ By now, we should be familiar with necessary concepts to start developing WEB 3.
 
 First of all, we need a development and testing environment. Of course, we could theoraticaly perform development and testing on the main blockchain network, but this would not be cheap. For this reason, NEAR provides [several networks](../../1.concepts/basics/networks.md) that can be used during development:
 - testnet - public NEAR network which is identical to mainnet and can be used for free.
-- localnet - you can deploy your personal NEAR network on your own environment. Because it’s owned by you, data and code can be kept private during development. More info on how you can run your own node can be [found here](https://docs.near.org/docs/develop/node/validator/running-a-node). Alternatively, you can bootstrap an entire testing infrastructure in Docker on your local machine using Kurtosis - [guide is here](../../2.build/2.smart-contracts/testing/kurtosis-localnet.md).
+- localnet - you can deploy your personal NEAR network on your own environment. Because it’s owned by you, data and code can be kept private during development. More info on how you can run your own node can be [found here](https://near-nodes.io/validator/running-a-node). Alternatively, you can bootstrap an entire testing infrastructure in Docker on your local machine using Kurtosis - [guide is here](../../2.build/2.smart-contracts/testing/kurtosis-localnet.md).
 - workspaces - you can start your own local network to perform e2e testing. More info [here](../../2.build/2.smart-contracts/testing/integration-test.md).
 
-Once we’ve chosen a network to use, we need a way to interact with it. Of course, transactions can be constructed manually and posted into [node’s API](https://docs.near.org/api/rpc/setup). But [this is tedious](https://github.com/near-examples/transaction-examples) and isn’t fun at all. That’s why, NEAR [provides a CLI](../../4.tools/cli.md) which automates all of the necessary actions. It can be used locally for development purposes or on build machines for CI/CD scenarios.
+Once we’ve chosen a network to use, we need a way to interact with it. Of course, transactions can be constructed manually and posted into [node’s API](/api/rpc/setup). But [this is tedious](https://github.com/near-examples/transaction-examples) and isn’t fun at all. That’s why, NEAR [provides a CLI](../../4.tools/cli.md) which automates all of the necessary actions. It can be used locally for development purposes or on build machines for CI/CD scenarios.
 
 In order to manage accounts on the NEAR network, [Wallet](https://wiki.near.org/overview/tokenomics/creating-a-near-wallet) can be used. It can show an effective account balance and active keys.
 

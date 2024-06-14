@@ -11,6 +11,8 @@ If you want to use a custom RPC provider with NEAR Wallet Selector, [check this 
 
 :::
 
+## Mainnet
+
 | Provider                                                                   | Endpoint Root                                                |
 | -------------------------------------------------------------------------- | ------------------------------------------------------------ |
 | [NEAR](setup.md)                                                           | `https://rpc.mainnet.near.org`                               |
@@ -20,7 +22,8 @@ If you want to use a custom RPC provider with NEAR Wallet Selector, [check this 
 | [ankr.com](https://www.ankr.com/docs/rpc-service/chains/chains-list/#near) | `https://rpc.ankr.com/near`                                  |
 | [BlockPi](https://chains.blockpi.io/#/near)                                | `https://public-rpc.blockpi.io/http/near`                    |
 | [dRPC](https://drpc.org/)                                                  | `https://near.drpc.org`                                      |
-| [fast-near](https://github.com/vgrichina/fast-near)                        | `https://rpc.web4.near.page`                                 |
+| [fast-near web4](https://github.com/vgrichina/fast-near)                   | `https://rpc.web4.near.page`                                 |
+| [FASTNEAR Free](https://twitter.com/fast_near/status/1779578631318368269)  | `https://free.rpc.fastnear.com`                              |
 | [Gateway.fm](https://gateway.fm/)                                          | `https://rpc.near.gateway.fm/`                               |
 | [GetBlock](https://getblock.io/nodes/near/)                                | `https://getblock.io/nodes/near/`                            |
 | [Lava Network](https://www.lavanet.xyz/get-started/near)                   | `https://near.lava.build`                                    |
@@ -31,3 +34,10 @@ If you want to use a custom RPC provider with NEAR Wallet Selector, [check this 
 | [QuickNode](https://www.quicknode.com/chains/near)                         | -                                                            |
 | [Seracle](https://docs.seracle.com/)                                       | `https://api.seracle.com/saas/baas/rpc/near/mainnet/public/` |
 | [Zeeve](https://www.zeeve.io/)                                             | -                                                            |
+
+## Testnet
+
+| Provider                                | Endpoint Root                               |
+| --------------------------------------- | ------------------------------------------- |
+| [NEAR](setup.md)                        | `https://rpc.testnet.near.org`              |
+| [Pagoda](https://www.pagoda.co/console) | `https://near-testnet.api.pagoda.co/rpc/v1` |

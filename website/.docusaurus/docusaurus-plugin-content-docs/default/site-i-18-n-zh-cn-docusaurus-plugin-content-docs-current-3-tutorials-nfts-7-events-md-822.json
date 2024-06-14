@@ -16,12 +16,11 @@
   "sidebarPosition": 7,
   "frontMatter": {
     "id": "events",
-    "title": "Events",
-    "sidebar_label": "Events"
+    "title": "Events"
   },
   "sidebar": "tutorials",
   "previous": {
-    "title": "Core",
+    "title": "Transfers",
     "permalink": "/zh-CN/tutorials/nfts/core"
   },
   "next": {

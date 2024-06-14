@@ -7,9 +7,9 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-An **epoch** is a unit of time when validators of the network remain constant. It is measured in blocks:
+An **epoch** is a unit of time when validators of the network remain constant. It is measured in blocks: It is measured in blocks:
 
-- Both `testnet` and `mainnet` have an epoch duration of 43,200 blocks. Ideally epochs last about 12 hours, since blocks are created every second (in reality, they take slightly longer to be created).
+- Both `testnet` and `mainnet` have an epoch duration of 43,200 blocks. Ideally epochs last about 12 hours, since blocks are created every second (in reality, they take slightly longer to be created). Ideally epochs last about 12 hours, since blocks are created every second (in reality, they take slightly longer to be created).
 - You can view this setting by querying the **[`protocol_config`](/api/rpc/setup#protocol-config)** RPC endpoint and searching for `epoch_length`.
 
 **Note:** Nodes garbage collect blocks after 5 epochs (~2.5 days) unless they are [archival nodes](https://near-nodes.io/intro/node-types#archival-node).
@@ -17,6 +17,7 @@ An **epoch** is a unit of time when validators of the network remain constant. I
 **Example:**
 
 <Tabs>
+
 <TabItem value="json" label="JSON" default>
 
 ```json
@@ -31,6 +32,7 @@ An **epoch** is a unit of time when validators of the network remain constant. I
 ```
 
 </TabItem>
+
 <TabItem value="http" label="HTTPie">
 
 ```bash
@@ -41,6 +43,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 ```
 
 </TabItem>
+
 </Tabs>
 
 **Example Response:**
@@ -79,5 +82,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 You can learn more about how epochs are used to manage network validation in the [Validator FAQ](https://github.com/near/wiki/blob/master/Archive/validators/faq.md#what-is-an-epoch).
 
 :::tip Got a question?
+
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
+
 :::

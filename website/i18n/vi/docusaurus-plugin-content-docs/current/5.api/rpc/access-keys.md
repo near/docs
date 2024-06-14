@@ -42,7 +42,7 @@ Nếu `permission` của key là `FunctionCall`, nó sẽ trả về chi tiết 
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 
 ```js
@@ -253,7 +253,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.query({
@@ -564,7 +564,7 @@ Ví dụ:
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.experimental_changes({
@@ -752,7 +752,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.experimental_changes({

@@ -1,6 +1,6 @@
 {
   "id": "build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer",
-  "title": "비동기식",
+  "title": "JS 기본 튜토리얼",
   "description": "near-examples/near-lake-raw-printer-js: source code for the tutorial on how to create an indexer that prints block height and number of shards",
   "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/6.data-infrastructure/lake-framework/building-indexers/js-lake-indexer.md",
   "sourceDirName": "2.build/6.data-infrastructure/lake-framework/building-indexers",
@@ -15,8 +15,8 @@
   "lastUpdatedAt": 1713279052000,
   "frontMatter": {
     "id": "js-lake-indexer",
-    "title": "비동기식",
-    "sidebar_label": "JS 기본 튜토리얼"
+    "title": "JS 기본 튜토리얼",
+    "sidebar_label": "비동기식"
   },
   "sidebar": "build",
   "previous": {

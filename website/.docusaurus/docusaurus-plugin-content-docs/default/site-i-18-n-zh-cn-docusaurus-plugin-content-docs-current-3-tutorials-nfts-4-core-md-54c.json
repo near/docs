@@ -1,7 +1,7 @@
 {
   "id": "tutorials/nfts/core",
-  "title": "Core",
-  "description": "In this tutorial you'll learn how to implement the core standards into your smart contract. If you're joining us for the first time, feel free to clone this repo and checkout the 3.enumeration branch to follow along.",
+  "title": "Transfers",
+  "description": "In this tutorial you'll learn how to implement NFT transfers as defined in the core standards into your smart contract.",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/3.tutorials/nfts/4-core.md",
   "sourceDirName": "3.tutorials/nfts",
   "slug": "/tutorials/nfts/core",
@@ -16,8 +16,7 @@
   "sidebarPosition": 4,
   "frontMatter": {
     "id": "core",
-    "title": "Core",
-    "sidebar_label": "Core"
+    "title": "Transfers"
   },
   "sidebar": "tutorials",
   "previous": {

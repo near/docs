@@ -4,7 +4,7 @@ title: Create Transactions
 sidebar_label: Create a Transaction
 ---
 
-To construct & process transactions you will need our API JavaScript library: [`near-api-js`](/develop/integrate/frontend). There are many ways to create transactions but for this example we'll show you two ways to create a simple token transfer transaction.
+To construct & process transactions you will need our API JavaScript library: [`near-api-js`](/develop/integrate/frontend). There are many ways to create transactions but for this example we'll show you two ways to create a simple token transfer transaction. There are many ways to create transactions but for this example we'll show you two ways to create a simple token transfer transaction.
 
 - [HIGH LEVEL](#high-level----create-a-transaction) - _easiest way to create a transaction_
 - [LOW LEVEL](#low-level----create-a-transaction) - _performs the exact same transaction as above, but deconstructs the entire process for those curious about each step_
@@ -76,7 +76,7 @@ const amount = nearAPI.utils.format.parseNearAmount("1.5");
 
 ### Create a Key Store
 
-In order to sign transactions you will need to create a "Key Store" that will hold a [full access key](/concepts/protocol/access-keys#full-access-keys) to sign your transactions. There are several ways to accomplish this, but for this example we will use a private key stored in either an `.env` file in your project or an environment variable exported globally.
+In order to sign transactions you will need to create a "Key Store" that will hold a [full access key](/concepts/protocol/access-keys#full-access-keys) to sign your transactions. There are several ways to accomplish this, but for this example we will use a private key stored in either an `.env` file in your project or an environment variable exported globally. There are several ways to accomplish this, but for this example we will use a private key stored in either an `.env` file in your project or an environment variable exported globally.
 
 - If you created the account using [`near-cli`](/tools/near-cli) or ran [`near login`](/tools/near-cli#for-accounts) in your terminal, your private key can be found in a `.json` file located in `/HOME/.near-credentials`.
 - If you created an account using [NEAR Wallet](https://testnet.mynearwallet.com/), your key will be found in your browser's `Local Storage`.
@@ -97,6 +97,7 @@ Now create a connection to NEAR using a configuration object that will contain y
 
 ```js
 // configuration used to connect to NEAR
+const prefix = (networkId === "testnet") ? // configuration used to connect to NEAR
 const prefix = (networkId === "testnet") ? "testnet" : "www";
 
 const config = {
@@ -109,6 +110,9 @@ const config = {
 };
 
 // connect to NEAR! :)
+const near = await connect(config);
+// create a NEAR account object
+const senderAccount = await near.account(sender); :)
 const near = await connect(config);
 // create a NEAR account object
 const senderAccount = await near.account(sender);
@@ -124,7 +128,7 @@ Now that everything is setup, creating the transaction is a single line of code.
 const result = await senderAccount.sendMoney(receiver, amount);
 ```
 
-This simple command constructs, signs, and sends a token transfer transaction on the NEAR blockchain. There is no need to create a `result` variable aside from inspecting the response details from your transaction and even create a link to [NearBlocks Explorer](https://testnet.nearblocks.io/) to view a GUI version of the transaction details.
+This simple command constructs, signs, and sends a token transfer transaction on the NEAR blockchain. This simple command constructs, signs, and sends a token transfer transaction on the NEAR blockchain. There is no need to create a `result` variable aside from inspecting the response details from your transaction and even create a link to [NearBlocks Explorer](https://testnet.nearblocks.io/) to view a GUI version of the transaction details.
 
 ---
 
@@ -306,7 +310,7 @@ const nonce = ++accessKey.nonce;
 
 ### 5 `actions`
 
-- There are currently eight supported `Action` types. [[see here]](/concepts/protocol/transactions#action)
+- There are currently eight supported `Action` types. [[see here]](/concepts/protocol/transactions#action) [[see here]](/concepts/protocol/transactions#action)
 - For this example, we are using `Transfer`
 - This transfer action can be created using the [imported `nearAPI` object](#imports) and the [formatted Ⓝ amount](#formatting-token-amounts) created earlier.
 
@@ -354,7 +358,7 @@ const transaction = nearAPI.transactions.createTransaction(
 
 ### Sign Transaction
 
-Now that the transaction is created, we sign it before sending it to the NEAR blockchain. At the lowest level, there are four steps to this process.
+Now that the transaction is created, we sign it before sending it to the NEAR blockchain. At the lowest level, there are four steps to this process. At the lowest level, there are four steps to this process.
 
 1. Using [`nearAPI`](#imports), we call on `serialize()` to serialize the transaction in [Borsh](https://borsh.io/).
 
@@ -393,7 +397,7 @@ const signedTransaction = new nearAPI.transactions.SignedTransaction({
 
 Final step is to encode and send the transaction.
 
-- First we serialize transaction into [Borsh](https://borsh.io/), and store the result as `signedSerializedTx`. _(required for all transactions)_
+- First we serialize transaction into [Borsh](https://borsh.io/), and store the result as `signedSerializedTx`. _(required for all transactions)_ _(required for all transactions)_
 - Then we send the transaction via [RPC call](/api/rpc/introduction) using the `sendJsonRpc()` method nested inside [`near`](#setting-up-connection-to-near).
 
 ```js
@@ -466,12 +470,13 @@ For detailed information on transaction receipts [[click here]](https://nomicon.
 - In addition, you can create a link in JS using the `networkId` and `result.transaction.hash`.
 
 ```js
-const prefix = (networkId === "testnet") ? "testnet." : "";
+const prefix = (networkId === "testnet") ? "testnet." const prefix = (networkId === "testnet") ? "testnet." : "";
 const transactionLink = `https://${prefix}nearblocks.io/txns/${result.transaction.hash}`;
 ```
 
 :::tip Got a question?
+:::tip Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol"><h8>Ask it on StackOverflow!</h8></a>
 :::
 
-Happy Coding! 🚀
+Happy Coding! 🚀 🚀

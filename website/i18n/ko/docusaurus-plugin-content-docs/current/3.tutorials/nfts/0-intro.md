@@ -4,19 +4,20 @@ title: NFT Zero to Hero
 sidebar_label: 소개
 ---
 
-> 이 _Zero to Hero_ 시리즈에서는 대체 불가능 토큰(NFT) 스마트 컨트랙트의 모든 측면을 다루는 일련의 튜토리얼를 찾을 수 있습니다. 미리 배포된 컨트랙트를 사용하여 NFT를 생성하는 것으로 시작하여 마지막에는 모든 확장을 지원하는 완전한 NFT 스마트 컨트랙트를 구축하게 됩니다.
+In this _Zero to Hero_ series, you'll find a set of tutorials that will cover every aspect of a non-fungible token (NFT) smart contract. You'll start by minting an NFT using a pre-deployed contract and by the end you'll end up building a fully-fledged NFT smart contract that supports every extension.
 
 ---
 
 ## 전제 조건
 
-이 튜토리얼을 성공적으로 완료하려면 다음이 필요합니다.
+To complete these tutorials successfully, you'll need:
 
-- [Rust](/build/smart-contracts/quickstart#prerequisites)
-- [NEAR 지갑](https://testnet.mynearwallet.com/create)
+- [Rust](https://www.rust-lang.org/tools/install)
+- [A Testnet wallet](https://testnet.mynearwallet.com/create)
 - [NEAR-CLI](/tools/near-cli#setup)
+- [cargo-near](https://github.com/near/cargo-near)
 
-:::info Rust가 처음이신가요? If you are new to Rust and want to dive into smart contract development, our [Quick-start guide](../../2.build/2.smart-contracts/quickstart.md) is a great place to start. :::
+:::info Rust가 처음이신가요? If you are new to Rust and want to dive into smart contract development, our [Quick-start guide](../../2.build/2.smart-contracts/quickstart.md) is a great place to start :::
 
 ---
 
@@ -49,9 +50,3 @@ sidebar_label: 소개
 시작할 준비가 되셨습니까? [사전 배포된 컨트랙트](/tutorials/nfts/predeployed-contract) 튜토리얼로 이동하여 학습을 시작하세요!
 
 대체 불가능 토큰과 스마트 컨트랙트에 대해 이미 알고 있다면 건너뛰고 관심 있는 튜토리얼로 바로 이동하세요. 튜토리얼은 주어진 지점에서 시작할 수 있도록 설계되었습니다!
-
-:::info 질문? 👉 Join us on [Discord](https://near.chat/) and let us know in the `#development` channels. 👈
-
-We also host daily [Office Hours](https://pages.near.org/developers/get-help/office-hours/) live where the DevRel team will answer any questions you may have. 🤔
-
-월요일 – 금요일 오전 11시 – 오후 12시(태평양 표준시 오후 6시 – 오후 7시) :::

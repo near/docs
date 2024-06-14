@@ -28,10 +28,10 @@ In this page we will focus on the Donation factory, to learn more about the toke
 2. `update_stored_contract` 메서드를 사용하여 저장된 컨트랙트를 변경할 수 있습니다.
 
 <CodeTabs>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="rust" language="rust">
     <Github fname="deploy.rs"
             url="https://github.com/near-examples/factory-rust/blob/main/src/deploy.rs"
-            start="14" end="60" />
+            start="14" end="66" />
     <Github fname="manager.rs"
             url="https://github.com/near-examples/factory-rust/blob/main/src/manager.rs"
             start="5" end="19" />

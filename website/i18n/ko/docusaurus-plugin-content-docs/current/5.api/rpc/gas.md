@@ -34,7 +34,7 @@ RPC API를 통해 특정 블록 또는 해시에 대한 가스 가격을 쿼리�
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.gasPrice(17824600);
@@ -65,7 +65,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=gas_price params:='[17
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.gasPrice(
@@ -98,7 +98,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=gas_price params:='["A
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.gasPrice(null);

@@ -20,7 +20,7 @@ You can run `yarn test` from the root folder of each project to run both unit an
 The tests in the [Counter Example](https://github.com/near-examples/counters) rely on basic functions to check that the `increment`, `decrement`, and `reset` methods work properly.
 
 <CodeTabs>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/counters/blob/main/contract-rs/src/lib.rs"
             start="50" end="71" /></Language>
@@ -33,7 +33,7 @@ The tests in the [Counter Example](https://github.com/near-examples/counters) re
 While doing unit testing you can modify the [Environment variables](../anatomy/environment.md) through the `VMContextBuilder`. This will enable you to, for example, simulate calls from different users, with specific attached deposit and GAS. Here we present a snippet on how we test the `donate` method from our [Donation Example](https://github.com/near-examples/donation-examples) by manipulating the `predecessor` and `attached_deposit`.
 
 <CodeTabs>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/src/lib.rs"
             start="59" end="117" /></Language>

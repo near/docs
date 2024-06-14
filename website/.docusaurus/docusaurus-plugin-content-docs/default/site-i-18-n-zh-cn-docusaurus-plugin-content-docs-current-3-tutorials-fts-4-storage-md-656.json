@@ -1,7 +1,7 @@
 {
   "id": "tutorials/fts/registering-accounts",
   "title": "Registering Accounts",
-  "description": "In the previous tutorial, you looked at how to mint an initial circulating supply of tokens and how you could log events as per the events standard. You then deployed the contract and saw the FTs in your wallet balance. In this tutorial, you'll learn about the storage management standard and how you can register accounts in your FT contract in order to prevent a malicious party from draining your contract of all its funds.",
+  "description": "In the previous tutorial, you looked at how to mint an initial circulating supply of tokens and how you could log events as per the events standard. You then deployed the contract and saw the FTs in your wallet balance. In this tutorial, you'll learn about the storage management standard and how you can register accounts in your FT contract in order to prevent a malicious party from draining your contract of all its funds. You then deployed the contract and saw the FTs in your wallet balance. In this tutorial, you'll learn about the storage management standard and how you can register accounts in your FT contract in order to prevent a malicious party from draining your contract of all its funds.",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/3.tutorials/fts/4.storage.md",
   "sourceDirName": "3.tutorials/fts",
   "slug": "/tutorials/fts/registering-accounts",

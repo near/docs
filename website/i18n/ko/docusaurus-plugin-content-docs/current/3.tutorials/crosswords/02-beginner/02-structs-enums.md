@@ -40,7 +40,7 @@ Rust에는 열거형이 추가 데이터를 포함할 수 있는 흥미로운 �
 
 <img src={basicCrossword} alt="1장의 기본 십자말풀이 퍼즐" width="600" />
 
-이 챕터에서는 여러 개의 사용자 정의 십자말풀이 퍼즐을 추가하는 기능을 원합니다. 이는 우리가 컨트랙트 상태의 단서에 대한 정보를 저장한다는 것을 의미합니다. 단서가 시작되는 x 및 y 좌표가 있는 격자를 생각해 보세요 또한 다음과 같은 것들을 지정하려고 합니다.
+이 챕터에서는 여러 개의 사용자 정의 십자말풀이 퍼즐을 추가하는 기능을 원합니다. 이는 우리가 컨트랙트 상태의 단서에 대한 정보를 저장한다는 것을 의미합니다. 단서가 시작되는 x 및 y 좌표가 있는 격자를 생각해 보세요 또한 다음과 같은 것들을 지정하려고 합니다. 또한 다음과 같은 것들을 지정하려고 합니다.
 
 1. 단서 번호
 2. **가로**인지 **세로**인지
@@ -49,20 +49,21 @@ Rust에는 열거형이 추가 데이터를 포함할 수 있는 흥미로운 �
 기본 구조체부터 시작해 보겠습니다.
 
 ```rust
-#[near_bindgen]
-#[derive(BorshDeserialize, BorshSerialize, PanicOnDefault)]
+#[near(contract_state]
+#[derive(PanicOnDefault)]
 pub struct Crossword {
     puzzles: LookupMap<String, Puzzle>,  // ⟵ Puzzle is a struct we're defining
     unsolved_puzzles: UnorderedSet<String>,
 }
 ```
 
-:::note 몇 가지를 무시합시다… 지금은 `derive` 및 `serde`로 시작하는 구조체에 대한 매크로를 무시하겠습니다 :::
+:::note 몇 가지를 무시합시다… For now, let's ignore the macros about the structs that begin with `derive` and `near`. :::
 
 위 `Crossword` 구조체 내부의 필드를 보면 몇 가지 유형이 표시됩니다. `String`은 Rust의 표준 라이브러리의 일부이지만, `Puzzle`은 우리가 만든 것입니다.
 
 ```rust
-#[derive(BorshDeserialize, BorshSerialize, Debug)]
+#[near(serializers = [borsh])]
+#[derive(Debug)]
 pub struct Puzzle {
     status: PuzzleStatus,  // ⟵ An enum we'll get to soon
     /// Use the CoordinatePair assuming the origin is (0, 0) in the top left side of the puzzle.
@@ -73,8 +74,8 @@ pub struct Puzzle {
 여기서 `Answer`들의 벡터인 `answer` 필드에 초점을 맞추겠습니다. (벡터는 특별한 것이 아닙니다. [표준 Rust 문서](https://doc.rust-lang.org/std/vec/struct.Vec.html)에 설명된 대로 항목의 묶음 또는 "확장 가능한 배열"일 뿐입니다.)
 
 ```rust
-#[derive(BorshDeserialize, BorshSerialize, Deserialize, Serialize, Debug)]
-#[serde(crate = "near_sdk::serde")]
+#[near(serializers = [json, borsh])]
+#[derive(Debug)]
 pub struct Answer {
     num: u8,
     start: CoordinatePair,  // ⟵ Another struct we've defined
@@ -87,8 +88,8 @@ pub struct Answer {
 이제 우리가 정의한 마지막 구조체를 살펴보겠습니다. 이 `CoordinatePair` 구조체는 기본 구조체의 필드에서 계단식으로 내려옵니다.
 
 ```rust
-#[derive(BorshDeserialize, BorshSerialize, Deserialize, Serialize, Debug)]
-#[serde(crate = "near_sdk::serde")]
+#[near(serializers = [json, borsh])]
+#[derive(Debug)]
 pub struct CoordinatePair {
     x: u8,
     y: u8,
@@ -98,7 +99,7 @@ pub struct CoordinatePair {
 :::info 표시된 구조체 요약 여기에는 여러 가지 구조체가 있으며, 아래는 구조체를 사용하여 컨트랙트 상태를 저장하는 일반적인 패턴입니다.
 
 ```
-Crossword ⟵ primary struct with #[near_bindgen]
+Crossword ⟵ primary struct with #[near(contract_state)]
 └── Puzzle
    └── Answer
       └── CoordinatePair
@@ -128,8 +129,7 @@ pub fn return_some_words() -> Vec<String> {
 우리는 우리가 보여준 `Puzzle` 구조체와 다른 구조체 `JsonPuzzle`을 호출했습니다. 여기에는 한 가지 차이점이 있습니다: `solution_hash` 필드가 추가되었다는 것입니다.
 
 ```rust
-#[derive(Serialize, Deserialize)]
-#[serde(crate = "near_sdk::serde")]
+#[near(serializers = [json])]
 pub struct JsonPuzzle {
     /// The human-readable (not in bytes) hash of the solution
     solution_hash: String,  // ⟵ this field is not contained in the Puzzle struct
@@ -162,8 +162,7 @@ pub struct Crossword {
 스마트 컨트랙트에서 `alice.near`가 `nDAI` 토큰에 "등록"되었는지 확인하려고 한다고 가정해 보겠습니다. 보다 기술적으로, `alice.near` 는 FT 컨트랙트에 자신을 위한 키-값 쌍을 가지고 있습니다.
 
 ```rust
-#[derive(Serialize, Deserialize)]
-#[serde(crate = "near_sdk::serde")]
+#[near(serializers = [json])]
 pub struct StorageBalance {
     pub total: U128,
     pub available: U128,
@@ -188,8 +187,8 @@ pub fn my_callback(&mut self, #[callback] storage_balance: StorageBalance) {
 1.`AnswerDirection` — 이는 가장 간단한 유형의 열거형이며, 다른 프로그래밍 언어에서도 친숙하게 보입니다. 십자말 풀이 퍼즐에서 단서가 방향을 잡는 방법에 대한 유일한 두 가지 옵션인 '가로'와 '세로'를 제공합니다.
 
 ```rust
-#[derive(BorshDeserialize, BorshSerialize, Deserialize, Serialize, Debug)]
-#[serde(crate = "near_sdk::serde")]
+#[near(serializers = [json, borsh])]
+#[derive(Debug)]
 pub enum AnswerDirection {
     Across,
     Down,
@@ -201,8 +200,8 @@ pub enum AnswerDirection {
 이 십자말풀이 게임을 개선하면서, 십자말풀이의 승자(첫 번째로 푼 사람)에게 메모를 작성할 수 있는 기능을 제공하는 것도 하나의 아이디어입니다. (예: "6번째 단서를 얻는 데 너무 오래 걸렸어요!", "Alice 잘한다!" 등)
 
 ```rust
-#[derive(BorshDeserialize, BorshSerialize, Deserialize, Serialize, Debug)]
-#[serde(crate = "near_sdk::serde")]
+#[near(serializers = [json, borsh])]
+#[derive(Debug)]
 pub enum PuzzleStatus {
     Unsolved,
     Solved { memo: String },

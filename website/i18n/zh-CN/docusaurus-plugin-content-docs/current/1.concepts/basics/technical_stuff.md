@@ -6,13 +6,14 @@ The NEAR CLI abstracts some actions, such as deploying a contract, but eventuall
 
 :::info
 We recommend using the CLI for deploying contracts. In a CI/CD environment, you can write a shell script to utilize the CLI for deployments.
+::: In a CI/CD environment, you can write a shell script to utilize the CLI for deployments.
 :::
 
 ### API requests flow
 
 There are different types of [Nodes on NEAR](./validators.md): RPC Nodes, Validators, and Archival Nodes.
 
-When calling an endpoint on `near.org`, it resolves to a server that chooses an available RPC node to handle the request. Then the RPC node passes the request to an available Validator node. Finally, the validator node spawns a VM environment to execute the contract.
+When calling an endpoint on `near.org`, it resolves to a server that chooses an available RPC node to handle the request. Then the RPC node passes the request to an available Validator node. Finally, the validator node spawns a VM environment to execute the contract. Then the RPC node passes the request to an available Validator node. Finally, the validator node spawns a VM environment to execute the contract.
 
 Due to the decentralized nature of a blockchain network, there are many RPC nodes, and a request can reach any one of them, after which it can pass it to any one of the validators.
 

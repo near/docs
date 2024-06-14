@@ -12,7 +12,7 @@ sidebar_label: Python용 NFT 인덱서
 
 ## 목표
 
-This tutorial ends with a working NFT indexer built on top [NEAR Lake Framework for Python](https://near-indexers.io/docs/projects/near-lake-framework). The indexer is watching for `nft_mint` [Events](https://nomicon.io/Standards/EventsFormat) and prints some relevant data:
+This tutorial ends with a working NFT indexer built on top [NEAR Lake Framework for Python](/concepts/advanced/near-lake-framework). The indexer is watching for `nft_mint` [Events](https://nomicon.io/Standards/EventsFormat) and prints some relevant data:
 
 - `receipt_id` of the [Receipt](https://docs.near.org/develop/lake/structures/receipt) where the mint has happened
 - 마켓플레이스
@@ -31,13 +31,13 @@ In this tutorial our goal is to show you how you can "listen" to the Events cont
 
 As the example we will be building an indexer that watches all the NFTs minted following the [NEP-171 Events](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event) standard, assuming we're collectors who don't want to miss a thing. Our indexer should notice every single NFT minted and give us a basic set of data like: in what Receipt it was minted, and show us the link to a marketplace (we'll cover [Paras](https://paras.id) and [Mintbase](https://mintbase.io) in our example).
 
-We will use Python version of [NEAR Lake Framework](https://near-indexers.io/docs/projects/near-lake-framework) in this tutorial. Though the concept is the same for Rust, but we want to show more people that it's not that complex to build your own indexer.
+We will use Python version of [NEAR Lake Framework](/concepts/advanced/near-lake-framework) in this tutorial. Though the concept is the same for Rust, but we want to show more people that it's not that complex to build your own indexer.
 
 ## 준비
 
 :::danger Credentials
 
-Please, ensure you've the credentials set up as described on the [Credentials](../running-near-lake/credentials.md) page. Otherwise you won't be able to get the code working.
+Please, ensure you've the credentials set up as described on the [Credentials](credentials.md) page. Otherwise you won't be able to get the code working.
 
 :::
 
@@ -110,7 +110,7 @@ loop = asyncio.get_event_loop()
 loop.run_until_complete(main())
 ```
 
-Now we need to create a callback function that we'll be called to handle [`StreamerMessage`](https://near-indexers.io/docs/data-flow-and-structures/structures/toc) our indexer receives.
+Now we need to create a callback function that we'll be called to handle [`StreamerMessage`](/build/data-infrastructure/lake-data-structures/toc) our indexer receives.
 
 ```python title=main.py
 async def handle_streamer_message(streamer_message: near_primitives.StreamerMessage):
@@ -119,7 +119,7 @@ async def handle_streamer_message(streamer_message: near_primitives.StreamerMess
 
 ## 이벤트와 이를 감지할 수 있는 곳
 
-First of all let's find out where we can catch the Events. We hope you are familiar with how the [Data Flow in NEAR Blockchain](https://near-indexers.io/docs/data-flow-and-structures/flow/near-data-flow), but let's revise our knowledge:
+First of all let's find out where we can catch the Events. We hope you are familiar with how the [Data Flow in NEAR Blockchain](/concepts/data-flow/near-data-flow), but let's revise our knowledge:
 
 - Mint an NFT is an action in an NFT contract (doesn't matter which one)
 - Actions are located in a [Receipt](https://docs.near.org/develop/lake/structures/receipt)
@@ -221,7 +221,7 @@ python3 main.py
 
 :::note
 
-Having troubles running the indexer? Please, check you haven't skipped the [Credentials](../running-near-lake/credentials.md) part :)
+Having troubles running the indexer? Please, check you haven't skipped the [Credentials](credentials.md) part :)
 
 :::
 
@@ -323,7 +323,7 @@ if receipt_execution_outcome.receipt.receiver_id.endswith(
 
 A few words about what is going on here. If the Receipt's receiver account name ends with `.paras.near` (e.g. `x.paras.near`) we assume it's from Paras marketplace, so we are changing the corresponding variable.
 
-Mintbase turn, we hope [Nate](https://twitter.com/nategeier) and his team have [migrated to NEAR Lake Framework](../migrating-to-near-lake-framework.md) already, saying "Hi!" and crafting the link:
+Mintbase turn, we hope [Nate](https://twitter.com/nategeier) and his team have [migrated to NEAR Lake Framework](migrating-to-near-lake-framework.md) already, saying "Hi!" and crafting the link:
 
 ```python title=main.py
     elif re.search(
@@ -442,7 +442,7 @@ python3 main.py
 
 :::note
 
-Having troubles running the indexer? Please, check you haven't skipped the [Credentials](../running-near-lake/credentials.md) part :)
+Having troubles running the indexer? Please, check you haven't skipped the [Credentials](credentials.md) part :)
 
 :::
 

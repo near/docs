@@ -1,7 +1,7 @@
 {
   "id": "tutorials/fts/transfers",
   "title": "Transferring Fungible Tokens",
-  "description": "In this tutorial, you'll learn how to implement the core standards into your smart contract. You'll implement the logic that allows you to transfer and receive tokens. If you're joining us for the first time, feel free to clone this repository and follow along in the 4.storage folder.",
+  "description": "In this tutorial, you'll learn how to implement the core standards into your smart contract. You'll implement the logic that allows you to transfer and receive tokens. If you're joining us for the first time, feel free to clone this repository and follow along in the 4.storage folder. You'll implement the logic that allows you to transfer and receive tokens. If you're joining us for the first time, feel free to clone this repository and follow along in the 4.storage folder.",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/3.tutorials/fts/5.transfers.md",
   "sourceDirName": "3.tutorials/fts",
   "slug": "/tutorials/fts/transfers",

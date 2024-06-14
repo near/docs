@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/2.smart-contracts/anatomy/functions.md",
   "sourceDirName": "2.build/2.smart-contracts/anatomy",
   "slug": "/build/smart-contracts/anatomy/functions",
-  "permalink": "/zh-CN/build/smart-contracts/anatomy/functions",
+  "permalink": "/build/smart-contracts/anatomy/functions",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/anatomy/functions.md",
@@ -20,11 +20,11 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "State & Data Structures",
-    "permalink": "/zh-CN/build/smart-contracts/anatomy/storage"
+    "title": "State (Storage)",
+    "permalink": "/build/smart-contracts/anatomy/storage"
   },
   "next": {
     "title": "SDK Types",
-    "permalink": "/zh-CN/build/smart-contracts/anatomy/types"
+    "permalink": "/build/smart-contracts/anatomy/types"
   }
 }

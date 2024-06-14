@@ -12,13 +12,13 @@ import base64Encode from '/docs/assets/crosswords/boop-base64-encode.gif';
 
 Let's modify our `new_puzzle` method a bit, and demonstrate how a smart contract author might use base64-encoded arguments.
 
-In the previous chapter we had a fairly long NEAR CLI command that called the `new_puzzle`, providing it the parameters for all the clues. Having these lengthy parameters on the CLI might get cumbersome. There may be issues needing to escape single or double quotes, and each operating system may wish for a different format on the Terminal or Command Prompt.
+In the previous chapter we had a fairly long NEAR CLI command that called the `new_puzzle`, providing it the parameters for all the clues. Having these lengthy parameters on the CLI might get cumbersome. There may be issues needing to escape single or double quotes, and each operating system may wish for a different format on the Terminal or Command Prompt. Having these lengthy parameters on the CLI might get cumbersome. There may be issues needing to escape single or double quotes, and each operating system may wish for a different format on the Terminal or Command Prompt.
 
-We're going to send all the arguments as a base64-encoded string, and make this a bit simpler. For this, we're going to use [`Base64VecU8` from the SDK](https://docs.rs/near-sdk/latest/near_sdk/json_types/struct.Base64VecU8.html).
+We're going to send all the arguments as a base64-encoded string, and make this a bit simpler. We're going to send all the arguments as a base64-encoded string, and make this a bit simpler. For this, we're going to use [`Base64VecU8` from the SDK](https://docs.rs/near-sdk/latest/near_sdk/json_types/struct.Base64VecU8.html).
 
 :::note `Base64VecU8` is great for binary payloads What we're doing makes sense, but it's worth noting that it's perhaps more common to use `Base64VecU8` when sending binary parameters.
 
-Read more [about it here](/sdk/rust/contract-interface/serialization-interface#base64vecu8). :::
+Read more [about it here](/sdk/rust/contract-interface/serialization-interface#base64vecu8). ::: :::
 
 First we'll set up a struct for the arguments we're expecting:
 
@@ -28,7 +28,7 @@ Then we modify our `new_puzzle` method like so:
 
 <Github language="rust" start="290" end="297" url="https://github.com/near-examples/crossword-tutorial-chapter-3/blob/ec07e1e48285d31089b7e8cec9e9cf32a7e90c35/contract/src/lib.rs" />
 
-We can take our original arguments and base64 encode them, using whatever method you prefer. There are plenty of online tool, Terminal commands, and open source applications like [Boop](https://boop.okat.best).
+We can take our original arguments and base64 encode them, using whatever method you prefer. There are plenty of online tool, Terminal commands, and open source applications like [Boop](https://boop.okat.best). There are plenty of online tool, Terminal commands, and open source applications like [Boop](https://boop.okat.best).
 
 We'll copy this:
 
@@ -49,6 +49,69 @@ We'll copy this:
      "direction": "Across",
      "length": 12,
      "clue": "NEAR transactions are more ______ instead of atomic."
+   },
+   {
+     "num": 2,
+     "start": {
+       "x": 6,
+       "y": 0
+     },
+     "direction": "Down",
+     "length": 7,
+     "clue": "In a smart contract, when performing an Action, you use this in Rust."
+   },
+   {
+     "num": 3,
+     "start": {
+       "x": 9,
+       "y": 0
+     },
+     "direction": "Down",
+     "length": 6,
+     "clue": "In docs.rs when you search for the near-sdk crate, these items a considered a what: collections, env, json_types."
+   },
+   {
+     "num": 4,
+     "start": {
+       "x": 1,
+       "y": 1
+     },
+     "direction": "Down",
+     "length": 10,
+     "clue": "A series of words that can deterministically generate a private key."
+   },
+   {
+     "num": 5,
+     "start": {
+       "x": 1,
+       "y": 3
+     },
+     "direction": "Across",
+     "length": 3,
+     "clue": "When doing high-level cross-contract calls, we import this that ends in _contract. When calling ourselves in a callback, it is convention to call it THIS_self."
+   },
+   {
+     "num": 6,
+     "start": {
+       "x": 0,
+       "y": 8
+     },
+     "direction": "Across",
+     "length": 8,
+     "clue": "Use this to determine the execution outcome of a cross-contract call or Action."
+   },
+   {
+     "num": 7,
+     "start": {
+       "x": 4,
+       "y": 6
+     },
+     "direction": "Across",
+     "length": 4,
+     "clue": "You chain this syntax onto a promise in order to schedule a callback afterward."
+   }
+  ]
+}
    },
    {
      "num": 2,
@@ -145,7 +208,7 @@ Back at the project root (not in the `contract` directory) we can run our app an
 
 Once you understand cross-contract calls and callbacks and where the logic should go, you can build just about anything on NEAR.
 
-This might be a good time for a reminder that this crossword puzzle, which checks permissions to methods based on a public key, is a bit unusual. It's more common to have simple collections or mappings for allowed users, or utilize the `owner_id` field we set up. The account and access key system in NEAR is quite powerful, and hopefully this tutorial helps stretch the limits of what's possible, like the seamless onboarding we have with the crossword puzzle.
+This might be a good time for a reminder that this crossword puzzle, which checks permissions to methods based on a public key, is a bit unusual. It's more common to have simple collections or mappings for allowed users, or utilize the `owner_id` field we set up. The account and access key system in NEAR is quite powerful, and hopefully this tutorial helps stretch the limits of what's possible, like the seamless onboarding we have with the crossword puzzle. It's more common to have simple collections or mappings for allowed users, or utilize the `owner_id` field we set up. The account and access key system in NEAR is quite powerful, and hopefully this tutorial helps stretch the limits of what's possible, like the seamless onboarding we have with the crossword puzzle.
 
 Again, the final code for this chapter:
 

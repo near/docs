@@ -1,32 +1,27 @@
 ---
 id: events
 title: 이벤트
-sidebar_label: 이벤트
 ---
 
 import {Github} from "@site/src/components/codetabs"
 
 이 튜토리얼에서는 [이벤트 표준](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event)과 이를 스마트 컨트랙트에서 구현하는 방법에 대해 알아봅니다.
 
-## 소개
-
-시작하려면 [GitHub 레퍼지토리](https://github.com/near-examples/nft-tutorial-js/)에서 `6.royalty` 브랜치로 전환하거나 이전 튜토리얼에서 작업을 계속하십시오.
-
-```bash
-git checkout 6.royalty
-```
-
-:::tip 이 _이벤트_ 튜토리얼의 완성된 코드를 보려면 `7.events` 브랜치에서 찾을 수 있습니다. :::
+---
 
 ## 사용 사례 이해하기 {#understanding-the-use-case}
 
-Have you ever wondered how the wallet knows which NFTs you own and how it can display them in the [collectibles tab](https://testnet.mynearwallet.com//?tab=collectibles)? 원래는 [인덱서](/tools/indexer-for-explorer)가 사용되었으며, 계정에서 `nft_`로 시작하는 모든 함수를 수신했습니다. 그런 다음 이러한 컨트랙트는 당신의 계정에서 NFT 컨트랙트일 가능성이 있는 것으로 표시되었습니다.
+그런 다음 이러한 컨트랙트는 당신의 계정에서 NFT 컨트랙트일 가능성이 있는 것으로 표시되었습니다. 원래는 [인덱서](/tools/indexer-for-explorer)가 사용되었으며, 계정에서 `nft_`로 시작하는 모든 함수를 수신했습니다. Have you ever wondered how the wallet knows which NFTs you own and how it can display them in the [collectibles tab](https://testnet.mynearwallet.com//?tab=collectibles)?
 
 수집품 탭으로 이동하면, 지갑은 [열거(Enumeration) 튜토리얼](/tutorials/nfts/js/enumeration)에서 본 `nft_tokens_for_owner` 함수를 사용하여 소유한 NFT 목록에 대한 모든 컨트랙트를 쿼리합니다.
+
+<hr class="subsection" />
 
 ### 문제 {#the-problem}
 
 컨트랙트에 플래그를 지정하는 이 방법은 각각의 NFT 기반 애플리케이션이 NFT를 발행하거나 전송하는 고유한 방법을 가질 수 있기 때문에, 신뢰할 수 없었습니다. 또한 앱에서 배치 함수를 사용하여 한 번에 많은 토큰을 전송하거나 발행하는 일도 자주 발생합니다.
+
+<hr class="subsection" />
 
 ### 해결책 {#the-solution}
 
@@ -53,6 +48,8 @@ NFT가 전송, 발행 또는 소각될 때마다 스마트 컨트랙트가 이�
 - **owner_id**: NFT를 발행받은 소유자입니다.
 - **token_ids**: 전송 중인 NFT 목록입니다.
 - *선택 사항* - **memo**: 이벤트에 포함할 선택적 메시지입니다.
+
+<hr class="subsection" />
 
 ### 예시 {#examples}
 
@@ -107,37 +104,47 @@ EVENT_JSON:{
 }
 ```
 
+---
+
 ## 컨트랙트 수정 {#modifications-to-the-contract}
 
-이 시점에서 최종 목표가 무엇인지 잘 이해하고 있어야 합니다. 레퍼지토리를 열어서 `nft-contract/src` 디렉토리 내 새 파일 `events.rs`을 생성하세요 이는 로그 구조체가 존재하는 위치입니다.
+이 시점에서 최종 목표가 무엇인지 잘 이해하고 있어야 합니다. Open the repository and create a new file in the `nft-contract-basic/src` directory called `events.rs`. 이는 로그 구조체가 존재하는 위치입니다.
+
+If you wish to see the finished code of the events implementation, that can be found on the `nft-contract-events` folder.
 
 ### 이벤트 파일 생성 {#events-rs}
 
 다음을 파일에 복사합니다. 이는 `EventLog`, `NftMintLog`, 및 `NftTransferLog`에 대한 구조체의 개요를 설명합니다. 또한, `EVENT_JSON:`에 대해 `EventLog`를 로그할 때마다 접두사가 붙도록 하는 방법도 추가했습니다.
 
-<Github language="rust" start="1" end="79" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/events.rs" />
+<Github language="rust" start="1" end="79" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-events/src/events.rs" />
 
-This requires the `serde_json` package which you can easily add to your `nft-contract/Cargo.toml` file:
+This requires the `serde_json` package which you can easily add to your `nft-contract-skeleton/Cargo.toml` file:
 
-<Github language="rust" start="1" end="20" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/Cargo.toml" />
+<Github language="rust" start="10" end="12" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-events/Cargo.toml" />
+
+<hr class="subsection" />
 
 ### 모듈 및 상수 추가 {#lib-rs}
 
 이제 새 파일을 만들었으므로 `lib.rs` 파일에 모듈을 추가해야 합니다. 또한 컨트랙트 전체에서 사용될 표준 및 버전에 대해 두 개의 상수를 정의할 수 있습니다.
 
-<Github language="rust" start="10" end="30" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/lib.rs" />
+<Github language="rust" start="10" end="30" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-events/src/lib.rs" />
+
+<hr class="subsection" />
 
 ### 발행된 토큰 로깅 {#logging-minted-tokens}
 
-이제 모든 도구가 제자리에 설정되었으므로 이제 실제 로깅 기능을 구현할 수 있습니다. 컨트랙트는 한 곳에서만 토큰을 발행하기 때문에, 로그를 어디에 두어야 하는지는 간단합니다. `nft-contract/src/mint.rs` 파일을 열고 파일 맨 아래로 이동합니다. 여기에서 발행을 위한 로그를 구성할 수 있습니다. 누군가 성공적으로 NFT를 생성할 때마다 이제 올바르게 로그를 내보낼 것입니다.
+이제 모든 도구가 제자리에 설정되었으므로 이제 실제 로깅 기능을 구현할 수 있습니다. Since the contract will only be minting tokens in one place, open the `nft-contract-basic/src/mint.rs` file and navigate to the bottom of the file. 여기에서 발행을 위한 로그를 구성할 수 있습니다. 누군가 성공적으로 NFT를 생성할 때마다 이제 올바르게 로그를 내보낼 것입니다.
 
-<Github language="rust" start="5" end="80" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/mint.rs" />
+<Github language="rust" start="5" end="58" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-events/src/mint.rs" />
+
+<hr class="subsection" />
 
 ### 전송 로깅 {#logging-transfers}
 
-`nft-contract/src/internal.rs` 파일을 열고 `internal_transfer` 함수로 이동해 보겠습니다. 여기가 전송 로그를 작성할 위치입니다. NFT가 전송될 때마다 이 함수가 호출되므로, 이제 전송을 올바르게 기록하게 됩니다.
+Let's open the `nft-contract-basic/src/internal.rs` file and navigate to the `internal_transfer` function. 여기가 전송 로그를 작성할 위치입니다. NFT가 전송될 때마다 이 함수가 호출되므로, 이제 전송을 올바르게 기록하게 됩니다.
 
-<Github language="rust" start="140" end="239" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/internal.rs" />
+<Github language="rust" start="96" end="159" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-events/src/internal.rs" />
 
 불행하게도 이 솔루션에는 문제를 일으킬 수 있는 극단적인 경우가 있습니다. NFT가 `nft_transfer_call` 함수를 통해 전송되는 경우, `nft_on_transfer` 함수가 `true`를 반환하면 전송이 취소될 가능성이 있습니다. `nft_transfer_call`에 대한 로직을 살펴보면, 이것이 왜 문제인지 알 수 있습니다.
 
@@ -149,17 +156,26 @@ This requires the `serde_json` package which you can easily add to your `nft-con
 
 만약 `internal_transfer` 함수에 로그만 넣으면, 로그가 내보내지고 인덱서는 NFT가 전송된 것으로 간주할 것입니다. 그러나 `nft_resolve_transfer` 도중에 전송이 되돌려지면 해당 이벤트도 **역시** 내보내야 합니다. NFT가 전송**될 수 있는** 모든 위치에 로그를 추가해야 합니다. `nft_resolve_transfer`를 다음 코드로 바꿉니다.
 
-<Github language="rust" start="182" end="279" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/nft_core.rs" />
+<Github language="rust" start="157" end="241" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-events/src/nft_core.rs" />
 
 또한 다음과 같이 `nft_resolve_transfer`에 대해 매개변수에 `authorized_id`와 `memo`를 추가해야 합니다.
 
-<Github language="rust" start="47" end="66" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/nft_core.rs" />
+:::tip
+
+We will talk more about this [`authorized_id`](./5-approval.md) in the following chapter.
+
+:::
+
+<Github language="rust" start="43" end="60" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-events/src/nft_core.rs" />
+
 
 마지막 단계는 다음 새 매개변수를 포함하도록 `nft_transfer_call` 로직을 수정하는 것입니다.
 
-<Github language="rust" start="102" end="159" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/nft_core.rs" />
+<Github language="rust" start="86" end="135" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-events/src/nft_core.rs" />
 
 완료되면 이벤트 표준을 성공적으로 구현한 것이며, 이제 테스트를 시작할 시간입니다.
+
+---
 
 ## 컨트랙트 배포 {#redeploying-contract}
 
@@ -174,19 +190,15 @@ export EVENTS_NFT_CONTRACT_ID=<accountId>
 near create-account $EVENTS_NFT_CONTRACT_ID --useFaucet
 ```
 
-빌드 스크립트를 사용하여 이전 튜토리얼에서와 같이 컨트랙트 배포를 빌드합니다.
+Using the cargo-near, deploy and initialize the contract as you did in the previous tutorials:
 
 ```bash
-yarn build && near deploy $EVENTS_NFT_CONTRACT_ID out/main.wasm
+cargo near deploy $EVENTS_NFT_CONTRACT_ID with-init-call new_default_meta json-args '{"owner_id": "'$EVENTS_NFT_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
 ```
 
-### 초기화 및 발행 {#initialization-and-minting}
+<hr class="subsection" />
 
-이것은 새로운 컨트랙트이므로, 토큰을 초기화하고 발행해야 합니다. 다음 명령을 사용하여 컨트랙트를 초기화합니다.
-
-```bash
-near call $EVENTS_NFT_CONTRACT_ID new_default_meta '{"owner_id": "'$EVENTS_NFT_CONTRACT_ID'"}' --accountId $EVENTS_NFT_CONTRACT_ID
-```
+### Minting {#minting}
 
 다음으로 토큰을 발행해야 합니다. 이 명령을 실행하면 토큰 ID `"events-token"`로 토큰을 발행하고, 수신자가 새 계정이 됩니다. 또한 토큰이 판매될 때마다 영구 로열티를 받는 두 개의 계정을 포함한 맵을 전달합니다.
 
@@ -207,6 +219,8 @@ https://testnet.nearblocks.io/txns/4Wy2KQVTuAWQHw5jXcRAbrz7bNyZBoiPEvLcGougciyk
 ```
 
 이벤트가 제대로 기록된 것을 확인할 수 있습니다!
+
+<hr class="subsection" />
 
 ### 전송 {#transferring}
 
@@ -231,6 +245,8 @@ https://testnet.nearblocks.io/txns/4S1VrepKzA6HxvPj3cK12vaT7Dt4vxJRWESA1ym1xdvH
 
 만세! 이 시점에서 NFT 컨트랙트가 완전히 완료되고 이벤트 표준이 구현되었습니다.
 
+---
+
 ## 결론
 
 오늘 당신은 [이벤트 표준](https://nomicon.io/Standards/NonFungibleToken/Event.html)을 살펴보고, 스마트 컨트랙트에서 필요한 로직을 구현했습니다. NFT [발행](#logging-minted-tokens) 및 [전송](#logging-transfers)을 위한 이벤트를 만들었습니다. 그런 다음 NFT를 만들고 전송하여 변경 사항을 배포하고 [테스트](#initialization-and-minting)했습니다.
@@ -241,7 +257,8 @@ https://testnet.nearblocks.io/txns/4S1VrepKzA6HxvPj3cK12vaT7Dt4vxJRWESA1ym1xdvH
 
 글을 작성하는 시점에서, 해당 예제는 다음 버전에서 작동합니다.
 
-- near-cli: `4.0.4`
+- near-cli: `4.0.13`
+- cargo-near `0.6.1`
 - NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 - Events standard: [NEP297 extension](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event), version `1.1.0`
 

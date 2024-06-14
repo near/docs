@@ -336,10 +336,12 @@ await contract.method_C();
   // ...
   // Even though the method exists on the actual blockchain contract,
 // we didn't specify `method_A_view` in the contract's client-side constructor.
-{
-    viewMethods: ["method_C"], // <=== method_C doesn't exist on the contract above
-    changeMethods: [],
-    // ...
+await contract.method_A_view();
+// This will return an error from RPC call `FunctionCallError(MethodResolveError(MethodNotFound))`
+// and will throw it on the client-side
+await contract.method_C();
+
+// Notice: if we call `method_A_view` we get `TypeError: contract.method_A_view is not a function`.
 await contract.method_A_view();
 // This will return an error from RPC call `FunctionCallError(MethodResolveError(MethodNotFound))`
 // and will throw it on the client-side
@@ -370,6 +372,9 @@ const contract = await new nearAPI.Contract(
 // `wasm execution failed with error: FunctionCallError(HostError(ProhibitedInView { method_name: "storage_write" }))`
 // This error indicates that we are trying to call a state-changing method but declare it as a read-only method in client-side.
 await contract.method_A_view();
+await contract.method_B_call();
+
+// The following behavior is undefined and might not work as expected.
 await contract.method_B_call();
 
 // The following behavior is undefined and might not work as expected.

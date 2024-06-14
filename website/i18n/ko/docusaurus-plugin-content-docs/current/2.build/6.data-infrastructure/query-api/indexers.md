@@ -32,7 +32,7 @@ QueryAPI works by:
 2. GraphQL 데이터베이스에 스키마에 지정된 대로 테이블을 생성하고, GraphQL 엔드포인트를 노출시켜 데이터를 쿼리합니다;
 3. 인덱서 함수를 실행하는 클라우드 프로세스를 돌려, GraphQL 데이터베이스에 씁니다;
 
-[이 링크를 통해 NEAR QueryAPI](https://near.org/dataplatform.near/widget/QueryApi.App)에 접근할 수 있습니다.
+You can access the [NEAR QueryAPI by following this link](https://dev.near.org/dataplatform.near/widget/QueryApi.App).
 
 This should take you to a dashboard that looks like this:
 
@@ -40,7 +40,7 @@ This should take you to a dashboard that looks like this:
 
 :::tip Video Walkthrough
 
-**Tip:** Watch the [QueryAPI widget introduction](https://www.youtube.com/watch?v=VwO6spk8D58\&t=109s).
+**Tip:** Watch the [QueryAPI widget introduction](https://www.youtube.com/watch?v=VwO6spk8D58\\&t=109s).
 
 :::
 
@@ -64,14 +64,14 @@ To design and create your indexer, you can follow this recommended workflow:
 
 1. Using [nearblocks.io](https://nearblocks.io), find transactions to smart contracts that you want to index
 2. Take the block `height` and put it into the [Debug Mode filter](index-function.md#local-debug-mode), open your browser's _Developer Console_, and hit <kbd>Play</kbd>
-3. Inspect the block and write JavaScript code using [NEAR Lake Primitives](../lake-framework/building-indexers/primitives.md) to extract data from a `block` object. (This JS code will be your [`IndexingLogic.js`](#indexinglogicjs))
+3. Inspect the block and write JavaScript code using [NEAR Lake Primitives](../../2.develop/lake/lake-primitives.md) to extract data from a `block` object. (This JS code will be your [`IndexingLogic.js`](#indexinglogicjs))
    > **Tip:** Use `context.log` for debugging to ensure you are getting the right results
 4. Add more blocks for debugging, or start following the blockchain to see how new blocks are handled
 5. Create tables that you need to store the data using Postgres [CREATE table syntax](https://www.postgresql.org/docs/current/sql-createtable.html). (This SQL code will be your [`schema.sql`](#schemasql))
 
 :::tip Video Walkthrough
 
-**Tip:** Watch the [introduction to indexing functions](https://www.youtube.com/watch?v=VwO6spk8D58\&t=411s).
+**Tip:** Watch the [introduction to indexing functions](https://www.youtube.com/watch?v=VwO6spk8D58\\&t=411s).
 
 :::
 
@@ -137,7 +137,7 @@ await context.graphql(`
 
 Creating GraphQL queries within strings can be difficult, especially considering that the table names vary depending on your indexer name and account ID. GraphQL Playground 사이트를 방문하여 쿼리를 만드는 것이 더 쉬운 방법입니다.
 
-> **Tip:** watch the video on how to [create queries in Playground](https://www.youtube.com/watch?v=VwO6spk8D58\&t=1207s).
+> **Tip:** watch the video on how to [create queries in Playground](https://www.youtube.com/watch?v=VwO6spk8D58\\&t=1207s).
 
 :::
 
@@ -168,7 +168,7 @@ You are able to update `indexingLogic.js` after you have registered/created your
 
 :::tip Video Walkthrough
 
-**Tip:** Watch how to [create mutations in GraphQL](https://www.youtube.com/watch?v=VwO6spk8D58\&t=781s).
+**Tip:** Watch how to [create mutations in GraphQL](https://www.youtube.com/watch?v=VwO6spk8D58\\&t=781s).
 
 :::
 
@@ -259,10 +259,10 @@ fetchGraphQL(transactionQueriesDoc, "TransactionsQuery", {})
   });
 ```
 
-We have just shown how to fetch data from the indexers that we have created from within NEAR. To view a more complex example, see this widget which fetches posts with proper pagination: [Posts Widget powered By QueryAPI](https://near.org/dataplatform.near/widget/QueryApi.Examples.Feed.Posts).
+We have just shown how to fetch data from the indexers that we have created from within NEAR. To view a more complex example, see this widget which fetches posts with proper pagination: [Posts Widget powered By QueryAPI](https://dev.near.org/dataplatform.near/widget/QueryApi.Examples.Feed.Posts).
 
 :::tip Video Walkthrough
 
-**Tip:** Watch an [end-to-end example](https://www.youtube.com/watch?v=VwO6spk8D58\&t=943s).
+**Tip:** Watch an [end-to-end example](https://www.youtube.com/watch?v=VwO6spk8D58\\&t=943s).
 
 :::

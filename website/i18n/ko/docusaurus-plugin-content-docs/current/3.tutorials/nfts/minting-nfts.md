@@ -16,7 +16,6 @@ sidebar_label: NFT 발행
 
 - [Rust 툴체인](/build/smart-contracts/quickstart#prerequisites)
 - [NEAR 계정](#wallet)
-- [nft.storage 계정](#uploading-the-image)
 - [NEAR 명령줄 인터페이스](/tools/near-cli#설정) (`near-cli`)
 
 ## Wallet {#wallet}
@@ -40,22 +39,17 @@ IPFS ([InterPlanetary File System](https://ipfs.io/))는 분산 파일 시스템
 
 ### 이미지 업로드 {#uploading-the-image}
 
-NFT 이미지를 업로드하기 위해, 오프체인 NFT 데이터 저장 용도로 특별히 구축된 [무료 NFT 스토리지](https://nft.storage/#getting-started) 서비스를 사용할 것입니다. NFT 스토리지는 [IPFS](https://ipfs.io/) 및 [Filecoin](https://filecoin.io/)에서 NFT를 위한 무료 분산형 스토리지 및 대역폭을 제공합니다.
+To upload the NFT image, you should use a [decentralized storage](/concepts/storage/storage-solutions) provider such as IPFS.
 
-#### 단계 {#steps}
+:::note
+This example uses IPFS, but you could use a different solution like Filecoin, Arweave, or a regular centralized Web2 hosting.
+:::
 
-1. [계정을 등록](https://nft.storage/login/)하고 [nft.storage](https://nft.storage/login/)에 로그인하세요.
+Once you have uploaded your file to IPFS, you'll get a unique `CID` for your content, and a URL like:
 
-2. [파일](https://nft.storage/files/) 섹션 으로 이동하여 [업로드](https://nft.storage/new-file/) 버튼을 클릭합니다.
-
-   ![nft.storage](/docs/assets/nfts/nft-storage.png)
-
-3. 파일을 업로드하면 컨텐츠에 대한 고유한 `CID`를 얻게 되고, 다음과 같은 URL을 얻게 됩니다.
-   ```
-   https://bafyreiabag3ztnhe5pg7js4bj6sxuvkz3sdf76cjvcuqjoidvnfjz7vwrq.ipfs.dweb.link/
-   ```
-
-> **팁:** 여러 파일 업로드 및 사용 가능한 API 엔드포인트에 대한 정보는 [NFT.Storage 문서](https://nft.storage/api-docs/)를 확인하세요.
+```
+https://bafyreiabag3ztnhe5pg7js4bj6sxuvkz3sdf76cjvcuqjoidvnfjz7vwrq.ipfs.dweb.link/
+```
 
 ## 대체 불가능 토큰 컨트랙트 {#non-fungible-token-contract}
 
@@ -80,8 +74,8 @@ git clone https://github.com/near-examples/NFT
 컨트랙트는 `tokens`과 `metadata` 두 가지 정보를 추적합니다. 이 튜토리얼의 목적을 위해, 우리는 `tokens` 필드만 다룰 것입니다.
 
 ```rust
-#[near_bindgen]
-#[derive(BorshDeserialize, BorshSerialize, PanicOnDefault)]
+#[near(contract_state)]
+#[derive(PanicOnDefault)]
 pub struct Contract {
     tokens: NonFungibleToken,
     metadata: LazyOption<NFTContractMetadata>,

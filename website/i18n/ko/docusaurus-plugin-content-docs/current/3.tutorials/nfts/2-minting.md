@@ -6,17 +6,27 @@ sidebar_label: 발행
 
 import {Github} from "@site/src/components/codetabs"
 
-이것은 모든 NEAR [NFT 표준](https://nomicon.io/Standards/NonFungibleToken/)을 준수하는 완전한 NFT 스마트 컨트랙트를 처음부터 만드는 시리즈의 많은 튜토리얼 중 첫 번째입니다. 오늘은 NFT를 생성하고 NEAR 지갑에 표시하는 데 필요한 로직을 생성하는 방법을 배웁니다. 여기서는, 발행 함수를 추가하는 데 필요한 필수 코드 스니펫을 작성하여 중요한 [스마트 컨트랙트의 뼈대](/tutorials/nfts/skeleton)를 수정하게 됩니다.
+This is the first of many tutorials in a series where you'll be creating a complete NFT smart contract from scratch that conforms with all the NEAR [NFT standards](https://nomicon.io/Standards/NonFungibleToken/).
+
+Today you'll learn how to create the logic needed to mint NFTs and have them show up in your NEAR wallet. You will be filling a bare-bones [skeleton smart contract](/tutorials/nfts/skeleton) to add minting functionalities.
+
+:::info Contracts You can find the skeleton contract in our [Skeleton folder](https://github.com/near-examples/nft-tutorial/tree/main/nft-contract-skeleton)
+
+A completed version of this tutorial can be found in the [Basic NFT folder](https://github.com/near-examples/nft-tutorial/tree/main/nft-contract-basic) :::
+
+---
 
 ## 소개
 
-시작하려면 레퍼지토리 내 `1.skeleton` 브랜치로 전환하세요. 레퍼지토리를 복제하지 않은 경우 [컨트랙트 아키텍처](/tutorials/nfts/skeleton)를 참조하여 시작하세요.
+To get started, go to the `nft-contract-skeleton` folder in our repo. 레퍼지토리를 복제하지 않은 경우 [컨트랙트 아키텍처](/tutorials/nfts/skeleton)를 참조하여 시작하세요.
 
 ```
-git checkout 1.skeleton
+cd nft-contract-skeleton/
 ```
 
-튜토리얼의 발행 부분에 대한 완성된 코드를 보려면, `2.minting` 브랜치에서 찾을 수 있습니다.
+If you wish to see the finished code of this step-by-step basic NFT contract tutorial, that can be found on the `nft-contract-basic` folder.
+
+---
 
 ## 뼈대 컨트랙트 수정 {#what-does-minting-mean}
 
@@ -30,15 +40,16 @@ git checkout 1.skeleton
 
 이게 다입니다! 이제 우리는 더 큰 문제를 더 작고 덜 어려운 하위 작업으로 분류했습니다. 첫 번째 문제를 해결하는 것으로 시작하여 나머지 작업까지 진행해 봅시다.
 
+<hr class="subsection" />
+
 ### 컨트랙트에 정보 저장 {#storing-information}
 
-`nft-contract/src/lib.rs`로 가서 일부 코드 블록을 채우는 것으로 시작해 봅시다. 여기서 계정이 보유한 토큰 목록과 같은 컨트랙트에 대한 중요한 정보를 저장할 수 있어야 합니다.
+Start by navigating to `nft-contract-skeleton/src/lib.rs` and filling in some of the code blocks. 여기서 계정이 보유한 토큰 목록과 같은 컨트랙트에 대한 중요한 정보를 저장할 수 있어야 합니다.
 
 #### 컨트랙트 구조
 
 가장 먼저 할 일은 `struct` 컨트랙트를 다음과 같이 수정하는 것입니다.
-
-<Github language="rust" start="25" end="42" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/lib.rs" />
+<Github language="rust" start="35" end="52" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-basic/src/lib.rs" />
 
 This allows you to get the information stored in these data structures from anywhere in the contract. The code above has created 3 token specific storages:
 
@@ -57,35 +68,41 @@ As for the `Token`, `TokenMetadata`, and `NFTContractMetadata` data types, those
 
 #### 초기화 함수
 
-Next, create what's called an initialization function; you can name it `new`. This function needs to be invoked when you first deploy the contract. It will initialize all the contract's fields that you've defined above with default values. Don't forget to add the `owner_id` and `metadata` fields as parameters to the function, so only those can be customized.
+Next, create what's called an initialization function; we will name it `new`, but you can choose any name you prefer.
+
+This function needs to be invoked when you first deploy the contract. It will initialize all the contract's fields that you've defined above with default values. Don't forget to add the `owner_id` and `metadata` fields as parameters to the function, so only those can be customized.
 
 This function will default all the collections to be empty and set the `owner` and `metadata` equal to what you pass in.
 
-<Github language="rust" start="86" end="106" url="https://github.com/near-examples/nft-tutorial/tree/2.minting/nft-contract/src/lib.rs" />
+<Github language="rust" start="96" end="114" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-basic/src/lib.rs" />
 
 개발을 할 때 종종 컨트랙트를 여러 번 배포해야 합니다. 컨트랙트를 초기화할 때마다 메타데이터를 전달해야 하는 것이 지루할 수 있다고 생각할 수 있습니다. 이러한 이유로, 기본 `metadata` 집합으로 컨트랙트를 초기화할 수 있는 함수를 만들어 봅시다. 당신은 이를 `new_default_meta`로 부를 수 있고, 매개 변수로 `owner_id`만 취할 것입니다.
 
-<Github language="rust" start="64" end="79" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/lib.rs" />
+<Github language="rust" start="74" end="89" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-basic/src/lib.rs" />
 
 이 함수는 단순히 이전 `new` 함수를 호출하고, 지정한 소유자를 전달하며, 일부 기본 메타데이터도 전달합니다.
+
+<hr class="subsection" />
 
 ### 메타데이터 및 토큰 정보 {#metadata-and-token-info}
 
 이제 컨트랙트 자체에 저장할 정보를 정의하고 컨트랙트를 초기화하는 몇 가지 방법을 정의했으므로, `Token`, `TokenMetadata`, 및 `NFTContractMetadata` 자료형에 들어갈 정보를 정의해야 합니다.
 
-`nft-contract/src/metadata.rs` 파일로 이동해 보겠습니다. 여기가 해당 정보가 들어갈 위치입니다. [메타데이터에 대한 표준](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata)을 살펴보면, `TokenMetadata` 및 `NFTContractMetadata` 모두에 대해 저장해야 하는 모든 필수 정보를 찾을 수 있습니다. 다음 코드를 입력하기만 하면 됩니다.
+Let's switch over to the `nft-contract-skeleton/src/metadata.rs` file as this is where that information will go.
 
-<Github language="rust" start="10" end="37" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs" />
+[메타데이터에 대한 표준](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata)을 살펴보면, `TokenMetadata` 및 `NFTContractMetadata` 모두에 대해 저장해야 하는 모든 필수 정보를 찾을 수 있습니다. 다음 코드를 입력하기만 하면 됩니다.
 
-이제 `Token` 구조체와 `JsonToken`이라는 것이 남습니다. `Token` 구조체는 메타데이터를 제외하고 토큰과 직접 관련된 모든 정보를 보유합니다. 이를 통해 토큰의 ID를 전달하기만 하면 모든 토큰에 대한 메타데이터를 빠르게 가져올 수 있습니다. 기억한다면, 메타데이터는 컨트랙트 내 맵에 `tokenMetadataById`이라는 이름의 자료 구조로 저장됩니다.
+<Github language="rust" start="10" end="39" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-basic/src/metadata.rs" />
+
+이제 `Token` 구조체와 `JsonToken`이라는 것이 남습니다. `Token` 구조체는 메타데이터를 제외하고 토큰과 직접 관련된 모든 정보를 보유합니다. 기억한다면, 메타데이터는 컨트랙트 내 맵에 `tokenMetadataById`이라는 이름의 자료 구조로 저장됩니다. 이를 통해 토큰의 ID를 전달하기만 하면 모든 토큰에 대한 메타데이터를 빠르게 가져올 수 있습니다.
 
 `Token` 구조체의 경우, 지금은 소유자만 추적합니다.
 
-<Github language="rust" start="39" end="43" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs" />
+<Github language="rust" start="41" end="46" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-basic/src/metadata.rs" />
 
-`JsonToken`의 목적은 누군가 View 호출을 할 때마다 JSON 형태로 다시 보내려는 NFT에 대한 모든 정보를 보유하는 것입니다. 즉, 소유자, 토큰 ID 및 메타데이터를 저장해야 합니다.
+Since NEAR smart contracts receive and return data in JSON format, the purpose of the `JsonToken` is to act as output when the user asks information for an NFT. 즉, 소유자, 토큰 ID 및 메타데이터를 저장해야 합니다.
 
-<Github language="rust" start="45" end="55" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs" />
+<Github language="rust" start="49" end="58" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-basic/src/metadata.rs" />
 
 :::tip 여러분 중 일부는 _"왜 `Token` 구조체에 모든 정보를 저장하지 않는 거죠?"_ 라고 생각할 수도 있습니다. 그 이유는 토큰 구조에 모든 정보를 저장하는 것보다 필요할 때만 즉시 JSON 토큰을 구성하는 것이 실제로 더 효율적이기 때문입니다. 또한 일부 작업에는 토큰에 대한 메타데이터만 필요할 수 있으므로 메타데이터를 별도의 자료 구조에 두는 것이 더 적합합니다. :::
 
@@ -93,11 +110,13 @@ This function will default all the collections to be empty and set the `owner` a
 
 이제 이전 섹션에서 사용된 일부 자료형을 정의했으므로, 첫 번째 View 함수 `nft_metadata`를 만들어 보겠습니다. 이를 통해 사용자는 [메타데이터 표준](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata)에 따라 컨트랙트의 메타데이터를 쿼리할 수 있습니다.
 
-<Github language="rust" start="57" end="67" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs" />
+<Github language="rust" start="60" end="70" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-basic/src/metadata.rs" />
 
 이 함수는 컨트랙트에서 `NFTContractMetadata` 자료형의 `metadata` 객체를 가져와 반환합니다.
 
 이와 같이 처음 두 작업을 완료했으며 튜토리얼의 마지막 부분으로 이동할 준비가 되었습니다.
+
+<hr class="subsection" />
 
 ### 발행 로직 {#minting-logic}
 
@@ -123,9 +142,10 @@ pub token_metadata_by_id: UnorderedMap<TokenId, TokenMetadata>,
 #### 스토리지 구현 {#storage-implications}
 이 단계에서는 NFT 발행의 스토리지 비용을 고려하는 것이 중요합니다. 자료 구조에 항목이 생성되어 컨트랙트에 바이트를 추가하므로, 컨트랙트에서 스토리지 비용을 충당해야 합니다. 모든 사용자가 무료로 NFT를 발행할 수 있도록 만든 경우, 해당 시스템은 쉽게 남용될 수 있으며 사용자는 본질적으로 수천 개의 NFT를 발행하여 모든 컨트랙트 내 자금을 "탈취"할 수 있습니다. 이러한 이유로 사용자가 스토리지 비용을 충당하기 위해 호출에 보증금을 첨부해야 하도록 만들 것입니다. 아무것도 추가되기 전에, 초기 스토리지 사용량을 측정하고 모든 로직이 완료된 후 최종 스토리지 사용량을 측정합니다. 그런 다음 사용자가 해당 비용을 충당하기에 충분한 $NEAR를 첨부했는지 확인하고, 너무 많이 첨부된 경우 환불합니다.
 
-이제 모든 것이 어떻게 진행되어야 하는지 잘 이해했으므로, 필요한 코드를 입력해 보겠습니다.
+This is how we do it in code:
 
-<Github language="rust" start="3" end="45" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/mint.rs" />
+<Github language="rust" start="3" end="45" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-basic/src/mint.rs" />
+
 
 여기서 `refund_deposit`과 `internal_add_token_to_owner`와 같은 몇 가지 내부 메서드를 사용하고 있음을 알 수 있습니다. 우리는 `refund_deposit`의 기능에 대해 설명했습니다. 또한 `internal_add_token_to_owner`도, 계정이 컨트랙트의 `tokens_per_owner` 자료 구조에 대해 소유한 토큰 집합에 토큰을 추가합니다. `internal.rs`라는 파일에서 이 함수들을 만들 수 있습니다. 계속해서 파일을 만드세요. 새 컨트랙트 아키텍처는 다음과 같아야 합니다.
 
@@ -143,16 +163,19 @@ nft-contract
     ├── metadata.rs
     ├── mint.rs
     ├── nft_core.rs
+    ├── events.rs
     └── royalty.rs
 ```
 
 새로 만든 `internal.rs` 파일에 다음을 추가합니다.
 
-<Github language="rust" start="1" end="63" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/internal.rs" />
+<Github language="rust" start="1" end="133" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-basic/src/internal.rs" />
+
+:::note You may notice more functions in the `internal.rs` file than we need for now. You may ignore them, we'll come back to them later. :::
 
 그런 다음 빠르게 `lib.rs` 파일로 이동하여, 방금 만든 함수를 다른 파일에서 호출할 수 있도록 만들어 보겠습니다. 아래와 같이 내부 크레이트를 추가하고 파일을 수정합니다.
 
-<Github language="rust" start="10" end="23" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/lib.rs" />
+<Github language="rust" start="10" end="23" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-basic/src/lib.rs" />
 
 이 시점에서 NFT를 발행할 수 있는 핵심 로직이 모두 준비되었습니다. 이제 다음 매개변수를 사용하는 `nft_mint` 함수를 사용할 수 있습니다.
 
@@ -169,29 +192,25 @@ nft-contract
 5. `internal_add_token_to_owner`함수를 호출하여 소유자가 소유한 토큰 목록에 토큰 ID를 추가합니다.
 6. 사용자가 이러한 비용을 위해 호출에 충분한 NEAR를 첨부했는지 확인하려면 최종 및 순 스토리지를 계산합니다.
 
+<hr class="subsection" />
+
 ### 토큰 정보 쿼리
 
-계속 진행하여 이 컨트랙트를 배포하고 초기화하여 NFT를 생성한다면, 방금 생성한 토큰에 대한 정보를 알거나 쿼리할 방법이 없습니다. 특정 NFT의 정보를 쿼리하는 방법을 빠르게 추가해 보겠습니다. `nft-contract/src/nft_core.rs` 파일로 이동하여 `nft_token` 함수를 편집합니다.
+계속 진행하여 이 컨트랙트를 배포하고 초기화하여 NFT를 생성한다면, 방금 생성한 토큰에 대한 정보를 알거나 쿼리할 방법이 없습니다. 특정 NFT의 정보를 쿼리하는 방법을 빠르게 추가해 보겠습니다. You'll move to the `nft-contract-skeleton/src/nft_core.rs` file and edit the `nft_token` function.
 
 이는 토큰 ID를 매개변수로 사용하고 해당 토큰에 대한 정보를 반환할 것입니다. `JsonToken`에는 토큰 ID, 소유자 ID 및 토큰의 메타데이터가 포함됩니다.
 
-<Github language="rust" start="89" end="104" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/nft_core.rs" />
+<Github language="rust" start="129" end="143" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-basic/src/nft_core.rs" />
 
 완료되면 첫 NFT를 생성할 수 있도록 컨트랙트를 구축하고 배포할 차례입니다.
+
+---
 
 ## 온체인에서 컨트랙트와 상호 작용
 
 이제 발행 로직이 완료되고 특정 토큰에 대한 정보를 쿼리하는 방법을 추가했으므로 컨트랙트를 빌드하고 블록체인에 배포할 차례입니다.
 
 ### 컨트랙트 배포 {#deploy-the-contract}
-
-이 튜토리얼 전체에서 컨트랙트를 구축하는 가장 쉬운 방법은 `yarn`입니다. 다음 명령은 컨트랙트를 작성하고 `.wasm` 파일을 `out/main.wasm` 폴더로 복사합니다. 이는 `nft-contract/build.sh` 파일에서 찾을 수 있는 빌드 스크립트를 사용합니다
-
-```bash
-yarn build
-```
-
-콘솔에 경고 목록이 표시되지만, 튜토리얼이 진행됨에 따라 이러한 경고는 사라집니다. 이제 내부에 `main.wasm` 파일이 있는 `out/` 폴더가 표시됩니다. 이것이 우리가 블록체인에 배포할 것입니다.
 
 배포하려면 로컬 기기에 키가 저장된 NEAR 계정이 필요합니다. Navigate to the [NEAR wallet](https://testnet.mynearwallet.com//) site and create an account.
 
@@ -217,23 +236,31 @@ export NFT_CONTRACT_ID="YOUR_ACCOUNT_NAME"
 echo $NFT_CONTRACT_ID
 ```
 
-터미널에 올바른 계정 ID가 출력되어 있는지 확인하세요. 모든 것이 올바르게 보이면 이제 컨트랙트를 배포할 수 있습니다. NFT 프로젝트의 루트에서 다음 명령을 실행하여 스마트 컨트랙트를 배포합니다.
+터미널에 올바른 계정 ID가 출력되어 있는지 확인하세요. 모든 것이 올바르게 보이면 이제 컨트랙트를 배포할 수 있습니다. In the root of your NFT project run the following command to deploy your smart contract and answer questions:
 
 ```bash
-near deploy $NFT_CONTRACT_ID out/main.wasm
+cargo near deploy $NFT_CONTRACT_ID
+
+> Select the need for initialization: with-init-call     - Add an initialize
+> What is the name of the function? new_default_meta
+> How would you like to pass the function arguments? json-args
+> Enter the arguments to this function: {"owner_id": "<YOUR_NFT_CONTRACT_ID>"}
+> Enter gas for function call: 100 TeraGas
+> Enter deposit for a function call (example: 10NEAR or 0.5near or 10000yoctonear): 0 NEAR
+> What is the name of the network? testnet
+> Select a tool for signing the transaction: sign-with-keychain
+> How would you like to proceed? send
 ```
 
-이 시점에서 컨트랙트가 당신의 계정에 배포되었어야 하며, NFT 테스트 및 발행 작업으로 이동할 준비가 된 것입니다.
-
-### 컨트랙트 초기화 {#initialize-contract}
-
-컨트랙트가 배포되면 가장 먼저 해야 할 일은 컨트랙트를 초기화하는 것입니다. 단순화를 위해 CLI에서 수동으로 메타데이터를 입력할 필요가 없도록, 이전에 작성한 기본 메타데이터 초기화 함수를 호출해 보겠습니다.
+You don't need to answer these questions every time. If you look at the results you will find the message `Here is the console command if you ever need to re-run it again`. The next line is the command which you may use instead of answering to interactive questions:
 
 ```bash
-near call $NFT_CONTRACT_ID new_default_meta '{"owner_id": "'$NFT_CONTRACT_ID'"}' --accountId $NFT_CONTRACT_ID
+cargo near deploy $NFT_CONTRACT_ID with-init-call new_default_meta json-args '{"owner_id": "'$NFT_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
 ```
 
-이를 통해 일부 기본 메타데이터로 컨트랙트를 초기화하고 계정 ID를 소유자로 설정했습니다. 이제 첫 번째 view 함수를 호출할 준비가 되었습니다.
+You've just deployed and initialized the contract with some default metadata and set your account ID as the owner. 이제 첫 번째 view 함수를 호출할 준비가 되었습니다.
+
+<hr class="subsection" />
 
 ### 컨트랙트 메타데이터 보기
 
@@ -259,11 +286,13 @@ near view $NFT_CONTRACT_ID nft_metadata
 
 이제 첫 번째 NFT를 발행할 준비가 되었습니다.
 
+<hr class="subsection" />
+
 ### 첫 NFT 발행 {#minting-our-first-nft}
 
 이제 생성한 발행 함수를 호출해 보겠습니다. 이를 위해 `token_id`와 `metadata`가 필요합니다. 이전에 생성한 `TokenMetadata` 구조체를 다시 살펴보면, 잠재적으로 온체인에 저장할 수 있는 많은 필드가 있습니다.
 
-<Github language="rust" start="24" end="37" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs" />
+<Github language="rust" start="23" end="39" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-basic/src/metadata.rs" />
 
 시작하려면 제목, 설명 및 미디어가 있는 NFT를 만들어 봅시다. 미디어 필드는 미디어 파일을 가리키는 URL일 수 있습니다. 우리에게는 생성할 수 있는 훌륭한 GIF가 있지만, 사용자 지정 NFT를 생성하고 싶다면 미디어 링크를 선택한 것으로 교체하기만 하면 됩니다. 다음 명령을 실행하면 다음 매개 변수를 사용하여 NFT를 생성합니다.
 
@@ -279,6 +308,8 @@ near call $NFT_CONTRACT_ID nft_mint '{"token_id": "token-1", "metadata": {"title
 ```
 
 :::info `amount` 플래그는 호출에 첨부할 NEAR의 양을 지정합니다. 스토리지 비용을 지불해야 하므로 0.1 NEAR가 첨부되고, 마지막에 사용하지 않은 초과분은 환불됩니다. :::
+
+<hr class="subsection" />
 
 ### NFT에 대한 정보 보기
 
@@ -318,6 +349,8 @@ near view $NFT_CONTRACT_ID nft_token '{"token_id": "token-1"}'
 
 **완료되었습니다!** 이제 모든 것이 올바르게 작동함을 확인했으며, NEAR 지갑의 수집품 탭에서 새로 발행된 NFT를 볼 시간입니다!
 
+---
+
 ## 지갑에서 NFT 보기
 
 If you navigate to the [collectibles tab](https://testnet.mynearwallet.com//?tab=collectibles) in the NEAR wallet, this should list all the NFTs that you own. 현재 비어 있어야 합니다.
@@ -328,6 +361,8 @@ If you navigate to the [collectibles tab](https://testnet.mynearwallet.com//?tab
 
 다음 튜토리얼에서는 지갑에서 NFT를 볼 수 있도록 기존 컨트랙트에 패치 수정을 배포하는 방법에 대해 알아봅니다.
 
+---
+
 ## 결론
 
 이 튜토리얼에서는 컨트랙트 뼈대를 사용하여 블록체인에서 NFT를 생성하는 로직을 설정하고 이해하는 기본 사항에 대해 살펴보았습니다.
@@ -335,6 +370,8 @@ If you navigate to the [collectibles tab](https://testnet.mynearwallet.com//?tab
 먼저 NFT를 발행하는 것이 [무엇을 의미하는지](#what-does-minting-mean), 그리고 문제를 보다 실현 가능한 덩어리로 나누는 방법을 살펴보았습니다. 그런 다음 컨트랙트에 [정보/상태를 저장하는](#storing-information) 문제를 해결하는 것부터 시작하여 컨트랙트 뼈대의 덩어리들을 덩어리 별로 수정하기 시작했습니다. 그런 다음 [메타데이터 및 토큰 정보](#metadata-and-token-info)에 무엇을 넣을지 살펴보았습니다. 마지막으로 [NFT 발행](#minting-logic)에 필요한 로직을 살펴보았습니다.
 
 컨트랙트가 작성된 후 블록체인에 배포할 시간이었습니다. 현재 [컨트랙트를 배포](#deploy-the-contract)하고 [초기화](#initialize-contract)했습니다. 마지막으로, [첫 NFT를 발행](#minting-our-first-nft)하고, 지갑에서 보기 전에 일부 변경이 필요하다는 것을 확인했습니다.
+
+---
 
 ## 다음 단계
 
@@ -344,7 +381,8 @@ If you navigate to the [collectibles tab](https://testnet.mynearwallet.com//?tab
 
 글을 작성하는 시점에서, 해당 예제는 다음 버전에서 작동합니다.
 
-- near-cli: `4.0.4`
+- near-cli: `4.0.13`
+- cargo-near `0.6.1`
 - NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 - 메타데이터 표준: [NEP177](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata), `1.0.0` 버전
 

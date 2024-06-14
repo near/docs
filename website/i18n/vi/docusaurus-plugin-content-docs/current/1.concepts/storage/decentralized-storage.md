@@ -16,7 +16,7 @@ sidebar_label: Các giải pháp thay thế
 
 For storing data on-chain it's important to keep in mind the following:
 
-- You can store an unlimited amount of files, but will cost you 1N per 100KB
+- You can store an unlimited amount of files, but will cost you 1Ⓝ per 100KB
 - There is a 4 MB limit on how much you can upload at once
 
 
@@ -72,7 +72,7 @@ yarn
 - Tiếp theo, khởi động ứng dụng bằng cách chạy lệnh sau:
 
 ```bash
-yarn start 
+yarn start
 ```
 
 
@@ -93,7 +93,7 @@ Trong Arweave, transaction của bạn sẽ trải qua hai trạng thái: trạn
 - Truy cập vào `http://localhost:1984/mine` trên trình duyệt để gửi yêu cầu khai thác tới arlocal node.
 
 :::tip
-Do bạn đang chạy một node ở local, nên bạn có lẽ vẫn có thể nhận được dữ liệu mà không thông qua bước này.
+you may find that you are still able to retrieve your data without this step, but that's because you are running a local node.
 Trong thực tế, khi làm việc với Arweave node, bạn phải đợi cho tới khi transaction được khai thác và xác nhận.
 :::
 
@@ -186,8 +186,8 @@ The default storage time for a single transaction (order) is 6 months. If you wa
 
 Khi người sử dụng tải lên một file, hệ thống IPFS sẽ chia nhỏ file này thành các đoạn dữ liệu nhỏ hơn. Các đoạn dữ liệu này đều được hash và được hệ thống cung cấp một mã định danh riêng biệt, duy nhất trong hệ thống, mã định danh này được gọi là content identifier (CID).
 
-:::tip 
-CID đóng vai trò như một bản ghi vĩnh cửu của một file. Nó tồn tại từ lúc được xử lý thành công trong IPFS.
+:::tip
+The CID acts as an permanent record of a file as it exists at that point in time.
 :::
 
 ### Tìm kiếm
@@ -208,41 +208,6 @@ IPFS đã cung cấp sẵn một hệ thống đặt tên phân tán (decentrali
 
 ### Các nhà cung cấp IPFS
 
-- [Web3.Storage](https://web3.storage/): Đây là một dịch vụ miễn phi giúp đơn giản hoá quá trình xây dựng trên IPFS và Filecoin. Được sự hỗ trợ bởi FileCoin, Web3.Storage biến các nội dụng trở nên khả dụng thông qua IPFS, tận dụng tối đa các sức mạnh riêng biệt của từng mạng.
-- [NFT.Storage](https://nft.storage/): Đây là dịch vụ miễn phí, được xây dựng và phát triển riêng biệt nhằm lưu trữ các dữ liệu NFT off-chain. Các dữ liệu này được lưu trữ phi tập trung trên IPFS và FileCoin. Các dữ liệu này được tham chiếu thông qua việc sử dụng content-addressed IPFS URIs, cho nên nó hoàn toàn có thể được sử dụng trong các smart contract.
+- [Web3.Storage](https://web3.storage/): it's a service that simplifies building on top of IPFS and Filecoin. Được sự hỗ trợ bởi FileCoin, Web3.Storage biến các nội dụng trở nên khả dụng thông qua IPFS, tận dụng tối đa các sức mạnh riêng biệt của từng mạng.
+- [NFT.Storage](https://nft.storage/): this service is built specifically for storing off-chain NFT data. Các dữ liệu này được lưu trữ phi tập trung trên IPFS và FileCoin. Các dữ liệu này được tham chiếu thông qua việc sử dụng content-addressed IPFS URIs, cho nên nó hoàn toàn có thể được sử dụng trong các smart contract.
 - [Filebase](https://filebase.com/): a geo-redundant IPFS pinning provider that pins all IPFS files with automatic 3x redundancy across diverse, geographic locations for additional performance, redundancy, and reliability.
-
-### Ví dụ
-
-Tích hợp một IPFS đơn giản bằng cách sử dụng [NFT.Storage API](https://nft.storage/api-docs/):
-
-1. [Đăng ký một account trên nft.storage](https://nft.storage/login/) để có thể tạo các API access key.
-
-2. [Tạo một API access key](https://nft.storage/manage/) và lưu nó lại.
-
-3. Submit một `HTTP POST` request đến `api.nft.storage/upload`, nhập API key và file data trong request body:
-
-```
-curl -X POST --data-binary @/path/to/file/art.png -H 'Authorization: Bearer YOUR_API_KEY' https://api.nft.storage/upload
-```
-
-:::tip If you want to use a different HTTP client, don't forget to configure and set the Authorization header: `"Authorization": "Bearer YOUR_API_KEY"` :::
-
-Các request thành công sẽ nhận một `HTTP 200` status và `application/json` response như:
-
-```json
-{
-  "ok": true,
-  "value": { "cid": "bafy..." }
-}
-```
-
-4. Sử dụng `cid`, thay thế nó vào URL của image: `https://<cid>.ipfs.dweb.link/`
-
-```
-https://bafyreiabag3ztnhe5pg7js4bj6sxuvkz3sdf76cjvcuqjoidvnfjz7vwrq.ipfs.dweb.link/
-```
-
-Bây giờ, file của bạn đã được upload lên IPFS, bạn có thể truy xuất lại nó bằng cách sử dụng `cid` link.
-
-:::tip Xem thêm [NFT.Storage Docs](https://nft.storage/api-docs/) để biết thêm các thông tin liên quan về vấn đề upload nhiều file và các endpoint khả dụng khác. :::

@@ -4,6 +4,7 @@ title: 잔고 변경
 sidebar_label: 잔고 변경
 ---
 
+
 ## 전제 조건 {#prerequisites}
 
 - [NEAR 계정](https://testnet.mynearwallet.com/create)
@@ -77,7 +78,6 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
   }
 }
 ```
-
 </details>
 
 ---
@@ -86,14 +86,14 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
 
 **HTTPie 요청 예시:**
 
-```bash
-http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
+  ```bash
+  http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 params:='{
   "request_type": "view_account",
   "finality": "final",
   "account_id": "sender.testnet"
 }'
-```
+  ```
 
 **응답 예시:**
 
@@ -117,5 +117,6 @@ params:='{
 
 ---
 
-:::tip 질문이 있으신가요? <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
+:::tip 질문이 있으신가요?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
 :::

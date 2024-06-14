@@ -10,7 +10,7 @@ QueryAPI is a fully managed service that allows you to create and manage indexer
 
 ## Indexing
 
-Let's review a [very simple indexer](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=roshaan.near/demo-indexer), which will help you to understand
+Let's review a [very simple indexer](https://dev.near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=roshaan.near/demo-indexer), which will help you to understand
 how the indexer's indexing logic works.
 
 ```js title=indexingLogic.js
@@ -97,7 +97,7 @@ or simply support every single contract that exists on the Near blockchain.
 
 #### Single contract filter
 
-For example, if you check out the [simple indexer](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=roshaan.near/demo-indexer), you'll see that in this case
+For example, if you check out the [simple indexer](https://dev.near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=roshaan.near/demo-indexer), you'll see that in this case
 you have a `social.near` contract filter.
 In this example, the indexer is only concerned on indexing events from `social.near`'s contract.
 

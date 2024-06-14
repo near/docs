@@ -39,7 +39,7 @@ Ví dụ về response nhận được:
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.query({
@@ -234,7 +234,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.experimental_changes({
@@ -427,7 +427,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.query({
@@ -631,7 +631,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.query({
@@ -1029,7 +1029,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.experimental_changes({
@@ -1218,7 +1218,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.experimental_changes({
@@ -1395,7 +1395,7 @@ Example (`get_num`):
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.query({
@@ -1447,7 +1447,7 @@ The `args_base64` in this example is decoded as `{"account_id":"dev-158803999969
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.query({

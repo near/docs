@@ -1,7 +1,7 @@
 {
   "id": "sdk/rust/promises/intro",
   "title": "Promises",
-  "description": "Transactions can be sent asynchronously from a contract through a Promise. Like Promises in many programming languages, these will cause code to be executed in the future. In the case of NEAR, this \"in the future\" means a transaction to be executed in the next block_ (or thereabouts), rather than in the same block as the original function call.",
+  "description": "Transactions can be sent asynchronously from a contract through a Promise. Like Promises in many programming languages, these will cause code to be executed in the future. In the case of NEAR, this \"in the future\" means a transaction to be executed in the next block (or thereabouts), rather than in the same block as the original function call. Like Promises in many programming languages, these will cause code to be executed in the future. In the case of NEAR, this \"in the future\" means a transaction to be executed in the next block_ (or thereabouts), rather than in the same block as the original function call.",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/sdk/rust/promises/intro.md",
   "sourceDirName": "sdk/rust/promises",
   "slug": "/sdk/rust/promises/intro",

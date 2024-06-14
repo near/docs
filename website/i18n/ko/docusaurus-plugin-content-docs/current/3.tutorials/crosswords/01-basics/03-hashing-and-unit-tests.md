@@ -114,7 +114,7 @@ cargo test check_guess_solution -- --nocapture
 
 스마트 컨트랙트를 배포한 직후에 정답을 한 번 설정해 봅시다.
 
-여기서는 일반적인 패턴인 `new`라는 함수에 [`#[near_bindgen]` macro](https://docs.rs/near-sdk/latest/near_sdk/attr.near_bindgen.html) 매크로를 사용합니다.
+Here we'll use the [`#[near]` macro](https://docs.rs/near-sdk/latest/near_sdk/attr.near.html) on a function called `new`, which is a common pattern.
 
 <Github language="rust" start="10" end="17" url="https://github.com/near-examples/crossword-tutorial-chapter-1/blob/94f42e75cf70ed2aafb9c29a1faa1e21f079a49e/contract/src/lib.rs" />
 
@@ -153,7 +153,7 @@ Here's a truncated snippet from a useful (though somewhat advanced) repository w
 
 이 튜토리얼의 뒷부분에서 Action에 대해 살펴보겠지만, 그 동안 사양에 대한 편리한 [이 문서](https://nomicon.io/RuntimeSpec/Actions.html)를 읽어보셔도 좋습니다. :::
 
-위의 정보 풍선에서 볼 수 있듯이 [배포](https://docs.rs/near-sdk/3.1.0/near_sdk/struct.Promise.html#method.deploy_contract) 및 [함수 호출](https://docs.rs/near-sdk/3.1.0/near_sdk/struct.Promise.html#method.function_call) Action을 일괄 처리할 수 있습니다 이것이 바로 우리가 십자말풀이 퍼즐을 위해 하고자 하는 것이며, 운 좋게도 NEAR CLI에는 특히 [이에 대한 플래그](https://docs.near.org/tools/near-cli#near-deploy)가 있습니다.
+위의 정보 풍선에서 볼 수 있듯이 [배포](https://docs.rs/near-sdk/3.1.0/near_sdk/struct.Promise.html#method.deploy_contract) 및 [함수 호출](https://docs.rs/near-sdk/3.1.0/near_sdk/struct.Promise.html#method.function_call) Action을 일괄 처리할 수 있습니다 이것이 바로 우리가 십자말풀이 퍼즐을 위해 하고자 하는 것이며, 운 좋게도 NEAR CLI에는 특히 [이에 대한 플래그](https://docs.near.org/tools/near-cli#near-deploy)가 있습니다. 이것이 바로 우리가 십자말풀이 퍼즐을 위해 하고자 하는 것이며, 운 좋게도 NEAR CLI에는 특히 [이에 대한 플래그](https://docs.near.org/tools/near-cli#near-deploy)가 있습니다.
 
 편리한 `--initFunction` 및 `--initArgs` 플래그를 사용하여 이를 다시 실행해 보겠습니다.
 
@@ -171,7 +171,7 @@ near deploy crossword.friend.testnet --wasmFile res/my_crossword.wasm \
 일괄 Action을 사용하고 있으므로, 아무도 우리보다 먼저 이 `new` 메서드를 호출할 수 없습니다.
 
 :::note 일괄 Action 실패
-일련의 일괄 Action 중 하나의 Action이 실패하면 전체 트랜잭션이 되돌려집니다. 나의 호출이 실패하면 여러 교차 컨트랙트 호출(cross contract call)이 포함된 복잡한 트랜잭션이 되돌려지는 작업 증명과 달리, 샤딩 지분 증명 시스템은 그렇게 작동하지 않기 때문에 참고하는 것이 좋습니다. NEAR를 사용하면 교차 컨트랙트 호출이 콜백을 사용하여 예상되는 동작을 보장합니다. 이에 대해서는 나중에 설명하겠습니다.
+일련의 일괄 Action 중 하나의 Action이 실패하면 전체 트랜잭션이 되돌려집니다. 나의 호출이 실패하면 여러 교차 컨트랙트 호출(cross contract call)이 포함된 복잡한 트랜잭션이 되돌려지는 작업 증명과 달리, 샤딩 지분 증명 시스템은 그렇게 작동하지 않기 때문에 참고하는 것이 좋습니다. NEAR를 사용하면 교차 컨트랙트 호출이 콜백을 사용하여 예상되는 동작을 보장합니다.
 :::
 
 ## 프론트엔드 준비

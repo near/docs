@@ -37,7 +37,7 @@ When you're ready to deploy a more stable contract, there are a couple of [produ
 [rust-status-message](https://github.com/near-examples/rust-status-message) 예제 컨트랙트의 구조는 다음과 같습니다.
 
 <CodeTabs>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/rust-status-message/blob/b5fa6f2a30559d56a3a3ea52da8c26c5d3907606/src/lib.rs" start="5" end="29"/>
   </Language>
@@ -70,8 +70,7 @@ This will return the message that you set with the call to `set_status`, in this
 이제 각 계정에 대해 두 종류의 데이터를 저장하도록 컨트랙트를 변경한다고 가정해 보겠습니다.
 
 ```rust
-#[near_bindgen]
-#[derive(BorshDeserialize, BorshSerialize)]
+#[near(contract_state)]
 pub struct StatusMessage {
     taglines: LookupMap<AccountId, String>,
     bios: LookupMap<AccountId, String>,
@@ -86,7 +85,7 @@ impl Default for StatusMessage {
     }
 }
 
-#[near_bindgen]
+#[near]
 impl StatusMessage {
     pub fn set_tagline(&mut self, message: String) {
         let account_id = env::signer_account_id();

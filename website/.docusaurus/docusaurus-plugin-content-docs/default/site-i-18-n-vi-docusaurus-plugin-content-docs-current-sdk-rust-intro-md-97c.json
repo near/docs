@@ -22,7 +22,7 @@
     "permalink": "/vi/sdk/rust/introduction"
   },
   "next": {
-    "title": "near_bindgen",
+    "title": "near",
     "permalink": "/vi/sdk/rust/contract-structure/near-bindgen"
   }
 }

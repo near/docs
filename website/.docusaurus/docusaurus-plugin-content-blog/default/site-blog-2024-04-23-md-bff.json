@@ -1,5 +1,5 @@
 {
-  "permalink": "/zh-CN/blog/we-have-a-blog",
+  "permalink": "/blog/we-have-a-blog",
   "source": "@site/../blog/2024-04-23.md",
   "title": "We have a blog now!",
   "description": "Check check check. Is this thing on? Hello, world!",
@@ -7,7 +7,7 @@
   "tags": [
     {
       "label": "updates",
-      "permalink": "/zh-CN/blog/tags/updates"
+      "permalink": "/blog/tags/updates"
     }
   ],
   "readingTime": 2.105,
@@ -34,6 +34,6 @@
   "unlisted": false,
   "prevItem": {
     "title": "Reorganizing our docs",
-    "permalink": "/zh-CN/blog/reorganizing-docs"
+    "permalink": "/blog/reorganizing-docs"
   }
 }

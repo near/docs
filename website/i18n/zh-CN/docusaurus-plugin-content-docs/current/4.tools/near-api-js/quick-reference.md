@@ -17,9 +17,9 @@ import TabItem from '@theme/TabItem';
 
 ## What is `near-api-js`
 
-`near-api-js` is a complete library to interact with the NEAR blockchain. You can use it in the browser, or in Node.js runtime.
+`near-api-js` is a complete library to interact with the NEAR blockchain. You can use it in the browser, or in Node.js runtime. You can use it in the browser, or in Node.js runtime.
 
-You'll typically first create a connection to NEAR with [`connect`](#connect) using a [`KeyStore`](#key-store). With the connection object you now can:
+You'll typically first create a connection to NEAR with [`connect`](#connect) using a [`KeyStore`](#key-store). With the connection object you now can: With the connection object you now can:
 
 - Interact with the [Wallet](naj-wallet.md) in a browser.
 - Instantiate an [Account](naj-account.md) object to:
@@ -31,13 +31,13 @@ You'll typically first create a connection to NEAR with [`connect`](#connect) us
 
 The library also contains some [utility functions](naj-utils.md).
 
-:::tip To quickly get started with integrating NEAR in a web browser, read our [Web Frontend integration](/build/web3-apps/integrate-contracts) article. :::
+:::tip To quickly get started with integrating NEAR in a web browser, read our [Web Frontend integration](/build/web3-apps/integrate-contracts) article. ::: :::
 
 :::info Note the difference between `near-api-js` and `near-sdk-js`:
 
-The JavaScript _SDK_ is a library for developing smart contracts. It contains classes and functions you use to write your smart contract code.
+The JavaScript _SDK_ is a library for developing smart contracts. It contains classes and functions you use to write your smart contract code. It contains classes and functions you use to write your smart contract code.
 
-The JavaScript _API_ is a complete library for all possible commands to interact with NEAR. It’s a wrapper for the RPC endpoints, a library to interact with NEAR Wallet in the browser, and a tool for keys management. :::
+The JavaScript _API_ is a complete library for all possible commands to interact with NEAR. It’s a wrapper for the RPC endpoints, a library to interact with NEAR Wallet in the browser, and a tool for keys management. ::: It’s a wrapper for the RPC endpoints, a library to interact with NEAR Wallet in the browser, and a tool for keys management. :::
 
 ---
 
@@ -51,7 +51,7 @@ npm i --save near-api-js
 
 ## Import {#import}
 
-You can use the API library in the browser, or in Node.js runtime. Some features are available only in one of the environments. For example, the `WalletConnection` is only for the browser, and there are different `KeyStore` providers for each environment.
+You can use the API library in the browser, or in Node.js runtime. Some features are available only in one of the environments. You can use the API library in the browser, or in Node.js runtime. Some features are available only in one of the environments. For example, the `WalletConnection` is only for the browser, and there are different `KeyStore` providers for each environment.
 
 <Tabs>
 <TabItem value="Browser" label="Browser" default>
@@ -72,7 +72,7 @@ const nearAPI = require("near-api-js");
 
 ## Key Store {#key-store}
 
-If you sign transactions, you need to create a _Key Store_. In the browser, the LocalStorage KeyStore will be used once you ask your user to Sign In with the Wallet.
+If you sign transactions, you need to create a _Key Store_. In the browser, the LocalStorage KeyStore will be used once you ask your user to Sign In with the Wallet. In the browser, the LocalStorage KeyStore will be used once you ask your user to Sign In with the Wallet.
 
 <Tabs>
 <TabItem value="browser" label="Using Browser" default>
@@ -158,7 +158,7 @@ await myKeyStore.setKey("testnet", "example-account.testnet", keyPair);
 
 ## Connecting to NEAR {#connect}
 
-The object returned from `connect` is your entry-point for all commands in the API. To sign a transaction you'll need a [`KeyStore`](#key-store) to create a connection.
+The object returned from `connect` is your entry-point for all commands in the API. The object returned from `connect` is your entry-point for all commands in the API. To sign a transaction you'll need a [`KeyStore`](#key-store) to create a connection.
 
 <Tabs>
 <TabItem value="testnet" label="TestNet" default>
@@ -212,3 +212,39 @@ const nearConnection = await connect(connectionConfig);
 </Tabs>
 
 [<span className="typedoc-icon typedoc-icon-module"></span> Module `connect`](https://near.github.io/near-api-js/modules/near_api_js.connect.html)
+
+## RPC Failover
+
+RPC providers can experience intermittent downtime, connectivity issues, or rate limits that cause client transactions to fail. This can be prevented by using the `FailoverRpcProvider` that supports multiple RPC providers.
+
+<Tabs>
+<TabItem value="mainnet" label="MainNet">
+
+```js
+const jsonProviders = [
+  new JsonRpcProvider({
+    url: 'https://rpc.mainnet.near.org',
+  }),
+  new JsonRpcProvider(
+    {
+      url: 'https://another-rpc.cloud.com',
+      headers: { 'X-Api-Key': 'some string' },
+    },
+    { retries: 3, backoff: 2, wait: 500 }
+  ),
+];
+const provider = new FailoverRpcProvider(jsonProviders);
+
+await connect({
+  networkId: 'mainnet',
+  provider: provider,
+  // this isn't used if `provider` is specified, but is still required for backward compativility
+  nodeUrl: 'https://rpc.mainnet.near.org',
+});
+```
+
+</TabItem>
+
+</Tabs>
+
+[<span className="typedoc-icon typedoc-icon-class"></span> Class `FailoverRpcProvider`](https://near.github.io/near-api-js/classes/near_api_js.providers_failover_rpc_provider.FailoverRpcProvider.html)

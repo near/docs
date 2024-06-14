@@ -23,7 +23,7 @@ In order to use the RPC API you will need to setup the correct RPC endpoints.
 <hr className="subsection" />
 
 ## Querying Historical Data
-Querying historical data (older than 5 [epochs](../../1.concepts/basics/epoch.md) or ~2.5 days), you may get responses that the data is not available anymore. In that case, archival RPC nodes will come to your rescue:
+Querying historical data (older than 5 [epochs](../../1.concepts/basics/epoch.md) or ~2.5 days), you may get responses that the data is not available anymore. In that case, archival RPC nodes will come to your rescue: In that case, archival RPC nodes will come to your rescue:
 
 - mainnet `https://archival-rpc.mainnet.near.org`
 - testnet `https://archival-rpc.testnet.near.org`
@@ -37,7 +37,7 @@ You can see this interface defined in `nearcore` [here](https://github.com/near/
 
 ## Postman Setup {#postman-setup}
 
-An easy way to test the queries in this documentation page is to use an API request tool such as [Postman](https://www.postman.com/). You only need to configure two things:
+An easy way to test the queries in this documentation page is to use an API request tool such as [Postman](https://www.postman.com/). You only need to configure two things: You only need to configure two things:
 
 1. Make sure you add a header with a key of `Content-Type` and value of `application/json`. ![postman-setup-header](/docs/assets/postman-setup-headers.png)
 
@@ -51,12 +51,12 @@ After that is set up, just copy/paste the `JSON object` example snippets below i
 All of the queries listed in this documentation page can be called using [`near-api-js`](https://github.com/near/near-api-js).
 
 - For `near-api-js` installation and setup please refer to `near-api-js` [quick reference documentation](/tools/near-api-js/quick-reference).
-- All JavaScript code snippets require a `near` object. For examples of how to instantiate, [**click here**](/tools/near-api-js/quick-reference#connect).
+- All JavaScript code snippets require a `near` object. All JavaScript code snippets require a `near` object. For examples of how to instantiate, [**click here**](/tools/near-api-js/quick-reference#connect).
 
 ---
 ## HTTPie Setup {#httpie-setup}
 
-If you prefer to use a command line interface, we have provided RPC examples you can use with [HTTPie](https://httpie.org/). Please note that params take either an object or array passed as a string.
+If you prefer to use a command line interface, we have provided RPC examples you can use with [HTTPie](https://httpie.org/). Please note that params take either an object or array passed as a string. Please note that params take either an object or array passed as a string.
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=network_info params:='[]'
@@ -70,7 +70,7 @@ The `block_id` param can take either the block number (e.g. `27912554`) or the b
 
 :::caution
 
-The block IDs of transactions shown in [NearBlocks Explorer](https://testnet.nearblocks.io) are not necessarily the block ID of the executed transaction. Transactions may execute a block or two after its recorded, and in some cases, can take place over several blocks. Due to this, it is important to to check subsequent blocks to be sure all results related to the queried transaction are discovered.
+The block IDs of transactions shown in [NearBlocks Explorer](https://testnet.nearblocks.io) are not necessarily the block ID of the executed transaction. Transactions may execute a block or two after its recorded, and in some cases, can take place over several blocks. Due to this, it is important to to check subsequent blocks to be sure all results related to the queried transaction are discovered. Transactions may execute a block or two after its recorded, and in some cases, can take place over several blocks. Due to this, it is important to to check subsequent blocks to be sure all results related to the queried transaction are discovered.
 
 :::
 

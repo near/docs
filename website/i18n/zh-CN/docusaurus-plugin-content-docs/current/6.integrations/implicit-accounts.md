@@ -58,7 +58,7 @@ near send 98793cd91a3f870fb126f66285808c7e094afcfc4eda8a970f6648cdf0dbd6de <rece
 
 ## Transferring to the implicit account {#transferring-to-the-implicit-account}
 
-Let's say someone gives you their account ID `0861ea8ddd696525696ccf3148dd706c4fda981c64d8a597490472594400c223`. You can just transfer to it by running:
+Let's say someone gives you their account ID `0861ea8ddd696525696ccf3148dd706c4fda981c64d8a597490472594400c223`. You can just transfer to it by running: You can just transfer to it by running:
 ```bash
 near send <your_account_id> 0861ea8ddd696525696ccf3148dd706c4fda981c64d8a597490472594400c223 <amount>
 ```
@@ -77,7 +77,7 @@ Start python3 interpreter:
 python3
 ```
 
-The first thing is to get the data part from the public key (without `ed25519:` prefix). Let's store it in a variable `pk58`:
+The first thing is to get the data part from the public key (without `ed25519:` prefix). Let's store it in a variable `pk58`: Let's store it in a variable `pk58`:
 ```python
 pk58 = 'BGCCDDHfysuuVnaNVtEhhqeT4k9Muyem3Kpgq2U1m9HX'
 ```
@@ -99,7 +99,7 @@ Output:
 
 This gives us the same account ID as `near-cli`, so this is encouraging.
 
-**Note:** The default network for `near-cli` is `testnet`. If you would like to change this to `mainnet` or `betanet`, please see [`near-cli` network selection](/tools/near-cli#network-selection) for instructions.
+**Note:** The default network for `near-cli` is `testnet`. If you would like to change this to `mainnet` or `betanet`, please see [`near-cli` network selection](/tools/near-cli#network-selection) for instructions. If you would like to change this to `mainnet` or `betanet`, please see [`near-cli` network selection](/tools/near-cli#network-selection) for instructions.
 
 :::tip Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>

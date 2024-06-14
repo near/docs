@@ -117,6 +117,7 @@ return status;
 
 :::tip
 :::tip
+:::tip
 The [fetch](#fetch) method is built on top of the `useCache` hook.
 :::
 

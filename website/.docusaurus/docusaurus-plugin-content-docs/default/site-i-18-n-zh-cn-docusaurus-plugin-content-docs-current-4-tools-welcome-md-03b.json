@@ -1,7 +1,7 @@
 {
   "id": "tools/welcome",
   "title": "Tools",
-  "description": "Welcome! The NEAR ecosystem has a complete set of tools for you to make the most out of the NEAR network. In this page you will find:",
+  "description": "Welcome! Welcome! The NEAR ecosystem has a complete set of tools for you to make the most out of the NEAR network. In this page you will find",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/4.tools/welcome.md",
   "sourceDirName": "4.tools",
   "slug": "/tools/welcome",

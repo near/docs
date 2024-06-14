@@ -1,7 +1,7 @@
 {
   "id": "sdk/js/testing/unit-tests",
   "title": "Unit Tests",
-  "description": "You can unit test abstracted logic implemented by smart contract functions like regular JavaScript functions with any testing library of your liking. A simple example would look as follows:",
+  "description": "You can unit test abstracted logic implemented by smart contract functions like regular JavaScript functions with any testing library of your liking. A simple example would look as follows",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/sdk/js/testing/unit-tests.md",
   "sourceDirName": "sdk/js/testing",
   "slug": "/sdk/js/testing/unit-tests",

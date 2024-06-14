@@ -16,7 +16,7 @@
   "frontMatter": {
     "id": "meta-transactions",
     "title": "Building a Meta Transaction Relayer",
-    "sidebar_label": "Building a Relayer"
+    "sidebar_label": "Meta Transaction Relayers"
   },
   "sidebar": "build",
   "previous": {

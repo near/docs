@@ -6,16 +6,16 @@ sidebar_label: Tích hợp sàn giao dịch
 
 ## Tham chiếu tích hợp {#integration-reference}
 
-- [Các thay đổi về số dư](/integrator/balance-changes)
-- [Các account](/integrator/accounts)
-- [Các Fungible Token](/integrator/fungible-tokens)
-- [Các Implicit Account](/integrator/implicit-accounts)
+- [Các thay đổi về số dư](/integrations/balance-changes)
+- [Các account](/integrations/accounts)
+- [Các Fungible Token](/integrations/fungible-tokens)
+- [Các Implicit Account](/integrations/implicit-accounts)
 
 ### Các link tham chiếu Transaction {#transaction-reference-links}
 
  - [Cơ bản](/concepts/protocol/transactions)
  - [Thông số kỹ thuật](https://nomicon.io/RuntimeSpec/Transactions)
- - [Khởi tạo các transaction](/integrator/create-transactions)
+ - [Khởi tạo các transaction](/integrations/create-transactions)
 
 ## Các Block và Finality {#blocks-and-finality}
 

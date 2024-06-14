@@ -1,7 +1,7 @@
 {
   "id": "tutorials/nfts/js/marketplace",
   "title": "Marketplace",
-  "description": "In this tutorial, you'll learn the basics of an NFT marketplace contract where you can buy and sell non-fungible tokens for $NEAR. In the previous tutorials, you went through and created a fully fledged NFT contract that incorporates all the standards found in the NFT standard.",
+  "description": "In this tutorial, you'll learn the basics of an NFT marketplace contract where you can buy and sell non-fungible tokens for $NEAR. In the previous tutorials, you went through and created a fully fledged NFT contract that incorporates all the standards found in the NFT standard. In the previous tutorials, you went through and created a fully fledged NFT contract that incorporates all the standards found in the NFT standard.",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/3.tutorials/nfts/js/8-marketplace.md",
   "sourceDirName": "3.tutorials/nfts/js",
   "slug": "/tutorials/nfts/js/marketplace",

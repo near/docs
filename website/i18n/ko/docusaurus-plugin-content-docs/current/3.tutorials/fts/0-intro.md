@@ -4,17 +4,18 @@ title: 대체 가능한 토큰 Zero to Hero
 sidebar_label: 소개
 ---
 
-> 이 _Zero to Hero_ 시리즈에서는 대체 가능한 토큰(FT) 스마트 컨트랙트의 모든 측면을 다루는 일련의 튜토리얼을 찾을 수 있습니다. 사전 배포된 컨트랙트와 상호 작용하는 것으로 시작하고, 마지막에는 표준의 모든 확장을 지원하는 본격적인 FT 스마트 컨트랙트를 구축하게 됩니다
+In this _Zero to Hero_ series, you'll find a set of tutorials covering every aspect of a fungible token (FT) smart contract. You'll start by interacting with a pre-deployed contract and by the end you'll have built a fully-fledged FT smart contract that supports every extension of the standards.
 
 ---
 
 ## 전제 조건
 
-이 튜토리얼을 성공적으로 완료하려면 다음이 필요합니다.
+To complete these tutorials successfully, you'll need:
 
 - [Rust](/build/smart-contracts/quickstart#prerequisites)
-- [A NEAR testnet account](https://testnet.mynearwallet.com)
-- [NEAR-CLI](/tools/near-cli#setup)
+- [A NEAR wallet](https://testnet.mynearwallet.com)
+- [NEAR-CLI JS](/tools/near-cli#setup)
+- [cargo-near](https://github.com/near/cargo-near)
 
 :::info New to Rust?
 If you are new to Rust and want to dive into smart contract development, our [Quick-start guide](../../2.build/2.smart-contracts/quickstart.md) is a great place to start.
@@ -26,15 +27,15 @@ If you are new to Rust and want to dive into smart contract development, our [Qu
 
 다음은 **_Zero_** to **_Hero_**로 순식간에 데려다 줄 단계입니다! 💪
 
-| 단계 | 이름                                                 | 설명                                                                                   |
-| -- | -------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| 1  | [사전 배포된 컨트랙트](/tutorials/fts/predeployed-contract) | 스마트 컨트랙트를 코딩, 생성 또는 배포할 필요 없이 NFT를 생성합니다.                                            |
-| 2  | [컨트랙트 아키텍쳐](/tutorials/fts/skeleton)               | FT 스마트 컨트랙트의 기본 아키텍처를 배우고 코드를 컴파일합니다.                                                |
-| 3  | [토큰 정의](/tutorials/fts/defining-a-token)           | FT를 갖는다는 것이 무엇을 의미하는지, 그리고 자신만의 FT를 커스터마이징하는 방법을 자세히 알아보세요.                          |
-| 4  | [순환 공급](/tutorials/fts/circulating-supply)         | 초기 공급을 생성하고 지갑에 토큰을 표시하는 방법을 알아보세요.                                                  |
-| 5  | [계정 등록](/tutorials/fts/registering-accounts)       | 악의적인 사용자가 자금을 낭비하지 않도록 스토리지 관리 표준을 구현하고 이해할 수 있는 방법을 살펴보세요.                          |
-| 6  | [FT 전송](/tutorials/fts/transfers)                  | FT를 전송하는 방법을 알아보고 핵심 표준이 제공하는 진정한 힘을 발견하세요.                                          |
-| 7  | [마켓플레이스](/tutorials/fts/marketplace)               | 일반적인 마켓플레이스가 NEAR에서 작동하는 방식에 대해 알아보고, 대체 가능 토큰을 사용하여 NFT를 사고 팔 수 있는 일부 코드에 대해 알아보세요. |
+| 단계 | 이름                                                 | 설명                                                                                                                                               |
+| -- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 1  | [사전 배포된 컨트랙트](/tutorials/fts/predeployed-contract) | 스마트 컨트랙트를 코딩, 생성 또는 배포할 필요 없이 NFT를 생성합니다.                                                                                                        |
+| 2  | [컨트랙트 아키텍쳐](/tutorials/fts/skeleton)               | FT 스마트 컨트랙트의 기본 아키텍처를 배우고 코드를 컴파일합니다.                                                                                                            |
+| 3  | [토큰 정의](/tutorials/fts/defining-a-token)           | Flesh out what it means to have a FT and how you can customize your own.                                                                         |
+| 4  | [순환 공급](/tutorials/fts/circulating-supply)         | 초기 공급을 생성하고 지갑에 토큰을 표시하는 방법을 알아보세요.                                                                                                              |
+| 5  | [계정 등록](/tutorials/fts/registering-accounts)       | 악의적인 사용자가 자금을 낭비하지 않도록 스토리지 관리 표준을 구현하고 이해할 수 있는 방법을 살펴보세요.                                                                                      |
+| 6  | [FT 전송](/tutorials/fts/transfers)                  | FT를 전송하는 방법을 알아보고 핵심 표준이 제공하는 진정한 힘을 발견하세요.                                                                                                      |
+| 7  | [마켓플레이스](/tutorials/fts/marketplace)               | Learn about how common marketplaces operate on NEAR and dive into some of the code that allows buying and selling NFTs by using Fungible Tokens. |
 
 
 <!--

@@ -94,7 +94,7 @@ return (
 );
 ```
 
-:::info Relevant HTML
+:::info :::info Relevant HTML
 
 1. **onChange & onClick**: We have prepared our `<input>` and `<button>` to act when something happens. Particularly, we will build two methods: one when the input changes, and one when the button is pressed.
 

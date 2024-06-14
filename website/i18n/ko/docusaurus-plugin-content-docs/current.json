@@ -4,7 +4,7 @@
     "description": "The label for version current"
   },
   "sidebar.concepts.category.Accounts": {
-    "message": "계정",
+    "message": "Accounts",
     "description": "The label for category Accounts in sidebar concepts"
   },
   "sidebar.concepts.category.Transactions": {
@@ -12,7 +12,7 @@
     "description": "The label for category Transactions in sidebar concepts"
   },
   "sidebar.concepts.category.Gas": {
-    "message": "가스",
+    "message": "Gas",
     "description": "The label for category Gas in sidebar concepts"
   },
   "sidebar.concepts.category.Data Flow": {
@@ -490,5 +490,21 @@
   "sidebar.pagoda.category.Alerts & Triggers": {
     "message": "Alerts & Triggers",
     "description": "The label for category Alerts & Triggers in sidebar pagoda"
+  },
+  "sidebar.tutorials.category.Basic": {
+    "message": "Basic",
+    "description": "The label for category Basic in sidebar tutorials"
+  },
+  "sidebar.tutorials.category.Marketplace": {
+    "message": "Marketplace",
+    "description": "The label for category Marketplace in sidebar tutorials"
+  },
+  "sidebar.tools.link.Keypom": {
+    "message": "Keypom",
+    "description": "The label for link Keypom in sidebar tools, linking to https://keypom.xyz/"
+  },
+  "sidebar.tools.link.dev.near.org Web Editor": {
+    "message": "dev.near.org Web Editor",
+    "description": "The label for link dev.near.org Web Editor in sidebar tools, linking to https://dev.near.org/sandbox"
   }
 }

@@ -1,7 +1,7 @@
 {
   "id": "sdk/rust/contract-interface/serialization-interface",
   "title": "Serialization Protocols",
-  "description": "Serialization formats within the SDK define how data structures are translated into bytes which are needed for passing data into methods of the smart contract or storing data in state. For the case of method parameters, JSON (default) and Borsh are supported with the SDK and for storing data on-chain Borsh is used.",
+  "description": "Serialization formats within the SDK define how data structures are translated into bytes which are needed for passing data into methods of the smart contract or storing data in state. Serialization formats within the SDK define how data structures are translated into bytes which are needed for passing data into methods of the smart contract or storing data in state. For the case of method parameters, JSON (default) and Borsh are supported with the SDK and for storing data on-chain Borsh is used.",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/sdk/rust/contract-interface/serialization-interface.md",
   "sourceDirName": "sdk/rust/contract-interface",
   "slug": "/sdk/rust/contract-interface/serialization-interface",

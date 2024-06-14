@@ -1,7 +1,7 @@
 {
   "id": "sdk/rust/contract-structure/near-bindgen",
-  "title": "near_bindgen",
-  "description": "#[near_bindgen] 매크로는 유효한 NEAR 컨트랙트가 되기 위해 필요한 코드를 생성하고, 외부에서 호출할 수 있도록 하는 함수를 공개하기 위해 struct에서 사용되는 함수 구현입니다.",
+  "title": "near",
+  "description": "The #[near] macro is used on a struct and the function implementations to generate the necessary code to be a valid NEAR contract and expose the intended functions to be able to be called externally.",
   "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/sdk/rust/contract-structure/near-bindgen.md",
   "sourceDirName": "sdk/rust/contract-structure",
   "slug": "/sdk/rust/contract-structure/near-bindgen",

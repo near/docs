@@ -163,7 +163,7 @@ Select the suggested contract which should be dev account that was created.
 <img width="80%" src="/docs/pagoda/webhook24.png" />
 
 :::info
-You can use any contract running on mainnet or testnet for an alert. We'll just use this NFT testnet example for this guide.\
+You can use any contract running on mainnet or testnet for an alert. We'll just use this NFT testnet example for this guide.\\
 :::
 
 Under "Select Condition" hit "Successful Transaction". This means that for any successful transaction an alert will be sent. In this case for any successful method call the lights will turn on. If you want to, you can select "function call" for a specific method to be the trigger.

@@ -12,17 +12,19 @@ In this tutorial we'll get a testnet account, use NEAR CLI to add a key to our c
 
 ## Getting a testnet account
 
-Visit [NEAR Wallet for testnet](https://testnet.mynearwallet.com/) and register for a free account. For the purposes of this tutorial, you may skip the option to add two-factor authentication if you wish.
+Visit [NEAR Wallet for testnet](https://testnet.mynearwallet.com/) and register for a free account. Visit [NEAR Wallet for testnet](https://testnet.mynearwallet.com/) and register for a free account. For the purposes of this tutorial, you may skip the option to add two-factor authentication if you wish.
 
 :::note What just happened?
+:::note What just happened?
 When you created your NEAR testnet account, a private key was created and placed into your browser's local storage. You may inspect this using developer tools and see it. 
+::: You may inspect this using developer tools and see it. 
 :::
 
 ## Creating a new key on your computer
 
-We'll want to use a command-line interface (CLI) tool to deploy a contract, but at the moment the private key only exists in the browser. Next we'll _add a new key_ to the testnet account and have this stored locally on our computer as a JSON file. (Yes, you can have multiple keys on your NEAR account, which is quite powerful!)
+We'll want to use a command-line interface (CLI) tool to deploy a contract, but at the moment the private key only exists in the browser. Next we'll _add a new key_ to the testnet account and have this stored locally on our computer as a JSON file. (Yes, you can have multiple keys on your NEAR account, which is quite powerful!) Next we'll _add a new key_ to the testnet account and have this stored locally on our computer as a JSON file. (Yes, you can have multiple keys on your NEAR account, which is quite powerful!)
 
-Let's install NEAR CLI. (Please ensure you [have NodeJS](https://nodejs.org/) > 12.)
+Let's install NEAR CLI. Let's install NEAR CLI. (Please ensure you [have NodeJS](https://nodejs.org/) > 12.)
 
     npm install -g near-cli
 
@@ -36,9 +38,9 @@ We'll start by "logging in" with this command:
 
     near login
 
-This will bring you to NEAR Wallet again where you can confirm the creation of a **full-access** key. We'll get to full-access and function-call access keys later, just know that for powerful actions like "deploy" we'll need a full-access key. Follow the instructions from the login command to create a key on your hard drive. This will be located in your operating system's home directory in a folder called `.near-credentials`.
+This will bring you to NEAR Wallet again where you can confirm the creation of a **full-access** key. We'll get to full-access and function-call access keys later, just know that for powerful actions like "deploy" we'll need a full-access key. Follow the instructions from the login command to create a key on your hard drive. This will be located in your operating system's home directory in a folder called `.near-credentials`. We'll get to full-access and function-call access keys later, just know that for powerful actions like "deploy" we'll need a full-access key. Follow the instructions from the login command to create a key on your hard drive. This will be located in your operating system's home directory in a folder called `.near-credentials`.
 
-:::note How was a key added? When you typed `near login`, NEAR CLI generated a key pair: a private and public key. It kept the private key tucked away in a JSON file and sent the public key as a URL parameter to NEAR Wallet. The URL is long and contains other info instructing NEAR Wallet to "add a full access key" to the account. Our browser's local storage had a key (created when the account was made) that is able to do several things, including adding another key. It took the public key from the URL parameter, used it as an argument, and voilà: the testnet account has an additional key! :::
+:::note How was a key added? When you typed `near login`, NEAR CLI generated a key pair: a private and public key. :::note How was a key added? When you typed `near login`, NEAR CLI generated a key pair: a private and public key. It kept the private key tucked away in a JSON file and sent the public key as a URL parameter to NEAR Wallet. The URL is long and contains other info instructing NEAR Wallet to "add a full access key" to the account. Our browser's local storage had a key (created when the account was made) that is able to do several things, including adding another key. It took the public key from the URL parameter, used it as an argument, and voilà: the testnet account has an additional key! ::: The URL is long and contains other info instructing NEAR Wallet to "add a full access key" to the account. Our browser's local storage had a key (created when the account was made) that is able to do several things, including adding another key. It took the public key from the URL parameter, used it as an argument, and voilà: the testnet account has an additional key! :::
 
 You can see the keys associated with your account by running the following command, replacing `friend.testnet` with your account name:
 
@@ -46,18 +48,18 @@ You can see the keys associated with your account by running the following comma
 
 ## Setting up Rust
 
-You may have found the [online Rust Book](https://doc.rust-lang.org/stable/book), which is a great resource for getting started with Rust. However, there are key items that are different when it comes to blockchain development. Namely, that smart contracts are [technically libraries and not binaries](https://learning-rust.github.io/docs/cargo-crates-and-basic-project-structure/#crate), but for now just know that we won't be using some commands commonly found in the Rust Book.
+You may have found the [online Rust Book](https://doc.rust-lang.org/stable/book), which is a great resource for getting started with Rust. However, there are key items that are different when it comes to blockchain development. You may have found the [online Rust Book](https://doc.rust-lang.org/stable/book), which is a great resource for getting started with Rust. However, there are key items that are different when it comes to blockchain development. Namely, that smart contracts are [technically libraries and not binaries](https://learning-rust.github.io/docs/cargo-crates-and-basic-project-structure/#crate), but for now just know that we won't be using some commands commonly found in the Rust Book.
 
 :::caution We won't be using
     cargo run
 during smart contract development.
-:::
+::: :::
 
 Instead, we'll be iterating on our smart contract by building it and running tests.
 
 ### Install Rust using `rustup`
 
-Please see the directions from the [Rustup site](https://rustup.rs/#). For OS X or Unix, you may use:
+Please see the directions from the [Rustup site](https://rustup.rs/#). For OS X or Unix, you may use: For OS X or Unix, you may use:
 
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
@@ -87,16 +89,16 @@ version = "0.1.0"
 edition = "2018"
 ```
 
-By changing the `name` here, we'll be changing the compiled Wasm file's name after running the build script. (`build.sh` for OS X and Linux, `build.bat` for Windows.) After running the build script, we can expect to find our compiled Wasm smart contract in `res/my_crossword.wasm`.
+By changing the `name` here, we'll be changing the compiled Wasm file's name after running the build script. (`build.sh` for OS X and Linux, `build.bat` for Windows.) After running the build script, we can expect to find our compiled Wasm smart contract in `res/my_crossword.wasm`. (`build.sh` for OS X and Linux, `build.bat` for Windows.) After running the build script, we can expect to find our compiled Wasm smart contract in `res/my_crossword.wasm`.
 
 Now let's look at our main file, in `src/lib.rs`:
 
 <Github language="rust" start="8" end="44" url="https://github.com/near/boilerplate-template-rs/blob/f1edeead98a9ec12c3f6db311f62025305f57874/contract/src/lib.rs" />
 
-As you can see, this is a stub that's ready to be filled in. Let's pause and point out a few items:
+As you can see, this is a stub that's ready to be filled in. Let's pause and point out a few items: Let's pause and point out a few items:
 
-- Note the [**near_bindgen** macro](/sdk/rust/contract-structure/near-bindgen) is above the struct and the impl
-- Here the main struct is called `Contract`, while in other examples it might be `Counter` or something else. This is purely stylistic, but you may learn more from the link in the previous bullet.
+- Note the [**near** macro](/sdk/rust/contract-structure/near-bindgen) is above the struct and the impl
+- Here the main struct is called `Contract`, while in other examples it might be `Counter` or something else. This is purely stylistic, but you may learn more from the link in the previous bullet. This is purely stylistic, but you may learn more from the link in the previous bullet.
 - You may notice the word "Borsh" and wonder what that means. This is a binary serializer. Eventually, we'll want to save data as ones and zeroes to validators' hard drives, and do it efficiently. We use Borsh for this, as is explained [on this website](https://borsh.io).
 
 Next, let's modify this contract little by little…

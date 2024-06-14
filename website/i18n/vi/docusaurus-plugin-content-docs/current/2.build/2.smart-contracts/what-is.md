@@ -43,7 +43,7 @@ Just like any piece of software, smart contracts have a development flow - start
 The development flow can be summarized as follows:
 
 - [**Scaffold**](./quickstart.md): The simplest way to create a project is by starting from a template.
-- [**Build**](./anatomy/basics.md): Write a contract using Rust or Javascript.
+- [**Build**](./anatomy/anatomy.md): Write a contract using Rust or Javascript.
 - [**Test**](./testing/introduction.md): Our Sandbox enables to simulate interactions with one or multiple contracts in a realistic environment.
 - [**Deploy**](./release/deploy.md): After making sure the contract is secure, developers can deploy the contract into their accounts.
 - [**Use**](https://mynearwallet.com): Any user can interact with the contract through their NEAR Wallet.
@@ -56,6 +56,7 @@ During the whole cycle, developers can choose between [JavaScript](https://www.l
 <details>
 
 <summary> Other languages </summary>
+
 Theoretically, you can use any language that compiles to Wasm for developing NEAR smart contract. However, in order to have a user-friendly experience we would need to provide a library that wraps around low-level runtime APIs, while also offering other high-level functionalities.
 
 We envision that in the future, more languages will be supported and the support will be done through the effort from the wider community, not just NEAR alone.

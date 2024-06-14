@@ -1,7 +1,7 @@
 {
   "id": "integrations/errors/token-loss",
   "title": "Avoiding Token Loss",
-  "description": "Careful! Losing tokens means losing money!",
+  "description": "Careful!",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/6.integrations/errors/token-loss.md",
   "sourceDirName": "6.integrations/errors",
   "slug": "/integrations/errors/token-loss",

@@ -19,7 +19,7 @@ overflow-checks = true
 조치를 취하기 전에, `require!`를 사용하여 입력, 컨텍스트, 상태 및 액세스를 검증하세요. The earlier you panic, the more [gas](https://docs.near.org/concepts/protocol/gas) you will save for the caller.
 
 ```rust
-#[near_bindgen]
+#[nearn]
 impl Contract {
     pub fn set_fee(&mut self, new_fee: Fee) {
         require!(env::predecessor_account_id() == self.owner_id, "Owner's method");
@@ -32,7 +32,7 @@ impl Contract {
 **참고**: 패닉 메시지에서 디버그 정보를 원하거나 `4.0.0-pre.2` 전 SDK 버전을 사용 중인 경우, Rust의 `assert!` 매크로를 `require!` 대신 사용할 수 있습니다.
 
 ```rust
-#[near_bindgen]
+#[near]
 impl Contract {
     pub fn set_fee(&mut self, new_fee: Fee) {
         assert_eq!(env::predecessor_account_id(), self.owner_id, "Owner's method");
@@ -65,7 +65,7 @@ env::log_str(format!("Transferred {} tokens from {} to {}", amount, sender_id, r
 예를 들어
 
 ```rust
-#[near_bindgen]
+#[near]
 impl Contract {
     pub fn withdraw_100(&mut self, receiver_id: AccountId) -> Promise {
         Promise::new(receiver_id).transfer(100)
@@ -88,28 +88,22 @@ impl Contract {
 `serde::Serialize` 구조체를 표시할 때, serde가 올바른 기본 크레이트를 가리키도록 `#[serde(crate = "near_sdk::serde")]`를 사용해야 합니다.
 
 ```rust
-/// Import `borsh` from `near_sdk` crate 
-use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
-/// Import `serde` from `near_sdk` crate 
-use near_sdk::serde::{Serialize, Deserialize};
-
 /// Main contract structure serialized with Borsh
-#[near_bindgen]
-#[derive(BorshDeserialize, BorshSerialize, PanicOnDefault)]
+#[near(contract_state)]
+#[derive(PanicOnDefault)]
 pub struct Contract {
     pub pair: Pair,
 }
 
 /// Implements both `serde` and `borsh` serialization.
 /// `serde` is typically useful when returning a struct in JSON format for a frontend.
-#[derive(Serialize, Deserialize, BorshDeserialize, BorshSerialize)]
-#[serde(crate = "near_sdk::serde")]
+#[near(serializers = [json, borsh])]
 pub struct Pair {
     pub a: u32,
     pub b: u32,
 }
 
-#[near_bindgen]
+#[near]
 impl Contract {
     #[init]
     pub fn new(pair: Pair) -> Self {

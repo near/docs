@@ -13,7 +13,7 @@ The RPC API enables you to send transactions and query their status.
 
 ## Send transaction {#send-tx}
 
-> Sends transaction. Returns the guaranteed execution status and the results the blockchain can provide at the moment.
+> Sends transaction. Sends transaction. Returns the guaranteed execution status and the results the blockchain can provide at the moment.
 
 - method: `send_tx`
 - params:
@@ -145,7 +145,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=send_tx \
 
 #### What could go wrong? {#what-could-go-wrong-send-tx}
 
-When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
+When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
 
 ```json
@@ -167,7 +167,7 @@ When API request fails, RPC server returns a structured error response with a li
 
 > **Heads up**
 > 
-> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them.
+> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them. Please, don't rely on them.
 
 Here is the exhaustive list of the error variants that can be returned by `broadcast_tx_commit` method:
 
@@ -191,6 +191,7 @@ Here is the exhaustive list of the error variants that can be returned by `broad
       <td>
         <ul>
           <li>See <code>error.cause.info</code> for details</li>
+          <li>If <code>error.cause.info</code> is <code>ShardCongested</code></li>, resubmit the identical transaction. (Consider adding a priority fee once [NEP-541](https://github.com/near/NEPs/pull/541) is released.)
         </ul>
       </td>
     </tr>
@@ -199,7 +200,7 @@ Here is the exhaustive list of the error variants that can be returned by `broad
       <td>Transaction was routed, but has not been recorded on chain in 10 seconds.</td>
       <td>
         <ul>
-          <li> Re-submit the request with the identical transaction (in NEAR Protocol unique transactions apply exactly once, so if the previously sent transaction gets applied, this request will just return the known result, otherwise, it will route the transaction to the chain once again)</li>
+          <li> Resubmit the request with the identical transaction (in NEAR Protocol unique transactions apply exactly once, so if the previously sent transaction gets applied, this request will just return the known result, otherwise, it will route the transaction to the chain once again)</li>
           <li>Check that your transaction is valid</li>
           <li>Check that the signer account id has enough tokens to cover the transaction fees (keep in mind that some tokens on each account are locked to cover the storage cost)</li>
         </ul>
@@ -241,9 +242,9 @@ Here is the exhaustive list of the error variants that can be returned by `broad
 - params:
   - `tx_hash` _(see [NearBlocks Explorer](https://testnet.nearblocks.io) for a valid transaction hash)_
   - `sender_account_id` _(used to determine which shard to query for transaction)_
-  - [Optional] `wait_until`: the required minimal execution level. Read more [here](/api/rpc/transactions#tx-status-result). The default value is `EXECUTED_OPTIMISTIC`.
+  - [Optional] `wait_until`: the required minimal execution level. [Optional] `wait_until`: the required minimal execution level. Read more [here](/api/rpc/transactions#tx-status-result). The default value is `EXECUTED_OPTIMISTIC`. The default value is `EXECUTED_OPTIMISTIC`.
 
-A Transaction status request with `wait_until != NONE` will wait until the transaction appears on the blockchain. If the transaction does not exist, the method will wait until the timeout is reached. If you only need to check whether the transaction exists, use `wait_until = NONE`, it will return the response immediately.
+A Transaction status request with `wait_until != NONE` will wait until the transaction appears on the blockchain. If the transaction does not exist, the method will wait until the timeout is reached. If you only need to check whether the transaction exists, use `wait_until = NONE`, it will return the response immediately. If the transaction does not exist, the method will wait until the timeout is reached. If you only need to check whether the transaction exists, use `wait_until = NONE`, it will return the response immediately.
 
 Example:
 
@@ -377,7 +378,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=tx \
 
 #### What could go wrong? {#what-could-go-wrong-2}
 
-When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
+When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
 
 ```json
@@ -399,7 +400,7 @@ When API request fails, RPC server returns a structured error response with a li
 
 > **Heads up**
 > 
-> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them.
+> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them. Please, don't rely on them.
 
 Here is the exhaustive list of the error variants that can be returned by `tx` method:
 
@@ -483,9 +484,9 @@ Here is the exhaustive list of the error variants that can be returned by `tx` m
 - params:
   - `tx_hash` _(see [NearBlocks Explorer](https://testnet.nearblocks.io) for a valid transaction hash)_
   - `sender_account_id` _(used to determine which shard to query for transaction)_
-  - [Optional] `wait_until`: the required minimal execution level. Read more [here](/api/rpc/transactions#tx-status-result). The default value is `EXECUTED_OPTIMISTIC`.
+  - [Optional] `wait_until`: the required minimal execution level. [Read more here](#tx-status-result). The default value is `EXECUTED_OPTIMISTIC`. [Optional] `wait_until`: the required minimal execution level. Read more [here](/api/rpc/transactions#tx-status-result). The default value is `EXECUTED_OPTIMISTIC`. The default value is `EXECUTED_OPTIMISTIC`.
 
-A Transaction status request with `wait_until != NONE` will wait until the transaction appears on the blockchain. If the transaction does not exist, the method will wait until the timeout is reached. If you only need to check whether the transaction exists, use `wait_until = NONE`, it will return the response immediately.
+A Transaction status request with `wait_until != NONE` will wait until the transaction appears on the blockchain. If the transaction does not exist, the method will wait until the timeout is reached. If you only need to check whether the transaction exists, use `wait_until = NONE`, it will return the response immediately. If the transaction does not exist, the method will wait until the timeout is reached. If you only need to check whether the transaction exists, use `wait_until = NONE`, it will return the response immediately.
 
 
 Example:
@@ -753,7 +754,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_tx_status
 
 #### What could go wrong? {#what-could-go-wrong-3}
 
-When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
+When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
 
 ```json
@@ -775,7 +776,7 @@ When API request fails, RPC server returns a structured error response with a li
 
 > **Heads up**
 > 
-> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them.
+> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them. Please, don't rely on them.
 
 Here is the exhaustive list of the error variants that can be returned by `EXPERIMENTAL_tx_status` method:
 
@@ -920,7 +921,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_receipt p
 
 #### What could go wrong? {#what-could-go-wrong-4}
 
-When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
+When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
 
 ```json
@@ -942,7 +943,7 @@ When API request fails, RPC server returns a structured error response with a li
 
 > **Heads up**
 > 
-> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them.
+> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them. Please, don't rely on them.
 
 Here is the exhaustive list of the error variants that can be returned by `EXPERIMENTAL_receipt` method:
 
@@ -998,7 +999,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
 
 ## Transaction Execution Levels {#tx-status-result}
 
-All the methods listed above have `wait_until` request parameter, and `final_execution_status` response value. They correspond to the same enum `TxExecutionStatus`. See the detailed explanation for all the options:
+All the methods listed above have `wait_until` request parameter, and `final_execution_status` response value. They correspond to the same enum `TxExecutionStatus`. See the detailed explanation for all the options: They correspond to the same enum `TxExecutionStatus`. See the detailed explanation for all the options:
 
 ```rust
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
@@ -1006,6 +1007,22 @@ pub enum TxExecutionStatus {
   /// Transaction is waiting to be included into the block
   None,
   /// Transaction is included into the block. The block may be not finalized yet
+  Included,
+  /// Transaction is included into the block +
+  /// All non-refund transaction receipts finished their execution.
+  /// The corresponding blocks for tx and each receipt may be not finalized yet
+  #[default]
+  ExecutedOptimistic,
+  /// Transaction is included into finalized block
+  IncludedFinal,
+  /// Transaction is included into finalized block +
+  /// All non-refund transaction receipts finished their execution.
+  /// The corresponding blocks for each receipt may be not finalized yet
+  Executed,
+  /// Transaction is included into finalized block +
+  /// Execution of all transaction receipts is finalized, including refund receipts
+  Final,
+} The block may be not finalized yet
   Included,
   /// Transaction is included into the block +
   /// All non-refund transaction receipts finished their execution.
@@ -1082,7 +1099,7 @@ Final transaction results can be queried using [Transaction Status](#transaction
 
 #### What could go wrong? {#what-could-go-wrong}
 
-When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
+When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
 
 ```json
@@ -1104,7 +1121,7 @@ When API request fails, RPC server returns a structured error response with a li
 
 > **Heads up**
 > 
-> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them.
+> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them. Please, don't rely on them.
 
 Here is the exhaustive list of the error variants that can be returned by `broadcast_tx_async` method:
 
@@ -1141,7 +1158,7 @@ Here is the exhaustive list of the error variants that can be returned by `broad
 
 > Consider using [`send_tx`](/api/rpc/transactions#send-tx) instead
 
-> Sends a transaction and waits until transaction is fully complete. _(Has a 10 second timeout)_
+> Sends a transaction and waits until transaction is fully complete. _(Has a 10 second timeout)_ _(Has a 10 second timeout)_
 
 - method: `broadcast_tx_commit`
 - params: `[SignedTransaction encoded in base64]`
@@ -1259,7 +1276,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_
 
 #### What could go wrong? {#what-could-go-wrong-1}
 
-When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
+When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
 
 ```json
@@ -1281,7 +1298,7 @@ When API request fails, RPC server returns a structured error response with a li
 
 > **Heads up**
 > 
-> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them.
+> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them. Please, don't rely on them.
 
 Here is the exhaustive list of the error variants that can be returned by `broadcast_tx_commit` method:
 
@@ -1305,6 +1322,7 @@ Here is the exhaustive list of the error variants that can be returned by `broad
       <td>
         <ul>
           <li>See <code>error.cause.info</code> for details</li>
+          <li>If <code>error.cause.info</code> is <code>ShardCongested</code></li>, resubmit the identical transaction. (Consider adding a priority fee once [NEP-541](https://github.com/near/NEPs/pull/541) is released.)
         </ul>
       </td>
     </tr>
@@ -1313,7 +1331,7 @@ Here is the exhaustive list of the error variants that can be returned by `broad
       <td>Transaction was routed, but has not been recorded on chain in 10 seconds.</td>
       <td>
         <ul>
-          <li> Re-submit the request with the identical transaction (in NEAR Protocol unique transactions apply exactly once, so if the previously sent transaction gets applied, this request will just return the known result, otherwise, it will route the transaction to the chain once again)</li>
+          <li> Resubmit the request with the identical transaction (in NEAR Protocol unique transactions apply exactly once, so if the previously sent transaction gets applied, this request will just return the known result, otherwise, it will route the transaction to the chain once again)</li>
           <li>Check that your transaction is valid</li>
           <li>Check that the signer account id has enough tokens to cover the transaction fees (keep in mind that some tokens on each account are locked to cover the storage cost)</li>
         </ul>

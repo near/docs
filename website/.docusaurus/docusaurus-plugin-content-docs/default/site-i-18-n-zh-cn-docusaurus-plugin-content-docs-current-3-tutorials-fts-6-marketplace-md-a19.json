@@ -1,7 +1,7 @@
 {
   "id": "tutorials/fts/marketplace",
   "title": "Integrating FT Payments into an NFT Marketplace",
-  "description": "In this tutorial, you'll learn the basics of how an NFT marketplace contract works and how you can modify it to allow for purchasing NFTs using Fungible Tokens. In the previous tutorials, you went through and created a fully fledged FT contract that incorporates all the standards found in the FT standard.",
+  "description": "In this tutorial, you'll learn the basics of how an NFT marketplace contract works and how you can modify it to allow for purchasing NFTs using Fungible Tokens. In the previous tutorials, you went through and created a fully fledged FT contract that incorporates all the standards found in the FT standard. In the previous tutorials, you went through and created a fully fledged FT contract that incorporates all the standards found in the FT standard.",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/3.tutorials/fts/6-marketplace.md",
   "sourceDirName": "3.tutorials/fts",
   "slug": "/tutorials/fts/marketplace",

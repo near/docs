@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # 컨트랙트 가변성
 
-컨트랙트 상태 가변성은 함수 매개변수에서 [`self`](https://doc.rust-lang.org/std/keyword.self.html) 사용되는 방식에 따라 자동으로 처리됩니다. 어느 것이 사용되는지에 따라, [`#[near_bindgen]`](../contract-structure/near-bindgen.md) 매크로는 `self`를 사용하는 모든 함수의 상태를 로드/역직렬화하고, `&mut self`가 사용되는 경우에만 상태를 직렬화/저장하는 코드를 각각 생성합니다.
+컨트랙트 상태 가변성은 함수 매개변수에서 [`self`](https://doc.rust-lang.org/std/keyword.self.html) 사용되는 방식에 따라 자동으로 처리됩니다. Depending on which is used, the [`#[near]`](../contract-structure/near-bindgen.md) macro will generate the respective code to load/deserialize state for any function which uses `self` and serialize/store state only for when `&mut self` is used.
 
 다음 시멘틱은 모든 [퍼블릭 메서드](public-methods.md)에 대해 일관적으로 적용됩니다.
 
@@ -17,13 +17,14 @@ sidebar_position: 2
 다음은 각각을 사용하는 몇 가지 예시입니다.
 
 ```rust
-#[near_bindgen]
-#[derive(BorshDeserialize, BorshSerialize, Default)]
+#[near(contract_state)]
+#[derive(Default)]
 pub struct MyContractStructure {
     integer: u64,
     message: String,
 }
-#[near_bindgen]
+
+#[near]
 impl MyContractStructure {
     pub fn get_values(self) -> (u64, String) {
         (self.integer, self.message)
@@ -84,12 +85,12 @@ pub fn update_stats(&self, account_id: AccountId, score: U64) -> Account {
 변경 가능한 함수의 예는 다음과 같습니다.
 
 ```rust
-#[near_bindgen]
-#[derive(BorshDeserialize, BorshSerialize, Default)]
+#[near(contract_state)]
+#[derive(Default)]
 pub struct MyContractStructure {
     integer: u64,
 }
-#[near_bindgen]
+#[near]
 impl MyContractStructure {
     pub fn modify_value(&mut self, new_value: u64) {
         self.integer = new_value;
@@ -109,7 +110,7 @@ impl MyContractStructure {
 ```rust
 const SOME_VALUE: u64 = 8;
 
-#[near_bindgen]
+#[near]
 impl MyContractStructure {
     pub fn log_message(/* Parameters here */) {
         near_sdk::log!("inside log message");

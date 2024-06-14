@@ -8,9 +8,13 @@ import {Github} from "@site/src/components/codetabs"
 
 Trong hướng dẫn này, bạn sẽ nâng cấp những gì bạn đã làm trước đây để implement [chức năng mint](/tutorials/nfts/minting) trên một bộ khung smart contract. Bạn đã đến thời điểm mà NFT có thể được mint và wallet đã chính thức xác nhận là bạn sở hữu một NFT. Tuy nhiên, không có cách nào để hiển thị các token vì contract của bạn không implement method mà wallet đang cố gắng call.
 
+---
+
 ## Giới thiệu
 
 Hôm nay, bạn sẽ tìm hiểu về cách deploy các bản sửa lỗi cho các smart contract và bạn sẽ sử dụng kiến thức đó để implement function `nft_tokens_for_owner` trên contract mà bạn đã deploy trong hướng dẫn trước.
+
+---
 
 ## Tổng quan về việc nâng cấp các contract {#upgrading-contracts}
 
@@ -19,6 +23,8 @@ Khi được thực hiện đúng, việc nâng cấp các contract có thể l�
 NEAR Runtime sẽ đọc serialized state từ disk và sẽ cố gắng load nó bằng cách sử dụng code của contract hiện tại. Khi code của bạn thay đổi, nó có thể không tìm được cách để thực hiện việc này.
 
 Bạn cần nâng cấp các contract của mình một cách chiến lược và đảm bảo rằng runtime sẽ có thể đọc state hiện tại của bạn bằng code mới của contract. For more information about upgrading contracts and some best practices, see the NEAR SDK's [upgrading contracts](/sdk/rust/building/prototyping) write-up.
+
+---
 
 ## Các sửa đổi đến contract của chúng ta {#modifications-to-contract}
 
@@ -32,20 +38,16 @@ May mắn thay, bạn đã viết function `nft_token`, nơi mà nhận một to
 
 Let's move over to the `enumeration.rs` file and implement that logic:
 
-<Github language="rust" start="32" end="62" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/enumeration.rs" />
+<Github language="rust" start="46" end="75" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-basic/src/enumeration.rs" />
+
+---
 
 ## Deploying lại một contract {#redeploying-contract}
 
-Now that you've implemented the necessary logic for `nft_tokens_for_owner`, it's time to build and re-deploy the contract to your account. Using the build script, deploy the contract as you did in the previous tutorial:
+Now that you've implemented the necessary logic for `nft_tokens_for_owner`, it's time to build and re-deploy the contract to your account. Using the cargo-near, deploy the contract as you did in the previous tutorial:
 
 ```bash
-yarn build && near deploy $NFT_CONTRACT_ID out/main.wasm
-```
-
-This should output a warning saying that the account has a deployed contract and will ask if you'd like to proceed. Simply type `y` and hit enter.
-
-```bash
-This account already has a deployed contract [ AKJK7sCysrWrFZ976YVBnm6yzmJuKLzdAyssfzK9yLsa ]. Do you want to proceed? (y/n)
+cargo near deploy $NFT_CONTRACT_ID without-init-call network-config testnet sign-with-keychain send
 ```
 
 Once the contract has been redeployed, let's test and see if the state migrated correctly by running a simple view function:
@@ -104,11 +106,15 @@ near view $NFT_CONTRACT_ID nft_tokens_for_owner '{"account_id": "'$NFT_CONTRACT_
 </p>
 </details>
 
+---
+
 ## Xem các NFT trong wallet {#viewing-nfts-in-wallet}
 
 Now that your contract implements the necessary functions that the wallet uses to display NFTs, you should be able to see your tokens on display in the [collectibles tab](https://testnet.mynearwallet.com//?tab=collectibles).
 
 ![filled-nft-in-wallet](/docs/assets/nfts/filled-nft-in-wallet.png)
+
+---
 
 ## Kết luận
 
@@ -120,7 +126,8 @@ In the [next tutorial](/tutorials/nfts/enumeration), you'll implement the remain
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `4.0.4`
+- near-cli: `4.0.13`
+- cargo-near `0.6.1`
 - NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 
 :::

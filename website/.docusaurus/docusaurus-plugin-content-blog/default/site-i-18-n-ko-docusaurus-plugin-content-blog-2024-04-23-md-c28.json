@@ -1,0 +1,39 @@
+{
+  "permalink": "/ko/blog/we-have-a-blog",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-blog/2024-04-23.md",
+  "title": "We have a blog now!",
+  "description": "Check check check. Is this thing on? Hello, world!",
+  "date": "2024-04-23T00:00:00.000Z",
+  "tags": [
+    {
+      "label": "updates",
+      "permalink": "/ko/blog/tags/updates"
+    }
+  ],
+  "readingTime": 2.105,
+  "hasTruncateMarker": true,
+  "authors": [
+    {
+      "name": "Guille",
+      "title": "Docs Maintainer",
+      "url": "https://github.com/gagdiez",
+      "imageURL": "https://github.com/gagdiez.png",
+      "key": "gagdiez"
+    }
+  ],
+  "frontMatter": {
+    "title": "We have a blog now!",
+    "authors": [
+      "gagdiez"
+    ],
+    "slug": "we-have-a-blog",
+    "tags": [
+      "updates"
+    ]
+  },
+  "unlisted": false,
+  "prevItem": {
+    "title": "Reorganizing our docs",
+    "permalink": "/ko/blog/reorganizing-docs"
+  }
+}

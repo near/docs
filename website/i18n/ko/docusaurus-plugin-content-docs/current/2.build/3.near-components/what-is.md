@@ -361,7 +361,7 @@ return (
                 </div>
                 <div className="LidoFormTopContainerLeftContent2">
                   <span>
-                    {state.balance ?? (!state.sender ? "0" : "...")}&amp;nbsp;ETH
+                    {state.balance ?? (!state.sender ? "0" : "...")}&amp;amp;nbsp;ETH
                   </span>
                 </div>
               </div>
@@ -390,7 +390,7 @@ return (
             <div className="LidoFormTopContainerLeftContent2">
               <span>
                 {state.stakedBalance ?? (!state.sender ? "0" : "...")}
-                &amp;nbsp;stETH
+                &amp;amp;nbsp;stETH
               </span>
             </div>
           </div>
@@ -499,11 +499,11 @@ return (
 </WidgetEditor>
 
 :::danger ETH Disabled in Docs
-For security reasons, interacting with Ethereum is disabled in our documentation. To see a working example please navigate to the [deployed NEAR Component](https://near.social/zavodil.near/widget/Lido).
+For a working example visit the [deployed NEAR Component](https://near.social/zavodil.near/widget/Lido).
 :::
 
 ---
 
 ## Next Steps
 
-Build and deploy your first components without leaving the browser. Go to https://near.org/sandbox , create an account and start building!
+Build and deploy your first components without leaving the browser. Go to https://app.jutsu.ai/, create an account and start building!

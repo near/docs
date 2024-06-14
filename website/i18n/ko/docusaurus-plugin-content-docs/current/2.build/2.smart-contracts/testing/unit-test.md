@@ -12,7 +12,6 @@ import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 :::tip
 :::tip 각 프로젝트의 루트 폴더에서 `yarn test`를 실행하여 단위 테스트와 [통합](./integration-test.md) 테스트를 모두 실행할 수 있습니다 :::
 :::
-:::
 
 ---
 
@@ -21,7 +20,7 @@ import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 The tests in the [Counter Example](https://github.com/near-examples/counters) rely on basic functions to check that the `increment`, `decrement`, and `reset` methods work properly.
 
 <CodeTabs>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/counters/blob/main/contract-rs/src/lib.rs"
             start="50" end="71" /></Language>
@@ -34,7 +33,7 @@ The tests in the [Counter Example](https://github.com/near-examples/counters) re
 While doing unit testing you can modify the [Environment variables](../anatomy/environment.md) through the `VMContextBuilder`. 이를 통해, 예를 들어 보증금 및 가스가 첨부된 다른 사용자의 호출을 시뮬레이션할 수 있습니다. Here we present a snippet on how we test the `donate` method from our [Donation Example](https://github.com/near-examples/donation-examples) by manipulating the `predecessor` and `attached_deposit`.
 
 <CodeTabs>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/src/lib.rs"
             start="59" end="117" /></Language>

@@ -1,7 +1,7 @@
 {
   "id": "tutorials/nfts/minting",
   "title": "Minting",
-  "description": "Đây là hướng dẫn đầu tiên trong một loạt serie chỉ bạn cách tạo một NFT smart contract hoàn chỉnh từ đầu, phù hợp với tất cả các chuẩn NFT của NEAR. Hôm nay bạn sẽ học cách tạo logic cần thiết để mint (đúc) NFT và để chúng hiển thị trong ví NEAR của bạn. Bạn sẽ sửa đổi một phần của skeleton smart contract bằng cách điền vào các code snippet cần thiết cần thiết để thêm các chức năng mint.",
+  "description": "This is the first of many tutorials in a series where you'll be creating a complete NFT smart contract from scratch that conforms with all the NEAR NFT standards.",
   "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/3.tutorials/nfts/2-minting.md",
   "sourceDirName": "3.tutorials/nfts",
   "slug": "/tutorials/nfts/minting",

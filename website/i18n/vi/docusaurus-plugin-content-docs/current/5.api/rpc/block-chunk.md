@@ -38,7 +38,7 @@ ví dụ cho `finality`:
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.block({
@@ -77,7 +77,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=block \
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.block({blockId: 17821130});
@@ -114,7 +114,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=block \
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.block(
@@ -365,7 +365,7 @@ ví dụ cho `finality`:
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.experimental_changes_in_block({
@@ -404,7 +404,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.experimental_changes_in_block(
@@ -443,7 +443,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.experimental_changes_in_block(
@@ -609,7 +609,7 @@ Ví dụ cho `block_id`, `shard_id`:
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.chunk({
@@ -643,7 +643,7 @@ Ví dụ cho `block_id`, `shard_id`:
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.chunk({

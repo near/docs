@@ -4,13 +4,17 @@ sidebar_position: 1
 
 # Unit Tests
 
-You can unit test abstracted logic implemented by smart contract functions like regular JavaScript functions with any testing library of your liking. A simple example would look as follows:
+You can unit test abstracted logic implemented by smart contract functions like regular JavaScript functions with any testing library of your liking. A simple example would look as follows: A simple example would look as follows:
 
 #### Contract
 ```js   
 @NearBindgen({})
 export class Contract {
   ...
+  doSomething(): string {
+    return callSomeFunction();
+  }
+}
   doSomething(): string {
     return callSomeFunction();
   }
@@ -22,6 +26,11 @@ export class Contract {
 describe('Contract', () => {
   it('callSomeFunction should work', () => {
     ...
+    results = callSomeFunction();
+    // then assert results are what you expect
+    ....
+  });
+});
     results = callSomeFunction();
     // then assert results are what you expect
     ....

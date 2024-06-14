@@ -31,9 +31,9 @@ In this article you'll learn how to develop, test, and deploy BOS components usi
 
 5. Run `bos-loader <youraccount.near> --path src` (or run from `src` folder)
 
-6. Open https://near.org/flags, and set the loader URL to `http://127.0.0.1:3030`.
+6. Open https://dev.near.org/flags, and set the loader URL to `http://127.0.0.1:3030`.
 
-7. Open `https://near.org/<youraccount.near>/widget/<component name>` (case sensitive)
+7. Open `https://dev.near.org/<youraccount.near>/widget/<component name>` (case sensitive)
 
    :::info
    If you're testing on `testnet`, use your testnet account and open https://test.near.org instead.

@@ -52,11 +52,11 @@ return (
 <details markdown="1">
 <summary> Parameters </summary>
 
-| param      | 필수 여부        | type                                                                  | 설명                               |
-| ---------- | ------------ | --------------------------------------------------------------------- | -------------------------------- |
-| `patterns` | **required** | string / string[] | 경로 패턴                            |
-| `finality` | _선택사항_       | `"final"` / 숫자                                                        | 블록 높이 또는 완결성                     |
-| `options`  | _선택사항_       | 객체                                                                    | `options` 객체입니다. |
+| param      | 필수 여부        | type                                                                  | 설명           |
+| ---------- | ------------ | --------------------------------------------------------------------- | ------------ |
+| `patterns` | **required** | string / string[] | 경로 패턴        |
+| `finality` | _선택사항_       | `"final"` / 숫자                                                        | 블록 높이 또는 완결성 |
+| `options`  | _선택사항_       | 객체                                                                    | `options` 객체 |
 
 :::info options object
 
@@ -104,11 +104,11 @@ return (
 <details markdown="1">
 <summary> Parameters </summary>
 
-| param      | 필수 여부        | type                                                                  | 설명           |
-| ---------- | ------------ | --------------------------------------------------------------------- | ------------ |
-| `patterns` | **required** | string / string[] | 경로 패턴        |
-| `finality` | _선택사항_       | `"final"` / 숫자                                                        | 블록 높이 또는 완결성 |
-| `options`  | _선택사항_       | 객체                                                                    | `options` 객체 |
+| param      | 필수 여부        | type                                                                  | 설명                               |
+| ---------- | ------------ | --------------------------------------------------------------------- | -------------------------------- |
+| `patterns` | **required** | string / string[] | 경로 패턴                            |
+| `finality` | _선택사항_       | `"final"` / 숫자                                                        | 블록 높이 또는 완결성                     |
+| `options`  | _선택사항_       | 객체                                                                    | `options` 객체입니다. |
 
 :::info options object
 

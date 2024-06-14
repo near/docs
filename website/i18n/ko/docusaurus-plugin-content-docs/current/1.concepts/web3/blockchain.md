@@ -132,7 +132,7 @@ reward = infrastructureCostReward + coinbaseReward
 
 현재 두 가지 합의 메커니즘이 일반적으로 사용됩니다.
 - [Proof-of-work](https://www.investopedia.com/terms/p/proof-work.asp) - original consensus mechanism, which is currently used by Bitcoin and was used by Ethereum. 이는 비효율성으로 인해 많은 비판을 받고 있습니다. 여기서 새로운 트랜잭션을 처리하려면 "채굴"이 필요하며 이는 고도로 계산 집약적인 프로세스입니다. 이로 인해 그래픽 카드는 멸종 위기종이 되었습니다. 또 다른 단점으로, 트랜잭션 비용이 매우 높고 처리 속도도 매우 느립니다.
-- [지분 증명](https://www.investopedia.com/terms/p/proof-stake-pos.asp) - 상당한 처리 능력(및 그래픽 카드)이 필요하지 않은 새로운 합의 메커니즘입니다. 트랜잭션 처리는 일반적으로 "검증"이라고 합니다. NEAR와 같은 최신 체인에서 사용합니다. Ethereum switched to Proof-of-stake (PoS) mechanism in September 2022. 여기서 트랜잭션은 일반적으로 훨씬 저렴하고 처리 속도가 더 빠릅니다.
+- [지분 증명](https://www.investopedia.com/terms/p/proof-stake-pos.asp) - 상당한 처리 능력(및 그래픽 카드)이 필요하지 않은 새로운 합의 메커니즘입니다. 트랜잭션 처리는 일반적으로 "검증"이라고 합니다. NEAR와 같은 최신 체인에서 사용합니다. 여기서 트랜잭션은 일반적으로 훨씬 저렴하고 처리 속도가 더 빠릅니다. Ethereum switched to Proof-of-stake (PoS) mechanism in September 2022.
 
 이 시점에서 우리는 dApp 구축에 가장 적합한 블록체인을 선택하는 다음 장으로 진행할 수 있는 충분한 지식을 가지고 있어야 합니다.
 

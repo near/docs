@@ -32,7 +32,7 @@ RPC API를 사용하면 노드 및 밸리데이터에 대한 상태 정보를 �
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.status();
@@ -453,7 +453,7 @@ input: `[block number]`
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 </TabItem>
 <TabItem value="http" label="HTTPie">

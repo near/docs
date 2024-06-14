@@ -8,7 +8,7 @@ sidebar_label: Minecraft NFTs
 
 ## Overview
 
-This tutorial will run you through minting Minecraft structures of any size onto the NEAR blockchain. It will allow you to copy and paste the designs into your own worlds. For this, we will be using WorldEdit to download and read the schematics and we'll put them on-chain using [IPFS](https://ipfs.io/).
+This tutorial will run you through minting Minecraft structures of any size onto the NEAR blockchain. It will allow you to copy and paste the designs into your own worlds. For this, we will be using WorldEdit to download and read the schematics and we'll put them on-chain using [IPFS](https://ipfs.io/). It will allow you to copy and paste the designs into your own worlds. For this, we will be using WorldEdit to download and read the schematics and we'll put them on-chain using [IPFS](https://ipfs.io/).
 
 ## Prerequisites
 
@@ -35,13 +35,13 @@ In this section, we'll be creating the Minecraft schematic to put on chain.
 
 If WorldEdit is properly installed, it should output `First position set to (X, Y, Z).` where X, Y, and Z are coordinates.
 
-For this tutorial, we will be minting a small village house. To follow along, choose any structure that you'd like to mint as shown below:
+For this tutorial, we will be minting a small village house. For this tutorial, we will be minting a small village house. To follow along, choose any structure that you'd like to mint as shown below:
 
 ![Village House Minecraft](/docs/assets/nfts/village-house-minecraft.png)
 
-You'll then want to choose the boundaries of the structure that you'd like to copy. We will turn these into schematics which will be placed on chain for you or others to download and paste in your own worlds.
+You'll then want to choose the boundaries of the structure that you'd like to copy. You'll then want to choose the boundaries of the structure that you'd like to copy. We will turn these into schematics which will be placed on chain for you or others to download and paste in your own worlds.
 
-- To do this, we'll need to outline the boundaries of the build using WorldEdit. Stand in the bottom left corner of your build and run:
+- To do this, we'll need to outline the boundaries of the build using WorldEdit. Stand in the bottom left corner of your build and run: Stand in the bottom left corner of your build and run:
 
 ```bash
 //pos1
@@ -66,8 +66,9 @@ The output should look something like this:
 ![Copy Chat Message](/docs/assets/nfts/copy-chat-message-minecraft.png)
 
 :::info TIP
+Remember to note the position of your player when copying. :::info TIP
 Remember to note the position of your player when copying. If you copy the build and lets say you're standing on the roof, when you paste the build it will paste the build in a way that will result in you standing on the roof.
-:::
+::: :::
 
 ### Sanity Check
 
@@ -79,13 +80,13 @@ We can check and see if our build is fine by pasting what we just copied elsewhe
 //paste
 ```
 
-In the example below, we pasted the village house floating above a coral reef biome. You should also see a response notifying you that the clipboard has been pasted. (See example below)
+In the example below, we pasted the village house floating above a coral reef biome. You should also see a response notifying you that the clipboard has been pasted. (See example below) You should also see a response notifying you that the clipboard has been pasted. (See example below)
 
 ![Pasted Minecraft House](/docs/assets/nfts/pasted-minecraft-house.png)
 
 ### Creating the Schematics File
 
-When you're happy with the build you've just copied and pasted, it's time to create the schematic file that we'll mint into an NFT. To do this we'll run a WorldEdit command that will save the schematic file on our local machine.
+When you're happy with the build you've just copied and pasted, it's time to create the schematic file that we'll mint into an NFT. To do this we'll run a WorldEdit command that will save the schematic file on our local machine. To do this we'll run a WorldEdit command that will save the schematic file on our local machine.
 
 - To do this, run the command `schematic save FILE_NAME` replacing `FILE_NAME` with a name of your choosing.
 
@@ -101,11 +102,11 @@ In this section, we'll mint the schematics file, we've just created and put it o
 
 ### Uploading the schematic
 
-To upload the schematic, we are going to use the free [web3.storage](https://web3.storage/) service built for storing off-chain data. Web3.storage offers free decentralized storage and bandwidth on [IPFS](https://ipfs.io/) and [Filecoin](https://filecoin.io/).
+To upload the schematic, we are going to use the free [web3.storage](https://web3.storage/) service built for storing off-chain data. Web3.storage offers free decentralized storage and bandwidth on [IPFS](https://ipfs.io/) and [Filecoin](https://filecoin.io/). Web3.storage offers free decentralized storage and bandwidth on [IPFS](https://ipfs.io/) and [Filecoin](https://filecoin.io/).
 
 #### Steps
 
-1. Register an account and log in to [web3.storage](https://nft.storage/login/) either via email or your GitHub.
+1. Register an account and log in to [web3.storage](https://web3.storage/) either via email or your GitHub.
 
 2. Go to the [Files](https://web3.storage/) section, and click on the [Upload more Files](https://web3.storage/) button.
 
@@ -120,9 +121,9 @@ To upload the schematic, we are going to use the free [web3.storage](https://web
 
 ### Interacting With the Contract
 
-NEAR has already deployed a contract to the account `nft.examples.testnet` which allows users to freely mint tokens. This is the account we'll be interacting with to mint our NFTs. Alternatively, if you've deployed a contract when following the original tutorial, you can use that as well.
+NEAR has already deployed a contract to the account `nft.examples.testnet` which allows users to freely mint tokens. This is the account we'll be interacting with to mint our NFTs. Alternatively, if you've deployed a contract when following the original tutorial, you can use that as well. This is the account we'll be interacting with to mint our NFTs. Alternatively, if you've deployed a contract when following the original tutorial, you can use that as well.
 
-:::info We'll be using the IPFS link we got in step three of the uploading process above as the media value when calling `nft_mint`. :::
+:::info We'll be using the IPFS link we got in step three of the uploading process above as the media value when calling `nft_mint`. ::: :::
 
 - Run the following command and replace the `receiver_id` field and the `--accountId` flag with the account ID you're [logged into](/tools/near-cli#near-login) with NEAR CLI:
 
@@ -205,7 +206,7 @@ As a test, we've minted an NFT that contains the village schematic we've been wo
 
 ### Getting the Schematics File
 
-The first thing you'll need to do is view the metadata for the token we've minted that contains the IPFS link to the village schematic. We've minted a token with the ID `village-schematic` under the account `village-schematic.testnet`.
+The first thing you'll need to do is view the metadata for the token we've minted that contains the IPFS link to the village schematic. We've minted a token with the ID `village-schematic` under the account `village-schematic.testnet`. We've minted a token with the ID `village-schematic` under the account `village-schematic.testnet`.
 
 - To get the media link, run the following command:
 
@@ -244,7 +245,7 @@ near view nft.examples.testnet nft_tokens_for_owner '{"account_id": "village-sch
 </p>
 </details>
 
-- You can then take the media link and paste it into your browser. It should send you to a page that looks similar to this:
+- You can then take the media link and paste it into your browser. It should send you to a page that looks similar to this: It should send you to a page that looks similar to this:
 
 ![IPFS Village Schem](/docs/assets/nfts/IPFS-village-schem.png)
 
@@ -259,11 +260,11 @@ near view nft.examples.testnet nft_tokens_for_owner '{"account_id": "village-sch
 //schematics load village-house
 ```
 
-- You can now paste the file anywhere in your world by simply using the `//paste` command and voila! You should see something similar to this:
+- You can now paste the file anywhere in your world by simply using the `//paste` command and voila! You should see something similar to this: You should see something similar to this:
 
 ![Final Village Pasting](/docs/assets/nfts/final-village-pasting.png)
 
-Congratulations! You've just learned how to mint a Mincraft schematic NFT and load it into your world!
+Congratulations! Congratulations! You've just learned how to mint a Mincraft schematic NFT and load it into your world!
 
 ## Versioning for this article
 

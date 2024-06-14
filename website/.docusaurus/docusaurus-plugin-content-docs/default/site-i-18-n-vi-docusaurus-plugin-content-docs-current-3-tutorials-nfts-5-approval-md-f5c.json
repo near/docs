@@ -1,7 +1,7 @@
 {
   "id": "tutorials/nfts/approvals",
   "title": "Approval",
-  "description": "Trong bài hướng dẫn này bạn sẽ học được những điều cơ bản của một hệ thống approval management, nó sẽ cho phép bạn cấp quyền truy cập cho người khác để transfer các NFT thay mình. Đây là xương sống của tất cả các NFT marketplace và cho phép một số tình huống phức tạp nhưng cần thiết xảy ra. Nếu bạn tham gia với chúng tôi lần đầu, đừng ngại clone repository này và checkout branch 4.core để theo dõi.",
+  "description": "In this tutorial you'll learn the basics of an approval management system which will allow you to grant others access to transfer NFTs on your behalf.",
   "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/3.tutorials/nfts/5-approval.md",
   "sourceDirName": "3.tutorials/nfts",
   "slug": "/tutorials/nfts/approvals",

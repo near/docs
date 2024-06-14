@@ -1,7 +1,7 @@
 {
   "id": "tutorials/nfts/minting",
   "title": "발행",
-  "description": "이것은 모든 NEAR NFT 표준을 준수하는 완전한 NFT 스마트 컨트랙트를 처음부터 만드는 시리즈의 많은 튜토리얼 중 첫 번째입니다. 오늘은 NFT를 생성하고 NEAR 지갑에 표시하는 데 필요한 로직을 생성하는 방법을 배웁니다. 여기서는, 발행 함수를 추가하는 데 필요한 필수 코드 스니펫을 작성하여 중요한 스마트 컨트랙트의 뼈대를 수정하게 됩니다.",
+  "description": "This is the first of many tutorials in a series where you'll be creating a complete NFT smart contract from scratch that conforms with all the NEAR NFT standards.",
   "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/nfts/2-minting.md",
   "sourceDirName": "3.tutorials/nfts",
   "slug": "/tutorials/nfts/minting",

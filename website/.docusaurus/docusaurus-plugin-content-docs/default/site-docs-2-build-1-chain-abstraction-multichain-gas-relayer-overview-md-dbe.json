@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/1.chain-abstraction/multichain-gas-relayer/overview.md",
   "sourceDirName": "2.build/1.chain-abstraction/multichain-gas-relayer",
   "slug": "/build/chain-abstraction/multichain-gas-relayer/overview",
-  "permalink": "/zh-CN/build/chain-abstraction/multichain-gas-relayer/overview",
+  "permalink": "/build/chain-abstraction/multichain-gas-relayer/overview",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/1.chain-abstraction/multichain-gas-relayer/overview.md",
@@ -21,10 +21,10 @@
   "sidebar": "build",
   "previous": {
     "title": "NFT Chain Keys Contract",
-    "permalink": "/zh-CN/build/chain-abstraction/nft-chain-keys"
+    "permalink": "/build/chain-abstraction/nft-chain-keys"
   },
   "next": {
-    "title": "Multichain Gas Station",
-    "permalink": "/zh-CN/build/chain-abstraction/multichain-gas-relayer/gas-station"
+    "title": "Multichain Gas Station Contract",
+    "permalink": "/build/chain-abstraction/multichain-gas-relayer/gas-station"
   }
 }

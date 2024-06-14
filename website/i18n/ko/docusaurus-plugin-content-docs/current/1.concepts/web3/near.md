@@ -20,7 +20,7 @@ But an account by itself won’t get us anywhere, its [transactions](../protocol
 
 - CreateAccount/DeleteAccount, AddKey/DeleteKey - 계정 및 키 관리 트랜잭션입니다.
 - Transfer - 한 계정에서 다른 계정으로 NEAR 토큰을 보냅니다. 모든 블록체인의 기본 명령입니다.
-- Stake - 지분 증명 블록체인 네트워크에서 밸리데이터가 되기 위해 필요합니다. 이 가이드에서는 이 주제를 다루지 않을 것입니다. 자세한 내용은 [여기](https://docs.near.org/docs/develop/node/validator/staking-and-delegation)에서 찾을 수 있습니다.
+- Stake - 지분 증명 블록체인 네트워크에서 밸리데이터가 되기 위해 필요합니다. We won’t touch this topic in this guideline, more information [can be found here](https://near-nodes.io/validator/staking-and-delegation).
 - DeployContract - 주어진 계정에 스마트 컨트랙트를 배포합니다. 기억해야 할 중요한 사항으로, 하나의 계정은 하나의 컨트랙트만 보유할 수 있으므로, 컨트랙트는 계정 이름으로 고유하게 식별된다는 점이 있습니다. 이미 배포된 컨트랙트가 있는 계정에 이 트랜잭션을 발행하면 컨트랙트 업데이트가 트리거됩니다.
 - FunctionCall - 블록체인에서 가장 중요한 Action으로, 스마트 컨트랙트의 함수를 호출할 수 있습니다.
 
@@ -134,7 +134,7 @@ NEAR의 스마트 컨트랙트는 Rust 또는 JavaScript로 작성되고, [WebAs
 
 
 
-인덱서 생성을 단순화하기 위해 [NEAR 인덱서 프레임워크](https://near-indexers.io/docs/projects/near-indexer-framework)가 생성되었습니다. 그러나 사용 가능한 프레임워크가 있더라도 트랜잭션에서 데이터를 추출하는 것은 쉬운 작업이 아닐 수 있습니다. 각 스마트 컨트랙트에는 고유한 구조와 데이터 저장 모델이 있기 때문입니다. 이 프로세스를 단순화하기 위해 스마트 컨트랙트는 결과에 대한 구조화된 정보를 로그에 기록할 수 있습니다(예: JSON 형식). 각 스마트 컨트랙트 그러한 로그에 대해 자체 형식을 사용할 수 있지만, 일반적인 형식은 [이벤트](https://nomicon.io/Standards/EventsFormat)로 표준화하는 것입니다.
+In order to simplify creation of indexers, [NEAR Indexer Framework](/concepts/advanced/near-indexer-framework) has been created. 그러나 사용 가능한 프레임워크가 있더라도 트랜잭션에서 데이터를 추출하는 것은 쉬운 작업이 아닐 수 있습니다. 각 스마트 컨트랙트에는 고유한 구조와 데이터 저장 모델이 있기 때문입니다. 이 프로세스를 단순화하기 위해 스마트 컨트랙트는 결과에 대한 구조화된 정보를 로그에 기록할 수 있습니다(예: JSON 형식). 각 스마트 컨트랙트 그러한 로그에 대해 자체 형식을 사용할 수 있지만, 일반적인 형식은 [이벤트](https://nomicon.io/Standards/EventsFormat)로 표준화하는 것입니다.
 
 이러한 아키텍처를 통해, 이벤트(트랜잭션)를 저장하고 인덱서를 사용하여 관계형 데이터베이스로 구체화하는 이벤트 소싱과 블록체인이 매우 유사한 특징을 가지게 됩니다. 이는 동일하게 단점도 적용됨을 의미합니다. 예를 들어, 클라이언트는 몇 초 정도 걸릴 수 있는 인덱싱 딜레이를 수용하도록 설계되어야 합니다.
 
@@ -146,10 +146,10 @@ NEAR의 스마트 컨트랙트는 Rust 또는 JavaScript로 작성되고, [WebAs
 
 우선 개발 및 테스트 환경이 필요합니다. 물론 이론상 메인 블록체인 네트워크에서 개발과 테스트를 수행할 수 있지만 비용이 저렴하지는 않습니다. 이러한 이유로 NEAR는 개발 중에 사용할 수 있는 [여러 네트워크](../basics/networks.md)를 제공합니다.
 - testnet - 메인넷과 동일하고 무료로 사용할 수 있는 퍼블릭 NEAR 네트워크입니다.
-- localnet - 로컬 환경에 개인 NEAR 네트워크를 배포할 수 있습니다. 이는 당신의 소유이기 때문에, 개발 중에 데이터와 코드를 비공개로 유지할 수 있습니다. 자신의 노드를 실행하는 방법에 대한 자세한 정보는 [여기](https://docs.near.org/docs/develop/node/validator/running-a-node)에서 찾을 수 있습니다. Alternatively, you can bootstrap an entire testing infrastructure in Docker on your local machine using Kurtosis - [guide is here](../../2.build/2.smart-contracts/testing/kurtosis-localnet.md).
+- localnet - 로컬 환경에 개인 NEAR 네트워크를 배포할 수 있습니다. 이는 당신의 소유이기 때문에, 개발 중에 데이터와 코드를 비공개로 유지할 수 있습니다. More info on how you can run your own node can be [found here](https://near-nodes.io/validator/running-a-node). Alternatively, you can bootstrap an entire testing infrastructure in Docker on your local machine using Kurtosis - [guide is here](../../2.build/2.smart-contracts/testing/kurtosis-localnet.md).
 - 작업 공간 - 자체 로컬 네트워크를 시작하여 e2e 테스트를 수행할 수 있습니다. More info [here](../../2.build/2.smart-contracts/testing/integration-test.md).
 
-사용할 네트워크를 선택한 후에는 네트워크와 상호 작용할 방법이 필요합니다. 물론 트랜잭션을 수동으로 구성하고 [노드의 API](https://docs.near.org/api/rpc/setup)에 전달할 수도 있습니다. 그러나 이것은 [지루하고](https://github.com/near-examples/transaction-examples) 전혀 재미가 없습니다. 그렇기 때문에 NEAR 는 필요한 모든 작업을 자동화 하는 [CLI를 제공합니다](../../4.tools/cli.md). 이를 개발 목적으로 로컬에서 사용하거나 CI/CD 시나리오용 빌드 머신에서 사용할 수 있습니다.
+사용할 네트워크를 선택한 후에는 네트워크와 상호 작용할 방법이 필요합니다. Of course, transactions can be constructed manually and posted into [node’s API](/api/rpc/setup). 그러나 이것은 [지루하고](https://github.com/near-examples/transaction-examples) 전혀 재미가 없습니다. 그렇기 때문에 NEAR 는 필요한 모든 작업을 자동화 하는 [CLI를 제공합니다](../../4.tools/cli.md). 이를 개발 목적으로 로컬에서 사용하거나 CI/CD 시나리오용 빌드 머신에서 사용할 수 있습니다.
 
 NEAR 네트워크에서 계정을 관리하기 위해 [지갑](https://wiki.near.org/overview/tokenomics/creating-a-near-wallet)을 사용할 수 있습니다. 이를 통해 효과적으로 계정 잔액과 활성 키를 표시할 수 있습니다.
 

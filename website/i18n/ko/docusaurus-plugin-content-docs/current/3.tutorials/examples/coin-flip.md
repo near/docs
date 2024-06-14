@@ -52,12 +52,12 @@ Both Rust and JavaScript versions of the contract implement the same functionali
 컨트랙트는 `flip_coin`과 `points_of`의 두 가지 메서드를 가지고 있습니다.
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="ts">
+  <Language value="js" language="ts">
     <Github fname="contract.ts" 
             url="https://github.com/near-examples/coin-flip-examples/blob/main/contract-ts/src/contract.ts"
             start="23" end="56" />
   </Language>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="rust" language="rust">
     <Github fname="lib.rs" 
             url="https://github.com/near-examples/coin-flip-examples/blob/main/contract-rs/src/lib.rs"
             start="46" end="70" />
@@ -70,7 +70,7 @@ Both Rust and JavaScript versions of the contract implement the same functionali
 웹사이트의 로직은 `/assets/js/index.js`에 존재하며 `wallet`를 통해 컨트랙트와 통신합니다. 다음 코드에서 `/assets/js/index.js`를 확인할 수 있습니다.
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="ts">
+  <Language value="js" language="ts">
     <Github fname="index.js"
             url="https://github.com/near-examples/coin-flip-workshop-js/blob/main/frontend/index.js"
             start="10" end="19" />            
@@ -90,12 +90,12 @@ Both Rust and JavaScript versions of the contract implement the same functionali
 Integration tests can be written in both Rust and JavaScript. 이는 자동으로 컨트랙트를 배포하고, 메서드를 실행합니다. 이러한 방식으로 통합 테스트는 현실적인 시나리오에서 사용자의 상호 작용을 시뮬레이션합니다. You will find the integration tests for the `coin-flip` in `contract-ts/sandbox-ts` (for the JavaScript contract) and `contract-rs/tests` (for the Rust contract).
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="ts">
+  <Language value="js" language="ts">
     <Github fname="main.test.js"
             url="https://github.com/near-examples/coin-flip-examples/blob/main/contract-ts/sandbox-ts/main.ava.ts"
             start="30" end="53" />
   </Language>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="rust" language="rust">
     <Github fname="lib.rs" 
             url="https://github.com/near-examples/coin-flip-examples/blob/main/contract-rs/tests/tests.rs"
             start="25" end="82" />

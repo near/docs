@@ -10,13 +10,15 @@ import {Github} from "@site/src/components/codetabs"
 
 ## 소개
 
-지금쯤이면 로열티 지원을 제외하고는 완전한 NFT 컨트랙트가 있어야 합니다. 시작하려면 [GitHub 레퍼지토리](https://github.com/near-examples/nft-tutorial-js/)에서 `5.approval` 브랜치로 전환하거나 이전 튜토리얼에서 작업을 계속하세요.
+지금쯤이면 로열티 지원을 제외하고는 완전한 NFT 컨트랙트가 있어야 합니다. To get started, go to the `nft-contract-approval/` folder from our [GitHub repository](https://github.com/near-examples/nft-tutorial/), or continue your work from the previous tutorials.
 
 ```bash
-git checkout 5.approval
+cd nft-contract-approval/
 ```
 
-:::tip 이 _로열티_ 튜토리얼의 완성된 코드를 보려면, `6.royalty` 브랜치를 확인해 보세요. :::
+:::tip If you wish to see the finished code for this _Royalty_ tutorial, you can find it in the `nft-contract-royalty` folder. :::
+
+---
 
 ## 문제에 대한 생각
 
@@ -26,37 +28,45 @@ git checkout 5.approval
 
 이제 판매자가 아닌 다른 계정으로 가는 금액을 삭감할 수 있도록 확장할 수 있는 방법에 대해 생각해 보겠습니다.
 
+<hr class="subsection" />
+
 ### 현재 솔루션 확장
 
-영구 로열티는 토큰 기준이므로,  `Token` 및 `JsonToken` 구조체를 변경해야 한다고 가정하는 것이 안전합니다. 즉, 로열티가 있는 각 계정이 가져가는 비율을 추적할 수 있는 방법이 필요합니다. 정수에 계정을 연결하는 맵을 도입하면, 효과가 있을 것입니다.
+Since perpetual royalties will be on a per-token basis, it's safe to assume that you should be changing the `Token` and `JsonToken` structs. You need some way of keeping track of what percentage each account with a royalty should have. If you introduce a map of an account to an integer, that should do the trick.
 
-이제 해당 정보를 마켓플레이스에 전달할 메서드가 필요합니다. 이 메서드는 이전 솔루션과 똑같이 NFT를 전송할 수 있어야 하지만, 마켓플레이스가 정확히 어떤 계정에 어떤 금액을 지불해야 하는지 알려주는 데에서 추가적인 이점이 있습니다. NFT를 전송하는 메서드를 구현한 다음, 전달된 잔액을 기준으로 정확히 어떤 계정이 지불되고 얼마의 금액을 지불하는지 계산하면 됩니다.
+Now, you need some way to relay that information to the marketplace. This method should be able to transfer the NFT exactly like the old solution but with the added benefit of telling the marketplace exactly what accounts should be paid what amounts. If you implement a method that transfers the NFT and then calculates exactly what accounts get paid and to what amount based on a passed-in balance, that should work nicely.
 
-이는 [로열티 표준](https://nomicon.io/Standards/NonFungibleToken/Payout)이 설명하는 것입니다. 이제 이 동작을 도입하기 위해 스마트 컨트랙트로 이동하여 수정하겠습니다.
+This is what the [royalty standards](https://nomicon.io/Standards/NonFungibleToken/Payout) outlined. Let's now move on and modify our smart contract to introduce this behavior.
+
+---
 
 ## 컨트랙트 수정
 
-가장 먼저 해야 할 일은 로열티 정보를 구조체에 추가하는 것입니다. `nft-contract/src/metadata.rs` 파일을 열고, `Token` 및 `JsonToken` 구조체에 `royalty`를 추가합니다.
+The first thing you'll want to do is add the royalty information to the structs. Open the `nft-contract-approval/src/metadata.rs` file and add `royalty` to the `Token` struct:
 
 ```rust
 pub royalty: HashMap<AccountId, u32>,
 ```
 
-두 번째로, `JsonToken` 구조체에도 `royalty`를 추가합니다.
+Second, you'll want to add `royalty` to the `JsonToken` struct as well:
 
 ```rust
 pub royalty: HashMap<AccountId, u32>,
 ```
+
+<hr class="subsection" />
 
 ### 내부 헬퍼 함수
 
 **royalty_to_payout**
 
-지급액 계산을 단순화하기 위해, 헬퍼 함수 `royalty_to_payout`을 `src/internal.rs`에 추가해 보겠습니다. 이는 백분율로 표현된 수치를 지불해야 하는 실제 금액으로 변환될 것입니다. 1% 미만의 백분율을 허용하려면 100% 값을 `10,000`으로 설정할 수 있습니다. 이는 당신이 제공할 수 있는 최소 비율이 0.01% 또는 `1`임을 의미합니다. 예를 들어, 계정이 20%의 영구 로열티를 가지도록 하려면 지급 맵에 `"benji.testnet": 2000`이라는 페어를 삽입하면 됩니다.
+To simplify the payout calculation, let's add a helper `royalty_to_payout` function to `src/internal.rs`. This will convert a percentage to the actual amount that should be paid. In order to allow for percentages less than 1%, you can give 100% a value of `10,000`. This means that the minimum percentage you can give out is 0.01%, or `1`. For example, if you wanted the account `benji.testnet` to have a perpetual royalty of 20%, you would insert the pair `"benji.testnet": 2000` into the payout map.
 
-<Github language="rust" start="5" end="8" url="https://github.com/near-examples/nft-tutorial/tree/6.royalty/nft-contract/src/internal.rs" />
+<Github language="rust" start="5" end="8" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-royalty/src/internal.rs" />
 
 If you were to use the `royalty_to_payout` function and pass in `2000` as the `royalty_percentage` and an `amount_to_pay` of 1 NEAR, it would return a value of 0.2 NEAR.
+
+<hr class="subsection" />
 
 ### 로열티
 
@@ -64,11 +74,11 @@ If you were to use the `royalty_to_payout` function and pass in `2000` as the `r
 
 Let's now implement a method to check what accounts will be paid out for an NFT given an amount, or balance. Open the `nft-contract/src/royalty.rs` file, and modify the `nft_payout` function as shown.
 
-<Github language="rust" start="22" end="60" url="https://github.com/near-examples/nft-tutorial/blob/6.royalty/nft-contract/src/royalty.rs" />
+<Github language="rust" start="22" end="67" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-royalty/src/royalty.rs" />
 
-이 함수는 토큰의 로열티 맵을 반복하여 잔액을 가져와, 이전에 생성한 `royalty_to_payout` 함수를 통해 잔액을 지불금으로 변환합니다. 이는 총 로열티에서 남은 금액을 토큰 소유자에게 제공할 것입니다. 그 예시로,
+This function will loop through the token's royalty map and take the balance and convert that to a payout using the `royalty_to_payout` function you created earlier. It will give the owner of the token whatever is left from the total royalties. As an example:
 
-다음과 같이 로열티 필드가 있는 토큰이 있습니다.
+You have a token with the following royalty field:
 
 ```rust
 Token {
@@ -81,7 +91,7 @@ Token {
 }
 ```
 
-사용자가 `nft_payout` 토큰을 호출하고 1 NEAR의 금액을 전달하는 경우, 토큰의 로열티 필드를 반복하고 지불 객체에 다음을 삽입합니다.
+If a user were to call `nft_payout` on the token and pass in a balance of 1 NEAR, it would loop through the token's royalty field and insert the following into the payout object:
 
 ```rust
 Payout {
@@ -93,37 +103,41 @@ Payout {
 }
 ```
 
-맨 마지막에, 이는 `damian`을 지불 객체에 삽입하고, 그에게 `1 NEAR - 0.1 - 0.05 - 0.2 = 0.65 NEAR`를 전달할 것입니다.
+At the very end, it will insert `damian` into the payout object and give him `1 NEAR - 0.1 - 0.05 - 0.2 = 0.65 NEAR`.
 
 **nft_transfer_payout**
 
-지불금 계산 방법을 알았으므로, 이제 NFT를 전송하고 지불금을 마켓플레이스에 반환하는 함수를 만들 차례입니다.
+Now that you know how payouts are calculated, it's time to create the function that will transfer the NFT and return the payout to the marketplace.
 
-<Github language="rust" start="64" end="125" url="https://github.com/near-examples/nft-tutorial/tree/6.royalty/nft-contract/src/royalty.rs" />
+<Github language="rust" start="70" end="135" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-royalty/src/royalty.rs" />
+
+<hr class="subsection" />
 
 ### 영구 로열티
 
-영구 로열티에 대한 지원을 추가하기 위해, `src/mint.rs` 파일을 편집해 보겠습니다. 먼저 영구 로열티에 대한 선택적인 매개변수를 추가합니다. 이는 NFT를 구매할 때 어떤 계정으로 가는 비율을 결정하는 것입니다. 또한 `Token` 객체에 넣을 로열티를 생성하고 삽입해야 합니다.
+To add support for perpetual royalties, let's edit the `src/mint.rs` file. First, add an optional parameter for perpetual royalties. This is what will determine what percentage goes to which accounts when the NFT is purchased. You will also need to create and insert the royalty to be put in the `Token` object:
 
-<Github language="rust" start="6" end="60" url="https://github.com/near-examples/nft-tutorial/blob/6.royalty/nft-contract/src/mint.rs" />
+<Github language="rust" start="6" end="80" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-royalty/src/mint.rs" />
 
-그런 다음 CLI를 사용하여 새 `nft_payout` 함수를 쿼리하고 제대로 작동하는지 확인할 수 있습니다.
+Next, you can use the CLI to query the new `nft_payout` function and validate that it works correctly.
 
 ### 구조체 구현에 로열티 객체 추가
 
-`Token` 및 `JsonToken` 구조체에 새 필드를 추가했으므로, 이에 따라 구현을 편집해야 합니다. `nft-contract/src/internal.rs` 파일로 이동해서, 새 `Token` 객체를 만드는 `internal_transfer` 함수 부분을 편집합니다.
+Since you've added a new field to your `Token` and `JsonToken` structs, you need to edit your implementations accordingly. Move to the `nft-contract/src/internal.rs` file and edit the part of your `internal_transfer` function that creates the new `Token` object:
 
-<Github language="rust" start="189" end="197" url="https://github.com/near-examples/nft-tutorial/blob/6.royalty/nft-contract/src/internal.rs" />
+<Github language="rust" start="184" end="192" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-royalty/src/internal.rs" />
 
-완료되면 `nft-contract/src/nft_core.rs` 파일로 이동합니다. 거기서 `nft_token`의 구현을 수정해서, `JsonToken`가 새 로열티 정보를 다시 보내도록 해야 합니다.
+Once that's finished, move to the `nft-contract-approval/src/nft_core.rs` file. You need to edit your implementation of `nft_token` so that the `JsonToken` sends back the new royalty information.
 
-<Github language="rust" start="147" end="164" url="https://github.com/near-examples/nft-tutorial/blob/6.royalty/nft-contract/src/nft_core.rs" />
+<Github language="rust" start="160" end="177" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-royalty/src/nft_core.rs" />
+
+---
 
 ## 컨트랙트 배포 {#redeploying-contract}
 
-이전 튜토리얼에서 본 것처럼, 이와 같은 변경 사항을 추가하면 재배포할 때 문제가 발생합니다. 이러한 변경 사항은 다른 모든 토큰에 영향을 미치고, 상태는 새 코드에 의해 자동으로 상속될 수 없기 때문에 단순히 컨트랙트를 재배포하면 오류가 발생합니다. For this reason, you'll create a new account again.
+As you saw in the previous tutorial, adding changes like these will cause problems when redeploying. Since these changes affect all the other tokens and the state won't be able to automatically be inherited by the new code, simply redeploying the contract will lead to errors. For this reason, you'll create a new account again.
 
-### Deployment
+### Deployment and initialization
 
 Next, you'll deploy this contract to the network.
 
@@ -132,19 +146,13 @@ export ROYALTY_NFT_CONTRACT_ID=<accountId>
 near create-account $ROYALTY_NFT_CONTRACT_ID --useFaucet
 ```
 
-빌드 스크립트를 사용하여 이전 튜토리얼에서와 같이 컨트랙트 배포를 빌드합니다.
+Using the cargo-near, deploy and initialize the contract as you did in the previous tutorials:
 
 ```bash
-yarn build && near deploy $ROYALTY_NFT_CONTRACT_ID out/main.wasm
+cargo near deploy $ROYALTY_NFT_CONTRACT_ID with-init-call new_default_meta json-args '{"owner_id": "'$ROYALTY_NFT_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
 ```
 
-### 초기화 및 발행 {#initialization-and-minting}
-
-이는 새로운 컨트랙트이므로 토큰을 초기화하고 발행해야 합니다. 다음 명령을 사용하여 컨트랙트를 초기화합니다.
-
-```bash
-near call $ROYALTY_NFT_CONTRACT_ID new_default_meta '{"owner_id": "'$ROYALTY_NFT_CONTRACT_ID'"}' --accountId $ROYALTY_NFT_CONTRACT_ID
-```
+### Minting {#minting}
 
 다음으로 토큰을 발행해야 합니다. 이 명령을 실행하면 토큰 ID `"royalty-token"`로 토큰이 발행되고, 수신자가 새 계정이 됩니다. 또한 토큰이 판매될 때마다 영구 로열티를 받는 두 개의 계정을 포함한 맵을 전달합니다.
 
@@ -218,13 +226,14 @@ NFT가 100 yoctoNEAR에 판매된 경우, josh는 5, benji는 20, mike는 10, �
 
 이 시점에서 마켓플레이스와 상호 작용하기 위해 완벽하게 작동하는 NFT 컨트랙트에 필요한 모든 것이 존재합니다. 구현할 수 있는 마지막 남은 표준은 이벤트 표준입니다. 이렇게 하면 인덱서는 호출되는 함수에 대해 알 수 있기에, 지갑의 수집품 탭을 채우는 데 사용할 수 있는 정보 등에 대해 추적하는 것을 더 쉽고 안정적으로 할 수 있게 됩니다.
 
-:::info 기억하세요 이 튜토리얼의 완성된 코드를 보려면, `6.royalty` 브랜치를 확인하세요. :::
+:::info remember If you want to see the finished code from this tutorial, you can go to the `nft-contract-royalty` folder. :::
 
 :::note 문서 버전 관리
 
 글을 작성하는 시점에서, 해당 예제는 다음 버전에서 작동합니다.
 
-- near-cli: `4.0.4`
+- near-cli: `4.0.13`
+- cargo-near `0.6.1`
 - NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 - 열거 표준: [NEP181](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration), `1.0.0` 버전
 - 로열티 표준: [NEP199](https://nomicon.io/Standards/Tokens/NonFungibleToken/Payout), `2.0.0` 버전

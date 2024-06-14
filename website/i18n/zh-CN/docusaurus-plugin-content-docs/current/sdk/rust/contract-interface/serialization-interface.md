@@ -8,7 +8,7 @@ import {Github} from "@site/src/components/codetabs";
 
 # Serialization Protocols
 
-Serialization formats within the SDK define how data structures are translated into bytes which are needed for passing data into methods of the smart contract or storing data in state. For the case of method parameters, [JSON](https://www.json.org/json-en.html) (default) and [Borsh](https://borsh.io/) are supported with the SDK and for storing data on-chain Borsh is used.
+Serialization formats within the SDK define how data structures are translated into bytes which are needed for passing data into methods of the smart contract or storing data in state. Serialization formats within the SDK define how data structures are translated into bytes which are needed for passing data into methods of the smart contract or storing data in state. For the case of method parameters, [JSON](https://www.json.org/json-en.html) (default) and [Borsh](https://borsh.io/) are supported with the SDK and for storing data on-chain Borsh is used.
 
 The qualities of JSON and Borsh are as follows:
 
@@ -28,7 +28,7 @@ In general, JSON will be used for contract calls and cross-contract calls for a 
 
 ### Overriding Serialization Protocol Default
 
-The result and parameter serialization can be opted into separately, but all parameters must be of the same format (can't serialize some parameters as borsh and others as JSON). An example of switching both the result and parameters to borsh is as follows:
+The result and parameter serialization can be opted into separately, but all parameters must be of the same format (can't serialize some parameters as borsh and others as JSON). An example of switching both the result and parameters to borsh is as follows: An example of switching both the result and parameters to borsh is as follows:
 
 ```rust
 #[result_serializer(borsh)]
@@ -45,7 +45,7 @@ A simple demonstration of getting a [Borsh-serialized](https://borsh.io), base64
 
 <Github language="rust" start="93" end="104" url="https://github.com/mikedotexe/rust-status-message/blob/b83c5126fdbe0f19bc904e547fda0bb12c2ea133/src/lib.rs" />
 
-The following snippet shows a simple function that takes this value from a frontend or CLI. Note: this method doesn't have a return value, so the `#[result_serializer(borsh)]` isn't needed.
+The following snippet shows a simple function that takes this value from a frontend or CLI. The following snippet shows a simple function that takes this value from a frontend or CLI. Note: this method doesn't have a return value, so the `#[result_serializer(borsh)]` isn't needed.
 
 <Github language="rust" start="40" end="42" url="https://github.com/mikedotexe/rust-status-message/blob/b83c5126fdbe0f19bc904e547fda0bb12c2ea133/src/lib.rs" />
 
@@ -76,12 +76,12 @@ See more details in [this GitHub gist](https://gist.github.com/mfornet/d8a94af33
 
 To help with serializing certain types to JSON which have unexpected or inefficient default formats, there are some wrapper types in [`near_sdk::json_types`](https://docs.rs/near-sdk/3.1.0/near_sdk/json_types/index.html) that can be used.
 
-Because JavaScript only supports integers to value `2^53 - 1`, you will lose precision if deserializing the JSON integer is above this range. To counteract this, you can use the `I64`, `U64`, `I128`, and `U128` in place of the native types for these parameters or result to serialize the value as a string. By default, all integer types will serialize as an integer in JSON.
+Because JavaScript only supports integers to value `2^53 - 1`, you will lose precision if deserializing the JSON integer is above this range. To counteract this, you can use the `I64`, `U64`, `I128`, and `U128` in place of the native types for these parameters or result to serialize the value as a string. By default, all integer types will serialize as an integer in JSON. To counteract this, you can use the `I64`, `U64`, `I128`, and `U128` in place of the native types for these parameters or result to serialize the value as a string. By default, all integer types will serialize as an integer in JSON.
 
 You can convert from `U64` to `u64` and back using `std::convert::Into`, e.g.
 
 ```rust
-#[near_bindgen]
+#[near]
 impl Contract {
     pub fn mult(&self, a: U64, b: U64) -> U128 {
         let a: u64 = a.into();
@@ -95,7 +95,7 @@ impl Contract {
 You can also access inner values and using `.0`:
 
 ```diff
- #[near_bindgen]
+ #[near]
  impl Contract {
      pub fn mult(&self, a: U64, b: U64) -> U128 {
 -        let a: u64 = a.into();
@@ -111,7 +111,7 @@ You can also access inner values and using `.0`:
 And you can cast the lower-case `u` variants to upper-case `U` variants using `U64(...)` and `U128(...)`:
 
 ```diff
- #[near_bindgen]
+ #[near]
  impl Contract {
      pub fn mult(&self, a: U64, b: U64) -> U128 {
          let a = a.0;
@@ -126,7 +126,7 @@ And you can cast the lower-case `u` variants to upper-case `U` variants using `U
 Combining it all:
 
 ```rust
-#[near_bindgen]
+#[near]
 impl Contract {
     pub fn mult(&self, a: U64, b: U64) -> U128 {
         U128(u128::from(a.0) * u128::from(b.0))
@@ -134,22 +134,23 @@ impl Contract {
 }
 ```
 
-Although there are these JSON wrapper types included with the SDK, any custom type can be used, as long as it implements [`serde`](https://serde.rs/) serialize and deserialize respectively. All of these types just override the JSON format and will have a consistent `borsh` serialization and deserialization as the inner types.
+Although there are these JSON wrapper types included with the SDK, any custom type can be used, as long as it implements [`serde`](https://serde.rs/) serialize and deserialize respectively. All of these types just override the JSON format and will have a consistent `borsh` serialization and deserialization as the inner types. All of these types just override the JSON format and will have a consistent `borsh` serialization and deserialization as the inner types.
 
 ### Base64VecU8
 
-Another example of a type you may want to override the default serialization of is `Vec<u8>` which represents bytes in Rust. By default, this will serialize as an array of integers, which is not compact and very hard to use. There is a wrapper type [`Base64VecU8`](https://docs.rs/near-sdk/3.1.0/near_sdk/json_types/struct.Base64VecU8.html) which serializes and deserializes to a [Base-64](https://en.wikipedia.org/wiki/Base64) string for more compact JSON serialization.
+Another example of a type you may want to override the default serialization of is `Vec<u8>` which represents bytes in Rust. By default, this will serialize as an array of integers, which is not compact and very hard to use. There is a wrapper type [`Base64VecU8`](https://docs.rs/near-sdk/3.1.0/near_sdk/json_types/struct.Base64VecU8.html) which serializes and deserializes to a [Base-64](https://en.wikipedia.org/wiki/Base64) string for more compact JSON serialization. By default, this will serialize as an array of integers, which is not compact and very hard to use. There is a wrapper type [`Base64VecU8`](https://docs.rs/near-sdk/3.1.0/near_sdk/json_types/struct.Base64VecU8.html) which serializes and deserializes to a [Base-64](https://en.wikipedia.org/wiki/Base64) string for more compact JSON serialization.
 
 Example here:
 
 ```rust
-#[near_bindgen]
-#[derive(BorshDeserialize, BorshSerialize, PanicOnDefault)]
+#[near(contract_state)]
+#[derive(PanicOnDefault)]
 pub struct Contract {
     // Notice, internally we store `Vec<u8>` 
     pub data: Vec<u8>,
 }
-#[near_bindgen]
+
+#[near]
 impl Contract {
     #[init]
     pub fn new(data: Base64VecU8) -> Self {

@@ -80,7 +80,7 @@ yarn start
 - `getCandidatePair`: `getCandidatePair`:
 
 <CodeTabs>
-<Language value="🌐 JavaScript" language="js">
+<Language value="js" language="js">
     <Github fname="contract.ts" 
             url="https://github.com/doriancrutcher/BlockVote-JS-Edition-Tutorial/blob/main/contract/src/contract.ts"
             start="20" end="60" />
@@ -97,7 +97,7 @@ yarn start
 - `recordUser`: 사용자의 계정 ID를 컨트랙트 내 사용자 참여 맵 배열에 추가하여 특정 프롬프트에서 사용자의 참여를 기록합니다.
 
 <CodeTabs>
-<Language value="🌐 JavaScript" language="js">
+<Language value="js" language="js">
     <Github fname="contract.ts" 
             url="https://github.com/doriancrutcher/BlockVote-JS-Edition-Tutorial/blob/main/contract/src/contract.ts"
             start="61" end="110" />
@@ -123,7 +123,7 @@ yarn start
 이 테스트는 `Ava` 및 `near-workspaces`의 조합을 사용합니다.
 
 <CodeTabs>
-<Language value="🌐 JavaScript" language="js">
+<Language value="js" language="js">
     <Github fname="contract.ts" 
             url="https://github.com/doriancrutcher/BlockVote-JS-Edition-Tutorial/blob/main/integration-tests/src/main.ava.ts"
             start="6" end="92" />

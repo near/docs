@@ -1,22 +1,13 @@
 ---
 id: events
 title: Event
-sidebar_label: Event
 ---
 
 import {Github} from "@site/src/components/codetabs"
 
 In this tutorial, you'll learn about the [events standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event) and how to implement it in your smart contract.
 
-## Giới thiệu
-
-Để bắt đầu, hãy chuyển sang branch `6.approval` từ [GitHub repository](https://github.com/near-examples/nft-tutorial/) của chúng tôi, hoặc tiếp tục công việc của bạn từ các hướng dẫn trước.
-
-```bash
-git checkout 6.royalty
-```
-
-:::tip If you wish to see the finished code for this _Events_ tutorial, you can find it on the `7.events` branch. :::
+---
 
 ## Hiểu rõ trường hợp sử dụng {#understanding-the-use-case}
 
@@ -24,9 +15,13 @@ Have you ever wondered how the wallet knows which NFTs you own and how it can di
 
 Khi bạn chuyển đến collectibles tab của mình, wallet sau đó sẽ truy vấn tất cả các contract đó để biết danh sách NFT mà bạn đang sở hữu bằng cách sử dụng function `nft_tokens_for_owner` mà bạn đã nhìn thấy trong [hướng dẫn enumeration](/docs/tutorials/contracts/nfts/enumeration).
 
+<hr class="subsection" />
+
 ### Vấn đề {#the-problem}
 
 Phương pháp gắn cờ các contract này không đáng tin cậy vì mỗi ứng dụng điều khiển NFT có thể có cách mint hoặc transfer NFT riêng của nó. Ngoài ra, các ứng dụng thường transfer hoặc mint nhiều token cùng một lúc bằng cách sử dụng các batch function.
+
+<hr class="subsection" />
 
 ### Giải pháp {#the-solution}
 
@@ -53,6 +48,8 @@ Event interface khác nhau tùy thuộc vào việc bạn đang ghi lại các t
 - **new_owner_id**: chủ sở hữu mới mà NFT đang được mint tới.
 - **token_ids**: danh dách các NFT đang được transfer.
 - *Optional* - **memo**: một tùy chọn message để đưa vào event.
+
+<hr class="subsection" />
 
 ### Các ví dụ {#examples}
 
@@ -107,37 +104,47 @@ EVENT_JSON:{
 }
 ```
 
+---
+
 ## Các sửa đổi với contract {#modifications-to-the-contract}
 
-Ở thời điểm này, bạn đã hiểu rõ về mục tiêu cuối cùng là gì vì thế hãy bắt đầu làm việc! Mở repository và tạo một file mới trong thư mục `nft-contract/src` đặt tên cho nó là `events.rs`. Đây là nơi các cấu trúc log của bạn sẽ được tạo.
+Ở thời điểm này, bạn đã hiểu rõ về mục tiêu cuối cùng là gì vì thế hãy bắt đầu làm việc! Open the repository and create a new file in the `nft-contract-basic/src` directory called `events.rs`. Đây là nơi các cấu trúc log của bạn sẽ được tạo.
+
+If you wish to see the finished code of the events implementation, that can be found on the `nft-contract-events` folder.
 
 ### Tạo các file event {#events-rs}
 
 Copy phần dưới đây vào file của bạn. Cái này sẽ phác thảo các cấu trúc cho `EventLog` của bạn, `NftMintLog`, và `NftTransferLog`. Ngoài ra, chúng ta đã thêm `EVENT_JSON:` là tiền tố bất cứ khi nào bạn ghi lại `EventLog`.
 
-<Github language="rust" start="1" end="79" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/events.rs" />
+<Github language="rust" start="1" end="79" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-events/src/events.rs" />
 
-This requires the `serde_json` package which you can easily add to your `nft-contract/Cargo.toml` file:
+This requires the `serde_json` package which you can easily add to your `nft-contract-skeleton/Cargo.toml` file:
 
-<Github language="rust" start="1" end="20" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/Cargo.toml" />
+<Github language="rust" start="10" end="12" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-events/Cargo.toml" />
+
+<hr class="subsection" />
 
 ### Thêm các module và constant {#lib-rs}
 
 Bây giờ bạn đã tạo một file mới, bạn cần thêm module tới file `lib.rs`. Ngoài ra, bạn có thể định nghĩa hai constant cho tiêu chuẩn và version sẽ được sử dụng trong contract của chúng ta.
 
-<Github language="rust" start="10" end="30" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/lib.rs" />
+<Github language="rust" start="10" end="30" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-events/src/lib.rs" />
+
+<hr class="subsection" />
 
 ### Log các token đã được mint {#logging-minted-tokens}
 
-Bây giờ tất cả các công cụ đã được thiết lập sẵn, bạn có thể tiến hành thực tế chức năng log. Vì contract chỉ mint các token ở một nơi, nên việc bạn đặt log ở đâu là không quan trọng. Mở file `nft-contract/src/mint.rs` và chuyển tới phía cuối file. Đây là nơi bạn sẽ xây dựng log để mint. Bây giờ nó sẽ phát ra một log chính xác, bất kỳ khi nào ai đó mint thành công một NFT.
+Bây giờ tất cả các công cụ đã được thiết lập sẵn, bạn có thể tiến hành thực tế chức năng log. Since the contract will only be minting tokens in one place, open the `nft-contract-basic/src/mint.rs` file and navigate to the bottom of the file. Đây là nơi bạn sẽ xây dựng log để mint. Bây giờ nó sẽ phát ra một log chính xác, bất kỳ khi nào ai đó mint thành công một NFT.
 
-<Github language="rust" start="5" end="80" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/mint.rs" />
+<Github language="rust" start="5" end="58" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-events/src/mint.rs" />
+
+<hr class="subsection" />
 
 ### Log các transfer {#logging-transfers}
 
-Hãy mở file `nft-contract/src/internal.rs` và chuyển tới `internal_transfer` function. Đây là nơi bạn sẽ xây dựng transfer log của mình. Bất kỳ khi nào một NFT được transfer, function này sẽ được call và vì thế bạn sẽ log các transfer một cách chính xác.
+Let's open the `nft-contract-basic/src/internal.rs` file and navigate to the `internal_transfer` function. Đây là nơi bạn sẽ xây dựng transfer log của mình. Bất kỳ khi nào một NFT được transfer, function này sẽ được call và vì thế bạn sẽ log các transfer một cách chính xác.
 
-<Github language="rust" start="140" end="239" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/internal.rs" />
+<Github language="rust" start="96" end="159" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-events/src/internal.rs" />
 
 Thật không may, có một trường hợp sẽ làm hỏng mọi thứ với giải pháp này. Nếu một NFT được transfer thông qua function `nft_transfer_call`, có khả năng quá trình transfer sẽ bị revert nếu `nft_on_transfer` function trả về `true`. Xem xét logic của `nft_transfer_call`, bạn sẽ thấy tại sao đây là một vấn đề.
 
@@ -149,17 +156,26 @@ Khi `nft_transfer_call` được gọi, nó sẽ:
 
 Nếu bạn chỉ đặt log vào function `internal_transfer`, log sẽ được phát ra và indexer sẽ nghĩ rằng NFT đã được transfer. Tuy nhiên, nếu quá trình transfer bị revert trong `nft_resolve_transfer`, thì event đó **cũng** sẽ được phát ra. Bất cứ nơi nào mà một NFT **có thể** được transfer, chúng ta nên ghi vào log. Thay thế `nft_resolve_transfer` với đoạn code dưới đây.
 
-<Github language="rust" start="182" end="279" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/nft_core.rs" />
+<Github language="rust" start="157" end="241" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-events/src/nft_core.rs" />
 
 Ngoài ra, bạn cần thêm `authorized_id` và `memo` vào các tham số cho `nft_resolve_transfer` như dưới đây.
 
-<Github language="rust" start="47" end="66" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/nft_core.rs" />
+:::tip
+
+We will talk more about this [`authorized_id`](./5-approval.md) in the following chapter.
+
+:::
+
+<Github language="rust" start="43" end="60" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-events/src/nft_core.rs" />
+
 
 The last step is to modify the `nft_transfer_call` logic to include these new parameters:
 
-<Github language="rust" start="102" end="159" url="https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/nft_core.rs" />
+<Github language="rust" start="86" end="135" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-events/src/nft_core.rs" />
 
 Với việc hoàn thành điều đó, bạn đã triển khai thành công tiêu chuẩn các event và bây giờ là lúc để bắt đầu quá trình test.
+
+---
 
 ## Deploy contract {#redeploying-contract}
 
@@ -174,19 +190,15 @@ export EVENTS_NFT_CONTRACT_ID=<accountId>
 near create-account $EVENTS_NFT_CONTRACT_ID --useFaucet
 ```
 
-Sử dụng build script, deploy contract như bạn đã làm ở các hướng dẫn trước:
+Using the cargo-near, deploy and initialize the contract as you did in the previous tutorials:
 
 ```bash
-yarn build && near deploy $EVENTS_NFT_CONTRACT_ID out/main.wasm
+cargo near deploy $EVENTS_NFT_CONTRACT_ID with-init-call new_default_meta json-args '{"owner_id": "'$EVENTS_NFT_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
 ```
 
-### Khởi tạo và mint {#initialization-and-minting}
+<hr class="subsection" />
 
-Vì đây là một contract mới, bạn sẽ cần phải khởi tạo và mint một token. Sử dụng command dưới đây để khởi tạo contract:
-
-```bash
-near call $EVENTS_NFT_CONTRACT_ID new_default_meta '{"owner_id": "'$EVENTS_NFT_CONTRACT_ID'"}' --accountId $EVENTS_NFT_CONTRACT_ID
-```
+### Minting {#minting}
 
 Tiếp theo, bạn sẽ cần mint một token. Bằng cách chạy command này, bạn sẽ mint một token với token ID `"events-token"` và người nhận sẽ là account mới của bạn. Ngoài ra, bạn đang truyền vào một map với hai account sẽ nhận được perpetual royalty bất cứ khi nào token của bạn được bán.
 
@@ -207,6 +219,8 @@ https://testnet.nearblocks.io/txns/4Wy2KQVTuAWQHw5jXcRAbrz7bNyZBoiPEvLcGougciyk
 ```
 
 Bạn có thể thấy rằng event đã được log một cách chính xác!
+
+<hr class="subsection" />
 
 ### Transfer {#transferring}
 
@@ -231,6 +245,8 @@ https://testnet.nearblocks.io/txns/4S1VrepKzA6HxvPj3cK12vaT7Dt4vxJRWESA1ym1xdvH
 
 Chúc mừng! Tại thời điểm này, NFT contract của bạn đã hoàn thành đầy đủ và các tiêu chuẩn event đã được thực hiện.
 
+---
+
 ## Tổng kết
 
 Today you went through the [events standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event) and implemented the necessary logic in your smart contract. Bạn đã tạo các event cho việc [mint](#logging-minted-tokens) và [transfer](#logging-transfers) các NFT. Sau đó bạn đã deploy và [test](#initialization-and-minting) những thay đổi của mình bằng cách mint và transfer các NFT.
@@ -241,7 +257,8 @@ Trong hướng dẫn tiếp theo, bạn sẽ xem những thứ cơ bản của m
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `4.0.4`
+- near-cli: `4.0.13`
+- cargo-near `0.6.1`
 - NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 - Events standard: [NEP297 extension](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event), version `1.1.0`
 

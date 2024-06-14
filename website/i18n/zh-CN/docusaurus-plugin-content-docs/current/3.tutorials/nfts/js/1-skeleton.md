@@ -6,14 +6,14 @@ sidebar_label: Contract Architecture
 
 import {Github} from "@site/src/components/codetabs"
 
-> In this article, you'll learn about the basic architecture behind the NFT contract that you'll develop while following this _"Zero to Hero"_ series. You'll discover the contract's layout and you'll see how the JavaScript files are structured in order to build a feature-complete smart contract.
+> In this article, you'll learn about the basic architecture behind the NFT contract that you'll develop while following this _"Zero to Hero"_ series. You'll discover the contract's layout and you'll see how the JavaScript files are structured in order to build a feature-complete smart contract. You'll discover the contract's layout and you'll see how the JavaScript files are structured in order to build a feature-complete smart contract.
 
 
 
 
 ## Introduction
 
-This tutorial presents the code skeleton for the NFT smart contract and its file structure. You'll find how all the functions are laid out as well as the missing JS code that needs to be filled in. Once every file and function has been covered, you'll go through the process of building the mock-up contract to confirm that everything is working correctly.
+This tutorial presents the code skeleton for the NFT smart contract and its file structure. You'll find how all the functions are laid out as well as the missing JS code that needs to be filled in. This tutorial presents the code skeleton for the NFT smart contract and its file structure. You'll find how all the functions are laid out as well as the missing JS code that needs to be filled in. Once every file and function has been covered, you'll go through the process of building the mock-up contract to confirm that everything is working correctly.
 
 ## File structure
 
@@ -49,7 +49,7 @@ nft-tutorial-js
     └── royalty.ts
 ```
 
-:::tip Explore the code in our [GitHub repository](https://github.com/near-examples/nft-tutorial-js/tree/1.skeleton). :::
+:::tip Explore the code in our [GitHub repository](https://github.com/near-examples/nft-tutorial-js/tree/1.skeleton). ::: :::
 
 ---
 
@@ -57,14 +57,14 @@ nft-tutorial-js
 
 > This allows people to approve other accounts to transfer NFTs on their behalf.
 
-This file contains the internal logic that complies with the standard's [approvals management](https://nomicon.io/Standards/Tokens/NonFungibleToken/ApprovalManagement) extension. Here is a breakdown of the methods and their functions:
+This file contains the internal logic that complies with the standard's [approvals management](https://nomicon.io/Standards/Tokens/NonFungibleToken/ApprovalManagement) extension. Here is a breakdown of the methods and their functions: Here is a breakdown of the methods and their functions:
 
-| Method                    | Description                                                                                          |
-| ------------------------- | ---------------------------------------------------------------------------------------------------- |
-| **internalNftApprove**    | Approves an account ID to transfer a token on your behalf. Called during **nft_approve**.            |
-| **internalNftIsApproved** | Checks if the input account has access to approve the token ID. Called during **nft_is_approved**. |
-| **internalNftRevoke**     | Revokes a specific account from transferring the token on your behalf. Called during **nft_revoke**. |
-| **internalNftRevokeAll**  | Revokes all accounts from transferring the token on your behalf. Called during **nft_revoke_all**. |
+| Method                    | Description                                                                                                                                                                                    |
+| ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **internalNftApprove**    | Approves an account ID to transfer a token on your behalf. Called during **nft_approve**.                                                                                                      |
+| **internalNftIsApproved** | Checks if the input account has access to approve the token ID. Called during **nft_is_approved**. Approves an account ID to transfer a token on your behalf. Called during **nft_approve**. |
+| **internalNftRevoke**     | Revokes a specific account from transferring the token on your behalf. Called during **nft_revoke**. Called during **nft_revoke**.                                                             |
+| **internalNftRevokeAll**  | Revokes all accounts from transferring the token on your behalf. Revokes all accounts from transferring the token on your behalf. Called during **nft_revoke_all**.                          |
 
 <Github language="js" start="9" end="69" url="https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/approval.ts" />
 
@@ -76,12 +76,12 @@ You'll learn more about these functions in the [approvals section](/tutorials/nf
 
 > This file provides the internal functions needed to view information about NFTs, and follows the standard's [enumeration](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration) extension.
 
-| Method                        | Description                                                                                                      |
-| ----------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| **internalNftTotalSupply**    | Returns the total amount of NFTs stored on the contract. Called during **nft_total_supply**.                   |
-| **internalNftTokens**         | Returns a paginated list of NFTs stored on the contract regardless of their owner. Called during **nft_tokens**. |
-| **internalNftSupplyForOwner** | Allows you view the total number of NFTs owned by any given user. Called during **nft_supply_for_owner**.      |
-| **internalNftTokensForOwner** | Returns a paginated list of NFTs owned by any given user. Called during **nft_tokens_for_owner**.              |
+| Method                        | Description                                                                                                                                             |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **internalNftTotalSupply**    | Returns the total amount of NFTs stored on the contract. Returns the total amount of NFTs stored on the contract. Called during **nft_total_supply**. |
+| **internalNftTokens**         | Returns a paginated list of NFTs stored on the contract regardless of their owner. Called during **nft_tokens**. Called during **nft_tokens**.          |
+| **internalNftSupplyForOwner** | Allows you view the total number of NFTs owned by any given user. Called during **nft_supply_for_owner**. Called during **nft_supply_for_owner**.   |
+| **internalNftTokensForOwner** | Returns a paginated list of NFTs owned by any given user. Called during **nft_tokens_for_owner**. Called during **nft_tokens_for_owner**.           |
 
 <Github language="js" start="8" end="62" url="https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/enumeration.ts" />
 
@@ -91,14 +91,14 @@ You'll learn more about these functions in the [enumeration section](/tutorials/
 
 ## `metadata.ts`
 
-> This file is used to keep track of the information to be stored for tokens, and metadata. In addition, you can define a function to view the contract's metadata which is part of the standard's [metadata](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata) extension.
+> This file is used to keep track of the information to be stored for tokens, and metadata. This file is used to keep track of the information to be stored for tokens, and metadata. In addition, you can define a function to view the contract's metadata which is part of the standard's [metadata](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata) extension.
 
-| Name                    | Description                                                                                                   |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------- |
-| **TokenMetadata**       | This structure defines the metadata that can be stored for each token. (title, description, media, etc.       |
-| **Token**               | This structure outlines what information will be stored on the contract for each token.                       |
-| **JsonToken**           | When querying information about NFTs through view calls, the return information is stored in this JSON token. |
-| **internalNftMetadata** | This function allows users to query for the contact's internal metadata. Called during **nft_metadata**.      |
+| Name                    | Description                                                                                                                              |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| **TokenMetadata**       | This structure defines the metadata that can be stored for each token. (title, description, media, etc. (title, description, media, etc. |
+| **Token**               | This structure outlines what information will be stored on the contract for each token.                                                  |
+| **JsonToken**           | When querying information about NFTs through view calls, the return information is stored in this JSON token.                            |
+| **internalNftMetadata** | This function allows users to query for the contact's internal metadata. Called during **nft_metadata**. Called during **nft_metadata**. |
 
 <Github language="js" start="12" end="46" url="https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/metadata.ts" />
 
@@ -110,9 +110,9 @@ You'll learn more about these functions in the [minting section](/tutorials/nfts
 
 > Contains the internal token minting logic.
 
-| Method              | Description                                                           |
-| ------------------- | --------------------------------------------------------------------- |
-| **internalNftMint** | This function mints a non-fungible token. Called during **nft_mint**. |
+| Method              | Description                                                                                                     |
+| ------------------- | --------------------------------------------------------------------------------------------------------------- |
+| **internalNftMint** | This function mints a non-fungible token. This function mints a non-fungible token. Called during **nft_mint**. |
 
 <Github language="js" start="7" end="23" url="https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/mint.ts" />
 
@@ -122,12 +122,12 @@ You'll learn more about these functions in the [minting section](/tutorials/nfts
 
 > Core logic that allows you to transfer NFTs between users.
 
-| Method                         | Description                                                                                                                                                                                                                                                                                                                                                     |
-| ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **internalNftTransfer**        | Transfers an NFT to a receiver ID. Called during **nft_transfer**.                                                                                                                                                                                                                                                                                              |
-| **internalNftTransferCall**    | Transfers an NFT to a receiver and calls a function on the receiver ID's contract. The function returns `true` if the token was transferred from the sender's account. Called during **nft_transfer_call**.                                                                                                                                                   |
-| **internalNftToken**           | Allows users to query for the information about a specific NFT. Called during **nft_token**.                                                                                                                                                                                                                               |                                    |
-| **internalNftResolveTransfer** | When you start the `nft_transfer_call` and transfer an NFT, the standard dictates that you should also call a method on the receiver's contract. If the receiver needs you to return the NFT to the sender (as per the return value of the `nft_on_transfer` method), this function allows you to execute that logic. Called during **nft_resolve_transfer**. |
+| Method                         | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **internalNftTransfer**        | Transfers an NFT to a receiver ID. Transfers an NFT to a receiver ID. Called during **nft_transfer**.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| **internalNftTransferCall**    | Transfers an NFT to a receiver and calls a function on the receiver ID's contract. The function returns `true` if the token was transferred from the sender's account. Called during **nft_transfer_call**. The function returns `true` if the token was transferred from the sender's account. Called during **nft_transfer_call**.                                                                                                                                                                                                                                                  |
+| **internalNftToken**           | Allows users to query for the information about a specific NFT. Called during **nft_token**.                                                                                                                                                                                                                               | Called during **nft_token**.                                                                                                                                                                                                                               | |
+| **internalNftResolveTransfer** | When you start the `nft_transfer_call` and transfer an NFT, the standard dictates that you should also call a method on the receiver's contract. If the receiver needs you to return the NFT to the sender (as per the return value of the `nft_on_transfer` method), this function allows you to execute that logic. Called during **nft_resolve_transfer**. If the receiver needs you to return the NFT to the sender (as per the return value of the `nft_on_transfer` method), this function allows you to execute that logic. Called during **nft_resolve_transfer**.            |
 
 <Github language="js" start="10" end="85" url="https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/nft_core.ts" />
 
@@ -139,10 +139,10 @@ You'll learn more about these functions in the [minting section](/tutorials/nfts
 
 > Contains the internal payout-related functions.
 
-| Method                        | Description                                                                                                                                                             |
-| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **internalNftPayout**         | This internal method calculates the payout for a given token. Called during **nft_payout**.                                                                             |
-| **internalNftTransferPayout** | Internal method to transfer the token to the receiver ID and return the payout object that should be paid for a given balance. Called during **nft_transfer_payout**. |
+| Method                        | Description                                                                                                                                                                                                      |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **internalNftPayout**         | This internal method calculates the payout for a given token. Called during **nft_payout**. Called during **nft_payout**.                                                                                        |
+| **internalNftTransferPayout** | Internal method to transfer the token to the receiver ID and return the payout object that should be paid for a given balance. Called during **nft_transfer_payout**. Called during **nft_transfer_payout**. |
 
 <Github language="js" start="7" end="45" url="https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/royalty.ts" />
 
@@ -152,7 +152,7 @@ You'll learn more about these functions in the [royalty section](/tutorials/nfts
 
 ## `index.ts`
 
-> This file outlines the smart contract class and what information it stores and keeps track of. In addition, it exposes all public facing methods that are callable by the user.
+> This file outlines the smart contract class and what information it stores and keeps track of. In addition, it exposes all public facing methods that are callable by the user. In addition, it exposes all public facing methods that are callable by the user.
 
 | Method                     | Description                                                                                          |
 | -------------------------- | ---------------------------------------------------------------------------------------------------- |
@@ -209,7 +209,7 @@ Building the skeleton is useful to validate that everything works properly and t
 
 ## Conclusion
 
-You've seen the layout of this NFT smart contract, and how all the functions are laid out across the different source files. Using `yarn`, you've been able to compile the contract, and you'll start fleshing out this skeleton in the next [Minting tutorial](/tutorials/nfts/js/minting).
+You've seen the layout of this NFT smart contract, and how all the functions are laid out across the different source files. You've seen the layout of this NFT smart contract, and how all the functions are laid out across the different source files. Using `yarn`, you've been able to compile the contract, and you'll start fleshing out this skeleton in the next [Minting tutorial](/tutorials/nfts/js/minting).
 
 :::note Versioning for this article At the time of this writing, this example works with the following versions:
 

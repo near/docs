@@ -16,7 +16,6 @@ To complete this tutorial successfully, you'll need:
 
 - [Rust toolchain](/build/smart-contracts/quickstart#prerequisites)
 - [A NEAR account](#wallet)
-- [nft.storage account](#uploading-the-image)
 - [NEAR command-line interface](/tools/near-cli#setup) (`near-cli`)
 
 ## Wallet {#wallet}
@@ -40,22 +39,17 @@ The [InterPlanetary File System](https://ipfs.io/) (IPFS) is a protocol and peer
 
 ### Uploading the image {#uploading-the-image}
 
-To upload the NFT image, we are going to use the free [NFT Storage](https://nft.storage/#getting-started) service built specifically for storing off-chain NFT data. NFT Storage offers free decentralized storage and bandwidth for NFTs on [IPFS](https://ipfs.io/) and [Filecoin](https://filecoin.io/).
+To upload the NFT image, you should use a [decentralized storage](/concepts/storage/storage-solutions) provider such as IPFS.
 
-#### Steps {#steps}
+:::note
+This example uses IPFS, but you could use a different solution like Filecoin, Arweave, or a regular centralized Web2 hosting.
+:::
 
-1. [Register an account](https://nft.storage/login/) and log in to [nft.storage](https://nft.storage/login/).
+Once you have uploaded your file to IPFS, you'll get a unique `CID` for your content, and a URL like:
 
-2. Go to the [Files](https://nft.storage/files/) section, and click on the [Upload](https://nft.storage/new-file/) button.
-
-   ![nft.storage](/docs/assets/nfts/nft-storage.png)
-
-3. Once you have uploaded your file, you'll get a unique `CID` for your content, and a URL like:
-   ```
-   https://bafyreiabag3ztnhe5pg7js4bj6sxuvkz3sdf76cjvcuqjoidvnfjz7vwrq.ipfs.dweb.link/
-   ```
-
-> **Tip:** check the [NFT.Storage Docs](https://nft.storage/api-docs/) for information on uploading multiple files and available API endpoints.
+```
+https://bafyreiabag3ztnhe5pg7js4bj6sxuvkz3sdf76cjvcuqjoidvnfjz7vwrq.ipfs.dweb.link/
+```
 
 ## Non-fungible Token contract {#non-fungible-token-contract}
 
@@ -80,8 +74,8 @@ At first, the code can be a bit overwhelming, but if we only consider the aspect
 The contract keeps track of two pieces of information - `tokens` and `metadata`. For the purpose of this tutorial we will only deal with the `tokens` field.
 
 ```rust
-#[near_bindgen]
-#[derive(BorshDeserialize, BorshSerialize, PanicOnDefault)]
+#[near(contract_state)]
+#[derive(PanicOnDefault)]
 pub struct Contract {
     tokens: NonFungibleToken,
     metadata: LazyOption<NFTContractMetadata>,
@@ -96,6 +90,10 @@ pub struct NonFungibleToken {
     pub owner_id: AccountId,
 
     // keeps track of the owner for any given token ID.
+    pub owner_by_id: TreeMap<TokenId, AccountId>,
+
+    ...
+}
     pub owner_by_id: TreeMap<TokenId, AccountId>,
 
     ...
@@ -193,6 +191,7 @@ near deploy --wasmFile res/non_fungible_token.wasm --accountId $ID
 <p>
 
 ```bash
+Starting deployment. ```bash
 Starting deployment. Account id: ex-1.testnet, node: https://rpc.testnet.near.org, file: res/non_fungible_token.wasm
 Transaction Id E1AoeTjvuNbDDdNS9SqKfoWiZT95keFrRUmsB65fVZ52
 To see the transaction in the transaction explorer, please open this url in your browser

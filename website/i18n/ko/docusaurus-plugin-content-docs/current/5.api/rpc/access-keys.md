@@ -42,7 +42,7 @@ RPC API를 사용하면 계정의 액세스 키에 대한 정보를 검색할 �
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 
 ```js
@@ -253,7 +253,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.query({
@@ -564,7 +564,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.experimental_changes({
@@ -752,7 +752,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.experimental_changes({

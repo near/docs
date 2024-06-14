@@ -1,7 +1,7 @@
 {
   "id": "build/smart-contracts/anatomy/storage",
-  "title": "State & Data Structures",
-  "description": "Each contract has its own state (storage), which only they can modify but anyone can see.",
+  "title": "State",
+  "description": "NEAR accounts store data for their contracts. The storage starts empty until a contract is deployed and the state is initialized. The contract's code and state are independent: updating the code does not erase the state.",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.build/2.smart-contracts/anatomy/storage.md",
   "sourceDirName": "2.build/2.smart-contracts/anatomy",
   "slug": "/build/smart-contracts/anatomy/storage",
@@ -15,11 +15,13 @@
   "lastUpdatedAt": 1713353002000,
   "frontMatter": {
     "id": "storage",
-    "title": "State & Data Structures"
+    "title": "State",
+    "sidebar_label": "State (Storage)",
+    "hide_table_of_contents": true
   },
   "sidebar": "build",
   "previous": {
-    "title": "The Contract Class",
+    "title": "Basic Anatomy",
     "permalink": "/zh-CN/build/smart-contracts/anatomy/"
   },
   "next": {

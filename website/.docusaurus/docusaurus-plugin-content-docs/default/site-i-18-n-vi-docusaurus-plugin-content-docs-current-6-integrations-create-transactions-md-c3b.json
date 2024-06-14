@@ -1,7 +1,7 @@
 {
   "id": "integrations/create-transactions",
   "title": "Tạo Các Transaction",
-  "description": "Để tạo & xử lý các transaction bạn sẽ cần đến thư viện API JavaScript của chúng tôi: near-api-js. Có rất nhiều cách để tạo các transaction nhưng trong ví dụ này chúng tôi sẽ chỉ cho bạn hai cách để tạo một transaction đơn giản để transfer token.",
+  "description": "To construct & process transactions you will need our API JavaScript library: near-api-js. Có rất nhiều cách để tạo các transaction nhưng trong ví dụ này chúng tôi sẽ chỉ cho bạn hai cách để tạo một transaction đơn giản để transfer token.",
   "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/6.integrations/create-transactions.md",
   "sourceDirName": "6.integrations",
   "slug": "/integrations/create-transactions",

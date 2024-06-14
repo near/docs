@@ -32,7 +32,7 @@ RPC API를 사용하면 현재 제네시스 및 프로토콜 구성(config)을 �
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.experimental_genesisConfig();

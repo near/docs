@@ -82,6 +82,7 @@ pub enum InvalidTxError {
 }
 ```
 
+
 #### 오류 메시지 {#error-messages-1}
 
 ```rust
@@ -301,7 +302,6 @@ ActionsValidationError::FunctionCallArgumentsLengthExceeded { length, limit }
 ### TxExecutionError {#txexecutionerror}
 
 #### 정의 {#definition-6}
-
 ```rust
 /// Error returned in the ExecutionOutcome in case of failure
 pub enum TxExecutionError {
@@ -419,6 +419,7 @@ ActionErrorKind::NewReceiptValidationError(e)
 "An new action receipt created during a FunctionCall is not valid: {}"
 ```
 
+
 ### ReceiptValidationError {#receiptvalidationerror}
 
 #### 정의 {#definition-9}
@@ -466,6 +467,7 @@ ReceiptValidationError::NumberInputDataDependenciesExceeded { number_of_input_da
 
 ReceiptValidationError::ActionsValidation(e) 
 ```
+
 
 ## VMError 및 하위 유형 {#vmerror-and-subtypes}
 
@@ -536,7 +538,6 @@ pub enum CompilationError {
     WasmerCompileError { msg: String },
 }
 ```
-
 #### 오류 메시지 {#error-messages-9}
 
 ```rust
@@ -672,9 +673,7 @@ pub enum HostError {
     ContractSizeExceeded { size: u64, limit: u64 },
 }
 ```
-
 #### 오류 메시지 {#error-messages-11}
-
 ```rust
 BadUTF8 
   "String encoding is bad UTF-8 sequence."
@@ -765,6 +764,7 @@ ContractSizeExceeded { size, limit }
 
 ```
 
+
 ### VMLogicError {#vmlogicerror}
 
 #### 정의 {#definition-16}
@@ -791,11 +791,11 @@ pub enum InconsistentStateError {
 ```
 
 #### 오류 메시지 {#error-messages-12}
-
 ```rust
 InconsistentStateError::IntegerOverflow
     "Math operation with a value from the state resulted in a integer overflow."
 ```
+
 
 ## RPC 인터페이스 {#rpc-interface}
 
@@ -1441,5 +1441,6 @@ InconsistentStateError::IntegerOverflow
 }
 ```
 
-:::tip 질문이 있으신가요? <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
+:::tip 질문이 있으신가요?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
 :::

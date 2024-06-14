@@ -60,9 +60,7 @@ The most important part of the snippet above is around the middle where there's:
 ```rs
 Promise::new(...)
     ...
-    .then(
-        Self::ext(env::current_account_id())
-            .on_account_created(...)
+    ...
     )
 ```
 

@@ -1,7 +1,7 @@
 {
   "id": "integrations/create-transactions",
   "title": "Create Transactions",
-  "description": "To construct & process transactions you will need our API JavaScript library: near-api-js. There are many ways to create transactions but for this example we'll show you two ways to create a simple token transfer transaction.",
+  "description": "To construct & process transactions you will need our API JavaScript library: near-api-js. There are many ways to create transactions but for this example we'll show you two ways to create a simple token transfer transaction. There are many ways to create transactions but for this example we'll show you two ways to create a simple token transfer transaction.",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/6.integrations/create-transactions.md",
   "sourceDirName": "6.integrations",
   "slug": "/integrations/create-transactions",

@@ -1,0 +1,27 @@
+{
+  "id": "tutorials/near-components/blog-posts",
+  "title": "Blog Posts",
+  "description": "The Blog post components enable your gateway to promote regular Near Social posts into fully fledged blog posts.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/3.tutorials/near-components/blog-posts.md",
+  "sourceDirName": "3.tutorials/near-components",
+  "slug": "/tutorials/near-components/blog-posts",
+  "permalink": "/zh-CN/tutorials/near-components/blog-posts",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/near-components/blog-posts.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "blog-posts",
+    "title": "Blog Posts"
+  },
+  "sidebar": "tutorials",
+  "previous": {
+    "title": "Using IFrames",
+    "permalink": "/zh-CN/tutorials/near-components/using-iframes"
+  },
+  "next": {
+    "title": "Push Notifications",
+    "permalink": "/zh-CN/tutorials/near-components/push-notifications"
+  }
+}

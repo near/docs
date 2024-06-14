@@ -1,5 +1,5 @@
 {
-  "permalink": "/zh-CN/blog/yield-resume",
+  "permalink": "/blog/yield-resume",
   "source": "@site/../blog/2024-05-30.md",
   "title": "It's gonna be Legen... wait for it...",
   "description": "dary! Legendary! NEAR protocol is getting updated with the ability to yield and resume computations",
@@ -7,11 +7,11 @@
   "tags": [
     {
       "label": "protocol",
-      "permalink": "/zh-CN/blog/tags/protocol"
+      "permalink": "/blog/tags/protocol"
     },
     {
       "label": "updates",
-      "permalink": "/zh-CN/blog/tags/updates"
+      "permalink": "/blog/tags/updates"
     }
   ],
   "readingTime": 4.205,
@@ -40,10 +40,10 @@
   "unlisted": false,
   "prevItem": {
     "title": "Getting Started on NEAR Using Windows",
-    "permalink": "/zh-CN/blog/getting-started-on-windows"
+    "permalink": "/blog/getting-started-on-windows"
   },
   "nextItem": {
     "title": "Reorganizing our docs",
-    "permalink": "/zh-CN/blog/reorganizing-docs"
+    "permalink": "/blog/reorganizing-docs"
   }
 }

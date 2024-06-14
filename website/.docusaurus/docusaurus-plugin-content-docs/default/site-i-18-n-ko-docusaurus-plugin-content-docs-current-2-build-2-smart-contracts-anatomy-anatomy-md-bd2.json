@@ -1,7 +1,7 @@
 {
   "id": "build/smart-contracts/anatomy/anatomy",
-  "title": "The Contract Class",
-  "description": "컨트랙트의 로직 및 상태(스토리지)는 핵심 클래스에 의해 정의됩니다.",
+  "title": "Basic Anatomy",
+  "description": "Let's illustrate the basic anatomy of a simple \"Hello World\" contract. The code on this page comes from our Hello NEAR repository on GitHub.",
   "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/2.smart-contracts/anatomy/anatomy.md",
   "sourceDirName": "2.build/2.smart-contracts/anatomy",
   "slug": "/build/smart-contracts/anatomy/",
@@ -15,7 +15,8 @@
   "lastUpdatedAt": 1712954223000,
   "frontMatter": {
     "id": "anatomy",
-    "title": "The Contract Class"
+    "title": "Basic Anatomy",
+    "hide_table_of_contents": true
   },
   "sidebar": "build",
   "previous": {
@@ -23,7 +24,7 @@
     "permalink": "/ko/build/smart-contracts/quickstart"
   },
   "next": {
-    "title": "상태 & 자료구조",
+    "title": "State (Storage)",
     "permalink": "/ko/build/smart-contracts/anatomy/storage"
   }
 }

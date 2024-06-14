@@ -72,13 +72,31 @@ For example a window `[1028, 1031]` includes 1028, 1029 and 1030.
     "id": "dontcare"
 }
 ```
+For example a window `[1028, 1031]` includes 1028, 1029 and 1030.
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": [
+        [
+            1028,
+            1031
+        ],
+        [
+            1034,
+            1038
+        ],
+    ],
+    "id": "dontcare"
+}
+```
 
 </p>
 </details>
 
 #### What Could Go Wrong?? {#what-could-go-wrong}
 
-When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
+When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
 
 ```json

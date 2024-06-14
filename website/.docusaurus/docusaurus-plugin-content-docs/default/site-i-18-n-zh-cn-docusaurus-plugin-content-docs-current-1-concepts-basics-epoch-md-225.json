@@ -1,7 +1,7 @@
 {
   "id": "concepts/basics/epoch",
   "title": "Epoch",
-  "description": "An epoch is a unit of time when validators of the network remain constant. It is measured in blocks:",
+  "description": "An epoch is a unit of time when validators of the network remain constant. It is measured in blocks",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/1.concepts/basics/epoch.md",
   "sourceDirName": "1.concepts/basics",
   "slug": "/concepts/basics/epoch",

@@ -4,12 +4,12 @@ title: WebSocket-enabled Components with QueryAPI
 sidebar_label: WebSockets & QueryAPI
 ---
 
-In this article you'll learn how to create a NEAR component that gathers information from a [QueryAPI indexer](../../2.build/6.data-infrastructure/query-api/intro.md) using WebSockets.
+In this article you'll learn how to create a NEAR component that gathers information from a [QueryAPI indexer](../queryapi/intro.md) using WebSockets.
 In this example, the QueryAPI indexer monitors the widget activity on the blockchain, and the NEAR component gets that information using WebSockets.
 
 :::info
 
-[QueryAPI](../../2.build/6.data-infrastructure/query-api/intro.md) is a fully managed solution to build indexer functions, extract on-chain data, store it in a database, and be able to query it using GraphQL endpoints.
+[QueryAPI](../queryapi/intro.md) is a fully managed solution to build indexer functions, extract on-chain data, store it in a database, and be able to query it using GraphQL endpoints.
 
 :::
 
@@ -105,7 +105,7 @@ This is the JS function that calls the GraphQL mutation `InsertWidgetActivity` a
 
 :::tip
 
-Learn more about [QueryAPI indexing functions](../../2.build/6.data-infrastructure/query-api/index-function.md) and how to build your own indexers.
+Learn more about [QueryAPI indexing functions](../queryapi/index-function.md) and how to build your own indexers.
 
 :::
 

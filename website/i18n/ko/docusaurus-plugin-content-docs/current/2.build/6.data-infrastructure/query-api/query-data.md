@@ -4,7 +4,7 @@ title: Accessing and Querying Historical data
 sidebar_label: Access & Query Historical data
 ---
 
-In this article, you'll find a high-level overview about the two most common use-cases for blockchain indexing, and how they can be solved using NEAR [QueryAPI](intro.md) and [BigQuery](../big-query.md).
+In this article, you'll find a high-level overview about the two most common use-cases for blockchain indexing, and how they can be solved using NEAR [QueryAPI](intro.md) and [BigQuery](big-query.md).
 
 ## Overview
 
@@ -15,7 +15,7 @@ Building a blockchain indexer depends on the kind of historical blockchain data 
 
 :::tip
 
-Want to learn more about indexing? Check the [Introduction to Indexers](../../../1.concepts/3.advanced/indexers.md) article.
+Want to learn more about indexing? Check the [Introduction to Indexers](../../1.concepts/3.advanced/indexers.md) article.
 
 :::
 
@@ -23,19 +23,19 @@ Want to learn more about indexing? Check the [Introduction to Indexers](../../..
 
 When building a Blockchain analytics solution, you'll be creating queries to track NEAR assets, monitor transactions, or analyze on-chain events at a massive scale. Handling that huge amount of data in an optimal way so you can provide accurate results quickly requires a well designed solution.
 
-Near [BigQuery solution](../big-query.md) provides instant insights, and let you access Historical on-chain data and queries at scale. It also eliminates your need to store and process bulk NEAR protocol data; you can just query as little or as much data as you want.
+Near [BigQuery solution](big-query.md) provides instant insights, and let you access Historical on-chain data and queries at scale. It also eliminates your need to store and process bulk NEAR protocol data; you can just query as little or as much data as you want.
 
 BigQuery does not require prior experience with blockchain technology. As long as you have a general knowledge of SQL, you'll be able create queries and unlock insights about transactions, smart contract utilization, user engagement, trends, and much more.
 
 :::tip
 
-Learn more about BigQuery in [this article](../big-query.md).
+Learn more about BigQuery in [this article](big-query.md).
 
 :::
 
 ### Analytics use cases
 
-Common Blockchain analytics use cases that can be managed with [BigQuery](../big-query.md):
+Common Blockchain analytics use cases that can be managed with [BigQuery](big-query.md):
 
 - create queries to track NEAR assets
 - monitor transactions
@@ -69,5 +69,5 @@ Learn more about QueryAPI in this [Overview article](intro.md).
 For a technical implementation deep-dive, check these QueryAPI tutorials:
 
 - [NFTs Indexer](../../../3.tutorials/near-components/indexer-tutorials/nft-indexer.md): an indexer that keeps track of newly minted NFT on Near blockchain.
-- [Posts Indexer](../../../3.tutorials/near-components/indexer-tutorials/posts-indexer.md): this indexer keeps track of every new NEAR Social post found on the blockchain.
-- [Social Feed Indexer](../../../3.tutorials/near-components/indexer-tutorials/feed-indexer.md): this indexer keeps track of new posts, comments, and likes on NEAR Social, so a social feed can be rendered quickly.
+- [Posts Indexer](../tutorial/indexer-tutorials/posts-indexer.md): this indexer keeps track of every new NEAR Social post found on the blockchain.
+- [Social Feed Indexer](../tutorial/indexer-tutorials/feed-indexer.md): this indexer keeps track of new posts, comments, and likes on NEAR Social, so a social feed can be rendered quickly.

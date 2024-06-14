@@ -1,7 +1,7 @@
 {
   "id": "sdk/js/cli/cli",
   "title": "JS SDK CLI",
-  "description": "The SDK Command Line Interface (CLI) is a tool that enables to act on different parts of the build process as well as generate validations and an ABI. Among other things, the SDK CLI enables you to:",
+  "description": "The SDK Command Line Interface (CLI) is a tool that enables to act on different parts of the build process as well as generate validations and an ABI. Among other things, the SDK CLI enables you to",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/sdk/js/cli/cli.md",
   "sourceDirName": "sdk/js/cli",
   "slug": "/sdk/js/cli/",

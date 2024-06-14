@@ -12,7 +12,7 @@ The RPC API enables you to query the network and get details about specific bloc
 
 ## Block details {#block-details}
 
-> Queries network and returns block for given height or hash. You can also use `finality` param to return latest block details.
+> Queries network and returns block for given height or hash. You can also use `finality` param to return latest block details. You can also use `finality` param to return latest block details.
 
 **Note**: You may choose to search by a specific block _or_ finality, you can not choose both.
 
@@ -38,7 +38,7 @@ The RPC API enables you to query the network and get details about specific bloc
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.block({
@@ -77,7 +77,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=block \
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.block({blockId: 17821130});
@@ -114,7 +114,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=block \
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.block(
@@ -249,7 +249,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=block \
 
 #### What Could Go Wrong?? {#what-could-go-wrong}
 
-When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
+When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
 
 ```json
@@ -271,7 +271,7 @@ When API request fails, RPC server returns a structured error response with a li
 
 > **Heads up**
 > 
-> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them.
+> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them. Please, don't rely on them.
 
 Here is the exhaustive list of the error variants that can be returned by `block` method:
 
@@ -339,7 +339,7 @@ Here is the exhaustive list of the error variants that can be returned by `block
 
 ## Changes in Block {#changes-in-block}
 
-> Returns changes in block for given block height or hash. You can also use `finality` param to return latest block details.
+> Returns changes in block for given block height or hash. Returns changes in block for given block height or hash. You can also use `finality` param to return latest block details.
 
 **Note**: You may choose to search by a specific block _or_ finality, you can not choose both.
 
@@ -365,7 +365,7 @@ Here is the exhaustive list of the error variants that can be returned by `block
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.experimental_changes_in_block({
@@ -404,7 +404,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.experimental_changes_in_block(
@@ -443,7 +443,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.experimental_changes_in_block(
@@ -497,7 +497,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 
 #### What Could Go Wrong?? {#what-could-go-wrong-1}
 
-When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
+When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
 
 ```json
@@ -519,7 +519,7 @@ When API request fails, RPC server returns a structured error response with a li
 
 > **Heads up**
 > 
-> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them.
+> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them. Please, don't rely on them.
 
 Here is the exhaustive list of the error variants that can be returned by `EXPERIMENTAL_changes_in_block` method:
 
@@ -587,7 +587,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
 
 ## Chunk Details {#chunk-details}
 
-> Returns details of a specific chunk. You can run a [block details](/api/rpc/setup#block-details) query to get a valid chunk hash.
+> Returns details of a specific chunk. Returns details of a specific chunk. You can run a [block details](/api/rpc/setup#block-details) query to get a valid chunk hash.
 
 - method: `chunk`
 - params:
@@ -609,7 +609,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.chunk({
@@ -643,7 +643,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=chunk params:='{"chunk
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.chunk({
@@ -702,7 +702,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=chunk params:='{"block
 
 #### What Could Go Wrong?? {#what-could-go-wrong-2}
 
-When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
+When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
 
 ```json
@@ -724,7 +724,7 @@ When API request fails, RPC server returns a structured error response with a li
 
 > **Heads up**
 > 
-> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them.
+> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them. Please, don't rely on them.
 
 Here is the exhaustive list of the error variants that can be returned by `chunk` method:
 

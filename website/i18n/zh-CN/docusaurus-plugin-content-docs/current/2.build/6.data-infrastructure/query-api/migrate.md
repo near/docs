@@ -37,7 +37,7 @@ async function handleStreamerMessage(streamerMessage: types.StreamerMessage): Pr
 
 ### Migrating to QueryAPI
 
-1. To start the migration process, [create a new indexer](../community/indexers.md#creating-an-indexer) using [QueryAPI](https://near.org/dataplatform.near/widget/QueryApi.App?view=create-new-indexer). You should see a similar interface like this:
+1. To start the migration process, [create a new indexer](../query-api/indexers.md#creating-an-indexer) using [QueryAPI](https://dev.near.org/dataplatform.near/widget/QueryApi.App?view=create-new-indexer). You should see a similar interface like this:
 
 ![QueryAPI Indexer Dashboard](/docs/assets/QAPIScreen2.png)
 
@@ -243,5 +243,5 @@ CREATE TABLE
 ```
 
 :::tip
-You can find the migrated NFT indexer source code by [clicking here](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=bucanero.near/nft_migrated).
+You can find the migrated NFT indexer source code by [clicking here](https://dev.near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=bucanero.near/nft_migrated).
 :::

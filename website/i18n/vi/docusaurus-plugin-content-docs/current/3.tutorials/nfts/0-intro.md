@@ -4,19 +4,20 @@ title: NFT từ Zero đến Hero
 sidebar_label: Giới thiệu
 ---
 
-> Trong serie _Zero to Hero_ này, bạn sẽ thấy một bộ hướng dẫn bao gồm mọi khía cạnh của một non-fungible token (NFT) smart contract. Bạn sẽ bắt đầu bằng cách mint ra một NFT bằng cách sử dụng một contract đã được deploy sẵn, và cuối cùng, bạn sẽ kết thúc việc xây dựng một một NFT smart contract hoàn chỉnh hỗ trợ mọi extension.
+In this _Zero to Hero_ series, you'll find a set of tutorials that will cover every aspect of a non-fungible token (NFT) smart contract. You'll start by minting an NFT using a pre-deployed contract and by the end you'll end up building a fully-fledged NFT smart contract that supports every extension.
 
 ---
 
 ## Điều kiện cần
 
-Để hoàn thành tốt các hướng dẫn này, bạn sẽ cần:
+To complete these tutorials successfully, you'll need:
 
-- [Rust](/build/smart-contracts/quickstart#prerequisites)
-- [Một NEAR Wallet](https://testnet.mynearwallet.com/create)
+- [Rust](https://www.rust-lang.org/tools/install)
+- [A Testnet wallet](https://testnet.mynearwallet.com/create)
 - [NEAR-CLI](/tools/near-cli#setup)
+- [cargo-near](https://github.com/near/cargo-near)
 
-:::info Bạn mới đến với Rust? If you are new to Rust and want to dive into smart contract development, our [Quick-start guide](../../2.build/2.smart-contracts/quickstart.md) is a great place to start. :::
+:::info Bạn mới đến với Rust? If you are new to Rust and want to dive into smart contract development, our [Quick-start guide](../../2.build/2.smart-contracts/quickstart.md) is a great place to start :::
 
 ---
 
@@ -49,9 +50,3 @@ Chỉ vài bước bạn sẽ từ **_Zero_** trở thành **_Hero_** trong mộ
 Sẵn sàng để bắt đầu? Hãy đến ngay hướng dẫn [Contract đã được deploy sẵn](/tutorials/nfts/predeployed-contract) và bắt đầu chuyến hành trình của bạn!
 
 Nếu bạn đã biết về các non-fungible token và smart contract, hãy bỏ qua và đến ngay với các hướng dẫn nào bạn thấy thích thú. Các bài hướng dẫn đã được thiết kế để bạn có thể bắt đầu từ bất cứ nền tảng kiến thức nào!
-
-:::info Bạn có câu hỏi? 👉 Join us on [Discord](https://near.chat/) and let us know in the `#development` channels. 👈
-
-We also host daily [Office Hours](https://pages.near.org/developers/get-help/office-hours/) live where the DevRel team will answer any questions you may have. 🤔
-
-Thứ Hai – Thứ Sáu 11AM – 12PM Pacific (6PM – 7PM UTC) :::

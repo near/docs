@@ -174,5 +174,17 @@
   "item.label.Exchange Integrations": {
     "message": "Exchange Integrations",
     "description": "Navbar item with label Exchange Integrations"
+  },
+  "item.label.Blog": {
+    "message": "Blog",
+    "description": "Navbar item with label Blog"
+  },
+  "item.label.Agor": {
+    "message": "Agor",
+    "description": "Navbar item with label Agor"
+  },
+  "item.label.Learn NEAR Club": {
+    "message": "Learn NEAR Club",
+    "description": "Navbar item with label Learn NEAR Club"
   }
 }

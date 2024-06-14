@@ -16,7 +16,7 @@
   "frontMatter": {
     "id": "gas-station",
     "title": "Multichain Gas Station Contract",
-    "sidebar_label": "Multichain Gas Station"
+    "sidebar_label": "Multichain Gas Station Contract"
   },
   "sidebar": "build",
   "previous": {

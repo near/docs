@@ -1,7 +1,7 @@
 ---
 id: js-lake-indexer
-title: 비동기식
-sidebar_label: JS 기본 튜토리얼
+title: JS 기본 튜토리얼
+sidebar_label: 비동기식
 ---
 
 # NEAR Lake 인덱서 기본 튜토리얼
@@ -160,12 +160,12 @@ const lakeConfig: types.LakeConfig = {
 
 ## 인덱서 핸들러 생성
 
-Indexer will be streaming the [`StreamerMessage`](https://near-indexers.io/docs/data-flow-and-structures/structures/toc) instances we need to handle according to our needs.
+Indexer will be streaming the [`StreamerMessage`](/build/data-infrastructure/lake-data-structures/toc) instances we need to handle according to our needs.
 
 In `near-lake-framework` JS library the handler have to be presented as a callback function. This function have to:
 
 - be asynchronous
-- [`StreamerMessage`](https://near-indexers.io/docs/data-flow-and-structures/structures/toc) 자료형의 인자를 받음
+- accept an argument of type [`StreamerMessage`](/build/data-infrastructure/lake-data-structures/toc)
 - 아무것도 반환하지 않음(`void`)
 
 Creating the callback:
@@ -203,7 +203,7 @@ That's it. Now we can compile the code and run it
 
 :::danger Credentials
 
-To be able to access the data from [NEAR Lake](/tools/realtime#near-lake-indexer) you need to provide credentials. Please, see the [Credentials](../running-near-lake/credentials.md) article
+To be able to access the data from [NEAR Lake](/tools/realtime#near-lake-indexer) you need to provide credentials. Please, see the [Credentials](credentials.md) article
 
 :::
 

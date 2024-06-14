@@ -23,7 +23,7 @@ npx create-near-app@latest
 ```
 
 :::tip Tutorial
-To learn more about the template created by `create-near-app` see our [Quickstart a WebApp](../../2.build/4.web3-apps/quickstart.md) tutorial.
+To learn more about the template created by `create-near-app` see our [Quickstart a WebApp](../../2.develop/integrate/quickstart.md) tutorial.
 :::
 
 ---

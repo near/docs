@@ -6,15 +6,14 @@ sidebar_position: 3
 
 ## Traditional approach for unique prefixes
 
-Hardcoded prefixes in the constructor using a short one letter prefix that was converted to a vector of bytes. When using nested collection, the prefix must be constructed manually.
+Hardcoded prefixes in the constructor using a short one letter prefix that was converted to a vector of bytes. When using nested collection, the prefix must be constructed manually. When using nested collection, the prefix must be constructed manually.
 
 ```rust
-use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
+use near_sdk::borsh::{self};
 use near_sdk::collections::{UnorderedMap, UnorderedSet};
-use near_sdk::{near_bindgen, AccountId};
+use near_sdk::{near, AccountId};
 
-#[near_bindgen]
-#[derive(BorshDeserialize, BorshSerialize)]
+#[near(contract_state)]
 pub struct Contract {
     pub accounts: UnorderedMap<AccountId, UnorderedSet<String>>,
 }
@@ -27,7 +26,7 @@ impl Default for Contract {
     }
 }
 
-#[near_bindgen]
+#[near]
 impl Contract {
     pub fn get_tokens(&self, account_id: &AccountId) -> Vec<String> {
         let tokens = self.accounts.get(account_id).unwrap_or_else(|| {
@@ -49,19 +48,18 @@ impl Contract {
 
 Read more about persistent collections [from this documentation](../contract-structure/collections.md) or from [the Rust docs](https://docs.rs/near-sdk/latest/near_sdk/collections).
 
-Every instance of a persistent collection requires a unique storage prefix. The prefix is used to generate internal keys to store data in persistent storage. These internal keys need to be unique to avoid collisions (including collisions with key `STATE`).
+Every instance of a persistent collection requires a unique storage prefix. The prefix is used to generate internal keys to store data in persistent storage. Every instance of a persistent collection requires a unique storage prefix. The prefix is used to generate internal keys to store data in persistent storage. These internal keys need to be unique to avoid collisions (including collisions with key `STATE`).
 
-When a contract gets complicated, there may be multiple different collections that are not all part of the main structure, but instead part of a sub-structure or nested collections. They all need to have unique prefixes.
+When a contract gets complicated, there may be multiple different collections that are not all part of the main structure, but instead part of a sub-structure or nested collections. They all need to have unique prefixes. They all need to have unique prefixes.
 
-We can introduce an `enum` for tracking storage prefixes and keys. And then use borsh serialization to construct a unique prefix for every collection. It's as efficient as manually constructing them, because with Borsh serialization, an enum only takes one byte.
+We can introduce an `enum` for tracking storage prefixes and keys. And then use borsh serialization to construct a unique prefix for every collection. We can introduce an `enum` for tracking storage prefixes and keys. And then use borsh serialization to construct a unique prefix for every collection. It's as efficient as manually constructing them, because with Borsh serialization, an enum only takes one byte.
 
 ```rust
 use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
 use near_sdk::collections::{UnorderedMap, UnorderedSet};
-use near_sdk::{env, near_bindgen, AccountId, BorshStorageKey, CryptoHash};
+use near_sdk::{env, near, AccountId, BorshStorageKey, CryptoHash};
 
-#[near_bindgen]
-#[derive(BorshDeserialize, BorshSerialize)]
+#[near(contract_state)]
 pub struct Contract {
     pub accounts: UnorderedMap<AccountId, UnorderedSet<String>>,
 }
@@ -74,13 +72,13 @@ impl Default for Contract {
     }
 }
 
-#[derive(BorshStorageKey, BorshSerialize)]
+#[near(serializers = [borsh])]
 pub enum StorageKeys {
     Accounts,
     SubAccount { account_hash: CryptoHash },
 }
 
-#[near_bindgen]
+#[near]
 impl Contract {
     pub fn get_tokens(&self, account_id: &AccountId) -> Vec<String> {
         let tokens = self.accounts.get(account_id).unwrap_or_else(|| {
@@ -115,6 +113,40 @@ pub enum StorageKey {
 }
 
 // Bug 1: Nested collection is removed without clearing it's own state.
+let mut root: LookupMap<u8, UnorderedSet<String>> = LookupMap::new(StorageKey::Root);
+let mut nested = UnorderedSet::new(StorageKey::Nested(1));
+nested.insert(&"test".to_string());
+root.insert(&1, &nested);
+
+// Remove inserted collection without clearing it's sub-state.
+let mut _removed = root.remove(&1).unwrap();
+
+// This line would fix the bug:
+// _removed.clear();
+
+// This collection will now be in an inconsistent state if an empty UnorderedSet is put
+// in the same entry of `root`.
+root.insert(&1, &UnorderedSet::new(StorageKey::Nested(1)));
+let n = root.get(&1).unwrap();
+assert!(n.is_empty());
+assert!(n.contains(&"test".to_string()));
+
+// Bug 2 (only relevant for `near_sdk::collections`, not `near_sdk::store`): Nested
+// collection is modified without updating the collection itself in the outer collection.
+//
+// This is fixed at the type level in `near_sdk::store` because the values are modified
+// in-place and guarded by regular Rust borrow-checker rules.
+root.insert(&2, &UnorderedSet::new(StorageKey::Nested(2)));
+
+let mut nested = root.get(&2).unwrap();
+nested.insert(&"some value".to_string());
+
+// This line would fix the bug:
+// root.insert(&2, &nested);
+
+let n = root.get(&2).unwrap();
+assert!(n.is_empty());
+assert!(n.contains(&"some value".to_string()));
 let mut root: LookupMap<u8, UnorderedSet<String>> = LookupMap::new(StorageKey::Root);
 let mut nested = UnorderedSet::new(StorageKey::Nested(1));
 nested.insert(&"test".to_string());

@@ -53,7 +53,7 @@ mod ext_calculator {
 Let's assume the calculator is deployed on `calc.near`, we can use the following:
 
 ```rust
-#[near_bindgen]
+#[near]
 impl Contract {
     pub fn sum_a_b(&mut self, a: U128, b: U128) -> Promise {
         let calculator_account_id: AccountId = "calc.near".parse().unwrap();
@@ -94,7 +94,7 @@ fn get_account_to_check() -> AccountId {
 ```
 
 ```rust
-#[near_bindgen]
+#[near]
 impl Contract {
     pub fn xcc_use_promise_result() -> Promise {
         // Call the method `is_allowlisted` on the allowlisted contract. Static GAS is only attached to the callback.

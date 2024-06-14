@@ -72,15 +72,15 @@ Go ahead and sign in with your NEAR account. If you don't have one, you can crea
 
 [Next.js](https://nextjs.org/) uses a template system, where each page is a React component.
 
-Our app's template is defined at `./src/app/layout.js`. It does two things:
+Our app's template is defined at `./src/layout.js`. It does two things:
 
 1. Initializes a [wallet selector](../../4.tools/wallet-selector.md), and stores it so other components can access it later.
 2. Renders the navigation menu and the page's content.
 
-<Github url="https://github.com/near/create-near-app/blob/master/templates/frontend/next-app/src/app/layout.js" language="jsx" start="6" end="21" />
+<Github url="https://github.com/near-examples/hello-near-examples/blob/master/frontend/src/layout.js" language="jsx" start="18" end="25" />
 
 <details>
-<summary>What it the wallet selector?</summary>
+<summary>What is the wallet selector?</summary>
 
 The wallet selector is a component that allows users to select their preferred Near wallet to login. Our application implements a `useInitWallet` hook, that initializes a wallet selector and stores it so other components can access it later.
 
@@ -92,9 +92,9 @@ The wallet selector is a component that allows users to select their preferred N
 
 The navigation bar implements buttons to `login` and `logout` users with their Near wallet.
 
-The code for the navigation bar can be found at `./src/app/navigation.js`. The login and logout buttons are implemented by using the `logIn` and `logOut` methods from the wallet selector previously initialized:
+The code for the navigation bar can be found at `./src/navigation.js`. The login and logout buttons are implemented by using the `signIn` and `signOut` methods from the wallet selector previously initialized:
 
-<Github url="https://github.com/near/create-near-app/blob/master/templates/frontend/next-app/src/components/navigation.js" language="jsx" start="10" end="22" />
+<Github url="https://github.com/near-examples/hello-near-examples/blob/master/frontend/src/components/navigation.js" language="jsx" start="10" end="23" />
 
 ---
 
@@ -111,13 +111,16 @@ Login if you haven't done it yet and you will see a simple form that allows you 
 
 ### Under the Hood
 
-Interactions with NEAR are done using the `useWallet` hook to retrieve both the `viewMethod` and `callMethod` methods and the `signedAccountId` property from the `wallet selector`.
+Interactions with NEAR are done using the `useStore` hook to retrieve the `wallet` we initialized on the `layout`. The wallet allows us to interact with the smart contract through the methods `viewMethod` and `callMethod`.
 
-<Github url="https://github.com/near/create-near-app/blob/master/templates/frontend/next-app/src/app/hello-near/page.js" language="jsx" start="12" end="32" />
+- `viewMethod` is used to call functions that are read-only
+- `callMethod` is used to call functions that modify the state of the contract
+
+<Github url="https://github.com/near-examples/hello-near-examples/blob/master/frontend/src/pages/hello-near/index.js" language="jsx" start="14" end="38" />
 
 On load, the first `useEffect` hook will call the contract's `get_greeting` method and set the `greeting` state to the result.
 
-If the user is logged in, the `saveGreeting` method will call the contract's `set_greeting` method and set the `greeting` state to the result.
+If the user is logged in, the `storeGreeting` method will call the contract's `set_greeting` method and set the `greeting` state to the result.
 
 ---
 
@@ -148,9 +151,9 @@ The source code (located in `./src/hello-components/page.js`) shows us that the 
 
 <CodeTabs>
   <TabItem value="page.js">
-    <Github url="https://github.com/near/create-near-app/blob/master/templates/frontend/next-app/src/app/hello-components/page.js" start="25" end="34" language="jsx" /></TabItem>
+    <Github url="https://github.com/near-examples/hello-near-examples/blob/master/frontend/src/pages/hello-components/index.js" start="27" end="36" language="jsx" /></TabItem>
   <TabItem value="vm-components.js">
-      <Github url="https://github.com/near/create-near-app/blob/master/templates/frontend/next-app/src/components/vm-component.js" language="jsx" /></TabItem>
+      <Github url="https://github.com/near-examples/hello-near-examples/blob/master/frontend/src/components/vm-component.js" language="jsx" /></TabItem>
 </CodeTabs>
 
 Particularly, the `Component` in the main page are wrappers around the `Widget` component of the SocialVM.

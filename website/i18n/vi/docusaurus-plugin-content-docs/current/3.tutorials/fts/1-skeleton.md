@@ -6,7 +6,7 @@ sidebar_label: Kiến trúc của Contract
 
 import {Github} from "@site/src/components/codetabs"
 
-> In this article, you'll learn about the basic architecture behind the FT contract that you'll develop while following this _"Zero to Hero"_ series. Bạn sẽ khám phá layout của contract và sẽ thấy cách mà các file Rust được cấu trúc để build một smart contract đầy đủ tính năng.
+In this article, you'll learn about the basic architecture behind the FT contract that you'll develop while following this _"Zero to Hero"_ series. You'll discover the contract's layout and you'll see how the Rust files are structured in order to build a feature-complete smart contract.
 
 :::info New to Rust?
 If you are new to Rust and want to dive into smart contract development, our [Quick-start guide](../../2.build/2.smart-contracts/quickstart.md) is a great place to start.
@@ -16,16 +16,19 @@ If you are new to Rust and want to dive into smart contract development, our [Qu
 
 ## Giới thiệu
 
-This tutorial presents the code skeleton for the FT smart contract and its file structure. Bạn sẽ tìm thấy cách mà tất cả các function được bố trí, cũng như phần code Rust bị thiếu cần được điền vào. Khi mọi file và function đã được hoàn thiện, bạn sẽ thực hiện quá trình build một mock-up contract để xác nhận Rust toolchain của bạn hoạt động như mong đợi.
+This tutorial presents the code skeleton for the FT smart contract and its file structure. You'll find how all the functions are laid out as well as the missing Rust code that needs to be filled in. Once every file and function has been covered, you'll go through the process of building the mock-up contract to confirm that your Rust toolchain works as expected.
 
-## Cấu trúc file
+---
+
+## Files structure
 
 The repository comes with many different folders. Each folder represents a different milestone of this tutorial starting with the skeleton folder and ending with the finished contract folder. If you step into any of these folders, you'll find that they each follow a regular [Rust](https://www.rust-lang.org/) project. The file structure for these smart contracts have:
 
 - `Cargo.toml` file to define the code dependencies (similar to `package.json` in JavaScript and node projects)
 - Thư mục `src` chứa tất cả các file của Rust
-- Thư mục `target` chứa file `wasm` được compile
-- Script `build.sh` được thêm vào để tiện lợi cho việc compile source code
+- `target` folder where the compiled `wasm` will output to.
+
+<hr className="subsection" />
 
 ### Các file source
 
@@ -40,7 +43,6 @@ The repository comes with many different folders. Each folder represents a diffe
 skeleton
 ├── Cargo.lock
 ├── Cargo.toml
-├── build.sh
 └── src
     ├── ft_core.rs
     ├── lib.rs
@@ -56,7 +58,7 @@ Explore the code in our [GitHub repository](https://github.com/near-examples/ft-
 
 ## `ft_core.rs`
 
-> Core logic that allows you to transfer FTs between users and query for important information.
+Core logic that allows you to transfer FTs between users and query for important information.
 
 | Method                    | Mô tả                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -67,7 +69,7 @@ Explore the code in our [GitHub repository](https://github.com/near-examples/ft-
 | **ft_on_transfer**      | Method that lives on a receiver's contract. It is called when FTs are transferred to the receiver's contract account via the `ft_transfer_call` method. It returns how many FTs should be refunded back to the sender.                                                                                                                                                                                                                                     |
 | **ft_resolve_transfer** | Invoked after the `ft_on_transfer` is finished executing. This function will refund any FTs not used by the receiver contract and will return the net number of FTs sent to the receiver after the refund (if any).                                                                                                                                                                                                                                        |
 
-<Github language="rust" start="61" end="166" url="https://github.com/near-examples/ft-tutorial/blob/main/1.skeleton/src/ft_core.rs" />
+<Github language="rust" start="61" end="167" url="https://github.com/near-examples/ft-tutorial/blob/main/1.skeleton/src/ft_core.rs" />
 
 You'll learn more about these functions in the [circulating supply](/tutorials/fts/circulating-supply) and [transfers](/tutorials/fts/transfers) sections of the tutorial series.
 
@@ -75,18 +77,18 @@ You'll learn more about these functions in the [circulating supply](/tutorials/f
 
 ## `lib.rs`
 
-> File này phác thảo những thông tin mà contract lưu trữ và theo dõi.
+File này phác thảo những thông tin mà contract lưu trữ và theo dõi.
 
-| Method                 | Mô tả                                                                                                                                                         |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **new_default_meta** | Init contract với default `metadata` do đó user không cần phải cung cấp bất kì input nào. In addition, a total supply is passed in which is sent to the owner |
-| **new**                | Initializes the contract with the user-provided `metadata` and total supply.                                                                                  |
+| Method                 | Mô tả                                                                                                                                                          |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **new_default_meta** | Init contract với default `metadata` do đó user không cần phải cung cấp bất kì input nào. In addition, a total supply is passed in which is sent to the owner. |
+| **new**                | Initializes the contract with the user-provided `metadata` and total supply.                                                                                   |
 
 :::info Keep in mind
 The initialization functions (`new`, `new_default_meta`) can only be called once.
 :::
 
-<Github language="rust" start="34" end="58" url="https://github.com/near-examples/ft-tutorial/blob/main/1.skeleton/src/lib.rs" />
+<Github language="rust" start="36" end="60" url="https://github.com/near-examples/ft-tutorial/blob/main/1.skeleton/src/lib.rs" />
 
 You'll learn more about these functions in the [define a token](2-define-a-token.md) section of the tutorial series.
 
@@ -94,14 +96,14 @@ You'll learn more about these functions in the [define a token](2-define-a-token
 
 ## `metadata.rs`
 
-> This file is used to outline the metadata for the Fungible Token itself. Thêm nữa, bạn có thể định nghĩa một function để xem metadata của contract, là một phần của extension [metadata](https://nomicon.io/Standards/Tokens/FungibleToken/Metadata) tiêu chuẩn.
+This file is used to outline the metadata for the Fungible Token itself. Thêm nữa, bạn có thể định nghĩa một function để xem metadata của contract, là một phần của extension [metadata](https://nomicon.io/Standards/Tokens/FungibleToken/Metadata) tiêu chuẩn.
 
-| Tên                       | Mô tả                                                        |
-| ------------------------- | ------------------------------------------------------------ |
-| **FungibleTokenMetadata** | This structure defines the metadata for the fungible token.  |
-| **ft_metadata**           | This function allows users to query for the token's metadata |
+| Tên                       | Mô tả                                                         |
+| ------------------------- | ------------------------------------------------------------- |
+| **FungibleTokenMetadata** | This structure defines the metadata for the fungible token.   |
+| **ft_metadata**           | This function allows users to query for the token's metadata. |
 
-<Github language="rust" start="10" end="30" url="https://github.com/near-examples/ft-tutorial/blob/main/1.skeleton/src/metadata.rs" />
+<Github language="rust" start="11" end="30" url="https://github.com/near-examples/ft-tutorial/blob/main/1.skeleton/src/metadata.rs" />
 
 You'll learn more about these functions in the [define a token](2-define-a-token.md) section of the tutorial series.
 
@@ -109,7 +111,7 @@ You'll learn more about these functions in the [define a token](2-define-a-token
 
 ## `storage.rs`
 
-> Contains the registration logic as per the [storage management](https://nomicon.io/Standards/StorageManagement) standard.
+Contains the registration logic as per the [storage management](https://nomicon.io/Standards/StorageManagement) standard.
 
 | Method                       | Mô tả                                                                                                                                                                                              |
 | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -117,7 +119,7 @@ You'll learn more about these functions in the [define a token](2-define-a-token
 | **storage_balance_bounds** | Returns the minimum and maximum allowed storage deposit required to interact with the contract. In the FT contract's case, min = max.                                                              |
 | **storage_balance_of**     | Returns the total and available storage paid by a given user. In the FT contract's case, available is always 0 since it's used by the contract for registration and you can't overpay for storage. |
 
-<Github language="rust" start="79" end="106" url="https://github.com/near-examples/ft-tutorial/blob/main/1.skeleton/src/storage.rs" />
+<Github language="rust" start="81" end="108" url="https://github.com/near-examples/ft-tutorial/blob/main/1.skeleton/src/storage.rs" />
 
 :::tip
 You'll learn more about these functions in the [storage](4.storage.md) section of the tutorial series.
@@ -125,18 +127,17 @@ You'll learn more about these functions in the [storage](4.storage.md) section o
 
 ## Build bộ khung này
 
-- Nếu bạn chưa clone repository chính, hãy mở một terminal và chạy câu lệnh:
+Nếu bạn chưa clone repository chính, hãy mở một terminal và chạy câu lệnh:
 
 ```sh
 git clone https://github.com/near-examples/ft-tutorial/
 ```
 
-- Next, build the skeleton contract with the build script found in the `1.skeleton/build.sh` file.
+Next, build the skeleton contract with the build script found in the `1.skeleton/build.sh` file.
 
 ```sh
 cd ft-tutorial/1.skeleton
-./build.sh
-cd ..
+cargo near build
 ```
 
 Vì source này chỉ là một bộ khung nên bạn sẽ nhận được nhiều warning về code không sử dụng, chẳng hạn như:
@@ -172,6 +173,7 @@ You've seen the layout of this FT smart contract, and how all the functions are 
 :::note Versioning for this article
 At the time of this writing, this example works with the following versions:
 
-- rustc: `1.6.0`
-- near-sdk-rs: `4.0.0`
+- rustc: `1.76.0`
+- near-sdk-rs: `5.1.0` (with enabled `legacy` feature)
+- cargo-near: `0.6.1`
 :::

@@ -39,7 +39,7 @@ RPC API를 사용하면 계정 및 컨트랙트에 대한 세부 정보를 보�
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.query({
@@ -234,7 +234,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.experimental_changes({
@@ -427,7 +427,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.query({
@@ -631,7 +631,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.query({
@@ -1029,7 +1029,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.experimental_changes({
@@ -1218,7 +1218,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.experimental_changes({
@@ -1395,7 +1395,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.query({
@@ -1447,7 +1447,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.query({

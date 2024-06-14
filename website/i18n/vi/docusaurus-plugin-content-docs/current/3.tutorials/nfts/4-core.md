@@ -1,18 +1,23 @@
 ---
 id: core
-title: Core
-sidebar_label: Core
+title: Transfers
 ---
 
 import {Github} from "@site/src/components/codetabs"
 
-In this tutorial you'll learn how to implement the [core standards](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core) into your smart contract. Nếu bạn tham gia với chúng tôi lần đầu, đừng ngại clone [repo này](https://github.com/near-examples/nft-tutorial) và checkout branch `3.enumeration` để theo dõi.
+In this tutorial you'll learn how to implement NFT transfers as defined in the [core standards](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core) into your smart contract.
 
-```bash
-git checkout 3.enumeration
-```
+We will define two methods for transferring NFTs:
+- `nft_transfer`: that transfers ownership of an NFT from one account to another
+- `nft_transfer_call`: that transfers an NFT to a "receiver" and calls a method on the receiver's account
 
-:::tip If you wish to see the finished code for this _Core_ tutorial, you can find it on the `4.core` branch. :::
+:::tip Why two transfer methods?
+
+`nft_transfer` is a simple transfer between two user, while `nft_transfer_call` allows you to **attach an NFT to a function call**
+
+:::
+
+---
 
 ## Giới thiệu {#introduction}
 
@@ -40,21 +45,25 @@ Với những gì đã nói, quy trình cuối cùng khi chủ sở hữu chuy�
 
 Tại thời điểm này, bạn đã sẵn sàng để tiếp tục và tạo những sửa đổi quan trọng với smart contract của mình.
 
+---
+
 ## Các sửa đổi với contract
 
-Hãy bắt đầu hành trình của chúng ta trong `nft-contract/src/nft_core.rs` file.
+Let's start our journey in the `nft-contract-skeleton/src/nft_core.rs` file.
 
 ### Transfer function {#transfer-function}
 
 You'll start by implementing the `nft_transfer` logic. Function này sẽ chuyển `token_id` được chỉ định tới `receiver_id` với một tuỳ chọn `memo` ví dụ như `"Happy Birthday Mike!"`.
 
-<Github language="rust" start="62" end="82" url="https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/nft_core.rs" />
+<Github language="rust" start="60" end="80" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-basic/src/nft_core.rs" />
 
-There are a couple things to notice here. Firstly, we've introduced a new function called `assert_one_yocto()`. This method will ensure that the user has attached exactly one yoctoNEAR to the call. If a function requires a deposit, you need a full access key to sign that transaction. By adding the one yoctoNEAR deposit requirement, you're essentially forcing the user to sign the transaction with a full access key.
+There are a couple things to notice here. Firstly, we've introduced a new function called `assert_one_yocto()`, which ensures the user has attached exactly one yoctoNEAR to the call. This is a [security measure](../../2.build/2.smart-contracts/security/one_yocto.md) to ensure that the user is signing the transaction with a [full access key](../../1.concepts/protocol/access-keys.md).
 
 Since the transfer function is potentially transferring very valuable assets, you'll want to make sure that whoever is calling the function has a full access key.
 
 Secondly, we've introduced an `internal_transfer` method. This will perform all the logic necessary to transfer an NFT.
+
+<hr class="subsection" />
 
 ### Các internal helper function
 
@@ -64,32 +73,30 @@ Let's start with the easier one, `assert_one_yocto()`.
 
 #### assert_one_yocto
 
-You can put this function anywhere in the `internal.rs` file but in our case, we'll put it after the `hash_account_id` function:
-
-<Github language="rust" start="14" end="21" url="https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/internal.rs" />
+<Github language="rust" start="14" end="21" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-basic/src/internal.rs" />
 
 #### internal_transfer
 
-Bây giờ là lúc để tiến hành function `internal_transfer`, nó là cốt lõi của hướng dẫn này. Function này sẽ nhận các tham số sau:
+It's now time to explore the `internal_transfer` function which is the core of this tutorial. This function takes the following parameters:
 
 - **sender_id**: account đang cố gắng chuyển token.
 - **receiver_id**: account nhận token.
 - **token_id**: token ID đang được chuyển.
 - **memo**: một tùy chọn memo kèm theo.
 
-Điều đầu tiên bạn cần làm là đảo bảo rằng người gửi được ủy quyền để chuyển token. Trong trường hợp này, bạn chỉ cần đảm bảo rằng người gửi là chủ sở hữu của token. Bạn sẽ làm điều đó bằng cách lấy `Token` object sử dụng `token_id` và đảm bảo rằng người gửi giống với `owner_id` của token.
+The first thing we have to do is to make sure that the sender is authorized to transfer the token. In this case, we just make sure that the sender is the owner of the token. We do that by getting the `Token` object using the `token_id` and making sure that the sender is equal to the token's `owner_id`.
 
-Thứ hai, bạn sẽ xóa token ID từ danh sách token của người gửi và thêm token ID vào danh sách token của người nhận. Cuối cùng, bạn sẽ tạo một `Token` object mới với chủ sở hữu là người nhận và map lại token ID tới nó.
+Second, we remove the token ID from the sender's list and add the token ID to the receiver's list of tokens. Finally, we create a new `Token` object with the receiver as the owner and remap the token ID to that newly created object.
 
-Bạn sẽ muốn tạo function này trong quá trình thực hiện contract (dưới `internal_add_token_to_owner` bạn đã tạo trong bài hướng dẫn mint).
+We want to create this function within the contract implementation (below the `internal_add_token_to_owner` you created in the minting tutorial).
 
-<Github language="rust" start="98" end="138" url="https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/internal.rs" />
+<Github language="rust" start="96" end="132" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-basic/src/internal.rs" />
 
-Phía trên, bạn đã triển khai function để thêm token ID tới một tập các token của chủ sở hữu nhưng bạn chưa tạo một function để xóa một token ID từ một tập các token. Hãy làm điều đó bây giờ bằng cách tạo một function mới gọi là `internal_remove_token_from_owner`, chúng ta sẽ đặt ngay trên function `internal_transfer` và dưới `internal_add_token_to_owner`.
+Now let's look at the function called `internal_remove_token_from_owner`. That function implements the functionality for removing a token ID from an owner's set.
 
-Trong remove function này, bạn sẽ lấy tập các token của một account ID và sau đó remove token ID đã truyền vào. Nếu tập token của account là rỗng sau khi xóa, bạn sẽ xóa account khỏi cấu trúc dữ liệu `tokens_per_owner`.
+In the remove function, we get the set of tokens for a given account ID and then remove the passed in token ID. If the account's set is empty after the removal, we simply remove the account from the `tokens_per_owner` data structure.
 
-<Github language="rust" start="73" end="96" url="https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/internal.rs" />
+<Github language="rust" start="71" end="94" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-basic/src/internal.rs" />
 
 Bây giờ, file `internal.rs` của bạn sẽ có outline như dưới đây:
 
@@ -104,51 +111,51 @@ internal.rs
     └── internal_transfer
 ```
 
-Với việc hoàn thành những internal function này, logic cho việc transfer các NFT đã xong. Bây giờ là lúc để tiếp tục và tiến hành `nft_transfer_call`, một trong những hàm tích phân phức tạp nhất trong các standard function.
+<hr class="subsection" />
 
 ### Transfer call function {#transfer-call-function}
 
-Hãy xem xét kịch bản sau đây. Một account muốn transfer một NFT sang một smart contract để thực hiện một dịch vụ. Cách tiếp cận truyền thống là sẽ sử dụng một hệ thống approval management, trong đó contract được cấp khả năng để transfer NFT tới chính nó sau khi hoàn thành. Bạn có thể tìm hiểu về hệ thống approval management này trong [phần các approval](/tutorials/nfts/approvals) của serie hướng dẫn.
+The idea behind the `nft_transfer_call` function is to transfer an NFT to a receiver while calling a method on the receiver's contract all in the same transaction.
 
-Workflow này cần nhiều transaction. Nếu chúng ta giới thiệu “transfer and call” workflow bằng một transaction duy nhất, quy trình này có thể được cải thiện rất nhiều.
+This way, we can effectively **attach an NFT to a function call**.
 
-Vì lý do này, chúng ta có một function là `nft_transfer_call`, nó sẽ transfer một NFT tới một người nhận và cũng call một method trên contract của người nhận trong cùng một transaction.
+<Github language="rust" start="82" end="126" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-basic/src/nft_core.rs" />
 
-<Github language="rust" start="84" end="127" url="https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/nft_core.rs" />
+Trước tiên, function sẽ xác nhận rằng người gọi đã đính kèm chính xác 1 yocto cho mục đích bảo mật. Nó sau đó sẽ transfer NFT sử dụng `internal_transfer` và bắt đầu cross contract call. It will call the method `nft_on_transfer` on the `receiver_id`'s contract, and create a promise to call back `nft_resolve_transfer` with the result. This is a very common workflow when dealing with [cross contract calls](../../2.build/2.smart-contracts/anatomy/crosscontract.md).
 
-Trước tiên, function sẽ xác nhận rằng người gọi đã đính kèm chính xác 1 yocto cho mục đích bảo mật. Nó sau đó sẽ transfer NFT sử dụng `internal_transfer` và bắt đầu cross contract call. Nó sẽ call một method `nft_on_transfer` trên contract của `receiver_id` để trả về một promise. Sau khi promise kết thúc, hàm `nft_resolve_transfer` được gọi. Đây là workflow rất phổ biến khi xử lý các cross contract call. Trước tiên, bạn bắt đầu khởi tạo call và đợi nó thực hiện xong. Sau đó bạn gọi một function xử lý kết quả của promise và hành động phù hợp.
+As dictated by the core standard, the function we are calling (`nft_on_transfer`) needs to return a boolean stating whether or not you should return the NFT to it's original owner.
 
-Trong trường hợp cùa chúng ta, khi call `nft_on_transfer`, function đó sẽ trả về một giá trị boolean để cho biết bạn có nên trả lại NFT cho chủ sở hữu ban đầu của nó hay không. Logic này sẽ được thực thi trong hàm `nft_resolve_transfer`.
+<Github language="rust" start="146" end="201" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-basic/src/nft_core.rs" />
 
-<Github language="rust" start="149" end="201" url="https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/nft_core.rs" />
+If `nft_on_transfer` returned true or the called failed, you should send the token back to it's original owner. Ngược lại, nếu trả về false thì không cần thêm logic nào cả.
 
-Nếu `nft_on_transfer` trả về true, bạn sẽ gửi token trở lại cho người sở hữu ban đầu của nó. Ngược lại, nếu trả về false thì không cần thêm logic nào cả. Đối với giá trị trả về của `nft_resolve_transfer`, hàm này phải trả về một giá trị boolean theo tiêu chuẩn quy định để cho biết người nhận có nhận thành công token hay không.
+As for the return value of our function `nft_resolve_transfer`, the standard dictates that the function should return a boolean indicating whether or not the receiver successfully received the token or not.
 
 Điều này có nghĩa là nếu `nft_on_transfer` trả về true, bạn nên trả về false. Bởi vì nếu token đang được trả lại cho chủ sở hữu ban đầu của nó, thì cuối cùng `receiver_id` đã không nhận được thành công token. Ngược lại, nếu `nft_on_transfer` trả về false, bạn nên trả về true vì chúng ta không cần trả về token và do đó `receiver_id` sở hữu thành công token.
 
 Với việc hoàn thành điều đó, bạn đã thêm thành công logic cần thiết để cho phép người dùng transfer các NFT. Bây giờ là lúc deploy và thực hiện một vài bài test.
 
+---
+
 ## Redeploy contract {#redeploying-contract}
 
-Sử dụng build script, build và deploy contract giống như bạn đã làm trong các hướng dẫn trước:
+Using cargo-near, deploy the contract as you did in the previous tutorials:
 
 ```bash
-yarn build && near deploy $NFT_CONTRACT_ID out/main.wasm
-```
-
-Lúc này sẽ có một cảnh báo nói rằng tài khoản đã có một contract đã được deploy và sẽ hỏi bạn có muốn tiếp tục hay không. Đơn giản hãy gõ `y` và ấn enter.
-
-```
-This account already has a deployed contract [ AKJK7sCysrWrFZ976YVBnm6yzmJuKLzdAyssfzK9yLsa ]. Do you want to proceed? (y/n)
+cargo near deploy $NFT_CONTRACT_ID without-init-call network-config testnet sign-with-keychain send
 ```
 
 :::tip Nếu bạn chưa hoàn thành các bài hướng dẫn trước đó và mới chỉ theo dõi bài này, đơn giản hãy tạo một account và login với CLI của mình bằng cách sử dụng `near login`. Bạn có thể export một biến môi trường `export NFT_CONTRACT_ID=YOUR_ACCOUNT_ID_HERE`. :::
+
+---
 
 ## Test các thay đổi mới {#testing-changes}
 
 Bây giờ thì bạn đã deploy một bản vá lỗi cho contract, đã đến lúc để chuyển sang giai đoạn test. Sử dụng NFT contract trước đó mà bạn đã đã mint token cho chính mình, bạn có thể test method `nft_transfer`. Nếu bạn transfer NFT, nó sẽ bị xoá khỏi các bộ sưu tập trong account của bạn được hiển thị ở wallet. Ngoài ra, nếu bạn truy vấn bất kỳ enumeration function nào, nó sẽ cho thấy rằng bạn không còn là chủ sở hữu nữa.
 
 Hãy test điều này bằng cách transfer một NFT tới account `benjiman.testnet` và xem NFT có còn thuộc quyền sở hữu của bạn hay không.
+
+<hr class="subsection" />
 
 ### Test transfer function
 
@@ -163,6 +170,8 @@ near call $NFT_CONTRACT_ID nft_transfer '{"receiver_id": "benjiman.testnet", "to
 ```
 
 Nếu bây giờ bạn truy vấn tất cả các token mà account bạn sở hữu, token đó sẽ bị thiếu. Tương tự, nếu bạn truy vấn danh sách các token được sở hữu bởi `benjiman.testnet`, account đó bây giờ sẽ sở hữu NFT của bạn.
+
+<hr class="subsection" />
 
 ### Test transfer call function
 
@@ -182,6 +191,8 @@ near call $NFT_CONTRACT_ID nft_transfer_call '{"receiver_id": "no-contract.testn
 
 Nếu bạn truy vấn các token của mình, bạn sẽ vẫn có `token-2` và tại thời điểm này, bạn đã hoàn thành!
 
+---
+
 ## Tổng kết
 
 Trong bài hướng dẫn này, bạn đã học cách làm thế nào để mở rộng một NFT contract thông qua mint function và bạn đã biết thêm cách để người dùng transfer các NFT. Bạn đã [chia nhỏ](#introduction) vấn đề thành các vấn đề bé hơn, nhiều subtask dễ xử lý hơn và lấy thông tin đó để triển khai cả hai function là [NFT transfer](#transfer-function) và [NFT transfer call](#transfer-call-function). Ngoài ra, bạn đã deploy [bản vá lỗi](#redeploying-contract) khác tới smart contract của mình và [đã test](#testing-changes) chức năng transfer.
@@ -192,7 +203,8 @@ In the [next tutorial](/docs/tutorials/contracts/nfts/approvals), you'll learn a
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `4.0.4`
+- near-cli: `4.0.13`
+- cargo-near `0.6.1`
 - NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 - Enumeration standard: [NEP181](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration), version `1.0.0`
 

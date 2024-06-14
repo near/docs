@@ -24,6 +24,12 @@ For this tutorial, you'll need to have installed:
 
 Before you start testing, set up your local environment and install the Relayer server, the Event indexer and NEAR CLI.
 
+:::info Alpha stage
+
+The Multichain Relayer solution is currently under development. Users who want to test-drive this solution should keep in mind that the product is in alpha stage, and a code audit is pending.
+
+:::
+
 ### Multichain Relayer server
 
 The main function of this server is interfacing with foreign chain RPCs sending both pre-signed funding transactions to cover gas and the actual pre-signed transaction once the funding is done.
@@ -96,7 +102,7 @@ Python and Rust output different hex RLP encoded transactions.
   <Language value="Rust" language="rust">
     <Github fname="test.rs"
         url="https://github.com/near/multichain-relayer-server/blob/5b040611f2dc6c6b405b5ec00d5102e3cc27a65c/tests/tests.rs"
-        start="24" end="33" /></Language>
+        start="24" end="38" /></Language>
 </CodeTabs>
 
 2. Ensure the [Multichain Relayer server](#multichain-relayer-server) is configured correctly and running.

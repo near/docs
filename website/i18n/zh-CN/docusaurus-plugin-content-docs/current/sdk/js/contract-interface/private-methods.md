@@ -7,7 +7,7 @@ title: "Private Methods"
 
 ## When Using Callbacks
 
-Usually, when a contract has to have a callback for a remote cross-contract call, this callback method should only be called by the contract itself to avoid someone else calling it and changing the state. A common pattern is to have an assertion that validates that the direct caller (predecessor account ID) matches to the contract's account (current account ID). The `({ privateFunction: true })` decorator simplifies this by making it a single line decorator while improving readability.
+Usually, when a contract has to have a callback for a remote cross-contract call, this callback method should only be called by the contract itself to avoid someone else calling it and changing the state. A common pattern is to have an assertion that validates that the direct caller (predecessor account ID) matches to the contract's account (current account ID). The `({ privateFunction: true })` decorator simplifies this by making it a single line decorator while improving readability. A common pattern is to have an assertion that validates that the direct caller (predecessor account ID) matches to the contract's account (current account ID). The `({ privateFunction: true })` decorator simplifies this by making it a single line decorator while improving readability.
 
 Use this annotation within the designated contract class with the [`NearBindgen({})` decorator](../contract-structure/near-bindgen.md) as follows:
 
@@ -15,6 +15,7 @@ Use this annotation within the designated contract class with the [`NearBindgen(
 @call({ privateFunction: true })
 my_method({}) {
     // ...
+}
 }
 ```
 
@@ -28,19 +29,21 @@ my_method({}) {
     }
     // ...
 }
+}
 ```
 
 Now with this annotation, only the account of the contract itself can call this method, either directly or through a promise.
 
 ## Writing Internal Methods
 
-Not all functions need to be exposed publicly. It may be beneficial to write private methods for helper or utility functions, for instance. There are three approaches to write internal methods:
+Not all functions need to be exposed publicly. It may be beneficial to write private methods for helper or utility functions, for instance. There are three approaches to write internal methods: It may be beneficial to write private methods for helper or utility functions, for instance. There are three approaches to write internal methods:
 
 1. Declare the method without using the `call` or `view` decorators.
 
 ```js
 helperMethod(a, b) {
   // ...
+}
 }
 ```
 
@@ -50,6 +53,7 @@ helperMethod(a, b) {
 // Function that can be called in another JS file
 function getFirstName(account) {
   // ...
+}
 }
 ```
 
@@ -63,6 +67,11 @@ import { getFirstName } from "./helpers.js";
 @NearBindgen({})
 export class Contract {
   // ...
+}
+
+class Helpers {
+  // ...
+}
 }
 
 class Helpers {

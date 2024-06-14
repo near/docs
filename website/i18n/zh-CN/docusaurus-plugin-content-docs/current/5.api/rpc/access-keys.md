@@ -42,7 +42,7 @@ If `permission` of the key is `FunctionCall`, it will return more details such a
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 
 ```js
@@ -98,7 +98,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 
 #### What Could Go Wrong?
 
-When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
+When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
 
 ```json
@@ -120,7 +120,7 @@ When API request fails, RPC server returns a structured error response with a li
 
 > **Heads up**
 > 
-> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them.
+> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them. Please, don't rely on them.
 
 Here is the exhaustive list of the error variants that can be returned by `view_access_key` request type:
 
@@ -253,7 +253,7 @@ Example:
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.query({
@@ -414,7 +414,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 
 #### What Could Go Wrong?
 
-When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
+When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
 
 ```json
@@ -436,7 +436,7 @@ When API request fails, RPC server returns a structured error response with a li
 
 > **Heads up**
 > 
-> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them.
+> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them. Please, don't rely on them.
 
 Here is the exhaustive list of the error variants that can be returned by `view_access_key_list` request type:
 
@@ -532,7 +532,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
 
 ## View access key changes (single) {#view-access-key-changes-single}
 
-Returns individual access key changes in a specific block. You can query multiple keys by passing an array of objects containing the `account_id` and `public_key`.
+Returns individual access key changes in a specific block. Returns individual access key changes in a specific block. You can query multiple keys by passing an array of objects containing the `account_id` and `public_key`.
 
 - method: `EXPERIMENTAL_changes`
 - params:
@@ -564,7 +564,7 @@ Example:
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.experimental_changes({
@@ -635,7 +635,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 
 #### What Could Go Wrong?{#what-could-go-wrong-2}
 
-When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
+When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
 
 ```json
@@ -657,7 +657,7 @@ When API request fails, RPC server returns a structured error response with a li
 
 > **Heads up**
 > 
-> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them.
+> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them. Please, don't rely on them.
 
 Here is the exhaustive list of the error variants that can be returned by `EXPERIMENTAL_changes_in_block` method:
 
@@ -725,7 +725,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
 
 ## View access key changes (all) {#view-access-key-changes-all}
 
-Returns changes to <strong>all</strong> access keys of a specific block. Multiple accounts can be quereied by passing an array of `account_ids`.
+Returns changes to <strong>all</strong> access keys of a specific block. Multiple accounts can be quereied by passing an array of `account_ids`. Multiple accounts can be quereied by passing an array of `account_ids`.
 
 - method: `EXPERIMENTAL_changes`
 - params:
@@ -752,7 +752,7 @@ Example:
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.experimental_changes({
@@ -828,7 +828,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 
 #### What Could Go Wrong?{#what-could-go-wrong-3}
 
-When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
+When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
 
 ```json
@@ -850,7 +850,7 @@ When API request fails, RPC server returns a structured error response with a li
 
 > **Heads up**
 > 
-> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them.
+> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them. Please, don't rely on them.
 
 Here is the exhaustive list of the error variants that can be returned by `EXPERIMENTAL_changes` method:
 

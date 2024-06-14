@@ -1,0 +1,49 @@
+{
+  "permalink": "/zh-CN/blog/reorganizing-docs",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-blog/2024-04-24.md",
+  "title": "Reorganizing our docs",
+  "description": "We released a mayor reorganization of our repository, so we can improve docs for everyone... including us",
+  "date": "2024-04-24T00:00:00.000Z",
+  "tags": [
+    {
+      "label": "docusaurus",
+      "permalink": "/zh-CN/blog/tags/docusaurus"
+    },
+    {
+      "label": "updates",
+      "permalink": "/zh-CN/blog/tags/updates"
+    }
+  ],
+  "readingTime": 3.345,
+  "hasTruncateMarker": true,
+  "authors": [
+    {
+      "name": "Guille",
+      "title": "Docs Maintainer",
+      "url": "https://github.com/gagdiez",
+      "imageURL": "https://github.com/gagdiez.png",
+      "key": "gagdiez"
+    }
+  ],
+  "frontMatter": {
+    "title": "Reorganizing our docs",
+    "authors": [
+      "gagdiez"
+    ],
+    "slug": "reorganizing-docs",
+    "tags": [
+      "docusaurus",
+      "updates"
+    ],
+    "hide_table_of_contents": true
+  },
+  "unlisted": false,
+  "prevItem": {
+    "title": "It's gonna be Legen... wait for it...",
+    "permalink": "/zh-CN/blog/yield-resume"
+  },
+  "nextItem": {
+    "title": "We have a blog now!",
+    "permalink": "/zh-CN/blog/we-have-a-blog"
+  }
+}

@@ -20,8 +20,8 @@ This process of translating **complex objects into simpler single-value** repres
 
 ## Overview of Serialization Formats
 
-Lets give a quick overview of both serialization formats, including their pros and cons, as well as
-an example on how their serializations look like.
+Let's give a quick overview of both serialization formats, including their pros and cons, as well as
+an example of what their serializations look like.
 
 <hr className="subsection" />
 
@@ -141,14 +141,14 @@ should arrive soon
 Let's look at this example, written only for educational purposes:
 
 ```rust
-#[near_bindgen]
-#[derive(BorshDeserialize, BorshSerialize, PanicOnDefault)]
+#[near(serializers = [json, borsh])]
+#[derive(PanicOnDefault)]
 pub struct Contract {
   string: String,
   vector: Vector<u8>
 }
 
-#[near_bindgen]
+#[near]
 impl Contract {
   #[init]
   pub fn init(string: String, first_u8: u8) -> Self {

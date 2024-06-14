@@ -9,7 +9,7 @@ Here we enumerate case scenarios, and point to where the documentation is presen
 ---
 
 ## Integrating Contracts into a Web App
-If you are developing a website (or a web-app), then you will be using `near-api-js` to communicate with the blockchain. Go to the [website](/tools/near-api-js/quick-reference) for more information about it.
+If you are developing a website (or a web-app), then you will be using `near-api-js` to communicate with the blockchain. Go to the [website](/tools/near-api-js/quick-reference) for more information about it. Go to the [website](/tools/near-api-js/quick-reference) for more information about it.
 
 ---
 

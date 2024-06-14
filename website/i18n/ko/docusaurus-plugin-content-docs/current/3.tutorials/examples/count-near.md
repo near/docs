@@ -33,9 +33,9 @@ The example is divided in two main components:
 1. The smart contract, available in two flavors: Rust and JavaScript
 2. The frontend, that interacts with an already deployed contract.
 
-<Tabs>
+<Tabs groupId="code-tabs">
 
-  <TabItem value="🌐 JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
 
 ```bash
 ┌── sandbox-ts # sandbox testing
@@ -52,7 +52,7 @@ The example is divided in two main components:
 
   </TabItem>
 
-  <TabItem value="🦀 Rust">
+  <TabItem value="rust" label="🦀 Rust">
 
 ```bash
 ┌── src # contract's code
@@ -99,7 +99,7 @@ The frontend is composed by a single HTML file (`/index.html`). This file define
 The website's logic lives in `/index.js`, which communicates with the contract through `/near-wallet.js`. You will notice in `/index.js` the following code:
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="ts">
+  <Language value="js" language="ts">
     <Github fname="index.js"
             url="https://github.com/near-examples/counters/blob/main/frontend/index.js"
             start="10" end="21" />
@@ -115,15 +115,15 @@ The website's logic lives in `/index.js`, which communicates with the contract t
 컨트랙트에는 `get_num`, `increment`, `decrement`, 그리고 `reset`이라는 네 가지 메서드가 있습니다. `get_num` 메서드는 현재 값을 반환하고, 나머지 메서드들은 값을 수정합니다.
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="ts">
+  <Language value="js" language="ts">
     <Github fname="contract.ts"
             url="https://github.com/near-examples/counters/blob/main/contract-ts/src/contract.ts"
             start="3" end="29" />
   </Language>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/counters/blob/main/contract-rs/src/lib.rs"
-            start="5" end="39" />
+            start="5" end="37" />
   </Language>
 </CodeTabs>
 
@@ -133,8 +133,8 @@ The website's logic lives in `/index.js`, which communicates with the contract t
 
 The contract readily includes a set of unit and sandbox testing to validate its functionality. To execute the tests, run the following commands:
 
-<Tabs>
-  <TabItem value="🌐 JavaScript">
+<Tabs groupId="code-tabs">
+  <TabItem value="js" label="🌐 JavaScript">
 
 ```bash
 cd contract-ts
@@ -143,7 +143,7 @@ yarn test
 ```
 
   </TabItem>
-  <TabItem value="🦀 Rust">
+  <TabItem value="rust" label="🦀 Rust">
   
   ```bash
   cd contract-rs
@@ -162,8 +162,8 @@ yarn test
 
 In order to deploy the contract you will need to create a NEAR account.
 
-<Tabs>
-  <TabItem value="🌐 JavaScript">
+<Tabs groupId="code-tabs">
+  <TabItem value="js" label="🌐 JavaScript">
 
 ```bash
 # Optional - create an account
@@ -176,7 +176,7 @@ near deploy <accountId> ./build/counter.wasm
 ```
 
   </TabItem>
-  <TabItem value="🦀 Rust">
+  <TabItem value="rust" label="🦀 Rust">
 
 ```bash
 # Optional - create an account

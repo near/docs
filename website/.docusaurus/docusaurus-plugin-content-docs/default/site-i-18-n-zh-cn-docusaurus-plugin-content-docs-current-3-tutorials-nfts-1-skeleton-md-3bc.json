@@ -1,7 +1,7 @@
 {
   "id": "tutorials/nfts/skeleton",
   "title": "Skeleton and Rust Architecture",
-  "description": "In this article, you'll learn about the basic architecture behind the NFT contract that you'll develop while following this \"Zero to Hero\" series. You'll discover the contract's layout and you'll see how the Rust files are structured in order to build a feature-complete smart contract.",
+  "description": "In this article, you'll learn about the basic architecture behind the NFT contract that you'll develop while following this \"Zero to Hero\" series.",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/3.tutorials/nfts/1-skeleton.md",
   "sourceDirName": "3.tutorials/nfts",
   "slug": "/tutorials/nfts/skeleton",

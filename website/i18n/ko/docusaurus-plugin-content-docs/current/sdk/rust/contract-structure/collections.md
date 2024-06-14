@@ -52,13 +52,13 @@ SDK에 존재하는 다음 데이터 구조는 다음과 같습니다.
 
 ```rust
 /// Using Default initialization.
-#[near_bindgen]
-#[derive(BorshDeserialize, BorshSerialize, Default)]
+#[near(contract_state)]
+#[derive(Default)]
 pub struct Contract {
     pub status_updates: HashMap<AccountId, String>,
 }
 
-#[near_bindgen]
+#[near]
 impl Contract {
     pub fn set_status(&mut self, status: String) {
         self.status_updates.insert(env::predecessor_account_id(), status);
@@ -79,13 +79,13 @@ impl Contract {
 `HashMap` 예시:
 
 ```rust
-#[near_bindgen]
-#[derive(BorshDeserialize, BorshSerialize, PanicOnDefault)]
+#[near(contract_state)]
+#[derive(PanicOnDefault)]
 pub struct Contract {
     pub status_updates: UnorderedMap<AccountId, String>,
 }
 
-#[near_bindgen]
+#[near]
 impl Contract {
     #[init]
     pub fn new() -> Self {
@@ -139,7 +139,7 @@ assert!(m2.is_empty());
 assert_eq!(m2.get(&1), Some(&"test".to_string()));
 
 // Bug 3: forgetting to save the collection in storage. When the collection is attached to
-// the contract state (`self` in `#[near_bindgen]`) this will be done automatically, but if
+// the contract state (`self` in `#[near]`) this will be done automatically, but if
 // interacting with storage manually or working with nested collections, this is relevant.
 use near_sdk::store::Vector;
 
@@ -191,13 +191,13 @@ assert!(!m.contains(&1));
 `UnorderedMap`에 대한 페이지 매김 예시:
 
 ```rust
-#[near_bindgen]
-#[derive(BorshDeserialize, BorshSerialize, PanicOnDefault)]
+#[near(contract_state)]
+#[derive(PanicOnDefault)]
 pub struct Contract {
     pub status_updates: UnorderedMap<AccountId, String>,
 }
 
-#[near_bindgen]
+#[near]
 impl Contract {
     /// Retrieves multiple elements from the `UnorderedMap`.
     /// - `from_index` is the index to start from.
@@ -245,21 +245,20 @@ impl Contract {
 다른 컬렉션과 비교했을 때, `LazyOption`만이 초기화 중 값을 초기화할 수 있게끔 허용합니다.
 
 ```rust
-#[near_bindgen]
-#[derive(BorshDeserialize, BorshSerialize, PanicOnDefault)]
+#[near(contract_state)]
+#[derive(PanicOnDefault)]
 pub struct Contract {
     pub metadata: LazyOption<Metadata>,
 }
 
-#[derive(Serialize, Deserialize, BorshDeserialize, BorshSerialize)]
-#[serde(crate = "near_sdk::serde")]
+#[near(serializers=[borsh, json])]
 pub struct Metadata {
     data: String,
     image: Base64Vec,
     blobs: Vec<String>,
 }
 
-#[near_bindgen]
+#[near]
 impl Contract {
     #[init]
     pub fn new(metadata: Metadata) -> Self {

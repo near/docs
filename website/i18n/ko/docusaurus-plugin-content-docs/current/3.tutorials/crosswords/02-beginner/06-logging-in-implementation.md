@@ -171,8 +171,7 @@ and after:
 After you solve the crossword puzzle you'll see a screen with a link to NEAR Explorer to look at the details of the transaction. Notice we have our `Transfer` Action in there:
 
 <figure>
-    <img src={explorerTransfer} alt="트랜잭션에서 5 NEAR가 mike.testnet으로 전송되는 위치를 강조 표시하는 NEAR 익스플로러의 스크린샷
-"/>
+    <img src={explorerTransfer} alt="트랜잭션에서 5 NEAR가 mike.testnet으로 전송되는 위치를 강조 표시하는 NEAR 익스플로러의 스크린샷"/>
 </figure>
 
 <br/>

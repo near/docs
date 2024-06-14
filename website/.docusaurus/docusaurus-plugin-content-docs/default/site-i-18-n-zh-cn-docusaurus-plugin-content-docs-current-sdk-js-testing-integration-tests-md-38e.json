@@ -1,7 +1,7 @@
 {
   "id": "sdk/js/testing/integration-tests",
   "title": "Integration Tests",
-  "description": "We place integration tests in JS in a separate directory at the same level as /src, called /integration-tests (read more), placing this folder within a /tests folder at root-level that contains the unit tests folder would also be plausible. Refer to this folder structure below:",
+  "description": "We place integration tests in JS in a separate directory at the same level as /src, called /integration-tests (read more), placing this folder within a /tests folder at root-level that contains the unit tests folder would also be plausible. Refer to this folder structure below",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/sdk/js/testing/integration-tests.md",
   "sourceDirName": "sdk/js/testing",
   "slug": "/sdk/js/testing/integration-tests",

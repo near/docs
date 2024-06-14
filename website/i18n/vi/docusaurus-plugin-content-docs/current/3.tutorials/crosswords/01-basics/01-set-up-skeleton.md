@@ -95,7 +95,7 @@ Now let's look at our main file, in `src/lib.rs`:
 
 As you can see, this is a stub that's ready to be filled in. Let's pause and point out a few items:
 
-- Note the [**near_bindgen** macro](/sdk/rust/contract-structure/near-bindgen) is above the struct and the impl
+- Note the [**near** macro](/sdk/rust/contract-structure/near-bindgen) is above the struct and the impl
 - Here the main struct is called `Contract`, while in other examples it might be `Counter` or something else. This is purely stylistic, but you may learn more from the link in the previous bullet.
 - You may notice the word "Borsh" and wonder what that means. This is a binary serializer. Eventually, we'll want to save data as ones and zeroes to validators' hard drives, and do it efficiently. We use Borsh for this, as is explained [on this website](https://borsh.io).
 

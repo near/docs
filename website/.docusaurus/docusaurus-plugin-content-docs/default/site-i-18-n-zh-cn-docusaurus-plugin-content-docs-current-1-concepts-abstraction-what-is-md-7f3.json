@@ -1,7 +1,7 @@
 {
   "id": "concepts/abstraction/introduction",
   "title": "Chain Abstraction",
-  "description": "Do you know how your favorite apps are built and which database they use?. Chances are not, since we choose apps based on their functionality, and not their underlying tech.",
+  "description": "Do you know how your favorite apps are built and which database they use? Chances are not, since we choose apps based on their functionality, and not their underlying tech.",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/1.concepts/abstraction/what-is.md",
   "sourceDirName": "1.concepts/abstraction",
   "slug": "/concepts/abstraction/introduction",

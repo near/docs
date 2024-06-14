@@ -31,7 +31,7 @@ import recreatingSubaccount from '/docs/assets/crosswords/erase-recreate-subacco
 첫 번째 챕터에서 배운 것과 동일한 단계를 사용합시다.
 
 <figure>
-    <img src={teachingDeployment} alt="선생님은 스마트 컨트랙트를 적절하게 배포하는 방법에 대한 지침이 있는 칠판을 보여줍니다. 1. 컨트랙트 구축. 2. 하위 계정 만들기(또는 계정이 있는 경우 삭제하고 다시 만들기) 3. 하위 계정에 배포 4. 상호작용 herogranada.near 그림" width="600"/>
+    <img src={teachingDeployment} alt="선생님은 스마트 컨트랙트를 적절하게 배포하는 방법에 대한 지침이 있는 칠판을 보여줍니다. 1. 컨트랙트 구축. 2. 하위 계정 만들기(또는 계정이 있는 경우 삭제하고 다시 만들기) 3. 하위 계정에 배포 4. 4. 상호작용 herogranada.near 그림" width="600"/>
     <figcaption>Art by <a href="https://twitter.com/GranadaHero" target="_blank">herogranada.near</a></figcaption>
 </figure>
 

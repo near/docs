@@ -18,7 +18,7 @@ Both `testnet` and `mainnet` networks have active instances that fill the databa
 
 :::info GitHub 레퍼지토리
 
-익스플로러용 NEAR 인덱서는 [NEAR 인덱서 마이크로프레임워크](https://near-indexers.io/docs/projects/near-indexer-framework) 위에 구축된 인덱서입니다. 이는 네트워크를 감시하고, 블록체인의 모든 데이터를 PostgreSQL 데이터베이스에 저장합니다. [이 GitHub 레퍼지토리](https://github.com/near/near-indexer-for-explorer)에서 소스 코드를 찾을 수 있습니다.
+NEAR Indexer for Explorer is an indexer built on top of [NEAR Indexer microframework](/concepts/advanced/near-indexer-framework). 이는 네트워크를 감시하고, 블록체인의 모든 데이터를 PostgreSQL 데이터베이스에 저장합니다. [이 GitHub 레퍼지토리](https://github.com/near/near-indexer-for-explorer)에서 소스 코드를 찾을 수 있습니다.
 
 :::
 
@@ -70,7 +70,7 @@ where r.predecessor_account_id  ='v1.faucet.nonofficial.testnet'
 
 ## NEAR Explorer sunsetting
 
-Pagoda made a decision to sunset NEAR Explorer as a product. This means that `nearblocks.io` (and `explorer.testnet.near.org`) will become a landing page with a list of available alternatives, and the existing [nearblocks.io](https://nearblocks.io) will be hosted under a new domain name and will be transitioned to the community through DevHub. [Read more here](https://near.social/devgovgigs.near/widget/gigs-board.pages.Post?id=635).
+Pagoda made a decision to sunset NEAR Explorer as a product. [Read more here](https://near.social/devgovgigs.near/widget/gigs-board.pages.Post?id=635). This means that `nearblocks.io` (and `explorer.testnet.near.org`) will become a landing page with a list of available alternatives, and the existing [nearblocks.io](https://nearblocks.io) will be hosted under a new domain name and will be transitioned to the community through DevHub.
 
 
 ### What exactly is being shut down?
@@ -108,7 +108,7 @@ Find more information about our [BigQuery solution here](../2.build/6.data-infra
 
 This is if you make queries to Explorer DB in response to API requests that your users make on your application. There are various options that you can explore:
 1. If you are working with token balances, including $NEAR, fungible or non-fungible tokens, consider using [Enhanced API](https://www.pagoda.co/enhanced-api) hosted by Pagoda, or run it yourself using https://github.com/near/near-enhanced-api-server and https://github.com/near/near-microindexers
-2. Use NEAR QueryAPI – serverless indexers and GraphQL endpoints: https://near.org/s/p?a=nearpavel.near&b=97029570
+2. Use NEAR QueryAPI – serverless indexers and GraphQL endpoints: https://dev.near.org/s/p?a=nearpavel.near&b=97029570
 3. Use NEAR Lake Indexer. Create an indexer using [Rust](https://github.com/near/near-lake-framework-rs), [JavaScript](https://github.com/near/near-lake-framework-js). There are other languages supported by community, [try this search](https://github.com/search?q=near-lake-framework&type=repositories).
 4. Consider other indexer solutions built by the community
 

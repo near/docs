@@ -16,7 +16,7 @@ sidebar_label: 대체 솔루션
 
 데이터를 온체인에 저장하려면 다음 사항을 염두에 두어야 합니다:
 
-- 파일을 무제한으로 저장할 수 있지만, 100KB당 1N의 비용이 듭니다.
+- You can store an unlimited amount of files, but will cost you 1Ⓝ per 100KB
 - 한 번에 업로드할 수 있는 용량에는 4MB의 제한이 있습니다.
 
 
@@ -72,7 +72,7 @@ yarn
 - 다음을 실행하여 애플리케이션을 시작합니다.
 
 ```bash
-yarn start 
+yarn start
 ```
 
 
@@ -92,8 +92,8 @@ Arweave에서 트랜잭션은 보류와 확정의 두 단계를 거칩니다. �
 
 - 브라우저에서 `http://localhost:1984/mine`을 방문하여 로컬 노드에 채굴 요청을 보내십시오.
 
-:::tip 
-이 단계 없이 여전히 데이터를 검색할 수 있지만, 이는 로컬 노드를 실행하고 있기 때문입니다.
+:::tip
+you may find that you are still able to retrieve your data without this step, but that's because you are running a local node.
 실제 Arweave 노드를 다룰 때는 트랜잭션이 채굴되고 확인될 때까지 기다려야 합니다.
 :::
 
@@ -186,8 +186,8 @@ IPFS([InterPlanetary File System](https://ipfs.io/) )는 분산 파일 시스템
 
 파일을 IPFS에 추가하면 파일이 암호화 해시된 더 작은 청크로 분할된 다음, 콘텐츠 식별자(CID)라는 고유한 지문이 부여됩니다.
 
-:::tip 
-CID는 해당 시점에 존재하는 파일의 영구 레코드 역할을 합니다.
+:::tip
+The CID acts as an permanent record of a file as it exists at that point in time.
 :::
 
 ### 조회
@@ -208,41 +208,6 @@ IPFS는 탈중앙화 이름 지정 시스템을 제공하므로, 긴 CID 문자�
 
 ### IPFS 공급자
 
-- [Web3.Storage](https://web3.storage/): IPFS 및 Filecoin 위에 구축을 단순화하는 무료 서비스입니다. Web3.Storage는 Filecoin의 지원을 받으며 각 네트워크의 고유한 속성을 활용하여 IPFS를 통해 컨텐츠를 사용할 수 있도록 합니다.
-- [NFT.Storage](https://nft.storage/): 이 무료 서비스는 오프체인 NFT 데이터 저장을 위해 특별히 제작되었습니다. 데이터는 IPFS 및 Filecoin에 분산되어 저장됩니다. 데이터는 스마트 컨트랙트에서 사용할 수 있는 컨텐츠 주소 지정 IPFS URI를 사용하여 참조됩니다.
+- [Web3.Storage](https://web3.storage/): it's a service that simplifies building on top of IPFS and Filecoin. Web3.Storage는 Filecoin의 지원을 받으며 각 네트워크의 고유한 속성을 활용하여 IPFS를 통해 컨텐츠를 사용할 수 있도록 합니다.
+- [NFT.Storage](https://nft.storage/): this service is built specifically for storing off-chain NFT data. 데이터는 IPFS 및 Filecoin에 분산되어 저장됩니다. 데이터는 스마트 컨트랙트에서 사용할 수 있는 컨텐츠 주소 지정 IPFS URI를 사용하여 참조됩니다.
 - [Filebase](https://filebase.com/): 다양한 지리적 위치에 걸쳐 모든 IPFS 파일을 자동으로 3배의 중복성(redundancy)으로 고정하여 성능, 중복성 및 안정성을 추가할 수 있는 지리적 중복 IPFS 핀 공급자입니다.
-
-### 예제
-
-[NFT.Storage API](https://nft.storage/api-docs/)를 사용하여 간단한 IPFS 통합을 시도해 보겠습니다 .
-
-1. API 액세스 키를 생성할 수 있도록 [nft.storage에 계정을 등록](https://nft.storage/login/)합니다.
-
-2. [API 액세스 키를 생성](https://nft.storage/manage/)하고 기록해 둡니다.
-
-3. `api.nft.storage/upload`에 `HTTP POST` 요청을 제출하고, 요청 본문에 API 키와 파일 데이터를 전달합니다.
-
-```
-curl -X POST --data-binary @/path/to/file/art.png -H 'Authorization: Bearer YOUR_API_KEY' https://api.nft.storage/upload
-```
-
-:::tip 다른 HTTP 클라이언트를 사용하려면 Authorization 헤더를 구성하고 설정하는 것을 잊지 마십시오. `"Authorization": "Bearer YOUR_API_KEY"` :::
-
-성공적인 요청은 다음과 같은 `HTTP 200` 상태 및 `application/json` 응답을 받습니다.
-
-```json
-{
-  "ok": true,
-  "value": { "cid": "bafy..." }
-}
-```
-
-4. `cid`를 사용하여 이미지의 URL을 기록합니다: `https://<cid>.ipfs.dweb.link/`
-
-```
-https://bafyreiabag3ztnhe5pg7js4bj6sxuvkz3sdf76cjvcuqjoidvnfjz7vwrq.ipfs.dweb.link/
-```
-
-이제 파일이 IPFS에 업로드되었으므로 `cid` 링크를 사용하여 검색할 수 있습니다.
-
-:::tip 여러 파일 및 기타 사용 가능한 엔드포인트 업로드에 대한 정보는 [NFT.Storage 문서](https://nft.storage/api-docs/)를 확인하세요 . :::

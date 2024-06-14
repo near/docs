@@ -13,6 +13,8 @@ import {Github} from "@site/src/components/codetabs"
 - 고도로 최적화된 스토리지
 - 해킹 열거 메서드
 
+---
+
 ## 소개
 
 이제 기본 NFT 스마트 컨트랙트에 대해 더 깊이 이해했으므로, 창의력을 발휘하고 더 고유한 기능을 구현할 수 있습니다. 기본 컨트랙트는 간단한 사용 사례에 정말 잘 작동하지만, NFT의 잠재력을 탐색하기 시작하면 이를 기반으로 확장할 수 있습니다.
@@ -21,7 +23,7 @@ import {Github} from "@site/src/components/codetabs"
 
 아래에서, 위 문제에 대한 잠재적 솔루션을 보여줌으로써, 우리는 이러한 새로운 것들을 몇 가지를 만들었습니다. 기본 NFT 컨트랙트를 커스터마이징하는 방법을 시연하면서, 귀하의 독창성을 활성화하여 가능한 것들을 소개할 것입니다. NFT의 진정한 잠재력을 발견하는 데 도움이 되기를 바랍니다. 💪
 
-<img width="45%" src="/docs/assets/nfts/customizing-logic-meme.png" />
+<hr class="subsection" />
 
 ### NFT 컬렉션 및 시리즈
 
@@ -31,9 +33,11 @@ NFT 컬렉션은 기본 NFT 컨트랙트를 처리할 때, 다음과 같은 두 
 
 NFT 공간에서 컬렉션의 개념은 매우 느슨한 의미를 가지며, 다양한 방식으로 해석될 수 있습니다. 우리의 경우, 컬렉션을 **유사한 메타데이터**를 공유하는 토큰 집합으로 정의합니다. 예를 들어 당신은 그림을 만들고 100개의 동일한 사본을 판매하기를 원할 수 있습니다. 이 경우 100개 모두 동일한 *컬렉션* 의 일부가 됩니다. 각 작품에는 동일한 아티스트, 제목, 설명, 미디어 등이 있습니다.
 
-기본 NFT 컨트랙트의 가장 큰 문제 중 하나는, 유사한 데이터를 여러 번 저장한다는 것입니다. NFT를 발행하는 경우 컨트랙트는 모든 **단일 토큰 ID**에 대해 메타데이터를 개별적으로 저장합니다. NFT의 시리즈 또는 컬렉션 아이디어를 도입하여, 이 문제를 해결할 수 있습니다.
+기본 NFT 컨트랙트의 가장 큰 문제 중 하나는, 유사한 데이터를 여러 번 저장한다는 것입니다. NFT를 발행하는 경우 컨트랙트는 모든 **단일 토큰 ID**에 대해 메타데이터를 개별적으로 저장합니다. We can fix this by introducing the idea of NFT series, or NFT collection.
 
 시리즈는 *모두* 유사한 정보를 공유하는 토큰 ID의 버킷으로 생각할 수 있습니다. 이 정보는 시리즈가 **생성** 될 때 지정되며 메타데이터, 로열티, 가격 등이 될 수 있습니다. **모든 토큰 ID**에 대해 이 정보를 저장하는 대신, 시리즈에 한 번만 저장한 다음 토큰 ID를 해당 버킷과 연결할 수 있습니다.
+
+<hr class="subsection" />
 
 ### 제한된 액세스
 
@@ -45,13 +49,15 @@ NFT 공간에서 컬렉션의 개념은 매우 느슨한 의미를 가지며, �
 
 반면, 승인된 크리에이터가 될 수도 있습니다. 이를 통해 NFT를 발행할 수 있는 새 시리즈를 정의할 수 있습니다. 귀하가 승인된 크리에이터라고 해서, 자동으로 승인된 발행자가 아니라는 점에 유의하는 것이 중요합니다. 이러한 각 권한은 컨트랙트 소유자가 부여해야 하며, 언제든지 취소할 수 있습니다.
 
+<hr class="subsection" />
+
 ### 게으른 발행
 
 게으른 발행은 사용자가 *필요에 따라* 민팅할 수 있도록 합니다. 모든 NFT를 발행하고 스토리지 비용으로 $NEAR를 지불하는 대신, **구매 시에** 토큰을 발행할 수 있습니다. 이것은 불필요한 가스를 소각하는 것을 피하고, 모든 NFT가 판매되지 않을 때 스토리지를 절약하는 데 도움이 됩니다. 이해를 돕기 위해 일반적인 시나리오를 살펴보겠습니다.
 
 Benji는 유명한 Go Team gif의 놀라운 디지털 그림을 만들었습니다. 그는 각각 1$NEAR에 1000개를 판매하려고 합니다. 전통적인 접근 방식을 사용하면, 그는 각 사본을 개별적으로 발행하고 스토리지 비용을 직접 지불해야 합니다. 그런 다음 그는 마켓플레이스 컨트랙트를 찾거나 배포하고, 1000개 사본을 판매할 스토리지 비용을 지불해야 합니다. 그는 각 토큰 ID를 판매 리스트에 올리기 위해 가스를 매번 소각해야 합니다.
 
-그 후 사람들은 NFT를 구매할 것이고, 전부 또는 일부가 판매될 것이라는 보장은 없을 것입니다. 그의 작품이 단 한 점도 판매되지 않을 가능성이 있으며, Benji는 그 모든 시간과 노력과 돈을 낭비해 버릴 수도 있습니다. 😢
+그 후 사람들은 NFT를 구매할 것이고, 전부 또는 일부가 판매될 것이라는 보장은 없을 것입니다. 그의 작품이 단 한 점도 판매되지 않을 가능성이 있으며, Benji는 그 모든 시간과 노력과 돈을 낭비해 버릴 수도 있습니다.
 
 게으른 발행은 NFT가 주문형으로 자동으로 발행될 수 있도록 합니다. Benji는 시장에서 NFT를 구매하는 대신, NFT 컨트랙트에 대한 가격을 지정할 수 있으며, 사용자는 자금이 Benji의 계정으로 직접 분배되는 `nft_mint` 함수를 직접 호출할 수 있습니다.
 
@@ -59,6 +65,7 @@ Benji는 유명한 Go Team gif의 놀라운 디지털 그림을 만들었습니�
 
 이 예를 통해, 게으른 발행에 대한 높은 수준의 개요는 누군가가 "주문형"으로 주조할 수 있는 기능을 제공한다는 것입니다. NFT에 대한 수요가 있는지 확실하지 않습니다. 이 모델을 사용하면 누군가가 실제로 작품을 구매할 때만 NFT가 발행되기 때문에, 가스나 스토리지 비용을 낭비할 필요가 없습니다.
 
+---
 
 ## 새로운 컨트랙트 파일 구조
 
@@ -86,6 +93,8 @@ src
 ├── series.rs
 ```
 
+---
+
 ## 차이점
 
 이 코드의 대부분은 NFT 컨트랙트와 동일하지만, 이 컨트랙트와 기본 NFT 컨트랙트 사이에는 몇 가지 차이점이 있습니다.
@@ -111,7 +120,9 @@ pub metadata: LazyOption<NFTContractMetadata>,
 - **approved_minters**: `nft_mint` 함수를 호출할 수 있는 계정을 추적합니다.
 - **approved_creators**: 새 시리즈를 생성할 수 있는 계정을 추적합니다.
 
-#### 시리즈 객체 {#series-object}
+<hr class="subsection" />
+
+### 시리즈 객체 {#series-object}
 또한 이제 `Series`이라는 새 객체를 추적하고 있습니다
 
 ```rust
@@ -139,13 +150,17 @@ pub struct Series {
 
 또한 이 시리즈에 대해 발행된 모든 토큰 ID를 추적하는 `tokens` 필드를 추가했습니다. 이를 통해 세트의 길이를 확인하여 `copies`의 상한선을 처리할 수 있습니다. 또한 시리즈의 모든 토큰을 통해 페이지로 정리할 수 있습니다.
 
+<hr class="subsection" />
+
 ### 시리즈 만들기
 
 `series.rs`는 이전 [발행](2-minting.md) 로직을 대체하는 새 파일입니다. 이 파일은 시리즈 생성 및 발행 로직을 하나로 합치기 위해 생성되었습니다.
 
-<Github language="rust" start="7" end="58" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/series.rs" />
+<Github language="rust" start="10" end="56" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/series.rs" />
 
 The function takes in a series ID in the form of a [u64](https://doc.rust-lang.org/std/primitive.u64.html), the metadata, royalties, and the price for tokens in the series. It will then create the [Series object](#series-object) and insert it into the contract's series_by_id data structure. It's important to note that the caller must be an approved creator and they must attach enough $NEAR to cover storage costs.
+
+<hr class="subsection" />
 
 ### NFT 발행
 
@@ -167,13 +182,15 @@ It will then store the token information on the contract as explained in the [mi
 
 As we went over in the [minting section](2-minting.md#storage-implications) of this tutorial, all information stored on the contract costs $NEAR. When minting, there is a required deposit to pay for this storage. For *this contract*, a series price can also be specified by the owner when the series is created. This price will be used for **all** NFTs in the series when they are minted. If the price is specified, the deposit must cover both the storage as well as the price.
 
-If a price **is specified** and the user more deposit than what is necessary, the excess is sent to the **series owner**. There is also *no restriction* on who can mint tokens for series that have a price. The caller does **not** need to be an approved minter.
+If a price **is specified** and the user attaches more deposit than what is necessary, the excess is sent to the **series owner**. There is also *no restriction* on who can mint tokens for series that have a price. The caller does **not** need to be an approved minter.
 
 If **no price** was specified in the series and the user attaches more deposit than what is necessary, the excess is *refunded to them*. In addition, the contract makes sure that the caller is an approved minter in this case.
 
 :::info Notice how the token ID isn't required? This is because the token ID is automatically generated when minting. The ID stored on the contract is `${series_id}:${token_id}` where the token ID is a nonce that increases each time a new token is minted in a series. This not only reduces the amount of information stored on the contract but it also acts as a way to check the specific edition number. :::
 
-<Github language="rust" start="60" end="149" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/series.rs" />
+<Github language="rust" start="60" end="147" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/series.rs" />
+
+<hr class="subsection" />
 
 ### View 함수
 
@@ -185,7 +202,7 @@ If **no price** was specified in the series and the user attaches more deposit t
 <!-- TODO: add a learn more here call to action -->
 :::
 
-<Github language="rust" start="5" end="16" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs" />
+<Github language="rust" start="6" end="17" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs" />
 
 view 함수는 아래에 나열되어 있습니다.
 - **[get_series_total_supply](https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs#L92)**: 현재 컨트랙트 있는 총 시리즈 수를 가져옵니다.
@@ -193,13 +210,15 @@ view 함수는 아래에 나열되어 있습니다.
 - **[get_series](https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs#L97)**: 컨트랙트의 모든 시리즈에 대해 페이지를 매기고, `JsonSeries` 객체의 벡터를 반환합니다.
   - 인자: `from_index: String | null`, `limit: number | null`.
 - **[get_series_details](https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs#L115)**: 특정 시리즈에 대한 `JsonSeries` 세부 정보를 가져옵니다.Get the
-  - 인자: `id: number`.
+  - Arguments: `id: number`.
 - **[nft_supply_for_series](https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs#L133)**: 특정 시리즈에 대해 발행된 총 NFT 수를 봅니다.
   - Arguments: `id: number`.
 - **[nft_tokens_for_series](https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs#L146)**: 특정 시리즈에 대한 모든 NFT에 대해 페이지를 매기고, `JsonToken` 객체의 벡터를 반환합니다.
   - 인자: `id: number`, `from_index: String | null`, `limit: number | null`.
 
-:::info 모든 페이지 매김 함수에 총 공급량을 보기 위한 게터도 포함되어 있습니다. 이렇게 하면 전체 공급량과 함께 페이지 매김 함수의 `from_index` 및 `limit` 매개변수를 사용할 수 있으므로, 페이지 매김을 끝낼 위치를 알 수 있습니다. :::
+이렇게 하면 전체 공급량과 함께 페이지 매김 함수의 `from_index` 및 `limit` 매개변수를 사용할 수 있으므로, 페이지 매김을 끝낼 위치를 알 수 있습니다. :::info 모든 페이지 매김 함수에 총 공급량을 보기 위한 게터도 포함되어 있습니다. :::
+
+<hr class="subsection" />
 
 ### 최적화를 위한 View 호출 수정
 
@@ -209,7 +228,7 @@ view 함수는 아래에 나열되어 있습니다.
 
 이를 위해, 모든 열거 메서드의 중심인 `nft_token` 함수를 수정하는 방법이 있습니다.
 
-<Github language="rust" start="156" end="193" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/nft_core.rs" />
+<Github language="rust" start="156" end="192" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/nft_core.rs" />
 
 예를 들어 토큰에 `"My Amazing Go Team Gif"`라는 제목이 있고, NFT가 에디션 42인 경우, 반환되는 새 제목은 `"My Amazing Go Team Gif - 42"`입니다. NFT의 메타데이터에 제목이 없으면, 시리즈 및 에디션 번호가 `Series {} : Edition {}` 형식으로 반환됩니다.
 
@@ -221,6 +240,8 @@ view 함수는 아래에 나열되어 있습니다.
 
 최적화를 위해, 이러한 필드를 포함하지 않도록 컨트랙트에 **저장된** 토큰 메타데이터를 변경할 수 있지만, `nft_token`에서 정보를 반환할 때 간단히 `null` 값으로 추가할 수 있습니다.
 
+<hr class="subsection" />
+
 ### 소유자 파일
 
 마지막으로 살펴볼 파일은 `owner.rs`에 있는 소유자 파일입니다. 이 파일에는 컨트랙트 소유자만 호출할 수 있는 승인된 크리에이터 및 승인된 채굴자를 가져오고 설정하기 위한 모든 함수들이 포함되어 있습니다.
@@ -230,15 +251,17 @@ view 함수는 아래에 나열되어 있습니다.
 - `token_metadata_by_id`으로의 모든 참조가 `tokens_by_id`로 [변경](https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs#L23)되었습니다.
 - 로열티 함수는 [이제](https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/royalty.rs#L43) 토큰의 로열티가 아닌 시리즈의 로열티를 사용하여 지불 객체를 계산합니다. :::
 
+---
+
 ## 컨트랙트 구축
 
 이제 컨트랙트를 잘 이해했으므로, 빌드를 시작하겠습니다. 다음 빌드 명령을 실행하여 컨트랙트를 wasm으로 컴파일합니다.
 
 ```bash
-yarn build
+cargo near build
 ```
 
-이렇게 하면 `out/series.wasm` 디렉토리에 새 wasm 파일이 생성됩니다. 이것이 온체인에 배포할 파일입니다.
+---
 
 ## 배포 및 초기화
 
@@ -247,7 +270,6 @@ Next, you'll deploy this contract to the network.
 ```bash
 export NFT_CONTRACT_ID=<accountId>
 near create-account $NFT_CONTRACT_ID --useFaucet
-near deploy $NFT_CONTRACT_ID out/series.wasm
 ```
 
 환경 변수를 반영하여 이것이 올바르게 작동하는지 확인하세요.
@@ -257,13 +279,15 @@ echo $NFT_CONTRACT_ID
 This should return your `<accountId>`. 다음 단계는 일부 기본 메타데이터로 컨트랙트를 초기화하는 것입니다.
 
 ```bash
-near call $NFT_CONTRACT_ID new_default_meta '{"owner_id": "'$NFT_CONTRACT_ID'"}' --accountId $NFT_CONTRACT_ID
+cargo near deploy $NFT_CONTRACT_ID with-init-call new_default_meta json-args '{"owner_id": "'$NFT_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
 ```
 
 이제 컨트랙트의 메타데이터를 쿼리하면 기본 메타데이터가 반환되어야 합니다.
 ```bash
 near view $NFT_CONTRACT_ID nft_metadata
 ```
+
+---
 
 ## 시리즈 생성
 
@@ -319,6 +343,8 @@ near view $NFT_CONTRACT_ID get_series
   }
 ]
 ```
+
+<hr class="subsection" />
 
 ### 가격이 있는 시리즈
 
@@ -378,6 +404,8 @@ near view $NFT_CONTRACT_ID get_series
 ]
 ```
 
+---
+
 ## NFT 발행
 
 두 시리즈를 모두 만들었으므로 이제 NFT를 만들 차례입니다. [`near login`](../../4.tools/cli.md#near-login)를 사용하여 기존 NEAR 지갑으로 로그인하거나, NFT 컨트랙트의 하위 계정을 만들 수 있습니다. 우리의 경우 하위 계정을 사용합니다.
@@ -422,6 +450,8 @@ If you check the explorer link, it should show that the owner received on the or
 
 <img width="80%" src="/docs/assets/nfts/explorer-payout-series-owner.png" />
 
+<hr class="subsection" />
+
 ### 허용된 발행자 되기
 
 가격 없이 간단한 시리즈에 대해 NFT를 발행하려고 하면 승인된 발행자가 아니라는 오류가 발생합니다.
@@ -442,6 +472,8 @@ near call $NFT_CONTRACT_ID add_approved_minter '{"account_id": "'$BUYER_ID'"}' -
 near call $NFT_CONTRACT_ID nft_mint '{"id": "1", "receiver_id": "'$NFT_RECEIVER_ID'"}' --accountId $BUYER_ID --amount 0.1
 ```
 
+<hr class="subsection" />
+
 ### 지갑에서 NFT 보기
 
 이제 두 NFT를 모두 받았으므로 NEAR 지갑에 표시되어야 합니다. 수집품 탭을 열고 `NFT Series Contract` 제목이 있는 컨트랙트를 검색하면, 두 개의 NFT를 소유하고 있을 것입니다. 하나는 복잡한 시리즈여야 하고 다른 하나는 단순한 버전이어야 합니다. NFT는 각 시리즈의 첫 번째 에디션이기 때문에, 둘 다 제목 끝에 `- 1`이 추가 되어야 합니다.
@@ -449,6 +481,8 @@ near call $NFT_CONTRACT_ID nft_mint '{"id": "1", "receiver_id": "'$NFT_RECEIVER_
 <img width="80%" src="/docs/assets/nfts/series-wallet-collectibles.png" />
 
 만세! 시리즈 컨트랙트를 성공적으로 배포하고 테스트했습니다! **화이팅!**
+
+---
 
 ## 결론
 
@@ -462,7 +496,8 @@ near call $NFT_CONTRACT_ID nft_mint '{"id": "1", "receiver_id": "'$NFT_RECEIVER_
 
 이 글을 쓰는 시점에서 이 예제는 다음 버전에서 작동합니다.
 
-- near-cli: `4.0.4`
+- near-cli: `4.0.13`
+- cargo-near `0.6.1`
 - NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 
 :::

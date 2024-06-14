@@ -22,7 +22,7 @@ It is composed by 2 contracts:
 2. Update: An update in which we remove a parameter and change the internal structure.
 
 <CodeTabs>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="rust" language="rust">
     <Github fname="migrate.rs"
             url="https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/update/src/migrate.rs"
             start="18" end="45" />
@@ -48,7 +48,7 @@ The example is composed by 2 contracts:
 2. Update: An update that adds a new version of `PostedMessages` (`PostedMessagesV2`).
 
 <CodeTabs>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="rust" language="rust">
     <Github fname="versioned_msg.rs"
             url="https://github.com/near-examples/update-migrate-rust/blob/main/enum-updates/update/src/versioned_msg.rs"
             start="18" end="36" />
@@ -65,7 +65,7 @@ It is composed by 2 contracts:
 2. Update: An update in which we remove a parameter and change the internal structure.
 
 <CodeTabs>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="rust" language="rust">
     <Github fname="update.rs"
             url="https://github.com/near-examples/update-migrate-rust/blob/main/self-updates/base/src/update.rs"
             start="10" end="31" />

@@ -5,7 +5,7 @@
   "source": "@site/../docs/3.tutorials/templates/marketplace.md",
   "sourceDirName": "3.tutorials/templates",
   "slug": "/tutorials/templates/marketplace",
-  "permalink": "/zh-CN/tutorials/templates/marketplace",
+  "permalink": "/tutorials/templates/marketplace",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/templates/marketplace.md",
@@ -17,10 +17,10 @@
   "sidebar": "tutorials",
   "previous": {
     "title": "NFT minter",
-    "permalink": "/zh-CN/tutorials/templates/minter"
+    "permalink": "/tutorials/templates/minter"
   },
   "next": {
     "title": "Onchain Blog",
-    "permalink": "/zh-CN/tutorials/templates/blog"
+    "permalink": "/tutorials/templates/blog"
   }
 }

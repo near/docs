@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/1.chain-abstraction/nft-keys.md",
   "sourceDirName": "2.build/1.chain-abstraction",
   "slug": "/build/chain-abstraction/nft-chain-keys",
-  "permalink": "/zh-CN/build/chain-abstraction/nft-chain-keys",
+  "permalink": "/build/chain-abstraction/nft-chain-keys",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/1.chain-abstraction/nft-keys.md",
@@ -21,10 +21,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Wallet Chain Key Rules",
-    "permalink": "/zh-CN/build/chain-abstraction/wallet"
+    "permalink": "/build/chain-abstraction/wallet"
   },
   "next": {
     "title": "Overview",
-    "permalink": "/zh-CN/build/chain-abstraction/multichain-gas-relayer/overview"
+    "permalink": "/build/chain-abstraction/multichain-gas-relayer/overview"
   }
 }

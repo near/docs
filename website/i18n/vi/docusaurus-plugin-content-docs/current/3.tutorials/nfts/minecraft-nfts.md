@@ -12,7 +12,7 @@ Hướng dẫn này sẽ giúp bạn mint các kiến trúc Minecraft ở bất 
 
 ## Điều kiện tiên quyết
 
-:::info Trước tiên, bạn nên hoàn thành phần giới thiệu của **[hướng dẫn mint NFT](/docs/tutorials/contracts/nfts/minting-nfts)** :::
+:::info It is recommended that you first complete the introductory **[minting NFTs tutorial](/tutorials/nfts/minting-nfts)** :::
 
 Để hoàn thành tốt hướng dẫn này, bạn sẽ cần:
 
@@ -105,7 +105,7 @@ To upload the schematic, we are going to use the free [web3.storage](https://web
 
 #### Các bước thực hiện
 
-1. Đăng ký một account và đăng nhập vào [web3.storage](https://nft.storage/login/) thông qua email hoặc GitHub.
+1. Register an account and log in to [web3.storage](https://web3.storage/) either via email or your GitHub.
 
 2. Đi tới phần [Files](https://web3.storage/), và nhấp lên nút [Upload more Files](https://web3.storage/).
 
@@ -116,7 +116,7 @@ To upload the schematic, we are going to use the free [web3.storage](https://web
    https://bafybeidadhfilezx23dcdaueo3bjuafqeehokw33vyepkjtppigorrhbpy.ipfs.dweb.link/
    ```
 
-:::info Xem [tài liệu của web3.storage](https://docs.web3.storage/) để có thêm thông tin về việc upload nhiều file và các API endpoint khả dụng. :::
+:::info See the [web3.storage docs](https://docs.web3.storage/) for information on uploading multiple files and available API endpoints. :::
 
 ### Tương tác với contract
 

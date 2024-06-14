@@ -16,7 +16,6 @@ Bài viết này sẽ hướng dẫn bạn cài đặt một [NFT smart contract
 
 - [Rust toolchain](/build/smart-contracts/quickstart#prerequisites)
 - [Một NEAR account](#wallet)
-- [nft.storage account](#uploading-the-image)
 - [NEAR command-line interface](/docs/develop/contracts/rust/intro#installing-the-near-cli) (`near-cli`)
 
 ## Wallet {#wallet}
@@ -40,22 +39,17 @@ Briefly talks about how the wallet listens for methods that start with `nft_` an
 
 ### Upload image {#uploading-the-image}
 
-Để upload một NFT image, chúng ta sẽ sử dụng dịch vụ miễn phí [NFT Storage](https://nft.storage/#getting-started) được xây dựng đặc biệt để lưu trữ dữ liệu off-chain của NFT. NFT Storage cung cấp dung lượng và băng thông miễn phí dành cho NFT trên [IPFS](https://ipfs.io/) và [Filecoin](https://filecoin.io/).
+To upload the NFT image, you should use a [decentralized storage](/concepts/storage/storage-solutions) provider such as IPFS.
 
-#### Các bước thực hiện {#steps}
+:::note
+This example uses IPFS, but you could use a different solution like Filecoin, Arweave, or a regular centralized Web2 hosting.
+:::
 
-1. [Đăng ký một account](https://nft.storage/login/) và đăng nhập vào [nft.storage](https://nft.storage/login/).
+Once you have uploaded your file to IPFS, you'll get a unique `CID` for your content, and a URL like:
 
-2. Đi tới phần [Files](https://nft.storage/files/), và nhấp lên nút [Upload](https://nft.storage/new-file/).
-
-   ![nft.storage](/docs/assets/nfts/nft-storage.png)
-
-3. Một khi bạn đã upload file, bạn sẽ nhận được một `CID` duy nhất cho nội dung của bạn, và một URL giống như:
-   ```
-   https://bafyreiabag3ztnhe5pg7js4bj6sxuvkz3sdf76cjvcuqjoidvnfjz7vwrq.ipfs.dweb.link/
-   ```
-
-> **Tip:** kiểm tra [NFT.Storage Docs](https://nft.storage/api-docs/) về thông tin của việc upload nhiều file và các API endpoint khả dụng.
+```
+https://bafyreiabag3ztnhe5pg7js4bj6sxuvkz3sdf76cjvcuqjoidvnfjz7vwrq.ipfs.dweb.link/
+```
 
 ## Non-fungible Token contract {#non-fungible-token-contract}
 
@@ -80,8 +74,8 @@ Lúc đầu, code có thể hơi choáng ngợp, nhưng nếu chúng ta chỉ qu
 Contract sẽ theo dõi hai phần thông tin - `tokens` và `metadata`. Đối với mục đích của hướng dẫn này, chúng ta chỉ xử lý field `tokens`.
 
 ```rust
-#[near_bindgen]
-#[derive(BorshDeserialize, BorshSerialize, PanicOnDefault)]
+#[near(contract_state)]
+#[derive(PanicOnDefault)]
 pub struct Contract {
     tokens: NonFungibleToken,
     metadata: LazyOption<NFTContractMetadata>,

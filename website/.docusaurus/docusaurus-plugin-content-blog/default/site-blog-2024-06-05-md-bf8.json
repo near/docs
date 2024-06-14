@@ -1,5 +1,5 @@
 {
-  "permalink": "/zh-CN/blog/getting-started-on-windows",
+  "permalink": "/blog/getting-started-on-windows",
   "source": "@site/../blog/2024-06-05.md",
   "title": "Getting Started on NEAR Using Windows",
   "description": "In this article, we will cover how to install WSL and setup a NEAR development environment on Windows.",
@@ -7,15 +7,15 @@
   "tags": [
     {
       "label": "windows",
-      "permalink": "/zh-CN/blog/tags/windows"
+      "permalink": "/blog/tags/windows"
     },
     {
       "label": "tutorial",
-      "permalink": "/zh-CN/blog/tags/tutorial"
+      "permalink": "/blog/tags/tutorial"
     },
     {
       "label": "getting-started",
-      "permalink": "/zh-CN/blog/tags/getting-started"
+      "permalink": "/blog/tags/getting-started"
     }
   ],
   "readingTime": 2.93,
@@ -45,6 +45,6 @@
   "unlisted": false,
   "nextItem": {
     "title": "It's gonna be Legen... wait for it...",
-    "permalink": "/zh-CN/blog/yield-resume"
+    "permalink": "/blog/yield-resume"
   }
 }

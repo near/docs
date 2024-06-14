@@ -18,10 +18,6 @@ If you plan to collaborate with multiple people, we recommend you to check [this
 
 The quickest way to start building NEAR Components is by using one of the online tools. They are great for taking your first steps, while they let you find other developers and components in the NEAR ecosystem.
 
-#### [NEAR Sandbox](https://near.org/sandbox)
-
-The [near website](https://near.org/) contains its own [sandbox editor](https://near.org/sandbox). The sandbox allows you to code, preview and deploy your components directly from your browser.
-
 #### [Jutsu.ai](https://jutsu.ai)
 
 [Jutsu.ai](https://jutsu.ai) is a web IDE made for NEAR developers. It contains examples and tutorials to help onboarding you.
@@ -47,3 +43,7 @@ A command line utility that simplifies local component development for NEAR BOS.
 #### [BOS Workspace](https://github.com/nearbuilders/bos-workspace)
 
 A comprehensive toolset for simplifying the local development of NEAR components and applications, featuring hot reload, TypeScript support, multi-app management, and a local gateway.
+
+#### [Além](https://github.com/wpdas/alem)
+
+A web3 JavaScript/TypeScript library to create web3 applications for Near BOS. It's developer-friendly and uses React patterns, making it easy to organize files and write code. Access the [Além Docs](https://alem.dev/) to get to know more.

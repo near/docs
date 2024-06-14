@@ -18,17 +18,21 @@ const account = await nearConnection.account("example-account.testnet");
 
 ### Tạo account {#create-account}
 
+Create a sub-account.
+
 ```js
-// create a new account using funds from the account used to create it.
+// creates a sub-account using funds from the account used to create it.
 const account = await nearConnection.account("example-account.testnet");
 await account.createAccount(
-  "example-account2.testnet", // new account name
-  "8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc", // public key for new account
+  "sub.example-account.testnet", // sub-account name
+  "8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc", // public key for sub account
   "10000000000000000000" // initial balance for new account in yoctoNEAR
 );
 ```
 
 [<span className="typedoc-icon typedoc-icon-method"></span> Method `Account.createAccount`](https://near.github.io/near-api-js/classes/near_api_js.account.Account.html#createAccount)
+
+For creating .near or .testnet accounts please refer to the [cookbook](https://github.com/near/near-api-js/tree/master/packages/cookbook/accounts).
 
 ### Xóa account {#delete-account}
 

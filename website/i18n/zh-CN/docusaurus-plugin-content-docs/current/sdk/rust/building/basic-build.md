@@ -20,6 +20,7 @@ Notice that your project directory now has a few additional items:
 
 ```bash
 .
+.
 ├── Cargo.lock  ⟵ created during build to lock dependencies
 ├── Cargo.toml
 ├── src
@@ -27,9 +28,12 @@ Notice that your project directory now has a few additional items:
 └── target      ⟵ created during build, holds the compiled wasm
 ```
 # Build and Flags
-We recommend you to optimize your build artifact with the use of the next flags in your Cargo.toml file. If you are performing a multi-contract build, you should include these settings in the Cargo.toml that is at the root of your project.
+We recommend you to optimize your build artifact with the use of the next flags in your Cargo.toml file. If you are performing a multi-contract build, you should include these settings in the Cargo.toml that is at the root of your project. If you are performing a multi-contract build, you should include these settings in the Cargo.toml that is at the root of your project.
 
 ```bash
+[profile.release]
+codegen-units = 1
+# Tell `rustc` to optimize for small code size.
 [profile.release]
 codegen-units = 1
 # Tell `rustc` to optimize for small code size.
@@ -41,7 +45,7 @@ panic = "abort"
 overflow-checks = true
 ```
 
-The above command is essentially setting special flags and optimizing the resulting `.wasm` file. At the end of the day, this allows you to customize the `cargo build --release` command.
+The above command is essentially setting special flags and optimizing the resulting `.wasm` file. At the end of the day, this allows you to customize the `cargo build --release` command. At the end of the day, this allows you to customize the `cargo build --release` command.
 
 # Custom Flags
 If you wish to add custom flags to your build, you can perform this by adding build flags to your `ProjectFolder/.cargo/config.toml` as illustrated in this example.

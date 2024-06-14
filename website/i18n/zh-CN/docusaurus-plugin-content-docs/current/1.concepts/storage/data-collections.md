@@ -4,7 +4,7 @@ title: "Data Storage / Collections"
 sidebar_label: Storage on NEAR
 ---
 
-All data stored on the NEAR blockchain is done in key / value pairs. There are several collection methods in the SDKs we've created that will help you store your data on chain.
+All data stored on the NEAR blockchain is done in key / value pairs. There are several collection methods in the SDKs we've created that will help you store your data on chain. There are several collection methods in the SDKs we've created that will help you store your data on chain.
 
 - [`near-sdk-rs`](https://github.com/near/near-sdk-rs) for [Rust](https://www.rust-lang.org/) smart contracts
 - [`near-sdk-js`](https://github.com/near/near-sdk-js) for [JavaScript](https://www.javascript.com/) smart contracts
@@ -32,7 +32,7 @@ For information on storage costs, please see [ **[storage staking](/concepts/sto
 
 ### Big-O Notation {#big-o-notation-1}
 
-> The [Big-O notation](https://en.wikipedia.org/wiki/Big_O_notation) values in the chart below describe the [time complexity](https://en.wikipedia.org/wiki/Time_complexity) of the various collection methods found in `near-sdk-rs`. These method complexities correlate with [gas](/concepts/protocol/gas) consumption on NEAR, helping you decide which collection to utilize in your project. There are three types found in our collection methods:
+> The [Big-O notation](https://en.wikipedia.org/wiki/Big_O_notation) values in the chart below describe the [time complexity](https://en.wikipedia.org/wiki/Time_complexity) of the various collection methods found in `near-sdk-rs`. These method complexities correlate with [gas](/concepts/protocol/gas) consumption on NEAR, helping you decide which collection to utilize in your project. There are three types found in our collection methods: These method complexities correlate with [gas](/concepts/protocol/gas) consumption on NEAR, helping you decide which collection to utilize in your project. There are three types found in our collection methods:
 
 - O(1) - _[constant](https://en.wikipedia.org/wiki/Time_complexity#Constant_time)_
 - O(n) - _[linear](https://en.wikipedia.org/wiki/Time_complexity#Linear_time)_
@@ -55,7 +55,7 @@ _\*\* - to delete from the end of the vector using `pop` (or `pop_front` for deq
 
 ### Gas Consumption Examples {#gas-consumption-examples-1}
 
-> The examples below show differences in gas burnt storing and retrieving key/value pairs using the above methods. Please note that the gas cost of spinning up the runtime environment on chain has been deducted to show just data read/writes.
+> The examples below show differences in gas burnt storing and retrieving key/value pairs using the above methods. Please note that the gas cost of spinning up the runtime environment on chain has been deducted to show just data read/writes. Please note that the gas cost of spinning up the runtime environment on chain has been deducted to show just data read/writes.
 > 
 > You can reproduce this and test out your own data set by visiting [collection-examples-rs](https://github.com/near-examples/collection-examples-rs).
 
@@ -226,4 +226,4 @@ For storing data on-chain it’s important to keep in mind the following:
 
 Let’s say for example, someone wants to put an NFT purely on-chain (rather than IPFS or some other decentralized storage solution) you’ll have almost an unlimited amount of storage but will have to pay 1 $NEAR per 100kb of storage used (see Storage Staking).
 
-Users will be limited to 4MB per contract call upload due to MAX_GAS constraints. The maximum amount of gas one can attach to a given functionCall is 300TGas.
+Users will be limited to 4MB per contract call upload due to MAX_GAS constraints. The maximum amount of gas one can attach to a given functionCall is 300TGas. The maximum amount of gas one can attach to a given functionCall is 300TGas.

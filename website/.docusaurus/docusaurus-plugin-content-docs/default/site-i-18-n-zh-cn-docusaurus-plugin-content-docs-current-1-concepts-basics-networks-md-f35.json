@@ -1,7 +1,7 @@
 {
   "id": "concepts/basics/networks",
   "title": "NEAR Networks",
-  "description": "NEAR Protocol operates on several networks each operating with their own independent validators and unique state. These networks are as follows:",
+  "description": "NEAR Protocol operates on several networks each operating with their own independent validators and unique state. These networks are as follows",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/1.concepts/basics/networks.md",
   "sourceDirName": "1.concepts/basics",
   "slug": "/concepts/basics/networks",

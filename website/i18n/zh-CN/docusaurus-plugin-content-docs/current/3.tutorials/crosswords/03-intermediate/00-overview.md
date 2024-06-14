@@ -14,9 +14,9 @@ We're going to be covering an important part of smart contract development: cros
 
 ## Cross-contract calls
 
-A cross-contract call is when a smart contract calls another smart contract. For instance, if `alice.near` calls contract A, and contract A makes a call to contract B.
+A cross-contract call is when a smart contract calls another smart contract. For instance, if `alice.near` calls contract A, and contract A makes a call to contract B. For instance, if `alice.near` calls contract A, and contract A makes a call to contract B.
 
-NEAR has asynchronous transactions, and some cross-contract calls will have callbacks in order to determine the result of the call. This works a bit different from other blockchains, as we'll explain more in this chapter.
+NEAR has asynchronous transactions, and some cross-contract calls will have callbacks in order to determine the result of the call. This works a bit different from other blockchains, as we'll explain more in this chapter. This works a bit different from other blockchains, as we'll explain more in this chapter.
 
 ## Access keys
 
@@ -27,13 +27,13 @@ Login is a common use case for access keys, but let's think bigger!
 Remember the two (smaller, gray) function-call access keys from the keychain illustration?
 
 <figure>
-    <img src={accessKeys} width="600" alt="A keychain with three keys. A large, gold key represents the full-access keys on NEAR. The two other keys are gray and smaller, and have detachable latches on them. They represent function-call access key. Art created by alcantara_gabriel.near" />
+    <img src={accessKeys} width="600" alt="A keychain with three keys. A keychain with three keys. A large, gold key represents the full-access keys on NEAR. The two other keys are gray and smaller, and have detachable latches on them. They represent function-call access key. Art created by alcantara_gabriel.near The two other keys are gray and smaller, and have detachable latches on them. They represent function-call access key. Art created by alcantara_gabriel.near" />
     <figcaption>Art by <a href="https://twitter.com/Bagriel_5_10" target="_blank">alcantara_gabriel.near</a></figcaption>
 </figure><br/>
 
 Notice that they have a clasp to make them removable.
 
-While it's unlikely you'll want to give another person a full-access key, there are times when you could give a function-call access key to another person or make it public. Why? This can help enable a smooth onboarding experience, as we'll do soon.
+While it's unlikely you'll want to give another person a full-access key, there are times when you could give a function-call access key to another person or make it public. Why? This can help enable a smooth onboarding experience, as we'll do soon. Why? This can help enable a smooth onboarding experience, as we'll do soon.
 
 ## Completed project
 

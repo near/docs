@@ -19,13 +19,13 @@ In the previous chapter we simply displayed whether the crossword puzzle was sol
 
 ## Updates to transfer prize money
 
-In this chapter, our smart contract will send 5 Ⓝ to the first person who solves the puzzle. For this, we're going to require the user to have a NEAR account and log in.
+In this chapter, our smart contract will send 5 Ⓝ to the first person who solves the puzzle. For this, we're going to require the user to have a NEAR account and log in. For this, we're going to require the user to have a NEAR account and log in.
 
 :::note Better onboarding to come Later in this tutorial we won't require the user to have a NEAR account.
 
-Since logging in is important for many decentralized apps, we'll show how this is done in NEAR and how it's incredibly unique compared to other blockchains. :::
+Since logging in is important for many decentralized apps, we'll show how this is done in NEAR and how it's incredibly unique compared to other blockchains. ::: :::
 
-This transfer will occur when the first user to solve the puzzle calls the `submit_solution` method with the solution. During the execution of that function it will check that the user submitted the correct answer, then transfer the prize.
+This transfer will occur when the first user to solve the puzzle calls the `submit_solution` method with the solution. During the execution of that function it will check that the user submitted the correct answer, then transfer the prize. During the execution of that function it will check that the user submitted the correct answer, then transfer the prize.
 
 We'll be able to see this transfer (and other steps that occurred) in [NearBlocks Explorer](https://testnet.nearblocks.io).
 
@@ -33,22 +33,22 @@ But first let's talk about one of the most interesting superpowers of NEAR: acce
 
 ## Access keys
 
-You might be familiar with other blockchains where your account name is a long string of numbers and letters. NEAR has an account system where your name is human-readable, like `friend.testnet` for testnet or `friend.near` for mainnet.
+You might be familiar with other blockchains where your account name is a long string of numbers and letters. You might be familiar with other blockchains where your account name is a long string of numbers and letters. NEAR has an account system where your name is human-readable, like `friend.testnet` for testnet or `friend.near` for mainnet.
 
-You can add (and remove) keys to your account on NEAR. There are two types of keys: full and function-call access keys.
+You can add (and remove) keys to your account on NEAR. There are two types of keys: full and function-call access keys. There are two types of keys: full and function-call access keys.
 
 The illustration below shows a keychain with a full-access key (the large, gold one) and two function-call access keys.
 
 <figure>
-    <img src={accessKeys} width="600" alt="A keychain with three keys. A large, gold key represents the full-access keys on NEAR. The two other keys are gray and smaller, and have detachable latches on them. They represent function-call access key. Art created by alcantara_gabriel.near" />
+    <img src={accessKeys} width="600" alt="A keychain with three keys. A keychain with three keys. A large, gold key represents the full-access keys on NEAR. The two other keys are gray and smaller, and have detachable latches on them. They represent function-call access key. Art created by alcantara_gabriel.near The two other keys are gray and smaller, and have detachable latches on them. They represent function-call access key. Art created by alcantara_gabriel.near" />
     <figcaption>Art by <a href="https://twitter.com/Bagriel_5_10" target="_blank">alcantara_gabriel.near</a></figcaption>
 </figure>
 
 ### Full-access keys
 
-Full-access keys are the ones you want to protect the most. They can transfer all the funds from your account, delete the account, or perform any of the other [Actions on NEAR](03-actions.md).
+Full-access keys are the ones you want to protect the most. Full-access keys are the ones you want to protect the most. They can transfer all the funds from your account, delete the account, or perform any of the other [Actions on NEAR](03-actions.md).
 
-When we used the `near login` command in the [previous chapter](../01-basics/01-set-up-skeleton.md#creating-a-new-key-on-your-computer), that command asked the full-access key in the NEAR Wallet to use the `AddKey` Action to create another full-access key: the one we created locally on our computer. NEAR CLI uses that new key to deploy, make function calls, etc.
+When we used the `near login` command in the [previous chapter](../01-basics/01-set-up-skeleton.md#creating-a-new-key-on-your-computer), that command asked the full-access key in the NEAR Wallet to use the `AddKey` Action to create another full-access key: the one we created locally on our computer. NEAR CLI uses that new key to deploy, make function calls, etc. NEAR CLI uses that new key to deploy, make function calls, etc.
 
 ### Function-call access keys
 
@@ -66,7 +66,7 @@ It's only allowed to perform the `FunctionCall` Action.
 
 ### Example account with keys
 
-Let's look at this testnet account that has one full-access key and two function-call access keys. As you can see, we use the NEAR CLI [command `keys`](https://docs.near.org/tools/near-cli#near-keys) to print this info.
+Let's look at this testnet account that has one full-access key and two function-call access keys. As you can see, we use the NEAR CLI [command `keys`](https://docs.near.org/tools/near-cli#near-keys) to print this info. As you can see, we use the NEAR CLI [command `keys`](https://docs.near.org/tools/near-cli#near-keys) to print this info.
 
 <img src={tutorialAccessKeys} alt="Terminal screen showing the access keys for an account, there is one full-access key and two function-call access keys" />
 
@@ -76,6 +76,9 @@ Let's look deeper into each key.
 
 ```js
 {
+  access_key: {
+    nonce: 72772126000000, // Large nonce, huh!
+      {
   access_key: {
     nonce: 72772126000000, // Large nonce, huh!
       permission: {
@@ -90,13 +93,13 @@ Let's look deeper into each key.
 }
 ```
 
-The first key in the image above is a function-call access key that can call the smart contract `puzzle.testnet` on **any method**. If you don't specify which methods it's allowed to call, it is allowed to call them all. Note the empty array (`[]`) next to `method_names`, which indicates this.
+The first key in the image above is a function-call access key that can call the smart contract `puzzle.testnet` on **any method**. If you don't specify which methods it's allowed to call, it is allowed to call them all. Note the empty array (`[]`) next to `method_names`, which indicates this. If you don't specify which methods it's allowed to call, it is allowed to call them all. Note the empty array (`[]`) next to `method_names`, which indicates this.
 
 We won't discuss the nonce too much, but know that in order to prevent the possibility of [replay attacks](https://en.wikipedia.org/wiki/Replay_attack), the nonce for a newly-created key is large and includes info on the block height as well as a random number.
 
-The allowance is the amount, in yoctoNEAR, that this key is allowed to use during function calls. This **cannot** be used to transfer NEAR. It can only be used in gas for function calls.
+The allowance is the amount, in yoctoNEAR, that this key is allowed to use during function calls. This **cannot** be used to transfer NEAR. It can only be used in gas for function calls. This **cannot** be used to transfer NEAR. It can only be used in gas for function calls.
 
-The allowance on this key is intentionally large for demonstration purposes. `777000000000000000000000000` yoctoNEAR is `777` NEAR, which is unreasonably high for an access key. So high, in fact, that it exceeded the amount of NEAR on the contract itself when created. This shows that you can create an access key that exceeds the account balance, and that it doesn't subtract the allowance at the time of creation.
+The allowance on this key is intentionally large for demonstration purposes. `777000000000000000000000000` yoctoNEAR is `777` NEAR, which is unreasonably high for an access key. So high, in fact, that it exceeded the amount of NEAR on the contract itself when created. The allowance on this key is intentionally large for demonstration purposes. `777000000000000000000000000` yoctoNEAR is `777` NEAR, which is unreasonably high for an access key. So high, in fact, that it exceeded the amount of NEAR on the contract itself when created. This shows that you can create an access key that exceeds the account balance, and that it doesn't subtract the allowance at the time of creation.
 
 So the key is simply allowed to use the allowance in NEAR on gas, deducting from the account for each function call.
 
@@ -122,7 +125,7 @@ This second key specifies which methods can be called, and has a lower allowance
 
 Note that the allowance for this key (a quarter of a NEAR) is the default allowance when a person "logs in" in with the NEAR Wallet.
 
-In NEAR, "logging in" typically means adding a key like this to your account. We'll cover this more in a moment.
+In NEAR, "logging in" typically means adding a key like this to your account. We'll cover this more in a moment. We'll cover this more in a moment.
 
 #### Third key
 
@@ -141,21 +144,21 @@ Since this key can perform all the Actions, there aren't additional details or r
 
 Let's take a step back from NEAR and talk about how login works broadly using web3 wallets.
 
-A web3 wallet (like Ethereum's MetaMask, Cosmos's Keplr, or the NEAR Wallet) stores a private key for an account. When interacting with decentralized apps, a user will typically use the wallet to sign transactions and send them to the blockchain for processing.
+A web3 wallet (like Ethereum's MetaMask, Cosmos's Keplr, or the NEAR Wallet) stores a private key for an account. When interacting with decentralized apps, a user will typically use the wallet to sign transactions and send them to the blockchain for processing. When interacting with decentralized apps, a user will typically use the wallet to sign transactions and send them to the blockchain for processing.
 
-However, web3 wallets can also be used to sign any kind of message, and it doesn't need to send anything to the blockchain. This is sometimes called "offline signing" and protocols will sometimes create standards around how to sign data.
+However, web3 wallets can also be used to sign any kind of message, and it doesn't need to send anything to the blockchain. This is sometimes called "offline signing" and protocols will sometimes create standards around how to sign data. This is sometimes called "offline signing" and protocols will sometimes create standards around how to sign data.
 
-In other ecosystems, the idea of "logging in" with a web3 wallet uses this offline signing. A user is asked to sign a structured message and a backend can confirm that the message was signed by a given account.
+In other ecosystems, the idea of "logging in" with a web3 wallet uses this offline signing. A user is asked to sign a structured message and a backend can confirm that the message was signed by a given account. A user is asked to sign a structured message and a backend can confirm that the message was signed by a given account.
 
-NEAR keys can also sign and verify messages in this manner. In fact, there are a couple simple examples of how to achieve this in the [`near-api-js` cookbook](https://github.com/near/near-api-js/blob/master/packages/cookbook/utils/verify-signature.js).
+NEAR keys can also sign and verify messages in this manner. NEAR keys can also sign and verify messages in this manner. In fact, there are a couple simple examples of how to achieve this in the [`near-api-js` cookbook](https://github.com/near/near-api-js/blob/master/packages/cookbook/utils/verify-signature.js).
 
-There are potential drawbacks to this offline signing technique, particularly if a signed message gets intercepted by a malicious party. They might be able to send this signature to a backend and log in on your behalf. Because this all takes place offline, there's no mechanism on-chain to revoke your login or otherwise control access. We quickly see that using a web3 wallet for signed typed data runs into limitations.
+There are potential drawbacks to this offline signing technique, particularly if a signed message gets intercepted by a malicious party. They might be able to send this signature to a backend and log in on your behalf. Because this all takes place offline, there's no mechanism on-chain to revoke your login or otherwise control access. We quickly see that using a web3 wallet for signed typed data runs into limitations. They might be able to send this signature to a backend and log in on your behalf. Because this all takes place offline, there's no mechanism on-chain to revoke your login or otherwise control access. We quickly see that using a web3 wallet for signed typed data runs into limitations.
 
 So signing a message is fine, but what if we could do better?
 
 With NEAR, we can leverage access keys to improve a user's login experience and give the power back to the user.
 
-If I log into the [Guest Book example site](https://github.com/near-examples/guest-book-examples/tree/main/frontend), I create a unique key just for that dApp, adding it to my account. When I'm done I can remove the key myself. If I suspect someone has control of my key (if a laptop is stolen, for example) I can remove the key as long as I have a full-access key in my control.
+If I log into the [Guest Book example site](https://github.com/near-examples/guest-book-examples/tree/main/frontend), I create a unique key just for that dApp, adding it to my account. When I'm done I can remove the key myself. If I suspect someone has control of my key (if a laptop is stolen, for example) I can remove the key as long as I have a full-access key in my control. When I'm done I can remove the key myself. If I suspect someone has control of my key (if a laptop is stolen, for example) I can remove the key as long as I have a full-access key in my control.
 
 Logging in with NEAR truly gives the end user control of their account and how they interact with dApps, and does so on the protocol level.
 

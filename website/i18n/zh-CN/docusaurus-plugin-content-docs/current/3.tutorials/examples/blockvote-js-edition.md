@@ -80,7 +80,7 @@ The contract contains several view and call methods that allow users to interact
 - `getCandidatePair`: retrieves the names of the two candidates for a specific prompt.
 
 <CodeTabs>
-<Language value="🌐 JavaScript" language="js">
+<Language value="js" language="js">
     <Github fname="contract.ts" 
             url="https://github.com/doriancrutcher/BlockVote-JS-Edition-Tutorial/blob/main/contract/src/contract.ts"
             start="20" end="60" />
@@ -97,7 +97,7 @@ The contract contains several view and call methods that allow users to interact
 - `recordUser`: records the participation of a user in a specific prompt by adding the user's account ID to an array in the contract's unordered map of user participation
 
 <CodeTabs>
-<Language value="🌐 JavaScript" language="js">
+<Language value="js" language="js">
     <Github fname="contract.ts" 
             url="https://github.com/doriancrutcher/BlockVote-JS-Edition-Tutorial/blob/main/contract/src/contract.ts"
             start="61" end="110" />
@@ -123,7 +123,7 @@ In this project, you can run the integration tests by executing the command `yar
 These tests use a combination of `ava` and `near-workspaces`
 
 <CodeTabs>
-<Language value="🌐 JavaScript" language="js">
+<Language value="js" language="js">
     <Github fname="contract.ts" 
             url="https://github.com/doriancrutcher/BlockVote-JS-Edition-Tutorial/blob/main/integration-tests/src/main.ava.ts"
             start="6" end="92" />

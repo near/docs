@@ -1,0 +1,50 @@
+{
+  "permalink": "/vi/blog/getting-started-on-windows",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-blog/2024-06-05.md",
+  "title": "Getting Started on NEAR Using Windows",
+  "description": "In this article, we will cover how to install WSL and setup a NEAR development environment on Windows.",
+  "date": "2024-06-05T00:00:00.000Z",
+  "tags": [
+    {
+      "label": "windows",
+      "permalink": "/vi/blog/tags/windows"
+    },
+    {
+      "label": "tutorial",
+      "permalink": "/vi/blog/tags/tutorial"
+    },
+    {
+      "label": "getting-started",
+      "permalink": "/vi/blog/tags/getting-started"
+    }
+  ],
+  "readingTime": 2.93,
+  "hasTruncateMarker": true,
+  "authors": [
+    {
+      "name": "Lyudmil",
+      "title": "DevRel",
+      "url": "https://github.com/flmel",
+      "imageURL": "https://github.com/flmel.png",
+      "key": "flmel"
+    }
+  ],
+  "frontMatter": {
+    "title": "Getting Started on NEAR Using Windows",
+    "authors": [
+      "flmel"
+    ],
+    "slug": "getting-started-on-windows",
+    "tags": [
+      "windows",
+      "tutorial",
+      "getting-started"
+    ],
+    "hide_table_of_contents": true
+  },
+  "unlisted": false,
+  "nextItem": {
+    "title": "It's gonna be Legen... wait for it...",
+    "permalink": "/vi/blog/yield-resume"
+  }
+}

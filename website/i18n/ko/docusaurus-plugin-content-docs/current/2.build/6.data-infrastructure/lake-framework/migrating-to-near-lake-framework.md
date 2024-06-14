@@ -4,7 +4,7 @@ sidebar_label: NEAR Lake 프레임워크로 마이그레이션
 
 # NEAR Lake 프레임워크로 마이그레이션
 
-We encourage everyone who don't have a hard requirement to use [NEAR Indexer Framework](https://near-indexers.io/docs/projects/near-indexer-framework) consider the migration to [NEAR Lake Framework](https://near-indexers.io/docs/projects/near-lake-framework).
+We encourage everyone who don't have a hard requirement to use [NEAR Indexer Framework](/concepts/advanced/near-indexer-framework) consider the migration to [NEAR Lake Framework](/concepts/advanced/near-lake-framework).
 
 In this tutorial we'll show you how to migrate the project using [indexer-tx-watcher-example](https://github.com/near-examples/indexer-tx-watcher-example) as a showcase.
 
@@ -82,7 +82,7 @@ near-lake-framework = "0.4.0"
 
 ## clap config 변경
 
-Currently we have structure `Opts` that has a subcommand with `Run` and `Init` command. Since [NEAR Lake Framework](https://near-indexers.io/docs/projects/near-lake-framework) doesn't need `data` and config files we don't need `Init` at all. So we need to combine some structures into `Opts` itself.
+Currently we have structure `Opts` that has a subcommand with `Run` and `Init` command. Since [NEAR Lake Framework](/concepts/advanced/near-lake-framework) doesn't need `data` and config files we don't need `Init` at all. So we need to combine some structures into `Opts` itself.
 
 ```rust title=src/config.rs
 ...
@@ -270,7 +270,7 @@ async fn main() -> Result<(), tokio::io::Error> {
 
 ```
 
-Let's cast `LakeConfig` from `Opts` and instantiate [NEAR Lake Framework](https://near-indexers.io/docs/projects/near-lake-framework)'s `stream`
+Let's cast `LakeConfig` from `Opts` and instantiate [NEAR Lake Framework](/concepts/advanced/near-lake-framework)'s `stream`
 
 ```rust title=src/main.rs
 #[tokio::main]
@@ -307,7 +307,7 @@ async fn main() -> Result<(), tokio::io::Error> {
         .collect();
 ```
 
-Now we can call `listen_blocks` function we have used before in our indexer while it was built on top of [NEAR Indexer Framework](https://near-indexers.io/docs/projects/near-indexer-framework). And return `Ok(())` so our `main()` would be happy.
+Now we can call `listen_blocks` function we have used before in our indexer while it was built on top of [NEAR Indexer Framework](/concepts/advanced/near-indexer-framework). And return `Ok(())` so our `main()` would be happy.
 
 ### NEAR Lake 프레임워크 스트림 및 최종 main 함수
 
@@ -340,7 +340,7 @@ We're done. That's pretty much entire `main()` function. Drop the old one if you
 
 ## 자료형 관련 함수 내 변경 사항
 
-Along with [NEAR Lake Framework](https://near-indexers.io/docs/projects/near-lake-framework) release we have extracted the structures created for indexers into a separate crate. This was done in order to avoid dependency on `nearcore` as now you can depend on a separate crate that is already [published on crates.io](https://crates.io/crates/near-indexer-primitives) or on NEAR Lake Framework that exposes that crate.
+Along with [NEAR Lake Framework](/concepts/advanced/near-lake-framework) release we have extracted the structures created for indexers into a separate crate. This was done in order to avoid dependency on `nearcore` as now you can depend on a separate crate that is already [published on crates.io](https://crates.io/crates/near-indexer-primitives) or on NEAR Lake Framework that exposes that crate.
 
 ### `listen_blocks`
 
@@ -394,7 +394,7 @@ fn is_tx_receiver_watched(
 
 ## 결론
 
-And now we have a completely migrated to [NEAR Lake Framework](https://near-indexers.io/docs/projects/near-lake-framework) indexer.
+And now we have a completely migrated to [NEAR Lake Framework](/concepts/advanced/near-lake-framework) indexer.
 
 We are posting the complete diffs for the reference
 

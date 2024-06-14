@@ -49,7 +49,7 @@ For instance, you can easily create a crowdfunding contract that accepts $NEAR. 
 
 ## Contract's Storage
 
-Smart contract store they data in the account's state. The contract's storage is organized as **key-value pairs** encoded using either [JSON](https://www.json.org/json-en.html) or [Borsh](https://borsh.io) serialization. This allows to store any type of data efficiently, from simple numbers to complex objects.
+Smart contract stores data in the account's state. The contract's storage is organized as **key-value pairs** encoded using either [JSON](https://www.json.org/json-en.html) or [Borsh](https://borsh.io) serialization. This allows to store any type of data efficiently, from simple numbers to complex objects.
 
 Since the data occupies space in the network, smart contracts need to **pay for the storage they use**. For this, accounts automatically lock a portion of their balance each time new data is stored in the contract. This means that:
 
@@ -59,5 +59,7 @@ Since the data occupies space in the network, smart contracts need to **pay for 
 Currently, it cost approximately **1 Ⓝ** to store **100kb** of data.
 
 :::tip
+:::tip
 Serializing and deserializing the storage happens automatically through our SDK tools, so you can focus on coding the logic of the contract
+:::
 :::

@@ -4,7 +4,7 @@ sidebar_label: Lake Overview
 title: NEAR Lake Indexer
 ---
 
-NEAR Lake is an indexer built on top of [NEAR Indexer Framework](https://near-indexers.io/docs/projects/near-indexer-framework) to watch the network and store all the [events](events.md) as JSON files on AWS S3.
+NEAR Lake is an indexer built on top of [NEAR Indexer Framework](/concepts/advanced/near-indexer-framework) to watch the network and store all the [events](../../../4.tools/events.md) as JSON files on AWS S3.
 
 :::info GitHub repo
 

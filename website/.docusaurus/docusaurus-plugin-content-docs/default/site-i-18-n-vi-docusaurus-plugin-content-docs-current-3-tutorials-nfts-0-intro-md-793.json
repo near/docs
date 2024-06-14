@@ -1,7 +1,7 @@
 {
   "id": "tutorials/nfts/introduction",
   "title": "NFT từ Zero đến Hero",
-  "description": "Trong serie Zero to Hero này, bạn sẽ thấy một bộ hướng dẫn bao gồm mọi khía cạnh của một non-fungible token (NFT) smart contract. Bạn sẽ bắt đầu bằng cách mint ra một NFT bằng cách sử dụng một contract đã được deploy sẵn, và cuối cùng, bạn sẽ kết thúc việc xây dựng một một NFT smart contract hoàn chỉnh hỗ trợ mọi extension.",
+  "description": "In this Zero to Hero series, you'll find a set of tutorials that will cover every aspect of a non-fungible token (NFT) smart contract. You'll start by minting an NFT using a pre-deployed contract and by the end you'll end up building a fully-fledged NFT smart contract that supports every extension.",
   "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/3.tutorials/nfts/0-intro.md",
   "sourceDirName": "3.tutorials/nfts",
   "slug": "/tutorials/nfts/introduction",

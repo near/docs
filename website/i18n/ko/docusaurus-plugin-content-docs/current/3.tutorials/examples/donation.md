@@ -33,9 +33,9 @@ The example is divided in two main components:
 1. The smart contract, available in two flavors: rust and javascript
 2. The frontend, that interacts with an already deployed contract.
 
-<Tabs>
+<Tabs groupId="code-tabs">
 
-  <TabItem value="🌐 JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
 
 ```bash
 ┌── sandbox-ts # sandbox testing
@@ -54,7 +54,7 @@ The example is divided in two main components:
 
   </TabItem>
 
-  <TabItem value="🦀 Rust">
+  <TabItem value="rust" label="🦀 Rust">
 
 ```bash
 ┌── tests # workspaces testing
@@ -89,7 +89,7 @@ yarn
 yarn start
 ```
 
-계속해서 NEAR 계정으로 로그인하세요. 없는 경우 즉시 만들 수 있습니다. Once logged in, input the amount of NEAR you want to donate and press the donate button. 트랜잭션을 확인하기 위해 NEAR 지갑으로 리디렉션됩니다. After confirming it, the donation will be listed in the "Latest Donations".
+계속해서 NEAR 계정으로 로그인하세요. 없는 경우 즉시 만들 수 있습니다. 트랜잭션을 확인하기 위해 NEAR 지갑으로 리디렉션됩니다. Once logged in, input the amount of NEAR you want to donate and press the donate button. After confirming it, the donation will be listed in the "Latest Donations".
 
 <hr class="subsection" />
 
@@ -115,18 +115,18 @@ The frontend is composed by a single HTML file (`/index.html`), while the logic 
 
 ## Smart Contract
 
-The contract exposes methods to donate tokens (`donate`), and methods to retrieve the recorded donations (e.g. `get_donation_by_number`).
+The contract exposes methods to donate tokens (`donate`), and methods to retrieve the recorded donations (e.g. `get_donation_for_account`).
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="ts">
+  <Language value="js" language="ts">
     <Github fname="contract.ts"
             url="https://github.com/near-examples/donation-examples/blob/main/contract-ts/src/contract.ts"
             start="16" end="44" />
   </Language>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/src/donation.rs"
-            start="22" end="65" />
+            start="17" end="74" />
   </Language>
 </CodeTabs>
 
@@ -136,8 +136,8 @@ The contract exposes methods to donate tokens (`donate`), and methods to retriev
 
 The contract readily includes a set of unit and sandbox testing to validate its functionality. To execute the tests, run the following commands:
 
-<Tabs>
-  <TabItem value="🌐 JavaScript">
+<Tabs groupId="code-tabs">
+  <TabItem value="js" label="🌐 JavaScript">
 
   ```bash
   cd contract-ts
@@ -146,7 +146,7 @@ The contract readily includes a set of unit and sandbox testing to validate its 
   ```
 
   </TabItem>
-  <TabItem value="🦀 Rust">
+  <TabItem value="rust" label="🦀 Rust">
   
   ```bash
   cd contract-rs
@@ -165,8 +165,8 @@ The contract readily includes a set of unit and sandbox testing to validate its 
 
 In order to deploy the contract you will need to create a NEAR account.
 
-<Tabs>
-  <TabItem value="🌐 JavaScript">
+<Tabs groupId="code-tabs">
+  <TabItem value="js" label="🌐 JavaScript">
 
 ```bash
 # Optional - create an account
@@ -179,7 +179,7 @@ near deploy <accountId> ./build/donation.wasm
 ```
 
   </TabItem>
-  <TabItem value="🦀 Rust">
+  <TabItem value="rust" label="🦀 Rust">
 
 ```bash
 # Optional - create an account

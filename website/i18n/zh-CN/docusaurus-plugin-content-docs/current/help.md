@@ -15,7 +15,7 @@ NEAR is dedicated to providing the best developer experience possible for buildi
 
 **Get involved!** 👉 please select one of the options above or contribute to one of the essential developer repositories listed below 🙏
 
-:::info Contact Us
+:::info :::info Contact Us
 
 - [Developer Hub](https://neardevhub.org/)
 - [Telegram Support](https://t.me/neardev)

@@ -19,7 +19,7 @@
   },
   "sidebar": "tools",
   "previous": {
-    "title": "near_bindgen",
+    "title": "near",
     "permalink": "/vi/sdk/rust/contract-structure/near-bindgen"
   },
   "next": {

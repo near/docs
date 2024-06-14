@@ -18,17 +18,21 @@ const account = await nearConnection.account("example-account.testnet");
 
 ### Create Account {#create-account}
 
+Create a sub-account.
+
 ```js
-// create a new account using funds from the account used to create it.
+// creates a sub-account using funds from the account used to create it.
 const account = await nearConnection.account("example-account.testnet");
 await account.createAccount(
-  "example-account2.testnet", // new account name
-  "8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc", // public key for new account
+  "sub.example-account.testnet", // sub-account name
+  "8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc", // public key for sub account
   "10000000000000000000" // initial balance for new account in yoctoNEAR
 );
 ```
 
 [<span className="typedoc-icon typedoc-icon-method"></span> Method `Account.createAccount`](https://near.github.io/near-api-js/classes/near_api_js.account.Account.html#createAccount)
+
+For creating .near or .testnet accounts please refer to the [cookbook](https://github.com/near/near-api-js/tree/master/packages/cookbook/accounts).
 
 ### Delete Account {#delete-account}
 
@@ -65,7 +69,7 @@ await account.getAccountDetails();
 
 ### Deploy a Contract {#deploy-a-contract}
 
-You can deploy a contract from a compiled WASM file. This returns an object with transaction and receipts outcomes and status.
+You can deploy a contract from a compiled WASM file. This returns an object with transaction and receipts outcomes and status. This returns an object with transaction and receipts outcomes and status.
 
 ```js
 const account = await nearConnection.account("example-account.testnet");
@@ -78,7 +82,7 @@ const transactionOutcome = await account.deployContract(
 
 ### Send Tokens {#send-tokens}
 
-Transfer NEAR tokens between accounts. This returns an object with transaction and receipts outcomes and status.
+Transfer NEAR tokens between accounts. Transfer NEAR tokens between accounts. This returns an object with transaction and receipts outcomes and status.
 
 ```js
 const account = await nearConnection.account("sender-account.testnet");

@@ -36,9 +36,9 @@ The example is divided in two main components:
 1. The smart contract, available in two flavors: Rust and JavaScript
 2. The frontend, that interacts with an already deployed contract.
 
-<Tabs>
+<Tabs groupId="code-tabs">
 
-  <TabItem value="🌐 JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
 
 ```bash
 ┌── sandbox-ts # sandbox testing
@@ -56,7 +56,7 @@ The example is divided in two main components:
 
   </TabItem>
 
-  <TabItem value="🦀 Rust">
+  <TabItem value="rust" label="🦀 Rust">
 
 ```bash
 ┌── tests # workspaces testing
@@ -90,7 +90,7 @@ yarn
 yarn start
 ```
 
-NEAR 계정으로 로그인하세요. 계정이 없는 경우 즉시 만들 수 있습니다. Once logged in, you will be able to sign a message in the guest book. 메시지와 함께 돈을 더 보낼 수 있고, If you attach more than 0.01Ⓝ then your message will be marked as "premium".
+NEAR 계정으로 로그인하세요. 계정이 없는 경우 즉시 만들 수 있습니다. Once logged in, you will be able to sign a message in the guest book. 메시지와 함께 돈을 더 보낼 수 있고, 메시지와 함께 돈을 더 보낼 수 있고, If you attach more than 0.01Ⓝ then your message will be marked as "premium".
 
 <hr class="subsection" />
 
@@ -101,7 +101,7 @@ The frontend is composed by a single HTML file (`/index.html`) and uses REACT. C
 You will notice in `/src/App.jsx` the following code:
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="js">
+  <Language value="js" language="js">
     <Github fname="App.jsx"
             url="https://github.com/near-examples/guest-book-examples/blob/main/frontend/src/App.jsx"/>
   </Language>
@@ -116,12 +116,12 @@ It setups the necessary variables and starts the app.
 The contract presents 3 methods: `add_message`, `get_message` and `total_messages`.
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="ts">
+  <Language value="js" language="ts">
     <Github fname="contract.ts"
             url="https://github.com/near-examples/guest-book-examples/blob/main/contract-ts/src/contract.ts"
             start="4" end="27" />
   </Language>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/guest-book-examples/blob/main/contract-rs/src/lib.rs"
             start="31" end="64" />
@@ -135,8 +135,8 @@ The contract presents 3 methods: `add_message`, `get_message` and `total_message
 
 The contract readily includes a set of unit and sandbox testing to validate its functionality. To execute the tests, run the following commands:
 
-<Tabs>
-  <TabItem value="🌐 JavaScript">
+<Tabs groupId="code-tabs">
+  <TabItem value="js" label="🌐 JavaScript">
 
 ```bash
 cd contract-ts
@@ -145,7 +145,7 @@ yarn test
 ```
 
   </TabItem>
-  <TabItem value="🦀 Rust">
+  <TabItem value="rust" label="🦀 Rust">
   
   ```bash
   cd contract-rs
@@ -164,8 +164,8 @@ yarn test
 
 In order to deploy the contract you will need to create a NEAR account.
 
-<Tabs>
-  <TabItem value="🌐 JavaScript">
+<Tabs groupId="code-tabs">
+  <TabItem value="js" label="🌐 JavaScript">
 
 ```bash
 # Optional - create an account
@@ -178,7 +178,7 @@ near deploy <accountId> ./build/guestbook.wasm
 ```
 
   </TabItem>
-  <TabItem value="🦀 Rust">
+  <TabItem value="rust" label="🦀 Rust">
 
 ```bash
 # Optional - create an account

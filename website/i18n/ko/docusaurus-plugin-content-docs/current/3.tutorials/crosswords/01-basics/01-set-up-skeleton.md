@@ -46,10 +46,9 @@ You can see the keys associated with your account by running the following comma
 
 ## Rust 설정
 
-Rust를 시작하기 위한 훌륭한 리소스인 [온라인 Rust Book](https://doc.rust-lang.org/stable/book)을 활용할 수도 있습니다. 그러나 블록체인 개발과 관련하여 고려해야할 주요 항목이 존재합니다. 그러나 블록체인 개발과 관련하여 고려해야할 주요 항목이 존재합니다. 즉, 스마트 컨트랙트는 기술적으로 [바이너리가 아니라 라이브러리](https://learning-rust.github.io/docs/cargo-crates-and-basic-project-structure/#crate)입니다. 그러나 지금은 Rust Book에서 일반적으로 발견되는 일부 명령을 사용하지 않을 것이라는 점만 알고 있어도 좋습니다.
+Rust를 시작하기 위한 훌륭한 리소스인 [온라인 Rust Book](https://doc.rust-lang.org/stable/book)을 활용할 수도 있습니다. 그러나 블록체인 개발과 관련하여 고려해야할 주요 항목이 존재합니다. 즉, 스마트 컨트랙트는 기술적으로 [바이너리가 아니라 라이브러리](https://learning-rust.github.io/docs/cargo-crates-and-basic-project-structure/#crate)입니다. 그러나 지금은 Rust Book에서 일반적으로 발견되는 일부 명령을 사용하지 않을 것이라는 점만 알고 있어도 좋습니다.
 
 :::caution 우리는 컨트랙트 개발에서 다음을 사용하지 않을 것입니다.
-    cargo run
 :::
 
 대신 스마트 컨트랙트를 구축하고 테스트를 실행하는 행위를 반복할 것입니다.
@@ -86,7 +85,7 @@ version = "0.1.0"
 edition = "2018"
 ```
 
-여기에서 `name`을 변경하면, 빌드 스크립트를 실행한 후 컴파일된 Wasm 파일의 이름이 변경됩니다. (OS X 및 Linux용으로는 `build.sh`, Windows용으로는 `build.bat`) 빌드 스크립트를 실행한 후, `res/my_crossword.wasm` 내에서 컴파일된 Wasm 스마트 컨트랙트를 확인할 수 있습니다.
+여기에서 `name`을 변경하면, 빌드 스크립트를 실행한 후 컴파일된 Wasm 파일의 이름이 변경됩니다. (OS X 및 Linux용으로는 `build.sh`, Windows용으로는 `build.bat`) (OS X 및 Linux용으로는 `build.sh`, Windows용으로는 `build.bat`) 빌드 스크립트를 실행한 후, `res/my_crossword.wasm` 내에서 컴파일된 Wasm 스마트 컨트랙트를 확인할 수 있습니다.
 
 이제 `src/lib.rs` 내 메인 파일을 살펴보겠습니다:
 
@@ -94,7 +93,7 @@ edition = "2018"
 
 As you can see, this is a stub that's ready to be filled in. Let's pause and point out a few items:
 
-- [**near_bindgen** 매크로](/sdk/rust/contract-structure/near-bindgen)는 struct와 impl 위에 있습니다.
+- Note the [**near** macro](/sdk/rust/contract-structure/near-bindgen) is above the struct and the impl
 - 여기서 기본 구조체는 `Contract`이지만, 다른 예에서는 `Counter`이거나 다른 것일 수 있습니다. 이는 순전히 작성자의 마음이지만, 이전 항목의 링크에서 더 많은 정보를 얻을 수 있습니다.
 - "Borsh"라는 단어를 보고 그것이 무엇을 의미하는지 궁금할 것입니다. 이것은 바이너리 직렬 변환기입니다. Eventually, we'll want to save data as ones and zeroes to validators' hard drives, and do it efficiently. We use Borsh for this, as is explained [on this website](https://borsh.io).
 

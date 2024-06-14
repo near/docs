@@ -22,7 +22,7 @@ The [State Migration example](https://github.com/near-examples/update-migrate-ru
 2. 업데이트: 매개변수를 제거하고 내부 구조를 변경하는 업데이트입니다.
 
 <CodeTabs>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="rust" language="rust">
     <Github fname="migrate.rs"
             url="https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/update/src/migrate.rs"
             start="18" end="45" />
@@ -48,7 +48,7 @@ The [State Versioning example](https://github.com/near-examples/update-migrate-r
 2. 업데이트: 새로운 버전의 `PostedMessages`(`PostedMessagesV2`)를 추가하는 업데이트
 
 <CodeTabs>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="rust" language="rust">
     <Github fname="versioned_msg.rs"
             url="https://github.com/near-examples/update-migrate-rust/blob/main/enum-updates/update/src/versioned_msg.rs"
             start="18" end="36" />
@@ -62,10 +62,10 @@ The [Self Update example](https://github.com/near-examples/update-migrate-rust/t
 
 It is composed by 2 contracts:
 1. Base: A Guest Book were people can write messages, implementing a `update_contract` method.
-2. 2. 업데이트: 매개변수를 제거하고 내부 구조를 변경하는 업데이트입니다.
+2. 업데이트: 매개변수를 제거하고 내부 구조를 변경하는 업데이트입니다.
 
 <CodeTabs>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="rust" language="rust">
     <Github fname="update.rs"
             url="https://github.com/near-examples/update-migrate-rust/blob/main/self-updates/base/src/update.rs"
             start="10" end="31" />

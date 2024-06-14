@@ -1,0 +1,49 @@
+{
+  "permalink": "/ko/blog/yield-resume",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-blog/2024-05-30.md",
+  "title": "It's gonna be Legen... wait for it...",
+  "description": "dary! Legendary! NEAR protocol is getting updated with the ability to yield and resume computations",
+  "date": "2024-05-30T00:00:00.000Z",
+  "tags": [
+    {
+      "label": "protocol",
+      "permalink": "/ko/blog/tags/protocol"
+    },
+    {
+      "label": "updates",
+      "permalink": "/ko/blog/tags/updates"
+    }
+  ],
+  "readingTime": 4.09,
+  "hasTruncateMarker": true,
+  "authors": [
+    {
+      "name": "Guille",
+      "title": "Docs Maintainer",
+      "url": "https://github.com/gagdiez",
+      "imageURL": "https://github.com/gagdiez.png",
+      "key": "gagdiez"
+    }
+  ],
+  "frontMatter": {
+    "title": "It's gonna be Legen... wait for it...",
+    "authors": [
+      "gagdiez"
+    ],
+    "slug": "yield-resume",
+    "tags": [
+      "protocol",
+      "updates"
+    ],
+    "hide_table_of_contents": true
+  },
+  "unlisted": false,
+  "prevItem": {
+    "title": "Getting Started on NEAR Using Windows",
+    "permalink": "/ko/blog/getting-started-on-windows"
+  },
+  "nextItem": {
+    "title": "Reorganizing our docs",
+    "permalink": "/ko/blog/reorganizing-docs"
+  }
+}

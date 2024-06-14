@@ -18,7 +18,7 @@ NEAR Lake Framework is an ecosystem of library companions to [NEAR Lake](/tools/
 
 We have announced the release of NEAR Lake Framework on NEAR Governance Forum.
 
-Please, read the post [there](https://gov.near.org/t/announcement-near-lake-framework-brand-new-word-in-indexer-building-approach/17668).
+Please, read the post [here](https://gov.near.org/t/announcement-near-lake-framework-brand-new-word-in-indexer-building-approach/17668).
 
 :::
 

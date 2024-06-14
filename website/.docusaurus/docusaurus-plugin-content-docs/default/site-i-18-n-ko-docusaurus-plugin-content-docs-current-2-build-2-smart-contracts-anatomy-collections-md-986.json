@@ -1,0 +1,27 @@
+{
+  "id": "build/smart-contracts/anatomy/collections",
+  "title": "Data Structures",
+  "description": "Each contract has its own state (storage), which only they can modify but anyone can see.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/2.smart-contracts/anatomy/collections.md",
+  "sourceDirName": "2.build/2.smart-contracts/anatomy",
+  "slug": "/build/smart-contracts/anatomy/collections",
+  "permalink": "/ko/build/smart-contracts/anatomy/collections",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/anatomy/collections.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "collections",
+    "title": "Data Structures"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "환경",
+    "permalink": "/ko/build/smart-contracts/anatomy/environment"
+  },
+  "next": {
+    "title": "전송 & Action",
+    "permalink": "/ko/build/smart-contracts/anatomy/actions"
+  }
+}

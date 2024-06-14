@@ -11,7 +11,7 @@ sidebar_label: Remix IDE 플러그인
 
 ## Remix IDE에 연결하기
 
-[WELLDONE Code](https://docs.welldonestudio.io/code)는 공식 Remix IDE 플러그인입니다.  [Remix IDE](https://remix.ethereum.org/) 를 방문하여 아래 가이드를 따르세요.
+[WELLDONE Code](https://docs.welldonestudio.io/code)는 공식 Remix IDE 플러그인입니다. [Remix IDE](https://remix.ethereum.org/) 를 방문하여 아래 가이드를 따르세요.
 
 왼쪽 막대의 **플러그인 관리자** 버튼을 클릭하고 **CODE BY WELDONE STUDIO** 를 검색한 후 Activate 버튼을 클릭합니다.
 
@@ -23,7 +23,7 @@ sidebar_label: Remix IDE 플러그인
 
 체인 목록에서 NEAR(NVM)을 클릭합니다.
 
- `Documentation` 버튼을 클릭하면 WELL DONE Docs로 이동하고, 사용 중 문제가 발견되거나 궁금한 사항이 있으면 `Make an issue` 버튼을 클릭하여 [Github Repository](https://github.com/welldonestudio/welldonestudio.github.io) 로 이동한 후 자유롭게 이슈를 생성할 수 있습니다.
+`Documentation` 버튼을 클릭하면 WELL DONE Docs로 이동하고, 사용 중 문제가 발견되거나 궁금한 사항이 있으면 `Make an issue` 버튼을 클릭하여 [Github Repository](https://github.com/welldonestudio/welldonestudio.github.io) 로 이동한 후 자유롭게 이슈를 생성할 수 있습니다.
 
 <img src={require('/docs/assets/remix-ide-plugin/select-chain.png').default} alt='select-chain' style={{width: '318px'}} />
 

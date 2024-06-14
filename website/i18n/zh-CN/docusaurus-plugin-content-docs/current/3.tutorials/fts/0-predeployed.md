@@ -4,7 +4,9 @@ title: Pre-deployed Contract
 sidebar_label: Pre-deployed Contract
 ---
 
-> Learn how to easily receive fungible tokens without doing any software development by using a readily-available FT smart contract.
+Learn how to easily receive fungible tokens without doing any software development by using a readily-available FT smart contract.
+
+---
 
 ## Prerequisites
 
@@ -13,17 +15,19 @@ To complete this tutorial successfully, you'll need:
 - [A NEAR testnet account](https://testnet.mynearwallet.com)
 - [NEAR-CLI](/tools/near-cli#setup)
 
+---
+
 ## Using the FT contract
 
 ### Setup
 
-- Log in to your newly created account with `near-cli` by running the following command in your terminal:
+Log in to your newly created account with `near-cli` by running the following command in your terminal:
 
 ```bash
 near login
 ```
 
- - Set an environment variable for your account ID to make it easy to copy and paste commands from this tutorial:
+Set an environment variable for your account ID to make it easy to copy and paste commands from this tutorial:
 
 ```bash
 export NEARID=YOUR_ACCOUNT_NAME
@@ -34,11 +38,13 @@ Be sure to replace `YOUR_ACCOUNT_NAME` with the account name you just logged in 
 
 :::
 
-- Test that the environment variable is set correctly by running:
+Test that the environment variable is set correctly by running:
 
 ```bash
 echo $NEARID
 ```
+
+<hr className="subsection" />
 
 ### Receiving Fungible Tokens
 
@@ -67,7 +73,7 @@ https://testnet.nearblocks.io/txns/Fhqa8YDLKxnxM9jjHCPN4hn1w1RKESYrav3kwDjhWWUu
 </p>
 </details>
 
-- To view tokens owned by an account you can call the FT contract with the following `near-cli` command:
+To view tokens owned by an account you can call the FT contract with the following `near-cli` command:
 
 ```bash
 near view ft.predeployed.examples.testnet ft_balance_of '{"account_id": "'$NEARID'"}'
@@ -78,7 +84,7 @@ near view ft.predeployed.examples.testnet ft_balance_of '{"account_id": "'$NEARI
 <p>
 
 ```json
-'2250000000000000000000'
+'10000000000000000000000'
 ```
 
 </p>
@@ -106,5 +112,5 @@ Now that you're familiar with the process, you can jump to [Contract Architectur
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `3.4.0`
+- near-cli: `4.0.13`
 :::

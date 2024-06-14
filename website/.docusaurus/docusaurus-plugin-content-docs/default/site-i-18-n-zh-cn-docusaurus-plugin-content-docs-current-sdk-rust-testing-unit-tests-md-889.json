@@ -1,7 +1,7 @@
 {
   "id": "sdk/rust/testing/unit-tests",
   "title": "Unit Tests",
-  "description": "Testing contract functionality can be done through the cargo test framework. These tests will run with a mocked blockchain and will allow testing function calls directly without having to set up/deploy to a network and sign serialized transactions on this network.",
+  "description": "Testing contract functionality can be done through the cargo test framework. Testing contract functionality can be done through the cargo test framework. These tests will run with a mocked blockchain and will allow testing function calls directly without having to set up/deploy to a network and sign serialized transactions on this network.",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/sdk/rust/testing/unit-tests.md",
   "sourceDirName": "sdk/rust/testing",
   "slug": "/sdk/rust/testing/unit-tests",

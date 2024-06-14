@@ -32,7 +32,7 @@ Example:
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.status();
@@ -248,7 +248,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=status params:='[]' id
 
 #### What could go wrong? {#what-could-go-wrong}
 
-When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
+When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
 
 ```json
@@ -270,7 +270,7 @@ When API request fails, RPC server returns a structured error response with a li
 
 > **Heads up**
 > 
-> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them.
+> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them. Please, don't rely on them.
 
 Here is the exhaustive list of the error variants that can be returned by `status` method:
 
@@ -371,7 +371,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=network_info params:='
 
 #### What could go wrong? {#what-could-go-wrong-1}
 
-When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
+When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
 
 ```json
@@ -393,7 +393,7 @@ When API request fails, RPC server returns a structured error response with a li
 
 > **Heads up**
 > 
-> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them.
+> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them. Please, don't rely on them.
 
 Here is the exhaustive list of the error variants that can be returned by `network_info` method:
 
@@ -434,7 +434,7 @@ Here is the exhaustive list of the error variants that can be returned by `netwo
 - method: `validators`
 - params: `["block hash"]`, `[block number]`, `{"epoch_id": "epoch id"}`, `{"block_id": block number}`, `{"block_id": "block hash"}`, or `[null]` for the latest block
 
-**Note:** If you want the latest `block hash`, `block number` and `epoch id`, you will need to query from the last block in an epoch. You can also query validators endpoint for past epochs if you input `block hash`, `block number` or `epoch id` of the past epoch that you want.
+**Note:** If you want the latest `block hash`, `block number` and `epoch id`, you will need to query from the last block in an epoch. You can also query validators endpoint for past epochs if you input `block hash`, `block number` or `epoch id` of the past epoch that you want. You can also query validators endpoint for past epochs if you input `block hash`, `block number` or `epoch id` of the past epoch that you want.
 
 Example:
 
@@ -453,7 +453,7 @@ input: `[block number]`
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 </TabItem>
 <TabItem value="http" label="HTTPie">
@@ -1311,7 +1311,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=validators params:='[n
 
 #### What could go wrong? {#what-could-go-wrong-2}
 
-When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
+When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
 
 ```json
@@ -1333,7 +1333,7 @@ When API request fails, RPC server returns a structured error response with a li
 
 > **Heads up**
 > 
-> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them.
+> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them. Please, don't rely on them.
 
 Here is the exhaustive list of the error variants that can be returned by `validators` method:
 

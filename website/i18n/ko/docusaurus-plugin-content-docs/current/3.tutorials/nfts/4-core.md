@@ -1,18 +1,23 @@
 ---
 id: core
-title: 핵심
-sidebar_label: 핵심
+title: Transfers
 ---
 
 import {Github} from "@site/src/components/codetabs"
 
-이 튜토리얼에서는 [핵심 표준](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core)을 스마트 컨트랙트에 구현하는 방법을 배웁니다. 처음 해보는 경우 [이 레퍼지토리](https://github.com/near-examples/nft-tutorial)를 복제하고 `3.enumeration` 브랜치를 확인하세요.
+In this tutorial you'll learn how to implement NFT transfers as defined in the [core standards](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core) into your smart contract.
 
-```bash
-git checkout 3.enumeration
-```
+We will define two methods for transferring NFTs:
+- `nft_transfer`: that transfers ownership of an NFT from one account to another
+- `nft_transfer_call`: that transfers an NFT to a "receiver" and calls a method on the receiver's account
 
-:::tip 이 _Core_ 튜토리얼의 완성된 코드를 보고 싶다면, `4.core` 브랜치에서 찾을 수 있습니다. :::
+:::tip Why two transfer methods?
+
+`nft_transfer` is a simple transfer between two user, while `nft_transfer_call` allows you to **attach an NFT to a function call**
+
+:::
+
+---
 
 ## 소개 {#introduction}
 
@@ -40,21 +45,25 @@ git checkout 3.enumeration
 
 이 시점에서, 스마트 컨트랙트에 필요한 수정을 할 준비가 되었습니다.
 
+---
+
 ## 컨트랙트 수정
 
-`nft-contract/src/nft_core.rs` 파일에서 시작해보겠습니다.
+Let's start our journey in the `nft-contract-skeleton/src/nft_core.rs` file.
 
 ### 전송 함수 {#transfer-function}
 
 `nft_transfer` 로직을 구현하여 시작합니다. 이 함수는 `"Happy Birthday Mike!"`와 같은 `memo`를 사용하여 지정된 `token_id`를 `receiver_id`로 전송합니다.
 
-<Github language="rust" start="62" end="82" url="https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/nft_core.rs" />
+<Github language="rust" start="60" end="80" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-basic/src/nft_core.rs" />
 
-There are a couple things to notice here. Firstly, we've introduced a new function called `assert_one_yocto()`. This method will ensure that the user has attached exactly one yoctoNEAR to the call. If a function requires a deposit, you need a full access key to sign that transaction. By adding the one yoctoNEAR deposit requirement, you're essentially forcing the user to sign the transaction with a full access key.
+There are a couple things to notice here. Firstly, we've introduced a new function called `assert_one_yocto()`, which ensures the user has attached exactly one yoctoNEAR to the call. This is a [security measure](../../2.build/2.smart-contracts/security/one_yocto.md) to ensure that the user is signing the transaction with a [full access key](../../1.concepts/protocol/access-keys.md).
 
 Since the transfer function is potentially transferring very valuable assets, you'll want to make sure that whoever is calling the function has a full access key.
 
 Secondly, we've introduced an `internal_transfer` method. This will perform all the logic necessary to transfer an NFT.
+
+<hr class="subsection" />
 
 ### 내부 헬퍼 함수
 
@@ -64,32 +73,30 @@ Let's start with the easier one, `assert_one_yocto()`.
 
 #### assert_one_yocto
 
-You can put this function anywhere in the `internal.rs` file but in our case, we'll put it after the `hash_account_id` function:
-
-<Github language="rust" start="14" end="21" url="https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/internal.rs" />
+<Github language="rust" start="14" end="21" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-basic/src/internal.rs" />
 
 #### internal_transfer
 
-이제 이 튜토리얼의 핵심인 `internal_transfer` 함수를 구현할 차례입니다. 이 함수는 다음과 같은 매개변수를 사용합니다.
+It's now time to explore the `internal_transfer` function which is the core of this tutorial. This function takes the following parameters:
 
 - **sender_id**: 토큰 전송을 시도하는 계정입니다.
 - **receiver_id**: 토큰을 받는 계정입니다.
 - **token_id**: 전송 중인 토큰 ID입니다.
 - **memo**: 선택적으로 포함할 수 있는 메모입니다.
 
-가장 먼저 해야 할 일은 발신자가 토큰을 전송할 권한이 있는지 확인하는 것입니다. 이 경우 보낸 사람이 토큰의 소유자인지 확인하기만 하면 됩니다. `token_id`를 사용하여 `Token` 객체를 가져오고, 보낸 사람이 토큰의 `owner_id`와 같은지 확인하면 됩니다.
+The first thing we have to do is to make sure that the sender is authorized to transfer the token. In this case, we just make sure that the sender is the owner of the token. We do that by getting the `Token` object using the `token_id` and making sure that the sender is equal to the token's `owner_id`.
 
-두 번째로, 보낸 사람 목록에서 토큰 ID를 제거하고 받는 사람의 토큰 목록에 토큰 ID를 추가합니다. 마지막으로, 수신자를 소유자로 하는 새 `Token` 객체를 만들고 토큰 ID를 새로 만든 개체에 다시 매핑합니다.
+Second, we remove the token ID from the sender's list and add the token ID to the receiver's list of tokens. Finally, we create a new `Token` object with the receiver as the owner and remap the token ID to that newly created object.
 
-컨트랙트 구현 내에서 이 함수를 만들고 싶을 것입니다(민팅 튜토리얼에서 만든 `internal_add_token_to_owner` 아래).
+We want to create this function within the contract implementation (below the `internal_add_token_to_owner` you created in the minting tutorial).
 
-<Github language="rust" start="98" end="138" url="https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/internal.rs" />
+<Github language="rust" start="96" end="132" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-basic/src/internal.rs" />
 
-이전에 소유자 집합에 토큰 ID를 추가하는 기능을 구현했지만, 소유자 집합에서 토큰 ID를 제거하는 기능은 만들지 않았습니다. `internal_transfer` 함수 바로 위와 `internal_add_token_to_owner` 함수 아래에 배치할 `internal_remove_token_from_owner`라는 새 함수를 만들어서 이를 지금 수행해 보겠습니다.
+Now let's look at the function called `internal_remove_token_from_owner`. That function implements the functionality for removing a token ID from an owner's set.
 
-제거 함수에서는 주어진 계정 ID에 대한 토큰 집합을 가져온 다음 전달된 토큰 ID를 제거합니다. 제거 후 계정의 집합이 비어 있으면 `tokens_per_owner` 자료 구조에서 계정을 제거하기만 하면 됩니다.
+In the remove function, we get the set of tokens for a given account ID and then remove the passed in token ID. If the account's set is empty after the removal, we simply remove the account from the `tokens_per_owner` data structure.
 
-<Github language="rust" start="73" end="96" url="https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/internal.rs" />
+<Github language="rust" start="71" end="94" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-basic/src/internal.rs" />
 
 이제 `internal.rs` 파일은 다음과 같은 구조를 가지고 있어야 합니다.
 
@@ -104,51 +111,51 @@ internal.rs
     └── internal_transfer
 ```
 
-이러한 내부 함수가 완료되면 NFT 전송 로직이 완료됩니다. 이제 표준의 가장 통합적이지만 복잡한 함수 중 하나인 `nft_transfer_call`를 구현할 때입니다.
+<hr class="subsection" />
 
 ### 전송 호출 함수 {#transfer-call-function}
 
-다음 시나리오를 고려해 봅시다. 계정은 서비스 수행을 위해 NFT를 스마트 컨트랙트로 전송하려고 합니다. 전통적인 접근 방식은 승인 관리 시스템을 사용하는 것입니다. 수신 컨트랙트에는 완료 후 NFT를 자신에게 전송할 수 있는 권한이 부여됩니다. 튜토리얼 시리즈의 [승인 섹션](/tutorials/nfts/approvals)에서 승인 관리 시스템에 대해 자세히 알아봅니다.
+The idea behind the `nft_transfer_call` function is to transfer an NFT to a receiver while calling a method on the receiver's contract all in the same transaction.
 
-이 승인 과정에서는 여러 트랜잭션을 수행합니다. 만약 단일 트랜잭션으로 구성된 "전송 및 호출" 워크플로우를 도입하면 프로세스를 크게 개선할 수 있습니다.
+This way, we can effectively **attach an NFT to a function call**.
 
-이러한 이유로 NFT를 수신자에게 전송하고 동일한 트랜잭션에서 수신자의 컨트랙트에 대한 메서드를 호출하는 `nft_transfer_call` 함수가 있습니다.
+<Github language="rust" start="82" end="126" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-basic/src/nft_core.rs" />
 
-<Github language="rust" start="84" end="127" url="https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/nft_core.rs" />
+이 함수는 먼저 호출자가 보안 목적으로 정확히 1 yocto를 첨부했다고 가정합니다. 그런 다음 `internal_transfer`를 사용하여 NFT를 전송하고 교차 컨트랙트 호출(Cross Contract Call)을 시작합니다. It will call the method `nft_on_transfer` on the `receiver_id`'s contract, and create a promise to call back `nft_resolve_transfer` with the result. This is a very common workflow when dealing with [cross contract calls](../../2.build/2.smart-contracts/anatomy/crosscontract.md).
 
-이 함수는 먼저 호출자가 보안 목적으로 정확히 1 yocto를 첨부했다고 가정합니다. 그런 다음 `internal_transfer`를 사용하여 NFT를 전송하고 교차 컨트랙트 호출(Cross Contract Call)을 시작합니다. 이는 Promise를 반환하는 `receiver_id`의 컨트랙트에서 `nft_on_transfer` 메서드를 호출할 것입니다. Promise 실행이 끝나면 `nft_resolve_transfer` 함수가 호출됩니다. 이는 교차 컨트랙트 호출을 처리할 때 매우 일반적인 워크플로우입니다. 먼저 호출을 시작하고, 실행이 완료될 때까지 기다립니다. 그런 다음 Promise의 결과를 받아오는 함수를 호출하고 그에 따라 조치를 취합니다.
+As dictated by the core standard, the function we are calling (`nft_on_transfer`) needs to return a boolean stating whether or not you should return the NFT to it's original owner.
 
-우리의 경우 `nft_on_transfer`를 호출할 때, 해당 함수는 Bool 형식으로 NFT를 원래 소유자에게 반환해야 하는지 여부를 반환합니다. 이는 `nft_resolve_transfer` 함수에서 실행되는 로직입니다.
+<Github language="rust" start="146" end="201" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-basic/src/nft_core.rs" />
 
-<Github language="rust" start="149" end="201" url="https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/nft_core.rs" />
+If `nft_on_transfer` returned true or the called failed, you should send the token back to it's original owner. 반대로 false가 반환되면 추가 로직이 필요하지 않습니다.
 
-`nft_on_transfer`에서 true가 반환되면, 토큰을 원래 소유자에게 다시 보내야 합니다. 반대로 false가 반환되면 추가 로직이 필요하지 않습니다. `nft_resolve_transfer`의 반환 값에 대해, 표준은 함수가 수신자가 토큰을 성공적으로 수신했는지 여부를 나타내는 Bool을 반환해야 한다고 규정합니다.
+As for the return value of our function `nft_resolve_transfer`, the standard dictates that the function should return a boolean indicating whether or not the receiver successfully received the token or not.
 
 즉, `nft_on_transfer`가 true를 반환하면, false를 반환해주어야 합니다. 이는 토큰이 원래 소유자에게 반환되는 경우 때문입니다. `receiver_id`는 결국 성공적으로 토큰을 받지 못했습니다. 반대로 `nft_on_transfer`가 false를 반환한 경우 true를 반환해야 합니다. 토큰을 반환할 필요가 없으므로 `receiver_id`가 토큰을 성공적으로 소유하기 때문입니다.
 
 이 작업이 완료되면, 이제 사용자가 NFT를 전송할 수 있도록 필요한 로직을 성공적으로 추가한 것입니다. 이제 배포하고 몇 가지 테스트를 수행할 시간입니다.
 
+---
+
 ## 컨트랙트 재배포 {#redeploying-contract}
 
-빌드 스크립트를 사용하여 이전 튜토리얼에서와 같이 컨트랙트를 빌드하고 배포합니다.
+Using cargo-near, deploy the contract as you did in the previous tutorials:
 
 ```bash
-yarn build && near deploy $NFT_CONTRACT_ID out/main.wasm
-```
-
-이렇게 하면 계정에 배포된 컨트랙트가 있다는 경고가 출력되고 계속 진행할 것인지 묻습니다. 간단히 `y`를 입력하고 엔터를 누르세요.
-
-```
-This account already has a deployed contract [ AKJK7sCysrWrFZ976YVBnm6yzmJuKLzdAyssfzK9yLsa ]. Do you want to proceed? (y/n)
+cargo near deploy $NFT_CONTRACT_ID without-init-call network-config testnet sign-with-keychain send
 ```
 
 :::tip 이전 튜토리얼을 완료하지 않았고 이 튜토리얼을 따라하는 경우 `near login`를 사용하여 계정을 만들고 CLI로 로그인하면 됩니다. 그런 다음 `export NFT_CONTRACT_ID=YOUR_ACCOUNT_ID_HERE` 환경 변수를 내보낼 수 있습니다. :::
+
+---
 
 ## 새 변경 사항 테스트 {#testing-changes}
 
 컨트랙트에 패치 수정 사항을 배포했으므로 이제 테스트를 진행할 차례입니다. 자신에게 토큰을 발행한 이전 NFT 컨트랙트를 사용하여 `nft_transfer` 메서드를 테스트할 수 있습니다. NFT를 전송하면 지갑에 표시되는 계정의 수집품에서 제거되어야 합니다. 또한 열거 함수를 쿼리하면 더 이상 소유자가 아님이 표시되어야 합니다.
 
 NFT를 `benjiman.testnet` 계정으로 전송하고, NFT가 더 이상 당신의 소유가 아닌지 확인하여 이를 테스트해 보겠습니다.
+
+<hr class="subsection" />
 
 ### 전송 함수 테스트
 
@@ -163,6 +170,8 @@ near call $NFT_CONTRACT_ID nft_transfer '{"receiver_id": "benjiman.testnet", "to
 ```
 
 이제 계정이 소유한 모든 토큰을 쿼리하면 해당 토큰이 없어야 합니다. 마찬가지로 `benjiman.testnet`가 소유한 토큰 목록을 쿼리하면, 해당 계정이 이제 NFT를 소유해야 합니다.
+
+<hr class="subsection" />
 
 ### 전송 호출 함수 테스트
 
@@ -182,6 +191,8 @@ near call $NFT_CONTRACT_ID nft_transfer_call '{"receiver_id": "no-contract.testn
 
 토큰을 쿼리하는 경우 토큰이 있어야 하며 이 시점에서 `token-2`를 가지고 있다면, 완료된 것입니다!
 
+---
+
 ## 결론
 
 이 튜토리얼에서는 발행 기능을 넘어 NFT 컨트랙트를 확장하는 방법을 배웠고, 사용자가 NFT를 전송하는 방법을 추가했습니다. 문제를 더 작고 이해하기 쉬운 하위 작업으로 [분류하고](#introduction), 해당 정보를 가져와 [NFT 전송](#transfer-function) 및 [NFT 전송 호출](#transfer-call-function) 함수를 모두 구현했습니다. 또한 스마트 컨트랙트에 다른 [패치 수정 사항](#redeploying-contract)을 배포하고 전송 기능을 [테스트](#testing-changes)했습니다.
@@ -192,7 +203,8 @@ near call $NFT_CONTRACT_ID nft_transfer_call '{"receiver_id": "no-contract.testn
 
 글을 작성하는 시점에서, 해당 예제는 다음 버전에서 작동합니다.
 
-- near-cli: `4.0.4`
+- near-cli: `4.0.13`
+- cargo-near `0.6.1`
 - NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 - 열거 표준: [NEP181](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration), `1.0.0` 버전
 

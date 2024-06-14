@@ -6,7 +6,7 @@ trait ExternalNftContract {
 }
 
 // Implement the contract structure
-#[near_bindgen]
+#[near]
 impl Contract {
   #[payable]
   pub fn nft_mint(&mut self, token_series_id: String, receiver_id: AccountId) -> Promise {

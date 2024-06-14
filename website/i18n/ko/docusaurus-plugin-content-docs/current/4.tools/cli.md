@@ -15,11 +15,13 @@ NEAR [명령줄(Command Line) 인터페이스](https://github.com/near/near-cli)
 
 :::info
 
-The NEAR CLI also comes with an implementation in Rust called [`near-cli-rs`](https://github.com/near/near-cli-rs). If you want to use `near-cli` while you have `near-cli-rs` installed, prefix the following commands with `npx`. :::
+The NEAR CLI also comes with an implementation in Rust called [`near-cli-rs`](https://github.com/near/near-cli-rs). If you want to use `near-cli` while you have `near-cli-rs` installed, prefix the following commands with `npx`.
+
+:::
 
 ## Overview
 
-_자세한 정보와 예를 보려면 명령을 클릭하세요._
+_Click on a command for more information and examples._
 
 | 명령                                              | 설명                                                                                        |
 | ----------------------------------------------- | ----------------------------------------------------------------------------------------- |
@@ -130,7 +132,7 @@ NEAR_TESTNET_RPC
 
 Clear them in case you want to get back to the default RPC server.
 
-예시:
+Example:
 
 ```bash
 export NEAR_TESTNET_RPC=<put_your_rpc_server_url_here>
@@ -145,7 +147,7 @@ All keys are stored locally at the root of your `HOME` directory:
 
 Inside `.near-credentials`, access keys are organized in network subdirectories: `testnet`, and `mainnet`.
 
-이러한 네트워크 하위 디렉토리에는 다음과 같은 `.JSON` 객체들이 있습니다.
+These network subdirectories contain `.JSON` objects with an:
   -   `account_id`
   -   `private_key`
   -   `public_key`
@@ -170,20 +172,20 @@ near add-credentials example-acct.testnet --seedPhrase "antique attitude say evo
 
 > Optionally allows to sign with a Ledger: `--signWithLedger` `--ledgerPath`
 
-**참고:** 보내는 계정에 대한 전체 액세스 키가 필요합니다. ([`near login`](http://docs.near.org/docs/tools/near-cli#near-login))
+**Note:** You will use an _existing_ full access key for the account you would like to add a _new_ key to. ([`near login`](http://docs.near.org/docs/tools/near-cli#near-login))
 
 #### 1) `전체 액세스` 키 추가
 
 - 인자: `accountId` `publicKey`
 
-**예시:**
+**Example:**
 
 ```bash
 near add-key example-acct.testnet Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1S
 ```
 
 <details>
-<summary><strong>응답 예시</strong></summary>
+<summary><strong>Example Response</strong></summary>
 <p>
 
 ```
@@ -209,9 +211,9 @@ near add-key example-acct.testnet Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1S
 > 
 > `--allowance` is the amount of Ⓝ the key is allowed to spend on gas fees _only_ (default: 0).
 
-**참고:** 이 키에 의해 이루어진 각 트랜잭션에는 초기 허용량에서 가스 요금이 공제되며, 모두 소진되면 새 키를 발급해야 합니다.
+**Note:** Each transaction made with this key will have gas fees deducted from the initial allowance and once it runs out a new key must be issued.
 
-**예시:**
+**Example:**
 
 ```bash
 near add-key example-acct.testnet GkMNfc92fwM1AmwH1MTjF4b7UZuceamsq96XPkHsQ9vi --contract-id example-contract.testnet --method-names example_method --allowance 30000000000
@@ -240,9 +242,9 @@ near add-key example-acct.testnet GkMNfc92fwM1AmwH1MTjF4b7UZuceamsq96XPkHsQ9vi -
 -   인자: `accountId` `publicKey`
 -   options: `--networkId`, `force`
 
-**참고:** 키를 삭제하려는 계정에 대해 별도의 전체 액세스 키가 필요합니다. ([`near login`](http://docs.near.org/docs/tools/near-cli#near-login))
+**Note:** You will need separate full access key for the account you would like to delete a key from. ([`near login`](http://docs.near.org/docs/tools/near-cli#near-login))
 
-**예시:**
+**Example:**
 
 ```bash
 near delete-key example-acct.testnet Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1S
@@ -269,7 +271,7 @@ near delete-key example-acct.testnet Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1
 -   인자: `accountId` 또는 `none`
 -   options: `--fromSeedPhrase`, `--saveImplicit`, `--queryLedgerPK`
 
-**참고:** `generate-key`에 대한 여러 가지 사용 방법이 있고, 매우 이는 서로 다른 결과를 반환합니다. 자세한 내용은 아래 예를 참조하세요.
+**Note:** There are several ways to use `generate-key` that return very different results. Please reference the examples below for further details.
 
 ---
 
@@ -544,7 +546,7 @@ near create-account new-acc.testnet --useFaucet
 
 ```bash
 # Creating a pre-funded account that can be controlled by the Ledger's public key
-near create-account new-acc.testnet --useFaucet --useLedgerPK 
+near create-account new-acc.testnet --useFaucet --useLedgerPK
 ```
 
 ```bash
@@ -591,7 +593,7 @@ near create-account sub-acct2.example-acct.testnet --useAccount example-acct.tes
 -   인자: `accountId` `beneficiaryId`
 -   options: `force`, `--signWithLedger`, `--ledgerPath`
 
-**예시:**
+**Example:**
 
 ```bash
 near delete-account sub-acct2.example-acct.testnet example-acct.testnet
@@ -622,9 +624,9 @@ near delete-account sub-acct2.example-acct.testnet example-acct.testnet
 - 인자: `senderId` `receiverId` `amount`
 - options: `--signWithLedger`, `--ledgerPath`
 
-**참고:** 컨트랙트를 배포할 계정에 대한 전체 액세스 키가 필요합니다. ([`near login`](http://docs.near.org/docs/tools/near-cli#near-login))
+**Note:** You will need a full access key for the sending account. ([`near login`](http://docs.near.org/docs/tools/near-cli#near-login))
 
-**예시:**
+**Example:**
 
 ```bash
 near send-near sender.testnet receiver.testnet 10
@@ -652,7 +654,7 @@ near send-near sender.testnet receiver.testnet 10
 
 -   arguments: `accountId`
 
-**예시:**
+**Example:**
 
 ```bash
 near state example.testnet
@@ -686,12 +688,12 @@ near state example.testnet
 
 > makes a contract call which can modify _or_ view state.
 
-**참고: ** 컨트랙트 호출에는 트랜잭션 수수료(가스)가 필요하므로, 청구될 `--accountId`에 대한 액세스 키가 필요합니다. ([`near login`](http://docs.near.org/docs/tools/near-cli#near-login))
+**Note:** Contract calls require a transaction fee (gas) so you will need an access key for the `--accountId` that will be charged. ([`near login`](http://docs.near.org/docs/tools/near-cli#near-login))
 
 -   인자: `contractName` `method_name` `{ args }` `--accountId`
 -   options: `--gas` `--deposit` `--signWithLedger` `--ledgerPath`
 
-**예시:**
+**Example:**
 
 ```bash
 near call guest-book.testnet addMessage '{"text": "Aloha"}' --account-id example-acct.testnet
@@ -721,15 +723,15 @@ near call guest-book.testnet addMessage '{"text": "Aloha"}' --account-id example
 -   인자: `accountId` `.wasmFile`
 -   옵션: `initFunction` `initArgs` `initGas` `initDeposit`
 
-**참고:** 컨트랙트 호출에는 트랜잭션 수수료(가스)가 필요하므로, 가스가 청구될 `--accountId`에 대한 액세스 키가 필요합니다. ([`near login`](http://docs.near.org/docs/tools/near-cli#near-login))
+**Note:** You will need a full access key for the account you are deploying the contract to. ([`near login`](http://docs.near.org/docs/tools/near-cli#near-login))
 
-**예시:**
+**Example:**
 
 ```bash
 near deploy example-contract.testnet out/example.wasm
 ```
 
-**초기화 예시:**
+**Initialize Example:**
 
 ```bash
 near deploy example-contract.testnet out/example.wasm --initFunction new --initArgs '{"owner_id": "example-contract.testnet", "total_supply": "10000000"}'
@@ -759,7 +761,7 @@ near deploy example-contract.testnet out/example.wasm --initFunction new --initA
 - arguments: `contractName`
 - options: `--finality`, `--utf8`, `--blockId`, `--prefix`
 
-**예시:**
+**Example:**
 
 ```bash
 near storage hello.near-examples.testnet --finality optimistic --utf8
@@ -784,7 +786,7 @@ near storage hello.near-examples.testnet --finality optimistic --utf8
 -   인자: `contractName` `method_name` `{ args }`
 -   옵션: `default`
 
-**예시:**
+**Example:**
 
 ```bash
 near view guest-book.testnet getMessages '{}'
@@ -829,7 +831,7 @@ near view guest-book.testnet getMessages '{}'
 -   arguments: `txHash` `--accountId`
 -   옵션: `default`
 
-**예시:**
+**Example:**
 
 ```bash
 near tx-status FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK --accountId guest-book.testnet
@@ -916,8 +918,8 @@ Transaction guest-book.testnet:FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK
 
 ## Global Options
 
-| 옵션              | 설명                                                        |
-| --------------- | --------------------------------------------------------- |
-| `--help`        | Show help  [boolean]                                      |
-| `--version`     | Show version number  [boolean]                            |
+| 옵션              | 설명                                                            |
+| --------------- | ------------------------------------------------------------- |
+| `--help`        | Show help  [boolean]                                          |
+| `--version`     | Show version number  [boolean]                                |
 | `-v, --verbose` | Prints out verbose output  \[boolean\] \[default: false\] |

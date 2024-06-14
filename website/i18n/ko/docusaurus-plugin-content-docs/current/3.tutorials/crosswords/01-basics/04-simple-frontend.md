@@ -10,7 +10,7 @@ import nearReactFriends from '/docs/assets/crosswords/near-and-react--dakila.nea
 
 # 간단한 프론트엔드 추가
 
-이는 이 장의 마지막 섹션이 될 것입니다. 여기에서는 React를 사용하여 간단한 프론트엔드를 추가하고, [`near-api-js`](https://docs.near.org/tools/near-api-js/quick-reference)를 사용하여 스마트 컨트랙트와 통신할 것입니다.
+여기에서는 React를 사용하여 간단한 프론트엔드를 추가하고, [`near-api-js`](https://docs.near.org/tools/near-api-js/quick-reference)를 사용하여 스마트 컨트랙트와 통신할 것입니다.
 
 <figure>
     <img src={nearReactFriends} alt="NEAR과 React라는 두 문자가 어울립니다. dakila.near 그림" width="600"/>
@@ -38,7 +38,7 @@ We import from:
 - `utils.js`: 사람이 십자말풀이를 올바르게 완료했을 때, 올바른 정답 해시를 검색하기 위해 호출하는 보기 전용 함수 `get_solution`를 호출하기 위함입니다.
 - `hardcoded-data.js`: 십자말풀이 퍼즐 단서에 대한 정보가 포함된 파일입니다. 이 챕터에서는 정답이 **near nomicon ref finance**인 십자말풀이 퍼즐을 다루었으며, 챕터 개요에서 이야기한 대로 우리는 *하나의* 퍼즐을 제공하기로 약속했습니다. 나중에 스마트 컨트랙트를 개선하여 여러 십자말풀이 퍼즐을 허용할 것이지만, 지금은 이 부분이 하드코딩되어 있습니다.
 
-Next, we define an asynchronous function called `initCrossword` that will be called before passing data to the React app. It's often useful to set up a connection with the blockchain here, but in our case all we need to do is retrieve the crossword puzzle solution as a hash. Note that we're attempting to pass this environment variable `NEAR_ENV` into our configuration file. `NEAR_ENV` is used to designate the blockchain network (testnet, betanet, mainnet) and is also [used in NEAR CLI](https://docs.near.org/develop/deploy).
+Next, we define an asynchronous function called `initCrossword` that will be called before passing data to the React app. It's often useful to set up a connection with the blockchain here, but in our case all we need to do is retrieve the crossword puzzle solution as a hash. Note that we're attempting to pass this environment variable `NEAR_ENV` into our configuration file. `NEAR_ENV` is used to designate the blockchain network (testnet, betanet, mainnet) and is also [used in NEAR CLI](../../../2.build/2.smart-contracts/release/deploy.md).
 
 Lastly, we'll call `initCrossword` and, when everything is complete, pass data to the React app contained in `App.js`.
 

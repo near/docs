@@ -163,7 +163,6 @@ near contract call-function as-read-only <contractId> <methodName> text-args '' 
 :::tip
 View methods have by default 200 TGAS for execution
 :::
-:::
 
 <hr className="subsection" />
 

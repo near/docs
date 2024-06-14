@@ -1,287 +1,114 @@
 ---
 id: anatomy
-title: The Contract Class
+title: Basic Anatomy
+hide_table_of_contents: true
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
+import {ExplainCode, Block, File} from '@site/src/components/CodeExplainer/code-explainer';
 
-Your contract's logic and state (storage) is defined by the [main class](#near-bindgen), in which:
+Let's illustrate the basic anatomy of a simple "Hello World" contract. The code on this page comes from our [Hello NEAR repository](https://github.com/near-examples/hello-near-examples) on GitHub.
 
-1. The attributes define the [contract's state](#defining-the-state)
-2. The [initialization methods](#initializing-the-state) define how to initialize the contract's state
-3. The public methods act as the contract's interface with the rest of the network
+<ExplainCode languages="js,rust" >
 
----
+<Block highlights='{"js": "1", "rust": "1"}' fname="hello-near">
 
-## Defining the Contract
+```
+### Importing the SDK
+All contracts will import the **NEAR SDK**, enabling them to [access the execution environment](./environment.md), [call other contracts](./crosscontract.md), [transfer tokens](./actions.md), and much more.
 
-The contract is just another class, with its own attributes and methods. To **differentiate it** from other internal classes simply decorate it using the [`NEAR Bindgen` decorator/macro](#decorators--macros).
-
-<CodeTabs>
-  <Language value="🌐 JavaScript" language="ts">
-    <Github fname="contract.ts"
-      url="https://github.com/near-examples/donation-examples/blob/main/contract-ts/src/contract.ts"
-      start="6" end="9" />
-
-</Language>
-
-<Language value="🦀 Rust" language="rust">
-    <Github fname="lib.rs"
-      url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/src/lib.rs"
-      start="13" end="16" />
-
-</Language>
-
-</CodeTabs>
-
-Under the hood, the `NEAR Bindgen` decorator/macro traverses the class, generating the necessary code to:
-
-1. Transform the code into a valid NEAR contract.
-2. Expose public methods, so they can be called externally.
-3. Serialize objects for internal storage and communication with external actors.
-
-<hr className="subsection" />
-
-### The State
-
-Each account has its own state (storage), which **only they can modify** but [anyone can see](../../4.tools/cli.md#near-view-state-near-view-state).
-
-The state is defined and modified through the **main class' attributes**.
-
-Contracts [**pay for their storage**](./storage.md#storage-cost) by locking part of their balance. Currently it costs **~1 Ⓝ** to store **100kb**
-
-:::info Key-Value Storage
-
-The contract actually uses a `key-value` storage to persist values. This however is abstracted from you by the SDK through [serialization](./serialization.md).
-
-:::
-
-:::tip Prefer SDK Collections
-
-When defining attributes, **always prefer [SDK collections](./storage.md)** over native ones, since they are optimized for [serialization](./serialization.md).
-
-:::
-
----
-
-## Initializing the State
-
-There are two ways to initialize the account's state, and they can co-exist:
-
-1. An **initialization method** that receives the attributes needed for the state
-2. A **default state**, which will be used until `init` is invoked, or a method writes into the state
-
-<hr className="subsection" />
-
-### Initialization Method
-
-To define an initialization method simply decorate it with the [initialization macro](#decorators--macros).
-
-The method will now be able to define the initial state's values, raising an error if invoked while **the state is already initialized**.
-
-<Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value="🌐 JavaScript">
-
-<Github fname="contract.ts" language="ts"
-       url="https://github.com/near-examples/donation-examples/blob/main/contract-ts/src/contract.ts"
-       start="11" end="14" />
-
-:::info
-To make the initialization mandatory use `@NearBindgen({requireInit: true})`
-:::
-
-:::caution
-In JavaScript you **must always** define a [default state](#default-state)
-:::
-
-</TabItem>
-
-<TabItem value="🦀 Rust">
-
-<Github fname="lib.rs" language="rust"
-       url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/src/lib.rs"
-       start="35" end="40" />
-
-:::info
-To make the initialization mandatory use `#[derive(PanicOnDefault)]` in the contract's structure
-:::
-
-</TabItem>
-
-</Tabs>
-
-<hr className="subsection" />
-
-### Default State
-
-Contracts can define a **default state** to use if no initialize method is called. This is, if any method is invoked before an `init` happens, the contract will use the default values.
-
-Once any method writes into the state, the state will be considered initialized.
-
-<Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value="🌐 JavaScript">
-
-<Github fname="contract.ts" language="ts"
-       url="https://github.com/near-examples/donation-examples/blob/main/contract-ts/src/contract.ts"
-       start="6" end="9" />
-
-🌐 In JavaScript, the default state is defined by the initialization parameters in the class definition.
-
-:::caution
-In Javascript you **must always** assign values to **all the class' parameters**. This ensures they get correctly [deserialized](./serialization.md) to their intended type.
-:::
-
-</TabItem>
-
-<TabItem value="🦀 Rust">
-    <Github fname="lib.rs" language="rust"
-            url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/src/lib.rs"
-            start="19" end="26" />
-
-</TabItem>
-
-</Tabs>
-
----
-
-## Interface
-
-All the **public methods** are exposed to the network as the contract's interface.
-
-<Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value="🌐 JavaScript">
-
-```ts
-@NearBindgen({})
-class Contract {
-
-  @initialize({ ... })
-  init({ ... }) { /* public `init` method */ }
-
-  @view({})
-  get_message({ ...  }) { /* public `view` method */ }
-
-  @call({})
-  add_message({ ... }) { /* public `call` method */ }
-
-  private internal_search( ... ) { /* private internal method */ }
-
-  @call({privateFunction: true})
-  set_owner({ ... }) { /* public, panics when caller is not the contract's account */ }
-}
+You can also use third-party libraries, thought some might not work due to the limitations of the contract runtime.
 ```
 
-</TabItem>
+</Block>
 
-<TabItem value="🦀 Rust">
+<Block highlights='{"js": "4-17", "rust":"5-7,20-31"}' fname="hello-near">
 
-```rust
-#[near_bindgen]
-impl Contract {
-  #[init]
-  pub fn init( ... ) -> Self { /* public `init` method */ }
-  pub fn get_message(&self, ... ) { /* public `view` method */ }
-  pub fn add_message(&mut self, ... ) { /* public `call` method */ }
-  fn internal_search(&self, ... ) { /* private internal method */ }
-
-  #[private]
-  pub fn set_owner(&mut self, ... ) { /* public, panics when caller is not the contract's account */ }
-}
+```
+### Contract's Class / Structure
+The contract is described through a `Class` / `Struct` :
+- The attributes define which data the contract stores
+- The functions define its public (and private) interface
 ```
 
-</TabItem>
+</Block>
 
-</Tabs>
+<Block highlights='{"js": "3"}' fname="hello-near">
 
-<hr className="subsection" />
+```
+### Contract Class Decorator
 
-### Public Methods
+Note that the contract's class is decorated with `@NearBindgen`. This decorator tells the SDK which class defines the contract, so it knows:
+1. What to fetch from storage when the contract is loaded
+2. What to store when the contract is done executing
+3. The methods that are exposed to the outside world
 
-Public methods can be categorized in three types: `init` methods, `view` methods, and `call` methods.
-
-- **Init Methods**: They define how to initialize the state of the contract.
-- **View Methods**: Do **not mutate** the state **nor call** other contracts. They can be called for free by everyone, **without needing** a NEAR account.
-- **Call Methods**: They can mutate the state and perform [actions](./actions.md) such as calling other contracts.
-
-:::caution
-:::caution By default `view` methods have `200TGas` to execute, to increase this you can simply invoke them as `call` methods.
-:::
-
-:::danger
-:::danger By default `init` methods are public, make sure to [decorate them as `private`](#private-methods), or [batch call the initialization on deploy](../deploy.md#initializing-the-contract) :::
-:::
-
-<hr className="subsection" />
-
-### Private Methods
-
-Sometimes you will want some methods to remain public, but only be callable by the contract's account. Such is the case for example of [cross-contract callbacks](./crosscontract.md#callback-method).
-
-For this, you can use the `private` macro/decorator.
-
-<Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value="🌐 JavaScript">
-
-```ts
-@call({privateFunction: true})
-callback( ... ){
-  // this method can only be called by the contract's account
-}
+**Note:** Only one class can be decorated with the `@NearBindgen` decorator.
 ```
 
-</TabItem>
+</Block>
 
-<TabItem value="🦀 Rust">
+<Block highlights='{"rust": "4,19"}' fname="hello-near">
 
-```rust
-#[private]
-pub fn callback(&mut self, ... ){
-  // this method can only be called by the contract's account
-}
+```
+### Contract Struct Macro
+
+Note that the contract's struct definition and the implementation are decorated with macros
+
+The `#[near(contract_state)]` macro tell the SDK that this structure defines the contract's state, so it knows:
+1. What to fetch from storage when the contract is loaded
+2. What to store when the contract is done executing
+
+The `#[near]` macro tells the SDK which functions are exposed to the outside world.
+
+**Note:** Only one struct can be decorated with the `#[near(contract_state)]` macro.
 ```
 
-</TabItem>
+</Block>
 
-</Tabs>
+<Block highlights='{"js": "5", "rust": "6,10-16"}' fname="hello-near">
 
-<hr className="subsection" />
+```
+### Storage (State)
+We call the data stored in the contract [the contract's state](./storage.md).
 
-### Payable Methods
+In our Hello World example, the contract stores a single string (`greeting`), and the state starts initialized with the default value `"Hello"`.
 
-By default **all methods panic** if a user **attaches money** while calling them. To enable a method to receive money use the payable decorator.
-
-<Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value="🌐 JavaScript">
-
-```ts
-@call({payableFunction: true})
-deposit_and_stake( ... ){
-  // this method can receive money from the user
-}
+**Note:** We will cover more about the contract's state in the [state section](./storage.md).
 ```
 
-</TabItem>
+</Block>
 
-<TabItem value="🦀 Rust">
+<Block highlights='{"js": "8-10", "rust": "22-24"}' fname="hello-near">
 
-```rust
-#[payable]
-pub fn deposit_and_stake(&mut self, ... ){
-  // this method can receive money from the user
-}
+```
+### Read Only Functions
+Contract's functions can be read-only, meaning they don't modify the state. Calling them is free for everyone, and does not require to have a NEAR account.
+
+**Note:** We will cover more about function types in the [functions section](./functions.md).
 ```
 
-</TabItem>
+</Block>
 
-</Tabs>
+<Block highlights='{"js": "13-16", "rust": "27-30"}' fname="hello-near">
 
-<hr className="subsection" />
+```
+### State Mutating Functions
+Functions that modify the state or call other contracts are considered state mutating functions. It is necessary to have a NEAR account to call them, as they require a transaction to be sent to the network.
 
-### Input & Return Types
+**Note:** We will cover more about function types in the [functions section](./functions.md).
+```
 
-The contract can receive and return any `native type`, including complex structures. However, since contracts communicate through their interface [using JSON](./serialization.md):
+</Block>
 
-- Always prefer **`native types`** over `SDK Collections` in the input & return types.
-- Replace `u64`/`u128` for `strings` (`U64`/`U128` in the Rust SDK).
+<File language="js" fname="hello-near"
+ url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts"
+ start="2" end="18" />
+
+<File language="rust" fname="hello-near"
+ url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
+ start="2" end="32" />
+
+</ExplainCode>

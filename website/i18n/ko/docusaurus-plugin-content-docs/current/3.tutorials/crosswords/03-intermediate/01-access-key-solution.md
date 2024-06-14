@@ -42,7 +42,7 @@ import padlockSafe from '/docs/assets/crosswords/safe-with-access-key--soulless.
 
 시드 문구는 개인 키를 생성하는 일련의 단어(보통 12개 또는 24개 단어)입니다. (실제로 [조금 더](https://learnmeabitcoin.com/technical/mnemonic) 있습니다.)
 
-시드 문구는 일반적으로 [BIP-30 단어 목록](https://github.com/bitcoin/bips/blob/master/bip-0039/bip-0039-wordlists.md)을 사용 하지만, 단어 목록을 사용하거나 특정 수의 단어를 포함할 *필요는 없습니다*. 단어가 엔트로피를 생성하는 한, 십자말풀이 솔루션은 결정론적 시드 문구 역할을 할 수 있습니다. 단어가 엔트로피를 생성하는 한, 십자말풀이 솔루션은 결정론적 시드 문구 역할을 할 수 있습니다. :::
+시드 문구는 일반적으로 [BIP-30 단어 목록](https://github.com/bitcoin/bips/blob/master/bip-0039/bip-0039-wordlists.md)을 사용 하지만, 단어 목록을 사용하거나 특정 수의 단어를 포함할 *필요는 없습니다*. 단어가 엔트로피를 생성하는 한, 십자말풀이 솔루션은 결정론적 시드 문구 역할을 할 수 있습니다. :::
 
 따라서 새 퍼즐을 추가할 때, `AddKey` Action을 사용하여 `submit_solution` 메서드만 호출할 수 있는 제한된 함수 호출 액세스 키를 추가합니다.
 

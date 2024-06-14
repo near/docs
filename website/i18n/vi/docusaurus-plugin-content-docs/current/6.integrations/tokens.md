@@ -74,206 +74,215 @@ Trả về:
 Bạn có thể lấy `name`, `decimals`, `icon` và bất kỳ các parameter nào bằng cách gọi function:
   - using NEAR CLI:
 
-      ```bash
-      near view <contract_account_id> ft_metadata
-      ```
-    Kết quả:
+```bash
+near view <contract_account_id> ft_metadata
+```
 
-    ```bash
-    View call: ft.demo.testnet.ft_metadata()
-    {
-      spec: 'ft-1.0.0',
-      name: 'Example Token Name',
-      symbol: 'MOCHI',
-      icon: null,
-      reference: null,
-      reference_hash: null,
-      decimals: 24
-    }
-    ```
+Result:
 
-  - với JSON RPC call:
-      ```bash
-      http post https://rpc.testnet.near.org jsonrpc=2.0 id=ftmetadata method=query \
-      params:='{
-        "request_type": "call_function",
-        "finality": "final",
-        "account_id": "<contract_account_id>",
-        "method_name": "ft_metadata",
-        "args_base64": ""
-      }'
-      ```
-      Ví dụ về kết quả trả về:
-      ```bash
-      HTTP/1.1 200 OK
-      Alt-Svc: clear
-      Via: 1.1 google
-      access-control-allow-origin:
-      content-length: 604
-      content-type: application/json
-      date: Wed, 02 Jun 2021 15:51:17 GMT
+```bash
+View call: ft.demo.testnet.ft_metadata()
+{
+  spec: 'ft-1.0.0',
+  name: 'Example Token Name',
+  symbol: 'MOCHI',
+  icon: null,
+  reference: null,
+  reference_hash: null,
+  decimals: 24
+}
+```
 
-      {
-          "id": "ftmetadata",
-          "jsonrpc": "2.0",
-          "result": {
-              "block_hash": "B3fu3v4dmn19B6oqjHUXN3k5NhdP9EW5kkjyuFUDpa1r",
-              "block_height": 50061565,
-              "logs": [],
-              "result": [ 123, 34, 115, 112, 101, 99, 34, 58, 34, 102, 116, 45, 49, 46, 48, 46, 48, 34, 44, 34, 110, 97, 109, 101, 34, 58, 34, 69, 120, 97, 109, 112, 108, 101, 32, 84, 111, 107, 101, 110, 32, 78, 97, 109, 101, 34, 44, 34, 115, 121, 109, 98, 111, 108, 34, 58, 34, 77, 79, 67, 72, 73, 34, 44, 34, 105, 99, 111, 110, 34, 58, 110, 117, 108, 108, 44, 34, 114, 101, 102, 101, 114, 101, 110, 99, 101, 34, 58, 110, 117, 108, 108, 44, 34, 114, 101, 102, 101, 114, 101, 110, 99, 101, 95, 104, 97, 115, 104, 34, 58, 110, 117, 108, 108, 44, 34, 100, 101, 99, 105, 109, 97, 108, 115, 34, 58, 50, 52, 125 ]
-          }
-      }
-      ```
+  - with JSON RPC call:
 
-      Kết quả được giải mã trong trường hợp này là:
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=ftmetadata method=query \
+  params:='{
+    "request_type": "call_function",
+    "finality": "final",
+    "account_id": "<contract_account_id>",
+    "method_name": "ft_metadata",
+    "args_base64": ""
+  }'
+```
 
-      ```json
-      {
-        "spec": "ft-1.0.0",
-        "name": "Example Token Name",
-        "symbol": "MOCHI",
-        "icon": null,
-        "reference": null,
-        "reference_hash": null,
-        "decimals": 24
-      }
-      ```
+Example response:
+
+```bash
+HTTP/1.1 200 OK
+Alt-Svc: clear
+Via: 1.1 google
+access-control-allow-origin:
+content-length: 604
+content-type: application/json
+date: Wed, 02 Jun 2021 15:51:17 GMT
+
+{
+  "id": "ftmetadata",
+  "jsonrpc": "2.0",
+  "result": {
+      "block_hash": "B3fu3v4dmn19B6oqjHUXN3k5NhdP9EW5kkjyuFUDpa1r",
+      "block_height": 50061565,
+      "logs": [],
+      "result": [ 123, 34, 115, 112, 101, 99, 34, 58, 34, 102, 116, 45, 49, 46, 48, 46, 48, 34, 44, 34, 110, 97, 109, 101, 34, 58, 34, 69, 120, 97, 109, 112, 108, 101, 32, 84, 111, 107, 101, 110, 32, 78, 97, 109, 101, 34, 44, 34, 115, 121, 109, 98, 111, 108, 34, 58, 34, 77, 79, 67, 72, 73, 34, 44, 34, 105, 99, 111, 110, 34, 58, 110, 117, 108, 108, 44, 34, 114, 101, 102, 101, 114, 101, 110, 99, 101, 34, 58, 110, 117, 108, 108, 44, 34, 114, 101, 102, 101, 114, 101, 110, 99, 101, 95, 104, 97, 115, 104, 34, 58, 110, 117, 108, 108, 44, 34, 100, 101, 99, 105, 109, 97, 108, 115, 34, 58, 50, 52, 125 ]
+  }
+}
+```
+
+Decoded result in this case is:
+
+```json
+{
+    "spec": "ft-1.0.0",
+    "name": "Example Token Name",
+    "symbol": "MOCHI",
+    "icon": null,
+    "reference": null,
+    "reference_hash": null,
+    "decimals": 24
+}
+```
 
 ## Transfer đơn giản {#simple-transfer}
 
-Để làm theo hướng dẫn này, vui lòng xem [các hướng dẫn từng bước](/docs/tutorials/create-transactions#low-level----create-a-transaction) về cách tạo một transaction đầu tiên.
+To follow this guide, please check the [step by step instructions](/integrations/create-transactions#low-level----create-a-transaction) on how to create a transaction first.
 
-Liên quan đến việc gửi một fungible token đến một account, người nhận cần phải có một storage deposit. Điều này là do mỗi smart contract trên NEAR cần tính toán lượng storage cần sử dụng, và mỗi account trên một fungible token contract là một cặp key-value, chúng chiếm một lượng storage nhỏ. For more information, please see [how storage works in NEAR](/concepts/storage/storage-staking). Để kiểm tra nếu account đã deposit storage cho FT này, hãy làm như sau:
+In order to send a fungible token to an account, the receiver must have a storage deposit. This is because each smart contract on NEAR must account for storage used, and each account on a fungible token contract is a key-value pair, taking up a small amount of storage. For more information, please see [how storage works in NEAR](/concepts/storage/storage-staking). To check if account has deposited the storage for this FT do the following:
 
-Lấy số dư storage của account. `storage_balance_of` function trả về lượng storage được deposite hoặc `null` nếu không có gì được deposit.
-  - sử dụng NEAR CLI:
+Get storage balance of the account. `storage_balance_of` function returns the amount of deposited storage or `null` if there is no deposit.
+  - using NEAR CLI:
 
-    ```bash
-    near view <contract_account_id> storage_balance_of '{"account_id": "<user_account_id>"}'
-    ```
+```bash
+near view <contract_account_id> storage_balance_of '{"account_id": "<user_account_id>"}'
+```
 
-    Kết quả:
 
-    ```bash
-    View call: ft.demo.testnet.storage_balance_of({"account_id": "serhii.testnet"})
-    null
-    ```
+    Result:
 
-  - với JSON RPC call:
-      ```bash
-      http post https://rpc.testnet.near.org jsonrpc=2.0 id=storagebalanceof method=query \
-      params:='{
-         "request_type": "call_function",
-         "finality": "final",
-         "account_id": "ft.demo.testnet",
-         "method_name": "storage_balance_of",
-         "args_base64": "eyJhY2NvdW50X2lkIjogInNlcmhpaS50ZXN0bmV0In0K"
-      }'
-      ```
+```bash
+View call: ft.demo.testnet.storage_balance_of({"account_id": "serhii.testnet"})
+null
+```
 
-      Ví dụ về response nhận được:
+  - with JSON RPC call:
 
-      ```bash
-      HTTP/1.1 200 OK
-      Alt-Svc: clear
-      Via: 1.1 google
-      access-control-allow-origin:
-      content-length: 173
-      content-type: application/json
-      date: Wed, 02 Jun 2021 14:22:01 GMT
-      {
-          "id": "storagebalanceof",
-          "jsonrpc": "2.0",
-          "result": {
-              "block_hash": "EkM2j4yxRVoQ1TCqF2KUb7J4w5G1VsWtMLiycq6k3f53",
-              "block_height": 50054247,
-              "logs": [],
-              "result": [ 110, 117, 108, 108 ]
-          }
-      }
-      ```
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=storagebalanceof method=query \
+  params:='{
+     "request_type": "call_function",
+     "finality": "final",
+     "account_id": "ft.demo.testnet",
+     "method_name": "storage_balance_of",
+     "args_base64": "eyJhY2NvdW50X2lkIjogInNlcmhpaS50ZXN0bmV0In0K"
+  }'
+```
 
-      Kết quả được giải mã trong trường hợp này là `null`.
+Example response:
 
-Lấy storage tối thiểu được yêu cầu cho FT. (Storage được sử dụng cho một cặp key-value của account.)
-  - sử dụng NEAR CLI:
+```bash
+HTTP/1.1 200 OK
+Alt-Svc: clear
+Via: 1.1 google
+access-control-allow-origin:
+content-length: 173
+content-type: application/json
+date: Wed, 02 Jun 2021 14:22:01 GMT
+{
+  "id": "storagebalanceof",
+  "jsonrpc": "2.0",
+  "result": {
+      "block_hash": "EkM2j4yxRVoQ1TCqF2KUb7J4w5G1VsWtMLiycq6k3f53",
+      "block_height": 50054247,
+      "logs": [],
+      "result": [ 110, 117, 108, 108 ]
+  }
+}
+```
 
-    ```bash
-    near view <contract_account_id> storage_balance_bounds`
-    ```
+Decoded result in this case is `null`.
 
-    Kết quả:
+Get the minimum storage required for FT. (The storage used for an account's key-value pair.)
 
-    ```bash
-    View call: ft.demo.testnet.storage_balance_bounds()
-    { min: '1250000000000000000000', max: '1250000000000000000000' }
-    ```
+  - using NEAR CLI:
 
-  - với JSON RPC call
-      ```bash
-      http post https://rpc.testnet.near.org jsonrpc=2.0 id=storagebalancebounds method=query \
-      params:='{
-          "request_type": "call_function",
-          "finality": "final",
-          "account_id": "<contract_account_id>",
-          "method_name": "storage_balance_bounds",
-          "args_base64": ""
-      }'
-      ```
+```bash
+near view <contract_account_id> storage_balance_bounds`
+```
 
-      Kết quả về repsonse nhận được:
-      ```bash
-      HTTP/1.1 200 OK
-      Alt-Svc: clear
-      Via: 1.1 google
-      access-control-allow-origin:
-      content-length: 357
-      content-type: application/json
-      date: Wed, 02 Jun 2021 15:42:49 GMT
+Result:
 
-      {
-          "id": "storagebalancebounds",
-          "jsonrpc": "2.0",
-          "result": {
-              "block_hash": "Fy3mBqwj5nvUDha3X7G61kmUeituHASEX12oCASrChEE",
-              "block_height": 50060878,
-              "logs": [],
-              "result": [ 123, 34, 109, 105, 110, 34, 58, 34, 49, 50, 53, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 34, 44, 34, 109, 97, 120, 34, 58, 34, 49, 50, 53, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 34, 125 ]
-          }
-      }
-      ```
+```bash
+View call: ft.demo.testnet.storage_balance_bounds()
+{ min: '1250000000000000000000', max: '1250000000000000000000' }
+```
 
-      Kết quả được giải mã có thể trông tương tự như sau:
+  - with JSON RPC call
 
-      ```json
-      {
-        "min": "1250000000000000000000",
-        "max": "1250000000000000000000"
-      }
-      ```
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=storagebalancebounds method=query \
+  params:='{
+      "request_type": "call_function",
+      "finality": "final",
+      "account_id": "<contract_account_id>",
+      "method_name": "storage_balance_bounds",
+      "args_base64": ""
+  }'
+```
 
-Các fungible token cơ bản là các smart contract đơn giản không lưu trữ variable, so với một smart contract có thể lưu trữ các free-form text, chẳng hạn. Storage duy nhất cần thiết là dành cho một cặp account key-value, sẽ luôn được cover bởi `1250000000000000000000` yoctoⓃ storage balance.
+Example response:
 
-Nếu không deposit đủ cho storage hoặc giá trị được trả về là `null` - bạn cần phải deposit nhiều storage hơn command tiếp theo:
-  - sử dụng NEAR CLI, dừng quên convert từ yoctoⓃ thành Ⓝ:
+```bash
+HTTP/1.1 200 OK
+Alt-Svc: clear
+Via: 1.1 google
+access-control-allow-origin:
+content-length: 357
+content-type: application/json
+date: Wed, 02 Jun 2021 15:42:49 GMT
 
-    ```bash
-    near call <contract_account_id> storage_deposit '{"account_id": "<user_account_id>"}' --accountId <sender_account_id> --deposit <deposit in Ⓝ>
-    ```
+{
+  "id": "storagebalancebounds",
+  "jsonrpc": "2.0",
+  "result": {
+      "block_hash": "Fy3mBqwj5nvUDha3X7G61kmUeituHASEX12oCASrChEE",
+      "block_height": 50060878,
+      "logs": [],
+      "result": [ 123, 34, 109, 105, 110, 34, 58, 34, 49, 50, 53, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 34, 44, 34, 109, 97, 120, 34, 58, 34, 49, 50, 53, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 34, 125 ]
+  }
+}
+```
 
-    Kết quả ví dụ:
+Decoded result should look similar to:
 
-    ```bash
-    Scheduling a call: ft.demo.testnet.storage_deposit() with attached 0.125 NEAR
-    Transaction Id 9CMrMMt3UzeU63FFrUyFb1gNGuHXxvKfHqYJzyFTAk6z
-    To see the transaction in the transaction explorer, please open this url in your browser
-    https://testnet.nearblocks.io/txns/9CMrMMt3UzeU63FFrUyFb1gNGuHXxvKfHqYJzyFTAk6z
-    { total: '1250000000000000000000', available: '0' }
-    ```
+```json
+  {
+    "min": "1250000000000000000000",
+    "max": "1250000000000000000000"
+  }
+```
 
-  - với JSON RPC call:
+Basic fungible tokens are simple smart contracts that don't have variable storage as compared to a smart contract that might store free-form text, for instance. The only storage needed is for an accounts key-value pair, which will always be covered by the `1250000000000000000000` yoctoⓃ storage balance.
 
-  At the top of this section is a link detailing how to [construct a transaction](/integrator/create-transactions#low-level----create-a-transaction) without the full abstraction of the [`near-api-js` library](https://www.npmjs.com/package/near-api-js). For this and future examples that use the [RPC method `broadcast_tx_commit`](https://docs.near.org/api/rpc/setup#send-transaction-await) we will provide a JSON-like object meant to act similar to [pseudocode](https://en.wikipedia.org/wiki/Pseudocode), only imparting high-level details of a transaction. Code block phía dưới là ví dụ đầu tiên của điều này, trình bày chi tiết những gì diễn ra bên trong một transaction đang được thảo luận hiện tại, có liên quan đến method `storage_deposit`.
+If there is not enough deposit for the storage or returned value is `null` - you should deposit more storage with the next command:
+  - using NEAR CLI, don't forget to convert from yoctoⓃ to Ⓝ:
+
+```bash
+near call <contract_account_id> storage_deposit '{"account_id": "<user_account_id>"}' --accountId <sender_account_id> --deposit <deposit in Ⓝ>
+```
+
+Result example:
+
+```bash
+Scheduling a call: ft.demo.testnet.storage_deposit() with attached 0.125 NEAR
+Transaction Id 9CMrMMt3UzeU63FFrUyFb1gNGuHXxvKfHqYJzyFTAk6z
+To see the transaction in the transaction explorer, please open this url in your browser
+https://testnet.nearblocks.io/txns/9CMrMMt3UzeU63FFrUyFb1gNGuHXxvKfHqYJzyFTAk6z
+{ total: '1250000000000000000000', available: '0' }
+```
+
+  - with JSON RPC call:
+
+  At the top of this section is a link detailing how to [construct a transaction](/integrations/create-transactions#low-level----create-a-transaction) without the full abstraction of the [`near-api-js` library](https://www.npmjs.com/package/near-api-js). For this and future examples that use the [RPC method `broadcast_tx_commit`](https://docs.near.org/api/rpc/setup#send-transaction-await) we will provide a JSON-like object meant to act similar to [pseudocode](https://en.wikipedia.org/wiki/Pseudocode), only imparting high-level details of a transaction. This code block below is the first example of this, detailing what goes into the transaction discussed currently, involving the method `storage_deposit`.
 
 ```yaml
 Transaction: {
@@ -295,13 +304,14 @@ Transaction: {
 }
 ```
 
-      ```bash
-      http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
-          params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZi/qoVEgrAAAPAAAAZnQuZGVtby50ZXN0bmV0JYbWPOu0P9T32vtUKnZSh+EaoboQqg0/De2i8Y+AjHIBAAAAAg8AAABzdG9yYWdlX2RlcG9zaXQCAAAAe30AQHoQ81oAAAAAILSd2XlDeBoAAAAAAAAAZF7+s4lcHOzy+re59VErt7LcZkPMMUVgOJV8LH5TsLBBv+8h/5tZ6+HFwxSp605A4c46oS9Jw4KBRXZD07lKCg=="]'
-      ```
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
+  params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZi/qoVEgrAAAPAAAAZnQuZGVtby50ZXN0bmV0JYbWPOu0P9T32vtUKnZSh+EaoboQqg0/De2i8Y+AjHIBAAAAAg8AAABzdG9yYWdlX2RlcG9zaXQCAAAAe30AQHoQ81oAAAAAILSd2XlDeBoAAAAAAAAAZF7+s4lcHOzy+re59VErt7LcZkPMMUVgOJV8LH5TsLBBv+8h/5tZ6+HFwxSp605A4c46oS9Jw4KBRXZD07lKCg=="]'
+```
 
 <details>
-<summary>**Ví dụ về response nhận được:**</summary>
+
+<summary>**Example Response:**</summary>
 
 ```json
 {
@@ -515,30 +525,32 @@ Transaction: {
   }
 }
 ```
+
 </details>
 
-Transfer các token:
-  - sử dụng NEAR CLI:
+Transfer the tokens:
+  - using NEAR CLI:
 
-    ```bash
-    near call <contract_account_id> ft_transfer '{"receiver_id": "<receiver_account_id>", "amount": "1"}' --accountId <sender_account_id> --amount 0.000000000000000000000001
-    ```
+```bash
+near call <contract_account_id> ft_transfer '{"receiver_id": "<receiver_account_id>", "amount": "1"}' --accountId <sender_account_id> --amount 0.000000000000000000000001
+```
 
-    Kết quả ví dụ:
+Result example:
 
-    ```bash
-    Scheduling a call: berryclub.ek.near.ft_transfer({"receiver_id": "volovyk.near", "amount": "1"}) with attached 0.000000000000000000000001 NEAR
-    Receipt: GDeE3Kv1JHgs71A22NEUbgq55r2Hvcnis8gCMyJtQ2mx
-        Log [berryclub.ek.near]: Transfer 1 from serhii.near to volovyk.near
-    Transaction Id 3MkWKbXVP8wyy4pBofELqiE1pwx7ie2v3SKCwaobNcEe
-    To see the transaction in the transaction explorer, please open this url in your browser
-    https://nearblocks.io/txns/3MkWKbXVP8wyy4pBofELqiE1pwx7ie2v3SKCwaobNcEe
-    ''
-    ```
+```bash
+Scheduling a call: berryclub.ek.near.ft_transfer({"receiver_id": "volovyk.near", "amount": "1"}) with attached 0.000000000000000000000001 NEAR
+Receipt: GDeE3Kv1JHgs71A22NEUbgq55r2Hvcnis8gCMyJtQ2mx
+    Log [berryclub.ek.near]: Transfer 1 from serhii.near to volovyk.near
+Transaction Id 3MkWKbXVP8wyy4pBofELqiE1pwx7ie2v3SKCwaobNcEe
+To see the transaction in the transaction explorer, please open this url in your browser
+https://nearblocks.io/txns/3MkWKbXVP8wyy4pBofELqiE1pwx7ie2v3SKCwaobNcEe
+''
+```
 
-  - với JSON RPC call:
+  - with JSON RPC call:
 
-Transaction đại diện:
+Transaction representation:
+
 ```yaml
 Transaction: {
     block_hash: `456…abc`,
@@ -559,12 +571,12 @@ Transaction: {
 }
 ```
 
-      ```bash
-      http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
-          params:='["CwAAAHNlcmhpaS5uZWFyAAmQpgZcJM5nMc6f3tqmw/YI4eAvc84ZgsKMRRRzhY/6CQAAAAAAAAARAAAAYmVycnljbHViLmVrLm5lYXLLWPIiUOElkDF3u4hLAMJ0Sjeo1V338pDdHIp70va3ewEAAAACCwAAAGZ0X3RyYW5zZmVyKwAAAHsicmVjZWl2ZXJfaWQiOiJ2b2xvdnlrLm5lYXIiLCJhbW91bnQiOiIxIn0AQHoQ81oAAAEAAAAAAAAAAAAAAAAAAAAA7fDOZQt3zCtdS05Y8XaZFlwO/Gd5wkkNAHShzDiLQXk4Q4ixpraLPMJivs35PZD0gocXl1iGFbQ46NG3VllzCA=="]'
-      ```
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
+  params:='["CwAAAHNlcmhpaS5uZWFyAAmQpgZcJM5nMc6f3tqmw/YI4eAvc84ZgsKMRRRzhY/6CQAAAAAAAAARAAAAYmVycnljbHViLmVrLm5lYXLLWPIiUOElkDF3u4hLAMJ0Sjeo1V338pDdHIp70va3ewEAAAACCwAAAGZ0X3RyYW5zZmVyKwAAAHsicmVjZWl2ZXJfaWQiOiJ2b2xvdnlrLm5lYXIiLCJhbW91bnQiOiIxIn0AQHoQ81oAAAEAAAAAAAAAAAAAAAAAAAAA7fDOZQt3zCtdS05Y8XaZFlwO/Gd5wkkNAHShzDiLQXk4Q4ixpraLPMJivs35PZD0gocXl1iGFbQ46NG3VllzCA=="]'
+```
 
-Để xem thông tin chi tiết của transaction này:
+To get details of this transaction:
 
 ```bash
 http post https://archival-rpc.mainnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_tx_status \
@@ -572,7 +584,8 @@ http post https://archival-rpc.mainnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_
 ```
 
 <details>
-<summary>**Ví dụ về response nhận được:**</summary>
+
+<summary>**Example Response:**</summary>
 
 ```json
 {
@@ -742,9 +755,10 @@ http post https://archival-rpc.mainnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_
   }
 }
 ```
+
 </details>
 
-Bạn có thể nhận được thông tin tương tự sau đó bằng transaction hash từ lần call phía trước:
+You can get the same info later by the transaction hash from the previous call:
 
   - using NEAR Explorer: https://nearblocks.io
 
@@ -754,23 +768,24 @@ Bạn có thể nhận được thông tin tương tự sau đó bằng transact
 near tx-status <transaction_hash> --accountId <transaction_signer>
 -->
 
-  - với JSON RPC call
+  - with JSON RPC call
 
-  ```bash
-      http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENTAL_tx_status \
-      params:='[ "2Fy4714idMCoja7QLdGAbQZHzV2XEnUdwZX6yGa46VMX", "sender.testnet"]'
-  ```
+```bash
+  http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENTAL_tx_status \
+  params:='[ "2Fy4714idMCoja7QLdGAbQZHzV2XEnUdwZX6yGa46VMX", "sender.testnet"]'
+```
 
-Hãy tạo một transaction test không thành công và điều tra response. Chúng ta sẽ thử cố gắng send lượng token nhiều hơn lượng khả dụng hơn trên account này:
-  - sử dụng NEAR CLI:
+Let's create test transaction that should fail and investigate the response. We will try to send more tokens that are available on this account:
+  - using NEAR CLI:
 
-    ```bash
-    near call <contract_account_id> ft_transfer '{"receiver_id": "<user_account_id>", "amount": "10000000000"}' --accountId <sender_account_id> --amount 0.000000000000000000000001
-    ```
+```bash
+near call <contract_account_id> ft_transfer '{"receiver_id": "<user_account_id>", "amount": "10000000000"}' --accountId <sender_account_id> --amount 0.000000000000000000000001
+```
 
-  - với JSON RPC call:
+  - with JSON RPC call:
 
 Transaction đại diện:
+
 ```yaml
 Transaction: {
     block_hash: `456…abc`,
@@ -791,12 +806,12 @@ Transaction: {
 }
 ```
 
-    ```bash
-      http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
-      params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZofqoVEgrAAAgAAAAZGV2LTE2MjMzMzM3OTU2MjMtMjEzOTk5NTk3NzgxNTm8Xq8BTIi6utG0424Gg7CknYzLH8RH/A409jq5o0zi7gEAAAACCwAAAGZ0X3RyYW5zZmVyPwAAAHsicmVjZWl2ZXJfaWQiOiJkZXYtMTYyMzMzMzkxNjM2OC01ODcwNzQzNDg3ODUzMyIsImFtb3VudCI6IjEifQBAehDzWgAAAQAAAAAAAAAAAAAAAAAAAABCwjqayKdpWgM6PE0ixzm/Gy0EtdpxVn0xehMTBReVfVAKIBTDPoPSaOdT8fAhk343F5uOMfSijhTqU2mWV3oD"]'
-    ```
+```bash
+  http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
+  params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZofqoVEgrAAAgAAAAZGV2LTE2MjMzMzM3OTU2MjMtMjEzOTk5NTk3NzgxNTm8Xq8BTIi6utG0424Gg7CknYzLH8RH/A409jq5o0zi7gEAAAACCwAAAGZ0X3RyYW5zZmVyPwAAAHsicmVjZWl2ZXJfaWQiOiJkZXYtMTYyMzMzMzkxNjM2OC01ODcwNzQzNDg3ODUzMyIsImFtb3VudCI6IjEifQBAehDzWgAAAQAAAAAAAAAAAAAAAAAAAABCwjqayKdpWgM6PE0ixzm/Gy0EtdpxVn0xehMTBReVfVAKIBTDPoPSaOdT8fAhk343F5uOMfSijhTqU2mWV3oD"]'
+```
 
-Để xem thông tin chi tiết của transaction này:
+Để xem chi tiết của transaction này:
 
 ```bash
 http post https://archival-rpc.mainnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_tx_status \
@@ -804,7 +819,8 @@ http post https://archival-rpc.mainnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_
 ```
 
 <details>
-<summary>**Ví dụ về response nhận được:**</summary>
+
+<summary>**Example Response:**</summary>
 
 ```json
 {
@@ -1028,40 +1044,42 @@ http post https://archival-rpc.mainnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_
   }
 }
 ```
+
 </details>
 
-Liệu rằng fungible token đã được transfer thành công?
-  - Quan sát `result` » `transaction_outcome` » `outcome` » liệu rằng `SuccessReceiptId` có phải là một key hay không
-  - nếu `SuccessReceiptId` không phải là một key, fungible token này transfer `failed`.
-  - Nếu nó không có key này, value nhận được, là một `receipt ID`
-  - Lặp qua `result` » `receipts_outcome` cho đến khi bạn tìm thấy một object có ID (ở trên) dưới dạng một id key
-  - trong object này, kiểm tra `outcome` » `status` » (liệu rằng SuccessValue có phải là một key hay không)
-  - Nếu SuccessValue là một key, fungible token transfer thành công, nếu không, thì ngược lại.
+Was the fungible token transfer successful?
+  - Look for `result` » `transaction_outcome` » `outcome` » see if `SuccessReceiptId` is a key
+  - if `SuccessReceiptId` is not a key, this fungible token transfer has `failed`.
+  - If it does have that key, get the value, which is a `receipt ID`
+  - Loop through `result` » `receipts_outcome` until you find an object that ID (from above) under the id key
+  - in that object check `outcome` » `status` » (see if SuccessValue is a key)
+  - If SuccessValue is a key, fungible token transfer succeeded, if not, it failed.
 
-Để xác định có bao nhiêu fungible token đã được transfer, xem tại:
+To determine how many fungible tokens were transferred, look at:
   - `result` » `transaction` » `actions` » `FunctionCall` » `args`
-  - sau đó lấy các tham số, tiến hành decode `base64` nó, sẽ thu được một JSON payload và tìm kiếm key `amount`
-  - Nó sẽ bao gồm một số đã được stringify thể hiện số lượng các fungible token đã được transfer thành công
+  - then take the args and `base64` decode it, that will give you a JSON payload and look for the `amount` key
+  - It will contain a stringified number that represents the number of fungible tokens that were successfully transferred
 
 ## Transfer và call {#transfer-and-call}
 
-If the idea of a fungible token using "transfer and call" is new, please review the comments above the function in [the Nomicon spec](https://nomicon.io/Standards/Tokens/FungibleToken/Core#reference-level-explanation). Ngoài ra, có thể xem một ý tưởng tương tự [từ EIP-677](https://github.com/ethereum/EIPs/issues/677).
+If the idea of a fungible token using "transfer and call" is new, please review the comments above the function in [the Nomicon spec](https://nomicon.io/Standards/Tokens/FungibleToken/Core#reference-level-explanation). Also, see a similar idea [from EIP-677](https://github.com/ethereum/EIPs/issues/677).
 
-Đối với ví dụ này, chúng ta sẽ build và deploy các FT contract từ [near-sdk-rs/examples/fungible-token](https://github.com/near/near-sdk-rs/tree/master/examples/fungible-token).
+For this example we will build and deploy FT contracts from [near-sdk-rs/examples/fungible-token](https://github.com/near/near-sdk-rs/tree/master/examples/fungible-token).
 
-Hãy call `ft_transfer_call` function trên `ft` contract (receiver) và xem xét các kịch bản thành công và không thành công.
+Let's call `ft_transfer_call` function on `ft` contract (receiver) and examine successful and unsuccessful scenarios.
 
 ### Transfer và call thành công {#successful-transfer-and-call}
-  Hãy send 10 N từ `DEFI` contract nhưng chỉ yêu cầu 9 N.
+  Let's send 10 N to `DEFI` contract that requires only 9 N.
 
-  - sử dụng NEAR CLI
+  - using NEAR CLI
     ```bash
     near call <ft_contract_id> ft_transfer_call '{"receiver_id": "<defi_contract_id>", "amount": "10", "msg": "take-my-money"}' --accountId <user_account_id> --amount 0.000000000000000000000001
     ```
 
-  - với JSON RPC call
+  - with JSON RPC call
 
-Transaction đại diện:
+Transaction representation:
+
 ```yaml
 Transaction: {
     block_hash: `456…abc`,
@@ -1082,12 +1100,12 @@ Transaction: {
 }
 ```
 
-    ```bash
-      http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
-      params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZqPqoVEgrAAAgAAAAZGV2LTE2MjMzMzM3OTU2MjMtMjEzOTk5NTk3NzgxNTn9j4g2IJ8nGQ38i3+k+4WBAeJL1xP7ygQhC7CrvEG4NQEAAAACEAAAAGZ0X3RyYW5zZmVyX2NhbGxWAAAAeyJyZWNlaXZlcl9pZCI6ImRldi0xNjIzNjkzMTIxOTU1LTcxNjY3NjMyNTMxMTc2IiwiYW1vdW50IjoiMTAiLCJtc2ciOiJ0YWtlLW15LW1vbmV5In0AQHoQ81oAAAEAAAAAAAAAAAAAAAAAAAAANY2lHqJlAJYNDGEQiUNnmfiBV44Q1sdg45xNlNvlROOM+AtN1z3PSJqM6M6jAKXUwANoQTzFqXhIMHIjIPbTAA=="]'
-    ```
+```bash
+  http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
+  params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZqPqoVEgrAAAgAAAAZGV2LTE2MjMzMzM3OTU2MjMtMjEzOTk5NTk3NzgxNTn9j4g2IJ8nGQ38i3+k+4WBAeJL1xP7ygQhC7CrvEG4NQEAAAACEAAAAGZ0X3RyYW5zZmVyX2NhbGxWAAAAeyJyZWNlaXZlcl9pZCI6ImRldi0xNjIzNjkzMTIxOTU1LTcxNjY3NjMyNTMxMTc2IiwiYW1vdW50IjoiMTAiLCJtc2ciOiJ0YWtlLW15LW1vbmV5In0AQHoQ81oAAAEAAAAAAAAAAAAAAAAAAAAANY2lHqJlAJYNDGEQiUNnmfiBV44Q1sdg45xNlNvlROOM+AtN1z3PSJqM6M6jAKXUwANoQTzFqXhIMHIjIPbTAA=="]'
+```
 
-Để xem chi tiết của transaction này:
+To get details of this transaction:
 
 ```bash
 http post https://archival-rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_tx_status \
@@ -1095,7 +1113,8 @@ http post https://archival-rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_
 ```
 
 <details>
-<summary>**Ví dụ về response nhận được:**</summary>
+
+<summary>**Example Response:**</summary>
 
 ```json
 {
@@ -1413,9 +1432,10 @@ http post https://archival-rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_
   }
 }
 ```
+
 </details>
 
-Bây giờ, hãy thử làm theo các bước đã được mô tả trong session trước và xác định xem liệu transaction này có thành công. Ngoài việc thành công, hãy phân tích các receipt khác nhau trong các serie của các cross-contract call để xác định có bao nhiêu fungible token đã được transfer. Đây sẽ là một case phức tạp nhất mà chúng ta sẽ xem xét.
+Now, let's try to follow the steps described in the previous section and determine if these transactions was successful. In addition to being successful, let's analyze the various receipts in the series of cross-contract calls to determine how many fungible tokens were transferred. This will be the most complex case we'll look at.
 
   1. Kiểm tra `result` » `transaction_outcome` » `outcome` » `status` có `SuccessReceiptId` là một key. Nếu không, không có bất kỳ fungible token được transfer.
   2. Lấy value của `SuccessReceiptId` key. Trong case phía trên, nó có giá trị là `Hw6z8kJ7CSaC6SgyQzcmXzNX9gq1gaAnLS169qgyZ2Vk`.
@@ -1428,22 +1448,24 @@ Bây giờ, hãy thử làm theo các bước đã được mô tả trong sessi
   4. Lặp qua từng `result` » `receipts_outcome` cho đến khi tìm được object có `id` bằng value ở step 2. Tương tự step 1, object này cũng sẽ chứa một `status` field mà có thể chứa `SuccessReceiptId` key. Một lần nữa, nếu nó không có, không có bất kỳ fungible token được transfer, ngược lại, lấy value của `SuccessReceiptId`. Trong ví dụ phía trên, value là `4Tc8MsrJZSMpNZx7u4jSqxr3WhRzqxaNHxLJFqz8tUPR`.
   5. Tương tự step phía trước, lặp qua `result` » `receipts_outcome` cho đến khi bạn tìm thấy object có `id` khớp với value ở step 4. Trong object này kiểm tra `outcome` » `status` có `SuccessValue` field. `SuccessValue` này thể hiện có bao nhiêu fungible token từ contract đang nhận được "trả về" fungible token contract. Chú ý rằng trong ví dụ phía trên, value là `Ijki`, đây là một phiên bản được mã hoá dưới dạng base64 của `"9"`. Tại thời điểm này, chúng ta biết được rằng có 10 fungible token đã được send (từ step 3) và 9 được nhận.
 
-Để rõ ràng hơn, chúng ta cùng xem xét thêm một khía cạnh tuỳ chọn khác. Tại step 4 chúng ta cô lập một obeject trong `result` » `receipts_outcome`. Đây là một array của `receipt_ids` và nó đặc biệt thú vị. Element đầu tiên của array là receipt ID `EB69xtJiLRh9RNzAHgBGmom8551hrK2xSRreqbjvJgu5`. Nếu chúng ta nhìn qua `result` » `receipts_outcome` và tìm kiếm nó là một value của `id` key, chúng ta sẽ thấy điều gì đã diễn ra trong `ft_on_transfer` function của contract nhận các fungible token. Trong object này `status` » `SuccessValue` là `IjEi`, nó là giá trị đã được mã hoá base64 của `"1"`.
+For additional clarity, let's take a look at one more optional aspect. In step 4 we isolated an obeject in `result` » `receipts_outcome`. There's an array of `receipt_ids` that's particularly interesting. The first element in the array is the receipt ID `EB69xtJiLRh9RNzAHgBGmom8551hrK2xSRreqbjvJgu5`. If we loop through the `result` » `receipts_outcome` and find this as the value for the `id` key, we'll see what happened in the function `ft_on_transfer` which takes place in the contract receiving the fungible tokens. In this object the `status` » `SuccessValue` is `IjEi` which is the base64-encoded value of `"1"`.
 
-Một cách tổng quan:
+In summary:
 1. Một user đã call fungible token contract với `ft_transfer_call` method, chỉ định receiver account, có bao nhiêu token được send, và các thông tin custom khác.
 2. Receiver account được implement `ft_on_transfer`, trả về `"1"` cho callback function trên fungible token contract.
 3. Callback của fungible token contract là `ft_resolve_transfer` và nhận được value `"1"`. Nó cho biết rằng 1 token đã được trả lại, vì vậy hãy trừ đi 10 token mà nó dự định gửi. Sau đó nó sẽ trả cho user lượng token đã được sử dụng trong serie back-and-forth của các cross-contract call này: `"9"`.
 
 ### Không thành công transfer and call {#failed-transfer-and-call}
-Hãy thử send một lượng token nhiều hơn mà account này đang có:
+Let's try to send more tokens than the account has:
 
-  - sử dụng NEAR CLI
-    ```bash
-        near call <ft_contract_id> ft_transfer_call '{"receiver_id": "<defi_contract_id>", "amount": "1000000000", "msg": "take-my-money"}' --accountId <user_account_id> --amount 0.000000000000000000000001
-    ```
+  - using NEAR CLI
 
-Transaction đại diện:
+```bash
+    near call <ft_contract_id> ft_transfer_call '{"receiver_id": "<defi_contract_id>", "amount": "1000000000", "msg": "take-my-money"}' --accountId <user_account_id> --amount 0.000000000000000000000001
+```
+
+Transaction representation:
+
 ```yaml
 Transaction: {
     block_hash: `456…abc`,
@@ -1464,13 +1486,14 @@ Transaction: {
 }
 ```
 
-  - với JSON RPC call
-      ```bash
-          http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
-          params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZn/qoVEgrAAAgAAAAZGV2LTE2MjMzMzM3OTU2MjMtMjEzOTk5NTk3NzgxNTnrbOQ93Wv9xxBwmq4yDYrssCpwKSI2bzjNNCCCHMZKNwEAAAACEAAAAGZ0X3RyYW5zZmVyX2NhbGxeAAAAeyJyZWNlaXZlcl9pZCI6ImRldi0xNjIzMzMzOTE2MzY4LTU4NzA3NDM0ODc4NTMzIiwiYW1vdW50IjoiMTAwMDAwMDAwMCIsIm1zZyI6InRha2UtbXktbW9uZXkifQBAehDzWgAAAQAAAAAAAAAAAAAAAAAAAABQh3k+7zG2m/Yz3O/FBrvLaBwR/5YRB5FbFnb27Nfu6BW/Wh77RFH7+ktBwGLBwFbJGxiumIcsqBiGXgg1EPMN"]'
-      ```
+  - with JSON RPC call
 
-Để xem chi tiết về transaction này:
+```bash
+  http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
+  params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZn/qoVEgrAAAgAAAAZGV2LTE2MjMzMzM3OTU2MjMtMjEzOTk5NTk3NzgxNTnrbOQ93Wv9xxBwmq4yDYrssCpwKSI2bzjNNCCCHMZKNwEAAAACEAAAAGZ0X3RyYW5zZmVyX2NhbGxeAAAAeyJyZWNlaXZlcl9pZCI6ImRldi0xNjIzMzMzOTE2MzY4LTU4NzA3NDM0ODc4NTMzIiwiYW1vdW50IjoiMTAwMDAwMDAwMCIsIm1zZyI6InRha2UtbXktbW9uZXkifQBAehDzWgAAAQAAAAAAAAAAAAAAAAAAAABQh3k+7zG2m/Yz3O/FBrvLaBwR/5YRB5FbFnb27Nfu6BW/Wh77RFH7+ktBwGLBwFbJGxiumIcsqBiGXgg1EPMN"]'
+```
+
+To get details of this transaction:
 
 ```bash
 http post https://archival-rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_tx_status \
@@ -1478,7 +1501,8 @@ http post https://archival-rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_
 ```
 
 <details>
-<summary>**Ví dụ về response nhận được**:</summary>
+
+<summary>**Example response**:</summary>
 
 ```json
 {
@@ -1672,13 +1696,14 @@ http post https://archival-rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_
   }
 }
 ```
+
 </details>
 
 
-Cùng xem xét response này.
+Let's examine this response.
 
-  * `result` » `transaction_outcome` » `outcome` » `status` » `SuccessReceiptId` là `83AdQ16bpAC7BEUyF7zoRsAgeNW7HHmjhZLvytEsrygo`
-  * kiểm tra `result` » `receipts_outcome` » `0` » `outcome` » `status` và tìm `Failure` status ở đây
+  * `result` » `transaction_outcome` » `outcome` » `status` » `SuccessReceiptId` is `83AdQ16bpAC7BEUyF7zoRsAgeNW7HHmjhZLvytEsrygo`
+  * check `result` » `receipts_outcome` » `0` » `outcome` » `status` and find `Failure` status there
 
 :::tip Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>

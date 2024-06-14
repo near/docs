@@ -228,7 +228,7 @@ return (
                 </div>
                 <div className="LidoFormTopContainerLeftContent2">
                   <span>
-                    {state.balance ?? (!state.sender ? "0" : "...")}&amp;nbsp;ETH
+                    {state.balance ?? (!state.sender ? "0" : "...")}&amp;amp;nbsp;ETH
                   </span>
                 </div>
               </div>
@@ -257,7 +257,7 @@ return (
             <div className="LidoFormTopContainerLeftContent2">
               <span>
                 {state.stakedBalance ?? (!state.sender ? "0" : "...")}
-                &amp;nbsp;stETH
+                &amp;amp;nbsp;stETH
               </span>
             </div>
           </div>

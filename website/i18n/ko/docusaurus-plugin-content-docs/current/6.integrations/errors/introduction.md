@@ -22,6 +22,7 @@ sidebar_label: 소개
 - 청크가 생성되기 전에, 트랜잭션이 다시 정렬되고 유효성이 검사됩니다. 이는 분산 시스템 전체에서 유효한 트랜잭션만으로 구성된 청크를 생성하기 위함입니다.
 - 트랜잭션이 청크에서 처리되는 동안, 트랜잭션 내 Action 적용으로 인해 발생한 오류도 RPC를 통해 반환됩니다.
 
+
 ## NEAR 플랫폼 오류 {#near-platform-errors}
 
 NEAR 플랫폼에서 발생한 오류는 `nearcore` 내 다음 위치에서 구현됩니다.
@@ -30,7 +31,6 @@ NEAR 플랫폼에서 발생한 오류는 `nearcore` 내 다음 위치에서 구�
 - [nearcore/runtime/near-vm-errors/src/lib.rs](https://github.com/near/nearcore/blob/master/runtime/near-vm-errors/src/lib.rs)
 
 이 페이지는 다음을 포함합니다.
-
 - **RuntimeError 및 하위 유형**: 트랜잭션이 대상 노드에서 처음 수신되고 처리되어 청크에 적용되기 전에 다시 발생하는 오류입니다.
 - **TxExecutionError 및 하위 유형**: 트랜잭션 및 포함된 Action의 유효성을 검사하고 청크에 적용하는 동안 발생하는 오류입니다.
 - **VMerror 및 하위 유형**: NEAR VM이 Wasm 컨트랙트를 실행하는 동안 발생하는 오류입니다.
@@ -86,6 +86,7 @@ TxExecutionError                                          Error returned in the 
           FunctionCallMethodNameLengthExceeded            The length of the method name exceeded the limit in a Function Call action.
           FunctionCallArgumentsLengthExceeded             The length of the arguments exceeded the limit in a Function Call action.
 ```
+
 
 ### VMerror 및 하위 유형 {#vmerror-and-subtypes}
 
@@ -145,5 +146,6 @@ VMerror                                                   An error that occurs i
         Memory                                            Error creating memory
 ```
 
-:::tip 질문이 있으신가요? <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
+:::tip 질문이 있으신가요?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
 :::

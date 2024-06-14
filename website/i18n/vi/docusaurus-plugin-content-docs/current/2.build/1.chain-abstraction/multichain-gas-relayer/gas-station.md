@@ -1,10 +1,16 @@
 ---
 id: gas-station
 title: Multichain Gas Station Contract
-sidebar_label: Multichain Gas Station
+sidebar_label: Multichain Gas Station Contract
 ---
 
 The [multichain gas station smart contract](https://github.com/near/multichain-gas-station-contract) accepts payments in NEAR tokens in exchange for gas funding on non-NEAR foreign chains. Part of the NEAR Multichain effort, it works in conjunction with the [MPC recovery service](https://github.com/near/mpc-recovery) to generate on-chain signatures.
+
+:::info Alpha stage
+
+The Multichain Relayer solution is currently under development. Users who want to test-drive this solution should keep in mind that the product is in alpha stage, and a code audit is pending.
+
+:::
 
 ## What is it?
 
@@ -13,7 +19,7 @@ This smart contract is a piece of the NEAR Multichain project, which makes NEAR 
 - The [MPC recovery service](https://github.com/near/mpc-recovery), also called the _"MPC signer service"_, includes a network of trusted MPC signers, which hold keyshares and cooperatively sign transactions on behalf of the MPC network. It also includes an on-chain component, called the _"MPC signer contract,"_ which accepts on-chain signature requests and returns signatures computed by the MPC network.
 - The [multichain relayer server](multichain-server.md) scans this smart contract for signed transaction payloads and emits them to foreign chain RPCs.
 
-## How does it work?
+## How it works
 
 Currently, relaying one transaction to a foreign chain requires three transactions.
 Three transactions are required because of the gas restrictions imposed by the protocol. Currently (pre-NEP-516), the MPC signing function requires a _lot_ of gas, so dividing up the signing process into three parts is required to maximize the amount of gas available to each signing call.
@@ -85,6 +91,12 @@ Users who wish to get transactions signed and relayed by this contract and its a
    - This transaction will return a signed payload, part of the sequence of transactions necessary to send the user's transaction to the foreign chain.
    - Repeat `pending_transactions_count` times.
 4. Relay each signed payload to the foreign chain RPC in the order they were requested.
+
+:::tip testnet contract
+
+If you want to try things out, this smart contract is available on `canhazgas.testnet`.
+
+:::
 
 ## Limitations
 

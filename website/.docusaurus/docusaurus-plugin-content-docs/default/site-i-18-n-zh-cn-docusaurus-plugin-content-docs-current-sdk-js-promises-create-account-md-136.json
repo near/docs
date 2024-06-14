@@ -1,7 +1,7 @@
 {
   "id": "sdk/js/promises/create-account",
   "title": "Creating Accounts",
-  "description": "You might want to create an account from a contract for many reasons. One example: You want to progressively onboard users, hiding the whole concept of NEAR from them at the beginning, and automatically create accounts for them (these could be sub-accounts of your main contract, such as user123.some-cool-game.near).",
+  "description": "You might want to create an account from a contract for many reasons. You might want to create an account from a contract for many reasons. One example: You want to progressively onboard users, hiding the whole concept of NEAR from them at the beginning, and automatically create accounts for them (these could be sub-accounts of your main contract, such as user123.some-cool-game.near).",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/sdk/js/promises/create-account.md",
   "sourceDirName": "sdk/js/promises",
   "slug": "/sdk/js/promises/create-account",

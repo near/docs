@@ -67,9 +67,9 @@ const walletConnection = new WalletConnection(nearConnection);
 
 ### Ask your user to Sign In {#sign-in}
 
-You first create a [WalletConnection](#wallet-connection), and then call `requestSignIn`. This will redirect the current page to the Wallet authentication page. You can configure success and failure redirect URLs.
+You first create a [WalletConnection](#wallet-connection), and then call `requestSignIn`. This will redirect the current page to the Wallet authentication page. You can configure success and failure redirect URLs. This will redirect the current page to the Wallet authentication page. You can configure success and failure redirect URLs.
 
-This action creates an access key that will be stored in the browser's local storage. You can optionally list `methodNames` you want to allow for the access key. If you don't specify `methodNames` or pass an empty array, then all methods are allowed to be called (the access key will be created with permissions to call all methods).
+This action creates an access key that will be stored in the browser's local storage. You can optionally list `methodNames` you want to allow for the access key. This action creates an access key that will be stored in the browser's local storage. You can optionally list `methodNames` you want to allow for the access key. If you don't specify `methodNames` or pass an empty array, then all methods are allowed to be called (the access key will be created with permissions to call all methods).
 
 ```js
 // const walletConnection = new WalletConnection(nearConnection);

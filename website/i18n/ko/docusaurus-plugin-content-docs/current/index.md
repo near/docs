@@ -125,7 +125,7 @@ Welcome, this is the starting point for all NEAR documentation. Learn to build a
 
 ---
 
-## 다른 문서 사이트
+## External Resources
 
 다음은 NEAR에 대해 자세히 알아볼 수 있도록 지원하는 NEAR 생태계의 추가 소스입니다.
 
@@ -139,7 +139,6 @@ Welcome, this is the starting point for all NEAR documentation. Learn to build a
         <div className="card__body">
           <h3>
           Discover
-          <svg width="0.8rem" height="0.8rem" aria-hidden="true" viewBox="0 0 24 24" className="iconExternalLink_node_modules-@docusaurus-theme-classic-lib-theme-Icon-ExternalLink-styles-module"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg>
           </h3>
           Discover awesome apps in the Near ecosystem.
         </div>
@@ -155,9 +154,8 @@ Welcome, this is the starting point for all NEAR documentation. Learn to build a
         <div className="card__body">
           <h3>
           Nomicon
-          <svg width="0.8rem" height="0.8rem" aria-hidden="true" viewBox="0 0 24 24" className="iconExternalLink_node_modules-@docusaurus-theme-classic-lib-theme-Icon-ExternalLink-styles-module"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg>
           </h3>
-            See how NEAR is implemented in the official protocol specification.
+          See how NEAR is implemented in the official protocol specification.
         </div>
       </div>
     </a>
@@ -171,7 +169,6 @@ Welcome, this is the starting point for all NEAR documentation. Learn to build a
         <div className="card__body">
           <h3>
           Running a Node
-          <svg width="0.8rem" height="0.8rem" aria-hidden="true" viewBox="0 0 24 24" className="iconExternalLink_node_modules-@docusaurus-theme-classic-lib-theme-Icon-ExternalLink-styles-module"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg>
           </h3>
           Documentation on becoming a validator to help keeping the blockchain safe
         </div>
@@ -179,14 +176,14 @@ Welcome, this is the starting point for all NEAR documentation. Learn to build a
     </a>
   </div>
   <div className="col col--6">
-    <a href="/concepts/advanced/indexers">
+    <a href="https://templates.mintbase.xyz/">
       <div className="card">
         <div className="card__image">
-          <img src={require("@site/static/docs/assets/welcome-pages/indexers.png").default} alt="Indexers" />
+          <img src={require("@site/static/docs/assets/welcome-pages/mintbase-templates.png").default} alt="Templates" />
         </div>
         <div className="card__body">
-          <h3>NEAR Indexers</h3>
-            Indexers help you mine information from the blockchain
+          <h3>Templates</h3>
+            Templates for creating web3 applications
         </div>
       </div>
     </a>

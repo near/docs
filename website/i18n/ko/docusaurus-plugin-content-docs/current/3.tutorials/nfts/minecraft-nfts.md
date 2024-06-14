@@ -12,7 +12,7 @@ sidebar_label: Minecraft NFTs
 
 ## 전제 조건
 
-:::info 먼저 입문 과정으로 **[NFT 발행 튜토리얼](/tutorials/nfts/minting-nfts)**을 완료하는 것이 좋습니다.
+:::info It is recommended that you first complete the introductory **[minting NFTs tutorial](/tutorials/nfts/minting-nfts)** :::
 
 이 튜토리얼을 성공적으로 완료하려면 다음이 필요합니다.
 
@@ -105,7 +105,7 @@ WorldEdit이 제대로 설치된 경우, 이는 `First position set to (X, Y, Z)
 
 #### 단계
 
-1. 계정을 등록하고 이메일 또는 GitHub를 통해 [web3.storage](https://nft.storage/login/)에 로그인합니다.
+1. Register an account and log in to [web3.storage](https://web3.storage/) either via email or your GitHub.
 
 2. [파일](https://web3.storage/) 섹션 으로 이동하여 [추가 파일 업로드](https://web3.storage/) 버튼을 클릭합니다.
 
@@ -116,7 +116,7 @@ WorldEdit이 제대로 설치된 경우, 이는 `First position set to (X, Y, Z)
    https://bafybeidadhfilezx23dcdaueo3bjuafqeehokw33vyepkjtppigorrhbpy.ipfs.dweb.link/
    ```
 
-:::info 여러 파일 및 사용 가능한 API 엔드포인트 업로드에 대한 정보는 [web3.storage 문서](https://docs.web3.storage/)를 참조하세요. :::
+:::info See the [web3.storage docs](https://docs.web3.storage/) for information on uploading multiple files and available API endpoints. :::
 
 ### 컨트랙트와 상호 작용
 

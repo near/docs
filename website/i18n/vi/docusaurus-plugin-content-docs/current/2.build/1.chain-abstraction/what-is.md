@@ -34,7 +34,7 @@ Allowing users to start using a dApp without having to acquire funds is a powerf
 This concept, known as "Account Abstraction" in other chains, is a **built-in feature** in NEAR. User can wrap transactions in messages known as **meta-transaction**, that any other account can relay to the network.
 
 :::tip
-In NEAR the relayers simply attach NEAR to cover gas fees, and pass the transaction to the network. There, the transaction is executed as if the **user had send it**.
+In NEAR the relayers simply attach NEAR to cover gas fees, and pass the transaction to the network. There, the transaction is executed as if the **user had sent it**.
 :::
 
 <hr subclass="subsection" />

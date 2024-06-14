@@ -52,6 +52,11 @@ service cloud.firestore {
   	match /users/{userId}/{document=**} {
       allow create, read, update, delete: if request.auth != null && request.auth.uid == userId;
     }
+    match /publicKeys/{publicKey} {
+      allow create, delete: if request.auth != null;
+      allow read : if true;
+      allow update: if false;
+    }
   }
 }
 ```
@@ -60,6 +65,9 @@ service cloud.firestore {
 - Go to the "Data" tab
 - Click on "Start collection"
 - Set the Collection ID to `users` and hit "Next"
+- Add a Document ID of `root` and press "Save"
+- Click on "Start collection"
+- Set the Collection ID to `publicKeys` and hit "Next"
 - Add a Document ID of `root` and press "Save"
 
 #### Get the application credentials

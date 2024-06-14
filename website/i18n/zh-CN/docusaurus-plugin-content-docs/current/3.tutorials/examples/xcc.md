@@ -7,7 +7,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
-This example performs the simplest cross-contract call possible: it calls our [Hello NEAR](hello-near.md) example to set and retrieve a greeting. It is one of the simplest examples on making a cross-contract call, and the perfect gateway to the world of interoperative contracts.
+This example performs the simplest cross-contract call possible: it calls our [Hello NEAR](https://github.com/near-examples/hello-near-examples) example to set and retrieve a greeting. It is one of the simplest examples on making a cross-contract call, and the perfect gateway to the world of interoperative contracts.
 
 :::info Advanced Cross-Contract Calls Check the tutorial on how to perform cross-contract calls [in batches and in parallel](./advanced-xcc) :::
 
@@ -30,9 +30,9 @@ You have two options to start the project:
 
 The smart contract is available in two flavors: Rust and JavaScript
 
-<Tabs>
+<Tabs groupId="code-tabs">
 
-  <TabItem value="🌐 JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
 
 ```bash
 ┌── sandbox-ts # sandbox testing
@@ -48,7 +48,7 @@ The smart contract is available in two flavors: Rust and JavaScript
 
   </TabItem>
 
-  <TabItem value="🦀 Rust">
+  <TabItem value="rust" label="🦀 Rust">
 
 ```bash
 ┌── tests # sandbox testing
@@ -75,17 +75,18 @@ The smart contract is available in two flavors: Rust and JavaScript
 The contract exposes methods to query the greeting and change it. These methods do nothing but calling `get_greeting` and `set_greeting` in the `hello-near` example.
 
 <CodeTabs>
-<Language value="🌐 JavaScript" language="ts">
+<Language value="js" language="ts">
     <Github fname="contract.ts"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/src/contract.ts"
             start="17" end="39" />
   </Language>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/lib.rs"
-            start="25" end="50" />
+            start="22" end="51" />
             <Github fname="external.rs"
-            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/external.rs" />
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/external.rs"
+            start="2" end="12" />
   </Language>
 </CodeTabs>
 
@@ -93,8 +94,8 @@ The contract exposes methods to query the greeting and change it. These methods 
 
 The contract readily includes a set of unit and sandbox testing to validate its functionality. To execute the tests, run the following commands:
 
-<Tabs>
-  <TabItem value="🌐 JavaScript">
+<Tabs groupId="code-tabs">
+  <TabItem value="js" label="🌐 JavaScript">
 
 ```bash
 cd contract-simple-ts
@@ -103,7 +104,7 @@ yarn test
 ```
 
   </TabItem>
-  <TabItem value="🦀 Rust">
+  <TabItem value="rust" label="🦀 Rust">
   
   ```bash
   cd contract-simple-rs
@@ -119,12 +120,12 @@ yarn test
 In this project in particular, the integration tests first deploy the `hello-near` contract. Then, they test that the cross-contract call correctly sets and retrieves the message. You will find the integration tests in `sandbox-ts/` for the JavaScript version and in `tests/` for the Rust version.
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="rust">
+  <Language value="js" language="js">
     <Github fname="main.ava.ts"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/sandbox-ts/main.ava.ts"
             start="8" end="52" />
   </Language>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/tests/tests.rs"
             start="4" end="77" />
@@ -137,8 +138,8 @@ In this project in particular, the integration tests first deploy the `hello-nea
 
 In order to deploy the contract you will need to create a NEAR account.
 
-<Tabs>
-  <TabItem value="🌐 JavaScript">
+<Tabs groupId="code-tabs">
+  <TabItem value="js" label="🌐 JavaScript">
 
 ```bash
 # Optional - create an account
@@ -151,7 +152,7 @@ near deploy <accountId> ./build/cross_contract.wasm init --initFunction init --i
 ```
 
   </TabItem>
-  <TabItem value="🦀 Rust">
+  <TabItem value="rust" label="🦀 Rust">
 
 ```bash
 # Optional - create an account

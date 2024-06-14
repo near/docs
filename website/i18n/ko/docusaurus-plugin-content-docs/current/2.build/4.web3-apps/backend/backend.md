@@ -21,7 +21,7 @@ For this three basic steps are needed:
 2. Ask the user to sign the challenge with the wallet.
 3. Verify the signature corresponds to the user.
 
-### 1) Create a Challenge
+### 1) 1) Create a Challenge
 
 Assume we want to login the user into our application named `application-name`.
 

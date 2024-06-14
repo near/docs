@@ -4,7 +4,7 @@ title: Tools
 sidebar_label: Home
 ---
 
-Welcome! The NEAR ecosystem has a complete set of tools for you to make the most out of the NEAR network. In this page you will find:
+Welcome! Welcome! The NEAR ecosystem has a complete set of tools for you to make the most out of the NEAR network. In this page you will find: In this page you will find:
 
 1. [Wallets](https://www.mynearwallet.com/) to handle your assets.
 2. [Explorers](explorer.md) to quickly obtain information from the blockchain.

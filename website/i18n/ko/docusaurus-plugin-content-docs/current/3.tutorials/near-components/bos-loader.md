@@ -29,9 +29,9 @@ title: BOS Loader
 
 5. `bos-loader <youraccount.near> --path src`를 실행합니다(또는 `src` 폴더에서 실행).
 
-6. https://near.org/flags를 열고 로더 URL을 `http://127.0.0.1:3030`로 설정합니다.
+6. Open https://dev.near.org/flags, and set the loader URL to `http://127.0.0.1:3030`.
 
-7. `https://near.org/<youraccount.near>/widget/<component name>`를 엽니다(대소문자 구분).
+7. Open `https://dev.near.org/<youraccount.near>/widget/<component name>` (case sensitive)
 
    :::info `testnet`에서 테스팅 중이라면, 테스트넷 계정을 사용해서 https://test.near.org를 대신 여세요.
 

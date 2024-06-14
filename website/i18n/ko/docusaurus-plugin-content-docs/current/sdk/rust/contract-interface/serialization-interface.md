@@ -81,7 +81,7 @@ JavaScript는 `2^53 - 1`까지의 정수만 지원하기 때문에, JSON 정수 
 예를 들어, `std::convert::Into`를 사용하여 `U64`에서 `u64`로 변환할 수 있습니다.
 
 ```rust
-#[near_bindgen]
+#[near]
 impl Contract {
     pub fn mult(&self, a: U64, b: U64) -> U128 {
         let a: u64 = a.into();
@@ -95,7 +95,7 @@ impl Contract {
 내부 값에 액세스하고 `.0`을 사용할 수도 있습니다.
 
 ```diff
- #[near_bindgen]
+ #[near]
  impl Contract {
      pub fn mult(&self, a: U64, b: U64) -> U128 {
 -        let a: u64 = a.into();
@@ -111,7 +111,7 @@ impl Contract {
 그리고 `U64(...)`와 `U128(...)`를 사용하여, 소문자 `u` 변형을 대문자 `U` 변형으로 캐스트할 수 있습니다.
 
 ```diff
- #[near_bindgen]
+ #[near]
  impl Contract {
      pub fn mult(&self, a: U64, b: U64) -> U128 {
          let a = a.0;
@@ -126,7 +126,7 @@ impl Contract {
 모두 결합하면 다음과 같습니다.
 
 ```rust
-#[near_bindgen]
+#[near]
 impl Contract {
     pub fn mult(&self, a: U64, b: U64) -> U128 {
         U128(u128::from(a.0) * u128::from(b.0))
@@ -143,13 +143,14 @@ SDK에 이러한 JSON 래퍼 유형이 포함되어 있지만, [`serde`](https:/
 예시는 다음과 같습니다:
 
 ```rust
-#[near_bindgen]
-#[derive(BorshDeserialize, BorshSerialize, PanicOnDefault)]
+#[near(contract_state)]
+#[derive(PanicOnDefault)]
 pub struct Contract {
     // Notice, internally we store `Vec<u8>` 
     pub data: Vec<u8>,
 }
-#[near_bindgen]
+
+#[near]
 impl Contract {
     #[init]
     pub fn new(data: Base64VecU8) -> Self {

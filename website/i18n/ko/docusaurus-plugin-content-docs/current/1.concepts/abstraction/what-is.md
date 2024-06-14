@@ -4,7 +4,7 @@ title: Chain Abstraction
 sidebar_label: Introduction
 ---
 
-Do you know how your favorite apps are built and which database they use?. Chances are not, since we choose apps based on their functionality, and not their underlying tech.
+Do you know how your favorite apps are built and which database they use? Chances are not, since we choose apps based on their functionality, and not their underlying tech.
 
 We believe that **same should be true for blockchain apps**, users should be able to enjoy an application, without the underlying tech hampering their experience. The user experience should be so good, that they don't realize they're using a blockchain.
 
@@ -34,6 +34,6 @@ Users will simply login with an email, and a **zero-fund** account will be creat
 
 Once having their account, apps can ask the user to create meta-transactions and send them to any relayer. The relayer will pass the transaction to the network, attaching NEAR to pay for the execution fees. The transaction will then be executed as if the user had sent it, since the relayer is only there to attach NEAR to the submission.
 
-If the user wants to interact with other blockchain, they can use their account to interact with a multi-chain signature relayer, which will relay the transaction to the right network, covering GAS fees.
+If the user wants to interact with other blockchains, they can use their account to interact with a multi-chain signature relayer, which will relay the transaction to the right network, covering GAS fees.
 
 As an example, this would allow users to collect NFTs across different chains, without ever needing to explicitly create an account or acquire crypto. All with just a single email login.

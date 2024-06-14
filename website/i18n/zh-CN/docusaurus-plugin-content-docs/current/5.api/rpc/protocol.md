@@ -32,7 +32,7 @@ Example:
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.experimental_genesisConfig();
@@ -289,7 +289,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 
 #### What could go wrong? {#what-could-go-wrong}
 
-When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
+When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
 
 ```json
@@ -311,7 +311,7 @@ When API request fails, RPC server returns a structured error response with a li
 
 > **Heads up**
 > 
-> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them.
+> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them. Please, don't rely on them.
 
 Here is the exhaustive list of the error variants that can be returned by `EXPERIMENTAL_genesis_config` method:
 
@@ -347,7 +347,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
 
 ## Protocol Config {#protocol-config}
 
-> Returns most recent protocol configuration or a specific queried block. Useful for finding current storage and transaction costs.
+> Returns most recent protocol configuration or a specific queried block. Useful for finding current storage and transaction costs. Useful for finding current storage and transaction costs.
 
 - method: `EXPERIMENTAL_protocol_config`
 - params:
@@ -599,7 +599,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 
 #### What could go wrong? {#what-could-go-wrong-1}
 
-When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
+When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
 
 ```json
@@ -621,7 +621,7 @@ When API request fails, RPC server returns a structured error response with a li
 
 > **Heads up**
 > 
-> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them.
+> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them. Please, don't rely on them.
 
 Here is the exhaustive list of the error variants that can be returned by `EXPERIMENTAL_protocol_config` method:
 

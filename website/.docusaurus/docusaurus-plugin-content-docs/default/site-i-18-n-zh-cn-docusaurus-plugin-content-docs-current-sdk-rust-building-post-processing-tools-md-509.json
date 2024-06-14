@@ -1,7 +1,7 @@
 {
   "id": "sdk/rust/building/post-processing",
   "title": "Post Processing Tools",
-  "description": "The size of the contract is a critical characteristic. The best way to keep it small is a well-designed minimalistic code with a reduced number of dependencies. It is especially important for large contracts and huge multi-contract dApps that can take a fortune to deploy.",
+  "description": "The size of the contract is a critical characteristic. The best way to keep it small is a well-designed minimalistic code with a reduced number of dependencies. The size of the contract is a critical characteristic. The best way to keep it small is a well-designed minimalistic code with a reduced number of dependencies. It is especially important for large contracts and huge multi-contract dApps that can take a fortune to deploy.",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/sdk/rust/building/post-processing-tools.md",
   "sourceDirName": "sdk/rust/building",
   "slug": "/sdk/rust/building/post-processing",

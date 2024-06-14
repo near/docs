@@ -86,7 +86,7 @@ Further down in the `submit_solution` method we'll follow our plan by **adding a
 
 <Github language="rust" start="19" end="45" url="https://github.com/near-examples/crossword-tutorial-chapter-3/blob/ec07e1e48285d31089b7e8cec9e9cf32a7e90c35/contract/src/lib.rs" />
 
-:::tip `Crossword` 구조체 구현에서 `callback_after_transfer`와 `callback_after_create_account` 함수를 구현했을 수 있으므로, 콜백에 대한 특성을 만들 필요가 없습니다. 코드를 좀 더 읽기 쉽게 만들기 위해 특성을 정의하고 구현하기로 했습니다 :::
+:::tip `Crossword` 구조체 구현에서 `callback_after_transfer`와 `callback_after_create_account` 함수를 구현했을 수 있으므로, 콜백에 대한 특성을 만들 필요가 없습니다. 코드를 좀 더 읽기 쉽게 만들기 위해 특성을 정의하고 구현하기로 했습니다 ::: :::
 
 ### `claim_reward`
 
@@ -94,7 +94,7 @@ Further down in the `submit_solution` method we'll follow our plan by **adding a
 
 간단해 보이는데 콜백이 필요한 이유는 무엇인가요? 사용자가 로그인할 때 이전 장에서 콜백을 사용하지 않았습니다. 이를 사용하면 무엇이 제공되나요?
 
-상금을 청구하는 동안 사용자가 실수로 사용자 이름을 잘못 누르거나 고양이가 키보드에서 점프할 가능성이 있습니다. `mike.testnet`를 입력하는 대신, `mike.testnzzz`를 입력하고 보내기를 누를 수 있습니다. 요약하면, 존재하지 않는 계정으로 상품을 보내려고 하면 그것을 잡아내고자 합니다. 요약하면, 존재하지 않는 계정으로 상품을 보내려고 하면 그것을 잡아내고자 합니다.
+상금을 청구하는 동안 사용자가 실수로 사용자 이름을 잘못 누르거나 고양이가 키보드에서 점프할 가능성이 있습니다. `mike.testnet`를 입력하는 대신, `mike.testnzzz`를 입력하고 보내기를 누를 수 있습니다. 요약하면, 존재하지 않는 계정으로 상품을 보내려고 하면 그것을 잡아내고자 합니다.
 
 간결함을 위해, Promise 및 콜백에 초점을 맞추고 이 함수의 일부 코드를 건너뛰겠습니다.
 
@@ -189,7 +189,7 @@ pub fn claim_reward_new_account(
 
 ## 콜백
 
-콜백이 작동하는 방식은 `Self::ext()`로 시작하여, `env::current_account_id()`를 사용하여 현재 계정 ID를 전달하는 것입니다. 계정 ID를 전달하는 것입니다. 이는 본질적으로 현재 계정 ID에 있는 함수를 호출하고 싶다는 것을 의미합니다.
+콜백이 작동하는 방식은 `Self::ext()`로 시작하여, `env::current_account_id()`를 사용하여 현재 계정 ID를 전달하는 것입니다. 이는 본질적으로 현재 계정 ID에 있는 함수를 호출하고 싶다는 것을 의미합니다.
 
 그런 다음 각각 `.with_*`으로 시작하는 몇 가지 구성 옵션이 있습니다.
 

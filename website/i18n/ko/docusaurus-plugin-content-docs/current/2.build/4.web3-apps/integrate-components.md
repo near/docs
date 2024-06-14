@@ -8,7 +8,7 @@ import {WidgetEditor} from "@site/src/components/widget-editor"
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-To integrate [Components](../3.near-components/what-is.md) to your frontend, you will leverage two tools:
+To integrate [Components](../../bos/tutorial/quickstart.md) to your frontend, you will leverage two tools:
 
 1. `Wallet Selector`: Enables the user to select their preferred NEAR wallet in your dApp.
 2. `NEAR VM`: A package that can retrieve the component's code from the blockchain and execute it in the browser.
@@ -106,5 +106,5 @@ Then use it during the call to `initNear`:
 ```
 
 :::tip
-To learn more about the wallet selector and how it can be used, please see the [integrating NEAR to your WebApp tutorial](./integrate-contracts.md)
+To learn more about the wallet selector and how it can be used, please see the [integrating NEAR to your WebApp tutorial](./frontend.md)
 :::

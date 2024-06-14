@@ -5,7 +5,7 @@
   "source": "@site/../docs/3.tutorials/templates/minter.md",
   "sourceDirName": "3.tutorials/templates",
   "slug": "/tutorials/templates/minter",
-  "permalink": "/zh-CN/tutorials/templates/minter",
+  "permalink": "/tutorials/templates/minter",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/templates/minter.md",
@@ -20,10 +20,10 @@
   "sidebar": "tutorials",
   "previous": {
     "title": "Frontend & Multiple Contracts",
-    "permalink": "/zh-CN/tutorials/examples/frontend-multiple-contracts"
+    "permalink": "/tutorials/examples/frontend-multiple-contracts"
   },
   "next": {
     "title": "Marketplace Frontend",
-    "permalink": "/zh-CN/tutorials/templates/marketplace"
+    "permalink": "/tutorials/templates/marketplace"
   }
 }

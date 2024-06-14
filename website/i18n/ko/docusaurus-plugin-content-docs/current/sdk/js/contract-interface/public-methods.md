@@ -5,7 +5,7 @@ title: "퍼블릭 메서드"
 
 # 퍼블릭 메서드 자료형
 
-Methods can be called externally by using the `view({})` or `call({})` decorators within the contract class which will expose the method in the compiled WASM bytecode to be called by any other NEAR Account. 이러한 데코레이터 없이 컨트랙트 클래스에서 메서드가 선언되고 다른 NEAR 계정에서 호출될 때마다 `MethodNotFound` 오류가 발생합니다.
+이러한 데코레이터 없이 컨트랙트 클래스에서 메서드가 선언되고 다른 NEAR 계정에서 호출될 때마다 `MethodNotFound` 오류가 발생합니다. Methods can be called externally by using the `view({})` or `call({})` decorators within the contract class which will expose the method in the compiled WASM bytecode to be called by any other NEAR Account.
 
 :::tip
 

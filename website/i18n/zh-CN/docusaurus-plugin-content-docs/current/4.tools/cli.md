@@ -15,7 +15,9 @@ The NEAR [Command Line Interface](https://github.com/near/near-cli) (CLI) is a t
 
 :::info
 
-The NEAR CLI also comes with an implementation in Rust called [`near-cli-rs`](https://github.com/near/near-cli-rs). If you want to use `near-cli` while you have `near-cli-rs` installed, prefix the following commands with `npx`. :::
+The NEAR CLI also comes with an implementation in Rust called [`near-cli-rs`](https://github.com/near/near-cli-rs). If you want to use `near-cli` while you have `near-cli-rs` installed, prefix the following commands with `npx`.
+
+:::
 
 ## Overview
 
@@ -544,7 +546,7 @@ near create-account new-acc.testnet --useFaucet
 
 ```bash
 # Creating a pre-funded account that can be controlled by the Ledger's public key
-near create-account new-acc.testnet --useFaucet --useLedgerPK 
+near create-account new-acc.testnet --useFaucet --useLedgerPK
 ```
 
 ```bash

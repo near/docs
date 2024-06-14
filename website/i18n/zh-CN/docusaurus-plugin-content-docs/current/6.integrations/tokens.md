@@ -8,7 +8,7 @@ sidebar_label: Fungible Tokens
 
 Please see the [spec for the fungible token standard](https://nomicon.io/Standards/FungibleToken/) and an [example implementation](https://github.com/near-examples/FT) for reference details.
 
-One notable aspect of the standard is that method names are prefixed with `ft_`. This will be a helpful convention when querying for transactions related to fungible tokens.
+One notable aspect of the standard is that method names are prefixed with `ft_`. This will be a helpful convention when querying for transactions related to fungible tokens. This will be a helpful convention when querying for transactions related to fungible tokens.
 
 ## Get balance {#get-balance}
 
@@ -23,7 +23,7 @@ View call: ft.demo.testnet.ft_balance_of({"account_id": "mike.testnet"})
 '1000000'
 ```
 
-Alternatively, you can [call a contract function](/api/rpc/setup#call-a-contract-function) using the `query` RPC endpoint. Below is an example using HTTPie:
+Alternatively, you can [call a contract function](/api/rpc/setup#call-a-contract-function) using the `query` RPC endpoint. Below is an example using HTTPie: Below is an example using HTTPie:
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=ftbalance method=query \
@@ -59,7 +59,7 @@ date: Thu, 27 May 2021 12:53:38 GMT
 }
 ```
 
-As mentioned earlier, the `result` is an array of bytes. There are various ways to convert bytes into a more human-readable form such as the [dtool CLI](https://github.com/guoxbin/dtool#installation).
+As mentioned earlier, the `result` is an array of bytes. As mentioned earlier, the `result` is an array of bytes. There are various ways to convert bytes into a more human-readable form such as the [dtool CLI](https://github.com/guoxbin/dtool#installation).
 
 `dtool a2h '[34,49,48,48,48,48,48,48,34]' | dtool h2s`
 
@@ -67,213 +67,222 @@ Returns:
 
 `"1000000"`
 
-**Note:** The fungible token balance of the account `mike.testnet` is `1000000` wrapped in double-quotes. This is because of an issue with JSON serialization. Amounts given in arguments and results must be serialized as Base-10 strings, e.g. "100". This is done to avoid JSON limitation of max integer value of 2**53, which can certainly happen with fungible tokens.
+**Note:** The fungible token balance of the account `mike.testnet` is `1000000` wrapped in double-quotes. This is because of an issue with JSON serialization. Amounts given in arguments and results must be serialized as Base-10 strings, e.g. "100". This is done to avoid JSON limitation of max integer value of 2**53, which can certainly happen with fungible tokens. This is because of an issue with JSON serialization. Amounts given in arguments and results must be serialized as Base-10 strings, e.g. "100". This is done to avoid JSON limitation of max integer value of 2**53, which can certainly happen with fungible tokens.
 
 ## Get info about the FT {#get-info-about-the-ft}
 
 You can get `name`, `decimals`, `icon` and other parameters by calling the next function:
   - using NEAR CLI:
 
-      ```bash
-      near view <contract_account_id> ft_metadata
-      ```
-    Result:
+```bash
+near view <contract_account_id> ft_metadata
+```
 
-    ```bash
-    View call: ft.demo.testnet.ft_metadata()
-    {
-      spec: 'ft-1.0.0',
-      name: 'Example Token Name',
-      symbol: 'MOCHI',
-      icon: null,
-      reference: null,
-      reference_hash: null,
-      decimals: 24
-    }
-    ```
+Result:
+
+```bash
+View call: ft.demo.testnet.ft_metadata()
+{
+  spec: 'ft-1.0.0',
+  name: 'Example Token Name',
+  symbol: 'MOCHI',
+  icon: null,
+  reference: null,
+  reference_hash: null,
+  decimals: 24
+}
+```
 
   - with JSON RPC call:
-      ```bash
-      http post https://rpc.testnet.near.org jsonrpc=2.0 id=ftmetadata method=query \
-      params:='{
-        "request_type": "call_function",
-        "finality": "final",
-        "account_id": "<contract_account_id>",
-        "method_name": "ft_metadata",
-        "args_base64": ""
-      }'
-      ```
-      Example response:
-      ```bash
-      HTTP/1.1 200 OK
-      Alt-Svc: clear
-      Via: 1.1 google
-      access-control-allow-origin:
-      content-length: 604
-      content-type: application/json
-      date: Wed, 02 Jun 2021 15:51:17 GMT
 
-      {
-          "id": "ftmetadata",
-          "jsonrpc": "2.0",
-          "result": {
-              "block_hash": "B3fu3v4dmn19B6oqjHUXN3k5NhdP9EW5kkjyuFUDpa1r",
-              "block_height": 50061565,
-              "logs": [],
-              "result": [ 123, 34, 115, 112, 101, 99, 34, 58, 34, 102, 116, 45, 49, 46, 48, 46, 48, 34, 44, 34, 110, 97, 109, 101, 34, 58, 34, 69, 120, 97, 109, 112, 108, 101, 32, 84, 111, 107, 101, 110, 32, 78, 97, 109, 101, 34, 44, 34, 115, 121, 109, 98, 111, 108, 34, 58, 34, 77, 79, 67, 72, 73, 34, 44, 34, 105, 99, 111, 110, 34, 58, 110, 117, 108, 108, 44, 34, 114, 101, 102, 101, 114, 101, 110, 99, 101, 34, 58, 110, 117, 108, 108, 44, 34, 114, 101, 102, 101, 114, 101, 110, 99, 101, 95, 104, 97, 115, 104, 34, 58, 110, 117, 108, 108, 44, 34, 100, 101, 99, 105, 109, 97, 108, 115, 34, 58, 50, 52, 125 ]
-          }
-      }
-      ```
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=ftmetadata method=query \
+  params:='{
+    "request_type": "call_function",
+    "finality": "final",
+    "account_id": "<contract_account_id>",
+    "method_name": "ft_metadata",
+    "args_base64": ""
+  }'
+```
 
-      Decoded result in this case is:
+Example response:
 
-      ```json
-      {
-        "spec": "ft-1.0.0",
-        "name": "Example Token Name",
-        "symbol": "MOCHI",
-        "icon": null,
-        "reference": null,
-        "reference_hash": null,
-        "decimals": 24
-      }
-      ```
+```bash
+HTTP/1.1 200 OK
+Alt-Svc: clear
+Via: 1.1 google
+access-control-allow-origin:
+content-length: 604
+content-type: application/json
+date: Wed, 02 Jun 2021 15:51:17 GMT
+
+{
+  "id": "ftmetadata",
+  "jsonrpc": "2.0",
+  "result": {
+      "block_hash": "B3fu3v4dmn19B6oqjHUXN3k5NhdP9EW5kkjyuFUDpa1r",
+      "block_height": 50061565,
+      "logs": [],
+      "result": [ 123, 34, 115, 112, 101, 99, 34, 58, 34, 102, 116, 45, 49, 46, 48, 46, 48, 34, 44, 34, 110, 97, 109, 101, 34, 58, 34, 69, 120, 97, 109, 112, 108, 101, 32, 84, 111, 107, 101, 110, 32, 78, 97, 109, 101, 34, 44, 34, 115, 121, 109, 98, 111, 108, 34, 58, 34, 77, 79, 67, 72, 73, 34, 44, 34, 105, 99, 111, 110, 34, 58, 110, 117, 108, 108, 44, 34, 114, 101, 102, 101, 114, 101, 110, 99, 101, 34, 58, 110, 117, 108, 108, 44, 34, 114, 101, 102, 101, 114, 101, 110, 99, 101, 95, 104, 97, 115, 104, 34, 58, 110, 117, 108, 108, 44, 34, 100, 101, 99, 105, 109, 97, 108, 115, 34, 58, 50, 52, 125 ]
+  }
+}
+```
+
+Decoded result in this case is:
+
+```json
+{
+    "spec": "ft-1.0.0",
+    "name": "Example Token Name",
+    "symbol": "MOCHI",
+    "icon": null,
+    "reference": null,
+    "reference_hash": null,
+    "decimals": 24
+}
+```
 
 ## Simple transfer {#simple-transfer}
 
-To follow this guide, please check the [step by step instructions](/integrator/create-transactions#low-level----create-a-transaction) on how to create a transaction first.
+To follow this guide, please check the [step by step instructions](/integrations/create-transactions#low-level----create-a-transaction) on how to create a transaction first.
 
 In order to send a fungible token to an account, the receiver must have a storage deposit. This is because each smart contract on NEAR must account for storage used, and each account on a fungible token contract is a key-value pair, taking up a small amount of storage. For more information, please see [how storage works in NEAR](/concepts/storage/storage-staking). To check if account has deposited the storage for this FT do the following:
 
 Get storage balance of the account. `storage_balance_of` function returns the amount of deposited storage or `null` if there is no deposit.
   - using NEAR CLI:
 
-    ```bash
-    near view <contract_account_id> storage_balance_of '{"account_id": "<user_account_id>"}'
-    ```
+```bash
+near view <contract_account_id> storage_balance_of '{"account_id": "<user_account_id>"}'
+```
+
 
     Result:
 
-    ```bash
-    View call: ft.demo.testnet.storage_balance_of({"account_id": "serhii.testnet"})
-    null
-    ```
+```bash
+View call: ft.demo.testnet.storage_balance_of({"account_id": "serhii.testnet"})
+null
+```
 
   - with JSON RPC call:
-      ```bash
-      http post https://rpc.testnet.near.org jsonrpc=2.0 id=storagebalanceof method=query \
-      params:='{
-         "request_type": "call_function",
-         "finality": "final",
-         "account_id": "ft.demo.testnet",
-         "method_name": "storage_balance_of",
-         "args_base64": "eyJhY2NvdW50X2lkIjogInNlcmhpaS50ZXN0bmV0In0K"
-      }'
-      ```
 
-      Example response:
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=storagebalanceof method=query \
+  params:='{
+     "request_type": "call_function",
+     "finality": "final",
+     "account_id": "ft.demo.testnet",
+     "method_name": "storage_balance_of",
+     "args_base64": "eyJhY2NvdW50X2lkIjogInNlcmhpaS50ZXN0bmV0In0K"
+  }'
+```
 
-      ```bash
-      HTTP/1.1 200 OK
-      Alt-Svc: clear
-      Via: 1.1 google
-      access-control-allow-origin:
-      content-length: 173
-      content-type: application/json
-      date: Wed, 02 Jun 2021 14:22:01 GMT
-      {
-          "id": "storagebalanceof",
-          "jsonrpc": "2.0",
-          "result": {
-              "block_hash": "EkM2j4yxRVoQ1TCqF2KUb7J4w5G1VsWtMLiycq6k3f53",
-              "block_height": 50054247,
-              "logs": [],
-              "result": [ 110, 117, 108, 108 ]
-          }
-      }
-      ```
+Example response:
 
-      Decoded result in this case is `null`.
+```bash
+HTTP/1.1 200 OK
+Alt-Svc: clear
+Via: 1.1 google
+access-control-allow-origin:
+content-length: 173
+content-type: application/json
+date: Wed, 02 Jun 2021 14:22:01 GMT
+{
+  "id": "storagebalanceof",
+  "jsonrpc": "2.0",
+  "result": {
+      "block_hash": "EkM2j4yxRVoQ1TCqF2KUb7J4w5G1VsWtMLiycq6k3f53",
+      "block_height": 50054247,
+      "logs": [],
+      "result": [ 110, 117, 108, 108 ]
+  }
+}
+```
+
+Decoded result in this case is `null`.
 
 Get the minimum storage required for FT. (The storage used for an account's key-value pair.)
+
   - using NEAR CLI:
 
-    ```bash
-    near view <contract_account_id> storage_balance_bounds`
-    ```
+```bash
+near view <contract_account_id> storage_balance_bounds`
+```
 
-    Result:
+Result:
 
-    ```bash
-    View call: ft.demo.testnet.storage_balance_bounds()
-    { min: '1250000000000000000000', max: '1250000000000000000000' }
-    ```
+```bash
+View call: ft.demo.testnet.storage_balance_bounds()
+{ min: '1250000000000000000000', max: '1250000000000000000000' }
+```
 
   - with JSON RPC call
-      ```bash
-      http post https://rpc.testnet.near.org jsonrpc=2.0 id=storagebalancebounds method=query \
-      params:='{
-          "request_type": "call_function",
-          "finality": "final",
-          "account_id": "<contract_account_id>",
-          "method_name": "storage_balance_bounds",
-          "args_base64": ""
-      }'
-      ```
 
-      Example response:
-      ```bash
-      HTTP/1.1 200 OK
-      Alt-Svc: clear
-      Via: 1.1 google
-      access-control-allow-origin:
-      content-length: 357
-      content-type: application/json
-      date: Wed, 02 Jun 2021 15:42:49 GMT
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=storagebalancebounds method=query \
+  params:='{
+      "request_type": "call_function",
+      "finality": "final",
+      "account_id": "<contract_account_id>",
+      "method_name": "storage_balance_bounds",
+      "args_base64": ""
+  }'
+```
 
-      {
-          "id": "storagebalancebounds",
-          "jsonrpc": "2.0",
-          "result": {
-              "block_hash": "Fy3mBqwj5nvUDha3X7G61kmUeituHASEX12oCASrChEE",
-              "block_height": 50060878,
-              "logs": [],
-              "result": [ 123, 34, 109, 105, 110, 34, 58, 34, 49, 50, 53, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 34, 44, 34, 109, 97, 120, 34, 58, 34, 49, 50, 53, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 34, 125 ]
-          }
-      }
-      ```
+Example response:
 
-      Decoded result should look similar to:
+```bash
+HTTP/1.1 200 OK
+Alt-Svc: clear
+Via: 1.1 google
+access-control-allow-origin:
+content-length: 357
+content-type: application/json
+date: Wed, 02 Jun 2021 15:42:49 GMT
 
-      ```json
-      {
-        "min": "1250000000000000000000",
-        "max": "1250000000000000000000"
-      }
-      ```
+{
+  "id": "storagebalancebounds",
+  "jsonrpc": "2.0",
+  "result": {
+      "block_hash": "Fy3mBqwj5nvUDha3X7G61kmUeituHASEX12oCASrChEE",
+      "block_height": 50060878,
+      "logs": [],
+      "result": [ 123, 34, 109, 105, 110, 34, 58, 34, 49, 50, 53, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 34, 44, 34, 109, 97, 120, 34, 58, 34, 49, 50, 53, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 34, 125 ]
+  }
+}
+```
+
+Decoded result should look similar to:
+
+```json
+  {
+    "min": "1250000000000000000000",
+    "max": "1250000000000000000000"
+  }
+```
 
 Basic fungible tokens are simple smart contracts that don't have variable storage as compared to a smart contract that might store free-form text, for instance. The only storage needed is for an accounts key-value pair, which will always be covered by the `1250000000000000000000` yoctoⓃ storage balance.
 
 If there is not enough deposit for the storage or returned value is `null` - you should deposit more storage with the next command:
   - using NEAR CLI, don't forget to convert from yoctoⓃ to Ⓝ:
 
-    ```bash
-    near call <contract_account_id> storage_deposit '{"account_id": "<user_account_id>"}' --accountId <sender_account_id> --deposit <deposit in Ⓝ>
-    ```
+```bash
+near call <contract_account_id> storage_deposit '{"account_id": "<user_account_id>"}' --accountId <sender_account_id> --deposit <deposit in Ⓝ>
+```
 
-    Result example:
+Result example:
 
-    ```bash
-    Scheduling a call: ft.demo.testnet.storage_deposit() with attached 0.125 NEAR
-    Transaction Id 9CMrMMt3UzeU63FFrUyFb1gNGuHXxvKfHqYJzyFTAk6z
-    To see the transaction in the transaction explorer, please open this url in your browser
-    https://testnet.nearblocks.io/txns/9CMrMMt3UzeU63FFrUyFb1gNGuHXxvKfHqYJzyFTAk6z
-    { total: '1250000000000000000000', available: '0' }
-    ```
+```bash
+Scheduling a call: ft.demo.testnet.storage_deposit() with attached 0.125 NEAR
+Transaction Id 9CMrMMt3UzeU63FFrUyFb1gNGuHXxvKfHqYJzyFTAk6z
+To see the transaction in the transaction explorer, please open this url in your browser
+https://testnet.nearblocks.io/txns/9CMrMMt3UzeU63FFrUyFb1gNGuHXxvKfHqYJzyFTAk6z
+{ total: '1250000000000000000000', available: '0' }
+```
 
   - with JSON RPC call:
 
-  At the top of this section is a link detailing how to [construct a transaction](/integrator/create-transactions#low-level----create-a-transaction) without the full abstraction of the [`near-api-js` library](https://www.npmjs.com/package/near-api-js). For this and future examples that use the [RPC method `broadcast_tx_commit`](https://docs.near.org/api/rpc/setup#send-transaction-await) we will provide a JSON-like object meant to act similar to [pseudocode](https://en.wikipedia.org/wiki/Pseudocode), only imparting high-level details of a transaction. This code block below is the first example of this, detailing what goes into the transaction discussed currently, involving the method `storage_deposit`.
+  At the top of this section is a link detailing how to [construct a transaction](/integrations/create-transactions#low-level----create-a-transaction) without the full abstraction of the [`near-api-js` library](https://www.npmjs.com/package/near-api-js). For this and future examples that use the [RPC method `broadcast_tx_commit`](https://docs.near.org/api/rpc/setup#send-transaction-await) we will provide a JSON-like object meant to act similar to [pseudocode](https://en.wikipedia.org/wiki/Pseudocode), only imparting high-level details of a transaction. This code block below is the first example of this, detailing what goes into the transaction discussed currently, involving the method `storage_deposit`.
 
 ```yaml
 Transaction: {
@@ -295,12 +304,13 @@ Transaction: {
 }
 ```
 
-      ```bash
-      http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
-          params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZi/qoVEgrAAAPAAAAZnQuZGVtby50ZXN0bmV0JYbWPOu0P9T32vtUKnZSh+EaoboQqg0/De2i8Y+AjHIBAAAAAg8AAABzdG9yYWdlX2RlcG9zaXQCAAAAe30AQHoQ81oAAAAAILSd2XlDeBoAAAAAAAAAZF7+s4lcHOzy+re59VErt7LcZkPMMUVgOJV8LH5TsLBBv+8h/5tZ6+HFwxSp605A4c46oS9Jw4KBRXZD07lKCg=="]'
-      ```
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
+  params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZi/qoVEgrAAAPAAAAZnQuZGVtby50ZXN0bmV0JYbWPOu0P9T32vtUKnZSh+EaoboQqg0/De2i8Y+AjHIBAAAAAg8AAABzdG9yYWdlX2RlcG9zaXQCAAAAe30AQHoQ81oAAAAAILSd2XlDeBoAAAAAAAAAZF7+s4lcHOzy+re59VErt7LcZkPMMUVgOJV8LH5TsLBBv+8h/5tZ6+HFwxSp605A4c46oS9Jw4KBRXZD07lKCg=="]'
+```
 
 <details>
+
 <summary>**Example Response:**</summary>
 
 ```json
@@ -515,30 +525,32 @@ Transaction: {
   }
 }
 ```
+
 </details>
 
 Transfer the tokens:
   - using NEAR CLI:
 
-    ```bash
-    near call <contract_account_id> ft_transfer '{"receiver_id": "<receiver_account_id>", "amount": "1"}' --accountId <sender_account_id> --amount 0.000000000000000000000001
-    ```
+```bash
+near call <contract_account_id> ft_transfer '{"receiver_id": "<receiver_account_id>", "amount": "1"}' --accountId <sender_account_id> --amount 0.000000000000000000000001
+```
 
-    Result example:
+Result example:
 
-    ```bash
-    Scheduling a call: berryclub.ek.near.ft_transfer({"receiver_id": "volovyk.near", "amount": "1"}) with attached 0.000000000000000000000001 NEAR
-    Receipt: GDeE3Kv1JHgs71A22NEUbgq55r2Hvcnis8gCMyJtQ2mx
-        Log [berryclub.ek.near]: Transfer 1 from serhii.near to volovyk.near
-    Transaction Id 3MkWKbXVP8wyy4pBofELqiE1pwx7ie2v3SKCwaobNcEe
-    To see the transaction in the transaction explorer, please open this url in your browser
-    https://nearblocks.io/txns/3MkWKbXVP8wyy4pBofELqiE1pwx7ie2v3SKCwaobNcEe
-    ''
-    ```
+```bash
+Scheduling a call: berryclub.ek.near.ft_transfer({"receiver_id": "volovyk.near", "amount": "1"}) with attached 0.000000000000000000000001 NEAR
+Receipt: GDeE3Kv1JHgs71A22NEUbgq55r2Hvcnis8gCMyJtQ2mx
+    Log [berryclub.ek.near]: Transfer 1 from serhii.near to volovyk.near
+Transaction Id 3MkWKbXVP8wyy4pBofELqiE1pwx7ie2v3SKCwaobNcEe
+To see the transaction in the transaction explorer, please open this url in your browser
+https://nearblocks.io/txns/3MkWKbXVP8wyy4pBofELqiE1pwx7ie2v3SKCwaobNcEe
+''
+```
 
   - with JSON RPC call:
 
 Transaction representation:
+
 ```yaml
 Transaction: {
     block_hash: `456…abc`,
@@ -559,10 +571,10 @@ Transaction: {
 }
 ```
 
-      ```bash
-      http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
-          params:='["CwAAAHNlcmhpaS5uZWFyAAmQpgZcJM5nMc6f3tqmw/YI4eAvc84ZgsKMRRRzhY/6CQAAAAAAAAARAAAAYmVycnljbHViLmVrLm5lYXLLWPIiUOElkDF3u4hLAMJ0Sjeo1V338pDdHIp70va3ewEAAAACCwAAAGZ0X3RyYW5zZmVyKwAAAHsicmVjZWl2ZXJfaWQiOiJ2b2xvdnlrLm5lYXIiLCJhbW91bnQiOiIxIn0AQHoQ81oAAAEAAAAAAAAAAAAAAAAAAAAA7fDOZQt3zCtdS05Y8XaZFlwO/Gd5wkkNAHShzDiLQXk4Q4ixpraLPMJivs35PZD0gocXl1iGFbQ46NG3VllzCA=="]'
-      ```
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
+  params:='["CwAAAHNlcmhpaS5uZWFyAAmQpgZcJM5nMc6f3tqmw/YI4eAvc84ZgsKMRRRzhY/6CQAAAAAAAAARAAAAYmVycnljbHViLmVrLm5lYXLLWPIiUOElkDF3u4hLAMJ0Sjeo1V338pDdHIp70va3ewEAAAACCwAAAGZ0X3RyYW5zZmVyKwAAAHsicmVjZWl2ZXJfaWQiOiJ2b2xvdnlrLm5lYXIiLCJhbW91bnQiOiIxIn0AQHoQ81oAAAEAAAAAAAAAAAAAAAAAAAAA7fDOZQt3zCtdS05Y8XaZFlwO/Gd5wkkNAHShzDiLQXk4Q4ixpraLPMJivs35PZD0gocXl1iGFbQ46NG3VllzCA=="]'
+```
 
 To get details of this transaction:
 
@@ -572,6 +584,7 @@ http post https://archival-rpc.mainnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_
 ```
 
 <details>
+
 <summary>**Example Response:**</summary>
 
 ```json
@@ -742,6 +755,7 @@ http post https://archival-rpc.mainnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_
   }
 }
 ```
+
 </details>
 
 You can get the same info later by the transaction hash from the previous call:
@@ -756,21 +770,22 @@ near tx-status <transaction_hash> --accountId <transaction_signer>
 
   - with JSON RPC call
 
-  ```bash
-      http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENTAL_tx_status \
-      params:='[ "2Fy4714idMCoja7QLdGAbQZHzV2XEnUdwZX6yGa46VMX", "sender.testnet"]'
-  ```
+```bash
+  http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENTAL_tx_status \
+  params:='[ "2Fy4714idMCoja7QLdGAbQZHzV2XEnUdwZX6yGa46VMX", "sender.testnet"]'
+```
 
 Let's create test transaction that should fail and investigate the response. We will try to send more tokens that are available on this account:
   - using NEAR CLI:
 
-    ```bash
-    near call <contract_account_id> ft_transfer '{"receiver_id": "<user_account_id>", "amount": "10000000000"}' --accountId <sender_account_id> --amount 0.000000000000000000000001
-    ```
+```bash
+near call <contract_account_id> ft_transfer '{"receiver_id": "<user_account_id>", "amount": "10000000000"}' --accountId <sender_account_id> --amount 0.000000000000000000000001
+```
 
   - with JSON RPC call:
 
 Transaction representation:
+
 ```yaml
 Transaction: {
     block_hash: `456…abc`,
@@ -791,10 +806,10 @@ Transaction: {
 }
 ```
 
-    ```bash
-      http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
-      params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZofqoVEgrAAAgAAAAZGV2LTE2MjMzMzM3OTU2MjMtMjEzOTk5NTk3NzgxNTm8Xq8BTIi6utG0424Gg7CknYzLH8RH/A409jq5o0zi7gEAAAACCwAAAGZ0X3RyYW5zZmVyPwAAAHsicmVjZWl2ZXJfaWQiOiJkZXYtMTYyMzMzMzkxNjM2OC01ODcwNzQzNDg3ODUzMyIsImFtb3VudCI6IjEifQBAehDzWgAAAQAAAAAAAAAAAAAAAAAAAABCwjqayKdpWgM6PE0ixzm/Gy0EtdpxVn0xehMTBReVfVAKIBTDPoPSaOdT8fAhk343F5uOMfSijhTqU2mWV3oD"]'
-    ```
+```bash
+  http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
+  params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZofqoVEgrAAAgAAAAZGV2LTE2MjMzMzM3OTU2MjMtMjEzOTk5NTk3NzgxNTm8Xq8BTIi6utG0424Gg7CknYzLH8RH/A409jq5o0zi7gEAAAACCwAAAGZ0X3RyYW5zZmVyPwAAAHsicmVjZWl2ZXJfaWQiOiJkZXYtMTYyMzMzMzkxNjM2OC01ODcwNzQzNDg3ODUzMyIsImFtb3VudCI6IjEifQBAehDzWgAAAQAAAAAAAAAAAAAAAAAAAABCwjqayKdpWgM6PE0ixzm/Gy0EtdpxVn0xehMTBReVfVAKIBTDPoPSaOdT8fAhk343F5uOMfSijhTqU2mWV3oD"]'
+```
 
 To get details of this transaction:
 
@@ -804,6 +819,7 @@ http post https://archival-rpc.mainnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_
 ```
 
 <details>
+
 <summary>**Example Response:**</summary>
 
 ```json
@@ -1028,6 +1044,7 @@ http post https://archival-rpc.mainnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_
   }
 }
 ```
+
 </details>
 
 Was the fungible token transfer successful?
@@ -1062,6 +1079,7 @@ Let's call `ft_transfer_call` function on `ft` contract (receiver) and examine s
   - with JSON RPC call
 
 Transaction representation:
+
 ```yaml
 Transaction: {
     block_hash: `456…abc`,
@@ -1082,10 +1100,10 @@ Transaction: {
 }
 ```
 
-    ```bash
-      http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
-      params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZqPqoVEgrAAAgAAAAZGV2LTE2MjMzMzM3OTU2MjMtMjEzOTk5NTk3NzgxNTn9j4g2IJ8nGQ38i3+k+4WBAeJL1xP7ygQhC7CrvEG4NQEAAAACEAAAAGZ0X3RyYW5zZmVyX2NhbGxWAAAAeyJyZWNlaXZlcl9pZCI6ImRldi0xNjIzNjkzMTIxOTU1LTcxNjY3NjMyNTMxMTc2IiwiYW1vdW50IjoiMTAiLCJtc2ciOiJ0YWtlLW15LW1vbmV5In0AQHoQ81oAAAEAAAAAAAAAAAAAAAAAAAAANY2lHqJlAJYNDGEQiUNnmfiBV44Q1sdg45xNlNvlROOM+AtN1z3PSJqM6M6jAKXUwANoQTzFqXhIMHIjIPbTAA=="]'
-    ```
+```bash
+  http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
+  params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZqPqoVEgrAAAgAAAAZGV2LTE2MjMzMzM3OTU2MjMtMjEzOTk5NTk3NzgxNTn9j4g2IJ8nGQ38i3+k+4WBAeJL1xP7ygQhC7CrvEG4NQEAAAACEAAAAGZ0X3RyYW5zZmVyX2NhbGxWAAAAeyJyZWNlaXZlcl9pZCI6ImRldi0xNjIzNjkzMTIxOTU1LTcxNjY3NjMyNTMxMTc2IiwiYW1vdW50IjoiMTAiLCJtc2ciOiJ0YWtlLW15LW1vbmV5In0AQHoQ81oAAAEAAAAAAAAAAAAAAAAAAAAANY2lHqJlAJYNDGEQiUNnmfiBV44Q1sdg45xNlNvlROOM+AtN1z3PSJqM6M6jAKXUwANoQTzFqXhIMHIjIPbTAA=="]'
+```
 
 To get details of this transaction:
 
@@ -1095,6 +1113,7 @@ http post https://archival-rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_
 ```
 
 <details>
+
 <summary>**Example Response:**</summary>
 
 ```json
@@ -1413,37 +1432,40 @@ http post https://archival-rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_
   }
 }
 ```
+
 </details>
 
 Now, let's try to follow the steps described in the previous section and determine if these transactions was successful. In addition to being successful, let's analyze the various receipts in the series of cross-contract calls to determine how many fungible tokens were transferred. This will be the most complex case we'll look at.
 
-  1. Check that `result` » `transaction_outcome` » `outcome` » `status` has `SuccessReceiptId` as a key. If not, no fungible tokens were transferred.
-  2. Take the value of the `SuccessReceiptId` key. In the case above it's `Hw6z8kJ7CSaC6SgyQzcmXzNX9gq1gaAnLS169qgyZ2Vk`.
-  3. Now, under `result` » `receipts` loop through the array until you find a receipt where the `receipt_id` matches the value from step 2. (Note that in the receipt, under `Actions` there's an element mentioning calling the `method_name: "ft_transfer_call"`.) On the same level of JSON, there's an `args` key. That's a base64-encoded value of the arguments passed to the method. When decoded it is:
+  1. Check that `result` » `transaction_outcome` » `outcome` » `status` has `SuccessReceiptId` as a key. If not, no fungible tokens were transferred. If not, no fungible tokens were transferred.
+  2. Take the value of the `SuccessReceiptId` key. In the case above it's `Hw6z8kJ7CSaC6SgyQzcmXzNX9gq1gaAnLS169qgyZ2Vk`. In the case above it's `Hw6z8kJ7CSaC6SgyQzcmXzNX9gq1gaAnLS169qgyZ2Vk`.
+  3. Now, under `result` » `receipts` loop through the array until you find a receipt where the `receipt_id` matches the value from step 2. (Note that in the receipt, under `Actions` there's an element mentioning calling the `method_name: "ft_transfer_call"`.) On the same level of JSON, there's an `args` key. That's a base64-encoded value of the arguments passed to the method. When decoded it is: (Note that in the receipt, under `Actions` there's an element mentioning calling the `method_name: "ft_transfer_call"`.) On the same level of JSON, there's an `args` key. That's a base64-encoded value of the arguments passed to the method. When decoded it is:
 
 ```json
 {"receiver_id":"dev-1623693121955-71667632531176","amount":"10","msg":"take-my-money"}
 ```
 
-  4. Loop through `result` » `receipts_outcome` until finding the object where `id` is equal to the value from step 2. Similar to step 1, this object will also contain a `status` field that should contain the key `SuccessReceiptId`. Again, if this isn't there no fungible tokens were transferred, otherwise get the value of the `SuccessReceiptId`. In the above example, this value is `4Tc8MsrJZSMpNZx7u4jSqxr3WhRzqxaNHxLJFqz8tUPR`.
-  5. Similar to the previous step, loop through the `result` » `receipts_outcome` until you find the object where the `id` matches the value from step 4. In that object check that `outcome` » `status` has the `SuccessValue` field. This `SuccessValue` represents how many fungible tokens the receiving contract is "returning" to the fungible token contract. Note that in the example above the value is `Ijki`, which is the base64-encoded version of `"9"`. At this point, we know that 10 fungible tokens were sent (from step 3) and 9 were taken.
+  4. Loop through `result` » `receipts_outcome` until finding the object where `id` is equal to the value from step 2. Similar to step 1, this object will also contain a `status` field that should contain the key `SuccessReceiptId`. Again, if this isn't there no fungible tokens were transferred, otherwise get the value of the `SuccessReceiptId`. In the above example, this value is `4Tc8MsrJZSMpNZx7u4jSqxr3WhRzqxaNHxLJFqz8tUPR`. Similar to step 1, this object will also contain a `status` field that should contain the key `SuccessReceiptId`. Again, if this isn't there no fungible tokens were transferred, otherwise get the value of the `SuccessReceiptId`. In the above example, this value is `4Tc8MsrJZSMpNZx7u4jSqxr3WhRzqxaNHxLJFqz8tUPR`.
+  5. Similar to the previous step, loop through the `result` » `receipts_outcome` until you find the object where the `id` matches the value from step 4. In that object check that `outcome` » `status` has the `SuccessValue` field. This `SuccessValue` represents how many fungible tokens the receiving contract is "returning" to the fungible token contract. Note that in the example above the value is `Ijki`, which is the base64-encoded version of `"9"`. At this point, we know that 10 fungible tokens were sent (from step 3) and 9 were taken. In that object check that `outcome` » `status` has the `SuccessValue` field. This `SuccessValue` represents how many fungible tokens the receiving contract is "returning" to the fungible token contract. Note that in the example above the value is `Ijki`, which is the base64-encoded version of `"9"`. At this point, we know that 10 fungible tokens were sent (from step 3) and 9 were taken.
 
 For additional clarity, let's take a look at one more optional aspect. In step 4 we isolated an obeject in `result` » `receipts_outcome`. There's an array of `receipt_ids` that's particularly interesting. The first element in the array is the receipt ID `EB69xtJiLRh9RNzAHgBGmom8551hrK2xSRreqbjvJgu5`. If we loop through the `result` » `receipts_outcome` and find this as the value for the `id` key, we'll see what happened in the function `ft_on_transfer` which takes place in the contract receiving the fungible tokens. In this object the `status` » `SuccessValue` is `IjEi` which is the base64-encoded value of `"1"`.
 
 In summary:
 1. A user called the fungible token contract with the method `ft_transfer_call` specifying the receiver account, how many tokens to send, and custom info.
 2. The receiver account implemented `ft_on_transfer`, returning `"1"` to the callback function on the fungible token contract.
-3. The fungible token contract's callback is `ft_resolve_transfer` and receives this value of `"1"`. It knows that 1 token was returned, so subtracts that from the 10 it intended to send. It then returns to the user how many tokens were used in this back-and-forth series of cross-contract calls: `"9"`.
+3. The fungible token contract's callback is `ft_resolve_transfer` and receives this value of `"1"`. It knows that 1 token was returned, so subtracts that from the 10 it intended to send. It then returns to the user how many tokens were used in this back-and-forth series of cross-contract calls: `"9"`. It knows that 1 token was returned, so subtracts that from the 10 it intended to send. It then returns to the user how many tokens were used in this back-and-forth series of cross-contract calls: `"9"`.
 
 ### Failed transfer and call {#failed-transfer-and-call}
 Let's try to send more tokens than the account has:
 
   - using NEAR CLI
-    ```bash
-        near call <ft_contract_id> ft_transfer_call '{"receiver_id": "<defi_contract_id>", "amount": "1000000000", "msg": "take-my-money"}' --accountId <user_account_id> --amount 0.000000000000000000000001
-    ```
+
+```bash
+    near call <ft_contract_id> ft_transfer_call '{"receiver_id": "<defi_contract_id>", "amount": "1000000000", "msg": "take-my-money"}' --accountId <user_account_id> --amount 0.000000000000000000000001
+```
 
 Transaction representation:
+
 ```yaml
 Transaction: {
     block_hash: `456…abc`,
@@ -1465,10 +1487,11 @@ Transaction: {
 ```
 
   - with JSON RPC call
-      ```bash
-          http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
-          params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZn/qoVEgrAAAgAAAAZGV2LTE2MjMzMzM3OTU2MjMtMjEzOTk5NTk3NzgxNTnrbOQ93Wv9xxBwmq4yDYrssCpwKSI2bzjNNCCCHMZKNwEAAAACEAAAAGZ0X3RyYW5zZmVyX2NhbGxeAAAAeyJyZWNlaXZlcl9pZCI6ImRldi0xNjIzMzMzOTE2MzY4LTU4NzA3NDM0ODc4NTMzIiwiYW1vdW50IjoiMTAwMDAwMDAwMCIsIm1zZyI6InRha2UtbXktbW9uZXkifQBAehDzWgAAAQAAAAAAAAAAAAAAAAAAAABQh3k+7zG2m/Yz3O/FBrvLaBwR/5YRB5FbFnb27Nfu6BW/Wh77RFH7+ktBwGLBwFbJGxiumIcsqBiGXgg1EPMN"]'
-      ```
+
+```bash
+  http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
+  params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZn/qoVEgrAAAgAAAAZGV2LTE2MjMzMzM3OTU2MjMtMjEzOTk5NTk3NzgxNTnrbOQ93Wv9xxBwmq4yDYrssCpwKSI2bzjNNCCCHMZKNwEAAAACEAAAAGZ0X3RyYW5zZmVyX2NhbGxeAAAAeyJyZWNlaXZlcl9pZCI6ImRldi0xNjIzMzMzOTE2MzY4LTU4NzA3NDM0ODc4NTMzIiwiYW1vdW50IjoiMTAwMDAwMDAwMCIsIm1zZyI6InRha2UtbXktbW9uZXkifQBAehDzWgAAAQAAAAAAAAAAAAAAAAAAAABQh3k+7zG2m/Yz3O/FBrvLaBwR/5YRB5FbFnb27Nfu6BW/Wh77RFH7+ktBwGLBwFbJGxiumIcsqBiGXgg1EPMN"]'
+```
 
 To get details of this transaction:
 
@@ -1478,6 +1501,7 @@ http post https://archival-rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_
 ```
 
 <details>
+
 <summary>**Example response**:</summary>
 
 ```json
@@ -1672,6 +1696,7 @@ http post https://archival-rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_
   }
 }
 ```
+
 </details>
 
 

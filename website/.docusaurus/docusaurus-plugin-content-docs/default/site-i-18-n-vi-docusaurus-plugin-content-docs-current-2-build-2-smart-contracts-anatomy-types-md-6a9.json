@@ -1,0 +1,28 @@
+{
+  "id": "build/smart-contracts/anatomy/types",
+  "title": "SDK Types",
+  "description": "Lets discuss which types smart contracts use to input and output data, as well as how such data is stored and handled in the contract's code.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.build/2.smart-contracts/anatomy/types.md",
+  "sourceDirName": "2.build/2.smart-contracts/anatomy",
+  "slug": "/build/smart-contracts/anatomy/types",
+  "permalink": "/vi/build/smart-contracts/anatomy/types",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/anatomy/types.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "types",
+    "title": "SDK Types",
+    "hide_table_of_contents": true
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "External Interface",
+    "permalink": "/vi/build/smart-contracts/anatomy/functions"
+  },
+  "next": {
+    "title": "Environment",
+    "permalink": "/vi/build/smart-contracts/anatomy/environment"
+  }
+}

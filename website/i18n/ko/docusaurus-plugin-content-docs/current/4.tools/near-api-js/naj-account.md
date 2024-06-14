@@ -18,16 +18,21 @@ const account = await nearConnection.account("example-account.testnet");
 
 ### 계정 생성 {#create-account}
 
+Create a sub-account.
+
 ```js
-// create a new account using funds from the account used to create it. const account = await nearConnection.account("example-account.testnet");
+// creates a sub-account using funds from the account used to create it.
+const account = await nearConnection.account("example-account.testnet");
 await account.createAccount(
-  "example-account2.testnet", // new account name
-  "8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc", // public key for new account
+  "sub.example-account.testnet", // sub-account name
+  "8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc", // public key for sub account
   "10000000000000000000" // initial balance for new account in yoctoNEAR
 );
 ```
 
 [<span className="typedoc-icon typedoc-icon-method"></span> `Account.createAccount` 메서드](https://near.github.io/near-api-js/classes/near_api_js.account.Account.html#createAccount)
+
+For creating .near or .testnet accounts please refer to the [cookbook](https://github.com/near/near-api-js/tree/master/packages/cookbook/accounts).
 
 ### 계정 삭제 {#delete-account}
 

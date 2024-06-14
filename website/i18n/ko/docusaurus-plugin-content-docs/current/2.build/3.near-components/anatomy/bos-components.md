@@ -18,15 +18,15 @@ Learn more about QueryAPI in this [QueryAPI Overview](../../6.data-infrastructur
 
 For a technical implementation deep-dive, check these QueryAPI tutorials:
 
-- [Posts Indexer tutorial](../../../3.tutorials/near-components/indexer-tutorials/posts-indexer.md): this indexer creates a new row in a pre-defined database for every new Social post found on the blockchain.
-- [Hype Indexer tutorial](../../../3.tutorials/near-components/indexer-tutorials/hype-indexer.md): this indexer creates a new row in a pre-defined database for every new Social post or comment found on the blockchain that contains either `PEPE` or `DOGE` in the contents.
-- [Social Feed Indexer tutorial](../../../3.tutorials/near-components/indexer-tutorials/feed-indexer.md): this indexer keeps track of new posts, comments, and likes on Social, so a social feed can be rendered quickly.
+- [Posts Indexer tutorial](../tutorial/indexer-tutorials/posts-indexer.md): this indexer creates a new row in a pre-defined database for every new Social post found on the blockchain.
+- [Hype Indexer tutorial](../tutorial/indexer-tutorials/hype-indexer.md): this indexer creates a new row in a pre-defined database for every new Social post or comment found on the blockchain that contains either `PEPE` or `DOGE` in the contents.
+- [Social Feed Indexer tutorial](../tutorial/indexer-tutorials/feed-indexer.md): this indexer keeps track of new posts, comments, and likes on Social, so a social feed can be rendered quickly.
 
 ---
 
 ## GraphQL queries
 
-Using [QueryAPI's GraphiQL](../../6.data-infrastructure/query-api/index-function.md#mutations-in-graphql) tab, you can access the GraphiQL Explorer that provides a user friendly GraphQL playground, where you can view and create queries and mutations based on the DB schema that you defined for the indexer.
+Using [QueryAPI's GraphiQL](index-function.md#mutations-in-graphql) tab, you can access the GraphiQL Explorer that provides a user friendly GraphQL playground, where you can view and create queries and mutations based on the DB schema that you defined for the indexer.
 
 ![QueryAPI Indexer Dashboard](/docs/assets/QAPIgraphiql.png)
 
@@ -42,7 +42,7 @@ Based on the indexer logic you defined, you'll get a call to the GraphQL mutatio
 
 :::tip Video Walkthrough
 
-**Tip:** watch the video on how to [create mutations in GraphQL](https://www.youtube.com/watch?v=VwO6spk8D58\&t=781s).
+**Tip:** watch the video on how to [create mutations in GraphQL](https://www.youtube.com/watch?v=VwO6spk8D58\\&t=781s).
 
 :::
 
@@ -60,9 +60,10 @@ Creating a NEAR component from a GraphQL query is simple when using QueryAPI's G
 
 This will set up some boilerplate code to execute the GraphQL query, add the query that you had in your playground and then call that query, extract the data and render it using the render data function.
 
-Once you have the NEAR component code, you can test it out by going to [the sandbox](https://near.org/sandbox), pasting the generated code, and then selecting <kbd>Component Preview</kbd>.
+Once you have the NEAR component code, you can test it out by going to [Jutsu](https://app.jutsu.ai/),
+pasting the generated code, and enabling <kbd>Live Preview</kbd>.
 Next, you can create a nice UI over this boilerplate code, and publish your new NEAR component.
 
 #### Component Examples
 
-- [Activity Feed widget](https://near.org/near/widget/ComponentDetailsPage?src=roshaan.near/widget/user-activity-feed\&tab=source) running on [near.org](https://near.org)
+- [Activity Feed widget](https://near.org/near/widget/ComponentDetailsPage?src=roshaan.near/widget/user-activity-feed\&tab=source) running on [dev.near.org](https://dev.near.org)

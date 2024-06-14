@@ -16,7 +16,8 @@ title: 직렬화에 대한 참고 사항
 
 ## 직렬화 형식 개요
 
-두 직렬화 형식에 대한 간략한 개요와 장단점, 그리고 직렬화가 어떻게 보이는지에 대한 예시는 다음과 같습니다.
+Let's give a quick overview of both serialization formats, including their pros and cons, as well as
+an example of what their serializations look like.
 
 <hr className="subsection" />
 
@@ -75,7 +76,7 @@ NEAR 컨트랙트는 복잡한 객체를 가져오고 반환하는 메서드를 
 
 #### 예시
 
-아래 예시를 살펴보겠습니다. 이는 교육 목적으로만 작성되었습니다.
+이는 교육 목적으로만 작성되었습니다. 아래 예시를 살펴보겠습니다.
 
 ```rust
 #[derive(Serialize)]
@@ -124,17 +125,17 @@ JavaScript SDK는 JSON을 사용하여 상태의 개체를 직렬화합니다.
 
 #### 예시
 
-아래 예시를 살펴보겠습니다. 이는 교육 목적으로만 작성되었습니다.
+이는 교육 목적으로만 작성되었습니다. 아래 예시를 살펴보겠습니다.
 
 ```rust
-#[near_bindgen]
-#[derive(BorshDeserialize, BorshSerialize, PanicOnDefault)]
+#[near(serializers = [json, borsh])]
+#[derive(PanicOnDefault)]
 pub struct Contract {
   string: String,
   vector: Vector<u8>
 }
 
-#[near_bindgen]
+#[near]
 impl Contract {
   #[init]
   pub fn init(string: String, first_u8: u8) -> Self {

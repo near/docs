@@ -8,26 +8,23 @@ import {Github} from "@site/src/components/codetabs"
 
 Trong hướng dẫn này, bạn sẽ tìm hiểu những điều cơ bản của một NFT marketplace contract, nơi bạn có thể mua và bán các non-fungible token bằng $NEAR. Trong những hướng dẫn trước, bạn đã đi qua và tạo một NFT contract hoàn chỉnh đầy đủ kết hợp tất cả các tiêu chuẩn có trong [tiêu chuẩn NFT](https://nomicon.io/Standards/NonFungibleToken).
 
+---
+
 ## Giới thiệu
 
-Thông qua hướng dẫn này, bạn sẽ học cách một marketplace contract sẽ làm việc trên NEAR. Đây được xem là một ví dụ và không có triển khai chính tắc nào. Vui lòng tách branch và sửa đổi contract này để đáp ứng nhu cầu cụ thể của bạn.
-
-Sử dụng cùng repository giống như các hướng dẫn trước, nếu bạn checkout branch `8.marketplace`, bạn sẽ có những file cần thiết để hoàn thành hướng dẫn này.
+Throughout this tutorial, you'll learn how a marketplace contract **could** work on NEAR. This is meant to be **an example** as there is no **canonical implementation**. Vui lòng tách branch và sửa đổi contract này để đáp ứng nhu cầu cụ thể của bạn.
 
 ```bash
-git checkout 8.marketplace
+cd market-contract/
 ```
 
-## Cấu trúc file {#file-structure}
-
-Những thay đổi được tạo ra bao gồm một thư mục gốc mới gọi là `market-contract`. Nó chứa cả build script, các dependency cũng như các contract code thực tế được phác thảo bên dưới đây.
+This folder contains both the actual contract code and dependencies as outlined below.
 
 ```
 market-contract
 ├── Cargo.lock
 ├── Cargo.toml
 ├── README.md
-├── build.sh
 └── src
     ├── external.rs
     ├── internal.rs
@@ -37,25 +34,15 @@ market-contract
     └── sale_views.rs
 ```
 
-Thông thường, khi làm việc trên nhiều smart contract mà tất cả điều liên quan đến cùng một repository, một ý tưởng hay là cấu trúc chúng trong các thư mục riêng giống như đã được thực hiện trong hướng dẫn này. Để giúp công việc của bạn dễ hơn khi build các smart contract, chúng tôi đã sửa file `package.json` của repository, do vậy build cả hai smart contract có thể dễ dàng thực hiện bằng cách chạy command bên dưới.
-
-```bash
-yarn build
-```
-Nó sẽ cài đặt các dependency cho cả hai contract và compile chúng thành các file `wasm` được lưu trữ trong các thư mục dưới đây.
-
-```
-nft-tutorial
-└── out
-    ├── main.wasm
-    └── market.wasm
-```
+---
 
 ## Hiểu về contract
 
 Lúc đầu, contract có thể khá choáng ngợp nhưng nếu bạn loại bỏ tất cả các thứ không cần thiết và đào sâu vào các function cốt lõi, nó thực sự khá đơn giản. Contract này đã được thiết kế chỉ cho một điều duy nhất - cho phép mọi người mua và bán các NFT cho NEAR. Nó bao gồm việc hỗ trợ thanh toán royalty, cập nhật giá bán của bạn, loại bỏ sale và thanh toán cho storage.
 
 Hãy xem qua các file, ghi chú lại một số function quan trọng và chức năng của chúng là gì.
+
+---
 
 ## lib.rs {#lib-rs}
 
@@ -65,7 +52,9 @@ File này phác thảo thông tin nào được lưu trữ trên contract cũng 
 
 Function đầu tiên bạn sẽ xem là initialization function. Nó lấy một `owner_id` làm tham số duy nhất và sẽ mặc định tất cả các storage collection bằng giá trị mặc định của chúng.
 
-<Github language="rust" start="85" end="105" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/lib.rs" />
+<Github language="rust" start="92" end="107" url="https://github.com/near-examples/nft-tutorial/blob/main/market-contract/src/lib.rs" />
+
+<hr className="subsection" />
 
 ### Model quản lý storage {#storage-management-model}
 
@@ -91,47 +80,74 @@ You might be thinking about the scenario when a sale is purchased. What happens 
 
 With this behavior in mind, the following two functions outline the logic.
 
-<Github language="rust" start="110" end="170" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/lib.rs" />
+<Github language="rust" start="111" end="139" url="https://github.com/near-examples/nft-tutorial/blob/main/market-contract/src/lib.rs" />
+<Github language="rust" start="144" end="175" url="https://github.com/near-examples/nft-tutorial/blob/main/market-contract/src/lib.rs" />
 
 Trong contract này, storage yêu cầu 0.01 NEAR cho mỗi lần sale nhưng bạn có thể truy vấn thông tin đó sử dụng function `storage_minimum_balance`. Ngoài ra, bạn có thể truy vấn function `storage_balance_of` để kiểm tra một tài khoản nào đó đã thanh toán bao nhiêu storage.
 
-Không còn cách nào khác, đã đến lúc chuyển sang file `nft_callbacks.rs`, nơi bạn sẽ xem cách các NFT được bán.
+With that out of the way, it's time to move onto the `sale.rs` file where you'll look at how NFTs are put for sale.
 
-## nft_callbacks.rs {#nft_callbacks-rs}
+---
 
-File này chịu trách nhiệm về logic được sử dụng để bán các NFT. Nếu bạn nhớ [phần marketplace](/tutorials/nfts/approvals#marketplace-integrations) của hướng dẫn approval, khi user gọi `nft_approve` và truyền vào một message, nó sẽ tiến hành một cross-contract call tới contract của `receiver_id` và gọi method `nft_on_approve`. File `nft_callbacks.rs` này sẽ triển khai function đó.
+## sale.rs {#sale}
+
+This file is responsible for the internal marketplace logic.
 
 ### Logic niêm yết {#listing-logic}
 
-Điều quan trọng đầu tiên cần chú ý là cấu trúc `SaleArgs`. Đây là những gì market contract mong đợi message mà user truyền vào `nft_approve` trên NFT contract. Cấu trúc này phác thảo giá bán bằng yoctoNEAR cho NFT đã được niêm yết.
+In order to put an NFT on sale, a user should:
 
-<Github language="rust" start="5" end="10" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/nft_callbacks.rs" />
+1. Approve the marketplace contract on an NFT token (by calling `nft_approve` method on the NFT contract)
+2. Call the `list_nft_for_sale` method on the marketplace contract.
 
-Tiếp theo, chúng ta hãy xem function `nft_on_approve` được gọi thông qua một cross-contract call bởi NFT contract. Việc này sẽ đảm bảo rằng người ký có đủ storage để trả thêm cho lần sale khác. Sau đó, nó sẽ cố gắng lấy `SaleArgs` từ message và tạo niêm yết.
+#### nft_approve
+This method has to be called by the user to [approve our marketplace](5-approval.md), so it can transfer the NFT on behalf of the user. In our contract, we only need to implement the `nft_on_approve` method, which is called by the NFT contract when the user approves our contract.
 
-<Github language="rust" start="32" end="134" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/nft_callbacks.rs" />
+In our case, we left it blank, but you could implement it to do some additional logic when the user approves your contract.
 
-## sale.rs {#sale-rs}
+<Github language="rust" start="23" end="33" url="https://github.com/near-examples/nft-tutorial/blob/main/market-contract/src/nft_callbacks.rs" />
 
-Bây giờ chúng ta đã quen với quy trình thêm storage và niêm yết các NFT trên marketplace, hãy xem những gì bạn có thể làm gì sau khi một sale đã được niêm yết. File `sale.rs` phác thảo các function cho việc cập nhật giá, xóa, và mua các NFT.
+
+#### list_nft_for_sale
+The `list_nft_for_sale` method lists an nft for sale, for this, it takes the id of the NFT contract (`nft_contract_id`), the `token_id` to know which token is listed, the [`approval_id`](5-approval.md), and the price in yoctoNEAR at which we want to sell the NFT.
+
+<Github language="rust" start="33" end="74" url="https://github.com/near-examples/nft-tutorial/blob/main/market-contract/src/sale.rs" />
+
+The function first checks if the user has [enough storage available](#storage-management-model-storage-management-model), and makes two calls in parallel to the NFT contract. The first is to check if this marketplace contract is authorized to transfer the NFT. The second is to make sure that the caller (`predecessor`) is actually the owner of the NFT, otherwise, anyone could call this method to create fake listings. This second call is mostly a measure to avoid spam, since anyways, only the owner could approve the marketplace contract to transfer the NFT.
+
+Both calls return their results to the `process_listing` function, which executes the logic to store the sale object on the contract.
+
+#### process_listing
+
+The `process_listing` function will receive if our marketplace is authorized to list the NFT on sale, and if this was requested by the NFTs owner. If both conditions are met, it will proceed to check if the user has enough storage, and store the sale object on the contract.
+
+<Github language="rust" start="264" end="344" url="https://github.com/near-examples/nft-tutorial/blob/main/market-contract/src/sale.rs" />
+
+<hr class="subsection" />
 
 ### Sale object {#sale-object}
 
 Điều quan trọng là phải hiểu contract đang lưu trữ thông tin gì của mỗi sale object. Bởi vì marketplace có nhiều NFT được niêm yết đến từ các NFT contract khác nhau, chỉ lưu trữ token ID sẽ không đủ để phân biệt giữa các NFT khác nhau. Đây là lý do bạn cần theo dõi cả token ID và contract mà NFT đến từ đó. Ngoài ra, với mỗi niêm yết, contract phải theo dõi approval ID mà nó đã được cấp để transfer NFT. Cuối cùng, chủ sở hữu và các điều kiện sale là cần thiết.
 
-<Github language="rust" start="7" end="18" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/sale.rs" />
+<Github language="rust" start="5" end="20" url="https://github.com/near-examples/nft-tutorial/blob/main/market-contract/src/sale.rs" />
+
+<hr className="subsection" />
 
 ### Xóa các sale {#removing-sales}
 
 Để xóa một niêm yết, chủ sở hữu phải call function `remove_sale` và truyền vào NFT contract cùng với token ID. Phía đằng sau, hàm này call function `internal_remove_sale` mà bạn có thể tìm thấy trong file `internal.rs`. Điều này sẽ yêu cầu một yoctoNEAR vì lý do bảo mật.
 
-<Github language="rust" start="23" end="34" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/sale.rs" />
+<Github language="rust" start="76" end="87" url="https://github.com/near-examples/nft-tutorial/blob/main/market-contract/src/sale.rs" />
+
+<hr className="subsection" />
 
 ### Cập nhật giá {#updating-price}
 
 Để cập nhật giá niêm yết của token, chủ sở hữu phải call function `update_price` và truyền vào contract, token ID, và giá mong muốn. Việc này sẽ lấy sale object, thay đổi các điều kiện sale và chèn nó trở lại. Vì lý do bảo mật, function này sẽ yêu cầu một yoctoNEAR.
 
-<Github language="rust" start="36" end="65" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/sale.rs" />
+<Github language="rust" start="90" end="118" url="https://github.com/near-examples/nft-tutorial/blob/main/market-contract/src/sale.rs" />
+
+<hr className="subsection" />
 
 ### Mua các NFT {#purchasing-nfts}
 
@@ -139,13 +155,17 @@ Bây giờ chúng ta đã quen với quy trình thêm storage và niêm yết c�
 
 Sau đó marketplace sẽ call `resolve_purchase`, nơi nó sẽ kiểm tra các payout object độc hại và sau đó nếu mọi thứ đều tốt, nó sẽ thanh toán cho đúng cho các account.
 
-<Github language="rust" start="67" end="99" url="https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/sale.rs" />
+<Github language="rust" start="121" end="151" url="https://github.com/near-examples/nft-tutorial/blob/main/market-contract/src/sale.rs" />
+
+---
 
 ## sale_view.rs {#sale_view-rs}
 
-File cuối chúng ta sẽ xem qua là `sale_view.rs`. Đây là nơi một vài method enumeration được phác thảo. Nó cho phép user truy vấn các thông tin quan trọng liên quan đến sale.
+The final file is [`sale_view.rs`](https://github.com/near-examples/nft-tutorial/blob/main/market-contract/src/sale_view.rs) file. Đây là nơi một vài method enumeration được phác thảo. Nó cho phép user truy vấn các thông tin quan trọng liên quan đến sale.
 
-### Deployment
+---
+
+## Deployment and Initialization
 
 Next, you'll deploy this contract to the network.
 
@@ -158,15 +178,30 @@ Using the build script, deploy the contract as you did in the previous tutorials
 
 ```bash
 near deploy $MARKETPLACE_CONTRACT_ID out/market.wasm
+cargo near deploy $MARKETPLACE_CONTRACT_ID with-init-call new json-args '{"owner_id": "'$MARKETPLACE_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
 ```
 
-### Initialization and minting
+<hr className="subsection" />
 
-Since this is a new contract, you'll need to initialize it. Use the following command to initialize the contract:
+### Minting and approving
+
+Let's mint a new NFT token and approve a marketplace contract:
 
 ```bash
-near call $MARKETPLACE_CONTRACT_ID new '{"owner_id": "'$MARKETPLACE_CONTRACT_ID'"}' --accountId $MARKETPLACE_CONTRACT_ID
+near call $NFT_CONTRACT_ID nft_mint '{"token_id": "token-1", "metadata": {"title": "My Non Fungible Team Token", "description": "The Team Most Certainly Goes :)", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$NFT_CONTRACT_ID'"}' --accountId $NFT_CONTRACT_ID --amount 0.1
+
+near call $NFT_CONTRACT_ID nft_approve '{"token_id": "token-1", "account_id": "'$MARKETPLACE_CONTRACT_ID'"}' --accountId $NFT_CONTRACT_ID --deposit 0.1
 ```
+
+<hr className="subsection" />
+
+### Listing NFT on sale
+
+```bash
+near call $MARKETPLACE_CONTRACT_ID list_nft_for_sale '{"nft_contract_id": "'$NFT_CONTRACT_ID'", "token_id": "token-1", "approval_id": 0, "msg": "{\"sale_conditions\": \"1\"}"}' --accountId $NFT_CONTRACT_ID --gas 30000000000000
+```
+
+<hr className="subsection" />
 
 ### Tổng lượng cung {#total-supply}
 
@@ -176,47 +211,55 @@ near call $MARKETPLACE_CONTRACT_ID new '{"owner_id": "'$MARKETPLACE_CONTRACT_ID'
 near view $MARKETPLACE_CONTRACT_ID get_supply_sales
 ```
 
+<hr className="subsection" />
+
 ### Tổng lượng cung bởi chủ sở hữu {#total-supply-by-owner}
 
 Để truy vấn tổng lượng cung của các NFT được niêm yết bởi một chủ sở hữu được chỉ định trên marketplace, bạn có thể call function `get_supply_by_owner_id`. Có thể xem ví dụ dưới đây.
 
 ```bash
-near view $MARKETPLACE_CONTRACT_ID get_supply_by_owner_id '{"account_id": "benji.testnet"}'
+near view $MARKETPLACE_CONTRACT_ID get_supply_by_owner_id '{"account_id": "'$NFT_CONTRACT_ID'"}'
 ```
+
+<hr className="subsection" />
 
 ### Tổng lượng cung theo contract {#total-supply-by-contract}
 
 Để truy vấn tổng lượng cung các NFT thuộc về một contract chỉ định nào đó, bạn có thể call function `get_supply_by_nft_contract_id`. Có thể xem ví dụ dưới đây.
 
 ```bash
-near view $MARKETPLACE_CONTRACT_ID get_supply_by_nft_contract_id '{"nft_contract_id": "fayyr-nft.testnet"}'
+near view $MARKETPLACE_CONTRACT_ID get_supply_by_nft_contract_id '{"nft_contract_id": "'$NFT_CONTRACT_ID'"}'
 ```
+
+<hr className="subsection" />
 
 ### Truy vấn thông tin niêm yết {#query-listing-information}
 
 Để truy vấn thông tin quan trọng của một niêm yết được chỉ định, bạn có thể call function `get_sale`. Nó yêu cầu bạn truyền vào `nft_contract_token`. Đây thực chất là định danh duy nhất cho việc sale trên market contract giống như đã giải thích trước đó. Định danh này bao gồm NFT contract, theo sau là một `DELIMITER` và sau nữa là token ID. Trong contract này, `DELIMITER` đơn giản là một dấu: `.` mà thôi.  Dưới đây là một ví dụ về truy vấn này.
 
 ```bash
-near view $MARKETPLACE_CONTRACT_ID get_sale '{"nft_contract_token": "fayyr-nft.testnet.token-42"}'
+near view $MARKETPLACE_CONTRACT_ID get_sale '{"nft_contract_token": "'$NFT_CONTRACT_ID'.token-1"}'
 ```
 
 Ngoài ra, bạn có thể truy vấn thông tin về niêm yết được phân trang của một chủ sở hữu nhất định bằng cách gọi function `get_sales_by_owner_id`.
 
 ```bash
-near view $MARKETPLACE_CONTRACT_ID get_sales_by_owner_id '{"account_id": "benji.testnet", "from_index": "5", "limit": 10}'
+near view $MARKETPLACE_CONTRACT_ID get_sales_by_owner_id '{"account_id": "'$NFT_CONTRACT_ID'", "from_index": "0", "limit": 5}'
 ```
 
 Cuối cùng, bạn có thể truy vấn thông tin về niêm yết được phân trang bắt đầu từ một NFT contract nhất định bằng cách gọi function `get_sales_by_nft_contract_id`.
 
 ```bash
-near view $MARKETPLACE_CONTRACT_ID get_sales_by_nft_contract_id '{"nft_contract_id": "fayyr-nft.testnet", "from_index": "5", "limit": 10}'
+near view $MARKETPLACE_CONTRACT_ID get_sales_by_nft_contract_id '{"nft_contract_id": "'$NFT_CONTRACT_ID'", "from_index": "0", "limit": 5}'
 ```
+
+---
 
 ## Tổng kết
 
 Trong hướng dẫn này, bạn đã học về những thứ cơ bản của một marketplace contract và nó làm việc như thế nào. Bạn đã xem qua file [lib.rs](#lib-rs) và đã tìm hiểu về [initialization function](#initialization-function), thêm nữa là [storage management](#storage-management-model) model.
 
-Sau đó, bạn đã xem qua file [nft_callbacks](#nft_callbacks-rs) để hiểu cách [niêm yết các NFT](#listing-logic). Ngoài ra, bạn đã xem qua một số function quan trọng cần thiết sau khi bạn đã niêm yết một NFT. Nó bao gồm [xóa sale](#removing-sales), [cập nhật giá](#updating-price), và [mua các NFT](#purchasing-nfts).
+You went through the [NFTs listing process](#listing-logic). In addition, you went through some important functions needed after you've listed an NFT. Nó bao gồm [xóa sale](#removing-sales), [cập nhật giá](#updating-price), và [mua các NFT](#purchasing-nfts).
 
 Cuối cùng, bạn xem qua các enumaration method trong file [`sale_view`](#sale_view-rs). Chúng cho phép bạn truy vấn thông tin quan trọng được tìm thấy trên marketplace contract.
 
@@ -230,7 +273,8 @@ Bây giờ bạn đã có hiểu biết vững chắc về NFT và marketplace t
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `4.0.4`
+- near-cli: `4.0.13`
+- cargo-near `0.6.1`
 - NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 
 :::

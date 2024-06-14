@@ -1,7 +1,7 @@
 {
   "id": "concepts/storage/storage-solutions",
   "title": "Decentralized Storage Solutions",
-  "description": "In this article you'll find a brief overview of different decentralized storage solutions that can be integrated into your decentralized applications (dApps). This will allow you to store large amounts of data using a more economical alternative to native NEAR storage.",
+  "description": "In this article you'll find a brief overview of different decentralized storage solutions that can be integrated into your decentralized applications (dApps). This will allow you to store large amounts of data using a more economical alternative to native NEAR storage. This will allow you to store large amounts of data using a more economical alternative to native NEAR storage.",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/1.concepts/storage/decentralized-storage.md",
   "sourceDirName": "1.concepts/storage",
   "slug": "/concepts/storage/storage-solutions",

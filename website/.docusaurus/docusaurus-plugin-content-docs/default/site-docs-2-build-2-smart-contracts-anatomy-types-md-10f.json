@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/2.smart-contracts/anatomy/types.md",
   "sourceDirName": "2.build/2.smart-contracts/anatomy",
   "slug": "/build/smart-contracts/anatomy/types",
-  "permalink": "/zh-CN/build/smart-contracts/anatomy/types",
+  "permalink": "/build/smart-contracts/anatomy/types",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/anatomy/types.md",
@@ -21,10 +21,10 @@
   "sidebar": "build",
   "previous": {
     "title": "External Interface",
-    "permalink": "/zh-CN/build/smart-contracts/anatomy/functions"
+    "permalink": "/build/smart-contracts/anatomy/functions"
   },
   "next": {
     "title": "Environment",
-    "permalink": "/zh-CN/build/smart-contracts/anatomy/environment"
+    "permalink": "/build/smart-contracts/anatomy/environment"
   }
 }

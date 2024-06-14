@@ -39,9 +39,31 @@ class Counter {
     near.log(`Reset counter to zero`)
   }
 }
+  get_num(): number {
+    return this.val
+  }
+
+  @call({}) // Public method: Increment the counter.
+  increment() {
+    this.val += 1;
+    near.log(`Increased number to ${this.val}`)
+  }
+
+  @call({}) // Public method: Decrement the counter.
+  decrement() {
+    this.val -= 1;
+    near.log(`Decreased number to ${this.val}`)
+  }
+
+  @call({}) // Public method - Reset to zero.
+  reset() {
+    this.val = 0;
+    near.log(`Reset counter to zero`)
+  }
+}
 ```
 
-In this example, the `Counter` class represents the smart contract state and anything that implements serialization and deserialization methods can be included, such as `collections`, which will be covered in the next section. Whenever a function is called, the state will be loaded and deserialized, so it's important to keep this amount of data loaded as minimal as possible.
+In this example, the `Counter` class represents the smart contract state and anything that implements serialization and deserialization methods can be included, such as `collections`, which will be covered in the next section. Whenever a function is called, the state will be loaded and deserialized, so it's important to keep this amount of data loaded as minimal as possible. Whenever a function is called, the state will be loaded and deserialized, so it's important to keep this amount of data loaded as minimal as possible.
 
 The core interactions that are important to keep in mind:
 - Any `call` or `view` or `initialize` functions will be callable externally from any account/contract.
@@ -52,11 +74,10 @@ The core interactions that are important to keep in mind:
 - Exposed functions can omit reading and writing to state if class variables are not accessed in the function
   - This can be useful for some static functionality or returning data embedded in the contract code
 
-<!-- TODO include link to near_bindgen docs, when they aren't empty -->
 
 ## Initialization Methods
 
-By default, the `default()` implementation of a contract will be used to initialize a contract. There can be a custom initialization function which takes parameters or performs custom logic with the following `@initialize({})` decorator:
+By default, the `default()` implementation of a contract will be used to initialize a contract. By default, the `default()` implementation of a contract will be used to initialize a contract. There can be a custom initialization function which takes parameters or performs custom logic with the following `@initialize({})` decorator:
 
 ```javascript
 @NearBindgen({})
@@ -70,7 +91,7 @@ class Counter {
 
 ## Payable Methods
 
-`call` method decorators can be annotated with `{ payableFunction: true }` to allow tokens to be transferred with the method invocation. For more information, see [payable methods](../contract-interface/payable-methods.md).
+`call` method decorators can be annotated with `{ payableFunction: true }` to allow tokens to be transferred with the method invocation. For more information, see [payable methods](../contract-interface/payable-methods.md). For more information, see [payable methods](../contract-interface/payable-methods.md).
 
 To declare a function as payable, use the annotation as follows:
 
@@ -86,7 +107,7 @@ class Counter {
 
 ## Private Methods
 
-Some methods need to be exposed to allow the contract to call a method on itself through a promise, but want to disallow any other contract to call it. For this, use the `{ privateFunction: true }` annotation to throw an error when this method is called externally. See [private methods](../contract-interface/private-methods.md) for more information.
+Some methods need to be exposed to allow the contract to call a method on itself through a promise, but want to disallow any other contract to call it. For this, use the `{ privateFunction: true }` annotation to throw an error when this method is called externally. See [private methods](../contract-interface/private-methods.md) for more information. For this, use the `{ privateFunction: true }` annotation to throw an error when this method is called externally. See [private methods](../contract-interface/private-methods.md) for more information.
 
 This annotation can be applied to any method through the following:
 

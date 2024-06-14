@@ -53,7 +53,7 @@ mod ext_calculator {
 계산기가 `calc.near`에 배포되었다고 가정하고, 다음을 사용할 수 있습니다.
 
 ```rust
-#[near_bindgen]
+#[near]
 impl Contract {
     pub fn sum_a_b(&mut self, a: U128, b: U128) -> Promise {
         let calculator_account_id: AccountId = "calc.near".parse().unwrap();
@@ -94,7 +94,7 @@ fn get_account_to_check() -> AccountId {
 ```
 
 ```rust
-#[near_bindgen]
+#[near]
 impl Contract {
     pub fn xcc_use_promise_result() -> Promise {
         // Call the method `is_allowlisted` on the allowlisted contract. Static GAS is only attached to the callback.
@@ -111,8 +111,6 @@ impl Contract {
 
     pub fn xcc_use_arg_macro(&mut self) -> Promise {
         // Call the method `is_allowlisted` on the allowlisted contract. Attach static GAS equal to XCC_GAS only for the callback.
-        // Any unused GAS will be split between the function call and the callback since both have a default unused GAS weight of 1
-        // Attached deposit is defaulted to 0 for both the function call and the callback.
         ext_allowlist::ext(get_allowlist_contract())
             .is_allowlisted(get_account_to_check())
             .then(
@@ -121,6 +119,8 @@ impl Contract {
                     .callback_arg_macro()
             )
     }
+        // Any unused GAS will be split between the function call and the callback since both have a default unused GAS weight of 1
+        // Attached deposit is defaulted to 0 for both the function call and the callback.
 ```
 
 `ext_allowlist::ext()`로 시작하여, `ext()`에 전달된 계정에서 메서드를 호출하기 위해 특성을 사용하고 있음을 보여줍니다. 그런 다음 호출에 첨부할 가스의 기본 양을 지정하는 데에 `with_static_gas()`를 사용합니다. 그런 다음 `is_allow_listed()` 메서드를 호출하고, 연결하려는 매개변수를 전달합니다.

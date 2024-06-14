@@ -1,0 +1,28 @@
+{
+  "id": "tools/wallets",
+  "title": "Wallets",
+  "description": "Here's a range of user-friendly wallets that support the NEAR blockchain:",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/4.tools/wallets.md",
+  "sourceDirName": "4.tools",
+  "slug": "/tools/wallets",
+  "permalink": "/zh-CN/tools/wallets",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/4.tools/wallets.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "wallets",
+    "title": "Wallets",
+    "sidebar_label": "Wallets"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "Wallet Selector",
+    "permalink": "/zh-CN/tools/wallet-selector"
+  },
+  "next": {
+    "title": "FastNEAR API",
+    "permalink": "/zh-CN/tools/fastnear-api"
+  }
+}

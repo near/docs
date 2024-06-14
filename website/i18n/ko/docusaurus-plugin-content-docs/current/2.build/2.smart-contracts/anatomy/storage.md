@@ -1,218 +1,190 @@
 ---
 id: storage
-title: 상태 & 자료구조
+title: State
+sidebar_label: State (Storage)
+hide_table_of_contents: true
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
+import {ExplainCode, Block, File} from '@site/src/components/CodeExplainer/code-explainer';
 
-각 컨트랙트에는 고유한 상태(스토리지)가 있으며, 이는 **해당 컨트랙트에 의해서만 수정 가능**하지만 [누구나 볼 수 있습니다](../../../4.tools/cli.md#near-view-state-near-view-state).
+NEAR accounts store data for their contracts. The storage starts **empty** until a contract is deployed and the state is initialized. The contract's code and state are independent: updating the code does not erase the state.
 
-컨트랙트는 모든 데이터를 `키-값` 스토리지에 저장합니다. 그러나 이는 SDK에 의한 [직렬화](./serialization.md)를 통해 추상화됩니다.
+<ExplainCode languages="js,rust" >
 
-## :::info 컨트랙트는 잔고의 일부를 잠그는 방식으로 [스토리지 비용을 지불](#storage-cost)합니다. 현재 **100KB**를 저장하는 데 **~1Ⓝ** 만큼의 비용이 듭니다.
+<Block highlights='{"js": "3-6,10-11"}' fname="auction">
 
-## 상태의 정의
+```
+### Defining the State
+The attributes of the `class` marked as the contract define the data that will be stored.
 
-컨트랙트의 상태는 [핵심 클래스 속성](anatomy.md#defining-the-contract)에 의해 정의되며, 이를 통해 접근 가능합니다.
+The contract can store all native types (e.g. `number`, `string`, `Array`, `Map`) as well as complex objects.
 
-상태에는 상수, 기본 자료형 및 복합 객체를 저장할 수 있습니다. SDK 컬렉션은 [직렬화된 키-값 스토리지](./serialization.md#borsh-state-serialization)에 최적화되어 있기 때문입니다.
+For example, our Auction contract stores when the auction ends, and an object representing the highest bid.
 
-<CodeTabs>
-  <Language value="🌐 JavaScript" language="js">
-    <Github fname="index.js"
-          url="https://github.com/near-examples/docs-examples/blob/main/storage-js/src/index.ts"
-          start="6" end="12" />
-
-</Language>
-
-<Language value="🦀 Rust" language="rust">
-    <Github fname="lib.rs"
-          url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/lib.rs" start="14" end="24"/>
-
-</Language>
-
-</CodeTabs>
-
----
-
-## Data Structures
-
-The NEAR SDK exposes a series of structures ([Vectors](#vector), [Sets](#set), [Maps](#map) and [Trees](#tree))
-to simplify storing data in an efficient way.
-
-:::info Instantiation
-
-All structures need to be initialized using a **unique `prefix`**, which will be used to identify the structure's keys
-in the [serialized state](./serialization.md#borsh-state-serialization)
-
-<CodeTabs>
-  <Language value="🌐 JavaScript" language="js">
-    <Github fname="index.js"
-          url="https://github.com/near-examples/docs-examples/blob/main/storage-js/src/index.ts"
-          start="8" end="11" />
-
-</Language>
-
-<Language value="🦀 Rust" language="rust">
-    <Github fname="lib.rs"
-          url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/lib.rs" start="33" end="38"/>
-
-</Language>
-
-</CodeTabs>
-
-:::
-
-<hr className="subsection" />
-
-### Vector
-
-Implements a [vector/array](https://en.wikipedia.org/wiki/Array_data_structure) which persists in the contract's storage. Please refer to the Rust and AS SDK's for a full reference on their interfaces.
-
-<CodeTabs>
-  <Language value="🌐 JavaScript" language="js">
-    <Github fname="index.js"
-          url="https://github.com/near-examples/docs-examples/blob/main/storage-js/src/index.ts"
-          start="25" end="28" />
-
-</Language>
-
-<Language value="🦀 Rust" language="rust">
-    <Github fname="vector.rs"
-          url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/vector.rs" start="12" end="30"/>
-    <Github fname="lib.rs"
-          url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/lib.rs" start="7" end="24"/>
-
-</Language>
-
-</CodeTabs>
-
-<hr className="subsection" />
-
-### Map
-
-Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) which persists in the contract's storage. Please refer to the Rust and AS SDK's for a full reference on their interfaces.
-
-<CodeTabs>
-  <Language value="🌐 JavaScript" language="js">
-    <Github fname="index.js"
-          url="https://github.com/near-examples/docs-examples/blob/main/storage-js/src/index.ts"
-          start="33" end="37" />
-
-</Language>
-
-<Language value="🦀 Rust" language="rust">
-    <Github fname="map.rs"
-          url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/map.rs" start="9" end="24"/>
-    <Github fname="lib.rs"
-          url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/lib.rs" start="7" end="24"/>
-
-</Language>
-
-</CodeTabs>
-
-<details>
-<summary>Nesting of Objects - Temporary Solution</summary>
-
-In the JS SDK, you can store and retrieve elements from a nested map or object, but first you need to construct or deconstruct the structure from state. This is a temporary solution until the improvements have been implemented to the SDK. Here is an example of how to do this:
-
-```ts
-import { NearBindgen, call, view, near, UnorderedMap } from "near-sdk-js";
-
-@NearBindgen({})
-class StatusMessage {
-  records: UnorderedMap;
-  constructor() {
-    this.records = new UnorderedMap("a");
-  }
-
-  @call({})
-  set_status({ message, prefix }: { message: string; prefix: string }) {
-    let account_id = near.signerAccountId();
-
-    const inner: any = this.records.get("b" + prefix);
-    const inner_map: UnorderedMap = inner
-      ? UnorderedMap.deserialize(inner)
-      : new UnorderedMap("b" + prefix);
-
-    inner_map.set(account_id, message);
-
-    this.records.set("b" + prefix, inner_map);
-  }
-
-  @view({})
-  get_status({ account_id, prefix }: { account_id: string; prefix: string }) {
-    const inner: any = this.records.get("b" + prefix);
-    const inner_map: UnorderedMap = inner
-      ? UnorderedMap.deserialize(inner)
-      : new UnorderedMap("b" + prefix);
-    return inner_map.get(account_id);
-  }
-}
+**Note:** The SDK also provides [collections](./collections.md) to efficiently store collections of data.
 ```
 
-</details>
+</Block>
 
-<hr className="subsection" />
+<Block highlights='{"rust": "6-9,14,15"}' fname="auction">
 
-### Set
+```
+### Defining the State
+The attributes of the `struct` marked as the contract define the data that will be stored.
 
-Implements a [set](https://en.wikipedia.org/wiki/Set_\(abstract_data_type\)) which persists in the contract's storage. Please refer to the Rust and AS SDK's for a full reference on their interfaces.
+The contract can store all native types (e.g. `u8`, `string`, `HashMap`, `Vector`) as well as complex objects.
 
-<CodeTabs>
-  <Language value="🌐 JavaScript" language="js">
-    <Github fname="index.js"
-          url="https://github.com/near-examples/docs-examples/blob/main/storage-js/src/index.ts"
-          start="42" end="46" />
+For example, our Auction contract stores when the auction ends, and an object representing the highest bid.
 
-</Language>
+**Note:** The structures that will be saved need a special macro, that tells the SDK to store them [serialized in Borsh](./serialization.md).
 
-<Language value="🦀 Rust" language="rust">
-    <Github fname="set.rs"
-          url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/set.rs" start="9" end="16"/>
-    <Github fname="lib.rs"
-          url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/lib.rs" start="7" end="24"/>
+**Note:** The SDK also provides [collections](./collections.md) to efficiently store collections of data.
+```
 
-</Language>
+</Block>
 
-</CodeTabs>
+<Block highlights='{"rust": "4"}' fname="auction">
 
-<hr className="subsection" />
+```
+#### [*] Note
+The `structs` that will be persisted need to be marked with a macro, so the SDK knows to [serialize them in Borsh](./serialization.md) before writing them to the state.
+```
 
-### Tree
+</Block>
 
-An ordered equivalent of Map. The underlying implementation is based on an [AVL](https://en.wikipedia.org/wiki/AVL_tree). You should use this structure when you need to: have a consistent order, or access the min/max keys.
+<Block highlights='{"js":"", "rust": ""}' fname="auction">
 
-<CodeTabs>
-  <Language value="🦀 Rust" language="rust">
-    <Github fname="tree.rs"
-          url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/tree.rs" start="9" end="24"/>
-    <Github fname="lib.rs"
-          url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/lib.rs" start="7" end="24"/>
+```
+#### [!] Important
+Contracts pay for their storage by locking part of their balance.
 
-</Language>
+It currently costs ~**1Ⓝ** to store **100KB** of data.
+```
 
-</CodeTabs>
+</Block>
 
----
+<Block highlights='{"js": "", "rust": ""}' fname="auction" >
 
-## Storage Cost
+```
+### Initializing the State
+After the contract is deployed, its state is empty and needs to be initialized with
+some initial values.
 
-Your contract needs to lock a portion of their balance proportional to the amount of data they stored in the blockchain. This means that:
+There are two ways to initialize a state:
+  1. By creating an initialization function
+  2. By setting default values
+```
 
-- If more data is added and the **storage increases ↑**, then your contract's **balance decreases ↓**.
-- If data is deleted and the **storage decreases ↓**, then your contract's **balance increases ↑**.
+</Block>
 
-Currently, it cost approximately **1 Ⓝ** to store **100kb** of data.
+<Block highlights='{"js": "8,13-17"}' fname="auction">
 
-:::info
-You can save on smart contract storage if using NEAR Account IDs by encoding them using base32. Since they consist of `[a-z.-_]` characters with a maximum length of 64 characters, they can be encoded using 5 bits per character, with terminal `\0`. Going to a size of 65 \* 5 = 325 bits from the original (64 + 4) \* 8 = 544 bits. This is a 40% reduction in storage costs.
-:::
+```
+### I. Initialization Functions
+An option to initialize the state is to create an `initialization` function, which needs to be called before executing any other function.
 
-:::caution
-An error will raise if your contract tries to increase its state while not having NEAR to cover for storage.
-:::
+In our Auction example, the contract has an initialization function that sets when the auction ends. Note the `@initialization` decorator, and the forced initialization on `NearBindgen`.
 
-:::warning
-Be mindful of potential [small deposit attacks](../security/storage.md)
-:::
+**Note:** It is a good practice to mark initialization functions as private. We will cover function types in the [functions section](./functions.md).
+```
+
+</Block>
+
+<Block highlights='{"js": "10-11"}' fname="auction">
+
+```
+#### [!] Important
+In TS/JS you still **must** set default values for the attributes, so the SDK can infer their types.
+```
+
+</Block>
+
+<Block highlights='{"rust": "12,22-30"}' fname="auction">
+
+```
+### I. Initialization Functions
+An option to initialize the state is to create an `initialization` function, which needs to be called before executing any other function.
+
+In our Auction example, the contract has an initialization function that sets when the auction ends. The contract derives the `PanicOnDefault`, which forces the user to call the init method denoted by the `#[init]` macro.
+
+**Note:** It is a good practice to mark initialization functions as private. We will cover function types in the [functions section](./functions.md).
+```
+
+</Block>
+
+<Block highlights='{"js": "5"}' fname="hello">
+
+```
+### II. Default State
+Another option to initialize the state is to set default values for the attributes of the class.
+
+Such is the case for our "Hello World" contract, which stores a `greeting` with the default value `"Hello"`.
+
+The first time the contract is called (somebody executes `get_greeting` or `set_greeting`), the default values will be stored in the state, and the state will be considered initialized.
+
+**Note:** The state can only be initialized once.
+```
+
+</Block>
+
+<Block highlights='{"rust": "10-16"}' fname="hello">
+
+```
+### II. Default State
+Another option to initialize the state is to create a `Default` version of our contract's `struct`.
+
+For example, our "Hello World" contract has a default state with a `greeting` set to `"Hello"`.
+
+The first time the contract executes, the `Default` will be stored in the state, and the state will be considered initialized.
+
+**Note:** The state can only be initialized once.
+```
+
+</Block>
+
+<Block highlights='{"js": "", "rust":""}' fname="hello">
+
+```
+### Lifecycle of the State
+When a function is called, the contract's state is loaded from the storage and put into memory.
+
+The state is actually [stored serialized](./serialization.md), and the SDK takes a bit of time to deserialize it before the method can access it.
+
+When the method finishes executing successfully, all the changes to the state are serialized, and saved back to the storage.
+```
+
+</Block>
+
+<Block highlights='{"js": "", "rust":""}' fname="hello">
+
+```
+### State and Code
+In NEAR, the contract's code and contract's storage are **independent**.
+
+Updating the code of a contract does **not erase** the state, and can indeed lead to unexpected behavior or errors.
+
+Make sure to read the [updating a contract](../release/upgrade.md) if you run into issues.
+```
+
+</Block>
+
+<File language="js" fname="auction"
+ url="https://github.com/near-examples/auction-examples/blob/main/contract-ts/src/contract.ts"
+ start="2" end="51" />
+
+<File language="js" fname="hello"
+ url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts"
+ start="2" end="18" />
+
+<File language="rust" fname="auction"
+ url="https://github.com/near-examples/auction-examples/blob/main/contract-rs/src/lib.rs"
+ start="2" end="68" />
+
+<File language="rust" fname="hello"
+ url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
+ start="2" end="32" />
+
+</ExplainCode>

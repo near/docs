@@ -12,12 +12,12 @@ import recreatingSubaccount from '/docs/assets/crosswords/erase-recreate-subacco
 
 We're going to make a new puzzle, which means we need to provide the smart contract with a set of clues and info about the answers.
 
-Of course, we'll not be sending the *answers* to the smart contract, otherwise everyone could see. We will, however, send details about each clue, including:
+Of course, we'll not be sending the *answers* to the smart contract, otherwise everyone could see. We will, however, send details about each clue, including: We will, however, send details about each clue, including:
 
 - The clue number
 - Whether it's a down or across clue
 - The coordinates (x and y position)
-- The length of the clue. (How many letters)
+- The length of the clue. (How many letters) (How many letters)
 
 Essentially, we're going to tell the smart contract enough information for an empty puzzle like this:
 
@@ -31,7 +31,7 @@ Essentially, we're going to tell the smart contract enough information for an em
 Let's use the same steps we learned from the first chapter:
 
 <figure>
-    <img src={teachingDeployment} alt="Teacher shows chalkboard with instructions on how to properly deploy a smart contract. 1. Build smart contract. 2. Create a subaccount (or delete and recreate if it exists) 3. Deploy to subaccount. 4. Interact. Art created by herogranada.near" width="600"/>
+    <img src={teachingDeployment} alt="Teacher shows chalkboard with instructions on how to properly deploy a smart contract. 1. Build smart contract. 2. Create a subaccount (or delete and recreate if it exists) 3. Deploy to subaccount. 4. Interact. Art created by herogranada.near 1. Build smart contract. 2. Create a subaccount (or delete and recreate if it exists) 3. Deploy to subaccount. 4. Interact. Art created by herogranada.near" width="600"/>
     <figcaption>Art by <a href="https://twitter.com/GranadaHero" target="_blank">herogranada.near</a></figcaption>
 </figure>
 
@@ -41,7 +41,7 @@ Navigate to the `contract` directory, then run the build script for your system:
 
     ./build.sh
 
-If following from the previous chapter, you'll likely have a subaccount already created. For the purpose of demonstration, we're calling the subaccount (where we deploy the contract) `crossword.friend.testnet` and the parent account is thus `friend.testnet`.
+If following from the previous chapter, you'll likely have a subaccount already created. If following from the previous chapter, you'll likely have a subaccount already created. For the purpose of demonstration, we're calling the subaccount (where we deploy the contract) `crossword.friend.testnet` and the parent account is thus `friend.testnet`.
 
 Let's delete the subaccount and recreate it, to start from a blank slate.
 
@@ -63,11 +63,11 @@ near create-account crossword.friend.testnet --masterAccount friend.testnet
 near deploy crossword.friend.testnet --wasmFile res/crossword_tutorial_chapter_2.wasm --initFunction new --initArgs '{"owner_id": "crossword.friend.testnet"}'
 ```
 
-Now we're ready to construct our new crossword puzzle and add it via the `new_puzzle` method. Let's start with the clues for this new puzzle.
+Now we're ready to construct our new crossword puzzle and add it via the `new_puzzle` method. Let's start with the clues for this new puzzle. Let's start with the clues for this new puzzle.
 
 ## The clues
 
-We're going to use these clues below for our improved puzzle. The **Answer** column will not get sent to the smart contract when we call `new_puzzle`.
+We're going to use these clues below for our improved puzzle. We're going to use these clues below for our improved puzzle. The **Answer** column will not get sent to the smart contract when we call `new_puzzle`.
 
 | Number | Answer        | Clue                                                                                              | (x, y) coords | length |
 | ------ | ------------- | ------------------------------------------------------------------------------------------------- | ------------- | ------ |
@@ -145,9 +145,52 @@ near call crossword.friend.testnet new_puzzle '{
    }
   ]
 }' --accountId crossword.friend.testnet
+   },
+   {
+     "num": 2,
+     "start": {
+       "x": 0,
+       "y": 2
+     },
+     "direction": "Across",
+     "length": 13,
+     "clue": "You can move assets between NEAR and different chains, including Ethereum, by visiting ______.app"
+   },
+   {
+     "num": 3,
+     "start": {
+       "x": 9,
+       "y": 1
+     },
+     "direction": "Down",
+     "length": 8,
+     "clue": "NFT market on NEAR with art, physical items, tickets, and more."
+   },
+   {
+     "num": 4,
+     "start": {
+       "x": 3,
+       "y": 8
+     },
+     "direction": "Across",
+     "length": 9,
+     "clue": "The smallest denomination of the native token on NEAR."
+   },
+   {
+     "num": 5,
+     "start": {
+       "x": 5,
+       "y": 8
+     },
+     "direction": "Down",
+     "length": 3,
+     "clue": "You typically deploy a smart contract with the NEAR ___ tool."
+   }
+  ]
+}' --accountId crossword.friend.testnet
 ```
 
-Note that our contract name and the account we're calling this from are both `crossword.friend.testnet`. That's because we added a check at the top of `new_puzzle` to make sure the predecessor is the `owner_id`.
+Note that our contract name and the account we're calling this from are both `crossword.friend.testnet`. That's because we added a check at the top of `new_puzzle` to make sure the predecessor is the `owner_id`. That's because we added a check at the top of `new_puzzle` to make sure the predecessor is the `owner_id`.
 
 Now our smart contract has information about this second crossword puzzle.
 

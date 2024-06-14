@@ -16,8 +16,15 @@ In this quickstart tutorial, we will guide you in creating your first smart cont
 
 ## Prerequisites
 
+<details>
+<summary>Working on Windows?</summary>
+
+See [Getting Started on NEAR Using Windows](/blog/getting-started-on-windows) for a step-by-step guide on how to setup WSL and your environment.
+
+</details>
+
 <Tabs groupId="code-tabs">
-  <TabItem value="🌐 JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
 
 Before starting, make sure you have the following installed:
 
@@ -36,7 +43,7 @@ Before starting, make sure you have the following installed:
 
 </TabItem>
 
-<TabItem value="🦀 Rust">
+<TabItem value="rust" label="🦀 Rust">
 
 Before starting, make sure you have the following installed:
 
@@ -77,7 +84,7 @@ However, if you want to create one, you can do so through [a wallet](https://tes
 ## Creating the Contract
 
 <Tabs groupId="code-tabs">
-  <TabItem value="🌐 JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
 
 Create a smart contract by running our `create-near-app` scaffolding tool and following the interactive menu.
 
@@ -109,7 +116,7 @@ The resulting folder structure will change slightly depending on the chosen lang
 
 </TabItem>
 
-<TabItem value="🦀 Rust">
+<TabItem value="rust" label="🦀 Rust">
 
 Create a smart contract by running our `near` Rust CLI tool and following the interactive menu.
 
@@ -142,22 +149,21 @@ The resulting folder structure will change slightly depending on the chosen lang
 
 Your new smart contract stores a `greeting: string` attribute in their state, and exposes two methods to interact with it (`set_greeting`, `get_greeting`).
 
-<CodeTabs>
-<Language value="🌐 JavaScript" language="js">
-    <Github fname="index.js"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts"
-            start="4" end="18" />
+<Tabs groupId="code-tabs">
+  <TabItem value="js" label="🌐 JavaScript">
+    <Language value="js" language="js">
+        <Github fname="index.js"
+                url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts"
+                start="4" end="18" /></Language>
+  </TabItem>
 
-</Language>
-
-<Language value="🦀 Rust" language="rust">
-    <Github fname="lib.rs"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
-            start="6" end="35" />
-
-</Language>
-
-</CodeTabs>
+  <TabItem value="rust" label="🦀 Rust">
+    <Language value="Rust" language="rust">
+        <Github fname="lib.rs"
+                url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
+                start="4" end="32" /></Language>
+  </TabItem>
+</Tabs>
 
 There are 3 important things to notice:
 
@@ -170,7 +176,7 @@ There are 3 important things to notice:
 Building and testing the contract is as simple as running two commands.
 
 <CodeTabs>
-<Language value="🌐 JavaScript" language="js">
+<Language value="js" language="js">
 
 ```bash
 npm run build
@@ -183,7 +189,7 @@ npm run test
 
 </Language>
 
-<Language value="🦀 Rust" language="rust">
+<Language value="rust" language="rust">
 
 ```bash
 cargo build
@@ -223,7 +229,7 @@ Now that we know the contract is passing the tests, let's create a testnet accou
 While there are different ways to create accounts in NEAR, in this quickstart we will use the `cargo-near` tool to create a new random [`named account`](/concepts/protocol/account-id).
 
 <Tabs groupId="code-tabs">
-  <TabItem value="🌐 JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
 
 ```bash
 # Create a new testnet account
@@ -244,15 +250,15 @@ New account "lovely-event.testnet" created successfully. # Response
 
 </TabItem>
 
-<TabItem value="🦀 Rust">
+<TabItem value="rust" label="🦀 Rust">
 
 ```bash
 # Create a new testnet account with a random name
-cargo-near near create-dev-account use-random-account-id autogenerate-new-keypair save-to-legacy-keychain network-config testnet create
+cargo near create-dev-account use-random-account-id autogenerate-new-keypair save-to-legacy-keychain network-config testnet create
 
 # Create a new testnet account
 # Replace <lovely-event.testnet> with a custom name
-cargo-near near create-dev-account use-specific-account-id lovely-event.testnet autogenerate-new-keypair save-to-keychain network-config testnet create
+cargo near create-dev-account use-specific-account-id lovely-event.testnet autogenerate-new-keypair save-to-keychain network-config testnet create
 ```
 
 <details>
@@ -288,23 +294,23 @@ Here we are creating a random account since we do not care about the account's n
 
 Having our account created, we can now deploy the contract into it:
 
-<CodeTabs>
+<Tabs>
 
-<Language value="🌐 JavaScript" language="js">
+<TabItem value="near-cli">
   ```bash
   near deploy <created-account> build/release/hello.wasm
   ```
 
-</Language>
+</TabItem>
 
-<Language value="🦀 Rust" language="rust">
+<TabItem value="near-cli-rs">
   ```bash
   near contract deploy <created-account> use-file ./target/wasm32-unknown-unknown/release/contract_rs.wasm without-init-call network-config testnet sign-with-keychain send
   ```
 
-</Language>
+</TabItem>
 
-</CodeTabs>
+</Tabs>
 
 **Congrats**! your contract now lives in the NEAR testnet network.
 

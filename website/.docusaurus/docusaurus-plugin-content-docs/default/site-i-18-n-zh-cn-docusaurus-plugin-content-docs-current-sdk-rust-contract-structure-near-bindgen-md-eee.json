@@ -1,7 +1,7 @@
 {
   "id": "sdk/rust/contract-structure/near-bindgen",
-  "title": "near_bindgen",
-  "description": "The #[near_bindgen] macro is used on a struct and the function implementations to generate the necessary code to be a valid NEAR contract and expose the intended functions to be able to be called externally.",
+  "title": "near",
+  "description": "The #[near] macro is used on a struct and the function implementations to generate the necessary code to be a valid NEAR contract and expose the intended functions to be able to be called externally.",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/sdk/rust/contract-structure/near-bindgen.md",
   "sourceDirName": "sdk/rust/contract-structure",
   "slug": "/sdk/rust/contract-structure/near-bindgen",

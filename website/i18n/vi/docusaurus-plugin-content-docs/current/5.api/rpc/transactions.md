@@ -62,7 +62,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=send_tx \
 </Tabs>
 
 <details>
-<summary>Các kết quả cuối cùng của transaction có thể được query qua <a href="/api/rpc/transactions#transaction-status">Transaction Status</a> hoặc <a href="https://explorer.testnet.near.org/">NEAR Explorer</a> bằng cách sử dụng <code>kết quả</code> hash được trả về như ví dụ sau đây. </summary>
+<summary>Các kết quả cuối cùng của transaction có thể được query qua <a href="/docs/api/rpc/transactions#transaction-status">Transaction Status</a> hoặc <a href="https://explorer.testnet.near.org/">NEAR Explorer</a> bằng cách sử dụng <code>kết quả</code> hash được trả về như ví dụ sau đây. </summary>
 <p>
 
 ```json
@@ -190,7 +190,8 @@ Ví dụ:
       <td>Một eror đã xảy ra trong quá trình thực thi transaction</td>
       <td>
         <ul>
-          <li>Xem <code>error.cause.info</code> để biết thêm chi tiết</li>
+          <li>See <code>error.cause.info</code> for details</li>
+          <li>If <code>error.cause.info</code> is <code>ShardCongested</code></li>, resubmit the identical transaction. (Consider adding a priority fee once [NEP-541](https://github.com/near/NEPs/pull/541) is released.)
         </ul>
       </td>
     </tr>
@@ -199,7 +200,7 @@ Ví dụ:
       <td>Transaction đã được định tuyến (route), nhưng chưa được record trên chain sau 10 giây.</td>
       <td>
         <ul>
-          <li> Submit lại request với transaction giống hệt vậy (trong NEAR protocol, các transaction chỉ được apply đúng một lần, vì vậy nếu transaction gửi trước đó đã được apply, request này sẽ chỉ trả lại kết quả là đã biết, nếu không, nó sẽ định tuyến (route) transaction lên chain một lần nữa)</li>
+          <li> Resubmit the request with the identical transaction (in NEAR Protocol unique transactions apply exactly once, so if the previously sent transaction gets applied, this request will just return the known result, otherwise, it will route the transaction to the chain once again)</li>
           <li>Hãy kiểm tra lại transaction của bạn là hợp lệ</li>
           <li>Kiểm tra xem account id của người ký có đủ token để thanh toán transaction fee hay không (lưu ý rằng một số token trên mỗi account có thể bị khóa để trang trải storage cost)</li>
         </ul>
@@ -1305,6 +1306,7 @@ Here is the exhaustive list of the error variants that can be returned by `broad
       <td>
         <ul>
           <li>See <code>error.cause.info</code> for details</li>
+          <li>If <code>error.cause.info</code> is <code>ShardCongested</code></li>, resubmit the identical transaction. (Consider adding a priority fee once [NEP-541](https://github.com/near/NEPs/pull/541) is released.)
         </ul>
       </td>
     </tr>
@@ -1313,7 +1315,7 @@ Here is the exhaustive list of the error variants that can be returned by `broad
       <td>Transaction was routed, but has not been recorded on chain in 10 seconds.</td>
       <td>
         <ul>
-          <li> Re-submit the request with the identical transaction (in NEAR Protocol unique transactions apply exactly once, so if the previously sent transaction gets applied, this request will just return the known result, otherwise, it will route the transaction to the chain once again)</li>
+          <li> Resubmit the request with the identical transaction (in NEAR Protocol unique transactions apply exactly once, so if the previously sent transaction gets applied, this request will just return the known result, otherwise, it will route the transaction to the chain once again)</li>
           <li>Check that your transaction is valid</li>
           <li>Check that the signer account id has enough tokens to cover the transaction fees (keep in mind that some tokens on each account are locked to cover the storage cost)</li>
         </ul>

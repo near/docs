@@ -1,5 +1,5 @@
 {
-  "/zh-CN/blog-867": {
+  "/zh-CN/blog-2a5": {
     "__comp": "a6aa9e1f",
     "__context": {
       "plugin": "36994c47"
@@ -7,16 +7,16 @@
     "sidebar": "814f3328",
     "items": [
       {
-        "content": "b6a112ad"
+        "content": "9669618f"
       },
       {
-        "content": "b9e073c0"
+        "content": "136ffe2d"
       },
       {
-        "content": "3e2d9135"
+        "content": "815c08e4"
       },
       {
-        "content": "dd49b9c8"
+        "content": "7ac6d364"
       }
     ],
     "__props": "b6f232fb"
@@ -28,7 +28,7 @@
     },
     "__props": "e98e7c58"
   },
-  "/zh-CN/blog/getting-started-on-windows-597": {
+  "/zh-CN/blog/getting-started-on-windows-7b6": {
     "__comp": "ccc49370",
     "__context": {
       "data": {
@@ -37,9 +37,9 @@
       "plugin": "36994c47"
     },
     "sidebar": "814f3328",
-    "content": "bf8e8e41"
+    "content": "b302f199"
   },
-  "/zh-CN/blog/reorganizing-docs-9d0": {
+  "/zh-CN/blog/reorganizing-docs-86f": {
     "__comp": "ccc49370",
     "__context": {
       "data": {
@@ -48,7 +48,7 @@
       "plugin": "36994c47"
     },
     "sidebar": "814f3328",
-    "content": "82acc1f3"
+    "content": "577614cd"
   },
   "/zh-CN/blog/tags-958": {
     "__comp": "01a85c17",
@@ -58,7 +58,7 @@
     "sidebar": "814f3328",
     "__props": "8b14544a"
   },
-  "/zh-CN/blog/tags/docusaurus-185": {
+  "/zh-CN/blog/tags/docusaurus-e60": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "36994c47"
@@ -66,12 +66,12 @@
     "sidebar": "814f3328",
     "items": [
       {
-        "content": "3e2d9135"
+        "content": "815c08e4"
       }
     ],
     "__props": "4dbcded4"
   },
-  "/zh-CN/blog/tags/getting-started-373": {
+  "/zh-CN/blog/tags/getting-started-753": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "36994c47"
@@ -79,12 +79,12 @@
     "sidebar": "814f3328",
     "items": [
       {
-        "content": "b6a112ad"
+        "content": "9669618f"
       }
     ],
     "__props": "16a7dae2"
   },
-  "/zh-CN/blog/tags/protocol-bc3": {
+  "/zh-CN/blog/tags/protocol-e4f": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "36994c47"
@@ -92,12 +92,12 @@
     "sidebar": "814f3328",
     "items": [
       {
-        "content": "b9e073c0"
+        "content": "136ffe2d"
       }
     ],
     "__props": "bcdbaa84"
   },
-  "/zh-CN/blog/tags/tutorial-929": {
+  "/zh-CN/blog/tags/tutorial-89e": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "36994c47"
@@ -105,12 +105,12 @@
     "sidebar": "814f3328",
     "items": [
       {
-        "content": "b6a112ad"
+        "content": "9669618f"
       }
     ],
     "__props": "85cfccb4"
   },
-  "/zh-CN/blog/tags/updates-f10": {
+  "/zh-CN/blog/tags/updates-58d": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "36994c47"
@@ -118,18 +118,18 @@
     "sidebar": "814f3328",
     "items": [
       {
-        "content": "b9e073c0"
+        "content": "136ffe2d"
       },
       {
-        "content": "3e2d9135"
+        "content": "815c08e4"
       },
       {
-        "content": "dd49b9c8"
+        "content": "7ac6d364"
       }
     ],
     "__props": "70ef42d8"
   },
-  "/zh-CN/blog/tags/windows-80c": {
+  "/zh-CN/blog/tags/windows-618": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "36994c47"
@@ -137,12 +137,12 @@
     "sidebar": "814f3328",
     "items": [
       {
-        "content": "b6a112ad"
+        "content": "9669618f"
       }
     ],
     "__props": "23471167"
   },
-  "/zh-CN/blog/we-have-a-blog-dc2": {
+  "/zh-CN/blog/we-have-a-blog-b84": {
     "__comp": "ccc49370",
     "__context": {
       "data": {
@@ -151,9 +151,9 @@
       "plugin": "36994c47"
     },
     "sidebar": "814f3328",
-    "content": "bff79d34"
+    "content": "8efb576a"
   },
-  "/zh-CN/blog/yield-resume-112": {
+  "/zh-CN/blog/yield-resume-b23": {
     "__comp": "ccc49370",
     "__context": {
       "data": {
@@ -162,7 +162,7 @@
       "plugin": "36994c47"
     },
     "sidebar": "814f3328",
-    "content": "5830d68e"
+    "content": "3d570727"
   },
   "/zh-CN/search-4e2": {
     "__comp": "1a4e3797",
@@ -170,17 +170,17 @@
       "plugin": "c141421f"
     }
   },
-  "/zh-CN/-037": {
+  "/zh-CN/-cf2": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "aba21aa0"
     }
   },
-  "/zh-CN/-2d8": {
+  "/zh-CN/-13a": {
     "__comp": "a7bd4aaa",
     "__props": "2d9c5935"
   },
-  "/zh-CN/-9ba": {
+  "/zh-CN/-99a": {
     "__comp": "a94703ab"
   },
   "/zh-CN/api/rpc/access-keys-bdc": {
@@ -251,17 +251,17 @@
     "__comp": "17896441",
     "content": "98c5f37f"
   },
-  "/zh-CN/build/chain-abstraction/multichain-gas-relayer/overview-525": {
+  "/zh-CN/build/chain-abstraction/multichain-gas-relayer/overview-dc8": {
     "__comp": "17896441",
-    "content": "dbe6e116"
+    "content": "9bcede4e"
   },
   "/zh-CN/build/chain-abstraction/multichain-gas-relayer/relayer-gas-example-74a": {
     "__comp": "17896441",
     "content": "9b5a6cd9"
   },
-  "/zh-CN/build/chain-abstraction/nft-chain-keys-ba5": {
+  "/zh-CN/build/chain-abstraction/nft-chain-keys-de4": {
     "__comp": "17896441",
-    "content": "d8ab9ee4"
+    "content": "25f2eda3"
   },
   "/zh-CN/build/chain-abstraction/wallet-62b": {
     "__comp": "17896441",
@@ -747,9 +747,9 @@
     "__comp": "17896441",
     "content": "4730762f"
   },
-  "/zh-CN/build/smart-contracts/anatomy/collections-754": {
+  "/zh-CN/build/smart-contracts/anatomy/collections-16a": {
     "__comp": "17896441",
-    "content": "afd3f382"
+    "content": "be319659"
   },
   "/zh-CN/build/smart-contracts/anatomy/crosscontract-8f7": {
     "__comp": "17896441",
@@ -759,9 +759,9 @@
     "__comp": "17896441",
     "content": "104558c2"
   },
-  "/zh-CN/build/smart-contracts/anatomy/functions-242": {
+  "/zh-CN/build/smart-contracts/anatomy/functions-c2d": {
     "__comp": "17896441",
-    "content": "e8b061dd"
+    "content": "91ed327c"
   },
   "/zh-CN/build/smart-contracts/anatomy/serialization-18b": {
     "__comp": "17896441",
@@ -771,9 +771,9 @@
     "__comp": "17896441",
     "content": "efdaf444"
   },
-  "/zh-CN/build/smart-contracts/anatomy/types-23a": {
+  "/zh-CN/build/smart-contracts/anatomy/types-666": {
     "__comp": "17896441",
-    "content": "10f1d926"
+    "content": "8c5c9981"
   },
   "/zh-CN/build/smart-contracts/quickstart-e02": {
     "__comp": "17896441",
@@ -1351,9 +1351,9 @@
     "__comp": "17896441",
     "content": "95890914"
   },
-  "/zh-CN/tools/wallets-098": {
+  "/zh-CN/tools/wallets-fb4": {
     "__comp": "17896441",
-    "content": "fe5829e7"
+    "content": "617ecb76"
   },
   "/zh-CN/tools/welcome-cf4": {
     "__comp": "17896441",
@@ -1507,9 +1507,9 @@
     "__comp": "17896441",
     "content": "1b9e8bfc"
   },
-  "/zh-CN/tutorials/near-components/blog-posts-17c": {
+  "/zh-CN/tutorials/near-components/blog-posts-628": {
     "__comp": "17896441",
-    "content": "256ff2a5"
+    "content": "e7885aa8"
   },
   "/zh-CN/tutorials/near-components/bos-loader-a0e": {
     "__comp": "17896441",
@@ -1667,17 +1667,17 @@
     "__comp": "17896441",
     "content": "ba42afc7"
   },
-  "/zh-CN/tutorials/templates/blog-5b3": {
+  "/zh-CN/tutorials/templates/blog-dbd": {
     "__comp": "17896441",
-    "content": "62482602"
+    "content": "449ea4e8"
   },
-  "/zh-CN/tutorials/templates/marketplace-7a1": {
+  "/zh-CN/tutorials/templates/marketplace-12e": {
     "__comp": "17896441",
-    "content": "4b690e73"
+    "content": "deef3d5c"
   },
-  "/zh-CN/tutorials/templates/minter-34e": {
+  "/zh-CN/tutorials/templates/minter-c06": {
     "__comp": "17896441",
-    "content": "0b7fa1b6"
+    "content": "3316f459"
   },
   "/zh-CN/tutorials/welcome-aa6": {
     "__comp": "17896441",

@@ -16,21 +16,6 @@ import TabItem from '@theme/TabItem';
 
 ---
 
-## NEAR Explorer
-
-Created by NEAR, the [Near Explorer](https://nearblocks.io) enables to check information for transactions and accounts through a user-friendly interface.
-
-![NEAR Explorer](/docs/assets/explorers/near-explorer.png) *Main page of [NEAR Explorer](https://nearblocks.io)*
-
-<hr className="subsection" />
-
-## Stats Gallery
-커뮤니티에서 만든 [Stats Gallery](https://stats.gallery)는 계정 활동을 기반으로 레벨과 배지를 추가하여 계정을 찾는 경험을 게임화합니다. 이 갤러리의 가장 좋은 기능 중 하나는, 컨트랙트의 메서드를 볼 수 있다는 것입니다.
-
-![Stats Gallery](/docs/assets/explorers/stats-gallery.png) *[Stats Gallery](https://stats.gallery) 내 계정 조회*
-
-<hr className="subsection" />
-
 ## NearBlocks
 
 커뮤니티에서 만든 [NearBlocks](https://nearblocks.io/)를 사용 하면 etherscan과 유사한 인터페이스로 계정과 트랜잭션을 확인할 수 있습니다.
@@ -59,3 +44,5 @@ Created by NEAR, the [Near Explorer](https://nearblocks.io) enables to check inf
 ## Pikespeak
 
 [Pikespeak](https://pikespeak.ai/)는 NEAR 프로토콜의 실시간 및 과거 데이터에 대한 액세스를 제공합니다.
+
+![Pikespeak](/docs/assets/explorers/pikespeak.png) *Main page of [Pikespeak](https://pikespeak.ai/)*

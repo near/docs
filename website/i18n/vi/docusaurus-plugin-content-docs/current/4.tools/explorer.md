@@ -16,21 +16,6 @@ An Explorer allows you to quickly obtain information from the blockchain through
 
 ---
 
-## NEAR Explorer
-
-Created by NEAR, the [Near Explorer](https://nearblocks.io) enables to check information for transactions and accounts through a user-friendly interface.
-
-![NEAR Explorer](/docs/assets/explorers/near-explorer.png) *Main page of [NEAR Explorer](https://nearblocks.io)*
-
-<hr className="subsection" />
-
-## Stats Gallery
-Created by the community, [Stats Gallery](https://stats.gallery) gamifies the experience of looking to an account, adding levels and badges based on the account's activity. One of its best features is that it allows you to see the contract's methods.
-
-![Stats Gallery](/docs/assets/explorers/stats-gallery.png) *Account view in [Stats Gallery](https://stats.gallery)*
-
-<hr className="subsection" />
-
 ## NearBlocks
 
 Created by the community, [NearBlocks](https://nearblocks.io/) enables to check accounts and transactions with an interface similar to etherscan.
@@ -59,3 +44,5 @@ Created by the community, [NearBlocks](https://nearblocks.io/) enables to check 
 ## Pikespeak
 
 [Pikespeak](https://pikespeak.ai/) provides access to real-time and historical data on the NEAR Protocol.
+
+![Pikespeak](/docs/assets/explorers/pikespeak.png) *Main page of [Pikespeak](https://pikespeak.ai/)*

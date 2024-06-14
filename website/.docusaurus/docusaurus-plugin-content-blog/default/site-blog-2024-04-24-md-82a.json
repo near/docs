@@ -1,5 +1,5 @@
 {
-  "permalink": "/zh-CN/blog/reorganizing-docs",
+  "permalink": "/blog/reorganizing-docs",
   "source": "@site/../blog/2024-04-24.md",
   "title": "Reorganizing our docs",
   "description": "We released a mayor reorganization of our repository, so we can improve docs for everyone... including us",
@@ -7,11 +7,11 @@
   "tags": [
     {
       "label": "docusaurus",
-      "permalink": "/zh-CN/blog/tags/docusaurus"
+      "permalink": "/blog/tags/docusaurus"
     },
     {
       "label": "updates",
-      "permalink": "/zh-CN/blog/tags/updates"
+      "permalink": "/blog/tags/updates"
     }
   ],
   "readingTime": 3.345,
@@ -40,10 +40,10 @@
   "unlisted": false,
   "prevItem": {
     "title": "It's gonna be Legen... wait for it...",
-    "permalink": "/zh-CN/blog/yield-resume"
+    "permalink": "/blog/yield-resume"
   },
   "nextItem": {
     "title": "We have a blog now!",
-    "permalink": "/zh-CN/blog/we-have-a-blog"
+    "permalink": "/blog/we-have-a-blog"
   }
 }

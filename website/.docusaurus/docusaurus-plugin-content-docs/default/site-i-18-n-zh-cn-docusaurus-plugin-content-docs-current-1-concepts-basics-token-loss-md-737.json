@@ -1,7 +1,7 @@
 {
   "id": "concepts/basics/token-loss",
   "title": "Avoiding Token Loss",
-  "description": "Careful! Losing tokens means losing money!",
+  "description": "Careful!",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/1.concepts/basics/token-loss.md",
   "sourceDirName": "1.concepts/basics",
   "slug": "/concepts/basics/token-loss",

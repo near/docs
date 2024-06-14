@@ -38,8 +38,8 @@ NEAR는 현재 온체인 거버넌스가 없습니다. 상태 또는 상태 전�
 
 - **스테이킹 풀 / 위임 컨트랙트**
 - **락업 / 베스팅 컨트랙트**
-- Whitelist Contract
-- Staking Pool Factory
+- 화이트리스트 컨트랙트
+- 스테이킹 풀 팩토리
 - 다중 서명(Multisig) 컨트랙트
 
 ### Do you have a cold wallet implementation (ie. Ledger)?
@@ -54,30 +54,27 @@ https://github.com/near/near-ledger-app
 
 ### How long does a validator remain a validator?
 
-A validator will stop being a validator for the following reasons:
+다음 이유로, 밸리데이터는 자격이 정지될 수 있습니다.
 
 - 충분한 블록 또는 청크를 생성하지 않습니다.
 - 지분이 충분히 크지 않아 다음 에포크의 경매에서 선출되지 않습니다.
-- 슬래싱을 당합니다.
-  Otherwise a validator will remain a validator indefinitely.
+- 슬래싱을 당합니다. 그렇지 않으면 밸리데이터는 자격을 무기한 유지할 수 있습니다.
 
 밸리데이터 선출은 에포크에서 발생합니다. The [Nightshade whitepaper](/docs/Nightshade.pdf) introduces epochs this way: "the maintenance of the network is done in epochs" where an epoch is a period of time on the order of half a day.
 
-At the beginning of each epoch, some computation produces a list of validators for the _very next epoch_.
-이 계산에 대한 입력에는 "밸리데이터가 되기 위해 손을 든" 모든 계정이 포함되며, 이전 에포크의 밸리데이터뿐만 아니라 시스템의 스테이킹 임계값을 초과하는 일정량의 토큰 제공을 표현하는 특수 트랜잭션([`StakeAction`](https://nomicon.io/RuntimeSpec/Actions.html#stakeaction))을 제출한 모든 사람이 포함됩니다.
-이 계산을 통해 바로 다음 에포크의 밸리데이터 목록이 출력됩니다.
+각 에포크가 시작될 떄, 계산을 통해 _바로 다음 에포크_ 에 대한 밸리데이터 목록을 생성합니다 . 이 계산에 대한 입력에는 "밸리데이터가 되기 위해 손을 든" 모든 계정이 포함되며, 이전 에포크의 밸리데이터뿐만 아니라 시스템의 스테이킹 임계값을 초과하는 일정량의 토큰 제공을 표현하는 특수 트랜잭션([`StakeAction`](https://nomicon.io/RuntimeSpec/Actions.html#stakeaction))을 제출한 모든 사람이 포함됩니다. 이 계산을 통해 바로 다음 에포크의 밸리데이터 목록이 출력됩니다.
 
 ### What is the penalty for misbehaving validators?
 
-Validators are not slashed for being offline but they do miss out on the rewards of validating. 너무 많은 블록 또는 청크를 놓친 밸리데이터는 다음 검증 세트에서 제거되며, 보상을 받지 못합니다(다시 말하지만, 슬래싱 없음).
+밸리데이터는 오프라인 상태여도 슬래싱되지 않지만, 밸리데이터에 대한 보상을 받지 못합니다. 너무 많은 블록 또는 청크를 놓친 밸리데이터는 다음 검증 세트에서 제거되며, 보상을 받지 못합니다(다시 말하지만, 슬래싱 없음).
 
-Any foul play on the part of the validator that is detected by the system may result in a "slashing event" where the validator is marked as out of integrity and forfeit their stake (according to some formula of progressive severity). The slashed stake is burnt.
+Any foul play on the part of the validator that is detected by the system may result in a "slashing event" where the validator is marked as out of integrity and forfeit their stake (according to some formula of progressive severity). 슬래싱된 지분은 소각됩니다.
 
 ### What is the mechanism for delegating stake to validators?
 
-NEAR는 지분을 위임하기 위해, 스마트 컨트랙트에서 사용할 수 있는 별도의 검증 키를 지원합니다. 위임은 스마트 컨트랙트를 통해 이루어지고, 여기서 밸리데이터는 지분을 수집하고 관리하며 보상을 분할하는 맞춤형 방법을 정의할 수 있습니다. This also allows validators to provide leverage or derivatives on stake. 다른 지분과 마찬가지로, 위임된 지분은 노드가 오작동하는 경우 슬래싱됩니다.
+NEAR는 지분을 위임하기 위해, 스마트 컨트랙트에서 사용할 수 있는 별도의 검증 키를 지원합니다. 위임은 스마트 컨트랙트를 통해 이루어지고, 여기서 밸리데이터는 지분을 수집하고 관리하며 보상을 분할하는 맞춤형 방법을 정의할 수 있습니다. 이를 통해 밸리데이터는 지분에 대한 레버리지 또는 파생 상품을 제공할 수 있습니다. 다른 지분과 마찬가지로, 위임된 지분은 노드가 오작동하는 경우 슬래싱됩니다.
 
-If a validator misbehaves the funds of the delegators are also slashed. 위임자가 지분을 출금하는 데에는 대기 시간이 따로 없습니다.
+밸리데이터가 오작동하는 경우 위임자의 자금도 삭감됩니다. 위임자가 지분을 출금하는 데에는 대기 시간이 따로 없습니다.
 
 ### Does a validator control funds that have been delegated to them?
 
@@ -89,7 +86,7 @@ If a validator misbehaves the funds of the delegators are also slashed. 위임�
 
 ### How do we get the balance of an account after it has delegated funds?
 
-One would need to query the staking pool contract to get balance.
+잔액을 가져오려면 스테이킹 풀 컨트랙트를 쿼리해야 합니다.
 
 ## Nodes
 
@@ -152,7 +149,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 
 ### How will the network will be bootstrapped?
 
-제네시스에서의 배포는 NEAR 팀, 기여자, 프로젝트 파트너(예: 기여자, 베타 애플리케이션, 인프라 개발자 등) 및 NEAR 재단에 분배되었습니다(메인넷 이후 분배를 위해 많은 부분이 분리되었으며, 재단이 네트워크를 제어할 수 없도록 하였습니다). `Action Receipt`는 가장 일반적이며, 네트워크의 거의 모든 작업을 나타냅니다.
+제네시스에서의 배포는 NEAR 팀, 기여자, 프로젝트 파트너(예: 기여자, 베타 애플리케이션, 인프라 개발자 등) 및 NEAR 재단에 분배되었습니다(메인넷 이후 분배를 위해 많은 부분이 분리되었으며, 재단이 네트워크를 제어할 수 없도록 하였습니다).
 
 향후 2년 동안 플랫폼 런칭 후 많은 양의 토큰을 할당할 경매가 있을 것입니다. 또한 우리는 참여하는 밸리데이터가 실제 토큰으로 보상을 받는 테스트넷을 실행할 계획입니다. 우리는 출시 시점에 밸리데이터가 될 최소 50개의 주체들을 온보딩할 계획입니다.
 
@@ -167,11 +164,11 @@ NEAR는 샤딩된 **지분 증명** 블록체인입니다.
 _You can read more in our [Nightshade whitepaper](/docs/Nightshade.pdf)._
 
 > _편의를 위해 몇 가지 관련 세부 정보를 말씀드리겠습니다._
->
+> 
 > [NEAR는 샤딩된 블록체인이기 때문에, 상태 유효성 및 데이터 가용성 문제를 포함하여 극복해야 할 과제가 있습니다]. _Nightshade_ 는 이러한 문제를 해결하기 위해 NEAR 프로토콜이 구축한 솔루션입니다
->
+> 
 > Nightshade는 가장 무거운 체인 합의를 사용합니다. 특히 블록 생산자가 블록을 생산할 때(섹션 3.3 참조), 이전 블록을 증명하는 다른 블록 생산자와 밸리데이터로부터 서명을 수집할 수 있습니다. 블록의 가중치는 서명이 블록에 포함된 모든 서명자의 누적된 지분입니다. 체인의 가중치는 블록 가중치들의 합입니다.
->
+> 
 > 가장 무거운 체인 합의를 바탕으로, 우리는 블록을 완성하기 위해 증명을 사용하는 파이널리티 가젯을 사용합니다. 시스템의 복잡성을 줄이기 위해 포크 선택 규칙에 어떤 식으로든 영향을 미치지 않는 파이널리티 가젯을 사용하고, 대신 블록이 파이널리티 가젯에 의해 완료되면 총 지분의 매우 많은 비율이 삭감되지 않는 한 포크가 불가능하도록 추가 슬래싱 조건만 도입하였습니다.
 
 ### How does on-chain transaction finality work?
@@ -184,7 +181,7 @@ _You can read more in our [Nightshade whitepaper](/docs/Nightshade.pdf)._
 
 완결성에 대한 우리의 정의는 다음 두 가지입니다.
 
-- Block has quorum pre-commit from the finality gadget. See details of the finality gadget [[here]](/docs/PoST.pdf)
+- 블록에는 파이널리티 가젯의 pre-commit 정족수가 존재합니다. See details of the finality gadget [[here]](/docs/PoST.pdf)
 - 해당 블록 위에 최소 120개의 블록(2-3분 소요)이 구축됩니다. 이것은 일부 샤드에서 유효하지 않은 상태 전환과 관련이 있으며, 상태 변경 문제에 대해 충분한 시간을 제공합니다. 만약 모든 샤드가 추적되고 노드에서 일부 일시 중지 메커니즘이 사용되는 경우에는 필요하지 않습니다. 거래 시 모든 샤드를 추적하는 것이 좋습니다.
 
 ## Accounts
@@ -195,7 +192,7 @@ https://nomicon.io/DataStructures/Account.html에서 계정에 대한 설명을 
 
 ### What is the balance record-keeping model on the NEAR platform?
 
-NEAR는 `Account` 기반 모델을 사용합니다. 모든 사용자 및 컨트랙트는 최소 1개의 계정과 연결됩니다. Each account lives on a single shard. 각 계정에는 트랜잭션 서명을 위한 여러 개의 키가 있을 수 있습니다.
+NEAR는 `Account` 기반 모델을 사용합니다. 모든 사용자 및 컨트랙트는 최소 1개의 계정과 연결됩니다. 각 컨트랙트는 단일 샤드에 있습니다. 각 계정에는 트랜잭션 서명을 위한 여러 개의 키가 있을 수 있습니다.
 
 _[여기](https://nomicon.io/DataStructures/Account.html)에서 NEAR 계정에 대한 자세한 내용을 읽을 수 있습니다._
 
@@ -236,7 +233,7 @@ NEAR는 일반적으로 네트워크 혼잡도에 따라 가격이 결정론적�
 - 다음 문서를 참고하세요: https://nomicon.io/Economics/
 - 여기에서 [RPC를 통해 가스 가격을 조회](/api/rpc/setup#gas-price)하는 API 문서를 참고하세요.
 
-트랜잭션 발행자는 트랜잭션을 처리할 예산을 추측하여 일정량의 가스를 첨부해야 합니다. The contract knows how much to fund different cross contract calls. 가스 가격은 블록당 계산되고 고정되지만, 블록이 얼마나 가득 차 있는지/사용 중인지에 따라 블록마다 변경될 수 있습니다. 블록이 절반 이상 차면 가스 가격이 상승합니다.
+트랜잭션 발행자는 트랜잭션을 처리할 예산을 추측하여 일정량의 가스를 첨부해야 합니다. 컨트랙트는 서로 다른 교차 컨트랙트 호출에 얼마만큼 자금을 지원해야 하는지 알고 있습니다. 가스 가격은 블록당 계산되고 고정되지만, 블록이 얼마나 가득 차 있는지/사용 중인지에 따라 블록마다 변경될 수 있습니다. 블록이 절반 이상 차면 가스 가격이 상승합니다.
 
 우리는 또한 최대 가스 가격 제한을 추가하는 것을 고려하고 있습니다.
 
@@ -281,10 +278,11 @@ Receipt는 모든 Receipt가 적용될 때까지 네트워크 전체에 전파�
 - 백서
 
   - [NEAR 블록체인 초보자 가이드](https://near.org/blog/the-beginners-guide-to-the-near-blockchain) - 일반 개요
-  - [NEAR 백서](https://pages.near.org/papers/the-official-near-white-paper/)
+  - [NEAR 백서](https://near.org/papers/the-official-near-white-paper/)
 
 - Github
   - https://www.github.com/near
 
-:::tip 질문이 있으신가요? <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
+:::tip 질문이 있으신가요?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
 :::

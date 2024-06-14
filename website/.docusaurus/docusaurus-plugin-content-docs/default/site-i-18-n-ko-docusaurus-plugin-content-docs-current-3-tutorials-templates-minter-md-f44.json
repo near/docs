@@ -1,0 +1,27 @@
+{
+  "id": "tutorials/templates/minter",
+  "title": "NFT minter",
+  "description": "Demo",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/templates/minter.md",
+  "sourceDirName": "3.tutorials/templates",
+  "slug": "/tutorials/templates/minter",
+  "permalink": "/ko/tutorials/templates/minter",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/templates/minter.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "minter",
+    "title": "NFT minter"
+  },
+  "sidebar": "tutorials",
+  "previous": {
+    "title": "Frontend & Multiple Contracts",
+    "permalink": "/ko/tutorials/examples/frontend-multiple-contracts"
+  },
+  "next": {
+    "title": "Marketplace Frontend",
+    "permalink": "/ko/tutorials/templates/marketplace"
+  }
+}

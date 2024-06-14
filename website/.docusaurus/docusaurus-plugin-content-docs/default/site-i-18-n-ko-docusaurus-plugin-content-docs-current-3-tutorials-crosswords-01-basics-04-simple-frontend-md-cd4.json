@@ -1,7 +1,7 @@
 {
   "id": "tutorials/crosswords/basics/simple-frontend",
   "title": "정답의 해시를 확인하는 간단한 프론트엔트를 십자말 풀이 퍼즐에 추가",
-  "description": "이는 이 장의 마지막 섹션이 될 것입니다. 여기에서는 React를 사용하여 간단한 프론트엔드를 추가하고, near-api-js를 사용하여 스마트 컨트랙트와 통신할 것입니다.",
+  "description": "여기에서는 React를 사용하여 간단한 프론트엔드를 추가하고, near-api-js를 사용하여 스마트 컨트랙트와 통신할 것입니다.",
   "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/crosswords/01-basics/04-simple-frontend.md",
   "sourceDirName": "3.tutorials/crosswords/01-basics",
   "slug": "/tutorials/crosswords/basics/simple-frontend",

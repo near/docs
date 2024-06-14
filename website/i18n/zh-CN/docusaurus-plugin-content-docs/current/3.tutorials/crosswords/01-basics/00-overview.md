@@ -11,14 +11,14 @@ import rustGood from '/docs/assets/crosswords/rust-good--ksart.near.png';
 
 # Basics overview
 
-This first chapter of the crossword puzzle tutorial will introduce fundamental concepts to smart contract development in a beginner-friendly way. By the end of this chapter you'll have a proof-of-concept contract that can be interacted with via [NEAR CLI](https://docs.near.org/tools/near-cli) and a simple frontend that uses the [`near-api-js` library](https://www.npmjs.com/package/near-api-js).
+This first chapter of the crossword puzzle tutorial will introduce fundamental concepts to smart contract development in a beginner-friendly way. By the end of this chapter you'll have a proof-of-concept contract that can be interacted with via [NEAR CLI](https://docs.near.org/tools/near-cli) and a simple frontend that uses the [`near-api-js` library](https://www.npmjs.com/package/near-api-js). By the end of this chapter you'll have a proof-of-concept contract that can be interacted with via [NEAR CLI](https://docs.near.org/tools/near-cli) and a simple frontend that uses the [`near-api-js` library](https://www.npmjs.com/package/near-api-js).
 
 ## It's not as bad as you think
 
-Rust is a serious systems programming language. There are pointers, lifetimes, macros, and other things that may look foreign. Don't worry if this is how you feel:
+Rust is a serious systems programming language. There are pointers, lifetimes, macros, and other things that may look foreign. Don't worry if this is how you feel: There are pointers, lifetimes, macros, and other things that may look foreign. Don't worry if this is how you feel:
 
 <figure>
-    <img src={rustScary} alt="Programmer looking at Rust code and looking worried. Art created by ksart.near" width="600"/>
+    <img src={rustScary} alt="Programmer looking at Rust code and looking worried. Art created by ksart.near Art created by ksart.near" width="600"/>
     <figcaption>Art by <a href="https://twitter.com/ksartworks" target="_blank">ksart.near</a></figcaption>
 </figure>
 
@@ -26,11 +26,11 @@ Rust is a serious systems programming language. There are pointers, lifetimes, m
 
 The good news is the Rust SDK takes care of a lot of the heavy lifting.
 
-We'll also have the compiler on our side, often telling us exactly what went wrong and offering suggestions. As we go through this tutorial, you'll begin to see patterns that we'll use over and over again.
+We'll also have the compiler on our side, often telling us exactly what went wrong and offering suggestions. As we go through this tutorial, you'll begin to see patterns that we'll use over and over again. As we go through this tutorial, you'll begin to see patterns that we'll use over and over again.
 
 So don't worry, writing smart contracts in Rust on NEAR doesn't require a heavy engineering background.
 
-<img src={rustGood} alt="Programmer looking quite relieved at the Rust code from the NEAR SDK. Art created by ksart.near" width="600" />
+<img src={rustGood} alt="Programmer looking quite relieved at the Rust code from the NEAR SDK. Art created by ksart.near Art created by ksart.near" width="600" />
 
 ## Assumptions for this first chapter
 
@@ -48,7 +48,7 @@ https://github.com/near-examples/crossword-tutorial-chapter-1
 
 <img src={basicCrossword} alt="Basic crossword puzzle" width="600" />
 
-We'll have a rule about how to get the words in the proper order. We collect words in ascending order by number, and if there's and across and a down for a number, the across goes first.
+We'll have a rule about how to get the words in the proper order. We'll have a rule about how to get the words in the proper order. We collect words in ascending order by number, and if there's and across and a down for a number, the across goes first.
 
 So in the image above, the solution will be **near nomicon ref finance**.
 

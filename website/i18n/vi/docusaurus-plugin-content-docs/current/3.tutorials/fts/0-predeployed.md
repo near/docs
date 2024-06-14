@@ -4,26 +4,30 @@ title: Contract đã được deploy sẵn
 sidebar_label: Contract đã được deploy sẵn
 ---
 
-> Learn how to easily receive fungible tokens without doing any software development by using a readily-available FT smart contract.
+Learn how to easily receive fungible tokens without doing any software development by using a readily-available FT smart contract.
+
+---
 
 ## Điều kiện cần
 
-Để hoàn thành tốt hướng dẫn này, bạn sẽ cần:
+To complete this tutorial successfully, you'll need:
 
 - [A NEAR testnet account](https://testnet.mynearwallet.com)
 - [NEAR-CLI](/tools/near-cli#setup)
+
+---
 
 ## Sử dụng FT contract
 
 ### Cài đặt
 
-- Đăng nhập vào account mới tạo của bạn với `near-cli` bằng cách chạy câu lệnh sau trong terminal:
+Log in to your newly created account with `near-cli` by running the following command in your terminal:
 
 ```bash
 near login
 ```
 
- - Đặt một biến môi trường cho ID account của bạn để giúp dễ dàng sao chép và dán các lệnh từ hướng dẫn này:
+Set an environment variable for your account ID to make it easy to copy and paste commands from this tutorial:
 
 ```bash
 export NEARID=YOUR_ACCOUNT_NAME
@@ -34,11 +38,13 @@ Be sure to replace `YOUR_ACCOUNT_NAME` with the account name you just logged in 
 
 :::
 
-- Kiểm tra biến môi trường được cài đặt đúng hay chưa bằng cách chạy:
+Test that the environment variable is set correctly by running:
 
 ```bash
 echo $NEARID
 ```
+
+<hr className="subsection" />
 
 ### Receiving Fungible Tokens
 
@@ -53,7 +59,7 @@ near call ft.predeployed.examples.testnet ft_mint '{"account_id": "'$NEARID'", "
 ```
 
 <details>
-<summary>Ví dụ response nhận được: </summary>
+<summary>Example response: </summary>
 <p>
 
 ```json
@@ -67,24 +73,24 @@ https://testnet.nearblocks.io/txns/Fhqa8YDLKxnxM9jjHCPN4hn1w1RKESYrav3kwDjhWWUu
 </p>
 </details>
 
-- To view tokens owned by an account you can call the FT contract with the following `near-cli` command:
+To view tokens owned by an account you can call the FT contract with the following `near-cli` command:
 
 ```bash
 near view ft.predeployed.examples.testnet ft_balance_of '{"account_id": "'$NEARID'"}'
 ```
 
 <details>
-<summary>Ví dụ về response nhận được: </summary>
+<summary>Example response: </summary>
 <p>
 
 ```json
-'2250000000000000000000'
+'10000000000000000000000'
 ```
 
 </p>
 </details>
 
-***Chúc mừng! You just received your first Team Tokens on the NEAR blockchain!*** 🎉
+***Congratulations! You just received your first Team Tokens on the NEAR blockchain!*** 🎉
 
 👉 Now try going to your [NEAR Wallet](https://testnet.mynearwallet.com) and view your FTs in the "Balances" tab. 👈
 
@@ -100,11 +106,11 @@ This basic example illustrates all the required steps to call an FT smart contra
 
 Now that you're familiar with the process, you can jump to [Contract Architecture](/tutorials/fts/skeleton) and learn more about the smart contract structure and how you can build your own FT contract from the ground up.
 
-***Chúc bạn mint thành công!*** 🪙
+***Happy minting!*** 🪙
 
-:::note Version cho bài viết này
+:::note Versioning for this article
 
-Tại thời điểm viết bài này, ví dụ này hoạt động với các phiên bản sau:
+At the time of this writing, this example works with the following versions:
 
-- near-cli: `3.4.0`
+- near-cli: `4.0.13`
 :::

@@ -16,12 +16,11 @@
   "sidebarPosition": 7,
   "frontMatter": {
     "id": "events",
-    "title": "이벤트",
-    "sidebar_label": "이벤트"
+    "title": "이벤트"
   },
   "sidebar": "tutorials",
   "previous": {
-    "title": "핵심",
+    "title": "Transfers",
     "permalink": "/ko/tutorials/nfts/core"
   },
   "next": {

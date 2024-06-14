@@ -18,7 +18,7 @@ import rustGood from '/docs/assets/crosswords/rust-good--ksart.near.png';
 Rust는 진지한 시스템 프로그래밍 언어입니다. 포인터, 수명(lifetime), 매크로 및 처음 볼 수도 있는 것들이 많을 것입니다. 아래 사진과 같이 느끼더라도 걱정하지 마세요.
 
 <figure>
-    <img src={rustScary} alt="Rust 코드를 보고 걱정하는 프로그래머 ksart.near 그림" width="600"/>
+    <img src={rustScary} alt="Rust 코드를 보고 걱정하는 프로그래머 ksart.near 그림 ksart.near 그림" width="600"/>
     <figcaption><a href="https://twitter.com/ksartworks" target="_blank">ksart.near</a> 그림</figcaption>
 </figure>
 
@@ -30,7 +30,7 @@ Rust는 진지한 시스템 프로그래밍 언어입니다. 포인터, 수명(l
 
 따라서 NEAR의 Rust에서 스마트 컨트랙트를 작성하는 데에는 많은 엔지니어링 배경이 필요하지 않으므로 걱정하지 마세요.
 
-<img src={rustGood} alt="NEAR SDK 내 Rust 코드를 보고 한숨 돌린 프로그래머 ksart.near 그림" width="600" />
+<img src={rustGood} alt="NEAR SDK 내 Rust 코드를 보고 한숨 돌린 프로그래머 ksart.near 그림 ksart.near 그림" width="600" />
 
 ## 첫 번째 챕터의 가정
 

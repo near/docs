@@ -190,7 +190,8 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
       <td>트랜잭션 실행 중에 오류가 발생했습니다.</td>
       <td>
         <ul>
-          <li><code>error.cause.info</code>에서 자세한 내용을 확인하세요.</li>
+          <li>See <code>error.cause.info</code> for details</li>
+          <li>If <code>error.cause.info</code> is <code>ShardCongested</code></li>, resubmit the identical transaction. (Consider adding a priority fee once [NEP-541](https://github.com/near/NEPs/pull/541) is released.)
         </ul>
       </td>
     </tr>
@@ -199,7 +200,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
       <td>트랜잭션이 라우팅되었지만 10초 동안 체인에 기록되지 않았습니다.</td>
       <td>
         <ul>
-          <li> 동일한 트랜잭션으로 요청을 다시 제출하세요(NEAR 프로토콜에서 고유한 트랜잭션은 정확히 한 번만 적용되므로, 이전에 보낸 트랜잭션이 적용되면 이 요청은 알려진 결과만 반환하고, 그렇지 않으면 트랜잭션을 다시 한 번 체인으로 라우팅합니다)</li>
+          <li> Resubmit the request with the identical transaction (in NEAR Protocol unique transactions apply exactly once, so if the previously sent transaction gets applied, this request will just return the known result, otherwise, it will route the transaction to the chain once again)</li>
           <li>트랜잭션이 유효한지 확인하세요.</li>
           <li>서명자 계정 ID에 트랜잭션 수수료를 충당하기에 충분한 토큰이 있는지 확인하세요(각 계정의 일부 토큰은 스토리지 비용을 충당하기 위해 잠겨 있음을 명심하세요).</li>
         </ul>
@@ -1259,7 +1260,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_
 
 #### What could go wrong? {#what-could-go-wrong-1}
 
-When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
+API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 변형과 함께 구조화된 오류 응답을 반환하므로, 클라이언트 코드는 가능한 모든 오류 사례를 철저하게 처리할 수 있습니다. JSON-RPC 오류는 오류 응답을 구조화하기 위해 [verror](https://github.com/joyent/node-verror) 규칙을 따릅니다.
 
 
 ```json
@@ -1281,7 +1282,7 @@ When API request fails, RPC server returns a structured error response with a li
 
 > **Heads up**
 > 
-> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them.
+> 위 구조의 `code`, `data`, 및 `message` 필드는 레거시 항목으로 간주되며, 향후 사용되지 않을 수 있습니다. 이에 의존하지 마세요.
 
 Here is the exhaustive list of the error variants that can be returned by `broadcast_tx_commit` method:
 
@@ -1305,6 +1306,7 @@ Here is the exhaustive list of the error variants that can be returned by `broad
       <td>
         <ul>
           <li>See <code>error.cause.info</code> for details</li>
+          <li>If <code>error.cause.info</code> is <code>ShardCongested</code></li>, resubmit the identical transaction. (Consider adding a priority fee once [NEP-541](https://github.com/near/NEPs/pull/541) is released.)
         </ul>
       </td>
     </tr>
@@ -1313,7 +1315,7 @@ Here is the exhaustive list of the error variants that can be returned by `broad
       <td>Transaction was routed, but has not been recorded on chain in 10 seconds.</td>
       <td>
         <ul>
-          <li> Re-submit the request with the identical transaction (in NEAR Protocol unique transactions apply exactly once, so if the previously sent transaction gets applied, this request will just return the known result, otherwise, it will route the transaction to the chain once again)</li>
+          <li> Resubmit the request with the identical transaction (in NEAR Protocol unique transactions apply exactly once, so if the previously sent transaction gets applied, this request will just return the known result, otherwise, it will route the transaction to the chain once again)</li>
           <li>Check that your transaction is valid</li>
           <li>Check that the signer account id has enough tokens to cover the transaction fees (keep in mind that some tokens on each account are locked to cover the storage cost)</li>
         </ul>

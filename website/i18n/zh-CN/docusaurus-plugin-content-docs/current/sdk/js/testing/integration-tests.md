@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Integration Tests
 
-We place integration tests in JS in a separate directory at the same level as `/src`, called `/integration-tests` ([read more](https://doc.rust-lang.org/cargo/reference/cargo-targets.html#integration-tests)), placing this folder within a `/tests` folder at root-level that contains the unit tests folder would also be plausible. Refer to this folder structure below:
+We place integration tests in JS in a separate directory at the same level as `/src`, called `/integration-tests` ([read more](https://doc.rust-lang.org/cargo/reference/cargo-targets.html#integration-tests)), placing this folder within a `/tests` folder at root-level that contains the unit tests folder would also be plausible. Refer to this folder structure below: Refer to this folder structure below:
 
 ```sh
 ├── package.json                ⟵ contains `dependencies` for contract and `devDependencies` for workspaces-js tests
@@ -54,7 +54,7 @@ A sample configuration for this project's `package.json` is shown below:
 }
 ```
 
-The `tests.js` file above will contain the integration tests. These can be run with the following command from the same level as the test `package.json` file:
+The `tests.js` file above will contain the integration tests. The `tests.js` file above will contain the integration tests. These can be run with the following command from the same level as the test `package.json` file:
 
     npm test
 

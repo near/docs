@@ -278,7 +278,7 @@ Chúng tôi sử dụng một format binary serialize đơn giản có tính xá
 - Whitepaper
 
   - Tổng quan chung xem tại [Hướng dẫn dành cho người mới bắt đầu về NEAR Blockchain](https://near.org/blog/the-beginners-guide-to-the-near-blockchain)
-  - [NEAR Whitepaper](https://pages.near.org/papers/the-official-near-white-paper/)
+  - [NEAR Whitepaper](https://near.org/papers/the-official-near-white-paper/)
 
 - Github
   - https://www.github.com/near

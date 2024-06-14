@@ -313,7 +313,7 @@ export NEAR_EXPLORER_URL="http://127.0.0.1:8331"
 
 2. Proceed to the second ACTION item which asks you to create an alias for `local_near`. 이는 테스트 환경에서 [`near-cli`](/tools/near-cli) 명령을 실행할 때 사용할 것입니다.
 
-**내보내기 예시: (복사하지 마세요! 실제와 다를 수 있습니다.)** (예.
+**Example alias: (DO NOT COPY ~ yours will be slightly different)**
 
 ```bash
 alias local_near='NEAR_ENV="local" NEAR_CLI_LOCALNET_NETWORK_ID="localnet" NEAR_NODE_URL="http://127.0.0.1:8332" NEAR_CLI_LOCALNET_KEY_PATH="/Users/zerix/.neartosis/2022-06-03T18.04.32/validator-key.json" NEAR_WALLET_URL="http://127.0.0.1:8334" NEAR_HELPER_URL="http://127.0.0.1:8330" NEAR_HELPER_ACCOUNT="test.near" NEAR_EXPLORER_URL="http://127.0.0.1:8331" near'

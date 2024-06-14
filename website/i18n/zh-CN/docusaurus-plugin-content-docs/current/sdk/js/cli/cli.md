@@ -2,7 +2,7 @@
 title: JS SDK CLI
 ---
 
-The SDK [Command Line Interface](https://github.com/near/near-sdk-js/blob/develop/packages/near-sdk-js/src/cli/cli.ts) (CLI) is a tool that enables to act on different parts of the build process as well as generate validations and an [ABI](https://github.com/near/abi). Among other things, the SDK CLI enables you to:
+The SDK [Command Line Interface](https://github.com/near/near-sdk-js/blob/develop/packages/near-sdk-js/src/cli/cli.ts) (CLI) is a tool that enables to act on different parts of the build process as well as generate validations and an [ABI](https://github.com/near/abi). Among other things, the SDK CLI enables you to: Among other things, the SDK CLI enables you to:
 
 - Control the different parts of the build process
 - Validate your contract and TypeScript code
@@ -74,7 +74,7 @@ Copy/pasting can be a bit odd using `WSL`.
 
 ### `near-sdk-js build` {#build}
 
-Build a NEAR JS Smart-contract, specifying the source, target, `package.json`, and `tsconfig.json` files. If none are specified, the default values are used. The argument default values are:
+Build a NEAR JS Smart-contract, specifying the source, target, `package.json`, and `tsconfig.json` files. If none are specified, the default values are used. The argument default values are: If none are specified, the default values are used. The argument default values are:
 
 - source: `src/index.js`
 - target: `build/contract.wasm`
@@ -94,7 +94,7 @@ near-sdk-js build src/main.ts out/main.wasm package.json tsconfig.json --verbose
 
 ### `near-sdk-js validateContract` {#validate-contract}
 
-Validate a NEAR JS Smart-contract. Validates the contract by checking that all parameters are initialized in the constructor. Works only for TypeScript.
+Validate a NEAR JS Smart-contract. Validate a NEAR JS Smart-contract. Validates the contract by checking that all parameters are initialized in the constructor. Works only for TypeScript. Works only for TypeScript.
 
 - arguments: `[source]`
 - options: `--verbose`
@@ -109,7 +109,7 @@ near-sdk-js validateContract src/main.ts --verbose true
 
 ```bash
 npx near-sdk-js validateContract src/index.ts
-[validate] › …  awaiting  Validating src/index.ts contract...
+[validate] › …  awaiting  Validating src/index.ts contract...  awaiting  Validating src/index.ts contract...
 ```
 
 ---
@@ -119,6 +119,8 @@ npx near-sdk-js validateContract src/index.ts
 Run TSC with some CLI flags.
 
  :::note warning This command ignores `tsconfig.json`.
+:::
+
 :::
 
 - arguments: `[source]`
@@ -134,7 +136,7 @@ near-sdk-js checkTypescript src/main.ts --verbose true
 
 ```bash
 npx near-sdk-js checkTypescript src/index.ts
-[checkTypescript] › …  awaiting  Typechecking src/index.ts with tsc...
+[checkTypescript] › …  awaiting  Typechecking src/index.ts with tsc...  awaiting  Typechecking src/index.ts with tsc...
 ```
 
 ---
@@ -156,7 +158,7 @@ near-sdk-js createJsFileWithRollup src/main.ts out/main.js --verbose true
 
 ```bash
 npx near-sdk-js createJsFileWithRollup src/index.ts
-[createJsFileWithRollup] › …  awaiting  Creating src/index.ts file with Rollup...
+[createJsFileWithRollup] › …  awaiting  Creating src/index.ts file with Rollup...  awaiting  Creating src/index.ts file with Rollup...
 ```
 
 ### `near-sdk-js transpileJsAndBuildWasm` {#transpile-js-to-wasm}

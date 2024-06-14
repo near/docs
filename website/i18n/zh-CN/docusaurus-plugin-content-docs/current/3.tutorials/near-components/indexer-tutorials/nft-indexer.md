@@ -14,7 +14,7 @@ You can request access through [this link](http://bit.ly/near-queryapi-beta).
 
 ## Overview
 
-This tutorial creates a working NFT indexer using [NEAR QueryAPI](../../../2.build/6.data-infrastructure/query-api/intro.md), and builds a [NEAR component](../../../2.build/3.near-components/what-is.md) that presents the data. The indexer is watching for `nft_mint` [Events](https://nomicon.io/Standards/EventsFormat) and captures some relevant data:
+This tutorial creates a working NFT indexer using [NEAR QueryAPI](../../../2.build/6.data-infrastructure/queryapi/intro.md), and builds a [NEAR component](../../../2.build/3.near-components/what-is.md) that presents the data. The indexer is watching for `nft_mint` [Events](https://nomicon.io/Standards/EventsFormat) and captures some relevant data:
 
 - `receiptId` of the [Receipt](https://docs.near.org/develop/lake/structures/receipt) where the mint has happened
 - `receiverId`
@@ -120,7 +120,7 @@ This indexer filters [Blocks](https://near.github.io/near-lake-framework-js/clas
 ### Saving the data to the Database
 
 The second part of the logic is to save the data from the filtered transactions to the database.
-This is solved easily by using the [`context.db.Nfts.insert`](../../../2.build/6.data-infrastructure/query-api/context.md#insert) helper method:
+This is solved easily by using the [`context.db.Nfts.insert`](../../queryapi/context.md#insert) helper method:
 
 The logic for this looks like:
 
@@ -140,7 +140,7 @@ await context.db.Nfts.insert(nftMintData);
 
 ## NEAR Component
 
-The final step is querying the indexer using GraphQL from a [NEAR component](../queryapi-ws.md) with WebSockets.
+The final step is querying the indexer using GraphQL from a [NEAR component](../../tutorial/queryapi-ws.md) with WebSockets.
 
 Here's a simple GraphQL query that gets the last `${LIMIT}` minted NFTs:
 

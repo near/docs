@@ -21,7 +21,7 @@ import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 여러 컨트랙트를 쿼리하려면 간단히 여러 개의 `view` 호출을 수행하세요.
 
-<Language value="🌐 JavaScript" language="ts">
+<Language value="js" language="ts">
   <Github fname="index.js"
         url="https://github.com/near-examples/frontend-multiple-contracts/blob/main/frontend/index.js"
         start="70" end="76" />
@@ -35,10 +35,10 @@ import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 한 번에 여러 트랜잭션을 전달하는 것은 사용자가 지갑과 한 번만 상호 작용하기 때문에, UX를 개선하는 좋은 방법입니다.
 
-<Language value="🌐 JavaScript" language="ts">
+<Language value="js" language="ts">
   <Github fname="index.js"
           url="https://github.com/near-examples/frontend-multiple-contracts/blob/main/frontend/index.js"
-          start="39" end="66" />
+          start="35" end="62" />
 </Language>
 
 이 예에서 사용자는 두 개의 독립적인 트랜잭션에 서명합니다.

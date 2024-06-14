@@ -5,11 +5,11 @@ title: "Collections"
 
 # Collections
 
-When deciding on data structures to use for the application's data, it is important to minimize the amount of data read and written to storage, and the amount of data serialized and deserialized to minimize the cost of transactions. It is important to understand the tradeoffs of data structures in your smart contract because it can become a bottleneck as the application scales, and migrating the state to the new data structures will come at a cost.
+When deciding on data structures to use for the application's data, it is important to minimize the amount of data read and written to storage, and the amount of data serialized and deserialized to minimize the cost of transactions. It is important to understand the tradeoffs of data structures in your smart contract because it can become a bottleneck as the application scales, and migrating the state to the new data structures will come at a cost. It is important to understand the tradeoffs of data structures in your smart contract because it can become a bottleneck as the application scales, and migrating the state to the new data structures will come at a cost.
 
-The collections within `near-sdk-js` are designed to split the data into chunks and defer reading and writing to the store until needed. These data structures will handle the low-level storage interactions and aim to have a similar API to the [native data structures in JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures).
+The collections within `near-sdk-js` are designed to split the data into chunks and defer reading and writing to the store until needed. These data structures will handle the low-level storage interactions and aim to have a similar API to the [native data structures in JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures). These data structures will handle the low-level storage interactions and aim to have a similar API to the [native data structures in JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures).
 
-It is important to keep in mind that when using collections, that each time state is loaded, all entries in the data structure will be read eagerly from storage and deserialized. This will come at a large cost for any non-trivial amount of data, so to minimize the amount of gas used the SDK collections should be used in most cases.
+It is important to keep in mind that when using collections, that each time state is loaded, all entries in the data structure will be read eagerly from storage and deserialized. It is important to keep in mind that when using collections, that each time state is loaded, all entries in the data structure will be read eagerly from storage and deserialized. This will come at a large cost for any non-trivial amount of data, so to minimize the amount of gas used the SDK collections should be used in most cases.
 
 The most up to date collections and their examples can be found [in the repository on GitHub](https://github.com/near/near-sdk-js).
 
@@ -17,18 +17,18 @@ The most up to date collections and their examples can be found [in the reposito
 
 The following data structures that exist in the SDK are as follows:
 
-| SDK Collection            | Native Equivalent         | Description                                                                                                                                                                                      |
-| ------------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `Vector`                  | `Array`                   | A growable array type. The values are sharded in memory and can be used for iterable and indexable values that are dynamically sized.                                                            |
-| <code>LookupMap</code> | <code>Map</code> | This structure behaves as a thin wrapper around the key-value storage available to contracts. This structure does not contain any metadata about the elements in the map, so it is not iterable. |
-| <code>UnorderedMap</code> | <code>Map</code> | Similar to `LookupMap`, except that it stores additional data to be able to iterate through elements in the data structure.                                                                      |
-| `LookupSet`               | `Set`                     | A set, which is similar to `LookupMap` but without storing values, can be used for checking the unique existence of values. This structure is not iterable and can only be used for lookups.     |
-| `UnorderedSet`            | `Set`                     | An iterable equivalent of `LookupSet` which stores additional metadata for the elements contained in the set.                                                                                    |
+| SDK Collection            | Native Equivalent         | Description                                                                                                                                                                                                                                                                                    |
+| ------------------------- | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Vector`                  | `Array`                   | A growable array type. A growable array type. The values are sharded in memory and can be used for iterable and indexable values that are dynamically sized.                                                                                                                                   |
+| <code>LookupMap</code> | <code>Map</code> | This structure behaves as a thin wrapper around the key-value storage available to contracts. This structure behaves as a thin wrapper around the key-value storage available to contracts. This structure does not contain any metadata about the elements in the map, so it is not iterable. |
+| <code>UnorderedMap</code> | <code>Map</code> | Similar to `LookupMap`, except that it stores additional data to be able to iterate through elements in the data structure.                                                                                                                                                                    |
+| `LookupSet`               | `Set`                     | A set, which is similar to `LookupMap` but without storing values, can be used for checking the unique existence of values. This structure is not iterable and can only be used for lookups. This structure is not iterable and can only be used for lookups.                                  |
+| `UnorderedSet`            | `Set`                     | An iterable equivalent of `LookupSet` which stores additional metadata for the elements contained in the set.                                                                                                                                                                                  |
 
 ## In-memory `Map` vs persistent `UnorderedMap`
 
-- `Map` keeps all data in memory. To access it, the contract needs to deserialize the whole map.
-- `UnorderedMap` keeps data in persistent storage. To access an element, you only need to deserialize this element.
+- `Map` keeps all data in memory. To access it, the contract needs to deserialize the whole map. To access it, the contract needs to deserialize the whole map.
+- `UnorderedMap` keeps data in persistent storage. To access an element, you only need to deserialize this element. To access an element, you only need to deserialize this element.
 
 Use `Map` in case:
 
@@ -40,7 +40,7 @@ Use `UnorderedMap` in case:
 - Need to access a limited subset of the collection, e.g. one or two elements per call.
 - Can't fit the collection into memory.
 
-The reason is `Map` deserializes (and serializes) the entire collection in one storage operation. Accessing the entire collection is cheaper in gas than accessing all elements through `N` storage operations.
+The reason is `Map` deserializes (and serializes) the entire collection in one storage operation. The reason is `Map` deserializes (and serializes) the entire collection in one storage operation. Accessing the entire collection is cheaper in gas than accessing all elements through `N` storage operations.
 
 Example of `Map`:
 
@@ -101,7 +101,7 @@ export class StatusMessage {
 
 ## Error prone patterns
 
-Because the values are not kept in memory and are lazily loaded from storage, it's important to make sure if a collection is replaced or removed, that the storage is cleared. In addition, it is important that if the collection is modified, the collection itself is updated in state because most collections will store some metadata.
+Because the values are not kept in memory and are lazily loaded from storage, it's important to make sure if a collection is replaced or removed, that the storage is cleared. In addition, it is important that if the collection is modified, the collection itself is updated in state because most collections will store some metadata. In addition, it is important that if the collection is modified, the collection itself is updated in state because most collections will store some metadata.
 
 Some error-prone patterns to avoid that cannot be restricted at the type level are:
 
@@ -125,6 +125,17 @@ assert(m.get(1), "test");
 // or there will be unexpected side effects.
 let m2 = new UnorderedMap("m");
 assert(m2.length(), 0);
+assert(m2.get(1), "test"); If you replace the collection
+// with something with a different prefix, it will be functional, but you will lose any
+// previous data and the old values will not be removed from storage.
+let m = new UnorderedMap("m");
+assert(m.length(), 0);
+assert(m.get(1), "test");
+
+// Bug 2: Should not use the same prefix as another collection
+// or there will be unexpected side effects.
+let m2 = new UnorderedMap("m");
+assert(m2.length(), 0);
 assert(m2.get(1), "test");
 ```
 
@@ -134,11 +145,11 @@ assert(m2.get(1), "test");
 
 ### Functionality
 
-- `UnorderedMap` supports iteration over keys and values, and also supports pagination. Internally, it has the following structures:
+- `UnorderedMap` supports iteration over keys and values, and also supports pagination. Internally, it has the following structures: Internally, it has the following structures:
     - a prefix value
     - a vector of keys
     - a `LookupMap` of keys and values
-- `LookupMap` only has a prefix, reading values to and from the contract's storage. Without a vector of keys, it doesn't have the ability to iterate over keys.
+- `LookupMap` only has a prefix, reading values to and from the contract's storage. Without a vector of keys, it doesn't have the ability to iterate over keys. Without a vector of keys, it doesn't have the ability to iterate over keys.
 
 ### Performance
 

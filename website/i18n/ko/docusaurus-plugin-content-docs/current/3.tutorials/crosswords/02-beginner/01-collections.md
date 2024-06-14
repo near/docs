@@ -28,7 +28,7 @@ Rust SDK의 문서에 이 개념이 잘 설명되어 있습니다.
 
 두 가지 특수 NEAR 컬렉션을 사용해 봅시다.
 
-1. [LookupMap](https://docs.rs/near-sdk/latest/near_sdk/collections/struct.LookupMap.html): 키-값 쌍을 저장 (정답 해시 » 퍼즐 객체)
+1. [LookupMap](https://docs.rs/near-sdk/latest/near_sdk/collections/struct.LookupMap.html): 키-값 쌍을 저장 (정답 해시 » 퍼즐 객체) (정답 해시 » 퍼즐 객체)
 2. [UnorderedSet](https://docs.rs/near-sdk/latest/near_sdk/collections/struct.UnorderedSet.html): 아직 풀리지지 않은 퍼즐에 대한 정답 해시 집합(중복이 없는 목록)을 포함
 
 Rust SDK의 특수 컬렉션 목록을 보면 일부는 `Lookup`로 시작하고, 다른 일부는 `Unordered`를 가지고 있다는 것을 알 수 있습니다. 참조 문서에 기록된 대로, `Lookup`은 반복할 수 없지만 `Unordered` 컬렉션은 반복할 수 있습니다. 즉, 이 자료 구조의 내용 목록을 반복해야 하는 경우, 반복 가능한 자료 구조를 사용할 수 있습니다. 키로만 데이터를 추가 및 검색하고 키가 항상 알려진 경우, 반복 불가능한 컬렉션을 사용하는 것이 더 효율적입니다.
@@ -42,7 +42,7 @@ Rust SDK의 특수 컬렉션 목록을 보면 일부는 `Lookup`로 시작하고
 
 <br/>
 
-이전 챕터에서 기억했듯이, 모든 스마트 컨트랙트에는 `#[near_bindgen]` 매크로를 포함하는 기본 구조체가 있습니다.
+As we remember from the previous chapter, every smart contract has a primary struct containing the `#[near(contract_state)]` macro.
 
 :::note 기본 구조체 이름 지정 [이전 챕터](../01-basics/01-set-up-skeleton.md#start-writing-rust)에서 기본 구조체 이름을 `Contract`라고 지정했지만, 이 챕터에서는 `Crossword`라고 지정합니다.
 

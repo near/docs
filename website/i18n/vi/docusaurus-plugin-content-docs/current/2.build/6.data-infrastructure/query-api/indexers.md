@@ -32,7 +32,7 @@ QueryAPI works by:
 2. Creating the tables as specified in the schema to the GraphQL database, exposing a GraphQL endpoint to query the data;
 3. Spinning up a cloud process that runs your indexer function, writing to the GraphQL database;
 
-You can access the [NEAR QueryAPI by following this link](https://near.org/dataplatform.near/widget/QueryApi.App).
+You can access the [NEAR QueryAPI by following this link](https://dev.near.org/dataplatform.near/widget/QueryApi.App).
 
 This should take you to a dashboard that looks like this:
 
@@ -63,7 +63,7 @@ This is the interface through which you can create a new Indexer. On here you ca
 To design and create your indexer, you can follow this recommended workflow:
 
 1. Using [nearblocks.io](https://nearblocks.io), find transactions to smart contracts that you want to index
-2. Take the block `height` and put it into the [Debug Mode filter](index-function.md#local-debug-mode), open your browser's _Developer Console_, and hit <kbd>Play</kbd>
+2. Take the block `height` and put it into the [Debug Mode filter](../query-api/index-function.md#local-debug-mode), open your browser's _Developer Console_, and hit <kbd>Play</kbd>
 3. Inspect the block and write JavaScript code using [NEAR Lake Primitives](../lake-framework/building-indexers/primitives.md) to extract data from a `block` object. (This JS code will be your [`IndexingLogic.js`](#indexinglogicjs))
    > **Tip:** Use `context.log` for debugging to ensure you are getting the right results
 4. Add more blocks for debugging, or start following the blockchain to see how new blocks are handled
@@ -259,7 +259,7 @@ fetchGraphQL(transactionQueriesDoc, "TransactionsQuery", {})
   });
 ```
 
-We have just shown how to fetch data from the indexers that we have created from within NEAR. To view a more complex example, see this widget which fetches posts with proper pagination: [Posts Widget powered By QueryAPI](https://near.org/dataplatform.near/widget/QueryApi.Examples.Feed.Posts).
+We have just shown how to fetch data from the indexers that we have created from within NEAR. To view a more complex example, see this widget which fetches posts with proper pagination: [Posts Widget powered By QueryAPI](https://dev.near.org/dataplatform.near/widget/QueryApi.Examples.Feed.Posts).
 
 :::tip Video Walkthrough
 

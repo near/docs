@@ -38,7 +38,7 @@ RPC API를 사용하면, 네트워크를 쿼리하고 특정 블록 또는 청�
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.block({
@@ -77,7 +77,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=block \
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.block({blockId: 17821130});
@@ -114,7 +114,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=block \
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.block(
@@ -365,7 +365,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.experimental_changes_in_block({
@@ -404,7 +404,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.experimental_changes_in_block(
@@ -443,7 +443,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.experimental_changes_in_block(
@@ -609,7 +609,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.chunk({
@@ -643,7 +643,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=chunk params:='{"chunk
 ```
 
 </TabItem>
-<TabItem value="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.chunk({

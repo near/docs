@@ -1,7 +1,7 @@
 {
   "id": "sdk/rust/contract-interface/contract-mutability",
   "title": "컨트랙트 가변성",
-  "description": "컨트랙트 상태 가변성은 함수 매개변수에서 self 사용되는 방식에 따라 자동으로 처리됩니다. 어느 것이 사용되는지에 따라, #[near_bindgen] 매크로는 self를 사용하는 모든 함수의 상태를 로드/역직렬화하고, &mut self가 사용되는 경우에만 상태를 직렬화/저장하는 코드를 각각 생성합니다.",
+  "description": "컨트랙트 상태 가변성은 함수 매개변수에서 self 사용되는 방식에 따라 자동으로 처리됩니다. Depending on which is used, the #[near] macro will generate the respective code to load/deserialize state for any function which uses self and serialize/store state only for when &mut self is used.",
   "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/sdk/rust/contract-interface/contract-mutability.md",
   "sourceDirName": "sdk/rust/contract-interface",
   "slug": "/sdk/rust/contract-interface/contract-mutability",

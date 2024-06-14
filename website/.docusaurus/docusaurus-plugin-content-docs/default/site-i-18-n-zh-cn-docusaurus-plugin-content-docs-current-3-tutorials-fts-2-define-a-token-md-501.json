@@ -1,7 +1,7 @@
 {
   "id": "tutorials/fts/defining-a-token",
   "title": "Defining a Fungible Token",
-  "description": "This is the first of many tutorials in a series where you'll be creating a complete FT smart contract from scratch that conforms with all the NEAR FT standards. Today you'll learn what a Fungible Token is and how you can define one on the NEAR blockchain. You will be modifying a bare-bones skeleton smart contract by filling in the necessary code snippets needed to add this functionality.",
+  "description": "This is the first of many tutorials in a series where you'll be creating a complete FT smart contract from scratch that conforms with all the NEAR FT standards. Today you'll learn what a Fungible Token is and how you can define one on the NEAR blockchain. You will be modifying a bare-bones skeleton smart contract by filling in the necessary code snippets needed to add this functionality. Today you'll learn what a Fungible Token is and how you can define one on the NEAR blockchain. You will be modifying a bare-bones skeleton smart contract by filling in the necessary code snippets needed to add this functionality.",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/3.tutorials/fts/2-define-a-token.md",
   "sourceDirName": "3.tutorials/fts",
   "slug": "/tutorials/fts/defining-a-token",

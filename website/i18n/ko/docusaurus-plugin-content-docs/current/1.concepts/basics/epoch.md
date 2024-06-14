@@ -17,6 +17,7 @@ import TabItem from '@theme/TabItem';
 **예시:**
 
 <Tabs>
+
 <TabItem value="json" label="JSON" default>
 
 ```json
@@ -31,6 +32,7 @@ import TabItem from '@theme/TabItem';
 ```
 
 </TabItem>
+
 <TabItem value="http" label="HTTPie">
 
 ```bash
@@ -41,6 +43,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 ```
 
 </TabItem>
+
 </Tabs>
 
 **응답 예시:**
@@ -78,6 +81,8 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 
 [밸리데이터 FAQ](https://github.com/near/wiki/blob/master/Archive/validators/faq.md#what-is-an-epoch)에서 에포크를 사용하여 네트워크 유효성 검사를 관리하는 방법에 대해 자세히 알아볼 수 있습니다.
 
-:::tip 질문이 있으신가요?
+:::tip Got a question?
+
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
+
 :::

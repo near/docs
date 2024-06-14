@@ -1,7 +1,7 @@
 {
   "id": "concepts/storage/data-storage",
   "title": "Data Storage / Collections",
-  "description": "All data stored on the NEAR blockchain is done in key / value pairs. There are several collection methods in the SDKs we've created that will help you store your data on chain.",
+  "description": "All data stored on the NEAR blockchain is done in key / value pairs. There are several collection methods in the SDKs we've created that will help you store your data on chain. There are several collection methods in the SDKs we've created that will help you store your data on chain.",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/1.concepts/storage/data-collections.md",
   "sourceDirName": "1.concepts/storage",
   "slug": "/concepts/storage/data-storage",

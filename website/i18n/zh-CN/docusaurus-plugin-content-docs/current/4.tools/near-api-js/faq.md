@@ -102,7 +102,7 @@ Versions list is on [npmjs.com](https://www.npmjs.com/package/near-api-js) :::
 
 ### What front-end frameworks can I use the JavaScript API with?
 
-The JavaScript API is framework-agnostic. You can include it in any front-end framework, such as React, Vue, Angular, and others.
+The JavaScript API is framework-agnostic. The JavaScript API is framework-agnostic. You can include it in any front-end framework, such as React, Vue, Angular, and others.
 
 You can use [`create-near-app`](https://github.com/near/create-near-app) to quickly bootstrap projects with different templates:
 
@@ -110,7 +110,7 @@ You can use [`create-near-app`](https://github.com/near/create-near-app) to quic
 
 ### Can I use the JavaScript API with mobile JavaScript frameworks such as React Native?
 
-The JavaScript API can be used in most JavaScript runtimes, and under the hood, it’s an abstraction over NEAR’s [RPC API](/api/rpc/introduction). However, notice that the Wallet can’t be used everywhere. For example, in React Native apps you’ll be able to use the Wallet in web versions of the apps, but it won’t work in the native app deployments.
+The JavaScript API can be used in most JavaScript runtimes, and under the hood, it’s an abstraction over NEAR’s [RPC API](/api/rpc/introduction). However, notice that the Wallet can’t be used everywhere. The JavaScript API can be used in most JavaScript runtimes, and under the hood, it’s an abstraction over NEAR’s [RPC API](/api/rpc/introduction). However, notice that the Wallet can’t be used everywhere. For example, in React Native apps you’ll be able to use the Wallet in web versions of the apps, but it won’t work in the native app deployments.
 
 You can use the Wallet in `WebView` components in iOS or Android, however be aware that it uses `LocalStorage` for `KeyStore`, and it’s your responsibility to persist the storage when you manage loading of `WebView` components.
 
@@ -124,15 +124,15 @@ Please refer to examples about transactions in the [Cookbook](/tools/near-api-js
 
 ### How transactions are signed and sent by near-api-js
 
-There are a few steps involved before transaction data is communicated to the network and eventually included in a block. The following steps are taken when creating, signing and ultimately a transaction from a user's account:
+There are a few steps involved before transaction data is communicated to the network and eventually included in a block. The following steps are taken when creating, signing and ultimately a transaction from a user's account: The following steps are taken when creating, signing and ultimately a transaction from a user's account:
 
-1. The user creates a transaction object using the [`account.signAndSendTransaction` method](https://github.com/near/near-api-js/blob/f78616480ba84c73f681211fe6266bd2ed2b9da1/packages/near-api-js/src/account.ts#L200). This method accepts an array of actions and returns an object for the outcome of the transaction.
-2. The transaction is signed using the [`account.signTransaction` method](https://github.com/near/near-api-js/blob/f78616480ba84c73f681211fe6266bd2ed2b9da1/packages/near-api-js/src/account.ts#L204). This method accepts an array of actions and returns a signed transaction object.
-3. The signed transaction object is sent to the network using the [`account.connection.provider.sendTransaction` method](https://github.com/near/near-api-js/blob/f78616480ba84c73f681211fe6266bd2ed2b9da1/packages/near-api-js/src/account.ts#L208). This method accepts a signed transaction object and returns a transaction hash. This step [performs the borsh serialization of the transaction object](https://github.com/near/near-api-js/blob/f78616480ba84c73f681211fe6266bd2ed2b9da1/packages/near-api-js/src/providers/json-rpc-provider.ts#L80) and calls the [`broadcast_tx_commit` JSON RPC method with the serialized transaction object encoded in base64](https://github.com/near/near-api-js/blob/f78616480ba84c73f681211fe6266bd2ed2b9da1/packages/near-api-js/src/providers/json-rpc-provider.ts#L81).
+1. The user creates a transaction object using the [`account.signAndSendTransaction` method](https://github.com/near/near-api-js/blob/f78616480ba84c73f681211fe6266bd2ed2b9da1/packages/near-api-js/src/account.ts#L200). This method accepts an array of actions and returns an object for the outcome of the transaction. This method accepts an array of actions and returns an object for the outcome of the transaction.
+2. The transaction is signed using the [`account.signTransaction` method](https://github.com/near/near-api-js/blob/f78616480ba84c73f681211fe6266bd2ed2b9da1/packages/near-api-js/src/account.ts#L204). This method accepts an array of actions and returns a signed transaction object. This method accepts an array of actions and returns a signed transaction object.
+3. The signed transaction object is sent to the network using the [`account.connection.provider.sendTransaction` method](https://github.com/near/near-api-js/blob/f78616480ba84c73f681211fe6266bd2ed2b9da1/packages/near-api-js/src/account.ts#L208). This method accepts a signed transaction object and returns a transaction hash. The signed transaction object is sent to the network using the [`account.connection.provider.sendTransaction` method](https://github.com/near/near-api-js/blob/f78616480ba84c73f681211fe6266bd2ed2b9da1/packages/near-api-js/src/account.ts#L208). This method accepts a signed transaction object and returns a transaction hash. This step [performs the borsh serialization of the transaction object](https://github.com/near/near-api-js/blob/f78616480ba84c73f681211fe6266bd2ed2b9da1/packages/near-api-js/src/providers/json-rpc-provider.ts#L80) and calls the [`broadcast_tx_commit` JSON RPC method with the serialized transaction object encoded in base64](https://github.com/near/near-api-js/blob/f78616480ba84c73f681211fe6266bd2ed2b9da1/packages/near-api-js/src/providers/json-rpc-provider.ts#L81).
 
 ### How to send batch transactions
 
-You may batch send transactions by using the `signAndSendTransaction({})` method from `account`. This method takes an array of transaction actions, and if one fails, the entire operation will fail. Here's a simple example:
+You may batch send transactions by using the `signAndSendTransaction({})` method from `account`. This method takes an array of transaction actions, and if one fails, the entire operation will fail. Here's a simple example: This method takes an array of transaction actions, and if one fails, the entire operation will fail. Here's a simple example:
 
 ```js
 const { connect, transactions, keyStores } = require("near-api-js");
@@ -235,7 +235,7 @@ You may also find an example of batch transactions in the [Cookbook](/tools/near
 
 ### What’s the difference between `Account` and `ConnectedWalletAccount`?
 
-Interaction with the wallet is only possible in a web-browser environment because NEAR’s Wallet is web-based. The difference between `Account` and `ConnectedWalletAccount` is mostly about the way it signs transactions. The `ConnectedWalletAccount` uses the wallet to approve transactions. Under the hood the `ConnectedWalletAccount` inherits and overrides some methods of `Account`.
+Interaction with the wallet is only possible in a web-browser environment because NEAR’s Wallet is web-based. The difference between `Account` and `ConnectedWalletAccount` is mostly about the way it signs transactions. The `ConnectedWalletAccount` uses the wallet to approve transactions. Under the hood the `ConnectedWalletAccount` inherits and overrides some methods of `Account`. The difference between `Account` and `ConnectedWalletAccount` is mostly about the way it signs transactions. The `ConnectedWalletAccount` uses the wallet to approve transactions. Under the hood the `ConnectedWalletAccount` inherits and overrides some methods of `Account`.
 
 ### How to create implicit accounts?
 
@@ -269,14 +269,14 @@ Refer to the exhaustive [list of error messages](https://github.com/near/near-ap
 
 ### Missing contract methods {#missing-contract-method}
 
-When constructing a `Contract` instance on the client-side, you need to specify the contract's methods. If you misspell, mismatch, or miss method names - you'll receive errors about missing methods.
+When constructing a `Contract` instance on the client-side, you need to specify the contract's methods. If you misspell, mismatch, or miss method names - you'll receive errors about missing methods. If you misspell, mismatch, or miss method names - you'll receive errors about missing methods.
 
 There are a few cases of missing or wrong methods:
 - When you call a method you didn't specify in the constructor.
 - When you call a method that doesn't exist on the blockchain's contract (but you did specify it in the client-side constructor).
 - When you mismatch between `viewMethods` and `changeMethods`.
 
-For example, let's look at the following contract code. It contains one `view` and one `call` method:
+For example, let's look at the following contract code. For example, let's look at the following contract code. It contains one `view` and one `call` method:
 
 ```js
 @NearBindgen
@@ -320,14 +320,6 @@ await contract.method_B_call();
 // not because `method_C` doesn't exist on the contract, but because we didn't declare it
 // in the client-side constructor.
 await contract.method_C();
-```
-
-#### RPC errors for missing methods
-
-##### `wasm execution failed with error: FunctionCallError(MethodResolveError(MethodNotFound))`
-
-In this example we specify and call a method, but this method doesn't exist on the blockchain:
-```js
 const contract = await new nearAPI.Contract(
   // ...
   {
@@ -346,6 +338,45 @@ await contract.method_C();
 // Even though the method exists on the actual blockchain contract,
 // we didn't specify `method_A_view` in the contract's client-side constructor.
 await contract.method_A_view();
+await contract.method_C();
+```
+
+#### RPC errors for missing methods
+
+##### `wasm execution failed with error: FunctionCallError(MethodResolveError(MethodNotFound))`
+
+In this example we specify and call a method, but this method doesn't exist on the blockchain:
+```js
+const contract = await new nearAPI.Contract(
+  // ...
+  {
+    viewMethods: ["method_C"], // <=== method_C doesn't exist on the contract above
+    changeMethods: [],
+    // ...
+  }
+);
+// We did specify `method_C` name in constructor, so this function exists on client-side `contract` instance,
+// but a method with this name does not exist on the actual contract on the blockchain.
+const contract = await new nearAPI.Contract(
+  // ...
+  {
+    viewMethods: ['method_B_call'], // <=== here should be `method_A_view`
+    changeMethods: ['method_A_view'], // <=== and here should be `method_B_call`
+    // ...
+  }
+);
+
+// This will return an error from RPC call and throw:
+// `wasm execution failed with error: FunctionCallError(HostError(ProhibitedInView { method_name: "storage_write" }))`
+// This error indicates that we are trying to call a state-changing method but declare it as a read-only method in client-side.
+await contract.method_B_call();
+
+// The following behavior is undefined and might not work as expected.
+// `method_A_veiw` should be declared under `viewMethods` and in our example here we declare it under `changeMethods`.
+await contract.method_A_view();
+// Even though the method exists on the actual blockchain contract,
+// we didn't specify `method_A_view` in the contract's client-side constructor.
+await contract.method_A_view();
 ```
 
 ##### `wasm execution failed with error: FunctionCallError(HostError(ProhibitedInView { method_name: "storage_write" }))`
@@ -356,7 +387,7 @@ In the contract above we declared:
 - A `@view` method named `method_A_view`
 - A `@call` method named `method_B_call`
 
-In a client-side constructor, the contract's `@view` method names must be specified under `viewMethods`, and the contract's `@call` method names must be specified under `changeMethods`. If we mismatch between the types we will receive errors.
+In a client-side constructor, the contract's `@view` method names must be specified under `viewMethods`, and the contract's `@call` method names must be specified under `changeMethods`. If we mismatch between the types we will receive errors. If we mismatch between the types we will receive errors.
 
 For example:
 ```js
@@ -389,13 +420,13 @@ A temporary workaround: make sure you don't re-import it, for example when runni
 
 ### `regeneratorRuntime` is not defined {#regeneratorruntime-is-not-defined}
 
-You are probably using [Parcel](https://parceljs.org/) like we do in [other examples](https://github.com/near-examples). Please make sure you have this line at the top of your main JS file. (Most likely `index.js`):
+You are probably using [Parcel](https://parceljs.org/) like we do in [other examples](https://github.com/near-examples). Please make sure you have this line at the top of your main JS file. (Most likely `index.js`): Please make sure you have this line at the top of your main JS file. (Most likely `index.js`):
 
 ```js
 import "regenerator-runtime/runtime";
 ```
 
-- Also, ensure the dependencies for this are added to the project by checking the dev dependencies in your `package.json`. If not found you can install this by running the following in your terminal:
+- Also, ensure the dependencies for this are added to the project by checking the dev dependencies in your `package.json`. If not found you can install this by running the following in your terminal: If not found you can install this by running the following in your terminal:
 
 ```bash
 npm install regenerator-runtime --save-dev
@@ -405,7 +436,7 @@ npm install regenerator-runtime --save-dev
 
 ### Window error using `Node.js` {#window-error-using-nodejs}
 
-You're maybe using a KeyStore that's for the browser. Instead, use a [filesystem key](/tools/near-api-js/quick-reference#key-store) or private key string.
+You're maybe using a KeyStore that's for the browser. You're maybe using a KeyStore that's for the browser. Instead, use a [filesystem key](/tools/near-api-js/quick-reference#key-store) or private key string.
 
 **Browser KeyStore:**
 

@@ -18,7 +18,7 @@ NEAR Lake 프레임워크는 [NEAR Lake](/tools/realtime#near-lake-indexer)의 �
 
 NEAR 거버넌스 포럼에서 NEAR Lake 프레임워크의 출시를 발표했습니다.
 
-[해당 페이지 내 포스트](https://gov.near.org/t/announcement-near-lake-framework-brand-new-word-in-indexer-building-approach/17668)를 읽어보세요.
+Please, read the post [here](https://gov.near.org/t/announcement-near-lake-framework-brand-new-word-in-indexer-building-approach/17668).
 
 :::
 
@@ -29,7 +29,7 @@ NEAR 거버넌스 포럼에서 NEAR Lake 프레임워크의 출시를 발표했�
 | ------------------------------- | -------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | NEAR 프로토콜의 블록 및 트랜잭션을 추적할 수 있는지 | **예**                                                          | **예**<br />(단, 메인넷 및 테스트넷 네트워크만 해당)                                                                                                                                                                         |
 | 탈중앙화                            | **예**                                                          | 아니오<br />(Pagoda Inc는 블록을 AWS S3에 덤프합니다)                                                                                                                                                                    |
-| 반응 시간 (end-to-end)              | [최소 3.8s (예상 평균 5-7s)](near-indexer-framework.md#limitations)  | [[최소 3.9s (예상 평균 6-8s)][label](https://www.thefreedictionary.com/cruft)(#limitations)](#limitations)                                                                                                              |
+| 반응 시간 (end-to-end)              | [최소 3.8s (예상 평균 5-7s)](near-indexer-framework.md#limitations)  | [\[최소 3.9s (예상 평균 6-8s)][label\](https://www.thefreedictionary.com/cruft)(#limitations)](#limitations)                                                                                                            |
 | 반응 시간 (프레임워크 오버헤드만 해당)          | 0.1s                                                           | 0.2-2.2s                                                                                                                                                                                                          |
 | 예상 인프라 비용                       | [$500+/월](https://near-nodes.io/rpc/hardware-rpc)              | [**$20/월**](#what-is-the-cost-of-running-a-custom-indexer-based-on-near-lake)                                                                                                                                     |
 | 유지 보수 용이성                       | 어려움<br />(모든 nearcore 업그레이드 및 동기화 상태를 따라야 함)             | **쉬움**<br />(한 번 배포하기만 하면 됨)                                                                                                                                                                                |

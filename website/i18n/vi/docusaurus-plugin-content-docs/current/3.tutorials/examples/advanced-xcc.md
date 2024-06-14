@@ -38,9 +38,9 @@ You have two options to start the Donation Example:
 
 The smart contract is available in two flavors: Rust and JavaScript
 
-<Tabs>
+<Tabs groupId="code-tabs">
 
-  <TabItem value="🌐 JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
 
 ```bash
 ┌── sandbox-ts # sandbox testing
@@ -64,7 +64,7 @@ The smart contract is available in two flavors: Rust and JavaScript
 
   </TabItem>
 
-  <TabItem value="🦀 Rust">
+  <TabItem value="rust" label="🦀 Rust">
 
 ```bash
 ┌── tests # sandbox testing
@@ -96,18 +96,18 @@ The smart contract is available in two flavors: Rust and JavaScript
 You can aggregate multiple actions directed towards one same contract into a batched transaction. Methods called this way are executed sequentially, with the added benefit that, if one fails then they **all get reverted**.
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="js">
+  <Language value="js" language="js">
     <Github fname="contract.ts"
           url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
-          start="37" end="40" />
+          start="38" end="41" />
     <Github fname="batch_actions.ts"
           url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/batch_actions.ts"
           start="5" end="17" />
   </Language>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="rust" language="rust">
     <Github fname="batch_actions.rs"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/batch_actions.rs"
-            start="7" end="19" />
+            start="8" end="20" />
   </Language>
 </CodeTabs>
 
@@ -116,10 +116,10 @@ You can aggregate multiple actions directed towards one same contract into a bat
 In this case, the callback has access to the value returned by the **last action** from the chain.
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="js">
+  <Language value="js" language="js">
     <Github fname="contract.ts"
       url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
-      start="42" end="45" />
+      start="43" end="46" />
     <Github fname="batch_actions.ts"
       url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/batch_actions.ts"
       start="19" end="29" />
@@ -127,10 +127,10 @@ In this case, the callback has access to the value returned by the **last action
       url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/utils.ts"
       start="3" end="20" />
   </Language>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="rust" language="rust">
     <Github fname="batch_actions.rs"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/batch_actions.rs"
-            start="21" end="34" />
+            start="22" end="35" />
   </Language>
 </CodeTabs>
 
@@ -141,18 +141,18 @@ In this case, the callback has access to the value returned by the **last action
 A contract can call multiple other contracts. This creates multiple transactions that execute all in parallel. If one of them fails the rest **ARE NOT REVERTED**.
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="js">
+  <Language value="js" language="js">
     <Github fname="contract.ts"
       url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
-      start="47" end="50" />
+      start="48" end="51" />
     <Github fname="multiple_contracts.ts"
       url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/multiple_contracts.ts"
       start="6" end="21" />
   </Language>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="rust" language="rust">
     <Github fname="multiple_contracts.rs"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/multiple_contracts.rs"
-            start="18" end="56" />
+            start="16" end="55" />
   </Language>
 </CodeTabs>
 
@@ -161,10 +161,10 @@ A contract can call multiple other contracts. This creates multiple transactions
 In this case, the callback has access to an **array of responses**, which have either the value returned by each call, or an error message.
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="js">
+  <Language value="js" language="js">
     <Github fname="contract.ts"
       url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
-      start="52" end="55" />
+      start="53" end="58" />
     <Github fname="multiple_contracts.ts"
       url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/multiple_contracts.ts"
       start="24" end="41" />
@@ -172,7 +172,7 @@ In this case, the callback has access to an **array of responses**, which have e
       url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/utils.ts"
       start="3" end="20" />
   </Language>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="rust" language="rust">
     <Github fname="multiple_contracts.rs"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/multiple_contracts.rs"
             start="58" end="92" />
@@ -188,18 +188,18 @@ This example is a particular case of the previous one ([Calling Multiple Contrac
 In this case, we call multiple contracts that will return the same type:
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="js">
+  <Language value="js" language="js">
     <Github fname="contract.ts"
       url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
-      start="57" end="60" />
+      start="65" end="70" />
     <Github fname="similar_contracts.ts"
       url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/similar_contracts.ts"
       start="6" end="35" />
   </Language>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="rust" language="rust">
     <Github fname="similar_contracts.rs"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/similar_contracts.rs"
-            start="7" end="30" />
+            start="8" end="31" />
   </Language>
 </CodeTabs>
 
@@ -208,7 +208,7 @@ In this case, we call multiple contracts that will return the same type:
 In this case, the callback again has access to an **array of responses**, which we can iterate checking the results.
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="js">
+  <Language value="js" language="js">
     <Github fname="contract.ts"
       url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
       start="62" end="65" />
@@ -219,7 +219,7 @@ In this case, the callback again has access to an **array of responses**, which 
       url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/utils.ts"
       start="3" end="20" />
   </Language>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="rust" language="rust">
     <Github fname="similar_contracts.rs"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/similar_contracts.rs"
             start="32" end="57" />
@@ -232,8 +232,8 @@ In this case, the callback again has access to an **array of responses**, which 
 
 The contract readily includes a set of unit and sandbox testing to validate its functionality. To execute the tests, run the following commands:
 
-<Tabs>
-  <TabItem value="🌐 JavaScript">
+<Tabs groupId="code-tabs">
+  <TabItem value="js" label="🌐 JavaScript">
 
 ```bash
 cd contract-advanced-ts
@@ -242,7 +242,7 @@ yarn test
 ```
 
   </TabItem>
-  <TabItem value="🦀 Rust">
+  <TabItem value="rust" label="🦀 Rust">
   
   ```bash
   cd contract-advanced-rs
@@ -263,8 +263,8 @@ The `integration tests` use a sandbox to create NEAR users and simulate interact
 
 In order to deploy the contract you will need to create a NEAR account.
 
-<Tabs>
-  <TabItem value="🌐 JavaScript">
+<Tabs groupId="code-tabs">
+  <TabItem value="js" label="🌐 JavaScript">
 
 ```bash
 # Optional - create an account
@@ -277,7 +277,7 @@ near deploy <accountId> ./build/cross_contract.wasm --initFunction init --initAr
 ```
 
   </TabItem>
-  <TabItem value="🦀 Rust">
+  <TabItem value="rust" label="🦀 Rust">
 
 ```bash
 # Optional - create an account

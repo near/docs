@@ -49,20 +49,21 @@ In this chapter, we want the ability to add multiple, custom crossword puzzles. 
 Let's dive right in, starting with our primary struct:
 
 ```rust
-#[near_bindgen]
-#[derive(BorshDeserialize, BorshSerialize, PanicOnDefault)]
+#[near(contract_state]
+#[derive(PanicOnDefault)]
 pub struct Crossword {
     puzzles: LookupMap<String, Puzzle>,  // ⟵ Puzzle is a struct we're defining
     unsolved_puzzles: UnorderedSet<String>,
 }
 ```
 
-:::note Let's ignore a couple of things… For now, let's ignore the macros about the structs that begin with `derive` and `serde`. :::
+:::note Let's ignore a couple of things… For now, let's ignore the macros about the structs that begin with `derive` and `near`. :::
 
 Look at the fields inside the `Crossword` struct above, and you'll see a couple types. `String` is a part of Rust's standard library, but `Puzzle` is something we've created:
 
 ```rust
-#[derive(BorshDeserialize, BorshSerialize, Debug)]
+#[near(serializers = [borsh])]
+#[derive(Debug)]
 pub struct Puzzle {
     status: PuzzleStatus,  // ⟵ An enum we'll get to soon
     /// Use the CoordinatePair assuming the origin is (0, 0) in the top left side of the puzzle.
@@ -73,8 +74,8 @@ pub struct Puzzle {
 Let's focus on the `answer` field here, which is a vector of `Answer`s. (A vector is nothing fancy, just a bunch of items or a "growable array" as described in the [standard Rust documentation](https://doc.rust-lang.org/std/vec/struct.Vec.html).
 
 ```rust
-#[derive(BorshDeserialize, BorshSerialize, Deserialize, Serialize, Debug)]
-#[serde(crate = "near_sdk::serde")]
+#[near(serializers = [json, borsh])]
+#[derive(Debug)]
 pub struct Answer {
     num: u8,
     start: CoordinatePair,  // ⟵ Another struct we've defined
@@ -87,8 +88,8 @@ pub struct Answer {
 Now let's take a look at the last struct we'e defined, that has cascaded down from fields on our primary struct: the `CoordinatePair`.
 
 ```rust
-#[derive(BorshDeserialize, BorshSerialize, Deserialize, Serialize, Debug)]
-#[serde(crate = "near_sdk::serde")]
+#[near(serializers = [json, borsh])]
+#[derive(Debug)]
 pub struct CoordinatePair {
     x: u8,
     y: u8,
@@ -98,7 +99,7 @@ pub struct CoordinatePair {
 :::info Summary of the structs shown There are a handful of structs here, and this will be a typical pattern when we use structs to store contract state.
 
 ```
-Crossword ⟵ primary struct with #[near_bindgen]
+Crossword ⟵ primary struct with #[near(contract_state)]
 └── Puzzle
    └── Answer
       └── CoordinatePair
@@ -128,8 +129,7 @@ While somewhat advanced, you can learn more about [changing the serialization he
 We have a struct called `JsonPuzzle` that differs from the `Puzzle` struct we've shown. It has one difference: the addition of the `solution_hash` field.
 
 ```rust
-#[derive(Serialize, Deserialize)]
-#[serde(crate = "near_sdk::serde")]
+#[near(serializers = [json])]
 pub struct JsonPuzzle {
     /// The human-readable (not in bytes) hash of the solution
     solution_hash: String,  // ⟵ this field is not contained in the Puzzle struct
@@ -162,8 +162,7 @@ A real-world example of this might be the [Storage Management standard](https://
 Let's say a smart contract wants to determine if `alice.near` is "registered" on the `nDAI` token. More technically, does `alice.near` have a key-value pair for herself in the fungible token contract.
 
 ```rust
-#[derive(Serialize, Deserialize)]
-#[serde(crate = "near_sdk::serde")]
+#[near(serializers = [json])]
 pub struct StorageBalance {
     pub total: U128,
     pub available: U128,
@@ -188,8 +187,8 @@ In the section above, we saw two fields in the structs that had an enum type:
 1.`AnswerDirection` — this is the simplest type of enum, and will look familiar from other programming languages. It provides the only two options for how a clue in oriented in a crossword puzzle: across and down.
 
 ```rust
-#[derive(BorshDeserialize, BorshSerialize, Deserialize, Serialize, Debug)]
-#[serde(crate = "near_sdk::serde")]
+#[near(serializers = [json, borsh])]
+#[derive(Debug)]
 pub enum AnswerDirection {
     Across,
     Down,
@@ -201,8 +200,8 @@ pub enum AnswerDirection {
 As we improve our crossword puzzle, the idea is to give the winner of the crossword puzzle (the first person to solve it) the ability to write a memo. (For example: "Took me forever to get clue six!", "Alice rules!" or whatever.)
 
 ```rust
-#[derive(BorshDeserialize, BorshSerialize, Deserialize, Serialize, Debug)]
-#[serde(crate = "near_sdk::serde")]
+#[near(serializers = [json, borsh])]
+#[derive(Debug)]
 pub enum PuzzleStatus {
     Unsolved,
     Solved { memo: String },

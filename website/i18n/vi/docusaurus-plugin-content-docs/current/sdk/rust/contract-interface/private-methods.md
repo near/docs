@@ -8,7 +8,7 @@ sidebar_position: 3
 
 Usually, when a contract has to have a callback for a remote cross-contract call, this callback method should only be called by the contract itself. Đó là để tránh người khác gọi nó và làm lộn xộn state. Pretty common pattern is to have an assertion that validates that the direct caller (predecessor account ID) matches to the contract's account (current account ID). Macro `#[private]` đơn giản hóa nó, bằng cách thay thế nó thành một dòng macro và cải thiện khả năng đọc.
 
-Use this annotation within the [`near_bindgen` macro](../contract-structure/near-bindgen.md) as follows:
+Use this annotation within the [`near` macro](../contract-structure/near-bindgen.md) as follows:
 
 ```rust
 #[private]
@@ -55,10 +55,10 @@ Not all functions need to be exposed publicly. It may be beneficial to write pri
 
 3. Separate `impl` block
 
-  Another way of not exporting methods is by having a separate `impl Contract` section, that is not marked with `#[near_bindgen]`.
+  Another way of not exporting methods is by having a separate `impl Contract` section, that is not marked with `#[near]`.
 
   ```rust
-  #[near_bindgen]
+  #[near]
   impl Contract {
       pub fn increment(&mut self) {
           self.internal_increment();

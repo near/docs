@@ -4,54 +4,56 @@ title: 사전 배포된 컨트랙트
 sidebar_label: 사전 배포된 컨트랙트
 ---
 
-> 쉽게 사용할 수 있는 NFT 스마트 컨트랙트를 사용하여 소프트웨어 개발을 하지 않고도 대체 불가능 토큰(NFT)을 쉽게 만드는 방법에 대해 알아보세요.
+Create your first non-fungible token by using a pre-deployed NFT smart contract which works exactly as the one you will build on this tutorial.
+
+---
 
 ## 전제 조건
 
-이 튜토리얼을 성공적으로 완료하려면 다음이 필요합니다.
+To complete this tutorial successfully, you'll need [a NEAR Wallet](https://testnet.mynearwallet.com/create) and [NEAR CLI](/tools/near-cli#setup)
 
-- [NEAR 지갑](https://testnet.mynearwallet.com/create)
-- [NEAR-CLI](/tools/near-cli#setup)
+:::tip You can install near-cli through the following command:
+
+```bash
+npm install -g near-cli
+```
+:::
+
+---
 
 ## NFT 컨트랙트 사용
 
+Minting an NFT token on NEAR is a simple process that involves calling a smart contract function.
+
+To interact with the contract you will need to first login to your NEAR account through `near-cli`.
+
+<hr class="subsection" />
+
 ### 설정
 
-- 터미널에서 다음 명령을 실행하여 새로 만든 계정에 `near-cli`로 로그인합니다.
+터미널에서 다음 명령을 실행하여 새로 만든 계정에 `near-cli`로 로그인합니다.
 
 ```bash
 near login
 ```
 
- - 이 튜토리얼에서 명령을 쉽게 복사하고 붙여넣을 수 있도록 계정 ID에 대한 환경 변수를 설정합니다.
+이 튜토리얼에서 명령을 쉽게 복사하고 붙여넣을 수 있도록 계정 ID에 대한 환경 변수를 설정합니다.
 
 ```bash
 export NEARID=YOUR_ACCOUNT_NAME
 ```
-:::note
 
-`.testnet`(또는 `mainnet`에 대해서는 `.near`)을 포함하여, `YOUR_ACCOUNT_NAME`를 방금 로그인한 계정 이름으로 바꾸세요.
-
-:::
-
-- 다음을 실행하여 환경 변수가 올바르게 설정되었는지 테스트합니다.
-
-```bash
-echo $NEARID
-```
+<hr class="subsection" />
 
 ### NFT 발행
 
-NEAR는 사용자가 토큰을 자유롭게 발행할 수 있도록 `nft.examples.testnet` 계정에 NFT 컨트랙트를 배포했습니다. 이 사전 배포된 컨트랙트를 사용하여 첫 번째 토큰을 발행해 봅시다!
+We have already deployed an NFT contract to `nft.examples.testnet` which allows users to freely mint tokens. Let's use it to mint our first token.
 
-
-- 터미널에서 이 명령을 실행하는데, **아래 `token_id` 값을 고유한 문자열로 바꿔야 합니다**.
+Run this command in your terminal, remember to replace the `token_id` with a string of your choice. This string will uniquely identify the token you mint.
 
 ```bash
 near call nft.examples.testnet nft_mint '{"token_id": "TYPE_A_UNIQUE_VALUE_HERE", "receiver_id": "'$NEARID'", "metadata": { "title": "GO TEAM", "description": "The Team Goes", "media": "https://bafybeidl4hjbpdr6u6xvlrizwxbrfcyqurzvcnn5xoilmcqbxfbdwrmp5m.ipfs.dweb.link/", "copies": 1}}' --accountId $NEARID --deposit 0.1
 ```
-
-:::tip `media` URL을 웹 서버에서 호스팅되는 이미지 파일에 대한 링크로 바꿀 수도 있습니다. :::
 
 <details>
 <summary>응답 예시: </summary>
@@ -68,7 +70,13 @@ https://testnet.nearblocks.io/txns/8RFWrQvAsm2grEsd1UTASKpfvHKrjtBdEyXu7WqGBPUr
 </p>
 </details>
 
-- 계정이 소유한 토큰을 보려면 다음 `near-cli` 명령을 사용하여 NFT 컨트랙트를 호출할 수 있습니다.
+:::tip `media` URL을 웹 서버에서 호스팅되는 이미지 파일에 대한 링크로 바꿀 수도 있습니다. :::
+
+<hr class="subsection" />
+
+### Querying your NFT
+
+계정이 소유한 토큰을 보려면 다음 `near-cli` 명령을 사용하여 NFT 컨트랙트를 호출할 수 있습니다.
 
 ```bash
 near view nft.examples.testnet nft_tokens_for_owner '{"account_id": "'$NEARID'"}'
@@ -105,9 +113,9 @@ near view nft.examples.testnet nft_tokens_for_owner '{"account_id": "'$NEARID'"}
 </p>
 </details>
 
-***축하합니다! NEAR 블록체인에서 첫 번째 NFT 토큰을 발행했습니다!*** 🎉
+**Congratulations!** You just minted your first NFT token on the NEAR blockchain! 🎉
 
-👉 Now try going to your [NEAR Wallet](https://testnet.mynearwallet.com) and view your NFT in the "Collectibles" tab. 👈
+Now try going to your [NEAR Wallet](https://testnet.mynearwallet.com) and view your NFT in the "Collectibles" tab.
 
 ---
 
@@ -123,7 +131,7 @@ near view nft.examples.testnet nft_tokens_for_owner '{"account_id": "'$NEARID'"}
 
 이 글을 쓰는 시점에서 이 예제는 다음 버전에서 작동합니다.
 
-- near-cli: `4.0.4`
+- near-cli: `4.0.13`
 - NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 
 :::

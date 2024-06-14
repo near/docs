@@ -7,13 +7,13 @@ title: NEAR RPC API
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-The RPC API allows you to communicate directly with the NEAR network. For example, tools such as [near-api-js](/tools/near-api-js/quick-reference) are just abstractions making RPC calls.
+The RPC API allows you to communicate directly with the NEAR network. The RPC API allows you to communicate directly with the NEAR network. For example, tools such as [near-api-js](/tools/near-api-js/quick-reference) are just abstractions making RPC calls.
 
 <hr className="subsection" />
 
 ## RPC Providers
 
-There are multiple [RPC providers which you can choose from](./providers.md). These providers will work as intermediaries to help you interact with the NEAR network.
+There are multiple [RPC providers which you can choose from](./providers.md). These providers will work as intermediaries to help you interact with the NEAR network. These providers will work as intermediaries to help you interact with the NEAR network.
 
 <hr className="subsection" />
 
@@ -30,4 +30,4 @@ There are multiple [RPC providers which you can choose from](./providers.md). Th
 | [Transactions](/api/rpc/transactions)               | Send transactions and query their status.                                    |
 | [Maintenance Windows](/api/rpc/maintenance-windows) | Query the maintenance windows in current epoch for a validator.              |
 
-:::tip You can access the JSON RPC 2.0 endpoints using [Postman](/api/rpc/setup#postman-setup), [JavaScript](/api/rpc/setup#javascript-setup), and [HTTPie](/api/rpc/setup#httpie-setup). :::
+:::tip You can access the JSON RPC 2.0 endpoints using [Postman](/api/rpc/setup#postman-setup), [JavaScript](/api/rpc/setup#javascript-setup), and [HTTPie](/api/rpc/setup#httpie-setup). ::: :::

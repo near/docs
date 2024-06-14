@@ -17,7 +17,7 @@ This guide will take you through a step by step process for creating a Chain Sig
 
 ⭐️ For a deep dive into the concepts of Chain Signatures see [What are Chain Signatures?](/concepts/abstraction/chain-signatures)
 
-⭐️ For complete examples of a NEAR account performing Eth transactions:
+⭐️ For complete examples of a NEAR account performing transactions in other chains:
 
 - [CLI script](https://github.com/mattlockyer/mpc-script)
 - [web-app example](https://github.com/near-examples/near-multichain)
@@ -40,6 +40,16 @@ There are five steps to create a Chain Signature:
 ![chain-signatures](/docs/assets/welcome-pages/chain-signatures-overview.png)
 _Diagram of a chain signature in NEAR_
 
+:::info MPC testnet contracts
+
+If you want to try things out, these are the smart contracts available on `testnet`:
+
+- `v2.multichain-mpc.testnet`: MPC signer contract
+- `canhazgas.testnet`: [Multichain Gas Station](multichain-gas-relayer/gas-station.md) contract
+- `nft.kagi.testnet`: [NFT Chain Key](nft-keys.md) contract
+
+:::
+
 ---
 
 ## 1. Deriving the Foreign Address
@@ -49,6 +59,7 @@ Chain Signatures use [`derivation paths`](../../1.concepts/abstraction/chain-sig
 - The NEAR address (e.g., `example.near`, `example.testnet`, etc.)
 - A derivation path (a string such as `ethereum-1`, `ethereum-2`, etc.)
 - The MPC service's public key
+  - `secp256k1:4NfTiv3UsGahebgTaHyD9vF8KYKMBnfd6kh94mK6xv8fGBiJB8TBtFMP5WWXz6B89Ac1fbpzPwAvoyQebemHFwx3`
 
 We provide code to derive the address, as it's a complex process that involves multiple steps of hashing and encoding:
 
@@ -67,12 +78,22 @@ We provide code to derive the address, as it's a complex process that involves m
 
 </Tabs>
 
-:::tip
+:::info
 
 The same NEAR account and path will always produce the same address on the target blockchain.
 
 - `example.near` + `ethereum-1` = `0x1b48b83a308ea4beb845db088180dc3389f8aa3b`
 - `example.near` + `ethereum-2` = `0x99c5d3025dc736541f2d97c3ef3c90de4d221315`
+
+:::
+
+:::tip
+
+We recommend hardcoding the derivation paths in your application to ensure the signature request is made to the correct account
+
+#### v2.multichain-mpc.testnet
+
+`secp256k1:4NfTiv3UsGahebgTaHyD9vF8KYKMBnfd6kh94mK6xv8fGBiJB8TBtFMP5WWXz6B89Ac1fbpzPwAvoyQebemHFwx3`
 
 :::
 
@@ -107,7 +128,7 @@ In bitcoin, you construct a new transaction by using all the Unspent Transaction
 
 ## 3. Requesting the Signature
 
-Once the transaction is created and ready to be signed, a signature request is made by calling `sign` on the [MPC smart contract](https://github.com/near/mpc-recovery/blob/develop/contract/src/lib.rs#L298).
+Once the transaction is created and ready to be signed, a signature request is made by calling `sign` on the [MPC smart contract](https://github.com/near/mpc-recovery/blob/f31e39f710f2fb76706e7bb638a13cf1fa1dbf26/contract/src/lib.rs#L298).
 
 The method requires two parameters:
 
@@ -144,7 +165,7 @@ The contract will take some time to respond, as the `sign` method starts recursi
 <details>
 <summary> A Contract Recursively Calling Itself? </summary>
 
-NEAR smart contracts are unable to halt execution and await the completion of a process. To solve this, one can make the contract call itself again and again checking on each iteration to see if the result is ready.
+NEAR smart contracts are currently unable to halt execution and await the completion of a process. To solve this while we await the ability to [yield & resume](https://docs.near.org/blog/yield-resume), one can make the contract call itself again and again checking on each iteration to see if the result is ready.
 
 **Note:** Each call will take one block which equates to ~1 second of waiting. After some time the contract will either return a result that an external party provided or return an error running out of GAS waiting.
 

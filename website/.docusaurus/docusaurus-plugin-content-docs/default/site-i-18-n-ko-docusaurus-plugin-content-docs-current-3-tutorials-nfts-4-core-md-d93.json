@@ -1,7 +1,7 @@
 {
   "id": "tutorials/nfts/core",
-  "title": "핵심",
-  "description": "이 튜토리얼에서는 핵심 표준을 스마트 컨트랙트에 구현하는 방법을 배웁니다. 처음 해보는 경우 이 레퍼지토리를 복제하고 3.enumeration 브랜치를 확인하세요.",
+  "title": "Transfers",
+  "description": "In this tutorial you'll learn how to implement NFT transfers as defined in the core standards into your smart contract.",
   "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/nfts/4-core.md",
   "sourceDirName": "3.tutorials/nfts",
   "slug": "/tutorials/nfts/core",
@@ -16,8 +16,7 @@
   "sidebarPosition": 4,
   "frontMatter": {
     "id": "core",
-    "title": "핵심",
-    "sidebar_label": "핵심"
+    "title": "Transfers"
   },
   "sidebar": "tutorials",
   "previous": {

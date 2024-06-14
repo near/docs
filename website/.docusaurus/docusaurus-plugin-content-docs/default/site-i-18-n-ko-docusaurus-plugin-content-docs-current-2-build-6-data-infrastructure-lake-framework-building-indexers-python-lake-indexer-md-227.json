@@ -18,7 +18,7 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "JS 기본 튜토리얼",
+    "title": "비동기식",
     "permalink": "/ko/build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer"
   },
   "next": {

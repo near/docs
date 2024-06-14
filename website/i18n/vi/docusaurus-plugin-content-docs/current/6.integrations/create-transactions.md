@@ -4,7 +4,7 @@ title: Tạo Các Transaction
 sidebar_label: Tạo Transaction
 ---
 
-Để tạo & xử lý các transaction bạn sẽ cần đến thư viện API JavaScript của chúng tôi: [`near-api-js`](/develop/integrate/frontend). Có rất nhiều cách để tạo các transaction nhưng trong ví dụ này chúng tôi sẽ chỉ cho bạn hai cách để tạo một transaction đơn giản để transfer token.
+To construct & process transactions you will need our API JavaScript library: [`near-api-js`](/build/web3-apps/integrate-contracts). Có rất nhiều cách để tạo các transaction nhưng trong ví dụ này chúng tôi sẽ chỉ cho bạn hai cách để tạo một transaction đơn giản để transfer token.
 
 - [HIGH LEVEL](#high-level----create-a-transaction) - _Cách dễ dàng nhất để tạo một transaction_
 - [LOW LEVEL](#low-level----create-a-transaction) - _thực hiện chính xác những gì transaction ở trên đang làm, nhưng sẽ đi vào chi tiết từng bước cụ thể của toàn bộ quy trình cho những ai quan tâm_

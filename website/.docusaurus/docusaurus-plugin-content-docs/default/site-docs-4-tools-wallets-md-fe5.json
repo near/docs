@@ -5,7 +5,7 @@
   "source": "@site/../docs/4.tools/wallets.md",
   "sourceDirName": "4.tools",
   "slug": "/tools/wallets",
-  "permalink": "/zh-CN/tools/wallets",
+  "permalink": "/tools/wallets",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/4.tools/wallets.md",
@@ -21,10 +21,10 @@
   "sidebar": "tools",
   "previous": {
     "title": "Wallet Selector",
-    "permalink": "/zh-CN/tools/wallet-selector"
+    "permalink": "/tools/wallet-selector"
   },
   "next": {
     "title": "FastNEAR API",
-    "permalink": "/zh-CN/tools/fastnear-api"
+    "permalink": "/tools/fastnear-api"
   }
 }

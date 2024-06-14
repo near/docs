@@ -57,7 +57,7 @@ near contract deploy <accountId> use-file <route_to_wasm> without-init-call netw
 2. Promise를 생성하여 자체적으로 배포합니다.
 
 <CodeTabs>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="rust" language="rust">
     <Github fname="update.rs"
         url="https://github.com/near-examples/update-migrate-rust/blob/main/self-updates/base/src/update.rs"
         start="10" end="31" />
@@ -90,7 +90,7 @@ near contract call-function as-transaction <contract-account> update_contract fi
 
 </TabItem>
 
-<TabItem value="🌐 JavaScript">
+<TabItem value="js" label="🌐 JavaScript">
 
 ```js
 // Load the contract's raw bytes
@@ -147,7 +147,12 @@ However, deploying a contract that **modifies or removes structures**  stored in
 메시지를 저장하는 방명록이 있고, 사용자가 이러한 메시지에 대해 "프리미엄"으로 지불할 수 있다고 상상해 보세요. 다음과 같은 상태를 사용하여 메시지 및 결제를 추적할 수 있습니다.
 
 <CodeTabs>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="js" language="js">
+    <Github fname="index.js"
+          url="https://github.com/near/near-sdk-js/blob/develop/examples/src/basic-updates-base.js"
+          start="16" end="37" /></Language>
+
+  <Language value="rust" language="rust">
     <Github fname="lib.rs"
         url="https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/base/src/lib.rs"
         start="10" end="21" />
@@ -156,12 +161,18 @@ However, deploying a contract that **modifies or removes structures**  stored in
 
 </CodeTabs>
 
-#### 컨트랙트 업데이트
+#### Update Contract
 
-만약 어느 시점에서 `PostedMessage` 내 `payments`를 추적할 수 있다는 것을 깨달아서, 컨트랙트를 다음과 같이 변경했다고 해봅시다.
+At some point you realize that you could keep track of the `payments` inside of the `PostedMessage` itself,
+so you change the contract to:
 
 <CodeTabs>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="js" language="js">
+    <Github fname="index.js"
+          url="https://github.com/near/near-sdk-js/blob/develop/examples/src/basic-updates-update.js"
+          start="23" end="45" /></Language>
+
+  <Language value="rust" language="rust">
     <Github fname="lib.rs"
         url="https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/update/src/lib.rs"
         start="12" end="23" />
@@ -170,19 +181,26 @@ However, deploying a contract that **modifies or removes structures**  stored in
 
 </CodeTabs>
 
-#### 호환되지 않는 상태
+#### Incompatible States
 
-초기화된 계정에 업데이트를 배포하면, 다음과 같은 이유로 컨트랙트는 계정 ​​상태를 역직렬화하지 못합니다.
+If you deploy the update into an initialized account the contract will fail to deserialize the account's state,
+because:
 
-1. (이전 컨트랙트로부터) 상태에 저장된 추가 `payments` 벡터가 존재합니다.
-2. 저장된 `PostedMessages`에는 (이전 컨트랙트와 같이) `payment` 필드가 존재하지 않습니다.
+1. There is an extra `payments` vector saved in the state (from the previous contract)
+2. The stored `PostedMessages` are missing the `payment` field (as in the previous contract)
 
 #### Migrating the State
 
-이 문제를 해결하려면, 이전 상태를 거쳐 `payments` 벡터를 제거하고, `PostedMessages`에 정보를 추가하는 메서드를 구현해야 합니다.
+To fix the problem, you need to implement a method that goes through the old state, removes the `payments` vector and
+adds the information to the `PostedMessages`:
 
 <CodeTabs>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="js" language="js">
+    <Github fname="index.js"
+          url="https://github.com/near/near-sdk-js/blob/develop/examples/src/basic-updates-update.js"
+          start="7" end="70" /></Language>
+
+  <Language value="rust" language="rust">
     <Github fname="lib.rs"
         url="https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/update/src/migrate.rs"
         start="3" end="46" />
@@ -191,10 +209,10 @@ However, deploying a contract that **modifies or removes structures**  stored in
 
 </CodeTabs>
 
-실제로 `migrate`는 기존 상태(`[#init(ignore_state)]`)를 **무시하는**
+Notice that `migrate` is actually an [initialization method](../anatomy/anatomy.md#initialization-method) that **ignores** the existing state (`[#init(ignore_state)]`), thus being able to execute and rewrite the state.
 
 :::tip
 
-You can follow a migration step by step in the [official migration example](https://github.com/near-examples/update-migrate-rust/tree/main/basic-updates/base)
-
+You can follow a migration step by step in the [official migration example](https://github.com/near-examples/update-migrate-rust/tree/main/basic-updates/base)\
+Javascript migration example testfile can be found on here: [test-basic-updates.ava.js](https://github.com/near/near-sdk-js/blob/develop/examples/__tests__/test-basic-updates.ava.js), run by this command: `pnpm run test:basic-update` in examples directory.
 :::

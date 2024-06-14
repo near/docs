@@ -30,7 +30,7 @@ Before moving on, let's talk about these changes and how to think about them, be
 
 `const PUZZLE_NUMBER: u8 = 1;`
 
-This is an in-memory value, meaning that when the smart contract is spun up and executed in the virtual machine, the value `1` is contained in the contract code. This differs from the next change, where a field is added to the struct containing the `#[near_bindgen]` macro. The field `crossword_solution` has the type of `String` and, like any other fields added to this struct, the value will live in **persistent storage**. With NEAR, storage is "paid for" via the native NEAR token (Ⓝ). It is not "state rent" but storage staking, paid once, and returned when storage is deleted. This helps incentivize users to keep their state clean, allowing for a more healthy chain. Read more about [storage staking here](https://docs.near.org/concepts/storage/storage-staking).
+This is an in-memory value, meaning that when the smart contract is spun up and executed in the virtual machine, the value `1` is contained in the contract code. This differs from the next change, where a field is added to the struct containing the `#[near]` macro. The field `crossword_solution` has the type of `String` and, like any other fields added to this struct, the value will live in **persistent storage**. With NEAR, storage is "paid for" via the native NEAR token (Ⓝ). It is not "state rent" but storage staking, paid once, and returned when storage is deleted. This helps incentivize users to keep their state clean, allowing for a more healthy chain. Read more about [storage staking here](https://docs.near.org/concepts/storage/storage-staking).
 
 Let's now look at the three new functions:
 
@@ -75,7 +75,7 @@ Well, logging is ultimately captured inside blocks added to the blockchain. (Mor
 Here's what we'll want to do:
 
 <figure>
-    <img src={teachingDeployment} alt="선생님은 스마트 컨트랙트를 적절하게 배포하는 방법에 대한 지침이 있는 칠판을 보여줍니다. 1. 컨트랙트 구축. 2. 하위 계정 만들기(또는 계정이 있는 경우 삭제하고 다시 만들기) 3. 하위 계정에 배포 4. 상호작용 jeheycell.near 그림"/>
+    <img src={teachingDeployment} alt="선생님은 스마트 컨트랙트를 적절하게 배포하는 방법에 대한 지침이 있는 칠판을 보여줍니다. 1. 컨트랙트 구축. 2. 하위 계정 만들기(또는 계정이 있는 경우 삭제하고 다시 만들기) 3. 하위 계정에 배포 4. 4. 상호작용 jeheycell.near 그림"/>
     <figcaption className="full-width"><a href="https://twitter.com/artcultureac" target="_blank">jeheycell.near</a> 그림</figcaption>
 </figure>
 

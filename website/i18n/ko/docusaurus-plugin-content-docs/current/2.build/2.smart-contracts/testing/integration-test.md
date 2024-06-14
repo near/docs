@@ -30,7 +30,7 @@ All of our [examples](https://github.com/near-examples/docs-examples) come with 
 Lets take a look at the test of our [Quickstart Project](../quickstart.md) [👋 Hello NEAR](https://github.com/near-examples/hello-near-examples), where we deploy the contract on an account and test it correctly retrieves and sets the greeting.
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="js">
+  <Language value="js" language="js">
     <Github fname="main.ava.ts"
             url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/sandbox-ts/main.ava.ts" start="8" end="43"/></Language>
 </CodeTabs>
@@ -42,7 +42,7 @@ Lets take a look at the test of our [Quickstart Project](../quickstart.md) [👋
 In most cases we will want to test complex methods involving multiple users and money transfers. A perfect example for this is our [Donation Example](https://github.com/near-examples/donation-examples), which enables users to `donate` money to a beneficiary. Lets see its integration tests
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="js">
+  <Language value="js" language="js">
     <Github fname="main.ava.ts"
             url="https://github.com/near-examples/donation-examples/blob/main/contract-ts/sandbox-ts/src/main.ava.ts"
             start="50" end="73" /></Language>
@@ -59,7 +59,7 @@ NEAR Workspaces allows you to write tests once, and run them either on `testnet`
 [블록체인을 스푸닝하는 것](https://coinmarketcap.com/alexandria/glossary/spoon-blockchain)은 한 네트워크에서 다른 네트워크로 데이터를 복사하는 것입니다. NEAR 작업 공간을 사용하면, Mainnet 또는 Testnet 컨트랙트에서 로컬 샌드박스 환경으로 데이터를 쉽게 복사할 수 있습니다.
 
 <Tabs groupId="code-tabs">
-<TabItem value="🌐 JavaScript" default>
+<TabItem value="js" label="🌐 JavaScript" default>
 
 ```ts
 const refFinance = await root.importContract({
@@ -81,7 +81,7 @@ This would copy the Wasm bytes and contract state from [v2.ref-finance.near](htt
 
 </TabItem>
 
-<TabItem value="🦀 Rust">
+<TabItem value="rust" label="🦀 Rust">
 
 `testnet`에서 가져오려는 컨트랙트 이름과, 특정 시간을 다시 참조하는 블록 ID를 지정하세요(참조하는 컨트랙트가 변경되거나 업데이트된 경우). (Just in case the contract you're referencing has been changed or updated)
 
@@ -146,7 +146,7 @@ async fn pull_contract(owner: &Account, worker: &Worker<Sandbox>) -> anyhow::Res
 트랜잭션은 컨트랙트가 프로그램된 방식으로 상태를 변경하는 컨트랙트 호출만 포함할 수 있기 때문에, 트랜잭션을 통해 컨트랙트 상태에 대해 임의로 변경하는 작업을 수행할 수 없음을 명심하세요. 예를 들어 NFT 컨트랙트를 사용하면 소유권을 가진 NFT에 대해 작업을 수행할 수는 있지만, 다른 계정이 소유한 NFT에 대해 작업하는 것은 불가능합니다. 이것은 NFT 컨트랙트의 예상된 작동 방식입니다. 그러나 테스트를 위해 다른 사람의 NFT를 변경하고 싶을 수 있습니다. 이를 "컨트랙트 상태의 임의 변경"이라고 하며, `patchState`를 통해 수행할 수 있습니다.
 
 <Tabs groupId="code-tabs">
-<TabItem value="🌐 JavaScript" >
+<TabItem value="js" label="🌐 JavaScript" >
 
 ```js
     const {contract, ali} = t.context.accounts;
@@ -176,7 +176,7 @@ async fn pull_contract(owner: &Account, worker: &Worker<Sandbox>) -> anyhow::Res
 
 </TabItem>
 
-<TabItem value="🦀 Rust" >
+<TabItem value="rust" label="🦀 Rust" >
 
 ```rust
     // Grab STATE from the testnet status_message contract. This contract contains the following data:
@@ -233,15 +233,15 @@ async fn pull_contract(owner: &Account, worker: &Worker<Sandbox>) -> anyhow::Res
 `workspaces` offers support for forwarding the state of the blockchain to the future. 즉, 시간에 민감한 데이터가 필요한 컨트랙트는 샌드박스의 블록이 생성될 때까지 앉아서 기다릴 필요가 없습니다. We can simply just call `worker.fast_forward` to get us further in time:
 
 <Tabs groupId="code-tabs">
-<TabItem value="🌐 JavaScript" default>
+<TabItem value="js" label="🌐 JavaScript" default>
 
 <Github fname="fast-forward.ava.ts" language="js"
-       url="https://github.com/near/near-workspaces-js/blob/main/__tests__/08.fast-forward.ava.ts"
-       start="34" end="53" />
+    url="https://github.com/near/near-workspaces-js/blob/main/__tests__/08.fast-forward.ava.ts"
+    start="34" end="53" />
 
 </TabItem>
 
-<TabItem value="🦀 Rust">
+<TabItem value="rust" label="🦀 Rust">
 
 ```rust
 #[tokio::test]
@@ -285,7 +285,7 @@ You can create one [here](https://testnet.mynearwallet.com/).
 1. `testnet`에 작업자 설정 네트워크를 만들고 마스터 계정을 전달할 때
 
 <Tabs groupId="code-tabs">
-<TabItem value="🌐 JavaScript"  default>
+<TabItem value="js" label="🌐 JavaScript"  default>
 
 ```ts
 const worker = await Worker.init({
@@ -296,7 +296,7 @@ const worker = await Worker.init({
 
 </TabItem>
 
-<TabItem value="🦀 Rust" >
+<TabItem value="rust" label="🦀 Rust" >
 
 ```rust
 #[tokio::main]  // or whatever runtime we want
@@ -316,7 +316,7 @@ let worker = workspaces::testnet().await?;
 2. 테스트를 실행할 때, `NEAR_WORKSPACES_NETWORK` 및 `TESTNET_MASTER_ACCOUNT_ID` 환경 변수를 설정
 
 <Tabs groupId="code-tabs">
-<TabItem value="🌐 JavaScript"  default>
+<TabItem value="js" label="🌐 JavaScript"  default>
 
 ```bash
 NEAR_WORKSPACES_NETWORK=testnet TESTNET_MASTER_ACCOUNT_ID=<your master account Id> node test.js
@@ -331,7 +331,7 @@ NEAR_WORKSPACES_NETWORK=testnet TESTNET_MASTER_ACCOUNT_ID=<your master account I
 3. AVA를 통해 `near-workspaces`를 사용하고 있다면 커스텀 구성 파일을 사용할 수 있습니다. 다른 테스터들도 유사한 구성 파일을 허용합니다.
 
 <Tabs groupId="code-tabs">
-<TabItem value="🌐 JavaScript"  default>
+<TabItem value="js" label="🌐 JavaScript"  default>
 
 다음과 같은 형태로 `ava.testnet.config.cjs` 파일을 `package.json`과 동일한 디렉토리에 만듭니다.
 

@@ -42,7 +42,7 @@ So why would we have two data structures here? Again, if we end up with a large 
 
 <br/>
 
-As we remember from the previous chapter, every smart contract has a primary struct containing the `#[near_bindgen]` macro.
+As we remember from the previous chapter, every smart contract has a primary struct containing the `#[near(contract_state)]` macro.
 
 :::note Naming the primary struct Note in the [previous chapter](../01-basics/01-set-up-skeleton.md#start-writing-rust) we named our primary struct `Contract`, but in this chapter we'll call it `Crossword.`
 

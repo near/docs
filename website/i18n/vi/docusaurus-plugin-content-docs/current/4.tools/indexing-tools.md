@@ -12,7 +12,7 @@ Here's a quick overview of Indexer projects on the NEAR ecosystem:
 
 - [BigQuery](../2.build/6.data-infrastructure/big-query.md): Blockchain data indexing in NEAR Public Lakehouse is for anyone wanting to understand blockchain data.
 
-- [NEAR Lake Framework](../2.build/6.data-infrastructure/lake-framework/near-lake.md): a companion library to NEAR Lake. It allows you to build your own indexer that watches a stream of blocks **from a NEAR Lake data source** and allows you to **create your own logic to process that data**. Keep in mind this is **the one you want to use for future projects**, instead of the Indexer Framework. Read [why is better](https://docs.near.org/concepts/advanced/near-indexer-framework#why-is-it-better-than-near-indexer-framework).
+- [NEAR Lake Framework](../2.build/6.data-infrastructure/lake-framework/near-lake.md): a companion library to NEAR Lake. It allows you to build your own indexer that watches a stream of blocks **from a NEAR Lake data source** and allows you to **create your own logic to process that data**. Keep in mind this is **the one you want to use for future projects**, instead of the Indexer Framework. Read [why it is better](https://docs.near.org/concepts/advanced/near-indexer-framework#why-is-it-better-than-near-indexer-framework).
 
 - [Indexer.xyz Multichain Indexer](https://indexer.xyz/): Indexer.xyz is an application layer that you can build your NFT or DeFi applications entirely on top of. In addition to raw transaction indexing, Indexer.xyz provides you with a standardized GraphQL API layer to easily tap into transactions across contracts and chains.
 

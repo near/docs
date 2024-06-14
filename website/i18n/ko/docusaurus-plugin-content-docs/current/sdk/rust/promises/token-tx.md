@@ -27,12 +27,12 @@ Promise::new(account_id).transfer(amount);
 전체 컨트랙트 및 함수 호출의 맥락에서, 이는 다음과 같을 수 있습니다.
 
 ```rust
-use near_sdk::{json_types::U128, near_bindgen, AccountId, Promise};
+use near_sdk::{json_types::U128, near, AccountId, Promise};
 
-#[near_bindgen]
+#[near(contract_state)]
 pub struct Contract {}
 
-#[near_bindgen]
+#[near]
 impl Contract {
     pub fn pay(amount: U128, to: AccountId) -> Promise {
         Promise::new(to).transfer(amount.0)
@@ -40,7 +40,7 @@ impl Contract {
 }
 ```
 
-이 중 대부분은 이미 익숙할 것입니다 - 가져오기(import), [`near_bindgen`](../contract-structure/near-bindgen.md) 설정 , [borsh](../contract-interface/serialization-interface.md) 등을 포함하기 때문입니다. 전송 자체와 관련된 몇 가지 흥미로운 세부 정보는 다음과 같습니다.
+Most of this is boilerplate you're probably familiar with by now – imports, setting up [`near(contract_state)`](../contract-structure/near-bindgen.md), [borsh](../contract-interface/serialization-interface.md), etc. 전송 자체와 관련된 몇 가지 흥미로운 세부 정보는 다음과 같습니다.
 
 * `U128`(대문자 `U`): 여기에 정의된 `pay` 메서드는 JSON을 입력으로 받아들이고, JS의 숫자는 [`2^53-1`보다 클 수 없으므로](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER), JSON을 JS로 역직렬화하는 것과의 호환성을 위해 정수를 10진수 문자열로 직렬화합니다. `transfer` 메서드가 [yocto](https://en.wikipedia.org/wiki/Yocto-)NEAR 단위로 숫자를 받기 때문에, `2^53-1`보다 훨씬 더 큰 숫자가 필요할 수 있습니다.
 

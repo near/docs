@@ -1,0 +1,28 @@
+{
+  "id": "build/smart-contracts/anatomy/functions",
+  "title": "External Interface",
+  "description": "Smart contracts expose functions so users can interact with them. There are different types of functions including read-only, private and payable.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.build/2.smart-contracts/anatomy/functions.md",
+  "sourceDirName": "2.build/2.smart-contracts/anatomy",
+  "slug": "/build/smart-contracts/anatomy/functions",
+  "permalink": "/zh-CN/build/smart-contracts/anatomy/functions",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/anatomy/functions.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "functions",
+    "title": "External Interface",
+    "hide_table_of_contents": true
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "State (Storage)",
+    "permalink": "/zh-CN/build/smart-contracts/anatomy/storage"
+  },
+  "next": {
+    "title": "SDK Types",
+    "permalink": "/zh-CN/build/smart-contracts/anatomy/types"
+  }
+}

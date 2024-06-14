@@ -1,7 +1,7 @@
 ---
 id: fungible-tokens
 title: 대체 가능한 토큰
-sidebar_label: 대체 가능한 토큰 (Fungible Token)
+sidebar_label: 대체 가능한 토큰
 ---
 
 ## 소개 {#introduction}
@@ -72,32 +72,31 @@ date: Thu, 27 May 2021 12:53:38 GMT
 ## FT에 대한 정보 얻기 {#get-info-about-the-ft}
 
 다음과 같은 함수를 호출하여 `name`, `decimals`, `icon` 및 기타 매개변수를 가져올 수 있습니다.
+  - using NEAR CLI:
 
-- using NEAR CLI:
+```bash
+near view <contract_account_id> ft_metadata
+```
 
-  ```bash
-  near view <contract_account_id> ft_metadata
-  ```
+Result:
 
-  결과:
+```bash
+View call: ft.demo.testnet.ft_metadata()
+{
+  spec: 'ft-1.0.0',
+  name: 'Example Token Name',
+  symbol: 'MOCHI',
+  icon: null,
+  reference: null,
+  reference_hash: null,
+  decimals: 24
+}
+```
 
-  ```bash
-  View call: ft.demo.testnet.ft_metadata()
-  {
-    spec: 'ft-1.0.0',
-    name: 'Example Token Name',
-    symbol: 'MOCHI',
-    icon: null,
-    reference: null,
-    reference_hash: null,
-    decimals: 24
-  }
-  ```
+  - with JSON RPC call:
 
-- JSON RPC 호출 사용:
-
-  ```bash
-  http post https://rpc.testnet.near.org jsonrpc=2.0 id=ftmetadata method=query \
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=ftmetadata method=query \
   params:='{
     "request_type": "call_function",
     "finality": "final",
@@ -105,35 +104,35 @@ date: Thu, 27 May 2021 12:53:38 GMT
     "method_name": "ft_metadata",
     "args_base64": ""
   }'
-  ```
+```
 
-  응답 예시:
+Example response:
 
-  ```bash
-  HTTP/1.1 200 OK
-  Alt-Svc: clear
-  Via: 1.1 google
-  access-control-allow-origin:
-  content-length: 604
-  content-type: application/json
-  date: Wed, 02 Jun 2021 15:51:17 GMT
+```bash
+HTTP/1.1 200 OK
+Alt-Svc: clear
+Via: 1.1 google
+access-control-allow-origin:
+content-length: 604
+content-type: application/json
+date: Wed, 02 Jun 2021 15:51:17 GMT
 
-  {
-      "id": "ftmetadata",
-      "jsonrpc": "2.0",
-      "result": {
-          "block_hash": "B3fu3v4dmn19B6oqjHUXN3k5NhdP9EW5kkjyuFUDpa1r",
-          "block_height": 50061565,
-          "logs": [],
-          "result": [ 123, 34, 115, 112, 101, 99, 34, 58, 34, 102, 116, 45, 49, 46, 48, 46, 48, 34, 44, 34, 110, 97, 109, 101, 34, 58, 34, 69, 120, 97, 109, 112, 108, 101, 32, 84, 111, 107, 101, 110, 32, 78, 97, 109, 101, 34, 44, 34, 115, 121, 109, 98, 111, 108, 34, 58, 34, 77, 79, 67, 72, 73, 34, 44, 34, 105, 99, 111, 110, 34, 58, 110, 117, 108, 108, 44, 34, 114, 101, 102, 101, 114, 101, 110, 99, 101, 34, 58, 110, 117, 108, 108, 44, 34, 114, 101, 102, 101, 114, 101, 110, 99, 101, 95, 104, 97, 115, 104, 34, 58, 110, 117, 108, 108, 44, 34, 100, 101, 99, 105, 109, 97, 108, 115, 34, 58, 50, 52, 125 ]
-      }
+{
+  "id": "ftmetadata",
+  "jsonrpc": "2.0",
+  "result": {
+      "block_hash": "B3fu3v4dmn19B6oqjHUXN3k5NhdP9EW5kkjyuFUDpa1r",
+      "block_height": 50061565,
+      "logs": [],
+      "result": [ 123, 34, 115, 112, 101, 99, 34, 58, 34, 102, 116, 45, 49, 46, 48, 46, 48, 34, 44, 34, 110, 97, 109, 101, 34, 58, 34, 69, 120, 97, 109, 112, 108, 101, 32, 84, 111, 107, 101, 110, 32, 78, 97, 109, 101, 34, 44, 34, 115, 121, 109, 98, 111, 108, 34, 58, 34, 77, 79, 67, 72, 73, 34, 44, 34, 105, 99, 111, 110, 34, 58, 110, 117, 108, 108, 44, 34, 114, 101, 102, 101, 114, 101, 110, 99, 101, 34, 58, 110, 117, 108, 108, 44, 34, 114, 101, 102, 101, 114, 101, 110, 99, 101, 95, 104, 97, 115, 104, 34, 58, 110, 117, 108, 108, 44, 34, 100, 101, 99, 105, 109, 97, 108, 115, 34, 58, 50, 52, 125 ]
   }
-  ```
+}
+```
 
-  이 경우 디코딩된 결과는 다음과 같습니다.
+Decoded result in this case is:
 
-  ```json
-  {
+```json
+{
     "spec": "ft-1.0.0",
     "name": "Example Token Name",
     "symbol": "MOCHI",
@@ -141,34 +140,34 @@ date: Thu, 27 May 2021 12:53:38 GMT
     "reference": null,
     "reference_hash": null,
     "decimals": 24
-  }
-  ```
+}
+```
 
 ## 간단한 전송 {#simple-transfer}
 
-이 가이드를 따르려면, 먼저 트랜잭션 생성 방법에 대한 [단계별 지침](/integrator/create-transactions#low-level----create-a-transaction)을 확인하시기 바랍니다.
+To follow this guide, please check the [step by step instructions](/integrations/create-transactions#low-level----create-a-transaction) on how to create a transaction first.
 
-대체 가능한 토큰을 계정에 보내려면, 수신자에게 스토리지 보증금이 있어야 합니다. NEAR의 각 스마트 컨트랙트는 사용된 스토리지를 고려해야 하고, 대체 가능한 토큰 컨트랙트 내 각 계정은 소량의 스토리지를 차지하는 키-값 쌍이기 때문입니다. 자세한 내용은 [NEAR에서 스토리지가 작동하는 방식](/concepts/storage/storage-staking)을 참조하세요. 계정이 이 FT에 대한 스토리지를 예치했는지 확인하려면 다음 과정을 수행하면 됩니다.
+In order to send a fungible token to an account, the receiver must have a storage deposit. This is because each smart contract on NEAR must account for storage used, and each account on a fungible token contract is a key-value pair, taking up a small amount of storage. For more information, please see [how storage works in NEAR](/concepts/storage/storage-staking). To check if account has deposited the storage for this FT do the following:
 
-우선 계정의 스토리지 잔액을 가져옵니다. `storage_balance_of` 함수는 예치된 스토리지의 양을 반환하거나, 보증금이 없는 경우 `null`을 반환합니다.
+Get storage balance of the account. `storage_balance_of` function returns the amount of deposited storage or `null` if there is no deposit.
+  - using NEAR CLI:
 
-- using NEAR CLI:
+```bash
+near view <contract_account_id> storage_balance_of '{"account_id": "<user_account_id>"}'
+```
 
-  ```bash
-  near view <contract_account_id> storage_balance_of '{"account_id": "<user_account_id>"}'
-  ```
 
-  결과:
+    Result:
 
-  ```bash
-  View call: ft.demo.testnet.storage_balance_of({"account_id": "serhii.testnet"})
-  null
-  ```
+```bash
+View call: ft.demo.testnet.storage_balance_of({"account_id": "serhii.testnet"})
+null
+```
 
-- JSON RPC 호출 사용:
+  - with JSON RPC call:
 
-  ```bash
-  http post https://rpc.testnet.near.org jsonrpc=2.0 id=storagebalanceof method=query \
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=storagebalanceof method=query \
   params:='{
      "request_type": "call_function",
      "finality": "final",
@@ -176,51 +175,51 @@ date: Thu, 27 May 2021 12:53:38 GMT
      "method_name": "storage_balance_of",
      "args_base64": "eyJhY2NvdW50X2lkIjogInNlcmhpaS50ZXN0bmV0In0K"
   }'
-  ```
+```
 
-  응답 예시:
+Example response:
 
-  ```bash
-  HTTP/1.1 200 OK
-  Alt-Svc: clear
-  Via: 1.1 google
-  access-control-allow-origin:
-  content-length: 173
-  content-type: application/json
-  date: Wed, 02 Jun 2021 14:22:01 GMT
-  {
-      "id": "storagebalanceof",
-      "jsonrpc": "2.0",
-      "result": {
-          "block_hash": "EkM2j4yxRVoQ1TCqF2KUb7J4w5G1VsWtMLiycq6k3f53",
-          "block_height": 50054247,
-          "logs": [],
-          "result": [ 110, 117, 108, 108 ]
-      }
+```bash
+HTTP/1.1 200 OK
+Alt-Svc: clear
+Via: 1.1 google
+access-control-allow-origin:
+content-length: 173
+content-type: application/json
+date: Wed, 02 Jun 2021 14:22:01 GMT
+{
+  "id": "storagebalanceof",
+  "jsonrpc": "2.0",
+  "result": {
+      "block_hash": "EkM2j4yxRVoQ1TCqF2KUb7J4w5G1VsWtMLiycq6k3f53",
+      "block_height": 50054247,
+      "logs": [],
+      "result": [ 110, 117, 108, 108 ]
   }
-  ```
+}
+```
 
-  이 경우 디코딩된 결과는 `null`입니다.
+Decoded result in this case is `null`.
 
-FT에 필요한 최소 스토리지를 확보하세요. (이는 계정의 키-값 쌍에 사용되는 스토리지입니다)
+Get the minimum storage required for FT. (The storage used for an account's key-value pair.)
 
-- using NEAR CLI:
+  - using NEAR CLI:
 
-  ```bash
-  near view <contract_account_id> storage_balance_bounds`
-  ```
+```bash
+near view <contract_account_id> storage_balance_bounds`
+```
 
-  결과는 다음과 같습니다.
+Result:
 
-  ```bash
-  View call: ft.demo.testnet.storage_balance_bounds()
-  { min: '1250000000000000000000', max: '1250000000000000000000' }
-  ```
+```bash
+View call: ft.demo.testnet.storage_balance_bounds()
+{ min: '1250000000000000000000', max: '1250000000000000000000' }
+```
 
-- JSON RPC 호출 사용
+  - with JSON RPC call
 
-  ```bash
-  http post https://rpc.testnet.near.org jsonrpc=2.0 id=storagebalancebounds method=query \
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=storagebalancebounds method=query \
   params:='{
       "request_type": "call_function",
       "finality": "final",
@@ -228,63 +227,62 @@ FT에 필요한 최소 스토리지를 확보하세요. (이는 계정의 키-�
       "method_name": "storage_balance_bounds",
       "args_base64": ""
   }'
-  ```
+```
 
-  응답 예시:
+Example response:
 
-  ```bash
-  HTTP/1.1 200 OK
-  Alt-Svc: clear
-  Via: 1.1 google
-  access-control-allow-origin:
-  content-length: 357
-  content-type: application/json
-  date: Wed, 02 Jun 2021 15:42:49 GMT
+```bash
+HTTP/1.1 200 OK
+Alt-Svc: clear
+Via: 1.1 google
+access-control-allow-origin:
+content-length: 357
+content-type: application/json
+date: Wed, 02 Jun 2021 15:42:49 GMT
 
-  {
-      "id": "storagebalancebounds",
-      "jsonrpc": "2.0",
-      "result": {
-          "block_hash": "Fy3mBqwj5nvUDha3X7G61kmUeituHASEX12oCASrChEE",
-          "block_height": 50060878,
-          "logs": [],
-          "result": [ 123, 34, 109, 105, 110, 34, 58, 34, 49, 50, 53, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 34, 44, 34, 109, 97, 120, 34, 58, 34, 49, 50, 53, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 34, 125 ]
-      }
+{
+  "id": "storagebalancebounds",
+  "jsonrpc": "2.0",
+  "result": {
+      "block_hash": "Fy3mBqwj5nvUDha3X7G61kmUeituHASEX12oCASrChEE",
+      "block_height": 50060878,
+      "logs": [],
+      "result": [ 123, 34, 109, 105, 110, 34, 58, 34, 49, 50, 53, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 34, 44, 34, 109, 97, 120, 34, 58, 34, 49, 50, 53, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 34, 125 ]
   }
-  ```
+}
+```
 
-  디코딩된 결과는 다음과 같은 형태입니다.
+Decoded result should look similar to:
 
-  ```json
+```json
   {
     "min": "1250000000000000000000",
     "max": "1250000000000000000000"
   }
-  ```
+```
 
-간단한 예시를 들면, 이 컨트랙트는 자유 형식의 텍스트를 저장할 수 있는 스마트 컨트랙트와 비교했을 때 가변 스토리지가 없는 형태를 가지고 있습니다. 이 경우 필요한 스토리지는 오직 계정 키-값 쌍을 위한 공간이며, 항상 `1250000000000000000000` yoctoⓃ 만큼의 스토리지 보증금으로 처리됩니다.
+Basic fungible tokens are simple smart contracts that don't have variable storage as compared to a smart contract that might store free-form text, for instance. The only storage needed is for an accounts key-value pair, which will always be covered by the `1250000000000000000000` yoctoⓃ storage balance.
 
-스토리지에 대한 보증금이 충분하지 않거나, 반환된 값이 `null`인 경우, 다음 명령으로 더 많은 스토리지 보증금을 예치해야 합니다.
+If there is not enough deposit for the storage or returned value is `null` - you should deposit more storage with the next command:
+  - using NEAR CLI, don't forget to convert from yoctoⓃ to Ⓝ:
 
-- NEAR CLI 사용(yoctoⓃ를 Ⓝ로 바꾸는 것 잊지 말기!):
+```bash
+near call <contract_account_id> storage_deposit '{"account_id": "<user_account_id>"}' --accountId <sender_account_id> --deposit <deposit in Ⓝ>
+```
 
-  ```bash
-  near call <contract_account_id> storage_deposit '{"account_id": "<user_account_id>"}' --accountId <sender_account_id> --deposit <deposit in Ⓝ>
-  ```
+Result example:
 
-  결과 예시:
+```bash
+Scheduling a call: ft.demo.testnet.storage_deposit() with attached 0.125 NEAR
+Transaction Id 9CMrMMt3UzeU63FFrUyFb1gNGuHXxvKfHqYJzyFTAk6z
+To see the transaction in the transaction explorer, please open this url in your browser
+https://testnet.nearblocks.io/txns/9CMrMMt3UzeU63FFrUyFb1gNGuHXxvKfHqYJzyFTAk6z
+{ total: '1250000000000000000000', available: '0' }
+```
 
-  ```bash
-  Scheduling a call: ft.demo.testnet.storage_deposit() with attached 0.125 NEAR
-  Transaction Id 9CMrMMt3UzeU63FFrUyFb1gNGuHXxvKfHqYJzyFTAk6z
-  To see the transaction in the transaction explorer, please open this url in your browser
-  https://testnet.nearblocks.io/txns/9CMrMMt3UzeU63FFrUyFb1gNGuHXxvKfHqYJzyFTAk6z
-  { total: '1250000000000000000000', available: '0' }
-  ```
+  - with JSON RPC call:
 
-- JSON RPC 호출 사용:
-
-이 섹션의 맨 위에는 [`near-api-js` 라이브러리](https://www.npmjs.com/package/near-api-js)의 전체 추상화 없이 [트랜잭션을 구성](/integrator/create-transactions#low-level----create-a-transaction)하는 방법을 자세히 설명하는 링크가 있습니다.[ RPC 메서드 `broadcast_tx_commit`](https://docs.near.org/api/rpc/setup#send-transaction-await)를 사용하는 이 예제와 향후 예제의 경우, 트랜잭션의 높은 수준의 세부 정보만 전달하는 [의사 코드(pseudocode)](https://en.wikipedia.org/wiki/Pseudocode)처럼 작동하는 유사 JSON 객체를 제공할 것입니다. [RPC 메서드 `broadcast_tx_commit`](https://docs.near.org/api/rpc/setup#send-transaction-await)을 사용하는 현재 및 미래의 예를 위해, 우리는 [pseudocode](https://en.wikipedia.org/wiki/Pseudocode)와 유사하게 동작하도록 의도된 JSON과 유사한 객체를 제공할 것이며 트랜잭션의 높은 수준의 세부 정보만 제공할 것입니다. 아래의 코드 블록은 이에 대한 첫 번째 예시이며, `storage_deposit` 메서드를 포함해 현재 논의된 트랜잭션에 들어가는 내용을 자세히 설명합니다.
+  At the top of this section is a link detailing how to [construct a transaction](/integrations/create-transactions#low-level----create-a-transaction) without the full abstraction of the [`near-api-js` library](https://www.npmjs.com/package/near-api-js). For this and future examples that use the [RPC method `broadcast_tx_commit`](https://docs.near.org/api/rpc/setup#send-transaction-await) we will provide a JSON-like object meant to act similar to [pseudocode](https://en.wikipedia.org/wiki/Pseudocode), only imparting high-level details of a transaction. This code block below is the first example of this, detailing what goes into the transaction discussed currently, involving the method `storage_deposit`.
 
 ```yaml
 Transaction: {
@@ -306,15 +304,14 @@ Transaction: {
 }
 ```
 
-````
-  ```bash
-  http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
-      params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZi/qoVEgrAAAPAAAAZnQuZGVtby50ZXN0bmV0JYbWPOu0P9T32vtUKnZSh+EaoboQqg0/De2i8Y+AjHIBAAAAAg8AAABzdG9yYWdlX2RlcG9zaXQCAAAAe30AQHoQ81oAAAAAILSd2XlDeBoAAAAAAAAAZF7+s4lcHOzy+re59VErt7LcZkPMMUVgOJV8LH5TsLBBv+8h/5tZ6+HFwxSp605A4c46oS9Jw4KBRXZD07lKCg=="]'
-  ```
-````
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
+  params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZi/qoVEgrAAAPAAAAZnQuZGVtby50ZXN0bmV0JYbWPOu0P9T32vtUKnZSh+EaoboQqg0/De2i8Y+AjHIBAAAAAg8AAABzdG9yYWdlX2RlcG9zaXQCAAAAe30AQHoQ81oAAAAAILSd2XlDeBoAAAAAAAAAZF7+s4lcHOzy+re59VErt7LcZkPMMUVgOJV8LH5TsLBBv+8h/5tZ6+HFwxSp605A4c46oS9Jw4KBRXZD07lKCg=="]'
+```
 
 <details>
-<summary>응답 예시:</summary>
+
+<summary>**Example Response:**</summary>
 
 ```json
 {
@@ -531,29 +528,28 @@ Transaction: {
 
 </details>
 
-토큰 전송:
+Transfer the tokens:
+  - using NEAR CLI:
 
-- using NEAR CLI:
+```bash
+near call <contract_account_id> ft_transfer '{"receiver_id": "<receiver_account_id>", "amount": "1"}' --accountId <sender_account_id> --amount 0.000000000000000000000001
+```
 
-  ```bash
-  near call <contract_account_id> ft_transfer '{"receiver_id": "<receiver_account_id>", "amount": "1"}' --accountId <sender_account_id> --amount 0.000000000000000000000001
-  ```
+Result example:
 
-  결과 예시:
+```bash
+Scheduling a call: berryclub.ek.near.ft_transfer({"receiver_id": "volovyk.near", "amount": "1"}) with attached 0.000000000000000000000001 NEAR
+Receipt: GDeE3Kv1JHgs71A22NEUbgq55r2Hvcnis8gCMyJtQ2mx
+    Log [berryclub.ek.near]: Transfer 1 from serhii.near to volovyk.near
+Transaction Id 3MkWKbXVP8wyy4pBofELqiE1pwx7ie2v3SKCwaobNcEe
+To see the transaction in the transaction explorer, please open this url in your browser
+https://nearblocks.io/txns/3MkWKbXVP8wyy4pBofELqiE1pwx7ie2v3SKCwaobNcEe
+''
+```
 
-  ```bash
-  Scheduling a call: berryclub.ek.near.ft_transfer({"receiver_id": "volovyk.near", "amount": "1"}) with attached 0.000000000000000000000001 NEAR
-  Receipt: GDeE3Kv1JHgs71A22NEUbgq55r2Hvcnis8gCMyJtQ2mx
-      Log [berryclub.ek.near]: Transfer 1 from serhii.near to volovyk.near
-  Transaction Id 3MkWKbXVP8wyy4pBofELqiE1pwx7ie2v3SKCwaobNcEe
-  To see the transaction in the transaction explorer, please open this url in your browser
-  https://nearblocks.io/txns/3MkWKbXVP8wyy4pBofELqiE1pwx7ie2v3SKCwaobNcEe
-  ''
-  ```
+  - with JSON RPC call:
 
-- JSON RPC 호출을 사용하면:
-
-트랜잭션 표현:
+Transaction representation:
 
 ```yaml
 Transaction: {
@@ -575,14 +571,12 @@ Transaction: {
 }
 ```
 
-````
-  ```bash
-  http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
-      params:='["CwAAAHNlcmhpaS5uZWFyAAmQpgZcJM5nMc6f3tqmw/YI4eAvc84ZgsKMRRRzhY/6CQAAAAAAAAARAAAAYmVycnljbHViLmVrLm5lYXLLWPIiUOElkDF3u4hLAMJ0Sjeo1V338pDdHIp70va3ewEAAAACCwAAAGZ0X3RyYW5zZmVyKwAAAHsicmVjZWl2ZXJfaWQiOiJ2b2xvdnlrLm5lYXIiLCJhbW91bnQiOiIxIn0AQHoQ81oAAAEAAAAAAAAAAAAAAAAAAAAA7fDOZQt3zCtdS05Y8XaZFlwO/Gd5wkkNAHShzDiLQXk4Q4ixpraLPMJivs35PZD0gocXl1iGFbQ46NG3VllzCA=="]'
-  ```
-````
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
+  params:='["CwAAAHNlcmhpaS5uZWFyAAmQpgZcJM5nMc6f3tqmw/YI4eAvc84ZgsKMRRRzhY/6CQAAAAAAAAARAAAAYmVycnljbHViLmVrLm5lYXLLWPIiUOElkDF3u4hLAMJ0Sjeo1V338pDdHIp70va3ewEAAAACCwAAAGZ0X3RyYW5zZmVyKwAAAHsicmVjZWl2ZXJfaWQiOiJ2b2xvdnlrLm5lYXIiLCJhbW91bnQiOiIxIn0AQHoQ81oAAAEAAAAAAAAAAAAAAAAAAAAA7fDOZQt3zCtdS05Y8XaZFlwO/Gd5wkkNAHShzDiLQXk4Q4ixpraLPMJivs35PZD0gocXl1iGFbQ46NG3VllzCA=="]'
+```
 
-이 트랜잭션의 세부 사항을 얻으려면, 다음과 같이 하면 됩니다.
+To get details of this transaction:
 
 ```bash
 http post https://archival-rpc.mainnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_tx_status \
@@ -590,7 +584,8 @@ http post https://archival-rpc.mainnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_
 ```
 
 <details>
-<summary>응답 예시:</summary>
+
+<summary>**Example Response:**</summary>
 
 ```json
 {
@@ -763,31 +758,31 @@ http post https://archival-rpc.mainnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_
 
 </details>
 
-이전 호출의 트랜잭션 해시를 통해, 나중에 동일한 정보를 얻을 수 있습니다.
+You can get the same info later by the transaction hash from the previous call:
 
-- using NEAR Explorer: https://nearblocks.io
+  - using NEAR Explorer: https://nearblocks.io
+
 
 <!--
 - using NEAR CLI:
 near tx-status <transaction_hash> --accountId <transaction_signer>
 -->
 
-- JSON RPC 호출 사용
+  - with JSON RPC call
 
 ```bash
-    http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENTAL_tx_status \
-    params:='[ "2Fy4714idMCoja7QLdGAbQZHzV2XEnUdwZX6yGa46VMX", "sender.testnet"]'
+  http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENTAL_tx_status \
+  params:='[ "2Fy4714idMCoja7QLdGAbQZHzV2XEnUdwZX6yGa46VMX", "sender.testnet"]'
 ```
 
-실패하는 테스트 트랜잭션을 생성하고, 응답을 조사해 봅시다. 이 계정에서 사용할 수 있는 더 많은 토큰을 보내려고 합니다.
+Let's create test transaction that should fail and investigate the response. We will try to send more tokens that are available on this account:
+  - using NEAR CLI:
 
-- using NEAR CLI:
+```bash
+near call <contract_account_id> ft_transfer '{"receiver_id": "<user_account_id>", "amount": "10000000000"}' --accountId <sender_account_id> --amount 0.000000000000000000000001
+```
 
-  ```bash
-  near call <contract_account_id> ft_transfer '{"receiver_id": "<user_account_id>", "amount": "10000000000"}' --accountId <sender_account_id> --amount 0.000000000000000000000001
-  ```
-
-- JSON RPC 호출 사용:
+  - with JSON RPC call:
 
 트랜잭션 표현:
 
@@ -811,14 +806,12 @@ Transaction: {
 }
 ```
 
-````
 ```bash
   http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
   params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZofqoVEgrAAAgAAAAZGV2LTE2MjMzMzM3OTU2MjMtMjEzOTk5NTk3NzgxNTm8Xq8BTIi6utG0424Gg7CknYzLH8RH/A409jq5o0zi7gEAAAACCwAAAGZ0X3RyYW5zZmVyPwAAAHsicmVjZWl2ZXJfaWQiOiJkZXYtMTYyMzMzMzkxNjM2OC01ODcwNzQzNDg3ODUzMyIsImFtb3VudCI6IjEifQBAehDzWgAAAQAAAAAAAAAAAAAAAAAAAABCwjqayKdpWgM6PE0ixzm/Gy0EtdpxVn0xehMTBReVfVAKIBTDPoPSaOdT8fAhk343F5uOMfSijhTqU2mWV3oD"]'
 ```
-````
 
-다음과 같이 트랜잭션 세부 사항을 얻을 수 있습니다.
+이 트랜잭션의 세부 사항을 얻으려면, 다음과 같이 할 수 있습니다.
 
 ```bash
 http post https://archival-rpc.mainnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_tx_status \
@@ -826,7 +819,8 @@ http post https://archival-rpc.mainnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_
 ```
 
 <details>
-<summary>응답 예시:</summary>
+
+<summary>**Example Response:**</summary>
 
 ```json
 {
@@ -1053,41 +1047,38 @@ http post https://archival-rpc.mainnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_
 
 </details>
 
-대체 가능한 토큰 전송이 성공적이었나요?
+Was the fungible token transfer successful?
+  - Look for `result` » `transaction_outcome` » `outcome` » see if `SuccessReceiptId` is a key
+  - if `SuccessReceiptId` is not a key, this fungible token transfer has `failed`.
+  - If it does have that key, get the value, which is a `receipt ID`
+  - Loop through `result` » `receipts_outcome` until you find an object that ID (from above) under the id key
+  - in that object check `outcome` » `status` » (see if SuccessValue is a key)
+  - If SuccessValue is a key, fungible token transfer succeeded, if not, it failed.
 
-- `result` » `transaction_outcome` » `outcome`으로 가서 `SuccessReceiptId`가 키인지 확인합니다.
-- `SuccessReceiptId`가 키가 아니라면, 이 토큰 전송은 `실패`한 것입니다.
-- 만약 키가 있다면, `receipt ID` 값을 가져옵니다.
-- id 키 아래에서 (위에서 아래로) ID가 있는 객체를 찾을 때까지 `result` » `receipts_outcome`를 반복합니다.
-- 해당 객체에서 `outcome` » `status`에서 SuccessValue가 키인지 확인합니다.
-- SuccessValue이 키가 맞다면, 토큰 전송은 성공합니다.
-
-얼마나 많은 대체 가능한 토큰이 전송되었는지 확인하려면 다음을 살펴보세요.
-
-- `result` » `transaction` » `actions` » `FunctionCall` » `args`로 이동합니다.
-- 이는 JSON 페이로드를 제공하고, `amount` 키를 찾아줄 것입니다.
-- 이 값은 성공적으로 전송된 대체 가능한 토큰의 수를 나타내는 문자열화된 숫자가 포함할 것입니다.
+To determine how many fungible tokens were transferred, look at:
+  - `result` » `transaction` » `actions` » `FunctionCall` » `args`
+  - then take the args and `base64` decode it, that will give you a JSON payload and look for the `amount` key
+  - It will contain a stringified number that represents the number of fungible tokens that were successfully transferred
 
 ## 전송 및 호출 {#transfer-and-call}
 
-"전송 및 호출"을 사용하는 대체 가능한 토큰에 대한 새로운 아이디어가 있는 경우, [Nomicon 사양](https://nomicon.io/Standards/FungibleToken/Core.html#reference-level-explanation) 내 함수에 있는 설명을 검토하세요. 또한 [EIP-677](https://github.com/ethereum/EIPs/issues/677)의 유사한 아이디어를 참조하세요.
+If the idea of a fungible token using "transfer and call" is new, please review the comments above the function in [the Nomicon spec](https://nomicon.io/Standards/Tokens/FungibleToken/Core#reference-level-explanation). Also, see a similar idea [from EIP-677](https://github.com/ethereum/EIPs/issues/677).
 
-이 예에서는 [near-sdk-rs/examples/fungible-token](https://github.com/near/near-sdk-rs/tree/master/examples/fungible-token)에서 FT 컨트랙트를 구축하고 배포합니다.
+For this example we will build and deploy FT contracts from [near-sdk-rs/examples/fungible-token](https://github.com/near/near-sdk-rs/tree/master/examples/fungible-token).
 
-`ft` 컨트랙트(수신자)에서 `ft_transfer_call` 함수를 호출하고, 성공 및 실패 시나리오를 검토해 봅시다.
+Let's call `ft_transfer_call` function on `ft` contract (receiver) and examine successful and unsuccessful scenarios.
 
 ### 성공적인 전송 및 호출 {#successful-transfer-and-call}
+  Let's send 10 N to `DEFI` contract that requires only 9 N.
 
-9 N만 필요한 `DEFI` 컨트랙트에 10 N을 보내 봅시다.
+  - using NEAR CLI
+    ```bash
+    near call <ft_contract_id> ft_transfer_call '{"receiver_id": "<defi_contract_id>", "amount": "10", "msg": "take-my-money"}' --accountId <user_account_id> --amount 0.000000000000000000000001
+    ```
 
-- NEAR CLI 사용
-  ```bash
-  near call <ft_contract_id> ft_transfer_call '{"receiver_id": "<defi_contract_id>", "amount": "10", "msg": "take-my-money"}' --accountId <user_account_id> --amount 0.000000000000000000000001
-  ```
+  - with JSON RPC call
 
-- JSON RPC 호출 사용
-
-트랜잭션 표현:
+Transaction representation:
 
 ```yaml
 Transaction: {
@@ -1109,14 +1100,12 @@ Transaction: {
 }
 ```
 
-````
 ```bash
   http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
   params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZqPqoVEgrAAAgAAAAZGV2LTE2MjMzMzM3OTU2MjMtMjEzOTk5NTk3NzgxNTn9j4g2IJ8nGQ38i3+k+4WBAeJL1xP7ygQhC7CrvEG4NQEAAAACEAAAAGZ0X3RyYW5zZmVyX2NhbGxWAAAAeyJyZWNlaXZlcl9pZCI6ImRldi0xNjIzNjkzMTIxOTU1LTcxNjY3NjMyNTMxMTc2IiwiYW1vdW50IjoiMTAiLCJtc2ciOiJ0YWtlLW15LW1vbmV5In0AQHoQ81oAAAEAAAAAAAAAAAAAAAAAAAAANY2lHqJlAJYNDGEQiUNnmfiBV44Q1sdg45xNlNvlROOM+AtN1z3PSJqM6M6jAKXUwANoQTzFqXhIMHIjIPbTAA=="]'
 ```
-````
 
-이 트랜잭션의 세부 사항을 얻으려면, 다음과 같이 할 수 있습니다.
+To get details of this transaction:
 
 ```bash
 http post https://archival-rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_tx_status \
@@ -1124,7 +1113,8 @@ http post https://archival-rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_
 ```
 
 <details>
-<summary>응답 예시:</summary>
+
+<summary>**Example Response:**</summary>
 
 ```json
 {
@@ -1445,37 +1435,36 @@ http post https://archival-rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_
 
 </details>
 
-이제, 이전 섹션에서 설명한 단계를 따라 이러한 트랜잭션이 성공했는지 확인하겠습니다. 성공 여부 외에도, 일련의 교차 컨트랙트 호출(cross-contract call)에서 다양한 Receipt를 분석하여 얼마나 많은 대체 가능한 토큰이 전송되었는지 확인합시다. 이것은 우리가 살펴볼 가장 복잡한 경우입니다.
+Now, let's try to follow the steps described in the previous section and determine if these transactions was successful. In addition to being successful, let's analyze the various receipts in the series of cross-contract calls to determine how many fungible tokens were transferred. This will be the most complex case we'll look at.
 
-1. `result` » `transaction_outcome` » `outcome` » `status`로 가서 `SuccessReceiptId`가 키인지 확인합니다. 만약 아니라면, 토큰은 전송되지 않습니다.
-2. `SuccessReceiptId` 키의 값을 가져옵니다. 위 경우, 이는 `Hw6z8kJ7CSaC6SgyQzcmXzNX9gq1gaAnLS169qgyZ2Vk`입니다.
-3. 이제, `result` » `receipts`에서 `receipt_id`가 2단계의 값과 일치하는 receipt를 찾을 때까지 배열을 반복합니다. (receipt 내에서, `method_name: "ft_transfer_call"` 호출을 언급하는 요소가 `Actions` 아래에 있음을 주의하세요) 동일한 디렉토리의 JSON 내에는 `args` 키가 있습니다. JSON과 같은 수준에 `args` 키가 있습니다. 이는 메서드에 전달되는 인자의 base64 인코딩된 값입니다. 디코딩하면 다음과 같습니다.
+  1. `result` » `transaction_outcome` » `outcome` » `status`로 가서 `SuccessReceiptId`가 키인지 확인합니다. 만약 아니라면, 토큰은 전송되지 않습니다.
+  2. `SuccessReceiptId` 키의 값을 가져옵니다. 위 경우, 이는 `Hw6z8kJ7CSaC6SgyQzcmXzNX9gq1gaAnLS169qgyZ2Vk`입니다.
+  3. 이제, `result` » `receipts`에서 `receipt_id`가 2단계의 값과 일치하는 receipt를 찾을 때까지 배열을 반복합니다. (receipt 내에서, `method_name: "ft_transfer_call"` 호출을 언급하는 요소가 `Actions` 아래에 있음을 주의하세요) 동일한 디렉토리의 JSON 내에는 `args` 키가 있습니다. JSON과 같은 수준에 `args` 키가 있습니다. 이는 메서드에 전달되는 인자의 base64 인코딩된 값입니다. 디코딩하면 다음과 같습니다.
 
 ```json
 {"receiver_id":"dev-1623693121955-71667632531176","amount":"10","msg":"take-my-money"}
 ```
 
-4. `id`가 2단계의 값과 같은 객체를 찾을 때까지 `result` » `receipts_outcome`을 반복합니다. 1단계와 유사하게, 이 객체는 `SuccessReceiptId` 키를 담고 있는 `status` 필드도 포함할 것입니다. 다시, 만약 토큰이 전송된 것이라면, `SuccessReceiptId`의 값을 가져옵니다. 위 예시에서, 이 값은 `4Tc8MsrJZSMpNZx7u4jSqxr3WhRzqxaNHxLJFqz8tUPR`입니다.
-5. 이전 단계와 유사하게, `id`가 4단계의 값과 같은 객체를 찾을 때까지 `result` » `receipts_outcome`을 반복합니다. 해당 객체에서 `outcome` » `status`가 `SuccessValue`를 가지고 있는지 확인합니다. 이 `SuccessValue`는 수령 컨트랙트가 얼마나 많은 토큰을 토큰 컨트랙트로 "반환하고 있는지"을 나타냅니다. 위 예시에서 이 값은 `Ijki`로, 이는 `"9"`의 base64 인코딩된 버전입니다. 이 시점에서 우리는 10개의 대체 가능한 토큰이 전송되었고(3단계에서), 9개가 사용되었다는 것을 알 수 있습니다.
+  4. `id`가 2단계의 값과 같은 객체를 찾을 때까지 `result` » `receipts_outcome`을 반복합니다. 1단계와 유사하게, 이 객체는 `SuccessReceiptId` 키를 담고 있는 `status` 필드도 포함할 것입니다. 다시, 만약 토큰이 전송된 것이라면, `SuccessReceiptId`의 값을 가져옵니다. 위 예시에서, 이 값은 `4Tc8MsrJZSMpNZx7u4jSqxr3WhRzqxaNHxLJFqz8tUPR`입니다.
+  5. 이전 단계와 유사하게, `id`가 4단계의 값과 같은 객체를 찾을 때까지 `result` » `receipts_outcome`을 반복합니다. 해당 객체에서 `outcome` » `status`가 `SuccessValue`를 가지고 있는지 확인합니다. 이 `SuccessValue`는 수령 컨트랙트가 얼마나 많은 토큰을 토큰 컨트랙트로 "반환하고 있는지"을 나타냅니다. 위 예시에서 이 값은 `Ijki`로, 이는 `"9"`의 base64 인코딩된 버전입니다. 이 시점에서 우리는 10개의 대체 가능한 토큰이 전송되었고(3단계에서), 9개가 사용되었다는 것을 알 수 있습니다.
 
-좀 더 명확하게 하기 위해, 하나만 더 확인해보도록 하겠습니다. 4단계에서, 우리는 `result` » `receipts_outcome` 내 객체를 분리했습니다. 이는 `receipt_ids`의 배열이었고, 이는 꽤 흥미롭습니다. 해당 배열 내 첫 요소는 receipt ID `EB69xtJiLRh9RNzAHgBGmom8551hrK2xSRreqbjvJgu5`입니다. 만약 `result` » `receipts_outcome`을 반복하여 이 값이 `id` 키에 대한 값임을 찾았다면, `ft_on_transfer` 함수 내에서 컨트랙트가 토큰을 수령하는 작업이 발생했다는 것을 알게 될 것입니다. 이 객체에서 `status` » `SuccessValue`는 `"1"`의 base64 인코딩된 값인 `IjEi`입니다.
+For additional clarity, let's take a look at one more optional aspect. In step 4 we isolated an obeject in `result` » `receipts_outcome`. There's an array of `receipt_ids` that's particularly interesting. The first element in the array is the receipt ID `EB69xtJiLRh9RNzAHgBGmom8551hrK2xSRreqbjvJgu5`. If we loop through the `result` » `receipts_outcome` and find this as the value for the `id` key, we'll see what happened in the function `ft_on_transfer` which takes place in the contract receiving the fungible tokens. In this object the `status` » `SuccessValue` is `IjEi` which is the base64-encoded value of `"1"`.
 
-요약하면,
-
+In summary:
 1. 사용자는 대체 가능한 토큰 컨트랙트를 `ft_transfer_call` 메서드로 호출하여, 수신자 계정, 보낼 토큰 수 및 사용자 정의 정보를 지정하였습니다.
 2. 수신자 계정은 `ft_on_transfer`를 구현하여, 대체 가능한 토큰 컨트랙트의 콜백 함수로 `"1"`을 반환합니다.
 3. 대체 가능한 토큰 컨트랙트의 콜백은 `ft_resolve_transfer`이며, `"1"`을 반환합니다. 이는 1개의 토큰이 반환되었다는 의미이므로, 보내려는 10개에서 이를 뺍니다. 그런 다음 일련의 교차 컨트랙트 호출에서 사용된 토큰 수 `"9"`를 사용자에게 반환합니다.
 
 ### 실패한 전송 및 호출 {#failed-transfer-and-call}
+Let's try to send more tokens than the account has:
 
-계정에 있는 것보다 더 많은 토큰을 전송해 보겠습니다.
+  - using NEAR CLI
 
-- NEAR CLI 사용
-  ```bash
-      near call <ft_contract_id> ft_transfer_call '{"receiver_id": "<defi_contract_id>", "amount": "1000000000", "msg": "take-my-money"}' --accountId <user_account_id> --amount 0.000000000000000000000001
-  ```
+```bash
+    near call <ft_contract_id> ft_transfer_call '{"receiver_id": "<defi_contract_id>", "amount": "1000000000", "msg": "take-my-money"}' --accountId <user_account_id> --amount 0.000000000000000000000001
+```
 
-트랜잭션 표현:
+Transaction representation:
 
 ```yaml
 Transaction: {
@@ -1497,13 +1486,14 @@ Transaction: {
 }
 ```
 
-- JSON RPC 호출 사용
-  ```bash
-      http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
-      params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZn/qoVEgrAAAgAAAAZGV2LTE2MjMzMzM3OTU2MjMtMjEzOTk5NTk3NzgxNTnrbOQ93Wv9xxBwmq4yDYrssCpwKSI2bzjNNCCCHMZKNwEAAAACEAAAAGZ0X3RyYW5zZmVyX2NhbGxeAAAAeyJyZWNlaXZlcl9pZCI6ImRldi0xNjIzMzMzOTE2MzY4LTU4NzA3NDM0ODc4NTMzIiwiYW1vdW50IjoiMTAwMDAwMDAwMCIsIm1zZyI6InRha2UtbXktbW9uZXkifQBAehDzWgAAAQAAAAAAAAAAAAAAAAAAAABQh3k+7zG2m/Yz3O/FBrvLaBwR/5YRB5FbFnb27Nfu6BW/Wh77RFH7+ktBwGLBwFbJGxiumIcsqBiGXgg1EPMN"]'
-  ```
+  - with JSON RPC call
 
-이 트랜잭션의 세부 사항은 다음과 같이 얻을 수 있습니다.
+```bash
+  http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
+  params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZn/qoVEgrAAAgAAAAZGV2LTE2MjMzMzM3OTU2MjMtMjEzOTk5NTk3NzgxNTnrbOQ93Wv9xxBwmq4yDYrssCpwKSI2bzjNNCCCHMZKNwEAAAACEAAAAGZ0X3RyYW5zZmVyX2NhbGxeAAAAeyJyZWNlaXZlcl9pZCI6ImRldi0xNjIzMzMzOTE2MzY4LTU4NzA3NDM0ODc4NTMzIiwiYW1vdW50IjoiMTAwMDAwMDAwMCIsIm1zZyI6InRha2UtbXktbW9uZXkifQBAehDzWgAAAQAAAAAAAAAAAAAAAAAAAABQh3k+7zG2m/Yz3O/FBrvLaBwR/5YRB5FbFnb27Nfu6BW/Wh77RFH7+ktBwGLBwFbJGxiumIcsqBiGXgg1EPMN"]'
+```
+
+To get details of this transaction:
 
 ```bash
 http post https://archival-rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_tx_status \
@@ -1511,7 +1501,8 @@ http post https://archival-rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_
 ```
 
 <details>
-<summary>응답 예시:</summary>
+
+<summary>**Example response**:</summary>
 
 ```json
 {
@@ -1708,10 +1699,12 @@ http post https://archival-rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_
 
 </details>
 
-응답을 분석해 봅시다.
 
-- `result` » `transaction_outcome` » `outcome` » `status` » `SuccessReceiptId`는 `83AdQ16bpAC7BEUyF7zoRsAgeNW7HHmjhZLvytEsrygo`입니다.
-- `result` » `receipts_outcome` » `0` » `outcome` » `status`를 확인하고, 거기에서 상태가 `Failure`인지 찾아봅니다.
+Let's examine this response.
 
-:::tip 질문이 있으신가요? <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
+  * `result` » `transaction_outcome` » `outcome` » `status` » `SuccessReceiptId` is `83AdQ16bpAC7BEUyF7zoRsAgeNW7HHmjhZLvytEsrygo`
+  * check `result` » `receipts_outcome` » `0` » `outcome` » `status` and find `Failure` status there
+
+:::tip Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
 :::

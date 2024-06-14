@@ -45,7 +45,7 @@ NEAR Protocol has a sharded nature, meaning that more than one parallel network,
 
 ![Transaction execution](/docs/flow/03-tx-outcome-receipt.png)
 
-In the beginning there is a [Transaction](../../2.build/6.data-infrastructure/lake-data-structures/transaction.mdx), it contains instructions we want to be executed on the blockchain. 트랜잭션은 NEAR 블록체인으로 전송됩니다.
+We have found out that [Transactions](../../2.build/6.data-infrastructure/lake-data-structures/transaction.mdx) execute and the [ExecutionOutcome](../../2.build/6.data-infrastructure/lake-data-structures/execution_outcome.mdx) of the Transaction is always a [Receipt](../../2.build/6.data-infrastructure/lake-data-structures/receipt.mdx). 우리는 NEAR 프로토콜에서 데이터가 이동하는 방식의 주요 원칙을 배웠습니다.
 
 And yes, it is executed there immediately BUT the immediate result of the transaction execution is always just *an acknowledgement that it will be executed on the chain;* this internal execution request is known as [Receipt](../../2.build/6.data-infrastructure/lake-data-structures/receipt.mdx). You can think of the [Receipt](../../2.build/6.data-infrastructure/lake-data-structures/receipt.mdx) as an internal transaction that exists to pass information across shards.
 
@@ -53,7 +53,7 @@ And yes, it is executed there immediately BUT the immediate result of the transa
 
 Assuming we have two accounts living on different [Shards](../../2.build/6.data-infrastructure/lake-data-structures/shard.mdx) **alice.near** and **bob.near**. **alice.near** creates a [Transaction](../../2.build/6.data-infrastructure/lake-data-structures/transaction.mdx) to send a few tokens to **bob.near**. The [Transaction](../../2.build/6.data-infrastructure/lake-data-structures/transaction.mdx) is immediately executed and the [ExecutionOutcome](../../2.build/6.data-infrastructure/lake-data-structures/execution_outcome.mdx) for the [Transaction](../../2.build/6.data-infrastructure/lake-data-structures/transaction.mdx) is always a [Receipt](../../2.build/6.data-infrastructure/lake-data-structures/receipt.mdx).
 
-But this [Receipt](../../2.build/6.data-infrastructure/lake-data-structures/receipt.mdx) cannot be executed here, because **bob.near** doesn’t live on the same Shard as **alice.near**, so **the Receipt must be executed on the receiver’s Shard**. 따라서 Receipt는 **bob.near**가 속한 샤드로 이동합니다.
+따라서 Receipt는 **bob.near**가 속한 샤드로 이동합니다. But this [Receipt](../../2.build/6.data-infrastructure/lake-data-structures/receipt.mdx) cannot be executed here, because **bob.near** doesn’t live on the same Shard as **alice.near**, so **the Receipt must be executed on the receiver’s Shard**.
 
 대상 샤드에서 Receipt가 실행되고, 프로세스가 완료된 것으로 간주됩니다.
 
@@ -71,6 +71,6 @@ But this [Receipt](../../2.build/6.data-infrastructure/lake-data-structures/rece
 
 우리는 NEAR 프로토콜에서 데이터가 이동하는 방식의 주요 원칙을 배웠습니다. We have found out that [Transactions](../../2.build/6.data-infrastructure/lake-data-structures/transaction.mdx) execute and the [ExecutionOutcome](../../2.build/6.data-infrastructure/lake-data-structures/execution_outcome.mdx) of the Transaction is always a [Receipt](../../2.build/6.data-infrastructure/lake-data-structures/receipt.mdx).
 
-Now we know that [Receipt](../../2.build/6.data-infrastructure/lake-data-structures/receipt.mdx) is a main internal asset for NEAR Protocol blockchain and it has a power of traveling between [Shards](../../2.build/6.data-infrastructure/lake-data-structures/shard.mdx). 또한 간단한 예를 통해 NEAR 데이터 흐름을 배웠습니다. 물론 교차 컨트랙트 호출을 포함하는 보다 복잡한 트랜잭션이 있는 상황에서는 더 많은 Receipts 및 ExecutionOutcomes가 있을 것입니다.
+Now we know that [Receipt](../../2.build/6.data-infrastructure/lake-data-structures/receipt.mdx) is a main internal asset for NEAR Protocol blockchain and it has a power of traveling between [Shards](../../2.build/6.data-infrastructure/lake-data-structures/shard.mdx). 또한 간단한 예를 통해 NEAR 데이터 흐름을 배웠습니다. Of course in real life with more complex transactions that involve cross-contract calls, there will be more Receipts and ExecutionOutcomes.
 
 이 글이 유용하기를 바라며, NEAR 프로토콜에서 데이터가 흐르는 방식에 대한 지식을 기반으로 dApp 및 인덱서를 쉽게 구축할 수 있기를 바랍니다.

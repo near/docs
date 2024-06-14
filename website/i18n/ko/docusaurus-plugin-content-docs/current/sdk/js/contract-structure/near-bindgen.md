@@ -52,7 +52,6 @@ class Counter {
 - 노출된 함수는 함수에서 클래스 변수에 액세스하지 않는 경우 상태에 대한 읽기 및 쓰기를 생략할 수 있습니다.
   - 이는 일부 정적 기능 또는 컨트랙트 코드에 포함된 데이터 반환에 유용할 수 있습니다.
 
-<!-- TODO include link to near_bindgen docs, when they aren't empty -->
 
 ## 초기화 메서드
 

@@ -12,7 +12,7 @@ sidebar_label: "Indexing Solutions"
 
 - [BigQuery](../2.build/6.data-infrastructure/big-query.md): Blockchain data indexing in NEAR Public Lakehouse is for anyone wanting to understand blockchain data.
 
-- [NEAR Lake Framework](../2.build/6.data-infrastructure/lake-framework/near-lake.md): a companion library to NEAR Lake. 이를 통해 **NEAR Lake 데이터 소스**에서 블록 스트림을 감시하는 고유한 인덱서를 구축하고 **해당 데이터를 처리하는 고유한 로직을 생성**할 수 있습니다. Keep in mind this is **the one you want to use for future projects**, instead of the Indexer Framework. 왜 더 나은지에 대해서는 [이 문서](/concepts/advanced/near-indexer-framework)를 읽어보세요.
+- [NEAR Lake Framework](../2.build/6.data-infrastructure/lake-framework/near-lake.md): a companion library to NEAR Lake. 이를 통해 **NEAR Lake 데이터 소스**에서 블록 스트림을 감시하는 고유한 인덱서를 구축하고 **해당 데이터를 처리하는 고유한 로직을 생성**할 수 있습니다. Keep in mind this is **the one you want to use for future projects**, instead of the Indexer Framework. Read [why it is better](https://docs.near.org/concepts/advanced/near-indexer-framework#why-is-it-better-than-near-indexer-framework).
 
 - [Indexer.xyz 멀티체인 인덱서](https://indexer.xyz/): Indexer.xyz는 NFT 또는 DeFi 애플리케이션을 구축할 수 있는 애플리케이션 레이어입니다. 원시 트랜잭션 인덱싱 외에도, Indexer.xyz는 컨트랙트와 체인 간의 트랜잭션을 쉽게 활용할 수 있는 표준화된 GraphQL API 레이어를 제공합니다.
 

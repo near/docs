@@ -30,7 +30,7 @@ Before moving on, let's talk about these changes and how to think about them, be
 
 `const PUZZLE_NUMBER: u8 = 1;`
 
-This is an in-memory value, meaning that when the smart contract is spun up and executed in the virtual machine, the value `1` is contained in the contract code. This differs from the next change, where a field is added to the struct containing the `#[near_bindgen]` macro. The field `crossword_solution` has the type of `String` and, like any other fields added to this struct, the value will live in **persistent storage**. With NEAR, storage is "paid for" via the native NEAR token (Ⓝ). It is not "state rent" but storage staking, paid once, and returned when storage is deleted. This helps incentivize users to keep their state clean, allowing for a more healthy chain. Read more about [storage staking here](https://docs.near.org/concepts/storage/storage-staking).
+This is an in-memory value, meaning that when the smart contract is spun up and executed in the virtual machine, the value `1` is contained in the contract code. This differs from the next change, where a field is added to the struct containing the `#[near]` macro. The field `crossword_solution` has the type of `String` and, like any other fields added to this struct, the value will live in **persistent storage**. With NEAR, storage is "paid for" via the native NEAR token (Ⓝ). It is not "state rent" but storage staking, paid once, and returned when storage is deleted. This helps incentivize users to keep their state clean, allowing for a more healthy chain. Read more about [storage staking here](https://docs.near.org/concepts/storage/storage-staking).
 
 Let's now look at the three new functions:
 
@@ -238,8 +238,8 @@ So far, we're writing a simplified version of smart contract and approaching the
 
 ![Screenshot of a terminal screen showing a curl request to an RPC endpoint that returns state of a smart contract](/docs/assets/crosswords/rpc-api-view-state.png)
 
-More on this RPC endpoint in the [NEAR docs](https://docs.near.org/api/rpc/contracts#view-contract-state). :::
+More on this RPC endpoint in the [NEAR docs](https://docs.near.org/docs/api/rpc/contracts#view-contract-state). :::
 
-In this section, we saved the crossword solution as plain text, which is likely not a great idea if we want to hide the solution to players of this crossword puzzle. Even though we don't have a function called `show_solution` that returns the struct's `crossword_solution` field, the value is stored transparently in state. We won't get into viewing contract state at this moment, but know it's rather easy [and documented here](https://docs.near.org/api/rpc/contracts#view-contract-state).
+In this section, we saved the crossword solution as plain text, which is likely not a great idea if we want to hide the solution to players of this crossword puzzle. Even though we don't have a function called `show_solution` that returns the struct's `crossword_solution` field, the value is stored transparently in state. We won't get into viewing contract state at this moment, but know it's rather easy [and documented here](https://docs.near.org/docs/api/rpc/contracts#view-contract-state).
 
 The next section will explore hiding the answer from end users playing the crossword puzzle.

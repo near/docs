@@ -1,7 +1,7 @@
 {
   "id": "tools/remix-ide-plugin",
   "title": "Remix IDE Plugin Integration",
-  "description": "This tutorial details how to deploy and run NEAR smart contract on Remix IDE. It is a no-setup tool with a GUI for developing NEAR smart contract.",
+  "description": "This tutorial details how to deploy and run NEAR smart contract on Remix IDE. It is a no-setup tool with a GUI for developing NEAR smart contract. It is a no-setup tool with a GUI for developing NEAR smart contract.",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/4.tools/remix-ide-plugin.md",
   "sourceDirName": "4.tools",
   "slug": "/tools/remix-ide-plugin",

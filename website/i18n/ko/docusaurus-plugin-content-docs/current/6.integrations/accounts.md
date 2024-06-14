@@ -258,7 +258,6 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=txstatus method=EXPERIMENT
   }
 }
 ```
-
 </details>
 
 보시다시피 이 함수 호출에서 생성된 Receipt가 4개 있습니다. 위에서 언급한 기준을 적용하면 `receipts` 필드에서 이 객체를 찾을 수 있습니다.
@@ -456,7 +455,6 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=txstatus method=EXPERIMENT
   }
 }
 ```
-
 </details>
 
 - 두 번째 단계: `confirm`을 통해, 전송을 확정짓는 두 번째 트랜잭션이 보내집니다. 두 번째 트랜잭션은 전송 확인 작업을 위해 보내집니다. 이 트랜잭션은 첫 트랜잭션에 의해 반환된 요청 id를 받아 실제 전송 작업을 수행합니다. 트랜잭션 결과는 다음과 같습니다.
@@ -658,7 +656,6 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=txstatus method=EXPERIMENT
   }
 }
 ```
-
 </details>
 
 락업 컨트랙트에서의 전송 과정과 유사하게, `receipts` 필드 내에 우리의 요구 사항을 충족하는 Receipt도 한 개 있습니다.
@@ -714,5 +711,6 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=txstatus method=EXPERIMENT
 
 이는 트랜잭션이 성공했음을 나타냅니다.
 
-:::tip 질문이 있으신가요? <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
+:::tip 질문이 있으신가요?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
 :::

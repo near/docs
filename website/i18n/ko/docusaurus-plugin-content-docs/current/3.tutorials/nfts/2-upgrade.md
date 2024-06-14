@@ -8,9 +8,13 @@ import {Github} from "@site/src/components/codetabs"
 
 이 튜토리얼에서는 이전에 스마트 컨트랙트 뼈대에서 [발행 기능](/tutorials/nfts/minting)을 구현하기 위해 수행한 작업들을 빌드합니다. 당신은 NFT를 발행할 수 있는 지점에 도달했고, 당신이 NFT를 소유하고 있다는 사실에 지갑을 올바르게 집어 들었습니다. NFT를 발행할 수 있는 지점에 도달했지만, 컨트랙트가 지갑이 호출하려는 메서드를 구현하지 않았기 때문에 지갑은 토큰을 표시할 방법이 없습니다.
 
+---
+
 ## 소개
 
 오늘은 스마트 컨트랙트에 패치 수정 사항을 배포하는 방법을 배우고, 해당 지식을 사용하여 이전 튜토리얼에서 배포한 컨트랙트에 `nft_tokens_for_owner` 함수를 구현합니다.
+
+---
 
 ## 컨트랙트 업그레이드 개요 {#upgrading-contracts}
 
@@ -19,6 +23,8 @@ import {Github} from "@site/src/components/codetabs"
 NEAR 런타임은 디스크에서 직렬화된 상태를 읽고 현재 컨트랙트 코드를 사용하여 로드를 시도합니다. 코드가 변경되면 이를 수행하는 방법을 파악하지 못할 수 있습니다.
 
 컨트랙트를 전략적으로 업그레이드하고 런타임이 새 컨트랙트 코드로 현재 상태를 읽을 수 있는지 확인해야 합니다. 컨트랙트 업그레이드 및 몇 가지 모범 사례에 대한 자세한 내용은 NEAR SDK의 [컨트랙트 업그레이드](/sdk/rust/building/prototyping) 문서를 참조하세요.
+
+---
 
 ## 컨트랙트 수정 {#modifications-to-contract}
 
@@ -32,20 +38,16 @@ NEAR 런타임은 디스크에서 직렬화된 상태를 읽고 현재 컨트랙
 
 Let's move over to the `enumeration.rs` file and implement that logic:
 
-<Github language="rust" start="32" end="62" url="https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/enumeration.rs" />
+<Github language="rust" start="46" end="75" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-basic/src/enumeration.rs" />
+
+---
 
 ## 컨트랙트 재배포 {#redeploying-contract}
 
-Now that you've implemented the necessary logic for `nft_tokens_for_owner`, it's time to build and re-deploy the contract to your account. Using the build script, deploy the contract as you did in the previous tutorial:
+Now that you've implemented the necessary logic for `nft_tokens_for_owner`, it's time to build and re-deploy the contract to your account. Using the cargo-near, deploy the contract as you did in the previous tutorial:
 
 ```bash
-yarn build && near deploy $NFT_CONTRACT_ID out/main.wasm
-```
-
-This should output a warning saying that the account has a deployed contract and will ask if you'd like to proceed. Simply type `y` and hit enter.
-
-```bash
-This account already has a deployed contract [ AKJK7sCysrWrFZ976YVBnm6yzmJuKLzdAyssfzK9yLsa ]. Do you want to proceed? (y/n)
+cargo near deploy $NFT_CONTRACT_ID without-init-call network-config testnet sign-with-keychain send
 ```
 
 Once the contract has been redeployed, let's test and see if the state migrated correctly by running a simple view function:
@@ -104,11 +106,15 @@ near view $NFT_CONTRACT_ID nft_tokens_for_owner '{"account_id": "'$NFT_CONTRACT_
 </p>
 </details>
 
+---
+
 ## 지갑에서 NFT 보기 {#viewing-nfts-in-wallet}
 
 Now that your contract implements the necessary functions that the wallet uses to display NFTs, you should be able to see your tokens on display in the [collectibles tab](https://testnet.mynearwallet.com//?tab=collectibles).
 
 ![filled-nft-in-wallet](/docs/assets/nfts/filled-nft-in-wallet.png)
+
+---
 
 ## 결론
 
@@ -120,7 +126,8 @@ In the [next tutorial](/tutorials/nfts/enumeration), you'll implement the remain
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `4.0.4`
+- near-cli: `4.0.13`
+- cargo-near `0.6.1`
 - NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
 
 :::

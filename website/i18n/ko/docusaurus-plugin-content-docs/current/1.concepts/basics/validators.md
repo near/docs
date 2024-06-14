@@ -44,7 +44,7 @@ NEAR 네트워크에서 체인을 조작하려는 시도는, 악의적인 활동
 
 Chunk-Only Producer는 하드웨어 및 토큰 요구 사항이 더 낮은 밸리데이터입니다. 이 새로운 역할은 네트워크의 밸리데이터 수가 증가하도록 할 것이고, 이를 통해 보상을 얻으며 NEAR 생태계를 보호할 수 있는 기회를 더 많이 만들 수 있습니다.
 
-[Chunk-Only Producers](https://pages.near.org/papers/the-official-near-white-paper/#economics) are solely responsible for [producing chunks](https://pages.near.org/papers/nightshade/#nightshade) (parts of the block from a shard, see [Nightshade](https://pages.near.org/papers/nightshade/) for more detail) in one shard (a partition on the network). Because Chunk-Only Producers only need to validate one shard, they can run the validator node on a 8-Core CPU, with 16GB of RAM, and 500 GB SSD of storage.
+[Chunk-Only Producers](https://pages.near.org/papers/the-official-near-white-paper/#economics) are solely responsible for [producing chunks](https://pages.near.org/papers/nightshade/#nightshade) (parts of the block from a shard, see [Nightshade](https://near.org/papers/nightshade/) for more detail) in one shard (a partition on the network). Because Chunk-Only Producers only need to validate one shard, they can run the validator node on a 8-Core CPU, with 16GB of RAM, and 500 GB SSD of storage.
 
 밸리데이터와 마찬가지로 Chunk-Only Producer는 최소 연간 4.5%의 보상을 받습니다. 네트워크에 있는 토큰의 100% 미만이 스테이킹된 경우 Chunk-Only Producer는 훨씬 더 많은 보상을 받을 수 있습니다. Validator의 경제학에 대한 자세한 내용은 NEAR의 [Economics Explained](https://near.org/blog/near-protocol-economics/)를 확인하십시오 .
 

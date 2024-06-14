@@ -64,7 +64,7 @@ JSON-RPC 엔드포인트 접근 방식은 데이터를 가져오는 소위 풀 �
 ## 데이터 도구
 
 
-자체적으로 서버를 구축하고 블록체인 데이터를 인덱싱하는 것은 쉬운 일이 아닙니다. 인덱스 서버는 모든 트랜잭션을 처리하고 데이터베이스에 저장하는 역할을 합니다. 그런 다음 dApp에 대한 데이터를 가져오기 위해 일련의 API를 구축해야 합니다. 또한 완결성, 체인 재구성 또는 빈 블록과 같은 특정 블록체인 속성은 이 프로세스를 더욱 복잡하게 만들고 블록체인 데이터에서 올바른 쿼리 결과를 검색하는 데 시간이 많이 걸릴 뿐만 아니라 개념적으로도 어렵습니다. 이 옵션은 리소스 집약적이며, 유지 관리가 필요하고, 단일 실패 지점을 제공하며, 분산화에 필요한 중요한 보안 속성을 손상시킵니다.
+자체적으로 서버를 구축하고 블록체인 데이터를 인덱싱하는 것은 쉬운 일이 아닙니다. 인덱스 서버는 모든 트랜잭션을 처리하고 데이터베이스에 저장하는 역할을 합니다. 그런 다음 dApp에 대한 데이터를 가져오기 위해 일련의 API를 구축해야 합니다. 이 옵션은 리소스 집약적이며, 유지 관리가 필요하고, 단일 실패 지점을 제공하며, 분산화에 필요한 중요한 보안 속성을 손상시킵니다. 또한 완결성, 체인 재구성 또는 빈 블록과 같은 특정 블록체인 속성은 이 프로세스를 더욱 복잡하게 만들고 블록체인 데이터에서 올바른 쿼리 결과를 검색하는 데 시간이 많이 걸릴 뿐만 아니라 개념적으로도 어렵습니다.
 
 
 따라서 이에 대한 대안으로 NEAR 블록체인에서 사용 가능한 많은 인덱싱 서비스 중 하나를 시도할 수 있으며, 다음은 Pagoda에서 제공하는 데이터 요구 사항에 사용할 도구에 대한 [암시적인 결정 트리(decision tree)](https://docs.pagoda.co/decision-tree-lt)입니다.
@@ -78,7 +78,7 @@ JSON-RPC 엔드포인트 접근 방식은 데이터를 가져오는 소위 풀 �
 
 * [NEAR 인덱서 프레임워크](/concepts/advanced/near-indexer-framework): 블록의 "라이브" 스트림을 제공하는 마이크로 프레임워크입니다. 실시간 온체인 "이벤트"를 처리하는 데 유용합니다.
 * [익스플로러용 NEAR Indexer](/tools/indexer-for-explorer): 인덱서 마이크로 프레임워크를 활용하여 모든 블록체인의 이벤트/데이터를 감시하고 트랜잭션 PostgreSQL 데이터베이스에 저장합니다. [GitHub 레퍼지토리](https://github.com/near/near-indexer-for-explorer)를 복제하고 고유한 인덱서 솔루션을 사용자 지정할 수 있습니다.
-* [NEAR Lake 프레임워크](/concepts/advanced/near-lake-framework): NEAR Lake의 동반 라이브러리입니다. 이를 통해 NEAR Lake 데이터 원본에서 블록 스트림을 감시하는 고유한 인덱서를 구축하고, 해당 데이터를 처리하는 고유한 로직을 생성할 수 있습니다. 이는 인덱서 프레임워크 대신 미래 프로젝트를 위해 당신이 사용할 것이라는 점을 기억하세요. [왜 더 나은지](/concepts/advanced/near-indexer-framework#why-is-it-better-than-near-indexer-framework)에 대해 읽어보세요.
+* [NEAR Lake 프레임워크](/concepts/advanced/near-lake-framework): NEAR Lake의 동반 라이브러리입니다. 이를 통해 NEAR Lake 데이터 원본에서 블록 스트림을 감시하는 고유한 인덱서를 구축하고, 해당 데이터를 처리하는 고유한 로직을 생성할 수 있습니다. 이는 인덱서 프레임워크 대신 미래 프로젝트를 위해 당신이 사용할 것이라는 점을 기억하세요. Read [why it is better](/concepts/advanced/near-indexer-framework#why-is-it-better-than-near-indexer-framework).
 * [NEAR Lake 인덱서](/concepts/advanced/near-lake-framework): 인덱서 마이크로 프레임워크를 활용하여 블록체인의 모든 이벤트/데이터를 사용자 지정 AWS S3 또는 S3 호환 스토리지에서 JSON 파일로 보고 저장합니다.
 * [Near Query API](https://near.org/dataplatform.near/widget/QueryApi.App): Query API allows you to seamlessly create, manage, and discover indexers on NEAR. Developers can deploy their indexers to aggregate historical data in a matter of minutes, while accessing the data via custom GraphQL queries.
 * [The Graph](https://thegraph.com/docs/en/cookbook/near/): The Graph는 블록체인 이벤트를 처리하고 개별적으로 하위 그래프로 알려진 GraphQL API를 통해 결과 데이터를 쉽게 사용할 수 있는 개발자 도구를 제공합니다. [Graph Node](https://github.com/graphprotocol/graph-node)는 이제 NEAR 이벤트를 처리할 수 있습니다. 즉, NEAR 개발자는 이제 하위 그래프를 만들어 스마트 컨트랙트를 인덱싱할 수 있습니다.

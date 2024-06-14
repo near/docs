@@ -8,11 +8,15 @@ import {Github} from "@site/src/components/codetabs"
 
 이것은 모든 NEAR [FT 표준](https://nomicon.io/Standards/Tokens/FungibleToken/Core)을 준수하는 완전한 FT 스마트 컨트랙트를 처음부터 만드는 시리즈의 많은 튜토리얼 중 첫 번째입니다. 오늘은 FT가 무엇이고, NEAR 블록체인에서 이를 어떻게 정의할 수 있는지를 배웁니다. 여기서는, 이 기능을 추가하는 데 필요한 필수 코드 스니펫을 작성하여 중요한 [스마트 컨트랙트의 뼈대](/tutorials/fts/skeleton)를 수정하게 됩니다.
 
+---
+
 ## 소개
 
 시작하려면 레퍼지토리 내 `1.skeleton` 브랜치로 전환하세요. 레퍼지토리를 복제하지 않은 경우 [컨트랙트 아키텍처](/tutorials/fts/skeleton)를 참조하여 시작하세요.
 
 튜토리얼의 이 부분에 대한 완성된 코드를 보려면 `2.defining-a-token` 폴더에서 찾을 수 있습니다.
+
+---
 
 ## 뼈대 컨트랙트 수정 {#modifications}
 
@@ -22,62 +26,68 @@ import {Github} from "@site/src/components/codetabs"
 
 이제 대체 가능한 토큰이 무엇인지 이해했으므로, 컨트랙트 자체에서 토큰을 정의하는 방법을 살펴보겠습니다.
 
+<hr className="subsection" />
+
 ### 대체 가능한 토큰(FT) 정의 {#defining-a-fungible-token}
 
-`1.skeleton/src/metadata.rs` 파일로 가서 시작합니다. 여기에서 대체 가능한 토큰 자체에 대한 메타데이터를 정의합니다. NEAR를 통해 토큰을 사용자 정의할 수 있는 여러 가지 방법이 있으며, 모두 [메타데이터](https://nomicon.io/Standards/Tokens/FungibleToken/Core#metadata) 표준에서 찾을 수 있습니다. 이를 선택적 부분과 필수 파트로 나누겠습니다.
+Start by navigating to the `1.skeleton/src/metadata.rs` file. This is where you'll define the metadata for the fungible token itself. There are several ways NEAR allows you to customize your token, all of which are found in the [metadata](https://nomicon.io/Standards/Tokens/FungibleToken/Core#metadata) standard. Let's break them up into the optional and non-optional portions.
 
-필수:
+Required:
 - **spec**: 컨트랙트에서 사용하는 표준의 버전을 나타냅니다. `ft-1.0.0`로 설정해야 합니다.
 - **name**: "Wrapped NEAR" 또는 "TEAM Tokens"와 같이 사람이 읽을 수 있는 토큰 이름입니다.
 - **symbol**: `wNEAR` 또는 `gtNEAR`와 같은 토큰의 약어입니다.
 - **decimals**: 토큰의 적절한 유효 숫자를 표시하기 위해 프론트엔드에서 사용됩니다. 이 개념은 이 [OpenZeppelin 게시물](https://docs.openzeppelin.com/contracts/3.x/erc20#a-note-on-decimals)에 잘 설명되어 있습니다.
 
-선택:
+Optional:
 - **icon**: 토큰의 이미지([데이터 URL](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URLs)이어야 함)입니다.
 - **reference**: 오프 체인에 저장된 토큰에 대한 추가 JSON 세부 정보에 대한 링크입니다.
 - **reference_hash**: 참조된 JSON의 해시입니다.
 
-이 작업이 완료되면 이제 이러한 필드를 컨트랙트의 메타데이터에 추가할 수 있습니다.
+With this finished, you can now add these fields to the metadata in the contract.
 
-<Github language="rust" start="8" end="18" url="https://github.com/near-examples/ft-tutorial/blob/main/2.define-a-token/src/metadata.rs" />
+<Github language="rust" start="8" end="19" url="https://github.com/near-examples/ft-tutorial/blob/main/2.define-a-token/src/metadata.rs" />
 
 Now that you've defined what the metadata will look like, you need someway to store it on the contract. Switch to the `1.skeleton/src/lib.rs` file and add the following to the `Contract` struct. You'll want to store the metadata on the contract under the `metadata` field.
 
-<Github language="rust" start="18" end="23" url="https://github.com/near-examples/ft-tutorial/blob/main/2.define-a-token/src/lib.rs" />
+<Github language="rust" start="18" end="24" url="https://github.com/near-examples/ft-tutorial/blob/main/2.define-a-token/src/lib.rs" />
 
-이제 메타데이터가 있는 *위치를* 정의했지만 메타데이터 자체를 전달해야 합니다. 여기에서 초기화 함수가 작동합니다.
+You've now defined *where* the metadata will live but you'll also need someway to pass in the metadata itself. This is where the initialization function comes into play.
+
+<hr className="subsection" />
 
 #### 초기화 함수
 
-이제 초기화 함수라고 하는 것을 생성합니다. 이를 `new`라고 부를 수 있습니다. 이 함수는 컨트랙트를 처음 배포할 때 호출해야 합니다. 이는 기본값으로 정의한 모든 컨트랙트 필드를 초기화합니다. 이러한 메서드를 두 번 이상 호출 할 수 **없다는** 점에 유의해야 합니다.
+You'll now create what's called an initialization function; you can name it `new`. This function needs to be invoked when you first deploy the contract. It will initialize all the contract's fields that you've defined with default values. It's important to note that you **cannot** call these methods more than once.
 
-<Github language="rust" start="56" end="72" url="https://github.com/near-examples/ft-tutorial/blob/main/2.define-a-token/src/lib.rs" />
+<Github language="rust" start="58" end="74" url="https://github.com/near-examples/ft-tutorial/blob/main/2.define-a-token/src/lib.rs" />
 
-개발을 할 때 종종 컨트랙트를 여러 번 배포해야 합니다. 컨트랙트를 초기화할 때마다 메타데이터를 전달해야 하는 것이 지루할 수 있다고 생각할 수 있습니다. 이러한 이유로, 기본 `metadata` 집합으로 컨트랙트를 초기화할 수 있는 함수를 만들어 봅시다. 당신은 이를 `new_default_meta`라고 부를 수 있습니다.
+More often than not when doing development, you'll need to deploy contracts several times. You can imagine that it might get tedious to have to pass in metadata every single time you want to initialize the contract. For this reason, let's create a function that can initialize the contract with a set of default `metadata`. You can call it `new_default_meta`.
 
-<Github language="rust" start="36" end="52" url="https://github.com/near-examples/ft-tutorial/blob/main/2.define-a-token/src/lib.rs" />
+<Github language="rust" start="38" end="54" url="https://github.com/near-examples/ft-tutorial/blob/main/2.define-a-token/src/lib.rs" />
 
-이 함수는 단순히 이전 `new` 함수를 호출하고, 내부적으로는 일부 기본 메타데이터를 전달합니다.
+This function is simply calling the previous `new` function and passing in some default metadata behind the scenes.
 
-이 시점에서 대체 가능한 토큰에 대한 메타데이터를 정의했고 이 정보를 컨트랙트에 저장하는 방법을 만들었습니다. 마지막 단계는 메타데이터를 쿼리하고 반환하는 게터를 도입하는 것입니다. `1.skeleton/src/metadata.rs` 파일로 이동하여 `ft_metadata` 함수에 다음 코드를 추가합니다.
+At this point, you've defined the metadata for your fungible tokens and you've created a way to store this information on the contract. The last step is to introduce a getter that will query for and return the metadata. Switch to the `1.skeleton/src/metadata.rs` file and add the following code to the `ft_metadata` function.
 
-<Github language="rust" start="20" end="30" url="https://github.com/near-examples/ft-tutorial/blob/main/2.define-a-token/src/metadata.rs" />
+<Github language="rust" start="21" end="31" url="https://github.com/near-examples/ft-tutorial/blob/main/2.define-a-token/src/metadata.rs" />
 
-이 함수는 컨트랙트에서 `FungibleTokenMetadata` 자료형을 가진 `metadata` 객체를 가져와서 반환합니다.
+This function will get the `metadata` object from the contract which is of type `FungibleTokenMetadata` and will return it.
+
+---
 
 ## 온체인에서 컨트랙트와 상호 작용
 
-이제 사용자 지정 대체 가능한 토큰을 정의하는 논리가 완성되었고 메타데이터를 쿼리하는 방법을 추가했으므로 이제 컨트랙트를 구축하고 블록체인에 배포할 차례입니다.
+Now that the logic for defining a custom fungible token is complete and you've added a way to query for the metadata, it's time to build and deploy your contract to the blockchain.
 
-### 컨트랙트 배포 {#deploy-the-contract}
+### Deploying and initializing the contract {#deploy-the-contract}
 
-이 튜토리얼 전체에서는 bash 스크립트를 사용하여 컨트랙트를 쉽게 구축할 수 있도록 하였습니다. 다음 명령은 컨트랙트를 작성하고 `.wasm` 파일을 `out/contract.wasm` 폴더로 복사합니다. 빌드 스크립트는 `1.skeleton/build.sh` 파일에서 찾을 수 있습니다.
+You can build a contract using the following command:
 
 ```bash
-cd 1.skeleton && ./build.sh && cd ..
+cd 1.skeleton && cargo near build
 ```
 
-콘솔에 경고 목록이 표시되지만, 튜토리얼이 진행됨에 따라 이러한 경고는 사라집니다. 이제 내부에 `contract.wasm` 파일이 있는 `out/` 폴더가 표시됩니다. 이것이 우리가 블록체인에 배포할 것입니다.
+콘솔에 경고 목록이 표시되지만, 튜토리얼이 진행됨에 따라 이러한 경고는 사라집니다.
 
 배포하려면 로컬 기기에 키가 저장된 NEAR 계정이 필요합니다. Navigate to the [NEAR wallet](https://testnet.mynearwallet.com//) site and create an account.
 
@@ -102,21 +112,15 @@ export FT_CONTRACT_ID="YOUR_ACCOUNT_NAME"
 echo $FT_CONTRACT_ID
 ```
 
-터미널에 올바른 계정 ID가 출력되어 있는지 확인하세요. 모든 것이 올바르게 보이면 이제 컨트랙트를 배포할 수 있습니다. FT 프로젝트의 루트에서 다음 명령을 실행하여 스마트 컨트랙트를 배포합니다.
+터미널에 올바른 계정 ID가 출력되어 있는지 확인하세요. 모든 것이 올바르게 보이면 이제 컨트랙트를 배포할 수 있습니다. 단순화를 위해 CLI에서 수동으로 메타데이터를 입력할 필요가 없도록, 이전에 작성한 기본 메타데이터 초기화 함수를 호출해 보겠습니다. FT 프로젝트의 루트에서 다음 명령을 실행하여 스마트 컨트랙트를 배포합니다.
 
 ```bash
-near deploy $FT_CONTRACT_ID out/contract.wasm
+cargo near deploy $FT_CONTRACT_ID with-init-call new_default_meta json-args '{"owner_id": "'$FT_CONTRACT_ID'", "total_supply": "0"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
 ```
 
-이 시점에서 컨트랙트가 당신의 계정에 배포되었어야 하며, 대체 가능한 토큰 발행 작업으로 이동할 준비가 된 것입니다.
+At this point, the contract should have been deployed to your account and initialized.
 
-### 대체 가능한 토큰 생성 {#initialize-contract}
-
-컨트랙트가 배포되면 가장 먼저 해야 할 일은 컨트랙트를 초기화하는 것입니다. 단순화를 위해 CLI에서 수동으로 메타데이터를 입력할 필요가 없도록, 이전에 작성한 기본 메타데이터 초기화 함수를 호출해 보겠습니다.
-
-```bash
-near call $FT_CONTRACT_ID new_default_meta '{"owner_id": "'$FT_CONTRACT_ID'", "total_supply": "0"}' --accountId $FT_CONTRACT_ID
-```
+<hr className="subsection" />
 
 ### 컨트랙트 메타데이터 보기
 
@@ -147,6 +151,8 @@ near view $FT_CONTRACT_ID ft_metadata
 **완료되었습니다!** 이제 모든 것이 올바르게 작동함을 확인했으며, 대체 가능한 토큰을 정의했습니다!
 
 다음 튜토리얼에서는, 총 공급량을 생성하고 지갑에서 토큰을 보는 방법에 대해 배웁니다.
+
+---
 
 ## 결론
 

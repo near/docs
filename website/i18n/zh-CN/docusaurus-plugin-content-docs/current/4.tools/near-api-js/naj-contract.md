@@ -7,7 +7,7 @@ sidebar_label: Contract
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-When you instantiate an instance of `Contract` you need to specify the names of the functions you have on your smart contract. Then the new instance of `Contract` will have methods with the same names as your smart contract functions. For example if you deployed a contract with `my_smart_contract_function` function on it, then this will work:
+When you instantiate an instance of `Contract` you need to specify the names of the functions you have on your smart contract. Then the new instance of `Contract` will have methods with the same names as your smart contract functions. When you instantiate an instance of `Contract` you need to specify the names of the functions you have on your smart contract. Then the new instance of `Contract` will have methods with the same names as your smart contract functions. For example if you deployed a contract with `my_smart_contract_function` function on it, then this will work:
 
 ```js
 const contract = new Contract(account, "example-contract.testnet", {
@@ -88,6 +88,13 @@ const contract = new Contract(account, "example-contract.testnet", {
 await contract.method_name({
   callbackUrl: "https://example.com/callback", // callbackUrl after the transaction approved (optional)
   meta: "some info", // meta information NEAR Wallet will send back to the application. `meta` will be attached to the `callbackUrl` as a url param
+  args: {
+    arg_name: "value", // argument name and value - pass empty object if no args required
+  },
+  gas: 300000000000000, // attached GAS (optional)
+  amount: 1000000000000000000000000, // attached deposit in yoctoNEAR (optional)
+});
+``` `meta` will be attached to the `callbackUrl` as a url param
   args: {
     arg_name: "value", // argument name and value - pass empty object if no args required
   },

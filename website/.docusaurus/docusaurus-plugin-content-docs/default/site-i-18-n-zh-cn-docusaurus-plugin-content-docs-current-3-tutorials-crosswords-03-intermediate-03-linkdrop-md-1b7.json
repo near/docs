@@ -1,7 +1,7 @@
 {
   "id": "tutorials/crosswords/intermediate/linkdrop",
   "title": "Introducing the linkdrop contract we can use",
-  "description": "We're going to take a small detour to talk about the linkdrop smart contract.  It's best that we first understand this contract and its purpose, then discuss calling a method on this contract.",
+  "description": "We're going to take a small detour to talk about the linkdrop smart contract.  It's best that we first understand this contract and its purpose, then discuss calling a method on this contract.  It's best that we first understand this contract and its purpose, then discuss calling a method on this contract.",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/3.tutorials/crosswords/03-intermediate/03-linkdrop.md",
   "sourceDirName": "3.tutorials/crosswords/03-intermediate",
   "slug": "/tutorials/crosswords/intermediate/linkdrop",

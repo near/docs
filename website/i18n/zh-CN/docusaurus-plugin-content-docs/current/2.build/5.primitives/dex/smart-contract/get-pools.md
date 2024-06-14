@@ -1,6 +1,5 @@
 ```rust
-#[derive(Serialize, Deserialize)]
-#[serde(crate = "near_sdk::serde")]
+#[near(serializers = [json])]
 pub struct PoolInfo {
   /// Pool kind.
   pub pool_kind: String,
@@ -22,7 +21,7 @@ trait ExternalAmmContract {
 }
 
 // Implement the contract structure
-#[near_bindgen]
+#[near]
 impl Contract {
   #[private] // Public - but only callable by env::current_account_id()
   pub fn external_get_pools_callback(&self, #[callback_result] call_result: Result<Vec<PoolInfo>, PromiseError>) -> Option<Vec<PoolInfo>> {

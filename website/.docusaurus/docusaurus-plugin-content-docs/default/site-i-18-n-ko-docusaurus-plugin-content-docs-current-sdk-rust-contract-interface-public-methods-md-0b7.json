@@ -1,7 +1,7 @@
 {
   "id": "sdk/rust/contract-interface/public-methods",
   "title": "퍼블릭 메서드 자료형",
-  "description": "메서드는 컴파일된 WASM 바이트코드에서 메서드를 공개하는 #[near_bindgen] 매크로 내의 pub 식별자를 사용하여 외부에서 호출할 수 있습니다.",
+  "description": "Methods can be called externally by using the pub identifier within the #[near] macro which will expose the method in the compiled WASM bytecode.",
   "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/sdk/rust/contract-interface/public-methods.md",
   "sourceDirName": "sdk/rust/contract-interface",
   "slug": "/sdk/rust/contract-interface/public-methods",

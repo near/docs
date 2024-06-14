@@ -12,7 +12,7 @@ import {Github} from "@site/src/components/codetabs"
 
 ## App Overview
 
-The app is fairly simple: the user signs in and hits the <kbd>Mint NFT</kbd> button. Once the user hits the mint button, a "Go Team" NFT is minted and sent to their NEAR Wallet.
+The app is fairly simple: the user signs in and hits the <kbd>Mint NFT</kbd> button. The app is fairly simple: the user signs in and hits the <kbd>Mint NFT</kbd> button. Once the user hits the mint button, a "Go Team" NFT is minted and sent to their NEAR Wallet.
 
 ![Front-end](/docs/assets/nfts/nft-mint-frontend.png)
 
@@ -23,11 +23,11 @@ The code for the NFT smart contract can be found in the [Zero to Hero NFT tutori
 The contract methods used in this application are as follows:
 
 - `nft_mint`: Function used to mint tokens.
-- `check_token`: Custom function created to check for the existence of a token. This helps to ensure one token per user.
+- `check_token`: Custom function created to check for the existence of a token. This helps to ensure one token per user. This helps to ensure one token per user.
 
 ## Front-end
 
-The front-end of the contract was implemented using `create-near-app`. [React Bootstrap](https://react-bootstrap.github.io/) was used for the styling of the application.
+The front-end of the contract was implemented using `create-near-app`. The front-end of the contract was implemented using `create-near-app`. [React Bootstrap](https://react-bootstrap.github.io/) was used for the styling of the application.
 
 To bootstrap your React front-end, run the following command on your terminal:
 
@@ -47,7 +47,7 @@ If no prior NFT has been minted, the mint button will be available for use.
 
 ### Mint button
 
-Here is the function behind the mint button. The meta data has been filled out for the user already:
+Here is the function behind the mint button. Here is the function behind the mint button. The meta data has been filled out for the user already:
 
 - `token_id` is set by the user's account id,
 - and the `media` link is hard-coded to a `goteam-gif.gif` hosted on IPFS.
@@ -58,11 +58,11 @@ After hitting the <kbd>Mint NFT</kbd> button the user will be able to check out 
 
 ## Final remarks
 
-You can find the complete application repository [on GitHub](https://github.com/near-examples/nft-tutorial-frontend) to clone and run. In the configuration folder you can see that this smart contract has been deployed to `nft-frontend-simple-mint.blockhead.testnet`:
+You can find the complete application repository [on GitHub](https://github.com/near-examples/nft-tutorial-frontend) to clone and run. In the configuration folder you can see that this smart contract has been deployed to `nft-frontend-simple-mint.blockhead.testnet`: In the configuration folder you can see that this smart contract has been deployed to `nft-frontend-simple-mint.blockhead.testnet`:
 
 <Github language="js" start="1" end="2" url="https://github.com/near-examples/nft-tutorial-frontend/blob/master/src/config.js" />
 
-You can also check out the [explorer link here](https://testnet.nearblocks.io/address/nft-frontend-simple-mint.blockhead.testnet) to see how many individuals have been minting their own _Go Team_ NFTs. _**Happy Minting!**_
+You can also check out the [explorer link here](https://testnet.nearblocks.io/address/nft-frontend-simple-mint.blockhead.testnet) to see how many individuals have been minting their own _Go Team_ NFTs. _**Happy Minting!**_ _**Happy Minting!**_
 
 :::tip
 Clone and run this example from https://github.com/near-examples/nft-tutorial-frontend

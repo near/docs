@@ -4,7 +4,7 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 export default [
   {
     path: '/zh-CN/blog',
-    component: ComponentCreator('/zh-CN/blog', '867'),
+    component: ComponentCreator('/zh-CN/blog', '2a5'),
     exact: true
   },
   {
@@ -14,12 +14,12 @@ export default [
   },
   {
     path: '/zh-CN/blog/getting-started-on-windows',
-    component: ComponentCreator('/zh-CN/blog/getting-started-on-windows', '597'),
+    component: ComponentCreator('/zh-CN/blog/getting-started-on-windows', '7b6'),
     exact: true
   },
   {
     path: '/zh-CN/blog/reorganizing-docs',
-    component: ComponentCreator('/zh-CN/blog/reorganizing-docs', '9d0'),
+    component: ComponentCreator('/zh-CN/blog/reorganizing-docs', '86f'),
     exact: true
   },
   {
@@ -29,42 +29,42 @@ export default [
   },
   {
     path: '/zh-CN/blog/tags/docusaurus',
-    component: ComponentCreator('/zh-CN/blog/tags/docusaurus', '185'),
+    component: ComponentCreator('/zh-CN/blog/tags/docusaurus', 'e60'),
     exact: true
   },
   {
     path: '/zh-CN/blog/tags/getting-started',
-    component: ComponentCreator('/zh-CN/blog/tags/getting-started', '373'),
+    component: ComponentCreator('/zh-CN/blog/tags/getting-started', '753'),
     exact: true
   },
   {
     path: '/zh-CN/blog/tags/protocol',
-    component: ComponentCreator('/zh-CN/blog/tags/protocol', 'bc3'),
+    component: ComponentCreator('/zh-CN/blog/tags/protocol', 'e4f'),
     exact: true
   },
   {
     path: '/zh-CN/blog/tags/tutorial',
-    component: ComponentCreator('/zh-CN/blog/tags/tutorial', '929'),
+    component: ComponentCreator('/zh-CN/blog/tags/tutorial', '89e'),
     exact: true
   },
   {
     path: '/zh-CN/blog/tags/updates',
-    component: ComponentCreator('/zh-CN/blog/tags/updates', 'f10'),
+    component: ComponentCreator('/zh-CN/blog/tags/updates', '58d'),
     exact: true
   },
   {
     path: '/zh-CN/blog/tags/windows',
-    component: ComponentCreator('/zh-CN/blog/tags/windows', '80c'),
+    component: ComponentCreator('/zh-CN/blog/tags/windows', '618'),
     exact: true
   },
   {
     path: '/zh-CN/blog/we-have-a-blog',
-    component: ComponentCreator('/zh-CN/blog/we-have-a-blog', 'dc2'),
+    component: ComponentCreator('/zh-CN/blog/we-have-a-blog', 'b84'),
     exact: true
   },
   {
     path: '/zh-CN/blog/yield-resume',
-    component: ComponentCreator('/zh-CN/blog/yield-resume', '112'),
+    component: ComponentCreator('/zh-CN/blog/yield-resume', 'b23'),
     exact: true
   },
   {
@@ -74,15 +74,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '037'),
+    component: ComponentCreator('/zh-CN/', 'cf2'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '2d8'),
+        component: ComponentCreator('/zh-CN/', '13a'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '9ba'),
+            component: ComponentCreator('/zh-CN/', '99a'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -187,7 +187,7 @@ export default [
               },
               {
                 path: '/zh-CN/build/chain-abstraction/multichain-gas-relayer/overview',
-                component: ComponentCreator('/zh-CN/build/chain-abstraction/multichain-gas-relayer/overview', '525'),
+                component: ComponentCreator('/zh-CN/build/chain-abstraction/multichain-gas-relayer/overview', 'dc8'),
                 exact: true,
                 sidebar: "build"
               },
@@ -199,7 +199,7 @@ export default [
               },
               {
                 path: '/zh-CN/build/chain-abstraction/nft-chain-keys',
-                component: ComponentCreator('/zh-CN/build/chain-abstraction/nft-chain-keys', 'ba5'),
+                component: ComponentCreator('/zh-CN/build/chain-abstraction/nft-chain-keys', 'de4'),
                 exact: true,
                 sidebar: "build"
               },
@@ -860,7 +860,7 @@ export default [
               },
               {
                 path: '/zh-CN/build/smart-contracts/anatomy/collections',
-                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/collections', '754'),
+                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/collections', '16a'),
                 exact: true,
                 sidebar: "build"
               },
@@ -878,7 +878,7 @@ export default [
               },
               {
                 path: '/zh-CN/build/smart-contracts/anatomy/functions',
-                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/functions', '242'),
+                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/functions', 'c2d'),
                 exact: true,
                 sidebar: "build"
               },
@@ -896,7 +896,7 @@ export default [
               },
               {
                 path: '/zh-CN/build/smart-contracts/anatomy/types',
-                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/types', '23a'),
+                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/types', '666'),
                 exact: true,
                 sidebar: "build"
               },
@@ -1755,7 +1755,7 @@ export default [
               },
               {
                 path: '/zh-CN/tools/wallets',
-                component: ComponentCreator('/zh-CN/tools/wallets', '098'),
+                component: ComponentCreator('/zh-CN/tools/wallets', 'fb4'),
                 exact: true,
                 sidebar: "tools"
               },
@@ -1987,7 +1987,7 @@ export default [
               },
               {
                 path: '/zh-CN/tutorials/near-components/blog-posts',
-                component: ComponentCreator('/zh-CN/tutorials/near-components/blog-posts', '17c'),
+                component: ComponentCreator('/zh-CN/tutorials/near-components/blog-posts', '628'),
                 exact: true,
                 sidebar: "tutorials"
               },
@@ -2227,19 +2227,19 @@ export default [
               },
               {
                 path: '/zh-CN/tutorials/templates/blog',
-                component: ComponentCreator('/zh-CN/tutorials/templates/blog', '5b3'),
+                component: ComponentCreator('/zh-CN/tutorials/templates/blog', 'dbd'),
                 exact: true,
                 sidebar: "tutorials"
               },
               {
                 path: '/zh-CN/tutorials/templates/marketplace',
-                component: ComponentCreator('/zh-CN/tutorials/templates/marketplace', '7a1'),
+                component: ComponentCreator('/zh-CN/tutorials/templates/marketplace', '12e'),
                 exact: true,
                 sidebar: "tutorials"
               },
               {
                 path: '/zh-CN/tutorials/templates/minter',
-                component: ComponentCreator('/zh-CN/tutorials/templates/minter', '34e'),
+                component: ComponentCreator('/zh-CN/tutorials/templates/minter', 'c06'),
                 exact: true,
                 sidebar: "tutorials"
               },

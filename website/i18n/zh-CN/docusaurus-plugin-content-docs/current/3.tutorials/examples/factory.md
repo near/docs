@@ -17,6 +17,7 @@ We have two factory examples:
 :::info
 In this page we will focus on the Donation factory, to learn more about the token factory visit its repository.
 :::
+:::
 
 ---
 
@@ -28,10 +29,10 @@ The [Generic Factory](https://github.com/near-examples/factory-rust/) presents a
 2. Can change the stored contract using the `update_stored_contract` method.
 
 <CodeTabs>
-  <Language value="🦀 Rust" language="rust">
+  <Language value="rust" language="rust">
     <Github fname="deploy.rs"
             url="https://github.com/near-examples/factory-rust/blob/main/src/deploy.rs"
-            start="14" end="60" />
+            start="14" end="66" />
     <Github fname="manager.rs"
             url="https://github.com/near-examples/factory-rust/blob/main/src/manager.rs"
             start="5" end="19" />
@@ -130,7 +131,7 @@ pub fn update_stored_contract(&mut self) {
 }
 ```
 
-On first sight it looks like the method takes no input parameters, but we can see that its only line of code reads from `env::input()`. What is happening here is that `update_stored_contract` **bypasses** the step of **deserializing the input**.
+On first sight it looks like the method takes no input parameters, but we can see that its only line of code reads from `env::input()`. On first sight it looks like the method takes no input parameters, but we can see that its only line of code reads from `env::input()`. What is happening here is that `update_stored_contract` **bypasses** the step of **deserializing the input**.
 
 You could implement `update_stored_contract(&mut self, new_code: Vec<u8>)`, which takes the compiled code to store as a `Vec<u8>`, but that would trigger the contract to:
 

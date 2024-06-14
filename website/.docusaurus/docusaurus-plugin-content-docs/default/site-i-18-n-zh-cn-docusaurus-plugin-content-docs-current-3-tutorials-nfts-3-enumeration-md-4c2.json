@@ -1,7 +1,7 @@
 {
   "id": "tutorials/nfts/enumeration",
   "title": "Enumeration",
-  "description": "In the previous tutorials, you looked at ways to integrate the minting functionality into a skeleton smart contract. In order to get your NFTs to show in the wallet, you also had to deploy a patch fix that implemented one of the enumeration methods. In this tutorial, you'll expand on and finish the rest of the enumeration methods as per the standard Now you'll extend the NFT smart contract and add a couple of enumeration methods that can be used to return the contract's state.",
+  "description": "In the previous tutorials, you looked at ways to integrate the minting functionality into a skeleton smart contract. In order to get your NFTs to show in the wallet, you also had to deploy a patch fix that implemented one of the enumeration methods. In this tutorial, you'll expand on and finish the rest of the enumeration methods as per the standard",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/3.tutorials/nfts/3-enumeration.md",
   "sourceDirName": "3.tutorials/nfts",
   "slug": "/tutorials/nfts/enumeration",
@@ -25,7 +25,7 @@
     "permalink": "/zh-CN/tutorials/nfts/upgrade-contract"
   },
   "next": {
-    "title": "Core",
+    "title": "Transfers",
     "permalink": "/zh-CN/tutorials/nfts/core"
   }
 }

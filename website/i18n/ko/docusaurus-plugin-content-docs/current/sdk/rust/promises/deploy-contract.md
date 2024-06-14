@@ -25,14 +25,14 @@ Promise::new("subaccount.example.near".parse().unwrap())
 전체 컨트랙트는 다음과 같이 `code`를 `include_bytes!`로 하드코딩하지 않고, 인자로 전달하는 단순한 방법을 보여줍니다.
 
 ```rust
-use near_sdk::{env, near_bindgen, AccountId, Balance, Promise};
+use near_sdk::{env, near AccountId, Balance, Promise};
 
 const INITIAL_BALANCE: Balance = 3_000_000_000_000_000_000_000_000; // 3e24yN, 3N
 
-#[near_bindgen]
+#[near(contract_state)]
 pub struct Contract {}
 
-#[near_bindgen]
+#[near]
 impl Contract {
     #[private]
     pub fn create_child_contract(prefix: AccountId, code: Vec<u8>) -> Promise {

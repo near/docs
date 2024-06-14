@@ -15,13 +15,13 @@ When you change the interface of a contract and re-deploy it, you may see this e
 
 ### Why does this happen?
 
-When your contract is executed, the NEAR Runtime reads the serialized state from disk and attempts to load it using current contract code. When your code changes but the serialized state stays the same, it can't figure out how to do this.
+When your contract is executed, the NEAR Runtime reads the serialized state from disk and attempts to load it using current contract code. When your code changes but the serialized state stays the same, it can't figure out how to do this. When your code changes but the serialized state stays the same, it can't figure out how to do this.
 
 ### How can you avoid such errors?
 
-When you're still in the Research & Development phase, building a prototype and deploying it locally or on [testnet](../../../1.concepts/basics/networks.md), you can just delete all previous contract state when you make a breaking change. See below for a couple ways to do this.
+When you're still in the Research & Development phase, building a prototype and deploying it locally or on [testnet](../../../1.concepts/basics/networks.md), you can just delete all previous contract state when you make a breaking change. See below for a couple ways to do this. See below for a couple ways to do this.
 
-When you're ready to deploy a more stable contract, there are a couple of [production strategies](../../../2.build/2.smart-contracts/release/upgrade.md#migrating-the-state) that will help you update the contract state without deleting it all. And once your contract graduates from "trusted mode" (when maintainers control a [Full Access key](/concepts/protocol/access-keys)) to community-governed mode (no more Full Access keys), you can set up your contract to [upgrade itself](../../../2.build/2.smart-contracts/release/upgrade.md#programmatic-update).
+When you're ready to deploy a more stable contract, there are a couple of [production strategies](../../../2.build/2.smart-contracts/release/upgrade.md#migrating-the-state) that will help you update the contract state without deleting it all. And once your contract graduates from "trusted mode" (when maintainers control a [Full Access key](/concepts/protocol/access-keys)) to community-governed mode (no more Full Access keys), you can set up your contract to [upgrade itself](../../../2.build/2.smart-contracts/release/upgrade.md#programmatic-update). And once your contract graduates from "trusted mode" (when maintainers control a [Full Access key](/concepts/protocol/access-keys)) to community-governed mode (no more Full Access keys), you can set up your contract to [upgrade itself](../../../2.build/2.smart-contracts/release/upgrade.md#programmatic-update).
 
 
 ## Rapid Prototyping: Delete Everything All The Time
@@ -58,11 +58,11 @@ This will return the message that you set with the call to `set_status`, in this
 
 At this point the contract is deployed and has some state.
 
-Now let's say you change the contract to store two kinds of data for each account, a status message and a tagline. You can add to the contract code a `LookupMap` for both status message and another one for the tagline, both indexed by the account ID.
+Now let's say you change the contract to store two kinds of data for each account, a status message and a tagline. Now let's say you change the contract to store two kinds of data for each account, a status message and a tagline. You can add to the contract code a `LookupMap` for both status message and another one for the tagline, both indexed by the account ID.
 
-You build & deploy the contract again, thinking that maybe because the new `taglines` LookupMap has the same prefix as the old `records` LookupMap (the prefix is `a`, set by `new LookupMap("a"`), the tagline for `you.testnet` should be `"lol"`. But when you `near view` the contract, you get the "Cannot deserialize" message. What to do?
+You build & deploy the contract again, thinking that maybe because the new `taglines` LookupMap has the same prefix as the old `records` LookupMap (the prefix is `a`, set by `new LookupMap("a"`), the tagline for `you.testnet` should be `"lol"`. But when you `near view` the contract, you get the "Cannot deserialize" message. What to do? But when you `near view` the contract, you get the "Cannot deserialize" message. What to do?
 
-### 1. Deploying on a new account each time
+### 1. 1. Deploying on a new account each time
 
 When first getting started with a new project, the fastest way to deploy a contract is [creating an account](../../../4.tools/cli.md#near-create-account) and [deploying the contract](../../../4.tools/cli.md#near-deploy) into it using `NEAR CLI`.
 
@@ -92,7 +92,7 @@ This does a few things:
 2. Stores the private key for this account in the `~/.near-credentials` folder
 3. Deploys your contract code to this account
 
-### 2. Deleting & Recreating Contract Account
+### 2. 2. Deleting & Recreating Contract Account
 Another option to start from scratch is to delete the account and recreate it.
 
 <Tabs className="language-tabs" groupId="code-tabs">

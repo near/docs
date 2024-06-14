@@ -7,7 +7,7 @@ title: NEAR CLI RS
 
 ## Quick Start Guide
 
-The `near-cli-rs` tool is a human-friendly companion that helps you interact with the [NEAR Protocol](https://near.org/) from the command line. This has a guided prompt interface to help you make your own commands built in Rust.
+The `near-cli-rs` tool is a human-friendly companion that helps you interact with the [NEAR Protocol](https://near.org/) from the command line. This has a guided prompt interface to help you make your own commands built in Rust. This has a guided prompt interface to help you make your own commands built in Rust.
 
 :::info note
 
@@ -42,13 +42,15 @@ account  -Manage accounts
 Navigate to...
 
 ```
-import-account -Import existing account (a.k.a. "sign-in")
+import-account -Import existing account (a.k.a. "sign-in") "sign-in")
 ```
 
-choose any of the preferred sign-in methods. For this example, we'll choose the...
+choose any of the preferred sign-in methods. For this example, we'll choose the... For this example, we'll choose the...
 
 ```
 using-web-wallet -Import existing account using NEAR Wallet (a.k.a. "sign in")
+### Account
+- Gives you information on a specified account, near balance, storage, list of access keys, etc. "sign in")
 ### Account
 - Gives you information on a specified account, near balance, storage, list of access keys, etc.
 ```
@@ -57,16 +59,17 @@ For this tutorial select `testnet`
 
 ```
 What is the name of the network?
+What is the name of the network?
 mainnet
 >testnet
 shardnet
 ```
 
-You'll get redirected to `wallet.testnet.near.org`. Once there, grant authorization. Then in your terminal, you'll be asked to enter your account ID. Give it the name of the account you just authorized access to and a full access key.
+You'll get redirected to `wallet.testnet.near.org`. Once there, grant authorization. Then in your terminal, you'll be asked to enter your account ID. Give it the name of the account you just authorized access to and a full access key. Once there, grant authorization. Then in your terminal, you'll be asked to enter your account ID. Give it the name of the account you just authorized access to and a full access key.
 
 If you're on Mac you'll have the option to use the [Mac Keychain](https://support.apple.com/guide/keychain-access/what-is-keychain-access-kyca1083/mac) option.
 
-Either storage option is fine. Using the legacy storage option will save a file in your root directory in a hidden folder called `./near-credentials`. This storage option is compatable with the `near-cli` tool (a cli tool without the guided prompts but similar functionality).
+Either storage option is fine. Either storage option is fine. Using the legacy storage option will save a file in your root directory in a hidden folder called `./near-credentials`. This storage option is compatable with the `near-cli` tool (a cli tool without the guided prompts but similar functionality). This storage option is compatable with the `near-cli` tool (a cli tool without the guided prompts but similar functionality).
 
 **Good Job!** Now you can use `near-cli-rs` to it's full capacity.
 
@@ -80,7 +83,7 @@ To use the `near-cli-rs` simply run the following in your terminal.
 $ near
 ```
 
-You should then see the following. Use the arrow keys and hit `enter` or simply type out one of the available options to select an option
+You should then see the following. You should then see the following. Use the arrow keys and hit `enter` or simply type out one of the available options to select an option
 
 ![](/docs/assets/near-cli-rs.png)
 
@@ -88,15 +91,15 @@ You should then see the following. Use the arrow keys and hit `enter` or simply 
 
 This option will allow you to manage, control, and retrieve information on your accounts.
 
-| Option                 | Description                                |
-| ---------------------- | ------------------------------------------ |
-| `view-account-summary` | View properties for an account             |
-| `import-account`       | Import existing account (a.k.a. "sign in") |
-| `create-account`       | Create a new account                       |
-| `delete-account`       | Delete an Account                          |
-| `list-keys`            | View a list of keys for an account         |
-| `add-key`              | Add an access key to an account            |
-| `delete-key`           | Delete an access key from an account       |
+| Option                 | Description                                           |
+| ---------------------- | ----------------------------------------------------- |
+| `view-account-summary` | View properties for an account                        |
+| `import-account`       | Import existing account (a.k.a. "sign in") "sign in") |
+| `create-account`       | Create a new account                                  |
+| `delete-account`       | Delete an Account                                     |
+| `list-keys`            | View a list of keys for an account                    |
+| `add-key`              | Add an access key to an account                       |
+| `delete-key`           | Delete an access key from an account                  |
 
 ### Tokens
 
