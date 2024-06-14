@@ -33,6 +33,7 @@ A contract can opt to have an initialization function. If present, this function
 
 #### `@initialize({ privateFunction: true })`
 The initialization function is marked with the `@initialize` decorator.
+
 </Block>
 
 <Block highlights='{"rust": "20"}' fname="auction">
