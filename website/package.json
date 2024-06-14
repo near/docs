@@ -2,6 +2,7 @@
   "engines": {
     "node": ">=18.0"
   },
+  "type": "module",
   "scripts": {
     "full-test": "./test-links.sh test",
     "start": "docusaurus start",
