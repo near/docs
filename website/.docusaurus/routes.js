@@ -74,15 +74,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', 'e7b'),
+    component: ComponentCreator('/zh-CN/', '037'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', 'd38'),
+        component: ComponentCreator('/zh-CN/', '2d8'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', 'aee'),
+            component: ComponentCreator('/zh-CN/', '9ba'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -878,7 +878,7 @@ export default [
               },
               {
                 path: '/zh-CN/build/smart-contracts/anatomy/functions',
-                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/functions', '269'),
+                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/functions', '242'),
                 exact: true,
                 sidebar: "build"
               },
