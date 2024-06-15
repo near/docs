@@ -12,7 +12,7 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Github Actions",
-  "lastUpdatedAt": 1704996595000,
+  "lastUpdatedAt": 1718378911000,
   "frontMatter": {
     "id": "realtime",
     "title": "Real-time Events (WebSocket)"

@@ -11,6 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/near-components/blog-posts.md",
   "tags": [],
   "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1718378911000,
   "frontMatter": {
     "id": "blog-posts",
     "title": "Blog Posts"

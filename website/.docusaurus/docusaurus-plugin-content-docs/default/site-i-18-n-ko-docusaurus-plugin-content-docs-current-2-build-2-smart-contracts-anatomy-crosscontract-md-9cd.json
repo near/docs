@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/anatomy/crosscontract.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "gagdiez",
-  "lastUpdatedAt": 1713279052000,
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1718378911000,
   "frontMatter": {
     "id": "crosscontract",
     "title": "교차 컨트랙트 호출"

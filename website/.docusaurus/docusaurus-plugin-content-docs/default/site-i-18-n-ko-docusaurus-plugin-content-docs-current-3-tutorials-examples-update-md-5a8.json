@@ -12,7 +12,7 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Github Actions",
-  "lastUpdatedAt": 1712954223000,
+  "lastUpdatedAt": 1718378911000,
   "frontMatter": {
     "id": "update-contract-migrate-state",
     "title": "자체 업그레이드 및 상태 마이그레이션"

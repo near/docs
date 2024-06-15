@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/near-components/bos-ethersjs-best-practices.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "gagdiez",
-  "lastUpdatedAt": 1713353002000,
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1718378911000,
   "frontMatter": {
     "id": "ethers-js-best-practices",
     "title": "Best Practices for Ethereum developers on NEAR"
