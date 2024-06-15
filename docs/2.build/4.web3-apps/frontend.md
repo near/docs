@@ -28,9 +28,13 @@ Even though your UI layer won't be decentralized, your backend layer (business l
 - Your web app will need to be hosted by a Web 2 hosting provider (e.g.: Vercel, AWS, etc).
 - This means your UI layer won't be decentralized.
 
+#### Integration
+
+It's highly recommend to integrate with [Wallet Selector](../../4.tools/wallet-selector.md) as your primary means of interacting with smart contracts. It's the easiest way to get up and running, allowing users to connect a wallet and send signed transactions. The only use case Wallet Selector doesn't cover is sending `view` transactions for users who haven't connected a wallet yet.
+
 :::tip
 
-Check [this article](integrate-contracts.md) to learn how to integrate smart contracts to your frontend.
+Check [this article](integrate-contracts.md) to learn how to integrate smart contracts to your frontend, using [Wallet Selector](../../4.tools/wallet-selector.md) and [NEAR API JS](../../4.tools/near-api-js/quick-reference.md).
 
 :::
 
