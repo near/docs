@@ -278,6 +278,7 @@ const sidebar = {
     {
       "Building Web3 Applications": [
         "build/web3-apps/quickstart",
+        "build/web3-apps/frontend",
         "build/web3-apps/integrate-contracts",
         "build/web3-apps/integrate-components",
         {
