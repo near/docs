@@ -74,15 +74,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '01f'),
+    component: ComponentCreator('/zh-CN/', '81f'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '2b9'),
+        component: ComponentCreator('/zh-CN/', '55e'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', 'ea3'),
+            component: ComponentCreator('/zh-CN/', '99d'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -139,7 +139,7 @@ export default [
               },
               {
                 path: '/zh-CN/api/rpc/setup',
-                component: ComponentCreator('/zh-CN/api/rpc/setup', '84d'),
+                component: ComponentCreator('/zh-CN/api/rpc/setup', 'f45'),
                 exact: true,
                 sidebar: "api"
               },
@@ -337,7 +337,7 @@ export default [
               },
               {
                 path: '/zh-CN/build/data-infrastructure/query-api/best-practices',
-                component: ComponentCreator('/zh-CN/build/data-infrastructure/query-api/best-practices', 'cdf'),
+                component: ComponentCreator('/zh-CN/build/data-infrastructure/query-api/best-practices', '810'),
                 exact: true,
                 sidebar: "build"
               },
@@ -1389,7 +1389,7 @@ export default [
               },
               {
                 path: '/zh-CN/pagoda/rpc/setup',
-                component: ComponentCreator('/zh-CN/pagoda/rpc/setup', '738'),
+                component: ComponentCreator('/zh-CN/pagoda/rpc/setup', '375'),
                 exact: true,
                 sidebar: "pagoda"
               },
@@ -1922,7 +1922,7 @@ export default [
               },
               {
                 path: '/zh-CN/tutorials/examples/update-contract-migrate-state',
-                component: ComponentCreator('/zh-CN/tutorials/examples/update-contract-migrate-state', '833'),
+                component: ComponentCreator('/zh-CN/tutorials/examples/update-contract-migrate-state', '1e0'),
                 exact: true,
                 sidebar: "tutorials"
               },

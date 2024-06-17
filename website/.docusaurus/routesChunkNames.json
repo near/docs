@@ -170,17 +170,17 @@
       "plugin": "c141421f"
     }
   },
-  "/zh-CN/-01f": {
+  "/zh-CN/-81f": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "aba21aa0"
     }
   },
-  "/zh-CN/-2b9": {
+  "/zh-CN/-55e": {
     "__comp": "a7bd4aaa",
     "__props": "2d9c5935"
   },
-  "/zh-CN/-ea3": {
+  "/zh-CN/-99d": {
     "__comp": "a94703ab"
   },
   "/zh-CN/api/rpc/access-keys-bbb": {
@@ -219,7 +219,7 @@
     "__comp": "17896441",
     "content": "2e63797e"
   },
-  "/zh-CN/api/rpc/setup-84d": {
+  "/zh-CN/api/rpc/setup-f45": {
     "__comp": "17896441",
     "content": "b3cfbcde"
   },
@@ -351,7 +351,7 @@
     "__comp": "17896441",
     "content": "ea183b16"
   },
-  "/zh-CN/build/data-infrastructure/query-api/best-practices-cdf": {
+  "/zh-CN/build/data-infrastructure/query-api/best-practices-810": {
     "__comp": "17896441",
     "content": "c9046143"
   },
@@ -1103,7 +1103,7 @@
     "__comp": "17896441",
     "content": "0f90aff2"
   },
-  "/zh-CN/pagoda/rpc/setup-738": {
+  "/zh-CN/pagoda/rpc/setup-375": {
     "__comp": "17896441",
     "content": "0d4fb755"
   },
@@ -1463,7 +1463,7 @@
     "__comp": "17896441",
     "content": "922b1ba2"
   },
-  "/zh-CN/tutorials/examples/update-contract-migrate-state-833": {
+  "/zh-CN/tutorials/examples/update-contract-migrate-state-1e0": {
     "__comp": "17896441",
     "content": "c193d505"
   },
