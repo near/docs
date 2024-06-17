@@ -87,7 +87,7 @@ To start the frontend you will need to install the dependencies and start the se
 ```bash
 cd frontend
 yarn
-yarn start
+yarn dev
 ```
 
 Go ahead and login with your NEAR account. If you don't have one, you will be able to create one in the moment. Once logged in, you will be able to sign a message in the guest book. You can further send some money alongside your message. If you attach more than 0.01Ⓝ then your message will be marked as "premium".
