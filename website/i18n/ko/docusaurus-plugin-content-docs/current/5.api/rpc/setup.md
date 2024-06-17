@@ -70,7 +70,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=network_in
 
 :::caution
 
-The block IDs of transactions shown in [NearBlocks Explorer](https://testnet.nearblocks.io) are not necessarily the block ID of the executed transaction. 트랜잭션은 기록된 후 한두 블록을 실행할 수 있으며, 경우에 따라 여러 블록에 걸쳐 발생할 수 있습니다. 이로 인해 쿼리된 트랜잭션과 관련된 모든 결과가 발견되었는지 확인하기 위해 후속 블록을 확인하는 것이 중요합니다.
+The block IDs of transactions shown in [NearBlocks Explorer](https://testnet.nearblocks.io) are not necessarily the block ID of the executed transaction. 트랜잭션은 기록된 후 한두 블록을 실행할 수 있으며, 경우에 따라 여러 블록에 걸쳐 발생할 수 있습니다. Due to this, it is important to check subsequent blocks to be sure all results related to the queried transaction are discovered.
 
 :::
 

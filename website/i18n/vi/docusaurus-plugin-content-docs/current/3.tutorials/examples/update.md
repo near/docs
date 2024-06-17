@@ -41,7 +41,7 @@ Notice that migrate is actually an [initialization method](../../2.build/2.smart
 ## State Versioning
 The [State Versioning example](https://github.com/near-examples/update-migrate-rust/tree/main/enum-updates) shows how to use [Enums](https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html) to implement state versioning on a contract.
 
-Versioning simplifies updating the contract since you only need to add a new new version of the structure. All versions can coexist, thus you will not need to change previously existing structures.
+Versioning simplifies updating the contract since you only need to add a new version of the structure. All versions can coexist, thus you will not need to change previously existing structures.
 
 The example is composed by 2 contracts:
 1. Base: The Guest Book contract using versioned `PostedMessages` (`PostedMessagesV1`).

@@ -41,7 +41,7 @@ Notice that migrate is actually an [initialization method](../../2.build/2.smart
 ## 상태 버전 관리
 The [State Versioning example](https://github.com/near-examples/update-migrate-rust/tree/main/enum-updates) shows how to use [Enums](https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html) to implement state versioning on a contract.
 
-버전 관리는 새 버전의 구조를 추가하기만 하면 되므로 컨트랙트 업데이트를 간소화합니다. 모든 버전이 공존할 수 있으므로, 기존 구조를 변경할 필요가 없습니다.
+Versioning simplifies updating the contract since you only need to add a new version of the structure. 모든 버전이 공존할 수 있으므로, 기존 구조를 변경할 필요가 없습니다.
 
 이는 두 컨트랙트로 구성됩니다.
 1. 기본: 버전 관리된 `PostedMessages`(`PostedMessagesV1`)를 사용하는 방명록 컨트랙트

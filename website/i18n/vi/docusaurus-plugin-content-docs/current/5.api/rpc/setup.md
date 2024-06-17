@@ -70,7 +70,7 @@ The `block_id` param can take either the block number (e.g. `27912554`) or the b
 
 :::caution
 
-The block IDs of transactions shown in [NearBlocks Explorer](https://testnet.nearblocks.io) are not necessarily the block ID of the executed transaction. Các transaction có thể thực hiện một hoặc hai block sau khi nó được ghi lại, và trong một số trường hợp có thể diễn ra trên nhiều block. Do đó, điều quan trọng là phải kiểm tra các block tiếp theo để đảm bảo tất cả các kết quả liên quan tới transaction đã truy vấn đều được tìm ra.
+The block IDs of transactions shown in [NearBlocks Explorer](https://testnet.nearblocks.io) are not necessarily the block ID of the executed transaction. Các transaction có thể thực hiện một hoặc hai block sau khi nó được ghi lại, và trong một số trường hợp có thể diễn ra trên nhiều block. Due to this, it is important to check subsequent blocks to be sure all results related to the queried transaction are discovered.
 
 :::
 
