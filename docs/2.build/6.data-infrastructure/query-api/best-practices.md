@@ -14,7 +14,7 @@ This section presents a recommended workflow when building a new indexer using Q
 
 ### Design APIs for your UIs
 
-If your application requires front-end User Interfaces (UIs), your first step should be to define the APIs that will be used by your front-end UI. The main objective here is to reduce the overall number of requests that each page makes to render all content. Once you define these APIs, you will have a an good overview of the data that you need to index from the blockchain. 
+If your application requires front-end User Interfaces (UIs), your first step should be to define the APIs that will be used by your front-end UI. The main objective here is to reduce the overall number of requests that each page makes to render all content. Once you define these APIs, you will have a good overview of the data that you need to index from the blockchain. 
 
 ### Create a Database
 

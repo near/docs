@@ -23,7 +23,7 @@ The tests in the [Counter Example](https://github.com/near-examples/counters) re
   <Language value="rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/counters/blob/main/contract-rs/src/lib.rs"
-            start="50" end="71" />
+            start="47" end="68" />
   </Language>
 </CodeTabs>
 
@@ -37,7 +37,7 @@ While doing unit testing you can modify the [Environment variables](../anatomy/e
   <Language value="rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/src/lib.rs"
-            start="59" end="117" />
+            start="58" end="105" />
   </Language>
 </CodeTabs>
 
