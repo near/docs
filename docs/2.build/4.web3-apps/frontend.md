@@ -58,20 +58,26 @@ To learn more, you can check other decentralized hosting options like [Fleek](ht
 -->
 
 ## BOS (SocialVM)
+
+BOS (UI) was an experiment in hosting UI code on chain and creating an ecosystem of composable and remixable components for dApp development.
+An example BOS VM website is [near.social](https://near.social).
+
+We no longer recommend building on it, but [this article](integrate-components.md) details how BOS components could be integrated into your frontend.
+
 :::warning What is the state of BOS?
 
 We no longer recommend building on BOS due to its limited capabilities and discontinued security maintenance. Developers with active projects on BOS are encouraged to migrate to another deployment strategy.
 
 :::
 
-BOS (UI) was an experiment in hosting UI code on chain and creating an ecosystem of composable and remixable components for dapp development.
+The use of a VM was intended to allow embedding untrusted third-party components into your experience in a way that their access to the full browser context and the ability to manipulate the behavior of your dApp was limited.
 
-The use of a VM was intended to allow embedding untrusted third-party components into your experience in a way that their access to the full browser context and the ability to manipulate the behavior of your dapp was limited.
-
-Unfortunately numerous exploits have been discovered and patched, and the nature of these exploits along with the quirks of javascript make it likely that this will be a continuing trend. For examples of previous discovered vulnerabilities, view the [VM changelog](https://github.com/NearSocial/VM/blob/master/CHANGELOG.md) going back to v2.5.1 paying attention to lines tagged as `FIX` on issues `Reported by BrunoModificato from OtterSec`.
+Unfortunately numerous exploits have been discovered and patched, and the nature of these exploits along with the quirks of javascript make it likely that this will be a continuing trend.
 
 It is not tenable to proactively discover and mitigate vulnerabilities in a comprehensive manner where the VM can be seen as providing a security guarantee. Coupling that with the significant tradeoffs in capabilities of applications built for the VM, we do not recommend continued usage of BOS as a development platform.
 
-An example BOS VM website is [near.social](https://near.social).
+:::info VM vulnerabilities
 
-[This article](integrate-components.md) details how BOS components could be integrated into your frontend.
+For examples of previous discovered vulnerabilities, view the [VM changelog](https://github.com/NearSocial/VM/blob/master/CHANGELOG.md) going back to [v2.5.1](https://github.com/NearSocial/VM/blob/master/CHANGELOG.md#251) paying attention to lines tagged as `FIX` on issues `Reported by BrunoModificato from OtterSec`.
+
+:::
