@@ -9,7 +9,7 @@ import {WidgetEditor} from "@site/src/components/widget-editor"
 
 We no longer recommend building on BOS due to its limited capabilities and discontinued security maintenance. Developers with active projects on BOS are encouraged to migrate to another deployment strategy.
 
-See [here](/build/web3-apps/frontend#bos-socialvm) for more information.
+See the [Web3 frontends](/build/web3-apps/frontend#bos-socialvm) section for more information.
 
 :::
 
