@@ -3,6 +3,14 @@ id: bos-gateway
 title: Using components on WebApps
 ---
 
+:::warning What is the state of BOS (NEAR Components)?
+
+We no longer recommend building on BOS due to its limited capabilities and discontinued security maintenance. Developers with active projects on BOS are encouraged to migrate to another deployment strategy.
+
+See [here](/build/web3-apps/frontend#bos-socialvm) for more info
+
+:::
+
 In order to use the components you create in a WebApp you need to use what is known as the `NEAR VM`. This virtual machine helps you to easily fetch components from the blockchain and transform them into executable code.
 
 There are two possible scenarios:

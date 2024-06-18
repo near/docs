@@ -8,6 +8,14 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {WidgetEditor} from "@site/src/components/widget-editor"
 
+:::warning What is the state of BOS (NEAR Components)?
+
+We no longer recommend building on BOS due to its limited capabilities and discontinued security maintenance. Developers with active projects on BOS are encouraged to migrate to another deployment strategy.
+
+See [here](/build/web3-apps/frontend#bos-socialvm) for more info
+
+:::
+
 NEAR Components are a new way to build web applications. They are composable, reusable and decentralized.
 
 ![img](/docs/assets/welcome-pages/bos-landing.png)
