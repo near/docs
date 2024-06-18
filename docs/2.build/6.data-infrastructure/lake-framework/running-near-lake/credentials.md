@@ -4,17 +4,17 @@ sidebar_label: "Credentials"
 
 # Credentials
 
-:::info DevConsole
+To access the data provided by [NEAR Lake](../near-lake.md) you need to provide valid AWS credentials in order to be charged by the AWS for the S3 usage.
 
-Please, keep in mind, currently using the AWS Credentials is the only way to access the data provided by [NEAR Lake](/tools/realtime#near-lake-indexer) ecosystem. But it is about to change with Pagoda DevConsole release. Stay tuned!
+:::info AWS credentials
+
+Please note that using your own AWS Credentials is the only way to access the data provided by [NEAR Lake](../near-lake.md) ecosystem.
 
 :::
 
-To access the data provided by [NEAR Lake](/tools/realtime#near-lake-indexer) you need to provide valid AWS credentials in order to be charged by the AWS for the S3 usage.
-
 ### AWS S3 Credentials
 
-To be able to get objects from the AWS S3 bucket you need to provide the AWS credentials.
+To be able to get objects from the AWS S3 bucket you need to provide your AWS credentials.
 
 AWS default profile configuration with aws configure looks similar to the following:
 
@@ -24,8 +24,8 @@ AWS default profile configuration with aws configure looks similar to the follow
 
 ```
 [default]
-aws_access_key_id=AKIAIOSFODNN7EXAMPLE
-aws_secret_access_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+aws_access_key_id=<YOUR_AWS_ACCESS_KEY_ID>
+aws_secret_access_key=<YOUR_AWS_ACCESS_KEY>
 ```
 
 [AWS docs: Configuration and credential file settings](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
@@ -35,7 +35,7 @@ aws_secret_access_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 Alternatively, you can provide your AWS credentials via environment variables with constant names:
 
 ```
-$ export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
-$ AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+$ export AWS_ACCESS_KEY_ID=<YOUR_AWS_ACCESS_KEY_ID>
+$ AWS_SECRET_ACCESS_KEY=<YOUR_AWS_ACCESS_KEY>
 $ AWS_DEFAULT_REGION=eu-central-1
 ```
