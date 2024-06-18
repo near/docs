@@ -7,6 +7,14 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {WidgetEditor} from "@site/src/components/widget-editor"
 
+:::warning What is the state of BOS (NEAR Components)?
+
+We no longer recommend building on BOS due to its limited capabilities and discontinued security maintenance. Developers with active projects on BOS are encouraged to migrate to another deployment strategy.
+
+See [here](/build/web3-apps/frontend#bos-socialvm) for more info
+
+:::
+
 The components can use the `Near` object to interact with smart contracts in the NEAR blockchain. There are three methods:
 
 - [`Near.view`](#nearview)

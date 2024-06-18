@@ -3,6 +3,14 @@ id: dev-environment
 title: Choose your Dev Environment
 ---
 
+:::warning What is the state of BOS (NEAR Components)?
+
+We no longer recommend building on BOS due to its limited capabilities and discontinued security maintenance. Developers with active projects on BOS are encouraged to migrate to another deployment strategy.
+
+See [here](/build/web3-apps/frontend#bos-socialvm) for more info
+
+:::
+
 The environments in which you can develop `Components` are divided into two categories:
 
 - [Web Tools](#web-tools): Online tools that allow you to quickly start building and sharing components.
