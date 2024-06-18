@@ -4,7 +4,7 @@ sidebar_label: "Credentials"
 
 # Credentials
 
-To access the data provided by [NEAR Lake](/tools/realtime#near-lake-indexer) you need to provide valid AWS credentials in order to be charged by the AWS for the S3 usage.
+To access the data provided by [NEAR Lake](../near-lake.md) you need to provide valid AWS credentials in order to be charged by the AWS for the S3 usage.
 
 :::info AWS credentials
 
