@@ -16,62 +16,50 @@ In this quickstart tutorial, we will guide you in creating your first smart cont
 
 ## Prerequisites
 
+Before starting, make sure to setup your development environment.
+
 <details>
 <summary>Working on Windows?</summary>
 
-See [Getting Started on NEAR Using Windows](/blog/getting-started-on-windows) for a step-by-step guide on how to setup WSL and your environment.
+  See our blog post [getting started on NEAR using Windows](/blog/getting-started-on-windows) for a step-by-step guide on how to setup WSL and your environment
+
 </details>
 
 <Tabs groupId="code-tabs">
   <TabItem value="js" label="🌐 JavaScript">
 
-Before starting, make sure you have the following installed:
+```bash
+# Install Node.js using nvm (more option in: https://nodejs.org/en/download)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+nvm install latest
 
-1. [Node.js](https://nodejs.org/en/download), to use our scaffolding tool.
-2. [NEAR CLI](/tools/near-cli#installation), to deploy and interact with the contract.
-
-:::tip Easy Install
-
-- **NEAR-CLI:** Install `near-cli` tools using
-
-  ```
-  npm i -g near-cli
-  ```
-
-:::
+# Install NEAR CLI to deploy and interact with the contract
+npm i -g near-cli
+```
 
 </TabItem>
 
 <TabItem value="rust" label="🦀 Rust">
 
-Before starting, make sure you have the following installed:
-
-1. [NEAR CLI-RS](/tools/near-cli-rs), to deploy and interact with the contract.
-2. [cargo-near](https://github.com/near/cargo-near), to easily create testnet accounts.
-3. [Rust](https://www.Rust-lang.org/tools/install), to create Rust contracts.
-4. [Node.js](https://nodejs.org/en/download)(Optional), to install the tools.
-
-:::tip Easy Install
-
-- **NEAR-CLI-RS:** Install both `near-cli-rs` and `cargo-near` tools using
-
 ```bash
-# Using node
-npm i -g near-cli-rs cargo-near
+# Install Rust: https://www.rust-lang.org/tools/install
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-# Using macOS, Linux, WSL
+# Contracts will be compiled to wasm, so we need to add the wasm target
+rustup target add wasm32-unknown-unknown
+
+# Install NEAR CLI-RS to deploy and interact with the contract
 curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releases/latest/download/near-cli-rs-installer.sh | sh
+
+# Install cargo near to help building the contract
 curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/cargo-near/releases/latest/download/cargo-near-installer.sh | sh
 ```
-
-:::
 
 </TabItem>
 
 </Tabs>
 
-
-:::info Testnet Account
+:::tip Testnet Account
 
 There is no need to have a `testnet` account to follow this tutorial.
 
@@ -83,35 +71,28 @@ However, if you want to create one, you can do so through [a wallet](https://tes
 
 ## Creating the Contract
 
+Create a smart contract by using one of the scaffolding tools and following their instructions:
 
 <Tabs groupId="code-tabs">
   <TabItem value="js" label="🌐 JavaScript">
 
-Create a smart contract by running our `create-near-app` scaffolding tool and following the interactive menu.
-
-- What do you want to build? › `A Near Smart Contract`
-- Select a smart contract template for your project › `JS/TS Contract`
-- Name your project › `hello-near`
 
 ```bash
   npx create-near-app@latest
 ```
 
 ![img](@site/static/docs/hello-near-ts.gif)
-_create-near-app in action_
+_Creating a project using `create-near-app`_
 
-The resulting folder structure will change slightly depending on the chosen language. Here is the general structure you can expect to see:
+This will generate a project with the following structure:
 
 ```bash
-├── sandbox-ts      # sanbox testing
-│   ├── src
-│   ├──  └── main.ava.ts
-│   ├── ava.config.cjs
-│   └── package.json
-├── src
-│   └── contract.ts # contract's code
-├── package.json    # package manager
+├── sandbox-test    # sanbox testing
+│   └── main.ava.js
+├── src             # contract's code
+│   └── contract.ts
 ├── README.md
+├── package.json    # package manager
 └── tsconfig.json
 ```
 
@@ -119,22 +100,20 @@ The resulting folder structure will change slightly depending on the chosen lang
 
 <TabItem value="rust" label="🦀 Rust">
 
-Create a smart contract by running our `near` Rust CLI tool and following the interactive menu.
-
 ```bash
   cargo near new <project_name>
 ```
 
 ![img](@site/static/docs/hello-near-rs.gif)
-_create-near-app in action_
+_Creating a project using `cargo near new`_
 
-The resulting folder structure will change slightly depending on the chosen language. Here is the general structure you can expect to see:
+This will generate a project with the following structure:
 
 ```bash
-├── src
-│   └── lib.rs # contract's code
-├── test 
-│   └── test_basics.rs # testing code
+├── src        # contract's code
+│   └── lib.rs 
+├── test       # sandbox testing
+│   └── test_basics.rs 
 ├── Cargo.toml # package manager
 ├── README.md
 └── rust-toolchain.toml
@@ -149,7 +128,9 @@ The resulting folder structure will change slightly depending on the chosen lang
 
 ## The Contract
 
-Your new smart contract stores a `greeting: string` attribute in their state, and exposes two methods to interact with it (`set_greeting`, `get_greeting`).
+The `Hello World` smart contract stores a greeting on its state, and exposes two methods to interact with it:
+1. `set_greeting`: to change the greeting
+2. `get_greeting`: to fetch the greeting 
 
 <Tabs groupId="code-tabs">
   <TabItem value="js" label="🌐 JavaScript">
@@ -169,11 +150,13 @@ Your new smart contract stores a `greeting: string` attribute in their state, an
   </TabItem>
 </Tabs>
 
-There are 3 important things to notice:
+:::tip
 
-1. The `get_greeting` method is a [`view`](./anatomy/anatomy.md#public-methods) method, meaning it only reads from the contract and can be called for free by anyone.
-2. By default, the contract is initialized with the `greeting` attribute set to `"Hello"`.
-3. The `set_greeting` method is a [`change`](./anatomy/anatomy.md#public-methods) method, meaning it modifies the contract's state and requires a user to sign a transaction in order to be executed.
+After finishing this tutorial, check our [contract's anatomy](./anatomy/anatomy.md) page to learn more about the contract's structure
+
+:::
+
+---
 
 ## Build and Test
 
@@ -191,12 +174,19 @@ npm run test
 # changes the greeting ✅
 ````
 
+<details>
+<summary> Failing tests? </summary>
+
+Make sure that you are using `node v18`, `v20` or `v22`. You can always use: `nvm use 18` to switch to `node v20`
+
+</details>
+
 </Language>
 
 <Language value="rust" language="rust">
 
 ```bash
-cargo build
+cargo near build
 cargo test
 
 # Expected:
@@ -207,16 +197,6 @@ cargo test
 </Language>
 
 </CodeTabs>
-
-<details>
-<summary> Failing tests? </summary>
-
-If the tests are failing, make sure that you are using `node v16` and the `toolchain v1.69` in `rust`. You can always use
-
-- `nvm use 16` to switch to `node v16`
-- `rustup default 1.68` to switch to `toolchain v1.69`
-
-</details>
 
 In the background, these commands are calling the build tools for each language and invoking the [Sandbox](./testing/integration-test.md) tests from the `sandbox-ts/rs` directory.
 

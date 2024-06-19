@@ -104,6 +104,7 @@ const config = {
         'go',
         'typescript',
         'jsx',
+        'bash',
       ],
     },
     colorMode: {
