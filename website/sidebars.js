@@ -781,7 +781,7 @@ const sidebar = {
     "api/rpc/protocol",
     "api/rpc/network",
     "api/rpc/transactions",
-    "api/rpc/maintenance-windows"
+    "api/rpc/maintenance-windows",
   ],
   "pagoda": [
     {
