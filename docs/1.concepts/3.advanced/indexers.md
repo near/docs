@@ -77,9 +77,9 @@ To query data across many blocks requires the aggregation of results from multip
 
 :::
 
-Because indexers listen to the *stream of data* from the blockchain and the data can be immediately filtered and processed according to defined requirements, they can be used to simplify the "wide" queries execution. For example, a stream of data can be written to a permanent database for later data analysis using a convenient query language like SQL. That is what [Indexer for Explorer](/tools/indexer-for-explorer) is doing.
+Because indexers listen to the *stream of data* from the blockchain and the data can be immediately filtered and processed according to defined requirements, they can be used to simplify the "wide" queries execution. For example, a stream of data can be written to a permanent database for later data analysis using a convenient query language like SQL.
 
-Another example that highlights the need for a "wide query" is when you use a seed phrase to recover one or more accounts. Since a seed phrase essentially represents a signing key pair, the recovery is for all accounts that share the associated public key. Therefore, when a seed phrase is used to recover an account via [NEAR Wallet](https://wallet.near.org), the query requires that all accounts with a matching public key are found and recovered. [NEAR Indexer for Explorer](/tools/indexer-for-explorer) is storing this data in a permanent database and this allows [NEAR Wallet](https://wallet.near.org) to perform such "wide queries". This is impossible to achieve using JSON-RPC only.
+Another example that highlights the need for a "wide query" is when you use a seed phrase to recover one or more accounts. Since a seed phrase essentially represents a signing key pair, the recovery is for all accounts that share the associated public key. Therefore, when a seed phrase is used to recover an account via [NEAR Wallet](https://wallet.near.org), the query requires that all accounts with a matching public key are found and recovered. Utilizing [Near Lake Framework](https://github.com/near/near-lake-framework-rs) can be used to store this data in a permanent database and this allows [NEAR Wallet](https://wallet.near.org) to perform such "wide queries". This is impossible to achieve using JSON-RPC only.
 
 ## Summary
 
