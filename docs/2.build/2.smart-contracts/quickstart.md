@@ -8,7 +8,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
-[NEAR accounts](../../1.concepts/protocol/account-model.md) can host programs known as smart contracts. Smart contracts can **store data**, and **expose methods** so other users and contracts interact with them. 
+[NEAR accounts](../../1.concepts/protocol/account-model.md) can host programs known as smart contracts. Smart contracts can **store data**, and **expose methods** so other users and contracts interact with them.
 
 In this quickstart tutorial, we will guide you in creating your first smart contract in the NEAR **testnet** that stores and retrieves a greeting.
 
@@ -16,11 +16,11 @@ In this quickstart tutorial, we will guide you in creating your first smart cont
 
 ## Prerequisites
 
-<details>
-<summary>Working on Windows?</summary>
+:::tip Working on Windows?
 
 See [Getting Started on NEAR Using Windows](/blog/getting-started-on-windows) for a step-by-step guide on how to setup WSL and your environment.
-</details>
+
+:::
 
 <Tabs groupId="code-tabs">
   <TabItem value="js" label="🌐 JavaScript">
@@ -133,7 +133,7 @@ The resulting folder structure will change slightly depending on the chosen lang
 ```bash
 ├── src
 │   └── lib.rs # contract's code
-├── test 
+├── test
 │   └── test_basics.rs # testing code
 ├── Cargo.toml # package manager
 ├── README.md
@@ -196,7 +196,7 @@ npm run test
 <Language value="rust" language="rust">
 
 ```bash
-cargo build
+cargo near build
 cargo test
 
 # Expected:
@@ -302,17 +302,19 @@ Having our account created, we can now deploy the contract into it:
 
 <Tabs>
 
-<TabItem value="near-cli">
-  ```bash
-  near deploy <created-account> build/release/hello.wasm
-  ```
+<TabItem value="js" label="🌐 near-cli">
+
+```bash
+near deploy <created-account> build/release/hello.wasm
+```
 
 </TabItem>
 
-<TabItem value="near-cli-rs">
-  ```bash
-  near contract deploy <created-account> use-file ./target/wasm32-unknown-unknown/release/contract_rs.wasm without-init-call network-config testnet sign-with-keychain send
-  ```
+<TabItem value="rust" label="🦀 near-cli-rs">
+
+```bash
+near contract deploy <created-account> use-file ./target/wasm32-unknown-unknown/release/<project-name>.wasm without-init-call network-config testnet sign-with-keychain send
+```
 
 </TabItem>
 
@@ -332,7 +334,7 @@ The `get_greeting` method is a [`view`](./anatomy/anatomy.md#public-methods) met
 
 <Tabs>
 
-<TabItem value="near-cli">
+<TabItem value="js" label="🌐 near-cli">
 
 ```bash
 > near view <created-account> get_greeting
@@ -342,7 +344,7 @@ The `get_greeting` method is a [`view`](./anatomy/anatomy.md#public-methods) met
 
 </TabItem>
 
-<TabItem value="near-cli-rs">
+<TabItem value="rust" label="🦀 near-cli-rs">
 
 ```bash
 > near contract call-function as-read-only <created-account> get_greeting json-args {} network-config testnet now
@@ -360,7 +362,7 @@ The `set_greeting` method is a [`change`](./anatomy/anatomy.md#public-methods) m
 
 <Tabs>
 
-<TabItem value="near-cli">
+<TabItem value="js" label="🌐 near-cli">
 
 ```bash
 > near call <created-account> set_greeting '{"greeting": "Hola"}' --accountId <created-account>
@@ -372,7 +374,7 @@ In this case we are asking the account that stores the contract to call its own 
 
 </TabItem>
 
-<TabItem value="near-cli-rs">
+<TabItem value="rust" label="🦀 near-cli-rs">
 
 ```bash
 > near contract call-function as-transaction <created-account> set_greeting json-args '{"greeting": "Hola"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as <created-account> network-config testnet sign-with-keychain send
