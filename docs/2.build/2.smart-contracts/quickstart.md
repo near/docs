@@ -149,24 +149,37 @@ The resulting folder structure will change slightly depending on the chosen lang
 
 ## The Contract
 
-Your new smart contract stores a `greeting: string` attribute in their state, and exposes two methods to interact with it (`set_greeting`, `get_greeting`).
+You are now ready to create your first smart contract that stores and retrieves a message.
+
+Your new smart contract stores a `greeting: string` attribute in their state, and exposes two methods to interact with it:
+- `set_greeting(msg)`
+- `get_greeting()`
 
 <Tabs groupId="code-tabs">
   <TabItem value="js" label="🌐 JavaScript">
+
+Copy [this source code](https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts) to your `src/contract.ts` file. Here's a quick preview:
+
     <Language value="js" language="js">
         <Github fname="index.js"
                 url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts"
                 start="4" end="18" />
     </Language>
-  </TabItem>
 
-  <TabItem value="rust" label="🦀 Rust">
+</TabItem>
+
+<TabItem value="rust" label="🦀 Rust">
+
+Copy [this source code](https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs) to your `src/lib.rs` file. Here's a quick preview:
+
     <Language value="Rust" language="rust">
         <Github fname="lib.rs"
                 url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
                 start="4" end="32" />
     </Language>
+
   </TabItem>
+
 </Tabs>
 
 There are 3 important things to notice:
@@ -228,7 +241,7 @@ Testing the contracts within a Sandbox allows you to understand how the contract
 
 ## Create a Testnet Account
 
-Now that we know the contract is passing the tests, let's create a testnet account in which to deploy the contract.
+Now that you know the contract is passing the tests, let's create a `testnet` account in which to deploy the contract.
 
 While there are different ways to create accounts in NEAR, in this quickstart we will use the `cargo-near` tool to create a new random [`named account`](/concepts/protocol/account-id).
 
