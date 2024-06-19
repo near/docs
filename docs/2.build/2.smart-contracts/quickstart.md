@@ -315,7 +315,9 @@ Having our account created, we can now deploy the contract into it:
 
 <Tabs>
 
-<TabItem value="js" label="🌐 near-cli">
+<TabItem value="js" label="🌐 JavaScript">
+
+Using `near-cli`:
 
 ```bash
 near deploy <created-account> build/release/hello.wasm
@@ -323,7 +325,9 @@ near deploy <created-account> build/release/hello.wasm
 
 </TabItem>
 
-<TabItem value="rust" label="🦀 near-cli-rs">
+<TabItem value="rust" label="🦀 Rust">
+
+Using `near-cli-rs`:
 
 ```bash
 near contract deploy <created-account> use-file ./target/wasm32-unknown-unknown/release/<project-name>.wasm without-init-call network-config testnet sign-with-keychain send
@@ -339,7 +343,7 @@ near contract deploy <created-account> use-file ./target/wasm32-unknown-unknown/
 
 ## Interacting with the Contract
 
-To interact with your deployed smart contract, you can call its methods using the `near-cli` or `near-cli-rs` tools.
+To interact with your deployed smart contract, you can call its methods using the [`near-cli`](../../4.tools/cli.md) or [`near-cli-rs`](../../4.tools/cli-rs.md) tools.
 
 ### Get Greeting
 
@@ -347,7 +351,9 @@ The `get_greeting` method is a [`view`](./anatomy/anatomy.md#public-methods) met
 
 <Tabs>
 
-<TabItem value="js" label="🌐 near-cli">
+<TabItem value="js" label="🌐 JavaScript">
+
+Using `near-cli`:
 
 ```bash
 > near view <created-account> get_greeting
@@ -357,7 +363,9 @@ The `get_greeting` method is a [`view`](./anatomy/anatomy.md#public-methods) met
 
 </TabItem>
 
-<TabItem value="rust" label="🦀 near-cli-rs">
+<TabItem value="rust" label="🦀 Rust">
+
+Using `near-cli-rs`:
 
 ```bash
 > near contract call-function as-read-only <created-account> get_greeting json-args {} network-config testnet now
@@ -375,7 +383,9 @@ The `set_greeting` method is a [`change`](./anatomy/anatomy.md#public-methods) m
 
 <Tabs>
 
-<TabItem value="js" label="🌐 near-cli">
+<TabItem value="js" label="🌐 JavaScript">
+
+Using `near-cli`:
 
 ```bash
 > near call <created-account> set_greeting '{"greeting": "Hola"}' --accountId <created-account>
@@ -387,7 +397,9 @@ In this case we are asking the account that stores the contract to call its own 
 
 </TabItem>
 
-<TabItem value="rust" label="🦀 near-cli-rs">
+<TabItem value="rust" label="🦀 Rust">
+
+Using `near-cli-rs`:
 
 ```bash
 > near contract call-function as-transaction <created-account> set_greeting json-args '{"greeting": "Hola"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as <created-account> network-config testnet sign-with-keychain send
