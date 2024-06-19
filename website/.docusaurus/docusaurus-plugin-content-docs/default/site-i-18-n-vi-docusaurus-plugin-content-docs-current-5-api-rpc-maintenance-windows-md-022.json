@@ -16,5 +16,10 @@
   "frontMatter": {
     "id": "maintenance-windows",
     "title": "Maintenance Windows"
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "Transactions",
+    "permalink": "/vi/api/rpc/transactions"
   }
 }

@@ -37,7 +37,8 @@
             },
             {
               "id": "api/rpc/maintenance-windows",
-              "path": "/zh-CN/api/rpc/maintenance-windows"
+              "path": "/zh-CN/api/rpc/maintenance-windows",
+              "sidebar": "api"
             },
             {
               "id": "api/rpc/network",
@@ -819,10 +820,6 @@
               "sidebar": "concepts"
             },
             {
-              "id": "concepts/abstraction/mpc",
-              "path": "/zh-CN/concepts/abstraction/mpc"
-            },
-            {
               "id": "concepts/abstraction/relayers",
               "path": "/zh-CN/concepts/abstraction/relayers",
               "sidebar": "concepts"
@@ -853,10 +850,6 @@
               "sidebar": "concepts"
             },
             {
-              "id": "concepts/advanced/vm",
-              "path": "/zh-CN/concepts/advanced/vm"
-            },
-            {
               "id": "concepts/basics/epoch",
               "path": "/zh-CN/concepts/basics/epoch",
               "sidebar": "concepts"
@@ -867,10 +860,6 @@
               "sidebar": "concepts"
             },
             {
-              "id": "concepts/basics/overview",
-              "path": "/zh-CN/concepts/basics/overview"
-            },
-            {
               "id": "concepts/basics/protocol",
               "path": "/zh-CN/concepts/basics/protocol",
               "sidebar": "concepts"
@@ -879,10 +868,6 @@
               "id": "concepts/basics/runtime",
               "path": "/zh-CN/concepts/basics/runtime",
               "sidebar": "concepts"
-            },
-            {
-              "id": "concepts/basics/technical_stuff",
-              "path": "/zh-CN/concepts/basics/technical_stuff"
             },
             {
               "id": "concepts/basics/token-loss",
@@ -1318,10 +1303,6 @@
               "sidebar": "tools"
             },
             {
-              "id": "tools/indexer-for-explorer",
-              "path": "/zh-CN/tools/indexer-for-explorer"
-            },
-            {
               "id": "tools/indexing",
               "path": "/zh-CN/tools/indexing",
               "sidebar": "tools"
@@ -1369,18 +1350,6 @@
               "id": "tools/near-cli-rs",
               "path": "/zh-CN/tools/near-cli-rs",
               "sidebar": "tools"
-            },
-            {
-              "id": "tools/realtime",
-              "path": "/zh-CN/tools/realtime"
-            },
-            {
-              "id": "tools/remix-ide-plugin",
-              "path": "/zh-CN/tools/remix-ide-plugin"
-            },
-            {
-              "id": "tools/usecases",
-              "path": "/zh-CN/tools/usecases"
             },
             {
               "id": "tools/wallet-selector",
@@ -1493,10 +1462,6 @@
               "sidebar": "tutorials"
             },
             {
-              "id": "tutorials/examples/blockvote-js",
-              "path": "/zh-CN/tutorials/examples/blockvote-js"
-            },
-            {
               "id": "tutorials/examples/coin-flip",
               "path": "/zh-CN/tutorials/examples/coin-flip",
               "sidebar": "tutorials"
@@ -1565,10 +1530,6 @@
               "id": "tutorials/fts/registering-accounts",
               "path": "/zh-CN/tutorials/fts/registering-accounts",
               "sidebar": "tutorials"
-            },
-            {
-              "id": "tutorials/fts/simple-fts",
-              "path": "/zh-CN/tutorials/fts/simple-fts"
             },
             {
               "id": "tutorials/fts/skeleton",

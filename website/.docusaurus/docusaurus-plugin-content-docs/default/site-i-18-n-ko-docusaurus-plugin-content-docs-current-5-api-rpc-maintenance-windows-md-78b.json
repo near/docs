@@ -16,5 +16,10 @@
   "frontMatter": {
     "id": "maintenance-windows",
     "title": "유지 관리 기간(Maintenance Window)"
+  },
+  "sidebar": "api",
+  "previous": {
+    "title": "트랜잭션",
+    "permalink": "/ko/api/rpc/transactions"
   }
 }

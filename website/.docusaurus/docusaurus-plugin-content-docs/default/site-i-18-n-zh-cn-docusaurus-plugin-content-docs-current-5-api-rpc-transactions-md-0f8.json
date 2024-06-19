@@ -22,5 +22,9 @@
   "previous": {
     "title": "Network",
     "permalink": "/zh-CN/api/rpc/network"
+  },
+  "next": {
+    "title": "Maintenance Windows",
+    "permalink": "/zh-CN/api/rpc/maintenance-windows"
   }
 }

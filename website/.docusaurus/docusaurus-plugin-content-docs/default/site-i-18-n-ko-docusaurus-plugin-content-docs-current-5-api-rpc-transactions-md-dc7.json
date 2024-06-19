@@ -22,5 +22,9 @@
   "previous": {
     "title": "네트워크",
     "permalink": "/ko/api/rpc/network"
+  },
+  "next": {
+    "title": "유지 관리 기간(Maintenance Window)",
+    "permalink": "/ko/api/rpc/maintenance-windows"
   }
 }

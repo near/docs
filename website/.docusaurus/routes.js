@@ -74,15 +74,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '81f'),
+    component: ComponentCreator('/zh-CN/', '726'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '55e'),
+        component: ComponentCreator('/zh-CN/', 'ecc'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '99d'),
+            component: ComponentCreator('/zh-CN/', 'de1'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -116,8 +116,9 @@ export default [
               },
               {
                 path: '/zh-CN/api/rpc/maintenance-windows',
-                component: ComponentCreator('/zh-CN/api/rpc/maintenance-windows', '9b6'),
-                exact: true
+                component: ComponentCreator('/zh-CN/api/rpc/maintenance-windows', 'cf1'),
+                exact: true,
+                sidebar: "api"
               },
               {
                 path: '/zh-CN/api/rpc/network',
@@ -1069,11 +1070,6 @@ export default [
                 sidebar: "concepts"
               },
               {
-                path: '/zh-CN/concepts/abstraction/mpc',
-                component: ComponentCreator('/zh-CN/concepts/abstraction/mpc', '9ae'),
-                exact: true
-              },
-              {
                 path: '/zh-CN/concepts/abstraction/relayers',
                 component: ComponentCreator('/zh-CN/concepts/abstraction/relayers', '6dd'),
                 exact: true,
@@ -1110,11 +1106,6 @@ export default [
                 sidebar: "concepts"
               },
               {
-                path: '/zh-CN/concepts/advanced/vm',
-                component: ComponentCreator('/zh-CN/concepts/advanced/vm', 'd83'),
-                exact: true
-              },
-              {
                 path: '/zh-CN/concepts/basics/epoch',
                 component: ComponentCreator('/zh-CN/concepts/basics/epoch', '47a'),
                 exact: true,
@@ -1127,11 +1118,6 @@ export default [
                 sidebar: "concepts"
               },
               {
-                path: '/zh-CN/concepts/basics/overview',
-                component: ComponentCreator('/zh-CN/concepts/basics/overview', '7ff'),
-                exact: true
-              },
-              {
                 path: '/zh-CN/concepts/basics/protocol',
                 component: ComponentCreator('/zh-CN/concepts/basics/protocol', '3e3'),
                 exact: true,
@@ -1142,11 +1128,6 @@ export default [
                 component: ComponentCreator('/zh-CN/concepts/basics/runtime', '7e4'),
                 exact: true,
                 sidebar: "concepts"
-              },
-              {
-                path: '/zh-CN/concepts/basics/technical_stuff',
-                component: ComponentCreator('/zh-CN/concepts/basics/technical_stuff', 'b5d'),
-                exact: true
               },
               {
                 path: '/zh-CN/concepts/basics/token-loss',
@@ -1669,11 +1650,6 @@ export default [
                 sidebar: "tools"
               },
               {
-                path: '/zh-CN/tools/indexer-for-explorer',
-                component: ComponentCreator('/zh-CN/tools/indexer-for-explorer', '1c2'),
-                exact: true
-              },
-              {
                 path: '/zh-CN/tools/indexing',
                 component: ComponentCreator('/zh-CN/tools/indexing', 'ee8'),
                 exact: true,
@@ -1731,21 +1707,6 @@ export default [
                 component: ComponentCreator('/zh-CN/tools/near-cli-rs', 'c9b'),
                 exact: true,
                 sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/tools/realtime',
-                component: ComponentCreator('/zh-CN/tools/realtime', '7b8'),
-                exact: true
-              },
-              {
-                path: '/zh-CN/tools/remix-ide-plugin',
-                component: ComponentCreator('/zh-CN/tools/remix-ide-plugin', 'c4c'),
-                exact: true
-              },
-              {
-                path: '/zh-CN/tools/usecases',
-                component: ComponentCreator('/zh-CN/tools/usecases', '7d8'),
-                exact: true
               },
               {
                 path: '/zh-CN/tools/wallet-selector',
@@ -1880,11 +1841,6 @@ export default [
                 sidebar: "tutorials"
               },
               {
-                path: '/zh-CN/tutorials/examples/blockvote-js',
-                component: ComponentCreator('/zh-CN/tutorials/examples/blockvote-js', '9bb'),
-                exact: true
-              },
-              {
                 path: '/zh-CN/tutorials/examples/coin-flip',
                 component: ComponentCreator('/zh-CN/tutorials/examples/coin-flip', 'e8b'),
                 exact: true,
@@ -1967,11 +1923,6 @@ export default [
                 component: ComponentCreator('/zh-CN/tutorials/fts/registering-accounts', '15a'),
                 exact: true,
                 sidebar: "tutorials"
-              },
-              {
-                path: '/zh-CN/tutorials/fts/simple-fts',
-                component: ComponentCreator('/zh-CN/tutorials/fts/simple-fts', '03e'),
-                exact: true
               },
               {
                 path: '/zh-CN/tutorials/fts/skeleton',
