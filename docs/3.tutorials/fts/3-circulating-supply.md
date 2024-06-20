@@ -53,7 +53,7 @@ src
   └── storage.rs
 ```
 
-In the `internal.rs` file, add the following code to create a function called `internal_deposit` which takes an `AccountId` and an `u128` as a balance and adds the amount to the account's current supply of FTs. 
+In the `internal.rs` file, add the following code to create a function called `internal_deposit` which takes an `AccountId` and a `NearToken` as a balance and adds the amount to the account's current supply of FTs.
 
 <Github language="rust" start="1" end="18" url="https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/internal.rs" />
 
@@ -67,13 +67,14 @@ In addition, add the following code to the `new` initialization function.
 #[init]
 pub fn new(
     owner_id: AccountId,
-    total_supply: u128,
+    total_supply: U128,
     metadata: FungibleTokenMetadata,
 ) -> Self {
-    // Create a variable of type Self with all the fields initialized. 
+    let casted_total_supply = NearToken::from_yoctonear(total_supply.0);
+    // Create a variable of type Self with all the fields initialized.
     let mut this = Self {
         // Set the total supply
-        total_supply,
+        total_supply: casted_total_supply,
         // Storage keys are simply the prefixes used for the collections. This helps avoid data collision
         accounts: LookupMap::new(StorageKey::Accounts),
         metadata: LazyOption::new(
@@ -83,7 +84,7 @@ pub fn new(
     };
 
     // Set the owner's balance to the total supply.
-    this.internal_deposit(&owner_id, total_supply.into());
+    this.internal_deposit(&owner_id, casted_total_supply);
 
     // Return the Contract object
     this
@@ -110,7 +111,7 @@ At this point, you have everything you need to create an initial supply of token
 
 ## Events
 
-Have you ever wondered how the wallet knows which FTs you own and how it can display them in the [balances tab](https://testnet.mynearwallet.com/)? Originally, an indexer used to listen for any function calls starting with `ft_` on your account. These contracts were then flagged on your account as likely FT contracts. 
+Have you ever wondered how the wallet knows which FTs you own and how it can display them in the [balances tab](https://testnet.mynearwallet.com/)? Originally, an indexer used to listen for any function calls starting with `ft_` on your account. These contracts were then flagged on your account as likely FT contracts.
 
 When you navigated to your balances tab, the wallet would then query all those contracts for the number of FTs you owned using the `ft_balance_of` function you just wrote.
 
@@ -118,7 +119,7 @@ When you navigated to your balances tab, the wallet would then query all those c
 
 ### The problem {#the-problem}
 
-This method of flagging contracts was not reliable as each FT-driven application might have its own way of minting or transferring FTs. In addition, it's common for apps to transfer or mint many tokens at a time using batch functions. 
+This method of flagging contracts was not reliable as each FT-driven application might have its own way of minting or transferring FTs. In addition, it's common for apps to transfer or mint many tokens at a time using batch functions.
 
 <hr className="subsection" />
 
@@ -128,10 +129,10 @@ A standard was introduced so that smart contracts could emit an event anytime FT
 
 As per the standard, you need to implement a logging functionality that gets fired when FTs are transferred or minted. In this case, the contract doesn't support burning so you don't need to worry about that for now.
 
-It's important to note the standard dictates that the log should begin with `"EVENT_JSON:"`. The structure of your log should, however, always contain the 3 following things: 
+It's important to note the standard dictates that the log should begin with `"EVENT_JSON:"`. The structure of your log should, however, always contain the 3 following things:
 
-- **standard**: the current name of the standard (e.g. nep141)
-- **version**: the version of the standard you're using (e.g. 1.0.0)
+- **standard**: the current name of the standard (e.g. `nep141`)
+- **version**: the version of the standard you're using (e.g. `1.0.0`)
 - **event**: a list of events you're emitting.
 
 The event interface differs based on whether you're recording transfers or mints. The interface for both events is outlined below.
@@ -157,7 +158,7 @@ In order to solidify your understanding of the standard, let's walk through two 
 
 In this scenario, the Benji mints 50 FTs to himself and doesn't include a message. The log should look as follows.
 
-```json
+```js
 EVENT_JSON:{
   "standard": "nep141",
   "version": "1.0.0",
@@ -174,7 +175,7 @@ EVENT_JSON:{
 
 In this scenario, Benji wants to perform a batch transfer. He will send FTs to Jada, Mike, Josh, and Maria. The log is as follows.
 
-```json
+```js
 EVENT_JSON:{
     "standard": "nep141",
     "version": "1.0.0",
@@ -196,9 +197,9 @@ At this point, you should have a good understanding of what the end goal should 
 
 ### Creating the events file {#events-rs}
 
-Copy the following into your file. This will outline the structs for your `EventLog`, `FtMintLog`, and `FtTransferLog`. In addition, we've added a way for `EVENT_JSON:` to be prefixed whenever you log the `EventLog`. 
+Copy the following into your file. This will outline the structs for your `EventLog`, `FtMintLog`, and `FtTransferLog`. In addition, we've added a way for `EVENT_JSON:` to be prefixed whenever you log the `EventLog`.
 
-<Github language="rust" start="1" end="121" url="https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/events.rs" />
+<Github language="rust" start="16" end="121" url="https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/events.rs" />
 
 <hr className="subsection" />
 
@@ -241,7 +242,8 @@ export EVENTS_FT_CONTRACT_ID=events.$FT_CONTRACT_ID
 Build the contract as you did in the previous tutorials:
 
 ```bash
-cd 2.define-a-token && cargo near build
+cd 2.define-a-token
+cargo near build
 ```
 
 <hr className="subsection" />
@@ -323,3 +325,14 @@ Now that your contract implements the necessary functions that the wallet uses t
 Today you went through and created the logic for minting a total supply. You then implemented some of the core standard logic and the [events standard](https://nomicon.io/Standards/Tokens/FungibleToken/Event). You created events for [minting](#modifications-to-the-contract) FTs on initialization. You then deployed and [tested](#testing) your changes and saw your very first FTs in the wallet!
 
 In the next tutorial, you'll look at the basics of registering accounts so that they can transfer and receive FTs.
+
+---
+
+:::note Versioning for this article
+At the time of this writing, this example works with the following versions:
+
+- rustc: `1.77.1`
+- near-sdk-rs: `5.1.0` (with enabled `legacy` feature)
+- cargo-near: `0.6.1`
+- near-cli: `4.0.13`
+:::

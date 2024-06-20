@@ -83,7 +83,8 @@ Now that the logic for defining a custom fungible token is complete and you've a
 You can build a contract using the following command:
 
 ```bash
-cd 1.skeleton && cargo near build
+cd 2.define-a-token
+cargo near build
 ```
 
 There will be a list of warnings on your console, but as the tutorial progresses, these warnings will go away.
@@ -132,7 +133,7 @@ near view $FT_CONTRACT_ID ft_metadata
 
 This should return an output similar to the following:
 
-```bash
+```js
 {
   spec: 'ft-1.0.0',
   name: 'Team Token FT Tutorial',
@@ -163,3 +164,14 @@ You first looked at [what a fungible token is](#modifications) and how it differ
 ## Next Steps
 
 In the [next tutorial](/tutorials/fts/circulating-supply), you'll find out how to create an initial supply of tokens and have them show up in the NEAR wallet.
+
+---
+
+:::note Versioning for this article
+At the time of this writing, this example works with the following versions:
+
+- rustc: `1.77.1`
+- near-sdk-rs: `5.1.0` (with enabled `legacy` feature)
+- cargo-near: `0.6.1`
+- near-cli: `4.0.13`
+:::
