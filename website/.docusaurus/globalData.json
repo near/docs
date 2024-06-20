@@ -780,6 +780,11 @@
               "sidebar": "build"
             },
             {
+              "id": "build/web3-apps/frontend",
+              "path": "/zh-CN/build/web3-apps/frontend",
+              "sidebar": "build"
+            },
+            {
               "id": "build/web3-apps/integrate-components",
               "path": "/zh-CN/build/web3-apps/integrate-components",
               "sidebar": "build"

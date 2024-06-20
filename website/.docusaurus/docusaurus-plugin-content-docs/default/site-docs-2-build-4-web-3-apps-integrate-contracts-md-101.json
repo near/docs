@@ -19,8 +19,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "⭐ Quickstart a WebApp",
-    "permalink": "/build/web3-apps/quickstart"
+    "title": "Frontends",
+    "permalink": "/build/web3-apps/frontend"
   },
   "next": {
     "title": "Integrating Components",

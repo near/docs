@@ -1,7 +1,7 @@
 {
   "id": "build/near-components/anatomy/state",
   "title": "Basics",
-  "description": "Borrowing from React, Near Components use hooks such as useState and useEffect to handle the state's logic, and props to receive parameters.",
+  "description": "We no longer recommend building on BOS due to its limited capabilities and discontinued security maintenance. Developers with active projects on BOS are encouraged to migrate to another deployment strategy.",
   "source": "@site/../docs/2.build/3.near-components/anatomy/state.md",
   "sourceDirName": "2.build/3.near-components/anatomy",
   "slug": "/build/near-components/anatomy/state",
@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/3.near-components/anatomy/state.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "gagdiez",
-  "lastUpdatedAt": 1712759479000,
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1718898395000,
   "frontMatter": {
     "id": "state",
     "title": "Basics"
