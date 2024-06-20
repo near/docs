@@ -89,22 +89,22 @@ cargo near build
 
 There will be a list of warnings on your console, but as the tutorial progresses, these warnings will go away.
 
-For deployment, you will need a NEAR account with the keys stored on your local machine. Navigate to the [NEAR wallet](https://testnet.mynearwallet.com//) site and create an account.
+For deployment, you will need a NEAR account with the keys stored on your local machine. Navigate to the [NEAR wallet](https://testnet.mynearwallet.com/) site and create an account.
 
 :::info
 Please ensure that you deploy the contract to an account with no pre-existing contracts. It's easiest to simply create a new account or create a sub-account for this tutorial.
 :::
 
-Log in to your newly created account with `near-cli` by running the following command in your terminal.
+Log in to your newly created account with `near-cli-rs` by running the following command in your terminal.
 
 ```bash
-near login
+near account import-account using-web-wallet network-config testnet
 ```
 
 To make this tutorial easier to copy/paste, we're going to set an environment variable for your account ID. In the command below, replace `YOUR_ACCOUNT_NAME` with the account name you just logged in with including the `.testnet` portion:
 
 ```bash
-export FT_CONTRACT_ID="YOUR_ACCOUNT_NAME"
+export FT_CONTRACT_ID="YOUR_ACCOUNT_NAME.testnet"
 ```
 
 Test that the environment variable is set correctly by running:
@@ -128,7 +128,7 @@ At this point, the contract should have been deployed to your account and initia
 Now that the contract has been initialized, you can query for the metadata by calling the function you wrote earlier.
 
 ```bash
-near view $FT_CONTRACT_ID ft_metadata
+near contract call-function as-read-only $FT_CONTRACT_ID ft_metadata json-args {} network-config testnet now
 ```
 
 This should return an output similar to the following:
@@ -173,5 +173,5 @@ At the time of this writing, this example works with the following versions:
 - rustc: `1.77.1`
 - near-sdk-rs: `5.1.0` (with enabled `legacy` feature)
 - cargo-near: `0.6.1`
-- near-cli: `4.0.13`
+- near-cli-rs: `0.11.0`
 :::
