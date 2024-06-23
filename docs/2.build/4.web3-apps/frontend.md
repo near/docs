@@ -42,7 +42,7 @@ Check [this article](integrate-contracts.md) to learn how to integrate smart con
 
 If you require your entire stack to be decentralized, this will be the best choice. However, the potential technical limitations (no SSR or meta frameworks like Next JS) are worth considering.
 
-To learn more, you can check other decentralized hosting options like [Fleek](https://fleek.co/).
+To learn more, you can check other decentralized hosting options like [Web4](https://web4.near.page/) or [Fleek](https://fleek.co/).
 
 <!-- content left out
 
