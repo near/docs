@@ -264,6 +264,6 @@ At the time of this writing, this example works with the following versions:
 - rustc: `1.76.0`
 - near-sdk-rs: `5.1.0`
 - cargo-near: `0.6.1`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
 
 :::

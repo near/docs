@@ -259,7 +259,7 @@ At the time of this writing, this example works with the following versions:
 - rustc: `1.77.1`
 - near-cli-rs: `0.11.0`
 - cargo-near `0.6.1`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
 - Events standard: [NEP297 extension](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event), version `1.1.0`
 
 :::

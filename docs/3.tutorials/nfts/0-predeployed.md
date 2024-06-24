@@ -127,6 +127,6 @@ Now that you're familiar with the process, you can jump to [Contract Architectur
 At the time of this writing, this example works with the following versions:
 
 - near-cli-rs: `0.11.0`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
 
 :::
