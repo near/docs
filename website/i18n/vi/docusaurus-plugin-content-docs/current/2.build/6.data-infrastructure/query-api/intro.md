@@ -70,12 +70,6 @@ You're free to review the JavaScript code of the indexer function, or check the 
   - Historical processing won't happen in order. (it will happen at the same time as top of network)
   - Keep that in mind to ensure you don't have unintended side effects.
 
-:::tip Join the Beta
-
-If you want to join the closed beta, please [fill out this form](http://bit.ly/near-queryapi-beta) for access.
-
-:::
-
 :::info Pricing
 
 Pagoda currently doesn't charge for storing your indexer code and data or running the indexer, but we will introduce this soon.

@@ -1,7 +1,7 @@
 {
   "id": "build/near-components/what-is",
   "title": "What are NEAR Components?",
-  "description": "NEAR Components are a new way to build web applications. They are composable, reusable and decentralized.",
+  "description": "We no longer recommend building on BOS due to its limited capabilities and discontinued security maintenance. Developers with active projects on BOS are encouraged to migrate to another deployment strategy.",
   "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/3.near-components/what-is.md",
   "sourceDirName": "2.build/3.near-components",
   "slug": "/build/near-components/what-is",

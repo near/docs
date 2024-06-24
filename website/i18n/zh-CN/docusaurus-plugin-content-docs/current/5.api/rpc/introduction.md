@@ -19,15 +19,14 @@ There are multiple [RPC providers which you can choose from](./providers.md). Th
 
 ## NEAR RPC - Quick Links
 
-| API                                                 | Description                                                                  |
-| --------------------------------------------------- | ---------------------------------------------------------------------------- |
-| [Access Keys](/api/rpc/access-keys)                 | Retrieve information about an account's access keys.                         |
-| [Accounts / Contracts](/api/rpc/contracts)          | View details about accounts and contracts as well as perform contract calls. |
-| [Block / Chunk](/api/rpc/block-chunk)               | Query the network and get details about specific blocks or chunks.           |
-| [Gas](/api/rpc/gas)                                 | Get gas price for a specific block or hash.                                  |
-| [Protocol](/api/rpc/protocol)                       | Retrieve current genesis and protocol configuration.                         |
-| [Network](/api/rpc/network)                         | Return status information for nodes and validators.                          |
-| [Transactions](/api/rpc/transactions)               | Send transactions and query their status.                                    |
-| [Maintenance Windows](/api/rpc/maintenance-windows) | Query the maintenance windows in current epoch for a validator.              |
+| API                                        | Description                                                                  |
+| ------------------------------------------ | ---------------------------------------------------------------------------- |
+| [Access Keys](/api/rpc/access-keys)        | Retrieve information about an account's access keys.                         |
+| [Accounts / Contracts](/api/rpc/contracts) | View details about accounts and contracts as well as perform contract calls. |
+| [Block / Chunk](/api/rpc/block-chunk)      | Query the network and get details about specific blocks or chunks.           |
+| [Gas](/api/rpc/gas)                        | Get gas price for a specific block or hash.                                  |
+| [Protocol](/api/rpc/protocol)              | Retrieve current genesis and protocol configuration.                         |
+| [Network](/api/rpc/network)                | Return status information for nodes and validators.                          |
+| [Transactions](/api/rpc/transactions)      | Send transactions and query their status.                                    |
 
 :::tip You can access the JSON RPC 2.0 endpoints using [Postman](/api/rpc/setup#postman-setup), [JavaScript](/api/rpc/setup#javascript-setup), and [HTTPie](/api/rpc/setup#httpie-setup). ::: :::

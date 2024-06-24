@@ -12,7 +12,7 @@ https://github.com/near/near-lake-framework/
 
 ## 설명
 
-NEAR Lake 프레임워크는 [NEAR Lake](/tools/realtime#near-lake-indexer)의 라이브러리들 내 하나의 생태계입니다. 이를 통해 [NEAR Lake](/tools/realtime#near-lake-indexer) 데이터 소스의 블록 스트림을 파악하는 고유한 인덱서를 구축하고, 선택한 프로그래밍 언어로 NEAR 프로토콜 데이터를 처리하는 고유한 로직을 생성할 수 있습니다(현재 [Python](http://pypi.org/project/near-lake-framework), [Javascript](https://www.npmjs.com/package/near-lake-framework) 및 [Rust](https://crates.io/crates/near-lake-framework)로 구현되어 있습니다).
+NEAR Lake Framework is an ecosystem of library companions to [NEAR Lake](/build/data-infrastructure/lake-framework/near-lake). They allow you to build your own indexer that subscribes to the stream of blocks from the [NEAR Lake](/build/data-infrastructure/lake-framework/near-lake) data source and create your own logic to process the NEAR Protocol data in the programming languages of your choice (at the moment, there are implementations in [Python](http://pypi.org/project/near-lake-framework), [JavaScript](https://www.npmjs.com/package/near-lake-framework), and [Rust](https://crates.io/crates/near-lake-framework)).
 
 :::tip NEAR Lake 프레임워크 발표
 

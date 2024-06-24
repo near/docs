@@ -1,7 +1,7 @@
 {
   "id": "build/data-infrastructure/query-api/migrate-from-near-lake",
   "title": "Migrate from NEAR Lake framework",
-  "description": "NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers.",
+  "description": "In this article you'll learn how to migrate your NEAR Lake Framework JavaScript indexer to Near QueryAPI, a fully managed solution to build indexer functions,",
   "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.build/6.data-infrastructure/query-api/migrate.md",
   "sourceDirName": "2.build/6.data-infrastructure/query-api",
   "slug": "/build/data-infrastructure/query-api/migrate-from-near-lake",

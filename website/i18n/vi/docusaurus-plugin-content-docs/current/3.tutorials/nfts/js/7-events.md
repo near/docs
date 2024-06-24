@@ -22,7 +22,7 @@ git checkout 6.royalty
 
 ## Hiểu rõ trường hợp sử dụng {#understanding-the-use-case}
 
-Have you ever wondered how the wallet knows which NFTs you own and how it can display them in the [collectibles tab](https://testnet.mynearwallet.com//?tab=collectibles)? Ban đầu, một [indexer](/tools/indexer-for-explorer) đã được sử dụng và nó lắng nghe mọi function bắt đầu với `nft_` trên account của bạn. Những contract này sau đó được gắn cờ trên account của bạn có thể là các NFT contract.
+Have you ever wondered how the wallet knows which NFTs you own and how it can display them in the [collectibles tab](https://testnet.mynearwallet.com//?tab=collectibles)? Originally, an indexer used to listen for any functions calls starting with `nft_` on your account. Những contract này sau đó được gắn cờ trên account của bạn có thể là các NFT contract.
 
 Khi bạn chuyển đến collectibles tab của mình, wallet sau đó sẽ truy vấn tất cả các contract đó để biết danh sách NFT mà bạn đang sở hữu bằng cách sử dụng function `nft_tokens_for_owner` mà bạn đã nhìn thấy trong [hướng dẫn enumeration](/tutorials/nfts/js/enumeration).
 

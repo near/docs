@@ -30,6 +30,6 @@ sidebar_label: "Indexing Solutions"
 
 - [NEAR 인덱서 프레임워크](https://docs.near.org/concepts/advanced/near-indexer-framework): 블록의 "라이브" 스트림을 제공하는 마이크로 프레임워크입니다. Useful to handle on-chain real-time `events`.
 
-- [익스플로러용 NEAR 인덱서](https://docs.near.org/tools/indexer-for-explorer): 인덱서 마이크로프레임워크 위에 구축된 인덱서입니다. 블록체인에서 **PostgreSQL 데이터베이스**로의 모든 이벤트/데이터를 감시하고 저장합니다. [GitHub 레퍼지토리](https://github.com/near/near-indexer-for-explorer)를 복제해서 고유한 인덱서 솔루션을 만들 수도 있습니다.
+- [NEAR Indexer for Explorer](https://github.com/near/near-indexer-for-explorer): an indexer built on top of the indexer microframework. 블록체인에서 **PostgreSQL 데이터베이스**로의 모든 이벤트/데이터를 감시하고 저장합니다. [GitHub 레퍼지토리](https://github.com/near/near-indexer-for-explorer)를 복제해서 고유한 인덱서 솔루션을 만들 수도 있습니다.
 
 - [SubQuery](https://academy.subquery.network/quickstart/quickstart_chains/near.html): is an end to end multi-blockchain indexing solution that provides NEAR developers with fast, flexible, universal, open source and decentralised APIs for web3 projects. The [NEAR starter project](https://github.com/subquery/near-subql-starter/tree/main/Near/near-starter) provides a template for developers to get up and running within minutes.

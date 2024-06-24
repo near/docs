@@ -7,6 +7,14 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {WidgetEditor} from "@site/src/components/widget-editor"
 
+:::warning What is the state of BOS (NEAR Components)?
+
+We no longer recommend building on BOS due to its limited capabilities and discontinued security maintenance. Developers with active projects on BOS are encouraged to migrate to another deployment strategy.
+
+See the [Web3 frontends](/build/web3-apps/frontend#bos-socialvm) section for more information.
+
+:::
+
 The components can use the `Near` object to interact with smart contracts in the NEAR blockchain. 세 가지 메서드가 존재합니다.
 
 - [`Near.view`](#nearview)
@@ -126,7 +134,7 @@ return <>
 | `contractName` | **required** | string          | 호출할 스마트 컨트랙트의 이름                                            |
 | `methodName`   | **required** | string          | 스마트 컨트랙트에서 호출할 메서드 이름                                       |
 | `args`         | _optional_   | object instance | 스마트 컨트랙트 메서드에 객체 인스턴스의 형태로 전달할 인자                           |
-| `gas`          | _optional_   | 문자열 / 숫자        | 트랜잭션에 사용되는 가스의 최대 양 (기본 300Tg)           |
+| `gas`          | _optional_   | string / number | 트랜잭션에 사용되는 가스의 최대 양 (기본 300Tg)           |
 | `deposit`      | _optional_   | 문자열 / 숫자        | 호출에 보증금으로 첨부되는 NEAR 토큰의 양 (yoctoNEAR 단위) |
 
 </details>

@@ -9,5 +9,4 @@ Chào mừng bạn! The NEAR ecosystem has a complete set of tools for you to ma
 1. [Wallets](https://www.mynearwallet.com/) to handle your assets.
 2. [Explorers](explorer.md) to quickly obtain information from the blockchain.
 3. Websites to simplify creating and participating on governance projects.
-4. Tools to query [past information](indexer4explorer.md) from the blockchain as well as [real time events](events.md).
-5. Developer tools to deploy and interact with contracts such as the [NEAR CLI](cli.md) and [NEAR JavaScript API](/tools/near-api-js/quick-reference).
+4. Developer tools to deploy and interact with contracts such as the [NEAR CLI](cli.md) and [NEAR JavaScript API](/tools/near-api-js/quick-reference).

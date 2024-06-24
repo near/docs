@@ -3,6 +3,14 @@ id: builtin-components
 title: List of Native Components
 ---
 
+:::warning What is the state of BOS (NEAR Components)?
+
+We no longer recommend building on BOS due to its limited capabilities and discontinued security maintenance. Developers with active projects on BOS are encouraged to migrate to another deployment strategy.
+
+See the [Web3 frontends](/build/web3-apps/frontend#bos-socialvm) section for more information.
+
+:::
+
 import {WidgetEditor} from "@site/src/components/widget-editor"
 
 A list of all the built-in components to be used on Near Components.

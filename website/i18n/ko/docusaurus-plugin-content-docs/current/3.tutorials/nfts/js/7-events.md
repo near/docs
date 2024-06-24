@@ -22,7 +22,7 @@ git checkout 6.royalty
 
 ## 사용 사례 이해하기 {#understanding-the-use-case}
 
-Have you ever wondered how the wallet knows which NFTs you own and how it can display them in the [collectibles tab](https://testnet.mynearwallet.com//?tab=collectibles)? 원래는 [인덱서](/tools/indexer-for-explorer)가 사용되었으며, 계정에서 `nft_`로 시작하는 모든 함수를 수신했습니다. 그런 다음 이러한 컨트랙트는 당신의 계정에서 NFT 컨트랙트일 가능성이 있는 것으로 표시되었습니다.
+Have you ever wondered how the wallet knows which NFTs you own and how it can display them in the [collectibles tab](https://testnet.mynearwallet.com//?tab=collectibles)? Originally, an indexer used to listen for any functions calls starting with `nft_` on your account. 그런 다음 이러한 컨트랙트는 당신의 계정에서 NFT 컨트랙트일 가능성이 있는 것으로 표시되었습니다.
 
 수집품 탭으로 이동하면, 지갑은 [열거(Enumeration) 튜토리얼](/tutorials/nfts/js/enumeration)에서 본 `nft_tokens_for_owner` 함수를 사용하여 소유한 NFT 목록에 대한 모든 컨트랙트를 조회합니다.
 

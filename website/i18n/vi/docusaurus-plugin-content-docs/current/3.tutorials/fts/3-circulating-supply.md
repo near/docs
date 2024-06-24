@@ -111,7 +111,7 @@ At this point, you have everything you need to create an initial supply of token
 
 ## Event
 
-Have you ever wondered how the wallet knows which FTs you own and how it can display them in the [balances tab](https://testnet.mynearwallet.com/)? Originally, an [indexer](/tools/indexer-for-explorer) was used and it listened for any functions starting with `ft_` on your account. These contracts were then flagged on your account as likely FT contracts.
+Have you ever wondered how the wallet knows which FTs you own and how it can display them in the [balances tab](https://testnet.mynearwallet.com/)? Originally, an indexer used to listen for any function calls starting with `ft_` on your account. These contracts were then flagged on your account as likely FT contracts.
 
 When you navigated to your balances tab, the wallet would then query all those contracts for the number of FTs you owned using the `ft_balance_of` function you just wrote.
 

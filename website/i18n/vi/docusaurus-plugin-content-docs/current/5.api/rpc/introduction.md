@@ -19,15 +19,14 @@ There are multiple [RPC providers which you can choose from](./providers.md). Th
 
 ## NEAR RPC - Quick Links
 
-| API                                                 | Mô ta                                                                          |
-| --------------------------------------------------- | ------------------------------------------------------------------------------ |
-| [Các RPC Endpoint](/api/rpc/access-keys)            | Lấy thông tin về các access key của một account.                               |
-| [Các RPC Endpoint](/api/rpc/contracts)              | Xem chi tiết về các account và contract giống như tiến hành các contract call. |
-| [Block / Chunk](/api/rpc/block-chunk)               | Truy vấn network và lấy thông tin chi tiết về các block hoặc chunk nhất định.  |
-| [Giới thiệu](/api/rpc/gas)                          | Lấy gas price cho một block hoặc hash nhất định.                               |
-| [Protocol](/api/rpc/protocol)                       | Lấy thông tin của khối genesis hiện nay và protocol configuration.             |
-| [Network](/api/rpc/network)                         | Trả về thông tin trạng thái của các node và các validator.                     |
-| [Tổng quan](/api/rpc/transactions)                 | Send các transaction và truy vấn trạng thái của chúng.                         |
-| [Maintenance Windows](/api/rpc/maintenance-windows) | Query the maintenance windows in current epoch for a validator.                |
+| API                                      | Mô ta                                                                          |
+| ---------------------------------------- | ------------------------------------------------------------------------------ |
+| [Các RPC Endpoint](/api/rpc/access-keys) | Lấy thông tin về các access key của một account.                               |
+| [Các RPC Endpoint](/api/rpc/contracts)   | Xem chi tiết về các account và contract giống như tiến hành các contract call. |
+| [Block / Chunk](/api/rpc/block-chunk)    | Truy vấn network và lấy thông tin chi tiết về các block hoặc chunk nhất định.  |
+| [Giới thiệu](/api/rpc/gas)               | Lấy gas price cho một block hoặc hash nhất định.                               |
+| [Protocol](/api/rpc/protocol)            | Lấy thông tin của khối genesis hiện nay và protocol configuration.             |
+| [Network](/api/rpc/network)              | Trả về thông tin trạng thái của các node và các validator.                     |
+| [Tổng quan](/api/rpc/transactions)      | Send các transaction và truy vấn trạng thái của chúng.                         |
 
 :::tip You can access the JSON RPC 2.0 endpoints using [Postman](/api/rpc/setup#postman-setup), [JavaScript](/api/rpc/setup#javascript-setup), and [HTTPie](/api/rpc/setup#httpie-setup). :::

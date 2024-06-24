@@ -1,7 +1,7 @@
 {
   "id": "build/near-components/bos-gateway",
   "title": "Using components on WebApps",
-  "description": "In order to use the components you create in a WebApp you need to use what is known as the NEAR VM. This virtual machine helps you to easily fetch components from the blockchain and transform them into executable code.",
+  "description": "We no longer recommend building on BOS due to its limited capabilities and discontinued security maintenance. Developers with active projects on BOS are encouraged to migrate to another deployment strategy.",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.build/3.near-components/bos-gateway.md",
   "sourceDirName": "2.build/3.near-components",
   "slug": "/build/near-components/bos-gateway",

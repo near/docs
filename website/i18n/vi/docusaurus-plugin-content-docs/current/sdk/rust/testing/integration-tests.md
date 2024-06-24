@@ -112,7 +112,7 @@ Notice the layout within `test_total_supply`. `.call()` obtains its required gas
 
 ### Create an Account
 
-<Github language="rust" start="16" end="21" url="https://github.com/near-examples/rust-counter/blob/6a7af5a32c630e0298c09c24eab87267746552b2/integration-tests/rs/src/tests.rs" />
+<Github language="rust" start="13" end="20" url="https://github.com/near-examples/auction-examples/blob/main/contract-rs/tests/test_basics.rs" />
 
 :::note You can also create a `dev_account` without having to deploy a contract as follows:
 

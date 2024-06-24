@@ -5,6 +5,14 @@ title: Web Browser Methods
 
 import {WidgetEditor} from "@site/src/components/widget-editor"
 
+:::warning What is the state of BOS (NEAR Components)?
+
+We no longer recommend building on BOS due to its limited capabilities and discontinued security maintenance. Developers with active projects on BOS are encouraged to migrate to another deployment strategy.
+
+See the [Web3 frontends](/build/web3-apps/frontend#bos-socialvm) section for more information.
+
+:::
+
 NEAR Components have access to classic web methods that enable them to:
 
 - [Fetch](#fetch) data from external sources.

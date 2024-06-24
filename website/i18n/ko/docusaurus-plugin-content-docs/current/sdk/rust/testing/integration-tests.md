@@ -112,7 +112,7 @@ Let's look at how this might be written with workspaces tests. The snippet below
 
 ### 계정 생성
 
-<Github language="rust" start="16" end="21" url="https://github.com/near-examples/rust-counter/blob/6a7af5a32c630e0298c09c24eab87267746552b2/integration-tests/rs/src/tests.rs" />
+<Github language="rust" start="13" end="20" url="https://github.com/near-examples/auction-examples/blob/main/contract-rs/tests/test_basics.rs" />
 
 :::note 다음과 같이 컨트랙트를 배포하지 않고도 `dev_account`를 생성할 수 있습니다.
 

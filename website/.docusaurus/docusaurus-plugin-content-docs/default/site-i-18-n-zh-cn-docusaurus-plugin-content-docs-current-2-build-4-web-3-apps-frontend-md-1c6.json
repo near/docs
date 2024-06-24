@@ -1,0 +1,28 @@
+{
+  "id": "build/web3-apps/frontend",
+  "title": "Frontends for Web3 dApps",
+  "description": "There are 3 major options to choose from when you're building a frontend for your Web3 dApp, each with their own set of pros and cons.",
+  "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.build/4.web3-apps/frontend.md",
+  "sourceDirName": "2.build/4.web3-apps",
+  "slug": "/build/web3-apps/frontend",
+  "permalink": "/zh-CN/build/web3-apps/frontend",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/4.web3-apps/frontend.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "frontend",
+    "title": "Frontends for Web3 dApps",
+    "sidebar_label": "Frontends"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "⭐ Quickstart a WebApp",
+    "permalink": "/zh-CN/build/web3-apps/quickstart"
+  },
+  "next": {
+    "title": "Integrating Contracts",
+    "permalink": "/zh-CN/build/web3-apps/integrate-contracts"
+  }
+}

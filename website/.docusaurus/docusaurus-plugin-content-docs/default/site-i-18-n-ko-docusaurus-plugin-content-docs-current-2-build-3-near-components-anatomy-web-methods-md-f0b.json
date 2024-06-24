@@ -1,7 +1,7 @@
 {
   "id": "build/near-components/anatomy/web-methods",
   "title": "Web Browser Methods",
-  "description": "NEAR Components have access to classic web methods that enable them to:",
+  "description": "We no longer recommend building on BOS due to its limited capabilities and discontinued security maintenance. Developers with active projects on BOS are encouraged to migrate to another deployment strategy.",
   "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/3.near-components/anatomy/web-methods.md",
   "sourceDirName": "2.build/3.near-components/anatomy",
   "slug": "/build/near-components/anatomy/web-methods",

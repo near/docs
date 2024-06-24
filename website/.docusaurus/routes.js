@@ -74,15 +74,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '6cf'),
+    component: ComponentCreator('/zh-CN/', '6a5'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '036'),
+        component: ComponentCreator('/zh-CN/', 'f71'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', 'f42'),
+            component: ComponentCreator('/zh-CN/', 'ac3'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -1023,7 +1023,7 @@ export default [
               },
               {
                 path: '/zh-CN/build/web3-apps/frontend',
-                component: ComponentCreator('/zh-CN/build/web3-apps/frontend', '16b'),
+                component: ComponentCreator('/zh-CN/build/web3-apps/frontend', '191'),
                 exact: true,
                 sidebar: "build"
               },

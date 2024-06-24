@@ -127,7 +127,7 @@ Natively, NEAR smart contracts store data as key-value pairs. This is quite limi
 - While very useful, vectors, maps and sets won’t match the flexibility and power of classical relational databases. Even implementations of simple filtering and searching might be quite complex and require a lot of gas to execute, especially if multiple entities with relations between them are involved. Even implementations of simple filtering and searching might be quite complex and require a lot of gas to execute, especially if multiple entities with relations between them are involved.
 - They are limited to a single contract. They are limited to a single contract. If data from multiple contracts is required, aggregation should be performed using cross-contract calls or on a client side, which is quite expensive in terms of gas and time.
 
-To support more complex data retrieval scenarios, smart contract data should be put in a more appropriate store, like a relational database. [Indexers](../../4.tools/indexer4explorer.md) are used to achieve this. In a nutshell, indexer is just a special kind of blockchain node that processes incoming transactions and puts relevant data into a database. Collected data can be exposed to a client using a simple API server (e.g. REST or GraphQL).
+To support more complex data retrieval scenarios, smart contract data should be put in a more appropriate store, like a relational database. Indexers are used to achieve this. In a nutshell, indexer is just a special kind of blockchain node that processes incoming transactions and puts relevant data into a database. Collected data can be exposed to a client using a simple API server (e.g. REST or GraphQL).
 
 
 ![image](/docs/assets/web3/web3-15.png)

@@ -57,9 +57,3 @@ Ultimately, it takes at least 3.8 seconds from the moment one submits a transact
 자세한 기술 정보는 [예제](https://github.com/nearprotocol/nearcore/tree/master/tools/indexer/example)를 참고하세요.
 
 - [`near-examples/indexer-tx-watcher-example`](https://github.com/near-examples/indexer-tx-watcher-example)는 지정된 계정/컨트랙트에 대한 트랜잭션을 감시하는 NEAR 인덱서 예제입니다.
-
-:::info NEAR 인덱서 프레임워크 사용
-
-NEAR Indexer 프레임워크 위에 구축된 가장 유명한 프로젝트는 [익스플로러용 NEAR 인덱서](/tools/indexer-for-explorer)입니다.
-
-:::

@@ -5,6 +5,14 @@ title: Social Interactions
 
 import {WidgetEditor} from "@site/src/components/widget-editor"
 
+:::warning What is the state of BOS (NEAR Components)?
+
+We no longer recommend building on BOS due to its limited capabilities and discontinued security maintenance. Developers with active projects on BOS are encouraged to migrate to another deployment strategy.
+
+See the [Web3 frontends](/build/web3-apps/frontend#bos-socialvm) section for more information.
+
+:::
+
 NEAR components can natively communicate with the [SocialDB smart contract](https://github.com/NearSocial/social-db) (currently deployed at [social.near](https://nearblocks.io/address/social.near)).
 
 The `SocialDB` is a contract that stores `key-value` pairs, and is used mostly to store social-related data, such as `posts`, `likes`, or `profiles`.

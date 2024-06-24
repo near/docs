@@ -95,15 +95,17 @@ The tables available in the NEAR Public Lakehouse are:
 - **receipts (view)**: It's recommended to select only the columns and partitions (`block_date`) needed to avoid unnecessary query costs. This view join the receipt details, the transaction that originated the receipt and the receipt execution outcome.
 - **account_changes**: Each account has an associated state where it stores its metadata and all the contract-related data (contract's code + storage).
 
+:::info Additional information about the data
+
+- Skipped Blocks: NEAR Blockchain can contain skipped blocks, e.g. block `57730443`. For these cases we can find the block for the chunk data using the `prev_block_hash` column, e.g. `SELECT * FROM chunks c JOIN blocks b ON c.chunk.header.prev_block_hash = b.header.prev_hash`.
+
+:::
+
 :::note References
 
 - [Protocol documentation](../../1.concepts/welcome.md)
 - [Near Data flow](../../1.concepts/data-flow/near-data-flow.md)
 - [Lake Data structures](./lake-data-structures/toc.mdx)
 - [Protocol specification](https://nomicon.io/)
-
-:::note Additional information about the data
-
-- Skipped Blocks: NEAR Blockchain can contain skipped blocks, e.g. block `57730443`. For these cases we can find the block for the chunk data using the `prev_block_hash` column, e.g. `SELECT * FROM chunks c JOIN blocks b ON c.chunk.header.prev_block_hash = b.header.prev_hash`.
 
 :::

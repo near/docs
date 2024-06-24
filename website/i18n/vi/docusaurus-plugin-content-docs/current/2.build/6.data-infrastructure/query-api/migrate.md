@@ -4,14 +4,6 @@ title: Migrate from NEAR Lake framework
 sidebar_label: Migrate from Lake framework
 ---
 
-:::info
-
-NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers.
-
-You can request access through [this link](http://bit.ly/near-queryapi-beta).
-
-:::
-
 In this article you'll learn how to migrate your [NEAR Lake Framework](../../../1.concepts/3.advanced/near-lake-framework.md) JavaScript indexer to [Near QueryAPI](intro.md), a fully managed solution to build indexer functions,
 extract on-chain data, store it in a database, and be able to query it using GraphQL endpoints.
 

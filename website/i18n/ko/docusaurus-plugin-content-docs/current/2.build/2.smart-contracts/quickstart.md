@@ -16,12 +16,11 @@ In this quickstart tutorial, we will guide you in creating your first smart cont
 
 ## Prerequisites
 
-<details>
-<summary>Working on Windows?</summary>
+:::tip Working on Windows?
 
 See [Getting Started on NEAR Using Windows](/blog/getting-started-on-windows) for a step-by-step guide on how to setup WSL and your environment.
 
-</details>
+:::
 
 <Tabs groupId="code-tabs">
   <TabItem value="js" label="🌐 JavaScript">
@@ -132,7 +131,7 @@ The resulting folder structure will change slightly depending on the chosen lang
 ```bash
 ├── src
 │   └── lib.rs # contract's code
-├── test 
+├── test
 │   └── test_basics.rs # testing code
 ├── Cargo.toml # package manager
 ├── README.md
@@ -147,22 +146,42 @@ The resulting folder structure will change slightly depending on the chosen lang
 
 ## The Contract
 
-Your new smart contract stores a `greeting: string` attribute in their state, and exposes two methods to interact with it (`set_greeting`, `get_greeting`).
+You are now ready to create your first smart contract that stores and retrieves a message.
+
+Your new smart contract stores a `greeting: string` attribute in their state, and exposes two methods to interact with it:
+
+- `set_greeting(msg)`
+- `get_greeting()`
 
 <Tabs groupId="code-tabs">
   <TabItem value="js" label="🌐 JavaScript">
-    <Language value="js" language="js">
-        <Github fname="index.js"
-                url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts"
-                start="4" end="18" /></Language>
+
+Copy [this source code](https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts) to your `src/contract.ts` file. Here's a quick preview:
+
+```
+<Language value="js" language="js">
+    <Github fname="index.js"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts"
+            start="4" end="18" />
+</Language>
+```
+
+</TabItem>
+
+<TabItem value="rust" label="🦀 Rust">
+
+Copy [this source code](https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs) to your `src/lib.rs` file. Here's a quick preview:
+
+```
+<Language value="Rust" language="rust">
+    <Github fname="lib.rs"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
+            start="4" end="32" />
+</Language>
+```
+
   </TabItem>
 
-  <TabItem value="rust" label="🦀 Rust">
-    <Language value="Rust" language="rust">
-        <Github fname="lib.rs"
-                url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
-                start="4" end="32" /></Language>
-  </TabItem>
 </Tabs>
 
 There are 3 important things to notice:
@@ -192,7 +211,7 @@ npm run test
 <Language value="rust" language="rust">
 
 ```bash
-cargo build
+cargo near build
 cargo test
 
 # Expected:
@@ -224,7 +243,7 @@ Testing the contracts within a Sandbox allows you to understand how the contract
 
 ## Create a Testnet Account
 
-Now that we know the contract is passing the tests, let's create a testnet account in which to deploy the contract.
+Now that you know the contract is passing the tests, let's create a `testnet` account in which to deploy the contract.
 
 While there are different ways to create accounts in NEAR, in this quickstart we will use the `cargo-near` tool to create a new random [`named account`](/concepts/protocol/account-id).
 
@@ -296,17 +315,23 @@ Having our account created, we can now deploy the contract into it:
 
 <Tabs>
 
-<TabItem value="near-cli">
-  ```bash
-  near deploy <created-account> build/release/hello.wasm
-  ```
+<TabItem value="js" label="🌐 JavaScript">
+
+Using `near-cli`:
+
+```bash
+near deploy <created-account> build/release/hello.wasm
+```
 
 </TabItem>
 
-<TabItem value="near-cli-rs">
-  ```bash
-  near contract deploy <created-account> use-file ./target/wasm32-unknown-unknown/release/contract_rs.wasm without-init-call network-config testnet sign-with-keychain send
-  ```
+<TabItem value="rust" label="🦀 Rust">
+
+Using `near-cli-rs`:
+
+```bash
+near contract deploy <created-account> use-file ./target/wasm32-unknown-unknown/release/<project-name>.wasm without-init-call network-config testnet sign-with-keychain send
+```
 
 </TabItem>
 
@@ -318,7 +343,7 @@ Having our account created, we can now deploy the contract into it:
 
 ## Interacting with the Contract
 
-To interact with your deployed smart contract, you can call its methods using the `near-cli` or `near-cli-rs` tools.
+To interact with your deployed smart contract, you can call its methods using the [`near-cli`](../../4.tools/cli.md) or [`near-cli-rs`](../../4.tools/cli-rs.md) tools.
 
 ### Get Greeting
 
@@ -326,7 +351,9 @@ The `get_greeting` method is a [`view`](./anatomy.md#public-methods) method, mea
 
 <Tabs>
 
-<TabItem value="near-cli">
+<TabItem value="js" label="🌐 JavaScript">
+
+Using `near-cli`:
 
 ```bash
 > near view <created-account> get_greeting
@@ -336,7 +363,9 @@ The `get_greeting` method is a [`view`](./anatomy.md#public-methods) method, mea
 
 </TabItem>
 
-<TabItem value="near-cli-rs">
+<TabItem value="rust" label="🦀 Rust">
+
+Using `near-cli-rs`:
 
 ```bash
 > near contract call-function as-read-only <created-account> get_greeting json-args {} network-config testnet now
@@ -354,7 +383,9 @@ The `set_greeting` method is a [`change`](./anatomy.md#public-methods) method, m
 
 <Tabs>
 
-<TabItem value="near-cli">
+<TabItem value="js" label="🌐 JavaScript">
+
+Using `near-cli`:
 
 ```bash
 > near call <created-account> set_greeting '{"greeting": "Hola"}' --accountId <created-account>
@@ -366,7 +397,9 @@ In this case we are asking the account that stores the contract to call its own 
 
 </TabItem>
 
-<TabItem value="near-cli-rs">
+<TabItem value="rust" label="🦀 Rust">
+
+Using `near-cli-rs`:
 
 ```bash
 > near contract call-function as-transaction <created-account> set_greeting json-args '{"greeting": "Hola"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as <created-account> network-config testnet sign-with-keychain send

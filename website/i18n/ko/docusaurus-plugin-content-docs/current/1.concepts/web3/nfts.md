@@ -562,7 +562,7 @@ Another option to simplify onboarding is usage of the [Prepaid Gas](../protocol/
 <img src="/docs/assets/web3/nfts-24.png" alt="image" width="150" />
 </div>
 
-모든 언어로 데이터베이스 및 API를 구현할 수 있지만, 인덱서 자체는 일반적으로 Rust를 사용하여 구현 됩니다. 이 언어에 대해 [프레임워크를 사용할 수 있기 때문](https://github.com/near/nearcore/tree/master/chain/indexer)입니다. 고유한 인덱서를 구현하는 방법에 대한 안내는 [여기](../../4.tools/indexer4explorer.md)에서 찾을 수 있습니다.
+While any technology of choice can be used to implement Database and API, an indexer itself is can be implemented using both [Rust](https://github.com/near/near-lake-framework-rs) and [JavaScript](https://github.com/near/near-lake-framework-js). See [this example](https://github.com/near-examples/near-lake-nft-indexer) written in Rust.
 
 일반적으로 인덱서는 기본적으로 컨트랙트 실행 중에 작성된, 구조화된 로그 메시지인 [이벤트](https://nomicon.io/Standards/EventsFormat)에서 데이터를 추출하여 작동합니다.
 

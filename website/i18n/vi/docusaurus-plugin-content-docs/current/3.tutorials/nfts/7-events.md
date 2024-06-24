@@ -11,7 +11,7 @@ In this tutorial, you'll learn about the [events standard](https://nomicon.io/St
 
 ## Hiểu rõ trường hợp sử dụng {#understanding-the-use-case}
 
-Have you ever wondered how the wallet knows which NFTs you own and how it can display them in the [collectibles tab](https://testnet.mynearwallet.com//?tab=collectibles)? Originally, an [indexer](/tools/indexer-for-explorer) was used and it listened for any functions starting with `nft_` on your account. Những contract này sau đó được gắn cờ trên account của bạn có thể là các NFT contract.
+Have you ever wondered how the wallet knows which NFTs you own and how it can display them in the [collectibles tab](https://testnet.mynearwallet.com//?tab=collectibles)? Originally, an indexer used to listen for any functions calls starting with `nft_` on your account. Những contract này sau đó được gắn cờ trên account của bạn có thể là các NFT contract.
 
 Khi bạn chuyển đến collectibles tab của mình, wallet sau đó sẽ truy vấn tất cả các contract đó để biết danh sách NFT mà bạn đang sở hữu bằng cách sử dụng function `nft_tokens_for_owner` mà bạn đã nhìn thấy trong [hướng dẫn enumeration](/docs/tutorials/contracts/nfts/enumeration).
 

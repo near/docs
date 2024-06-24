@@ -77,16 +77,15 @@ NEAR 블록체인은 모든 사람이 블록체인과 상호 작용할 수 있�
 
 :::
 
-인덱서는 블록체인에서 *데이터 스트림을* 수신하고 정의된 요구 사항에 따라 데이터를 즉시 필터링하고 처리할 수 있으므로, "넓은" 쿼리 실행을 단순화하는 데 사용할 수 있습니다. 예를 들어, SQL과 같은 편리한 쿼리 언어를 사용하여 나중에 데이터를 분석하기 위해 데이터 스트림을 영구 데이터베이스에 기록할 수 있습니다. 이것이 [익스플로러용 인덱서](/tools/indexer-for-explorer)가 하는 일입니다.
+인덱서는 블록체인에서 *데이터 스트림을* 수신하고 정의된 요구 사항에 따라 데이터를 즉시 필터링하고 처리할 수 있으므로, "넓은" 쿼리 실행을 단순화하는 데 사용할 수 있습니다. 예를 들어, SQL과 같은 편리한 쿼리 언어를 사용하여 나중에 데이터를 분석하기 위해 데이터 스트림을 영구 데이터베이스에 기록할 수 있습니다.
 
-"넓은 쿼리"가 필요한 또 다른 예시는 시드 구문을 사용하여 하나 이상의 계정을 복구하는 경우입니다. 시드 문구는 본질적으로 서명 키 쌍을 나타내므로, 복구는 연결된 공개 키를 공유하는 모든 계정에 대한 것입니다. 따라서 [NEAR 지갑](https://wallet.near.org)을 통해 계정을 복구하기 위해 시드 문구를 사용할 때, 일치하는 공개 키가 있는 모든 계정을 쿼리해서 복구해야 합니다. [익스플로러용 NEAR 인덱서](/tools/indexer-for-explorer)는 이 데이터를 영구 데이터베이스에 저장하며, 이를 통해 [NEAR 지갑](https://wallet.near.org)은 "넓은 쿼리"를 수행할 수 있습니다. 이 작업은 JSON-RPC만으로는 불가능합니다.
+"넓은 쿼리"가 필요한 또 다른 예시는 시드 구문을 사용하여 하나 이상의 계정을 복구하는 경우입니다. 시드 문구는 본질적으로 서명 키 쌍을 나타내므로, 복구는 연결된 공개 키를 공유하는 모든 계정에 대한 것입니다. 따라서 [NEAR 지갑](https://wallet.near.org)을 통해 계정을 복구하기 위해 시드 문구를 사용할 때, 일치하는 공개 키가 있는 모든 계정을 쿼리해서 복구해야 합니다. Utilizing [Near Lake Framework](https://github.com/near/near-lake-framework-rs) can be used to store this data in a permanent database and this allows [NEAR Wallet](https://wallet.near.org) to perform such "wide queries". 이 작업은 JSON-RPC만으로는 불가능합니다.
 
 ## 요약
 
 이 문서가 인덱서 개념을 이해하는 데 도움이 되기를 바랍니다. 또한 이제 애플리케이션에 인덱서가 필요한지 여부를 쉽게 결정할 수 있기를 바랍니다.
 
 ## 다음은 무엇인가요?
-
-[Lake 인덱서 프로젝트](/tools/realtime#near-lake-indexer)에 대해 자세히 알아보시기 바랍니다. Please, proceed to [Tutorials](/build/data-infrastructure/lake-framework/near-lake-state-changes-indexer) section to learn how to build an indexer on practice.
+We encourage you to learn more about the [Lake Indexer project](/build/data-infrastructure/lake-framework/near-lake). Please, proceed to [Tutorials](/build/data-infrastructure/lake-framework/near-lake-state-changes-indexer) section to learn how to build an indexer on practice.
 
 대신, NEAR 생태계와 단단히 통합되어 있는 몇 개의 다른 써드 파티 인덱서들이 있습니다. [데이터 도구](/concepts/data-flow/data-storage#data-tools)에서 모든 데이터 소싱 옵션(The Graph, Pagoda, Pipespeak, 그리고 SubQuery 포함) 을 확인할 수 있습니다.
