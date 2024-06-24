@@ -170,17 +170,17 @@
       "plugin": "c141421f"
     }
   },
-  "/zh-CN/-4a5": {
+  "/zh-CN/-6cf": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "aba21aa0"
     }
   },
-  "/zh-CN/-dd2": {
+  "/zh-CN/-036": {
     "__comp": "a7bd4aaa",
     "__props": "2d9c5935"
   },
-  "/zh-CN/-22c": {
+  "/zh-CN/-f42": {
     "__comp": "a94703ab"
   },
   "/zh-CN/api/rpc/access-keys-bbb": {
@@ -855,7 +855,7 @@
     "__comp": "17896441",
     "content": "5a0e3338"
   },
-  "/zh-CN/build/web3-apps/frontend-28c": {
+  "/zh-CN/build/web3-apps/frontend-16b": {
     "__comp": "17896441",
     "content": "6554ec24"
   },
