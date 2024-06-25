@@ -16,14 +16,6 @@ You can watch a complete video walkthrough of Query API [following this link](ht
 
 :::
 
-:::info
-
-NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers. 
-
-You can request access through [this link](http://bit.ly/near-queryapi-beta).
-
-:::
-
 ## How it Works
 
 QueryAPI works by:
@@ -185,7 +177,7 @@ Clicking the <kbd>Publish</kbd> button will open the following pop-up. From here
 - `Start from block height`: Start indexing from the height specified, i.e., when the contract was deployed, or when a specific event occurs.
 
 :::info
-`Continue from last processed block` is only available for existing indexers. Updating the contract filter is disabled for this option, as it will create a backlog of blocks for two different contracts. 
+`Continue from last processed block` is only available for existing indexers. Updating the contract filter is disabled for this option, as it will create a backlog of blocks for two different contracts.
 :::
 
 :::warning

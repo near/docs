@@ -41,7 +41,6 @@ const sidebar = {
     },
     {
       "Storage": [
-        "concepts/storage/data-storage",
         "concepts/storage/storage-staking",
         "concepts/storage/storage-solutions"
       ]
@@ -780,7 +779,8 @@ const sidebar = {
     "api/rpc/gas",
     "api/rpc/protocol",
     "api/rpc/network",
-    "api/rpc/transactions"
+    "api/rpc/transactions",
+    "api/rpc/maintenance-windows",
   ],
   "pagoda": [
     {
