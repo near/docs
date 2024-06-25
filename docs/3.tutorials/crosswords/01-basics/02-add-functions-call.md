@@ -85,18 +85,22 @@ The skeleton of the Rust contract we copied from the previous section has a `bui
 
 Run the build script and expect to see the compiled Wasm file copied to the `res` folder, instead of buried  in the default folder structure Rust sets up.
 
-    ./build.sh
+```bash
+./build.sh
+```
 
 ### Create a subaccount
 
 If you've followed from the previous section, you have NEAR CLI installed and a full-access key on your machine. While developing, it's a best practice to create a subaccount and deploy the contract to it. This makes it easy to quickly delete and recreate the subaccount, which wipes the state swiftly and starts from scratch. Let's use NEAR CLI to create a subaccount and fund with 1 NEAR:
 
-    near create-account crossword.friend.testnet --masterAccount friend.testnet --initialBalance 1 
+```bash
+near create-account crossword.friend.testnet --masterAccount friend.testnet --initialBalance 1
+```
 
 If you look again in your home directory's `.near-credentials`, you'll see a new key for the subaccount with its own key pair. This new account is, for all intents and purposes, completely distinct from the account that created it. It might as well be `alice.testnet`, as it has, by default, no special relationship with the parent account. To be clear, `friend.testnet` cannot delete or deploy to `crossword.friend.testnet` unless it's done in a single transaction using Batch Actions, which we'll cover later.
 
 :::info Subaccount nesting
-It's possible to have the account `another.crossword.friend.testnet`, but this account must be created by `crossword.friend.testnet`. 
+It's possible to have the account `another.crossword.friend.testnet`, but this account must be created by `crossword.friend.testnet`.
 
 `friend.testnet` **cannot** create `another.crossword.friend.testnet` because accounts may only create a subaccount that's "one level deeper."
 
@@ -117,7 +121,9 @@ Now that we have a key pair for our subaccount, we can deploy the contract to te
 
 We're almost ready to deploy the smart contract to the account, but first let's take a look at the account we're going to deploy to. Remember, this is the subaccount we created earlier. To view the state easily with NEAR CLI, you may run this command:
 
-    near state crossword.friend.testnet
+```bash
+near state crossword.friend.testnet
+```
 
 What you'll see is something like this:
 
@@ -154,7 +160,7 @@ Lastly, let's run this command again and notice that the `code_hash` is no longe
     near state crossword.friend.testnet
 ```
 
-**Note**: deploying a contract is often done on the command line. While it may be _technically_ possible to deploy via a frontend, the CLI is likely the best approach. If you're aiming to use a factory model, (where a smart contract deploys contract code to a subaccount) this isn't covered in the tutorial, but you may reference the [contracts in SputnikDAO](https://github.com/near-daos/sputnik-dao-contract). 
+**Note**: deploying a contract is often done on the command line. While it may be _technically_ possible to deploy via a frontend, the CLI is likely the best approach. If you're aiming to use a factory model, (where a smart contract deploys contract code to a subaccount) this isn't covered in the tutorial, but you may reference the [contracts in SputnikDAO](https://github.com/near-daos/sputnik-dao-contract).
 
 ### Call the contract methods (interact!)
 
@@ -229,7 +235,7 @@ The first command deletes `crossword.friend.testnet` and sends the rest of its N
 
 ## Wrapping up
 
-So far, we're writing a simplified version of smart contract and approaching the crossword puzzle in a novice way. Remember that blockchain is an open ledger, meaning everyone can see the state of smart contracts and transactions taking place. 
+So far, we're writing a simplified version of smart contract and approaching the crossword puzzle in a novice way. Remember that blockchain is an open ledger, meaning everyone can see the state of smart contracts and transactions taking place.
 
 :::info How would you do that?
 You may hit an RPC endpoint corresponding to `view_state` and see for yourself. Note: this quick example serves as demonstration purposes, but note that the string being returned is Borsh-serialized and contains more info than just the letters.
