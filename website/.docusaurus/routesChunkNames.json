@@ -170,17 +170,17 @@
       "plugin": "c141421f"
     }
   },
-  "/zh-CN/-6a5": {
+  "/zh-CN/-ee5": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "aba21aa0"
     }
   },
-  "/zh-CN/-f71": {
+  "/zh-CN/-cdb": {
     "__comp": "a7bd4aaa",
     "__props": "2d9c5935"
   },
-  "/zh-CN/-ac3": {
+  "/zh-CN/-37b": {
     "__comp": "a94703ab"
   },
   "/zh-CN/api/rpc/access-keys-bbb": {
@@ -199,7 +199,7 @@
     "__comp": "17896441",
     "content": "da88877d"
   },
-  "/zh-CN/api/rpc/introduction-60e": {
+  "/zh-CN/api/rpc/introduction-790": {
     "__comp": "17896441",
     "content": "ae6bf2be"
   },
@@ -271,7 +271,7 @@
     "__comp": "17896441",
     "content": "21dcc369"
   },
-  "/zh-CN/build/data-infrastructure/big-query-ec2": {
+  "/zh-CN/build/data-infrastructure/big-query-efa": {
     "__comp": "17896441",
     "content": "845c1227"
   },
@@ -307,7 +307,7 @@
     "__comp": "17896441",
     "content": "93c09fdc"
   },
-  "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer-ba7": {
+  "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer-dce": {
     "__comp": "17896441",
     "content": "9263ab35"
   },
@@ -319,7 +319,7 @@
     "__comp": "17896441",
     "content": "9d890403"
   },
-  "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer-42b": {
+  "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer-1b1": {
     "__comp": "17896441",
     "content": "daa2b923"
   },
@@ -331,7 +331,7 @@
     "__comp": "17896441",
     "content": "12603646"
   },
-  "/zh-CN/build/data-infrastructure/lake-framework/near-lake-bfb": {
+  "/zh-CN/build/data-infrastructure/lake-framework/near-lake-864": {
     "__comp": "17896441",
     "content": "bb217b7f"
   },
@@ -339,7 +339,7 @@
     "__comp": "17896441",
     "content": "fee9b9e5"
   },
-  "/zh-CN/build/data-infrastructure/lake-framework/running-near-lake/credentials-d07": {
+  "/zh-CN/build/data-infrastructure/lake-framework/running-near-lake/credentials-361": {
     "__comp": "17896441",
     "content": "413a658d"
   },
@@ -367,15 +367,15 @@
     "__comp": "17896441",
     "content": "d425d5ca"
   },
-  "/zh-CN/build/data-infrastructure/query-api/indexers-924": {
+  "/zh-CN/build/data-infrastructure/query-api/indexers-ed5": {
     "__comp": "17896441",
     "content": "edcfb203"
   },
-  "/zh-CN/build/data-infrastructure/query-api/intro-740": {
+  "/zh-CN/build/data-infrastructure/query-api/intro-5c7": {
     "__comp": "17896441",
     "content": "a03371c9"
   },
-  "/zh-CN/build/data-infrastructure/query-api/migrate-from-near-lake-ecf": {
+  "/zh-CN/build/data-infrastructure/query-api/migrate-from-near-lake-c85": {
     "__comp": "17896441",
     "content": "435c95a5"
   },
@@ -387,43 +387,43 @@
     "__comp": "17896441",
     "content": "47622e92"
   },
-  "/zh-CN/build/near-components/anatomy/bos-components-228": {
+  "/zh-CN/build/near-components/anatomy/bos-components-408": {
     "__comp": "17896441",
     "content": "67d214cc"
   },
-  "/zh-CN/build/near-components/anatomy/builtin-components-e5f": {
+  "/zh-CN/build/near-components/anatomy/builtin-components-98e": {
     "__comp": "17896441",
     "content": "2115e192"
   },
-  "/zh-CN/build/near-components/anatomy/near-3fb": {
+  "/zh-CN/build/near-components/anatomy/near-689": {
     "__comp": "17896441",
     "content": "5ecd9e65"
   },
-  "/zh-CN/build/near-components/anatomy/notifications-32d": {
+  "/zh-CN/build/near-components/anatomy/notifications-9a9": {
     "__comp": "17896441",
     "content": "cc7125fd"
   },
-  "/zh-CN/build/near-components/anatomy/social-b94": {
+  "/zh-CN/build/near-components/anatomy/social-3e0": {
     "__comp": "17896441",
     "content": "8160971f"
   },
-  "/zh-CN/build/near-components/anatomy/state-a54": {
+  "/zh-CN/build/near-components/anatomy/state-571": {
     "__comp": "17896441",
     "content": "cc524782"
   },
-  "/zh-CN/build/near-components/anatomy/web-methods-67a": {
+  "/zh-CN/build/near-components/anatomy/web-methods-069": {
     "__comp": "17896441",
     "content": "8fc94222"
   },
-  "/zh-CN/build/near-components/bos-gateway-e29": {
+  "/zh-CN/build/near-components/bos-gateway-ae5": {
     "__comp": "17896441",
     "content": "4877637e"
   },
-  "/zh-CN/build/near-components/dev-environment-720": {
+  "/zh-CN/build/near-components/dev-environment-a7b": {
     "__comp": "17896441",
     "content": "be0c8552"
   },
-  "/zh-CN/build/near-components/what-is-676": {
+  "/zh-CN/build/near-components/what-is-d56": {
     "__comp": "17896441",
     "content": "7ee72218"
   },
@@ -775,7 +775,7 @@
     "__comp": "17896441",
     "content": "8c5c9981"
   },
-  "/zh-CN/build/smart-contracts/quickstart-cdf": {
+  "/zh-CN/build/smart-contracts/quickstart-5f6": {
     "__comp": "17896441",
     "content": "9e8d3d30"
   },
@@ -831,7 +831,7 @@
     "__comp": "17896441",
     "content": "be8847e4"
   },
-  "/zh-CN/build/smart-contracts/testing/integration-test-91d": {
+  "/zh-CN/build/smart-contracts/testing/integration-test-335": {
     "__comp": "17896441",
     "content": "87e029fa"
   },
@@ -843,7 +843,7 @@
     "__comp": "17896441",
     "content": "8b471c05"
   },
-  "/zh-CN/build/smart-contracts/testing/unit-test-57b": {
+  "/zh-CN/build/smart-contracts/testing/unit-test-000": {
     "__comp": "17896441",
     "content": "ce1ba413"
   },
@@ -855,7 +855,7 @@
     "__comp": "17896441",
     "content": "5a0e3338"
   },
-  "/zh-CN/build/web3-apps/frontend-191": {
+  "/zh-CN/build/web3-apps/frontend-ff1": {
     "__comp": "17896441",
     "content": "1c6af5b8"
   },
@@ -899,15 +899,15 @@
     "__comp": "17896441",
     "content": "dd2e084b"
   },
-  "/zh-CN/concepts/advanced/indexers-236": {
+  "/zh-CN/concepts/advanced/indexers-514": {
     "__comp": "17896441",
     "content": "a56cf653"
   },
-  "/zh-CN/concepts/advanced/near-indexer-framework-eb6": {
+  "/zh-CN/concepts/advanced/near-indexer-framework-2a6": {
     "__comp": "17896441",
     "content": "382834d8"
   },
-  "/zh-CN/concepts/advanced/near-lake-framework-b09": {
+  "/zh-CN/concepts/advanced/near-lake-framework-beb": {
     "__comp": "17896441",
     "content": "444c424a"
   },
@@ -943,7 +943,7 @@
     "__comp": "17896441",
     "content": "d6fd0179"
   },
-  "/zh-CN/concepts/data-flow/data-storage-479": {
+  "/zh-CN/concepts/data-flow/data-storage-d1c": {
     "__comp": "17896441",
     "content": "0deefcb9"
   },
@@ -1011,11 +1011,11 @@
     "__comp": "17896441",
     "content": "0b73acbf"
   },
-  "/zh-CN/concepts/web3/near-f23": {
+  "/zh-CN/concepts/web3/near-9a8": {
     "__comp": "17896441",
     "content": "92f023ef"
   },
-  "/zh-CN/concepts/web3/nfts-f36": {
+  "/zh-CN/concepts/web3/nfts-fe8": {
     "__comp": "17896441",
     "content": "0956f54a"
   },
@@ -1259,7 +1259,7 @@
     "__comp": "17896441",
     "content": "e67830df"
   },
-  "/zh-CN/sdk/rust/testing/integration-tests-d58": {
+  "/zh-CN/sdk/rust/testing/integration-tests-e99": {
     "__comp": "17896441",
     "content": "362ff4f5"
   },
@@ -1279,7 +1279,7 @@
     "__comp": "17896441",
     "content": "f828a662"
   },
-  "/zh-CN/tools/indexing-ee8": {
+  "/zh-CN/tools/indexing-a1d": {
     "__comp": "17896441",
     "content": "65d6b33e"
   },
@@ -1327,7 +1327,7 @@
     "__comp": "17896441",
     "content": "617ecb76"
   },
-  "/zh-CN/tools/welcome-bd9": {
+  "/zh-CN/tools/welcome-a57": {
     "__comp": "17896441",
     "content": "03b82f47"
   },
@@ -1407,15 +1407,15 @@
     "__comp": "17896441",
     "content": "a4bb07b0"
   },
-  "/zh-CN/tutorials/examples/coin-flip-e8b": {
+  "/zh-CN/tutorials/examples/coin-flip-eb1": {
     "__comp": "17896441",
     "content": "ad3c2cd5"
   },
-  "/zh-CN/tutorials/examples/count-near-39d": {
+  "/zh-CN/tutorials/examples/count-near-6db": {
     "__comp": "17896441",
     "content": "e2f4a20c"
   },
-  "/zh-CN/tutorials/examples/donation-e96": {
+  "/zh-CN/tutorials/examples/donation-ca4": {
     "__comp": "17896441",
     "content": "ad09d313"
   },
@@ -1427,7 +1427,7 @@
     "__comp": "17896441",
     "content": "8c8ec5ba"
   },
-  "/zh-CN/tutorials/examples/guest-book-c2d": {
+  "/zh-CN/tutorials/examples/guest-book-3e8": {
     "__comp": "17896441",
     "content": "922b1ba2"
   },
@@ -1439,7 +1439,7 @@
     "__comp": "17896441",
     "content": "b55b1b7c"
   },
-  "/zh-CN/tutorials/fts/circulating-supply-e0d": {
+  "/zh-CN/tutorials/fts/circulating-supply-7fe": {
     "__comp": "17896441",
     "content": "9b90945d"
   },
@@ -1539,7 +1539,7 @@
     "__comp": "17896441",
     "content": "4c282584"
   },
-  "/zh-CN/tutorials/nfts/events-984": {
+  "/zh-CN/tutorials/nfts/events-b6a": {
     "__comp": "17896441",
     "content": "82297a16"
   },
@@ -1559,7 +1559,7 @@
     "__comp": "17896441",
     "content": "403fa534"
   },
-  "/zh-CN/tutorials/nfts/js/events-cfc": {
+  "/zh-CN/tutorials/nfts/js/events-299": {
     "__comp": "17896441",
     "content": "16aaa7d4"
   },

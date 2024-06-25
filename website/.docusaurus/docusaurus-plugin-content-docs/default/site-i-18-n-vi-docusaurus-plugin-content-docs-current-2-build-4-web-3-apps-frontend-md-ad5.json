@@ -11,6 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/4.web3-apps/frontend.md",
   "tags": [],
   "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1719220968000,
   "frontMatter": {
     "id": "frontend",
     "title": "Frontends for Web3 dApps",
