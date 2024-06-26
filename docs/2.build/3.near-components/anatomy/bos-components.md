@@ -4,14 +4,6 @@ title: Historical data
 sidebar_label: Handling Historical data
 ---
 
-:::warning What is the state of BOS (NEAR Components)?
-
-We no longer recommend building on BOS due to its limited capabilities and discontinued security maintenance. Developers with active projects on BOS are encouraged to migrate to another deployment strategy.
-
-See the [Web3 frontends](/build/web3-apps/frontend#bos-socialvm) section for more information.
-
-:::
-
 Building components that handle historical blockchain data require dedicated solutions that manage the data and reduce the latency of requests, as it's not possible to scan the whole blockchain when a user makes a request.
 
 A simple solution for developers building on NEAR is using [QueryAPI](../environment.md), a fully managed solution to build indexer functions, extract on-chain data, store it in a database, and be able to query it using GraphQL endpoints.
