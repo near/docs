@@ -5,12 +5,10 @@ sidebar_label: Frontends
 ---
 
 
-There are 3 major options to choose from when you're building a frontend for your Web3 dApp, each with their own set of pros and cons.
-This overview presents and summarizes these options so you can select the right solution for your UI.
+When building decentralized web applications (dApps), developers have two primary options for connecting a front-end user interface (UI) to a smart contract backend. Each option offers distinct advantages and disadvantages, tailored to different project requirements and goals.
 
-- [Standard Web App](#standard-web-app)
-- [Decentralized Hosting](#decentralized-hosting)
-- [BOS (SocialVM)](#bos-socialvm)
+- [Standard Web2 Frontend](#standard-web-app)
+- [Decentralized Web3 Frontend](#decentralized-hosting)
 
 ## Standard Web App
 
