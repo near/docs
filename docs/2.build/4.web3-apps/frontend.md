@@ -42,15 +42,31 @@ Check [this article](integrate-contracts.md) to learn how to integrate smart con
 
 If you need full decentralization of your entire stack, this option is ideal. However, consider the possible technical constraints, such as the absence of server-side rendering or meta frameworks like Next.js.
 
+Several options to consider are:
 
-### Pros
+|Name| <div align="center">Description</div>   |
+|--------|------|
+| [IPFS](https://docs.ipfs.tech/how-to/websites-on-ipfs/single-page-website/)| A peer-to-peer hypermedia protocol designed to preserve and grow humanity's knowledge by making the web upgradeable, resilient, and more open. |
+| [Fleek](https://docs.fleek.co/tutorials/hosting/)| Hosts websites on IPFS with a user-friendly interface and continuous deployment from popular repositories. |
+| [Arweave](https://www.arweave.org/build) | Arweave lets you build quickly and simply with permanent storage. You can store anything from files to fully decentralized web applications. |
+| [NEAR Social](https://near.social) |  |
+| [Web4](https://web4.near.page/) | Web4 is a new way to distribute decentralized apps. Deploy single WASM smart contract to deploy whole web app.|
 
-- Your web app will be hosted on the blockchain allowing your entire stack to be decentralized.
+**Pros:**
 
-### Cons
+- Decentralized frontends are less susceptible to single points of failure, making them more resistant to attacks and server downtimes
+- By decentralizing the hosting of your frontend, you minimize the risk of content being censored or blocked by centralized authorities.
+- Users might trust a decentralized application more, knowing that it operates on a transparent and immutable blockchain.
+- Data displayed on the frontend is more likely to be accurate and tamper-proof since it's typically fetched directly from the blockchain.
 
-- Your options for frameworks will be limited to whatever is supported by the decentralized hosting solution.
-- SSR and meta frameworks like Next JS most likely won't be supported.
+**Cons:**
+
+- Implementing a decentralized frontend can be more complex than traditional web development, requiring knowledge of specific technologies like IPFS, Arweave, or blockchain interactions.
+- Decentralized networks can face issues such as latency or lower speeds compared to traditional centralized servers, potentially affecting user experience.
+- The ecosystem for developing decentralized frontends is still maturing, which means there might be fewer tools and libraries available compared to traditional web development.
+- While decentralized storage costs have been decreasing, they can still be higher than traditional hosting, especially if the dApp generates a lot of data transactions.
+
+---
 
 ## BOS (SocialVM)
 
