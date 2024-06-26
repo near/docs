@@ -46,11 +46,11 @@ Although the ecosystem for developing decentralized frontends is still maturing,
 
 |Name| <div align="center">Description</div>   |
 |--------|------|
-| [IPFS](https://docs.ipfs.tech/how-to/websites-on-ipfs/single-page-website/)| A peer-to-peer hypermedia protocol designed to preserve and grow humanity's knowledge by making the web upgradeable, resilient, and more open. |
-| [Fleek](https://docs.fleek.co/tutorials/hosting/)| Hosts websites on IPFS with a user-friendly interface and continuous deployment from popular repositories. |
-| [Arweave](https://www.arweave.org/build) | Arweave lets you build quickly and simply with permanent storage. You can store anything from files to fully decentralized web applications. |
-| [NEAR Social Components](https://near.social) | A decentralized social network that allow users to build and deploy decentralized UI experiences. |
-| [Web4](https://web4.near.page/) | Web4 is a new way to distribute decentralized apps on NEAR Protocol. Deploy single WASM smart contract to deploy an entire web application.|
+| [**IPFS**](https://docs.ipfs.tech/how-to/websites-on-ipfs/single-page-website/)| A peer-to-peer hypermedia protocol designed to preserve and grow humanity's knowledge by making the web upgradeable, resilient, and more open. |
+| [**Fleek**](https://docs.fleek.co/tutorials/hosting/)| Hosts websites on IPFS with a user-friendly interface and continuous deployment from popular repositories. |
+| [**Arweave**](https://www.arweave.org/build) | Arweave lets you build quickly and simply with permanent storage. You can store anything from files to fully decentralized web applications. |
+| [**NEAR Social** ***(aka B.O.S. Components)***](https://near.social) | An experimental platform that allows users to build and deploy multi-chain decentralized UI experiences. |
+| [**Web4**](https://web4.near.page/) | Web4 is a new way to distribute decentralized apps on NEAR Protocol. Deploy single WASM smart contract to deploy an entire web application.|
 
 **Pros:**
 
