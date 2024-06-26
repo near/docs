@@ -6,14 +6,6 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {WidgetEditor} from "@site/src/components/widget-editor"
 
-:::warning What is the state of BOS (NEAR Components)?
-
-We no longer recommend building on BOS due to its limited capabilities and discontinued security maintenance. Developers with active projects on BOS are encouraged to migrate to another deployment strategy.
-
-See the [Web3 frontends](/build/web3-apps/frontend#bos-socialvm) section for more information.
-
-:::
-
 Applications such as [NEAR Social](https://near.social) and the [NEAR Dev Portal](https://dev.near.org/) allow components to send notifications to their users.
 
 Notifications are great to inform users in real time that something has happened, and can be [easily incorporated into any web app](../../../3.tutorials/near-components/push-notifications.md).
