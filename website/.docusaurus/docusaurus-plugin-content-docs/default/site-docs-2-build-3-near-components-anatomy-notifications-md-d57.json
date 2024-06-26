@@ -1,7 +1,7 @@
 {
   "id": "build/near-components/anatomy/notifications",
   "title": "Social Notifications",
-  "description": "We no longer recommend building on BOS due to its limited capabilities and discontinued security maintenance. Developers with active projects on BOS are encouraged to migrate to another deployment strategy.",
+  "description": "Applications such as NEAR Social and the NEAR Dev Portal allow components to send notifications to their users.",
   "source": "@site/../docs/2.build/3.near-components/anatomy/notifications.md",
   "sourceDirName": "2.build/3.near-components/anatomy",
   "slug": "/build/near-components/anatomy/notifications",
@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/3.near-components/anatomy/notifications.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Damián Parrino",
-  "lastUpdatedAt": 1718898395000,
+  "lastUpdatedBy": "Vlad Frolov",
+  "lastUpdatedAt": 1719420487000,
   "frontMatter": {
     "id": "notifications",
     "title": "Social Notifications"
