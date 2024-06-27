@@ -9,17 +9,11 @@ import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 import {ExplainCode, Block, File} from '@site/src/components/CodeExplainer/code-explainer';
 
-Smart contracts store data in their account's state. While only the contract can store data on its state, the state is stored on chain, and thus anyone can read it.
+Smart contracts store data in their account's state, which is public on the chain. The storage starts **empty** until a contract is deployed and the state is initialized.
 
-The storage starts **empty** until a contract is deployed and the state is initialized.
+It is important to know that the account's **code** and account's **storage** are **independent**. [Updating the code](../release/upgrade.md) does **not erase** the state.
 
-:::warning
-
-In NEAR, the account's **code** and account's **storage** are **independent**. [Updating the code](../release/upgrade.md) does **not erase** the state.
-
-:::
-
----
+<hr class="subsection" />
 
 <ExplainCode languages="js,rust" >
 

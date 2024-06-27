@@ -1,6 +1,6 @@
 ---
 id: collections
-title: Data Structures
+title: Collections
 ---
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 import Tabs from '@theme/Tabs';
@@ -17,7 +17,14 @@ You can choose between two types of collections:
 
 Since the SDK reads all the contract's attributes when a function is executed - and writes them back when it finishes - understanding how the SDK stores and loads both types of collections is crucial to decide which one to use.
 
+
 :::tip
+
+Use native collections for small amounts of data that need to be accessed all together, and SDK collections for large amounts of data that do not need to be accessed all together
+
+:::
+
+:::info
 
 Contracts store all their data in a `key-value` database. The SDK handles this database, and stores values [serialized in JSON or Borsh](./serialization.md)
 
@@ -47,7 +54,7 @@ Native collections are useful if you are planning to store smalls amounts of dat
 
 :::
 
-:::danger Keep Native Collections Small
+:::warning Keep Native Collections Small
 
 As the collection grows, reading and writing it will cost more and more gas. If the collections grows too large, your contract might end up expending all its available gas in reading/writing the state, thus becoming unusable
 
@@ -95,6 +102,13 @@ SDK collections are useful when you are planning to store large amounts of data 
 
 <TabItem value="rust" label="🦀 Rust">
 
+:::info Note
+
+The `near_sdk::collections` will be moving to `near_sdk::store` and have updated APIs. If you would like to access these updated structures as they are being implemented, enable the `unstable` feature on `near-sdk`.
+
+:::
+
+
 | SDK collection                         | `std`&nbsp;equivalent              | Description                                                                                                                                                                                                                                        |
 |----------------------------------------|------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `LazyOption<T>`                        | `Option<T>`                        | Optional value in storage. This value will only be read from storage when interacted with. This value will be `Some<T>` when the value is saved in storage, and `None` if the value at the prefix does not exist.                                  |
@@ -136,7 +150,9 @@ SDK collections are useful when you are planning to store large amounts of data 
 _\* - to insert at the end of the vector using `push_back` (or `push_front` for deque)_
 _\*\* - to delete from the end of the vector using `pop` (or `pop_front` for deque), or delete using `swap_remove` which swaps the element with the last element of the vector and then removes it._
 
-<hr class="subsection" />
+---
+
+## Collections Cookbook
 
 ### Instantiation
 
@@ -181,7 +197,7 @@ Be careful of not using the same prefix in two collections, otherwise, their sto
 
 ### Vector
 
-Implements a [vector/array](https://en.wikipedia.org/wiki/Array_data_structure) which persists in the contract's storage. Please refer to the Rust and AS SDK's for a full reference on their interfaces.
+Implements a [vector/array](https://en.wikipedia.org/wiki/Array_data_structure) which persists in the contract's storage. Please refer to the Rust and JS SDK's for a full reference on their interfaces.
 
 <CodeTabs>
   <Language value="js" language="js">
@@ -201,7 +217,7 @@ Implements a [vector/array](https://en.wikipedia.org/wiki/Array_data_structure) 
 
 ### Map
 
-Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) which persists in the contract's storage. Please refer to the Rust and AS SDK's for a full reference on their interfaces.
+Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) which persists in the contract's storage. Please refer to the Rust and JS SDK's for a full reference on their interfaces.
 
 <CodeTabs>
   <Language value="js" language="js">
@@ -221,7 +237,7 @@ Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) w
 
 ### Set
 
-Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type)) which persists in the contract's storage. Please refer to the Rust and AS SDK's for a full reference on their interfaces.
+Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type)) which persists in the contract's storage. Please refer to the Rust and JS SDK's for a full reference on their interfaces.
 
 <CodeTabs>
   <Language value="js" language="js">
@@ -276,56 +292,48 @@ It is possible to nest collections. When nesting SDK collections, remember to **
 <Tabs groupId="code-tabs">
   <TabItem value="js" label="🌐 JavaScript">
 
-    In the JS SDK, you can store and retrieve elements from a nested map or object, but first you need to construct or deconstruct the structure from state. This is a temporary solution until the improvements have been implemented to the SDK. Here is an example of how to do this:
+    While you can create nested maps, you first need to construct or deconstruct the structure from state. This is a temporary solution that will soon be automatically handled by the SDK.
+  
+    ```ts 
+    import { NearBindgen, call, view, near, UnorderedMap } from "near-sdk-js";
 
-  <details>
-    <summary> Example </summary> 
-    
-  ```ts 
-  import { NearBindgen, call, view, near, UnorderedMap } from "near-sdk-js";
+    @NearBindgen({})
+    class StatusMessage {
+      records: UnorderedMap;
+      constructor() {
+        this.records = new UnorderedMap("a");
+      }
 
-  @NearBindgen({})
-  class StatusMessage {
-    records: UnorderedMap;
-    constructor() {
-      this.records = new UnorderedMap("a");
+      @call({})
+      set_status({ message, prefix }: { message: string; prefix: string }) {
+        let account_id = near.signerAccountId();
+
+        const inner: any = this.records.get("b" + prefix);
+        const inner_map: UnorderedMap = inner
+          ? UnorderedMap.deserialize(inner)
+          : new UnorderedMap("b" + prefix);
+
+        inner_map.set(account_id, message);
+
+        this.records.set("b" + prefix, inner_map);
+      }
+
+      @view({})
+      get_status({ account_id, prefix }: { account_id: string; prefix: string }) {
+        const inner: any = this.records.get("b" + prefix);
+        const inner_map: UnorderedMap = inner
+          ? UnorderedMap.deserialize(inner)
+          : new UnorderedMap("b" + prefix);
+        return inner_map.get(account_id);
+      }
     }
-
-    @call({})
-    set_status({ message, prefix }: { message: string; prefix: string }) {
-      let account_id = near.signerAccountId();
-
-      const inner: any = this.records.get("b" + prefix);
-      const inner_map: UnorderedMap = inner
-        ? UnorderedMap.deserialize(inner)
-        : new UnorderedMap("b" + prefix);
-
-      inner_map.set(account_id, message);
-
-      this.records.set("b" + prefix, inner_map);
-    }
-
-    @view({})
-    get_status({ account_id, prefix }: { account_id: string; prefix: string }) {
-      const inner: any = this.records.get("b" + prefix);
-      const inner_map: UnorderedMap = inner
-        ? UnorderedMap.deserialize(inner)
-        : new UnorderedMap("b" + prefix);
-      return inner_map.get(account_id);
-    }
-  }
-  ```
-
-  </details>
+    ```
 
   </TabItem>
 
   <TabItem value="rust" label="🦀 Rust">
 
-    In Rust the simplest way to avoid collisions between is by using `enums`
-
-  <details>
-    <summary> Example </summary> 
+    In Rust the simplest way to avoid collisions between nested collections is by using `enums`
 
     ```rust
     use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
@@ -364,11 +372,190 @@ It is possible to nest collections. When nesting SDK collections, remember to **
     }
     ```
 
-  </details>
-
   </TabItem>
 </Tabs>
 
+
+---
+
+## Error prone patterns
+
+Because the values are not kept in memory and are lazily loaded from storage, it's important to make sure if a collection is replaced or removed, that the storage is cleared. In addition, it is important that if the collection is modified, the collection itself is updated in state because most collections will store some metadata.
+
+Some error-prone patterns to avoid that cannot be restricted at the type level are:
+
+<Tabs>
+  <TabItem value="js" label="🌐 JavaScript">
+  </TabItem>
+  <TabItem value="rust" label="🦀 Rust">
+  </TabItem>
+</Tabs>
+
+<Tabs>
+<TabItem value="rust" label="🦀 Rust">
+
+```rust
+use near_sdk::store::UnorderedMap;
+
+let mut m = UnorderedMap::<u8, String>::new(b"m");
+m.insert(1, "test".to_string());
+assert_eq!(m.len(), 1);
+assert_eq!(m.get(&1), Some(&"test".to_string()));
+
+// Bug 1: Should not replace any collections without clearing state, this will reset any
+// metadata, such as the number of elements, leading to bugs. If you replace the collection
+// with something with a different prefix, it will be functional, but you will lose any
+// previous data and the old values will not be removed from storage.
+m = UnorderedMap::new(b"m");
+assert!(m.is_empty());
+assert_eq!(m.get(&1), Some(&"test".to_string()));
+
+// Bug 2: Should not use the same prefix as another collection
+// or there will be unexpected side effects.
+let m2 = UnorderedMap::<u8, String>::new(b"m");
+assert!(m2.is_empty());
+assert_eq!(m2.get(&1), Some(&"test".to_string()));
+
+// Bug 3: forgetting to save the collection in storage. When the collection is attached to
+// the contract state (`self` in `#[near]`) this will be done automatically, but if
+// interacting with storage manually or working with nested collections, this is relevant.
+use near_sdk::store::Vector;
+
+// Simulate roughly what happens during a function call that initializes state.
+{
+    let v = Vector::<u8>::new(b"v");
+    near_sdk::env::state_write(&v);
+}
+
+// Simulate what happens during a function call that just modifies the collection
+// but does not store the collection itself.
+{
+    let mut v: Vector<u8> = near_sdk::env::state_read().unwrap();
+    v.push(1);
+    // The bug is here that the collection itself if not written back
+}
+
+let v: Vector<u8> = near_sdk::env::state_read().unwrap();
+// This will report as if the collection is empty, even though the element exists
+assert!(v.get(0).is_none());
+assert!(
+    near_sdk::env::storage_read(&[b"v".as_slice(), &0u32.to_le_bytes()].concat()).is_some()
+);
+
+// Bug 4 (only relevant for `near_sdk::store`): These collections will cache writes as well
+// as reads, and the writes are performed on [`Drop`](https://doc.rust-lang.org/std/ops/trait.Drop.html)
+// so if the collection is kept in static memory or something like `std::mem::forget` is used,
+// the changes will not be persisted.
+use near_sdk::store::LookupSet;
+
+let mut m: LookupSet<u8> = LookupSet::new(b"l");
+m.insert(1);
+assert!(m.contains(&1));
+
+// This would be the fix, manually flushing the intermediate changes to storage.
+// m.flush();
+std::mem::forget(m);
+
+m = LookupSet::new(b"l");
+assert!(!m.contains(&1));
+```
+
+<hr class="subsection" />
+
+### Nesting Errors
+
+By extension of the error-prone patterns to avoid mentioned in the [collections section](./collections.md#error-prone-patterns), it is important to keep in mind how these bugs can easily be introduced into a contract when using nested collections.
+
+Some issues for more context:
+- https://github.com/near/near-sdk-rs/issues/560
+- https://github.com/near/near-sdk-rs/issues/703
+
+The following cases are the most commonly encountered bugs that cannot be restricted at the type level:
+
+```rust
+use near_sdk::borsh::{self, BorshSerialize};
+use near_sdk::collections::{LookupMap, UnorderedSet};
+use near_sdk::BorshStorageKey;
+
+#[derive(BorshStorageKey, BorshSerialize)]
+pub enum StorageKey {
+    Root,
+    Nested(u8),
+}
+
+// Bug 1: Nested collection is removed without clearing it's own state.
+let mut root: LookupMap<u8, UnorderedSet<String>> = LookupMap::new(StorageKey::Root);
+let mut nested = UnorderedSet::new(StorageKey::Nested(1));
+nested.insert(&"test".to_string());
+root.insert(&1, &nested);
+
+// Remove inserted collection without clearing it's sub-state.
+let mut _removed = root.remove(&1).unwrap();
+
+// This line would fix the bug:
+// _removed.clear();
+
+// This collection will now be in an inconsistent state if an empty UnorderedSet is put
+// in the same entry of `root`.
+root.insert(&1, &UnorderedSet::new(StorageKey::Nested(1)));
+let n = root.get(&1).unwrap();
+assert!(n.is_empty());
+assert!(n.contains(&"test".to_string()));
+
+// Bug 2 (only relevant for `near_sdk::collections`, not `near_sdk::store`): Nested
+// collection is modified without updating the collection itself in the outer collection.
+//
+// This is fixed at the type level in `near_sdk::store` because the values are modified
+// in-place and guarded by regular Rust borrow-checker rules.
+root.insert(&2, &UnorderedSet::new(StorageKey::Nested(2)));
+
+let mut nested = root.get(&2).unwrap();
+nested.insert(&"some value".to_string());
+
+// This line would fix the bug:
+// root.insert(&2, &nested);
+
+let n = root.get(&2).unwrap();
+assert!(n.is_empty());
+assert!(n.contains(&"some value".to_string()));
+```
+
+</TabItem>
+</Tabs>
+
+---
+
+## Pagination
+
+Persistent collections such as `UnorderedMap`, `UnorderedSet` and `Vector` may
+contain more elements than the amount of gas available to read them all.
+In order to expose them all through view calls, we can use pagination.
+
+This can be done using iterators with [`Skip`](https://doc.rust-lang.org/std/iter/struct.Skip.html) and [`Take`](https://doc.rust-lang.org/std/iter/struct.Take.html). This will only load elements from storage within the range.
+
+Example of pagination for `UnorderedMap`:
+
+```rust
+#[near(contract_state)]
+#[derive(PanicOnDefault)]
+pub struct Contract {
+    pub status_updates: UnorderedMap<AccountId, String>,
+}
+
+#[near]
+impl Contract {
+    /// Retrieves multiple elements from the `UnorderedMap`.
+    /// - `from_index` is the index to start from.
+    /// - `limit` is the maximum number of elements to return.
+    pub fn get_updates(&self, from_index: usize, limit: usize) -> Vec<(AccountId, String)> {
+        self.status_updates
+            .iter()
+            .skip(from_index)
+            .take(limit)
+            .collect()
+    }
+}
+```
 
 ---
 
@@ -380,15 +567,21 @@ Your contract needs to lock a portion of their balance proportional to the amoun
 Currently, it cost approximately **1 Ⓝ** to store **100kb** of data.
 
 :::info
-You can save on smart contract storage if using NEAR Account IDs by encoding them using base32. Since they consist of `[a-z.-_]` characters with a maximum length of 64 characters, they can be encoded using 5 bits per character, with terminal `\0`. Going to a size of 65 * 5 = 325 bits from the original (64 + 4) * 8 = 544 bits. This is a 40% reduction in storage costs.
+
+You can save on smart contract storage if using NEAR Account IDs by encoding them using base32. Since they consist of `[a-z.-_]` characters with a maximum length of 64 characters, they can be encoded using 5 bits per character, with terminal `\0`. Going to a size of 65 * 5 = 325 bits from the original (64 + 4) * 8 = 544 bits. This is a 40% reduction in storage costs
+
 :::
 
 :::caution
-An error will raise if your contract tries to increase its state while not having NEAR to cover for storage.
+
+Your contract will panic if you try to store data but don't have NEAR to cover its storage cost
+
 :::
 
 :::warning
+
 Be mindful of potential [small deposit attacks](../security/storage.md)
+
 :::
 
 ---
@@ -399,6 +592,6 @@ For storing data on-chain it’s important to keep in mind the following:
 
 - There is a 4mb limit on how much you can upload at once
 
-Let’s say for example, someone wants to put an NFT purely on-chain (rather than IPFS or some other decentralized storage solution) you’ll have almost an unlimited amount of storage but will have to pay 1 $NEAR per 100kb of storage used (see Storage Staking).
+Let’s say for example, someone wants to put an NFT purely on-chain (rather than IPFS or some other decentralized storage solution) you’ll have almost an unlimited amount of storage but will have to pay 1 $NEAR per 100kb of storage used.
 
 Users will be limited to 4MB per contract call upload due to MAX_GAS constraints. The maximum amount of gas one can attach to a given functionCall is 300TGas.

@@ -71,7 +71,7 @@ To simplify development, the SDK provides the `U64` and `U128` types which are a
 
 </Block>
 
-<Block highlights='{"js": "5,11,47"}' fname="auction">
+<Block highlights='{"js": "5,11,25,47"}' fname="auction">
 
     ### Handling Tokens
     `$NEAR` tokens are typed as `BigInt` in JS, and their values represented in `yoctonear`
@@ -80,7 +80,7 @@ To simplify development, the SDK provides the `U64` and `U128` types which are a
 
 </Block>
 
-<Block highlights='{"rust": ""}' fname="auction">
+<Block highlights='{"rust": "8,26,41"}' fname="auction">
 
     ### Handling Tokens
     `$NEAR` tokens are handled through the `NearToken` struct, which exposes methods to represent the value in `yoctonear`, `milinear` and `near`

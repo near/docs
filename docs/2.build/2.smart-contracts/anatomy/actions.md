@@ -59,7 +59,7 @@ You can send $NEAR from your contract to any other account on the network. The G
 
 </Tabs>
 
-:::tip
+:::tip Why is there no callback?
 The only case where a transfer will fail is if the receiver account does **not** exist.
 :::
 
@@ -238,7 +238,7 @@ When you create an account from within a contract, it has no keys by default. If
 
 <hr className="subsection" />
 
-#### Creating Other Accounts
+#### Creating `.testnet` / `.near` Accounts
 
 Accounts can only create immediate sub-accounts of themselves.
 
