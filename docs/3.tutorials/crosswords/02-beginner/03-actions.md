@@ -50,7 +50,7 @@ Let's make it simple and hardcode the prize amount. This is how much NEAR will b
 
 At the top of the `lib.rs` file we'll add this constant:
 
-<Github language="rust" start="10" end="11" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/1909630a10291081cb00b2780c1ae8889d98f620/contract/src/lib.rs" />
+<Github language="rust" start="10" end="11" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/master/contract/src/lib.rs" />
 
 As the code comment mentions, this is 5 NEAR, but look at all those zeroes in the code!
 
@@ -65,7 +65,7 @@ That's the value in yoctoNEAR. This concept is similar to other blockchains. Bit
 
 In the last chapter we had a simple function called `guess_solution` that returned `true` if the solution was correct, and `false` otherwise. We'll be replacing that function with `submit_solution` as shown below:
 
-<Github language="rust" start="92" end="124" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/83d4d8925e6d30e04e8e4cb5e9a0a6d3763fce40/contract/src/lib.rs" />
+<Github language="rust" start="85" end="118" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/master/contract/src/lib.rs" />
 
 Note the last line in this function, which sends NEAR to the predecessor.
 
@@ -104,9 +104,9 @@ Let's cover three commonly-used functions regarding accounts: predecessor, signe
     This is the account that was the immediate caller to the smart contract. If this is a simple transaction (no cross-contract calls) from **alice.near** to **banana.near**, the smart contract at **banana.near** considers Alice the predecessor. In this case, Alice would *also* be the signer.
 
     :::tip When in doubt, use predecessor
-    As we explore the differences between predecessor and signer, know that it's a more common **best practice to choose the predecessor**. 
+    As we explore the differences between predecessor and signer, know that it's a more common **best practice to choose the predecessor**.
 
-    Using the predecessor guards against a potentially malicious contract trying to "fool" another contract that only checks the signer. 
+    Using the predecessor guards against a potentially malicious contract trying to "fool" another contract that only checks the signer.
     :::
 
 2. [signer account](https://docs.rs/near-sdk/latest/near_sdk/env/fn.signer_account_id.html) — `env::signer_account_id()`
@@ -126,7 +126,7 @@ Let's cover three commonly-used functions regarding accounts: predecessor, signe
     The current account is "me" from the perspective of a smart contract.
 
     :::tip Why would I use that?
-    There might be various reasons to use the current account, but a common use case is checking ownership or handling callbacks to cross-contract calls. 
+    There might be various reasons to use the current account, but a common use case is checking ownership or handling callbacks to cross-contract calls.
     
     Many smart contracts will want to implement some sort of permission system. A common, rudimentary permission allows certain functions to only be called by the contract owner, AKA the person who owns a private key to the account for this contract.
 

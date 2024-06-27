@@ -14,7 +14,7 @@ To complete these tutorials successfully, you'll need:
 
 - [Rust](/build/smart-contracts/quickstart#prerequisites)
 - [A NEAR wallet](https://testnet.mynearwallet.com)
-- [NEAR-CLI JS](/tools/near-cli#setup)
+- [NEAR-CLI-RS](../../4.tools/cli-rs.md#install)
 - [cargo-near](https://github.com/near/cargo-near)
 
 :::info New to Rust?
@@ -49,11 +49,3 @@ These are the steps that will bring you from **_Zero_** to **_Hero_** in no time
 Ready to start? Jump to the [Pre-deployed Contract](/tutorials/fts/predeployed-contract) tutorial and begin your learning journey!
 
 If you already know about fungible tokens and smart contracts, feel free to skip and jump directly to the tutorial of your interest. The tutorials have been designed so you can start at any given point!
-
-:::info Questions?
-👉 Join us on [Discord](https://near.chat/) and let us know in the `#development` channels. 👈
-
-We also host daily [Office Hours](https://pages.near.org/developers/get-help/office-hours/) live where the DevRel team will answer any questions you may have. 🤔
-
-Monday – Friday 11AM – 12PM Pacific (6PM – 7PM UTC)
-:::
