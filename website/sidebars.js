@@ -1,58 +1,7 @@
 const sidebar = {
   "concepts": [
     "concepts/welcome",
-    "concepts/basics/protocol",
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> The NEAR Protocol </small></b></span>"
-    },
-    {
-      type: 'category',
-      label: 'Accounts / Contracts',
-      link: { type: 'doc', id: 'concepts/protocol/account-model' },
-      items: [
-        "concepts/protocol/account-id",
-        "concepts/protocol/access-keys",
-        "concepts/protocol/smartcontract",
-      ]
-    },
-    {
-      type: 'category',
-      label: 'Transactions',
-      link: { type: 'doc', id: 'concepts/protocol/transactions' },
-      items: [
-        "concepts/protocol/transaction-anatomy",
-        "concepts/protocol/gas",
-        "concepts/protocol/transaction-execution",
-      ]
-    },
-    {
-      "Data Flow": [
-        "concepts/data-flow/near-data-flow",
-        "concepts/data-flow/token-transfer-flow"
-      ]
-    },
-    {
-      "Tokens": ["concepts/basics/tokens", "concepts/basics/token-loss"]
-    },
-    {
-      "Storage": [
-        "concepts/storage/data-storage",
-        "concepts/storage/storage-staking",
-        "concepts/storage/storage-solutions"
-      ]
-    },
-    {
-      "Network": [
-        "concepts/basics/validators",
-        "concepts/basics/networks",
-        "concepts/basics/epoch",
-      ]
-    },
+
     {
       "type": "html",
       "value": "<hr/>"
@@ -123,6 +72,63 @@ const sidebar = {
   ],
   "build": [
     "build/welcome",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> NEAR Protocol </small></b></span>"
+    },
+    "concepts/basics/protocol",
+    {
+      "The Protocol": [
+
+        {
+          type: 'category',
+          label: 'Accounts / Contracts',
+          link: { type: 'doc', id: 'concepts/protocol/account-model' },
+          items: [
+            "concepts/protocol/account-id",
+            "concepts/protocol/access-keys",
+            "concepts/protocol/smartcontract",
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Transactions',
+          link: { type: 'doc', id: 'concepts/protocol/transactions' },
+          items: [
+            "concepts/protocol/transaction-anatomy",
+            "concepts/protocol/gas",
+            "concepts/protocol/transaction-execution",
+          ]
+        },
+        {
+          "Data Flow": [
+            "concepts/data-flow/near-data-flow",
+            "concepts/data-flow/token-transfer-flow"
+          ]
+        },
+        {
+          "Tokens": ["concepts/basics/tokens", "concepts/basics/token-loss"]
+        },
+        {
+          "Storage": [
+            "concepts/storage/data-storage",
+            "concepts/storage/storage-staking",
+            "concepts/storage/storage-solutions"
+          ]
+        },
+        {
+          "Network": [
+            "concepts/basics/validators",
+            "concepts/basics/networks",
+            "concepts/basics/epoch",
+          ]
+        },
+      ]
+    },
     {
       "type": "html",
       "value": "<hr/>"
@@ -501,7 +507,7 @@ const sidebar = {
                 "tutorials/nfts/minting",
                 "tutorials/nfts/upgrade-contract",
                 "tutorials/nfts/enumeration",
-                "tutorials/nfts/core",              ]
+                "tutorials/nfts/core",]
             },
             "tutorials/nfts/events",
             {
