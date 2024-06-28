@@ -15,7 +15,7 @@ import enumBox from '/docs/assets/crosswords/enum-a-d-block--eizaconiendo.near--
 
 If you're not familiar with Rust, it may be confusing that there are no classes or inheritance like other programming languages. We'll be exploring how to [use structs](https://doc.rust-lang.org/book/ch05-01-defining-structs.html), which are someone similar to classes, but perhaps simpler.
 
-Remember that there will be only one struct that gets the [`#[near_bindgen]` macro](/sdk/rust/contract-structure/near-bindgen) placed on it; our primary struct or singleton if you wish. Oftentimes the primary struct will contain additional structs that may, in turn, contain more structs in a neat and orderly way. You may also have structs that are used to return data to an end user, like a frontend. We'll be covering both of these cases in this chapter.
+Remember that there will be only one struct that gets the [`#[near]` macro](../../../2.build/2.smart-contracts/anatomy/anatomy.md) placed on it; our primary struct or singleton if you wish. Oftentimes the primary struct will contain additional structs that may, in turn, contain more structs in a neat and orderly way. You may also have structs that are used to return data to an end user, like a frontend. We'll be covering both of these cases in this chapter.
 
 ### Enums
 
@@ -127,7 +127,7 @@ The return value would be a JSON array:
 
 `["crossword", "puzzle"]`
 
-While somewhat advanced, you can learn more about [changing the serialization here](/sdk/rust/contract-interface/serialization-interface#overriding-serialization-protocol-default).
+While somewhat advanced, you can learn more about [changing the serialization here](../../../2.build/2.smart-contracts/anatomy/serialization-interface.md).
 :::
 
 We have a struct called `JsonPuzzle` that differs from the `Puzzle` struct we've shown. It has one difference: the addition of the `solution_hash` field.

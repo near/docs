@@ -64,7 +64,7 @@ crate-type = ["cdylib"]
 ```
 :::
 
-3. When using the Rust SDK, you may override the default JSON serialization to use [Borsh](https://borsh.io) instead. [See this page](contract-interface/serialization-interface.md#overriding-serialization-protocol-default) for more information and an example.
+3. When using the Rust SDK, you may override the default JSON serialization to use [Borsh](https://borsh.io) instead. [See this page](./serialization-interface.md#overriding-serialization-protocol-default) for more information and an example.
 4. When using assertions or guards, avoid using the standard `assert` macros like [`assert!`](https://doc.rust-lang.org/std/macro.assert.html), [`assert_eq!`](https://doc.rust-lang.org/std/macro.assert_eq.html), or [`assert_ne!`](https://doc.rust-lang.org/std/macro.assert_ne.html) as these may add bloat for information regarding the line number of the error. There are similar issues with `unwrap`, `expect`, and Rust's `panic!()` macro.
 
   Example of a standard assertion:

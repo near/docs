@@ -18,7 +18,7 @@ We're going to send all the arguments as a base64-encoded string, and make this 
 :::note `Base64VecU8` is great for binary payloads
 What we're doing makes sense, but it's worth noting that it's perhaps more common to use `Base64VecU8` when sending binary parameters.
 
-Read more [about it here](/sdk/rust/contract-interface/serialization-interface#base64vecu8).
+Read more [about it here](../../../2.build/2.smart-contracts/anatomy/serialization-interface.md).
 :::
 
 First we'll set up a struct for the arguments we're expecting:
