@@ -67,9 +67,16 @@ This is how a smart contract written in Rust and JavaScript using the NEAR SDK l
 
 </Tabs>
 
+:::tip
+
+Want to build a smart contract? Check our [QuickStart Guide](../2.build/2.smart-contracts/quickstart.md)
+
+:::
+
+
 ---
 
-## Ready to start developing?
+## 🎉 Ready to start developing?
 
 Start from our [Smart Contract QuickStart Guide](../2.build/2.smart-contracts/quickstart.md), and let it guide you through all our documentation on building smart contracts
 

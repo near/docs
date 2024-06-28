@@ -55,7 +55,7 @@ return (
 
 :::tip Using Wrapper
 
-[Example widget using Wrapper](https://near.org/#/near/widget/ComponentDetailsPage?src=near/widget/RadixTooltipTest)
+[Example widget using Wrapper](https://dev.near.org/#/near/widget/ComponentDetailsPage?src=near/widget/RadixTooltipTest)
 
 :::
 
@@ -105,7 +105,7 @@ return (
 
 :::tip Using styled components
 
-[Example widget using styled components to style Radix UI](https://near.org/#/near/widget/ComponentDetailsPage?src=near/widget/RadixSwitchTest).
+[Example widget using styled components to style Radix UI](https://dev.near.org/#/near/widget/ComponentDetailsPage?src=near/widget/RadixSwitchTest).
 
 :::
 

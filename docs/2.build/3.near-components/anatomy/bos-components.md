@@ -72,4 +72,4 @@ Next, you can create a nice UI over this boilerplate code, and publish your new 
 
 #### Component Examples
 
-- [Activity Feed widget](https://near.org/near/widget/ComponentDetailsPage?src=roshaan.near/widget/user-activity-feed&tab=source) running on [dev.near.org](https://dev.near.org)
+- [Activity Feed widget](https://dev.near.org/near/widget/ComponentDetailsPage?src=roshaan.near/widget/user-activity-feed&tab=source) running on [dev.near.org](https://dev.near.org)

@@ -5,7 +5,7 @@ title: Lido Example
 
 # Hello Lido!
 
-If you are ready to explore further, the [Lido component](https://near.org/zavodil.near/widget/Lido) serves as an excellent fully-fledged example, as it demonstrates how to interact with a smart contract deployed on the Ethereum mainnet.
+If you are ready to explore further, the [Lido component](https://dev.near.org/zavodil.near/widget/Lido) serves as an excellent fully-fledged example, as it demonstrates how to interact with a smart contract deployed on the Ethereum mainnet.
 
 :::info Ethers.js
 
@@ -15,14 +15,14 @@ This component uses the [Ethers JavaScript](https://ethers.org) library to inter
 
 :::info Web3 connect
 
-The Lido example uses the [Web3Connect component](https://near.org/near/widget/ComponentDetailsPage?src=a_liutiev.near/widget/button_web3connect) to provide a [WalletConnect modal](https://github.com/WalletConnect/web3modal) so the user can connect with any Web3 Ethereum wallet like Ledger or MetaMask.
+The Lido example uses the [Web3Connect component](https://dev.near.org/near/widget/ComponentDetailsPage?src=a_liutiev.near/widget/button_web3connect) to provide a [WalletConnect modal](https://github.com/WalletConnect/web3modal) so the user can connect with any Web3 Ethereum wallet like Ledger or MetaMask.
 
 :::
 
 
 ### Fork the component
 
-1. Navigate to [the component](https://near.org/near/widget/ComponentDetailsPage?src=zavodil.near/widget/Lido)
+1. Navigate to [the component](https://dev.near.org/near/widget/ComponentDetailsPage?src=zavodil.near/widget/Lido)
 2. Select `Fork`
 3. Feel free to make any changes
 4. Click on <kbd>Save</kbd> to deploy the component
@@ -366,7 +366,7 @@ return (
 
 #### Fork the component
 
-1. Navigate to [the component](https://near.org/near/widget/ComponentDetailsPage?src=zavodil.near/widget/Lido)
+1. Navigate to [the component](https://dev.near.org/near/widget/ComponentDetailsPage?src=zavodil.near/widget/Lido)
 2. Select `Fork`
 3. Feel free to make any changes
 4. Click on <kbd>Save</kbd> to deploy the component

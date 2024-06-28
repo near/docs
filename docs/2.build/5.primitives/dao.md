@@ -37,13 +37,13 @@ Decentralized Autonomous Organizations (DAOs) are self-organized groups that for
 ![dao](/docs/primitives/dao.png)
 
 In contrast with [FT](ft.md) and [NFT](nft.md), DAO contract's are not standardized. Because of this, in this page we will use as
-reference the [Astra dao](https://near.org/astraplusplus.ndctools.near/widget/home?page=daos) [contract](https://github.com/near-daos/sputnik-dao-contract). The main concepts covered here should
+reference the [Astra dao](https://dev.near.org/astraplusplus.ndctools.near/widget/home?page=daos) [contract](https://github.com/near-daos/sputnik-dao-contract). The main concepts covered here should
 easily generalizable to other DAO implementations.
 
 ---
 
 ## Create a DAO
-The simplest way to create and interact with a DAO is to go through the [AstraDAO UI](https://near.org/astraplusplus.ndctools.near/widget/home?page=daos).
+The simplest way to create and interact with a DAO is to go through the [AstraDAO UI](https://dev.near.org/astraplusplus.ndctools.near/widget/home?page=daos).
 
 You can also create a DAO by interacting with the `sputnik-dao` contract.
 
@@ -165,4 +165,4 @@ These snippet will enable your users to cast a vote for proposal of a particular
 ## Additional Resources
 
 1. [AstroDAO UI](https://astrodao.com/) - the web app built on top of the Sputnik DAO Contract. Allows users to create and manage DAOs.
-2. [List of DAOs as a NEAR component](https://near.org/onboarder.near/widget/DAOSocialSearch)
+2. [List of DAOs as a NEAR component](https://dev.near.org/onboarder.near/widget/DAOSocialSearch)

@@ -129,7 +129,7 @@ Here are more sources from our ecosystem that can help you to learn more about N
 
 <div className="row cards">
   <div className="col col--6">
-    <a href="https://near.org/applications">
+    <a href="https://dev.near.org/applications">
       <div className="card">
         <div className="card__image">
           <img src={require("@site/static/docs/assets/welcome-pages/awesomenear.jpg").default} alt="Discover" />

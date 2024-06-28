@@ -13,7 +13,7 @@ In this article you'll learn how to set up the required components so you can de
 
 To set up the Blog post features on your [`near-discovery`](https://github.com/near/near-discovery/) gateway:
 
-1. Add the [`Blog.Feed`](https://near.org/near/widget/ComponentDetailsPage?src=near/widget/Blog.Feed) and [`BlogPostPage`](https://near.org/near/widget/ComponentDetailsPage?src=near/widget/BlogPostPage) components
+1. Add the [`Blog.Feed`](https://dev.near.org/near/widget/ComponentDetailsPage?src=near/widget/Blog.Feed) and [`BlogPostPage`](https://dev.near.org/near/widget/ComponentDetailsPage?src=near/widget/BlogPostPage) components
 2. Add `near/widget/Blog.Feed` and `near/widget/BlogPostPage` to your configuration
 
 <Tabs>
@@ -146,7 +146,7 @@ In this code example, only promoted blog posts from users `near` and `jacksonthe
 
 ### Promoting posts
 
-If you're using `near-discovery` you're all set, the <kbd>Promote</kbd> menu is already available using the [`v1.Posts.Feed`](https://near.org/near/widget/ComponentDetailsPage?src=near/widget/v1.Posts.Feed) component.
+If you're using `near-discovery` you're all set, the <kbd>Promote</kbd> menu is already available using the [`v1.Posts.Feed`](https://dev.near.org/near/widget/ComponentDetailsPage?src=near/widget/v1.Posts.Feed) component.
 
 If you're using a different gateway or your own custom feed, and you want to allow users to promote social messages into blog posts, you can integrate this `promoteToBlog` code snippet:
 
@@ -195,7 +195,7 @@ const promoteToBlog = () => {
 
 :::tip
 
-Check the [`Posts.Menu`](https://near.org/near/widget/ComponentDetailsPage?src=near/widget/Posts.Menu&tab=source) component for a complete implementation that includes a drop-down menu and a button to promote a blog post.
+Check the [`Posts.Menu`](https://dev.near.org/near/widget/ComponentDetailsPage?src=near/widget/Posts.Menu&tab=source) component for a complete implementation that includes a drop-down menu and a button to promote a blog post.
 
 :::
 
@@ -255,6 +255,6 @@ Adding a new blog post is simple. To publish a new blog post, you only need to:
 
 :::note
 
-You can find the published blog post example in [this link](https://near.org/near/widget/BlogPostPage?accountId=bucanero.near&blockHeight=117452680&returnLocation=/near/widget/ProfilePage?accountId=bucanero.near&tab=blog).
+You can find the published blog post example in [this link](https://dev.near.org/near/widget/BlogPostPage?accountId=bucanero.near&blockHeight=117452680&returnLocation=/near/widget/ProfilePage?accountId=bucanero.near&tab=blog).
 
 :::

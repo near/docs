@@ -161,7 +161,7 @@ return (
 
 :::tip
 
-You can check [this example](https://near.org/near/widget/ComponentDetailsPage?src=calebjacob.near/widget/IframeResizerTest) to see a complete component using Iframe Resizer.
+You can check [this example](https://dev.near.org/near/widget/ComponentDetailsPage?src=calebjacob.near/widget/IframeResizerTest) to see a complete component using Iframe Resizer.
 
 :::
 
