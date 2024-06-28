@@ -9,7 +9,11 @@ import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 import {ExplainCode, Block, File} from '@site/src/components/CodeExplainer/code-explainer';
 
-NEAR accounts store data for their contracts. The storage starts **empty** until a contract is deployed and the state is initialized. The contract's code and state are independent: updating the code does not erase the state.
+Smart contracts store data in their account's state, which is public on the chain. The storage starts **empty** until a contract is deployed and the state is initialized.
+
+It is important to know that the account's **code** and account's **storage** are **independent**. [Updating the code](../release/upgrade.md) does **not erase** the state.
+
+<hr class="subsection" />
 
 <ExplainCode languages="js,rust" >
 
@@ -41,19 +45,15 @@ NEAR accounts store data for their contracts. The storage starts **empty** until
 
 </Block>
 
-<Block highlights='{"rust": "4"}' fname="auction">
+<Block highlights='{"js":"", "rust": ""}' fname="auction" type='info'>
 
-    #### [*] Note
-    The `structs` that will be persisted need to be marked with a macro, so the SDK knows to [serialize them in Borsh](./serialization.md) before writing them to the state.
+:::warning
 
-</Block>
-
-<Block highlights='{"js":"", "rust": ""}' fname="auction">
-
-    #### [!] Important
-    Contracts pay for their storage by locking part of their balance.
+Contracts pay for their storage by locking part of their balance.
     
-    It currently costs ~**1Ⓝ** to store **100KB** of data.
+It currently costs ~**1Ⓝ** to store **100KB** of data.
+
+:::
 
 </Block>
 
@@ -80,10 +80,13 @@ NEAR accounts store data for their contracts. The storage starts **empty** until
 
 </Block>
 
-<Block highlights='{"js": "10-11"}' fname="auction">
+<Block highlights='{"js": "10-11"}' fname="auction" type='info'>
 
-    #### [!] Important
-    In TS/JS you still **must** set default values for the attributes, so the SDK can infer their types.
+:::warning
+
+In TS/JS you still **must** set default values for the attributes, so the SDK can infer their types.
+
+:::
 
 </Block>
 
@@ -135,14 +138,17 @@ NEAR accounts store data for their contracts. The storage starts **empty** until
 
 </Block>
 
-<Block highlights='{"js": "", "rust":""}' fname="hello">
+<Block highlights='{"js": "", "rust":""}' fname="hello" type='info'>
 
-    ### State and Code
-    In NEAR, the contract's code and contract's storage are **independent**.
+:::warning State and Code
+
+In NEAR, the contract's code and contract's storage are **independent**.
     
-    Updating the code of a contract does **not erase** the state, and can indeed lead to unexpected behavior or errors.
+Updating the code of a contract does **not erase** the state, and can indeed lead to unexpected behavior or errors.
 
-    Make sure to read the [updating a contract](../release/upgrade.md) if you run into issues.
+Make sure to read the [updating a contract](../release/upgrade.md) if you run into issues.
+
+:::
 
 </Block>
 

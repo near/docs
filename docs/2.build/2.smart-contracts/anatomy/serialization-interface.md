@@ -1,11 +1,11 @@
 ---
-sidebar_position: 5
+id: serialization-protocols
+title: Serialization Protocols
 ---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {Github} from "@site/src/components/codetabs";
-
-# Serialization Protocols
 
 Serialization formats within the SDK define how data structures are translated into bytes which are needed for passing data into methods of the smart contract or storing data in state. For the case of method parameters, [JSON](https://www.json.org/json-en.html) (default) and [Borsh](https://borsh.io/) are supported with the SDK and for storing data on-chain Borsh is used.
 

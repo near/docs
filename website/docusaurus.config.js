@@ -104,6 +104,7 @@ const config = {
         'go',
         'typescript',
         'jsx',
+        'bash',
       ],
     },
     colorMode: {
@@ -157,7 +158,7 @@ const config = {
               value: '<hr/> <small class="subtitle"> Essentials </small>',
             },
             { label: 'NEAR API', href: '/tools/near-api-js/quick-reference' },
-            { label: 'NEAR SDK', href: '/sdk/welcome' },
+            { label: 'NEAR SDK', href: '/tools/sdk' },
             { label: 'NEAR CLI', href: '/tools/near-cli' },
             {
               type: 'html',
