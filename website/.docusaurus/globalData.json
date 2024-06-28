@@ -665,8 +665,23 @@
               "sidebar": "build"
             },
             {
+              "id": "build/smart-contracts/anatomy/reduce-size",
+              "path": "/zh-CN/build/smart-contracts/anatomy/reduce-size",
+              "sidebar": "build"
+            },
+            {
+              "id": "build/smart-contracts/anatomy/reproducible-builds",
+              "path": "/zh-CN/build/smart-contracts/anatomy/reproducible-builds",
+              "sidebar": "build"
+            },
+            {
               "id": "build/smart-contracts/anatomy/serialization",
               "path": "/zh-CN/build/smart-contracts/anatomy/serialization",
+              "sidebar": "build"
+            },
+            {
+              "id": "build/smart-contracts/anatomy/serialization-protocols",
+              "path": "/zh-CN/build/smart-contracts/anatomy/serialization-protocols",
               "sidebar": "build"
             },
             {
@@ -945,11 +960,6 @@
               "sidebar": "concepts"
             },
             {
-              "id": "concepts/storage/data-storage",
-              "path": "/zh-CN/concepts/storage/data-storage",
-              "sidebar": "concepts"
-            },
-            {
               "id": "concepts/storage/storage-solutions",
               "path": "/zh-CN/concepts/storage/storage-solutions",
               "sidebar": "concepts"
@@ -1084,220 +1094,6 @@
               "sidebar": "pagoda"
             },
             {
-              "id": "sdk/js/building/basics",
-              "path": "/zh-CN/sdk/js/building/basics",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/js/building/prototyping",
-              "path": "/zh-CN/sdk/js/building/prototyping",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/js/building/reproducible-builds",
-              "path": "/zh-CN/sdk/js/building/reproducible-builds",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/js/cli/cli",
-              "path": "/zh-CN/sdk/js/cli/",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/js/contract-interface/payable-methods",
-              "path": "/zh-CN/sdk/js/contract-interface/payable-methods",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/js/contract-interface/private-methods",
-              "path": "/zh-CN/sdk/js/contract-interface/private-methods",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/js/contract-interface/public-methods",
-              "path": "/zh-CN/sdk/js/contract-interface/public-methods",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/js/contract-structure/collections",
-              "path": "/zh-CN/sdk/js/contract-structure/collections",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/js/contract-structure/near-bindgen",
-              "path": "/zh-CN/sdk/js/contract-structure/near-bindgen",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/js/contract-structure/nesting",
-              "path": "/zh-CN/sdk/js/contract-structure/nesting"
-            },
-            {
-              "id": "sdk/js/cross-contract/callbacks",
-              "path": "/zh-CN/sdk/js/cross-contract/callbacks",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/js/get-started",
-              "path": "/zh-CN/sdk/js/get-started",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/js/introduction",
-              "path": "/zh-CN/sdk/js/introduction",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/js/promises/create-account",
-              "path": "/zh-CN/sdk/js/promises/create-account",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/js/promises/deploy-contract",
-              "path": "/zh-CN/sdk/js/promises/deploy-contract",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/js/promises/intro",
-              "path": "/zh-CN/sdk/js/promises/intro",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/js/promises/token-tx",
-              "path": "/zh-CN/sdk/js/promises/token-tx",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/js/testing/integration-tests",
-              "path": "/zh-CN/sdk/js/testing/integration-tests",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/js/testing/unit-tests",
-              "path": "/zh-CN/sdk/js/testing/unit-tests",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/rust/best-practices",
-              "path": "/zh-CN/sdk/rust/best-practices",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/rust/building/basics",
-              "path": "/zh-CN/sdk/rust/building/basics",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/rust/building/post-processing",
-              "path": "/zh-CN/sdk/rust/building/post-processing",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/rust/building/prototyping",
-              "path": "/zh-CN/sdk/rust/building/prototyping",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/rust/building/reproducible-builds",
-              "path": "/zh-CN/sdk/rust/building/reproducible-builds",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/rust/contract-interface/contract-mutability",
-              "path": "/zh-CN/sdk/rust/contract-interface/contract-mutability",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/rust/contract-interface/payable-methods",
-              "path": "/zh-CN/sdk/rust/contract-interface/payable-methods",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/rust/contract-interface/private-methods",
-              "path": "/zh-CN/sdk/rust/contract-interface/private-methods",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/rust/contract-interface/public-methods",
-              "path": "/zh-CN/sdk/rust/contract-interface/public-methods",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/rust/contract-interface/serialization-interface",
-              "path": "/zh-CN/sdk/rust/contract-interface/serialization-interface",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/rust/contract-size",
-              "path": "/zh-CN/sdk/rust/contract-size",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/rust/contract-structure/collections",
-              "path": "/zh-CN/sdk/rust/contract-structure/collections",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/rust/contract-structure/near-bindgen",
-              "path": "/zh-CN/sdk/rust/contract-structure/near-bindgen",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/rust/contract-structure/nesting",
-              "path": "/zh-CN/sdk/rust/contract-structure/nesting",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/rust/cross-contract/callbacks",
-              "path": "/zh-CN/sdk/rust/cross-contract/callbacks",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/rust/get-started",
-              "path": "/zh-CN/sdk/rust/get-started",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/rust/introduction",
-              "path": "/zh-CN/sdk/rust/introduction",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/rust/promises/create-account",
-              "path": "/zh-CN/sdk/rust/promises/create-account",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/rust/promises/deploy-contract",
-              "path": "/zh-CN/sdk/rust/promises/deploy-contract",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/rust/promises/intro",
-              "path": "/zh-CN/sdk/rust/promises/intro",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/rust/promises/token-tx",
-              "path": "/zh-CN/sdk/rust/promises/token-tx",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/rust/testing/integration-tests",
-              "path": "/zh-CN/sdk/rust/testing/integration-tests",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/rust/testing/unit-tests",
-              "path": "/zh-CN/sdk/rust/testing/unit-tests",
-              "sidebar": "tools"
-            },
-            {
-              "id": "sdk/welcome",
-              "path": "/zh-CN/sdk/welcome",
-              "sidebar": "tools"
-            },
-            {
               "id": "tools/explorer",
               "path": "/zh-CN/tools/explorer",
               "sidebar": "tools"
@@ -1354,6 +1150,11 @@
             {
               "id": "tools/near-cli-rs",
               "path": "/zh-CN/tools/near-cli-rs",
+              "sidebar": "tools"
+            },
+            {
+              "id": "tools/sdk",
+              "path": "/zh-CN/tools/sdk",
               "sidebar": "tools"
             },
             {

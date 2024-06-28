@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/anatomy/types.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Damián Parrino",
-  "lastUpdatedAt": 1718326181000,
+  "lastUpdatedBy": "Guille",
+  "lastUpdatedAt": 1719586643000,
   "frontMatter": {
     "id": "types",
     "title": "SDK Types",
@@ -20,11 +20,11 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "External Interface",
-    "permalink": "/build/smart-contracts/anatomy/functions"
+    "title": "State (Storage)",
+    "permalink": "/build/smart-contracts/anatomy/storage"
   },
   "next": {
-    "title": "Environment",
-    "permalink": "/build/smart-contracts/anatomy/environment"
+    "title": "Collections",
+    "permalink": "/build/smart-contracts/anatomy/collections"
   }
 }

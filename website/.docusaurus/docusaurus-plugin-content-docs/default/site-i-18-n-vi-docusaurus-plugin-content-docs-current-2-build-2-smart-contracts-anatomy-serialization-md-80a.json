@@ -23,7 +23,7 @@
     "permalink": "/vi/build/smart-contracts/security/checklist"
   },
   "next": {
-    "title": "Introduction",
-    "permalink": "/vi/build/smart-contracts/testing/introduction"
+    "title": "Serialization Protocols",
+    "permalink": "/vi/build/smart-contracts/anatomy/serialization-protocols"
   }
 }

@@ -12,18 +12,18 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Guille",
-  "lastUpdatedAt": 1715263781000,
+  "lastUpdatedAt": 1719586643000,
   "frontMatter": {
     "id": "environment",
     "title": "Environment"
   },
   "sidebar": "build",
   "previous": {
-    "title": "SDK Types",
-    "permalink": "/build/smart-contracts/anatomy/types"
+    "title": "Collections",
+    "permalink": "/build/smart-contracts/anatomy/collections"
   },
   "next": {
-    "title": "Data Structures",
-    "permalink": "/build/smart-contracts/anatomy/collections"
+    "title": "Transfers & Actions",
+    "permalink": "/build/smart-contracts/anatomy/actions"
   }
 }

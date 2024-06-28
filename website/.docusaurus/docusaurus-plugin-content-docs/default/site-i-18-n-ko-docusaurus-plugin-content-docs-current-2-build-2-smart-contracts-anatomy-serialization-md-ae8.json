@@ -23,7 +23,7 @@
     "permalink": "/ko/build/smart-contracts/security/checklist"
   },
   "next": {
-    "title": "소개",
-    "permalink": "/ko/build/smart-contracts/testing/introduction"
+    "title": "Serialization Protocols",
+    "permalink": "/ko/build/smart-contracts/anatomy/serialization-protocols"
   }
 }

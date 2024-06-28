@@ -1,7 +1,7 @@
 {
   "id": "build/smart-contracts/anatomy/storage",
   "title": "State",
-  "description": "NEAR accounts store data for their contracts. The storage starts empty until a contract is deployed and the state is initialized. The contract's code and state are independent: updating the code does not erase the state.",
+  "description": "Smart contracts store data in their account's state, which is public on the chain. The storage starts empty until a contract is deployed and the state is initialized.",
   "source": "@site/../docs/2.build/2.smart-contracts/anatomy/storage.md",
   "sourceDirName": "2.build/2.smart-contracts/anatomy",
   "slug": "/build/smart-contracts/anatomy/storage",
@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/anatomy/storage.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Damián Parrino",
-  "lastUpdatedAt": 1718326181000,
+  "lastUpdatedBy": "Guille",
+  "lastUpdatedAt": 1719586643000,
   "frontMatter": {
     "id": "storage",
     "title": "State",
@@ -21,11 +21,11 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Basic Anatomy",
-    "permalink": "/build/smart-contracts/anatomy/"
-  },
-  "next": {
     "title": "External Interface",
     "permalink": "/build/smart-contracts/anatomy/functions"
+  },
+  "next": {
+    "title": "SDK Types",
+    "permalink": "/build/smart-contracts/anatomy/types"
   }
 }

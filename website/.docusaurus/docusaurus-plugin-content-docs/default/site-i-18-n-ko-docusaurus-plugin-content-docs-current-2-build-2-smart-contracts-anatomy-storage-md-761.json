@@ -21,11 +21,11 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Basic Anatomy",
-    "permalink": "/ko/build/smart-contracts/anatomy/"
-  },
-  "next": {
     "title": "External Interface",
     "permalink": "/ko/build/smart-contracts/anatomy/functions"
+  },
+  "next": {
+    "title": "SDK Types",
+    "permalink": "/ko/build/smart-contracts/anatomy/types"
   }
 }

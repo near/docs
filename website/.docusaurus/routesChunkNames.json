@@ -170,17 +170,17 @@
       "plugin": "c141421f"
     }
   },
-  "/zh-CN/-ee5": {
+  "/zh-CN/-72e": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "aba21aa0"
     }
   },
-  "/zh-CN/-cdb": {
+  "/zh-CN/-f77": {
     "__comp": "a7bd4aaa",
     "__props": "2d9c5935"
   },
-  "/zh-CN/-37b": {
+  "/zh-CN/-7d2": {
     "__comp": "a94703ab"
   },
   "/zh-CN/api/rpc/access-keys-bbb": {
@@ -763,9 +763,21 @@
     "__comp": "17896441",
     "content": "91ed327c"
   },
+  "/zh-CN/build/smart-contracts/anatomy/reduce-size-f5d": {
+    "__comp": "17896441",
+    "content": "3493b930"
+  },
+  "/zh-CN/build/smart-contracts/anatomy/reproducible-builds-368": {
+    "__comp": "17896441",
+    "content": "70fa851f"
+  },
   "/zh-CN/build/smart-contracts/anatomy/serialization-776": {
     "__comp": "17896441",
     "content": "28938dcf"
+  },
+  "/zh-CN/build/smart-contracts/anatomy/serialization-protocols-4f5": {
+    "__comp": "17896441",
+    "content": "9065d938"
   },
   "/zh-CN/build/smart-contracts/anatomy/storage-5e9": {
     "__comp": "17896441",
@@ -987,10 +999,6 @@
     "__comp": "17896441",
     "content": "195b6fb6"
   },
-  "/zh-CN/concepts/storage/data-storage-da4": {
-    "__comp": "17896441",
-    "content": "dc905a8e"
-  },
   "/zh-CN/concepts/storage/storage-solutions-25e": {
     "__comp": "17896441",
     "content": "697d885f"
@@ -1099,178 +1107,6 @@
     "__comp": "17896441",
     "content": "e1802932"
   },
-  "/zh-CN/sdk/js/building/basics-4e7": {
-    "__comp": "17896441",
-    "content": "f532b1f1"
-  },
-  "/zh-CN/sdk/js/building/prototyping-939": {
-    "__comp": "17896441",
-    "content": "97073150"
-  },
-  "/zh-CN/sdk/js/building/reproducible-builds-9f2": {
-    "__comp": "17896441",
-    "content": "473cb798"
-  },
-  "/zh-CN/sdk/js/cli/-423": {
-    "__comp": "17896441",
-    "content": "71467c92"
-  },
-  "/zh-CN/sdk/js/contract-interface/payable-methods-ae2": {
-    "__comp": "17896441",
-    "content": "8383e9db"
-  },
-  "/zh-CN/sdk/js/contract-interface/private-methods-432": {
-    "__comp": "17896441",
-    "content": "6a8702b7"
-  },
-  "/zh-CN/sdk/js/contract-interface/public-methods-904": {
-    "__comp": "17896441",
-    "content": "833d2d0f"
-  },
-  "/zh-CN/sdk/js/contract-structure/collections-310": {
-    "__comp": "17896441",
-    "content": "384de2bd"
-  },
-  "/zh-CN/sdk/js/contract-structure/near-bindgen-ad2": {
-    "__comp": "17896441",
-    "content": "6e38bd25"
-  },
-  "/zh-CN/sdk/js/contract-structure/nesting-fa1": {
-    "__comp": "17896441",
-    "content": "9d48124e"
-  },
-  "/zh-CN/sdk/js/cross-contract/callbacks-6e7": {
-    "__comp": "17896441",
-    "content": "153aaf32"
-  },
-  "/zh-CN/sdk/js/get-started-0cd": {
-    "__comp": "17896441",
-    "content": "7cea41b8"
-  },
-  "/zh-CN/sdk/js/introduction-03e": {
-    "__comp": "17896441",
-    "content": "bc40895c"
-  },
-  "/zh-CN/sdk/js/promises/create-account-190": {
-    "__comp": "17896441",
-    "content": "1367c9b9"
-  },
-  "/zh-CN/sdk/js/promises/deploy-contract-eff": {
-    "__comp": "17896441",
-    "content": "368bc0db"
-  },
-  "/zh-CN/sdk/js/promises/intro-cef": {
-    "__comp": "17896441",
-    "content": "bd577fc3"
-  },
-  "/zh-CN/sdk/js/promises/token-tx-653": {
-    "__comp": "17896441",
-    "content": "20726292"
-  },
-  "/zh-CN/sdk/js/testing/integration-tests-aff": {
-    "__comp": "17896441",
-    "content": "38e3cad5"
-  },
-  "/zh-CN/sdk/js/testing/unit-tests-ec5": {
-    "__comp": "17896441",
-    "content": "e2afb47c"
-  },
-  "/zh-CN/sdk/rust/best-practices-44d": {
-    "__comp": "17896441",
-    "content": "3849db8b"
-  },
-  "/zh-CN/sdk/rust/building/basics-205": {
-    "__comp": "17896441",
-    "content": "d1f367e8"
-  },
-  "/zh-CN/sdk/rust/building/post-processing-3f2": {
-    "__comp": "17896441",
-    "content": "5093a03b"
-  },
-  "/zh-CN/sdk/rust/building/prototyping-b6d": {
-    "__comp": "17896441",
-    "content": "c8ab2732"
-  },
-  "/zh-CN/sdk/rust/building/reproducible-builds-c05": {
-    "__comp": "17896441",
-    "content": "44991ac0"
-  },
-  "/zh-CN/sdk/rust/contract-interface/contract-mutability-fd3": {
-    "__comp": "17896441",
-    "content": "93bc11fe"
-  },
-  "/zh-CN/sdk/rust/contract-interface/payable-methods-305": {
-    "__comp": "17896441",
-    "content": "92b137dd"
-  },
-  "/zh-CN/sdk/rust/contract-interface/private-methods-8d9": {
-    "__comp": "17896441",
-    "content": "92e0bc45"
-  },
-  "/zh-CN/sdk/rust/contract-interface/public-methods-230": {
-    "__comp": "17896441",
-    "content": "a18f1c1f"
-  },
-  "/zh-CN/sdk/rust/contract-interface/serialization-interface-3dd": {
-    "__comp": "17896441",
-    "content": "80f3ce99"
-  },
-  "/zh-CN/sdk/rust/contract-size-df0": {
-    "__comp": "17896441",
-    "content": "b3dc23e1"
-  },
-  "/zh-CN/sdk/rust/contract-structure/collections-31e": {
-    "__comp": "17896441",
-    "content": "e80c9d49"
-  },
-  "/zh-CN/sdk/rust/contract-structure/near-bindgen-28c": {
-    "__comp": "17896441",
-    "content": "eeec2535"
-  },
-  "/zh-CN/sdk/rust/contract-structure/nesting-c66": {
-    "__comp": "17896441",
-    "content": "a1e76c8d"
-  },
-  "/zh-CN/sdk/rust/cross-contract/callbacks-3d7": {
-    "__comp": "17896441",
-    "content": "db00b7d2"
-  },
-  "/zh-CN/sdk/rust/get-started-f2e": {
-    "__comp": "17896441",
-    "content": "3cfb3cb7"
-  },
-  "/zh-CN/sdk/rust/introduction-7e9": {
-    "__comp": "17896441",
-    "content": "1cf24a29"
-  },
-  "/zh-CN/sdk/rust/promises/create-account-8a1": {
-    "__comp": "17896441",
-    "content": "d8a8f541"
-  },
-  "/zh-CN/sdk/rust/promises/deploy-contract-3a3": {
-    "__comp": "17896441",
-    "content": "d1e0cfc3"
-  },
-  "/zh-CN/sdk/rust/promises/intro-50c": {
-    "__comp": "17896441",
-    "content": "ef0db835"
-  },
-  "/zh-CN/sdk/rust/promises/token-tx-163": {
-    "__comp": "17896441",
-    "content": "e67830df"
-  },
-  "/zh-CN/sdk/rust/testing/integration-tests-e99": {
-    "__comp": "17896441",
-    "content": "362ff4f5"
-  },
-  "/zh-CN/sdk/rust/testing/unit-tests-83b": {
-    "__comp": "17896441",
-    "content": "88994b2a"
-  },
-  "/zh-CN/sdk/welcome-7bf": {
-    "__comp": "17896441",
-    "content": "70f10e79"
-  },
   "/zh-CN/tools/explorer-4f3": {
     "__comp": "17896441",
     "content": "d5edbf82"
@@ -1318,6 +1154,10 @@
   "/zh-CN/tools/near-cli-rs-c9b": {
     "__comp": "17896441",
     "content": "798262f1"
+  },
+  "/zh-CN/tools/sdk-cc3": {
+    "__comp": "17896441",
+    "content": "bf964fbb"
   },
   "/zh-CN/tools/wallet-selector-6f4": {
     "__comp": "17896441",

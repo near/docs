@@ -74,15 +74,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', 'ee5'),
+    component: ComponentCreator('/zh-CN/', '72e'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', 'cdb'),
+        component: ComponentCreator('/zh-CN/', 'f77'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '37b'),
+            component: ComponentCreator('/zh-CN/', '7d2'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -884,8 +884,26 @@ export default [
                 sidebar: "build"
               },
               {
+                path: '/zh-CN/build/smart-contracts/anatomy/reduce-size',
+                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/reduce-size', 'f5d'),
+                exact: true,
+                sidebar: "build"
+              },
+              {
+                path: '/zh-CN/build/smart-contracts/anatomy/reproducible-builds',
+                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/reproducible-builds', '368'),
+                exact: true,
+                sidebar: "build"
+              },
+              {
                 path: '/zh-CN/build/smart-contracts/anatomy/serialization',
                 component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/serialization', '776'),
+                exact: true,
+                sidebar: "build"
+              },
+              {
+                path: '/zh-CN/build/smart-contracts/anatomy/serialization-protocols',
+                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/serialization-protocols', '4f5'),
                 exact: true,
                 sidebar: "build"
               },
@@ -1220,12 +1238,6 @@ export default [
                 sidebar: "concepts"
               },
               {
-                path: '/zh-CN/concepts/storage/data-storage',
-                component: ComponentCreator('/zh-CN/concepts/storage/data-storage', 'da4'),
-                exact: true,
-                sidebar: "concepts"
-              },
-              {
                 path: '/zh-CN/concepts/storage/storage-solutions',
                 component: ComponentCreator('/zh-CN/concepts/storage/storage-solutions', '25e'),
                 exact: true,
@@ -1387,263 +1399,6 @@ export default [
                 sidebar: "pagoda"
               },
               {
-                path: '/zh-CN/sdk/js/building/basics',
-                component: ComponentCreator('/zh-CN/sdk/js/building/basics', '4e7'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/js/building/prototyping',
-                component: ComponentCreator('/zh-CN/sdk/js/building/prototyping', '939'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/js/building/reproducible-builds',
-                component: ComponentCreator('/zh-CN/sdk/js/building/reproducible-builds', '9f2'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/js/cli/',
-                component: ComponentCreator('/zh-CN/sdk/js/cli/', '423'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/js/contract-interface/payable-methods',
-                component: ComponentCreator('/zh-CN/sdk/js/contract-interface/payable-methods', 'ae2'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/js/contract-interface/private-methods',
-                component: ComponentCreator('/zh-CN/sdk/js/contract-interface/private-methods', '432'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/js/contract-interface/public-methods',
-                component: ComponentCreator('/zh-CN/sdk/js/contract-interface/public-methods', '904'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/js/contract-structure/collections',
-                component: ComponentCreator('/zh-CN/sdk/js/contract-structure/collections', '310'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/js/contract-structure/near-bindgen',
-                component: ComponentCreator('/zh-CN/sdk/js/contract-structure/near-bindgen', 'ad2'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/js/contract-structure/nesting',
-                component: ComponentCreator('/zh-CN/sdk/js/contract-structure/nesting', 'fa1'),
-                exact: true
-              },
-              {
-                path: '/zh-CN/sdk/js/cross-contract/callbacks',
-                component: ComponentCreator('/zh-CN/sdk/js/cross-contract/callbacks', '6e7'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/js/get-started',
-                component: ComponentCreator('/zh-CN/sdk/js/get-started', '0cd'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/js/introduction',
-                component: ComponentCreator('/zh-CN/sdk/js/introduction', '03e'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/js/promises/create-account',
-                component: ComponentCreator('/zh-CN/sdk/js/promises/create-account', '190'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/js/promises/deploy-contract',
-                component: ComponentCreator('/zh-CN/sdk/js/promises/deploy-contract', 'eff'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/js/promises/intro',
-                component: ComponentCreator('/zh-CN/sdk/js/promises/intro', 'cef'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/js/promises/token-tx',
-                component: ComponentCreator('/zh-CN/sdk/js/promises/token-tx', '653'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/js/testing/integration-tests',
-                component: ComponentCreator('/zh-CN/sdk/js/testing/integration-tests', 'aff'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/js/testing/unit-tests',
-                component: ComponentCreator('/zh-CN/sdk/js/testing/unit-tests', 'ec5'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/rust/best-practices',
-                component: ComponentCreator('/zh-CN/sdk/rust/best-practices', '44d'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/rust/building/basics',
-                component: ComponentCreator('/zh-CN/sdk/rust/building/basics', '205'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/rust/building/post-processing',
-                component: ComponentCreator('/zh-CN/sdk/rust/building/post-processing', '3f2'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/rust/building/prototyping',
-                component: ComponentCreator('/zh-CN/sdk/rust/building/prototyping', 'b6d'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/rust/building/reproducible-builds',
-                component: ComponentCreator('/zh-CN/sdk/rust/building/reproducible-builds', 'c05'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/rust/contract-interface/contract-mutability',
-                component: ComponentCreator('/zh-CN/sdk/rust/contract-interface/contract-mutability', 'fd3'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/rust/contract-interface/payable-methods',
-                component: ComponentCreator('/zh-CN/sdk/rust/contract-interface/payable-methods', '305'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/rust/contract-interface/private-methods',
-                component: ComponentCreator('/zh-CN/sdk/rust/contract-interface/private-methods', '8d9'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/rust/contract-interface/public-methods',
-                component: ComponentCreator('/zh-CN/sdk/rust/contract-interface/public-methods', '230'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/rust/contract-interface/serialization-interface',
-                component: ComponentCreator('/zh-CN/sdk/rust/contract-interface/serialization-interface', '3dd'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/rust/contract-size',
-                component: ComponentCreator('/zh-CN/sdk/rust/contract-size', 'df0'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/rust/contract-structure/collections',
-                component: ComponentCreator('/zh-CN/sdk/rust/contract-structure/collections', '31e'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/rust/contract-structure/near-bindgen',
-                component: ComponentCreator('/zh-CN/sdk/rust/contract-structure/near-bindgen', '28c'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/rust/contract-structure/nesting',
-                component: ComponentCreator('/zh-CN/sdk/rust/contract-structure/nesting', 'c66'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/rust/cross-contract/callbacks',
-                component: ComponentCreator('/zh-CN/sdk/rust/cross-contract/callbacks', '3d7'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/rust/get-started',
-                component: ComponentCreator('/zh-CN/sdk/rust/get-started', 'f2e'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/rust/introduction',
-                component: ComponentCreator('/zh-CN/sdk/rust/introduction', '7e9'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/rust/promises/create-account',
-                component: ComponentCreator('/zh-CN/sdk/rust/promises/create-account', '8a1'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/rust/promises/deploy-contract',
-                component: ComponentCreator('/zh-CN/sdk/rust/promises/deploy-contract', '3a3'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/rust/promises/intro',
-                component: ComponentCreator('/zh-CN/sdk/rust/promises/intro', '50c'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/rust/promises/token-tx',
-                component: ComponentCreator('/zh-CN/sdk/rust/promises/token-tx', '163'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/rust/testing/integration-tests',
-                component: ComponentCreator('/zh-CN/sdk/rust/testing/integration-tests', 'e99'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/rust/testing/unit-tests',
-                component: ComponentCreator('/zh-CN/sdk/rust/testing/unit-tests', '83b'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/sdk/welcome',
-                component: ComponentCreator('/zh-CN/sdk/welcome', '7bf'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
                 path: '/zh-CN/tools/explorer',
                 component: ComponentCreator('/zh-CN/tools/explorer', '4f3'),
                 exact: true,
@@ -1711,6 +1466,12 @@ export default [
               {
                 path: '/zh-CN/tools/near-cli-rs',
                 component: ComponentCreator('/zh-CN/tools/near-cli-rs', 'c9b'),
+                exact: true,
+                sidebar: "tools"
+              },
+              {
+                path: '/zh-CN/tools/sdk',
+                component: ComponentCreator('/zh-CN/tools/sdk', 'cc3'),
                 exact: true,
                 sidebar: "tools"
               },

@@ -127,7 +127,8 @@ export default {
         "ruby",
         "go",
         "typescript",
-        "jsx"
+        "jsx",
+        "bash"
       ],
       "theme": {
         "plain": {
@@ -332,7 +333,7 @@ export default {
             },
             {
               "label": "NEAR SDK",
-              "href": "/sdk/welcome"
+              "href": "/tools/sdk"
             },
             {
               "label": "NEAR CLI",

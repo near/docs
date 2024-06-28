@@ -24,7 +24,7 @@
     "permalink": "/vi/build/smart-contracts/quickstart"
   },
   "next": {
-    "title": "State (Storage)",
-    "permalink": "/vi/build/smart-contracts/anatomy/storage"
+    "title": "External Interface",
+    "permalink": "/vi/build/smart-contracts/anatomy/functions"
   }
 }

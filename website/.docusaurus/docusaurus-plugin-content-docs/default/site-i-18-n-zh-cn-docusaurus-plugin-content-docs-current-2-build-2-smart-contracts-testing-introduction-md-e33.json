@@ -19,8 +19,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Notes on Serialization",
-    "permalink": "/zh-CN/build/smart-contracts/anatomy/serialization"
+    "title": "Reproducible Builds",
+    "permalink": "/zh-CN/build/smart-contracts/anatomy/reproducible-builds"
   },
   "next": {
     "title": "Unit Testing",

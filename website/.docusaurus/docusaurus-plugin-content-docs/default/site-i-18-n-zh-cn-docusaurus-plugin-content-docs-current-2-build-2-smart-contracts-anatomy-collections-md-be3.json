@@ -19,11 +19,11 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Environment",
-    "permalink": "/zh-CN/build/smart-contracts/anatomy/environment"
+    "title": "SDK Types",
+    "permalink": "/zh-CN/build/smart-contracts/anatomy/types"
   },
   "next": {
-    "title": "Transfers & Actions",
-    "permalink": "/zh-CN/build/smart-contracts/anatomy/actions"
+    "title": "Environment",
+    "permalink": "/zh-CN/build/smart-contracts/anatomy/environment"
   }
 }

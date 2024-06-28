@@ -20,8 +20,8 @@
   },
   "sidebar": "concepts",
   "previous": {
-    "title": "Storage on NEAR",
-    "permalink": "/concepts/storage/data-storage"
+    "title": "Avoiding Token Loss",
+    "permalink": "/concepts/basics/token-loss"
   },
   "next": {
     "title": "Alternative Solutions",

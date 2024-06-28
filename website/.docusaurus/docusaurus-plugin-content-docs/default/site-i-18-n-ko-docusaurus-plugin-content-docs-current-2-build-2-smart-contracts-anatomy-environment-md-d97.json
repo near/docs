@@ -19,11 +19,11 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "SDK Types",
-    "permalink": "/ko/build/smart-contracts/anatomy/types"
-  },
-  "next": {
     "title": "Data Structures",
     "permalink": "/ko/build/smart-contracts/anatomy/collections"
+  },
+  "next": {
+    "title": "전송 & Action",
+    "permalink": "/ko/build/smart-contracts/anatomy/actions"
   }
 }

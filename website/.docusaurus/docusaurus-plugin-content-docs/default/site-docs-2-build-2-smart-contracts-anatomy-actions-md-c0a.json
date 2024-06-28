@@ -11,16 +11,16 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/anatomy/actions.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Jeremy Bokobza",
-  "lastUpdatedAt": 1717616263000,
+  "lastUpdatedBy": "Guille",
+  "lastUpdatedAt": 1719586643000,
   "frontMatter": {
     "id": "actions",
     "title": "Transfers & Actions"
   },
   "sidebar": "build",
   "previous": {
-    "title": "Data Structures",
-    "permalink": "/build/smart-contracts/anatomy/collections"
+    "title": "Environment",
+    "permalink": "/build/smart-contracts/anatomy/environment"
   },
   "next": {
     "title": "Cross-Contract Calls",

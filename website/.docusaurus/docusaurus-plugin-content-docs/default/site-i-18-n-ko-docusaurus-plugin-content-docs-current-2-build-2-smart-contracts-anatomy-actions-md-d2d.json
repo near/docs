@@ -19,8 +19,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Data Structures",
-    "permalink": "/ko/build/smart-contracts/anatomy/collections"
+    "title": "환경",
+    "permalink": "/ko/build/smart-contracts/anatomy/environment"
   },
   "next": {
     "title": "교차 컨트랙트 호출",

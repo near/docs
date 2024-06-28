@@ -19,8 +19,8 @@
   },
   "sidebar": "tools",
   "previous": {
-    "title": "단위 테스트(Unit Test)",
-    "permalink": "/ko/sdk/js/testing/unit-tests"
+    "title": "NEAR SDK",
+    "permalink": "/ko/tools/sdk"
   },
   "next": {
     "title": "NEAR CLI RS",

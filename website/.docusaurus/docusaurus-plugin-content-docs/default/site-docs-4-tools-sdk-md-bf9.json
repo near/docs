@@ -1,0 +1,30 @@
+{
+  "id": "tools/sdk",
+  "title": "NEAR SDK",
+  "description": "The NEAR SDK is a library that allow to develop smart contracts. Currently, there exist two versions of NEAR SDK: one for Rust and one for JavaScript.",
+  "source": "@site/../docs/4.tools/sdk.md",
+  "sourceDirName": "4.tools",
+  "slug": "/tools/sdk",
+  "permalink": "/zh-CN/tools/sdk",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/4.tools/sdk.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Guille",
+  "lastUpdatedAt": 1719586643000,
+  "frontMatter": {
+    "id": "sdk",
+    "title": "NEAR SDK",
+    "hide_table_of_contents": false
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "FAQ",
+    "permalink": "/zh-CN/tools/near-api-js/faq"
+  },
+  "next": {
+    "title": "NEAR CLI",
+    "permalink": "/zh-CN/tools/near-cli"
+  }
+}

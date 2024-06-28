@@ -19,8 +19,8 @@
   },
   "sidebar": "tools",
   "previous": {
-    "title": "Unit Tests",
-    "permalink": "/vi/sdk/js/testing/unit-tests"
+    "title": "NEAR SDK",
+    "permalink": "/vi/tools/sdk"
   },
   "next": {
     "title": "NEAR CLI RS",

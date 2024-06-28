@@ -20,8 +20,8 @@
   },
   "sidebar": "concepts",
   "previous": {
-    "title": "Storage trên NEAR",
-    "permalink": "/vi/concepts/storage/data-storage"
+    "title": "Avoiding Token Loss",
+    "permalink": "/vi/concepts/basics/token-loss"
   },
   "next": {
     "title": "Các giải pháp thay thế",

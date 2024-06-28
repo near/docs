@@ -20,11 +20,11 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "External Interface",
-    "permalink": "/ko/build/smart-contracts/anatomy/functions"
+    "title": "State (Storage)",
+    "permalink": "/ko/build/smart-contracts/anatomy/storage"
   },
   "next": {
-    "title": "환경",
-    "permalink": "/ko/build/smart-contracts/anatomy/environment"
+    "title": "Data Structures",
+    "permalink": "/ko/build/smart-contracts/anatomy/collections"
   }
 }

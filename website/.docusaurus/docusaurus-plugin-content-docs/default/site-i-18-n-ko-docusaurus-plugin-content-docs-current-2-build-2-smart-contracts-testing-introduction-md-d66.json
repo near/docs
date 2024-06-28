@@ -19,8 +19,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "직렬화에 대한 참고 사항",
-    "permalink": "/ko/build/smart-contracts/anatomy/serialization"
+    "title": "Reproducible Builds",
+    "permalink": "/ko/build/smart-contracts/anatomy/reproducible-builds"
   },
   "next": {
     "title": "단위 테스트(Unit Testing)",

@@ -20,11 +20,11 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "State (Storage)",
-    "permalink": "/ko/build/smart-contracts/anatomy/storage"
+    "title": "Basic Anatomy",
+    "permalink": "/ko/build/smart-contracts/anatomy/"
   },
   "next": {
-    "title": "SDK Types",
-    "permalink": "/ko/build/smart-contracts/anatomy/types"
+    "title": "State (Storage)",
+    "permalink": "/ko/build/smart-contracts/anatomy/storage"
   }
 }

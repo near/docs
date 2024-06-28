@@ -19,11 +19,11 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "환경",
-    "permalink": "/ko/build/smart-contracts/anatomy/environment"
+    "title": "SDK Types",
+    "permalink": "/ko/build/smart-contracts/anatomy/types"
   },
   "next": {
-    "title": "전송 & Action",
-    "permalink": "/ko/build/smart-contracts/anatomy/actions"
+    "title": "환경",
+    "permalink": "/ko/build/smart-contracts/anatomy/environment"
   }
 }

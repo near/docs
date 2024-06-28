@@ -19,11 +19,11 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "SDK Types",
-    "permalink": "/vi/build/smart-contracts/anatomy/types"
-  },
-  "next": {
     "title": "Data Structures",
     "permalink": "/vi/build/smart-contracts/anatomy/collections"
+  },
+  "next": {
+    "title": "Transfers & Actions",
+    "permalink": "/vi/build/smart-contracts/anatomy/actions"
   }
 }

@@ -20,8 +20,8 @@
   },
   "sidebar": "concepts",
   "previous": {
-    "title": "NEAR에 저장하기",
-    "permalink": "/ko/concepts/storage/data-storage"
+    "title": "토큰 손실 방지",
+    "permalink": "/ko/concepts/basics/token-loss"
   },
   "next": {
     "title": "대체 솔루션",

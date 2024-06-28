@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/1.chain-abstraction/meta-transactions.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Charles Garrett",
-  "lastUpdatedAt": 1717783079000,
+  "lastUpdatedBy": "Guille",
+  "lastUpdatedAt": 1719586643000,
   "frontMatter": {
     "id": "meta-transactions",
     "title": "Building a Meta Transaction Relayer",
