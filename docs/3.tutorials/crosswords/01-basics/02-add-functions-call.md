@@ -82,7 +82,7 @@ Here's what we'll want to do:
 
 ### Build the contract
 
-To build the contract, we'll be using [`cargo-near`](https://github.com/near/cargo-near). For more details on building contracts, please see [this section](/sdk/rust/building/basics).
+To build the contract, we'll be using [`cargo-near`](https://github.com/near/cargo-near).
 
 Install `cargo-near` first:
 
