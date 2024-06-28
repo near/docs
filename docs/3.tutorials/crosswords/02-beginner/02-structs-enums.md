@@ -48,7 +48,7 @@ In this chapter, we want the ability to add multiple, custom crossword puzzles. 
 Let's dive right in, starting with our primary struct:
 
 ```rust
-#[near(contract_state]
+#[near(contract_state)]
 #[derive(PanicOnDefault)]
 pub struct Crossword {
     puzzles: LookupMap<String, Puzzle>,  // ⟵ Puzzle is a struct we're defining
@@ -110,7 +110,7 @@ Crossword ⟵ primary struct with #[near(contract_state)]
 
 ### Returning data
 
-Since we're going to have multiple crossword puzzles that have their own, unique clues and positions in a grid, we'll want to return puzzle objects to a frontend.  
+Since we're going to have multiple crossword puzzles that have their own, unique clues and positions in a grid, we'll want to return puzzle objects to a frontend.
 
 :::tip Quick note on return values
 By default, return values are serialized in JSON unless explicitly directed to use Borsh for binary serialization.
@@ -188,7 +188,7 @@ The crossword puzzle will eventually use a cross-contract call and callback, so 
 
 In the section above, we saw two fields in the structs that had an enum type:
 
-1.`AnswerDirection` — this is the simplest type of enum, and will look familiar from other programming languages. It provides the only two options for how a clue in oriented in a crossword puzzle: across and down.  
+1.`AnswerDirection` — this is the simplest type of enum, and will look familiar from other programming languages. It provides the only two options for how a clue in oriented in a crossword puzzle: across and down.
 
 ```rust
 #[near(serializers = [json, borsh])]

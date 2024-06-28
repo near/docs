@@ -38,7 +38,7 @@ The repository comes with many different folders. Each folder represents a diffe
 | [ft_core.rs](#corers)       | Contains the logic for transferring and controlling FTs. This file represents the implementation of the [core](https://nomicon.io/Standards/Tokens/FungibleToken/Core) standard. |              |
 | [lib.rs](#librs)                 | Holds the smart contract initialization functions and dictates what information is kept on-chain.                               |
 | [metadata.rs](#metadatars)       | Defines the metadata structure. This file represents the implementation of the [metadata](https://nomicon.io/Standards/Tokens/FungibleToken/Metadata) extension of the standard.                                      |
-| [storage.rs](#storagers)               | Contains the logic for registration and storage.  This file represents the implementation of the [storage management](https://nomicon.io/Standards/StorageManagement) standard.                                                   |                          
+| [storage.rs](#storagers)               | Contains the logic for registration and storage.  This file represents the implementation of the [storage management](https://nomicon.io/Standards/StorageManagement) standard.                                                   |
 
 ```
 skeleton
@@ -174,10 +174,12 @@ Building the skeleton is useful to validate that your Rust toolchain works prope
 You've seen the layout of this FT smart contract, and how all the functions are laid out across the different source files.
 Using `yarn`, you've been able to compile the contract, and you'll start fleshing out this skeleton in the next [section](/tutorials/fts/circulating-supply) of the tutorial.
 
+---
+
 :::note Versioning for this article
 At the time of this writing, this example works with the following versions:
 
-- rustc: `1.76.0`
+- rustc: `1.77.1`
 - near-sdk-rs: `5.1.0` (with enabled `legacy` feature)
 - cargo-near: `0.6.1`
 :::

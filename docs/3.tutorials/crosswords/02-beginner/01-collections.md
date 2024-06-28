@@ -42,7 +42,7 @@ So why would we have two data structures here? Again, if we end up with a large 
 </figure>
 <br/>
 
-As we remember from the previous chapter, every smart contract has a primary struct containing the `#[near(contract_state)]` macro. 
+As we remember from the previous chapter, every smart contract has a primary struct containing the `#[near(contract_state)]` macro.
 
 :::note Naming the primary struct
 Note in the [previous chapter](../01-basics/01-set-up-skeleton.md#start-writing-rust) we named our primary struct `Contract`, but in this chapter we'll call it `Crossword.`
@@ -52,7 +52,7 @@ The name of the struct doesn't matter and there's nothing special about naming i
 
 Here's how our struct will look with the iterable and non-iterable NEAR collections:
 
-<Github language="rust" start="73" end="79" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/276217ad82c64c610148e998ec926942ba910a12/contract/src/lib.rs" />
+<Github language="rust" start="62" end="72" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/master/contract/src/lib.rs" />
 
 Above, we have the `puzzles` and `unsolved_puzzles` fields which are collections.
 
@@ -60,7 +60,7 @@ We also have an `owner_id` so we can exercise a common pattern in smart contract
 
 The snippet below shows the first method in the implementation of the `Crossword` struct, where the `new` function sets up these two specialized collections.
 
-<Github language="rust" start="81" end="90" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/276217ad82c64c610148e998ec926942ba910a12/contract/src/lib.rs" />
+<Github language="rust" start="74" end="83" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/master/contract/src/lib.rs" />
 
 So during the initialization function (`new`) we're setting the `owner_id`. For our purposes the owner will likely be the contract itself, but there can be several reasons to have it be a DAO or another user. Next, let's look at the `b"c"` and `b"u"` bits for the collection fields.
 
@@ -72,7 +72,7 @@ Let's take a peek at how we'll add a new crossword puzzle. Note that there will 
 
 Unlike the previous chapter where there was only one crossword puzzle, we'll be inserting into our new collections, so let's create a `new_puzzle` method.
 
-<Github language="rust" start="147" end="163" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/8ec941c82539e6eafa4971444e1da9e4819330d3/contract/src/lib.rs" />
+<Github language="rust" start="140" end="157" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/master/contract/src/lib.rs" />
 
 Now we're set up to store multiple puzzles!
 
@@ -86,7 +86,7 @@ Now we're set up to store multiple puzzles!
 
 **Is NEAR permissionless?**
 
-Yes. 
+Yes.
 
 **What did you mean by a permission system earlier, and what are the ways you can control permissions?**
 
