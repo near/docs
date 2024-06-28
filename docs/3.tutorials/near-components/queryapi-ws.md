@@ -15,7 +15,7 @@ In this example, the QueryAPI indexer monitors the widget activity on the blockc
 
 ## QueryAPI indexer
 
-The [Widget Activity indexer](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=roshaan.near/widget-activity-feed) keeps track of any widget activity on the `social.near` smart contract. Whenever a Widget transaction is found, the data is stored in a Postgres database.
+The [Widget Activity indexer](https://dev.near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=roshaan.near/widget-activity-feed) keeps track of any widget activity on the `social.near` smart contract. Whenever a Widget transaction is found, the data is stored in a Postgres database.
 
 ### DB schema
 
@@ -43,7 +43,7 @@ In the following code snippet, you can find the simple indexer logic that filter
 
 :::tip
 
-To learn more, check the complete source code of the [Widget Activity indexer](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=roshaan.near/widget-activity-feed).
+To learn more, check the complete source code of the [Widget Activity indexer](https://dev.near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=roshaan.near/widget-activity-feed).
 
 :::
 
@@ -305,7 +305,7 @@ return (
   <div>
     <Title>
       Widget Activity Feed{" "}
-      <TextLink href="https://near.org/dataplatform.near/widget/QueryApi.App">
+      <TextLink href="https://dev.near.org/dataplatform.near/widget/QueryApi.App">
         {" "}
         Powered By QueryAPI{" "}
       </TextLink>

@@ -255,6 +255,6 @@ Adding a new blog post is simple. To publish a new blog post, you only need to:
 
 :::note
 
-You can find the published blog post example in [this link](https://near.org/near/widget/BlogPostPage?accountId=bucanero.near&blockHeight=117452680&returnLocation=/near/widget/ProfilePage?accountId=bucanero.near&tab=blog).
+You can find the published blog post example in [this link](https://dev.near.org/near/widget/BlogPostPage?accountId=bucanero.near&blockHeight=117452680&returnLocation=/near/widget/ProfilePage?accountId=bucanero.near&tab=blog).
 
 :::
