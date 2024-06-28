@@ -121,7 +121,7 @@ If the schema is invalid for generating types, then an error will pop up both on
 
 :::note
 
-Except for [upsert](#upsert), all of the below methods are used in [social_feed_test indexer](https://near.org/dev-queryapi.dataplatform.near/widget/QueryApi.App?selectedIndexerPath=darunrs.near/social_feed_test). However, keep in mind the current code uses the outdated call structure. An upcoming change will switch to the new method of `context.db.TableName.methodName` instead of `context.db.methodName_tableName`.
+Except for [upsert](#upsert), all of the below methods are used in [social_feed_test indexer](https://dev.near.org/dev-queryapi.dataplatform.near/widget/QueryApi.App?selectedIndexerPath=darunrs.near/social_feed_test). However, keep in mind the current code uses the outdated call structure. An upcoming change will switch to the new method of `context.db.TableName.methodName` instead of `context.db.methodName_tableName`.
 
 :::
 

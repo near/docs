@@ -1,8 +1,8 @@
 ---
-sidebar_position: 2
+id: reproducible-builds
+title: Reproducible Builds
 ---
 
-# Reproducible Builds
 Reproducible builds let different people build the same program and get the exact same outputs as one another. It helps users trust that deployed contracts are built correctly and correspond to the source code. To verify your contract user can build it themselves and check that the binaries are identical.
 
 ## Problem

@@ -36,7 +36,7 @@ We import from:
 - `utils.js` for that view-only function call that will call `get_solution` to retrieve the correct solution hash when a person has completed the crossword puzzle correctly.
 - `hardcoded-data.js` is a file containing info on the crossword puzzle clues. This chapter has covered the crossword puzzle where the solution is **near nomicon ref finance**, and according to the chapter overview we've committed to serving *one* puzzle. We'll improve our smart contract later, allowing for multiple crossword puzzles, but for now it's hardcoded here.
 
-Next, we define an asynchronous function called `initCrossword` that will be called before passing data to the React app. It's often useful to set up a connection with the blockchain here, but in our case all we need to do is retrieve the crossword puzzle solution as a hash. Note that we're attempting to pass this environment variable `NEAR_ENV` into our configuration file. `NEAR_ENV` is used to designate the blockchain network (testnet, betanet, mainnet) and is also [used in NEAR CLI](../../../2.build/2.smart-contracts/release/deploy.md). 
+Next, we define an asynchronous function called `initCrossword` that will be called before passing data to the React app. It's often useful to set up a connection with the blockchain here, but in our case all we need to do is retrieve the crossword puzzle solution as a hash. Note that we're attempting to pass this environment variable `NEAR_ENV` into our configuration file. `NEAR_ENV` is used to designate the blockchain network (testnet, betanet, mainnet) and is also [used in NEAR CLI](../../../2.build/2.smart-contracts/release/deploy.md).
 
 Lastly, we'll call `initCrossword` and, when everything is complete, pass data to the React app contained in `App.js`.
 
@@ -90,17 +90,16 @@ Let's run our frontend on testnet! We won't add any new concepts at this point i
 # Go into the directory containing the Rust smart contract we've been working on
 cd contract
 
-# Build (for Windows it's build.bat)
-./build.sh
+# Build
+cargo near build
 
 # Create fresh account if you wish, which is good practice
-near delete crossword.friend.testnet friend.testnet
-near create-account crossword.friend.testnet --masterAccount friend.testnet
+near account delete-account crossword.friend.testnet beneficiary friend.testnet network-config testnet sign-with-legacy-keychain send
+
+near account create-account fund-myself crossword.friend.testnet '1 NEAR' autogenerate-new-keypair save-to-legacy-keychain sign-as friend.testnet network-config testnet sign-with-legacy-keychain send
 
 # Deploy
-near deploy crossword.friend.testnet --wasmFile res/my_crossword.wasm \
-  --initFunction 'new' \
-  --initArgs '{"solution": "69c2feb084439956193f4c21936025f14a5a5a78979d67ae34762e18a7206a0f"}'
+cargo near deploy crossword.friend.testnet with-init-call new json-args '{"solution": "69c2feb084439956193f4c21936025f14a5a5a78979d67ae34762e18a7206a0f"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-legacy-keychain send
   
 # Return to the project root and start the React app
 cd ..

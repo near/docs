@@ -66,7 +66,7 @@ near deploy <account-id> --wasmFile contract.wasm --initFunction new
 
 :::tip
 
-Check the [Contract Wizard](https://near.org/contractwizard.near/widget/ContractWizardUI) to create a personalized NFT contract!.
+Check the [Contract Wizard](https://dev.near.org/contractwizard.near/widget/ContractWizardUI) to create a personalized NFT contract!.
 
 :::
 
