@@ -28,6 +28,7 @@ The `SignedTransaction` is then sent to the network via RPC call, and the result
 ---
 
 ## Why use a Relayer?
+
 There are multiple reasons to use a relayer:
 1. Your users are new to NEAR and don't have any gas to cover transactions
 2. Your users have an account on NEAR, but only have a Fungible Token Balance. They can now use the FT to pay for gas
