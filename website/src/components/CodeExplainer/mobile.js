@@ -78,7 +78,7 @@ function MobileView({ props: { blocks, files, languages, language, setLanguage }
           </Tabs>
           {
             blocks.map((block, index) =>
-              <InnerBlock selected={activeBlock === index} index={index} text={block.text} activateFn={activateBlock} />)
+              <InnerBlock selected={activeBlock === index} index={index} text={block.text} type={block.type} activateFn={activateBlock} />)
           }
         </div>
         <div id="files" style={{ height: "33vh", position: "sticky", bottom: 0, backgroundColor: "var(--ifm-background-color)" }}>

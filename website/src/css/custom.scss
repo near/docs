@@ -243,6 +243,10 @@ li hr {
     border-width: 0;
 }
 
+li > ul {
+    margin-top: 0.4rem;
+}
+
 .menu__list .menu__list li hr {
     background-color: #e8f0f9;
     height: 2px;

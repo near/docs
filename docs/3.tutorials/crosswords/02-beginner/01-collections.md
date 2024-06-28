@@ -66,7 +66,7 @@ So during the initialization function (`new`) we're setting the `owner_id`. For 
 
 ## Collections have prefixes
 
-Above, the `new` function is initializing the struct's fields by giving them a unique prefix. You can learn more about [the prefixes here](/sdk/rust/contract-structure/nesting#traditional-approach-for-unique-prefixes), but know that these prefixes (`c` and `u`) should be short and different.
+Above, the `new` function is initializing the struct's fields by giving them a unique prefix. You can learn more about [the prefixes here](../../../2.build/2.smart-contracts/anatomy/collections.md), but know that these prefixes (`c` and `u`) should be short and different.
 
 Let's take a peek at how we'll add a new crossword puzzle. Note that there will be a new struct here, `Answer`, which we haven't defined yet. We'll also be introducing the concept of enums, like `PuzzleStatus::Solved` and `PuzzleStatus::Unsolved`. We'll be covering these in the next section.
 
