@@ -176,6 +176,7 @@ const sidebar = {
               "type": "html",
               "value": "<hr/>"
             },
+            "build/smart-contracts/anatomy/best-practices",
             "build/smart-contracts/anatomy/serialization",
             "build/smart-contracts/anatomy/serialization-protocols",
             "build/smart-contracts/anatomy/reduce-size",
