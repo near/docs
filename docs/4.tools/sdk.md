@@ -11,6 +11,26 @@ import {FeatureList, Column, Feature} from "@site/src/components/featurelist";
 
 The NEAR SDK is a library that allow to develop smart contracts. Currently, there exist two versions of NEAR SDK: one for Rust and one for JavaScript.
 
+:::tip Want to build a smart contract?
+
+The best place to start learning is our [QuickStart Guide](../2.build/2.smart-contracts/quickstart.md)
+
+:::
+
+<FeatureList>
+  <Column title="" size="6">
+    <Feature url="https://docs.rs/near-sdk/latest/near_sdk/" title="Rust SDK" subtitle="Rust SDK Reference docs" image="smartcontract-rust.png" />
+  </Column>
+  <Column title="" size="6">
+    <Feature url="https://near.github.io/near-api-js/" title="JavaScript SDK" subtitle="Javascript SDK Reference docs" image="smartcontract-js.png" />
+  </Column>
+</FeatureList>
+
+---
+
+## Smart Contracts on NEAR
+
+
 This is how a smart contract written in Rust and JavaScript using the NEAR SDK looks like:
 
 <Tabs groupId="code-tabs">
@@ -97,7 +117,7 @@ If you are new to smart contracts, we recommend you start with our [Smart Contra
 
 If you need to find a specific function signature, or understand the SDK struct/classes, please visit the SDK specific pages:
 
-- [Rust SDK](https://docs.rs/near-sdk/3.1.0/near_sdk/)
+- [Rust SDK](https://docs.rs/near-sdk/latest/near_sdk/)
 - [JavaScript SDK](https://near.github.io/near-api-js/)
 
 :::tip
