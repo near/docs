@@ -2,11 +2,54 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://docs.near.org/ko/blog</id>
     <title>NEAR Documentation Blog</title>
-    <updated>2024-06-05T00:00:00.000Z</updated>
+    <updated>2024-07-28T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://docs.near.org/ko/blog"/>
     <subtitle>NEAR Documentation Blog</subtitle>
     <icon>https://docs.near.org/ko/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[One place for all Smart Contracts Docs]]></title>
+        <id>https://docs.near.org/ko/blog/sdks-unified</id>
+        <link href="https://docs.near.org/ko/blog/sdks-unified"/>
+        <updated>2024-07-28T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[We have consolidated all our documentation in a single section, so you don't need to go searching around for it]]></summary>
+        <content type="html"><![CDATA[<p><em>We have consolidated all our documentation in a single section, so you don't need to go searching around for it</em></p>
+<p><img src="https://docs.near.org/assets/images/contracts-landing-5a9c76a78e71b0e5f9a96033f1f23d23.png"></p>
+<p>Smart contracts are small pieces of logic that can live on every NEAR account. To build a contract you use the NEAR SDKs, which comes in two flavours: Rust and JavaScript.</p>
+<p>Until today, we had multiple docs explaining how to build smart contracts:</p>
+<ul>
+<li><code>/sdk/rust</code> dedicated to explain how to use the Rust SDK</li>
+<li><code>/sdk/js</code> dedicated to explain how to use the JS SDK</li>
+<li><a href="https://docs.near.org/ko/build/smart-contracts/what-is"><code>/build/smart-contracts/what-is</code></a> - that explains general concepts, and how to implement them using both SDKs</li>
+</ul>
+<p>Today, this is over, as all the information on how to build smart contracts is located in a single area: <a href="https://docs.near.org/ko/build/smart-contracts/what-is"><code>/build/smart-contracts/what-is</code></a>.</p>
+<p>Meanwhile, we have transformed the <a href="https://docs.near.org/ko/tools/sdk">SDK page</a> to be a simple landing page with links to:</p>
+<ul>
+<li>The <a href="https://docs.rs/near-sdk/latest/near_sdk/" target="_blank" rel="noopener noreferrer">Rust SDK reference docs</a></li>
+<li>The <a href="https://near.github.io/near-api-js/" target="_blank" rel="noopener noreferrer">JS SDK reference docs</a></li>
+<li>The <a href="https://docs.near.org/ko/build/smart-contracts/what-is">Smart Contract Section</a></li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="why-did-we-have-3-sections-explaining-the-same-topic">Why did we have 3 sections explaining the same topic?<a href="https://docs.near.org/ko/blog/sdks-unified#why-did-we-have-3-sections-explaining-the-same-topic" class="hash-link" aria-label="Direct link to Why did we have 3 sections explaining the same topic?" title="Direct link to Why did we have 3 sections explaining the same topic?">​</a></h2>
+<p>The reason we had 3 different sections was that, historically, the engineers of each SDK were working on their own docs in isolation. To help mitigate this, we created a section on NEAR docs, meant to consolidate all the external documentation.</p>
+<p>One day, the individual SDK pages were deleted - if I remember correctly, it was because we wanted to have fewer domains - and we had to migrate everything in a rush.</p>
+<p>This left us in a very weird situation: we already had a section explaining how to build a smart contract... and now we had 3.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="a-single-source-of-truth">A single source of truth<a href="https://docs.near.org/ko/blog/sdks-unified#a-single-source-of-truth" class="hash-link" aria-label="Direct link to A single source of truth" title="Direct link to A single source of truth">​</a></h2>
+<p>Luckily, this is now fixed! We have finally conquered the original dream of having a single section for <a href="https://docs.near.org/ko/build/smart-contracts/what-is">Smart Contracts</a>, with all the information consolidated in there.</p>
+<p>Now, we can focus on maintaining a single section, thus making it easier to keep it updated and relevant.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="whats-next">What's next?<a href="https://docs.near.org/ko/blog/sdks-unified#whats-next" class="hash-link" aria-label="Direct link to What's next?" title="Direct link to What's next?">​</a></h2>
+<p>We are currently undergoing a process of <strong>consolidating</strong> all the documentation. This means that we are looking at all the sections that have overlapping information, and trying to merge them into a single place.</p>
+<p>This will not only improve the quality of our docs, but also make it easier for you to find the information you need. In fact, improving search is one of the main motors of this change, since we noticed that our search tool (<a href="https://www.algolia.com/" target="_blank" rel="noopener noreferrer">Algolia</a>) gets confused when the same concept is spread all over the place.</p>
+<p>Moreover, having consistent and coherent documentation will allow us to further expand our search capabilities using AI! This is something we are very excited about, as it will allow us to provide you with even more relevant information.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="if-you-dont-like-this-change-please-let-us-know">If you don't like this change, please let us know!<a href="https://docs.near.org/ko/blog/sdks-unified#if-you-dont-like-this-change-please-let-us-know" class="hash-link" aria-label="Direct link to If you don't like this change, please let us know!" title="Direct link to If you don't like this change, please let us know!">​</a></h2>
+<p>As always, we are more than open to feedback. If you think that this change is not good, or that we are missing something, please let us know! You can reach out to us through the blue feedback button you see at the side of the screen.</p>
+<p>We are looking forward to hearing your thoughts and feedback, and hope you enjoy the content we'll be sharing.</p>
+<p>Happy coding, and see you in the next post! 🚀</p>]]></content>
+        <author>
+            <name>Guille</name>
+            <uri>https://github.com/gagdiez</uri>
+        </author>
+        <category label="updates" term="updates"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Getting Started on NEAR Using Windows]]></title>
         <id>https://docs.near.org/ko/blog/getting-started-on-windows</id>

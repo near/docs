@@ -4,7 +4,7 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 export default [
   {
     path: '/zh-CN/blog',
-    component: ComponentCreator('/zh-CN/blog', '2a5'),
+    component: ComponentCreator('/zh-CN/blog', '180'),
     exact: true
   },
   {
@@ -20,6 +20,11 @@ export default [
   {
     path: '/zh-CN/blog/reorganizing-docs',
     component: ComponentCreator('/zh-CN/blog/reorganizing-docs', '86f'),
+    exact: true
+  },
+  {
+    path: '/zh-CN/blog/sdks-unified',
+    component: ComponentCreator('/zh-CN/blog/sdks-unified', '444'),
     exact: true
   },
   {
@@ -49,7 +54,7 @@ export default [
   },
   {
     path: '/zh-CN/blog/tags/updates',
-    component: ComponentCreator('/zh-CN/blog/tags/updates', '58d'),
+    component: ComponentCreator('/zh-CN/blog/tags/updates', 'a49'),
     exact: true
   },
   {
@@ -74,15 +79,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '72e'),
+    component: ComponentCreator('/zh-CN/', '49e'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', 'f77'),
+        component: ComponentCreator('/zh-CN/', '208'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '7d2'),
+            component: ComponentCreator('/zh-CN/', 'fc9'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -860,6 +865,12 @@ export default [
                 sidebar: "build"
               },
               {
+                path: '/zh-CN/build/smart-contracts/anatomy/best-practices',
+                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/best-practices', 'ac9'),
+                exact: true,
+                sidebar: "build"
+              },
+              {
                 path: '/zh-CN/build/smart-contracts/anatomy/collections',
                 component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/collections', '051'),
                 exact: true,
@@ -1471,7 +1482,7 @@ export default [
               },
               {
                 path: '/zh-CN/tools/sdk',
-                component: ComponentCreator('/zh-CN/tools/sdk', 'cc3'),
+                component: ComponentCreator('/zh-CN/tools/sdk', '6d2'),
                 exact: true,
                 sidebar: "tools"
               },

@@ -23,7 +23,7 @@
     "permalink": "/ko/build/smart-contracts/anatomy/crosscontract"
   },
   "next": {
-    "title": "직렬화에 대한 참고 사항",
-    "permalink": "/ko/build/smart-contracts/anatomy/serialization"
+    "title": "Best Practices",
+    "permalink": "/ko/build/smart-contracts/anatomy/best-practices"
   }
 }

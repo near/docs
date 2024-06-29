@@ -2,6 +2,11 @@
   "title": "Developer Changelog",
   "items": [
     {
+      "title": "One place for all Smart Contracts Docs",
+      "permalink": "/zh-CN/blog/sdks-unified",
+      "unlisted": false
+    },
+    {
       "title": "Getting Started on NEAR Using Windows",
       "permalink": "/zh-CN/blog/getting-started-on-windows",
       "unlisted": false

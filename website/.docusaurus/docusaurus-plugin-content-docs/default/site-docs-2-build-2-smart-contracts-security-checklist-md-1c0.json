@@ -23,7 +23,7 @@
     "permalink": "/build/smart-contracts/anatomy/crosscontract"
   },
   "next": {
-    "title": "Notes on Serialization",
-    "permalink": "/build/smart-contracts/anatomy/serialization"
+    "title": "Best Practices",
+    "permalink": "/build/smart-contracts/anatomy/best-practices"
   }
 }

@@ -113,8 +113,8 @@ export default {
   "themeConfig": {
     "image": "docs/assets/welcome-pages/protocol.png",
     "announcementBar": {
-      "id": "id-0002",
-      "content": "🎉 Come check <a href=\"/blog\">our new blog</a>, where we will share weekly news and updates 🎉",
+      "id": "id-0003",
+      "content": "🎉 We have consolidated all our <a href=\"/build/smart-contracts/what-is\">smart contract docs</a>, read more about it in our <a href=\"/blog/sdks-unified\">blog post</a> 🎉",
       "backgroundColor": "#fafbfc",
       "textColor": "#333",
       "isCloseable": true

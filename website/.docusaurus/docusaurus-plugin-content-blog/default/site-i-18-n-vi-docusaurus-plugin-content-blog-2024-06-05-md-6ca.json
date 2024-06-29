@@ -43,6 +43,10 @@
     "hide_table_of_contents": true
   },
   "unlisted": false,
+  "prevItem": {
+    "title": "One place for all Smart Contracts Docs",
+    "permalink": "/vi/blog/sdks-unified"
+  },
   "nextItem": {
     "title": "It's gonna be Legen... wait for it...",
     "permalink": "/vi/blog/yield-resume"

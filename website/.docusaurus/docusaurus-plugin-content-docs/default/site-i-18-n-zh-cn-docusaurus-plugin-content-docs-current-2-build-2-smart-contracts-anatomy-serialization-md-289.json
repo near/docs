@@ -19,8 +19,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "✅ Checklist",
-    "permalink": "/zh-CN/build/smart-contracts/security/checklist"
+    "title": "Best Practices",
+    "permalink": "/zh-CN/build/smart-contracts/anatomy/best-practices"
   },
   "next": {
     "title": "Serialization Protocols",

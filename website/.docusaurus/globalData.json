@@ -645,6 +645,11 @@
               "sidebar": "build"
             },
             {
+              "id": "build/smart-contracts/anatomy/best-practices",
+              "path": "/zh-CN/build/smart-contracts/anatomy/best-practices",
+              "sidebar": "build"
+            },
+            {
               "id": "build/smart-contracts/anatomy/collections",
               "path": "/zh-CN/build/smart-contracts/anatomy/collections",
               "sidebar": "build"
