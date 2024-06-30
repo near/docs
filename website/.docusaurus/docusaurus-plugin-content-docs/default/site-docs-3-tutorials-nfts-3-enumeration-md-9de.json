@@ -1,7 +1,7 @@
 {
   "id": "tutorials/nfts/enumeration",
   "title": "Enumeration",
-  "description": "In the previous tutorials, you looked at ways to integrate the minting functionality into a skeleton smart contract. In order to get your NFTs to show in the wallet, you also had to deploy a patch fix that implemented one of the enumeration methods. In this tutorial, you'll expand on and finish the rest of the enumeration methods as per the standard",
+  "description": "In the previous tutorials, you looked at ways to integrate the minting functionality into a skeleton smart contract. In order to get your NFTs to show in the wallet, you also had to deploy a patch fix that implemented one of the enumeration methods. In this tutorial, you'll expand on and finish the rest of the enumeration methods as per the standard.",
   "source": "@site/../docs/3.tutorials/nfts/3-enumeration.md",
   "sourceDirName": "3.tutorials/nfts",
   "slug": "/tutorials/nfts/enumeration",
@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/nfts/3-enumeration.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Guille",
-  "lastUpdatedAt": 1714487707000,
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1719787277000,
   "sidebarPosition": 3,
   "frontMatter": {
     "id": "enumeration",
