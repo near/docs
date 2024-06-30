@@ -10,15 +10,7 @@ Create your first non-fungible token by using a pre-deployed NFT smart contract 
 
 ## Prerequisites
 
-To complete this tutorial successfully, you'll need [a NEAR Wallet](https://testnet.mynearwallet.com/create) and [NEAR CLI](/tools/near-cli#setup)
-
-:::tip
-You can install near-cli through the following command:
-
-```bash
-npm install -g near-cli
-```
-:::
+To complete this tutorial successfully, you'll need [a NEAR Wallet](https://testnet.mynearwallet.com/create) and [NEAR CLI RS](../../4.tools/cli-rs.md#setup)
 
 ---
 
@@ -35,7 +27,7 @@ To interact with the contract you will need to first login to your NEAR account 
 Log in to your newly created account with `near-cli` by running the following command in your terminal:
 
 ```bash
-near login
+near account import-account using-web-wallet network-config testnet
 ```
 
 Set an environment variable for your account ID to make it easy to copy and paste commands from this tutorial:
@@ -50,10 +42,10 @@ export NEARID=YOUR_ACCOUNT_NAME
 
 We have already deployed an NFT contract to `nft.examples.testnet` which allows users to freely mint tokens. Let's use it to mint our first token.
 
-Run this command in your terminal, remember to replace the `token_id` with a string of your choice. This string will uniquely identify the token you mint. 
+Run this command in your terminal, remember to replace the `token_id` with a string of your choice. This string will uniquely identify the token you mint.
 
 ```bash
-near call nft.examples.testnet nft_mint '{"token_id": "TYPE_A_UNIQUE_VALUE_HERE", "receiver_id": "'$NEARID'", "metadata": { "title": "GO TEAM", "description": "The Team Goes", "media": "https://bafybeidl4hjbpdr6u6xvlrizwxbrfcyqurzvcnn5xoilmcqbxfbdwrmp5m.ipfs.dweb.link/", "copies": 1}}' --accountId $NEARID --deposit 0.1
+near contract call-function as-transaction nft.examples.testnet nft_mint json-args '{"token_id": "TYPE_A_UNIQUE_VALUE_HERE", "receiver_id": "'$NEARID'", "metadata": { "title": "GO TEAM", "description": "The Team Goes", "media": "https://bafybeidl4hjbpdr6u6xvlrizwxbrfcyqurzvcnn5xoilmcqbxfbdwrmp5m.ipfs.dweb.link/", "copies": 1}}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $NEARID network-config testnet sign-with-legacy-keychain send
 ```
 
 <details>
@@ -82,7 +74,7 @@ You can also replace the `media` URL with a link to any image file hosted on you
 To view tokens owned by an account you can call the NFT contract with the following `near-cli` command:
 
 ```bash
-near view nft.examples.testnet nft_tokens_for_owner '{"account_id": "'$NEARID'"}'
+near contract call-function as-read-only nft.examples.testnet nft_tokens_for_owner json-args '{"account_id": "'$NEARID'"}' network-config testnet now
 ```
 
 <details>
@@ -134,7 +126,7 @@ Now that you're familiar with the process, you can jump to [Contract Architectur
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `4.0.13`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
+- near-cli-rs: `0.11.0`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
 
 :::
