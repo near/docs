@@ -23,8 +23,6 @@ function Root({ children, location }) {
         );
       };
   
-      sendMessage(window.location.pathname);
-  
       const unlisten = history.listen(({ pathname }) => {
         sendMessage(pathname);
       });
