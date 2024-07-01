@@ -109,8 +109,7 @@ Welcome, this is the starting point for all NEAR documentation. Learn to build a
     <Feature url="/build/data-infrastructure/query-api/intro" title="QueryAPI" subtitle="The simplest way to build indexers" image="blocks.png" />
   </Column>
   <Column title="개발자 도구" size="3">
-    <Feature url="/sdk/js/introduction" title="JavaScript SDK" subtitle="Write contracts in JavaScript" image="smartcontract-js.png" />
-    <Feature url="/sdk/rust/introduction" title="Rust SDK" subtitle="Write contracts in Rust" image="smartcontract-rust.png" />
+    <Feature url="/tools/sdk" title="NEAR SDK" subtitle="Write contracts in Rust & JavaScript" image="smartcontract.png" />
     <Feature url="/tools/near-cli" title="NEAR CLI" subtitle="Use NEAR from the Terminal" image="near-cli.png" />
     <Feature url="/tools/near-api-js/quick-reference" title="NEAR API JS" subtitle="Interact with NEAR from JS" image="near-api-js.png" />
     <Feature url="/api/rpc/introduction" title="RPC API" subtitle="Interact with the NEAR RPC API" image="rpc.png" />
@@ -131,7 +130,7 @@ Welcome, this is the starting point for all NEAR documentation. Learn to build a
 
 <div className="row cards">
   <div className="col col--6">
-    <a href="https://near.org/applications">
+    <a href="https://dev.near.org/applications">
       <div className="card">
         <div className="card__image">
           <img src={require("@site/static/docs/assets/welcome-pages/awesomenear.jpg").default} alt="Discover" />

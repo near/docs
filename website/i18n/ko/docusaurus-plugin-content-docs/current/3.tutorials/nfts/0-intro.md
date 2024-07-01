@@ -14,7 +14,7 @@ To complete these tutorials successfully, you'll need:
 
 - [Rust](https://www.rust-lang.org/tools/install)
 - [A Testnet wallet](https://testnet.mynearwallet.com/create)
-- [NEAR-CLI](/tools/near-cli#setup)
+- [NEAR-CLI-RS](../../4.tools/cli-rs.md#setup)
 - [cargo-near](https://github.com/near/cargo-near)
 
 :::info Rust가 처음이신가요? If you are new to Rust and want to dive into smart contract development, our [Quick-start guide](../../2.build/2.smart-contracts/quickstart.md) is a great place to start :::
@@ -33,15 +33,10 @@ To complete these tutorials successfully, you'll need:
 | 4  | [컨트랙트 업그레이드](/tutorials/nfts/upgrade-contract)      | 기존 스마트 컨트랙트를 업그레이드하는 프로세스에 대해 알아보세요.                                                                                    |
 | 5  | [Enumeration](/tutorials/nfts/enumeration)          | 스마트 컨트랙트의 상태를 반환하는 데 사용할 수 있는 열거 메서드를 살펴보세요.                                                                            |
 | 6  | [핵심](/tutorials/nfts/core)                          | Extend the NFT contract using the core standard which allows token transfer.                                            |
-| 7  | [승인](/tutorials/nfts/approvals)                     | 다른 계정이 당신을 대신하여 NFT를 전송할 수 있도록 컨트랙트를 확장하세요.                                                                             |
-| 8  | [로열티](/tutorials/nfts/royalty)                      | NFT 로열티를 추가하여 일정 비율의 금액을 토큰 생성자에게 지급할 수 있습니다.                                                                           |
-| 9  | [마켓플레이스](/tutorials/nfts/marketplace)               | Learn about how common marketplaces operate on NEAR and dive into some of the code that allows buying and selling NFTs. |
-
-
-<!--
-1. [Events](/tutorials/nfts/events): in this tutorial you'll explore the events extension, allowing the contract to react on certain events.
-2. [Marketplace](/tutorials/nfts/marketplace): in the last tutorial you'll be exploring some key aspects of the marketplace contract.
--->
+| 7  | [Events](/tutorials/nfts/events)                    | The events extension, allowing the contract to react on certain events.                                                 |
+| 8  | [승인](/tutorials/nfts/approvals)                     | 다른 계정이 당신을 대신하여 NFT를 전송할 수 있도록 컨트랙트를 확장하세요.                                                                             |
+| 9  | [로열티](/tutorials/nfts/royalty)                      | NFT 로열티를 추가하여 일정 비율의 금액을 토큰 생성자에게 지급할 수 있습니다.                                                                           |
+| 10 | [마켓플레이스](/tutorials/nfts/marketplace)               | Learn about how common marketplaces operate on NEAR and dive into some of the code that allows buying and selling NFTs. |
 
 ---
 

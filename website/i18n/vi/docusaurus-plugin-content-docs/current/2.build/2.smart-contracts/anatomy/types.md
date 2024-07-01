@@ -46,14 +46,15 @@ Smart contracts can receive, store and return data using the following Rust type
 
 </Block>
 
-<Block highlights='{"rust": "1,15,22,64"}' fname="auction">
+<Block highlights='{"rust": "1,15,22,64"}' fname="auction" type='info'>
 
-```
-#### `U64/U128`
-Smart contracts can store `u64` and `u128`, but these types need to be converted to `string` for input/output
+:::warning `U64/U128`
+
+Smart contracts can store `u64` and `u128`, but these types need to be converted to `string` for input/output, since JSON cannot serialize values with more than 52 bits
 
 To simplify development, the SDK provides the `U64` and `U128` types which are automatically casted to `u64/u128` when stored, and to `string` when used as input/output
-```
+
+:::
 
 </Block>
 
@@ -79,18 +80,18 @@ Objects that will be stored in the contract's state need to be serializable to B
 
 </Block>
 
-<Block highlights='{"js": "5,11,47"}' fname="auction">
+<Block highlights='{"js": "5,11,25,47"}' fname="auction">
 
 ```
 ### Handling Tokens
-`$NEAR` tokens are represented using `BigInt` in JS, and they are always represented in `yoctonear`
+`$NEAR` tokens are typed as `BigInt` in JS, and their values represented in `yoctonear`
 
 **Note:** 1 NEAR = 10^24 yoctoNEAR
 ```
 
 </Block>
 
-<Block highlights='{"rust": ""}' fname="auction">
+<Block highlights='{"rust": "8,26,41"}' fname="auction">
 
 ```
 ### Handling Tokens

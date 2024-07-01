@@ -18,21 +18,21 @@ import base64Encode from '/docs/assets/crosswords/boop-base64-encode.gif';
 
 :::note `Base64VecU8`는 바이너리 페이로드에 적합합니다. 우리가 하고 있는 것은 이치에 맞지만, `Base64VecU8` 바이너리 매개변수를 보낼 때 사용하는 것이 아마도 더 일반적이라는 점은 주목할 가치가 있습니다.
 
-자세한 내용은 [여기](/sdk/rust/contract-interface/serialization-interface#base64vecu8)를 참조하세요. :::
+Read more [about it here](../../../2.build/2.smart-contracts/anatomy/serialization-interface.md). :::
 
 먼저 예상되는 인자에 대한 구조체를 설정합니다.
 
-<Github language="rust" start="111" end="117" url="https://github.com/near-examples/crossword-tutorial-chapter-3/blob/ec07e1e48285d31089b7e8cec9e9cf32a7e90c35/contract/src/lib.rs" />
+<Github language="rust" start="103" end="108" url="https://github.com/near-examples/crossword-tutorial-chapter-3/blob/master/contract/src/lib.rs" />
 
 Then we modify our `new_puzzle` method like so:
 
-<Github language="rust" start="290" end="297" url="https://github.com/near-examples/crossword-tutorial-chapter-3/blob/ec07e1e48285d31089b7e8cec9e9cf32a7e90c35/contract/src/lib.rs" />
+<Github language="rust" start="281" end="289" url="https://github.com/near-examples/crossword-tutorial-chapter-3/blob/master/contract/src/lib.rs" />
 
 우리는 원하는 방법을 사용하여 원래 인수를 가져와 base64로 인코딩할 수 있습니다. 많은 온라인 도구, 터미널 명령 및 [Boop](https://boop.okat.best)과 같은 오픈 소스 애플리케이션이 있습니다.
 
 우리는 다음을 복사할 것입니다:
 
-```json
+```js
 {
   "answer_pk": "ed25519:7PkKPmVUXcupA5oU8d6TbgyMwzFe8tPV6eV1KGwgo9xg",
   "dimensions": {
@@ -125,21 +125,27 @@ Then we modify our `new_puzzle` method like so:
 이제 이전과 마찬가지로 새로운 십자말풀이 퍼즐 컨트랙트를 구축하고 실행할 수 있습니다.
 
 ```bash
-./build.sh
+cargo near build
 
 export NEAR_ACCT=crossword.friend.testnet
 export PARENT_ACCT=friend.testnet
-near delete $NEAR_ACCT $PARENT_ACCT
-near create-account $NEAR_ACCT --masterAccount $PARENT_ACCT
-near deploy $NEAR_ACCT --wasmFile res/crossword_tutorial_chapter_3.wasm --initFunction new --initArgs '{"owner_id": "'$NEAR_ACCT'", "creator_account": "testnet"}'
-near call $NEAR_ACCT new_puzzle '{
+
+near account delete-account $NEAR_ACCT beneficiary $PARENT_ACCT network-config testnet sign-with-legacy-keychain send
+
+near account create-account fund-myself $NEAR_ACCT '1 NEAR' autogenerate-new-keypair save-to-legacy-keychain sign-as $PARENT_ACCT network-config testnet sign-with-legacy-keychain send
+
+cargo near deploy $NEAR_ACCT with-init-call new json-args '{"owner_id": "'$NEAR_ACCT'", "creator_account": "testnet"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-legacy-keychain send
+
+near contract call-function as-transaction $NEAR_ACCT new_puzzle json-args '{
   "args": "ewogICJhbnN3ZXJfcGsiOiAiZWQyNTUxOTo3UGtLUG1WVVhjdXBBNW9VOGQ2VGJneU13ekZlOHRQVjZlVjFLR3dnbzl4ZyIsCiAgImRpbWVuc2lvbnMiOiB7CiAgICJ4IjogMTEsCiAgICJ5IjogMTAKICB9LAogICJhbnN3ZXJzIjogWwogICB7CiAgICAgIm51bSI6IDEsCiAgICAgInN0YXJ0IjogewogICAgICAgIngiOiAwLAogICAgICAgInkiOiAxCiAgICAgfSwKICAgICAiZGlyZWN0aW9uIjogIkFjcm9zcyIsCiAgICAgImxlbmd0aCI6IDEyLAogICAgICJjbHVlIjogIk5FQVIgdHJhbnNhY3Rpb25zIGFyZSBtb3JlIF9fX19fXyBpbnN0ZWFkIG9mIGF0b21pYy4iCiAgIH0sCiAgIHsKICAgICAibnVtIjogMiwKICAgICAic3RhcnQiOiB7CiAgICAgICAieCI6IDYsCiAgICAgICAieSI6IDAKICAgICB9LAogICAgICJkaXJlY3Rpb24iOiAiRG93biIsCiAgICAgImxlbmd0aCI6IDcsCiAgICAgImNsdWUiOiAiSW4gYSBzbWFydCBjb250cmFjdCwgd2hlbiBwZXJmb3JtaW5nIGFuIEFjdGlvbiwgeW91IHVzZSB0aGlzIGluIFJ1c3QuIgogICB9LAogICB7CiAgICAgIm51bSI6IDMsCiAgICAgInN0YXJ0IjogewogICAgICAgIngiOiA5LAogICAgICAgInkiOiAwCiAgICAgfSwKICAgICAiZGlyZWN0aW9uIjogIkRvd24iLAogICAgICJsZW5ndGgiOiA2LAogICAgICJjbHVlIjogIkluIGRvY3MucnMgd2hlbiB5b3Ugc2VhcmNoIGZvciB0aGUgbmVhci1zZGsgY3JhdGUsIHRoZXNlIGl0ZW1zIGEgY29uc2lkZXJlZCBhIHdoYXQ6IGNvbGxlY3Rpb25zLCBlbnYsIGpzb25fdHlwZXMuIgogICB9LAogICB7CiAgICAgIm51bSI6IDQsCiAgICAgInN0YXJ0IjogewogICAgICAgIngiOiAxLAogICAgICAgInkiOiAxCiAgICAgfSwKICAgICAiZGlyZWN0aW9uIjogIkRvd24iLAogICAgICJsZW5ndGgiOiAxMCwKICAgICAiY2x1ZSI6ICJBIHNlcmllcyBvZiB3b3JkcyB0aGF0IGNhbiBkZXRlcm1pbmlzdGljYWxseSBnZW5lcmF0ZSBhIHByaXZhdGUga2V5LiIKICAgfSwKICAgewogICAgICJudW0iOiA1LAogICAgICJzdGFydCI6IHsKICAgICAgICJ4IjogMSwKICAgICAgICJ5IjogMwogICAgIH0sCiAgICAgImRpcmVjdGlvbiI6ICJBY3Jvc3MiLAogICAgICJsZW5ndGgiOiAzLAogICAgICJjbHVlIjogIldoZW4gZG9pbmcgaGlnaC1sZXZlbCBjcm9zcy1jb250cmFjdCBjYWxscywgd2UgaW1wb3J0IHRoaXMgdGhhdCBlbmRzIGluIF9jb250cmFjdC4gV2hlbiBjYWxsaW5nIG91cnNlbHZlcyBpbiBhIGNhbGxiYWNrLCBpdCBpcyBjb252ZW50aW9uIHRvIGNhbGwgaXQgVEhJU19zZWxmLiIKICAgfSwKICAgewogICAgICJudW0iOiA2LAogICAgICJzdGFydCI6IHsKICAgICAgICJ4IjogMCwKICAgICAgICJ5IjogOAogICAgIH0sCiAgICAgImRpcmVjdGlvbiI6ICJBY3Jvc3MiLAogICAgICJsZW5ndGgiOiA4LAogICAgICJjbHVlIjogIlVzZSB0aGlzIHRvIGRldGVybWluZSB0aGUgZXhlY3V0aW9uIG91dGNvbWUgb2YgYSBjcm9zcy1jb250cmFjdCBjYWxsIG9yIEFjdGlvbi4iCiAgIH0sCiAgIHsKICAgICAibnVtIjogNywKICAgICAic3RhcnQiOiB7CiAgICAgICAieCI6IDQsCiAgICAgICAieSI6IDYKICAgICB9LAogICAgICJkaXJlY3Rpb24iOiAiQWNyb3NzIiwKICAgICAibGVuZ3RoIjogNCwKICAgICAiY2x1ZSI6ICJZb3UgY2hhaW4gdGhpcyBzeW50YXggb250byBhIHByb21pc2UgaW4gb3JkZXIgdG8gc2NoZWR1bGUgYSBjYWxsYmFjayBhZnRlcndhcmQuIgogICB9CiAgXQp9"
-}' --accountId $NEAR_ACCT
+}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as $NEAR_ACCT network-config testnet sign-with-legacy-keychain send
 ```
 
 프로젝트 루트(`contract` 디렉토리가 아님)로 돌아가서 앱을 실행하고, 새로운 십자말풀이 퍼즐을 볼 수 있습니다.
 
-    CONTRACT_NAME=crossword.friend.testnet npm run start
+```bash
+CONTRACT_NAME=crossword.friend.testnet npm run start
+```
 
 ## 마무리
 

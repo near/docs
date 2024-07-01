@@ -1,7 +1,7 @@
 {
   "id": "build/near-components/anatomy/bos-components",
   "title": "Historical data",
-  "description": "We no longer recommend building on BOS due to its limited capabilities and discontinued security maintenance. Developers with active projects on BOS are encouraged to migrate to another deployment strategy.",
+  "description": "Building components that handle historical blockchain data require dedicated solutions that manage the data and reduce the latency of requests, as it's not possible to scan the whole blockchain when a user makes a request.",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.build/3.near-components/anatomy/bos-components.md",
   "sourceDirName": "2.build/3.near-components/anatomy",
   "slug": "/build/near-components/anatomy/bos-components",

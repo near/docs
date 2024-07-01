@@ -6,7 +6,7 @@ sidebar_label: 컨트랙트 업그레이드
 
 import {Github} from "@site/src/components/codetabs"
 
-이 튜토리얼에서는 이전에 스마트 컨트랙트 뼈대에서 [발행 기능](/tutorials/nfts/minting)을 구현하기 위해 수행한 작업들을 빌드합니다. 당신은 NFT를 발행할 수 있는 지점에 도달했고, 당신이 NFT를 소유하고 있다는 사실에 지갑을 올바르게 집어 들었습니다. NFT를 발행할 수 있는 지점에 도달했지만, 컨트랙트가 지갑이 호출하려는 메서드를 구현하지 않았기 때문에 지갑은 토큰을 표시할 방법이 없습니다.
+In this tutorial, you'll build off the work you previously did to implement the [minting functionality](2-minting.md) on a skeleton smart contract. 당신은 NFT를 발행할 수 있는 지점에 도달했고, 당신이 NFT를 소유하고 있다는 사실에 지갑을 올바르게 집어 들었습니다. NFT를 발행할 수 있는 지점에 도달했지만, 컨트랙트가 지갑이 호출하려는 메서드를 구현하지 않았기 때문에 지갑은 토큰을 표시할 방법이 없습니다.
 
 ---
 
@@ -22,7 +22,7 @@ import {Github} from "@site/src/components/codetabs"
 
 NEAR 런타임은 디스크에서 직렬화된 상태를 읽고 현재 컨트랙트 코드를 사용하여 로드를 시도합니다. 코드가 변경되면 이를 수행하는 방법을 파악하지 못할 수 있습니다.
 
-컨트랙트를 전략적으로 업그레이드하고 런타임이 새 컨트랙트 코드로 현재 상태를 읽을 수 있는지 확인해야 합니다. 컨트랙트 업그레이드 및 몇 가지 모범 사례에 대한 자세한 내용은 NEAR SDK의 [컨트랙트 업그레이드](/sdk/rust/building/prototyping) 문서를 참조하세요.
+컨트랙트를 전략적으로 업그레이드하고 런타임이 새 컨트랙트 코드로 현재 상태를 읽을 수 있는지 확인해야 합니다. For more information about upgrading contracts and some best practices, see the NEAR SDK's [upgrading contracts](../../2.build/2.smart-contracts/release/upgrade.md) write-up.
 
 ---
 
@@ -53,7 +53,7 @@ cargo near deploy $NFT_CONTRACT_ID without-init-call network-config testnet sign
 Once the contract has been redeployed, let's test and see if the state migrated correctly by running a simple view function:
 
 ```bash
-near view $NFT_CONTRACT_ID nft_metadata
+near contract call-function as-read-only $NFT_CONTRACT_ID nft_metadata json-args {} network-config testnet now
 ```
 
 This should return an output similar to the following:
@@ -73,7 +73,7 @@ This should return an output similar to the following:
 **Go team!** At this point, you can now test and see if the new function you wrote works correctly. Let's query for the list of tokens that you own:
 
 ```bash
-near view $NFT_CONTRACT_ID nft_tokens_for_owner '{"account_id": "'$NFT_CONTRACT_ID'", "limit": 5}'
+near contract call-function as-read-only $NFT_CONTRACT_ID nft_tokens_for_owner json-args '{"account_id": "'$NFT_CONTRACT_ID'", "limit": 5}' network-config testnet now
 ```
 
 <details>
@@ -110,7 +110,7 @@ near view $NFT_CONTRACT_ID nft_tokens_for_owner '{"account_id": "'$NFT_CONTRACT_
 
 ## 지갑에서 NFT 보기 {#viewing-nfts-in-wallet}
 
-Now that your contract implements the necessary functions that the wallet uses to display NFTs, you should be able to see your tokens on display in the [collectibles tab](https://testnet.mynearwallet.com//?tab=collectibles).
+Now that your contract implements the necessary functions that the wallet uses to display NFTs, you should be able to see your tokens on display in the [collectibles tab](https://testnet.mynearwallet.com/?tab=collectibles).
 
 ![filled-nft-in-wallet](/docs/assets/nfts/filled-nft-in-wallet.png)
 
@@ -120,14 +120,15 @@ Now that your contract implements the necessary functions that the wallet uses t
 
 In this tutorial, you learned about the basics of [upgrading contracts](#upgrading-contracts). Then, you implemented the necessary [modifications to your smart contract](#modifications-to-contract) and [redeployed it](#redeploying-contract). Finally you navigated to the wallet collectibles tab and [viewed your NFTs](#viewing-nfts-in-wallet).
 
-In the [next tutorial](/tutorials/nfts/enumeration), you'll implement the remaining functions needed to complete the [enumeration](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration) standard.
+In the [next tutorial](3-enumeration.md), you'll implement the remaining functions needed to complete the [enumeration](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration) standard.
 
 :::note Versioning for this article
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `4.0.13`
+- rustc: `1.77.1`
+- near-cli-rs: `0.11.0`
 - cargo-near `0.6.1`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
 
 :::

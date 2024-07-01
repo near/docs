@@ -1,0 +1,27 @@
+{
+  "id": "build/smart-contracts/anatomy/reduce-size",
+  "title": "Reducing Contract Size",
+  "description": "Advice & examples",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.build/2.smart-contracts/anatomy/reduce-size.md",
+  "sourceDirName": "2.build/2.smart-contracts/anatomy",
+  "slug": "/build/smart-contracts/anatomy/reduce-size",
+  "permalink": "/vi/build/smart-contracts/anatomy/reduce-size",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/anatomy/reduce-size.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "reduce-size",
+    "title": "Reducing Contract Size"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Serialization Protocols",
+    "permalink": "/vi/build/smart-contracts/anatomy/serialization-protocols"
+  },
+  "next": {
+    "title": "Reproducible Builds",
+    "permalink": "/vi/build/smart-contracts/anatomy/reproducible-builds"
+  }
+}

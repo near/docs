@@ -15,7 +15,7 @@ import enumBox from '/docs/assets/crosswords/enum-a-d-block--eizaconiendo.near--
 
 Rust에 익숙하지 않다면, 다른 프로그래밍 언어와 같은 클래스나 상속이 없다는 것이 혼란스러울 수 있습니다. 우리는 클래스와 비슷하지만 아마도 더 [간단한 구조체](https://doc.rust-lang.org/book/ch05-01-defining-structs.html)를 사용하는 방법을 탐구할 것입니다.
 
-[`#[near_bindgen]` 매크로](/sdk/rust/contract-structure/near-bindgen)를 배치하는 구조체는 하나만 있음을 기억하세요. 원하는 경우 기본 구조체 또는 싱글톤이 될 수 있습니다. 종종 기본 구조체에는 추가 구조체가 포함되며, 이 구조체는 깔끔하고 정돈된 방식으로 더 많은 구조체를 포함할 수 있습니다. 프론트엔드와 같이 최종 사용자에게 데이터를 반환하는 데 사용되는 구조체가 있을 수도 있습니다. 이 챕터에서는 이 두 경우를 모두 다룰 것입니다.
+Remember that there will be only one struct that gets the [`#[near]` macro](../../../2.build/2.smart-contracts/anatomy/anatomy.md) placed on it; our primary struct or singleton if you wish. 종종 기본 구조체에는 추가 구조체가 포함되며, 이 구조체는 깔끔하고 정돈된 방식으로 더 많은 구조체를 포함할 수 있습니다. 프론트엔드와 같이 최종 사용자에게 데이터를 반환하는 데 사용되는 구조체가 있을 수도 있습니다. 이 챕터에서는 이 두 경우를 모두 다룰 것입니다.
 
 ### 열거형
 
@@ -49,7 +49,7 @@ Rust에는 열거형이 추가 데이터를 포함할 수 있는 흥미로운 �
 기본 구조체부터 시작해 보겠습니다.
 
 ```rust
-#[near(contract_state]
+#[near(contract_state)]
 #[derive(PanicOnDefault)]
 pub struct Crossword {
     puzzles: LookupMap<String, Puzzle>,  // ⟵ Puzzle is a struct we're defining
@@ -124,7 +124,7 @@ pub fn return_some_words() -> Vec<String> {
 
 `["crossword", "puzzle"]`
 
-다소 고급 개념이긴 하지만, [여기](/sdk/rust/contract-interface/serialization-interface#overriding-serialization-protocol-default)에서 직렬화 변경에 대해 자세히 알아볼 수 있습니다. :::
+While somewhat advanced, you can learn more about [changing the serialization here](../../../2.build/2.smart-contracts/anatomy/serialization-interface.md). :::
 
 우리는 우리가 보여준 `Puzzle` 구조체와 다른 구조체 `JsonPuzzle`을 호출했습니다. 여기에는 한 가지 차이점이 있습니다: `solution_hash` 필드가 추가되었다는 것입니다.
 

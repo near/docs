@@ -14,7 +14,7 @@ To complete these tutorials successfully, you'll need:
 
 - [Rust](https://www.rust-lang.org/tools/install)
 - [A Testnet wallet](https://testnet.mynearwallet.com/create)
-- [NEAR-CLI](/tools/near-cli#setup)
+- [NEAR-CLI-RS](../../4.tools/cli-rs.md#setup)
 - [cargo-near](https://github.com/near/cargo-near)
 
 :::info Bạn mới đến với Rust? If you are new to Rust and want to dive into smart contract development, our [Quick-start guide](../../2.build/2.smart-contracts/quickstart.md) is a great place to start :::
@@ -33,15 +33,10 @@ Chỉ vài bước bạn sẽ từ **_Zero_** trở thành **_Hero_** trong mộ
 | 4    | [Upgrade một contract](/tutorials/nfts/upgrade-contract)            | Khám phá quy trình upgrade một smart contract có sẵn.                                                                   |
 | 5    | [Enumeration](/tutorials/nfts/enumeration)                          | Khám phá các enumeration method có thể được dùng để trả về các state của smart contract.                                |
 | 6    | [Core](/tutorials/nfts/core)                                        | Extend the NFT contract using the core standard which allows token transfer.                                            |
-| 7    | [Các Approval](/tutorials/nfts/approvals)                           | Mở rộng contract cho phép các account khác có thể transfer các NFT thay mặt bạn.                                        |
-| 8    | [Royalty](/tutorials/nfts/royalty)                                  | Thêm các NFT royalty để cho phép cài đặt tỷ lệ phần trăm sẽ trả cho người tạo token.                                    |
-| 9    | [Marketplace](/tutorials/nfts/marketplace)                          | Learn about how common marketplaces operate on NEAR and dive into some of the code that allows buying and selling NFTs. |
-
-
-<!--
-1. [Events](/tutorials/nfts/events): in this tutorial you'll explore the events extension, allowing the contract to react on certain events.
-2. [Marketplace](/tutorials/nfts/marketplace): in the last tutorial you'll be exploring some key aspects of the marketplace contract.
--->
+| 7    | [Events](/tutorials/nfts/events)                                    | The events extension, allowing the contract to react on certain events.                                                 |
+| 8    | [Các Approval](/tutorials/nfts/approvals)                           | Mở rộng contract cho phép các account khác có thể transfer các NFT thay mặt bạn.                                        |
+| 9    | [Royalty](/tutorials/nfts/royalty)                                  | Thêm các NFT royalty để cho phép cài đặt tỷ lệ phần trăm sẽ trả cho người tạo token.                                    |
+| 10   | [Marketplace](/tutorials/nfts/marketplace)                          | Learn about how common marketplaces operate on NEAR and dive into some of the code that allows buying and selling NFTs. |
 
 ---
 

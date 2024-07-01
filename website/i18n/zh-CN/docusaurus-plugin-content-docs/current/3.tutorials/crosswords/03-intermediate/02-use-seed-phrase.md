@@ -15,7 +15,9 @@ There are two separate things we'll want to do:
 
 We can add the `near-seed-phrase` package to our project with:
 
-    npm install near-seed-phrase --save
+```bash
+npm install near-seed-phrase --save
+```
 
 :::note Code snippets for this chapter At this point in the tutorial, it's more difficult to share code snippets that are both meaningful and meant to be copy/pasted into a project.
 
@@ -37,9 +39,9 @@ localStorage.setItem('playerKeyPair', JSON.stringify(seedPhrase));
 
 ```js
 import { parseSeedPhrase } from 'near-seed-phrase';
-// Get the seed phrase from the completed puzzle. 
-// The original puzzle creator would have already called this same function with the same inputs and would have 
-// already called `AddKey` on this contract to add the key related to this seed phrase. Here, using this deterministic 
+// Get the seed phrase from the completed puzzle.
+// The original puzzle creator would have already called this same function with the same inputs and would have
+// already called `AddKey` on this contract to add the key related to this seed phrase. Here, using this deterministic
 // function, the front-end will automatically generate that same key based on the inputs from the winner.
 import { parseSeedPhrase } from 'near-seed-phrase';
 // Get the seed phrase from the completed puzzle. 

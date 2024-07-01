@@ -170,10 +170,12 @@ warning: `fungible-token` (lib) generated 25 warnings
 
 You've seen the layout of this FT smart contract, and how all the functions are laid out across the different source files. Using `yarn`, you've been able to compile the contract, and you'll start fleshing out this skeleton in the next [section](/tutorials/fts/circulating-supply) of the tutorial.
 
+---
+
 :::note Versioning for this article
 At the time of this writing, this example works with the following versions:
 
-- rustc: `1.76.0`
+- rustc: `1.77.1`
 - near-sdk-rs: `5.1.0` (with enabled `legacy` feature)
 - cargo-near: `0.6.1`
 :::

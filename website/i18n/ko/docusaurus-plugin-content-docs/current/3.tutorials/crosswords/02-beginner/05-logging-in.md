@@ -66,28 +66,28 @@ NEAR에서 계정에 키를 추가(및 제거)할 수 있습니다. 키에는 �
 
 ### 키가 있는 예시 계정
 
-하나의 전체 액세스 키와 두 개의 함수 호출 액세스 키가 있는 테스트넷 계정을 살펴보겠습니다. 보시다시피 NEAR CLI [명령 `keys`](https://docs.near.org/tools/near-cli#near-keys)를 사용하여 다음과 같은 정보를 출력합니다.
+Let's look at this `testnet` account that has one full-access key and two function-call access keys. As you can see, we use the [NEAR CLI](../../../4.tools/cli-rs.md) to print this info.
 
-<img src={tutorialAccessKeys} alt="계정에 대한 액세스 키를 보여주는 터미널 화면. 하나의 전체 액세스 키와 두 개의 기능 호출 액세스 키가 있습니다" />
+```bash
+near account list-keys friend.testnet network-config testnet now
+```
 
-각 키에 대해 자세히 살펴보겠습니다.
+```
++----+------------------------------------------------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| #  | Public Key                                           | Nonce           | Permissions                                                                                                                                                                                        |
++----+------------------------------------------------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 1  | ed25519:QqggnQNPRh5rqxL5PCPSS8qbZyrm6KHBbjne3U9TDGN  | 72772126000000  | do any function calls on puzzle.testnet with an allowance of 777 NEAR                                                                                                        |
+| 2  | ed25519:FgsZoPqnSkuvoR6BZzXUY48tb5UfaCrRfg8kf4vyRg4F | 72777733000000  | only do ["foo", "bar"] function calls on puzzle.testnet with an allowance of 0.250 NEAR                                                                                  |
+| 3  | ed25519:Hht8gURhPpDB2muhZhkEgxbdy4c2CPiQdUDMVuK7zDLd | 72770704000019  | full access                                                                                                                                                                                        |
++----+------------------------------------------------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+```
+
+Let's look deeper into each key.
 
 #### First key
 
-```js
-{
-  access_key: {
-    nonce: 72772126000000, // Large nonce, huh!
-      permission: {
-      FunctionCall: {
-        allowance: '777000000000000000000000000', // Equivalent to 777 NEAR
-          method_names: [], // Any methods can be called
-          receiver_id: 'puzzle.testnet' // This key can only call methods on puzzle.testnet
-      }
-    }
-  },
-  public_key: 'ed25519:9Hhm77W4KCFzFgK55sZgEMesYRaL8wV1kpqh8qntnSPV'
-}
+```sh
+| 1  | ed25519:QqggnQNPRh5rqxL5PCPSS8qbZyrm6KHBbjne3U9TDGN  | 72772126000000  | do any function calls on puzzle.testnet with an allowance of 777 NEAR                                                                                                        |
 ```
 
 위 이미지의 첫 번째 키는 **모든 메서드**에서 스마트 컨트랙트 `puzzle.testnet`을 호출할 수 있는 함수 호출 액세스 키입니다. 만약 호출할 수 있는 메서드를 지정하지 않으면, 모든 메서드를 호출할 수 있습니다. 이를 나타내는 `method_names` 옆에 있는 빈 배열(`[]`)에 주의하세요.
@@ -102,20 +102,8 @@ NEAR에서 계정에 키를 추가(및 제거)할 수 있습니다. 키에는 �
 
 #### Second key
 
-```js
-{
-  access_key: {
-    nonce: 72777733000000,
-    permission: {
-      FunctionCall: {
-        allowance: '250000000000000000000000', // 0.25 NEAR, which is a typical allowance
-        method_names: [ 'foo', 'bar' ], // Can call methods foo and bar only
-        receiver_id: 'puzzle.testnet'
-      }
-    }
-  },
-  public_key: 'ed25519:CM4JtNo2sL3qPjWFn4MwusMQoZbHUSWaPGCCMrudZdDU'
-},
+```sh
+| 2  | ed25519:FgsZoPqnSkuvoR6BZzXUY48tb5UfaCrRfg8kf4vyRg4F | 72777733000000  | only do ["foo", "bar"] function calls on puzzle.testnet with an allowance of 0.250 NEAR                                                                                  |
 ```
 
 이 두 번째 키는 호출할 수 있는 메서드를 지정하고, 허용량이 더 낮습니다.
@@ -126,11 +114,8 @@ NEAR에서 "로그인"은 일반적으로 이와 같은 키를 계정에 추가�
 
 #### 세 번째 키
 
-```js
-{
-  access_key: { nonce: 72770704000019, permission: 'FullAccess' },
-  public_key: 'ed25519:FG4HjEPsvP5beScC3hkTLztQH8k9Qz9maTaumvPDa5t3'
-}
+```sh
+| 3  | ed25519:Hht8gURhPpDB2muhZhkEgxbdy4c2CPiQdUDMVuK7zDLd | 72770704000019  | full access                                                                                                                                                                                        |
 ```
 
 세 개의 키가 있는 키 체인입니다.
@@ -163,4 +148,4 @@ NEAR로 로그인하면 최종 사용자가 자신의 계정과 dApp과 상호 �
 
 액세스 키의 개념은 매우 중요하기 때문에 개선된 십자말풀이 퍼즐을 위한 코드를 실제로 구현하지 않고 이 주제에 대해 평소보다 더 많은 시간을 할애했습니다.
 
-다음 섹션으로 이동하여 실제로 로그인 버튼을 추가해 보겠습니다.  
+다음 섹션으로 이동하여 실제로 로그인 버튼을 추가해 보겠습니다.

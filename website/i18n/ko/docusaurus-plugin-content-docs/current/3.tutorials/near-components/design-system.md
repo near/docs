@@ -56,7 +56,7 @@ return (
 
 :::tip 래퍼 사용
 
-[래퍼를 사용한 예제 위젯](https://near.org/#/near/widget/ComponentDetailsPage?src=near/widget/RadixTooltipTest)
+[Example widget using Wrapper](https://dev.near.org/#/near/widget/ComponentDetailsPage?src=near/widget/RadixTooltipTest)
 
 :::
 
@@ -106,7 +106,7 @@ return (
 
 :::tip styled-components 사용
 
-[Radix UI 스타일링을 위한 styled components를 사용한 위젯 예시](https://near.org/#/near/widget/ComponentDetailsPage?src=near/widget/RadixSwitchTest)
+[Example widget using styled components to style Radix UI](https://dev.near.org/#/near/widget/ComponentDetailsPage?src=near/widget/RadixSwitchTest).
 
 :::
 
@@ -711,7 +711,7 @@ return (<Widget
 This component wraps all of NEAR Components so you don't need to render it yourself.
 
 :::tip
-You can use any of the [CSS variables](https://dev.near.org/near/widget/ComponentDetailsPage?src=near/widget/DIG.Theme\&tab=source) defined inside `DIG.Theme`.
+You can use any of the [CSS variables](https://near.org/near/widget/ComponentDetailsPage?src=near/widget/DIG.Theme\&tab=source) defined inside `DIG.Theme`.
 :::
 
 ---

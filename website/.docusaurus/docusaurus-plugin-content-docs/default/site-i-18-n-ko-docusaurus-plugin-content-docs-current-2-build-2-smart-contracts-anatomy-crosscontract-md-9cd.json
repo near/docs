@@ -1,7 +1,7 @@
 {
   "id": "build/smart-contracts/anatomy/crosscontract",
   "title": "교차 컨트랙트 호출",
-  "description": "Cross-contract calls allow your contract to interact with other deployed contracts. 이는 다음과 같은 상황에서 유용하게 사용됩니다.",
+  "description": "Your contract can interact with other deployed contracts, querying information and executing functions on them.",
   "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/2.smart-contracts/anatomy/crosscontract.md",
   "sourceDirName": "2.build/2.smart-contracts/anatomy",
   "slug": "/build/smart-contracts/anatomy/crosscontract",

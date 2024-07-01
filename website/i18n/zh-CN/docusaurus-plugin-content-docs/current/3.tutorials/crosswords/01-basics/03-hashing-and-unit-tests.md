@@ -26,30 +26,11 @@ As mentioned in the first section of this **Basics** chapter, our smart contract
 
 We'll add a dependency to the [hex crate](https://crates.io/crates/hex) to make things easier. As you may remember, dependencies live in the manifest file. As you may remember, dependencies live in the manifest file.
 
-<Github language="rust" start="10" end="12" url="https://github.com/near-examples/crossword-tutorial-chapter-1/blob/481a83f0c90398f3234ce8006af4e232d6c779d7/contract/Cargo.toml" />
+<Github language="rust" start="10" end="12" url="https://github.com/near-examples/crossword-tutorial-chapter-1/blob/master/contract/Cargo.toml" />
 
 Let's write a unit test that acts as a helper during development. Let's write a unit test that acts as a helper during development. This unit test will sha256 hash the input **"near nomicon ref finance"** and print it in a human-readable, hex format. (We'll typically put unit tests at the bottom of the `lib.rs` file.) (We'll typically put unit tests at the bottom of the `lib.rs` file.)
 
-```rust
-#[cfg(test)]
-mod tests {
-    use super::*;
-    use near_sdk::test_utils::{get_logs, VMContextBuilder};
-    use near_sdk::{testing_env, AccountId};
-
-    #[test]
-    fn debug_get_hash() {
-        // Basic set up for a unit test
-        testing_env!(VMContextBuilder::new().build());
-
-        // Using a unit test to rapidly debug and iterate
-        let debug_solution = "near nomicon ref finance";
-        let debug_hash_bytes = env::sha256(debug_solution.as_bytes());
-        let debug_hash_string = hex::encode(debug_hash_bytes);
-        println!("Let's debug: {:?}", debug_hash_string);
-    }
-}
-```
+<Github language="rust" start="43" end="60" url="https://github.com/near-examples/crossword-tutorial-chapter-1/blob/master/contract/src/lib.rs" />
 
 :::info What is that `{:?}` thing? :::info What is that `{:?}` thing? Take a look at different formatting traits that are covered in the [`std` Rust docs](https://doc.rust-lang.org/std/fmt/index.html#formatting-traits) regarding this. This is a `Debug` formatting trait and can prove to be useful during development. ::: This is a `Debug` formatting trait and can prove to be useful during development. :::
 
@@ -79,7 +60,7 @@ This means when you sha256 the input **"near nomicon ref finance"** it produces 
 cargo test
 ```
 
-Note that the test command we ran had additional flags. Those flags told Rust *not to hide the output* from the tests. Note that the test command we ran had additional flags. Those flags told Rust *not to hide the output* from the tests. You can read more about this in [the cargo docs](https://doc.rust-lang.org/cargo/commands/cargo-test.html#display-options). Go ahead and try running the tests using the command above, without the additional flags, and note that we won't see the debug message. ::: Go ahead and try running the tests using the command above, without the additional flags, and note that we won't see the debug message. :::
+Note that the test command we ran had additional flags. Those flags told Rust **not to hide the output** from the tests. Note that the test command we ran had additional flags. Those flags told Rust *not to hide the output* from the tests. You can read more about this in [the cargo docs](https://doc.rust-lang.org/cargo/commands/cargo-test.html#display-options). Go ahead and try running the tests using the command above, without the additional flags, and note that we won't see the debug message. ::: Go ahead and try running the tests using the command above, without the additional flags, and note that we won't see the debug message. :::
 
 The unit test above is meant for debugging and quickly running snippets of code. Some may find this a useful technique when getting familiar with Rust and writing smart contracts. The unit test above is meant for debugging and quickly running snippets of code. Some may find this a useful technique when getting familiar with Rust and writing smart contracts. Next we'll write a real unit test that applies to this early version of our crossword puzzle contract.
 
@@ -87,13 +68,13 @@ The unit test above is meant for debugging and quickly running snippets of code.
 
 Let's add this unit test (inside the `mod tests {}` block, under our previous unit test) and analyze it:
 
-<Github language="rust" start="63" end="93" url="https://github.com/near-examples/crossword-tutorial-chapter-1/blob/5bce1c2a604fcb179e9789de1f299063f91abb4d/contract/src/lib.rs" />
+<Github language="rust" start="62" end="92" url="https://github.com/near-examples/crossword-tutorial-chapter-1/blob/master/contract/src/lib.rs" />
 
 The first few lines of code will be used commonly when writing unit tests. The first few lines of code will be used commonly when writing unit tests. It uses the `VMContextBuilder` to create some basic context for a transaction, then sets up the testing environment.
 
 Next, an object is created representing the contract and the `set_solution` function is called. After that, the `guess_solution` function is called twice: first with the incorrect solution and then the correct one. We can check the logs to determine that the function is acting as expected. After that, the `guess_solution` function is called twice: first with the incorrect solution and then the correct one. We can check the logs to determine that the function is acting as expected.
 
-:::info Note on assertions This unit test uses the [`assert_eq!`](https://doc.rust-lang.org/std/macro.assert_eq.html) macro. Similar macros like [`assert!`](https://doc.rust-lang.org/std/macro.assert.html) and [`assert_ne!`](https://doc.rust-lang.org/std/macro.assert_ne.html) are commonly used in Rust. These are great to use in unit tests. However, these will add unnecessary overhead when added to contract logic, and it's recommended to use the [`require!` macro](https://docs.rs/near-sdk/4.0.0-pre.2/near_sdk/macro.require.html). See more information on this and [other efficiency tips here](/sdk/rust/contract-size). ::: Similar macros like [`assert!`](https://doc.rust-lang.org/std/macro.assert.html) and [`assert_ne!`](https://doc.rust-lang.org/std/macro.assert_ne.html) are commonly used in Rust. These are great to use in unit tests. However, these will add unnecessary overhead when added to contract logic, and it's recommended to use the [`require!` macro](https://docs.rs/near-sdk/4.0.0-pre.2/near_sdk/macro.require.html). See more information on this and [other efficiency tips here](/sdk/rust/contract-size). :::
+:::info Note on assertions This unit test uses the [`assert_eq!`](https://doc.rust-lang.org/std/macro.assert_eq.html) macro. Similar macros like [`assert!`](https://doc.rust-lang.org/std/macro.assert.html) and [`assert_ne!`](https://doc.rust-lang.org/std/macro.assert_ne.html) are commonly used in Rust. These are great to use in unit tests. However, these will add unnecessary overhead when added to contract logic, and it's recommended to use the [`require!` macro](https://docs.rs/near-sdk/4.0.0-pre.2/near_sdk/macro.require.html). See more information on this and [other efficiency tips here](/sdk/rust/contract-size). ::: Similar macros like [`assert!`](https://doc.rust-lang.org/std/macro.assert.html) and [`assert_ne!`](https://doc.rust-lang.org/std/macro.assert_ne.html) are commonly used in Rust. These are great to use in unit tests. However, these will add unnecessary overhead when added to contract logic, and it's recommended to use the [`require!` macro](https://docs.rs/near-sdk/4.0.0-pre.2/near_sdk/macro.require.html). See more information on this and [other efficiency tips here](../../../2.build/2.smart-contracts/anatomy/reduce-size.md). :::
 
 Again, we can run all the unit tests with:
 
@@ -117,23 +98,27 @@ Let's have the solution be set once, right after deploying the smart contract.
 
 Here we'll use the [`#[near]` macro](https://docs.rs/near-sdk/latest/near_sdk/attr.near.html) on a function called `new`, which is a common pattern.
 
-<Github language="rust" start="10" end="17" url="https://github.com/near-examples/crossword-tutorial-chapter-1/blob/94f42e75cf70ed2aafb9c29a1faa1e21f079a49e/contract/src/lib.rs" />
+<Github language="rust" start="9" end="17" url="https://github.com/near-examples/crossword-tutorial-chapter-1/blob/master/contract/src/lib.rs" />
 
 Let's call this method on a fresh contract.
 
 ```bash
-# Build (for Windows it's build.bat)
-./build.sh
+# Go into the directory containing the Rust smart contract we've been working on
+cd contract
+
+# Build
+cargo near build
 
 # Create fresh account if you wish, which is good practice
-near delete crossword.friend.testnet friend.testnet
-near create-account crossword.friend.testnet --masterAccount friend.testnet
+near account delete-account crossword.friend.testnet beneficiary friend.testnet network-config testnet sign-with-legacy-keychain send
+
+near account create-account fund-myself crossword.friend.testnet '1 NEAR' autogenerate-new-keypair save-to-legacy-keychain sign-as friend.testnet network-config testnet sign-with-legacy-keychain send
 
 # Deploy
-near deploy crossword.friend.testnet --wasmFile res/my_crossword.wasm
+cargo near deploy crossword.friend.testnet without-init-call network-config testnet sign-with-legacy-keychain send
 
 # Call the "new" method
-near call crossword.friend.testnet new '{"solution": "69c2feb084439956193f4c21936025f14a5a5a78979d67ae34762e18a7206a0f"}' --accountId crossword.friend.testnet
+near contract call-function as-transaction crossword.friend.testnet new json-args '{"solution": "69c2feb084439956193f4c21936025f14a5a5a78979d67ae34762e18a7206a0f"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as crossword.friend.testnet network-config testnet sign-with-legacy-keychain send
 ```
 
 Now the crossword solution, as a hash, is stored instead. Now the crossword solution, as a hash, is stored instead. If you try calling the last command again, you'll get the error message, thanks to the `#[init]` macro: `The contract has already been initialized`
@@ -160,13 +145,12 @@ Let's run this again with the handy `--initFunction` and `--initArgs` flags:
 
 ```bash
 # Create fresh account if you wish, which is good practice
-near delete crossword.friend.testnet friend.testnet
-near create-account crossword.friend.testnet --masterAccount friend.testnet
+near account delete-account crossword.friend.testnet beneficiary friend.testnet network-config testnet sign-with-legacy-keychain send
+
+near account create-account fund-myself crossword.friend.testnet '1 NEAR' autogenerate-new-keypair save-to-legacy-keychain sign-as friend.testnet network-config testnet sign-with-legacy-keychain send
 
 # Deploy
-near deploy crossword.friend.testnet --wasmFile res/my_crossword.wasm \
-  --initFunction 'new' \
-  --initArgs '{"solution": "69c2feb084439956193f4c21936025f14a5a5a78979d67ae34762e18a7206a0f"}'
+cargo near deploy crossword.friend.testnet with-init-call new json-args '{"solution": "69c2feb084439956193f4c21936025f14a5a5a78979d67ae34762e18a7206a0f"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-legacy-keychain send
 ```
 
 Now that we're using Batch Actions, no one can call this `new` method before us.
@@ -188,8 +172,8 @@ We'll also modify our `guess_solution` to return a boolean value, which will als
 
 The `get_solution` method can be called with:
 
-```
-near view crossword.friend.testnet get_solution
+```bash
+near contract call-function as-read-only crossword.friend.testnet get_solution json-args {} network-config testnet now
 ```
 
 In the next section we'll add a simple frontend. In the next section we'll add a simple frontend. Following chapters will illustrate more NEAR concepts built on top of this idea.

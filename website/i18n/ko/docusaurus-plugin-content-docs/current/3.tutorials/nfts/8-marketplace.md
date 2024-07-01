@@ -171,13 +171,12 @@ Next, you'll deploy this contract to the network.
 
 ```bash
 export MARKETPLACE_CONTRACT_ID=<accountId>
-near create-account $MARKETPLACE_CONTRACT_ID --useFaucet
+near account create-account sponsor-by-faucet-service $MARKETPLACE_CONTRACT_ID autogenerate-new-keypair save-to-legacy-keychain network-config testnet create
 ```
 
 Using the build script, deploy the contract as you did in the previous tutorials:
 
 ```bash
-near deploy $MARKETPLACE_CONTRACT_ID out/market.wasm
 cargo near deploy $MARKETPLACE_CONTRACT_ID with-init-call new json-args '{"owner_id": "'$MARKETPLACE_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
 ```
 
@@ -188,9 +187,11 @@ cargo near deploy $MARKETPLACE_CONTRACT_ID with-init-call new json-args '{"owner
 Let's mint a new NFT token and approve a marketplace contract:
 
 ```bash
-near call $NFT_CONTRACT_ID nft_mint '{"token_id": "token-1", "metadata": {"title": "My Non Fungible Team Token", "description": "The Team Most Certainly Goes :)", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$NFT_CONTRACT_ID'"}' --accountId $NFT_CONTRACT_ID --amount 0.1
+near contract call-function as-transaction $NFT_CONTRACT_ID nft_mint json-args '{"token_id": "token-1", "metadata": {"title": "My Non Fungible Team Token", "description": "The Team Most Certainly Goes :)", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$NFT_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $NFT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
+```
 
-near call $NFT_CONTRACT_ID nft_approve '{"token_id": "token-1", "account_id": "'$MARKETPLACE_CONTRACT_ID'"}' --accountId $NFT_CONTRACT_ID --deposit 0.1
+```bash
+near contract call-function as-transaction $NFT_CONTRACT_ID nft_approve json-args '{"token_id": "token-1", "account_id": "'$MARKETPLACE_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $NFT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
 ```
 
 <hr className="subsection" />
@@ -198,7 +199,7 @@ near call $NFT_CONTRACT_ID nft_approve '{"token_id": "token-1", "account_id": "'
 ### Listing NFT on sale
 
 ```bash
-near call $MARKETPLACE_CONTRACT_ID list_nft_for_sale '{"nft_contract_id": "'$NFT_CONTRACT_ID'", "token_id": "token-1", "approval_id": 0, "msg": "{\"sale_conditions\": \"1\"}"}' --accountId $NFT_CONTRACT_ID --gas 30000000000000
+near contract call-function as-transaction $MARKETPLACE_CONTRACT_ID list_nft_for_sale json-args '{"nft_contract_id": "'$NFT_CONTRACT_ID'", "token_id": "token-1", "approval_id": 0, "msg": "{\"sale_conditions\": \"1\"}"}' prepaid-gas '300.0 Tgas' attached-deposit '0 NEAR' sign-as $NFT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
 ```
 
 <hr className="subsection" />
@@ -208,7 +209,7 @@ near call $MARKETPLACE_CONTRACT_ID list_nft_for_sale '{"nft_contract_id": "'$NFT
 마켓플레이스에 등록된 NFT의 총 공급량을 쿼리하려면 `get_supply_sales` 함수를 호출하면 됩니다. 아래에서 예를 볼 수 있습니다.
 
 ```bash
-near view $MARKETPLACE_CONTRACT_ID get_supply_sales
+near contract call-function as-read-only $MARKETPLACE_CONTRACT_ID get_supply_sales json-args {} network-config testnet now
 ```
 
 <hr className="subsection" />
@@ -218,7 +219,7 @@ near view $MARKETPLACE_CONTRACT_ID get_supply_sales
 마켓플레이스의 특정 소유자가 나열한 NFT의 총 공급량을 쿼리하려면 `get_supply_by_owner_id` 함수를 호출하면 됩니다. 아래에서 예를 볼 수 있습니다.
 
 ```bash
-near view $MARKETPLACE_CONTRACT_ID get_supply_by_owner_id '{"account_id": "'$NFT_CONTRACT_ID'"}'
+near contract call-function as-read-only $MARKETPLACE_CONTRACT_ID get_supply_by_owner_id json-args '{"account_id": "'$NFT_CONTRACT_ID'"}' network-config testnet now
 ```
 
 <hr className="subsection" />
@@ -228,7 +229,7 @@ near view $MARKETPLACE_CONTRACT_ID get_supply_by_owner_id '{"account_id": "'$NFT
 특정 컨트랙트에 속하는 NFT의 총 공급량을 쿼리하려면 `get_supply_by_nft_contract_id` 함수를 호출하면 됩니다. 아래에서 예를 볼 수 있습니다.
 
 ```bash
-near view $MARKETPLACE_CONTRACT_ID get_supply_by_nft_contract_id '{"nft_contract_id": "'$NFT_CONTRACT_ID'"}'
+near contract call-function as-read-only $MARKETPLACE_CONTRACT_ID get_supply_by_nft_contract_id json-args '{"nft_contract_id": "'$NFT_CONTRACT_ID'"}' network-config testnet now
 ```
 
 <hr className="subsection" />
@@ -238,19 +239,19 @@ near view $MARKETPLACE_CONTRACT_ID get_supply_by_nft_contract_id '{"nft_contract
 특정 리스팅에 대한 중요한 정보를 쿼리하기 위해 `get_sale` 함수를 호출할 수 있습니다. 이를 위해서 `nft_contract_token`을 통과해야 합니다. 이는 본질적으로 앞서 설명한 대로 마켓플레이스 컨트랙트 판매에 대한 고유 식별자입니다. 이는 NFT 컨트랙트와 `DELIMITER`, 토큰 ID로 구성됩니다. 이 컨트랙트에서, `DELIMITER`는 단순한 기간입니다: `.`.  이 쿼리의 예시는 아래에서 볼 수 있습니다.
 
 ```bash
-near view $MARKETPLACE_CONTRACT_ID get_sale '{"nft_contract_token": "'$NFT_CONTRACT_ID'.token-1"}'
+near contract call-function as-read-only $MARKETPLACE_CONTRACT_ID get_sale json-args '{"nft_contract_token": "'$NFT_CONTRACT_ID'.token-1"}' network-config testnet now
 ```
 
 또한 `get_sales_by_owner_id` 함수를 호출하여, 지정된 소유자의 목록에 대한 정보를 쿼리할 수 있습니다.
 
 ```bash
-near view $MARKETPLACE_CONTRACT_ID get_sales_by_owner_id '{"account_id": "'$NFT_CONTRACT_ID'", "from_index": "0", "limit": 5}'
+near contract call-function as-read-only $MARKETPLACE_CONTRACT_ID get_sales_by_owner_id json-args '{"account_id": "'$NFT_CONTRACT_ID'", "from_index": "0", "limit": 5}' network-config testnet now
 ```
 
 마지막으로 `get_sales_by_nft_contract_id` 함수를 호출하여 지정된 NFT 컨트랙트에서 발생한 리스팅에 대한 정보를 쿼리할 수 있습니다
 
 ```bash
-near view $MARKETPLACE_CONTRACT_ID get_sales_by_nft_contract_id '{"nft_contract_id": "'$NFT_CONTRACT_ID'", "from_index": "0", "limit": 5}'
+near contract call-function as-read-only $MARKETPLACE_CONTRACT_ID get_sales_by_nft_contract_id json-args '{"nft_contract_id": "'$NFT_CONTRACT_ID'", "from_index": "0", "limit": 5}' network-config testnet now
 ```
 
 ---
@@ -273,8 +274,9 @@ You went through the [NFTs listing process](#listing-logic). In addition, you we
 
 이 글을 쓰는 시점에서 이 예제는 다음 버전에서 작동합니다.
 
-- near-cli: `4.0.13`
+- rustc: `1.77.1`
+- near-cli-rs: `0.11.0`
 - cargo-near `0.6.1`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
 
 :::

@@ -1,5 +1,5 @@
 {
-  "/zh-CN/blog-180": {
+  "/zh-CN/blog-abf": {
     "__comp": "a6aa9e1f",
     "__context": {
       "plugin": "36994c47"
@@ -7,7 +7,7 @@
     "sidebar": "814f3328",
     "items": [
       {
-        "content": "d7b0583c"
+        "content": "ee453e68"
       },
       {
         "content": "9669618f"
@@ -53,7 +53,7 @@
     "sidebar": "814f3328",
     "content": "577614cd"
   },
-  "/zh-CN/blog/sdks-unified-444": {
+  "/zh-CN/blog/sdks-unified-c36": {
     "__comp": "ccc49370",
     "__context": {
       "data": {
@@ -62,7 +62,7 @@
       "plugin": "36994c47"
     },
     "sidebar": "814f3328",
-    "content": "f89d3054"
+    "content": "19436e3c"
   },
   "/zh-CN/blog/tags-958": {
     "__comp": "01a85c17",
@@ -124,7 +124,7 @@
     ],
     "__props": "85cfccb4"
   },
-  "/zh-CN/blog/tags/updates-a49": {
+  "/zh-CN/blog/tags/updates-a71": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "36994c47"
@@ -132,7 +132,7 @@
     "sidebar": "814f3328",
     "items": [
       {
-        "content": "d7b0583c"
+        "content": "ee453e68"
       },
       {
         "content": "136ffe2d"
@@ -187,17 +187,17 @@
       "plugin": "c141421f"
     }
   },
-  "/zh-CN/-49e": {
+  "/zh-CN/-5f4": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "aba21aa0"
     }
   },
-  "/zh-CN/-208": {
+  "/zh-CN/-fe1": {
     "__comp": "a7bd4aaa",
     "__props": "2d9c5935"
   },
-  "/zh-CN/-fc9": {
+  "/zh-CN/-2a9": {
     "__comp": "a94703ab"
   },
   "/zh-CN/api/rpc/access-keys-bbb": {
@@ -764,9 +764,9 @@
     "__comp": "17896441",
     "content": "4730762f"
   },
-  "/zh-CN/build/smart-contracts/anatomy/best-practices-ac9": {
+  "/zh-CN/build/smart-contracts/anatomy/best-practices-4ae": {
     "__comp": "17896441",
-    "content": "0baae461"
+    "content": "fab839f9"
   },
   "/zh-CN/build/smart-contracts/anatomy/collections-051": {
     "__comp": "17896441",
@@ -784,21 +784,21 @@
     "__comp": "17896441",
     "content": "91ed327c"
   },
-  "/zh-CN/build/smart-contracts/anatomy/reduce-size-f5d": {
+  "/zh-CN/build/smart-contracts/anatomy/reduce-size-1ad": {
     "__comp": "17896441",
-    "content": "3493b930"
+    "content": "0d4fa82a"
   },
-  "/zh-CN/build/smart-contracts/anatomy/reproducible-builds-368": {
+  "/zh-CN/build/smart-contracts/anatomy/reproducible-builds-8a2": {
     "__comp": "17896441",
-    "content": "70fa851f"
+    "content": "dd9e77c4"
   },
   "/zh-CN/build/smart-contracts/anatomy/serialization-776": {
     "__comp": "17896441",
     "content": "28938dcf"
   },
-  "/zh-CN/build/smart-contracts/anatomy/serialization-protocols-4f5": {
+  "/zh-CN/build/smart-contracts/anatomy/serialization-protocols-357": {
     "__comp": "17896441",
-    "content": "9065d938"
+    "content": "7bf0f8f4"
   },
   "/zh-CN/build/smart-contracts/anatomy/storage-5e9": {
     "__comp": "17896441",
@@ -1176,9 +1176,9 @@
     "__comp": "17896441",
     "content": "798262f1"
   },
-  "/zh-CN/tools/sdk-6d2": {
+  "/zh-CN/tools/sdk-a78": {
     "__comp": "17896441",
-    "content": "bf964fbb"
+    "content": "308571d7"
   },
   "/zh-CN/tools/wallet-selector-6f4": {
     "__comp": "17896441",

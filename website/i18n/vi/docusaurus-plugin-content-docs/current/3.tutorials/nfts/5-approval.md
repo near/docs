@@ -266,7 +266,7 @@ Next, you'll deploy this contract to the network.
 
 ```bash
 export APPROVAL_NFT_CONTRACT_ID=<accountId>
-near create-account $APPROVAL_NFT_CONTRACT_ID --useFaucet
+near account create-account sponsor-by-faucet-service $APPROVAL_NFT_CONTRACT_ID autogenerate-new-keypair save-to-legacy-keychain network-config testnet create
 ```
 
 Using the cargo-near, deploy and initialize the contract as you did in the previous tutorials:
@@ -282,13 +282,13 @@ cargo near deploy $APPROVAL_NFT_CONTRACT_ID with-init-call new_default_meta json
 Tiếp theo, bạn sẽ cần mint một token. Bằng cách chạy command này, bạn sẽ mint một token với token ID `"approval-token"` và người nhận sẽ là account mới của bạn.
 
 ```bash
-near call $APPROVAL_NFT_CONTRACT_ID nft_mint '{"token_id": "approval-token", "metadata": {"title": "Approval Token", "description": "testing out the new approval extension of the standard", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$APPROVAL_NFT_CONTRACT_ID'"}' --accountId $APPROVAL_NFT_CONTRACT_ID --amount 0.1
+near contract call-function as-transaction $APPROVAL_NFT_CONTRACT_ID nft_mint json-args '{"token_id": "approval-token", "metadata": {"title": "Approval Token", "description": "testing out the new approval extension of the standard", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$APPROVAL_NFT_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $APPROVAL_NFT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
 ```
 
 Bạn có thể kiểm tra xem mọi thứ có diễn ra bình thường hay không bằng cách gọi một trong các enumeration function:
 
 ```bash
-near view $APPROVAL_NFT_CONTRACT_ID nft_tokens_for_owner '{"account_id": "'$APPROVAL_NFT_CONTRACT_ID'", "limit": 10}'
+near contract call-function as-read-only $APPROVAL_NFT_CONTRACT_ID nft_tokens_for_owner json-args '{"account_id": "'$APPROVAL_NFT_CONTRACT_ID'", "limit": 10}' network-config testnet now
 ```
 
 Nó sẽ trả về một output trông giống như sau:
@@ -328,13 +328,13 @@ Tại thời điểm này, bạn sẽ có hai account. Một được lưu trữ
 Chạy command dưới đây để chấp thuận account đã lưu trữ trong `$NFT_CONTRACT_ID` có quyền truy cập để transfer NFT của bạn với một ID `"approval-token"`. Bạn không cần truyền một message bởi vì account cũ không tiến hành function `nft_on_approve`. Ngoài ra, bạn sẽ cần đính kèm đủ NEAR để đảm bảo chi phí lưu trữ account trên contract. 0.1 NEAR sẽ là quá đủ và bạn sẽ được hoàn lại bất kỳ phần dư thừa không sử dụng.
 
 ```bash
-near call $APPROVAL_NFT_CONTRACT_ID nft_approve '{"token_id": "approval-token", "account_id": "'$NFT_CONTRACT_ID'"}' --accountId $APPROVAL_NFT_CONTRACT_ID --deposit 0.1
+near contract call-function as-transaction $APPROVAL_NFT_CONTRACT_ID nft_approve json-args '{"token_id": "approval-token", "account_id": "'$NFT_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $NFT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
 ```
 
 Nếu bạn gọi cùng enumeration method như trước đó, bạn sẽ nhìn thấy approve account ID mới được trả lại.
 
 ```bash
-near view $APPROVAL_NFT_CONTRACT_ID nft_tokens_for_owner '{"account_id": "'$APPROVAL_NFT_CONTRACT_ID'", "limit": 10}'
+near contract call-function as-read-only $APPROVAL_NFT_CONTRACT_ID nft_tokens_for_owner json-args '{"account_id": "'$APPROVAL_NFT_CONTRACT_ID'", "limit": 10}' network-config testnet now
 ```
 
 Nó sẽ trả về một output trong giống như sau:
@@ -370,7 +370,7 @@ Nó sẽ trả về một output trong giống như sau:
 Bây giờ bạn đã chấp thuận account khác để transfer token, bạn có thể test hành động đó. Bạn sẽ có thể sử dụng account khác để transfer NFT sang chính nó, bằng cách đặt lại các approve account ID. Hãy test việc transfer NFT với một approval ID không đúng:
 
 ```bash
-near call $APPROVAL_NFT_CONTRACT_ID nft_transfer '{"receiver_id": "'$NFT_CONTRACT_ID'", "token_id": "approval-token", "approval_id": 1}' --accountId $NFT_CONTRACT_ID --depositYocto 1
+near contract call-function as-transaction $APPROVAL_NFT_CONTRACT_ID nft_transfer json-args '{"receiver_id": "'$NFT_CONTRACT_ID'", "token_id": "approval-token", "approval_id": 1}' prepaid-gas '100.0 Tgas' attached-deposit '1 yoctoNEAR' sign-as $NFT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
 ```
 
 <details>
@@ -391,7 +391,7 @@ kind: {
 Nếu bạn truyền vào approval ID chính xác là `0`, mọi thứ sẽ hoạt động tốt.
 
 ```bash
-near call $APPROVAL_NFT_CONTRACT_ID nft_transfer '{"receiver_id": "'$NFT_CONTRACT_ID'", "token_id": "approval-token", "approval_id": 0}' --accountId $NFT_CONTRACT_ID --depositYocto 1
+near contract call-function as-transaction $APPROVAL_NFT_CONTRACT_ID nft_transfer json-args '{"receiver_id": "'$NFT_CONTRACT_ID'", "token_id": "approval-token", "approval_id": 0}' prepaid-gas '100.0 Tgas' attached-deposit '1 yoctoNEAR' sign-as $NFT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
 ```
 
 Nếu bạn gọi enumeration method một lần nữa, bạn sẽ nhìn thấy chủ sở hữu được cập nhật và các approve account ID được đặt lại.
@@ -423,13 +423,13 @@ Nếu bạn gọi enumeration method một lần nữa, bạn sẽ nhìn thấy 
 Bây giờ chúng ta hãy test approval ID tăng dần trên các chủ sở hữu khác nhau. If you approve the account that originally minted the token, the approval ID should be 1 now.
 
 ```bash
-near call $APPROVAL_NFT_CONTRACT_ID nft_approve '{"token_id": "approval-token", "account_id": "'$APPROVAL_NFT_CONTRACT_ID'"}' --accountId $NFT_CONTRACT_ID --deposit 0.1
+near contract call-function as-transaction $APPROVAL_NFT_CONTRACT_ID nft_approve json-args '{"token_id": "approval-token", "account_id": "'$APPROVAL_NFT_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $NFT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
 ```
 
 Calling the view function again show now return an approval ID of 1 for the account that was approved.
 
 ```bash
-near view $APPROVAL_NFT_CONTRACT_ID nft_tokens_for_owner '{"account_id": "'$NFT_CONTRACT_ID'", "limit": 10}'
+near contract call-function as-read-only $APPROVAL_NFT_CONTRACT_ID nft_tokens_for_owner json-args '{"account_id": "'$NFT_CONTRACT_ID'", "limit": 10}' network-config testnet now
 ```
 
 <details>
@@ -483,15 +483,16 @@ Bạn đã tiến hành một view method để [kiểm tra](#check-if-account-a
 
 After this, the contract code was finished and it was time to move onto testing where you created an [account](#deployment) and tested the [approving](#approving-an-account) and [transferring](#transferring-the-nft) for your NFTs.
 
-Trong hướng dẫn tiếp theo, bạn sẽ học về các tiêu chuẩn royalty và làm cách nào bạn có thể tương tác được với các NFT marketplace.
+In the [next tutorial](6-royalty.md), you'll learn about the royalty standards and how you can interact with NFT marketplaces.
 
 :::note Versioning for this article
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `4.0.13`
+- rustc: `1.77.1`
+- near-cli-rs: `0.11.0`
 - cargo-near `0.6.1`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
 - Enumeration standard: [NEP181](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration), version `1.0.0`
 - Approval standard: [NEP178](https://nomicon.io/Standards/Tokens/NonFungibleToken/ApprovalManagement), version `1.1.0`
 

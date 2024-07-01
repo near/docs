@@ -1,7 +1,7 @@
 {
   "id": "tutorials/nfts/upgrade-contract",
   "title": "Việc Upgrade một Contract",
-  "description": "Trong hướng dẫn này, bạn sẽ nâng cấp những gì bạn đã làm trước đây để implement chức năng mint trên một bộ khung smart contract. Bạn đã đến thời điểm mà NFT có thể được mint và wallet đã chính thức xác nhận là bạn sở hữu một NFT. Tuy nhiên, không có cách nào để hiển thị các token vì contract của bạn không implement method mà wallet đang cố gắng call.",
+  "description": "In this tutorial, you'll build off the work you previously did to implement the minting functionality on a skeleton smart contract. Bạn đã đến thời điểm mà NFT có thể được mint và wallet đã chính thức xác nhận là bạn sở hữu một NFT. Tuy nhiên, không có cách nào để hiển thị các token vì contract của bạn không implement method mà wallet đang cố gắng call.",
   "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/3.tutorials/nfts/2-upgrade.md",
   "sourceDirName": "3.tutorials/nfts",
   "slug": "/tutorials/nfts/upgrade-contract",

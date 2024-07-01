@@ -14,7 +14,7 @@ To complete these tutorials successfully, you'll need:
 
 - [Rust](/build/smart-contracts/quickstart#prerequisites)
 - [A NEAR wallet](https://testnet.mynearwallet.com)
-- [NEAR-CLI JS](/tools/near-cli#setup)
+- [NEAR-CLI-RS](../../4.tools/cli-rs.md#install)
 - [cargo-near](https://github.com/near/cargo-near)
 
 :::info New to Rust?
@@ -50,11 +50,3 @@ If you are new to Rust and want to dive into smart contract development, our [Qu
 시작할 준비가 되셨습니까? [사전 배포된 컨트랙트](/tutorials/fts/predeployed-contract) 튜토리얼로 이동하여 학습을 시작하세요!
 
 대체 가능한 토큰과 스마트 컨트랙트에 대해 이미 알고 있다면, 건너뛰고 관심 있는 튜토리얼로 바로 이동하십시오. 튜토리얼은 주어진 지점에서 시작할 수 있도록 설계되었습니다!
-
-:::info Questions?
-👉 Join us on [Discord](https://near.chat/) and let us know in the `#development` channels. 👈
-
-We also host daily [Office Hours](https://pages.near.org/developers/get-help/office-hours/) live where the DevRel team will answer any questions you may have. 🤔
-
-월요일 – 금요일 오전 11시 – 오후 12시(태평양 표준시 오후 6시 – 오후 7시)
-:::

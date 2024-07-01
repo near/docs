@@ -23,7 +23,7 @@ We will define two methods for transferring NFTs:
 
 지금까지 사용자가 토큰을 생성하고 [열거 표준](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration)을 사용하여 정보를 볼 수 있는 간단한 NFT 스마트 컨트랙트를 만들었습니다. 오늘은 스마트 컨트랙트를 확장하여 사용자가 토큰을 발행할 뿐만 아니라 전송할 수도 있게 할 것입니다.
 
-[발행 튜토리얼](/tutorials/nfts/js/minting)에서 했던 것처럼, 문제를 여러 하위 작업으로 나누어 더 쉽게 만들어 봅시다. 토큰이 발행되면 정보는 3곳에 저장됩니다.
+As we did in the [minting tutorial](2-minting.md), let's break down the problem into multiple subtasks to make our lives easier. 토큰이 발행되면 정보는 3곳에 저장됩니다.
 
 - **tokens_per_owner**: 각 계정에 대한 토큰 집합입니다.
 - **tokens_by_id**: 토큰 ID를 `Token` 객체에 매핑합니다.
@@ -166,7 +166,7 @@ NFT를 `benjiman.testnet` 계정으로 전송하고, NFT가 더 이상 당신의
 :::tip 이전 튜토리얼에서 다른 토큰 ID를 사용한 경우, `token-1`을 그때 사용한 토큰 ID로 바꿉니다. :::
 
 ```bash
-near call $NFT_CONTRACT_ID nft_transfer '{"receiver_id": "benjiman.testnet", "token_id": "token-1", "memo": "Go Team :)"}' --accountId $NFT_CONTRACT_ID --depositYocto 1
+near contract call-function as-transaction $NFT_CONTRACT_ID nft_transfer json-args '{"receiver_id": "benjiman.testnet", "token_id": "token-1", "memo": "Go Team :)"}' prepaid-gas '100.0 Tgas' attached-deposit '1 yoctoNEAR' sign-as $NFT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
 ```
 
 이제 계정이 소유한 모든 토큰을 쿼리하면 해당 토큰이 없어야 합니다. 마찬가지로 `benjiman.testnet`가 소유한 토큰 목록을 쿼리하면, 해당 계정이 이제 NFT를 소유해야 합니다.
@@ -180,13 +180,13 @@ near call $NFT_CONTRACT_ID nft_transfer '{"receiver_id": "benjiman.testnet", "to
 먼저 전송 호출 기능을 테스트하는 데 사용할 새 NFT를 만듭니다.
 
 ```bash
-near call $NFT_CONTRACT_ID nft_mint '{"token_id": "token-2", "metadata": {"title": "NFT Tutorial Token", "description": "Testing the transfer call function", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$NFT_CONTRACT_ID'"}' --accountId $NFT_CONTRACT_ID --amount 0.1
+near contract call-function as-transaction $NFT_CONTRACT_ID nft_mint json-args '{"token_id": "token-2", "metadata": {"title": "NFT Tutorial Token", "description": "Testing the transfer call function", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$NFT_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $NFT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
 ```
 
 이제 토큰을 발행했으므로 이름에서 알 수 있듯이 컨트랙트가 없는 `no-contract.testnet` 계정으로 NFT를 전송할 수 있습니다. 이는 수신자가 `nft_on_transfer` 함수를 구현하지 않으며, 트랜잭션이 완료된 후 NFT가 당신의 것으로 유지되어야 함을 의미합니다.
 
 ```bash
-near call $NFT_CONTRACT_ID nft_transfer_call '{"receiver_id": "no-contract.testnet", "token_id": "token-2", "msg": "foo"}' --accountId $NFT_CONTRACT_ID --depositYocto 1 --gas 200000000000000
+near contract call-function as-transaction $NFT_CONTRACT_ID nft_transfer_call json-args '{"receiver_id": "no-contract.testnet", "token_id": "token-2", "msg": "foo"}' prepaid-gas '100.0 Tgas' attached-deposit '1 yoctoNEAR' sign-as $NFT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
 ```
 
 토큰을 쿼리하는 경우 토큰이 있어야 하며 이 시점에서 `token-2`를 가지고 있다면, 완료된 것입니다!
@@ -197,15 +197,16 @@ near call $NFT_CONTRACT_ID nft_transfer_call '{"receiver_id": "no-contract.testn
 
 이 튜토리얼에서는 발행 기능을 넘어 NFT 컨트랙트를 확장하는 방법을 배웠고, 사용자가 NFT를 전송하는 방법을 추가했습니다. 문제를 더 작고 이해하기 쉬운 하위 작업으로 [분류하고](#introduction), 해당 정보를 가져와 [NFT 전송](#transfer-function) 및 [NFT 전송 호출](#transfer-call-function) 함수를 모두 구현했습니다. 또한 스마트 컨트랙트에 다른 [패치 수정 사항](#redeploying-contract)을 배포하고 전송 기능을 [테스트](#testing-changes)했습니다.
 
-[다음 튜토리얼](/tutorials/nfts/approvals)에서는 승인 관리 시스템에 대해 알아보고, 다른 사람이 당신을 대신하여 토큰을 전송하도록 승인하는 방법을 알아봅니다.
+In the [next tutorial](5-approval.md), you'll learn about the approval management system and how you can approve others to transfer tokens on your behalf.
 
 :::note 문서 버전 관리
 
 글을 작성하는 시점에서, 해당 예제는 다음 버전에서 작동합니다.
 
-- near-cli: `4.0.13`
+- rustc: `1.77.1`
+- near-cli-rs: `0.11.0`
 - cargo-near `0.6.1`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
 - 열거 표준: [NEP181](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration), `1.0.0` 버전
 
 :::

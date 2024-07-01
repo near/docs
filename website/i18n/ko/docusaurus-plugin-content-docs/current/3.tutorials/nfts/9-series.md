@@ -7,10 +7,10 @@ sidebar_label: 게으른 발행, 컬렉션 등!
 import {Github} from "@site/src/components/codetabs"
 
 이 튜토리얼에서는 작업한 [기존 NFT 컨트랙트](https://github.com/near-examples/nft-tutorial)를 사용하여 생태계에서 가장 일반적인 요구 사항을 충족하도록 수정하는 방법을 배웁니다. 여기에는 다음이 포함됩니다.
-- NFT 게으른 발행(Lazy Minting)
-- 컬렉션 만들기
-- 발행 액세스 제한
-- 고도로 최적화된 스토리지
+- [NFT 게으른 발행(Lazy Minting)](#lazy-minting)
+- [컬렉션 만들기](#nft-collections-and-series)
+- [발행 액세스 제한](#restricted-access)
+- [고도로 최적화된 스토리지](#modifying-view-calls-for-optimizations)
 - 해킹 열거 메서드
 
 ---
@@ -207,14 +207,28 @@ If **no price** was specified in the series and the user attaches more deposit t
 view 함수는 아래에 나열되어 있습니다.
 - **[get_series_total_supply](https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs#L92)**: 현재 컨트랙트 있는 총 시리즈 수를 가져옵니다.
   - 인자: 없음.
+
+<Github language="rust" start="92" end="96" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs" />
+
 - **[get_series](https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs#L97)**: 컨트랙트의 모든 시리즈에 대해 페이지를 매기고, `JsonSeries` 객체의 벡터를 반환합니다.
   - 인자: `from_index: String | null`, `limit: number | null`.
+
+<Github language="rust" start="97" end="113" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs" />
+
 - **[get_series_details](https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs#L115)**: 특정 시리즈에 대한 `JsonSeries` 세부 정보를 가져옵니다.Get the
   - Arguments: `id: number`.
+
+<Github language="rust" start="115" end="131" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs" />
+
 - **[nft_supply_for_series](https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs#L133)**: 특정 시리즈에 대해 발행된 총 NFT 수를 봅니다.
   - Arguments: `id: number`.
+
+<Github language="rust" start="133" end="144" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs" />
+
 - **[nft_tokens_for_series](https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs#L146)**: 특정 시리즈에 대한 모든 NFT에 대해 페이지를 매기고, `JsonToken` 객체의 벡터를 반환합니다.
   - 인자: `id: number`, `from_index: String | null`, `limit: number | null`.
+
+<Github language="rust" start="146" end="183" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs" />
 
 이렇게 하면 전체 공급량과 함께 페이지 매김 함수의 `from_index` 및 `limit` 매개변수를 사용할 수 있으므로, 페이지 매김을 끝낼 위치를 알 수 있습니다. :::info 모든 페이지 매김 함수에 총 공급량을 보기 위한 게터도 포함되어 있습니다. :::
 
@@ -233,10 +247,10 @@ view 함수는 아래에 나열되어 있습니다.
 예를 들어 토큰에 `"My Amazing Go Team Gif"`라는 제목이 있고, NFT가 에디션 42인 경우, 반환되는 새 제목은 `"My Amazing Go Team Gif - 42"`입니다. NFT의 메타데이터에 제목이 없으면, 시리즈 및 에디션 번호가 `Series {} : Edition {}` 형식으로 반환됩니다.
 
 이는 작은 최적화이지만, 잠재적으로 많은 스토리지를 절약할 수 있으므로 이 아이디어는 매우 강력합니다. As an example: most of the time NFTs don't utilize the following fields in their metadata.
-- issued_at
-- expires_at
-- starts_at
-- updated_at
+- `issued_at`
+- `expires_at`
+- `starts_at`
+- `updated_at`
 
 최적화를 위해, 이러한 필드를 포함하지 않도록 컨트랙트에 **저장된** 토큰 메타데이터를 변경할 수 있지만, `nft_token`에서 정보를 반환할 때 간단히 `null` 값으로 추가할 수 있습니다.
 
@@ -269,7 +283,7 @@ Next, you'll deploy this contract to the network.
 
 ```bash
 export NFT_CONTRACT_ID=<accountId>
-near create-account $NFT_CONTRACT_ID --useFaucet
+near account create-account sponsor-by-faucet-service $NFT_CONTRACT_ID autogenerate-new-keypair save-to-legacy-keychain network-config testnet create
 ```
 
 환경 변수를 반영하여 이것이 올바르게 작동하는지 확인하세요.
@@ -284,17 +298,19 @@ cargo near deploy $NFT_CONTRACT_ID with-init-call new_default_meta json-args '{"
 
 이제 컨트랙트의 메타데이터를 쿼리하면 기본 메타데이터가 반환되어야 합니다.
 ```bash
-near view $NFT_CONTRACT_ID nft_metadata
+near contract call-function as-read-only $NFT_CONTRACT_ID nft_metadata json-args {} network-config testnet now
 ```
 
 ---
 
 ## 시리즈 생성
 
-다음 단계는 두 개의 다른 시리즈를 만드는 것입니다. 하나는 게으른 발행에 대한 가격이 있고, 다른 하나는 단순히 가격이 없는 기본 시리즈입니다. 첫 번째 단계는 두 시리즈를 만드는 데 사용할 수 있는 소유자인 [하위 계정(sub-account)](../../4.tools/cli.md#create-a-sub-account)을 만드는 것입니다.
+다음 단계는 두 개의 다른 시리즈를 만드는 것입니다. 하나는 게으른 발행에 대한 가격이 있고, 다른 하나는 단순히 가격이 없는 기본 시리즈입니다. The first step is to create an owner [sub-account](../../4.tools/cli-rs.md#accounts) that you can use to create both series
 
 ```bash
-near create-account owner.$NFT_CONTRACT_ID --masterAccount $NFT_CONTRACT_ID --initialBalance 3 && export SERIES_OWNER=owner.$NFT_CONTRACT_ID
+export SERIES_OWNER=owner.$NFT_CONTRACT_ID
+
+near account create-account fund-myself $SERIES_OWNER '3 NEAR' autogenerate-new-keypair save-to-legacy-keychain sign-as $NFT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
 ```
 
 ### 기본 시리즈
@@ -302,25 +318,28 @@ near create-account owner.$NFT_CONTRACT_ID --masterAccount $NFT_CONTRACT_ID --in
 이제 가격과 로열티가 없는 간단한 시리즈를 만들어야 합니다. 소유자 계정을 승인된 크리에이터로 추가하기 전에, 다음 명령을 실행하려고 하면 컨트랙트에서 오류가 발생합니다.
 
 ```bash
-near call $NFT_CONTRACT_ID create_series '{"id": 1, "metadata": {"title": "SERIES!", "description": "testing out the new series contract", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}}' --accountId $SERIES_OWNER --amount 1
+near contract call-function as-transaction $NFT_CONTRACT_ID create_series json-args '{"id": 1, "metadata": {"title": "SERIES!", "description": "testing out the new series contract", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}}' prepaid-gas '100.0 Tgas' attached-deposit '1 NEAR' sign-as $SERIES_OWNER network-config testnet sign-with-legacy-keychain send
 ```
 
 예상되는 출력은 다음과 같은 오류입니다: `ExecutionError: 'Smart contract panicked: only approved creators can add a type`. 이제 시리즈 소유자를 크리에이터로 추가하면 제대로 작동합니다.
 
 ```bash
-near call $NFT_CONTRACT_ID add_approved_creator '{"account_id": "'$SERIES_OWNER'"}' --accountId $NFT_CONTRACT_ID
+near contract call-function as-transaction $NFT_CONTRACT_ID add_approved_creator json-args '{"account_id": "'$SERIES_OWNER'"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as $NFT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
 ```
+
 ```bash
-near call $NFT_CONTRACT_ID create_series '{"id": 1, "metadata": {"title": "SERIES!", "description": "testing out the new series contract", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}}' --accountId $SERIES_OWNER --amount 1
+near contract call-function as-transaction $NFT_CONTRACT_ID create_series json-args '{"id": 1, "metadata": {"title": "SERIES!", "description": "testing out the new series contract", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}}' prepaid-gas '100.0 Tgas' attached-deposit '1 NEAR' sign-as $SERIES_OWNER network-config testnet sign-with-legacy-keychain send
 ```
 
 이제 시리즈 정보를 쿼리하면 제대로 작동합니다!
 
 ```bash
-near view $NFT_CONTRACT_ID get_series
+near contract call-function as-read-only $NFT_CONTRACT_ID get_series json-args {} network-config testnet now
 ```
+
 다음과 유사한 결과를 반환해야 합니다.
-```bash
+
+```js
 [
   {
     series_id: 1,
@@ -351,17 +370,18 @@ near view $NFT_CONTRACT_ID get_series
 이제 첫 번째 간단한 시리즈를 만들었으니, 가격이 1 $NEAR인 두 번째 시리즈를 만들어 보겠습니다.
 
 ```bash
-near call $NFT_CONTRACT_ID create_series '{"id": 2, "metadata": {"title": "COMPLEX SERIES!", "description": "testing out the new contract with a complex series", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "price": "500000000000000000000000"}' --accountId $SERIES_OWNER --amount 1
+near contract call-function as-transaction $NFT_CONTRACT_ID create_series json-args '{"id": 2, "metadata": {"title": "COMPLEX SERIES!", "description": "testing out the new contract with a complex series", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "price": "500000000000000000000000"}' prepaid-gas '100.0 Tgas' attached-deposit '1 NEAR' sign-as $SERIES_OWNER network-config testnet sign-with-legacy-keychain send
 ```
 
 이제 시리즈를 통해 다시 페이지를 매기면, 둘 다 표시되어야 합니다.
+
 ```bash
-near view $NFT_CONTRACT_ID get_series
+near contract call-function as-read-only $NFT_CONTRACT_ID get_series json-args {} network-config testnet now
 ```
 
 이는 다음을 포함합니다.
 
-```bash
+```js
 [
   {
     series_id: 1,
@@ -411,7 +431,9 @@ near view $NFT_CONTRACT_ID get_series
 두 시리즈를 모두 만들었으므로 이제 NFT를 만들 차례입니다. [`near login`](../../4.tools/cli.md#near-login)를 사용하여 기존 NEAR 지갑으로 로그인하거나, NFT 컨트랙트의 하위 계정을 만들 수 있습니다. 우리의 경우 하위 계정을 사용합니다.
 
 ```bash
-near create-account buyer.$NFT_CONTRACT_ID --masterAccount $NFT_CONTRACT_ID --initialBalance 1 && export BUYER_ID=buyer.$NFT_CONTRACT_ID
+export BUYER_ID=buyer.$NFT_CONTRACT_ID
+
+near account create-account fund-myself $BUYER_ID '1 NEAR' autogenerate-new-keypair save-to-legacy-keychain sign-as $NFT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
 ```
 
 ### 게으른 발행
@@ -426,13 +448,13 @@ export NFT_RECEIVER_ID=YOUR_ACCOUNT_ID_HERE
 이제 발행 명령을 실행하려고 하지만, 충분한 $NEAR를 첨부하지 않으면 오류가 발생합니다.
 
 ```bash
-near call $NFT_CONTRACT_ID nft_mint '{"id": "2", "receiver_id": "'$NFT_RECEIVER_ID'"}' --accountId $BUYER_ID
+near contract call-function as-transaction $NFT_CONTRACT_ID nft_mint json-args '{"id": "2", "receiver_id": "'$NFT_RECEIVER_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as $BUYER_ID network-config testnet sign-with-legacy-keychain send
 ```
 
 명령을 다시 실행하되, 이번에는 1.5 $NEAR를 첨부합니다.
 
 ```bash
-near call $NFT_CONTRACT_ID nft_mint '{"id": "2", "receiver_id": "'$NFT_RECEIVER_ID'"}' --accountId $BUYER_ID --amount 0.6
+near contract call-function as-transaction $NFT_CONTRACT_ID nft_mint json-args '{"id": "2", "receiver_id": "'$NFT_RECEIVER_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '1.5 NEAR' sign-as $BUYER_ID network-config testnet sign-with-legacy-keychain send
 ```
 
 그러면 다음과 같은 로그가 출력되어야 합니다.
@@ -457,19 +479,19 @@ If you check the explorer link, it should show that the owner received on the or
 가격 없이 간단한 시리즈에 대해 NFT를 발행하려고 하면 승인된 발행자가 아니라는 오류가 발생합니다.
 
 ```bash
-near call $NFT_CONTRACT_ID nft_mint '{"id": "1", "receiver_id": "'$NFT_RECEIVER_ID'"}' --accountId $BUYER_ID --amount 0.1
+near contract call-function as-transaction $NFT_CONTRACT_ID nft_mint json-args '{"id": "1", "receiver_id": "'$NFT_RECEIVER_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $BUYER_ID network-config testnet sign-with-legacy-keychain send
 ```
 
 계속해서 다음 명령을 실행하여 구매자 계정을 승인된 발행자로 추가하세요.
 
 ```bash
-near call $NFT_CONTRACT_ID add_approved_minter '{"account_id": "'$BUYER_ID'"}' --accountId $NFT_CONTRACT_ID
+near contract call-function as-transaction $NFT_CONTRACT_ID add_approved_minter json-args '{"account_id": "'$BUYER_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as $NFT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
 ```
 
 이제 발행 명령을 다시 실행하면, 제대로 작동합니다.
 
 ```bash
-near call $NFT_CONTRACT_ID nft_mint '{"id": "1", "receiver_id": "'$NFT_RECEIVER_ID'"}' --accountId $BUYER_ID --amount 0.1
+near contract call-function as-transaction $NFT_CONTRACT_ID nft_mint json-args '{"id": "1", "receiver_id": "'$NFT_RECEIVER_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $BUYER_ID network-config testnet sign-with-legacy-keychain send
 ```
 
 <hr class="subsection" />
@@ -496,8 +518,9 @@ near call $NFT_CONTRACT_ID nft_mint '{"id": "1", "receiver_id": "'$NFT_RECEIVER_
 
 이 글을 쓰는 시점에서 이 예제는 다음 버전에서 작동합니다.
 
-- near-cli: `4.0.13`
+- rustc: `1.77.1`
+- near-cli-rs: `0.11.0`
 - cargo-near `0.6.1`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
 
 :::

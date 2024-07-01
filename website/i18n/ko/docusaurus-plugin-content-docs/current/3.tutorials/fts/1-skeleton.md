@@ -170,10 +170,12 @@ warning: `fungible-token` (lib) generated 25 warnings
 
 이 NFT 스마트 컨트랙트의 레이아웃과 다양한 소스 파일에 모든 함수가 어떻게 배치되어 있는지 확인했습니다. `yarn`을 사용하여 컨트랙트를 컴파일할 수 있었고, 튜토리얼의 다음 [섹션](/tutorials/fts/circulating-supply)에서 이 뼈대를 구체화하기 시작할 것입니다.
 
+---
+
 :::note 문서의 버전 관리
 이 글을 쓰는 시점에서 이 예제는 다음 버전에서 작동합니다.
 
-- rustc: `1.76.0`
+- rustc: `1.77.1`
 - near-sdk-rs: `5.1.0` (with enabled `legacy` feature)
 - cargo-near: `0.6.1`
 :::

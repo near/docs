@@ -38,7 +38,7 @@ import multipleCrosswords from '/docs/assets/crosswords/puzzle-piggy-bank--r3v.n
 
 - [[Action](https://nomicon. io/RuntimeSpec/Actions. html)](https://nomicon.io/RuntimeSpec/Actions.html)
 - 전체 / 함수 호출 [액세스 키](https://docs.near.org/concepts/basics/account#access-keys)
-- NEAR 특화 [컬렉션](https://docs.near.org/concepts/storage/data-storage#rust-collection-types)(Rust의 표준 HashMap과 같은 것들보다 일반적으로 더 선호됨)
+- NEAR's specialized [Collections](../../../2.build/2.smart-contracts/anatomy/collections.md) that are generally preferable to, say, Rust's standard HashMap
 - 탈중앙화 앱(dApp) 로그인 흐름
 - 기타 등등
 

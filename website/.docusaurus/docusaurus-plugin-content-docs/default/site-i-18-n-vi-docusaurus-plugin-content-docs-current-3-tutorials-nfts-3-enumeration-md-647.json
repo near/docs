@@ -1,7 +1,7 @@
 {
   "id": "tutorials/nfts/enumeration",
   "title": "Enumeration",
-  "description": "Trong các hướng dẫn trước, bạn đã xem xét các cách tích hợp chức năng mint vào một skeleton smart contract. Để NFT của bạn hiển thị trong ví, bạn cũng phải deploy một bản vá lỗi đã được implement một trong các enumeration method. In this tutorial, you'll expand on and finish the rest of the enumeration methods as per the standard",
+  "description": "Trong các hướng dẫn trước, bạn đã xem xét các cách tích hợp chức năng mint vào một skeleton smart contract. Để NFT của bạn hiển thị trong ví, bạn cũng phải deploy một bản vá lỗi đã được implement một trong các enumeration method. In this tutorial, you'll expand on and finish the rest of the enumeration methods as per the standard.",
   "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/3.tutorials/nfts/3-enumeration.md",
   "sourceDirName": "3.tutorials/nfts",
   "slug": "/tutorials/nfts/enumeration",

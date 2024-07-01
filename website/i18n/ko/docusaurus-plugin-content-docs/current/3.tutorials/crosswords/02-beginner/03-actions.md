@@ -34,7 +34,7 @@ Action의 전체 목록은 [NEAR 사양 사이트](https://nomicon.io/RuntimeSpe
 
 컨트랙트를 배포하고 초기화할 때, 터미널 또는 명령 프롬프트 앱에서 NEAR CLI를 사용했습니다. 높은 수준에서 보면, 이는 트랜잭션을 블록체인에 투입하여 몇 가지 작업을 수행하도록 지시하는 것처럼 느껴질 수 있습니다.
 
-우리가 할 일인 스마트 컨트랙트 내에서 Action을 실행할 수도 있다는 점에 유의하는 것이 중요합니다. 왼쪽 사이드바에 이에 대한 예제를 제공하는 [**Promise**](/sdk/rust/promises/intro) 섹션이 있습니다. 아마도 Rust SDK의 경우, Promise와 Action이 비슷한 말이라는 점을 언급할 가치가 있을 것입니다.
+우리가 할 일인 스마트 컨트랙트 내에서 Action을 실행할 수도 있다는 점에 유의하는 것이 중요합니다. In the sidebar on the left, you'll see a section called [**Promises**](../../../2.build/2.smart-contracts/anatomy/actions.md), which provides examples of this. 아마도 Rust SDK의 경우, Promise와 Action이 비슷한 말이라는 점을 언급할 가치가 있을 것입니다.
 
 :::note Action은 현재 컨트랙트에만 영향을 미칩니다. 컨트랙트는 방금 호출한 계정을 포함하여 다른 계정에서 `AddKey` Action을 사용할 수 없습니다. 자신 *에게만* 키를 추가할 수 있습니다.
 
@@ -50,7 +50,7 @@ Action의 전체 목록은 [NEAR 사양 사이트](https://nomicon.io/RuntimeSpe
 
 `lib.rs` 파일 맨 위에 다음 상수를 추가합니다.
 
-<Github language="rust" start="10" end="11" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/1909630a10291081cb00b2780c1ae8889d98f620/contract/src/lib.rs" />
+<Github language="rust" start="10" end="11" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/master/contract/src/lib.rs" />
 
 As the code comment mentions, this is 5 NEAR, but look at all those zeroes in the code!
 
@@ -65,7 +65,7 @@ That's the value in yoctoNEAR. This concept is similar to other blockchains. Bit
 
 In the last chapter we had a simple function called `guess_solution` that returned `true` if the solution was correct, and `false` otherwise. We'll be replacing that function with `submit_solution` as shown below:
 
-<Github language="rust" start="92" end="124" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/83d4d8925e6d30e04e8e4cb5e9a0a6d3763fce40/contract/src/lib.rs" />
+<Github language="rust" start="85" end="118" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/master/contract/src/lib.rs" />
 
 이 함수의 마지막 줄을 확인하면, 전임자(predecessor)에 NEAR를 보내고 있다는 것을 알 수 있습니다.
 

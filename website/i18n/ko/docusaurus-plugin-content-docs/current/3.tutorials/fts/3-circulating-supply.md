@@ -54,7 +54,7 @@ src
   └── storage.rs
 ```
 
-In the `internal.rs` file, add the following code to create a function called `internal_deposit` which takes an `AccountId` and an `u128` as a balance and adds the amount to the account's current supply of FTs.
+In the `internal.rs` file, add the following code to create a function called `internal_deposit` which takes an `AccountId` and a `NearToken` as a balance and adds the amount to the account's current supply of FTs.
 
 <Github language="rust" start="1" end="18" url="https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/internal.rs" />
 
@@ -68,13 +68,14 @@ In addition, add the following code to the `new` initialization function.
 #[init]
 pub fn new(
     owner_id: AccountId,
-    total_supply: u128,
+    total_supply: U128,
     metadata: FungibleTokenMetadata,
 ) -> Self {
-    // Create a variable of type Self with all the fields initialized. 
+    let casted_total_supply = NearToken::from_yoctonear(total_supply.0);
+    // Create a variable of type Self with all the fields initialized.
     let mut this = Self {
         // Set the total supply
-        total_supply,
+        total_supply: casted_total_supply,
         // Storage keys are simply the prefixes used for the collections. This helps avoid data collision
         accounts: LookupMap::new(StorageKey::Accounts),
         metadata: LazyOption::new(
@@ -84,7 +85,7 @@ pub fn new(
     };
 
     // Set the owner's balance to the total supply.
-    this.internal_deposit(&owner_id, total_supply.into());
+    this.internal_deposit(&owner_id, casted_total_supply);
 
     // Return the Contract object
     this
@@ -131,8 +132,8 @@ As per the standard, you need to implement a logging functionality that gets fir
 
 It's important to note the standard dictates that the log should begin with `"EVENT_JSON:"`. The structure of your log should, however, always contain the 3 following things:
 
-- **standard**: 표준의 현재 이름(예: nep141)
-- **version**: 사용 중인 표준 버전(예: 1.0.0)
+- **standard**: the current name of the standard (e.g. `nep141`)
+- **version**: the version of the standard you're using (e.g. `1.0.0`)
 - **event**: 내보내는 이벤트 목록
 
 The event interface differs based on whether you're recording transfers or mints. The interface for both events is outlined below.
@@ -158,7 +159,7 @@ In order to solidify your understanding of the standard, let's walk through two 
 
 In this scenario, the Benji mints 50 FTs to himself and doesn't include a message. The log should look as follows.
 
-```json
+```js
 EVENT_JSON:{
   "standard": "nep141",
   "version": "1.0.0",
@@ -175,7 +176,7 @@ EVENT_JSON:{
 
 In this scenario, Benji wants to perform a batch transfer. He will send FTs to Jada, Mike, Josh, and Maria. The log is as follows.
 
-```json
+```js
 EVENT_JSON:{
     "standard": "nep141",
     "version": "1.0.0",
@@ -199,7 +200,7 @@ At this point, you should have a good understanding of what the end goal should 
 
 Copy the following into your file. This will outline the structs for your `EventLog`, `FtMintLog`, and `FtTransferLog`. In addition, we've added a way for `EVENT_JSON:` to be prefixed whenever you log the `EventLog`.
 
-<Github language="rust" start="1" end="121" url="https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/events.rs" />
+<Github language="rust" start="16" end="121" url="https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/events.rs" />
 
 <hr className="subsection" />
 
@@ -230,7 +231,7 @@ Since the current contract you have is already initialized, let's create a sub-a
 Run the following command to create a sub-account `events` of your main account with an initial balance of 3 NEAR which will be transferred from the original to your new account.
 
 ```bash
-near create-account events.$FT_CONTRACT_ID --masterAccount $FT_CONTRACT_ID --initialBalance 3
+near account create-account fund-myself events.$FT_CONTRACT_ID '3 NEAR' autogenerate-new-keypair save-to-legacy-keychain sign-as $FT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
 ```
 
 Next, you'll want to export an environment variable for ease of development:
@@ -242,7 +243,8 @@ export EVENTS_FT_CONTRACT_ID=events.$FT_CONTRACT_ID
 Build the contract as you did in the previous tutorials:
 
 ```bash
-cd 2.define-a-token && cargo near build
+cd 2.define-a-token
+cargo near build
 ```
 
 <hr className="subsection" />
@@ -281,7 +283,7 @@ The "new_default_meta" call to <events.goteam.testnet> on behalf of <events.gote
 이제 view 함수가 제대로 작동하는지 테스트할 수 있습니다. 먼저 총 공급량을 쿼리해 봅니다.
 
 ```bash
-near view $EVENTS_FT_CONTRACT_ID ft_total_supply
+near contract call-function as-read-only $EVENTS_FT_CONTRACT_ID ft_total_supply json-args {} network-config testnet now
 ```
 
 그러면 다음과 유사한 출력이 반환됩니다.
@@ -293,8 +295,9 @@ near view $EVENTS_FT_CONTRACT_ID ft_total_supply
 만세! 이제 소유자 계정의 잔고가 제대로 작동하는지 확인할 수 있습니다. 다음 함수를 호출하면 총 공급량과 동일한 숫자를 반환해야 합니다.
 
 ```bash
-near view $EVENTS_FT_CONTRACT_ID ft_balance_of '{"account_id": "'$EVENTS_FT_CONTRACT_ID'"}'
+near contract call-function as-read-only $EVENTS_FT_CONTRACT_ID ft_balance_of json-args '{"account_id": "'$EVENTS_FT_CONTRACT_ID'"}' network-config testnet now
 ```
+
 다음을 반환합니다.
 
 ```bash
@@ -304,7 +307,7 @@ near view $EVENTS_FT_CONTRACT_ID ft_balance_of '{"account_id": "'$EVENTS_FT_CONT
 다른 계정의 잔고를 쿼리하면 `0`을 반환해야 합니다.
 
 ```bash
-near view $EVENTS_FT_CONTRACT_ID ft_balance_of '{"account_id": "benjiman.testnet"}'
+near contract call-function as-read-only $EVENTS_FT_CONTRACT_ID ft_balance_of json-args '{"account_id": "benjiman.testnet"}' network-config testnet now
 ```
 
 ---
@@ -324,3 +327,14 @@ Now that your contract implements the necessary functions that the wallet uses t
 오늘 당신은 전체 공급량을 발행하기 위한 로직을 살펴보고 만들었습니다. 그런 다음 일부 핵심 표준 로직과 [이벤트 표준](https://nomicon.io/Standards/Tokens/FungibleToken/Event)을 구현했습니다. 또한, 초기화 시 FT를 [발행](#modifications-to-the-contract)하기 위한 이벤트를 생성했습니다. 그런 다음 변경 사항을 배포 및 [테스트](#testing)하고 지갑에서 첫 번째 FT를 확인했습니다!
 
 다음 튜토리얼에서는 FT를 전송하고 받을 수 있도록 계정을 등록하는 기본 사항을 살펴보겠습니다.
+
+---
+
+:::note Versioning for this article
+At the time of this writing, this example works with the following versions:
+
+- rustc: `1.77.1`
+- near-sdk-rs: `5.1.0` (with enabled `legacy` feature)
+- cargo-near: `0.6.1`
+- near-cli-rs: `0.11.0`
+:::

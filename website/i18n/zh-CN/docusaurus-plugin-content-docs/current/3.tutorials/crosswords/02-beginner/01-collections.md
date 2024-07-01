@@ -50,7 +50,7 @@ The name of the struct doesn't matter and there's nothing special about naming i
 
 Here's how our struct will look with the iterable and non-iterable NEAR collections:
 
-<Github language="rust" start="73" end="79" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/276217ad82c64c610148e998ec926942ba910a12/contract/src/lib.rs" />
+<Github language="rust" start="62" end="72" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/master/contract/src/lib.rs" />
 
 Above, we have the `puzzles` and `unsolved_puzzles` fields which are collections.
 
@@ -58,19 +58,19 @@ We also have an `owner_id` so we can exercise a common pattern in smart contract
 
 The snippet below shows the first method in the implementation of the `Crossword` struct, where the `new` function sets up these two specialized collections.
 
-<Github language="rust" start="81" end="90" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/276217ad82c64c610148e998ec926942ba910a12/contract/src/lib.rs" />
+<Github language="rust" start="74" end="83" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/master/contract/src/lib.rs" />
 
 So during the initialization function (`new`) we're setting the `owner_id`. For our purposes the owner will likely be the contract itself, but there can be several reasons to have it be a DAO or another user. Next, let's look at the `b"c"` and `b"u"` bits for the collection fields. For our purposes the owner will likely be the contract itself, but there can be several reasons to have it be a DAO or another user. Next, let's look at the `b"c"` and `b"u"` bits for the collection fields.
 
 ## Collections have prefixes
 
-Above, the `new` function is initializing the struct's fields by giving them a unique prefix. Above, the `new` function is initializing the struct's fields by giving them a unique prefix. You can learn more about [the prefixes here](/sdk/rust/contract-structure/nesting#traditional-approach-for-unique-prefixes), but know that these prefixes (`c` and `u`) should be short and different.
+Above, the `new` function is initializing the struct's fields by giving them a unique prefix. You can learn more about [the prefixes here](../../../2.build/2.smart-contracts/anatomy/collections.md), but know that these prefixes (`c` and `u`) should be short and different.
 
 Let's take a peek at how we'll add a new crossword puzzle. Note that there will be a new struct here, `Answer`, which we haven't defined yet. Let's take a peek at how we'll add a new crossword puzzle. Note that there will be a new struct here, `Answer`, which we haven't defined yet. We'll also be introducing the concept of enums, like `PuzzleStatus::Solved` and `PuzzleStatus::Unsolved`. We'll be covering these in the next section. We'll be covering these in the next section.
 
 Unlike the previous chapter where there was only one crossword puzzle, we'll be inserting into our new collections, so let's create a `new_puzzle` method.
 
-<Github language="rust" start="147" end="163" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/8ec941c82539e6eafa4971444e1da9e4819330d3/contract/src/lib.rs" />
+<Github language="rust" start="140" end="157" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/master/contract/src/lib.rs" />
 
 Now we're set up to store multiple puzzles!
 

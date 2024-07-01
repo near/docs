@@ -34,7 +34,7 @@ By the end of this entire tutorial we'll have used all the Actions highlighted b
 
 When we deployed and initialized the contract, we used NEAR CLI in our Terminal or Command Prompt app. At a high level, this might feel like we're lobbing a transaction into the blockchain, instructing it to do a couple actions.
 
-It's important to note that you can also execute Actions inside a smart contract, which is what we'll be doing. In the sidebar on the left, you'll see a section called [**Promises**](/sdk/rust/promises/intro), which provides examples of this. Perhaps it's worth mentioning that for the Rust SDK, Promises and Actions are somewhat synonymous.
+It's important to note that you can also execute Actions inside a smart contract, which is what we'll be doing. In the sidebar on the left, you'll see a section called [**Promises**](../../../2.build/2.smart-contracts/anatomy/actions.md), which provides examples of this. Perhaps it's worth mentioning that for the Rust SDK, Promises and Actions are somewhat synonymous.
 
 :::note Actions only effect the current contract A contract cannot use the `AddKey` Action on another account, including the account that just called it. It can only add a key to *itself*, if that makes sense.
 
@@ -50,7 +50,7 @@ Let's make it simple and hardcode the prize amount. This is how much NEAR will b
 
 At the top of the `lib.rs` file we'll add this constant:
 
-<Github language="rust" start="10" end="11" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/1909630a10291081cb00b2780c1ae8889d98f620/contract/src/lib.rs" />
+<Github language="rust" start="10" end="11" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/master/contract/src/lib.rs" />
 
 As the code comment mentions, this is 5 NEAR, but look at all those zeroes in the code!
 
@@ -65,7 +65,7 @@ That's the value in yoctoNEAR. This concept is similar to other blockchains. Bit
 
 In the last chapter we had a simple function called `guess_solution` that returned `true` if the solution was correct, and `false` otherwise. We'll be replacing that function with `submit_solution` as shown below:
 
-<Github language="rust" start="92" end="124" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/83d4d8925e6d30e04e8e4cb5e9a0a6d3763fce40/contract/src/lib.rs" />
+<Github language="rust" start="85" end="118" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/master/contract/src/lib.rs" />
 
 Note the last line in this function, which sends NEAR to the predecessor.
 

@@ -13,18 +13,20 @@ Learn how to easily receive fungible tokens without doing any software developme
 To complete this tutorial successfully, you'll need:
 
 - [A NEAR testnet account](https://testnet.mynearwallet.com)
-- [NEAR-CLI](/tools/near-cli#setup)
+- [NEAR-CLI-RS](../../4.tools/cli-rs.md#install)
 
 ---
 
 ## Sử dụng FT contract
 
+Create a new `testnet` account using the [web wallet](https://testnet.mynearwallet.com).
+
 ### Cài đặt
 
-Log in to your newly created account with `near-cli` by running the following command in your terminal:
+Log in to your newly created account with `near-cli-rs` by running the following command in your terminal:
 
 ```bash
-near login
+near account import-account using-web-wallet network-config testnet
 ```
 
 Set an environment variable for your account ID to make it easy to copy and paste commands from this tutorial:
@@ -55,7 +57,7 @@ Using this pre-deployed contract, let's get some gtNEAR!
 Start by calling the method `ft_mint` which is a custom function implemented on this contract in order to send your account some `gtNEAR`! The following command will send `0.01 gtNEAR` to your account.
 
 ```bash
-near call ft.predeployed.examples.testnet ft_mint '{"account_id": "'$NEARID'", "amount": "10000000000000000000000"}' --accountId $NEARID
+near contract call-function as-transaction ft.predeployed.examples.testnet ft_mint json-args '{"account_id": "'$NEARID'", "amount": "10000000000000000000000"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as $NEARID network-config testnet sign-with-legacy-keychain send
 ```
 
 <details>
@@ -76,7 +78,7 @@ https://testnet.nearblocks.io/txns/Fhqa8YDLKxnxM9jjHCPN4hn1w1RKESYrav3kwDjhWWUu
 To view tokens owned by an account you can call the FT contract with the following `near-cli` command:
 
 ```bash
-near view ft.predeployed.examples.testnet ft_balance_of '{"account_id": "'$NEARID'"}'
+near contract call-function as-read-only ft.predeployed.examples.testnet ft_balance_of json-args '{"account_id": "'$NEARID'"}' network-config testnet now
 ```
 
 <details>
@@ -112,5 +114,5 @@ Now that you're familiar with the process, you can jump to [Contract Architectur
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `4.0.13`
+- near-cli-rs: `0.11.0`
 :::

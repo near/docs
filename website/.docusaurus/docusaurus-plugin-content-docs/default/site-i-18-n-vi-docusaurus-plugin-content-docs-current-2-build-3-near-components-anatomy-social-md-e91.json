@@ -1,7 +1,7 @@
 {
   "id": "build/near-components/anatomy/social",
   "title": "Social Interactions",
-  "description": "We no longer recommend building on BOS due to its limited capabilities and discontinued security maintenance. Developers with active projects on BOS are encouraged to migrate to another deployment strategy.",
+  "description": "NEAR components can natively communicate with the SocialDB smart contract (currently deployed at social.near).",
   "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.build/3.near-components/anatomy/social.md",
   "sourceDirName": "2.build/3.near-components/anatomy",
   "slug": "/build/near-components/anatomy/social",

@@ -266,7 +266,7 @@ Next, you'll deploy this contract to the network.
 
 ```bash
 export APPROVAL_NFT_CONTRACT_ID=<accountId>
-near create-account $APPROVAL_NFT_CONTRACT_ID --useFaucet
+near account create-account sponsor-by-faucet-service $APPROVAL_NFT_CONTRACT_ID autogenerate-new-keypair save-to-legacy-keychain network-config testnet create
 ```
 
 Using the cargo-near, deploy and initialize the contract as you did in the previous tutorials:
@@ -282,13 +282,13 @@ cargo near deploy $APPROVAL_NFT_CONTRACT_ID with-init-call new_default_meta json
 다음으로 토큰을 발행해야 합니다. 이 명령을 실행하면 `"approval-token"`이라는 토큰 ID로 토큰을 발행하고, 수신자가 새 계정이 됩니다.
 
 ```bash
-near call $APPROVAL_NFT_CONTRACT_ID nft_mint '{"token_id": "approval-token", "metadata": {"title": "Approval Token", "description": "testing out the new approval extension of the standard", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$APPROVAL_NFT_CONTRACT_ID'"}' --accountId $APPROVAL_NFT_CONTRACT_ID --amount 0.1
+near contract call-function as-transaction $APPROVAL_NFT_CONTRACT_ID nft_mint json-args '{"token_id": "approval-token", "metadata": {"title": "Approval Token", "description": "testing out the new approval extension of the standard", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$APPROVAL_NFT_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $APPROVAL_NFT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
 ```
 
 열거 함수 중 하나를 호출하여 모든 것이 제대로 진행되었는지 확인할 수 있습니다.
 
 ```bash
-near view $APPROVAL_NFT_CONTRACT_ID nft_tokens_for_owner '{"account_id": "'$APPROVAL_NFT_CONTRACT_ID'", "limit": 10}'
+near contract call-function as-read-only $APPROVAL_NFT_CONTRACT_ID nft_tokens_for_owner json-args '{"account_id": "'$APPROVAL_NFT_CONTRACT_ID'", "limit": 10}' network-config testnet now
 ```
 
 그러면 다음과 유사한 출력이 반환됩니다.
@@ -328,13 +328,13 @@ near view $APPROVAL_NFT_CONTRACT_ID nft_tokens_for_owner '{"account_id": "'$APPR
 다음 명령을 실행하여 `$NFT_CONTRACT_ID` 내 저장된 계정이 당신의 `"approval-token"` ID로 NFT를 전송할 수 있도록 액세스 권한을 승인합니다. 이전 계정은 `nft_on_approve` 함수를 구현하지 않았으므로 메시지를 전달할 필요가 없습니다. 또한 컨트랙트에 계정을 저장하는 비용을 충당하기에 충분한 NEAR를 첨부해야 합니다. 0.1 NEAR 이상이어야 하며, 사용하지 않은 초과분은 환불됩니다.
 
 ```bash
-near call $APPROVAL_NFT_CONTRACT_ID nft_approve '{"token_id": "approval-token", "account_id": "'$NFT_CONTRACT_ID'"}' --accountId $APPROVAL_NFT_CONTRACT_ID --deposit 0.1
+near contract call-function as-transaction $APPROVAL_NFT_CONTRACT_ID nft_approve json-args '{"token_id": "approval-token", "account_id": "'$NFT_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $NFT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
 ```
 
 이전과 동일한 열거 메서드를 호출하면 승인된 새 계정 ID가 반환되는 것을 볼 수 있습니다.
 
 ```bash
-near view $APPROVAL_NFT_CONTRACT_ID nft_tokens_for_owner '{"account_id": "'$APPROVAL_NFT_CONTRACT_ID'", "limit": 10}'
+near contract call-function as-read-only $APPROVAL_NFT_CONTRACT_ID nft_tokens_for_owner json-args '{"account_id": "'$APPROVAL_NFT_CONTRACT_ID'", "limit": 10}' network-config testnet now
 ```
 
 그러면 다음과 유사한 출력이 반환됩니다.
@@ -370,7 +370,7 @@ near view $APPROVAL_NFT_CONTRACT_ID nft_tokens_for_owner '{"account_id": "'$APPR
 이제 토큰을 전송하도록 다른 계정을 승인했으므로 해당 동작을 테스트할 수 있습니다. 다른 계정을 사용해서, 승인된 계정 ID를 재설정해야 하는 NFT를 자신에게 전송할 수 있어야 합니다. 잘못된 승인 ID로 NFT 전송을 테스트해 보겠습니다.
 
 ```bash
-near call $APPROVAL_NFT_CONTRACT_ID nft_transfer '{"receiver_id": "'$NFT_CONTRACT_ID'", "token_id": "approval-token", "approval_id": 1}' --accountId $NFT_CONTRACT_ID --depositYocto 1
+near contract call-function as-transaction $APPROVAL_NFT_CONTRACT_ID nft_transfer json-args '{"receiver_id": "'$NFT_CONTRACT_ID'", "token_id": "approval-token", "approval_id": 1}' prepaid-gas '100.0 Tgas' attached-deposit '1 yoctoNEAR' sign-as $NFT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
 ```
 
 <details>
@@ -391,7 +391,7 @@ kind: {
 올바른 승인 ID인 `0`​​을 전달하면 모든 것이 잘 작동하는 것을 볼 수 있습니다.
 
 ```bash
-near call $APPROVAL_NFT_CONTRACT_ID nft_transfer '{"receiver_id": "'$NFT_CONTRACT_ID'", "token_id": "approval-token", "approval_id": 0}' --accountId $NFT_CONTRACT_ID --depositYocto 1
+near contract call-function as-transaction $APPROVAL_NFT_CONTRACT_ID nft_transfer json-args '{"receiver_id": "'$NFT_CONTRACT_ID'", "token_id": "approval-token", "approval_id": 0}' prepaid-gas '100.0 Tgas' attached-deposit '1 yoctoNEAR' sign-as $NFT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
 ```
 
 열거 메서드를 다시 호출하면 소유자가 업데이트되고 승인된 계정 ID가 재설정되는 것을 볼 수 있습니다.
@@ -423,13 +423,13 @@ near call $APPROVAL_NFT_CONTRACT_ID nft_transfer '{"receiver_id": "'$NFT_CONTRAC
 이제 다른 소유자 간에 증가하는 승인 ID를 테스트해 보겠습니다. If you approve the account that originally minted the token, the approval ID should be 1 now.
 
 ```bash
-near call $APPROVAL_NFT_CONTRACT_ID nft_approve '{"token_id": "approval-token", "account_id": "'$APPROVAL_NFT_CONTRACT_ID'"}' --accountId $NFT_CONTRACT_ID --deposit 0.1
+near contract call-function as-transaction $APPROVAL_NFT_CONTRACT_ID nft_approve json-args '{"token_id": "approval-token", "account_id": "'$APPROVAL_NFT_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $NFT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
 ```
 
 Calling the view function again show now return an approval ID of 1 for the account that was approved.
 
 ```bash
-near view $APPROVAL_NFT_CONTRACT_ID nft_tokens_for_owner '{"account_id": "'$NFT_CONTRACT_ID'", "limit": 10}'
+near contract call-function as-read-only $APPROVAL_NFT_CONTRACT_ID nft_tokens_for_owner json-args '{"account_id": "'$NFT_CONTRACT_ID'", "limit": 10}' network-config testnet now
 ```
 
 <details>
@@ -483,15 +483,16 @@ near view $APPROVAL_NFT_CONTRACT_ID nft_tokens_for_owner '{"account_id": "'$NFT_
 
 After this, the contract code was finished and it was time to move onto testing where you created an [account](#deployment) and tested the [approving](#approving-an-account) and [transferring](#transferring-the-nft) for your NFTs.
 
-다음 튜토리얼에서는 로열티 표준과 NFT 마켓플레이스와 상호 작용하는 방법에 대해 알아봅니다.
+In the [next tutorial](6-royalty.md), you'll learn about the royalty standards and how you can interact with NFT marketplaces.
 
 :::note 문서 버전 관리
 
 글을 작성하는 시점에서, 해당 예제는 다음 버전에서 작동합니다.
 
-- near-cli: `4.0.13`
+- rustc: `1.77.1`
+- near-cli-rs: `0.11.0`
 - cargo-near `0.6.1`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
 - 열거 표준: [NEP181](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration), `1.0.0` 버전
 - Approval standard: [NEP178](https://nomicon.io/Standards/Tokens/NonFungibleToken/ApprovalManagement), version `1.1.0`
 

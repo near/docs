@@ -109,7 +109,7 @@ At the very end, it will insert `damian` into the payout object and give him `1 
 
 Now that you know how payouts are calculated, it's time to create the function that will transfer the NFT and return the payout to the marketplace.
 
-<Github language="rust" start="70" end="135" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-royalty/src/royalty.rs" />
+<Github language="rust" start="68" end="135" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-royalty/src/royalty.rs" />
 
 <hr class="subsection" />
 
@@ -143,7 +143,7 @@ Next, you'll deploy this contract to the network.
 
 ```bash
 export ROYALTY_NFT_CONTRACT_ID=<accountId>
-near create-account $ROYALTY_NFT_CONTRACT_ID --useFaucet
+near account create-account sponsor-by-faucet-service $ROYALTY_NFT_CONTRACT_ID autogenerate-new-keypair save-to-legacy-keychain network-config testnet create
 ```
 
 Using the cargo-near, deploy and initialize the contract as you did in the previous tutorials:
@@ -157,13 +157,13 @@ cargo near deploy $ROYALTY_NFT_CONTRACT_ID with-init-call new_default_meta json-
 다음으로 토큰을 발행해야 합니다. 이 명령을 실행하면 토큰 ID `"royalty-token"`로 토큰이 발행되고, 수신자가 새 계정이 됩니다. 또한 토큰이 판매될 때마다 영구 로열티를 받는 두 개의 계정을 포함한 맵을 전달합니다.
 
 ```bash
-near call $ROYALTY_NFT_CONTRACT_ID nft_mint '{"token_id": "royalty-token", "metadata": {"title": "Royalty Token", "description": "testing out the new royalty extension of the standard", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$ROYALTY_NFT_CONTRACT_ID'", "perpetual_royalties": {"benjiman.testnet": 2000, "mike.testnet": 1000, "josh.testnet": 500}}' --accountId $ROYALTY_NFT_CONTRACT_ID --amount 0.1
+near contract call-function as-transaction $ROYALTY_NFT_CONTRACT_ID nft_mint json-args '{"token_id": "royalty-token", "metadata": {"title": "Royalty Token", "description": "testing out the new royalty extension of the standard", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$ROYALTY_NFT_CONTRACT_ID'", "perpetual_royalties": {"benjiman.testnet": 2000, "mike.testnet": 1000, "josh.testnet": 500}}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $ROYALTY_NFT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
 ```
 
 열거(Enumeration) 함수 중 하나를 호출하여 모든 것이 제대로 진행되었는지 확인할 수 있습니다.
 
 ```bash
-near view $ROYALTY_NFT_CONTRACT_ID nft_tokens_for_owner '{"account_id": "'$ROYALTY_NFT_CONTRACT_ID'", "limit": 10}'
+near contract call-function as-read-only $ROYALTY_NFT_CONTRACT_ID nft_tokens_for_owner json-args '{"account_id": "'$ROYALTY_NFT_CONTRACT_ID'", "limit": 10}' network-config testnet now
 ```
 
 그러면 다음과 유사한 출력이 반환됩니다.
@@ -204,12 +204,12 @@ near view $ROYALTY_NFT_CONTRACT_ID nft_tokens_for_owner '{"account_id": "'$ROYAL
 Let's calculate the payout for the `"royalty-token"` NFT, given a balance of 100 yoctoNEAR. `nft_payout` 함수로 전달되는 금액이 yoctoNEAR 단위로 표시될 것으로 예상된다는 점에 유의하는 것이 중요합니다.
 
 ```bash
-near view $ROYALTY_NFT_CONTRACT_ID nft_payout '{"token_id": "royalty-token", "balance": "100", "max_len_payout": 100}'
+near contract call-function as-read-only $ROYALTY_NFT_CONTRACT_ID nft_payout json-args '{"token_id": "royalty-token", "balance": "100", "max_len_payout": 100}' network-config testnet now
 ```
 
 이 명령은 다음과 유사한 출력을 반환해야 합니다.
 
-```bash
+```js
 {
   payout: {
     'josh.testnet': '5',
@@ -220,7 +220,7 @@ near view $ROYALTY_NFT_CONTRACT_ID nft_payout '{"token_id": "royalty-token", "ba
 }
 ```
 
-NFT가 100 yoctoNEAR에 판매된 경우, josh는 5, benji는 20, mike는 10, 소유자(이 경우 `royalty.goteam.examples.testnet`)는 나머지 65를 받습니다.
+If the NFT was sold for 100 yoctoNEAR, josh would get 5, Benji would get 20, mike would get 10, and the owner, in this case `royalty.goteam.examples.testnet` would get the rest: 65.
 
 ## 결론
 
@@ -232,9 +232,10 @@ NFT가 100 yoctoNEAR에 판매된 경우, josh는 5, benji는 20, mike는 10, �
 
 글을 작성하는 시점에서, 해당 예제는 다음 버전에서 작동합니다.
 
-- near-cli: `4.0.13`
+- rustc: `1.77.1`
+- near-cli-rs: `0.11.0`
 - cargo-near `0.6.1`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
 - 열거 표준: [NEP181](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration), `1.0.0` 버전
 - 로열티 표준: [NEP199](https://nomicon.io/Standards/Tokens/NonFungibleToken/Payout), `2.0.0` 버전
 

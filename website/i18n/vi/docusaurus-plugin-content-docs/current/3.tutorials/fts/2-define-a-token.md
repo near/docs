@@ -84,27 +84,28 @@ Now that the logic for defining a custom fungible token is complete and you've a
 You can build a contract using the following command:
 
 ```bash
-cd 1.skeleton && cargo near build
+cd 2.define-a-token
+cargo near build
 ```
 
 Sẽ có một danh sách các cảnh báo trên console của bạn, nhưng khi hướng dẫn tiếp tục, những cảnh báo này sẽ biến mất.
 
-Để deploy, bạn cần một account NEAR với các key chứa sẵn trong local machine của bạn. Navigate to the [NEAR wallet](https://testnet.mynearwallet.com//) site and create an account.
+Để deploy, bạn cần một account NEAR với các key chứa sẵn trong local machine của bạn. Navigate to the [NEAR wallet](https://testnet.mynearwallet.com/) site and create an account.
 
 :::info
 Please ensure that you deploy the contract to an account with no pre-existing contracts. Cách đơn giản nhất là chỉ cần tạo một account mới hoặc tạo một account phụ cho hướng dẫn này.
 :::
 
-Đăng nhập vào account vừa mới tạo với `near-cli` bằng cách chạy câu lệnh sau trong terminal của bạn.
+Log in to your newly created account with `near-cli-rs` by running the following command in your terminal.
 
 ```bash
-near login
+near account import-account using-web-wallet network-config testnet
 ```
 
 Để làm cho hướng dẫn này dễ dàng hơn với copy/paste, chúng tôi đã set một biến môi trường cho account ID của bạn. Trong command dưới đây, thay `YOUR_ACCOUNT_NAME` với account name bạn vừa đăng nhập, bao gồm phần `.testnet`:
 
 ```bash
-export FT_CONTRACT_ID="YOUR_ACCOUNT_NAME"
+export FT_CONTRACT_ID="YOUR_ACCOUNT_NAME.testnet"
 ```
 
 Kiểm tra biến môi trường được cài đặt đúng hay chưa bằng cách chạy:
@@ -128,12 +129,12 @@ At this point, the contract should have been deployed to your account and initia
 Now that the contract has been initialized, you can query for the metadata by calling the function you wrote earlier.
 
 ```bash
-near view $FT_CONTRACT_ID ft_metadata
+near contract call-function as-read-only $FT_CONTRACT_ID ft_metadata json-args {} network-config testnet now
 ```
 
 Nó sẽ trả về một output trong giống như sau:
 
-```bash
+```js
 {
   spec: 'ft-1.0.0',
   name: 'Team Token FT Tutorial',
@@ -164,3 +165,14 @@ You first looked at [what a fungible token is](#modifications) and how it differ
 ## Các bước tiếp theo
 
 In the [next tutorial](/tutorials/fts/circulating-supply), you'll find out how to create an initial supply of tokens and have them show up in the NEAR wallet.
+
+---
+
+:::note Versioning for this article
+At the time of this writing, this example works with the following versions:
+
+- rustc: `1.77.1`
+- near-sdk-rs: `5.1.0` (with enabled `legacy` feature)
+- cargo-near: `0.6.1`
+- near-cli-rs: `0.11.0`
+:::

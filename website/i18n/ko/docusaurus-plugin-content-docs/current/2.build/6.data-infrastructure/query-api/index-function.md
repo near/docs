@@ -139,5 +139,6 @@ Creating a NEAR component from a GraphQL query is simple when using the GraphQL 
 
 This will set up some boilerplate code to execute the GraphQL query, add the query that you had in your playground and then call that query, extract the data and render it using the render data function.
 
-Once you have the NEAR component code, you can test it out by going to [the sandbox](https://near.org/sandbox), pasting the generated code, and then selecting <kbd>Component Preview</kbd>.
+Once you have the NEAR component code, you can test it out by going to [the sandbox](https://dev.near.org/sandbox),
+pasting the generated code, and then selecting <kbd>Component Preview</kbd>.
 Next, you can create a nice UI over this boilerplate code, and publish your new NEAR component.

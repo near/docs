@@ -4,7 +4,7 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 export default [
   {
     path: '/zh-CN/blog',
-    component: ComponentCreator('/zh-CN/blog', '180'),
+    component: ComponentCreator('/zh-CN/blog', 'abf'),
     exact: true
   },
   {
@@ -24,7 +24,7 @@ export default [
   },
   {
     path: '/zh-CN/blog/sdks-unified',
-    component: ComponentCreator('/zh-CN/blog/sdks-unified', '444'),
+    component: ComponentCreator('/zh-CN/blog/sdks-unified', 'c36'),
     exact: true
   },
   {
@@ -54,7 +54,7 @@ export default [
   },
   {
     path: '/zh-CN/blog/tags/updates',
-    component: ComponentCreator('/zh-CN/blog/tags/updates', 'a49'),
+    component: ComponentCreator('/zh-CN/blog/tags/updates', 'a71'),
     exact: true
   },
   {
@@ -79,15 +79,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '49e'),
+    component: ComponentCreator('/zh-CN/', '5f4'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '208'),
+        component: ComponentCreator('/zh-CN/', 'fe1'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', 'fc9'),
+            component: ComponentCreator('/zh-CN/', '2a9'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -866,7 +866,7 @@ export default [
               },
               {
                 path: '/zh-CN/build/smart-contracts/anatomy/best-practices',
-                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/best-practices', 'ac9'),
+                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/best-practices', '4ae'),
                 exact: true,
                 sidebar: "build"
               },
@@ -896,13 +896,13 @@ export default [
               },
               {
                 path: '/zh-CN/build/smart-contracts/anatomy/reduce-size',
-                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/reduce-size', 'f5d'),
+                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/reduce-size', '1ad'),
                 exact: true,
                 sidebar: "build"
               },
               {
                 path: '/zh-CN/build/smart-contracts/anatomy/reproducible-builds',
-                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/reproducible-builds', '368'),
+                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/reproducible-builds', '8a2'),
                 exact: true,
                 sidebar: "build"
               },
@@ -914,7 +914,7 @@ export default [
               },
               {
                 path: '/zh-CN/build/smart-contracts/anatomy/serialization-protocols',
-                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/serialization-protocols', '4f5'),
+                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/serialization-protocols', '357'),
                 exact: true,
                 sidebar: "build"
               },
@@ -1482,7 +1482,7 @@ export default [
               },
               {
                 path: '/zh-CN/tools/sdk',
-                component: ComponentCreator('/zh-CN/tools/sdk', '6d2'),
+                component: ComponentCreator('/zh-CN/tools/sdk', 'a78'),
                 exact: true,
                 sidebar: "tools"
               },

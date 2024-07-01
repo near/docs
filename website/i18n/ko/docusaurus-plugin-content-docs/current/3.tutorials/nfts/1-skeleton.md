@@ -228,12 +228,12 @@ cargo near build
  │   |                             ^^^^^^^^^^  ^^^^^^^^^  ^^^^^^^^^^^^  ^^^^^^^^^^^^
  │   |
  │   = note: `#[warn(unused_imports)]` on by default
- │ 
+ │
  │ warning: unused import: `Base64VecU8`
  │  --> src/lib.rs:4:28
  │   |
  │ 4 | use near_sdk::json_types::{Base64VecU8, U128};
- │   |   
+ │   |
 
  │ warning: `nft_contract_skeleton` (lib) generated 48 warnings (run `cargo fix --lib -p nft_contract_skeleton` to apply 45 suggestions)
  │     Finished release [optimized] target(s) in 11.01s
@@ -246,12 +246,13 @@ cargo near build
 
 ## 결론
 
-이 NFT 스마트 컨트랙트의 레이아웃과 다양한 소스 파일에 모든 함수가 어떻게 배치되어 있는지 확인했습니다. `yarn`을 사용하여 컨트랙트를 컴파일할 수 있었고, 다음 [발행 튜토리얼](/tutorials/nfts/minting)에서 이 뼈대를 구체화하기 시작할 것입니다.
+이 NFT 스마트 컨트랙트의 레이아웃과 다양한 소스 파일에 모든 함수가 어떻게 배치되어 있는지 확인했습니다. Using `yarn`, you've been able to compile the contract, and you'll start fleshing out this skeleton in the next [Minting tutorial](2-minting.md).
 
 :::note 이 문서의 버전 관리 이 글을 쓰는 시점에서 이 예제는 다음 버전에서 작동합니다.
 
 - rustc: `1.76.0`
 - near-sdk-rs: `5.1.0`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
+- cargo-near: `0.6.1`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
 
 :::

@@ -10,14 +10,7 @@ Create your first non-fungible token by using a pre-deployed NFT smart contract 
 
 ## Điều kiện cần
 
-To complete this tutorial successfully, you'll need [a NEAR Wallet](https://testnet.mynearwallet.com/create) and [NEAR CLI](/tools/near-cli#setup)
-
-:::tip You can install near-cli through the following command:
-
-```bash
-npm install -g near-cli
-```
-:::
+To complete this tutorial successfully, you'll need [a NEAR Wallet](https://testnet.mynearwallet.com/create) and [NEAR CLI RS](../../4.tools/cli-rs.md#setup)
 
 ---
 
@@ -34,7 +27,7 @@ To interact with the contract you will need to first login to your NEAR account 
 Đăng nhập vào account mới tạo của bạn với `near-cli` bằng cách chạy câu lệnh sau trong terminal:
 
 ```bash
-near login
+near account import-account using-web-wallet network-config testnet
 ```
 
 Đặt một biến môi trường cho ID account của bạn để giúp dễ dàng sao chép và dán các lệnh từ hướng dẫn này:
@@ -52,7 +45,7 @@ We have already deployed an NFT contract to `nft.examples.testnet` which allows 
 Run this command in your terminal, remember to replace the `token_id` with a string of your choice. This string will uniquely identify the token you mint.
 
 ```bash
-near call nft.examples.testnet nft_mint '{"token_id": "TYPE_A_UNIQUE_VALUE_HERE", "receiver_id": "'$NEARID'", "metadata": { "title": "GO TEAM", "description": "The Team Goes", "media": "https://bafybeidl4hjbpdr6u6xvlrizwxbrfcyqurzvcnn5xoilmcqbxfbdwrmp5m.ipfs.dweb.link/", "copies": 1}}' --accountId $NEARID --deposit 0.1
+near contract call-function as-transaction nft.examples.testnet nft_mint json-args '{"token_id": "TYPE_A_UNIQUE_VALUE_HERE", "receiver_id": "'$NEARID'", "metadata": { "title": "GO TEAM", "description": "The Team Goes", "media": "https://bafybeidl4hjbpdr6u6xvlrizwxbrfcyqurzvcnn5xoilmcqbxfbdwrmp5m.ipfs.dweb.link/", "copies": 1}}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $NEARID network-config testnet sign-with-legacy-keychain send
 ```
 
 <details>
@@ -79,7 +72,7 @@ https://testnet.nearblocks.io/txns/8RFWrQvAsm2grEsd1UTASKpfvHKrjtBdEyXu7WqGBPUr
 Để xem các token được sở hữu bởi một account bạn có thể call NFT contract với câu lệnh `near-cli` sau:
 
 ```bash
-near view nft.examples.testnet nft_tokens_for_owner '{"account_id": "'$NEARID'"}'
+near contract call-function as-read-only nft.examples.testnet nft_tokens_for_owner json-args '{"account_id": "'$NEARID'"}' network-config testnet now
 ```
 
 <details>
@@ -131,7 +124,7 @@ Giờ thì có lẽ bạn đã quen với process, bạn có thể đến với 
 
 Tại thời điểm viết bài, ví dụ này tương thích với các version dưới đây:
 
-- near-cli: `4.0.13`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
+- near-cli-rs: `0.11.0`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
 
 :::

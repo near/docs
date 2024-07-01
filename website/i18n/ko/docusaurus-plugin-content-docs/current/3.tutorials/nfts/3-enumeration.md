@@ -6,7 +6,7 @@ sidebar_label: 열거(Enumeration)
 
 import {Github} from "@site/src/components/codetabs"
 
-이전 튜토리얼에서는 발행 함수를 스마트 컨트랙트 뼈대에 통합하는 방법을 살펴보았습니다. NFT를 지갑에 표시하려면 열거 메서드 중 하나를 구현하는 패치 수정 사항도 배포해야 했습니다. In this tutorial, you'll expand on and finish the rest of the enumeration methods as per the [standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration)
+이전 튜토리얼에서는 발행 함수를 스마트 컨트랙트 뼈대에 통합하는 방법을 살펴보았습니다. NFT를 지갑에 표시하려면 열거 메서드 중 하나를 구현하는 패치 수정 사항도 배포해야 했습니다. In this tutorial, you'll expand on and finish the rest of the enumeration methods as per the [standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration).
 
 Now you'll extend the NFT smart contract and add a couple of enumeration methods that can be used to return the contract's state.
 
@@ -14,7 +14,7 @@ Now you'll extend the NFT smart contract and add a couple of enumeration methods
 
 ## 소개
 
-[컨트랙트 업그레이드](/tutorials/nfts/upgrade-contract/) 튜토리얼에서 언급한 대로 스마트 컨트랙트에 패치 및 수정 사항을 배포할 수 있습니다. 이번에는 해당 지식을 사용하여 `nft_total_supply`, `nft_tokens` 및 `nft_supply_for_owner` 열거형 함수를 구현합니다.
+As mentioned in the [Upgrade a Contract](2-upgrade.md) tutorial, you can deploy patches and fixes to smart contracts. 이번에는 해당 지식을 사용하여 `nft_total_supply`, `nft_tokens` 및 `nft_supply_for_owner` 열거형 함수를 구현합니다.
 
 ---
 
@@ -65,7 +65,7 @@ cargo near deploy $NFT_CONTRACT_ID without-init-call network-config testnet sign
 컨트랙트에서 대체 불가능 토큰(NFT) 목록을 쿼리해 보겠습니다. 다음 명령을 사용하여 10번째 항목부터 최대 50개의 NFT 정보를 쿼리합니다.
 
 ```bash
-near view $NFT_CONTRACT_ID nft_tokens '{"from_index": "10", "limit": 50}'
+near contract call-function as-read-only $NFT_CONTRACT_ID nft_tokens json-args '{"from_index": "10", "limit": 50}' network-config testnet now
 ```
 
 이 명령은 다음과 유사한 출력을 반환해야 합니다.
@@ -88,7 +88,7 @@ near view $NFT_CONTRACT_ID nft_tokens '{"from_index": "10", "limit": 50}'
 `goteam.testnet` 계정이 소유한 NFT의 총 공급량을 얻으려면, `nft_supply_for_owner` 함수를 호출하고 `account_id` 매개변수를 설정합니다.
 
 ```bash
-near view $NFT_CONTRACT_ID nft_supply_for_owner '{"account_id": "goteam.testnet"}'
+near contract call-function as-read-only $NFT_CONTRACT_ID nft_supply_for_owner json-args '{"account_id": "goteam.testnet"}' network-config testnet now
 ```
 
 그러면 다음과 유사한 출력이 반환됩니다.
@@ -110,15 +110,16 @@ near view $NFT_CONTRACT_ID nft_supply_for_owner '{"account_id": "goteam.testnet"
 
 이 튜토리얼에서는 [두 개의 새로운 열거 함수](/tutorials/nfts/enumeration#modifications-to-the-contract)를 추가했으며, 이제 생성 및 열거 메서드가 있는 기본 NFT 스마트 컨트랙트가 있습니다. 이러한 수정 사항을 구현한 후 스마트 컨트랙트를 재배포하고 CLI를 사용하여 기능을 테스트했습니다.
 
-[다음 튜토리얼](/tutorials/nfts/core)에서는 사용자가 발행된 토큰을 전송할 수 있도록 하는 데 필요한 핵심 함수들을 구현합니다.
+In the [next tutorial](4-core.md), you'll implement the core functions needed to allow users to transfer the minted tokens.
 
 :::note 문서 버전 관리
 
 글을 작성하는 시점에서, 해당 예제는 다음 버전에서 작동합니다.
 
-- near-cli: `4.0.13`
+- rustc: `1.77.1`
+- near-cli-rs: `0.11.0`
 - cargo-near `0.6.1`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
 - 열거 표준: [NEP181](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration), `1.0.0` 버전
 
 :::

@@ -171,13 +171,12 @@ Next, you'll deploy this contract to the network.
 
 ```bash
 export MARKETPLACE_CONTRACT_ID=<accountId>
-near create-account $MARKETPLACE_CONTRACT_ID --useFaucet
+near account create-account sponsor-by-faucet-service $MARKETPLACE_CONTRACT_ID autogenerate-new-keypair save-to-legacy-keychain network-config testnet create
 ```
 
 Using the build script, deploy the contract as you did in the previous tutorials:
 
 ```bash
-near deploy $MARKETPLACE_CONTRACT_ID out/market.wasm
 cargo near deploy $MARKETPLACE_CONTRACT_ID with-init-call new json-args '{"owner_id": "'$MARKETPLACE_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
 ```
 
@@ -188,9 +187,11 @@ cargo near deploy $MARKETPLACE_CONTRACT_ID with-init-call new json-args '{"owner
 Let's mint a new NFT token and approve a marketplace contract:
 
 ```bash
-near call $NFT_CONTRACT_ID nft_mint '{"token_id": "token-1", "metadata": {"title": "My Non Fungible Team Token", "description": "The Team Most Certainly Goes :)", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$NFT_CONTRACT_ID'"}' --accountId $NFT_CONTRACT_ID --amount 0.1
+near contract call-function as-transaction $NFT_CONTRACT_ID nft_mint json-args '{"token_id": "token-1", "metadata": {"title": "My Non Fungible Team Token", "description": "The Team Most Certainly Goes :)", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$NFT_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $NFT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
+```
 
-near call $NFT_CONTRACT_ID nft_approve '{"token_id": "token-1", "account_id": "'$MARKETPLACE_CONTRACT_ID'"}' --accountId $NFT_CONTRACT_ID --deposit 0.1
+```bash
+near contract call-function as-transaction $NFT_CONTRACT_ID nft_approve json-args '{"token_id": "token-1", "account_id": "'$MARKETPLACE_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $NFT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
 ```
 
 <hr className="subsection" />
@@ -198,7 +199,7 @@ near call $NFT_CONTRACT_ID nft_approve '{"token_id": "token-1", "account_id": "'
 ### Listing NFT on sale
 
 ```bash
-near call $MARKETPLACE_CONTRACT_ID list_nft_for_sale '{"nft_contract_id": "'$NFT_CONTRACT_ID'", "token_id": "token-1", "approval_id": 0, "msg": "{\"sale_conditions\": \"1\"}"}' --accountId $NFT_CONTRACT_ID --gas 30000000000000
+near contract call-function as-transaction $MARKETPLACE_CONTRACT_ID list_nft_for_sale json-args '{"nft_contract_id": "'$NFT_CONTRACT_ID'", "token_id": "token-1", "approval_id": 0, "msg": "{\"sale_conditions\": \"1\"}"}' prepaid-gas '300.0 Tgas' attached-deposit '0 NEAR' sign-as $NFT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
 ```
 
 <hr className="subsection" />
@@ -208,7 +209,7 @@ near call $MARKETPLACE_CONTRACT_ID list_nft_for_sale '{"nft_contract_id": "'$NFT
 To query for the total supply of NFTs listed on the marketplace, you can call the `get_supply_sales` function. An example can be seen below. An example can be seen below.
 
 ```bash
-near view $MARKETPLACE_CONTRACT_ID get_supply_sales
+near contract call-function as-read-only $MARKETPLACE_CONTRACT_ID get_supply_sales json-args {} network-config testnet now
 ```
 
 <hr className="subsection" />
@@ -218,7 +219,7 @@ near view $MARKETPLACE_CONTRACT_ID get_supply_sales
 To query for the total supply of NFTs listed by a specific owner on the marketplace, you can call the `get_supply_by_owner_id` function. An example can be seen below. An example can be seen below.
 
 ```bash
-near view $MARKETPLACE_CONTRACT_ID get_supply_by_owner_id '{"account_id": "'$NFT_CONTRACT_ID'"}'
+near contract call-function as-read-only $MARKETPLACE_CONTRACT_ID get_supply_by_owner_id json-args '{"account_id": "'$NFT_CONTRACT_ID'"}' network-config testnet now
 ```
 
 <hr className="subsection" />
@@ -228,7 +229,7 @@ near view $MARKETPLACE_CONTRACT_ID get_supply_by_owner_id '{"account_id": "'$NFT
 To query for the total supply of NFTs that belong to a specific contract, you can call the `get_supply_by_nft_contract_id` function. An example can be seen below. An example can be seen below.
 
 ```bash
-near view $MARKETPLACE_CONTRACT_ID get_supply_by_nft_contract_id '{"nft_contract_id": "'$NFT_CONTRACT_ID'"}'
+near contract call-function as-read-only $MARKETPLACE_CONTRACT_ID get_supply_by_nft_contract_id json-args '{"nft_contract_id": "'$NFT_CONTRACT_ID'"}' network-config testnet now
 ```
 
 <hr className="subsection" />
@@ -238,19 +239,19 @@ near view $MARKETPLACE_CONTRACT_ID get_supply_by_nft_contract_id '{"nft_contract
 To query for important information for a specific listing, you can call the `get_sale` function. This requires that you pass in the `nft_contract_token`. This is essentially the unique identifier for sales on the market contract as explained earlier. It consists of the NFT contract followed by a `DELIMITER` followed by the token ID. In this contract, the `DELIMITER` is simply a period: `.`.  An example of this query can be seen below. This requires that you pass in the `nft_contract_token`. This is essentially the unique identifier for sales on the market contract as explained earlier. It consists of the NFT contract followed by a `DELIMITER` followed by the token ID. In this contract, the `DELIMITER` is simply a period: `.`.  An example of this query can be seen below.
 
 ```bash
-near view $MARKETPLACE_CONTRACT_ID get_sale '{"nft_contract_token": "'$NFT_CONTRACT_ID'.token-1"}'
+near contract call-function as-read-only $MARKETPLACE_CONTRACT_ID get_sale json-args '{"nft_contract_token": "'$NFT_CONTRACT_ID'.token-1"}' network-config testnet now
 ```
 
 In addition, you can query for paginated information about the listings for a given owner by calling the `get_sales_by_owner_id` function.
 
 ```bash
-near view $MARKETPLACE_CONTRACT_ID get_sales_by_owner_id '{"account_id": "'$NFT_CONTRACT_ID'", "from_index": "0", "limit": 5}'
+near contract call-function as-read-only $MARKETPLACE_CONTRACT_ID get_sales_by_owner_id json-args '{"account_id": "'$NFT_CONTRACT_ID'", "from_index": "0", "limit": 5}' network-config testnet now
 ```
 
 Finally, you can query for paginated information about the listings that originate from a given NFT contract by calling the `get_sales_by_nft_contract_id` function.
 
 ```bash
-near view $MARKETPLACE_CONTRACT_ID get_sales_by_nft_contract_id '{"nft_contract_id": "'$NFT_CONTRACT_ID'", "from_index": "0", "limit": 5}'
+near contract call-function as-read-only $MARKETPLACE_CONTRACT_ID get_sales_by_nft_contract_id json-args '{"nft_contract_id": "'$NFT_CONTRACT_ID'", "from_index": "0", "limit": 5}' network-config testnet now
 ```
 
 ---
@@ -273,8 +274,9 @@ You should now have a solid understanding of NFTs and marketplaces on NEAR. Feel
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `4.0.13`
+- rustc: `1.77.1`
+- near-cli-rs: `0.11.0`
 - cargo-near `0.6.1`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
 
 :::

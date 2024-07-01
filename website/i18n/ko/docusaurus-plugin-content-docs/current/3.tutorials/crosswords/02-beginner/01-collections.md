@@ -50,7 +50,7 @@ NEAR의 스마트 컨트랙트들에서 사용되는 여러 규칙을 볼 수 �
 
 반복 가능/불가능한 NEAR 컬렉션에서 구조체가 구성된 방식은 다음과 같습니다.
 
-<Github language="rust" start="73" end="79" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/276217ad82c64c610148e998ec926942ba910a12/contract/src/lib.rs" />
+<Github language="rust" start="62" end="72" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/master/contract/src/lib.rs" />
 
 Above, we have the `puzzles` and `unsolved_puzzles` fields which are collections.
 
@@ -58,19 +58,19 @@ We also have an `owner_id` so we can exercise a common pattern in smart contract
 
 The snippet below shows the first method in the implementation of the `Crossword` struct, where the `new` function sets up these two specialized collections.
 
-<Github language="rust" start="81" end="90" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/276217ad82c64c610148e998ec926942ba910a12/contract/src/lib.rs" />
+<Github language="rust" start="74" end="83" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/master/contract/src/lib.rs" />
 
 따라서 초기화 함수(`new`) 실행 중에 `owner_id`를 설정합니다. 우리의 목적을 위해, 소유자는 컨트랙트 자체일 가능성이 높지만, 이는 DAO 또는 다른 사용자가 될 수도 있습니다. 다음으로 컬렉션 필드의 `b"c"`및 `b"u"` 비트를 살펴보겠습니다.
 
 ## 컬렉션의 접두사
 
-위에서 `new` 함수는 고유한 접두사를 지정하여 구조체의 필드를 초기화합니다. [여기](/sdk/rust/contract-structure/nesting#traditional-approach-for-unique-prefixes)에서 접두사에 대해 자세히 알아볼 수 있지만, 이러한 접두사(`c` 및 `u`)는 짧고 달라야 한다는 것을 알아두세요.
+위에서 `new` 함수는 고유한 접두사를 지정하여 구조체의 필드를 초기화합니다. You can learn more about [the prefixes here](../../../2.build/2.smart-contracts/anatomy/collections.md), but know that these prefixes (`c` and `u`) should be short and different.
 
 새로운 십자말풀이 퍼즐을 추가하는 방법을 살펴보겠습니다. 여기에는 아직 정의하지 않은 새 구조체 `Answer`가 있습니다. 우리는 또한 `PuzzleStatus::Solved` 및 `PuzzleStatus::Unsolved` 와 같은 열거형(Enums)의 개념을 소개할 것입니다. 다음 섹션에서 이에 대해 다룰 것입니다.
 
 십자말풀이 퍼즐이 하나만 있었던 이전 챕터와 달리, 새 컬렉션에 퍼즐을 삽입할 것이므로, `new_puzzle` 메서드를 만들어 보겠습니다.
 
-<Github language="rust" start="147" end="163" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/8ec941c82539e6eafa4971444e1da9e4819330d3/contract/src/lib.rs" />
+<Github language="rust" start="140" end="157" url="https://github.com/near-examples/crossword-tutorial-chapter-2/blob/master/contract/src/lib.rs" />
 
 이제 여러 퍼즐을 저장하도록 설정했습니다!
 

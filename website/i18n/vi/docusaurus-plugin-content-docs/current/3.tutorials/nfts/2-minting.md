@@ -8,7 +8,7 @@ import {Github} from "@site/src/components/codetabs"
 
 This is the first of many tutorials in a series where you'll be creating a complete NFT smart contract from scratch that conforms with all the NEAR [NFT standards](https://nomicon.io/Standards/NonFungibleToken/).
 
-Today you'll learn how to create the logic needed to mint NFTs and have them show up in your NEAR wallet. You will be filling a bare-bones [skeleton smart contract](/tutorials/nfts/skeleton) to add minting functionalities.
+Today you'll learn how to create the logic needed to mint NFTs and have them show up in your NEAR wallet. You will be filling a bare-bones [skeleton smart contract](1-skeleton.md) to add minting functionalities.
 
 :::info Contracts You can find the skeleton contract in our [Skeleton folder](https://github.com/near-examples/nft-tutorial/tree/main/nft-contract-skeleton)
 
@@ -18,7 +18,7 @@ A completed version of this tutorial can be found in the [Basic NFT folder](http
 
 ## Giới thiệu
 
-To get started, go to the `nft-contract-skeleton` folder in our repo. Nếu bạn chưa clone repository, hãy tham khảo [Kiến trúc của Contract](/tutorials/nfts/skeleton) để bắt đầu.
+To get started, go to the `nft-contract-skeleton` folder in our repo. If you haven't cloned the repository, refer to the [Contract Architecture](1-skeleton.md) to get started.
 
 ```
 cd nft-contract-skeleton/
@@ -212,16 +212,16 @@ Bây giờ logic để mint đã hoàn tất và bạn đã thêm một cách đ
 
 ### Deploy một contract {#deploy-the-contract}
 
-Để deploy, bạn cần một account NEAR với các key chứa sẵn trong local machine của bạn. Navigate to the [NEAR wallet](https://testnet.mynearwallet.com//) site and create an account.
+Để deploy, bạn cần một account NEAR với các key chứa sẵn trong local machine của bạn. Navigate to the [NEAR wallet](https://testnet.mynearwallet.com/) site and create an account.
 
 :::info
 Hãy đảm bảo rằng bạn deploy contract cho một account không có contract nào tồn tại từ trước. Cách đơn giản nhất là chỉ cần tạo một account mới hoặc tạo một account phụ cho hướng dẫn này.
 :::
 
-Đăng nhập vào account vừa mới tạo với `near-cli` bằng cách chạy câu lệnh sau trong terminal của bạn.
+Log in to your newly created account with [`near-cli-rs`](../../4.tools/cli-rs.md) by running the following command in your terminal.
 
 ```bash
-near login
+near account import-account using-web-wallet network-config testnet
 ```
 
 Để làm cho hướng dẫn này dễ dàng hơn với copy/paste, chúng tôi đã set một biến môi trường cho account ID của bạn. Trong command dưới đây, thay `YOUR_ACCOUNT_NAME` với account name bạn vừa đăng nhập, bao gồm phần `.testnet`:
@@ -267,7 +267,7 @@ You've just deployed and initialized the contract with some default metadata and
 Bây giờ contract đã được init, bạn có thể call một số function mà bạn đã viết trước đó. Cụ thể hơn, hãy test function trả về metadata của contract:
 
 ```bash
-near view $NFT_CONTRACT_ID nft_metadata
+near contract call-function as-read-only $NFT_CONTRACT_ID nft_metadata json-args {} network-config testnet now
 ```
 
 Nó sẽ trả về một output trong giống như sau:
@@ -304,7 +304,7 @@ Hãy bắt đầu mint một NFT với một title, description, và media. Trư
   - **receiver_id**: "'$NFT_CONTRACT_ID'"
 
 ```bash
-near call $NFT_CONTRACT_ID nft_mint '{"token_id": "token-1", "metadata": {"title": "My Non Fungible Team Token", "description": "The Team Most Certainly Goes :)", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$NFT_CONTRACT_ID'"}' --accountId $NFT_CONTRACT_ID --amount 0.1
+near contract call-function as-transaction $NFT_CONTRACT_ID nft_mint json-args '{"token_id": "token-1", "metadata": {"title": "My Non Fungible Team Token", "description": "The Team Most Certainly Goes :)", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$NFT_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $NFT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
 ```
 
 :::info Cờ `amount` đang chỉ định bao nhiêu NEAR để đính kèm vào call. Do bạn cần phải trả tiền cho storage, 0,1 NEAR sẽ được đính kèm và cuối cùng bạn sẽ được hoàn lại khoản tiền thừa chưa được sử dụng. :::
@@ -316,7 +316,7 @@ near call $NFT_CONTRACT_ID nft_mint '{"token_id": "token-1", "metadata": {"title
 Bây giờ NFT đã được mint, bạn có thể kiểm tra và xem mọi thứ có diễn ra chính xác hay không bằng cách gọi function `nft_token`. Nó sẽ trả về một `JsonToken`, trong đó chứa `token_id`, `owner_id`, và `metadata`.
 
 ```bash
-near view $NFT_CONTRACT_ID nft_token '{"token_id": "token-1"}'
+near contract call-function as-read-only $NFT_CONTRACT_ID nft_token json-args '{"token_id": "token-1"}' network-config testnet now
 ```
 
 <details>
@@ -353,7 +353,7 @@ near view $NFT_CONTRACT_ID nft_token '{"token_id": "token-1"}'
 
 ## Xem NFT của bạn trong wallet
 
-If you navigate to the [collectibles tab](https://testnet.mynearwallet.com//?tab=collectibles) in the NEAR wallet, this should list all the NFTs that you own. Nó sẽ trông giống như bên dưới đây.
+If you navigate to the [collectibles tab](https://testnet.mynearwallet.com/?tab=collectibles) in the NEAR wallet, this should list all the NFTs that you own. Nó sẽ trông giống như bên dưới đây.
 
 ![empty-nft-in-wallet](/docs/assets/nfts/empty-nft-in-wallet.png)
 
@@ -375,15 +375,16 @@ Sau khi contract được viết, đã đến lúc deploy vào blockchain. Bạn
 
 ## Các bước tiếp theo
 
-In the [next tutorial](/docs/tutorials/contracts/nfts/upgrade-contract), you'll find out how to deploy a patch fix and what that means so that you can view your NFTs in the wallet.
+In the [next tutorial](2-upgrade.md), you'll find out how to deploy a patch fix and what that means so that you can view your NFTs in the wallet.
 
 :::note Versioning for this article
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `4.0.13`
+- rustc: `1.77.1`
+- near-cli-rs: `0.11.0`
 - cargo-near `0.6.1`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
 - Metadata standard: [NEP177](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata), version `2.1.0`
 
 :::

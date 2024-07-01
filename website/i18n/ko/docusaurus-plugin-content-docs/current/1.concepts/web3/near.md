@@ -53,7 +53,7 @@ NEAR의 스마트 컨트랙트는 Rust 또는 JavaScript로 작성되고, [WebAs
 
 스토리지에 대한 마지막 문제로, 스마트 컨트랙트 자체도 블록체인에 저장된 코드일 뿐이므로 DeployContract 트랜잭션에도 스토리지 비용이 발생한다는 점을 기억하십시오. 스마트 컨트랙트 코드는 상당히 클 수 있으므로 크기를 최적화하는 것이 중요합니다. 이에 대한 몇 가지 팁은 다음과 같습니다:
 - Windows에서 Rust 코드를 빌드하지 마세요. 이는 상당히 큰 출력을 생성합니다. WSL을 사용하거나 다른 OS에서 빌드하세요.
-- 스마트 컨트랙트 코드 크기를 최적화합니다 - [더 많은 정보는 여기서 확인하세요](/sdk/rust/contract-size).
+- Optimize smart contracts code for size - [more info here](../../2.build/2.smart-contracts/anatomy/reduce-size.md)
 
 자세한 내용은 [여기를 참조하세요](../storage/storage-staking.md).
 
@@ -122,8 +122,8 @@ NEAR의 스마트 컨트랙트는 Rust 또는 JavaScript로 작성되고, [WebAs
 
 우리는 이미 NEAR에서 스토리지 모델에 대해 논의했지만, 정확한 구조를 가져오지 않고 추상적인 용어로만 다루었으므로 이제 좀 더 깊이 파고들 차례입니다.
 
-기본적으로 NEAR 스마트 컨트랙트는 데이터를 키-값 쌍으로 저장합니다. 가장 단순한 어플리케이션이라도, 보통은 고급 데이터 구조를 요구하기 때문에 이는 상당히 제한적입니다. To help in development, NEAR provides [SDK for smart contracts](https://github.com/near/near-sdk-rs), which includes data structures like [vectors, sets and maps](../../1.concepts/storage/data-collections.md#rust-collection-types-rust-collection-types). 이는 매우 유용하지만 다음과 같은 몇 가지 사항을 기억하는 것이 중요합니다.
-- 궁극적으로 이들은 바이너리 값으로 저장됩니다. 즉, 그것들을 직렬화하고 역직렬화하는 데 약간의 가스가 필요함을 의미합니다. 또한 작업마다 가스 비용이 다릅니다([복잡도 표](../../1.concepts/storage/data-collections.md#big-o-notation-big-o-notation-1)). 이 때문에 데이터 구조를 신중하게 선택하는 것이 매우 중요합니다. 나중에 다른 데이터 구조로 이동하는 것은 쉽지 않으며, 데이터 마이그레이션이 필요할 수 있습니다.
+기본적으로 NEAR 스마트 컨트랙트는 데이터를 키-값 쌍으로 저장합니다. 가장 단순한 어플리케이션이라도, 보통은 고급 데이터 구조를 요구하기 때문에 이는 상당히 제한적입니다. To help in development, NEAR provides [SDK for smart contracts](https://github.com/near/near-sdk-rs), which includes data structures like [vectors, sets and maps](../../2.build/2.smart-contracts/anatomy/collections.md). 이는 매우 유용하지만 다음과 같은 몇 가지 사항을 기억하는 것이 중요합니다.
+- 궁극적으로 이들은 바이너리 값으로 저장됩니다. 즉, 그것들을 직렬화하고 역직렬화하는 데 약간의 가스가 필요함을 의미합니다. Also, different operations cost different amounts of gas ([complexity table](../../2.build/2.smart-contracts/anatomy/collections.md#complexity)). 이 때문에 데이터 구조를 신중하게 선택하는 것이 매우 중요합니다. 나중에 다른 데이터 구조로 이동하는 것은 쉽지 않으며, 데이터 마이그레이션이 필요할 수 있습니다.
 - 매우 유용하긴 하지만 벡터, 맵 및 집합은 기존 관계형 데이터베이스의 유연성 및 성능과 일치하지 않습니다. 간단한 필터링 및 검색의 구현도 상당히 복잡할 수 있으며 실행하는 데 많은 가스가 필요할 수 있습니다.
 - 이 자료형들은 단일 컨트랙트 내로 제한됩니다. 여러 컨트랙트의 데이터가 필요한 경우 교차 컨트랙트 호출을 사용하거나, 클라이언트 측에서 집계를 수행해야 하며 이는 가스 및 시간 측면에서 상당히 비쌉니다.
 
@@ -196,7 +196,6 @@ While developing the contract, we recommend just creating a new account each tim
 NEAR에 대해 자세히 알아보려면 다음 링크들이 유용합니다.
 
 - [NEAR 문서](https://docs.near.org)
-- [Rust 스마트 컨트랙트 문서](/sdk/rust/introduction)
 - [Smart Contract quick start guide](../../2.build/2.smart-contracts/quickstart.md)
 - [NEAR Protocol Specification](https://nomicon.io/)
 - [How to build a dApp on NEAR](../../3.tutorials/examples/guest-book.md)

@@ -84,26 +84,27 @@ Now that the logic for defining a custom fungible token is complete and you've a
 You can build a contract using the following command:
 
 ```bash
-cd 1.skeleton && cargo near build
+cd 2.define-a-token
+cargo near build
 ```
 
 콘솔에 경고 목록이 표시되지만, 튜토리얼이 진행됨에 따라 이러한 경고는 사라집니다.
 
-배포하려면 로컬 기기에 키가 저장된 NEAR 계정이 필요합니다. Navigate to the [NEAR wallet](https://testnet.mynearwallet.com//) site and create an account.
+배포하려면 로컬 기기에 키가 저장된 NEAR 계정이 필요합니다. Navigate to the [NEAR wallet](https://testnet.mynearwallet.com/) site and create an account.
 
 기존 컨트랙트가 없는 계정에 컨트랙트를 배포했는지 확인하세요. 새 계정을 만들거나 이 튜토리얼의 하위 계정(sub-account)을 만드는 것이 가장 쉽습니다.
 :::
 
-터미널에서 다음 명령을 실행하여 새로 만든 계정에 `near-cli`로 로그인합니다.
+Log in to your newly created account with `near-cli-rs` by running the following command in your terminal.
 
 ```bash
-near login
+near account import-account using-web-wallet network-config testnet
 ```
 
 이 튜토리얼을 더 쉽게 복사/붙여넣기할 수 있도록, 계정 ID에 대한 환경 변수를 설정하겠습니다. 아래 명령에서 `YOUR_ACCOUNT_NAME`를  `.testnet` 부분을 포함하여 방금 로그인한 계정 이름으로 바꿉니다.
 
 ```bash
-export FT_CONTRACT_ID="YOUR_ACCOUNT_NAME"
+export FT_CONTRACT_ID="YOUR_ACCOUNT_NAME.testnet"
 ```
 
 다음을 실행하여 환경 변수가 올바르게 설정되었는지 테스트합니다.
@@ -127,12 +128,12 @@ At this point, the contract should have been deployed to your account and initia
 이제 컨트랙트가 초기화되었으므로 이전에 작성한 일부 함수를 호출할 수 있습니다.
 
 ```bash
-near view $FT_CONTRACT_ID ft_metadata
+near contract call-function as-read-only $FT_CONTRACT_ID ft_metadata json-args {} network-config testnet now
 ```
 
 그러면 다음과 유사한 출력이 반환됩니다.
 
-```bash
+```js
 {
   spec: 'ft-1.0.0',
   name: 'Team Token FT Tutorial',
@@ -163,3 +164,14 @@ near view $FT_CONTRACT_ID ft_metadata
 ## 다음 단계
 
 [다음 튜토리얼](/tutorials/fts/circulating-supply)에서는 토큰의 초기 공급을 생성하고 NEAR 지갑에 표시하는 방법을 알아봅니다.
+
+---
+
+:::note Versioning for this article
+At the time of this writing, this example works with the following versions:
+
+- rustc: `1.77.1`
+- near-sdk-rs: `5.1.0` (with enabled `legacy` feature)
+- cargo-near: `0.6.1`
+- near-cli-rs: `0.11.0`
+:::

@@ -21,7 +21,7 @@ import {Github} from "@site/src/components/codetabs"
 
 NEAR 런타임은 디스크에서 직렬화된 상태를 읽고 현재 컨트랙트 코드를 사용하여 로드를 시도합니다. 코드가 변경되면 이를 수행하는 방법을 파악하지 못할 수 있습니다.
 
-컨트랙트를 전략적으로 업그레이드하고 런타임이 새 컨트랙트 코드로 현재 상태를 읽을 수 있는지 확인해야 합니다. 컨트랙트 업그레이드 및 몇 가지 모범 사례에 대한 자세한 내용은 NEAR SDK의 [컨트랙트 업그레이드](/sdk/rust/building/prototyping) 문서를 참조하세요.
+컨트랙트를 전략적으로 업그레이드하고 런타임이 새 컨트랙트 코드로 현재 상태를 읽을 수 있는지 확인해야 합니다. For more information about upgrading contracts and some best practices, see the NEAR SDK's [upgrading contracts](../../../2.build/2.smart-contracts/release/upgrade.md) write-up.
 
 ## 컨트랙트 수정 {#modifications-to-contract}
 

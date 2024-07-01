@@ -8,7 +8,7 @@ import {Github} from "@site/src/components/codetabs"
 
 This is the first of many tutorials in a series where you'll be creating a complete NFT smart contract from scratch that conforms with all the NEAR [NFT standards](https://nomicon.io/Standards/NonFungibleToken/).
 
-Today you'll learn how to create the logic needed to mint NFTs and have them show up in your NEAR wallet. You will be filling a bare-bones [skeleton smart contract](/tutorials/nfts/skeleton) to add minting functionalities.
+Today you'll learn how to create the logic needed to mint NFTs and have them show up in your NEAR wallet. You will be filling a bare-bones [skeleton smart contract](1-skeleton.md) to add minting functionalities.
 
 :::info Contracts You can find the skeleton contract in our [Skeleton folder](https://github.com/near-examples/nft-tutorial/tree/main/nft-contract-skeleton)
 
@@ -18,7 +18,7 @@ A completed version of this tutorial can be found in the [Basic NFT folder](http
 
 ## 소개
 
-To get started, go to the `nft-contract-skeleton` folder in our repo. 레퍼지토리를 복제하지 않은 경우 [컨트랙트 아키텍처](/tutorials/nfts/skeleton)를 참조하여 시작하세요.
+To get started, go to the `nft-contract-skeleton` folder in our repo. If you haven't cloned the repository, refer to the [Contract Architecture](1-skeleton.md) to get started.
 
 ```
 cd nft-contract-skeleton/
@@ -212,16 +212,16 @@ nft-contract
 
 ### 컨트랙트 배포 {#deploy-the-contract}
 
-배포하려면 로컬 기기에 키가 저장된 NEAR 계정이 필요합니다. Navigate to the [NEAR wallet](https://testnet.mynearwallet.com//) site and create an account.
+배포하려면 로컬 기기에 키가 저장된 NEAR 계정이 필요합니다. Navigate to the [NEAR wallet](https://testnet.mynearwallet.com/) site and create an account.
 
 :::info
 기존 컨트랙트가 없는 계정에 컨트랙트를 배포했는지 확인하세요. 새 계정을 만들거나 이 튜토리얼의 하위 계정을 만드는 것이 가장 쉽습니다.
 :::
 
-터미널에서 다음 명령을 실행하여 새로 만든 계정에 `near-cli`로 로그인합니다.
+Log in to your newly created account with [`near-cli-rs`](../../4.tools/cli-rs.md) by running the following command in your terminal.
 
 ```bash
-near login
+near account import-account using-web-wallet network-config testnet
 ```
 
 이 튜토리얼을 더 쉽게 복사/붙여넣기할 수 있도록, 계정 ID에 대한 환경 변수를 설정하겠습니다. 아래 명령에서 `YOUR_ACCOUNT_NAME`를  `.testnet` 부분을 포함하여 방금 로그인한 계정 이름으로 바꿉니다.
@@ -267,7 +267,7 @@ You've just deployed and initialized the contract with some default metadata and
 이제 컨트랙트가 초기화되었으므로 이전에 작성한 일부 함수를 호출할 수 있습니다. 보다 구체적으로 컨트랙트 메타데이터를 반환하는 함수를 테스트해 보겠습니다.
 
 ```bash
-near view $NFT_CONTRACT_ID nft_metadata
+near contract call-function as-read-only $NFT_CONTRACT_ID nft_metadata json-args {} network-config testnet now
 ```
 
 그러면 다음과 유사한 출력이 반환됩니다.
@@ -304,7 +304,7 @@ near view $NFT_CONTRACT_ID nft_metadata
   - **receiver_id**: "'$NFT_CONTRACT_ID'"
 
 ```bash
-near call $NFT_CONTRACT_ID nft_mint '{"token_id": "token-1", "metadata": {"title": "My Non Fungible Team Token", "description": "The Team Most Certainly Goes :)", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$NFT_CONTRACT_ID'"}' --accountId $NFT_CONTRACT_ID --amount 0.1
+near contract call-function as-transaction $NFT_CONTRACT_ID nft_mint json-args '{"token_id": "token-1", "metadata": {"title": "My Non Fungible Team Token", "description": "The Team Most Certainly Goes :)", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$NFT_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $NFT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
 ```
 
 :::info `amount` 플래그는 호출에 첨부할 NEAR의 양을 지정합니다. 스토리지 비용을 지불해야 하므로 0.1 NEAR가 첨부되고, 마지막에 사용하지 않은 초과분은 환불됩니다. :::
@@ -316,7 +316,7 @@ near call $NFT_CONTRACT_ID nft_mint '{"token_id": "token-1", "metadata": {"title
 이제 NFT가 발행되었으므로, `nft_token` 함수를 호출하여 모든 것이 올바르게 진행되었는지 확인할 수 있습니다. 이는 `token_id`, `owner_id`, 및 `metadata`를 포함해야 하는 `JsonToken`를 반환합니다.
 
 ```bash
-near view $NFT_CONTRACT_ID nft_token '{"token_id": "token-1"}'
+near contract call-function as-read-only $NFT_CONTRACT_ID nft_token json-args '{"token_id": "token-1"}' network-config testnet now
 ```
 
 <details>
@@ -353,7 +353,7 @@ near view $NFT_CONTRACT_ID nft_token '{"token_id": "token-1"}'
 
 ## 지갑에서 NFT 보기
 
-If you navigate to the [collectibles tab](https://testnet.mynearwallet.com//?tab=collectibles) in the NEAR wallet, this should list all the NFTs that you own. 현재 비어 있어야 합니다.
+If you navigate to the [collectibles tab](https://testnet.mynearwallet.com/?tab=collectibles) in the NEAR wallet, this should list all the NFTs that you own. 현재 비어 있어야 합니다.
 
 ![empty-nft-in-wallet](/docs/assets/nfts/empty-nft-in-wallet.png)
 
@@ -375,15 +375,16 @@ If you navigate to the [collectibles tab](https://testnet.mynearwallet.com//?tab
 
 ## 다음 단계
 
-[다음 튜토리얼](/tutorials/nfts/upgrade-contract)에서는 패치 수정 사항을 배포하는 방법과 지갑에서 NFT를 볼 수 있도록 하는 것이 무엇을 의미하는지 알아봅니다.
+In the [next tutorial](2-upgrade.md), you'll find out how to deploy a patch fix and what that means so that you can view your NFTs in the wallet.
 
 :::note 문서 버전 관리
 
 글을 작성하는 시점에서, 해당 예제는 다음 버전에서 작동합니다.
 
-- near-cli: `4.0.13`
+- rustc: `1.77.1`
+- near-cli-rs: `0.11.0`
 - cargo-near `0.6.1`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
 - 메타데이터 표준: [NEP177](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata), `1.0.0` 버전
 
 :::

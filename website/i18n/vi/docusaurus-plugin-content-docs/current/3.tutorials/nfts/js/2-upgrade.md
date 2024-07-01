@@ -21,7 +21,7 @@ Khi được thực hiện đúng, việc nâng cấp các contract có thể l�
 
 NEAR Runtime sẽ đọc serialized state từ disk và sẽ cố gắng load nó bằng cách sử dụng code của contract hiện tại. Khi code của bạn thay đổi, nó có thể không tìm được cách để thực hiện việc này.
 
-Bạn cần nâng cấp các contract của mình một cách chiến lược và đảm bảo rằng runtime sẽ có thể đọc state hiện tại của bạn bằng code mới của contract. Để biết thêm thông tin về việc upgrade các contract và một số cách thực hiện hay nhất, hãy xem phần ghi [các contract đang upgrade](/sdk/rust/building/prototyping) của NEAR SDK.
+Bạn cần nâng cấp các contract của mình một cách chiến lược và đảm bảo rằng runtime sẽ có thể đọc state hiện tại của bạn bằng code mới của contract. For more information about upgrading contracts and some best practices, see the NEAR SDK's [upgrading contracts](../../../2.build/2.smart-contracts/release/upgrade.md) write-up.
 
 ## Các sửa đổi đến contract của chúng ta {#modifications-to-contract}
 

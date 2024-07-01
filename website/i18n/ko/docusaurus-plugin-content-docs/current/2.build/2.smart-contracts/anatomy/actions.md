@@ -59,7 +59,7 @@ import TabItem from '@theme/TabItem';
 
 </Tabs>
 
-:::tip
+:::tip Why is there no callback?
 :::tip 전송이 실패하는 유일한 경우는 수신자 계정이 존재 하지 **않는** 경우입니다 .
 :::
 
@@ -240,7 +240,7 @@ right in the callback.
 
 <hr className="subsection" />
 
-#### 다른 계정 생성
+#### Creating `.testnet` / `.near` Accounts
 
 계정은 자신의 직접적인 하위 계정만 만들 수 있습니다.
 

@@ -96,7 +96,7 @@ Starting at the `lib.rs` file, this outlines what information is stored on the c
 
 The first function you'll look at is the initialization function. The first function you'll look at is the initialization function. This takes an `owner_id` as well as the `ft_id` as the parameters and will default all the storage collections to their default values. The `ft_id` outlines the account ID for the fungible token that the contract will allow. The `ft_id` outlines the account ID for the fungible token that the contract will allow.
 
-<Github language="rust" start="90" end="114" url="https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/lib.rs" />
+<Github language="rust" start="93" end="114" url="https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/lib.rs" />
 
 <hr className="subsection" />
 
@@ -122,7 +122,7 @@ You might be thinking about the scenario when a sale is purchased. What happens 
 
 With this behavior in mind, the following two functions outline the logic.
 
-<Github language="rust" start="116" end="179" url="https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/lib.rs" />
+<Github language="rust" start="119" end="182" url="https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/lib.rs" />
 
 In this contract, the storage required for each sale is 0.01 NEAR but you can query that information using the `storage_minimum_balance` function. In addition, if you wanted to check how much storage a given account has paid, you can query the `storage_balance_of` function. In addition, if you wanted to check how much storage a given account has paid, you can query the `storage_balance_of` function.
 
@@ -139,7 +139,7 @@ For purchasing NFTs, you must call the `offer` function. It takes an `nft_contra
 
 <Github language="rust" start="39" end="77" url="https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/ft_balances.rs" />
 
-Once FTs are deposited into the contract, users can either withdraw their FTs or they can use them to purchase NFTs. The withdrawing flow is outlined in the `ft_withdraw` function. Once FTs are deposited into the contract, users can either withdraw their FTs or they can use them to purchase NFTs. The withdrawing flow is outlined in the `ft_withdraw` function. It's important to note that you should decrement the user's balance **before** calling the `ft_transfer` function to avoid a common exploit scenario where a user spams the `ft_withdraw`. If you were to decrement their balance in the callback function (if the transfer was successful), they could spam the `ft_withdraw` during the time it takes the callback function to execute. A better pattern is to decrement their balance before the transfer and then if the promise was **unsuccessful*, revert the balance back to what it was before. If you were to decrement their balance in the callback function (if the transfer was successful), they could spam the `ft_withdraw` during the time it takes the callback function to execute. A better pattern is to decrement their balance before the transfer and then if the promise was **unsuccessful*, revert the balance back to what it was before.
+Once FTs are deposited into the contract, users can either withdraw their FTs or they can use them to purchase NFTs. The withdrawing flow is outlined in the `ft_withdraw` function. Once FTs are deposited into the contract, users can either withdraw their FTs or they can use them to purchase NFTs. The withdrawing flow is outlined in the `ft_withdraw` function. It's important to note that you should decrement the user's balance **before** calling the `ft_transfer` function to avoid a common exploit scenario where a user spams the `ft_withdraw`. If you were to decrement their balance in the callback function (if the transfer was successful), they could spam the `ft_withdraw` during the time it takes the callback function to execute. A better pattern is to decrement their balance before the transfer and then if the promise was **unsuccessful*, revert the balance back to what it was before. If you were to decrement their balance in the callback function (if the transfer was successful), they could spam the `ft_withdraw` during the time it takes the callback function to execute. A better pattern is to decrement their balance before the transfer and then if the promise was **unsuccessful**, revert the balance back to what it was before.
 
 <Github language="rust" start="79" end="154" url="https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/ft_balances.rs" />
 
@@ -395,3 +395,14 @@ And just like that you're finished! And just like that you're finished! You went
 ## Conclusion
 
 In this tutorial, you learned about the basics of a marketplace contract and how it works. You went through the core logic both at a high level and looked at the code. You deployed an NFT, marketplace, and FT contract, initialized them all and then put an NFT for sale and sold it for fungible tokens! What an amazing experience! Go forth and expand these contracts to meet whatever needs you have. The world is your oyster and thank you so much for following along with this tutorial series. Don't hesitate to ask for help or clarification on anything in our discord or social media channels. **Go Team!**
+
+---
+
+:::note Versioning for this article
+At the time of this writing, this example works with the following versions:
+
+- rustc: `1.77.1`
+- near-sdk-rs: `5.1.0` (with enabled `legacy` feature)
+- cargo-near: `0.6.1`
+- near-cli: `4.0.13`
+:::

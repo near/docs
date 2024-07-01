@@ -26,30 +26,11 @@ import batchCookieTray from '/docs/assets/crosswords/batch-of-actions--dobulyo.n
 
 일을 더 쉽게 하기 위해 [hex 크레이트](https://crates.io/crates/hex)에 의존성(dependency)을 추가할 것입니다. 기억하시겠지만 의존성은 매니페스트 파일에 있습니다.
 
-<Github language="rust" start="10" end="12" url="https://github.com/near-examples/crossword-tutorial-chapter-1/blob/481a83f0c90398f3234ce8006af4e232d6c779d7/contract/Cargo.toml" />
+<Github language="rust" start="10" end="12" url="https://github.com/near-examples/crossword-tutorial-chapter-1/blob/master/contract/Cargo.toml" />
 
 Let's write a unit test that acts as a helper during development. This unit test will sha256 hash the input **"near nomicon ref finance"** and print it in a human-readable, hex format. (We'll typically put unit tests at the bottom of the `lib.rs` file.)
 
-```rust
-#[cfg(test)]
-mod tests {
-    use super::*;
-    use near_sdk::test_utils::{get_logs, VMContextBuilder};
-    use near_sdk::{testing_env, AccountId};
-
-    #[test]
-    fn debug_get_hash() {
-        // Basic set up for a unit test
-        testing_env!(VMContextBuilder::new().build());
-
-        // Using a unit test to rapidly debug and iterate
-        let debug_solution = "near nomicon ref finance";
-        let debug_hash_bytes = env::sha256(debug_solution.as_bytes());
-        let debug_hash_string = hex::encode(debug_hash_bytes);
-        println!("Let's debug: {:?}", debug_hash_string);
-    }
-}
-```
+<Github language="rust" start="43" end="60" url="https://github.com/near-examples/crossword-tutorial-chapter-1/blob/master/contract/src/lib.rs" />
 
 :::info What is that `{:?}` thing? Take a look at different formatting traits that are covered in the [`std` Rust docs](https://doc.rust-lang.org/std/fmt/index.html#formatting-traits) regarding this. This is a `Debug` formatting trait and can prove to be useful during development. :::
 
@@ -78,7 +59,7 @@ This means when you sha256 the input **"near nomicon ref finance"** it produces 
 cargo test
 ```
 
-Note that the test command we ran had additional flags. Those flags told Rust *not to hide the output* from the tests. You can read more about this in [the cargo docs](https://doc.rust-lang.org/cargo/commands/cargo-test.html#display-options). Go ahead and try running the tests using the command above, without the additional flags, and note that we won't see the debug message. :::
+Note that the test command we ran had additional flags. Those flags told Rust **not to hide the output** from the tests. You can read more about this in [the cargo docs](https://doc.rust-lang.org/cargo/commands/cargo-test.html#display-options). Go ahead and try running the tests using the command above, without the additional flags, and note that we won't see the debug message. :::
 
 The unit test above is meant for debugging and quickly running snippets of code. Some may find this a useful technique when getting familiar with Rust and writing smart contracts. Next we'll write a real unit test that applies to this early version of our crossword puzzle contract.
 
@@ -86,13 +67,13 @@ The unit test above is meant for debugging and quickly running snippets of code.
 
 Let's add this unit test (inside the `mod tests {}` block, under our previous unit test) and analyze it:
 
-<Github language="rust" start="63" end="93" url="https://github.com/near-examples/crossword-tutorial-chapter-1/blob/5bce1c2a604fcb179e9789de1f299063f91abb4d/contract/src/lib.rs" />
+<Github language="rust" start="62" end="92" url="https://github.com/near-examples/crossword-tutorial-chapter-1/blob/master/contract/src/lib.rs" />
 
 처음 몇 줄의 코드는 단위 테스트를 작성할 때 일반적으로 사용됩니다. 이는 `VMContextBuilder`를 사용하여 트랜잭션에 대한 기본 컨텍스트를 생성한 다음, 테스트 환경을 설정합니다.
 
 다음으로 컨트랙트를 나타내는 객체가 생성되고, `set_solution` 함수가 호출됩니다. 그 후, `guess_solution` 함수는 두 번 호출됩니다. 첫 번째는 잘못된 정답으로, 그 다음에는 올바른 정답으로 호출됩니다. 로그를 확인하여 함수가 예상대로 작동하는지 확인할 수 있습니다.
 
-:::info Assertion에 대한 참고 사항 이 단위 테스트는 [`assert_eq!`](https://doc.rust-lang.org/std/macro.assert_eq.html) 매크로를 사용합니다. [`assert!`](https://doc.rust-lang.org/std/macro.assert.html) 및 [`assert_ne!`](https://doc.rust-lang.org/std/macro.assert_ne.html)와 같은 매크로들은 Rust에서 일반적으로 사용됩니다. 이들은 단위 테스트에 사용하기에 좋습니다. 그러나 이들은 컨트랙트 로직에 추가될 때 불필요한 오버헤드를 추가하므로, [`require!` macro](https://docs.rs/near-sdk/4.0.0-pre.2/near_sdk/macro.require.html) 매크로를 사용하는 것이 좋습니다. [여기](/sdk/rust/contract-size)에서 이에 대한 자세한 내용과 기타 효율성을 위한 팁을 참조하세요. :::
+:::info Assertion에 대한 참고 사항 이 단위 테스트는 [`assert_eq!`](https://doc.rust-lang.org/std/macro.assert_eq.html) 매크로를 사용합니다. [`assert!`](https://doc.rust-lang.org/std/macro.assert.html) 및 [`assert_ne!`](https://doc.rust-lang.org/std/macro.assert_ne.html)와 같은 매크로들은 Rust에서 일반적으로 사용됩니다. 이들은 단위 테스트에 사용하기에 좋습니다. 그러나 이들은 컨트랙트 로직에 추가될 때 불필요한 오버헤드를 추가하므로, [`require!` macro](https://docs.rs/near-sdk/4.0.0-pre.2/near_sdk/macro.require.html) 매크로를 사용하는 것이 좋습니다. See more information on this and [other efficiency tips here](../../../2.build/2.smart-contracts/anatomy/reduce-size.md). :::
 
 다시 말하지만, 다음을 사용하여 모든 단위 테스트를 실행할 수 있습니다.
 
@@ -116,23 +97,27 @@ cargo test check_guess_solution -- --nocapture
 
 Here we'll use the [`#[near]` macro](https://docs.rs/near-sdk/latest/near_sdk/attr.near.html) on a function called `new`, which is a common pattern.
 
-<Github language="rust" start="10" end="17" url="https://github.com/near-examples/crossword-tutorial-chapter-1/blob/94f42e75cf70ed2aafb9c29a1faa1e21f079a49e/contract/src/lib.rs" />
+<Github language="rust" start="9" end="17" url="https://github.com/near-examples/crossword-tutorial-chapter-1/blob/master/contract/src/lib.rs" />
 
 새로운 컨트랙트에서 이 메서드를 호출해 봅시다.
 
 ```bash
-# Build (for Windows it's build.bat)
-./build.sh
+# Go into the directory containing the Rust smart contract we've been working on
+cd contract
+
+# Build
+cargo near build
 
 # Create fresh account if you wish, which is good practice
-near delete crossword.friend.testnet friend.testnet
-near create-account crossword.friend.testnet --masterAccount friend.testnet
+near account delete-account crossword.friend.testnet beneficiary friend.testnet network-config testnet sign-with-legacy-keychain send
+
+near account create-account fund-myself crossword.friend.testnet '1 NEAR' autogenerate-new-keypair save-to-legacy-keychain sign-as friend.testnet network-config testnet sign-with-legacy-keychain send
 
 # Deploy
-near deploy crossword.friend.testnet --wasmFile res/my_crossword.wasm
+cargo near deploy crossword.friend.testnet without-init-call network-config testnet sign-with-legacy-keychain send
 
 # Call the "new" method
-near call crossword.friend.testnet new '{"solution": "69c2feb084439956193f4c21936025f14a5a5a78979d67ae34762e18a7206a0f"}' --accountId crossword.friend.testnet
+near contract call-function as-transaction crossword.friend.testnet new json-args '{"solution": "69c2feb084439956193f4c21936025f14a5a5a78979d67ae34762e18a7206a0f"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as crossword.friend.testnet network-config testnet sign-with-legacy-keychain send
 ```
 
 이제 십자말 풀이 정답이 대신 해시로 저장됩니다. 마지막 명령을 다시 호출하려고 하면 `#[init]` 매크로 덕분에 다음과 같은 오류 메시지가 표시됩니다. `The contract has already been initialized`
@@ -159,13 +144,12 @@ Here's a truncated snippet from a useful (though somewhat advanced) repository w
 
 ```bash
 # Create fresh account if you wish, which is good practice
-near delete crossword.friend.testnet friend.testnet
-near create-account crossword.friend.testnet --masterAccount friend.testnet
+near account delete-account crossword.friend.testnet beneficiary friend.testnet network-config testnet sign-with-legacy-keychain send
+
+near account create-account fund-myself crossword.friend.testnet '1 NEAR' autogenerate-new-keypair save-to-legacy-keychain sign-as friend.testnet network-config testnet sign-with-legacy-keychain send
 
 # Deploy
-near deploy crossword.friend.testnet --wasmFile res/my_crossword.wasm \
-  --initFunction 'new' \
-  --initArgs '{"solution": "69c2feb084439956193f4c21936025f14a5a5a78979d67ae34762e18a7206a0f"}'
+cargo near deploy crossword.friend.testnet with-init-call new json-args '{"solution": "69c2feb084439956193f4c21936025f14a5a5a78979d67ae34762e18a7206a0f"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-legacy-keychain send
 ```
 
 일괄 Action을 사용하고 있으므로, 아무도 우리보다 먼저 이 `new` 메서드를 호출할 수 없습니다.
@@ -186,8 +170,8 @@ near deploy crossword.friend.testnet --wasmFile res/my_crossword.wasm \
 
 `get_solution` 메서드는 다음과 같이 호출할 수 있습니다.
 
-```
-near view crossword.friend.testnet get_solution
+```bash
+near contract call-function as-read-only crossword.friend.testnet get_solution json-args {} network-config testnet now
 ```
 
 다음 섹션에서는 간단한 프론트엔드를 추가합니다. 다음 챕터에서는 이 아이디어 기반으로 구축된 더 많은 NEAR 개념을 설명합니다.

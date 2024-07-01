@@ -183,6 +183,8 @@ assert!(env::prepaid_gas() >= REQUIRED_GAS, "Please attach at least 20 TGas");
 
 ## 환경 함수
 
+Besides environmental variables, the SDK also exposes some functions to perform basic cryptographic operations
+
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="js" label="🌐 JavaScript">
 

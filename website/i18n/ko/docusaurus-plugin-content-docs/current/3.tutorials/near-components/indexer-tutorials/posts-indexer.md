@@ -18,7 +18,7 @@ You can request access through [this link](http://bit.ly/near-queryapi-beta).
 
 :::tip
 
-This indexer can be found by [following this link](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=bucanero.near/posts-example).
+This indexer can be found by [following this link](https://dev.near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=bucanero.near/posts-example).
 
 :::
 
@@ -231,6 +231,6 @@ return (
 
 :::tip
 
-To view a more complex example, see this widget which fetches posts with proper pagination: [Posts Widget powered By QueryAPI](https://near.org/edit/roshaan.near/widget/query-api-feed-infinite).
+To view a more complex example, see this widget which fetches posts with proper pagination: [Posts Widget powered By QueryAPI](https://dev.near.org/edit/roshaan.near/widget/query-api-feed-infinite).
 
 :::

@@ -59,7 +59,7 @@ class Contract{
 
 </Tabs>
 
-:::tip
+:::tip Why is there no callback?
 :::tip The only case where a transfer will fail is if the receiver account does **not** exist.
 :::
 
@@ -240,7 +240,7 @@ Notice that in the snippet we are transferring some money to the new account for
 
 <hr className="subsection" />
 
-#### Creating Other Accounts
+#### Creating `.testnet` / `.near` Accounts
 
 Accounts can only create immediate sub-accounts of themselves.
 

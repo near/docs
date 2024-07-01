@@ -11,9 +11,9 @@ In this tutorial, you'll learn about the [events standard](https://nomicon.io/St
 
 ## Hiểu rõ trường hợp sử dụng {#understanding-the-use-case}
 
-Have you ever wondered how the wallet knows which NFTs you own and how it can display them in the [collectibles tab](https://testnet.mynearwallet.com//?tab=collectibles)? Originally, an indexer used to listen for any functions calls starting with `nft_` on your account. Những contract này sau đó được gắn cờ trên account của bạn có thể là các NFT contract.
+Have you ever wondered how the wallet knows which NFTs you own and how it can display them in the [collectibles tab](https://testnet.mynearwallet.com/?tab=collectibles)? Originally, an indexer used to listen for any functions calls starting with `nft_` on your account. Những contract này sau đó được gắn cờ trên account của bạn có thể là các NFT contract.
 
-Khi bạn chuyển đến collectibles tab của mình, wallet sau đó sẽ truy vấn tất cả các contract đó để biết danh sách NFT mà bạn đang sở hữu bằng cách sử dụng function `nft_tokens_for_owner` mà bạn đã nhìn thấy trong [hướng dẫn enumeration](/docs/tutorials/contracts/nfts/enumeration).
+When you navigated to your collectibles tab, the wallet would then query all those contracts for the list of NFTs you owned using the `nft_tokens_for_owner` function you saw in the [enumeration tutorial](3-enumeration.md).
 
 <hr class="subsection" />
 
@@ -187,7 +187,7 @@ Next, you'll deploy this contract to the network.
 
 ```bash
 export EVENTS_NFT_CONTRACT_ID=<accountId>
-near create-account $EVENTS_NFT_CONTRACT_ID --useFaucet
+near account create-account sponsor-by-faucet-service $EVENTS_NFT_CONTRACT_ID autogenerate-new-keypair save-to-legacy-keychain network-config testnet create
 ```
 
 Using the cargo-near, deploy and initialize the contract as you did in the previous tutorials:
@@ -203,7 +203,7 @@ cargo near deploy $EVENTS_NFT_CONTRACT_ID with-init-call new_default_meta json-a
 Tiếp theo, bạn sẽ cần mint một token. Bằng cách chạy command này, bạn sẽ mint một token với token ID `"events-token"` và người nhận sẽ là account mới của bạn. Ngoài ra, bạn đang truyền vào một map với hai account sẽ nhận được perpetual royalty bất cứ khi nào token của bạn được bán.
 
 ```bash
-near call $EVENTS_NFT_CONTRACT_ID nft_mint '{"token_id": "events-token", "metadata": {"title": "Events Token", "description": "testing out the new events extension of the standard", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$EVENTS_NFT_CONTRACT_ID'"}' --accountId $EVENTS_NFT_CONTRACT_ID --amount 0.1
+near contract call-function as-transaction $EVENTS_NFT_CONTRACT_ID nft_mint json-args '{"token_id": "events-token", "metadata": {"title": "Events Token", "description": "testing out the new events extension of the standard", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$EVENTS_NFT_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $EVENTS_NFT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
 ```
 
 Bạn có thể kiểm tra xem mọi thứ có diễn ra đúng không bằng cách xem output trong CLI của mình:
@@ -227,7 +227,7 @@ Bạn có thể thấy rằng event đã được log một cách chính xác!
 Bây giờ bạn có thể test xem transfer log của mình có hoạt động như mong đợi hay không bằng cách gửi NFT cho `benjiman.testnet`.
 
 ```bash
-near call $EVENTS_NFT_CONTRACT_ID nft_transfer '{"receiver_id": "benjiman.testnet", "token_id": "events-token", "memo": "Go Team :)", "approval_id": 0}' --accountId $EVENTS_NFT_CONTRACT_ID --depositYocto 1
+near contract call-function as-transaction $EVENTS_NFT_CONTRACT_ID nft_transfer json-args '{"receiver_id": "benjiman.testnet", "token_id": "events-token", "memo": "Go Team :)", "approval_id": 0}' prepaid-gas '100.0 Tgas' attached-deposit '1 yoctoNEAR' sign-as $EVENTS_NFT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
 ```
 
 Nó sẽ trả về một output trong giống như sau:
@@ -251,15 +251,16 @@ Chúc mừng! Tại thời điểm này, NFT contract của bạn đã hoàn th�
 
 Today you went through the [events standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event) and implemented the necessary logic in your smart contract. Bạn đã tạo các event cho việc [mint](#logging-minted-tokens) và [transfer](#logging-transfers) các NFT. Sau đó bạn đã deploy và [test](#initialization-and-minting) những thay đổi của mình bằng cách mint và transfer các NFT.
 
-Trong hướng dẫn tiếp theo, bạn sẽ xem những thứ cơ bản của một marketplace contract và cách nó được xây dựng.
+In the [next tutorial](8-marketplace.md), you'll look at the basics of a marketplace contract and how it was built.
 
 :::note Versioning for this article
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `4.0.13`
+- rustc: `1.77.1`
+- near-cli-rs: `0.11.0`
 - cargo-near `0.6.1`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
 - Events standard: [NEP297 extension](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event), version `1.1.0`
 
 :::

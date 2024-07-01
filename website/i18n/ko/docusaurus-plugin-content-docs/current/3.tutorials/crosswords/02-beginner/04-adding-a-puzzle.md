@@ -37,9 +37,11 @@ import recreatingSubaccount from '/docs/assets/crosswords/erase-recreate-subacco
 
 <br/>
 
-`contract` 디렉토리로 이동한 다음, 시스템에 대한 빌드 스크립트를 실행합니다.
+Navigate to the `contract` directory, then run:
 
-    ./build.sh
+```bash
+cargo near build
+```
 
 이전 챕터에 이어서 하는 경우, 이미 생성된 하위 계정(sub-account)이 있을 수 있습니다. 시연을 위해 하위 계정(컨트랙트를 배포하는 위치) `crossword.friend.testnet`을 호출하므로, 상위 계정은 `friend.testnet`입니다.
 
@@ -56,11 +58,13 @@ NEAR CLI를 사용하여 하위 계정을 삭제하고 다시 만드는 방법�
 
 ```bash
 # Delete the subaccount and send remaining balance to friend.testnet
-near delete crossword.friend.testnet friend.testnet
-# Create the subaccount again 
-near create-account crossword.friend.testnet --masterAccount friend.testnet
+near account delete-account crossword.friend.testnet beneficiary friend.testnet network-config testnet sign-with-legacy-keychain send
+
+# Create the subaccount again
+near account create-account fund-myself crossword.friend.testnet '1 NEAR' autogenerate-new-keypair save-to-legacy-keychain sign-as friend.testnet network-config testnet sign-with-legacy-keychain send
+
 # Deploy, calling the "new" method with the parameter for owner_id
-near deploy crossword.friend.testnet --wasmFile res/crossword_tutorial_chapter_2.wasm --initFunction new --initArgs '{"owner_id": "crossword.friend.testnet"}'
+cargo near deploy crossword.friend.testnet with-init-call new json-args '{"owner_id": "crossword.friend.testnet"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-legacy-keychain send
 ```
 
 이제 우리는 새로운 십자말풀이 퍼즐을 구성하고 `new_puzzle` 메서드를 통해 퍼즐을 추가할 준비가 되었습니다. 이 새로운 퍼즐의 단서부터 시작하겠습니다.
@@ -83,14 +87,16 @@ x 및 y 좌표는 퍼즐 격자의 왼쪽 상단에 원점이 있다고 가정�
 
 정답 해시를 찾기 위해 [쉬운 온라인 도구](https://www.wolframalpha.com/input/?i=sha256+%22paras+rainbowbridge+mintbase+yoctonear+cli%22)(다른 많은 오프라인 도구들도 있음)를 사용하여 sha256 해시를 만들어 보겠습니다.
 
+```
     d1a5cf9ad1adefe0528f7d31866cf901e665745ff172b96892693769ad284010
+```
 
 ## 퍼즐 추가
 
 이 긴 명령과 함께 NEAR CLI를 사용하여 새 퍼즐을 추가하고 `crossword.friend.testnet`을 당신의 하위 계정으로 바꿉니다.
 
-```
-near call crossword.friend.testnet new_puzzle '{
+```bash
+near contract call-function as-transaction crossword.friend.testnet new_puzzle json-args '{
   "solution_hash": "d1a5cf9ad1adefe0528f7d31866cf901e665745ff172b96892693769ad284010",
   "answers": [
    {
@@ -144,7 +150,7 @@ near call crossword.friend.testnet new_puzzle '{
      "clue": "You typically deploy a smart contract with the NEAR ___ tool."
    }
   ]
-}' --accountId crossword.friend.testnet
+}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as crossword.friend.testnet network-config testnet sign-with-legacy-keychain send
 ```
 
 컨트랙트 이름과 이것을 호출하는 계정은 모두 `crossword.friend.testnet`입니다. `new_puzzle`의 상단에 체크를 추가하여 전임자(predecessor)가 `owner_id`인지 확인했기 때문입니다.

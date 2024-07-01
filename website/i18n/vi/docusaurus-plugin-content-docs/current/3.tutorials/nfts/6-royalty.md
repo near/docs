@@ -109,7 +109,7 @@ At the very end, it will insert `damian` into the payout object and give him `1 
 
 Now that you know how payouts are calculated, it's time to create the function that will transfer the NFT and return the payout to the marketplace.
 
-<Github language="rust" start="70" end="135" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-royalty/src/royalty.rs" />
+<Github language="rust" start="68" end="135" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-royalty/src/royalty.rs" />
 
 <hr class="subsection" />
 
@@ -143,7 +143,7 @@ Next, you'll deploy this contract to the network.
 
 ```bash
 export ROYALTY_NFT_CONTRACT_ID=<accountId>
-near create-account $ROYALTY_NFT_CONTRACT_ID --useFaucet
+near account create-account sponsor-by-faucet-service $ROYALTY_NFT_CONTRACT_ID autogenerate-new-keypair save-to-legacy-keychain network-config testnet create
 ```
 
 Using the cargo-near, deploy and initialize the contract as you did in the previous tutorials:
@@ -157,13 +157,13 @@ cargo near deploy $ROYALTY_NFT_CONTRACT_ID with-init-call new_default_meta json-
 Tiếp theo, bạn sẽ cần mint một token. Bằng cách chạy command này, bạn sẽ mint một token với token ID `"royalty-token"` và người nhận sẽ là account mới của bạn. Ngoài ra, bạn đang truyền vào một map với hai account sẽ nhận được perpetual royalty bất cứ khi nào token của bạn được bán.
 
 ```bash
-near call $ROYALTY_NFT_CONTRACT_ID nft_mint '{"token_id": "royalty-token", "metadata": {"title": "Royalty Token", "description": "testing out the new royalty extension of the standard", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$ROYALTY_NFT_CONTRACT_ID'", "perpetual_royalties": {"benjiman.testnet": 2000, "mike.testnet": 1000, "josh.testnet": 500}}' --accountId $ROYALTY_NFT_CONTRACT_ID --amount 0.1
+near contract call-function as-transaction $ROYALTY_NFT_CONTRACT_ID nft_mint json-args '{"token_id": "royalty-token", "metadata": {"title": "Royalty Token", "description": "testing out the new royalty extension of the standard", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$ROYALTY_NFT_CONTRACT_ID'", "perpetual_royalties": {"benjiman.testnet": 2000, "mike.testnet": 1000, "josh.testnet": 500}}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $ROYALTY_NFT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
 ```
 
 Bạn có thể kiểm tra xem mọi thứ có diễn ra bình thường hay không bằng cách gọi một trong các enumeration function:
 
 ```bash
-near view $ROYALTY_NFT_CONTRACT_ID nft_tokens_for_owner '{"account_id": "'$ROYALTY_NFT_CONTRACT_ID'", "limit": 10}'
+near contract call-function as-read-only $ROYALTY_NFT_CONTRACT_ID nft_tokens_for_owner json-args '{"account_id": "'$ROYALTY_NFT_CONTRACT_ID'", "limit": 10}' network-config testnet now
 ```
 
 Nó sẽ trả về một output trông giống như sau:
@@ -204,12 +204,12 @@ Lưu ý, bây giờ làm thế nào để có một royalty field chứa 3 accou
 Let's calculate the payout for the `"royalty-token"` NFT, given a balance of 100 yoctoNEAR. Điều quan trọng cần lưu ý là số dư được truyền vào function `nft_payout` mong muốn tính bằng yoctoNEAR.
 
 ```bash
-near view $ROYALTY_NFT_CONTRACT_ID nft_payout '{"token_id": "royalty-token", "balance": "100", "max_len_payout": 100}'
+near contract call-function as-read-only $ROYALTY_NFT_CONTRACT_ID nft_payout json-args '{"token_id": "royalty-token", "balance": "100", "max_len_payout": 100}' network-config testnet now
 ```
 
 Câu lệnh này sẽ trả về một ouput kiểu như sau:
 
-```bash
+```js
 {
   payout: {
     'josh.testnet': '5',
@@ -220,7 +220,7 @@ Câu lệnh này sẽ trả về một ouput kiểu như sau:
 }
 ```
 
-Nếu NFT đã được bán với 100 yoctoNEAR, josh sẽ được 5, benji được 20, mike được 10, và chủ sở hữu trường hợp này là `royalty.goteam.examples.testnet` sẽ nhận được phần còn lại: 65.
+If the NFT was sold for 100 yoctoNEAR, josh would get 5, Benji would get 20, mike would get 10, and the owner, in this case `royalty.goteam.examples.testnet` would get the rest: 65.
 
 ## Tổng kết
 
@@ -232,9 +232,10 @@ Nếu NFT đã được bán với 100 yoctoNEAR, josh sẽ được 5, benji đ
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `4.0.13`
+- rustc: `1.77.1`
+- near-cli-rs: `0.11.0`
 - cargo-near `0.6.1`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
 - Enumeration standard: [NEP181](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration), version `1.0.0`
 - Royalties standard: [NEP199](https://nomicon.io/Standards/Tokens/NonFungibleToken/Payout), version `2.0.0`
 

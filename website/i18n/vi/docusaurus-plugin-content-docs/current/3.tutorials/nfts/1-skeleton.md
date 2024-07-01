@@ -228,12 +228,12 @@ Vì source này chỉ là một bộ khung nên bạn sẽ nhận được nhi�
  │   |                             ^^^^^^^^^^  ^^^^^^^^^  ^^^^^^^^^^^^  ^^^^^^^^^^^^
  │   |
  │   = note: `#[warn(unused_imports)]` on by default
- │ 
+ │
  │ warning: unused import: `Base64VecU8`
  │  --> src/lib.rs:4:28
  │   |
  │ 4 | use near_sdk::json_types::{Base64VecU8, U128};
- │   |   
+ │   |
 
  │ warning: `nft_contract_skeleton` (lib) generated 48 warnings (run `cargo fix --lib -p nft_contract_skeleton` to apply 45 suggestions)
  │     Finished release [optimized] target(s) in 11.01s
@@ -246,12 +246,13 @@ Vì source này chỉ là một bộ khung nên bạn sẽ nhận được nhi�
 
 ## Kết luận
 
-Bạn đã xem bố cục của NFT smart contract này và cách tất cả các function được bố trí qua các source file khác nhau. Sử dụng `yarn`, bạn đã có thể compile contract, và bạn sẽ bắt đầu bổ sung thêm cho skeleton này trong [Minting tutorial](/tutorials/nfts/minting) tiếp theo.
+Bạn đã xem bố cục của NFT smart contract này và cách tất cả các function được bố trí qua các source file khác nhau. Using `yarn`, you've been able to compile the contract, and you'll start fleshing out this skeleton in the next [Minting tutorial](2-minting.md).
 
 :::note Versioning for this article At the time of this writing, this example works with the following versions:
 
 - rustc: `1.76.0`
 - near-sdk-rs: `5.1.0`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
+- cargo-near: `0.6.1`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
 
 :::

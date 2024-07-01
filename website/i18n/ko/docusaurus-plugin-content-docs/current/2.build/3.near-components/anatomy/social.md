@@ -5,14 +5,6 @@ title: Social Interactions
 
 import {WidgetEditor} from "@site/src/components/widget-editor"
 
-:::warning What is the state of BOS (NEAR Components)?
-
-We no longer recommend building on BOS due to its limited capabilities and discontinued security maintenance. Developers with active projects on BOS are encouraged to migrate to another deployment strategy.
-
-See the [Web3 frontends](/build/web3-apps/frontend#bos-socialvm) section for more information.
-
-:::
-
 NEAR components can natively communicate with the [SocialDB smart contract](https://github.com/NearSocial/social-db) (currently deployed at [social.near](https://nearblocks.io/address/social.near)).
 
 The `SocialDB` is a contract that stores `key-value` pairs, and is used mostly to store social-related data, such as `posts`, `likes`, or `profiles`.
@@ -63,8 +55,8 @@ return (
 | param      | 필수 여부        | type                                                                  | 설명           |
 | ---------- | ------------ | --------------------------------------------------------------------- | ------------ |
 | `patterns` | **required** | string / string[] | 경로 패턴        |
-| `finality` | _optional_   | `"final"` / 숫자                                                        | 블록 높이 또는 완결성 |
-| `options`  | _선택사항_       | 객체                                                                    | `options` 객체 |
+| `finality` | _선택사항_       | `"final"` / 숫자                                                        | 블록 높이 또는 완결성 |
+| `options`  | _optional_   | 객체                                                                    | `options` 객체 |
 
 :::info options object
 
@@ -115,8 +107,8 @@ return (
 | param      | 필수 여부        | type                                                                  | 설명                               |
 | ---------- | ------------ | --------------------------------------------------------------------- | -------------------------------- |
 | `patterns` | **required** | string / string[] | 경로 패턴                            |
-| `finality` | _optional_   | `"final"` / 숫자                                                        | 블록 높이 또는 완결성                     |
-| `options`  | _선택사항_       | 객체                                                                    | `options` 객체입니다. |
+| `finality` | _선택사항_       | `"final"` / 숫자                                                        | 블록 높이 또는 완결성                     |
+| `options`  | _optional_   | 객체                                                                    | `options` 객체입니다. |
 
 :::info options object
 
@@ -153,8 +145,8 @@ return JSON.stringify(data)
 | param      | 필수 여부        | type                                                                  | 설명           |
 | ---------- | ------------ | --------------------------------------------------------------------- | ------------ |
 | `patterns` | **required** | string / string[] | 경로 패턴        |
-| `finality` | _optional_   | `"final"` / 숫자                                                        | 블록 높이 또는 완결성 |
-| `options`  | _선택사항_       | 객체                                                                    | `options` 객체 |
+| `finality` | _선택사항_       | `"final"` / 숫자                                                        | 블록 높이 또는 완결성 |
+| `options`  | _optional_   | 객체                                                                    | `options` 객체 |
 
 :::info options object
 
@@ -339,8 +331,8 @@ return <>
 
 | param     | 필수 여부        | type   | 설명                                                         |
 | --------- | ------------ | ------ | ---------------------------------------------------------- |
-| `action`  | **required** | string | 예를 들어 경로 `index/like`에서 action은 `like`입니다. |
-| `key`     | **required** | 문자열    | 표준의 내부 인덱스 값입니다.                           |
+| `action`  | **required** | 문자열    | 예를 들어 경로 `index/like`에서 action은 `like`입니다. |
+| `key`     | **required** | string | 표준의 내부 인덱스 값입니다.                           |
 | `options` | _선택사항_       | 객체     | `options` 객체                                               |
 
 :::info options object

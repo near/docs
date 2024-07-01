@@ -76,7 +76,7 @@ near call <account-id> new '{"owner_id": "<owner-account>", "total_supply": "100
 ```
 
 :::tip
-Check the [Contract Wizard](https://near.org/contractwizard.near/widget/ContractWizardUI) to create a personalized FT contract!.
+Check the [Contract Wizard](https://dev.near.org/contractwizard.near/widget/ContractWizardUI) to create a personalized FT contract!.
 :::
 
 ---

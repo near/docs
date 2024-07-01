@@ -1,7 +1,7 @@
 {
   "id": "tutorials/crosswords/basics/set-up-skeleton",
   "title": "Rust를 설정하고, NEAR 테스트넷 계정과 NEAR CLI를 설정하며, 기본적인 스마트 컨트랙트 뼈대를 준비하세요",
-  "description": "이 튜토리얼에서는 테스트넷 계정을 만들고, NEAR CLI를 사용하여 컴퓨터 파일 시스템에 키를 추가하고 Rust 스마트 컨트랙트의 기본 뼈대를 설정합니다.",
+  "description": "In this tutorial we'll get a testnet account, use NEAR CLI RS to add a key to our computer's file system, and set up the basic skeleton of a Rust smart contract.",
   "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/3.tutorials/crosswords/01-basics/01-set-up-skeleton.md",
   "sourceDirName": "3.tutorials/crosswords/01-basics",
   "slug": "/tutorials/crosswords/basics/set-up-skeleton",

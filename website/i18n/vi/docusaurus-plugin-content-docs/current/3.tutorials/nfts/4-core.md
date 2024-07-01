@@ -23,7 +23,7 @@ We will define two methods for transferring NFTs:
 
 Up until this point, you've created a simple NFT smart contract that allows users to mint tokens and view information using the [enumeration standards](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration). Hôm nay, bạn sẽ mở rộng smart contract của mình để cho phép các user không chỉ mint token mà còn transfer chúng.
 
-Như chúng ta đã thực hiện trong [hướng dẫn mint](/tutorials/nfts/minting), hãy chia nhỏ vấn đề thành nhiều các subtask để dễ giải quyết hơn. Khi một token được mint, thông tin được lưu trữ ở 3 nơi:
+As we did in the [minting tutorial](2-minting.md), let's break down the problem into multiple subtasks to make our lives easier. Khi một token được mint, thông tin được lưu trữ ở 3 nơi:
 
 - **tokens_per_owner**: tập các token cho mỗi account.
 - **tokens_by_id**: map một token ID với một `Token` object.
@@ -166,7 +166,7 @@ Nếu bạn chạy command sau, nó sẽ transfer token `"token-1"` tới accoun
 :::tip Nếu bạn đã sử dụng một token ID khác trong những bài hướng dẫn trước, thay thế `token-1` với token ID của bạn. :::
 
 ```bash
-near call $NFT_CONTRACT_ID nft_transfer '{"receiver_id": "benjiman.testnet", "token_id": "token-1", "memo": "Go Team :)"}' --accountId $NFT_CONTRACT_ID --depositYocto 1
+near contract call-function as-transaction $NFT_CONTRACT_ID nft_transfer json-args '{"receiver_id": "benjiman.testnet", "token_id": "token-1", "memo": "Go Team :)"}' prepaid-gas '100.0 Tgas' attached-deposit '1 yoctoNEAR' sign-as $NFT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
 ```
 
 Nếu bây giờ bạn truy vấn tất cả các token mà account bạn sở hữu, token đó sẽ bị thiếu. Tương tự, nếu bạn truy vấn danh sách các token được sở hữu bởi `benjiman.testnet`, account đó bây giờ sẽ sở hữu NFT của bạn.
@@ -180,13 +180,13 @@ Bây giờ thì bạn đã test `nft_transfer` function, đến lúc để test 
 Đầu tiên mint một NFT mới sẽ được sử dụng để test chức năng transfer call.
 
 ```bash
-near call $NFT_CONTRACT_ID nft_mint '{"token_id": "token-2", "metadata": {"title": "NFT Tutorial Token", "description": "Testing the transfer call function", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$NFT_CONTRACT_ID'"}' --accountId $NFT_CONTRACT_ID --amount 0.1
+near contract call-function as-transaction $NFT_CONTRACT_ID nft_mint json-args '{"token_id": "token-2", "metadata": {"title": "NFT Tutorial Token", "description": "Testing the transfer call function", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$NFT_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $NFT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
 ```
 
 Bây giờ thì bạn đã mint token, bạn có thể thử transfer NFT tới account `no-contract.testnet`, account này không có contract nào giống như tên của nó đã cho thấy. Điều này có nghĩa rằng người nhận không tiến hành `nft_on_transfer` function và NFT sẽ vẫn là của bạn sau khi transaction hoàn thành.
 
 ```bash
-near call $NFT_CONTRACT_ID nft_transfer_call '{"receiver_id": "no-contract.testnet", "token_id": "token-2", "msg": "foo"}' --accountId $NFT_CONTRACT_ID --depositYocto 1 --gas 200000000000000
+near contract call-function as-transaction $NFT_CONTRACT_ID nft_transfer_call json-args '{"receiver_id": "no-contract.testnet", "token_id": "token-2", "msg": "foo"}' prepaid-gas '100.0 Tgas' attached-deposit '1 yoctoNEAR' sign-as $NFT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
 ```
 
 Nếu bạn truy vấn các token của mình, bạn sẽ vẫn có `token-2` và tại thời điểm này, bạn đã hoàn thành!
@@ -197,15 +197,16 @@ Nếu bạn truy vấn các token của mình, bạn sẽ vẫn có `token-2` v�
 
 Trong bài hướng dẫn này, bạn đã học cách làm thế nào để mở rộng một NFT contract thông qua mint function và bạn đã biết thêm cách để người dùng transfer các NFT. Bạn đã [chia nhỏ](#introduction) vấn đề thành các vấn đề bé hơn, nhiều subtask dễ xử lý hơn và lấy thông tin đó để triển khai cả hai function là [NFT transfer](#transfer-function) và [NFT transfer call](#transfer-call-function). Ngoài ra, bạn đã deploy [bản vá lỗi](#redeploying-contract) khác tới smart contract của mình và [đã test](#testing-changes) chức năng transfer.
 
-In the [next tutorial](/docs/tutorials/contracts/nfts/approvals), you'll learn about the approval management system and how you can approve others to transfer tokens on your behalf.
+In the [next tutorial](5-approval.md), you'll learn about the approval management system and how you can approve others to transfer tokens on your behalf.
 
 :::note Versioning for this article
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `4.0.13`
+- rustc: `1.77.1`
+- near-cli-rs: `0.11.0`
 - cargo-near `0.6.1`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
 - Enumeration standard: [NEP181](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration), version `1.0.0`
 
 :::

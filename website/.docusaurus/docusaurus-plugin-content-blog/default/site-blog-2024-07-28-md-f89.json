@@ -1,5 +1,5 @@
 {
-  "permalink": "/zh-CN/blog/sdks-unified",
+  "permalink": "/blog/sdks-unified",
   "source": "@site/../blog/2024-07-28.md",
   "title": "One place for all Smart Contracts Docs",
   "description": "We have consolidated all our documentation in a single section, so you don't need to go searching around for it",
@@ -7,7 +7,7 @@
   "tags": [
     {
       "label": "updates",
-      "permalink": "/zh-CN/blog/tags/updates"
+      "permalink": "/blog/tags/updates"
     }
   ],
   "readingTime": 2.695,
@@ -34,6 +34,6 @@
   "unlisted": false,
   "nextItem": {
     "title": "Getting Started on NEAR Using Windows",
-    "permalink": "/zh-CN/blog/getting-started-on-windows"
+    "permalink": "/blog/getting-started-on-windows"
   }
 }

@@ -1,7 +1,7 @@
 {
   "id": "build/smart-contracts/quickstart",
   "title": "Hello Contract",
-  "description": "NEAR accounts can host programs known as smart contracts. Smart contracts can store data, and expose methods so other users and contracts interact with them.",
+  "description": "Welcome! NEAR accounts can store small apps known as smart contracts. In this quick tutorial, we will guide you in creating your first contract in the NEAR testnet!",
   "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/2.smart-contracts/quickstart.md",
   "sourceDirName": "2.build/2.smart-contracts",
   "slug": "/build/smart-contracts/quickstart",

@@ -11,9 +11,9 @@ import {Github} from "@site/src/components/codetabs"
 
 ## 사용 사례 이해하기 {#understanding-the-use-case}
 
-그런 다음 이러한 컨트랙트는 당신의 계정에서 NFT 컨트랙트일 가능성이 있는 것으로 표시되었습니다. Originally, an indexer used to listen for any functions calls starting with `nft_` on your account. Have you ever wondered how the wallet knows which NFTs you own and how it can display them in the [collectibles tab](https://testnet.mynearwallet.com//?tab=collectibles)?
+Have you ever wondered how the wallet knows which NFTs you own and how it can display them in the [collectibles tab](https://testnet.mynearwallet.com/?tab=collectibles)? Originally, an indexer used to listen for any functions calls starting with `nft_` on your account. Have you ever wondered how the wallet knows which NFTs you own and how it can display them in the [collectibles tab](https://testnet.mynearwallet.com//?tab=collectibles)?
 
-수집품 탭으로 이동하면, 지갑은 [열거(Enumeration) 튜토리얼](/tutorials/nfts/js/enumeration)에서 본 `nft_tokens_for_owner` 함수를 사용하여 소유한 NFT 목록에 대한 모든 컨트랙트를 쿼리합니다.
+When you navigated to your collectibles tab, the wallet would then query all those contracts for the list of NFTs you owned using the `nft_tokens_for_owner` function you saw in the [enumeration tutorial](3-enumeration.md).
 
 <hr class="subsection" />
 
@@ -187,7 +187,7 @@ Next, you'll deploy this contract to the network.
 
 ```bash
 export EVENTS_NFT_CONTRACT_ID=<accountId>
-near create-account $EVENTS_NFT_CONTRACT_ID --useFaucet
+near account create-account sponsor-by-faucet-service $EVENTS_NFT_CONTRACT_ID autogenerate-new-keypair save-to-legacy-keychain network-config testnet create
 ```
 
 Using the cargo-near, deploy and initialize the contract as you did in the previous tutorials:
@@ -203,7 +203,7 @@ cargo near deploy $EVENTS_NFT_CONTRACT_ID with-init-call new_default_meta json-a
 다음으로 토큰을 발행해야 합니다. 이 명령을 실행하면 토큰 ID `"events-token"`로 토큰을 발행하고, 수신자가 새 계정이 됩니다. 또한 토큰이 판매될 때마다 영구 로열티를 받는 두 개의 계정을 포함한 맵을 전달합니다.
 
 ```bash
-near call $EVENTS_NFT_CONTRACT_ID nft_mint '{"token_id": "events-token", "metadata": {"title": "Events Token", "description": "testing out the new events extension of the standard", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$EVENTS_NFT_CONTRACT_ID'"}' --accountId $EVENTS_NFT_CONTRACT_ID --amount 0.1
+near contract call-function as-transaction $EVENTS_NFT_CONTRACT_ID nft_mint json-args '{"token_id": "events-token", "metadata": {"title": "Events Token", "description": "testing out the new events extension of the standard", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$EVENTS_NFT_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $EVENTS_NFT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
 ```
 
 CLI에서 출력을 확인하여 모든 것이 제대로 진행되었는지 확인할 수 있습니다.
@@ -227,7 +227,7 @@ https://testnet.nearblocks.io/txns/4Wy2KQVTuAWQHw5jXcRAbrz7bNyZBoiPEvLcGougciyk
 이제 `benjiman.testnet`에 대해 NFT를 전송하여 전송 로그가 예상대로 작동하는지 테스트할 수 있습니다.
 
 ```bash
-near call $EVENTS_NFT_CONTRACT_ID nft_transfer '{"receiver_id": "benjiman.testnet", "token_id": "events-token", "memo": "Go Team :)", "approval_id": 0}' --accountId $EVENTS_NFT_CONTRACT_ID --depositYocto 1
+near contract call-function as-transaction $EVENTS_NFT_CONTRACT_ID nft_transfer json-args '{"receiver_id": "benjiman.testnet", "token_id": "events-token", "memo": "Go Team :)", "approval_id": 0}' prepaid-gas '100.0 Tgas' attached-deposit '1 yoctoNEAR' sign-as $EVENTS_NFT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
 ```
 
 그러면 다음과 유사한 출력이 반환됩니다.
@@ -251,15 +251,16 @@ https://testnet.nearblocks.io/txns/4S1VrepKzA6HxvPj3cK12vaT7Dt4vxJRWESA1ym1xdvH
 
 오늘 당신은 [이벤트 표준](https://nomicon.io/Standards/NonFungibleToken/Event.html)을 살펴보고, 스마트 컨트랙트에서 필요한 로직을 구현했습니다. NFT [발행](#logging-minted-tokens) 및 [전송](#logging-transfers)을 위한 이벤트를 만들었습니다. 그런 다음 NFT를 만들고 전송하여 변경 사항을 배포하고 [테스트](#initialization-and-minting)했습니다.
 
-다음 튜토리얼에서는 마켓플레이스 컨트랙트의 기본 사항과 컨트랙트 작성 방법을 살펴봅니다.
+In the [next tutorial](8-marketplace.md), you'll look at the basics of a marketplace contract and how it was built.
 
 :::note 문서 버전 관리
 
 글을 작성하는 시점에서, 해당 예제는 다음 버전에서 작동합니다.
 
-- near-cli: `4.0.13`
+- rustc: `1.77.1`
+- near-cli-rs: `0.11.0`
 - cargo-near `0.6.1`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
 - Events standard: [NEP297 extension](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event), version `1.1.0`
 
 :::

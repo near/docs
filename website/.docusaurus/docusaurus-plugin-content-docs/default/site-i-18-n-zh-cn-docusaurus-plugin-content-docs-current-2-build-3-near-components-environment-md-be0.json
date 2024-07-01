@@ -1,7 +1,7 @@
 {
   "id": "build/near-components/dev-environment",
   "title": "Choose your Dev Environment",
-  "description": "We no longer recommend building on BOS due to its limited capabilities and discontinued security maintenance. Developers with active projects on BOS are encouraged to migrate to another deployment strategy.",
+  "description": "The environments in which you can develop Components are divided into two categories:",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.build/3.near-components/environment.md",
   "sourceDirName": "2.build/3.near-components",
   "slug": "/build/near-components/dev-environment",

@@ -15,7 +15,9 @@ title: "필수 라이브러리부터 시드 문구 로직 구현"
 
 다음을 사용하여 `near-seed-phrase` 패키지를 프로젝트에 추가할 수 있습니다.
 
-    npm install near-seed-phrase --save
+```bash
+npm install near-seed-phrase --save
+```
 
 :::note 이 챕터의 코드 스니펫 튜토리얼의 이 시점에서는 의미 있는 동시에 프로젝트에 복사/붙여넣기할 코드 스니펫을 공유하기가 더 어렵습니다.
 
@@ -37,9 +39,9 @@ localStorage.setItem('playerKeyPair', JSON.stringify(seedPhrase));
 
 ```js
 import { parseSeedPhrase } from 'near-seed-phrase';
-// Get the seed phrase from the completed puzzle. 
-// The original puzzle creator would have already called this same function with the same inputs and would have 
-// already called `AddKey` on this contract to add the key related to this seed phrase. Here, using this deterministic 
+// Get the seed phrase from the completed puzzle.
+// The original puzzle creator would have already called this same function with the same inputs and would have
+// already called `AddKey` on this contract to add the key related to this seed phrase. Here, using this deterministic
 // function, the front-end will automatically generate that same key based on the inputs from the winner.
 const seedPhrase = parseSolutionSeedPhrase(data, gridData); // returns a string of space-separated words
 // Get the public and private key derived from the seed phrase

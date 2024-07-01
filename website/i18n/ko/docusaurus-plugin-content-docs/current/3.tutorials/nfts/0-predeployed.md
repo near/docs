@@ -10,14 +10,7 @@ Create your first non-fungible token by using a pre-deployed NFT smart contract 
 
 ## 전제 조건
 
-To complete this tutorial successfully, you'll need [a NEAR Wallet](https://testnet.mynearwallet.com/create) and [NEAR CLI](/tools/near-cli#setup)
-
-:::tip You can install near-cli through the following command:
-
-```bash
-npm install -g near-cli
-```
-:::
+To complete this tutorial successfully, you'll need [a NEAR Wallet](https://testnet.mynearwallet.com/create) and [NEAR CLI RS](../../4.tools/cli-rs.md#setup)
 
 ---
 
@@ -34,7 +27,7 @@ To interact with the contract you will need to first login to your NEAR account 
 터미널에서 다음 명령을 실행하여 새로 만든 계정에 `near-cli`로 로그인합니다.
 
 ```bash
-near login
+near account import-account using-web-wallet network-config testnet
 ```
 
 이 튜토리얼에서 명령을 쉽게 복사하고 붙여넣을 수 있도록 계정 ID에 대한 환경 변수를 설정합니다.
@@ -52,7 +45,7 @@ We have already deployed an NFT contract to `nft.examples.testnet` which allows 
 Run this command in your terminal, remember to replace the `token_id` with a string of your choice. This string will uniquely identify the token you mint.
 
 ```bash
-near call nft.examples.testnet nft_mint '{"token_id": "TYPE_A_UNIQUE_VALUE_HERE", "receiver_id": "'$NEARID'", "metadata": { "title": "GO TEAM", "description": "The Team Goes", "media": "https://bafybeidl4hjbpdr6u6xvlrizwxbrfcyqurzvcnn5xoilmcqbxfbdwrmp5m.ipfs.dweb.link/", "copies": 1}}' --accountId $NEARID --deposit 0.1
+near contract call-function as-transaction nft.examples.testnet nft_mint json-args '{"token_id": "TYPE_A_UNIQUE_VALUE_HERE", "receiver_id": "'$NEARID'", "metadata": { "title": "GO TEAM", "description": "The Team Goes", "media": "https://bafybeidl4hjbpdr6u6xvlrizwxbrfcyqurzvcnn5xoilmcqbxfbdwrmp5m.ipfs.dweb.link/", "copies": 1}}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $NEARID network-config testnet sign-with-legacy-keychain send
 ```
 
 <details>
@@ -79,7 +72,7 @@ https://testnet.nearblocks.io/txns/8RFWrQvAsm2grEsd1UTASKpfvHKrjtBdEyXu7WqGBPUr
 계정이 소유한 토큰을 보려면 다음 `near-cli` 명령을 사용하여 NFT 컨트랙트를 호출할 수 있습니다.
 
 ```bash
-near view nft.examples.testnet nft_tokens_for_owner '{"account_id": "'$NEARID'"}'
+near contract call-function as-read-only nft.examples.testnet nft_tokens_for_owner json-args '{"account_id": "'$NEARID'"}' network-config testnet now
 ```
 
 <details>
@@ -131,7 +124,7 @@ Now try going to your [NEAR Wallet](https://testnet.mynearwallet.com) and view y
 
 이 글을 쓰는 시점에서 이 예제는 다음 버전에서 작동합니다.
 
-- near-cli: `4.0.13`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
+- near-cli-rs: `0.11.0`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
 
 :::

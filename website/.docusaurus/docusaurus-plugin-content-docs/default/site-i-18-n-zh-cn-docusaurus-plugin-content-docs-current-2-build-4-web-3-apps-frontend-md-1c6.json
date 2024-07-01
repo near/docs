@@ -1,7 +1,7 @@
 {
   "id": "build/web3-apps/frontend",
   "title": "Frontends for Web3 dApps",
-  "description": "There are 3 major options to choose from when you're building a frontend for your Web3 dApp, each with their own set of pros and cons.",
+  "description": "When building decentralized web applications (dApps), developers have two primary options for connecting a front-end user interface (UI) to a smart contract backend. Each option offers distinct advantages and disadvantages, tailored to different project requirements and goals.",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/2.build/4.web3-apps/frontend.md",
   "sourceDirName": "2.build/4.web3-apps",
   "slug": "/build/web3-apps/frontend",

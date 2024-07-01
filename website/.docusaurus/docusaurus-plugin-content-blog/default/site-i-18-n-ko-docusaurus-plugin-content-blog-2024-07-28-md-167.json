@@ -1,0 +1,39 @@
+{
+  "permalink": "/ko/blog/sdks-unified",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-blog/2024-07-28.md",
+  "title": "One place for all Smart Contracts Docs",
+  "description": "We have consolidated all our documentation in a single section, so you don't need to go searching around for it",
+  "date": "2024-07-28T00:00:00.000Z",
+  "tags": [
+    {
+      "label": "updates",
+      "permalink": "/ko/blog/tags/updates"
+    }
+  ],
+  "readingTime": 2.695,
+  "hasTruncateMarker": true,
+  "authors": [
+    {
+      "name": "Guille",
+      "title": "Docs Maintainer",
+      "url": "https://github.com/gagdiez",
+      "imageURL": "https://github.com/gagdiez.png",
+      "key": "gagdiez"
+    }
+  ],
+  "frontMatter": {
+    "title": "One place for all Smart Contracts Docs",
+    "authors": [
+      "gagdiez"
+    ],
+    "slug": "sdks-unified",
+    "tags": [
+      "updates"
+    ]
+  },
+  "unlisted": false,
+  "nextItem": {
+    "title": "Getting Started on NEAR Using Windows",
+    "permalink": "/ko/blog/getting-started-on-windows"
+  }
+}

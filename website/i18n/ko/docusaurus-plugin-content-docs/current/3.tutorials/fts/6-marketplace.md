@@ -96,7 +96,7 @@ NFT를 구매하기 위해 컨트랙트는 FT 컨트랙트가 제공하는 "전�
 
 처음으로 살펴볼 함수는 초기화 함수입니다. 이것은 매개변수로 `owner_id`뿐만 아니라 `ft_id`를 취하며, 모든 스토리지 컬렉션을 기본값으로 설정합니다. `ft_id`는 컨트랙트에서 허용하는 대체 가능한 토큰의 계정 ID를 설명합니다.
 
-<Github language="rust" start="90" end="114" url="https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/lib.rs" />
+<Github language="rust" start="93" end="114" url="https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/lib.rs" />
 
 <hr className="subsection" />
 
@@ -122,7 +122,7 @@ You might be thinking about the scenario when a sale is purchased. What happens 
 
 With this behavior in mind, the following two functions outline the logic.
 
-<Github language="rust" start="116" end="179" url="https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/lib.rs" />
+<Github language="rust" start="119" end="182" url="https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/lib.rs" />
 
 이 컨트랙트에서 각 판매에 필요한 스토리지는 0.01 NEAR이지만, `storage_minimum_balance` 함수를 사용하여 해당 정보를 쿼리할 수 있습니다. 또한, 해당 계정이 지불한 스토리지 공간을 확인하려면 `storage_balance_of` 함수로 쿼리할 수 있습니다.
 
@@ -139,7 +139,7 @@ NFT를 구매하기 위해서는 구매자가 컨트랙트에 FT를 예치하고
 
 <Github language="rust" start="39" end="77" url="https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/ft_balances.rs" />
 
-FT가 컨트랙트에 입금되면, 사용자는 FT를 인출하거나 이를 사용하여 NFT를 구매할 수 있습니다. 인출 흐름은 `ft_withdraw` 함수에 설명되어 있습니다. `ft_transfer` 함수를 호출하기 **전에** 사용자의 잔액을 차감해야 한다는 것(전송이 성공한 경우)을 기억해야 합니다. 이는 `ft_withdraw_`를 스팸 공격하는 일반적인 해킹 시나리오를 피하기 위함입니다. 더 나은 패턴은 전송 전에 잔액을 감소시킨 다음, Promise가 **실패하면**, 잔액을 이전 상태로 되돌리는 것입니다.
+FT가 컨트랙트에 입금되면, 사용자는 FT를 인출하거나 이를 사용하여 NFT를 구매할 수 있습니다. 인출 흐름은 `ft_withdraw` 함수에 설명되어 있습니다. `ft_transfer` 함수를 호출하기 **전에** 사용자의 잔액을 차감해야 한다는 것(전송이 성공한 경우)을 기억해야 합니다. 이는 `ft_withdraw_`를 스팸 공격하는 일반적인 해킹 시나리오를 피하기 위함입니다. A better pattern is to decrement their balance before the transfer and then if the promise was **unsuccessful**, revert the balance back to what it was before.
 
 <Github language="rust" start="79" end="154" url="https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/ft_balances.rs" />
 
@@ -395,3 +395,14 @@ near view $FT_CONTRACT ft_balance_of '{"account_id": "'$BUYER_ID'"}'
 ## 결론
 
 이 튜토리얼에서는 마켓플레이스 컨트랙트의 기본 사항과 작동 방식에 대해 배웠습니다. 높은 수준에서 핵심 로직을 살펴보고 코드를 살펴보았습니다. NFT, 마켓플레이스 및 FT 컨트랙트를 배포하고, 모두 초기화한 다음, NFT를 판매용으로 넣고 대체 가능한 토큰으로 판매했습니다! 정말 놀라운 경험이었습니다! 필요한 모든 것들을 구현하고 싶다면, 이러한 컨트랙트를 확장하세요. 세상은 당신의 것입니다! 이 튜토리얼 시리즈를 따라 주셔서 대단히 감사합니다. 저희 디스코드나 소셜 미디어 채널에서 무엇이든 주저하지 말고 도움이나 설명을 요청하세요. **화이팅!**
+
+---
+
+:::note Versioning for this article
+At the time of this writing, this example works with the following versions:
+
+- rustc: `1.77.1`
+- near-sdk-rs: `5.1.0` (with enabled `legacy` feature)
+- cargo-near: `0.6.1`
+- near-cli: `4.0.13`
+:::
