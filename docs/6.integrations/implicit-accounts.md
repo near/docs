@@ -102,5 +102,5 @@ This gives us the same account ID as `near-cli`, so this is encouraging.
 **Note:** The default network for `near-cli` is `testnet`. If you would like to change this to `mainnet` or `betanet`, please see [`near-cli` network selection](/tools/near-cli#network-selection) for instructions.
 
 :::tip Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol" target="_blank" rel="noopener noreferrer"> Ask it on StackOverflow! </a>
 :::

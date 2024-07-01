@@ -38,7 +38,7 @@ So why would we have two data structures here? Again, if we end up with a large 
 
 <figure>
     <img src={bookPagination} alt="Book showing pagination of hashes. Art created by pierced_staggg.near" width="600"/>
-    <figcaption>Think of our collection as having multiple pages of puzzle hashes.<br/>Art by <a href="https://twitter.com/pierced_stag" target="_blank">pierced_staggg.near</a></figcaption>
+    <figcaption>Think of our collection as having multiple pages of puzzle hashes.<br/>Art by <a href="https://twitter.com/pierced_stag" target="_blank" rel="noopener noreferrer">pierced_staggg.near</a></figcaption>
 </figure>
 <br/>
 
@@ -80,7 +80,7 @@ Now we're set up to store multiple puzzles!
 
 <figure>
     <img src={guardsAroundContract} alt="Guards or bouncers in front of a futuristic club with the label of a NEAR smart contract. Art created by connoisseur_dane.near" width="600"/>
-    <figcaption>Guarding which accounts can enter the smart contract logic.<br/>Art by <a href="https://twitter.com/connoisseurdane" target="_blank">connoisseur_dane.near</a></figcaption>
+    <figcaption>Guarding which accounts can enter the smart contract logic.<br/>Art by <a href="https://twitter.com/connoisseurdane" target="_blank" rel="noopener noreferrer">connoisseur_dane.near</a></figcaption>
 </figure>
 <br/>
 

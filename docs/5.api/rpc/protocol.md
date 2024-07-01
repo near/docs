@@ -645,7 +645,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
       <td>
         <ul>
           <li>Check that the requested block is legit</li>
-          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="https://near-nodes.io/intro/node-types#archival-node">an archival node</a></li>
+          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="https://near-nodes.io/intro/node-types#archival-node" target="_blank" rel="noopener noreferrer">an archival node</a></li>
         </ul>
       </td>
     </tr>

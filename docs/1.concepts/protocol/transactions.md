@@ -10,5 +10,5 @@ Users interact with NEAR by creating transactions. Specifically, user's use thei
 A transaction is composed of one or more [`Actions`](./transaction-anatomy.md), and each action costs a deterministic amount of [gas units](./gas.md). This gas units are translated into a cost in NEAR tokens, which the user must pay for the transaction to be processed.
 
 :::tip
-You can use an <a href="https://nearblocks.io/">Explorer</a> to inspect transactions in the NEAR network
+You can use an <a href="https://nearblocks.io/" target="_blank" rel="noopener noreferrer">Explorer</a> to inspect transactions in the NEAR network
 :::
