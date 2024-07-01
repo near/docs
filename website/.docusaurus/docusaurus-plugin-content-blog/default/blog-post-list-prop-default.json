@@ -2,28 +2,33 @@
   "title": "Developer Changelog",
   "items": [
     {
+      "title": "Pagoda Sunsets B.O.S. Web Engine R&D Project",
+      "permalink": "/blog/bos-web-engine-sunset",
+      "unlisted": false
+    },
+    {
       "title": "One place for all Smart Contracts Docs",
-      "permalink": "/zh-CN/blog/sdks-unified",
+      "permalink": "/blog/sdks-unified",
       "unlisted": false
     },
     {
       "title": "Getting Started on NEAR Using Windows",
-      "permalink": "/zh-CN/blog/getting-started-on-windows",
+      "permalink": "/blog/getting-started-on-windows",
       "unlisted": false
     },
     {
       "title": "It's gonna be Legen... wait for it...",
-      "permalink": "/zh-CN/blog/yield-resume",
+      "permalink": "/blog/yield-resume",
       "unlisted": false
     },
     {
       "title": "Reorganizing our docs",
-      "permalink": "/zh-CN/blog/reorganizing-docs",
+      "permalink": "/blog/reorganizing-docs",
       "unlisted": false
     },
     {
       "title": "We have a blog now!",
-      "permalink": "/zh-CN/blog/we-have-a-blog",
+      "permalink": "/blog/we-have-a-blog",
       "unlisted": false
     }
   ]

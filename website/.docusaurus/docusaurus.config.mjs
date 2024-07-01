@@ -7,7 +7,7 @@ export default {
   "title": "NEAR Documentation",
   "tagline": "NEAR Protocol Developer Documentation",
   "url": "https://docs.near.org",
-  "baseUrl": "/zh-CN/",
+  "baseUrl": "/",
   "organizationName": "near",
   "projectName": "docs",
   "markdown": {
@@ -114,7 +114,7 @@ export default {
     "image": "docs/assets/welcome-pages/protocol.png",
     "announcementBar": {
       "id": "id-0003",
-      "content": "🎉 We have consolidated all our <a href=\"/build/smart-contracts/what-is\">smart contract docs</a>, read more about it in our <a href=\"/blog/sdks-unified\">blog post</a> 🎉",
+      "content": "📣 <a href=\"/blog/bos-web-engine-sunset\">Pagoda sunsets B.O.S. Web Engine R&D Project</a> 📣",
       "backgroundColor": "#fafbfc",
       "textColor": "#333",
       "isCloseable": true
@@ -492,18 +492,10 @@ export default {
   "i18n": {
     "defaultLocale": "en",
     "locales": [
-      "en",
-      "ko",
-      "vi",
-      "zh-CN"
+      "en"
     ],
-    "localeConfigs": {
-      "zh-CN": {
-        "label": "简体中文",
-        "direction": "ltr"
-      }
-    },
-    "path": "i18n"
+    "path": "i18n",
+    "localeConfigs": {}
   },
   "baseUrlIssueBanner": true,
   "onBrokenAnchors": "warn",

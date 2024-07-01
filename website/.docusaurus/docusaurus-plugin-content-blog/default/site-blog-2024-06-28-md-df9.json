@@ -1,0 +1,43 @@
+{
+  "permalink": "/blog/sdks-unified",
+  "source": "@site/../blog/2024-06-28.md",
+  "title": "One place for all Smart Contracts Docs",
+  "description": "We have consolidated all our documentation in a single section, so you don't need to go searching around for it",
+  "date": "2024-06-28T00:00:00.000Z",
+  "tags": [
+    {
+      "label": "updates",
+      "permalink": "/blog/tags/updates"
+    }
+  ],
+  "readingTime": 2.695,
+  "hasTruncateMarker": true,
+  "authors": [
+    {
+      "name": "Guille",
+      "title": "Docs Maintainer",
+      "url": "https://github.com/gagdiez",
+      "imageURL": "https://github.com/gagdiez.png",
+      "key": "gagdiez"
+    }
+  ],
+  "frontMatter": {
+    "title": "One place for all Smart Contracts Docs",
+    "authors": [
+      "gagdiez"
+    ],
+    "slug": "sdks-unified",
+    "tags": [
+      "updates"
+    ]
+  },
+  "unlisted": false,
+  "prevItem": {
+    "title": "Pagoda Sunsets B.O.S. Web Engine R&D Project",
+    "permalink": "/blog/bos-web-engine-sunset"
+  },
+  "nextItem": {
+    "title": "Getting Started on NEAR Using Windows",
+    "permalink": "/blog/getting-started-on-windows"
+  }
+}
