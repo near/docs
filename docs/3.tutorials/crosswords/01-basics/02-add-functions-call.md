@@ -41,7 +41,7 @@ pub fn get_puzzle_number(&self) -> u8 {
 }
 ```
 
-As is covered in the [mutability section of these docs](/sdk/rust/contract-interface/contract-mutability), a "view-only" function will have open parenthesis around `&self` while "change methods" or mutable functions will have `&mut self`. In the function above, the `PUZZLE_NUMBER` is returned. A user may call this method using the proper RPC endpoint without signing any transaction, since it's read-only. Think of it like a GET request, but using RPC endpoints that are [documented here](https://docs.near.org/api/rpc/contracts#call-a-contract-function).
+As is covered in the [function section of these docs](../../../2.build/2.smart-contracts/anatomy/functions.md), a "view-only" function will have open parenthesis around `&self` while "change methods" or mutable functions will have `&mut self`. In the function above, the `PUZZLE_NUMBER` is returned. A user may call this method using the proper RPC endpoint without signing any transaction, since it's read-only. Think of it like a GET request, but using RPC endpoints that are [documented here](https://docs.near.org/api/rpc/contracts#call-a-contract-function).
 
 Mutable functions, on the other hand, require a signed transaction. The first example is a typical approach where the user supplies a parameter that's assigned to a field:
 
@@ -82,7 +82,7 @@ Here's what we'll want to do:
 
 ### Build the contract
 
-To build the contract, we'll be using [`cargo-near`](https://github.com/near/cargo-near). For more details on building contracts, please see [this section](/sdk/rust/building/basics).
+To build the contract, we'll be using [`cargo-near`](https://github.com/near/cargo-near).
 
 Install `cargo-near` first:
 

@@ -88,9 +88,9 @@ const config = {
   themeConfig: {
     image: 'docs/assets/welcome-pages/protocol.png',
     announcementBar: {
-      id: 'id-0002',
+      id: 'id-0003',
       content:
-        '🎉 Come check <a href="/blog">our new blog</a>, where we will share weekly news and updates 🎉',
+        '📣 <a href="/blog/bos-web-engine-sunset">Pagoda sunsets B.O.S. Web Engine R&D Project</a> 📣',
       backgroundColor: '#fafbfc',
       textColor: '#333',
       isCloseable: true,
@@ -104,6 +104,7 @@ const config = {
         'go',
         'typescript',
         'jsx',
+        'bash',
       ],
     },
     colorMode: {
@@ -157,7 +158,7 @@ const config = {
               value: '<hr/> <small class="subtitle"> Essentials </small>',
             },
             { label: 'NEAR API', href: '/tools/near-api-js/quick-reference' },
-            { label: 'NEAR SDK', href: '/sdk/welcome' },
+            { label: 'NEAR SDK', href: '/tools/sdk' },
             { label: 'NEAR CLI', href: '/tools/near-cli' },
             {
               type: 'html',
@@ -286,12 +287,12 @@ const config = {
   },
   i18n: {
     defaultLocale: 'en',
-    locales: ['en', 'ko', 'vi', 'zh-CN'],
-    localeConfigs: {
-      'zh-CN': {
-        label: '简体中文',
-      },
-    },
+    locales: ['en'],
+    // localeConfigs: {
+    //   'zh-CN': {
+    //     label: '简体中文',
+    //   },
+    // },
   },
 };
 

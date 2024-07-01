@@ -34,10 +34,10 @@ Besides, smart contracts can store data in the account's storage. This allows co
 
 ## What are Contract's Used for?
 Smart contracts are useful to create **decentralized applications**. Some traditional examples include:
-- [Decentralized Autonomous Organizations](https://near.org/nearcatalog.near/widget/Index?cat=dao), where users create and vote proposals
-- [Marketplaces](https://near.org/nearcatalog.near/widget/Index?cat=marketplaces), where users create and commercialize digital art pieces
-- [Decentralized exchanges](https://near.org/nearcatalog.near/widget/Index?cat=exchanges), where users can trade different currencies
-- [And many more...](https://near.org/nearcatalog.near/widget/Index)
+- [Decentralized Autonomous Organizations](https://dev.near.org/nearcatalog.near/widget/Index?cat=dao), where users create and vote proposals
+- [Marketplaces](https://dev.near.org/nearcatalog.near/widget/Index?cat=marketplaces), where users create and commercialize digital art pieces
+- [Decentralized exchanges](https://dev.near.org/nearcatalog.near/widget/Index?cat=exchanges), where users can trade different currencies
+- [And many more...](https://dev.near.org/nearcatalog.near/widget/Index)
 
 For instance, you can easily create a crowdfunding contract that accepts $NEAR. If the goal is met in time, the creator can claim the funds. Otherwise, the backers are refunded.
 

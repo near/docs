@@ -5,7 +5,7 @@ title: Lido Example
 
 # Hello Lido!
 
-If you are ready to explore further, the [Lido component](https://near.org/zavodil.near/widget/Lido) serves as an excellent fully-fledged example, as it demonstrates how to interact with a smart contract deployed on the Ethereum mainnet.
+If you are ready to explore further, the [Lido component](https://dev.near.org/zavodil.near/widget/Lido) serves as an excellent fully-fledged example, as it demonstrates how to interact with a smart contract deployed on the Ethereum mainnet.
 
 :::info Ethers.js
 

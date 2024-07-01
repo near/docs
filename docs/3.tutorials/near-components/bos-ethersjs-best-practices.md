@@ -217,7 +217,7 @@ In this format, the data from the example will be stored in social-db.
 ```
 
 
-Viewing this data from the blockchain is accessible for every NEAR app or, for example, through an [Explorer app](https://near.org/zavodil.near/widget/Explorer?path=zavodil.near/tokens-db/**).
+Viewing this data from the blockchain is accessible for every NEAR app or, for example, through an [Explorer app](https://dev.near.org/zavodil.near/widget/Explorer?path=zavodil.near/tokens-db/**).
 
 Let's add a function to our application that will read the list of tokens.
 
