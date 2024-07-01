@@ -287,12 +287,12 @@ const config = {
   },
   i18n: {
     defaultLocale: 'en',
-    locales: ['en', 'ko', 'vi', 'zh-CN'],
-    localeConfigs: {
-      'zh-CN': {
-        label: '简体中文',
-      },
-    },
+    // locales: ['en', 'ko', 'vi', 'zh-CN'],
+    // localeConfigs: {
+    //   'zh-CN': {
+    //     label: '简体中文',
+    //   },
+    // },
   },
 };
 
