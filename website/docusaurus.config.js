@@ -90,7 +90,7 @@ const config = {
     announcementBar: {
       id: 'id-0003',
       content:
-        '🎉 We have consolidated all our <a href="/build/smart-contracts/what-is">smart contract docs</a>, read more about it in our <a href="/blog/sdks-unified">blog post</a> 🎉',
+        '📣 <a href="/blog/bos-web-engine-sunset">Pagoda sunsets B.O.S. Web Engine R&D Project</a> 📣',
       backgroundColor: '#fafbfc',
       textColor: '#333',
       isCloseable: true,
@@ -287,12 +287,12 @@ const config = {
   },
   i18n: {
     defaultLocale: 'en',
-    locales: ['en', 'ko', 'vi', 'zh-CN'],
-    localeConfigs: {
-      'zh-CN': {
-        label: '简体中文',
-      },
-    },
+    locales: ['en'],
+    // localeConfigs: {
+    //   'zh-CN': {
+    //     label: '简体中文',
+    //   },
+    // },
   },
 };
 
