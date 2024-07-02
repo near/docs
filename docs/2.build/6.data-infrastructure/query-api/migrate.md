@@ -4,14 +4,6 @@ title: Migrate from NEAR Lake framework
 sidebar_label: Migrate from Lake framework
 ---
 
-:::info
-
-NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers. 
-
-You can request access through [this link](http://bit.ly/near-queryapi-beta).
-
-:::
-
 In this article you'll learn how to migrate your [NEAR Lake Framework](../../../1.concepts/3.advanced/near-lake-framework.md) JavaScript indexer to [Near QueryAPI](intro.md), a fully managed solution to build indexer functions,
 extract on-chain data, store it in a database, and be able to query it using GraphQL endpoints.
 
@@ -37,7 +29,7 @@ async function handleStreamerMessage(streamerMessage: types.StreamerMessage): Pr
 
 ### Migrating to QueryAPI
 
-1. To start the migration process, [create a new indexer](../query-api/indexers.md#creating-an-indexer) using [QueryAPI](https://near.org/dataplatform.near/widget/QueryApi.App?view=create-new-indexer). You should see a similar interface like this:
+1. To start the migration process, [create a new indexer](../query-api/indexers.md#creating-an-indexer) using [QueryAPI](https://dev.near.org/dataplatform.near/widget/QueryApi.App?view=create-new-indexer). You should see a similar interface like this:
 
 ![QueryAPI Indexer Dashboard](/docs/assets/QAPIScreen2.png)
 
@@ -245,5 +237,5 @@ CREATE TABLE
 ```
 
 :::tip
-You can find the migrated NFT indexer source code by [clicking here](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=bucanero.near/nft_migrated).
+You can find the migrated NFT indexer source code by [clicking here](https://dev.near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=bucanero.near/nft_migrated).
 :::

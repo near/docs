@@ -219,3 +219,40 @@ const nearConnection = await connect(connectionConfig);
 </Tabs>
 
 [<span className="typedoc-icon typedoc-icon-module"></span> Module `connect`](https://near.github.io/near-api-js/modules/near_api_js.connect.html)
+
+## RPC Failover
+
+RPC providers can experience intermittent downtime, connectivity issues, or rate limits that cause client transactions to fail. This can be prevented by using the `FailoverRpcProvider` that supports multiple RPC providers.
+
+<Tabs>
+<TabItem value="mainnet" label="MainNet">
+
+```js
+const jsonProviders = [
+  new JsonRpcProvider({
+    url: 'https://rpc.mainnet.near.org',
+  }),
+  new JsonRpcProvider(
+    {
+      url: 'https://another-rpc.cloud.com',
+      headers: { 'X-Api-Key': 'some string' },
+    },
+    { retries: 3, backoff: 2, wait: 500 }
+  ),
+];
+const provider = new FailoverRpcProvider(jsonProviders);
+
+await connect({
+  networkId: 'mainnet',
+  provider: provider,
+  // this isn't used if `provider` is specified, but is still required for backward compativility
+  nodeUrl: 'https://rpc.mainnet.near.org',
+});
+```
+
+</TabItem>
+
+</Tabs>
+
+
+[<span className="typedoc-icon typedoc-icon-class"></span> Class `FailoverRpcProvider `](https://near.github.io/near-api-js/classes/near_api_js.providers_failover_rpc_provider.FailoverRpcProvider.html)

@@ -86,7 +86,7 @@ function DesktopView({ props: { blocks, files, languages, language, setLanguage 
           </Tabs>
           {blocks.map(
             (block, index) =>
-              <InnerBlock selected={activeBlock === index} index={index} text={block.text} activateFn={activateBlock} />)
+              <InnerBlock selected={activeBlock === index} index={index} text={block.text} type={block.type} activateFn={activateBlock} />)
           }
           <div id="extra-padding" style={{ width: "100%" }}></div>
         </div>

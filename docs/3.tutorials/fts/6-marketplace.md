@@ -5,7 +5,7 @@ sidebar_label: Adding FTs to a Marketplace
 ---
 import {Github} from "@site/src/components/codetabs"
 
-In this tutorial, you'll learn the basics of how an NFT marketplace contract works and how you can modify it to allow for purchasing NFTs using Fungible Tokens. In the previous tutorials, you went through and created a fully fledged FT contract that incorporates all the standards found in the [FT standard](https://nomicon.io/Standards/Tokens/FungibleToken/Core). 
+In this tutorial, you'll learn the basics of how an NFT marketplace contract works and how you can modify it to allow for purchasing NFTs using Fungible Tokens. In the previous tutorials, you went through and created a fully fledged FT contract that incorporates all the standards found in the [FT standard](https://nomicon.io/Standards/Tokens/FungibleToken/Core).
 
 ---
 
@@ -95,7 +95,7 @@ Starting at the `lib.rs` file, this outlines what information is stored on the c
 
 The first function you'll look at is the initialization function. This takes an `owner_id` as well as the `ft_id` as the parameters and will default all the storage collections to their default values. The `ft_id` outlines the account ID for the fungible token that the contract will allow.
 
-<Github language="rust" start="90" end="114" url="https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/lib.rs" />
+<Github language="rust" start="93" end="114" url="https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/lib.rs" />
 
 <hr className="subsection" />
 
@@ -107,7 +107,7 @@ You might be thinking about the scenario when a sale is purchased. What happens 
 
 **Scenario A**
 
-- Benji wants to list his NFT on the marketplace but has never paid for storage. 
+- Benji wants to list his NFT on the marketplace but has never paid for storage.
 - He deposits exactly 0.01 NEAR using the `storage_deposit` method. This will cover 1 sale.
 - He lists his NFT on the marketplace and is now using up 1 out of his prepaid 1 sales and has no more storage left. If he were to call `storage_withdraw`, nothing would happen.
 - Dorian loves his NFT and quickly purchases it before anybody else can. This means that Benji's sale has now been taken down (since it was purchased) and Benji is using up 0 out of his prepaid 1 sales. In other words, he has an excess of 1 sale or 0.01 NEAR.
@@ -121,7 +121,7 @@ You might be thinking about the scenario when a sale is purchased. What happens 
 
 With this behavior in mind, the following two functions outline the logic.
 
-<Github language="rust" start="116" end="179" url="https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/lib.rs" />
+<Github language="rust" start="119" end="182" url="https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/lib.rs" />
 
 In this contract, the storage required for each sale is 0.01 NEAR but you can query that information using the `storage_minimum_balance` function. In addition, if you wanted to check how much storage a given account has paid, you can query the `storage_balance_of` function.
 
@@ -138,7 +138,7 @@ In order to purchase NFTs, buyers need to deposit FTs in the contract and call t
 
 <Github language="rust" start="39" end="77" url="https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/ft_balances.rs" />
 
-Once FTs are deposited into the contract, users can either withdraw their FTs or they can use them to purchase NFTs. The withdrawing flow is outlined in the `ft_withdraw` function. It's important to note that you should decrement the user's balance **before** calling the `ft_transfer` function to avoid a common exploit scenario where a user spams the `ft_withdraw`. If you were to decrement their balance in the callback function (if the transfer was successful), they could spam the `ft_withdraw` during the time it takes the callback function to execute. A better pattern is to decrement their balance before the transfer and then if the promise was **unsuccessful*, revert the balance back to what it was before.
+Once FTs are deposited into the contract, users can either withdraw their FTs or they can use them to purchase NFTs. The withdrawing flow is outlined in the `ft_withdraw` function. It's important to note that you should decrement the user's balance **before** calling the `ft_transfer` function to avoid a common exploit scenario where a user spams the `ft_withdraw`. If you were to decrement their balance in the callback function (if the transfer was successful), they could spam the `ft_withdraw` during the time it takes the callback function to execute. A better pattern is to decrement their balance before the transfer and then if the promise was **unsuccessful**, revert the balance back to what it was before.
 
 <Github language="rust" start="79" end="154" url="https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/ft_balances.rs" />
 
@@ -148,7 +148,7 @@ Once FTs are deposited into the contract, users can either withdraw their FTs or
 
 Now that you're familiar with the process of both adding storage and depositing FTs on the marketplace, let's go through what you can do once a sale has been listed. The `src/sale.rs` file outlines the functions for updating the price, removing, and purchasing NFTs. In this tutorial, we'll focus **only** on the purchasing flow. If you'd like to learn about the sale objects, updating the price, and removing a sale, check out the [NFT zero to hero tutorial](/tutorials/nfts/marketplace).
 
-For purchasing NFTs, you must call the `offer` function. It takes an `nft_contract_id`, `token_id`, and the amount you wish to offer as parameters. Behind the scenes, this function will make sure your offer amount is greater than the list price and also that you have enough FTs deposited. It will then call a private method `process_purchase` which will perform a cross-contract call to the NFT contract to invoke the `nft_transfer` function where the NFT will be transferred to the seller. 
+For purchasing NFTs, you must call the `offer` function. It takes an `nft_contract_id`, `token_id`, and the amount you wish to offer as parameters. Behind the scenes, this function will make sure your offer amount is greater than the list price and also that you have enough FTs deposited. It will then call a private method `process_purchase` which will perform a cross-contract call to the NFT contract to invoke the `nft_transfer` function where the NFT will be transferred to the seller.
 
 <Github language="rust" start="68" end="145" url="https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/sale.rs" />
 
@@ -157,7 +157,7 @@ Once the transfer is complete, the contract will call `resolve_purchase` where i
 
 <Github language="rust" start="147" end="191" url="https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/sale.rs" />
 
-## View Methods 
+## View Methods
 
 There are several view functions that the marketplace contract exposes. All of these functions are the same as the [NFT zero to hero tutorial](/tutorials/nfts/marketplace) except for one extra function we've added. In the `src/ft_balances.rs` file, we've added the `ft_balance_of` function. This function returns the balance of a given account.
 
@@ -165,7 +165,7 @@ There are several view functions that the marketplace contract exposes. All of t
 
 ## Testing
 
-Now that you *hopefully* have a good understanding of how the marketplace contract works and how you can use the powers of the FT standard to purchase NFTs, let's move onto testing everything. 
+Now that you *hopefully* have a good understanding of how the marketplace contract works and how you can use the powers of the FT standard to purchase NFTs, let's move onto testing everything.
 
 ### Deploying and Initializing the Contracts
 
@@ -394,3 +394,14 @@ And just like that you're finished! You went through and put an NFT up for sale 
 ## Conclusion
 
 In this tutorial, you learned about the basics of a marketplace contract and how it works. You went through the core logic both at a high level and looked at the code. You deployed an NFT, marketplace, and FT contract, initialized them all and then put an NFT for sale and sold it for fungible tokens! What an amazing experience! Go forth and expand these contracts to meet whatever needs you have. The world is your oyster and thank you so much for following along with this tutorial series. Don't hesitate to ask for help or clarification on anything in our discord or social media channels. **Go Team!**
+
+---
+
+:::note Versioning for this article
+At the time of this writing, this example works with the following versions:
+
+- rustc: `1.77.1`
+- near-sdk-rs: `5.1.0` (with enabled `legacy` feature)
+- cargo-near: `0.6.1`
+- near-cli: `4.0.13`
+:::

@@ -49,8 +49,8 @@ jobs:
         run: |
           cd website
           yarn
-          yarn build
           yarn crowdin:upload
+          yarn build
 
       - name: Commit build
         run: |

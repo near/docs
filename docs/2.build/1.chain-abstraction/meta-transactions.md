@@ -110,7 +110,7 @@ Progress is being made to make this possible in the future.
 ### Gating the relayer
 
 In most production applications it's expected that you want to be able to gate the relayer to only be used in certain cases.
-By taking apart the `delegateAction` object inside the `SignedDelegate`on the server this can be done simply.
+This can be easily accomplished by specifying constraints inside the `SignedDelegate.delegateAction` object.
 
 ```typescript
 export declare class DelegateAction extends Assignable {
@@ -175,7 +175,7 @@ Check the [Use cases section](#use-cases) for example configuration files corres
 
 You can follow these steps to set up your local Relayer server development environment:
 
-1. [Install Rust for NEAR Development](../../sdk/rust/intro.md)
+1. [Install Rust for NEAR Development](../2.smart-contracts/quickstart.md#prerequisites)
 2. If you don't have a NEAR account, [create one](../../1.concepts/protocol/account-model.md)
 3. With the account from step 2, create a JSON file in this directory in the format
    ```js

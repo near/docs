@@ -9,6 +9,7 @@
   "silent": true,
   "skip": [
     "https://crates.io/*",
+    "https://dappradar.com/*",
     "https://staking.dokia.cloud/staking/near/validators",
     "https://near.zavodil.ru/?pools=",
     "https://rpc.testnet.near.org/",
@@ -31,12 +32,14 @@
     "https://github.com/",
     "https://jutsu.ai/editor",
     "https://meteorwallet.app",
+    "https://wallet.meteorwallet.app",
     "https://t.me/cryptonear",
     "https://www.npmjs.com/package/@near-lake/framework",
     "https://mitsloan.mit.edu/ideas-made-to-matter/social-media-broken-a-new-report-offers-25-ways-to-fix-it",
     "https://www.zeeve.io/",
     "https://www.arweave.org/",
     "https://www.minecraft.net",
-    "https://shard.dog/"
+    "https://shard.dog/",
+    "https://wiki.crust.network/"
   ]
 }

@@ -55,7 +55,7 @@ In combination, gas fee and deposit attachments enable creation of contracts tha
 
 One last gotcha about storage - remember that smart contracts themselves are also just a code stored on a blockchain, so a DeployContract transaction will also incur storage fees. Since smart contracts code can be quite big, it’s important to optimize their size. A few tips on this:
 - Don’t build Rust code on Windows, it produces quite big output. Use WSL or build on other OSes.
-- Optimize smart contracts code for size - [more info here](/sdk/rust/contract-size).
+- Optimize smart contracts code for size - [more info here](../../2.build/2.smart-contracts/anatomy/reduce-size.md)
 
 More details on the storage model can be [found in the docs](../storage/storage-staking.md).
 
@@ -126,12 +126,12 @@ In general, cross-contract call graphs can be quite complex (one contract may ca
 
 We’ve already discussed the storage model on NEAR, but only in abstract terms, without bringing the exact structure, so it’s time to dive a bit deeper.
 
-Natively, NEAR smart contracts store data as key-value pairs. This is quite limiting, since even simplest applications usually need more advanced data structures. To help in development, NEAR provides [SDK for smart contracts](https://github.com/near/near-sdk-rs), which includes data structures like [vectors, sets and maps](../../1.concepts/storage/data-collections.md#rust-collection-types-rust-collection-types). While they are very useful, it’s important to remember a few things about them:
-- Ultimately, they are stored as binary values, which means it takes some gas to serialize and deserialize them. Also, different operations cost different amounts of gas ([complexity table](../../1.concepts/storage/data-collections.md#big-o-notation-big-o-notation-1)). Because of this, careful choice of data structures is very important. Moving to a different data structure later will not be easy and would probably require data migration.
+Natively, NEAR smart contracts store data as key-value pairs. This is quite limiting, since even simplest applications usually need more advanced data structures. To help in development, NEAR provides [SDK for smart contracts](https://github.com/near/near-sdk-rs), which includes data structures like [vectors, sets and maps](../../2.build/2.smart-contracts/anatomy/collections.md). While they are very useful, it’s important to remember a few things about them:
+- Ultimately, they are stored as binary values, which means it takes some gas to serialize and deserialize them. Also, different operations cost different amounts of gas ([complexity table](../../2.build/2.smart-contracts/anatomy/collections.md#complexity)). Because of this, careful choice of data structures is very important. Moving to a different data structure later will not be easy and would probably require data migration.
 - While very useful, vectors, maps and sets won’t match the flexibility and power of classical relational databases. Even implementations of simple filtering and searching might be quite complex and require a lot of gas to execute, especially if multiple entities with relations between them are involved.
 - They are limited to a single contract. If data from multiple contracts is required, aggregation should be performed using cross-contract calls or on a client side, which is quite expensive in terms of gas and time.
 
-To support more complex data retrieval scenarios, smart contract data should be put in a more appropriate store, like a relational database. [Indexers](../../4.tools/indexer4explorer.md) are used to achieve this. In a nutshell, indexer is just a special kind of blockchain node that processes incoming transactions and puts relevant data into a database. Collected data can be exposed to a client using a simple API server (e.g. REST or GraphQL).
+To support more complex data retrieval scenarios, smart contract data should be put in a more appropriate store, like a relational database. Indexers are used to achieve this. In a nutshell, indexer is just a special kind of blockchain node that processes incoming transactions and puts relevant data into a database. Collected data can be exposed to a client using a simple API server (e.g. REST or GraphQL).
 
 
 ![image](/docs/assets/web3/web3-15.png)
@@ -203,7 +203,6 @@ But we can take our upgrade strategy one step further. In the previous strategie
 For a deep dive into NEAR, the following links will be useful:
 
 - [NEAR docs](https://docs.near.org)
-- [Rust Smart Contract docs](/sdk/rust/introduction)
 - [Smart Contract quick start guide](../../2.build/2.smart-contracts/quickstart.md)
 - [NEAR Protocol Specification](https://nomicon.io/)
 - [How to build a dApp on NEAR](../../3.tutorials/examples/guest-book.md)

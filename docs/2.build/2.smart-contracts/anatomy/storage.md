@@ -7,13 +7,18 @@ hide_table_of_contents: true
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
-
 import {ExplainCode, Block, File} from '@site/src/components/CodeExplainer/code-explainer';
 
-NEAR accounts store data for their contracts. The storage starts **empty** until a contract is deployed and the state is initialized. The contract's code and state are independent: updating the code does not erase the state.
+Smart contracts store data in their account's state, which is public on the chain. The storage starts **empty** until a contract is deployed and the state is initialized.
 
-<ExplainCode languages={["js", "rust"]} >
-  <Block highlights={{"js": "3-6,10-11"}} fname="auction">
+It is important to know that the account's **code** and account's **storage** are **independent**. [Updating the code](../release/upgrade.md) does **not erase** the state.
+
+<hr class="subsection" />
+
+<ExplainCode languages="js,rust" >
+
+<Block highlights='{"js": "3-6,10-11"}' fname="auction">
+
     ### Defining the State
     The attributes of the `class` marked as the contract define the data that will be stored.
     
@@ -22,8 +27,11 @@ NEAR accounts store data for their contracts. The storage starts **empty** until
     For example, our Auction contract stores when the auction ends, and an object representing the highest bid.
 
     **Note:** The SDK also provides [collections](./collections.md) to efficiently store collections of data.
-  </Block>
-  <Block highlights={{"rust": "6-9,14,15"}} fname="auction">
+
+</Block>
+
+<Block highlights='{"rust": "6-9,14,15"}' fname="auction">
+
     ### Defining the State
     The attributes of the `struct` marked as the contract define the data that will be stored.
 
@@ -34,19 +42,23 @@ NEAR accounts store data for their contracts. The storage starts **empty** until
     **Note:** The structures that will be saved need a special macro, that tells the SDK to store them [serialized in Borsh](./serialization.md).
 
     **Note:** The SDK also provides [collections](./collections.md) to efficiently store collections of data.
-  </Block>
-  <Block highlights={{"rust": "4"}} fname="auction">
-    #### [*] Note
-    The `structs` that will be persisted need to be marked with a macro, so the SDK knows to [serialize them in Borsh](./serialization.md) before writing them to the state.
-  </Block>
 
-  <Block highlights={{"js":"", "rust": ""}} fname="auction">
-    #### [!] Important
-    Contracts pay for their storage by locking part of their balance.
+</Block>
+
+<Block highlights='{"js":"", "rust": ""}' fname="auction" type='info'>
+
+:::warning
+
+Contracts pay for their storage by locking part of their balance.
     
-    It currently costs ~**1Ⓝ** to store **100KB** of data.
-  </Block>
-  <Block highlights={{"js": "", "rust": ""}} fname="auction" >
+It currently costs ~**1Ⓝ** to store **100KB** of data.
+
+:::
+
+</Block>
+
+<Block highlights='{"js": "", "rust": ""}' fname="auction" >
+
     ### Initializing the State
     After the contract is deployed, its state is empty and needs to be initialized with
     some initial values.
@@ -54,29 +66,43 @@ NEAR accounts store data for their contracts. The storage starts **empty** until
     There are two ways to initialize a state:
       1. By creating an initialization function
       2. By setting default values
-  </Block>
-    <Block highlights={{"js": "8,13-17"}} fname="auction">
+
+</Block>
+
+<Block highlights='{"js": "8,13-17"}' fname="auction">
+
     ### I. Initialization Functions
     An option to initialize the state is to create an `initialization` function, which needs to be called before executing any other function.
 
     In our Auction example, the contract has an initialization function that sets when the auction ends. Note the `@initialization` decorator, and the forced initialization on `NearBindgen`.
     
     **Note:** It is a good practice to mark initialization functions as private. We will cover function types in the [functions section](./functions.md).
-  </Block>
-  <Block highlights={{"js": "10-11"}} fname="auction">
-    #### [!] Important
-    In TS/JS you still **must** set default values for the attributes, so the SDK can infer their types.
-  </Block>
-  <Block highlights={{"rust": "12,22-30"}} fname="auction">
+
+</Block>
+
+<Block highlights='{"js": "10-11"}' fname="auction" type='info'>
+
+:::warning
+
+In TS/JS you still **must** set default values for the attributes, so the SDK can infer their types.
+
+:::
+
+</Block>
+
+<Block highlights='{"rust": "12,22-30"}' fname="auction">
+
     ### I. Initialization Functions
     An option to initialize the state is to create an `initialization` function, which needs to be called before executing any other function.
 
     In our Auction example, the contract has an initialization function that sets when the auction ends. The contract derives the `PanicOnDefault`, which forces the user to call the init method denoted by the `#[init]` macro.
     
     **Note:** It is a good practice to mark initialization functions as private. We will cover function types in the [functions section](./functions.md).
-  </Block>
 
-  <Block highlights={{"js": "5"}} fname="hello">
+</Block>
+
+<Block highlights='{"js": "5"}' fname="hello">
+
     ### II. Default State
     Another option to initialize the state is to set default values for the attributes of the class.
 
@@ -85,8 +111,11 @@ NEAR accounts store data for their contracts. The storage starts **empty** until
     The first time the contract is called (somebody executes `get_greeting` or `set_greeting`), the default values will be stored in the state, and the state will be considered initialized.
 
     **Note:** The state can only be initialized once.
-  </Block>
-  <Block highlights={{"rust": "10-16"}} fname="hello">
+
+</Block>
+
+<Block highlights='{"rust": "10-16"}' fname="hello">
+
     ### II. Default State
     Another option to initialize the state is to create a `Default` version of our contract's `struct`.
     
@@ -95,50 +124,48 @@ NEAR accounts store data for their contracts. The storage starts **empty** until
     The first time the contract executes, the `Default` will be stored in the state, and the state will be considered initialized.
 
     **Note:** The state can only be initialized once.
-  </Block>
-  <Block highlights={{"js": "", "rust":""}} fname="hello">
+
+</Block>
+
+<Block highlights='{"js": "", "rust":""}' fname="hello">
+
     ### Lifecycle of the State
     When a function is called, the contract's state is loaded from the storage and put into memory.
 
     The state is actually [stored serialized](./serialization.md), and the SDK takes a bit of time to deserialize it before the method can access it.
 
     When the method finishes executing successfully, all the changes to the state are serialized, and saved back to the storage.
-  </Block>
-  <Block highlights={{"js": "", "rust":""}} fname="hello">
-    ### State and Code
-    In NEAR, the contract's code and contract's storage are **independent**.
+
+</Block>
+
+<Block highlights='{"js": "", "rust":""}' fname="hello" type='info'>
+
+:::warning State and Code
+
+In NEAR, the contract's code and contract's storage are **independent**.
     
-    Updating the code of a contract does **not erase** the state, and can indeed lead to unexpected behavior or errors.
+Updating the code of a contract does **not erase** the state, and can indeed lead to unexpected behavior or errors.
 
-    Make sure to read the [updating a contract](../release/upgrade.md) if you run into issues.
-  </Block>
+Make sure to read the [updating a contract](../release/upgrade.md) if you run into issues.
 
-  <File
-    language="js"
-    fname="auction" 
+:::
+
+</Block>
+
+<File language="js" fname="auction"
     url="https://github.com/near-examples/auction-examples/blob/main/contract-ts/src/contract.ts"
-    start="2"
-    end="51"
-  />
-  <File
-    language="js"
-    fname="hello" 
+    start="2" end="51" />
+
+<File language="js" fname="hello"
     url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts"
-    start="2"
-    end="18"
-  />
-  <File
-    language="rust"
-    fname="auction"
+    start="2" end="18" />
+
+<File language="rust" fname="auction"
     url="https://github.com/near-examples/auction-examples/blob/main/contract-rs/src/lib.rs"
-    start="2"
-    end="68"
-  />
-  <File
-    language="rust"
-    fname="hello" 
+    start="2" end="68" />
+
+<File language="rust" fname="hello"
     url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
-    start="2"
-    end="32"
-  />
+    start="2" end="32" />
+
 </ExplainCode>

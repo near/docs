@@ -29,7 +29,6 @@ There are multiple [RPC providers which you can choose from](./providers.md). Th
 | [Protocol](/api/rpc/protocol)                       | Retrieve current genesis and protocol configuration.                         |
 | [Network](/api/rpc/network)                         | Return status information for nodes and validators.                          |
 | [Transactions](/api/rpc/transactions)               | Send transactions and query their status.                                    |
-| [Maintenance Windows](/api/rpc/maintenance-windows) | Query the maintenance windows in current epoch for a validator.              |
 
 :::tip
 You can access the JSON RPC 2.0 endpoints using [Postman](/api/rpc/setup#postman-setup),

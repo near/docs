@@ -16,14 +16,6 @@ You can watch a complete video walkthrough of Query API [following this link](ht
 
 :::
 
-:::info
-
-NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers. 
-
-You can request access through [this link](http://bit.ly/near-queryapi-beta).
-
-:::
-
 ## How it Works
 
 QueryAPI works by:
@@ -32,7 +24,7 @@ QueryAPI works by:
 2. Creating the tables as specified in the schema to the GraphQL database, exposing a GraphQL endpoint to query the data;
 3. Spinning up a cloud process that runs your indexer function, writing to the GraphQL database;
 
-You can access the [NEAR QueryAPI by following this link](https://near.org/dataplatform.near/widget/QueryApi.App).
+You can access the [NEAR QueryAPI by following this link](https://dev.near.org/dataplatform.near/widget/QueryApi.App).
 
 This should take you to a dashboard that looks like this:
 
@@ -185,7 +177,7 @@ Clicking the <kbd>Publish</kbd> button will open the following pop-up. From here
 - `Start from block height`: Start indexing from the height specified, i.e., when the contract was deployed, or when a specific event occurs.
 
 :::info
-`Continue from last processed block` is only available for existing indexers. Updating the contract filter is disabled for this option, as it will create a backlog of blocks for two different contracts. 
+`Continue from last processed block` is only available for existing indexers. Updating the contract filter is disabled for this option, as it will create a backlog of blocks for two different contracts.
 :::
 
 :::warning
@@ -259,7 +251,7 @@ fetchGraphQL(transactionQueriesDoc, "TransactionsQuery", {})
   });
 ```
 
-We have just shown how to fetch data from the indexers that we have created from within NEAR. To view a more complex example, see this widget which fetches posts with proper pagination: [Posts Widget powered By QueryAPI](https://near.org/dataplatform.near/widget/QueryApi.Examples.Feed.Posts).
+We have just shown how to fetch data from the indexers that we have created from within NEAR. To view a more complex example, see this widget which fetches posts with proper pagination: [Posts Widget powered By QueryAPI](https://dev.near.org/dataplatform.near/widget/QueryApi.Examples.Feed.Posts).
 
 :::tip Video Walkthrough
 

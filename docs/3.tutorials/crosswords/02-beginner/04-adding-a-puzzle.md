@@ -36,9 +36,11 @@ Let's use the same steps we learned from the first chapter:
 </figure>
 <br/>
 
-Navigate to the `contract` directory, then run the build script for your system:
+Navigate to the `contract` directory, then run:
 
-    ./build.sh
+```bash
+cargo near build
+```
 
 If following from the previous chapter, you'll likely have a subaccount already created. For the purpose of demonstration, we're calling the subaccount (where we deploy the contract) `crossword.friend.testnet` and the parent account is thus `friend.testnet`.
 
@@ -54,11 +56,13 @@ Here's how to delete and recreate the subaccount using NEAR CLI:
 
 ```bash
 # Delete the subaccount and send remaining balance to friend.testnet
-near delete crossword.friend.testnet friend.testnet
-# Create the subaccount again 
-near create-account crossword.friend.testnet --masterAccount friend.testnet
+near account delete-account crossword.friend.testnet beneficiary friend.testnet network-config testnet sign-with-legacy-keychain send
+
+# Create the subaccount again
+near account create-account fund-myself crossword.friend.testnet '1 NEAR' autogenerate-new-keypair save-to-legacy-keychain sign-as friend.testnet network-config testnet sign-with-legacy-keychain send
+
 # Deploy, calling the "new" method with the parameter for owner_id
-near deploy crossword.friend.testnet --wasmFile res/crossword_tutorial_chapter_2.wasm --initFunction new --initArgs '{"owner_id": "crossword.friend.testnet"}'
+cargo near deploy crossword.friend.testnet with-init-call new json-args '{"owner_id": "crossword.friend.testnet"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-legacy-keychain send
 ```
 
 Now we're ready to construct our new crossword puzzle and add it via the `new_puzzle` method. Let's start with the clues for this new puzzle.
@@ -81,14 +85,16 @@ The x and y coordinates have their origin in the upper-left side of the puzzle g
 
 Let's derive the sha256 hash using an [easy online tool](https://www.wolframalpha.com/input/?i=sha256+%22paras+rainbowbridge+mintbase+yoctonear+cli%22) (there are many other offline methods as well) to discover the solution hash:
 
+```
     d1a5cf9ad1adefe0528f7d31866cf901e665745ff172b96892693769ad284010
+```
 
 ## Add the puzzle
 
 Add a new puzzle using NEAR CLI with this long command, replacing `crossword.friend.testnet` with your subaccount:
 
-```
-near call crossword.friend.testnet new_puzzle '{
+```bash
+near contract call-function as-transaction crossword.friend.testnet new_puzzle json-args '{
   "solution_hash": "d1a5cf9ad1adefe0528f7d31866cf901e665745ff172b96892693769ad284010",
   "answers": [
    {
@@ -142,7 +148,7 @@ near call crossword.friend.testnet new_puzzle '{
      "clue": "You typically deploy a smart contract with the NEAR ___ tool."
    }
   ]
-}' --accountId crossword.friend.testnet
+}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as crossword.friend.testnet network-config testnet sign-with-legacy-keychain send
 ```
 
 Note that our contract name and the account we're calling this from are both `crossword.friend.testnet`. That's because we added a check at the top of `new_puzzle` to make sure the predecessor is the `owner_id`.
