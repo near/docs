@@ -4,11 +4,9 @@ title: Posts Indexer
 sidebar_label: Posts Indexer
 ---
 
-:::info
+:::tip
 
-NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers. 
-
-You can request access through [this link](http://bit.ly/near-queryapi-beta).
+This tutorial creates a blockchain indexer using [NEAR QueryAPI](../../../2.build/6.data-infrastructure/query-api/intro.md).
 
 :::
 
@@ -171,7 +169,7 @@ Once you have defined your query, you can use the GraphiQL Code Exporter to auto
 - `operationName`: The specific query you want to run.
 - `variables`: Any variables to pass in that your query supports, such as `offset` and `limit` for pagination.
 
-Next, you can call the `fetchGraphQL` function with the appropriate parameters and process the results. 
+Next, you can call the `fetchGraphQL` function with the appropriate parameters and process the results.
 
 Here's the complete code snippet for a NEAR component using the _Posts Indexer_:
 
