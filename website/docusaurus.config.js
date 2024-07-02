@@ -88,7 +88,7 @@ const config = {
   themeConfig: {
     image: 'docs/assets/welcome-pages/protocol.png',
     announcementBar: {
-      id: 'id-0003',
+      id: 'id-0004',
       content:
         '📣 <a href="/blog/bos-web-engine-sunset">Pagoda sunsets B.O.S. Web Engine R&D Project</a> 📣',
       backgroundColor: '#fafbfc',
