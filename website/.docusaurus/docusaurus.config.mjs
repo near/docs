@@ -7,7 +7,7 @@ export default {
   "title": "NEAR Documentation",
   "tagline": "NEAR Protocol Developer Documentation",
   "url": "https://docs.near.org",
-  "baseUrl": "/",
+  "baseUrl": "/zh-CN/",
   "organizationName": "near",
   "projectName": "docs",
   "markdown": {
@@ -113,7 +113,7 @@ export default {
   "themeConfig": {
     "image": "docs/assets/welcome-pages/protocol.png",
     "announcementBar": {
-      "id": "id-0003",
+      "id": "id-0004",
       "content": "📣 <a href=\"/blog/bos-web-engine-sunset\">Pagoda sunsets B.O.S. Web Engine R&D Project</a> 📣",
       "backgroundColor": "#fafbfc",
       "textColor": "#333",
@@ -492,10 +492,18 @@ export default {
   "i18n": {
     "defaultLocale": "en",
     "locales": [
-      "en"
+      "en",
+      "ko",
+      "vi",
+      "zh-CN"
     ],
-    "path": "i18n",
-    "localeConfigs": {}
+    "localeConfigs": {
+      "zh-CN": {
+        "label": "简体中文",
+        "direction": "ltr"
+      }
+    },
+    "path": "i18n"
   },
   "baseUrlIssueBanner": true,
   "onBrokenAnchors": "warn",

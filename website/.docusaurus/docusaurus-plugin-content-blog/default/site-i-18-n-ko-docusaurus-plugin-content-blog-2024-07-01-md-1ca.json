@@ -1,0 +1,55 @@
+{
+  "permalink": "/ko/blog/bos-web-engine-sunset",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-blog/2024-07-01.md",
+  "title": "Pagoda Sunsets B.O.S. Web Engine R&D Project",
+  "description": "After many discussions with NEAR’s B.O.S. component developers and careful consideration, Pagoda has decided to discontinue its active development for B.O.S. Web Engine R&D for an improved execution layer for NEAR B.O.S. Components. (also known as “BWE” & “VM2”)",
+  "date": "2024-07-01T00:00:00.000Z",
+  "tags": [
+    {
+      "label": "updates",
+      "permalink": "/ko/blog/tags/updates"
+    },
+    {
+      "label": "BWE",
+      "permalink": "/ko/blog/tags/bwe"
+    },
+    {
+      "label": "VM2",
+      "permalink": "/ko/blog/tags/vm-2"
+    },
+    {
+      "label": "BOS",
+      "permalink": "/ko/blog/tags/bos"
+    }
+  ],
+  "readingTime": 5.965,
+  "hasTruncateMarker": false,
+  "authors": [
+    {
+      "name": "Josh Ford",
+      "title": "DevX PM",
+      "url": "https://github.com/thisisjoshford",
+      "imageURL": "https://github.com/thisisjoshford.png",
+      "key": "thisisjoshford"
+    }
+  ],
+  "frontMatter": {
+    "title": "Pagoda Sunsets B.O.S. Web Engine R&D Project",
+    "authors": [
+      "thisisjoshford"
+    ],
+    "slug": "bos-web-engine-sunset",
+    "tags": [
+      "updates",
+      "BWE",
+      "VM2",
+      "BOS"
+    ],
+    "hide_table_of_contents": true
+  },
+  "unlisted": false,
+  "nextItem": {
+    "title": "One place for all Smart Contracts Docs",
+    "permalink": "/ko/blog/sdks-unified"
+  }
+}

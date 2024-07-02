@@ -3,32 +3,32 @@
   "items": [
     {
       "title": "Pagoda Sunsets B.O.S. Web Engine R&D Project",
-      "permalink": "/blog/bos-web-engine-sunset",
+      "permalink": "/zh-CN/blog/bos-web-engine-sunset",
       "unlisted": false
     },
     {
       "title": "One place for all Smart Contracts Docs",
-      "permalink": "/blog/sdks-unified",
+      "permalink": "/zh-CN/blog/sdks-unified",
       "unlisted": false
     },
     {
       "title": "Getting Started on NEAR Using Windows",
-      "permalink": "/blog/getting-started-on-windows",
+      "permalink": "/zh-CN/blog/getting-started-on-windows",
       "unlisted": false
     },
     {
       "title": "It's gonna be Legen... wait for it...",
-      "permalink": "/blog/yield-resume",
+      "permalink": "/zh-CN/blog/yield-resume",
       "unlisted": false
     },
     {
       "title": "Reorganizing our docs",
-      "permalink": "/blog/reorganizing-docs",
+      "permalink": "/zh-CN/blog/reorganizing-docs",
       "unlisted": false
     },
     {
       "title": "We have a blog now!",
-      "permalink": "/blog/we-have-a-blog",
+      "permalink": "/zh-CN/blog/we-have-a-blog",
       "unlisted": false
     }
   ]

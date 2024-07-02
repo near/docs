@@ -1,1623 +1,1623 @@
 {
   "docusaurus-plugin-content-docs": {
     "default": {
-      "path": "/",
+      "path": "/zh-CN/",
       "versions": [
         {
           "name": "current",
           "label": "Next",
           "isLast": true,
-          "path": "/",
+          "path": "/zh-CN/",
           "mainDocId": "welcome",
           "docs": [
             {
               "id": "api/rpc/access-keys",
-              "path": "/api/rpc/access-keys",
+              "path": "/zh-CN/api/rpc/access-keys",
               "sidebar": "api"
             },
             {
               "id": "api/rpc/block-chunk",
-              "path": "/api/rpc/block-chunk",
+              "path": "/zh-CN/api/rpc/block-chunk",
               "sidebar": "api"
             },
             {
               "id": "api/rpc/contracts",
-              "path": "/api/rpc/contracts",
+              "path": "/zh-CN/api/rpc/contracts",
               "sidebar": "api"
             },
             {
               "id": "api/rpc/gas",
-              "path": "/api/rpc/gas",
+              "path": "/zh-CN/api/rpc/gas",
               "sidebar": "api"
             },
             {
               "id": "api/rpc/introduction",
-              "path": "/api/rpc/introduction",
+              "path": "/zh-CN/api/rpc/introduction",
               "sidebar": "api"
             },
             {
               "id": "api/rpc/maintenance-windows",
-              "path": "/api/rpc/maintenance-windows",
+              "path": "/zh-CN/api/rpc/maintenance-windows",
               "sidebar": "api"
             },
             {
               "id": "api/rpc/network",
-              "path": "/api/rpc/network",
+              "path": "/zh-CN/api/rpc/network",
               "sidebar": "api"
             },
             {
               "id": "api/rpc/protocol",
-              "path": "/api/rpc/protocol",
+              "path": "/zh-CN/api/rpc/protocol",
               "sidebar": "api"
             },
             {
               "id": "api/rpc/providers",
-              "path": "/api/rpc/providers",
+              "path": "/zh-CN/api/rpc/providers",
               "sidebar": "api"
             },
             {
               "id": "api/rpc/setup",
-              "path": "/api/rpc/setup",
+              "path": "/zh-CN/api/rpc/setup",
               "sidebar": "api"
             },
             {
               "id": "api/rpc/transactions",
-              "path": "/api/rpc/transactions",
+              "path": "/zh-CN/api/rpc/transactions",
               "sidebar": "api"
             },
             {
               "id": "build/chain-abstraction/chain-signatures",
-              "path": "/build/chain-abstraction/chain-signatures",
+              "path": "/zh-CN/build/chain-abstraction/chain-signatures",
               "sidebar": "build"
             },
             {
               "id": "build/chain-abstraction/data-availability",
-              "path": "/build/chain-abstraction/data-availability",
+              "path": "/zh-CN/build/chain-abstraction/data-availability",
               "sidebar": "build"
             },
             {
               "id": "build/chain-abstraction/fastauth-sdk",
-              "path": "/build/chain-abstraction/fastauth-sdk",
+              "path": "/zh-CN/build/chain-abstraction/fastauth-sdk",
               "sidebar": "build"
             },
             {
               "id": "build/chain-abstraction/meta-transactions",
-              "path": "/build/chain-abstraction/meta-transactions",
+              "path": "/zh-CN/build/chain-abstraction/meta-transactions",
               "sidebar": "build"
             },
             {
               "id": "build/chain-abstraction/multichain-gas-relayer/gas-station",
-              "path": "/build/chain-abstraction/multichain-gas-relayer/gas-station",
+              "path": "/zh-CN/build/chain-abstraction/multichain-gas-relayer/gas-station",
               "sidebar": "build"
             },
             {
               "id": "build/chain-abstraction/multichain-gas-relayer/multichain-server",
-              "path": "/build/chain-abstraction/multichain-gas-relayer/multichain-server",
+              "path": "/zh-CN/build/chain-abstraction/multichain-gas-relayer/multichain-server",
               "sidebar": "build"
             },
             {
               "id": "build/chain-abstraction/multichain-gas-relayer/overview",
-              "path": "/build/chain-abstraction/multichain-gas-relayer/overview",
+              "path": "/zh-CN/build/chain-abstraction/multichain-gas-relayer/overview",
               "sidebar": "build"
             },
             {
               "id": "build/chain-abstraction/multichain-gas-relayer/relayer-gas-example",
-              "path": "/build/chain-abstraction/multichain-gas-relayer/relayer-gas-example",
+              "path": "/zh-CN/build/chain-abstraction/multichain-gas-relayer/relayer-gas-example",
               "sidebar": "build"
             },
             {
               "id": "build/chain-abstraction/nft-chain-keys",
-              "path": "/build/chain-abstraction/nft-chain-keys",
+              "path": "/zh-CN/build/chain-abstraction/nft-chain-keys",
               "sidebar": "build"
             },
             {
               "id": "build/chain-abstraction/wallet",
-              "path": "/build/chain-abstraction/wallet",
+              "path": "/zh-CN/build/chain-abstraction/wallet",
               "sidebar": "build"
             },
             {
               "id": "build/chain-abstraction/what-is",
-              "path": "/build/chain-abstraction/what-is",
+              "path": "/zh-CN/build/chain-abstraction/what-is",
               "sidebar": "build"
             },
             {
               "id": "build/data-infrastructure/big-query",
-              "path": "/build/data-infrastructure/big-query",
+              "path": "/zh-CN/build/data-infrastructure/big-query",
               "sidebar": "build"
             },
             {
               "id": "build/data-infrastructure/lake-data-structures/block",
-              "path": "/build/data-infrastructure/lake-data-structures/block",
+              "path": "/zh-CN/build/data-infrastructure/lake-data-structures/block",
               "sidebar": "build"
             },
             {
               "id": "build/data-infrastructure/lake-data-structures/chunk",
-              "path": "/build/data-infrastructure/lake-data-structures/chunk",
+              "path": "/zh-CN/build/data-infrastructure/lake-data-structures/chunk",
               "sidebar": "build"
             },
             {
               "id": "build/data-infrastructure/lake-data-structures/execution-outcome",
-              "path": "/build/data-infrastructure/lake-data-structures/execution-outcome",
+              "path": "/zh-CN/build/data-infrastructure/lake-data-structures/execution-outcome",
               "sidebar": "build"
             },
             {
               "id": "build/data-infrastructure/lake-data-structures/receipt",
-              "path": "/build/data-infrastructure/lake-data-structures/receipt",
+              "path": "/zh-CN/build/data-infrastructure/lake-data-structures/receipt",
               "sidebar": "build"
             },
             {
               "id": "build/data-infrastructure/lake-data-structures/shard",
-              "path": "/build/data-infrastructure/lake-data-structures/shard",
+              "path": "/zh-CN/build/data-infrastructure/lake-data-structures/shard",
               "sidebar": "build"
             },
             {
               "id": "build/data-infrastructure/lake-data-structures/state-change",
-              "path": "/build/data-infrastructure/lake-data-structures/state-change",
+              "path": "/zh-CN/build/data-infrastructure/lake-data-structures/state-change",
               "sidebar": "build"
             },
             {
               "id": "build/data-infrastructure/lake-data-structures/toc",
-              "path": "/build/data-infrastructure/lake-data-structures/toc",
+              "path": "/zh-CN/build/data-infrastructure/lake-data-structures/toc",
               "sidebar": "build"
             },
             {
               "id": "build/data-infrastructure/lake-data-structures/transaction",
-              "path": "/build/data-infrastructure/lake-data-structures/transaction",
+              "path": "/zh-CN/build/data-infrastructure/lake-data-structures/transaction",
               "sidebar": "build"
             },
             {
               "id": "build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer",
-              "path": "/build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer",
+              "path": "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer",
               "sidebar": "build"
             },
             {
               "id": "build/data-infrastructure/lake-framework/building-indexers/nft-indexer",
-              "path": "/build/data-infrastructure/lake-framework/building-indexers/nft-indexer",
+              "path": "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/nft-indexer",
               "sidebar": "build"
             },
             {
               "id": "build/data-infrastructure/lake-framework/building-indexers/primitives",
-              "path": "/build/data-infrastructure/lake-framework/building-indexers/primitives",
+              "path": "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/primitives",
               "sidebar": "build"
             },
             {
               "id": "build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer",
-              "path": "/build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer",
+              "path": "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer",
               "sidebar": "build"
             },
             {
               "id": "build/data-infrastructure/lake-framework/building-indexers/python-nft-indexer",
-              "path": "/build/data-infrastructure/lake-framework/building-indexers/python-nft-indexer",
+              "path": "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/python-nft-indexer",
               "sidebar": "build"
             },
             {
               "id": "build/data-infrastructure/lake-framework/migrating-to-near-lake-framework",
-              "path": "/build/data-infrastructure/lake-framework/migrating-to-near-lake-framework",
+              "path": "/zh-CN/build/data-infrastructure/lake-framework/migrating-to-near-lake-framework",
               "sidebar": "build"
             },
             {
               "id": "build/data-infrastructure/lake-framework/near-lake",
-              "path": "/build/data-infrastructure/lake-framework/near-lake",
+              "path": "/zh-CN/build/data-infrastructure/lake-framework/near-lake",
               "sidebar": "build"
             },
             {
               "id": "build/data-infrastructure/lake-framework/near-lake-state-changes-indexer",
-              "path": "/build/data-infrastructure/lake-framework/near-lake-state-changes-indexer",
+              "path": "/zh-CN/build/data-infrastructure/lake-framework/near-lake-state-changes-indexer",
               "sidebar": "build"
             },
             {
               "id": "build/data-infrastructure/lake-framework/running-near-lake/credentials",
-              "path": "/build/data-infrastructure/lake-framework/running-near-lake/credentials",
+              "path": "/zh-CN/build/data-infrastructure/lake-framework/running-near-lake/credentials",
               "sidebar": "build"
             },
             {
               "id": "build/data-infrastructure/lake-framework/running-near-lake/lake-start-options",
-              "path": "/build/data-infrastructure/lake-framework/running-near-lake/lake-start-options",
+              "path": "/zh-CN/build/data-infrastructure/lake-framework/running-near-lake/lake-start-options",
               "sidebar": "build"
             },
             {
               "id": "build/data-infrastructure/lake-framework/running-near-lake/run-lake-indexer",
-              "path": "/build/data-infrastructure/lake-framework/running-near-lake/run-lake-indexer",
+              "path": "/zh-CN/build/data-infrastructure/lake-framework/running-near-lake/run-lake-indexer",
               "sidebar": "build"
             },
             {
               "id": "build/data-infrastructure/query-api/best-practices",
-              "path": "/build/data-infrastructure/query-api/best-practices",
+              "path": "/zh-CN/build/data-infrastructure/query-api/best-practices",
               "sidebar": "build"
             },
             {
               "id": "build/data-infrastructure/query-api/context-object",
-              "path": "/build/data-infrastructure/query-api/context-object",
+              "path": "/zh-CN/build/data-infrastructure/query-api/context-object",
               "sidebar": "build"
             },
             {
               "id": "build/data-infrastructure/query-api/how-it-works",
-              "path": "/build/data-infrastructure/query-api/how-it-works",
+              "path": "/zh-CN/build/data-infrastructure/query-api/how-it-works",
               "sidebar": "build"
             },
             {
               "id": "build/data-infrastructure/query-api/index-functions",
-              "path": "/build/data-infrastructure/query-api/index-functions",
+              "path": "/zh-CN/build/data-infrastructure/query-api/index-functions",
               "sidebar": "build"
             },
             {
               "id": "build/data-infrastructure/query-api/indexers",
-              "path": "/build/data-infrastructure/query-api/indexers",
+              "path": "/zh-CN/build/data-infrastructure/query-api/indexers",
               "sidebar": "build"
             },
             {
               "id": "build/data-infrastructure/query-api/intro",
-              "path": "/build/data-infrastructure/query-api/intro",
+              "path": "/zh-CN/build/data-infrastructure/query-api/intro",
               "sidebar": "build"
             },
             {
               "id": "build/data-infrastructure/query-api/migrate-from-near-lake",
-              "path": "/build/data-infrastructure/query-api/migrate-from-near-lake",
+              "path": "/zh-CN/build/data-infrastructure/query-api/migrate-from-near-lake",
               "sidebar": "build"
             },
             {
               "id": "build/data-infrastructure/query-api/query-data",
-              "path": "/build/data-infrastructure/query-api/query-data",
+              "path": "/zh-CN/build/data-infrastructure/query-api/query-data",
               "sidebar": "build"
             },
             {
               "id": "build/data-infrastructure/what-is",
-              "path": "/build/data-infrastructure/what-is",
+              "path": "/zh-CN/build/data-infrastructure/what-is",
               "sidebar": "build"
             },
             {
               "id": "build/near-components/anatomy/bos-components",
-              "path": "/build/near-components/anatomy/bos-components",
+              "path": "/zh-CN/build/near-components/anatomy/bos-components",
               "sidebar": "build"
             },
             {
               "id": "build/near-components/anatomy/builtin-components",
-              "path": "/build/near-components/anatomy/builtin-components",
+              "path": "/zh-CN/build/near-components/anatomy/builtin-components",
               "sidebar": "build"
             },
             {
               "id": "build/near-components/anatomy/near",
-              "path": "/build/near-components/anatomy/near",
+              "path": "/zh-CN/build/near-components/anatomy/near",
               "sidebar": "build"
             },
             {
               "id": "build/near-components/anatomy/notifications",
-              "path": "/build/near-components/anatomy/notifications",
+              "path": "/zh-CN/build/near-components/anatomy/notifications",
               "sidebar": "build"
             },
             {
               "id": "build/near-components/anatomy/social",
-              "path": "/build/near-components/anatomy/social",
+              "path": "/zh-CN/build/near-components/anatomy/social",
               "sidebar": "build"
             },
             {
               "id": "build/near-components/anatomy/state",
-              "path": "/build/near-components/anatomy/state",
+              "path": "/zh-CN/build/near-components/anatomy/state",
               "sidebar": "build"
             },
             {
               "id": "build/near-components/anatomy/web-methods",
-              "path": "/build/near-components/anatomy/web-methods",
+              "path": "/zh-CN/build/near-components/anatomy/web-methods",
               "sidebar": "build"
             },
             {
               "id": "build/near-components/bos-gateway",
-              "path": "/build/near-components/bos-gateway",
+              "path": "/zh-CN/build/near-components/bos-gateway",
               "sidebar": "build"
             },
             {
               "id": "build/near-components/dev-environment",
-              "path": "/build/near-components/dev-environment",
+              "path": "/zh-CN/build/near-components/dev-environment",
               "sidebar": "build"
             },
             {
               "id": "build/near-components/what-is",
-              "path": "/build/near-components/what-is",
+              "path": "/zh-CN/build/near-components/what-is",
               "sidebar": "build"
             },
             {
               "id": "build/primitives/dao",
-              "path": "/build/primitives/dao",
+              "path": "/zh-CN/build/primitives/dao",
               "sidebar": "build"
             },
             {
               "id": "build/primitives/dao/bos/create-dao",
-              "path": "/build/primitives/dao/bos/create-dao"
+              "path": "/zh-CN/build/primitives/dao/bos/create-dao"
             },
             {
               "id": "build/primitives/dao/bos/create-proposal",
-              "path": "/build/primitives/dao/bos/create-proposal"
+              "path": "/zh-CN/build/primitives/dao/bos/create-proposal"
             },
             {
               "id": "build/primitives/dao/bos/get-dao-list",
-              "path": "/build/primitives/dao/bos/get-dao-list"
+              "path": "/zh-CN/build/primitives/dao/bos/get-dao-list"
             },
             {
               "id": "build/primitives/dao/bos/get-proposal-list",
-              "path": "/build/primitives/dao/bos/get-proposal-list"
+              "path": "/zh-CN/build/primitives/dao/bos/get-proposal-list"
             },
             {
               "id": "build/primitives/dao/bos/vote-for-proposal",
-              "path": "/build/primitives/dao/bos/vote-for-proposal"
+              "path": "/zh-CN/build/primitives/dao/bos/vote-for-proposal"
             },
             {
               "id": "build/primitives/dao/near-cli/create-dao",
-              "path": "/build/primitives/dao/near-cli/create-dao"
+              "path": "/zh-CN/build/primitives/dao/near-cli/create-dao"
             },
             {
               "id": "build/primitives/dao/near-cli/create-proposal",
-              "path": "/build/primitives/dao/near-cli/create-proposal"
+              "path": "/zh-CN/build/primitives/dao/near-cli/create-proposal"
             },
             {
               "id": "build/primitives/dao/near-cli/get-dao-list",
-              "path": "/build/primitives/dao/near-cli/get-dao-list"
+              "path": "/zh-CN/build/primitives/dao/near-cli/get-dao-list"
             },
             {
               "id": "build/primitives/dao/near-cli/get-proposal-list",
-              "path": "/build/primitives/dao/near-cli/get-proposal-list"
+              "path": "/zh-CN/build/primitives/dao/near-cli/get-proposal-list"
             },
             {
               "id": "build/primitives/dao/near-cli/vote-for-proposal",
-              "path": "/build/primitives/dao/near-cli/vote-for-proposal"
+              "path": "/zh-CN/build/primitives/dao/near-cli/vote-for-proposal"
             },
             {
               "id": "build/primitives/dao/smart-contract/create-dao",
-              "path": "/build/primitives/dao/smart-contract/create-dao"
+              "path": "/zh-CN/build/primitives/dao/smart-contract/create-dao"
             },
             {
               "id": "build/primitives/dao/smart-contract/create-proposal",
-              "path": "/build/primitives/dao/smart-contract/create-proposal"
+              "path": "/zh-CN/build/primitives/dao/smart-contract/create-proposal"
             },
             {
               "id": "build/primitives/dao/smart-contract/vote-for-proposal",
-              "path": "/build/primitives/dao/smart-contract/vote-for-proposal"
+              "path": "/zh-CN/build/primitives/dao/smart-contract/vote-for-proposal"
             },
             {
               "id": "build/primitives/dao/web-app/create-dao",
-              "path": "/build/primitives/dao/web-app/create-dao"
+              "path": "/zh-CN/build/primitives/dao/web-app/create-dao"
             },
             {
               "id": "build/primitives/dao/web-app/create-proposal",
-              "path": "/build/primitives/dao/web-app/create-proposal"
+              "path": "/zh-CN/build/primitives/dao/web-app/create-proposal"
             },
             {
               "id": "build/primitives/dao/web-app/get-dao-list",
-              "path": "/build/primitives/dao/web-app/get-dao-list"
+              "path": "/zh-CN/build/primitives/dao/web-app/get-dao-list"
             },
             {
               "id": "build/primitives/dao/web-app/get-proposal-list",
-              "path": "/build/primitives/dao/web-app/get-proposal-list"
+              "path": "/zh-CN/build/primitives/dao/web-app/get-proposal-list"
             },
             {
               "id": "build/primitives/dao/web-app/vote-for-proposal",
-              "path": "/build/primitives/dao/web-app/vote-for-proposal"
+              "path": "/zh-CN/build/primitives/dao/web-app/vote-for-proposal"
             },
             {
               "id": "build/primitives/dex",
-              "path": "/build/primitives/dex",
+              "path": "/zh-CN/build/primitives/dex",
               "sidebar": "build"
             },
             {
               "id": "build/primitives/dex/bos/get-deposit-balances",
-              "path": "/build/primitives/dex/bos/get-deposit-balances"
+              "path": "/zh-CN/build/primitives/dex/bos/get-deposit-balances"
             },
             {
               "id": "build/primitives/dex/bos/get-pools",
-              "path": "/build/primitives/dex/bos/get-pools"
+              "path": "/zh-CN/build/primitives/dex/bos/get-pools"
             },
             {
               "id": "build/primitives/dex/bos/get-price",
-              "path": "/build/primitives/dex/bos/get-price"
+              "path": "/zh-CN/build/primitives/dex/bos/get-price"
             },
             {
               "id": "build/primitives/dex/bos/swap",
-              "path": "/build/primitives/dex/bos/swap"
+              "path": "/zh-CN/build/primitives/dex/bos/swap"
             },
             {
               "id": "build/primitives/dex/near-cli/get-deposit-balances",
-              "path": "/build/primitives/dex/near-cli/get-deposit-balances"
+              "path": "/zh-CN/build/primitives/dex/near-cli/get-deposit-balances"
             },
             {
               "id": "build/primitives/dex/near-cli/get-pools",
-              "path": "/build/primitives/dex/near-cli/get-pools"
+              "path": "/zh-CN/build/primitives/dex/near-cli/get-pools"
             },
             {
               "id": "build/primitives/dex/near-cli/swap",
-              "path": "/build/primitives/dex/near-cli/swap"
+              "path": "/zh-CN/build/primitives/dex/near-cli/swap"
             },
             {
               "id": "build/primitives/dex/smart-contract/get-deposit-balances",
-              "path": "/build/primitives/dex/smart-contract/get-deposit-balances"
+              "path": "/zh-CN/build/primitives/dex/smart-contract/get-deposit-balances"
             },
             {
               "id": "build/primitives/dex/smart-contract/get-pools",
-              "path": "/build/primitives/dex/smart-contract/get-pools"
+              "path": "/zh-CN/build/primitives/dex/smart-contract/get-pools"
             },
             {
               "id": "build/primitives/dex/smart-contract/swap",
-              "path": "/build/primitives/dex/smart-contract/swap"
+              "path": "/zh-CN/build/primitives/dex/smart-contract/swap"
             },
             {
               "id": "build/primitives/dex/web-app/get-deposit-balances",
-              "path": "/build/primitives/dex/web-app/get-deposit-balances"
+              "path": "/zh-CN/build/primitives/dex/web-app/get-deposit-balances"
             },
             {
               "id": "build/primitives/dex/web-app/get-pools",
-              "path": "/build/primitives/dex/web-app/get-pools"
+              "path": "/zh-CN/build/primitives/dex/web-app/get-pools"
             },
             {
               "id": "build/primitives/dex/web-app/get-price",
-              "path": "/build/primitives/dex/web-app/get-price"
+              "path": "/zh-CN/build/primitives/dex/web-app/get-price"
             },
             {
               "id": "build/primitives/dex/web-app/swap",
-              "path": "/build/primitives/dex/web-app/swap"
+              "path": "/zh-CN/build/primitives/dex/web-app/swap"
             },
             {
               "id": "build/primitives/ft",
-              "path": "/build/primitives/ft",
+              "path": "/zh-CN/build/primitives/ft",
               "sidebar": "build"
             },
             {
               "id": "build/primitives/ft/bos/attach-to-call",
-              "path": "/build/primitives/ft/bos/attach-to-call"
+              "path": "/zh-CN/build/primitives/ft/bos/attach-to-call"
             },
             {
               "id": "build/primitives/ft/bos/check-balance",
-              "path": "/build/primitives/ft/bos/check-balance"
+              "path": "/zh-CN/build/primitives/ft/bos/check-balance"
             },
             {
               "id": "build/primitives/ft/bos/create",
-              "path": "/build/primitives/ft/bos/create"
+              "path": "/zh-CN/build/primitives/ft/bos/create"
             },
             {
               "id": "build/primitives/ft/bos/get-metadata",
-              "path": "/build/primitives/ft/bos/get-metadata"
+              "path": "/zh-CN/build/primitives/ft/bos/get-metadata"
             },
             {
               "id": "build/primitives/ft/bos/register",
-              "path": "/build/primitives/ft/bos/register"
+              "path": "/zh-CN/build/primitives/ft/bos/register"
             },
             {
               "id": "build/primitives/ft/bos/send",
-              "path": "/build/primitives/ft/bos/send"
+              "path": "/zh-CN/build/primitives/ft/bos/send"
             },
             {
               "id": "build/primitives/ft/near-cli/attach-to-call",
-              "path": "/build/primitives/ft/near-cli/attach-to-call"
+              "path": "/zh-CN/build/primitives/ft/near-cli/attach-to-call"
             },
             {
               "id": "build/primitives/ft/near-cli/check-balance",
-              "path": "/build/primitives/ft/near-cli/check-balance"
+              "path": "/zh-CN/build/primitives/ft/near-cli/check-balance"
             },
             {
               "id": "build/primitives/ft/near-cli/create",
-              "path": "/build/primitives/ft/near-cli/create"
+              "path": "/zh-CN/build/primitives/ft/near-cli/create"
             },
             {
               "id": "build/primitives/ft/near-cli/get-metadata",
-              "path": "/build/primitives/ft/near-cli/get-metadata"
+              "path": "/zh-CN/build/primitives/ft/near-cli/get-metadata"
             },
             {
               "id": "build/primitives/ft/near-cli/register",
-              "path": "/build/primitives/ft/near-cli/register"
+              "path": "/zh-CN/build/primitives/ft/near-cli/register"
             },
             {
               "id": "build/primitives/ft/near-cli/send",
-              "path": "/build/primitives/ft/near-cli/send"
+              "path": "/zh-CN/build/primitives/ft/near-cli/send"
             },
             {
               "id": "build/primitives/ft/smart-contract/attach-to-call",
-              "path": "/build/primitives/ft/smart-contract/attach-to-call"
+              "path": "/zh-CN/build/primitives/ft/smart-contract/attach-to-call"
             },
             {
               "id": "build/primitives/ft/smart-contract/send",
-              "path": "/build/primitives/ft/smart-contract/send"
+              "path": "/zh-CN/build/primitives/ft/smart-contract/send"
             },
             {
               "id": "build/primitives/ft/web-app/attach-to-call",
-              "path": "/build/primitives/ft/web-app/attach-to-call"
+              "path": "/zh-CN/build/primitives/ft/web-app/attach-to-call"
             },
             {
               "id": "build/primitives/ft/web-app/check-balance",
-              "path": "/build/primitives/ft/web-app/check-balance"
+              "path": "/zh-CN/build/primitives/ft/web-app/check-balance"
             },
             {
               "id": "build/primitives/ft/web-app/create",
-              "path": "/build/primitives/ft/web-app/create"
+              "path": "/zh-CN/build/primitives/ft/web-app/create"
             },
             {
               "id": "build/primitives/ft/web-app/get-metadata",
-              "path": "/build/primitives/ft/web-app/get-metadata"
+              "path": "/zh-CN/build/primitives/ft/web-app/get-metadata"
             },
             {
               "id": "build/primitives/ft/web-app/register",
-              "path": "/build/primitives/ft/web-app/register"
+              "path": "/zh-CN/build/primitives/ft/web-app/register"
             },
             {
               "id": "build/primitives/ft/web-app/send",
-              "path": "/build/primitives/ft/web-app/send"
+              "path": "/zh-CN/build/primitives/ft/web-app/send"
             },
             {
               "id": "build/primitives/linkdrop",
-              "path": "/build/primitives/linkdrop",
+              "path": "/zh-CN/build/primitives/linkdrop",
               "sidebar": "build"
             },
             {
               "id": "build/primitives/nft",
-              "path": "/build/primitives/nft",
+              "path": "/zh-CN/build/primitives/nft",
               "sidebar": "build"
             },
             {
               "id": "build/primitives/nft/bos/buy",
-              "path": "/build/primitives/nft/bos/buy"
+              "path": "/zh-CN/build/primitives/nft/bos/buy"
             },
             {
               "id": "build/primitives/nft/bos/list-for-sale",
-              "path": "/build/primitives/nft/bos/list-for-sale"
+              "path": "/zh-CN/build/primitives/nft/bos/list-for-sale"
             },
             {
               "id": "build/primitives/nft/bos/mint",
-              "path": "/build/primitives/nft/bos/mint"
+              "path": "/zh-CN/build/primitives/nft/bos/mint"
             },
             {
               "id": "build/primitives/nft/bos/query",
-              "path": "/build/primitives/nft/bos/query"
+              "path": "/zh-CN/build/primitives/nft/bos/query"
             },
             {
               "id": "build/primitives/nft/bos/transfer",
-              "path": "/build/primitives/nft/bos/transfer"
+              "path": "/zh-CN/build/primitives/nft/bos/transfer"
             },
             {
               "id": "build/primitives/nft/near-cli/buy",
-              "path": "/build/primitives/nft/near-cli/buy"
+              "path": "/zh-CN/build/primitives/nft/near-cli/buy"
             },
             {
               "id": "build/primitives/nft/near-cli/list-for-sale",
-              "path": "/build/primitives/nft/near-cli/list-for-sale"
+              "path": "/zh-CN/build/primitives/nft/near-cli/list-for-sale"
             },
             {
               "id": "build/primitives/nft/near-cli/mint",
-              "path": "/build/primitives/nft/near-cli/mint"
+              "path": "/zh-CN/build/primitives/nft/near-cli/mint"
             },
             {
               "id": "build/primitives/nft/near-cli/query",
-              "path": "/build/primitives/nft/near-cli/query"
+              "path": "/zh-CN/build/primitives/nft/near-cli/query"
             },
             {
               "id": "build/primitives/nft/near-cli/transfer",
-              "path": "/build/primitives/nft/near-cli/transfer"
+              "path": "/zh-CN/build/primitives/nft/near-cli/transfer"
             },
             {
               "id": "build/primitives/nft/smart-contract/buy",
-              "path": "/build/primitives/nft/smart-contract/buy"
+              "path": "/zh-CN/build/primitives/nft/smart-contract/buy"
             },
             {
               "id": "build/primitives/nft/smart-contract/mint",
-              "path": "/build/primitives/nft/smart-contract/mint"
+              "path": "/zh-CN/build/primitives/nft/smart-contract/mint"
             },
             {
               "id": "build/primitives/nft/smart-contract/query",
-              "path": "/build/primitives/nft/smart-contract/query"
+              "path": "/zh-CN/build/primitives/nft/smart-contract/query"
             },
             {
               "id": "build/primitives/nft/smart-contract/transfer",
-              "path": "/build/primitives/nft/smart-contract/transfer"
+              "path": "/zh-CN/build/primitives/nft/smart-contract/transfer"
             },
             {
               "id": "build/primitives/nft/web-app/buy",
-              "path": "/build/primitives/nft/web-app/buy"
+              "path": "/zh-CN/build/primitives/nft/web-app/buy"
             },
             {
               "id": "build/primitives/nft/web-app/list-for-sale",
-              "path": "/build/primitives/nft/web-app/list-for-sale"
+              "path": "/zh-CN/build/primitives/nft/web-app/list-for-sale"
             },
             {
               "id": "build/primitives/nft/web-app/mint",
-              "path": "/build/primitives/nft/web-app/mint"
+              "path": "/zh-CN/build/primitives/nft/web-app/mint"
             },
             {
               "id": "build/primitives/nft/web-app/query",
-              "path": "/build/primitives/nft/web-app/query"
+              "path": "/zh-CN/build/primitives/nft/web-app/query"
             },
             {
               "id": "build/primitives/nft/web-app/transfer",
-              "path": "/build/primitives/nft/web-app/transfer"
+              "path": "/zh-CN/build/primitives/nft/web-app/transfer"
             },
             {
               "id": "build/primitives/oracles",
-              "path": "/build/primitives/oracles",
+              "path": "/zh-CN/build/primitives/oracles",
               "sidebar": "build"
             },
             {
               "id": "build/primitives/what-is",
-              "path": "/build/primitives/what-is",
+              "path": "/zh-CN/build/primitives/what-is",
               "sidebar": "build"
             },
             {
               "id": "build/smart-contracts/anatomy/actions",
-              "path": "/build/smart-contracts/anatomy/actions",
+              "path": "/zh-CN/build/smart-contracts/anatomy/actions",
               "sidebar": "build"
             },
             {
               "id": "build/smart-contracts/anatomy/anatomy",
-              "path": "/build/smart-contracts/anatomy/",
+              "path": "/zh-CN/build/smart-contracts/anatomy/",
               "sidebar": "build"
             },
             {
               "id": "build/smart-contracts/anatomy/best-practices",
-              "path": "/build/smart-contracts/anatomy/best-practices",
+              "path": "/zh-CN/build/smart-contracts/anatomy/best-practices",
               "sidebar": "build"
             },
             {
               "id": "build/smart-contracts/anatomy/collections",
-              "path": "/build/smart-contracts/anatomy/collections",
+              "path": "/zh-CN/build/smart-contracts/anatomy/collections",
               "sidebar": "build"
             },
             {
               "id": "build/smart-contracts/anatomy/crosscontract",
-              "path": "/build/smart-contracts/anatomy/crosscontract",
+              "path": "/zh-CN/build/smart-contracts/anatomy/crosscontract",
               "sidebar": "build"
             },
             {
               "id": "build/smart-contracts/anatomy/environment",
-              "path": "/build/smart-contracts/anatomy/environment",
+              "path": "/zh-CN/build/smart-contracts/anatomy/environment",
               "sidebar": "build"
             },
             {
               "id": "build/smart-contracts/anatomy/functions",
-              "path": "/build/smart-contracts/anatomy/functions",
+              "path": "/zh-CN/build/smart-contracts/anatomy/functions",
               "sidebar": "build"
             },
             {
               "id": "build/smart-contracts/anatomy/reduce-size",
-              "path": "/build/smart-contracts/anatomy/reduce-size",
+              "path": "/zh-CN/build/smart-contracts/anatomy/reduce-size",
               "sidebar": "build"
             },
             {
               "id": "build/smart-contracts/anatomy/reproducible-builds",
-              "path": "/build/smart-contracts/anatomy/reproducible-builds",
+              "path": "/zh-CN/build/smart-contracts/anatomy/reproducible-builds",
               "sidebar": "build"
             },
             {
               "id": "build/smart-contracts/anatomy/serialization",
-              "path": "/build/smart-contracts/anatomy/serialization",
+              "path": "/zh-CN/build/smart-contracts/anatomy/serialization",
               "sidebar": "build"
             },
             {
               "id": "build/smart-contracts/anatomy/serialization-protocols",
-              "path": "/build/smart-contracts/anatomy/serialization-protocols",
+              "path": "/zh-CN/build/smart-contracts/anatomy/serialization-protocols",
               "sidebar": "build"
             },
             {
               "id": "build/smart-contracts/anatomy/storage",
-              "path": "/build/smart-contracts/anatomy/storage",
+              "path": "/zh-CN/build/smart-contracts/anatomy/storage",
               "sidebar": "build"
             },
             {
               "id": "build/smart-contracts/anatomy/types",
-              "path": "/build/smart-contracts/anatomy/types",
+              "path": "/zh-CN/build/smart-contracts/anatomy/types",
               "sidebar": "build"
             },
             {
               "id": "build/smart-contracts/quickstart",
-              "path": "/build/smart-contracts/quickstart",
+              "path": "/zh-CN/build/smart-contracts/quickstart",
               "sidebar": "build"
             },
             {
               "id": "build/smart-contracts/release/deploy",
-              "path": "/build/smart-contracts/release/deploy",
+              "path": "/zh-CN/build/smart-contracts/release/deploy",
               "sidebar": "build"
             },
             {
               "id": "build/smart-contracts/release/lock",
-              "path": "/build/smart-contracts/release/lock",
+              "path": "/zh-CN/build/smart-contracts/release/lock",
               "sidebar": "build"
             },
             {
               "id": "build/smart-contracts/release/upgrade",
-              "path": "/build/smart-contracts/release/upgrade",
+              "path": "/zh-CN/build/smart-contracts/release/upgrade",
               "sidebar": "build"
             },
             {
               "id": "build/smart-contracts/security/bounty",
-              "path": "/build/smart-contracts/security/bounty",
+              "path": "/zh-CN/build/smart-contracts/security/bounty",
               "sidebar": "build"
             },
             {
               "id": "build/smart-contracts/security/callbacks",
-              "path": "/build/smart-contracts/security/callbacks",
+              "path": "/zh-CN/build/smart-contracts/security/callbacks",
               "sidebar": "build"
             },
             {
               "id": "build/smart-contracts/security/checklist",
-              "path": "/build/smart-contracts/security/checklist",
+              "path": "/zh-CN/build/smart-contracts/security/checklist",
               "sidebar": "build"
             },
             {
               "id": "build/smart-contracts/security/frontrunning",
-              "path": "/build/smart-contracts/security/frontrunning",
+              "path": "/zh-CN/build/smart-contracts/security/frontrunning",
               "sidebar": "build"
             },
             {
               "id": "build/smart-contracts/security/one-yocto",
-              "path": "/build/smart-contracts/security/one-yocto",
+              "path": "/zh-CN/build/smart-contracts/security/one-yocto",
               "sidebar": "build"
             },
             {
               "id": "build/smart-contracts/security/random",
-              "path": "/build/smart-contracts/security/random",
+              "path": "/zh-CN/build/smart-contracts/security/random",
               "sidebar": "build"
             },
             {
               "id": "build/smart-contracts/security/reentrancy",
-              "path": "/build/smart-contracts/security/reentrancy",
+              "path": "/zh-CN/build/smart-contracts/security/reentrancy",
               "sidebar": "build"
             },
             {
               "id": "build/smart-contracts/security/storage",
-              "path": "/build/smart-contracts/security/storage",
+              "path": "/zh-CN/build/smart-contracts/security/storage",
               "sidebar": "build"
             },
             {
               "id": "build/smart-contracts/security/sybil",
-              "path": "/build/smart-contracts/security/sybil",
+              "path": "/zh-CN/build/smart-contracts/security/sybil",
               "sidebar": "build"
             },
             {
               "id": "build/smart-contracts/security/welcome",
-              "path": "/build/smart-contracts/security/welcome",
+              "path": "/zh-CN/build/smart-contracts/security/welcome",
               "sidebar": "build"
             },
             {
               "id": "build/smart-contracts/testing/integration-test",
-              "path": "/build/smart-contracts/testing/integration-test",
+              "path": "/zh-CN/build/smart-contracts/testing/integration-test",
               "sidebar": "build"
             },
             {
               "id": "build/smart-contracts/testing/introduction",
-              "path": "/build/smart-contracts/testing/introduction",
+              "path": "/zh-CN/build/smart-contracts/testing/introduction",
               "sidebar": "build"
             },
             {
               "id": "build/smart-contracts/testing/kurtosis-localnet",
-              "path": "/build/smart-contracts/testing/kurtosis-localnet",
+              "path": "/zh-CN/build/smart-contracts/testing/kurtosis-localnet",
               "sidebar": "build"
             },
             {
               "id": "build/smart-contracts/testing/unit-test",
-              "path": "/build/smart-contracts/testing/unit-test",
+              "path": "/zh-CN/build/smart-contracts/testing/unit-test",
               "sidebar": "build"
             },
             {
               "id": "build/smart-contracts/what-is",
-              "path": "/build/smart-contracts/what-is",
+              "path": "/zh-CN/build/smart-contracts/what-is",
               "sidebar": "build"
             },
             {
               "id": "build/web3-apps/backend/backend-login",
-              "path": "/build/web3-apps/backend/",
+              "path": "/zh-CN/build/web3-apps/backend/",
               "sidebar": "build"
             },
             {
               "id": "build/web3-apps/frontend",
-              "path": "/build/web3-apps/frontend",
+              "path": "/zh-CN/build/web3-apps/frontend",
               "sidebar": "build"
             },
             {
               "id": "build/web3-apps/integrate-components",
-              "path": "/build/web3-apps/integrate-components",
+              "path": "/zh-CN/build/web3-apps/integrate-components",
               "sidebar": "build"
             },
             {
               "id": "build/web3-apps/integrate-contracts",
-              "path": "/build/web3-apps/integrate-contracts",
+              "path": "/zh-CN/build/web3-apps/integrate-contracts",
               "sidebar": "build"
             },
             {
               "id": "build/web3-apps/quickstart",
-              "path": "/build/web3-apps/quickstart",
+              "path": "/zh-CN/build/web3-apps/quickstart",
               "sidebar": "build"
             },
             {
               "id": "build/web3-apps/what-is",
-              "path": "/build/web3-apps/what-is",
+              "path": "/zh-CN/build/web3-apps/what-is",
               "sidebar": "build"
             },
             {
               "id": "build/welcome",
-              "path": "/build/welcome",
+              "path": "/zh-CN/build/welcome",
               "sidebar": "build"
             },
             {
               "id": "concepts/abstraction/chain-signatures",
-              "path": "/concepts/abstraction/chain-signatures",
+              "path": "/zh-CN/concepts/abstraction/chain-signatures",
               "sidebar": "concepts"
             },
             {
               "id": "concepts/abstraction/introduction",
-              "path": "/concepts/abstraction/introduction",
+              "path": "/zh-CN/concepts/abstraction/introduction",
               "sidebar": "concepts"
             },
             {
               "id": "concepts/abstraction/meta-transactions",
-              "path": "/concepts/abstraction/meta-transactions",
+              "path": "/zh-CN/concepts/abstraction/meta-transactions",
               "sidebar": "concepts"
             },
             {
               "id": "concepts/abstraction/relayers",
-              "path": "/concepts/abstraction/relayers",
+              "path": "/zh-CN/concepts/abstraction/relayers",
               "sidebar": "concepts"
             },
             {
               "id": "concepts/abstraction/signatures/use-cases",
-              "path": "/concepts/abstraction/signatures/use-cases",
+              "path": "/zh-CN/concepts/abstraction/signatures/use-cases",
               "sidebar": "concepts"
             },
             {
               "id": "concepts/advanced/indexers",
-              "path": "/concepts/advanced/indexers",
+              "path": "/zh-CN/concepts/advanced/indexers",
               "sidebar": "concepts"
             },
             {
               "id": "concepts/advanced/near-indexer-framework",
-              "path": "/concepts/advanced/near-indexer-framework",
+              "path": "/zh-CN/concepts/advanced/near-indexer-framework",
               "sidebar": "concepts"
             },
             {
               "id": "concepts/advanced/near-lake-framework",
-              "path": "/concepts/advanced/near-lake-framework",
+              "path": "/zh-CN/concepts/advanced/near-lake-framework",
               "sidebar": "concepts"
             },
             {
               "id": "concepts/advanced/specification",
-              "path": "/concepts/advanced/specification",
+              "path": "/zh-CN/concepts/advanced/specification",
               "sidebar": "concepts"
             },
             {
               "id": "concepts/basics/epoch",
-              "path": "/concepts/basics/epoch",
+              "path": "/zh-CN/concepts/basics/epoch",
               "sidebar": "concepts"
             },
             {
               "id": "concepts/basics/networks",
-              "path": "/concepts/basics/networks",
+              "path": "/zh-CN/concepts/basics/networks",
               "sidebar": "concepts"
             },
             {
               "id": "concepts/basics/protocol",
-              "path": "/concepts/basics/protocol",
+              "path": "/zh-CN/concepts/basics/protocol",
               "sidebar": "concepts"
             },
             {
               "id": "concepts/basics/runtime",
-              "path": "/concepts/basics/runtime",
+              "path": "/zh-CN/concepts/basics/runtime",
               "sidebar": "concepts"
             },
             {
               "id": "concepts/basics/token-loss",
-              "path": "/concepts/basics/token-loss",
+              "path": "/zh-CN/concepts/basics/token-loss",
               "sidebar": "concepts"
             },
             {
               "id": "concepts/basics/tokens",
-              "path": "/concepts/basics/tokens",
+              "path": "/zh-CN/concepts/basics/tokens",
               "sidebar": "concepts"
             },
             {
               "id": "concepts/basics/validators",
-              "path": "/concepts/basics/validators",
+              "path": "/zh-CN/concepts/basics/validators",
               "sidebar": "concepts"
             },
             {
               "id": "concepts/data-flow/data-storage",
-              "path": "/concepts/data-flow/data-storage",
+              "path": "/zh-CN/concepts/data-flow/data-storage",
               "sidebar": "concepts"
             },
             {
               "id": "concepts/data-flow/near-data-flow",
-              "path": "/concepts/data-flow/near-data-flow",
+              "path": "/zh-CN/concepts/data-flow/near-data-flow",
               "sidebar": "concepts"
             },
             {
               "id": "concepts/data-flow/token-transfer-flow",
-              "path": "/concepts/data-flow/token-transfer-flow",
+              "path": "/zh-CN/concepts/data-flow/token-transfer-flow",
               "sidebar": "concepts"
             },
             {
               "id": "concepts/protocol/access-keys",
-              "path": "/concepts/protocol/access-keys",
+              "path": "/zh-CN/concepts/protocol/access-keys",
               "sidebar": "concepts"
             },
             {
               "id": "concepts/protocol/account-id",
-              "path": "/concepts/protocol/account-id",
+              "path": "/zh-CN/concepts/protocol/account-id",
               "sidebar": "concepts"
             },
             {
               "id": "concepts/protocol/account-model",
-              "path": "/concepts/protocol/account-model",
+              "path": "/zh-CN/concepts/protocol/account-model",
               "sidebar": "concepts"
             },
             {
               "id": "concepts/protocol/gas",
-              "path": "/concepts/protocol/gas",
+              "path": "/zh-CN/concepts/protocol/gas",
               "sidebar": "concepts"
             },
             {
               "id": "concepts/protocol/smartcontract",
-              "path": "/concepts/protocol/smartcontract",
+              "path": "/zh-CN/concepts/protocol/smartcontract",
               "sidebar": "concepts"
             },
             {
               "id": "concepts/protocol/transaction-anatomy",
-              "path": "/concepts/protocol/transaction-anatomy",
+              "path": "/zh-CN/concepts/protocol/transaction-anatomy",
               "sidebar": "concepts"
             },
             {
               "id": "concepts/protocol/transaction-execution",
-              "path": "/concepts/protocol/transaction-execution",
+              "path": "/zh-CN/concepts/protocol/transaction-execution",
               "sidebar": "concepts"
             },
             {
               "id": "concepts/protocol/transactions",
-              "path": "/concepts/protocol/transactions",
+              "path": "/zh-CN/concepts/protocol/transactions",
               "sidebar": "concepts"
             },
             {
               "id": "concepts/storage/storage-solutions",
-              "path": "/concepts/storage/storage-solutions",
+              "path": "/zh-CN/concepts/storage/storage-solutions",
               "sidebar": "concepts"
             },
             {
               "id": "concepts/storage/storage-staking",
-              "path": "/concepts/storage/storage-staking",
+              "path": "/zh-CN/concepts/storage/storage-staking",
               "sidebar": "concepts"
             },
             {
               "id": "concepts/web3/basics",
-              "path": "/concepts/web3/basics",
+              "path": "/zh-CN/concepts/web3/basics",
               "sidebar": "concepts"
             },
             {
               "id": "concepts/web3/economics",
-              "path": "/concepts/web3/economics",
+              "path": "/zh-CN/concepts/web3/economics",
               "sidebar": "concepts"
             },
             {
               "id": "concepts/web3/intro",
-              "path": "/concepts/web3/intro",
+              "path": "/zh-CN/concepts/web3/intro",
               "sidebar": "concepts"
             },
             {
               "id": "concepts/web3/near",
-              "path": "/concepts/web3/near",
+              "path": "/zh-CN/concepts/web3/near",
               "sidebar": "concepts"
             },
             {
               "id": "concepts/web3/nfts",
-              "path": "/concepts/web3/nfts",
+              "path": "/zh-CN/concepts/web3/nfts",
               "sidebar": "concepts"
             },
             {
               "id": "concepts/welcome",
-              "path": "/concepts/welcome",
+              "path": "/zh-CN/concepts/welcome",
               "sidebar": "concepts"
             },
             {
               "id": "help",
-              "path": "/help"
+              "path": "/zh-CN/help"
             },
             {
               "id": "integrations/accounts",
-              "path": "/integrations/accounts",
+              "path": "/zh-CN/integrations/accounts",
               "sidebar": "exchanges"
             },
             {
               "id": "integrations/balance-changes",
-              "path": "/integrations/balance-changes",
+              "path": "/zh-CN/integrations/balance-changes",
               "sidebar": "exchanges"
             },
             {
               "id": "integrations/create-transactions",
-              "path": "/integrations/create-transactions",
+              "path": "/zh-CN/integrations/create-transactions",
               "sidebar": "exchanges"
             },
             {
               "id": "integrations/errors/error-implementation",
-              "path": "/integrations/errors/error-implementation",
+              "path": "/zh-CN/integrations/errors/error-implementation",
               "sidebar": "exchanges"
             },
             {
               "id": "integrations/errors/introduction",
-              "path": "/integrations/errors/introduction",
+              "path": "/zh-CN/integrations/errors/introduction",
               "sidebar": "exchanges"
             },
             {
               "id": "integrations/errors/token-loss",
-              "path": "/integrations/errors/token-loss",
+              "path": "/zh-CN/integrations/errors/token-loss",
               "sidebar": "exchanges"
             },
             {
               "id": "integrations/exchange-integration",
-              "path": "/integrations/exchange-integration",
+              "path": "/zh-CN/integrations/exchange-integration",
               "sidebar": "exchanges"
             },
             {
               "id": "integrations/faq",
-              "path": "/integrations/faq",
+              "path": "/zh-CN/integrations/faq",
               "sidebar": "exchanges"
             },
             {
               "id": "integrations/fungible-tokens",
-              "path": "/integrations/fungible-tokens",
+              "path": "/zh-CN/integrations/fungible-tokens",
               "sidebar": "exchanges"
             },
             {
               "id": "integrations/implicit-accounts",
-              "path": "/integrations/implicit-accounts",
+              "path": "/zh-CN/integrations/implicit-accounts",
               "sidebar": "exchanges"
             },
             {
               "id": "pagoda/alerts/intro",
-              "path": "/pagoda/alerts/intro",
+              "path": "/zh-CN/pagoda/alerts/intro",
               "sidebar": "pagoda"
             },
             {
               "id": "pagoda/alerts/setup",
-              "path": "/pagoda/alerts/setup",
+              "path": "/zh-CN/pagoda/alerts/setup",
               "sidebar": "pagoda"
             },
             {
               "id": "pagoda/alerts/webhooks",
-              "path": "/pagoda/alerts/webhooks",
+              "path": "/zh-CN/pagoda/alerts/webhooks",
               "sidebar": "pagoda"
             },
             {
               "id": "pagoda/rpc/api",
-              "path": "/pagoda/rpc/api",
+              "path": "/zh-CN/pagoda/rpc/api",
               "sidebar": "pagoda"
             },
             {
               "id": "pagoda/rpc/get-keys",
-              "path": "/pagoda/rpc/get-keys",
+              "path": "/zh-CN/pagoda/rpc/get-keys",
               "sidebar": "pagoda"
             },
             {
               "id": "pagoda/rpc/intro",
-              "path": "/pagoda/rpc/intro",
+              "path": "/zh-CN/pagoda/rpc/intro",
               "sidebar": "pagoda"
             },
             {
               "id": "pagoda/rpc/setup",
-              "path": "/pagoda/rpc/setup",
+              "path": "/zh-CN/pagoda/rpc/setup",
               "sidebar": "pagoda"
             },
             {
               "id": "pagoda/rpc/stats",
-              "path": "/pagoda/rpc/stats",
+              "path": "/zh-CN/pagoda/rpc/stats",
               "sidebar": "pagoda"
             },
             {
               "id": "tools/explorer",
-              "path": "/tools/explorer",
+              "path": "/zh-CN/tools/explorer",
               "sidebar": "tools"
             },
             {
               "id": "tools/fastnear-api",
-              "path": "/tools/fastnear-api",
+              "path": "/zh-CN/tools/fastnear-api",
               "sidebar": "tools"
             },
             {
               "id": "tools/indexing",
-              "path": "/tools/indexing",
+              "path": "/zh-CN/tools/indexing",
               "sidebar": "tools"
             },
             {
               "id": "tools/near-api-js/account",
-              "path": "/tools/near-api-js/account",
+              "path": "/zh-CN/tools/near-api-js/account",
               "sidebar": "tools"
             },
             {
               "id": "tools/near-api-js/contract",
-              "path": "/tools/near-api-js/contract",
+              "path": "/zh-CN/tools/near-api-js/contract",
               "sidebar": "tools"
             },
             {
               "id": "tools/near-api-js/cookbook",
-              "path": "/tools/near-api-js/cookbook"
+              "path": "/zh-CN/tools/near-api-js/cookbook"
             },
             {
               "id": "tools/near-api-js/faq",
-              "path": "/tools/near-api-js/faq",
+              "path": "/zh-CN/tools/near-api-js/faq",
               "sidebar": "tools"
             },
             {
               "id": "tools/near-api-js/quick-reference",
-              "path": "/tools/near-api-js/quick-reference",
+              "path": "/zh-CN/tools/near-api-js/quick-reference",
               "sidebar": "tools"
             },
             {
               "id": "tools/near-api-js/utils",
-              "path": "/tools/near-api-js/utils",
+              "path": "/zh-CN/tools/near-api-js/utils",
               "sidebar": "tools"
             },
             {
               "id": "tools/near-api-js/wallet",
-              "path": "/tools/near-api-js/wallet",
+              "path": "/zh-CN/tools/near-api-js/wallet",
               "sidebar": "tools"
             },
             {
               "id": "tools/near-cli",
-              "path": "/tools/near-cli",
+              "path": "/zh-CN/tools/near-cli",
               "sidebar": "tools"
             },
             {
               "id": "tools/near-cli-rs",
-              "path": "/tools/near-cli-rs",
+              "path": "/zh-CN/tools/near-cli-rs",
               "sidebar": "tools"
             },
             {
               "id": "tools/sdk",
-              "path": "/tools/sdk",
+              "path": "/zh-CN/tools/sdk",
               "sidebar": "tools"
             },
             {
               "id": "tools/wallet-selector",
-              "path": "/tools/wallet-selector",
+              "path": "/zh-CN/tools/wallet-selector",
               "sidebar": "tools"
             },
             {
               "id": "tools/wallets",
-              "path": "/tools/wallets",
+              "path": "/zh-CN/tools/wallets",
               "sidebar": "tools"
             },
             {
               "id": "tools/welcome",
-              "path": "/tools/welcome",
+              "path": "/zh-CN/tools/welcome",
               "sidebar": "tools"
             },
             {
               "id": "tutorials/crosswords/basics/add-functions-call",
-              "path": "/tutorials/crosswords/basics/add-functions-call",
+              "path": "/zh-CN/tutorials/crosswords/basics/add-functions-call",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/crosswords/basics/hashing-and-unit-tests",
-              "path": "/tutorials/crosswords/basics/hashing-and-unit-tests",
+              "path": "/zh-CN/tutorials/crosswords/basics/hashing-and-unit-tests",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/crosswords/basics/overview",
-              "path": "/tutorials/crosswords/basics/overview",
+              "path": "/zh-CN/tutorials/crosswords/basics/overview",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/crosswords/basics/set-up-skeleton",
-              "path": "/tutorials/crosswords/basics/set-up-skeleton",
+              "path": "/zh-CN/tutorials/crosswords/basics/set-up-skeleton",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/crosswords/basics/simple-frontend",
-              "path": "/tutorials/crosswords/basics/simple-frontend",
+              "path": "/zh-CN/tutorials/crosswords/basics/simple-frontend",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/crosswords/beginner/actions",
-              "path": "/tutorials/crosswords/beginner/actions",
+              "path": "/zh-CN/tutorials/crosswords/beginner/actions",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/crosswords/beginner/adding-a-puzzle",
-              "path": "/tutorials/crosswords/beginner/adding-a-puzzle",
+              "path": "/zh-CN/tutorials/crosswords/beginner/adding-a-puzzle",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/crosswords/beginner/collections",
-              "path": "/tutorials/crosswords/beginner/collections",
+              "path": "/zh-CN/tutorials/crosswords/beginner/collections",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/crosswords/beginner/logging-in",
-              "path": "/tutorials/crosswords/beginner/logging-in",
+              "path": "/zh-CN/tutorials/crosswords/beginner/logging-in",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/crosswords/beginner/logging-in-implementation",
-              "path": "/tutorials/crosswords/beginner/logging-in-implementation",
+              "path": "/zh-CN/tutorials/crosswords/beginner/logging-in-implementation",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/crosswords/beginner/overview",
-              "path": "/tutorials/crosswords/beginner/overview",
+              "path": "/zh-CN/tutorials/crosswords/beginner/overview",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/crosswords/beginner/structs-enums",
-              "path": "/tutorials/crosswords/beginner/structs-enums",
+              "path": "/zh-CN/tutorials/crosswords/beginner/structs-enums",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/crosswords/intermediate/access-key-solution",
-              "path": "/tutorials/crosswords/intermediate/access-key-solution",
+              "path": "/zh-CN/tutorials/crosswords/intermediate/access-key-solution",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/crosswords/intermediate/base64vecu8",
-              "path": "/tutorials/crosswords/intermediate/base64vecu8",
+              "path": "/zh-CN/tutorials/crosswords/intermediate/base64vecu8",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/crosswords/intermediate/cross-contract-calls",
-              "path": "/tutorials/crosswords/intermediate/cross-contract-calls",
+              "path": "/zh-CN/tutorials/crosswords/intermediate/cross-contract-calls",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/crosswords/intermediate/linkdrop",
-              "path": "/tutorials/crosswords/intermediate/linkdrop",
+              "path": "/zh-CN/tutorials/crosswords/intermediate/linkdrop",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/crosswords/intermediate/overview",
-              "path": "/tutorials/crosswords/intermediate/overview",
+              "path": "/zh-CN/tutorials/crosswords/intermediate/overview",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/crosswords/intermediate/use-seed-phrase",
-              "path": "/tutorials/crosswords/intermediate/use-seed-phrase",
+              "path": "/zh-CN/tutorials/crosswords/intermediate/use-seed-phrase",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/examples/advanced-xcc",
-              "path": "/tutorials/examples/advanced-xcc",
+              "path": "/zh-CN/tutorials/examples/advanced-xcc",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/examples/coin-flip",
-              "path": "/tutorials/examples/coin-flip",
+              "path": "/zh-CN/tutorials/examples/coin-flip",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/examples/count-near",
-              "path": "/tutorials/examples/count-near",
+              "path": "/zh-CN/tutorials/examples/count-near",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/examples/donation",
-              "path": "/tutorials/examples/donation",
+              "path": "/zh-CN/tutorials/examples/donation",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/examples/factory",
-              "path": "/tutorials/examples/factory",
+              "path": "/zh-CN/tutorials/examples/factory",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/examples/frontend-multiple-contracts",
-              "path": "/tutorials/examples/frontend-multiple-contracts",
+              "path": "/zh-CN/tutorials/examples/frontend-multiple-contracts",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/examples/guest-book",
-              "path": "/tutorials/examples/guest-book",
+              "path": "/zh-CN/tutorials/examples/guest-book",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/examples/update-contract-migrate-state",
-              "path": "/tutorials/examples/update-contract-migrate-state",
+              "path": "/zh-CN/tutorials/examples/update-contract-migrate-state",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/examples/xcc",
-              "path": "/tutorials/examples/xcc",
+              "path": "/zh-CN/tutorials/examples/xcc",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/fts/circulating-supply",
-              "path": "/tutorials/fts/circulating-supply",
+              "path": "/zh-CN/tutorials/fts/circulating-supply",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/fts/defining-a-token",
-              "path": "/tutorials/fts/defining-a-token",
+              "path": "/zh-CN/tutorials/fts/defining-a-token",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/fts/introduction",
-              "path": "/tutorials/fts/introduction",
+              "path": "/zh-CN/tutorials/fts/introduction",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/fts/marketplace",
-              "path": "/tutorials/fts/marketplace",
+              "path": "/zh-CN/tutorials/fts/marketplace",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/fts/predeployed-contract",
-              "path": "/tutorials/fts/predeployed-contract",
+              "path": "/zh-CN/tutorials/fts/predeployed-contract",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/fts/registering-accounts",
-              "path": "/tutorials/fts/registering-accounts",
+              "path": "/zh-CN/tutorials/fts/registering-accounts",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/fts/skeleton",
-              "path": "/tutorials/fts/skeleton",
+              "path": "/zh-CN/tutorials/fts/skeleton",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/fts/transfers",
-              "path": "/tutorials/fts/transfers",
+              "path": "/zh-CN/tutorials/fts/transfers",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/near-components/blog-posts",
-              "path": "/tutorials/near-components/blog-posts",
+              "path": "/zh-CN/tutorials/near-components/blog-posts",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/near-components/bos-loader",
-              "path": "/tutorials/near-components/bos-loader",
+              "path": "/zh-CN/tutorials/near-components/bos-loader",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/near-components/ds-components",
-              "path": "/tutorials/near-components/ds-components",
+              "path": "/zh-CN/tutorials/near-components/ds-components",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/near-components/ethers-js",
-              "path": "/tutorials/near-components/ethers-js",
+              "path": "/zh-CN/tutorials/near-components/ethers-js",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/near-components/ethers-js-best-practices",
-              "path": "/tutorials/near-components/ethers-js-best-practices",
+              "path": "/zh-CN/tutorials/near-components/ethers-js-best-practices",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/near-components/indexer-tutorials/feed-indexer",
-              "path": "/tutorials/near-components/indexer-tutorials/feed-indexer",
+              "path": "/zh-CN/tutorials/near-components/indexer-tutorials/feed-indexer",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/near-components/indexer-tutorials/hype-indexer",
-              "path": "/tutorials/near-components/indexer-tutorials/hype-indexer",
+              "path": "/zh-CN/tutorials/near-components/indexer-tutorials/hype-indexer",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/near-components/indexer-tutorials/nft-indexer",
-              "path": "/tutorials/near-components/indexer-tutorials/nft-indexer",
+              "path": "/zh-CN/tutorials/near-components/indexer-tutorials/nft-indexer",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/near-components/indexer-tutorials/posts-indexer",
-              "path": "/tutorials/near-components/indexer-tutorials/posts-indexer",
+              "path": "/zh-CN/tutorials/near-components/indexer-tutorials/posts-indexer",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/near-components/interaction",
-              "path": "/tutorials/near-components/interaction",
+              "path": "/zh-CN/tutorials/near-components/interaction",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/near-components/lido",
-              "path": "/tutorials/near-components/lido",
+              "path": "/zh-CN/tutorials/near-components/lido",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/near-components/push-notifications",
-              "path": "/tutorials/near-components/push-notifications",
+              "path": "/zh-CN/tutorials/near-components/push-notifications",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/near-components/queryapi-websockets",
-              "path": "/tutorials/near-components/queryapi-websockets",
+              "path": "/zh-CN/tutorials/near-components/queryapi-websockets",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/near-components/using-iframes",
-              "path": "/tutorials/near-components/using-iframes",
+              "path": "/zh-CN/tutorials/near-components/using-iframes",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/nfts/approvals",
-              "path": "/tutorials/nfts/approvals",
+              "path": "/zh-CN/tutorials/nfts/approvals",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/nfts/core",
-              "path": "/tutorials/nfts/core",
+              "path": "/zh-CN/tutorials/nfts/core",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/nfts/enumeration",
-              "path": "/tutorials/nfts/enumeration",
+              "path": "/zh-CN/tutorials/nfts/enumeration",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/nfts/events",
-              "path": "/tutorials/nfts/events",
+              "path": "/zh-CN/tutorials/nfts/events",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/nfts/introduction",
-              "path": "/tutorials/nfts/introduction",
+              "path": "/zh-CN/tutorials/nfts/introduction",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/nfts/js/approvals",
-              "path": "/tutorials/nfts/js/approvals",
+              "path": "/zh-CN/tutorials/nfts/js/approvals",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/nfts/js/core",
-              "path": "/tutorials/nfts/js/core",
+              "path": "/zh-CN/tutorials/nfts/js/core",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/nfts/js/enumeration",
-              "path": "/tutorials/nfts/js/enumeration",
+              "path": "/zh-CN/tutorials/nfts/js/enumeration",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/nfts/js/events",
-              "path": "/tutorials/nfts/js/events",
+              "path": "/zh-CN/tutorials/nfts/js/events",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/nfts/js/introduction",
-              "path": "/tutorials/nfts/js/introduction",
+              "path": "/zh-CN/tutorials/nfts/js/introduction",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/nfts/js/marketplace",
-              "path": "/tutorials/nfts/js/marketplace",
+              "path": "/zh-CN/tutorials/nfts/js/marketplace",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/nfts/js/minting",
-              "path": "/tutorials/nfts/js/minting",
+              "path": "/zh-CN/tutorials/nfts/js/minting",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/nfts/js/predeployed-contract",
-              "path": "/tutorials/nfts/js/predeployed-contract",
+              "path": "/zh-CN/tutorials/nfts/js/predeployed-contract",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/nfts/js/royalty",
-              "path": "/tutorials/nfts/js/royalty",
+              "path": "/zh-CN/tutorials/nfts/js/royalty",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/nfts/js/skeleton",
-              "path": "/tutorials/nfts/js/skeleton",
+              "path": "/zh-CN/tutorials/nfts/js/skeleton",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/nfts/js/upgrade-contract",
-              "path": "/tutorials/nfts/js/upgrade-contract",
+              "path": "/zh-CN/tutorials/nfts/js/upgrade-contract",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/nfts/marketplace",
-              "path": "/tutorials/nfts/marketplace",
+              "path": "/zh-CN/tutorials/nfts/marketplace",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/nfts/minecraft-nfts",
-              "path": "/tutorials/nfts/minecraft-nfts",
+              "path": "/zh-CN/tutorials/nfts/minecraft-nfts",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/nfts/minting",
-              "path": "/tutorials/nfts/minting",
+              "path": "/zh-CN/tutorials/nfts/minting",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/nfts/minting-nft-frontend",
-              "path": "/tutorials/nfts/minting-nft-frontend",
+              "path": "/zh-CN/tutorials/nfts/minting-nft-frontend",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/nfts/minting-nfts",
-              "path": "/tutorials/nfts/minting-nfts",
+              "path": "/zh-CN/tutorials/nfts/minting-nfts",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/nfts/predeployed-contract",
-              "path": "/tutorials/nfts/predeployed-contract",
+              "path": "/zh-CN/tutorials/nfts/predeployed-contract",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/nfts/royalty",
-              "path": "/tutorials/nfts/royalty",
+              "path": "/zh-CN/tutorials/nfts/royalty",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/nfts/series",
-              "path": "/tutorials/nfts/series",
+              "path": "/zh-CN/tutorials/nfts/series",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/nfts/skeleton",
-              "path": "/tutorials/nfts/skeleton",
+              "path": "/zh-CN/tutorials/nfts/skeleton",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/nfts/upgrade-contract",
-              "path": "/tutorials/nfts/upgrade-contract",
+              "path": "/zh-CN/tutorials/nfts/upgrade-contract",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/templates/blog",
-              "path": "/tutorials/templates/blog",
+              "path": "/zh-CN/tutorials/templates/blog",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/templates/marketplace",
-              "path": "/tutorials/templates/marketplace",
+              "path": "/zh-CN/tutorials/templates/marketplace",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/templates/minter",
-              "path": "/tutorials/templates/minter",
+              "path": "/zh-CN/tutorials/templates/minter",
               "sidebar": "tutorials"
             },
             {
               "id": "tutorials/welcome",
-              "path": "/tutorials/welcome",
+              "path": "/zh-CN/tutorials/welcome",
               "sidebar": "tutorials"
             },
             {
               "id": "welcome",
-              "path": "/"
+              "path": "/zh-CN/"
             }
           ],
           "draftIds": [],
           "sidebars": {
             "concepts": {
               "link": {
-                "path": "/concepts/welcome",
+                "path": "/zh-CN/concepts/welcome",
                 "label": "concepts/welcome"
               }
             },
             "build": {
               "link": {
-                "path": "/build/welcome",
+                "path": "/zh-CN/build/welcome",
                 "label": "build/welcome"
               }
             },
             "tutorials": {
               "link": {
-                "path": "/tutorials/welcome",
+                "path": "/zh-CN/tutorials/welcome",
                 "label": "tutorials/welcome"
               }
             },
             "tools": {
               "link": {
-                "path": "/tools/welcome",
+                "path": "/zh-CN/tools/welcome",
                 "label": "tools/welcome"
               }
             },
             "api": {
               "link": {
-                "path": "/api/rpc/introduction",
+                "path": "/zh-CN/api/rpc/introduction",
                 "label": "api/rpc/introduction"
               }
             },
             "pagoda": {
               "link": {
-                "path": "/pagoda/rpc/intro",
+                "path": "/zh-CN/pagoda/rpc/intro",
                 "label": "pagoda/rpc/intro"
               }
             },
             "exchanges": {
               "link": {
-                "path": "/integrations/exchange-integration",
+                "path": "/zh-CN/integrations/exchange-integration",
                 "label": "integrations/exchange-integration"
               }
             }
