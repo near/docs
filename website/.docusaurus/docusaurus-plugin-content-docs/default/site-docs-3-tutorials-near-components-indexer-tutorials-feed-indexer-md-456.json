@@ -1,7 +1,7 @@
 {
   "id": "tutorials/near-components/indexer-tutorials/feed-indexer",
   "title": "Social Feed Indexer",
-  "description": "NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers.",
+  "description": "This tutorial creates a blockchain indexer using NEAR QueryAPI.",
   "source": "@site/../docs/3.tutorials/near-components/indexer-tutorials/feed-indexer.md",
   "sourceDirName": "3.tutorials/near-components/indexer-tutorials",
   "slug": "/tutorials/near-components/indexer-tutorials/feed-indexer",
@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/near-components/indexer-tutorials/feed-indexer.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Guille",
-  "lastUpdatedAt": 1719586643000,
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1719928370000,
   "frontMatter": {
     "id": "feed-indexer",
     "title": "Social Feed Indexer",
