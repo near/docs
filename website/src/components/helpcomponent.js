@@ -14,7 +14,7 @@ export function HelpComponent({ children }) {
                 className="avatar__photo avatar__photo--sm"
                 src={require("@site/static/docs/assets/home/twitter.png").default} />
               <div className="avatar__intro">
-                <div className="avatar__name"><a href="https://twitter.com/@nearprotocol">Twitter</a></div>
+                <div className="avatar__name"><a href="https://twitter.com/@nearprotocol" target="_blank" rel="noopener noreferrer">Twitter</a></div>
               </div>
             </div>
           </div>
@@ -24,7 +24,7 @@ export function HelpComponent({ children }) {
                 className="avatar__photo avatar__photo--sm"
                 src={require("@site/static/docs/assets/home/telegram.png").default} />
               <div className="avatar__intro">
-                <div className="avatar__name"><a href="https://t.me/neardev">Telegram</a></div>
+                <div className="avatar__name"><a href="https://t.me/neardev" target="_blank" rel="noopener noreferrer">Telegram</a></div>
               </div>
             </div>
           </div>
@@ -34,7 +34,7 @@ export function HelpComponent({ children }) {
                 className="avatar__photo"
                 src={require("@site/static/docs/assets/home/discord.png").default} />
               <div className="avatar__intro">
-                <div className="avatar__name"><a href="https://near.chat">Discord</a></div>
+                <div className="avatar__name"><a href="https://near.chat" target="_blank" rel="noopener noreferrer">Discord</a></div>
               </div>
             </div>
           </div>
@@ -44,7 +44,7 @@ export function HelpComponent({ children }) {
                 className="avatar__photo"
                 src={require("@site/static/docs/assets/home/zulip.png").default} />
               <div className="avatar__intro">
-                <div className="avatar__name"><a href="https://near.zulipchat.com/">Zulip</a></div>
+                <div className="avatar__name"><a href="https://near.zulipchat.com/" target="_blank" rel="noopener noreferrer">Zulip</a></div>
               </div>
             </div>
           </div>

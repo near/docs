@@ -730,5 +730,5 @@ and we can find its outcome in `receipts_outcome`:
 which indicates that the transaction is successful.
 
 :::tip Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol" target="_blank" rel="noopener noreferrer"> Ask it on StackOverflow! </a>
 :::

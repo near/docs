@@ -1442,5 +1442,5 @@ InconsistentStateError::IntegerOverflow
 ```
 
 :::tip Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol" target="_blank" rel="noopener noreferrer"> Ask it on StackOverflow! </a>
 :::

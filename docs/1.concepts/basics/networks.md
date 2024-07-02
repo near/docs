@@ -39,7 +39,7 @@ More on local development [here](https://near-nodes.io/validator/running-a-node)
 ---
 
 :::tip Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol" target="_blank" rel="noopener noreferrer">
 <h8>Ask it on StackOverflow!</h8>
 </a>
 :::

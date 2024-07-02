@@ -138,7 +138,7 @@ This is close to what we want, but what if a person deploys their smart contract
 
 <figure>
     <img src={batchCookieTray} alt="Cookie sheet representing a transaction, where cookies are Deploy and FunctionCall Actions. Art created by dobulyo.near."/>
-    <figcaption className="full-width">Art by <a href="https://twitter.com/w_artsu" target="_blank">dobulyo.near</a></figcaption>
+    <figcaption className="full-width">Art by <a href="https://twitter.com/w_artsu" target="_blank" rel="noopener noreferrer">dobulyo.near</a></figcaption>
 </figure><br/>
 
 :::info Batch Actions in use

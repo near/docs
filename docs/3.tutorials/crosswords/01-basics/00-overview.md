@@ -19,7 +19,7 @@ Rust is a serious systems programming language. There are pointers, lifetimes, m
 
 <figure>
     <img src={rustScary} alt="Programmer looking at Rust code and looking worried. Art created by ksart.near" width="600"/>
-    <figcaption>Art by <a href="https://twitter.com/ksartworks" target="_blank">ksart.near</a></figcaption>
+    <figcaption>Art by <a href="https://twitter.com/ksartworks" target="_blank" rel="noopener noreferrer">ksart.near</a></figcaption>
 </figure>
 <br/>
 

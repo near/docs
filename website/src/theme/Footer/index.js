@@ -280,7 +280,7 @@ function Footer() {
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://github.com/near-examples">
+                    <a href="https://github.com/near-examples" target="_blank" rel="noopener noreferrer">
                       Examples
                     </a>
                   </li>   
@@ -359,22 +359,22 @@ function Footer() {
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://jutsu.ai/editor">
+                    <a href="https://jutsu.ai/editor" target="_blank" rel="noopener noreferrer">
                       Justu IDE
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://docs.welldonestudio.io/code/getting-started">
+                    <a href="https://docs.welldonestudio.io/code/getting-started" target="_blank" rel="noopener noreferrer">
                       Remix IDE
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://wallet.near.org">
+                    <a href="https://wallet.near.org" target="_blank" rel="noopener noreferrer">
                       Wallets
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://near-faucet.io/">
+                    <a href="https://near-faucet.io/" target="_blank" rel="noopener noreferrer">
                       Faucet
                     </a>
                   </li>
@@ -399,17 +399,17 @@ function Footer() {
                   className="footer-menu list-reset mt-5 text-16 md:text-16"
                 >
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://near.org/devhub.near/widget/app">
+                    <a href="https://near.org/devhub.near/widget/app" target="_blank" rel="noopener noreferrer">
                       DevHub
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://learnnear.club/">
+                    <a href="https://learnnear.club/" target="_blank" rel="noopener noreferrer">
                       Learn NEAR Club 
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://agorapp.dev/catalog/course?difficulty=&chains=near">
+                    <a href="https://agorapp.dev/catalog/course?difficulty=&chains=near" target="_blank" rel="noopener noreferrer">
                       AgorApp 
                     </a>
                   </li>    
@@ -419,59 +419,60 @@ function Footer() {
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://github.com/near">
+                    <a href="https://github.com/near" target="_blank" rel="noopener noreferrer">
                       GitHub
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://discord.gg/GZ7735Xjce">
+                    <a href="https://discord.gg/GZ7735Xjce" target="_blank" rel="noopener noreferrer">
                       Discord Support
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://t.me/neardev">
+                    <a href="https://t.me/neardev" target="_blank" rel="noopener noreferrer">
                       Telegram Support
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://nomicon.io/">
+                    <a href="https://nomicon.io/" target="_blank" rel="noopener noreferrer">
                       Protocol Docs
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://near-nodes.io/">
+                    <a href="https://near-nodes.io/" target="_blank" rel="noopener noreferrer">
                       Validator Docs
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://aurora.dev/">
+                    <a href="https://aurora.dev/" target="_blank" rel="noopener noreferrer">
                       Aurora EVM
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-2945">
                     <a
-                      target="_blank"
+                      target="_blank" 
+                      rel="noopener noreferrer"
                       href="https://near.org/founders"
                     >
                       Startup Accelerator
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                  <a href="https://wiki.near.org">
+                  <a href="https://wiki.near.org" target="_blank" rel="noopener noreferrer">
                     Wiki
                   </a>
                   </li>
                   <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-6804">
-                    <a href="https://gov.near.org">Forum</a>
+                    <a href="https://gov.near.org" target="_blank" rel="noopener noreferrer">Forum</a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-441">
-                    <a href="https://near.org/about">About Us</a>
+                    <a href="https://near.org/about" target="_blank" rel="noopener noreferrer">About Us</a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-124">
-                    <a href="https://careers.near.org/jobs">Careers</a>
+                    <a href="https://careers.near.org/jobs" target="_blank" rel="noopener noreferrer">Careers</a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-3267">
-                    <a href="https://near.org/privacy">Privacy Policy</a>
+                    <a href="https://near.org/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
                   </li>
                 </ul>
               </div>
@@ -480,17 +481,17 @@ function Footer() {
         </div>
 
         <p className="text-14 mt-50 md:mt-100">Copyright &copy;
-          {new Date().getFullYear()} <a href="https://near.org" className="hover:text-yellow">NEAR Protocol</a><span className="mx-10">|</span>All rights
+          {new Date().getFullYear()} <a href="https://near.org" target="_blank" rel="noopener noreferrer" className="hover:text-yellow">NEAR Protocol</a><span className="mx-10">|</span>All rights
           reserved<span className="mx-10">|</span>
           <a href="mailto:hello@near.org" className="hover:text-yellow">
             hello@near.org
           </a>
           <span className="mx-10">|</span>
-          <a href="https://near.org/privacy" className="hover:text-yellow">
+          <a href="https://near.org/privacy" target="_blank" rel="noopener noreferrer" className="hover:text-yellow">
             Privacy Policy
           </a>
           <span className="mx-10">|</span>
-          Some icons created by <a href="https://www.flaticon.com/free-icons/coin" title="coin icons">Good Ware, Flaticon, and Freepick</a>
+          Some icons created by <a href="https://www.flaticon.com/free-icons/coin" target="_blank" rel="noopener noreferrer" title="coin icons">Good Ware, Flaticon, and Freepick</a>
         </p>
       </div></div>
     </footer>
