@@ -471,7 +471,7 @@ const transactionLink = `https://${prefix}nearblocks.io/txns/${result.transactio
 ```
 
 :::tip Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol"><h8>Ask it on StackOverflow!</h8></a>
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol" target="_blank" rel="noopener noreferrer"><h8>Ask it on StackOverflow!</h8></a>
 :::
 
 Happy Coding! 🚀

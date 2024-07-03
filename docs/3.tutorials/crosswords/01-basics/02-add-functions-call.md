@@ -77,7 +77,7 @@ Here's what we'll want to do:
 
 <figure>
     <img src={teachingDeployment} alt="Teacher shows chalkboard with instructions on how to properly deploy a smart contract. 1. Build smart contract. 2. Create a subaccount (or delete and recreate if it exists) 3. Deploy to subaccount. 4. Interact. Art created by jeheycell.near"/>
-    <figcaption className="full-width">Art by <a href="https://twitter.com/artcultureac" target="_blank">jeheycell.near</a></figcaption>
+    <figcaption className="full-width">Art by <a href="https://twitter.com/artcultureac" target="_blank" rel="noopener noreferrer">jeheycell.near</a></figcaption>
 </figure>
 
 ### Build the contract
@@ -116,7 +116,7 @@ See this visualization where two keys belonging to `mike.near` are able to creat
 
 <figure>
     <img src={createAccount} alt="Depiction of create account where two figures put together a subaccount. Art created by seanpineda.near"/>
-    <figcaption className="full-width">Art by <a href="https://twitter.com/_seanpineda" target="_blank">seanpineda.near</a></figcaption>
+    <figcaption className="full-width">Art by <a href="https://twitter.com/_seanpineda" target="_blank" rel="noopener noreferrer">seanpineda.near</a></figcaption>
 </figure>
 
 :::
@@ -228,7 +228,7 @@ We'll be iterating on this smart contract during this tutorial, and in some case
 </video>
 
 <figure>
-    <figcaption>Deleting a recreating a subaccount will clear the state and give us a fresh start.<br/>Animation by <a href="https://twitter.com/JohnreyBona" target="_blank">iambon.near</a></figcaption>
+    <figcaption>Deleting a recreating a subaccount will clear the state and give us a fresh start.<br/>Animation by <a href="https://twitter.com/JohnreyBona" target="_blank" rel="noopener noreferrer">iambon.near</a></figcaption>
 </figure>
 
 Using NEAR CLI, the commands will look like this:
