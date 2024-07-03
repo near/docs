@@ -4,11 +4,9 @@ title: Minted NFTs Indexer
 sidebar_label: NFTs Indexer
 ---
 
-:::info
+:::tip
 
-NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers.
-
-You can request access through [this link](http://bit.ly/near-queryapi-beta).
+This tutorial creates a blockchain indexer using [NEAR QueryAPI](../../../2.build/6.data-infrastructure/query-api/intro.md).
 
 :::
 
