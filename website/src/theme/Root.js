@@ -16,19 +16,12 @@ function Root({ children, location }) {
   const history = useHistory();
 
   useEffect(() => {
-    const sendMessage = (url) => {
-      parent.postMessage({ type: 'urlChange', url });
-    };
-
+    // pass message to dev.near.org (docs is embed there)
+    const sendMessage = url => parent.postMessage({ type: 'urlChange', url }, 'https://dev.near.org/');
     sendMessage(location.pathname);
 
-    const unlisten = history.listen(({ pathname }) => {
-      sendMessage(pathname);
-    });
-
-    return () => {
-      unlisten();
-    };
+    const unlisten = history.listen(loc => sendMessage(loc.pathname));
+    return () => { unlisten() };
   }, [history]);
 
   if (isBrowser) {
