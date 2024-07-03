@@ -32,6 +32,7 @@ function Root({ children, location }) {
     const rudderAnalytics = initRudderAnalytics();
     recordPageView(rudderAnalytics, location.pathname);
   }
+
   return <>{children}</>;
 }
 
