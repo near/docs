@@ -10,37 +10,36 @@ import useIsBrowser from '@docusaurus/useIsBrowser'; // https://docusaurus.io/do
 import { useInitWallet } from '@theme/scripts/wallet-selector';
 
 function Root({ children, location }) {
-    useInitWallet({ createAccessKeyFor: 'v1.social08.testnet', networkId: 'testnet' });
-    const isBrowser = useIsBrowser();
+  useInitWallet({ createAccessKeyFor: 'v1.social08.testnet', networkId: 'testnet' });
+  const isBrowser = useIsBrowser();
 
-    const history = useHistory();
+  const history = useHistory();
 
-    useEffect(() => {
-      const sendMessage = (url) => {
-        parent.postMessage(
-          { type: 'urlChange', url },
-          '*'
-        );
-      };
-  
-      const unlisten = history.listen(({ pathname }) => {
-        sendMessage(pathname);
-      });
-  
-      return () => {
-        unlisten();
-      };
-    }, [history]);
+  useEffect(() => {
+    const sendMessage = (url) => {
+      parent.postMessage({ type: 'urlChange', url });
+    };
 
-    if (isBrowser) {
-        const { initRudderAnalytics, recordPageView } = require('./scripts/rudderstack');
+    sendMessage(location.pathname);
 
-        Gleap.initialize('K2v3kvAJ5XtPzNYSgk4Ulpe5ptgBkIMv');
+    const unlisten = history.listen(({ pathname }) => {
+      sendMessage(pathname);
+    });
 
-        const rudderAnalytics = initRudderAnalytics();
-        recordPageView(rudderAnalytics, location.pathname);
-    }
-    return <>{children}</>;
+    return () => {
+      unlisten();
+    };
+  }, [history]);
+
+  if (isBrowser) {
+    const { initRudderAnalytics, recordPageView } = require('./scripts/rudderstack');
+
+    Gleap.initialize('K2v3kvAJ5XtPzNYSgk4Ulpe5ptgBkIMv');
+
+    const rudderAnalytics = initRudderAnalytics();
+    recordPageView(rudderAnalytics, location.pathname);
+  }
+  return <>{children}</>;
 }
 
 const router = withRouter(Root);
