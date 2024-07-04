@@ -26,7 +26,7 @@ On their first visit, our frontend will create a brand new, random seed phrase i
 
 If the user is the first to solve the puzzle, it discovers the function-call access key and calls `submit_solution` with that key. It's basically using someone else's key, as this key is on the crossword account.
 
-**We'll be adding a new parameter** to the `submit_solution` so the user can include the random, public key we just stored in their browser. 
+**We'll be adding a new parameter** to the `submit_solution` so the user can include the random, public key we just stored in their browser.
 
 During the execution of `submit_solution`, because contracts can use Promises to perform Actions, we'll remove the solution public key and add the user's public key.
 
@@ -40,13 +40,13 @@ This means that a puzzle can have three states it can be in:
 2. Solved and not yet claimed (not paid out)
 3. Claimed and finalized
 
-The previous chapter [we discussed enums](../02-beginner/02-structs-enums.md#using-enums), so this is simply modifying the enumeration variants.  
+The previous chapter [we discussed enums](../02-beginner/02-structs-enums.md#using-enums), so this is simply modifying the enumeration variants.
 
 ### The implementation
 
 First, let's see how the `submit_solution` will verify the correct solution.
 
-<Github language="rust" start="145" end="151" url="https://github.com/near-examples/crossword-tutorial-chapter-3/blob/ec07e1e48285d31089b7e8cec9e9cf32a7e90c35/contract/src/lib.rs" />
+<Github language="rust" start="136" end="142" url="https://github.com/near-examples/crossword-tutorial-chapter-3/blob/master/contract/src/lib.rs" />
 
 Instead of hashing the plaintext, we simply check that the public key matches what we know the answer is. (The answer being the series of words representing the solution to the crossword puzzle, used as a seed phrase to create a key pair, including a public key.)
 
@@ -54,17 +54,17 @@ Further down in the `submit_solution` method we'll follow our plan by **adding a
 
 <figure>
     <img src={carpenterAddingKey} alt="Illustration of a carpenter who has created a key. Art by carlcarlkarl.near" width="400"/>
-    <figcaption className="small">Our smart contract is like this carpenter adding a key to itself.<br/>Art by <a href="https://twitter.com/CarlCarlKarl" target="_blank">carlcarlkarl.near</a></figcaption>
+    <figcaption className="small">Our smart contract is like this carpenter adding a key to itself.<br/>Art by <a href="https://twitter.com/CarlCarlKarl" target="_blank" rel="noopener noreferrer">carlcarlkarl.near</a></figcaption>
 </figure>
 <br/>
 
-<Github language="rust" start="175" end="181" url="https://github.com/near-examples/crossword-tutorial-chapter-3/blob/ec07e1e48285d31089b7e8cec9e9cf32a7e90c35/contract/src/lib.rs" />
+<Github language="rust" start="166" end="172" url="https://github.com/near-examples/crossword-tutorial-chapter-3/blob/master/contract/src/lib.rs" />
 
 The first promise above adds an access key, and the second deletes the access key on the account that was derived from the solution as a seed phrase.
 
 <figure>
     <img src={recycleKey} alt="Book showing pagination of hashes. Art created by eerie_ram.near" width="600"/>
-    <figcaption>We delete the function-call access key so there is only one winner.<br/>Art by <a href="https://twitter.com/eerie_ram" target="_blank">eerie_ram.near</a></figcaption>
+    <figcaption>We delete the function-call access key so there is only one winner.<br/>Art by <a href="https://twitter.com/eerie_ram" target="_blank" rel="noopener noreferrer">eerie_ram.near</a></figcaption>
 </figure>
 <br/>
 
@@ -73,7 +73,7 @@ Note that the new function-call access key is able to call two methods we'll be 
 1. `claim_reward` — when the user has an existing account and wishes to send the prize to it
 2. `claim_reward_new_account` — when the user doesn't have an account, wants to create one and send the prize to it
 
-Both functions will do cross-contract calls and use callbacks to see the result. We finally get to the meat of this chapter, let's go! 
+Both functions will do cross-contract calls and use callbacks to see the result. We finally get to the meat of this chapter, let's go!
 
 ## Cross-contract calls
 
@@ -81,7 +81,7 @@ Both functions will do cross-contract calls and use callbacks to see the result.
 
 We're going to be making a cross-contract call to the linkdrop account deployed to the `testnet` account. We're also going to have callbacks for that, and for a simple transfer to a (potentially existing) account. We'll create the traits that define both those methods.
 
-<Github language="rust" start="19" end="45" url="https://github.com/near-examples/crossword-tutorial-chapter-3/blob/ec07e1e48285d31089b7e8cec9e9cf32a7e90c35/contract/src/lib.rs" />
+<Github language="rust" start="17" end="43" url="https://github.com/near-examples/crossword-tutorial-chapter-3/blob/master/contract/src/lib.rs" />
 
 :::tip
 It's not necessary to create the trait for the callback as we could have just implemented the functions `callback_after_transfer` and `callback_after_create_account` in our `Crossword` struct implementation. We chose to define the trait and implement it to make the code a bit more readable.
@@ -133,7 +133,7 @@ This `claim_reward` method will attempt to use the `Transfer` Action to send NEA
 
 Let's see how we check this in the callback:
 
-<Github language="rust" start="381" end="411" url="https://github.com/near-examples/crossword-tutorial-chapter-3/blob/ec07e1e48285d31089b7e8cec9e9cf32a7e90c35/contract/src/lib.rs" />
+<Github language="rust" start="372" end="400" url="https://github.com/near-examples/crossword-tutorial-chapter-3/blob/master/contract/src/lib.rs" />
 
 :::info The `#[private]` macro
 Notice that above the function, we have declared it to be private.
@@ -184,7 +184,7 @@ pub fn claim_reward_new_account(
 
 Then the callback:
 
-<Github language="rust" start="413" end="448" url="https://github.com/near-examples/crossword-tutorial-chapter-3/blob/ec07e1e48285d31089b7e8cec9e9cf32a7e90c35/contract/src/lib.rs" />
+<Github language="rust" start="401" end="433" url="https://github.com/near-examples/crossword-tutorial-chapter-3/blob/master/contract/src/lib.rs" />
 
 In the above snippet, there's one difference from the callback we saw in `claim_reward`: we capture the value returned from the smart contract we just called. Since the linkdrop contract returns a bool, we can expect that type. (See the comments with "NOTE:" above, highlighting this.)
 

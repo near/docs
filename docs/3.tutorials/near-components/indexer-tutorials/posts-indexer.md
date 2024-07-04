@@ -4,11 +4,9 @@ title: Posts Indexer
 sidebar_label: Posts Indexer
 ---
 
-:::info
+:::tip
 
-NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers. 
-
-You can request access through [this link](http://bit.ly/near-queryapi-beta).
+This tutorial creates a blockchain indexer using [NEAR QueryAPI](../../../2.build/6.data-infrastructure/query-api/intro.md).
 
 :::
 
@@ -18,7 +16,7 @@ This indexer creates a new row in a pre-defined `posts` table created by the use
 
 :::tip
 
-This indexer can be found by [following this link](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=bucanero.near/posts-example).
+This indexer can be found by [following this link](https://dev.near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=bucanero.near/posts-example).
 
 :::
 
@@ -171,7 +169,7 @@ Once you have defined your query, you can use the GraphiQL Code Exporter to auto
 - `operationName`: The specific query you want to run.
 - `variables`: Any variables to pass in that your query supports, such as `offset` and `limit` for pagination.
 
-Next, you can call the `fetchGraphQL` function with the appropriate parameters and process the results. 
+Next, you can call the `fetchGraphQL` function with the appropriate parameters and process the results.
 
 Here's the complete code snippet for a NEAR component using the _Posts Indexer_:
 
@@ -232,6 +230,6 @@ return (
 
 :::tip
 
-To view a more complex example, see this widget which fetches posts with proper pagination: [Posts Widget powered By QueryAPI](https://near.org/edit/roshaan.near/widget/query-api-feed-infinite).
+To view a more complex example, see this widget which fetches posts with proper pagination: [Posts Widget powered By QueryAPI](https://dev.near.org/edit/roshaan.near/widget/query-api-feed-infinite).
 
 :::

@@ -23,7 +23,7 @@ Every method execution has an environment associated with information such as:
   <TabItem value="js" label="🌐 JavaScript">
 
 | Variable Name          | SDK Variable                  | Description                                                                          |
-| ---------------------- | ----------------------------- | ------------------------------------------------------------------------------------ |
+|------------------------|-------------------------------|--------------------------------------------------------------------------------------|
 | Predecessor            | `near.predecessorAccountId()` | Account ID that called this method                                                   |
 | Current Account        | `near.currentAccountId()`     | Account ID of this smart contract                                                    |
 | Signer                 | `near.signerAccountId()`      | Account ID that signed the transaction leading to this execution                     |
@@ -179,6 +179,8 @@ assert!(env::prepaid_gas() >= REQUIRED_GAS, "Please attach at least 20 TGas");
 ---
 
 ## Environment Functions
+
+Besides environmental variables, the SDK also exposes some functions to perform basic cryptographic operations
 
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="js" label="🌐 JavaScript">

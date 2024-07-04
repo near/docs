@@ -5,7 +5,7 @@ sidebar_label: Enumeration
 ---
 import {Github} from "@site/src/components/codetabs"
 
-In the previous tutorials, you looked at ways to integrate the minting functionality into a skeleton smart contract. In order to get your NFTs to show in the wallet, you also had to deploy a patch fix that implemented one of the enumeration methods. In this tutorial, you'll expand on and finish the rest of the enumeration methods as per the [standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration)
+In the previous tutorials, you looked at ways to integrate the minting functionality into a skeleton smart contract. In order to get your NFTs to show in the wallet, you also had to deploy a patch fix that implemented one of the enumeration methods. In this tutorial, you'll expand on and finish the rest of the enumeration methods as per the [standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration).
 
 Now you'll extend the NFT smart contract and add a couple of enumeration methods that can be used to return the contract's state.
 
@@ -13,13 +13,13 @@ Now you'll extend the NFT smart contract and add a couple of enumeration methods
 
 ## Introduction
 
-As mentioned in the [Upgrade a Contract](/tutorials/nfts/upgrade-contract/) tutorial, you can deploy patches and fixes to smart contracts. This time, you'll use that knowledge to implement the `nft_total_supply`, `nft_tokens` and `nft_supply_for_owner` enumeration functions.
+As mentioned in the [Upgrade a Contract](2-upgrade.md) tutorial, you can deploy patches and fixes to smart contracts. This time, you'll use that knowledge to implement the `nft_total_supply`, `nft_tokens` and `nft_supply_for_owner` enumeration functions.
 
 ---
 
 ## Modifications to the contract
 
-Let's start by opening the  `src/enumeration.rs` file and locating the empty `nft_total_supply` function. 
+Let's start by opening the  `src/enumeration.rs` file and locating the empty `nft_total_supply` function.
 
 **nft_total_supply**
 
@@ -68,7 +68,7 @@ Once the updated contract has been redeployed, you can test and see if these new
 Let's query for a list of non-fungible tokens on the contract. Use the following command to query for the information of up to 50 NFTs starting from the 10th item:
 
 ```bash
-near view $NFT_CONTRACT_ID nft_tokens '{"from_index": "10", "limit": 50}'
+near contract call-function as-read-only $NFT_CONTRACT_ID nft_tokens json-args '{"from_index": "10", "limit": 50}' network-config testnet now
 ```
 
 This command should return an output similar to the following:
@@ -91,7 +91,7 @@ This command should return an output similar to the following:
 To get the total supply of NFTs owned by the `goteam.testnet` account, call the `nft_supply_for_owner` function and set the `account_id` parameter:
 
 ```bash
-near view $NFT_CONTRACT_ID nft_supply_for_owner '{"account_id": "goteam.testnet"}'
+near contract call-function as-read-only $NFT_CONTRACT_ID nft_supply_for_owner json-args '{"account_id": "goteam.testnet"}' network-config testnet now
 ```
 
 This should return an output similar to the following:
@@ -113,15 +113,16 @@ This should return an output similar to the following:
 
 In this tutorial, you have added two [new enumeration functions](/tutorials/nfts/enumeration#modifications-to-the-contract), and now you have a basic NFT smart contract with minting and enumeration methods in place. After implementing these modifications, you redeployed the smart contract and tested the functions using the CLI.
 
-In the [next tutorial](/tutorials/nfts/core), you'll implement the core functions needed to allow users to transfer the minted tokens.
+In the [next tutorial](4-core.md), you'll implement the core functions needed to allow users to transfer the minted tokens.
 
 :::note Versioning for this article
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `4.0.13`
+- rustc: `1.77.1`
+- near-cli-rs: `0.11.0`
 - cargo-near `0.6.1`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
 - Enumeration standard: [NEP181](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration), version `1.0.0`
 
 :::

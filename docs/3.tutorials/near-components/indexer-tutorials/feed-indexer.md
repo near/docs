@@ -4,11 +4,9 @@ title: Social Feed Indexer
 sidebar_label: Social Feed Indexer
 ---
 
-:::info
+:::tip
 
-NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers. 
-
-You can request access through [this link](http://bit.ly/near-queryapi-beta).
+This tutorial creates a blockchain indexer using [NEAR QueryAPI](../../../2.build/6.data-infrastructure/query-api/intro.md).
 
 :::
 
@@ -24,7 +22,7 @@ A schema is also specified for the tables in which data from relevant transactio
 
 :::tip
 
-This indexer can be found by [following this link](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=dataplatform.near/social_feed).
+This indexer can be found by [following this link](https://dev.near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=dataplatform.near/social_feed).
 
 :::
 
@@ -499,7 +497,7 @@ Once you have defined your query, you can use the GraphiQL Code Exporter to auto
 - `operationName`: The specific query you want to run.
 - `variables`: Any variables to pass in that your query supports, such as `offset` and `limit` for pagination.
 
-Next, you can call the `fetchGraphQL` function with the appropriate parameters and process the results. 
+Next, you can call the `fetchGraphQL` function with the appropriate parameters and process the results.
 
 Here's the complete code snippet for a NEAR component using the _Feed Indexer_:
 
@@ -560,6 +558,6 @@ return (
 
 :::tip
 
-To view a more complex example, see this widget which fetches posts with proper pagination: [Posts Widget powered By QueryAPI](https://near.org/edit/roshaan.near/widget/query-api-feed-infinite).
+To view a more complex example, see this widget which fetches posts with proper pagination: [Posts Widget powered By QueryAPI](https://dev.near.org/edit/roshaan.near/widget/query-api-feed-infinite).
 
 :::

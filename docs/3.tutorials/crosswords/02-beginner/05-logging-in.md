@@ -43,7 +43,7 @@ The illustration below shows a keychain with a full-access key (the large, gold 
 
 <figure>
     <img src={accessKeys} width="600" alt="A keychain with three keys. A large, gold key represents the full-access keys on NEAR. The two other keys are gray and smaller, and have detachable latches on them. They represent function-call access key. Art created by alcantara_gabriel.near" />
-    <figcaption>Art by <a href="https://twitter.com/Bagriel_5_10" target="_blank">alcantara_gabriel.near</a></figcaption>
+    <figcaption>Art by <a href="https://twitter.com/Bagriel_5_10" target="_blank" rel="noopener noreferrer">alcantara_gabriel.near</a></figcaption>
 </figure>
 
 ### Full-access keys
@@ -68,28 +68,28 @@ It's only allowed to perform the `FunctionCall` Action.
 
 ### Example account with keys
 
-Let's look at this testnet account that has one full-access key and two function-call access keys. As you can see, we use the NEAR CLI [command `keys`](https://docs.near.org/tools/near-cli#near-keys) to print this info.
+Let's look at this `testnet` account that has one full-access key and two function-call access keys. As you can see, we use the [NEAR CLI](../../../4.tools/cli-rs.md) to print this info.
 
-<img src={tutorialAccessKeys} alt="Terminal screen showing the access keys for an account, there is one full-access key and two function-call access keys"/>
+```bash
+near account list-keys friend.testnet network-config testnet now
+```
+
+```
++----+------------------------------------------------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| #  | Public Key                                           | Nonce           | Permissions                                                                                                                                                                                        |
++----+------------------------------------------------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 1  | ed25519:QqggnQNPRh5rqxL5PCPSS8qbZyrm6KHBbjne3U9TDGN  | 72772126000000  | do any function calls on puzzle.testnet with an allowance of 777 NEAR                                                                                                        |
+| 2  | ed25519:FgsZoPqnSkuvoR6BZzXUY48tb5UfaCrRfg8kf4vyRg4F | 72777733000000  | only do ["foo", "bar"] function calls on puzzle.testnet with an allowance of 0.250 NEAR                                                                                  |
+| 3  | ed25519:Hht8gURhPpDB2muhZhkEgxbdy4c2CPiQdUDMVuK7zDLd | 72770704000019  | full access                                                                                                                                                                                        |
++----+------------------------------------------------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+```
 
 Let's look deeper into each key.
 
 #### First key
 
-```js
-{
-  access_key: {
-    nonce: 72772126000000, // Large nonce, huh!
-      permission: {
-      FunctionCall: {
-        allowance: '777000000000000000000000000', // Equivalent to 777 NEAR
-          method_names: [], // Any methods can be called
-          receiver_id: 'puzzle.testnet' // This key can only call methods on puzzle.testnet
-      }
-    }
-  },
-  public_key: 'ed25519:9Hhm77W4KCFzFgK55sZgEMesYRaL8wV1kpqh8qntnSPV'
-}
+```sh
+| 1  | ed25519:QqggnQNPRh5rqxL5PCPSS8qbZyrm6KHBbjne3U9TDGN  | 72772126000000  | do any function calls on puzzle.testnet with an allowance of 777 NEAR                                                                                                        |
 ```
 
 The first key in the image above is a function-call access key that can call the smart contract `puzzle.testnet` on **any method**. If you don't specify which methods it's allowed to call, it is allowed to call them all. Note the empty array (`[]`) next to `method_names`, which indicates this.
@@ -104,20 +104,8 @@ So the key is simply allowed to use the allowance in NEAR on gas, deducting from
 
 #### Second key
 
-```js
-{
-  access_key: {
-    nonce: 72777733000000,
-    permission: {
-      FunctionCall: {
-        allowance: '250000000000000000000000', // 0.25 NEAR, which is a typical allowance
-        method_names: [ 'foo', 'bar' ], // Can call methods foo and bar only
-        receiver_id: 'puzzle.testnet'
-      }
-    }
-  },
-  public_key: 'ed25519:CM4JtNo2sL3qPjWFn4MwusMQoZbHUSWaPGCCMrudZdDU'
-},
+```sh
+| 2  | ed25519:FgsZoPqnSkuvoR6BZzXUY48tb5UfaCrRfg8kf4vyRg4F | 72777733000000  | only do ["foo", "bar"] function calls on puzzle.testnet with an allowance of 0.250 NEAR                                                                                  |
 ```
 
 This second key specifies which methods can be called, and has a lower allowance.
@@ -128,11 +116,8 @@ In NEAR, "logging in" typically means adding a key like this to your account. We
 
 #### Third key
 
-```js
-{
-  access_key: { nonce: 72770704000019, permission: 'FullAccess' },
-  public_key: 'ed25519:FG4HjEPsvP5beScC3hkTLztQH8k9Qz9maTaumvPDa5t3'
-}
+```sh
+| 3  | ed25519:Hht8gURhPpDB2muhZhkEgxbdy4c2CPiQdUDMVuK7zDLd | 72770704000019  | full access                                                                                                                                                                                        |
 ```
 
 The third key is a full-access key.
@@ -165,4 +150,4 @@ Logging in with NEAR truly gives the end user control of their account and how t
 
 The concept of access keys is so important that we've spent longer than usual on the topic without actually implementing code for our improved crossword puzzle.
 
-Let's move to the next section and actually add the login button.  
+Let's move to the next section and actually add the login button.
