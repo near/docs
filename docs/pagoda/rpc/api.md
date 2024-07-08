@@ -41,7 +41,7 @@ We would love to hear from you on the data APIs you need, please leave feedback 
 
 Base URLs:
 
-* <a href="https://near-testnet.api.pagoda.co/eapi/v1">https://near-testnet.api.pagoda.co/eapi/v1</a>
+* <a href="https://near-testnet.api.pagoda.co/eapi/v1" target="_blank" rel="noopener noreferrer">https://near-testnet.api.pagoda.co/eapi/v1</a>
 
 ## Authentication
 

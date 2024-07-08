@@ -1,5 +1,5 @@
 ---
-id: contract-size
+id: reduce-size
 title: "Reducing Contract Size"
 ---
 import {Github} from "@site/src/components/codetabs"
@@ -64,7 +64,7 @@ crate-type = ["cdylib"]
 ```
 :::
 
-3. When using the Rust SDK, you may override the default JSON serialization to use [Borsh](https://borsh.io) instead. [See this page](contract-interface/serialization-interface.md#overriding-serialization-protocol-default) for more information and an example.
+3. When using the Rust SDK, you may override the default JSON serialization to use [Borsh](https://borsh.io) instead. [See this page](./serialization-interface.md#overriding-serialization-protocol-default) for more information and an example.
 4. When using assertions or guards, avoid using the standard `assert` macros like [`assert!`](https://doc.rust-lang.org/std/macro.assert.html), [`assert_eq!`](https://doc.rust-lang.org/std/macro.assert_eq.html), or [`assert_ne!`](https://doc.rust-lang.org/std/macro.assert_ne.html) as these may add bloat for information regarding the line number of the error. There are similar issues with `unwrap`, `expect`, and Rust's `panic!()` macro.
 
   Example of a standard assertion:
@@ -125,6 +125,31 @@ crate-type = ["cdylib"]
   env::panic_str("ERR_MSG_HERE");  
   ```
   :::
+
+## Ready to use script
+We have prepared a simple `bash` script that can be used to minify `.wasm` contract file. You can find it [here](https://github.com/near/near-sdk-rs/blob/master/minifier/minify.sh).
+
+The current approach to minification is the following:
+1. Snip (i.e. just replace with unreachable instruction) few known fat functions from the standard library (such as float formatting and panic-related) with `wasm-snip`.
+2. Run `wasm-gc` to eliminate all functions reachable from the snipped functions.
+3. Strip unneeded sections, such as names with `wasm-strip`.
+4. Run `binaryen wasm-opt`, which cleans up the rest.
+
+### Requirements to run the script:
+- install [wasm-snip](https://docs.rs/wasm-snip/0.4.0/wasm_snip/) and [wasm-gc](https://docs.rs/crate/wasm-gc/0.1.6) with Cargo:
+```bash
+cargo install wasm-snip wasm-gc
+```
+- install [binaryen](https://github.com/WebAssembly/binaryen) and [wabt](https://github.com/WebAssembly/wabt) on your system. For Ubuntu and other Debian based Linux distributions run:
+```bash
+apt install binaryen wabt
+```
+
+:::danger
+
+Minification could be rather aggressive, so you must test the contract after minification. Standalone NEAR runtime could be helpful [here](https://github.com/nearprotocol/nearcore/tree/master/runtime/near-vm-runner).
+
+:::
 
 ## Lower-level approach
 

@@ -4,80 +4,64 @@ title: Frontends for Web3 dApps
 sidebar_label: Frontends
 ---
 
+When building decentralized web applications (dApps), developers have two primary options for connecting a front-end user interface (UI) to a smart contract backend. Each option offers distinct advantages and disadvantages, tailored to different project requirements and goals.
 
-There are 3 major options to choose from when you're building a frontend for your Web3 dApp, each with their own set of pros and cons.
-This overview presents and summarizes these options so you can select the right solution for your UI.
+- [Standard Web2 Frontend](#standard-web-2-frontend)
+- [Decentralized Frontend](#decentralized-frontend-solutions)
 
-- [Standard Web App](#standard-web-app)
-- [Decentralized Hosting](#decentralized-hosting)
-- [BOS (SocialVM)](#bos-socialvm)
+## Standard Web 2 Frontend
 
-## Standard Web App
+While your user interface layer will remain centralized, the backend layer—including business logic and stored data—will be decentralized through smart contracts. This approach offers optimal convenience for most applications as it eliminates technical constraints and does not impact performance. However, if your requirement is for full decentralization across the entire stack, this configuration may not be suitable.
 
-Even though your UI layer won't be decentralized, your backend layer (business logic, stored data, etc) will be decentralized via smart contracts. This will be the most convenient option for most applications due to having zero technical limitations or performance impact. However, it might be a deal breaker if you require your entire stack to be decentralized.
+**Pros:**
 
-#### Pros
+- Develop a standard web application without any technical restrictions.
+- Compatible with any framework and library combination.
+- Supports server-side rendering with platforms like Next.js or SvelteKit.
+- Delivers the best overall performance.
 
-- Build a standard web app like you normally would without any technical limitations.
-- Works with any framework and combination of libraries.
-- Supports SSR if using something like Next JS or Svelte Kit.
-- Will have best performance overall.
+**Cons:**
 
-#### Cons
+- Requires hosting through a traditional Web 2 provider (e.g., Vercel, AWS).
+- The user interface layer will not be decentralized.
 
-- Your web app will need to be hosted by a Web 2 hosting provider (e.g.: Vercel, AWS, etc).
-- This means your UI layer won't be decentralized.
+**How to Build:**
 
-#### Integration
+When building a frontend that can connect with the NEAR blockchain using standard web2 tooling will require you to import two dependencies:
 
-It's highly recommend to integrate with [Wallet Selector](../../4.tools/wallet-selector.md) as your primary means of interacting with smart contracts. It's the easiest way to get up and running, allowing users to connect a wallet and send signed transactions. The only use case Wallet Selector doesn't cover is sending `view` transactions for users who haven't connected a wallet yet.
+- [NEAR API JS](../../4.tools/near-api-js/quick-reference.md) - A JavaScript API tool that allows frontend clients the ability to view and retrieve data directly from the blockchain.
+- [Wallet Selector](../../4.tools/wallet-selector.md) - Wallet integration tool allowing developers to choose which wallets are supported and allows users to choose which wallet they would like to connect with.
 
 :::tip
 
-Check [this article](integrate-contracts.md) to learn how to integrate smart contracts to your frontend, using [Wallet Selector](../../4.tools/wallet-selector.md) and [NEAR API JS](../../4.tools/near-api-js/quick-reference.md).
+[Checkout this article](integrate-contracts.md) to learn how to integrate smart contracts to your frontend, using [Wallet Selector](../../4.tools/wallet-selector.md) and [NEAR API JS](../../4.tools/near-api-js/quick-reference.md).
 
 :::
 
-## Decentralized Hosting
+## Decentralized Frontend Solutions
 
-If you require your entire stack to be decentralized, this will be the best choice. However, the potential technical limitations (no SSR or meta frameworks like Next JS) are worth considering.
+If you need full decentralization of your entire stack, this option is ideal. However, consider the possible technical constraints, such as the absence of server-side rendering or meta frameworks like Next.js.
 
-To learn more, you can check other decentralized hosting options like [Web4](https://web4.near.page/) or [Fleek](https://fleek.co/).
+Although the ecosystem for developing decentralized frontends is still maturing, here are some notable projects for you to evaluate and consider:
 
-<!-- content left out
+|Name| <div align="center">Description</div>   |
+|--------|------|
+| [**IPFS**](https://docs.ipfs.tech/how-to/websites-on-ipfs/single-page-website/)| A peer-to-peer hypermedia protocol designed to preserve and grow humanity's knowledge by making the web upgradeable, resilient, and more open. |
+| [**Fleek**](https://docs.fleek.co/tutorials/hosting/)| Hosts websites on IPFS with a user-friendly interface and continuous deployment from popular repositories. |
+| [**Arweave**](https://www.arweave.org/build) | Arweave lets you build quickly and simply with permanent storage. You can store anything from files to fully decentralized web applications. |
+| [**Web4**](https://web4.near.page/) | Web4 is a new way to distribute decentralized apps on NEAR Protocol. Deploy single WASM smart contract to deploy an entire web application.|
+| [**NEAR Social** ***(aka B.O.S. Components)***](https://near.social) | An experimental platform that allows users to build and deploy multi-chain decentralized UI experiences. |
 
-#### Pros
+**Pros:**
 
-- Your web app will be hosted on the blockchain allowing your entire stack to be decentralized.
+- Decentralized frontends are less susceptible to single points of failure, making them more resistant to attacks and server downtimes
+- By decentralizing the hosting of your frontend, you minimize the risk of content being censored or blocked by centralized authorities.
+- Users might trust a decentralized application more, knowing that it operates on a transparent and immutable blockchain.
+- Data displayed on the frontend is more likely to be accurate and tamper-proof since it's typically fetched directly from the blockchain.
 
-#### Cons
+**Cons:**
 
-- Your options for frameworks will be limited to whatever is supported by the decentralized hosting solution.
-- SSR and meta frameworks like Next JS most likely won't be supported.
-
--->
-
-## BOS (SocialVM)
-
-BOS (UI) was an experiment in hosting UI code on chain and creating an ecosystem of composable and remixable components for dApp development.
-An example BOS VM website is [near.social](https://near.social).
-
-We no longer recommend building on it, but [this article](integrate-components.md) details how BOS components could be integrated into your frontend.
-
-:::warning What is the state of BOS?
-
-We no longer recommend building on BOS due to its limited capabilities and discontinued security maintenance. Developers with active projects on BOS are encouraged to migrate to another deployment strategy.
-
-:::
-
-The use of a VM was intended to allow embedding untrusted third-party components into your experience in a way that their access to the full browser context and the ability to manipulate the behavior of your dApp was limited.
-
-Unfortunately numerous exploits have been discovered and patched, and the nature of these exploits along with the quirks of javascript make it likely that this will be a continuing trend.
-
-It is not tenable to proactively discover and mitigate vulnerabilities in a comprehensive manner where the VM can be seen as providing a security guarantee. Coupling that with the significant tradeoffs in capabilities of applications built for the VM, we do not recommend continued usage of BOS as a development platform.
-
-:::info VM vulnerabilities
-
-For examples of previous discovered vulnerabilities, view the [VM changelog](https://github.com/NearSocial/VM/blob/master/CHANGELOG.md) going back to [v2.5.1](https://github.com/NearSocial/VM/blob/master/CHANGELOG.md#251) paying attention to lines tagged as `FIX` on issues `Reported by BrunoModificato from OtterSec`.
-
-:::
+- Implementing a decentralized frontend can be more complex than traditional web development, requiring knowledge of specific technologies like IPFS, Arweave, or blockchain interactions.
+- Decentralized networks can face issues such as latency or lower speeds compared to traditional centralized servers, potentially affecting user experience.
+- The ecosystem for developing decentralized frontends is still maturing, which means there might be fewer tools and libraries available compared to traditional web development.
+- While decentralized storage costs have been decreasing, they can still be higher than traditional hosting, especially if the dApp generates a lot of data transactions.

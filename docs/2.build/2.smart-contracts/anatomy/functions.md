@@ -18,7 +18,30 @@ Smart contracts expose functions so users can interact with them. There are diff
 
 ### Contract's Interface
 
-All public functions in the contract are part of its interface. They can be called by anyone, and are the only way to interact with the contract.
+All **public** functions in the contract are part of its **interface**. They can be called by anyone, and are the only way to interact with the contract.
+
+</Block>
+
+<Block highlights='{"rust": ""}' fname="auction" type='details'>
+
+<details>
+<summary> Exposing trait implementations </summary>
+
+Functions can also be exposed through trait implementations. This can be useful if implementing a shared interface or standard for a contract. This code generation is handled very similarly to basic `pub` functions, but the `#[near]` macro only needs to be attached to the trait implementation, not the trait itself:
+
+```rust
+pub trait MyTrait {
+    fn trait_method(&mut self);
+}
+
+#[near]
+impl MyTrait for MyContractStructure {
+    fn trait_method(&mut self) {
+        // .. method logic here
+    }
+}
+```
+</details>
 
 </Block>
 
@@ -64,9 +87,13 @@ State changing functions are those that take a **mutable** reference to `self` i
 
 </Block>
 
-<Block highlights='{"js": "22,26", "rust": "36,42"}' fname="auction">
+<Block highlights='{"js": "22,26", "rust": "36,42"}' fname="auction" type='info'>
 
-**Note:** The SDK provides [contextual information](./environment.md), such as which account is calling the function, or what time it is.
+:::tip
+
+The SDK provides [contextual information](./environment.md), such as which account is calling the function, or what time it is.
+
+:::
 
 </Block>
 
@@ -160,6 +187,33 @@ However, contracts can also have private internal functions - such as helper or 
 To create internal private methods in a Rust contract, do not declare them as public (`pub fn`).
 
 </Block>
+
+<Block highlights='{"rust": "5-7"}' fname="example" type='details'>
+
+  <details>
+  <summary> Separate impl block </summary>
+
+  Another way of not exporting methods is by having a separate `impl Contract` section, that is not marked with `#[near]`.
+
+  ```rust
+  #[near]
+  impl Contract {
+      pub fn increment(&mut self) {
+          self.internal_increment();
+      }
+  }
+  impl Contract {
+      /// This methods is still not exported.
+      pub fn internal_increment(&mut self) {
+          self.counter += 1;
+      }
+  }
+  ```
+
+  </details>
+
+</Block>
+
 
 <Block highlights='{"rust": "9-11,13-15"}' fname="example">
 

@@ -1,7 +1,6 @@
 const sidebar = {
   "concepts": [
     "concepts/welcome",
-
     {
       "type": "html",
       "value": "<hr/>"
@@ -171,11 +170,11 @@ const sidebar = {
         {
           "Anatomy of a Contract": [
             "build/smart-contracts/anatomy/anatomy",
-            "build/smart-contracts/anatomy/storage",
             "build/smart-contracts/anatomy/functions",
+            "build/smart-contracts/anatomy/storage",
             "build/smart-contracts/anatomy/types",
-            "build/smart-contracts/anatomy/environment",
             "build/smart-contracts/anatomy/collections",
+            "build/smart-contracts/anatomy/environment",
             "build/smart-contracts/anatomy/actions",
             "build/smart-contracts/anatomy/crosscontract",
             "build/smart-contracts/security/checklist",
@@ -183,7 +182,11 @@ const sidebar = {
               "type": "html",
               "value": "<hr/>"
             },
-            "build/smart-contracts/anatomy/serialization"
+            "build/smart-contracts/anatomy/best-practices",
+            "build/smart-contracts/anatomy/serialization",
+            "build/smart-contracts/anatomy/serialization-protocols",
+            "build/smart-contracts/anatomy/reduce-size",
+            "build/smart-contracts/anatomy/reproducible-builds",
           ]
         },
         {
@@ -605,114 +608,7 @@ const sidebar = {
         }
       ]
     },
-    {
-      "type": "category",
-      "label": "Smart Contract SDKs",
-      "link": {
-        "type": "doc",
-        "id": "sdk/welcome"
-      },
-      "items": [
-        {
-          "Rust SDK": [
-            "sdk/rust/introduction",
-            "sdk/rust/get-started",
-            {
-              "Structure of a Contract": [
-                "sdk/rust/contract-structure/near-bindgen",
-                "sdk/rust/contract-structure/collections",
-                "sdk/rust/contract-structure/nesting"
-              ]
-            },
-            {
-              "Contract Interface": [
-                "sdk/rust/contract-interface/public-methods",
-                "sdk/rust/contract-interface/contract-mutability",
-                "sdk/rust/contract-interface/private-methods",
-                "sdk/rust/contract-interface/payable-methods",
-                "sdk/rust/contract-interface/serialization-interface"
-              ]
-            },
-            {
-              "Cross-Contract Calls": ["sdk/rust/cross-contract/callbacks"]
-            },
-            {
-              "Promises": [
-                "sdk/rust/promises/intro",
-                "sdk/rust/promises/token-tx",
-                "sdk/rust/promises/create-account",
-                "sdk/rust/promises/deploy-contract"
-              ]
-            },
-            {
-              "Building Contracts": [
-                "sdk/rust/building/basics",
-                "sdk/rust/building/prototyping",
-                "sdk/rust/building/post-processing",
-                "sdk/rust/building/reproducible-builds"
-              ]
-            },
-            {
-              "Testing": [
-                "sdk/rust/testing/integration-tests",
-                "sdk/rust/testing/unit-tests"
-              ]
-            },
-            "sdk/rust/best-practices",
-            "sdk/rust/contract-size"
-          ],
-          "JavaScript SDK": [
-            "sdk/js/introduction",
-            "sdk/js/get-started",
-            {
-              "type": "link",
-              "label": "Type Docs ↗",
-              "href": "https://near.github.io/near-sdk-js/"
-            },
-            {
-              "Structure of a Contract": [
-                "sdk/js/contract-structure/near-bindgen",
-                "sdk/js/contract-structure/collections"
-              ]
-            },
-            {
-              "Contract Interface": [
-                "sdk/js/contract-interface/public-methods",
-                "sdk/js/contract-interface/private-methods",
-                "sdk/js/contract-interface/payable-methods"
-              ]
-            },
-            {
-              "Cross-Contract Calls": ["sdk/js/cross-contract/callbacks"]
-            },
-            {
-              "Promises": [
-                "sdk/js/promises/intro",
-                "sdk/js/promises/token-tx",
-                "sdk/js/promises/create-account",
-                "sdk/js/promises/deploy-contract"
-              ]
-            },
-            {
-              "Building Contracts": [
-                "sdk/js/building/basics",
-                "sdk/js/building/prototyping",
-                "sdk/js/building/reproducible-builds"
-              ]
-            },
-            {
-              "SDK CLI": ["sdk/js/cli/cli"]
-            },
-            {
-              "Testing": [
-                "sdk/js/testing/integration-tests",
-                "sdk/js/testing/unit-tests"
-              ]
-            }
-          ]
-        }
-      ]
-    },
+    "tools/sdk",
     {
       "type": "category",
       "label": "Command Line Tools (CLI)",

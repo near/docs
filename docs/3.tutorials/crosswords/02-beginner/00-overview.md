@@ -15,7 +15,7 @@ Let's give the smart contract the ability to store multiple crosswords and offer
 
 <figure>
     <img src={multipleCrosswords} alt="Man holding a book full of crossword puzzles, in his other hand he's holding a piggy bank. Art created by r3v.near"/>
-    <figcaption className="full-width">Art by <a href="https://twitter.com/rev_rodrigueza" target="_blank">r3v.near</a></figcaption>
+    <figcaption className="full-width">Art by <a href="https://twitter.com/rev_rodrigueza" target="_blank" rel="noopener noreferrer">r3v.near</a></figcaption>
 </figure>
 <br/>
 
@@ -37,7 +37,7 @@ As we implement the list above, we'll learn key concepts about NEAR:
 
 - [Actions](https://nomicon.io/RuntimeSpec/Actions.html)
 - Full and function-call [access keys](https://docs.near.org/concepts/basics/account#access-keys)
-- NEAR's specialized [Collections](https://docs.near.org/concepts/storage/data-storage#rust-collection-types) that are generally preferable to, say, Rust's standard HashMap 
+- NEAR's specialized [Collections](../../../2.build/2.smart-contracts/anatomy/collections.md) that are generally preferable to, say, Rust's standard HashMap 
 - The flow of logging in to a decentralized app (dApp)
 - more…
 

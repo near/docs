@@ -177,13 +177,6 @@ table+p em,
     height: 28px;
 }
 
-.navbar .subtitle {
-    padding: 0.25rem 0.5rem;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: #999;
-}
-
 .navbar .separator {
     border: 1px #999 solid;
 }
@@ -241,6 +234,10 @@ li hr {
     margin: 0.4em auto;
     width: 93%;
     border-width: 0;
+}
+
+li > ul {
+    margin-top: 0.4rem;
 }
 
 .menu__list .menu__list li hr {
@@ -440,8 +437,8 @@ https://www.feelback.dev/docs/guides/stripe-like-documentation-feedback-for-docu
 
 /* Announcement bar */
 div[class^="announcementBar_"] {
-    --site-announcement-bar-stripe-color1: #f5fddd;
-    --site-announcement-bar-stripe-color2: #c4fbcd;
+    --site-announcement-bar-stripe-color1: #ddfdfd;
+    --site-announcement-bar-stripe-color2: #cbe3fd;
     background: repeating-linear-gradient(45deg, var(--site-announcement-bar-stripe-color1), var(--site-announcement-bar-stripe-color1) 20px, var(--site-announcement-bar-stripe-color2) 10px, var(--site-announcement-bar-stripe-color2) 40px);
     font-size: 16px;
     font-weight: 600;

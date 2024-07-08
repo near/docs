@@ -6,14 +6,6 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {WidgetEditor} from "@site/src/components/widget-editor"
 
-:::warning What is the state of BOS (NEAR Components)?
-
-We no longer recommend building on BOS due to its limited capabilities and discontinued security maintenance. Developers with active projects on BOS are encouraged to migrate to another deployment strategy.
-
-See the [Web3 frontends](/build/web3-apps/frontend#bos-socialvm) section for more information.
-
-:::
-
 Borrowing from React, Near Components use hooks such as [**`useState`**](#state) and [**`useEffect`**](#useeffect-hook) to handle the state's logic, and [**props**](#props) to receive parameters.
 
 Near Components are stored in the blockchain, for which you will use the `NEAR VM` to [retrieve and execute them in the browser](../../4.web3-apps/integrate-components.md).

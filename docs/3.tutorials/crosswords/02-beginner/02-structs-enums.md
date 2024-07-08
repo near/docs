@@ -15,7 +15,7 @@ import enumBox from '/docs/assets/crosswords/enum-a-d-block--eizaconiendo.near--
 
 If you're not familiar with Rust, it may be confusing that there are no classes or inheritance like other programming languages. We'll be exploring how to [use structs](https://doc.rust-lang.org/book/ch05-01-defining-structs.html), which are someone similar to classes, but perhaps simpler.
 
-Remember that there will be only one struct that gets the [`#[near_bindgen]` macro](/sdk/rust/contract-structure/near-bindgen) placed on it; our primary struct or singleton if you wish. Oftentimes the primary struct will contain additional structs that may, in turn, contain more structs in a neat and orderly way. You may also have structs that are used to return data to an end user, like a frontend. We'll be covering both of these cases in this chapter.
+Remember that there will be only one struct that gets the [`#[near]` macro](../../../2.build/2.smart-contracts/anatomy/anatomy.md) placed on it; our primary struct or singleton if you wish. Oftentimes the primary struct will contain additional structs that may, in turn, contain more structs in a neat and orderly way. You may also have structs that are used to return data to an end user, like a frontend. We'll be covering both of these cases in this chapter.
 
 ### Enums
 
@@ -25,7 +25,7 @@ For our crossword puzzle, one example of an enum is the direction of the clue: e
 
 <figure>
     <img src={enumBox} alt="Children's toy of a box that has blocks that only fit certain shapes, resembling the letters A and D. Art created by eizaconiendo.near" width="600"/>
-    <figcaption>Art by <a href="https://twitter.com/eiza_coniendo" target="_blank">eizaconiendo.near</a></figcaption>
+    <figcaption>Art by <a href="https://twitter.com/eiza_coniendo" target="_blank" rel="noopener noreferrer">eizaconiendo.near</a></figcaption>
 </figure>
 <br/>
 
@@ -48,7 +48,7 @@ In this chapter, we want the ability to add multiple, custom crossword puzzles. 
 Let's dive right in, starting with our primary struct:
 
 ```rust
-#[near(contract_state]
+#[near(contract_state)]
 #[derive(PanicOnDefault)]
 pub struct Crossword {
     puzzles: LookupMap<String, Puzzle>,  // ⟵ Puzzle is a struct we're defining
@@ -110,7 +110,7 @@ Crossword ⟵ primary struct with #[near(contract_state)]
 
 ### Returning data
 
-Since we're going to have multiple crossword puzzles that have their own, unique clues and positions in a grid, we'll want to return puzzle objects to a frontend.  
+Since we're going to have multiple crossword puzzles that have their own, unique clues and positions in a grid, we'll want to return puzzle objects to a frontend.
 
 :::tip Quick note on return values
 By default, return values are serialized in JSON unless explicitly directed to use Borsh for binary serialization.
@@ -127,7 +127,7 @@ The return value would be a JSON array:
 
 `["crossword", "puzzle"]`
 
-While somewhat advanced, you can learn more about [changing the serialization here](/sdk/rust/contract-interface/serialization-interface#overriding-serialization-protocol-default).
+While somewhat advanced, you can learn more about [changing the serialization here](../../../2.build/2.smart-contracts/anatomy/serialization-interface.md).
 :::
 
 We have a struct called `JsonPuzzle` that differs from the `Puzzle` struct we've shown. It has one difference: the addition of the `solution_hash` field.
@@ -188,7 +188,7 @@ The crossword puzzle will eventually use a cross-contract call and callback, so 
 
 In the section above, we saw two fields in the structs that had an enum type:
 
-1.`AnswerDirection` — this is the simplest type of enum, and will look familiar from other programming languages. It provides the only two options for how a clue in oriented in a crossword puzzle: across and down.  
+1.`AnswerDirection` — this is the simplest type of enum, and will look familiar from other programming languages. It provides the only two options for how a clue in oriented in a crossword puzzle: across and down.
 
 ```rust
 #[near(serializers = [json, borsh])]

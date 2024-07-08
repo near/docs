@@ -236,12 +236,12 @@ Since this source is just a skeleton you'll get many warnings about unused code,
  │   |                             ^^^^^^^^^^  ^^^^^^^^^  ^^^^^^^^^^^^  ^^^^^^^^^^^^
  │   |
  │   = note: `#[warn(unused_imports)]` on by default
- │ 
+ │
  │ warning: unused import: `Base64VecU8`
  │  --> src/lib.rs:4:28
  │   |
  │ 4 | use near_sdk::json_types::{Base64VecU8, U128};
- │   |   
+ │   |
 
  │ warning: `nft_contract_skeleton` (lib) generated 48 warnings (run `cargo fix --lib -p nft_contract_skeleton` to apply 45 suggestions)
  │     Finished release [optimized] target(s) in 11.01s
@@ -256,13 +256,14 @@ Building the skeleton is useful to validate that your Rust toolchain works prope
 ## Conclusion
 
 You've seen the layout of this NFT smart contract, and how all the functions are laid out across the different source files.
-Using `yarn`, you've been able to compile the contract, and you'll start fleshing out this skeleton in the next [Minting tutorial](/tutorials/nfts/minting).
+Using `yarn`, you've been able to compile the contract, and you'll start fleshing out this skeleton in the next [Minting tutorial](2-minting.md).
 
 :::note Versioning for this article
 At the time of this writing, this example works with the following versions:
 
 - rustc: `1.76.0`
 - near-sdk-rs: `5.1.0`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.1.0`
+- cargo-near: `0.6.1`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
 
 :::
