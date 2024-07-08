@@ -712,5 +712,5 @@ và chúng ta có thể tìm thấy kết quả của nó trong `receipts_outcom
 cho biết rằng transaction đã thành công.
 
 :::tip Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol" target="_blank" rel="noopener noreferrer"> Ask it on StackOverflow! </a>
 :::

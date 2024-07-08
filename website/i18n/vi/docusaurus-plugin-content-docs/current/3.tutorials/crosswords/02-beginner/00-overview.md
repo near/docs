@@ -15,7 +15,7 @@ Let's give the smart contract the ability to store multiple crosswords and offer
 
 <figure>
     <img src={multipleCrosswords} alt="Man holding a book full of crossword puzzles, in his other hand he's holding a piggy bank. Art created by r3v.near"/>
-    <figcaption className="full-width">Art by <a href="https://twitter.com/rev_rodrigueza" target="_blank">r3v.near</a></figcaption>
+    <figcaption className="full-width">Art by <a href="https://twitter.com/rev_rodrigueza" target="_blank" rel="noopener noreferrer">r3v.near</a></figcaption>
 </figure>
 
 <br/>

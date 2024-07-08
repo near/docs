@@ -28,7 +28,7 @@ NEAR에는 비동기 트랜잭션이 있으며 일부 교차 컨트랙트 호출
 
 <figure>
     <img src={accessKeys} width="600" alt="A keychain with three keys. A large, gold key represents the full-access keys on NEAR. The two other keys are gray and smaller, and have detachable latches on them. They represent function-call access key. Art created by alcantara_gabriel.near" />
-    <figcaption>Art by <a href="https://twitter.com/Bagriel_5_10" target="_blank">alcantara_gabriel.near</a></figcaption>
+    <figcaption>Art by <a href="https://twitter.com/Bagriel_5_10" target="_blank" rel="noopener noreferrer">alcantara_gabriel.near</a></figcaption>
 </figure><br/>
 
 걸쇠가 있어 탈착이 가능하다는 점을 기억하세요.

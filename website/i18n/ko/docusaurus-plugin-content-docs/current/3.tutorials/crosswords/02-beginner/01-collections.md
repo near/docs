@@ -37,7 +37,7 @@ Rust SDK의 특수 컬렉션 목록을 보면 일부는 `Lookup`로 시작하고
 
 <figure>
     <img src={bookPagination} alt="해시의 페이지화를 보여주는 책. peered_stagg.near 그림" width="600"/>
-    <figcaption>컬렉션에 여러 페이지의 퍼즐 해시가 있다고 생각하세요.<br/>Art by <a href="https://twitter.com/pierced_stag" target="_blank">pierced_staggg.near</a></figcaption>
+    <figcaption>Think of our collection as having multiple pages of puzzle hashes.<br/>Art by <a href="https://twitter.com/pierced_stag" target="_blank" rel="noopener noreferrer">pierced_staggg.near</a></figcaption>
 </figure>
 
 <br/>
@@ -78,7 +78,7 @@ The snippet below shows the first method in the implementation of the `Crossword
 
 <figure>
     <img src={guardsAroundContract} alt="스마트 컨트랙트에 가까운 라벨이 있는 미래형 클럽 앞의 가드 또는 바운서. connoisseur_dane.near 그림" width="600"/>
-    <figcaption>어떤 계정이 스마트 컨트랙트 로직에 들어갈 수 있는지 보호합니다.<br/>Art by <a href="https://twitter.com/connoisseurdane" target="_blank">connoisseur_dane.near</a></figcaption>
+    <figcaption>Guarding which accounts can enter the smart contract logic.<br/>Art by <a href="https://twitter.com/connoisseurdane" target="_blank" rel="noopener noreferrer">connoisseur_dane.near</a></figcaption>
 </figure>
 
 <br/>

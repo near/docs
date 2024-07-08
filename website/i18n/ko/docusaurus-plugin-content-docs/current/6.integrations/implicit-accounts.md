@@ -102,5 +102,5 @@ base58.b58decode(pk58).hex()
 **참고:** `near-cli`에 대한 기본 네트워크는 `testnet`입니다. 이를 `mainnet` 또는 `betanet`으로 바꾸고 싶다면, [`near-cli` 네트워크 선택](/tools/near-cli#network-selection)을 참고하세요.
 
 :::tip 질문이 있으신가요?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol" target="_blank" rel="noopener noreferrer"> Ask it on StackOverflow! </a>
 :::

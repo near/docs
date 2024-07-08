@@ -78,7 +78,7 @@ Here's what we'll want to do:
 
 <figure>
     <img src={teachingDeployment} alt="선생님은 스마트 컨트랙트를 적절하게 배포하는 방법에 대한 지침이 있는 칠판을 보여줍니다. 1. 컨트랙트 구축. 2. 하위 계정 만들기(또는 계정이 있는 경우 삭제하고 다시 만들기) 3. 하위 계정에 배포 4. 4. 상호작용 jeheycell.near 그림"/>
-    <figcaption className="full-width"><a href="https://twitter.com/artcultureac" target="_blank">jeheycell.near</a> 그림</figcaption>
+    <figcaption className="full-width">Art by <a href="https://twitter.com/artcultureac" target="_blank" rel="noopener noreferrer">jeheycell.near</a></figcaption>
 </figure>
 
 ### 컨트랙트 구축
@@ -116,7 +116,7 @@ See this visualization where two keys belonging to `mike.near` are able to creat
 
 <figure>
     <img src={createAccount} alt="두 그림이 하위 계정을 결합하는 계정 만들기를 묘사합니다. seanpineda.near 그림"/>
-    <figcaption className="full-width"><a href="https://twitter.com/_seanpineda" target="_blank">seanpineda.near</a> 그림</figcaption>
+    <figcaption className="full-width">Art by <a href="https://twitter.com/_seanpineda" target="_blank" rel="noopener noreferrer">seanpineda.near</a></figcaption>
 </figure>
 
 :::
@@ -228,7 +228,7 @@ We'll be iterating on this smart contract during this tutorial, and in some case
 </video>
 
 <figure>
-    <figcaption>다시 만든 하위 계정을 삭제하면 상태를 지우고 새로 시작할 수 있습니다.<br/><a href="https://twitter.com/JohnreyBona" target="_blank">iambon.near</a>의 애니메이션</figcaption>
+    <figcaption>Deleting a recreating a subaccount will clear the state and give us a fresh start.<br/>Animation by <a href="https://twitter.com/JohnreyBona" target="_blank" rel="noopener noreferrer">iambon.near</a></figcaption>
 </figure>
 
 Using NEAR CLI, the commands will look like this:

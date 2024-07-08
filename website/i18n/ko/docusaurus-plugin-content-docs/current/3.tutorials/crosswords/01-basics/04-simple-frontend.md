@@ -14,7 +14,7 @@ import nearReactFriends from '/docs/assets/crosswords/near-and-react--dakila.nea
 
 <figure>
     <img src={nearReactFriends} alt="NEAR과 React라는 두 문자가 어울립니다. dakila.near 그림" width="600"/>
-    <figcaption>NEAR 백엔드와 React 프론트엔드의 다이나믹 듀오.<br/>Art by <a href="https://twitter.com/rodolf_dtbbx" target="_blank">dakila.near</a></figcaption>
+    <figcaption>Dynamic duo of NEAR as the backend and React as a frontend.<br/>Art by <a href="https://twitter.com/rodolf_dtbbx" target="_blank" rel="noopener noreferrer">dakila.near</a></figcaption>
 </figure>
 
 <br/>

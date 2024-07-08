@@ -19,7 +19,7 @@ Rust는 진지한 시스템 프로그래밍 언어입니다. 포인터, 수명(l
 
 <figure>
     <img src={rustScary} alt="Rust 코드를 보고 걱정하는 프로그래머 ksart.near 그림 ksart.near 그림" width="600"/>
-    <figcaption><a href="https://twitter.com/ksartworks" target="_blank">ksart.near</a> 그림</figcaption>
+    <figcaption>Art by <a href="https://twitter.com/ksartworks" target="_blank" rel="noopener noreferrer">ksart.near</a></figcaption>
 </figure>
 
 <br/>

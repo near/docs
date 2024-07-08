@@ -25,7 +25,7 @@ Remember that there will be only one struct that gets the [`#[near]` macro](../.
 
 <figure>
     <img src={enumBox} alt="A와 D라는 글자를 닮은 특정 모양에만 맞는 블록이 있는 상자의 어린이 장난감. eizaconien do.near 그림" width="600"/>
-    <figcaption><a href="https://twitter.com/eiza_coniendo" target="_blank">eizaconiendo.near</a> 그림</figcaption>
+    <figcaption>Art by <a href="https://twitter.com/eiza_coniendo" target="_blank" rel="noopener noreferrer">eizaconiendo.near</a></figcaption>
 </figure>
 
 <br/>

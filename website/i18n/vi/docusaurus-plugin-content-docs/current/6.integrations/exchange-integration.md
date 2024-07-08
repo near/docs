@@ -40,5 +40,5 @@ Vui lòng tham khảo các thay đổi cấu hình được yêu cầu trong `co
 - [https://github.com/near/core-contracts](https://github.com/near/core-contracts)
 
 :::tip Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol" target="_blank" rel="noopener noreferrer"> Ask it on StackOverflow! </a>
 :::

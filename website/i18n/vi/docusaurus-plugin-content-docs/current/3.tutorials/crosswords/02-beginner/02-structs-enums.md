@@ -25,7 +25,7 @@ For our crossword puzzle, one example of an enum is the direction of the clue: e
 
 <figure>
     <img src={enumBox} alt="Children's toy of a box that has blocks that only fit certain shapes, resembling the letters A and D. Art created by eizaconiendo.near" width="600"/>
-    <figcaption>Art by <a href="https://twitter.com/eiza_coniendo" target="_blank">eizaconiendo.near</a></figcaption>
+    <figcaption>Art by <a href="https://twitter.com/eiza_coniendo" target="_blank" rel="noopener noreferrer">eizaconiendo.near</a></figcaption>
 </figure>
 
 <br/>

@@ -21,7 +21,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Source+Code+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap">
 <script src="https://buttons.github.io/buttons.js"></script>
 <script src="https://use.fontawesome.com/221fd444f5.js"></script><link rel="stylesheet" href="/ko/assets/css/styles.68196de6.css">
-<script src="/ko/assets/js/runtime~main.40a79f59.js" defer="defer"></script>
+<script src="/ko/assets/js/runtime~main.c71f050d.js" defer="defer"></script>
 <script src="/ko/assets/js/main.6cd66539.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -29,7 +29,7 @@
 <p>이 십자말풀이 퍼즐 튜토리얼의 이 첫 번째 장에서는 초보자에게 친숙한 방식으로 스마트 컨트랙트 개발에 대한 기본 개념을 소개합니다. 이 챕터에서는, <a href="https://docs.near.org/tools/near-cli" target="_blank" rel="noopener noreferrer">NEAR CLI</a>를 통해 상호 작용할 수 있는 개념 증명(proof-of-concept) 컨트랙트와 <a href="https://www.npmjs.com/package/near-api-js" target="_blank" rel="noopener noreferrer"><code>near-api-js 라이브러리</code>를 사용하는 간단한 프론트엔드를 작성하게 됩니다.</a></p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="생각보다-나쁘지-않습니다">생각보다 나쁘지 않습니다<a href="#생각보다-나쁘지-않습니다" class="hash-link" aria-label="Direct link to 생각보다 나쁘지 않습니다" title="Direct link to 생각보다 나쁘지 않습니다">​</a></h2>
 <p>Rust는 진지한 시스템 프로그래밍 언어입니다. 포인터, 수명(lifetime), 매크로 및 처음 볼 수도 있는 것들이 많을 것입니다. 아래 사진과 같이 느끼더라도 걱정하지 마세요.</p>
-<figure><img src="/ko/assets/images/rust-scary--ksart.near-975e8b677340632dc794cde723ad74ff.png" alt="Rust 코드를 보고 걱정하는 프로그래머 ksart.near 그림 ksart.near 그림" width="600"><figcaption><a href="https://twitter.com/ksartworks" target="_blank">ksart.near</a> 그림</figcaption></figure>
+<figure><img src="/ko/assets/images/rust-scary--ksart.near-975e8b677340632dc794cde723ad74ff.png" alt="Rust 코드를 보고 걱정하는 프로그래머 ksart.near 그림 ksart.near 그림" width="600"><figcaption>Art by <a href="https://twitter.com/ksartworks" target="_blank" rel="noopener noreferrer">ksart.near</a></figcaption></figure>
 <br>
 <p>좋은 소식은 Rust SDK가 많은 양의 힘든 작업들을 처리할 수 있다는 것입니다.</p>
 <p>우리는 또한 우리 편에 있는 컴파일러를 통해, 정확히 무엇이 잘못되었는지 알려주고 이에 대한 제안을 제공할 것입니다. 이 튜토리얼을 진행하면서, 반복해서 사용할 패턴들을 확인할 수 있을 것입니다.</p>
@@ -41,7 +41,7 @@
 <li>자말풀이 퍼즐을 풀고 있는 사용자는 답을 알 수 없습니다.</li>
 <li>십자말풀이 퍼즐의 스마트 컨트랙트 작성자만이 정답을 설정할 수 있습니다.</li>
 </ul>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="완료된-프로젝트">완료된 프로젝트<a href="#완료된-프로젝트" class="hash-link" aria-label="Direct link to 완료된 프로젝트" title="Direct link to 완료된 프로젝트">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="완료된-프로젝트">완  료된 프로젝트<a href="#완료된-프로젝트" class="hash-link" aria-label="Direct link to 완료된 프로젝트" title="Direct link to 완료된 프로젝트">​</a></h2>
 <p>이 챕터의 최종 코드는 다음과 같습니다.</p>
 <p><a href="https://github.com/near-examples/crossword-tutorial-chapter-1" target="_blank" rel="noopener noreferrer">https://github.com/near-examples/crossword-tutorial-chapter-1</a></p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="작동-원리">작동 원리<a href="#작동-원리" class="hash-link" aria-label="Direct link to 작동 원리" title="Direct link to 작동 원리">​</a></h2>

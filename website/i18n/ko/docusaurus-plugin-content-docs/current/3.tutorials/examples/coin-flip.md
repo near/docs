@@ -20,7 +20,7 @@ import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 | Gitpod                    | Clone locally                                             |
 | ------------------------- | --------------------------------------------------------- |
-| <a href="https://gitpod.io/#https://github.com/near-examples/coin-flip-examples.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | `https://github.com/near-examples/coin-flip-examples.git` |
+| <a href="https://gitpod.io/#https://github.com/near-examples/coin-flip-examples.git" target="_blank" rel="noopener noreferrer"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | `https://github.com/near-examples/coin-flip-examples.git` |
 
 
 Gitpod를 선택하면 새 브라우저 창이 코드와 함께 자동으로 열립니다. 잠시 기다리면 프론트엔드가 팝업됩니다(팝업 창이 차단되지 않았는지 확인).

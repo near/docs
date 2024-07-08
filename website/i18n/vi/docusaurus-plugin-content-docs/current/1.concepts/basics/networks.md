@@ -39,7 +39,7 @@ Thông tin thêm về phát triển local [ở đây](https://near-nodes.io/vali
 ---
 
 :::tip Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol" target="_blank" rel="noopener noreferrer">
 <h8>Ask it on StackOverflow!</h8>
 </a>
 :::

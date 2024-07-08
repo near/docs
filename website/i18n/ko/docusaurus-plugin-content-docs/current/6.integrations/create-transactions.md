@@ -471,7 +471,7 @@ const transactionLink = `https://${prefix}nearblocks.io/txns/${result.transactio
 ```
 
 :::tip 질문이 있으신가요?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol"><h8>StackOverflow에 물어보세요!</h8></a>
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol" target="_blank" rel="noopener noreferrer"><h8>Ask it on StackOverflow!</h8></a>
 :::
 
 즐거운 코딩 되세요! 🚀

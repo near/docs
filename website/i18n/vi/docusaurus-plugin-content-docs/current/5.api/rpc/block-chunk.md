@@ -295,7 +295,7 @@ Khi API request không thành công, RPC server sẽ trả về một error resp
       <td>
         <ul>
           <li>Kiểm tra xem block được request có hợp lệ không</li>
-          <li>Nếu block đã được tạo ra hơn 5 epoch trước đó, hãy thử gởi request của bạn đến <a href="https://near-nodes.io/intro/node-types#archival-node">một archival node</a></li>
+          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="https://near-nodes.io/intro/node-types#archival-node" target="_blank" rel="noopener noreferrer">an archival node</a></li>
         </ul>
       </td>
     </tr>
@@ -543,7 +543,7 @@ ví dụ cho `chunk_id`:
       <td>
         <ul>
           <li>Kiểm tra xem block được request có hợp lệ không</li>
-          <li>Nếu block đã được tạo ra hơn 5 epoch trước đó, hãy thử gởi request của bạn đến <a href="https://near-nodes.io/intro/node-types#archival-node">một archival node</a></li>
+          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="https://near-nodes.io/intro/node-types#archival-node" target="_blank" rel="noopener noreferrer">an archival node</a></li>
         </ul>
       </td>
     </tr>
@@ -748,7 +748,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
       <td>
         <ul>
           <li>Kiểm tra xem block được request có hợp lệ không</li>
-          <li>Nếu block đã được tạo ra hơn 5 epoch trước đó, hãy thử gởi request của bạn đến <a href="https://near-nodes.io/intro/node-types#archival-node">một archival node</a></li>
+          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="https://near-nodes.io/intro/node-types#archival-node" target="_blank" rel="noopener noreferrer">an archival node</a></li>
         </ul>
       </td>
     </tr>

@@ -284,5 +284,5 @@ Receipt는 모든 Receipt가 적용될 때까지 네트워크 전체에 전파�
   - https://www.github.com/near
 
 :::tip 질문이 있으신가요?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol" target="_blank" rel="noopener noreferrer"> Ask it on StackOverflow! </a>
 :::

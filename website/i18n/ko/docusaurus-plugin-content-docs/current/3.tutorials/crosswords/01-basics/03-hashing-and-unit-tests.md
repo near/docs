@@ -128,7 +128,7 @@ near contract call-function as-transaction crossword.friend.testnet new json-arg
 
 <figure>
     <img src={batchCookieTray} alt="트랜잭션을 나타내는 쿠키 시트입니다. 여기서 쿠키는 배포 및 함수 호출 작업입니다. dobulyo.near 그림."/>
-    <figcaption className="full-width"><a href="https://twitter.com/w_artsu" target="_blank">dobulyo.near</a> 그림</figcaption>
+    <figcaption className="full-width">Art by <a href="https://twitter.com/w_artsu" target="_blank" rel="noopener noreferrer">dobulyo.near</a></figcaption>
 </figure><br/>
 
 :::info 사용 중인 일괄 Action 일괄 Action은 초기화 함수를 배포하고 호출하려는 경우에 일반적으로 사용됩니다. 팩토리 패턴을 사용할 때도 마찬가지인데, 여기서 하위 계정(subaccount)이 생성되고 스마트 컨트랙트가 배포되며 키가 추가되고 함수가 호출되는 것은 일괄 Action을 통해 이루어집니다.

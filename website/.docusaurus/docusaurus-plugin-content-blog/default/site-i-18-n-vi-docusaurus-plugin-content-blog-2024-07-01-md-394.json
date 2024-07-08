@@ -2,7 +2,7 @@
   "permalink": "/vi/blog/bos-web-engine-sunset",
   "source": "@site/i18n/vi/docusaurus-plugin-content-blog/2024-07-01.md",
   "title": "Pagoda Sunsets B.O.S. Web Engine R&D Project",
-  "description": "After many discussions with NEAR’s B.O.S. component developers and careful consideration, Pagoda has decided to discontinue its active development for B.O.S. Web Engine R&D for an improved execution layer for NEAR B.O.S. Components. (also known as “BWE” & “VM2”)",
+  "description": "After careful consideration, Pagoda has decided to discontinue its active efforts to improve the B.O.S. Web Engine",
   "date": "2024-07-01T00:00:00.000Z",
   "tags": [
     {
@@ -22,8 +22,8 @@
       "permalink": "/vi/blog/tags/bos"
     }
   ],
-  "readingTime": 5.965,
-  "hasTruncateMarker": false,
+  "readingTime": 6.08,
+  "hasTruncateMarker": true,
   "authors": [
     {
       "name": "Josh Ford",

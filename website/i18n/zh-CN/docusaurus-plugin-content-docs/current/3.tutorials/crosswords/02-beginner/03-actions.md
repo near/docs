@@ -17,7 +17,7 @@ We're going to introduce a new Action: `Transfer`. We're going to introduce a ne
 
 <figure>
     <img src={transferNEAR} alt="Two hands exchanging a coin emblazoned with the NEAR Protocol logo. Art created by qiqi04.near Art created by qiqi04.near" width="400"/>
-    <figcaption className="small">Art by <a href="https://twitter.com/blankworl" target="_blank">qiqi04.near</a></figcaption>
+    <figcaption className="small">Art by <a href="https://twitter.com/blankworl" target="_blank" rel="noopener noreferrer">qiqi04.near</a></figcaption>
 </figure>
 
 <br/>
@@ -58,7 +58,7 @@ That's the value in yoctoNEAR. This concept is similar to other blockchains. Tha
 
 <figure>
     <img src={yoctoNEAR} alt="Depiction of bills of NEAR, coins for partial NEAR, and then a magnifying glass showing a tiny yoctoNEAR next to an ant. Art created by jrbemint.near Art created by jrbemint.near"/>
-    <figcaption className="full-width">Art by <a href="https://twitter.com/JrbeMad" target="_blank">jrbemint.near</a></figcaption>
+    <figcaption className="full-width">Art by <a href="https://twitter.com/JrbeMad" target="_blank" rel="noopener noreferrer">jrbemint.near</a></figcaption>
 </figure>
 
 ## Adding `Transfer`
@@ -98,7 +98,7 @@ Let's cover three commonly-used functions regarding accounts: predecessor, signe
 
 <figure>
     <img src={signerPredecessorCurrent} alt="Illustration of Alice sending a transaction to a smart contract named Banana, which does a cross-contract call to the smart contract Cucumber. Art created by yasuoarts.near Art created by yasuoarts.near"/>
-    <figcaption className="full-width">Alice sends a transaction to the contract on banana.near, which does a cross-contract call to cucumber.near.<br/>From the perspective of a contract on cucumber.near, we see a list of the predecessor, signer, and current account.<br/>Art by <a href="https://twitter.com/YasuoArt69" target="_blank">yasuoarts.near</a></figcaption>
+    <figcaption className="full-width">Alice sends a transaction to the contract on banana.near, which does a cross-contract call to cucumber.near.<br/>From the perspective of a contract on cucumber.near, we see a list of the predecessor, signer, and current account.<br/>Art by <a href="https://twitter.com/YasuoArt69" target="_blank" rel="noopener noreferrer">yasuoarts.near</a></figcaption>
 </figure><br/><br/>
 
 1. [predecessor account](https://docs.rs/near-sdk/latest/near_sdk/env/fn.predecessor_account_id.html) — `env::predecessor_account_id()`

@@ -134,7 +134,7 @@ With this approach, each record you add to your contract will be a predictable s
 Cấu trúc của NEAR cải tiến các hoạt động của network trong khi đó vẫn hỗ trợ flexibility và predictability cho các contract developer. Quản lý chi phí lưu trữ là một khía cạnh quan trọng của smart contract design, và các library của NEAR khiến nó trở nên dễ dàng để nhận ra bao nhiêu chi phí lưu trữ là đủ cho ứng dụng của bạn.
 
 :::tip Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol"><h8>Ask it on StackOverflow!</h8></a>
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol" target="_blank" rel="noopener noreferrer"><h8>Ask it on StackOverflow!</h8></a>
 :::
 
 ## Footnotes

@@ -14,7 +14,7 @@ This will be the final section in this chapter, where we'll add a simple fronten
 
 <figure>
     <img src={nearReactFriends} alt="Two characters hanging out, NEAR and React. Art created by dakila.near Art created by dakila.near" width="600"/>
-    <figcaption>Dynamic duo of NEAR as the backend and React as a frontend.<br/>Art by <a href="https://twitter.com/rodolf_dtbbx" target="_blank">dakila.near</a></figcaption>
+    <figcaption>Dynamic duo of NEAR as the backend and React as a frontend.<br/>Art by <a href="https://twitter.com/rodolf_dtbbx" target="_blank" rel="noopener noreferrer">dakila.near</a></figcaption>
 </figure>
 
 <br/>

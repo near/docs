@@ -433,7 +433,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
       <td>
         <ul>
           <li>나중에 다시 시도하세요.</li>
-          <li>트랜잭션이 5 이상의 에포크 전에 제출된 경우 <a href="https://near-nodes.io/intro/node-types#archival-node">아카이브 노드</a>로 요청을 보내세요.</li>
+          <li>If the transaction had been submitted more than 5 epochs ago, try to send your request to <a href="https://near-nodes.io/intro/node-types#archival-node" target="_blank" rel="noopener noreferrer">an archival node</a></li>
           <li>트랜잭션 해시를 확인하세요.</li>
         </ul>
       </td>
@@ -809,7 +809,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
       <td>
         <ul>
           <li>나중에 다시 시도하세요.</li>
-          <li>트랜잭션이 5 이상의 에포크 전에 제출된 경우 <a href="https://near-nodes.io/intro/node-types#archival-node">아카이브 노드</a>로 요청을 보내세요.</li>
+          <li>If the transaction had been submitted more than 5 epochs ago, try to send your request to <a href="https://near-nodes.io/intro/node-types#archival-node" target="_blank" rel="noopener noreferrer">an archival node</a></li>
           <li>트랜잭션 해시를 확인하세요.</li>
         </ul>
       </td>

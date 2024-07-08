@@ -433,7 +433,7 @@ Ví dụ:
       <td>
         <ul>
           <li>Hãy thử lại sau</li>
-          <li>Nếu transaction đã được submit hơn 5 epoch trước đó, hãy thử gởi request của bạn đến <a href="https://near-nodes.io/intro/node-types#archival-node">một archival node</a></li>
+          <li>If the transaction had been submitted more than 5 epochs ago, try to send your request to <a href="https://near-nodes.io/intro/node-types#archival-node" target="_blank" rel="noopener noreferrer">an archival node</a></li>
           <li>Kiểm tra lại transaction hash</li>
         </ul>
       </td>
@@ -809,7 +809,7 @@ Ví dụ:
       <td>
         <ul>
           <li>Hãy thử lại sau</li>
-          <li>Nếu transaction đã được submit hơn 5 epoch trước đó, hãy thử gởi request của bạn đến <a href="https://near-nodes.io/intro/node-types#archival-node">một archival node</a></li>
+          <li>If the transaction had been submitted more than 5 epochs ago, try to send your request to <a href="https://near-nodes.io/intro/node-types#archival-node" target="_blank" rel="noopener noreferrer">an archival node</a></li>
           <li>Kiểm tra lại transaction hash</li>
         </ul>
       </td>

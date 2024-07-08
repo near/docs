@@ -20,7 +20,7 @@ You have two options to start the example:
 
 | Gitpod                    | Clone locally                                             |
 | ------------------------- | --------------------------------------------------------- |
-| <a href="https://gitpod.io/#https://github.com/near-examples/coin-flip-examples.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | `https://github.com/near-examples/coin-flip-examples.git` |
+| <a href="https://gitpod.io/#https://github.com/near-examples/coin-flip-examples.git" target="_blank" rel="noopener noreferrer"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | `https://github.com/near-examples/coin-flip-examples.git` |
 
 
 If you choose Gitpod, a new browser window will open automatically with the code. Give it a minute, and the front-end will pop up (ensure the pop-up window is not blocked).

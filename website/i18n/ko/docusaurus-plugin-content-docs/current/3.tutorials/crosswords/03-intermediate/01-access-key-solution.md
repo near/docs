@@ -25,7 +25,7 @@ import padlockSafe from '/docs/assets/crosswords/safe-with-access-key--soulless.
 
 <figure>
     <img src={puzzleFrontrun} alt="프론트러닝 공격으로 수만 달러를 빼앗긴 퍼즐에 대해 이야기하는 트윗" width="600"/>
-    <figcaption>프론트러닝을 당한 퍼즐의 실제 예입니다.<br/>읽기 <a href="https://twitter.com/_anishagnihotri/status/1444113372715356162" target="_blank">Anish 의 스레드</a></figcaption>
+    <figcaption>Real-life example of a puzzle being front-run.<br/>Read <a href="https://twitter.com/_anishagnihotri/status/1444113372715356162" target="_blank" rel="noopener noreferrer">Anish Agnihotri's thread</a></figcaption>
 </figure>
 
 <br/>
@@ -50,7 +50,7 @@ import padlockSafe from '/docs/assets/crosswords/safe-with-access-key--soulless.
 
 <figure>
     <img src={padlockSafe} alt="시드 문구에 대한 단어가 포함된 자물쇠가 있는 작은 금고, 그리고 그것이 함수 호출 액세스 키를 가지고 있다는 것을 보여주면서 금고를 통해 볼 수 있습니다. soulless.near 그림."/>
-    <figcaption className="full-width">Open the safe using answers to the puzzle, revealing the function-call access key.<br/>Art by <a href="https://twitter.com/ZeroSerotonin__" target="_blank">soulless.near</a></figcaption>
+    <figcaption className="full-width">Open the safe using answers to the puzzle, revealing the function-call access key.<br/>Art by <a href="https://twitter.com/ZeroSerotonin__" target="_blank" rel="noopener noreferrer">soulless.near</a></figcaption>
 </figure><br/>
 
 우리의 `submit_solution` 메서드는 더 이상 일반 텍스트 응답을 해시할 필요가 없지만, 대신 이 트랜잭션에 서명한 키를 확인합니다. 멋집니다!

@@ -41,7 +41,7 @@ NEAR에서 계정에 키를 추가(및 제거)할 수 있습니다. 키에는 �
 
 <figure>
     <img src={accessKeys} width="600" alt="세 개의 키가 있는 키 체인입니다. 큰 금색 키는 NEAR의 전체 액세스 키를 나타냅니다. 다른 두 개의 키는 회색이고 더 작으며 분리 가능한 래치가 있습니다. 함수 호출 액세스 키를 나타냅니다. alcantara_gabriel.near 그림" />
-    <figcaption><a href="https://twitter.com/Bagriel_5_10" target="_blank">alcantara_gabriel.near</a> 그림</figcaption>
+    <figcaption>Art by <a href="https://twitter.com/Bagriel_5_10" target="_blank" rel="noopener noreferrer">alcantara_gabriel.near</a></figcaption>
 </figure>
 
 ### 전체 액세스 키

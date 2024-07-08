@@ -15,7 +15,7 @@ import multipleCrosswords from '/docs/assets/crosswords/puzzle-piggy-bank--r3v.n
 
 <figure>
     <img src={multipleCrosswords} alt="십자말풀이 퍼즐로 가득 찬 책을 들고 있는 남자, 다른 한 손에는 돼지 저금통을 들고 있습니다. r3v.near 그림"/>
-    <figcaption className="full-width">Art by <a href="https://twitter.com/rev_rodrigueza" target="_blank">r3v.near</a></figcaption>
+    <figcaption className="full-width">Art by <a href="https://twitter.com/rev_rodrigueza" target="_blank" rel="noopener noreferrer">r3v.near</a></figcaption>
 </figure>
 
 <br/>

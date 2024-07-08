@@ -37,7 +37,7 @@ NEAR 네트워크에서 체인을 조작하려는 시도는, 악의적인 활동
 
 우리는 POS 체인이기 때문에 GPU 지원이 필요하지 않으며 검증 과정에 계산 능력이 거의 필요하지 않습니다.
 
-<a href="https://github.com/near/wiki/blob/master/Archive/validators/about.md">Validator Quickstart</a> 및 <a href="https://github.com/near/wiki/blob/master/Archive/validators/faq.md">Staking FA</a>에서 합의 전략에 대해 자세히 알아볼 수 있습니다.
+You can read more about our consensus strategy on our <a href="https://github.com/near/wiki/blob/master/Archive/validators/about.md" target="_blank" rel="noopener noreferrer">Validator Quickstart</a> and <a href="https://github.com/near/wiki/blob/master/Archive/validators/faq.md" target="_blank" rel="noopener noreferrer">Staking FA</a>.
 </blockquote>
 
 ## Chunk-Only 밸리데이터

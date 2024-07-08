@@ -645,7 +645,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
       <td>
         <ul>
           <li>요청한 블록이 올바른지 확인하세요.</li>
-          <li>블록이 5 이상 에포크 전에 생성된 경우, <a href="https://near-nodes.io/intro/node-types#archival-node">아카이브 노드</a>로 요청을 보내세요.</li>
+          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="https://near-nodes.io/intro/node-types#archival-node" target="_blank" rel="noopener noreferrer">an archival node</a></li>
         </ul>
       </td>
     </tr>

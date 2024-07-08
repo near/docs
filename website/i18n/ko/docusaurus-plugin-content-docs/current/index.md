@@ -130,7 +130,8 @@ Welcome, this is the starting point for all NEAR documentation. Learn to build a
 
 <div className="row cards">
   <div className="col col--6">
-    <a href="https://dev.near.org/applications">
+    <a href="https://dev.near.org/applications" target="_blank" rel="noopener noreferrer">
+
       <div className="card">
         <div className="card__image">
           <img src={require("@site/static/docs/assets/welcome-pages/awesomenear.jpg").default} alt="Discover" />
@@ -145,7 +146,7 @@ Welcome, this is the starting point for all NEAR documentation. Learn to build a
     </a>
   </div>
   <div className="col col--6">
-    <a href="https://nomicon.io">
+    <a href="https://nomicon.io" target="_blank" rel="noopener noreferrer">
       <div className="card">
         <div className="card__image">
           <img src={require("@site/static/docs/assets/welcome-pages/nomicon.png").default} alt="Nomicon" />
@@ -160,7 +161,7 @@ Welcome, this is the starting point for all NEAR documentation. Learn to build a
     </a>
   </div>
   <div className="col col--6">
-    <a href="https://near-nodes.io">
+    <a href="https://near-nodes.io" target="_blank" rel="noopener noreferrer">
       <div className="card">
         <div className="card__image">
           <img src={require("@site/static/docs/assets/welcome-pages/validate.png").default} alt="Validate" />
@@ -175,7 +176,7 @@ Welcome, this is the starting point for all NEAR documentation. Learn to build a
     </a>
   </div>
   <div className="col col--6">
-    <a href="https://templates.mintbase.xyz/">
+    <a href="https://templates.mintbase.xyz/" target="_blank" rel="noopener noreferrer">
       <div className="card">
         <div className="card__image">
           <img src={require("@site/static/docs/assets/welcome-pages/mintbase-templates.png").default} alt="Templates" />

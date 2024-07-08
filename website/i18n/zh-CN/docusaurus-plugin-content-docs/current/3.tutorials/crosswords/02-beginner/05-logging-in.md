@@ -41,7 +41,7 @@ The illustration below shows a keychain with a full-access key (the large, gold 
 
 <figure>
     <img src={accessKeys} width="600" alt="A keychain with three keys. A keychain with three keys. A large, gold key represents the full-access keys on NEAR. The two other keys are gray and smaller, and have detachable latches on them. They represent function-call access key. Art created by alcantara_gabriel.near The two other keys are gray and smaller, and have detachable latches on them. They represent function-call access key. Art created by alcantara_gabriel.near" />
-    <figcaption>Art by <a href="https://twitter.com/Bagriel_5_10" target="_blank">alcantara_gabriel.near</a></figcaption>
+    <figcaption>Art by <a href="https://twitter.com/Bagriel_5_10" target="_blank" rel="noopener noreferrer">alcantara_gabriel.near</a></figcaption>
 </figure>
 
 ### Full-access keys

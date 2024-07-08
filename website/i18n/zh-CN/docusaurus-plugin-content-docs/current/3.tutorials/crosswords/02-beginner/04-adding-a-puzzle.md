@@ -32,7 +32,7 @@ Let's use the same steps we learned from the first chapter:
 
 <figure>
     <img src={teachingDeployment} alt="Teacher shows chalkboard with instructions on how to properly deploy a smart contract. 1. Build smart contract. 2. Create a subaccount (or delete and recreate if it exists) 3. Deploy to subaccount. 4. Interact. Art created by herogranada.near 1. Build smart contract. 2. Create a subaccount (or delete and recreate if it exists) 3. Deploy to subaccount. 4. Interact. Art created by herogranada.near" width="600"/>
-    <figcaption>Art by <a href="https://twitter.com/GranadaHero" target="_blank">herogranada.near</a></figcaption>
+    <figcaption>Art by <a href="https://twitter.com/GranadaHero" target="_blank" rel="noopener noreferrer">herogranada.near</a></figcaption>
 </figure>
 
 <br/>
@@ -49,7 +49,7 @@ Let's delete the subaccount and recreate it, to start from a blank slate.
 
 <figure>
     <img src={recreatingSubaccount} alt="Animation of an alien in space with a computer deleting and re-writing the account crossword.friend.testnet Art by 3one9.near" width="600"/>
-    <figcaption>Art by <a href="https://twitter.com/3one92" target="_blank">3one9.near</a></figcaption>
+    <figcaption>Art by <a href="https://twitter.com/3one92" target="_blank" rel="noopener noreferrer">3one9.near</a></figcaption>
 </figure>
 
 <br/>

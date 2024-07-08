@@ -134,7 +134,7 @@ Let's use this [Guest Book](https://github.com/near-examples/guest-book-examples
 NEAR의 구조는 네트워크 운영자에게 인센티브를 제공하는 동시에 컨트랙트 개발자에게 유연성과 예측 가능성을 제공합니다. 스토리지 관리는 스마트 컨트랙트 설계의 중요한 측면이며 NEAR의 라이브러리를 사용하면 애플리케이션에 필요한 스토리지 비용을 쉽게 파악할 수 있습니다.
 
 :::tip 질문이 있으신가요?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol"><h8>StackOverflow에 물어보세요!</h8></a>
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol" target="_blank" rel="noopener noreferrer"><h8>Ask it on StackOverflow!</h8></a>
 :::
 
 ## Footnotes

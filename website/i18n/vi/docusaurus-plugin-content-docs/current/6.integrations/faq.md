@@ -284,5 +284,5 @@ Chúng tôi sử dụng một format binary serialize đơn giản có tính xá
   - https://www.github.com/near
 
 :::tip Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol" target="_blank" rel="noopener noreferrer"> Ask it on StackOverflow! </a>
 :::

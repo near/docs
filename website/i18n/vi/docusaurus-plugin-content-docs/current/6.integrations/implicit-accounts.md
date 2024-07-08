@@ -102,5 +102,5 @@ Cách này tạo ra cho chúng ta cùng một account ID giống như sử dụn
 **Chú ý:** Network mặc định cho `near-cli` là `testnet`. Nếu bạn muốn thay network thành `mainnet` hoặc `betanet`, vui lòng xem hướng dẫn [lựa chọn network với `near-cli`](/tools/near-cli#network-selection).
 
 :::tip Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol" target="_blank" rel="noopener noreferrer"> Ask it on StackOverflow! </a>
 :::

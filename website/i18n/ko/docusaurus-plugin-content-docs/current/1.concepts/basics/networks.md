@@ -39,7 +39,7 @@ NEAR 프로토콜은 각각 독립적인 밸리데이터와 고유한 상태로 
 ---
 
 :::tip 질문이 있으신가요?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol" target="_blank" rel="noopener noreferrer">
 <h8>Ask it on StackOverflow!</h8>
 </a>
 :::

@@ -1,7 +1,7 @@
 {
   "id": "tutorials/near-components/indexer-tutorials/posts-indexer",
   "title": "Posts Indexer",
-  "description": "NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers.",
+  "description": "This tutorial creates a blockchain indexer using NEAR QueryAPI.",
   "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/3.tutorials/near-components/indexer-tutorials/posts-indexer.md",
   "sourceDirName": "3.tutorials/near-components/indexer-tutorials",
   "slug": "/tutorials/near-components/indexer-tutorials/posts-indexer",
