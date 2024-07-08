@@ -120,8 +120,8 @@ const config = {
     navbar: {
       logo: {
         alt: 'NEAR Logo',
-        src: 'img/near_logo.svg',
-        srcDark: 'img/near_logo_white.svg',
+        src: 'img/docs_logo.svg',
+        srcDark: 'img/docs_logo_white.svg',
       },
       items: [
         {
@@ -229,17 +229,9 @@ const config = {
             },
           ],
         },
-        {
-          type: 'search',
-          position: 'right',
-        },
         { label: 'Blog', href: '/blog' },
         {
           type: 'localeDropdown',
-          position: 'right',
-        },
-        {
-          href: 'login',
           position: 'right',
         },
       ],
