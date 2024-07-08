@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk=self.webpackChunk||[]).push([[532],{21533:a=>{a.exports=JSON.parse('{"tag":{"label":"VM2","permalink":"/ko/blog/tags/vm-2","allTagsPath":"/ko/blog/tags","count":1,"unlisted":false},"listMetadata":{"permalink":"/ko/blog/tags/vm-2","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"NEAR Docs Blog"}}')}}]);

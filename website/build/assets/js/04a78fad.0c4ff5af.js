@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk=self.webpackChunk||[]).push([[3087],{10425:a=>{a.exports=JSON.parse('{"tag":{"label":"BOS","permalink":"/blog/tags/bos","allTagsPath":"/blog/tags","count":1,"unlisted":false},"listMetadata":{"permalink":"/blog/tags/bos","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"NEAR Docs Blog"}}')}}]);

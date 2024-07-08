@@ -4,12 +4,12 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 export default [
   {
     path: '/zh-CN/blog',
-    component: ComponentCreator('/zh-CN/blog', '394'),
+    component: ComponentCreator('/zh-CN/blog', '055'),
     exact: true
   },
   {
     path: '/zh-CN/blog/archive',
-    component: ComponentCreator('/zh-CN/blog/archive', 'a8b'),
+    component: ComponentCreator('/zh-CN/blog/archive', '2d5'),
     exact: true
   },
   {
@@ -34,52 +34,52 @@ export default [
   },
   {
     path: '/zh-CN/blog/tags',
-    component: ComponentCreator('/zh-CN/blog/tags', '958'),
+    component: ComponentCreator('/zh-CN/blog/tags', 'e31'),
     exact: true
   },
   {
     path: '/zh-CN/blog/tags/bos',
-    component: ComponentCreator('/zh-CN/blog/tags/bos', '16e'),
+    component: ComponentCreator('/zh-CN/blog/tags/bos', 'd55'),
     exact: true
   },
   {
     path: '/zh-CN/blog/tags/bwe',
-    component: ComponentCreator('/zh-CN/blog/tags/bwe', '4f2'),
+    component: ComponentCreator('/zh-CN/blog/tags/bwe', '29e'),
     exact: true
   },
   {
     path: '/zh-CN/blog/tags/docusaurus',
-    component: ComponentCreator('/zh-CN/blog/tags/docusaurus', 'e60'),
+    component: ComponentCreator('/zh-CN/blog/tags/docusaurus', '20e'),
     exact: true
   },
   {
     path: '/zh-CN/blog/tags/getting-started',
-    component: ComponentCreator('/zh-CN/blog/tags/getting-started', '753'),
+    component: ComponentCreator('/zh-CN/blog/tags/getting-started', '645'),
     exact: true
   },
   {
     path: '/zh-CN/blog/tags/protocol',
-    component: ComponentCreator('/zh-CN/blog/tags/protocol', 'e4f'),
+    component: ComponentCreator('/zh-CN/blog/tags/protocol', 'eb3'),
     exact: true
   },
   {
     path: '/zh-CN/blog/tags/tutorial',
-    component: ComponentCreator('/zh-CN/blog/tags/tutorial', '89e'),
+    component: ComponentCreator('/zh-CN/blog/tags/tutorial', 'd8c'),
     exact: true
   },
   {
     path: '/zh-CN/blog/tags/updates',
-    component: ComponentCreator('/zh-CN/blog/tags/updates', '372'),
+    component: ComponentCreator('/zh-CN/blog/tags/updates', '82e'),
     exact: true
   },
   {
     path: '/zh-CN/blog/tags/vm-2',
-    component: ComponentCreator('/zh-CN/blog/tags/vm-2', 'b44'),
+    component: ComponentCreator('/zh-CN/blog/tags/vm-2', 'c1d'),
     exact: true
   },
   {
     path: '/zh-CN/blog/tags/windows',
-    component: ComponentCreator('/zh-CN/blog/tags/windows', '618'),
+    component: ComponentCreator('/zh-CN/blog/tags/windows', '03f'),
     exact: true
   },
   {
@@ -99,15 +99,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', 'b46'),
+    component: ComponentCreator('/zh-CN/', 'ad0'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', 'c2a'),
+        component: ComponentCreator('/zh-CN/', 'dee'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '041'),
+            component: ComponentCreator('/zh-CN/', 'fc7'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -297,7 +297,7 @@ export default [
               },
               {
                 path: '/zh-CN/build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer',
-                component: ComponentCreator('/zh-CN/build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer', 'dce'),
+                component: ComponentCreator('/zh-CN/build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer', '7c9'),
                 exact: true,
                 sidebar: "build"
               },
@@ -315,7 +315,7 @@ export default [
               },
               {
                 path: '/zh-CN/build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer',
-                component: ComponentCreator('/zh-CN/build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer', '1b1'),
+                component: ComponentCreator('/zh-CN/build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer', 'e7f'),
                 exact: true,
                 sidebar: "build"
               },
@@ -1443,7 +1443,7 @@ export default [
               },
               {
                 path: '/zh-CN/tools/indexing',
-                component: ComponentCreator('/zh-CN/tools/indexing', 'a1d'),
+                component: ComponentCreator('/zh-CN/tools/indexing', 'f81'),
                 exact: true,
                 sidebar: "tools"
               },
@@ -1748,7 +1748,7 @@ export default [
               },
               {
                 path: '/zh-CN/tutorials/near-components/ds-components',
-                component: ComponentCreator('/zh-CN/tutorials/near-components/ds-components', 'bbb'),
+                component: ComponentCreator('/zh-CN/tutorials/near-components/ds-components', '5fb'),
                 exact: true,
                 sidebar: "tutorials"
               },

@@ -1,5 +1,5 @@
 {
-  "/zh-CN/blog-394": {
+  "/zh-CN/blog-055": {
     "__comp": "a6aa9e1f",
     "__context": {
       "plugin": "36994c47"
@@ -25,14 +25,14 @@
         "content": "7ac6d364"
       }
     ],
-    "__props": "b6f232fb"
+    "__props": "1851d93b"
   },
-  "/zh-CN/blog/archive-a8b": {
+  "/zh-CN/blog/archive-2d5": {
     "__comp": "9e4087bc",
     "__context": {
       "plugin": "36994c47"
     },
-    "__props": "e98e7c58"
+    "__props": "185e0e38"
   },
   "/zh-CN/blog/bos-web-engine-sunset-bb5": {
     "__comp": "ccc49370",
@@ -78,15 +78,15 @@
     "sidebar": "814f3328",
     "content": "748ef93d"
   },
-  "/zh-CN/blog/tags-958": {
+  "/zh-CN/blog/tags-e31": {
     "__comp": "01a85c17",
     "__context": {
       "plugin": "36994c47"
     },
     "sidebar": "814f3328",
-    "__props": "8b14544a"
+    "__props": "57c247f0"
   },
-  "/zh-CN/blog/tags/bos-16e": {
+  "/zh-CN/blog/tags/bos-d55": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "36994c47"
@@ -97,9 +97,9 @@
         "content": "0b53d89a"
       }
     ],
-    "__props": "ca6a4b5f"
+    "__props": "d7780366"
   },
-  "/zh-CN/blog/tags/bwe-4f2": {
+  "/zh-CN/blog/tags/bwe-29e": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "36994c47"
@@ -110,9 +110,9 @@
         "content": "0b53d89a"
       }
     ],
-    "__props": "e5f9ca5a"
+    "__props": "c4710e47"
   },
-  "/zh-CN/blog/tags/docusaurus-e60": {
+  "/zh-CN/blog/tags/docusaurus-20e": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "36994c47"
@@ -123,9 +123,9 @@
         "content": "815c08e4"
       }
     ],
-    "__props": "4dbcded4"
+    "__props": "a8685f72"
   },
-  "/zh-CN/blog/tags/getting-started-753": {
+  "/zh-CN/blog/tags/getting-started-645": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "36994c47"
@@ -136,9 +136,9 @@
         "content": "9669618f"
       }
     ],
-    "__props": "16a7dae2"
+    "__props": "bc9ccafa"
   },
-  "/zh-CN/blog/tags/protocol-e4f": {
+  "/zh-CN/blog/tags/protocol-eb3": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "36994c47"
@@ -149,9 +149,9 @@
         "content": "136ffe2d"
       }
     ],
-    "__props": "bcdbaa84"
+    "__props": "a5569f61"
   },
-  "/zh-CN/blog/tags/tutorial-89e": {
+  "/zh-CN/blog/tags/tutorial-d8c": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "36994c47"
@@ -162,9 +162,9 @@
         "content": "9669618f"
       }
     ],
-    "__props": "85cfccb4"
+    "__props": "a15ebea5"
   },
-  "/zh-CN/blog/tags/updates-372": {
+  "/zh-CN/blog/tags/updates-82e": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "36994c47"
@@ -187,9 +187,9 @@
         "content": "7ac6d364"
       }
     ],
-    "__props": "70ef42d8"
+    "__props": "a9bcabf0"
   },
-  "/zh-CN/blog/tags/vm-2-b44": {
+  "/zh-CN/blog/tags/vm-2-c1d": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "36994c47"
@@ -200,9 +200,9 @@
         "content": "0b53d89a"
       }
     ],
-    "__props": "19a155c4"
+    "__props": "11af6bdf"
   },
-  "/zh-CN/blog/tags/windows-618": {
+  "/zh-CN/blog/tags/windows-03f": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "36994c47"
@@ -213,7 +213,7 @@
         "content": "9669618f"
       }
     ],
-    "__props": "23471167"
+    "__props": "3c7207db"
   },
   "/zh-CN/blog/we-have-a-blog-b84": {
     "__comp": "ccc49370",
@@ -243,17 +243,17 @@
       "plugin": "c141421f"
     }
   },
-  "/zh-CN/-b46": {
+  "/zh-CN/-ad0": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "aba21aa0"
     }
   },
-  "/zh-CN/-c2a": {
+  "/zh-CN/-dee": {
     "__comp": "a7bd4aaa",
-    "__props": "2d9c5935"
+    "__props": "363b7d6a"
   },
-  "/zh-CN/-041": {
+  "/zh-CN/-fc7": {
     "__comp": "a94703ab"
   },
   "/zh-CN/api/rpc/access-keys-fa8": {
@@ -380,7 +380,7 @@
     "__comp": "17896441",
     "content": "93c09fdc"
   },
-  "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer-dce": {
+  "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer-7c9": {
     "__comp": "17896441",
     "content": "9263ab35"
   },
@@ -392,7 +392,7 @@
     "__comp": "17896441",
     "content": "9d890403"
   },
-  "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer-1b1": {
+  "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer-e7f": {
     "__comp": "17896441",
     "content": "daa2b923"
   },
@@ -1192,7 +1192,7 @@
     "__comp": "17896441",
     "content": "f828a662"
   },
-  "/zh-CN/tools/indexing-a1d": {
+  "/zh-CN/tools/indexing-f81": {
     "__comp": "17896441",
     "content": "65d6b33e"
   },
@@ -1396,7 +1396,7 @@
     "__comp": "17896441",
     "content": "070ed26a"
   },
-  "/zh-CN/tutorials/near-components/ds-components-bbb": {
+  "/zh-CN/tutorials/near-components/ds-components-5fb": {
     "__comp": "17896441",
     "content": "14c6c302"
   },

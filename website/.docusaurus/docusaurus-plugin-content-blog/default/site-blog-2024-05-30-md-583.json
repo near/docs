@@ -6,10 +6,12 @@
   "date": "2024-05-30T00:00:00.000Z",
   "tags": [
     {
+      "inline": true,
       "label": "protocol",
       "permalink": "/blog/tags/protocol"
     },
     {
+      "inline": true,
       "label": "updates",
       "permalink": "/blog/tags/updates"
     }

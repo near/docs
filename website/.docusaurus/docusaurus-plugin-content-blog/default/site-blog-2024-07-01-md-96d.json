@@ -6,18 +6,22 @@
   "date": "2024-07-01T00:00:00.000Z",
   "tags": [
     {
+      "inline": true,
       "label": "updates",
       "permalink": "/blog/tags/updates"
     },
     {
+      "inline": true,
       "label": "BWE",
       "permalink": "/blog/tags/bwe"
     },
     {
+      "inline": true,
       "label": "VM2",
       "permalink": "/blog/tags/vm-2"
     },
     {
+      "inline": true,
       "label": "BOS",
       "permalink": "/blog/tags/bos"
     }

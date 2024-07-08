@@ -6,14 +6,17 @@
   "date": "2024-06-05T00:00:00.000Z",
   "tags": [
     {
+      "inline": true,
       "label": "windows",
       "permalink": "/zh-CN/blog/tags/windows"
     },
     {
+      "inline": true,
       "label": "tutorial",
       "permalink": "/zh-CN/blog/tags/tutorial"
     },
     {
+      "inline": true,
       "label": "getting-started",
       "permalink": "/zh-CN/blog/tags/getting-started"
     }

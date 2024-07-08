@@ -285,8 +285,8 @@ export default {
     "navbar": {
       "logo": {
         "alt": "NEAR Logo",
-        "src": "img/near_logo.svg",
-        "srcDark": "img/near_logo_white.svg"
+        "src": "img/docs_logo.svg",
+        "srcDark": "img/docs_logo_white.svg"
       },
       "items": [
         {
@@ -418,10 +418,6 @@ export default {
           ]
         },
         {
-          "type": "search",
-          "position": "right"
-        },
-        {
           "label": "Blog",
           "href": "/blog",
           "position": "left"
@@ -431,10 +427,6 @@ export default {
           "position": "right",
           "dropdownItemsBefore": [],
           "dropdownItemsAfter": []
-        },
-        {
-          "href": "login",
-          "position": "right"
         }
       ],
       "hideOnScroll": false
@@ -506,6 +498,13 @@ export default {
     "path": "i18n"
   },
   "baseUrlIssueBanner": true,
+  "future": {
+    "experimental_storage": {
+      "type": "localStorage",
+      "namespace": false
+    },
+    "experimental_router": "browser"
+  },
   "onBrokenAnchors": "warn",
   "onDuplicateRoutes": "warn",
   "staticDirectories": [
