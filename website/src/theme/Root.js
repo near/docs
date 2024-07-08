@@ -7,10 +7,8 @@ import { withRouter } from 'react-router-dom';
 import { useHistory } from '@docusaurus/router';
 import useIsBrowser from '@docusaurus/useIsBrowser'; // https://docusaurus.io/docs/advanced/ssg#useisbrowser
 
-import { useInitWallet } from '@theme/scripts/wallet-selector';
 
 function Root({ children, location }) {
-  useInitWallet({ createAccessKeyFor: 'v1.social08.testnet', networkId: 'testnet' });
   const isBrowser = useIsBrowser();
 
   const history = useHistory();
