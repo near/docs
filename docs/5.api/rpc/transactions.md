@@ -191,8 +191,9 @@ Here is the exhaustive list of the error variants that can be returned by `broad
       <td>An error happened during transaction execution</td>
       <td>
         <ul>
-          <li>See <code>error.cause.info</code> for details</li>
-          <li>If <code>error.cause.info</code> is <code>ShardCongested</code></li>, resubmit the identical transaction. (Consider adding a priority fee once [NEP-541](https://github.com/near/NEPs/pull/541) is released.)
+          <li>See <code>error.cause.info</code> for details, likely a field in the transaction was invalid</li>
+          <li>If <code>error.cause.info</code> is <code>ShardCongested</code>, resubmit the identical transaction after a delay. (Consider adding a priority fee once [NEP-541](https://github.com/near/NEPs/pull/541) is released.)</li>
+          <li>If <code>error.cause.info</code> is <code>ShardStuck</code>, you may also resubmit the identical transaction after a delay</li>
         </ul>
       </td>
     </tr>
@@ -1313,8 +1314,9 @@ Here is the exhaustive list of the error variants that can be returned by `broad
       <td>An error happened during transaction execution</td>
       <td>
         <ul>
-          <li>See <code>error.cause.info</code> for details</li>
-          <li>If <code>error.cause.info</code> is <code>ShardCongested</code></li>, resubmit the identical transaction. (Consider adding a priority fee once [NEP-541](https://github.com/near/NEPs/pull/541) is released.)
+          <li>See <code>error.cause.info</code> for details, likely a field in the transaction was invalid</li>
+          <li>If <code>error.cause.info</code> is <code>ShardCongested</code>, resubmit the identical transaction after a delay. (Consider adding a priority fee once [NEP-541](https://github.com/near/NEPs/pull/541) is released.)</li>
+          <li>If <code>error.cause.info</code> is <code>ShardStuck</code>, you may also resubmit the identical transaction after a delay</li>
         </ul>
       </td>
     </tr>
