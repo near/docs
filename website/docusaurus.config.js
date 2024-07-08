@@ -125,11 +125,6 @@ const config = {
       },
       items: [
         {
-          to: '/concepts/welcome',
-          label: 'Concepts',
-          position: 'left',
-        },
-        {
           to: '/build/welcome',
           label: 'Build',
           position: 'left',

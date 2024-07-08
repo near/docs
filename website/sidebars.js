@@ -82,7 +82,6 @@ const sidebar = {
     "concepts/basics/protocol",
     {
       "The Protocol": [
-
         {
           type: 'category',
           label: 'Accounts / Contracts',
@@ -114,7 +113,6 @@ const sidebar = {
         },
         {
           "Storage": [
-            "concepts/storage/data-storage",
             "concepts/storage/storage-staking",
             "concepts/storage/storage-solutions"
           ]
@@ -247,54 +245,14 @@ const sidebar = {
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Multi-Chain Components </small></b></span>"
-    },
-    "build/near-components/what-is",
-    {
-      "Building Web3 Components": [
-        "build/near-components/dev-environment",
-        {
-          "Anatomy of a Component": [
-            "build/near-components/anatomy/state",
-            "build/near-components/anatomy/web-methods",
-            "build/near-components/anatomy/builtin-components",
-            "build/near-components/anatomy/near",
-            "build/near-components/anatomy/social",
-            "build/near-components/anatomy/notifications",
-            "build/near-components/anatomy/bos-components"
-          ]
-        },
-        "build/near-components/bos-gateway",
-        {
-          "type": "html",
-          "value": "<hr/>"
-        },
-        {
-          "type": "html",
-          "value": "<a class='menu__link internal' href='/tutorials/near-components/bos-loader'> 📖 Tutorials </a>",
-        },
-      ]
-    },
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
       "value": "<span class='menu__link'><b><small> Web3 Applications </small></b></span>"
     },
     "build/web3-apps/what-is",
     {
-      "Building Web3 Applications": [
+      "Frontend": [
         "build/web3-apps/quickstart",
         "build/web3-apps/frontend",
         "build/web3-apps/integrate-contracts",
-        "build/web3-apps/integrate-components",
-        {
-          "Backend": [
-            "build/web3-apps/backend/backend-login",
-          ]
-        },
         {
           "type": "html",
           "value": "<hr/>"
@@ -304,6 +262,38 @@ const sidebar = {
           "value": "<a class='menu__link internal' href='/tutorials/examples/count-near'> 📖 Tutorials </a>",
         },
       ],
+    },
+      {
+        "Web3 Components": [
+           "build/near-components/what-is",
+          "build/near-components/dev-environment",
+          {
+            "Anatomy of a Component": [
+              "build/near-components/anatomy/state",
+              "build/near-components/anatomy/web-methods",
+              "build/near-components/anatomy/builtin-components",
+              "build/near-components/anatomy/near",
+              "build/near-components/anatomy/social",
+              "build/near-components/anatomy/notifications",
+              "build/near-components/anatomy/bos-components"
+            ]
+          },
+          "build/near-components/bos-gateway",
+          "build/web3-apps/integrate-components",
+          {
+            "type": "html",
+            "value": "<hr/>"
+          },
+          {
+            "type": "html",
+            "value": "<a class='menu__link internal' href='/tutorials/near-components/bos-loader'> 📖 Tutorials </a>",
+          },
+        ]
+    },
+    {
+      "Backend": [
+        "build/web3-apps/backend/backend-login",
+      ]
     },
     {
       "type": "html",
