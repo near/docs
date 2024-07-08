@@ -144,7 +144,7 @@ In the `index.ts` file let's import the necessary dependencies:
 import { startStream, types } from 'near-lake-framework';
 ```
 
-We've imported the main function `startStream` which will be called to actually run the indexer, and `types` that hold the `LakeConfig` type we need to contruct.
+We've imported the main function `startStream`, which will be called to actually run the indexer, and `types`, which hold the `LakeConfig` type we need to construct.
 
 ## 구성(config) 생성
 

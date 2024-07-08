@@ -3,7 +3,7 @@ id: ds-components
 title: 디자인 구성 요소
 ---
 
-import {WidgetEditor} from "@site/src/components/widget-editor-mainnet";
+import {WidgetEditor} from "@site/src/components/widget-editor";
 
 # 디자인 시스템 구성 요소
 
@@ -181,7 +181,7 @@ If you want to see working demos of these components, check the [DIG Overview pa
 
 An accordion built with the [Radix primitive](https://www.radix-ui.com/docs/primitives/components/accordion).
 
-<WidgetEditor id="1">
+<WidgetEditor networkId="mainnet" id="1">
 
 ```jsx
 // Rendering the component with props
@@ -230,7 +230,7 @@ return (<Widget
 
 This component renders an avatar.
 
-<WidgetEditor id="2">
+<WidgetEditor networkId="mainnet" id="2">
 
 ```jsx
 const accountId = "root.near";
@@ -263,7 +263,7 @@ return (
 
 This component renders a badge. Badges are not meant to be clickable. Refer to [DIG.Button](#digbutton) or [DIG.Chip](#digchip) for clickable alternatives.
 
-<WidgetEditor id="3">
+<WidgetEditor networkId="mainnet" id="3">
 
 ```jsx
 // Rendering the component with props
@@ -293,7 +293,7 @@ return (
 
 `<button>` 또는 `<a>` 태그 역할을 할 수 있는 완전한 기능을 갖춘 버튼 구성요소입니다
 
-<WidgetEditor id="4">
+<WidgetEditor networkId="mainnet" id="4">
 
 ```jsx
 // Rendering the component with props
@@ -312,7 +312,7 @@ return <Widget src="near/widget/DIG.Button" props={{ label: "Click Me" }} />;
 
 A checkbox built with the [Radix primitive](https://www.radix-ui.com/docs/primitives/components/checkbox).
 
-<WidgetEditor id="5">
+<WidgetEditor networkId="mainnet" id="5">
 
 ```jsx
 // Rendering the component with props
@@ -336,7 +336,7 @@ return <Widget
 
 A fully featured chip component that can act as a `<button>` or `<a>` tag.
 
-<WidgetEditor id="6">
+<WidgetEditor networkId="mainnet" id="6">
 
 ```jsx
 // Rendering the component with props
@@ -357,7 +357,7 @@ return (<Widget src="near/widget/DIG.Chip" props={{ label: 'Click Me' }} />);
 
 This Dialog component is built with the [Radix primitive](https://www.radix-ui.com/primitives/docs/components/dialog).
 
-<WidgetEditor id="7">
+<WidgetEditor networkId="mainnet" id="7">
 
 ```jsx
 State.init({
@@ -415,7 +415,7 @@ return (
 
 This dropdown menu is built with the [Radix primitive](https://www.radix-ui.com/primitives/docs/components/dropdown-menu).
 
-<WidgetEditor id="8">
+<WidgetEditor networkId="mainnet" id="8">
 
 ```jsx
 // Rendering the component with props
@@ -455,7 +455,7 @@ return (<Widget
 
 A text input component.
 
-<WidgetEditor id="9">
+<WidgetEditor networkId="mainnet" id="9">
 
 ```jsx
 State.init({
@@ -492,7 +492,7 @@ return (
 
 An input component for typing a search query.
 
-<WidgetEditor id="10">
+<WidgetEditor networkId="mainnet" id="10">
 
 ```jsx
 // Rendering the component with props
@@ -520,7 +520,7 @@ return (
 
 A select input component built with the [Radix primitive](https://www.radix-ui.com/docs/primitives/components/select).
 
-<WidgetEditor id="11">
+<WidgetEditor networkId="mainnet" id="11">
 
 ```jsx
 State.init({
@@ -589,7 +589,7 @@ return (
 
 An input component that handles adding and removing tags.
 
-<WidgetEditor id="12">
+<WidgetEditor networkId="mainnet" id="12">
 
 ```jsx
 State.init({
@@ -625,7 +625,7 @@ return (
 
 A textarea input component.
 
-<WidgetEditor id="13">
+<WidgetEditor networkId="mainnet" id="13">
 
 ```jsx
 State.init({
@@ -661,7 +661,7 @@ return (
 
 This tabs component is built with the [Radix primitive](https://www.radix-ui.com/docs/primitives/components/tabs).
 
-<WidgetEditor id="14">
+<WidgetEditor networkId="mainnet" id="14">
 
 ```jsx
 // Rendering the component with props
@@ -720,7 +720,7 @@ You can use any of the [CSS variables](https://near.org/near/widget/ComponentDet
 
 This toast component is built with [Radix primitive](https://www.radix-ui.com/primitives/docs/components/toast).
 
-<WidgetEditor id="16">
+<WidgetEditor networkId="mainnet" id="16">
 
 ```jsx
 State.init({ showToast: false });
@@ -773,7 +773,7 @@ return (
 
 A tooltip built with the [Radix primitive](https://www.radix-ui.com/docs/primitives/components/tooltip).
 
-<WidgetEditor id="17">
+<WidgetEditor networkId="mainnet" id="17">
 
 ```jsx
 // Rendering the component with props

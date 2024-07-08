@@ -99,31 +99,31 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '870'),
+    component: ComponentCreator('/zh-CN/', 'b46'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', 'b8f'),
+        component: ComponentCreator('/zh-CN/', 'c2a'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', 'd33'),
+            component: ComponentCreator('/zh-CN/', '041'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
-                component: ComponentCreator('/zh-CN/api/rpc/access-keys', 'bbb'),
+                component: ComponentCreator('/zh-CN/api/rpc/access-keys', 'fa8'),
                 exact: true,
                 sidebar: "api"
               },
               {
                 path: '/zh-CN/api/rpc/block-chunk',
-                component: ComponentCreator('/zh-CN/api/rpc/block-chunk', '21a'),
+                component: ComponentCreator('/zh-CN/api/rpc/block-chunk', '0a7'),
                 exact: true,
                 sidebar: "api"
               },
               {
                 path: '/zh-CN/api/rpc/contracts',
-                component: ComponentCreator('/zh-CN/api/rpc/contracts', 'c46'),
+                component: ComponentCreator('/zh-CN/api/rpc/contracts', '1f6'),
                 exact: true,
                 sidebar: "api"
               },
@@ -153,7 +153,7 @@ export default [
               },
               {
                 path: '/zh-CN/api/rpc/protocol',
-                component: ComponentCreator('/zh-CN/api/rpc/protocol', 'f94'),
+                component: ComponentCreator('/zh-CN/api/rpc/protocol', 'de7'),
                 exact: true,
                 sidebar: "api"
               },
@@ -171,7 +171,7 @@ export default [
               },
               {
                 path: '/zh-CN/api/rpc/transactions',
-                component: ComponentCreator('/zh-CN/api/rpc/transactions', '972'),
+                component: ComponentCreator('/zh-CN/api/rpc/transactions', '2a7'),
                 exact: true,
                 sidebar: "api"
               },
@@ -1084,7 +1084,7 @@ export default [
               },
               {
                 path: '/zh-CN/build/web3-apps/integrate-contracts',
-                component: ComponentCreator('/zh-CN/build/web3-apps/integrate-contracts', '424'),
+                component: ComponentCreator('/zh-CN/build/web3-apps/integrate-contracts', 'f30'),
                 exact: true,
                 sidebar: "build"
               },
@@ -1162,13 +1162,13 @@ export default [
               },
               {
                 path: '/zh-CN/concepts/basics/epoch',
-                component: ComponentCreator('/zh-CN/concepts/basics/epoch', '47a'),
+                component: ComponentCreator('/zh-CN/concepts/basics/epoch', 'bdc'),
                 exact: true,
                 sidebar: "concepts"
               },
               {
                 path: '/zh-CN/concepts/basics/networks',
-                component: ComponentCreator('/zh-CN/concepts/basics/networks', '5aa'),
+                component: ComponentCreator('/zh-CN/concepts/basics/networks', '500'),
                 exact: true,
                 sidebar: "concepts"
               },
@@ -1198,7 +1198,7 @@ export default [
               },
               {
                 path: '/zh-CN/concepts/basics/validators',
-                component: ComponentCreator('/zh-CN/concepts/basics/validators', '91a'),
+                component: ComponentCreator('/zh-CN/concepts/basics/validators', '68a'),
                 exact: true,
                 sidebar: "concepts"
               },
@@ -1264,7 +1264,7 @@ export default [
               },
               {
                 path: '/zh-CN/concepts/protocol/transactions',
-                component: ComponentCreator('/zh-CN/concepts/protocol/transactions', 'eed'),
+                component: ComponentCreator('/zh-CN/concepts/protocol/transactions', '88c'),
                 exact: true,
                 sidebar: "concepts"
               },
@@ -1276,7 +1276,7 @@ export default [
               },
               {
                 path: '/zh-CN/concepts/storage/storage-staking',
-                component: ComponentCreator('/zh-CN/concepts/storage/storage-staking', '9be'),
+                component: ComponentCreator('/zh-CN/concepts/storage/storage-staking', '3de'),
                 exact: true,
                 sidebar: "concepts"
               },
@@ -1323,31 +1323,31 @@ export default [
               },
               {
                 path: '/zh-CN/integrations/accounts',
-                component: ComponentCreator('/zh-CN/integrations/accounts', 'de3'),
+                component: ComponentCreator('/zh-CN/integrations/accounts', '4a7'),
                 exact: true,
                 sidebar: "exchanges"
               },
               {
                 path: '/zh-CN/integrations/balance-changes',
-                component: ComponentCreator('/zh-CN/integrations/balance-changes', '8cb'),
+                component: ComponentCreator('/zh-CN/integrations/balance-changes', '213'),
                 exact: true,
                 sidebar: "exchanges"
               },
               {
                 path: '/zh-CN/integrations/create-transactions',
-                component: ComponentCreator('/zh-CN/integrations/create-transactions', '6e6'),
+                component: ComponentCreator('/zh-CN/integrations/create-transactions', '1b2'),
                 exact: true,
                 sidebar: "exchanges"
               },
               {
                 path: '/zh-CN/integrations/errors/error-implementation',
-                component: ComponentCreator('/zh-CN/integrations/errors/error-implementation', '964'),
+                component: ComponentCreator('/zh-CN/integrations/errors/error-implementation', 'a3b'),
                 exact: true,
                 sidebar: "exchanges"
               },
               {
                 path: '/zh-CN/integrations/errors/introduction',
-                component: ComponentCreator('/zh-CN/integrations/errors/introduction', 'ce8'),
+                component: ComponentCreator('/zh-CN/integrations/errors/introduction', '130'),
                 exact: true,
                 sidebar: "exchanges"
               },
@@ -1359,25 +1359,25 @@ export default [
               },
               {
                 path: '/zh-CN/integrations/exchange-integration',
-                component: ComponentCreator('/zh-CN/integrations/exchange-integration', '948'),
+                component: ComponentCreator('/zh-CN/integrations/exchange-integration', 'bf1'),
                 exact: true,
                 sidebar: "exchanges"
               },
               {
                 path: '/zh-CN/integrations/faq',
-                component: ComponentCreator('/zh-CN/integrations/faq', '86d'),
+                component: ComponentCreator('/zh-CN/integrations/faq', '79a'),
                 exact: true,
                 sidebar: "exchanges"
               },
               {
                 path: '/zh-CN/integrations/fungible-tokens',
-                component: ComponentCreator('/zh-CN/integrations/fungible-tokens', '6cb'),
+                component: ComponentCreator('/zh-CN/integrations/fungible-tokens', 'cf5'),
                 exact: true,
                 sidebar: "exchanges"
               },
               {
                 path: '/zh-CN/integrations/implicit-accounts',
-                component: ComponentCreator('/zh-CN/integrations/implicit-accounts', '550'),
+                component: ComponentCreator('/zh-CN/integrations/implicit-accounts', 'cff'),
                 exact: true,
                 sidebar: "exchanges"
               },
@@ -1401,7 +1401,7 @@ export default [
               },
               {
                 path: '/zh-CN/pagoda/rpc/api',
-                component: ComponentCreator('/zh-CN/pagoda/rpc/api', '1a3'),
+                component: ComponentCreator('/zh-CN/pagoda/rpc/api', '8a2'),
                 exact: true,
                 sidebar: "pagoda"
               },
@@ -1526,19 +1526,19 @@ export default [
               },
               {
                 path: '/zh-CN/tutorials/crosswords/basics/add-functions-call',
-                component: ComponentCreator('/zh-CN/tutorials/crosswords/basics/add-functions-call', 'b90'),
+                component: ComponentCreator('/zh-CN/tutorials/crosswords/basics/add-functions-call', '619'),
                 exact: true,
                 sidebar: "tutorials"
               },
               {
                 path: '/zh-CN/tutorials/crosswords/basics/hashing-and-unit-tests',
-                component: ComponentCreator('/zh-CN/tutorials/crosswords/basics/hashing-and-unit-tests', '101'),
+                component: ComponentCreator('/zh-CN/tutorials/crosswords/basics/hashing-and-unit-tests', '9fa'),
                 exact: true,
                 sidebar: "tutorials"
               },
               {
                 path: '/zh-CN/tutorials/crosswords/basics/overview',
-                component: ComponentCreator('/zh-CN/tutorials/crosswords/basics/overview', '6a1'),
+                component: ComponentCreator('/zh-CN/tutorials/crosswords/basics/overview', '8da'),
                 exact: true,
                 sidebar: "tutorials"
               },
@@ -1550,31 +1550,31 @@ export default [
               },
               {
                 path: '/zh-CN/tutorials/crosswords/basics/simple-frontend',
-                component: ComponentCreator('/zh-CN/tutorials/crosswords/basics/simple-frontend', '0a4'),
+                component: ComponentCreator('/zh-CN/tutorials/crosswords/basics/simple-frontend', '724'),
                 exact: true,
                 sidebar: "tutorials"
               },
               {
                 path: '/zh-CN/tutorials/crosswords/beginner/actions',
-                component: ComponentCreator('/zh-CN/tutorials/crosswords/beginner/actions', 'c4b'),
+                component: ComponentCreator('/zh-CN/tutorials/crosswords/beginner/actions', '547'),
                 exact: true,
                 sidebar: "tutorials"
               },
               {
                 path: '/zh-CN/tutorials/crosswords/beginner/adding-a-puzzle',
-                component: ComponentCreator('/zh-CN/tutorials/crosswords/beginner/adding-a-puzzle', 'fd3'),
+                component: ComponentCreator('/zh-CN/tutorials/crosswords/beginner/adding-a-puzzle', 'fa7'),
                 exact: true,
                 sidebar: "tutorials"
               },
               {
                 path: '/zh-CN/tutorials/crosswords/beginner/collections',
-                component: ComponentCreator('/zh-CN/tutorials/crosswords/beginner/collections', '348'),
+                component: ComponentCreator('/zh-CN/tutorials/crosswords/beginner/collections', 'dbf'),
                 exact: true,
                 sidebar: "tutorials"
               },
               {
                 path: '/zh-CN/tutorials/crosswords/beginner/logging-in',
-                component: ComponentCreator('/zh-CN/tutorials/crosswords/beginner/logging-in', '400'),
+                component: ComponentCreator('/zh-CN/tutorials/crosswords/beginner/logging-in', 'ca3'),
                 exact: true,
                 sidebar: "tutorials"
               },
@@ -1586,19 +1586,19 @@ export default [
               },
               {
                 path: '/zh-CN/tutorials/crosswords/beginner/overview',
-                component: ComponentCreator('/zh-CN/tutorials/crosswords/beginner/overview', '076'),
+                component: ComponentCreator('/zh-CN/tutorials/crosswords/beginner/overview', '7dc'),
                 exact: true,
                 sidebar: "tutorials"
               },
               {
                 path: '/zh-CN/tutorials/crosswords/beginner/structs-enums',
-                component: ComponentCreator('/zh-CN/tutorials/crosswords/beginner/structs-enums', '82e'),
+                component: ComponentCreator('/zh-CN/tutorials/crosswords/beginner/structs-enums', 'ba7'),
                 exact: true,
                 sidebar: "tutorials"
               },
               {
                 path: '/zh-CN/tutorials/crosswords/intermediate/access-key-solution',
-                component: ComponentCreator('/zh-CN/tutorials/crosswords/intermediate/access-key-solution', 'd9f'),
+                component: ComponentCreator('/zh-CN/tutorials/crosswords/intermediate/access-key-solution', 'b5b'),
                 exact: true,
                 sidebar: "tutorials"
               },
@@ -1610,7 +1610,7 @@ export default [
               },
               {
                 path: '/zh-CN/tutorials/crosswords/intermediate/cross-contract-calls',
-                component: ComponentCreator('/zh-CN/tutorials/crosswords/intermediate/cross-contract-calls', '8a0'),
+                component: ComponentCreator('/zh-CN/tutorials/crosswords/intermediate/cross-contract-calls', '190'),
                 exact: true,
                 sidebar: "tutorials"
               },
@@ -1622,7 +1622,7 @@ export default [
               },
               {
                 path: '/zh-CN/tutorials/crosswords/intermediate/overview',
-                component: ComponentCreator('/zh-CN/tutorials/crosswords/intermediate/overview', 'efd'),
+                component: ComponentCreator('/zh-CN/tutorials/crosswords/intermediate/overview', '028'),
                 exact: true,
                 sidebar: "tutorials"
               },
@@ -1640,7 +1640,7 @@ export default [
               },
               {
                 path: '/zh-CN/tutorials/examples/coin-flip',
-                component: ComponentCreator('/zh-CN/tutorials/examples/coin-flip', 'eb1'),
+                component: ComponentCreator('/zh-CN/tutorials/examples/coin-flip', '7b2'),
                 exact: true,
                 sidebar: "tutorials"
               },
@@ -1766,25 +1766,25 @@ export default [
               },
               {
                 path: '/zh-CN/tutorials/near-components/indexer-tutorials/feed-indexer',
-                component: ComponentCreator('/zh-CN/tutorials/near-components/indexer-tutorials/feed-indexer', 'e86'),
+                component: ComponentCreator('/zh-CN/tutorials/near-components/indexer-tutorials/feed-indexer', 'c04'),
                 exact: true,
                 sidebar: "tutorials"
               },
               {
                 path: '/zh-CN/tutorials/near-components/indexer-tutorials/hype-indexer',
-                component: ComponentCreator('/zh-CN/tutorials/near-components/indexer-tutorials/hype-indexer', 'e1c'),
+                component: ComponentCreator('/zh-CN/tutorials/near-components/indexer-tutorials/hype-indexer', '8de'),
                 exact: true,
                 sidebar: "tutorials"
               },
               {
                 path: '/zh-CN/tutorials/near-components/indexer-tutorials/nft-indexer',
-                component: ComponentCreator('/zh-CN/tutorials/near-components/indexer-tutorials/nft-indexer', 'fcd'),
+                component: ComponentCreator('/zh-CN/tutorials/near-components/indexer-tutorials/nft-indexer', '25c'),
                 exact: true,
                 sidebar: "tutorials"
               },
               {
                 path: '/zh-CN/tutorials/near-components/indexer-tutorials/posts-indexer',
-                component: ComponentCreator('/zh-CN/tutorials/near-components/indexer-tutorials/posts-indexer', 'c08'),
+                component: ComponentCreator('/zh-CN/tutorials/near-components/indexer-tutorials/posts-indexer', '6cd'),
                 exact: true,
                 sidebar: "tutorials"
               },
@@ -2000,7 +2000,7 @@ export default [
               },
               {
                 path: '/zh-CN/',
-                component: ComponentCreator('/zh-CN/', '0f9'),
+                component: ComponentCreator('/zh-CN/', '877'),
                 exact: true
               }
             ]

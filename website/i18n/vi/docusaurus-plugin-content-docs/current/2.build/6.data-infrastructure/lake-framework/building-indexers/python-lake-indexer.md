@@ -39,7 +39,7 @@ In the `main.py` file let's import the necessary dependencies:
 from near_lake_framework import near_primitives, LakeConfig, streamer
 ```
 
-We've imported the main function `streamer` which will be called to actually run the indexer, `near_primitives` and `LakeConfig` type we need to contruct.
+We've imported the main function `streamer`, which will be called to actually run the indexer, `near_primitives`, and `LakeConfig` type we need to construct.
 
 ## Create a config
 

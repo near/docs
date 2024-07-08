@@ -243,28 +243,28 @@
       "plugin": "c141421f"
     }
   },
-  "/zh-CN/-870": {
+  "/zh-CN/-b46": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "aba21aa0"
     }
   },
-  "/zh-CN/-b8f": {
+  "/zh-CN/-c2a": {
     "__comp": "a7bd4aaa",
     "__props": "2d9c5935"
   },
-  "/zh-CN/-d33": {
+  "/zh-CN/-041": {
     "__comp": "a94703ab"
   },
-  "/zh-CN/api/rpc/access-keys-bbb": {
+  "/zh-CN/api/rpc/access-keys-fa8": {
     "__comp": "17896441",
     "content": "760cdfc4"
   },
-  "/zh-CN/api/rpc/block-chunk-21a": {
+  "/zh-CN/api/rpc/block-chunk-0a7": {
     "__comp": "17896441",
     "content": "7db86dfc"
   },
-  "/zh-CN/api/rpc/contracts-c46": {
+  "/zh-CN/api/rpc/contracts-1f6": {
     "__comp": "17896441",
     "content": "912ceaf4"
   },
@@ -284,7 +284,7 @@
     "__comp": "17896441",
     "content": "ec12be4f"
   },
-  "/zh-CN/api/rpc/protocol-f94": {
+  "/zh-CN/api/rpc/protocol-de7": {
     "__comp": "17896441",
     "content": "a0c04405"
   },
@@ -296,7 +296,7 @@
     "__comp": "17896441",
     "content": "b3cfbcde"
   },
-  "/zh-CN/api/rpc/transactions-972": {
+  "/zh-CN/api/rpc/transactions-2a7": {
     "__comp": "17896441",
     "content": "0f8c7883"
   },
@@ -952,7 +952,7 @@
     "__comp": "17896441",
     "content": "1650fbff"
   },
-  "/zh-CN/build/web3-apps/integrate-contracts-424": {
+  "/zh-CN/build/web3-apps/integrate-contracts-f30": {
     "__comp": "17896441",
     "content": "9e7d9b9b"
   },
@@ -1004,11 +1004,11 @@
     "__comp": "17896441",
     "content": "da667f77"
   },
-  "/zh-CN/concepts/basics/epoch-47a": {
+  "/zh-CN/concepts/basics/epoch-bdc": {
     "__comp": "17896441",
     "content": "225002d9"
   },
-  "/zh-CN/concepts/basics/networks-5aa": {
+  "/zh-CN/concepts/basics/networks-500": {
     "__comp": "17896441",
     "content": "f3516e1c"
   },
@@ -1028,7 +1028,7 @@
     "__comp": "17896441",
     "content": "61b5cb53"
   },
-  "/zh-CN/concepts/basics/validators-91a": {
+  "/zh-CN/concepts/basics/validators-68a": {
     "__comp": "17896441",
     "content": "d6fd0179"
   },
@@ -1072,7 +1072,7 @@
     "__comp": "17896441",
     "content": "661bb43c"
   },
-  "/zh-CN/concepts/protocol/transactions-eed": {
+  "/zh-CN/concepts/protocol/transactions-88c": {
     "__comp": "17896441",
     "content": "195b6fb6"
   },
@@ -1080,7 +1080,7 @@
     "__comp": "17896441",
     "content": "697d885f"
   },
-  "/zh-CN/concepts/storage/storage-staking-9be": {
+  "/zh-CN/concepts/storage/storage-staking-3de": {
     "__comp": "17896441",
     "content": "2cd31747"
   },
@@ -1112,23 +1112,23 @@
     "__comp": "17896441",
     "content": "932f2495"
   },
-  "/zh-CN/integrations/accounts-de3": {
+  "/zh-CN/integrations/accounts-4a7": {
     "__comp": "17896441",
     "content": "f469374d"
   },
-  "/zh-CN/integrations/balance-changes-8cb": {
+  "/zh-CN/integrations/balance-changes-213": {
     "__comp": "17896441",
     "content": "40c6006f"
   },
-  "/zh-CN/integrations/create-transactions-6e6": {
+  "/zh-CN/integrations/create-transactions-1b2": {
     "__comp": "17896441",
     "content": "c846fa1a"
   },
-  "/zh-CN/integrations/errors/error-implementation-964": {
+  "/zh-CN/integrations/errors/error-implementation-a3b": {
     "__comp": "17896441",
     "content": "5a887422"
   },
-  "/zh-CN/integrations/errors/introduction-ce8": {
+  "/zh-CN/integrations/errors/introduction-130": {
     "__comp": "17896441",
     "content": "c5d7c80e"
   },
@@ -1136,19 +1136,19 @@
     "__comp": "17896441",
     "content": "0d73bb3d"
   },
-  "/zh-CN/integrations/exchange-integration-948": {
+  "/zh-CN/integrations/exchange-integration-bf1": {
     "__comp": "17896441",
     "content": "c9b5aa72"
   },
-  "/zh-CN/integrations/faq-86d": {
+  "/zh-CN/integrations/faq-79a": {
     "__comp": "17896441",
     "content": "33559028"
   },
-  "/zh-CN/integrations/fungible-tokens-6cb": {
+  "/zh-CN/integrations/fungible-tokens-cf5": {
     "__comp": "17896441",
     "content": "1eff706f"
   },
-  "/zh-CN/integrations/implicit-accounts-550": {
+  "/zh-CN/integrations/implicit-accounts-cff": {
     "__comp": "17896441",
     "content": "16cb5879"
   },
@@ -1164,7 +1164,7 @@
     "__comp": "17896441",
     "content": "c9213f5f"
   },
-  "/zh-CN/pagoda/rpc/api-1a3": {
+  "/zh-CN/pagoda/rpc/api-8a2": {
     "__comp": "17896441",
     "content": "a18fa588"
   },
@@ -1248,15 +1248,15 @@
     "__comp": "17896441",
     "content": "03b82f47"
   },
-  "/zh-CN/tutorials/crosswords/basics/add-functions-call-b90": {
+  "/zh-CN/tutorials/crosswords/basics/add-functions-call-619": {
     "__comp": "17896441",
     "content": "8bd027df"
   },
-  "/zh-CN/tutorials/crosswords/basics/hashing-and-unit-tests-101": {
+  "/zh-CN/tutorials/crosswords/basics/hashing-and-unit-tests-9fa": {
     "__comp": "17896441",
     "content": "4ea117cc"
   },
-  "/zh-CN/tutorials/crosswords/basics/overview-6a1": {
+  "/zh-CN/tutorials/crosswords/basics/overview-8da": {
     "__comp": "17896441",
     "content": "3c097464"
   },
@@ -1264,23 +1264,23 @@
     "__comp": "17896441",
     "content": "f1beed1d"
   },
-  "/zh-CN/tutorials/crosswords/basics/simple-frontend-0a4": {
+  "/zh-CN/tutorials/crosswords/basics/simple-frontend-724": {
     "__comp": "17896441",
     "content": "b4f25be2"
   },
-  "/zh-CN/tutorials/crosswords/beginner/actions-c4b": {
+  "/zh-CN/tutorials/crosswords/beginner/actions-547": {
     "__comp": "17896441",
     "content": "e1808301"
   },
-  "/zh-CN/tutorials/crosswords/beginner/adding-a-puzzle-fd3": {
+  "/zh-CN/tutorials/crosswords/beginner/adding-a-puzzle-fa7": {
     "__comp": "17896441",
     "content": "3a355901"
   },
-  "/zh-CN/tutorials/crosswords/beginner/collections-348": {
+  "/zh-CN/tutorials/crosswords/beginner/collections-dbf": {
     "__comp": "17896441",
     "content": "b8509cb0"
   },
-  "/zh-CN/tutorials/crosswords/beginner/logging-in-400": {
+  "/zh-CN/tutorials/crosswords/beginner/logging-in-ca3": {
     "__comp": "17896441",
     "content": "fba3dfcf"
   },
@@ -1288,15 +1288,15 @@
     "__comp": "17896441",
     "content": "fcf1cec2"
   },
-  "/zh-CN/tutorials/crosswords/beginner/overview-076": {
+  "/zh-CN/tutorials/crosswords/beginner/overview-7dc": {
     "__comp": "17896441",
     "content": "bfb72c4d"
   },
-  "/zh-CN/tutorials/crosswords/beginner/structs-enums-82e": {
+  "/zh-CN/tutorials/crosswords/beginner/structs-enums-ba7": {
     "__comp": "17896441",
     "content": "2a1e8cd4"
   },
-  "/zh-CN/tutorials/crosswords/intermediate/access-key-solution-d9f": {
+  "/zh-CN/tutorials/crosswords/intermediate/access-key-solution-b5b": {
     "__comp": "17896441",
     "content": "ab1d4299"
   },
@@ -1304,7 +1304,7 @@
     "__comp": "17896441",
     "content": "13b5b3e9"
   },
-  "/zh-CN/tutorials/crosswords/intermediate/cross-contract-calls-8a0": {
+  "/zh-CN/tutorials/crosswords/intermediate/cross-contract-calls-190": {
     "__comp": "17896441",
     "content": "0a20d388"
   },
@@ -1312,7 +1312,7 @@
     "__comp": "17896441",
     "content": "1b7a324e"
   },
-  "/zh-CN/tutorials/crosswords/intermediate/overview-efd": {
+  "/zh-CN/tutorials/crosswords/intermediate/overview-028": {
     "__comp": "17896441",
     "content": "bc828f7b"
   },
@@ -1324,7 +1324,7 @@
     "__comp": "17896441",
     "content": "a4bb07b0"
   },
-  "/zh-CN/tutorials/examples/coin-flip-eb1": {
+  "/zh-CN/tutorials/examples/coin-flip-7b2": {
     "__comp": "17896441",
     "content": "ad3c2cd5"
   },
@@ -1408,19 +1408,19 @@
     "__comp": "17896441",
     "content": "695ed632"
   },
-  "/zh-CN/tutorials/near-components/indexer-tutorials/feed-indexer-e86": {
+  "/zh-CN/tutorials/near-components/indexer-tutorials/feed-indexer-c04": {
     "__comp": "17896441",
     "content": "ad9a9498"
   },
-  "/zh-CN/tutorials/near-components/indexer-tutorials/hype-indexer-e1c": {
+  "/zh-CN/tutorials/near-components/indexer-tutorials/hype-indexer-8de": {
     "__comp": "17896441",
     "content": "62db7f9e"
   },
-  "/zh-CN/tutorials/near-components/indexer-tutorials/nft-indexer-fcd": {
+  "/zh-CN/tutorials/near-components/indexer-tutorials/nft-indexer-25c": {
     "__comp": "17896441",
     "content": "54d5eb84"
   },
-  "/zh-CN/tutorials/near-components/indexer-tutorials/posts-indexer-c08": {
+  "/zh-CN/tutorials/near-components/indexer-tutorials/posts-indexer-6cd": {
     "__comp": "17896441",
     "content": "4e7b8369"
   },
@@ -1564,7 +1564,7 @@
     "__comp": "17896441",
     "content": "ca8f19a6"
   },
-  "/zh-CN/-0f9": {
+  "/zh-CN/-877": {
     "__comp": "17896441",
     "content": "34709271"
   }
