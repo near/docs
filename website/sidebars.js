@@ -81,7 +81,7 @@ const sidebar = {
     },
     "concepts/basics/protocol",
     {
-      "The Protocol": [
+      "Understand the Protocol": [
         {
           type: 'category',
           label: 'Accounts / Contracts',

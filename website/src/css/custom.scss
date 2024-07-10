@@ -81,8 +81,6 @@ strong {
 /* Cards */
 .card {
     margin: 2em 0em;
-    border: 0;
-    border-radius: 0;
 }
 
 .cards a[href^="http"]::after {
@@ -222,7 +220,7 @@ h4 {
 }
 
 article {
-    margin: 1.8rem 1.4rem 1.8rem 3rem;
+    margin: 2rem 1.5rem 2rem 3rem;
 }
 
 .menu {
@@ -386,11 +384,6 @@ iframe+em {
 @media (max-width: 1140px) {
     article {
         margin: 0.5rem 1.5rem;
-    }
-
-    .col {
-        flex-basis: max-content !important;
-        padding: 0 calc(var(--ifm-spacing-horizontal)/2);
     }
 }
 
