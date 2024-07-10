@@ -114,7 +114,7 @@ export default {
     "image": "docs/assets/welcome-pages/protocol.png",
     "announcementBar": {
       "id": "id-0004",
-      "content": "📣 <a href=\"/blog/bos-web-engine-sunset\">Pagoda sunsets B.O.S. Web Engine R&D Project</a> 📣",
+      "content": "📣 <a href=\"/blog/bos-web-engine-sunset\">Pagoda Pauses the B.O.S. Web Engine R&D Project</a> 📣",
       "backgroundColor": "#fafbfc",
       "textColor": "#333",
       "isCloseable": true
