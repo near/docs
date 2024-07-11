@@ -120,13 +120,13 @@ const config = {
     navbar: {
       logo: {
         alt: 'NEAR Logo',
-        src: 'img/docs_logo.svg',
-        srcDark: 'img/docs_logo_white.svg',
+        src: 'img/near_logo.svg',
+        srcDark: 'img/near_logo_white.svg',
       },
       items: [
         {
-          to: '/build/welcome',
-          label: 'Build',
+          to: '/',
+          label: 'Docs',
           position: 'left',
         },
         {
