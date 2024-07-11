@@ -3,6 +3,8 @@ id: gas
 title: Gas (Execution Fees)
 ---
 
+import {NearWidget} from "@site/src/components/near-widget"
+
 On every transaction the NEAR network charges a tiny fee known as **gas**. This fee is a simple mechanism that allows us to:
 
 1. **Prevent** bad actors from **spamming** the network with useless transactions
@@ -49,6 +51,9 @@ If the previous block is **more than half full** the price goes up by 1%, otherw
 
 You can query how much a gas unit costs in `yoctoNEAR` (1Ⓝ = `1e24` yocto) through the [`RPC`](/api/rpc/gas#gas-price). To convert in `Tgas` per `NEAR` simply divide by `1e12`.
 
+
+<NearWidget height="40px">
+
 ```js
 const query = fetch('https://rpc.near.org', {
   method: 'POST',
@@ -66,6 +71,8 @@ const query = fetch('https://rpc.near.org', {
 const yocto = query.body.result.gas_price
 return `Right now, 1 Tgas costs ${Number(yocto) / 1e12}Ⓝ`
 ```
+
+</NearWidget>
 
 </details>
 
