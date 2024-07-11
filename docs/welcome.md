@@ -93,22 +93,22 @@ Here are more sources from our ecosystem that can help you to learn more about N
           <h3>
           Discover
           </h3>
-          Discover awesome apps in the Near ecosystem.
+          Discover awesome apps in the Near ecosystem
         </div>
       </div>
     </a>
   </div>
   <div className="col col--6">
-    <a href="https://nomicon.io" target="_blank" rel="noopener noreferrer">
+    <a href="https://near.github.io/nearcore/" target="_blank" rel="noopener noreferrer">
       <div className="card">
         <div className="card__image">
-          <img src={require("@site/static/docs/assets/welcome-pages/nomicon.png").default} alt="Nomicon" />
+          <img src={require("@site/static/docs/assets/welcome-pages/nomicon.png").default} alt="NEAR Core" />
         </div>
         <div className="card__body">
           <h3>
-          Nomicon
+          NEAR Core
           </h3>
-          See how NEAR is implemented in the official protocol specification.
+          Learn the official protocol documentation
         </div>
       </div>
     </a>
@@ -123,7 +123,7 @@ Here are more sources from our ecosystem that can help you to learn more about N
           <h3>
           Running a Node
           </h3>
-          Documentation on becoming a validator to help keeping the blockchain safe
+          Become a validator, help keeping the blockchain safe
         </div>
       </div>
     </a>
@@ -135,8 +135,10 @@ Here are more sources from our ecosystem that can help you to learn more about N
           <img src={require("@site/static/docs/assets/welcome-pages/mintbase-templates.png").default} alt="Templates" />
         </div>
         <div className="card__body">
-          <h3>Templates</h3>
-            Templates for creating web3 applications
+          <h3>
+          Templates
+          </h3>
+          Templates for creating web3 applications
         </div>
       </div>
     </a>
