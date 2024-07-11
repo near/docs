@@ -53,8 +53,8 @@ export default function DocItemLayout({ children }) {
             <DocItemContent>{children}</DocItemContent>
           </article>
           <DocItemPaginator />
-          <HelpComponent />
           <FeedbackComponent />
+          <HelpComponent />
           <DocItemFooter />
         </div>
       </div>
