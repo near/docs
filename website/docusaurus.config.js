@@ -231,7 +231,7 @@ const config = {
           label: 'RPC',
           activeBaseRegex: '/api/rpc',
         },
-        { label: 'Blog', to: '/blog', activeBaseRegex: '/blog' },
+        { label: 'Blog', to: '/blog', activeBaseRegex: '/blog', position: 'right' },
         {
           type: 'localeDropdown',
           position: 'right',
