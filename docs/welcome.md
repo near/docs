@@ -1,6 +1,6 @@
 ---
 id: welcome
-title: NEAR, a Simpler Way to Build
+title: Welcome to NEAR
 sidebar_label: Home
 hide_table_of_contents: true
 ---
@@ -8,7 +8,7 @@ hide_table_of_contents: true
 import {FeatureList, Column, Feature} from "@site/src/components/featurelist";
 import {Container, Card} from "@site/src/components/cards";
 
-Imagine a place were you can build Web3 apps with the simplicity of Web2. Imagine a place were you can empower AI, create communities and even abstract other chains. Welcome to NEAR, you're gonna like it here.
+Imagine a place were you can build Web3 apps with the simplicity of Web2. Imagine a place were you can empower communities, supercharge AI and easily integrate with other chains. Welcome to NEAR, you're gonna like it here.
 
 <Container>
     <Card img={require("@site/static/docs/assets/welcome-pages/protocol.png").default}
