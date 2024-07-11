@@ -81,7 +81,6 @@ const sidebar = {
     'build/chain-abstraction/what-is',
     {
       "Chain Abstraction Services": [
-        "concepts/abstraction/introduction",
         {
           "Meta Transactions": [
             "concepts/abstraction/meta-transactions",
