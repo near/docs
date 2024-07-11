@@ -1,9 +1,8 @@
 ---
 id: meta-transactions
 title: Meta Transactions
+sidebar_label: NEP-366
 ---
-
-# Meta Transactions
 
 [NEP-366](https://github.com/near/NEPs/pull/366) introduced the concept of meta
 transactions to Near Protocol. This feature allows users to execute transactions
@@ -11,13 +10,14 @@ on NEAR without owning any gas or tokens. In order to enable this, users
 construct and sign transactions off-chain. A third party (the relayer) is used
 to cover the fees of submitting and executing the transaction.
 
+---
+
 ## Overview
 
 ![Flow chart of meta
 transactions](https://raw.githubusercontent.com/near/NEPs/003e589e6aba24fc70dd91c9cf7ef0007ca50735/neps/assets/nep-0366/NEP-DelegateAction.png)
 _Credits for the diagram go to the NEP authors Alexander Fadeev and Egor
 Uleyskiy._
-
 
 The graphic shows an example use case for meta transactions. Alice owns an
 amount of the fungible token `$FT`. She wants to transfer some to John. To do
@@ -43,12 +43,11 @@ receipt is forwarded to the account from `Alice`, which will unpacked the
 etc. If all checks are successful, a new action receipt with the inner actions
 as body is sent to `FT`. There, the `ft_transfer` call finally executes.
 
+---
+
 ## Relayer
 
-Meta transactions only work with a [relayer](relayers.md). This is an application layer
-concept, implemented off-chain. Think of it as a server that accepts a
-`SignedDelegateAction`, does some checks on them and eventually forwards it
-inside a transaction to the blockchain network.
+Meta transactions only work with a [relayer](relayers.md), an off-chain service. Think of it as a server that accepts a `SignedDelegateAction`, does some checks on them and eventually forwards it inside a transaction to the network.
 
 A relayer may choose to offer their service for free but that's not going to be
 financially viable long-term. But they could easily have the user pay using
@@ -73,6 +72,8 @@ without compensation if Alice somehow reduces her $FT balance in just the right
 moment. Some level of trust between the relayer and its user is therefore
 required.
 
+---
+
 ## Limitations
 
 ### Single receiver
@@ -81,6 +82,8 @@ A meta transaction, like a normal transaction, can only have one receiver. It's
 possible to chain additional receipts afterwards. But crucially, there is no
 atomicity guarantee and no roll-back mechanism.
 
+<hr class="subsection" />
+
 ### Accounts must be initialized 
 
 Any transaction, including meta transactions, must use NONCEs to avoid replay
@@ -88,11 +91,15 @@ attacks. The NONCE must be chosen by Alice and compared to a NONCE stored on
 chain. This NONCE is stored on the access key information that gets initialized
 when creating an account. 
 
+---
+
 ## Constraints on the actions inside a meta transaction
 
 A transaction is only allowed to contain one single delegate action. Nested
 delegate actions are disallowed and so are delegate actions next to each other
 in the same receipt.
+
+---
 
 ## Gas costs for meta transactions
 
@@ -118,6 +125,8 @@ consequence is that the implicit costs paid at the relayer's shard are
 the delegate action. This might be surprising but hopefully with this
 explanation it makes sense now!
 
+---
+
 ## Gas refunds in meta transactions
 
 Gas refund receipts work exactly like for normal transaction. At every step, the
@@ -126,6 +135,8 @@ height is computed and refunded. At the end of the last step, additionally all
 remaining gas is also refunded at the original purchasing price. The gas refunds
 go to the signer of the original transaction, in this case the relayer. This is
 only fair, since the relayer also paid for it.
+
+---
 
 ## Balance refunds in meta transactions
 
@@ -145,6 +156,8 @@ therefore she receives the token balance refunded, not the relayer. This is
 something relayer implementations must be aware of since there is a financial
 incentive for Alice to submit meta transactions that have high balances attached
 but will fail on Bob's shard.
+
+---
 
 ## Function access keys in meta transactions
 
