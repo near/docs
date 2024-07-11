@@ -90,7 +90,6 @@ const sidebar = {
         {
           "Chain Signatures": [
             "concepts/abstraction/chain-signatures",
-            "concepts/abstraction/signatures/use-cases",
             'build/chain-abstraction/chain-signatures',
             'build/chain-abstraction/nft-chain-keys',
           ]
