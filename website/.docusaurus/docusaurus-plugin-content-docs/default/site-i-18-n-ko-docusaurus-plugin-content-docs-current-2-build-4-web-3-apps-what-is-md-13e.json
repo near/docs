@@ -19,8 +19,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Using components on WebApps",
-    "permalink": "/ko/build/near-components/bos-gateway"
+    "title": "버그 바운티 프로그램",
+    "permalink": "/ko/build/smart-contracts/security/bounty"
   },
   "next": {
     "title": "⭐ Quickstart a WebApp",

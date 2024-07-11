@@ -17,7 +17,7 @@
     "id": "tokens",
     "title": "Tokens"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
     "title": "Token Transfer",
     "permalink": "/zh-CN/concepts/data-flow/token-transfer-flow"

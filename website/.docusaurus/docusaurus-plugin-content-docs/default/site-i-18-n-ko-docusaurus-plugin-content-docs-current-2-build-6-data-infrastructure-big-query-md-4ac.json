@@ -20,8 +20,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "What is Data Infrastructure?",
-    "permalink": "/ko/build/data-infrastructure/what-is"
+    "title": "블록체인 데이터",
+    "permalink": "/ko/concepts/data-flow/data-storage"
   },
   "next": {
     "title": "Introduction",

@@ -18,7 +18,7 @@
     "title": "NEAR Networks",
     "sidebar_label": "Networks"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
     "title": "Các Validator",
     "permalink": "/vi/concepts/basics/validators"

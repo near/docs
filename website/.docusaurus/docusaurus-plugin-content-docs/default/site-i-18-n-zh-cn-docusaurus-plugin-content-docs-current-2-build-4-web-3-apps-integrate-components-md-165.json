@@ -19,8 +19,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Integrating Contracts",
-    "permalink": "/zh-CN/build/web3-apps/integrate-contracts"
+    "title": "Using components on WebApps",
+    "permalink": "/zh-CN/build/near-components/bos-gateway"
   },
   "next": {
     "title": "Authenticate NEAR Users",

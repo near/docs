@@ -17,7 +17,7 @@
     "id": "access-keys",
     "title": "Access Keys"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
     "title": "Address (Account ID)",
     "permalink": "/concepts/protocol/account-id"

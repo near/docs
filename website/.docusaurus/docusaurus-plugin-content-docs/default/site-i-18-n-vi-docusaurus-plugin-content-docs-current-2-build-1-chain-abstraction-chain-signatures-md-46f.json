@@ -19,11 +19,11 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "FastAuth (Email Login)",
-    "permalink": "/vi/build/chain-abstraction/fastauth-sdk"
+    "title": "Use cases",
+    "permalink": "/vi/concepts/abstraction/signatures/use-cases"
   },
   "next": {
-    "title": "Wallet Chain Key Rules",
-    "permalink": "/vi/build/chain-abstraction/wallet"
+    "title": "NFT Chain Keys Contract",
+    "permalink": "/vi/build/chain-abstraction/nft-chain-keys"
   }
 }

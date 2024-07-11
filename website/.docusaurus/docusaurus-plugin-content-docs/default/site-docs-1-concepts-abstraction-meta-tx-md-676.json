@@ -17,7 +17,7 @@
     "id": "meta-transactions",
     "title": "Meta Transactions"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
     "title": "Introduction",
     "permalink": "/concepts/abstraction/introduction"

@@ -243,17 +243,17 @@
       "plugin": "c141421f"
     }
   },
-  "/zh-CN/-ad0": {
+  "/zh-CN/-b1b": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "aba21aa0"
     }
   },
-  "/zh-CN/-dee": {
+  "/zh-CN/-de6": {
     "__comp": "a7bd4aaa",
     "__props": "363b7d6a"
   },
-  "/zh-CN/-fc7": {
+  "/zh-CN/-dc2": {
     "__comp": "a94703ab"
   },
   "/zh-CN/api/rpc/access-keys-fa8": {
@@ -336,7 +336,7 @@
     "__comp": "17896441",
     "content": "25f2eda3"
   },
-  "/zh-CN/build/chain-abstraction/wallet-146": {
+  "/zh-CN/build/chain-abstraction/wallet-63a": {
     "__comp": "17896441",
     "content": "c210639e"
   },
@@ -968,119 +968,115 @@
     "__comp": "17896441",
     "content": "bd3dba0d"
   },
-  "/zh-CN/concepts/abstraction/chain-signatures-491": {
+  "/zh-CN/concepts/abstraction/chain-signatures-4ab": {
     "__comp": "17896441",
     "content": "aaff0a8d"
   },
-  "/zh-CN/concepts/abstraction/introduction-c68": {
+  "/zh-CN/concepts/abstraction/introduction-f97": {
     "__comp": "17896441",
     "content": "7f30b888"
   },
-  "/zh-CN/concepts/abstraction/meta-transactions-7d5": {
+  "/zh-CN/concepts/abstraction/meta-transactions-024": {
     "__comp": "17896441",
     "content": "c33a37be"
   },
-  "/zh-CN/concepts/abstraction/relayers-6dd": {
+  "/zh-CN/concepts/abstraction/relayers-6aa": {
     "__comp": "17896441",
     "content": "8132b614"
   },
-  "/zh-CN/concepts/abstraction/signatures/use-cases-3af": {
+  "/zh-CN/concepts/abstraction/signatures/use-cases-03e": {
     "__comp": "17896441",
     "content": "dd2e084b"
   },
-  "/zh-CN/concepts/advanced/indexers-514": {
+  "/zh-CN/concepts/advanced/indexers-162": {
     "__comp": "17896441",
     "content": "a56cf653"
   },
-  "/zh-CN/concepts/advanced/near-indexer-framework-2a6": {
+  "/zh-CN/concepts/advanced/near-indexer-framework-53e": {
     "__comp": "17896441",
     "content": "382834d8"
   },
-  "/zh-CN/concepts/advanced/near-lake-framework-beb": {
+  "/zh-CN/concepts/advanced/near-lake-framework-289": {
     "__comp": "17896441",
     "content": "444c424a"
   },
-  "/zh-CN/concepts/advanced/specification-a4c": {
-    "__comp": "17896441",
-    "content": "da667f77"
-  },
-  "/zh-CN/concepts/basics/epoch-bdc": {
+  "/zh-CN/concepts/basics/epoch-5b2": {
     "__comp": "17896441",
     "content": "225002d9"
   },
-  "/zh-CN/concepts/basics/networks-500": {
+  "/zh-CN/concepts/basics/networks-624": {
     "__comp": "17896441",
     "content": "f3516e1c"
   },
-  "/zh-CN/concepts/basics/protocol-3e3": {
+  "/zh-CN/concepts/basics/protocol-ed5": {
     "__comp": "17896441",
     "content": "b06457eb"
   },
-  "/zh-CN/concepts/basics/runtime-7e4": {
+  "/zh-CN/concepts/basics/runtime-98f": {
     "__comp": "17896441",
     "content": "5057452f"
   },
-  "/zh-CN/concepts/basics/token-loss-972": {
+  "/zh-CN/concepts/basics/token-loss-f01": {
     "__comp": "17896441",
     "content": "737f3d51"
   },
-  "/zh-CN/concepts/basics/tokens-862": {
+  "/zh-CN/concepts/basics/tokens-14e": {
     "__comp": "17896441",
     "content": "61b5cb53"
   },
-  "/zh-CN/concepts/basics/validators-68a": {
+  "/zh-CN/concepts/basics/validators-02c": {
     "__comp": "17896441",
     "content": "d6fd0179"
   },
-  "/zh-CN/concepts/data-flow/data-storage-850": {
+  "/zh-CN/concepts/data-flow/data-storage-3af": {
     "__comp": "17896441",
     "content": "0deefcb9"
   },
-  "/zh-CN/concepts/data-flow/near-data-flow-090": {
+  "/zh-CN/concepts/data-flow/near-data-flow-4f9": {
     "__comp": "17896441",
     "content": "22e65570"
   },
-  "/zh-CN/concepts/data-flow/token-transfer-flow-1a0": {
+  "/zh-CN/concepts/data-flow/token-transfer-flow-8d8": {
     "__comp": "17896441",
     "content": "f5963d80"
   },
-  "/zh-CN/concepts/protocol/access-keys-90d": {
+  "/zh-CN/concepts/protocol/access-keys-685": {
     "__comp": "17896441",
     "content": "b4d6b070"
   },
-  "/zh-CN/concepts/protocol/account-id-7b3": {
+  "/zh-CN/concepts/protocol/account-id-d1c": {
     "__comp": "17896441",
     "content": "4e57260f"
   },
-  "/zh-CN/concepts/protocol/account-model-029": {
+  "/zh-CN/concepts/protocol/account-model-d90": {
     "__comp": "17896441",
     "content": "79a089bf"
   },
-  "/zh-CN/concepts/protocol/gas-e76": {
+  "/zh-CN/concepts/protocol/gas-0ab": {
     "__comp": "17896441",
     "content": "4361f252"
   },
-  "/zh-CN/concepts/protocol/smartcontract-631": {
+  "/zh-CN/concepts/protocol/smartcontract-480": {
     "__comp": "17896441",
     "content": "f385ad7d"
   },
-  "/zh-CN/concepts/protocol/transaction-anatomy-be5": {
+  "/zh-CN/concepts/protocol/transaction-anatomy-002": {
     "__comp": "17896441",
     "content": "f22cdf19"
   },
-  "/zh-CN/concepts/protocol/transaction-execution-9a9": {
+  "/zh-CN/concepts/protocol/transaction-execution-a95": {
     "__comp": "17896441",
     "content": "661bb43c"
   },
-  "/zh-CN/concepts/protocol/transactions-88c": {
+  "/zh-CN/concepts/protocol/transactions-4a4": {
     "__comp": "17896441",
     "content": "195b6fb6"
   },
-  "/zh-CN/concepts/storage/storage-solutions-25e": {
+  "/zh-CN/concepts/storage/storage-solutions-cc8": {
     "__comp": "17896441",
     "content": "697d885f"
   },
-  "/zh-CN/concepts/storage/storage-staking-3de": {
+  "/zh-CN/concepts/storage/storage-staking-f30": {
     "__comp": "17896441",
     "content": "2cd31747"
   },
@@ -1104,7 +1100,7 @@
     "__comp": "17896441",
     "content": "0956f54a"
   },
-  "/zh-CN/concepts/welcome-2a6": {
+  "/zh-CN/concepts/welcome-79a": {
     "__comp": "17896441",
     "content": "9ece1cec"
   },
@@ -1564,8 +1560,8 @@
     "__comp": "17896441",
     "content": "ca8f19a6"
   },
-  "/zh-CN/-877": {
+  "/zh-CN/welcome-c7f": {
     "__comp": "17896441",
-    "content": "34709271"
+    "content": "f5862b60"
   }
 }

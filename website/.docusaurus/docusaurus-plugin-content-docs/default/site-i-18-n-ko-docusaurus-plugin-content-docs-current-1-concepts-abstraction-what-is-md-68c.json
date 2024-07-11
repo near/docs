@@ -18,10 +18,10 @@
     "title": "Chain Abstraction",
     "sidebar_label": "Introduction"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
-    "title": "에포크",
-    "permalink": "/ko/concepts/basics/epoch"
+    "title": "What is Chain Abstraction?",
+    "permalink": "/ko/build/chain-abstraction/what-is"
   },
   "next": {
     "title": "Meta Transactions",

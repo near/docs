@@ -17,7 +17,7 @@
     "id": "gas",
     "title": "Gas (Execution Fees)"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
     "title": "Anatomy of a Transaction",
     "permalink": "/ko/concepts/protocol/transaction-anatomy"

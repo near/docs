@@ -12,11 +12,11 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Guille",
-  "lastUpdatedAt": 1714414472000,
+  "lastUpdatedAt": 1720726438000,
   "frontMatter": {
     "id": "quickstart",
     "title": "Hello WebApp",
-    "sidebar_label": "⭐ Quickstart a WebApp"
+    "sidebar_label": "Quickstart ✨"
   },
   "sidebar": "build",
   "previous": {

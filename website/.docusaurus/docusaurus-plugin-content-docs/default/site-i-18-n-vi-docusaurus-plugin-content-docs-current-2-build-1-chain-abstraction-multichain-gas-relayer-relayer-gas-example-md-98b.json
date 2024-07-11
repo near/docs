@@ -24,7 +24,7 @@
     "permalink": "/vi/build/chain-abstraction/multichain-gas-relayer/multichain-server"
   },
   "next": {
-    "title": "Rollup Data Availability",
-    "permalink": "/vi/build/chain-abstraction/data-availability"
+    "title": "FastAuth (Email Login)",
+    "permalink": "/vi/build/chain-abstraction/fastauth-sdk"
   }
 }

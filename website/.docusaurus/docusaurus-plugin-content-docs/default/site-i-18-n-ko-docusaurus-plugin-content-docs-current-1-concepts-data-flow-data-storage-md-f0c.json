@@ -17,13 +17,13 @@
     "id": "data-storage",
     "sidebar_label": "블록체인 데이터"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
-    "title": "Use cases",
-    "permalink": "/ko/concepts/abstraction/signatures/use-cases"
+    "title": "What is Data Infrastructure?",
+    "permalink": "/ko/build/data-infrastructure/what-is"
   },
   "next": {
-    "title": "인덱서 소개",
-    "permalink": "/ko/concepts/advanced/indexers"
+    "title": "BigQuery",
+    "permalink": "/ko/build/data-infrastructure/big-query"
   }
 }

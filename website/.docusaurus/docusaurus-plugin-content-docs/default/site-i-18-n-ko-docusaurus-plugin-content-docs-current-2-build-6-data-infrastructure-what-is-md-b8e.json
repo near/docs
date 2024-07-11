@@ -23,7 +23,7 @@
     "permalink": "/ko/build/primitives/dex"
   },
   "next": {
-    "title": "BigQuery",
-    "permalink": "/ko/build/data-infrastructure/big-query"
+    "title": "블록체인 데이터",
+    "permalink": "/ko/concepts/data-flow/data-storage"
   }
 }

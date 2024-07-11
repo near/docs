@@ -17,13 +17,13 @@
     "id": "epoch",
     "title": "Epoch"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
     "title": "Networks",
     "permalink": "/vi/concepts/basics/networks"
   },
   "next": {
-    "title": "Introduction",
-    "permalink": "/vi/concepts/abstraction/introduction"
+    "title": "Các video về Core Runtime",
+    "permalink": "/vi/concepts/basics/runtime"
   }
 }

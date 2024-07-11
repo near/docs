@@ -18,10 +18,10 @@
     "title": "What are Chain Signatures?",
     "sidebar_label": "What are Chain Signatures?"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
-    "title": "Relayers",
-    "permalink": "/ko/concepts/abstraction/relayers"
+    "title": "Meta Transaction Relayers",
+    "permalink": "/ko/build/chain-abstraction/meta-transactions"
   },
   "next": {
     "title": "Use cases",

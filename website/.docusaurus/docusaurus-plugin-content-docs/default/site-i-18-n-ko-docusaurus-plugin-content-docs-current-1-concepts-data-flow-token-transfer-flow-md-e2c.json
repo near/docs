@@ -16,7 +16,7 @@
   "frontMatter": {
     "sidebar_label": "토큰 전송"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
     "title": "NEAR 데이터 흐름",
     "permalink": "/ko/concepts/data-flow/near-data-flow"

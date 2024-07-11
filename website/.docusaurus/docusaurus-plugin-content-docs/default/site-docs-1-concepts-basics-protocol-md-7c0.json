@@ -11,17 +11,16 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/basics/protocol.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Damián Parrino",
-  "lastUpdatedAt": 1718326181000,
+  "lastUpdatedBy": "Guille",
+  "lastUpdatedAt": 1720726438000,
   "frontMatter": {
     "id": "protocol",
-    "title": "What is NEAR?",
-    "sidebar_label": "⭐ What is NEAR?"
+    "title": "What is NEAR?"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
     "title": "Home",
-    "permalink": "/concepts/welcome"
+    "permalink": "/"
   },
   "next": {
     "title": "Overview",

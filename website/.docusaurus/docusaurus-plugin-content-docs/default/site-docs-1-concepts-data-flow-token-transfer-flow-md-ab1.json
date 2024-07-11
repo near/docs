@@ -16,7 +16,7 @@
   "frontMatter": {
     "sidebar_label": "Token Transfer"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
     "title": "NEAR Data Flow",
     "permalink": "/concepts/data-flow/near-data-flow"

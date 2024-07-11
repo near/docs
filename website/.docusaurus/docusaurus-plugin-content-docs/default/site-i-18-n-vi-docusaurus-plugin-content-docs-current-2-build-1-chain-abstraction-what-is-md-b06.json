@@ -19,11 +19,11 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Home",
-    "permalink": "/vi/build/welcome"
+    "title": "Các video về Core Runtime",
+    "permalink": "/vi/concepts/basics/runtime"
   },
   "next": {
-    "title": "Meta Transaction Relayers",
-    "permalink": "/vi/build/chain-abstraction/meta-transactions"
+    "title": "Introduction",
+    "permalink": "/vi/concepts/abstraction/introduction"
   }
 }

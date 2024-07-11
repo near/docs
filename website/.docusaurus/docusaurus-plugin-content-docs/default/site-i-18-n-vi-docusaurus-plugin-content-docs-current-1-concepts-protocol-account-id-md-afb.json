@@ -17,7 +17,7 @@
     "id": "account-id",
     "title": "Address (Account ID)"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
     "title": "Overview",
     "permalink": "/vi/concepts/protocol/account-model"

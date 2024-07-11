@@ -17,13 +17,13 @@
     "id": "runtime",
     "title": "런타임"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
-    "title": "Lake 프레임워크",
-    "permalink": "/ko/concepts/advanced/near-lake-framework"
+    "title": "에포크",
+    "permalink": "/ko/concepts/basics/epoch"
   },
   "next": {
-    "title": "사양",
-    "permalink": "/ko/concepts/advanced/specification"
+    "title": "What is Chain Abstraction?",
+    "permalink": "/ko/build/chain-abstraction/what-is"
   }
 }

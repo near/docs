@@ -17,13 +17,13 @@
     "id": "runtime",
     "title": "Các video về Core Runtime"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
-    "title": "Lake Framework",
-    "permalink": "/vi/concepts/advanced/near-lake-framework"
+    "title": "Epoch",
+    "permalink": "/vi/concepts/basics/epoch"
   },
   "next": {
-    "title": "Đặc điểm kỹ thuật",
-    "permalink": "/vi/concepts/advanced/specification"
+    "title": "What is Chain Abstraction?",
+    "permalink": "/vi/build/chain-abstraction/what-is"
   }
 }

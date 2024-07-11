@@ -17,13 +17,13 @@
     "id": "runtime",
     "title": "Runtime"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
-    "title": "Lake Framework",
-    "permalink": "/zh-CN/concepts/advanced/near-lake-framework"
+    "title": "Epoch",
+    "permalink": "/zh-CN/concepts/basics/epoch"
   },
   "next": {
-    "title": "Specification",
-    "permalink": "/zh-CN/concepts/advanced/specification"
+    "title": "What is Chain Abstraction?",
+    "permalink": "/zh-CN/build/chain-abstraction/what-is"
   }
 }

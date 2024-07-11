@@ -15,14 +15,5 @@
   "lastUpdatedAt": 1718807151000,
   "frontMatter": {
     "sidebar_label": "Indexer Framework"
-  },
-  "sidebar": "concepts",
-  "previous": {
-    "title": "Intro to Indexers",
-    "permalink": "/concepts/advanced/indexers"
-  },
-  "next": {
-    "title": "Lake Framework",
-    "permalink": "/concepts/advanced/near-lake-framework"
   }
 }

@@ -18,13 +18,13 @@
     "title": "Use cases for Chain Signatures",
     "sidebar_label": "Use cases"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
     "title": "What are Chain Signatures?",
     "permalink": "/ko/concepts/abstraction/chain-signatures"
   },
   "next": {
-    "title": "블록체인 데이터",
-    "permalink": "/ko/concepts/data-flow/data-storage"
+    "title": "Chain Signatures",
+    "permalink": "/ko/build/chain-abstraction/chain-signatures"
   }
 }

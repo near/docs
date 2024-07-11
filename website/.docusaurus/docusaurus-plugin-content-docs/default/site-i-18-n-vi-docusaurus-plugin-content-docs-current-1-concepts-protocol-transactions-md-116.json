@@ -17,7 +17,7 @@
     "id": "transactions",
     "title": "Transactions"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
     "title": "Smart Contract",
     "permalink": "/vi/concepts/protocol/smartcontract"

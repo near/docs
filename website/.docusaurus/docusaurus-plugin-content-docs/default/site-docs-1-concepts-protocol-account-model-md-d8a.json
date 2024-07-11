@@ -18,9 +18,9 @@
     "title": "NEAR Accounts",
     "sidebar_label": "Overview"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
-    "title": "⭐ What is NEAR?",
+    "title": "What is NEAR?",
     "permalink": "/concepts/basics/protocol"
   },
   "next": {

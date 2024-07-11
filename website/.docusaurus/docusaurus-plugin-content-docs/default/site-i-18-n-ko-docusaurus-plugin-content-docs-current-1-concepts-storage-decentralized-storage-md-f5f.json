@@ -18,7 +18,7 @@
     "title": "분산 스토리지 솔루션",
     "sidebar_label": "대체 솔루션"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
     "title": "스토리지 스테이킹",
     "permalink": "/ko/concepts/storage/storage-staking"

@@ -23,7 +23,7 @@
     "permalink": "/zh-CN/build/primitives/dex"
   },
   "next": {
-    "title": "BigQuery",
-    "permalink": "/zh-CN/build/data-infrastructure/big-query"
+    "title": "Data on the Blockchain",
+    "permalink": "/zh-CN/concepts/data-flow/data-storage"
   }
 }

@@ -285,34 +285,21 @@ export default {
     "navbar": {
       "logo": {
         "alt": "NEAR Logo",
-        "src": "img/docs_logo.svg",
-        "srcDark": "img/docs_logo_white.svg"
+        "src": "img/near_logo.svg",
+        "srcDark": "img/near_logo_white.svg"
       },
       "items": [
         {
-          "to": "/concepts/welcome",
-          "label": "Concepts",
-          "position": "left"
-        },
-        {
-          "to": "/build/welcome",
-          "label": "Build",
-          "position": "left"
+          "to": "/",
+          "label": "Docs",
+          "position": "left",
+          "activeBaseRegex": "(^/$)|(/build|concepts)"
         },
         {
           "to": "/tutorials/welcome",
           "label": "Tutorials",
-          "position": "left"
-        },
-        {
-          "href": "/api/rpc/introduction",
-          "label": "RPC",
-          "position": "left"
-        },
-        {
-          "type": "html",
-          "value": "<span class=\"separator\"></span>",
-          "position": "left"
+          "position": "left",
+          "activeBaseRegex": "/tutorials/"
         },
         {
           "type": "dropdown",
@@ -321,7 +308,7 @@ export default {
           "items": [
             {
               "label": "🧰 All Tools",
-              "href": "/tools/welcome"
+              "to": "/tools/welcome"
             },
             {
               "type": "html",
@@ -329,15 +316,15 @@ export default {
             },
             {
               "label": "NEAR API",
-              "href": "/tools/near-api-js/quick-reference"
+              "to": "/tools/near-api-js/quick-reference"
             },
             {
               "label": "NEAR SDK",
-              "href": "/tools/sdk"
+              "to": "/tools/sdk"
             },
             {
               "label": "NEAR CLI",
-              "href": "/tools/near-cli"
+              "to": "/tools/near-cli"
             },
             {
               "type": "html",
@@ -345,7 +332,7 @@ export default {
             },
             {
               "label": "Wallet Selector",
-              "href": "/tools/wallet-selector"
+              "to": "/tools/wallet-selector"
             },
             {
               "type": "html",
@@ -364,6 +351,11 @@ export default {
               "href": "https://docs.welldonestudio.io/code/getting-started"
             }
           ]
+        },
+        {
+          "type": "html",
+          "value": "<span class=\"separator\"></span>",
+          "position": "left"
         },
         {
           "type": "dropdown",
@@ -404,7 +396,11 @@ export default {
               "value": "<hr /><div class=\"subtitle\"> Other Docs </dib>"
             },
             {
-              "href": "https://nomicon.io",
+              "href": "https://github.com/near/NEPs",
+              "label": "NEPs"
+            },
+            {
+              "href": "https://near.github.io/nearcore/",
               "label": "Protocol Docs"
             },
             {
@@ -412,14 +408,21 @@ export default {
               "label": "Validator Docs"
             },
             {
-              "href": "/integrations/exchange-integration",
+              "to": "/integrations/exchange-integration",
               "label": "Exchange Integrations"
             }
           ]
         },
         {
+          "to": "/api/rpc/introduction",
+          "label": "RPC",
+          "activeBaseRegex": "/api/rpc",
+          "position": "left"
+        },
+        {
           "label": "Blog",
-          "href": "/blog",
+          "to": "/blog",
+          "activeBaseRegex": "/blog",
           "position": "left"
         },
         {

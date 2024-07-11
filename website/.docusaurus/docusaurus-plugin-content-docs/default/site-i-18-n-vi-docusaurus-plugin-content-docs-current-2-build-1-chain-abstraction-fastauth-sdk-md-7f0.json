@@ -20,11 +20,11 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Meta Transaction Relayers",
-    "permalink": "/vi/build/chain-abstraction/meta-transactions"
+    "title": "Relayer + Gas Station",
+    "permalink": "/vi/build/chain-abstraction/multichain-gas-relayer/relayer-gas-example"
   },
   "next": {
-    "title": "Chain Signatures",
-    "permalink": "/vi/build/chain-abstraction/chain-signatures"
+    "title": "Rollup Data Availability",
+    "permalink": "/vi/build/chain-abstraction/data-availability"
   }
 }

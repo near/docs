@@ -18,13 +18,13 @@
     "title": "Use cases for Chain Signatures",
     "sidebar_label": "Use cases"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
     "title": "What are Chain Signatures?",
     "permalink": "/vi/concepts/abstraction/chain-signatures"
   },
   "next": {
-    "title": "Data on the Blockchain",
-    "permalink": "/vi/concepts/data-flow/data-storage"
+    "title": "Chain Signatures",
+    "permalink": "/vi/build/chain-abstraction/chain-signatures"
   }
 }

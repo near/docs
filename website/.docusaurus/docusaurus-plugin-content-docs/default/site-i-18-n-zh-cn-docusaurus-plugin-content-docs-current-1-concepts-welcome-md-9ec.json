@@ -18,10 +18,5 @@
     "title": "NEAR Protocol Overview",
     "sidebar_label": "Home",
     "hide_table_of_contents": true
-  },
-  "sidebar": "concepts",
-  "next": {
-    "title": "⭐ What is NEAR?",
-    "permalink": "/zh-CN/concepts/basics/protocol"
   }
 }

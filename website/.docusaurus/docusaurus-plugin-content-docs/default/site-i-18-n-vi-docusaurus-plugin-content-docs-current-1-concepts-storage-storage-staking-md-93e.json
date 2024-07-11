@@ -18,7 +18,7 @@
     "title": "Storage Staking",
     "sidebar_label": "Storage Staking"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
     "title": "Avoiding Token Loss",
     "permalink": "/vi/concepts/basics/token-loss"

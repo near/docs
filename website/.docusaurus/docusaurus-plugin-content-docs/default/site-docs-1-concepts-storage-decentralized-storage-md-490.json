@@ -18,7 +18,7 @@
     "title": "Decentralized Storage Solutions",
     "sidebar_label": "Alternative Solutions"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
     "title": "Storage Staking",
     "permalink": "/concepts/storage/storage-staking"

@@ -19,10 +19,6 @@
     "sidebar_label": "Introduction"
   },
   "sidebar": "concepts",
-  "previous": {
-    "title": "Specification",
-    "permalink": "/zh-CN/concepts/advanced/specification"
-  },
   "next": {
     "title": "Blockchain basics",
     "permalink": "/zh-CN/concepts/web3/basics"

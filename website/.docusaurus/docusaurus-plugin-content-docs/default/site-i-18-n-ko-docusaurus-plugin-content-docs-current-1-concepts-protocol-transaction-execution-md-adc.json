@@ -17,7 +17,7 @@
     "id": "transaction-execution",
     "title": "Lifecycle of a Transaction"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
     "title": "Gas (Execution Fees)",
     "permalink": "/ko/concepts/protocol/gas"

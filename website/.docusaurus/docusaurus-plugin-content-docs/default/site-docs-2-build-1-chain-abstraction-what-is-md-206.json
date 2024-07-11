@@ -19,11 +19,11 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Home",
-    "permalink": "/build/welcome"
+    "title": "Runtime",
+    "permalink": "/concepts/basics/runtime"
   },
   "next": {
-    "title": "Meta Transaction Relayers",
-    "permalink": "/build/chain-abstraction/meta-transactions"
+    "title": "Introduction",
+    "permalink": "/concepts/abstraction/introduction"
   }
 }

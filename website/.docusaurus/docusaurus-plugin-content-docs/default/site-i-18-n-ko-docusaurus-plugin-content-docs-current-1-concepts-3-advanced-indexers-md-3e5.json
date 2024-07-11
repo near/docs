@@ -15,14 +15,5 @@
   "lastUpdatedAt": 1719220968000,
   "frontMatter": {
     "sidebar_label": "인덱서 소개"
-  },
-  "sidebar": "concepts",
-  "previous": {
-    "title": "블록체인 데이터",
-    "permalink": "/ko/concepts/data-flow/data-storage"
-  },
-  "next": {
-    "title": "인덱서 프레임워크",
-    "permalink": "/ko/concepts/advanced/near-indexer-framework"
   }
 }

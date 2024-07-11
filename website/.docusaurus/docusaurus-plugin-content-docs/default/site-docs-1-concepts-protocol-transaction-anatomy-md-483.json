@@ -17,7 +17,7 @@
     "id": "transaction-anatomy",
     "title": "Anatomy of a Transaction"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
     "title": "Transactions",
     "permalink": "/concepts/protocol/transactions"

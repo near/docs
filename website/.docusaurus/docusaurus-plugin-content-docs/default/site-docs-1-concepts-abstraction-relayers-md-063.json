@@ -17,13 +17,13 @@
     "id": "relayers",
     "title": "Relayers"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
     "title": "Meta Transactions",
     "permalink": "/concepts/abstraction/meta-transactions"
   },
   "next": {
-    "title": "What are Chain Signatures?",
-    "permalink": "/concepts/abstraction/chain-signatures"
+    "title": "Meta Transaction Relayers",
+    "permalink": "/build/chain-abstraction/meta-transactions"
   }
 }

@@ -18,10 +18,5 @@
     "title": "NEAR Protocol Overview",
     "sidebar_label": "홈",
     "hide_table_of_contents": true
-  },
-  "sidebar": "concepts",
-  "next": {
-    "title": "⭐ NEAR란 무엇인가요?",
-    "permalink": "/ko/concepts/basics/protocol"
   }
 }

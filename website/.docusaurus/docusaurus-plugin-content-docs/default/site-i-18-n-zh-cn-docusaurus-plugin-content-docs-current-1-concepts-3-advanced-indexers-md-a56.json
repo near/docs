@@ -15,14 +15,5 @@
   "lastUpdatedAt": 1719220968000,
   "frontMatter": {
     "sidebar_label": "Intro to Indexers"
-  },
-  "sidebar": "concepts",
-  "previous": {
-    "title": "Data on the Blockchain",
-    "permalink": "/zh-CN/concepts/data-flow/data-storage"
-  },
-  "next": {
-    "title": "Indexer Framework",
-    "permalink": "/zh-CN/concepts/advanced/near-indexer-framework"
   }
 }

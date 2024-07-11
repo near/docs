@@ -19,11 +19,11 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Home",
-    "permalink": "/ko/build/welcome"
+    "title": "런타임",
+    "permalink": "/ko/concepts/basics/runtime"
   },
   "next": {
-    "title": "Meta Transaction Relayers",
-    "permalink": "/ko/build/chain-abstraction/meta-transactions"
+    "title": "Introduction",
+    "permalink": "/ko/concepts/abstraction/introduction"
   }
 }

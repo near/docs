@@ -24,7 +24,7 @@
     "permalink": "/ko/build/data-infrastructure/query-api/query-data"
   },
   "next": {
-    "title": "Lake Overview",
-    "permalink": "/ko/build/data-infrastructure/lake-framework/near-lake"
+    "title": "Lake 프레임워크",
+    "permalink": "/ko/concepts/advanced/near-lake-framework"
   }
 }

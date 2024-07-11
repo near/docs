@@ -20,8 +20,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Wallet Chain Key Rules",
-    "permalink": "/zh-CN/build/chain-abstraction/wallet"
+    "title": "Chain Signatures",
+    "permalink": "/zh-CN/build/chain-abstraction/chain-signatures"
   },
   "next": {
     "title": "Overview",

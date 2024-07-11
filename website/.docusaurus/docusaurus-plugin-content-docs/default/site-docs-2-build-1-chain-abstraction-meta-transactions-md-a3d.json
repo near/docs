@@ -20,11 +20,11 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "What is Chain Abstraction?",
-    "permalink": "/build/chain-abstraction/what-is"
+    "title": "Relayers",
+    "permalink": "/concepts/abstraction/relayers"
   },
   "next": {
-    "title": "FastAuth (Email Login)",
-    "permalink": "/build/chain-abstraction/fastauth-sdk"
+    "title": "What are Chain Signatures?",
+    "permalink": "/concepts/abstraction/chain-signatures"
   }
 }

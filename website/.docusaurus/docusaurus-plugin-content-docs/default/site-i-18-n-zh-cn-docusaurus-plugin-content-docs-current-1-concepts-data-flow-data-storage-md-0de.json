@@ -17,13 +17,13 @@
     "id": "data-storage",
     "sidebar_label": "Data on the Blockchain"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
-    "title": "Use cases",
-    "permalink": "/zh-CN/concepts/abstraction/signatures/use-cases"
+    "title": "What is Data Infrastructure?",
+    "permalink": "/zh-CN/build/data-infrastructure/what-is"
   },
   "next": {
-    "title": "Intro to Indexers",
-    "permalink": "/zh-CN/concepts/advanced/indexers"
+    "title": "BigQuery",
+    "permalink": "/zh-CN/build/data-infrastructure/big-query"
   }
 }

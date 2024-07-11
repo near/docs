@@ -20,8 +20,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Migrate from Lake framework",
-    "permalink": "/ko/build/data-infrastructure/query-api/migrate-from-near-lake"
+    "title": "Lake 프레임워크",
+    "permalink": "/ko/concepts/advanced/near-lake-framework"
   },
   "next": {
     "title": "NEAR Lake StateChanges 인덱서 튜토리얼",

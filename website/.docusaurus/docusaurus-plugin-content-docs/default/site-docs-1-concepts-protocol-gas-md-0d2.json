@@ -11,13 +11,13 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/protocol/gas.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Damián Parrino",
-  "lastUpdatedAt": 1720641705000,
+  "lastUpdatedBy": "Guille",
+  "lastUpdatedAt": 1720726438000,
   "frontMatter": {
     "id": "gas",
     "title": "Gas (Execution Fees)"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
     "title": "Anatomy of a Transaction",
     "permalink": "/concepts/protocol/transaction-anatomy"

@@ -18,10 +18,10 @@
     "title": "NEAR là gì?",
     "sidebar_label": "⭐ What is NEAR?"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
     "title": "Home",
-    "permalink": "/vi/concepts/welcome"
+    "permalink": "/vi/build/welcome"
   },
   "next": {
     "title": "Overview",

@@ -16,14 +16,5 @@
   "frontMatter": {
     "id": "wallet",
     "title": "Wallet Chain Key Rules"
-  },
-  "sidebar": "build",
-  "previous": {
-    "title": "Chain Signatures",
-    "permalink": "/build/chain-abstraction/chain-signatures"
-  },
-  "next": {
-    "title": "NFT Chain Keys Contract",
-    "permalink": "/build/chain-abstraction/nft-chain-keys"
   }
 }

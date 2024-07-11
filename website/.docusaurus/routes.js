@@ -99,15 +99,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', 'ad0'),
+    component: ComponentCreator('/zh-CN/', 'b1b'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', 'dee'),
+        component: ComponentCreator('/zh-CN/', 'de6'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', 'fc7'),
+            component: ComponentCreator('/zh-CN/', 'dc2'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -231,9 +231,8 @@ export default [
               },
               {
                 path: '/zh-CN/build/chain-abstraction/wallet',
-                component: ComponentCreator('/zh-CN/build/chain-abstraction/wallet', '146'),
-                exact: true,
-                sidebar: "build"
+                component: ComponentCreator('/zh-CN/build/chain-abstraction/wallet', '63a'),
+                exact: true
               },
               {
                 path: '/zh-CN/build/chain-abstraction/what-is',
@@ -1108,177 +1107,169 @@ export default [
               },
               {
                 path: '/zh-CN/concepts/abstraction/chain-signatures',
-                component: ComponentCreator('/zh-CN/concepts/abstraction/chain-signatures', '491'),
+                component: ComponentCreator('/zh-CN/concepts/abstraction/chain-signatures', '4ab'),
                 exact: true,
-                sidebar: "concepts"
+                sidebar: "build"
               },
               {
                 path: '/zh-CN/concepts/abstraction/introduction',
-                component: ComponentCreator('/zh-CN/concepts/abstraction/introduction', 'c68'),
+                component: ComponentCreator('/zh-CN/concepts/abstraction/introduction', 'f97'),
                 exact: true,
-                sidebar: "concepts"
+                sidebar: "build"
               },
               {
                 path: '/zh-CN/concepts/abstraction/meta-transactions',
-                component: ComponentCreator('/zh-CN/concepts/abstraction/meta-transactions', '7d5'),
+                component: ComponentCreator('/zh-CN/concepts/abstraction/meta-transactions', '024'),
                 exact: true,
-                sidebar: "concepts"
+                sidebar: "build"
               },
               {
                 path: '/zh-CN/concepts/abstraction/relayers',
-                component: ComponentCreator('/zh-CN/concepts/abstraction/relayers', '6dd'),
+                component: ComponentCreator('/zh-CN/concepts/abstraction/relayers', '6aa'),
                 exact: true,
-                sidebar: "concepts"
+                sidebar: "build"
               },
               {
                 path: '/zh-CN/concepts/abstraction/signatures/use-cases',
-                component: ComponentCreator('/zh-CN/concepts/abstraction/signatures/use-cases', '3af'),
+                component: ComponentCreator('/zh-CN/concepts/abstraction/signatures/use-cases', '03e'),
                 exact: true,
-                sidebar: "concepts"
+                sidebar: "build"
               },
               {
                 path: '/zh-CN/concepts/advanced/indexers',
-                component: ComponentCreator('/zh-CN/concepts/advanced/indexers', '514'),
-                exact: true,
-                sidebar: "concepts"
+                component: ComponentCreator('/zh-CN/concepts/advanced/indexers', '162'),
+                exact: true
               },
               {
                 path: '/zh-CN/concepts/advanced/near-indexer-framework',
-                component: ComponentCreator('/zh-CN/concepts/advanced/near-indexer-framework', '2a6'),
-                exact: true,
-                sidebar: "concepts"
+                component: ComponentCreator('/zh-CN/concepts/advanced/near-indexer-framework', '53e'),
+                exact: true
               },
               {
                 path: '/zh-CN/concepts/advanced/near-lake-framework',
-                component: ComponentCreator('/zh-CN/concepts/advanced/near-lake-framework', 'beb'),
+                component: ComponentCreator('/zh-CN/concepts/advanced/near-lake-framework', '289'),
                 exact: true,
-                sidebar: "concepts"
-              },
-              {
-                path: '/zh-CN/concepts/advanced/specification',
-                component: ComponentCreator('/zh-CN/concepts/advanced/specification', 'a4c'),
-                exact: true,
-                sidebar: "concepts"
+                sidebar: "build"
               },
               {
                 path: '/zh-CN/concepts/basics/epoch',
-                component: ComponentCreator('/zh-CN/concepts/basics/epoch', 'bdc'),
+                component: ComponentCreator('/zh-CN/concepts/basics/epoch', '5b2'),
                 exact: true,
-                sidebar: "concepts"
+                sidebar: "build"
               },
               {
                 path: '/zh-CN/concepts/basics/networks',
-                component: ComponentCreator('/zh-CN/concepts/basics/networks', '500'),
+                component: ComponentCreator('/zh-CN/concepts/basics/networks', '624'),
                 exact: true,
-                sidebar: "concepts"
+                sidebar: "build"
               },
               {
                 path: '/zh-CN/concepts/basics/protocol',
-                component: ComponentCreator('/zh-CN/concepts/basics/protocol', '3e3'),
+                component: ComponentCreator('/zh-CN/concepts/basics/protocol', 'ed5'),
                 exact: true,
-                sidebar: "concepts"
+                sidebar: "build"
               },
               {
                 path: '/zh-CN/concepts/basics/runtime',
-                component: ComponentCreator('/zh-CN/concepts/basics/runtime', '7e4'),
+                component: ComponentCreator('/zh-CN/concepts/basics/runtime', '98f'),
                 exact: true,
-                sidebar: "concepts"
+                sidebar: "build"
               },
               {
                 path: '/zh-CN/concepts/basics/token-loss',
-                component: ComponentCreator('/zh-CN/concepts/basics/token-loss', '972'),
+                component: ComponentCreator('/zh-CN/concepts/basics/token-loss', 'f01'),
                 exact: true,
-                sidebar: "concepts"
+                sidebar: "build"
               },
               {
                 path: '/zh-CN/concepts/basics/tokens',
-                component: ComponentCreator('/zh-CN/concepts/basics/tokens', '862'),
+                component: ComponentCreator('/zh-CN/concepts/basics/tokens', '14e'),
                 exact: true,
-                sidebar: "concepts"
+                sidebar: "build"
               },
               {
                 path: '/zh-CN/concepts/basics/validators',
-                component: ComponentCreator('/zh-CN/concepts/basics/validators', '68a'),
+                component: ComponentCreator('/zh-CN/concepts/basics/validators', '02c'),
                 exact: true,
-                sidebar: "concepts"
+                sidebar: "build"
               },
               {
                 path: '/zh-CN/concepts/data-flow/data-storage',
-                component: ComponentCreator('/zh-CN/concepts/data-flow/data-storage', '850'),
+                component: ComponentCreator('/zh-CN/concepts/data-flow/data-storage', '3af'),
                 exact: true,
-                sidebar: "concepts"
+                sidebar: "build"
               },
               {
                 path: '/zh-CN/concepts/data-flow/near-data-flow',
-                component: ComponentCreator('/zh-CN/concepts/data-flow/near-data-flow', '090'),
+                component: ComponentCreator('/zh-CN/concepts/data-flow/near-data-flow', '4f9'),
                 exact: true,
-                sidebar: "concepts"
+                sidebar: "build"
               },
               {
                 path: '/zh-CN/concepts/data-flow/token-transfer-flow',
-                component: ComponentCreator('/zh-CN/concepts/data-flow/token-transfer-flow', '1a0'),
+                component: ComponentCreator('/zh-CN/concepts/data-flow/token-transfer-flow', '8d8'),
                 exact: true,
-                sidebar: "concepts"
+                sidebar: "build"
               },
               {
                 path: '/zh-CN/concepts/protocol/access-keys',
-                component: ComponentCreator('/zh-CN/concepts/protocol/access-keys', '90d'),
+                component: ComponentCreator('/zh-CN/concepts/protocol/access-keys', '685'),
                 exact: true,
-                sidebar: "concepts"
+                sidebar: "build"
               },
               {
                 path: '/zh-CN/concepts/protocol/account-id',
-                component: ComponentCreator('/zh-CN/concepts/protocol/account-id', '7b3'),
+                component: ComponentCreator('/zh-CN/concepts/protocol/account-id', 'd1c'),
                 exact: true,
-                sidebar: "concepts"
+                sidebar: "build"
               },
               {
                 path: '/zh-CN/concepts/protocol/account-model',
-                component: ComponentCreator('/zh-CN/concepts/protocol/account-model', '029'),
+                component: ComponentCreator('/zh-CN/concepts/protocol/account-model', 'd90'),
                 exact: true,
-                sidebar: "concepts"
+                sidebar: "build"
               },
               {
                 path: '/zh-CN/concepts/protocol/gas',
-                component: ComponentCreator('/zh-CN/concepts/protocol/gas', 'e76'),
+                component: ComponentCreator('/zh-CN/concepts/protocol/gas', '0ab'),
                 exact: true,
-                sidebar: "concepts"
+                sidebar: "build"
               },
               {
                 path: '/zh-CN/concepts/protocol/smartcontract',
-                component: ComponentCreator('/zh-CN/concepts/protocol/smartcontract', '631'),
+                component: ComponentCreator('/zh-CN/concepts/protocol/smartcontract', '480'),
                 exact: true,
-                sidebar: "concepts"
+                sidebar: "build"
               },
               {
                 path: '/zh-CN/concepts/protocol/transaction-anatomy',
-                component: ComponentCreator('/zh-CN/concepts/protocol/transaction-anatomy', 'be5'),
+                component: ComponentCreator('/zh-CN/concepts/protocol/transaction-anatomy', '002'),
                 exact: true,
-                sidebar: "concepts"
+                sidebar: "build"
               },
               {
                 path: '/zh-CN/concepts/protocol/transaction-execution',
-                component: ComponentCreator('/zh-CN/concepts/protocol/transaction-execution', '9a9'),
+                component: ComponentCreator('/zh-CN/concepts/protocol/transaction-execution', 'a95'),
                 exact: true,
-                sidebar: "concepts"
+                sidebar: "build"
               },
               {
                 path: '/zh-CN/concepts/protocol/transactions',
-                component: ComponentCreator('/zh-CN/concepts/protocol/transactions', '88c'),
+                component: ComponentCreator('/zh-CN/concepts/protocol/transactions', '4a4'),
                 exact: true,
-                sidebar: "concepts"
+                sidebar: "build"
               },
               {
                 path: '/zh-CN/concepts/storage/storage-solutions',
-                component: ComponentCreator('/zh-CN/concepts/storage/storage-solutions', '25e'),
+                component: ComponentCreator('/zh-CN/concepts/storage/storage-solutions', 'cc8'),
                 exact: true,
-                sidebar: "concepts"
+                sidebar: "build"
               },
               {
                 path: '/zh-CN/concepts/storage/storage-staking',
-                component: ComponentCreator('/zh-CN/concepts/storage/storage-staking', '3de'),
+                component: ComponentCreator('/zh-CN/concepts/storage/storage-staking', 'f30'),
                 exact: true,
-                sidebar: "concepts"
+                sidebar: "build"
               },
               {
                 path: '/zh-CN/concepts/web3/basics',
@@ -1312,9 +1303,8 @@ export default [
               },
               {
                 path: '/zh-CN/concepts/welcome',
-                component: ComponentCreator('/zh-CN/concepts/welcome', '2a6'),
-                exact: true,
-                sidebar: "concepts"
+                component: ComponentCreator('/zh-CN/concepts/welcome', '79a'),
+                exact: true
               },
               {
                 path: '/zh-CN/help',
@@ -1999,8 +1989,8 @@ export default [
                 sidebar: "tutorials"
               },
               {
-                path: '/zh-CN/',
-                component: ComponentCreator('/zh-CN/', '877'),
+                path: '/zh-CN/welcome',
+                component: ComponentCreator('/zh-CN/welcome', 'c7f'),
                 exact: true
               }
             ]

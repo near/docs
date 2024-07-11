@@ -18,7 +18,7 @@
     "title": "Các giải pháp lưu trữ phi tập trung",
     "sidebar_label": "Các giải pháp thay thế"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
     "title": "Storage Staking",
     "permalink": "/vi/concepts/storage/storage-staking"

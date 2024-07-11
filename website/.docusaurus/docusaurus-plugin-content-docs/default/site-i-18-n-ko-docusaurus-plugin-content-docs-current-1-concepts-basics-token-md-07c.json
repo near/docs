@@ -17,7 +17,7 @@
     "id": "tokens",
     "title": "토큰"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
     "title": "토큰 전송",
     "permalink": "/ko/concepts/data-flow/token-transfer-flow"

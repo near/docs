@@ -15,14 +15,5 @@
   "lastUpdatedAt": 1719220968000,
   "frontMatter": {
     "sidebar_label": "인덱서 프레임워크"
-  },
-  "sidebar": "concepts",
-  "previous": {
-    "title": "인덱서 소개",
-    "permalink": "/ko/concepts/advanced/indexers"
-  },
-  "next": {
-    "title": "Lake 프레임워크",
-    "permalink": "/ko/concepts/advanced/near-lake-framework"
   }
 }

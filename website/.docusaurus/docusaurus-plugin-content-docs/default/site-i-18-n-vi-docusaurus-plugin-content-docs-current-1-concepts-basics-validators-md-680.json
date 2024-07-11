@@ -17,7 +17,7 @@
     "id": "validators",
     "title": "Các Validator"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
     "title": "Các giải pháp thay thế",
     "permalink": "/vi/concepts/storage/storage-solutions"

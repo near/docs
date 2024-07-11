@@ -19,8 +19,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Using components on WebApps",
-    "permalink": "/zh-CN/build/near-components/bos-gateway"
+    "title": "Bug Bounty Program",
+    "permalink": "/zh-CN/build/smart-contracts/security/bounty"
   },
   "next": {
     "title": "⭐ Quickstart a WebApp",

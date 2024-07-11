@@ -18,7 +18,7 @@
     "title": "토큰 손실 방지",
     "sidebar_label": "토큰 손실 방지"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
     "title": "토큰",
     "permalink": "/ko/concepts/basics/tokens"

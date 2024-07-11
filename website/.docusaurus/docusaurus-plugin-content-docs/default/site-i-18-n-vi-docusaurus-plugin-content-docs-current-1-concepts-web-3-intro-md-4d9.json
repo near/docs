@@ -19,10 +19,6 @@
     "sidebar_label": "Giới thiệu"
   },
   "sidebar": "concepts",
-  "previous": {
-    "title": "Đặc điểm kỹ thuật",
-    "permalink": "/vi/concepts/advanced/specification"
-  },
   "next": {
     "title": "Blockchain basics",
     "permalink": "/vi/concepts/web3/basics"

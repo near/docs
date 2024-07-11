@@ -20,8 +20,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "버그 바운티 프로그램",
-    "permalink": "/ko/build/smart-contracts/security/bounty"
+    "title": "Integrating Contracts",
+    "permalink": "/ko/build/web3-apps/integrate-contracts"
   },
   "next": {
     "title": "Choose your Dev Environment",

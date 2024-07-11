@@ -17,7 +17,7 @@
     "id": "validators",
     "title": "Validators"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
     "title": "Alternative Solutions",
     "permalink": "/zh-CN/concepts/storage/storage-solutions"

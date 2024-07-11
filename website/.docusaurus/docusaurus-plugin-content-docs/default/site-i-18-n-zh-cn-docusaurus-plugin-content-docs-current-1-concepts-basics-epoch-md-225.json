@@ -17,13 +17,13 @@
     "id": "epoch",
     "title": "Epoch"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
     "title": "Networks",
     "permalink": "/zh-CN/concepts/basics/networks"
   },
   "next": {
-    "title": "Introduction",
-    "permalink": "/zh-CN/concepts/abstraction/introduction"
+    "title": "Runtime",
+    "permalink": "/zh-CN/concepts/basics/runtime"
   }
 }

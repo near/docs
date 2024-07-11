@@ -20,8 +20,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "What is Data Infrastructure?",
-    "permalink": "/build/data-infrastructure/what-is"
+    "title": "Data on the Blockchain",
+    "permalink": "/concepts/data-flow/data-storage"
   },
   "next": {
     "title": "Introduction",

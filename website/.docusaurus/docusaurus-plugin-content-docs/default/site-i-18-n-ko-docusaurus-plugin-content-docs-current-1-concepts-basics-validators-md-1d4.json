@@ -17,7 +17,7 @@
     "id": "validators",
     "title": "밸리데이터"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
     "title": "대체 솔루션",
     "permalink": "/ko/concepts/storage/storage-solutions"

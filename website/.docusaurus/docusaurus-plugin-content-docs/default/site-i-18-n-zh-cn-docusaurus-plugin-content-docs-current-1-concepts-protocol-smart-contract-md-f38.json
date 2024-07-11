@@ -17,7 +17,7 @@
     "id": "smartcontract",
     "title": "Smart Contract"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
     "title": "Access Keys",
     "permalink": "/zh-CN/concepts/protocol/access-keys"

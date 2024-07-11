@@ -16,7 +16,7 @@
   "frontMatter": {
     "sidebar_label": "NEAR Data Flow"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
     "title": "Lifecycle of a Transaction",
     "permalink": "/concepts/protocol/transaction-execution"

@@ -8,7 +8,7 @@
           "label": "Next",
           "isLast": true,
           "path": "/zh-CN/",
-          "mainDocId": "welcome",
+          "mainDocId": "concepts/web3/intro",
           "docs": [
             {
               "id": "api/rpc/access-keys",
@@ -112,8 +112,7 @@
             },
             {
               "id": "build/chain-abstraction/wallet",
-              "path": "/zh-CN/build/chain-abstraction/wallet",
-              "sidebar": "build"
+              "path": "/zh-CN/build/chain-abstraction/wallet"
             },
             {
               "id": "build/chain-abstraction/what-is",
@@ -832,147 +831,140 @@
             {
               "id": "concepts/abstraction/chain-signatures",
               "path": "/zh-CN/concepts/abstraction/chain-signatures",
-              "sidebar": "concepts"
+              "sidebar": "build"
             },
             {
               "id": "concepts/abstraction/introduction",
               "path": "/zh-CN/concepts/abstraction/introduction",
-              "sidebar": "concepts"
+              "sidebar": "build"
             },
             {
               "id": "concepts/abstraction/meta-transactions",
               "path": "/zh-CN/concepts/abstraction/meta-transactions",
-              "sidebar": "concepts"
+              "sidebar": "build"
             },
             {
               "id": "concepts/abstraction/relayers",
               "path": "/zh-CN/concepts/abstraction/relayers",
-              "sidebar": "concepts"
+              "sidebar": "build"
             },
             {
               "id": "concepts/abstraction/signatures/use-cases",
               "path": "/zh-CN/concepts/abstraction/signatures/use-cases",
-              "sidebar": "concepts"
+              "sidebar": "build"
             },
             {
               "id": "concepts/advanced/indexers",
-              "path": "/zh-CN/concepts/advanced/indexers",
-              "sidebar": "concepts"
+              "path": "/zh-CN/concepts/advanced/indexers"
             },
             {
               "id": "concepts/advanced/near-indexer-framework",
-              "path": "/zh-CN/concepts/advanced/near-indexer-framework",
-              "sidebar": "concepts"
+              "path": "/zh-CN/concepts/advanced/near-indexer-framework"
             },
             {
               "id": "concepts/advanced/near-lake-framework",
               "path": "/zh-CN/concepts/advanced/near-lake-framework",
-              "sidebar": "concepts"
-            },
-            {
-              "id": "concepts/advanced/specification",
-              "path": "/zh-CN/concepts/advanced/specification",
-              "sidebar": "concepts"
+              "sidebar": "build"
             },
             {
               "id": "concepts/basics/epoch",
               "path": "/zh-CN/concepts/basics/epoch",
-              "sidebar": "concepts"
+              "sidebar": "build"
             },
             {
               "id": "concepts/basics/networks",
               "path": "/zh-CN/concepts/basics/networks",
-              "sidebar": "concepts"
+              "sidebar": "build"
             },
             {
               "id": "concepts/basics/protocol",
               "path": "/zh-CN/concepts/basics/protocol",
-              "sidebar": "concepts"
+              "sidebar": "build"
             },
             {
               "id": "concepts/basics/runtime",
               "path": "/zh-CN/concepts/basics/runtime",
-              "sidebar": "concepts"
+              "sidebar": "build"
             },
             {
               "id": "concepts/basics/token-loss",
               "path": "/zh-CN/concepts/basics/token-loss",
-              "sidebar": "concepts"
+              "sidebar": "build"
             },
             {
               "id": "concepts/basics/tokens",
               "path": "/zh-CN/concepts/basics/tokens",
-              "sidebar": "concepts"
+              "sidebar": "build"
             },
             {
               "id": "concepts/basics/validators",
               "path": "/zh-CN/concepts/basics/validators",
-              "sidebar": "concepts"
+              "sidebar": "build"
             },
             {
               "id": "concepts/data-flow/data-storage",
               "path": "/zh-CN/concepts/data-flow/data-storage",
-              "sidebar": "concepts"
+              "sidebar": "build"
             },
             {
               "id": "concepts/data-flow/near-data-flow",
               "path": "/zh-CN/concepts/data-flow/near-data-flow",
-              "sidebar": "concepts"
+              "sidebar": "build"
             },
             {
               "id": "concepts/data-flow/token-transfer-flow",
               "path": "/zh-CN/concepts/data-flow/token-transfer-flow",
-              "sidebar": "concepts"
+              "sidebar": "build"
             },
             {
               "id": "concepts/protocol/access-keys",
               "path": "/zh-CN/concepts/protocol/access-keys",
-              "sidebar": "concepts"
+              "sidebar": "build"
             },
             {
               "id": "concepts/protocol/account-id",
               "path": "/zh-CN/concepts/protocol/account-id",
-              "sidebar": "concepts"
+              "sidebar": "build"
             },
             {
               "id": "concepts/protocol/account-model",
               "path": "/zh-CN/concepts/protocol/account-model",
-              "sidebar": "concepts"
+              "sidebar": "build"
             },
             {
               "id": "concepts/protocol/gas",
               "path": "/zh-CN/concepts/protocol/gas",
-              "sidebar": "concepts"
+              "sidebar": "build"
             },
             {
               "id": "concepts/protocol/smartcontract",
               "path": "/zh-CN/concepts/protocol/smartcontract",
-              "sidebar": "concepts"
+              "sidebar": "build"
             },
             {
               "id": "concepts/protocol/transaction-anatomy",
               "path": "/zh-CN/concepts/protocol/transaction-anatomy",
-              "sidebar": "concepts"
+              "sidebar": "build"
             },
             {
               "id": "concepts/protocol/transaction-execution",
               "path": "/zh-CN/concepts/protocol/transaction-execution",
-              "sidebar": "concepts"
+              "sidebar": "build"
             },
             {
               "id": "concepts/protocol/transactions",
               "path": "/zh-CN/concepts/protocol/transactions",
-              "sidebar": "concepts"
+              "sidebar": "build"
             },
             {
               "id": "concepts/storage/storage-solutions",
               "path": "/zh-CN/concepts/storage/storage-solutions",
-              "sidebar": "concepts"
+              "sidebar": "build"
             },
             {
               "id": "concepts/storage/storage-staking",
               "path": "/zh-CN/concepts/storage/storage-staking",
-              "sidebar": "concepts"
+              "sidebar": "build"
             },
             {
               "id": "concepts/web3/basics",
@@ -1001,8 +993,7 @@
             },
             {
               "id": "concepts/welcome",
-              "path": "/zh-CN/concepts/welcome",
-              "sidebar": "concepts"
+              "path": "/zh-CN/concepts/welcome"
             },
             {
               "id": "help",
@@ -1574,15 +1565,15 @@
             },
             {
               "id": "welcome",
-              "path": "/zh-CN/"
+              "path": "/zh-CN/welcome"
             }
           ],
           "draftIds": [],
           "sidebars": {
             "concepts": {
               "link": {
-                "path": "/zh-CN/concepts/welcome",
-                "label": "concepts/welcome"
+                "path": "/zh-CN/concepts/web3/intro",
+                "label": "concepts/web3/intro"
               }
             },
             "build": {

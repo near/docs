@@ -19,8 +19,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Relayer + Gas Station",
-    "permalink": "/build/chain-abstraction/multichain-gas-relayer/relayer-gas-example"
+    "title": "FastAuth (Email Login)",
+    "permalink": "/build/chain-abstraction/fastauth-sdk"
   },
   "next": {
     "title": "What is a Contract?",

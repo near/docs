@@ -16,13 +16,13 @@
   "frontMatter": {
     "sidebar_label": "Lake Framework"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
-    "title": "Indexer Framework",
-    "permalink": "/vi/concepts/advanced/near-indexer-framework"
+    "title": "Migrate from Lake framework",
+    "permalink": "/vi/build/data-infrastructure/query-api/migrate-from-near-lake"
   },
   "next": {
-    "title": "Các video về Core Runtime",
-    "permalink": "/vi/concepts/basics/runtime"
+    "title": "Lake Overview",
+    "permalink": "/vi/build/data-infrastructure/lake-framework/near-lake"
   }
 }

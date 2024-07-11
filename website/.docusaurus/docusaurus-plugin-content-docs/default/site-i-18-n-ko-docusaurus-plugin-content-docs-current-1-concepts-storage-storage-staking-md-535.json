@@ -18,7 +18,7 @@
     "title": "스토리지 스테이킹",
     "sidebar_label": "스토리지 스테이킹"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
     "title": "토큰 손실 방지",
     "permalink": "/ko/concepts/basics/token-loss"

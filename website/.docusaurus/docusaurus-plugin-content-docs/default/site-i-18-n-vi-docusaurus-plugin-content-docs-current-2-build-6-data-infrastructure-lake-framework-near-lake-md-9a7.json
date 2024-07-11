@@ -20,8 +20,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Migrate from Lake framework",
-    "permalink": "/vi/build/data-infrastructure/query-api/migrate-from-near-lake"
+    "title": "Lake Framework",
+    "permalink": "/vi/concepts/advanced/near-lake-framework"
   },
   "next": {
     "title": "NEAR Lake Indexer Tutorial",

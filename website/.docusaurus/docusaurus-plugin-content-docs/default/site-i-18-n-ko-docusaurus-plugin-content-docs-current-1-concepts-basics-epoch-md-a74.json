@@ -17,13 +17,13 @@
     "id": "epoch",
     "title": "에포크"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
     "title": "네트워크",
     "permalink": "/ko/concepts/basics/networks"
   },
   "next": {
-    "title": "Introduction",
-    "permalink": "/ko/concepts/abstraction/introduction"
+    "title": "런타임",
+    "permalink": "/ko/concepts/basics/runtime"
   }
 }

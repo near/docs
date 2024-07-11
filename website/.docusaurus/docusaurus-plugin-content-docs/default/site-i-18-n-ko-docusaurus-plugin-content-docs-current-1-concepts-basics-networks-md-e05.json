@@ -18,7 +18,7 @@
     "title": "NEAR 네트워크",
     "sidebar_label": "네트워크"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
     "title": "밸리데이터",
     "permalink": "/ko/concepts/basics/validators"

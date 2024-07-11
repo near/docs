@@ -18,10 +18,10 @@
     "title": "NEAR란 무엇인가요?",
     "sidebar_label": "⭐ NEAR란 무엇인가요?"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
-    "title": "홈",
-    "permalink": "/ko/concepts/welcome"
+    "title": "Home",
+    "permalink": "/ko/build/welcome"
   },
   "next": {
     "title": "Overview",

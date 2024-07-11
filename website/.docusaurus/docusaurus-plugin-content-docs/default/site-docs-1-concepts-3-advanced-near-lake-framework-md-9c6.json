@@ -16,13 +16,13 @@
   "frontMatter": {
     "sidebar_label": "Lake Framework"
   },
-  "sidebar": "concepts",
+  "sidebar": "build",
   "previous": {
-    "title": "Indexer Framework",
-    "permalink": "/concepts/advanced/near-indexer-framework"
+    "title": "Migrate from Lake framework",
+    "permalink": "/build/data-infrastructure/query-api/migrate-from-near-lake"
   },
   "next": {
-    "title": "Runtime",
-    "permalink": "/concepts/basics/runtime"
+    "title": "Lake Overview",
+    "permalink": "/build/data-infrastructure/lake-framework/near-lake"
   }
 }

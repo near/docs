@@ -20,8 +20,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Bug Bounty Program",
-    "permalink": "/zh-CN/build/smart-contracts/security/bounty"
+    "title": "Integrating Contracts",
+    "permalink": "/zh-CN/build/web3-apps/integrate-contracts"
   },
   "next": {
     "title": "Choose your Dev Environment",
