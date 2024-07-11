@@ -423,7 +423,7 @@ export default {
           "label": "Blog",
           "to": "/blog",
           "activeBaseRegex": "/blog",
-          "position": "left"
+          "position": "right"
         },
         {
           "type": "localeDropdown",

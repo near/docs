@@ -99,15 +99,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', 'b1b'),
+    component: ComponentCreator('/zh-CN/', 'e58'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', 'de6'),
+        component: ComponentCreator('/zh-CN/', 'cee'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', 'dc2'),
+            component: ComponentCreator('/zh-CN/', '803'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -1990,7 +1990,7 @@ export default [
               },
               {
                 path: '/zh-CN/welcome',
-                component: ComponentCreator('/zh-CN/welcome', 'c7f'),
+                component: ComponentCreator('/zh-CN/welcome', '329'),
                 exact: true
               }
             ]
