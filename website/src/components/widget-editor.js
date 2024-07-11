@@ -20,7 +20,7 @@ export function WidgetEditor({ children, id = 1, networkId = "testnet", height =
         const { initNear } = useInitNear();
 
         useEffect(() => {
-          initNear && initNear({ networkId, selector: new Promise(() => {}) });
+          initNear && initNear({ networkId, selector: new Promise(() => { }) });
         }, [initNear]);
 
         return <div>
