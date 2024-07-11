@@ -8,7 +8,7 @@ hide_table_of_contents: true
 import {FeatureList, Column, Feature} from "@site/src/components/featurelist";
 import {Container, Card} from "@site/src/components/cards";
 
-Imagine a place were you can build Web3 apps with the simplicity of Web2. Imagine a place were you can empower communities, supercharge AI and easily integrate with other chains. Welcome to NEAR, you're gonna like it here.
+Imagine a place were you can build Web3 apps with the simplicity of Web2. Imagine a place were you can give data, empower communities, supercharge AI and easily integrate with other chains. Welcome to NEAR, you're gonna like it here.
 
 <Container>
     <Card img={require("@site/static/docs/assets/welcome-pages/protocol.png").default}
@@ -41,7 +41,7 @@ Imagine a place were you can build Web3 apps with the simplicity of Web2. Imagin
             "Sandbox Testing": "/build/smart-contracts/testing/integration-test"
           }}
     />
-    <Card img={require("@site/static/docs/assets/welcome-pages/examples.png").default}
+    <Card img={require("@site/static/docs/assets/welcome-pages/examples-landing.png").default}
           title="Web3 Applications"
           text="Supercharge your App using NEAR"
           links={{
@@ -63,7 +63,7 @@ Imagine a place were you can build Web3 apps with the simplicity of Web2. Imagin
             "Linkdrops": "/build/primitives/linkdrop",
           }}
     />
-    <Card img={require("@site/static/docs/assets/welcome-pages/data-lake.png").default}
+    <Card img={require("@site/static/docs/assets/welcome-pages/data-lake-landing.png").default}
           title="Data Infrastructure"
           text="Easily extract and analyze on-chain data"
           links={{
