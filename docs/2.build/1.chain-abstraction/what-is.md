@@ -45,3 +45,17 @@ NEAR Protocol provides a multi-chain signature service that allows users to use 
 :::info
 Multi-chain signatures work by combining **smart contracts** that produce signatures, with indexers that listen for these signatures, and relayers that submit the transactions to other networks. This allows users to hold assets and use applications in **any** network, only needing to have a single NEAR account.
 :::
+
+---
+
+## Chain Abstraction: The Holistic View
+
+The combination of these services allows to create a **seamless** user experience, in which users can use blockchain-based applications without realizing they are using a blockchain.
+
+Users will simply login with an email, and a **zero-fund** account will be created for them. No seed phrases to remember, no private keys to safe keep, and no need to acquire funds.
+
+Once having their account, apps can ask the user to create meta-transactions and send them to any relayer. The relayer will pass the transaction to the network, attaching NEAR to pay for the execution fees. The transaction will then be executed as if the user had sent it, since the relayer is only there to attach NEAR to the submission.   
+
+If the user wants to interact with other blockchains, they can use their account to interact with a multi-chain signature relayer, which will relay the transaction to the right network, covering GAS fees.
+
+As an example, this would allow users to collect NFTs across different chains, without ever needing to explicitly create an account or acquire crypto. All with just a single email login.
