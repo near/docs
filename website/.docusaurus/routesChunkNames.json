@@ -243,17 +243,17 @@
       "plugin": "c141421f"
     }
   },
-  "/zh-CN/-e58": {
+  "/zh-CN/-a01": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "aba21aa0"
     }
   },
-  "/zh-CN/-cee": {
+  "/zh-CN/-7fb": {
     "__comp": "a7bd4aaa",
     "__props": "363b7d6a"
   },
-  "/zh-CN/-803": {
+  "/zh-CN/-dcc": {
     "__comp": "a94703ab"
   },
   "/zh-CN/api/rpc/access-keys-fa8": {
@@ -971,10 +971,6 @@
   "/zh-CN/concepts/abstraction/chain-signatures-4ab": {
     "__comp": "17896441",
     "content": "aaff0a8d"
-  },
-  "/zh-CN/concepts/abstraction/introduction-f97": {
-    "__comp": "17896441",
-    "content": "7f30b888"
   },
   "/zh-CN/concepts/abstraction/meta-transactions-024": {
     "__comp": "17896441",

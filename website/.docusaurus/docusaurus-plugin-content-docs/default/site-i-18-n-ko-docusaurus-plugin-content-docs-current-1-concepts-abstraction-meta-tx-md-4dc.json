@@ -19,8 +19,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Introduction",
-    "permalink": "/ko/concepts/abstraction/introduction"
+    "title": "What is Chain Abstraction?",
+    "permalink": "/ko/build/chain-abstraction/what-is"
   },
   "next": {
     "title": "Relayers",
