@@ -32,7 +32,6 @@ const sidebar = {
           items: [
             "concepts/protocol/account-id",
             "concepts/protocol/access-keys",
-            "concepts/protocol/smartcontract",
           ]
         },
         {
