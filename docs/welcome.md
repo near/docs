@@ -8,7 +8,7 @@ hide_table_of_contents: true
 import {FeatureList, Column, Feature} from "@site/src/components/featurelist";
 import {Container, Card} from "@site/src/components/cards";
 
-Imagine a place were you can build Web3 apps with the simplicity of Web2. Imagine a place were you can give data, empower communities, supercharge AI and easily integrate with other chains. Welcome to NEAR, you're gonna like it here.
+Imagine a place were you can build Web3 apps with the simplicity of Web2. Imagine a place were you can empower communities, supercharge AI and easily integrate your app with other chains. Welcome to NEAR, you're gonna like it here.
 
 <Container>
     <Card img={require("@site/static/docs/assets/welcome-pages/protocol.png").default}
