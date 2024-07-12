@@ -32,7 +32,6 @@ const sidebar = {
           items: [
             "concepts/protocol/account-id",
             "concepts/protocol/access-keys",
-            "concepts/protocol/smartcontract",
           ]
         },
         {
@@ -91,7 +90,6 @@ const sidebar = {
         {
           "Chain Signatures": [
             "concepts/abstraction/chain-signatures",
-            "concepts/abstraction/signatures/use-cases",
             'build/chain-abstraction/chain-signatures',
             'build/chain-abstraction/nft-chain-keys',
           ]
