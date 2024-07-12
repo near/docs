@@ -844,11 +844,6 @@
               "sidebar": "build"
             },
             {
-              "id": "concepts/abstraction/signatures/use-cases",
-              "path": "/zh-CN/concepts/abstraction/signatures/use-cases",
-              "sidebar": "build"
-            },
-            {
               "id": "concepts/advanced/indexers",
               "path": "/zh-CN/concepts/advanced/indexers"
             },
@@ -929,11 +924,6 @@
             {
               "id": "concepts/protocol/gas",
               "path": "/zh-CN/concepts/protocol/gas",
-              "sidebar": "build"
-            },
-            {
-              "id": "concepts/protocol/smartcontract",
-              "path": "/zh-CN/concepts/protocol/smartcontract",
               "sidebar": "build"
             },
             {

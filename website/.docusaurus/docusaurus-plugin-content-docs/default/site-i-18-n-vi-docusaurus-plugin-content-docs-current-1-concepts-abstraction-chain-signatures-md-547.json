@@ -12,7 +12,7 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Github Actions",
-  "lastUpdatedAt": 1718378911000,
+  "lastUpdatedAt": 1720746022000,
   "frontMatter": {
     "id": "chain-signatures",
     "title": "What are Chain Signatures?",
@@ -24,7 +24,7 @@
     "permalink": "/vi/build/chain-abstraction/meta-transactions"
   },
   "next": {
-    "title": "Use cases",
-    "permalink": "/vi/concepts/abstraction/signatures/use-cases"
+    "title": "Implementing Chain Signatures",
+    "permalink": "/vi/build/chain-abstraction/chain-signatures"
   }
 }

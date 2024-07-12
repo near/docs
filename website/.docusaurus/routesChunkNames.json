@@ -1,5 +1,5 @@
 {
-  "/zh-CN/blog-055": {
+  "/zh-CN/blog-811": {
     "__comp": "a6aa9e1f",
     "__context": {
       "plugin": "36994c47"
@@ -17,6 +17,9 @@
       },
       {
         "content": "136ffe2d"
+      },
+      {
+        "content": "8b83c4d6"
       },
       {
         "content": "815c08e4"
@@ -44,6 +47,17 @@
     },
     "sidebar": "814f3328",
     "content": "9532d429"
+  },
+  "/zh-CN/blog/chain-signatures-use-cases-438": {
+    "__comp": "ccc49370",
+    "__context": {
+      "data": {
+        "blogMetadata": "acecf23e"
+      },
+      "plugin": "36994c47"
+    },
+    "sidebar": "814f3328",
+    "content": "4b22e616"
   },
   "/zh-CN/blog/getting-started-on-windows-7b6": {
     "__comp": "ccc49370",
@@ -112,13 +126,16 @@
     ],
     "__props": "c4710e47"
   },
-  "/zh-CN/blog/tags/docusaurus-20e": {
+  "/zh-CN/blog/tags/docusaurus-723": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "36994c47"
     },
     "sidebar": "814f3328",
     "items": [
+      {
+        "content": "8b83c4d6"
+      },
       {
         "content": "815c08e4"
       }
@@ -164,7 +181,7 @@
     ],
     "__props": "a15ebea5"
   },
-  "/zh-CN/blog/tags/updates-82e": {
+  "/zh-CN/blog/tags/updates-782": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "36994c47"
@@ -179,6 +196,9 @@
       },
       {
         "content": "136ffe2d"
+      },
+      {
+        "content": "8b83c4d6"
       },
       {
         "content": "815c08e4"
@@ -243,17 +263,17 @@
       "plugin": "c141421f"
     }
   },
-  "/zh-CN/-3f4": {
+  "/zh-CN/-e78": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "aba21aa0"
     }
   },
-  "/zh-CN/-975": {
+  "/zh-CN/-f7d": {
     "__comp": "a7bd4aaa",
     "__props": "363b7d6a"
   },
-  "/zh-CN/-880": {
+  "/zh-CN/-eba": {
     "__comp": "a94703ab"
   },
   "/zh-CN/api/rpc/access-keys-fa8": {
@@ -296,11 +316,11 @@
     "__comp": "17896441",
     "content": "b3cfbcde"
   },
-  "/zh-CN/api/rpc/transactions-2a7": {
+  "/zh-CN/api/rpc/transactions-63e": {
     "__comp": "17896441",
     "content": "0f8c7883"
   },
-  "/zh-CN/build/chain-abstraction/chain-signatures-c4b": {
+  "/zh-CN/build/chain-abstraction/chain-signatures-be9": {
     "__comp": "17896441",
     "content": "1658433d"
   },
@@ -340,7 +360,7 @@
     "__comp": "17896441",
     "content": "c210639e"
   },
-  "/zh-CN/build/chain-abstraction/what-is-77b": {
+  "/zh-CN/build/chain-abstraction/what-is-66e": {
     "__comp": "17896441",
     "content": "21dcc369"
   },
@@ -808,7 +828,7 @@
     "__comp": "17896441",
     "content": "4bdacf73"
   },
-  "/zh-CN/build/primitives/what-is-c27": {
+  "/zh-CN/build/primitives/what-is-3de": {
     "__comp": "17896441",
     "content": "876e5262"
   },
@@ -932,11 +952,11 @@
     "__comp": "17896441",
     "content": "8b471c05"
   },
-  "/zh-CN/build/smart-contracts/testing/unit-test-000": {
+  "/zh-CN/build/smart-contracts/testing/unit-test-a08": {
     "__comp": "17896441",
     "content": "ce1ba413"
   },
-  "/zh-CN/build/smart-contracts/what-is-4cd": {
+  "/zh-CN/build/smart-contracts/what-is-14b": {
     "__comp": "17896441",
     "content": "ef64b690"
   },
@@ -956,7 +976,7 @@
     "__comp": "17896441",
     "content": "9e7d9b9b"
   },
-  "/zh-CN/build/web3-apps/quickstart-42c": {
+  "/zh-CN/build/web3-apps/quickstart-76c": {
     "__comp": "17896441",
     "content": "5e4da908"
   },
@@ -964,21 +984,17 @@
     "__comp": "17896441",
     "content": "36b2e07d"
   },
-  "/zh-CN/concepts/abstraction/chain-signatures-4ab": {
+  "/zh-CN/concepts/abstraction/chain-signatures-ae4": {
     "__comp": "17896441",
     "content": "aaff0a8d"
   },
-  "/zh-CN/concepts/abstraction/meta-transactions-024": {
+  "/zh-CN/concepts/abstraction/meta-transactions-7a0": {
     "__comp": "17896441",
     "content": "c33a37be"
   },
   "/zh-CN/concepts/abstraction/relayers-6aa": {
     "__comp": "17896441",
     "content": "8132b614"
-  },
-  "/zh-CN/concepts/abstraction/signatures/use-cases-03e": {
-    "__comp": "17896441",
-    "content": "dd2e084b"
   },
   "/zh-CN/concepts/advanced/indexers-162": {
     "__comp": "17896441",
@@ -1000,7 +1016,7 @@
     "__comp": "17896441",
     "content": "f3516e1c"
   },
-  "/zh-CN/concepts/basics/protocol-ed5": {
+  "/zh-CN/concepts/basics/protocol-b4a": {
     "__comp": "17896441",
     "content": "b06457eb"
   },
@@ -1040,17 +1056,13 @@
     "__comp": "17896441",
     "content": "4e57260f"
   },
-  "/zh-CN/concepts/protocol/account-model-d90": {
+  "/zh-CN/concepts/protocol/account-model-2ec": {
     "__comp": "17896441",
     "content": "79a089bf"
   },
-  "/zh-CN/concepts/protocol/gas-0ab": {
+  "/zh-CN/concepts/protocol/gas-b47": {
     "__comp": "17896441",
     "content": "4361f252"
-  },
-  "/zh-CN/concepts/protocol/smartcontract-480": {
-    "__comp": "17896441",
-    "content": "f385ad7d"
   },
   "/zh-CN/concepts/protocol/transaction-anatomy-002": {
     "__comp": "17896441",
@@ -1552,11 +1564,11 @@
     "__comp": "17896441",
     "content": "ca8f19a6"
   },
-  "/zh-CN/welcome-edb": {
+  "/zh-CN/welcome-9b9": {
     "__comp": "17896441",
     "content": "640f21df"
   },
-  "/zh-CN/-182": {
+  "/zh-CN/-d39": {
     "__comp": "17896441",
     "content": "bd3dba0d"
   }

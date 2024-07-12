@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/abstraction/chain-signatures.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Charles Garrett",
-  "lastUpdatedAt": 1717783079000,
+  "lastUpdatedBy": "Guille",
+  "lastUpdatedAt": 1720742133000,
   "frontMatter": {
     "id": "chain-signatures",
     "title": "What are Chain Signatures?",
@@ -24,7 +24,7 @@
     "permalink": "/build/chain-abstraction/meta-transactions"
   },
   "next": {
-    "title": "Use cases",
-    "permalink": "/concepts/abstraction/signatures/use-cases"
+    "title": "Implementing Chain Signatures",
+    "permalink": "/build/chain-abstraction/chain-signatures"
   }
 }

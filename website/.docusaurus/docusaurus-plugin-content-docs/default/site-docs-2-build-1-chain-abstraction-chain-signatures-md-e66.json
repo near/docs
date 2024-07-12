@@ -1,6 +1,6 @@
 {
   "id": "build/chain-abstraction/chain-signatures",
-  "title": "Chain Signatures",
+  "title": "Implementing Chain Signatures",
   "description": "Chain signatures enable NEAR accounts, including smart contracts, to sign and execute transactions across many blockchain protocols.",
   "source": "@site/../docs/2.build/1.chain-abstraction/chain-signatures.md",
   "sourceDirName": "2.build/1.chain-abstraction",
@@ -11,16 +11,16 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/1.chain-abstraction/chain-signatures.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Owen",
-  "lastUpdatedAt": 1719422622000,
+  "lastUpdatedBy": "Guille",
+  "lastUpdatedAt": 1720742133000,
   "frontMatter": {
     "id": "chain-signatures",
-    "title": "Chain Signatures"
+    "title": "Implementing Chain Signatures"
   },
   "sidebar": "build",
   "previous": {
-    "title": "Use cases",
-    "permalink": "/concepts/abstraction/signatures/use-cases"
+    "title": "What are Chain Signatures?",
+    "permalink": "/concepts/abstraction/chain-signatures"
   },
   "next": {
     "title": "NFT Chain Keys Contract",

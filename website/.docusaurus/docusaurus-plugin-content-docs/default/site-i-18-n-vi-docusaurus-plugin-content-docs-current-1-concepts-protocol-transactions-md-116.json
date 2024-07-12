@@ -19,8 +19,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Smart Contract",
-    "permalink": "/vi/concepts/protocol/smartcontract"
+    "title": "Access Keys",
+    "permalink": "/vi/concepts/protocol/access-keys"
   },
   "next": {
     "title": "Anatomy of a Transaction",

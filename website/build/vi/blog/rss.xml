@@ -198,6 +198,99 @@ Scrolling down will reveal the option <code>Windows Subsystem for Linux</code>. 
             <category>updates</category>
         </item>
         <item>
+            <title><![CDATA[Use cases for Chain Signatures]]></title>
+            <link>https://docs.near.org/vi/blog/chain-signatures-use-cases</link>
+            <guid>https://docs.near.org/vi/blog/chain-signatures-use-cases</guid>
+            <pubDate>Wed, 15 May 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Chain signatures enable you to implement multichain and cross-chain workflows in a simple way. Lets take a look at a few possible use cases]]></description>
+            <content:encoded><![CDATA[<p><em>Chain signatures enable you to implement multichain and cross-chain workflows in a simple way. Lets take a look at a few possible use cases</em></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="trade-blockchain-assets-without-transactions">Trade Blockchain assets without transactions<a class="hash-link" aria-label="Direct link to Trade Blockchain assets without transactions" title="Direct link to Trade Blockchain assets without transactions" href="https://docs.near.org/vi/blog/chain-signatures-use-cases#trade-blockchain-assets-without-transactions">​</a></h2>
+<p>Trading assets across different blockchains usually require using a bridge that supports them, bringing longer settlement times as the trades are not atomic and require confirmation on both blockchains.</p>
+<p>Using Chain signatures, you can trade assets across chains simply swapping the ownership of NEAR accounts that control funds on different blockchains. For example, you could trade a NEAR account that controls a Bitcoin account with <code>X BTC</code> for another NEAR account that controls an Ethereum account with <code>Y ETH</code>.</p>
+<p>This way, you can keep native tokens on their native blockchain (e.g., <code>BTC</code> on Bitcoin, <code>ETH</code> on Ethereum, <code>ARB</code> on Arbitrum) and trade them without bridges.
+As an added bonus, trades are atomic across chains, settlement takes just 2 seconds, and supports any token on any chain.</p>
+<div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>Keep in mind</div><div class="admonitionContent_BuS1"><p>There are transactions happening on different blockchains.
+The difference is that a <a href="https://docs.near.org/vi/chain-signatures.md#multi-party-computation-service">Multi-Party Computation service</a> (MPC) signs a transaction for you, and that transaction is then broadcast to another blockchain RPC node or API.</p></div></div>
+<p>For example, a basic trade flow could be:</p>
+<ol>
+<li>Users create an account controlled by NEAR chain signatures</li>
+<li>Users funds these accounts on the native blockchains (depositing)</li>
+<li>Place orders by funding a new account for the total amount of the order</li>
+<li>Another user accepts the order</li>
+<li>Users swap control of the keys to fulfill the order</li>
+</ol>
+<p><img decoding="async" loading="lazy" alt="docs" src="https://docs.near.org/vi/assets/images/native-cross-chain-2454256fad26d63241b5d3caeb6d9e9a.png" width="2464" height="1140" class="img_ev3q"></p>
+<details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary>Details</summary><div><div class="collapsibleContent_i85q"><ul>
+<li>User A has <code>ETH</code> on the Ethereum blockchain, and wants to buy native Bitcoin</li>
+<li>User B wants to sell Bitcoin for Ethereum</li>
+</ul><p><strong>Steps</strong></p><ol>
+<li>User B, using NEAR, creates and funds a new account on Bitcoin with 1 <code>BTC</code></li>
+<li>User B, using the spot marketplace smart contract, signs a transaction to create a limit order. This transfers control of the Bitcoin account to the smart contract</li>
+<li>User A creates a batch transaction with two steps<!-- -->
+<ul>
+<li>Creating and funding a new Ethereum account with 10 <code>ETH</code></li>
+<li>Accepting the order and atomically swapping control of the accounts</li>
+</ul>
+</li>
+<li>User A takes ownership of the Bitcoin account with 1 <code>BTC</code>, and User B takes ownership of the Ethereum account with 10 <code>ETH</code></li>
+<li>User A and B can <em>"withdraw"</em> their asset from the order by transferring the assets to their respective <em>"main"</em> accounts</li>
+</ol></div></div></details>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="oauth-controlled-blockchain-accounts">Oauth-controlled Blockchain accounts<a class="hash-link" aria-label="Direct link to Oauth-controlled Blockchain accounts" title="Direct link to Oauth-controlled Blockchain accounts" href="https://docs.near.org/vi/blog/chain-signatures-use-cases#oauth-controlled-blockchain-accounts">​</a></h2>
+<p>On-boarding is a huge problem for decentralized applications. If you want widespread adoption you can't expect people to keep seed phrases safe in order to use an application.</p>
+<p>An attractive way of managing Web3 accounts is to use existing Web2 accounts to on-board users. This can be done in the following way:</p>
+<ol>
+<li>Deploy a NEAR contract that allows the bearer of a user's <a href="https://jwt.io/" target="_blank" rel="noopener noreferrer">JWT token</a> to sign a blockchain transaction (Ethereum, Polygon, Avalanche, and others)</li>
+<li>The user validates their identity with a third-party receiving a JWT Token</li>
+<li>The user holding that token can interact with blockchain applications on Ethereum/Polygon/+++ via the NEAR contract for the duration of it's validity</li>
+</ol>
+<p>Any method of controlling a NEAR account can also be used to control a cross-chain account.</p>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>About JWT tokens</div><div class="admonitionContent_BuS1"><p>JSON Web Tokens are a standard RFC 7519 method for representing claims securely between two parties. They are used in this example to represent the claim that someone is the owner of an Oauth account.</p></div></div>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="cross-chain-zero-friction-onboarding">Cross-chain Zero-friction onboarding<a class="hash-link" aria-label="Direct link to Cross-chain Zero-friction onboarding" title="Direct link to Cross-chain Zero-friction onboarding" href="https://docs.near.org/vi/blog/chain-signatures-use-cases#cross-chain-zero-friction-onboarding">​</a></h2>
+<p>Using unique features of the NEAR account model, <a href="https://docs.keypom.xyz/" target="_blank" rel="noopener noreferrer">Keypom</a> provides zero-friction onboarding and transactions on NEAR. They are generally used for NFT drops, FT drops, and ticketing.</p>
+<p>A generic Keypom user-flow could be:</p>
+<ol>
+<li>The developer creates a restricted NEAR account</li>
+<li>The account is funded with <code>NEAR</code></li>
+<li>The user receives a key with limited control of the account</li>
+<li>The user uses the funded account to call controlled endpoints on NEAR</li>
+<li>The user returns the remaining funds to the developer and their account is unlocked</li>
+</ol>
+<div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>tip</div><div class="admonitionContent_BuS1"><p>This allows easy on-boarding to decentralized apps. The accounts are initially restricted to prevent the user being able to simply withdraw the <code>NEAR</code> from the account.</p></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="defi-on-bitcoin-and-other-non-smart-contract-chains">DeFi on Bitcoin (and other non-smart contract chains).<a class="hash-link" aria-label="Direct link to DeFi on Bitcoin (and other non-smart contract chains)." title="Direct link to DeFi on Bitcoin (and other non-smart contract chains)." href="https://docs.near.org/vi/blog/chain-signatures-use-cases#defi-on-bitcoin-and-other-non-smart-contract-chains">​</a></h2>
+<p>Using chain signatures, smart contracts on NEAR can control externally-owned accounts on non-smart contract chains like Bitcoin, Dogecoin, XRP Ledger, Bittensor, Cosmos Hub, etc. This enables developers to use NEAR as a smart contract “layer” for chains that do not support this functionality natively.</p>
+<p>For example, a developer can build a decentralized exchange for Bitcoin Ordinals, using a smart contract on NEAR to manage deposits (into Bitcoin addresses controlled by the contract) and to verify and execute swaps when two users agree to trade BTC for an Ordinal or BRC20 token.</p>
+<p>Example:</p>
+<ol>
+<li>Seller generates a deposit address on Bitcoin that is controlled by the marketplace smart contract on NEAR via chain signatures</li>
+<li>Seller deposits a Bitcoin Ordinal to the deposit address</li>
+<li>The Ordinal is listed for sale with a price and a pre-commitment signature from the seller</li>
+<li>Buyer accepts the order, deposits USDC</li>
+<li>The control of the Bitcoin Ordinal address is given to the buyer, USDC on NEAR is transferred to the seller</li>
+</ol>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="using-chain-signatures">Using Chain Signatures<a class="hash-link" aria-label="Direct link to Using Chain Signatures" title="Direct link to Using Chain Signatures" href="https://docs.near.org/vi/blog/chain-signatures-use-cases#using-chain-signatures">​</a></h4>
+<p>With Chain Signatures you can do the same but across many chains, for example Polygon:</p>
+<ol>
+<li>The developer creates a restricted NEAR account with a key</li>
+<li>The account is funded with <code>NEAR</code> and <code>MATIC</code></li>
+<li>The user receives a key with limited control of the account</li>
+<li>The user uses the funded account to sign payloads calling controlled endpoints on Polygon</li>
+<li>The user returns the remaining funds to the developer and their account is unlocked</li>
+</ol>
+<p>This allows developers to pay for users to use arbitrary contracts on arbitrary chains.</p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="decentralized-clients">Decentralized Clients<a class="hash-link" aria-label="Direct link to Decentralized Clients" title="Direct link to Decentralized Clients" href="https://docs.near.org/vi/blog/chain-signatures-use-cases#decentralized-clients">​</a></h2>
+<p>A big problem in decentralized applications is that while the smart contracts are tamper-proof, the clients that access them generally are not. This allows practically complete control over any user account provided they are using the frontend assets that you serve. This has security, trust, and regulatory implications.</p>
+<p>When smart contracts can sign payloads you can start using <a href="https://wicg.github.io/webpackage/draft-yasskin-http-origin-signed-responses.html#name-introduction" target="_blank" rel="noopener noreferrer">signed exchanges</a> (or polyfills) to require HTTP exchanges to be signed by a certain key. If it is not signed with this key the SSL certificate is considered invalid. This means that individual users cannot be served invalid frontends without it being generally observable and non repudiable.</p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="communication-with-private-near-shards">Communication with private NEAR Shards<a class="hash-link" aria-label="Direct link to Communication with private NEAR Shards" title="Direct link to Communication with private NEAR Shards" href="https://docs.near.org/vi/blog/chain-signatures-use-cases#communication-with-private-near-shards">​</a></h2>
+<p>Companies like <a href="https://www.calimero.network/" target="_blank" rel="noopener noreferrer">Calimero</a> offer private NEAR shards. Currently, sending messages to and from these NEAR shards is troublesome. If each shard had the ability to sign their message queues, they could be securely sent from one shard to another. Thus you could communicate bidirectionally with any shard as easily as you can with a contract on your own shard.</p>
+<div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>tip</div><div class="admonitionContent_BuS1"><p>This could also simplify NEAR's sharding model, by treating each NEAR shard like one would a private shard.</p></div></div>]]></content:encoded>
+            <category>docusaurus</category>
+            <category>updates</category>
+        </item>
+        <item>
             <title><![CDATA[Reorganizing our docs]]></title>
             <link>https://docs.near.org/vi/blog/reorganizing-docs</link>
             <guid>https://docs.near.org/vi/blog/reorganizing-docs</guid>

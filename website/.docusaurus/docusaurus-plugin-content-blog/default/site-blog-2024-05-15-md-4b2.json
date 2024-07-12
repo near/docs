@@ -1,0 +1,51 @@
+{
+  "permalink": "/zh-CN/blog/chain-signatures-use-cases",
+  "source": "@site/../blog/2024-05-15.md",
+  "title": "Use cases for Chain Signatures",
+  "description": "Chain signatures enable you to implement multichain and cross-chain workflows in a simple way. Lets take a look at a few possible use cases",
+  "date": "2024-05-15T00:00:00.000Z",
+  "tags": [
+    {
+      "inline": true,
+      "label": "docusaurus",
+      "permalink": "/zh-CN/blog/tags/docusaurus"
+    },
+    {
+      "inline": true,
+      "label": "updates",
+      "permalink": "/zh-CN/blog/tags/updates"
+    }
+  ],
+  "readingTime": 5.84,
+  "hasTruncateMarker": true,
+  "authors": [
+    {
+      "name": "Damian",
+      "title": "Docs Maintainer",
+      "url": "https://github.com/bucanero",
+      "imageURL": "https://github.com/bucanero.png",
+      "key": "bucanero"
+    }
+  ],
+  "frontMatter": {
+    "title": "Use cases for Chain Signatures",
+    "authors": [
+      "bucanero"
+    ],
+    "slug": "chain-signatures-use-cases",
+    "tags": [
+      "docusaurus",
+      "updates"
+    ],
+    "hide_table_of_contents": true
+  },
+  "unlisted": false,
+  "prevItem": {
+    "title": "It's gonna be Legen... wait for it...",
+    "permalink": "/zh-CN/blog/yield-resume"
+  },
+  "nextItem": {
+    "title": "Reorganizing our docs",
+    "permalink": "/zh-CN/blog/reorganizing-docs"
+  }
+}

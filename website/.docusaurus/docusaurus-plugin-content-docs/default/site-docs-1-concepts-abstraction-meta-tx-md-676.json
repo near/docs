@@ -11,11 +11,12 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/abstraction/meta-tx.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Damián Parrino",
-  "lastUpdatedAt": 1710321945000,
+  "lastUpdatedBy": "Guille",
+  "lastUpdatedAt": 1720742133000,
   "frontMatter": {
     "id": "meta-transactions",
-    "title": "Meta Transactions"
+    "title": "Meta Transactions",
+    "sidebar_label": "NEP-366"
   },
   "sidebar": "build",
   "previous": {

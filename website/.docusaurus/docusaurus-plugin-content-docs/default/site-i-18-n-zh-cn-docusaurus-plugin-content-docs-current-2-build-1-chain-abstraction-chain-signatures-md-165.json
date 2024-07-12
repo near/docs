@@ -12,15 +12,15 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Github Actions",
-  "lastUpdatedAt": 1719825734000,
+  "lastUpdatedAt": 1720746022000,
   "frontMatter": {
     "id": "chain-signatures",
     "title": "Implementing Chain Signatures"
   },
   "sidebar": "build",
   "previous": {
-    "title": "Use cases",
-    "permalink": "/zh-CN/concepts/abstraction/signatures/use-cases"
+    "title": "What are Chain Signatures?",
+    "permalink": "/zh-CN/concepts/abstraction/chain-signatures"
   },
   "next": {
     "title": "NFT Chain Keys Contract",

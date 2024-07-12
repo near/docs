@@ -4,7 +4,7 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 export default [
   {
     path: '/zh-CN/blog',
-    component: ComponentCreator('/zh-CN/blog', '055'),
+    component: ComponentCreator('/zh-CN/blog', '811'),
     exact: true
   },
   {
@@ -15,6 +15,11 @@ export default [
   {
     path: '/zh-CN/blog/bos-web-engine-sunset',
     component: ComponentCreator('/zh-CN/blog/bos-web-engine-sunset', 'bb5'),
+    exact: true
+  },
+  {
+    path: '/zh-CN/blog/chain-signatures-use-cases',
+    component: ComponentCreator('/zh-CN/blog/chain-signatures-use-cases', '438'),
     exact: true
   },
   {
@@ -49,7 +54,7 @@ export default [
   },
   {
     path: '/zh-CN/blog/tags/docusaurus',
-    component: ComponentCreator('/zh-CN/blog/tags/docusaurus', '20e'),
+    component: ComponentCreator('/zh-CN/blog/tags/docusaurus', '723'),
     exact: true
   },
   {
@@ -69,7 +74,7 @@ export default [
   },
   {
     path: '/zh-CN/blog/tags/updates',
-    component: ComponentCreator('/zh-CN/blog/tags/updates', '82e'),
+    component: ComponentCreator('/zh-CN/blog/tags/updates', '782'),
     exact: true
   },
   {
@@ -99,15 +104,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '3f4'),
+    component: ComponentCreator('/zh-CN/', 'e78'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '975'),
+        component: ComponentCreator('/zh-CN/', 'f7d'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '880'),
+            component: ComponentCreator('/zh-CN/', 'eba'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -171,13 +176,13 @@ export default [
               },
               {
                 path: '/zh-CN/api/rpc/transactions',
-                component: ComponentCreator('/zh-CN/api/rpc/transactions', '2a7'),
+                component: ComponentCreator('/zh-CN/api/rpc/transactions', '63e'),
                 exact: true,
                 sidebar: "api"
               },
               {
                 path: '/zh-CN/build/chain-abstraction/chain-signatures',
-                component: ComponentCreator('/zh-CN/build/chain-abstraction/chain-signatures', 'c4b'),
+                component: ComponentCreator('/zh-CN/build/chain-abstraction/chain-signatures', 'be9'),
                 exact: true,
                 sidebar: "build"
               },
@@ -236,7 +241,7 @@ export default [
               },
               {
                 path: '/zh-CN/build/chain-abstraction/what-is',
-                component: ComponentCreator('/zh-CN/build/chain-abstraction/what-is', '77b'),
+                component: ComponentCreator('/zh-CN/build/chain-abstraction/what-is', '66e'),
                 exact: true,
                 sidebar: "build"
               },
@@ -867,7 +872,7 @@ export default [
               },
               {
                 path: '/zh-CN/build/primitives/what-is',
-                component: ComponentCreator('/zh-CN/build/primitives/what-is', 'c27'),
+                component: ComponentCreator('/zh-CN/build/primitives/what-is', '3de'),
                 exact: true,
                 sidebar: "build"
               },
@@ -1053,13 +1058,13 @@ export default [
               },
               {
                 path: '/zh-CN/build/smart-contracts/testing/unit-test',
-                component: ComponentCreator('/zh-CN/build/smart-contracts/testing/unit-test', '000'),
+                component: ComponentCreator('/zh-CN/build/smart-contracts/testing/unit-test', 'a08'),
                 exact: true,
                 sidebar: "build"
               },
               {
                 path: '/zh-CN/build/smart-contracts/what-is',
-                component: ComponentCreator('/zh-CN/build/smart-contracts/what-is', '4cd'),
+                component: ComponentCreator('/zh-CN/build/smart-contracts/what-is', '14b'),
                 exact: true,
                 sidebar: "build"
               },
@@ -1089,7 +1094,7 @@ export default [
               },
               {
                 path: '/zh-CN/build/web3-apps/quickstart',
-                component: ComponentCreator('/zh-CN/build/web3-apps/quickstart', '42c'),
+                component: ComponentCreator('/zh-CN/build/web3-apps/quickstart', '76c'),
                 exact: true,
                 sidebar: "build"
               },
@@ -1101,25 +1106,19 @@ export default [
               },
               {
                 path: '/zh-CN/concepts/abstraction/chain-signatures',
-                component: ComponentCreator('/zh-CN/concepts/abstraction/chain-signatures', '4ab'),
+                component: ComponentCreator('/zh-CN/concepts/abstraction/chain-signatures', 'ae4'),
                 exact: true,
                 sidebar: "build"
               },
               {
                 path: '/zh-CN/concepts/abstraction/meta-transactions',
-                component: ComponentCreator('/zh-CN/concepts/abstraction/meta-transactions', '024'),
+                component: ComponentCreator('/zh-CN/concepts/abstraction/meta-transactions', '7a0'),
                 exact: true,
                 sidebar: "build"
               },
               {
                 path: '/zh-CN/concepts/abstraction/relayers',
                 component: ComponentCreator('/zh-CN/concepts/abstraction/relayers', '6aa'),
-                exact: true,
-                sidebar: "build"
-              },
-              {
-                path: '/zh-CN/concepts/abstraction/signatures/use-cases',
-                component: ComponentCreator('/zh-CN/concepts/abstraction/signatures/use-cases', '03e'),
                 exact: true,
                 sidebar: "build"
               },
@@ -1153,7 +1152,7 @@ export default [
               },
               {
                 path: '/zh-CN/concepts/basics/protocol',
-                component: ComponentCreator('/zh-CN/concepts/basics/protocol', 'ed5'),
+                component: ComponentCreator('/zh-CN/concepts/basics/protocol', 'b4a'),
                 exact: true,
                 sidebar: "build"
               },
@@ -1213,19 +1212,13 @@ export default [
               },
               {
                 path: '/zh-CN/concepts/protocol/account-model',
-                component: ComponentCreator('/zh-CN/concepts/protocol/account-model', 'd90'),
+                component: ComponentCreator('/zh-CN/concepts/protocol/account-model', '2ec'),
                 exact: true,
                 sidebar: "build"
               },
               {
                 path: '/zh-CN/concepts/protocol/gas',
-                component: ComponentCreator('/zh-CN/concepts/protocol/gas', '0ab'),
-                exact: true,
-                sidebar: "build"
-              },
-              {
-                path: '/zh-CN/concepts/protocol/smartcontract',
-                component: ComponentCreator('/zh-CN/concepts/protocol/smartcontract', '480'),
+                component: ComponentCreator('/zh-CN/concepts/protocol/gas', 'b47'),
                 exact: true,
                 sidebar: "build"
               },
@@ -1978,12 +1971,12 @@ export default [
               },
               {
                 path: '/zh-CN/welcome',
-                component: ComponentCreator('/zh-CN/welcome', 'edb'),
+                component: ComponentCreator('/zh-CN/welcome', '9b9'),
                 exact: true
               },
               {
                 path: '/zh-CN/',
-                component: ComponentCreator('/zh-CN/', '182'),
+                component: ComponentCreator('/zh-CN/', 'd39'),
                 exact: true,
                 sidebar: "build"
               }
