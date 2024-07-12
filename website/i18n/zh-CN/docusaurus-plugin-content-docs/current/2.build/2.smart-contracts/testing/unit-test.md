@@ -23,7 +23,10 @@ The tests in the [Counter Example](https://github.com/near-examples/counters) re
   <Language value="rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/counters/blob/main/contract-rs/src/lib.rs"
-            start="47" end="68" /></Language>
+            start="47" end="68" />
+    <Github fname="Cargo.toml"
+            url="https://github.com/near-examples/counters/blob/main/contract-rs/Cargo.toml"
+            start="18" end="19" /></Language>
 </CodeTabs>
 
 ---
@@ -36,7 +39,10 @@ While doing unit testing you can modify the [Environment variables](../anatomy/e
   <Language value="rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/src/lib.rs"
-            start="58" end="105" /></Language>
+            start="58" end="105" />
+    <Github fname="Cargo.toml"
+            url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/Cargo.toml"
+            start="18" end="19" /></Language>
 </CodeTabs>
 
 ---

@@ -1,7 +1,7 @@
 {
   "permalink": "/ko/blog/bos-web-engine-sunset",
   "source": "@site/i18n/ko/docusaurus-plugin-content-blog/2024-07-01.md",
-  "title": "Pagoda Sunsets B.O.S. Web Engine R&D Project",
+  "title": "Pagoda Pauses the B.O.S. Web Engine R&D Project",
   "description": "After careful consideration, Pagoda has decided to discontinue its active efforts to improve the B.O.S. Web Engine",
   "date": "2024-07-01T00:00:00.000Z",
   "tags": [
@@ -26,7 +26,7 @@
       "permalink": "/ko/blog/tags/bos"
     }
   ],
-  "readingTime": 6.08,
+  "readingTime": 6.085,
   "hasTruncateMarker": true,
   "authors": [
     {
@@ -38,7 +38,7 @@
     }
   ],
   "frontMatter": {
-    "title": "Pagoda Sunsets B.O.S. Web Engine R&D Project",
+    "title": "Pagoda Pauses the B.O.S. Web Engine R&D Project",
     "authors": [
       "thisisjoshford"
     ],

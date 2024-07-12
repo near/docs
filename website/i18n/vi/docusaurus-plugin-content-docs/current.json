@@ -506,5 +506,53 @@
   "sidebar.tools.link.dev.near.org Web Editor": {
     "message": "dev.near.org Web Editor",
     "description": "The label for link dev.near.org Web Editor in sidebar tools, linking to https://dev.near.org/sandbox"
+  },
+  "sidebar.build.category.Understand the Protocol": {
+    "message": "Understand the Protocol",
+    "description": "The label for category Understand the Protocol in sidebar build"
+  },
+  "sidebar.build.category.Accounts / Contracts": {
+    "message": "Accounts / Contracts",
+    "description": "The label for category Accounts / Contracts in sidebar build"
+  },
+  "sidebar.build.category.Transactions": {
+    "message": "Transactions",
+    "description": "The label for category Transactions in sidebar build"
+  },
+  "sidebar.build.category.Data Flow": {
+    "message": "Data Flow",
+    "description": "The label for category Data Flow in sidebar build"
+  },
+  "sidebar.build.category.Tokens": {
+    "message": "Tokens",
+    "description": "The label for category Tokens in sidebar build"
+  },
+  "sidebar.build.category.Storage": {
+    "message": "Storage",
+    "description": "The label for category Storage in sidebar build"
+  },
+  "sidebar.build.category.Network": {
+    "message": "Network",
+    "description": "The label for category Network in sidebar build"
+  },
+  "sidebar.build.category.Meta Transactions": {
+    "message": "Meta Transactions",
+    "description": "The label for category Meta Transactions in sidebar build"
+  },
+  "sidebar.build.category.Chain Signatures": {
+    "message": "Chain Signatures",
+    "description": "The label for category Chain Signatures in sidebar build"
+  },
+  "sidebar.build.category.Advanced": {
+    "message": "Advanced",
+    "description": "The label for category Advanced in sidebar build"
+  },
+  "sidebar.build.category.Frontends": {
+    "message": "Frontends",
+    "description": "The label for category Frontends in sidebar build"
+  },
+  "sidebar.build.category.Social Components (BOS)": {
+    "message": "Social Components (BOS)",
+    "description": "The label for category Social Components (BOS) in sidebar build"
   }
 }

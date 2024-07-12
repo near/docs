@@ -1,7 +1,6 @@
 ---
 id: protocol
 title: What is NEAR?
-sidebar_label: '⭐ What is NEAR?'
 ---
 
 NEAR is a **user-friendly** and [**carbon-neutral**](https://near.org/blog/near-climate-neutral-product/) blockchain, built to be [fast, secure, and able to grow without limits](https://www.leewayhertz.com/comparison-of-blockchain-protocols#Parallel-comparison-of-various-blockchain-networks).

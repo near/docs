@@ -186,5 +186,13 @@
   "item.label.Learn NEAR Club": {
     "message": "Learn NEAR Club",
     "description": "Navbar item with label Learn NEAR Club"
+  },
+  "item.label.Docs": {
+    "message": "Docs",
+    "description": "Navbar item with label Docs"
+  },
+  "item.label.NEPs": {
+    "message": "NEPs",
+    "description": "Navbar item with label NEPs"
   }
 }

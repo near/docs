@@ -15,7 +15,8 @@
   "lastUpdatedAt": 1711465748000,
   "frontMatter": {
     "id": "meta-transactions",
-    "title": "Meta Transactions"
+    "title": "Meta Transactions",
+    "sidebar_label": "NEP-366"
   },
   "sidebar": "build",
   "previous": {

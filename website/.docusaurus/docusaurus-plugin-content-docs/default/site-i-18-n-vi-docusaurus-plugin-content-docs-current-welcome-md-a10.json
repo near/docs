@@ -1,0 +1,20 @@
+{
+  "id": "welcome",
+  "title": "Welcome to NEAR",
+  "description": "Imagine a place were you can build Web3 apps with the simplicity of Web2. Imagine a place were you can empower communities, supercharge AI and easily integrate your app with other chains. Welcome to NEAR, you're gonna like it here.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/welcome.md",
+  "sourceDirName": ".",
+  "slug": "/welcome",
+  "permalink": "/vi/welcome",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/welcome.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "welcome",
+    "title": "Welcome to NEAR",
+    "sidebar_label": "Home",
+    "hide_table_of_contents": true
+  }
+}

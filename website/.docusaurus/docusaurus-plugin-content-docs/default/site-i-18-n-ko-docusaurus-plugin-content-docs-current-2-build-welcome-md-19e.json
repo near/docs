@@ -1,11 +1,11 @@
 {
   "id": "build/welcome",
-  "title": "Build on NEAR",
-  "description": "Welcome! Here you will find all the information on what you can build on NEAR and how to build it. Do not worry if you are new to Web3 or Blockchain, we are here to guide you through the process of learning.",
+  "title": "Welcome to NEAR",
+  "description": "",
   "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/welcome.md",
   "sourceDirName": "2.build",
-  "slug": "/build/welcome",
-  "permalink": "/ko/build/welcome",
+  "slug": "/",
+  "permalink": "/ko/",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/welcome.md",
@@ -15,14 +15,14 @@
   "lastUpdatedAt": 1712954223000,
   "frontMatter": {
     "id": "welcome",
-    "title": "Build on NEAR",
+    "title": "Welcome to NEAR",
     "sidebar_label": "Home",
     "hide_table_of_contents": true,
-    "hide_breadcrumb": true
+    "slug": "/"
   },
   "sidebar": "build",
   "next": {
-    "title": "⭐ NEAR란 무엇인가요?",
+    "title": "NEAR란 무엇인가요?",
     "permalink": "/ko/concepts/basics/protocol"
   }
 }

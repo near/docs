@@ -8,7 +8,7 @@
           "label": "Next",
           "isLast": true,
           "path": "/zh-CN/",
-          "mainDocId": "concepts/web3/intro",
+          "mainDocId": "build/welcome",
           "docs": [
             {
               "id": "api/rpc/access-keys",
@@ -825,7 +825,7 @@
             },
             {
               "id": "build/welcome",
-              "path": "/zh-CN/build/welcome",
+              "path": "/zh-CN/",
               "sidebar": "build"
             },
             {
@@ -1573,7 +1573,7 @@
             },
             "build": {
               "link": {
-                "path": "/zh-CN/build/welcome",
+                "path": "/zh-CN/",
                 "label": "build/welcome"
               }
             },

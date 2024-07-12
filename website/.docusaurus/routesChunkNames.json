@@ -243,17 +243,17 @@
       "plugin": "c141421f"
     }
   },
-  "/zh-CN/-a01": {
+  "/zh-CN/-3f4": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "aba21aa0"
     }
   },
-  "/zh-CN/-7fb": {
+  "/zh-CN/-975": {
     "__comp": "a7bd4aaa",
     "__props": "363b7d6a"
   },
-  "/zh-CN/-dcc": {
+  "/zh-CN/-880": {
     "__comp": "a94703ab"
   },
   "/zh-CN/api/rpc/access-keys-fa8": {
@@ -964,10 +964,6 @@
     "__comp": "17896441",
     "content": "36b2e07d"
   },
-  "/zh-CN/build/welcome-c7c": {
-    "__comp": "17896441",
-    "content": "bd3dba0d"
-  },
   "/zh-CN/concepts/abstraction/chain-signatures-4ab": {
     "__comp": "17896441",
     "content": "aaff0a8d"
@@ -1556,8 +1552,12 @@
     "__comp": "17896441",
     "content": "ca8f19a6"
   },
-  "/zh-CN/welcome-329": {
+  "/zh-CN/welcome-edb": {
     "__comp": "17896441",
-    "content": "f5862b60"
+    "content": "640f21df"
+  },
+  "/zh-CN/-182": {
+    "__comp": "17896441",
+    "content": "bd3dba0d"
   }
 }

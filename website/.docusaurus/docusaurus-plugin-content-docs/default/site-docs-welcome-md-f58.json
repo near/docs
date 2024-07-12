@@ -5,7 +5,7 @@
   "source": "@site/../docs/welcome.md",
   "sourceDirName": ".",
   "slug": "/welcome",
-  "permalink": "/zh-CN/welcome",
+  "permalink": "/welcome",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/welcome.md",

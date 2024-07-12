@@ -1,6 +1,6 @@
 ---
 id: chain-signatures
-title: Chain Signatures
+title: Implementing Chain Signatures
 ---
 
 import Tabs from '@theme/Tabs';
@@ -14,8 +14,6 @@ This unlocks the next level of blockchain interoperability by giving ownership o
 :::info
 
 This guide will take you through a step by step process for creating a Chain Signature.
-
-⭐️ For a deep dive into the concepts of Chain Signatures see [What are Chain Signatures?](/concepts/abstraction/chain-signatures)
 
 ⭐️ For complete examples of a NEAR account performing transactions in other chains:
 

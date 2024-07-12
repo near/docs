@@ -15,13 +15,12 @@
   "lastUpdatedAt": 1718378911000,
   "frontMatter": {
     "id": "protocol",
-    "title": "What is NEAR?",
-    "sidebar_label": "⭐ What is NEAR?"
+    "title": "What is NEAR?"
   },
   "sidebar": "build",
   "previous": {
     "title": "Home",
-    "permalink": "/zh-CN/build/welcome"
+    "permalink": "/zh-CN/"
   },
   "next": {
     "title": "Overview",

@@ -15,13 +15,12 @@
   "lastUpdatedAt": 1718378911000,
   "frontMatter": {
     "id": "protocol",
-    "title": "NEAR란 무엇인가요?",
-    "sidebar_label": "⭐ NEAR란 무엇인가요?"
+    "title": "NEAR란 무엇인가요?"
   },
   "sidebar": "build",
   "previous": {
     "title": "Home",
-    "permalink": "/ko/build/welcome"
+    "permalink": "/ko/"
   },
   "next": {
     "title": "Overview",

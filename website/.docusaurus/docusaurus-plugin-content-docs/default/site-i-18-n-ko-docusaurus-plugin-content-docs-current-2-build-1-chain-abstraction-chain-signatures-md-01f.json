@@ -1,6 +1,6 @@
 {
   "id": "build/chain-abstraction/chain-signatures",
-  "title": "Chain Signatures",
+  "title": "Implementing Chain Signatures",
   "description": "Chain signatures enable NEAR accounts, including smart contracts, to sign and execute transactions across many blockchain protocols.",
   "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/1.chain-abstraction/chain-signatures.md",
   "sourceDirName": "2.build/1.chain-abstraction",
@@ -15,7 +15,7 @@
   "lastUpdatedAt": 1719825734000,
   "frontMatter": {
     "id": "chain-signatures",
-    "title": "Chain Signatures"
+    "title": "Implementing Chain Signatures"
   },
   "sidebar": "build",
   "previous": {
