@@ -64,13 +64,13 @@ We provide code to derive the address, as it's a complex process that involves m
 <Tabs groupId="code-tabs">
   <TabItem value="Ξ Ethereum">
     <Github language="js"
-      url="https://github.com/near-examples/near-multichain/blob/main/src/services/ethereum.js" start="14" end="18" />
+      url="https://github.com/near-examples/near-multichain/blob/main/src/services/ethereum.js" start="16" end="20" />
 
 </TabItem>
 
 <TabItem value="₿ Bitcoin">
     <Github language="js"
-      url="https://github.com/near-examples/near-multichain/blob/main/src/services/bitcoin.js" start="14" end="18" />
+      url="https://github.com/near-examples/near-multichain/blob/main/src/services/bitcoin.js" start="12" end="16" />
 
 </TabItem>
 
@@ -104,7 +104,7 @@ Constructing the transaction to be signed (transaction, message, data, etc.) var
   <TabItem value="Ξ Ethereum">
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/services/ethereum.js"
-      start="32" end="48" />
+      start="46" end="69" />
     
 In Ethereum, constructing the transaction is simple since you only need to specify the address of the receiver and how much you want to send.
 
@@ -113,7 +113,7 @@ In Ethereum, constructing the transaction is simple since you only need to speci
 <TabItem value="₿ Bitcoin">
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/services/bitcoin.js"
-      start="28" end="80" />
+      start="26" end="80" />
 
 In bitcoin, you construct a new transaction by using all the Unspent Transaction Outputs (UTXOs) of the account as input, and then specify the output address and amount you want to send.
 
@@ -136,14 +136,14 @@ The method requires two parameters:
   <TabItem value="Ξ Ethereum">
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/services/ethereum.js"
-      start="57" end="61" />
+      start="72" end="74" />
 
 </TabItem>
 
   <TabItem value="₿ Bitcoin">
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/services/bitcoin.js"
-      start="87" end="98" />
+      start="82" end="101" />
 
 For bitcoin, all UTXOs are signed independently and then combined into a single transaction.
 
@@ -182,7 +182,7 @@ This allows the contract to generalize the signing process for multiple blockcha
   <TabItem value="Ξ Ethereum">
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/services/ethereum.js"
-      start="62" end="71" />
+      start="76" end="90" />
 
 In Ethereum, the signature is reconstructed by concatenating the `r`, `s`, and `v` values returned by the contract.
 
@@ -193,7 +193,7 @@ The `v` parameter is a parity bit that depends on the `sender` address. We recon
 <TabItem value="₿ Bitcoin">
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/services/bitcoin.js"
-      start="105" end="116" />
+      start="103" end="114" />
 
 In Bitcoin, the signature is reconstructed by concatenating the `r` and `s` values returned by the contract.
 
@@ -211,14 +211,14 @@ Once we have reconstructed the signature, we can relay it to the corresponding n
   <TabItem value="Ξ Ethereum">
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/services/ethereum.js"
-      start="80" end="84" />
+      start="94" end="98" />
 
 </TabItem>
 
 <TabItem value="₿ Bitcoin">
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/services/bitcoin.js"
-      start="119" end="127" />
+      start="117" end="125" />
 
 </TabItem>
 
