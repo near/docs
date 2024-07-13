@@ -43,3 +43,9 @@ If you want to use a custom RPC provider with NEAR Wallet Selector, [check this 
 | -------------------------------------------------------------------------- | ------------------------------------------------------------ |
 | [NEAR](setup.md)                                                           | `https://rpc.testnet.near.org`                               |
 | [Pagoda](https://www.pagoda.co/console)                                    | `https://near-testnet.api.pagoda.co/rpc/v1`                  |
+
+## RPC Failover
+
+In `near-api-js` you can use [FailoverRpcProvider](../../tools/near-api-js/quick-reference#rpc-failover) to automatically switch RPC providers when one provider is experiencing downtime, or implement an RPC selection widget that allows users to add their own RPC provider.
+
+As a user, if some dapp or wallet doesn't support RPC failover and the primary provider is down, you can use [RPC Selector](https://github.com/Sliman4/rpc-selector) browser extension to redirect all requests from providers in the list above to the RPC provider of your choice.
