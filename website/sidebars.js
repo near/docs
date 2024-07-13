@@ -14,6 +14,7 @@ const sidebar = {
   ],
   "build": [
     "build/welcome",
+    "build/onboarding",
     {
       "type": "html",
       "value": "<hr/>"
