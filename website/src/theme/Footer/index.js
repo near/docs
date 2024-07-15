@@ -166,7 +166,7 @@ function Footer() {
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/concepts/storage/data-storage">
+                    <a href="/concepts/storage/storage-staking">
                       Storage
                     </a>
                   </li>
@@ -176,7 +176,7 @@ function Footer() {
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/concepts/abstraction/introduction">
+                    <a href="/build/chain-abstraction/what-is">
                       Chain Abstraction
                     </a>
                   </li>
@@ -199,7 +199,7 @@ function Footer() {
               </div>
               <div className="col sm:w-1/3 mt-50">
                 <h2 className="text-24 font-black text-blue-light">
-                  <a href="/build/welcome">
+                  <a href="/build/smart-contracts/quickstart">
                     Build
                   </a>
                 </h2>
@@ -258,7 +258,7 @@ function Footer() {
                     <a href="/tutorials/examples/count-near">
                     Smart Contract
                     </a>
-                  </li>                                 
+                  </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
                     <a href="/tutorials/nfts/minting-nfts">
                       Mint NFTs
@@ -283,7 +283,7 @@ function Footer() {
                     <a href="https://github.com/near-examples" target="_blank" rel="noopener noreferrer">
                       Examples
                     </a>
-                  </li>   
+                  </li>
                 </ul>
               </div>
               <div className="col sm:w-1/3 mt-50">
@@ -334,7 +334,7 @@ function Footer() {
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/sdk/welcome">
+                    <a href="/tools/sdk">
                       SDK
                     </a>
                   </li>
@@ -405,14 +405,14 @@ function Footer() {
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
                     <a href="https://learnnear.club/" target="_blank" rel="noopener noreferrer">
-                      Learn NEAR Club 
+                      Learn NEAR Club
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
                     <a href="https://agorapp.dev/catalog/course?difficulty=&chains=near" target="_blank" rel="noopener noreferrer">
-                      AgorApp 
+                      AgorApp
                     </a>
-                  </li>    
+                  </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
                     <a href="/blog">
                       Blog
@@ -450,7 +450,7 @@ function Footer() {
                   </li>
                   <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-2945">
                     <a
-                      target="_blank" 
+                      target="_blank"
                       rel="noopener noreferrer"
                       href="https://near.org/founders"
                     >
