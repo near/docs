@@ -104,15 +104,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', 'e78'),
+    component: ComponentCreator('/zh-CN/', '19d'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', 'f7d'),
+        component: ComponentCreator('/zh-CN/', 'f93'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', 'eba'),
+            component: ComponentCreator('/zh-CN/', '6f8'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -182,7 +182,7 @@ export default [
               },
               {
                 path: '/zh-CN/build/chain-abstraction/chain-signatures',
-                component: ComponentCreator('/zh-CN/build/chain-abstraction/chain-signatures', 'be9'),
+                component: ComponentCreator('/zh-CN/build/chain-abstraction/chain-signatures', 'c34'),
                 exact: true,
                 sidebar: "build"
               },
