@@ -18,7 +18,7 @@ If you want to use a custom RPC provider with NEAR Wallet Selector, [check this 
 | Provider                                                                   | Endpoint Root                                                |
 | -------------------------------------------------------------------------- | ------------------------------------------------------------ |
 | [NEAR](setup.md)                                                           | `https://rpc.mainnet.near.org`                               |
-| [Pagoda](https://www.pagoda.co/console)                                    | `https://near-mainnet.api.pagoda.co/rpc/v1`                  |
+| [Pagoda](https://www.pagoda.co/console)                                    | `https://rpc.mainnet.pagoda.co`                              |
 | [1RPC](https://docs.1rpc.io/overview/about-1rpc)                           | `https://1rpc.io/near`                                       |
 | [All That Node](https://docs.allthatnode.com/protocols/near/)              | `https://near-mainnet-rpc.allthatnode.com:3030`              |
 | [ankr.com](https://www.ankr.com/docs/rpc-service/chains/chains-list/#near) | `https://rpc.ankr.com/near`                                  |
@@ -42,4 +42,4 @@ If you want to use a custom RPC provider with NEAR Wallet Selector, [check this 
 | Provider                                                                   | Endpoint Root                                                |
 | -------------------------------------------------------------------------- | ------------------------------------------------------------ |
 | [NEAR](setup.md)                                                           | `https://rpc.testnet.near.org`                               |
-| [Pagoda](https://www.pagoda.co/console)                                    | `https://near-testnet.api.pagoda.co/rpc/v1`                  |
+| [Pagoda](https://www.pagoda.co/console)                                    | `https://rpc.testnet.pagoda.co`                              |
