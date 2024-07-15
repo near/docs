@@ -1,5 +1,5 @@
 {
-  "/zh-CN/blog-811": {
+  "/zh-CN/blog-fa4": {
     "__comp": "a6aa9e1f",
     "__context": {
       "plugin": "36994c47"
@@ -19,7 +19,7 @@
         "content": "136ffe2d"
       },
       {
-        "content": "8b83c4d6"
+        "content": "eeb927a6"
       },
       {
         "content": "815c08e4"
@@ -48,7 +48,7 @@
     "sidebar": "814f3328",
     "content": "9532d429"
   },
-  "/zh-CN/blog/chain-signatures-use-cases-438": {
+  "/zh-CN/blog/chain-signatures-use-cases-622": {
     "__comp": "ccc49370",
     "__context": {
       "data": {
@@ -57,7 +57,7 @@
       "plugin": "36994c47"
     },
     "sidebar": "814f3328",
-    "content": "4b22e616"
+    "content": "4f04485b"
   },
   "/zh-CN/blog/getting-started-on-windows-7b6": {
     "__comp": "ccc49370",
@@ -126,7 +126,7 @@
     ],
     "__props": "c4710e47"
   },
-  "/zh-CN/blog/tags/docusaurus-723": {
+  "/zh-CN/blog/tags/docusaurus-3a9": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "36994c47"
@@ -134,7 +134,7 @@
     "sidebar": "814f3328",
     "items": [
       {
-        "content": "8b83c4d6"
+        "content": "eeb927a6"
       },
       {
         "content": "815c08e4"
@@ -181,7 +181,7 @@
     ],
     "__props": "a15ebea5"
   },
-  "/zh-CN/blog/tags/updates-782": {
+  "/zh-CN/blog/tags/updates-5d5": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "36994c47"
@@ -198,7 +198,7 @@
         "content": "136ffe2d"
       },
       {
-        "content": "8b83c4d6"
+        "content": "eeb927a6"
       },
       {
         "content": "815c08e4"

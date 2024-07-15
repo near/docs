@@ -4,7 +4,7 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 export default [
   {
     path: '/zh-CN/blog',
-    component: ComponentCreator('/zh-CN/blog', '811'),
+    component: ComponentCreator('/zh-CN/blog', 'fa4'),
     exact: true
   },
   {
@@ -19,7 +19,7 @@ export default [
   },
   {
     path: '/zh-CN/blog/chain-signatures-use-cases',
-    component: ComponentCreator('/zh-CN/blog/chain-signatures-use-cases', '438'),
+    component: ComponentCreator('/zh-CN/blog/chain-signatures-use-cases', '622'),
     exact: true
   },
   {
@@ -54,7 +54,7 @@ export default [
   },
   {
     path: '/zh-CN/blog/tags/docusaurus',
-    component: ComponentCreator('/zh-CN/blog/tags/docusaurus', '723'),
+    component: ComponentCreator('/zh-CN/blog/tags/docusaurus', '3a9'),
     exact: true
   },
   {
@@ -74,7 +74,7 @@ export default [
   },
   {
     path: '/zh-CN/blog/tags/updates',
-    component: ComponentCreator('/zh-CN/blog/tags/updates', '782'),
+    component: ComponentCreator('/zh-CN/blog/tags/updates', '5d5'),
     exact: true
   },
   {

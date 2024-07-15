@@ -1,5 +1,5 @@
 {
-  "permalink": "/zh-CN/blog/chain-signatures-use-cases",
+  "permalink": "/blog/chain-signatures-use-cases",
   "source": "@site/../blog/2024-05-15.md",
   "title": "Use cases for Chain Signatures",
   "description": "Chain signatures enable you to implement multichain and cross-chain workflows in a simple way. Lets take a look at a few possible use cases",
@@ -8,12 +8,12 @@
     {
       "inline": true,
       "label": "docusaurus",
-      "permalink": "/zh-CN/blog/tags/docusaurus"
+      "permalink": "/blog/tags/docusaurus"
     },
     {
       "inline": true,
       "label": "updates",
-      "permalink": "/zh-CN/blog/tags/updates"
+      "permalink": "/blog/tags/updates"
     }
   ],
   "readingTime": 5.84,
@@ -42,10 +42,10 @@
   "unlisted": false,
   "prevItem": {
     "title": "It's gonna be Legen... wait for it...",
-    "permalink": "/zh-CN/blog/yield-resume"
+    "permalink": "/blog/yield-resume"
   },
   "nextItem": {
     "title": "Reorganizing our docs",
-    "permalink": "/zh-CN/blog/reorganizing-docs"
+    "permalink": "/blog/reorganizing-docs"
   }
 }
