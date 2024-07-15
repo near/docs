@@ -207,6 +207,7 @@ const sidebar = {
           link: { type: 'doc', id: 'build/web3-apps/frontend' },
           items: [
             "build/web3-apps/integrate-contracts",
+            "build/web3-apps/chain-deployed-ui",
             {
               "Social Components (BOS)": [
                 "build/near-components/what-is",
@@ -281,7 +282,7 @@ const sidebar = {
         },
         {
           "Lake Framework": [
-            "concepts/advanced/near-lake-framework",  
+            "concepts/advanced/near-lake-framework",
             "build/data-infrastructure/lake-framework/near-lake",
             "build/data-infrastructure/lake-framework/near-lake-state-changes-indexer",
             "build/data-infrastructure/lake-framework/migrating-to-near-lake-framework",
