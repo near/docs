@@ -132,7 +132,7 @@ function Footer() {
             <div className="row">
             <div className="col sm:w-1/3 mt-50">
                 <h2 className="text-24 font-black text-blue-light">
-                  <a href="/concepts/welcome">
+                  <a href="/concepts/basics/protocol">
                     Concepts
                   </a>
                 </h2>
