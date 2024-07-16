@@ -13,7 +13,7 @@ Choosing the wrong structure can create a bottleneck as the application scales, 
 You can choose between two types of collections:
 
 1. Native collections (e.g. `Array`, `Map`, `Set`), provided by the the language
-2. SDK collections (e.g. `UnorderedMap`, `Vector`), provided by the NEAR SDK
+2. SDK collections (e.g. `IterableMap`, `Vector`), provided by the NEAR SDK
 
 Since the SDK reads all the contract's attributes when a function is executed - and writes them back when it finishes - understanding how the SDK stores and loads both types of collections is crucial to decide which one to use.
 
@@ -104,7 +104,7 @@ SDK collections are useful when you are planning to store large amounts of data 
 
 :::info Note
 
-The `near_sdk::collections` will be moving to `near_sdk::store` and have updated APIs. If you would like to access these updated structures as they are being implemented, enable the `unstable` feature on `near-sdk`.
+The `near_sdk::collections` is moved to `near_sdk::store` and has updated APIs. Also recently were introduced new `near_sdk::store::IterableMap` and `near_sdk::store::IterableSet` that address the iteration performance issue of `store::UnorderedMap` and `store::UnorderedSet`.
 
 :::
 
@@ -113,11 +113,13 @@ The `near_sdk::collections` will be moving to `near_sdk::store` and have updated
 |----------------------------------------|------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `LazyOption<T>`                        | `Option<T>`                        | Optional value in storage. This value will only be read from storage when interacted with. This value will be `Some<T>` when the value is saved in storage, and `None` if the value at the prefix does not exist.                                  |
 | `Vector<T>`                            | `Vec<T>`                           | A growable array type. The values are sharded in memory and can be used for iterable and indexable values that are dynamically sized.                                                                                                              |
-| <code>LookupMap`<K,&nbsp;V>`</code>    | <code>HashMap`<K,&nbsp;V>`</code>  | This structure behaves as a thin wrapper around the key-value storage available to contracts. This structure does not contain any metadata about the elements in the map, so it is not iterable.                                                   |
-| <code>UnorderedMap`<K,&nbsp;V>`</code> | <code>HashMap`<K,&nbsp;V>`</code>  | Similar to `LookupMap`, except that it stores additional data to be able to iterate through elements in the data structure.                                                                                                                        |
+| <code>LookupMap`<K,&nbsp;V>`</code>    | <code>HashMap`<K,&nbsp;V>`</code>  | This structure behaves as a thin wrapper around the key-value storage available to contracts. This structure does not contairn any metadata about the elements in the map, so it is not iterable.                                                   |
+| <code>UnorderedMap`<K,&nbsp;V>`</code> (legacy) | <code>HashMap`<K,&nbsp;V>`</code>  | We recommend to use `IterableMap` instead of `UnorderedMap` as more performance-effective collection. Similar to `LookupMap`, except that it stores additional data to be able to iterate through elements in the data structure.                                                                                                                                       |
+| <code>IterableMap`<K,&nbsp;V>`</code> | <code>HashMap`<K,&nbsp;V>`</code>  | Similar to `UnorderedMap`, except that it is more performance-effective during iteration.                                                                                                                        |
 | <code>TreeMap`<K,&nbsp;V>`</code>      | <code>BTreeMap`<K,&nbsp;V>`</code> | An ordered equivalent of `UnorderedMap`. The underlying implementation is based on an [AVL tree](https://en.wikipedia.org/wiki/AVL_tree). This structure should be used when a consistent order is needed or accessing the min/max keys is needed. |
 | `LookupSet<T>`                         | `HashSet<T>`                       | A set, which is similar to `LookupMap` but without storing values, can be used for checking the unique existence of values. This structure is not iterable and can only be used for lookups.                                                       |
-| `UnorderedSet<T>`                      | `HashSet<T>`                       | An iterable equivalent of `LookupSet` which stores additional metadata for the elements contained in the set.                                                                                                                                      |
+| `UnorderedSet<T>` (legacy)            | `HashSet<T>`                       | We recommend to use `IterableSet` instead of `UnorderedSet` as more performance-effective collection. An iterable equivalent of `LookupSet` which stores additional metadata for the elements contained in the set.                                                                                                                                      |
+| `IterableSet<T>`                      | `HashSet<T>`                       | Similar to `UnorderedSet`, except that it is more performance-effective during iteration.                                                                                                                                      |
 
 </TabItem>
 
@@ -128,11 +130,13 @@ The `near_sdk::collections` will be moving to `near_sdk::store` and have updated
 ### Features
 | Type           | Iterable | Clear All Values | Preserves Insertion Order | Range Selection |
 |----------------|:--------:|:----------------:|:-------------------------:|:---------------:|
-| `Vector`       |    ✅     |        ✅         |             ✅             |        ✅        |
-| `LookupSet`    |          |                  |                           |                 |
+| `Vector`       |    ✅     |        ✅         |             ✅            |        ✅       |
+| `LookupSet`    |           |                  |                           |                  |
 | `UnorderedSet` |    ✅     |        ✅         |                           |        ✅        |
-| `LookupMap`    |          |                  |                           |                 |
+| `IterableSet`  |    ✅     |        ✅         |                           |        ✅        |
+| `LookupMap`    |           |                  |                           |                  |
 | `UnorderedMap` |    ✅     |        ✅         |                           |        ✅        |
+| `IterableMap`  |    ✅     |        ✅         |                           |        ✅        |
 
 <hr class="subsection" />
 
@@ -143,8 +147,9 @@ The `near_sdk::collections` will be moving to `near_sdk::store` and have updated
 | `Vector`       |  O(1)  |  O(1)\*  | O(1)\*\* |   O(n)   |   O(n)   | O(n)  |
 | `LookupSet`    |  O(1)  |   O(1)   |   O(1)   |   O(1)   |   N/A    |  N/A  |
 | `UnorderedSet` |  O(1)  |   O(1)   |   O(1)   |   O(1)   |   O(n)   | O(n)  |
+| `IterableSet`  |  O(1)  |   O(1)   |   O(1)   |   O(1)   |   O(n)   | O(n)  |
 | `LookupMap`    |  O(1)  |   O(1)   |   O(1)   |   O(1)   |   N/A    |  N/A  |
-| `UnorderedMap` |  O(1)  |   O(1)   |   O(1)   |   O(1)   |   O(n)   | O(n)  |
+| `IterableMap`  |  O(1)  |   O(1)   |   O(1)   |   O(1)   |   O(n)   | O(n)  |
 | `TreeMap`      |  O(1)  | O(log n) | O(log n) | O(log n) |   O(n)   | O(n)  |
 
 _\* - to insert at the end of the vector using `push_back` (or `push_front` for deque)_
@@ -167,8 +172,8 @@ All structures need to be initialized using a **unique `prefix`**, which will be
 
   <TabItem value="rust" label="🦀 Rust">
     <Github fname="lib.rs" language="rust" 
-          url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/lib.rs"
-          start="33" end="38"/>
+          url="https://github.com/near-examples/storage-examples/blob/update-sdks/collections-rs/store/src/lib.rs"
+          start="35" end="47"/>
 
   :::tip
 
@@ -207,15 +212,15 @@ Implements a [vector/array](https://en.wikipedia.org/wiki/Array_data_structure) 
   </Language>
   <Language value="rust" language="rust">
     <Github fname="vector.rs"
-          url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/vector.rs" start="12" end="30"/>
+          url="https://github.com/near-examples/storage-examples/blob/update-sdks/collections-rs/store/src/vector.rs" start="37" end="56"/>
     <Github fname="lib.rs"
-          url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/lib.rs" start="7" end="24"/>
+          url="https://github.com/near-examples/storage-examples/blob/update-sdks/collections-rs/store/src/lib.rs" start="1" end="33"/>
   </Language>
 </CodeTabs>
 
 <hr className="subsection" />
 
-### Map
+### LookupMap
 
 Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) which persists in the contract's storage. Please refer to the Rust and JS SDK's for a full reference on their interfaces.
 
@@ -226,16 +231,16 @@ Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) w
           start="33" end="37" />
   </Language>
   <Language value="rust" language="rust">
-    <Github fname="map.rs"
-          url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/map.rs" start="9" end="24"/>
+    <Github fname="lookup_map.rs"
+          url="https://github.com/near-examples/storage-examples/blob/update-sdks/collections-rs/store/src/lookup_map.rs" start="28" end="43"/>
     <Github fname="lib.rs"
-          url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/lib.rs" start="7" end="24"/>
+          url="https://github.com/near-examples/storage-examples/blob/update-sdks/collections-rs/store/src/lib.rs" start="1" end="33"/>
   </Language>
 </CodeTabs>
 
 <hr className="subsection" />
 
-### Set
+### LookupSet
 
 Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type)) which persists in the contract's storage. Please refer to the Rust and JS SDK's for a full reference on their interfaces.
 
@@ -246,10 +251,10 @@ Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type)) which
           start="42" end="46" />
   </Language>
   <Language value="rust" language="rust">
-      <Github fname="set.rs"
-            url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/set.rs" start="9" end="16"/>
+      <Github fname="lookup_set.rs"
+            url="https://github.com/near-examples/storage-examples/blob/update-sdks/collections-rs/store/src/lookup_set.rs" start="24" end="37"/>
       <Github fname="lib.rs"
-            url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/lib.rs" start="7" end="24"/>
+            url="https://github.com/near-examples/storage-examples/blob/update-sdks/collections-rs/store/src/lib.rs" start="1" end="33"/>
   </Language>
 
 </CodeTabs>
@@ -265,7 +270,7 @@ An ordered equivalent of Map. The underlying implementation is based on an [AVL]
     <Github fname="tree.rs"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/tree.rs" start="9" end="24"/>
     <Github fname="lib.rs"
-          url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/lib.rs" start="7" end="24"/>
+          url="https://github.com/near-examples/storage-examples/blob/update-sdks/collections-rs/store/src/lib.rs" start="1" end="33"/>
   </Language>
 </CodeTabs>
 
@@ -383,13 +388,6 @@ It is possible to nest collections. When nesting SDK collections, remember to **
 Because the values are not kept in memory and are lazily loaded from storage, it's important to make sure if a collection is replaced or removed, that the storage is cleared. In addition, it is important that if the collection is modified, the collection itself is updated in state because most collections will store some metadata.
 
 Some error-prone patterns to avoid that cannot be restricted at the type level are:
-
-<Tabs>
-  <TabItem value="js" label="🌐 JavaScript">
-  </TabItem>
-  <TabItem value="rust" label="🦀 Rust">
-  </TabItem>
-</Tabs>
 
 <Tabs>
 <TabItem value="rust" label="🦀 Rust">
