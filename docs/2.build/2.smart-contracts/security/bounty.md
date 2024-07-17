@@ -3,6 +3,6 @@ id: bounty
 title: Bug Bounty Program
 ---
 
-NEAR has a [revamped bug bounty program](https://hackenproof.com/near/near-protocol)!
+NEAR has a [bug bounty program](https://hackenproof.com/company/near/programs) where you can be rewarded for your efforts!
 
-Hackers - help audit, test, and toughen NEAR up, starting with bounties in the protocol category, and soon expanding to wallet, web, console, and smart contracts
+Hackers - help audit, test, and toughen NEAR up; with bounties for protocol, smart contracts, and web.
