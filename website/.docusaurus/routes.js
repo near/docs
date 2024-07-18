@@ -4,7 +4,12 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 export default [
   {
     path: '/zh-CN/blog',
-    component: ComponentCreator('/zh-CN/blog', 'fa4'),
+    component: ComponentCreator('/zh-CN/blog', 'd46'),
+    exact: true
+  },
+  {
+    path: '/zh-CN/blog/2024-07-11-near-org-outage',
+    component: ComponentCreator('/zh-CN/blog/2024-07-11-near-org-outage', '8e6'),
     exact: true
   },
   {
@@ -63,6 +68,11 @@ export default [
     exact: true
   },
   {
+    path: '/zh-CN/blog/tags/postmortems',
+    component: ComponentCreator('/zh-CN/blog/tags/postmortems', '566'),
+    exact: true
+  },
+  {
     path: '/zh-CN/blog/tags/protocol',
     component: ComponentCreator('/zh-CN/blog/tags/protocol', 'eb3'),
     exact: true
@@ -74,7 +84,7 @@ export default [
   },
   {
     path: '/zh-CN/blog/tags/updates',
-    component: ComponentCreator('/zh-CN/blog/tags/updates', '5d5'),
+    component: ComponentCreator('/zh-CN/blog/tags/updates', '4b6'),
     exact: true
   },
   {
@@ -104,15 +114,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '19d'),
+    component: ComponentCreator('/zh-CN/', 'fdb'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', 'f93'),
+        component: ComponentCreator('/zh-CN/', '33b'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '6f8'),
+            component: ComponentCreator('/zh-CN/', '49a'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -164,7 +174,7 @@ export default [
               },
               {
                 path: '/zh-CN/api/rpc/providers',
-                component: ComponentCreator('/zh-CN/api/rpc/providers', 'f1c'),
+                component: ComponentCreator('/zh-CN/api/rpc/providers', '710'),
                 exact: true,
                 sidebar: "api"
               },
@@ -1283,11 +1293,6 @@ export default [
                 sidebar: "concepts"
               },
               {
-                path: '/zh-CN/concepts/welcome',
-                component: ComponentCreator('/zh-CN/concepts/welcome', '79a'),
-                exact: true
-              },
-              {
                 path: '/zh-CN/help',
                 component: ComponentCreator('/zh-CN/help', '8e6'),
                 exact: true
@@ -1473,7 +1478,7 @@ export default [
               },
               {
                 path: '/zh-CN/tools/sdk',
-                component: ComponentCreator('/zh-CN/tools/sdk', 'b7b'),
+                component: ComponentCreator('/zh-CN/tools/sdk', 'a68'),
                 exact: true,
                 sidebar: "tools"
               },
@@ -1911,7 +1916,7 @@ export default [
               },
               {
                 path: '/zh-CN/tutorials/nfts/minting-nfts',
-                component: ComponentCreator('/zh-CN/tutorials/nfts/minting-nfts', '2b7'),
+                component: ComponentCreator('/zh-CN/tutorials/nfts/minting-nfts', '3ae'),
                 exact: true,
                 sidebar: "tutorials"
               },

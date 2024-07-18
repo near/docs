@@ -52,6 +52,10 @@
     "hide_table_of_contents": true
   },
   "unlisted": false,
+  "prevItem": {
+    "title": "An update on the near.org / RPC outage on July 11, 2024",
+    "permalink": "/blog/2024-07-11-near-org-outage"
+  },
   "nextItem": {
     "title": "One place for all Smart Contracts Docs",
     "permalink": "/blog/sdks-unified"

@@ -977,10 +977,6 @@
               "sidebar": "concepts"
             },
             {
-              "id": "concepts/welcome",
-              "path": "/zh-CN/concepts/welcome"
-            },
-            {
               "id": "help",
               "path": "/zh-CN/help"
             },

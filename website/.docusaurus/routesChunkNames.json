@@ -1,11 +1,14 @@
 {
-  "/zh-CN/blog-fa4": {
+  "/zh-CN/blog-d46": {
     "__comp": "a6aa9e1f",
     "__context": {
       "plugin": "36994c47"
     },
     "sidebar": "814f3328",
     "items": [
+      {
+        "content": "f989e7de"
+      },
       {
         "content": "0b53d89a"
       },
@@ -29,6 +32,17 @@
       }
     ],
     "__props": "1851d93b"
+  },
+  "/zh-CN/blog/2024-07-11-near-org-outage-8e6": {
+    "__comp": "ccc49370",
+    "__context": {
+      "data": {
+        "blogMetadata": "acecf23e"
+      },
+      "plugin": "36994c47"
+    },
+    "sidebar": "814f3328",
+    "content": "0e9f68d0"
   },
   "/zh-CN/blog/archive-2d5": {
     "__comp": "9e4087bc",
@@ -155,6 +169,19 @@
     ],
     "__props": "bc9ccafa"
   },
+  "/zh-CN/blog/tags/postmortems-566": {
+    "__comp": "6875c492",
+    "__context": {
+      "plugin": "36994c47"
+    },
+    "sidebar": "814f3328",
+    "items": [
+      {
+        "content": "f989e7de"
+      }
+    ],
+    "__props": "67496c8b"
+  },
   "/zh-CN/blog/tags/protocol-eb3": {
     "__comp": "6875c492",
     "__context": {
@@ -181,13 +208,16 @@
     ],
     "__props": "a15ebea5"
   },
-  "/zh-CN/blog/tags/updates-5d5": {
+  "/zh-CN/blog/tags/updates-4b6": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "36994c47"
     },
     "sidebar": "814f3328",
     "items": [
+      {
+        "content": "f989e7de"
+      },
       {
         "content": "0b53d89a"
       },
@@ -263,17 +293,17 @@
       "plugin": "c141421f"
     }
   },
-  "/zh-CN/-19d": {
+  "/zh-CN/-fdb": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "aba21aa0"
     }
   },
-  "/zh-CN/-f93": {
+  "/zh-CN/-33b": {
     "__comp": "a7bd4aaa",
     "__props": "363b7d6a"
   },
-  "/zh-CN/-6f8": {
+  "/zh-CN/-49a": {
     "__comp": "a94703ab"
   },
   "/zh-CN/api/rpc/access-keys-fa8": {
@@ -308,7 +338,7 @@
     "__comp": "17896441",
     "content": "a0c04405"
   },
-  "/zh-CN/api/rpc/providers-f1c": {
+  "/zh-CN/api/rpc/providers-710": {
     "__comp": "17896441",
     "content": "2e63797e"
   },
@@ -1104,10 +1134,6 @@
     "__comp": "17896441",
     "content": "0956f54a"
   },
-  "/zh-CN/concepts/welcome-79a": {
-    "__comp": "17896441",
-    "content": "9ece1cec"
-  },
   "/zh-CN/help-8e6": {
     "__comp": "17896441",
     "content": "932f2495"
@@ -1232,7 +1258,7 @@
     "__comp": "17896441",
     "content": "798262f1"
   },
-  "/zh-CN/tools/sdk-b7b": {
+  "/zh-CN/tools/sdk-a68": {
     "__comp": "17896441",
     "content": "308571d7"
   },
@@ -1524,7 +1550,7 @@
     "__comp": "17896441",
     "content": "3027cd24"
   },
-  "/zh-CN/tutorials/nfts/minting-nfts-2b7": {
+  "/zh-CN/tutorials/nfts/minting-nfts-3ae": {
     "__comp": "17896441",
     "content": "fd7e11b0"
   },
