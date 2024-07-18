@@ -179,7 +179,7 @@ echo $ID
 Hãy xác nhận rằng account được in ra trong terminal là chính xác. Nếu mọi thứ đều đúng, thì bây giờ bạn có thể deploy contract của bạn. Trong thư mục root của NFT project, chạy câu lệnh sau để deploy smart contract của bạn.
 
 ```bash
-near deploy --wasmFile res/non_fungible_token.wasm --accountId $ID
+near deploy $ID res/non_fungible_token.wasm
 ```
 
 <details>

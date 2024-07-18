@@ -179,7 +179,7 @@ echo $ID
 터미널에 올바른 계정 ID가 표시되어 있는지 확인하십시오. 모든 것이 올바르게 보이면 이제 컨트랙트를 배포할 수 있습니다. NFT 프로젝트의 루트에서 다음 명령을 실행하여 스마트 컨트랙트를 배포합니다.
 
 ```bash
-near deploy --wasmFile res/non_fungible_token.wasm --accountId $ID
+near deploy $ID res/non_fungible_token.wasm
 ```
 
 <details>

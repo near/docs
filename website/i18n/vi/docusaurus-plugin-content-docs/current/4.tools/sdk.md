@@ -21,7 +21,7 @@ The best place to start learning is our [QuickStart Guide](../2.build/2.smart-co
   <Column title="" size="6">
     <Feature url="https://docs.rs/near-sdk/latest/near_sdk/" title="Rust SDK" subtitle="Rust SDK Reference docs" image="smartcontract-rust.png" /></Column>
   <Column title="" size="6">
-    <Feature url="https://near.github.io/near-api-js/" title="JavaScript SDK" subtitle="Javascript SDK Reference docs" image="smartcontract-js.png" /></Column>
+    <Feature url="https://near.github.io/near-sdk-js/" title="JavaScript SDK" subtitle="Javascript SDK Reference docs" image="smartcontract-js.png" /></Column>
 </FeatureList>
 
 ---
@@ -119,7 +119,7 @@ If you are new to smart contracts, we recommend you start with our [Smart Contra
 If you need to find a specific function signature, or understand the SDK struct/classes, please visit the SDK specific pages:
 
 - [Rust SDK](https://docs.rs/near-sdk/latest/near_sdk/)
-- [JavaScript SDK](https://near.github.io/near-api-js/)
+- [JavaScript SDK](https://near.github.io/near-sdk-js/)
 
 :::tip
 
