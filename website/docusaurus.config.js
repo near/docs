@@ -90,7 +90,7 @@ const config = {
     announcementBar: {
       id: 'id-0004',
       content:
-        '📣 <a href="/blog/bos-web-engine-sunset">Pagoda Pauses the B.O.S. Web Engine R&D Project</a> 📣',
+        'New blog post: <a href="/blog/2024-07-11-near-org-outage">An update on the near.org / RPC outage on July 11, 2024</a>',
       backgroundColor: '#fafbfc',
       textColor: '#333',
       isCloseable: true,
