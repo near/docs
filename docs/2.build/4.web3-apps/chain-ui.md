@@ -8,7 +8,7 @@ sidebar_label: Chain Deployed UI
 
 ## Overview
 
-Thanks to the fact that storage on NEAR is cheap, it's feasible to host small applications on chain, especially if some optimization is added to reduce redundant code between deployed dApps. This offers a straightforward path to decentralized hosting as an alternative to static deployment platforms such as Vercel, GitHub Pages, Render, and others.
+Thanks to the fact that storage on NEAR is cheap, it's feasible to host lightweight applications with optimized bundles on chain. This offers a straightforward path to decentralized hosting as an alternative to static deployment platforms such as Vercel, GitHub Pages, Render, and others.
 
 The Chain Deployed UI tooling provides the boilerplate app code (React, Vue, TypeScript), along with the `FileStore` smart contract and basic CDN tools so you can build a dApp, pack it, and store it on chain.
 
@@ -22,7 +22,6 @@ You can still deploy your own file storage smart contract if you want to have ad
 
 ### Pros
 
-- Decentralized front-ends are less susceptible to single points of failure, making them more resistant to attacks and server downtimes
 - By decentralizing the hosting of your front-end, you minimize the risk of censoring or blocking content by centralized authorities.
 - Users might trust a decentralized application more, knowing that it operates on a transparent and immutable blockchain.
 - Data displayed on the front-end is more likely to be accurate and tamper-proof since it's typically fetched directly from the blockchain.
@@ -55,7 +54,7 @@ An [RPC provider](../../5.api/rpc/providers.md) services requests for chain data
 
 Compared to classic Web2 hosting solutions, the cost structure of a chain-deployed dApp is very different.
 
-When deploying on chain, you pay for the storage space of your compressed bundles. This means that it's critical to pay attention to the size of dependencies you include in your application, as packages that are bloated or do not support proper tree-shaking will directly affect your cost.
+When deploying on chain, you pay a one-time fee for the storage space of your compressed bundles. This means that it's critical to pay attention to the size of dependencies you include in your application, as packages that are bloated or do not support proper tree-shaking will directly affect your cost.
 
 :::info
 
