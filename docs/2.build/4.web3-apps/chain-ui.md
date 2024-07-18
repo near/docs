@@ -6,6 +6,12 @@ sidebar_label: Chain Deployed UI
 
 [Chain Deployed UI](https://github.com/near/chain-deployed-ui) is a [decentralized frontend solution](frontend.md#decentralized-frontend-solutions) that lets you to deploy dApp frontends directly on the NEAR blockchain. A frontend can be built with typical Web2 tooling (e.g. React + Vite + node.js dependencies), and the resulting compressed bundle can be stored in the state of a smart contract.
 
+:::info Keep in mind
+
+This is an early stage project, and the solution hasn’t been battle tested to the point it can be recommended for production use.
+
+:::
+
 ## Overview
 
 Thanks to the fact that storage on NEAR is cheap, it's feasible to host lightweight applications with optimized bundles on chain. This offers a straightforward path to decentralized hosting as an alternative to static deployment platforms such as Vercel, GitHub Pages, Render, and others.
