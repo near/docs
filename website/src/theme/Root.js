@@ -7,40 +7,31 @@ import { withRouter } from 'react-router-dom';
 import { useHistory } from '@docusaurus/router';
 import useIsBrowser from '@docusaurus/useIsBrowser'; // https://docusaurus.io/docs/advanced/ssg#useisbrowser
 
-import { useInitWallet } from '@theme/scripts/wallet-selector';
 
 function Root({ children, location }) {
-    useInitWallet({ createAccessKeyFor: 'v1.social08.testnet', networkId: 'testnet' });
-    const isBrowser = useIsBrowser();
+  const isBrowser = useIsBrowser();
 
-    const history = useHistory();
+  const history = useHistory();
 
-    useEffect(() => {
-      const sendMessage = (url) => {
-        parent.postMessage(
-          { type: 'urlChange', url },
-          '*'
-        );
-      };
-  
-      const unlisten = history.listen(({ pathname }) => {
-        sendMessage(pathname);
-      });
-  
-      return () => {
-        unlisten();
-      };
-    }, [history]);
+  useEffect(() => {
+    // pass message to dev.near.org (docs is embed there)
+    const sendMessage = url => parent.postMessage({ type: 'urlChange', url }, 'https://dev.near.org/');
+    sendMessage(location.pathname);
 
-    if (isBrowser) {
-        const { initRudderAnalytics, recordPageView } = require('./scripts/rudderstack');
+    const unlisten = history.listen(loc => sendMessage(loc.pathname));
+    return () => { unlisten() };
+  }, [history]);
 
-        Gleap.initialize('K2v3kvAJ5XtPzNYSgk4Ulpe5ptgBkIMv');
+  if (isBrowser) {
+    const { initRudderAnalytics, recordPageView } = require('./scripts/rudderstack');
 
-        const rudderAnalytics = initRudderAnalytics();
-        recordPageView(rudderAnalytics, location.pathname);
-    }
-    return <>{children}</>;
+    Gleap.initialize('K2v3kvAJ5XtPzNYSgk4Ulpe5ptgBkIMv');
+
+    const rudderAnalytics = initRudderAnalytics();
+    recordPageView(rudderAnalytics, location.pathname);
+  }
+
+  return <>{children}</>;
 }
 
 const router = withRouter(Root);

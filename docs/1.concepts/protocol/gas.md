@@ -100,7 +100,7 @@ The cost of calling a function will depend on how complex the function is, but w
 :::
 
 :::tip Deploying a Contract**
-Note that this covers the cost of uploading and writing bytes to storage, but does **not** cover the cost of [holding these bytes in storage](./smart-contract.md#contracts-storage)
+Note that this covers the gas cost of uploading and writing bytes to storage, but does **not** cover the cost of holding them in storage (which is `1Ⓝ ~ 100kb`).
 :::
 
 <details className="info">
@@ -130,7 +130,7 @@ When you make a request to transfer funds, NEAR immediately deducts the appropri
   }
 ```
 
-You can query this value by using the [`protocol_config`](/api/rpc/setup#protocol-config) RPC endpoint and search for `action_receipt_creation_config`. 
+You can query this value by using the [`protocol_config`](/api/rpc/setup#protocol-config) RPC endpoint and search for `action_receipt_creation_config`.
 
 The appropriate amount for creating this receipt is also immediately deducted from your account.
 
@@ -151,7 +151,7 @@ You don't buy gas, instead, the gas fee is automatically removed from your accou
 
 The only exception to this rule is when you make a function call to a contract. In this case, you need to define how many gas units to use, up to a maximum value of `300Tgas`. This amount will be converted to $NEAR using the network's gas price and deducted from your account's balance.
 
-Since many transactions will take more [than 1 block to execute](./transaction-execution.md), and the gas price is recalculated on each block and could go up, you will be charged a pessimistic estimate of $NEAR (see details below). 
+Since many transactions will take more [than 1 block to execute](./transaction-execution.md), and the gas price is recalculated on each block and could go up, you will be charged a pessimistic estimate of $NEAR (see details below).
 
 If the transaction ends up using less gas than the amount deducted, the difference will simply be **refunded to your account**.
 

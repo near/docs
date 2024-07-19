@@ -88,9 +88,9 @@ const config = {
   themeConfig: {
     image: 'docs/assets/welcome-pages/protocol.png',
     announcementBar: {
-      id: 'id-0004',
+      id: 'id-0005',
       content:
-        '📣 <a href="/blog/bos-web-engine-sunset">Pagoda sunsets B.O.S. Web Engine R&D Project</a> 📣',
+        'New blog post: <a href="/blog/2024-07-11-near-org-outage">An update on the near.org / RPC outage on July 11, 2024</a>',
       backgroundColor: '#fafbfc',
       textColor: '#333',
       isCloseable: true,
@@ -125,46 +125,35 @@ const config = {
       },
       items: [
         {
-          to: '/concepts/welcome',
-          label: 'Concepts',
+          to: '/',
+          label: 'Docs',
           position: 'left',
-        },
-        {
-          to: '/build/welcome',
-          label: 'Build',
-          position: 'left',
+          activeBaseRegex: '(^/$)|(/build|concepts)',
         },
         {
           to: '/tutorials/welcome',
           label: 'Tutorials',
           position: 'left',
-        },
-        {
-          href: '/api/rpc/introduction',
-          label: 'RPC',
-        },
-        {
-          type: 'html',
-          value: '<span class="separator"></span>',
+          activeBaseRegex: '/tutorials/',
         },
         {
           type: 'dropdown',
           label: 'Tools',
           position: 'left',
           items: [
-            { label: '🧰 All Tools', href: '/tools/welcome' },
+            { label: '🧰 All Tools', to: '/tools/welcome'},
             {
               type: 'html',
               value: '<hr/> <small class="subtitle"> Essentials </small>',
             },
-            { label: 'NEAR API', href: '/tools/near-api-js/quick-reference' },
-            { label: 'NEAR SDK', href: '/tools/sdk' },
-            { label: 'NEAR CLI', href: '/tools/near-cli' },
+            { label: 'NEAR API', to: '/tools/near-api-js/quick-reference' },
+            { label: 'NEAR SDK', to: '/tools/sdk' },
+            { label: 'NEAR CLI', to: '/tools/near-cli' },
             {
               type: 'html',
               value: '<hr/> <small class="subtitle"> Wallet Integration </small>',
             },
-            { label: 'Wallet Selector', href: '/tools/wallet-selector' },
+            { label: 'Wallet Selector', to: '/tools/wallet-selector' },
             {
               type: 'html',
               value: '<hr/> <small class="subtitle"> IDEs </small>',
@@ -176,6 +165,10 @@ const config = {
               href: 'https://docs.welldonestudio.io/code/getting-started',
             },
           ],
+        },
+        {
+          type: 'html',
+          value: '<span class="separator"></span>',
         },
         {
           type: 'dropdown',
@@ -216,7 +209,11 @@ const config = {
               value: '<hr /><div class="subtitle"> Other Docs </dib>',
             },
             {
-              href: 'https://nomicon.io',
+              href: 'https://github.com/near/NEPs',
+              label: 'NEPs',
+            },
+            {
+              href: 'https://near.github.io/nearcore/',
               label: 'Protocol Docs',
             },
             {
@@ -224,22 +221,19 @@ const config = {
               label: 'Validator Docs',
             },
             {
-              href: '/integrations/exchange-integration',
+              to: '/integrations/exchange-integration',
               label: 'Exchange Integrations',
             },
           ],
         },
         {
-          type: 'search',
-          position: 'right',
+          to: '/api/rpc/introduction',
+          label: 'RPC',
+          activeBaseRegex: '/api/rpc',
         },
-        { label: 'Blog', href: '/blog' },
+        { label: 'Blog', to: '/blog', activeBaseRegex: '/blog', position: 'right' },
         {
           type: 'localeDropdown',
-          position: 'right',
-        },
-        {
-          href: 'login',
           position: 'right',
         },
       ],

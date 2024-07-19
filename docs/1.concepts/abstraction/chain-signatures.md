@@ -12,10 +12,6 @@ This unlocks the next level of blockchain interoperability by giving ownership o
 ![chain-signatures](/docs/assets/welcome-pages/chain-signatures-overview.png)
 _Diagram of a chain signature in NEAR_
 
-:::info Looking for code?
-To get started using Chain Signatures in your project see **[Create a Chain Signature](../../2.build/1.chain-abstraction/chain-signatures.md)**.
-:::
-
 :::caution
 This technology is currently in `alpha` and should only be used in a `testnet` environment.
 :::
@@ -50,10 +46,6 @@ It is important to note that this allows us to discover the **public address** o
 In practice, the external address is deterministically derived using the NEAR address (`example.near`), the path (`ethereum-1`) and the MPC service's public key
 :::
 
-:::info
-See [**Create a Chain Signature - how the derivation is implemented**](../../2.build/1.chain-abstraction/chain-signatures.md#1-deriving-the-foreign-address) for an example implementation
-:::
-
 <hr class="subsection" />
 
 ### Multichain Smart Contract
@@ -79,10 +71,6 @@ NEAR smart contracts are currently unable to halt execution and await the comple
 **Note:** Each call will take one block which equates to ~1 second of waiting. After some time the contract will either return a result that an external party provided or return an error running out of GAS waiting.
 
 </details>
-
-:::info
-See [**Create a Chain Signature - requesting the signature**](../../2.build/1.chain-abstraction/chain-signatures.md#3-requesting-the-signature) for an example implementation
-:::
 
 <hr class="subsection" />
 

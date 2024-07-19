@@ -185,7 +185,7 @@ Verify that the correct account ID is printed in the terminal. If everything loo
 In the root of your NFT project run the following command to deploy your smart contract.
 
 ```bash
-near deploy --wasmFile res/non_fungible_token.wasm --accountId $ID
+near deploy $ID res/non_fungible_token.wasm
 ```
 
 <details>
