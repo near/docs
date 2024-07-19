@@ -106,6 +106,21 @@ Progress is being made to make this possible in the future.
 
 </details>
 
+### High volume parallel processing
+
+When running a relayer that handles a large number of transactions, issues will quickly arise due to each transaction requiring a unique nonce. If multiple transactions are sent from the same access key simultaneously, the process becomes error-prone.
+
+Fortunately, this is easy to resolve. Adding multiple full access keys to the NEAR account used for relaying (up to 20 keys can make a significant difference) will help. Then, relaying transactions using instances of the Account object created from the various keypairs associated with the account.
+
+To add a key, generate a new keypair and use the original account object to call the addKey method
+
+```typescript
+const keyPair = nearAPI.KeyPair.fromRandom("ed25519");
+
+const receipt = await account.addKey(keyPair.getPublicKey().toString())
+```
+
+After saving these keys, its possible to rotate the private keys randomly when instantiating accounts before relaying ensuring you won't create a nonce collision.
 
 ### Gating the relayer
 
