@@ -50,3 +50,11 @@ Created by the community, [NearBlocks](https://nearblocks.io/) enables to check 
 
 ![Pikespeak](/docs/assets/explorers/pikespeak.png)
 *Main page of [Pikespeak](https://pikespeak.ai/)*
+
+## NEARCatalog
+
+[NEARCatalog](https://dev.near.org/applications) provides access to example of decentralized applications (DApps) on the NEAR Protocol.
+
+
+![Nearcatalog](/docs/assets/explorers/nearcatalog.png)
+*Main page of [NEARCatalog](https://dev.near.org/applications)*
