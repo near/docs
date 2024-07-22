@@ -112,7 +112,7 @@ When running a relayer that handles a large number of transactions, issues will 
 
 Fortunately, this is easy to resolve. Adding multiple full access keys to the NEAR account used for relaying (up to 20 keys can make a significant difference) will help. Then, relaying transactions using instances of the Account object created from the various keypairs associated with the account.
 
-To add a key, generate a new keypair and use the original account object to call the addKey method
+To add a key, generate a new key pair and use the original account object to call the `addKey` method:
 
 ```typescript
 const keyPair = nearAPI.KeyPair.fromRandom("ed25519");
