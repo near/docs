@@ -53,12 +53,11 @@ This is the formula for calculating the gas fee:
 
 :::
 
-### Ethereum
-
-
 ## Settlement
 
 Settlement is needed because the Gas Station contract is accumulating NEAR, while the [Paymaster accounts](multichain-server.md#paymaster) on foreign chains are spending native foreign chain gas tokens (`ETH`, `BNB`, `SOL`, etc).
+
+### Manual settlement
 
 Manual Settlement involves several steps:
 
@@ -70,6 +69,16 @@ Manual Settlement involves several steps:
 
 3. Sending the native gas tokens to the paymaster accounts on the foreign chains.
    - A swap from the bridged token to the native gas token before sending to the paymaster accounts is necessary if the token that was bridged was not the foreign chain native gas token
+
+### Automated settlement
+
+When using automated settlement, a Market Maker facilitates the settlement of assets between a partner’s gas station contract and their paymaster accounts on destination chains.
+
+:::info Contact us
+
+If you're interested in using the automated settlement service, please [contact us](#) by filling out [this form](#).
+
+:::
 
 ## Contract Interactions
 
