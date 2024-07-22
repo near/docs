@@ -1,5 +1,5 @@
 {
-  "permalink": "/zh-CN/blog/2024-07-11-near-org-outage",
+  "permalink": "/blog/2024-07-11-near-org-outage",
   "source": "@site/../blog/2024-07-18.md",
   "title": "An update on the near.org / RPC outage on July 11, 2024",
   "description": "From Thursday, July 11 to Saturday, July 13, many visitors to near.org and its subdomains (like dev.near.org and docs.near.org) were unable to reach those websites. Also, NEAR applications that rely on RPC services hosted on near.org were affected. This was due to a security incident followed by an outage from one of our vendors, Squarespace. During this period, the NEAR protocol & blockchain was unaffected by this incident, as it does not rely on any centralized services.",
@@ -8,12 +8,12 @@
     {
       "inline": true,
       "label": "updates",
-      "permalink": "/zh-CN/blog/tags/updates"
+      "permalink": "/blog/tags/updates"
     },
     {
       "inline": true,
       "label": "postmortems",
-      "permalink": "/zh-CN/blog/tags/postmortems"
+      "permalink": "/blog/tags/postmortems"
     }
   ],
   "readingTime": 6.555,
@@ -42,6 +42,6 @@
   "unlisted": false,
   "nextItem": {
     "title": "Pagoda Pauses the B.O.S. Web Engine R&D Project",
-    "permalink": "/zh-CN/blog/bos-web-engine-sunset"
+    "permalink": "/blog/bos-web-engine-sunset"
   }
 }

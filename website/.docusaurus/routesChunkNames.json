@@ -1,5 +1,5 @@
 {
-  "/zh-CN/blog-d46": {
+  "/zh-CN/blog-b34": {
     "__comp": "a6aa9e1f",
     "__context": {
       "plugin": "36994c47"
@@ -7,7 +7,7 @@
     "sidebar": "814f3328",
     "items": [
       {
-        "content": "f989e7de"
+        "content": "7c7739ff"
       },
       {
         "content": "0b53d89a"
@@ -33,7 +33,7 @@
     ],
     "__props": "1851d93b"
   },
-  "/zh-CN/blog/2024-07-11-near-org-outage-8e6": {
+  "/zh-CN/blog/2024-07-11-near-org-outage-d6b": {
     "__comp": "ccc49370",
     "__context": {
       "data": {
@@ -42,7 +42,7 @@
       "plugin": "36994c47"
     },
     "sidebar": "814f3328",
-    "content": "0e9f68d0"
+    "content": "cdfd903c"
   },
   "/zh-CN/blog/archive-2d5": {
     "__comp": "9e4087bc",
@@ -169,7 +169,7 @@
     ],
     "__props": "bc9ccafa"
   },
-  "/zh-CN/blog/tags/postmortems-566": {
+  "/zh-CN/blog/tags/postmortems-aee": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "36994c47"
@@ -177,7 +177,7 @@
     "sidebar": "814f3328",
     "items": [
       {
-        "content": "f989e7de"
+        "content": "7c7739ff"
       }
     ],
     "__props": "67496c8b"
@@ -208,7 +208,7 @@
     ],
     "__props": "a15ebea5"
   },
-  "/zh-CN/blog/tags/updates-4b6": {
+  "/zh-CN/blog/tags/updates-ed0": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "36994c47"
@@ -216,7 +216,7 @@
     "sidebar": "814f3328",
     "items": [
       {
-        "content": "f989e7de"
+        "content": "7c7739ff"
       },
       {
         "content": "0b53d89a"
