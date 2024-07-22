@@ -77,7 +77,7 @@ When using automated settlement, a Market Maker facilitates the settlement of as
 
 :::info Contact us
 
-If you're interested in using the automated settlement service, please [contact us](#) by filling out [this form](#).
+If you're interested in using the automated settlement service, please [contact us](https://forms.gle/7z9nKVd4VH3qxbny6) by filling out [this form](https://forms.gle/7z9nKVd4VH3qxbny6).
 
 :::
 
