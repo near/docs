@@ -106,20 +106,21 @@ SDK collections are useful when you are planning to store large amounts of data 
 
 The `near_sdk::collections` is moved to `near_sdk::store` and has updated APIs. Also recently were introduced new `near_sdk::store::IterableMap` and `near_sdk::store::IterableSet` that address the iteration performance issue of `store::UnorderedMap` and `store::UnorderedSet`.
 
+Pay attention, `near_sdk::store::LazyOption` and `near_sdk::store::TreeMap` are still the unstable features. If you want to use them you should enable the unstable feature on near-sdk in `Cargo.toml` file.
 :::
 
 
 | SDK collection                         | `std`&nbsp;equivalent              | Description                                                                                                                                                                                                                                        |
 |----------------------------------------|------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `LazyOption<T>`                        | `Option<T>`                        | Optional value in storage. This value will only be read from storage when interacted with. This value will be `Some<T>` when the value is saved in storage, and `None` if the value at the prefix does not exist.                                  |
 | `Vector<T>`                            | `Vec<T>`                           | A growable array type. The values are sharded in memory and can be used for iterable and indexable values that are dynamically sized.                                                                                                              |
 | <code>LookupMap`<K,&nbsp;V>`</code>    | <code>HashMap`<K,&nbsp;V>`</code>  | This structure behaves as a thin wrapper around the key-value storage available to contracts. This structure does not contairn any metadata about the elements in the map, so it is not iterable.                                                   |
-| <code>UnorderedMap`<K,&nbsp;V>`</code> (legacy) | <code>HashMap`<K,&nbsp;V>`</code>  | We recommend to use `IterableMap` instead of `UnorderedMap` as more performance-effective collection. Similar to `LookupMap`, except that it stores additional data to be able to iterate through elements in the data structure.                                                                                                                                       |
-| <code>IterableMap`<K,&nbsp;V>`</code> | <code>HashMap`<K,&nbsp;V>`</code>  | Similar to `UnorderedMap`, except that it is more performance-effective during iteration.                                                                                                                        |
-| <code>TreeMap`<K,&nbsp;V>`</code>      | <code>BTreeMap`<K,&nbsp;V>`</code> | An ordered equivalent of `UnorderedMap`. The underlying implementation is based on an [AVL tree](https://en.wikipedia.org/wiki/AVL_tree). This structure should be used when a consistent order is needed or accessing the min/max keys is needed. |
-| `LookupSet<T>`                         | `HashSet<T>`                       | A set, which is similar to `LookupMap` but without storing values, can be used for checking the unique existence of values. This structure is not iterable and can only be used for lookups.                                                       |
-| `UnorderedSet<T>` (legacy)            | `HashSet<T>`                       | We recommend to use `IterableSet` instead of `UnorderedSet` as more performance-effective collection. An iterable equivalent of `LookupSet` which stores additional metadata for the elements contained in the set.                                                                                                                                      |
-| `IterableSet<T>`                      | `HashSet<T>`                       | Similar to `UnorderedSet`, except that it is more performance-effective during iteration.                                                                                                                                      |
+| <code>IterableMap`<K,&nbsp;V>`</code> | <code>HashMap`<K,&nbsp;V>`</code>  | Similar to `UnorderedMap`, except that it is more performance-effective during iteration.                                                                                                                       |
+| `LookupSet<T>`                         | `HashSet<T>`                       | A set, which is similar to `LookupMap` but without storing values, can be used for checking the unique existence of values. This structure is not iterable and can only be used for lookups.                                                                                                                         |
+| `IterableSet<T>`                      | `HashSet<T>`                       | Similar to `UnorderedSet`, except that it is more performance-effective during iteration.                                                                                                                       |
+| `LazyOption<T>`                        | `Option<T>`                        | Optional value in storage. This value will only be read from storage when interacted with. This value will be `Some<T>` when the value is saved in storage, and `None` if the value at the prefix does not exist. It's the unstable feature on near_sdk::store yet.                                                     |
+| <code>TreeMap`<K,&nbsp;V>`</code>      | <code>BTreeMap`<K,&nbsp;V>`</code> | An ordered equivalent of `UnorderedMap`. The underlying implementation is based on an [AVL tree](https://en.wikipedia.org/wiki/AVL_tree). This structure should be used when a consistent order is needed or accessing the min/max keys is needed.                                                              |
+| <code>UnorderedMap`<K,&nbsp;V>`</code> (legacy) | <code>HashMap`<K,&nbsp;V>`</code>  | We recommend to use `IterableMap` instead of `UnorderedMap` as more performance-effective collection. Similar to `LookupMap`, except that it stores additional data to be able to iterate through elements in the data structure.                                                                                                                       |
+| `UnorderedSet<T>` (legacy)            | `HashSet<T>`                       | We recommend to use `IterableSet` instead of `UnorderedSet` as more performance-effective collection. An iterable equivalent of `LookupSet` which stores additional metadata for the elements contained in the set.                                                                                                                             |
 
 </TabItem>
 
@@ -137,6 +138,7 @@ The `near_sdk::collections` is moved to `near_sdk::store` and has updated APIs. 
 | `LookupMap`    |           |                  |                           |                  |
 | `UnorderedMap` |    ✅     |        ✅         |                           |        ✅        |
 | `IterableMap`  |    ✅     |        ✅         |                           |        ✅        |
+| `TreeMap`      |    ✅     |        ✅         |             ✅             |        ✅        |
 
 <hr class="subsection" />
 
@@ -240,6 +242,30 @@ Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) w
 
 <hr className="subsection" />
 
+### UnorderedMap / IterableMap
+
+Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) which persists in the contract's storage. Please refer to the Rust and JS SDK's for a full reference on their interfaces.
+
+:::note
+`IterableMap` is similar to `UnorderedMap` collection, except that it is more performance-effective during iteration. Currently provided only by Rust SDK.
+:::
+
+<CodeTabs>
+  <Language value="js" language="js">
+    <Github fname="index.js"
+          url="https://github.com/near-examples/docs-examples/blob/main/storage-js/src/index.ts"
+          start="33" end="37" />
+  </Language>
+  <Language value="rust" language="rust">
+    <Github fname="iterable_map.rs"
+          url="https://github.com/near-examples/storage-examples/blob/update-sdks/collections-rs/store/src/iterable_map.rs" start="36" end="52"/>
+    <Github fname="lib.rs"
+          url="https://github.com/near-examples/storage-examples/blob/update-sdks/collections-rs/store/src/lib.rs" start="1" end="33"/>
+  </Language>
+</CodeTabs>
+
+<hr className="subsection" />
+
 ### LookupSet
 
 Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type)) which persists in the contract's storage. Please refer to the Rust and JS SDK's for a full reference on their interfaces.
@@ -261,6 +287,30 @@ Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type)) which
 
 <hr className="subsection" />
 
+### UnorderedSet / IterableSet
+
+Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) which persists in the contract's storage. Please refer to the Rust and JS SDK's for a full reference on their interfaces.
+
+:::note
+`IterableSet` is similar to `UnorderedSet` collection, except that it is more performance-effective during iteration. Currently provided only by Rust SDK.
+:::
+
+<CodeTabs>
+  <Language value="js" language="js">
+    <Github fname="index.js"
+          url="https://github.com/near-examples/docs-examples/blob/main/storage-js/src/index.ts"
+          start="33" end="37" />
+  </Language>
+  <Language value="rust" language="rust">
+    <Github fname="iterable_set.rs"
+          url="https://github.com/near-examples/storage-examples/blob/update-sdks/collections-rs/store/src/iterable_set.rs" start="32" end="45"/>
+    <Github fname="lib.rs"
+          url="https://github.com/near-examples/storage-examples/blob/update-sdks/collections-rs/store/src/lib.rs" start="1" end="33"/>
+  </Language>
+</CodeTabs>
+
+<hr className="subsection" />
+
 ### Tree
 
 An ordered equivalent of Map. The underlying implementation is based on an [AVL](https://en.wikipedia.org/wiki/AVL_tree). You should use this structure when you need to: have a consistent order, or access the min/max keys.
@@ -268,7 +318,7 @@ An ordered equivalent of Map. The underlying implementation is based on an [AVL]
 <CodeTabs>
   <Language value="rust" language="rust">
     <Github fname="tree.rs"
-          url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/tree.rs" start="9" end="24"/>
+          url="https://github.com/near-examples/storage-examples/blob/update-sdks/collections-rs/legacy/src/tree.rs" start="27" end="42"/>
     <Github fname="lib.rs"
           url="https://github.com/near-examples/storage-examples/blob/update-sdks/collections-rs/store/src/lib.rs" start="1" end="33"/>
   </Language>
