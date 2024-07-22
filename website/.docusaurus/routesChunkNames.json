@@ -293,17 +293,17 @@
       "plugin": "c141421f"
     }
   },
-  "/zh-CN/-fdb": {
+  "/zh-CN/-a75": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "aba21aa0"
     }
   },
-  "/zh-CN/-33b": {
+  "/zh-CN/-652": {
     "__comp": "a7bd4aaa",
     "__props": "363b7d6a"
   },
-  "/zh-CN/-49a": {
+  "/zh-CN/-c96": {
     "__comp": "a94703ab"
   },
   "/zh-CN/api/rpc/access-keys-fa8": {
@@ -394,7 +394,7 @@
     "__comp": "17896441",
     "content": "21dcc369"
   },
-  "/zh-CN/build/data-infrastructure/big-query-efa": {
+  "/zh-CN/build/data-infrastructure/big-query-de8": {
     "__comp": "17896441",
     "content": "845c1227"
   },

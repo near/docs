@@ -114,15 +114,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', 'fdb'),
+    component: ComponentCreator('/zh-CN/', 'a75'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '33b'),
+        component: ComponentCreator('/zh-CN/', '652'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '49a'),
+            component: ComponentCreator('/zh-CN/', 'c96'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -257,7 +257,7 @@ export default [
               },
               {
                 path: '/zh-CN/build/data-infrastructure/big-query',
-                component: ComponentCreator('/zh-CN/build/data-infrastructure/big-query', 'efa'),
+                component: ComponentCreator('/zh-CN/build/data-infrastructure/big-query', 'de8'),
                 exact: true,
                 sidebar: "build"
               },
