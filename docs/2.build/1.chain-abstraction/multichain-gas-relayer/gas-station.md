@@ -72,6 +72,7 @@ Manual Settlement involves several steps:
 
 ### Automated settlement
 
+Automated settlement is available for select partners based on their cross-chain transaction volume.
 When using automated settlement, a Market Maker facilitates the settlement of assets between a partner’s gas station contract and their paymaster accounts on destination chains.
 
 :::info Contact us
