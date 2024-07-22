@@ -114,7 +114,7 @@ Fortunately, this is easy to resolve. Adding multiple full access keys to the NE
 
 To add a key, generate a new key pair and use the original account object to call the `addKey` method:
 
-```typescript
+```js
 const keyPair = nearAPI.KeyPair.fromRandom("ed25519");
 
 const receipt = await account.addKey(keyPair.getPublicKey().toString())
