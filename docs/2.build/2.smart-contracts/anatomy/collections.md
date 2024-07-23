@@ -494,9 +494,9 @@ assert!(
 // as reads, and the writes are performed on [`Drop`](https://doc.rust-lang.org/std/ops/trait.Drop.html)
 // so if the collection is kept in static memory or something like `std::mem::forget` is used,
 // the changes will not be persisted.
-use near_sdk::store::LookupSet;
+use near_sdk::store::IterableSet;
 
-let mut m: LookupSet<u8> = LookupSet::new(b"l");
+let mut m: IterableSet<u8> = IterableSet::new(b"l");
 m.insert(1);
 assert!(m.contains(&1));
 
@@ -504,7 +504,7 @@ assert!(m.contains(&1));
 // m.flush();
 std::mem::forget(m);
 
-m = LookupSet::new(b"l");
+m = IterableSet::new(b"l");
 assert!(!m.contains(&1));
 ```
 
@@ -518,7 +518,7 @@ Some issues for more context:
 - https://github.com/near/near-sdk-rs/issues/560
 - https://github.com/near/near-sdk-rs/issues/703
 
-The following cases are the most commonly encountered bugs that cannot be restricted at the type level:
+The following cases are the most commonly encountered bugs that cannot be restricted at the type level (only relevant for `near_sdk::collections`, not `near_sdk::store`):
 
 ```rust
 use near_sdk::borsh::{self, BorshSerialize};
@@ -550,8 +550,7 @@ let n = root.get(&1).unwrap();
 assert!(n.is_empty());
 assert!(n.contains(&"test".to_string()));
 
-// Bug 2 (only relevant for `near_sdk::collections`, not `near_sdk::store`): Nested
-// collection is modified without updating the collection itself in the outer collection.
+// Bug 2: Nested collection is modified without updating the collection itself in the outer collection.
 //
 // This is fixed at the type level in `near_sdk::store` because the values are modified
 // in-place and guarded by regular Rust borrow-checker rules.
@@ -575,24 +574,24 @@ assert!(n.contains(&"some value".to_string()));
 
 ## Pagination
 
-Persistent collections such as `UnorderedMap`, `UnorderedSet` and `Vector` may
+Persistent collections such as `IterableMap/UnorderedMap)`, `IterableSet/UnorderedSet` and `Vector` may
 contain more elements than the amount of gas available to read them all.
 In order to expose them all through view calls, we can use pagination.
 
 This can be done using iterators with [`Skip`](https://doc.rust-lang.org/std/iter/struct.Skip.html) and [`Take`](https://doc.rust-lang.org/std/iter/struct.Take.html). This will only load elements from storage within the range.
 
-Example of pagination for `UnorderedMap`:
+Example of pagination for `IterableMap`:
 
 ```rust
 #[near(contract_state)]
 #[derive(PanicOnDefault)]
 pub struct Contract {
-    pub status_updates: UnorderedMap<AccountId, String>,
+    pub status_updates: IterableMap<AccountId, String>,
 }
 
 #[near]
 impl Contract {
-    /// Retrieves multiple elements from the `UnorderedMap`.
+    /// Retrieves multiple elements from the `IterableMap`.
     /// - `from_index` is the index to start from.
     /// - `limit` is the maximum number of elements to return.
     pub fn get_updates(&self, from_index: usize, limit: usize) -> Vec<(AccountId, String)> {
