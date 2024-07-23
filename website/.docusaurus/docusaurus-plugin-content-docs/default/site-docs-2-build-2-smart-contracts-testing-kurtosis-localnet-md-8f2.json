@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/testing/kurtosis-localnet.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Damian Parrino",
-  "lastUpdatedAt": 1712950778000,
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1721747596000,
   "frontMatter": {
     "id": "kurtosis-localnet",
     "title": "Creating a Local Development Environment",
