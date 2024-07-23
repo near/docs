@@ -505,7 +505,7 @@ We won't spoil what the NFT is, but once you switch over to the collectibles tab
 
 ## Connecting a dApp to `localnet`
 
-The ability to develop decentralized applications locally is a dream come true for dApp developers and the Kurtosis NEAR Package really simplifies this process. Here you'll integrate `localnet` into one of the examples at [near.dev](http://near.dev).
+The ability to develop decentralized applications locally is a dream come true for dApp developers and the Kurtosis NEAR Package really simplifies this process. Here you'll integrate `localnet` into one of the examples from [`near-examples`](https://github.com/near-examples/).
 
 ### Clone Example dApp
 
