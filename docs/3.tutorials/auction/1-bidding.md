@@ -4,7 +4,7 @@ title: Bidding
 sidebar_label: Bidding
 ---
 
-In this section of the tutorial, you'll learn how to create a basic NEAR smart contract from scratch. The contract will allow users to place bids and track the highest bidder.
+In this section of the tutorial, you'll learn how to create a basic auction smart contract from scratch. The contract will allow users to place bids and track the highest bidder.
 
 &nbsp;
 
@@ -58,7 +58,7 @@ pub struct Contract {
 ```
 
 Here we define the Contract structure that has fields:
-- **highest_bid**: another structure named Bid that stores the information about the highest bid.
+- **highest_bid**: stores the information of the highest bidder in an instance of another struct named Bid.
 - **auction_end_time**: specifies the block_timestamp (which will be explained later) at which the auction will end.
 
 Contract also has attributes:
@@ -70,7 +70,7 @@ Contract also has attributes:
 
 Since highest_bid stores type Bid we have a nested structure. Bid itself has fields:
 - **bidder**: specifies the unique human readable NEAR account ID of the bidder.
-- **bid**: specifies the bid amount in YoctoNEAR (10^-24 NEAR).  
+- **bid**: specifies the bid amount in YoctoNEAR (10^-24 NEAR).
 
 Bid has attributes:
 - **serializers**: enables both borsh and JSON serialization and decentralization.
@@ -80,7 +80,7 @@ Bid has attributes:
 
 ## Initializing the contract
 
-Now we have defined the data structures for the contract we next define its functions.
+Now we have defined the data structures for the contract we next define its methods.
 
 First, we set up an initialization function that will determine the initial state of the contract. As stated earlier this contract only offers custom initialization where the user is required to input parameters. 
 

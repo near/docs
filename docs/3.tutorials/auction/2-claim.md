@@ -4,7 +4,9 @@ title: Claim
 sidebar_label: Claim
 ---
 
-Up to now to claim the funds from bids on the contract the contract owner would have to log into a wallet using a key a withdraw NEAR to their main wallet. This provides poor UX but even more importantly it is a security flaw. Since there is a key to the contract a keyholder can maliciously mutate the contract's storage as they wish, for example, alter the highest bidder to list their own account. The whole idea behind smart contracts is that you don't have to trust anyone when interacting with an application, thus we will [lock]() the contract by removing all access keys and implementing a new method to claim the funds.
+Up till now to claim the funds from bids on the contract the contract owner would have to log into a wallet using a key a withdraw NEAR to their main wallet. This provides poor UX but even more importantly it is a security flaw. Since there is a key to the contract a keyholder can maliciously mutate the contract's storage as they wish, for example, alter the highest bidder to list their own account. The whole idea behind smart contracts is that you don't have to trust anyone when interacting with an application, thus we will [lock]() the contract by removing all access keys and implementing a new method to claim the funds.
+
+&nbsp;
 
 ## Adding an auctioneer
 
@@ -27,6 +29,8 @@ We want to restrict this method to claim the funds to only be called by the indi
 ```
 
 Let's also introduce a boolean `claimed` field to track whether the funds have been claimed by the auctioneer yet.
+
+&nbsp;
 
 ## Adding the claim method
 
