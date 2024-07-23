@@ -49,14 +49,14 @@ Find the Multichain Relayer server source code in [this GitHub repository](https
 
 ### Gas Station Event indexer
 
-The event indexer picks up events emitted from the [gas station contract](gas-station.md) used for generating signed foreign chain transactions and calls the multichain relayer `/send_funding_and_user_signed_txns` endpoint locally.
+The event indexer is a Python script that picks up events emitted from the [gas station contract](gas-station.md) used for generating signed foreign chain transactions and calls the multichain relayer `/send_funding_and_user_signed_txns` endpoint locally.
 
 To run the [Gas Station indexer](https://github.com/near/gas-station-event-indexer):
 
 1. Ensure you have the [Multichain Relayer Server](#multichain-relayer-server) running on `localhost:3030`
-2. Create and activate a Python virtual environment:
+2. Create the virtual environment and install requirements:
    ```sh
-   pip install requirements.txt
+   make install
    ```
 
 3. Update the [`config.toml`](https://github.com/near/gas-station-event-indexer/blob/main/config.toml) configuration file with appropriate values
@@ -66,9 +66,14 @@ To run the [Gas Station indexer](https://github.com/near/gas-station-event-index
    contract_id = "canhazgas.testnet"
    ```
 
-4. Run the indexer:
+4. Populate the [environment file](https://github.com/near/gas-station-event-indexer/blob/main/.env.sample) containing AWS credentials for reading from [Near Lake](../../6.data-infrastructure/lake-framework/near-lake.md)
    ```sh
-   python3 gas-station-event-indexer.py
+   cp .env.sample .env
+   ```
+
+4. Run the indexer script:
+   ```sh
+   make run
    ```
 
 :::tip
