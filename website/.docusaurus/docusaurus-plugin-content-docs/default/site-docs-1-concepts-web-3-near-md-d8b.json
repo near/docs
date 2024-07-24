@@ -1,7 +1,7 @@
 {
   "id": "concepts/web3/near",
   "title": "NEAR Protocol",
-  "description": "For the beginners, it’s always better to start with documentation, and NEAR has an excellent one. Here, we only focus on basic concepts which are necessary to understand later chapters, so an entire guideline could be understood without prior NEAR knowledge.",
+  "description": "For beginners, it’s always better to start with documentation, and NEAR has an excellent one. Here, we only focus on basic concepts necessary to understand later chapters, so an entire guideline can be understood without prior NEAR knowledge.",
   "source": "@site/../docs/1.concepts/web3/near.md",
   "sourceDirName": "1.concepts/web3",
   "slug": "/concepts/web3/near",
@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/web3/near.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Guille",
-  "lastUpdatedAt": 1719586643000,
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1721827395000,
   "frontMatter": {
     "id": "near",
     "title": "NEAR Protocol",
