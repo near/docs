@@ -40,6 +40,8 @@ Once this service and its supporting services are live, the multichain relayer s
 
 There's a premium on the Gas Station in `NEAR` for what the gas will cost on the foreign chain to account for variation in both the exchange rate between transactions, settlement between chains, and to account for variation in gas costs until the transaction is confirmed.
 
+### BSC
+
 This is the formula for calculating the gas fee:
 
 `(gas_limit_of_user_transaction + 21000) * gas_price_of_user_transaction * near_tokens_per_foreign_token * 1.2`
@@ -55,6 +57,8 @@ This is the formula for calculating the gas fee:
 
 Settlement is needed because the Gas Station contract is accumulating NEAR, while the [Paymaster accounts](multichain-server.md#paymaster) on foreign chains are spending native foreign chain gas tokens (`ETH`, `BNB`, `SOL`, etc).
 
+### Manual settlement
+
 Manual Settlement involves several steps:
 
 1. Withdrawing the NEAR held in the gas station contract and swapping for a token that can be bridged.
@@ -65,6 +69,17 @@ Manual Settlement involves several steps:
 
 3. Sending the native gas tokens to the paymaster accounts on the foreign chains.
    - A swap from the bridged token to the native gas token before sending to the paymaster accounts is necessary if the token that was bridged was not the foreign chain native gas token
+
+### Automated settlement
+
+Automated settlement is available for select partners based on their cross-chain transaction volume.
+When using automated settlement, a Market Maker facilitates the settlement of assets between a partner’s gas station contract and their paymaster accounts on destination chains.
+
+:::info Contact us
+
+If you're interested in using the automated settlement service, please [contact us](https://forms.gle/7z9nKVd4VH3qxbny6) by filling out [this form](https://forms.gle/7z9nKVd4VH3qxbny6).
+
+:::
 
 ## Contract Interactions
 
