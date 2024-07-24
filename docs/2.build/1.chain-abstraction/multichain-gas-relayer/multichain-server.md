@@ -68,8 +68,21 @@ For independent deployments of gas station contracts, generally, nonce synchroni
 
 ## Supported Chains
 
-- BSC testnet
-- BSC mainnet, Ethereum mainnet, and more chains coming soon!
+#### Testnet
+
+- Arbitrum (ETH L2)
+- Base (ETH L2)
+- BSC
+- Ethereum (Sepolia)
+- Optimism (ETH L2)
+
+#### Mainnet
+
+- Arbitrum (ETH L2)
+- Base (ETH L2)
+- BSC
+- Ethereum
+- Optimism (ETH L2)
 
 :::info
 Check the Relayer's [GitHub repository](https://github.com/near/multichain-relayer-server) to learn more about upcoming features and updates.
