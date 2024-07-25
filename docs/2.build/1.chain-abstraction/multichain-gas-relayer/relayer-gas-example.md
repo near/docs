@@ -100,7 +100,7 @@ To run the integration test, switch to the `multichain-relayer-server` repositor
 python3 integration_tests/integration_test.py
 ```
 
-:::info
+:::tip
 
 You can use the optional `--verbose` flag to print subprocess output:
 
