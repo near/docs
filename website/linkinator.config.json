@@ -26,6 +26,7 @@
     "https://near.org/near/widget/*",
     "https://www.coingecko.com/en/api",
     "https://www.coindesk.com/*",
+    "https://www.cloudflare.com/*",
     "/ko/*",
     "/vi/*",
     "/zh-CN/*",
