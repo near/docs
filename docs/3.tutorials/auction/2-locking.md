@@ -1,7 +1,7 @@
 ---
-id: claim
-title: Claim
-sidebar_label: Claim
+id: locking-the-contract
+title: Locking the contract
+sidebar_label: Locking the contract
 ---
 
 Up till now to claim the funds from bids on the contract the contract owner would have to log into a wallet using a key a withdraw NEAR to their main wallet. This provides poor UX but even more importantly it is a security flaw. Since there is a key to the contract a keyholder can maliciously mutate the contract's storage as they wish, for example, alter the highest bidder to list their own account. The whole idea behind smart contracts is that you don't have to trust anyone when interacting with an application, thus we will [lock]() the contract by removing all access keys and implementing a new method to claim the funds.

@@ -1,7 +1,7 @@
 ---
-id: nft
-title: NFT
-sidebar_label: NFT
+id: winning-an-nft
+title: Winning an NFT
+sidebar_label: Winning an NFT
 ---
 
 No one will enter an auction if there's nothing to win, so let's add a prize. Why not an [NFT]()? NFTs are uniquely identifiable, easily swappable and their logic comes from an external contract with audited standards so the prize will exist without the auction contract. Let's get to work!
@@ -24,7 +24,7 @@ trait NFT {
 }
 ```
 
-`nft_transfer` transfers the ownership of an NFT from one account ID to another. The method takes the arguments `receiver_id` dictating who will now own the NFT and the `token_id` specifying which token in the NFT contract is having its ownership transferred. The `ext_contract` attribute converts the NFT trait into a module with the method `nft_transfer`.
+`nft_transfer` transfers the ownership of an NFT from one account ID to another. The method takes the arguments `receiver_id` dictating who will now own the NFT and the `token_id` specifying which token in the NFT contract is having its ownership transferred. The `ext_contract` macro converts the NFT trait into a module with the method `nft_transfer`.
 
 Note that we declare `TokenId` in our main file `lib.rs`. A type alias is used for future-proofing.
 
