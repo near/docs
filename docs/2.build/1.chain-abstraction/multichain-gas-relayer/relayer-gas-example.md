@@ -25,12 +25,6 @@ For this tutorial, you need to have installed:
 
 Before you start testing, set up your local environment and install the [Relayer server](multichain-server.md), the [Event indexer](https://github.com/near/gas-station-event-indexer) and [NEAR CLI](https://github.com/near/near-cli-rs).
 
-:::info Alpha stage
-
-The Multichain Relayer solution is currently under development. Users who want to test-drive this solution should keep in mind that the product is in alpha stage, and a code audit is pending.
-
-:::
-
 ## Integration test
 
 In separate terminals, you need to run the following tools:
