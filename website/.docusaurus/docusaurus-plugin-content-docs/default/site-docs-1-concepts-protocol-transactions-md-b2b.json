@@ -1,7 +1,7 @@
 {
   "id": "concepts/protocol/transactions",
   "title": "Transactions",
-  "description": "Users interact with NEAR by creating transactions. Specifically, user's use their account's private keys to sign transactions, which are then broadcasted and processed by the network.",
+  "description": "Users interact with NEAR by creating transactions. Specifically, users use their account's private keys to sign transactions, which are then broadcasted and processed by the network.",
   "source": "@site/../docs/1.concepts/protocol/transactions.md",
   "sourceDirName": "1.concepts/protocol",
   "slug": "/concepts/protocol/transactions",
@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/1.concepts/protocol/transactions.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "matiasbenary",
-  "lastUpdatedAt": 1720020198000,
+  "lastUpdatedBy": "Alex Gherasie",
+  "lastUpdatedAt": 1721907993000,
   "frontMatter": {
     "id": "transactions",
     "title": "Transactions"
