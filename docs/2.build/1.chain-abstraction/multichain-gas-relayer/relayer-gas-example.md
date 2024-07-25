@@ -8,6 +8,13 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 In this article you'll learn how to run end-to-end tests on the entire Multichain Relayer system.
+You'll find two tests available: an integrated test and a manual test.
+The [integration test](#integration-test) is the best way to check that all multichain gas relayer systems are working well together.
+[Manual testing](#manual-testing) is a good way to debug issues if any individual part of the system isn't working.
+
+## Requirements
+
+Before you start testing, set up your local environment and install the [Relayer server](multichain-server.md), the [Event indexer](https://github.com/near/gas-station-event-indexer) and [NEAR CLI](https://github.com/near/near-cli-rs).
 
 :::info Required tools
 
@@ -21,11 +28,11 @@ For this tutorial, you need to have installed:
 
 :::
 
-## Setup
-
-Before you start testing, set up your local environment and install the [Relayer server](multichain-server.md), the [Event indexer](https://github.com/near/gas-station-event-indexer) and [NEAR CLI](https://github.com/near/near-cli-rs).
-
 ## Integration test
+
+:::tip
+This test is the best way to verify that all multichain gas relayer systems are working well together.
+:::
 
 In separate terminals, you need to run the following tools:
 
@@ -107,6 +114,10 @@ python3 integration_tests/integration_test.py --verbose
 ## Manual testing
 
 This section offers instructions on how to manually perform end-to-end tests on the entire multichain relayer system including the gas station contract, indexer, and relayer server.
+
+:::tip
+This test is a good way to debug issues if any individual part of the system isn't working.
+:::
 
 ### Test setup
 
@@ -234,9 +245,9 @@ Python and Rust output different hex RLP encoded transactions.
    
     > **Note:** this step will be updated soon, as support for yield/resume calls is implemented on MPC contract.
 
-7. Watch the output of the [gas station event indexer](#gas-station-event-indexer) to see the transactions being emitted by the gas station contract.
+7. Watch the output of the [gas station event indexer](https://github.com/near/gas-station-event-indexer) to see the transactions being emitted by the gas station contract.
 
-8. Watch the output of the [multichain relayer server](#multichain-relayer-server) to see the transactions being sent to the foreign chain.
+8. Watch the output of the [multichain relayer server](https://github.com/near/multichain-relayer-server) to see the transactions being sent to the foreign chain.
 
 
 
