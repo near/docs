@@ -4,7 +4,7 @@ title: Winning an NFT
 sidebar_label: Winning an NFT
 ---
 
-No one will enter an auction if there's nothing to win, so let's add a prize. Why not an [NFT]()? NFTs are uniquely identifiable, easily swappable and their logic comes from an external contract with audited standards so the prize will exist without the auction contract. Let's get to work!
+No one will enter an auction if there's nothing to win, so let's add a prize. Why not an [NFT](../../2.build/5.primitives/nft.md)? NFTs are uniquely identifiable, easily swappable and their logic comes from an external contract with audited standards so the prize will exist without the auction contract. Let's get to work!
 
 &nbsp;
 
@@ -72,7 +72,7 @@ When we create an auction we need to list the NFT. To specify which NFT is being
 
 ## Transferring the NFT to the winner
 
-When the auction is ended, by calling the method `claim`, the NFT needs to be transferred to the highest bidder. We make a [cross-contract]() call to the NFT contract via the external method we defined at the end of `claim`.
+When the auction is ended, by calling the method `claim`, the NFT needs to be transferred to the highest bidder. We make a cross-contract call to the NFT contract via the external method we defined at the end of `claim`.
 
 ```rust 
        nft_contract::ext(self.nft_contract.clone())
@@ -81,7 +81,7 @@ When the auction is ended, by calling the method `claim`, the NFT needs to be tr
             .nft_transfer(self.highest_bid.bidder.clone(), self.token_id.clone());
 ```
 
-When calling this external method we specify the NFT contract name, that we are attaching 30 Tgas to the call, that we are attaching 1 YoctoNEAR to the call (since the NFT contract requires this for [security reasons]()), and the arguments `reciever_id` and `token_id`.
+When calling this external method we specify the NFT contract name, that we are attaching 30 Tgas to the call, that we are attaching 1 YoctoNEAR to the call (since the NFT contract requires this for [security reasons](../../2.build/2.smart-contracts/security/one_yocto.md)), and the arguments `reciever_id` and `token_id`.
 
 &nbsp;
 

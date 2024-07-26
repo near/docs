@@ -4,7 +4,7 @@ title: Bidding with FTs
 sidebar_label: Bidding with FTs
 ---
 
-To make this contract more interesting we're going to introduce another primitive: [fungible tokens](). Instead of placing bids in NEAR tokens, they will be placed in FTs. This may be useful if, for example, an auctioneer wants to keep the bid amounts constant in terms of dollars as an auction is carried out, so bids can be placed in stablecoins such as $USDC, or if a project like Ref Finance were holding their own auction and would want the auction to happen in their project's token $REF.
+To make this contract more interesting we're going to introduce another primitive: [fungible tokens](../../2.build/5.primitives/ft.md). Instead of placing bids in NEAR tokens, they will be placed in FTs. This may be useful if, for example, an auctioneer wants to keep the bid amounts constant in terms of dollars as an auction is carried out, so bids can be placed in stablecoins such as $USDC, or if a project like Ref Finance were holding their own auction and would want the auction to happen in their project's token $REF.
 
 &nbsp;
 
@@ -56,7 +56,7 @@ We want our bids to only happen in one type of fungible token; accepting many wo
 
 ## Accepting bids in FTs
 
-For making bids in NEAR we call the contract directly and add NEAR tokens to the call. With fungible tokens, since the balance lives on a separate contract, we call the FT contract to call the auction contract and to transfer tokens. The method on the FT contract to do this is named `ft_transfer_call` and it will always call a method in the target contract named `ft_on_transfer`. Take a look [here]() for more information. 
+For making bids in NEAR we call the contract directly and add NEAR tokens to the call. With fungible tokens, since the balance lives on a separate contract, we call the FT contract to call the auction contract and to transfer tokens. The method on the FT contract to do this is named `ft_transfer_call` and it will always call a method in the target contract named `ft_on_transfer`. Take a look [here](../../2.build/5.primitives/ft.md#attaching-fts-to-a-call) for more information. 
 
 **insert FT diagram**
 
@@ -116,7 +116,7 @@ When the auction is complete we need to send the fungible tokens to the auctione
 
 ## Registering the user in the FT contract
 
-For one to receive fungible tokens first their account ID must be [registered]() in the FT contract. We don't need to register the accounts that we transfer tokens back to since to make a bid in the first place they would need to be registered, but we do need to register the auction contract in the FT contract to receive bids and the auctioneer to receive the funds at the end of the auction. It is most convenient to register users from the frontend rather than the contract.
+For one to receive fungible tokens first their account ID must be [registered](../../2.build/5.primitives/ft.md#registering-a-user) in the FT contract. We don't need to register the accounts that we transfer tokens back to since to make a bid in the first place they would need to be registered, but we do need to register the auction contract in the FT contract to receive bids and the auctioneer to receive the funds at the end of the auction. It is most convenient to register users from the frontend rather than the contract.
 
 &nbsp;
 
@@ -126,7 +126,7 @@ There we have it, a completed auction smart contract!
 
 ## Auction architecture 
 
-When creating an application there are numerous ways to structure it. Here, we have one contract per auction meaning we have to deploy a new contract each time we want to host an auction. To make this easier we would leverage a [factory contract]() to deploy auction contracts for an auctioneer. Deploying code for each auction gets expensive, with 100kb of storage costing 1 NEAR, since each auction stores all the same type of information and implements the same methods one could instead decide to have multiple auctions per contract. 
+When creating an application there are numerous ways to structure it. Here, we have one contract per auction meaning we have to deploy a new contract each time we want to host an auction. To make this easier we would leverage a factory contract to deploy auction contracts for an auctioneer. Deploying code for each auction gets expensive, with 100kb of storage costing 1 NEAR, since each auction stores all the same type of information and implements the same methods one could instead decide to have multiple auctions per contract. 
 
 In such case, the Contract struct would be a map of auctions. We would implement a method to create a new auction by adding an entry to the map with the specific details of that individual auction.
 
