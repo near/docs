@@ -6,12 +6,6 @@ sidebar_label: Multichain Gas Station Contract
 
 The [multichain gas station smart contract](https://github.com/near/multichain-gas-station-contract) accepts payments in NEAR tokens in exchange for gas funding on non-NEAR foreign chains. Part of the NEAR Multichain effort, it works in conjunction with the [MPC recovery service](https://github.com/near/mpc-recovery) to generate on-chain signatures.
 
-:::info Alpha stage
-
-The Multichain Relayer solution is currently under development. Users who want to test-drive this solution should keep in mind that the product is in alpha stage, and a code audit is pending.
-
-:::
-
 ## What is it?
 
 This smart contract is a piece of the NEAR Multichain project, which makes NEAR Protocol an effortlessly cross-chain network. This contract accepts EVM transaction request payloads and facilitates the signing, gas funding, and relaying of the signed transactions to their destination chains. It works in conjunction with a few different services, including:
@@ -97,6 +91,13 @@ You can review the complete smart contract source code in [this GitHub repositor
      - Pyth oracle price fee IDs can be [found here](https://pyth.network/developers/price-feed-ids)
 4. Add paymasters to each foreign chain with `add_paymaster`.
 
+### Price Pusher
+
+In order to get up-to-date information on gas prices for foreign chains, a price pusher service must be run, either on demand or as a `cron` job.
+
+A separate price pusher should be used for each token:
+- [Pyth Price Pusher](https://github.com/pyth-network/pyth-crosschain/tree/main/apps/price_pusher): this price pusher supports `BNB` and `ETH`
+
 ### Usage
 
 Users who wish to get transactions signed and relayed by this contract and its accompanying infrastructure should perform the following steps:
@@ -110,9 +111,11 @@ Users who wish to get transactions signed and relayed by this contract and its a
    - Repeat `pending_transactions_count` times.
 4. Relay each signed payload to the foreign chain RPC in the order they were requested.
 
-:::tip testnet contract
+:::tip Contract address
 
-If you want to try things out, this smart contract is available on `canhazgas.testnet`.
+If you want to try things out, this smart contract is available on:
+- testnet: `canhazgas.testnet`
+- mainnet: `TBD`
 
 :::
 

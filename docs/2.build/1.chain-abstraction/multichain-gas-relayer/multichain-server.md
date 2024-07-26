@@ -6,12 +6,6 @@ sidebar_label: Multichain Relayer Server
 
 The [Multichain Relayer Server](https://github.com/near/multichain-relayer-server) facilitates cross-chain transactions and enables Chain Abstraction.
 
-:::info Alpha stage
-
-The Multichain Relayer solution is currently under development. Users who want to test-drive this solution should keep in mind that the product is in alpha stage, and a code audit is pending.
-
-:::
-
 ## Overview
 
 The main function of this server is interfacing with foreign chain RPCs sending both presigned funding transactions to cover gas and the actual presigned transaction once the funding is done.
@@ -70,19 +64,19 @@ For independent deployments of gas station contracts, generally, nonce synchroni
 
 #### Testnet
 
-- Arbitrum (ETH L2)
-- Base (ETH L2)
+- Arbitrum (Ethereum Sepolia)
+- Base (Ethereum Sepolia)
 - BSC
 - Ethereum (Sepolia)
-- Optimism (ETH L2)
+- Optimism (Ethereum Sepolia)
 
 #### Mainnet
 
-- Arbitrum (ETH L2)
-- Base (ETH L2)
+- Arbitrum (Ethereum L2)
+- Base (Ethereum L2)
 - BSC
 - Ethereum
-- Optimism (ETH L2)
+- Optimism (Ethereum L2)
 
 :::info
 Check the Relayer's [GitHub repository](https://github.com/near/multichain-relayer-server) to learn more about upcoming features and updates.
