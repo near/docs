@@ -93,10 +93,10 @@ SDK collections are useful when you are planning to store large amounts of data 
 | SDK Collection | Native Equivalent | Description                                                                                                                                                                                      |
 |----------------|-------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `Vector`       | `Array`           | A growable array type. The values are sharded in memory and can be used for iterable and indexable values that are dynamically sized.                                                            |
-| `LookupMap`    | `Map`             | This structure behaves as a thin wrapper around the key-value storage available to contracts. This structure does not contain any metadata about the elements in the map, so it is not iterable. |
-| `UnorderedMap` | `Map`             | Similar to `LookupMap`, except that it stores additional data to be able to iterate through elements in the data structure.                                                                      |
 | `LookupSet`    | `Set`             | A set, which is similar to `LookupMap` but without storing values, can be used for checking the unique existence of values. This structure is not iterable and can only be used for lookups.     |
 | `UnorderedSet` | `Set`             | An iterable equivalent of `LookupSet` which stores additional metadata for the elements contained in the set.                                                                                    |
+| `LookupMap`    | `Map`             | This structure behaves as a thin wrapper around the key-value storage available to contracts. This structure does not contain any metadata about the elements in the map, so it is not iterable. |
+| `UnorderedMap` | `Map`             | Similar to `LookupMap`, except that it stores additional data to be able to iterate through elements in the data structure.                                                                      |
 
 </TabItem>
 
@@ -113,15 +113,32 @@ Pay attention, `near_sdk::store::LazyOption` and `near_sdk::store::TreeMap` are 
 | SDK collection                         | `std`&nbsp;equivalent              | Description                                                                                                                                                                                                                                        |
 |----------------------------------------|------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `Vector<T>`                            | `Vec<T>`                           | A growable array type. The values are sharded in memory and can be used for iterable and indexable values that are dynamically sized.                                                                                                              |
-| <code>LookupMap`<K,&nbsp;V>`</code>    | <code>HashMap`<K,&nbsp;V>`</code>  | This structure behaves as a thin wrapper around the key-value storage available to contracts. This structure does not contairn any metadata about the elements in the map, so it is not iterable.                                                   |
-| <code>IterableMap`<K,&nbsp;V>`</code> | <code>HashMap`<K,&nbsp;V>`</code>  | Similar to `UnorderedMap`, except that it is more performance-effective during iteration.                                                                                                                       |
 | `LookupSet<T>`                         | `HashSet<T>`                       | A set, which is similar to `LookupMap` but without storing values, can be used for checking the unique existence of values. This structure is not iterable and can only be used for lookups.                                                                                                                         |
-| `IterableSet<T>`                      | `HashSet<T>`                       | Similar to `UnorderedSet`, except that it is more performance-effective during iteration.                                                                                                                       |
-| `LazyOption<T>`                        | `Option<T>`                        | Optional value in storage. This value will only be read from storage when interacted with. This value will be `Some<T>` when the value is saved in storage, and `None` if the value at the prefix does not exist. It's the unstable feature on near_sdk::store yet.                                                     |
-| <code>TreeMap`<K,&nbsp;V>`</code>      | <code>BTreeMap`<K,&nbsp;V>`</code> | An ordered equivalent of `UnorderedMap`. The underlying implementation is based on an [AVL tree](https://en.wikipedia.org/wiki/AVL_tree). This structure should be used when a consistent order is needed or accessing the min/max keys is needed.                                                              |
-| <code>UnorderedMap`<K,&nbsp;V>`</code> (legacy) | <code>HashMap`<K,&nbsp;V>`</code>  | We recommend to use `IterableMap` instead of `UnorderedMap` as more performance-effective collection. Similar to `LookupMap`, except that it stores additional data to be able to iterate through elements in the data structure.                                                                                                                       |
-| `UnorderedSet<T>` (legacy)            | `HashSet<T>`                       | We recommend to use `IterableSet` instead of `UnorderedSet` as more performance-effective collection. An iterable equivalent of `LookupSet` which stores additional metadata for the elements contained in the set.                                                                                                                             |
+| `IterableSet<T>`                      | `HashSet<T>`                       | An iterable equivalent of `LookupSet` which stores additional metadata for the elements contained in the set.                                                                                                                       |
+| <code>LookupMap`<K,&nbsp;V>`</code>    | <code>HashMap`<K,&nbsp;V>`</code>  | This structure behaves as a thin wrapper around the key-value storage available to contracts. This structure does not contairn any metadata about the elements in the map, so it is not iterable.                                                   |
+| <code>IterableMap`<K,&nbsp;V>`</code> | <code>HashMap`<K,&nbsp;V>`</code>  | Similar to `LookupMap`, except that it stores additional data to be able to iterate through elements in the data structure.                                                                                                                       |
+| <code>TreeMap`<K,&nbsp;V>`</code>      | <code>BTreeMap`<K,&nbsp;V>`</code> | An ordered equivalent of `UnorderedMap`. The underlying implementation is based on an [AVL tree](https://en.wikipedia.org/wiki/AVL_tree). This structure should be used when a consistent order is needed or accessing the min/max keys is needed. *It's the **unstable** feature on `near_sdk::store` yet.*                                                              |
+| `LazyOption<T>`                        | `Option<T>`                        | Optional value in storage. This value will only be read from storage when interacted with. This value will be `Some<T>` when the value is saved in storage, and `None` if the value at the prefix does not exist. *It's the **unstable** feature on `near_sdk::store` yet.*                                                     |
 
+</TabItem>
+
+<TabItem value="rust-legacy" label="🦀 Rust (legacy)">
+:::info Note
+
+The `near_sdk::collections` is moved to `near_sdk::store` and has updated APIs. Also recently were introduced new `near_sdk::store::IterableMap` and `near_sdk::store::IterableSet` that address the iteration performance issue of `store::UnorderedMap` and `store::UnorderedSet`.
+
+Pay attention, `near_sdk::store::LazyOption` and `near_sdk::store::TreeMap` are still the unstable features. If you want to use them you should enable the unstable feature on near-sdk in `Cargo.toml` file.
+:::
+
+| SDK collection                         | `std`&nbsp;equivalent              | Description                                                                                                                                                                                                                                        |
+|----------------------------------------|------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `Vector<T>`                            | `Vec<T>`                           | A growable array type. The values are sharded in memory and can be used for iterable and indexable values that are dynamically sized.                                                                                                              |
+| `LookupSet<T>`                         | `HashSet<T>`                       | A set, which is similar to `LookupMap` but without storing values, can be used for checking the unique existence of values. This structure is not iterable and can only be used for lookups.                                                                                                                         |
+| `UnorderedSet<T>`            | `HashSet<T>`                       | An iterable equivalent of `LookupSet` which stores additional metadata for the elements contained in the set.                                                                                                                             |
+| <code>LookupMap`<K,&nbsp;V>`</code>    | <code>HashMap`<K,&nbsp;V>`</code>  | This structure behaves as a thin wrapper around the key-value storage available to contracts. This structure does not contairn any metadata about the elements in the map, so it is not iterable.                                                                                                                   |
+| <code>UnorderedMap`<K,&nbsp;V>`</code> | <code>HashMap`<K,&nbsp;V>`</code>  | Similar to `LookupMap`, except that it stores additional data to be able to iterate through elements in the data structure.                                                                                                                       |
+| <code>TreeMap`<K,&nbsp;V>`</code>      | <code>BTreeMap`<K,&nbsp;V>`</code> | An ordered equivalent of `UnorderedMap`. The underlying implementation is based on an [AVL tree](https://en.wikipedia.org/wiki/AVL_tree). This structure should be used when a consistent order is needed or accessing the min/max keys is needed.                                                              |
+| `LazyOption<T>`                        | `Option<T>`                        | Optional value in storage. This value will only be read from storage when interacted with. This value will be `Some<T>` when the value is saved in storage, and `None` if the value at the prefix does not exist.                                                     |
 </TabItem>
 
 </Tabs>
@@ -167,15 +184,15 @@ All structures need to be initialized using a **unique `prefix`**, which will be
 
 <Tabs groupId="code-tabs">
   <TabItem value="js" label="🌐 JavaScript">
-    <Github fname="index.js" language="js"
-          url="https://github.com/near-examples/docs-examples/blob/main/storage-js/src/index.ts"
-          start="8" end="11" />
+    <Github fname="contract.ts" language="js"
+          url="https://github.com/near-examples/storage-examples/blob/update-sdks/collections-js/src/contract.ts"
+          start="6" end="21" />
   </TabItem>
 
   <TabItem value="rust" label="🦀 Rust">
     <Github fname="lib.rs" language="rust" 
           url="https://github.com/near-examples/storage-examples/blob/update-sdks/collections-rs/store/src/lib.rs"
-          start="35" end="47"/>
+          start="24" end="47"/>
 
   :::tip
 
@@ -208,9 +225,12 @@ Implements a [vector/array](https://en.wikipedia.org/wiki/Array_data_structure) 
 
 <CodeTabs>
   <Language value="js" language="js">
-    <Github fname="index.js"
-          url="https://github.com/near-examples/docs-examples/blob/main/storage-js/src/index.ts"
-          start="25" end="28" />
+    <Github fname="contract.ts"
+          url="https://github.com/near-examples/storage-examples/blob/update-sdks/collections-js/src/contract.ts"
+          start="34" end="58" />
+    <Github fname="main.ava.js"
+          url="https://github.com/near-examples/storage-examples/blob/update-sdks/collections-js/sandbox-test/main.ava.js"
+          start="48" end="70" />
   </Language>
   <Language value="rust" language="rust">
     <Github fname="vector.rs"
@@ -228,9 +248,12 @@ Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) w
 
 <CodeTabs>
   <Language value="js" language="js">
-    <Github fname="index.js"
-          url="https://github.com/near-examples/docs-examples/blob/main/storage-js/src/index.ts"
-          start="33" end="37" />
+    <Github fname="contract.ts"
+          url="https://github.com/near-examples/storage-examples/blob/update-sdks/collections-js/src/contract.ts"
+          start="97" end="116" />
+    <Github fname="main.ava.js"
+          url="https://github.com/near-examples/storage-examples/blob/update-sdks/collections-js/sandbox-test/main.ava.js"
+          start="113" end="131" />
   </Language>
   <Language value="rust" language="rust">
     <Github fname="lookup_map.rs"
@@ -252,9 +275,12 @@ Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) w
 
 <CodeTabs>
   <Language value="js" language="js">
-    <Github fname="index.js"
-          url="https://github.com/near-examples/docs-examples/blob/main/storage-js/src/index.ts"
-          start="33" end="37" />
+    <Github fname="contract.ts"
+          url="https://github.com/near-examples/storage-examples/blob/update-sdks/collections-js/src/contract.ts"
+          start="118" end="137" />
+    <Github fname="main.ava.js"
+          url="https://github.com/near-examples/storage-examples/blob/update-sdks/collections-js/sandbox-test/main.ava.js"
+          start="133" end="161" />
   </Language>
   <Language value="rust" language="rust">
     <Github fname="iterable_map.rs"
@@ -272,9 +298,12 @@ Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type)) which
 
 <CodeTabs>
   <Language value="js" language="js">
-    <Github fname="index.js"
-          url="https://github.com/near-examples/docs-examples/blob/main/storage-js/src/index.ts"
-          start="42" end="46" />
+    <Github fname="contract.ts"
+          url="https://github.com/near-examples/storage-examples/blob/update-sdks/collections-js/src/contract.ts"
+          start="60" end="74" />
+    <Github fname="main.ava.js"
+          url="https://github.com/near-examples/storage-examples/blob/update-sdks/collections-js/sandbox-test/main.ava.js"
+          start="72" end="86" />
   </Language>
   <Language value="rust" language="rust">
       <Github fname="lookup_set.rs"
@@ -297,9 +326,12 @@ Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) w
 
 <CodeTabs>
   <Language value="js" language="js">
-    <Github fname="index.js"
-          url="https://github.com/near-examples/docs-examples/blob/main/storage-js/src/index.ts"
-          start="33" end="37" />
+    <Github fname="contract.ts"
+          url="https://github.com/near-examples/storage-examples/blob/update-sdks/collections-js/src/contract.ts"
+          start="76" end="95" />
+    <Github fname="main.ava.js"
+          url="https://github.com/near-examples/storage-examples/blob/update-sdks/collections-js/sandbox-test/main.ava.js"
+          start="88" end="111" />
   </Language>
   <Language value="rust" language="rust">
     <Github fname="iterable_set.rs"
