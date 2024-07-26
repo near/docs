@@ -281,7 +281,7 @@ const sidebar = {
         },
         {
           "Lake Framework": [
-            "concepts/advanced/near-lake-framework",  
+            "concepts/advanced/near-lake-framework",
             "build/data-infrastructure/lake-framework/near-lake",
             "build/data-infrastructure/lake-framework/near-lake-state-changes-indexer",
             "build/data-infrastructure/lake-framework/migrating-to-near-lake-framework",
@@ -368,6 +368,15 @@ const sidebar = {
     {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Tutorials </small></b></span>"
+    },
+    {
+      "Zero to Hero NEAR": [
+        "tutorials/auction/introduction",
+        "tutorials/auction/basic",
+        "tutorials/auction/locking-the-contract",
+        "tutorials/auction/winning-an-nft",
+        "tutorials/auction/bidding-with-FTs",
+      ]
     },
     {
       "Components": [
