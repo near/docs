@@ -171,6 +171,10 @@ table+p em,
     padding: 0.8rem;
 }
 
+.navbar__item:first-of-type {
+    padding-left: .4rem;
+}
+
 .navbar__logo {
     height: 28px;
 }

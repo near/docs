@@ -89,10 +89,13 @@ You can review the complete smart contract source code in [this GitHub repositor
 
 ### Setup and Administration
 
-1.    Initialize the contract with a call to `new`. The [owner](https://github.com/near/near-sdk-contract-tools/blob/develop/src/owner.rs) is initialized as the predecessor of this transaction. All of the following transactions must be called by the owner.
-2.    Refresh the MPC contract public key by calling `refresh_signer_public_key`.
-3.    Set up foreign chain configurations with `add_foreign_chain`.
-4.    Add paymasters to each foreign chain with `add_paymaster`.
+1. Initialize the contract with a call to `new`. The [owner](https://github.com/near/near-sdk-contract-tools/blob/develop/src/owner.rs) is initialized as the predecessor of this transaction. All of the following transactions must be called by the owner.
+2. Refresh the MPC contract public key by calling `refresh_signer_public_key`.
+3. Set up foreign chain configurations with `add_foreign_chain`.
+   - When performing the function call for `add_foreign_chain`, the chain ID and oracle price ID must be updated appropriately:
+     - Specific chain IDs (e.g. BSC, Base, Optimism, Arbitrum) can be [found here](https://chainlist.org/)
+     - Pyth oracle price fee IDs can be [found here](https://pyth.network/developers/price-feed-ids)
+4. Add paymasters to each foreign chain with `add_paymaster`.
 
 ### Usage
 
