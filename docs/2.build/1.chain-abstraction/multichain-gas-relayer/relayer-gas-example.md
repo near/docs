@@ -8,26 +8,37 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 In this article you'll learn how to run end-to-end tests on the entire Multichain Relayer system.
+You'll find two tests available: an integrated test and a manual test.
+The [integration test](#integration-test) is the best way to check that all multichain gas relayer systems are working well together.
+[Manual testing](#manual-testing) is a good way to debug issues if any individual part of the system isn't working.
+
+## Requirements
+
+Before you start testing, set up your local environment and install the [Relayer server](multichain-server.md), the [Event indexer](https://github.com/near/gas-station-event-indexer) and [NEAR CLI](https://github.com/near/near-cli-rs).
 
 :::info Required tools
 
-For this tutorial, you'll need to have installed:
+For this tutorial, you need to have installed:
 
+ - [Python](https://python.org) >=3.10
+ - [Rust](https://rust-lang.org)
  - [Multichain Relayer Server](https://github.com/near/multichain-relayer-server)
  - [Gas Station Event indexer](https://github.com/near/gas-station-event-indexer)
- - [NEAR CLI RS](https://github.com/near/near-cli-rs)
+ - [NEAR CLI RS](https://github.com/near/near-cli-rs): Make sure to configure it with the correct network and account.
 
 :::
 
-## Setup
+## Integration test
 
-Before you start testing, set up your local environment and install the Relayer server, the Event indexer and NEAR CLI.
-
-:::info Alpha stage
-
-The Multichain Relayer solution is currently under development. Users who want to test-drive this solution should keep in mind that the product is in alpha stage, and a code audit is pending.
-
+:::tip
+This test is the best way to verify that all multichain gas relayer systems are working well together.
 :::
+
+In separate terminals, you need to run the following tools:
+
+1. [Multichain Relayer server](#multichain-relayer-server), with a valid `config.toml` configuration file
+2. [Gas Station indexer](#gas-station-event-indexer), with correct values in `config.toml`
+3. [Python integration test script](#run-integration-test)
 
 ### Multichain Relayer server
 
@@ -49,14 +60,14 @@ Find the Multichain Relayer server source code in [this GitHub repository](https
 
 ### Gas Station Event indexer
 
-The event indexer picks up events emitted from the [gas station contract](gas-station.md) used for generating signed foreign chain transactions and calls the multichain relayer `/send_funding_and_user_signed_txns` endpoint locally.
+The event indexer is a Python script that picks up events emitted from the [gas station contract](gas-station.md) used for generating signed foreign chain transactions and calls the multichain relayer `/send_funding_and_user_signed_txns` endpoint locally.
 
 To run the [Gas Station indexer](https://github.com/near/gas-station-event-indexer):
 
 1. Ensure you have the [Multichain Relayer Server](#multichain-relayer-server) running on `localhost:3030`
-2. Create and activate a Python virtual environment:
+2. Create the virtual environment and install requirements:
    ```sh
-   pip install requirements.txt
+   make install
    ```
 
 3. Update the [`config.toml`](https://github.com/near/gas-station-event-indexer/blob/main/config.toml) configuration file with appropriate values
@@ -66,9 +77,14 @@ To run the [Gas Station indexer](https://github.com/near/gas-station-event-index
    contract_id = "canhazgas.testnet"
    ```
 
-4. Run the indexer:
+4. Populate the [environment file](https://github.com/near/gas-station-event-indexer/blob/main/.env.sample) containing AWS credentials for reading from [Near Lake](../../6.data-infrastructure/lake-framework/near-lake.md)
    ```sh
-   python3 gas-station-event-indexer.py
+   cp .env.sample .env
+   ```
+
+4. Run the indexer script:
+   ```sh
+   make run
    ```
 
 :::tip
@@ -77,38 +93,120 @@ Find the Gas Station Event indexer source code in [this GitHub repository](https
 
 :::
 
-## Running tests
+### Run integration test
 
-The gas station contract supports EIP-1559 transactions.
+To run the integration test, switch to the `multichain-relayer-server` repository folder and execute the Python script:
 
-1. Set the transaction details of the EVM transaction you want to send in [`generate_rlp_evm_txn.py`](https://github.com/near/multichain-relayer-server/blob/5b040611f2dc6c6b405b5ec00d5102e3cc27a65c/integration_tests/generate_rlp_evm_txn.py), run the script, and save the RLP hex string output.
+```sh
+python3 integration_tests/integration_test.py
+```
 
-:::note
+:::tip
 
-Python and Rust output different hex RLP encoded transactions.
- - If you're using Rust, use [`generate_eip1559_rlp_hex()`](https://github.com/near/multichain-relayer-server/blob/5b040611f2dc6c6b405b5ec00d5102e3cc27a65c/tests/tests.rs#L24).
- - If you're using Python, use [`generate_rlp_encoded_transaction(is_eip_1559=true)`](https://github.com/near/multichain-relayer-server/blob/5b040611f2dc6c6b405b5ec00d5102e3cc27a65c/integration_tests/generate_rlp_evm_txn.py#L7)
+You can use the optional `--verbose` flag to print subprocess output:
+
+```sh
+python3 integration_tests/integration_test.py --verbose
+```
 
 :::
+
+## Manual testing
+
+This section offers instructions on how to manually perform end-to-end tests on the entire multichain relayer system including the gas station contract, indexer, and relayer server.
+
+:::tip
+This test is a good way to debug issues if any individual part of the system isn't working.
+:::
+
+### Test setup
+
+The following instructions are only need to be called once to initialize the account on the Gas Station. Make sure to replace the `<account_id>` (string) with the account you want to initialize and `<token_id>` (integer) with the token id of the NFT you minted in step 2:
+
+1. Registration / Storage Deposit:
+    ```shell
+    near contract call-function as-transaction v2.nft.kagi.testnet \
+      storage_deposit json-args {} prepaid-gas '100.0 Tgas' attached-deposit '1 NEAR' \
+      sign-as <account_id>.testnet network-config testnet sign-with-keychain send
+    ```
+2. Mint NFT - make sure to save the token id from the logs of this call
+    ```shell
+    near contract call-function as-transaction v2.nft.kagi.testnet \
+      mint json-args {} prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' \
+      sign-as <account_id>.testnet network-config testnet sign-with-keychain send
+    ```
+3. Approve the Gas Station for this Token
+    ```shell
+    near contract call-function as-transaction v2.nft.kagi.testnet \
+      ckt_approve_call json-args '{"token_id":"<token_id>","account_id":"canhazgas.testnet","msg":""}' \
+      prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' \
+      sign-as <account_id>.testnet network-config testnet sign-with-keychain send
+    ```
+
+### Manual test steps
+
+1. Get paymaster info for the chain you want to send to from the gas station contract, then optionally manually set nonces:
+    ```shell
+    near contract call-function as-transaction canhazgas.testnet \
+     get_paymasters json-args '{"chain_id": "<chain_id>"}' \
+     prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' \
+     sign-as <account_id>.testnet network-config testnet sign-with-keychain send
+    ```
+   which  returns something like:
+    ```js
+    --- Result -------------------------
+    [
+      {
+        "foreign_address": "0x98c6C99176911AD4E7fc7413eDF09956B2D7F0F8",
+        "minimum_available_balance": "99886599999948172000",
+        "nonce": 28,
+        "token_id": "1"
+      }
+    ]
+    ------------------------------------
+    ```
+   1. You may need to manually set the nonce for the paymaster to be able to send the transaction:
+   ```shell
+   near contract call-function as-transaction canhazgas.testnet \
+    get_paymasters json-args '{"chain_id": "<chain_id>"}' \
+    prepaid-gas '100.000 Tgas' \
+    attached-deposit '0 NEAR' \
+    sign-as <account_id>.testnet \
+    network-config testnet \
+    sign-with-keychain send
+    ```
+2. Update the transaction details of the EVM transaction you want to send in `generate_eip1559_rlp_hex()` test in [`tests/tests.rs`](https://github.com/near/multichain-relayer-server/blob/main/tests/tests.rs) then run the script and save the RLP hex string output.
+   1. If that doesn't work, try running [`generate_rlp_evm_txn.py`](https://github.com/near/multichain-relayer-server/blob/main/integration_tests/generate_rlp_evm_txn.py)
+
+:::info
+
+Python and Rust output different hex RLP encoded transactions.
+ - If you're using Rust, use [`generate_eip1559_rlp_hex()`](https://github.com/near/multichain-relayer-server/blob/main/tests/tests.rs#L24).
+ - If you're using Python, use [`generate_rlp_encoded_transaction(is_eip_1559=true)`](https://github.com/near/multichain-relayer-server/blob/main/integration_tests/generate_rlp_evm_txn.py#L7)
 
 <CodeTabs>
   <Language value="Python" language="python">
     <Github fname="generate_rlp_evm_txn.py"
-        url="https://github.com/near/multichain-relayer-server/blob/5b040611f2dc6c6b405b5ec00d5102e3cc27a65c/integration_tests/generate_rlp_evm_txn.py"
+        url="https://github.com/near/multichain-relayer-server/blob/main/integration_tests/generate_rlp_evm_txn.py"
         start="7" end="13" />
   </Language>
   <Language value="Rust" language="rust">
-    <Github fname="test.rs"
-        url="https://github.com/near/multichain-relayer-server/blob/5b040611f2dc6c6b405b5ec00d5102e3cc27a65c/tests/tests.rs"
+    <Github fname="tests.rs"
+        url="https://github.com/near/multichain-relayer-server/blob/main/tests/tests.rs"
         start="24" end="38" />
   </Language>
 </CodeTabs>
 
-2. Ensure the [Multichain Relayer server](#multichain-relayer-server) is configured correctly and running.
+:::
 
-3. Ensure the [Gas Station indexer](#gas-station-event-indexer) is running locally.
+3. Ensure the [Multichain Relayer server](#multichain-relayer-server) is configured correctly (`config.toml`) and running:
+   ```sh
+   cargo run
+   ```
 
-4. Construct the signed transaction using the [near-cli-rs](https://github.com/near/near-cli-rs).
+4. Ensure the [Gas Station indexer](#gas-station-event-indexer) is running locally with the correct values in the `config.toml` file
+
+5. Construct the signed transaction using the [near-cli-rs](https://github.com/near/near-cli-rs).
    The receiver account ID should be the gas station contract.
    You will need 2 actions if you want the gas station to cover your gas cost on the foreign chain:
     - 1 action to send the NEAR equivalent
@@ -116,19 +214,44 @@ Python and Rust output different hex RLP encoded transactions.
 
    You should transfer the amount of `NEAR` that's needed to cover gas both on NEAR and on the foreign chain.
    You also need to paste in the RLP generated hex for the EVM transaction you want on the other chain generated in step 1.
+   When it asks you to send or display, choose send.
+   For example:
+    ```shell
+    near contract call-function as-transaction canhazgas.testnet \
+      create_transaction json-args '{"transaction_rlp_hex":"eb80851bf08eb000825208947b965bdb7f0464843572eb2b8c17bdf27b720b14872386f26fc1000080808080","use_paymaster":true,"token_id":"<token_id>"}' \
+      prepaid-gas '100.000 TeraGas' attached-deposit '<deposit_in_near> NEAR' \
+      sign-as <account_id>.testnet \
+      network-config testnet sign-with-keychain send
+    ```
+   which returns something like:
+    ```
+     --- Result -------------------------
+      {
+        "id": "29",
+        "pending_signature_count": 2
+      }
+      ------------------------------------
+     ```
+6. Get the `"id"` from the receipts from the result in the previous step, and use that to call `sign_next` twice:
+    ```shell
+    near contract call-function as-transaction canhazgas.testnet \
+      sign_next json-args '{"id":"<id>"}' \
+      prepaid-gas '300.0 Tgas' \
+      attached-deposit '0 NEAR' \
+      sign-as <account_id>.testnet \
+      network-config testnet \
+      sign-with-keychain send
+    ```
+   
+    > **Note:** this step will be updated soon, as support for yield/resume calls is implemented on MPC contract.
 
-   When it asks you to _send_ or _display_, choose <kbd>send</kbd>.
-   Example below:
-   ```sh
-   near contract call-function as-transaction canhazgas.testnet create_transaction json-args '{"transaction_rlp_hex":"eb80851bf08eb000825208947b965bdb7f0464843572eb2b8c17bdf27b720b14872386f26fc1000080808080","use_paymaster":true}' prepaid-gas '100.000 TeraGas' attached-deposit '0.5 NEAR' sign-as nomnomnom.testnet network-config testnet sign-with-keychain send
-   ```
+7. Watch the output of the [gas station event indexer](https://github.com/near/gas-station-event-indexer) to see the transactions being emitted by the gas station contract.
 
-5. Get the `"id"` from the receipts from the call in step 4, and use that to call `sign_next` twice:
-   ```sh
-    near contract call-function as-transaction canhazgas.testnet sign_next json-args '{"id":"16"}' prepaid-gas '300.0 Tgas' attached-deposit '0 NEAR' sign-as nomnomnom.testnet network-config testnet sign-with-keychain send
-   ```
+8. Watch the output of the [multichain relayer server](https://github.com/near/multichain-relayer-server) to see the transactions being sent to the foreign chain.
 
-## Options for testing purposes
+
+
+### Optional for testing purposes
 
 Instead of creating a signed transaction and calling the gas station contract to sign it, you can get the recently signed transactions by calling the contract while replacing the `blockheight` with a more recent block height:
 
