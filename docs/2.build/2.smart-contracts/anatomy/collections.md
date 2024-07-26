@@ -184,6 +184,9 @@ All structures need to be initialized using a **unique `prefix`**, which will be
 
 <Tabs groupId="code-tabs">
   <TabItem value="js" label="🌐 JavaScript">
+    
+    In order to use collections you have to define them in the schema as shown below.
+
     <Github fname="contract.ts" language="js"
           url="https://github.com/near-examples/storage-examples/blob/update-sdks/collections-js/src/contract.ts"
           start="6" end="21" />
@@ -378,42 +381,29 @@ It is possible to nest collections. When nesting SDK collections, remember to **
 
 <Tabs groupId="code-tabs">
   <TabItem value="js" label="🌐 JavaScript">
-
-    While you can create nested maps, you first need to construct or deconstruct the structure from state. This is a temporary solution that will soon be automatically handled by the SDK.
   
     ```ts 
-    import { NearBindgen, call, view, near, UnorderedMap } from "near-sdk-js";
+      @NearBindgen({})
+      export class Contract {
+          static schema = {
+            outerMap: {class: UnorderedMap, value: UnorderedMap}
+          };
+          
+          outerMap: UnorderedMap<UnorderedMap<string>>;
 
-    @NearBindgen({})
-    class StatusMessage {
-      records: UnorderedMap;
-      constructor() {
-        this.records = new UnorderedMap("a");
+          constructor() {
+              this.outerMap = new UnorderedMap("o");
+          }
+
+          @view({})
+          get({id, accountId}: { id: string; accountId: string }) {
+              const innerMap = this.outerMap.get(id);  // reconstructor can be infered from static schema
+              if (innerMap === null) {
+                  return null;
+              }
+              return innerMap.get(accountId);
+          }
       }
-
-      @call({})
-      set_status({ message, prefix }: { message: string; prefix: string }) {
-        let account_id = near.signerAccountId();
-
-        const inner: any = this.records.get("b" + prefix);
-        const inner_map: UnorderedMap = inner
-          ? UnorderedMap.deserialize(inner)
-          : new UnorderedMap("b" + prefix);
-
-        inner_map.set(account_id, message);
-
-        this.records.set("b" + prefix, inner_map);
-      }
-
-      @view({})
-      get_status({ account_id, prefix }: { account_id: string; prefix: string }) {
-        const inner: any = this.records.get("b" + prefix);
-        const inner_map: UnorderedMap = inner
-          ? UnorderedMap.deserialize(inner)
-          : new UnorderedMap("b" + prefix);
-        return inner_map.get(account_id);
-      }
-    }
     ```
 
   </TabItem>
@@ -616,7 +606,7 @@ In order to expose them all through view calls, we can use pagination.
   <TabItem value="js" label="🌐 JavaScript">
     With JavaScript this can be done using iterators with [`toArray`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Iterator/toArray) and [`slice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice).
 
-    ```js
+    ```ts
       /// Returns multiple elements from the `UnorderedMap`.
       /// - `from_index` is the index to start from.
       /// - `limit` is the maximum number of elements to return.
