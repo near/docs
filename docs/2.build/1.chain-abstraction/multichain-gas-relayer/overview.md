@@ -40,7 +40,7 @@ Below is a design diagram of the entire Multichain Relayer system:
 
 - The [gas station contract](gas-station.md) and the [MPC signing service contract](https://github.com/near/mpc-recovery/tree/main/contract) are in the green box which take place on NEAR.
 - The [multichain relayer server](multichain-server.md) focuses on the blue _Multichain Relayer Core Backend Services_ box in the middle and the connections to the XChain systems in the red box via RPCs.
-- The [XChain Settlement](gas-station.md#settlement) process happening in the yellow box can be either manual or automated. Automated settlement is available for select partners based on their xChain transaction volume.
+- The [XChain Settlement](gas-station.md#settlement) process happening in the yellow box can be either manual or automated. [Automated settlement](gas-station.md#automated-settlement) is available for select partners based on their xChain transaction volume.
 
 :::
 
@@ -60,7 +60,7 @@ Below is a design diagram of the entire Multichain Relayer system:
 
 - **Paymaster Accounts**: These are accounts on the destination chains that hold the native gas tokens. They ensure users have enough gas to complete their transactions on foreign chains.
 - **xChain Settlement**: regular [cross-chain settlement](gas-station.md#settlement) is needed to ensure paymaster accounts have sufficient funds. This can be manual or automated, and involves swapping NEAR tokens for foreign chain tokens and transferring them to the paymaster accounts.
-  - Automated settlement is available for select partners based on their cross-chain transaction volume.
+  - [Automated settlement](gas-station.md#automated-settlement) is available for select partners based on their cross-chain transaction volume.
 - **Supported Chains**: Initially supports BSC, Ethereum, Base, Arbitrum, and Optimism with plans to expand to other chains.
 
 ## Limitations and Considerations

@@ -6,12 +6,6 @@ sidebar_label: Multichain Relayer Server
 
 The [Multichain Relayer Server](https://github.com/near/multichain-relayer-server) facilitates cross-chain transactions and enables Chain Abstraction.
 
-:::info Alpha stage
-
-The Multichain Relayer solution is currently under development. Users who want to test-drive this solution should keep in mind that the product is in alpha stage, and a code audit is pending.
-
-:::
-
 ## Overview
 
 The main function of this server is interfacing with foreign chain RPCs sending both presigned funding transactions to cover gas and the actual presigned transaction once the funding is done.
@@ -19,7 +13,7 @@ The main function of this server is interfacing with foreign chain RPCs sending 
 Although the multichain relayer is a server in current design of this system, the goal is to package this as a library that can be called on the client side of the wallet. This will make the system more decentralized.
 
 :::tip
-The Multichain Relayer is meant to be deployed alongside the [Gas Station Event Indexer](https://github.com/near/gas-station-event-indexer) on the same server so that the gas station event indexer can call the multichain relayer server via IPC instead of having to send the request over the network introducing extra latency to the system.
+The Multichain Relayer is meant to be deployed alongside the [Gas Station Event Indexer](https://github.com/near/gas-station-event-indexer) on the same server so that the Gas Station event indexer can call the Multichain Relayer server via IPC instead of having to send the request over the network introducing extra latency to the system.
 :::
 
 ## Paymaster
@@ -68,8 +62,21 @@ For independent deployments of gas station contracts, generally, nonce synchroni
 
 ## Supported Chains
 
-- BSC testnet
-- BSC mainnet, Ethereum mainnet, and more chains coming soon!
+#### Testnet
+
+- Arbitrum (Ethereum Sepolia)
+- Base (Ethereum Sepolia)
+- BSC
+- Ethereum (Sepolia)
+- Optimism (Ethereum Sepolia)
+
+#### Mainnet
+
+- Arbitrum (Ethereum L2)
+- Base (Ethereum L2)
+- BSC
+- Ethereum
+- Optimism (Ethereum L2)
 
 :::info
 Check the Relayer's [GitHub repository](https://github.com/near/multichain-relayer-server) to learn more about upcoming features and updates.
