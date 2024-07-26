@@ -95,8 +95,12 @@ You can review the complete smart contract source code in [this GitHub repositor
 
 In order to get up-to-date information on gas prices for foreign chains, a price pusher service must be run, either on demand or as a `cron` job.
 
-A separate price pusher should be used for each token:
+Suggested tools:
 - [Pyth Price Pusher](https://github.com/pyth-network/pyth-crosschain/tree/main/apps/price_pusher): this price pusher supports `BNB` and `ETH`
+
+:::tip
+A separate price pusher should be used for each token.
+:::
 
 ### Usage
 

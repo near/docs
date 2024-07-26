@@ -13,7 +13,7 @@ The main function of this server is interfacing with foreign chain RPCs sending 
 Although the multichain relayer is a server in current design of this system, the goal is to package this as a library that can be called on the client side of the wallet. This will make the system more decentralized.
 
 :::tip
-The Multichain Relayer is meant to be deployed alongside the [Gas Station Event Indexer](https://github.com/near/gas-station-event-indexer) on the same server so that the gas station event indexer can call the multichain relayer server via IPC instead of having to send the request over the network introducing extra latency to the system.
+The Multichain Relayer is meant to be deployed alongside the [Gas Station Event Indexer](https://github.com/near/gas-station-event-indexer) on the same server so that the Gas Station event indexer can call the Multichain Relayer server via IPC instead of having to send the request over the network introducing extra latency to the system.
 :::
 
 ## Paymaster
