@@ -606,35 +606,53 @@ assert!(n.contains(&"some value".to_string()));
 
 ## Pagination
 
-Persistent collections such as `IterableMap/UnorderedMap)`, `IterableSet/UnorderedSet` and `Vector` may
+Persistent collections such as `IterableMap/UnorderedMap`, `IterableSet/UnorderedSet` and `Vector` may
 contain more elements than the amount of gas available to read them all.
 In order to expose them all through view calls, we can use pagination.
 
-This can be done using iterators with [`Skip`](https://doc.rust-lang.org/std/iter/struct.Skip.html) and [`Take`](https://doc.rust-lang.org/std/iter/struct.Take.html). This will only load elements from storage within the range.
 
-Example of pagination for `IterableMap`:
 
-```rust
-#[near(contract_state)]
-#[derive(PanicOnDefault)]
-pub struct Contract {
-    pub status_updates: IterableMap<AccountId, String>,
-}
+<Tabs groupId="code-tabs">
+  <TabItem value="js" label="🌐 JavaScript">
+    With JavaScript this can be done using iterators with [`toArray`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Iterator/toArray) and [`slice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice).
 
-#[near]
-impl Contract {
-    /// Retrieves multiple elements from the `IterableMap`.
-    /// - `from_index` is the index to start from.
-    /// - `limit` is the maximum number of elements to return.
-    pub fn get_updates(&self, from_index: usize, limit: usize) -> Vec<(AccountId, String)> {
-        self.status_updates
-            .iter()
-            .skip(from_index)
-            .take(limit)
-            .collect()
-    }
-}
-```
+    ```js
+      /// Returns multiple elements from the `UnorderedMap`.
+      /// - `from_index` is the index to start from.
+      /// - `limit` is the maximum number of elements to return.
+      @view({})
+      get_updates({ from_index, limit }: { from_index: number, limit:number }) {
+        return this.status_updates.toArray().slice(from_index, limit);
+      }
+    ```
+  </TabItem>
+
+  <TabItem value="rust" label="🦀 Rust">
+    With Rust this can be done using iterators with [`Skip`](https://doc.rust-lang.org/std/iter/struct.Skip.html) and [`Take`](https://doc.rust-lang.org/std/iter/struct.Take.html). This will only load elements from storage within the range.
+
+    ```rust
+      #[near(contract_state)]
+      #[derive(PanicOnDefault)]
+      pub struct Contract {
+          pub status_updates: IterableMap<AccountId, String>,
+      }
+
+      #[near]
+      impl Contract {
+          /// Retrieves multiple elements from the `IterableMap`.
+          /// - `from_index` is the index to start from.
+          /// - `limit` is the maximum number of elements to return.
+          pub fn get_updates(&self, from_index: usize, limit: usize) -> Vec<(AccountId, String)> {
+              self.status_updates
+                  .iter()
+                  .skip(from_index)
+                  .take(limit)
+                  .collect()
+          }
+      }
+    ```
+  </TabItem>
+</Tabs>
 
 ---
 
