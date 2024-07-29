@@ -17,7 +17,7 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
     ### Importing the SDK
     All contracts will import the **NEAR SDK**, enabling them to [access the execution environment](./environment.md), [call other contracts](./crosscontract.md), [transfer tokens](./actions.md), and much more.
 
-    You can also use third-party libraries, thought some might not work due to the limitations of the contract runtime.
+    You can also use third-party libraries, though some might not work due to the limitations of the contract runtime.
 
 </Block>
 
