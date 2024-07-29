@@ -1,13 +1,19 @@
 ---
+<<<<<<< HEAD
 id: winning-an-nft
 title: Winning an NFT
 sidebar_label: Winning an NFT
+=======
+id: basic
+title: Basic Auction
+>>>>>>> 8c438f0b88ca17f249c3022a78d1815ab6fe558e
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {Github} from "@site/src/components/codetabs"
 
+<<<<<<< HEAD
 
 In this section of the tutorial, you'll learn how to create a basic auction smart contract from scratch. The contract will allow users to place bids and track the highest bidder. We'll also look at how to create and run tests, and then how to deploy and interact with the contract on testnet.
 
@@ -15,18 +21,36 @@ In this section of the tutorial, you'll learn how to create a basic auction smar
 ## Creating a new project
 
 To get started you'll need to create a new NEAR project.
+=======
+In this section of the tutorial, you'll learn how to create a basic auction smart contract from scratch. The contract will allow users to place bids and track the highest bidder. We'll also look at how to create and run tests, and then how to deploy and interact with the contract on testnet.
+
+---
+
+## Creating a new project
+
+To get started you'll need to create a new NEAR smart contract:
+>>>>>>> 8c438f0b88ca17f249c3022a78d1815ab6fe558e
 
 <Tabs groupId="code-tabs">
 
     <TabItem value="js" label="🌐 JavaScript">
 
+<<<<<<< HEAD
     TODO
+=======
+        ```
+        npx create-near-app@latest
+        ```
+>>>>>>> 8c438f0b88ca17f249c3022a78d1815ab6fe558e
 
     </TabItem>
 
     <TabItem value="rust" label="🦀 Rust">
 
+<<<<<<< HEAD
         In your command line run
+=======
+>>>>>>> 8c438f0b88ca17f249c3022a78d1815ab6fe558e
 
         ```
         $ cargo near new auction-contract
@@ -38,6 +62,7 @@ To get started you'll need to create a new NEAR project.
         $ cd auction-contract
         ```
 
+<<<<<<< HEAD
         Then go ahead and open up a code editor such as VS Code
 
         ```
@@ -46,11 +71,17 @@ To get started you'll need to create a new NEAR project.
 
         Enter src > lib.rs, there already exists an example contract there so we'll just go ahead and delete it and start from the start!
 
+=======
+>>>>>>> 8c438f0b88ca17f249c3022a78d1815ab6fe558e
     </TabItem>
 
 </Tabs>
 
+<<<<<<< HEAD
 
+=======
+---
+>>>>>>> 8c438f0b88ca17f249c3022a78d1815ab6fe558e
 
 ## Defining the contract structure 
 
@@ -88,7 +119,11 @@ Here we define the `Contract` structure that has fields:
 
 Since `highest_bid` stores type `Bid` we have a nested structure. Bid itself has fields:
 - **bidder**: specifies the unique human readable NEAR account ID of the bidder.
+<<<<<<< HEAD
 - **bid**: specifies the bid amount in YoctoNEAR (10^-24 NEAR).
+=======
+- **bid**: specifies the bid amount in yoctoNEAR (10^-24 NEAR).
+>>>>>>> 8c438f0b88ca17f249c3022a78d1815ab6fe558e
 
 Bid has macros:
 - **serializers**: enables both borsh and JSON serialization and decentralization.
