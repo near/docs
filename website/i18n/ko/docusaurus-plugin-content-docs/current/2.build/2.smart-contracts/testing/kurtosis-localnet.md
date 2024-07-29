@@ -505,7 +505,7 @@ NFT가 발행되면 로컬 지갑의 수집품 탭에서 토큰을 볼 수 있�
 
 ## `localnet`에 dApp 연결
 
-로컬에서 탈중앙화 애플리케이션을 개발할 수 있는 능력은 dApp 개발자의 꿈이 실현된 것이며, Kurtosis NEAR 패키지는 이 프로세스를 실제로 단순화합니다. 여기에서는 `near.dev`의 예제를 활용하여 `localnet`에 통합하는 작업을 할 것입니다.
+로컬에서 탈중앙화 애플리케이션을 개발할 수 있는 능력은 dApp 개발자의 꿈이 실현된 것이며, Kurtosis NEAR 패키지는 이 프로세스를 실제로 단순화합니다. Here you'll integrate `localnet` into one of the examples from [`near-examples`](https://github.com/near-examples/).
 
 ### dApp 예제 복사
 

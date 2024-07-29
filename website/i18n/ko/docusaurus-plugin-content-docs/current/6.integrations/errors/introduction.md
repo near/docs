@@ -5,9 +5,9 @@ sidebar_label: 소개
 ---
 
 <blockquote className="info">
-<strong>알고 계셨나요?</strong><br /><br />
+<strong>did you know?</strong><br /><br />
 
-[NEAR 플랫폼 개요](/concepts/welcome)는 이 섹션의 언어 대부분을 명확하게 설명합니다.
+The [NEAR Platform overview](/concepts/basics/protocol) clarifies much of the language in this section.
 
 </blockquote>
 

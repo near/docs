@@ -46,3 +46,10 @@ Created by the community, [NearBlocks](https://nearblocks.io/) enables to check 
 [Pikespeak](https://pikespeak.ai/) provides access to real-time and historical data on the NEAR Protocol.
 
 ![Pikespeak](/docs/assets/explorers/pikespeak.png) *Main page of [Pikespeak](https://pikespeak.ai/)*
+
+## NEARCatalog
+
+[NEARCatalog](https://dev.near.org/applications) provides access to trending decentralized applications (DApps) on the NEAR Protocol.
+
+
+![Nearcatalog](/docs/assets/explorers/nearcatalog.png) *Main page of [NEARCatalog](https://dev.near.org/applications)*

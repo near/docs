@@ -1,7 +1,7 @@
 {
   "id": "concepts/web3/near",
   "title": "NEAR Protocol",
-  "description": "For the beginners, it’s always better to start with documentation, and NEAR has an excellent one. Here, we only focus on basic concepts which are necessary to understand later chapters, so an entire guideline could be understood without prior NEAR knowledge. Here, we only focus on basic concepts which are necessary to understand later chapters, so an entire guideline could be understood without prior NEAR knowledge.",
+  "description": "For beginners, it’s always better to start with documentation, and NEAR has an excellent one. Here, we only focus on basic concepts necessary to understand later chapters, so an entire guideline can be understood without prior NEAR knowledge.",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/1.concepts/web3/near.md",
   "sourceDirName": "1.concepts/web3",
   "slug": "/concepts/web3/near",

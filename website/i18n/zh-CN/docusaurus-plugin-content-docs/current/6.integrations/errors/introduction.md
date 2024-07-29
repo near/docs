@@ -7,7 +7,7 @@ sidebar_label: Introduction
 <blockquote className="info">
 <strong>did you know?</strong><br /><br />
 
-The [NEAR Platform overview](/concepts/welcome) clarifies much of the language in this section.
+The [NEAR Platform overview](/concepts/basics/protocol) clarifies much of the language in this section.
 
 </blockquote>
 

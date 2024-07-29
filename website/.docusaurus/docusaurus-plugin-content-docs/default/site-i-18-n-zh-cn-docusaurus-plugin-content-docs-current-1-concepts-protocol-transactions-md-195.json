@@ -1,7 +1,7 @@
 {
   "id": "concepts/protocol/transactions",
   "title": "Transactions",
-  "description": "Users interact with NEAR by creating transactions. Specifically, user's use their account's private keys to sign transactions, which are then broadcasted and processed by the network.",
+  "description": "Users interact with NEAR by creating transactions. Specifically, users use their account's private keys to sign transactions, which are then broadcasted and processed by the network.",
   "source": "@site/i18n/zh-CN/docusaurus-plugin-content-docs/current/1.concepts/protocol/transactions.md",
   "sourceDirName": "1.concepts/protocol",
   "slug": "/concepts/protocol/transactions",

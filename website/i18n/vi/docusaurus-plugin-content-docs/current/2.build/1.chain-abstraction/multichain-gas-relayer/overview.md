@@ -18,14 +18,6 @@ The Multichain Gas Relayer is a mechanism designed to enable gas fee payments an
 
 3. **User Experience**: Improves the user experience by abstracting the complexity of managing gas fees across multiple blockchains.
 
-### Use Cases
-
-1. **Cross-Chain Asset Transfers**: Facilitates the transfer of assets (tokens, NFTs, etc.) between different blockchains.
-
-2. **Interoperable Applications**: Supports the development of decentralized applications (DApps) that operate seamlessly across multiple blockchains.
-
-3. **Arbitrage and Trading**: Enables arbitrage opportunities and trading strategies across decentralized finance (DeFi) protocols on different blockchains.
-
 ## System Design
 
 This section provides an overview of the system design, including the main components, a technical diagram, and a high-level workflow of the Multichain Relayer system.
@@ -36,7 +28,7 @@ This section provides an overview of the system design, including the main compo
 
 2. [**Gas Station Contract**](gas-station.md): A smart contract on NEAR that manages the creation, signing, and relaying of transactions to foreign chains. It also handles gas fee calculations and collects NEAR tokens for gas payments on foreign chains.
 
-3. **MPC Signing Service**: A network of trusted Multi-Party Computation (MPC) signers that cooperatively sign transactions. This ensures secure transaction signing and validation on the NEAR blockchain before relaying to foreign chains.
+3. [**MPC Signing Service**](../chain-signatures.md): A network of trusted Multi-Party Computation (MPC) signers that cooperatively sign transactions. This ensures secure transaction signing and validation on the NEAR blockchain before relaying to foreign chains.
 
 ### Technical Diagram
 
@@ -48,7 +40,7 @@ Below is a design diagram of the entire Multichain Relayer system:
 
 - The [gas station contract](gas-station.md) and the [MPC signing service contract](https://github.com/near/mpc-recovery/tree/main/contract) are in the green box which take place on NEAR.
 - The [multichain relayer server](multichain-server.md) focuses on the blue _Multichain Relayer Core Backend Services_ box in the middle and the connections to the XChain systems in the red box via RPCs.
-- The _XChain Settlement_ process happening in the yellow box is currently manual and will be automated in the future.
+- The [XChain Settlement](gas-station.md#settlement) process happening in the yellow box can be either manual or automated. [Automated settlement](gas-station.md#automated-settlement) is available for select partners based on their xChain transaction volume.
 
 :::
 
@@ -67,14 +59,11 @@ Below is a design diagram of the entire Multichain Relayer system:
 ## Key Features
 
 - **Paymaster Accounts**: These are accounts on the destination chains that hold the native gas tokens. They ensure users have enough gas to complete their transactions on foreign chains.
-- **Manual Settlement**: Regularly needed to ensure paymaster accounts have sufficient funds. This involves swapping NEAR tokens for foreign chain tokens and transferring them to the paymaster accounts.
-- **Supported Chains**: Initially supports BSC and Ethereum, with plans to expand to other chains.
+- **xChain Settlement**: regular [cross-chain settlement](gas-station.md#settlement) is needed to ensure paymaster accounts have sufficient funds. This can be manual or automated, and involves swapping NEAR tokens for foreign chain tokens and transferring them to the paymaster accounts.
+  - [Automated settlement](gas-station.md#automated-settlement) is available for select partners based on their cross-chain transaction volume.
+- **Supported Chains**: Initially supports BSC, Ethereum, Base, Arbitrum, and Optimism with plans to expand to other chains.
 
 ## Limitations and Considerations
 
 - **Gas and Slippage**: Users must account for potential gas and slippage issues when using the service. It’s recommended to overestimate gas fees and use high slippage settings in volatile markets.
 - **Nonce Management**: Proper management of nonce values is crucial to avoid transaction failures, particularly with concurrent transactions and multiple paymaster accounts.
-
-## Future Developments
-
-The NEAR Multichain Gas Relayer aims to automate many processes currently handled manually, such as settlement between chains and enhancing the decentralization of the relayer service.

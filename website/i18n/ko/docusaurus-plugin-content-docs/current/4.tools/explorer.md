@@ -46,3 +46,10 @@ import TabItem from '@theme/TabItem';
 [Pikespeak](https://pikespeak.ai/)는 NEAR 프로토콜의 실시간 및 과거 데이터에 대한 액세스를 제공합니다.
 
 ![Pikespeak](/docs/assets/explorers/pikespeak.png) *Main page of [Pikespeak](https://pikespeak.ai/)*
+
+## NEARCatalog
+
+[NEARCatalog](https://dev.near.org/applications) provides access to trending decentralized applications (DApps) on the NEAR Protocol.
+
+
+![Nearcatalog](/docs/assets/explorers/nearcatalog.png) *Main page of [NEARCatalog](https://dev.near.org/applications)*

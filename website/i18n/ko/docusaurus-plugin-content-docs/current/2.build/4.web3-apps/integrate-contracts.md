@@ -61,7 +61,7 @@ To create a wallet, simply import the `Wallet` object from the module and initia
 
 Under the hood (check the `near` tab) you can see that we are actually setting up the wallet selector, and asking it if the user logged-in already. During the setup, we pass a hook to the wallet selector, which will be called each time a user logs in or out.
 
-<details markdown="1">
+<details markdown="1" id="setting-customs-rpc-endpoints">
 
 <summary> Setting customs RPC endpoints </summary>
 

@@ -24,16 +24,16 @@ You can send $NEAR from your contract to any other account on the network. The G
   <TabItem value="js" label="🌐 JavaScript">
 
 ```js
-import { NearBindgen, NearPromise, call } from 'near-sdk-js'
-import { AccountId } from 'near-sdk-js/lib/types'
+  import { NearBindgen, NearPromise, call } from 'near-sdk-js'
+  import { AccountId } from 'near-sdk-js/lib/types'
 
-@NearBindgen({})
-class Contract{
-  @call({})
-  transfer({ to, amount }: { to: AccountId, amount: bigint }) {
-    NearPromise.new(to).transfer(amount);
+  @NearBindgen({})
+  class Contract{
+    @call({})
+    transfer({ to, amount }: { to: AccountId, amount: bigint }) {
+      return NearPromise.new(to).transfer(amount);
+    }
   }
-}
 ```
 
 </TabItem>

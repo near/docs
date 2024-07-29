@@ -5,7 +5,7 @@ sidebar_label: NEAR 프로토콜
 ---
 
 
-초보자는 항상 [문서](/concepts/welcome)로 시작하는 것이 좋으며, NEAR에는 훌륭한 문서가 있습니다. 여기에서는 이후 장을 이해하는 데 필요한 기본 개념에만 초점을 맞추므로, 사전 NEAR 지식 없이도 전체 가이드를 이해할 수 있습니다.
+For beginners, it’s always better to start with [documentation](/concepts/basics/protocol), and NEAR has an excellent one. Here, we only focus on basic concepts necessary to understand later chapters, so an entire guideline can be understood without prior NEAR knowledge.
 
 ## 계정 & 트랜잭션
 NEAR의 계정 시스템은 매우 강력하며, 비트코인이나 이더리움과 같은 다른 블록체인과 상당히 다릅니다. 공개/개인 키 쌍으로 사용자를 식별하는 대신 계정을 일등 객체로 정의합니다. 여기에는 몇 가지 중요한 의미가 있습니다.

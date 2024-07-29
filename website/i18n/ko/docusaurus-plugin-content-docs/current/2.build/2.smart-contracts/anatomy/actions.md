@@ -31,7 +31,7 @@ import TabItem from '@theme/TabItem';
   class Contract{
     @call({})
     transfer({ to, amount }: { to: AccountId, amount: bigint }) {
-      NearPromise.new(to).transfer(amount);
+      return NearPromise.new(to).transfer(amount);
     }
   }
 ```

@@ -5,7 +5,7 @@ sidebar_label: NEAR Protocol
 ---
 
 
-For the beginners, it’s always better to start with [documentation](/concepts/welcome), and NEAR has an excellent one. Here, we only focus on basic concepts which are necessary to understand later chapters, so an entire guideline could be understood without prior NEAR knowledge.
+For beginners, it’s always better to start with [documentation](/concepts/basics/protocol), and NEAR has an excellent one. Here, we only focus on basic concepts necessary to understand later chapters, so an entire guideline can be understood without prior NEAR knowledge.
 
 ## Accounts & Transactions
 NEAR's account system is very powerful and differs substantially from other blockchains, like Bitcoin or Ethereum. Instead of identifying users by their public/private key pairs, it defines accounts as first-class entities. This has a few important implications:

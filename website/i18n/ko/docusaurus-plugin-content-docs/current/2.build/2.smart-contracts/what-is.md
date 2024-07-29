@@ -45,7 +45,7 @@ Smart contracts have **complete control over the account**, and thus can perform
 - Create new accounts and deploy contracts on them
 - Update their own code
 
-Besides, smart contracts can store data in the account's storage. This allows contract's to create almost any type of application, from simple games to complex financial systems.
+Besides, smart contracts can store data in the account's storage. This allows contracts to create almost any type of application, from simple games to complex financial systems.
 
 :::danger What contracts cannot do
 
