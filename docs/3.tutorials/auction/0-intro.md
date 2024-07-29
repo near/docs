@@ -7,14 +7,6 @@ sidebar_label: Introduction
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-<<<<<<< HEAD
-In this Zero to Hero series, you'll build an auction smart contract from start to finish, deploy a factory contract to launch multiple auctions, , and craft a frontend to interact with the auctions. This series will slowly build up in complexity, teaching you about several key primitives and concepts along the way:
-- Using block_timestamp
-- Locking a contract 
-- Making cross-contract calls
-- Sending Non-Fungible Tokens
-- Sending and receiving Fungible Tokens 
-=======
 In this Zero to Hero series, you'll learn everything you need to know about building Web3 applications on NEAR.
 
 We will start by building a simple auction contract, and slowly build up on it, adding more and more concepts as we go. By the time you finish this tutorial you would have touch on several key primitives and concepts along the way:
@@ -24,7 +16,6 @@ We will start by building a simple auction contract, and slowly build up on it, 
 - Making cross-contract calls
 - Using Non-Fungible Tokens
 - Using Fungible Tokens 
->>>>>>> 8c438f0b88ca17f249c3022a78d1815ab6fe558e
 
 This tutorial comes with contracts written in both JavaScript and Rust. 
 
@@ -32,28 +23,6 @@ This tutorial comes with contracts written in both JavaScript and Rust.
 
 ## Prerequisites
 
-<<<<<<< HEAD
-To complete this series you'll need:
-
-<Tabs groupId="code-tabs">
-
-    <TabItem value="js" label="🌐 JavaScript">
-
-
-
-    </TabItem>
-
-    <TabItem value="rust" label="🦀 Rust">
-
-        - [Rust](https://www.rust-lang.org/tools/install)
-        - [NEAR-CLI-RS](../../4.tools/cli-rs.md#setup)
-        - [cargo-near](https://github.com/near/cargo-near)
-
-    </TabItem>
-
-</Tabs>
-
-=======
 Before starting, make sure to setup your development environment.
 
 <details>
@@ -106,20 +75,10 @@ However, if you want to create one, you can do so through [a wallet](https://tes
 :::
 
 
->>>>>>> 8c438f0b88ca17f249c3022a78d1815ab6fe558e
 
 
 ---
 
-<<<<<<< HEAD
-
-| Step | Name                              | Description |
-|------|-----------------------------------|-------------|
-| 1    | [Basic contract](./1-basic.md)           | Learn how to create a basic smart contract from scratch, use block time and test a contract |
-| 2    | [Locking the contract](./2-locking.md)   | Learn to create contracts with no access keys |
-| 3    | [Winning an NFT](./3-nft.md)             | Learn about sending NFTs using cross-contract calls |
-| 4    | [Bidding with FTs](./4-ft.md)            | Learn about sending and recieving FTs |
-=======
 ## Overview
 
 These are the steps that will bring you from Zero to Hero in no time! 💪
@@ -133,7 +92,6 @@ These are the steps that will bring you from Zero to Hero in no time! 💪
 | 5    | [Create a Frontend](#)                 | Create a frontend to interact with your smart contract          |
 | 6    | [Monitor the Bids](#)                  | Learn how to use an indexer to monitor your contract's activity |
 | 6    | [Factory](#)                           | Create a contract that will create auctions                     |
->>>>>>> 8c438f0b88ca17f249c3022a78d1815ab6fe558e
 
 ---
 
