@@ -293,17 +293,17 @@
       "plugin": "c141421f"
     }
   },
-  "/zh-CN/-a75": {
+  "/zh-CN/-e58": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "aba21aa0"
     }
   },
-  "/zh-CN/-652": {
+  "/zh-CN/-ef5": {
     "__comp": "a7bd4aaa",
     "__props": "363b7d6a"
   },
-  "/zh-CN/-c96": {
+  "/zh-CN/-25a": {
     "__comp": "a94703ab"
   },
   "/zh-CN/api/rpc/access-keys-fa8": {
@@ -338,7 +338,7 @@
     "__comp": "17896441",
     "content": "a0c04405"
   },
-  "/zh-CN/api/rpc/providers-710": {
+  "/zh-CN/api/rpc/providers-e72": {
     "__comp": "17896441",
     "content": "2e63797e"
   },
@@ -366,19 +366,19 @@
     "__comp": "17896441",
     "content": "8397e9cf"
   },
-  "/zh-CN/build/chain-abstraction/multichain-gas-relayer/gas-station-403": {
+  "/zh-CN/build/chain-abstraction/multichain-gas-relayer/gas-station-e0b": {
     "__comp": "17896441",
     "content": "141af8c8"
   },
-  "/zh-CN/build/chain-abstraction/multichain-gas-relayer/multichain-server-d6f": {
+  "/zh-CN/build/chain-abstraction/multichain-gas-relayer/multichain-server-b37": {
     "__comp": "17896441",
     "content": "98c5f37f"
   },
-  "/zh-CN/build/chain-abstraction/multichain-gas-relayer/overview-745": {
+  "/zh-CN/build/chain-abstraction/multichain-gas-relayer/overview-0b0": {
     "__comp": "17896441",
     "content": "9bcede4e"
   },
-  "/zh-CN/build/chain-abstraction/multichain-gas-relayer/relayer-gas-example-b78": {
+  "/zh-CN/build/chain-abstraction/multichain-gas-relayer/relayer-gas-example-13b": {
     "__comp": "17896441",
     "content": "9b5a6cd9"
   },
@@ -862,11 +862,11 @@
     "__comp": "17896441",
     "content": "876e5262"
   },
-  "/zh-CN/build/smart-contracts/anatomy/-1ae": {
+  "/zh-CN/build/smart-contracts/anatomy/-4bb": {
     "__comp": "17896441",
     "content": "bf1fab3f"
   },
-  "/zh-CN/build/smart-contracts/anatomy/actions-3c4": {
+  "/zh-CN/build/smart-contracts/anatomy/actions-8d8": {
     "__comp": "17896441",
     "content": "4730762f"
   },
@@ -978,7 +978,7 @@
     "__comp": "17896441",
     "content": "e33ddbfe"
   },
-  "/zh-CN/build/smart-contracts/testing/kurtosis-localnet-eb3": {
+  "/zh-CN/build/smart-contracts/testing/kurtosis-localnet-020": {
     "__comp": "17896441",
     "content": "8b471c05"
   },
@@ -986,7 +986,7 @@
     "__comp": "17896441",
     "content": "ce1ba413"
   },
-  "/zh-CN/build/smart-contracts/what-is-14b": {
+  "/zh-CN/build/smart-contracts/what-is-95a": {
     "__comp": "17896441",
     "content": "ef64b690"
   },
@@ -1002,7 +1002,7 @@
     "__comp": "17896441",
     "content": "1650fbff"
   },
-  "/zh-CN/build/web3-apps/integrate-contracts-f30": {
+  "/zh-CN/build/web3-apps/integrate-contracts-709": {
     "__comp": "17896441",
     "content": "9e7d9b9b"
   },
@@ -1102,7 +1102,7 @@
     "__comp": "17896441",
     "content": "661bb43c"
   },
-  "/zh-CN/concepts/protocol/transactions-4a4": {
+  "/zh-CN/concepts/protocol/transactions-206": {
     "__comp": "17896441",
     "content": "195b6fb6"
   },
@@ -1126,7 +1126,7 @@
     "__comp": "17896441",
     "content": "0b73acbf"
   },
-  "/zh-CN/concepts/web3/near-487": {
+  "/zh-CN/concepts/web3/near-b2c": {
     "__comp": "17896441",
     "content": "92f023ef"
   },
@@ -1154,7 +1154,7 @@
     "__comp": "17896441",
     "content": "5a887422"
   },
-  "/zh-CN/integrations/errors/introduction-130": {
+  "/zh-CN/integrations/errors/introduction-714": {
     "__comp": "17896441",
     "content": "c5d7c80e"
   },
@@ -1210,7 +1210,7 @@
     "__comp": "17896441",
     "content": "e1802932"
   },
-  "/zh-CN/tools/explorer-4f3": {
+  "/zh-CN/tools/explorer-bff": {
     "__comp": "17896441",
     "content": "d5edbf82"
   },

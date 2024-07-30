@@ -114,15 +114,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', 'a75'),
+    component: ComponentCreator('/zh-CN/', 'e58'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '652'),
+        component: ComponentCreator('/zh-CN/', 'ef5'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', 'c96'),
+            component: ComponentCreator('/zh-CN/', '25a'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -174,7 +174,7 @@ export default [
               },
               {
                 path: '/zh-CN/api/rpc/providers',
-                component: ComponentCreator('/zh-CN/api/rpc/providers', '710'),
+                component: ComponentCreator('/zh-CN/api/rpc/providers', 'e72'),
                 exact: true,
                 sidebar: "api"
               },
@@ -216,25 +216,25 @@ export default [
               },
               {
                 path: '/zh-CN/build/chain-abstraction/multichain-gas-relayer/gas-station',
-                component: ComponentCreator('/zh-CN/build/chain-abstraction/multichain-gas-relayer/gas-station', '403'),
+                component: ComponentCreator('/zh-CN/build/chain-abstraction/multichain-gas-relayer/gas-station', 'e0b'),
                 exact: true,
                 sidebar: "build"
               },
               {
                 path: '/zh-CN/build/chain-abstraction/multichain-gas-relayer/multichain-server',
-                component: ComponentCreator('/zh-CN/build/chain-abstraction/multichain-gas-relayer/multichain-server', 'd6f'),
+                component: ComponentCreator('/zh-CN/build/chain-abstraction/multichain-gas-relayer/multichain-server', 'b37'),
                 exact: true,
                 sidebar: "build"
               },
               {
                 path: '/zh-CN/build/chain-abstraction/multichain-gas-relayer/overview',
-                component: ComponentCreator('/zh-CN/build/chain-abstraction/multichain-gas-relayer/overview', '745'),
+                component: ComponentCreator('/zh-CN/build/chain-abstraction/multichain-gas-relayer/overview', '0b0'),
                 exact: true,
                 sidebar: "build"
               },
               {
                 path: '/zh-CN/build/chain-abstraction/multichain-gas-relayer/relayer-gas-example',
-                component: ComponentCreator('/zh-CN/build/chain-abstraction/multichain-gas-relayer/relayer-gas-example', 'b78'),
+                component: ComponentCreator('/zh-CN/build/chain-abstraction/multichain-gas-relayer/relayer-gas-example', '13b'),
                 exact: true,
                 sidebar: "build"
               },
@@ -888,13 +888,13 @@ export default [
               },
               {
                 path: '/zh-CN/build/smart-contracts/anatomy/',
-                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/', '1ae'),
+                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/', '4bb'),
                 exact: true,
                 sidebar: "build"
               },
               {
                 path: '/zh-CN/build/smart-contracts/anatomy/actions',
-                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/actions', '3c4'),
+                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/actions', '8d8'),
                 exact: true,
                 sidebar: "build"
               },
@@ -1062,7 +1062,7 @@ export default [
               },
               {
                 path: '/zh-CN/build/smart-contracts/testing/kurtosis-localnet',
-                component: ComponentCreator('/zh-CN/build/smart-contracts/testing/kurtosis-localnet', 'eb3'),
+                component: ComponentCreator('/zh-CN/build/smart-contracts/testing/kurtosis-localnet', '020'),
                 exact: true,
                 sidebar: "build"
               },
@@ -1074,7 +1074,7 @@ export default [
               },
               {
                 path: '/zh-CN/build/smart-contracts/what-is',
-                component: ComponentCreator('/zh-CN/build/smart-contracts/what-is', '14b'),
+                component: ComponentCreator('/zh-CN/build/smart-contracts/what-is', '95a'),
                 exact: true,
                 sidebar: "build"
               },
@@ -1098,7 +1098,7 @@ export default [
               },
               {
                 path: '/zh-CN/build/web3-apps/integrate-contracts',
-                component: ComponentCreator('/zh-CN/build/web3-apps/integrate-contracts', 'f30'),
+                component: ComponentCreator('/zh-CN/build/web3-apps/integrate-contracts', '709'),
                 exact: true,
                 sidebar: "build"
               },
@@ -1246,7 +1246,7 @@ export default [
               },
               {
                 path: '/zh-CN/concepts/protocol/transactions',
-                component: ComponentCreator('/zh-CN/concepts/protocol/transactions', '4a4'),
+                component: ComponentCreator('/zh-CN/concepts/protocol/transactions', '206'),
                 exact: true,
                 sidebar: "build"
               },
@@ -1282,7 +1282,7 @@ export default [
               },
               {
                 path: '/zh-CN/concepts/web3/near',
-                component: ComponentCreator('/zh-CN/concepts/web3/near', '487'),
+                component: ComponentCreator('/zh-CN/concepts/web3/near', 'b2c'),
                 exact: true,
                 sidebar: "concepts"
               },
@@ -1323,7 +1323,7 @@ export default [
               },
               {
                 path: '/zh-CN/integrations/errors/introduction',
-                component: ComponentCreator('/zh-CN/integrations/errors/introduction', '130'),
+                component: ComponentCreator('/zh-CN/integrations/errors/introduction', '714'),
                 exact: true,
                 sidebar: "exchanges"
               },
@@ -1407,7 +1407,7 @@ export default [
               },
               {
                 path: '/zh-CN/tools/explorer',
-                component: ComponentCreator('/zh-CN/tools/explorer', '4f3'),
+                component: ComponentCreator('/zh-CN/tools/explorer', 'bff'),
                 exact: true,
                 sidebar: "tools"
               },
