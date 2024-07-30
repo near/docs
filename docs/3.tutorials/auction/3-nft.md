@@ -109,4 +109,69 @@ In our contract, we perform no checks to verify whether the contract actually ow
 
 ---
 
-Adjust tests accordingly
+## Updating the tests
+
+Again let's go and update our tests to reflect the changes we've made to our contract.
+
+---
+
+## Unit tests
+
+TODO
+
+---
+
+## Integration tests
+
+In our integration tests, we're now going to be interacting with two contracts; the auction contract and an NFT contract. Integration tests are perfect for testing multiple contracts that interact.
+
+In our tests folder, we need the WASM for an NFT contract. **Add more here**
+
+We deploy the NFT contract WASM using `dev_deploy` which creates an account with a random ID and deploys the contract to it.
+
+<Tabs groupId="code-tabs">
+
+    <TabItem value="js" label="🌐 JavaScript">
+
+    TODO
+
+    </TabItem>
+
+    <TabItem value="rust" label="🦀 Rust">
+
+        <Github fname="test_basics.rs" language="rust"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-owner-claims-winner-gets-nft/tests/test_basics.rs#L16-L17"
+                start="16" end="17" />
+
+    </TabItem>
+
+</Tabs>
+
+To get the NFT to be auctioned, the auction contract calls the NFT contract to mint a new NFT with the provided data.  
+
+<Tabs groupId="code-tabs">
+
+    <TabItem value="js" label="🌐 JavaScript">
+
+    TODO
+
+    </TabItem>
+
+    <TabItem value="rust" label="🦀 Rust">
+
+        <Github fname="test_basics.rs" language="rust"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-owner-claims-winner-gets-nft/tests/test_basics.rs#L60-L76"
+                start="60" end="76" />
+
+    </TabItem>
+
+</Tabs>
+
+After `claim` is called, the tests should verify that the auction winner now owns the NFT. This is done by calling `nt_token` on the NFT contract and specifying the token ID.
+
+---
+
+## Conclusion 
+
+This this part of the tutorial we have added NFTs as a reward which has taught us how to interact with NFT standards, make cross-contract calls and test multiple contracts that interact in workspaces. In the [next part](./4-ft.md) we'll learn how to interact with fungible token standards by adapting the auction to receive bids in FTs.   
+

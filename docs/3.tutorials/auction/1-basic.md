@@ -256,7 +256,7 @@ Integration tests allow you to deploy your contract (or contracts) in a sandbox 
 For testing, you'll notice that some crates are imported. The Bid structure is imported from auction-contract which you'll notice is the name of the package in `Cargo.toml` and UTC is imported from chrono which is listed as a dependency in the toml.
 
 
-First, in the tests file a test function is defined, a sandbox testing environment created and the compiled auction contract is fetched to be interacted with.
+First, in the tests file a test function is defined, a sandbox testing environment is created and the compiled auction contract is fetched to be interacted with.
 
 <Tabs groupId="code-tabs">
 
@@ -441,7 +441,7 @@ $ near contract call-function as-read-only <contractId> get_highest_bid json-arg
 
 ## Conclusion 
 
-In this part of the tutorial, we've seen how a smart contract stores data, mutates the stored data and views the data. We also looked at how both unit and integration tests are written and how to execute them. Finally, we saw how to compile, deploy and interact with the contract through the CLI on testnet. In the [next part](./2-locking.md), you'll edit the existing contract and add a new method so the contract can be locked. We'll also update the tests accordingly to reflect the changes to the contract.
+In this part of the tutorial, we've seen how a smart contract stores data, mutates the stored data and views the data. We also looked at how both unit and integration tests are written and how to execute them. Finally, we saw how to compile, deploy and interact with the contract through the CLI on testnet. In the [next part](./2-locking.md), we'll edit the existing contract and add a new method so the contract can be locked. We'll also update the tests accordingly to reflect the changes to the contract.
 
 
 

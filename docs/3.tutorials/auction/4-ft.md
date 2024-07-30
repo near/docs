@@ -174,7 +174,6 @@ The method `ft_on_transfer` needs to return the number of unused tokens in the c
 
 When the auction is complete we need to send the fungible tokens to the auctioneer, we implement a similar call as when we were returning the funds just changing the arguments.
 
-
 <Tabs groupId="code-tabs">
 
     <TabItem value="js" label="🌐 JavaScript">
@@ -201,16 +200,103 @@ For one to receive fungible tokens first their account ID must be [registered](.
 
 ---
 
-Changes tests accordingly. deploy with ft token specified, teach them to get ft, get them to call ft_transfer with CLI 
+## Updating the tests
+
+
 
 ---
 
+## Unit tests
 
+TODO
 
+---
 
+## Integration tests
 
+Just as with the NFT contract, we will deploy an FT contract in workspaces using a WASM file from **ADD MORE**.
 
-There we have it, a completed auction smart contract! 
+When the contract is deployed it is initialized with `new_default_meta` which sets the token's metadata, including things like its name and symbol, to default values while requiring the owner (where the token supply will sent), and the total supply of the token.
+
+<Tabs groupId="code-tabs">
+
+    <TabItem value="js" label="🌐 JavaScript">
+
+    TODO
+
+    </TabItem>
+
+    <TabItem value="rust" label="🦀 Rust">
+
+        <Github fname="test_basics.rs" language="rust"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/04-ft-owner-claims-winner-gets-nft/tests/test_basics.rs#L28-L37"
+                start="28" end="37" />
+
+    </TabItem>
+
+</Tabs>
+
+As mentioned previously, to own FTs you have to be registered in the FT contract. So let's register all the accounts that are going to interact with FTs.
+
+<Tabs groupId="code-tabs">
+
+    <TabItem value="js" label="🌐 JavaScript">
+
+    TODO
+
+    </TabItem>
+
+    <TabItem value="rust" label="🦀 Rust">
+
+        <Github fname="test_basics.rs" language="rust"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/04-ft-owner-claims-winner-gets-nft/tests/test_basics.rs#L91-L106"
+                start="91" end="106" />
+
+    </TabItem>
+
+</Tabs>
+
+Then we will transfer the bidders FTs so they can use them to bid.
+
+<Tabs groupId="code-tabs">
+
+    <TabItem value="js" label="🌐 JavaScript">
+
+    TODO
+
+    </TabItem>
+
+    <TabItem value="rust" label="🦀 Rust">
+
+        <Github fname="test_basics.rs" language="rust"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/04-ft-owner-claims-winner-gets-nft/tests/test_basics.rs#L109-L113"
+                start="109" end="113" />
+
+    </TabItem>
+
+</Tabs>
+
+As stated previously, to bid on the auction the bidder now calls `ft_transfer_call` on the FT contract and specifies the auction contract as an argument.
+
+<Tabs groupId="code-tabs">
+
+    <TabItem value="js" label="🌐 JavaScript">
+
+    TODO
+
+    </TabItem>
+
+    <TabItem value="rust" label="🦀 Rust">
+
+        <Github fname="test_basics.rs" language="rust"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/04-ft-owner-claims-winner-gets-nft/tests/test_basics.rs#L126-L132"
+                start="126" end="132" />
+
+    </TabItem>
+
+</Tabs>
+
+---
 
 ## Auction architecture 
 
@@ -225,3 +311,8 @@ pub struct Contract {
 ```
 
 However, this architecture could be deemed less secure since if a bad actor were to gain access to the contract they would have access to every auction instead of just one.
+
+--- 
+
+## Conclusion
+
