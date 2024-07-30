@@ -16,55 +16,64 @@ In this section of the tutorial, we'll clone a simple auction smart contract and
 
 To get started we'll clone the [tutorial repo](https://github.com/near-examples/auctions-tutorial)
 
-```
-$ git clone https://github.com/near-examples/auctions-tutorial.git
-```
-
-Then enter part one of the tutorial
-
 <Tabs groupId="code-tabs">
-
     <TabItem value="js" label="🌐 JavaScript">
 
-    TODO
+        ```
+        git clone git@github.com:near-examples/auctions-tutorial.git
+
+        cd contract-ts/01-basic-auction
+        ```
 
     </TabItem>
-
     <TabItem value="rust" label="🦀 Rust">
 
         ```
-        cd auctions-tutorial/contract-rs/01-basic-auction
+        git clone git@github.com:near-examples/auctions-tutorial.git
+
+        cd contract-rs/01-basic-auction
         ```
 
     </TabItem>
-
 </Tabs>
 
+The repository is structured in three folders, two contain the same smart contracts written in JavaScript and Rust and the third contains a frontend that interacts with the contracts.
+
+Navigate to the folder of the language you prefer, and then to the `01-basic-auction` folder.
 
 ---
 
-## The contracts storage 
+## Anatomy of the Contract 
 
-Smart contracts are simply structures that store data and implement methods to mutate and view that data. Let's see what data the contract is storing.
+Let's take a look at the contract structure. The contract is a simple auction contract that allows users to place bids and track the highest bidder.
+
+
+### Contract's Definition
+
+The contract stores two main attributes: what was the highest bid so far, and when the auction will end. To simplify storing the highest bid, the contract uses an auxiliary structure called `Bid` that contains the bidder's account ID and the amount they bid.
 
 <Tabs groupId="code-tabs">
-
     <TabItem value="js" label="🌐 JavaScript">
 
-    TODO
-
+       <Github fname="contract.ts" language="javascript"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/src/contract.ts"
+                start="4" end="12" />
     </TabItem>
-
     <TabItem value="rust" label="🦀 Rust">
-
-        Enter src > lib.rs
 
         <Github fname="lib.rs" language="rust"
                 url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs#L2-L17"
                 start="5" end="17" />
 
-    </TabItem>
+        <details> 
+        
+            <summary> Macros </summary>
 
+            This is a dropdown
+
+        </details>
+
+    </TabItem>
 </Tabs>
 
 
