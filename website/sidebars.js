@@ -372,7 +372,7 @@ const sidebar = {
     {
       "Zero to Hero NEAR": [
         "tutorials/auction/introduction",
-        "tutorials/auction/basic",
+        "tutorials/auction/basic-auction",
         "tutorials/auction/locking-the-contract",
         "tutorials/auction/winning-an-nft",
         "tutorials/auction/bidding-with-FTs",

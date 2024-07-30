@@ -7,9 +7,9 @@ sidebar_label: Introduction
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-In this Zero to Hero series, you'll learn everything you need to know about building Web3 applications on NEAR.
+In this Zero to Hero series, you'll learn how to build a Web3 application from start to finish on NEAR.
 
-We will start by building a simple auction contract, and slowly build up on it, adding more and more concepts as we go. By the time you finish this tutorial you would have touch on several key primitives and concepts along the way:
+We'll start by cloning a simple auction smart contract and slowly add features by introducing new concepts as we go. By the time you finish this tutorial, you will have learned how to use several key primitives and concepts along the way:
 
 - Building a smart contract
 - Deploying and locking a contract
@@ -35,47 +35,36 @@ Before starting, make sure to setup your development environment.
 <Tabs groupId="code-tabs">
   <TabItem value="js" label="🌐 JavaScript">
 
-```bash
-# Install Node.js using nvm (more option in: https://nodejs.org/en/download)
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-nvm install latest
+    ```bash
+    # Install Node.js using nvm (more option in: https://nodejs.org/en/download)
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+    nvm install latest
 
-# Install NEAR CLI to deploy and interact with the contract
-npm i -g near-cli
-```
+    # Install the NEAR CLI to deploy and interact with the contract
+    curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releases/latest/download/near-cli-rs-installer.sh | sh
+    ```
 
-</TabItem>
+  </TabItem>
 
-<TabItem value="rust" label="🦀 Rust">
+  <TabItem value="rust" label="🦀 Rust">
 
-```bash
-# Install Rust: https://www.rust-lang.org/tools/install
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    ```bash
+    # Install Rust: https://www.rust-lang.org/tools/install
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-# Contracts will be compiled to wasm, so we need to add the wasm target
-rustup target add wasm32-unknown-unknown
+    # Contracts will be compiled to wasm, so we need to add the wasm target
+    rustup target add wasm32-unknown-unknown
 
-# Install NEAR CLI-RS to deploy and interact with the contract
-curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releases/latest/download/near-cli-rs-installer.sh | sh
+    # Install the NEAR CLI to deploy and interact with the contract
+    curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releases/latest/download/near-cli-rs-installer.sh | sh
 
-# Install cargo near to help building the contract
-curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/cargo-near/releases/latest/download/cargo-near-installer.sh | sh
-```
+    # Install cargo near to help building the contract
+    curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/cargo-near/releases/latest/download/cargo-near-installer.sh | sh
+    ```
 
-</TabItem>
+  </TabItem>
 
 </Tabs>
-
-:::tip Testnet Account
-
-There is no need to have a `testnet` account to follow this tutorial.
-
-However, if you want to create one, you can do so through [a wallet](https://testnet.mynearwallet.com), and use it from the `near-cli` by invoking `near login`.
-
-:::
-
-
-
 
 ---
 
@@ -106,21 +95,3 @@ At the time of this writing, this example works with the following versions:
 - near-cli-rs `0.12.0`
 
 :::
-
-
-
-
-<Tabs groupId="code-tabs">
-
-    <TabItem value="js" label="🌐 JavaScript">
-
-    TODO
-
-    </TabItem>
-
-    <TabItem value="rust" label="🦀 Rust">
-
-
-    </TabItem>
-
-</Tabs>
