@@ -42,7 +42,7 @@ _Diagram of a chain signature in NEAR_
 
 If you want to try things out, these are the smart contracts available on `testnet`:
 
-- `v2.multichain-mpc.testnet`: [MPC signer](https://github.com/near/mpc/tree/v0.2.0/contract) contract, latest release, made up of 8 MPC nodes
+- `v1.signer-prod.testnet`: [MPC signer](https://github.com/near/mpc/tree/v0.2.0/contract) contract, latest release, made up of 8 MPC nodes
 - `canhazgas.testnet`: [Multichain Gas Station](multichain-gas-relayer/gas-station.md) contract
 - `nft.kagi.testnet`: [NFT Chain Key](nft-keys.md) contract
 
@@ -89,7 +89,7 @@ The same NEAR account and path will always produce the same address on the targe
 
 We recommend hardcoding the derivation paths in your application to ensure the signature request is made to the correct account
 
-#### v2.multichain-mpc.testnet
+#### v1.signer-prod.testnet
 `secp256k1:4NfTiv3UsGahebgTaHyD9vF8KYKMBnfd6kh94mK6xv8fGBiJB8TBtFMP5WWXz6B89Ac1fbpzPwAvoyQebemHFwx3`
 
 :::
@@ -104,7 +104,7 @@ Constructing the transaction to be signed (transaction, message, data, etc.) var
   <TabItem value="Ξ Ethereum">
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/services/ethereum.js"
-      start="46" end="69" />
+      start="46" end="73" />
     
 In Ethereum, constructing the transaction is simple since you only need to specify the address of the receiver and how much you want to send.
 
@@ -136,7 +136,7 @@ The method requires two parameters:
   <TabItem value="Ξ Ethereum">
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/services/ethereum.js"
-      start="72" end="74" />
+      start="75" end="82" />
 
 </TabItem>
 
@@ -151,22 +151,9 @@ For bitcoin, all UTXOs are signed independently and then combined into a single 
 
 </Tabs>
 
-:::tip
-Notice that the `payload` is being reversed before requesting the signature, to match the little-endian format expected by the contract
-:::
-
 :::info
 
-The contract will take some time to respond, as the `sign` method starts recursively calling itself waiting for the **MPC service** to sign the transaction.
-
-<details>
-<summary> A Contract Recursively Calling Itself? </summary>
-
-NEAR smart contracts are currently unable to halt execution and await the completion of a process. To solve this while we await the ability to [yield & resume](https://docs.near.org/blog/yield-resume), one can make the contract call itself again and again checking on each iteration to see if the result is ready.
-
-**Note:** Each call will take one block which equates to ~1 second of waiting. After some time the contract will either return a result that an external party provided or return an error running out of GAS waiting.
-
-</details>
+The contract will take some time to respond, as the `sign` method [yields execution](/blog/yield-resume), waiting for the MPC service to sign the transaction.
 
 :::
 
@@ -182,11 +169,9 @@ This allows the contract to generalize the signing process for multiple blockcha
   <TabItem value="Ξ Ethereum">
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/services/ethereum.js"
-      start="76" end="90" />
+      start="84" end="95" />
 
 In Ethereum, the signature is reconstructed by concatenating the `r`, `s`, and `v` values returned by the contract.
-
-The `v` parameter is a parity bit that depends on the `sender` address. We reconstruct the signature using both possible values (`v=0` and `v=1`) and check which one corresponds to our `sender` address.
 
 </TabItem>
 
@@ -211,7 +196,7 @@ Once we have reconstructed the signature, we can relay it to the corresponding n
   <TabItem value="Ξ Ethereum">
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/services/ethereum.js"
-      start="94" end="98" />
+      start="105" end="109" />
 
 </TabItem>
 

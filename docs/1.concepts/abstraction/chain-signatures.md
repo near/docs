@@ -59,18 +59,10 @@ This contract has a `sign` method that takes two parameters:
 
 For example, a user could request a signature to `send 0.1 ETH to 0x060f1...` **(transaction)** using the `ethereum-1` account **(path)**.
 
-After a request is made, the `sign` method starts recursively calling itself to wait while the [MPC signing service](#multi-party-computation-service-mpc) signs the transaction.
 
-Once the signature is ready, the contract gains access to it and returns it to the user. This signature is a valid signed transaction that can be readily sent to the target blockchain to be executed.
+After a request is made, the `sign` method will [yield execution](/blog/yield-resume) waiting while the [MPC signing service](#multi-party-computation-service-mpc) signs the transaction.
 
-<details>
-<summary> A Contract Recursively Calling Itself? </summary>
-
-NEAR smart contracts are currently unable to halt execution and await the completion of a process. To solve this while we await the ability to [yield & resume](https://docs.near.org/blog/yield-resume), one can make the contract call itself again and again checking on each iteration to see if the result is ready.
-
-**Note:** Each call will take one block which equates to ~1 second of waiting. After some time the contract will either return a result that an external party provided or return an error running out of GAS waiting.
-
-</details>
+Once the signature is ready, the contract resumes computation and returns it to the user. This signature is a valid signed transaction that can be readily sent to the target blockchain to be executed.
 
 <hr class="subsection" />
 
