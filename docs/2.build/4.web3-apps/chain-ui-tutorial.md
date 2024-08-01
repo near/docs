@@ -103,6 +103,8 @@ To update the settings, configure the `nearDeployConfig` field in `package.json`
   </TabItem>
 </CodeTabs>
 
+#### Configuration parameters
+
  - `application` is developer-defined and will be used as part of the URL (names should match `[a-z_-]+`)
  - `deployerAccount` is the account paying for bundle storage and calling smart contract methods (must match `DEPLOYER_ACCOUNT.near` referenced above)
  - `filestoreContract` is the hosted storage contract
@@ -114,7 +116,7 @@ To update the settings, configure the `nearDeployConfig` field in `package.json`
 
 Before you can deploy your app, you need to login to your NEAR account.
 
-The Chain Hosted deployment scripts currently only support the  [Near CLI JS](https://github.com/near/near-cli) keystore. This CLI can be used to [initialize keystore credentials](../../4.tools/cli.md#near-login) for the deployment account:
+Currently the Chain Hosted deployment scripts only support the [Near CLI JS](https://github.com/near/near-cli) keystore. This CLI can be used to [initialize keystore credentials](../../4.tools/cli.md#near-login) for the deployment account:
 
 ```sh
 near login
@@ -162,9 +164,19 @@ Once you've deployed your frontend, you can load the web application at `http://
 ### Redeployment
 
 Once deployed, new deployments can be made or the application can be removed (with any remaining storage being refunded):
-- To deploy a new version, run `pnpm run deploy` after making changes. This will increment the application version, delete previous files, and refund any remaining available balance.
-- To delete application storage, refund storage-staked Near, and unregister the deployment account, run `pnpm delete-and-unregister`.
-- To drop and recreate the application, run `pnpm clean-deploy`.
+- To deploy a new version after making changes, run
+  ```sh
+  pnpm run deploy
+  ```
+  This will increment the application version, delete previous files, and refund any remaining available balance.
+- To delete application storage, refund storage-staked Near, and unregister the deployment account, run
+  ```sh
+  pnpm delete-and-unregister
+  ```
+- To drop and recreate the application, run
+  ```sh
+  pnpm clean-deploy
+  ```
 
 Also note that in order to do a roll forward deployment, both sets of application files must exist simultaneously to avoid downtime.
 Consequently, storage must be paid ahead of each deployment to account for the new files, regardless
