@@ -1,10 +1,13 @@
 import React from 'react';
 import Logo from '@theme/Logo';
 import { isInIframe } from '../../../utils/isInIframe';
+import BrowserOnly from '@docusaurus/BrowserOnly';
+import useIsBrowser from '@docusaurus/useIsBrowser';
 
 export default function NavbarLogo() {
+  const isBrowser = useIsBrowser();
 
-  if(isInIframe) return;
+  if (isBrowser && isInIframe) return null;
 
   return (
     <Logo
