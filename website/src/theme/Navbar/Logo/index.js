@@ -7,7 +7,7 @@ export default function NavbarLogo() {
     <BrowserOnly>
       {() => {
         // if embedded in an iframe, do not show the logo
-        if (window.self !== window.top) {
+        if (typeof window !== 'undefined' && window.self !== window.top) {
           return null;
         }
 
