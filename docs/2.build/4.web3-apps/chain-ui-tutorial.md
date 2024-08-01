@@ -166,28 +166,6 @@ Once deployed, new deployments can be made or the application can be removed (wi
 - To delete application storage, refund storage-staked Near, and unregister the deployment account, run `pnpm delete-and-unregister`.
 - To drop and recreate the application, run `pnpm clean-deploy`.
 
-
 Also note that in order to do a roll forward deployment, both sets of application files must exist simultaneously to avoid downtime.
 Consequently, storage must be paid ahead of each deployment to account for the new files, regardless
 of whether the application is already deployed. Once the deployment is live, the files from the previous deployment are deleted and storage is refunded as part of the deployment script.
-
-<!--
-
-
-The basics are just about settled, and probably won't change substantially once in place. These would be good examples to include (from an in-flight PR):
-
-`packages/react/package.json` has part of the build configuration, in particular:
-
-`"upload": "pnpm upload-bundle ./dist testnet partfs1.testnet gormp.testnet react-vite-example"`, which uploads the contents of the dist/ directory to an application called `react-vite-example` as the author `gormp.testnet`, all using the smart contract deployed to `partfs1.testnet`
-
-`"bosConfig": {"application": "react-vite-example"}` defines the application name for bundling
-
-`"@chain-deployed-ui/presets": "workspace:*"` has bundling utils and the `upload-bundle` script used above for the upload script
-
-[`packages/react/vite.config.ts`](https://github.com/near/chain-deployed-ui/blob/dcea275571a3b475336a862f4f816e1d56612295/packages/react/vite.config.ts) bundles the application
-
-`return replaceHtmlPaths(html, bosConfig.application);` uses a util function from `@chain-deployed-ui/presets` to modify the `index.html` to point to the on-chain assets
-
-`preset: presetBundles.react`, defines which packages will be included in the `preset` bundle, which is the part of the bundle that Pagoda would eventually host
-
--->
