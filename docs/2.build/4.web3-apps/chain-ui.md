@@ -1,10 +1,10 @@
 ---
-id: chain-deployed-ui
-title: Chain Deployed UI
-sidebar_label: Chain Deployed UI
+id: chain-hosted-ui
+title: Chain Hosted UI
+sidebar_label: Chain Hosted UI
 ---
 
-[Chain Deployed UI](https://github.com/near/chain-deployed-ui) is a [decentralized frontend solution](frontend.md#decentralized-frontend-solutions) that lets you to deploy dApp frontends directly on the NEAR blockchain. A frontend can be built with typical Web2 tooling (e.g. React + Vite + node.js dependencies), and the resulting compressed bundle can be stored in the state of a smart contract.
+[Chain Hosted UI](https://github.com/near/chain-deployed-ui) is a [decentralized frontend solution](frontend.md#decentralized-frontend-solutions) that lets you to deploy dApp frontends directly on the NEAR blockchain. A frontend can be built with typical Web2 tooling (e.g. React + Vite + node.js dependencies), and the resulting compressed bundle can be stored in the state of a smart contract.
 
 :::info Keep in mind
 
