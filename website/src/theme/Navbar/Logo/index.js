@@ -1,13 +1,10 @@
 import React from 'react';
 import Logo from '@theme/Logo';
-import BrowserOnly from '@docusaurus/BrowserOnly';
+import { isInIframe } from '../../../utils/isInIframe';
 
 export default function NavbarLogo() {
 
-  // if embedded in an iframe, do not show the logo
-  <BrowserOnly>
-    {() => { if (window.location !== window.parent.location) return null; }}
-  </BrowserOnly>
+  if(isInIframe) return;
 
   return (
     <Logo
