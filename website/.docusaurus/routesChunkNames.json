@@ -293,17 +293,17 @@
       "plugin": "c141421f"
     }
   },
-  "/zh-CN/-e58": {
+  "/zh-CN/-90e": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "aba21aa0"
     }
   },
-  "/zh-CN/-ef5": {
+  "/zh-CN/-526": {
     "__comp": "a7bd4aaa",
     "__props": "363b7d6a"
   },
-  "/zh-CN/-25a": {
+  "/zh-CN/-6e3": {
     "__comp": "a94703ab"
   },
   "/zh-CN/api/rpc/access-keys-fa8": {
@@ -350,7 +350,7 @@
     "__comp": "17896441",
     "content": "0f8c7883"
   },
-  "/zh-CN/build/chain-abstraction/chain-signatures-c34": {
+  "/zh-CN/build/chain-abstraction/chain-signatures-ec3": {
     "__comp": "17896441",
     "content": "1658433d"
   },
@@ -874,7 +874,7 @@
     "__comp": "17896441",
     "content": "fab839f9"
   },
-  "/zh-CN/build/smart-contracts/anatomy/collections-51d": {
+  "/zh-CN/build/smart-contracts/anatomy/collections-ae3": {
     "__comp": "17896441",
     "content": "be319659"
   },
@@ -1014,7 +1014,7 @@
     "__comp": "17896441",
     "content": "36b2e07d"
   },
-  "/zh-CN/concepts/abstraction/chain-signatures-ae4": {
+  "/zh-CN/concepts/abstraction/chain-signatures-cd6": {
     "__comp": "17896441",
     "content": "aaff0a8d"
   },

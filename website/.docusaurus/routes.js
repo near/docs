@@ -114,15 +114,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', 'e58'),
+    component: ComponentCreator('/zh-CN/', '90e'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', 'ef5'),
+        component: ComponentCreator('/zh-CN/', '526'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '25a'),
+            component: ComponentCreator('/zh-CN/', '6e3'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -192,7 +192,7 @@ export default [
               },
               {
                 path: '/zh-CN/build/chain-abstraction/chain-signatures',
-                component: ComponentCreator('/zh-CN/build/chain-abstraction/chain-signatures', 'c34'),
+                component: ComponentCreator('/zh-CN/build/chain-abstraction/chain-signatures', 'ec3'),
                 exact: true,
                 sidebar: "build"
               },
@@ -906,7 +906,7 @@ export default [
               },
               {
                 path: '/zh-CN/build/smart-contracts/anatomy/collections',
-                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/collections', '51d'),
+                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/collections', 'ae3'),
                 exact: true,
                 sidebar: "build"
               },
@@ -1116,7 +1116,7 @@ export default [
               },
               {
                 path: '/zh-CN/concepts/abstraction/chain-signatures',
-                component: ComponentCreator('/zh-CN/concepts/abstraction/chain-signatures', 'ae4'),
+                component: ComponentCreator('/zh-CN/concepts/abstraction/chain-signatures', 'cd6'),
                 exact: true,
                 sidebar: "build"
               },
