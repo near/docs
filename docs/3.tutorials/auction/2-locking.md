@@ -8,13 +8,13 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {Github} from "@site/src/components/codetabs"
 
-In the basic contract to claim the tokens from the final bid on the contract, the contract owner would have to log into a wallet using a key a withdraw NEAR to their main wallet. This provides a poor UX, but even more importantly it is a security issue. Since there is a key to the contract a keyholder can maliciously mutate the contract's storage as they wish, for example, alter the highest bidder to list their own account. The core principle of smart contracts is that they eliminate the need for trust when interacting with an application, thus we will [lock](../../1.concepts/protocol/access-keys.md#locked-accounts) the contract by removing all access keys and implementing a new method to `claim` the tokens.
+In the basic contract to claim the tokens from the final bid on the contract, the contract owner would have to log into a wallet using a key and withdraw NEAR to their main wallet. This provides a poor UX, but even more importantly it is a security issue. Since there is a key to the contract, a keyholder can maliciously mutate the contract's storage as they wish, for example, alter the highest bidder to list their own account. The core principle of smart contracts is that they eliminate the need for trust when interacting with an application, thus we will [lock](../../1.concepts/protocol/access-keys.md#locked-accounts) the contract by removing all access keys and implementing a new method to `claim` the tokens.
 
 ---
 
 ## Adding an auctioneer
 
-We want to restrict the method to claim the tokens, to only the individual or entity that sets up the auction. To do this we now change the `init` method to initialize the contract with an `auctioneer`.
+When we introduce the `claim` method we want to make sure that the individual or entity that set up the auction receives the $NEAR tokens. To do this we now change the `init` method to initialize the contract with an `auctioneer`.
 
 <Tabs groupId="code-tabs">
 
@@ -36,13 +36,13 @@ We want to restrict the method to claim the tokens, to only the individual or en
 
 </Tabs>
 
-Let's also introduce a boolean `claimed` field to track whether the funds have been claimed by the auctioneer yet.
+Let's also introduce a boolean field named `claimed` to track whether the tokens have been claimed by the auctioneer yet.
 
 ---
 
 ## Adding the claim method
 
-The `claim` method should only be callable when the auction is over, can only be executed once and should transfer the funds to the auctioneer. We'll implement this as so:
+The `claim` method should only be callable when the auction is over, can only be executed once and should transfer the tokens to the auctioneer. We'll implement this as so:
 
 <Tabs groupId="code-tabs">
 
@@ -70,7 +70,6 @@ The `claim` method should only be callable when the auction is over, can only be
 
 If we update our contract then we should update our tests accordingly. For example, the tests will now need to add `auctioneer` to the arguments of `init`.
 
-
 We will also now also test the `claim` method. The test will check that the `auctioneer` account has received the correct amount of $NEAR tokens.
 
 <Tabs groupId="code-tabs">
@@ -78,36 +77,32 @@ We will also now also test the `claim` method. The test will check that the `auc
     <TabItem value="js" label="🌐 JavaScript">
 
         <Github fname="contract.ts" language="javascript"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/02-owner-claims-money/sandbox-test/main.ava.js#L88-L107"
-                start="88" end="107" />
-
-        The auctioneer should now have 2 more $NEAR tokens to match the highest bid on the auction. Note that the balances are rounded since some tokens are used for gas when calling `claim`.
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/02-owner-claims-money/sandbox-test/main.ava.js#L70-L81"
+                start="70" end="81" />
 
     </TabItem>
 
     <TabItem value="rust" label="🦀 Rust">
 
         <Github fname="test_basics.rs" language="rust"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-owner-claims-money/tests/test_basics.rs#L114-128"
-                start="114" end="128" />
-
-        Whilst the auctioneer starts with 5 tokens and receives 2 from the auction, note that we don't check for an account balance of strictly 7 since some tokens are used for gas when calling `claim`.
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-owner-claims-money/tests/test_basics.rs#L89-L105"
+                start="89" end="105" />
 
     </TabItem>
 
 </Tabs>
 
+Note that the test doesn't check that the auctioneer has exactly 12 $NEAR since the auctioneer uses tokens through gas fees when calling `claim`.
 
 ---
 
 ## Deploying and locking
 
-Go ahead and test, build and deploy your new contract, as in part 1. Remember to add the "auctioneer" arguments now when initializing.
+Go ahead and test, build and deploy your new contract, as in part 1. Remember to add the "auctioneer" argument when initializing.
 
-Now we have an auctioneer and the claim method, we can deploy the contract without keys. Later we will introduce a factory contract that deploys auctions to a locked account, but for now, we can manually remove the keys using the CLI to lock the account.
+Now we have the claim method, we can deploy the contract without keys. Later we will introduce a factory contract that deploys auctions to a locked account, but for now, we can manually remove the keys using the CLI to lock the account.
 
-
-near > account > delete-keys > specify your account ID > → (to delete all) > 
+near > account > delete-keys > specify your account ID > → (to delete all) > testnet
 
 :::caution
 Be extra careful to delete the keys from the correct account as you'll never be able to access the account again!

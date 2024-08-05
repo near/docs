@@ -115,11 +115,6 @@ Again let's go and update our tests to reflect the changes we've made to our con
 
 ---
 
-## Unit tests
-
-TODO
-
----
 
 ## Integration tests
 

@@ -370,7 +370,7 @@ const sidebar = {
       "value": "<span class='menu__link'><b><small> Tutorials </small></b></span>"
     },
     {
-      "Zero to Hero NEAR": [
+      "NEAR Zero to Hero": [
         "tutorials/auction/introduction",
         "tutorials/auction/basic-auction",
         "tutorials/auction/locking-the-contract",

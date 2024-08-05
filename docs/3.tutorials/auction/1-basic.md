@@ -70,8 +70,8 @@ The contract stores two main fields: what was the highest bid so far, and when t
 
         </details>
 
-        - `bid` is typed `BigInt` for storing a number of $NEAR tokens in `yoctonear` (10^-24 NEAR).
-        - `bidder` is typed `AccountId` to automatically check whether the account address is valid.
+        - `bid` is typed `BigInt` which stores a number of $NEAR tokens in `yoctonear` (10^-24 NEAR).
+        - `bidder` is typed `AccountId` which automatically check whether the account address is valid.
 
 
     </TabItem>
@@ -99,8 +99,8 @@ The contract stores two main fields: what was the highest bid so far, and when t
         </details>
 
         - `bid` is typed `NearToken` for storing a number of $NEAR tokens. The type makes it easier to handle $NEAR tokens by implementing methods to express the value in `yoctonear` (10^-24 $NEAR), `milinear` and `near`. 
-        - `bidder` is typed `AccountId` to automatically check whether the account address is valid.
-        - `auction_end_time` is of type `U64`. Since u64 has to be converted to a string for input and output U64 automates the type casting between u64 and string.
+        - `bidder` is typed `AccountId` which automatically check whether the account address is valid.
+        - `auction_end_time` is of type `U64`. Since u64 has to be converted to a string for input and output, U64 automates the type casting between u64 and string.
 
     </TabItem>
 </Tabs>
@@ -112,7 +112,7 @@ The contract stores two main fields: what was the highest bid so far, and when t
 
 Now let's take a look at the contract's methods.
 
-First, the contract has an initialization function that determines the initial state of the contract. This contract requires custom initialization meaning the user is required to input parameters to determine the initial state of the contract.
+First, the contract has an initialization method that determines the initial state of the contract. This contract requires custom initialization meaning the user is required to input parameters to determine the initial state.
 
 
 <Tabs groupId="code-tabs">
@@ -129,8 +129,8 @@ First, the contract has an initialization function that determines the initial s
 
             Let's take a closer look at the decorator on `init` and what it does:
 
-            - `initialize` denotes that `init` is an initialization function and can only be called once.
-            - `privateFunction` is used to restrict the function to only be called by the account on which the contract is deployed.
+            - `initialize` denotes that `init` is an initialization method meaning it can only be called once and has to be the first method to be called.
+            - `privateFunction` is used to restrict the method to only be called by the account on which the contract is deployed.
 
         </details>
 
@@ -142,7 +142,6 @@ First, the contract has an initialization function that determines the initial s
                 url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs#L19-L31"
                 start="19" end="31" />
 
-
          <details> 
         
             <summary> Macros </summary>
@@ -150,17 +149,16 @@ First, the contract has an initialization function that determines the initial s
             Let's take a closer look at the macros and what they do:
 
             - The implementation of `Contract` is decorated with the `near` macro to declare that the methods inside of Contract can be called by the outside world.
-            - `init` has the macro `init` to denote it is an initialization function and can only be called once.
-            - `init` has the macro `private` to restrict the function to only be called by the account on which the contract is deployed.
+            - `init` has the macro `init` to denote it is an initialization method meaning it can only be called once and has to be the first method to be called.
+            - `init` has the macro `private` to restrict the method to only be called by the account on which the contract is deployed.
 
         </details>
-
 
     </TabItem>
 
 </Tabs>
 
-When this function is called, the caller will decide the `end_time`, `bid` will be set to one yoctoNEAR and the `bidder` will be set to the account on which the contract is deployed so that if no one bids, no one will win the auction.
+When this method is called, the caller will decide the `end_time`, `bid` will be set to one yoctoNEAR and the `bidder` will be set to the account on which the contract is deployed so that if no one bids, no one will win the auction.
 
 ---
 
@@ -199,14 +197,14 @@ An auction isn't an auction if you can't place a bid! The contract has a `bid` m
 </Tabs>
 
 - The `block timestamp` is used to determine whether the auction is still ongoing. It gives the time as the number of nanoseconds since January 1, 1970, 0:00:00 UTC.
-- The `predecessor` gives the account (or contract) that directly called the bid method, this can be different to the signer who initially signed the transaction leading to the execution of this method. If pivortex.near calls a contract proxy-contract.near which then calls bid on this contract the predecessor would be proxy-contract.near and the signer would be pivortex.near. For security purposes, so a malicious contract can't place a bid, we stick with predecessor using here.
-- The contract returns a `promise` that will execute the transfer of $NEAR tokens back to the previous bidder.
+- The `predecessor` gives the account (or contract) that directly called the bid method, this can be different to the signer who initially signed the transaction leading to the execution of this method. If pivortex.near calls a contract proxy-contract.near which then calls bid on this contract the predecessor would be proxy-contract.near and the signer would be pivortex.near. For security purposes, so a malicious contract can't place a bid in your name, we stick with predecessor using here.
+- The contract returns a `Promise` that will execute the transfer of $NEAR tokens back to the previous bidder.
 
 ---
 
 ### Viewing the contract state
  
-The contract also implements "view methods"; these allows the user to view the data stored on the contract. View methods don't require any gas but cannot change the state of the contract. For example, this could be used to view, in the frontend, what the highest bid amount was so we make sure that we place a higher bid.
+The contract also implements "view methods"; these allow the user to view the data stored on the contract. View methods don't require any gas but cannot change the state of the contract. For example, this could be used to view, in the frontend, what the highest bid amount was so we make sure that we place a higher bid.
 
 <Tabs groupId="code-tabs">
 
@@ -233,7 +231,7 @@ The contract also implements "view methods"; these allows the user to view the d
 </Tabs>
 
 
-The contract has further view methods that follow a very similar structure. 
+The contract has further view methods that follow a similar structure. 
 
 ---
 
@@ -241,160 +239,231 @@ The contract has further view methods that follow a very similar structure.
 
 Ok, now we've seen the contract we need to make sure it works as expected; this is done through testing. It's good practice to implement exhaustive tests so you can ensure that any little change to your code down the line doesn't break your contract.
 
+In our rust repository, we have a unit test to check that the contract is initialized properly. Unit tests are used to test contract methods individually, these tests work well when little context is required. However, because our contract has operations like sending accounts $NEAR tokens, which happens external to the contract, we need an environment to test the contract.
+
 ---
+
+### Integration tests
+
+Integration tests allow you to deploy your contract (or contracts) in a sandbox to interact with it in a realistic environment where, for example, accounts have trackable balances Throughout this section, you'll see there is just one large test. This is because the contract only has one possible flow meaning all methods can be properly tested in one test. 
+
+The first thing the test does is create the sandbox environment.
 
 <Tabs groupId="code-tabs">
 
     <TabItem value="js" label="🌐 JavaScript">
- 
+
         Enter sandbox-test > main.ava.js
 
-        NEAR Workspaces allow you to deploy your contract (or contracts) in a sandbox to interact with it in a realistic environment. Here we are using AVA for testing.
-
-        ---
-
-        #### Setup before a test
-
-        Before running a test it's essential to perform some setup steps.
-        1) Create a sandbox environment.
-        2) Create accounts to interact with the contract.
-        3) Deploy the contract.
-        4) Initialise the contract 
-        5) Store the sandbox and accounts in the test's context.
-
-        Here the sandbox is created.
-
         <Github fname="main.ava.js" language="javascript"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/sandbox-test/main.ava.js#L9-L12"
-                start="9" end="12" />
-
-        Next, the test creates a couple of user accounts that are used to send transactions from. Each account is given an account ID and an initial balance. 
-
-        <Github fname="main.ava.js" language="javascript"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/sandbox-test/main.ava.js#L15-L17"
-                start="15" end="17" />
-
-        Then the contract is deployed to an account named "contract". The compiled contract comes from the test running the `build` script in the `package.json` file.
-
-        <Github fname="main.ava.js" language="javascript"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/sandbox-test/main.ava.js#L22"
-                start="22" end="22" />
-
-        To initialize the contract, `init` is called with `end_time` set to 60 seconds in the future.
-
-        <Github fname="main.ava.js" language="javascript"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/sandbox-test/main.ava.js#L22"
-                start="25" end="27" />
-
-        Lastly, the sandbox and accounts are saved in the test's context so they can be used later.
-
-        <Github fname="main.ava.js" language="javascript"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/sandbox-test/main.ava.js#L30-L31"
-                start="30" end="31" />
-
-        ---
-
-        #### Tests
-
-        In our file there are three different tests:
-        1) One bid is placed.
-        2) Two bids are placed. 
-        3) A bid is placed, the auction ends, and a second bid is attempted.
-
-        We'll take a look at the last two.
-
-        In this test, it checks that the highest bidder is properly recorded when two bids are placed and that the lesser bidder is refunded.
-
-        <Github fname="main.ava.js" language="javascript"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/sandbox-test/main.ava.js#L52-L66"
-                start="52" end="66" />
-
-        In the next test it simply checks that bids cannot be placed after the auction closes. Time in the sandbox is moved forward using `fastForward`.
-
-        <Github fname="main.ava.js" language="javascript"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/sandbox-test/main.ava.js#L68-L79"
-                start="68" end="79" />
-
-        ---
-
-        #### Closing the sandbox
-
-        After a test is run the sandbox should be closed.
-
-        <Github fname="main.ava.js" language="javascript"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/sandbox-test/main.ava.js#L34-L39"
-                start="34" end="39" />
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/sandbox-test/main.ava.js#L12"
+                start="12" end="12" />
 
     </TabItem>
 
     <TabItem value="rust" label="🦀 Rust">
 
-        #### Unit tests
-
-        Unit tests are used to test contract methods individually. Let's look at a test that ensures the contract is initialized properly.
-
-        <Github fname="lib.rs" language="rust"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs#L78-L93"
-                start="78" end="93" />
-
-        - First, the test creates a new contract and initializes it with an `auction_end_time` of 1000 (in reality this is very low but it doesn't matter in this context).
-
-        - Next, the test calls `get_highest_bid` and checks that the `bidder` and `bid` are as expected.
-
-        - Lastly, the test calls `get_auction_end_time` and checks that the `end_time` is as expected.
-
-        Simple enough!
-
-        ---
-
-        #### Integration tests
-
-        Integration tests allow you to deploy your contract (or contracts) in a sandbox to interact with it in a realistic environment where, for example, accounts have trackable balances.
-
         Enter tests > test_basics.rs
 
-        First, the sandbox testing environment is created and the compiled auction contract is fetched.
-
         <Github fname="test_basics.rs" language="rust"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L8-L11"
-                start="8" end="11" />
-
-
-        Next, the test creates a couple of user accounts that are used to send transactions from. Each account is given an account ID and an initial balance.
-
-        <Github fname="test_basics.rs" language="rust"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L13-L20"
-                start="13" end="20" />
-
-        Likewise, a "contract" account is created and the contract WASM is deployed to it.
-
-        <Github fname="test_basics.rs" language="rust"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L37"
-                start="37" end="37" />
-
-        To initialize the contract `init` is called with `end_time` set to 60 seconds in the future. Afterward, it's checked that the transaction was successful. 
-
-        <Github fname="test_basics.rs" language="rust"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L39-L49"
-                start="39" end="49" />
-
-
-        Now the contract is deployed and initialized, bids are made to the contract and it's checked that the state changes as intended.
-
-        <Github fname="test_basics.rs" language="rust"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L67-L79"
-                start="67" end="79" />
-
-
-        When testing we should also check that the contract does not allow invalid calls. The next part checks that the contract doesn't allow for bids with fewer $NEAR tokens than the previous to be made.
-
-        <Github fname="test_basics.rs" language="rust"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L82-L94"
-                start="82" end="94" />
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L10"
+                start="10" end="10" />
 
     </TabItem>
 
 </Tabs>
+
+
+Next, the test creates a couple of user accounts that will be used to send transactions to the contract. Each account is given an account ID and an initial balance.
+
+<Tabs groupId="code-tabs">
+
+    <TabItem value="js" label="🌐 JavaScript">
+
+        <Github fname="main.ava.js" language="javascript"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/sandbox-test/main.ava.js#L15-L18"
+                start="15" end="18" />
+
+    </TabItem>
+
+    <TabItem value="rust" label="🦀 Rust">
+
+        <Github fname="test_basics.rs" language="rust"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L16-L17"
+                start="16" end="17" />
+
+        <Github fname="test_basics.rs" language="rust"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L93-L105"
+                start="93" end="105" />
+
+    </TabItem>
+
+</Tabs>
+
+
+Likewise, a "contract" account is created and the contract WASM is deployed to it.
+
+<Tabs groupId="code-tabs">
+
+    <TabItem value="js" label="🌐 JavaScript">
+
+        The contract comes from compiling the contract to WASM using the build script in the package.json file and then reading it.
+
+        <Github fname="main.ava.js" language="javascript"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/sandbox-test/main.ava.js#L22"
+                start="22" end="22" />
+
+    </TabItem>
+
+    <TabItem value="rust" label="🦀 Rust">
+
+        The contract comes from the test compiling the contract to WASM using `cargo near build` and then reading it.
+
+        <Github fname="test_basics.rs" language="rust"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L11"
+                start="11" end="11" />
+
+        <Github fname="test_basics.rs" language="rust"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L21"
+                start="21" end="21" />
+
+    </TabItem>
+
+</Tabs>
+
+
+To initialize the contract `init` is called with `end_time` set to 60 seconds in the future.
+
+<Tabs groupId="code-tabs">
+
+    <TabItem value="js" label="🌐 JavaScript">
+
+        <Github fname="main.ava.js" language="javascript"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/sandbox-test/main.ava.js#L25-L27"
+                start="25" end="27" />
+
+    </TabItem>
+
+    <TabItem value="rust" label="🦀 Rust">
+
+        <Github fname="test_basics.rs" language="rust"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L23-L32"
+                start="23" end="32" />
+
+    </TabItem>
+
+</Tabs>
+
+Now the contract is deployed and initialized, bids are made to the contract and it's checked that the state changes as intended. 
+
+<Tabs groupId="code-tabs">
+
+    <TabItem value="js" label="🌐 JavaScript">
+
+        <Github fname="main.ava.js" language="javascript"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/sandbox-test/main.ava.js#L45-L48"
+                start="45" end="48" />
+
+    </TabItem>
+
+    <TabItem value="rust" label="🦀 Rust">
+
+        <Github fname="test_basics.rs" language="rust"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L35-L46"
+                start="35" end="46" />
+
+    </TabItem>
+
+</Tabs>
+
+When a higher bid is placed the previous bidder should be returned the $NEAR they bid. This is checked by querying the $NEAR balance of the user account. We might think that the test would check whether Alice's balance is back to 10 $NEAR but it does not. This is because some $NEAR is consumed as `gas` fees when Alice calls `bid`. Instead, Alice's balance is recorded after she bids, and once another user bids, it checks that exactly 1 $NEAR has been added to her balance.
+
+<Tabs groupId="code-tabs">
+
+    <TabItem value="js" label="🌐 JavaScript">
+
+        <Github fname="main.ava.js" language="javascript"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/sandbox-test/main.ava.js#L50-L60"
+                start="50" end="60" />
+
+    </TabItem>
+
+    <TabItem value="rust" label="🦀 Rust">
+
+        <Github fname="test_basics.rs" language="rust"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L48-L66"
+                start="48" end="66" />
+
+    </TabItem>
+
+</Tabs>
+
+When testing we should also check that the contract does not allow invalid calls. The next part checks that the contract doesn't allow for bids with fewer $NEAR tokens than the previous to be made.
+
+<Tabs groupId="code-tabs">
+
+    <TabItem value="js" label="🌐 JavaScript">
+
+        <Github fname="main.ava.js" language="javascript"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/sandbox-test/main.ava.js#L63"
+                start="63" end="63" />
+
+    </TabItem>
+
+    <TabItem value="rust" label="🦀 Rust">
+
+        <Github fname="test_basics.rs" language="rust"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L69-L75"
+                start="69" end="75" />
+
+    </TabItem>
+
+</Tabs>
+
+To test the contract when the auction is over the test uses `fast forward` to advance time in the sandbox. Note that fast forward takes the number of blocks to advance not the number of seconds. The test advances 200 blocks so the time will now be past the minute auction end time that was set. 
+
+<Tabs groupId="code-tabs">
+
+    <TabItem value="js" label="🌐 JavaScript">
+
+        <Github fname="main.ava.js" language="javascript"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/sandbox-test/main.ava.js#L65-L66"
+                start="65" end="66" />
+
+    </TabItem>
+
+    <TabItem value="rust" label="🦀 Rust">
+
+        <Github fname="test_basics.rs" language="rust"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L77-L79"
+                start="77" end="79" />
+
+    </TabItem>
+
+</Tabs>
+
+Now that the auction has ended the contract shouldn't allow any more bids.
+
+<Tabs groupId="code-tabs">
+
+    <TabItem value="js" label="🌐 JavaScript">
+
+        <Github fname="main.ava.js" language="javascript"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/sandbox-test/main.ava.js#L69"
+                start="69" end="69" />
+
+    </TabItem>
+
+    <TabItem value="rust" label="🦀 Rust">
+
+        <Github fname="test_basics.rs" language="rust"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L82-L88"
+                start="82" end="88" />
+
+    </TabItem>
+
+</Tabs>
+
 ---
 
 ## Testing and deploying 
@@ -427,7 +496,7 @@ Cool, now we've seen how tests are written, let's go ahead and run the tests. We
 
 
         ```
-        near contract deploy <accountId> use-file build/hello_near.wasm with-init-call init json-args '{"end_time": "300000000000000000"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet
+        near contract deploy <accountId> use-file <path to WASM> with-init-call init json-args '{"end_time": "300000000000000000"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet
         ```
 
 
@@ -456,7 +525,7 @@ Cool, now we've seen how tests are written, let's go ahead and run the tests. We
         Then deploy and initialize the contract with
 
         ```
-        cargo near dep0loy <accountId> with-init-call init json-args '{"end_time": "300000000000000000"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet
+        cargo near deploy <accountId> with-init-call init json-args '{"end_time": "300000000000000000"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet
         ```
 
     </TabItem>
@@ -469,13 +538,13 @@ Now the contract is deployed and initialized we can send transactions to it usin
 Call `bid`, you may want to create another testnet account for the signer
 
 ```
-$ near contract call-function as-transaction <contractId> bid json-args {} prepaid-gas '100.0 Tgas' attached-deposit '1 NEAR' sign-as <accountId> network-config testnet
+near contract call-method as-transaction <contractId> bid json-args {} prepaid-gas '100.0 Tgas' attached-deposit '1 NEAR' sign-as <accountId> network-config testnet
 ```
 
 Call `get_highest_bid`
 
 ```
-$ near contract call-function as-read-only <contractId> get_highest_bid json-args {} network-config testnet now
+near contract call-method as-read-only <contractId> get_highest_bid json-args {} network-config testnet now
 ```
 
 ---
