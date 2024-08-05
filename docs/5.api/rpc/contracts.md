@@ -123,6 +123,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>Reason</th>
       <th>Solution</th>
     </tr>
@@ -131,6 +132,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
     <tr>
       <td rowspan="5">HANDLER_ERROR</td>
       <td>UNKNOWN_BLOCK</td>
+      <td>200</td>
       <td>The requested block has not been produced yet or it has been garbage-collected (cleaned up to save space on the RPC node)</td>
       <td>
         <ul>
@@ -141,6 +143,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
     </tr>
     <tr>
       <td>INVALID_ACCOUNT</td>
+      <td>200</td>
       <td>The requested <code>account_id</code> is invalid</td>
       <td>
         <ul>
@@ -150,6 +153,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
     </tr>
     <tr>
       <td>UNKNOWN_ACCOUNT</td>
+      <td>200</td>
       <td>The requested <code>account_id</code> has not been found while viewing since the account has not been created or has been already deleted</td>
       <td>
         <ul>
@@ -160,6 +164,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
     </tr>
     <tr>
       <td>UNAVAILABLE_SHARD</td>
+      <td>200</td>
       <td>The node was unable to find the requested data because it does not track the shard where data is present</td>
       <td>
         <ul>
@@ -169,6 +174,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
     </tr>
     <tr>
       <td>NO_SYNCED_BLOCKS</td>
+      <td>200</td>
       <td>The node is still syncing and the requested block is not in the database yet</td>
       <td>
         <ul>
@@ -180,6 +186,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
     <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)</td>
       <td>
         <ul>
@@ -191,6 +198,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>Something went wrong with the node itself or overloaded</td>
       <td>
         <ul>
@@ -344,6 +352,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>Reason</th>
       <th>Solution</th>
     </tr>
@@ -352,6 +361,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
     <tr>
       <td rowspan="2">HANDLER_ERROR</td>
       <td>UNKNOWN_BLOCK</td>
+      <td>200</td>
       <td>The requested block has not been produced yet or it has been garbage-collected (cleaned up to save space on the RPC node)</td>
       <td>
         <ul>
@@ -362,6 +372,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
     </tr>
     <tr>
       <td>NOT_SYNCED_YET</td>
+      <td>200</td>
       <td>The node is still syncing and the requested block is not in the database yet</td>
       <td>
         <ul>
@@ -373,6 +384,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
     <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)</td>
       <td>
         <ul>
@@ -384,6 +396,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>Something went wrong with the node itself or overloaded</td>
       <td>
         <ul>
@@ -508,6 +521,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>Reason</th>
       <th>Solution</th>
     </tr>
@@ -516,6 +530,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
     <tr>
       <td rowspan="6">HANDLER_ERROR</td>
       <td>UNKNOWN_BLOCK</td>
+      <td>200</td>
       <td>The requested block has not been produced yet or it has been garbage-collected (cleaned up to save space on the RPC node)</td>
       <td>
         <ul>
@@ -526,6 +541,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
     </tr>
     <tr>
       <td>INVALID_ACCOUNT</td>
+      <td>200</td>
       <td>The requested <code>account_id</code> is invalid</td>
       <td>
         <ul>
@@ -535,6 +551,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
     </tr>
     <tr>
       <td>UNKNOWN_ACCOUNT</td>
+      <td>200</td>
       <td>The requested <code>account_id</code> has not been found while viewing since the account has not been created or has been already deleted</td>
       <td>
         <ul>
@@ -545,6 +562,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
     </tr>
     <tr>
       <td>NO_CONTRACT_CODE</td>
+      <td>200</td>
       <td>The account does not have any <code>contract</code> deployed on it</td>
       <td>
         <ul>
@@ -555,6 +573,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
     </tr>
     <tr>
       <td>UNAVAILABLE_SHARD</td>
+      <td>200</td>
       <td>The node was unable to find the requested data because it does not track the shard where data is present</td>
       <td>
         <ul>
@@ -564,6 +583,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
     </tr>
     <tr>
       <td>NO_SYNCED_BLOCKS</td>
+      <td>200</td>
       <td>The node is still syncing and the requested block is not in the database yet</td>
       <td>
         <ul>
@@ -575,6 +595,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
     <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)</td>
       <td>
         <ul>
@@ -586,6 +607,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>Something went wrong with the node itself or overloaded</td>
       <td>
         <ul>
@@ -900,6 +922,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>Reason</th>
       <th>Solution</th>
     </tr>
@@ -908,6 +931,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
     <tr>
       <td rowspan="7">HANDLER_ERROR</td>
       <td>UNKNOWN_BLOCK</td>
+      <td>200</td>
       <td>The requested block has not been produced yet or it has been garbage-collected (cleaned up to save space on the RPC node)</td>
       <td>
         <ul>
@@ -918,6 +942,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
     </tr>
     <tr>
       <td>INVALID_ACCOUNT</td>
+      <td>200</td>
       <td>The requested <code>account_id</code> is invalid</td>
       <td>
         <ul>
@@ -927,6 +952,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
     </tr>
     <tr>
       <td>UNKNOWN_ACCOUNT</td>
+      <td>200</td>
       <td>The requested <code>account_id</code> has not been found while viewing since the account has not been created or has been already deleted</td>
       <td>
         <ul>
@@ -937,6 +963,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
     </tr>
     <tr>
       <td>NO_CONTRACT_CODE</td>
+      <td>200</td>
       <td>The account does not have any <code>contract</code> deployed on it</td>
       <td>
         <ul>
@@ -947,6 +974,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
     </tr>
     <tr>
       <td>TOO_LARGE_CONTRACT_STATE</td>
+      <td>200</td>
       <td>The requested contract state is too large to be returned from this node (the default limit is 50kb of state size)</td>
       <td>
         <ul>
@@ -957,6 +985,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
     </tr>
     <tr>
       <td>UNAVAILABLE_SHARD</td>
+      <td>200</td>
       <td>The node was unable to find the requested data because it does not track the shard where data is present</td>
       <td>
         <ul>
@@ -966,6 +995,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
     </tr>
     <tr>
       <td>NO_SYNCED_BLOCKS</td>
+      <td>200</td>
       <td>The node is still syncing and the requested block is not in the database yet</td>
       <td>
         <ul>
@@ -977,6 +1007,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
     <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)</td>
       <td>
         <ul>
@@ -988,6 +1019,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>Something went wrong with the node itself or overloaded</td>
       <td>
         <ul>
@@ -1139,6 +1171,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>Reason</th>
       <th>Solution</th>
     </tr>
@@ -1147,6 +1180,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
     <tr>
       <td rowspan="2">HANDLER_ERROR</td>
       <td>UNKNOWN_BLOCK</td>
+      <td>200</td>
       <td>The requested block has not been produced yet or it has been garbage-collected (cleaned up to save space on the RPC node)</td>
       <td>
         <ul>
@@ -1157,6 +1191,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
     </tr>
     <tr>
       <td>NOT_SYNCED_YET</td>
+      <td>200</td>
       <td>The node is still syncing and the requested block is not in the database yet</td>
       <td>
         <ul>
@@ -1168,6 +1203,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
     <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)</td>
       <td>
         <ul>
@@ -1179,6 +1215,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>Something went wrong with the node itself or overloaded</td>
       <td>
         <ul>
@@ -1313,6 +1350,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>Reason</th>
       <th>Solution</th>
     </tr>
@@ -1321,6 +1359,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
     <tr>
       <td rowspan="2">HANDLER_ERROR</td>
       <td>UNKNOWN_BLOCK</td>
+      <td>200</td>
       <td>The requested block has not been produced yet or it has been garbage-collected (cleaned up to save space on the RPC node)</td>
       <td>
         <ul>
@@ -1331,6 +1370,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
     </tr>
     <tr>
       <td>NOT_SYNCED_YET</td>
+      <td>200</td>
       <td>The node is still syncing and the requested block is not in the database yet</td>
       <td>
         <ul>
@@ -1342,6 +1382,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
     <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)</td>
       <td>
         <ul>
@@ -1353,6 +1394,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>Something went wrong with the node itself or overloaded</td>
       <td>
         <ul>
@@ -1538,6 +1580,7 @@ Here is the exhaustive list of the error variants that can be returned by `call_
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>Reason</th>
       <th>Solution</th>
     </tr>
@@ -1546,6 +1589,7 @@ Here is the exhaustive list of the error variants that can be returned by `call_
     <tr>
       <td rowspan="7">HANDLER_ERROR</td>
       <td>UNKNOWN_BLOCK</td>
+      <td>200</td>
       <td>The requested block has not been produced yet or it has been garbage-collected (cleaned up to save space on the RPC node)</td>
       <td>
         <ul>
@@ -1556,6 +1600,7 @@ Here is the exhaustive list of the error variants that can be returned by `call_
     </tr>
     <tr>
       <td>INVALID_ACCOUNT</td>
+      <td>200</td>
       <td>The requested <code>account_id</code> is invalid</td>
       <td>
         <ul>
@@ -1565,6 +1610,7 @@ Here is the exhaustive list of the error variants that can be returned by `call_
     </tr>
     <tr>
       <td>UNKNOWN_ACCOUNT</td>
+      <td>200</td>
       <td>The requested <code>account_id</code> has not been found while viewing since the account has not been created or has been already deleted</td>
       <td>
         <ul>
@@ -1575,6 +1621,7 @@ Here is the exhaustive list of the error variants that can be returned by `call_
     </tr>
     <tr>
       <td>NO_CONTRACT_CODE</td>
+      <td>200</td>
       <td>The requested <code>contract_code</code> has not been found while viewing</td>
       <td>
         <ul>
@@ -1585,6 +1632,7 @@ Here is the exhaustive list of the error variants that can be returned by `call_
     </tr>
     <tr>
       <td>CONTRACT_EXECUTION_ERROR</td>
+      <td>200</td>
       <td>The execution of the view function call failed (crashed, run out of the default 200 TGas limit, etc)</td>
       <td>
         <ul>
@@ -1594,6 +1642,7 @@ Here is the exhaustive list of the error variants that can be returned by `call_
     </tr>
     <tr>
       <td>UNAVAILABLE_SHARD</td>
+      <td>200</td>
       <td>The node was unable to find the requested data because it does not track the shard where data is present</td>
       <td>
         <ul>
@@ -1603,6 +1652,7 @@ Here is the exhaustive list of the error variants that can be returned by `call_
     </tr>
     <tr>
       <td>NO_SYNCED_BLOCKS</td>
+      <td>200</td>
       <td>The node is still syncing and the requested block is not in the database yet</td>
       <td>
         <ul>
@@ -1614,6 +1664,7 @@ Here is the exhaustive list of the error variants that can be returned by `call_
     <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)</td>
       <td>
         <ul>
@@ -1625,6 +1676,7 @@ Here is the exhaustive list of the error variants that can be returned by `call_
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>Something went wrong with the node itself or overloaded</td>
       <td>
         <ul>
