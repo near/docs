@@ -81,7 +81,7 @@ When the auction is ended - by calling the method `claim` - the NFT needs to be 
 
 </Tabs>
 
-When calling this method we specify the NFT contract name, that we are attaching 30 Tgas to the call, that we are attaching a deposit of 1 YoctoNEAR to the call (since the NFT contract requires this for [security reasons](../../2.build/2.smart-contracts/security/one_yocto.md)), and the arguments `reciever_id` and `token_id`.
+When calling this method we specify the NFT contract name, that we are attaching 30 Tgas to the call, that we are attaching a deposit of 1 YoctoNEAR to the call (since the NFT contract requires this for [security reasons](../../2.build/2.smart-contracts/security/one_yocto.md)), and the arguments `receiver_id` and `token_id`.
 
 ---
 
