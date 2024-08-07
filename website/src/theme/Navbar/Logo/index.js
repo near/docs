@@ -1,13 +1,11 @@
 import React from 'react';
 import Logo from '@theme/Logo';
-import BrowserOnly from '@docusaurus/BrowserOnly';
+import useIsBrowser from '@docusaurus/useIsBrowser';
 
 export default function NavbarLogo() {
-
+  const isBrowser = useIsBrowser();
   // if embedded in an iframe, do not show the logo
-  <BrowserOnly>
-    {() => { if (window.location !== window.parent.location) return null; }}
-  </BrowserOnly>
+  if (isBrowser && typeof window !== 'undefined' && window.self !== window.top) return null;
 
   return (
     <Logo
