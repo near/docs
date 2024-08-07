@@ -6,7 +6,7 @@ sidebar_label: Basic Auction
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {Github} from "@site/src/components/codetabs"
+import {Github, Language} from "@site/src/components/codetabs"
 
 In this section of the tutorial, we'll clone a simple auction smart contract and analyze each section of the contract in-depth. We'll also look at how to test a smart contract, and then how to deploy and interact with the contract on testnet.
 
@@ -174,9 +174,7 @@ An auction isn't an auction if you can't place a bid! The contract has a `bid` m
                 url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/src/contract.ts#L20-L40"
                 start="20" end="40" />
 
-        When the user calls the `bid` method they will transfer $NEAR tokens to the contract; to enable the transfer of $NEAR tokens we set `payableFunction` to `true`. This method is what we call a "change method", also known as a "call method"; we know this as it has the `call` decorator. Change methods, by name, change the state of the contract and require the user to attach gas. 
-
-        There are some specifics to this method that we should take a closer look at: 
+        When the user calls the `bid` method they will transfer $NEAR tokens to the contract; to enable the transfer of $NEAR tokens we set `payableFunction` to `true`. The method is decorated with `call` so the state of the contract can be changed within the method. These types of methods require a user to sign the transaction that calls the method and requires the user to attach gas.
 
     </TabItem>
 
@@ -186,31 +184,41 @@ An auction isn't an auction if you can't place a bid! The contract has a `bid` m
                 url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs#L33-L59"
                 start="33" end="59" />
 
-        When the user calls the `bid` method they will transfer $NEAR tokens to the contract; to enable the transfer of $NEAR tokens we need to decorate the method with the `payable` macro. This method is what we call a "change method", also known as a "call method"; we know this since it passes a mutable reference to `self` ($mut self). Change methods, by name, change the state of the contract and require the user to attach gas.
+        When the user calls the `bid` method they will transfer $NEAR tokens to the contract; to enable the transfer of $NEAR tokens we need to decorate the method with the `payable` macro. The method takes a mutable reference to `self` (&mut self) so the state of the contract can be changed within the method. These types of methods require a user to sign the transaction that calls the method and requires the user to attach gas. 
 
-        There are some specifics to this method that we should take a closer look at: 
+        <details> 
+        
+            <summary> require over assert </summary>
 
-        - We use `require` as opposed to `assert` as it reduces the contract size by not including file and rust-specific data in the panic message.
+                Require has been used here as opposed to assert as it reduces the contract 
+                size by not including file and rust-specific data in the panic message.
 
+        </details>    
     </TabItem>
 
 </Tabs>
+
+There are some specifics to this method that we should take a closer look at: 
+
 
 - The `block timestamp` is used to determine whether the auction is still ongoing. It gives the time as the number of nanoseconds since January 1, 1970, 0:00:00 UTC.
 - The `predecessor` gives the account (or contract) that directly called the bid method, this can be different to the signer who initially signed the transaction leading to the execution of this method. If pivortex.near calls a contract proxy-contract.near which then calls bid on this contract the predecessor would be proxy-contract.near and the signer would be pivortex.near. For security purposes, so a malicious contract can't place a bid in your name, we stick with predecessor using here.
 - The contract returns a `Promise` that will execute the transfer of $NEAR tokens back to the previous bidder.
 
+Note that in the case of the first bid the contract will send 1 YoctoNEAR to itself, this is fine as we can safely assume that the contract will have the lowest denomination of NEAR available to send to itself.
+
 ---
 
 ### Viewing the contract state
  
-The contract also implements "view methods"; these allow the user to view the data stored on the contract. View methods don't require any gas but cannot change the state of the contract. For example, this could be used to view, in the frontend, what the highest bid amount was so we make sure that we place a higher bid.
+The contract implements methods that do not change the contract's state but just view it. These methods don't require gas. We would want, for example, a method to see, in the frontend, what the highest bid amount was so we make sure to place a higher bid. 
+
 
 <Tabs groupId="code-tabs">
 
     <TabItem value="js" label="🌐 JavaScript">
 
-        View methods are decorated with `view`.
+        View methods are decorated with `view` so they cannot change the contract's state.
 
         <Github fname="contract.ts" language="javascript"
                 url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/src/contract.ts#L42-L45"
@@ -220,7 +228,7 @@ The contract also implements "view methods"; these allow the user to view the da
 
     <TabItem value="rust" label="🦀 Rust">
 
-        View methods take an immutable reference to `self` (&self).
+        View methods take an immutable reference to `self` (&self) so they cannot change the contract's state.
 
         <Github fname="lib.rs" language="rust"
                 url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs#L61-L63"
@@ -231,7 +239,7 @@ The contract also implements "view methods"; these allow the user to view the da
 </Tabs>
 
 
-The contract has further view methods that follow a similar structure. 
+The contract has two further view methods: the first retrieves the end time of the auction and the second retrieves all the information stored in the `Contract` struct.
 
 ---
 
@@ -239,13 +247,17 @@ The contract has further view methods that follow a similar structure.
 
 Ok, now we've seen the contract we need to make sure it works as expected; this is done through testing. It's good practice to implement exhaustive tests so you can ensure that any little change to your code down the line doesn't break your contract.
 
-In our rust repository, we have a unit test to check that the contract is initialized properly. Unit tests are used to test contract methods individually, these tests work well when little context is required. However, because our contract has operations like sending accounts $NEAR tokens, which happens external to the contract, we need an environment to test the contract.
+In our rust repository, we have a unit test to check that the contract is initialized properly. Unit tests are used to test contract methods individually, these tests work well when little context is required. However, because our contract has operations like sending accounts $NEAR tokens, which happen external to the contract, we need an environment to test the contract.
 
 ---
 
-### Integration tests
+## Sandbox testing
 
 Integration tests allow you to deploy your contract (or contracts) in a sandbox to interact with it in a realistic environment where, for example, accounts have trackable balances Throughout this section, you'll see there is just one large test. This is because the contract only has one possible flow meaning all methods can be properly tested in one test. 
+
+---
+
+### Creating the sandbox
 
 The first thing the test does is create the sandbox environment.
 
@@ -273,6 +285,9 @@ The first thing the test does is create the sandbox environment.
 
 </Tabs>
 
+---
+
+### Creating user accounts
 
 Next, the test creates a couple of user accounts that will be used to send transactions to the contract. Each account is given an account ID and an initial balance.
 
@@ -288,18 +303,22 @@ Next, the test creates a couple of user accounts that will be used to send trans
 
     <TabItem value="rust" label="🦀 Rust">
 
-        <Github fname="test_basics.rs" language="rust"
+        <Language value="rust" language="js">
+            <Github fname="Call create_subaccount" 
                 url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L16-L17"
-                start="16" end="17" />
-
-        <Github fname="test_basics.rs" language="rust"
+                start="12" end="17" />
+            <Github fname="create_subaccount definition" 
                 url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L93-L105"
                 start="93" end="105" />
+        </Language>
 
     </TabItem>
 
 </Tabs>
 
+---
+
+### Deploying the contract
 
 Likewise, a "contract" account is created and the contract WASM is deployed to it.
 
@@ -307,7 +326,7 @@ Likewise, a "contract" account is created and the contract WASM is deployed to i
 
     <TabItem value="js" label="🌐 JavaScript">
 
-        The contract comes from compiling the contract to WASM using the build script in the package.json file and then reading it.
+        The contract comes from compiling the contract to WASM using the build script in the `package.json` file and then reading it.
 
         <Github fname="main.ava.js" language="javascript"
                 url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/sandbox-test/main.ava.js#L22"
@@ -321,16 +340,15 @@ Likewise, a "contract" account is created and the contract WASM is deployed to i
 
         <Github fname="test_basics.rs" language="rust"
                 url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L11"
-                start="11" end="11" />
-
-        <Github fname="test_basics.rs" language="rust"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L21"
-                start="21" end="21" />
+                start="20" end="21" />
 
     </TabItem>
 
 </Tabs>
 
+---
+
+### Initializing the contract
 
 To initialize the contract `init` is called with `end_time` set to 60 seconds in the future.
 
@@ -354,6 +372,10 @@ To initialize the contract `init` is called with `end_time` set to 60 seconds in
 
 </Tabs>
 
+---
+
+### Testing methods
+
 Now the contract is deployed and initialized, bids are made to the contract and it's checked that the state changes as intended. 
 
 <Tabs groupId="code-tabs">
@@ -376,7 +398,11 @@ Now the contract is deployed and initialized, bids are made to the contract and 
 
 </Tabs>
 
-When a higher bid is placed the previous bidder should be returned the $NEAR they bid. This is checked by querying the $NEAR balance of the user account. We might think that the test would check whether Alice's balance is back to 10 $NEAR but it does not. This is because some $NEAR is consumed as `gas` fees when Alice calls `bid`. Instead, Alice's balance is recorded after she bids, and once another user bids, it checks that exactly 1 $NEAR has been added to her balance.
+---
+
+### Checking user balances
+
+When a higher bid is placed the previous bidder should be returned the $NEAR they bid. This is checked by querying the $NEAR balance of the user account. We might think that the test would check whether Alice's balance is back to 10 $NEAR but it does not. This is because some $NEAR is consumed as `gas` fees when Alice calls `bid`. Instead, Alice's balance is recorded after she bids, then once another user bids it checks that exactly 1 $NEAR has been added to her balance.
 
 <Tabs groupId="code-tabs">
 
@@ -397,6 +423,10 @@ When a higher bid is placed the previous bidder should be returned the $NEAR the
     </TabItem>
 
 </Tabs>
+
+---
+
+### Testing invalid calls
 
 When testing we should also check that the contract does not allow invalid calls. The next part checks that the contract doesn't allow for bids with fewer $NEAR tokens than the previous to be made.
 
@@ -419,6 +449,10 @@ When testing we should also check that the contract does not allow invalid calls
     </TabItem>
 
 </Tabs>
+
+---
+
+### Fast forwarding time
 
 To test the contract when the auction is over the test uses `fast forward` to advance time in the sandbox. Note that fast forward takes the number of blocks to advance not the number of seconds. The test advances 200 blocks so the time will now be past the minute auction end time that was set. 
 
@@ -551,4 +585,6 @@ near contract call-method as-read-only <contractId> get_highest_bid json-args {}
 
 ## Conclusion 
 
-In this part of the tutorial, we've seen how a smart contract stores data, mutates the stored data and views the data. We also looked at how tests are written and how to execute them. Finally, we learned to compile, deploy and interact with the contract through the CLI on testnet. In the [next part](./2-locking.md), we'll edit the existing contract and add a new method so the contract to learn how to lock a contract. 
+In this part of the tutorial, we've seen how a smart contract stores data, mutates the stored data and views the data. We also looked at how tests are written and how to execute them. Finally, we learned to compile, deploy and interact with the contract through the CLI on testnet. 
+
+There is a core problem to this contract; there needs to exist a key to the contract for the auctioneer to claim the funds. This allows for the key holder to do with the contract as they please, for example withdrawing funds from the contract at any point. In the [next part](./2-locking.md), we'll learn how to lock a contract by specifying an auctioneer on initialization who can claim the funds through a new method we'll introduce.

@@ -8,46 +8,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {Github} from "@site/src/components/codetabs"
 
-No one will enter an auction if there's nothing to win, so let's add a prize. Why not an [NFT](../../2.build/5.primitives/nft.md)? NFTs are uniquely identifiable, easily swappable and their logic comes from an external contract with audited standards so the prize will exist without the auction contract. Let's get to work!
-
----
-
-## Defining the NFT interface
-
-
-<Tabs groupId="code-tabs">
-
-    <TabItem value="js" label="🌐 JavaScript">
-
-    TODO
-
-    </TabItem>
-
-    <TabItem value="rust" label="🦀 Rust">
-
-        Since NFTs follow standards, all NFT contracts implement the same interface that sets out the contract's methods, what parameters these methods take and what the method will return. When we are making calls to other contracts we write the interface of each method in a separate file `ext.rs` as a `trait`. 
-
-        <Github fname="ext.rs" language="rust"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-owner-claims-winner-gets-nft/src/ext.rs"
-                start="1" end="10" />
-
-        `nft_transfer` transfers the ownership of an NFT from one account ID to another. The method takes the arguments `receiver_id` dictating who will now own the NFT and the `token_id` specifying which token in the NFT contract is having its ownership transferred. The `ext_contract` macro converts the NFT trait into a module with the method `nft_transfer`.
-
-        Note that we declare `TokenId` in our main file `lib.rs`. The NFT standards use a type alias for future-proofing.
-
-        <Github fname="lib.rs" language="rust"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-owner-claims-winner-gets-nft/src/lib.rs#L15"
-                start="15" end="15" />
-
-        We import our interface into `lib.rs` as such:
-        
-        <Github fname="lib.rs" language="rust"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-owner-claims-winner-gets-nft/src/lib.rs#L5-L6"
-                start="5" end="6" />
-
-    </TabItem>
-
-</Tabs>
+No one will enter an auction if there's nothing to win, so let's add a prize. Why not an [NFT](../../2.build/5.primitives/nft.md)? NFTs are uniquely identifiable, easily swappable and their logic comes from an external contract so the prize will exist without the auction contract. Let's get to work!
 
 ---
 
@@ -60,7 +21,9 @@ When we create an auction we need to list the NFT. To specify which NFT is being
 
     <TabItem value="js" label="🌐 JavaScript">
 
-    TODO
+        <Github fname="main.ava.js" language="javascript"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/03-owner-claims-winner-gets-nft/src/contract.ts#L22-L28"
+                start="22" end="28" />
 
     </TabItem>
 
@@ -70,6 +33,8 @@ When we create an auction we need to list the NFT. To specify which NFT is being
                 url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-owner-claims-winner-gets-nft/src/lib.rs#L32-L49"
                 start="32" end="49" />
 
+        Note that `token_id` is of type `TokenId` which is a String type alias that the NFT standards use for future-proofing.
+
     </TabItem>
 
 </Tabs>
@@ -78,18 +43,35 @@ When we create an auction we need to list the NFT. To specify which NFT is being
 
 ## Transferring the NFT to the winner
 
+When the auction is ended - by calling the method `claim` - the NFT needs to be transferred to the highest bidder. Operations regarding NFTs live on the NFT contract, so we need to make a cross-contract call to the NFT contract telling it that the highest bidder now owns the NFT, not the auction contract. The method on the NFT contract is called `nft_transfer`.
+
 <Tabs groupId="code-tabs">
 
     <TabItem value="js" label="🌐 JavaScript">
 
-    TODO
+        <Github fname="contract.ts" language="javascript"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/03-owner-claims-winner-gets-nft/src/contract.ts#L69-L74"
+                start="69" end="74" />
 
     </TabItem>
 
     <TabItem value="rust" label="🦀 Rust">
 
-        
-        When the auction is ended - by calling the method `claim` - the NFT needs to be transferred to the highest bidder. We make a cross-contract call to the NFT contract, via the external method we defined, at the end of `claim`.
+        We will create a new file in our source folder named `ext.rs`; here we are going to define the interface for the `nft_transfer` method. We define this interface as a `trait` and use the `ext_contract` macro to convert the NFT trait into a module with the method `nft_transfer`.
+
+        <Github fname="ext.rs" language="rust"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-owner-claims-winner-gets-nft/src/ext.rs"
+                start="2" end="10" />
+
+        Defining external methods in a separate file helps improve the readability of our code.
+
+        Make sure to import the interface into lib.rs.
+
+        <Github fname="lib.rs" language="rust"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-owner-claims-winner-gets-nft/src/lib.rs#L5-L6"
+                start="5" end="6" />
+
+        Then we use this method to transfer the NFT.
 
         <Github fname="lib.rs" language="rust"
                 url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-owner-claims-winner-gets-nft/src/lib.rs#L94-L97"
@@ -105,22 +87,15 @@ When calling this method we specify the NFT contract name, that we are attaching
 
 ## NFT ownership problems
 
-In our contract, we perform no checks to verify whether the contract actually owns the specified NFT. A bad actor could set up an auction with an NFT that the contract doesn't own causing `nft_transfer` to fail and the winning bidder to lose their bid funds with nothing in return. We could make a cross-contract call to the NFT contract to verify ownership on initialization but this would become quite complex. Instead, we will do this check off-chain and validate the auction in the frontend. 
+In our contract, we perform no checks to verify whether the contract actually owns the specified NFT. A bad actor could set up an auction where the NFT being auctioned doesn't belong to the auction contract, causing `nft_transfer` to fail and the winning bidder to lose their bid funds with nothing in return. We could make a cross-contract call to the NFT contract to verify ownership on initialization but this would become quite complex. Instead, we will do this check off-chain and validate the auction in the frontend. 
 
 ---
 
-## Updating the tests
+## Testing with external contracts
 
-Again let's go and update our tests to reflect the changes we've made to our contract.
+In our tests, we're now going to be using two contracts; the auction contract and an NFT contract. Integration tests allow us to test multiple contracts in a realistic environment.
 
----
-
-
-## Integration tests
-
-In our integration tests, we're now going to be interacting with two contracts; the auction contract and an NFT contract. Integration tests are perfect for testing multiple contracts that interact.
-
-In our tests folder, we need the WASM for an NFT contract. **Add more here**
+In our tests folder, we need the WASM for an NFT contract. For this tutorial we compiled an example NFT contract from [this repo](https://github.com/near-examples/NFT/tree/master) 
 
 We deploy the NFT contract WASM using `dev_deploy` which creates an account with a random ID and deploys the contract to it.
 

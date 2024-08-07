@@ -374,8 +374,8 @@ const sidebar = {
         "tutorials/auction/introduction",
         "tutorials/auction/basic-auction",
         "tutorials/auction/locking-the-contract",
-        "tutorials/auction/winning-an-nft",
-        "tutorials/auction/bidding-with-FTs",
+        // "tutorials/auction/winning-an-nft",
+        // "tutorials/auction/bidding-with-FTs",
       ]
     },
     {

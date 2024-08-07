@@ -8,7 +8,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {Github} from "@site/src/components/codetabs"
 
-In the basic contract to claim the tokens from the final bid on the contract, the contract owner would have to log into a wallet using a key and withdraw NEAR to their main wallet. This provides a poor UX, but even more importantly it is a security issue. Since there is a key to the contract, a keyholder can maliciously mutate the contract's storage as they wish, for example, alter the highest bidder to list their own account. The core principle of smart contracts is that they eliminate the need for trust when interacting with an application, thus we will [lock](../../1.concepts/protocol/access-keys.md#locked-accounts) the contract by removing all access keys and implementing a new method to `claim` the tokens.
+In the basic contract, the auctioneer would claim the tokens from the final bid of the contract via logging into the contract accounts wallet using a key. It is a security issue for there to exist a key for a smart contract since the key holder can take the funds from the contract at any point, maliciously change the contract or just delete the contract as a whole. To stop exploitation we will [lock](../../1.concepts/protocol/access-keys.md#locked-accounts) the contract by removing all access keys and implementing a new method to `claim` the tokens.
 
 ---
 
@@ -76,7 +76,7 @@ We will also now also test the `claim` method. The test will check that the `auc
 
     <TabItem value="js" label="🌐 JavaScript">
 
-        <Github fname="contract.ts" language="javascript"
+        <Github fname="main.ava.js" language="javascript"
                 url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/02-owner-claims-money/sandbox-test/main.ava.js#L70-L81"
                 start="70" end="81" />
 
@@ -112,4 +112,6 @@ Be extra careful to delete the keys from the correct account as you'll never be 
 
 ## Conclusion
 
-In this part of the tutorial, we learned how to lock a contract by creating a new method to claim tokens, specify an account on initialization that will claim the tokens and how to delete the contract account's keys with the CLI. In the [next part](./3-nft.md), we'll add a prize to the auction by introducing a new primitive.
+In this part of the tutorial, we learned how to lock a contract by creating a new method to claim tokens, specify an account on initialization that will claim the tokens and how to delete the contract account's keys with the CLI. 
+
+In the next part (coming soon), we'll add a prize to the auction by introducing a new primitive; spoiler, the primitive is an NFT. We'll look at how to use non-fungible token standards to send NFTs and interact with multiple interacting contracts in sandbox testing.
