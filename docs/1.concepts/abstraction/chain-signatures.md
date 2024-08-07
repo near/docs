@@ -13,7 +13,7 @@ This unlocks the next level of blockchain interoperability by giving ownership o
 _Diagram of a chain signature in NEAR_
 
 :::caution
-This technology is currently in `alpha` and should only be used in a `testnet` environment.
+This technology is currently in `beta` and should be used carefully and with audits on `mainnet`.
 :::
 
 ---
@@ -72,10 +72,10 @@ The essence of Multi-Party Computation (MPC) is to enable independent parties to
 
 NEAR's MPC service is comprised of several independent nodes, **none of which can sign by itself**, but instead create **signature-shares** that are **aggregated through multiple rounds** to **jointly** sign a transaction.
 
-This service continuously listens for signature requests (i.e. users calling the `sign` method on the `multichain` smart contract) and when a call is detected the MPC service:
+This service continuously listens for signature requests (i.e. users calling the `sign` method on the `v1.signer` smart contract) and when a call is detected the MPC service:
 
   1. Asks its nodes to jointly derive a signature for the `payload` using the account identified by the `path`
-  2. Once complete, call the `multichain` contract to store the resulting `Signature`
+  2. Once complete, call the `v1.signer` contract to store the resulting `Signature`
 
 :::info A Custom MPC Service
 Generally, MPC signing services work by sharing a master key, which needs to be re-created each time a node joins or leaves.
