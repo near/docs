@@ -180,6 +180,7 @@ Here is the exhaustive list of the error variants that can be returned by `broad
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>Reason</th>
       <th>Solution</th>
     </tr>
@@ -188,6 +189,7 @@ Here is the exhaustive list of the error variants that can be returned by `broad
     <tr>
       <td rowspan="2">HANDLER_ERROR</td>
       <td>INVALID_TRANSACTION</td>
+      <td>200</td>
       <td>An error happened during transaction execution</td>
       <td>
         <ul>
@@ -199,6 +201,7 @@ Here is the exhaustive list of the error variants that can be returned by `broad
     </tr>
     <tr>
       <td>TIMEOUT_ERROR</td>
+      <td>408</td>
       <td>Transaction was routed, but has not been recorded on chain in 10 seconds.</td>
       <td>
         <ul>
@@ -211,6 +214,7 @@ Here is the exhaustive list of the error variants that can be returned by `broad
     <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)</td>
       <td>
         <ul>
@@ -222,6 +226,7 @@ Here is the exhaustive list of the error variants that can be returned by `broad
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>Something went wrong with the node itself or overloaded</td>
       <td>
         <ul>
@@ -416,6 +421,7 @@ Here is the exhaustive list of the error variants that can be returned by `tx` m
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>Reason</th>
       <th>Solution</th>
     </tr>
@@ -424,6 +430,7 @@ Here is the exhaustive list of the error variants that can be returned by `tx` m
     <tr>
       <td rowspan="3">HANDLER_ERROR</td>
       <td>INVALID_TRANSACTION</td>
+      <td>200</td>
       <td>An error happened during transaction execution</td>
       <td>
         <ul>
@@ -433,6 +440,7 @@ Here is the exhaustive list of the error variants that can be returned by `tx` m
     </tr>
     <tr>
       <td>UNKNOWN_TRANSACTION</td>
+      <td>200</td>
       <td>The requested transaction is not available on the node since it might have not been recorded on the chain yet or has been garbage-collected</td>
       <td>
         <ul>
@@ -444,6 +452,7 @@ Here is the exhaustive list of the error variants that can be returned by `tx` m
     </tr>
     <tr>
       <td>TIMEOUT_ERROR</td>
+      <td>408</td>
       <td>It was unable to wait for the transaction status for reasonable time</td>
       <td>
         <ul>
@@ -455,6 +464,7 @@ Here is the exhaustive list of the error variants that can be returned by `tx` m
     <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)</td>
       <td>
         <ul>
@@ -466,6 +476,7 @@ Here is the exhaustive list of the error variants that can be returned by `tx` m
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>Something went wrong with the node itself or overloaded</td>
       <td>
         <ul>
@@ -794,6 +805,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>Reason</th>
       <th>Solution</th>
     </tr>
@@ -802,6 +814,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
     <tr>
       <td rowspan="3">HANDLER_ERROR</td>
       <td>INVALID_TRANSACTION</td>
+      <td>200</td>
       <td>An error happened during transaction execution</td>
       <td>
         <ul>
@@ -811,6 +824,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
     </tr>
     <tr>
       <td>UNKNOWN_TRANSACTION</td>
+      <td>200</td>
       <td>The requested transaction is not available on the node since it might have not been recorded on the chain yet or has been garbage-collected</td>
       <td>
         <ul>
@@ -822,6 +836,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
     </tr>
     <tr>
       <td>TIMEOUT_ERROR</td>
+      <td>408</td>
       <td>It was unable to wait for the transaction status for reasonable time</td>
       <td>
         <ul>
@@ -833,6 +848,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
     <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)</td>
       <td>
         <ul>
@@ -844,6 +860,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>Something went wrong with the node itself or overloaded</td>
       <td>
         <ul>
@@ -961,6 +978,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>Reason</th>
       <th>Solution</th>
     </tr>
@@ -969,6 +987,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
     <tr>
       <td>HANDLER_ERROR</td>
       <td>UNKNOWN_RECEIPT</td>
+      <td>200</td>
       <td>The receipt with the given <code>receipt_id</code> was never observed on the node</td>
       <td>
         <ul>
@@ -980,6 +999,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
     <tr>
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)</td>
       <td>
         <ul>
@@ -991,6 +1011,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>Something went wrong with the node itself or overloaded</td>
       <td>
         <ul>
@@ -1126,6 +1147,7 @@ Here is the exhaustive list of the error variants that can be returned by `broad
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>Reason</th>
       <th>Solution</th>
     </tr>
@@ -1134,6 +1156,7 @@ Here is the exhaustive list of the error variants that can be returned by `broad
     <tr class="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)</td>
       <td>
         <ul>
@@ -1303,6 +1326,7 @@ Here is the exhaustive list of the error variants that can be returned by `broad
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>Reason</th>
       <th>Solution</th>
     </tr>
@@ -1311,6 +1335,7 @@ Here is the exhaustive list of the error variants that can be returned by `broad
     <tr>
       <td rowspan="2">HANDLER_ERROR</td>
       <td>INVALID_TRANSACTION</td>
+      <td>200</td>
       <td>An error happened during transaction execution</td>
       <td>
         <ul>
@@ -1322,6 +1347,7 @@ Here is the exhaustive list of the error variants that can be returned by `broad
     </tr>
     <tr>
       <td>TIMEOUT_ERROR</td>
+      <td>408</td>
       <td>Transaction was routed, but has not been recorded on chain in 10 seconds.</td>
       <td>
         <ul>
@@ -1334,6 +1360,7 @@ Here is the exhaustive list of the error variants that can be returned by `broad
     <tr class="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)</td>
       <td>
         <ul>
@@ -1345,6 +1372,7 @@ Here is the exhaustive list of the error variants that can be returned by `broad
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>Something went wrong with the node itself or overloaded</td>
       <td>
         <ul>

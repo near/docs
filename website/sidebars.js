@@ -1,113 +1,5 @@
 const sidebar = {
   "concepts": [
-    "concepts/welcome",
-    "concepts/basics/protocol",
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> The NEAR Protocol </small></b></span>"
-    },
-    {
-      type: 'category',
-      label: 'Accounts / Contracts',
-      link: { type: 'doc', id: 'concepts/protocol/account-model' },
-      items: [
-        "concepts/protocol/account-id",
-        "concepts/protocol/access-keys",
-        "concepts/protocol/smartcontract",
-      ]
-    },
-    {
-      type: 'category',
-      label: 'Transactions',
-      link: { type: 'doc', id: 'concepts/protocol/transactions' },
-      items: [
-        "concepts/protocol/transaction-anatomy",
-        "concepts/protocol/gas",
-        "concepts/protocol/transaction-execution",
-      ]
-    },
-    {
-      "Data Flow": [
-        "concepts/data-flow/near-data-flow",
-        "concepts/data-flow/token-transfer-flow"
-      ]
-    },
-    {
-      "Tokens": ["concepts/basics/tokens", "concepts/basics/token-loss"]
-    },
-    {
-      "Storage": [
-        "concepts/storage/storage-staking",
-        "concepts/storage/storage-solutions"
-      ]
-    },
-    {
-      "Network": [
-        "concepts/basics/validators",
-        "concepts/basics/networks",
-        "concepts/basics/epoch",
-      ]
-    },
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Chain Abstraction ✨</small></b></span>"
-    },
-    "concepts/abstraction/introduction",
-    "concepts/abstraction/meta-transactions",
-    "concepts/abstraction/relayers",
-    {
-      "Chain Signatures": [
-        "concepts/abstraction/chain-signatures",
-        "concepts/abstraction/signatures/use-cases",
-      ]
-    },
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Blockchain Data &amp; Indexing </small></b></span>"
-    },
-    [
-      "concepts/data-flow/data-storage",
-      {
-        "Data Indexing": [
-          "concepts/advanced/indexers",
-          "concepts/advanced/near-indexer-framework",
-          "concepts/advanced/near-lake-framework"
-        ]
-      }
-    ],
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Advanced Topics </small></b></span>"
-    },
-    [
-      "concepts/basics/runtime",
-      "concepts/advanced/specification",
-      {
-        "type": "link",
-        "label": "Papers",
-        "href": "https://near.org/papers"
-      },
-    ],
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
     {
       "type": "html",
       "value": "<span class='menu__link'><b><small> From Web 2 to Web 3 </small></b></span>"
@@ -128,16 +20,81 @@ const sidebar = {
     },
     {
       "type": "html",
+      "value": "<span class='menu__link'><b><small> NEAR Protocol </small></b></span>"
+    },
+    "concepts/basics/protocol",
+    {
+      "Understand the Protocol": [
+        {
+          type: 'category',
+          label: 'Accounts / Contracts',
+          link: { type: 'doc', id: 'concepts/protocol/account-model' },
+          items: [
+            "concepts/protocol/account-id",
+            "concepts/protocol/access-keys",
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Transactions',
+          link: { type: 'doc', id: 'concepts/protocol/transactions' },
+          items: [
+            "concepts/protocol/transaction-anatomy",
+            "concepts/protocol/gas",
+            "concepts/protocol/transaction-execution",
+          ]
+        },
+        {
+          "Data Flow": [
+            "concepts/data-flow/near-data-flow",
+            "concepts/data-flow/token-transfer-flow"
+          ]
+        },
+        {
+          "Tokens": ["concepts/basics/tokens", "concepts/basics/token-loss"]
+        },
+        {
+          "Storage": [
+            "concepts/storage/storage-staking",
+            "concepts/storage/storage-solutions"
+          ]
+        },
+        {
+          "Network": [
+            "concepts/basics/validators",
+            "concepts/basics/networks",
+            "concepts/basics/epoch",
+            "concepts/basics/runtime",
+          ]
+        },
+      ]
+    },
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
       "value": "<span class='menu__link'><b><small> Chain Abstraction ✨ </small></b></span>"
     },
     'build/chain-abstraction/what-is',
     {
       "Chain Abstraction Services": [
-        "build/chain-abstraction/meta-transactions",
-        'build/chain-abstraction/fastauth-sdk',
-        'build/chain-abstraction/chain-signatures',
-        'build/chain-abstraction/wallet',
-        'build/chain-abstraction/nft-chain-keys',
+        {
+          "Meta Transactions": [
+            "concepts/abstraction/meta-transactions",
+            "concepts/abstraction/relayers",
+            "build/chain-abstraction/meta-transactions",
+          ]
+        },
+        {
+          "Chain Signatures": [
+            "concepts/abstraction/chain-signatures",
+            'build/chain-abstraction/chain-signatures',
+            'build/chain-abstraction/nft-chain-keys',
+          ]
+        },
+        // 'build/chain-abstraction/wallet',
         {
           "Multichain Gas Relayer": [
             "build/chain-abstraction/multichain-gas-relayer/overview",
@@ -146,6 +103,7 @@ const sidebar = {
             "build/chain-abstraction/multichain-gas-relayer/relayer-gas-example",
           ]
         },
+        'build/chain-abstraction/fastauth-sdk',
         "build/chain-abstraction/data-availability",
       ]
     },
@@ -176,11 +134,15 @@ const sidebar = {
               "type": "html",
               "value": "<hr/>"
             },
-            "build/smart-contracts/anatomy/best-practices",
-            "build/smart-contracts/anatomy/serialization",
-            "build/smart-contracts/anatomy/serialization-protocols",
-            "build/smart-contracts/anatomy/reduce-size",
-            "build/smart-contracts/anatomy/reproducible-builds",
+            {
+              "Advanced": [
+                "build/smart-contracts/anatomy/best-practices",
+                "build/smart-contracts/anatomy/serialization",
+                "build/smart-contracts/anatomy/serialization-protocols",
+                "build/smart-contracts/anatomy/reduce-size",
+                "build/smart-contracts/anatomy/reproducible-builds",
+              ]
+            }
           ]
         },
         {
@@ -224,49 +186,7 @@ const sidebar = {
             },
             "build/smart-contracts/security/bounty"
           ]
-        },
-        {
-          "type": "html",
-          "value": "<hr/>"
-        },
-        {
-          "type": "html",
-          "value": "<a class='menu__link internal' href='/tutorials/examples/count-near'> 📖 Tutorials </a>",
-        },
-      ]
-    },
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Multi-Chain Components </small></b></span>"
-    },
-    "build/near-components/what-is",
-    {
-      "Building Web3 Components": [
-        "build/near-components/dev-environment",
-        {
-          "Anatomy of a Component": [
-            "build/near-components/anatomy/state",
-            "build/near-components/anatomy/web-methods",
-            "build/near-components/anatomy/builtin-components",
-            "build/near-components/anatomy/near",
-            "build/near-components/anatomy/social",
-            "build/near-components/anatomy/notifications",
-            "build/near-components/anatomy/bos-components"
-          ]
-        },
-        "build/near-components/bos-gateway",
-        {
-          "type": "html",
-          "value": "<hr/>"
-        },
-        {
-          "type": "html",
-          "value": "<a class='menu__link internal' href='/tutorials/near-components/bos-loader'> 📖 Tutorials </a>",
-        },
+        }
       ]
     },
     {
@@ -281,23 +201,39 @@ const sidebar = {
     {
       "Building Web3 Applications": [
         "build/web3-apps/quickstart",
-        "build/web3-apps/frontend",
-        "build/web3-apps/integrate-contracts",
-        "build/web3-apps/integrate-components",
+        {
+          type: 'category',
+          label: 'Frontends',
+          link: { type: 'doc', id: 'build/web3-apps/frontend' },
+          items: [
+            "build/web3-apps/integrate-contracts",
+            {
+              "Social Components (BOS)": [
+                "build/near-components/what-is",
+                "build/near-components/dev-environment",
+                {
+                  "Anatomy of a Component": [
+                    "build/near-components/anatomy/state",
+                    "build/near-components/anatomy/web-methods",
+                    "build/near-components/anatomy/builtin-components",
+                    "build/near-components/anatomy/near",
+                    "build/near-components/anatomy/social",
+                    "build/near-components/anatomy/notifications",
+                    "build/near-components/anatomy/bos-components"
+                  ]
+                },
+                "build/near-components/bos-gateway",
+                "build/web3-apps/integrate-components",
+              ]
+            }
+          ]
+        },
         {
           "Backend": [
             "build/web3-apps/backend/backend-login",
           ]
         },
-        {
-          "type": "html",
-          "value": "<hr/>"
-        },
-        {
-          "type": "html",
-          "value": "<a class='menu__link internal' href='/tutorials/examples/count-near'> 📖 Tutorials </a>",
-        },
-      ],
+      ]
     },
     {
       "type": "html",
@@ -316,14 +252,6 @@ const sidebar = {
         "build/primitives/oracles",
         "build/primitives/dao",
         "build/primitives/dex",
-        {
-          "type": "html",
-          "value": "<hr/>"
-        },
-        {
-          "type": "html",
-          "value": "<a class='menu__link internal' href='/tutorials/nfts/minting-nfts'> 📖 Tutorials </a>",
-        },
       ]
     },
     {
@@ -337,6 +265,7 @@ const sidebar = {
     "build/data-infrastructure/what-is",
     {
       "NEAR Data Infrastructure": [
+        "concepts/data-flow/data-storage",
         "build/data-infrastructure/big-query",
         {
           "QueryAPI": [
@@ -352,6 +281,7 @@ const sidebar = {
         },
         {
           "Lake Framework": [
+            "concepts/advanced/near-lake-framework",  
             "build/data-infrastructure/lake-framework/near-lake",
             "build/data-infrastructure/lake-framework/near-lake-state-changes-indexer",
             "build/data-infrastructure/lake-framework/migrating-to-near-lake-framework",
@@ -504,7 +434,7 @@ const sidebar = {
                 "tutorials/nfts/minting",
                 "tutorials/nfts/upgrade-contract",
                 "tutorials/nfts/enumeration",
-                "tutorials/nfts/core",              ]
+                "tutorials/nfts/core",]
             },
             "tutorials/nfts/events",
             {

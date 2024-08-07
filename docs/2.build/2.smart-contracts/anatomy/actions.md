@@ -31,7 +31,7 @@ You can send $NEAR from your contract to any other account on the network. The G
   class Contract{
     @call({})
     transfer({ to, amount }: { to: AccountId, amount: bigint }) {
-      NearPromise.new(to).transfer(amount);
+      return NearPromise.new(to).transfer(amount);
     }
   }
 ```

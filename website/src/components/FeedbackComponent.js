@@ -24,20 +24,22 @@ export function FeedbackComponent() {
     const [choice, setChoice] = useState();
 
     return (
-        <div className="feelback-container">
-            {!choice
-                ? <Question text="Was this page helpful?"
-                    items={PRESET_YESNO_LIKE_DISLIKE}
-                    showLabels
-                    onClick={setChoice}
-                />
-                : <FeelbackTaggedMessage contentSetId={FEEDBACK_CONTENT_SET_ID}
-                    layout="radio-group"
-                    tags={choice === "y" ? YES_TAGS : NO_TAGS}
-                    title={choice === "y" ? "What did you like?" : "What went wrong?"}
-                    placeholder="(optional) Please, further detail the feedback"
-                />
-            }
+        <div class="theme-admonition theme-admonition-tip admonition_node_modules-@docusaurus-theme-classic-lib-theme-Admonition-Layout-styles-module alert alert--info">
+            <div className="feelback-container">
+                {!choice
+                    ? <Question text="Was this page helpful?"
+                        items={PRESET_YESNO_LIKE_DISLIKE}
+                        showLabels
+                        onClick={setChoice}
+                    />
+                    : <FeelbackTaggedMessage contentSetId={FEEDBACK_CONTENT_SET_ID}
+                        layout="radio-group"
+                        tags={choice === "y" ? YES_TAGS : NO_TAGS}
+                        title={choice === "y" ? "What did you like?" : "What went wrong?"}
+                        placeholder="(optional) Please, further detail the feedback"
+                    />
+                }
+            </div>
         </div>
     );
 }

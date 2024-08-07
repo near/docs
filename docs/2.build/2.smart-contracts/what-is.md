@@ -8,16 +8,18 @@ Smart contracts are pieces of **executable code** that live in a NEAR account. T
 
 ![img](/docs/assets/welcome-pages/contracts-landing.png)
 
+Developers can choose between using Javascript or Rust to write smart contracts in NEAR. Indistinctly from the language chosen, the contract will be compiled into WebAssembly, from which point it can be deployed and executed on the NEAR platform.
+
+<details>
+
+<summary> New to Smart Contract Development? </summary>
+
 Do not worry if you don't know how smart-contract blockchains work. As a developer, it is sufficient to understand that NEAR smart-contracts:
 1. Have **limited** computational resources.
 2. Interact with other contracts in an **asynchronous** way.
 3. Deal with **real money**, for which security must be a top concern.
 
-:::info HTTP Requests and Smart Contracts
-
-Smart contracts **cannot perform HTTP requests**, meaning they can't fetch data from outside the NEAR network.
-
-:::
+</details>
 
 ---
 
@@ -29,6 +31,34 @@ Once in an account, anyone can interact with the contract. Thanks to the underly
 :::tip
 Storing 100kb costs 1Ⓝ, so deploying a contract generally costs only a few $NEARs.
 :::
+
+---
+
+## What can they do?
+
+Smart contracts have **complete control over the account**, and thus can perform **any action on its behalf**. For example, contracts can:
+- Transfer $NEAR Tokens 
+- Call methods on other contracts
+- Create new accounts and deploy contracts on them
+- Update their own code
+
+Besides, smart contracts can store data in the account's storage. This allows contracts to create almost any type of application, from simple games to complex financial systems.
+
+:::danger What contracts cannot do
+- Smart contracts cannot **access the internet**, so they cannot make HTTP requests or access external data 
+- Smart contracts cannot **execute automatically**, they need to be called by an external account
+:::
+
+---
+
+## What are they used for?
+Smart contracts are useful to create **decentralized applications**. Some traditional examples include:
+- [Decentralized Autonomous Organizations](https://dev.near.org/nearcatalog.near/widget/Index?cat=dao), where users create and vote proposals
+- [Marketplaces](https://dev.near.org/nearcatalog.near/widget/Index?cat=marketplaces), where users create and commercialize digital art pieces
+- [Decentralized exchanges](https://dev.near.org/nearcatalog.near/widget/Index?cat=exchanges), where users can trade different currencies
+- [And many more...](https://dev.near.org/nearcatalog.near/widget/Index)
+
+For instance, you can easily create a crowdfunding contract that accepts $NEAR. If the goal is met in time, the creator can claim the funds. Otherwise, the backers are refunded.
 
 ---
 

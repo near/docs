@@ -19,8 +19,8 @@ export function NearWidget({ children, id = 1, height = "160px", networkId = 'te
         const { initNear } = useInitNear();
 
         useEffect(() => {
-          initNear && initNear({ networkId, selector: new Promise(() => {}) });
-        }, [initNear, selector]);
+          initNear && initNear({ networkId, selector: new Promise(() => { }) });
+        }, [initNear]);
 
         return <>
           <div className="code_iframe">

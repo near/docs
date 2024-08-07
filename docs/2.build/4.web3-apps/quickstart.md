@@ -1,7 +1,7 @@
 ---
 id: quickstart
 title: Hello WebApp
-sidebar_label: ⭐ Quickstart a WebApp
+sidebar_label: Quickstart ✨
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
