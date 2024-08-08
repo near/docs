@@ -1,10 +1,15 @@
 ---
 id: getting-started
-title: NEAR Multichain Gas Relayer - Getting Started Guide
+title: "Multichain Gas Relayer: Getting Started Guide"
 hide_table_of_contents: true
 ---
 
-The Multichain Gas Relayer provides gas abstraction for foreign chains outside of NEAR. This system, in conjunction with NEAR Chain Signatures, allows NEAR users to transact on other blockchains and pay for gas using NEAR, USDC, USDT, or other NEAR-based tokens from a single NEAR account. Chain Signatures lets users manage remote accounts and transact on any blockchain from a single NEAR account. The Multichain Gas Relayer further simplifies this process by eliminating the need for users to acquire native gas tokens to transact on other chains.
+The Multichain Gas Relayer provides gas abstraction for foreign chains outside of NEAR. This system, in conjunction with NEAR Chain Signatures, allows NEAR users to transact on other blockchains and pay for gas using NEAR, USDC, USDT, or other NEAR-based tokens from a single NEAR account.
+
+![img](https://pages.near.org/wp-content/uploads/2024/02/acct-abstraction-blog-1.png)
+
+Chain Signatures lets users manage remote accounts and transact on any blockchain from a single NEAR account. The Multichain Gas Relayer further simplifies this process by eliminating the need for users to acquire native gas tokens to transact on other chains.
+
 
 ---
 

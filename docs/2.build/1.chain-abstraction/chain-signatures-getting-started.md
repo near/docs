@@ -4,7 +4,11 @@ title: Getting Started with Chain Signatures
 hide_table_of_contents: true
 ---
 
-Chain Signatures is a groundbreaking technology built on NEAR that enables NEAR accounts, including smart contracts, to sign and execute transactions across multiple blockchains. This innovation leverages Multi-Party Computation (MPC) and a distributed network of node operators to create joint signatures from arbitrary payloads, allowing NEAR users to control external blockchain accounts. This technology enhances blockchain interoperability, giving ownership of diverse assets, cross-chain accounts, and data to a single NEAR account.
+Chain Signatures is a groundbreaking technology built on NEAR that enables NEAR accounts, including smart contracts, to sign and execute transactions across multiple blockchains. This innovation leverages Multi-Party Computation (MPC) and a distributed network of node operators to create joint signatures from arbitrary payloads, allowing NEAR users to control external blockchain accounts. 
+
+![img](https://pages.near.org/wp-content/uploads/2024/02/acct-abstraction-blog-1.png)
+
+This technology enhances blockchain interoperability, giving ownership of diverse assets, cross-chain accounts, and data to a single NEAR account.
 
 ---
 
