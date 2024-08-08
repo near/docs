@@ -15,8 +15,13 @@ import {
 import Translate from '@docusaurus/Translate';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import translations from '@theme/SearchTranslations';
+import AskCookbook from '@cookbookdev/docsbot/react';
+import BrowserOnly from '@docusaurus/BrowserOnly';
 
 let DocSearchModal = null;
+
+/** It's a public API key, so it's fine to just hardcode it here */
+const COOKBOOK_PUBLIC_API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NmIzZjU1NzU1N2UxOGI0Yjk2MWQ2YzUiLCJpYXQiOjE3MjMwNjk3ODMsImV4cCI6MjAzODY0NTc4M30.yPBwsRMFRKxGF1w4Jr5NCO_6RkGsWF4uqHGwZl6Aolw";
 
 /* We only modified this */
 function Hit(props) {
@@ -188,6 +193,7 @@ function DocSearch({ contextualSearch, externalUrlRegex, ...props }) {
           />,
           searchContainer.current,
         )}
+        <BrowserOnly>{() => <AskCookbook apiKey={COOKBOOK_PUBLIC_API_KEY} /> }</BrowserOnly>
     </>
   );
 }

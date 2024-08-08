@@ -31,6 +31,7 @@
     "wait-on": "^5.2.0"
   },
   "dependencies": {
+    "@cookbookdev/docsbot": "^4.21.15",
     "@crowdin/cli": "^3.9.0",
     "@docusaurus/core": "^3.4.0",
     "@docusaurus/plugin-ideal-image": "^3.4.0",
