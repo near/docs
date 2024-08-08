@@ -28,7 +28,7 @@ This section provides an overview of the system design, including the main compo
 
 2. [**Gas Station Contract**](gas-station.md): A smart contract on NEAR that manages the creation, signing, and relaying of transactions to foreign chains. It also handles gas fee calculations and collects NEAR tokens for gas payments on foreign chains.
 
-3. [**MPC Signing Service**](../chain-signatures.md): A network of trusted Multi-Party Computation (MPC) signers that cooperatively sign transactions. This ensures secure transaction signing and validation on the NEAR blockchain before relaying to foreign chains.
+3. [**MPC Signing Service**](../chain-signatures/chain-signatures.md): A network of trusted Multi-Party Computation (MPC) signers that cooperatively sign transactions. This ensures secure transaction signing and validation on the NEAR blockchain before relaying to foreign chains.
 
 ### Technical Diagram
 
