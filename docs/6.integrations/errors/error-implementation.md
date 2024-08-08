@@ -441,6 +441,8 @@ pub enum ReceiptValidationError {
     NumberInputDataDependenciesExceeded { number_of_input_data_dependencies: u64, limit: u64 },
     /// An error occurred while validating actions of an ActionReceipt.
     ActionsValidation(ActionsValidationError),
+    /// Receipt is bigger than the limit.
+    ReceiptSizeExceeded { size: u64, limit: u64 },
 }
 ```
 
@@ -466,6 +468,9 @@ ReceiptValidationError::NumberInputDataDependenciesExceeded { number_of_input_da
 "The number of input data dependencies {} exceeded the limit {} in an ActionReceipt"
 
 ReceiptValidationError::ActionsValidation(e) 
+
+ReceiptValidationError::ReceiptSizeExceeded { size, limit }
+"The size of the receipt exceeded the limit: {} > {}",
 ```
 
 
