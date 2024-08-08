@@ -38,20 +38,19 @@ There are five steps to create a Chain Signature:
 ![chain-signatures](/docs/assets/welcome-pages/chain-signatures-overview.png)
 _Diagram of a chain signature in NEAR_
 
-:::info MPC testnet contracts
+:::info MPC Contracts
 
 If you want to try things out, these are the smart contracts available on `testnet`:
 
 - `v1.signer-prod.testnet`: [MPC signer](https://github.com/near/mpc/tree/v0.2.0/contract) contract, latest release, made up of 8 MPC nodes
 - `canhazgas.testnet`: [Multichain Gas Station](multichain-gas-relayer/gas-station.md) contract
-- `nft.kagi.testnet`: [NFT Chain Key](nft-keys.md) contract
 
 :::
 
 :::info MPC mainnet contracts
 
 - `v1.signer`: [MPC signer](https://github.com/near/mpc/tree/v0.2.0/contract) contract, latest release, made up of 8 MPC nodes
-
+- `canhazgas.near`: [Multichain Gas Station](multichain-gas-relayer/gas-station.md) contract
 :::
 
 ---

@@ -88,7 +88,13 @@ const sidebar = {
           ]
         },
         {
-          "Chain Signatures": [
+          "type": "category",
+          "label": "Chain Signatures",
+          "link": {
+            "type": "doc",
+            "id": "build/chain-abstraction/chain-signatures-getting-started"
+          },
+          "items": [
             "concepts/abstraction/chain-signatures",
             'build/chain-abstraction/chain-signatures',
             'build/chain-abstraction/nft-chain-keys',
@@ -96,7 +102,13 @@ const sidebar = {
         },
         // 'build/chain-abstraction/wallet',
         {
-          "Multichain Gas Relayer": [
+          "type": "category",
+          "label": "Multichain Gas Relayer",
+          "link": {
+            "type": "doc",
+            "id": "build/chain-abstraction/multichain-gas-relayer/getting-started"
+          },
+          "items": [
             "build/chain-abstraction/multichain-gas-relayer/overview",
             "build/chain-abstraction/multichain-gas-relayer/gas-station",
             "build/chain-abstraction/multichain-gas-relayer/multichain-server",
@@ -281,7 +293,7 @@ const sidebar = {
         },
         {
           "Lake Framework": [
-            "concepts/advanced/near-lake-framework",  
+            "concepts/advanced/near-lake-framework",
             "build/data-infrastructure/lake-framework/near-lake",
             "build/data-infrastructure/lake-framework/near-lake-state-changes-indexer",
             "build/data-infrastructure/lake-framework/migrating-to-near-lake-framework",
