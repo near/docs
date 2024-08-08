@@ -18,6 +18,12 @@ Using those tools you will implement the following flow:
 2. Ask the user to **sign-in** using a NEAR wallet.
 2. **Call methods** in the contract.
 
+### Naxios
+
+You can optionally use [Naxios](https://wpdas.gitbook.io/naxios). A promise-based NEAR Contract and NEAR Wallet Client for browser.
+
+Naxios was designed to facilitate the React / Next.js integration with NEAR Blockchain and avoid the boilerplate of setting up a wallet and contract.
+
 ---
 
 ## Adding NEAR API JS and Wallet Selector
