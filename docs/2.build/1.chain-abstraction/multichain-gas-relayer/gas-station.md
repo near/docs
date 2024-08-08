@@ -119,7 +119,7 @@ Users who wish to get transactions signed and relayed by this contract and its a
 
 If you want to try things out, this smart contract is available on:
 - testnet: `canhazgas.testnet`
-- mainnet: `TBD`
+- mainnet: `canhazgas.near`
 
 :::
 
