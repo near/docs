@@ -97,7 +97,7 @@ const sidebar = {
           "items": [
             "concepts/abstraction/chain-signatures",
             'build/chain-abstraction/chain-signatures/chain-signatures',
-            'build/chain-abstraction/nft-chain-keys',
+            // 'build/chain-abstraction/nft-chain-keys',
           ]
         },
         // 'build/chain-abstraction/wallet',
