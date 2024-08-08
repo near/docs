@@ -1,5 +1,5 @@
 ---
-id: chain-signatures-getting-started
+id: getting-started
 title: Getting Started with Chain Signatures
 hide_table_of_contents: true
 ---

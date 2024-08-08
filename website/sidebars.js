@@ -92,12 +92,12 @@ const sidebar = {
           "label": "Chain Signatures",
           "link": {
             "type": "doc",
-            "id": "build/chain-abstraction/chain-signatures-getting-started"
+            "id": "build/chain-abstraction/chain-signatures/getting-started"
           },
           "items": [
             "concepts/abstraction/chain-signatures",
-            'build/chain-abstraction/chain-signatures',
-            'build/chain-abstraction/nft-chain-keys',
+            'build/chain-abstraction/chain-signatures/chain-signatures',
+            // 'build/chain-abstraction/nft-chain-keys',
           ]
         },
         // 'build/chain-abstraction/wallet',
