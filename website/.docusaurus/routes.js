@@ -114,15 +114,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '90e'),
+    component: ComponentCreator('/zh-CN/', '69b'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '526'),
+        component: ComponentCreator('/zh-CN/', 'c17'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '6e3'),
+            component: ComponentCreator('/zh-CN/', '428'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -191,8 +191,14 @@ export default [
                 sidebar: "api"
               },
               {
-                path: '/zh-CN/build/chain-abstraction/chain-signatures',
-                component: ComponentCreator('/zh-CN/build/chain-abstraction/chain-signatures', 'ec3'),
+                path: '/zh-CN/build/chain-abstraction/chain-signatures/',
+                component: ComponentCreator('/zh-CN/build/chain-abstraction/chain-signatures/', '152'),
+                exact: true,
+                sidebar: "build"
+              },
+              {
+                path: '/zh-CN/build/chain-abstraction/chain-signatures/getting-started',
+                component: ComponentCreator('/zh-CN/build/chain-abstraction/chain-signatures/getting-started', 'f8e'),
                 exact: true,
                 sidebar: "build"
               },
@@ -221,6 +227,12 @@ export default [
                 sidebar: "build"
               },
               {
+                path: '/zh-CN/build/chain-abstraction/multichain-gas-relayer/getting-started',
+                component: ComponentCreator('/zh-CN/build/chain-abstraction/multichain-gas-relayer/getting-started', '162'),
+                exact: true,
+                sidebar: "build"
+              },
+              {
                 path: '/zh-CN/build/chain-abstraction/multichain-gas-relayer/multichain-server',
                 component: ComponentCreator('/zh-CN/build/chain-abstraction/multichain-gas-relayer/multichain-server', 'b37'),
                 exact: true,
@@ -240,9 +252,8 @@ export default [
               },
               {
                 path: '/zh-CN/build/chain-abstraction/nft-chain-keys',
-                component: ComponentCreator('/zh-CN/build/chain-abstraction/nft-chain-keys', 'd04'),
-                exact: true,
-                sidebar: "build"
+                component: ComponentCreator('/zh-CN/build/chain-abstraction/nft-chain-keys', 'a0c'),
+                exact: true
               },
               {
                 path: '/zh-CN/build/chain-abstraction/wallet',

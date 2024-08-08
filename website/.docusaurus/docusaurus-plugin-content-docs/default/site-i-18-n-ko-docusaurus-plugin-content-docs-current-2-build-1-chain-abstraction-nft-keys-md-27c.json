@@ -17,14 +17,5 @@
     "id": "nft-chain-keys",
     "title": "NFT Chain Keys Smart Contract",
     "sidebar_label": "NFT Chain Keys Contract"
-  },
-  "sidebar": "build",
-  "previous": {
-    "title": "Implementing Chain Signatures",
-    "permalink": "/ko/build/chain-abstraction/chain-signatures"
-  },
-  "next": {
-    "title": "Overview",
-    "permalink": "/ko/build/chain-abstraction/multichain-gas-relayer/overview"
   }
 }

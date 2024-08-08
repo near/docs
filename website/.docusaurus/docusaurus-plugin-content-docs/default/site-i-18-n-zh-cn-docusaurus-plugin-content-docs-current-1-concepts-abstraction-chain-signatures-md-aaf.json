@@ -20,11 +20,11 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Meta Transaction Relayers",
-    "permalink": "/zh-CN/build/chain-abstraction/meta-transactions"
+    "title": "Getting Started with Chain Signatures",
+    "permalink": "/zh-CN/build/chain-abstraction/chain-signatures/getting-started"
   },
   "next": {
     "title": "Implementing Chain Signatures",
-    "permalink": "/zh-CN/build/chain-abstraction/chain-signatures"
+    "permalink": "/zh-CN/build/chain-abstraction/chain-signatures/"
   }
 }

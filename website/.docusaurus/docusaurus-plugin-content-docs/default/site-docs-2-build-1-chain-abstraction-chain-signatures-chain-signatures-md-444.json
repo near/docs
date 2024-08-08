@@ -1,0 +1,29 @@
+{
+  "id": "build/chain-abstraction/chain-signatures/chain-signatures",
+  "title": "Implementing Chain Signatures",
+  "description": "Chain signatures enable NEAR accounts, including smart contracts, to sign and execute transactions across many blockchain protocols.",
+  "source": "@site/../docs/2.build/1.chain-abstraction/chain-signatures/chain-signatures.md",
+  "sourceDirName": "2.build/1.chain-abstraction/chain-signatures",
+  "slug": "/build/chain-abstraction/chain-signatures/",
+  "permalink": "/zh-CN/build/chain-abstraction/chain-signatures/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/1.chain-abstraction/chain-signatures/chain-signatures.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Guille",
+  "lastUpdatedAt": 1723123572000,
+  "frontMatter": {
+    "id": "chain-signatures",
+    "title": "Implementing Chain Signatures"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "What are Chain Signatures?",
+    "permalink": "/zh-CN/concepts/abstraction/chain-signatures"
+  },
+  "next": {
+    "title": "Multichain Gas Relayer: Getting Started Guide",
+    "permalink": "/zh-CN/build/chain-abstraction/multichain-gas-relayer/getting-started"
+  }
+}

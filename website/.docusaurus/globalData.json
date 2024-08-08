@@ -66,8 +66,13 @@
               "sidebar": "api"
             },
             {
-              "id": "build/chain-abstraction/chain-signatures",
-              "path": "/zh-CN/build/chain-abstraction/chain-signatures",
+              "id": "build/chain-abstraction/chain-signatures/chain-signatures",
+              "path": "/zh-CN/build/chain-abstraction/chain-signatures/",
+              "sidebar": "build"
+            },
+            {
+              "id": "build/chain-abstraction/chain-signatures/getting-started",
+              "path": "/zh-CN/build/chain-abstraction/chain-signatures/getting-started",
               "sidebar": "build"
             },
             {
@@ -91,6 +96,11 @@
               "sidebar": "build"
             },
             {
+              "id": "build/chain-abstraction/multichain-gas-relayer/getting-started",
+              "path": "/zh-CN/build/chain-abstraction/multichain-gas-relayer/getting-started",
+              "sidebar": "build"
+            },
+            {
               "id": "build/chain-abstraction/multichain-gas-relayer/multichain-server",
               "path": "/zh-CN/build/chain-abstraction/multichain-gas-relayer/multichain-server",
               "sidebar": "build"
@@ -107,8 +117,7 @@
             },
             {
               "id": "build/chain-abstraction/nft-chain-keys",
-              "path": "/zh-CN/build/chain-abstraction/nft-chain-keys",
-              "sidebar": "build"
+              "path": "/zh-CN/build/chain-abstraction/nft-chain-keys"
             },
             {
               "id": "build/chain-abstraction/wallet",
