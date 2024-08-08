@@ -1,7 +1,7 @@
 {
   "id": "build/chain-abstraction/multichain-gas-relayer/getting-started",
   "title": "Multichain Gas Relayer: Getting Started Guide",
-  "description": "The Multichain Gas Relayer provides gas abstraction for foreign chains outside of NEAR. This system, in conjunction with NEAR Chain Signatures, allows NEAR users to transact on other blockchains and pay for gas using NEAR, USDC, USDT, or other NEAR-based tokens from a single NEAR account.",
+  "description": "Chain Signatures lets users manage remote accounts and transact on any blockchain from a single NEAR account. The Multichain Gas Relayer further simplifies this process by eliminating the need for users to acquire the tokens needed in the foreign chain to execute their transactions.",
   "source": "@site/../docs/2.build/1.chain-abstraction/multichain-gas-relayer/getting-started.md",
   "sourceDirName": "2.build/1.chain-abstraction/multichain-gas-relayer",
   "slug": "/build/chain-abstraction/multichain-gas-relayer/getting-started",
@@ -12,11 +12,10 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Guille",
-  "lastUpdatedAt": 1723122565000,
+  "lastUpdatedAt": 1723133135000,
   "frontMatter": {
     "id": "getting-started",
-    "title": "Multichain Gas Relayer: Getting Started Guide",
-    "hide_table_of_contents": true
+    "title": "Multichain Gas Relayer: Getting Started Guide"
   },
   "sidebar": "build",
   "previous": {
