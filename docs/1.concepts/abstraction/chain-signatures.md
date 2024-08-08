@@ -12,10 +12,6 @@ This unlocks the next level of blockchain interoperability by giving ownership o
 ![chain-signatures](/docs/assets/welcome-pages/chain-signatures-overview.png)
 _Diagram of a chain signature in NEAR_
 
-:::caution
-This technology is currently in `beta` and should be used carefully and with audits on `mainnet`.
-:::
-
 ---
 
 ## How It Works
