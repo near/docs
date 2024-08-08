@@ -70,7 +70,7 @@ To run the [Gas Station indexer](https://github.com/near/gas-station-event-index
    make install
    ```
 
-3. Update the [`config.toml`](https://github.com/near/gas-station-event-indexer/blob/main/config.toml) configuration file with appropriate values
+3. Update the [`config.toml`](https://github.com/near/gas-station-event-indexer/blob/main/config.toml) configuration file with appropriate values (use `canhazgas.near` for mainnet)
    ```
    network = "testnet"
    # gas station contract account id
@@ -135,7 +135,7 @@ The following instructions are only need to be called once to initialize the acc
       mint json-args {} prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' \
       sign-as <account_id>.testnet network-config testnet sign-with-keychain send
     ```
-3. Approve the Gas Station for this Token
+3. Approve the Gas Station for this Token (use or use `canhazgas.near` for mainnet):
     ```shell
     near contract call-function as-transaction v2.nft.kagi.testnet \
       ckt_approve_call json-args '{"token_id":"<token_id>","account_id":"canhazgas.testnet","msg":""}' \
@@ -145,7 +145,7 @@ The following instructions are only need to be called once to initialize the acc
 
 ### Manual test steps
 
-1. Get paymaster info for the chain you want to send to from the gas station contract, then optionally manually set nonces:
+1. Get paymaster info for the chain you want to send to from the gas station contract, then optionally manually set nonces (use `canhazgas.near` for mainnet):
     ```shell
     near contract call-function as-transaction canhazgas.testnet \
      get_paymasters json-args '{"chain_id": "<chain_id>"}' \
@@ -165,7 +165,7 @@ The following instructions are only need to be called once to initialize the acc
     ]
     ------------------------------------
     ```
-   1. You may need to manually set the nonce for the paymaster to be able to send the transaction:
+   1. You may need to manually set the nonce for the paymaster to be able to send the transaction (use `canhazgas.near` for mainnet):
    ```shell
    near contract call-function as-transaction canhazgas.testnet \
     get_paymasters json-args '{"chain_id": "<chain_id>"}' \
@@ -215,7 +215,7 @@ Python and Rust output different hex RLP encoded transactions.
    You should transfer the amount of `NEAR` that's needed to cover gas both on NEAR and on the foreign chain.
    You also need to paste in the RLP generated hex for the EVM transaction you want on the other chain generated in step 1.
    When it asks you to send or display, choose send.
-   For example:
+   For example (use `canhazgas.near` for mainnet):
     ```shell
     near contract call-function as-transaction canhazgas.testnet \
       create_transaction json-args '{"transaction_rlp_hex":"eb80851bf08eb000825208947b965bdb7f0464843572eb2b8c17bdf27b720b14872386f26fc1000080808080","use_paymaster":true,"token_id":"<token_id>"}' \
@@ -232,7 +232,7 @@ Python and Rust output different hex RLP encoded transactions.
       }
       ------------------------------------
      ```
-6. Get the `"id"` from the receipts from the result in the previous step, and use that to call `sign_next` twice:
+6. Get the `"id"` from the receipts from the result in the previous step, and use that to call `sign_next` twice (use `canhazgas.near` for mainnet):
     ```shell
     near contract call-function as-transaction canhazgas.testnet \
       sign_next json-args '{"id":"<id>"}' \
@@ -253,7 +253,7 @@ Python and Rust output different hex RLP encoded transactions.
 
 ### Optional for testing purposes
 
-Instead of creating a signed transaction and calling the gas station contract to sign it, you can get the recently signed transactions by calling the contract while replacing the `blockheight` with a more recent block height:
+Instead of creating a signed transaction and calling the gas station contract to sign it, you can get the recently signed transactions by calling the contract while replacing the `blockheight` with a more recent block height (use `canhazgas.near` for mainnet):
 
 ```sh
 near contract call-function as-read-only canhazgas.testnet list_signed_transaction_sequences_after json-args '{"block_height":"157111000"}' network-config testnet now
