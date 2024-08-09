@@ -382,6 +382,15 @@ const sidebar = {
       "value": "<span class='menu__link'><b><small> Tutorials </small></b></span>"
     },
     {
+      "NEAR Zero to Hero": [
+        "tutorials/auction/introduction",
+        "tutorials/auction/basic-auction",
+        "tutorials/auction/locking-the-contract",
+        // "tutorials/auction/winning-an-nft",
+        // "tutorials/auction/bidding-with-FTs",
+      ]
+    },
+    {
       "Components": [
         "tutorials/near-components/bos-loader",
         "tutorials/near-components/interaction",
