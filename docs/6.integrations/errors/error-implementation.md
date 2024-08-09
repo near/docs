@@ -442,6 +442,11 @@ pub enum ReceiptValidationError {
     /// An error occurred while validating actions of an ActionReceipt.
     ActionsValidation(ActionsValidationError),
     /// Receipt is bigger than the limit.
+    /// ReceiptSizeExceeded means that there was a receipt above the size limit (currently 4MiB).
+    /// NEAR will refuse to execute receipts that are above the size limit.
+    /// The most likely source of such receipts would be cross-contract calls with a lot of large actions
+    /// (contract deployment, function call with large args, etc).
+    /// This error means that the user has to adjust their contract to generate smaller receipts.
     ReceiptSizeExceeded { size: u64, limit: u64 },
 }
 ```
