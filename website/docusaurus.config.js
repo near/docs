@@ -26,6 +26,8 @@ const config = {
     fonts: {
       myFont: ['Inter', 'sans-serif'],
     },
+    REACT_APP_PUBLIC_POSTHOG_KEY: process.env.REACT_APP_PUBLIC_POSTHOG_KEY,
+    REACT_APP_PUBLIC_POSTHOG_HOST: process.env.REACT_APP_PUBLIC_POSTHOG_HOST
   },
   themes: ['@saucelabs/theme-github-codeblock', '@docusaurus/theme-mermaid'],
   onBrokenLinks: 'log',
@@ -141,7 +143,7 @@ const config = {
           label: 'Tools',
           position: 'left',
           items: [
-            { label: '🧰 All Tools', to: '/tools/welcome'},
+            { label: '🧰 All Tools', to: '/tools/welcome' },
             {
               type: 'html',
               value: '<hr/> <small class="subtitle"> Essentials </small>',
