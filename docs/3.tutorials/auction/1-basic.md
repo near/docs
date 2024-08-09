@@ -303,7 +303,7 @@ Next, the test creates a couple of user accounts that will be used to send trans
 
     <TabItem value="rust" label="🦀 Rust">
 
-        <Language value="rust" language="js">
+        <Language value="rust" language="rust">
             <Github fname="Call create_subaccount" 
                 url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L16-L17"
                 start="12" end="17" />

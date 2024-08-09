@@ -6,7 +6,7 @@ sidebar_label: Winning an NFT
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {Github} from "@site/src/components/codetabs"
+import {Github, Language} from "@site/src/components/codetabs"
 
 No one will enter an auction if there's nothing to win, so let's add a prize. Why not an [NFT](../../2.build/5.primitives/nft.md)? NFTs are uniquely identifiable, easily swappable and their logic comes from an external contract so the prize will exist without the auction contract. Let's get to work!
 
@@ -14,7 +14,7 @@ No one will enter an auction if there's nothing to win, so let's add a prize. Wh
 
 ## Listing the NFT
 
-When we create an auction we need to list the NFT. To specify which NFT is being auctioned off we need the account ID of the NFT contract and the token ID of the NFT. We will specify these when the contract is initialized; amend `init` as such:  
+When we create an auction we need to list the NFT. To specify which NFT is being auctioned off we need the account ID of the NFT contract and the token ID of the NFT. We will specify these when the contract is initialized; amend `init` to add `nft_contract` and `token_id` as such:  
 
 
 <Tabs groupId="code-tabs">
@@ -43,45 +43,38 @@ When we create an auction we need to list the NFT. To specify which NFT is being
 
 ## Transferring the NFT to the winner
 
-When the auction is ended - by calling the method `claim` - the NFT needs to be transferred to the highest bidder. Operations regarding NFTs live on the NFT contract, so we need to make a cross-contract call to the NFT contract telling it that the highest bidder now owns the NFT, not the auction contract. The method on the NFT contract is called `nft_transfer`.
+When the auction is ended - by calling the method `claim` - the NFT needs to be transferred to the highest bidder. Operations regarding NFTs live on the NFT contract, so we make a cross-contract call to the NFT contract telling it to swap the owner of the NFT to the highest bidder. The method on the NFT contract to do this is `nft_transfer`.
 
 <Tabs groupId="code-tabs">
 
     <TabItem value="js" label="🌐 JavaScript">
 
         <Github fname="contract.ts" language="javascript"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/03-owner-claims-winner-gets-nft/src/contract.ts#L69-L74"
-                start="69" end="74" />
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/03-owner-claims-winner-gets-nft/src/contract.ts#L68-L70"
+                start="68" end="70" />
 
     </TabItem>
 
     <TabItem value="rust" label="🦀 Rust">
 
-        We will create a new file in our source folder named `ext.rs`; here we are going to define the interface for the `nft_transfer` method. We define this interface as a `trait` and use the `ext_contract` macro to convert the NFT trait into a module with the method `nft_transfer`.
+        We will create a new file in our source folder named `ext.rs`; here we are going to define the interface for the `nft_transfer` method. We define this interface as a `trait` and use the `ext_contract` macro to convert the NFT trait into a module with the method `nft_transfer`. Defining external methods in a separate file helps improve the readability of our code. 
+        
+        We then use this method in our `lib.rs` file to transfer the NFT.
 
-        <Github fname="ext.rs" language="rust"
+        <Language value="rust" language="rust">
+            <Github fname="ext.rs" 
                 url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-owner-claims-winner-gets-nft/src/ext.rs"
                 start="2" end="10" />
-
-        Defining external methods in a separate file helps improve the readability of our code.
-
-        Make sure to import the interface into lib.rs.
-
-        <Github fname="lib.rs" language="rust"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-owner-claims-winner-gets-nft/src/lib.rs#L5-L6"
-                start="5" end="6" />
-
-        Then we use this method to transfer the NFT.
-
-        <Github fname="lib.rs" language="rust"
+            <Github fname="lib.rs" 
                 url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-owner-claims-winner-gets-nft/src/lib.rs#L94-L97"
-                start="94" end="97" />
+                start="93" end="96" />
+        </Language>
 
     </TabItem>
 
 </Tabs>
 
-When calling this method we specify the NFT contract name, that we are attaching 30 Tgas to the call, that we are attaching a deposit of 1 YoctoNEAR to the call (since the NFT contract requires this for [security reasons](../../2.build/2.smart-contracts/security/one_yocto.md)), and the arguments `receiver_id` and `token_id`.
+When calling this method we specify the NFT contract name, that we are attaching 30 Tgas to the call, that we are attaching a deposit of 1 YoctoNEAR to the call, and give the arguments `receiver_id` and `token_id`. The NFT requires that we attach 1 YoctoNEAR for [security reasons](../../2.build/2.smart-contracts/security/one_yocto.md).
 
 ---
 
@@ -91,57 +84,89 @@ In our contract, we perform no checks to verify whether the contract actually ow
 
 ---
 
-## Testing with external contracts
+## Testing with multiple contracts
 
-In our tests, we're now going to be using two contracts; the auction contract and an NFT contract. Integration tests allow us to test multiple contracts in a realistic environment.
+In our tests, we're now going to be using two contracts; the auction contract and an NFT contract. Sandbox testing is great as it allows us to test multiple contracts in a realistic environment.
 
-In our tests folder, we need the WASM for an NFT contract. For this tutorial we compiled an example NFT contract from [this repo](https://github.com/near-examples/NFT/tree/master) 
+In our tests folder, we need the WASM for an NFT contract. For this tutorial we compiled an example NFT contract from [this repo](https://github.com/near-examples/NFT/tree/master).
 
-We deploy the NFT contract WASM using `dev_deploy` which creates an account with a random ID and deploys the contract to it.
+To deploy the NFT contract, this time we're going to use `dev deploy` which creates an account with a random ID and deploys the contract to it by specifying the path to the WASM file. After deploying we will initialize the contract with default metadata and specify an account ID which will be the owner of the NFT contract (though the owner of the NFT contract is irrelevant in this example). 
 
 <Tabs groupId="code-tabs">
 
     <TabItem value="js" label="🌐 JavaScript">
 
-    TODO
+        <Github fname="main.ava.rs" language="javascript"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/03-owner-claims-winner-gets-nft/sandbox-test/main.ava.js#L24-L25"
+                start="24" end="25" />
 
     </TabItem>
 
     <TabItem value="rust" label="🦀 Rust">
 
         <Github fname="test_basics.rs" language="rust"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-owner-claims-winner-gets-nft/tests/test_basics.rs#L16-L17"
-                start="16" end="17" />
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-owner-claims-winner-gets-nft/tests/test_basics.rs#L23-L24"
+                start="23" end="32" />
 
     </TabItem>
 
 </Tabs>
 
-To get the NFT to be auctioned, the auction contract calls the NFT contract to mint a new NFT with the provided data.  
+---
+
+## Minting an NFT
+
+To start a proper auction the auction contract should own an NFT. To do this the auction contract calls the NFT contract to mint a new NFT with the provided data.  
 
 <Tabs groupId="code-tabs">
 
     <TabItem value="js" label="🌐 JavaScript">
 
-    TODO
+        <Github fname="main.ava.rs" language="javascript"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/03-owner-claims-winner-gets-nft/sandbox-test/main.ava.js#L28-L39"
+                start="28" end="39" />
 
     </TabItem>
 
     <TabItem value="rust" label="🦀 Rust">
 
         <Github fname="test_basics.rs" language="rust"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-owner-claims-winner-gets-nft/tests/test_basics.rs#L60-L76"
-                start="60" end="76" />
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-owner-claims-winner-gets-nft/tests/test_basics.rs#L35-L53"
+                start="35" end="53" />
 
     </TabItem>
 
 </Tabs>
 
-After `claim` is called, the tests should verify that the auction winner now owns the NFT. This is done by calling `nt_token` on the NFT contract and specifying the token ID.
+---
+
+## Verifying ownership of an NFT
+
+After `claim` is called, the test should verify that the auction winner now owns the NFT. This is done by calling `nft_token` on the NFT contract and specifying the token ID which will return the account ID that the token belongs to.
+
+<Tabs groupId="code-tabs">
+
+    <TabItem value="js" label="🌐 JavaScript">
+
+        <Github fname="main.ava.rs" language="javascript"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/03-owner-claims-winner-gets-nft/sandbox-test/main.ava.js#L105-L106"
+                start="105" end="106" />
+
+    </TabItem>
+
+    <TabItem value="rust" label="🦀 Rust">
+
+        <Github fname="test_basics.rs" language="rust"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-owner-claims-winner-gets-nft/tests/test_basics.rs#L144-L157"
+                start="144" end="157" />
+
+    </TabItem>
+
+</Tabs>
 
 ---
 
 ## Conclusion 
 
-This this part of the tutorial we have added NFTs as a reward which has taught us how to interact with NFT standards, make cross-contract calls and test multiple contracts that interact in workspaces. In the [next part](./4-ft.md) we'll learn how to interact with fungible token standards by adapting the auction to receive bids in FTs.   
+In this part of the tutorial we have added NFTs as a reward which has taught us how to interact with NFT standards, make cross-contract calls and test multiple contracts that interact in workspaces. In the [next part](./4-ft.md) we'll learn how to interact with fungible token standards by adapting the auction to receive bids in FTs. This will allow users to launch auctions in different tokens, including stablecoins. 
 

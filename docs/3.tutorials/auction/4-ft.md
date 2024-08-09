@@ -8,7 +8,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {Github} from "@site/src/components/codetabs"
 
-To make this contract more interesting we're going to introduce another primitive: [fungible tokens](../../2.build/5.primitives/ft.md). Instead of placing bids in NEAR tokens, they will be placed in FTs. This may be useful if, for example, an auctioneer wants to keep the bid amounts constant in terms of dollars as an auction is carried out, so bids can be placed in stablecoins such as $USDC. Another usecase is if a project like Ref Finance were holding their own auction and would want the auction to happen in their project's token $REF.
+To further develop this contract we're going to introduce another primitive: [fungible tokens](../../2.build/5.primitives/ft.md). Instead of placing bids in NEAR tokens, they will be placed in FTs. This may be useful if, for example, an auctioneer wants to keep the bid amounts constant in terms of dollars as an auction is carried out, so bids can be placed in stablecoins such as $USDC. Another use case is if a project like Ref Finance were holding their own auction and want the auction to happen in their project's token $REF.
 
 ---
 

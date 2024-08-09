@@ -14,10 +14,10 @@ We'll start by cloning a simple auction smart contract and slowly add features b
 - Building a smart contract
 - Testing a contract in a realistic environment 
 - Deploying and locking a contract
-
-<!-- - Making cross-contract calls
+- Making cross-contract calls
 - Using Non-Fungible Tokens
-- Using Fungible Tokens 
+
+<!-- - Using Fungible Tokens 
 - Creating a frontend for a contract
 - Setting up an indexer 
 - Creating a factory contract  -->
@@ -81,9 +81,9 @@ These are the steps that will bring you from **Zero** to **Hero** in no time! ðŸ
 |------|----------------------------------------|-----------------------------------------------------------------|
 | 1    | [Basic contract](./1-basic.md)         | Learn the how a basic smart contract is structured          |
 | 2    | [Locking the contract](./2-locking.md) | Learn to create contracts with no access keys                   |
+| 3    | [Winning an NFT](./3-nft.md)           | Learn about sending NFTs using cross-contract calls             |
 
-<!-- | 3    | [Winning an NFT](./3-nft.md)           | Learn about sending NFTs using cross-contract calls             |
-| 4    | [Bidding with FTs](./4-ft.md)          | Learn about sending and receiving FTs                           |
+<!-- | 4    | [Bidding with FTs](./4-ft.md)          | Learn about sending and receiving FTs                           |
 | 5    | [Create a Frontend](#)                 | Create a frontend to interact with your smart contract          |
 | 6    | [Monitor the Bids](#)                  | Learn how to use an indexer to monitor your contract's activity |
 | 7    | [Factory](#)                           | Create a contract that will create auctions                     | -->
