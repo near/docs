@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/1.chain-abstraction/chain-signatures/getting-started.md",
   "sourceDirName": "2.build/1.chain-abstraction/chain-signatures",
   "slug": "/build/chain-abstraction/chain-signatures/getting-started",
-  "permalink": "/zh-CN/build/chain-abstraction/chain-signatures/getting-started",
+  "permalink": "/build/chain-abstraction/chain-signatures/getting-started",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/1.chain-abstraction/chain-signatures/getting-started.md",
@@ -20,10 +20,10 @@
   "sidebar": "build",
   "previous": {
     "title": "Meta Transaction Relayers",
-    "permalink": "/zh-CN/build/chain-abstraction/meta-transactions"
+    "permalink": "/build/chain-abstraction/meta-transactions"
   },
   "next": {
     "title": "What are Chain Signatures?",
-    "permalink": "/zh-CN/concepts/abstraction/chain-signatures"
+    "permalink": "/concepts/abstraction/chain-signatures"
   }
 }

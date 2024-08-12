@@ -1,0 +1,27 @@
+{
+  "id": "build/chain-abstraction/multichain-gas-relayer/getting-started",
+  "title": "Multichain Gas Relayer: Getting Started Guide",
+  "description": "Chain Signatures lets users manage remote accounts and transact on any blockchain from a single NEAR account. The Multichain Gas Relayer further simplifies this process by eliminating the need for users to acquire the tokens needed in the foreign chain to execute their transactions.",
+  "source": "@site/i18n/vi/docusaurus-plugin-content-docs/current/2.build/1.chain-abstraction/multichain-gas-relayer/getting-started.md",
+  "sourceDirName": "2.build/1.chain-abstraction/multichain-gas-relayer",
+  "slug": "/build/chain-abstraction/multichain-gas-relayer/getting-started",
+  "permalink": "/vi/build/chain-abstraction/multichain-gas-relayer/getting-started",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/1.chain-abstraction/multichain-gas-relayer/getting-started.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "getting-started",
+    "title": "Multichain Gas Relayer: Getting Started Guide"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Implementing Chain Signatures",
+    "permalink": "/vi/build/chain-abstraction/chain-signatures/"
+  },
+  "next": {
+    "title": "Overview",
+    "permalink": "/vi/build/chain-abstraction/multichain-gas-relayer/overview"
+  }
+}

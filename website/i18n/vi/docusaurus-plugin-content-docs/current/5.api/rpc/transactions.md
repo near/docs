@@ -179,6 +179,7 @@ Ví dụ:
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>Nguyên nhân</th>
       <th>Giải pháp</th>
     </tr>
@@ -187,6 +188,7 @@ Ví dụ:
     <tr>
       <td rowspan="2">HANDLER_ERROR</td>
       <td>INVALID_TRANSACTION</td>
+      <td>200</td>
       <td>Một eror đã xảy ra trong quá trình thực thi transaction</td>
       <td>
         <ul>
@@ -198,6 +200,7 @@ Ví dụ:
     </tr>
     <tr>
       <td>TIMEOUT_ERROR</td>
+      <td>408</td>
       <td>Transaction đã được định tuyến (route), nhưng chưa được record trên chain sau 10 giây.</td>
       <td>
         <ul>
@@ -210,6 +213,7 @@ Ví dụ:
     <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>Đã pass các argument mà JSON RPC server không thể parse được (thiếu các argument, sai format, v.v...)</td>
       <td>
         <ul>
@@ -221,6 +225,7 @@ Ví dụ:
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>Đã xảy ra lỗi với chính node đó, hoặc bị overload</td>
       <td>
         <ul>
@@ -413,6 +418,7 @@ Ví dụ:
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>Nguyên nhân</th>
       <th>Giải pháp</th>
     </tr>
@@ -421,6 +427,7 @@ Ví dụ:
     <tr>
       <td rowspan="3">HANDLER_ERROR</td>
       <td>INVALID_TRANSACTION</td>
+      <td>200</td>
       <td>Một error đã xảy ra trong quá trình thực thi transaction</td>
       <td>
         <ul>
@@ -430,6 +437,7 @@ Ví dụ:
     </tr>
     <tr>
       <td>UNKNOWN_TRANSACTION</td>
+      <td>200</td>
       <td>Transaction được request không available trên node do nó có thể chưa được record trên chain, hoặc đã bị garbage-collect</td>
       <td>
         <ul>
@@ -441,17 +449,19 @@ Ví dụ:
     </tr>
     <tr>
       <td>TIMEOUT_ERROR</td>
+      <td>408</td>
       <td>Không thể đợi status của transaction trong khoảng thời gian timeout</td>
       <td>
         <ul>
           <li>Gởi một request đến một node khác</li>
-          <li>Hãy thử lại sau</li>
+          <li>Try again later</li>
         </ul>
       </td>
     </tr>
     <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>Đã pass các argument mà JSON RPC server không thể parse được (thiếu các argument, sai format, v.v...)</td>
       <td>
         <ul>
@@ -463,6 +473,7 @@ Ví dụ:
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>Đã xảy ra lỗi với chính node đó, hoặc bị overload</td>
       <td>
         <ul>
@@ -789,6 +800,7 @@ Ví dụ:
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>Nguyên nhân</th>
       <th>Giải pháp</th>
     </tr>
@@ -797,6 +809,7 @@ Ví dụ:
     <tr>
       <td rowspan="3">HANDLER_ERROR</td>
       <td>INVALID_TRANSACTION</td>
+      <td>200</td>
       <td>Một error đã xảy ra trong quá trình thực thi transaction</td>
       <td>
         <ul>
@@ -806,6 +819,7 @@ Ví dụ:
     </tr>
     <tr>
       <td>UNKNOWN_TRANSACTION</td>
+      <td>200</td>
       <td>Transaction được request không available trên node do nó có thể chưa được record trên chain, hoặc đã bị garbage-collect</td>
       <td>
         <ul>
@@ -817,6 +831,7 @@ Ví dụ:
     </tr>
     <tr>
       <td>TIMEOUT_ERROR</td>
+      <td>408</td>
       <td>Không thể đợi status của transaction trong khoảng thời gian timeout</td>
       <td>
         <ul>
@@ -828,6 +843,7 @@ Ví dụ:
     <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>Đã pass các argument mà JSON RPC server không thể parse được (thiếu các argument, sai format, v.v...)</td>
       <td>
         <ul>
@@ -839,6 +855,7 @@ Ví dụ:
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>Đã xảy ra lỗi với chính node đó, hoặc bị overload</td>
       <td>
         <ul>
@@ -956,6 +973,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>Nguyên nhân</th>
       <th>Giải pháp</th>
     </tr>
@@ -964,6 +982,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
     <tr>
       <td>HANDLER_ERROR</td>
       <td>UNKNOWN_RECEIPT</td>
+      <td>200</td>
       <td>Receipt với <code>receipt_id</code> đã cho chưa bao giờ được thấy trên node</td>
       <td>
         <ul>
@@ -975,6 +994,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
     <tr>
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>Đã pass các argument mà JSON RPC server không thể parse được (thiếu các argument, sai format, v.v...)</td>
       <td>
         <ul>
@@ -986,6 +1006,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>Đã xảy ra lỗi với chính node đó, hoặc bị overload</td>
       <td>
         <ul>
@@ -1118,6 +1139,7 @@ Ví dụ:
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>Nguyên nhân</th>
       <th>Giải pháp</th>
     </tr>
@@ -1126,6 +1148,7 @@ Ví dụ:
     <tr class="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>Đã pass các argument mà JSON RPC server không thể parse được (thiếu các argument, sai format, v.v...)</td>
       <td>
         <ul>
@@ -1295,6 +1318,7 @@ Here is the exhaustive list of the error variants that can be returned by `broad
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>Reason</th>
       <th>Solution</th>
     </tr>
@@ -1303,6 +1327,7 @@ Here is the exhaustive list of the error variants that can be returned by `broad
     <tr>
       <td rowspan="2">HANDLER_ERROR</td>
       <td>INVALID_TRANSACTION</td>
+      <td>200</td>
       <td>An error happened during transaction execution</td>
       <td>
         <ul>
@@ -1314,6 +1339,7 @@ Here is the exhaustive list of the error variants that can be returned by `broad
     </tr>
     <tr>
       <td>TIMEOUT_ERROR</td>
+      <td>408</td>
       <td>Transaction was routed, but has not been recorded on chain in 10 seconds.</td>
       <td>
         <ul>
@@ -1326,6 +1352,7 @@ Here is the exhaustive list of the error variants that can be returned by `broad
     <tr class="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)</td>
       <td>
         <ul>
@@ -1337,6 +1364,7 @@ Here is the exhaustive list of the error variants that can be returned by `broad
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>Something went wrong with the node itself or overloaded</td>
       <td>
         <ul>

@@ -441,6 +441,13 @@ pub enum ReceiptValidationError {
     NumberInputDataDependenciesExceeded { number_of_input_data_dependencies: u64, limit: u64 },
     /// Lỗi đã xảy ra trong quá trình xác nhận các action của một ActionReceipt.
     ActionsValidation(ActionsValidationError),
+    /// Receipt is bigger than the limit.
+    /// ReceiptSizeExceeded means that there was a receipt above the size limit (currently 4MiB).
+    /// NEAR will refuse to execute receipts that are above the size limit.
+    /// The most likely source of such receipts would be cross-contract calls with a lot of large actions
+    /// (contract deployment, function call with large args, etc).
+    /// This error means that the user has to adjust their contract to generate smaller receipts.
+    ReceiptSizeExceeded { size: u64, limit: u64 },
 }
 ```
 
@@ -466,6 +473,9 @@ ReceiptValidationError::NumberInputDataDependenciesExceeded { number_of_input_da
 "The number of input data dependencies {} exceeded the limit {} in an ActionReceipt"
 
 ReceiptValidationError::ActionsValidation(e) 
+
+ReceiptValidationError::ReceiptSizeExceeded { size, limit }
+"The size of the receipt exceeded the limit: {} > {}",
 ```
 
 
@@ -507,7 +517,7 @@ pub enum FunctionCallError {
 }
 ```
 
-#### Thông Báo Lỗi {#error-messages-8}
+#### Error Messages {#error-messages-8}
 
 ```rust
 FunctionCallError::WasmTrap
@@ -516,7 +526,7 @@ FunctionCallError::WasmTrap
 
 ### MethodResolveError {#methodresolveerror}
 
-#### Định nghĩa {#definition-12}
+#### Definition {#definition-12}
 
 ```rust
 pub enum MethodResolveError {
@@ -553,7 +563,7 @@ CompilationError::WasmerCompileError
 
 ### PrepareError {#prepareerror}
 
-#### Định nghĩa {#definition-14}
+#### Definition {#definition-14}
 
 ```rust
 /// Lỗi xảy ra khi chuẩn bị hoặc thực thi Wasm smart-contract.
@@ -781,7 +791,7 @@ pub enum VMLogicError {
 
 ### InconsistentStateError {#inconsistentstateerror}
 
-#### Định nghĩa {#definition-17}
+#### Definition {#definition-17}
 
 ```rust
 pub enum InconsistentStateError {

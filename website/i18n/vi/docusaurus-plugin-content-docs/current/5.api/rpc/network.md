@@ -282,6 +282,7 @@ Ví dụ:
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>Nguyên nhân</th>
       <th>Giải pháp</th>
     </tr>
@@ -290,6 +291,7 @@ Ví dụ:
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>Đã xảy ra lỗi với chính node đó, hoặc bị overload</td>
       <td>
         <ul>
@@ -405,6 +407,7 @@ Khi API request không thành công, RPC server sẽ trả về một error resp
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>Nguyên nhân</th>
       <th>Giải pháp</th>
     </tr>
@@ -413,6 +416,7 @@ Khi API request không thành công, RPC server sẽ trả về một error resp
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>Đã xảy ra lỗi với chính node đó, hoặc bị overload</td>
       <td>
         <ul>
@@ -1345,6 +1349,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>Nguyên nhân</th>
       <th>Giải pháp</th>
     </tr>
@@ -1353,6 +1358,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
     <tr>
       <td>HANDLER_ERROR</td>
       <td>UNKNOWN_EPOCH</td>
+      <td>200</td>
       <td>Không tìm thấy epoch trong database cho block được cung cấp</td>
       <td>
         <ul>
@@ -1365,6 +1371,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
     <tr>
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>Đã pass các argument mà JSON RPC server không thể parse được (thiếu các argument, sai format, v.v...)</td>
       <td>
         <ul>
@@ -1376,6 +1383,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>Đã xảy ra lỗi với chính node đó, hoặc bị overload</td>
       <td>
         <ul>

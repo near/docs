@@ -123,6 +123,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>이유</th>
       <th>해결책</th>
     </tr>
@@ -131,6 +132,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
     <tr>
       <td rowspan="5">HANDLER_ERROR</td>
       <td>UNKNOWN_BLOCK</td>
+      <td>200</td>
       <td>요청된 블록이 아직 생성되지 않았거나 가비지 수집되었습니다(RPC 노드의 공간을 절약하기 위해 정리됨).</td>
       <td>
         <ul>
@@ -141,6 +143,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
     </tr>
     <tr>
       <td>INVALID_ACCOUNT</td>
+      <td>200</td>
       <td>요청된 <code>account_id</code>가 잘못되었습니다.</td>
       <td>
         <ul>
@@ -150,6 +153,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
     </tr>
     <tr>
       <td>UNKNOWN_ACCOUNT</td>
+      <td>200</td>
       <td>계정이 생성되지 않았거나 이미 삭제되었기 때문에 요청된 <code>account_id</code>를 찾을 수 없습니다.</td>
       <td>
         <ul>
@@ -160,6 +164,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
     </tr>
     <tr>
       <td>UNAVAILABLE_SHARD</td>
+      <td>200</td>
       <td>노드가 데이터가 있는 샤드를 추적하지 않기 때문에 요청된 데이터를 찾을 수 없습니다.</td>
       <td>
         <ul>
@@ -169,6 +174,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
     </tr>
     <tr>
       <td>NO_SYNCED_BLOCKS</td>
+      <td>200</td>
       <td>노드가 여전히 동기화 중이고 요청된 블록이 아직 데이터베이스에 없습니다.</td>
       <td>
         <ul>
@@ -180,6 +186,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
     <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>전달된 인자는 JSON RPC 서버에서 파싱할 수 없습니다(인자 누락, 잘못된 형식 등).</td>
       <td>
         <ul>
@@ -191,6 +198,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>노드 자체에 문제가 있거나 과부하가 걸렸습니다.</td>
       <td>
         <ul>
@@ -344,6 +352,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>이유</th>
       <th>해결책</th>
     </tr>
@@ -352,6 +361,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
     <tr>
       <td rowspan="2">HANDLER_ERROR</td>
       <td>UNKNOWN_BLOCK</td>
+      <td>200</td>
       <td>요청된 블록이 아직 생성되지 않았거나 가비지 수집되었습니다(RPC 노드의 공간을 절약하기 위해 정리됨).</td>
       <td>
         <ul>
@@ -362,6 +372,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
     </tr>
     <tr>
       <td>NOT_SYNCED_YET</td>
+      <td>200</td>
       <td>노드가 여전히 동기화 중이고 요청된 블록이 아직 데이터베이스에 없습니다.</td>
       <td>
         <ul>
@@ -373,6 +384,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
     <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>전달된 인자는 JSON RPC 서버에서 파싱할 수 없습니다(인자 누락, 잘못된 형식 등).</td>
       <td>
         <ul>
@@ -384,6 +396,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>노드 자체에 문제가 있거나 과부하가 걸렸습니다.</td>
       <td>
         <ul>
@@ -508,6 +521,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>이유</th>
       <th>해결책</th>
     </tr>
@@ -516,6 +530,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
     <tr>
       <td rowspan="6">HANDLER_ERROR</td>
       <td>UNKNOWN_BLOCK</td>
+      <td>200</td>
       <td>요청된 블록이 아직 생성되지 않았거나 가비지 수집되었습니다(RPC 노드의 공간을 절약하기 위해 정리됨).</td>
       <td>
         <ul>
@@ -526,6 +541,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
     </tr>
     <tr>
       <td>INVALID_ACCOUNT</td>
+      <td>200</td>
       <td>요청된 <code>account_id</code>가 잘못되었습니다.</td>
       <td>
         <ul>
@@ -535,6 +551,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
     </tr>
     <tr>
       <td>UNKNOWN_ACCOUNT</td>
+      <td>200</td>
       <td>계정이 생성되지 않았거나 이미 삭제되었기 때문에 요청된 <code>account_id</code>를 찾을 수 없습니다.</td>
       <td>
         <ul>
@@ -545,6 +562,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
     </tr>
     <tr>
       <td>NO_CONTRACT_CODE</td>
+      <td>200</td>
       <td><code>contract</code> 계정에 배포된 항목이 없습니다.</td>
       <td>
         <ul>
@@ -555,6 +573,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
     </tr>
     <tr>
       <td>UNAVAILABLE_SHARD</td>
+      <td>200</td>
       <td>공개 키가 생성되지 않았거나 이미 삭제되었기 때문에 요청된 <code>public_key</code>를 찾을 수 없습니다.</td>
       <td>
         <ul>
@@ -564,6 +583,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
     </tr>
     <tr>
       <td>NO_SYNCED_BLOCKS</td>
+      <td>200</td>
       <td>노드가 여전히 동기화 중이고 요청된 블록이 아직 데이터베이스에 없습니다.</td>
       <td>
         <ul>
@@ -575,6 +595,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
     <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>전달된 인자는 JSON RPC 서버에서 파싱할 수 없습니다(인자 누락, 잘못된 형식 등).</td>
       <td>
         <ul>
@@ -586,6 +607,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>노드 자체에 문제가 있거나 과부하가 걸렸습니다.</td>
       <td>
         <ul>
@@ -896,6 +918,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>이유</th>
       <th>해결책</th>
     </tr>
@@ -904,6 +927,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
     <tr>
       <td rowspan="7">HANDLER_ERROR</td>
       <td>UNKNOWN_BLOCK</td>
+      <td>200</td>
       <td>요청된 블록이 아직 생성되지 않았거나 가비지 수집되었습니다(RPC 노드의 공간을 절약하기 위해 정리됨).</td>
       <td>
         <ul>
@@ -914,6 +938,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
     </tr>
     <tr>
       <td>INVALID_ACCOUNT</td>
+      <td>200</td>
       <td>요청된 <code>account_id</code>가 잘못되었습니다.</td>
       <td>
         <ul>
@@ -923,6 +948,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
     </tr>
     <tr>
       <td>UNKNOWN_ACCOUNT</td>
+      <td>200</td>
       <td>계정이 생성되지 않았거나 이미 삭제되었기 때문에 요청된 <code>account_id</code>를 찾을 수 없습니다.</td>
       <td>
         <ul>
@@ -933,6 +959,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
     </tr>
     <tr>
       <td>NO_CONTRACT_CODE</td>
+      <td>200</td>
       <td><code>contract</code> 계정에 배포된 항목이 없습니다.</td>
       <td>
         <ul>
@@ -943,6 +970,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
     </tr>
     <tr>
       <td>TOO_LARGE_CONTRACT_STATE</td>
+      <td>200</td>
       <td>요청한 컨트랙트 상태가 너무 커서 이 노드에서 반환할 수 없습니다(기본 제한은 상태 크기의 50kb입니다).</td>
       <td>
         <ul>
@@ -953,6 +981,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
     </tr>
     <tr>
       <td>UNAVAILABLE_SHARD</td>
+      <td>200</td>
       <td>노드가 데이터가 있는 샤드를 추적하지 않기 때문에 요청된 데이터를 찾을 수 없습니다.</td>
       <td>
         <ul>
@@ -962,6 +991,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
     </tr>
     <tr>
       <td>NO_SYNCED_BLOCKS</td>
+      <td>200</td>
       <td>노드가 여전히 동기화 중이고 요청된 블록이 아직 데이터베이스에 없습니다.</td>
       <td>
         <ul>
@@ -973,6 +1003,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
     <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>전달된 인자는 JSON RPC 서버에서 파싱할 수 없습니다(인자 누락, 잘못된 형식 등).</td>
       <td>
         <ul>
@@ -984,6 +1015,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>노드 자체에 문제가 있거나 과부하가 걸렸습니다.</td>
       <td>
         <ul>
@@ -1135,6 +1167,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>이유</th>
       <th>해결책</th>
     </tr>
@@ -1143,6 +1176,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
     <tr>
       <td rowspan="2">HANDLER_ERROR</td>
       <td>UNKNOWN_BLOCK</td>
+      <td>200</td>
       <td>요청된 블록이 아직 생성되지 않았거나 가비지 수집되었습니다(RPC 노드의 공간을 절약하기 위해 정리됨).</td>
       <td>
         <ul>
@@ -1153,6 +1187,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
     </tr>
     <tr>
       <td>NOT_SYNCED_YET</td>
+      <td>200</td>
       <td>노드가 여전히 동기화 중이고 요청된 블록이 아직 데이터베이스에 없습니다.</td>
       <td>
         <ul>
@@ -1164,6 +1199,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
     <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>전달된 인자는 JSON RPC 서버에서 파싱할 수 없습니다(인자 누락, 잘못된 형식 등).</td>
       <td>
         <ul>
@@ -1175,6 +1211,7 @@ API 요청이 실패하면, RPC 서버는 제한된 수의 잘 정의된 오류 
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>노드 자체에 문제가 있거나 과부하가 걸렸습니다.</td>
       <td>
         <ul>
@@ -1309,6 +1346,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>이유</th>
       <th>해결책</th>
     </tr>
@@ -1317,6 +1355,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
     <tr>
       <td rowspan="2">HANDLER_ERROR</td>
       <td>UNKNOWN_BLOCK</td>
+      <td>200</td>
       <td>요청된 블록이 아직 생성되지 않았거나 가비지 수집되었습니다(RPC 노드의 공간을 절약하기 위해 정리됨).</td>
       <td>
         <ul>
@@ -1327,6 +1366,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
     </tr>
     <tr>
       <td>NOT_SYNCED_YET</td>
+      <td>200</td>
       <td>노드가 여전히 동기화 중이고 요청된 블록이 아직 데이터베이스에 없습니다.</td>
       <td>
         <ul>
@@ -1338,6 +1378,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
     <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>전달된 인자는 JSON RPC 서버에서 파싱할 수 없습니다(인자 누락, 잘못된 형식 등).</td>
       <td>
         <ul>
@@ -1349,6 +1390,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>노드 자체에 문제가 있거나 과부하가 걸렸습니다.</td>
       <td>
         <ul>
@@ -1534,6 +1576,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>이유</th>
       <th>해결책</th>
     </tr>
@@ -1542,6 +1585,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
     <tr>
       <td rowspan="7">HANDLER_ERROR</td>
       <td>UNKNOWN_BLOCK</td>
+      <td>200</td>
       <td>요청된 블록이 아직 생성되지 않았거나 가비지 수집되었습니다(RPC 노드의 공간을 절약하기 위해 정리됨).</td>
       <td>
         <ul>
@@ -1552,6 +1596,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
     </tr>
     <tr>
       <td>INVALID_ACCOUNT</td>
+      <td>200</td>
       <td>요청된 <code>account_id</code>가 잘못되었습니다.</td>
       <td>
         <ul>
@@ -1561,6 +1606,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
     </tr>
     <tr>
       <td>UNKNOWN_ACCOUNT</td>
+      <td>200</td>
       <td>계정이 생성되지 않았거나 이미 삭제되었기 때문에 요청된 <code>account_id</code>를 찾을 수 없습니다.</td>
       <td>
         <ul>
@@ -1571,6 +1617,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
     </tr>
     <tr>
       <td>NO_CONTRACT_CODE</td>
+      <td>200</td>
       <td><code>contract</code> 계정에 배포된 항목이 없습니다.</td>
       <td>
         <ul>
@@ -1581,6 +1628,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
     </tr>
     <tr>
       <td>CONTRACT_EXECUTION_ERROR</td>
+      <td>200</td>
       <td>The execution of the view function call failed (crashed, run out of the default 200 TGas limit, etc)</td>
       <td>
         <ul>
@@ -1590,6 +1638,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
     </tr>
     <tr>
       <td>UNAVAILABLE_SHARD</td>
+      <td>200</td>
       <td>노드가 데이터가 있는 샤드를 추적하지 않기 때문에 요청된 데이터를 찾을 수 없습니다.</td>
       <td>
         <ul>
@@ -1599,6 +1648,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
     </tr>
     <tr>
       <td>NO_SYNCED_BLOCKS</td>
+      <td>200</td>
       <td>노드가 여전히 동기화 중이고 요청된 블록이 아직 데이터베이스에 없습니다.</td>
       <td>
         <ul>
@@ -1610,6 +1660,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
     <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>전달된 인자는 JSON RPC 서버에서 파싱할 수 없습니다(인자 누락, 잘못된 형식 등).</td>
       <td>
         <ul>
@@ -1621,6 +1672,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>노드 자체에 문제가 있거나 과부하가 걸렸습니다.</td>
       <td>
         <ul>

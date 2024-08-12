@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/1.chain-abstraction/chain-signatures/chain-signatures.md",
   "sourceDirName": "2.build/1.chain-abstraction/chain-signatures",
   "slug": "/build/chain-abstraction/chain-signatures/",
-  "permalink": "/zh-CN/build/chain-abstraction/chain-signatures/",
+  "permalink": "/build/chain-abstraction/chain-signatures/",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/1.chain-abstraction/chain-signatures/chain-signatures.md",
@@ -20,10 +20,10 @@
   "sidebar": "build",
   "previous": {
     "title": "What are Chain Signatures?",
-    "permalink": "/zh-CN/concepts/abstraction/chain-signatures"
+    "permalink": "/concepts/abstraction/chain-signatures"
   },
   "next": {
     "title": "Multichain Gas Relayer: Getting Started Guide",
-    "permalink": "/zh-CN/build/chain-abstraction/multichain-gas-relayer/getting-started"
+    "permalink": "/build/chain-abstraction/multichain-gas-relayer/getting-started"
   }
 }

@@ -1,0 +1,27 @@
+{
+  "id": "build/chain-abstraction/chain-signatures/getting-started",
+  "title": "Getting Started with Chain Signatures",
+  "description": "Chain Signatures is a groundbreaking technology built on NEAR that enables all accounts, including smart contracts, to sign and execute transactions across multiple blockchains.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/1.chain-abstraction/chain-signatures/getting-started.md",
+  "sourceDirName": "2.build/1.chain-abstraction/chain-signatures",
+  "slug": "/build/chain-abstraction/chain-signatures/getting-started",
+  "permalink": "/ko/build/chain-abstraction/chain-signatures/getting-started",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/1.chain-abstraction/chain-signatures/getting-started.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "getting-started",
+    "title": "Getting Started with Chain Signatures"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Meta Transaction Relayers",
+    "permalink": "/ko/build/chain-abstraction/meta-transactions"
+  },
+  "next": {
+    "title": "What are Chain Signatures?",
+    "permalink": "/ko/concepts/abstraction/chain-signatures"
+  }
+}

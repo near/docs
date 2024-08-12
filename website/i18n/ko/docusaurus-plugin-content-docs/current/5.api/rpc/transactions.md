@@ -179,6 +179,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>이유</th>
       <th>해결책</th>
     </tr>
@@ -187,6 +188,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
     <tr>
       <td rowspan="2">HANDLER_ERROR</td>
       <td>INVALID_TRANSACTION</td>
+      <td>200</td>
       <td>트랜잭션 실행 중에 오류가 발생했습니다.</td>
       <td>
         <ul>
@@ -198,6 +200,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
     </tr>
     <tr>
       <td>TIMEOUT_ERROR</td>
+      <td>408</td>
       <td>트랜잭션이 라우팅되었지만 10초 동안 체인에 기록되지 않았습니다.</td>
       <td>
         <ul>
@@ -210,6 +213,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
     <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>전달된 인자는 JSON RPC 서버에서 파싱할 수 없습니다(인자 누락, 잘못된 형식 등).</td>
       <td>
         <ul>
@@ -221,6 +225,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>노드 자체에 문제가 있거나 과부하가 걸렸습니다.</td>
       <td>
         <ul>
@@ -413,6 +418,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>이유</th>
       <th>해결책</th>
     </tr>
@@ -421,6 +427,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
     <tr>
       <td rowspan="3">HANDLER_ERROR</td>
       <td>INVALID_TRANSACTION</td>
+      <td>200</td>
       <td>트랜잭션 실행 중에 오류가 발생했습니다.</td>
       <td>
         <ul>
@@ -430,6 +437,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
     </tr>
     <tr>
       <td>UNKNOWN_TRANSACTION</td>
+      <td>200</td>
       <td>요청된 트랜잭션은 아직 체인에 기록되지 않았거나 가비지 수집되었기 때문에 노드에서 사용할 수 없습니다.</td>
       <td>
         <ul>
@@ -441,17 +449,19 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
     </tr>
     <tr>
       <td>TIMEOUT_ERROR</td>
+      <td>408</td>
       <td>합리적인 시간 동안 트랜잭션 상태를 기다릴 수 없습니다.</td>
       <td>
         <ul>
           <li>다른 노드에 요청을 보내세요.</li>
-          <li>나중에 다시 시도하세요.</li>
+          <li>Try again later</li>
         </ul>
       </td>
     </tr>
     <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>전달된 인자는 JSON RPC 서버에서 파싱할 수 없습니다(인자 누락, 잘못된 형식 등).</td>
       <td>
         <ul>
@@ -463,6 +473,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>노드 자체에 문제가 있거나 과부하가 걸렸습니다.</td>
       <td>
         <ul>
@@ -789,6 +800,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>이유</th>
       <th>해결책</th>
     </tr>
@@ -797,6 +809,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
     <tr>
       <td rowspan="3">HANDLER_ERROR</td>
       <td>INVALID_TRANSACTION</td>
+      <td>200</td>
       <td>트랜잭션 실행 중에 오류가 발생했습니다.</td>
       <td>
         <ul>
@@ -806,6 +819,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
     </tr>
     <tr>
       <td>UNKNOWN_TRANSACTION</td>
+      <td>200</td>
       <td>요청된 트랜잭션은 아직 체인에 기록되지 않았거나 가비지 수집되었기 때문에 노드에서 사용할 수 없습니다.</td>
       <td>
         <ul>
@@ -817,6 +831,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
     </tr>
     <tr>
       <td>TIMEOUT_ERROR</td>
+      <td>408</td>
       <td>합리적인 시간 동안 트랜잭션 상태를 기다릴 수 없습니다.</td>
       <td>
         <ul>
@@ -828,6 +843,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
     <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>전달된 인자는 JSON RPC 서버에서 파싱할 수 없습니다(인자 누락, 잘못된 형식 등).</td>
       <td>
         <ul>
@@ -839,6 +855,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>노드 자체에 문제가 있거나 과부하가 걸렸습니다.</td>
       <td>
         <ul>
@@ -956,6 +973,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>이유</th>
       <th>해결책</th>
     </tr>
@@ -964,6 +982,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
     <tr>
       <td>HANDLER_ERROR</td>
       <td>UNKNOWN_RECEIPT</td>
+      <td>200</td>
       <td>주어진 <code>receipt_id</code> Receipt가 노드에서 관찰되지 않았습니다.</td>
       <td>
         <ul>
@@ -975,6 +994,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
     <tr>
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>전달된 인자는 JSON RPC 서버에서 파싱할 수 없습니다(인자 누락, 잘못된 형식 등).</td>
       <td>
         <ul>
@@ -986,6 +1006,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>노드 자체에 문제가 있거나 과부하가 걸렸습니다.</td>
       <td>
         <ul>
@@ -1118,6 +1139,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>이유</th>
       <th>해결책</th>
     </tr>
@@ -1126,6 +1148,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
     <tr class="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>전달된 인자는 JSON RPC 서버에서 파싱할 수 없습니다(인자 누락, 잘못된 형식 등).</td>
       <td>
         <ul>
@@ -1295,6 +1318,7 @@ Here is the exhaustive list of the error variants that can be returned by `broad
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>Reason</th>
       <th>Solution</th>
     </tr>
@@ -1303,6 +1327,7 @@ Here is the exhaustive list of the error variants that can be returned by `broad
     <tr>
       <td rowspan="2">HANDLER_ERROR</td>
       <td>INVALID_TRANSACTION</td>
+      <td>200</td>
       <td>An error happened during transaction execution</td>
       <td>
         <ul>
@@ -1314,6 +1339,7 @@ Here is the exhaustive list of the error variants that can be returned by `broad
     </tr>
     <tr>
       <td>TIMEOUT_ERROR</td>
+      <td>408</td>
       <td>Transaction was routed, but has not been recorded on chain in 10 seconds.</td>
       <td>
         <ul>
@@ -1326,6 +1352,7 @@ Here is the exhaustive list of the error variants that can be returned by `broad
     <tr class="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)</td>
       <td>
         <ul>
@@ -1337,6 +1364,7 @@ Here is the exhaustive list of the error variants that can be returned by `broad
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>Something went wrong with the node itself or overloaded</td>
       <td>
         <ul>

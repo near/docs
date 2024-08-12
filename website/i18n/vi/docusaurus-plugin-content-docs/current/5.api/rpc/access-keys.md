@@ -132,6 +132,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>Nguyên nhân</th>
       <th>Giải pháp</th>
     </tr>
@@ -140,6 +141,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
     <tr>
       <td rowspan="6">HANDLER_ERROR</td>
       <td>UNKNOWN_BLOCK</td>
+      <td>200</td>
       <td>Block đang được request chưa được tạo ra, hoặc nó đã được garbage-collect (dọn dẹp để tiết kiệm dung lượng trên node RPC)</td>
       <td>
         <ul>
@@ -150,6 +152,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
     </tr>
     <tr>
       <td>INVALID_ACCOUNT</td>
+      <td>200</td>
       <td><code>account_id</code> đã được request không hợp lệ</td>
       <td>
         <ul>
@@ -159,16 +162,18 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
     </tr>
     <tr>
       <td>UNKNOWN_ACCOUNT</td>
+      <td>200</td>
       <td>Không tìm thấy <code>account_id</code> được request, do account chưa được tạo hoặc đã bị xóa</td>
       <td>
         <ul>
           <li>Kiểm tra lại <code>account_id</code></li>
-          <li>Chỉ định một block khác, hoặc thử lại nếu bạn request state mới nhất</li>
+          <li>Specify a different block or retry if you request the latest state</li>
         </ul>
       </td>
     </tr>
     <tr>
       <td>UNKNOWN_ACCESS_KEY</td>
+      <td>200</td>
       <td>Không tìm thấy <code>public_key</code>, do public key chưa được tạo hoặc đã bị xóa</td>
       <td>
         <ul>
@@ -179,6 +184,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
     </tr>
     <tr>
       <td>UNAVAILABLE_SHARD</td>
+      <td>200</td>
       <td>Node không thể tìm thấy data được request, vì nó không track đến shard mà dữ liệu tồn tại</td>
       <td>
         <ul>
@@ -188,6 +194,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
     </tr>
     <tr>
       <td>NO_SYNCED_BLOCKS</td>
+      <td>200</td>
       <td>Node vẫn còn đang sync và block được request chưa có trong database</td>
       <td>
         <ul>
@@ -199,6 +206,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
     <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>Đã pass các argument mà JSON RPC server không thể parse được (thiếu các argument, sai format, v.v...)</td>
       <td>
         <ul>
@@ -210,6 +218,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>Đã xảy ra lỗi với chính node đó, hoặc bị overload</td>
       <td>
         <ul>
@@ -448,6 +457,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>Nguyên nhân</th>
       <th>Giải pháp</th>
     </tr>
@@ -456,6 +466,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
     <tr>
       <td rowspan="5">HANDLER_ERROR</td>
       <td>UNKNOWN_BLOCK</td>
+      <td>200</td>
       <td>Block đang được request chưa được tạo ra, hoặc nó đã được garbage-collect (dọn dẹp để tiết kiệm dung lượng trên node RPC)</td>
       <td>
         <ul>
@@ -466,6 +477,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
     </tr>
     <tr>
       <td>INVALID_ACCOUNT</td>
+      <td>200</td>
       <td>Node vẫn còn đang sync và block được request chưa có trong database</td>
       <td>
         <ul>
@@ -475,6 +487,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
     </tr>
     <tr>
       <td>UNKNOWN_ACCOUNT</td>
+      <td>200</td>
       <td>Không tìm thấy <code>account_id</code> được request, do account chưa được tạo hoặc đã bị xóa</td>
       <td>
         <ul>
@@ -485,6 +498,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
     </tr>
     <tr>
       <td>UNAVAILABLE_SHARD</td>
+      <td>200</td>
       <td>Node không thể tìm thấy data được request, vì nó không track đến shard mà dữ liệu tồn tại</td>
       <td>
         <ul>
@@ -494,6 +508,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
     </tr>
     <tr>
       <td>NO_SYNCED_BLOCKS</td>
+      <td>200</td>
       <td>Node vẫn còn đang sync và block được request chưa có trong database</td>
       <td>
         <ul>
@@ -505,6 +520,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
     <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>Đã pass các argument mà JSON RPC server không thể parse được (thiếu các argument, sai format, v.v...)</td>
       <td>
         <ul>
@@ -516,6 +532,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>Đã xảy ra lỗi với chính node đó, hoặc bị overload</td>
       <td>
         <ul>
@@ -669,6 +686,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>Nguyên nhân</th>
       <th>Giải pháp</th>
     </tr>
@@ -677,6 +695,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
     <tr>
       <td rowspan="2">HANDLER_ERROR</td>
       <td>UNKNOWN_BLOCK</td>
+      <td>200</td>
       <td>Block đang được request chưa được tạo ra, hoặc nó đã được garbage-collect (dọn dẹp để tiết kiệm dung lượng trên node RPC)</td>
       <td>
         <ul>
@@ -687,6 +706,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
     </tr>
     <tr>
       <td>NOT_SYNCED_YET</td>
+      <td>200</td>
       <td>Node vẫn còn đang sync và block được request chưa có trong database</td>
       <td>
         <ul>
@@ -698,6 +718,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
     <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>Đã pass các argument mà JSON RPC server không thể parse được (thiếu các argument, sai format, v.v...)</td>
       <td>
         <ul>
@@ -709,6 +730,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>Đã xảy ra lỗi với chính node đó, hoặc bị overload</td>
       <td>
         <ul>
@@ -862,6 +884,7 @@ Ví dụ:
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>Nguyên nhân</th>
       <th>Giải pháp</th>
     </tr>
@@ -870,6 +893,7 @@ Ví dụ:
     <tr>
       <td rowspan="2">HANDLER_ERROR</td>
       <td>UNKNOWN_BLOCK</td>
+      <td>200</td>
       <td>Block đang được request chưa được tạo ra, hoặc nó đã được garbage-collect (dọn dẹp để tiết kiệm dung lượng trên node RPC)</td>
       <td>
         <ul>
@@ -880,6 +904,7 @@ Ví dụ:
     </tr>
     <tr>
       <td>NOT_SYNCED_YET</td>
+      <td>200</td>
       <td>Node vẫn còn đang sync và block được request chưa có trong database</td>
       <td>
         <ul>
@@ -891,6 +916,7 @@ Ví dụ:
     <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>Đã pass các argument mà JSON RPC server không thể parse được (thiếu các argument, sai format, v.v...)</td>
       <td>
         <ul>
@@ -902,6 +928,7 @@ Ví dụ:
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>Đã xảy ra lỗi với chính node đó, hoặc bị overload</td>
       <td>
         <ul>

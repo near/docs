@@ -323,6 +323,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>이유</th>
       <th>해결책</th>
     </tr>
@@ -331,6 +332,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>노드 자체에 문제가 있거나 과부하가 걸렸습니다.</td>
       <td>
         <ul>
@@ -633,6 +635,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>이유</th>
       <th>해결책</th>
     </tr>
@@ -641,6 +644,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
     <tr>
       <td>HANDLER_ERROR</td>
       <td>UNKNOWN_BLOCK</td>
+      <td>200</td>
       <td>요청된 블록이 아직 생성되지 않았거나 가비지 수집되었습니다(RPC 노드의 공간을 절약하기 위해 정리됨).</td>
       <td>
         <ul>
@@ -652,6 +656,7 @@ API 요청이 실패하면 RPC 서버는 제한된 수의 잘 정의된 오류 �
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>노드 자체에 문제가 있거나 과부하가 걸렸습니다.</td>
       <td>
         <ul>

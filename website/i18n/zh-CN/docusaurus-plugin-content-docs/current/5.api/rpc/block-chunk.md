@@ -283,6 +283,7 @@ Here is the exhaustive list of the error variants that can be returned by `block
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>Reason</th>
       <th>Solution</th>
     </tr>
@@ -291,6 +292,7 @@ Here is the exhaustive list of the error variants that can be returned by `block
     <tr>
       <td rowspan="2">HANDLER_ERROR</td>
       <td>UNKNOWN_BLOCK</td>
+      <td>200</td>
       <td>The requested block has not been produced yet or it has been garbage-collected (cleaned up to save space on the RPC node)</td>
       <td>
         <ul>
@@ -301,6 +303,7 @@ Here is the exhaustive list of the error variants that can be returned by `block
     </tr>
     <tr>
       <td>NOT_SYNCED_YET</td>
+      <td>200</td>
       <td>The node is still syncing and the requested block is not in the database yet</td>
       <td>
         <ul>
@@ -312,6 +315,7 @@ Here is the exhaustive list of the error variants that can be returned by `block
     <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)</td>
       <td>
         <ul>
@@ -323,6 +327,7 @@ Here is the exhaustive list of the error variants that can be returned by `block
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>Something went wrong with the node itself or overloaded</td>
       <td>
         <ul>
@@ -531,6 +536,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>Reason</th>
       <th>Solution</th>
     </tr>
@@ -539,6 +545,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
     <tr>
       <td rowspan="2">HANDLER_ERROR</td>
       <td>UNKNOWN_BLOCK</td>
+      <td>200</td>
       <td>The requested block has not been produced yet or it has been garbage-collected (cleaned up to save space on the RPC node)</td>
       <td>
         <ul>
@@ -549,6 +556,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
     </tr>
     <tr>
       <td>NOT_SYNCED_YET</td>
+      <td>200</td>
       <td>The node is still syncing and the requested block is not in the database yet</td>
       <td>
         <ul>
@@ -560,6 +568,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
     <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)</td>
       <td>
         <ul>
@@ -571,6 +580,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>Something went wrong with the node itself or overloaded</td>
       <td>
         <ul>
@@ -736,6 +746,7 @@ Here is the exhaustive list of the error variants that can be returned by `chunk
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>Reason</th>
       <th>Solution</th>
     </tr>
@@ -744,6 +755,7 @@ Here is the exhaustive list of the error variants that can be returned by `chunk
     <tr>
       <td rowspan="4">HANDLER_ERROR</td>
       <td>UNKNOWN_BLOCK</td>
+      <td>200</td>
       <td>The requested block has not been produced yet or it has been garbage-collected (cleaned up to save space on the RPC node)</td>
       <td>
         <ul>
@@ -754,6 +766,7 @@ Here is the exhaustive list of the error variants that can be returned by `chunk
     </tr>
     <tr>
       <td>UNKNOWN_CHUNK</td>
+      <td>200</td>
       <td>The requested chunk can't be found in a database</td>
       <td>
         <ul>
@@ -764,6 +777,7 @@ Here is the exhaustive list of the error variants that can be returned by `chunk
     </tr>
     <tr>
       <td>INVALID_SHARD_ID</td>
+      <td>200</td>
       <td>Provided <code>shard_id</code> does not exist</td>
       <td>
         <ul>
@@ -773,6 +787,7 @@ Here is the exhaustive list of the error variants that can be returned by `chunk
     </tr>
     <tr>
       <td>NOT_SYNCED_YET</td>
+      <td>200</td>
       <td>The node is still syncing and the requested chunk is not in the database yet</td>
       <td>
         <ul>
@@ -784,6 +799,7 @@ Here is the exhaustive list of the error variants that can be returned by `chunk
     <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)</td>
       <td>
         <ul>
@@ -795,6 +811,7 @@ Here is the exhaustive list of the error variants that can be returned by `chunk
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>Something went wrong with the node itself or overloaded</td>
       <td>
         <ul>

@@ -283,6 +283,7 @@ Khi API request không thành công, RPC server sẽ trả về một error resp
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>Nguyên nhân</th>
       <th>Giải pháp</th>
     </tr>
@@ -291,6 +292,7 @@ Khi API request không thành công, RPC server sẽ trả về một error resp
     <tr>
       <td rowspan="2">HANDLER_ERROR</td>
       <td>UNKNOWN_BLOCK</td>
+      <td>200</td>
       <td>Block đang được request chưa được tạo ra, hoặc nó đã được garbage-collect (dọn dẹp để tiết kiệm dung lượng trên node RPC)</td>
       <td>
         <ul>
@@ -301,6 +303,7 @@ Khi API request không thành công, RPC server sẽ trả về một error resp
     </tr>
     <tr>
       <td>NOT_SYNCED_YET</td>
+      <td>200</td>
       <td>Node vẫn còn đang sync và block được request chưa có trong database</td>
       <td>
         <ul>
@@ -312,6 +315,7 @@ Khi API request không thành công, RPC server sẽ trả về một error resp
     <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>Đã pass các argument mà JSON RPC server không thể parse được (thiếu các argument, sai format, v.v...)</td>
       <td>
         <ul>
@@ -323,6 +327,7 @@ Khi API request không thành công, RPC server sẽ trả về một error resp
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>Đã xảy ra lỗi với chính node đó, hoặc bị overload</td>
       <td>
         <ul>
@@ -531,6 +536,7 @@ ví dụ cho `chunk_id`:
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>Nguyên nhân</th>
       <th>Giải pháp</th>
     </tr>
@@ -539,6 +545,7 @@ ví dụ cho `chunk_id`:
     <tr>
       <td rowspan="2">HANDLER_ERROR</td>
       <td>UNKNOWN_BLOCK</td>
+      <td>200</td>
       <td>Block đang được request chưa được tạo ra, hoặc nó đã được garbage-collect (dọn dẹp để tiết kiệm dung lượng trên node RPC)</td>
       <td>
         <ul>
@@ -549,6 +556,7 @@ ví dụ cho `chunk_id`:
     </tr>
     <tr>
       <td>NOT_SYNCED_YET</td>
+      <td>200</td>
       <td>Node vẫn còn đang sync và block được request chưa có trong database</td>
       <td>
         <ul>
@@ -560,6 +568,7 @@ ví dụ cho `chunk_id`:
     <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>Đã pass các argument mà JSON RPC server không thể parse được (thiếu các argument, sai format, v.v...)</td>
       <td>
         <ul>
@@ -571,6 +580,7 @@ ví dụ cho `chunk_id`:
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>Đã xảy ra lỗi với chính node đó, hoặc bị overload</td>
       <td>
         <ul>
@@ -736,6 +746,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>Nguyên nhân</th>
       <th>Giải pháp</th>
     </tr>
@@ -744,6 +755,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
     <tr>
       <td rowspan="4">HANDLER_ERROR</td>
       <td>UNKNOWN_BLOCK</td>
+      <td>200</td>
       <td>Block đang được request chưa được tạo ra, hoặc nó đã được garbage-collect (dọn dẹp để tiết kiệm dung lượng trên node RPC)</td>
       <td>
         <ul>
@@ -754,6 +766,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
     </tr>
     <tr>
       <td>UNKNOWN_CHUNK</td>
+      <td>200</td>
       <td>Chunk đã request không được tìm thấy trong một database</td>
       <td>
         <ul>
@@ -764,6 +777,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
     </tr>
     <tr>
       <td>INVALID_SHARD_ID</td>
+      <td>200</td>
       <td><code>shard_id</code> đã cung cấp không tồn tại</td>
       <td>
         <ul>
@@ -773,6 +787,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
     </tr>
     <tr>
       <td>NOT_SYNCED_YET</td>
+      <td>200</td>
       <td>Node vẫn còn đang sync và chunk được request chưa có trong database</td>
       <td>
         <ul>
@@ -784,6 +799,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
     <tr className="stripe">
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>Đã pass các argument mà JSON RPC server không thể parse được (thiếu các argument, sai format, v.v...)</td>
       <td>
         <ul>
@@ -795,6 +811,7 @@ Dưới đây là danh sách đầy đủ các error variant có thể được 
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>Đã xảy ra lỗi với chính node đó, hoặc bị overload</td>
       <td>
         <ul>

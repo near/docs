@@ -293,17 +293,17 @@
       "plugin": "c141421f"
     }
   },
-  "/zh-CN/-8f7": {
+  "/zh-CN/-351": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "aba21aa0"
     }
   },
-  "/zh-CN/-b4f": {
+  "/zh-CN/-6ba": {
     "__comp": "a7bd4aaa",
     "__props": "363b7d6a"
   },
-  "/zh-CN/-ecb": {
+  "/zh-CN/-b49": {
     "__comp": "a94703ab"
   },
   "/zh-CN/api/rpc/access-keys-fa8": {
@@ -350,13 +350,13 @@
     "__comp": "17896441",
     "content": "0f8c7883"
   },
-  "/zh-CN/build/chain-abstraction/chain-signatures/-a37": {
+  "/zh-CN/build/chain-abstraction/chain-signatures/-64d": {
     "__comp": "17896441",
-    "content": "4449c96f"
+    "content": "3a8c209c"
   },
-  "/zh-CN/build/chain-abstraction/chain-signatures/getting-started-1d6": {
+  "/zh-CN/build/chain-abstraction/chain-signatures/getting-started-0bf": {
     "__comp": "17896441",
-    "content": "5dc58136"
+    "content": "2c694534"
   },
   "/zh-CN/build/chain-abstraction/data-availability-809": {
     "__comp": "17896441",
@@ -374,9 +374,9 @@
     "__comp": "17896441",
     "content": "141af8c8"
   },
-  "/zh-CN/build/chain-abstraction/multichain-gas-relayer/getting-started-82f": {
+  "/zh-CN/build/chain-abstraction/multichain-gas-relayer/getting-started-72d": {
     "__comp": "17896441",
-    "content": "74842886"
+    "content": "56b2b724"
   },
   "/zh-CN/build/chain-abstraction/multichain-gas-relayer/multichain-server-b37": {
     "__comp": "17896441",

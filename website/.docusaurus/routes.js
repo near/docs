@@ -114,15 +114,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '8f7'),
+    component: ComponentCreator('/zh-CN/', '351'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', 'b4f'),
+        component: ComponentCreator('/zh-CN/', '6ba'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', 'ecb'),
+            component: ComponentCreator('/zh-CN/', 'b49'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -192,13 +192,13 @@ export default [
               },
               {
                 path: '/zh-CN/build/chain-abstraction/chain-signatures/',
-                component: ComponentCreator('/zh-CN/build/chain-abstraction/chain-signatures/', 'a37'),
+                component: ComponentCreator('/zh-CN/build/chain-abstraction/chain-signatures/', '64d'),
                 exact: true,
                 sidebar: "build"
               },
               {
                 path: '/zh-CN/build/chain-abstraction/chain-signatures/getting-started',
-                component: ComponentCreator('/zh-CN/build/chain-abstraction/chain-signatures/getting-started', '1d6'),
+                component: ComponentCreator('/zh-CN/build/chain-abstraction/chain-signatures/getting-started', '0bf'),
                 exact: true,
                 sidebar: "build"
               },
@@ -228,7 +228,7 @@ export default [
               },
               {
                 path: '/zh-CN/build/chain-abstraction/multichain-gas-relayer/getting-started',
-                component: ComponentCreator('/zh-CN/build/chain-abstraction/multichain-gas-relayer/getting-started', '82f'),
+                component: ComponentCreator('/zh-CN/build/chain-abstraction/multichain-gas-relayer/getting-started', '72d'),
                 exact: true,
                 sidebar: "build"
               },
