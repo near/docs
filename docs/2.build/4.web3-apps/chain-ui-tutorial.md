@@ -109,7 +109,7 @@ To update the settings, configure the `nearDeployConfig` field in `package.json`
  - `deployerAccount` is the account paying for bundle storage and calling smart contract methods (must match `DEPLOYER_ACCOUNT.near` referenced above)
  - `filestoreContract` is the hosted storage contract
    - `v1.chain-hosted-ui.testnet` on testnet
-   - `v1.chainui.near` on mainnet
+`v1.chain-hosted-ui.near`
    - or deployed and configured separately
 
 ### Account login
