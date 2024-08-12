@@ -59,7 +59,7 @@ Next, it's time to build all the packages included in the Chain Hosted solution:
 #### Build all
 
 ```sh
-npm run build
+pnpm run build
 ```
 
 ## React App
