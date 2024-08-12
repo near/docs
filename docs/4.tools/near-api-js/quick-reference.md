@@ -245,7 +245,7 @@ const provider = new FailoverRpcProvider(jsonProviders);
 await connect({
   networkId: 'mainnet',
   provider: provider,
-  // this isn't used if `provider` is specified, but is still required for backward compativility
+  // this isn't used if `provider` is specified, but is still required for backward compatibility
   nodeUrl: 'https://rpc.mainnet.near.org',
 });
 ```

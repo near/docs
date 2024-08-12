@@ -282,6 +282,7 @@ Here is the exhaustive list of the error variants that can be returned by `statu
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>Reason</th>
       <th>Solution</th>
     </tr>
@@ -290,6 +291,7 @@ Here is the exhaustive list of the error variants that can be returned by `statu
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>Something went wrong with the node itself or overloaded</td>
       <td>
         <ul>
@@ -405,6 +407,7 @@ Here is the exhaustive list of the error variants that can be returned by `netwo
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>Reason</th>
       <th>Solution</th>
     </tr>
@@ -413,6 +416,7 @@ Here is the exhaustive list of the error variants that can be returned by `netwo
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>Something went wrong with the node itself or overloaded</td>
       <td>
         <ul>
@@ -1356,6 +1360,7 @@ Here is the exhaustive list of the error variants that can be returned by `valid
         <code>error.name</code>
       </th>
       <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
       <th>Reason</th>
       <th>Solution</th>
     </tr>
@@ -1364,6 +1369,7 @@ Here is the exhaustive list of the error variants that can be returned by `valid
     <tr>
       <td>HANDLER_ERROR</td>
       <td>UNKNOWN_EPOCH</td>
+      <td>200</td>
       <td>An epoch for the provided block can't be found in a database</td>
       <td>
         <ul>
@@ -1376,6 +1382,7 @@ Here is the exhaustive list of the error variants that can be returned by `valid
     <tr>
       <td>REQUEST_VALIDATION_ERROR</td>
       <td>PARSE_ERROR</td>
+      <td>400</td>
       <td>Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)</td>
       <td>
         <ul>
@@ -1387,6 +1394,7 @@ Here is the exhaustive list of the error variants that can be returned by `valid
     <tr>
       <td>INTERNAL_ERROR</td>
       <td>INTERNAL_ERROR</td>
+      <td>500</td>
       <td>Something went wrong with the node itself or overloaded</td>
       <td>
         <ul>

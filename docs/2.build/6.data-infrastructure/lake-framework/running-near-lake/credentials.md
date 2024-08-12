@@ -30,7 +30,7 @@ aws_secret_access_key=<YOUR_AWS_ACCESS_KEY>
 
 [AWS docs: Configuration and credential file settings](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
 
-#### Environment varibales
+#### Environment variables
 
 Alternatively, you can provide your AWS credentials via environment variables with constant names:
 
