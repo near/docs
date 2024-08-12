@@ -42,7 +42,7 @@ Follow the steps above to begin setting-up telegram alerts. When selecting the d
 
 ### Private Message Alerts
 
-1. On the device that is logged into the telegram aclick "Open Telegram" or scan the QR code. 
+1. On the device that is logged into the telegram click "Open Telegram" or scan the QR code. 
 
    <img width="60%" src="/docs/pagoda/setup8.png" />
 

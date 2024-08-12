@@ -47,7 +47,7 @@ For independent deployments of gas station contracts, generally, nonce synchroni
 1. The wallet sends a NEAR transaction to the gas station contract that contains 2 actions:
    1. A transfer of `NEAR` (or FT Transfer in the future) to cover gas on the foreign chain
    2. A `create_transaction` function call to the gas station contract `canhazgas.testnet` containing the unsigned foreign chain transaction to be signed by the MPC signing service, assuming the unsigned transaction passes validation.
-      > (note: `mainnet` contract address TBD)
+      > (note: `mainnet` contract address is `canhazgas.near`)
 2. The Gas Station Contract calls the MPC signing service to sign both a funding transaction, which ensures the user's foreign chain account has sufficient gas to execute the desired transaction, and signs the unsigned foreign chain transaction.
 3. Upon receipt of both the signed transactions, the Gas Station Contract emits an event which is picked up by the indexer, which then calls the `/send_funding_and_user_signed_txns` with the 2 signed transactions from the indexer.
 4. The multichain relayer server sends the funding transaction to the foreign chain RPC to fund the user's account with gas.

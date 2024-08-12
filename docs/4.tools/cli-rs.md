@@ -66,7 +66,7 @@ You'll get redirected to `wallet.testnet.near.org`. Once there, grant authorizat
 
 If you're on Mac you'll have the option to use the [Mac Keychain](https://support.apple.com/guide/keychain-access/what-is-keychain-access-kyca1083/mac) option.
 
-Either storage option is fine. Using the legacy storage option will save a file in your root directory in a hidden folder called `./near-credentials`. This storage option is compatable with the `near-cli` tool (a cli tool without the guided prompts but similar functionality).
+Either storage option is fine. Using the legacy storage option will save a file in your root directory in a hidden folder called `./near-credentials`. This storage option is compatible with the `near-cli` tool (a cli tool without the guided prompts but similar functionality).
 
 **Good Job!**
 Now you can use `near-cli-rs` to it's full capacity.
@@ -129,7 +129,7 @@ Operate Transactions
 | Option                 | Description                 |
 | ---------------------- | --------------------------- |
 | `view-status`          | View a transaction status   |
-| `construct-tansaction` | Construct a new transaction |
+| `construct-transaction` | Construct a new transaction |
 
 ### Config
 
