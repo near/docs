@@ -158,7 +158,7 @@ react-example deployment calculated to cost 4.08204 N {
 ? Estimated cost to deploy is 4.08204 N. Continue? (y/N)
 ```
 
-Once you've deployed your frontend, you can load the web application at `http://ec2-54-185-81-147.us-west-2.compute.amazonaws.com/<FILE_CONTRACT>/<DEPLOYER_ACCOUNT.near>/<APPLICATION-NAME>`
+Once you've deployed your frontend, you can load the web application at `https://chain-hosted-ui.near.dev//<FILE_CONTRACT>/<DEPLOYER_ACCOUNT.near>/<APPLICATION-NAME>`
  - `<FILE_CONTRACT>`: `v1.chain-hosted-ui.testnet` or `v1.chainui.near`
  - `<DEPLOYER_ACCOUNT.near>`: the NEAR account used to deploy, e.g. `myaccount.testnet`
  - `<APPLICATION-NAME>`: the application name you defined, e.g. `react-example`
