@@ -11,6 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/1.chain-abstraction/multichain-gas-relayer/getting-started.md",
   "tags": [],
   "version": "current",
+  "lastUpdatedBy": "Github Actions",
+  "lastUpdatedAt": 1723454461000,
   "frontMatter": {
     "id": "getting-started",
     "title": "Multichain Gas Relayer: Getting Started Guide"
