@@ -545,11 +545,7 @@ const sidebar = {
       ]
     },
     "tools/sdk",
-    {
-      "type": "category",
-      "label": "Command Line Tools (CLI)",
-      "items": ["tools/near-cli", "tools/near-cli-rs"]
-    },
+    "tools/near-cli",
     {
       "type": "category",
       "label": "BOS Web Editors",
