@@ -15,52 +15,41 @@ The NEAR [Command Line Interface](https://github.com/near/near-cli-rs) (CLI) is 
 
 ## Installation
 
-### Mac and Linux (prebuilt binaries)
+<Tabs>
 
-```bash
-curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releases/latest/download/near-cli-rs-installer.sh | sh
-```
+  <TabItem value="npm">
 
-<hr class="subsection" />
+  ```bash
+  npm install -g near-cli-rs@latest
+  ```
 
-### Windows (prebuilt binaries)
+  </TabItem>
+  <TabItem value="Cargo">
 
-```bash
-irm https://github.com/near/near-cli-rs/releases/latest/download/near-cli-rs-installer.ps1 | iex
-```
+  ```
+  $ cargo install near-cli-rs
+  ```
 
-<hr class="subsection" />
+  </TabItem>
+  <TabItem value="Mac and Linux (binaries)">
 
-### NPM
+  ```bash
+  curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releases/latest/download/near-cli-rs-installer.sh | sh
+  ```
 
-```bash
-npm install -g near-cli-rs@latest
-```
+  </TabItem>
+  <TabItem value="Windows (binaries)">
 
-<hr class="subsection" />
+  ```bash
+  irm https://github.com/near/near-cli-rs/releases/latest/download/near-cli-rs-installer.ps1 | iex
+  ```
 
-### Cargo
+  </TabItem>
+</Tabs>
 
-```
-$ cargo install near-cli-rs
-```
+---
 
-<hr class="subsection" />
-
-### Custom RPC server selection
-You can set custom testnet/mainnet RPC server URL by changing `rpc_url` parameter in `near-cli` settings:
-
-```bash
-near config edit-connection testnet --key rpc_url --value https://archival-rpc.testnet.near.org/
-```
-
-:::info
-You can find a list of RPC providers [here](../api/rpc/providers).
-:::
-
-<hr class="subsection" />
-
-### Configuration file
+## Configuration file
 The directory with access keys and available connection networks are defined in the configuration file (`near-cli/config.toml`), which is located depending on the operating system in the following places:
 
 - macOS: `$HOME/Library/Application Support` (e.g. `/Users/Alice/Library/Application Support`)
@@ -68,6 +57,16 @@ The directory with access keys and available connection networks are defined in 
 - Windows: `{FOLDERID*RoamingAppData}` (e.g. `C:\Users\Alice\AppData\Roaming`)
 
 You can learn more about working with the configuration file [here](https://github.com/near/near-cli-rs/blob/main/docs/GUIDE.en.md#config---manage-connections-in-a-configuration-file).
+
+
+:::tip Custom RPC
+You can setup a custom [RPC server](../api/rpc/providers) by changing the `rpc_url` parameter in `near-cli` settings:
+
+```bash
+near config edit-connection testnet --key rpc_url --value https://archival-rpc.testnet.near.org/
+```
+:::
+
 
 ---
 
@@ -86,6 +85,8 @@ You should then see the following. Use the arrow keys and hit `enter` or simply 
 :::important
 We provide examples only of the most used commands. Such commands may have two versions - a **full** one and a **short** one. If you want to explore all options provided by `near-cli` use the interactive mode described above.
 :::
+
+---
 
 ## Account
 
@@ -222,7 +223,7 @@ near delete-account $ACCOUNT_ID $BENEFICIARY_ID --networkId testnet
 
 </Tabs>
 
-<hr class="subsection" />
+---
 
 ## Keys
 
