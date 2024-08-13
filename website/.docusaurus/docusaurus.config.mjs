@@ -113,8 +113,8 @@ export default {
   "themeConfig": {
     "image": "docs/assets/welcome-pages/protocol.png",
     "announcementBar": {
-      "id": "id-0005",
-      "content": "New blog post: <a href=\"/blog/2024-07-11-near-org-outage\">An update on the near.org / RPC outage on July 11, 2024</a>",
+      "id": "id-0006",
+      "content": "New blog post: <a href=\"/blog/2024-08-13-pagoda-services\">Future of Pagoda Services</a>",
       "backgroundColor": "#fafbfc",
       "textColor": "#333",
       "isCloseable": true

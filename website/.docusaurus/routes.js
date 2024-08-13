@@ -4,12 +4,17 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 export default [
   {
     path: '/zh-CN/blog',
-    component: ComponentCreator('/zh-CN/blog', 'b34'),
+    component: ComponentCreator('/zh-CN/blog', '073'),
     exact: true
   },
   {
     path: '/zh-CN/blog/2024-07-11-near-org-outage',
     component: ComponentCreator('/zh-CN/blog/2024-07-11-near-org-outage', 'd6b'),
+    exact: true
+  },
+  {
+    path: '/zh-CN/blog/2024-08-13-pagoda-services',
+    component: ComponentCreator('/zh-CN/blog/2024-08-13-pagoda-services', '763'),
     exact: true
   },
   {
@@ -84,7 +89,7 @@ export default [
   },
   {
     path: '/zh-CN/blog/tags/updates',
-    component: ComponentCreator('/zh-CN/blog/tags/updates', 'ed0'),
+    component: ComponentCreator('/zh-CN/blog/tags/updates', 'f88'),
     exact: true
   },
   {

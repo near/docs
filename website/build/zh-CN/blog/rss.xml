@@ -4,10 +4,64 @@
         <title>NEAR Documentation Blog</title>
         <link>https://docs.near.org/zh-CN/blog</link>
         <description>NEAR Documentation Blog</description>
-        <lastBuildDate>Thu, 18 Jul 2024 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 13 Aug 2024 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
+        <item>
+            <title><![CDATA[Future of Pagoda Services]]></title>
+            <link>https://docs.near.org/zh-CN/blog/2024-08-13-pagoda-services</link>
+            <guid>https://docs.near.org/zh-CN/blog/2024-08-13-pagoda-services</guid>
+            <pubDate>Tue, 13 Aug 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[As the NEAR ecosystem continues to decentralize, Pagoda will cease operations within the next six months and decentralize its functions into NEAR ecosystem teams and committees.  This document describes the transition plan for each of the services, activities, and tools that Pagoda develops or operates.]]></description>
+            <content:encoded><![CDATA[<p>As the NEAR ecosystem continues to decentralize, Pagoda will cease operations within the next six months and decentralize its functions into NEAR ecosystem teams and committees.  This document describes the transition plan for each of the services, activities, and tools that Pagoda develops or operates.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="critical-near-services">Critical NEAR Services<a class="hash-link" aria-label="Direct link to Critical NEAR Services" title="Direct link to Critical NEAR Services" href="https://docs.near.org/zh-CN/blog/2024-08-13-pagoda-services#critical-near-services">​</a></h3>
+<p>The critical services below will continue to be operated and maintained by Pagoda until they are smoothly transitioned to new operators in the NEAR ecosystem during the second half of 2024:</p>
+<ul>
+<li><a href="https://docs.near.org/api/rpc/providers" target="_blank" rel="noopener noreferrer">near.org RPC</a></li>
+<li><a href="https://docs.near.org/concepts/advanced/near-lake-framework" target="_blank" rel="noopener noreferrer">NEAR Lake</a></li>
+<li><a href="https://docs.near.org/build/data-infrastructure/big-query" target="_blank" rel="noopener noreferrer">BigQuery Public Dataset</a></li>
+<li><a href="https://near-nodes.io/intro/node-data-snapshots" target="_blank" rel="noopener noreferrer">Node Snapshots</a></li>
+<li><a href="https://near-nodes.io/rpc/state-sync" target="_blank" rel="noopener noreferrer">State Sync</a></li>
+<li>Undocumented but critical services:<!-- -->
+<ul>
+<li>KitWallet Indexer API</li>
+<li>near-cli Testnet Faucet</li>
+</ul>
+</li>
+</ul>
+<p>Each transition will be independently planned and communicated on its own timeline and this page will be updated accordingly.</p>
+<p>The NEAR <a href="https://dev.near.org/infrastructure-committee.near/widget/near-prpsls-bos.components.pages.app?page=about" target="_blank" rel="noopener noreferrer">Infrastructure Committee</a> will manage this transition process by soliciting proposals from the community for continued operation of these services, then will select, fund, and oversee the new operator.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="a-note-about-nearorg-rpc">A Note About near.org RPC<a class="hash-link" aria-label="Direct link to A Note About near.org RPC" title="Direct link to A Note About near.org RPC" href="https://docs.near.org/zh-CN/blog/2024-08-13-pagoda-services#a-note-about-nearorg-rpc">​</a></h4>
+<p>The Infrastructure Committee feels that Pagoda's fully-subsidized near.org RPC service is getting in the way of decentralization efforts and is preventing high-quality commercial RPC offerings from gaining traction. If a NEAR core team continues to support a free-to-use near.org RPC service, it will be required to gradually lower its rate limits over the coming months to prevent abuse. More details on this plan will be communicated by the end of September 2024. In light of this proposed change, <strong>high-traffic near.org RPC users should start making plans to switch to other RPC providers</strong>.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="chain-abstraction-services">Chain Abstraction Services<a class="hash-link" aria-label="Direct link to Chain Abstraction Services" title="Direct link to Chain Abstraction Services" href="https://docs.near.org/zh-CN/blog/2024-08-13-pagoda-services#chain-abstraction-services">​</a></h3>
+<p><a href="https://docs.near.org/concepts/abstraction/chain-signatures" target="_blank" rel="noopener noreferrer">Chain Signatures</a>, <a href="https://docs.near.org/build/chain-abstraction/multichain-gas-relayer/overview" target="_blank" rel="noopener noreferrer">Multichain Gas Relayer</a>, and <a href="https://docs.near.org/build/chain-abstraction/fastauth-sdk" target="_blank" rel="noopener noreferrer">FastAuth</a> will continue to be developed by Pagoda, then will be taken over by the new Chain Abstraction / Multichain spinout from Pagoda and Proximity. More information will be shared in September or October 2024.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="pagoda-operations--ecosystem-services">Pagoda Operations &amp; Ecosystem Services<a class="hash-link" aria-label="Direct link to Pagoda Operations &amp; Ecosystem Services" title="Direct link to Pagoda Operations &amp; Ecosystem Services" href="https://docs.near.org/zh-CN/blog/2024-08-13-pagoda-services#pagoda-operations--ecosystem-services">​</a></h3>
+<p>Pagoda’s ecosystem services will transition as follows:</p>
+<ul>
+<li><a href="https://dev.near.org/infrastructure-committee.near/widget/near-prpsls-bos.components.pages.app?page=about" target="_blank" rel="noopener noreferrer">Infrastructure Committee</a> administration, the recently rebooted Security Assessment Program, and management of the <a href="http://near.org/" target="_blank" rel="noopener noreferrer">near.org</a> website will move under the purview of NEAR Foundation.</li>
+<li><a href="https://hackenproof.com/company/near/programs" target="_blank" rel="noopener noreferrer">Bug bounty</a> triage will be transitioned to the protocol team at NEAR One.</li>
+<li>The <a href="https://help.near.org/" target="_blank" rel="noopener noreferrer">NEAR Helpdesk</a> will be turned into self-service documentation.</li>
+<li>Pagoda's informal technical / smart contract advisory services for other ecosystem companies will wind down over the next few months.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="open-source-libraries">Open-Source Libraries<a class="hash-link" aria-label="Direct link to Open-Source Libraries" title="Direct link to Open-Source Libraries" href="https://docs.near.org/zh-CN/blog/2024-08-13-pagoda-services#open-source-libraries">​</a></h3>
+<p>These open-source libraries and tools will be developed by Pagoda until they reach a logical completion or stopping point:</p>
+<ul>
+<li><a href="https://github.com/near/pagoda-relayer-rs" target="_blank" rel="noopener noreferrer">Pagoda Metatransaction Relayer</a></li>
+<li><a href="https://github.com/near/chain-hosted-ui" target="_blank" rel="noopener noreferrer">Chain Hosted UI</a></li>
+<li><a href="https://t.me/neardev/53280" target="_blank" rel="noopener noreferrer">Modularization and Refactor</a> of near-api-js</li>
+</ul>
+<p>Once active development by Pagoda has ceased, it doesn't mean these tools have to languish. We encourage the NEAR community to continue this work. If you need funding to do so, you can submit proposals to <a href="https://dev.near.org/devhub.near/widget/app" target="_blank" rel="noopener noreferrer">DevHub</a> or the <a href="https://dev.near.org/infrastructure-committee.near/widget/near-prpsls-bos.components.pages.app?page=about" target="_blank" rel="noopener noreferrer">Infrastructure Committee</a>.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="deprecated-services">Deprecated Services<a class="hash-link" aria-label="Direct link to Deprecated Services" title="Direct link to Deprecated Services" href="https://docs.near.org/zh-CN/blog/2024-08-13-pagoda-services#deprecated-services">​</a></h3>
+<p>Between now and February 2025, Pagoda's development work will slow down or stop on the following products and services:</p>
+<ul>
+<li><a href="https://docs.near.org/build/data-infrastructure/query-api/intro" target="_blank" rel="noopener noreferrer">QueryAPI</a></li>
+<li><a href="https://docs.near.org/pagoda/rpc/api" target="_blank" rel="noopener noreferrer">Enhanced API</a></li>
+<li><a href="https://docs.near.org/pagoda/alerts/intro" target="_blank" rel="noopener noreferrer">Alerts &amp; Triggers</a></li>
+</ul>
+<p>These are open-source services and we encourage the community to continue with their development and operation. If we can't identify new operators quickly, we will encourage remaining users of these services to switch to alternative solutions, then communicate a timeline for these services to be turned off.</p>]]></content:encoded>
+            <category>updates</category>
+        </item>
         <item>
             <title><![CDATA[An update on the near.org / RPC outage on July 11, 2024]]></title>
             <link>https://docs.near.org/zh-CN/blog/2024-07-11-near-org-outage</link>

@@ -1,11 +1,14 @@
 {
-  "/zh-CN/blog-b34": {
+  "/zh-CN/blog-073": {
     "__comp": "a6aa9e1f",
     "__context": {
       "plugin": "36994c47"
     },
     "sidebar": "814f3328",
     "items": [
+      {
+        "content": "29d12549"
+      },
       {
         "content": "7c7739ff"
       },
@@ -43,6 +46,17 @@
     },
     "sidebar": "814f3328",
     "content": "cdfd903c"
+  },
+  "/zh-CN/blog/2024-08-13-pagoda-services-763": {
+    "__comp": "ccc49370",
+    "__context": {
+      "data": {
+        "blogMetadata": "acecf23e"
+      },
+      "plugin": "36994c47"
+    },
+    "sidebar": "814f3328",
+    "content": "5ae8e5a8"
   },
   "/zh-CN/blog/archive-2d5": {
     "__comp": "9e4087bc",
@@ -208,13 +222,16 @@
     ],
     "__props": "a15ebea5"
   },
-  "/zh-CN/blog/tags/updates-ed0": {
+  "/zh-CN/blog/tags/updates-f88": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "36994c47"
     },
     "sidebar": "814f3328",
     "items": [
+      {
+        "content": "29d12549"
+      },
       {
         "content": "7c7739ff"
       },

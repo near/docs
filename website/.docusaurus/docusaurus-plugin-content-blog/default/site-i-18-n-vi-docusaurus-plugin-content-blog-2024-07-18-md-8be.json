@@ -40,6 +40,10 @@
     "hide_table_of_contents": true
   },
   "unlisted": false,
+  "prevItem": {
+    "title": "Future of Pagoda Services",
+    "permalink": "/vi/blog/2024-08-13-pagoda-services"
+  },
   "nextItem": {
     "title": "Pagoda Pauses the B.O.S. Web Engine R&D Project",
     "permalink": "/vi/blog/bos-web-engine-sunset"

@@ -2,6 +2,11 @@
   "title": "Developer Changelog",
   "items": [
     {
+      "title": "Future of Pagoda Services",
+      "permalink": "/zh-CN/blog/2024-08-13-pagoda-services",
+      "unlisted": false
+    },
+    {
       "title": "An update on the near.org / RPC outage on July 11, 2024",
       "permalink": "/zh-CN/blog/2024-07-11-near-org-outage",
       "unlisted": false
