@@ -1134,11 +1134,6 @@
               "sidebar": "tools"
             },
             {
-              "id": "tools/near-cli-rs",
-              "path": "/zh-CN/tools/near-cli-rs",
-              "sidebar": "tools"
-            },
-            {
               "id": "tools/sdk",
               "path": "/zh-CN/tools/sdk",
               "sidebar": "tools"

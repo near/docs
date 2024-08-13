@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/4.tools/cli.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Damian Parrino",
-  "lastUpdatedAt": 1718376761000,
+  "lastUpdatedBy": "Guille",
+  "lastUpdatedAt": 1723557792000,
   "frontMatter": {
     "id": "near-cli",
     "title": "NEAR CLI"
@@ -23,7 +23,7 @@
     "permalink": "/tools/sdk"
   },
   "next": {
-    "title": "NEAR CLI RS",
-    "permalink": "/tools/near-cli-rs"
+    "title": "Wallet Selector",
+    "permalink": "/tools/wallet-selector"
   }
 }

@@ -114,15 +114,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', 'bd3'),
+    component: ComponentCreator('/zh-CN/', 'e1c'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '0b0'),
+        component: ComponentCreator('/zh-CN/', 'fad'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '691'),
+            component: ComponentCreator('/zh-CN/', 'cae'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -1478,12 +1478,6 @@ export default [
               {
                 path: '/zh-CN/tools/near-cli',
                 component: ComponentCreator('/zh-CN/tools/near-cli', '168'),
-                exact: true,
-                sidebar: "tools"
-              },
-              {
-                path: '/zh-CN/tools/near-cli-rs',
-                component: ComponentCreator('/zh-CN/tools/near-cli-rs', 'c9b'),
                 exact: true,
                 sidebar: "tools"
               },

@@ -293,17 +293,17 @@
       "plugin": "c141421f"
     }
   },
-  "/zh-CN/-bd3": {
+  "/zh-CN/-e1c": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "aba21aa0"
     }
   },
-  "/zh-CN/-0b0": {
+  "/zh-CN/-fad": {
     "__comp": "a7bd4aaa",
     "__props": "363b7d6a"
   },
-  "/zh-CN/-691": {
+  "/zh-CN/-cae": {
     "__comp": "a94703ab"
   },
   "/zh-CN/api/rpc/access-keys-c8f": {
@@ -1261,10 +1261,6 @@
   "/zh-CN/tools/near-cli-168": {
     "__comp": "17896441",
     "content": "c2ac4ce7"
-  },
-  "/zh-CN/tools/near-cli-rs-c9b": {
-    "__comp": "17896441",
-    "content": "798262f1"
   },
   "/zh-CN/tools/sdk-a68": {
     "__comp": "17896441",
