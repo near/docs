@@ -37,7 +37,7 @@ With a dedicated API key, developers are able to:
 
 -    Access higher request throughput and increased concurrent requests
 -    Query data from [Enhanced APIs](api.md), gaining access to free processed data for NFT, FT and NEAR balances, ownership, and metadata
--    Utlize dedicated, individualized usage metrics
+-    Utilize dedicated, individualized usage metrics
 
 ### Test your API keys
 
