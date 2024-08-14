@@ -23,6 +23,7 @@ const sidebar = {
       "value": "<span class='menu__link'><b><small> NEAR Protocol </small></b></span>"
     },
     "concepts/basics/protocol",
+    "ai-assistant",
     {
       "Understand the Protocol": [
         {
