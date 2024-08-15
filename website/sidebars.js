@@ -220,7 +220,6 @@ const sidebar = {
           items: [
             "build/web3-apps/integrate-contracts",
             "build/web3-apps/chain-hosted-ui",
-            "build/web3-apps/chain-hosted-ui-tutorial",
             {
               "Social Components (BOS)": [
                 "build/near-components/what-is",
@@ -354,6 +353,7 @@ const sidebar = {
         "tutorials/examples/donation",
         "tutorials/examples/xcc",
         "tutorials/examples/coin-flip",
+        "build/web3-apps/chain-hosted-ui-tutorial",
       ]
     },
     {
