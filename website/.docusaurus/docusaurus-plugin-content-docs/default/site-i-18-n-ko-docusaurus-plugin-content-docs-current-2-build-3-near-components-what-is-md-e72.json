@@ -20,8 +20,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Integrating Contracts",
-    "permalink": "/ko/build/web3-apps/integrate-contracts"
+    "title": "Chain Hosted UI",
+    "permalink": "/ko/build/web3-apps/chain-hosted-ui"
   },
   "next": {
     "title": "Choose your Dev Environment",

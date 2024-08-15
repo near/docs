@@ -19,8 +19,8 @@
   },
   "sidebar": "tutorials",
   "previous": {
-    "title": "Coin Flip",
-    "permalink": "/zh-CN/tutorials/examples/coin-flip"
+    "title": "Chain Hosted UI Tutorial",
+    "permalink": "/zh-CN/build/web3-apps/chain-hosted-ui-tutorial"
   },
   "next": {
     "title": "Complex Cross Contract Call",

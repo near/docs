@@ -19,8 +19,8 @@
   },
   "sidebar": "tutorials",
   "previous": {
-    "title": "동전 던지기",
-    "permalink": "/ko/tutorials/examples/coin-flip"
+    "title": "Chain Hosted UI Tutorial",
+    "permalink": "/ko/build/web3-apps/chain-hosted-ui-tutorial"
   },
   "next": {
     "title": "복잡한 교차 컨트랙트 호출(Cross Contract Call)",

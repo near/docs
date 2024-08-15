@@ -808,6 +808,16 @@
               "sidebar": "build"
             },
             {
+              "id": "build/web3-apps/chain-hosted-ui",
+              "path": "/zh-CN/build/web3-apps/chain-hosted-ui",
+              "sidebar": "build"
+            },
+            {
+              "id": "build/web3-apps/chain-hosted-ui-tutorial",
+              "path": "/zh-CN/build/web3-apps/chain-hosted-ui-tutorial",
+              "sidebar": "tutorials"
+            },
+            {
               "id": "build/web3-apps/frontend",
               "path": "/zh-CN/build/web3-apps/frontend",
               "sidebar": "build"

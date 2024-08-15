@@ -1,0 +1,30 @@
+{
+  "id": "build/web3-apps/chain-hosted-ui-tutorial",
+  "title": "Chain Hosted UI tutorial",
+  "description": "Chain Hosted UI lets you to deploy dApp frontends directly on the NEAR blockchain.",
+  "source": "@site/../docs/2.build/4.web3-apps/chain-ui-tutorial.md",
+  "sourceDirName": "2.build/4.web3-apps",
+  "slug": "/build/web3-apps/chain-hosted-ui-tutorial",
+  "permalink": "/zh-CN/build/web3-apps/chain-hosted-ui-tutorial",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/4.web3-apps/chain-ui-tutorial.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Damián Parrino",
+  "lastUpdatedAt": 1723732750000,
+  "frontMatter": {
+    "id": "chain-hosted-ui-tutorial",
+    "title": "Chain Hosted UI tutorial",
+    "sidebar_label": "Chain Hosted UI Tutorial"
+  },
+  "sidebar": "tutorials",
+  "previous": {
+    "title": "Coin Flip",
+    "permalink": "/zh-CN/tutorials/examples/coin-flip"
+  },
+  "next": {
+    "title": "Factory",
+    "permalink": "/zh-CN/tutorials/examples/factory"
+  }
+}

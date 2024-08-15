@@ -119,15 +119,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', 'e1c'),
+    component: ComponentCreator('/zh-CN/', '50b'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', 'fad'),
+        component: ComponentCreator('/zh-CN/', '9d9'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', 'cae'),
+            component: ComponentCreator('/zh-CN/', '873'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -1099,6 +1099,18 @@ export default [
                 component: ComponentCreator('/zh-CN/build/web3-apps/backend/', '7e9'),
                 exact: true,
                 sidebar: "build"
+              },
+              {
+                path: '/zh-CN/build/web3-apps/chain-hosted-ui',
+                component: ComponentCreator('/zh-CN/build/web3-apps/chain-hosted-ui', '84f'),
+                exact: true,
+                sidebar: "build"
+              },
+              {
+                path: '/zh-CN/build/web3-apps/chain-hosted-ui-tutorial',
+                component: ComponentCreator('/zh-CN/build/web3-apps/chain-hosted-ui-tutorial', '2b1'),
+                exact: true,
+                sidebar: "tutorials"
               },
               {
                 path: '/zh-CN/build/web3-apps/frontend',
