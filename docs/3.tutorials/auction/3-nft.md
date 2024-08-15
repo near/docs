@@ -53,6 +53,8 @@ When the auction is ended - by calling the method `claim` - the NFT needs to be 
                 url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/03-owner-claims-winner-gets-nft/src/contract.ts#L68-L70"
                 start="68" end="70" />
 
+        In near-sdk-js we cannot transfer the NFT and send the $NEAR independently so we will chain the promises.
+
     </TabItem>
 
     <TabItem value="rust" label="🦀 Rust">
@@ -62,12 +64,12 @@ When the auction is ended - by calling the method `claim` - the NFT needs to be 
         We then use this method in our `lib.rs` file to transfer the NFT.
 
         <Language value="rust" language="rust">
-            <Github fname="ext.rs" 
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-owner-claims-winner-gets-nft/src/ext.rs"
-                start="2" end="10" />
             <Github fname="lib.rs" 
                 url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-owner-claims-winner-gets-nft/src/lib.rs#L94-L97"
                 start="93" end="96" />
+            <Github fname="ext.rs" 
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-owner-claims-winner-gets-nft/src/ext.rs"
+                start="2" end="10" />
         </Language>
 
     </TabItem>
@@ -88,15 +90,15 @@ In our contract, we perform no checks to verify whether the contract actually ow
 
 In our tests, we're now going to be using two contracts; the auction contract and an NFT contract. Sandbox testing is great as it allows us to test multiple contracts in a realistic environment.
 
-In our tests folder, we need the WASM for an NFT contract. For this tutorial we compiled an example NFT contract from [this repo](https://github.com/near-examples/NFT/tree/master).
+In our tests folder, we need the WASM for an NFT contract. For this tutorial, we compiled an example NFT contract from [this repo](https://github.com/near-examples/NFT/tree/master).
 
-To deploy the NFT contract, this time we're going to use `dev deploy` which creates an account with a random ID and deploys the contract to it by specifying the path to the WASM file. After deploying we will initialize the contract with default metadata and specify an account ID which will be the owner of the NFT contract (though the owner of the NFT contract is irrelevant in this example). 
+To deploy the NFT contract, this time we're going to use `dev deploy` which creates an account with a random ID and deploys the contract to it by specifying the path to the WASM file. After deploying we will initialize the contract with default metadata and specify an account ID which will be the owner of the NFT contract (though the owner of the NFT contract is irrelevant in this example). The default metadata sets the information such as the name of the token and its image to some pre-set values.
 
 <Tabs groupId="code-tabs">
 
     <TabItem value="js" label="🌐 JavaScript">
 
-        <Github fname="main.ava.rs" language="javascript"
+        <Github fname="main.ava.js" language="javascript"
                 url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/03-owner-claims-winner-gets-nft/sandbox-test/main.ava.js#L24-L25"
                 start="24" end="25" />
 
@@ -122,7 +124,7 @@ To start a proper auction the auction contract should own an NFT. To do this the
 
     <TabItem value="js" label="🌐 JavaScript">
 
-        <Github fname="main.ava.rs" language="javascript"
+        <Github fname="main.ava.js" language="javascript"
                 url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/03-owner-claims-winner-gets-nft/sandbox-test/main.ava.js#L28-L39"
                 start="28" end="39" />
 
@@ -148,7 +150,7 @@ After `claim` is called, the test should verify that the auction winner now owns
 
     <TabItem value="js" label="🌐 JavaScript">
 
-        <Github fname="main.ava.rs" language="javascript"
+        <Github fname="main.ava.js" language="javascript"
                 url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/03-owner-claims-winner-gets-nft/sandbox-test/main.ava.js#L105-L106"
                 start="105" end="106" />
 
@@ -163,6 +165,18 @@ After `claim` is called, the test should verify that the auction winner now owns
     </TabItem>
 
 </Tabs>
+
+---
+
+## Getting an NFT
+
+If you would like to interact with the new contract via the CLI you can mint an NFT from a pre-deployed NFT contract 
+
+```
+near contract call-function as-transaction nft.examples.testnet nft_mint json-args '{"token_id": "TYPE_A_UNIQUE_VALUE_HERE", "receiver_id": "<accountId>", "metadata": { "title": "GO TEAM", "description": "The Team Goes", "media": "https://bafybeidl4hjbpdr6u6xvlrizwxbrfcyqurzvcnn5xoilmcqbxfbdwrmp5m.ipfs.dweb.link/", "copies": 1}}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as <accountId> network-config testnet
+```
+
+You can also just buy an NFT with testnet $NEAR on a testnet marketplace like [Mintbase](https://testnet.mintbase.xyz/explore/new/0).
 
 ---
 

@@ -102,7 +102,11 @@ Go ahead and test, build and deploy your new contract, as in part 1. Remember to
 
 Now we have the claim method, we can deploy the contract without keys. Later we will introduce a factory contract that deploys auctions to a locked account, but for now, we can manually remove the keys using the CLI to lock the account.
 
-near > account > delete-keys > specify your account ID > → (to delete all) > testnet
+```
+near account delete-keys 
+```
+
+Next specify the contract account and click the right arrow → to delete all the keys. Make sure to select testnet 
 
 :::caution
 Be extra careful to delete the keys from the correct account as you'll never be able to access the account again!
