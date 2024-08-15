@@ -68,7 +68,7 @@ It's only allowed to perform the `FunctionCall` Action.
 
 ### Example account with keys
 
-Let's look at this `testnet` account that has one full-access key and two function-call access keys. As you can see, we use the [NEAR CLI](../../../4.tools/cli-rs.md) to print this info.
+Let's look at this `testnet` account that has one full-access key and two function-call access keys. As you can see, we use the [NEAR CLI](../../../4.tools/cli.md) to print this info.
 
 ```bash
 near account list-keys friend.testnet network-config testnet now
