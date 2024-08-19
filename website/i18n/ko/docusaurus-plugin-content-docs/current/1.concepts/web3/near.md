@@ -144,7 +144,7 @@ In order to simplify creation of indexers, [NEAR Indexer Framework](/concepts/ad
 
 이제 WEB 3.0 애플리케이션 개발을 시작하는 데 필요한 개념에 익숙해졌으므로 사용 가능한 개발 도구를 살펴보겠습니다.
 
-우선 개발 및 테스트 환경이 필요합니다. 물론 이론상 메인 블록체인 네트워크에서 개발과 테스트를 수행할 수 있지만 비용이 저렴하지는 않습니다. 이러한 이유로 NEAR는 개발 중에 사용할 수 있는 [여러 네트워크](../basics/networks.md)를 제공합니다.
+우선 개발 및 테스트 환경이 필요합니다. Of course, we could theoretically perform development and testing on the main blockchain network, but this would not be cheap. 이러한 이유로 NEAR는 개발 중에 사용할 수 있는 [여러 네트워크](../basics/networks.md)를 제공합니다.
 - testnet - 메인넷과 동일하고 무료로 사용할 수 있는 퍼블릭 NEAR 네트워크입니다.
 - localnet - 로컬 환경에 개인 NEAR 네트워크를 배포할 수 있습니다. 이는 당신의 소유이기 때문에, 개발 중에 데이터와 코드를 비공개로 유지할 수 있습니다. More info on how you can run your own node can be [found here](https://near-nodes.io/validator/running-a-node). Alternatively, you can bootstrap an entire testing infrastructure in Docker on your local machine using Kurtosis - [guide is here](../../2.build/2.smart-contracts/testing/kurtosis-localnet.md).
 - 작업 공간 - 자체 로컬 네트워크를 시작하여 e2e 테스트를 수행할 수 있습니다. More info [here](../../2.build/2.smart-contracts/testing/integration-test.md).

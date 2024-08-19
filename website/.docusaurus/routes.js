@@ -4,7 +4,7 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 export default [
   {
     path: '/zh-CN/blog',
-    component: ComponentCreator('/zh-CN/blog', '073'),
+    component: ComponentCreator('/zh-CN/blog', '4ab'),
     exact: true
   },
   {
@@ -14,7 +14,7 @@ export default [
   },
   {
     path: '/zh-CN/blog/2024-08-13-pagoda-services',
-    component: ComponentCreator('/zh-CN/blog/2024-08-13-pagoda-services', '763'),
+    component: ComponentCreator('/zh-CN/blog/2024-08-13-pagoda-services', '641'),
     exact: true
   },
   {
@@ -89,7 +89,7 @@ export default [
   },
   {
     path: '/zh-CN/blog/tags/updates',
-    component: ComponentCreator('/zh-CN/blog/tags/updates', 'f88'),
+    component: ComponentCreator('/zh-CN/blog/tags/updates', '82b'),
     exact: true
   },
   {
@@ -119,15 +119,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '50b'),
+    component: ComponentCreator('/zh-CN/', 'c52'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '9d9'),
+        component: ComponentCreator('/zh-CN/', '9e3'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '873'),
+            component: ComponentCreator('/zh-CN/', 'b55'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -1102,13 +1102,13 @@ export default [
               },
               {
                 path: '/zh-CN/build/web3-apps/chain-hosted-ui',
-                component: ComponentCreator('/zh-CN/build/web3-apps/chain-hosted-ui', '84f'),
+                component: ComponentCreator('/zh-CN/build/web3-apps/chain-hosted-ui', '02c'),
                 exact: true,
                 sidebar: "build"
               },
               {
                 path: '/zh-CN/build/web3-apps/chain-hosted-ui-tutorial',
-                component: ComponentCreator('/zh-CN/build/web3-apps/chain-hosted-ui-tutorial', '2b1'),
+                component: ComponentCreator('/zh-CN/build/web3-apps/chain-hosted-ui-tutorial', 'e8f'),
                 exact: true,
                 sidebar: "tutorials"
               },

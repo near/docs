@@ -8,7 +8,7 @@ import {Github} from "@site/src/components/codetabs"
 
 # Getting started
 
-In this tutorial we'll get a `testnet` account, use [NEAR CLI RS](../../../4.tools/cli-rs.md) to add a key to our computer's file system, and set up the basic skeleton of a Rust smart contract.
+In this tutorial we'll get a `testnet` account, use [NEAR CLI RS](../../../4.tools/cli.md) to add a key to our computer's file system, and set up the basic skeleton of a Rust smart contract.
 
 ## Setting up Rust
 
@@ -48,7 +48,7 @@ Visit [NEAR Wallet for testnet](https://testnet.mynearwallet.com/) and register 
 
 We'll want to use a command-line interface (CLI) tool to deploy a contract, but at the moment the private key only exists in the browser. Next we'll _add a new key_ to the testnet account and have this stored locally on our computer as a JSON file. (Yes, you can have multiple keys on your NEAR account, which is quite powerful!)
 
-Let's install [NEAR CLI RS](../../../4.tools/cli-rs.md) using `cargo`. You can also download the pre-compiled version of `near-cli-rs` for your OS from [GitHub's Releases page](https://github.com/near/near-cli-rs/releases/).
+Let's install [NEAR CLI RS](../../../4.tools/cli.md) using `cargo`. You can also download the pre-compiled version of `near-cli-rs` for your OS from [GitHub's Releases page](https://github.com/near/near-cli-rs/releases/).
 
 ```bash
 cargo install near-cli-rs

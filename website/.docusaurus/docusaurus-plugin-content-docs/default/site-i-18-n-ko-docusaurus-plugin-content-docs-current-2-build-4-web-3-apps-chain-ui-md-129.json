@@ -1,0 +1,28 @@
+{
+  "id": "build/web3-apps/chain-hosted-ui",
+  "title": "Chain Hosted UI",
+  "description": "Chain Hosted UI is a decentralized frontend solution that lets you to deploy dApp frontends directly on the NEAR blockchain. A frontend can be built with typical Web2 tooling (e.g. React + Vite + node.js dependencies), and the resulting compressed bundle can be stored in the state of a smart contract.",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/2.build/4.web3-apps/chain-ui.md",
+  "sourceDirName": "2.build/4.web3-apps",
+  "slug": "/build/web3-apps/chain-hosted-ui",
+  "permalink": "/ko/build/web3-apps/chain-hosted-ui",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/4.web3-apps/chain-ui.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "chain-hosted-ui",
+    "title": "Chain Hosted UI",
+    "sidebar_label": "Chain Hosted UI"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Integrating Contracts",
+    "permalink": "/ko/build/web3-apps/integrate-contracts"
+  },
+  "next": {
+    "title": "What is a Component?",
+    "permalink": "/ko/build/near-components/what-is"
+  }
+}

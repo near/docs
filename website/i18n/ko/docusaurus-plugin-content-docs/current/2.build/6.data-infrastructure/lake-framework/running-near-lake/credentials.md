@@ -30,7 +30,7 @@ aws_secret_access_key=<YOUR_AWS_ACCESS_KEY>
 
 [AWS 문서: 구성 및 자격 증명 파일 설정](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
 
-#### 환경 변수
+#### Environment variables
 
 또는 정해진 이름이 있는 환경 변수를 통해 AWS 자격 증명을 제공할 수도 있습니다.
 

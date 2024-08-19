@@ -138,7 +138,7 @@ copy that entire line and head on over to console.pagoda.co
 
 ## Step 5: Integrating Webhook into Pagoda Console
 
-Once at console.pagoda.co, you should be greeted by the log-in page. Select the Non-funcable Token (NFT) project to start exploring the NFT contract
+Once at console.pagoda.co, you should be greeted by the log-in page. Select the Non-fungible Token (NFT) project to start exploring the NFT contract
 
 <img width="60%" src="/docs/pagoda/webhook19.png" />
 
@@ -175,7 +175,7 @@ But for now, we'll keep it easy and select any Successful Action.
 We're almost done! Under destination select webhooks. Now that webhook we created earlier go ahead and copy and paste it into here. Then hit "Create"
 
 :::tip
-Don't forget to remove the `{}` around the name of your event! `ifttt.com/trigger/...`, not `ifftt.com/{trigger}/...`
+Don't forget to remove the `{}` around the name of your event! `ifttt.com/trigger/...`, not `ifttt.com/{trigger}/...`
 :::
 
 <img width="60%" src="/docs/pagoda/webhook26.png" />
@@ -202,6 +202,6 @@ Select the `new_default_metadata` function (we are choosing this one because we 
 
 And that's it! You've just triggered something in the real world with an event that happened on the NEAR Blockchain. Hopefully this inspires you to create your own webhook using IFTTT and the Pagoda Console.
 
-We'd love to see what you create! Tag [@PagodaPlatform](https://twitter.com/PagodaPlatform) on Twitter with a novel implementation of a webhhook and trigger and we might retweet it.
+We'd love to see what you create! Tag [@PagodaPlatform](https://twitter.com/PagodaPlatform) on Twitter with a novel implementation of a webhook and trigger and we might retweet it.
 
 Happy hacking!

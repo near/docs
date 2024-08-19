@@ -8,7 +8,7 @@ import {Github} from "@site/src/components/codetabs"
 
 # 시작하기
 
-In this tutorial we'll get a `testnet` account, use [NEAR CLI RS](../../../4.tools/cli-rs.md) to add a key to our computer's file system, and set up the basic skeleton of a Rust smart contract.
+In this tutorial we'll get a `testnet` account, use [NEAR CLI RS](../../../4.tools/cli.md) to add a key to our computer's file system, and set up the basic skeleton of a Rust smart contract.
 
 ## Rust 설정
 
@@ -48,7 +48,7 @@ Visit [NEAR Wallet for testnet](https://testnet.mynearwallet.com/) and register 
 
 명령줄 인터페이스(CLI) 도구를 사용하여 컨트랙트를 배포하려고 하지만, 현재 개인 키는 브라우저에만 존재합니다. 다음으로 테스트넷 계정에 새 키를 _추가_ 하고 이를 JSON 파일로 컴퓨터에 로컬로 저장합니다. (NEAR 계정 내에는 여러 개의 키를 가질 수 있으며 이는 매우 강력합니다!)
 
-Let's install [NEAR CLI RS](../../../4.tools/cli-rs.md) using `cargo`. You can also download the pre-compiled version of `near-cli-rs` for your OS from [GitHub's Releases page](https://github.com/near/near-cli-rs/releases/).
+Let's install [NEAR CLI RS](../../../4.tools/cli.md) using `cargo`. You can also download the pre-compiled version of `near-cli-rs` for your OS from [GitHub's Releases page](https://github.com/near/near-cli-rs/releases/).
 
 ```bash
 cargo install near-cli-rs

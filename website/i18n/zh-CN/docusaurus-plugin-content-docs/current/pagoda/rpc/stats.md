@@ -28,7 +28,7 @@ Aggregated key metrics available at the top of the dashboard are
 
 ## Set a Time Period
 
-Data is sent with UTC time to the browser and the browser adjusts to the user’s timezon.
+Data is sent with UTC time to the browser and the browser adjusts to the user’s timezone.
 
 - Last 15 Minutes is the last complete 15 minutes. This updates every few seconds.
 - Last 1 Hour is the last fully completed hour; from 00 to 59 minutes and 59 seconds.

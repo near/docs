@@ -622,9 +622,9 @@ You should see the Guest Book landing page:
 
 ---
 
-## NEAR 패키지 관리
+## Managing NEAR Packages
 
-생성한 Kurtosis NEAR 패키지는 Docker 엔진이 실행되는 동안 로컬 시스템에서 계속 실행됩니다. 이 패키지는 컴퓨터와 다른 enclave 모두에서 격리된 환경인 Kurtosis "엔클레이브" 내부에서 실행됩니다. 실제로 [설정 지침](#설정)에서 실행한 스크립트를 다시 실행하기만 하면 여러 개의 독립적인 로컬 NEAR 클러스터를 컴퓨터에서 실행할 수 있습니다.
+The Kurtosis NEAR Packages you create will continue to run on your local machine for as long as your Docker engine is running. 이 패키지는 컴퓨터와 다른 enclave 모두에서 격리된 환경인 Kurtosis "엔클레이브" 내부에서 실행됩니다. 실제로 [설정 지침](#설정)에서 실행한 스크립트를 다시 실행하기만 하면 여러 개의 독립적인 로컬 NEAR 클러스터를 컴퓨터에서 실행할 수 있습니다.
 
 ### 패키지 상태 조회
 

@@ -305,7 +305,7 @@ near contract call-function as-read-only $NFT_CONTRACT_ID nft_metadata json-args
 
 ## 시리즈 생성
 
-다음 단계는 두 개의 다른 시리즈를 만드는 것입니다. 하나는 게으른 발행에 대한 가격이 있고, 다른 하나는 단순히 가격이 없는 기본 시리즈입니다. The first step is to create an owner [sub-account](../../4.tools/cli-rs.md#accounts) that you can use to create both series
+다음 단계는 두 개의 다른 시리즈를 만드는 것입니다. 하나는 게으른 발행에 대한 가격이 있고, 다른 하나는 단순히 가격이 없는 기본 시리즈입니다. The first step is to create an owner [sub-account](../../4.tools/cli.md#accounts) that you can use to create both series
 
 ```bash
 export SERIES_OWNER=owner.$NFT_CONTRACT_ID

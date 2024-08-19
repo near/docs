@@ -75,7 +75,7 @@ service cloud.firestore {
 - Press the gear button next to "Project Overview", and go to "Project settings"
 - Under "Your apps", click on the `</>` button
 - Set the app nickname as `issuer-gcp` and hit "Register app"
-- You should see the code needed for initilization and authentication of Firestore, such as:
+- You should see the code needed for initialization and authentication of Firestore, such as:
 
 ```js
 // Import the functions you need from the SDKs you need
@@ -253,7 +253,7 @@ const onCLick = () => selector.then((selector: any) => selector.wallet('fast-aut
         }),);
 ```
 
-Wehenever the user tries to login, call `onClick`.
+Whenever the user tries to login, call `onClick`.
 
 ### Getting added to the MPC recovery service
 

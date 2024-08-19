@@ -37,9 +37,7 @@ export default {
         "Inter",
         "sans-serif"
       ]
-    },
-    "REACT_APP_PUBLIC_POSTHOG_KEY": "phc_95PGQnbyatmj2TBRPWYfhbHfqB6wgZj5QRL8WY9gW20",
-    "REACT_APP_PUBLIC_POSTHOG_HOST": "https://eu.i.posthog.com"
+    }
   },
   "themes": [
     "@saucelabs/theme-github-codeblock",

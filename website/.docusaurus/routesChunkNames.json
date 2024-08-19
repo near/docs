@@ -1,5 +1,5 @@
 {
-  "/zh-CN/blog-073": {
+  "/zh-CN/blog-4ab": {
     "__comp": "a6aa9e1f",
     "__context": {
       "plugin": "36994c47"
@@ -7,7 +7,7 @@
     "sidebar": "814f3328",
     "items": [
       {
-        "content": "29d12549"
+        "content": "2909ac6f"
       },
       {
         "content": "7c7739ff"
@@ -47,7 +47,7 @@
     "sidebar": "814f3328",
     "content": "cdfd903c"
   },
-  "/zh-CN/blog/2024-08-13-pagoda-services-763": {
+  "/zh-CN/blog/2024-08-13-pagoda-services-641": {
     "__comp": "ccc49370",
     "__context": {
       "data": {
@@ -56,7 +56,7 @@
       "plugin": "36994c47"
     },
     "sidebar": "814f3328",
-    "content": "5ae8e5a8"
+    "content": "2dddf570"
   },
   "/zh-CN/blog/archive-2d5": {
     "__comp": "9e4087bc",
@@ -222,7 +222,7 @@
     ],
     "__props": "a15ebea5"
   },
-  "/zh-CN/blog/tags/updates-f88": {
+  "/zh-CN/blog/tags/updates-82b": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "36994c47"
@@ -230,7 +230,7 @@
     "sidebar": "814f3328",
     "items": [
       {
-        "content": "29d12549"
+        "content": "2909ac6f"
       },
       {
         "content": "7c7739ff"
@@ -310,17 +310,17 @@
       "plugin": "c141421f"
     }
   },
-  "/zh-CN/-50b": {
+  "/zh-CN/-c52": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "aba21aa0"
     }
   },
-  "/zh-CN/-9d9": {
+  "/zh-CN/-9e3": {
     "__comp": "a7bd4aaa",
     "__props": "363b7d6a"
   },
-  "/zh-CN/-873": {
+  "/zh-CN/-b55": {
     "__comp": "a94703ab"
   },
   "/zh-CN/api/rpc/access-keys-c8f": {
@@ -1019,13 +1019,13 @@
     "__comp": "17896441",
     "content": "5a0e3338"
   },
-  "/zh-CN/build/web3-apps/chain-hosted-ui-84f": {
+  "/zh-CN/build/web3-apps/chain-hosted-ui-02c": {
     "__comp": "17896441",
-    "content": "3c08bee4"
+    "content": "bb7cc30a"
   },
-  "/zh-CN/build/web3-apps/chain-hosted-ui-tutorial-2b1": {
+  "/zh-CN/build/web3-apps/chain-hosted-ui-tutorial-e8f": {
     "__comp": "17896441",
-    "content": "39070afd"
+    "content": "d800c561"
   },
   "/zh-CN/build/web3-apps/frontend-255": {
     "__comp": "17896441",

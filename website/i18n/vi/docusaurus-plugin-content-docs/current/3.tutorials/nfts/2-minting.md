@@ -218,7 +218,7 @@ Bây giờ logic để mint đã hoàn tất và bạn đã thêm một cách đ
 Hãy đảm bảo rằng bạn deploy contract cho một account không có contract nào tồn tại từ trước. Cách đơn giản nhất là chỉ cần tạo một account mới hoặc tạo một account phụ cho hướng dẫn này.
 :::
 
-Log in to your newly created account with [`near-cli-rs`](../../4.tools/cli-rs.md) by running the following command in your terminal.
+Log in to your newly created account with [`near-cli-rs`](../../4.tools/cli.md) by running the following command in your terminal.
 
 ```bash
 near account import-account using-web-wallet network-config testnet

@@ -34,7 +34,7 @@ import CLICreateToken from "./ft/near-cli/create.md"
 import SmartContractSendToken from "./ft/smart-contract/send.md"
 import SmartContractAttachTokenToCall from "./ft/smart-contract/attach-to-call.md"
 
-Besides the native NEAR token, NEAR accounts have access to a [multitude of tokens](https://guide.ref.finance/developers-1/cli-trading#query-whitelisted-tokens) to use thoughtout the ecosystem. Moreover, it is even possible for users to create their own fungible tokens.
+Besides the native NEAR token, NEAR accounts have access to a [multitude of tokens](https://guide.ref.finance/developers-1/cli-trading#query-whitelisted-tokens) to use throughout the ecosystem. Moreover, it is even possible for users to create their own fungible tokens.
 
 In contrast with the NEAR native token, fungible token (FT) are **not stored** in the user's account. In fact, each FT lives in **their own contract** which is in charge of doing **bookkeeping**. This is, the contract keeps track of how many tokens each user has, and handles transfers internally.
 

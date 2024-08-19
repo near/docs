@@ -1,7 +1,7 @@
 {
   "id": "tools/near-cli",
   "title": "NEAR CLI",
-  "description": "NEAR 명령줄(Command Line) 인터페이스 (CLI)는 쉘에서 직접 NEAR 네트워크와 상호 작용할 수 있는 도구입니다. Among other things, the NEAR CLI enables you to:",
+  "description": "The NEAR Command Line Interface (CLI) is a tool that enables to interact with the NEAR network directly from the shell. Among other things, the NEAR CLI enables you to:",
   "source": "@site/i18n/ko/docusaurus-plugin-content-docs/current/4.tools/cli.md",
   "sourceDirName": "4.tools",
   "slug": "/tools/near-cli",

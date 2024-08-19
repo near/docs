@@ -311,7 +311,7 @@ near contract call-function as-read-only $NFT_CONTRACT_ID nft_metadata json-args
 
 ## Creating The Series
 
-The next step is to create two different series. One will have a price for lazy minting and the other will simply be a basic series with no price. The first step is to create an owner [sub-account](../../4.tools/cli-rs.md#accounts) that you can use to create both series
+The next step is to create two different series. One will have a price for lazy minting and the other will simply be a basic series with no price. The first step is to create an owner [sub-account](../../4.tools/cli.md#accounts) that you can use to create both series
 
 ```bash
 export SERIES_OWNER=owner.$NFT_CONTRACT_ID

@@ -320,7 +320,7 @@ replay attack을 방지하기 위해, 서명된 데이터에는 타임스탬프�
 
 
 
-* 사용자가 직접 민팅할 수 있습니다. 처음부터 NFT를 민팅하도록 허용하거나, 브리딩 또는 업그레이드와 같은 보다 복잡한 프로세스를 사용하여 수행될 수 있는 작업입니다. 이러한 프로세스의 가장 유명한 예는 [CrytoKitties](https://www.cryptokitties.co/) 게임의 브리딩입니다. 여기에서는 기존 NFT를 결합하여 새로운 NFT를 생성합니다. 이 접근 방식을 사용하면 일반적으로 사용자는 NFT 생성의 스토리지 및 가스 비용을 충당하기 위해 비용을 지불해야 합니다.
+* 사용자가 직접 민팅할 수 있습니다. 처음부터 NFT를 민팅하도록 허용하거나, 브리딩 또는 업그레이드와 같은 보다 복잡한 프로세스를 사용하여 수행될 수 있는 작업입니다. The most famous example of such process is breeding in [CryptoKitties](https://www.cryptokitties.co/) game - new NFTs are created by combining existing ones. 이 접근 방식을 사용하면 일반적으로 사용자는 NFT 생성의 스토리지 및 가스 비용을 충당하기 위해 비용을 지불해야 합니다.
 * NFT는 개발자에 의해 일련의 사용자에게 배포될 수 있습니다. 이를 일반적으로 [NFT 에어드랍](https://www.investopedia.com/terms/a/airdrop-cryptocurrency.asp)이라고 합니다. 대부분의 경우 이것은 애플리케이션에서 NFT 사용을 시작하기 위한 마케팅 전략으로 사용됩니다. 이 경우 스토리지 및 가스 비용은 개발자가 부담합니다.
 * NFT를 시장에서 구입하거나 전리품 상자에서 얻을 수 있습니다. 정확한 전략에 따라 비용은 사용자 또는 개발자가 지불할 수 있습니다. 또한 이 경우 NFT는 때때로 주문 형식으로 발행될 수 있습니다.
 
@@ -510,7 +510,7 @@ Another option to simplify onboarding is usage of the [Prepaid Gas](../protocol/
 * [기본 마켓플레이스 예시](../../3.tutorials/nfts/8-marketplace.md)
 * [Paras](https://paras.id/) 마켓플레이스 컨트랙트 - [소스](https://github.com/ParasHQ/paras-marketplace-contract/tree/master/paras-marketplace-contract/src).
 
-타사 솔루션의 경우 가장 완벽한 솔루션은 [Mintibase](https://www.mintbase.io/)입니다. 이는 컨트랙트, 인덱서, API 및 웹 클라이언트를 포함하여 NFT 통합을 위한 전체 구성 요소 제품군을 제공합니다.
+As for third-party solutions, the most complete one is [Mintbase](https://www.mintbase.io/), which provides a full suite of components for NFTs integration - including contracts, indexer, API and a web client:
 
 
 

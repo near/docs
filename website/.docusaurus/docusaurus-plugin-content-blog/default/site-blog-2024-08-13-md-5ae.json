@@ -1,5 +1,5 @@
 {
-  "permalink": "/zh-CN/blog/2024-08-13-pagoda-services",
+  "permalink": "/blog/2024-08-13-pagoda-services",
   "source": "@site/../blog/2024-08-13.md",
   "title": "Future of Pagoda Services",
   "description": "As the NEAR ecosystem continues to decentralize, Pagoda will cease operations within the next six months and decentralize its functions into NEAR ecosystem teams and committees.  This document describes the transition plan for each of the services, activities, and tools that Pagoda develops or operates.",
@@ -8,7 +8,7 @@
     {
       "inline": true,
       "label": "updates",
-      "permalink": "/zh-CN/blog/tags/updates"
+      "permalink": "/blog/tags/updates"
     }
   ],
   "readingTime": 2.705,
@@ -36,6 +36,6 @@
   "unlisted": false,
   "nextItem": {
     "title": "An update on the near.org / RPC outage on July 11, 2024",
-    "permalink": "/zh-CN/blog/2024-07-11-near-org-outage"
+    "permalink": "/blog/2024-07-11-near-org-outage"
   }
 }

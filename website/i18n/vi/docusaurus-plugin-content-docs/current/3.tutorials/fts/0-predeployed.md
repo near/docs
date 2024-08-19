@@ -13,7 +13,7 @@ Learn how to easily receive fungible tokens without doing any software developme
 To complete this tutorial successfully, you'll need:
 
 - [A NEAR testnet account](https://testnet.mynearwallet.com)
-- [NEAR-CLI-RS](../../4.tools/cli-rs.md#install)
+- [NEAR-CLI-RS](../../4.tools/cli.md#install)
 
 ---
 

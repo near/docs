@@ -218,7 +218,7 @@ nft-contract
 기존 컨트랙트가 없는 계정에 컨트랙트를 배포했는지 확인하세요. 새 계정을 만들거나 이 튜토리얼의 하위 계정을 만드는 것이 가장 쉽습니다.
 :::
 
-Log in to your newly created account with [`near-cli-rs`](../../4.tools/cli-rs.md) by running the following command in your terminal.
+Log in to your newly created account with [`near-cli-rs`](../../4.tools/cli.md) by running the following command in your terminal.
 
 ```bash
 near account import-account using-web-wallet network-config testnet

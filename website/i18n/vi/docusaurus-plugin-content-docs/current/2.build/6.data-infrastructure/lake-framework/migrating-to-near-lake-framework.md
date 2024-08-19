@@ -499,7 +499,7 @@ We are posting the complete diffs for the reference
 -    /// Specify a custom download URL for the genesis file.
 -    #[clap(long)]
 -    pub download_genesis_url: Option<String>,
--    /// Download the verified NEAR config file automtically.
+-    /// Download the verified NEAR config file automatically.
 -    #[clap(long)]
 -    pub download_config: bool,
 -    /// Specify a custom download URL for the config file.

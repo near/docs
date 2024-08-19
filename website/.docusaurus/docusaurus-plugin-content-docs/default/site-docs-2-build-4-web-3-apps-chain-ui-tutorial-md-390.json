@@ -5,7 +5,7 @@
   "source": "@site/../docs/2.build/4.web3-apps/chain-ui-tutorial.md",
   "sourceDirName": "2.build/4.web3-apps",
   "slug": "/build/web3-apps/chain-hosted-ui-tutorial",
-  "permalink": "/zh-CN/build/web3-apps/chain-hosted-ui-tutorial",
+  "permalink": "/build/web3-apps/chain-hosted-ui-tutorial",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/4.web3-apps/chain-ui-tutorial.md",
@@ -21,10 +21,10 @@
   "sidebar": "tutorials",
   "previous": {
     "title": "Coin Flip",
-    "permalink": "/zh-CN/tutorials/examples/coin-flip"
+    "permalink": "/tutorials/examples/coin-flip"
   },
   "next": {
     "title": "Factory",
-    "permalink": "/zh-CN/tutorials/examples/factory"
+    "permalink": "/tutorials/examples/factory"
   }
 }

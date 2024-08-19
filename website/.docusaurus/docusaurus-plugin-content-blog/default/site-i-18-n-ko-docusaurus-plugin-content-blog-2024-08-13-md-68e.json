@@ -1,0 +1,41 @@
+{
+  "permalink": "/ko/blog/2024-08-13-pagoda-services",
+  "source": "@site/i18n/ko/docusaurus-plugin-content-blog/2024-08-13.md",
+  "title": "Future of Pagoda Services",
+  "description": "As the NEAR ecosystem continues to decentralize, Pagoda will cease operations within the next six months and decentralize its functions into NEAR ecosystem teams and committees.  This document describes the transition plan for each of the services, activities, and tools that Pagoda develops or operates.",
+  "date": "2024-08-13T00:00:00.000Z",
+  "tags": [
+    {
+      "inline": true,
+      "label": "updates",
+      "permalink": "/ko/blog/tags/updates"
+    }
+  ],
+  "readingTime": 2.705,
+  "hasTruncateMarker": true,
+  "authors": [
+    {
+      "name": "Eric Winer",
+      "title": "CTO & Managing Director, Pagoda",
+      "url": "https://github.com/ewiner",
+      "imageURL": "https://github.com/ewiner.png",
+      "key": "ewiner"
+    }
+  ],
+  "frontMatter": {
+    "title": "Future of Pagoda Services",
+    "authors": [
+      "ewiner"
+    ],
+    "slug": "2024-08-13-pagoda-services",
+    "tags": [
+      "updates"
+    ],
+    "hide_table_of_contents": false
+  },
+  "unlisted": false,
+  "nextItem": {
+    "title": "An update on the near.org / RPC outage on July 11, 2024",
+    "permalink": "/ko/blog/2024-07-11-near-org-outage"
+  }
+}

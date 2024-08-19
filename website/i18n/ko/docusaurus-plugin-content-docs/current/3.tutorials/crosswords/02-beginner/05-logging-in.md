@@ -66,7 +66,7 @@ NEAR에서 계정에 키를 추가(및 제거)할 수 있습니다. 키에는 �
 
 ### 키가 있는 예시 계정
 
-Let's look at this `testnet` account that has one full-access key and two function-call access keys. As you can see, we use the [NEAR CLI](../../../4.tools/cli-rs.md) to print this info.
+Let's look at this `testnet` account that has one full-access key and two function-call access keys. As you can see, we use the [NEAR CLI](../../../4.tools/cli.md) to print this info.
 
 ```bash
 near account list-keys friend.testnet network-config testnet now

@@ -14,7 +14,7 @@ To complete these tutorials successfully, you'll need:
 
 - [Rust](/build/smart-contracts/quickstart#prerequisites)
 - [A NEAR wallet](https://testnet.mynearwallet.com)
-- [NEAR-CLI-RS](../../4.tools/cli-rs.md#install)
+- [NEAR-CLI-RS](../../4.tools/cli.md#install)
 - [cargo-near](https://github.com/near/cargo-near)
 
 :::info New to Rust?

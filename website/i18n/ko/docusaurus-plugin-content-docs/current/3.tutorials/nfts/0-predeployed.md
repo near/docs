@@ -10,7 +10,7 @@ Create your first non-fungible token by using a pre-deployed NFT smart contract 
 
 ## 전제 조건
 
-To complete this tutorial successfully, you'll need [a NEAR Wallet](https://testnet.mynearwallet.com/create) and [NEAR CLI RS](../../4.tools/cli-rs.md#setup)
+To complete this tutorial successfully, you'll need [a NEAR Wallet](https://testnet.mynearwallet.com/create) and [NEAR CLI RS](../../4.tools/cli.md#setup)
 
 ---
 

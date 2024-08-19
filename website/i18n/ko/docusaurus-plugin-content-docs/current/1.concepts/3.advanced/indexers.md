@@ -88,4 +88,4 @@ NEAR 블록체인은 모든 사람이 블록체인과 상호 작용할 수 있�
 ## 다음은 무엇인가요?
 We encourage you to learn more about the [Lake Indexer project](/build/data-infrastructure/lake-framework/near-lake). Please, proceed to [Tutorials](/build/data-infrastructure/lake-framework/near-lake-state-changes-indexer) section to learn how to build an indexer on practice.
 
-대신, NEAR 생태계와 단단히 통합되어 있는 몇 개의 다른 써드 파티 인덱서들이 있습니다. [데이터 도구](/concepts/data-flow/data-storage#data-tools)에서 모든 데이터 소싱 옵션(The Graph, Pagoda, Pipespeak, 그리고 SubQuery 포함) 을 확인할 수 있습니다.
+대신, NEAR 생태계와 단단히 통합되어 있는 몇 개의 다른 써드 파티 인덱서들이 있습니다. You can review all of your data sourcing options (including The Graph, Pagoda, Pikespeak, and SubQuery) under [data tools](/concepts/data-flow/data-storage#data-tools).

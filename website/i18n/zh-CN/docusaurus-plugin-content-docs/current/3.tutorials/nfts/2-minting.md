@@ -219,7 +219,7 @@ Please ensure that you deploy the contract to an account with no pre-existing co
 ::: It's easiest to simply create a new account or create a sub-account for this tutorial.
 :::
 
-Log in to your newly created account with [`near-cli-rs`](../../4.tools/cli-rs.md) by running the following command in your terminal.
+Log in to your newly created account with [`near-cli-rs`](../../4.tools/cli.md) by running the following command in your terminal.
 
 ```bash
 near account import-account using-web-wallet network-config testnet

@@ -148,7 +148,7 @@ reward = infrastructureCostReward + coinbaseReward
 
 역사적으로 스마트 컨트랙트를 도입한 최초의 블록체인은 이더리움이었습니다. 그러나 사용자 수가 증가함에 따라 트랜잭션 속도와 비용이 급증했고 수요를 감당할 수 없다는 것이 명백해졌습니다. So, a number of [scaling solutions](https://ethereum.org/en/developers/docs/scaling/) appeared - [layer 2 chains](https://ethereum.org/en/developers/docs/scaling/#layer-2-scaling), [sidechains](https://ethereum.org/en/developers/docs/scaling/sidechains/), and [plasma chains](https://ethereum.org/en/developers/docs/scaling/plasma/). 그러나 그들은 모두 각자만의 단점이 존재합니다. 이더리움은 핵심 문제를 수정하고 네트워크를 재설계하려고 시도하고 있습니다. 이는 지분 증명 합의로 전환하는 것과 같이 꽤 오랫동안 진행되고 있지만, 모든 문제가 해결될지는 매우 불분명합니다.
 
-한편, 차세대 블록체인들이 등장하기 시작했습니다. 그들은 Ethereum의 실수로부터 배운 점을 토대로, 처음부터 빠르고 저렴하며 확장 가능하도록 설계했습니다. 올바른 것을 선택하는 것은 결코 쉬운 일이 아니지만, 다음과 같은 특징 때문에 [NEAR](https://near.org/) 블록체인이 이상적인 솔루션이라는 것을 알 수 있습니다.
+한편, 차세대 블록체인들이 등장하기 시작했습니다. They learned from the Ethereum mistakes, and designed them from ground-up to be fast, cheap and scalable. 올바른 것을 선택하는 것은 결코 쉬운 일이 아니지만, 다음과 같은 특징 때문에 [NEAR](https://near.org/) 블록체인이 이상적인 솔루션이라는 것을 알 수 있습니다.
 - 트랜잭션은 저렴하고 매우 빠릅니다.
 - 처음부터 매우 확장 가능하도록 설계되었습니다. 이것은 우리가 트랜잭션 비용과 속도가 미래에도 안정적으로 유지될 것이라고 계산할 수 있음을 의미합니다.
 - 지분 증명 합의 메커니즘을 사용하므로, "채굴"이 필요하지 않습니다.

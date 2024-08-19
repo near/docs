@@ -320,7 +320,7 @@ In the blockchain world, creation of new NFTs is usually called minting. And as 
 
 
 
-* Users can mint them directly. This can be done by either allowing creation of NFTs from scratch, or by using more complex processes, like breeding or upgrading. The most famous example of such process is breeding in [CrytoKitties](https://www.cryptokitties.co/) game - new NFTs are created by combining existing ones. With this approach users usually have to pay to cover the storage and gas cost of NFTs creation.
+* Users can mint them directly. This can be done by either allowing creation of NFTs from scratch, or by using more complex processes, like breeding or upgrading. The most famous example of such process is breeding in [CryptoKitties](https://www.cryptokitties.co/) game - new NFTs are created by combining existing ones. With this approach users usually have to pay to cover the storage and gas cost of NFTs creation.
 * NFTs can be distributed by the developer to a set of users - it is usually called [NFTs airdrop](https://www.investopedia.com/terms/a/airdrop-cryptocurrency.asp). Most often this is used as a marketing strategy to kickstart NFTs usage in applications. Storage and gas costs in this case are covered by developers.
 * NFTs can be bought on a market or obtained from the lootbox. Depending on an exact strategy, costs can either be paid by a user or by developer. Also, in this case NFTs sometimes can be minted on-demand, to avoid paying upfront costs.
 
@@ -510,7 +510,7 @@ Implementing an own Marketplace contract is more involved since there is no stan
 * [Basic marketplace example](../../3.tutorials/nfts/8-marketplace.md)
 * [Paras ](https://paras.id/)marketplace contract - [source](https://github.com/ParasHQ/paras-marketplace-contract/tree/master/paras-marketplace-contract/src).
 
-As for third-party solutions, the most complete one is [Mintibase](https://www.mintbase.io/), which provides a full suite of components for NFTs integration - including contracts, indexer, API and a web client:
+As for third-party solutions, the most complete one is [Mintbase](https://www.mintbase.io/), which provides a full suite of components for NFTs integration - including contracts, indexer, API and a web client:
 
 
 
