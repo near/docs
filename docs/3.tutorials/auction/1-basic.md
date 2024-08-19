@@ -78,7 +78,7 @@ The contract stores two main fields: what was the highest bid so far, and when t
     <TabItem value="rust" label="🦀 Rust">
 
         <Github fname="lib.rs" language="rust"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs#L2-L17"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs#L5-L17"
                 start="5" end="17" />
 
         <details> 
@@ -205,7 +205,7 @@ There are some specifics to this method that we should take a closer look at:
 - The `predecessor` gives the account (or contract) that directly called the bid method, this can be different to the signer who initially signed the transaction leading to the execution of this method. If pivortex.near calls a contract proxy-contract.near which then calls bid on this contract the predecessor would be proxy-contract.near and the signer would be pivortex.near. For security purposes, so a malicious contract can't place a bid in your name, we stick with predecessor using here.
 - The contract returns a `Promise` that will execute the transfer of $NEAR tokens back to the previous bidder.
 
-Note that in the case of the first bid the contract will send 1 YoctoNEAR to itself, this is fine as we can safely assume that the contract will have the lowest denomination of NEAR available to send to itself.
+Note that in the case of the first bid the contract will send 1 YoctoNEAR to itself, this is fine as we can safely assume that the contract will have the lowest denomination of $NEAR available to send to itself.
 
 ---
 
@@ -305,8 +305,8 @@ Next, the test creates a couple of user accounts that will be used to send trans
 
         <Language value="rust" language="rust">
             <Github fname="Call create_subaccount" 
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L16-L17"
-                start="12" end="17" />
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L12-L16"
+                start="12" end="16" />
             <Github fname="create_subaccount definition" 
                 url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L93-L105"
                 start="93" end="105" />
@@ -329,8 +329,8 @@ Likewise, a "contract" account is created and the contract WASM is deployed to i
         The contract comes from compiling the contract to WASM using the build script in the `package.json` file and then reading it.
 
         <Github fname="main.ava.js" language="javascript"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/sandbox-test/main.ava.js#L22"
-                start="22" end="22" />
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/sandbox-test/main.ava.js#L19-L22"
+                start="19" end="22" />
 
     </TabItem>
 
@@ -339,8 +339,8 @@ Likewise, a "contract" account is created and the contract WASM is deployed to i
         The contract comes from the test compiling the contract to WASM using `cargo near build` and then reading it.
 
         <Github fname="test_basics.rs" language="rust"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L11"
-                start="20" end="21" />
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L17-L21"
+                start="17" end="21" />
 
     </TabItem>
 
@@ -527,7 +527,6 @@ Cool, now we've seen how tests are written, let's go ahead and run the tests. We
         ```
 
         Then deploy and initialize the contract with
-
 
         ```
         near contract deploy <accountId> use-file <path to WASM> with-init-call init json-args '{"end_time": "300000000000000000"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet

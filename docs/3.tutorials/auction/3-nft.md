@@ -65,7 +65,7 @@ When the auction is ended - by calling the method `claim` - the NFT needs to be 
 
         <Language value="rust" language="rust">
             <Github fname="lib.rs" 
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-owner-claims-winner-gets-nft/src/lib.rs#L94-L97"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-owner-claims-winner-gets-nft/src/lib.rs#L93-L96"
                 start="93" end="96" />
             <Github fname="ext.rs" 
                 url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-owner-claims-winner-gets-nft/src/ext.rs"
@@ -92,7 +92,7 @@ In our tests, we're now going to be using two contracts; the auction contract an
 
 In our tests folder, we need the WASM for an NFT contract. For this tutorial, we compiled an example NFT contract from [this repo](https://github.com/near-examples/NFT/tree/master).
 
-To deploy the NFT contract, this time we're going to use `dev deploy` which creates an account with a random ID and deploys the contract to it by specifying the path to the WASM file. After deploying we will initialize the contract with default metadata and specify an account ID which will be the owner of the NFT contract (though the owner of the NFT contract is irrelevant in this example). The default metadata sets the information such as the name of the token and its image to some pre-set values.
+To deploy the NFT contract, this time we're going to use `dev deploy` which creates an account with a random ID and deploys the contract to it by specifying the path to the WASM file. After deploying we will initialize the contract with default metadata and specify an account ID which will be the owner of the NFT contract (though the owner of the NFT contract is irrelevant in this example). Default metadata sets information such as the name and symbol of the NFT contract to default values.
 
 <Tabs groupId="code-tabs">
 
@@ -118,7 +118,7 @@ To deploy the NFT contract, this time we're going to use `dev deploy` which crea
 
 ## Minting an NFT
 
-To start a proper auction the auction contract should own an NFT. To do this the auction contract calls the NFT contract to mint a new NFT with the provided data.  
+To start a proper auction the auction contract should own an NFT. To do this the auction account calls the NFT contract to mint a new NFT providing information such as the image for the NFT.  
 
 <Tabs groupId="code-tabs">
 
@@ -182,5 +182,4 @@ You can also just buy an NFT with testnet $NEAR on a testnet marketplace like [M
 
 ## Conclusion 
 
-In this part of the tutorial we have added NFTs as a reward which has taught us how to interact with NFT standards, make cross-contract calls and test multiple contracts that interact in workspaces. In the [next part](./4-ft.md) we'll learn how to interact with fungible token standards by adapting the auction to receive bids in FTs. This will allow users to launch auctions in different tokens, including stablecoins. 
-
+In this part of the tutorial we have added NFTs as a reward which has taught us how to interact with NFT standards, make cross-contract calls and test multiple contracts that interact with each other in workspaces. In the [next part](./4-ft.md) we'll learn how to interact with fungible token standards by adapting the auction to receive bids in FTs. This will allow users to launch auctions in different tokens, including stablecoins. 
