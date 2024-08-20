@@ -68,13 +68,13 @@ We provide code to derive the address, as it's a complex process that involves m
 <Tabs groupId="code-tabs">
   <TabItem value="Ξ Ethereum">
     <Github language="js"
-      url="https://github.com/near-examples/near-multichain/blob/main/src/services/ethereum.js" start="16" end="20" />
+      url="https://github.com/near-examples/near-multichain/blob/main/src/services/ethereum.js" start="17" end="21" />
 
 </TabItem>
 
 <TabItem value="₿ Bitcoin">
     <Github language="js"
-      url="https://github.com/near-examples/near-multichain/blob/main/src/services/bitcoin.js" start="12" end="16" />
+      url="https://github.com/near-examples/near-multichain/blob/main/src/services/bitcoin.js" start="13" end="17" />
 
 </TabItem>
 
@@ -118,7 +118,7 @@ In Ethereum, constructing the transaction is simple since you only need to speci
 <TabItem value="₿ Bitcoin">
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/services/bitcoin.js"
-      start="26" end="80" />
+      start="27" end="81" />
 
 In bitcoin, you construct a new transaction by using all the Unspent Transaction Outputs (UTXOs) of the account as input, and then specify the output address and amount you want to send.
 
@@ -148,13 +148,23 @@ The method requires two parameters:
   <TabItem value="₿ Bitcoin">
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/services/bitcoin.js"
-      start="82" end="101" />
+      start="83" end="102" />
 
 For bitcoin, all UTXOs are signed independently and then combined into a single transaction.
 
 </TabItem>
 
 </Tabs>
+
+<details> 
+        
+  <summary> Deposit amount </summary>
+
+  In this example, we attach a deposit of 0.05 $NEAR for the signature request. The transaction may fail if the network is congested since the deposit required by the MPC service scales linearly with the number of pending requests, from 1 yoctoNEAR to a maximum of 0.65 $NEAR. Any unused deposit will be refunded and if the signature fails, the user will be refunded the full deposit.  
+
+  The MPC contract does implement a method to check the current deposit required, however, it cannot be used reliably since the amount will likely change between the time of the check and the time of the request.
+
+</details>
 
 :::info
 
@@ -183,7 +193,7 @@ In Ethereum, the signature is reconstructed by concatenating the `r`, `s`, and `
 <TabItem value="₿ Bitcoin">
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/services/bitcoin.js"
-      start="103" end="114" />
+      start="104" end="115" />
 
 In Bitcoin, the signature is reconstructed by concatenating the `r` and `s` values returned by the contract.
 
@@ -208,7 +218,7 @@ Once we have reconstructed the signature, we can relay it to the corresponding n
 <TabItem value="₿ Bitcoin">
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/services/bitcoin.js"
-      start="117" end="125" />
+      start="118" end="126" />
 
 </TabItem>
 
