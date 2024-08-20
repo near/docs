@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/1.chain-abstraction/chain-signatures/chain-signatures.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Guille",
-  "lastUpdatedAt": 1723133135000,
+  "lastUpdatedBy": "Owen",
+  "lastUpdatedAt": 1724163026000,
   "frontMatter": {
     "id": "chain-signatures",
     "title": "Implementing Chain Signatures"

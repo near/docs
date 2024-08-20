@@ -119,15 +119,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', 'c52'),
+    component: ComponentCreator('/zh-CN/', '787'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '9e3'),
+        component: ComponentCreator('/zh-CN/', '0fe'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', 'b55'),
+            component: ComponentCreator('/zh-CN/', '314'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -215,13 +215,13 @@ export default [
               },
               {
                 path: '/zh-CN/build/chain-abstraction/fastauth-sdk',
-                component: ComponentCreator('/zh-CN/build/chain-abstraction/fastauth-sdk', '982'),
+                component: ComponentCreator('/zh-CN/build/chain-abstraction/fastauth-sdk', '84f'),
                 exact: true,
                 sidebar: "build"
               },
               {
                 path: '/zh-CN/build/chain-abstraction/meta-transactions',
-                component: ComponentCreator('/zh-CN/build/chain-abstraction/meta-transactions', 'bc5'),
+                component: ComponentCreator('/zh-CN/build/chain-abstraction/meta-transactions', '90f'),
                 exact: true,
                 sidebar: "build"
               },
@@ -262,7 +262,7 @@ export default [
               },
               {
                 path: '/zh-CN/build/chain-abstraction/wallet',
-                component: ComponentCreator('/zh-CN/build/chain-abstraction/wallet', '63a'),
+                component: ComponentCreator('/zh-CN/build/chain-abstraction/wallet', '623'),
                 exact: true
               },
               {
@@ -309,7 +309,7 @@ export default [
               },
               {
                 path: '/zh-CN/build/data-infrastructure/lake-data-structures/state-change',
-                component: ComponentCreator('/zh-CN/build/data-infrastructure/lake-data-structures/state-change', 'dc3'),
+                component: ComponentCreator('/zh-CN/build/data-infrastructure/lake-data-structures/state-change', 'f53'),
                 exact: true,
                 sidebar: "build"
               },
@@ -321,7 +321,7 @@ export default [
               },
               {
                 path: '/zh-CN/build/data-infrastructure/lake-data-structures/transaction',
-                component: ComponentCreator('/zh-CN/build/data-infrastructure/lake-data-structures/transaction', 'f6e'),
+                component: ComponentCreator('/zh-CN/build/data-infrastructure/lake-data-structures/transaction', 'd63'),
                 exact: true,
                 sidebar: "build"
               },
@@ -357,7 +357,7 @@ export default [
               },
               {
                 path: '/zh-CN/build/data-infrastructure/lake-framework/migrating-to-near-lake-framework',
-                component: ComponentCreator('/zh-CN/build/data-infrastructure/lake-framework/migrating-to-near-lake-framework', '4d8'),
+                component: ComponentCreator('/zh-CN/build/data-infrastructure/lake-framework/migrating-to-near-lake-framework', '19a'),
                 exact: true,
                 sidebar: "build"
               },
@@ -375,7 +375,7 @@ export default [
               },
               {
                 path: '/zh-CN/build/data-infrastructure/lake-framework/running-near-lake/credentials',
-                component: ComponentCreator('/zh-CN/build/data-infrastructure/lake-framework/running-near-lake/credentials', '361'),
+                component: ComponentCreator('/zh-CN/build/data-infrastructure/lake-framework/running-near-lake/credentials', 'a1e'),
                 exact: true,
                 sidebar: "build"
               },
@@ -679,7 +679,7 @@ export default [
               },
               {
                 path: '/zh-CN/build/primitives/ft',
-                component: ComponentCreator('/zh-CN/build/primitives/ft', '100'),
+                component: ComponentCreator('/zh-CN/build/primitives/ft', '1a5'),
                 exact: true,
                 sidebar: "build"
               },
@@ -1078,7 +1078,7 @@ export default [
               },
               {
                 path: '/zh-CN/build/smart-contracts/testing/kurtosis-localnet',
-                component: ComponentCreator('/zh-CN/build/smart-contracts/testing/kurtosis-localnet', '020'),
+                component: ComponentCreator('/zh-CN/build/smart-contracts/testing/kurtosis-localnet', '62a'),
                 exact: true,
                 sidebar: "build"
               },
@@ -1102,13 +1102,13 @@ export default [
               },
               {
                 path: '/zh-CN/build/web3-apps/chain-hosted-ui',
-                component: ComponentCreator('/zh-CN/build/web3-apps/chain-hosted-ui', '02c'),
+                component: ComponentCreator('/zh-CN/build/web3-apps/chain-hosted-ui', '719'),
                 exact: true,
                 sidebar: "build"
               },
               {
                 path: '/zh-CN/build/web3-apps/chain-hosted-ui-tutorial',
-                component: ComponentCreator('/zh-CN/build/web3-apps/chain-hosted-ui-tutorial', 'e8f'),
+                component: ComponentCreator('/zh-CN/build/web3-apps/chain-hosted-ui-tutorial', '5d6'),
                 exact: true,
                 sidebar: "tutorials"
               },
@@ -1162,7 +1162,7 @@ export default [
               },
               {
                 path: '/zh-CN/concepts/advanced/indexers',
-                component: ComponentCreator('/zh-CN/concepts/advanced/indexers', '162'),
+                component: ComponentCreator('/zh-CN/concepts/advanced/indexers', '439'),
                 exact: true
               },
               {
@@ -1292,7 +1292,7 @@ export default [
               },
               {
                 path: '/zh-CN/concepts/web3/basics',
-                component: ComponentCreator('/zh-CN/concepts/web3/basics', 'eb5'),
+                component: ComponentCreator('/zh-CN/concepts/web3/basics', 'e8f'),
                 exact: true,
                 sidebar: "concepts"
               },
@@ -1310,13 +1310,13 @@ export default [
               },
               {
                 path: '/zh-CN/concepts/web3/near',
-                component: ComponentCreator('/zh-CN/concepts/web3/near', 'b2c'),
+                component: ComponentCreator('/zh-CN/concepts/web3/near', 'cea'),
                 exact: true,
                 sidebar: "concepts"
               },
               {
                 path: '/zh-CN/concepts/web3/nfts',
-                component: ComponentCreator('/zh-CN/concepts/web3/nfts', 'fe8'),
+                component: ComponentCreator('/zh-CN/concepts/web3/nfts', '5d0'),
                 exact: true,
                 sidebar: "concepts"
               },
@@ -1393,13 +1393,13 @@ export default [
               },
               {
                 path: '/zh-CN/pagoda/alerts/setup',
-                component: ComponentCreator('/zh-CN/pagoda/alerts/setup', 'cd4'),
+                component: ComponentCreator('/zh-CN/pagoda/alerts/setup', '7dd'),
                 exact: true,
                 sidebar: "pagoda"
               },
               {
                 path: '/zh-CN/pagoda/alerts/webhooks',
-                component: ComponentCreator('/zh-CN/pagoda/alerts/webhooks', '5a4'),
+                component: ComponentCreator('/zh-CN/pagoda/alerts/webhooks', '2fc'),
                 exact: true,
                 sidebar: "pagoda"
               },
@@ -1417,19 +1417,19 @@ export default [
               },
               {
                 path: '/zh-CN/pagoda/rpc/intro',
-                component: ComponentCreator('/zh-CN/pagoda/rpc/intro', '33f'),
+                component: ComponentCreator('/zh-CN/pagoda/rpc/intro', '0e7'),
                 exact: true,
                 sidebar: "pagoda"
               },
               {
                 path: '/zh-CN/pagoda/rpc/setup',
-                component: ComponentCreator('/zh-CN/pagoda/rpc/setup', '375'),
+                component: ComponentCreator('/zh-CN/pagoda/rpc/setup', '75f'),
                 exact: true,
                 sidebar: "pagoda"
               },
               {
                 path: '/zh-CN/pagoda/rpc/stats',
-                component: ComponentCreator('/zh-CN/pagoda/rpc/stats', '9e7'),
+                component: ComponentCreator('/zh-CN/pagoda/rpc/stats', 'e6f'),
                 exact: true,
                 sidebar: "pagoda"
               },
@@ -1476,7 +1476,7 @@ export default [
               },
               {
                 path: '/zh-CN/tools/near-api-js/quick-reference',
-                component: ComponentCreator('/zh-CN/tools/near-api-js/quick-reference', 'c83'),
+                component: ComponentCreator('/zh-CN/tools/near-api-js/quick-reference', 'd35'),
                 exact: true,
                 sidebar: "tools"
               },
@@ -1494,7 +1494,7 @@ export default [
               },
               {
                 path: '/zh-CN/tools/near-cli',
-                component: ComponentCreator('/zh-CN/tools/near-cli', '168'),
+                component: ComponentCreator('/zh-CN/tools/near-cli', '0b9'),
                 exact: true,
                 sidebar: "tools"
               },
@@ -1542,7 +1542,7 @@ export default [
               },
               {
                 path: '/zh-CN/tutorials/crosswords/basics/set-up-skeleton',
-                component: ComponentCreator('/zh-CN/tutorials/crosswords/basics/set-up-skeleton', 'b63'),
+                component: ComponentCreator('/zh-CN/tutorials/crosswords/basics/set-up-skeleton', 'b0b'),
                 exact: true,
                 sidebar: "tutorials"
               },
@@ -1572,7 +1572,7 @@ export default [
               },
               {
                 path: '/zh-CN/tutorials/crosswords/beginner/logging-in',
-                component: ComponentCreator('/zh-CN/tutorials/crosswords/beginner/logging-in', 'ca3'),
+                component: ComponentCreator('/zh-CN/tutorials/crosswords/beginner/logging-in', '2d7'),
                 exact: true,
                 sidebar: "tutorials"
               },
@@ -1698,7 +1698,7 @@ export default [
               },
               {
                 path: '/zh-CN/tutorials/fts/introduction',
-                component: ComponentCreator('/zh-CN/tutorials/fts/introduction', 'f9e'),
+                component: ComponentCreator('/zh-CN/tutorials/fts/introduction', '51d'),
                 exact: true,
                 sidebar: "tutorials"
               },
@@ -1710,7 +1710,7 @@ export default [
               },
               {
                 path: '/zh-CN/tutorials/fts/predeployed-contract',
-                component: ComponentCreator('/zh-CN/tutorials/fts/predeployed-contract', '6da'),
+                component: ComponentCreator('/zh-CN/tutorials/fts/predeployed-contract', '88c'),
                 exact: true,
                 sidebar: "tutorials"
               },
@@ -1842,7 +1842,7 @@ export default [
               },
               {
                 path: '/zh-CN/tutorials/nfts/introduction',
-                component: ComponentCreator('/zh-CN/tutorials/nfts/introduction', 'c58'),
+                component: ComponentCreator('/zh-CN/tutorials/nfts/introduction', 'fa6'),
                 exact: true,
                 sidebar: "tutorials"
               },
@@ -1926,7 +1926,7 @@ export default [
               },
               {
                 path: '/zh-CN/tutorials/nfts/minting',
-                component: ComponentCreator('/zh-CN/tutorials/nfts/minting', 'd16'),
+                component: ComponentCreator('/zh-CN/tutorials/nfts/minting', 'c11'),
                 exact: true,
                 sidebar: "tutorials"
               },
@@ -1944,7 +1944,7 @@ export default [
               },
               {
                 path: '/zh-CN/tutorials/nfts/predeployed-contract',
-                component: ComponentCreator('/zh-CN/tutorials/nfts/predeployed-contract', 'd98'),
+                component: ComponentCreator('/zh-CN/tutorials/nfts/predeployed-contract', 'f2b'),
                 exact: true,
                 sidebar: "tutorials"
               },
@@ -1956,7 +1956,7 @@ export default [
               },
               {
                 path: '/zh-CN/tutorials/nfts/series',
-                component: ComponentCreator('/zh-CN/tutorials/nfts/series', '872'),
+                component: ComponentCreator('/zh-CN/tutorials/nfts/series', '20e'),
                 exact: true,
                 sidebar: "tutorials"
               },
