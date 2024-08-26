@@ -370,20 +370,20 @@ Previous to this, Bob made a bid of 60,000 and Alice was returned her bid bringi
 
 ## Using FTs with the CLI
 
-If you want to interact with the auction contract you're going to need FTs. For this example, we'll use $cUSD where the contract address is `cusd.fakes.testnet`. One can easily acquire FTs through the [testnet faucet](https://near-faucet.io/). Select Celo Dollar and withdraw to the account you will use to place a bid. If you take a look at the transaction details you can see that the faucet registers your account in the FT contract and then sends you cUSD from the faucet account.
+If you want to interact with the auction contract you're going to need FTs. For this example, we'll use $DAI where the contract address is `dai.fakes.testnet`. One can easily acquire FTs through the [testnet faucet](https://near-faucet.io/). Select DAI and withdraw to the account you will use to place a bid. If you take a look at the transaction details you can see that the faucet registers your account in the FT contract and then sends you DAI from the faucet account.
 
-When deploying the contract make sure to specify the FT contract `cusd.fakes.testnet`.
+When deploying the contract make sure to specify the FT contract `dai.fakes.testnet`.
 
-The auction contract will need to be registered as well, you could do this by sending it an arbitrary amount of $cUSD from the faucet or you can just register it since it doesn't need any FTs. You should also register the auctioneer,
-
-```
-near contract call-function as-transaction cusd.fakes.testnet storage_deposit json-args '{"account_id": "<auctionContractId>"}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR'
-```
-
-Now you can go ahead and place a bid. cUSD has 24 decimals meaning that 1 $cUSD is made up of 10^24 smallest units. To make a bid of 2 $cUSD you can use the command:
+The auction contract will need to be registered as well, you could do this by sending it an arbitrary amount of $DAI from the faucet or you can just register it since it doesn't need any FTs. You should also register the auctioneer,
 
 ```
-near contract call-function as-transaction cusd.fakes.testnet ft_transfer_call json-args '{"receiver_id": "<auctionContractId>", "amount": "2000000000000000000000000", "msg": ""}' prepaid-gas '100.0 Tgas' attached-deposit '1 yoctoNEAR'
+near contract call-function as-transaction dai.fakes.testnet storage_deposit json-args '{"account_id": "<auctionContractId>"}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR'
+```
+
+Now you can go ahead and place a bid. DAI has 18 decimals meaning that 1 $DAI is made up of 10^24 smallest units. To make a bid of 2 $DAI you can use the command:
+
+```
+near contract call-function as-transaction dai.fakes.testnet ft_transfer_call json-args '{"receiver_id": "<auctionContractId>", "amount": "2000000000000000000", "msg": ""}' prepaid-gas '100.0 Tgas' attached-deposit '1 yoctoNEAR'
 ```
 
 ## Auction architecture 
