@@ -3,7 +3,9 @@ id: series
 title: Customizing the NFT Contract
 sidebar_label: Lazy Minting, Collections, and More!
 ---
-import {Github} from "@site/src/components/codetabs"
+import {Github} from "@site/src/components/codetabs";
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 In this tutorial, you'll learn how to take the [existing NFT contract](https://github.com/near-examples/nft-tutorial) you've been working with and modify it to meet some of the most common needs in the ecosystem. This includes:
 - [Lazy Minting NFTs](#lazy-minting)
@@ -289,10 +291,23 @@ cargo near build
 
 Next, you'll deploy this contract to the network.
 
-```bash
-export NFT_CONTRACT_ID=<accountId>
-near account create-account sponsor-by-faucet-service $NFT_CONTRACT_ID autogenerate-new-keypair save-to-legacy-keychain network-config testnet create
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+  
+  ```bash
+  export NFT_CONTRACT_ID=<accountId>
+  near create-account $NFT_CONTRACT_ID --useFaucet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+  
+  ```bash
+  export NFT_CONTRACT_ID=<accountId>
+  near account create-account sponsor-by-faucet-service $NFT_CONTRACT_ID autogenerate-new-keypair save-to-keychain network-config testnet create
+  ```
+  </TabItem>
+</Tabs>
 
 Check if this worked correctly by echoing the environment variable.
 ```bash
@@ -305,9 +320,22 @@ cargo near deploy $NFT_CONTRACT_ID with-init-call new_default_meta json-args '{"
 ```
 
 If you now query for the metadata of the contract, it should return our default metadata.
-```bash
-near contract call-function as-read-only $NFT_CONTRACT_ID nft_metadata json-args {} network-config testnet now
-```
+
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+  
+  ```bash
+  near view $NFT_CONTRACT_ID nft_metadata '{}' --networkId testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+  
+  ```bash
+  near contract call-function as-read-only $NFT_CONTRACT_ID nft_metadata json-args {} network-config testnet now
+  ```
+  </TabItem>
+</Tabs>
 
 ---
 
@@ -315,35 +343,97 @@ near contract call-function as-read-only $NFT_CONTRACT_ID nft_metadata json-args
 
 The next step is to create two different series. One will have a price for lazy minting and the other will simply be a basic series with no price. The first step is to create an owner [sub-account](../../4.tools/cli.md#accounts) that you can use to create both series
 
-```bash
-export SERIES_OWNER=owner.$NFT_CONTRACT_ID
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+  
+  ```bash
+  export SERIES_OWNER=owner.$NFT_CONTRACT_ID
 
-near account create-account fund-myself $SERIES_OWNER '3 NEAR' autogenerate-new-keypair save-to-legacy-keychain sign-as $NFT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
-```
+  near create-account $SERIES_OWNER --use-account $NFT_CONTRACT_ID --initial-balance 3 --network-id testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+  
+  ```bash
+  export SERIES_OWNER=owner.$NFT_CONTRACT_ID
+
+  near account create-account fund-myself $SERIES_OWNER '3 NEAR' autogenerate-new-keypair save-to-keychain sign-as $NFT_CONTRACT_ID network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
+</Tabs>
 
 ### Basic Series
 
 You'll now need to create the simple series with no price and no royalties. If you try to run the following command before adding the owner account as an approved creator, the contract should throw an error.
 
-```bash
-near contract call-function as-transaction $NFT_CONTRACT_ID create_series json-args '{"id": 1, "metadata": {"title": "SERIES!", "description": "testing out the new series contract", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}}' prepaid-gas '100.0 Tgas' attached-deposit '1 NEAR' sign-as $SERIES_OWNER network-config testnet sign-with-legacy-keychain send
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near call $NFT_CONTRACT_ID create_series '{"id": 1, "metadata": {"title": "SERIES!", "description": "testing out the new series contract", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}}' --gas 100000000000000 --deposit 1 --accountId $SERIES_OWNER --networkId testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+  ```bash
+  near contract call-function as-transaction $NFT_CONTRACT_ID create_series json-args '{"id": 1, "metadata": {"title": "SERIES!", "description": "testing out the new series contract", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}}' prepaid-gas '100.0 Tgas' attached-deposit '1 NEAR' sign-as $SERIES_OWNER network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
+</Tabs>
 
 The expected output is an error thrown: `ExecutionError: 'Smart contract panicked: only approved creators can add a type`. If you now add the series owner as a creator, it should work.
 
-```bash
-near contract call-function as-transaction $NFT_CONTRACT_ID add_approved_creator json-args '{"account_id": "'$SERIES_OWNER'"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as $NFT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
 
-```bash
-near contract call-function as-transaction $NFT_CONTRACT_ID create_series json-args '{"id": 1, "metadata": {"title": "SERIES!", "description": "testing out the new series contract", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}}' prepaid-gas '100.0 Tgas' attached-deposit '1 NEAR' sign-as $SERIES_OWNER network-config testnet sign-with-legacy-keychain send
-```
+  ```bash
+  near call $NFT_CONTRACT_ID add_approved_creator '{"account_id": "'$SERIES_OWNER'"}' --gas 100000000000000 --accountId $SERIES_OWNER --networkId testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+  ```bash
+  near contract call-function as-transaction $NFT_CONTRACT_ID add_approved_creator json-args '{"account_id": "'$SERIES_OWNER'"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as $NFT_CONTRACT_ID network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
+</Tabs>
+
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near call $NFT_CONTRACT_ID create_series '{"id": 1, "metadata": {"title": "SERIES!", "description": "testing out the new series contract", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}}' --gas 100000000000000 --deposit 1 --accountId $SERIES_OWNER --networkId testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+  ```bash
+  near contract call-function as-transaction $NFT_CONTRACT_ID create_series json-args '{"id": 1, "metadata": {"title": "SERIES!", "description": "testing out the new series contract", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}}' prepaid-gas '100.0 Tgas' attached-deposit '1 NEAR' sign-as $SERIES_OWNER network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
+</Tabs>
 
 If you now query for the series information, it should work!
 
-```bash
-near contract call-function as-read-only $NFT_CONTRACT_ID get_series json-args {} network-config testnet now
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+  
+  ```bash
+  near view $NFT_CONTRACT_ID get_series '{}' --networkId testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+  
+  ```bash
+  near contract call-function as-read-only $NFT_CONTRACT_ID get_series json-args {} network-config testnet now
+  ```
+  </TabItem>
+</Tabs>
 
 Which should return something similar to:
 
@@ -377,15 +467,40 @@ Which should return something similar to:
 
 Now that you've created the first, simple series, let's create the second one that has a price of 1 $NEAR associated with it.
 
-```bash
-near contract call-function as-transaction $NFT_CONTRACT_ID create_series json-args '{"id": 2, "metadata": {"title": "COMPLEX SERIES!", "description": "testing out the new contract with a complex series", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "price": "500000000000000000000000"}' prepaid-gas '100.0 Tgas' attached-deposit '1 NEAR' sign-as $SERIES_OWNER network-config testnet sign-with-legacy-keychain send
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near call $NFT_CONTRACT_ID create_series '{"id": 2, "metadata": {"title": "COMPLEX SERIES!", "description": "testing out the new contract with a complex series", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "price": "500000000000000000000000"}' --gas 100000000000000 --deposit 1 --accountId $SERIES_OWNER --networkId testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+  ```bash
+  near contract call-function as-transaction $NFT_CONTRACT_ID create_series json-args '{"id": 2, "metadata": {"title": "COMPLEX SERIES!", "description": "testing out the new contract with a complex series", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "price": "500000000000000000000000"}' prepaid-gas '100.0 Tgas' attached-deposit '1 NEAR' sign-as $SERIES_OWNER network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
+</Tabs>
 
 If you now paginate through the series again, you should see both appear.
 
-```bash
-near contract call-function as-read-only $NFT_CONTRACT_ID get_series json-args {} network-config testnet now
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+  
+  ```bash
+  near view $NFT_CONTRACT_ID get_series '{}' --networkId testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+  
+  ```bash
+  near contract call-function as-read-only $NFT_CONTRACT_ID get_series json-args {} network-config testnet now
+  ```
+  </TabItem>
+  
+</Tabs>
 
 Which has
 
@@ -438,11 +553,25 @@ Which has
 
 Now that you have both series created, it's time to now mint some NFTs. You can either login with an existing NEAR wallet using [`near login`](../../4.tools/cli.md#near-login) or you can create a sub-account of the NFT contract. In our case, we'll use a sub-account.
 
-```bash
-export BUYER_ID=buyer.$NFT_CONTRACT_ID
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
 
-near account create-account fund-myself $BUYER_ID '1 NEAR' autogenerate-new-keypair save-to-legacy-keychain sign-as $NFT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
-```
+  ```bash
+  export BUYER_ID=buyer.$NFT_CONTRACT_ID
+
+  near create-account $BUYER_ID --use-account $NFT_CONTRACT_ID --initial-balance 1 --network-id testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+  ```bash
+  export BUYER_ID=buyer.$NFT_CONTRACT_ID
+
+  near account create-account fund-myself $BUYER_ID '1 NEAR' autogenerate-new-keypair save-to-keychain sign-as $NFT_CONTRACT_ID network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
+</Tabs>
 
 ### Lazy Minting
 
@@ -455,15 +584,39 @@ export NFT_RECEIVER_ID=YOUR_ACCOUNT_ID_HERE
 ```
 Now if you try and run the mint command but don't attach enough $NEAR, it should throw an error.
 
-```bash
-near contract call-function as-transaction $NFT_CONTRACT_ID nft_mint json-args '{"id": "2", "receiver_id": "'$NFT_RECEIVER_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as $BUYER_ID network-config testnet sign-with-legacy-keychain send
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near call $NFT_CONTRACT_ID nft_mint '{"id": "2", "receiver_id": "'$NFT_RECEIVER_ID'"}' --gas 100000000000000 --accountId $BUYER_ID --networkId testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+  ```bash
+  near contract call-function as-transaction $NFT_CONTRACT_ID nft_mint json-args '{"id": "2", "receiver_id": "'$NFT_RECEIVER_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as $BUYER_ID network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
+</Tabs>
 
 Run the command again but this time, attach 1.5 $NEAR.
 
-```bash
-near contract call-function as-transaction $NFT_CONTRACT_ID nft_mint json-args '{"id": "2", "receiver_id": "'$NFT_RECEIVER_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '1.5 NEAR' sign-as $BUYER_ID network-config testnet sign-with-legacy-keychain send
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near call $NFT_CONTRACT_ID nft_mint '{"id": "2", "receiver_id": "'$NFT_RECEIVER_ID'"}' --gas 100000000000000 --deposit 1.5 --accountId $BUYER_ID --networkId testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+  ```bash
+  near contract call-function as-transaction $NFT_CONTRACT_ID nft_mint json-args '{"id": "2", "receiver_id": "'$NFT_RECEIVER_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '1.5 NEAR' sign-as $BUYER_ID network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
+</Tabs>
 
 This should output the following logs.
 
@@ -486,21 +639,57 @@ If you check the explorer link, it should show that the owner received on the or
 
 If you try to mint the NFT for the simple series with no price, it should throw an error saying you're not an approved minter.
 
-```bash
-near contract call-function as-transaction $NFT_CONTRACT_ID nft_mint json-args '{"id": "1", "receiver_id": "'$NFT_RECEIVER_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $BUYER_ID network-config testnet sign-with-legacy-keychain send
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near call $NFT_CONTRACT_ID nft_mint '{"id": "1", "receiver_id": "'$NFT_RECEIVER_ID'"}' --gas 100000000000000 --deposit 0.1 --accountId $BUYER_ID --networkId testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+  ```bash
+  near contract call-function as-transaction $NFT_CONTRACT_ID nft_mint json-args '{"id": "1", "receiver_id": "'$NFT_RECEIVER_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $BUYER_ID network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
+</Tabs>
 
 Go ahead and run the following command to add the buyer account as an approved minter.
 
-```bash
-near contract call-function as-transaction $NFT_CONTRACT_ID add_approved_minter json-args '{"account_id": "'$BUYER_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as $NFT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near call $NFT_CONTRACT_ID add_approved_minter '{"account_id": "'$BUYER_ID'"}' --gas 100000000000000 --accountId $NFT_CONTRACT_ID --networkId testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+  ```bash
+  near contract call-function as-transaction $NFT_CONTRACT_ID add_approved_minter json-args '{"account_id": "'$BUYER_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as $NFT_CONTRACT_ID network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
+</Tabs>
 
 If you now run the mint command again, it should work.
 
-```bash
-near contract call-function as-transaction $NFT_CONTRACT_ID nft_mint json-args '{"id": "1", "receiver_id": "'$NFT_RECEIVER_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $BUYER_ID network-config testnet sign-with-legacy-keychain send
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near call $NFT_CONTRACT_ID nft_mint '{"id": "1", "receiver_id": "'$NFT_RECEIVER_ID'"}' --gas 100000000000000 --deposit 0.1 --accountId $BUYER_ID --networkId testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+  ```bash
+  near contract call-function as-transaction $NFT_CONTRACT_ID nft_mint json-args '{"id": "1", "receiver_id": "'$NFT_RECEIVER_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $BUYER_ID network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
+</Tabs>
 
 <hr class="subsection" />
 

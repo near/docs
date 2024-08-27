@@ -4,6 +4,9 @@ title: Fungible tokens
 sidebar_label: Fungible Tokens
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 ## Introduction {#introduction}
 
 Please see the [spec for the fungible token standard](https://nomicon.io/Standards/FungibleToken/) and an [example implementation](https://github.com/near-examples/FT) for reference details.
@@ -12,7 +15,7 @@ One notable aspect of the standard is that method names are prefixed with `ft_`.
 
 ## Get balance {#get-balance}
 
-Using the abstraction of the [NEAR CLI](/tools/near-cli) tool, we can check the balance of a user's account with [`near view`](/tools/near-cli#near-view):
+Using the abstraction of the [NEAR CLI](/tools/near-cli) tool, we can check the balance of a user's account with [`near view`](/tools/near-cli#call):
 
 `near view ft.demo.testnet ft_balance_of '{"account_id": "mike.testnet"}'`
 
@@ -265,9 +268,22 @@ Basic fungible tokens are simple smart contracts that don't have variable storag
 If there is not enough deposit for the storage or returned value is `null` - you should deposit more storage with the next command:
   - using NEAR CLI, don't forget to convert from yoctoⓃ to Ⓝ:
 
-```bash
-near call <contract_account_id> storage_deposit '{"account_id": "<user_account_id>"}' --accountId <sender_account_id> --deposit <deposit in Ⓝ>
-```
+
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near call <contract_account_id> storage_deposit '{"account_id": "<user_account_id>"}' --accountId <sender_account_id> --deposit <deposit in Ⓝ>
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    near contract call-function as-transaction <contract_account_id> storage_deposit json-args '{"account_id": "<user_account_id>"}' prepaid-gas '100.0 Tgas' attached-deposit '<deposit in Ⓝ> NEAR' sign-as <sender_account_id> network-config testnet sign-with-keychain send
+    ```
+  </TabItem>
+</Tabs>
 
 Result example:
 
@@ -530,9 +546,21 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_
 Transfer the tokens:
   - using NEAR CLI:
 
-```bash
-near call <contract_account_id> ft_transfer '{"receiver_id": "<receiver_account_id>", "amount": "1"}' --accountId <sender_account_id> --amount 0.000000000000000000000001
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near call <contract_account_id> ft_transfer '{"receiver_id": "<receiver_account_id>", "amount": "1"}' --accountId <sender_account_id> --amount 0.000000000000000000000001
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    near contract call-function as-transaction <contract_account_id> ft_transfer json-args '{"receiver_id": "<receiver_account_id>", "amount": "1"}' prepaid-gas '100.0 Tgas' attached-deposit '1 yoctoNEAR' sign-as <sender_account_id> network-config testnet sign-with-keychain send
+    ```
+  </TabItem>
+</Tabs>
 
 Result example:
 
@@ -776,9 +804,21 @@ near tx-status <transaction_hash> --accountId <transaction_signer>
 Let's create test transaction that should fail and investigate the response. We will try to send more tokens that are available on this account:
   - using NEAR CLI:
 
-```bash
-near call <contract_account_id> ft_transfer '{"receiver_id": "<user_account_id>", "amount": "10000000000"}' --accountId <sender_account_id> --amount 0.000000000000000000000001
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near call <contract_account_id> ft_transfer '{"receiver_id": "<user_account_id>", "amount": "10000000000"}' --accountId <sender_account_id> --amount 0.000000000000000000000001
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    near contract call-function as-transaction <contract_account_id> ft_transfer json-args '{"receiver_id": "<user_account_id>", "amount": "1"}' prepaid-gas '100.0 Tgas' attached-deposit '1 yoctoNEAR' sign-as <sender_account_id> network-config testnet sign-with-keychain send
+    ```
+  </TabItem>
+</Tabs>
 
   - with JSON RPC call:
 
@@ -1070,9 +1110,22 @@ Let's call `ft_transfer_call` function on `ft` contract (receiver) and examine s
   Let's send 10 N to `DEFI` contract that requires only 9 N.
 
   - using NEAR CLI
-    ```bash
-    near call <ft_contract_id> ft_transfer_call '{"receiver_id": "<defi_contract_id>", "amount": "10", "msg": "take-my-money"}' --accountId <user_account_id> --amount 0.000000000000000000000001
-    ```
+
+    <Tabs groupId="cli-tabs">
+      <TabItem value="short" label="Short">
+
+      ```bash
+      near call <ft_contract_id> ft_transfer_call '{"receiver_id": "<defi_contract_id>", "amount": "10", "msg": "take-my-money"}' --accountId <user_account_id> --amount 0.000000000000000000000001
+      ```
+      </TabItem>
+
+      <TabItem value="full" label="Full">
+
+        ```bash
+        near contract call-function as-transaction <ft_contract_id> ft_transfer_call json-args '{"receiver_id": "<defi_contract_id>", "amount": "10", "msg": "take-my-money"}' prepaid-gas '100.0 Tgas' attached-deposit '1 yoctoNEAR' sign-as <user_account_id> network-config testnet sign-with-keychain send
+        ```
+      </TabItem>
+    </Tabs>
 
   - with JSON RPC call
 
@@ -1458,9 +1511,21 @@ Let's try to send more tokens than the account has:
 
   - using NEAR CLI
 
-```bash
-    near call <ft_contract_id> ft_transfer_call '{"receiver_id": "<defi_contract_id>", "amount": "1000000000", "msg": "take-my-money"}' --accountId <user_account_id> --amount 0.000000000000000000000001
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near call <ft_contract_id> ft_transfer_call '{"receiver_id": "<defi_contract_id>", "amount": "1000000000", "msg": "take-my-money"}' --accountId <user_account_id> --amount 0.000000000000000000000001
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    near contract call-function as-transaction <ft_contract_id> ft_transfer_call json-args '{"receiver_id": "<defi_contract_id>", "amount": "1000000000", "msg": "take-my-money"}' prepaid-gas '100.0 Tgas' attached-deposit '1 yoctoNEAR' sign-as <user_account_id> network-config testnet sign-with-keychain send
+    ```
+  </TabItem>
+</Tabs>
 
 Transaction representation:
 
