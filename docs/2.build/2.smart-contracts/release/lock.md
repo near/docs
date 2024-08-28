@@ -11,35 +11,32 @@ Removing all [full access keys](../../../4.tools/cli.md#near-delete-key-near-del
 When an account is locked nobody can perform transactions in the account's name (e.g. update the code or transfer money).
 
 #### How to Lock an Account
-<Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value="near-cli">
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
 
-```bash
-near keys <dev-account>
-# result: [access_key: {"nonce": ..., "public_key": '<key>'}]
+  ```bash
+  near keys <dev-account>
+  # result: [access_key: {"nonce": ..., "public_key": '<key>'}]
 
-near delete-key <dev-account> '<key>'
-```
+  near delete-key <dev-account> '<key>'
+  ```
+  </TabItem>
 
-</TabItem>
+  <TabItem value="full" label="Full">
 
-<TabItem value="near-cli-rs">
+  ```bash
+  near account list-keys <dev-account> network-config testnet now
+  # result:
 
-```bash
-near account list-keys <dev-account> network-config testnet now
-# result:
+  +---+------------+-------+-------------+
+  | # | Public Key | Nonce | Permissions |
+  +---+------------+-------+-------------+
+  ..    '<key>'      ...        ...
+  +---+------------+-------+-------------+
 
-+---+------------+-------+-------------+
-| # | Public Key | Nonce | Permissions |
-+---+------------+-------+-------------+
-..    '<key>'      ...        ...
-+---+------------+-------+-------------+
-
-near account delete-key <dev-account> '<key>' network-config testnet sign-with-keychain send
-```
-
-</TabItem>
-
+  near account delete-key <dev-account> '<key>' network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
 </Tabs>
 
 #### Why Locking an Account

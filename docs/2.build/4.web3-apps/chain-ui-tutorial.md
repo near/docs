@@ -114,28 +114,21 @@ To update the settings, configure the `nearDeployConfig` field in `package.json`
 
 ### Account login
 
-Before you can deploy your app, you need to login to your NEAR account.
+Before you can deploy your app, you need to set credentials to your NEAR account. You can do it by [adding a new key](../../4.tools/cli.md#add-key) into your account and saving it into the legacy keychain.
 
-Currently the Chain Hosted deployment scripts only support the [Near CLI JS](https://github.com/near/near-cli) keystore. This CLI can be used to [initialize keystore credentials](../../4.tools/cli.md#near-login) for the deployment account:
-
-```sh
-near login
+```bash
+near account add-key <accountId> grant-full-access autogenerate-new-keypair save-to-legacy-keychain network-config testnet sign-with-keychain send
 ```
 
-:::note
+The JSON file will be saved at the path `~/.near-credentials/mainnet/YOUR_ACCOUNT.near.json` (replace `mainnet` with `testnet` for testnet). Edit the created file to make sure it has following structure:
 
-Alternatively, this may be configured manually by creating a JSON file at the path
-`~/.near-credentials/mainnet/DEPLOYER_ACCOUNT.near.json` (replace `mainnet` with `testnet` for testnet) with the
-following content:
 ```js
 {
-  "account_id":"DEPLOYER_ACCOUNT.near",
+  "account_id":"YOUR_ACCOUNT.near",
   "public_key":"ed25519:44_CHARACTERS_BASE_58",
   "private_key":"ed25519:88_CHARACTERS_BASE_58"
 }
 ```
-
-:::
 
 ### Deploy
 

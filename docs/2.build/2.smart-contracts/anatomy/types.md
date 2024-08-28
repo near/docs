@@ -5,8 +5,8 @@ hide_table_of_contents: true
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
-import CodeBlock from '@theme/CodeBlock'
+import {CodeTabs, Language, Github} from "@site/src/components/codetabs";
+import CodeBlock from '@theme/CodeBlock';
 
 import {ExplainCode, Block, File} from '@site/src/components/CodeExplainer/code-explainer';
 
@@ -105,11 +105,11 @@ To simplify development, the SDK provides the `U64` and `U128` types which are a
     start="2" end="32" />
 
 <File language="js" fname="auction"
-    url="https://github.com/near-examples/auction-examples/blob/main/contract-ts/src/contract.ts"
+    url="https://github.com/near-examples/auction-examples/blob/main/contract-ts/01-basic-auction/src/contract.ts"
     start="2" end="51" />
 
 <File language="rust" fname="auction"
-    url="https://github.com/near-examples/auction-examples/blob/main/contract-rs/src/lib.rs"
-    start="2" end="68" />
+    url="https://github.com/near-examples/auction-examples/blob/main/contract-rs/01-basic-auction/src/lib.rs"
+    start="2" end="72" />
 
 </ExplainCode>

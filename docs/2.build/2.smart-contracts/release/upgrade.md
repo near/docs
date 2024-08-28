@@ -3,7 +3,7 @@ id: upgrade
 title: Updating Contracts
 ---
 
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
+import {CodeTabs, Language, Github} from "@site/src/components/codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -20,30 +20,28 @@ Contract's can be updated in two ways:
 
 Simply re-deploy another contract using your preferred tool, for example, using [NEAR CLI](../../../4.tools/cli.md):
 
-<Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value="near-cli">
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
 
-```bash
-# (optional) If you don't have an account, create one
-near create-account <account-id> --useFaucet
+  ```bash
+  # (optional) If you don't have an account, create one
+  near create-account <account-id> --useFaucet
 
-# Deploy the contract
-near deploy <account-id> <wasm-file>
-```
+  # Deploy the contract
+  near deploy <account-id> <wasm-file>
+  ```
+  </TabItem>
 
-</TabItem>
+  <TabItem value="full" label="Full">
 
-<TabItem value="near-cli-rs">
+  ```bash
+  # (optional) If you don't have an account, create one
+  near account create-account sponsor-by-faucet-service somrnd.testnet autogenerate-new-keypair save-to-keychain network-config testnet create
 
-```bash
-# (optional) If you don't have an account, create one
-near account create-account sponsor-by-faucet-service somrnd.testnet autogenerate-new-keypair save-to-keychain network-config testnet create
-
-# Deploy the contract
-near contract deploy <accountId> use-file <route_to_wasm> without-init-call network-config testnet sign-with-keychain send
-```
-
-</TabItem>
+  # Deploy the contract
+  near contract deploy <accountId> use-file <route_to_wasm> without-init-call network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
 
 </Tabs>
 
@@ -66,40 +64,36 @@ A smart contract can also update itself by implementing a method that:
 
 #### How to Invoke Such Method?
 
-<Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value="near-cli">
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Near CLI (short)">
 
-```bash
-# Load the contract's raw bytes
-CONTRACT_BYTES=`cat ./path/to/wasm.wasm | base64`
+  ```bash
+  # Load the contract's raw bytes
+  CONTRACT_BYTES=`cat ./path/to/wasm.wasm | base64`
 
-# Call the update_contract method
-near call <contract-account> update_contract "$CONTRACT_BYTES" --base64 --accountId <manager-account> --gas 300000000000000
-```
+  # Call the update_contract method
+  near call <contract-account> update_contract "$CONTRACT_BYTES" --base64 --accountId <manager-account> --gas 300000000000000
+  ```
+  </TabItem>
 
-</TabItem>
+  <TabItem value="full" label="Near CLI (full)">
 
-<TabItem value="near-cli-rs">
+  ```bash
+  # Call the update_contract method
+  near contract call-function as-transaction <contract-account> update_contract file-args </path/to/wasm.wasm> prepaid-gas '300.0 Tgas' attached-deposit '0 NEAR' sign-as <manager-account> network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
 
-```bash
-# Call the update_contract method
-near contract call-function as-transaction <contract-account> update_contract file-args </path/to/wasm.wasm> prepaid-gas '300.0 Tgas' attached-deposit '0 NEAR' sign-as <manager-account> network-config testnet sign-with-keychain send
-```
+  <TabItem value="js" label="🌐 JavaScript">
 
-</TabItem>
+  ```js
+  // Load the contract's raw bytes
+  const code = fs.readFileSync("./path/to/wasm.wasm");
 
-<TabItem value="js" label="🌐 JavaScript">
-
-```js
-// Load the contract's raw bytes
-const code = fs.readFileSync("./path/to/wasm.wasm");
-
-// Call the update_contract method
-await wallet.callMethod({contractId: guestBook, method: "update_contract", args: code, gas: "300000000000000"});
-```
-
-</TabItem>
-
+  // Call the update_contract method
+  await wallet.callMethod({contractId: guestBook, method: "update_contract", args: code, gas: "300000000000000"});
+  ```
+  </TabItem>
 </Tabs>
 
 :::tip DAO Factories

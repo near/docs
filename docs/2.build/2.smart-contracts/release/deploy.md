@@ -22,67 +22,82 @@ On this page, we will only cover the basics of NEAR CLI. For more information vi
 
 Thanks to the `NEAR CLI` deploying a contract is as simple as:
 
-1. Compiling the contract to wasm (done automatically through `yarn build` in our templates).
+1. Compiling the contract to wasm.
 2. [Create an account](../../../4.tools/cli.md#near-create-account) and [deploy the contract](../../../4.tools/cli.md#near-deploy) into it using `NEAR CLI`.
 
-#### Create an Account and Deploy
+### Compile the Contract
 
+<Tabs groupId="code-tabs">
+  <TabItem value="js" label="🌐 JavaScript">
 
-<Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value="near-cli">
+  ```bash
+  yarn build
+  ```
 
-```bash
-# Create a new account pre-funded by a faucet & deploy
-near create-account <accountId> --useFaucet
-near deploy <accountId> <route_to_wasm>
+  </TabItem>
 
-# Get the account name
-cat ./neardev/dev-account
-```
+  <TabItem value="rust" label="🦀 Rust">
 
-</TabItem>
+  ```bash
+  cargo near build
+  ```
 
-<TabItem value="near-cli-rs">
-
-```bash
-# Automatically deploy the wasm in a new account
-near account create-account sponsor-by-faucet-service <my-new-dev-account>.testnet autogenerate-new-keypair save-to-keychain network-config testnet create
-
-near contract deploy <my-new-dev-account>.testnet use-file <route_to_wasm> without-init-call network-config testnet sign-with-keychain
-```
-
-</TabItem>
+  </TabItem>
 
 </Tabs>
 
+### Create an Account and Deploy
 
-#### Deploy in an Existing Account
 
-<Tabs className="language-tabs" groupId="code-tabs">
-<TabItem value="near-cli">
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
 
-```bash
-# login into your account
-near login
+  ```bash
+  # Create a new account pre-funded by a faucet
+  near create-account <accountId> --useFaucet
+  
+  # deploy the contract
+  near deploy <accountId> <route_to_wasm>
+  ```
+  </TabItem>
 
-# deploy the contract
-near deploy <accountId> <route_to_wasm>
-```
+  <TabItem value="full" label="Full">
 
-</TabItem>
+  ```bash
+  # Create a new account pre-funded by a faucet
+  near account create-account sponsor-by-faucet-service <my-new-dev-account>.testnet autogenerate-new-keypair save-to-keychain network-config testnet create
 
-<TabItem value="near-cli-rs">
+  # deploy the contract
+  near contract deploy <my-new-dev-account>.testnet use-file <route_to_wasm> without-init-call network-config testnet sign-with-keychain
+  ```
+  </TabItem>
+</Tabs>
 
-```bash
-# login into your account
-near account import-account using-web-wallet network-config testnet
 
-# deploy the contract
-near contract deploy <accountId> use-file <route_to_wasm> without-init-call network-config testnet sign-with-keychain send
-```
+### Deploy in an Existing Account
 
-</TabItem>
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
 
+  ```bash
+  # login into your account
+  near login
+
+  # deploy the contract
+  near deploy <accountId> <route_to_wasm>
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+  ```bash
+  # login into your account
+  near account import-account using-web-wallet network-config testnet
+
+  # deploy the contract
+  near contract deploy <accountId> use-file <route_to_wasm> without-init-call network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
 </Tabs>
 
 :::tip
@@ -106,25 +121,22 @@ Considering this, we advise to name methods using `snake_case` in all SDKs as th
 If your contract has an [initialization method](../anatomy/anatomy.md#initialization-functions) you can call it to
 initialize the state. This is not necessary if your contract implements `default` values for the state. 
 
-<Tabs className="language-tabs" groupId="code-tabs">
-<TabItem value="near-cli">
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
 
-```bash
-# Call the initialization method (`init` in our examples)
-near call <contractId> <initMethod> [<args>] --accountId <accountId>
-```
+  ```bash
+  # Call the initialization method (`init` in our examples)
+  near call <contractId> <initMethod> [<args>] --accountId <accountId>
+  ```
+  </TabItem>
 
-</TabItem>
+  <TabItem value="full" label="Full">
 
-<TabItem value="near-cli-rs">
-
-```bash
-# Call the initialization method (`init` in our examples)
-near contract call-function as-transaction <contractId> <initMethod> json-args [<args>] prepaid-gas '30 TeraGas' attached-deposit '0 NEAR' sign-as <accountId> network-config testnet sign-with-keychain send
-```
-
-</TabItem>
-
+  ```bash
+  # Call the initialization method (`init` in our examples)
+  near contract call-function as-transaction <contractId> <initMethod> json-args [<args>] prepaid-gas '30 TeraGas' attached-deposit '0 NEAR' sign-as <accountId> network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
 </Tabs>
 
 :::info
@@ -142,22 +154,20 @@ Once your contract is deployed you can interact with it right away using [NEAR C
 ### View methods
 View methods are those that perform **read-only** operations. Calling these methods is free, and do not require to specify which account is being used to make the call:
 
-<Tabs className="language-tabs" groupId="code-tabs">
-<TabItem value="near-cli">
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
 
-```bash
-near view <contractId> <methodName>
-```
+  ```bash
+  near view <contractId> <methodName>
+  ```
+  </TabItem>
 
-</TabItem>
+  <TabItem value="full" label="Full">
 
-<TabItem value="near-cli-rs">
-
-```bash
-near contract call-function as-read-only <contractId> <methodName> text-args '' network-config testnet now
-```
-</TabItem>
-
+  ```bash
+  near contract call-function as-read-only <contractId> <methodName> text-args '' network-config testnet now
+  ```
+  </TabItem>
 </Tabs>
 
 :::tip
@@ -171,21 +181,18 @@ View methods have by default 200 TGAS for execution
 Change methods are those that perform both read and write operations. For these methods we do need to specify the account being used to make the call,
 since that account will expend GAS in the call.
 
-<Tabs className="language-tabs" groupId="code-tabs">
-<TabItem value="near-cli">
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
 
-```bash
-near call <contractId> <methodName> <jsonArgs> --accountId <yourAccount> [--deposit <amount>] [--gas <GAS>]
-```
+  ```bash
+  near call <contractId> <methodName> <jsonArgs> --accountId <yourAccount> [--deposit <amount>] [--gas <GAS>]
+  ```
+  </TabItem>
 
-</TabItem>
+  <TabItem value="full" label="Full">
 
-<TabItem value="near-cli-rs">
-
-```bash
-near contract call-function as-transaction <AccountId> <MethodName> json-args <JsonArgs> prepaid-gas <PrepaidGas> attached-deposit <AttachedDeposit> sign-as <AccountId>  network-config testnet sign-with-keychain send
-```
-
-</TabItem>
-
+  ```bash
+  near contract call-function as-transaction <AccountId> <MethodName> json-args <JsonArgs> prepaid-gas <PrepaidGas> attached-deposit <AttachedDeposit> sign-as <AccountId>  network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
 </Tabs>

@@ -3,7 +3,9 @@ id: minting
 title: Minting
 sidebar_label: Minting
 ---
-import {Github} from "@site/src/components/codetabs"
+import {Github} from "@site/src/components/codetabs";
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 This is the first of many tutorials in a series where you'll be creating a complete NFT smart contract from scratch that conforms with all the NEAR [NFT standards](https://nomicon.io/Standards/NonFungibleToken/).
 
@@ -276,9 +278,21 @@ You've just deployed and initialized the contract with some default metadata and
 
 Now that the contract has been initialized, you can call some of the functions you wrote earlier. More specifically, let's test out the function that returns the contract's metadata:
 
-```bash
-near contract call-function as-read-only $NFT_CONTRACT_ID nft_metadata json-args {} network-config testnet now
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+  
+  ```bash
+  near view $NFT_CONTRACT_ID nft_metadata '{}' --networkId testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+  
+  ```bash
+  near contract call-function as-read-only $NFT_CONTRACT_ID nft_metadata json-args {} network-config testnet now
+  ```
+  </TabItem>
+</Tabs>
 
 This should return an output similar to the following:
 
@@ -313,9 +327,21 @@ Let's mint an NFT with a title, description, and media to start. The media field
   - _media_: `https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif`
   - **receiver_id**: "'$NFT_CONTRACT_ID'"
 
-```bash
-near contract call-function as-transaction $NFT_CONTRACT_ID nft_mint json-args '{"token_id": "token-1", "metadata": {"title": "My Non Fungible Team Token", "description": "The Team Most Certainly Goes :)", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$NFT_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $NFT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near call $NFT_CONTRACT_ID nft_mint '{"token_id": "token-1", "metadata": {"title": "My Non Fungible Team Token", "description": "The Team Most Certainly Goes :)", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$NFT_CONTRACT_ID'"}' --gas 100000000000000 --deposit 0.1 --accountId $NFT_CONTRACT_ID --networkId testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    near contract call-function as-transaction $NFT_CONTRACT_ID nft_mint json-args '{"token_id": "token-1", "metadata": {"title": "My Non Fungible Team Token", "description": "The Team Most Certainly Goes :)", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$NFT_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $NFT_CONTRACT_ID network-config testnet sign-with-keychain send
+    ```
+  </TabItem>
+</Tabs>
 
 :::info
 The `amount` flag is specifying how much NEAR to attach to the call. Since you need to pay for storage, 0.1 NEAR is attached and you'll get refunded any excess that is unused at the end.
@@ -328,9 +354,21 @@ The `amount` flag is specifying how much NEAR to attach to the call. Since you n
 Now that the NFT has been minted, you can check and see if everything went correctly by calling the `nft_token` function.
 This should return a `JsonToken` which should contain the `token_id`, `owner_id`, and `metadata`.
 
-```bash
-near contract call-function as-read-only $NFT_CONTRACT_ID nft_token json-args '{"token_id": "token-1"}' network-config testnet now
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+  
+  ```bash
+  near view $NFT_CONTRACT_ID nft_token '{"token_id": "token-1"}' --networkId testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+  
+  ```bash
+  near contract call-function as-read-only $NFT_CONTRACT_ID nft_token json-args '{"token_id": "token-1"}' network-config testnet now
+  ```
+  </TabItem>
+</Tabs>
 
 <details>
 <summary>Example response: </summary>
