@@ -8,7 +8,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {Github, Language} from "@site/src/components/codetabs"
 
-To further develop this contract we're going to introduce another primitive: [fungible tokens](../../2.build/5.primitives/ft.md). Instead of placing bids in $NEAR tokens, they will be placed in FTs. This may be useful if, for example, an auctioneer wants to keep the bid amounts constant in terms of dollars as an auction is carried out, so bids can be placed in stablecoins such as $USDC. Another use case is if a project like Ref Finance were holding their own auction and want the auction to happen in their project's token $REF.
+To further develop this contract we will introduce another primitive: [fungible tokens](../../2.build/5.primitives/ft.md). Instead of placing bids in $NEAR tokens, they will be placed in FTs. This may be useful if, for example, an auctioneer wants to keep the bid amounts constant in terms of dollars as an auction is carried out, so bids can be placed in stablecoins such as $USDC. Another use case is if a project like Ref Finance was holding its own auction and wanted the auction to happen in its project's token $REF.
 
 ---
 
@@ -126,7 +126,7 @@ When we want to return the funds to the previous bidder we now make a cross-cont
                 start="78" end="81" />
         </Language>
 
-        In JavaScript we have to return the Promise to transfer the FTs but we also need to return how much to refund the user. So after transferring the FTs we make a `callback` to our own contract to resume the contract flow. Note that the callback is private so it can only be called by the contract. We return 0 because the method uses all the FTs in the call.
+        In JavaScript, we have to return the Promise to transfer the FTs but we also need to return how much to refund the user. So after transferring the FTs, we make a `callback` to our own contract to resume the contract flow. Note that the callback is private so it can only be called by the contract. We return 0 because the method uses all the FTs in the call.
 
     </TabItem>
 
@@ -309,7 +309,7 @@ As stated previously, to bid on the auction the bidder now calls `ft_transfer_ca
 
 ---
 
-## Checking user's FT balance
+## Checking users' FT balance
 
 Previously, to check a user's $NEAR balance, we pulled the details from their account. Now we are using FTs we query the balance on the FT contract using `ft_balance_of`, let's check that the contract's balance increased by the bid amount and the user's balance decreased by the bid amount.
 
@@ -420,8 +420,8 @@ However, this architecture could be deemed less secure since if a bad actor were
 
 ## Conclusion
 
-In this section, we learned a lot about fungible tokens: how to send and receive FTs in a smart contract, and then in sandbox tests how to deploy and initialize an FT contract, how to register a user in an FT contract and send them some tokens, how to attach FTs to a smart contract call and finally how to view the FT balance of a user. With that, we now have our completed auction smart contract! 
+In this section, we learned a lot about fungible tokens: how to send and receive FTs in a smart contract, and then in sandbox tests how to deploy and initialize an FT contract, how to register a user in an FT contract, and send them some tokens, how to attach FTs to a smart contract call and finally how to view the FT balance of a user. With that, we now have our completed auction smart contract! 
 
-Taking a further step back we've taken a very simple auction contract and transformed it into a more production contract with thorough testing. To improve the auction we learned how to make a contract more secure by locking it, added a prize by introducing NFTs and enabled auctioneers to host auctions with FTs.
+Taking a further step back we've taken a very simple auction contract and transformed it into a more production contract with thorough testing. To improve the auction we learned how to make a contract more secure by locking it, added a prize by introducing NFTs, and enabled auctioneers to host auctions with FTs.
 
 Up to now, we've just interacted with the contract via the CLI. In the next part, we'll learn the basics of creating frontends for NEAR contracts by creating a simple frontend for our auction contract so users can seamlessly interact with it.
