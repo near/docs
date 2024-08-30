@@ -64,10 +64,11 @@ For starters, let's take a look at how the code in the frontend is structured by
 
 We have a config file that specifies the contract name of the auction that the frontend will interact with. The example given is a pre-deployed contract from part 4 of the tutorial. The example contract is set up to accept bids in DAI (dai.fakes.testnet), has an NFT token pre-minted and owned by the contract account, and has an end auction time far in the future. Feel free to change the specified contract to your own auction that you deploy.
 
-
-<Github fname="main.ava.js" language="javascript"
-        url="https://github.com/near-examples/auctions-tutorial/tree/main/frontend/src/config.js"
-        />
+<Language value="javascript" language="javascript" showSingleFName={true}>
+    <Github fname="config.js"
+            url="https://github.com/near-examples/auctions-tutorial/tree/main/frontend/src/config.js"
+            />
+</Language>
 
 ---
 
@@ -129,9 +130,11 @@ We then pass the information about the highest bidder into the `LastBid` compone
 
 When we display the latest bid, instead of just showing the bid amount directly we divide the amount by the decimals of the FT. In this example, we are using DAI which has 18 decimals meaning that 1 DAI equals 10^18 units. We also display information about the token that is being used. We get this information from the FT contract by calling the `ft_metadata` method (remember that the FT contract ID is stored on the auction contract).
 
-<Github fname="index.js" language="javascript"
-    url="https://github.com/near-examples/auctions-tutorial/blob/main/frontend/src/pages/index.js#L72-L87"
-    start="72" end="87" />
+<Language value="javascript" language="javascript" showSingleFName={true}>
+    <Github fname="index.js"
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontend/src/pages/index.js#L72-L87"
+        start="72" end="87" />
+</Language>
 
 ---
 
@@ -139,37 +142,43 @@ When we display the latest bid, instead of just showing the bid amount directly 
 
 We want to know the highest bid at all times, someone else could have placed a higher bid since the page was loaded. To solve this we fetch the contract information every 5 seconds using `setInterval`.
 
-<Github fname="index.js" language="javascript"
-    url="https://github.com/near-examples/auctions-tutorial/blob/main/frontend/src/pages/index.js#L38-L51"
-    start="38" end="51" />
-
+<Language value="javascript" language="javascript" showSingleFName={true}>
+    <Github fname="index.js" 
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontend/src/pages/index.js#L38-L51"
+        start="38" end="51" />
+</Language>
 ---
 
 ## Auction end time
 
 The contract stores the end time of the auction in the number of nanoseconds since the Unix epoch (1 January 1970 00:00:00 UTC). To make this look nicer we will display the time left in days, hours, minutes, and seconds.
 
-<Github fname="Timer.jsx" language="javascript"
-    url="https://github.com/near-examples/auctions-tutorial/blob/main/frontend/src/components/Timer.jsx"
-    start="11" end="35" />
-
+<Language value="javascript" language="javascript" showSingleFName={true}>
+    <Github fname="Timer.jsx" 
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontend/src/components/Timer.jsx"
+        start="11" end="35" />
+</Language>
 ---
 
 ## Displaying the NFT
 
 We want to show what NFT is being auctioned. To do this we will call `nft_token` on the NFT contract to get the NFT metadata. To call this method we need to specify the NFT `contractId` and the `token_id`, which can be found in the auction information. `nft_token` also returns the owner of the NFT, so we'll check this against the contract account to verify that the auction is valid.
 
-<Github fname="index.js" language="javascript"
-    url="https://github.com/near-examples/auctions-tutorial/blob/main/frontend/src/pages/index.js#L54-L70"
-    start="54" end="70" />
+<Language value="javascript" language="javascript" showSingleFName={true}>
+    <Github fname="index.js"
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontend/src/pages/index.js#L54-L70"
+        start="54" end="70" />
+</Language>
 
 Note that this effect will only run once the `auctionInfo` updates because we first need the NFT contract ID and token ID from `auctionInfo` to make a valid call to `nft_token`.
 
 In the `AuctionItem` component we display the NFT image, name, and description.
 
-<Github fname="AuctionItem.jsx" language="javascript"
+<Language value="javascript" language="javascript" showSingleFName={true}>
+<Github fname="AuctionItem.jsx"
     url="https://github.com/near-examples/auctions-tutorial/blob/main/frontend/src/components/AuctionItem.jsx"
     />
+</Language>
 
 Note that an image caching service is used to display the NFT image for better performance.
 
@@ -196,9 +205,11 @@ We now multiply the bid amount by the decimals of the FT to get the correct amou
 
 Once the auction is over (the current time is greater than the end time) the auction can be claimed. At this point, the timer will be hidden and a button to claim the auction will be displayed. Once clicked the `claim` method will be called on the auction contract to send the highest bidder the NFT and the auctioneer the FTs.
 
-<Github fname="index.js" language="javascript"
-    url="https://github.com/near-examples/auctions-tutorial/blob/main/frontend/src/pages/index.js#L111-L118"
-    start="111" end="118" />
+<Language value="javascript" language="javascript" showSingleFName={true}>
+    <Github fname="index.js" 
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontend/src/pages/index.js#L111-L118"
+        start="111" end="118" />
+</Language>
 
 ---
 
