@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/1.chain-abstraction/multichain-gas-relayer/relayer-gas-example.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Guille",
-  "lastUpdatedAt": 1723122565000,
+  "lastUpdatedBy": "garikbesson",
+  "lastUpdatedAt": 1724878821000,
   "frontMatter": {
     "id": "relayer-gas-example",
     "title": "Multichain Relayer and Gas Station example",
