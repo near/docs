@@ -10,8 +10,11 @@ import {CodeTabs, Language, Github} from "@site/src/components/codetabs";
 [Chain Hosted UI](chain-ui.md) lets you to deploy dApp frontends directly on the NEAR blockchain.
 In this tutorial you'll learn how to build and deploy a simple [React](https://react.dev/) web app using Chain Hosted UI.
 
-:::info Learn more
-If you want to learn more about the Chain Hosted UI solution for hosting frontends directly on chain, check [this article](chain-ui.md).
+:::warning
+
+This experiment reached the MVP stage of functionality but no longer has a maintainer due to [Pagoda winding down](https://docs.near.org/blog/2024-08-13-pagoda-services).
+We encourage interested parties to fork the project and carry it forward. The smart contract has not yet been audited.
+
 :::
 
 ## Requirements
