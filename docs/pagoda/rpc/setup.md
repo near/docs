@@ -65,7 +65,7 @@ After that is set up, just copy/paste the `JSON object` example snippets below i
 
 ### NEAR CLI
 
-1. If you don’t yet have `near-cli` installed on your machine, follow the [near-cli installation instructions](https://docs.near.org/tools/near-cli#setup).
+1. If you don’t yet have `near-cli` installed on your machine, follow the [near-cli installation instructions](https://docs.near.org/tools/near-cli#installation).
 2. Set your RPC URL:
    ```
    export NEAR_CLI_TESTNET_RPC_SERVER_URL=https://near-testnet.api.pagoda.co/rpc/v1/

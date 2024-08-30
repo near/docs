@@ -3,11 +3,11 @@ id: core
 title: Core
 sidebar_label: Core
 ---
-import {Github} from "@site/src/components/codetabs"
+import {Github} from "@site/src/components/codetabs";
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 In this tutorial you'll learn how to implement the [core standards](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core) into your smart contract. If you're joining us for the first time, feel free to clone [this repo](https://github.com/near-examples/nft-tutorial) and checkout the `3.enumeration` branch to follow along.
-
-
 
 
 ```bash
@@ -153,9 +153,21 @@ If you run the following command, it will transfer the token `"token-1"` to the 
 If you used a different token ID in the previous tutorials, replace `token-1` with your token ID.
 :::
 
-```bash
-near call $NFT_CONTRACT_ID nft_transfer '{"receiver_id": "benjiman.testnet", "token_id": "token-1", "memo": "Go Team :)"}' --accountId $NFT_CONTRACT_ID --depositYocto 1
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near call $NFT_CONTRACT_ID nft_transfer '{"receiver_id": "benjiman.testnet", "token_id": "token-1", "memo": "Go Team :)"}' --accountId $NFT_CONTRACT_ID --depositYocto 1
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    near contract call-function as-transaction $NFT_CONTRACT_ID nft_transfer json-args '{"receiver_id": "benjiman.testnet", "token_id": "token-1", "memo": "Go Team :)"}' prepaid-gas '100.0 Tgas' attached-deposit '1 yoctoNEAR' sign-as $NFT_CONTRACT_ID network-config testnet sign-with-keychain send
+    ```
+  </TabItem>
+</Tabs>
 
 If you now query for all the tokens owned by your account, that token should be missing. Similarly, if you query for the list of tokens owned by `benjiman.testnet`, that account should now own your NFT.
 
@@ -165,15 +177,39 @@ Now that you've tested the `nft_transfer` function, it's time to test the `nft_t
 
 First mint a new NFT that will be used to test the transfer call functionality.
 
-```bash
-near call $NFT_CONTRACT_ID nft_mint '{"token_id": "token-2", "metadata": {"title": "NFT Tutorial Token", "description": "Testing the transfer call function", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$NFT_CONTRACT_ID'"}' --accountId $NFT_CONTRACT_ID --amount 0.1
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near call $NFT_CONTRACT_ID nft_mint '{"token_id": "token-2", "metadata": {"title": "NFT Tutorial Token", "description": "Testing the transfer call function", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$NFT_CONTRACT_ID'"}' --accountId $NFT_CONTRACT_ID --amount 0.1
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    near contract call-function as-transaction $NFT_CONTRACT_ID nft_mint json-args '{"token_id": "token-2", "metadata": {"title": "NFT Tutorial Token", "description": "Testing the transfer call function", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$NFT_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $NFT_CONTRACT_ID network-config testnet sign-with-keychain send
+    ```
+  </TabItem>
+</Tabs>
 
 Now that you've minted the token, you can try to transfer the NFT to the account `no-contract.testnet` which as the name suggests, doesn't have a contract. This means that the receiver doesn't implement the `nft_on_transfer` function and the NFT should remain yours after the transaction is complete.
 
-```bash
-near call $NFT_CONTRACT_ID nft_transfer_call '{"receiver_id": "no-contract.testnet", "token_id": "token-2", "msg": "foo"}' --accountId $NFT_CONTRACT_ID --depositYocto 1 --gas 200000000000000
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near call $NFT_CONTRACT_ID nft_transfer_call '{"receiver_id": "no-contract.testnet", "token_id": "token-2", "msg": "foo"}' --accountId $NFT_CONTRACT_ID --depositYocto 1 --gas 200000000000000
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    near contract call-function as-transaction $NFT_CONTRACT_ID nft_transfer_call json-args '{"receiver_id": "no-contract.testnet", "token_id": "token-2", "msg": "foo"}' prepaid-gas '200.0 Tgas' attached-deposit '1 yoctoNEAR' sign-as $NFT_CONTRACT_ID network-config testnet sign-with-keychain send
+    ```
+  </TabItem>
+</Tabs>
 
 If you query for your tokens, you should still have `token-2` and at this point, you're finished!
 

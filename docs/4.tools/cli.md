@@ -16,34 +16,29 @@ The NEAR [Command Line Interface](https://github.com/near/near-cli-rs) (CLI) is 
 ## Installation
 
 <Tabs>
-
   <TabItem value="npm">
 
   ```bash
   npm install -g near-cli-rs@latest
   ```
-
   </TabItem>
   <TabItem value="Cargo">
 
   ```
   $ cargo install near-cli-rs
   ```
-
   </TabItem>
   <TabItem value="Mac and Linux (binaries)">
 
   ```bash
   curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releases/latest/download/near-cli-rs-installer.sh | sh
   ```
-
   </TabItem>
   <TabItem value="Windows (binaries)">
 
   ```bash
   irm https://github.com/near/near-cli-rs/releases/latest/download/near-cli-rs-installer.ps1 | iex
   ```
-
   </TabItem>
 </Tabs>
 
@@ -97,25 +92,20 @@ This option will allow you to manage, control, and retrieve information on your 
 `view-account-summary` - view properties for an account.
 
 <Tabs groupId="cli-commands">
+  <TabItem value="Full">
 
-<TabItem value="Full">
+    ```bash
+    export ACCOUNT_ID=bob.testnet
+    near account view-account-summary $ACCOUNT_ID network-config testnet now
+    ```
+  </TabItem>
+  <TabItem value="Short">
 
-```bash
-export ACCOUNT_ID=bob.testnet
-near account view-account-summary $ACCOUNT_ID network-config testnet now
-```
-
-</TabItem>
-
-<TabItem value="Short">
-
-```bash
-export ACCOUNT_ID=bob.testnet
-near state $ACCOUNT_ID --networkId testnet
-```
-
-</TabItem>
-
+    ```bash
+    export ACCOUNT_ID=bob.testnet
+    near state $ACCOUNT_ID --networkId testnet
+    ```
+  </TabItem>
 </Tabs>
 
 <hr class="subsection" />
@@ -125,23 +115,18 @@ near state $ACCOUNT_ID --networkId testnet
 `import-account` - import existing account (a.k.a. "sign in").
 
 <Tabs groupId="cli-commands">
+  <TabItem value="Full">
 
-<TabItem value="Full">
+  ```bash
+  near account import-account using-web-wallet network-config testnet
+  ```
+  </TabItem>
+  <TabItem value="Short">
 
-```bash
-near account import-account using-web-wallet network-config testnet
-```
-
-</TabItem>
-
-<TabItem value="Short">
-
-```bash
-near login --networkId testnet
-```
-
-</TabItem>
-
+  ```bash
+  near login --networkId testnet
+  ```
+  </TabItem>
 </Tabs>
 
 <hr class="subsection" />
@@ -151,16 +136,13 @@ near login --networkId testnet
 `export-account` - export existing account.
 
 <Tabs groupId="cli-commands">
+  <TabItem value="Full">
 
-<TabItem value="Full">
-
-```bash
-export ACCOUNT_ID=bob.testnet
-near account export-account $ACCOUNT_ID using-web-wallet network-config testnet
-```
-
-</TabItem>
-
+  ```bash
+  export ACCOUNT_ID=bob.testnet
+  near account export-account $ACCOUNT_ID using-web-wallet network-config testnet
+  ```
+  </TabItem>
 </Tabs>
 
 <hr class="subsection" />
@@ -170,25 +152,20 @@ near account export-account $ACCOUNT_ID using-web-wallet network-config testnet
 `create-account` - create a new account.
 
 <Tabs groupId="cli-commands">
+  <TabItem value="Full">
 
-<TabItem value="Full">
+  ```bash
+  export ACCOUNT_ID=bob.testnet
+  near account create-account sponsor-by-faucet-service $ACCOUNT_ID autogenerate-new-keypair save-to-keychain network-config testnet create
+  ```
+  </TabItem>
+  <TabItem value="Short">
 
-```bash
-export ACCOUNT_ID=bob.testnet
-near account create-account sponsor-by-faucet-service $ACCOUNT_ID autogenerate-new-keypair save-to-keychain network-config testnet create
-```
-
-</TabItem>
-
-<TabItem value="Short">
-
-```bash
-export ACCOUNT_ID=bob.testnet
-near create-account $ACCOUNT_ID --useFaucet --networkId testnet
-```
-
-</TabItem>
-
+  ```bash
+  export ACCOUNT_ID=bob.testnet
+  near create-account $ACCOUNT_ID --useFaucet --networkId testnet
+  ```
+  </TabItem>
 </Tabs>
 
 <hr class="subsection" />
@@ -198,29 +175,24 @@ near create-account $ACCOUNT_ID --useFaucet --networkId testnet
 `delete-account` - delete an account.
 
 <Tabs groupId="cli-commands">
+  <TabItem value="Full">
 
-<TabItem value="Full">
+  ```bash
+  export ACCOUNT_ID=bob.testnet
+  export BENEFICIARY_ID=alice.testnet
 
-```bash
-export ACCOUNT_ID=bob.testnet
-export BENEFICIARY_ID=alice.testnet
+  near account delete-account $ACCOUNT_ID beneficiary $BENEFICIARY_ID network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
+  <TabItem value="Short">
 
-near account delete-account $ACCOUNT_ID beneficiary $BENEFICIARY_ID network-config testnet sign-with-keychain send
-```
+  ```bash
+  export ACCOUNT_ID=bob.testnet
+  export BENEFICIARY_ID=alice.testnet
 
-</TabItem>
-
-<TabItem value="Short">
-
-```bash
-export ACCOUNT_ID=bob.testnet
-export BENEFICIARY_ID=alice.testnet
-
-near delete-account $ACCOUNT_ID $BENEFICIARY_ID --networkId testnet
-```
-
-</TabItem>
-
+  near delete-account $ACCOUNT_ID $BENEFICIARY_ID --networkId testnet
+  ```
+  </TabItem>
 </Tabs>
 
 ---
@@ -234,25 +206,21 @@ Showing, adding and removing account keys.
 `list-keys` - view a list of keys for an account.
 
 <Tabs groupId="cli-commands">
+  <TabItem value="Full">
 
-<TabItem value="Full">
+  ```bash
+  export ACCOUNT_ID=bob.testnet
+  near account list-keys $ACCOUNT_ID network-config testnet now
+  ```
+  </TabItem>
 
-```bash
-export ACCOUNT_ID=bob.testnet
-near account list-keys $ACCOUNT_ID network-config testnet now
-```
+  <TabItem value="Short">
 
-</TabItem>
-
-<TabItem value="Short">
-
-```bash
-export ACCOUNT_ID=bob.testnet
-near list-keys $ACCOUNT_ID --networkId testnet
-```
-
-</TabItem>
-
+  ```bash
+  export ACCOUNT_ID=bob.testnet
+  near list-keys $ACCOUNT_ID --networkId testnet
+  ```
+  </TabItem>
 </Tabs>
 
 <hr class="subsection" />
@@ -262,25 +230,21 @@ near list-keys $ACCOUNT_ID --networkId testnet
 `add-key` - add an access key to an account.
 
 <Tabs groupId="cli-commands">
+  <TabItem value="Full">
 
-<TabItem value="Full">
+  ```bash
+  export ACCOUNT_ID=bob.testnet
+  near account add-key $ACCOUNT_ID grant-full-access use-manually-provided-public-key ed25519:CXqAs8c8kZz81josLw82RQsnZXk8CAdUo7jAuN7uSht2 network-config testnet sign-with-keychain send
+  ```
 
-```bash
-export ACCOUNT_ID=bob.testnet
-near account add-key $ACCOUNT_ID grant-full-access use-manually-provided-public-key ed25519:CXqAs8c8kZz81josLw82RQsnZXk8CAdUo7jAuN7uSht2 network-config testnet sign-with-keychain send
-```
+  </TabItem>
+  <TabItem value="Short">
 
-</TabItem>
-
-<TabItem value="Short">
-
-```bash
-export ACCOUNT_ID=bob.testnet
-near add-key $ACCOUNT_ID ed25519:CXqAs8c8kZz81josLw82RQsnZXk8CAdUo7jAuN7uSht2 --networkId testnet
-```
-
-</TabItem>
-
+  ```bash
+  export ACCOUNT_ID=bob.testnet
+  near add-key $ACCOUNT_ID ed25519:CXqAs8c8kZz81josLw82RQsnZXk8CAdUo7jAuN7uSht2 --networkId testnet
+  ```
+  </TabItem>
 </Tabs>
 
 <hr class="subsection" />
@@ -290,25 +254,20 @@ near add-key $ACCOUNT_ID ed25519:CXqAs8c8kZz81josLw82RQsnZXk8CAdUo7jAuN7uSht2 --
 `delete-keys` - delete an access key from an account.
 
 <Tabs groupId="cli-commands">
+  <TabItem value="Full">
 
-<TabItem value="Full">
+  ```bash
+  export ACCOUNT_ID=bob.testnet
+  near account delete-keys $ACCOUNT_ID public-keys ed25519:HdkFZFEPoWfgrrLK3R4t5dWtNoLC8WymBzhCXoP3zrjh network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
+  <TabItem value="Short">
 
-```bash
-export ACCOUNT_ID=bob.testnet
-near account delete-keys $ACCOUNT_ID public-keys ed25519:HdkFZFEPoWfgrrLK3R4t5dWtNoLC8WymBzhCXoP3zrjh network-config testnet sign-with-keychain send
-```
-
-</TabItem>
-
-<TabItem value="Short">
-
-```bash
-export ACCOUNT_ID=bob.testnet
-near delete-key $ACCOUNT_ID ed25519:HdkFZFEPoWfgrrLK3R4t5dWtNoLC8WymBzhCXoP3zrjh --networkId testnet
-```
-
-</TabItem>
-
+  ```bash
+  export ACCOUNT_ID=bob.testnet
+  near delete-key $ACCOUNT_ID ed25519:HdkFZFEPoWfgrrLK3R4t5dWtNoLC8WymBzhCXoP3zrjh --networkId testnet
+  ```
+  </TabItem>
 </Tabs>
 
 ---
@@ -322,28 +281,23 @@ This will allow you to manage your token assets such as NEAR, FTs and NFTs.
 `send-near` - transfers NEAR to a specified recipient in units of NEAR or yoctoNEAR.
 
 <Tabs groupId="cli-commands">
+  <TabItem value="Full">
 
-<TabItem value="Full">
+  ```bash
+  export ACCOUNT_ID=bob.testnet
+  export RECEIVER_ID=alice.testnet
+  near tokens $ACCOUNT_ID send-near $RECEIVER_ID '0.5 NEAR' network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
+  <TabItem value="Short">
 
-```bash
-export ACCOUNT_ID=bob.testnet
-export RECEIVER_ID=alice.testnet
-near tokens $ACCOUNT_ID send-near $RECEIVER_ID '0.5 NEAR' network-config testnet sign-with-keychain send
-```
+  ```bash
+  export ACCOUNT_ID=bob.testnet
+  export RECEIVER_ID=alice.testnet
 
-</TabItem>
-
-<TabItem value="Short">
-
-```bash
-export ACCOUNT_ID=bob.testnet
-export RECEIVER_ID=alice.testnet
-
-near send-near $ACCOUNT_ID $RECEIVER_ID 0.5 --networkId testnet
-```
-
-</TabItem>
-
+  near send-near $ACCOUNT_ID $RECEIVER_ID 0.5 --networkId testnet
+  ```
+  </TabItem>
 </Tabs>
 
 <hr class="subsection" />
@@ -353,19 +307,16 @@ near send-near $ACCOUNT_ID $RECEIVER_ID 0.5 --networkId testnet
 `send-ft` - transfer Fungible Tokens to a specified user.
 
 <Tabs groupId="cli-commands">
+  <TabItem value="Full">
 
-<TabItem value="Full">
+  ```bash
+  export ACCOUNT_ID=bob.testnet
+  export RECEIVER_ID=alice.testnet
+  export FT_CONTRACT_ID=0c97251cd1f630c444dbusdt.testnet
 
-```bash
-export ACCOUNT_ID=bob.testnet
-export RECEIVER_ID=alice.testnet
-export FT_CONTRACT_ID=0c97251cd1f630c444dbusdt.testnet
-
-near tokens $ACCOUNT_ID send-ft $FT_CONTRACT_ID $RECEIVER_ID amount-ft '1 USDT' prepaid-gas '100.0 Tgas' attached-deposit '1 yoctoNEAR' network-config testnet sign-with-keychain send
-```
-
-</TabItem>
-
+  near tokens $ACCOUNT_ID send-ft $FT_CONTRACT_ID $RECEIVER_ID amount-ft '1 USDT' prepaid-gas '100.0 Tgas' attached-deposit '1 yoctoNEAR' network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
 </Tabs>
 
 <hr class="subsection" />
@@ -375,19 +326,16 @@ near tokens $ACCOUNT_ID send-ft $FT_CONTRACT_ID $RECEIVER_ID amount-ft '1 USDT' 
 `send-nft` - transfers NFTs between accounts.
 
 <Tabs groupId="cli-commands">
+  <TabItem value="Full">
 
-<TabItem value="Full">
+  ```bash
+  export ACCOUNT_ID=bob.testnet
+  export RECEIVER_ID=alice.testnet
+  export NFT_CONTRACT_ID=nft.examples.testnet
 
-```bash
-export ACCOUNT_ID=bob.testnet
-export RECEIVER_ID=alice.testnet
-export NFT_CONTRACT_ID=nft.examples.testnet
-
-near tokens $ACCOUNT_ID send-nft $NFT_CONTRACT_ID $RECEIVER_ID 1 --prepaid-gas '100.0 Tgas' --attached-deposit '1 yoctoNEAR' network-config testnet sign-with-keychain send
-```
-
-</TabItem>
-
+  near tokens $ACCOUNT_ID send-nft $NFT_CONTRACT_ID $RECEIVER_ID 1 --prepaid-gas '100.0 Tgas' --attached-deposit '1 yoctoNEAR' network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
 </Tabs>
 
 <hr class="subsection" />
@@ -397,16 +345,14 @@ near tokens $ACCOUNT_ID send-nft $NFT_CONTRACT_ID $RECEIVER_ID 1 --prepaid-gas '
 `view-near-balance` - view the balance of NEAR tokens.
 
 <Tabs groupId="cli-commands">
+  <TabItem value="Full">
 
-<TabItem value="Full">
+  ```bash
+  export ACCOUNT_ID=bob.testnet
+  near tokens $ACCOUNT_ID view-near-balance network-config testnet now
+  ```
 
-```bash
-export ACCOUNT_ID=bob.testnet
-near tokens $ACCOUNT_ID view-near-balance network-config testnet now
-```
-
-</TabItem>
-
+  </TabItem>
 </Tabs>
 
 <hr class="subsection" />
@@ -416,17 +362,14 @@ near tokens $ACCOUNT_ID view-near-balance network-config testnet now
 `view-ft-balance` - view the balance of Fungible Tokens.
 
 <Tabs groupId="cli-commands">
+  <TabItem value="Full">
 
-<TabItem value="Full">
-
-```bash
-export ACCOUNT_ID=bob.testnet
-export FT_CONTRACT_ID=0c97251cd1f630c444dbusdt.testnet
-near tokens $ACCOUNT_ID view-ft-balance $FT_CONTRACT_ID network-config testnet now
-```
-
-</TabItem>
-
+  ```bash
+  export ACCOUNT_ID=bob.testnet
+  export FT_CONTRACT_ID=0c97251cd1f630c444dbusdt.testnet
+  near tokens $ACCOUNT_ID view-ft-balance $FT_CONTRACT_ID network-config testnet now
+  ```
+  </TabItem>
 </Tabs>
 
 <hr class="subsection" />
@@ -436,17 +379,14 @@ near tokens $ACCOUNT_ID view-ft-balance $FT_CONTRACT_ID network-config testnet n
 `view-nft-assets` - view the balance of NFT tokens.
 
 <Tabs groupId="cli-commands">
+  <TabItem value="Full">
 
-<TabItem value="Full">
-
-```bash
-export ACCOUNT_ID=bob.testnet
-export NFT_CONTRACT_ID=nft.examples.testnet
-near tokens $ACCOUNT_ID view-nft-assets $NFT_CONTRACT_ID network-config testnet now
-```
-
-</TabItem>
-
+  ```bash
+  export ACCOUNT_ID=bob.testnet
+  export NFT_CONTRACT_ID=nft.examples.testnet
+  near tokens $ACCOUNT_ID view-nft-assets $NFT_CONTRACT_ID network-config testnet now
+  ```
+  </TabItem>
 </Tabs>
 
 ---
@@ -460,35 +400,30 @@ This option allows you to manage and interact with your smart contracts.
 `call-function` - execute function (contract method).
 
 <Tabs groupId="cli-commands">
+  <TabItem value="Full">
 
-<TabItem value="Full">
+  ```bash
+  # View method
+  export CONTRACT_ID=nft.examples.testnet
+  near contract call-function as-read-only $CONTRACT_ID nft_tokens json-args '{"from_index": "0", "limit": 2}' network-config testnet now
 
-```bash
-# View method
-export CONTRACT_ID=nft.examples.testnet
-near contract call-function as-read-only $CONTRACT_ID nft_tokens json-args '{"from_index": "0", "limit": 2}' network-config testnet now
+  # Call method
+  export ACCOUNT_ID=bob.testnet
+  near contract call-function as-transaction $CONTRACT_ID nft_mint json-args '{"metadata": {"copies": 1, "description": "The Team Goes", "media": "https://bafybeidl4hjbpdr6u6xvlrizwxbrfcyqurzvcnn5xoilmcqbxfbdwrmp5m.ipfs.dweb.link/", "title": "GO TEAM"}, "receiver_id": "bob.testnet", "token_id": "5895"}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $ACCOUNT_ID network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
+  <TabItem value="Short">
 
-# Call method
-export ACCOUNT_ID=bob.testnet
-near contract call-function as-transaction $CONTRACT_ID nft_mint json-args '{"metadata": {"copies": 1, "description": "The Team Goes", "media": "https://bafybeidl4hjbpdr6u6xvlrizwxbrfcyqurzvcnn5xoilmcqbxfbdwrmp5m.ipfs.dweb.link/", "title": "GO TEAM"}, "receiver_id": "bob.testnet", "token_id": "5895"}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $ACCOUNT_ID network-config testnet sign-with-keychain send
-```
+  ```bash
+  # View method
+  export CONTRACT_ID=nft.examples.testnet
+  near view $CONTRACT_ID nft_tokens '{"from_index": "0", "limit": 2}' --networkId testnet
 
-</TabItem>
-
-<TabItem value="Short">
-
-```bash
-# View method
-export CONTRACT_ID=nft.examples.testnet
-near view $CONTRACT_ID nft_tokens '{"from_index": "0", "limit": 2}' --networkId testnet
-
-# Call method
-export ACCOUNT_ID=bob.testnet
-near call $CONTRACT_ID nft_mint '{"metadata": {"copies": 1, "description": "The Team Goes", "media": "https://bafybeidl4hjbpdr6u6xvlrizwxbrfcyqurzvcnn5xoilmcqbxfbdwrmp5m.ipfs.dweb.link/", "title": "GO TEAM"}, "receiver_id": "bob.testnet", "token_id": "5896"}' --deposit 0.1 --useAccount $ACCOUNT_ID --networkId testnet
-```
-
-</TabItem>
-
+  # Call method
+  export ACCOUNT_ID=bob.testnet
+  near call $CONTRACT_ID nft_mint '{"metadata": {"copies": 1, "description": "The Team Goes", "media": "https://bafybeidl4hjbpdr6u6xvlrizwxbrfcyqurzvcnn5xoilmcqbxfbdwrmp5m.ipfs.dweb.link/", "title": "GO TEAM"}, "receiver_id": "bob.testnet", "token_id": "5896"}' --deposit 0.1 --useAccount $ACCOUNT_ID --networkId testnet
+  ```
+  </TabItem>
 </Tabs>
 
 <hr class="subsection" />
@@ -498,25 +433,20 @@ near call $CONTRACT_ID nft_mint '{"metadata": {"copies": 1, "description": "The 
 `deploy` - add a new contract code.
 
 <Tabs groupId="cli-commands">
+  <TabItem value="Full">
 
-<TabItem value="Full">
+  ```bash
+  export CONTRACT_ID=contract.testnet
+  near contract deploy $CONTRACT_ID use-file ../target/near/contract.wasm without-init-call network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
+  <TabItem value="Short">
 
-```bash
-export CONTRACT_ID=contract.testnet
-near contract deploy $CONTRACT_ID use-file ../target/near/contract.wasm without-init-call network-config testnet sign-with-keychain send
-```
-
-</TabItem>
-
-<TabItem value="Short">
-
-```bash
-export CONTRACT_ID=contract.testnet
-near deploy $CONTRACT_ID ../target/near/contract.wasm --networkId testnet
-```
-
-</TabItem>
-
+  ```bash
+  export CONTRACT_ID=contract.testnet
+  near deploy $CONTRACT_ID ../target/near/contract.wasm --networkId testnet
+  ```
+  </TabItem>
 </Tabs>
 
 <hr class="subsection" />
@@ -526,25 +456,20 @@ near deploy $CONTRACT_ID ../target/near/contract.wasm --networkId testnet
 `inspect` - get a list of available function names.
 
 <Tabs groupId="cli-commands">
+  <TabItem value="Full">
 
-<TabItem value="Full">
+  ```bash
+  export CONTRACT_ID=nft.examples.testnet
+  near contract view-storage $CONTRACT_ID all as-text network-config testnet now
+  ```
+  </TabItem>
+  <TabItem value="Short">
 
-```bash
-export CONTRACT_ID=nft.examples.testnet
-near contract view-storage $CONTRACT_ID all as-text network-config testnet now
-```
-
-</TabItem>
-
-<TabItem value="Short">
-
-```bash
-export CONTRACT_ID=nft.examples.testnet
-near storage $CONTRACT_ID --finality final --utf8 --networkId testnet
-```
-
-</TabItem>
-
+  ```bash
+  export CONTRACT_ID=nft.examples.testnet
+  near storage $CONTRACT_ID --finality final --utf8 --networkId testnet
+  ```
+  </TabItem>
 </Tabs>
 
 ---
@@ -558,23 +483,18 @@ Operate transactions.
 `view-status` - view a transaction status.
 
 <Tabs groupId="cli-commands">
+  <TabItem value="Full">
 
-<TabItem value="Full">
+  ```bash
+  near transaction view-status BFrVVtjqD2p1zYX1UCvn4nJpy7zPHpY5cTgQaKCZjBvw network-config testnet
+  ```
+  </TabItem>
+  <TabItem value="Short">
 
-```bash
-near transaction view-status BFrVVtjqD2p1zYX1UCvn4nJpy7zPHpY5cTgQaKCZjBvw network-config testnet
-```
-
-</TabItem>
-
-<TabItem value="Short">
-
-```bash
-near tx-status BFrVVtjqD2p1zYX1UCvn4nJpy7zPHpY5cTgQaKCZjBvw --networkId testnet
-```
-
-</TabItem>
-
+  ```bash
+  near tx-status BFrVVtjqD2p1zYX1UCvn4nJpy7zPHpY5cTgQaKCZjBvw --networkId testnet
+  ```
+  </TabItem>
 </Tabs>
 
 ---
@@ -590,15 +510,12 @@ This will allow you to change or modify the network connections for your CLI.
 `show-connections` - show a list of network connections.
 
 <Tabs groupId="cli-commands">
+  <TabItem value="Full">
 
-<TabItem value="Full">
-
-```bash
-near config show-connections
-```
-
-</TabItem>
-
+  ```bash
+  near config show-connections
+  ```
+  </TabItem>
 </Tabs>
 
 <hr class="subsection" />
@@ -608,15 +525,12 @@ near config show-connections
 `edit-connection` - edit a network connection.
 
 <Tabs groupId="cli-commands">
+  <TabItem value="Full">
 
-<TabItem value="Full">
-
-```bash
-near config edit-connection testnet --key rpc_url --value https://test.rpc.fastnear.com
-```
-
-</TabItem>
-
+  ```bash
+  near config edit-connection testnet --key rpc_url --value https://test.rpc.fastnear.com
+  ```
+  </TabItem>
 </Tabs>
 
 ---

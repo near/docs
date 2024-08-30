@@ -3,7 +3,9 @@ sidebar_position: 4
 sidebar_label: "Hash the solution, unit tests, and an init method"
 title: "Introduction to basic hashing and adding unit tests"
 ---
-import {Github} from "@site/src/components/codetabs"
+import {Github} from "@site/src/components/codetabs";
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 import batchCookieTray from '/docs/assets/crosswords/batch-of-actions--dobulyo.near--w_artsu.jpg';
 
@@ -110,24 +112,64 @@ Here we'll use the [`#[near]` macro](https://docs.rs/near-sdk/latest/near_sdk/at
 
 Let's call this method on a fresh contract.
 
+Go into the directory containing the Rust smart contract and build it:
+
 ```bash
-# Go into the directory containing the Rust smart contract we've been working on
 cd contract
 
 # Build
 cargo near build
-
-# Create fresh account if you wish, which is good practice
-near account delete-account crossword.friend.testnet beneficiary friend.testnet network-config testnet sign-with-legacy-keychain send
-
-near account create-account fund-myself crossword.friend.testnet '1 NEAR' autogenerate-new-keypair save-to-legacy-keychain sign-as friend.testnet network-config testnet sign-with-legacy-keychain send
-
-# Deploy
-cargo near deploy crossword.friend.testnet without-init-call network-config testnet sign-with-legacy-keychain send
-
-# Call the "new" method
-near contract call-function as-transaction crossword.friend.testnet new json-args '{"solution": "69c2feb084439956193f4c21936025f14a5a5a78979d67ae34762e18a7206a0f"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as crossword.friend.testnet network-config testnet sign-with-legacy-keychain send
 ```
+
+Create fresh account if you wish, which is good practice:
+
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+  
+  ```bash
+  # Delete an account
+  near delete-account crossword.friend.testnet friend.testnet --networkId testnet
+  
+  # Create an account again
+  near create-account crossword.friend.testnet --use-account friend.testnet --initial-balance 1 --network-id testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+  
+  ```bash
+  # Delete an account
+  near account delete-account crossword.friend.testnet beneficiary friend.testnet network-config testnet sign-with-keychain send
+
+  # Create an account again
+  near account create-account fund-myself crossword.friend.testnet '1 NEAR' autogenerate-new-keypair save-to-keychain sign-as friend.testnet network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
+</Tabs>
+
+Deploy the contract:
+
+```bash
+cargo near deploy crossword.friend.testnet without-init-call network-config testnet sign-with-keychain send
+```
+
+Call the "new" method:
+
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+  
+  ```bash
+  near call crossword.friend.testnet new '{"solution": "69c2feb084439956193f4c21936025f14a5a5a78979d67ae34762e18a7206a0f"}' --gas 100000000000000 --accountId crossword.friend.testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+  
+  ```bash
+  near contract call-function as-transaction crossword.friend.testnet new json-args '{"solution": "69c2feb084439956193f4c21936025f14a5a5a78979d67ae34762e18a7206a0f"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as crossword.friend.testnet network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
+</Tabs>
 
 Now the crossword solution, as a hash, is stored instead. If you try calling the last command again, you'll get the error message, thanks to the `#[init]` macro:
 `The contract has already been initialized`
@@ -154,14 +196,36 @@ As you can from the info bubble above, we can batch [Deploy](https://docs.rs/nea
 
 Let's run this again with the handy `--initFunction` and `--initArgs` flags:
 
+Create fresh account if you wish, which is good practice:
+
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+  
+  ```bash
+  # Delete an account
+  near delete-account crossword.friend.testnet friend.testnet --networkId testnet
+  
+  # Create an account again
+  near create-account crossword.friend.testnet --use-account friend.testnet --initial-balance 1 --network-id testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+  
+  ```bash
+  # Delete an account
+  near account delete-account crossword.friend.testnet beneficiary friend.testnet network-config testnet sign-with-keychain send
+
+  # Create an account again
+  near account create-account fund-myself crossword.friend.testnet '1 NEAR' autogenerate-new-keypair save-to-keychain sign-as friend.testnet network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
+</Tabs>
+
+Deploy the contract and call the initialization method:
+
 ```bash
-# Create fresh account if you wish, which is good practice
-near account delete-account crossword.friend.testnet beneficiary friend.testnet network-config testnet sign-with-legacy-keychain send
-
-near account create-account fund-myself crossword.friend.testnet '1 NEAR' autogenerate-new-keypair save-to-legacy-keychain sign-as friend.testnet network-config testnet sign-with-legacy-keychain send
-
-# Deploy
-cargo near deploy crossword.friend.testnet with-init-call new json-args '{"solution": "69c2feb084439956193f4c21936025f14a5a5a78979d67ae34762e18a7206a0f"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-legacy-keychain send
+cargo near deploy crossword.friend.testnet with-init-call new json-args '{"solution": "69c2feb084439956193f4c21936025f14a5a5a78979d67ae34762e18a7206a0f"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
 ```
 
 Now that we're using Batch Actions, no one can call this `new` method before us.
@@ -182,8 +246,20 @@ We'll also modify our `guess_solution` to return a boolean value, which will als
 
 The `get_solution` method can be called with:
 
-```bash
-near contract call-function as-read-only crossword.friend.testnet get_solution json-args {} network-config testnet now
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+  
+  ```bash
+  near view crossword.friend.testnet get_solution '{}' --networkId testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+  
+  ```bash
+  near contract call-function as-read-only crossword.friend.testnet get_solution json-args {} network-config testnet now
+  ```
+  </TabItem>
+</Tabs>
 
 In the next section we'll add a simple frontend. Following chapters will illustrate more NEAR concepts built on top of this idea.

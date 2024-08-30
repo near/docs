@@ -3,7 +3,7 @@ id: relayer-gas-example
 title: Multichain Relayer and Gas Station example
 sidebar_label: Relayer + Gas Station
 ---
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
+import {CodeTabs, Language, Github} from "@site/src/components/codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -124,34 +124,82 @@ This test is a good way to debug issues if any individual part of the system isn
 The following instructions are only need to be called once to initialize the account on the Gas Station. Make sure to replace the `<account_id>` (string) with the account you want to initialize and `<token_id>` (integer) with the token id of the NFT you minted in step 2:
 
 1. Registration / Storage Deposit:
-    ```shell
-    near contract call-function as-transaction v2.nft.kagi.testnet \
-      storage_deposit json-args {} prepaid-gas '100.0 Tgas' attached-deposit '1 NEAR' \
-      sign-as <account_id>.testnet network-config testnet sign-with-keychain send
-    ```
+    <Tabs groupId="cli-tabs">
+      <TabItem value="short" label="Short">
+
+      ```bash
+      near call v2.nft.kagi.testnet storage_deposit '{}' --deposit 1 --gas 100000000000000 --accountId <account_id>.testnet
+      ```
+      </TabItem>
+
+      <TabItem value="full" label="Full">
+
+        ```bash
+        near contract call-function as-transaction v2.nft.kagi.testnet \
+          storage_deposit json-args {} prepaid-gas '100.0 Tgas' attached-deposit '1 NEAR' \
+          sign-as <account_id>.testnet network-config testnet sign-with-keychain send
+        ```
+      </TabItem>
+    </Tabs>
 2. Mint NFT - make sure to save the token id from the logs of this call
-    ```shell
-    near contract call-function as-transaction v2.nft.kagi.testnet \
-      mint json-args {} prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' \
-      sign-as <account_id>.testnet network-config testnet sign-with-keychain send
-    ```
+    <Tabs groupId="cli-tabs">
+      <TabItem value="short" label="Short">
+
+      ```bash
+      near call v2.nft.kagi.testnet mint '{}' --gas 100000000000000 --accountId <account_id>.testnet
+      ```
+      </TabItem>
+
+      <TabItem value="full" label="Full">
+
+        ```bash
+        near contract call-function as-transaction v2.nft.kagi.testnet \
+          mint json-args {} prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' \
+          sign-as <account_id>.testnet network-config testnet sign-with-keychain send
+        ```
+      </TabItem>
+    </Tabs>
 3. Approve the Gas Station for this Token (use or use `canhazgas.near` for mainnet):
-    ```shell
-    near contract call-function as-transaction v2.nft.kagi.testnet \
-      ckt_approve_call json-args '{"token_id":"<token_id>","account_id":"canhazgas.testnet","msg":""}' \
-      prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' \
-      sign-as <account_id>.testnet network-config testnet sign-with-keychain send
-    ```
+    <Tabs groupId="cli-tabs">
+      <TabItem value="short" label="Short">
+
+      ```bash
+      near call v2.nft.kagi.testnet ckt_approve_call '{"token_id":"<token_id>","account_id":"canhazgas.testnet","msg":""}' --gas 100000000000000 --accountId <account_id>.testnet
+      ```
+      </TabItem>
+
+      <TabItem value="full" label="Full">
+
+        ```bash
+        near contract call-function as-transaction v2.nft.kagi.testnet \
+          ckt_approve_call json-args '{"token_id":"<token_id>","account_id":"canhazgas.testnet","msg":""}' \
+          prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' \
+          sign-as <account_id>.testnet network-config testnet sign-with-keychain send
+        ```
+      </TabItem>
+    </Tabs>
 
 ### Manual test steps
 
 1. Get paymaster info for the chain you want to send to from the gas station contract, then optionally manually set nonces (use `canhazgas.near` for mainnet):
-    ```shell
-    near contract call-function as-transaction canhazgas.testnet \
-     get_paymasters json-args '{"chain_id": "<chain_id>"}' \
-     prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' \
-     sign-as <account_id>.testnet network-config testnet sign-with-keychain send
-    ```
+    <Tabs groupId="cli-tabs">
+      <TabItem value="short" label="Short">
+
+      ```bash
+      near call canhazgas.testnet get_paymasters '{"chain_id": "<chain_id>"}' --gas 100000000000000 --accountId <account_id>.testnet
+      ```
+      </TabItem>
+
+      <TabItem value="full" label="Full">
+
+        ```bash
+        near contract call-function as-transaction canhazgas.testnet \
+          get_paymasters json-args '{"chain_id": "<chain_id>"}' \
+          prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' \
+          sign-as <account_id>.testnet network-config testnet sign-with-keychain send
+        ```
+      </TabItem>
+    </Tabs>
    which  returns something like:
     ```js
     --- Result -------------------------
@@ -166,15 +214,27 @@ The following instructions are only need to be called once to initialize the acc
     ------------------------------------
     ```
    1. You may need to manually set the nonce for the paymaster to be able to send the transaction (use `canhazgas.near` for mainnet):
-   ```shell
-   near contract call-function as-transaction canhazgas.testnet \
-    get_paymasters json-args '{"chain_id": "<chain_id>"}' \
-    prepaid-gas '100.000 Tgas' \
-    attached-deposit '0 NEAR' \
-    sign-as <account_id>.testnet \
-    network-config testnet \
-    sign-with-keychain send
-    ```
+    <Tabs groupId="cli-tabs">
+      <TabItem value="short" label="Short">
+
+      ```bash
+      near call canhazgas.testnet get_paymasters '{"chain_id": "<chain_id>"}' --gas 100000000000000 --accountId <account_id>.testnet
+      ```
+      </TabItem>
+
+      <TabItem value="full" label="Full">
+
+        ```bash
+        near contract call-function as-transaction canhazgas.testnet \
+          get_paymasters json-args '{"chain_id": "<chain_id>"}' \
+          prepaid-gas '100.000 Tgas' \
+          attached-deposit '0 NEAR' \
+          sign-as <account_id>.testnet \
+          network-config testnet \
+          sign-with-keychain send
+        ```
+      </TabItem>
+    </Tabs>
 2. Update the transaction details of the EVM transaction you want to send in `generate_eip1559_rlp_hex()` test in [`tests/tests.rs`](https://github.com/near/multichain-relayer-server/blob/main/tests/tests.rs) then run the script and save the RLP hex string output.
    1. If that doesn't work, try running [`generate_rlp_evm_txn.py`](https://github.com/near/multichain-relayer-server/blob/main/integration_tests/generate_rlp_evm_txn.py)
 
@@ -216,13 +276,27 @@ Python and Rust output different hex RLP encoded transactions.
    You also need to paste in the RLP generated hex for the EVM transaction you want on the other chain generated in step 1.
    When it asks you to send or display, choose send.
    For example (use `canhazgas.near` for mainnet):
-    ```shell
-    near contract call-function as-transaction canhazgas.testnet \
-      create_transaction json-args '{"transaction_rlp_hex":"eb80851bf08eb000825208947b965bdb7f0464843572eb2b8c17bdf27b720b14872386f26fc1000080808080","use_paymaster":true,"token_id":"<token_id>"}' \
-      prepaid-gas '100.000 TeraGas' attached-deposit '<deposit_in_near> NEAR' \
-      sign-as <account_id>.testnet \
-      network-config testnet sign-with-keychain send
-    ```
+
+    <Tabs groupId="cli-tabs">
+      <TabItem value="short" label="Short">
+
+      ```bash
+      near call canhazgas.testnet create_transaction '{"transaction_rlp_hex":"eb80851bf08eb000825208947b965bdb7f0464843572eb2b8c17bdf27b720b14872386f26fc1000080808080","use_paymaster":true,"token_id":"<token_id>"}' --deposit <deposit_in_near> --gas 100000000000000 --accountId <account_id>.testnet
+      ```
+      </TabItem>
+
+      <TabItem value="full" label="Full">
+
+        ```bash
+        near contract call-function as-transaction canhazgas.testnet \
+          create_transaction json-args '{"transaction_rlp_hex":"eb80851bf08eb000825208947b965bdb7f0464843572eb2b8c17bdf27b720b14872386f26fc1000080808080","use_paymaster":true,"token_id":"<token_id>"}' \
+          prepaid-gas '100.000 TeraGas' attached-deposit '<deposit_in_near> NEAR' \
+          sign-as <account_id>.testnet \
+          network-config testnet sign-with-keychain send
+        ```
+      </TabItem>
+    </Tabs>
+
    which returns something like:
     ```
      --- Result -------------------------
@@ -233,15 +307,27 @@ Python and Rust output different hex RLP encoded transactions.
       ------------------------------------
      ```
 6. Get the `"id"` from the receipts from the result in the previous step, and use that to call `sign_next` twice (use `canhazgas.near` for mainnet):
-    ```shell
-    near contract call-function as-transaction canhazgas.testnet \
-      sign_next json-args '{"id":"<id>"}' \
-      prepaid-gas '300.0 Tgas' \
-      attached-deposit '0 NEAR' \
-      sign-as <account_id>.testnet \
-      network-config testnet \
-      sign-with-keychain send
-    ```
+    <Tabs groupId="cli-tabs">
+      <TabItem value="short" label="Short">
+
+      ```bash
+      near call canhazgas.testnet sign_next '{"id":"<id>"}' --gas 300000000000000 --accountId <account_id>.testnet
+      ```
+      </TabItem>
+
+      <TabItem value="full" label="Full">
+
+        ```bash
+        near contract call-function as-transaction canhazgas.testnet \
+          sign_next json-args '{"id":"<id>"}' \
+          prepaid-gas '300.0 Tgas' \
+          attached-deposit '0 NEAR' \
+          sign-as <account_id>.testnet \
+          network-config testnet \
+          sign-with-keychain send
+        ```
+      </TabItem>
+    </Tabs>
    
     > **Note:** this step will be updated soon, as support for yield/resume calls is implemented on MPC contract.
 
@@ -255,9 +341,21 @@ Python and Rust output different hex RLP encoded transactions.
 
 Instead of creating a signed transaction and calling the gas station contract to sign it, you can get the recently signed transactions by calling the contract while replacing the `blockheight` with a more recent block height (use `canhazgas.near` for mainnet):
 
-```sh
-near contract call-function as-read-only canhazgas.testnet list_signed_transaction_sequences_after json-args '{"block_height":"157111000"}' network-config testnet now
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+  
+  ```bash
+  near view canhazgas.testnet list_signed_transaction_sequences_after '{"block_height":"157111000"}' --networkId testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+  
+  ```bash
+  near contract call-function as-read-only canhazgas.testnet list_signed_transaction_sequences_after json-args '{"block_height":"157111000"}' network-config testnet now
+  ```
+  </TabItem>
+</Tabs>
 
 This will return something like the output below. Take an individual entry in the list of JSONs and send that as the payload of a `POST` request to the `/send_funding_and_user_signed_txns` endpoint:
 

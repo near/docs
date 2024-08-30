@@ -6,8 +6,8 @@ hide_table_of_contents: true
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
-import CodeBlock from '@theme/CodeBlock'
+import {CodeTabs, Language, Github} from "@site/src/components/codetabs";
+import CodeBlock from '@theme/CodeBlock';
 import {ExplainCode, Block, File} from '@site/src/components/CodeExplainer/code-explainer';
 
 Smart contracts expose functions so users can interact with them. There are different types of functions including `read-only`, `private` and `payable`.
@@ -224,9 +224,9 @@ They are useful to return hardcoded values on the contract.
 
 </Block>
 
-<File language="js" fname="auction" url="https://github.com/near-examples/auction-examples/blob/main/contract-ts/src/contract.ts" start="2" end="51" />
+<File language="js" fname="auction" url="https://github.com/near-examples/auction-examples/blob/main/contract-ts/01-basic-auction/src/contract.ts" start="2" end="51" />
 
-<File language="rust" fname="auction" url="https://github.com/near-examples/auction-examples/blob/main/contract-rs/src/lib.rs" start="2" end="68" />
+<File language="rust" fname="auction" url="https://github.com/near-examples/auction-examples/blob/main/contract-rs/01-basic-auction/src/lib.rs" start="2" end="72" />
 
 <CodeBlock language="js" fname="example">
 

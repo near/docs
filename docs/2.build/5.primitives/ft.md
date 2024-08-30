@@ -71,9 +71,7 @@ On initialization you will define the token's metadata such as its name (e.g. Et
 To initialize a FT contract you will need to deploy it and then call the `new` method defining the token's metadata.
 
 ```bash
-near deploy <account-id> --wasmFile fungible_token.wasm
-
-near call <account-id> new '{"owner_id": "<owner-account>", "total_supply": "1000000000000000", "metadata": { "spec": "ft-1.0.0", "name": "Example Token Name", "symbol": "EXLT", "decimals": 8 }}' --accountId <account-id>
+cargo near deploy <account-id> with-init-call new json-args '{"owner_id": "<owner-account>", "total_supply": "1000000000000000", "metadata": { "spec": "ft-1.0.0", "name": "Example Token Name", "symbol": "EXLT", "decimals": 8 }}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
 ```
 
 :::tip

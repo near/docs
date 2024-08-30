@@ -22,7 +22,7 @@ This Kurtosis NEAR Package contains the following components:
 
 - [Docker](https://docs.docker.com/get-docker/)
 - [Yarn](https://classic.yarnpkg.com/lang/en/docs/install)
-- [NEAR-CLI](/tools/near-cli#setup)
+- [NEAR-CLI](/tools/near-cli#installation)
 - [Kurtosis CLI](https://docs.kurtosis.com/install)
   - Start Kurtosis engine after installation using: `kurtosis engine start`
 
@@ -374,7 +374,7 @@ Because the Wallet will start on the same host and port, and the Wallet stores y
 
 :::
 
-Now that you've created an account, try interacting with it using the local CLI. In order to use this account you will need to "login" with it via CLI which will save a full access key locally for that account. [`near login`](/tools/near-cli#near-login) is the command to perform this action but as you are on `localnet` you will need to replace `near` with `local_near`.
+Now that you've created an account, try interacting with it using the local CLI. In order to use this account you will need to "login" with it via CLI which will save a full access key locally for that account. [`near login`](/tools/near-cli#import) is the command to perform this action but as you are on `localnet` you will need to replace `near` with `local_near`.
 
 ```bash
 local_near login

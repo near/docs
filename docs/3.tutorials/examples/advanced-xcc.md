@@ -241,11 +241,11 @@ The contract readily includes a set of unit and sandbox testing to validate its 
 <Tabs groupId="code-tabs">
   <TabItem value="js" label="🌐 JavaScript">
 
-```bash
-cd contract-advanced-ts
-yarn
-yarn test
-```
+  ```bash
+  cd contract-advanced-ts
+  yarn
+  yarn test
+  ```
 
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
@@ -269,36 +269,31 @@ The `integration tests` use a sandbox to create NEAR users and simulate interact
 
 In order to deploy the contract you will need to create a NEAR account.
 
-<Tabs groupId="code-tabs">
-  <TabItem value="js" label="🌐 JavaScript">
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
 
-```bash
-# Optional - create an account
-near create-account <accountId> --useFaucet
-
-# Deploy the contract
-cd contract-advanced-ts
-yarn build
-near deploy <accountId> ./build/cross_contract.wasm --initFunction init --initArgs '{"hello_account":"hello.near-example.testnet","guestbook_account":"guestbook_account.near-example.testnet","counter_account":"counter_account.near-example.testnet"}'
-```
-
+  ```bash
+  # Create a new account pre-funded by a faucet
+  near create-account <accountId> --useFaucet
+  ```
   </TabItem>
-  <TabItem value="rust" label="🦀 Rust">
 
-```bash
-# Optional - create an account
-near create-account <accountId> --useFaucet
+  <TabItem value="full" label="Full">
 
-# Deploy the contract
-cd contract-advanced-rs
-cargo near build
-
-# During deploying pass {"hello_account":"hello.near-example.testnet","guestbook_account":"guestbook_account.near-example.testnet","counter_account":"counter_account.near-example.testnet"} as init arguments
-cargo near deploy <accountId>
-```
-
+  ```bash
+  # Create a new account pre-funded by a faucet
+  near account create-account sponsor-by-faucet-service <my-new-dev-account>.testnet autogenerate-new-keypair save-to-keychain network-config testnet create
+  ```
   </TabItem>
 </Tabs>
+
+Go into the directory containing the smart contract (`cd contract-advanced-ts` or `cd contract-advanced-rs`), build and deploy it:
+
+```bash
+cargo near build
+
+cargo near deploy <accountId> with-init-call new json-args '{"hello_account":"hello.near-example.testnet","guestbook_account":"guestbook_account.near-example.testnet","counter_account":"counter_account.near-example.testnet"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
+```
 
 <hr class="subsection" />
 
@@ -306,19 +301,42 @@ cargo near deploy <accountId>
 
 To interact with the contract through the console, you can use the following commands:
 
-```bash
-# Execute contracts sequentially
-# Replace <accountId> with your account ID
-near call <accountId> batch_actions --accountId <accountId> --gas 300000000000000   
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+  
+  ```bash
+  # Execute contracts sequentially
+  # Replace <accountId> with your account ID
+  near call <accountId> batch_actions --accountId <accountId> --gas 300000000000000   
 
-# Execute contracts in parallel
-# Replace <accountId> with your account ID
-near call <accountId>  multiple_contracts --accountId <accountId> --gas 300000000000000   
+  # Execute contracts in parallel
+  # Replace <accountId> with your account ID
+  near call <accountId>  multiple_contracts --accountId <accountId> --gas 300000000000000   
 
-# Execute multiple instances of the same contract in parallel
-# Replace <accountId> with your account ID
-near call <accountId> similar_contracts --accountId <accountId> --gas 300000000000000   
-```
+  # Execute multiple instances of the same contract in parallel
+  # Replace <accountId> with your account ID
+  near call <accountId> similar_contracts --accountId <accountId> --gas 300000000000000
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+  
+  ```bash
+  # Execute contracts sequentially
+  # Replace <accountId> with your account ID
+  near contract call-function as-transaction <accountId> batch_actions json-args '{}' prepaid-gas '300.0 Tgas' attached-deposit '0 NEAR' sign-as <accountId> network-config testnet sign-with-keychain send
+
+  # Execute contracts in parallel
+  # Replace <accountId> with your account ID
+  near contract call-function as-transaction <accountId> multiple_contracts json-args '{}' prepaid-gas '300.0 Tgas' attached-deposit '0 NEAR' sign-as <accountId> network-config testnet sign-with-keychain send
+
+  # Execute multiple instances of the same contract in parallel
+  # Replace <accountId> with your account ID
+  near contract call-function as-transaction <accountId> similar_contracts json-args '{}' prepaid-gas '300.0 Tgas' attached-deposit '0 NEAR' sign-as <accountId> network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
+</Tabs>
+
 
 :::info
 If at some point you get an "Exceeded the prepaid gas" error, try to increase the gas amount used within the functions when calling other contracts

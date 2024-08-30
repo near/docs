@@ -3,7 +3,9 @@ id: defining-a-token
 title: Defining a Fungible Token
 sidebar_label: Defining Your Token
 ---
-import {Github} from "@site/src/components/codetabs"
+import {Github} from "@site/src/components/codetabs";
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 This is the first of many tutorials in a series where you'll be creating a complete FT smart contract from scratch that conforms with all the NEAR [FT standards](https://nomicon.io/Standards/Tokens/FungibleToken/Core). Today you'll learn what a Fungible Token is and how you can define one on the NEAR blockchain. You will be modifying a bare-bones [skeleton smart contract](/tutorials/fts/skeleton) by filling in the necessary code snippets needed to add this functionality.
 
@@ -127,9 +129,21 @@ At this point, the contract should have been deployed to your account and initia
 
 Now that the contract has been initialized, you can query for the metadata by calling the function you wrote earlier.
 
-```bash
-near contract call-function as-read-only $FT_CONTRACT_ID ft_metadata json-args {} network-config testnet now
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+  
+  ```bash
+  near view $FT_CONTRACT_ID ft_metadata '{}' --networkId testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+  
+  ```bash
+  near contract call-function as-read-only $FT_CONTRACT_ID ft_metadata json-args {} network-config testnet now
+  ```
+  </TabItem>
+</Tabs>
 
 This should return an output similar to the following:
 

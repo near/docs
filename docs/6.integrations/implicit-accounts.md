@@ -4,6 +4,9 @@ title: Implicit Accounts
 sidebar_label: Implicit Accounts
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 ## Background {#background}
 
 Implicit accounts work similarly to Bitcoin/Ethereum accounts.
@@ -13,55 +16,79 @@ Implicit accounts work similarly to Bitcoin/Ethereum accounts.
  - An ED25519 Public key contains 32 bytes that maps to 64 characters account ID.
  - The corresponding secret key allows you to sign transactions on behalf of this account once it's created on chain.
 
-## [Specifications](https://nomicon.io/DataStructures/Account.html#implicit-account-ids) {#specifications}
+:::info
+You can find the implicit accounts specification [here](https://nomicon.io/DataStructures/Account.html#implicit-account-ids).
+:::
 
 ## Creating an account locally {#creating-an-account-locally}
 
 For the purpose of this demo, we'll use the `betanet` network. 
 
-### Set `betanet` network {#set-betanet-network}
+## Set `betanet` network {#set-betanet-network}
 
 ```bash
 export NEAR_ENV=betanet
 ```
 
-### Generating a key-pair first {#generating-a-key-pair-first}
+## Generating the Implicit account
 
 ```bash
-near generate-key --saveImplicit
+near account create-account fund-later use-auto-generation save-to-folder ~/.near-credentials/implicit
 ```
 
 Example Output
 ```
-Seed phrase: lumber habit sausage used zebra brain border exist meat muscle river hidden
-Key pair: {"publicKey":"ed25519:AQgnQSR1Mp3v7xrw7egJtu3ibNzoCGwUwnEehypip9od","secretKey":"ed25519:51qTiqybe8ycXwPznA8hz7GJJQ5hyZ45wh2rm5MBBjgZ5XqFjbjta1m41pq9zbRZfWGUGWYJqH4yVhSWoW6pYFkT"}
-Implicit account: 8bca86065be487de45e795b2c3154fe834d53ffa07e0a44f29e76a2a5f075df8
-Storing credentials for account: 8bca86065be487de45e795b2c3154fe834d53ffa07e0a44f29e76a2a5f075df8 (network: testnet)
-Saving key to '~/.near-credentials/testnet/8bca86065be487de45e795b2c3154fe834d53ffa07e0a44f29e76a2a5f075df8.json'
+The file "~/.near-credentials/testnet/8bca86065be487de45e795b2c3154fe834d53ffa07e0a44f29e76a2a5f075df8.json" was saved successfully
+
+Here is your console command if you need to script it or re-run:
+    near account create-account fund-later use-auto-generation save-to-folder ~/.near-credentials/implicit
 ```
 
-#### Using the Implicit Account
+## Using the Implicit Account
 We can export our account ID to a bash env variable:
 ```bash
 export ACCOUNT="8bca86065be487de45e795b2c3154fe834d53ffa07e0a44f29e76a2a5f075df8"
 ```
 
 Assuming you've received tokens on your new account, you can transfer from it using the following command:
-```bash
-near $ACCOUNT <receiver> <amount>
-```
 
-You can also replace `$ACCOUNT` with your actual account ID, e.g.
-```bash
-near send 98793cd91a3f870fb126f66285808c7e094afcfc4eda8a970f6648cdf0dbd6de <receiver> <amount>
-```
+<Tabs groupId="cli-tabs">
+
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near send $ACCOUNT <receiver> <amount>
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+  ```bash
+  near tokens $ACCOUNT send-near <receiver> '<amount> NEAR' network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
+</Tabs>
 
 ## Transferring to the implicit account {#transferring-to-the-implicit-account}
 
 Let's say someone gives you their account ID `0861ea8ddd696525696ccf3148dd706c4fda981c64d8a597490472594400c223`. You can just transfer to it by running:
-```bash
-near send <your_account_id> 0861ea8ddd696525696ccf3148dd706c4fda981c64d8a597490472594400c223 <amount>
-```
+
+<Tabs groupId="cli-tabs">
+
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near send <your_account_id> 0861ea8ddd696525696ccf3148dd706c4fda981c64d8a597490472594400c223 <amount>
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+  ```bash
+  near tokens<your_account_id> send-near 0861ea8ddd696525696ccf3148dd706c4fda981c64d8a597490472594400c223 '<amount> NEAR' network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
+</Tabs>
 
 ## BONUS: Converting public key using python (for learning purposes) {#bonus-converting-public-key-using-python-for-learning-purposes}
 

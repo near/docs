@@ -4,6 +4,9 @@ title: Minting NFTs
 sidebar_label: Minting NFTs
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 In this tutorial you'll learn how to easily create your own NFTs without doing any software development by using a readily-available smart contract and a decentralized storage solution like [IPFS](https://ipfs.io/).
 
 ## Overview {#overview}
@@ -17,7 +20,7 @@ To complete this tutorial successfully, you'll need:
 
 - [Rust toolchain](/build/smart-contracts/quickstart#prerequisites)
 - [A NEAR account](#wallet)
-- [NEAR command-line interface](/tools/near-cli#setup) (`near-cli`)
+- [NEAR command-line interface](/tools/near-cli#installation) (`near-cli`)
 
 ## Wallet {#wallet}
 
@@ -165,9 +168,22 @@ This smart contract will be deployed to your NEAR account. Because NEAR allows t
 
 Log in to your newly created account with `near-cli` by running the following command in your terminal.
 
-```bash
-near login
-```
+<Tabs groupId="cli-tabs">
+
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near login --networkId testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+  ```bash
+  near account import-account using-web-wallet network-config testnet
+  ```
+  </TabItem>
+</Tabs>
 
 To make this tutorial easier to copy/paste, we're going to set an environment variable for your account ID. In the command below, replace `YOUR_ACCOUNT_NAME` with the account name you just logged in with including the `.testnet` (or `.near` for `mainnet`):
 
@@ -213,17 +229,41 @@ In our case, we need to initialize the NFT contract before usage. For now, we'll
 > **Note:** each account has a data area called `storage`, which is persistent between function calls and transactions.
 > For example, when you initialize a contract, the initial state is saved in the persistent storage.
 
-```bash
-near call $ID new_default_meta '{"owner_id": "'$ID'"}' --accountId $ID
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near call $ID new_default_meta '{"owner_id": "'$ID'"}' --accountId $ID
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    near contract call-function as-transaction $ID new_default_meta json-args '{"owner_id": "'$ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as $ID network-config testnet sign-with-keychain send
+    ```
+  </TabItem>
+</Tabs>
 
 > **Tip:** you can find more info about the NFT metadata at [nomicon.io](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata).
 
 You can then view the metadata by running the following `view` call:
 
-```bash
-near view $ID nft_metadata
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near view $ID nft_metadata
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    near contract call-function as-read-only $ID nft_metadata json-args '{}' network-config testnet now
+    ```
+  </TabItem>
+</Tabs>
 
 <details>
 <summary>Example response: </summary>
@@ -246,9 +286,21 @@ near view $ID nft_metadata
 
 Now let's mint our first token! The following command will mint one copy of your NFT. Replace the `media` url with the one you [uploaded to IPFS](#uploading-the-image) earlier:
 
-```bash
-near call $ID nft_mint '{"token_id": "0", "receiver_id": "'$ID'", "token_metadata": { "title": "Some Art", "description": "My NFT media", "media": "https://bafkreiabag3ztnhe5pg7js4bj6sxuvkz3sdf76cjvcuqjoidvnfjz7vwrq.ipfs.dweb.link/", "copies": 1}}' --accountId $ID --deposit 0.1
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near call $ID nft_mint '{"token_id": "0", "receiver_id": "'$ID'", "token_metadata": { "title": "Some Art", "description": "My NFT media", "media": "https://bafkreiabag3ztnhe5pg7js4bj6sxuvkz3sdf76cjvcuqjoidvnfjz7vwrq.ipfs.dweb.link/", "copies": 1}}' --accountId $ID --deposit 0.1
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    near contract call-function as-transaction $ID nft_mint json-args '{"token_id": "0", "receiver_id": "'$ID'", "token_metadata": { "title": "Some Art", "description": "My NFT media", "media": "https://bafkreiabag3ztnhe5pg7js4bj6sxuvkz3sdf76cjvcuqjoidvnfjz7vwrq.ipfs.dweb.link/", "copies": 1}}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $ID network-config testnet sign-with-keychain send
+    ```
+  </TabItem>
+</Tabs>
 
 <details>
 <summary>Example response: </summary>
@@ -281,9 +333,21 @@ near call $ID nft_mint '{"token_id": "0", "receiver_id": "'$ID'", "token_metadat
 
 To view tokens owned by an account you can call the NFT contract with the following `near-cli` command:
 
-```bash
-near view $ID nft_tokens_for_owner '{"account_id": "'$ID'"}'
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near view $ID nft_tokens_for_owner '{"account_id": "'$ID'"}'
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    near contract call-function as-read-only $ID nft_tokens_for_owner json-args '{"account_id": "'$ID'"}' network-config testnet now
+    ```
+  </TabItem>
+</Tabs>
 
 <details>
 <summary>Example response: </summary>

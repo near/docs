@@ -4,6 +4,9 @@ sidebar_label: "Add a puzzle"
 title: "Adding a new puzzle now that we're using a collection that can contain multiple crossword puzzles"
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 import blankCrossword from '/docs/assets/crosswords/chapter-2-crossword-blank.png';
 import teachingDeployment from '/docs/assets/crosswords/teaching-just-teacher--herogranada.near--GranadaHero.jpeg';
 import recreatingSubaccount from '/docs/assets/crosswords/erase-recreate-subaccount--3one9.near--3one92.gif';
@@ -54,15 +57,33 @@ Let's delete the subaccount and recreate it, to start from a blank slate.
 
 Here's how to delete and recreate the subaccount using NEAR CLI:
 
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+  
+  ```bash
+  # Delete the subaccount and send remaining balance to friend.testnet
+  near delete-account crossword.friend.testnet friend.testnet --networkId testnet
+  
+  # Create the subaccount again
+  near create-account crossword.friend.testnet --use-account friend.testnet --initial-balance 1 --network-id testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+  
+  ```bash
+  # Delete the subaccount and send remaining balance to friend.testnet
+  near account delete-account crossword.friend.testnet beneficiary friend.testnet network-config testnet sign-with-keychain send
+
+  # Create the subaccount again
+  near account create-account fund-myself crossword.friend.testnet '1 NEAR' autogenerate-new-keypair save-to-keychain sign-as friend.testnet network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
+</Tabs>
+
+Deploy, calling the "new" method with the parameter for owner_id:
 ```bash
-# Delete the subaccount and send remaining balance to friend.testnet
-near account delete-account crossword.friend.testnet beneficiary friend.testnet network-config testnet sign-with-legacy-keychain send
-
-# Create the subaccount again
-near account create-account fund-myself crossword.friend.testnet '1 NEAR' autogenerate-new-keypair save-to-legacy-keychain sign-as friend.testnet network-config testnet sign-with-legacy-keychain send
-
-# Deploy, calling the "new" method with the parameter for owner_id
-cargo near deploy crossword.friend.testnet with-init-call new json-args '{"owner_id": "crossword.friend.testnet"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-legacy-keychain send
+cargo near deploy crossword.friend.testnet with-init-call new json-args '{"owner_id": "crossword.friend.testnet"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
 ```
 
 Now we're ready to construct our new crossword puzzle and add it via the `new_puzzle` method. Let's start with the clues for this new puzzle.
@@ -93,63 +114,129 @@ Let's derive the sha256 hash using an [easy online tool](https://www.wolframalph
 
 Add a new puzzle using NEAR CLI with this long command, replacing `crossword.friend.testnet` with your subaccount:
 
-```bash
-near contract call-function as-transaction crossword.friend.testnet new_puzzle json-args '{
-  "solution_hash": "d1a5cf9ad1adefe0528f7d31866cf901e665745ff172b96892693769ad284010",
-  "answers": [
-   {
-     "num": 1,
-     "start": {
-       "x": 1,
-       "y": 1
-     },
-     "direction": "Down",
-     "length": 5,
-     "clue": "NFT market on NEAR that specializes in cards and comics."
-   },
-   {
-     "num": 2,
-     "start": {
-       "x": 0,
-       "y": 2
-     },
-     "direction": "Across",
-     "length": 13,
-     "clue": "You can move assets between NEAR and different chains, including Ethereum, by visiting ______.app"
-   },
-   {
-     "num": 3,
-     "start": {
-       "x": 9,
-       "y": 1
-     },
-     "direction": "Down",
-     "length": 8,
-     "clue": "NFT market on NEAR with art, physical items, tickets, and more."
-   },
-   {
-     "num": 4,
-     "start": {
-       "x": 3,
-       "y": 8
-     },
-     "direction": "Across",
-     "length": 9,
-     "clue": "The smallest denomination of the native token on NEAR."
-   },
-   {
-     "num": 5,
-     "start": {
-       "x": 5,
-       "y": 8
-     },
-     "direction": "Down",
-     "length": 3,
-     "clue": "You typically deploy a smart contract with the NEAR ___ tool."
-   }
-  ]
-}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as crossword.friend.testnet network-config testnet sign-with-legacy-keychain send
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near call crossword.friend.testnet new_puzzle '{
+      "solution_hash": "d1a5cf9ad1adefe0528f7d31866cf901e665745ff172b96892693769ad284010",
+      "answers": [
+      {
+        "num": 1,
+        "start": {
+          "x": 1,
+          "y": 1
+        },
+        "direction": "Down",
+        "length": 5,
+        "clue": "NFT market on NEAR that specializes in cards and comics."
+      },
+      {
+        "num": 2,
+        "start": {
+          "x": 0,
+          "y": 2
+        },
+        "direction": "Across",
+        "length": 13,
+        "clue": "You can move assets between NEAR and different chains, including Ethereum, by visiting ______.app"
+      },
+      {
+        "num": 3,
+        "start": {
+          "x": 9,
+          "y": 1
+        },
+        "direction": "Down",
+        "length": 8,
+        "clue": "NFT market on NEAR with art, physical items, tickets, and more."
+      },
+      {
+        "num": 4,
+        "start": {
+          "x": 3,
+          "y": 8
+        },
+        "direction": "Across",
+        "length": 9,
+        "clue": "The smallest denomination of the native token on NEAR."
+      },
+      {
+        "num": 5,
+        "start": {
+          "x": 5,
+          "y": 8
+        },
+        "direction": "Down",
+        "length": 3,
+        "clue": "You typically deploy a smart contract with the NEAR ___ tool."
+      }
+      ]
+    }' --gas 100000000000000 --accountId crossword.friend.testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    near contract call-function as-transaction crossword.friend.testnet new_puzzle json-args '{
+      "solution_hash": "d1a5cf9ad1adefe0528f7d31866cf901e665745ff172b96892693769ad284010",
+      "answers": [
+      {
+        "num": 1,
+        "start": {
+          "x": 1,
+          "y": 1
+        },
+        "direction": "Down",
+        "length": 5,
+        "clue": "NFT market on NEAR that specializes in cards and comics."
+      },
+      {
+        "num": 2,
+        "start": {
+          "x": 0,
+          "y": 2
+        },
+        "direction": "Across",
+        "length": 13,
+        "clue": "You can move assets between NEAR and different chains, including Ethereum, by visiting ______.app"
+      },
+      {
+        "num": 3,
+        "start": {
+          "x": 9,
+          "y": 1
+        },
+        "direction": "Down",
+        "length": 8,
+        "clue": "NFT market on NEAR with art, physical items, tickets, and more."
+      },
+      {
+        "num": 4,
+        "start": {
+          "x": 3,
+          "y": 8
+        },
+        "direction": "Across",
+        "length": 9,
+        "clue": "The smallest denomination of the native token on NEAR."
+      },
+      {
+        "num": 5,
+        "start": {
+          "x": 5,
+          "y": 8
+        },
+        "direction": "Down",
+        "length": 3,
+        "clue": "You typically deploy a smart contract with the NEAR ___ tool."
+      }
+      ]
+    }' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as crossword.friend.testnet network-config testnet sign-with-keychain send
+    ```
+  </TabItem>
+</Tabs>
 
 Note that our contract name and the account we're calling this from are both `crossword.friend.testnet`. That's because we added a check at the top of `new_puzzle` to make sure the predecessor is the `owner_id`.
 
