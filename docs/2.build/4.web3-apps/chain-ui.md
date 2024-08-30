@@ -6,9 +6,10 @@ sidebar_label: Chain Hosted UI
 
 [Chain Hosted UI](https://github.com/near/chain-deployed-ui) is a [decentralized frontend solution](frontend.md#decentralized-frontend-solutions) that lets you to deploy dApp frontends directly on the NEAR blockchain. A frontend can be built with typical Web2 tooling (e.g. React + Vite + node.js dependencies), and the resulting compressed bundle can be stored in the state of a smart contract.
 
-:::info Keep in mind
+:::warning
 
-This is an early stage project, and the solution hasn’t been battle tested to the point it can be recommended for production use.
+This experiment reached the MVP stage of functionality but no longer has a maintainer due to [Pagoda winding down](https://docs.near.org/blog/2024-08-13-pagoda-services).
+We encourage interested parties to fork the project and carry it forward. The smart contract has not yet been audited.
 
 :::
 
