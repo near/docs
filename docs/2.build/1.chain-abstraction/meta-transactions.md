@@ -110,7 +110,7 @@ Progress is being made to make this possible in the future.
 
 When running a relayer that handles a large number of transactions, you will quickly run into a `nonce` collision problem. At the protocol level, transactions have a unique number that identifies them (nonce) that helps to mitigate reply attacks. Each key on an account has its own nonce, and the nonce is expected to increase with each signature the key creates.
 
-When multiple transactions are sent from the same access key simultaneously, their nonces might collide. Imagine the relayer creates 3 transactions `Tx1`, `Tx2`, `Tx3` and send them in very short distance from each other, and lets assume that Tx3 has the largest nonce. If Tx3 ends up being processed before Tx1 (because of network delay, or simply because a node picks Tx3 before Tx1), then Tx3 will execute, but Tx1 and Tx2 will fail, because they have smaller nonce!
+When multiple transactions are sent from the same access key simultaneously, their nonces might collide. Imagine the relayer creates 3 transactions `Tx1`, `Tx2`, `Tx3` and send them in very short distance from each other, and lets assume that `Tx3` has the largest nonce. If `Tx3` ends up being processed before `Tx1` (because of network delays, or a node picks `Tx3` first), then `Tx3` will execute, but `Tx1` and `Tx2` will fail, because they have smaller nonce!
 
 One way to mitigate this is to sign each transaction with a different key. Adding multiple full access keys to the NEAR account used for relaying (up to 20 keys can make a significant difference) will help. 
 
