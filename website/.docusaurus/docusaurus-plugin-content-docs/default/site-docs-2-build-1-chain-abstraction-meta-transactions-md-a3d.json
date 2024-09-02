@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/1.chain-abstraction/meta-transactions.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Reza Rahemtola",
-  "lastUpdatedAt": 1723468934000,
+  "lastUpdatedBy": "Sérgio Seco",
+  "lastUpdatedAt": 1725274453000,
   "frontMatter": {
     "id": "meta-transactions",
     "title": "Building a Meta Transaction Relayer",
