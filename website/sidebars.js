@@ -196,7 +196,6 @@ const sidebar = {
               "type": "html",
               "value": "<hr/>"
             },
-            "build/smart-contracts/security/bounty"
           ]
         }
       ]
