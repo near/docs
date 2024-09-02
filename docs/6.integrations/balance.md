@@ -4,24 +4,39 @@ title: Balance changes
 sidebar_label: Balance Changes
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 ## Prerequisites {#prerequisites}
 
 - [NEAR Account](https://testnet.mynearwallet.com/create)
 - [NEAR-CLI](/tools/near-cli)
-- Credentials for sender account stored locally by running [`near login`](/tools/near-cli#near-login)
+- Credentials for sender account stored locally by running [`near login`](/tools/near-cli#import)
 
 ### Native NEAR (Ⓝ) {#native-near}
 
-> Balance changes on accounts can be tracked by using our [changes RPC endpoint](/api/rpc/setup#view-account-changes). You can test this out by sending tokens to an account using [NEAR-CLI](/tools/near-cli#near-send) and then viewing the changes made.
+> Balance changes on accounts can be tracked by using our [changes RPC endpoint](/api/rpc/setup#view-account-changes). You can test this out by sending tokens to an account using [NEAR-CLI](/tools/near-cli#send-near) and then viewing the changes made.
 
 ## Send Tokens {#send-tokens}
 
-- Send tokens using [`near send`](/tools/near-cli#near-send)
+- Send tokens using [`near send`](../4.tools/cli.md#send-near)
 
-```bash
-near send sender.testnet receiver.testnet 1
-```
+<Tabs groupId="cli-tabs">
+
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near send sender.testnet receiver.testnet 1
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+  ```bash
+  near tokens sender.testnet send-near receiver.testnet '1 NEAR' network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
+</Tabs>
 
 - You should see a result in your terminal that looks something like this:
 

@@ -2,8 +2,7 @@
 id: upgrade
 title: Updating Contracts
 ---
-
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
+import {CodeTabs, Language, Github} from "@site/src/components/codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -20,8 +19,8 @@ Contract's can be updated in two ways:
 
 Simply re-deploy another contract using your preferred tool, for example, using [NEAR CLI](../../../4.tools/cli.md):
 
-<Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value="near-cli">
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
 
 ```bash
 # (optional) If you don't have an account, create one
@@ -33,7 +32,7 @@ near deploy <account-id> <wasm-file>
 
 </TabItem>
 
-<TabItem value="near-cli-rs">
+<TabItem value="full" label="Full">
 
 ```bash
 # (optional) If you don't have an account, create one
@@ -66,8 +65,8 @@ A smart contract can also update itself by implementing a method that:
 
 #### How to Invoke Such Method?
 
-<Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value="near-cli">
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Near CLI (short)">
 
 ```bash
 # Load the contract's raw bytes
@@ -79,7 +78,7 @@ near call <contract-account> update_contract "$CONTRACT_BYTES" --base64 --accoun
 
 </TabItem>
 
-<TabItem value="near-cli-rs">
+<TabItem value="full" label="Near CLI (full)">
 
 ```bash
 # Call the update_contract method
@@ -146,16 +145,19 @@ Imagine you have a Guest Book where you store messages, and the users can pay fo
 to be "premium". You keep track of the messages and payments using the following state:
 
 <CodeTabs>
-  <Language value="js" language="js">
-    <Github fname="index.js"
-          url="https://github.com/near/near-sdk-js/blob/develop/examples/src/basic-updates-base.js"
-          start="16" end="37" />
-  </Language>
+<Language value="js" language="js">
 
-  <Language value="rust" language="rust">
-    <Github fname="lib.rs"
-        url="https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/base/src/lib.rs"
-        start="10" end="21" />        
+<Github fname="index.js"
+      url="https://github.com/near/near-sdk-js/blob/develop/examples/src/basic-updates-base.js"
+      start="16" end="37" />
+
+</Language>
+
+<Language value="rust" language="rust">
+
+<Github fname="lib.rs"
+    url="https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/base/src/lib.rs"
+    start="10" end="21" />
 
 </Language>
 
@@ -167,16 +169,19 @@ At some point you realize that you could keep track of the `payments` inside of 
 so you change the contract to:
 
 <CodeTabs>
-  <Language value="js" language="js">
-    <Github fname="index.js"
-          url="https://github.com/near/near-sdk-js/blob/develop/examples/src/basic-updates-update.js"
-          start="23" end="45" />
-  </Language>
+<Language value="js" language="js">
 
-  <Language value="rust" language="rust">
-    <Github fname="lib.rs"
-        url="https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/update/src/lib.rs"
-        start="12" end="23" />        
+<Github fname="index.js"
+      url="https://github.com/near/near-sdk-js/blob/develop/examples/src/basic-updates-update.js"
+      start="23" end="45" />
+
+</Language>
+
+<Language value="rust" language="rust">
+
+<Github fname="lib.rs"
+    url="https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/update/src/lib.rs"
+    start="12" end="23" />
 
 </Language>
 
@@ -195,16 +200,19 @@ To fix the problem, you need to implement a method that goes through the old sta
 adds the information to the `PostedMessages`:
 
 <CodeTabs>
-  <Language value="js" language="js">
-    <Github fname="index.js"
-          url="https://github.com/near/near-sdk-js/blob/develop/examples/src/basic-updates-update.js"
-          start="7" end="70" />
-  </Language>
+<Language value="js" language="js">
 
-  <Language value="rust" language="rust">
-    <Github fname="lib.rs"
-        url="https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/update/src/migrate.rs"
-        start="3" end="46" />
+<Github fname="index.js"
+      url="https://github.com/near/near-sdk-js/blob/develop/examples/src/basic-updates-update.js"
+      start="7" end="70" />
+
+</Language>
+
+<Language value="rust" language="rust">
+
+<Github fname="lib.rs"
+    url="https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/update/src/migrate.rs"
+    start="3" end="46" />
 
 </Language>
 
@@ -214,6 +222,7 @@ Notice that `migrate` is actually an [initialization method](../anatomy/anatomy.
 
 :::tip
 
-You can follow a migration step by step in the [official migration example](https://github.com/near-examples/update-migrate-rust/tree/main/basic-updates/base)  
+You can follow a migration step by step in the [official migration example](https://github.com/near-examples/update-migrate-rust/tree/main/basic-updates/base)
 Javascript migration example testfile can be found on here: [test-basic-updates.ava.js](https://github.com/near/near-sdk-js/blob/develop/examples/__tests__/test-basic-updates.ava.js), run by this command: `pnpm run test:basic-update` in examples directory.
+
 :::

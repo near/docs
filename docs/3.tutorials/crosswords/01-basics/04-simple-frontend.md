@@ -3,7 +3,9 @@ sidebar_position: 5
 sidebar_label: "Add simple frontend"
 title: "Add a simple frontend to the crossword puzzle that checks the solution's hash"
 ---
-import {Github} from "@site/src/components/codetabs"
+import {Github} from "@site/src/components/codetabs";
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 import nearReactFriends from '/docs/assets/crosswords/near-and-react--dakila.near--rodolf_dtbbx.png';
 
@@ -86,22 +88,50 @@ We haven't had the frontend call a mutable method for our project yet. We'll get
 
 Let's run our frontend on testnet! We won't add any new concepts at this point in the chapter, but note that the [near examples](https://github.com/near-examples) typically create an account for you automatically with a NodeJS command. We covered the important pattern of creating a subaccount and deploying the smart contract to it, so let's stick with that pattern as we start up our frontend.
 
+Go into the directory containing the Rust smart contract and build it:
+
 ```bash
-# Go into the directory containing the Rust smart contract we've been working on
 cd contract
 
 # Build
 cargo near build
+```
 
-# Create fresh account if you wish, which is good practice
-near account delete-account crossword.friend.testnet beneficiary friend.testnet network-config testnet sign-with-legacy-keychain send
+Create fresh account if you wish, which is good practice:
 
-near account create-account fund-myself crossword.friend.testnet '1 NEAR' autogenerate-new-keypair save-to-legacy-keychain sign-as friend.testnet network-config testnet sign-with-legacy-keychain send
-
-# Deploy
-cargo near deploy crossword.friend.testnet with-init-call new json-args '{"solution": "69c2feb084439956193f4c21936025f14a5a5a78979d67ae34762e18a7206a0f"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-legacy-keychain send
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
   
-# Return to the project root and start the React app
+  ```bash
+  # Delete an account
+  near delete-account crossword.friend.testnet friend.testnet --networkId testnet
+  
+  # Create an account again
+  near create-account crossword.friend.testnet --use-account friend.testnet --initial-balance 1 --network-id testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+  
+  ```bash
+  # Delete an account
+  near account delete-account crossword.friend.testnet beneficiary friend.testnet network-config testnet sign-with-keychain send
+
+  # Create an account again
+  near account create-account fund-myself crossword.friend.testnet '1 NEAR' autogenerate-new-keypair save-to-keychain sign-as friend.testnet network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
+</Tabs>
+
+Deploy the contract:
+
+```bash
+cargo near deploy crossword.friend.testnet with-init-call new json-args '{"solution": "69c2feb084439956193f4c21936025f14a5a5a78979d67ae34762e18a7206a0f"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
+```
+
+Return to the project root and start the React app:
+
+```bash
 cd ..
 env CONTRACT_NAME=crossword.friend.testnet npm run start
 ```

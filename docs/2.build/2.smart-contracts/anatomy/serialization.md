@@ -3,6 +3,9 @@ id: serialization
 title: Notes on Serialization
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 Smart contracts need to be able to **communicate complex data** in a simple way, while
 also **reading and storing** such data into their states efficiently.
 
@@ -163,31 +166,65 @@ impl Contract {
 If we deploy the contract into a new account and immediately ask for the state we will see
 it is empty:
 
-```bash
-near view-state $CONTRACT --finality optimistic
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
 
-# Result is: []
-```
+  ```bash
+  near view-state $CONTRACT --finality optimistic
+
+  # Result is: []
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+  ```bash
+  near contract view-storage $CONTRACT all as-json network-config testnet now
+  ```
+  </TabItem>
+</Tabs>
 
 #### Initializing the State
 If we initialize the state we can see how Borsh is used to serialize the state
 
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  # initialize with the string "hi" and 0
+  near call $CONTRACT init '{"string":"hi", "first_u8":0}' --accountId $CONTRACT
+
+  # check the state
+  near view-state $CONTRACT --utf8 --finality optimistic
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+  ```bash
+  # initialize with the string "hi" and 0
+  near contract call-function as-transaction $CONTRACT init json-args '{"string":"hi", "first_u8":0}' prepaid-gas '30.0 Tgas' attached-deposit '0 NEAR' sign-as $CONTRACT network-config testnet sign-with-keychain send
+
+  # check the state
+  near contract view-storage $CONTRACT all as-json network-config testnet now
+  ```
+  </TabItem>
+</Tabs>
+
+<details>
+
+<summary> Result </summary>
+
 ```bash
-# initialize with the string "hi" and 0
-near call $CONTRACT init '{"string":"hi", "first_u8":0}' --accountId $CONTRACT
-
-# check the state
-near view-state $CONTRACT --utf8 --finality optimistic
-
-# Result is:
-# [
-#   {
-#     key: 'STATE',
-#     value: '\x02\x00\x00\x00hi\x01\x00\x00\x00\x00\x00\x00\x00\x06\x00\x00\x00prefix'
-#   },
-#   { key: 'prefix\x00\x00\x00\x00\x00\x00\x00\x00', value: '\x00' }
-# ]
+[
+  {
+    key: 'STATE',
+    value: '\x02\x00\x00\x00hi\x01\x00\x00\x00\x00\x00\x00\x00\x06\x00\x00\x00prefix'
+  },
+  { key: 'prefix\x00\x00\x00\x00\x00\x00\x00\x00', value: '\x00' }
+]
 ```
+</details>
 
 The first key-value is:
 
@@ -213,19 +250,37 @@ value: '\x00'
 #### Modifying the State
 If we modify the stored string and add a new number, the state changes accordingly:
 
-```bash
-near call $CONTRACT change_state '{"string":"bye", "number":1}' --accountId $CONTRACT
+<Tabs>
+  <TabItem value="short" label="Short">
 
-# Result is
-# [
-#   {
-#     key: 'STATE',
-#     value: '\x03\x00\x00\x00bye\x02\x00\x00\x00\x00\x00\x00\x00\x06\x00\x00\x00prefix'
-#   },
-#   { key: 'prefix\x00\x00\x00\x00\x00\x00\x00\x00', value: '\x00' },
-#   { key: 'prefix\x01\x00\x00\x00\x00\x00\x00\x00', value: '\x01' }
-# ]
+  ```bash
+  near call $CONTRACT change_state '{"string":"bye", "number":1}' --accountId $CONTRACT
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+  ```bash
+  near contract call-function as-transaction $CONTRACT change_state json-args '{"string":"bye", "number":1}' prepaid-gas '30.0 Tgas' attached-deposit '0 NEAR' sign-as $CONTRACT network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
+</Tabs>
+
+<details>
+
+<summary> Result </summary>
+
+```bash
+[
+  {
+    key: 'STATE',
+    value: '\x03\x00\x00\x00bye\x02\x00\x00\x00\x00\x00\x00\x00\x06\x00\x00\x00prefix'
+  },
+  { key: 'prefix\x00\x00\x00\x00\x00\x00\x00\x00', value: '\x00' },
+  { key: 'prefix\x01\x00\x00\x00\x00\x00\x00\x00', value: '\x01' }
+]
 ```
+</details>
 
 We can see that the `STATE` key changes to reflect the storage of the new string (`bye`), and that
 the vector now has 2 elements.

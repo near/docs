@@ -3,9 +3,9 @@ id: donation
 title: Donation
 ---
 
+import {CodeTabs, Language, Github} from "@site/src/components/codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 Our donation example enables to forward NEAR Tokens to an account while keeping track of it. It is one of the simplest examples on making a contract handle tranfers.
 
@@ -164,34 +164,31 @@ The `integration tests` use a sandbox to create NEAR users and simulate interact
 
 In order to deploy the contract you will need to create a NEAR account.
 
-<Tabs groupId="code-tabs">
-  <TabItem value="js" label="🌐 JavaScript">
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
 
-```bash
-# Optional - create an account
-near create-account <accountId> --useFaucet
-
-# Deploy the contract
-cd contract-ts
-yarn build
-near deploy <accountId> ./build/donation.wasm
-```
-
+  ```bash
+  # Create a new account pre-funded by a faucet
+  near create-account <accountId> --useFaucet
+  ```
   </TabItem>
-  <TabItem value="rust" label="🦀 Rust">
 
-```bash
-# Optional - create an account
-near create-account <accountId> --useFaucet
+  <TabItem value="full" label="Full">
 
-# Deploy the contract
-cd contract-rs
-cargo near build
-near deploy <accountId> ./target/wasm32-unknown-unknown/release/donation.wasm
-```
-
+  ```bash
+  # Create a new account pre-funded by a faucet
+  near account create-account sponsor-by-faucet-service <my-new-dev-account>.testnet autogenerate-new-keypair save-to-keychain network-config testnet create
+  ```
   </TabItem>
 </Tabs>
+
+Go into the directory containing the smart contract (`cd contract-ts` or `cd contract-rs`), build and deploy it:
+
+```bash
+cargo near build
+
+cargo near deploy <accountId>
+```
 
 :::tip
 To interact with your contract from the [frontend](#frontend), simply replace the variable `CONTRACT_NAME` in the `index.js` file.
@@ -203,26 +200,111 @@ To interact with your contract from the [frontend](#frontend), simply replace th
 
 To interact with the contract through the console, you can use the following commands
 
-```bash
-# Get donations 
-# Optional arguments for pagination
-near view donation.near-examples.testnet get_donations --args='{"from_index": 0,"limit": 10}'
+#### Get donations
 
-# Get beneficiary
-near view donation.near-examples.testnet get_beneficiary
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
 
-# Get number of donors
-near view donation.near-examples.testnet number_of_donors
+  ```bash
+  near view donation.near-examples.testnet get_donations '{"from_index": "0","limit": "10"}'
+  ```
+  </TabItem>
 
-# Get donation for an account 
-# Require accountId
-near view donation.near-examples.testnet get_donation_for_account --args='{"account_id":<accountId>}'
+  <TabItem value="full" label="Full">
 
-# Donate to the contract 
-# Replace <accountId> with your account ID
-# Require deposit
-near call donation.near-examples.testnet donate --accountId <accountId> --deposit 0.1
-```
+  ```bash
+  near contract call-function as-read-only donation.near-examples.testnet get_donations json-args '{"from_index": "0","limit": "10"}' network-config testnet now
+  ```
+  </TabItem>
+</Tabs>
+
+<hr class="subsection" />
+
+#### Get beneficiary
+
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near view donation.near-examples.testnet get_beneficiary
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+  ```bash
+  near contract call-function as-read-only donation.near-examples.testnet get_beneficiary json-args {} network-config testnet now
+  ```
+  </TabItem>
+</Tabs>
+
+<hr class="subsection" />
+
+#### Get number of donors
+
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near view donation.near-examples.testnet number_of_donors
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+  ```bash
+  near contract call-function as-read-only donation.near-examples.testnet number_of_donors json-args {} network-config testnet now
+  ```
+  </TabItem>
+</Tabs>
+
+<hr class="subsection" />
+
+#### Get donation for an account
+
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  # Require accountId
+  near view donation.near-examples.testnet get_donation_for_account '{"account_id":<accountId>}'
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+  ```bash
+  # Require accountId
+  near contract call-function as-read-only donation.near-examples.testnet get_donation_for_account json-args '{"account_id":<accountId>}' network-config testnet now
+  ```
+  </TabItem>
+</Tabs>
+
+<hr class="subsection" />
+
+#### Donate to the contract
+
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  # Replace <accountId> with your account ID
+  # Require deposit
+  near call donation.near-examples.testnet donate --accountId <accountId> --deposit 0.1
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+  ```bash
+  # Replace <accountId> with your account ID
+  # Require deposit
+  near contract call-function as-transaction donation.near-examples.testnet donate json-args {} prepaid-gas '30.0 Tgas' attached-deposit '0.1 NEAR' sign-as <accountId> network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
+</Tabs>
+
+<hr class="subsection" />
 
 :::tip
 If you're using your own account, replace `donation.near-examples.testnet` with your `accountId`.

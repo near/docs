@@ -4,6 +4,9 @@ title: Pre-deployed Contract
 sidebar_label: Pre-deployed Contract
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 Learn how to easily receive fungible tokens without doing any software development by using a readily-available FT smart contract.
 
 ---
@@ -13,7 +16,7 @@ Learn how to easily receive fungible tokens without doing any software developme
 To complete this tutorial successfully, you'll need:
 
 - [A NEAR testnet account](https://testnet.mynearwallet.com)
-- [NEAR-CLI-RS](../../4.tools/cli-rs.md#install)
+- [NEAR-CLI-RS](../../4.tools/cli.md#install)
 
 ---
 
@@ -56,9 +59,21 @@ Using this pre-deployed contract, let's get some gtNEAR!
 
 Start by calling the method `ft_mint` which is a custom function implemented on this contract in order to send your account some `gtNEAR`! The following command will send `0.01 gtNEAR` to your account.
 
-```bash
-near contract call-function as-transaction ft.predeployed.examples.testnet ft_mint json-args '{"account_id": "'$NEARID'", "amount": "10000000000000000000000"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as $NEARID network-config testnet sign-with-legacy-keychain send
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near call ft.predeployed.examples.testnet ft_mint '{"account_id": "'$NEARID'", "amount": "10000000000000000000000"}' --gas 100000000000000 --accountId $NEARID --networkId testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    near contract call-function as-transaction ft.predeployed.examples.testnet ft_mint json-args '{"account_id": "'$NEARID'", "amount": "10000000000000000000000"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as $NEARID network-config testnet sign-with-keychain send
+    ```
+  </TabItem>
+</Tabs>
 
 <details>
 <summary>Example response: </summary>
@@ -77,9 +92,21 @@ https://testnet.nearblocks.io/txns/Fhqa8YDLKxnxM9jjHCPN4hn1w1RKESYrav3kwDjhWWUu
 
 To view tokens owned by an account you can call the FT contract with the following `near-cli` command:
 
-```bash
-near contract call-function as-read-only ft.predeployed.examples.testnet ft_balance_of json-args '{"account_id": "'$NEARID'"}' network-config testnet now
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+  
+  ```bash
+  near view ft.predeployed.examples.testnet ft_balance_of '{"account_id": "'$NEARID'"}' --networkId testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+  
+  ```bash
+  near contract call-function as-read-only ft.predeployed.examples.testnet ft_balance_of json-args '{"account_id": "'$NEARID'"}' network-config testnet now
+  ```
+  </TabItem>
+</Tabs>
 
 <details>
 <summary>Example response: </summary>

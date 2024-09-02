@@ -4,6 +4,9 @@ title: Create NFTs in Minecraft
 sidebar_label: Minecraft NFTs
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 > In this tutorial you'll learn how to take your custom Minecraft creations and mint the schematics into NFTs on the NEAR blockchain!
 
 ## Overview
@@ -21,7 +24,7 @@ To complete this tutorial successfully, you'll need:
 - [A Minecraft account](https://www.minecraft.net/)
 - [WorldEdit installed](https://worldedit.enginehub.org/en/latest/install/)
 - [A NEAR account](#wallet)
-- [NEAR command-line interface](/tools/near-cli#setup) (`near-cli`)
+- [NEAR command-line interface](/tools/near-cli#installation) (`near-cli`)
 
 ## Creating a Schematic
 
@@ -131,11 +134,24 @@ NEAR has already deployed a contract to the account `nft.examples.testnet` which
 We'll be using the IPFS link we got in step three of the uploading process above as the media value when calling `nft_mint`.
 :::
 
-- Run the following command and replace the `receiver_id` field and the `--accountId` flag with the account ID you're [logged into](/tools/near-cli#near-login) with NEAR CLI:
+- Run the following command and replace the `receiver_id` field and the `--accountId` flag with the account ID you're [logged into](../../4.tools/cli.md#import) with NEAR CLI:
 
-```bash
-near call nft.examples.testnet nft_mint '{"token_id": "my-token-unique-id", "receiver_id": "YOUR_ACCOUNT", "metadata": { "title": "YOUR NFT TITLE", "description": "YOUR NFT DESCRIPTION", "media": "https://bafybeidadhfilezx23dcdaueo3bjuafqeehokw33vyepkjtppigorrhbpy.ipfs.dweb.link/", "copies": 1}}' --accountId YOUR_ACCOUNT --deposit 0.1
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near call nft.examples.testnet nft_mint '{"token_id": "my-token-unique-id", "receiver_id": "YOUR_ACCOUNT", "metadata": { "title": "YOUR NFT TITLE", "description": "YOUR NFT DESCRIPTION", "media": "https://bafybeidadhfilezx23dcdaueo3bjuafqeehokw33vyepkjtppigorrhbpy.ipfs.dweb.link/", "copies": 1}}' --accountId YOUR_ACCOUNT --deposit 0.1
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    near contract call-function as-transaction nft.examples.testnet nft_mint json-args '{"token_id": "my-token-unique-id", "receiver_id": "YOUR_ACCOUNT", "metadata": { "title": "YOUR NFT TITLE", "description": "YOUR NFT DESCRIPTION", "media": "https://bafybeidadhfilezx23dcdaueo3bjuafqeehokw33vyepkjtppigorrhbpy.ipfs.dweb.link/", "copies": 1}}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as YOUR_ACCOUNT network-config testnet sign-with-keychain send
+    ```
+  </TabItem>
+</Tabs>
+
 - Be sure to replace the title, description and media URL with your own.
 
 <details>
@@ -169,9 +185,21 @@ near call nft.examples.testnet nft_mint '{"token_id": "my-token-unique-id", "rec
 
 - To view tokens owned by an account on the `example-nft` contract, you can call the contract with the following `near-cli` command:
 
-```bash
-near view nft.examples.testnet nft_tokens_for_owner '{"account_id": "YOUR_ACCOUNT"}'
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near view nft.examples.testnet nft_tokens_for_owner '{"account_id": "YOUR_ACCOUNT"}'
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    near contract call-function as-read-only nft.examples.testnet nft_tokens_for_owner json-args '{"account_id": "YOUR_ACCOUNT"}' network-config testnet now
+    ```
+  </TabItem>
+</Tabs>
 
 <details>
 <summary>Example response: </summary>
@@ -216,9 +244,21 @@ The first thing you'll need to do is view the metadata for the token we've minte
 
 - To get the media link, run the following command:
 
-```bash
-near view nft.examples.testnet nft_tokens_for_owner '{"account_id": "village-schematic.testnet"}'
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near view nft.examples.testnet nft_tokens_for_owner '{"account_id": "village-schematic.testnet"}'
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    near contract call-function as-read-only nft.examples.testnet nft_tokens_for_owner json-args '{"account_id": "village-schematic.testnet"}' network-config testnet now
+    ```
+  </TabItem>
+</Tabs>
 
 <details>
 <summary>Expected response: </summary>

@@ -75,7 +75,6 @@ NEAR is dedicated to providing the best developer experience possible for buildi
 
 | Name      | Description | Repo | Latest Release |
 | ----------- | ----------- | --- |--|
-| near-cli | JS based CLI for interacting w/ NEAR | [near/near-cli](https://github.com/near/near-cli)|[![Latest Release](https://img.shields.io/github/v/release/near/near-cli?label=)](https://github.com/near/near-cli/releases)
 | near-cli-rs| Rust based CLI for interacting w/ NEAR | [near/near-cli-rs](https://github.com/near/near-cli-rs)| [![Latest Release](https://img.shields.io/github/v/release/near/near-cli-rs?label=)](https://github.com/near/near-cli-rs/releases)
 | BOS CLI | CLI for simplifying local development on BOS | [bos-cli-rs/bos-cli-rs](https://github.com/bos-cli-rs/bos-cli-rs) | [![Latest Release](https://img.shields.io/github/v/release/bos-cli-rs/bos-cli-rs?label=)](https://github.com/bos-cli-rs/bos-cli-rs/releases)
 
