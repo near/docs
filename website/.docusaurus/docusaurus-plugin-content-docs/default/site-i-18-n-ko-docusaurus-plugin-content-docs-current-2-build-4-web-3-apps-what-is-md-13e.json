@@ -19,8 +19,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "버그 바운티 프로그램",
-    "permalink": "/ko/build/smart-contracts/security/bounty"
+    "title": "Random Numbers",
+    "permalink": "/ko/build/smart-contracts/security/random"
   },
   "next": {
     "title": "Quickstart ✨",

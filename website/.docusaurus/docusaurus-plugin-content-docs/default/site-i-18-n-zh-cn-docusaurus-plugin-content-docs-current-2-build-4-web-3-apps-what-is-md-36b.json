@@ -19,8 +19,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Bug Bounty Program",
-    "permalink": "/zh-CN/build/smart-contracts/security/bounty"
+    "title": "Random Numbers",
+    "permalink": "/zh-CN/build/smart-contracts/security/random"
   },
   "next": {
     "title": "Quickstart ✨",

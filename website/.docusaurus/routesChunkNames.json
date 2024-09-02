@@ -310,17 +310,17 @@
       "plugin": "c141421f"
     }
   },
-  "/zh-CN/-797": {
+  "/zh-CN/-d9a": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "aba21aa0"
     }
   },
-  "/zh-CN/-167": {
+  "/zh-CN/-b0a": {
     "__comp": "a7bd4aaa",
     "__props": "363b7d6a"
   },
-  "/zh-CN/-5aa": {
+  "/zh-CN/-ee0": {
     "__comp": "a94703ab"
   },
   "/zh-CN/api/rpc/access-keys-c8f": {
@@ -954,10 +954,6 @@
   "/zh-CN/build/smart-contracts/release/upgrade-74c": {
     "__comp": "17896441",
     "content": "5b6eb6ed"
-  },
-  "/zh-CN/build/smart-contracts/security/bounty-18d": {
-    "__comp": "17896441",
-    "content": "ef290c08"
   },
   "/zh-CN/build/smart-contracts/security/callbacks-47a": {
     "__comp": "17896441",

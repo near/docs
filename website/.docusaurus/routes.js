@@ -119,15 +119,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '797'),
+    component: ComponentCreator('/zh-CN/', 'd9a'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '167'),
+        component: ComponentCreator('/zh-CN/', 'b0a'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '5aa'),
+            component: ComponentCreator('/zh-CN/', 'ee0'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -1001,12 +1001,6 @@ export default [
               {
                 path: '/zh-CN/build/smart-contracts/release/upgrade',
                 component: ComponentCreator('/zh-CN/build/smart-contracts/release/upgrade', '74c'),
-                exact: true,
-                sidebar: "build"
-              },
-              {
-                path: '/zh-CN/build/smart-contracts/security/bounty',
-                component: ComponentCreator('/zh-CN/build/smart-contracts/security/bounty', '18d'),
                 exact: true,
                 sidebar: "build"
               },

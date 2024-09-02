@@ -728,11 +728,6 @@
               "sidebar": "build"
             },
             {
-              "id": "build/smart-contracts/security/bounty",
-              "path": "/zh-CN/build/smart-contracts/security/bounty",
-              "sidebar": "build"
-            },
-            {
               "id": "build/smart-contracts/security/callbacks",
               "path": "/zh-CN/build/smart-contracts/security/callbacks",
               "sidebar": "build"
