@@ -26,6 +26,8 @@ const config = {
     fonts: {
       myFont: ['Inter', 'sans-serif'],
     },
+    REACT_APP_PUBLIC_POSTHOG_KEY: process.env.REACT_APP_PUBLIC_POSTHOG_KEY,
+    REACT_APP_PUBLIC_POSTHOG_HOST: process.env.REACT_APP_PUBLIC_POSTHOG_HOST
   },
   themes: ['@saucelabs/theme-github-codeblock', '@docusaurus/theme-mermaid'],
   onBrokenLinks: 'log',
@@ -88,9 +90,9 @@ const config = {
   themeConfig: {
     image: 'docs/assets/welcome-pages/protocol.png',
     announcementBar: {
-      id: 'id-0004',
+      id: 'id-0006',
       content:
-        '📣 <a href="/blog/bos-web-engine-sunset">Pagoda Pauses the B.O.S. Web Engine R&D Project</a> 📣',
+        'New blog post: <a href="/blog/2024-08-13-pagoda-services">Future of Pagoda Services</a>',
       backgroundColor: '#fafbfc',
       textColor: '#333',
       isCloseable: true,
@@ -141,7 +143,7 @@ const config = {
           label: 'Tools',
           position: 'left',
           items: [
-            { label: '🧰 All Tools', to: '/tools/welcome'},
+            { label: '🧰 All Tools', to: '/tools/welcome' },
             {
               type: 'html',
               value: '<hr/> <small class="subtitle"> Essentials </small>',

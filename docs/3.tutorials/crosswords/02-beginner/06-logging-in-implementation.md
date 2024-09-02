@@ -3,7 +3,9 @@ sidebar_position: 6
 sidebar_label: "Access keys and login 2/2"
 title: "Implementing the login button"
 ---
-import {Github} from "@site/src/components/codetabs"
+import {Github} from "@site/src/components/codetabs";
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 import loggingIn from '/docs/assets/crosswords/logging-in.png';
 import explorerTransfer from '/docs/assets/crosswords/chapter-2-explorer-transfer.jpg';
@@ -128,27 +130,70 @@ If you've been following this guide closely, you'll likely just need to start th
 env CONTRACT_NAME=crossword.friend.testnet npm run start
 ```
 
-As a helpful reminder, below has the steps necessary to recreate the subaccount, build the contract, deploy the subaccount, and call methods on the contract:
+As a helpful reminder, below has the steps necessary to recreate the subaccount, build the contract, deploy the subaccount, and call methods on the contract.
+
+Go into the directory containing the Rust smart contract and build it:
 
 ```bash
-# Go into the directory containing the Rust smart contract we've been working on
 cd contract
 
 # Build
 cargo near build
+```
 
-# Create fresh account if you wish, which is good practice
-near account delete-account crossword.friend.testnet beneficiary friend.testnet network-config testnet sign-with-legacy-keychain send
+Create fresh account if you wish, which is good practice:
 
-near account create-account fund-myself crossword.friend.testnet '1 NEAR' autogenerate-new-keypair save-to-legacy-keychain sign-as friend.testnet network-config testnet sign-with-legacy-keychain send
-
-# Deploy
-cargo near deploy crossword.friend.testnet with-init-call new json-args '{"owner_id": "crossword.friend.testnet"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-legacy-keychain send
-
-# Add the crossword puzzle
-near contract call-function as-transaction crossword.friend.testnet new_puzzle json-args '{"solution_hash":"d1a5cf9ad1adefe0528f7d31866cf901e665745ff172b96892693769ad284010","answers":[{"num": 1,"start": {"x": 1,"y": 1},"direction": "Down","length": 5,"clue": "NFT market on NEAR that specializes in cards and comics."},{"num": 2,"start": {"x": 0,"y": 2},"direction": "Across","length": 13,"clue": "You can move assets between NEAR and different chains, including Ethereum, by visiting ______.app"},{"num": 3,"start": {"x": 9,"y": 1},"direction": "Down","length": 8,"clue": "NFT market on NEAR with art, physical items, tickets, and more."},{"num": 4,"start": {"x": 3,"y": 8},"direction": "Across","length": 9,"clue": "The smallest denomination of the native token on NEAR."},{"num": 5,"start": {"x": 5,"y": 8},"direction": "Down","length": 3,"clue": "You typically deploy a smart contract with the NEAR ___ tool."}]}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as crossword.friend.testnet network-config testnet sign-with-legacy-keychain send
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
   
-# Return to the project root and start the React app
+  ```bash
+  # Delete an account
+  near delete-account crossword.friend.testnet friend.testnet --networkId testnet
+  
+  # Create an account again
+  near create-account crossword.friend.testnet --use-account friend.testnet --initial-balance 1 --network-id testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+  
+  ```bash
+  # Delete an account
+  near account delete-account crossword.friend.testnet beneficiary friend.testnet network-config testnet sign-with-keychain send
+
+  # Create an account again
+  near account create-account fund-myself crossword.friend.testnet '1 NEAR' autogenerate-new-keypair save-to-keychain sign-as friend.testnet network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
+</Tabs>
+
+Deploy the contract:
+
+```bash
+cargo near deploy crossword.friend.testnet with-init-call new json-args '{"owner_id": "crossword.friend.testnet"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
+```
+
+Add the crossword puzzle:
+
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+  
+  ```bash
+  near call crossword.friend.testnet new_puzzle '{"solution_hash":"d1a5cf9ad1adefe0528f7d31866cf901e665745ff172b96892693769ad284010","answers":[{"num": 1,"start": {"x": 1,"y": 1},"direction": "Down","length": 5,"clue": "NFT market on NEAR that specializes in cards and comics."},{"num": 2,"start": {"x": 0,"y": 2},"direction": "Across","length": 13,"clue": "You can move assets between NEAR and different chains, including Ethereum, by visiting ______.app"},{"num": 3,"start": {"x": 9,"y": 1},"direction": "Down","length": 8,"clue": "NFT market on NEAR with art, physical items, tickets, and more."},{"num": 4,"start": {"x": 3,"y": 8},"direction": "Across","length": 9,"clue": "The smallest denomination of the native token on NEAR."},{"num": 5,"start": {"x": 5,"y": 8},"direction": "Down","length": 3,"clue": "You typically deploy a smart contract with the NEAR ___ tool."}]}' --gas 100000000000000 --accountId crossword.friend.testnet --networkId testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+  
+  ```bash
+  near contract call-function as-transaction crossword.friend.testnet new_puzzle json-args '{"solution_hash":"d1a5cf9ad1adefe0528f7d31866cf901e665745ff172b96892693769ad284010","answers":[{"num": 1,"start": {"x": 1,"y": 1},"direction": "Down","length": 5,"clue": "NFT market on NEAR that specializes in cards and comics."},{"num": 2,"start": {"x": 0,"y": 2},"direction": "Across","length": 13,"clue": "You can move assets between NEAR and different chains, including Ethereum, by visiting ______.app"},{"num": 3,"start": {"x": 9,"y": 1},"direction": "Down","length": 8,"clue": "NFT market on NEAR with art, physical items, tickets, and more."},{"num": 4,"start": {"x": 3,"y": 8},"direction": "Across","length": 9,"clue": "The smallest denomination of the native token on NEAR."},{"num": 5,"start": {"x": 5,"y": 8},"direction": "Down","length": 3,"clue": "You typically deploy a smart contract with the NEAR ___ tool."}]}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as crossword.friend.testnet network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
+</Tabs>
+
+Return to the project root and start the React app:
+
+```bash
 cd ..
 env CONTRACT_NAME=crossword.friend.testnet npm run start
 ```
@@ -159,9 +204,21 @@ For fun, try interacting with the smart contract using the React frontend and th
 
 Before and after solving the puzzle, run this command:
 
-```bash
-near contract call-function as-read-only crossword.friend.testnet get_puzzle_status json-args '{"solution_hash": "d1a5cf9ad1adefe0528f7d31866cf901e665745ff172b96892693769ad284010"}' network-config testnet now
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+  
+  ```bash
+  near view crossword.friend.testnet get_puzzle_status '{"solution_hash": "d1a5cf9ad1adefe0528f7d31866cf901e665745ff172b96892693769ad284010"}' --networkId testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+  
+  ```bash
+  near contract call-function as-read-only crossword.friend.testnet get_puzzle_status json-args '{"solution_hash": "d1a5cf9ad1adefe0528f7d31866cf901e665745ff172b96892693769ad284010"}' network-config testnet now
+  ```
+  </TabItem>
+</Tabs>
 
 This will return our enum `PuzzleStatus`. Before solving the puzzle it should print:
 

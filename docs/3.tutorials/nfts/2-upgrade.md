@@ -3,7 +3,9 @@ id: upgrade-contract
 title: Upgrading the Contract
 sidebar_label: Upgrade a Contract
 ---
-import {Github} from "@site/src/components/codetabs"
+import {Github} from "@site/src/components/codetabs";
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 In this tutorial, you'll build off the work you previously did to implement the [minting functionality](2-minting.md) on a skeleton smart contract. You got to the point where NFTs could be minted and the wallet correctly picked up on the fact that you owned an NFT. However, it had no way of displaying the tokens since your contract didn't implement the method that the wallet was trying to call.
 
@@ -51,9 +53,21 @@ cargo near deploy $NFT_CONTRACT_ID without-init-call network-config testnet sign
 
 Once the contract has been redeployed, let's test and see if the state migrated correctly by running a simple view function:
 
-```bash
-near contract call-function as-read-only $NFT_CONTRACT_ID nft_metadata json-args {} network-config testnet now
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+  
+  ```bash
+  near view $NFT_CONTRACT_ID nft_metadata '{}' --networkId testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+  
+  ```bash
+  near contract call-function as-read-only $NFT_CONTRACT_ID nft_metadata json-args {} network-config testnet now
+  ```
+  </TabItem>
+</Tabs>
 
 This should return an output similar to the following:
 
@@ -71,9 +85,21 @@ This should return an output similar to the following:
 
 **Go team!** At this point, you can now test and see if the new function you wrote works correctly. Let's query for the list of tokens that you own:
 
-```bash
-near contract call-function as-read-only $NFT_CONTRACT_ID nft_tokens_for_owner json-args '{"account_id": "'$NFT_CONTRACT_ID'", "limit": 5}' network-config testnet now
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+  
+  ```bash
+  near view $NFT_CONTRACT_ID nft_tokens_for_owner '{"account_id": "'$NFT_CONTRACT_ID'", "limit": 5}' --networkId testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+  
+  ```bash
+  near contract call-function as-read-only $NFT_CONTRACT_ID nft_tokens_for_owner json-args '{"account_id": "'$NFT_CONTRACT_ID'", "limit": 5}' network-config testnet now
+  ```
+  </TabItem>
+</Tabs>
 
 <details>
 <summary>Example response: </summary>

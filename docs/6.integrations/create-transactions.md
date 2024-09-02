@@ -78,7 +78,7 @@ const amount = nearAPI.utils.format.parseNearAmount("1.5");
 
 In order to sign transactions you will need to create a "Key Store" that will hold a [full access key](/concepts/protocol/access-keys#full-access-keys) to sign your transactions. There are several ways to accomplish this, but for this example we will use a private key stored in either an `.env` file in your project or an environment variable exported globally.
 
-- If you created the account using [`near-cli`](/tools/near-cli) or ran [`near login`](/tools/near-cli#for-accounts) in your terminal, your private key can be found in a `.json` file located in `/HOME/.near-credentials`.
+- If you created the account using [`near-cli`](../4.tools/cli.md) or ran [`near login`](../4.tools/cli.md#import) in your terminal, your private key can be found in the your machine's keychain.
 - If you created an account using [NEAR Wallet](https://testnet.mynearwallet.com/), your key will be found in your browser's `Local Storage`.
   - In your browser's dev tools... `Application` >> `Storage` >> `Local Storage`
 
@@ -198,7 +198,7 @@ const provider = new nearAPI.providers.JsonRpcProvider(
 
 To sign a transaction to send NEAR Ⓝ, we will need a `FullAccess` key to the sender's account.
 
-- If you created the account using [`near-cli`](/tools/near-cli) or ran [`near login`](/tools/near-cli#for-accounts) in your terminal, your private key can be found in a `.json` file located in `/HOME/.near-credentials`.
+- If you created the account using [`near-cli`](../4.tools/cli) or ran [`near login`](../4.tools/cli#import) in your terminal, your private key can be found in the your machine keychain.
 - If you created an account using [NEAR Wallet](https://testnet.mynearwallet.com/), your key will be found in your browser's `Local Storage`.
   - In your browser's dev tools... `Application` >> `Storage` >> `Local Storage`
 

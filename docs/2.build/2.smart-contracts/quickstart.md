@@ -4,9 +4,9 @@ title: Hello Contract
 sidebar_label: Quickstart ✨
 ---
 
+import {Github} from "@site/src/components/codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {Github} from "@site/src/components/codetabs"
 
 Welcome! [NEAR accounts](../../1.concepts/protocol/account-model.md) can store small apps known as smart contracts. In this quick tutorial, we will guide you in creating your first contract in the NEAR **testnet**!
 
@@ -34,7 +34,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 nvm install latest
 
 # Install NEAR CLI to deploy and interact with the contract
-npm i -g near-cli
+npm install -g near-cli-rs@latest
 ```
 
 </TabItem>
@@ -58,6 +58,10 @@ curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/cargo-near/release
 </TabItem>
 
 </Tabs>
+
+:::note
+Some `near-cli` commands have two versions - a **full** one and a **short** one. If you want to explore all options provided by `near-cli` use [the interactive mode](../../4.tools/cli.md#interactive-mode).
+:::
 
 :::tip Testnet Account
 
@@ -112,7 +116,7 @@ This will generate a project with the following structure:
 ```bash
 ├── src        # contract's code
 │   └── lib.rs 
-├── test       # sandbox testing
+├── tests      # sandbox testing
 │   └── test_basics.rs 
 ├── Cargo.toml # package manager
 ├── README.md
@@ -159,7 +163,7 @@ After finishing this tutorial, check our [contract's anatomy](./anatomy/anatomy.
 
 ---
 
-## Build and Test
+## Test the Contract
 
 Building and testing the contract is as simple as running the `test` command. The contract will be compiled and the tests will be executed.
 
@@ -198,10 +202,10 @@ Testing the contracts within a Sandbox allows you to understand how the contract
 
 ## Create a Testnet Account
 
-Now that you know the contract is passing the tests, let's create a `testnet` account in which to deploy the contract.
+Now that you know the contract is passing the tests, let's create a `testnet` account in which to deploy the contract. [`near-cli`](../../4.tools/cli.md) supports two versions of some commands - full and short one. It's up to you which format you prefer, but full version provides more features.
 
-<Tabs groupId="code-tabs">
-  <TabItem value="js" label="🌐 JavaScript">
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
 
     ```bash
     # Replace <your-account-id.testnet> with a custom name
@@ -217,10 +221,9 @@ Now that you know the contract is passing the tests, let's create a `testnet` ac
     ```
 
     </details>
-
   </TabItem>
 
-  <TabItem value="rust" label="🦀 Rust">
+  <TabItem value="full" label="Full">
 
     ```bash
     # Replace <your-account-id.testnet> with a custom name
@@ -251,21 +254,16 @@ Remember that you can create a named account through any wallet (i.e. [MyNearWal
 
 ---
 
-## Deploy the Contract
+## Build the Contract
 
-Having our account created, we can now build and deploy the contract:
+When you are ready to create a build of the contract run a one-line command depending on your environment.
 
-<Tabs>
-
+<Tabs groupId="cli-tabs">
   <TabItem value="js" label="🌐 JavaScript">
 
   ```bash
   npm run build
-
-  near deploy <created-account> build/release/hello.wasm
   ```
-
-  **Congrats**! your contract now lives in the NEAR testnet network.
 
   </TabItem>
 
@@ -273,11 +271,7 @@ Having our account created, we can now build and deploy the contract:
 
   ```bash
   cargo near build
-
-  near contract deploy <created-account> use-file ./target/wasm32-unknown-unknown/release/<project-name>.wasm without-init-call network-config testnet sign-with-keychain send
   ```
-
-  **Congrats**! your contract now lives in the NEAR testnet network.
 
   :::tip
 
@@ -291,6 +285,37 @@ Having our account created, we can now build and deploy the contract:
 
 ---
 
+## Deploy the Contract
+
+Having our account created, we can now deploy the contract:
+
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near deploy <created-account> build/release/hello.wasm
+  ```
+
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+  ```bash
+  near contract deploy <created-account> use-file ./target/wasm32-unknown-unknown/release/hello.wasm without-init-call network-config testnet sign-with-keychain send
+  ```
+
+  :::tip
+  You can also build the contract with `cargo build --release`. This will compile the contract, but without metadata or the Contract Application Binary Interface (ABI)
+  :::
+
+  </TabItem>
+
+</Tabs>
+
+**Congrats**! your contract now lives in the NEAR testnet network.
+
+---
+
 ## Interacting with the Contract
 
 To interact with your deployed smart contract, you can call its functions through the command line.
@@ -301,26 +326,22 @@ To interact with your deployed smart contract, you can call its functions throug
 
 The `get_greeting` function only reads from the contract's state, and can thus be called for **free**.
 
-<Tabs>
-
-  <TabItem value="js" label="🌐 JavaScript">
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
 
     ```bash
     > near view <created-account> get_greeting
     # "Hello"
     ```
-
   </TabItem>
 
-  <TabItem value="rust" label="🦀 Rust">
+  <TabItem value="full" label="Full">
 
     ```bash
     > near contract call-function as-read-only <created-account> get_greeting json-args {} network-config testnet now
     # "Hello"
     ```
-
   </TabItem>
-
 </Tabs>
 
 <hr class="subsection" />
@@ -329,27 +350,22 @@ The `get_greeting` function only reads from the contract's state, and can thus b
 
 The `set_greeting` method writes on the contract's [storage](./anatomy/storage.md), and thus requires a user to sign a transaction in order to be executed.
 
-<Tabs>
-
-  <TabItem value="js" label="🌐 JavaScript">
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
 
   ```bash
   > near call <created-account> set_greeting '{"greeting": "Hola"}' --accountId <created-account>
   # Log: Saving greeting "Hola"
   ```
-
   </TabItem>
 
-  <TabItem value="rust" label="🦀 Rust">
+  <TabItem value="full" label="Full">
 
     ```bash
     > near contract call-function as-transaction <created-account> set_greeting json-args '{"greeting": "Hola"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as <created-account> network-config testnet sign-with-keychain send
     #Log: Saving greeting "Hola"
     ```
-
-
   </TabItem>
-
 </Tabs>
 
 :::tip

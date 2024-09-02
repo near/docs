@@ -6,7 +6,7 @@ hide_table_of_contents: true
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
+import {CodeTabs, Language, Github} from "@site/src/components/codetabs";
 import {ExplainCode, Block, File} from '@site/src/components/CodeExplainer/code-explainer';
 
 Smart contracts store data in their account's state, which is public on the chain. The storage starts **empty** until a contract is deployed and the state is initialized.
@@ -153,7 +153,7 @@ Make sure to read the [updating a contract](../release/upgrade.md) if you run in
 </Block>
 
 <File language="js" fname="auction"
-    url="https://github.com/near-examples/auction-examples/blob/main/contract-ts/src/contract.ts"
+    url="https://github.com/near-examples/auction-examples/blob/main/contract-ts/01-basic-auction/src/contract.ts"
     start="2" end="51" />
 
 <File language="js" fname="hello"
@@ -161,8 +161,8 @@ Make sure to read the [updating a contract](../release/upgrade.md) if you run in
     start="2" end="18" />
 
 <File language="rust" fname="auction"
-    url="https://github.com/near-examples/auction-examples/blob/main/contract-rs/src/lib.rs"
-    start="2" end="68" />
+    url="https://github.com/near-examples/auction-examples/blob/main/contract-rs/01-basic-auction/src/lib.rs"
+    start="2" end="72" />
 
 <File language="rust" fname="hello"
     url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"

@@ -22,7 +22,7 @@ This Kurtosis NEAR Package contains the following components:
 
 - [Docker](https://docs.docker.com/get-docker/)
 - [Yarn](https://classic.yarnpkg.com/lang/en/docs/install)
-- [NEAR-CLI](/tools/near-cli#setup)
+- [NEAR-CLI](/tools/near-cli#installation)
 - [Kurtosis CLI](https://docs.kurtosis.com/install)
   - Start Kurtosis engine after installation using: `kurtosis engine start`
 
@@ -374,7 +374,7 @@ Because the Wallet will start on the same host and port, and the Wallet stores y
 
 :::
 
-Now that you've created an account, try interacting with it using the local CLI. In order to use this account you will need to "login" with it via CLI which will save a full access key locally for that account. [`near login`](/tools/near-cli#near-login) is the command to perform this action but as you are on `localnet` you will need to replace `near` with `local_near`.
+Now that you've created an account, try interacting with it using the local CLI. In order to use this account you will need to "login" with it via CLI which will save a full access key locally for that account. [`near login`](/tools/near-cli#import) is the command to perform this action but as you are on `localnet` you will need to replace `near` with `local_near`.
 
 ```bash
 local_near login
@@ -505,7 +505,7 @@ We won't spoil what the NFT is, but once you switch over to the collectibles tab
 
 ## Connecting a dApp to `localnet`
 
-The ability to develop decentralized applications locally is a dream come true for dApp developers and the Kurtosis NEAR Package really simplifies this process. Here you'll integrate `localnet` into one of the examples at [near.dev](http://near.dev).
+The ability to develop decentralized applications locally is a dream come true for dApp developers and the Kurtosis NEAR Package really simplifies this process. Here you'll integrate `localnet` into one of the examples from [`near-examples`](https://github.com/near-examples/).
 
 ### Clone Example dApp
 
@@ -622,9 +622,9 @@ Once you've logged in, you can sign a message with an optional donation.
 
 ---
 
-## Managing NEAR Pacakages
+## Managing NEAR Packages
 
-The Kurtosis NEAR Pacakages you create will continue to run on your local machine for as long as your Docker engine is running. This package runs inside of a Kurtosis "enclave" which is an environment isolated from both your computer and other enclaves. In practice, this means that you can have multiple independent local NEAR clusters running on your machine simply by rerunning the script we executed from the [setup instructions](#setup).
+The Kurtosis NEAR Packages you create will continue to run on your local machine for as long as your Docker engine is running. This package runs inside of a Kurtosis "enclave" which is an environment isolated from both your computer and other enclaves. In practice, this means that you can have multiple independent local NEAR clusters running on your machine simply by rerunning the script we executed from the [setup instructions](#setup).
 
 ### View Package Status
 

@@ -88,15 +88,27 @@ const sidebar = {
           ]
         },
         {
-          "Chain Signatures": [
+          "type": "category",
+          "label": "Chain Signatures",
+          "link": {
+            "type": "doc",
+            "id": "build/chain-abstraction/chain-signatures/getting-started"
+          },
+          "items": [
             "concepts/abstraction/chain-signatures",
-            'build/chain-abstraction/chain-signatures',
-            'build/chain-abstraction/nft-chain-keys',
+            'build/chain-abstraction/chain-signatures/chain-signatures',
+            // 'build/chain-abstraction/nft-chain-keys',
           ]
         },
         // 'build/chain-abstraction/wallet',
         {
-          "Multichain Gas Relayer": [
+          "type": "category",
+          "label": "Multichain Gas Relayer",
+          "link": {
+            "type": "doc",
+            "id": "build/chain-abstraction/multichain-gas-relayer/getting-started"
+          },
+          "items": [
             "build/chain-abstraction/multichain-gas-relayer/overview",
             "build/chain-abstraction/multichain-gas-relayer/gas-station",
             "build/chain-abstraction/multichain-gas-relayer/multichain-server",
@@ -207,6 +219,7 @@ const sidebar = {
           link: { type: 'doc', id: 'build/web3-apps/frontend' },
           items: [
             "build/web3-apps/integrate-contracts",
+            "build/web3-apps/chain-hosted-ui",
             {
               "Social Components (BOS)": [
                 "build/near-components/what-is",
@@ -281,7 +294,7 @@ const sidebar = {
         },
         {
           "Lake Framework": [
-            "concepts/advanced/near-lake-framework",  
+            "concepts/advanced/near-lake-framework",
             "build/data-infrastructure/lake-framework/near-lake",
             "build/data-infrastructure/lake-framework/near-lake-state-changes-indexer",
             "build/data-infrastructure/lake-framework/migrating-to-near-lake-framework",
@@ -340,6 +353,7 @@ const sidebar = {
         "tutorials/examples/donation",
         "tutorials/examples/xcc",
         "tutorials/examples/coin-flip",
+        "build/web3-apps/chain-hosted-ui-tutorial",
       ]
     },
     {
@@ -533,11 +547,7 @@ const sidebar = {
       ]
     },
     "tools/sdk",
-    {
-      "type": "category",
-      "label": "Command Line Tools (CLI)",
-      "items": ["tools/near-cli", "tools/near-cli-rs"]
-    },
+    "tools/near-cli",
     {
       "type": "category",
       "label": "BOS Web Editors",

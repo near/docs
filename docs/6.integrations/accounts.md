@@ -4,6 +4,9 @@ title: Accounts
 sidebar_label: Accounts
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 ## Introduction {#introduction}
 
 Please see the [documentation for accounts](/concepts/protocol/account-model) for basic information.
@@ -33,17 +36,43 @@ Below we include examples from the contracts that are likely to be used to perfo
 
 A contract `evgeny.lockup.near` is deployed and we can check its owner by
 
-```bash
-> near view evgeny.lockup.near get_owner_account_id
-View call: evgeny.lockup.near.get_owner_account_id()
-'evgeny.near'
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near view evgeny.lockup.near get_owner_account_id
+  # View call: evgeny.lockup.near.get_owner_account_id()
+  # 'evgeny.near'
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+  ```bash
+  near contract call-function as-read-only evgeny.lockup.near get_owner_account_id json-args '{}' network-config testnet now
+  # View call: evgeny.lockup.near.get_owner_account_id()
+  # 'evgeny.near'
+  ```
+  </TabItem>
+</Tabs>
 
 Now we want to transfer some unlocked tokens (1 NEAR) with the following call
 
-```bash
-near call evgeny.lockup.near transfer '{"amount":"1000000000000000000000000", "receiver_id": "evgeny.near"}' --accountId=evgeny.near
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near call evgeny.lockup.near transfer '{"amount":"1000000000000000000000000", "receiver_id": "evgeny.near"}' --accountId=evgeny.near
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    near contract call-function as-transaction evgeny.lockup.near transfer json-args '{"amount":"1000000000000000000000000", "receiver_id": "evgeny.near"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as evgeny.near network-config testnet sign-with-keychain send
+    ```
+  </TabItem>
+</Tabs>
 
 **Note**: the response below can be obtained by hitting the RPC with the transaction hash and NEAR account like this:
 

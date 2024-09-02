@@ -3,11 +3,13 @@ sidebar_position: 2
 sidebar_label: "Set up Rust and a contract skeleton"
 title: "Set up Rust, get a NEAR testnet account, NEAR CLI, and get a basic smart contract skeleton ready"
 ---
-import {Github} from "@site/src/components/codetabs"
+import {Github} from "@site/src/components/codetabs";
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # Getting started
 
-In this tutorial we'll get a `testnet` account, use [NEAR CLI RS](../../../4.tools/cli-rs.md) to add a key to our computer's file system, and set up the basic skeleton of a Rust smart contract.
+In this tutorial we'll get a `testnet` account, use [NEAR CLI RS](../../../4.tools/cli.md) to add a key to our computer's file system, and set up the basic skeleton of a Rust smart contract.
 
 ## Setting up Rust
 
@@ -51,7 +53,7 @@ When you created your NEAR `testnet` account, a private key was created and plac
 
 We'll want to use a command-line interface (CLI) tool to deploy a contract, but at the moment the private key only exists in the browser. Next we'll _add a new key_ to the testnet account and have this stored locally on our computer as a JSON file. (Yes, you can have multiple keys on your NEAR account, which is quite powerful!)
 
-Let's install [NEAR CLI RS](../../../4.tools/cli-rs.md) using `cargo`. You can also download the pre-compiled version of `near-cli-rs` for your OS from [GitHub's Releases page](https://github.com/near/near-cli-rs/releases/).
+Let's install [NEAR CLI RS](../../../4.tools/cli.md) using `cargo`. You can also download the pre-compiled version of `near-cli-rs` for your OS from [GitHub's Releases page](https://github.com/near/near-cli-rs/releases/).
 
 ```bash
 cargo install near-cli-rs
@@ -67,9 +69,21 @@ to see various commands, which are covered [in detail here](https://github.com/n
 
 We'll start by "logging in" with this command:
 
-```bash
-near account import-account using-web-wallet network-config testnet
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+  
+  ```bash
+  near login
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+  
+  ```bash
+  near account import-account using-web-wallet network-config testnet
+  ```
+  </TabItem>
+</Tabs>
 
 This will bring you to NEAR Wallet again where you can confirm the creation of a **full-access** key. We'll get to full-access and function-call access keys later, just know that for powerful actions like "deploy" we'll need a full-access key. Follow the instructions from the login command to create a key on your hard drive. This will be located in your operating system's home directory in a folder called `.near-credentials`.
 
@@ -79,9 +93,21 @@ When you typed `near login`, NEAR CLI generated a key pair: a private and public
 
 You can see the keys associated with your account by running the following command, replacing `friend.testnet` with your account name:
 
-```
-near account list-keys friend.testnet network-config testnet now
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+  
+  ```bash
+  near list-keys friend.testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+  
+  ```bash
+  near account list-keys friend.testnet network-config testnet now
+  ```
+  </TabItem>
+</Tabs>
 
 ## Start writing Rust!
 

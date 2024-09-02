@@ -6,12 +6,6 @@ sidebar_label: Multichain Gas Station Contract
 
 The [multichain gas station smart contract](https://github.com/near/multichain-gas-station-contract) accepts payments in NEAR tokens in exchange for gas funding on non-NEAR foreign chains. Part of the NEAR Multichain effort, it works in conjunction with the [MPC recovery service](https://github.com/near/mpc-recovery) to generate on-chain signatures.
 
-:::info Alpha stage
-
-The Multichain Relayer solution is currently under development. Users who want to test-drive this solution should keep in mind that the product is in alpha stage, and a code audit is pending.
-
-:::
-
 ## What is it?
 
 This smart contract is a piece of the NEAR Multichain project, which makes NEAR Protocol an effortlessly cross-chain network. This contract accepts EVM transaction request payloads and facilitates the signing, gas funding, and relaying of the signed transactions to their destination chains. It works in conjunction with a few different services, including:
@@ -40,6 +34,8 @@ Once this service and its supporting services are live, the multichain relayer s
 
 There's a premium on the Gas Station in `NEAR` for what the gas will cost on the foreign chain to account for variation in both the exchange rate between transactions, settlement between chains, and to account for variation in gas costs until the transaction is confirmed.
 
+### BSC
+
 This is the formula for calculating the gas fee:
 
 `(gas_limit_of_user_transaction + 21000) * gas_price_of_user_transaction * near_tokens_per_foreign_token * 1.2`
@@ -55,6 +51,8 @@ This is the formula for calculating the gas fee:
 
 Settlement is needed because the Gas Station contract is accumulating NEAR, while the [Paymaster accounts](multichain-server.md#paymaster) on foreign chains are spending native foreign chain gas tokens (`ETH`, `BNB`, `SOL`, etc).
 
+### Manual settlement
+
 Manual Settlement involves several steps:
 
 1. Withdrawing the NEAR held in the gas station contract and swapping for a token that can be bridged.
@@ -66,6 +64,17 @@ Manual Settlement involves several steps:
 3. Sending the native gas tokens to the paymaster accounts on the foreign chains.
    - A swap from the bridged token to the native gas token before sending to the paymaster accounts is necessary if the token that was bridged was not the foreign chain native gas token
 
+### Automated settlement
+
+Automated settlement is available for select partners based on their cross-chain transaction volume.
+When using automated settlement, a Market Maker facilitates the settlement of assets between a partner’s gas station contract and their paymaster accounts on destination chains.
+
+:::info Contact us
+
+If you're interested in using the automated settlement service, please [contact us](https://forms.gle/7z9nKVd4VH3qxbny6) by filling out [this form](https://forms.gle/7z9nKVd4VH3qxbny6).
+
+:::
+
 ## Contract Interactions
 
 :::tip
@@ -74,10 +83,24 @@ You can review the complete smart contract source code in [this GitHub repositor
 
 ### Setup and Administration
 
-1.    Initialize the contract with a call to `new`. The [owner](https://github.com/near/near-sdk-contract-tools/blob/develop/src/owner.rs) is initialized as the predecessor of this transaction. All of the following transactions must be called by the owner.
-2.    Refresh the MPC contract public key by calling `refresh_signer_public_key`.
-3.    Set up foreign chain configurations with `add_foreign_chain`.
-4.    Add paymasters to each foreign chain with `add_paymaster`.
+1. Initialize the contract with a call to `new`. The [owner](https://github.com/near/near-sdk-contract-tools/blob/develop/src/owner.rs) is initialized as the predecessor of this transaction. All of the following transactions must be called by the owner.
+2. Refresh the MPC contract public key by calling `refresh_signer_public_key`.
+3. Set up foreign chain configurations with `add_foreign_chain`.
+   - When performing the function call for `add_foreign_chain`, the chain ID and oracle price ID must be updated appropriately:
+     - Specific chain IDs (e.g. BSC, Base, Optimism, Arbitrum) can be [found here](https://chainlist.org/)
+     - Pyth oracle price fee IDs can be [found here](https://pyth.network/developers/price-feed-ids)
+4. Add paymasters to each foreign chain with `add_paymaster`.
+
+### Price Pusher
+
+In order to get up-to-date information on gas prices for foreign chains, a price pusher service must be run, either on demand or as a `cron` job.
+
+Suggested tools:
+- [Pyth Price Pusher](https://github.com/pyth-network/pyth-crosschain/tree/main/apps/price_pusher): this price pusher supports `BNB` and `ETH`
+
+:::tip
+A separate price pusher should be used for each token.
+:::
 
 ### Usage
 
@@ -92,9 +115,11 @@ Users who wish to get transactions signed and relayed by this contract and its a
    - Repeat `pending_transactions_count` times.
 4. Relay each signed payload to the foreign chain RPC in the order they were requested.
 
-:::tip testnet contract
+:::tip Contract address
 
-If you want to try things out, this smart contract is available on `canhazgas.testnet`.
+If you want to try things out, this smart contract is available on:
+- testnet: `canhazgas.testnet`
+- mainnet: `canhazgas.near`
 
 :::
 
