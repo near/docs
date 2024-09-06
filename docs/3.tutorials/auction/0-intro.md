@@ -1,19 +1,23 @@
 ---
 id: introduction
-title: NEAR Zero to Hero 
+title: A Step-by-Step Guide to Mastering NEAR
 sidebar_label: Introduction
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-In this Zero to Hero series, you'll learn how to build a Web3 application from start to finish on NEAR.
+Welcome! In this guide we will help you navigate NEAR tech stack, so you can build Web3 applications from start to finish in no-time.
 
-We'll start by cloning a simple auction smart contract and slowly add features by introducing new concepts as we go. By the time you finish this tutorial, you will have learned how to use several key primitives and concepts along the way:
+We'll start from a simple auction contract and slowly build on top of it a full Web3 application to carry on-chain auctions.
 
-- Building a smart contract
-- Testing a contract in a realistic environment 
-- Deploying and locking a contract
+By the time you finish this tutorial, you will have learned how to use several key primitives and concepts along the way:
+
+- Building and testing a contract
+- Deploying, updating and locking a contract
+- Creating a frontend to interact with the contract
+- Using an indexing API to keep track of the contract's activity
+- Creating a factory to deploy new contracts
 
 <!-- - Making cross-contract calls
 - Using Non-Fungible Tokens
@@ -22,13 +26,11 @@ We'll start by cloning a simple auction smart contract and slowly add features b
 - Setting up an indexer 
 - Creating a factory contract -->
 
-For this tutorial, you have the option to follow along in JavaScript or Rust.  
-
 ---
 
 ## Prerequisites
 
-Before starting, make sure to set up your development environment.
+Before starting, make sure to set up your development environment! 
 
 <details>
 <summary>Working on Windows?</summary>
@@ -71,59 +73,45 @@ Before starting, make sure to set up your development environment.
 
 </Tabs>
 
+We will be using the tool [NEAR CLI](../../4.tools/cli.md) to interact with the blockchain through the terminal, and you can choose between JavaScript or Rust to write the contract.
+
+
 ---
 
 ## Overview
 
-These are the steps that will bring you from **Zero** to **Hero** in no time! 💪
+This series will touch on different level of the NEAR tech stack. Each section will be independent of the previous one, so feel free to jump into the section that interests you the most.
 
-| Step | Name                                   | Description                                                     |
-|------|----------------------------------------|-----------------------------------------------------------------|
-| 1    | [Basic contract](./1-basic.md)         | Learn the how a basic smart contract is structured          |
-| 2    | [Locking the contract](./2-locking.md) | Learn to create contracts with no access keys                   |
+#### 1. Smart Contract
+1. [The Auction Contract](./1-basic.md): We cover a simple auction smart contract                      
+2. [Updating and Locking a Contract](./2-locking.md): Discover what it means to lock a contract                     
+3. Giving an NFT to the Winner (soon) : Give the highest bidder an NFT to signal their win            
+4. Integrating Fungible Tokens (soon) : Allow people to use fungible tokens to bid (e.g. stable coins)
 
-<!-- | 3    | [Winning an NFT](./3-nft.md)           | Learn about sending NFTs using cross-contract calls             |
-| 4    | [Bidding with FTs](./4-ft.md)          | Learn about sending and receiving FTs                           |
-| 5    | [Create a Frontend](#)                 | Create a frontend to interact with your smart contract          |
-| 6    | [Monitor the Bids](#)                  | Learn how to use an indexer to monitor your contract's activity |
-| 7    | [Factory](#)                           | Create a contract that will create auctions                     | -->
+#### 2. Frontend
+
+1. Creating the frontend : Lets learn how to connect a frontend with your smart contract
+2. Easily query on-chain data : Use open APIs to keep track of the users and their bidding price
+
+#### 3. Factory
+1. Creating a factory: Allow users to easily deploy and initialize their own auction contracts
+
 
 ---
 
 ## Next steps
 
-Ready to start? Let's jump to the [Basic contract](./1-basic.md) and begin your learning journey!
+Ready to start? Let's jump to the [The Auction Contract](./1-basic.md) and begin your learning journey!
 
-If you would like to learn about a specific concept feel free to skip to the relevant section.
+:::note Versioning for this article
 
----
-
-## Versioning 
-
-<Tabs groupId="code-tabs">
-    <TabItem value="js" label="🌐 JavaScript">
-
-        Versioning for this tutorial
-        At the time of this writing, this example works with the following versions:
-
-        - near-cli-rs: `0.12.0`
-        - near-sdk-js: `2.0.0`
-        - near-workspaces-js: `3.5.0`
-        - node: `21.6.1`
+- near-cli: `0.12.0`
+- near-sdk-js: `2.0.0`
+- near-sdk-rs: `5.1.0`
+- near-workspaces-js: `3.5.0`
+- node: `21.6.1`
+- near-workspaces-rs: `0.10.0`
+- rustc: `1.78.0`
+- cargo-near: `0.6.2`
         
-
-    </TabItem>
-    <TabItem value="rust" label="🦀 Rust">
-
-        Versioning for this tutorial
-        At the time of this writing, this example works with the following versions:
-
-        - near-cli-rs: `0.12.0`
-        - near-sdk-rs: `5.1.0`
-        - near-workspaces-rs: `0.10.0`
-        - rustc: `1.78.0`
-        - cargo-near: `0.6.2`
-        
-
-    </TabItem>
-</Tabs>
+:::
