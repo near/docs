@@ -385,10 +385,14 @@ const sidebar = {
     {
       "NEAR 101: Building Web3 Apps": [
         "tutorials/auction/introduction",
-        "tutorials/auction/basic-auction",
-        "tutorials/auction/sandbox-testing",
-        "tutorials/auction/deploy",
-        "tutorials/auction/locking-the-contract",
+        {
+          "Smart Contracts 101": [
+            "tutorials/auction/basic-auction",
+            "tutorials/auction/sandbox-testing",
+            "tutorials/auction/deploy",
+          ]
+        },
+        // "tutorials/auction/locking-the-contract",
         // "tutorials/auction/winning-an-nft",
         // "tutorials/auction/bidding-with-FTs",
       ]
