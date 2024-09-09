@@ -118,4 +118,4 @@ Be extra careful to delete the keys from the correct account as you'll never be 
 
 In this part of the tutorial, we learned how to lock a contract by creating a new method to claim tokens, specify an account on initialization that will claim the tokens and how to delete the contract account's keys with the CLI. 
 
-In the next part (coming soon), we'll add a prize to the auction by introducing a new primitive; spoiler, the primitive is an NFT. We'll look at how to use non-fungible token standards to send NFTs and interact with multiple interacting contracts in sandbox testing.
+In the [next part](./3-nft.md), we'll add a prize to the auction by introducing a new primitive; spoiler, the primitive is an NFT. We'll look at how to use non-fungible token standards to send NFTs and interact with multiple interacting contracts in sandbox testing.

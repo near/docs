@@ -424,4 +424,4 @@ In this section, we learned a lot about fungible tokens: how to send and receive
 
 Taking a further step back we've taken a very simple auction contract and transformed it into a more production contract with thorough testing. To improve the auction we learned how to make a contract more secure by locking it, added a prize by introducing NFTs, and enabled auctioneers to host auctions with FTs.
 
-Up to now, we've just interacted with the contract via the CLI. In the next part, we'll learn the basics of creating frontends for NEAR contracts by creating a simple frontend for our auction contract so users can seamlessly interact with it.
+Up to now, we've just interacted with the contract via the CLI. In the [next part](./5-frontend.md), we'll learn the basics of creating frontends for NEAR contracts by creating a simple frontend for our auction contract so users can seamlessly interact with it.
