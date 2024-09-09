@@ -217,4 +217,4 @@ Once the auction is over (the current time is greater than the end time) the auc
 
 In this part of the tutorial, we have implemented a simple frontend for a NEAR contract. Along the way we have learned how to use the wallet selector to sign the user in and out, how to view the contract’s state, how to sign and send transactions, and use ft_transfer_call from a frontend.
 
-Whilst we can see the highest bid we may want to see the auction's bidding history. Since the contract only stores the most recent bid we need to use an indexer to pull historical data. In the next part of the tutorial, we'll look at using an indexer to query historical data.
+Whilst we can see the highest bid we may want to see the auction's bidding history. Since the contract only stores the most recent bid we need to use an indexer to pull historical data. In the [next part](./6-indexing.md) of the tutorial, we'll look at quering historical data using an API endpoint.
