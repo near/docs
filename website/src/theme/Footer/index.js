@@ -399,7 +399,7 @@ function Footer() {
                   className="footer-menu list-reset mt-5 text-16 md:text-16"
                 >
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://near.org/devhub.near/widget/app" target="_blank" rel="noopener noreferrer">
+                    <a href="https://dev.near.org/devhub.near/widget/app" target="_blank" rel="noopener noreferrer">
                       DevHub
                     </a>
                   </li>

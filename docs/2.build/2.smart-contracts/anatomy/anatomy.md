@@ -23,8 +23,8 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
 
 <Block highlights='{"js": "4-17", "rust":"5-7,20-31"}' fname="hello-near">
 
-    ### Contract's Class / Structure
-    The contract is described through a `Class` / `Struct` :
+    ### Contract's Main Structure
+    The contract is described through a structure:
     - The attributes define which data the contract stores
     - The functions define its public (and private) interface
 
@@ -38,8 +38,9 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
     1. What to fetch from storage when the contract is loaded
     2. What to store when the contract is done executing
     3. The methods that are exposed to the outside world
+    4. If the contract needs to be initialized (we will cover this later)
 
-    **Note:** Only one class can be decorated with the `@NearBindgen` decorator.
+    **Note:** Only one class can be decorated with the `@NearBindgen` decorator
 
 </Block>
 
@@ -86,7 +87,13 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
 
 </Block>
 
-<Block highlights='{"js": "8-10", "rust": "22-24"}' fname="hello-near">
+<Block highlights='{"js": "7-9"}' fname="hello-near">
+
+    Javascript contracts need to further include a `schema` object that defines the contract's state and its types. This object is used by the SDK to correctly serialize and deserialize the contract's state.
+
+</Block>
+
+<Block highlights='{"js": "12-14", "rust": "22-24"}' fname="hello-near">
 
     ### Read Only Functions
     Contract's functions can be read-only, meaning they don't modify the state. Calling them is free for everyone, and does not require to have a NEAR account.
@@ -95,7 +102,7 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
 
 </Block>
 
-<Block highlights='{"js": "13-16", "rust": "27-30"}' fname="hello-near">
+<Block highlights='{"js": "17-20", "rust": "27-30"}' fname="hello-near">
 
     ### State Mutating Functions
     Functions that modify the state or call other contracts are considered state mutating functions. It is necessary to have a NEAR account to call them, as they require a transaction to be sent to the network.
@@ -106,7 +113,7 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
 
 <File language="js" fname="hello-near"
     url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts"
-    start="2" end="18" />
+    start="2" end="32" />
 
 <File language="rust" fname="hello-near"
     url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
