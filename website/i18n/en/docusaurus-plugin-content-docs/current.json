@@ -554,5 +554,13 @@
   "sidebar.build.category.Social Components (BOS)": {
     "message": "Social Components (BOS)",
     "description": "The label for category Social Components (BOS) in sidebar build"
+  },
+  "sidebar.tutorials.category.NEAR 101: Building Web3 Apps": {
+    "message": "NEAR 101: Building Web3 Apps",
+    "description": "The label for category NEAR 101: Building Web3 Apps in sidebar tutorials"
+  },
+  "sidebar.tutorials.category.Smart Contracts 101": {
+    "message": "Smart Contracts 101",
+    "description": "The label for category Smart Contracts 101 in sidebar tutorials"
   }
 }

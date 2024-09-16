@@ -1159,6 +1159,50 @@
               "sidebar": "tools"
             },
             {
+              "id": "tutorials/auction/auction-factory",
+              "path": "/zh-CN/tutorials/auction/auction-factory"
+            },
+            {
+              "id": "tutorials/auction/basic-auction",
+              "path": "/zh-CN/tutorials/auction/basic-auction",
+              "sidebar": "tutorials"
+            },
+            {
+              "id": "tutorials/auction/bidding-with-fts",
+              "path": "/zh-CN/tutorials/auction/bidding-with-fts"
+            },
+            {
+              "id": "tutorials/auction/creating-a-frontend",
+              "path": "/zh-CN/tutorials/auction/creating-a-frontend"
+            },
+            {
+              "id": "tutorials/auction/deploy",
+              "path": "/zh-CN/tutorials/auction/deploy",
+              "sidebar": "tutorials"
+            },
+            {
+              "id": "tutorials/auction/indexing-historical-data",
+              "path": "/zh-CN/tutorials/auction/indexing-historical-data"
+            },
+            {
+              "id": "tutorials/auction/introduction",
+              "path": "/zh-CN/tutorials/auction/introduction",
+              "sidebar": "tutorials"
+            },
+            {
+              "id": "tutorials/auction/locking-the-contract",
+              "path": "/zh-CN/tutorials/auction/locking-the-contract"
+            },
+            {
+              "id": "tutorials/auction/sandbox-testing",
+              "path": "/zh-CN/tutorials/auction/sandbox-testing",
+              "sidebar": "tutorials"
+            },
+            {
+              "id": "tutorials/auction/winning-an-nft",
+              "path": "/zh-CN/tutorials/auction/winning-an-nft"
+            },
+            {
               "id": "tutorials/crosswords/basics/add-functions-call",
               "path": "/zh-CN/tutorials/crosswords/basics/add-functions-call",
               "sidebar": "tutorials"

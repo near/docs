@@ -1,0 +1,22 @@
+{
+  "id": "tutorials/auction/winning-an-nft",
+  "title": "Winning an NFT",
+  "description": "No one will enter an auction if there's nothing to win, so let's add a prize. Why not an NFT? NFTs are uniquely identifiable, easily swappable and their logic comes from an external contract so the prize will exist without the auction contract. Let's get to work!",
+  "source": "@site/../docs/3.tutorials/auction/3-nft.md",
+  "sourceDirName": "3.tutorials/auction",
+  "slug": "/tutorials/auction/winning-an-nft",
+  "permalink": "/zh-CN/tutorials/auction/winning-an-nft",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/auction/3-nft.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Owen",
+  "lastUpdatedAt": 1726498411000,
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "id": "winning-an-nft",
+    "title": "Winning an NFT",
+    "sidebar_label": "Winning an NFT"
+  }
+}

@@ -19,8 +19,8 @@
   },
   "sidebar": "tutorials",
   "previous": {
-    "title": "Onchain Blog",
-    "permalink": "/ko/tutorials/templates/blog"
+    "title": "Deploying to Testnet",
+    "permalink": "/ko/tutorials/auction/deploy"
   },
   "next": {
     "title": "스마트 컨트랙트 상호작용",

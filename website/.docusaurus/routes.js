@@ -119,15 +119,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', 'd9a'),
+    component: ComponentCreator('/zh-CN/', '377'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', 'b0a'),
+        component: ComponentCreator('/zh-CN/', '149'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', 'ee0'),
+            component: ComponentCreator('/zh-CN/', '3aa'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -1515,6 +1515,60 @@ export default [
                 component: ComponentCreator('/zh-CN/tools/welcome', 'a57'),
                 exact: true,
                 sidebar: "tools"
+              },
+              {
+                path: '/zh-CN/tutorials/auction/auction-factory',
+                component: ComponentCreator('/zh-CN/tutorials/auction/auction-factory', 'e3f'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/tutorials/auction/basic-auction',
+                component: ComponentCreator('/zh-CN/tutorials/auction/basic-auction', '3ab'),
+                exact: true,
+                sidebar: "tutorials"
+              },
+              {
+                path: '/zh-CN/tutorials/auction/bidding-with-fts',
+                component: ComponentCreator('/zh-CN/tutorials/auction/bidding-with-fts', 'd92'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/tutorials/auction/creating-a-frontend',
+                component: ComponentCreator('/zh-CN/tutorials/auction/creating-a-frontend', 'f03'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/tutorials/auction/deploy',
+                component: ComponentCreator('/zh-CN/tutorials/auction/deploy', 'ef6'),
+                exact: true,
+                sidebar: "tutorials"
+              },
+              {
+                path: '/zh-CN/tutorials/auction/indexing-historical-data',
+                component: ComponentCreator('/zh-CN/tutorials/auction/indexing-historical-data', '274'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/tutorials/auction/introduction',
+                component: ComponentCreator('/zh-CN/tutorials/auction/introduction', 'c6b'),
+                exact: true,
+                sidebar: "tutorials"
+              },
+              {
+                path: '/zh-CN/tutorials/auction/locking-the-contract',
+                component: ComponentCreator('/zh-CN/tutorials/auction/locking-the-contract', 'ff3'),
+                exact: true
+              },
+              {
+                path: '/zh-CN/tutorials/auction/sandbox-testing',
+                component: ComponentCreator('/zh-CN/tutorials/auction/sandbox-testing', 'c85'),
+                exact: true,
+                sidebar: "tutorials"
+              },
+              {
+                path: '/zh-CN/tutorials/auction/winning-an-nft',
+                component: ComponentCreator('/zh-CN/tutorials/auction/winning-an-nft', '4cf'),
+                exact: true
               },
               {
                 path: '/zh-CN/tutorials/crosswords/basics/add-functions-call',

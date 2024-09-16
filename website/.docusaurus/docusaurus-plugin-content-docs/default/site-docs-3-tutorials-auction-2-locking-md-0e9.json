@@ -1,0 +1,22 @@
+{
+  "id": "tutorials/auction/locking-the-contract",
+  "title": "Locking the contract",
+  "description": "In the basic contract, the auctioneer would claim the tokens from the final bid of the contract via logging into the contract accounts wallet using a key. It is a security issue for there to exist a key for a smart contract since the key holder can take the funds from the contract at any point, maliciously change the contract or just delete the contract as a whole. To stop exploitation we will lock the contract by removing all access keys and implementing a new method to claim the tokens.",
+  "source": "@site/../docs/3.tutorials/auction/2-locking.md",
+  "sourceDirName": "3.tutorials/auction",
+  "slug": "/tutorials/auction/locking-the-contract",
+  "permalink": "/zh-CN/tutorials/auction/locking-the-contract",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/auction/2-locking.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Owen",
+  "lastUpdatedAt": 1726498411000,
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "id": "locking-the-contract",
+    "title": "Locking the contract",
+    "sidebar_label": "Locking the contract"
+  }
+}

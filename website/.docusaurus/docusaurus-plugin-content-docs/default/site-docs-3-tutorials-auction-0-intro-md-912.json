@@ -1,0 +1,31 @@
+{
+  "id": "tutorials/auction/introduction",
+  "title": "A Step-by-Step Guide to Mastering NEAR",
+  "description": "Welcome! In this guide we will help you navigate NEAR tech stack, so you can build Web3 applications from start to finish in no-time.",
+  "source": "@site/../docs/3.tutorials/auction/0-intro.md",
+  "sourceDirName": "3.tutorials/auction",
+  "slug": "/tutorials/auction/introduction",
+  "permalink": "/zh-CN/tutorials/auction/introduction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/auction/0-intro.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Owen",
+  "lastUpdatedAt": 1726498411000,
+  "sidebarPosition": 0,
+  "frontMatter": {
+    "id": "introduction",
+    "title": "A Step-by-Step Guide to Mastering NEAR",
+    "sidebar_label": "Introduction"
+  },
+  "sidebar": "tutorials",
+  "previous": {
+    "title": "Onchain Blog",
+    "permalink": "/zh-CN/tutorials/templates/blog"
+  },
+  "next": {
+    "title": "Basic Auction",
+    "permalink": "/zh-CN/tutorials/auction/basic-auction"
+  }
+}

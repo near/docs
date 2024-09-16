@@ -1,0 +1,22 @@
+{
+  "id": "tutorials/auction/bidding-with-fts",
+  "title": "Bidding with FTs",
+  "description": "To further develop this contract we will introduce another primitive: fungible tokens. Instead of placing bids in $NEAR tokens, they will be placed in FTs. This may be useful if, for example, an auctioneer wants to keep the bid amounts constant in terms of dollars as an auction is carried out, so bids can be placed in stablecoins such as $USDC. Another use case is if a project like Ref Finance was holding its own auction and wanted the auction to happen in its project's token $REF.",
+  "source": "@site/../docs/3.tutorials/auction/4-ft.md",
+  "sourceDirName": "3.tutorials/auction",
+  "slug": "/tutorials/auction/bidding-with-fts",
+  "permalink": "/zh-CN/tutorials/auction/bidding-with-fts",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/auction/4-ft.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Owen",
+  "lastUpdatedAt": 1726498411000,
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "id": "bidding-with-fts",
+    "title": "Bidding with FTs",
+    "sidebar_label": "Bidding with FTs"
+  }
+}

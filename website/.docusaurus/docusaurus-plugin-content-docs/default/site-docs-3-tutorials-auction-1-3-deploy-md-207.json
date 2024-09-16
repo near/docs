@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/auction/deploy",
+  "title": "Deploying to Testnet",
+  "description": "In the previous sections we saw how a simple auction smart contract is implemented, and checked its correctness using sandbox testing.",
+  "source": "@site/../docs/3.tutorials/auction/1.3-deploy.md",
+  "sourceDirName": "3.tutorials/auction",
+  "slug": "/tutorials/auction/deploy",
+  "permalink": "/zh-CN/tutorials/auction/deploy",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/auction/1.3-deploy.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Owen",
+  "lastUpdatedAt": 1726498411000,
+  "frontMatter": {
+    "id": "deploy",
+    "title": "Deploying to Testnet"
+  },
+  "sidebar": "tutorials",
+  "previous": {
+    "title": "Sandbox Testing",
+    "permalink": "/zh-CN/tutorials/auction/sandbox-testing"
+  },
+  "next": {
+    "title": "BOS Loader",
+    "permalink": "/zh-CN/tutorials/near-components/bos-loader"
+  }
+}

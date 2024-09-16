@@ -1,0 +1,22 @@
+{
+  "id": "tutorials/auction/indexing-historical-data",
+  "title": "Indexing historical data",
+  "description": "TODO: change github to main when merged",
+  "source": "@site/../docs/3.tutorials/auction/6-indexing.md",
+  "sourceDirName": "3.tutorials/auction",
+  "slug": "/tutorials/auction/indexing-historical-data",
+  "permalink": "/zh-CN/tutorials/auction/indexing-historical-data",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/auction/6-indexing.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Owen",
+  "lastUpdatedAt": 1726498411000,
+  "sidebarPosition": 6,
+  "frontMatter": {
+    "id": "indexing-historical-data",
+    "title": "Indexing historical data",
+    "sidebar_label": "Indexing historical data"
+  }
+}

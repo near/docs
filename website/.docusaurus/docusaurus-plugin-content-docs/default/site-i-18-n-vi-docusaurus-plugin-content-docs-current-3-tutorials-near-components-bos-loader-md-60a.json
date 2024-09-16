@@ -19,8 +19,8 @@
   },
   "sidebar": "tutorials",
   "previous": {
-    "title": "Onchain Blog",
-    "permalink": "/vi/tutorials/templates/blog"
+    "title": "Deploying to Testnet",
+    "permalink": "/vi/tutorials/auction/deploy"
   },
   "next": {
     "title": "Smart Contract Interaction",
