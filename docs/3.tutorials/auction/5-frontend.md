@@ -62,7 +62,7 @@ For starters, let's take a look at how the code in the frontend is structured by
 
 ## Specifying the contract
 
-We have a config file that specifies the contract name of the auction that the frontend will interact with. The example given is a pre-deployed contract from part 4 of the tutorial. The example contract is set up to accept bids in DAI (dai.fakes.testnet), has an NFT token pre-minted and owned by the contract account, and has an end auction time far in the future. Feel free to change the specified contract to your own auction that you deploy.
+We have a config file that specifies the contract name of the auction that the frontend will interact with. The example given is a pre-deployed contract from [part 4 of the tutorial](4-ft.md). The example contract is set up to accept bids in DAI (dai.fakes.testnet), has an NFT token pre-minted and owned by the contract account, and has an end auction time far in the future. Feel free to change the specified contract to your own auction that you deploy.
 
 <Language value="javascript" language="javascript" showSingleFName={true}>
     <Github fname="config.js"
@@ -74,7 +74,7 @@ We have a config file that specifies the contract name of the auction that the f
 
 ## Setting up wallets
 
-To be able to fully interact with the contract - send bids or claim the auction - you'll need a `wallet` to sign transactions. Wallets securely store your private keys and allow you to sign transactions without exposing your private key to the frontend. The wallet selector is used to allow users to use choose between a selection of wallets.
+To be able to fully interact with the contract - send bids or claim the auction - you'll need a `wallet` to sign transactions. Wallets securely store your private keys and allow you to sign transactions without exposing your private key to the frontend. The wallet selector allows users to choose between a selection of wallets.
 
 We abstract the wallet selector in our `near.js` file by exposing methods to complete various tasks. Feel free to [explore the file](https://github.com/near-examples/auctions-tutorial/blob/main/frontend/src/wallets/near.js) to understand how the wallet selector is implemented. 
 
@@ -121,8 +121,8 @@ We then pass the information about the highest bidder into the `LastBid` compone
 
 <Language value="javascript" language="javascript">
     <Github fname="index.js" 
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontend/src/pages/index.js#L123"
-        start="123" end="123" />
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontend/src/pages/index.js#L129"
+        start="129" end="129" />
     <Github fname="LastBid.jsx" 
         url="https://github.com/near-examples/auctions-tutorial/blob/main/frontend/src/components/LastBid.jsx"
         />
@@ -132,8 +132,8 @@ When we display the latest bid, instead of just showing the bid amount directly 
 
 <Language value="javascript" language="javascript" showSingleFName={true}>
     <Github fname="index.js"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontend/src/pages/index.js#L72-L87"
-        start="72" end="87" />
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontend/src/pages/index.js#L75-L93"
+        start="75" end="93" />
 </Language>
 
 ---
@@ -144,8 +144,8 @@ We want to know the highest bid at all times, someone else could have placed a h
 
 <Language value="javascript" language="javascript" showSingleFName={true}>
     <Github fname="index.js" 
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontend/src/pages/index.js#L38-L51"
-        start="38" end="51" />
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontend/src/pages/index.js#L41-L55"
+        start="41" end="55" />
 </Language>
 ---
 
@@ -155,7 +155,7 @@ The contract stores the end time of the auction in the number of nanoseconds sin
 
 <Language value="javascript" language="javascript" showSingleFName={true}>
     <Github fname="Timer.jsx" 
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontend/src/components/Timer.jsx"
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontend/src/components/Timer.jsx#L11-L35"
         start="11" end="35" />
 </Language>
 ---
@@ -166,8 +166,8 @@ We want to show what NFT is being auctioned. To do this we will call `nft_token`
 
 <Language value="javascript" language="javascript" showSingleFName={true}>
     <Github fname="index.js"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontend/src/pages/index.js#L54-L70"
-        start="54" end="70" />
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontend/src/pages/index.js#L57-L73"
+        start="57" end="73" />
 </Language>
 
 Note that this effect will only run once the `auctionInfo` updates because we first need the NFT contract ID and token ID from `auctionInfo` to make a valid call to `nft_token`.
@@ -190,8 +190,8 @@ To make a bid we call the `ft_transfer_call` method on the FT contract which sub
 
 <Language value="javascript" language="javascript">
     <Github fname="index.js" 
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontend/src/pages/index.js#L99-L109"
-        start="99" end="109" />
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontend/src/pages/index.js#L95-L105"
+        start="95" end="105" />
     <Github fname="near.js" 
         url="https://github.com/near-examples/auctions-tutorial/blob/main/frontend/src/wallets/near.js#L107-L126"
         start="107" end="126"/>
@@ -207,14 +207,14 @@ Once the auction is over (the current time is greater than the end time) the auc
 
 <Language value="javascript" language="javascript" showSingleFName={true}>
     <Github fname="index.js" 
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontend/src/pages/index.js#L111-L118"
-        start="111" end="118" />
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontend/src/pages/index.js#L107-L114"
+        start="107" end="114" />
 </Language>
 
 ---
 
 ## Conclusion
 
-In this part of the tutorial, we have implemented a simple frontend for a NEAR contract. Along the way we have learned how to use the wallet selector to sign the user in and out, how to view the contract’s state, how to sign and send transactions, and use ft_transfer_call from a frontend.
+In this part of the tutorial, we have implemented a simple frontend for a NEAR contract. Along the way, you have learned how to use the wallet selector to sign the user in and out, how to view the contract’s state, how to sign and send transactions, and use `ft_transfer_call` from a frontend.
 
-Whilst we can see the highest bid we may want to see the auction's bidding history. Since the contract only stores the most recent bid we need to use an indexer to pull historical data. In the [next part](./6-indexing.md) of the tutorial, we'll look at quering historical data using an API endpoint.
+While we can see the highest bid, we may want to see the auction's bidding history. Since the contract only stores the most recent bid, we need to use an indexer to pull historical data. In the [next part](./6-indexing.md) of the tutorial, we'll look at querying historical data using an API endpoint.
