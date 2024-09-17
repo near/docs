@@ -94,12 +94,13 @@ This series will touch on different level of the NEAR tech stack. Each section w
 #### 3. Factory
 1. Creating a factory (soon): Allow users to easily deploy and initialize their own auction contracts
 
-
 ---
 
 ## Next steps
 
 Ready to start? Let's jump to the [The Auction Contract](./1-basic.md) and begin your learning journey!
+
+---
 
 :::note Versioning for this article
 
