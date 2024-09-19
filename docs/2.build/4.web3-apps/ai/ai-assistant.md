@@ -3,15 +3,20 @@ id: ai-assistant
 title: AI Assistant
 ---
 
-Welcome! In this guide, you'll discover an AI project built on Near in the form of a chatbot to discover and interact with the Near ecosystem 🚀
+Welcome! In this guide, you'll discover an AI chatbot that can interact with the NEAR ecosystem
 
-A few key features of this AI agent:
-- Answer general questions about Near architecture (powered by realtime search results)
-- Call some Near-related APIs, like the testnet faucet to send tokens to a user that requests it
+This AI agent can:
+
+- Explore and explain what happened in a transaction when given a transaction hash
+- Request tokens from the testnet faucet
 - Mint and send a special NFT though a wallet it controls to a user
-- Understand and summarize what happened in a given transaction hash
+- Answer general questions about the NEAR architecture (powered by realtime search results)
 
-While this is still a Proof of Concept made during the [ETHGlobal Brussels 2024 hackathon](https://ethglobal.com/events/brussels), this quick tutorial will guide you to run the project locally and discover an example of an AI project built around Near!
+:::tip Community Project 
+
+Created by our community member [Reza](https://x.com/RezaRahemtola), this project was one of our AI track winners at the [ETHGlobal Brussels 2024 hackathon](https://ethglobal.com/events/brussels) 
+
+:::
 
 ---
 
@@ -22,8 +27,7 @@ Before starting, make sure you have the following tools installed:
 - [Python >= 3.10](https://www.python.org/downloads/)
 - [NodeJS >= 20](https://nodejs.org/en)
 
-Then we need to run our AI model locally.
-Here we'll be using [llama.cpp](https://github.com/ggerganov/llama.cpp) with [Nous Hermes 2 Pro](https://huggingface.co/NousResearch/Hermes-2-Pro-Llama-3-8B) as the model.
+Then we need to run our AI model locally. Here we'll be using [llama.cpp](https://github.com/ggerganov/llama.cpp) with [Nous Hermes 2 Pro](https://huggingface.co/NousResearch/Hermes-2-Pro-Llama-3-8B) as the model.
 
 Below are the steps to setup it at the time of writing, but please refer to the [llama.cpp](https://github.com/ggerganov/llama.cpp) repository for up to date instructions:
 
@@ -54,17 +58,17 @@ python convert_hf_to_gguf.py <path_to>/Hermes-2-Pro-Llama-3-8B/
 llama-server -m <path_to>/hermes-2-pro-llama-3-8B-DPO-F16.gguf
 ```
 
-Open your browser at http://localhost:8080, if you see an interface similar to this one you are ready to go 🚀
+Open your browser at `http://localhost:8080`, if you see an interface similar to this one you are ready to go 🚀
 ![llama.cpp UI](@site/static/docs/assets/llama-cpp.png)
 
 :::info
-Make sure the `model.api_url` in `ai/config/general` is set to http://localhost:8080/completion to use your model running locally 😉
+Make sure the `model.api_url` in `ai/config/general` is set to `http://localhost:8080/completion` to use your model running locally 😉
 :::
 
 :::tip
 You can use a different model with llama.cpp if you wish!
 Just make sure:
-- It supports [Function calling](https://docs.mistral.ai/capabilities/function_calling)
+- It supports [function calling](https://docs.mistral.ai/capabilities/function_calling)
 - Update the `model.max_prompt_tokens` config according to the context length of the new model
 - Update the ChatML config variables to match those of the new model
 :::
@@ -80,6 +84,8 @@ git clone git@github.com:RezaRahemtola/near-ai-assistant.git
 ```
 
 You'll find 2 folders in it, `ai` and `front`.
+
+<hr class="subsection" />
 
 ### AI
 
@@ -104,6 +110,8 @@ source venv/bin/activate
 python src/main.py
 ```
 
+<hr class="subsection" />
+
 ### Frontend
 
 Now that your AI agent is ready to go, let's quickly launch a basic frontend to interact with it:
@@ -119,23 +127,25 @@ And launch it:
 yarn dev
 ```
 
+----
+
 ## Usage
 
-You can now head to [http://localhost:5173](http://localhost:5173), where you'll find an interface like this one to interact with the AI:
+You can now head to `http://localhost:5173`, where you'll find an interface like this one to interact with the AI:
 ![img](@site/static/docs/assets/ai-assistant.png)
 
 Here are a few example questions you can ask it:
-- What is Near?
-- What are the different transaction actions on Near?
+- What is NEAR?
+- What are the different transaction actions on NEAR?
 - Can I please have an ETHGlobal Brussels NFT sent to me at random.testnet? Thanks
-- I want to start using Near, can you send me some tokens on my testnet address random.testnet?
+- I want to start using NEAR, can you send me some tokens on my testnet address random.testnet?
 - I don't understand what this transaction is doing, can you help me? The transaction hash is `hash` and it was send by someone.testnet.
 
 ---
 
 ## Moving Forward
 
-That's it for the quickstart tutorial. You have now seen an open-source AI agent interacting with Near and controlling a wallet to make transactions.
+That's it for the quickstart tutorial. You have now seen an open-source AI agent interacting with NEAR and controlling a wallet to make transactions.
 
 To better understand how it works, check the [`agent.py` file](https://github.com/RezaRahemtola/near-ai-assistant/blob/main/ai/src/agent/agent.py) and the [Function Calling explanation on HuggingFace](https://huggingface.co/NousResearch/Hermes-2-Pro-Llama-3-8B#prompt-format-for-function-calling).
 
