@@ -141,6 +141,7 @@ const sidebar = {
             "build/smart-contracts/anatomy/environment",
             "build/smart-contracts/anatomy/actions",
             "build/smart-contracts/anatomy/crosscontract",
+            "build/smart-contracts/anatomy/yield-resume",
             "build/smart-contracts/security/checklist",
             {
               "type": "html",
