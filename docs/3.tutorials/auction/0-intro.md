@@ -83,15 +83,17 @@ We will be using the tool [NEAR CLI](../../4.tools/cli.md) to interact with the 
 This series will touch on different level of the NEAR tech stack. Each section will be independent of the previous one, so feel free to jump into the section that interests you the most.
 
 #### 1. Smart Contract
-1. [The Auction Contract](./1-basic.md): We cover a simple auction smart contract                      
-2. [Updating and Locking a Contract](./2-locking.md): Discover what it means to lock a contract                     
-3. Giving an NFT to the Winner (soon) : Give the highest bidder an NFT to signal their win            
-4. Integrating Fungible Tokens (soon) : Allow people to use fungible tokens to bid (e.g. stable coins)
+1. [The Auction Contract](./1.1-basic.md): We cover a simple auction smart contract                      
+2. [Testing the Contract](./1.2-testing.md): Learn how to test your contract in a realistic environment
+3. [Deploying the Contract](./1.3-deploy.md): Deploy your contract to the NEAR blockchain
+4. Updating and Locking a Contract (soon): Discover what it means to lock a contract                     
+5. Giving an NFT to the Winner (soon) : Give the highest bidder an NFT to signal their win            
+6. Integrating Fungible Tokens (soon) : Allow people to use fungible tokens to bid (e.g. stable coins)
 
 #### 2. Frontend
 
-1. Creating the frontend : Lets learn how to connect a frontend with your smart contract
-2. Easily query on-chain data : Use open APIs to keep track of the users and their bidding price
+1. Creating the frontend (soon): Lets learn how to connect a frontend with your smart contract
+2. Easily query on-chain data (soon): Use open APIs to keep track of the users and their bidding price
 
 #### 3. Factory
 1. Creating a factory: Allow users to easily deploy and initialize their own auction contracts
@@ -101,7 +103,7 @@ This series will touch on different level of the NEAR tech stack. Each section w
 
 ## Next steps
 
-Ready to start? Let's jump to the [The Auction Contract](./1-basic.md) and begin your learning journey!
+Ready to start? Let's jump to the [The Auction Contract](./1.1-basic.md) and begin your learning journey!
 
 :::note Versioning for this article
 
