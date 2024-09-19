@@ -1,4 +1,5 @@
 {
   "blogBasePath": "/zh-CN/blog",
-  "blogTitle": "NEAR Docs Blog"
+  "blogTitle": "NEAR Docs Blog",
+  "authorsListPath": "/zh-CN/blog/authors"
 }

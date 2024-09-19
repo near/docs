@@ -1,7 +1,7 @@
 {
   "id": "tutorials/auction/basic-auction",
   "title": "Basic Auction",
-  "description": "In this section, we will analyze a simple auction contract, which allows users to place bids and track the highest bidder. After, we will cover how to test the contract, as well as how to deploy it on the testnet.",
+  "description": "In this section, we will analyze a simple auction contract, which allows users to place bids and track the highest bidder. After, we will cover how to test the contract, as well as how to deploy it on  testnet.",
   "source": "@site/../docs/3.tutorials/auction/1.1-basic.md",
   "sourceDirName": "3.tutorials/auction",
   "slug": "/tutorials/auction/basic-auction",
@@ -12,7 +12,7 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Owen",
-  "lastUpdatedAt": 1726498411000,
+  "lastUpdatedAt": 1726751498000,
   "frontMatter": {
     "id": "basic-auction",
     "title": "Basic Auction"

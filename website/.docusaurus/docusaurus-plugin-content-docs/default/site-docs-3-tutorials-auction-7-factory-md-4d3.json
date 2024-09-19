@@ -1,7 +1,7 @@
 {
   "id": "tutorials/auction/auction-factory",
   "title": "Auction factory",
-  "description": "TODO change code once branch is merged",
+  "description": "Since an auction contract hosts a single auction, each time you would like to host a new auction you will need to deploy a new contract. Rather than finding the compiled WASM file, creating a new account, deploying the contract, and then initializing it each time, you can use a factory contract to do this for you.",
   "source": "@site/../docs/3.tutorials/auction/7-factory.md",
   "sourceDirName": "3.tutorials/auction",
   "slug": "/tutorials/auction/auction-factory",
@@ -12,7 +12,7 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Owen",
-  "lastUpdatedAt": 1726498411000,
+  "lastUpdatedAt": 1726751498000,
   "sidebarPosition": 7,
   "frontMatter": {
     "id": "auction-factory",

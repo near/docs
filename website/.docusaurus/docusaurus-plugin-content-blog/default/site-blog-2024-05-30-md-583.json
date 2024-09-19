@@ -16,7 +16,7 @@
       "permalink": "/blog/tags/updates"
     }
   ],
-  "readingTime": 4.205,
+  "readingTime": 4.415,
   "hasTruncateMarker": true,
   "authors": [
     {
@@ -24,7 +24,8 @@
       "title": "Docs Maintainer",
       "url": "https://github.com/gagdiez",
       "imageURL": "https://github.com/gagdiez.png",
-      "key": "gagdiez"
+      "key": "gagdiez",
+      "page": null
     }
   ],
   "frontMatter": {

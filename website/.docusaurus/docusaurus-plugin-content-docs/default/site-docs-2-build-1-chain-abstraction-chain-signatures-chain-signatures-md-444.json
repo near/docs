@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/1.chain-abstraction/chain-signatures/chain-signatures.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Owen",
-  "lastUpdatedAt": 1724163026000,
+  "lastUpdatedBy": "garikbesson",
+  "lastUpdatedAt": 1726751551000,
   "frontMatter": {
     "id": "chain-signatures",
     "title": "Implementing Chain Signatures"
@@ -23,7 +23,7 @@
     "permalink": "/concepts/abstraction/chain-signatures"
   },
   "next": {
-    "title": "Multichain Gas Relayer: Getting Started Guide",
-    "permalink": "/build/chain-abstraction/multichain-gas-relayer/getting-started"
+    "title": "FastAuth (Email Login)",
+    "permalink": "/build/chain-abstraction/fastauth-sdk"
   }
 }

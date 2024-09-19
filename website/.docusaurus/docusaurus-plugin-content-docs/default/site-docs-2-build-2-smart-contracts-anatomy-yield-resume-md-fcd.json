@@ -1,0 +1,29 @@
+{
+  "id": "build/smart-contracts/anatomy/yield-resume",
+  "title": "Yield and Resume",
+  "description": "NEAR smart contracts can yield execution, until an external service resumes them. In practice, the contract yields a cross-contract call to itself, until an external service executes a function and the contract decides to resume.",
+  "source": "@site/../docs/2.build/2.smart-contracts/anatomy/yield-resume.md",
+  "sourceDirName": "2.build/2.smart-contracts/anatomy",
+  "slug": "/build/smart-contracts/anatomy/yield-resume",
+  "permalink": "/zh-CN/build/smart-contracts/anatomy/yield-resume",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/2.smart-contracts/anatomy/yield-resume.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Guille",
+  "lastUpdatedAt": 1726751147000,
+  "frontMatter": {
+    "id": "yield-resume",
+    "title": "Yield and Resume"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "Cross-Contract Calls",
+    "permalink": "/zh-CN/build/smart-contracts/anatomy/crosscontract"
+  },
+  "next": {
+    "title": "✅ Checklist",
+    "permalink": "/zh-CN/build/smart-contracts/security/checklist"
+  }
+}

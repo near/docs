@@ -91,31 +91,6 @@
               "sidebar": "build"
             },
             {
-              "id": "build/chain-abstraction/multichain-gas-relayer/gas-station",
-              "path": "/zh-CN/build/chain-abstraction/multichain-gas-relayer/gas-station",
-              "sidebar": "build"
-            },
-            {
-              "id": "build/chain-abstraction/multichain-gas-relayer/getting-started",
-              "path": "/zh-CN/build/chain-abstraction/multichain-gas-relayer/getting-started",
-              "sidebar": "build"
-            },
-            {
-              "id": "build/chain-abstraction/multichain-gas-relayer/multichain-server",
-              "path": "/zh-CN/build/chain-abstraction/multichain-gas-relayer/multichain-server",
-              "sidebar": "build"
-            },
-            {
-              "id": "build/chain-abstraction/multichain-gas-relayer/overview",
-              "path": "/zh-CN/build/chain-abstraction/multichain-gas-relayer/overview",
-              "sidebar": "build"
-            },
-            {
-              "id": "build/chain-abstraction/multichain-gas-relayer/relayer-gas-example",
-              "path": "/zh-CN/build/chain-abstraction/multichain-gas-relayer/relayer-gas-example",
-              "sidebar": "build"
-            },
-            {
               "id": "build/chain-abstraction/nft-chain-keys",
               "path": "/zh-CN/build/chain-abstraction/nft-chain-keys"
             },
@@ -705,6 +680,11 @@
             {
               "id": "build/smart-contracts/anatomy/types",
               "path": "/zh-CN/build/smart-contracts/anatomy/types",
+              "sidebar": "build"
+            },
+            {
+              "id": "build/smart-contracts/anatomy/yield-resume",
+              "path": "/zh-CN/build/smart-contracts/anatomy/yield-resume",
               "sidebar": "build"
             },
             {

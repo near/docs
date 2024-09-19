@@ -19,8 +19,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Cross-Contract Calls",
-    "permalink": "/vi/build/smart-contracts/anatomy/crosscontract"
+    "title": "Yield and Resume",
+    "permalink": "/vi/build/smart-contracts/anatomy/yield-resume"
   },
   "next": {
     "title": "Best Practices",

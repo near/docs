@@ -23,7 +23,7 @@
     "permalink": "/ko/concepts/abstraction/chain-signatures"
   },
   "next": {
-    "title": "Multichain Gas Relayer: Getting Started Guide",
-    "permalink": "/ko/build/chain-abstraction/multichain-gas-relayer/getting-started"
+    "title": "FastAuth (Email Login)",
+    "permalink": "/ko/build/chain-abstraction/fastauth-sdk"
   }
 }

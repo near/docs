@@ -19,8 +19,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "교차 컨트랙트 호출",
-    "permalink": "/ko/build/smart-contracts/anatomy/crosscontract"
+    "title": "Yield and Resume",
+    "permalink": "/ko/build/smart-contracts/anatomy/yield-resume"
   },
   "next": {
     "title": "Best Practices",

@@ -23,6 +23,11 @@ export default [
     exact: true
   },
   {
+    path: '/zh-CN/blog/authors',
+    component: ComponentCreator('/zh-CN/blog/authors', 'afa'),
+    exact: true
+  },
+  {
     path: '/zh-CN/blog/bos-web-engine-sunset',
     component: ComponentCreator('/zh-CN/blog/bos-web-engine-sunset', 'bb5'),
     exact: true
@@ -119,15 +124,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '377'),
+    component: ComponentCreator('/zh-CN/', 'e28'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '149'),
+        component: ComponentCreator('/zh-CN/', 'fd2'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '3aa'),
+            component: ComponentCreator('/zh-CN/', '0f5'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -222,36 +227,6 @@ export default [
               {
                 path: '/zh-CN/build/chain-abstraction/meta-transactions',
                 component: ComponentCreator('/zh-CN/build/chain-abstraction/meta-transactions', '90f'),
-                exact: true,
-                sidebar: "build"
-              },
-              {
-                path: '/zh-CN/build/chain-abstraction/multichain-gas-relayer/gas-station',
-                component: ComponentCreator('/zh-CN/build/chain-abstraction/multichain-gas-relayer/gas-station', '076'),
-                exact: true,
-                sidebar: "build"
-              },
-              {
-                path: '/zh-CN/build/chain-abstraction/multichain-gas-relayer/getting-started',
-                component: ComponentCreator('/zh-CN/build/chain-abstraction/multichain-gas-relayer/getting-started', 'a58'),
-                exact: true,
-                sidebar: "build"
-              },
-              {
-                path: '/zh-CN/build/chain-abstraction/multichain-gas-relayer/multichain-server',
-                component: ComponentCreator('/zh-CN/build/chain-abstraction/multichain-gas-relayer/multichain-server', '359'),
-                exact: true,
-                sidebar: "build"
-              },
-              {
-                path: '/zh-CN/build/chain-abstraction/multichain-gas-relayer/overview',
-                component: ComponentCreator('/zh-CN/build/chain-abstraction/multichain-gas-relayer/overview', 'f58'),
-                exact: true,
-                sidebar: "build"
-              },
-              {
-                path: '/zh-CN/build/chain-abstraction/multichain-gas-relayer/relayer-gas-example',
-                component: ComponentCreator('/zh-CN/build/chain-abstraction/multichain-gas-relayer/relayer-gas-example', '4d7'),
                 exact: true,
                 sidebar: "build"
               },
@@ -981,6 +956,12 @@ export default [
                 sidebar: "build"
               },
               {
+                path: '/zh-CN/build/smart-contracts/anatomy/yield-resume',
+                component: ComponentCreator('/zh-CN/build/smart-contracts/anatomy/yield-resume', '6d8'),
+                exact: true,
+                sidebar: "build"
+              },
+              {
                 path: '/zh-CN/build/smart-contracts/quickstart',
                 component: ComponentCreator('/zh-CN/build/smart-contracts/quickstart', '375'),
                 exact: true,
@@ -1518,56 +1499,56 @@ export default [
               },
               {
                 path: '/zh-CN/tutorials/auction/auction-factory',
-                component: ComponentCreator('/zh-CN/tutorials/auction/auction-factory', 'e3f'),
+                component: ComponentCreator('/zh-CN/tutorials/auction/auction-factory', '6fb'),
                 exact: true
               },
               {
                 path: '/zh-CN/tutorials/auction/basic-auction',
-                component: ComponentCreator('/zh-CN/tutorials/auction/basic-auction', '3ab'),
+                component: ComponentCreator('/zh-CN/tutorials/auction/basic-auction', '709'),
                 exact: true,
                 sidebar: "tutorials"
               },
               {
                 path: '/zh-CN/tutorials/auction/bidding-with-fts',
-                component: ComponentCreator('/zh-CN/tutorials/auction/bidding-with-fts', 'd92'),
+                component: ComponentCreator('/zh-CN/tutorials/auction/bidding-with-fts', 'a9a'),
                 exact: true
               },
               {
                 path: '/zh-CN/tutorials/auction/creating-a-frontend',
-                component: ComponentCreator('/zh-CN/tutorials/auction/creating-a-frontend', 'f03'),
+                component: ComponentCreator('/zh-CN/tutorials/auction/creating-a-frontend', '2d1'),
                 exact: true
               },
               {
                 path: '/zh-CN/tutorials/auction/deploy',
-                component: ComponentCreator('/zh-CN/tutorials/auction/deploy', 'ef6'),
+                component: ComponentCreator('/zh-CN/tutorials/auction/deploy', '48f'),
                 exact: true,
                 sidebar: "tutorials"
               },
               {
                 path: '/zh-CN/tutorials/auction/indexing-historical-data',
-                component: ComponentCreator('/zh-CN/tutorials/auction/indexing-historical-data', '274'),
+                component: ComponentCreator('/zh-CN/tutorials/auction/indexing-historical-data', '2df'),
                 exact: true
               },
               {
                 path: '/zh-CN/tutorials/auction/introduction',
-                component: ComponentCreator('/zh-CN/tutorials/auction/introduction', 'c6b'),
+                component: ComponentCreator('/zh-CN/tutorials/auction/introduction', 'db8'),
                 exact: true,
                 sidebar: "tutorials"
               },
               {
                 path: '/zh-CN/tutorials/auction/locking-the-contract',
-                component: ComponentCreator('/zh-CN/tutorials/auction/locking-the-contract', 'ff3'),
+                component: ComponentCreator('/zh-CN/tutorials/auction/locking-the-contract', 'c51'),
                 exact: true
               },
               {
                 path: '/zh-CN/tutorials/auction/sandbox-testing',
-                component: ComponentCreator('/zh-CN/tutorials/auction/sandbox-testing', 'c85'),
+                component: ComponentCreator('/zh-CN/tutorials/auction/sandbox-testing', '3b2'),
                 exact: true,
                 sidebar: "tutorials"
               },
               {
                 path: '/zh-CN/tutorials/auction/winning-an-nft',
-                component: ComponentCreator('/zh-CN/tutorials/auction/winning-an-nft', '4cf'),
+                component: ComponentCreator('/zh-CN/tutorials/auction/winning-an-nft', 'eba'),
                 exact: true
               },
               {

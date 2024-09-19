@@ -22,6 +22,9 @@
   "theme.admonition.warning": "warning",
   "theme.blog.archive.description": "Archive",
   "theme.blog.archive.title": "Archive",
+  "theme.blog.author.pageTitle": "{authorName} - {nPosts}",
+  "theme.blog.authorsList.pageTitle": "Authors",
+  "theme.blog.authorsList.viewAll": "View All Authors",
   "theme.blog.paginator.navAriaLabel": "Blog list page navigation",
   "theme.blog.paginator.newerEntries": "Newer Entries",
   "theme.blog.paginator.olderEntries": "Older Entries",
@@ -40,6 +43,10 @@
   "theme.common.editThisPage": "Edit this page",
   "theme.common.headingLinkTitle": "Direct link to {heading}",
   "theme.common.skipToMainContent": "Skip to main content",
+  "theme.contentVisibility.draftBanner.message": "This page is a draft. It will only be visible in dev and be excluded from the production build.",
+  "theme.contentVisibility.draftBanner.title": "Draft page",
+  "theme.contentVisibility.unlistedBanner.message": "此页面未列出。搜索引擎不会对其索引，只有拥有直接链接的用户才能访问。",
+  "theme.contentVisibility.unlistedBanner.title": "未列出页",
   "theme.docs.DocCard.categoryDescription.plurals": "{count} items",
   "theme.docs.breadcrumbs.home": "Home page",
   "theme.docs.breadcrumbs.navAriaLabel": "Breadcrumbs",
@@ -69,8 +76,6 @@
   "theme.tags.tagsListLabel": "Tags:",
   "theme.tags.tagsPageLink": "View All Tags",
   "theme.tags.tagsPageTitle": "Tags",
-  "theme.unlistedContent.message": "This page is unlisted. Search engines will not index it, and only users having a direct link can access it.",
-  "theme.unlistedContent.title": "Unlisted page",
   "theme.SearchBar.label": "Search",
   "theme.SearchBar.seeAll": "See all {count} results",
   "theme.SearchModal.errorScreen.helpText": "You might want to check your network connection.",
@@ -104,5 +109,7 @@
   "theme.SearchPage.inputLabel": "Search",
   "theme.SearchPage.inputPlaceholder": "Type your search here",
   "theme.SearchPage.noResultsText": "No results were found",
-  "theme.docs.DocCard.categoryDescription": "{count} items"
+  "theme.docs.DocCard.categoryDescription": "{count} items",
+  "theme.unlistedContent.title": "Unlisted page",
+  "theme.unlistedContent.message": "This page is unlisted. Search engines will not index it, and only users having a direct link can access it."
 }

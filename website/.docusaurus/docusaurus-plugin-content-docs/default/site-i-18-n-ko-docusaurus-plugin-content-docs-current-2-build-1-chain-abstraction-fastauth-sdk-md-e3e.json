@@ -20,8 +20,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Relayer + Gas Station",
-    "permalink": "/ko/build/chain-abstraction/multichain-gas-relayer/relayer-gas-example"
+    "title": "Implementing Chain Signatures",
+    "permalink": "/ko/build/chain-abstraction/chain-signatures/"
   },
   "next": {
     "title": "Rollup Data Availability",

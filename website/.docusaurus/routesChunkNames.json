@@ -65,6 +65,17 @@
     },
     "__props": "185e0e38"
   },
+  "/zh-CN/blog/authors-afa": {
+    "__comp": "621db11d",
+    "__context": {
+      "data": {
+        "blogMetadata": "acecf23e"
+      },
+      "plugin": "36994c47"
+    },
+    "sidebar": "814f3328",
+    "__props": "3aaf6095"
+  },
   "/zh-CN/blog/bos-web-engine-sunset-bb5": {
     "__comp": "ccc49370",
     "__context": {
@@ -310,17 +321,17 @@
       "plugin": "c141421f"
     }
   },
-  "/zh-CN/-377": {
+  "/zh-CN/-e28": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "aba21aa0"
     }
   },
-  "/zh-CN/-149": {
+  "/zh-CN/-fd2": {
     "__comp": "a7bd4aaa",
     "__props": "363b7d6a"
   },
-  "/zh-CN/-3aa": {
+  "/zh-CN/-0f5": {
     "__comp": "a94703ab"
   },
   "/zh-CN/api/rpc/access-keys-c8f": {
@@ -386,26 +397,6 @@
   "/zh-CN/build/chain-abstraction/meta-transactions-90f": {
     "__comp": "17896441",
     "content": "8397e9cf"
-  },
-  "/zh-CN/build/chain-abstraction/multichain-gas-relayer/gas-station-076": {
-    "__comp": "17896441",
-    "content": "141af8c8"
-  },
-  "/zh-CN/build/chain-abstraction/multichain-gas-relayer/getting-started-a58": {
-    "__comp": "17896441",
-    "content": "56b2b724"
-  },
-  "/zh-CN/build/chain-abstraction/multichain-gas-relayer/multichain-server-359": {
-    "__comp": "17896441",
-    "content": "98c5f37f"
-  },
-  "/zh-CN/build/chain-abstraction/multichain-gas-relayer/overview-f58": {
-    "__comp": "17896441",
-    "content": "9bcede4e"
-  },
-  "/zh-CN/build/chain-abstraction/multichain-gas-relayer/relayer-gas-example-4d7": {
-    "__comp": "17896441",
-    "content": "9b5a6cd9"
   },
   "/zh-CN/build/chain-abstraction/nft-chain-keys-a0c": {
     "__comp": "17896441",
@@ -939,6 +930,10 @@
     "__comp": "17896441",
     "content": "8c5c9981"
   },
+  "/zh-CN/build/smart-contracts/anatomy/yield-resume-6d8": {
+    "__comp": "17896441",
+    "content": "fcd0e837"
+  },
   "/zh-CN/build/smart-contracts/quickstart-375": {
     "__comp": "17896441",
     "content": "9e8d3d30"
@@ -1299,43 +1294,43 @@
     "__comp": "17896441",
     "content": "03b82f47"
   },
-  "/zh-CN/tutorials/auction/auction-factory-e3f": {
+  "/zh-CN/tutorials/auction/auction-factory-6fb": {
     "__comp": "17896441",
     "content": "4d33cefe"
   },
-  "/zh-CN/tutorials/auction/basic-auction-3ab": {
+  "/zh-CN/tutorials/auction/basic-auction-709": {
     "__comp": "17896441",
     "content": "90e2085b"
   },
-  "/zh-CN/tutorials/auction/bidding-with-fts-d92": {
+  "/zh-CN/tutorials/auction/bidding-with-fts-a9a": {
     "__comp": "17896441",
     "content": "28e90dfe"
   },
-  "/zh-CN/tutorials/auction/creating-a-frontend-f03": {
+  "/zh-CN/tutorials/auction/creating-a-frontend-2d1": {
     "__comp": "17896441",
     "content": "7d0f16bf"
   },
-  "/zh-CN/tutorials/auction/deploy-ef6": {
+  "/zh-CN/tutorials/auction/deploy-48f": {
     "__comp": "17896441",
     "content": "2075eeab"
   },
-  "/zh-CN/tutorials/auction/indexing-historical-data-274": {
+  "/zh-CN/tutorials/auction/indexing-historical-data-2df": {
     "__comp": "17896441",
     "content": "3c594ebc"
   },
-  "/zh-CN/tutorials/auction/introduction-c6b": {
+  "/zh-CN/tutorials/auction/introduction-db8": {
     "__comp": "17896441",
     "content": "91263078"
   },
-  "/zh-CN/tutorials/auction/locking-the-contract-ff3": {
+  "/zh-CN/tutorials/auction/locking-the-contract-c51": {
     "__comp": "17896441",
     "content": "0e914780"
   },
-  "/zh-CN/tutorials/auction/sandbox-testing-c85": {
+  "/zh-CN/tutorials/auction/sandbox-testing-3b2": {
     "__comp": "17896441",
     "content": "c0d1432f"
   },
-  "/zh-CN/tutorials/auction/winning-an-nft-4cf": {
+  "/zh-CN/tutorials/auction/winning-an-nft-eba": {
     "__comp": "17896441",
     "content": "ed92828e"
   },
