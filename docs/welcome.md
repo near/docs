@@ -31,6 +31,17 @@ Imagine a place were you can build Web3 apps with the simplicity of Web2. Imagin
             "FastAuth (Email login)": "/build/chain-abstraction/fastauth-sdk", 
           }}
     />
+    <Card img={require("@site/static/docs/assets/welcome-pages/examples-landing.png").default}
+          title="Web3 Applications"
+          text="Supercharge your App using NEAR"
+          links={{
+            "What are Web3 Applications?": "/build/web3-apps/what-is",
+            "Quickstart ✨": "/build/web3-apps/quickstart",
+            "Create an AI Assistant 🤖✨": "/build/web3-apps/ai/ai-assistant",
+            "Use a Contract in Your Frontend": "/build/web3-apps/integrate-contracts",
+            "Social Components (BOS)": "/build/near-components/what-is",
+          }}
+    />
     <Card img={require("@site/static/docs/assets/welcome-pages/contracts.png").default}
           title="Smart Contracts"
           text="NEAR accounts can host small programs"
@@ -39,16 +50,6 @@ Imagine a place were you can build Web3 apps with the simplicity of Web2. Imagin
             "Quickstart ✨": "/build/smart-contracts/quickstart",
             "Contract's Anatomy": "/build/smart-contracts/anatomy/",
             "Sandbox Testing": "/build/smart-contracts/testing/integration-test"
-          }}
-    />
-    <Card img={require("@site/static/docs/assets/welcome-pages/examples-landing.png").default}
-          title="Web3 Applications"
-          text="Supercharge your App using NEAR"
-          links={{
-            "What are Web3 Applications?": "/build/web3-apps/what-is",
-            "Quickstart ✨": "/build/web3-apps/quickstart",
-            "Contracts on Web Apps": "/build/web3-apps/integrate-contracts",
-            "Social Components (BOS)": "/build/near-components/what-is",
           }}
     />
     <Card img={require("@site/static/docs/assets/welcome-pages/primitives-landing.png").default}

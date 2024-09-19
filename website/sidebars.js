@@ -192,7 +192,7 @@ const sidebar = {
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Web3 Applications </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Web3 Apps (Frontend, AI, ...) </small></b></span>"
     },
     "build/web3-apps/what-is",
     {
@@ -231,6 +231,11 @@ const sidebar = {
             "build/web3-apps/backend/backend-login",
           ]
         },
+        {
+          "Artificial Intelligence (AI)": [
+            "build/web3-apps/ai/ai-assistant",
+          ]
+        }
       ]
     },
     {
