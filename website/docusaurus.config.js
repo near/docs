@@ -90,9 +90,9 @@ const config = {
   themeConfig: {
     image: 'docs/assets/welcome-pages/protocol.png',
     announcementBar: {
-      id: 'id-0006',
+      id: 'id-0007',
       content:
-        'New blog post: <a href="/blog/2024-08-13-pagoda-services">Future of Pagoda Services</a>',
+        '🎉 New Documentation on Smart Contracts: <a href="/build/smart-contracts/anatomy/yield-resume">Yield and Resume</a> 🎉',
       backgroundColor: '#fafbfc',
       textColor: '#333',
       isCloseable: true,
