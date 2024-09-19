@@ -420,7 +420,7 @@ However, this architecture could be deemed less secure since if a bad actor were
 
 ## Conclusion
 
-In this section, we learned a lot about fungible tokens: how to send and receive FTs in a smart contract, and then in sandbox tests how to deploy and initialize an FT contract, how to register a user in an FT contract, and send them some tokens, how to attach FTs to a smart contract call and finally how to view the FT balance of a user. With that, we now have our completed auction smart contract! 
+In this section, you learned a lot about fungible tokens: how to send and receive FTs in a smart contract, and then in sandbox tests how to deploy and initialize an FT contract, how to register a user in an FT contract, and send them some tokens, how to attach FTs to a smart contract call and finally how to view the FT balance of a user. With that, we now have our completed auction smart contract!  
 
 Taking a further step back we've taken a very simple auction contract and transformed it into a more production contract with thorough testing. To improve the auction we learned how to make a contract more secure by locking it, added a prize by introducing NFTs, and enabled auctioneers to host auctions with FTs.
 
