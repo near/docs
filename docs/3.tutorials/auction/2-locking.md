@@ -70,7 +70,7 @@ The `claim` method should only be callable when the auction is over, can only be
 
 If we update our contract then we should update our tests accordingly. For example, the tests will now need to add `auctioneer` to the arguments of `init`.
 
-We will also now also test the `claim` method. The test will check that the `auctioneer` account has received the correct amount of $NEAR tokens.
+We will now also test the `claim` method. The test will check that the `auctioneer` account has received the correct amount of $NEAR tokens.
 
 <Tabs groupId="code-tabs">
 
@@ -98,9 +98,9 @@ Note that the test doesn't check that the auctioneer has exactly 12 $NEAR since 
 
 ## Deploying and locking
 
-Go ahead and test, build and deploy your new contract, as in part 1. Remember to add the "auctioneer" argument when initializing.
+Go ahead and test, build, and deploy your new contract, as in part 1. Remember to add the `auctioneer` argument when initializing.
 
-Now we have the claim method, we can deploy the contract without keys. Later we will introduce a factory contract that deploys auctions to a locked account, but for now, we can manually remove the keys using the CLI to lock the account.
+Now that we have the `claim` method, we can deploy the contract without keys. Later, we will introduce a factory contract that deploys auctions to a locked account, but for now, we can manually remove the keys using the CLI to lock the account.
 
 ```
 near account delete-keys 
@@ -116,6 +116,6 @@ Be extra careful to delete the keys from the correct account as you'll never be 
 
 ## Conclusion
 
-In this part of the tutorial, we learned how to lock a contract by creating a new method to claim tokens, specify an account on initialization that will claim the tokens and how to delete the contract account's keys with the CLI. 
+In this part of the tutorial, you learned how to lock a contract by creating a new method to claim tokens, specify an account on initialization that will claim the tokens, and how to delete the contract account's keys with the CLI. 
 
 In the [next part](./3-nft.md), we'll add a prize to the auction by introducing a new primitive; spoiler, the primitive is an NFT. We'll look at how to use non-fungible token standards to send NFTs and interact with multiple interacting contracts in sandbox testing.
