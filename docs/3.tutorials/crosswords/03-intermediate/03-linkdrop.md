@@ -3,7 +3,9 @@ sidebar_position: 4
 sidebar_label: "Linkdrop contract"
 title: "Introducing the linkdrop contract we can use"
 ---
-import {Github} from "@site/src/components/codetabs"
+import {Github} from "@site/src/components/codetabs";
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 import createMainnetAccount from '/docs/assets/crosswords/create-mainnet-account.png';
 import createTestnetAccount from '/docs/assets/crosswords/create-testnet-wallet-account.png';
@@ -40,9 +42,21 @@ On mainnet, the account `near` also has the linkdrop contract deployed to it.
 
 Using NEAR CLI, a person can create a `mainnet` account by calling the linkdrop contract, like shown below:
 
-```bash
-near contract call-function as-transaction near create_account json-args '{"new_account_id": "aloha.near", "new_public_key": "3cQ...tAT"}' prepaid-gas '300.0 Tgas' attached-deposit '15 NEAR' sign-as mike.near network-config mainnet sign-with-legacy-keychain
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near call near create_account '{"new_account_id": "aloha.near", "new_public_key": "3cQ...tAT"}' --gas 300000000000000 --deposit 15 --accountId mike.near --networkId mainnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    near contract call-function as-transaction near create_account json-args '{"new_account_id": "aloha.near", "new_public_key": "3cQ...tAT"}' prepaid-gas '300.0 Tgas' attached-deposit '15 NEAR' sign-as mike.near network-config mainnet sign-with-keychain
+    ```
+  </TabItem>
+</Tabs>
 
 The above command calls the `create_account` method on the account `near`, and would create `aloha.near` **if it's available**, funding it with 15 Ⓝ.
 

@@ -12,7 +12,7 @@ Please take some time to go through this section, it will help you to keep your 
 ---
 
 ## 🐞 Bug Bounty Program
-NEAR has a [revamped bug bounty program](./bounty.md), use it if you find any security errors in the protocol or mainstream apps.
+NEAR has a [bug bounty program](https://hackenproof.com/company/near/programs) . Please use it if you find any security errors in the protocol, core contracts or web. Hackers - help audit, test, and toughen NEAR up!
 
 ## ✅ Security Checklist
 Make sure to keep your smart contract safe by running through our [security checklist](checklist.md).

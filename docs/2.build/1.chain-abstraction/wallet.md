@@ -10,7 +10,7 @@ You'll also learn how to ensure that a signature on one chain is not used to tak
 
 ### Key derivation
 
-When signing using [chain signatures](./chain-signatures.md) each account has an unlimited number of keys. Each key's public key is derived from the account name and the key extension which is an arbitrary string. 
+When signing using [chain signatures](./chain-signatures/chain-signatures.md) each account has an unlimited number of keys. Each key's public key is derived from the account name and the key extension which is an arbitrary string.
 
 User's keys can be described as follow:
 
@@ -94,7 +94,7 @@ In the following examples, the messages are coming from the user's wallet fronte
 - [Using a personal Bitcoin key](#using-a-personal-bitcoin-key)
 - [Using a personal EVM key to sign a Binance transaction](#using-a-personal-evm-key-to-sign-a-binance-transaction)
 - [Using an untyped domain key](#using-an-untyped-domain-key)
-- [Using another domains Bitcoin key](#using-another-domains-bitcoin-key)
+- [Using another domain's Bitcoin key](#using-another-domains-bitcoin-key)
 
 :::tip
 Wallet developers should follow this user flow format.

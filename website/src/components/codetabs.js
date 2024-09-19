@@ -27,14 +27,14 @@ export function CodeTabs({ children }) {
   );
 }
 
-export function Language({ children, language }) {
+export function Language({ children, language, showSingleFName }) {
   if (!Array.isArray(children)) {
     children = [children];
   }
 
   children = children.map( component => change_language_to(component, language));
 
-  if (children.length == 1) {
+  if (children.length == 1 && !showSingleFName) {
     return (
       <TabItem value={0} label={children[0].props.fname}>
         {children[0]}

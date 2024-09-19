@@ -3,9 +3,9 @@ id: guest-book
 title: Guest Book
 ---
 
+import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 Our Guest Book example is a simple app composed by two main components:
 
@@ -162,34 +162,31 @@ The `integration tests` use a sandbox to create NEAR users and simulate interact
 
 In order to deploy the contract you will need to create a NEAR account.
 
-<Tabs groupId="code-tabs">
-  <TabItem value="js" label="🌐 JavaScript">
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
 
-```bash
-# Optional - create an account
-near create-account <accountId> --useFaucet
-
-# Deploy the contract
-cd contract-ts
-yarn build
-near deploy <accountId> ./build/guestbook.wasm
-```
-
+  ```bash
+  # Create a new account pre-funded by a faucet
+  near create-account <accountId> --useFaucet
+  ```
   </TabItem>
-  <TabItem value="rust" label="🦀 Rust">
 
-```bash
-# Optional - create an account
-near create-account <accountId> --useFaucet
+  <TabItem value="full" label="Full">
 
-# Deploy the contract
-cd contract-rs
-cargo near build
-near deploy <accountId> ./target/wasm32-unknown-unknown/release/guestbook.wasm
-```
-
+  ```bash
+  # Create a new account pre-funded by a faucet
+  near account create-account sponsor-by-faucet-service <my-new-dev-account>.testnet autogenerate-new-keypair save-to-keychain network-config testnet create
+  ```
   </TabItem>
 </Tabs>
+
+Go into the directory containing the smart contract (`cd contract-ts` or `cd contract-rs`), build and deploy it:
+
+```bash
+cargo near build
+
+cargo near deploy <accountId>
+```
 
 :::tip
 To interact with your contract from the [frontend](#frontend), simply replace the variable `CONTRACT_NAME` in the `index.js` file.
@@ -199,21 +196,73 @@ To interact with your contract from the [frontend](#frontend), simply replace th
 
 ### CLI: Interacting with the Contract
 
-To interact with the contract through the console, you can use the following commands
+To interact with the contract through the console, you can use the following commands.
 
-```bash
-# Get messages with optional arguments for pagination
-near view guestbook.near-examples.testnet get_messages --args='{"from_index": "0","limit": "10"}'
+#### Get messages
 
-# Get total number of messages
-near view guestbook.near-examples.testnet total_messages
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
 
-# Add a message
-# Replace <accountId> with your account ID
-# Required a text
-# Optional deposit to make the message premium
-near call guestbook.near-examples.testnet add_message '{"text":"Hello Near"}' --accountId <accountId> --deposit 0.1
-```
+  ```bash
+  near view guestbook.near-examples.testnet get_messages '{"from_index": "0","limit": "10"}'
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+  ```bash
+  near contract call-function as-read-only guestbook.near-examples.testnet get_messages json-args '{"from_index": "0","limit": "10"}' network-config testnet now
+  ```
+  </TabItem>
+</Tabs>
+
+<hr class="subsection" />
+
+#### Get total number of messages
+
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near view guestbook.near-examples.testnet total_messages
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+  ```bash
+  near contract call-function as-read-only guestbook.near-examples.testnet total_messages json-args {} network-config testnet now
+  ```
+  </TabItem>
+</Tabs>
+
+<hr class="subsection" />
+
+#### Add a message
+
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  # Replace <accountId> with your account ID
+  # Required a text
+  # Optional deposit to make the message premium
+  near call guestbook.near-examples.testnet add_message '{"text":"Hello Near"}' --accountId <accountId> --deposit 0.1
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+  ```bash
+  # Replace <accountId> with your account ID
+  # Required a text
+  # Optional deposit to make the message premium
+  near contract call-function as-transaction guestbook.near-examples.testnet add_message json-args '{"text":"Hello Near"}' prepaid-gas '30.0 Tgas' attached-deposit '0.1 NEAR' sign-as <accountId> network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
+</Tabs>
+
+<hr class="subsection" />
 
 :::tip
 If you're using your own account, replace `guestbook.near-examples.testnet` with your `accountId`.

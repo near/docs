@@ -3,7 +3,9 @@ id: enumeration
 title: Enumeration
 sidebar_label: Enumeration
 ---
-import {Github} from "@site/src/components/codetabs"
+import {Github} from "@site/src/components/codetabs";
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 In the previous tutorials, you looked at ways to integrate the minting functionality into a skeleton smart contract. In order to get your NFTs to show in the wallet, you also had to deploy a patch fix that implemented one of the enumeration methods. In this tutorial, you'll expand on and finish the rest of the enumeration methods as per the [standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration).
 
@@ -67,9 +69,21 @@ Once the updated contract has been redeployed, you can test and see if these new
 
 Let's query for a list of non-fungible tokens on the contract. Use the following command to query for the information of up to 50 NFTs starting from the 10th item:
 
-```bash
-near contract call-function as-read-only $NFT_CONTRACT_ID nft_tokens json-args '{"from_index": "10", "limit": 50}' network-config testnet now
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+  
+  ```bash
+  near view $NFT_CONTRACT_ID nft_tokens '{"from_index": "10", "limit": 50}' --networkId testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+  
+  ```bash
+  near contract call-function as-read-only $NFT_CONTRACT_ID nft_tokens json-args '{"from_index": "10", "limit": 50}' network-config testnet now
+  ```
+  </TabItem>
+</Tabs>
 
 This command should return an output similar to the following:
 
@@ -90,9 +104,21 @@ This command should return an output similar to the following:
 
 To get the total supply of NFTs owned by the `goteam.testnet` account, call the `nft_supply_for_owner` function and set the `account_id` parameter:
 
-```bash
-near contract call-function as-read-only $NFT_CONTRACT_ID nft_supply_for_owner json-args '{"account_id": "goteam.testnet"}' network-config testnet now
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+  
+  ```bash
+  near view $NFT_CONTRACT_ID nft_supply_for_owner '{"account_id": "goteam.testnet"}' --networkId testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+  
+  ```bash
+  near contract call-function as-read-only $NFT_CONTRACT_ID nft_supply_for_owner json-args '{"account_id": "goteam.testnet"}' network-config testnet now
+  ```
+  </TabItem>
+</Tabs>
 
 This should return an output similar to the following:
 

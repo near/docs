@@ -88,19 +88,16 @@ const sidebar = {
           ]
         },
         {
-          "Chain Signatures": [
+          "type": "category",
+          "label": "Chain Signatures",
+          "link": {
+            "type": "doc",
+            "id": "build/chain-abstraction/chain-signatures/getting-started"
+          },
+          "items": [
             "concepts/abstraction/chain-signatures",
-            'build/chain-abstraction/chain-signatures',
-            'build/chain-abstraction/nft-chain-keys',
-          ]
-        },
-        // 'build/chain-abstraction/wallet',
-        {
-          "Multichain Gas Relayer": [
-            "build/chain-abstraction/multichain-gas-relayer/overview",
-            "build/chain-abstraction/multichain-gas-relayer/gas-station",
-            "build/chain-abstraction/multichain-gas-relayer/multichain-server",
-            "build/chain-abstraction/multichain-gas-relayer/relayer-gas-example",
+            'build/chain-abstraction/chain-signatures/chain-signatures',
+            // 'build/chain-abstraction/nft-chain-keys',
           ]
         },
         'build/chain-abstraction/fastauth-sdk',
@@ -129,6 +126,7 @@ const sidebar = {
             "build/smart-contracts/anatomy/environment",
             "build/smart-contracts/anatomy/actions",
             "build/smart-contracts/anatomy/crosscontract",
+            "build/smart-contracts/anatomy/yield-resume",
             "build/smart-contracts/security/checklist",
             {
               "type": "html",
@@ -184,7 +182,6 @@ const sidebar = {
               "type": "html",
               "value": "<hr/>"
             },
-            "build/smart-contracts/security/bounty"
           ]
         }
       ]
@@ -207,6 +204,7 @@ const sidebar = {
           link: { type: 'doc', id: 'build/web3-apps/frontend' },
           items: [
             "build/web3-apps/integrate-contracts",
+            "build/web3-apps/chain-hosted-ui",
             {
               "Social Components (BOS)": [
                 "build/near-components/what-is",
@@ -281,7 +279,7 @@ const sidebar = {
         },
         {
           "Lake Framework": [
-            "concepts/advanced/near-lake-framework",  
+            "concepts/advanced/near-lake-framework",
             "build/data-infrastructure/lake-framework/near-lake",
             "build/data-infrastructure/lake-framework/near-lake-state-changes-indexer",
             "build/data-infrastructure/lake-framework/migrating-to-near-lake-framework",
@@ -340,6 +338,7 @@ const sidebar = {
         "tutorials/examples/donation",
         "tutorials/examples/xcc",
         "tutorials/examples/coin-flip",
+        "build/web3-apps/chain-hosted-ui-tutorial",
       ]
     },
     {
@@ -368,6 +367,21 @@ const sidebar = {
     {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Tutorials </small></b></span>"
+    },
+    {
+      "NEAR 101: Building Web3 Apps": [
+        "tutorials/auction/introduction",
+        {
+          "Smart Contracts 101": [
+            "tutorials/auction/basic-auction",
+            "tutorials/auction/sandbox-testing",
+            "tutorials/auction/deploy",
+          ]
+        },
+        // "tutorials/auction/locking-the-contract",
+        // "tutorials/auction/winning-an-nft",
+        // "tutorials/auction/bidding-with-FTs",
+      ]
     },
     {
       "Components": [
@@ -533,11 +547,7 @@ const sidebar = {
       ]
     },
     "tools/sdk",
-    {
-      "type": "category",
-      "label": "Command Line Tools (CLI)",
-      "items": ["tools/near-cli", "tools/near-cli-rs"]
-    },
+    "tools/near-cli",
     {
       "type": "category",
       "label": "BOS Web Editors",

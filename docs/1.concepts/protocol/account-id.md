@@ -3,6 +3,9 @@ id: account-id
 title: Address (Account ID)
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 NEAR accounts are identified by a unique address, which take one of two forms:
 1. [**Implicit addresses**](#implicit-address), which are 64 characters long (e.g. `fb9243ce...`)
 2. [**Named addresses**](#named-address), which are simpler to remember and act as domains (e.g. `alice.near`)
@@ -30,12 +33,12 @@ Implicit accounts always *exist*, and thus do not need to be created. However, i
 The simplest way to obtain a public / private key that represents an account is using the [NEAR CLI](../../4.tools/cli.md)
 
 ```bash
-near generate-key
+near account create-account fund-later use-auto-generation save-to-folder ~/.near-credentials/implicit
 
-# Output
-# Seed phrase: lumber habit sausage used zebra brain border exist meat muscle river hidden
-# Key pair: {"publicKey":"ed25519:AQgnQSR1Mp3v7xrw7egJtu3ibNzoCGwUwnEehypip9od","secretKey":"ed25519:51qTiqybe8ycXwPznA8hz7GJJQ5hyZ45wh2rm5MBBjgZ5XqFjbjta1m41pq9zbRZfWGUGWYJqH4yVhSWoW6pYFkT"}
-# Implicit account: 8bca86065be487de45e795b2c3154fe834d53ffa07e0a44f29e76a2a5f075df8
+# The file "~/.near-credentials/testnet/8bca86065be487de45e795b2c3154fe834d53ffa07e0a44f29e76a2a5f075df8.json" was saved successfully
+
+# Here is your console command if you need to script it or re-run:
+#     near account create-account fund-later use-auto-generation save-to-folder ~/.near-credentials/implicit
 ```
 
 </details>
@@ -63,21 +66,57 @@ Anyone can create a `.near` or `.testnet` account, you just to call the `create_
 
 Named accounts are created by calling the `create_account` method of the network's top-level account - `testnet` on testnet, and `near` on mainnet. 
 
-```bash
-near call testnet create_account '{"new_account_id": "new-acc.testnet", "new_public_key": "ed25519:<data>"}' --deposit 0.00182 --accountId funding-account.testnet
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near call testnet create_account '{"new_account_id": "new-acc.testnet", "new_public_key": "ed25519:<data>"}' --deposit 0.00182 --accountId funding-account.testnet --networkId testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+  ```bash
+  near contract call-function as-transaction testnet create_account json-args '{"new_account_id": "new-acc.testnet", "new_public_key": "ed25519:<data>"}' prepaid-gas '100.0 Tgas' attached-deposit '0.00182 NEAR' sign-as funding-account.testnet network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
+</Tabs>
 
 We abstract this process in the [NEAR CLI](../../4.tools/cli.md) with the following command:
 
-```bash
-near create_account new-acc.testnet --useAccount funding-account.testnet --publicKey ed25519:<data>
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near create-account new-acc.testnet --useAccount funding-account.testnet --publicKey ed25519:<data>
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+  ```bash
+  near account create-account fund-myself new-acc.testnet '1 NEAR' use-manually-provided-public-key ed25519:<data> sign-as funding-account.testnet network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
+</Tabs>
 
 You can use the same command to create sub-accounts of an existing named account:
 
-```bash
-near create_account sub-acc.new-acc.testnet --useAccount new-acc.testnet
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near create-account sub-acc.new-acc.testnet --useAccount new-acc.testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+  ```bash
+  near account create-account fund-myself sub-acc.new-acc.testnet '1 NEAR' autogenerate-new-keypair save-to-keychain sign-as new-acc.testnet network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
+</Tabs>
 
 </details>
 
