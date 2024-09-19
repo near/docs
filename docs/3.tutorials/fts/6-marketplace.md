@@ -3,7 +3,9 @@ id: marketplace
 title: Integrating FT Payments into an NFT Marketplace
 sidebar_label: Adding FTs to a Marketplace
 ---
-import {Github} from "@site/src/components/codetabs"
+import {Github} from "@site/src/components/codetabs";
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 In this tutorial, you'll learn the basics of how an NFT marketplace contract works and how you can modify it to allow for purchasing NFTs using Fungible Tokens. In the previous tutorials, you went through and created a fully fledged FT contract that incorporates all the standards found in the [FT standard](https://nomicon.io/Standards/Tokens/FungibleToken/Core).
 
@@ -212,9 +214,21 @@ nft-contract.testnet
 
 Once that's finished, go ahead and initialize NFT contract by running the following command (FT and marketplace contract were initialized during deploying process above).
 
-```bash
-near call $NFT_CONTRACT new_default_meta '{"owner_id": "'$NFT_CONTRACT'"}' --accountId $NFT_CONTRACT
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near call $NFT_CONTRACT new_default_meta '{"owner_id": "'$NFT_CONTRACT'"}' --accountId $NFT_CONTRACT
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    near contract call-function as-transaction $NFT_CONTRACT new_default_meta json-args '{"owner_id": "'$NFT_CONTRACT'"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as $NFT_CONTRACT network-config testnet sign-with-keychain send
+    ```
+  </TabItem>
+</Tabs>
 
 Let's check if each contract was initialized correctly. You can do this by checking the metadata of the FT and NFT contracts:
 
@@ -254,30 +268,93 @@ seller.ft-contract.testnet
 
 The next thing you'll want to do is mint a token to the seller.
 
-```bash
-near call $NFT_CONTRACT nft_mint '{"token_id": "market-token", "metadata": {"title": "Marketplace Token", "description": "testing out the marketplace", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$SELLER_ID'"}' --accountId $NFT_CONTRACT --amount 0.1
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near call $NFT_CONTRACT nft_mint '{"token_id": "market-token", "metadata": {"title": "Marketplace Token", "description": "testing out the marketplace", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$SELLER_ID'"}' --accountId $NFT_CONTRACT --amount 0.1
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    near contract call-function as-transaction $NFT_CONTRACT nft_mint json-args '{"token_id": "market-token", "metadata": {"title": "Marketplace Token", "description": "testing out the marketplace", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$SELLER_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $NFT_CONTRACT network-config testnet sign-with-keychain send
+    ```
+  </TabItem>
+</Tabs>
+
 Now you'll need to place the token for sale. This requires paying for storage as well as calling the `nft_approve` function.
 
-```bash
-near call $MARKETPLACE_CONTRACT storage_deposit --accountId $SELLER_ID --amount 0.1
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near call $MARKETPLACE_CONTRACT storage_deposit --accountId $SELLER_ID --amount 0.1
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    near contract call-function as-transaction $MARKETPLACE_CONTRACT storage_deposit json-args '{}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $SELLER_ID network-config testnet sign-with-keychain send
+    ```
+  </TabItem>
+</Tabs>
+
 In this case, we'll place the token for sale for `10 gtNEAR`.
-```bash
-near call $NFT_CONTRACT nft_approve '{"token_id": "market-token", "account_id": "'$MARKETPLACE_CONTRACT'", "msg": "{\"sale_conditions\":\"10000000000000000000000000\"}"}' --accountId $SELLER_ID --amount 0.1
-```
+
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near call $NFT_CONTRACT nft_approve '{"token_id": "market-token", "account_id": "'$MARKETPLACE_CONTRACT'", "msg": "{\"sale_conditions\":\"10000000000000000000000000\"}"}' --accountId $SELLER_ID --amount 0.1
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    near contract call-function as-transaction $NFT_CONTRACT nft_approve json-args '{"token_id": "market-token", "account_id": "'$MARKETPLACE_CONTRACT'", "msg": "{\"sale_conditions\":\"10000000000000000000000000\"}"}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $SELLER_ID network-config testnet sign-with-keychain send
+    ```
+  </TabItem>
+</Tabs>
 
 If you now query for the supply of sales again on the marketplace, it should be 1.
 
-```bash
-near view $MARKETPLACE_CONTRACT get_supply_sales
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near view $MARKETPLACE_CONTRACT get_supply_sales
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    near contract call-function as-read-only $MARKETPLACE_CONTRACT get_supply_sales json-args {} network-config testnet now
+    ```
+  </TabItem>
+</Tabs>
 
 In addition, if you query for the sales by the owner ID, it should reflect the `10 gtNEAR` price.
-    
-```bash
-near view $MARKETPLACE_CONTRACT get_sales_by_owner_id '{"account_id": "'$SELLER_ID'"}'
-```
+
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near view $MARKETPLACE_CONTRACT get_sales_by_owner_id '{"account_id": "'$SELLER_ID'"}'
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    near contract call-function as-read-only $MARKETPLACE_CONTRACT get_sales_by_owner_id json-args '{"account_id": "'$SELLER_ID'"}' network-config testnet now
+    ```
+  </TabItem>
+</Tabs>
 
 Expected output:
 
@@ -299,29 +376,79 @@ Expected output:
 
 Now that you have an NFT up for sale for `10 gtNEAR` on the marketplace contract, the buyer needs to deposit some FTs. The first thing you need to do is register both the marketplace contract and the buyer on the FT contract otherwise you won't be able to transfer any FTs.
 
-```bash
-near call $FT_CONTRACT storage_deposit '{"account_id": "'$MARKETPLACE_CONTRACT'"}' --accountId $FT_CONTRACT --amount 0.1
-```
-```bash
-near call $FT_CONTRACT storage_deposit '{"account_id": "'$BUYER_ID'"}' --accountId $FT_CONTRACT --amount 0.1
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near call $FT_CONTRACT storage_deposit '{"account_id": "'$MARKETPLACE_CONTRACT'"}' --accountId $FT_CONTRACT --amount 0.1
+
+  near call $FT_CONTRACT storage_deposit '{"account_id": "'$BUYER_ID'"}' --accountId $FT_CONTRACT --amount 0.1
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    near contract call-function as-transaction $FT_CONTRACT storage_deposit json-args '{"account_id": "'$MARKETPLACE_CONTRACT'"}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $FT_CONTRACT network-config testnet sign-with-keychain send
+
+    near contract call-function as-transaction $FT_CONTRACT storage_deposit json-args '{"account_id": "'$BUYER_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $FT_CONTRACT network-config testnet sign-with-keychain send
+    ```
+  </TabItem>
+</Tabs>
+
 After this, you should transfer the buyer some FTs so that they can deposit at least `10 gtNEAR`. Lets start with 50 `gtNEAR`. Run the following command to send the buyer FTs on behalf of the FT contract owner.
 
-```bash
-near call $FT_CONTRACT ft_transfer '{"receiver_id": "'$BUYER_ID'", "amount": "50000000000000000000000000", "memo": "Go Team!"}' --accountId $FT_CONTRACT --depositYocto 1
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near call $FT_CONTRACT ft_transfer '{"receiver_id": "'$BUYER_ID'", "amount": "50000000000000000000000000", "memo": "Go Team!"}' --accountId $FT_CONTRACT --depositYocto 1
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    near contract call-function as-transaction $FT_CONTRACT ft_transfer json-args '{"receiver_id": "'$BUYER_ID'", "amount": "50000000000000000000000000", "memo": "Go Team!"}' prepaid-gas '100.0 Tgas' attached-deposit '1 yoctoNEAR' sign-as $FT_CONTRACT network-config testnet sign-with-keychain send
+    ```
+  </TabItem>
+</Tabs>
 
 You'll now need to deposit those tokens into the marketplace contract.
 
-```bash
-near call $FT_CONTRACT ft_transfer_call '{"receiver_id": "'$MARKETPLACE_CONTRACT'", "amount": "50000000000000000000000000", "msg": "Wooooooo!"}' --accountId $BUYER_ID --depositYocto 1 --gas 200000000000000
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near call $FT_CONTRACT ft_transfer_call '{"receiver_id": "'$MARKETPLACE_CONTRACT'", "amount": "50000000000000000000000000", "msg": "Wooooooo!"}' --accountId $BUYER_ID --depositYocto 1 --gas 200000000000000
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    near contract call-function as-transaction $FT_CONTRACT ft_transfer_call json-args '{"receiver_id": "'$MARKETPLACE_CONTRACT'", "amount": "50000000000000000000000000", "msg": "Wooooooo!"}' prepaid-gas '200.0 Tgas' attached-deposit '1 yoctoNEAR' sign-as $BUYER_ID network-config testnet sign-with-keychain send
+    ```
+  </TabItem>
+</Tabs>
 
 If you now query for your balance on the marketplace contract, it should be `50 gtNEAR`.
 
-```bash
-near view $MARKETPLACE_CONTRACT ft_deposits_of '{"account_id": "'$BUYER_ID'"}'
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near view $MARKETPLACE_CONTRACT ft_deposits_of '{"account_id": "'$BUYER_ID'"}'
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    near contract call-function as-read-only $MARKETPLACE_CONTRACT ft_deposits_of json-args '{"account_id": "'$BUYER_ID'"}' network-config testnet now
+    ```
+  </TabItem>
+</Tabs>
 
 <hr className="subsection" />
 
@@ -334,15 +461,39 @@ Now that the buyer has deposited FTs into the marketplace and the token is up fo
 
 There is one thing we're forgetting, however. We need to make sure that the seller is registered on the FT contract so let's go ahead and do that now.
 
-```bash
-near call $FT_CONTRACT storage_deposit '{"account_id": "'$SELLER_ID'"}' --accountId $FT_CONTRACT --amount 0.1
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near call $FT_CONTRACT storage_deposit '{"account_id": "'$SELLER_ID'"}' --accountId $FT_CONTRACT --amount 0.1
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    near contract call-function as-transaction $FT_CONTRACT storage_deposit json-args '{"account_id": "'$SELLER_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $FT_CONTRACT network-config testnet sign-with-keychain send
+    ```
+  </TabItem>
+</Tabs>
 
 Now let's make an offer!
 
-```bash
-near call $MARKETPLACE_CONTRACT offer '{"nft_contract_id": "'$NFT_CONTRACT'", "token_id": "market-token", "amount": "20000000000000000000000000"}' --accountId $BUYER_ID --depositYocto 1 --gas 300000000000000
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near call $MARKETPLACE_CONTRACT offer '{"nft_contract_id": "'$NFT_CONTRACT'", "token_id": "market-token", "amount": "20000000000000000000000000"}' --accountId $BUYER_ID --depositYocto 1 --gas 300000000000000
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    near contract call-function as-transaction $MARKETPLACE_CONTRACT offer json-args '{"nft_contract_id": "'$NFT_CONTRACT'", "token_id": "market-token", "amount": "20000000000000000000000000"}' prepaid-gas '300.0 Tgas' attached-deposit '1 yoctoNEAR' sign-as $BUYER_ID network-config testnet sign-with-keychain send
+    ```
+  </TabItem>
+</Tabs>
 
 If everything went well, you should see 2 events in your terminal. One event is the NFT transfer coming from the NFT contract when the token was transferred from the seller to the buyer. The other event is the FT transfer for when the seller receives their fungible tokens.
 
@@ -355,21 +506,57 @@ Log [dev-1660831638497-73655245450834]: EVENT_JSON:{"standard":"nep141","version
 
 Let's call some view methods to double check if everything went well. First let's check if the seller now has `20 gtNEAR`.
 
-```bash
-near view $FT_CONTRACT ft_balance_of '{"account_id": "'$SELLER_ID'"}'
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near view $FT_CONTRACT ft_balance_of '{"account_id": "'$SELLER_ID'"}'
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    near contract call-function as-read-only $FT_CONTRACT ft_balance_of json-args '{"account_id": "'$SELLER_ID'"}' network-config testnet now
+    ```
+  </TabItem>
+</Tabs>
 
 Next, let's check if the buyer has `30 gtNEAR` left to withdraw.
 
-```bash
-near view $MARKETPLACE_CONTRACT ft_deposits_of '{"account_id": "'$BUYER_ID'"}'
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near view $MARKETPLACE_CONTRACT ft_deposits_of '{"account_id": "'$BUYER_ID'"}'
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    near contract call-function as-read-only $MARKETPLACE_CONTRACT ft_deposits_of json-args '{"account_id": "'$BUYER_ID'"}' network-config testnet now
+    ```
+  </TabItem>
+</Tabs>
 
 Finally, let's check if the NFT is now owned by the buyer.
 
-```bash
-near view $NFT_CONTRACT nft_token '{"token_id": "market-token"}'
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near view $NFT_CONTRACT nft_token '{"token_id": "market-token"}'
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    near contract call-function as-read-only $NFT_CONTRACT nft_token json-args '{"token_id": "market-token"}' network-config testnet now
+    ```
+  </TabItem>
+</Tabs>
 
 <hr className="subsection" />
 
@@ -377,15 +564,39 @@ near view $NFT_CONTRACT nft_token '{"token_id": "market-token"}'
 
 Now that the buyer purchased the NFT with `20 gtNEAR`, they should have `30 gtNEAR` left to withdraw. If they withdraw the tokens, they should be left with a balance of `30 gtNEAR` on the FT contract.
 
-```bash
-near call $MARKETPLACE_CONTRACT ft_withdraw '{"amount": "30000000000000000000000000"}' --accountId $BUYER_ID --depositYocto 1 --gas 300000000000000
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near call $MARKETPLACE_CONTRACT ft_withdraw '{"amount": "30000000000000000000000000"}' --accountId $BUYER_ID --depositYocto 1 --gas 300000000000000
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    near contract call-function as-transaction $MARKETPLACE_CONTRACT ft_withdraw json-args '{"amount": "30000000000000000000000000"}' prepaid-gas '300.0 Tgas' attached-deposit '1 yoctoNEAR' sign-as $BUYER_ID network-config testnet sign-with-keychain send
+    ```
+  </TabItem>
+</Tabs>
 
 If you now query for the buyer's balance, it should be `30 gtNEAR`.
 
-```bash
-near view $FT_CONTRACT ft_balance_of '{"account_id": "'$BUYER_ID'"}'
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near view $FT_CONTRACT ft_balance_of '{"account_id": "'$BUYER_ID'"}'
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    near contract call-function as-read-only $FT_CONTRACT ft_balance_of json-args '{"account_id": "'$BUYER_ID'"}' network-config testnet now
+    ```
+  </TabItem>
+</Tabs>
 
 And just like that you're finished! You went through and put an NFT up for sale and purchased it using fungible tokens! **Go team 🚀**
 

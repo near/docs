@@ -3,7 +3,9 @@ id: circulating-supply
 title: Creating a Circulating Supply
 sidebar_label: Circulating Supply
 ---
-import {Github} from "@site/src/components/codetabs"
+import {Github} from "@site/src/components/codetabs";
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 In the previous tutorial, you looked at what a fungible token was and how you could define one in your smart contract. In this tutorial, you'll learn how to create a circulating supply belonging to the contract owner and view all the tokens, with their metadata, in the NEAR wallet.
 
@@ -229,9 +231,21 @@ Since the current contract you have is already initialized, let's create a sub-a
 
 Run the following command to create a sub-account `events` of your main account with an initial balance of 3 NEAR which will be transferred from the original to your new account.
 
-```bash
-near account create-account fund-myself events.$FT_CONTRACT_ID '3 NEAR' autogenerate-new-keypair save-to-legacy-keychain sign-as $FT_CONTRACT_ID network-config testnet sign-with-legacy-keychain send
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+  
+  ```bash
+  near create-account events.$FT_CONTRACT_ID --use-account $FT_CONTRACT_ID --initial-balance 3 --network-id testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+  
+  ```bash
+  near account create-account fund-myself events.$FT_CONTRACT_ID '3 NEAR' autogenerate-new-keypair save-to-keychain sign-as $FT_CONTRACT_ID network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
+</Tabs>
 
 Next, you'll want to export an environment variable for ease of development:
 
@@ -281,9 +295,21 @@ You can see that the event was properly logged!
 
 You can now test if your view functions work properly. First, try to query for the total supply.
 
-```bash
-near contract call-function as-read-only $EVENTS_FT_CONTRACT_ID ft_total_supply json-args {} network-config testnet now
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+  
+  ```bash
+  near view $EVENTS_FT_CONTRACT_ID ft_total_supply '{}' --networkId testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+  
+  ```bash
+  near contract call-function as-read-only $EVENTS_FT_CONTRACT_ID ft_total_supply json-args {} network-config testnet now
+  ```
+  </TabItem>
+</Tabs>
 
 This should return an output similar to the following:
 
@@ -293,9 +319,22 @@ This should return an output similar to the following:
 
 Hurray! Now you can check if the balance of the owner account works properly. If you call the following function, it should return the same number as the total supply.
 
-```bash
-near contract call-function as-read-only $EVENTS_FT_CONTRACT_ID ft_balance_of json-args '{"account_id": "'$EVENTS_FT_CONTRACT_ID'"}' network-config testnet now
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+  
+  ```bash
+  near view $EVENTS_FT_CONTRACT_ID ft_balance_of '{"account_id": "'$EVENTS_FT_CONTRACT_ID'"}' --networkId testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+  
+  ```bash
+  near contract call-function as-read-only $EVENTS_FT_CONTRACT_ID ft_balance_of json-args '{"account_id": "'$EVENTS_FT_CONTRACT_ID'"}' network-config testnet now
+  ```
+  </TabItem>
+</Tabs>
+
 
 Returns:
 
@@ -305,9 +344,21 @@ Returns:
 
 If you query for the balance of some other account, it should return `0`.
 
-```bash
-near contract call-function as-read-only $EVENTS_FT_CONTRACT_ID ft_balance_of json-args '{"account_id": "benjiman.testnet"}' network-config testnet now
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+  
+  ```bash
+  near view $EVENTS_FT_CONTRACT_ID ft_balance_of '{"account_id": "benjiman.testnet"}' --networkId testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+  
+  ```bash
+  near contract call-function as-read-only $EVENTS_FT_CONTRACT_ID ft_balance_of json-args '{"account_id": "benjiman.testnet"}' network-config testnet now
+  ```
+  </TabItem>
+</Tabs>
 
 ---
 

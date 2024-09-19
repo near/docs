@@ -3,9 +3,9 @@ id: serialization-protocols
 title: Serialization Protocols
 ---
 
+import {Github} from "@site/src/components/codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {Github} from "@site/src/components/codetabs";
 
 Serialization formats within the SDK define how data structures are translated into bytes which are needed for passing data into methods of the smart contract or storing data in state. For the case of method parameters, [JSON](https://www.json.org/json-en.html) (default) and [Borsh](https://borsh.io/) are supported with the SDK and for storing data on-chain Borsh is used.
 
@@ -54,14 +54,14 @@ Note that this is using this simple struct:
 
 To call this with NEAR CLI, use a command similar to this:
 
-<Tabs className="language-tabs" groupId="code-tabs">
-<TabItem value="near-cli">
+<Tabs groupId="cli-tabs">
+<TabItem value="short" label="Short">
 
 ```bash
 near call rust-status-message.demo.testnet set_status_borsh --base64 'DAAAAEFsb2hhIGhvbnVhIQ==' --accountId demo.testnet
 ```
 </TabItem>
-<TabItem value="near-cli-rs">
+<TabItem value="full" label="Full">
 
 ```bash
 near contract call-function as-transaction rust-status-message.demo.testnet set_status_borsh base64-args 'DAAAAEFsb2hhIGhvbnVhIQ==' prepaid-gas '30 TeraGas' attached-deposit '0 NEAR' sign-as demo.testnet network-config testnet sign-with-keychain send

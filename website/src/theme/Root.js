@@ -6,15 +6,17 @@ import Gleap from "gleap"; // See https://gleap.io/docs/javascript/ and https://
 import { withRouter } from 'react-router-dom';
 import { useHistory } from '@docusaurus/router';
 import useIsBrowser from '@docusaurus/useIsBrowser'; // https://docusaurus.io/docs/advanced/ssg#useisbrowser
-
+import { PostHogProvider } from 'posthog-js/react';
+import posthog from 'posthog-js';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 function Root({ children, location }) {
   const isBrowser = useIsBrowser();
-
   const history = useHistory();
+  const { siteConfig: {customFields} } = useDocusaurusContext();
 
   useEffect(() => {
-    // pass message to dev.near.org (docs is embed there)
+    // Pass message to dev.near.org (docs is embedded there)
     const sendMessage = url => parent.postMessage({ type: 'urlChange', url }, 'https://dev.near.org/');
     sendMessage(location.pathname);
 
@@ -22,19 +24,37 @@ function Root({ children, location }) {
     return () => { unlisten() };
   }, [history]);
 
-  if (isBrowser) {
-    const { initRudderAnalytics, recordPageView } = require('./scripts/rudderstack');
+  useEffect(() => {
+    if (isBrowser) {
+      const { initRudderAnalytics, recordPageView } = require('./scripts/rudderstack');
 
-    Gleap.initialize('K2v3kvAJ5XtPzNYSgk4Ulpe5ptgBkIMv');
+      Gleap.initialize('K2v3kvAJ5XtPzNYSgk4Ulpe5ptgBkIMv');
 
-    const rudderAnalytics = initRudderAnalytics();
-    recordPageView(rudderAnalytics, location.pathname);
-  }
+      const rudderAnalytics = initRudderAnalytics();
+      recordPageView(rudderAnalytics, location.pathname);
 
-  return <>{children}</>;
+      // Initialize PostHog
+      posthog.init(customFields.REACT_APP_PUBLIC_POSTHOG_KEY, {
+        api_host: customFields.REACT_APP_PUBLIC_POSTHOG_HOST,
+      });
+
+      // Track initial page view
+      posthog.capture('$pageview');
+
+      // Track page views on route changes
+      history.listen((location) => {
+        posthog.capture('$pageview', { path: location.pathname });
+      });
+    }
+  }, [isBrowser, history]);
+
+  return (
+    <PostHogProvider client={posthog}>
+      {children}
+    </PostHogProvider>
+  );
 }
 
 const router = withRouter(Root);
-
 
 export default router;

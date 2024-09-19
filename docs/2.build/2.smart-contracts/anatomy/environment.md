@@ -126,7 +126,7 @@ The environment exposes three different ways to tell the pass of time, each repr
 
 ### Timestamp
 
-The `timestamp` attribute represents the approximated **UNIX timestamp** at which this call was executed. It quantifies time passing in a human way, enabling to check if a specific date has passed or not.
+The `timestamp` attribute represents the approximated **UNIX timestamp** in **nanoseconds** at which this call was executed. It quantifies time passing in a human way, enabling us to check if a specific date has passed or not.
 
 ### Current Epoch
 

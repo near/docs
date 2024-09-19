@@ -14,3 +14,4 @@ neardev
 .docz
 serve*
 .vscode
+.env.local

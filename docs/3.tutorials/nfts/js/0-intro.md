@@ -15,7 +15,7 @@ To complete these tutorials successfully, you'll need:
 
 - [Node.js](/build/smart-contracts/quickstart#prerequisites#nodejs)
 - [A NEAR Wallet](https://testnet.mynearwallet.com/create)
-- [NEAR-CLI](/tools/near-cli#setup)
+- [NEAR-CLI](/tools/near-cli#installation)
 
 ---
 

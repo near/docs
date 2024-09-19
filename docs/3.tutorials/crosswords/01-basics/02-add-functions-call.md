@@ -3,7 +3,9 @@ sidebar_position: 3
 sidebar_label: "Add basic code, create a subaccount, and call methods"
 title: "Alter the smart contract, learning about basics of development"
 ---
-import {Github} from "@site/src/components/codetabs"
+import {Github} from "@site/src/components/codetabs";
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 import teachingDeployment from '/docs/assets/crosswords/teaching--jeheycell.near--artcultureac.jpeg';
 import createAccount from '/docs/assets/crosswords/creating account with text--seanpineda.near--_seanpineda.png';
@@ -101,9 +103,21 @@ cargo near build
 
 If you've followed from the previous section, you have NEAR CLI installed and a full-access key on your machine. While developing, it's a best practice to create a subaccount and deploy the contract to it. This makes it easy to quickly delete and recreate the subaccount, which wipes the state swiftly and starts from scratch. Let's use NEAR CLI to create a subaccount and fund with 1 NEAR:
 
-```bash
-near account create-account fund-myself crossword.friend.testnet '1 NEAR' autogenerate-new-keypair save-to-legacy-keychain sign-as friend.testnet network-config testnet sign-with-legacy-keychain send
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+  
+  ```bash
+  near create-account crossword.friend.testnet --use-account friend.testnet --initial-balance 1 --network-id testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+  
+  ```bash
+  near account create-account fund-myself crossword.friend.testnet '1 NEAR' autogenerate-new-keypair save-to-keychain sign-as friend.testnet network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
+</Tabs>
 
 If you look again in your home directory's `.near-credentials`, you'll see a new key for the subaccount with its own key pair. This new account is, for all intents and purposes, completely distinct from the account that created it. It might as well be `alice.testnet`, as it has, by default, no special relationship with the parent account. To be clear, `friend.testnet` cannot delete or deploy to `crossword.friend.testnet` unless it's done in a single transaction using Batch Actions, which we'll cover later.
 
@@ -129,9 +143,21 @@ Now that we have a key pair for our subaccount, we can deploy the contract to `t
 
 We're almost ready to deploy the smart contract to the account, but first let's take a look at the account we're going to deploy to. Remember, this is the subaccount we created earlier. To view the state easily with NEAR CLI, you may run this command:
 
-```bash
-near account view-account-summary crossword.friend.testnet network-config testnet now
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+  
+  ```bash
+  near state crossword.friend.testnet --networkId testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+  
+  ```bash
+  near account view-account-summary crossword.friend.testnet network-config testnet now
+  ```
+  </TabItem>
+</Tabs>
 
 What you'll see is something like this:
 
@@ -161,16 +187,28 @@ Let's deploy the contract (to the subaccount we created) and then check this aga
 Ensure that in your command line application, you're in the directory that contains the `Cargo.toml` file, then run:
 
 ```bash
-cargo near deploy crossword.friend.testnet without-init-call network-config testnet sign-with-legacy-keychain send
+cargo near deploy crossword.friend.testnet without-init-call network-config testnet sign-with-keychain send
 ```
 
 Congratulations, you've deployed the smart contract! Note that NEAR CLI will output a link to [NEAR Explorer](https://nearblocks.io/) where you can inspect details of the transaction.
 
 Lastly, let's run this command again and notice that the `Contract` has a SHA-256 checksum. This is the hash of the smart contract deployed to the account.
 
-```bash
-near account view-account-summary crossword.friend.testnet network-config testnet now
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+  
+  ```bash
+  near state crossword.friend.testnet --networkId testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+  
+  ```bash
+  near account view-account-summary crossword.friend.testnet network-config testnet now
+  ```
+  </TabItem>
+</Tabs>
 
 :::note
 
@@ -182,27 +220,63 @@ Deploying a contract is often done on the command line. While it may be _technic
 
 Let's first call the method that's view-only:
 
-```bash
-near contract call-function as-read-only crossword.friend.testnet get_puzzle_number json-args {} network-config testnet now
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+  
+  ```bash
+  near view crossword.friend.testnet get_puzzle_number '{}' --networkId testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+  
+  ```bash
+  near contract call-function as-read-only crossword.friend.testnet get_puzzle_number json-args {} network-config testnet now
+  ```
+  </TabItem>
+</Tabs>
 
 Your command prompt will show the result is `1`. Since this method doesn't take any arguments, we don't pass any.
 
 Next, we'll add a crossword solution as a string (later we'll do this in a better way) argument:
 
-```bash
-near contract call-function as-transaction crossword.friend.testnet set_solution json-args '{"solution": "near nomicon ref finance"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as friend.testnet network-config testnet sign-with-legacy-keychain send
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
 
-Note that we used NEAR CLI's [`view` command](https://docs.near.org/docs/tools/near-cli#near-view), and didn't include an `--accountId` flag. As mentioned earlier, this is because we are not signing a transaction. This second method uses the NEAR CLI [`call` command](https://docs.near.org/docs/tools/near-cli#near-call) which does sign a transaction and requires the user to specify a NEAR account that will sign it, using the credentials files we looked at.
+  ```bash
+  near call crossword.friend.testnet set_solution '{"solution": "near nomicon ref finance"}' --gas 100000000000000 --accountId friend.testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    near contract call-function as-transaction crossword.friend.testnet set_solution json-args '{"solution": "near nomicon ref finance"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as friend.testnet network-config testnet sign-with-keychain send
+    ```
+  </TabItem>
+</Tabs>
+
+Note that we used NEAR CLI's [`view` command](https://docs.near.org/docs/tools/near-cli#call), and didn't include an `--accountId` flag. As mentioned earlier, this is because we are not signing a transaction. This second method uses the NEAR CLI [`call` command](https://docs.near.org/docs/tools/near-cli#call) which does sign a transaction and requires the user to specify a NEAR account that will sign it, using the credentials files we looked at.
 
 The last method we have will check the argument against what is stored in state and write a log about whether the crossword solution is correct or incorrect.
 
 Correct:
 
-```bash
-near contract call-function as-transaction crossword.friend.testnet guess_solution json-args '{"solution": "near nomicon ref finance"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as friend.testnet network-config testnet sign-with-legacy-keychain send
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near call crossword.friend.testnet guess_solution '{"solution": "near nomicon ref finance"}' --gas 100000000000000 --accountId friend.testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    near contract call-function as-transaction crossword.friend.testnet guess_solution json-args '{"solution": "near nomicon ref finance"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as friend.testnet network-config testnet sign-with-keychain send
+    ```
+  </TabItem>
+</Tabs>
 
 You'll see something like this:
 
@@ -212,9 +286,21 @@ Notice the log we wrote is output as well as a link to NEAR Explorer.
 
 Incorrect:
 
-```bash
-near contract call-function as-transaction crossword.friend.testnet guess_solution json-args '{"solution": "wrong answers here"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as friend.testnet network-config testnet sign-with-legacy-keychain send
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near call crossword.friend.testnet guess_solution '{"solution": "wrong answers here"}' --gas 100000000000000 --accountId friend.testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    near contract call-function as-transaction crossword.friend.testnet guess_solution json-args '{"solution": "wrong answers here"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as friend.testnet network-config testnet sign-with-keychain send
+    ```
+  </TabItem>
+</Tabs>
 
 As you can imagine, the above command will show something similar, except the logs will indicate that you've given the wrong solution.
 
@@ -233,13 +319,29 @@ We'll be iterating on this smart contract during this tutorial, and in some case
 
 Using NEAR CLI, the commands will look like this:
 
-```bash
-near account delete-account crossword.friend.testnet beneficiary friend.testnet network-config testnet sign-with-legacy-keychain send
-```
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+  
+  ```bash
+  # deleting an account
+  near delete-account crossword.friend.testnet friend.testnet --networkId testnet
 
-```bash
-near account create-account fund-myself crossword.friend.testnet '1 NEAR' autogenerate-new-keypair save-to-legacy-keychain sign-as friend.testnet network-config testnet sign-with-legacy-keychain send
-```
+  # creating an account
+  near create-account crossword.friend.testnet --use-account friend.testnet --initial-balance 1 --network-id testnet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+  
+  ```bash
+  # deleting an account
+  near account delete-account crossword.friend.testnet beneficiary friend.testnet network-config testnet sign-with-keychain send
+
+  # creating an account
+  near account create-account fund-myself crossword.friend.testnet '1 NEAR' autogenerate-new-keypair save-to-keychain sign-as friend.testnet network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
+</Tabs>
 
 The first command deletes `crossword.friend.testnet` and sends the rest of its NEAR to `friend.testnet`.
 

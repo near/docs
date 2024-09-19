@@ -101,21 +101,6 @@ const sidebar = {
             // 'build/chain-abstraction/nft-chain-keys',
           ]
         },
-        // 'build/chain-abstraction/wallet',
-        {
-          "type": "category",
-          "label": "Multichain Gas Relayer",
-          "link": {
-            "type": "doc",
-            "id": "build/chain-abstraction/multichain-gas-relayer/getting-started"
-          },
-          "items": [
-            "build/chain-abstraction/multichain-gas-relayer/overview",
-            "build/chain-abstraction/multichain-gas-relayer/gas-station",
-            "build/chain-abstraction/multichain-gas-relayer/multichain-server",
-            "build/chain-abstraction/multichain-gas-relayer/relayer-gas-example",
-          ]
-        },
         'build/chain-abstraction/fastauth-sdk',
         "build/chain-abstraction/data-availability",
       ]
@@ -142,6 +127,7 @@ const sidebar = {
             "build/smart-contracts/anatomy/environment",
             "build/smart-contracts/anatomy/actions",
             "build/smart-contracts/anatomy/crosscontract",
+            "build/smart-contracts/anatomy/yield-resume",
             "build/smart-contracts/security/checklist",
             {
               "type": "html",
@@ -197,7 +183,6 @@ const sidebar = {
               "type": "html",
               "value": "<hr/>"
             },
-            "build/smart-contracts/security/bounty"
           ]
         }
       ]
@@ -220,6 +205,7 @@ const sidebar = {
           link: { type: 'doc', id: 'build/web3-apps/frontend' },
           items: [
             "build/web3-apps/integrate-contracts",
+            "build/web3-apps/chain-hosted-ui",
             {
               "Social Components (BOS)": [
                 "build/near-components/what-is",
@@ -353,6 +339,7 @@ const sidebar = {
         "tutorials/examples/donation",
         "tutorials/examples/xcc",
         "tutorials/examples/coin-flip",
+        "build/web3-apps/chain-hosted-ui-tutorial",
       ]
     },
     {
@@ -381,6 +368,21 @@ const sidebar = {
     {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Tutorials </small></b></span>"
+    },
+    {
+      "NEAR 101: Building Web3 Apps": [
+        "tutorials/auction/introduction",
+        {
+          "Smart Contracts 101": [
+            "tutorials/auction/basic-auction",
+            "tutorials/auction/sandbox-testing",
+            "tutorials/auction/deploy",
+          ]
+        },
+        // "tutorials/auction/locking-the-contract",
+        // "tutorials/auction/winning-an-nft",
+        // "tutorials/auction/bidding-with-FTs",
+      ]
     },
     {
       "Components": [
