@@ -124,15 +124,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', 'e28'),
+    component: ComponentCreator('/zh-CN/', '30f'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', 'fd2'),
+        component: ComponentCreator('/zh-CN/', '770'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '0f5'),
+            component: ComponentCreator('/zh-CN/', '5dc'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -1066,6 +1066,12 @@ export default [
               {
                 path: '/zh-CN/build/smart-contracts/what-is',
                 component: ComponentCreator('/zh-CN/build/smart-contracts/what-is', '95a'),
+                exact: true,
+                sidebar: "build"
+              },
+              {
+                path: '/zh-CN/build/web3-apps/ai/ai-assistant',
+                component: ComponentCreator('/zh-CN/build/web3-apps/ai/ai-assistant', 'a1c'),
                 exact: true,
                 sidebar: "build"
               },

@@ -778,6 +778,11 @@
               "sidebar": "build"
             },
             {
+              "id": "build/web3-apps/ai/ai-assistant",
+              "path": "/zh-CN/build/web3-apps/ai/ai-assistant",
+              "sidebar": "build"
+            },
+            {
               "id": "build/web3-apps/backend/backend-login",
               "path": "/zh-CN/build/web3-apps/backend/",
               "sidebar": "build"

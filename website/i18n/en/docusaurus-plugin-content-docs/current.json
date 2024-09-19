@@ -562,5 +562,9 @@
   "sidebar.tutorials.category.Smart Contracts 101": {
     "message": "Smart Contracts 101",
     "description": "The label for category Smart Contracts 101 in sidebar tutorials"
+  },
+  "sidebar.build.category.Artificial Intelligence (AI)": {
+    "message": "Artificial Intelligence (AI)",
+    "description": "The label for category Artificial Intelligence (AI) in sidebar build"
   }
 }

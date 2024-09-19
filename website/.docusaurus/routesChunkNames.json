@@ -321,17 +321,17 @@
       "plugin": "c141421f"
     }
   },
-  "/zh-CN/-e28": {
+  "/zh-CN/-30f": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "aba21aa0"
     }
   },
-  "/zh-CN/-fd2": {
+  "/zh-CN/-770": {
     "__comp": "a7bd4aaa",
     "__props": "363b7d6a"
   },
-  "/zh-CN/-0f5": {
+  "/zh-CN/-5dc": {
     "__comp": "a94703ab"
   },
   "/zh-CN/api/rpc/access-keys-c8f": {
@@ -1005,6 +1005,10 @@
   "/zh-CN/build/smart-contracts/what-is-95a": {
     "__comp": "17896441",
     "content": "ef64b690"
+  },
+  "/zh-CN/build/web3-apps/ai/ai-assistant-a1c": {
+    "__comp": "17896441",
+    "content": "5f3ed57c"
   },
   "/zh-CN/build/web3-apps/backend/-7e9": {
     "__comp": "17896441",

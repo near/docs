@@ -19,8 +19,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Authenticate NEAR Users",
-    "permalink": "/build/web3-apps/backend/"
+    "title": "AI Assistant",
+    "permalink": "/build/web3-apps/ai/ai-assistant"
   },
   "next": {
     "title": "Fungible Tokens (FT)",
