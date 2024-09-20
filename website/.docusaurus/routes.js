@@ -124,15 +124,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '3bb'),
+    component: ComponentCreator('/zh-CN/', '297'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '985'),
+        component: ComponentCreator('/zh-CN/', '1ad'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', 'ff4'),
+            component: ComponentCreator('/zh-CN/', '741'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -1071,7 +1071,7 @@ export default [
               },
               {
                 path: '/zh-CN/build/web3-apps/ai/ai-assistant',
-                component: ComponentCreator('/zh-CN/build/web3-apps/ai/ai-assistant', 'ad5'),
+                component: ComponentCreator('/zh-CN/build/web3-apps/ai/ai-assistant', '51e'),
                 exact: true,
                 sidebar: "build"
               },
