@@ -2,6 +2,8 @@
 id: ai-assistant
 title: AI Assistant
 ---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 Welcome! In this guide, you'll discover an AI chatbot that can interact with the NEAR ecosystem
 
@@ -22,93 +24,131 @@ Created by our community member [Reza](https://x.com/RezaRahemtola), this projec
 
 ## Prerequisites
 
+Let's start by setting up the environment to run the AI assistant locally.
+
+<hr class="subsection" />
+
+### Tools
 Before starting, make sure you have the following tools installed:
 
-- [Python >= 3.10](https://www.python.org/downloads/)
+- [Python >= 3.12](https://www.python.org/downloads/)
 - [NodeJS >= 20](https://nodejs.org/en)
+- [llama.cpp](https://github.com/ggerganov/llama.cpp)
 
-Then we need to run our AI model locally. Here we'll be using [llama.cpp](https://github.com/ggerganov/llama.cpp) with [Nous Hermes 2 Pro](https://huggingface.co/NousResearch/Hermes-2-Pro-Llama-3-8B) as the model.
+<Tabs>
+  <TabItem value="Mac">
+    
+    ```sh
+    # Install Node.js using nvm (more option in: https://nodejs.org/en/download)
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+    nvm install latest
 
-Below are the steps to setup it at the time of writing, but please refer to the [llama.cpp](https://github.com/ggerganov/llama.cpp) repository for up to date instructions:
+    # Install python using miniconda (includes the package manager pip)
+    brew install --cask miniconda
+    conda init "$(basename "${SHELL}")"
+    pip install poetry
 
-- Install llama.cpp with [the method of your choice]( https://github.com/ggerganov/llama.cpp?tab=readme-ov-file#basic-usage), we'll use brew here:
+    # Install llama.cpp
+    brew install llama.cpp
+    ```
+
+  </TabItem>
+  <TabItem value="Linux">
+    Please help by contributing these steps for Linux!
+  </TabItem>
+
+</Tabs>
+
+<hr class="subsection" />
+
+### AI Model
+In this tutorial we will be using the [NousResearch/Hermes-2-Pro-Mistral-7B-GGUF](https://huggingface.co/squeeze-ai-lab/TinyAgent-1.1B-GGUF) model, which is hosted on [Hugging Face](https://huggingface.co/login).
+
 ```sh
-brew install llama.cpp
+# Install the Hugging Face library
+pip install huggingface_hub
+
+# Login to your Hugging Face account
+huggingface-cli login
+
+# get the model from Hugging Face
+huggingface-cli download huggingface-cli download NousResearch/Hermes-2-Pro-Mistral-7B-GGUF Hermes-2-Pro-Mistral-7B.Q3_K_M.gguf --local-dir model
 ```
-- Clone the [model's repository](https://huggingface.co/NousResearch/Hermes-2-Pro-Llama-3-8B/tree/main) by following the instructions on Hugging Face:
-```sh
-# Make sure you have git-lfs installed (https://git-lfs.com)
-git lfs install
-git clone git@hf.co:NousResearch/Hermes-2-Pro-Llama-3-8B
-```
 
-- Back to llama.cpp, if you didn't already to it clone the repository and generate the [GGUF](https://huggingface.co/docs/hub/en/gguf) file needed to run the model with llama.cpp:
-```sh
-git clone git@github.com:ggerganov/llama.cpp.git
-cd llama.cpp
+:::info Q3_K_M Model
 
-# Setup the environment and run the conversion script
-python -m venv venv
-python -m pip install -r requirements.txt
-python convert_hf_to_gguf.py <path_to>/Hermes-2-Pro-Llama-3-8B/
-```
+The `Q3_K_M` model is one of the smallest models available (`Q2` is smaller), it is used in this tutorial to reduce the time and resources needed to run the AI agent
 
-- You should end up with a `hermes-2-pro-llama-3-8B-DPO-F16.gguf` file inside the `Hermes-2-Pro-Llama-3-8B` repository. Finally, let's run the llama.cpp server with it:
-```sh
-llama-server -m <path_to>/hermes-2-pro-llama-3-8B-DPO-F16.gguf
+:::
+
+<hr class="subsection" />
+
+### Execute the Model
+You should now have a folder named `./model` with the [GGUF file](https://huggingface.co/docs/hub/en/gguf) `./model/Hermes-2-Pro-Mistral-7B.Q3_K_M.gguf`, lets use `llama.cpp` to run it.
+
+```bash
+# run the model with llama.cpp
+llama-server -m ./model/Hermes-2-Pro-Mistral-7B.Q3_K_M.gguf
 ```
 
 Open your browser at `http://localhost:8080`, if you see an interface similar to this one you are ready to go 🚀
 ![llama.cpp UI](@site/static/docs/assets/llama-cpp.png)
 
-:::info
-Make sure the `model.api_url` in `ai/config/general` is set to `http://localhost:8080/completion` to use your model running locally 😉
+:::tip
+
+You can use a different model with llama.cpp if you wish! Just make sure it supports [function calling](https://docs.mistral.ai/capabilities/function_calling)
+
 :::
 
-:::tip
-You can use a different model with llama.cpp if you wish!
-Just make sure:
-- It supports [function calling](https://docs.mistral.ai/capabilities/function_calling)
-- Update the `model.max_prompt_tokens` config according to the context length of the new model
-- Update the ChatML config variables to match those of the new model
-:::
+<!-- - Update the `model.max_prompt_tokens` config according to the context length of the new model
+- Update the ChatML config variables to match those of the new model -->
 
 ---
 
-## Setup and architecture
+### Project Setup
 
-Start by cloning the repository of the project:
+Start by cloning the repository of the project, in which you will find the AI agent and a basic frontend to interact with it:
 
 ```sh
 git clone git@github.com:RezaRahemtola/near-ai-assistant.git
 ```
 
-You'll find 2 folders in it, `ai` and `front`.
-
 <hr class="subsection" />
 
 ### AI
 
-Let's start by configuring a virtual environment to install the dependencies:
+Let's configure the AI agent, first, we install all python dependencies on the project 
 
 ```sh
 cd ai/
-python -m venv venv
-python -m pip install poetry
+
+# Important: Create a virtual environment
+conda create -n ai-assistant python=3.12
+conda activate ai-assistant
+
+# Install the dependencies
+pip install poetry
 poetry install
 ```
 
 Then you can create a `.env` file and fill it with values inspired from the `.env.example` file:
-- `OXYLABS_USERNAME` and `OXYLABS_PASSWORD` are API credential used to access an SERP API to search information on Google
-- `NEAR_ACCOUNT_ID` and `NEAR_ACCOUNT_PRIVATE_KEY` are used by the AI to control a wallet and send transactions from it
-- `NEAR_RPC_URL` can also be set in case you want to use a different RPC
+- `NEAR_ACCOUNT_ID`: The NEAR account id (i.e. account name) of your bot
+- `NEAR_ACCOUNT_PRIVATE_KEY`: The private key to control the account
+- `NEAR_RPC_URL`: can also be set in case you want to use a different RPC
 
-Once you've done all this, you can activate your virtual environment and launch the code 🚀
+Once you've done all this, you are ready to launch the code 🚀
 
 ```sh
-source venv/bin/activate
 python src/main.py
 ```
+
+<details> 
+
+<summary> Optional: Google Search </summary>
+
+`OXYLABS_USERNAME` and `OXYLABS_PASSWORD` are API credential used to access an SERP API to search information on Google
+
+</details>
 
 <hr class="subsection" />
 
@@ -116,14 +156,11 @@ python src/main.py
 
 Now that your AI agent is ready to go, let's quickly launch a basic frontend to interact with it:
 
-Install the dependencies:
 ```sh
 cd front/
+# Install the dependencies
 yarn
-```
-
-And launch it:
-```sh
+# Start the frontend
 yarn dev
 ```
 
