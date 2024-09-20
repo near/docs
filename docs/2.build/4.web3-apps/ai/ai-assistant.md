@@ -62,7 +62,7 @@ Before starting, make sure you have the following tools installed:
 <hr class="subsection" />
 
 ### AI Model
-In this tutorial we will be using the [NousResearch/Hermes-2-Pro-Mistral-7B-GGUF](https://huggingface.co/squeeze-ai-lab/TinyAgent-1.1B-GGUF) model, which is hosted on [Hugging Face](https://huggingface.co/login).
+In this tutorial we will be using the [NousResearch/Hermes-2-Pro-Llama-3-8B-GGUF](https://huggingface.co/NousResearch/Hermes-2-Pro-Llama-3-8B-GGUF) model, which is hosted on [Hugging Face](https://huggingface.co/login).
 
 ```sh
 # Install the Hugging Face library
@@ -72,23 +72,23 @@ pip install huggingface_hub
 huggingface-cli login
 
 # get the model from Hugging Face
-huggingface-cli download huggingface-cli download NousResearch/Hermes-2-Pro-Mistral-7B-GGUF Hermes-2-Pro-Mistral-7B.Q3_K_M.gguf --local-dir model
+huggingface-cli download NousResearch/Hermes-2-Pro-Llama-3-8B-GGUF Hermes-2-Pro-Llama-3-8B-Q4_K_M.gguf --local-dir model
 ```
 
-:::info Q3_K_M Model
+:::info Q4_K_M Model
 
-The `Q3_K_M` model is one of the smallest models available (`Q2` is smaller), it is used in this tutorial to reduce the time and resources needed to run the AI agent
+We use the small `Q4_K_M` model to reduce the time and resources needed to run the AI agent
 
 :::
 
 <hr class="subsection" />
 
 ### Execute the Model
-You should now have a folder named `./model` with the [GGUF file](https://huggingface.co/docs/hub/en/gguf) `./model/Hermes-2-Pro-Mistral-7B.Q3_K_M.gguf`, lets use `llama.cpp` to run it.
+You should now have a folder named `./model` with the [GGUF file](https://huggingface.co/docs/hub/en/gguf) `./model/Hermes-2-Pro-Llama-3-8B-Q4_K_M.gguf`, lets use `llama.cpp` to run it.
 
 ```bash
 # run the model with llama.cpp
-llama-server -m ./model/Hermes-2-Pro-Mistral-7B.Q3_K_M.gguf
+llama-server -m ./model/Hermes-2-Pro-Llama-3-8B-Q4_K_M.gguf
 ```
 
 Open your browser at `http://localhost:8080`, if you see an interface similar to this one you are ready to go 🚀
@@ -99,9 +99,6 @@ Open your browser at `http://localhost:8080`, if you see an interface similar to
 You can use a different model with llama.cpp if you wish! Just make sure it supports [function calling](https://docs.mistral.ai/capabilities/function_calling)
 
 :::
-
-<!-- - Update the `model.max_prompt_tokens` config according to the context length of the new model
-- Update the ChatML config variables to match those of the new model -->
 
 ---
 
