@@ -321,17 +321,17 @@
       "plugin": "c141421f"
     }
   },
-  "/zh-CN/-297": {
+  "/zh-CN/-cd7": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "aba21aa0"
     }
   },
-  "/zh-CN/-1ad": {
+  "/zh-CN/-fbe": {
     "__comp": "a7bd4aaa",
     "__props": "363b7d6a"
   },
-  "/zh-CN/-741": {
+  "/zh-CN/-cb7": {
     "__comp": "a94703ab"
   },
   "/zh-CN/api/rpc/access-keys-c8f": {
@@ -1306,7 +1306,7 @@
     "__comp": "17896441",
     "content": "90e2085b"
   },
-  "/zh-CN/tutorials/auction/bidding-with-fts-a9a": {
+  "/zh-CN/tutorials/auction/bidding-with-fts-807": {
     "__comp": "17896441",
     "content": "28e90dfe"
   },
@@ -1322,11 +1322,11 @@
     "__comp": "17896441",
     "content": "3c594ebc"
   },
-  "/zh-CN/tutorials/auction/introduction-db8": {
+  "/zh-CN/tutorials/auction/introduction-7dd": {
     "__comp": "17896441",
     "content": "91263078"
   },
-  "/zh-CN/tutorials/auction/locking-the-contract-c51": {
+  "/zh-CN/tutorials/auction/locking-the-contract-fc5": {
     "__comp": "17896441",
     "content": "0e914780"
   },
@@ -1334,7 +1334,7 @@
     "__comp": "17896441",
     "content": "c0d1432f"
   },
-  "/zh-CN/tutorials/auction/winning-an-nft-eba": {
+  "/zh-CN/tutorials/auction/winning-an-nft-26e": {
     "__comp": "17896441",
     "content": "ed92828e"
   },

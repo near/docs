@@ -124,15 +124,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '297'),
+    component: ComponentCreator('/zh-CN/', 'cd7'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', '1ad'),
+        component: ComponentCreator('/zh-CN/', 'fbe'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '741'),
+            component: ComponentCreator('/zh-CN/', 'cb7'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -1516,7 +1516,7 @@ export default [
               },
               {
                 path: '/zh-CN/tutorials/auction/bidding-with-fts',
-                component: ComponentCreator('/zh-CN/tutorials/auction/bidding-with-fts', 'a9a'),
+                component: ComponentCreator('/zh-CN/tutorials/auction/bidding-with-fts', '807'),
                 exact: true
               },
               {
@@ -1537,13 +1537,13 @@ export default [
               },
               {
                 path: '/zh-CN/tutorials/auction/introduction',
-                component: ComponentCreator('/zh-CN/tutorials/auction/introduction', 'db8'),
+                component: ComponentCreator('/zh-CN/tutorials/auction/introduction', '7dd'),
                 exact: true,
                 sidebar: "tutorials"
               },
               {
                 path: '/zh-CN/tutorials/auction/locking-the-contract',
-                component: ComponentCreator('/zh-CN/tutorials/auction/locking-the-contract', 'c51'),
+                component: ComponentCreator('/zh-CN/tutorials/auction/locking-the-contract', 'fc5'),
                 exact: true
               },
               {
@@ -1554,7 +1554,7 @@ export default [
               },
               {
                 path: '/zh-CN/tutorials/auction/winning-an-nft',
-                component: ComponentCreator('/zh-CN/tutorials/auction/winning-an-nft', 'eba'),
+                component: ComponentCreator('/zh-CN/tutorials/auction/winning-an-nft', '26e'),
                 exact: true
               },
               {
