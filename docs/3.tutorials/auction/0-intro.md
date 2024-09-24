@@ -72,7 +72,7 @@ Before starting, make sure to set up your development environment!
 
 </Tabs>
 
-We will be use [NEAR CLI](../../4.tools/cli.md) to interact with the blockchain through the terminal, and you can choose between JavaScript and Rust to write the contract.
+We will be using [NEAR CLI](../../4.tools/cli.md) to interact with the blockchain through the terminal, and you can choose between JavaScript and Rust to write the contract.
 
 ---
 
