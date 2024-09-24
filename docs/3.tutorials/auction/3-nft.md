@@ -43,7 +43,7 @@ When we create an auction we need to list the NFT. To specify which NFT is being
 
 ## Transferring the NFT to the winner
 
-When the method  `claim` is called the NFT needs to be transferred to the highest bidder. Operations regarding NFTs live on the NFT contract, so we make a cross-contract call to the NFT contract telling it to swap the owner of the NFT to the highest bidder. The method on the NFT contract to do this is `nft_transfer`.
+When the method `claim` is called the NFT needs to be transferred to the highest bidder. Operations regarding NFTs live on the NFT contract, so we make a cross-contract call to the NFT contract telling it to swap the owner of the NFT to the highest bidder. The method on the NFT contract to do this is `nft_transfer`.
 
 <Tabs groupId="code-tabs">
 
