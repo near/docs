@@ -85,8 +85,8 @@ We will now also test the `claim` method. The test will check that the `auctione
     <TabItem value="rust" label="🦀 Rust">
 
         <Github fname="test_basics.rs" language="rust"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-owner-claims-money/tests/test_basics.rs#L89-L105"
-                start="89" end="105" />
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-owner-claims-money/tests/test_basics.rs#L96-L112"
+                start="96" end="112" />
 
     </TabItem>
 

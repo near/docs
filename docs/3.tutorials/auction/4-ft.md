@@ -210,8 +210,8 @@ When the contract is deployed it is initialized with `new_default_meta` which se
     <TabItem value="rust" label="🦀 Rust">
 
         <Github fname="test_basics.rs" language="rust"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/04-ft-owner-claims-winner-gets-nft/tests/test_basics.rs#L26-L39"
-                start="26" end="39" />
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/04-ft-owner-claims-winner-gets-nft/tests/test_basics.rs#L33-L46"
+                start="33" end="46" />
 
     </TabItem>
 
@@ -238,8 +238,8 @@ In our tests, since we are creating a new fungible token and new accounts we wil
     <TabItem value="rust" label="🦀 Rust">
 
         <Github fname="test_basics.rs" language="rust"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/04-ft-owner-claims-winner-gets-nft/tests/test_basics.rs#L74-L90"
-                start="74" end="90" />
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/04-ft-owner-claims-winner-gets-nft/tests/test_basics.rs#L81-L97"
+                start="81" end="97" />
 
     </TabItem>
 
@@ -265,11 +265,11 @@ Then we will transfer the bidders FTs so they can use them to bid. A simple tran
 
         <Language value="rust" language="rust">
             <Github fname="Call ft_transfer" 
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/04-ft-owner-claims-winner-gets-nft/tests/test_basics.rs#L95-L100"
-                start="95" end="100" />
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/04-ft-owner-claims-winner-gets-nft/tests/test_basics.rs#L100-L107"
+                start="100" end="107" />
             <Github fname="ft_transfer definition" 
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/04-ft-owner-claims-winner-gets-nft/tests/test_basics.rs#L284-L300"
-                start="284" end="300" />
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/04-ft-owner-claims-winner-gets-nft/tests/test_basics.rs#L291-L307"
+                start="291" end="307" />
         </Language>
 
     </TabItem>
@@ -296,11 +296,11 @@ As stated previously, to bid on the auction the bidder now calls `ft_transfer_ca
 
         <Language value="rust" language="rust">
             <Github fname="Call ft_transfer_call" 
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/04-ft-owner-claims-winner-gets-nft/tests/test_basics.rs#L142-L154"
-                start="142" end="154" />
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/04-ft-owner-claims-winner-gets-nft/tests/test_basics.rs#L149-L161"
+                start="149" end="161" />
             <Github fname="ft_transfer_call definition" 
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/04-ft-owner-claims-winner-gets-nft/tests/test_basics.rs#L315-L330"
-                start="315" end="330" />
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/04-ft-owner-claims-winner-gets-nft/tests/test_basics.rs#L322-L337"
+                start="322" end="337" />
         </Language>
 
     </TabItem>
@@ -327,11 +327,11 @@ Previously, to check a user's $NEAR balance, we pulled the details from their ac
 
         <Language value="rust" language="rust">
             <Github fname="Call ft_balance_of" 
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/04-ft-owner-claims-winner-gets-nft/tests/test_basics.rs#L156-L159"
-                start="156" end="159" />
-            <Github fname="ft_transfer_call definition" 
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/04-ft-owner-claims-winner-gets-nft/tests/test_basics.rs#L302-L313"
-                start="302" end="313" />
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/04-ft-owner-claims-winner-gets-nft/tests/test_basics.rs#L163-L166"
+                start="163" end="166" />
+            <Github fname="ft_balance_of definition" 
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/04-ft-owner-claims-winner-gets-nft/tests/test_basics.rs#L309-L320"
+                start="309" end="320" />
         </Language>
 
     </TabItem>
@@ -359,8 +359,8 @@ Previous to this, Bob made a bid of 60,000 and Alice was returned her bid bringi
     <TabItem value="rust" label="🦀 Rust">
 
         <Github fname="test_basics.rs" language="rust"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/04-ft-owner-claims-winner-gets-nft/tests/test_basics.rs#L183-L200"
-                start="183" end="200" />
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/04-ft-owner-claims-winner-gets-nft/tests/test_basics.rs#L190-L207"
+                start="190" end="207" />
 
     </TabItem>
 
