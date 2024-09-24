@@ -91,7 +91,7 @@ This series will touch on different level of the NEAR tech stack. Each section w
 #### 2. Frontend
 
 1. Creating the frontend (soon): Lets learn how to connect a frontend with your smart contract
-2. Easily query on-chain data (soon) : Use open APIs to keep track of the users and their bidding price
+2. Easily query on-chain data (soon): Use open APIs to keep track of the users and their bidding price
 
 #### 3. Factory
 1. Creating a factory (soon): Allow users to easily deploy and initialize their own auction contracts
@@ -101,8 +101,6 @@ This series will touch on different level of the NEAR tech stack. Each section w
 ## Next steps
 
 Ready to start? Let's jump to the [The Auction Contract](./1.1-basic.md) and begin your learning journey!
-
----
 
 ---
 
