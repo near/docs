@@ -107,8 +107,8 @@ To deploy the NFT contract, this time we're going to use `dev deploy` which crea
     <TabItem value="rust" label="🦀 Rust">
 
         <Github fname="test_basics.rs" language="rust"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-owner-claims-winner-gets-nft/tests/test_basics.rs#L23-L24"
-                start="23" end="32" />
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-owner-claims-winner-gets-nft/tests/test_basics.rs#L30-L39"
+                start="30" end="39" />
 
     </TabItem>
 
@@ -133,8 +133,8 @@ To start a proper auction the auction contract should own an NFT. To do this the
     <TabItem value="rust" label="🦀 Rust">
 
         <Github fname="test_basics.rs" language="rust"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-owner-claims-winner-gets-nft/tests/test_basics.rs#L35-L53"
-                start="35" end="53" />
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-owner-claims-winner-gets-nft/tests/test_basics.rs#L42-L60"
+                start="42" end="60" />
 
     </TabItem>
 
@@ -159,8 +159,8 @@ After `claim` is called, the test should verify that the auction winner now owns
     <TabItem value="rust" label="🦀 Rust">
 
         <Github fname="test_basics.rs" language="rust"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-owner-claims-winner-gets-nft/tests/test_basics.rs#L144-L157"
-                start="144" end="157" />
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-owner-claims-winner-gets-nft/tests/test_basics.rs#L151-L164"
+                start="151" end="164" />
 
     </TabItem>
 
