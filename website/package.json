@@ -15,8 +15,8 @@
     "crowdin:download": "crowdin download"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^3.4.0",
-    "@docusaurus/types": "^3.4.0",
+    "@docusaurus/module-type-aliases": "^3.5.2",
+    "@docusaurus/types": "^3.5.2",
     "@types/react": "^18.2.42",
     "buffer": "^6.0.3",
     "concurrently": "^5.3.0",
@@ -32,11 +32,11 @@
   },
   "dependencies": {
     "@crowdin/cli": "^4.1.1",
-    "@docusaurus/core": "^3.4.0",
-    "@docusaurus/plugin-ideal-image": "^3.4.0",
-    "@docusaurus/plugin-sitemap": "^3.4.0",
-    "@docusaurus/preset-classic": "^3.4.0",
-    "@docusaurus/theme-mermaid": "^3.4.0",
+    "@docusaurus/core": "^3.5.2",
+    "@docusaurus/plugin-ideal-image": "^3.5.2",
+    "@docusaurus/plugin-sitemap": "^3.5.2",
+    "@docusaurus/preset-classic": "^3.5.2",
+    "@docusaurus/theme-mermaid": "^3.5.2",
     "@feelback/react": "^0.3.4",
     "@near-wallet-selector/core": "^8.5.1",
     "@near-wallet-selector/here-wallet": "^8.5.1",

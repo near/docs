@@ -100,21 +100,6 @@ const sidebar = {
             // 'build/chain-abstraction/nft-chain-keys',
           ]
         },
-        // 'build/chain-abstraction/wallet',
-        {
-          "type": "category",
-          "label": "Multichain Gas Relayer",
-          "link": {
-            "type": "doc",
-            "id": "build/chain-abstraction/multichain-gas-relayer/getting-started"
-          },
-          "items": [
-            "build/chain-abstraction/multichain-gas-relayer/overview",
-            "build/chain-abstraction/multichain-gas-relayer/gas-station",
-            "build/chain-abstraction/multichain-gas-relayer/multichain-server",
-            "build/chain-abstraction/multichain-gas-relayer/relayer-gas-example",
-          ]
-        },
         'build/chain-abstraction/fastauth-sdk',
         "build/chain-abstraction/data-availability",
       ]
@@ -141,6 +126,7 @@ const sidebar = {
             "build/smart-contracts/anatomy/environment",
             "build/smart-contracts/anatomy/actions",
             "build/smart-contracts/anatomy/crosscontract",
+            "build/smart-contracts/anatomy/yield-resume",
             "build/smart-contracts/security/checklist",
             {
               "type": "html",
@@ -206,7 +192,7 @@ const sidebar = {
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Web3 Applications </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Web3 Apps (Frontend, AI, ...) </small></b></span>"
     },
     "build/web3-apps/what-is",
     {
@@ -245,6 +231,11 @@ const sidebar = {
             "build/web3-apps/backend/backend-login",
           ]
         },
+        {
+          "Artificial Intelligence (AI)": [
+            "build/web3-apps/ai/ai-assistant",
+          ]
+        }
       ]
     },
     {
