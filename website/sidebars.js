@@ -217,7 +217,6 @@ const sidebar = {
                     "build/near-components/anatomy/near",
                     "build/near-components/anatomy/social",
                     "build/near-components/anatomy/notifications",
-                    "build/near-components/anatomy/bos-components"
                   ]
                 },
                 "build/near-components/bos-gateway",
@@ -276,20 +275,6 @@ const sidebar = {
             "build/data-infrastructure/lake-framework/near-lake",
             "build/data-infrastructure/lake-framework/near-lake-state-changes-indexer",
             "build/data-infrastructure/lake-framework/migrating-to-near-lake-framework",
-            {
-              "Building Indexers": [
-                "build/data-infrastructure/lake-framework/building-indexers/primitives",
-                {
-                  "type": "link",
-                  "label": "NEAR Lake Primitives",
-                  "href": "https://near.github.io/near-lake-framework-js/"
-                },
-                "build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer",
-                "build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer",
-                "build/data-infrastructure/lake-framework/building-indexers/nft-indexer",
-                "build/data-infrastructure/lake-framework/building-indexers/python-nft-indexer"
-              ]
-            },
             {
               "Running NEAR Lake": [
                 "build/data-infrastructure/lake-framework/running-near-lake/run-lake-indexer",
@@ -453,6 +438,20 @@ const sidebar = {
             "tutorials/nfts/series"
           ]
         }
+      ]
+    },
+    {
+      "Building Indexers": [
+        "build/data-infrastructure/lake-framework/building-indexers/primitives",
+        {
+          "type": "link",
+          "label": "NEAR Lake Primitives",
+          "href": "https://near.github.io/near-lake-framework-js/"
+        },
+        "build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer",
+        "build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer",
+        "build/data-infrastructure/lake-framework/building-indexers/nft-indexer",
+        "build/data-infrastructure/lake-framework/building-indexers/python-nft-indexer"
       ]
     },
     {
