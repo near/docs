@@ -1,6 +1,6 @@
 ---
 id: data-apis
-title: Community Data APIs
+title: Data APIs
 ---
 
 Members of the NEAR community have built a set of APIs to access and monitor on-chain data. These APIs are designed to be easy to use and can be accessed from any application through a simple API call.
