@@ -268,20 +268,8 @@ const sidebar = {
     "build/data-infrastructure/what-is",
     {
       "NEAR Data Infrastructure": [
-        "concepts/data-flow/data-storage",
+        "build/data-infrastructure/data-apis",
         "build/data-infrastructure/big-query",
-        {
-          "QueryAPI": [
-            "build/data-infrastructure/query-api/intro",
-            "build/data-infrastructure/query-api/how-it-works",
-            "build/data-infrastructure/query-api/indexers",
-            "build/data-infrastructure/query-api/best-practices",
-            "build/data-infrastructure/query-api/index-functions",
-            "build/data-infrastructure/query-api/context-object",
-            "build/data-infrastructure/query-api/query-data",
-            "build/data-infrastructure/query-api/migrate-from-near-lake",
-          ]
-        },
         {
           "Lake Framework": [
             "concepts/advanced/near-lake-framework",
@@ -396,7 +384,6 @@ const sidebar = {
         "tutorials/near-components/using-iframes",
         "tutorials/near-components/blog-posts",
         "tutorials/near-components/push-notifications",
-        "tutorials/near-components/queryapi-websockets",
         "tutorials/near-components/ethers-js",
         "tutorials/near-components/ethers-js-best-practices",
         "tutorials/near-components/lido",
@@ -508,16 +495,6 @@ const sidebar = {
         }
       ]
     },
-    {
-      "Data Infrastructure":
-        [
-          "tutorials/near-components/indexer-tutorials/posts-indexer",
-          "tutorials/near-components/indexer-tutorials/hype-indexer",
-          "tutorials/near-components/indexer-tutorials/nft-indexer",
-          "tutorials/near-components/indexer-tutorials/feed-indexer",
-        ]
-    },
-
   ],
   "tools": [
     "tools/welcome",
