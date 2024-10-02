@@ -271,90 +271,114 @@ NEAR Workspaces is set up so that you can write tests once and run them against 
 * You can test against deployed testnet contracts
 * If something seems off in Sandbox mode, you can compare it to testnet
 
+
+
+<Tabs groupId="code-tabs">
+  <TabItem value="js" label="🌐 JavaScript"  default>
+
+    You can switch to testnet mode in three ways:
+
+    <details>
+
+    <summary> 1. Setting the `Worker` network to `testnet` </summary>
+
+    When creating Worker set network to `testnet` and pass your master account:
+
+    ```ts
+    const worker = await Worker.init({
+      network: 'testnet',
+      testnetMasterAccountId: '<yourAccountName>',
+      initialBalance: NEAR.parse("<X> N").toString(),
+    })
+    ```
+
+    </details>
+
+    <details>
+
+    <summary> 2. Setting environment variables </summary>
+
+    Set the `NEAR_WORKSPACES_NETWORK` and `TESTNET_MASTER_ACCOUNT_ID` environment variables when running your tests:
+
+    ```bash
+    NEAR_WORKSPACES_NETWORK=testnet TESTNET_MASTER_ACCOUNT_ID=<your master account Id> node test.js
+    ```
+    If you set this environment variables and pass `{network: 'testnet', testnetMasterAccountId: <masterAccountId>}` to `Worker.init`, the config object takes precedence.
+
+    </details>
+
+    <details>
+
+    <summary> 3. Config file </summary>
+
+    If you are using AVA, you can use a custom config file. Other test runners allow similar config files; adjust the following instructions for your situation.
+
+    Create a file in the same directory as your `package.json` called `ava.testnet.config.cjs` with the following contents:
+
+    ```js
+    module.exports = {
+    ...require('near-workspaces/ava.testnet.config.cjs'),
+    ...require('./ava.config.cjs'),
+    };
+    module.exports.environmentVariables = {
+        TESTNET_MASTER_ACCOUNT_ID: '<masterAccountId>',
+    };
+    ```
+
+    The [near-workspaces/ava.testnet.config.cjs](https://github.com/near/workspaces-js/blob/main/ava.testnet.config.cjs) import sets the `NEAR_WORKSPACES_NETWORK` environment variable for you. A benefit of this approach is that you can then easily ignore files that should only run in Sandbox mode.
+
+    Now you'll also want to add a `test:testnet` script to your `package.json`'s `scripts` section:
+
+    ```diff
+    "scripts": {
+      "test": "ava",
+    +  "test:testnet": "ava --config ./ava.testnet.config.cjs"
+    }
+    ```
+
+    </details>
+
+    To use the accounts, you will need to create the `.near-credentials/workspaces/testnet` directory and add files for your master account, for example:
+
+    ```js
+    // .near-credentials/workspaces/testnet/<your-account>.testnet.json 
+    {"account_id":"<your-account>.testnet","public_key":"ed25519:...","private_key":"ed25519:..."}
+    ```
+
+  </TabItem>
+
+  <TabItem value="rust" label="🦀 Rust" >
+
+    ```rust
+    #[tokio::main]
+    async fn main() -> anyhow::Result<()> {
+      // create a testnet sandbox
+      let sandbox = near_workspaces::testnet().await?;
+
+      let testnet_account = Account::from_secret_key("<account>.testnet".parse().unwrap(), "ed25519:...".parse().unwrap(), &sandbox);
+
+      // Create a random root account
+      let random_id = Utc::now().timestamp().to_string();
+      let root = testnet_account
+          .create_subaccount(&random_id)
+          .initial_balance(NearToken::from_near(50))
+          .transact()
+          .await?
+          .unwrap();
+
+      // Create accounts
+      let alice = create_subaccount(&root, "alice", TEN_NEAR).await?;
+      let bob = create_subaccount(&root, "bob", TEN_NEAR).await?;
+      let auctioneer = create_subaccount(&root, "auctioneer", TEN_NEAR).await?;
+      let contract_account = create_subaccount(&root, "contract", TEN_NEAR).await?;
+    }
+    ```
+
 :::tip
-
-In order to use Workspaces in testnet mode you will need to have a `testnet` account.
-You can create one [here](https://testnet.mynearwallet.com/).
-
+If you don't want to create a new account on each iteration, you can simply import multiple accounts using `Account::from_secret_key`
 :::
 
-You can switch to testnet mode in three ways.
-
-1. When creating Worker set network to `testnet` and pass your master account:
-
-<Tabs groupId="code-tabs">
-<TabItem value="js" label="🌐 JavaScript"  default>
-
-```ts
-const worker = await Worker.init({
- network: 'testnet',
- testnetMasterAccountId: '<yourAccountName>',
-})
-```
-
-</TabItem>
-
-<TabItem value="rust" label="🦀 Rust" >
-
-```rust
-#[tokio::main]  // or whatever runtime we want
-async fn main() -> anyhow::Result<()> {
-// Create a sandboxed environment.
-// NOTE: Each call will create a new sandboxed environment
-let worker = workspaces::sandbox().await?;
-// or for testnet:
-let worker = workspaces::testnet().await?;
-}
-```
-
-</TabItem>
-
-</Tabs>
-
-2. Set the `NEAR_WORKSPACES_NETWORK` and `TESTNET_MASTER_ACCOUNT_ID` environment variables when running your tests:
-
-<Tabs groupId="code-tabs">
-<TabItem value="js" label="🌐 JavaScript"  default>
-
-```bash
-NEAR_WORKSPACES_NETWORK=testnet TESTNET_MASTER_ACCOUNT_ID=<your master account Id> node test.js
-```
-
-If you set this environment variables and pass `{network: 'testnet', testnetMasterAccountId: <masterAccountId>}` to `Worker.init`, the config object takes precedence.
-
-</TabItem>
-
-</Tabs>
-
-3. If using `near-workspaces` with AVA, you can use a custom config file. Other test runners allow similar config files; adjust the following instructions for your situation.
-
-<Tabs groupId="code-tabs">
-<TabItem value="js" label="🌐 JavaScript"  default>
-
-Create a file in the same directory as your `package.json` called `ava.testnet.config.cjs` with the following contents:
-
-```js
-module.exports = {
- ...require('near-workspaces/ava.testnet.config.cjs'),
- ...require('./ava.config.cjs'),
-};
-module.exports.environmentVariables = {
-    TESTNET_MASTER_ACCOUNT_ID: '<masterAccountId>',
-};
-```
-
-The [near-workspaces/ava.testnet.config.cjs](https://github.com/near/workspaces-js/blob/main/ava.testnet.config.cjs) import sets the `NEAR_WORKSPACES_NETWORK` environment variable for you. A benefit of this approach is that you can then easily ignore files that should only run in Sandbox mode.
-
-Now you'll also want to add a `test:testnet` script to your `package.json`'s `scripts` section:
-
-```diff
-"scripts": {
-  "test": "ava",
-+  "test:testnet": "ava --config ./ava.testnet.config.cjs"
-}
-```
-
-</TabItem>
+  </TabItem>
 
 </Tabs>
 
