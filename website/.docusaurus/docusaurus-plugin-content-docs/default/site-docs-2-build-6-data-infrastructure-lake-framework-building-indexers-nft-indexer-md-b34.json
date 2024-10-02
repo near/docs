@@ -16,7 +16,7 @@
   "frontMatter": {
     "sidebar_label": "NFT Indexer"
   },
-  "sidebar": "build",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Python tutorial",
     "permalink": "/build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer"

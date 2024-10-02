@@ -124,15 +124,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', 'cd7'),
+    component: ComponentCreator('/zh-CN/', 'f4a'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', 'fbe'),
+        component: ComponentCreator('/zh-CN/', 'b82'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', 'cb7'),
+            component: ComponentCreator('/zh-CN/', 'd09'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -253,6 +253,12 @@ export default [
                 sidebar: "build"
               },
               {
+                path: '/zh-CN/build/data-infrastructure/data-apis',
+                component: ComponentCreator('/zh-CN/build/data-infrastructure/data-apis', '82f'),
+                exact: true,
+                sidebar: "build"
+              },
+              {
                 path: '/zh-CN/build/data-infrastructure/lake-data-structures/block',
                 component: ComponentCreator('/zh-CN/build/data-infrastructure/lake-data-structures/block', 'd2f'),
                 exact: true,
@@ -302,33 +308,33 @@ export default [
               },
               {
                 path: '/zh-CN/build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer',
-                component: ComponentCreator('/zh-CN/build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer', '7c9'),
+                component: ComponentCreator('/zh-CN/build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer', 'd2a'),
                 exact: true,
-                sidebar: "build"
+                sidebar: "tutorials"
               },
               {
                 path: '/zh-CN/build/data-infrastructure/lake-framework/building-indexers/nft-indexer',
-                component: ComponentCreator('/zh-CN/build/data-infrastructure/lake-framework/building-indexers/nft-indexer', '4df'),
+                component: ComponentCreator('/zh-CN/build/data-infrastructure/lake-framework/building-indexers/nft-indexer', '4e7'),
                 exact: true,
-                sidebar: "build"
+                sidebar: "tutorials"
               },
               {
                 path: '/zh-CN/build/data-infrastructure/lake-framework/building-indexers/primitives',
-                component: ComponentCreator('/zh-CN/build/data-infrastructure/lake-framework/building-indexers/primitives', 'f95'),
+                component: ComponentCreator('/zh-CN/build/data-infrastructure/lake-framework/building-indexers/primitives', '4dc'),
                 exact: true,
-                sidebar: "build"
+                sidebar: "tutorials"
               },
               {
                 path: '/zh-CN/build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer',
-                component: ComponentCreator('/zh-CN/build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer', 'e7f'),
+                component: ComponentCreator('/zh-CN/build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer', '83f'),
                 exact: true,
-                sidebar: "build"
+                sidebar: "tutorials"
               },
               {
                 path: '/zh-CN/build/data-infrastructure/lake-framework/building-indexers/python-nft-indexer',
-                component: ComponentCreator('/zh-CN/build/data-infrastructure/lake-framework/building-indexers/python-nft-indexer', '9d7'),
+                component: ComponentCreator('/zh-CN/build/data-infrastructure/lake-framework/building-indexers/python-nft-indexer', '946'),
                 exact: true,
-                sidebar: "build"
+                sidebar: "tutorials"
               },
               {
                 path: '/zh-CN/build/data-infrastructure/lake-framework/migrating-to-near-lake-framework',
@@ -367,62 +373,8 @@ export default [
                 sidebar: "build"
               },
               {
-                path: '/zh-CN/build/data-infrastructure/query-api/best-practices',
-                component: ComponentCreator('/zh-CN/build/data-infrastructure/query-api/best-practices', '810'),
-                exact: true,
-                sidebar: "build"
-              },
-              {
-                path: '/zh-CN/build/data-infrastructure/query-api/context-object',
-                component: ComponentCreator('/zh-CN/build/data-infrastructure/query-api/context-object', 'dd0'),
-                exact: true,
-                sidebar: "build"
-              },
-              {
-                path: '/zh-CN/build/data-infrastructure/query-api/how-it-works',
-                component: ComponentCreator('/zh-CN/build/data-infrastructure/query-api/how-it-works', '4d5'),
-                exact: true,
-                sidebar: "build"
-              },
-              {
-                path: '/zh-CN/build/data-infrastructure/query-api/index-functions',
-                component: ComponentCreator('/zh-CN/build/data-infrastructure/query-api/index-functions', '316'),
-                exact: true,
-                sidebar: "build"
-              },
-              {
-                path: '/zh-CN/build/data-infrastructure/query-api/indexers',
-                component: ComponentCreator('/zh-CN/build/data-infrastructure/query-api/indexers', 'ed5'),
-                exact: true,
-                sidebar: "build"
-              },
-              {
-                path: '/zh-CN/build/data-infrastructure/query-api/intro',
-                component: ComponentCreator('/zh-CN/build/data-infrastructure/query-api/intro', '5c7'),
-                exact: true,
-                sidebar: "build"
-              },
-              {
-                path: '/zh-CN/build/data-infrastructure/query-api/migrate-from-near-lake',
-                component: ComponentCreator('/zh-CN/build/data-infrastructure/query-api/migrate-from-near-lake', 'c85'),
-                exact: true,
-                sidebar: "build"
-              },
-              {
-                path: '/zh-CN/build/data-infrastructure/query-api/query-data',
-                component: ComponentCreator('/zh-CN/build/data-infrastructure/query-api/query-data', '5d1'),
-                exact: true,
-                sidebar: "build"
-              },
-              {
                 path: '/zh-CN/build/data-infrastructure/what-is',
                 component: ComponentCreator('/zh-CN/build/data-infrastructure/what-is', 'a0d'),
-                exact: true,
-                sidebar: "build"
-              },
-              {
-                path: '/zh-CN/build/near-components/anatomy/bos-components',
-                component: ComponentCreator('/zh-CN/build/near-components/anatomy/bos-components', 'bd0'),
                 exact: true,
                 sidebar: "build"
               },
@@ -1200,12 +1152,6 @@ export default [
                 sidebar: "build"
               },
               {
-                path: '/zh-CN/concepts/data-flow/data-storage',
-                component: ComponentCreator('/zh-CN/concepts/data-flow/data-storage', '3af'),
-                exact: true,
-                sidebar: "build"
-              },
-              {
                 path: '/zh-CN/concepts/data-flow/near-data-flow',
                 component: ComponentCreator('/zh-CN/concepts/data-flow/near-data-flow', '4f9'),
                 exact: true,
@@ -1798,30 +1744,6 @@ export default [
                 sidebar: "tutorials"
               },
               {
-                path: '/zh-CN/tutorials/near-components/indexer-tutorials/feed-indexer',
-                component: ComponentCreator('/zh-CN/tutorials/near-components/indexer-tutorials/feed-indexer', 'c04'),
-                exact: true,
-                sidebar: "tutorials"
-              },
-              {
-                path: '/zh-CN/tutorials/near-components/indexer-tutorials/hype-indexer',
-                component: ComponentCreator('/zh-CN/tutorials/near-components/indexer-tutorials/hype-indexer', '8de'),
-                exact: true,
-                sidebar: "tutorials"
-              },
-              {
-                path: '/zh-CN/tutorials/near-components/indexer-tutorials/nft-indexer',
-                component: ComponentCreator('/zh-CN/tutorials/near-components/indexer-tutorials/nft-indexer', '25c'),
-                exact: true,
-                sidebar: "tutorials"
-              },
-              {
-                path: '/zh-CN/tutorials/near-components/indexer-tutorials/posts-indexer',
-                component: ComponentCreator('/zh-CN/tutorials/near-components/indexer-tutorials/posts-indexer', '6cd'),
-                exact: true,
-                sidebar: "tutorials"
-              },
-              {
                 path: '/zh-CN/tutorials/near-components/interaction',
                 component: ComponentCreator('/zh-CN/tutorials/near-components/interaction', '1b8'),
                 exact: true,
@@ -1836,12 +1758,6 @@ export default [
               {
                 path: '/zh-CN/tutorials/near-components/push-notifications',
                 component: ComponentCreator('/zh-CN/tutorials/near-components/push-notifications', '4a9'),
-                exact: true,
-                sidebar: "tutorials"
-              },
-              {
-                path: '/zh-CN/tutorials/near-components/queryapi-websockets',
-                component: ComponentCreator('/zh-CN/tutorials/near-components/queryapi-websockets', '5f6'),
                 exact: true,
                 sidebar: "tutorials"
               },

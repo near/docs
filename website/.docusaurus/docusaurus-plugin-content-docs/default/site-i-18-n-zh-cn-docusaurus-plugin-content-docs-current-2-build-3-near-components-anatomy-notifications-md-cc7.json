@@ -23,7 +23,7 @@
     "permalink": "/zh-CN/build/near-components/anatomy/social"
   },
   "next": {
-    "title": "Handling Historical data",
-    "permalink": "/zh-CN/build/near-components/anatomy/bos-components"
+    "title": "Using components on WebApps",
+    "permalink": "/zh-CN/build/near-components/bos-gateway"
   }
 }

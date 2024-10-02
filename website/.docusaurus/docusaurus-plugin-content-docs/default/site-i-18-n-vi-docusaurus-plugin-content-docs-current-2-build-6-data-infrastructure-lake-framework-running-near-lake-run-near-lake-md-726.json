@@ -19,8 +19,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "NFT indexer for Python",
-    "permalink": "/vi/build/data-infrastructure/lake-framework/building-indexers/python-nft-indexer"
+    "title": "Migrating to NEAR Lake framework",
+    "permalink": "/vi/build/data-infrastructure/lake-framework/migrating-to-near-lake-framework"
   },
   "next": {
     "title": "Start options",

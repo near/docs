@@ -16,13 +16,13 @@
   "frontMatter": {
     "sidebar_label": "NFT indexer for Python"
   },
-  "sidebar": "build",
+  "sidebar": "tutorials",
   "previous": {
     "title": "NFT Indexer",
     "permalink": "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/nft-indexer"
   },
   "next": {
-    "title": "Running Lake Indexer",
-    "permalink": "/zh-CN/build/data-infrastructure/lake-framework/running-near-lake/run-lake-indexer"
+    "title": "Crossword Game Overview",
+    "permalink": "/zh-CN/tutorials/crosswords/basics/overview"
   }
 }

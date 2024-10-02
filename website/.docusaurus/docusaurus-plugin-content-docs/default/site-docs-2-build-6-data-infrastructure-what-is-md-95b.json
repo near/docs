@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/what-is.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "gagdiez",
-  "lastUpdatedAt": 1712759479000,
+  "lastUpdatedBy": "Guille",
+  "lastUpdatedAt": 1727867123000,
   "frontMatter": {
     "id": "what-is",
     "title": "What is Data Infrastructure?"
@@ -23,7 +23,7 @@
     "permalink": "/build/primitives/dex"
   },
   "next": {
-    "title": "Data on the Blockchain",
-    "permalink": "/concepts/data-flow/data-storage"
+    "title": "Data APIs",
+    "permalink": "/build/data-infrastructure/data-apis"
   }
 }

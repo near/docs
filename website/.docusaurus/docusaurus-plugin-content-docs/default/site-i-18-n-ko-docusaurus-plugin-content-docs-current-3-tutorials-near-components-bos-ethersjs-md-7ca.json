@@ -19,8 +19,8 @@
   },
   "sidebar": "tutorials",
   "previous": {
-    "title": "WebSockets & QueryAPI",
-    "permalink": "/ko/tutorials/near-components/queryapi-websockets"
+    "title": "Push Notifications",
+    "permalink": "/ko/tutorials/near-components/push-notifications"
   },
   "next": {
     "title": "Best Practices for Ethereum developers on NEAR",

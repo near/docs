@@ -23,7 +23,7 @@
     "permalink": "/ko/tutorials/near-components/blog-posts"
   },
   "next": {
-    "title": "WebSockets & QueryAPI",
-    "permalink": "/ko/tutorials/near-components/queryapi-websockets"
+    "title": "NEAR for Ethereum developers",
+    "permalink": "/ko/tutorials/near-components/ethers-js"
   }
 }

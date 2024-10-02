@@ -321,17 +321,17 @@
       "plugin": "c141421f"
     }
   },
-  "/zh-CN/-cd7": {
+  "/zh-CN/-f4a": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "aba21aa0"
     }
   },
-  "/zh-CN/-fbe": {
+  "/zh-CN/-b82": {
     "__comp": "a7bd4aaa",
     "__props": "363b7d6a"
   },
-  "/zh-CN/-cb7": {
+  "/zh-CN/-d09": {
     "__comp": "a94703ab"
   },
   "/zh-CN/api/rpc/access-keys-c8f": {
@@ -414,6 +414,10 @@
     "__comp": "17896441",
     "content": "845c1227"
   },
+  "/zh-CN/build/data-infrastructure/data-apis-82f": {
+    "__comp": "17896441",
+    "content": "7893ce0c"
+  },
   "/zh-CN/build/data-infrastructure/lake-data-structures/block-d2f": {
     "__comp": "17896441",
     "content": "8d73ebb5"
@@ -446,23 +450,23 @@
     "__comp": "17896441",
     "content": "93c09fdc"
   },
-  "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer-7c9": {
+  "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer-d2a": {
     "__comp": "17896441",
     "content": "9263ab35"
   },
-  "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/nft-indexer-4df": {
+  "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/nft-indexer-4e7": {
     "__comp": "17896441",
     "content": "6cddc2ba"
   },
-  "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/primitives-f95": {
+  "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/primitives-4dc": {
     "__comp": "17896441",
     "content": "9d890403"
   },
-  "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer-e7f": {
+  "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer-83f": {
     "__comp": "17896441",
     "content": "daa2b923"
   },
-  "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/python-nft-indexer-9d7": {
+  "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/python-nft-indexer-946": {
     "__comp": "17896441",
     "content": "7d702db3"
   },
@@ -490,45 +494,9 @@
     "__comp": "17896441",
     "content": "ea183b16"
   },
-  "/zh-CN/build/data-infrastructure/query-api/best-practices-810": {
-    "__comp": "17896441",
-    "content": "c9046143"
-  },
-  "/zh-CN/build/data-infrastructure/query-api/context-object-dd0": {
-    "__comp": "17896441",
-    "content": "8fa2e89e"
-  },
-  "/zh-CN/build/data-infrastructure/query-api/how-it-works-4d5": {
-    "__comp": "17896441",
-    "content": "6fee966f"
-  },
-  "/zh-CN/build/data-infrastructure/query-api/index-functions-316": {
-    "__comp": "17896441",
-    "content": "d425d5ca"
-  },
-  "/zh-CN/build/data-infrastructure/query-api/indexers-ed5": {
-    "__comp": "17896441",
-    "content": "edcfb203"
-  },
-  "/zh-CN/build/data-infrastructure/query-api/intro-5c7": {
-    "__comp": "17896441",
-    "content": "a03371c9"
-  },
-  "/zh-CN/build/data-infrastructure/query-api/migrate-from-near-lake-c85": {
-    "__comp": "17896441",
-    "content": "435c95a5"
-  },
-  "/zh-CN/build/data-infrastructure/query-api/query-data-5d1": {
-    "__comp": "17896441",
-    "content": "335d733b"
-  },
   "/zh-CN/build/data-infrastructure/what-is-a0d": {
     "__comp": "17896441",
     "content": "47622e92"
-  },
-  "/zh-CN/build/near-components/anatomy/bos-components-bd0": {
-    "__comp": "17896441",
-    "content": "67d214cc"
   },
   "/zh-CN/build/near-components/anatomy/builtin-components-ecb": {
     "__comp": "17896441",
@@ -1094,10 +1062,6 @@
     "__comp": "17896441",
     "content": "d6fd0179"
   },
-  "/zh-CN/concepts/data-flow/data-storage-3af": {
-    "__comp": "17896441",
-    "content": "0deefcb9"
-  },
   "/zh-CN/concepts/data-flow/near-data-flow-4f9": {
     "__comp": "17896441",
     "content": "22e65570"
@@ -1498,22 +1462,6 @@
     "__comp": "17896441",
     "content": "695ed632"
   },
-  "/zh-CN/tutorials/near-components/indexer-tutorials/feed-indexer-c04": {
-    "__comp": "17896441",
-    "content": "ad9a9498"
-  },
-  "/zh-CN/tutorials/near-components/indexer-tutorials/hype-indexer-8de": {
-    "__comp": "17896441",
-    "content": "62db7f9e"
-  },
-  "/zh-CN/tutorials/near-components/indexer-tutorials/nft-indexer-25c": {
-    "__comp": "17896441",
-    "content": "54d5eb84"
-  },
-  "/zh-CN/tutorials/near-components/indexer-tutorials/posts-indexer-6cd": {
-    "__comp": "17896441",
-    "content": "4e7b8369"
-  },
   "/zh-CN/tutorials/near-components/interaction-1b8": {
     "__comp": "17896441",
     "content": "eb5a2a9f"
@@ -1525,10 +1473,6 @@
   "/zh-CN/tutorials/near-components/push-notifications-4a9": {
     "__comp": "17896441",
     "content": "02738de1"
-  },
-  "/zh-CN/tutorials/near-components/queryapi-websockets-5f6": {
-    "__comp": "17896441",
-    "content": "6728d5ba"
   },
   "/zh-CN/tutorials/near-components/using-iframes-1b1": {
     "__comp": "17896441",

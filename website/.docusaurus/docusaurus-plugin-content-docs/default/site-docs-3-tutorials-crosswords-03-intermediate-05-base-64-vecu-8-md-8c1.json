@@ -23,9 +23,5 @@
   "previous": {
     "title": "Cross-contract calls, etc.",
     "permalink": "/tutorials/crosswords/intermediate/cross-contract-calls"
-  },
-  "next": {
-    "title": "Posts Indexer",
-    "permalink": "/tutorials/near-components/indexer-tutorials/posts-indexer"
   }
 }

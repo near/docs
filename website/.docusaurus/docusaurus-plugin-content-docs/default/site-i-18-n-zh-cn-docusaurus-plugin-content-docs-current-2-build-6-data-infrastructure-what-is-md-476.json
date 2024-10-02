@@ -23,7 +23,7 @@
     "permalink": "/zh-CN/build/primitives/dex"
   },
   "next": {
-    "title": "Data on the Blockchain",
-    "permalink": "/zh-CN/concepts/data-flow/data-storage"
+    "title": "Data APIs",
+    "permalink": "/zh-CN/build/data-infrastructure/data-apis"
   }
 }

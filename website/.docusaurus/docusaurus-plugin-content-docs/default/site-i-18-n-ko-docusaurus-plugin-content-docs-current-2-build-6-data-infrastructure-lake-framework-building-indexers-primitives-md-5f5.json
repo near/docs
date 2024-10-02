@@ -18,10 +18,10 @@
     "title": "NEAR Lake Primitive Types",
     "sidebar_label": "Lake Primitive Types"
   },
-  "sidebar": "build",
+  "sidebar": "tutorials",
   "previous": {
-    "title": "NEAR Lake 프레임워크로 마이그레이션",
-    "permalink": "/ko/build/data-infrastructure/lake-framework/migrating-to-near-lake-framework"
+    "title": "게으른 발행, 컬렉션 등!",
+    "permalink": "/ko/tutorials/nfts/series"
   },
   "next": {
     "title": "비동기식",

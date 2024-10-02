@@ -16,13 +16,13 @@
   "frontMatter": {
     "sidebar_label": "Python용 NFT 인덱서"
   },
-  "sidebar": "build",
+  "sidebar": "tutorials",
   "previous": {
     "title": "NFT Indexer",
     "permalink": "/ko/build/data-infrastructure/lake-framework/building-indexers/nft-indexer"
   },
   "next": {
-    "title": "Running Lake Indexer",
-    "permalink": "/ko/build/data-infrastructure/lake-framework/running-near-lake/run-lake-indexer"
+    "title": "십자말풀이 게임 개요",
+    "permalink": "/ko/tutorials/crosswords/basics/overview"
   }
 }

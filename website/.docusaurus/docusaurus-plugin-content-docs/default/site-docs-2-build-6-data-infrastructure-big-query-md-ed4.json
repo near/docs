@@ -20,11 +20,11 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Data on the Blockchain",
-    "permalink": "/concepts/data-flow/data-storage"
+    "title": "Data APIs",
+    "permalink": "/build/data-infrastructure/data-apis"
   },
   "next": {
-    "title": "Introduction",
-    "permalink": "/build/data-infrastructure/query-api/intro"
+    "title": "Lake Framework",
+    "permalink": "/concepts/advanced/near-lake-framework"
   }
 }

@@ -1,0 +1,29 @@
+{
+  "id": "build/data-infrastructure/data-apis",
+  "title": "Data APIs",
+  "description": "Members of the NEAR community have built a set of APIs to access and monitor on-chain data. These APIs are designed to be easy to use and can be accessed from any application through a simple API call.",
+  "source": "@site/../docs/2.build/6.data-infrastructure/data-api.md",
+  "sourceDirName": "2.build/6.data-infrastructure",
+  "slug": "/build/data-infrastructure/data-apis",
+  "permalink": "/zh-CN/build/data-infrastructure/data-apis",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/2.build/6.data-infrastructure/data-api.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Guille",
+  "lastUpdatedAt": 1727867123000,
+  "frontMatter": {
+    "id": "data-apis",
+    "title": "Data APIs"
+  },
+  "sidebar": "build",
+  "previous": {
+    "title": "What is Data Infrastructure?",
+    "permalink": "/zh-CN/build/data-infrastructure/what-is"
+  },
+  "next": {
+    "title": "BigQuery",
+    "permalink": "/zh-CN/build/data-infrastructure/big-query"
+  }
+}

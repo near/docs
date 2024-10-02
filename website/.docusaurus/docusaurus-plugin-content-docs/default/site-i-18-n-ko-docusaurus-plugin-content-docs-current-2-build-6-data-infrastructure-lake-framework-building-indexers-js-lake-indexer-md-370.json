@@ -18,7 +18,7 @@
     "title": "JS 기본 튜토리얼",
     "sidebar_label": "비동기식"
   },
-  "sidebar": "build",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Lake Primitive Types",
     "permalink": "/ko/build/data-infrastructure/lake-framework/building-indexers/primitives"

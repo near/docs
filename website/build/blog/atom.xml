@@ -54,7 +54,7 @@
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="deprecated-services">Deprecated Services<a href="https://docs.near.org/blog/2024-08-13-pagoda-services#deprecated-services" class="hash-link" aria-label="Direct link to Deprecated Services" title="Direct link to Deprecated Services">​</a></h3>
 <p>Between now and February 2025, Pagoda's development work will slow down or stop on the following products and services:</p>
 <ul>
-<li><a href="https://docs.near.org/build/data-infrastructure/query-api/intro" target="_blank" rel="noopener noreferrer">QueryAPI</a></li>
+<li>QueryAPI</li>
 <li><a href="https://docs.near.org/pagoda/rpc/api" target="_blank" rel="noopener noreferrer">Enhanced API</a></li>
 <li><a href="https://docs.near.org/pagoda/alerts/intro" target="_blank" rel="noopener noreferrer">Alerts &amp; Triggers</a></li>
 </ul>

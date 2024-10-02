@@ -22,8 +22,8 @@
   },
   "sidebar": "tutorials",
   "previous": {
-    "title": "Lazy Minting, Collections, and More!",
-    "permalink": "/vi/tutorials/nfts/series"
+    "title": "NFT indexer for Python",
+    "permalink": "/vi/build/data-infrastructure/lake-framework/building-indexers/python-nft-indexer"
   },
   "next": {
     "title": "Set up Rust and a contract skeleton",

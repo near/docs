@@ -20,11 +20,11 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "블록체인 데이터",
-    "permalink": "/ko/concepts/data-flow/data-storage"
+    "title": "Data APIs",
+    "permalink": "/ko/build/data-infrastructure/data-apis"
   },
   "next": {
-    "title": "Introduction",
-    "permalink": "/ko/build/data-infrastructure/query-api/intro"
+    "title": "Lake 프레임워크",
+    "permalink": "/ko/concepts/advanced/near-lake-framework"
   }
 }

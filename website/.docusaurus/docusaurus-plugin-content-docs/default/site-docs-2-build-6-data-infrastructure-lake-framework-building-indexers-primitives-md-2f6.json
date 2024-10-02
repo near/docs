@@ -18,10 +18,10 @@
     "title": "NEAR Lake Primitive Types",
     "sidebar_label": "Lake Primitive Types"
   },
-  "sidebar": "build",
+  "sidebar": "tutorials",
   "previous": {
-    "title": "Migrating to NEAR Lake framework",
-    "permalink": "/build/data-infrastructure/lake-framework/migrating-to-near-lake-framework"
+    "title": "Lazy Minting, Collections, and More!",
+    "permalink": "/tutorials/nfts/series"
   },
   "next": {
     "title": "JS basic tutorial",

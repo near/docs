@@ -109,6 +109,11 @@
               "sidebar": "build"
             },
             {
+              "id": "build/data-infrastructure/data-apis",
+              "path": "/zh-CN/build/data-infrastructure/data-apis",
+              "sidebar": "build"
+            },
+            {
               "id": "build/data-infrastructure/lake-data-structures/block",
               "path": "/zh-CN/build/data-infrastructure/lake-data-structures/block",
               "sidebar": "build"
@@ -151,27 +156,27 @@
             {
               "id": "build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer",
               "path": "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer",
-              "sidebar": "build"
+              "sidebar": "tutorials"
             },
             {
               "id": "build/data-infrastructure/lake-framework/building-indexers/nft-indexer",
               "path": "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/nft-indexer",
-              "sidebar": "build"
+              "sidebar": "tutorials"
             },
             {
               "id": "build/data-infrastructure/lake-framework/building-indexers/primitives",
               "path": "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/primitives",
-              "sidebar": "build"
+              "sidebar": "tutorials"
             },
             {
               "id": "build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer",
               "path": "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer",
-              "sidebar": "build"
+              "sidebar": "tutorials"
             },
             {
               "id": "build/data-infrastructure/lake-framework/building-indexers/python-nft-indexer",
               "path": "/zh-CN/build/data-infrastructure/lake-framework/building-indexers/python-nft-indexer",
-              "sidebar": "build"
+              "sidebar": "tutorials"
             },
             {
               "id": "build/data-infrastructure/lake-framework/migrating-to-near-lake-framework",
@@ -204,53 +209,8 @@
               "sidebar": "build"
             },
             {
-              "id": "build/data-infrastructure/query-api/best-practices",
-              "path": "/zh-CN/build/data-infrastructure/query-api/best-practices",
-              "sidebar": "build"
-            },
-            {
-              "id": "build/data-infrastructure/query-api/context-object",
-              "path": "/zh-CN/build/data-infrastructure/query-api/context-object",
-              "sidebar": "build"
-            },
-            {
-              "id": "build/data-infrastructure/query-api/how-it-works",
-              "path": "/zh-CN/build/data-infrastructure/query-api/how-it-works",
-              "sidebar": "build"
-            },
-            {
-              "id": "build/data-infrastructure/query-api/index-functions",
-              "path": "/zh-CN/build/data-infrastructure/query-api/index-functions",
-              "sidebar": "build"
-            },
-            {
-              "id": "build/data-infrastructure/query-api/indexers",
-              "path": "/zh-CN/build/data-infrastructure/query-api/indexers",
-              "sidebar": "build"
-            },
-            {
-              "id": "build/data-infrastructure/query-api/intro",
-              "path": "/zh-CN/build/data-infrastructure/query-api/intro",
-              "sidebar": "build"
-            },
-            {
-              "id": "build/data-infrastructure/query-api/migrate-from-near-lake",
-              "path": "/zh-CN/build/data-infrastructure/query-api/migrate-from-near-lake",
-              "sidebar": "build"
-            },
-            {
-              "id": "build/data-infrastructure/query-api/query-data",
-              "path": "/zh-CN/build/data-infrastructure/query-api/query-data",
-              "sidebar": "build"
-            },
-            {
               "id": "build/data-infrastructure/what-is",
               "path": "/zh-CN/build/data-infrastructure/what-is",
-              "sidebar": "build"
-            },
-            {
-              "id": "build/near-components/anatomy/bos-components",
-              "path": "/zh-CN/build/near-components/anatomy/bos-components",
               "sidebar": "build"
             },
             {
@@ -891,11 +851,6 @@
               "sidebar": "build"
             },
             {
-              "id": "concepts/data-flow/data-storage",
-              "path": "/zh-CN/concepts/data-flow/data-storage",
-              "sidebar": "build"
-            },
-            {
               "id": "concepts/data-flow/near-data-flow",
               "path": "/zh-CN/concepts/data-flow/near-data-flow",
               "sidebar": "build"
@@ -1388,26 +1343,6 @@
               "sidebar": "tutorials"
             },
             {
-              "id": "tutorials/near-components/indexer-tutorials/feed-indexer",
-              "path": "/zh-CN/tutorials/near-components/indexer-tutorials/feed-indexer",
-              "sidebar": "tutorials"
-            },
-            {
-              "id": "tutorials/near-components/indexer-tutorials/hype-indexer",
-              "path": "/zh-CN/tutorials/near-components/indexer-tutorials/hype-indexer",
-              "sidebar": "tutorials"
-            },
-            {
-              "id": "tutorials/near-components/indexer-tutorials/nft-indexer",
-              "path": "/zh-CN/tutorials/near-components/indexer-tutorials/nft-indexer",
-              "sidebar": "tutorials"
-            },
-            {
-              "id": "tutorials/near-components/indexer-tutorials/posts-indexer",
-              "path": "/zh-CN/tutorials/near-components/indexer-tutorials/posts-indexer",
-              "sidebar": "tutorials"
-            },
-            {
               "id": "tutorials/near-components/interaction",
               "path": "/zh-CN/tutorials/near-components/interaction",
               "sidebar": "tutorials"
@@ -1420,11 +1355,6 @@
             {
               "id": "tutorials/near-components/push-notifications",
               "path": "/zh-CN/tutorials/near-components/push-notifications",
-              "sidebar": "tutorials"
-            },
-            {
-              "id": "tutorials/near-components/queryapi-websockets",
-              "path": "/zh-CN/tutorials/near-components/queryapi-websockets",
               "sidebar": "tutorials"
             },
             {

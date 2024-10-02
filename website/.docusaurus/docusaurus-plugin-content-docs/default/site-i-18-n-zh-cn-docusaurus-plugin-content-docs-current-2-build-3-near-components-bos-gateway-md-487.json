@@ -19,8 +19,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Handling Historical data",
-    "permalink": "/zh-CN/build/near-components/anatomy/bos-components"
+    "title": "Social Notifications",
+    "permalink": "/zh-CN/build/near-components/anatomy/notifications"
   },
   "next": {
     "title": "Integrating Components",

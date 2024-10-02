@@ -22,7 +22,7 @@
     "permalink": "/ko/build/data-infrastructure/lake-framework/near-lake-state-changes-indexer"
   },
   "next": {
-    "title": "Lake Primitive Types",
-    "permalink": "/ko/build/data-infrastructure/lake-framework/building-indexers/primitives"
+    "title": "Running Lake Indexer",
+    "permalink": "/ko/build/data-infrastructure/lake-framework/running-near-lake/run-lake-indexer"
   }
 }

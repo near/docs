@@ -16,7 +16,7 @@
   "frontMatter": {
     "sidebar_label": "Python tutorial"
   },
-  "sidebar": "build",
+  "sidebar": "tutorials",
   "previous": {
     "title": "JS basic tutorial",
     "permalink": "/vi/build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer"

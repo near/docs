@@ -23,9 +23,5 @@
   "previous": {
     "title": "교차 컨트랙트 호출 등",
     "permalink": "/ko/tutorials/crosswords/intermediate/cross-contract-calls"
-  },
-  "next": {
-    "title": "Posts 인덱서",
-    "permalink": "/ko/tutorials/near-components/indexer-tutorials/posts-indexer"
   }
 }

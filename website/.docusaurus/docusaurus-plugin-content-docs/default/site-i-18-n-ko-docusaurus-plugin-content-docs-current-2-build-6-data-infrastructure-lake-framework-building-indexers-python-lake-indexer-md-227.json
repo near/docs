@@ -16,7 +16,7 @@
   "frontMatter": {
     "sidebar_label": "Python 튜토리얼"
   },
-  "sidebar": "build",
+  "sidebar": "tutorials",
   "previous": {
     "title": "비동기식",
     "permalink": "/ko/build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer"

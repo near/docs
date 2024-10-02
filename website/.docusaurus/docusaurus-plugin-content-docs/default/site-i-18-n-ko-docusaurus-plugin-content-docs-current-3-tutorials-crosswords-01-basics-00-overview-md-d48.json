@@ -22,8 +22,8 @@
   },
   "sidebar": "tutorials",
   "previous": {
-    "title": "게으른 발행, 컬렉션 등!",
-    "permalink": "/ko/tutorials/nfts/series"
+    "title": "Python용 NFT 인덱서",
+    "permalink": "/ko/build/data-infrastructure/lake-framework/building-indexers/python-nft-indexer"
   },
   "next": {
     "title": "Rust 및 컨트랙트 뼈대 설정",

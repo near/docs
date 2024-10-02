@@ -19,8 +19,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Python용 NFT 인덱서",
-    "permalink": "/ko/build/data-infrastructure/lake-framework/building-indexers/python-nft-indexer"
+    "title": "NEAR Lake 프레임워크로 마이그레이션",
+    "permalink": "/ko/build/data-infrastructure/lake-framework/migrating-to-near-lake-framework"
   },
   "next": {
     "title": "시작 옵션",

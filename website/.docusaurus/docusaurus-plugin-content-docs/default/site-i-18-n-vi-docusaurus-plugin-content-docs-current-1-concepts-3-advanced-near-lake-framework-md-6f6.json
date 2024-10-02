@@ -18,8 +18,8 @@
   },
   "sidebar": "build",
   "previous": {
-    "title": "Migrate from Lake framework",
-    "permalink": "/vi/build/data-infrastructure/query-api/migrate-from-near-lake"
+    "title": "BigQuery",
+    "permalink": "/vi/build/data-infrastructure/big-query"
   },
   "next": {
     "title": "Lake Overview",

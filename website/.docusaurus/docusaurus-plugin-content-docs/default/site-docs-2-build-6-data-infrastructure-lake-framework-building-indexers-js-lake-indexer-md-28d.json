@@ -18,7 +18,7 @@
     "title": "JS basic tutorial",
     "sidebar_label": "JS basic tutorial"
   },
-  "sidebar": "build",
+  "sidebar": "tutorials",
   "previous": {
     "title": "Lake Primitive Types",
     "permalink": "/build/data-infrastructure/lake-framework/building-indexers/primitives"
