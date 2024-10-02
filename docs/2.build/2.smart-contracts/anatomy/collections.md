@@ -27,11 +27,15 @@ However, if your collection has 1,000 or more entries, it's better to use SDK co
 
 </details>
 
-:::info How the State is Handled
+<details>
 
-Each time the contract is executed, the first thing it will do is to read the values and [deserialize](./serialization.md) them into memory, and after the function finishes, it will [serialize](./serialization.md) and write the values back to the database. That means the contract will load your native collections fully into memory before the contract's method execution. The method you invoke may not even use the loaded collection. This will have impact on GAS you spend for methods in your contract. So, using native collection which will have more than 100 entries as the top level property of your contract is a bad practice.
+ <summary> How the State is Handled </summary>
 
-:::
+Each time the contract is executed, the first thing it will do is to read the values and [deserialize](./serialization.md) them into memory, and after the function finishes, it will [serialize](./serialization.md) and write the values back to the database.
+
+That means the contract will load your native collections fully into memory before the contract's method execution. The method you invoke may not even use the loaded collection. This will have impact on GAS you spend for methods in your contract. So, using native collection which will have more than 100 entries as the top level property of your contract is a bad practice.
+
+</details>
 
 ---
 
