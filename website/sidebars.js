@@ -217,7 +217,6 @@ const sidebar = {
                     "build/near-components/anatomy/near",
                     "build/near-components/anatomy/social",
                     "build/near-components/anatomy/notifications",
-                    "build/near-components/anatomy/bos-components"
                   ]
                 },
                 "build/near-components/bos-gateway",
@@ -268,40 +267,14 @@ const sidebar = {
     "build/data-infrastructure/what-is",
     {
       "NEAR Data Infrastructure": [
-        "concepts/data-flow/data-storage",
+        "build/data-infrastructure/data-apis",
         "build/data-infrastructure/big-query",
-        {
-          "QueryAPI": [
-            "build/data-infrastructure/query-api/intro",
-            "build/data-infrastructure/query-api/how-it-works",
-            "build/data-infrastructure/query-api/indexers",
-            "build/data-infrastructure/query-api/best-practices",
-            "build/data-infrastructure/query-api/index-functions",
-            "build/data-infrastructure/query-api/context-object",
-            "build/data-infrastructure/query-api/query-data",
-            "build/data-infrastructure/query-api/migrate-from-near-lake",
-          ]
-        },
         {
           "Lake Framework": [
             "concepts/advanced/near-lake-framework",
             "build/data-infrastructure/lake-framework/near-lake",
             "build/data-infrastructure/lake-framework/near-lake-state-changes-indexer",
             "build/data-infrastructure/lake-framework/migrating-to-near-lake-framework",
-            {
-              "Building Indexers": [
-                "build/data-infrastructure/lake-framework/building-indexers/primitives",
-                {
-                  "type": "link",
-                  "label": "NEAR Lake Primitives",
-                  "href": "https://near.github.io/near-lake-framework-js/"
-                },
-                "build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer",
-                "build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer",
-                "build/data-infrastructure/lake-framework/building-indexers/nft-indexer",
-                "build/data-infrastructure/lake-framework/building-indexers/python-nft-indexer"
-              ]
-            },
             {
               "Running NEAR Lake": [
                 "build/data-infrastructure/lake-framework/running-near-lake/run-lake-indexer",
@@ -396,7 +369,6 @@ const sidebar = {
         "tutorials/near-components/using-iframes",
         "tutorials/near-components/blog-posts",
         "tutorials/near-components/push-notifications",
-        "tutorials/near-components/queryapi-websockets",
         "tutorials/near-components/ethers-js",
         "tutorials/near-components/ethers-js-best-practices",
         "tutorials/near-components/lido",
@@ -469,6 +441,20 @@ const sidebar = {
       ]
     },
     {
+      "Building Indexers": [
+        "build/data-infrastructure/lake-framework/building-indexers/primitives",
+        {
+          "type": "link",
+          "label": "NEAR Lake Primitives",
+          "href": "https://near.github.io/near-lake-framework-js/"
+        },
+        "build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer",
+        "build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer",
+        "build/data-infrastructure/lake-framework/building-indexers/nft-indexer",
+        "build/data-infrastructure/lake-framework/building-indexers/python-nft-indexer"
+      ]
+    },
+    {
       "Build a Crossword Game": [
         {
           "type": "category",
@@ -508,16 +494,6 @@ const sidebar = {
         }
       ]
     },
-    {
-      "Data Infrastructure":
-        [
-          "tutorials/near-components/indexer-tutorials/posts-indexer",
-          "tutorials/near-components/indexer-tutorials/hype-indexer",
-          "tutorials/near-components/indexer-tutorials/nft-indexer",
-          "tutorials/near-components/indexer-tutorials/feed-indexer",
-        ]
-    },
-
   ],
   "tools": [
     "tools/welcome",
