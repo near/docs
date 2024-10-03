@@ -254,6 +254,7 @@ const sidebar = {
         "build/primitives/oracles",
         "build/primitives/dao",
         "build/primitives/dex",
+        "build/primitives/zk"
       ]
     },
     {
