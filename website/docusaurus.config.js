@@ -90,10 +90,10 @@ const config = {
   themeConfig: {
     image: 'docs/assets/welcome-pages/protocol.png',
     announcementBar: {
-      id: 'id-0007',
+      id: 'id-0008',
       content:
-        '🎉 New Documentation on Smart Contracts: <a href="/build/smart-contracts/anatomy/yield-resume">Yield and Resume</a> 🎉',
-      backgroundColor: '#fafbfc',
+        '🎉 Ethereum Wallets are here! Read more in our <a href="/blog/hello-ethereum-wallets">blogpost</a> and check our <a href="/tools/ethereum-wallets">tutorial to update your app</a> 🎉',
+      backgroundColor: '#fcfbfa',
       textColor: '#333',
       isCloseable: true,
     },
