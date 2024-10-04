@@ -15,25 +15,21 @@ You can choose between two types of collections:
 
 Understanding how the contract stores and loads both types of collections is crucial to decide which one to use.
 
-<details>
-
-<summary> Native vs SDK Collections </summary> 
+:::tip Native vs SDK Collections
 
 Use native collections for small amounts of data that need to be accessed all together, and SDK collections for large amounts of data that do not need to be accessed all together.
 
-If your collection has up to 100 entries, it's acceptable to use the native collection, as it might be simpler since you don't have to manage prefixes as we do with SDK collections.
+If your collection has up to 100 entries, it's acceptable to use the native collection. For larger ones, prefer to use SDK collection. For comparison please refer to [this benchmark](https://www.github.com/volodymyr-matselyukh/near-benchmarking).
 
-However, if your collection has 1,000 or more entries, it's better to use SDK collection. [This user test](https://github.com/volodymyr-matselyukh/near-benchmarking) shows that running the `contains` method on a native `HashSet i32` consumes 41% more gas compared to SDK `IterableSet i32`.
-
-</details>
+:::
 
 <details>
 
- <summary> How the State is Handled </summary>
+<summary> How the State is Handled </summary>
 
 Each time the contract is executed, the first thing it will do is to read the values and [deserialize](./serialization.md) them into memory, and after the function finishes, it will [serialize](./serialization.md) and write the values back to the database.
 
-That means the contract will load your native collections fully into memory before the contract's method execution. The method you invoke may not even use the loaded collection. This will have impact on GAS you spend for methods in your contract. So, using native collection which will have more than 100 entries as the top level property of your contract is a bad practice.
+For native collections, the contract will fully load the collection into memory before all methods execution. The method you invoke may not even use the loaded collection. Know that this will have impact on GAS you spend for methods in your contract.
 
 </details>
 
