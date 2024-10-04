@@ -4,7 +4,7 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 export default [
   {
     path: '/zh-CN/blog',
-    component: ComponentCreator('/zh-CN/blog', '4ab'),
+    component: ComponentCreator('/zh-CN/blog', '922'),
     exact: true
   },
   {
@@ -40,6 +40,11 @@ export default [
   {
     path: '/zh-CN/blog/getting-started-on-windows',
     component: ComponentCreator('/zh-CN/blog/getting-started-on-windows', '7b6'),
+    exact: true
+  },
+  {
+    path: '/zh-CN/blog/hello-ethereum-wallets',
+    component: ComponentCreator('/zh-CN/blog/hello-ethereum-wallets', '84e'),
     exact: true
   },
   {
@@ -94,7 +99,7 @@ export default [
   },
   {
     path: '/zh-CN/blog/tags/updates',
-    component: ComponentCreator('/zh-CN/blog/tags/updates', '82b'),
+    component: ComponentCreator('/zh-CN/blog/tags/updates', 'b3c'),
     exact: true
   },
   {
@@ -124,15 +129,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', 'f4a'),
+    component: ComponentCreator('/zh-CN/', '75c'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', 'b82'),
+        component: ComponentCreator('/zh-CN/', 'f74'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', 'd09'),
+            component: ComponentCreator('/zh-CN/', '43a'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -1361,6 +1366,12 @@ export default [
                 sidebar: "pagoda"
               },
               {
+                path: '/zh-CN/tools/ethereum-wallets',
+                component: ComponentCreator('/zh-CN/tools/ethereum-wallets', 'd14'),
+                exact: true,
+                sidebar: "tools"
+              },
+              {
                 path: '/zh-CN/tools/explorer',
                 component: ComponentCreator('/zh-CN/tools/explorer', 'bff'),
                 exact: true,
@@ -1456,7 +1467,7 @@ export default [
               },
               {
                 path: '/zh-CN/tutorials/auction/basic-auction',
-                component: ComponentCreator('/zh-CN/tutorials/auction/basic-auction', '709'),
+                component: ComponentCreator('/zh-CN/tutorials/auction/basic-auction', '0c1'),
                 exact: true,
                 sidebar: "tutorials"
               },

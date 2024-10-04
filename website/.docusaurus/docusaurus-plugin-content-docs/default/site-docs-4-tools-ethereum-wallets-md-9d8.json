@@ -1,0 +1,29 @@
+{
+  "id": "tools/ethereum-wallets",
+  "title": "How to integrate Ethereum Wallets to Near DApps?",
+  "description": "In this article we will describe how to add EVM wallets support to your Near app, which is already uses the Near Wallet Selector.",
+  "source": "@site/../docs/4.tools/ethereum-wallets.md",
+  "sourceDirName": "4.tools",
+  "slug": "/tools/ethereum-wallets",
+  "permalink": "/zh-CN/tools/ethereum-wallets",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/4.tools/ethereum-wallets.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Guille",
+  "lastUpdatedAt": 1728047316000,
+  "frontMatter": {
+    "sidebar_label": "Ethereum Wallets on Near",
+    "id": "ethereum-wallets"
+  },
+  "sidebar": "tools",
+  "previous": {
+    "title": "Wallet Selector",
+    "permalink": "/zh-CN/tools/wallet-selector"
+  },
+  "next": {
+    "title": "Wallets",
+    "permalink": "/zh-CN/tools/wallets"
+  }
+}

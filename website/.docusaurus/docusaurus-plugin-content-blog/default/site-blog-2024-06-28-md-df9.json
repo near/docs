@@ -18,6 +18,10 @@
       "name": "Guille",
       "title": "Docs Maintainer",
       "url": "https://github.com/gagdiez",
+      "socials": {
+        "x": "https://x.com/guillewrotethis",
+        "github": "https://github.com/gagdiez"
+      },
       "imageURL": "https://github.com/gagdiez.png",
       "key": "gagdiez",
       "page": null

@@ -1025,6 +1025,11 @@
               "sidebar": "pagoda"
             },
             {
+              "id": "tools/ethereum-wallets",
+              "path": "/zh-CN/tools/ethereum-wallets",
+              "sidebar": "tools"
+            },
+            {
               "id": "tools/explorer",
               "path": "/zh-CN/tools/explorer",
               "sidebar": "tools"

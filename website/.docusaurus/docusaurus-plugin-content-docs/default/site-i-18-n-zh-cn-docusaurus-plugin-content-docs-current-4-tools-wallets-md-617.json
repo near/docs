@@ -20,8 +20,8 @@
   },
   "sidebar": "tools",
   "previous": {
-    "title": "Wallet Selector",
-    "permalink": "/zh-CN/tools/wallet-selector"
+    "title": "Ethereum Wallets on Near",
+    "permalink": "/zh-CN/tools/ethereum-wallets"
   },
   "next": {
     "title": "FastNEAR API",

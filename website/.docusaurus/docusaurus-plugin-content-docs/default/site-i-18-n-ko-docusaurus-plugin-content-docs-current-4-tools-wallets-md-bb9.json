@@ -20,8 +20,8 @@
   },
   "sidebar": "tools",
   "previous": {
-    "title": "NEAR 지갑 선택기",
-    "permalink": "/ko/tools/wallet-selector"
+    "title": "Ethereum Wallets on Near",
+    "permalink": "/ko/tools/ethereum-wallets"
   },
   "next": {
     "title": "FastNEAR API",
