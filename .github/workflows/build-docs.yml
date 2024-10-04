@@ -51,6 +51,10 @@ jobs:
           yarn
           yarn build
 
+      - name: Upload to Crowdin
+        continue-on-error: true
+        run: yarn crowdin:upload
+
       - name: Commit build
         run: |
           git add -f ./website/build ./website/.docusaurus ./website/i18n 

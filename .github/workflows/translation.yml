@@ -40,7 +40,6 @@ jobs:
         run: |
           cd website
           yarn
-          yarn crowdin:upload
           yarn crowdin:download
           yarn build
 

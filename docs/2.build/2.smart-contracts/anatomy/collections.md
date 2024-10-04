@@ -29,7 +29,7 @@ If your collection has up to 100 entries, it's acceptable to use the native coll
 
 Each time the contract is executed, the first thing it will do is to read the values and [deserialize](./serialization.md) them into memory, and after the function finishes, it will [serialize](./serialization.md) and write the values back to the database.
 
-For native collections, the contract will fully load the collection into memory before all methods execution. The method you invoke may not even use the loaded collection. Know that this will have impact on GAS you spend for methods in your contract.
+For native collections, the contract will fully load the collection into memory before any method executes. This happens even if the method you invoke does not use the collection. Know that this will have impact on GAS you spend for methods in your contract.
 
 </details>
 
@@ -294,14 +294,15 @@ Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) w
 Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type)) which persists in the contract's storage. Please refer to the Rust and JS SDK's for a full reference on their interfaces.
 
 <Tabs groupId="code-tabs">
+
   <TabItem value="js" label="🌐 JavaScript">
     <Github fname="contract.ts" language="js"
-          url="https://github.com/near-examples/storage-examples/blob/main/collections-js/src/contract.ts"
-          start="60" end="74" />
+      url="https://github.com/near-examples/storage-examples/blob/main/collections-js/src/contract.ts" start="60" end="74" />
   </TabItem>
+
   <TabItem value="rust" label="🦀 Rust">
       <Github fname="lookup_set.rs" language="rust"
-            url="https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/lookup_set.rs" start="4" end="18"/>
+        url="https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/lookup_set.rs" start="4" end="18"/>
   </TabItem>
 
 </Tabs>
