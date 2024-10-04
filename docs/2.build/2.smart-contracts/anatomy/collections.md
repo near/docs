@@ -23,7 +23,7 @@ Use native collections for small amounts of data that need to be accessed all to
 
 If your collection has up to 100 entries, it's acceptable to use the native collection, as it might be simpler since you don't have to manage prefixes as we do with SDK collections.
 
-However, if your collection has 1,000 or more entries, it's better to use SDK collection. [This user test](https://github.com/volodymyr-matselyukh/near-benchmarking) shows that running the `contains` method on a native `HashSet<i32>` consumes 41% more gas compared to SDK `IterableSet<i32>`.
+However, if your collection has 1,000 or more entries, it's better to use SDK collection. [This user test](https://github.com/volodymyr-matselyukh/near-benchmarking) shows that running the `contains` method on a native `HashSet i32` consumes 41% more gas compared to SDK `IterableSet i32`.
 
 </details>
 
