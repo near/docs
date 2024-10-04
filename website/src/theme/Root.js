@@ -1,6 +1,3 @@
-// https://docusaurus.io/docs/swizzling#wrapper-your-site-with-root
-import '@near-wallet-selector/modal-ui/styles.css';
-
 import React, { useEffect } from 'react';
 import Gleap from "gleap"; // See https://gleap.io/docs/javascript/ and https://app.gleap.io/projects/62697858a4f6850036ae2e6a/widget
 import { withRouter } from 'react-router-dom';
@@ -26,12 +23,8 @@ function Root({ children, location }) {
 
   useEffect(() => {
     if (isBrowser) {
-      const { initRudderAnalytics, recordPageView } = require('./scripts/rudderstack');
 
       Gleap.initialize('K2v3kvAJ5XtPzNYSgk4Ulpe5ptgBkIMv');
-
-      const rudderAnalytics = initRudderAnalytics();
-      recordPageView(rudderAnalytics, location.pathname);
 
       // Initialize PostHog
       posthog.init(customFields.REACT_APP_PUBLIC_POSTHOG_KEY, {

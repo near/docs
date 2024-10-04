@@ -15,17 +15,23 @@ You can choose between two types of collections:
 
 Understanding how the contract stores and loads both types of collections is crucial to decide which one to use.
 
-:::tip
+:::tip Native vs SDK Collections
 
-Use native collections for small amounts of data that need to be accessed all together, and SDK collections for large amounts of data that do not need to be accessed all together
+Use native collections for small amounts of data that need to be accessed all together, and SDK collections for large amounts of data that do not need to be accessed all together.
+
+If your collection has up to 100 entries, it's acceptable to use the native collection. For larger ones, prefer to use SDK collection. For comparison please refer to [this benchmark](https://www.github.com/volodymyr-matselyukh/near-benchmarking).
 
 :::
 
-:::info How the State is Handled
+<details>
+
+<summary> How the State is Handled </summary>
 
 Each time the contract is executed, the first thing it will do is to read the values and [deserialize](./serialization.md) them into memory, and after the function finishes, it will [serialize](./serialization.md) and write the values back to the database.
 
-:::
+For native collections, the contract will fully load the collection into memory before any method executes. This happens even if the method you invoke does not use the collection. Know that this will have impact on GAS you spend for methods in your contract.
+
+</details>
 
 ---
 
@@ -288,14 +294,15 @@ Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) w
 Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type)) which persists in the contract's storage. Please refer to the Rust and JS SDK's for a full reference on their interfaces.
 
 <Tabs groupId="code-tabs">
+
   <TabItem value="js" label="🌐 JavaScript">
     <Github fname="contract.ts" language="js"
-          url="https://github.com/near-examples/storage-examples/blob/main/collections-js/src/contract.ts"
-          start="60" end="74" />
+      url="https://github.com/near-examples/storage-examples/blob/main/collections-js/src/contract.ts" start="60" end="74" />
   </TabItem>
+
   <TabItem value="rust" label="🦀 Rust">
       <Github fname="lookup_set.rs" language="rust"
-            url="https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/lookup_set.rs" start="4" end="18"/>
+        url="https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/lookup_set.rs" start="4" end="18"/>
   </TabItem>
 
 </Tabs>

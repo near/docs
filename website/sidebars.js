@@ -550,6 +550,7 @@ const sidebar = {
       "label": "Wallets",
       "items": [
         "tools/wallet-selector",
+        "tools/ethereum-wallets",
         {
           "type": "link",
           "label": "Remix IDE Plugin",
