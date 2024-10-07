@@ -53,7 +53,9 @@ jobs:
 
       - name: Upload to Crowdin
         continue-on-error: true
-        run: yarn crowdin:upload
+        run: |
+          cd website
+          yarn crowdin:upload
 
       - name: Commit build
         run: |
