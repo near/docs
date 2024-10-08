@@ -1,7 +1,7 @@
 {
   "id": "pagoda/rpc/intro",
   "title": "Pagoda RPC API",
-  "description": "Please be advised that these tools and services will be discontinued soon.",
+  "description": "Please be advised that these tools and services will be discontinued and stop serving traffic on December 9th, 2024.",
   "source": "@site/../docs/pagoda/rpc/intro.md",
   "sourceDirName": "pagoda/rpc",
   "slug": "/pagoda/rpc/intro",
@@ -11,8 +11,8 @@
   "editUrl": "https://github.com/near/docs/edit/master/website/../docs/pagoda/rpc/intro.md",
   "tags": [],
   "version": "current",
-  "lastUpdatedBy": "Reza Rahemtola",
-  "lastUpdatedAt": 1723468934000,
+  "lastUpdatedBy": "Pavel Kudinov",
+  "lastUpdatedAt": 1728426009000,
   "sidebarPosition": 1,
   "frontMatter": {
     "sidebar_position": 1,
