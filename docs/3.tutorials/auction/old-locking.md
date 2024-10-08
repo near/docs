@@ -1,9 +1,3 @@
----
-id: locking-the-contract
-title: Locking the contract
-sidebar_label: Locking the contract
----
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {Github} from "@site/src/components/codetabs"

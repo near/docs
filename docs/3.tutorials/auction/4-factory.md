@@ -1,7 +1,7 @@
 ---
 id: auction-factory
 title: Auction factory
-sidebar_label: Auction factory
+sidebar_label: Auction Factory
 ---
 
 import {Github, Language} from "@site/src/components/codetabs"
