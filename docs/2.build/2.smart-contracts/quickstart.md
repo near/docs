@@ -293,7 +293,7 @@ Having our account created, we can now deploy the contract:
   <TabItem value="short" label="Short">
 
   ```bash
-  near deploy <created-account> build/release/hello.wasm
+  near deploy <created-account> build/hello_near.wasm
   ```
 
   </TabItem>

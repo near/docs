@@ -3,6 +3,18 @@ gagdiez:
   title: Docs Maintainer
   url: https://github.com/gagdiez
   image_url: https://github.com/gagdiez.png
+  socials:
+    x: guillewrotethis
+    github: gagdiez
+
+slava:
+  name: Slava Karkunov
+  title: DevRel 
+  image_url: https://www.datocms-assets.com/95026/1677167398-photo_2022-12-02-14-55-03.jpeg
+  socials:
+      x: apocnab
+      github: karkunow
+      linkedin: karkunov
 
 flmel: 
   name: Lyudmil
