@@ -7,19 +7,22 @@ sidebar_label: NEAR API
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## What is NEAR API
+The NEAR API is a set of libraries that allow you to interact with the NEAR blockchain. You can use it to create accounts, send tokens, deploy contracts, and more. 
 
-There are differents libraries to interact with the NEAR blockchain. You can use it in the browser ([`near-api-js`](https://github.com/near/near-api-js)), or in server runtime ([`near-api-js`](https://github.com/near/near-api-js) for Node.js, [`near-jsonrpc-client`](https://github.com/near/near-jsonrpc-client-rs) for Rust and [`py-near`](https://github.com/pvolnov/py-near) for Python).
+The API is available in multiple languages, including:
+- JavaScript: [`near-api-js`](https://github.com/near/near-api-js)
+- Rust: [`near-jsonrpc-client`](https://github.com/near/near-jsonrpc-client-rs)
+- Python: [`py-near`](https://github.com/pvolnov/py-near)
 
-:::tip
-To quickly get started with integrating NEAR in a web browser, read our [Web Frontend integration](/build/web3-apps/integrate-contracts) article.
+For example, you could use [`near-api-js`](https://github.com/near/near-api-js) to create web applications or backend services written in node.js servers.
+
+:::tip Wallet Integration
+To allow users to login into your web application using a wallet you will need the `wallet-selector`. Read more in our [Web Frontend integration](/build/web3-apps/integrate-contracts) article
 :::
 
 ---
 
-## Basics
-
-### Install {#install}
+## Install {#install}
 
 <Tabs groupId="api">
   <TabItem value="js" label="JavaScript">
@@ -28,6 +31,15 @@ To quickly get started with integrating NEAR in a web browser, read our [Web Fro
   ```bash
   npm i --save near-api-js
   ```
+
+  :::tip Static HTML
+  If you are building a site without using `npm`, you can include the library directly in your HTML file through a CDN.
+
+  ```html
+  <script src="https://cdn.jsdelivr.net/npm/near-api-js/dist/near-api-js.min.js"></script>
+  ```
+  :::
+
   </TabItem>
   <TabItem value="rust" label="Rust">
 
@@ -110,6 +122,21 @@ To quickly get started with integrating NEAR in a web browser, read our [Web Fro
   #### Key Store
 
   If you sign transactions, you need to create a _Key Store_. In the browser, the LocalStorage KeyStore will be used once you ask your user to Sign In with the Wallet.
+
+  <Tabs >
+    <TabItem value="test 1" label="test_1">
+
+    ```js
+    Hello
+    ```
+    </TabItem>
+    <TabItem value="test 2" label="test_2">
+
+    ```js
+    World
+    ```
+    </TabItem>
+  </Tabs>
 
   ```js
   /* Browser
@@ -213,7 +240,7 @@ RPC providers can experience intermittent downtime, connectivity issues, or rate
 
 ## Account
 
-### Get Account {#get-account}
+### Instantiate Account {#load-account}
 
 This will return an Account object for you to interact with.
 
@@ -227,9 +254,13 @@ This will return an Account object for you to interact with.
   </TabItem>
 </Tabs>
 
+:::warning
+In order to be able to use the account, its credentials must be stored in the [key store](#key-store)
+:::
+
 <hr class="subsection" />
 
-### Get Account Balance {#get-account-balance}
+### Get Balance {#get-account-balance}
 
 <Tabs groupId="api">
   <TabItem value="js" label="JavaScript">
@@ -245,10 +276,9 @@ This will return an Account object for you to interact with.
 
 <hr class="subsection" />
 
-### Get Account Details {#get-account-details}
+### Get Details {#get-account-details}
 
 Returns information about an account, such as authorized apps.
-
 
 <Tabs groupId="api">
   <TabItem value="js" label="JavaScript">
@@ -264,7 +294,7 @@ Returns information about an account, such as authorized apps.
 
 <hr class="subsection" />
 
-### Get Account State {#get-account-state}
+### Get State {#get-account-state}
 
 Get basic account information, such as amount of tokens the account has or the amount of storage it uses.
 
@@ -313,7 +343,7 @@ Get basic account information, such as amount of tokens the account has or the a
 
 <hr class="subsection" />
 
-### Create Account {#create-account}
+### Create Sub-Account {#create-account}
 
 Create a sub-account.
 
@@ -330,7 +360,25 @@ Create a sub-account.
   );
   ```
 
-  For creating .near or .testnet accounts please refer to the [cookbook](https://github.com/near/near-api-js/tree/master/packages/cookbook/accounts).
+  <details>
+    <summary> Creating .near or .testnet accounts </summary>
+
+    In order to create .near or .testnet accounts, you need to make a function call to the top-level-domain (i.e. `near` or `testnet`),  calling `create_account`:
+
+    ```js
+    return await creatorAccount.functionCall({
+        contractId: "testnet",
+        methodName: "create_account",
+        args: {
+        new_account_id: "new-account.testnet",
+        new_public_key: "ed25519:2ASWccunZMBSygADWG2pXuHM6jWdnzLzWFU6r7wtaHYt",
+        },
+        gas: "300000000000000",
+        attachedDeposit: utils.format.parseNearAmount(amount),
+        });
+    ```
+
+  </details>
 
   </TabItem>
   <TabItem value="rust" label="Rust">
@@ -643,7 +691,9 @@ Transfer NEAR tokens between accounts. This returns an object with transaction a
 
 <hr class="subsection" />
 
-### View
+### View Function
+
+View functions are read-only functions that don't change the state of the contract. We can call these functions without instantiating an account or a key store.
 
 <Tabs groupId="api">
   <TabItem value="js" label="JavaScript">
@@ -653,11 +703,12 @@ Transfer NEAR tokens between accounts. This returns an object with transaction a
 
   const url = `https://rpc.${this.networkId}.near.org`;
   const provider = new providers.JsonRpcProvider({ url });
+  const args = { greeting: 'hello' };
 
   const response = await provider.query({
     request_type: 'call_function',
-    account_id: contractId,
-    method_name: method,
+    account_id: 'hello.near-examples.testnet',
+    method_name: 'get_greeting',
     args_base64: Buffer.from(JSON.stringify(args)).toString('base64'),
     finality: 'optimistic',
   });
@@ -722,7 +773,7 @@ Transfer NEAR tokens between accounts. This returns an object with transaction a
 
 <hr class="subsection" />
 
-### Call
+### Call Function
 
 <Tabs groupId="api">
   <TabItem value="js" label="JavaScript">
