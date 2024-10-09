@@ -22,10 +22,10 @@ To allow users to login into your web application using a wallet you will need t
 
 ---
 
-## Install {#install}
+## Install
 
 <Tabs groupId="api">
-  <TabItem value="js" label="JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
   Include `near-api-js` as a dependency in your package.
 
   ```bash
@@ -41,7 +41,7 @@ To allow users to login into your web application using a wallet you will need t
   :::
 
   </TabItem>
-  <TabItem value="rust" label="Rust">
+  <TabItem value="rust" label="🦀 Rust">
 
   ```bash
   cargo add near-jsonrpc-client
@@ -54,14 +54,14 @@ To allow users to login into your web application using a wallet you will need t
 ### Import {#import}
 
 <Tabs groupId="api">
-  <TabItem value="js" label="JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
   You can use the API library in the browser, or in Node.js runtime. Some features are available only in one of the environments. For example, the `WalletConnection` is only for the browser, and there are different `KeyStore` providers for each environment.
 
   ```js
   import * as nearAPI from "near-api-js";
   ```
   </TabItem>
-  <TabItem value="rust" label="Rust">
+  <TabItem value="rust" label="🦀 Rust">
 
   Each one of the valid JSON RPC methods are defined in the methods module.
   ```rust
@@ -75,7 +75,7 @@ To allow users to login into your web application using a wallet you will need t
 ### Connecting to NEAR {#connect}
 
 <Tabs groupId="api">
-  <TabItem value="js" label="JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
 
   The object returned from `connect` is your entry-point for all commands in the API.
   To sign a transaction you'll need a [`KeyStore`](#key-store) to create a connection.
@@ -123,43 +123,38 @@ To allow users to login into your web application using a wallet you will need t
 
   If you sign transactions, you need to create a _Key Store_. In the browser, the LocalStorage KeyStore will be used once you ask your user to Sign In with the Wallet.
 
-  <Tabs >
-    <TabItem value="test 1" label="test_1">
-
-    ```js
-    Hello
-    ```
-    </TabItem>
-    <TabItem value="test 2" label="test_2">
-
-    ```js
-    World
-    ```
-    </TabItem>
-  </Tabs>
+  <Tabs>
+  <TabItem value="browser" label="Using Browser" default>
 
   ```js
-  /* Browser
-     Creates keyStore using private key in local storage
-  */
+  // creates keyStore using private key in local storage
+
   const { keyStores } = nearAPI;
   const myKeyStore = new keyStores.BrowserLocalStorageKeyStore();
+  ```
 
-  /* Credentials Directory
-     Creates a keyStore that searches for keys in .near-credentials
-     Requires credentials stored locally by using a NEAR-CLI command: `near login`
-     https://docs.near.org/tools/cli#near-login
-  */ 
+  </TabItem>
+  <TabItem value="dir" label="Using Credentials Directory">
+
+  ```js
+  // creates a keyStore that searches for keys in .near-credentials
+  // requires credentials stored locally by using a NEAR-CLI command: `near login`
+  // https://docs.near.org/tools/cli#near-login
+
   const { keyStores } = nearAPI;
   const homedir = require("os").homedir();
   const CREDENTIALS_DIR = ".near-credentials";
   const credentialsPath = require("path").join(homedir, CREDENTIALS_DIR);
   const myKeyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
+  ```
 
-  /* File
-     Creates keyStore from a provided file
-     You will need to pass the location of the .json key pair
-  */
+  </TabItem>
+  <TabItem value="file" label="Using a File">
+
+  ```js
+  // creates keyStore from a provided file
+  // you will need to pass the location of the .json key pair
+
   const { KeyPair, keyStores } = require("near-api-js");
   const fs = require("fs");
   const homedir = require("os").homedir();
@@ -176,11 +171,15 @@ To allow users to login into your web application using a wallet you will need t
     ACCOUNT_ID,
     KeyPair.fromString(credentials.private_key)
   );
+  ```
 
-  /* Private key string
-     Creates keyStore from a private key string
-     You can define your key here or use an environment variable
-  */
+  </TabItem>
+  <TabItem value="key" label="Using a private key string">
+
+  ```js
+  // creates keyStore from a private key string
+  // you can define your key here or use an environment variable
+
   const { keyStores, KeyPair } = nearAPI;
   const myKeyStore = new keyStores.InMemoryKeyStore();
   const PRIVATE_KEY =
@@ -190,8 +189,33 @@ To allow users to login into your web application using a wallet you will need t
   // adds the keyPair you created to keyStore
   await myKeyStore.setKey("testnet", "example-account.testnet", keyPair);
   ```
+
   </TabItem>
-  <TabItem value="rust" label="Rust">
+  </Tabs>
+
+  <details>
+    <summary>Window error using `Node.js`</summary>
+    
+    You're maybe using a KeyStore that's for the browser. Instead, use a [filesystem key](/tools/near-api-js/quick-reference#key-store) or private key string.
+
+    **Browser KeyStore:**
+
+    ```js
+    const { keyStores } = require("near-api-js");
+    const keyStore = new keyStores.BrowserLocalStorageKeyStore();
+    ```
+
+    **FileSystem KeyStore:**
+
+    ```js
+    const { keyStores } = require("near-api-js");
+    const KEY_PATH = "~./near-credentials/testnet/example-account.json";
+    const keyStore = new keyStores.UnencryptedFileSystemKeyStore(KEY_PATH);
+    ```
+  </details>
+
+  </TabItem>
+  <TabItem value="rust" label="🦀 Rust">
 
   ```rust
   use near_jsonrpc_client::JsonRpcClient;
@@ -208,7 +232,7 @@ To allow users to login into your web application using a wallet you will need t
 RPC providers can experience intermittent downtime, connectivity issues, or rate limits that cause client transactions to fail. This can be prevented by using the `FailoverRpcProvider` that supports multiple RPC providers.
 
 <Tabs groupId="api">
-  <TabItem value="js" label="JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
 
   ```js
   const jsonProviders = [
@@ -240,12 +264,12 @@ RPC providers can experience intermittent downtime, connectivity issues, or rate
 
 ## Account
 
-### Instantiate Account {#load-account}
+### Instantiate Account {#instantiate-account}
 
 This will return an Account object for you to interact with.
 
 <Tabs groupId="api">
-  <TabItem value="js" label="JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
 
   ```js
   const account = await nearConnection.account("example-account.testnet");
@@ -260,10 +284,10 @@ In order to be able to use the account, its credentials must be stored in the [k
 
 <hr class="subsection" />
 
-### Get Balance {#get-account-balance}
+### Get Balance {#get-balance}
 
 <Tabs groupId="api">
-  <TabItem value="js" label="JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
 
   ```js
   // gets account balance
@@ -276,12 +300,12 @@ In order to be able to use the account, its credentials must be stored in the [k
 
 <hr class="subsection" />
 
-### Get Details {#get-account-details}
+### Get Details {#get-details}
 
 Returns information about an account, such as authorized apps.
 
 <Tabs groupId="api">
-  <TabItem value="js" label="JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
 
   ```js
   // gets account details in terms of authorized apps and transactions
@@ -294,19 +318,19 @@ Returns information about an account, such as authorized apps.
 
 <hr class="subsection" />
 
-### Get State {#get-account-state}
+### Get State {#get-state}
 
 Get basic account information, such as amount of tokens the account has or the amount of storage it uses.
 
 <Tabs groupId="api">
-  <TabItem value="js" label="JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
 
   ```js
   const account = await nearConnection.account("example-account.testnet");
   const accountState = await account.state();
   ```
   </TabItem>
-  <TabItem value="rust" label="Rust">
+  <TabItem value="rust" label="🦀 Rust">
   
   ```rust
   use near_jsonrpc_client::methods;
@@ -348,7 +372,7 @@ Get basic account information, such as amount of tokens the account has or the a
 Create a sub-account.
 
 <Tabs groupId="api">
-  <TabItem value="js" label="JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
 
   ```js
   // creates a sub-account using funds from the account used to create it.
@@ -381,7 +405,7 @@ Create a sub-account.
   </details>
 
   </TabItem>
-  <TabItem value="rust" label="Rust">
+  <TabItem value="rust" label="🦀 Rust">
 
   ```rust
   //! Creates an account on the network.
@@ -656,7 +680,7 @@ Create a sub-account.
 ### Delete Account {#delete-account}
 
 <Tabs groupId="api">
-  <TabItem value="js" label="JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
 
   ```js
   // deletes account found in the `account` object
@@ -677,7 +701,7 @@ Create a sub-account.
 Transfer NEAR tokens between accounts. This returns an object with transaction and receipts outcomes and status.
 
 <Tabs groupId="api">
-  <TabItem value="js" label="JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
 
   ```js
   const account = await nearConnection.account("sender-account.testnet");
@@ -696,7 +720,7 @@ Transfer NEAR tokens between accounts. This returns an object with transaction a
 View functions are read-only functions that don't change the state of the contract. We can call these functions without instantiating an account or a key store.
 
 <Tabs groupId="api">
-  <TabItem value="js" label="JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
 
   ```js
   import { providers } from 'near-api-js';
@@ -716,7 +740,7 @@ View functions are read-only functions that don't change the state of the contra
   const result = JSON.parse(Buffer.from(res.result).toString());
   ```
   </TabItem>
-  <TabItem value="rust" label="Rust">
+  <TabItem value="rust" label="🦀 Rust">
 
   ```rust
   use near_jsonrpc_client::{methods, JsonRpcClient};
@@ -776,7 +800,7 @@ View functions are read-only functions that don't change the state of the contra
 ### Call Function
 
 <Tabs groupId="api">
-  <TabItem value="js" label="JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
 
   ```js
   import { connect, transactions, keyStores } from "near-api-js";
@@ -795,7 +819,7 @@ View functions are read-only functions that don't change the state of the contra
   });
   ```
   </TabItem>
-  <TabItem value="rust" label="Rust">
+  <TabItem value="rust" label="🦀 Rust">
 
   ```rust
   use near_crypto::Signer;
@@ -910,12 +934,120 @@ View functions are read-only functions that don't change the state of the contra
 
 <hr class="subsection" />
 
+### Batch Transactions
+
+<Tabs groupId="api">
+  <TabItem value="js" label="🌐 JavaScript">
+  
+  You may batch send transactions by using the `signAndSendTransaction({})` method from `account`. This method takes an array of transaction actions, and if one fails, the entire operation will fail. Here's a simple example:
+
+  ```js
+  const { connect, transactions, keyStores } = require("near-api-js");
+  const fs = require("fs");
+  const path = require("path");
+  const homedir = require("os").homedir();
+
+  const CREDENTIALS_DIR = ".near-credentials";
+  const CONTRACT_NAME = "spf.idea404.testnet";
+  const WASM_PATH = path.join(__dirname, "../build/uninitialized_nft.wasm");
+
+  const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
+  const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
+
+  const config = {
+    keyStore,
+    networkId: "testnet",
+    nodeUrl: "https://rpc.testnet.near.org",
+  };
+
+  sendTransactions();
+
+  async function sendTransactions() {
+    const near = await connect({ ...config, keyStore });
+    const account = await near.account(CONTRACT_NAME);
+    const args = { some_field: 1, another_field: "hello" };
+
+    const balanceBefore = await account.getAccountBalance();
+    console.log("Balance before:", balanceBefore);
+
+    try {
+      const result = await account.signAndSendTransaction({
+        receiverId: CONTRACT_NAME,
+        actions: [
+          transactions.deployContract(fs.readFileSync(WASM_PATH)),  // Contract does not get deployed
+          transactions.functionCall("new", Buffer.from(JSON.stringify(args)), 10000000000000, "0"),  // this call fails
+          transactions.transfer("1" + "0".repeat(24)), // 1 NEAR is not transferred either
+        ],
+      });
+      console.log(result);
+    } catch (e) {
+      console.log("Error:", e);
+    }
+
+    const balanceAfter = await account.getAccountBalance();
+    console.log("Balance after:", balanceAfter);
+  }
+  ```
+
+  <details>
+    <summary>Response Example</summary>
+    ```bash
+    Balance before: {
+      total: '49987878054959838200000000',
+      stateStaked: '4555390000000000000000000',
+      staked: '0',
+      available: '45432488054959838200000000'
+    }
+    Receipts: 2PPueY6gnA4YmmQUzc8DytNBp4PUpgTDhmEjRSHHVHBd, 3isLCW9SBH1MrPjeEPAmG9saHLj9Z2g7HxzfBdHmaSaG
+      Failure [spf.idea404.testnet]: Error: {"index":1,"kind":{"ExecutionError":"Smart contract panicked: panicked at 'Failed to deserialize input from JSON.: Error(\"missing field `owner_id`\", line: 1, column: 40)', nft/src/lib.rs:47:1"}}
+    Error: ServerTransactionError: {"index":1,"kind":{"ExecutionError":"Smart contract panicked: panicked at 'Failed to deserialize input from JSON.: Error(\"missing field `owner_id`\", line: 1, column: 40)', nft/src/lib.rs:47:1"}}
+        at parseResultError (/Users/dennis/Code/naj-test/node_modules/near-api-js/lib/utils/rpc_errors.js:31:29)
+        at Account.<anonymous> (/Users/dennis/Code/naj-test/node_modules/near-api-js/lib/account.js:156:61)
+        at Generator.next (<anonymous>)
+        at fulfilled (/Users/dennis/Code/naj-test/node_modules/near-api-js/lib/account.js:5:58)
+        at processTicksAndRejections (node:internal/process/task_queues:96:5) {
+      type: 'FunctionCallError',
+      context: undefined,
+      index: 1,
+      kind: {
+        ExecutionError: "Smart contract panicked: panicked at \'Failed to deserialize input from JSON.: Error("missing field `owner_id`", line: 1, column: 40)\', nft/src/lib.rs:47:1"
+      },
+      transaction_outcome: {
+        block_hash: '5SUhYcXjXR1svCxL5BhCuw88XNdEjKXqWgA9X4XZW1dW',
+        id: 'SKQqAgnSN27fyHpncaX3fCUxWknBrMtxxytWLRDQfT3',
+        outcome: {
+          executor_id: 'spf.idea404.testnet',
+          gas_burnt: 4839199843770,
+          logs: [],
+          metadata: [Object],
+          receipt_ids: [Array],
+          status: [Object],
+          tokens_burnt: '483919984377000000000'
+        },
+        proof: [ [Object], [Object], [Object], [Object], [Object] ]
+      }
+    }
+    Balance after: {
+      total: '49985119959346682700000000',
+      stateStaked: '4555390000000000000000000',
+      staked: '0',
+      available: '45429729959346682700000000'
+    }
+    ```
+  </details>
+
+  You may also find an example of batch transactions in the [Cookbook](/tools/near-api-js/cookbook).
+  </TabItem>
+</Tabs>
+
+<hr class="subsection" />
+
 ### Deploy a Contract {#deploy-a-contract}
 
 You can deploy a contract from a compiled WASM file. This returns an object with transaction and receipts outcomes and status.
 
 <Tabs groupId="api">
-  <TabItem value="js" label="JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
 
   ```js
   const account = await nearConnection.account("example-account.testnet");
@@ -935,7 +1067,7 @@ You can get and manage keys for an account.
 ### Add Function Access Key {#add-function-access-key}
 
 <Tabs groupId="api">
-  <TabItem value="js" label="JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
 
   ```js
   const account = await nearConnection.account("example-account.testnet");
@@ -955,7 +1087,7 @@ You can get and manage keys for an account.
 ### Add Full Access Key {#add-full-access-key}
 
 <Tabs groupId="api">
-  <TabItem value="js" label="JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
 
   ```js
   // takes public key as string for argument
@@ -971,7 +1103,7 @@ You can get and manage keys for an account.
 ### Get All Access Keys {#get-all-access-keys}
 
 <Tabs groupId="api">
-  <TabItem value="js" label="JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
 
   ```js
   const account = await nearConnection.account("example-account.testnet");
@@ -979,7 +1111,7 @@ You can get and manage keys for an account.
   ```
 
   </TabItem>
-  <TabItem value="rust" label="Rust">
+  <TabItem value="rust" label="🦀 Rust">
   
   ```rust
   use near_jsonrpc_client::methods;
@@ -1036,7 +1168,7 @@ You can get and manage keys for an account.
 ### Delete Access Key {#delete-access-key}
 
 <Tabs groupId="api">
-  <TabItem value="js" label="JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
 
   ```js
   const account = await nearConnection.account("example-account.testnet");
@@ -1053,7 +1185,7 @@ You can get and manage keys for an account.
 ### NEAR => yoctoNEAR {#near--yoctonear}
 
 <Tabs groupId="api">
-  <TabItem value="js" label="JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
 
   ```js
   // converts NEAR amount into yoctoNEAR (10^-24)
@@ -1070,7 +1202,7 @@ You can get and manage keys for an account.
 ### YoctoNEAR => NEAR {#yoctonear--near}
 
 <Tabs groupId="api">
-  <TabItem value="js" label="JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
 
   ```js
   // converts yoctoNEAR (10^-24) amount into NEAR
@@ -1087,7 +1219,7 @@ You can get and manage keys for an account.
 ## Additional resources
 
 <Tabs groupId="api">
-  <TabItem value="js" label="JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
 
   - [Handling Passphrases](https://github.com/near/near-seed-phrase)
   - [Type Docs](https://near.github.io/near-api-js)
