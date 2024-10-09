@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 
 :::warning
 
-Please be advised that these tools and services will be discontinued soon.
+Please be advised that these tools and services will be discontinued and stop serving traffic on December 9th, 2024.
 
 :::
 
