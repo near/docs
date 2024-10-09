@@ -529,6 +529,7 @@ const sidebar = {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Developer Tools </small></b></span>"
     },
+    "tools/near-api",
     {
       "type": "category",
       "label": "JavaScript API",
