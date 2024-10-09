@@ -114,13 +114,6 @@ export default {
   ],
   "themeConfig": {
     "image": "docs/assets/welcome-pages/protocol.png",
-    "announcementBar": {
-      "id": "id-0008",
-      "content": "🎉 Ethereum Wallets are here! Read more in our <a href=\"/blog/hello-ethereum-wallets\">blogpost</a> and check our <a href=\"/tools/ethereum-wallets\">tutorial to update your app</a> 🎉",
-      "backgroundColor": "#fcfbfa",
-      "textColor": "#333",
-      "isCloseable": true
-    },
     "prism": {
       "additionalLanguages": [
         "rust",
