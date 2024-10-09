@@ -24,7 +24,7 @@ NextJS allows us to easily create server-side functions with API routes. We need
 
 <Language value="javascript" language="javascript" showSingleFName={true}>
     <Github fname="getBidHistory.js" 
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontend/src/pages/api/getBidHistory.js#L1-L13"
+        url="https://github.com/near-examples/auctions-tutorial/blob/reorg-auction/frontend/src/pages/api/getBidHistory.js#L1-L13"
         start="1" end="13" />
 </Language>
 
@@ -44,7 +44,7 @@ The API call itself does not filter out invalid transactions. A transaction may 
 
 <Language value="javascript" language="javascript" showSingleFName={true}>
     <Github fname="getBidHistory.js" 
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontend/src/pages/api/getBidHistory.js#L15-L43"
+        url="https://github.com/near-examples/auctions-tutorial/blob/reorg-auction/frontend/src/pages/api/getBidHistory.js#L15-L43"
         start="15" end="43" />
 </Language>
 
@@ -56,7 +56,7 @@ In our main page, we'll define a function to call the API route we just created.
 
 <Language value="javascript" language="javascript" showSingleFName={true}>
     <Github fname="getBidHistory.js" 
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontend/src/pages/index.js#L114-L124"
+        url="https://github.com/near-examples/auctions-tutorial/blob/reorg-auction/frontend/src/pages/index.js#L114-L124"
         start="116" end="124" />
 </Language>
 
