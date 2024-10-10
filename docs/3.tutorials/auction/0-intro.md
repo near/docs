@@ -13,17 +13,16 @@ We'll start from a simple auction contract and slowly build on top of it to crea
 
 By the time you finish this tutorial, you will have learned several concepts and how to use many key privitives along the way:
 
-- [Creating a simple smart contract](./1.1-basic.md)
+- [Creating a simple smart contract](./1.1-basic.md#the-contracts-state)
 - [Writing tests for a contract](./1.2-testing.md)
 - [Deploying a contract to testnet](./1.3-deploy.md)
-
-<!-- - [Locking a contract](./2-locking.md)
-- [Making cross-contract calls](./3-nft.md#transferring-the-nft-to-the-winner)
-- [Using Non-Fungible Tokens](./3-nft.md)
-- [Using Fungible Tokens](./4-ft.md) 
-- [Creating a frontend to interact with the contract](./5-frontend.md)
-- [Using an indexing API to keep track of the contract's activity](./6-indexing.md)
-- [Modifying a contract factory to deploy your own contracts](./7-factory.md) -->
+- [Locking a contract](./1.3-deploy.md#locking-the-contract)
+- [Creating a frontend to interact with the contract](./2.1-frontend.md)
+- [Using an indexing API to view historical bids](./6-indexing.md)
+- [Making cross-contract calls](./3.1-nft.md#transferring-the-nft-to-the-winner)
+- [Using Non-Fungible Tokens](./3.1-nft.md)
+- [Using Fungible Tokens](./3.2-ft.md) 
+- [Modifying a factory contract to deploy your own contracts](./4-factory.md)
 
 ---
 
@@ -80,21 +79,23 @@ We will be using [NEAR CLI](../../4.tools/cli.md) to interact with the blockchai
 
 This series will touch on different level of the NEAR tech stack. Each section will be independent of the previous one, so feel free to jump into the section that interests you the most.
 
-#### 1. Smart Contract
+#### 1. Smart contracts 101
 1. [The Auction Contract](./1.1-basic.md): We cover a simple auction smart contract                      
 2. [Testing the Contract](./1.2-testing.md): Learn how to test your contract in a realistic environment
 3. [Deploying the Contract](./1.3-deploy.md): Deploy your contract to the NEAR blockchain
-4. Updating and Locking a Contract (soon): Discover what it means to lock a contract                     
-5. Giving an NFT to the Winner (soon) : Give the highest bidder an NFT to signal their win            
-6. Integrating Fungible Tokens (soon) : Allow people to use fungible tokens to bid (e.g. stable coins)
 
-#### 2. Frontend
+#### 2. Frontends 101
 
-1. Creating the frontend (soon): Lets learn how to connect a frontend with your smart contract
-2. Easily query on-chain data (soon): Use open APIs to keep track of the users and their bidding price
+1. [Creating the frontend](./2.1-frontend.md): Lets learn how to connect a frontend with your smart contract
+2. [indexing historical data](./2.2-indexing.md): Use APIs to keep track of historical bids
 
-#### 3. Factory
-1. Creating a factory (soon): Allow users to easily deploy and initialize their own auction contracts
+#### 3. Using Primitives
+1. [Giving an NFT to the Winner](./3.1-nft.md): Give the highest bidder an NFT to signal their win            
+2. [Integrating Fungible Tokens](./3.2-ft.md): Allow people to use fungible tokens to bid (e.g. stable coins)
+3. [Updating the frontend](./3.3-new-frontend.md): Update the frontend to use the extended functionality of the contract.
+
+#### 3. Auction Factory
+1. [Creating a factory](./4-factory.md): Allow users to easily deploy and initialize their own auction contracts
 
 ---
 
