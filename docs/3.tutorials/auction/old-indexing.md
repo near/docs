@@ -1,6 +1,6 @@
 import {Github, Language} from "@site/src/components/codetabs"
 
-In our frontend, we can easily display the previous bid since it's stored in the contract's state. However, we're unable to see previous bids to the auction. An indexer is used to fetch historical data from the blockchain and store it in a database. Since indexers can take a while to set up and can be expensive to run, we will use a pre-defined API point provided by NEAR Blocks to query an indexer they run that will fetch us the data we need.
+In our frontend, we can easily display the previous bid since it's stored in the contract's state. However, we're unable to see previous bids to the auction. An indexer is used to fetch historical data from the blockchain and store it in a database. Since indexers can take a while to set up and can be expensive to run, we will use a pre-defined API end point provided by NEAR Blocks to query an indexer they run that will fetch us the data we need.
 
 ---
 
