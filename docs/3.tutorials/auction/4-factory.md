@@ -28,17 +28,17 @@ You will find the resulting WASM file in `target/near`; copy this file and use i
 
 <Language value="rust" language="rust">
     <Github fname="Default init" 
-            url="https://github.com/near-examples/auctions-tutorial/blob/add-factory/factory/src/lib.rs#L9"
+            url="https://github.com/near-examples/auctions-tutorial/blob/reorg-auction/factory/src/lib.rs#L25-L31"
             start="25" end="31" />
     <Github fname="Contract path" 
-            url="https://github.com/near-examples/auctions-tutorial/blob/add-factory/factory/src/lib.rs#L9"
+            url="https://github.com/near-examples/auctions-tutorial/blob/reorg-auction/factory/src/lib.rs#L9"
             start="9" end="9" />
 </Language>
 
 On initialization, the factory will add the auction contracts WASM, as bytes, to the factory's state. It is more efficient to not store the WASM in the factory's state, however, we may want to update the auction contract if we find a bug or want to add new features. The factory implements a method to update the auction contract - we'll change the name to `update_auction_contract` as this factory will only deploy auction contracts.
 
 <Github fname="Contract path" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/add-factory/factory/src/manager.rs#L8-L13"
+        url="https://github.com/near-examples/auctions-tutorial/blob/reorg-auction/factory/src/manager.rs#L8-L13"
         start="8" end="13" />
 
 ---
@@ -48,7 +48,7 @@ On initialization, the factory will add the auction contracts WASM, as bytes, to
 The method to deploy a new contract is specific to the contract being deployed (in the case the contract has custom initialization parameters). We will modify the method to take in the auction contract's initialization parameters.
 
 <Github fname="Contract path" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/add-factory/factory/src/deploy.rs#L9-L82"
+        url="https://github.com/near-examples/auctions-tutorial/blob/reorg-auction/factory/src/deploy.rs#L9-L82"
         start="9" end="82" />
 
 In this fork, we have also removed the option to add an access key to the contract account since, as discussed in [part 2](2-locking.md), we want auctions to be locked.
@@ -59,20 +59,20 @@ In this fork, we have also removed the option to add an access key to the contra
 
 Build and deploy the factory like you would any other contract, this time without any initialization parameters. 
 
-```
+```bash
 cargo near build
 ```
 
 then
 
-```
+```bash
 cargo near deploy <accountId> without-init-call network-config testnet sign-with-legacy-keychain send
 ```
 
 You can now use the factory to deploy new auction contracts, here is an example command. 
 
-```
-near contract call-function as-transaction auction-factory.testnet deploy_new_auction json-args '{"name": "new-auction", "end_time": "3000000000000000000", "auctioneer": "pivortex.testnet", "ft_contract": "dai.fakes.testnet", "nft_contract": "nft.examples.testnet", "token_id": "7777", "starting_price": "1000000000000000000"}' prepaid-gas '100.0 Tgas' attached-deposit '1.6 NEAR'
+```bash
+near call auction-factory.testnet deploy_new_auction '{"name": "new-auction", "end_time": "3000000000000000000", "auctioneer": "pivortex.testnet", "ft_contract": "dai.fakes.testnet", "nft_contract": "nft.examples.testnet", "token_id": "7777", "starting_price": "1000000000000000000"}' --accountId <accountId> --deposit '1.6 NEAR' 
 ```
 
 :::info Deposit and storage costs
