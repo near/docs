@@ -124,15 +124,15 @@ export default [
   },
   {
     path: '/zh-CN/',
-    component: ComponentCreator('/zh-CN/', '75c'),
+    component: ComponentCreator('/zh-CN/', '959'),
     routes: [
       {
         path: '/zh-CN/',
-        component: ComponentCreator('/zh-CN/', 'f74'),
+        component: ComponentCreator('/zh-CN/', 'a45'),
         routes: [
           {
             path: '/zh-CN/',
-            component: ComponentCreator('/zh-CN/', '43a'),
+            component: ComponentCreator('/zh-CN/', '14f'),
             routes: [
               {
                 path: '/zh-CN/api/rpc/access-keys',
@@ -1457,57 +1457,63 @@ export default [
               },
               {
                 path: '/zh-CN/tutorials/auction/auction-factory',
-                component: ComponentCreator('/zh-CN/tutorials/auction/auction-factory', '6fb'),
-                exact: true
+                component: ComponentCreator('/zh-CN/tutorials/auction/auction-factory', '187'),
+                exact: true,
+                sidebar: "tutorials"
               },
               {
                 path: '/zh-CN/tutorials/auction/basic-auction',
-                component: ComponentCreator('/zh-CN/tutorials/auction/basic-auction', '0c1'),
+                component: ComponentCreator('/zh-CN/tutorials/auction/basic-auction', '42b'),
                 exact: true,
                 sidebar: "tutorials"
               },
               {
                 path: '/zh-CN/tutorials/auction/bidding-with-fts',
-                component: ComponentCreator('/zh-CN/tutorials/auction/bidding-with-fts', '807'),
-                exact: true
+                component: ComponentCreator('/zh-CN/tutorials/auction/bidding-with-fts', '5c9'),
+                exact: true,
+                sidebar: "tutorials"
               },
               {
                 path: '/zh-CN/tutorials/auction/creating-a-frontend',
-                component: ComponentCreator('/zh-CN/tutorials/auction/creating-a-frontend', '2d1'),
-                exact: true
+                component: ComponentCreator('/zh-CN/tutorials/auction/creating-a-frontend', 'ab9'),
+                exact: true,
+                sidebar: "tutorials"
               },
               {
                 path: '/zh-CN/tutorials/auction/deploy',
-                component: ComponentCreator('/zh-CN/tutorials/auction/deploy', '48f'),
+                component: ComponentCreator('/zh-CN/tutorials/auction/deploy', '7cf'),
                 exact: true,
                 sidebar: "tutorials"
               },
               {
                 path: '/zh-CN/tutorials/auction/indexing-historical-data',
-                component: ComponentCreator('/zh-CN/tutorials/auction/indexing-historical-data', '2df'),
-                exact: true
-              },
-              {
-                path: '/zh-CN/tutorials/auction/introduction',
-                component: ComponentCreator('/zh-CN/tutorials/auction/introduction', '7dd'),
+                component: ComponentCreator('/zh-CN/tutorials/auction/indexing-historical-data', 'b95'),
                 exact: true,
                 sidebar: "tutorials"
               },
               {
-                path: '/zh-CN/tutorials/auction/locking-the-contract',
-                component: ComponentCreator('/zh-CN/tutorials/auction/locking-the-contract', 'fc5'),
-                exact: true
+                path: '/zh-CN/tutorials/auction/introduction',
+                component: ComponentCreator('/zh-CN/tutorials/auction/introduction', 'cfa'),
+                exact: true,
+                sidebar: "tutorials"
               },
               {
                 path: '/zh-CN/tutorials/auction/sandbox-testing',
-                component: ComponentCreator('/zh-CN/tutorials/auction/sandbox-testing', '3b2'),
+                component: ComponentCreator('/zh-CN/tutorials/auction/sandbox-testing', '05b'),
+                exact: true,
+                sidebar: "tutorials"
+              },
+              {
+                path: '/zh-CN/tutorials/auction/updating-the-frontend',
+                component: ComponentCreator('/zh-CN/tutorials/auction/updating-the-frontend', 'e25'),
                 exact: true,
                 sidebar: "tutorials"
               },
               {
                 path: '/zh-CN/tutorials/auction/winning-an-nft',
-                component: ComponentCreator('/zh-CN/tutorials/auction/winning-an-nft', '26e'),
-                exact: true
+                component: ComponentCreator('/zh-CN/tutorials/auction/winning-an-nft', '6aa'),
+                exact: true,
+                sidebar: "tutorials"
               },
               {
                 path: '/zh-CN/tutorials/crosswords/basics/add-functions-call',

@@ -1,0 +1,31 @@
+{
+  "id": "tutorials/auction/auction-factory",
+  "title": "Auction factory",
+  "description": "Since an auction contract hosts a single auction, each time you would like to host a new auction you will need to deploy a new contract. Rather than finding the compiled WASM file, creating a new account, deploying the contract, and then initializing it each time, you can use a factory contract to do this for you.",
+  "source": "@site/../docs/3.tutorials/auction/4-factory.md",
+  "sourceDirName": "3.tutorials/auction",
+  "slug": "/tutorials/auction/auction-factory",
+  "permalink": "/zh-CN/tutorials/auction/auction-factory",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/auction/4-factory.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Owen",
+  "lastUpdatedAt": 1728641473000,
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "id": "auction-factory",
+    "title": "Auction factory",
+    "sidebar_label": "Auction Factory"
+  },
+  "sidebar": "tutorials",
+  "previous": {
+    "title": "Updating the Frontend",
+    "permalink": "/zh-CN/tutorials/auction/updating-the-frontend"
+  },
+  "next": {
+    "title": "BOS Loader",
+    "permalink": "/zh-CN/tutorials/near-components/bos-loader"
+  }
+}

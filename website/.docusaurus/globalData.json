@@ -1105,7 +1105,8 @@
             },
             {
               "id": "tutorials/auction/auction-factory",
-              "path": "/zh-CN/tutorials/auction/auction-factory"
+              "path": "/zh-CN/tutorials/auction/auction-factory",
+              "sidebar": "tutorials"
             },
             {
               "id": "tutorials/auction/basic-auction",
@@ -1114,11 +1115,13 @@
             },
             {
               "id": "tutorials/auction/bidding-with-fts",
-              "path": "/zh-CN/tutorials/auction/bidding-with-fts"
+              "path": "/zh-CN/tutorials/auction/bidding-with-fts",
+              "sidebar": "tutorials"
             },
             {
               "id": "tutorials/auction/creating-a-frontend",
-              "path": "/zh-CN/tutorials/auction/creating-a-frontend"
+              "path": "/zh-CN/tutorials/auction/creating-a-frontend",
+              "sidebar": "tutorials"
             },
             {
               "id": "tutorials/auction/deploy",
@@ -1127,7 +1130,8 @@
             },
             {
               "id": "tutorials/auction/indexing-historical-data",
-              "path": "/zh-CN/tutorials/auction/indexing-historical-data"
+              "path": "/zh-CN/tutorials/auction/indexing-historical-data",
+              "sidebar": "tutorials"
             },
             {
               "id": "tutorials/auction/introduction",
@@ -1135,17 +1139,19 @@
               "sidebar": "tutorials"
             },
             {
-              "id": "tutorials/auction/locking-the-contract",
-              "path": "/zh-CN/tutorials/auction/locking-the-contract"
-            },
-            {
               "id": "tutorials/auction/sandbox-testing",
               "path": "/zh-CN/tutorials/auction/sandbox-testing",
               "sidebar": "tutorials"
             },
             {
+              "id": "tutorials/auction/updating-the-frontend",
+              "path": "/zh-CN/tutorials/auction/updating-the-frontend",
+              "sidebar": "tutorials"
+            },
+            {
               "id": "tutorials/auction/winning-an-nft",
-              "path": "/zh-CN/tutorials/auction/winning-an-nft"
+              "path": "/zh-CN/tutorials/auction/winning-an-nft",
+              "sidebar": "tutorials"
             },
             {
               "id": "tutorials/crosswords/basics/add-functions-call",

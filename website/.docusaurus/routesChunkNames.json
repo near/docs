@@ -321,17 +321,17 @@
       "plugin": "c141421f"
     }
   },
-  "/zh-CN/-75c": {
+  "/zh-CN/-959": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "aba21aa0"
     }
   },
-  "/zh-CN/-f74": {
+  "/zh-CN/-a45": {
     "__comp": "a7bd4aaa",
     "__props": "363b7d6a"
   },
-  "/zh-CN/-43a": {
+  "/zh-CN/-14f": {
     "__comp": "a94703ab"
   },
   "/zh-CN/api/rpc/access-keys-c8f": {
@@ -1266,45 +1266,45 @@
     "__comp": "17896441",
     "content": "03b82f47"
   },
-  "/zh-CN/tutorials/auction/auction-factory-6fb": {
+  "/zh-CN/tutorials/auction/auction-factory-187": {
     "__comp": "17896441",
-    "content": "4d33cefe"
+    "content": "fcb35461"
   },
-  "/zh-CN/tutorials/auction/basic-auction-0c1": {
+  "/zh-CN/tutorials/auction/basic-auction-42b": {
     "__comp": "17896441",
     "content": "90e2085b"
   },
-  "/zh-CN/tutorials/auction/bidding-with-fts-807": {
+  "/zh-CN/tutorials/auction/bidding-with-fts-5c9": {
     "__comp": "17896441",
-    "content": "28e90dfe"
+    "content": "8f33d4db"
   },
-  "/zh-CN/tutorials/auction/creating-a-frontend-2d1": {
+  "/zh-CN/tutorials/auction/creating-a-frontend-ab9": {
     "__comp": "17896441",
-    "content": "7d0f16bf"
+    "content": "e2717c2e"
   },
-  "/zh-CN/tutorials/auction/deploy-48f": {
+  "/zh-CN/tutorials/auction/deploy-7cf": {
     "__comp": "17896441",
     "content": "2075eeab"
   },
-  "/zh-CN/tutorials/auction/indexing-historical-data-2df": {
+  "/zh-CN/tutorials/auction/indexing-historical-data-b95": {
     "__comp": "17896441",
-    "content": "3c594ebc"
+    "content": "51b0cc3a"
   },
-  "/zh-CN/tutorials/auction/introduction-7dd": {
+  "/zh-CN/tutorials/auction/introduction-cfa": {
     "__comp": "17896441",
     "content": "91263078"
   },
-  "/zh-CN/tutorials/auction/locking-the-contract-fc5": {
-    "__comp": "17896441",
-    "content": "0e914780"
-  },
-  "/zh-CN/tutorials/auction/sandbox-testing-3b2": {
+  "/zh-CN/tutorials/auction/sandbox-testing-05b": {
     "__comp": "17896441",
     "content": "c0d1432f"
   },
-  "/zh-CN/tutorials/auction/winning-an-nft-26e": {
+  "/zh-CN/tutorials/auction/updating-the-frontend-e25": {
     "__comp": "17896441",
-    "content": "ed92828e"
+    "content": "6dabd805"
+  },
+  "/zh-CN/tutorials/auction/winning-an-nft-6aa": {
+    "__comp": "17896441",
+    "content": "f417baaa"
   },
   "/zh-CN/tutorials/crosswords/basics/add-functions-call-619": {
     "__comp": "17896441",

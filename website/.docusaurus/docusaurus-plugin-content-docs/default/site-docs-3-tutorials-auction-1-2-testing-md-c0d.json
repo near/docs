@@ -1,7 +1,7 @@
 {
   "id": "tutorials/auction/sandbox-testing",
   "title": "Sandbox Testing",
-  "description": "In the previous section we went through the contract's code, analyzing how it worked. Now, we need to test it and make sure it works as expected! For contracts there are two types of testing you can do: unit testing and sandbox testing.",
+  "description": "In the previous section, we went through the contract's code, analyzing how it worked. Now, we need to test it and make sure it works as expected! For contracts, there are two types of testing you can do: unit testing and sandbox testing.",
   "source": "@site/../docs/3.tutorials/auction/1.2-testing.md",
   "sourceDirName": "3.tutorials/auction",
   "slug": "/tutorials/auction/sandbox-testing",
@@ -12,7 +12,7 @@
   "tags": [],
   "version": "current",
   "lastUpdatedBy": "Owen",
-  "lastUpdatedAt": 1726751498000,
+  "lastUpdatedAt": 1728641473000,
   "frontMatter": {
     "id": "sandbox-testing",
     "title": "Sandbox Testing"

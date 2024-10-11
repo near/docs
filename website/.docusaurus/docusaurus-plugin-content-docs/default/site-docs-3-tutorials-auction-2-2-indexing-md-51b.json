@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/auction/indexing-historical-data",
+  "title": "Indexing Historical Data",
+  "description": "In our frontend, we can easily display the previous bid since it's stored in the contract's state. However, we're unable to see previous bids to the auction. An indexer is used to fetch historical data from the blockchain and store it in a database. Since indexers can take a while to set up and can be expensive to run, we will use a pre-defined API endpoint provided by NEAR Blocks to query an indexer they run that will fetch us the data we need.",
+  "source": "@site/../docs/3.tutorials/auction/2.2-indexing.md",
+  "sourceDirName": "3.tutorials/auction",
+  "slug": "/tutorials/auction/indexing-historical-data",
+  "permalink": "/zh-CN/tutorials/auction/indexing-historical-data",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/auction/2.2-indexing.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Owen",
+  "lastUpdatedAt": 1728641473000,
+  "frontMatter": {
+    "id": "indexing-historical-data",
+    "title": "Indexing Historical Data"
+  },
+  "sidebar": "tutorials",
+  "previous": {
+    "title": "Creating a Frontend",
+    "permalink": "/zh-CN/tutorials/auction/creating-a-frontend"
+  },
+  "next": {
+    "title": "Winning an NFT",
+    "permalink": "/zh-CN/tutorials/auction/winning-an-nft"
+  }
+}

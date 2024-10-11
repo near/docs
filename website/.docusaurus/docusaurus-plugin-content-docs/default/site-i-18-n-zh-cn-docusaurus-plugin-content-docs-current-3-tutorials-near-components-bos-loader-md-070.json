@@ -19,8 +19,8 @@
   },
   "sidebar": "tutorials",
   "previous": {
-    "title": "Deploying to Testnet",
-    "permalink": "/zh-CN/tutorials/auction/deploy"
+    "title": "Auction Factory",
+    "permalink": "/zh-CN/tutorials/auction/auction-factory"
   },
   "next": {
     "title": "Smart Contract Interaction",

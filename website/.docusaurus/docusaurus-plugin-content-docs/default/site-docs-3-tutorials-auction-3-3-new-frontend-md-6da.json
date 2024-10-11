@@ -1,0 +1,29 @@
+{
+  "id": "tutorials/auction/updating-the-frontend",
+  "title": "Updating the Frontend",
+  "description": "Now we've updated the contract to include an NFT as a reward and changed the contract such that it accepts bids in fungible tokens, we need to update the frontend accordingly.",
+  "source": "@site/../docs/3.tutorials/auction/3.3-new-frontend.md",
+  "sourceDirName": "3.tutorials/auction",
+  "slug": "/tutorials/auction/updating-the-frontend",
+  "permalink": "/zh-CN/tutorials/auction/updating-the-frontend",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/near/docs/edit/master/website/../docs/3.tutorials/auction/3.3-new-frontend.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Owen",
+  "lastUpdatedAt": 1728641473000,
+  "frontMatter": {
+    "id": "updating-the-frontend",
+    "title": "Updating the Frontend"
+  },
+  "sidebar": "tutorials",
+  "previous": {
+    "title": "Bidding with FTs",
+    "permalink": "/zh-CN/tutorials/auction/bidding-with-fts"
+  },
+  "next": {
+    "title": "Auction Factory",
+    "permalink": "/zh-CN/tutorials/auction/auction-factory"
+  }
+}

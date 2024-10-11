@@ -19,8 +19,8 @@
   },
   "sidebar": "tutorials",
   "previous": {
-    "title": "Deploying to Testnet",
-    "permalink": "/ko/tutorials/auction/deploy"
+    "title": "Auction Factory",
+    "permalink": "/ko/tutorials/auction/auction-factory"
   },
   "next": {
     "title": "스마트 컨트랙트 상호작용",

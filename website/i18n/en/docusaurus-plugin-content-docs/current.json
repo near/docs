@@ -566,5 +566,13 @@
   "sidebar.build.category.Artificial Intelligence (AI)": {
     "message": "Artificial Intelligence (AI)",
     "description": "The label for category Artificial Intelligence (AI) in sidebar build"
+  },
+  "sidebar.tutorials.category.Frontends 101": {
+    "message": "Frontends 101",
+    "description": "The label for category Frontends 101 in sidebar tutorials"
+  },
+  "sidebar.tutorials.category.Using Primitves": {
+    "message": "Using Primitves",
+    "description": "The label for category Using Primitves in sidebar tutorials"
   }
 }
