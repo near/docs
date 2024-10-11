@@ -28,17 +28,17 @@ You will find the resulting WASM file in `target/near`; copy this file and use i
 
 <Language value="rust" language="rust">
     <Github fname="Default init" 
-            url="https://github.com/near-examples/auctions-tutorial/blob/reorg-auction/factory/src/lib.rs#L25-L31"
+            url="https://github.com/near-examples/auctions-tutorial/blob/main/factory/src/lib.rs#L25-L31"
             start="25" end="31" />
     <Github fname="Contract path" 
-            url="https://github.com/near-examples/auctions-tutorial/blob/reorg-auction/factory/src/lib.rs#L9"
+            url="https://github.com/near-examples/auctions-tutorial/blob/main/factory/src/lib.rs#L9"
             start="9" end="9" />
 </Language>
 
 On initialization, the factory will add the auction contracts WASM, as bytes, to the factory's state. It is more efficient to not store the WASM in the factory's state, however, we may want to update the auction contract if we find a bug or want to add new features. The factory implements a method to update the auction contract - we'll change the name to `update_auction_contract` as this factory will only deploy auction contracts.
 
 <Github fname="Contract path" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/reorg-auction/factory/src/manager.rs#L8-L13"
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/factory/src/manager.rs#L8-L13"
         start="8" end="13" />
 
 ---
@@ -48,7 +48,7 @@ On initialization, the factory will add the auction contracts WASM, as bytes, to
 The method to deploy a new contract is specific to the contract being deployed (in the case the contract has custom initialization parameters). We will modify the method to take in the auction contract's initialization parameters.
 
 <Github fname="Contract path" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/reorg-auction/factory/src/deploy.rs#L9-L82"
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/factory/src/deploy.rs#L9-L82"
         start="9" end="82" />
 
 In this fork, we have also removed the option to add an access key to the contract account since, as discussed [earlier](./1.3-deploy.md#locking-the-contract), we want auctions to be locked.
