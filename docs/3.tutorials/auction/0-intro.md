@@ -18,7 +18,7 @@ By the time you finish this tutorial, you will have learned several concepts and
 - [Deploying a contract to testnet](./1.3-deploy.md)
 - [Locking a contract](./1.3-deploy.md#locking-the-contract)
 - [Creating a frontend to interact with the contract](./2.1-frontend.md)
-- [Using an indexing API to view historical bids](./6-indexing.md)
+- [Using an indexing API to view historical bids](./2.2-indexing.md)
 - [Making cross-contract calls](./3.1-nft.md#transferring-the-nft-to-the-winner)
 - [Using Non-Fungible Tokens](./3.1-nft.md)
 - [Using Fungible Tokens](./3.2-ft.md) 

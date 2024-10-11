@@ -18,9 +18,9 @@ The factory example only comes in rust since, currently, the JavaScript SDK does
 
 In the current example, the factory contract deploys the donation contract example. We will change this to deploy our auction contract instead. 
 
-Firstly, we'll need the compiled auction contract WASM file. You can get this by running the following command in [part four](4-ft.md) of `contract-rs`
+Firstly, we'll need the compiled auction contract WASM file. You can get this by running the following command in [03-bid-with-fts](https://github.com/near-examples/auctions-tutorial/tree/reorg-auction/contract-rs/03-bid-with-fts) of `contract-rs`
 
-```
+```bash
 cargo near build 
 ```
 
@@ -51,7 +51,7 @@ The method to deploy a new contract is specific to the contract being deployed (
         url="https://github.com/near-examples/auctions-tutorial/blob/reorg-auction/factory/src/deploy.rs#L9-L82"
         start="9" end="82" />
 
-In this fork, we have also removed the option to add an access key to the contract account since, as discussed in [part 2](2-locking.md), we want auctions to be locked.
+In this fork, we have also removed the option to add an access key to the contract account since, as discussed [earlier](./1.3-deploy.md#locking-the-contract), we want auctions to be locked.
 
 ---
 
