@@ -72,6 +72,6 @@ Feel free to reach out if you have any questions or feedback. Happy building, an
 
 :::info
 
-- [Telegram Chat](https://t.me/@neardev)
+- [Telegram Chat](https://t.me/neardev)
 
 :::
