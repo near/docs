@@ -356,9 +356,20 @@ const sidebar = {
             "tutorials/auction/deploy",
           ]
         },
-        // "tutorials/auction/locking-the-contract",
-        // "tutorials/auction/winning-an-nft",
-        // "tutorials/auction/bidding-with-FTs",
+        {
+          "Frontends 101": [
+            "tutorials/auction/creating-a-frontend",
+            "tutorials/auction/indexing-historical-data",
+          ]
+        },
+        {
+          "Using Primitves": [
+            "tutorials/auction/winning-an-nft",
+            "tutorials/auction/bidding-with-fts",
+            "tutorials/auction/updating-the-frontend",
+          ]
+        },
+        "tutorials/auction/auction-factory",
       ]
     },
     {
