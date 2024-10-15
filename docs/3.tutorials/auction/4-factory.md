@@ -60,19 +60,17 @@ In this fork, we have also removed the option to add an access key to the contra
 Build and deploy the factory like you would any other contract, this time without any initialization parameters. 
 
 ```bash
+# compile the contract using cargo-near
 cargo near build
-```
 
-then
-
-```bash
-cargo near deploy <accountId> without-init-call network-config testnet sign-with-legacy-keychain send
+# deploy the contract
+near deploy <contractId> ./target/near/contract.wasm
 ```
 
 You can now use the factory to deploy new auction contracts, here is an example command. 
 
 ```bash
-near call auction-factory.testnet deploy_new_auction '{"name": "new-auction", "end_time": "3000000000000000000", "auctioneer": "pivortex.testnet", "ft_contract": "dai.fakes.testnet", "nft_contract": "nft.examples.testnet", "token_id": "7777", "starting_price": "1000000000000000000"}' --accountId <accountId> --deposit '1.6 NEAR' 
+near call auction-factory.testnet deploy_new_auction '{"name": "new-auction", "end_time": "3000000000000000000", "auctioneer": "pivortex.testnet", "ft_contract": "dai.fakes.testnet", "nft_contract": "nft.examples.testnet", "token_id": "7777", "starting_price": "1000000000000000000"}' --accountId pivortex.testnet --deposit 1.6 --gas 100000000000000
 ```
 
 :::info Deposit and storage costs
