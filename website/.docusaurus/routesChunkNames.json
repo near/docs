@@ -321,17 +321,17 @@
       "plugin": "c141421f"
     }
   },
-  "/zh-CN/-959": {
+  "/zh-CN/-b38": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "aba21aa0"
     }
   },
-  "/zh-CN/-a45": {
+  "/zh-CN/-dcf": {
     "__comp": "a7bd4aaa",
     "__props": "363b7d6a"
   },
-  "/zh-CN/-14f": {
+  "/zh-CN/-b67": {
     "__comp": "a94703ab"
   },
   "/zh-CN/api/rpc/access-keys-c8f": {
@@ -1266,7 +1266,7 @@
     "__comp": "17896441",
     "content": "03b82f47"
   },
-  "/zh-CN/tutorials/auction/auction-factory-187": {
+  "/zh-CN/tutorials/auction/auction-factory-07b": {
     "__comp": "17896441",
     "content": "fcb35461"
   },
@@ -1282,7 +1282,7 @@
     "__comp": "17896441",
     "content": "e2717c2e"
   },
-  "/zh-CN/tutorials/auction/deploy-7cf": {
+  "/zh-CN/tutorials/auction/deploy-3a6": {
     "__comp": "17896441",
     "content": "2075eeab"
   },
