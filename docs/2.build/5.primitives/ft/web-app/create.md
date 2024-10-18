@@ -21,9 +21,9 @@ const args = {
 await wallet.callMethod({
   method: 'create_token',
   args,
-  contractId: "tkn.near",
+  contractId: "tkn.primitives.near",
   gas: 300000000000000,
   deposit: "2234830000000000000000000"
 });
 ```
-_The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_ 
+_The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
