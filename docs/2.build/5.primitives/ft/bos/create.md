@@ -14,5 +14,5 @@ const args = {
   account_id: "bob.near",
 };
 
-Near.call("tkn.near", "create_token", args, 300000000000000, "2234830000000000000000000");
+Near.call("tkn.primitives.near", "create_token", args, 300000000000000, "2234830000000000000000000");
 ```
