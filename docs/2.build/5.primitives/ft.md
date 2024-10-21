@@ -43,8 +43,8 @@ In order for a contract to be considered a FT-contract it has to follow the [**N
 
 ---
 
-## Token Factory
-You can create an FT using the community tool [Token Farm](https://tkn.farm/). Token farm is a token factory, you can interact with it through its graphical interface, or by making calls to its contract.
+## Token Factory Tool
+You can create an FT using the toolbox on [Dev Portal](https://dev.near.org/tools). The FT Tool is a token factory, you can interact with it through graphical interface, or by making calls to its contract.
 
 <Tabs groupId="code-tabs">
   <TabItem value="⚛️ Component" label="⚛️ Component" default>
@@ -58,7 +58,7 @@ You can create an FT using the community tool [Token Farm](https://tkn.farm/). T
   </TabItem>
 </Tabs>
 
-The FT you create will live in the account `<your_token_symbol>.tkn.near` (e.g. `test.tkn.near`).
+The FT you create will live in the account `<your_token_symbol>.tkn.primitives.near` (e.g. `test.tkn.primitives.near`).
 
 ---
 
@@ -136,7 +136,7 @@ You can make sure a user is registered by calling `storage_balance_of`.
 :::
 
 :::tip
-After a user calls the `storage_deposit` the FT will appear in their Wallets. 
+After a user calls the `storage_deposit` the FT will appear in their Wallets.
 :::
 
 ---
