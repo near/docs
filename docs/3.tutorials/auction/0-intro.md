@@ -11,7 +11,7 @@ Welcome! In this guide we will help you navigate NEAR tech stack, so you can bui
 
 We'll start from a simple auction contract and slowly build on top of it to create a full Web3 application to carry out on-chain auctions.
 
-By the time you finish this tutorial, you will have learned several concepts and how to use many key privitives along the way:
+By the time you finish this tutorial, you will have learned several concepts and how to use many key primitives along the way:
 
 - [Creating a simple smart contract](./1.1-basic.md#the-contracts-state)
 - [Writing tests for a contract](./1.2-testing.md)
