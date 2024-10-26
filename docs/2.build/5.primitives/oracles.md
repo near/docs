@@ -1,18 +1,18 @@
 ---
 id: oracles
-title: Price Oracles
+title: Oracles
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Oracles are smart contracts that enable you to query the current price of an asset.
+[Oracles](https://en.wikipedia.org/wiki/Blockchain_oracle) act as a bridge between a blockchain platform and off-chain data allowing smart contracts the ability to access information from the outside-world. Because blockchain platforms operate in a closed ecosystem or "walled garden", these third party oracle services are essential in providing access to external data, events, or APIs.
 
-Since smart contracts cannot connect to
-internet and pull information, Oracles rely on having someone constantly updating their prices. Because of that, be mindful
-when using an oracle that there might be a delay between the market's latest information and the Oracles data.
+Examples include:
 
-Oracle contract's are not standardized. We will here list different providers and how to use their Oracle as they are built.
+- **Price Feeds** -> _Real-time price information for cryptocurrencies, stocks, or commodities._
+- **Event Information** -> _Reporting occurrences such as sporting events or weather conditions_
+- **APIs** -> _Connecting smart contracts to external web services or systems._
 
 ---
 
@@ -23,8 +23,6 @@ Oracle contract's are not standardized. We will here list different providers an
 - Smart contract: https://github.com/NearDeFi/price-oracle
 - Bot to fill contract: https://github.com/NearDeFi/near-price-oracle-bot
 
----
-
 ## Query Assets
 
 <Tabs>
@@ -32,7 +30,7 @@ Oracle contract's are not standardized. We will here list different providers an
 
 ```bash
 near view priceoracle.near get_assets
-``` 
+```
 
 </TabItem>
 
