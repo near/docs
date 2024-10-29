@@ -55,7 +55,7 @@ If you want to try things out, these are the smart contracts available on `testn
 
 ## 1. Deriving the Foreign Address
 
-Chain Signatures use [`derivation paths`](../../../1.concepts/abstraction/chain-signatures.md#one-account-multiple-chains) to represent accounts on the target blockchain. The external address to be controlled can be deterministically derived from:
+Chain Signatures use [`derivation paths`](../../../concepts/abstraction/chain-signatures.md#one-account-multiple-chains) to represent accounts on the target blockchain. The external address to be controlled can be deterministically derived from:
 
 - The NEAR address (e.g., `example.near`, `example.testnet`, etc.)
 - A derivation path (a string such as `ethereum-1`, `ethereum-2`, etc.)
@@ -108,7 +108,7 @@ Constructing the transaction to be signed (transaction, message, data, etc.) var
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/services/ethereum.js"
       start="46" end="73" />
-    
+
 In Ethereum, constructing the transaction is simple since you only need to specify the address of the receiver and how much you want to send.
 
 </TabItem>
@@ -154,11 +154,11 @@ For bitcoin, all UTXOs are signed independently and then combined into a single 
 
 </Tabs>
 
-<details> 
-        
+<details>
+
   <summary> Deposit amount </summary>
 
-  In this example, we attach a deposit of 0.05 $NEAR for the signature request. The transaction may fail if the network is congested since the deposit required by the MPC service scales linearly with the number of pending requests, from 1 yoctoNEAR to a maximum of 0.65 $NEAR. Any unused deposit will be refunded and if the signature fails, the user will be refunded the full deposit.  
+  In this example, we attach a deposit of 0.05 $NEAR for the signature request. The transaction may fail if the network is congested since the deposit required by the MPC service scales linearly with the number of pending requests, from 1 yoctoNEAR to a maximum of 0.65 $NEAR. Any unused deposit will be refunded and if the signature fails, the user will be refunded the full deposit.
 
   The MPC contract does implement a method to check the current deposit required, however, it cannot be used reliably since the amount will likely change between the time of the check and the time of the request.
 
