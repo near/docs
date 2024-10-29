@@ -181,7 +181,7 @@ function Footer() {
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/concepts/data-flow/data-storage">
+                    <a href="/concepts/data-flow/near-data-flow">
                       Data on Blockchain
                     </a>
                   </li>
