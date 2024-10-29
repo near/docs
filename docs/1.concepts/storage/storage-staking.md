@@ -45,7 +45,7 @@ Note that a call to your smart contract to remove data has an associated gas fee
 
 Storage staking is priced in an amount set by the network, which is set to **1E19 yoctoNEAR per byte**, or **100kb per NEAR token (Ⓝ)**. [^1] [^2]
 
-NEAR's JSON RPC API provides [a way to query this initial setting](/api/rpc/setup#genesis-config) as well as a [a way to query the live config / recent blocks](/api/rpc/setup#protocol-config).
+NEAR's JSON RPC API provides [a way to query this initial setting](/api/rpc/protocol#genesis-config) as well as a [a way to query the live config / recent blocks](/api/rpc/protocol#protocol-config).
 
 ## Example cost breakdown
 

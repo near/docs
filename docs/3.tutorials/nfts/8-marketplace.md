@@ -114,7 +114,7 @@ The `list_nft_for_sale` method lists an nft for sale, for this, it takes the id 
 
 <Github language="rust" start="33" end="74" url="https://github.com/near-examples/nft-tutorial/blob/main/market-contract/src/sale.rs" />
 
-The function first checks if the user has [enough storage available](#storage-management-model-storage-management-model), and makes two calls in parallel to the NFT contract. The first is to check if this marketplace contract is authorized to transfer the NFT. The second is to make sure that the caller (`predecessor`) is actually the owner of the NFT, otherwise, anyone could call this method to create fake listings. This second call is mostly a measure to avoid spam, since anyways, only the owner could approve the marketplace contract to transfer the NFT.
+The function first checks if the user has [enough storage available](#storage-management-model), and makes two calls in parallel to the NFT contract. The first is to check if this marketplace contract is authorized to transfer the NFT. The second is to make sure that the caller (`predecessor`) is actually the owner of the NFT, otherwise, anyone could call this method to create fake listings. This second call is mostly a measure to avoid spam, since anyways, only the owner could approve the marketplace contract to transfer the NFT.
 
 Both calls return their results to the `process_listing` function, which executes the logic to store the sale object on the contract.
 
@@ -172,7 +172,7 @@ Next, you'll deploy this contract to the network.
 
 <Tabs groupId="cli-tabs">
   <TabItem value="short" label="Short">
-  
+
   ```bash
   export MARKETPLACE_CONTRACT_ID=<accountId>
   near create-account $MARKETPLACE_CONTRACT_ID --useFaucet
@@ -180,7 +180,7 @@ Next, you'll deploy this contract to the network.
   </TabItem>
 
   <TabItem value="full" label="Full">
-  
+
   ```bash
   export MARKETPLACE_CONTRACT_ID=<accountId>
   near account create-account sponsor-by-faucet-service $MARKETPLACE_CONTRACT_ID autogenerate-new-keypair save-to-keychain network-config testnet create
@@ -260,19 +260,19 @@ To query for the total supply of NFTs listed on the marketplace, you can call th
 
 <Tabs groupId="cli-tabs">
   <TabItem value="short" label="Short">
-  
+
   ```bash
   near view $MARKETPLACE_CONTRACT_ID get_supply_sales '{}' --networkId testnet
   ```
   </TabItem>
 
   <TabItem value="full" label="Full">
-  
+
   ```bash
   near contract call-function as-read-only $MARKETPLACE_CONTRACT_ID get_supply_sales json-args {} network-config testnet now
   ```
   </TabItem>
-  
+
 </Tabs>
 
 <hr className="subsection" />
@@ -283,14 +283,14 @@ To query for the total supply of NFTs listed by a specific owner on the marketpl
 
 <Tabs groupId="cli-tabs">
   <TabItem value="short" label="Short">
-  
+
   ```bash
   near view $MARKETPLACE_CONTRACT_ID get_supply_by_owner_id '{"account_id": "'$NFT_CONTRACT_ID'"}' --networkId testnet
   ```
   </TabItem>
 
   <TabItem value="full" label="Full">
-  
+
   ```bash
   near contract call-function as-read-only $MARKETPLACE_CONTRACT_ID get_supply_by_owner_id json-args '{"account_id": "'$NFT_CONTRACT_ID'"}' network-config testnet now
   ```
@@ -305,14 +305,14 @@ To query for the total supply of NFTs that belong to a specific contract, you ca
 
 <Tabs groupId="cli-tabs">
   <TabItem value="short" label="Short">
-  
+
   ```bash
   near view $MARKETPLACE_CONTRACT_ID get_supply_by_nft_contract_id '{"nft_contract_id": "'$NFT_CONTRACT_ID'"}' --networkId testnet
   ```
   </TabItem>
 
   <TabItem value="full" label="Full">
-  
+
   ```bash
   near contract call-function as-read-only $MARKETPLACE_CONTRACT_ID get_supply_by_nft_contract_id json-args '{"nft_contract_id": "'$NFT_CONTRACT_ID'"}' network-config testnet now
   ```
@@ -327,14 +327,14 @@ To query for important information for a specific listing, you can call the `get
 
 <Tabs groupId="cli-tabs">
   <TabItem value="short" label="Short">
-  
+
   ```bash
   near view $MARKETPLACE_CONTRACT_ID get_sale '{"nft_contract_token": "'$NFT_CONTRACT_ID'.token-1"}' --networkId testnet
   ```
   </TabItem>
 
   <TabItem value="full" label="Full">
-  
+
   ```bash
   near contract call-function as-read-only $MARKETPLACE_CONTRACT_ID get_sale json-args '{"nft_contract_token": "'$NFT_CONTRACT_ID'.token-1"}' network-config testnet now
   ```
@@ -345,14 +345,14 @@ In addition, you can query for paginated information about the listings for a gi
 
 <Tabs groupId="cli-tabs">
   <TabItem value="short" label="Short">
-  
+
   ```bash
   near view $MARKETPLACE_CONTRACT_ID get_sales_by_owner_id '{"account_id": "'$NFT_CONTRACT_ID'", "from_index": "0", "limit": 5}' --networkId testnet
   ```
   </TabItem>
 
   <TabItem value="full" label="Full">
-  
+
   ```bash
   near contract call-function as-read-only $MARKETPLACE_CONTRACT_ID get_sales_by_owner_id json-args '{"account_id": "'$NFT_CONTRACT_ID'", "from_index": "0", "limit": 5}' network-config testnet now
   ```
@@ -363,14 +363,14 @@ Finally, you can query for paginated information about the listings that origina
 
 <Tabs groupId="cli-tabs">
   <TabItem value="short" label="Short">
-  
+
   ```bash
   near view $MARKETPLACE_CONTRACT_ID get_sales_by_nft_contract_id '{"nft_contract_id": "'$NFT_CONTRACT_ID'", "from_index": "0", "limit": 5}' --networkId testnet
   ```
   </TabItem>
 
   <TabItem value="full" label="Full">
-  
+
   ```bash
   near contract call-function as-read-only $MARKETPLACE_CONTRACT_ID get_sales_by_nft_contract_id json-args '{"nft_contract_id": "'$NFT_CONTRACT_ID'", "from_index": "0", "limit": 5}' network-config testnet now
   ```
