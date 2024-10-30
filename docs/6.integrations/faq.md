@@ -82,7 +82,7 @@ NEAR supports separate validation keys that can be used in smart contracts to de
 
 If a validator misbehaves the funds of the delegators are also slashed. There is no waiting period for delegators to withdraw their stake.
 
-### Does a validator control funds that have been delegated to them? 
+### Does a validator control funds that have been delegated to them?
 
 Delegation is custodial (you are transferring funds to a different account, the smart contract that implements staking pool). We provide a reference implementation being security reviewed and tested by 100 validators at time of writing.
 
@@ -96,7 +96,7 @@ One would need to query the staking pool contract to get balance.
 
 ## Nodes
 
-### Can a node be configured to archive all blockchain data since genesis? 
+### Can a node be configured to archive all blockchain data since genesis?
 
 v
 Yes. Start the node using the following command:
@@ -105,11 +105,11 @@ Yes. Start the node using the following command:
 ./target/release/near run --archive
 ```
 
-### Can a node be configured to expose an RPC (ex: HTTP) interface? 
+### Can a node be configured to expose an RPC (ex: HTTP) interface?
 
 Yes. All nodes expose this interface by default which can be configured by setting the value of `listen_addr:port` in the node's `config.json` file.
 
-### Can a node be gracefully terminated and restarted (using archived data on disk to continue syncing)? 
+### Can a node be gracefully terminated and restarted (using archived data on disk to continue syncing)?
 
 Yes.
 
@@ -120,7 +120,7 @@ Yes. `GET /status` and `GET /health` provide this interface.
 - `/status`: block height, syncing status, peer count, etc
 - `/health`: success/failure if node is up running & progressing
 
-### Can a node be started using a Dockerfile without human supervision? 
+### Can a node be started using a Dockerfile without human supervision?
 
 Yes.
 
@@ -130,7 +130,7 @@ docker run <port mapping> <mount data folder> <ENV vars> nearprotocol/nearcore:l
 
 See `nearcore/scripts/nodelib.py` for different examples of configuration.
 
-### What is the source of truth for current block height exposed via API? 
+### What is the source of truth for current block height exposed via API?
 
 - MainNet
   - https://nearblocks.io
@@ -148,7 +148,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 # in the line above, testnet may be replaced with mainnet or betanet
 ```
 
-It's `43200` seconds or `~12` hours. You can view the live configuration for `epoch_length` using the [`protocol_config` RPC endpoint](/api/rpc/setup#protocol-config).
+It's `43200` seconds or `~12` hours. You can view the live configuration for `epoch_length` using the [`protocol_config` RPC endpoint](/api/rpc/protocol#protocol-config).
 
 In the response we find `transaction_validity_period": 86400` (and since it takes about 1 second to produce a block, this period is about 24 hrs)
 
@@ -160,7 +160,7 @@ Distribution at genesis will be spread among the NEAR team, our contributors, pr
 
 There will be auctions occurring on the platform after launch which will allocate large amounts of tokens over the next 2 years. Additionally we are planning to run TestNet where any validator who participates will receive rewards in real tokens. We are planning to onboard at least 50 separate entities to be validators at launch.
 
-### What is the network upgrade process? 
+### What is the network upgrade process?
 
 We are currently upgrading via restarting with a new genesis block.
 
@@ -220,7 +220,7 @@ An account can have arbitrarily many keys, as long as it has enough tokens for t
 
 ### Which balance look-ups exists? What is required?
 
-We have an [RPC method for viewing account](/api/rpc/setup#view_account).
+We have an [RPC method for viewing account](/api/rpc/contracts#view-account).
 
 The [JS implementation is here](https://github.com/near/near-api-js/blob/d7f0cb87ec320b723734045a4ee9d17d94574a19/src/providers/json-rpc-provider.ts#L73). Note that in this RPC interface you can specify the finality requirement (whether to query the latest state or finalized state).
 
@@ -228,7 +228,7 @@ For custody purposes, it is recommended not to rely on latest state but only wha
 
 ## Fees
 
-### What is the fee structure for on-chain transactions? 
+### What is the fee structure for on-chain transactions?
 
 NEAR uses a gas-based model where prices are generally deterministically adjusted based on congestion of the network.
 
@@ -239,7 +239,7 @@ Accounts don’t have associated resources. Gas amount is predetermined for all 
 ### How do we know how much gas to add to a transaction?
 
 - See reference documentation here: https://nomicon.io/Economics/
-- See API documentation for [discovering gas price via RPC here](/api/rpc/setup#gas-price).
+- See API documentation for [discovering gas price via RPC here](/api/rpc/gas#gas-price).
 
 The issuer of a transaction should attach some amount of gas by taking a guess at budget which will get the transaction processed. The contract knows how much to fund different cross contract calls. Gas price is calculated and fixed per block, but may change from block to block depending on how full / busy the block is. If blocks become more than half full then gas price increases.
 
@@ -249,7 +249,7 @@ We're also considering adding a max gas price limit.
 
 ### How do we follow Tx status?
 
-See related [RPC interface for fetching transaction status here](/api/rpc/setup#transaction-status).
+See related [RPC interface for fetching transaction status here](/api/rpc/transactions#transaction-status).
 
 ### How are transactions constructed and signed?
 
@@ -259,7 +259,7 @@ Transactions can be constructed and signed offline. Nodes are not required for s
 
 See [transactions](/concepts/protocol/transactions) in the concepts section of our documentation.
 
-### How is the hash preimage generated? Which fields does the raw transaction consist of? 
+### How is the hash preimage generated? Which fields does the raw transaction consist of?
 
 For a transaction, we sign the hash of the transaction. More specifically, what is signed is the `sha256` of the transaction object serialized in borsh (https://github.com/near/borsh).
 

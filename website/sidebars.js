@@ -546,13 +546,8 @@ const sidebar = {
       "items": [
         {
           "type": "link",
-          "label": "dev.near.org Web Editor",
-          "href": "https://dev.near.org/sandbox"
-        },
-        {
-          "type": "link",
           "label": "Jutsu Web Editor",
-          "href": "https://jutsu.ai/editor"
+          "href": "https://near.jutsu.ai/"
         }
       ]
     },

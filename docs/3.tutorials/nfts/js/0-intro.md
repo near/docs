@@ -13,7 +13,7 @@ sidebar_label: Introduction
 
 To complete these tutorials successfully, you'll need:
 
-- [Node.js](/build/smart-contracts/quickstart#prerequisites#nodejs)
+- [Node.js](/build/smart-contracts/quickstart?code-tabs=js)
 - [A NEAR Wallet](https://testnet.mynearwallet.com/create)
 - [NEAR-CLI](/tools/near-cli#installation)
 

@@ -25,7 +25,7 @@ Before starting, make sure to setup your development environment.
 
 </details>
 
-<Tabs groupId="code-tabs">
+<Tabs groupId="code-tabs" queryString>
   <TabItem value="js" label="🌐 JavaScript">
 
 ```bash
@@ -115,9 +115,9 @@ This will generate a project with the following structure:
 
 ```bash
 ├── src        # contract's code
-│   └── lib.rs 
+│   └── lib.rs
 ├── tests      # sandbox testing
-│   └── test_basics.rs 
+│   └── test_basics.rs
 ├── Cargo.toml # package manager
 ├── README.md
 └── rust-toolchain.toml
@@ -134,7 +134,7 @@ This will generate a project with the following structure:
 
 The `Hello World` smart contract stores a greeting on its state, and exposes two functions to interact with it:
 1. `set_greeting`: to change the greeting
-2. `get_greeting`: to fetch the greeting 
+2. `get_greeting`: to fetch the greeting
 
 <Tabs groupId="code-tabs">
   <TabItem value="js" label="🌐 JavaScript">
