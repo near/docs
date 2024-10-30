@@ -76,7 +76,7 @@ const walletConnection = new WalletConnection(nearConnection);
 You first create a [WalletConnection](#wallet-connection), and then call `requestSignIn`.
 This will redirect the current page to the Wallet authentication page. You can optionally configure success and failure redirect URLs.
 
-When you create a wallet connection you have the option to create a [function call access key](../../1.concepts/protocol/access-keys.md#function-call-keys-function-call-keys) for a specific contract to be used by your application. This allows the app to automatically sign `non-payable methods` for the user without having to sign each transaction manually in the wallet. You can also decide to specify a list of `methodNames` that will restrict the key to sign only certain methods on the specified contract. Passing an empty array will allow all methods to be signed.
+When you create a wallet connection you have the option to create a [function call access key](/concepts/protocol/access-keys#function-call-keys) for a specific contract to be used by your application. This allows the app to automatically sign `non-payable methods` for the user without having to sign each transaction manually in the wallet. You can also decide to specify a list of `methodNames` that will restrict the key to sign only certain methods on the specified contract. Passing an empty array will allow all methods to be signed.
 
 ```js
 // const walletConnection = new WalletConnection(nearConnection);

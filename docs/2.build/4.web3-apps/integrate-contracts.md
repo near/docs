@@ -100,7 +100,7 @@ You can find the entire Wallet Selector [API reference here](https://github.com/
 </details>
 
 #### Function Call Key
-When instantiating the wallet you can choose if you want to **create a [FunctionCall Key](../../1.concepts/protocol/access-keys.md#function-call-keys-function-call-keys)**.
+When instantiating the wallet you can choose if you want to **create a [FunctionCall Key](/concepts/protocol/access-keys#function-call-keys)**.
 
 If you create the key, your dApp will be able to **automatically sign non-payable transactions** for the user on the specified contract.
 
@@ -161,7 +161,7 @@ When the user clicks the login button, they will be asked to select a wallet and
 
 ### Function Call Key
 
-If you instantiated the `Wallet` passing an account for the `createAccessKeyFor` parameter, then the wallet will create a [FunctionCall Key](../../1.concepts/protocol/access-keys.md#function-call-keys-function-call-keys) and store it in the web's local storage.
+If you instantiated the `Wallet` passing an account for the `createAccessKeyFor` parameter, then the wallet will create a [FunctionCall Key](/concepts/protocol/access-keys#function-call-keys) and store it in the web's local storage.
 
 ```jsx
 const wallet = new Wallet({
@@ -212,7 +212,7 @@ Remember that you can use the `wallet` to call methods in **any** contract. If y
 
 ### Wallet Redirection
 
-When calling a change call with **attatched deposit** (or any change call if no function call key was created), then the user will be prompted to sign the transaction in the wallet. 
+When calling a change call with **attatched deposit** (or any change call if no function call key was created), then the user will be prompted to sign the transaction in the wallet.
 
 If using a web wallet, as opposed to an extension, the user will be redirected to the wallet's website to sign the transaction.
 After accepting, the user will be brought back to your application, with the resulting transaction hash being passed as part of the URL (i.e. `your-website.com/?transactionHashes=...`).
@@ -240,7 +240,7 @@ Assuming you created the `near` object as in the [example above](#connecting-to-
 
 ## Sending Multiple Transactions
 
-The Wallet class also exposes a method that can be used to send multiple transactions. 
+The Wallet class also exposes a method that can be used to send multiple transactions.
 
 <CodeTabs>
   <Language value="js" language="js">
@@ -253,11 +253,11 @@ The Wallet class also exposes a method that can be used to send multiple transac
 
 </CodeTabs>
 
-Transactions can either be sent as multiple separate  transactions simultaneously or as a batch transaction made up of actions where if one of the actions fails, they are all reverted. An example of both can be seen [here](https://docs.near.org/tutorials/examples/frontend-multiple-contracts#dispatching-multiple-transactions)  
+Transactions can either be sent as multiple separate  transactions simultaneously or as a batch transaction made up of actions where if one of the actions fails, they are all reverted. An example of both can be seen [here](https://docs.near.org/tutorials/examples/frontend-multiple-contracts#dispatching-multiple-transactions)
 
 ---
 
-## Querying Account Balance 
+## Querying Account Balance
 
 By calling the `getBalance` method the user can get the balance of the account that is currently logged in.
 
@@ -274,7 +274,7 @@ By calling the `getBalance` method the user can get the balance of the account t
 
 ---
 
-## Get Access Keys 
+## Get Access Keys
 
 The final method the Wallet class exposes is `getAccessKeys` which is used to return an object of all the access keys on the account that is currently logged in.
 

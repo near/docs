@@ -182,7 +182,7 @@ Below this, we can inspect transaction actions (recall, that transactions may ha
 ![image](/docs/assets/web3/web3-18.png)
 
 
-At the end, transaction execution details, including token transfers, logs, cross-contract calls and gas refunds are provided. One thing that we haven’t covered yet is shown here - [receipts](../protocol/transactions.md#receipt-receipt). For most practical purposes they are just a transaction implementation detail. They are quite useful in a transaction explorer to understand how a transaction was executed, but aren’t really relevant outside of it.
+At the end, transaction execution details, including token transfers, logs, cross-contract calls and gas refunds are provided. One thing that we haven’t covered yet is shown here - [receipts](/concepts/protocol/transaction-execution#receipts--finality). For most practical purposes they are just a transaction implementation detail. They are quite useful in a transaction explorer to understand how a transaction was executed, but aren’t really relevant outside of it.
 
 ![image](/docs/assets/web3/web3-19.png)
 
