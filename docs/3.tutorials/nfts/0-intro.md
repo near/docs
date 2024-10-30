@@ -15,7 +15,7 @@ To complete these tutorials successfully, you'll need:
 
 - [Rust](https://www.rust-lang.org/tools/install)
 - [A Testnet wallet](https://testnet.mynearwallet.com/create)
-- [NEAR-CLI-RS](../../4.tools/cli.md#setup)
+- [NEAR-CLI](/tools/near-cli#installation)
 - [cargo-near](https://github.com/near/cargo-near)
 
 :::info New to Rust?

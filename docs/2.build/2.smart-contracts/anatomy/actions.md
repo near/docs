@@ -7,7 +7,7 @@ import TabItem from '@theme/TabItem';
 
 Smart contracts can perform specific `Actions` such as transferring NEAR, or calling other contracts.
 
-An important property of `Actions` is that they can be batched together when acting on the same contract. **Batched actions** act as a unit: they execute in the same [receipt](../../../1.concepts/protocol/transactions.md#receipt-receipt), and if **any fails**, then they **all get reverted**.
+An important property of `Actions` is that they can be batched together when acting on the same contract. **Batched actions** act as a unit: they execute in the same [receipt](/concepts/protocol/transaction-execution#receipts--finality), and if **any fails**, then they **all get reverted**.
 
 :::info
 `Actions` can be batched only when they act on the **same contract**. You can batch calling two methods on a contract,
@@ -104,10 +104,10 @@ right in the callback.
     @call({privateFunction: true})
     callback({}): boolean {
       let result, success;
-    
+
       try{ result = near.promiseResult(0); success = true }
       catch{ result = undefined; success = false }
-    
+
       if (success) {
         near.log(`Success!`)
         return true
@@ -172,7 +172,7 @@ The snippet showed above is a low level way of calling other methods. We recomme
 ## Create a Sub Account
 Your contract can create direct sub accounts of itself, for example, `user.near` can create `sub.user.near`.
 
-Accounts do **NOT** have control over their sub-accounts, since they have their own keys. 
+Accounts do **NOT** have control over their sub-accounts, since they have their own keys.
 
 Sub-accounts are simply useful for organizing your accounts (e.g. `dao.project.near`, `token.project.near`).
 
@@ -208,7 +208,7 @@ Sub-accounts are simply useful for organizing your accounts (e.g. `dao.project.n
   #[near(contract_state)]
   #[derive(Default)]
   pub struct Contract { }
-                            
+
   const MIN_STORAGE: Balance = 1_000_000_000_000_000_000_000; //0.001Ⓝ
 
   #[near]
@@ -258,9 +258,9 @@ the `create_account` method of `near` or `testnet` root contracts.
   class Contract {
     @call({})
     create_account({account_id, public_key}:{account_id: String, public_key: String}) {
-      const args = bytes(JSON.stringify({ 
+      const args = bytes(JSON.stringify({
         "new_account_id": account_id,
-        "new_public_key": public_key 
+        "new_public_key": public_key
       }))
 
       NearPromise.new("testnet")
@@ -461,7 +461,7 @@ There are two scenarios in which you can use the `delete_account` action:
   #[near(contract_state)]
   #[derive(Default)]
   pub struct Contract { }
-                            
+
   const MIN_STORAGE: Balance = 1_000_000_000_000_000_000_000; //0.001Ⓝ
 
   #[near]

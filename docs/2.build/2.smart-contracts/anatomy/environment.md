@@ -92,12 +92,12 @@ In most scenarios you will **only need to know the predecessor**. However, there
 The environment gives you access to 3 token-related parameters, all expressed in yoctoNEAR (1 Ⓝ = 10<sup>24</sup>yⓃ):
 
 ### Attached Deposit
-`attached_deposit` represents the amount of yoctoNEAR the predecessor attached to the call. 
+`attached_deposit` represents the amount of yoctoNEAR the predecessor attached to the call.
 
 This amount is **already deposited** in your contract's account, and is **automatically returned** to the `predecessor` if your **method panics**.
 
 :::warning
-If you make a [cross-contract call](../anatomy/crosscontract.md) and it panics, the funds are sent back to **your contract**. See how to handle this situation in the [callback section](../anatomy/crosscontract.md#failed-execution)
+If you make a [cross-contract call](../anatomy/crosscontract.md) and it panics, the funds are sent back to **your contract**. See how to handle this situation in the [callback section](../anatomy/crosscontract.md#what-happens-if-the-function-i-call-fails)
 :::
 
 ### Account Balance
@@ -219,7 +219,7 @@ Besides environmental variables, the SDK also exposes some functions to perform 
 
 </Tabs>
 
-:::info 
+:::info
 In the JS SDK, `throw new Error("message")` mimics the behavior of Rust's `env::panic_str("message")`.
 :::
 

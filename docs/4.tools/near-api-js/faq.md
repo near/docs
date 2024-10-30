@@ -51,7 +51,7 @@ Versions list is on [npmjs.com](https://www.npmjs.com/package/near-api-js)
       nodeUrl: 'https://rpc.testnet.near.org',
       walletUrl: 'https://testnet.mynearwallet.com/'
     });
-    
+
     // connect to the NEAR Wallet
     const wallet = new nearApi.WalletConnection(near, 'my-app');
 
@@ -251,7 +251,7 @@ You can read about it in the article about [Implicit Accounts](https://docs.near
 
 ### How do I attach gas / a deposit? {#how-do-i-attach-gas--a-deposit}
 
-After [contract is instantiated](/tools/near-api-js/quick-reference#load-contract) you can then call the contract and specify the amount of attached gas.
+After [contract is instantiated](/tools/near-api-js/contract#load-contract) you can then call the contract and specify the amount of attached gas.
 
 ```js
 await contract.method_name(
@@ -319,8 +319,8 @@ const contract = await new nearAPI.Contract(
 // This will work because we declared `method_A_view` in constructor
 await contract.method_A_view();
 
-// This will throw `TypeError: contract.method_B_call is not a function` 
-// because we didn't declare `method_B_call` in constructor, 
+// This will throw `TypeError: contract.method_B_call is not a function`
+// because we didn't declare `method_B_call` in constructor,
 // even if it exists in the real contract.
 await contract.method_B_call();
 

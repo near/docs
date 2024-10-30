@@ -20,7 +20,7 @@ We're going to introduce a new Action: `Transfer`. In this chapter, we'd like th
 </figure>
 <br/>
 
-We've already used Actions in the [previous chapter](../01-basics/03-hashing-and-unit-tests.md#using-batch-actions), when we deployed and initialized the contract, which used the `DeployContract` and `FunctionCall` Action, respectively.
+We've already used Actions in the [previous chapter](/tutorials/crosswords/basics/hashing-and-unit-tests#first-use-of-batch-actions), when we deployed and initialized the contract, which used the `DeployContract` and `FunctionCall` Action, respectively.
 
 The full list of Actions are available at the [NEAR specification site](https://nomicon.io/RuntimeSpec/Actions.html).
 
@@ -127,7 +127,7 @@ Let's cover three commonly-used functions regarding accounts: predecessor, signe
 
     :::tip Why would I use that?
     There might be various reasons to use the current account, but a common use case is checking ownership or handling callbacks to cross-contract calls.
-    
+
     Many smart contracts will want to implement some sort of permission system. A common, rudimentary permission allows certain functions to only be called by the contract owner, AKA the person who owns a private key to the account for this contract.
 
     The contract can check that the predecessor and current account are the same, and trust offer more permissions like changing contract settings, upgrading the contract, or other privileged modifications.

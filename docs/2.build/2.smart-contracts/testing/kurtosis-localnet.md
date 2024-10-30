@@ -366,7 +366,7 @@ Now that you have [everything setup](#setup), create an account using your local
 
 ![Local wallet landing page](/docs/assets/kurtosis/local-wallet-landing-page.png)
 
-The account creation is exactly the same as on mainnet or testnet but **only the passphrase recovery mode** will work here. Also note that the root account is `test.near` instead of `testnet` or `mainnet`. This means that all the accounts you create will be [subaccounts](/concepts/protocol/account-model#subaccounts) of `test.near`. (ex. `benji.test.near`)
+The account creation is exactly the same as on mainnet or testnet but **only the passphrase recovery mode** will work here. Also note that the root account is `test.near` instead of `testnet` or `mainnet`. This means that all the accounts you create will be "subaccounts" of `test.near`. (ex. `benji.test.near`) [Read more](/concepts/protocol/account-id#named-address)
 
 :::tip
 

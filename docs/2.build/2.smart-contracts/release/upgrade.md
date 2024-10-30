@@ -218,7 +218,7 @@ adds the information to the `PostedMessages`:
 
 </CodeTabs>
 
-Notice that `migrate` is actually an [initialization method](../anatomy/anatomy.md#initialization-method) that **ignores** the existing state (`[#init(ignore_state)]`), thus being able to execute and rewrite the state.
+Notice that `migrate` is actually an [initialization method](/build/smart-contracts/anatomy/storage#initializing-the-state) that **ignores** the existing state (`[#init(ignore_state)]`), thus being able to execute and rewrite the state.
 
 :::tip
 

@@ -44,7 +44,7 @@ The [Generic Factory](https://github.com/near-examples/factory-rust/) presents a
 ## Quickstart
 
 1. Make sure you have installed [rust](https://www.rust-lang.org/).
-2. Install the [`NEAR CLI`](https://github.com/near/near-cli#setup)
+2. Install the [`NEAR CLI`](/tools/near-cli#installation)
 
 <hr className="subsection" />
 

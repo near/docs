@@ -26,7 +26,7 @@ On each incoming transaction that adds data.
 Let's walk through an example:
 
 1. You launch [a guest book app](https://examples.near.org/guest-book), deploying your app's smart contract to the account `example.near`
-2. Visitors to your app can add messages to the guest book. This means your users will, [by default](/concepts/protocol/gas#what-about-prepaid-gas), pay a small gas fee to send their message to your contract.
+2. Visitors to your app can add messages to the guest book. This means your users will, [by default](/concepts/protocol/gas#understanding-gas-fees), pay a small gas fee to send their message to your contract.
 3. When such a call comes in, NEAR will check that `example.near` has a large enough balance that it can stake an amount to cover the new storage needs. If it does not, the transaction will fail.
 
 ## The "million cheap data additions" attack
@@ -45,7 +45,7 @@ Note that a call to your smart contract to remove data has an associated gas fee
 
 Storage staking is priced in an amount set by the network, which is set to **1E19 yoctoNEAR per byte**, or **100kb per NEAR token (Ⓝ)**. [^1] [^2]
 
-NEAR's JSON RPC API provides [a way to query this initial setting](/api/rpc/setup#genesis-config) as well as a [a way to query the live config / recent blocks](/api/rpc/setup#protocol-config).
+NEAR's JSON RPC API provides [a way to query this initial setting](/api/rpc/protocol#genesis-config) as well as a [a way to query the live config / recent blocks](/api/rpc/protocol#protocol-config).
 
 ## Example cost breakdown
 

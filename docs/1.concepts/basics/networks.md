@@ -34,7 +34,6 @@ NEAR Protocol operates on several networks each operating with their own indepen
 
 More on local development [here](https://near-nodes.io/validator/running-a-node)
 
-`near-cli` [network selection](/tools/near-cli#network-selection) variable is `local`
 
 ---
 
