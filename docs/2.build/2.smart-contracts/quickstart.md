@@ -8,7 +8,7 @@ import {Github} from "@site/src/components/codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Welcome! [NEAR accounts](../../1.concepts/protocol/account-model.md) can store small apps known as smart contracts. In this quick tutorial, we will guide you in creating your first contract in the NEAR **testnet**!
+Welcome! [NEAR accounts](../../1.concepts/protocol/account-model.md) can store small apps known as smart contracts. In this quick tutorial, we will guide you in creating your first contract on the NEAR **testnet**!
 
 Join us in creating a friendly contract that stores a greeting, and exposes functions to interact with it.
 
@@ -132,7 +132,7 @@ This will generate a project with the following structure:
 
 ## The Contract
 
-The `Hello World` smart contract stores a greeting on its state, and exposes two functions to interact with it:
+The `Hello World` smart contract stores a greeting in its state, and exposes two functions to interact with it:
 1. `set_greeting`: to change the greeting
 2. `get_greeting`: to fetch the greeting
 
@@ -273,12 +273,6 @@ When you are ready to create a build of the contract run a one-line command depe
   cargo near build
   ```
 
-  :::tip
-
-  You can also build the contract with `cargo build --release`. This will compile the contract, but without metadata or the Contract Application Binary Interface (ABI)
-
-  :::
-
   </TabItem>
 
 </Tabs>
@@ -288,6 +282,10 @@ When you are ready to create a build of the contract run a one-line command depe
 ## Deploy the Contract
 
 Having our account created, we can now deploy the contract:
+
+
+<Tabs groupId="cli-tabs">
+  <TabItem value="js" label="🌐 JavaScript">
 
 <Tabs groupId="cli-tabs">
   <TabItem value="short" label="Short">
@@ -304,9 +302,32 @@ Having our account created, we can now deploy the contract:
   near contract deploy <created-account> use-file ./target/wasm32-unknown-unknown/release/hello.wasm without-init-call network-config testnet sign-with-keychain send
   ```
 
-  :::tip
-  You can also build the contract with `cargo build --release`. This will compile the contract, but without metadata or the Contract Application Binary Interface (ABI)
-  :::
+  </TabItem>
+
+</Tabs>
+
+  </TabItem>
+
+  <TabItem value="rust" label="🦀 Rust">
+
+  <Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near deploy <created-account> ./target/wasm32-unknown-unknown/release/hello.wasm
+  ```
+
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+  ```bash
+  near contract deploy <created-account> use-file ./target/wasm32-unknown-unknown/release/hello.wasm without-init-call network-config testnet sign-with-keychain send
+  ```
+
+  </TabItem>
+
+</Tabs>
 
   </TabItem>
 
@@ -394,9 +415,9 @@ Happy coding! 🚀
 At the time of this writing, this example works with the following versions:
 
 - near-cli: `4.0.13`
-- node: `18.19.1`
-- rustc: `1.77.0`
-- near-cli-rs: `0.8.1`
-- cargo-near: `0.6.1`
+- node: `20.18.0`
+- rustc: `1.81.0`
+- near-cli-rs: `0.15.1`
+- cargo-near: `0.10.1`
 
 :::

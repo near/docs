@@ -142,7 +142,7 @@ import { wagmiConfig, web3Modal } from '@/wallets/web3modal';
 import { setupEthereumWallets } from "@near-wallet-selector/ethereum-wallets";
 ```
 
-<Github fname="web3modal.js" language="js" start="44" end="55" metastring="{10}"
+<Github fname="web3modal.js" language="js" start="42" end="53" metastring="{10}"
       url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/near.js" />
 
 
