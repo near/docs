@@ -16,12 +16,12 @@ Join us in creating a friendly contract that stores a greeting, and exposes func
 
 ## Prerequisites
 
-Before starting, make sure to setup your development environment.
+Before starting, make sure to set up your development environment.
 
 <details>
 <summary>Working on Windows?</summary>
 
-  See our blog post [getting started on NEAR using Windows](/blog/getting-started-on-windows) for a step-by-step guide on how to setup WSL and your environment
+  See our blog post [getting started on NEAR using Windows](/blog/getting-started-on-windows) for a step-by-step guide on how to set up WSL and your environment
 
 </details>
 
@@ -29,7 +29,7 @@ Before starting, make sure to setup your development environment.
   <TabItem value="js" label="🌐 JavaScript">
 
 ```bash
-# Install Node.js using nvm (more option in: https://nodejs.org/en/download)
+# Install Node.js using nvm (more options in: https://nodejs.org/en/download)
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 nvm install latest
 
@@ -333,7 +333,7 @@ Having our account created, we can now deploy the contract:
 
 </Tabs>
 
-**Congrats**! your contract now lives in the NEAR testnet network.
+**Congrats**! Your contract now lives in the NEAR testnet network.
 
 ---
 
@@ -414,7 +414,6 @@ Happy coding! 🚀
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `4.0.13`
 - node: `20.18.0`
 - rustc: `1.81.0`
 - near-cli-rs: `0.15.1`
