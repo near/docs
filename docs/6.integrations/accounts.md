@@ -19,9 +19,9 @@ Please see the [documentation for accounts](/concepts/protocol/account-model) fo
 
 NEAR allows transfers to happen within a function call. More importantly, when an account is deployed with some contract, it is possible that the only way to transfer tokens from that account is through a function call. Therefore, exchanges need to support transfers through function calls as well. We recommend the following approach:
 
-Exchange can [query block by height](/api/rpc/setup#block) to get blocks on each height, and for every block,
-[query its chunk](/api/rpc/setup#chunk) to obtain the transactions included in the block. For each transaction,
-[query its status](/api/rpc/setup#transaction-status-with-receipts) to see the receipts generated from
+Exchange can [query block by height](/api/rpc/block-chunk#block-details) to get blocks on each height, and for every block,
+[query its chunk](/api/rpc/block-chunk#chunk-details) to obtain the transactions included in the block. For each transaction,
+[query its status](/api/rpc/transactions#transaction-status-with-receipts) to see the receipts generated from
 transactions. Since exchanges are only interested in transfers to their addresses, they only need to filter receipts that
 only contain `Transfer` action and whose `predecessor_id` is not `system` (receipts with `predecessor_id` equal to `system`
 are [refunds](https://nomicon.io/RuntimeSpec/Refunds.html)). Then, to check whether the receipt succeeds, it is sufficient

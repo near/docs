@@ -26,7 +26,7 @@ View call: ft.demo.testnet.ft_balance_of({"account_id": "mike.testnet"})
 '1000000'
 ```
 
-Alternatively, you can [call a contract function](/api/rpc/setup#call-a-contract-function) using the `query` RPC endpoint. Below is an example using HTTPie:
+Alternatively, you can [call a contract function](/api/rpc/contracts#call-a-contract-function) using the `query` RPC endpoint. Below is an example using HTTPie:
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=ftbalance method=query \

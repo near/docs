@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 An **epoch** is a unit of time when validators of the network remain constant. It is measured in blocks:
 
 - Both `testnet` and `mainnet` have an epoch duration of 43,200 blocks. Ideally epochs last about 12 hours, since blocks are created every second (in reality, they take slightly longer to be created).
-- You can view this setting by querying the **[`protocol_config`](/api/rpc/setup#protocol-config)** RPC endpoint and searching for `epoch_length`.
+- You can view this setting by querying the **[`protocol_config`](/api/rpc/protocol#protocol-config)** RPC endpoint and searching for `epoch_length`.
 
 **Note:** Nodes garbage collect blocks after 5 epochs (~2.5 days) unless they are [archival nodes](https://near-nodes.io/intro/node-types#archival-node).
 

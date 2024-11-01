@@ -41,7 +41,7 @@ Lets discuss which types smart contracts use to input and output data, as well a
 
 </Block>
 
-<Block highlights='{"rust": "1,15,22,64"}' fname="auction" type='info'>
+<Block highlights='{"rust": "1,15,24,81"}' fname="auction" type='info'>
 
 :::warning `U64/U128`
 
@@ -71,7 +71,7 @@ To simplify development, the SDK provides the `U64` and `U128` types which are a
 
 </Block>
 
-<Block highlights='{"js": "5,11,25,47"}' fname="auction">
+<Block highlights='{"js": "5,10,28"}' fname="auction">
 
     ### Handling Tokens
     `$NEAR` tokens are typed as `BigInt` in JS, and their values represented in `yoctonear`
@@ -80,7 +80,7 @@ To simplify development, the SDK provides the `U64` and `U128` types which are a
 
 </Block>
 
-<Block highlights='{"rust": "8,26,41"}' fname="auction">
+<Block highlights='{"rust": "8,28,45"}' fname="auction">
 
     ### Handling Tokens
     `$NEAR` tokens are handled through the `NearToken` struct, which exposes methods to represent the value in `yoctonear`, `milinear` and `near`
@@ -89,7 +89,7 @@ To simplify development, the SDK provides the `U64` and `U128` types which are a
 
 </Block>
 
-<Block highlights='{"js": "4", "rust": "7"}' fname="auction">
+<Block highlights='{"js": "4,29", "rust": "7,46"}' fname="auction">
 
     ### Account
     The SDK exposes a special type to handle NEAR Accounts, which automatically checks if the account address is valid
@@ -105,11 +105,11 @@ To simplify development, the SDK provides the `U64` and `U128` types which are a
     start="2" end="32" />
 
 <File language="js" fname="auction"
-    url="https://github.com/near-examples/auction-examples/blob/main/contract-ts/01-basic-auction/src/contract.ts"
-    start="2" end="51" />
+    url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/src/contract.ts"
+    start="2" end="61" />
 
 <File language="rust" fname="auction"
-    url="https://github.com/near-examples/auction-examples/blob/main/contract-rs/01-basic-auction/src/lib.rs"
-    start="2" end="72" />
+    url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs"
+    start="2" end="84" />
 
 </ExplainCode>

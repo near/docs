@@ -39,7 +39,7 @@ As we already discussed, users should pay computational costs for each transacti
 
 
 ![image](/docs/assets/web3/web3-7.png)
-    
+
 
 
 
@@ -69,7 +69,7 @@ The general flow for transactions signing looks like this:
 
 
 ![image](/docs/assets/web3/web3-9.png)
-    
+
 
 
 Each time we want to post a transaction, the client redirects the user to a wallet, where the transaction is approved and wallet returns a signed transaction back to the client (via redirect). This is a quite secure way of signing, since the private key is not exposed to the client, but constant redirects might quickly get annoying for users, especially if we just want to call smart contract functions that incur only small gas fees. That’s why NEAR introduced [two types of access keys](../../1.concepts/protocol/access-keys.md) - full keys and functional call keys. Full access keys, as the name implies, can be used to sign any types of transactions. Functional call keys, on the other hand, aim to solve this UX problem. They are tied to a specific contract, and have a budget for gas fees. Such a key can’t be used to sign transactions that transfers NEAR tokens (payable transactions), and can only be used to cover gas fees, that’s why it’s not so security-critical and can be stored on the client. Because of this, we can create a simplified signing flow for non-payable transactions. First of all, a login flow to obtain a Functional Call key is used.
@@ -97,7 +97,7 @@ Throughout this section, we’ve discussed how to call a smart contract from a c
 
 
 ![image](/docs/assets/web3/web3-12.png)
-    
+
 
 
 
@@ -115,7 +115,7 @@ Looks simple enough, but there are few gotchas:
 
 
 ![image](/docs/assets/web3/web3-14.png)
-    
+
 
 
 A few notes on failure modes - since smart contracts run on a decentralized environment, which means they are executed on multiple machines and there is no single point of failure, they won’t fail because of environment issues (e.g. because a machine suddenly lost power or network connectivity). The only possible failures come from the code itself, so they can be predicted and proper failover code added.
@@ -135,7 +135,7 @@ To support more complex data retrieval scenarios, smart contract data should be 
 
 
 ![image](/docs/assets/web3/web3-15.png)
-    
+
 
 
 In order to simplify creation of indexers, [NEAR Indexer Framework](/concepts/advanced/near-indexer-framework) has been created. However, even with a framework available, extracting data from a transaction may not be an easy task, since each smart contract has its unique structure and data storage model. To simplify this process, smart contracts can write structured information about outcome into the logs  (e.g. in the JSON format). Each smart contract can use its own format for such logs, but the general format has been standardized as [Events](https://nomicon.io/Standards/EventsFormat).
@@ -182,7 +182,7 @@ Below this, we can inspect transaction actions (recall, that transactions may ha
 ![image](/docs/assets/web3/web3-18.png)
 
 
-At the end, transaction execution details, including token transfers, logs, cross-contract calls and gas refunds are provided. One thing that we haven’t covered yet is shown here - [receipts](../protocol/transactions.md#receipt-receipt). For most practical purposes they are just a transaction implementation detail. They are quite useful in a transaction explorer to understand how a transaction was executed, but aren’t really relevant outside of it.
+At the end, transaction execution details, including token transfers, logs, cross-contract calls and gas refunds are provided. One thing that we haven’t covered yet is shown here - [receipts](/concepts/protocol/transaction-execution#receipts--finality). For most practical purposes they are just a transaction implementation detail. They are quite useful in a transaction explorer to understand how a transaction was executed, but aren’t really relevant outside of it.
 
 ![image](/docs/assets/web3/web3-19.png)
 
@@ -192,8 +192,8 @@ At the end, transaction execution details, including token transfers, logs, cros
 
 During the development, and sometimes even in production, updates to a contract’s code (or even data) are needed. That’s why different contract upgrades mechanisms have been created.
 
-While developing the contract, we recommend just creating a new account each time you need to deploy a contract (the [create-account](../../4.tools/cli.md#near-create-account) command in NEAR CLI exists for this). With such an approach, you will start with a clean state each time.
- 
+While developing the contract, we recommend just creating a new account each time you need to deploy a contract (the [create-account](../../4.tools/cli.md#create) command in NEAR CLI exists for this). With such an approach, you will start with a clean state each time.
+
 However, once we move to a more stable environment, like testing or production, more sophisticated methods are needed. Redeployment of code is quite simple: we just issue another `DeployContract` transaction, and NEAR will handle the rest. The biggest challenge is to migrate contract state - [several approaches are possible](../../2.build/2.smart-contracts/release/upgrade.md#migrating-the-state), but all of them involve some kind of migration code.
 
 But we can take our upgrade strategy one step further. In the previous strategies, developers are fully in control of code upgrades. This is fine for many applications, but it requires some level of trust between users and developers, since malicious changes could be made at any moment and without the user’s consent (as it [sometimes happens](https://www.bleepingcomputer.com/news/security/dev-corrupts-npm-libs-colors-and-faker-breaking-thousands-of-apps/) in npm world). To solve this, a contract update process itself can also be decentralized - this is called [Programmatic Updates](../../2.build/2.smart-contracts/release/upgrade.md#programmatic-update). The exact strategy may vary, but the basic idea is that the contract update code is implemented in a smart contract itself, and a Full Access key to the contract account is removed from a blockchain (via DeleteKey transaction). In this way, an update strategy is transparent to everyone and cannot be changed by developers at will.

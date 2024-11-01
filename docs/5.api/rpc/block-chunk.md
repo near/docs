@@ -598,7 +598,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
 
 ## Chunk Details {#chunk-details}
 
-> Returns details of a specific chunk. You can run a [block details](/api/rpc/setup#block-details) query to get a valid chunk hash.
+> Returns details of a specific chunk. You can run a [block details](/api/rpc/block-chunk#block-details) query to get a valid chunk hash.
 
 - method: `chunk`
 - params:

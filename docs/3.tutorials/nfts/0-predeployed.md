@@ -13,7 +13,7 @@ Create your first non-fungible token by using a pre-deployed NFT smart contract 
 
 ## Prerequisites
 
-To complete this tutorial successfully, you'll need [a NEAR Wallet](https://testnet.mynearwallet.com/create) and [NEAR CLI RS](../../4.tools/cli.md#setup)
+To complete this tutorial successfully, you'll need [a NEAR Wallet](https://testnet.mynearwallet.com/create) and [NEAR CLI](/tools/near-cli#installation)
 
 ---
 
@@ -90,14 +90,14 @@ To view tokens owned by an account you can call the NFT contract with the follow
 
 <Tabs groupId="cli-tabs">
   <TabItem value="short" label="Short">
-  
+
   ```bash
   near view nft.examples.testnet nft_tokens_for_owner '{"account_id": "'$NEARID'"}' --networkId testnet
   ```
   </TabItem>
 
   <TabItem value="full" label="Full">
-  
+
   ```bash
   near contract call-function as-read-only nft.examples.testnet nft_tokens_for_owner json-args '{"account_id": "'$NEARID'"}' network-config testnet now
   ```

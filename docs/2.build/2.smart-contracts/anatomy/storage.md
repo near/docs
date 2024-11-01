@@ -17,7 +17,7 @@ It is important to know that the account's **code** and account's **storage** ar
 
 <ExplainCode languages="js,rust" >
 
-<Block highlights='{"js": "3-6,10-11"}' fname="auction">
+<Block highlights='{"js": "3-6,10-13"}' fname="auction">
 
     ### Defining the State
     The attributes of the `class` marked as the contract define the data that will be stored.
@@ -30,7 +30,7 @@ It is important to know that the account's **code** and account's **storage** ar
 
 </Block>
 
-<Block highlights='{"rust": "6-9,14,15"}' fname="auction">
+<Block highlights='{"rust": "6-9,13-18"}' fname="auction">
 
     ### Defining the State
     The attributes of the `struct` marked as the contract define the data that will be stored.
@@ -69,7 +69,7 @@ It currently costs ~**1Ⓝ** to store **100KB** of data.
 
 </Block>
 
-<Block highlights='{"js": "8,13-17"}' fname="auction">
+<Block highlights='{"js": "8,15-20"}' fname="auction">
 
     ### I. Initialization Functions
     An option to initialize the state is to create an `initialization` function, which needs to be called before executing any other function.
@@ -80,7 +80,7 @@ It currently costs ~**1Ⓝ** to store **100KB** of data.
 
 </Block>
 
-<Block highlights='{"js": "10-11"}' fname="auction" type='info'>
+<Block highlights='{"js": "10-13"}' fname="auction" type='info'>
 
 :::warning
 
@@ -90,7 +90,7 @@ In TS/JS you still **must** set default values for the attributes, so the SDK ca
 
 </Block>
 
-<Block highlights='{"rust": "12,22-30"}' fname="auction">
+<Block highlights='{"rust": "12,22-34"}' fname="auction">
 
     ### I. Initialization Functions
     An option to initialize the state is to create an `initialization` function, which needs to be called before executing any other function.
@@ -153,16 +153,16 @@ Make sure to read the [updating a contract](../release/upgrade.md) if you run in
 </Block>
 
 <File language="js" fname="auction"
-    url="https://github.com/near-examples/auction-examples/blob/main/contract-ts/01-basic-auction/src/contract.ts"
-    start="2" end="51" />
+    url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/src/contract.ts"
+    start="2" end="60" />
 
 <File language="js" fname="hello"
     url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts"
     start="2" end="18" />
 
 <File language="rust" fname="auction"
-    url="https://github.com/near-examples/auction-examples/blob/main/contract-rs/01-basic-auction/src/lib.rs"
-    start="2" end="72" />
+    url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs"
+    start="2" end="83" />
 
 <File language="rust" fname="hello"
     url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
