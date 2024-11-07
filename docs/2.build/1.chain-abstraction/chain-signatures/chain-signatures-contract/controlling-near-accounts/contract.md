@@ -1,74 +1,16 @@
 ---
-id: near-example
-title: Controlling a NEAR account with a contract
+id: contract
+title: Contract
 ---
 
 import {Github, Language} from "@site/src/components/codetabs"
 
-This example is of a `simple subscription service` that allows a user to subscribe to an arbitary service and allows the contract to charge them 5 NEAR tokens every month. For most chains an account as a single key, the power of NEARs account model combined with chain signatures is that you can add an `MPC controlled key` to your account and allow a contract to control your account through code and limited actions (including ones that require a full access key to sign). You can also dervie and use new implicit NEAR accounts via the MPC contract as you do with other chains but this usecase is cooler.
-
-This concept also enables:
-- **Account recovery**: allow a contract to add a new private key to your account after preset conditions are met.
-- **Trail accounts**: the [Keypom](https://github.com/keypom) contract uses this concept to create trial accounts that can only peform a limited number of actions (including those that require a full access key) and can be upgraded to a full account upon the completion of specified actions. These accounts are also multichain.
-- **DCA service**: a contract that allows a DEX to buy a token for a user every fixed period with a pre defined amount of USDC.
-- **and more...**
-
-These were all previously possible - before chain signatures - since a NEAR account is also a smart contract, but this required the user to consume a lot of $NEAR in storage costs to upload the contract to the account and it lacked flexability. This approach is much more scalable and new account services can be switched in and out easily.
-
-Since a NEAR account is also a multichain account, any dervied foreign accounts associated with the NEAR account also inherit these account services.
-
----
-
-# Running the example 
-
-This example has contracts written in rust and scripts to interact with the contract in NodeJS. 
-
-Go ahead and clone the repository to get started:
-
-```bash
-# Clone the repository
-git clone https://github.com/PiVortex/subscription-example.git
-
-# Navigate to the scripts directory
-cd subscription-example/scripts
-
-# Install the dependencies
-npm install
-```
-
-To interact with the contract you will need three different accounts. A subscriber, an admin and a contract. Run the following command to create the accounts and deploy the contract:
-
-```bash
-npm run setup
-```
-
-To subscribe to the service run the following command:
-
-```bash
-npm run subscribe
-```
-
-To charge the subscriber from the admin account run the command:
-    
-```bash 
-npm run charge
-```
-
-To unsubscribe from the service run the command:
-
-```bash
-npm run unsubscribe
-```
-
----
-
-# Contract overview
 
 Feel free to explore the contract code in full. In this tutorial we assume a basic understanding of Rust and NEAR contracts and will only look at the relevant parts relevant to chain signatures. The main data the contract stores is a map of the subscribers and when they last paid the subscription fee.
 
 ---
 
-## Constructing the transaction 
+### Constructing the transaction 
 
 We only want the smart contract to be able to sign transactions to charge the subscriber 5 NEAR tokens, no other transactions should be allowed to be signed. This is why we construct the transaction inside of the contract with the `omni-transaction-rs` library. 
 
@@ -114,7 +56,7 @@ The MPC contract takes a `transaction payload` as an argument instead of the tra
             start="76" end="81" />
 </Language>
 
-## Calling the MPC contract
+### Calling the MPC contract
 
 In our `signer.rs` file we have defined the interface for the `sign` method on the MPC contract. 
 
@@ -124,7 +66,7 @@ In our `signer.rs` file we have defined the interface for the `sign` method on t
             start="40" end="43" />
 </Language>
 
-As input it takes the payload, the path and the key_version. The `path` determines which public key the MPC contract should use to sign the transaction in this example the path is the account Id of the subscriber, so each subscriber has a unique identifiable key. The full path is a combination of the `predeccessor` to the MPC contract (the subscription contract) along with the path given as the argument. The addition of the predeccessor means that only this contract is able to sign transactions for the given key. The `key_version` states which key type is being used. Currently the only key type supported is secp256k1 which has a key version of `0`.
+As input it takes the payload, the path and the key_version. The `path` determines which public key the MPC contract should use to sign the transaction in this example the path is the account Id of the subscriber, so each subscriber has a unique identifiable key. The `key_version` states which key type is being used. Currently the only key type supported is secp256k1 which has a key version of `0`.
 
 <Language language="rust" showSingleFName={true}>
     <Github fname="signer.rs"
@@ -144,7 +86,7 @@ We attach a small amount of gas to the callback and use a `gas weight of 0` so t
 
 ---
 
-## Reconstructing the signature 
+### Reconstructing the signature 
 
 Once the transaction has been signed by the MPC contract we can reconstruct the signature and add it to the transaction. You could decide to reconstruct the signature and add it to the transaction in the client side, but an advantage of doing it in the contract is that you can return a fully signed transaction from the contract which can be straight away braodcasted to the network instead of having to store the transaction in the frontend. This also makes it much easier for indexers/relayers to get transactions and broadcast them, making it less likely that transactions will be signed without being sent.
 
@@ -172,7 +114,9 @@ The final step is to `deserlialize` the transaction we passed and add the signat
             start="131" end="139" />
 </Language>
 
-## Recieve payment method
+---
+
+### Recieve payment method
 
 Once the signed transaction is relayed to the `NEAR network` it will call the pay_subscription method in the contract. You can see that we are only updating the state of the contract here when the transaction has been accepted by the network.
 
@@ -181,13 +125,3 @@ Once the signed transaction is relayed to the `NEAR network` it will call the pa
             url="https://github.com/PiVortex/subscription-example/blob/main/contract/src/lib.rs#L61-L79"
             start="61" end="79" />
 </Language>
-
-# Scripts overview
-
-We implement a few scripts to interact with the contract. This is not just as simple as calling a method in the contract as we will have to do manage the MPC public key added to the subscriber account.
-
-## Subscribe
-
-## Charge
-
-## Unsubscribe

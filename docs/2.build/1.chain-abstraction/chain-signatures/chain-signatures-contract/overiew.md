@@ -1,6 +1,6 @@
 ---
 id: overview
-title: Chain signature in a NEAR contract
+title: Using Chain Signatures in a Contract
 ---
 
 import Tabs from '@theme/Tabs';
