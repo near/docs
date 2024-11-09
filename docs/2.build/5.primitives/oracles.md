@@ -6,7 +6,7 @@ title: Oracles
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-[Blockchain Oracles](https://en.wikipedia.org/wiki/Blockchain_oracle) serve as intermediaries that connect blockchain platforms with off-chain data. As blockchain platforms operate in a closed ecosystem or "walled garden", these third party oracle services are essential in providing access to external data, events, or APIs.
+[Blockchain Oracles](https://en.wikipedia.org/wiki/Blockchain_oracle) serve as intermediaries that connect smart contracts with external (off-chain) data.
 
 Oracles can provide:
 
