@@ -34,7 +34,7 @@ The migration method deserializes the current state (`OldState`) and iterates th
 to the new `PostedMessage` that includes the `payment` field.
 
 :::tip
-Notice that migrate is actually an [initialization method](../../2.build/2.smart-contracts/anatomy/anatomy.md#initialization-method) that ignores the existing state (`[#init(ignore_state)]`), thus being able to execute and rewrite the state.
+Notice that migrate is actually an [initialization method](/build/smart-contracts/anatomy/storage#initializing-the-state) that ignores the existing state (`[#init(ignore_state)]`), thus being able to execute and rewrite the state.
 :::
 
 ---
@@ -44,7 +44,7 @@ The [State Versioning example](https://github.com/near-examples/update-migrate-r
 [Enums](https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html) to implement state versioning on a contract.
 
 Versioning simplifies updating the contract since you only need to add a new version of the structure.
-All versions can coexist, thus you will not need to change previously existing structures. 
+All versions can coexist, thus you will not need to change previously existing structures.
 
 The example is composed by 2 contracts:
 1. Base: The Guest Book contract using versioned `PostedMessages` (`PostedMessagesV1`).

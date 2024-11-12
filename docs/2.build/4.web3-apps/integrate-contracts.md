@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 To integrate NEAR to your frontend, you will leverage two tools:
 
 1. `Wallet Selector`: Enables the user to select their preferred NEAR wallet in your dApp.
-2. `NEAR API JS`: A suit of tools to interact with the NEAR RPC.
+2. `NEAR API JS`: A suite of tools to interact with the NEAR RPC.
 
 Using those tools you will implement the following flow:
 
@@ -44,9 +44,9 @@ npm install \
 
 ## Create a Wallet Object
 
-In our examples we implement a [`./wallets/near.js`](https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/near.js) module, where we abstracted the `wallet selector` into a `Wallet` object to simplify using it.
+In our examples, we implement a [`./wallets/near.js`](https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/near.js) module, where we abstracted the `wallet selector` into a `Wallet` object to simplify using it.
 
-To create a wallet, simply import the `Wallet` object from the module and initialize it. This `wallet` will later allows the user to call any contract in NEAR.
+To create a wallet, simply import the `Wallet` object from the module and initialize it. This `wallet` will later allow the user to call any contract in NEAR.
 
 <CodeTabs>
   <Language value="js" language="ts">
@@ -56,7 +56,7 @@ To create a wallet, simply import the `Wallet` object from the module and initia
 
     <Github fname="near.js"
         url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/near.js"
-        start="15" end="142" />
+        start="22" end="218" />
 
   </Language>
 </CodeTabs>
@@ -67,7 +67,7 @@ Under the hood (check the `near` tab) you can see that we are actually setting u
 
 <summary> Setting customs RPC endpoints </summary>
 
-If you want to use a user-defined RPC endpoint with the Wallet Selector, you need to setup a [network options](https://github.com/near/wallet-selector/tree/main/packages/core#options) object with the custom URLs.
+If you want to use a user-defined RPC endpoint with the Wallet Selector, you need to set up a [network options](https://github.com/near/wallet-selector/tree/main/packages/core#options) object with the custom URLs.
 For example:
 
 <CodeTabs>
@@ -100,9 +100,9 @@ You can find the entire Wallet Selector [API reference here](https://github.com/
 </details>
 
 #### Function Call Key
-When instantiating the wallet you can choose if you want to **create a [FunctionCall Key](../../1.concepts/protocol/access-keys.md#function-call-keys-function-call-keys)**.
+When instantiating the wallet you can choose if you want to **create a [FunctionCall Key](/concepts/protocol/access-keys#function-call-keys)**.
 
-If you create the key, then your dApp will be able to **automatically sign non-payable transactions** for the user on the specified contract.
+If you create the key, your dApp will be able to **automatically sign non-payable transactions** for the user on the specified contract.
 
 ---
 
@@ -120,7 +120,7 @@ Because of their read-only nature, view methods are **free** to call, and do **n
 
     <Github fname="near.js"
         url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/near.js"
-        start="74" end="94" />
+        start="83" end="103" />
 
 </Language>
 
@@ -140,7 +140,7 @@ View methods have by default 200 TGAS for execution
 
 In order to interact with non-view methods it is necessary for the user to first sign in using a NEAR wallet.
 
-Signing in is as simple as requesting the `wallet` object to `signIn`, the same simplicity applies to signing-out.
+Signing in is as simple as requesting the `wallet` object to `signIn`, the same simplicity applies to signing out.
 
 <CodeTabs>
   <Language value="js" language="js">
@@ -150,26 +150,25 @@ Signing in is as simple as requesting the `wallet` object to `signIn`, the same 
 
     <Github fname="near.js"
             url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/near.js"
-            start="58" end="72" />
+            start="67" end="81" />
 
   </Language>
 </CodeTabs>
 
-When the user clicks in the button, it will be asked to select a wallet and use it to login.
+When the user clicks the login button, they will be asked to select a wallet and use it to log in.
 
 <hr className="subsection" />
 
 ### Function Call Key
 
-If you instantiated the `Wallet` passing an account for the `createAccessKeyFor` parameter, then the wallet will create a [FunctionCall Key](../../1.concepts/protocol/access-keys.md#function-call-keys-function-call-keys) and store it in the web's local storage.
+If you instantiated the `Wallet` passing an account for the `createAccessKeyFor` parameter, then the wallet will create a [FunctionCall Key](/concepts/protocol/access-keys#function-call-keys) and store it in the web's local storage.
 
-<CodeTabs>
-  <Language value="js" language="js">
-    <Github fname="_app.js"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/_app.js"
-            start="10" end="10" />
-  </Language>
-</CodeTabs>
+```jsx
+const wallet = new Wallet({
+  createAccessKeyFor: HelloNearContract,
+  networkId: NetworkId,
+});
+```
 
 By default, such key enables to expend a maximum of `0.25Ⓝ` on GAS calling methods in **the specified** contract **without prompting** the user to sign them.
 
@@ -177,7 +176,7 @@ If, on the contrary, you do not create an access key, then the user will be aske
 
 :::tip
 
-Please notice that this only applies for **non-payable** methods, if you attach money to any call the user will **always** be redirected to the wallet to confirm the transaction.
+Please notice that this only applies to **non-payable** methods, if you attach money to any call the user will **always** be redirected to the wallet to confirm the transaction.
 
 :::
 
@@ -185,9 +184,7 @@ Please notice that this only applies for **non-payable** methods, if you attach 
 
 ## Calling Change Methods
 
-Once the user logs-in they can start calling change methods. Programmatically, calling change methods is similar to calling view methods, only that now you can attach money to the call, and specify how much GAS you want to use.
-
-It is important to notice that, if you ask for money to be attached in the call, then the user will be redirected to the NEAR wallet to accept the transaction.
+Once the user logs in they can start calling change methods. Programmatically, calling change methods is similar to calling view methods, only that now you can attach money to the call, and specify how much GAS you want to use.
 
 <CodeTabs>
   <Language value="js" language="js">
@@ -197,7 +194,7 @@ It is important to notice that, if you ask for money to be attached in the call,
 
     <Github fname="near.js"
         url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/near.js"
-        start="97" end="126" />
+        start="105" end="134" />
 
 </Language>
 
@@ -207,7 +204,7 @@ Under the hood (see `near-wallet` tab) we can see that we are actually asking th
 
 :::tip
 
-Remember that you can use the `wallet` to call methods in **any** contract. If you did not asked for a function key to be created, the user will simply be prompt to confirm the transaction.
+Remember that you can use the `wallet` to call methods in **any** contract. If you did not ask for a function key to be created, the user will simply be prompted to confirm the transaction.
 
 :::
 
@@ -215,16 +212,78 @@ Remember that you can use the `wallet` to call methods in **any** contract. If y
 
 ### Wallet Redirection
 
-If you attach money to a change call, then the user will be redirected to their wallet to accept the transaction. After accepting, the user will be brought back to your website, with the resulting transaction hash being pass as part of the url (i.e. `your-website.com/?transactionHashes=...`).
+When calling a change call with **attatched deposit** (or any change call if no function call key was created), then the user will be prompted to sign the transaction in the wallet.
 
-If the method invoked returned a result, you can use the transaction hash to retrieve the result from the network. Assuming you created the `near` object as in the [example above](#connecting-to-a-contract), then you query the result by utilizing:
+If using a web wallet, as opposed to an extension, the user will be redirected to the wallet's website to sign the transaction.
+After accepting, the user will be brought back to your application, with the resulting transaction hash being passed as part of the URL (i.e. `your-website.com/?transactionHashes=...`).
+
+If the method invoked returned a result, you can use the transaction hash to retrieve the result from the network. You can fetch the transaction hash via:
+
+```jsx
+const txHash = new URLSearchParams(window.location.search).get('transactionHashes');
+```
+
+Assuming you created the `near` object as in the [example above](#connecting-to-a-contract), then you query the result by utilizing:
 
 <CodeTabs>
   <Language value="js" language="js">
 
     <Github fname="near.js"
             url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/near.js"
-            start="128" end="141" />
+            start="136" end="149" />
+
+</Language>
+
+</CodeTabs>
+
+---
+
+## Sending Multiple Transactions
+
+The Wallet class also exposes a method that can be used to send multiple transactions.
+
+<CodeTabs>
+  <Language value="js" language="js">
+
+    <Github fname="near.js"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/near.js"
+            start="177" end="186" />
+
+</Language>
+
+</CodeTabs>
+
+Transactions can either be sent as multiple separate  transactions simultaneously or as a batch transaction made up of actions where if one of the actions fails, they are all reverted. An example of both can be seen [here](https://docs.near.org/tutorials/examples/frontend-multiple-contracts#dispatching-multiple-transactions)
+
+---
+
+## Querying Account Balance
+
+By calling the `getBalance` method the user can get the balance of the account that is currently logged in.
+
+<CodeTabs>
+  <Language value="js" language="js">
+
+    <Github fname="near.js"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/near.js"
+            start="151" end="175" />
+
+</Language>
+
+</CodeTabs>
+
+---
+
+## Get Access Keys
+
+The final method the Wallet class exposes is `getAccessKeys` which is used to return an object of all the access keys on the account that is currently logged in.
+
+<CodeTabs>
+  <Language value="js" language="js">
+
+    <Github fname="near.js"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/near.js"
+            start="188" end="206" />
 
 </Language>
 
@@ -267,8 +326,8 @@ function formatAmount(amount) {
 
 NEAR API JS does not limit itself to simply calling methods in a contract. In fact, you can use it to transform your web-app into a rich user experience. While we will not cover these topics in depth, it is important for you to know that with NEAR API JS you can also:
 
-- **[Sign and verify messages](https://github.com/near/near-api-js/blob/master/packages/cookbook/utils/verify-signature.js)**: this is very useful to prove that a message was created by the user.
-- **[Create batch transactions](https://github.com/near/near-api-js/tree/master/packages/cookbook/transactions/batch-transactions.js)**: this enables to link multiple [actions](../../1.concepts/protocol/transaction-anatomy.md#actions) (e.g. multiple function calls). If one of the transactions fails, then they are all reverted.
-- **[Create accounts](https://github.com/near/near-api-js/tree/master/packages/cookbook/accounts/create-testnet-account.js)**: deploy accounts for your users!
+- **[Sign and verify messages](./backend/backend.md)**: this is very useful to prove that a message was created by the user.
+- **[Create batch transactions](https://github.com/near/near-api-js/tree/master/packages/cookbook/transactions/batch-transactions.ts)**: this enables to link multiple [actions](../../1.concepts/protocol/transaction-anatomy.md#actions) (e.g. multiple function calls). If one of the transactions fails, then they are all reverted.
+- **[Create accounts](https://github.com/near/near-api-js/tree/master/packages/cookbook/accounts/create-testnet-account.ts)**: deploy accounts for your users!
 
-Check the [cookbook](/tools/near-api-js/cookbook) to learn how to supercharge your webapp.
+Check the [cookbook](/tools/near-api-js/cookbook) to learn how to supercharge your web-app.

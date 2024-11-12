@@ -75,7 +75,7 @@ This would copy the Wasm bytes and contract state from [v2.ref-finance.near](htt
 
 :::note
 
-`withData` will only work out-of-the-box if the contract's data is 50kB or less. This is due to the default configuration of RPC servers; see [the "Heads Up" note here](../../../5.api/rpc/contracts.md#view-contract-state-view-contract-state).
+`withData` will only work out-of-the-box if the contract's data is 50kB or less. This is due to the default configuration of RPC servers; see [the "Heads Up" note here](/api/rpc/contracts#view-contract-state).
 
 :::
 
@@ -341,7 +341,7 @@ NEAR Workspaces is set up so that you can write tests once and run them against 
     To use the accounts, you will need to create the `.near-credentials/workspaces/testnet` directory and add files for your master account, for example:
 
     ```js
-    // .near-credentials/workspaces/testnet/<your-account>.testnet.json 
+    // .near-credentials/workspaces/testnet/<your-account>.testnet.json
     {"account_id":"<your-account>.testnet","public_key":"ed25519:...","private_key":"ed25519:..."}
     ```
 

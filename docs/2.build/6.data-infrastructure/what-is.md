@@ -1,6 +1,6 @@
 ---
 id: what-is
-title: What is Data Infrastructure? 
+title: What is Data Infrastructure?
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -10,8 +10,8 @@ NEAR offers ready-to-use solutions to access and monitor on-chain data easily. T
 
 ![img](/docs/assets/welcome-pages/data-lake.png)
 
-In NEAR you will find three main solutions to access and monitor on-chain data: [**Data APIs**](#community-data-apis), [**BigQuery Public Dataset**](#bigquery-public-dataset) and [**NEAR Lake**](#near-lake). Each of these solutions is designed to fit different needs and use cases, and can be used in combination to create a complete data infrastructure for your application.
- 
+In NEAR you will find three main solutions to access and monitor on-chain data: [**Data APIs**](#data-apis), [**BigQuery Public Dataset**](#bigquery-public-dataset) and [**NEAR Lake**](#near-lake). Each of these solutions is designed to fit different needs and use cases, and can be used in combination to create a complete data infrastructure for your application.
+
 ---
 
 ## [Data APIs](./data-api.md)

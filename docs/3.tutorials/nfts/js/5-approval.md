@@ -523,7 +523,7 @@ With the testing finished, you've successfully implemented the approvals extensi
 
 Today you went through a lot of logic to implement the [approvals extension](https://nomicon.io/Standards/Tokens/NonFungibleToken/ApprovalManagement) so let's break down exactly what you did.
 
-First, you explored the [basic approach](#basic-solution) of how to solve the problem. You then went through and discovered some of the [problems](#the-problem) with that solution and learned how to [fix it](#the-solution).
+First, you explored the [basic approach](#basic-solution) of how to solve the problem. You then went through and discovered some of the [problems](/tutorials/nfts/js/approvals#the-problem) with that solution and learned how to [fix it](#the-solution).
 
 After understanding what you should do to implement the approvals extension, you started to [modify](#expanding-json-and-token) the JsonToken and Token structs in the contract. You then implemented the logic for [approving accounts](#approving-accounts) and saw how [marketplaces](#marketplace-integrations) are integrated.
 
@@ -533,7 +533,7 @@ At this point, everything was implemented in order to allow accounts to be appro
 
 You implemented a view method to [check](#check-if-account-approved) if an account is approved and to finish the coding portion of the tutorial, you implemented the logic necessary to [revoke an account](#revoke-account) as well as [revoke all accounts](#revoke-all-accounts).
 
-After this, the contract code was finished and it was time to move onto testing where you created a [subaccount](#creating-sub-account) and tested the [approving](#approving-an-account) and [transferring](#transferring-the-nft) for your NFTs.
+After this, the contract code was finished and it was time to move onto testing where you created a [subaccount](#creating-sub-account) and tested the [approving](/tutorials/nfts/js/approvals#approving-an-account) and [transferring](#transferring-the-nft) for your NFTs.
 
 In the next tutorial, you'll learn about the royalty standards and how you can interact with NFT marketplaces.
 
