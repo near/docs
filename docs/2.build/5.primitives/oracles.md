@@ -48,6 +48,7 @@ Here is a directory of third-party oracle services deployed on the NEAR blockcha
 
 ```bash
 near view priceoracle.near get_assets
+near contract call-function as-read-only priceoracle.near get_assets json-args {} network-config mainnet now
 ```
 
   <details>
@@ -144,15 +145,7 @@ See Pyth's [`receiver` contract methods documentation](https://github.com/pyth-n
 
 ### Integrating Price Feeds
 
-1. **Install the NEAR JavaScript SDK:**
-
-   ```bash
-   npm install near-api-js
-   # or
-   yarn add near-api-js
-   ```
-
-2. **Interact with the Contract:**
+1. **Interact with the Contract:**
 
    ```javascript
    // Using async/await for NEAR API calls
@@ -186,8 +179,6 @@ See Pyth's [`receiver` contract methods documentation](https://github.com/pyth-n
    }
    ```
 
-Furthermore,
-
 Note: The parameters gas and attachedDeposit are specific to NEAR and must be adjusted based on your contract's demands. While any unused deposit will be refunded, it's advisable to estimate potential costs by invoking the get_update_fee_estimate method on the Pyth contract.
 
 Updates can be submitted to this call and sourced from the [Hermes API](https://hermes-beta.pyth.network/) for testnet. To try this out, use the `get_vaa` endpoint to request a price feed
@@ -204,7 +195,6 @@ may need to set depending on the contract's requirements. Unused
 deposit will be refunded, but you can calculate an esimtate by calling
 the `get_update_fee_estimate` method against the Pyth contract.
 :::
-
 
 ## On-Chain Prices
 
