@@ -21,7 +21,7 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
 
 </Block>
 
-<Block highlights='{"js": "4-17", "rust":"5-7,20-31"}' fname="hello-near">
+<Block highlights='{"js": "5-22", "rust":"5-7,20-31"}' fname="hello-near">
 
     ### Contract's Main Structure
     The contract is described through a structure:
