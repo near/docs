@@ -95,4 +95,3 @@ body:
       description: Add any other context about the problem here, including screenshots if applicable
     validations:
       required: false
-      
