@@ -118,7 +118,7 @@ Before opening a pull request, please check for broken links:
 yarn test
 ```
 
-or id you are in the `./website` directory:
+or if you are in the `./website` directory:
 
 ```bash
 yarn full-test

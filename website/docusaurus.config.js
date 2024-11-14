@@ -90,9 +90,9 @@ const config = {
   themeConfig: {
     image: 'docs/assets/welcome-pages/protocol.png',
     announcementBar: {
-      id: 'id-0009',
+      id: 'id-0010',
       content:
-        '🎉 Master Application on NEAR - Tutorial! A new multi-part tutorial has landed, read more in our <a href="/blog/2024-10-24-new-tutorial">blogpost</a> and check out the <a href="/tutorials/auction/introduction">tutorial itself</a> 🎉',
+        '🎉 Ethereum Wallets are here! Read more in our <a href="/blog/hello-ethereum-wallets">blogpost</a> and check our <a href="/tools/ethereum-wallets">tutorial to update your app</a> 🎉',
       backgroundColor: '#fcfbfa',
       textColor: '#333',
       isCloseable: true,

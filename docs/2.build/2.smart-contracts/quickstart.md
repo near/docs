@@ -141,7 +141,7 @@ The `Hello World` smart contract stores a greeting in its state, and exposes two
 
     <Github fname="index.js" language="js"
             url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts"
-            start="4" end="18" />
+            start="4" end="22" />
 
   </TabItem>
 
