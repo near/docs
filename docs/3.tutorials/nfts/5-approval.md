@@ -16,7 +16,7 @@ cd nft-contract-basic/
 ```
 
 :::tip
-If you wish to see the finished code for this _Approval_ tutorial, you can find it on the `nft-contract-approval/` folder.
+If you wish to see the finished code for this _Approval_ tutorial, you can find it in the `nft-contract-approval/` folder.
 :::
 
 ---
@@ -85,7 +85,7 @@ If Mike then comes along and purchases the NFT for only 1 NEAR on marketplace B,
 
 ### The solution {#the-solution}
 
-Now that we've identified a problem with the original solution, let's think about ways that we can fix it. What would happen now if, instead of just keeping track of a list of approved accounts, you introduced a specific ID that went along with each approved account. The new approved accounts would now be a map instead of a list. It would map an account to it's `approval id`.
+Now that we've identified a problem with the original solution, let's think about ways that we can fix it. What would happen now if, instead of just keeping track of a list of approved accounts, you introduced a specific ID that went along with each approved account. The new approved accounts would now be a map instead of a list. It would map an account to its `approval id`.
 
 For this to work, you need to make sure that the approval ID is **always** a unique, new ID. If you set it as an integer that always increases by 1 whenever u approve an account, this should work. Let's consider the same scenario with the new solution.
 
@@ -126,7 +126,7 @@ Token: {
 }
 ```
 
-The marketplace is inserted into the map and the next approval ID is incremented. From marketplace B's perspective it stores it's original approval ID from when Benji put the NFT up for sale which has a value of 1. If Mike were to go and purchase the NFT on marketplace B for the original 1 NEAR sale price, the NFT contract should panic. This is because the marketplace is trying to transfer the NFT with an approval ID 1 but the token struct shows that it **should** have an approval ID of 2.
+The marketplace is inserted into the map and the next approval ID is incremented. From marketplace B's perspective it stores its original approval ID from when Benji put the NFT up for sale which has a value of 1. If Mike were to go and purchase the NFT on marketplace B for the original 1 NEAR sale price, the NFT contract should panic. This is because the marketplace is trying to transfer the NFT with an approval ID 1 but the token struct shows that it **should** have an approval ID of 2.
 
 <hr className="subsection" />
 
