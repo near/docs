@@ -55,17 +55,6 @@ $ ./target/release/near-lake --home ~/.near/testnet init --chain-id testnet --do
 
 The above code will download the official genesis config and generate necessary configs. You can replace `testnet` in the command above to different network ID (`betanet`, `mainnet`).
 
-:::info nearcore configuration
-
-According to changes in `nearcore` config generation we don't fill all the necessary fields in the config file.
-While [this issue is open](https://github.com/nearprotocol/nearcore/issues/3156) you need to download config you want and replace the generated one manually.
-
-- [testnet config.json](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/testnet/config.json)
-- [betanet config.json](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/betanet/config.json)
-- [mainnet config.json](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/config.json)
-
-:::
-
 Configs for the specified network are in the `--home` provided folder. We need to ensure that NEAR Lake follows
 all the necessary shards, so `"tracked_shards"` parameters in `~/.near/testnet/config.json` needs to be configured properly.
 Currently, `nearcore` treats empty value for `"tracked_shards"` as "do not track any shard" and **any value** as "track all shards".
@@ -86,7 +75,7 @@ Commands to run NEAR Lake, after `./target/release/near-lake`
 |         | `--home`                      | Default <br />`~/.near`                                                | Tells the node where too look for necessary files: <br />`config.json`<br />, <br />`genesis.json`<br />, <br />`node_key.json`<br />, and <br />`data`<br /> folder                                                                                                                                                                                                          |
 | `init`  |                               |                                                                        | Tells the node to generate config files in `--home-dir`                                                                                                                                                                                                                                                                                                                       |
 |         | `--chain-id`                  | Required<br /><br /> _ `localnet`<br /> _ `testnet`<br /> \* `mainnet` | Defines the chain to generate config files for                                                                                                                                                                                                                                                                                                                                |
-|         | `--download-config`           | Optional                                                               | If provided tells the node to download `config.json` from the public URL. You can download them manually<br /><br /> - [testnet config.json](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/testnet/config.json)<br /> - [mainnet config.json](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/config.json)      |
+|         | `--download-config`           | Optional                                                               | If provided tells the node to download `config.json` from the public URL. You can download them manually<br /><br /> - [testnet config.json](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/testnet/rpc/config.json)<br /> - [mainnet config.json](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/rpc/config.json)      |
 |         | `--download-genesis`          | Optional                                                               | If provided tells the node to download `genesis.json` from the public URL. You can download them manually<br /><br /> - [testnet genesis.json](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/testnet/genesis.json)<br /> - [mainnet genesis.json](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/genesis.json) |
 |         | TODO:<br />Other `neard` keys |                                                                        |                                                                                                                                                                                                                                                                                                                                                                               |
 | `run`   |                               |                                                                        | Runs the node                                                                                                                                                                                                                                                                                                                                                                 |
