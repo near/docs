@@ -9,30 +9,33 @@ gagdiez:
 
 slava:
   name: Slava Karkunov
-  title: DevRel 
+  title: DevRel
   image_url: https://www.datocms-assets.com/95026/1677167398-photo_2022-12-02-14-55-03.jpeg
   socials:
       x: apocnab
       github: karkunow
       linkedin: karkunov
 
-flmel: 
+flmel:
   name: Lyudmil
   title: DevRel
   url: https://github.com/flmel
   image_url: https://github.com/flmel.png
 
-thisisjoshford: 
+thisisjoshford:
   name: Josh Ford
   title: DevX PM
   url: https://github.com/thisisjoshford
   image_url: https://github.com/thisisjoshford.png
 
-bucanero: 
+bucanero:
   name: Damian
   title: Docs Maintainer
   url: https://github.com/bucanero
   image_url: https://github.com/bucanero.png
+  socials:
+      x: dparrino
+      github: bucanero
 
 ewiner:
   name: Eric Winer
