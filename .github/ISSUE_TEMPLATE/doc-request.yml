@@ -21,23 +21,15 @@ body:
     id: what
     attributes:
       label: "What needs documentation?"
-      placeholder: "Describe what needs to be documented or updated. For existing docs, please provide links."
-    validations:
-      required: true
-
-  - type: textarea
-    id: why
-    attributes:
-      label: "Why is this documentation needed?"
-      placeholder: "What problems will this documentation solve? Who will benefit from it?"
+      placeholder: "Describe what needs to be documented or updated and WHY is it needed."
     validations:
       required: true
 
   - type: textarea
     id: done
     attributes:
-      label: "Documentation Requirements"
-      placeholder: "What should the documentation include? (e.g., code examples, diagrams, step-by-step guides)"
+      label: "Acceptance Criteria"
+      placeholder: "What exactly needs to be done before this issue can be closed? (e.g., code examples, diagrams, step-by-step guides)"
     validations:
       required: true
 
