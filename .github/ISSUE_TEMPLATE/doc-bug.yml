@@ -1,0 +1,97 @@
+name: 🐞 Report a Documentation Error
+description: Report errors or unclear content in the documentation
+title: "[BUG] "
+labels: ["documentation", "bug"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to help us improve our documentation! 🙏
+        
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      placeholder: The documentation is incorrect/unclear/missing information about...
+    validations:
+      required: true
+      
+  - type: input
+    id: page-url
+    attributes:
+      label: Page URL
+      placeholder: https://docs.near.org/<path>
+    validations:
+      required: true
+      
+  - type: input
+    id: section
+    attributes:
+      label: Section/Heading
+      placeholder: "e.g., Installation Guide > Prerequisites"
+    validations:
+      required: false
+      
+  - type: textarea
+    id: current-text
+    attributes:
+      label: Current Text
+      description: If applicable, paste the current problematic text here
+      placeholder: Paste the current text that needs to be corrected...
+    validations:
+      required: false
+      
+  - type: checkboxes
+    id: impact
+    attributes:
+      label: Impact
+      description: How does this documentation issue affect users?
+      options:
+        - label: Incorrect information
+        - label: Missing information
+        - label: Unclear explanation
+        - label: Broken link
+        - label: Code example doesn't work
+        - label: Other (please specify in description)
+    validations:
+      required: true
+      
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Information
+      placeholder: The documentation should explain...
+    validations:
+      required: true
+      
+  - type: textarea
+    id: suggested-fix
+    attributes:
+      label: Suggested Fix
+      placeholder: I suggest changing/adding...
+    validations:
+      required: false
+      
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: Browser
+      description: If this is a layout/rendering issue, what browsers are you seeing the problem on?
+      multiple: true
+      options:
+        - Chrome
+        - Firefox
+        - Safari
+        - Microsoft Edge
+        - Other
+    validations:
+      required: false
+      
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Add any other context about the problem here, including screenshots if applicable
+    validations:
+      required: false
