@@ -41,14 +41,6 @@ body:
       required: true
       
   - type: textarea
-    id: expected
-    attributes:
-      label: Expected Information
-      placeholder: The documentation should explain...
-    validations:
-      required: true
-      
-  - type: textarea
     id: suggested-fix
     attributes:
       label: Suggested Fix
