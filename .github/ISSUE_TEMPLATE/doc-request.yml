@@ -1,0 +1,72 @@
+name: 📝 Documentation Request
+description: Request new documentation or updates to existing docs
+title: "[DOC] "
+labels: ["documentation"]
+body:
+  - type: markdown
+    attributes:
+      value: "## 📝 Documentation Request"
+
+  - type: dropdown
+    id: doc_type
+    attributes:
+      label: "Documentation Type"
+      options:
+        - "New Documentation"
+        - "Update Existing Documentation"
+    validations:
+      required: true
+
+  - type: textarea
+    id: what
+    attributes:
+      label: "What needs documentation?"
+      placeholder: "Describe what needs to be documented or updated. For existing docs, please provide links."
+    validations:
+      required: true
+
+  - type: textarea
+    id: why
+    attributes:
+      label: "Why is this documentation needed?"
+      placeholder: "What problems will this documentation solve? Who will benefit from it?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: done
+    attributes:
+      label: "Documentation Requirements"
+      placeholder: "What should the documentation include? (e.g., code examples, diagrams, step-by-step guides)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: "Resources & References"
+      placeholder: "Any relevant resources, existing documentation, code references, or screenshots?"
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: "Priority"
+      options:
+        - "🔴 P0 : Missing Critical Documentation"
+        - "🟠 P1 : Important Documentation Gap"
+        - "🟡 P2 : Documentation Enhancement"
+        - "🟢 P3 : Nice to Have"
+        - "⚪ P4 : Minor Update"
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        | Priority | Name | Description |
+        |----------|------|-------------|
+        | 🔴 P0 | CRITICAL | Missing documentation blocking team progress |
+        | 🟠 P1 | HIGH | Important documentation gap affecting productivity |
+        | 🟡 P2 | MEDIUM | Significant documentation enhancement |
+        | 🟢 P3 | NORMAL | Helpful documentation addition |
+        | ⚪ P4 | LOW | Minor documentation update |

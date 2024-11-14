@@ -1,0 +1,63 @@
+name: New Task
+description: Create a new work task.
+title: "[Task] "
+labels: ["issue", "NEW❗️"]
+body:
+  - type: markdown
+    attributes:
+      value: "## 📝 New Task"
+
+  - type: textarea
+    id: what
+    attributes:
+      label: "What?"
+      placeholder: "Brief description of what this task will accomplish. What is the goal?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: why
+    attributes:
+      label: "Why?"
+      placeholder: "Why are we doing this? What's the value?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: done
+    attributes:
+      label: "Definition of Done"
+      placeholder: "What exactly needs to be done to mark this issue as complete?(Add a task list if needed)"
+      value:
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: "Resources & Additional Notes"
+      placeholder: "Any relevant resources, extra context, links, or screenshots?"
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: "Priority"
+      options:
+        - "🔴 P0 : Critical"
+        - "🟠 P1 : High"
+        - "🟡 P2 : Medium"
+        - "🟢 P3 : Normal"
+        - "⚪ P4 : Low"
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        | Priority | Name | Description |
+        |----------|------|-------------|
+        | 🔴 P0 | CRITICAL | Urgent, blocking issue affecting multiple teams |
+        | 🟠 P1 | HIGH | Very important, needs attention ASAP |
+        | 🟡 P2 | MEDIUM | High impact, should be done soon |
+        | 🟢 P3 | NORMAL | Should be done, but not urgent |
+        | ⚪ P4 | LOW | Nice to have |
