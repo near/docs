@@ -3,10 +3,13 @@ id: oracles
 title: Oracles
 ---
 
+import {CodeTabs, Language, Github} from "@site/src/components/codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 [Blockchain Oracles](https://en.wikipedia.org/wiki/Blockchain_oracle) serve as intermediaries that connect smart contracts with external (off-chain) data.
+
+---
 
 Oracles can provide:
 
@@ -143,41 +146,61 @@ Pyth's NEAR smart contract provides the following core price feed methods:
 
 See Pyth's [`receiver` contract methods documentation](https://github.com/pyth-network/pyth-crosschain/blob/main/target_chains/near/receiver/src/ext.rs) for a complete detailed list.
 
-### Integrating Price Feeds
+### `update_price_feeds`
 
-1. **Interact with the Contract:**
+Calling Pyth Network Oracle's  `update_price_feeds` smart contract method  Updating price feeds on the Pyth Oracle contract is done through a few steps:
 
-   ```javascript
-   // Using async/await for NEAR API calls
-   async function updatePriceFeeds(data) {
-     const near = await connect(config);
-     const result = await account.functionCall({
-       contractId: 'pyth.testnet',
-       methodName: 'update_price_feeds',
-       args: { data },
-       gas: new utils.BN('30000000000000'),
-       attachedDeposit: utils.format.parseNearAmount('1'),
-     });
-     console.log('Update Price Feeds Result: ', result);
-   }
-   ```
+1. Get Price IDs from [NEAR Pyth Price Feeds](https://www.pyth.network/developers/price-feed-ids#near-testnet)
+2. Fetch the current price feed update from Hermes API
+3. Convert the returned base64 blob to hex
+4. Call `update_price_feeds` with the hex-encoded price feed
 
-   ```js
-   async function fetchPriceFeed() {
-   const near = await connect(config);
-   const account = await near.account();
-   const contractId = "pyth-oracle.testnet";
-   const identifier = "PriceIdentifier";
+#### Get Price IDs
 
-   const priceFeed = await account.viewFunction(
-    contractId,
-    "get_price",
-    args: { identifier }
-   );
+- **Testnet:** [NEAR Pyth Price Feeds](https://www.pyth.network/developers/price-feed-ids#near-testnet)
+- **Mainnet:** [NEAR Mainnet Price Feeds](https://www.pyth.network/developers/price-feed-ids#near)
 
-   console.log("Price Feed Data: ", priceFeed);
-   }
-   ```
+#### Fetch Price Feeds
+
+https://docs.pyth.network/price-feeds/how-pyth-works/hermes
+
+
+Using the price ID, fetch the current price using `/get_vaa` endpoint.
+
+- **Testnet:** [hermes-beta.pyth.network](https://hermes-beta.pyth.network/)
+- **Mainnet:** [hermes.pyth.network](https://hermes.pyth.network/)
+- Fetch the current price feed update from the [Hermes API](https://hermes-beta.pyth.network/).
+
+
+https://hermes-beta.pyth.network/api/get_vaa?id=${priceId}&publish_time=${publishTime}
+
+
+```
+
+#### Convert to Hex
+
+Convert the returned base64 blob to hex.
+
+Here is an example of the entire process:
+
+Check `_app.js` and `index.js` to understand how components are displayed and interacting with the contract.
+
+<Language value="js" language="js">
+  <Github
+          url="https://github.com/near-examples/near-js/blob/2b28f287faeecd20ef4bccaea1606434594b9507/node-js/oracle-example/pyth-oracle-update.js"/>
+</Language>
+
+You have two options to start the Counter Example.
+
+1. You can use the app through `GitHub Codespaces`, which will open a web-based interactive environment.
+2. Clone the repository locally and use it from your computer.
+
+| Codespaces                                                                                                             | Clone locally                                  |
+| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/near-examples/near-js) | 🌐 `https://github.com/near-examples/near-js` |
+
+### Updating Pyth Oracle Price Feeds
+
 
 Note: The parameters gas and attachedDeposit are specific to NEAR and must be adjusted based on your contract's demands. While any unused deposit will be refunded, it's advisable to estimate potential costs by invoking the get_update_fee_estimate method on the Pyth contract.
 
