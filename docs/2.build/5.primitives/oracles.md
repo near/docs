@@ -9,9 +9,7 @@ import TabItem from '@theme/TabItem';
 
 [Blockchain Oracles](https://en.wikipedia.org/wiki/Blockchain_oracle) serve as intermediaries that connect smart contracts with external (off-chain) data.
 
----
-
-Oracles can provide:
+`Example:`
 
 - **Price Feeds:** Real-time pricing for cryptocurrencies, stocks, or commodities.
 - **Event Information:** Updates on real-world events like sports results or weather conditions.
@@ -165,72 +163,68 @@ When interacting with Pyth oracle you will need:
 
 Each of these variables differ between networks:
 
-| Network   | Price Feed IDs                                                                                   | Hermes API Address                      | Contract Address            |
-| --------- | ------------------------------------------------------------------------------------------------ | -------------------------- | --------------------------- |
+| Network   | Price Feed IDs                                                                                   | Hermes API Address         | Contract Address                                                                 |
+| --------- | ------------------------------------------------------------------------------------------------ | -------------------------- | -------------------------------------------------------------------------------- |
 | `testnet` | [NEAR `testnet` Price Feed IDs](https://www.pyth.network/developers/price-feed-ids#near-testnet) | `hermes-beta.pyth.network` | [pyth-oracle.testnet](https://testnet.nearblocks.io/address/pyth-oracle.testnet) |
-| `mainnet` | [NEAR `mainnet` Price Feed IDs](https://www.pyth.network/developers/price-feed-ids#near-mainnet) | `hermes.pyth.network`      | [pyth-oracle.near](https://nearblocks.io/address/pyth-oracle.near)             |
-
-Price ID Example:
-
-| Network   | Asset   | Price Feed ID                                                        |
-| --------- | ------- | -------------------------------------------------------------------- |
-| `testnet` | BTC/USD | `0xf9c0172ba10dfa4d19088d94f5bf61d3b54d5bd7483a322a982e1373ee8ea31b` |
-| `mainnet` | BTC/USD | `0xe62df6c8b4a85fe1a67db44dc12de5db330f7ac66b72dc658afedf0f4a415b43` |
+| `mainnet` | [NEAR `mainnet` Price Feed IDs](https://www.pyth.network/developers/price-feed-ids#near-mainnet) | `hermes.pyth.network`      | [pyth-oracle.near](https://nearblocks.io/address/pyth-oracle.near)               |
 
 ### `update_price_feeds`
 
-This method updates the Pyth oracle smart contract's stored price feed with a real-time price feed data blob you provide. To obtain a price feed data payload you can use Pyth's [Hermes API](https://docs.pyth.network/price-feeds/api-instances-and-providers/hermes) endpoint.
+This method updates Pyth Oracle smart contract with the price feed from an external source.
 
-Be sure you are using the correct API for the network you are targeting (e.g. `hermes-beta.pyth.network` for `testnet`) See network section above.
+This process requires the following steps:
 
-This process involves:
+1. [Get Price IDs](#1-get-price-ids)
+2. [Fetch feed from Hermes API](#2-fetch-feed-from-hermes-api)
+3. [Encode API response to hex for NEAR](#3-encode-api-response-to-hex-for-near)
+4. [Call `update_price_feeds`](#4-call-update_price_feeds)
 
-1. Get Price IDs
-2. Fetch feed from Hermes API
-3. Encode API response to hex
-4. Call `update_price_feeds` with hex-encoded price feed
+---
 
-### Price Feed IDs
+#### 1) Get Price IDs
 
-Pyth Network uses price feed IDs that map to their contract addresses to uniquely identify price feeds. Please note:
+Pyth Network uses price feed IDs that map to their contract addresses to uniquely identify price feeds. Find the price ID(s) for the feed you want to update:
 
-- Each price feed ID is unique to an asset and network.
-- When using the Price Feed ID you will need to remove the `0x` prefix.
-- List of `testnet` price feed IDs can be found [here](https://www.pyth.network/developers/price-feed-ids#near-testnet).
-- List of `mainnet` price feed IDs can be found [here](https://www.pyth.network/developers/price-feed-ids#near).
+- [NEAR `testnet` Price Feed IDs](https://www.pyth.network/developers/price-feed-ids#near-testnet)
+- [NEAR `mainnet` Price Feed IDs](https://www.pyth.network/developers/price-feed-ids#near)
 
-
-
-### Fetch Price Feeds
+#### 2) Fetch feed from Hermes API
 
 Fetch price feeds using the [Hermes API](https://docs.pyth.network/price-feeds/how-pyth-works/hermes) `/get_vaa` endpoint using the following parameters:
 
 - Price Feed ID
 - Publish Time in milliseconds
 
-_Example using node.js & [`axios`](https://www.npmjs.com/package/axios):_
+`Example:`
 
 ```js
 // Define priceId and publishTime variables
 // NOTE: Remove the `0x` prefix from the price feed ID
-const priceId = 'f9c0172ba10dfa4d19088d94f5bf61d3b54d5bd7483a322a982e1373ee8ea31b'; // BTC testnet price feed ID
+const priceId =
+  'f9c0172ba10dfa4d19088d94f5bf61d3b54d5bd7483a322a982e1373ee8ea31b'; // BTC testnet price feed ID
 const publishTime = Math.floor(Date.now() / 1000) - 1; // Current time minus 1 millisecond to account for latency
 
 // Fetch price data from Hermes API beta endpoint for testnet
 const response = await axios.get(
   `https://hermes-beta.pyth.network/api/get_vaa?id=${priceId}&publish_time=${publishTime}`
 );
-
-// Convert base64 response to hex format for NEAR
-const base64 = Buffer.from(response.data.vaa, 'base64').toString('hex');
-
-// Log the hex value
-console.log(base64);
 ```
 
-### Calling `update_price_feeds`
+#### 3) Encode API response to hex for NEAR
 
+NEAR requires hex-encoded price feeds, so you will need to convert the base64 response to hex.
 
+`Example:`
+
+```js
+const base64 = Buffer.from(response.data.vaa, 'base64').toString('hex');
+```
+
+#### 4) Call `update_price_feeds`
+
+With the hex-encoded price feed data, call `update_price_feeds` on the NEAR Pyth contract. You can do this using the `near-js/client` library.
+
+`Example:`
 
 ```js
 // https://www.npmjs.com/package/@near-js/client
@@ -260,6 +254,8 @@ async function updatePythContractPriceFeeds() {
 
 updatePythContractPriceFeeds();
 ```
+
+### Full example for `testnet` using a node.js script
 
 <Language value="js" language="js">
   <Github
