@@ -262,15 +262,9 @@ updatePythContractPriceFeeds();
           url="https://github.com/near-examples/near-js/blob/2b28f287faeecd20ef4bccaea1606434594b9507/node-js/oracle-example/pyth-oracle-update.js"/>
 </Language>
 
-### Updating Pyth Oracle Price Feeds
-
 ### `get_price`
 
 Note: The parameters gas and attachedDeposit are specific to NEAR and must be adjusted based on your contract's demands. While any unused deposit will be refunded, it's advisable to estimate potential costs by invoking the get_update_fee_estimate method on the Pyth contract.
-
-Updates can be submitted to this call and sourced from the [Hermes API](https://hermes-beta.pyth.network/) for testnet. To try this out, use the `get_vaa` endpoint to request a price feed
-update. Remember, you must convert the returned base64 blob to
-hex before using it in the `update_price_feeds` call due to NEAR requiring hex encoding for byte data.
 
 Integrating this updating process directly within your contract can streamline operations by reducing the number of transactions needed. For implementation details, refer to the example contract linked below.
 
@@ -290,7 +284,3 @@ For on-chain price interactions, see the [example contract](https://github.com/p
 A CLI-based approach can also be taken for interacting with Pyth prices,
 see the [update.sh](https://github.com/pyth-network/pyth-crosschain/blob/main/target_chains/near/scripts/update.sh) example script in the repository to see how to pull prices with the official NEAR cli.
 
-## Contract Addresses
-
-Developers will need the address of the Pyth price feed contract on their blockchain in order to use Pyth.
-Please consult [Near Contract Addresses](https://docs.pyth.network/price-feeds/contract-addresses/near) to find the address for your blockchain.
