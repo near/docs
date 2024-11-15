@@ -48,11 +48,11 @@ For each language, the current plan is to translate all the documents with the f
 **Developer**
 
 1. `concepts`
-2. `develop`
+2. `build`
 3. `tutorials`
 4. `tools`
 5. `api`
-6. `intergrator`
+6. `integrations`
 
 
 **Exchanges & Integration**

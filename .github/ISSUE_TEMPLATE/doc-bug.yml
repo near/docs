@@ -1,0 +1,49 @@
+name: 🐞 Report a Documentation Error
+description: Report errors or unclear content in the documentation
+title: "[BUG] "
+labels: ["documentation", "bug"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to help us improve our documentation! 🙏
+        
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      placeholder: The documentation is incorrect/unclear/missing information about...
+    validations:
+      required: true
+      
+  - type: input
+    id: page-url
+    attributes:
+      label: Page URL
+      placeholder: https://docs.near.org/<path>
+    validations:
+      required: true
+      
+  - type: checkboxes
+    id: impact
+    attributes:
+      label: Impact
+      description: How does this documentation issue affect users?
+      options:
+        - label: Incorrect information
+        - label: Missing information
+        - label: Unclear explanation
+        - label: Broken link
+        - label: Code example doesn't work
+        - label: Other (please specify in description)
+    validations:
+      required: true
+      
+  - type: textarea
+    id: suggested-fix
+    attributes:
+      label: Suggested Fix
+      placeholder: I suggest changing/adding...
+    validations:
+      required: false
