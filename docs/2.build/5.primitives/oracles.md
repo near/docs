@@ -144,7 +144,7 @@ Pyth's NEAR smart contract has two core methods to update & get prices.
    - args: `data`
    - type: `object`
    - example: `{ "data": "504e41...' }`
-2. [`get_price`](#get_price) (fetches the most recent price stored in the contract)\_
+2. [`get_price`](#get_price) (fetches the most recent price stored in the contract)_
    - args: `price_identifer`
    - type: `object`
    - example: `{ price_identifier: 'f9c0172ba10dfa8...' }`
@@ -153,7 +153,7 @@ Pyth's NEAR smart contract has two core methods to update & get prices.
 For a complete list of endpoints to interact with, see [Pyth's `receiver` contract](https://github.com/pyth-network/pyth-crosschain/blob/main/target_chains/near/receiver/src/ext.rs).
 :::
 
-### Network Configuration
+### Environment Variables
 
 When interacting with Pyth oracle you will need:
 
@@ -171,6 +171,10 @@ Each of these variables differ between networks:
 ### `update_price_feeds`
 
 This method updates Pyth Oracle smart contract with the price feed from an external source.
+
+- args: `data`
+- type: `object`
+- example: `{ "data": "504e41...' }`
 
 This process requires the following steps:
 
@@ -224,6 +228,8 @@ const base64 = Buffer.from(response.data.vaa, 'base64').toString('hex');
 
 With the hex-encoded price feed data, call `update_price_feeds` on the NEAR Pyth contract. You can do this using the `near-js/client` library.
 
+Note: The parameters gas and attachedDeposit are specific to NEAR and must be adjusted based on your contract's demands. While any unused deposit will be refunded, it's advisable to estimate potential costs by invoking the get_update_fee_estimate method on the Pyth contract.
+
 `Example:`
 
 ```js
@@ -264,7 +270,20 @@ updatePythContractPriceFeeds();
 
 ### `get_price`
 
-Note: The parameters gas and attachedDeposit are specific to NEAR and must be adjusted based on your contract's demands. While any unused deposit will be refunded, it's advisable to estimate potential costs by invoking the get_update_fee_estimate method on the Pyth contract.
+This method fetches the most recent price stored in the Pyth Oracle contract.
+
+- args: `price_identifier`
+- type: `object`
+- example: `{ price_identifier: 'f9c0172ba10dfa8...' }`
+
+The price identifier is the unique [Price Feed ID](#environment-variables) for the price feed you want to fetch. Once you have the price identifier, you can call `get_price` on the Pyth Oracle contract. This contract call is a `view` method, so it does not require a signature or payment.
+
+`Example:`
+
+<Language value="js" language="js">
+  <Github
+          url="https://github.com/near-examples/near-js/blob/main/node-js/oracle-example/pyth-oracle-view.js"/>
+</Language>
 
 Integrating this updating process directly within your contract can streamline operations by reducing the number of transactions needed. For implementation details, refer to the example contract linked below.
 
@@ -283,4 +302,3 @@ For on-chain price interactions, see the [example contract](https://github.com/p
 
 A CLI-based approach can also be taken for interacting with Pyth prices,
 see the [update.sh](https://github.com/pyth-network/pyth-crosschain/blob/main/target_chains/near/scripts/update.sh) example script in the repository to see how to pull prices with the official NEAR cli.
-
