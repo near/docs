@@ -197,16 +197,18 @@ Pyth Network uses price feed IDs that map to their contract addresses to uniquel
 Fetch price feeds using the [Hermes API](https://docs.pyth.network/price-feeds/how-pyth-works/hermes) `/get_vaa` endpoint using the following parameters:
 
 - Price Feed ID
-- Publish Time in milliseconds
+- Publish Time
 
-`Example:`
+`Example Endpoint:`
+
+https://hermes-beta.pyth.network/api/get_vaa?id=f9c0172ba10dfa4d19088d94f5bf61d3b54d5bd7483a322a982e1373ee8ea31b&publish_time=1731713981
 
 ```js
 // Define priceId and publishTime variables
 // NOTE: Remove the `0x` prefix from the price feed ID
 const priceId =
   'f9c0172ba10dfa4d19088d94f5bf61d3b54d5bd7483a322a982e1373ee8ea31b'; // BTC testnet price feed ID
-const publishTime = Math.floor(Date.now() / 1000) - 1; // Current time minus 1 millisecond to account for latency
+const publishTime = Math.floor(Date.now() / 1000) - .5; // Current time minus 0.5 seconds
 
 // Fetch price data from Hermes API beta endpoint for testnet
 const response = await axios.get(
