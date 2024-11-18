@@ -27,7 +27,7 @@ Every method execution has an environment associated with information such as:
 | Predecessor            | `near.predecessorAccountId()` | Account ID that called this method                                                   |
 | Current Account        | `near.currentAccountId()`     | Account ID of this smart contract                                                    |
 | Signer                 | `near.signerAccountId()`      | Account ID that signed the transaction leading to this execution                     |
-| Attached Deposit       | `near.attachedDeposit()`      | Amount in NEAR attached to the call by the predecessor                               |
+| Attached Deposit       | `near.attachedDeposit()`      | Amount in yoctoNEAR attached to the call by the predecessor                          |
 | Account Balance        | `near.accountBalance()`       | Balance of this smart contract (including Attached Deposit)                          |
 | Prepaid Gas            | `near.prepaidGas()`           | Amount of gas available for execution                                                |
 | Timestamp              | `near.blockTimestamp()`       | Current timestamp (number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC) |
@@ -47,7 +47,7 @@ Every method execution has an environment associated with information such as:
 | Predecessor            | `env::predecessor_account_id()` | Account ID that called this method                                                   |
 | Current Account        | `env::current_account_id()`     | Account ID of this smart contract                                                    |
 | Signer                 | `env::signer_account_id()`      | Account ID that signed the transaction leading to this execution                     |
-| Attached Deposit       | `env::attached_deposit()`       | Amount in NEAR attached to the call by the predecessor                               |
+| Attached Deposit       | `env::attached_deposit()`       | Amount in yoctoNEAR attached to the call by the predecessor                          |
 | Account Balance        | `env::account_balance()`        | Balance of this smart contract (including Attached Deposit)                          |
 | Prepaid Gas            | `env::prepaid_gas()`            | Amount of gas available for execution                                                |
 | Timestamp              | `env::block_timestamp()`        | Current timestamp (number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC) |
