@@ -5,7 +5,8 @@ sidebar_label: Quickstart ✨
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
+import {CodeTabs, Language, Github} from '@site/src/components/codetabs';
+import MovingForward from '@site/src/components/MovingForward';
 
 In this guide we will show you how to quickly spin up a frontend where users can **login** using their wallets and interact with a **contract**.
 
@@ -125,8 +126,4 @@ If the user is logged in, the user will be able to use the `saveGreeting` functi
 
 ## Moving Forward
 
-That's it for our quickstart tutorial. You have now seen a fully functional frontend that can talk with NEAR contracts and render Web3 components.
-
-If you have any questions, do not hesitate in joining us on [Telegram](https://t.me/neardev) or [Discord](https://near.chat). We regularly host Office Hours, in which you can join our voice channel and ask questions.
-
-Happy coding!
+<MovingForward content="That's it for our quickstart tutorial. You have now seen a fully functional frontend that can talk with NEAR contracts and render Web3 components." />
