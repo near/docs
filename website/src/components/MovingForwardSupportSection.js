@@ -1,20 +1,13 @@
 /**
- * @component MovingForward
- * @description Renders support information along with optional dynamic content above the support section.
- * @param {string} content - Optional markdown-style content to render above the support links.
- * @returns {JSX.Element} A styled support section with optional content.
+ * @component MovingForwardSupportSection
+ * @description Renders a static support information for Moving Forward section.
+ * @returns {JSX.Element} A styled support section.
  */
 
 import React from "react";
-import ReactMarkdown from "react-markdown";
 
-const MovingForward = ({ content }) => (
+const MovingForwardSupportSection = () => (
   <div className="moving-forward">
-    {content && (
-      <div className="moving-forward__content">
-        <ReactMarkdown>{content}</ReactMarkdown>
-      </div>
-    )}
     <div className="theme-admonition theme-admonition-tip admonition_node_modules-@docusaurus-theme-classic-lib-theme-Admonition-Layout-styles-module alert alert--success">
       <h3 className="moving-forward__support-title">Looking for Support?</h3>
       <p>
@@ -43,4 +36,4 @@ const MovingForward = ({ content }) => (
   </div>
 );
 
-export default MovingForward;
+export default MovingForwardSupportSection;

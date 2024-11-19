@@ -4,7 +4,7 @@ title: AI Assistant
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import MovingForward from '@site/src/components/MovingForward';
+import MovingForwardSupportSection from '@site/src/components/MovingForwardSupportSection';
 
 Welcome! In this guide, you'll discover an AI chatbot that can interact with the NEAR ecosystem
 
@@ -180,10 +180,9 @@ Here are a few example questions you can ask it:
 
 ## Moving Forward
 
-<MovingForward content={`
 That's it for the quickstart tutorial. You have now seen an open-source AI agent interacting with NEAR and controlling a wallet to make transactions.
 
-To better understand how it works, check the [\`agent.py\` file](https://github.com/RezaRahemtola/near-ai-assistant/blob/main/ai/src/agent/agent.py) and the [Function Calling explanation on HuggingFace](https://huggingface.co/NousResearch/Hermes-2-Pro-Llama-3-8B#prompt-format-for-function-calling).
+To better understand how it works, check the [`agent.py` file](https://github.com/RezaRahemtola/near-ai-assistant/blob/main/ai/src/agent/agent.py) and the [Function Calling explanation on HuggingFace](https://huggingface.co/NousResearch/Hermes-2-Pro-Llama-3-8B#prompt-format-for-function-calling).
 
 A lot of things could be built by leveraging this PoC, some ideas could be:
 - A chatbot integrated to the explorer to summarize transactions directly in the page
@@ -193,4 +192,5 @@ A lot of things could be built by leveraging this PoC, some ideas could be:
   - In the end, the AI publish the smart contract, mint an NFT and send it to you on testnet
 - An AI trader reacting to on-chain or off-chain events to buy/sell some tokens with its wallet
 - The only limit is your imagination!
-  `} />
+
+<MovingForwardSupportSection />

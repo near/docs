@@ -4,9 +4,10 @@ title: Hello Contract
 sidebar_label: Quickstart ✨
 ---
 
-import {Github} from "@site/src/components/codetabs";
+import {Github} from '@site/src/components/codetabs';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import MovingForwardSupportSection from '@site/src/components/MovingForwardSupportSection';
 
 Welcome! [NEAR accounts](../../1.concepts/protocol/account-model.md) can store small apps known as smart contracts. In this quick tutorial, we will guide you in creating your first contract on the NEAR **testnet**!
 
@@ -406,9 +407,7 @@ To better understand the contract's structure, check our [contract's anatomy](./
 
 If you prefer to see more examples, check our [examples](/tutorials/examples/count-near) page.
 
-Do not hesitate to reach out on [Discord](https://near.chat) with any questions you have. We regularly host Office Hours, in which you can join our voice channel and ask questions.
-
-Happy coding! 🚀
+<MovingForwardSupportSection />
 
 :::note Versioning for this article
 
