@@ -13,6 +13,26 @@ Smart contracts store data in their account's state, which is public on the chai
 
 It is important to know that the account's **code** and account's **storage** are **independent**. [Updating the code](../release/upgrade.md) does **not erase** the state.
 
+## Key-value storage
+
+Behind the scenes, all data stored on the NEAR blockchain is saved in a key-value database. A storage key is a unique identifier used to access data stored in a smart contract’s persistent storage. The key-value storage model in NEAR allows smart contracts to manage and retrieve data efficiently along with minimizing costs for storage.
+
+Keys can be any binary sequence, but they are typically structured for ease of use (e.g., as human-readable strings).
+Data associated with a key persists across contract calls and is stored on-chain until explicitly deleted.
+
+SDK collections are instantiated using a "prefix" so that the elements from different collections access different data.
+
+Here is an example:
+
+```ts
+const tokenToOwner = new PersistentMap<TokenId, AccountId>("t2o");
+```
+
+That `'t2o'` variable that's passed to `PersistentMap` helps it keep track of all its values. If your account `example.near` owns token with ID `0`, then at the time of writing, here's the data that would get saved to the key-value database:
+
+- key: `t2o::0`
+- value: `example.near`
+
 <hr class="subsection" />
 
 <ExplainCode languages="js,rust" >
