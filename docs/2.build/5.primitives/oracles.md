@@ -195,16 +195,11 @@ Update the Pyth Oracle contract with new price feed data in two main steps:
 
 #### 1) Fetching off-chain price feed
 
-You can obtain an off-chain price feed using Pyth's [Hermes API](https://docs.pyth.network/price-feeds/how-pyth-works/hermes) `/get_vaa` endpoint.
+You can obtain an off-chain price feed using Pyth's [Hermes API](https://hermes-beta.pyth.network/docs/).
 
-There are several steps to this process:
+To use these endpoints, you will need to provide a Price Feed ID and ensure you are targeting the correct network. See [Getting Started](#getting-started) for more information.
 
-- Determine which network you are targeting
-- Create a publish time and account for network latency
-- Fetch price feed from appropriate endpoint
-- Convert response to hex for use on NEAR
-
-`Example:`
+Here is a node.js example of fetching the latest price feed using `/v2/updates/price/latest` endpoint:
 
 <Language value="js" language="js">
   <Github
@@ -213,7 +208,7 @@ There are several steps to this process:
 
 #### 2) Update Pyth Oracle Contract Price Feed
 
-After [fetching an off-chain price feed](#1-fetching-off-chain-price-feed), you can now perform a contract call to the Pyth Oracle contract to update.
+After [fetching an off-chain price feed](#1-fetching-off-chain-price-feed), you can now perform a contract call to the Pyth Oracle to update the price feed on-chain.
 
 Call `update_price_feeds` on the Pyth Oracle contract with `data` as your arguments.
 
