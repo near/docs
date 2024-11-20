@@ -33,6 +33,8 @@ That `'t2o'` variable that's passed to `PersistentMap` helps it keep track of al
 - key: `t2o::0`
 - value: `example.near`
 
+Storage key type should implement the trait `IntoStorageKey`. 
+
 <hr class="subsection" />
 
 <ExplainCode languages="js,rust" >
