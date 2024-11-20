@@ -137,6 +137,8 @@ For USD values, divide the `multiplier` by `10^4`.
 
 ---
 
+## Using Pyth Network Oracle
+
 > Pyth Network's NEAR smart contract has two core methods to update & get price feeds of your choice.
 
 1. [`update_price_feeds`](#update_price_feeds)
@@ -249,6 +251,8 @@ Although unused deposit will be refunded, you can calculate an estimate by calli
 - args: `price_identifier` _(unique [price feed identifier](#environment-variables))_
 - type: `object`
 - example: `{ price_identifier: 'f9c0172ba10dfa8...' }`
+
+After [updating the price feed](#update_price_feeds), you can view the feed on-chain by calling `get_price` on the Pyth Oracle contract. Note that this is a view method and does not require a signature or deposit.
 
 `Example:`
 
