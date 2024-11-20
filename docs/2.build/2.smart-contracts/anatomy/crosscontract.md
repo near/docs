@@ -41,7 +41,16 @@ While making your contract, it is likely that you will want to query information
     <Github fname="lib.rs"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/lib.rs"
             start="22" end="51" />
-            <Github fname="external.rs"
+        
+</Language>
+
+</CodeTabs>
+
+Note that in order for that to work in Rust, you have to implement the interface of the contract you call:
+
+<CodeTabs>
+<Language value="rust" language="rust">
+        <Github fname="external.rs"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/external.rs"
             start="2" end="12" />
 
@@ -66,6 +75,13 @@ Calling another contract passing information is also a common scenario. Below yo
     <Github fname="lib.rs"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/lib.rs"
             start="53" end="80" />
+
+</Language>
+
+</CodeTabs>
+
+<CodeTabs>
+<Language value="rust" language="rust">
     <Github fname="external.rs"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/external.rs"
             start="2" end="12" />
