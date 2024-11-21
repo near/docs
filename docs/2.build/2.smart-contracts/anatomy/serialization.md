@@ -110,14 +110,14 @@ When returning the result, the contract will automatically encode the object `B{
 into its JSON serialized value: `"{\"success\":true, \"other_number\":0}"` and return this
 string.
 
-:::caution JSON Limitations
+### JSON Limitations
+:::caution
 Since JSON is limited to `52 bytes` numbers, you cannot use `u64`/`u128` as input
 or output. JSON simply cannot serialize them. Instead, you must use `Strings`.
 
 The `NEAR SDK RS` currently implements the `near_sdk::json_types::{U64, I64, U128, I128}`
 that you can use for input / output of data.
 :::
-
 
 ---
 

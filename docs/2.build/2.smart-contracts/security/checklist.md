@@ -34,3 +34,11 @@ Check our [security articles](./welcome.md) to understand how to improve the sec
 12. Callbacks are free of `panic!`
 13. All the callbacks are given enough GAS to execute entirely
 14. The contract is not left in an exploitable state between a cross-contract call and its callback
+
+## Cross-contract calls
+15. Cross-contract calling functions [should](../anatomy/crosscontract#creating-a-cross-contract-call) return the Promise as the result of its execution
+
+## Types
+16. Use `near_sdk::json_types::{U64, I64, U128, I128}` to avoid deserialization [problems](../anatomy/serialization#json-limitations) with `u64`, etc.
+17. Use built in types like `AccountId`, `BlockHeight`, `NearToken` and other types from [near-sdk](https://docs.rs/near-sdk/latest/near_sdk/)
+18. When dealing with balances, consider using `checked_mul`, `checked_sub`, etc

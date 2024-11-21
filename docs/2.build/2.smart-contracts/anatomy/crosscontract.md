@@ -165,9 +165,33 @@ You can attach an unused GAS weight by specifying the `.with_unused_gas_weight()
   </TabItem>
 </Tabs>
 
-:::info
+:::caution
 
 If a function returns a promise, then it will delegate the return value and status of transaction execution, but if you return a value or nothing, then the `Promise` result will not influence the transaction status
+
+
+
+Unless there is a very good reason not to, all the cross-contract calling functions should return the Promise as the result of its execution, otherwise, the cross-contract calls won't affect the result of the contract execution.
+
+For example:
+<Tabs>
+  <TabItem value="rs" label="🦀 Rust">
+
+    ```rust
+    fn destroy(&mut self) {
+        Promise::...; // notice the `;` here and the empty return value in the function signature
+    }
+    fn destroy(&mut self) -> Promise {
+        Promise::... // notice there is no `;` here and the return value in the function signature Promise
+    }
+    ```
+
+  </TabItem>
+</Tabs>
+
+The difference between the two is that the first will schedule the cross-contract call, but its return value will be ignored (even if the call fails, the result of the `destroy` function will be OK), and transaction return value may even be returned earlier than all the in-flight cross-contract calls complete since they do not affect the execution result.
+
+Without linking the cross-contract call with the result of the `destroy` function, it may start removing itself earlier than the cross-contract call is finished and if it fails, it's state will become unreachable.
 
 :::
 
