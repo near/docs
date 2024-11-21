@@ -35,7 +35,7 @@ Here's a simple express endpoint that deserializes the body, instantiates the re
 
 You can easily get the account object used to send the transactions from its private key using this snippet
 
-<Github language='typescript' url='https://github.com/SurgeCode/near-relay-example/blob/main/util.ts' start='5' end='17'/>  
+<Github language='typescript' url='https://github.com/SurgeCode/near-relay-example/blob/main/util.ts' start='5' end='17'/>
 
 
 :::info
@@ -48,7 +48,7 @@ You can easily get the account object used to send the transactions from its pri
 "@near-js/accounts": "1.0.4"
 ```
 
-::: 
+:::
 
 
 </TabItem>
@@ -112,9 +112,9 @@ When running a relayer that handles a large number of transactions, you will qui
 
 When multiple transactions are sent from the same access key simultaneously, their nonces might collide. Imagine the relayer creates 3 transactions `Tx1`, `Tx2`, `Tx3` and send them in very short distance from each other, and lets assume that `Tx3` has the largest nonce. If `Tx3` ends up being processed before `Tx1` (because of network delays, or a node picks `Tx3` first), then `Tx3` will execute, but `Tx1` and `Tx2` will fail, because they have smaller nonce!
 
-One way to mitigate this is to sign each transaction with a different key. Adding multiple full access keys to the NEAR account used for relaying (up to 20 keys can make a significant difference) will help. 
+One way to mitigate this is to sign each transaction with a different key. Adding multiple full access keys to the NEAR account used for relaying (up to 20 keys can make a significant difference) will help.
 
-<details> 
+<details>
 <summary> Adding keys </summary>
 
 ```js
@@ -179,7 +179,7 @@ Features can be combined as needed. Use of one feature does not preclude the use
 
 1. Sign and send Meta Transactions to the RPC to cover the gas costs of end users while allowing them to maintain custody of their funds and approve transactions (`/relay`, `/send_meta_tx`, `/send_meta_tx_async`, `/send_meta_tx_nopoll`)
 2. Sign Meta Transactions returning a Signed Meta Transaction to be sent to the RPC later - (`/sign_meta_tx`, `/sign_meta_tx_no_filter`)
-3. Only pay for users interacting with certain contracts by whitelisting contracts addresses (`whitelisted_contracts` in `config.toml`) 
+3. Only pay for users interacting with certain contracts by whitelisting contracts addresses (`whitelisted_contracts` in `config.toml`)
 4. Specify gas cost allowances for all accounts (`/update_all_allowances`) or on a per-user account basis (`/create_account_atomic`, `/register_account`, `/update_allowance`) and keep track of allowances (`/get_allowance`)
 5. Specify the accounts for which the relayer will cover gas fees (`whitelisted_delegate_action_receiver_ids` in `config.toml`)
 6. Only allow users to register if they have a unique Oauth Token (`/create_account_atomic`, `/register_account`)
@@ -201,15 +201,15 @@ You can follow these steps to set up your local Relayer server development envir
    ```js
    [{"account_id":"example.testnet","public_key":"ed25519:98GtfFzez3opomVpwa7i4m3nptHtc7Ha514XHMWszLtQ","private_key":"ed25519:YWuyKVQHE3rJQYRC3pRGV56o1qEtA1PnMYPDEtroc5kX4A4mWrJwF7XkzGe7JWNMABbtY4XFDBJEzgLyfPkwpzC"}]
    ```
-   using a [Full Access Key](../../1.concepts/protocol/access-keys.md#full-access-keys) from an account that has enough NEAR to cover the gas costs of transactions your server will be relaying. Usually, this will be a copy of the json file found in the `.near-credentials` directory. 
+   using a [Full Access Key](../../1.concepts/protocol/access-keys.md#full-access-keys) from an account that has enough NEAR to cover the gas costs of transactions your server will be relaying. Usually, this will be a copy of the json file found in the `.near-credentials` directory.
 4. Update values in `config.toml`
 5. Open up the `port` from `config.toml` in your machine's network settings
-6. Run the server using `cargo run`. 
+6. Run the server using `cargo run`.
    > **(OPTIONAL)** To run with logs (tracing) enabled run `RUST_LOG=tower_http=debug cargo run`
 
 :::info Optional setup
 
-If you're integrating with [FastAuth](fastauth-sdk.md) make sure to enable feature flags: 
+If you're integrating with [FastAuth](fastauth-sdk.md) make sure to enable feature flags:
 ```
 cargo build --features fastauth_features,shared_storage
 ```
@@ -234,7 +234,7 @@ This is only needed if you intend to use whitelisting, allowances, and OAuth fun
 
 ### Advanced setup
 
-- [Multiple Key Generation](https://github.com/near/pagoda-relayer-rs/tree/main?tab=readme-ov-file#multiple-key-generation---optional-but-recommended-for-high-throughput-to-prevent-nonce-race-conditions): this is optional, but recommended for high throughput to prevent nonce race conditions. Check 
+- [Multiple Key Generation](https://github.com/near/pagoda-relayer-rs/tree/main?tab=readme-ov-file#multiple-key-generation---optional-but-recommended-for-high-throughput-to-prevent-nonce-race-conditions): this is optional, but recommended for high throughput to prevent nonce race conditions. Check
 - [Docker Deployment](https://github.com/near/pagoda-relayer-rs/tree/main?tab=readme-ov-file#docker-deployment): instructions to deploy with Docker
 - [Cloud Deployment](https://github.com/near/pagoda-relayer-rs/tree/main?tab=readme-ov-file#cloud-deployment): instructions to deploy on Cloud providers
 
@@ -244,7 +244,7 @@ You can find the complete Relayer server API specification on the [GitHub reposi
 
 ### Use cases
 
-The [examples folder](https://github.com/near/pagoda-relayer-rs/tree/main/examples) on the GitHub repository contains example configuration files corresponding to different use cases. 
+The [examples folder](https://github.com/near/pagoda-relayer-rs/tree/main/examples) on the GitHub repository contains example configuration files corresponding to different use cases.
 
 :::info
 These files are for reference only and you should update the `config.toml` values before using it on your development environment.
@@ -262,22 +262,28 @@ This is a configuration for a basic relayer that covers gas for user transaction
 
 #### Redis
 
-This is a configuration for a relayer that covers gas for user transactions up to a allowance specified in Redis to interact with a whitelisted set of contracts. 
+This is a configuration for a relayer that covers gas for user transactions up to a allowance specified in Redis to interact with a whitelisted set of contracts.
 - Allowances are on a per-account id basis and on signup (account creation in Redis and on-chain) an OAuth token is required to help with sybil resistance
 - [`redis.toml`](https://github.com/near/pagoda-relayer-rs/blob/main/examples/configs/redis.toml)
 
 #### FastAuth
 
+:::info Closed access beta
+
+[FastAuth](fastauth-sdk.md) is currently in a private beta stage. If you want to try it out during this early development stage, please [contact us on Telegram](https://t.me/neardev).
+
+:::
+
 This is a configuration for use if you intend to integrate with [FastAuth SDK](fastauth-sdk.md)
-- It covers gas for user transactions up to a allowance specified in Redis to interact with a whitelisted set of contracts. 
-- Allowances are on a per-account id basis and on signup (account creation in Redis and on-chain) an OAuth token is required to help with sybil resistance 
-- This also makes use of a shared storage functionality on the Near Social DB contract 
+- It covers gas for user transactions up to a allowance specified in Redis to interact with a whitelisted set of contracts.
+- Allowances are on a per-account id basis and on signup (account creation in Redis and on-chain) an OAuth token is required to help with sybil resistance
+- This also makes use of a shared storage functionality on the Near Social DB contract
 - and a whitelisted sender (`whitelisted_delegate_action_receiver_ids`)
 - [`fastauth.toml`](https://github.com/near/pagoda-relayer-rs/blob/main/examples/configs/fastauth.toml)
 
 #### Pay with fungible tokens
 
-This is a configuration for a relayer that ensures there's FTs sent to a burn address used to cover the equivalent amount of gas for user transactions to interact with a whitelisted set of contracts 
+This is a configuration for a relayer that ensures there's FTs sent to a burn address used to cover the equivalent amount of gas for user transactions to interact with a whitelisted set of contracts
 - [`pay_with_ft.toml`](https://github.com/near/pagoda-relayer-rs/blob/main/examples/configs/pay_with_ft.toml)
 
 #### Whitelist senders

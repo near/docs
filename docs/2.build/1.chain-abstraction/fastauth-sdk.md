@@ -4,7 +4,13 @@ title: FastAuth SDK
 sidebar_label: FastAuth (Email Login)
 ---
 
-FastAuth is a key management system that allows users to **recover or sign-up for** a NEAR account using their **email address**. Furthermore, it allows to subsidize gas for a certain smart contract, so users can interact with it without having to fund their account. 
+FastAuth is a key management system that allows users to **recover or sign-up for** a NEAR account using their **email address**. Furthermore, it allows to subsidize gas for a certain smart contract, so users can interact with it without having to fund their account.
+
+:::info Closed access beta
+
+FastAuth is currently in a private beta stage. If you want to try it out during this early development stage, please [contact us on Telegram](https://t.me/neardev).
+
+:::
 
 ---
 
