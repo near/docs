@@ -113,3 +113,39 @@ To simplify development, the SDK provides the `U64` and `U128` types which are a
     start="2" end="84" />
 
 </ExplainCode>
+
+
+## PublicKey
+
+Public key is in a binary format with base58 string serialization with human-readable curve.
+The key types currently supported are `secp256k1` and `ed25519`.
+
+Example:
+```rust
+use near_sdk::{PublicKey, CurveType};
+
+pub fn stake_tokens(
+        &mut self,
+        amount: U128,
+    ) -> Promise {
+        // Compressed ed25519 key
+        let ed: PublicKey = "ed25519:6E8sCci9badyRkXb3JoRpBj5p8C6Tw41ELDZoiihKEtp".parse()
+                    .unwrap();
+
+        // Uncompressed secp256k1 key
+        let secp256k1: PublicKey =   
+            "secp256k1:qMoRgcoXai4mBPsdbHi1wfyxF9TdbPCF4qSDQTRP3TfescSRoUdSx6nmeQoN3aiwGzwMyGXAb1gUjBTv5AY8DXj"
+                    .parse().unwrap();
+
+        // Check the curve type of the public key
+        match ed.curve_type() {
+            near_sdk::CurveType::ED25519 => env::log_str("Using ED25519 curve."),
+            near_sdk::CurveType::SECP256K1 => env::log_str("Using SECP256K1 curve."),
+            _ => env::panic_str("Unsupported curve type!"),
+        }
+
+        // Use the staking contract to stake the tokens (using NEAR's PromiseAction::Stake)
+        Promise::new(env::predecessor_account_id().clone())
+            .stake(amount.0, public_key) // stake the tokens using the public key for verification
+    }
+```
