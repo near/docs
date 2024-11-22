@@ -127,7 +127,7 @@ Under the hood smart contracts store data using simple **key/value pairs**. This
 the contract needs to translate complex states into simple key-value pairs.
 
 For this, NEAR contracts use [borsh](https://borsh.io) which is optimized for (de)serializing
-complex objects into smaller streams of bytes.
+complex objects into smaller streams of bytes. Borsh is used to serialize and deserialize both keys and values. 
 
 :::tip SDK-JS still uses json
 The JavaScript SDK uses JSON to serialize objects in the state, but the borsh implementation
@@ -138,7 +138,7 @@ should arrive soon
 Let's look at this example, written only for educational purposes:
 
 ```rust
-#[near(serializers = [json, borsh])]
+#[near(contract_state, serializers = [json, borsh])]
 #[derive(PanicOnDefault)]
 pub struct Contract {
   string: String,
@@ -210,6 +210,21 @@ If we initialize the state we can see how Borsh is used to serialize the state
   ```
   </TabItem>
 </Tabs>
+
+Under the hood, every method in smart contract where state is mutated, finishes with writing state to storage, where key is "STATE" and value is contract state, serialized with Borsh. `storage_write` is used for that:
+
+```rust
+pub fn init(...) -> Self {
+  ...
+  storage_write(b"STATE", &borsh::to_vec(&Self {string, vector}));
+}
+```
+
+Also, when pushing to vector, another `storage_write` is used:
+```rust
+  // here 0 is element index
+  storage_write(b"prefix:0", &borsh::to_vec(&element))
+```
 
 <details>
 
@@ -286,6 +301,24 @@ We can see that the `STATE` key changes to reflect the storage of the new string
 the vector now has 2 elements.
 
 At the same time, a new key-value was added adding the new vector entry: the `1u8` we just added.
+
+#### BorshSerialize
+In order for state reading and writing to work, contract structure should be borsh serializable. That means every field and their fields should be borsh serializable as well. Otherwise, code is not going to compile. For that, `BorshSerialize` and `BorshDeserialize` macros can be used. But `#[near]` macro specifies it internally. So, all the structures and enums, that are going to be used as fields of contract, have to be wrapped with `#[near]` macro.
+
+Example:
+
+```rust
+#[near]
+pub struct InnerStruct {
+  name: String,
+  age: u8
+}
+
+#[near(contract_state)]
+pub struct Contract {
+  person: InnerStruct
+}
+``` 
 
 <hr className="subsection" />
 

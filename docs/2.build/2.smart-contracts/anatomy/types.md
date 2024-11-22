@@ -117,8 +117,8 @@ To simplify development, the SDK provides the `U64` and `U128` types which are a
 
 ## PublicKey
 
-Public key is in a binary format with base58 string serialization with human-readable curve.
-The key types currently supported are `secp256k1` and `ed25519`.
+[`PublicKey`](https://docs.rs/near-sdk/latest/near_sdk/struct.PublicKey.html) is in a binary format with base58 string serialization with human-readable curve.
+The curve types currently supported are `secp256k1` and `ed25519` under [`near_sdk::CurveType`](https://docs.rs/near-sdk/latest/near_sdk/struct.PublicKey.html).
 
 Example:
 ```rust
