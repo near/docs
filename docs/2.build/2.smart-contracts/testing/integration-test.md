@@ -27,7 +27,7 @@ All of our [examples](https://github.com/near-examples/docs-examples) come with 
 
 ## Snippet I: Testing Hello NEAR
 
-Lets take a look at the test of our [Quickstart Project](../quickstart.md) [👋 Hello NEAR](https://github.com/near-examples/hello-near-examples), where we deploy the contract on an account and test it correctly retrieves and sets the greeting.
+Lets take a look at the test of our [Quickstart Project](../quickstart.md) [👋 Hello NEAR](https://github.com/near-examples/hello-near-examples), where we deploy the contract on an account and test it correctly retrieves and sets the greeting. Here local `sandbox` is used.
 
 <CodeTabs>
   <Language value="js" language="js">
@@ -52,7 +52,7 @@ In most cases we will want to test complex methods involving multiple users and 
 
 ---
 
-## Sandbox Testing
+## Sandbox Features
 
 NEAR Workspaces allows you to write tests once, and run them either on `testnet` or a local `Sandbox`. By **default**, Workspaces will start a **sandbox** and run your tests **locally**. Lets dive into the features of our framework and see how they can help you.
 

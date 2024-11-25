@@ -37,6 +37,7 @@ Check our [security articles](./welcome.md) to understand how to improve the sec
 
 ## Cross-contract calls
 15. Cross-contract calling functions [should](../anatomy/crosscontract#creating-a-cross-contract-call) return the Promise as the result of its execution
+16. Use [integration tests](../testing/integration-test.md) to cover cross contract calls
 
 ## Types
 16. Use `near_sdk::json_types::{U64, I64, U128, I128}` to avoid deserialization [problems](../anatomy/serialization#json-limitations) with `u64`, etc.
