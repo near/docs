@@ -100,7 +100,7 @@ The cost of calling a function will depend on how complex the function is, but w
 :::
 
 :::tip Deploying a Contract**
-Note that this covers the gas cost of uploading and writing bytes to storage, but does **not** cover the cost of holding them in storage (which is `1Ⓝ ~ 100kb`).
+Note that this covers the gas cost of uploading and writing bytes to storage, but does **not** cover the cost of holding them in storage (which is `1Ⓝ ~ 100kb`). More information about storage staking [here](../storage/storage-staking.md)
 :::
 
 <details className="info">
