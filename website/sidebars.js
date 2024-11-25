@@ -139,6 +139,7 @@ const sidebar = {
                 "build/smart-contracts/anatomy/serialization-protocols",
                 "build/smart-contracts/anatomy/reduce-size",
                 "build/smart-contracts/anatomy/reproducible-builds",
+                "build/smart-contracts/anatomy/macros",
               ]
             }
           ]
