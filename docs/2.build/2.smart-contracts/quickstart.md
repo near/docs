@@ -181,7 +181,7 @@ Building and testing the contract is as simple as running the `test` command. Th
     <details>
     <summary> Failing tests? </summary>
 
-    Make sure that you are using `node v18`, `v20` or `v22` - you can manage multiple versions using `nvm` - and that you have `Rosetta` installed on MacOS
+    Make sure that you are using `node v18`, `v20` or `v22` - you can manage multiple versions using `nvm` - and that you have `Rosetta` installed on MacOS if you have an Apple Silicon processor.
 
     </details>
 
