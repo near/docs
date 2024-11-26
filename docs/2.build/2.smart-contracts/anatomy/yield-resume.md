@@ -29,9 +29,9 @@ Let's look at an example that takes a prompt from a user (e.g. "What is 2+2"), a
 </CodeTabs>
 
 #### Creating a Yielded Promise
-In the example above, we are creating a [`Promise`](./crosscontract.md#promises) to call the contract's function `return_external_response`.
+In the example above, we are creating a [`Promise`](./crosscontract.md#promises) [🦀](https://near.github.io/near-sdk-js/classes/promise.NearPromise.html) [🌐](https://docs.rs/near-sdk/latest/near_sdk/struct.Promise.html) to call the contract's function `return_external_response`.
 
-Notice that we create the `Promise` using `env::promise_yield_create`, which will create an **identifier** for the yielded promise in the `YIELD_REGISTER`.
+Notice that we create the `Promise` using `env::promise_yield_create` [🦀](https://docs.rs/near-sdk/latest/near_sdk/env/fn.promise_yield_create.html) , which will create an **identifier** for the yielded promise in the `YIELD_REGISTER`.
 
 #### Retrieving the Yielded Promise ID
 We read the `YIELD_REGISTER` to retrieve the `ID` of our yielded promise. We store the `yield_id` and the user's `prompt` so the external service query them (the contract exposes has a function to list all requests).
@@ -88,7 +88,7 @@ The function being resumed will have access to all parameters passed to it, incl
 In the example above, the `return_external_response` receives two parameters:
 
 1. A `request_id` - passed on [creation](#creating-a-yielded-promise) - which is used to remove the request from the state
-2. A `response` - passed when [signaling to resume](#signaling-the-resume) - which contains the external response, or a `PromiseError` if the contract timed out while waiting
+2. A `response` - passed when [signaling to resume](#signaling-the-resume) - which contains the external response, or a `PromiseError` [🦀](https://docs.rs/near-sdk/latest/near_sdk/enum.PromiseError.html) [🌐](https://near.github.io/near-sdk-js/enums/types_vm_types.PromiseError.html) if the contract timed out while waiting
 
 :::tip There's plenty of time
 
