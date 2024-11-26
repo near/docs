@@ -34,6 +34,9 @@ Before starting, make sure to set up your development environment.
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 nvm install latest
 
+# ⚠️ For Mac Silicon users only, Rosetta is needed to compile contracts
+# /usr/sbin/softwareupdate --install-rosetta --agree-to-licens
+
 # Install NEAR CLI to deploy and interact with the contract
 npm install -g near-cli-rs@latest
 ```
