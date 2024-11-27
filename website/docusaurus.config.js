@@ -184,7 +184,7 @@ const config = {
             },
             {
               type: 'html',
-              value: '<hr/><div class="subtitle"> Support </dib>',
+              value: '<hr/><div class="subtitle"> Support </div>',
             },
             {
               href: 'https://discord.gg/GZ7735Xjce',
@@ -196,7 +196,7 @@ const config = {
             },
             {
               type: 'html',
-              value: '<hr /><div class="subtitle"> Education </dib>',
+              value: '<hr /><div class="subtitle"> Education </div>',
             },
             {
               href: 'https://agorapp.dev/catalog/course?difficulty=&chains=near',
@@ -208,7 +208,7 @@ const config = {
             },
             {
               type: 'html',
-              value: '<hr /><div class="subtitle"> Other Docs </dib>',
+              value: '<hr /><div class="subtitle"> Other Docs </div>',
             },
             {
               href: 'https://github.com/near/NEPs',
@@ -234,10 +234,6 @@ const config = {
           activeBaseRegex: '/api/rpc',
         },
         { label: 'Blog', to: '/blog', activeBaseRegex: '/blog', position: 'right' },
-        {
-          type: 'localeDropdown',
-          position: 'right',
-        },
       ],
     },
     footer: {
@@ -279,15 +275,6 @@ const config = {
       //... other Algolia params
       placeholder: 'Search the Docs...',
       insights: true,
-    },
-  },
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'ko', 'vi', 'zh-CN'],
-    localeConfigs: {
-      'zh-CN': {
-        label: '简体中文',
-      },
     },
   },
 };
