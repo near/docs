@@ -4,9 +4,10 @@ title: Hello Contract
 sidebar_label: Quickstart ✨
 ---
 
-import {Github} from "@site/src/components/codetabs";
+import {Github} from '@site/src/components/codetabs';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import MovingForwardSupportSection from '@site/src/components/MovingForwardSupportSection';
 
 Welcome! [NEAR accounts](../../1.concepts/protocol/account-model.md) can store small apps known as smart contracts. In this quick tutorial, we will guide you in creating your first contract on the NEAR **testnet**!
 
@@ -32,6 +33,9 @@ Before starting, make sure to set up your development environment.
 # Install Node.js using nvm (more options in: https://nodejs.org/en/download)
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 nvm install latest
+
+# ⚠️ For Mac Silicon users only, Rosetta is needed to compile contracts
+# /usr/sbin/softwareupdate --install-rosetta --agree-to-license
 
 # Install NEAR CLI to deploy and interact with the contract
 npm install -g near-cli-rs@latest
@@ -141,7 +145,7 @@ The `Hello World` smart contract stores a greeting in its state, and exposes two
 
     <Github fname="index.js" language="js"
             url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts"
-            start="4" end="18" />
+            start="4" end="22" />
 
   </TabItem>
 
@@ -177,7 +181,7 @@ Building and testing the contract is as simple as running the `test` command. Th
     <details>
     <summary> Failing tests? </summary>
 
-    Make sure that you are using `node v18`, `v20` or `v22`. You can always use: `nvm use 18` to switch to `node v20`
+    Make sure that you are using `node v18`, `v20` or `v22` - you can manage multiple versions using `nvm` - and that you have `Rosetta` installed on MacOS if you have an Apple Silicon processor.
 
     </details>
 
@@ -195,7 +199,9 @@ Building and testing the contract is as simple as running the `test` command. Th
 In the background, these commands are calling the build tools for each language and using a [Sandbox](./testing/integration-test.md) to test the contract.
 
 :::tip Sandbox
+
 Testing the contracts within a Sandbox allows you to understand how the contract will behave once deployed to the network while having total control over the testing environment.
+
 :::
 
 ---
@@ -406,9 +412,7 @@ To better understand the contract's structure, check our [contract's anatomy](./
 
 If you prefer to see more examples, check our [examples](/tutorials/examples/count-near) page.
 
-Do not hesitate to reach out on [Discord](https://near.chat) with any questions you have. We regularly host Office Hours, in which you can join our voice channel and ask questions.
-
-Happy coding! 🚀
+<MovingForwardSupportSection />
 
 :::note Versioning for this article
 

@@ -25,7 +25,7 @@ Check out the following links
 
 ## Contributing
 
-NEAR uses [Docusaurus](https://docusaurus.io) for documentation.  Please refer to their documentation for details on major structural contributions to the documentation.
+NEAR uses [Docusaurus](https://docusaurus.io) for documentation. Please refer to their documentation for details on major structural contributions to the documentation.
 
 For simple content changes you have 2 options
 
@@ -112,13 +112,7 @@ If you found a broken link from a Google search, please request to remove it fro
 
 ## Check for broken links
 
-Before opening a pull request, please check for broken links:
-
-```bash
-yarn test
-```
-
-or id you are in the `./website` directory:
+Before opening a pull request, please check for broken links by navigating to `./website` directory and run:
 
 ```bash
 yarn full-test

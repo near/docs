@@ -24,7 +24,7 @@ In this video we give a quick overview on the main concept of how the data flows
 
 NEAR Protocol blockchain data flow might be a bit tricky at a glance. But it is pretty straightforward and follows well-defined rules. In this article, we are going to have a closer look at how the data flows in NEAR Protocol blockchain.
 
-In fact, any blockchain flow can be represented as an infinity timeline that has a start but has no end.
+In fact, any blockchain flow can be represented as an infinite timeline that has a start but has no end.
 
 
 ![Blocks Timeline](/docs/flow/01-timeline.png)
@@ -47,7 +47,7 @@ A transaction needs to be constructed, signed and sent to the blockchain. Once i
 
 In the beginning there is a [Transaction](../../2.build/6.data-infrastructure/lake-data-structures/transaction.mdx), it contains instructions we want to be executed on the blockchain. Transaction is sent to NEAR Blockchain.
 
-And yes, it is executed there immediately BUT the immediate result of the transaction execution is always just *an acknowledgement that it will be executed on the chain;* this internal execution request is known as [Receipt](../../2.build/6.data-infrastructure/lake-data-structures/receipt.mdx). You can think of the [Receipt](../../2.build/6.data-infrastructure/lake-data-structures/receipt.mdx) as an internal transaction that exists to pass information across shards.
+And yes, it is executed there immediately BUT the immediate result of the transaction execution is always just *an acknowledgment that it will be executed on the chain;* this internal execution request is known as [Receipt](../../2.build/6.data-infrastructure/lake-data-structures/receipt.mdx). You can think of the [Receipt](../../2.build/6.data-infrastructure/lake-data-structures/receipt.mdx) as an internal transaction that exists to pass information across shards.
 
 Let’s get back to the tracks to look at the example.
 
