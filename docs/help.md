@@ -31,7 +31,9 @@ If you’re new or unsure where to start, these are the main support channels to
 | **Developer Hub**       | Centralized developer resources for NEAR, including announcements, blog and discussions.                                                          | [Visit](https://neardevhub.org/)        |
 | **Telegram (General)**  | General discussions for anyone interested in NEAR Protocol.                                                                                       | [Join](https://t.me/cryptonear)         |
 
-### Telegram Chats
+<hr class="subsection" />
+
+The Telegram chats are organized into two groups to make it easier to navigate and find the right discussions:
 
 #### Group 1: Telegram Folder (21 chats)
 
@@ -60,6 +62,8 @@ Discover 21 NEAR-related in this [Telegram groups folder](https://t.me/addlist/V
 | 19  |                      | NEAR Contract Standards Community | [Join](https://t.me/nearnft)                       |
 | 20  | NFTs & Creative Tech | NEAR NFT Builder Group            | [Join](https://t.me/+_odQLYGusEU0MzAx)             |
 | 21  |                      | Jutsu.ai - Public                 | [Join](https://t.me/tryjutsu)                      |
+
+<hr class="subsection" />
 
 #### Group 2: NearBuilders Only (15 chats)
 
