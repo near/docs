@@ -234,10 +234,6 @@ const config = {
           activeBaseRegex: '/api/rpc',
         },
         { label: 'Blog', to: '/blog', activeBaseRegex: '/blog', position: 'right' },
-        {
-          type: 'localeDropdown',
-          position: 'right',
-        },
       ],
     },
     footer: {
@@ -279,15 +275,6 @@ const config = {
       //... other Algolia params
       placeholder: 'Search the Docs...',
       insights: true,
-    },
-  },
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'ko', 'vi', 'zh-CN'],
-    localeConfigs: {
-      'zh-CN': {
-        label: '简体中文',
-      },
     },
   },
 };
