@@ -16,6 +16,7 @@ const config = {
   scripts: [
     'https://buttons.github.io/buttons.js',
     'https://use.fontawesome.com/221fd444f5.js',
+    'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit',
   ],
   stylesheets: [
     'https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Source+Code+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap',
@@ -234,6 +235,10 @@ const config = {
           activeBaseRegex: '/api/rpc',
         },
         { label: 'Blog', to: '/blog', activeBaseRegex: '/blog', position: 'right' },
+        {
+          type: 'html', position: 'right',
+          value: "<a href=\"#\" onclick=\"google.translate.TranslateElement({ pageLanguage: 'en'},'google_translate_element');\">Translate</a>",
+        },
       ],
     },
     footer: {
