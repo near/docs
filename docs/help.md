@@ -18,65 +18,70 @@ NEAR is dedicated to providing the best developer experience possible for buildi
 
 ---
 
-### Support Channels
+### 💬 Support Channels
 
-| Channel                | Description                                                                                                                                                    | Link                                    |
-| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
-| **Discord**            | Primary discussion and support forum. Weekly Q&A sessions: Thursdays at 11 AM UTC & 6 PM UTC, or [near.chat](https://near.chat) (redirects to the same place). | [Join](https://discord.gg/nearprotocol) |
-| **Telegram (General)** | General discussions for anyone interested in NEAR Protocol.                                                                                                    | [Join](https://t.me/cryptonear)         |
-| **X (Twitter)**        | Official Twitter account for NEAR Protocol.                                                                                                                    | [Visit](https://x.com/nearprotocol)     |
-| **Zulip**              | Persistent threaded discussions for long-term collaboration.                                                                                                   | [Join](https://near.zulipchat.com)      |
+If you’re new or unsure where to start, these are the main support channels to connect with the NEAR community. They are great entry points for general questions and discussions.
 
-#### Telegram Chats
+| Channel                 | Description                                                                                                                                       | Link                                    |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
+| **Telegram (Near Dev)** | NEAR Developers community chat                                                                                                                    | [Join](https://t.me/neardev)            |
+| **Discord**             | Primary discussion and support forum. Weekly Q&A sessions: Thursdays at 11 AM UTC & 6 PM UTC. Also accessible via [near.chat](https://near.chat). | [Join](https://discord.gg/nearprotocol) |
+| **X (Twitter)**         | Official Twitter account for NEAR Protocol.                                                                                                       | [Visit](https://x.com/nearprotocol)     |
+| **Zulip**               | Topic-based discussions for detailed conversations.                                                                                               | [Join](https://near.zulipchat.com)      |
+| **Developer Hub**       | Centralized developer resources for NEAR, including announcements, blog and discussions.                                                          | [Visit](https://neardevhub.org/)        |
+| **Telegram (General)**  | General discussions for anyone interested in NEAR Protocol.                                                                                       | [Join](https://t.me/cryptonear)         |
 
-##### Group 1: Telegram Folder (21 chats)
+### Telegram Chats
 
-| #   | Name                              | Description                                                                                                  | Link                                               | Members | Notes |
-| --- | --------------------------------- | ------------------------------------------------------------------------------------------------------------ | -------------------------------------------------- | ------- | ----- |
-| 1   | Near Dev                          | NEAR Developers community chat. Share your knowledge and live on the cutting edge of NEAR!                   | [Join](https://t.me/neardev)                       | 2350    |       |
-| 2   | NEAR Wallet Builder Group         | 📩 TG Group LInk: https://nearbuilders.com/tg-wallet 📝 Notes: https://nearbuilders.com/wallet-notes         | [Join](https://t.me/+8s315V2dlYFkMmUx)             | 351     |       |
-| 3   | NEAR DeFi Founders                | -                                                                                                            | [Join](https://t.me/+Lu68Q6V-T2AxNDkx)             | 125     |       |
-| 4   | NEAR Chain Abstraction Dev Group  | -                                                                                                            | [Join](https://t.me/chain_abstraction)             | 516     |       |
-| 5   | NEAR Validators                   | Please use this group for questions and discussions related to validation on NEAR                            | [Join](https://t.me/near_validators)               | 957     |       |
-| 6   | NEAR Tools Community Group        | -                                                                                                            | [Join](https://t.me/NEAR_Tools_Community_Group)    | 251     |       |
-| 7   | Aurora Dev                        | This is the official developer group for Aurora.                                                             | [Join](https://t.me/auroraisneardev)               | 650     |       |
-| 8   | Near Social (near.social)         | Near Social is a social data protocol built on top of NEAR Protocol Dev channel                              | [Join](https://t.me/NearSocialDev)                 | 402     |       |
-| 9   | Bitte Dev                         | Public questions about building on Bitte                                                                     | [Join](https://t.me/mintdev)                       | 465     |       |
-| 10  | NEAR Contract Standards Community | -                                                                                                            | [Join](https://t.me/nearnft)                       | 176     |       |
-| 11  | NEAR NFT Builder Group            | -                                                                                                            | [Join](https://t.me/+_odQLYGusEU0MzAx)             | 156     |       |
-| 12  | jutsu.ai - public                 | Web3 IDE & Copilot for Building and Deploying Decentralized Applications 😊                                  | [Join](https://t.me/tryjutsu)                      | 175     |       |
-| 13  | NEAR Docs Community Group         | -                                                                                                            | [Join](https://t.me/neardocscg)                    | 52      |       |
-| 14  | BOS Web Engine Testing            | -                                                                                                            | -                                                  | 82      |       |
-| 15  | NEAR Python Tooling Community     | Learn more about the technical direction of Python tooling for NEAR here: https://gov.near.org/t/near-python | [Join](https://t.me/nearpythontooling)             | 42      |       |
-| 16  | BOS VM Dev (near.social)          | Technical discussions for near.social. Off topic content will be removed.                                    | [Join](https://t.me/NearSocialDev)                 | 323     |       |
-| 17  | BOS Decentralized Frontends       | -                                                                                                            | [Join](https://t.me/NEARisBOS)                     | 439     |       |
-| 18  | NEAR DevHub                       | 📢 Official announcements channel for NEAR DevHub. Join @neardev group for discussions.                      | [Join](https://t.me/NEARDevHub)                    | 398     |       |
-| 19  | NEAR Indexer Builder Group        | Join the Telegram group here                                                                                 | [Join](https://t.me/+tZps5gkh17RmNTZh)             | 129     |       |
-| 20  | NEAR Data Guild                   | Projects involving NEAR data                                                                                 | [Join](https://t.me/NEARdata)                      | 125     |       |
-| 21  | NEAR Protocol Community Group     | -                                                                                                            | [Join](https://t.me/NEAR_Protocol_Community_Group) | 174     |       |
+#### Group 1: Telegram Folder (21 chats)
 
-##### Group 2: NearBuilders Only (17 chats)
+Discover 21 NEAR-related in this [Telegram groups folder](https://t.me/addlist/VWPcqJDOmXdkZTQ5), or explore and join individual chats below based on your interests.
 
-| #   | Name                          | Description                                                                                       | Link                                   | Members | Notes                                |
-| --- | ----------------------------- | ------------------------------------------------------------------------------------------------- | -------------------------------------- | ------- | ------------------------------------ |
-| 1   | NEAR AI Builder Group         | NEAR is AI. Invite AI Builders on NEAR HERE                                                       | [Join](https://t.me/+iN9e_WZntCE3YTU5) | 242     |                                      |
-| 2   | NEAR DAO BUILDER GROUP        | 📩 TG Group Link: [nearbuilders.com/tg-dao](https://nearbuilders.com/tg-dao)                      | [Join](https://t.me/+94DGFAazvdpiMDZh) | 151     |                                      |
-| 3   | NEAR Zero Knowledge Community | Community for individuals and organizations interested in developing a ZK ecosystem on NEAR       | [Join](https://t.me/NearZeroKnowledge) | -       |                                      |
-| 4   | ONBOARD DAO                   | Onboarding the next billion HUMANS to #Web3                                                       | [Join](https://t.me/+TYGncu1CaAc4YjAx) | 106     |                                      |
-| 5   | NEAR MOBILE WG                | Mobile developers and founders discussing standards and innovations for a mobile-first future     | [Join](https://t.me/+0eFWvcwl2ywxMzhh) | 32      |                                      |
-| 6   | GoodWorks - a Tech WG         | -                                                                                                 | [Join](https://t.me/+zm-lGZhkVcNjMjEx) | 260     |                                      |
-| 7   | NEAR x IBC (Cosmos)           | -                                                                                                 | [Join](https://t.me/+0NKv1RrSeY42Yzdh) | 60      |                                      |
-| 8   | NEAR SDK JS Group             | JavaScript SDK users and developers for NEAR (Note: Chat no longer active, info migrated to docs) | [Join](https://t.me/near_sdk_js)       | —       | No longer active                     |
-| 9   | NEAR Impact Collective 🌱     | Community for impactful and regenerative projects on NEAR                                         | [Join](https://t.me/+crolW0imGSQ4NjYx) | 273     |                                      |
-| 10  | Keypom Builders Group         | Group focused on Keypom-related initiatives, originally part of Flex-A-Tech NEAR Hackathon        | [Join](https://t.me/+OqI-cKxQU05lZDIx) | 237     |                                      |
-| 11  | NEAR Games Community          | -                                                                                                 | [Join](https://t.me/NearGamesChat)     | 582     |                                      |
-| 12  | Build DAO                     | A space for builders to connect, coordinate, and collaborate on multi-chain open web projects     | [Join](https://t.me/+bQmGfDqcAT9iYTcx) | 599     |                                      |
-| 13  | Creatives DAO Builder Group   | Builders creating open-source/public goods for the Creatives Community                            | [Join](https://t.me/+OG7gOkgjc6M3ZDAx) | 33      |                                      |
-| 14  | NEAR MULTITOKEN STANDARD      | -                                                                                                 | [Join](https://t.me/+-pduFDM84hFmMGU5) | 44      |                                      |
-| 15  | Bridging NFTs ⋈               | -                                                                                                 | [Join](https://t.me/+lCgwUHprzhQ2YmE5) | 19      |                                      |
-| 16  | Privacy on NEAR               | Discussions on privacy-focused tools and innovations                                              | [Join](https://t.me/+lf7vb2MAEgdjOGQx) | 59      | Chat desc info attached suspect link |
-| 17  | Near DevHub Hacks             | -                                                                                                 | [Join](https://t.me/neardevhubhacks)   | 67      |                                      |
+| #   | Topic                | Chat                              | Link                                               |
+| --- | -------------------- | --------------------------------- | -------------------------------------------------- |
+| 1   | General              | Near Dev                          | [Join](https://t.me/neardev)                       |
+| 2   |                      | NEAR Protocol Community Group     | [Join](https://t.me/NEAR_Protocol_Community_Group) |
+| 3   | Tools & Tech         | NEAR Tools Community Group        | [Join](https://t.me/NEAR_Tools_Community_Group)    |
+| 4   |                      | NEAR Python Tooling Community     | [Join](https://t.me/nearpythontooling)             |
+| 5   | Development          | Aurora Dev                        | [Join](https://t.me/auroraisneardev)               |
+| 6   |                      | Bitte Dev                         | [Join](https://t.me/mintdev)                       |
+| 7   |                      | NEAR Chain Abstraction Dev Group  | [Join](https://t.me/chain_abstraction)             |
+| 8   | Social Protocol      | Near Social (near.social)         | [Join](https://t.me/NearSocialDev)                 |
+| 9   |                      | BOS VM Dev (near.social)          | [Join](https://t.me/NearSocialDev)                 |
+| 10  | Frontend Development | BOS Decentralized Frontends       | [Join](https://t.me/NEARisBOS)                     |
+| 11  | Technical Resources  | NEAR Docs Community Group         | [Join](https://t.me/neardocscg)                    |
+| 12  |                      | BOS Web Engine Testing            | [Join](https://t.me/bos_web_testing)               |
+| 13  |                      | NEAR Validators                   | [Join](https://t.me/near_validators)               |
+| 14  | Finance & DeFi       | NEAR DeFi Founders                | [Join](https://t.me/+Lu68Q6V-T2AxNDkx)             |
+| 15  | Announcements        | NEAR DevHub                       | [Join](https://t.me/NEARDevHub)                    |
+| 16  | Indexing & Data      | NEAR Indexer Builder Group        | [Join](https://t.me/+tZps5gkh17RmNTZh)             |
+| 17  |                      | NEAR Data Guild                   | [Join](https://t.me/NEARdata)                      |
+| 18  | Wallets & Standards  | NEAR Wallet Builder Group         | [Join](https://t.me/+8s315V2dlYFkMmUx)             |
+| 19  |                      | NEAR Contract Standards Community | [Join](https://t.me/nearnft)                       |
+| 20  | NFTs & Creative Tech | NEAR NFT Builder Group            | [Join](https://t.me/+_odQLYGusEU0MzAx)             |
+| 21  |                      | Jutsu.ai - Public                 | [Join](https://t.me/tryjutsu)                      |
 
+#### Group 2: NearBuilders Only (15 chats)
+
+These community groups are part of the 31 chats from [nearbuilders.com](https://nearbuilders.com) and do not overlap with the previous group. They offer great collaboration opportunities. Verify external links to stay safe.
+
+| #   | Topic                | Chat                                | Link                                            |
+| --- | -------------------- | ----------------------------------- | ----------------------------------------------- |
+| 1   | General              | Near DevHub Hacks                   | [Join](https://t.me/neardevhubhacks)            |
+| 2   | AI & Advanced Topics | NEAR AI Builder Group               | [Join](https://t.me/+iN9e_WZntCE3YTU5)          |
+| 3   |                      | NEAR Zero Knowledge Community Group | [Join](https://t.me/NearZeroKnowledge)          |
+| 4   | DAO & Community      | NEAR DAO Builder Group              | [Join](https://t.me/+94DGFAazvdpiMDZh)          |
+| 5   |                      | Onboard DAO                         | [Join](https://t.me/+TYGncu1CaAc4YjAx)          |
+| 6   |                      | Build DAO                           | [Join](https://t.me/+bQmGfDqcAT9iYTcx)          |
+| 7   |                      | NEAR Impact Collective 🌱           | [Join](https://t.me/+crolW0imGSQ4NjYx)          |
+| 8   |                      | Creatives DAO Builder Group         | [Join](https://t.me/+OG7gOkgjc6M3ZDAx)          |
+| 9   | Tools & Tech         | NEAR Tools Community Group          | [Join](https://t.me/NEAR_Tools_Community_Group) |
+| 10  |                      | NEAR Python Tooling Community       | [Join](https://t.me/nearpythontooling)          |
+| 11  |                      | NEAR x IBC (Cosmos)                 | [Join](https://t.me/+0NKv1RrSeY42Yzdh)          |
+| 12  | Gaming & NFTs        | NEAR Games Community                | [Join](https://t.me/NearGamesChat)              |
+| 13  |                      | Bridging NFTs ⋈                     | [Join](https://t.me/+lCgwUHprzhQ2YmE5)          |
+| 14  |                      | NEAR Multitoken Standard Discussion | [Join](https://t.me/+-pduFDM84hFmMGU5)          |
+| 15  | Privacy              | Privacy on NEAR                     | [Join](https://t.me/+lf7vb2MAEgdjOGQx)          |
 
 ---
 
