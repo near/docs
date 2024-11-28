@@ -11,7 +11,7 @@ The NEAR API is a set of libraries that allow you to interact with the NEAR bloc
 
 The API is available in multiple languages, including:
 - JavaScript: [`near-api-js`](https://github.com/near/near-api-js)
-- Rust: [`near-jsonrpc-client`](https://github.com/near/near-jsonrpc-client-rs)
+- Rust: [`near-api-rs`](https://github.com/near/near-api-rs)
 - Python: [`py-near`](https://github.com/pvolnov/py-near)
 
 For example, you could use [`near-api-js`](https://github.com/near/near-api-js) to create web applications or backend services written in node.js servers.
@@ -44,7 +44,7 @@ To allow users to login into your web application using a wallet you will need t
   <TabItem value="rust" label="🦀 Rust">
 
   ```bash
-  cargo add near-jsonrpc-client
+  cargo add near-api
   ```
   </TabItem>
 </Tabs>
@@ -63,9 +63,9 @@ To allow users to login into your web application using a wallet you will need t
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
 
-  Each one of the valid JSON RPC methods are defined in the methods module.
+  The methods to interact with the NEAR API are available through the `prelude` module.
   ```rust
-  use near_jsonrpc_client::methods;
+  use near_api::prelude::*;
   ```
   </TabItem>
 </Tabs>
@@ -217,11 +217,96 @@ To allow users to login into your web application using a wallet you will need t
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
 
-  ```rust
-  use near_jsonrpc_client::JsonRpcClient;
+  Standard connections `mainnet` and `testnet` are available that come with standard configurations for each network.
 
-  let testnet_client = JsonRpcClient::connect("https://rpc.testnet.near.org");
+  ```rust
+  let network = NetworkConfig::testnet();
   ```
+  
+  You can make the connection mutable to change some details of the connection.
+
+  ```rust
+  let mut network = NetworkConfig::testnet();
+  network.rpc_url = "https://rpc.testnet.near.org".parse().unwrap();
+  ```
+
+  You can also create your own custom connection.
+
+  ```rust
+  let network = NetworkConfig {
+    network_name: "testnet".to_string(),
+    rpc_url: "https://rpc.testnet.near.org".parse().unwrap(),
+    rpc_api_key: None,
+    linkdrop_account_id: Some("testnet".parse().unwrap()),
+    near_social_db_contract_account_id: Some("v1.social08.testnet".parse().unwrap()),
+    faucet_url: Some("https://helper.nearprotocol.com/account".parse().unwrap()),
+    meta_transaction_relayer_url: Some("http://localhost:3030/relay".parse().unwrap()),
+    fastnear_url: None,
+    staking_pools_factory_account_id: Some("pool.f863973.m0".parse().unwrap()),
+  };
+  ```
+
+<hr class="subsection" />
+
+  #### Signer
+
+  If you're going to sign transactions, you need to create a `signer` object.
+
+  <Tabs>
+  <TabItem value="browser" label="Using Keystore" default>
+
+  This example uses the Keystore that is also used as the standard for saving keys with the NEAR CLI.
+
+  ```rust
+  use near_api::signer::keystore::KeystoreSigner;
+
+  let search_keystore_signer = KeystoreSigner::search_for_keys(my_account_id.clone(), &network)
+    .await
+    .unwrap();
+  let keystore_signer_search = Signer::new(search_keystore_signer).unwrap();
+  ```
+
+  </TabItem>
+  <TabItem value="file" label="Using a File">
+
+  Keys can be loaded from a file that contains a public and private key. This is an example of loading a key from a file that was saved using the legacy option using the NEAR CLI.
+
+  ```rust
+  use std::env;
+  use std::path::Path;
+
+  let my_account_id = "example-account.testnet";
+  let home_dir = env::var("HOME").unwrap();
+  let credentials_dir = Path::new(&home_dir).join(".near-credentials");
+  let file_path = credentials_dir.join(format!("testnet/{}.json", my_account_id));
+
+  let file_signer = Signer::new(Signer::access_keyfile(file_path).unwrap()).unwrap();
+  ```
+
+  </TabItem>
+  <TabItem value="dir" label="Using Seed Phrase">
+
+  ```rust
+  let seed_phrase =
+    "shoe three gate jelly whole tissue parrot robust census lens staff ship".to_string();
+  let seed_phrase_signer = Signer::new(Signer::seed_phrase(seed_phrase, None).unwrap()).unwrap();
+  ```
+
+  </TabItem>
+
+  <TabItem value="key" label="Using a Private Key String">
+
+  ```rust
+  use near_crypto::SecretKey;
+  use std::str::FromStr;
+
+  let private_key = SecretKey::from_str("ed25519:3bUTUXCPHPbAD5JDukzsWT6AaJ9iZA3FF9wLgYgRvzC7CDYMgmEExtxyGjnGATvmM3oggqUErvRkN9sjzNTD8yd7").unwrap();
+  let priv_key_signer = Signer::new(Signer::secret_key(private_key)).unwrap();
+  ```
+
+  </TabItem>
+  </Tabs>
+
   </TabItem>
 </Tabs>
 
@@ -275,12 +360,20 @@ This will return an Account object for you to interact with.
   const account = await nearConnection.account("example-account.testnet");
   ```
 
+  :::warning
+  In order to be able to use the account, its credentials must be stored in the [key store](#key-store)
+  :::
+
+  </TabItem>
+  <TabItem value="rust" label="🦀 Rust">
+
+  ```rust
+  let account_id: AccountId = "example-account.testnet".parse().unwrap();
+  let account = Account::new(account_id.clone(), network);
+  ```
+
   </TabItem>
 </Tabs>
-
-:::warning
-In order to be able to use the account, its credentials must be stored in the [key store](#key-store)
-:::
 
 <hr class="subsection" />
 
@@ -293,6 +386,18 @@ In order to be able to use the account, its credentials must be stored in the [k
   // gets account balance
   const account = await nearConnection.account("example-account.testnet");
   const accountBalance = await account.getAccountBalance();
+  ```
+
+  </TabItem>
+  <TabItem value="rust" label="🦀 Rust">
+
+  ```rust
+  let account_id: AccountId = "example-account.testnet".parse().unwrap();
+  let account_balance = Tokens::of(account_id.clone())
+    .near_balance()
+    .fetch_from(&network)
+    .await
+    .unwrap();
   ```
 
   </TabItem>
@@ -333,34 +438,10 @@ Get basic account information, such as amount of tokens the account has or the a
   <TabItem value="rust" label="🦀 Rust">
   
   ```rust
-  use near_jsonrpc_client::methods;
-  use near_jsonrpc_primitives::types::query::QueryResponseKind;
-  use near_primitives::types::{AccountId, BlockReference, Finality};
-  use near_primitives::views::QueryRequest;
+  let account_id: AccountId = "example-account.testnet".parse().unwrap();
+  let account = Account::new(my_account_id.clone(), network);
 
-  mod utils;
-
-  #[tokio::main]
-  async fn main() -> Result<(), Box<dyn std::error::Error>> {
-      env_logger::init();
-
-      let client = utils::select_network()?;
-
-      let account_id: AccountId = utils::input("Enter an Account ID to lookup: ")?.parse()?;
-
-      let request = methods::query::RpcQueryRequest {
-          block_reference: BlockReference::Finality(Finality::Final),
-          request: QueryRequest::ViewAccount { account_id },
-      };
-
-      let response = client.call(request).await?;
-
-      if let QueryResponseKind::ViewAccount(result) = response.kind {
-          println!("{:#?}", result);
-      }
-
-      Ok(())
-  }
+  let account_state = account.view().fetch_from(&network).await.unwrap();
   ```
   </TabItem>
 </Tabs>
@@ -394,284 +475,60 @@ Create a sub-account.
         contractId: "testnet",
         methodName: "create_account",
         args: {
-        new_account_id: "new-account.testnet",
-        new_public_key: "ed25519:2ASWccunZMBSygADWG2pXuHM6jWdnzLzWFU6r7wtaHYt",
+            new_account_id: "new-account.testnet",
+            new_public_key: "ed25519:2ASWccunZMBSygADWG2pXuHM6jWdnzLzWFU6r7wtaHYt",
         },
         gas: "300000000000000",
         attachedDeposit: utils.format.parseNearAmount(amount),
-        });
+    });
     ```
 
   </details>
 
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
+  You will need to create a signer object first.
+
+  This example creates the sub-account and saves the seed phrase of a generated key pair to a file.
 
   ```rust
-  //! Creates an account on the network.
-  //!
-  //! Creates either;
-  //! - a top-level mainnet / testnet account
-  //! - or a sub-account for any account on the network.
-  //!
-  //! top-level account example: `miraclx.near` creates `foobar.near`
-  //! sub-account example: `miraclx.near` creates `test.miraclx.near`
-  //!
-  //! This script is interactive.
-
-  use near_crypto::Signer;
-  use near_jsonrpc_client::methods::broadcast_tx_commit::RpcTransactionError;
-  use near_jsonrpc_client::{methods, JsonRpcClient};
-  use near_jsonrpc_primitives::types::query::QueryResponseKind;
-  use near_jsonrpc_primitives::types::transactions::TransactionInfo;
-  use near_primitives::hash::CryptoHash;
-  use near_primitives::transaction::{
-      Action, AddKeyAction, CreateAccountAction, FunctionCallAction, Transaction, TransactionV0,
-      TransferAction,
-  };
-  use near_primitives::types::{AccountId, BlockReference};
-  use near_primitives::views::{FinalExecutionStatus, TxExecutionStatus};
-
-  use serde_json::json;
-  use tokio::time;
-
-  mod utils;
-
-  async fn account_exists(
-      client: &JsonRpcClient,
-      account_id: &AccountId,
-  ) -> Result<bool, Box<dyn std::error::Error>> {
-      let access_key_query_response = client
-          .call(methods::query::RpcQueryRequest {
-              block_reference: BlockReference::latest(),
-              request: near_primitives::views::QueryRequest::ViewAccount {
-                  account_id: account_id.clone(),
-              },
-          })
-          .await;
-
-      match access_key_query_response {
-          Ok(_) => Ok(true),
-          Err(near_jsonrpc_client::errors::JsonRpcError::ServerError(
-              near_jsonrpc_client::errors::JsonRpcServerError::HandlerError(
-                  near_jsonrpc_primitives::types::query::RpcQueryError::UnknownAccount { .. },
-              ),
-          )) => Ok(false),
-          Err(res) => Err(res)?,
-      }
-  }
-
-  async fn get_current_nonce(
-      client: &JsonRpcClient,
-      account_id: &AccountId,
-      public_key: &near_crypto::PublicKey,
-  ) -> Result<Option<(CryptoHash, u64)>, Box<dyn std::error::Error>> {
-      let query_response = client
-          .call(methods::query::RpcQueryRequest {
-              block_reference: BlockReference::latest(),
-              request: near_primitives::views::QueryRequest::ViewAccessKey {
-                  account_id: account_id.clone(),
-                  public_key: public_key.clone(),
-              },
-          })
-          .await;
-
-      match query_response {
-          Ok(access_key_query_response) => match access_key_query_response.kind {
-              QueryResponseKind::AccessKey(access_key) => Ok(Some((
-                  access_key_query_response.block_hash,
-                  access_key.nonce,
-              ))),
-              _ => Err("failed to extract current nonce")?,
-          },
-          Err(near_jsonrpc_client::errors::JsonRpcError::ServerError(
-              near_jsonrpc_client::errors::JsonRpcServerError::HandlerError(
-                  near_jsonrpc_primitives::types::query::RpcQueryError::UnknownAccessKey { .. },
-              ),
-          )) => Ok(None),
-          Err(res) => Err(res)?,
-      }
-  }
-
-  #[tokio::main]
-  async fn main() -> Result<(), Box<dyn std::error::Error>> {
-      env_logger::init();
-
-      let client = utils::select_network()?;
-
-      let signer_account_id = loop {
-          let signer_account_id = utils::input("Enter the creators Account ID: ")?.parse()?;
-          if account_exists(&client, &signer_account_id).await? {
-              break signer_account_id;
-          }
-          println!("(i) This account doesn't exist, please reenter!");
-      };
-
-      let (signer, latest_hash, current_nonce) = loop {
-          let signer_secret_key = utils::input("Enter the creators's private key: ")?.parse()?;
-
-          let signer = near_crypto::InMemorySigner::from_secret_key(
-              signer_account_id.clone(),
-              signer_secret_key,
-          );
-
-          if let Some((latest_hash, current_nonce)) =
-              get_current_nonce(&client, &signer.account_id, &signer.public_key).await?
-          {
-              break (signer, latest_hash, current_nonce);
-          }
-          println!("(i) Invalid access key, please reenter!");
-      };
-
-      let new_account_id = loop {
-          let new_account_id = utils::input("What's the new Account ID: ")?.parse()?;
-          if !account_exists(&client, &new_account_id).await? {
-              break new_account_id;
-          }
-          println!("(i) This account already exists, please reenter!");
-      };
-
-      let initial_deposit = loop {
-          let deposit: f64 =
-              utils::input("How much do you want to fund this account with (in Ⓝ units)? ")?
-                  .parse()?;
-          if deposit >= 0.0 {
-              break ((deposit * 1_000_000.0) as u128) * 1_000_000_000_000_000_000_u128;
-          }
-          println!("(i) Enter a non-zero deposit value!");
-      };
-
-      let is_sub_account = new_account_id.is_sub_account_of(&signer.account_id);
-      let new_key_pair = near_crypto::SecretKey::from_random(near_crypto::KeyType::ED25519);
-
-      let (transaction, expected_output) = if is_sub_account {
-          (
-              TransactionV0 {
-                  signer_id: signer.account_id.clone(),
-                  public_key: signer.public_key.clone(),
-                  nonce: current_nonce + 1,
-                  receiver_id: new_account_id.clone(),
-                  block_hash: latest_hash,
-                  actions: vec![
-                      Action::CreateAccount(CreateAccountAction {}),
-                      Action::AddKey(Box::new(AddKeyAction {
-                          access_key: near_primitives::account::AccessKey {
-                              nonce: 0,
-                              permission: near_primitives::account::AccessKeyPermission::FullAccess,
-                          },
-                          public_key: new_key_pair.public_key(),
-                      })),
-                      Action::Transfer(TransferAction {
-                          deposit: initial_deposit,
-                      }),
-                  ],
-              },
-              vec![],
-          )
-      } else {
-          let contract_id = if client.server_addr().ends_with("testnet.near.org") {
-              "testnet".parse()?
-          } else if client.server_addr().ends_with("mainnet.near.org") {
-              "near".parse()?
-          } else {
-              Err("can only create non-sub accounts for mainnet / testnet\nconsider creating a sub-account instead")?
-          };
-          (
-              TransactionV0 {
-                  signer_id: signer.account_id.clone(),
-                  public_key: signer.public_key.clone(),
-                  nonce: current_nonce + 1,
-                  receiver_id: contract_id,
-                  block_hash: latest_hash,
-                  actions: vec![Action::FunctionCall(Box::new(FunctionCallAction {
-                      method_name: "create_account".to_string(),
-                      args: json!({
-                          "new_account_id": new_account_id,
-                          "new_public_key": new_key_pair.public_key(),
-                      })
-                      .to_string()
-                      .into_bytes(),
-                      gas: 300_000_000_000_000,
-                      deposit: initial_deposit,
-                  }))],
-              },
-              b"true".to_vec(),
-          )
-      };
-
-      println!("=============================================================");
-      println!("New Account ID: {}", new_account_id);
-      println!("    Secret Key: {}", new_key_pair);
-      println!("    Public Key: {}", new_key_pair.public_key());
-      println!("       Deposit: {}", initial_deposit);
-      println!("-------------------------------------------------------------");
-
-      let request = methods::broadcast_tx_async::RpcBroadcastTxAsyncRequest {
-          signed_transaction: Transaction::V0(transaction).sign(&Signer::InMemory(signer.clone())),
-      };
-
-      let sent_at = time::Instant::now();
-
-      let tx_hash = client.call(request).await?;
-
-      println!("       Tx Hash: {}", tx_hash);
-      println!("=============================================================");
-
-      loop {
-          let response = client
-              .call(methods::tx::RpcTransactionStatusRequest {
-                  transaction_info: TransactionInfo::TransactionId {
-                      tx_hash,
-                      sender_account_id: signer.account_id.clone(),
-                  },
-                  wait_until: TxExecutionStatus::Final,
-              })
-              .await;
-          let received_at = time::Instant::now();
-          let delta = (received_at - sent_at).as_secs();
-
-          if delta > 60 {
-              Err("time limit exceeded for the transaction to be recognized")?;
-          }
-
-          match response {
-              Ok(tx) => {
-                  // it's fine to unwrap because we asked for finalized tx
-                  let outcome = tx.final_execution_outcome.unwrap().into_outcome();
-                  match outcome.status {
-                      FinalExecutionStatus::Failure(err) => {
-                          println!("{:#?}", err);
-                          println!("(!) Creating the account failed, check above for full logs");
-                          break;
-                      }
-                      FinalExecutionStatus::SuccessValue(ref s) => {
-                          if s == &expected_output {
-                              println!("(i) Account successfully created after {}s", delta);
-                          } else {
-                              println!("{:#?}", outcome);
-                              println!("(!) Creating the account failed, check above for full logs");
-                          }
-                          break;
-                      }
-                      _ => {}
-                  }
-              }
-              Err(err) => match err.handler_error() {
-                  Some(
-                      RpcTransactionError::TimeoutError
-                      | RpcTransactionError::UnknownTransaction { .. },
-                  ) => {
-                      time::sleep(time::Duration::from_secs(2)).await;
-                      continue;
-                  }
-                  _ => Err(err)?,
-              },
-          }
-      }
-
-      Ok(())
-  }
+  let account_id: AccountId = "example-account.testnet".parse().unwrap();
+  let new_account_id: AccountId = "sub.example-account.testnet".parse().unwrap();
+  let res = Account::create_account()
+      .fund_myself(
+          new_account_id.clone(), // new account id
+          account_id.clone(), // account id funding the new account
+          NearToken::from_near(1), // Initial balance for the new account
+      )
+      .new_keypair() // Generates a new random key pair 
+      .save_generated_seed_to_file("./new_account_seed".into())
+      .unwrap() 
+      .with_signer(signer.clone())
+      .send_to(&network)
+      .await
+      .unwrap();
   ```
+
+  Creating a `.near` or `.testnet` account is the exact same process as creating a sub-account.
+
+  ```rust
+  let account_id: AccountId = "example-account.testnet".parse().unwrap();
+  let new_account_id: AccountId = "new_example-account.testnet".parse().unwrap();
+  let res = Account::create_account()
+      .fund_myself(
+          new_account_id.clone(), // new account id
+          account_id.clone(), // account id funding the new account
+          NearToken::from_near(1), // Initial balance for the new account
+      )
+      .new_keypair() // Generates a new random key pair 
+      .save_generated_seed_to_file("./new_account_seed".into())
+      .unwrap() 
+      .with_signer(signer.clone())
+      .send_to(&network)
+      .await
+      .unwrap();
+  ```
+
   </TabItem>
 </Tabs>
 
@@ -687,6 +544,18 @@ Create a sub-account.
   // transfers remaining account balance to the accountId passed as an argument
   const account = await nearConnection.account("example-account.testnet");
   await account.deleteAccount("beneficiary-account.testnet");
+  ```
+
+  </TabItem>
+  <TabItem value="rust" label="🦀 Rust">
+
+  ```rust
+  account
+    .delete_account_with_beneficiary(beneficiary_account_id.clone())
+    .with_signer(signer.clone())
+    .send_to(&network)
+    .await
+    .unwrap();
   ```
 
   </TabItem>
@@ -711,16 +580,30 @@ Transfer NEAR tokens between accounts. This returns an object with transaction a
   );
   ```
   </TabItem>
+  <TabItem value="rust" label="🦀 Rust">
+
+  ```rust
+  Tokens::of(sender_account_id.clone())
+    .send_to(receiver_account_id.clone())
+    .near(NearToken::from_near(1))
+    .with_signer(signer.clone())
+    .send_to(&network)
+    .await
+    .unwrap()
+    .assert_success();
+  ```
+
+  </TabItem>
 </Tabs>
 
 <hr class="subsection" />
 
 ### View Function
 
-View functions are read-only functions that don't change the state of the contract. We can call these functions without instantiating an account or a key store.
-
 <Tabs groupId="api">
+
   <TabItem value="js" label="🌐 JavaScript">
+    View functions are read-only functions that don't change the state of the contract. We can call these functions without instantiating an account or a key store.
 
   ```js
   import { providers } from 'near-api-js';
@@ -741,56 +624,20 @@ View functions are read-only functions that don't change the state of the contra
   ```
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
+  View functions are read-only functions that don't change the state of the contract. We can call these functions without a signer.
+
+  You need to specify what type the view function returns.
 
   ```rust
-  use near_jsonrpc_client::{methods, JsonRpcClient};
-  use near_jsonrpc_primitives::types::query::QueryResponseKind;
-  use near_primitives::types::{BlockReference, Finality, FunctionArgs};
-  use near_primitives::views::QueryRequest;
+  let res: Data<u32> = contract
+    .call_function("total_messages", ())
+    .unwrap()
+    .read_only()
+    .fetch_from(&network)
+    .await
+    .unwrap();
 
-  use serde::Deserialize;
-  use serde_json::{from_slice, json};
-
-  mod utils;
-
-  #[derive(Debug, Deserialize)]
-  pub struct AccountStatus {
-      pub rating: f32,
-      pub given: u64,
-      pub received: u64,
-  }
-
-  #[tokio::main]
-  async fn main() -> Result<(), Box<dyn std::error::Error>> {
-      env_logger::init();
-
-      let client = JsonRpcClient::connect("https://rpc.testnet.near.org");
-
-      let account_id = utils::input("Enter the account to view: ")?;
-
-      let request = methods::query::RpcQueryRequest {
-          block_reference: BlockReference::Finality(Finality::Final),
-          request: QueryRequest::CallFunction {
-              account_id: "nosedive.testnet".parse()?,
-              method_name: "status".to_string(),
-              args: FunctionArgs::from(
-                  json!({
-                      "account_id": account_id,
-                  })
-                  .to_string()
-                  .into_bytes(),
-              ),
-          },
-      };
-
-      let response = client.call(request).await?;
-
-      if let QueryResponseKind::CallResult(result) = response.kind {
-          println!("{:#?}", from_slice::<AccountStatus>(&result.result)?);
-      }
-
-      Ok(())
-  }
+  println!("{:?}", res.data);
   ```
   </TabItem>
 </Tabs>
@@ -801,6 +648,8 @@ View functions are read-only functions that don't change the state of the contra
 
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
+
+  A call function changes the contract's state and does require an account.
 
   ```js
   import { connect, transactions, keyStores } from "near-api-js";
@@ -821,113 +670,22 @@ View functions are read-only functions that don't change the state of the contra
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
 
+  A call function changes the contract's state and does require a signer.
   ```rust
-  use near_crypto::Signer;
-  use near_jsonrpc_client::{methods, JsonRpcClient};
-  use near_jsonrpc_primitives::types::query::QueryResponseKind;
-  use near_jsonrpc_primitives::types::transactions::{RpcTransactionError, TransactionInfo};
-  use near_primitives::transaction::{Action, FunctionCallAction, Transaction, TransactionV0};
-  use near_primitives::types::BlockReference;
-  use near_primitives::views::TxExecutionStatus;
+  let args = json!({
+    "text": "Hello, world!"
+  });
 
-  use serde_json::json;
-  use tokio::time;
-
-  mod utils;
-
-  #[tokio::main]
-  async fn main() -> Result<(), Box<dyn std::error::Error>> {
-      env_logger::init();
-
-      let client = JsonRpcClient::connect("https://rpc.testnet.near.org");
-
-      let signer_account_id = utils::input("Enter the signer Account ID: ")?.parse()?;
-      let signer_secret_key = utils::input("Enter the signer's private key: ")?.parse()?;
-
-      let signer = near_crypto::InMemorySigner::from_secret_key(signer_account_id, signer_secret_key);
-
-      let access_key_query_response = client
-          .call(methods::query::RpcQueryRequest {
-              block_reference: BlockReference::latest(),
-              request: near_primitives::views::QueryRequest::ViewAccessKey {
-                  account_id: signer.account_id.clone(),
-                  public_key: signer.public_key.clone(),
-              },
-          })
-          .await?;
-
-      let current_nonce = match access_key_query_response.kind {
-          QueryResponseKind::AccessKey(access_key) => access_key.nonce,
-          _ => Err("failed to extract current nonce")?,
-      };
-
-      let other_account = utils::input("Enter the account to be rated: ")?;
-      let rating = utils::input("Enter a rating: ")?.parse::<f32>()?;
-
-      let transaction = TransactionV0 {
-          signer_id: signer.account_id.clone(),
-          public_key: signer.public_key.clone(),
-          nonce: current_nonce + 1,
-          receiver_id: "nosedive.testnet".parse()?,
-          block_hash: access_key_query_response.block_hash,
-          actions: vec![Action::FunctionCall(Box::new(FunctionCallAction {
-              method_name: "rate".to_string(),
-              args: json!({
-                  "account_id": other_account,
-                  "rating": rating,
-              })
-              .to_string()
-              .into_bytes(),
-              gas: 100_000_000_000_000, // 100 TeraGas
-              deposit: 0,
-          }))],
-      };
-
-      let request = methods::broadcast_tx_async::RpcBroadcastTxAsyncRequest {
-          signed_transaction: Transaction::V0(transaction).sign(&Signer::InMemory(signer.clone())),
-      };
-
-      let sent_at = time::Instant::now();
-      let tx_hash = client.call(request).await?;
-
-      loop {
-          let response = client
-              .call(methods::tx::RpcTransactionStatusRequest {
-                  transaction_info: TransactionInfo::TransactionId {
-                      tx_hash,
-                      sender_account_id: signer.account_id.clone(),
-                  },
-                  wait_until: TxExecutionStatus::Executed,
-              })
-              .await;
-          let received_at = time::Instant::now();
-          let delta = (received_at - sent_at).as_secs();
-
-          if delta > 60 {
-              Err("time limit exceeded for the transaction to be recognized")?;
-          }
-
-          match response {
-              Err(err) => match err.handler_error() {
-                  Some(
-                      RpcTransactionError::TimeoutError
-                      | RpcTransactionError::UnknownTransaction { .. },
-                  ) => {
-                      time::sleep(time::Duration::from_secs(2)).await;
-                      continue;
-                  }
-                  _ => Err(err)?,
-              },
-              Ok(response) => {
-                  println!("response gotten after: {}s", delta);
-                  println!("response: {:#?}", response);
-                  break;
-              }
-          }
-      }
-
-      Ok(())
-  }
+  contract
+    .call_function("add_message", args)
+    .unwrap()
+    .transaction()
+    .deposit(NearToken::from_near(1))
+    .with_signer(my_account_id.clone(), signer.clone())
+    .send_to(&network)
+    .await
+    .unwrap()
+    .assert_success();
   ```
   </TabItem>
 </Tabs>
@@ -1058,6 +816,12 @@ You can deploy a contract from a compiled WASM file. This returns an object with
   </TabItem>
 </Tabs>
 
+<hr class="subsection" />
+
+### Signing Messages 
+
+
+
 ---
 
 ## Keys
@@ -1080,6 +844,30 @@ You can get and manage keys for an account.
   ```
 
   </TabItem>
+  <TabItem value="rust" label="🦀 Rust">
+
+  ```rust
+  use near_primitives::account::FunctionCallPermission;
+
+  let new_function_call_key = AccessKeyPermission::FunctionCall(FunctionCallPermission {
+    allowance: Some(250_000_000_000_000_000_000_000), // Allowance this key is allowed to call (optional)
+    receiver_id: "example-account.testnet".to_string(), // Contract this key is allowed to call 
+    method_names: vec!["example_method".to_string()], // Methods this key is allowed to call 
+  });
+
+  let (new_private_key, txn) = Account(account_id.clone())
+    .add_key(new_function_call_key)
+    .new_keypair()
+    .generate_secret_key() // Generates a new keypair via private key 
+    .unwrap();
+
+  println!("New private key: {:?}", new_private_key.to_string());
+  println!("New public key: {:?}", new_private_key.public_key().to_string());
+
+  txn.with_signer(signer.clone()).send_to(&network).await.unwrap(); // Sends the transaction to the network
+  ```
+
+  </TabItem>
 </Tabs>
 
 <hr class="subsection" />
@@ -1093,6 +881,24 @@ You can get and manage keys for an account.
   // takes public key as string for argument
   const account = await nearConnection.account("example-account.testnet");
   await account.addKey("8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc");
+  ```
+
+  </TabItem>
+  <TabItem value="rust" label="🦀 Rust">
+
+  ```rust
+  use near_primitives::account::AccessKeyPermission;
+
+  let (new_private_key, txn) = Account(account_id.clone())
+    .add_key(AccessKeyPermission::FullAccess)
+    .new_keypair()
+    .generate_secret_key() // Generates a new keypair via private key 
+    .unwrap();
+
+  println!("New private key: {:?}", new_private_key.to_string());
+  println!("New public key: {:?}", new_private_key.public_key().to_string());
+
+  txn.with_signer(signer.clone()).send_to(&network).await.unwrap();
   ```
 
   </TabItem>
@@ -1114,51 +920,8 @@ You can get and manage keys for an account.
   <TabItem value="rust" label="🦀 Rust">
   
   ```rust
-  use near_jsonrpc_client::methods;
-  use near_jsonrpc_primitives::types::query::QueryResponseKind;
-  use near_primitives::types::BlockReference;
-
-  mod utils;
-
-  fn indent(indentation: usize, s: String) -> String {
-      let mut lines = s.split_inclusive("\n");
-      let mut r = lines.next().unwrap().to_string();
-      for l in lines {
-          r.push_str(&" ".repeat(indentation - 3));
-          r.push_str("\x1b[38;5;244m>\x1b[0m ");
-          r.push_str(l);
-      }
-      r
-  }
-
-  #[tokio::main]
-  async fn main() -> Result<(), Box<dyn std::error::Error>> {
-      env_logger::init();
-
-      let client = utils::select_network()?;
-
-      let account_id = utils::input("Enter the Account ID whose keys we're listing: ")?.parse()?;
-
-      let access_key_query_response = client
-          .call(methods::query::RpcQueryRequest {
-              block_reference: BlockReference::latest(),
-              request: near_primitives::views::QueryRequest::ViewAccessKeyList { account_id },
-          })
-          .await?;
-
-      if let QueryResponseKind::AccessKeyList(response) = access_key_query_response.kind {
-          for access_key in response.keys {
-              println!("🗝 [{}]", access_key.public_key);
-              println!("     \u{21b3}      nonce: {}", access_key.access_key.nonce);
-              println!(
-                  "     \u{21b3} permission: {}",
-                  indent(20, format!("{:#?}", access_key.access_key.permission))
-              );
-          }
-      }
-
-      Ok(())
-  }
+  let account = Account(account_id.clone());
+  let keys = account.list_keys().fetch_from(&network).await.unwrap();
   ```
   </TabItem>
 </Tabs>
@@ -1173,6 +936,14 @@ You can get and manage keys for an account.
   ```js
   const account = await nearConnection.account("example-account.testnet");
   await account.deleteKey("8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc");
+  ```
+
+  </TabItem>
+  <TabItem value="rust" label="🦀 Rust">
+
+  ```rust
+  let my_account = Account(account_id.clone());
+  my_account.delete_key(new_private_key.public_key()).with_signer(signer.clone()).send_to(&network).await.unwrap();
   ```
 
   </TabItem>
