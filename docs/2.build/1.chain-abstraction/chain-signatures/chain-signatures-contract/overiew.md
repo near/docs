@@ -13,13 +13,13 @@ A library that helps us implement this is [omni-transaction-rs](https://github.c
 
 ---
 
-# Passing relevant information to the contract
+## Passing relevant information to the contract
 
 Transactions need some information that can only be fetched off chain such as the nonce and other information that is easiest to fetch off chain like the addresses. This information can be passed to the contract as arguments. Each chain creates transactions differently so the information that needs to be passed to the contract will be different for each chain.
 
 ---
 
-# Constructing a transaction
+## Constructing a transaction
 
 The library implements a transaction builder for each chain. 
 
@@ -38,7 +38,7 @@ The library implements a transaction builder for each chain.
 
 ---
 
-# Building the payload 
+## Building the payload 
 
 Once the transaction is built you next need to construct the payload that will be sent to the MPC contract.
 
@@ -57,7 +57,7 @@ Once the transaction is built you next need to construct the payload that will b
 ---
 
 
-# Calling the MPC contract 
+## Calling the MPC contract 
 
 Now we have the payload we can request it to be signed by the MPC contract using the `sign` method.
 
@@ -77,7 +77,7 @@ Now we have the payload we can request it to be signed by the MPC contract using
 
 ---
 
-# Reconstructing the signature
+##   Reconstructing the signature
 
 Note that this step is optional. You can decide to reconstruct the signature and add it to the transaction in the contract or the client, but an advantage of doing it in the contract is that you can return a fully signed transaction from the contract which can be straight away braodcasted to the network instead of having to store the transaction in the frontend. This also makes it much easier for indexers/relayers to get transactions and broadcast them.
 
@@ -114,13 +114,13 @@ Now the tranasction is converted back into is respective transaction structure t
 
 ---
 
-# Relaying the signed transaction
+## Relaying the signed transaction
 
 
 
 ---
 
-# Cookbook
+## Cookbook
 :::info Cookbook
 
 Further examples of building different transactions can be found in the [cookbook](https://github.com/Omni-rs/examples/tree/main).
