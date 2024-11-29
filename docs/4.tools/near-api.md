@@ -811,7 +811,12 @@ Transfer NEAR tokens between accounts. This returns an object with transaction a
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
 
+  You can send actions in a batch to a single receiver. If one action fails then the entire batch of actions will be reverted.
+
   ```rust
+  use near_primitives::transaction::Action;
+  use near_primitives::action::{FunctionCallAction, TransferAction};
+
   let function_call_action = Action::FunctionCall(Box::new(FunctionCallAction {
     method_name: "increment".to_string(),
     args: vec![],
