@@ -127,6 +127,7 @@ const sidebar = {
             "build/smart-contracts/anatomy/actions",
             "build/smart-contracts/anatomy/crosscontract",
             "build/smart-contracts/anatomy/yield-resume",
+            "build/smart-contracts/anatomy/gascalc",
             "build/smart-contracts/security/checklist",
             {
               "type": "html",
