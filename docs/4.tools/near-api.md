@@ -263,7 +263,7 @@ To allow users to login into your web application using a wallet you will need t
   let search_keystore_signer = KeystoreSigner::search_for_keys(my_account_id.clone(), &network)
     .await
     .unwrap();
-  let keystore_signer_search = Signer::new(search_keystore_signer).unwrap();
+  let signer = Signer::new(search_keystore_signer).unwrap();
   ```
 
   </TabItem>
@@ -275,12 +275,12 @@ To allow users to login into your web application using a wallet you will need t
   use std::env;
   use std::path::Path;
 
-  let my_account_id = "example-account.testnet";
+  let account_id = "example-account.testnet";
   let home_dir = env::var("HOME").unwrap();
   let credentials_dir = Path::new(&home_dir).join(".near-credentials");
-  let file_path = credentials_dir.join(format!("testnet/{}.json", my_account_id));
+  let file_path = credentials_dir.join(format!("testnet/{}.json", account_id));
 
-  let file_signer = Signer::new(Signer::access_keyfile(file_path).unwrap()).unwrap();
+  let signer = Signer::new(Signer::access_keyfile(file_path).unwrap()).unwrap();
   ```
 
   </TabItem>
@@ -289,7 +289,7 @@ To allow users to login into your web application using a wallet you will need t
   ```rust
   let seed_phrase =
     "shoe three gate jelly whole tissue parrot robust census lens staff ship".to_string();
-  let seed_phrase_signer = Signer::new(Signer::seed_phrase(seed_phrase, None).unwrap()).unwrap();
+  let signer = Signer::new(Signer::seed_phrase(seed_phrase, None).unwrap()).unwrap();
   ```
 
   </TabItem>
@@ -301,7 +301,7 @@ To allow users to login into your web application using a wallet you will need t
   use std::str::FromStr;
 
   let private_key = SecretKey::from_str("ed25519:3bUTUXCPHPbAD5JDukzsWT6AaJ9iZA3FF9wLgYgRvzC7CDYMgmEExtxyGjnGATvmM3oggqUErvRkN9sjzNTD8yd7").unwrap();
-  let priv_key_signer = Signer::new(Signer::secret_key(private_key)).unwrap();
+  let signer = Signer::new(Signer::secret_key(private_key)).unwrap();
   ```
 
   </TabItem>
@@ -369,7 +369,7 @@ This will return an Account object for you to interact with.
 
   ```rust
   let account_id: AccountId = "example-account.testnet".parse().unwrap();
-  let account = Account::new(account_id.clone(), network);
+  let account = Account(account_id.clone());
   ```
 
   </TabItem>
@@ -439,7 +439,7 @@ Get basic account information, such as amount of tokens the account has or the a
   
   ```rust
   let account_id: AccountId = "example-account.testnet".parse().unwrap();
-  let account = Account::new(my_account_id.clone(), network);
+  let account = Account(my_account_id.clone());
 
   let account_state = account.view().fetch_from(&network).await.unwrap();
   ```
@@ -448,12 +448,60 @@ Get basic account information, such as amount of tokens the account has or the a
 
 <hr class="subsection" />
 
-### Create Sub-Account {#create-account}
-
-Create a sub-account.
+### Create an Account {#create-account}
 
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
+
+  In order to create .near or .testnet accounts, you need to make a function call to the top-level-domain (i.e. `near` or `testnet`),  calling `create_account`:
+
+  ```js
+  return await creatorAccount.functionCall({
+    contractId: "testnet",
+    methodName: "create_account",
+    args: {
+      new_account_id: "new-account.testnet",
+      new_public_key: "ed25519:2ASWccunZMBSygADWG2pXuHM6jWdnzLzWFU6r7wtaHYt",
+    },
+    gas: "300000000000000",
+    attachedDeposit: utils.format.parseNearAmount(amount),
+  });
+  ```
+
+  </TabItem>
+  <TabItem value="rust" label="🦀 Rust">
+
+  In this example when we create the account we generate a seed phrase for the new account and save it to a file.
+
+  ```rust
+  let account_id: AccountId = "example-account.testnet".parse().unwrap();
+  let new_account_id: AccountId = "new_example-account.testnet".parse().unwrap();
+  let res = Account::create_account()
+    .fund_myself(
+      new_account_id.clone(), // new account id
+      account_id.clone(), // account id funding the new account
+      NearToken::from_near(1), // Initial balance for the new account
+    )
+    .new_keypair() // Generates a new random key pair 
+    .save_generated_seed_to_file("./new_account_seed".into())
+    .unwrap() 
+    .with_signer(signer.clone())
+    .send_to(&network)
+    .await
+    .unwrap();
+  ```
+
+  </TabItem>
+</Tabs>
+
+<hr class="subsection" />
+
+### Create a Sub-Account {#create-sub-account}
+
+<Tabs groupId="api">
+  <TabItem value="js" label="🌐 JavaScript">
+
+  For creating a sub-account there is a specific method that is used.
 
   ```js
   // creates a sub-account using funds from the account used to create it.
@@ -465,68 +513,27 @@ Create a sub-account.
   );
   ```
 
-  <details>
-    <summary> Creating .near or .testnet accounts </summary>
-
-    In order to create .near or .testnet accounts, you need to make a function call to the top-level-domain (i.e. `near` or `testnet`),  calling `create_account`:
-
-    ```js
-    return await creatorAccount.functionCall({
-        contractId: "testnet",
-        methodName: "create_account",
-        args: {
-            new_account_id: "new-account.testnet",
-            new_public_key: "ed25519:2ASWccunZMBSygADWG2pXuHM6jWdnzLzWFU6r7wtaHYt",
-        },
-        gas: "300000000000000",
-        attachedDeposit: utils.format.parseNearAmount(amount),
-    });
-    ```
-
-  </details>
-
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
-  You will need to create a signer object first.
 
-  This example creates the sub-account and saves the seed phrase of a generated key pair to a file.
+  The process for creating a sub-account is the same as creating a new account, but with an account id that is a sub-account of the parent account.
 
   ```rust
   let account_id: AccountId = "example-account.testnet".parse().unwrap();
   let new_account_id: AccountId = "sub.example-account.testnet".parse().unwrap();
   let res = Account::create_account()
-      .fund_myself(
-          new_account_id.clone(), // new account id
-          account_id.clone(), // account id funding the new account
-          NearToken::from_near(1), // Initial balance for the new account
-      )
-      .new_keypair() // Generates a new random key pair 
-      .save_generated_seed_to_file("./new_account_seed".into())
-      .unwrap() 
-      .with_signer(signer.clone())
-      .send_to(&network)
-      .await
-      .unwrap();
-  ```
-
-  Creating a `.near` or `.testnet` account is the exact same process as creating a sub-account.
-
-  ```rust
-  let account_id: AccountId = "example-account.testnet".parse().unwrap();
-  let new_account_id: AccountId = "new_example-account.testnet".parse().unwrap();
-  let res = Account::create_account()
-      .fund_myself(
-          new_account_id.clone(), // new account id
-          account_id.clone(), // account id funding the new account
-          NearToken::from_near(1), // Initial balance for the new account
-      )
-      .new_keypair() // Generates a new random key pair 
-      .save_generated_seed_to_file("./new_account_seed".into())
-      .unwrap() 
-      .with_signer(signer.clone())
-      .send_to(&network)
-      .await
-      .unwrap();
+    .fund_myself(
+      new_account_id.clone(), // new account id
+      account_id.clone(), // account id funding the new account
+      NearToken::from_near(1), // Initial balance for the new account
+    )
+    .new_keypair() // Generates a new random key pair 
+    .save_generated_seed_to_file("./new_account_seed".into())
+    .unwrap() 
+    .with_signer(signer.clone())
+    .send_to(&network)
+    .await
+    .unwrap();
   ```
 
   </TabItem>
@@ -629,6 +636,9 @@ Transfer NEAR tokens between accounts. This returns an object with transaction a
   You need to specify what type the view function returns.
 
   ```rust
+  let contract_id: AccountId = "example-contract.testnet".parse().unwrap();
+  let contract = Contract(contract_id.clone());
+
   let res: Data<u32> = contract
     .call_function("total_messages", ())
     .unwrap()
@@ -672,6 +682,9 @@ Transfer NEAR tokens between accounts. This returns an object with transaction a
 
   A call function changes the contract's state and does require a signer.
   ```rust
+  let contract_id: AccountId = "example-contract.testnet".parse().unwrap();
+  let contract = Contract(contract_id.clone());
+
   let args = json!({
     "text": "Hello, world!"
   });
@@ -692,12 +705,12 @@ Transfer NEAR tokens between accounts. This returns an object with transaction a
 
 <hr class="subsection" />
 
-### Batch Transactions
+### Batch Actions
 
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
   
-  You may batch send transactions by using the `signAndSendTransaction({})` method from `account`. This method takes an array of transaction actions, and if one fails, the entire operation will fail. Here's a simple example:
+  You may batch send actions by using the `signAndSendTransaction({})` method from `account`. This method takes an array of transaction actions, and if one fails, the entire operation will fail. Here's a simple example:
 
   ```js
   const { connect, transactions, keyStores } = require("near-api-js");
@@ -718,9 +731,9 @@ Transfer NEAR tokens between accounts. This returns an object with transaction a
     nodeUrl: "https://rpc.testnet.near.org",
   };
 
-  sendTransactions();
+  sendBatchActions();
 
-  async function sendTransactions() {
+  async function sendBatchActions() {
     const near = await connect({ ...config, keyStore });
     const account = await near.account(CONTRACT_NAME);
     const args = { some_field: 1, another_field: "hello" };
@@ -796,6 +809,29 @@ Transfer NEAR tokens between accounts. This returns an object with transaction a
 
   You may also find an example of batch transactions in the [Cookbook](/tools/near-api-js/cookbook).
   </TabItem>
+  <TabItem value="rust" label="🦀 Rust">
+
+  ```rust
+  let function_call_action = Action::FunctionCall(Box::new(FunctionCallAction {
+    method_name: "increment".to_string(),
+    args: vec![],
+    gas: 30_000_000_000_000,
+    deposit: 0,
+  })); // Create a function call action
+  let transfer_action = Action::Transfer(TransferAction {
+    deposit: 1_000_000_000_000_000_000_000_000,
+  }); // Create a transfer action
+  let actions = vec![function_call_action, transfer_action];
+
+  Transaction::construct(account_id.clone(), receiver_id.clone())
+    .add_actions(actions)
+    .with_signer(signer)
+    .send_to(&network)
+    .await
+    .unwrap()
+    .assert_success();
+  ```
+  </TabItem>
 </Tabs>
 
 <hr class="subsection" />
@@ -814,13 +850,25 @@ You can deploy a contract from a compiled WASM file. This returns an object with
   );
   ```
   </TabItem>
+  <TabItem value="rust" label="🦀 Rust">
+
+  Note that the `signer` here needs to be a signer for the same `account_id` as the one used to construct the `Contract` object.
+
+  ```rust
+  let new_contract_id: AccountId = "new-contract.testnet".parse().unwrap();
+  let contract = Contract(new_contract_id.clone());
+
+  new_contract    
+    .deploy(include_bytes!("../contracts/contract.wasm").to_vec())
+    .without_init_call() // Can also be .with_init_call()
+    .with_signer(signer)
+    .send_to(&network)
+    .await
+    .unwrap()
+    .assert_success();
+  ```
+  </TabItem>
 </Tabs>
-
-<hr class="subsection" />
-
-### Signing Messages 
-
-
 
 ---
 
@@ -942,8 +990,8 @@ You can get and manage keys for an account.
   <TabItem value="rust" label="🦀 Rust">
 
   ```rust
-  let my_account = Account(account_id.clone());
-  my_account.delete_key(new_private_key.public_key()).with_signer(signer.clone()).send_to(&network).await.unwrap();
+  let account = Account(account_id.clone());
+  account.delete_key(new_private_key.public_key()).with_signer(signer.clone()).send_to(&network).await.unwrap();
   ```
 
   </TabItem>
