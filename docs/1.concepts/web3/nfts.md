@@ -40,7 +40,7 @@ A keen reader may notice an additional connection between the Server and RPC Nod
 - Client performs an action on a smart contract, which involves server-owned data. Since the smart contract can’t talk to the server directly to verify it, we should use a different way to verify the authenticity of the data. In blockchain terminology, such a server is called an [Oracle](https://en.wikipedia.org/wiki/Blockchain_oracle).
 We’ll explore how to implement both of these approaches later.
 
-By now, we've reached the point where the type of our client begins to matter. Specifically, problems arise from the dApps payment model - user’s pay for the blockchain infrastructure using gas, so money goes directly to infrastructure providers. Also, users make payments directly on the blockchain, without using any intermediaries, like banks or payment services. This approach is at odds with mobile app stores (Google Play Store and Apple App Store) - they don’t allow any payments on their respective mobile platforms without their cut. Although some shifts in policy are starting to happen (e.g. [Apple vs Epic Games duel](https://en.wikipedia.org/wiki/Epic_Games_v._Apple)), at the time of this writing getting blockchain-enabled applications into the stores will probably get vetoed by reviewers. There are some ways to bypass these limitations, e.g. by not using Play Store on Android, but all of these ways are either sub-par in terms of usability or involve some risk of getting banned by stores. That’s why for mobile applications an alternative approach is needed. 
+By now, we've reached the point where the type of our client begins to matter. Specifically, problems arise from the dApps payment model - user’s pay for the blockchain infrastructure using gas, so money goes directly to infrastructure providers. Also, users make payments directly on the blockchain, without using any intermediaries, like banks or payment services. This approach is at odds with mobile app stores (Google Play Store and Apple App Store) - they don’t allow any payments on their respective mobile platforms without their cut. Although some shifts in policy are starting to happen (e.g. [Apple vs Epic Games duel](https://en.wikipedia.org/wiki/Epic_Games_v._Apple)), at the time of this writing getting blockchain-enabled applications into the stores will probably get vetoed by reviewers. There are some ways to bypass these limitations, e.g. by not using Play Store on Android, but all of these ways are either sub-par in terms of usability or involve some risk of getting banned by stores. That’s why for mobile applications an alternative approach is needed.
 
 Sometimes, to move forward we need to take a step back. In our case, to solve a problem with mobile clients we can return to our initial concept of having two clients - one for blockchain integration, and another one for Web 2 server. Blockchain client can be a usual web application, which isn’t subject to any constraints from stores. It can also serve as a connection point between blockchain and our existing application.
 
@@ -65,15 +65,15 @@ By now, every building-block is in place and we can start exploring how to imple
 In order to implement a fully functional application using a hybrid Web 2 - Web 3 architecture, a lot of technological challenges have to be addressed, like authentication and authorization, seamless NFTs usage in client and server, and proper NFT storage model. In the following sections we’ll take a closer look at this and describe common patterns and approaches.
 
 
-### Authentication and Authorization 
+### Authentication and Authorization
 
 Since our digital assets are represented as NFTs on blockchain, in order to use them in our Web 2 application, a server needs a way to authorize their usage. The basic idea is pretty simple - it can just read data from blockchain by calling a smart contract method and check an owner’s account id. For such flow, we have 3 actors:
 
 
 
-* Client that wants to use some digital asset (NFT). 
+* Client that wants to use some digital asset (NFT).
 * Smart Contract for NFTs. Should be implemented according to [NEAR NFT standards](https://nomicon.io/Standards/NonFungibleToken/).
-* Server that verifies ownership of NFT and uses it in its internal logic. 
+* Server that verifies ownership of NFT and uses it in its internal logic.
 
 A general flow looks like this:
 
@@ -87,7 +87,7 @@ A general flow looks like this:
 
 However, such an authorization process cannot be performed without authentication, so the server also needs a way to authenticate a user.
 
-Recall that the user's identity on a blockchain is represented by a key pair. However, since in NEAR a user may have multiple key pairs and an account is a separate entity, the authentication procedure is a bit more complicated. 
+Recall that the user's identity on a blockchain is represented by a key pair. However, since in NEAR a user may have multiple key pairs and an account is a separate entity, the authentication procedure is a bit more complicated.
 
 To authenticate our requests, we can use public-key cryptography - a client can sign a request using a user’s private key, and then a server can verify the signature and key ownership. A typical request with authentication may look like this:
 
@@ -239,7 +239,7 @@ First 2 approaches provide good decentralization, but make NFT harder to work wi
 
 
 
-1. On-chain storage: 
+1. On-chain storage:
     * Server can read data from the blockchain by making an API call. Server can’t directly modify data, it should make a smart contract call instead (by issuing a transaction).
     * Smart contract can directly read/modify NFT data.
     * Clients can read all data directly from the blockchain.
@@ -265,7 +265,7 @@ Depending on a particular use case, any approach, or combination of them, can be
 </div>
 
 
-In this approach the server needs to read data from the smart contract, and, optionally, from an off-chain storage (like IPFS or Database). 
+In this approach the server needs to read data from the smart contract, and, optionally, from an off-chain storage (like IPFS or Database).
 
 This will work well for simple use cases, but everything becomes more complicated if we need to have some dynamic data associated with NFTs. E.g we may want to have experience points associated with our game character. Such data can be stored either on-chain or in-application (off-chain storage is also possible, but it’s more involved, so we won’t discuss it here).
 
@@ -276,7 +276,7 @@ In case of in-application storage, data can be modified by a server without any 
 * In order to read this data, clients should make an API call to the server. This adds a centralized point for our NFT, and may not be suitable for all applications.
 * If a smart contract requires this data, a server should serve as a [Blockchain Oracle](https://en.wikipedia.org/wiki/Blockchain_oracle), which complicates things.
 
-If we want our server to serve as an oracle for our smart contract, the easiest way is to cryptographically sign server’s data and verify it on the contract’s side (server’s public key that was used for signing should be stored in a contract in this case). 
+If we want our server to serve as an oracle for our smart contract, the easiest way is to cryptographically sign server’s data and verify it on the contract’s side (server’s public key that was used for signing should be stored in a contract in this case).
 
 In order to prevent replay attacks, signed data should include a timestamp, which should also be verified. However, there’s one trick to this - smart contracts can’t access current time, since it would make them non-deterministic. Instead, transaction signature time can be used - it can be accessed using `env::block_timestamp()` function.
 
@@ -296,7 +296,7 @@ In order to avoid all these complications, we can instead store dynamic data on-
 </div>
 
 
-Such an approach has one drawback - in order to call a smart contract’s method, a transaction should be created by the server, and in order to create a transaction it must be signed using an account’s key. That’s why a separate NEAR account should be created to be used by the server. Actions on the smart contract can be configured to authorize only this account, so regular users will be disallowed from modifying such data. 
+Such an approach has one drawback - in order to call a smart contract’s method, a transaction should be created by the server, and in order to create a transaction it must be signed using an account’s key. That’s why a separate NEAR account should be created to be used by the server. Actions on the smart contract can be configured to authorize only this account, so regular users will be disallowed from modifying such data.
 
 Yet another option is to store data on the server-side, but a smart contract can authorize only a server account for calls that rely on this data. As with the previous scenario, the server must have its own NEAR account.
 
@@ -355,7 +355,7 @@ pub fn nft_mint(
 ```
 
 
-This approach is quite simple, but everything becomes a bit complicated if we want to provide some on-demand minting functionality to avoid paying upfront costs. For example, we may want to create a lootbox with a set of predefined items appearing with some probability. 
+This approach is quite simple, but everything becomes a bit complicated if we want to provide some on-demand minting functionality to avoid paying upfront costs. For example, we may want to create a lootbox with a set of predefined items appearing with some probability.
 
 One approach is to handle this logic on a server side, in this case the server will call `nft_mint` function with computed parameters. However, in this case developers will have to pay the cost of minting. If we want to avoid this, loot box logic can be moved into the smart contract itself. If users want to open a loot box, he can call a smart contract function and pay for this action (e.g. by using NEAR or Fungible Tokens). Developers would only need to pay for a lootbox configuration costs, like possible items and their probabilities.
 
@@ -385,17 +385,17 @@ In this way, users can remain unaware about the intricacies of blockchain until 
 
 
 
-* Users should trust our application to manage their accounts. 
+* Users should trust our application to manage their accounts.
 * Accounts creation is not free, so unless developers want to pay for it, funds should be transferred from a user to cover this cost. Traditional payment methods can be used, like PayPal or Apple/Google Pay. However, such an approach should be used with care for mobile applications due to app stores policies. Alternatively, NEAR Implicit Accounts can be used to avoid paying for account creation.
 * Unless we want to leave a custodial wallet as the only supported wallet type, we need to support both types of wallets (custodial and non-custodial) in our application. This will increase implementations complexity, since we need to support 2 transaction types:
     * Server-signed transactions in case of custodial wallet.
     * Client-signed transactions in case of non-custodial wallet.
 
-As we mentioned above, [Implicit Accounts](../protocol/account-id.md#implicit-accounts-implicit-accounts) can be used to avoid paying account creation costs. This is especially useful for custodial wallets, since it allows us to create a NEAR Account free of charge. Basically, they work like an Ethereum/Bitcoin-style account by using a public key as an account id, and later can be converted to a full NEAR account. However, they have drawbacks as well. First of all, human-readable account names cannot be used. Also, if we want to convert it to a proper NEAR account, which can support Functional Call keys, the account creation fee still has to be paid.
+As we mentioned above, [Implicit Accounts](/concepts/protocol/account-id#implicit-address) can be used to avoid paying account creation costs. This is especially useful for custodial wallets, since it allows us to create a NEAR Account free of charge. Basically, they work like an Ethereum/Bitcoin-style account by using a public key as an account id, and later can be converted to a full NEAR account. However, they have drawbacks as well. First of all, human-readable account names cannot be used. Also, if we want to convert it to a proper NEAR account, which can support Functional Call keys, the account creation fee still has to be paid.
 
 While being very powerful, custodial accounts are quite complex and tricky to implement. An alternative approach to ease users onboarding is to simplify creation of a wallet itself. In NEAR, we can do this using [NEAR Drops](https://near.org/blog/send-near-to-anyone-with-near-drops/). It allows us to generate a link that guides users through a quick wallet creation process. However, the same problem as for the custodial accounts applies - creation of an account is not free. That’s why, such a link has NEAR tokens attached to it to cover account creation cost and to serve as an initial balance for a newly created wallet. And as with custodial accounts, funds should be transferred from a user to cover this cost using traditional payment channels.
 
-Another option to simplify onboarding is usage of the [Prepaid Gas](../protocol/gas.md#what-about-prepaid-gas-what-about-prepaid-gas) concept. For example, we can issue a Functional Call key that allows users to interact with blockchain without having an account created. In this case funds will be drawn from the developer's account. This can be used for demo purposes, or to allow users without a NEAR account to perform some smart contract actions.
+Another option to simplify onboarding is usage of the `Prepaid Gas` concept. For example, we can issue a Functional Call key that allows users to interact with blockchain without having an account created. In this case funds will be drawn from the developer's account. This can be used for demo purposes, or to allow users without a NEAR account to perform some smart contract actions.
 
 
 ## NFT Marketplace
@@ -423,7 +423,7 @@ General flow of a simple marketplace integration can look like this:
 3. Another user wants to buy the NFT on sale, so he issues a call to the marketplace contract offering to buy it. An exact call signature for such action is not standardized and depends on marketplace implementation.
 4. If an offer to buy a NFT is valid, Marketplace issues an [nft_transfer_payout](https://nomicon.io/Standards/NonFungibleToken/Payout) call to transfer the NFT and return payout information. This information is used by the Marketplace to distribute profits from the sale between recipients. In the simplest case, all profits go to a seller.
 
-Such flow looks relatively simple, but a few important details are missing. 
+Such flow looks relatively simple, but a few important details are missing.
 
 First of all, in order to create a sale, storage needs to be paid for. Usually, the seller is the one who needs to pay for it, but other models are possible - e.g. marketplace or application developers could cover the cost. If we want users to pay for a sale, an approach with storage reservation can be used:
 
@@ -432,7 +432,7 @@ First of all, in order to create a sale, storage needs to be paid for. Usually, 
 * Before approving NFT for sale, a user should reserve storage on the Marketplace contract to cover sale storage requirements.
 * After the NFT is bought or delisted, the user can withdraw storage reservation (remember, that in NEAR storage staking model is used, so data can be deleted and locked tokens refunded).
 
-While this model is relatively straightforward, it’s not ideal from the UX perspective - users must make a separate action to reserve storage if they want to sell their NFTs. To improve this, we can combine `nft_approve` call with storage reservation, and automatically refund back the storage cost after the sale is removed. 
+While this model is relatively straightforward, it’s not ideal from the UX perspective - users must make a separate action to reserve storage if they want to sell their NFTs. To improve this, we can combine `nft_approve` call with storage reservation, and automatically refund back the storage cost after the sale is removed.
 
 
 
@@ -469,7 +469,7 @@ Now, let’s explore our choice of libraries, frameworks and third-party solutio
 
 #### Client & Server
 
-First of all, how can we interact with blockchain from our clients? 
+First of all, how can we interact with blockchain from our clients?
 
 If we need read-level access only, we can simply use the [REST API](https://docs.near.org/api/rpc/setup), so it can be integrated into any language and technology without any problems. But everything becomes more complicated if we need to post transactions from a client. Remember, that transaction should be signed with a private key which is stored in a wallet:
 
@@ -488,7 +488,7 @@ A [JavaScript API](/tools/near-api-js/quick-reference) exists to cover all of th
 * [Unity](https://github.com/near/near-api-unity)
 
 
-Same SDKs and libraries can be used for servers. The only difference is that a server cannot interact with a Wallet, so it must have access to a Full Access key, which should be stored and accessed in a secure way. 
+Same SDKs and libraries can be used for servers. The only difference is that a server cannot interact with a Wallet, so it must have access to a Full Access key, which should be stored and accessed in a secure way.
 
 Also, another solution is available if a server uses a technology that doesn’t have NEAR SDK available for - we can create a separate (micro)service using the Node.js, which would handle all blockchain interactions:
 
@@ -503,7 +503,7 @@ An example of such a proxy server [can be found here](https://github.com/near-ex
 
 #### Contracts
 
-As we discovered in a previous section, for our application we need two smart contracts: for NFT and for Marketplace. There are two options on how to get them - use in-house implementation or some third-party/SAAS solution. Both options are viable and have different pros/cons. 
+As we discovered in a previous section, for our application we need two smart contracts: for NFT and for Marketplace. There are two options on how to get them - use in-house implementation or some third-party/SAAS solution. Both options are viable and have different pros/cons.
 
 If we want to create our own contract, we are fully in control and can implement anything we want. An obvious drawback, of course, is that it will take time and money to build it. Third-party solutions, on the other hand, are limited in their functionality and often cannot be easily extended. Also, they usually have some upfront costs and/or usage fees.
 
@@ -514,7 +514,7 @@ Implementing an own Marketplace contract is more involved since there is no stan
 
 
 * [Basic marketplace example](../../3.tutorials/nfts/8-marketplace.md)
-* [Paras ](https://paras.id/)marketplace contract - [source](https://github.com/ParasHQ/paras-marketplace-contract/tree/master/paras-marketplace-contract/src). 
+* [Paras ](https://paras.id/)marketplace contract - [source](https://github.com/ParasHQ/paras-marketplace-contract/tree/master/paras-marketplace-contract/src).
 
 As for third-party solutions, the most complete one is [Mintbase](https://www.mintbase.io/), which provides a full suite of components for NFTs integration - including contracts, indexer, API and a web client:
 
@@ -545,10 +545,10 @@ Previously, we’ve discussed that storage on the blockchain is not cheap, so in
 
 
 
-* [IPFS ](https://ipfs.io/)- one of the first decentralized storage solutions, which is widely used in the blockchain world. However, in order to make sure that data is preserved on the network, an IPFS node(s) should be maintained. 
-* [Arweawe](https://www.arweave.org/) - blockchain-based decentralized storage.  
+* [IPFS ](https://ipfs.io/)- one of the first decentralized storage solutions, which is widely used in the blockchain world. However, in order to make sure that data is preserved on the network, an IPFS node(s) should be maintained.
+* [Arweawe](https://www.arweave.org/) - blockchain-based decentralized storage.
 * [Filecoin](https://filecoin.io/) - another blockchain-based storage.
-* [nft.storage](https://nft.storage/) - a free service built on top of the IPFS and Filecoin. 
+* [nft.storage](https://nft.storage/) - a free service built on top of the IPFS and Filecoin.
 
 A more in-depth overview of such solutions is available [in the docs](../storage/decentralized-storage.md). In general, there's no “silver bullet”, so different solutions should be evaluated and the most suitable chosen. The main concerns while choosing a solution are availability guarantees, and cost.
 
@@ -563,7 +563,7 @@ As we already determined, an indexing service is needed in order to support mark
 * Database - database of choice to store extracted data.
 * Indexer API - an API layer on top of the database.
 
-    
+
 <div align="center">
 <img src="/docs/assets/web3/nfts-24.png" alt="image" width="150" />
 </div>
@@ -592,7 +592,7 @@ Last, but not least, let’s cover important non-functional concerns for our arc
 
 ### Security
 
-The most important thing to remember during the entire development is security, and especially the security of smart contracts. Since their code is public and an upgrade procedure is not trivial, it should be carefully audited for security issues and logical exploits. 
+The most important thing to remember during the entire development is security, and especially the security of smart contracts. Since their code is public and an upgrade procedure is not trivial, it should be carefully audited for security issues and logical exploits.
 
 Another important thing that should be kept secure is a user's private key. In most cases, only Functional Call keys should be directly accessed from a client, and Full Access keys should be kept in a wallet. However, in some cases a Full Access key might have to be used directly (e.g. in case of server transaction signing scenarios). In such a case, it must be kept in a secure location and treated as a most sensitive secret, since its compromise might lead to a full account takeover.
 
@@ -601,7 +601,7 @@ In general, before deploying an application to the NEAR mainnet, it’s a good i
 
 ### Scalability and Availability
 
-Another concern is scalability and availability of a solution. There are a lot of ways to scale traditional servers, but how do we scale our blockchain and make sure it’s always available? 
+Another concern is scalability and availability of a solution. There are a lot of ways to scale traditional servers, but how do we scale our blockchain and make sure it’s always available?
 
 Since blockchain is decentralized, it provides us with high-availability by design, and NEAR provides a great scalability by employing Proof-of-Stake consensus and sharding. However, in order to interact with a network, we need an RPC Node. NEAR maintains publicly available nodes for its networks (listed [here](https://rpc.mainnet.near.org/status)), but it doesn't provide any performance or availability guarantees for them. So, in order to make sure our architecture is scalable and fault tolerant, we need to maintain our own cluster of RPC nodes, typically behind a load balancer.
 
@@ -611,7 +611,7 @@ Since blockchain is decentralized, it provides us with high-availability by desi
 </div>
 
 
-Information on how to set up an RPC node is available [here](https://near-nodes.io/rpc). 
+Information on how to set up an RPC node is available [here](https://near-nodes.io/rpc).
 
 Also, to guarantee availability and scalability of a whole system, all used third-party services should be reviewed as well. For example, if IPFS is used as a storage for NFTs, pinning nodes and IPFS gateway should be scalable and fault tolerant.
 
@@ -626,4 +626,4 @@ When building a Web 3 application, it’s important to remember that cost calcul
 2. Smart Contracts usage cost. In Web 3, users pay for smart contract calls, so in order to make sure users aren’t discouraged to interact with a contract due to a high cost, it should be optimized to incur the lowest cost possible. This is especially important for storage costs, since gas is relatively cheap.
 3. If we want to use a privately hosted RPC node for better availability, its operational costs should be taken into account as well. Cost breakdown can be found [here](https://near-nodes.io/rpc/hardware-rpc), a rough estimation is about 290$ per node per month (and remember that we need at least 2 nodes for redundancy).
 4. Cost of a privately hosted indexer (if it’s used). More information can be found [here](/concepts/advanced/near-indexer-framework), a rough estimation for the costs is about 100$ per month.
-5. Third party services costs. 
+5. Third party services costs.

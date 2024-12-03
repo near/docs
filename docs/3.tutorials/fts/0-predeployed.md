@@ -16,7 +16,7 @@ Learn how to easily receive fungible tokens without doing any software developme
 To complete this tutorial successfully, you'll need:
 
 - [A NEAR testnet account](https://testnet.mynearwallet.com)
-- [NEAR-CLI-RS](../../4.tools/cli.md#install)
+- [NEAR-CLI](/tools/near-cli/#installation)
 
 ---
 
@@ -94,14 +94,14 @@ To view tokens owned by an account you can call the FT contract with the followi
 
 <Tabs groupId="cli-tabs">
   <TabItem value="short" label="Short">
-  
+
   ```bash
   near view ft.predeployed.examples.testnet ft_balance_of '{"account_id": "'$NEARID'"}' --networkId testnet
   ```
   </TabItem>
 
   <TabItem value="full" label="Full">
-  
+
   ```bash
   near contract call-function as-read-only ft.predeployed.examples.testnet ft_balance_of json-args '{"account_id": "'$NEARID'"}' network-config testnet now
   ```

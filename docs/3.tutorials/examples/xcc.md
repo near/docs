@@ -5,7 +5,8 @@ title: Cross Contract Call
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
+import {CodeTabs, Language, Github} from '@site/src/components/codetabs'
+import MovingForwardSupportSection from '@site/src/components/MovingForwardSupportSection';
 
 This example performs the simplest cross-contract call possible: it calls our [Hello NEAR](https://github.com/near-examples/hello-near-examples) example to set and retrieve a greeting.
 It is one of the simplest examples on making a cross-contract call, and the perfect gateway to the world of interoperative contracts.
@@ -109,7 +110,7 @@ The contract readily includes a set of unit and sandbox testing to validate its 
 
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
-  
+
   ```bash
   cd contract-simple-rs
   cargo test
@@ -211,13 +212,15 @@ To interact with the contract through the console, you can use the following com
 ## Moving Forward
 
 A nice way to learn is by trying to expand a contract. Modify the cross contract example to use the [guest-book](guest-book.md)
-contract!. In this way, you can try to make a cross-contract call that attaches money. Remember to correctly [handle the callback](../../2.build/2.smart-contracts/anatomy/crosscontract.md#callback-method),
+contract!. In this way, you can try to make a cross-contract call that attaches money. Remember to correctly [handle the callback](/build/smart-contracts/anatomy/crosscontract#callback-function),
 and to return the money to the user in case of error.
 
 ### Advanced Cross Contract Calls
 
 Your contract can perform multiple cross-contract calls in simultaneous, creating promises that execute in parallel, or as a batch transaction. Check the [advanced cross contract calls
 tutorial](./advanced-xcc) to learn more.
+
+<MovingForwardSupportSection />
 
 :::note Versioning for this article
 

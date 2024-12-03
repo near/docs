@@ -22,7 +22,7 @@ The first person to win will "reserve their spot" and choose where to send the p
 
 When a user first visits the crossword, they only see the crossword. No login button and no fields (like a `memo` field) to fill out.
 
-On their first visit, our frontend will create a brand new, random seed phrase in their browser. We'll use this seed phrase to create the user's unique key pair. If a random seed phrase is already there, it skips this part. (We covered the code for this in [a previous section](02-use-seed-phrase.md#generate-random-seed-phrase).)
+On their first visit, our frontend will create a brand new, random seed phrase in their browser. We'll use this seed phrase to create the user's unique key pair. If a random seed phrase is already there, it skips this part. (We covered the code for this in [a previous section](02-use-seed-phrase.md#near-seed-phrase-library).)
 
 If the user is the first to solve the puzzle, it discovers the function-call access key and calls `submit_solution` with that key. It's basically using someone else's key, as this key is on the crossword account.
 

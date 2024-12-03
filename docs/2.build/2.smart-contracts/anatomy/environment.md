@@ -27,7 +27,7 @@ Every method execution has an environment associated with information such as:
 | Predecessor            | `near.predecessorAccountId()` | Account ID that called this method                                                   |
 | Current Account        | `near.currentAccountId()`     | Account ID of this smart contract                                                    |
 | Signer                 | `near.signerAccountId()`      | Account ID that signed the transaction leading to this execution                     |
-| Attached Deposit       | `near.attachedDeposit()`      | Amount in NEAR attached to the call by the predecessor                               |
+| Attached Deposit       | `near.attachedDeposit()`      | Amount in yoctoNEAR attached to the call by the predecessor                          |
 | Account Balance        | `near.accountBalance()`       | Balance of this smart contract (including Attached Deposit)                          |
 | Prepaid Gas            | `near.prepaidGas()`           | Amount of gas available for execution                                                |
 | Timestamp              | `near.blockTimestamp()`       | Current timestamp (number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC) |
@@ -47,7 +47,7 @@ Every method execution has an environment associated with information such as:
 | Predecessor            | `env::predecessor_account_id()` | Account ID that called this method                                                   |
 | Current Account        | `env::current_account_id()`     | Account ID of this smart contract                                                    |
 | Signer                 | `env::signer_account_id()`      | Account ID that signed the transaction leading to this execution                     |
-| Attached Deposit       | `env::attached_deposit()`       | Amount in NEAR attached to the call by the predecessor                               |
+| Attached Deposit       | `env::attached_deposit()`       | Amount in yoctoNEAR attached to the call by the predecessor                          |
 | Account Balance        | `env::account_balance()`        | Balance of this smart contract (including Attached Deposit)                          |
 | Prepaid Gas            | `env::prepaid_gas()`            | Amount of gas available for execution                                                |
 | Timestamp              | `env::block_timestamp()`        | Current timestamp (number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC) |
@@ -92,12 +92,12 @@ In most scenarios you will **only need to know the predecessor**. However, there
 The environment gives you access to 3 token-related parameters, all expressed in yoctoNEAR (1 Ⓝ = 10<sup>24</sup>yⓃ):
 
 ### Attached Deposit
-`attached_deposit` represents the amount of yoctoNEAR the predecessor attached to the call. 
+`attached_deposit` represents the amount of yoctoNEAR the predecessor attached to the call.
 
 This amount is **already deposited** in your contract's account, and is **automatically returned** to the `predecessor` if your **method panics**.
 
 :::warning
-If you make a [cross-contract call](../anatomy/crosscontract.md) and it panics, the funds are sent back to **your contract**. See how to handle this situation in the [callback section](../anatomy/crosscontract.md#failed-execution)
+If you make a [cross-contract call](../anatomy/crosscontract.md) and it panics, the funds are sent back to **your contract**. See how to handle this situation in the [callback section](../anatomy/crosscontract.md#what-happens-if-the-function-i-call-fails)
 :::
 
 ### Account Balance
@@ -219,7 +219,7 @@ Besides environmental variables, the SDK also exposes some functions to perform 
 
 </Tabs>
 
-:::info 
+:::info
 In the JS SDK, `throw new Error("message")` mimics the behavior of Rust's `env::panic_str("message")`.
 :::
 

@@ -1,6 +1,6 @@
 ---
 id: what-is
-title: What is Data Infrastructure? 
+title: What is Data Infrastructure?
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -10,9 +10,19 @@ NEAR offers ready-to-use solutions to access and monitor on-chain data easily. T
 
 ![img](/docs/assets/welcome-pages/data-lake.png)
 
-NEAR offers three main solutions to access and monitor on-chain data: [**BigQuery Public Dataset**](#bigquery-public-dataset), [**QueryAPI**](#queryapi-indexers-made-simple), and [**NEAR Lake**](#near-lake). Each of these solutions is designed to fit different needs and use cases, and can be used in combination to create a complete data infrastructure for your application.
- 
+In NEAR you will find three main solutions to access and monitor on-chain data: [**Data APIs**](#data-apis), [**BigQuery Public Dataset**](#bigquery-public-dataset) and [**NEAR Lake**](#near-lake). Each of these solutions is designed to fit different needs and use cases, and can be used in combination to create a complete data infrastructure for your application.
+
 ---
+
+## [Data APIs](./data-api.md)
+
+Members of the NEAR community have built a set of APIs to access and monitor on-chain data. These APIs are designed to be easy to use and can be accessed from any application through a simple API call.
+
+- User assets: Easily track all the assets that a user or a contract holds
+- Monitor transactions: Get all the transactions of a user, a contract or a specific token
+- Track on-chain events: Get all the events emitted by a contract, or a specific event type
+
+<hr subclass="subsection" />
 
 ## [BigQuery: Public Dataset](./big-query.md)
 A large dataset with on-chain data publicly available on Google Cloud Platform. Obtain near real-time blockchain data using simple SQL queries. **All the data, zero setup**.
@@ -23,18 +33,16 @@ A large dataset with on-chain data publicly available on Google Cloud Platform. 
 
 <hr subclass="subsection" />
 
-## [QueryAPI: Indexers Made Simple](./query-api/intro.md)
-
-A fully managed solution to build indexer functions, extract on-chain data, and easily query it using GraphQL endpoints and subscriptions.
-
-- Your data, your way: Decide how you want to store data. Design the tables and databases that better suit your needs.
-- Indexers made simple: Create the logic of your indexer and we will execute it for you. Forget about infrastructure—focus on solutions.
-- Plug & play to your app: Fetch your data from any application through our API. Leverage GraphQL to query exactly what you need.
-
-<hr subclass="subsection" />
-
 ## [NEAR Lake](./lake-framework/near-lake.md)
 A solution that watches over the NEAR network and stores all the events for your easy access.
 
 - Cost-efficient solution: Cost-efficient solution for building self-hosted indexers in Rust, JavaScript, Python, Go and other languages
 - Streamlined data management: Use NEAR Lake Framework to stream blocks to your server directly from NEAR Lake
+
+---
+
+## Conclusion
+
+Data infrastructure is a key component of any blockchain application. It allows developers to access and monitor on-chain data easily, which is essential for building applications that interact with the blockchain.
+
+NEAR offers a range of solutions to help developers build robust data infrastructure for their applications, including Data APIs, BigQuery Public Dataset, and NEAR Lake. By using these solutions in combination, developers can create a complete data infrastructure that meets their specific needs and use cases.

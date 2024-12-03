@@ -10,22 +10,28 @@ When deciding on data structures it is important to understand their tradeoffs. 
 
 You can choose between two types of collections:
 
-1. Native collections (e.g. `Array`, `Map`, `Set`), provided by the the language
+1. Native collections (e.g. `Array`, `Map`, `Set`), provided by the language
 2. SDK collections (e.g. `IterableMap`, `Vector`), provided by the NEAR SDK
 
 Understanding how the contract stores and loads both types of collections is crucial to decide which one to use.
 
-:::tip
+:::tip Native vs SDK Collections
 
-Use native collections for small amounts of data that need to be accessed all together, and SDK collections for large amounts of data that do not need to be accessed all together
+Use native collections for small amounts of data that need to be accessed altogether, and SDK collections for large amounts of data that do not need to be accessed altogether.
+
+If your collection has up to 100 entries, it's acceptable to use the native collection. For larger ones, prefer to use SDK collection. For comparison please refer to [this benchmark](https://www.github.com/volodymyr-matselyukh/near-benchmarking).
 
 :::
 
-:::info How the State is Handled
+<details>
+
+<summary> How the State is Handled </summary>
 
 Each time the contract is executed, the first thing it will do is to read the values and [deserialize](./serialization.md) them into memory, and after the function finishes, it will [serialize](./serialization.md) and write the values back to the database.
 
-:::
+For native collections, the contract will fully load the collection into memory before any method executes. This happens even if the method you invoke does not use the collection. Know that this will have impact on GAS you spend for methods in your contract.
+
+</details>
 
 ---
 
@@ -102,7 +108,7 @@ SDK collections are useful when you are planning to store large amounts of data 
 | SDK collection                                | `std`&nbsp;equivalent             | Description                                                                                                                                                                                       |
 |-----------------------------------------------|-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `store::Vector<T>`                            | `Vec<T>`                          | A growable array type. The values are sharded in memory and can be used for iterable and indexable values that are dynamically sized.                                                             |
-| <code>store::LookupMap`<K,&nbsp;V>`</code>    | <code>HashMap`<K,&nbsp;V>`</code> | This structure behaves as a thin wrapper around the key-value storage available to contracts. This structure does not contairn any metadata about the elements in the map, so it is not iterable. |
+| <code>store::LookupMap`<K,&nbsp;V>`</code>    | <code>HashMap`<K,&nbsp;V>`</code> | This structure behaves as a thin wrapper around the key-value storage available to contracts. This structure does not contain any metadata about the elements in the map, so it is not iterable.  |
 | <code>store::IterableMap`<K,&nbsp;V>`</code>  | <code>HashMap`<K,&nbsp;V>`</code> | Similar to `LookupMap`, except that it stores additional data to be able to iterate through elements in the data structure.                                                                       |
 | <code>store::UnorderedMap`<K,&nbsp;V>`</code> | <code>HashMap`<K,&nbsp;V>`</code> | Similar to `LookupMap`, except that it stores additional data to be able to iterate through elements in the data structure.                                                                       |
 | `store::LookupSet<T>`                         | `HashSet<T>`                      | A set, which is similar to `LookupMap` but without storing values, can be used for checking the unique existence of values. This structure is not iterable and can only be used for lookups.      |
@@ -288,14 +294,15 @@ Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) w
 Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type)) which persists in the contract's storage. Please refer to the Rust and JS SDK's for a full reference on their interfaces.
 
 <Tabs groupId="code-tabs">
+
   <TabItem value="js" label="🌐 JavaScript">
     <Github fname="contract.ts" language="js"
-          url="https://github.com/near-examples/storage-examples/blob/main/collections-js/src/contract.ts"
-          start="60" end="74" />
+      url="https://github.com/near-examples/storage-examples/blob/main/collections-js/src/contract.ts" start="60" end="74" />
   </TabItem>
+
   <TabItem value="rust" label="🦀 Rust">
       <Github fname="lookup_set.rs" language="rust"
-            url="https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/lookup_set.rs" start="4" end="18"/>
+        url="https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/lookup_set.rs" start="4" end="18"/>
   </TabItem>
 
 </Tabs>
@@ -471,13 +478,13 @@ pub enum StorageKey {
     Nested(u8),
 }
 
-// Bug 1: Nested collection is removed without clearing it's own state.
+// Bug 1: Nested collection is removed without clearing its own state.
 let mut root: LookupMap<u8, UnorderedSet<String>> = LookupMap::new(StorageKey::Root);
 let mut nested = UnorderedSet::new(StorageKey::Nested(1));
 nested.insert(&"test".to_string());
 root.insert(&1, &nested);
 
-// Remove inserted collection without clearing it's sub-state.
+// Remove inserted collection without clearing its sub-state.
 let mut _removed = root.remove(&1).unwrap();
 
 // This line would fix the bug:
@@ -569,7 +576,7 @@ Your contract needs to lock a portion of their balance proportional to the amoun
 - If more data is added and the **storage increases ↑**, then your contract's **balance decreases ↓**.
 - If data is deleted and the **storage decreases ↓**, then your contract's **balance increases ↑**. 
 
-Currently, it cost approximately **1 Ⓝ** to store **100kb** of data.
+Currently, it costs approximately **1 Ⓝ** to store **100kb** of data.
 
 :::info
 

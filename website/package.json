@@ -9,10 +9,7 @@
     "build:preview": "docusaurus build --locale en",
     "swizzle": "docusaurus swizzle",
     "docusaurus": "docusaurus",
-    "fetch-changelog": "node ./src/utils/getChangelogs.js && npm run docusaurus download-remote-near-changelog",
-    "crowdin": "crowdin",
-    "crowdin:upload": "docusaurus write-translations && crowdin upload",
-    "crowdin:download": "crowdin download"
+    "fetch-changelog": "node ./src/utils/getChangelogs.js && npm run docusaurus download-remote-near-changelog"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.5.2",
@@ -31,18 +28,12 @@
     "wait-on": "^5.2.0"
   },
   "dependencies": {
-    "@crowdin/cli": "^4.1.1",
     "@docusaurus/core": "^3.5.2",
     "@docusaurus/plugin-ideal-image": "^3.5.2",
     "@docusaurus/plugin-sitemap": "^3.5.2",
     "@docusaurus/preset-classic": "^3.5.2",
     "@docusaurus/theme-mermaid": "^3.5.2",
     "@feelback/react": "^0.3.4",
-    "@near-wallet-selector/core": "^8.5.1",
-    "@near-wallet-selector/here-wallet": "^8.5.1",
-    "@near-wallet-selector/modal-ui": "^8.5.1",
-    "@near-wallet-selector/my-near-wallet": "^8.5.1",
-    "@rudderstack/analytics-js": "^3.0.0-beta.20",
     "@saucelabs/theme-github-codeblock": "^0.2.3",
     "axios": "^1.7.4",
     "bootstrap": "^5.3.2",
@@ -62,9 +53,7 @@
     "react-dom": "^18.2.0",
     "react-is": "^18.2.0",
     "react-monaco-editor": "^0.54.0",
-    "rxjs": "^7.8.1",
     "sass": "^1.69.5",
-    "url": "^0.11.3",
-    "zustand": "^4.4.4"
+    "url": "^0.11.3"
   }
 }

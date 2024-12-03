@@ -192,7 +192,7 @@ const sidebar = {
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Web3 Applications </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Web3 Apps (Frontend, AI, ...) </small></b></span>"
     },
     "build/web3-apps/what-is",
     {
@@ -217,7 +217,6 @@ const sidebar = {
                     "build/near-components/anatomy/near",
                     "build/near-components/anatomy/social",
                     "build/near-components/anatomy/notifications",
-                    "build/near-components/anatomy/bos-components"
                   ]
                 },
                 "build/near-components/bos-gateway",
@@ -231,6 +230,11 @@ const sidebar = {
             "build/web3-apps/backend/backend-login",
           ]
         },
+        {
+          "Artificial Intelligence (AI)": [
+            "build/web3-apps/ai/ai-assistant",
+          ]
+        }
       ]
     },
     {
@@ -263,40 +267,14 @@ const sidebar = {
     "build/data-infrastructure/what-is",
     {
       "NEAR Data Infrastructure": [
-        "concepts/data-flow/data-storage",
+        "build/data-infrastructure/data-apis",
         "build/data-infrastructure/big-query",
-        {
-          "QueryAPI": [
-            "build/data-infrastructure/query-api/intro",
-            "build/data-infrastructure/query-api/how-it-works",
-            "build/data-infrastructure/query-api/indexers",
-            "build/data-infrastructure/query-api/best-practices",
-            "build/data-infrastructure/query-api/index-functions",
-            "build/data-infrastructure/query-api/context-object",
-            "build/data-infrastructure/query-api/query-data",
-            "build/data-infrastructure/query-api/migrate-from-near-lake",
-          ]
-        },
         {
           "Lake Framework": [
             "concepts/advanced/near-lake-framework",
             "build/data-infrastructure/lake-framework/near-lake",
             "build/data-infrastructure/lake-framework/near-lake-state-changes-indexer",
             "build/data-infrastructure/lake-framework/migrating-to-near-lake-framework",
-            {
-              "Building Indexers": [
-                "build/data-infrastructure/lake-framework/building-indexers/primitives",
-                {
-                  "type": "link",
-                  "label": "NEAR Lake Primitives",
-                  "href": "https://near.github.io/near-lake-framework-js/"
-                },
-                "build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer",
-                "build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer",
-                "build/data-infrastructure/lake-framework/building-indexers/nft-indexer",
-                "build/data-infrastructure/lake-framework/building-indexers/python-nft-indexer"
-              ]
-            },
             {
               "Running NEAR Lake": [
                 "build/data-infrastructure/lake-framework/running-near-lake/run-lake-indexer",
@@ -378,9 +356,20 @@ const sidebar = {
             "tutorials/auction/deploy",
           ]
         },
-        // "tutorials/auction/locking-the-contract",
-        // "tutorials/auction/winning-an-nft",
-        // "tutorials/auction/bidding-with-FTs",
+        {
+          "Frontends 101": [
+            "tutorials/auction/creating-a-frontend",
+            "tutorials/auction/indexing-historical-data",
+          ]
+        },
+        {
+          "Using Primitves": [
+            "tutorials/auction/winning-an-nft",
+            "tutorials/auction/bidding-with-fts",
+            "tutorials/auction/updating-the-frontend",
+          ]
+        },
+        "tutorials/auction/auction-factory",
       ]
     },
     {
@@ -391,7 +380,6 @@ const sidebar = {
         "tutorials/near-components/using-iframes",
         "tutorials/near-components/blog-posts",
         "tutorials/near-components/push-notifications",
-        "tutorials/near-components/queryapi-websockets",
         "tutorials/near-components/ethers-js",
         "tutorials/near-components/ethers-js-best-practices",
         "tutorials/near-components/lido",
@@ -464,6 +452,20 @@ const sidebar = {
       ]
     },
     {
+      "Building Indexers": [
+        "build/data-infrastructure/lake-framework/building-indexers/primitives",
+        {
+          "type": "link",
+          "label": "NEAR Lake Primitives",
+          "href": "https://near.github.io/near-lake-framework-js/"
+        },
+        "build/data-infrastructure/lake-framework/building-indexers/js-lake-indexer",
+        "build/data-infrastructure/lake-framework/building-indexers/python-lake-indexer",
+        "build/data-infrastructure/lake-framework/building-indexers/nft-indexer",
+        "build/data-infrastructure/lake-framework/building-indexers/python-nft-indexer"
+      ]
+    },
+    {
       "Build a Crossword Game": [
         {
           "type": "category",
@@ -503,16 +505,6 @@ const sidebar = {
         }
       ]
     },
-    {
-      "Data Infrastructure":
-        [
-          "tutorials/near-components/indexer-tutorials/posts-indexer",
-          "tutorials/near-components/indexer-tutorials/hype-indexer",
-          "tutorials/near-components/indexer-tutorials/nft-indexer",
-          "tutorials/near-components/indexer-tutorials/feed-indexer",
-        ]
-    },
-
   ],
   "tools": [
     "tools/welcome",
@@ -554,13 +546,8 @@ const sidebar = {
       "items": [
         {
           "type": "link",
-          "label": "dev.near.org Web Editor",
-          "href": "https://dev.near.org/sandbox"
-        },
-        {
-          "type": "link",
           "label": "Jutsu Web Editor",
-          "href": "https://jutsu.ai/editor"
+          "href": "https://near.jutsu.ai/"
         }
       ]
     },
@@ -569,6 +556,7 @@ const sidebar = {
       "label": "Wallets",
       "items": [
         "tools/wallet-selector",
+        "tools/ethereum-wallets",
         {
           "type": "link",
           "label": "Remix IDE Plugin",

@@ -15,7 +15,7 @@ At the core, all transactions require the following:
 - `signerPublicKey`
 - `receiverId` _(account ID of the transaction recipient)_
 - `nonceForPublicKey` _(each time a key is used the nonce value should be incremented by 1)_
-- `actions` _( [[click here]](/concepts/protocol/transactions#action) for supported arguments)_
+- `actions` _( [[click here]](/concepts/protocol/transaction-anatomy#actions) for supported arguments)_
 - `blockHash` _(a current block hash (within 24hrs) to prove the transaction was recently created)_
 
 See [Transaction Class](https://near.github.io/near-api-js/classes/near_api_js.transaction.Transaction.html) for a more in depth outline.
@@ -221,7 +221,7 @@ As stated before, all transactions require six parts:
 2. [`signerPublicKey`](#2-signerpublickey)
 3. [`receiverId`](#3-receiverid)
 4. [`nonceForPublicKey`](#4-nonceforpublickey)
-5. [`actions`](/concepts/protocol/transactions#action)
+5. [`actions`](/concepts/protocol/transaction-anatomy#actions)
 6. [`blockHash`](#6-blockhash)
 
 ### 1 `signerId`
@@ -306,7 +306,7 @@ const nonce = ++accessKey.nonce;
 
 ### 5 `actions`
 
-- There are currently eight supported `Action` types. [[see here]](/concepts/protocol/transactions#action)
+- There are currently eight supported `Action` types. [[see here]](/concepts/protocol/transaction-anatomy#actions)
 - For this example, we are using `Transfer`
 - This transfer action can be created using the [imported `nearAPI` object](#imports) and the [formatted Ⓝ amount](#formatting-token-amounts) created earlier.
 

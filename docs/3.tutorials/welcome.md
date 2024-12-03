@@ -24,12 +24,12 @@ Explore our collection of Examples and Tutorials
     <Feature url="/tutorials/near-components/interaction" title="Components & Contracts" subtitle="Use a contract from your component" image="bos-contract.png" />
     <Feature url="/tutorials/near-components/lido" title="ETH Component" subtitle="Build an Ethereum Component" image="bos-lido.png" />
     <Feature url="/tutorials/nfts/minting-nfts" title="NFT Mint" subtitle="Mint an NFT without using code" image="frontend-bos.png" />
-    <Feature url="/tutorials/near-components/indexer-tutorials/nft-indexer" title="Events (NEAR Lake)"
+    <Feature url="/build/data-infrastructure/lake-framework/building-indexers/nft-indexer" title="Events (NEAR Lake)"
              subtitle="Use our Data Lake to listen for events" image="monitor.png" />
   </Column>
   <Column title="From Zero to Hero">
      <Feature url="/tutorials/auction/introduction" title="Master Applications on NEAR"
-             subtitle="Build a contract, indexer and frontend" image="near-zero-to-hero.png" />
+             subtitle="Learn to build a Web3 application from start to finish" image="near-zero-to-hero.png" />
     <Feature url="/tutorials/nfts/js/introduction" title="Master NFTs on NEAR (JS)" subtitle="Learn everything about NFT in JS" image="nft-marketplace-js.png" />
     <Feature url="/tutorials/nfts/introduction" title="Master NFTs on NEAR (RS)" subtitle="Learn everything about NFT in Rust" image="nft-marketplace-rs.png" />
     <Feature url="/tutorials/fts/introduction" title="Fungible Tokens 101"

@@ -15,7 +15,7 @@ import TabItem from '@theme/TabItem';
 
 ### Native NEAR (Ⓝ) {#native-near}
 
-> Balance changes on accounts can be tracked by using our [changes RPC endpoint](/api/rpc/setup#view-account-changes). You can test this out by sending tokens to an account using [NEAR-CLI](/tools/near-cli#send-near) and then viewing the changes made.
+> Balance changes on accounts can be tracked by using our [changes RPC endpoint](/api/rpc/contracts#view-account-changes). You can test this out by sending tokens to an account using [NEAR-CLI](/tools/near-cli#send-near) and then viewing the changes made.
 
 ## Send Tokens {#send-tokens}
 
@@ -50,7 +50,7 @@ https://testnet.nearblocks.io/txns/4To336bYcoGc3LMucJPMk6fMk5suKfCrdNotrRtTxqDy
 ## View Balance Changes {#view-balance-changes}
 
 - Open the transaction URL in [NearBlocks Explorer](https://testnet.nearblocks.io/) and copy the `BLOCK HASH`.
-- Using the `BLOCK HASH` and the accountId, query the [changes RPC endpoint](/api/rpc/setup#view-account-changes) to view changes.
+- Using the `BLOCK HASH` and the accountId, query the [changes RPC endpoint](/api/rpc/contracts#view-account-changes) to view changes.
 
 **Example Query using HTTPie:**
 
@@ -97,7 +97,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
 
 ---
 
-Alternatively, you can view account balances by [querying `view_account`](/api/rpc/setup#view-account) which only requires an accountId.
+Alternatively, you can view account balances by [querying `view_account`](/api/rpc/contracts#view-account) which only requires an accountId.
 
 **Example HTTPie Request:**
 

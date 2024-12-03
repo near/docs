@@ -71,7 +71,7 @@ With this example laid out, a high level overview of lazy minting is that it giv
 ## New Contract File Structure
 
 Let's now take a look at how we've implemented solutions to the issues we've discussed so far.
-	
+
 In your locally cloned example of the [`nft-tutorial`](https://github.com/near-examples/nft-tutorial) check out the `main` branch and be sure to pull the most recent version.
 
 ```bash
@@ -293,7 +293,7 @@ Next, you'll deploy this contract to the network.
 
 <Tabs groupId="cli-tabs">
   <TabItem value="short" label="Short">
-  
+
   ```bash
   export NFT_CONTRACT_ID=<accountId>
   near create-account $NFT_CONTRACT_ID --useFaucet
@@ -301,7 +301,7 @@ Next, you'll deploy this contract to the network.
   </TabItem>
 
   <TabItem value="full" label="Full">
-  
+
   ```bash
   export NFT_CONTRACT_ID=<accountId>
   near account create-account sponsor-by-faucet-service $NFT_CONTRACT_ID autogenerate-new-keypair save-to-keychain network-config testnet create
@@ -323,14 +323,14 @@ If you now query for the metadata of the contract, it should return our default 
 
 <Tabs groupId="cli-tabs">
   <TabItem value="short" label="Short">
-  
+
   ```bash
   near view $NFT_CONTRACT_ID nft_metadata '{}' --networkId testnet
   ```
   </TabItem>
 
   <TabItem value="full" label="Full">
-  
+
   ```bash
   near contract call-function as-read-only $NFT_CONTRACT_ID nft_metadata json-args {} network-config testnet now
   ```
@@ -341,11 +341,11 @@ If you now query for the metadata of the contract, it should return our default 
 
 ## Creating The Series
 
-The next step is to create two different series. One will have a price for lazy minting and the other will simply be a basic series with no price. The first step is to create an owner [sub-account](../../4.tools/cli.md#accounts) that you can use to create both series
+The next step is to create two different series. One will have a price for lazy minting and the other will simply be a basic series with no price. The first step is to create an owner [sub-account](/tools/near-cli#create) that you can use to create both series
 
 <Tabs groupId="cli-tabs">
   <TabItem value="short" label="Short">
-  
+
   ```bash
   export SERIES_OWNER=owner.$NFT_CONTRACT_ID
 
@@ -354,7 +354,7 @@ The next step is to create two different series. One will have a price for lazy 
   </TabItem>
 
   <TabItem value="full" label="Full">
-  
+
   ```bash
   export SERIES_OWNER=owner.$NFT_CONTRACT_ID
 
@@ -421,14 +421,14 @@ If you now query for the series information, it should work!
 
 <Tabs groupId="cli-tabs">
   <TabItem value="short" label="Short">
-  
+
   ```bash
   near view $NFT_CONTRACT_ID get_series '{}' --networkId testnet
   ```
   </TabItem>
 
   <TabItem value="full" label="Full">
-  
+
   ```bash
   near contract call-function as-read-only $NFT_CONTRACT_ID get_series json-args {} network-config testnet now
   ```
@@ -487,19 +487,19 @@ If you now paginate through the series again, you should see both appear.
 
 <Tabs groupId="cli-tabs">
   <TabItem value="short" label="Short">
-  
+
   ```bash
   near view $NFT_CONTRACT_ID get_series '{}' --networkId testnet
   ```
   </TabItem>
 
   <TabItem value="full" label="Full">
-  
+
   ```bash
   near contract call-function as-read-only $NFT_CONTRACT_ID get_series json-args {} network-config testnet now
   ```
   </TabItem>
-  
+
 </Tabs>
 
 Which has
@@ -551,7 +551,7 @@ Which has
 
 ## Minting NFTs
 
-Now that you have both series created, it's time to now mint some NFTs. You can either login with an existing NEAR wallet using [`near login`](../../4.tools/cli.md#near-login) or you can create a sub-account of the NFT contract. In our case, we'll use a sub-account.
+Now that you have both series created, it's time to now mint some NFTs. You can either login with an existing NEAR wallet using [`near login`](/tools/near-cli#import) or you can create a sub-account of the NFT contract. In our case, we'll use a sub-account.
 
 <Tabs groupId="cli-tabs">
   <TabItem value="short" label="Short">
@@ -576,7 +576,7 @@ Now that you have both series created, it's time to now mint some NFTs. You can 
 ### Lazy Minting
 
 The first workflow you'll test out is [lazy minting](#lazy-minting) NFTs. If you remember, the second series has a price associated with it of 1 $NEAR. This means that there are no minting restrictions and anyone can try and purchase the NFT. Let's try it out.
- 
+
 In order to view the NFT in the NEAR wallet, you'll want the `receiver_id` to be an account you have currently available in the wallet site. Let's export it to an environment variable. Run the following command but replace `YOUR_ACCOUNT_ID_HERE` with your actual NEAR account ID.
 
 ```bash

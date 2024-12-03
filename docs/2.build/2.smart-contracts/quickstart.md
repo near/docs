@@ -4,11 +4,12 @@ title: Hello Contract
 sidebar_label: Quickstart ✨
 ---
 
-import {Github} from "@site/src/components/codetabs";
+import {Github} from '@site/src/components/codetabs';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import MovingForwardSupportSection from '@site/src/components/MovingForwardSupportSection';
 
-Welcome! [NEAR accounts](../../1.concepts/protocol/account-model.md) can store small apps known as smart contracts. In this quick tutorial, we will guide you in creating your first contract in the NEAR **testnet**!
+Welcome! [NEAR accounts](../../1.concepts/protocol/account-model.md) can store small apps known as smart contracts. In this quick tutorial, we will guide you in creating your first contract on the NEAR **testnet**!
 
 Join us in creating a friendly contract that stores a greeting, and exposes functions to interact with it.
 
@@ -16,22 +17,25 @@ Join us in creating a friendly contract that stores a greeting, and exposes func
 
 ## Prerequisites
 
-Before starting, make sure to setup your development environment.
+Before starting, make sure to set up your development environment.
 
 <details>
 <summary>Working on Windows?</summary>
 
-  See our blog post [getting started on NEAR using Windows](/blog/getting-started-on-windows) for a step-by-step guide on how to setup WSL and your environment
+  See our blog post [getting started on NEAR using Windows](/blog/getting-started-on-windows) for a step-by-step guide on how to set up WSL and your environment
 
 </details>
 
-<Tabs groupId="code-tabs">
+<Tabs groupId="code-tabs" queryString>
   <TabItem value="js" label="🌐 JavaScript">
 
 ```bash
-# Install Node.js using nvm (more option in: https://nodejs.org/en/download)
+# Install Node.js using nvm (more options in: https://nodejs.org/en/download)
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 nvm install latest
+
+# ⚠️ For Mac Silicon users only, Rosetta is needed to compile contracts
+# /usr/sbin/softwareupdate --install-rosetta --agree-to-license
 
 # Install NEAR CLI to deploy and interact with the contract
 npm install -g near-cli-rs@latest
@@ -115,9 +119,9 @@ This will generate a project with the following structure:
 
 ```bash
 ├── src        # contract's code
-│   └── lib.rs 
+│   └── lib.rs
 ├── tests      # sandbox testing
-│   └── test_basics.rs 
+│   └── test_basics.rs
 ├── Cargo.toml # package manager
 ├── README.md
 └── rust-toolchain.toml
@@ -132,16 +136,16 @@ This will generate a project with the following structure:
 
 ## The Contract
 
-The `Hello World` smart contract stores a greeting on its state, and exposes two functions to interact with it:
+The `Hello World` smart contract stores a greeting in its state, and exposes two functions to interact with it:
 1. `set_greeting`: to change the greeting
-2. `get_greeting`: to fetch the greeting 
+2. `get_greeting`: to fetch the greeting
 
 <Tabs groupId="code-tabs">
   <TabItem value="js" label="🌐 JavaScript">
 
     <Github fname="index.js" language="js"
             url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts"
-            start="4" end="18" />
+            start="4" end="22" />
 
   </TabItem>
 
@@ -177,7 +181,7 @@ Building and testing the contract is as simple as running the `test` command. Th
     <details>
     <summary> Failing tests? </summary>
 
-    Make sure that you are using `node v18`, `v20` or `v22`. You can always use: `nvm use 18` to switch to `node v20`
+    Make sure that you are using `node v18`, `v20` or `v22` - you can manage multiple versions using `nvm` - and that you have `Rosetta` installed on MacOS if you have an Apple Silicon processor.
 
     </details>
 
@@ -195,7 +199,9 @@ Building and testing the contract is as simple as running the `test` command. Th
 In the background, these commands are calling the build tools for each language and using a [Sandbox](./testing/integration-test.md) to test the contract.
 
 :::tip Sandbox
+
 Testing the contracts within a Sandbox allows you to understand how the contract will behave once deployed to the network while having total control over the testing environment.
+
 :::
 
 ---
@@ -273,12 +279,6 @@ When you are ready to create a build of the contract run a one-line command depe
   cargo near build
   ```
 
-  :::tip
-
-  You can also build the contract with `cargo build --release`. This will compile the contract, but without metadata or the Contract Application Binary Interface (ABI)
-
-  :::
-
   </TabItem>
 
 </Tabs>
@@ -289,11 +289,15 @@ When you are ready to create a build of the contract run a one-line command depe
 
 Having our account created, we can now deploy the contract:
 
+
+<Tabs groupId="cli-tabs">
+  <TabItem value="js" label="🌐 JavaScript">
+
 <Tabs groupId="cli-tabs">
   <TabItem value="short" label="Short">
 
   ```bash
-  near deploy <created-account> build/release/hello.wasm
+  near deploy <created-account> build/hello_near.wasm
   ```
 
   </TabItem>
@@ -304,15 +308,38 @@ Having our account created, we can now deploy the contract:
   near contract deploy <created-account> use-file ./target/wasm32-unknown-unknown/release/hello.wasm without-init-call network-config testnet sign-with-keychain send
   ```
 
-  :::tip
-  You can also build the contract with `cargo build --release`. This will compile the contract, but without metadata or the Contract Application Binary Interface (ABI)
-  :::
+  </TabItem>
+
+</Tabs>
+
+  </TabItem>
+
+  <TabItem value="rust" label="🦀 Rust">
+
+  <Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  near deploy <created-account> ./target/wasm32-unknown-unknown/release/hello.wasm
+  ```
+
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+  ```bash
+  near contract deploy <created-account> use-file ./target/wasm32-unknown-unknown/release/hello.wasm without-init-call network-config testnet sign-with-keychain send
+  ```
 
   </TabItem>
 
 </Tabs>
 
-**Congrats**! your contract now lives in the NEAR testnet network.
+  </TabItem>
+
+</Tabs>
+
+**Congrats**! Your contract now lives in the NEAR testnet network.
 
 ---
 
@@ -385,18 +412,15 @@ To better understand the contract's structure, check our [contract's anatomy](./
 
 If you prefer to see more examples, check our [examples](/tutorials/examples/count-near) page.
 
-Do not hesitate to reach out on [Discord](https://near.chat) with any questions you have. We regularly host Office Hours, in which you can join our voice channel and ask questions.
-
-Happy coding! 🚀
+<MovingForwardSupportSection />
 
 :::note Versioning for this article
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `4.0.13`
-- node: `18.19.1`
-- rustc: `1.77.0`
-- near-cli-rs: `0.8.1`
-- cargo-near: `0.6.1`
+- node: `20.18.0`
+- rustc: `1.81.0`
+- near-cli-rs: `0.15.1`
+- cargo-near: `0.10.1`
 
 :::

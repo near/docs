@@ -6,7 +6,7 @@ title: Locking Accounts
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Removing all [full access keys](../../../4.tools/cli.md#near-delete-key-near-delete-key) from an account will effectively **lock it**.
+Removing all [full access keys](/tools/near-cli#delete-key) from an account will effectively **lock it**.
 
 When an account is locked nobody can perform transactions in the account's name (e.g. update the code or transfer money).
 

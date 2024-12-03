@@ -23,7 +23,7 @@ On this page, we will only cover the basics of NEAR CLI. For more information vi
 Thanks to the `NEAR CLI` deploying a contract is as simple as:
 
 1. Compiling the contract to wasm.
-2. [Create an account](../../../4.tools/cli.md#near-create-account) and [deploy the contract](../../../4.tools/cli.md#near-deploy) into it using `NEAR CLI`.
+2. [Create an account](../../../4.tools/cli.md#create) and [deploy the contract](../../../4.tools/cli.md#deploy) into it using `NEAR CLI`.
 
 ### Compile the Contract
 
@@ -55,7 +55,7 @@ Thanks to the `NEAR CLI` deploying a contract is as simple as:
   ```bash
   # Create a new account pre-funded by a faucet
   near create-account <accountId> --useFaucet
-  
+
   # deploy the contract
   near deploy <accountId> <route_to_wasm>
   ```
@@ -109,17 +109,17 @@ will change, but the state will persist
 By default `near-cli` uses the `testnet` network. Define `NEAR_ENV=mainnet` to deploy into `mainnet`.
 :::
 
-:::info Naming Convention for Public-Facing Methods 
-Once the contract is deployed to the network, anyone and any other contract (i.e., any other account on NEAR) can interact with it by calling its methods. Furthermore, any transactions involving the contract will also be included in the network's data stream, which means its activity can also be visible to any who listens to particular events. 
+:::info Naming Convention for Public-Facing Methods
+Once the contract is deployed to the network, anyone and any other contract (i.e., any other account on NEAR) can interact with it by calling its methods. Furthermore, any transactions involving the contract will also be included in the network's data stream, which means its activity can also be visible to any who listens to particular events.
 
-Considering this, we advise to name methods using `snake_case` in all SDKs as this is compatible with the remainder of the NEAR ecosystem which is predominantly comprised of Rust contracts. 
+Considering this, we advise to name methods using `snake_case` in all SDKs as this is compatible with the remainder of the NEAR ecosystem which is predominantly comprised of Rust contracts.
 :::
 
 ---
 
 ## Initializing the Contract
-If your contract has an [initialization method](../anatomy/anatomy.md#initialization-functions) you can call it to
-initialize the state. This is not necessary if your contract implements `default` values for the state. 
+If your contract has an [initialization method](/build/smart-contracts/anatomy/storage#initializing-the-state) you can call it to
+initialize the state. This is not necessary if your contract implements `default` values for the state.
 
 <Tabs groupId="cli-tabs">
   <TabItem value="short" label="Short">

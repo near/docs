@@ -3125,4 +3125,3 @@ This response gives the information about all the available balances for the use
 |»» title|string|false|none|none|
 |» owner_account_id|string|true|none|none|
 |» token_id|string|true|none|none|
-

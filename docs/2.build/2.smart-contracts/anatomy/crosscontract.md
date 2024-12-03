@@ -31,7 +31,7 @@ While making your contract, it is likely that you will want to query information
 
 <CodeTabs>
 <Language value="js" language="ts">
-    <Github fname="contract.ts" 
+    <Github fname="contract.ts"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/src/contract.ts"
             start="18" end="52" />
 
@@ -177,7 +177,7 @@ To create a cross-contract call with a callback, create two promises and use the
     ```
 
 <details>
-<summary> Gas </summary> 
+<summary> Gas </summary>
 
 You can attach an unused GAS weight by specifying the `.with_unused_gas_weight()` method but it is defaulted to 1. The unused GAS will be split amongst all the functions in the current execution depending on their weights. If there is only 1 function, any weight above 1 will result in all the unused GAS being attached to that function. If you specify a weight of 0, however, the unused GAS will **not** be attached to that function. If you have two functions, one with a weight of 3, and one with a weight of 1, the first function will get `3/4` of the unused GAS and the other function will get `1/4` of the unused GAS.
 
@@ -232,7 +232,7 @@ We repeat, if your function finishes correctly, then your callback will **always
 
 :::warning
 
-Always make sure to have enough Gas for your callback function to execute 
+Always make sure to have enough Gas for your callback function to execute
 
 :::
 
@@ -277,7 +277,7 @@ operation if necessary.
 
 You can call multiple functions in the same external contract, which is known as a **batch call**.
 
-An important property of batch calls is that they **act as a unit**: they execute in the same [receipt](../../../1.concepts/protocol/transactions.md#receipt-receipt), and if **any function fails**, then they **all get reverted**.
+An important property of batch calls is that they **act as a unit**: they execute in the same [receipt](/concepts/protocol/transaction-execution#receipts--finality), and if **any function fails**, then they **all get reverted**.
 
 <Tabs>
   <TabItem value="js" label="🌐 JavaScript">

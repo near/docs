@@ -5,15 +5,10 @@ sidebar_label: Quickstart ✨
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
+import {CodeTabs, Language, Github} from '@site/src/components/codetabs';
+import MovingForwardSupportSection from '@site/src/components/MovingForwardSupportSection';
 
-Most interactions with the NEAR ecosystem can be grouped in 2 categories: 
-1. Interacting with a [NEAR smart contract](./integrate-contracts.md).
-2. Interacting with a [NEAR component](./integrate-components.md).
-
-In this guide we will show you how to quickly spin-up an application where users can **login** using their wallets and interact with both **contracts** and **components**.
-
-Furthermore, the application readily integrates a `Web3 wallet`, allowing people to use `Metamask` to interact with multi-chain components.
+In this guide we will show you how to quickly spin up a frontend where users can **login** using their wallets and interact with a **contract**.
 
 :::tip Searching to integrate NEAR in your App?
 If you already have an application and want to integrate NEAR into it, we recommend you to first go through this guide and then check our documentation on [integrating NEAR to a frontend](./integrate-contracts.md)
@@ -29,8 +24,8 @@ If you already have [Node.js](https://nodejs.org/en/download) installed, simply 
 ```
 
 Use the interactive menu to set up:
-1. `A Near Gateway (Web App)`.
-2. `NextJs + React`.
+1. `A Web App`.
+2. `NextJs (Classic)`.
 
 :::tip Using pnpm
 While you can use our app with any package manager, we recommend you to skip the installation step and manually install the dependencies using `pnpm i`.
@@ -55,7 +50,7 @@ Make sure you are using **node >= v18**, you can easily switch versions using `n
 
 ## Landing Page
 
-Once the app starts you will see the landing page, rendering a navigation bar that allows users to login using their NEAR wallet, and two pathways:
+Once the app starts you will see the landing page, rendering a navigation bar that allows users to login using their NEAR wallet. You can then navigate to the docs or the `Near Integration` page (which we will do).
 
 ![img](/docs/assets/examples/hello-near-landing-page.png)
 *Landing page of Hello NEAR Gateway*
@@ -68,17 +63,28 @@ Go ahead and sign in with your NEAR account. If you don't have one, you can crea
 
 [Next.js](https://nextjs.org/) uses a template system, where each page is a React component.
 
-Our app's template is defined at `./src/layout.js`. It does two things:
+Our app's template is defined at `./src/pages/_app.js`. It does two things:
 
-1. Initializes a [wallet selector](../../4.tools/wallet-selector.md), and stores it so other components can access it later.
+1. Initializes a [wallet selector](../../4.tools/wallet-selector.md), and stores it in context so other components can access it later.
 2. Renders the navigation menu and the page's content.
 
-<Github url="https://github.com/near-examples/hello-near-examples/blob/master/frontend/src/layout.js" language="jsx" start="18" end="25" />
+<Github url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/_app.js" language="jsx" start="9" end="22" />
+
+When initializing the `wallet` you can choose to create a [function call access key](../../1.concepts/protocol/access-keys.md) for a specific contract for the application to use. This allows the application to sign `non-payable` methods on behalf of the user so they are not required to manually sign each transaction.
+
+```jsx
+const wallet = new Wallet({
+  createAccessKeyFor: HelloNearContract,
+  networkId: NetworkId,
+});
+```
+
+This example additionally includes the option to login with `Metamask` and other `EVM wallets`. Further information on how to add EVM wallets to your application can be found in the [Ethereum Wallets on NEAR documentation](../../4.tools/ethereum-wallets.md).
 
 <details>
 <summary>What is the wallet selector?</summary>
 
-The wallet selector is a component that allows users to select their preferred Near wallet to login. Our application implements a `useInitWallet` hook, that initializes a wallet selector and stores it so other components can access it later.  
+The wallet selector is a modal that allows users to select their preferred Near wallet to login. Our application creates a new instance of the wallet selector then stores it in the apps context so it can be accessed by other components.
 
 </details>
 
@@ -87,7 +93,7 @@ The wallet selector is a component that allows users to select their preferred N
 ### Navigation Bar & Login
 The navigation bar implements buttons to `login` and `logout` users with their Near wallet.
 
-The code for the navigation bar can be found at `./src/navigation.js`. The login and logout buttons are implemented by using the `signIn` and `signOut` methods from the wallet selector previously initialized:
+The code for the navigation bar can be found at `./src/components/navigation.js`. The login and logout buttons are implemented by using the `signIn` and `signOut` methods from the wallet selector previously initialized:
 
 <Github url="https://github.com/near-examples/hello-near-examples/blob/master/frontend/src/components/navigation.js" language="jsx" start="10" end="23" />
 
@@ -105,61 +111,21 @@ Login if you haven't done it yet and you will see a simple form that allows you 
 <hr className="subsection" />
 
 ### Under the Hood
-Interactions with NEAR are done using the `useStore` hook to retrieve the `wallet` we initialized on the `layout`. The wallet allows us to interact with the smart contract through the methods `viewMethod` and `callMethod`.
+We retrieve the `wallet` we initialized earlier via the `useContext` hook. The wallet allows us to interact with the smart contract through `viewMethod` and `callMethod`.
 
 - `viewMethod` is used to call functions that are read-only
 - `callMethod` is used to call functions that modify the state of the contract 
 
-<Github url="https://github.com/near-examples/hello-near-examples/blob/master/frontend/src/pages/hello-near/index.js" language="jsx" start="14" end="38" />
+<Github url="https://github.com/near-examples/hello-near-examples/blob/master/frontend/src/pages/hello-near/index.js" language="jsx" start="13" end="36" />
 
 On load, the first `useEffect` hook will call the contract's `get_greeting` method and set the `greeting` state to the result.
 
-If the user is logged in, the `storeGreeting` method will call the contract's `set_greeting` method and set the `greeting` state to the result.
-
----
-
-## Interacting with a Component
-
-Now let's take a look at the Components page. Go ahead and click on the card titled Web3 Components at the bottom on the page. Once you do you'll be taken to the screen below:
-
-![img](/docs/assets/examples/hello-near-components.png)
-*The Near Components Page*
-
-If you're following along, you should already be logged into your NEAR account. If you aren't, go ahead and do so now.
-
-You'll see that once you're logged in you are able to interact with the components that come included with the app.
-
-:::info Ethereum Components
-To interact with the Ethereum components (a Lido) you will need to have Metamask, or other web3 compatible wallets 
-:::
-
-:::warning Ethereum Mainnet
-While the component's code is stored in the **Near testnet**, the Lido component is connected to the **Ethereum mainnet**.
-:::
-
-<hr className="subsection" />
-
-### Under the Hood
-
-The source code (located in `./src/hello-components/page.js`) shows us that the page is rendering components pulled from the SocialDB:
-
-<CodeTabs>
-  <TabItem value="page.js">
-    <Github url="https://github.com/near-examples/hello-near-examples/blob/master/frontend/src/pages/hello-components/index.js" start="27" end="36" language="jsx" />
-  </TabItem>
-  <TabItem value="vm-components.js">
-      <Github url="https://github.com/near-examples/hello-near-examples/blob/master/frontend/src/components/vm-component.js" language="jsx" />
-  </TabItem>
-</CodeTabs>
-
-Particularly, the `Component` in the main page are wrappers around the `Widget` component of the SocialVM.
+If the user is logged in, the user will be able to use the `saveGreeting` function which will call the contract's `set_greeting` method and then update the `greeting`.
 
 ---
 
 ## Moving Forward
 
-That's it for our quickstart  tutorial. You have now seen a fully functional frontend that can talk with NEAR contracts and render Web3 components.
+That's it for our quickstart tutorial. You have now seen a fully functional frontend that can talk with NEAR contracts and render Web3 components.
 
-If you have any questions, do not hesitate in joining us on [Discord](https://near.chat). We regularly host Office Hours, in which you can join our voice channel and ask questions.
-
-Happy coding!
+<MovingForwardSupportSection />

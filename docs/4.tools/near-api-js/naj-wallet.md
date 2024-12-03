@@ -37,7 +37,8 @@ const connectionConfig = {
 const nearConnection = await connect(connectionConfig);
 
 // create wallet connection
-const walletConnection = new WalletConnection(nearConnection);
+// provide a prefix for the key
+const walletConnection = new WalletConnection(nearConnection, "example-prefix");
 ```
 
 </TabItem>
@@ -73,17 +74,15 @@ const walletConnection = new WalletConnection(nearConnection);
 ### Ask your user to Sign In {#sign-in}
 
 You first create a [WalletConnection](#wallet-connection), and then call `requestSignIn`.
-This will redirect the current page to the Wallet authentication page.
-You can configure success and failure redirect URLs.
+This will redirect the current page to the Wallet authentication page. You can optionally configure success and failure redirect URLs.
 
-This action creates an access key that will be stored in the browser's local storage.
-You can optionally list `methodNames` you want to allow for the access key.
-If you don't specify `methodNames` or pass an empty array, then all methods are allowed to be called (the access key will be created with permissions to call all methods).
+When you create a wallet connection you have the option to create a [function call access key](/concepts/protocol/access-keys#function-call-keys) for a specific contract to be used by your application. This allows the app to automatically sign `non-payable methods` for the user without having to sign each transaction manually in the wallet. You can also decide to specify a list of `methodNames` that will restrict the key to sign only certain methods on the specified contract. Passing an empty array will allow all methods to be signed.
 
 ```js
 // const walletConnection = new WalletConnection(nearConnection);
+// all parameters are optional
 walletConnection.requestSignIn({
-  contractId: "example-contract.testnet.REPLACE_ME",
+  contractId: "example-contract.testnet.REPLACE_ME", // optional
   methodNames: [], // optional
   successUrl: "REPLACE_ME://.com/success", // optional redirect URL on success
   failureUrl: "REPLACE_ME://.com/failure", // optional redirect URL on failure

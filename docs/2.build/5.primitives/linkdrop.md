@@ -367,7 +367,7 @@ The `linkdrop` contract will validate that you are transferring the NFT to a dro
 
 ## FT Drops
 
-The process to drop a Fungible Token is very similar to that of creating an [NFT drop](#nft-drop). You will first create the drop, and then fund it with FTs.
+The process to drop a Fungible Token is very similar to that of creating an [NFT drop](#nft-drops). You will first create the drop, and then fund it with FTs.
 
 #### 1.Creating a drop
 
@@ -454,7 +454,7 @@ near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_pe
 Having the Drop ID, you now need to transfer the fungible tokens to the linkdrop contract.
 
 :::note
-To transfer FTs to an account, you need to first [register](./ft#register-user) the receiver account (e.g. the keypom contract) on the FT contract.
+To transfer FTs to an account, you need to first [register](./ft#registering-a-user) the receiver account (e.g. the keypom contract) on the FT contract.
 :::
 
 <Tabs groupId="code-tabs">
