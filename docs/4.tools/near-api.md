@@ -6,6 +6,7 @@ sidebar_label: NEAR API
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import {Github, Language} from "@site/src/components/codetabs"
 
 The NEAR API is a set of libraries that allow you to interact with the NEAR blockchain. You can use it to create accounts, send tokens, deploy contracts, and more. 
 
@@ -57,9 +58,10 @@ To allow users to login into your web application using a wallet you will need t
   <TabItem value="js" label="🌐 JavaScript">
   You can use the API library in the browser, or in Node.js runtime. Some features are available only in one of the environments. For example, the `WalletConnection` is only for the browser, and there are different `KeyStore` providers for each environment.
 
-  ```js
-  import * as nearAPI from "near-api-js";
-  ```
+  <Github fname="send-tokens.js" language="javascript"
+    url="https://github.com/PiVortex/near-api-js-examples/tree/main/examples/send-tokens.js#L1"
+    start="1" end="1" />
+
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
 
@@ -80,19 +82,9 @@ To allow users to login into your web application using a wallet you will need t
   The object returned from `connect` is your entry-point for all commands in the API.
   To sign a transaction you'll need a [`KeyStore`](#key-store) to create a connection.
 
-  ```js
-  const { connect } = nearAPI;
-
-  const connectionConfig = {
-    networkId: "testnet",
-    keyStore: myKeyStore, // first create a key store
-    nodeUrl: "https://rpc.testnet.near.org",
-    walletUrl: "https://testnet.mynearwallet.com/",
-    helperUrl: "https://helper.testnet.near.org",
-    explorerUrl: "https://testnet.nearblocks.io",
-  };
-  const nearConnection = await connect(connectionConfig);
-  ```
+  <Github fname="send-tokens.js" language="javascript"
+    url="https://github.com/PiVortex/near-api-js-examples/tree/main/examples/send-tokens.js#L17-L25"
+    start="17" end="25" />
 
   <details>
     <summary>Mainnet/Localnet connection</summary>
@@ -136,59 +128,23 @@ To allow users to login into your web application using a wallet you will need t
   </TabItem>
   <TabItem value="dir" label="Using Credentials Directory">
 
-  ```js
-  // creates a keyStore that searches for keys in .near-credentials
-  // requires credentials stored locally by using a NEAR-CLI command: `near login`
-  // https://docs.near.org/tools/cli#near-login
-
-  const { keyStores } = nearAPI;
-  const homedir = require("os").homedir();
-  const CREDENTIALS_DIR = ".near-credentials";
-  const credentialsPath = require("path").join(homedir, CREDENTIALS_DIR);
-  const myKeyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
-  ```
+  <Github fname="credentials-directory.js" language="javascript"
+    url="https://github.com/PiVortex/near-api-js-examples/tree/main/examples/keystore-options/credentials-directory.js#L13-L15"
+    start="13" end="15" />
 
   </TabItem>
   <TabItem value="file" label="Using a File">
 
-  ```js
-  // creates keyStore from a provided file
-  // you will need to pass the location of the .json key pair
-
-  const { KeyPair, keyStores } = require("near-api-js");
-  const fs = require("fs");
-  const homedir = require("os").homedir();
-
-  const ACCOUNT_ID = "near-example.testnet"; // NEAR account tied to the keyPair
-  const NETWORK_ID = "testnet";
-  // path to your custom keyPair location (ex. function access key for example account)
-  const KEY_PATH = "/.near-credentials/near-example-testnet/get_token_price.json";
-
-  const credentials = JSON.parse(fs.readFileSync(homedir + KEY_PATH));
-  const myKeyStore = new keyStores.InMemoryKeyStore();
-  myKeyStore.setKey(
-    NETWORK_ID,
-    ACCOUNT_ID,
-    KeyPair.fromString(credentials.private_key)
-  );
-  ```
+  <Github fname="credentials-file.js" language="javascript"
+    url="https://github.com/PiVortex/near-api-js-examples/tree/main/examples/keystore-options/credentials-file.js#L12-L19"
+    start="12" end="19" />
 
   </TabItem>
   <TabItem value="key" label="Using a private key string">
 
-  ```js
-  // creates keyStore from a private key string
-  // you can define your key here or use an environment variable
-
-  const { keyStores, KeyPair } = nearAPI;
-  const myKeyStore = new keyStores.InMemoryKeyStore();
-  const PRIVATE_KEY =
-    "by8kdJoJHu7uUkKfoaLd2J2Dp1q1TigeWMG123pHdu9UREqPcshCM223kWadm";
-  // creates a public / private key pair using the provided private key
-  const keyPair = KeyPair.fromString(PRIVATE_KEY);
-  // adds the keyPair you created to keyStore
-  await myKeyStore.setKey("testnet", "example-account.testnet", keyPair);
-  ```
+  <Github fname="private-key-string.js" language="javascript"
+    url="https://github.com/PiVortex/near-api-js-examples/tree/main/examples/keystore-options/private-key-string.js#L6-L14"
+    start="6" end="14" />
 
   </TabItem>
   </Tabs>
@@ -319,28 +275,9 @@ RPC providers can experience intermittent downtime, connectivity issues, or rate
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
 
-  ```js
-  const jsonProviders = [
-    new JsonRpcProvider({
-      url: 'https://rpc.mainnet.near.org',
-    }),
-    new JsonRpcProvider(
-      {
-        url: 'https://another-rpc.cloud.com',
-        headers: { 'X-Api-Key': 'some string' },
-      },
-      { retries: 3, backoff: 2, wait: 500 }
-    ),
-  ];
-  const provider = new FailoverRpcProvider(jsonProviders);
-
-  await connect({
-    networkId: 'mainnet',
-    provider: provider,
-    // this isn't used if `provider` is specified, but is still required for backward compatibility
-    nodeUrl: 'https://rpc.mainnet.near.org',
-  });
-  ```
+  <Github fname="rpc-failover.js" language="javascript"
+    url="https://github.com/PiVortex/near-api-js-examples/tree/main/examples/rpc-failover.js#L16-L42"
+    start="16" end="42" />
 
   </TabItem>
 </Tabs>
@@ -356,9 +293,9 @@ This will return an Account object for you to interact with.
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
 
-  ```js
-  const account = await nearConnection.account("example-account.testnet");
-  ```
+  <Github fname="account-details.js" language="javascript"
+    url="https://github.com/PiVortex/near-api-js-examples/tree/main/examples/account-details.js#L22"
+    start="22" end="22" />
 
   :::warning
   In order to be able to use the account, its credentials must be stored in the [key store](#key-store)
@@ -382,11 +319,9 @@ This will return an Account object for you to interact with.
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
 
-  ```js
-  // gets account balance
-  const account = await nearConnection.account("example-account.testnet");
-  const accountBalance = await account.getAccountBalance();
-  ```
+  <Github fname="account-details.js" language="javascript"
+    url="https://github.com/PiVortex/near-api-js-examples/tree/main/examples/account-details.js#L26"
+    start="26" end="26" />
 
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
@@ -405,24 +340,6 @@ This will return an Account object for you to interact with.
 
 <hr class="subsection" />
 
-### Get Details {#get-details}
-
-Returns information about an account, such as authorized apps.
-
-<Tabs groupId="api">
-  <TabItem value="js" label="🌐 JavaScript">
-
-  ```js
-  // gets account details in terms of authorized apps and transactions
-  const account = await nearConnection.account("example-account.testnet");
-  const accountDetails = await account.getAccountDetails();
-  ```
-
-  </TabItem>
-</Tabs>
-
-<hr class="subsection" />
-
 ### Get State {#get-state}
 
 Get basic account information, such as amount of tokens the account has or the amount of storage it uses.
@@ -430,10 +347,10 @@ Get basic account information, such as amount of tokens the account has or the a
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
 
-  ```js
-  const account = await nearConnection.account("example-account.testnet");
-  const accountState = await account.state();
-  ```
+  <Github fname="account-details.js" language="javascript"
+    url="https://github.com/PiVortex/near-api-js-examples/tree/main/examples/account-details.js#L31"
+    start="31" end="31" />
+
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
   
@@ -448,6 +365,22 @@ Get basic account information, such as amount of tokens the account has or the a
 
 <hr class="subsection" />
 
+### Get Details {#get-details}
+
+Returns information about an account, such as authorized apps.
+
+<Tabs groupId="api">
+  <TabItem value="js" label="🌐 JavaScript">
+
+  <Github fname="account-details.js" language="javascript"
+    url="https://github.com/PiVortex/near-api-js-examples/tree/main/examples/account-details.js#L35"
+    start="35" end="35" />
+
+  </TabItem>
+</Tabs>
+
+<hr class="subsection" />
+
 ### Create an Account {#create-account}
 
 <Tabs groupId="api">
@@ -455,18 +388,9 @@ Get basic account information, such as amount of tokens the account has or the a
 
   In order to create .near or .testnet accounts, you need to make a function call to the top-level-domain (i.e. `near` or `testnet`),  calling `create_account`:
 
-  ```js
-  return await creatorAccount.functionCall({
-    contractId: "testnet",
-    methodName: "create_account",
-    args: {
-      new_account_id: "new-account.testnet",
-      new_public_key: "ed25519:2ASWccunZMBSygADWG2pXuHM6jWdnzLzWFU6r7wtaHYt",
-    },
-    gas: "300000000000000",
-    attachedDeposit: utils.format.parseNearAmount(amount),
-  });
-  ```
+  <Github fname="create-account.js" language="javascript"
+    url="https://github.com/PiVortex/near-api-js-examples/tree/main/examples/create-account.js#L40-L56"
+    start="40" end="56" />
 
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
@@ -503,15 +427,9 @@ Get basic account information, such as amount of tokens the account has or the a
 
   For creating a sub-account there is a specific method that is used.
 
-  ```js
-  // creates a sub-account using funds from the account used to create it.
-  const account = await nearConnection.account("example-account.testnet");
-  await account.createAccount(
-    "sub.example-account.testnet", // sub-account name
-    "8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc", // public key for sub account
-    "10000000000000000000" // initial balance for new account in yoctoNEAR
-  );
-  ```
+  <Github fname="create-account.js" language="javascript"
+    url="https://github.com/PiVortex/near-api-js-examples/tree/main/examples/create-account.js#L61-L72"
+    start="61" end="72" />
 
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
@@ -546,12 +464,9 @@ Get basic account information, such as amount of tokens the account has or the a
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
 
-  ```js
-  // deletes account found in the `account` object
-  // transfers remaining account balance to the accountId passed as an argument
-  const account = await nearConnection.account("example-account.testnet");
-  await account.deleteAccount("beneficiary-account.testnet");
-  ```
+  <Github fname="delete-account.js" language="javascript"
+    url="https://github.com/PiVortex/near-api-js-examples/tree/main/examples/delete-account.js#L59"
+    start="59" end="59" />
 
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
