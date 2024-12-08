@@ -11,6 +11,9 @@ NEAR accounts present the **unique** feature of being able to hold multiple [Acc
 1. `Full-Access Keys`: Have full control over the account, and should **never be shared**
 2. `Function-Call Keys`: Can sign calls to specific contract, and are **meant to be shared**
 
+
+Currently supported curve types are `ed25519` (default curve type used for public key cryptography in NEAR) and `secp256k1` (supported for compatibility with other blockchains).
+
 ---
 
 ## Full-Access Keys {#full-access-keys}
