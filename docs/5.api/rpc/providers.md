@@ -53,7 +53,7 @@ As a user, if a dApp or wallet doesn't support RPC failover and the primary prov
 
 Please read the following announcement: [Future of Pagoda Services](https://docs.near.org/blog/2024-08-13-pagoda-services).
 
-> The Infrastructure Committee feels that Pagoda's fully-subsidized near.org RPC service is getting in the way of decentralization efforts and is preventing high-quality commercial RPC offerings from gaining traction. If a NEAR core team continues to support a free-to-use near.org RPC service, it will be required to gradually lower its rate limits over the coming months to prevent abuse. More details on this plan will be communicated by the end of September 2024. In light of this proposed change, high-traffic near.org RPC users should start making plans to switch to other RPC providers.
+> The Infrastructure Committee feels that Pagoda's fully-subsidized near.org RPC service is getting in the way of decentralization efforts and is preventing high-quality commercial RPC offerings from gaining traction. If a NEAR core team continues to support a free-to-use near.org RPC service, it will be required to gradually lower its rate limits over the coming months to prevent abuse. In light of this proposed change, high-traffic near.org RPC users should start making plans to switch to other RPC providers.
 
 ### The current rate-limits of NEAR.org RPC endpoints
 
@@ -64,19 +64,21 @@ Starting December 1st, 2024:
 * **Archival-RPC Mainnet**: 200 requests/30s IP
 * **Archival-RPC Testnet**: 400 requests/30s per IP
 
-Starting January 1st, 2024:
+Starting January 1st, 2025:
 
 * **RPC Mainnet**: 500 requests/30s per IP or referrer
 * **RPC Testnet**: 600 requests/30s per IP or referrer
 * **Archival-RPC Mainnet**: 100 requests/30s per IP or referrer
 * **Archival-RPC Testnet**: 200 requests/30s per IP or referrer
 
-Starting February 1st, 2024
+Starting February 1st, 2025
 
 * **RPC Mainnet**: 150 req/30s per IP or referrer
 * **RPC Testnet**: 300 requests/30s per IP or referrer
 * **Archival-RPC Mainnet**: 20 requests/30s per IP or referrer
 * **Archival-RPC Testnet**: 100 requests/30s per IP or referrer
 
-Note: Rate limits will be applied by IP or by the HTTP “Referer” header, whichever hits first. Frontend applications will likely be rate-limited by the referrer, while backend applications will likely be rate-limited by the IP address.
+:::note
+Rate limits will be applied by IP or by the HTTP `Referer` header, whichever hits first. Frontend applications will likely be rate-limited by the referrer, while backend applications will likely be rate-limited by the IP address.
+:::
 
