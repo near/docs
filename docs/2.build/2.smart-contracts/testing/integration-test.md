@@ -234,7 +234,7 @@ This approach is more complex to do and also cannot be performed without restart
 <TabItem value="js" label="🌐 JavaScript" default>
 
   <Github fname="fast-forward.ava.ts" language="js"
-          url="https://github.com/near/near-workspaces-js/blob/main/__tests__/08.fast-forward.ava.ts"
+          url="https://github.com/near/near-workspaces-js/blob/main/__tests__/09.fast-forward.ava.ts"
           start="34" end="53" />
 
 </TabItem>
