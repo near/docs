@@ -32,7 +32,7 @@ Lets take a look at the test of our [Quickstart Project](../quickstart.md) [👋
 <CodeTabs>
   <Language value="js" language="js">
     <Github fname="main.ava.ts"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/sandbox-test/main.ava.js" start="11" end="45"/>
+            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/sandbox-test/main.ava.js" start="34" end="53"/>
   </Language>
 </CodeTabs>
 
