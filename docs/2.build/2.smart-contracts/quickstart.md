@@ -269,6 +269,7 @@ If you encounter issues with Docker or prefer not to use Docker for building con
   ```bash
   npm run build
   ```
+  Or
 
   ```bash
   npm run build --no-docker
@@ -281,8 +282,10 @@ If you encounter issues with Docker or prefer not to use Docker for building con
   ```bash
   cargo near build
   ```
-    ```bash
-    cargo near build --no-docker
+  Or
+  
+  ```bash
+  cargo near build --no-docker
   ```
 
   </TabItem>
