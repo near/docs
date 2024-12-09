@@ -262,13 +262,16 @@ Remember that you can create a named account through any wallet (i.e. [MyNearWal
 
 ## Build the Contract
 
-When you are ready to create a build of the contract run a one-line command depending on your environment.
-
+If you encounter issues with Docker or prefer not to use Docker for building contracts, you can pass the --no-docker flag to certain commands (where applicable). 
 <Tabs groupId="cli-tabs">
   <TabItem value="js" label="🌐 JavaScript">
 
   ```bash
   npm run build
+  ```
+
+  ```bash
+  npm run build --no-docker
   ```
 
   </TabItem>
@@ -277,6 +280,9 @@ When you are ready to create a build of the contract run a one-line command depe
 
   ```bash
   cargo near build
+  ```
+    ```bash
+    cargo near build --no-docker
   ```
 
   </TabItem>
