@@ -17,8 +17,7 @@ If you want to use a custom RPC provider with NEAR Wallet Selector, [check this 
 
 | Provider                                                                   | Endpoint Root                                                |
 | -------------------------------------------------------------------------- | ------------------------------------------------------------ |
-| [NEAR](setup.md)                                                           | `https://rpc.mainnet.near.org`                               |
-| [Pagoda](https://www.pagoda.co/console)                                    | `https://rpc.mainnet.pagoda.co`                              |
+| [NEAR.org (deprecated)](setup.md)                                          | `https://rpc.mainnet.near.org`                               |
 | [1RPC](https://docs.1rpc.io/overview/about-1rpc)                           | `https://1rpc.io/near`                                       |
 | [All That Node](https://docs.allthatnode.com/protocols/near/)              | `https://near-mainnet-rpc.allthatnode.com:3030`              |
 | [ankr.com](https://www.ankr.com/docs/rpc-service/chains/chains-list/#near) | `https://rpc.ankr.com/near`                                  |
@@ -41,8 +40,7 @@ If you want to use a custom RPC provider with NEAR Wallet Selector, [check this 
 
 | Provider                                                                   | Endpoint Root                                                |
 | -------------------------------------------------------------------------- | ------------------------------------------------------------ |
-| [NEAR](setup.md)                                                           | `https://rpc.testnet.near.org`                               |
-| [Pagoda](https://www.pagoda.co/console)                                    | `https://rpc.testnet.pagoda.co`                              |
+| [NEAR.org (deprecated)](setup.md)                                          | `https://rpc.testnet.near.org`                               |
 | [FASTNEAR](https://fastnear.com)                                           | `https://test.rpc.fastnear.com`                              |
 
 ## RPC Failover
@@ -50,3 +48,35 @@ If you want to use a custom RPC provider with NEAR Wallet Selector, [check this 
 In `near-api-js` you can use [`FailoverRpcProvider`](../../4.tools/near-api-js/quick-reference.md#rpc-failover) to automatically switch RPC providers when one provider is experiencing downtime, or implement an RPC selection widget that allows users to add their own RPC provider.
 
 As a user, if a dApp or wallet doesn't support RPC failover and the primary provider is down, you can use an RPC Selector browser extension to redirect all requests to an RPC provider of your choice.
+
+## On NEAR.org RPC Deprecation
+
+Please read the following announcement: [Future of Pagoda Services](https://docs.near.org/blog/2024-08-13-pagoda-services).
+
+> The Infrastructure Committee feels that Pagoda's fully-subsidized near.org RPC service is getting in the way of decentralization efforts and is preventing high-quality commercial RPC offerings from gaining traction. If a NEAR core team continues to support a free-to-use near.org RPC service, it will be required to gradually lower its rate limits over the coming months to prevent abuse. More details on this plan will be communicated by the end of September 2024. In light of this proposed change, high-traffic near.org RPC users should start making plans to switch to other RPC providers.
+
+### The current rate-limits of NEAR.org RPC endpoints
+
+Starting December 1st, 2024:
+
+* **RPC Mainnet**: 2000 requests/30s per IP
+* **RPC Testnet**: 900 requests/30s per IP
+* **Archival-RPC Mainnet**: 200 requests/30s IP
+* **Archival-RPC Testnet**: 400 requests/30s per IP
+
+Starting January 1st, 2024:
+
+* **RPC Mainnet**: 500 requests/30s per IP or referrer
+* **RPC Testnet**: 600 requests/30s per IP or referrer
+* **Archival-RPC Mainnet**: 100 requests/30s per IP or referrer
+* **Archival-RPC Testnet**: 200 requests/30s per IP or referrer
+
+Starting February 1st, 2024
+
+* **RPC Mainnet**: 150 req/30s per IP or referrer
+* **RPC Testnet**: 300 requests/30s per IP or referrer
+* **Archival-RPC Mainnet**: 20 requests/30s per IP or referrer
+* **Archival-RPC Testnet**: 100 requests/30s per IP or referrer
+
+Note: Rate limits will be applied by IP or by the HTTP “Referer” header, whichever hits first. Frontend applications will likely be rate-limited by the referrer, while backend applications will likely be rate-limited by the IP address.
+
