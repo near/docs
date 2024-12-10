@@ -48,6 +48,12 @@ To allow users to login into your web application using a wallet you will need t
   cargo add near-api
   ```
   </TabItem>
+  <TabItem value="python" label="🐍 Python">
+
+  ```shell
+  pip install py-near
+  ```
+  </TabItem>
 </Tabs>
 
 <hr class="subsection" />
@@ -68,6 +74,19 @@ To allow users to login into your web application using a wallet you will need t
   The methods to interact with the NEAR API are available through the `prelude` module.
   ```rust
   use near_api::prelude::*;
+  ```
+  </TabItem>
+  <TabItem value="python" label="🐍 Python">
+
+  You can use the NEAR API by importing the `py_near` package, either entirely
+  ```python
+  import py_near
+  ```
+
+  or only the parts you need, for example:
+  ```python
+  from py_near.account import Account
+  from py_near.providers import JsonProvider
   ```
   </TabItem>
 </Tabs>
@@ -151,7 +170,7 @@ To allow users to login into your web application using a wallet you will need t
 
   <details>
     <summary>Window error using `Node.js`</summary>
-    
+
     You're maybe using a KeyStore that's for the browser. Instead, use a [filesystem key](/tools/near-api-js/quick-reference#key-store) or private key string.
 
     **Browser KeyStore:**
@@ -178,7 +197,7 @@ To allow users to login into your web application using a wallet you will need t
   ```rust
   let network = NetworkConfig::testnet();
   ```
-  
+
   You can make the connection mutable to change some details of the connection.
 
   ```rust
@@ -202,7 +221,7 @@ To allow users to login into your web application using a wallet you will need t
   };
   ```
 
-<hr class="subsection" />
+  <hr class="subsection" />
 
   #### Signer
 
@@ -264,21 +283,35 @@ To allow users to login into your web application using a wallet you will need t
   </Tabs>
 
   </TabItem>
+  <TabItem value="python" label="🐍 Python">
+  TODO: not exactly the same in Python, it's more and account + RPC URL, or a JSON RPC provider
+  </TabItem>
 </Tabs>
 
 <hr class="subsection" />
 
 ### RPC Failover
 
-RPC providers can experience intermittent downtime, connectivity issues, or rate limits that cause client transactions to fail. This can be prevented by using the `FailoverRpcProvider` that supports multiple RPC providers.
+RPC providers can experience intermittent downtime, connectivity issues, or rate limits that cause client transactions to fail. This can be prevented by using multiple RPC providers.
 
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
+
+  Use the `FailoverRpcProvider` to supports multiple RPC providers.
 
   <Github fname="rpc-failover.js" language="javascript"
     url="https://github.com/PiVortex/near-api-js-examples/tree/main/examples/rpc-failover.js#L16-L42"
     start="16" end="42" />
 
+  </TabItem>
+  <TabItem value="python" label="🐍 Python">
+    You can pass multiple RPC providers to `JsonRpcProvider`
+
+    ```python
+    from py_near.providers import JsonProvider
+
+    provider = JsonProvider(["https://test.rpc.fastnear.com", "https://rpc.testnet.pagoda.co"])
+    ```
   </TabItem>
 </Tabs>
 
@@ -310,6 +343,22 @@ This will return an Account object for you to interact with.
   ```
 
   </TabItem>
+  <TabItem value="python" label="🐍 Python">
+    You can instantiate any account with the following code:
+
+    ```python
+    from py_near.account import Account
+
+    account = Account(account_id="example-account.testnet", rpc_addr="https://rpc.testnet.pagoda.co")
+    await account.startup()
+    ```
+
+    If you want to use it to submit transactions later, you need to also pass the `private_key` param:
+
+    ```python
+    account = Account(account_id="example-account.testnet", private_key="ed25519:...", rpc_addr="https://rpc.testnet.pagoda.co")
+    ```
+  </TabItem>
 </Tabs>
 
 <hr class="subsection" />
@@ -336,6 +385,17 @@ This will return an Account object for you to interact with.
   ```
 
   </TabItem>
+  <TabItem value="python" label="🐍 Python">
+
+    ```python
+    from py_near.account import Account
+
+    account = Account(account_id="example-account.testnet", rpc_addr="https://rpc.testnet.pagoda.co")
+    await account.startup()
+
+    account_balance = account.get_balance()
+    ```
+  </TabItem>
 </Tabs>
 
 <hr class="subsection" />
@@ -353,13 +413,24 @@ Get basic account information, such as amount of tokens the account has or the a
 
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
-  
+
   ```rust
   let account_id: AccountId = "example-account.testnet".parse().unwrap();
   let account = Account(my_account_id.clone());
 
   let account_state = account.view().fetch_from(&network).await.unwrap();
   ```
+  </TabItem>
+  <TabItem value="python" label="🐍 Python">
+
+    ```python
+    from py_near.account import Account
+
+    account = Account(account_id="example-account.testnet", rpc_addr="https://rpc.testnet.pagoda.co")
+    await account.startup()
+
+    account_state = account.fetch_state()
+    ```
   </TabItem>
 </Tabs>
 
@@ -386,7 +457,7 @@ Returns information about an account, such as authorized apps.
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
 
-  In order to create .near or .testnet accounts, you need to make a function call to the top-level-domain (i.e. `near` or `testnet`),  calling `create_account`:
+  In order to create .near or .testnet accounts, you need to make a function call to the top-level-domain (i.e. `near` or `testnet`), calling `create_account`:
 
   <Github fname="create-account.js" language="javascript"
     url="https://github.com/PiVortex/near-api-js-examples/tree/main/examples/create-account.js#L40-L56"
@@ -406,9 +477,9 @@ Returns information about an account, such as authorized apps.
       account_id.clone(), // account id funding the new account
       NearToken::from_near(1), // Initial balance for the new account
     )
-    .new_keypair() // Generates a new random key pair 
+    .new_keypair() // Generates a new random key pair
     .save_generated_seed_to_file("./new_account_seed".into())
-    .unwrap() 
+    .unwrap()
     .with_signer(signer.clone())
     .send_to(&network)
     .await
@@ -445,15 +516,29 @@ Returns information about an account, such as authorized apps.
       account_id.clone(), // account id funding the new account
       NearToken::from_near(1), // Initial balance for the new account
     )
-    .new_keypair() // Generates a new random key pair 
+    .new_keypair() // Generates a new random key pair
     .save_generated_seed_to_file("./new_account_seed".into())
-    .unwrap() 
+    .unwrap()
     .with_signer(signer.clone())
     .send_to(&network)
     .await
     .unwrap();
   ```
 
+  </TabItem>
+  <TabItem value="python" label="🐍 Python">
+
+    Create a sub-account and fund it with your main account:
+
+    ```python
+    from py_near.account import Account
+    from py_near.dapps.core import NEAR
+
+    account = Account(account_id="example-account.testnet", private_key="ed25519:...", rpc_addr="https://rpc.testnet.pagoda.co")
+    await account.startup()
+
+    res = account.create_account(account_id="sub.example-account.testnet", public_key="...", initial_balance=1 * NEAR))
+    ```
   </TabItem>
 </Tabs>
 
@@ -515,6 +600,18 @@ Transfer NEAR tokens between accounts. This returns an object with transaction a
     .assert_success();
   ```
 
+  </TabItem>
+  <TabItem value="python" label="🐍 Python">
+
+    ```python
+    from py_near.account import Account
+    from py_near.dapps.core import NEAR
+
+    account = Account(account_id="example-account.testnet", private_key="ed25519:...", rpc_addr="https://rpc.testnet.pagoda.co")
+    await account.startup()
+
+    await account.send_money("receiver-account.testnet", 1 * NEAR))
+    ```
   </TabItem>
 </Tabs>
 
@@ -624,7 +721,7 @@ Transfer NEAR tokens between accounts. This returns an object with transaction a
 
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
-  
+
   You may batch send actions by using the `signAndSendTransaction({})` method from `account`. This method takes an array of transaction actions, and if one fails, the entire operation will fail. Here's a simple example:
 
   ```js
@@ -778,7 +875,7 @@ You can deploy a contract from a compiled WASM file. This returns an object with
   let new_contract_id: AccountId = "new-contract.testnet".parse().unwrap();
   let contract = Contract(new_contract_id.clone());
 
-  new_contract    
+  new_contract
     .deploy(include_bytes!("../contracts/contract.wasm").to_vec())
     .without_init_call() // Can also be .with_init_call()
     .with_signer(signer)
@@ -819,14 +916,14 @@ You can get and manage keys for an account.
 
   let new_function_call_key = AccessKeyPermission::FunctionCall(FunctionCallPermission {
     allowance: Some(250_000_000_000_000_000_000_000), // Allowance this key is allowed to call (optional)
-    receiver_id: "example-account.testnet".to_string(), // Contract this key is allowed to call 
-    method_names: vec!["example_method".to_string()], // Methods this key is allowed to call 
+    receiver_id: "example-account.testnet".to_string(), // Contract this key is allowed to call
+    method_names: vec!["example_method".to_string()], // Methods this key is allowed to call
   });
 
   let (new_private_key, txn) = Account(account_id.clone())
     .add_key(new_function_call_key)
     .new_keypair()
-    .generate_secret_key() // Generates a new keypair via private key 
+    .generate_secret_key() // Generates a new keypair via private key
     .unwrap();
 
   println!("New private key: {:?}", new_private_key.to_string());
@@ -860,7 +957,7 @@ You can get and manage keys for an account.
   let (new_private_key, txn) = Account(account_id.clone())
     .add_key(AccessKeyPermission::FullAccess)
     .new_keypair()
-    .generate_secret_key() // Generates a new keypair via private key 
+    .generate_secret_key() // Generates a new keypair via private key
     .unwrap();
 
   println!("New private key: {:?}", new_private_key.to_string());
@@ -886,7 +983,7 @@ You can get and manage keys for an account.
 
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
-  
+
   ```rust
   let account = Account(account_id.clone());
   let keys = account.list_keys().fetch_from(&network).await.unwrap();
@@ -923,15 +1020,24 @@ You can get and manage keys for an account.
 
 ### NEAR => yoctoNEAR {#near--yoctonear}
 
+Convert NEAR amount into yoctoNEAR (10^-24)
+
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
 
   ```js
-  // converts NEAR amount into yoctoNEAR (10^-24)
-
   const { utils } = nearAPI;
   const amountInYocto = utils.format.parseNearAmount("1");
   ```
+
+  </TabItem>
+  <TabItem value="python" label="🐍 Python">
+
+   ```python
+   from py_near.dapps.core import NEAR
+
+   amount_in_yocto = 1 * NEAR
+   ```
 
   </TabItem>
 </Tabs>
@@ -962,6 +1068,11 @@ You can get and manage keys for an account.
 
   - [Handling Passphrases](https://github.com/near/near-seed-phrase)
   - [Type Docs](https://near.github.io/near-api-js)
+
+  </TabItem>
+  <TabItem value="python" label="🐍 Python">
+
+    - [Phone number transfer](https://py-near.readthedocs.io/en/latest/clients/phone.html)
 
   </TabItem>
 </Tabs>
