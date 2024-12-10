@@ -50,6 +50,12 @@ These examples are references to code snippets, feel free to explore the full co
   cargo add near-api
   ```
   </TabItem>
+  <TabItem value="python" label="🐍 Python">
+
+  ```shell
+  pip install py-near
+  ```
+  </TabItem>
 </Tabs>
 
 <hr class="subsection" />
@@ -84,6 +90,19 @@ These examples are references to code snippets, feel free to explore the full co
     url="https://github.com/PiVortex/near-api-examples/tree/main/rust/examples/send_tokens.rs#L2"
     start="2" end="2" />
 
+  </TabItem>
+  <TabItem value="python" label="🐍 Python">
+
+  You can use the NEAR API by importing the `py_near` package, either entirely
+  ```python
+  import py_near
+  ```
+
+  or only the parts you need, for example:
+  ```python
+  from py_near.account import Account
+  from py_near.providers import JsonProvider
+  ```
   </TabItem>
 </Tabs>
 
@@ -264,6 +283,9 @@ These examples are references to code snippets, feel free to explore the full co
     </Tabs>
 
   </TabItem>
+  <TabItem value="python" label="🐍 Python">
+  TODO: not exactly the same in Python, it's more and account + RPC URL, or a JSON RPC provider
+  </TabItem>
 </Tabs>
 
 
@@ -280,6 +302,15 @@ These examples are references to code snippets, feel free to explore the full co
     url="https://github.com/PiVortex/near-api-examples/tree/main/javascript/examples/rpc-failover.js#L12-L34"
     start="12" end="34" />
 
+  </TabItem>
+  <TabItem value="python" label="🐍 Python">
+    You can pass multiple RPC providers to `JsonRpcProvider`
+
+    ```python
+    from py_near.providers import JsonProvider
+
+    provider = JsonProvider(["https://test.rpc.fastnear.com", "https://rpc.testnet.pagoda.co"])
+    ```
   </TabItem>
 </Tabs>
 
@@ -306,6 +337,22 @@ This will return an Account object for you to interact with.
     start="5" end="7" />
 
   </TabItem>
+  <TabItem value="python" label="🐍 Python">
+    You can instantiate any account with the following code:
+
+    ```python
+    from py_near.account import Account
+
+    account = Account(account_id="example-account.testnet", rpc_addr="https://rpc.testnet.pagoda.co")
+    await account.startup()
+    ```
+
+    If you want to use it to submit transactions later, you need to also pass the `private_key` param:
+
+    ```python
+    account = Account(account_id="example-account.testnet", private_key="ed25519:...", rpc_addr="https://rpc.testnet.pagoda.co")
+    ```
+  </TabItem>
 </Tabs>
 
 <hr class="subsection" />
@@ -329,6 +376,17 @@ Gets the available and staked balance of an account in yoctoNEAR.
     start="13" end="18" />
 
   </TabItem>
+  <TabItem value="python" label="🐍 Python">
+
+    ```python
+    from py_near.account import Account
+
+    account = Account(account_id="example-account.testnet", rpc_addr="https://rpc.testnet.pagoda.co")
+    await account.startup()
+
+    account_balance = account.get_balance()
+    ```
+  </TabItem>
 </Tabs>
 
 <hr class="subsection" />
@@ -351,6 +409,17 @@ Get basic account information, such as its code hash and storage usage.
     url="https://github.com/PiVortex/near-api-examples/tree/main/rust/examples/account_details.rs#L21-L21"
     start="21" end="21" />
 
+  </TabItem>
+  <TabItem value="python" label="🐍 Python">
+
+    ```python
+    from py_near.account import Account
+
+    account = Account(account_id="example-account.testnet", rpc_addr="https://rpc.testnet.pagoda.co")
+    await account.startup()
+
+    account_state = account.fetch_state()
+    ```
   </TabItem>
 </Tabs>
 
@@ -448,6 +517,20 @@ Returns the authorized apps of an account. This is a list of contracts that the 
     start="65" end="82" />
 
   </TabItem>
+  <TabItem value="python" label="🐍 Python">
+
+    Create a sub-account and fund it with your main account:
+
+    ```python
+    from py_near.account import Account
+    from py_near.dapps.core import NEAR
+
+    account = Account(account_id="example-account.testnet", private_key="ed25519:...", rpc_addr="https://rpc.testnet.pagoda.co")
+    await account.startup()
+
+    res = account.create_account(account_id="sub.example-account.testnet", public_key="...", initial_balance=1 * NEAR))
+    ```
+  </TabItem>
 </Tabs>
 
 <hr class="subsection" />
@@ -495,6 +578,18 @@ Transfer NEAR tokens between accounts.
     url="https://github.com/PiVortex/near-api-examples/tree/main/rust/examples/send_tokens.rs#L22-L28"
     start="22" end="28" />
 
+  </TabItem>
+  <TabItem value="python" label="🐍 Python">
+
+    ```python
+    from py_near.account import Account
+    from py_near.dapps.core import NEAR
+
+    account = Account(account_id="example-account.testnet", private_key="ed25519:...", rpc_addr="https://rpc.testnet.pagoda.co")
+    await account.startup()
+
+    await account.send_money("receiver-account.testnet", 1 * NEAR))
+    ```
   </TabItem>
 </Tabs>
 
@@ -745,6 +840,15 @@ Convert an amount in NEAR to an amount in yoctoNEAR.
     start="7" end="7" />
 
   </TabItem>
+  <TabItem value="python" label="🐍 Python">
+
+   ```python
+   from py_near.dapps.core import NEAR
+
+   amount_in_yocto = 1 * NEAR
+   ```
+
+  </TabItem>
 </Tabs>
 
 <hr class="subsection" />
@@ -790,6 +894,11 @@ Convert an amount in NEAR to an amount in yoctoNEAR.
   - [Documentation](https://docs.rs/near-api/latest/near_api/)
   - [Github](https://github.com/near/near-api-rs)
   - [Full Examples](https://github.com/PiVortex/near-api-examples/tree/main/rust)
+
+  </TabItem>
+  <TabItem value="python" label="🐍 Python">
+
+    - [Phone number transfer](https://py-near.readthedocs.io/en/latest/clients/phone.html)
 
   </TabItem>
 </Tabs>
