@@ -39,16 +39,16 @@ While making your contract, it is likely that you will want to query information
 
 <Language value="rust" language="rust">
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/cross-contract-calls/blob/high-low-level-examples/contract-simple-rs/src/lib.rs"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/lib.rs"
             start="1" end="29" />
     <Github fname="external_contract.rs"
-            url="https://github.com/near-examples/cross-contract-calls/blob/high-low-level-examples/contract-simple-rs/src/external_contract.rs"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/external_contract.rs"
             start="1" end="8" />
     <Github fname="high_level.rs"
-            url="https://github.com/near-examples/cross-contract-calls/blob/high-low-level-examples/contract-simple-rs/src/high_level.rs"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/high_level.rs"
             start="8" end="37" />
     <Github fname="low_level.rs"
-            url="https://github.com/near-examples/cross-contract-calls/blob/high-low-level-examples/contract-simple-rs/src/low_level.rs"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/low_level.rs"
             start="7" end="39" />
 
 </Language>
@@ -70,17 +70,17 @@ Calling another contract passing information is also a common scenario. Below yo
 
 <Language value="rust" language="rust">
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/cross-contract-calls/blob/high-low-level-examples/contract-simple-rs/src/lib.rs"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/lib.rs"
             start="1" end="29" />
     <Github fname="external_contract.rs"
-            url="https://github.com/near-examples/cross-contract-calls/blob/high-low-level-examples/contract-simple-rs/src/external_contract.rs"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/external_contract.rs"
             start="1" end="8" />
     <Github fname="high_level.rs"
-            url="https://github.com/near-examples/cross-contract-calls/blob/high-low-level-examples/contract-simple-rs/src/high_level.rs"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/high_level.rs"
             start="39" end="66" />
     <Github fname="low_level.rs"
-            url="https://github.com/near-examples/cross-contract-calls/blob/high-low-level-examples/contract-simple-rs/src/low_level.rs"
-            start="41" end="74" />
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/low_level.rs"
+            start="41" end="72" />
 
 </Language>
 
@@ -216,9 +216,9 @@ In the callback function you will have access to the result, which will contain 
 
 <Language value="rust" language="rust">
 
-  <Github fname="lib.rs"
-          url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/lib.rs"
-          start="37" end="51" />
+  <Github fname="high_level.rs"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/high_level.rs"
+            start="23" end="37" />
 
 </Language>
 
@@ -284,14 +284,14 @@ An important property of batch calls is that they **act as a unit**: they execut
 
   <Github fname="batch_actions" language="js"
         url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/batch_actions.ts"
-        start="7" end="17" />
+        start="5" end="17" />
 
   </TabItem>
   <TabItem value="rs" label="🦀 Rust">
 
   <Github fname="lib.ts" language="rust"
         url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/batch_actions.rs"
-        start="14" end="19" />
+        start="8" end="20" />
 
   </TabItem>
 </Tabs>
