@@ -270,18 +270,13 @@ When running the near account create-account command in a headless Linux environ
 ## Build the Contract
 
 When you are ready to create a build of the contract run a one-line command depending on your environment.
+
 <Tabs groupId="cli-tabs">
   <TabItem value="js" label="🌐 JavaScript">
 
   ```bash
   npm run build
   ```
-:::info
-
-If you encounter issues with Docker you can use the `--no-docker` flag to skip creating a reproducible build
-
-:::
-
 
   </TabItem>
 
@@ -290,11 +285,13 @@ If you encounter issues with Docker you can use the `--no-docker` flag to skip c
   ```bash
   cargo near build
   ```
-  Or
+
   
-  ```bash
-  cargo near build --no-docker
-  ```
+  :::info
+
+  If you encounter issues with Docker you can use the `--no-docker` flag to skip creating a reproducible build
+
+  :::
 
   </TabItem>
 
