@@ -127,6 +127,7 @@ const sidebar = {
             "build/smart-contracts/anatomy/actions",
             "build/smart-contracts/anatomy/crosscontract",
             "build/smart-contracts/anatomy/yield-resume",
+            "build/smart-contracts/anatomy/gascalc",
             "build/smart-contracts/security/checklist",
             {
               "type": "html",
@@ -139,6 +140,7 @@ const sidebar = {
                 "build/smart-contracts/anatomy/serialization-protocols",
                 "build/smart-contracts/anatomy/reduce-size",
                 "build/smart-contracts/anatomy/reproducible-builds",
+                "build/smart-contracts/anatomy/macros",
               ]
             }
           ]
