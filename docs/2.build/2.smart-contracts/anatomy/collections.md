@@ -186,7 +186,7 @@ All structures need to be initialized using a **unique `prefix`**, which will be
     
     <Github fname="contract.ts" language="js"
           url="https://github.com/near-examples/storage-examples/blob/main/collections-js/src/contract.ts"
-          start="6" end="21" />
+          start="6" end="25" />
 
 :::tip
 
@@ -239,7 +239,7 @@ Implements a [vector/array](https://en.wikipedia.org/wiki/Array_data_structure) 
   <TabItem value="js" label="🌐 JavaScript">
     <Github fname="contract.ts" language="js"
             url="https://github.com/near-examples/storage-examples/blob/main/collections-js/src/contract.ts"
-            start="34" end="58" />
+            start="48" end="73" />
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
     <Github fname="vector.rs" language="rust"
@@ -261,7 +261,7 @@ Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) w
   <TabItem value="js" label="🌐 JavaScript">
     <Github fname="contract.ts" language="js"
           url="https://github.com/near-examples/storage-examples/blob/main/collections-js/src/contract.ts"
-          start="97" end="116" />
+          start="111" end="131" />
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
     <Github fname="lookup_map.rs" language="rust"
@@ -279,7 +279,7 @@ Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) w
   <TabItem value="js" label="🌐 JavaScript">
     <Github fname="contract.ts" language="js"
           url="https://github.com/near-examples/storage-examples/blob/main/collections-js/src/contract.ts"
-          start="118" end="137" />
+          start="132" end="152" />
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
     <Github fname="iterable_map.rs" language="rust"
@@ -297,7 +297,7 @@ Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type)) which
 
   <TabItem value="js" label="🌐 JavaScript">
     <Github fname="contract.ts" language="js"
-      url="https://github.com/near-examples/storage-examples/blob/main/collections-js/src/contract.ts" start="60" end="74" />
+      url="https://github.com/near-examples/storage-examples/blob/main/collections-js/src/contract.ts" start="74" end="89" />
   </TabItem>
 
   <TabItem value="rust" label="🦀 Rust">
@@ -317,7 +317,7 @@ Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) w
   <TabItem value="js" label="🌐 JavaScript">
     <Github fname="contract.ts" language="js"
           url="https://github.com/near-examples/storage-examples/blob/main/collections-js/src/contract.ts"
-          start="76" end="95" />
+          start="90" end="110" />
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
     <Github fname="iterable_set.rs" language="rust"
@@ -359,7 +359,7 @@ When nesting SDK collections, be careful to **use different prefixes** for all c
   <TabItem value="js" label="🌐 JavaScript">
 
     <Github fname="nested.ts" language="js"
-            url="https://github.com/near-examples/storage-examples/blob/main/collections-js/src/contract.ts" start="140" end="182"/>
+            url="https://github.com/near-examples/storage-examples/blob/main/collections-js/src/contract.ts" start="153" end="196"/>
 
   </TabItem>
 
