@@ -554,13 +554,9 @@ const sidebar = {
       "type": "category",
       "label": "Wallets",
       "items": [
+        "tools/wallets",
         "tools/wallet-selector",
         "tools/ethereum-wallets",
-        {
-          "type": "link",
-          "label": "Remix IDE Plugin",
-          "href": "https://docs.welldonestudio.io/code/getting-started"
-        }
       ]
     },
     {
@@ -571,7 +567,20 @@ const sidebar = {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Ecosystem Tools </small></b></span>"
     },
-    "tools/wallets",
+    {
+      "type": "category",
+      "label": "Data APIs",
+      "items": [
+        'tools/ecosystem-apis/fastnear-api',
+        'tools/ecosystem-apis/nearblocks-api',
+        'tools/ecosystem-apis/pikespeak-api',
+      ]
+    },
+    {
+      "type": "link",
+      "label": "Remix IDE Plugin",
+      "href": "https://docs.welldonestudio.io/code/getting-started"
+    },
     {
       "type": "link",
       "label": "Testnet Faucet",
@@ -582,7 +591,6 @@ const sidebar = {
       "label": "Keypom",
       "href": "https://keypom.xyz/"
     },
-    'tools/fastnear-api',
     "tools/explorer",
     "tools/indexing"
   ],

@@ -258,6 +258,13 @@ Remember that you can create a named account through any wallet (i.e. [MyNearWal
 
 :::
 
+:::warning
+
+When running the near account create-account command in a headless Linux environment (e.g., WSL), the `save-to-keychain` option may fail due to platform limitations. Use `save-to-legacy-keychain` instead of `save-to-keychain` to ensure compatibility.
+
+:::
+
+
 ---
 
 ## Build the Contract
@@ -278,6 +285,13 @@ When you are ready to create a build of the contract run a one-line command depe
   ```bash
   cargo near build
   ```
+
+  
+  :::info
+
+  If you encounter issues with Docker you can use the `--no-docker` flag to skip creating a reproducible build
+
+  :::
 
   </TabItem>
 
@@ -320,7 +334,7 @@ Having our account created, we can now deploy the contract:
   <TabItem value="short" label="Short">
 
   ```bash
-  near deploy <created-account> ./target/wasm32-unknown-unknown/release/hello.wasm
+  near deploy <created-account> ./target/wasm32-unknown-unknown/release/<generated-file>.wasm
   ```
 
   </TabItem>
@@ -328,7 +342,7 @@ Having our account created, we can now deploy the contract:
   <TabItem value="full" label="Full">
 
   ```bash
-  near contract deploy <created-account> use-file ./target/wasm32-unknown-unknown/release/hello.wasm without-init-call network-config testnet sign-with-keychain send
+  near contract deploy <created-account> use-file ./target/wasm32-unknown-unknown/release/<generated-file>.wasm without-init-call network-config testnet sign-with-keychain send
   ```
 
   </TabItem>

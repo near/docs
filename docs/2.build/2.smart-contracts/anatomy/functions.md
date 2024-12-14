@@ -132,7 +132,7 @@ These functions are marked as `private` in the contract's code, and can only be 
 <Block highlights='{"js": "15"}' fname="auction">
 
 #### `decorator({privateFunction: true})`
-Private functions are marked by setting `privateFunction: true` in the `@call` or `@initialization` decorators.
+Private functions are marked by setting `privateFunction: true` in the `@call` or `@initialize` decorators.
 
 </Block>
 
