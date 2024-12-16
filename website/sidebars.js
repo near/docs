@@ -400,13 +400,6 @@ const sidebar = {
     {
       "Non-Fungible Tokens (NFT)": [
         "tutorials/nfts/minting-nfts",
-        "tutorials/nfts/minting-nft-frontend",
-        "tutorials/nfts/minecraft-nfts",
-        {
-          "type": "link",
-          "label": "Building a Frontend",
-          "href": "https://github.com/near-examples/nft-tutorial-frontend"
-        },
         {
           "type": "html",
           "value": "<hr/>"
