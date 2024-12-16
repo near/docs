@@ -184,7 +184,7 @@ Add the following to your newly created `internal.rs` file.
 You may notice more functions in the `internal.rs` file than we need for now. You may ignore them, we'll come back to them later.
 :::
 
-Let's now quickly move to the `lib.rs` file and make the functions we just created invokable in other files. We'll add the internal crates and mod the file as shown below:
+Let's now quickly move to the `lib.rs` file and make the functions we just created invocable in other files. We'll add the internal crates and mod the file as shown below:
 
 <Github language="rust" start="10" end="23" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-basic/src/lib.rs" />
 

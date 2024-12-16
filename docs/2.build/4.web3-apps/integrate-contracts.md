@@ -212,7 +212,7 @@ Remember that you can use the `wallet` to call methods in **any** contract. If y
 
 ### Wallet Redirection
 
-When calling a change call with **attatched deposit** (or any change call if no function call key was created), then the user will be prompted to sign the transaction in the wallet.
+When calling a change call with **attached deposit** (or any change call if no function call key was created), then the user will be prompted to sign the transaction in the wallet.
 
 If using a web wallet, as opposed to an extension, the user will be redirected to the wallet's website to sign the transaction.
 After accepting, the user will be brought back to your application, with the resulting transaction hash being passed as part of the URL (i.e. `your-website.com/?transactionHashes=...`).

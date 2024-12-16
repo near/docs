@@ -4,9 +4,10 @@ title: Hello Contract
 sidebar_label: Quickstart ✨
 ---
 
-import {Github} from "@site/src/components/codetabs";
+import {Github} from '@site/src/components/codetabs';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import MovingForwardSupportSection from '@site/src/components/MovingForwardSupportSection';
 
 Welcome! [NEAR accounts](../../1.concepts/protocol/account-model.md) can store small apps known as smart contracts. In this quick tutorial, we will guide you in creating your first contract on the NEAR **testnet**!
 
@@ -32,6 +33,9 @@ Before starting, make sure to set up your development environment.
 # Install Node.js using nvm (more options in: https://nodejs.org/en/download)
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 nvm install latest
+
+# ⚠️ For Mac Silicon users only, Rosetta is needed to compile contracts
+# /usr/sbin/softwareupdate --install-rosetta --agree-to-license
 
 # Install NEAR CLI to deploy and interact with the contract
 npm install -g near-cli-rs@latest
@@ -177,7 +181,7 @@ Building and testing the contract is as simple as running the `test` command. Th
     <details>
     <summary> Failing tests? </summary>
 
-    Make sure that you are using `node v18`, `v20` or `v22`. You can always use: `nvm use 18` to switch to `node v20`
+    Make sure that you are using `node v18`, `v20` or `v22` - you can manage multiple versions using `nvm` - and that you have `Rosetta` installed on MacOS if you have an Apple Silicon processor.
 
     </details>
 
@@ -195,7 +199,9 @@ Building and testing the contract is as simple as running the `test` command. Th
 In the background, these commands are calling the build tools for each language and using a [Sandbox](./testing/integration-test.md) to test the contract.
 
 :::tip Sandbox
+
 Testing the contracts within a Sandbox allows you to understand how the contract will behave once deployed to the network while having total control over the testing environment.
+
 :::
 
 ---
@@ -252,6 +258,13 @@ Remember that you can create a named account through any wallet (i.e. [MyNearWal
 
 :::
 
+:::warning
+
+When running the near account create-account command in a headless Linux environment (e.g., WSL), the `save-to-keychain` option may fail due to platform limitations. Use `save-to-legacy-keychain` instead of `save-to-keychain` to ensure compatibility.
+
+:::
+
+
 ---
 
 ## Build the Contract
@@ -272,6 +285,13 @@ When you are ready to create a build of the contract run a one-line command depe
   ```bash
   cargo near build
   ```
+
+  
+  :::info
+
+  If you encounter issues with Docker you can use the `--no-docker` flag to skip creating a reproducible build
+
+  :::
 
   </TabItem>
 
@@ -314,7 +334,7 @@ Having our account created, we can now deploy the contract:
   <TabItem value="short" label="Short">
 
   ```bash
-  near deploy <created-account> ./target/wasm32-unknown-unknown/release/hello.wasm
+  near deploy <created-account> ./target/wasm32-unknown-unknown/release/<generated-file>.wasm
   ```
 
   </TabItem>
@@ -322,7 +342,7 @@ Having our account created, we can now deploy the contract:
   <TabItem value="full" label="Full">
 
   ```bash
-  near contract deploy <created-account> use-file ./target/wasm32-unknown-unknown/release/hello.wasm without-init-call network-config testnet sign-with-keychain send
+  near contract deploy <created-account> use-file ./target/wasm32-unknown-unknown/release/<generated-file>.wasm without-init-call network-config testnet sign-with-keychain send
   ```
 
   </TabItem>
@@ -406,9 +426,7 @@ To better understand the contract's structure, check our [contract's anatomy](./
 
 If you prefer to see more examples, check our [examples](/tutorials/examples/count-near) page.
 
-Do not hesitate to reach out on [Discord](https://near.chat) with any questions you have. We regularly host Office Hours, in which you can join our voice channel and ask questions.
-
-Happy coding! 🚀
+<MovingForwardSupportSection />
 
 :::note Versioning for this article
 
