@@ -5,7 +5,8 @@ title: Cross Contract Call
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
+import {CodeTabs, Language, Github} from '@site/src/components/codetabs'
+import MovingForwardSupportSection from '@site/src/components/MovingForwardSupportSection';
 
 This example performs the simplest cross-contract call possible: it calls our [Hello NEAR](https://github.com/near-examples/hello-near-examples) example to set and retrieve a greeting.
 It is one of the simplest examples on making a cross-contract call, and the perfect gateway to the world of interoperative contracts.
@@ -218,6 +219,8 @@ and to return the money to the user in case of error.
 
 Your contract can perform multiple cross-contract calls in simultaneous, creating promises that execute in parallel, or as a batch transaction. Check the [advanced cross contract calls
 tutorial](./advanced-xcc) to learn more.
+
+<MovingForwardSupportSection />
 
 :::note Versioning for this article
 

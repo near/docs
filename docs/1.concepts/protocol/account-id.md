@@ -35,7 +35,7 @@ The simplest way to obtain a public / private key that represents an account is 
 ```bash
 near account create-account fund-later use-auto-generation save-to-folder ~/.near-credentials/implicit
 
-# The file "~/.near-credentials/testnet/8bca86065be487de45e795b2c3154fe834d53ffa07e0a44f29e76a2a5f075df8.json" was saved successfully
+# The file "~/.near-credentials/implicit/8bca86065be487de45e795b2c3154fe834d53ffa07e0a44f29e76a2a5f075df8.json" was saved successfully
 
 # Here is your console command if you need to script it or re-run:
 #     near account create-account fund-later use-auto-generation save-to-folder ~/.near-credentials/implicit

@@ -3,9 +3,10 @@ id: guest-book
 title: Guest Book
 ---
 
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
+import {CodeTabs, Language, Github} from '@site/src/components/codetabs';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import MovingForwardSupportSection from '@site/src/components/MovingForwardSupportSection';
 
 Our Guest Book example is a simple app composed by two main components:
 
@@ -273,6 +274,8 @@ If you're using your own account, replace `guestbook.near-examples.testnet` with
 ## Moving Forward
 
 A nice way to learn is by trying to expand a contract. You can modify the guestbook example to incorporate a feature where users can give likes to messages. Additionally, implement a method to toggle the like.
+
+<MovingForwardSupportSection />
 
 :::note Versioning for this article
 

@@ -74,7 +74,7 @@ The output of this computation is a list of the validators for the very next epo
 
 Validators are not slashed for being offline but they do miss out on the rewards of validating. Validators who miss too many blocks or chunks will be removed from the validation set in the next auction and not get any reward (but, again, without slashing).
 
-Any foul play on the part of the validator that is detected by the system may result in a "slashing event" where the validator is marked as out of integrity and forfeit their stake (according to some formula of progressive severity). The slashed stake is burnt.
+Any foul play on the part of the validator that is detected by the system may result in a "slashing event" where the validator is marked as out of integrity and forfeits their stake (according to some formula of progressive severity). The slashed stake is burnt.
 
 ### What is the mechanism for delegating stake to validators?
 
@@ -218,7 +218,7 @@ There will be a restoration mechanism for accounts removed (or slept) in this wa
 
 An account can have arbitrarily many keys, as long as it has enough tokens for their storage.
 
-### Which balance look-ups exists? What is required?
+### Which balance look-ups exist? What is required?
 
 We have an [RPC method for viewing account](/api/rpc/contracts#view-account).
 

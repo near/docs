@@ -90,9 +90,9 @@ const config = {
   themeConfig: {
     image: 'docs/assets/welcome-pages/protocol.png',
     announcementBar: {
-      id: 'id-0009',
+      id: 'id-0010',
       content:
-        '🎉 Master Application on NEAR - Tutorial! A new multi-part tutorial has landed, read more in our <a href="/blog/2024-10-24-new-tutorial">blogpost</a> and check out the <a href="/tutorials/auction/introduction">tutorial itself</a> 🎉',
+        '🎉 Ethereum Wallets are here! Read more in our <a href="/blog/hello-ethereum-wallets">blogpost</a> and check our <a href="/tools/ethereum-wallets">tutorial to update your app</a> 🎉',
       backgroundColor: '#fcfbfa',
       textColor: '#333',
       isCloseable: true,
@@ -184,7 +184,7 @@ const config = {
             },
             {
               type: 'html',
-              value: '<hr/><div class="subtitle"> Support </dib>',
+              value: '<hr/><div class="subtitle"> Support </div>',
             },
             {
               href: 'https://discord.gg/GZ7735Xjce',
@@ -196,7 +196,7 @@ const config = {
             },
             {
               type: 'html',
-              value: '<hr /><div class="subtitle"> Education </dib>',
+              value: '<hr /><div class="subtitle"> Education </div>',
             },
             {
               href: 'https://agorapp.dev/catalog/course?difficulty=&chains=near',
@@ -208,7 +208,7 @@ const config = {
             },
             {
               type: 'html',
-              value: '<hr /><div class="subtitle"> Other Docs </dib>',
+              value: '<hr /><div class="subtitle"> Other Docs </div>',
             },
             {
               href: 'https://github.com/near/NEPs',
@@ -234,10 +234,6 @@ const config = {
           activeBaseRegex: '/api/rpc',
         },
         { label: 'Blog', to: '/blog', activeBaseRegex: '/blog', position: 'right' },
-        {
-          type: 'localeDropdown',
-          position: 'right',
-        },
       ],
     },
     footer: {
@@ -251,7 +247,7 @@ const config = {
       // The application ID provided by Algolia
       appId: '0LUM67N2P2',
       // Public API key: it is safe to commit it
-      apiKey: '50a400220b38e2d4bef996c7d0ed4b90',
+      apiKey: '41e2feb6ffa0d3450ca9d0a0c1826c1c',
       indexName: 'near',
       // Optional: see doc section below
       contextualSearch: true,
@@ -279,15 +275,6 @@ const config = {
       //... other Algolia params
       placeholder: 'Search the Docs...',
       insights: true,
-    },
-  },
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'ko', 'vi', 'zh-CN'],
-    localeConfigs: {
-      'zh-CN': {
-        label: '简体中文',
-      },
     },
   },
 };
