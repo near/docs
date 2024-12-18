@@ -517,28 +517,6 @@ const sidebar = {
       "value": "<span class='menu__link'><b><small> Developer Tools </small></b></span>"
     },
     "tools/near-api",
-    {
-      "type": "category",
-      "label": "JavaScript API",
-      "items": [
-        "tools/near-api-js/quick-reference",
-        "tools/near-api-js/wallet",
-        "tools/near-api-js/account",
-        "tools/near-api-js/contract",
-        "tools/near-api-js/utils",
-        "tools/near-api-js/faq",
-        {
-          "type": "link",
-          "label": "Handling Passphrases",
-          "href": "https://github.com/near/near-seed-phrase"
-        },
-        {
-          "type": "link",
-          "label": "Type Docs",
-          "href": "https://near.github.io/near-api-js"
-        }
-      ]
-    },
     "tools/sdk",
     "tools/near-cli",
     {

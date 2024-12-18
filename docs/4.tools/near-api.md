@@ -182,7 +182,7 @@ These examples are references to code snippets, feel free to explore the full co
 
   Keystores can be created by using a private key string.
 
-  Private keys have the format "ed25519::5Fg2...".
+  Private keys have the format "ed25519:5Fg2...".
 
   <Github fname="private-key-string.js" language="javascript"
     url="https://github.com/PiVortex/near-api-examples/tree/main/javascript/examples/keystore-options/private-key-string.js#L10-L12"
@@ -243,7 +243,7 @@ These examples are references to code snippets, feel free to explore the full co
 
   Signers can be created by using a private key string.
 
-  Private keys have the format "ed25519::5Fg2...".
+  Private keys have the format "ed25519:5Fg2...".
 
   <Github fname="private_key_string.rs" language="rust"
     url="https://github.com/PiVortex/near-api-examples/tree/main/rust/examples/signer_options/private_key_string.rs#L13-L14"
@@ -605,7 +605,7 @@ You can deploy a contract from a compiled WASM file.
 
 ---
 
-## View Functions
+## View Function
 
 View functions are read-only functions that don't change the state of the contract. We can call these functions without a signer / keypair or any gas.
 
@@ -782,6 +782,7 @@ Convert an amount in NEAR to an amount in yoctoNEAR.
   - [Documentation](https://near.github.io/near-api-js)
   - [Github](https://github.com/near/near-api-js)
   - [Full Examples](https://github.com/PiVortex/near-api-examples/tree/main/javascript)
+  - [Cookbook](https://github.com/near/near-api-js/tree/master/packages/cookbook) which contains examples using the near-js/client package, a wrapper tree shakable package for near-api-js.
 
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
