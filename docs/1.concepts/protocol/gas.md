@@ -39,7 +39,7 @@ Gas units encapsulate not only compute/CPU time but also bandwidth/network time 
 <hr class="subsection" />
 
 ### Gas Price
-To determine the actual $NEAR fee, the cost of all actions in the transaction are multiplied by a **gas price**.
+To determine the actual $NEAR fee, the cost of all actions in the transaction is multiplied by a **gas price**.
 
 The gas price is **recalculated each block** based on the network's demand and floor at `1Tgas = 0.0001Ⓝ`.
 

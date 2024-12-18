@@ -28,11 +28,11 @@ All transaction fees (minus the part which is allocated as the rebate for contra
 
 ## Intro to Validators
 
-[Validators](https://pages.near.org/papers/the-official-near-white-paper/#economics) are responsible for producing blocks and the security of the network.
+[Validators](https://pages.near.org/papers/the-official-near-white-paper/#economics) are responsible for producing and validating blocks and chunks, ensuring the security and integrity of the NEAR network.
 
-Since Validators validate all shards, high requirements are set for running them (an 8-Core CPU with 16GB of RAM and 1 TB SSD of storage). The cost of running a block-producing validator node is estimated to be $330 per month for hosting. Please see our [hardware and cost estimates page](https://near-nodes.io/validator/hardware-validator) for more info.
+The hardware requirements for running a validator node vary depending on the staking position. Detailed specifications can be found here: [the hardware requirements](https://near-nodes.io/validator/hardware-validator).
 
-The current active Validators are available on the Explorer. The minimum seat price to become a block-producing validator is based on the 300th proposal. (If more than 300 proposals are submitted, the threshold will simply be the stake of the 300th proposal, provided that it’s larger than the minimum threshold of 25,500 $NEAR.) The current seat price to become a block-producing validator is updated live on the Explorer. Any validator nodes with stakes higher than the seat price can join the active set of Validators.
+You can view the list of currently active validators on platforms like [NEAR-STAKING](https://near-staking.com/stats). To become a validator, the minimum stake required is determined by the 300th largest staking proposal. If there are more than 300 proposals, the threshold will be set by the stake amount of the 300th proposal, as long as it exceeds the minimum threshold of 25,500 $NEAR. The current seat price to join the active validator set is updated in real-time on [NEAR BLOCKS](https://nearblocks.io/node-explorer). Any validator node with a stake greater than the current seat price can join the set of active validators.
 
 <blockquote className="lesson">
 <strong>Is there a plan to support GPU compute if certain validator nodes can offer that or is it just CPU?</strong><br /><br />
@@ -42,13 +42,20 @@ We don't need GPU support as we are a POS chain and we require very little compu
 You can read more about our consensus strategy on our <a href="https://github.com/near/wiki/blob/master/Archive/validators/about.md" target="_blank" rel="noopener noreferrer">Validator Quickstart</a> and <a href="https://github.com/near/wiki/blob/master/Archive/validators/faq.md" target="_blank" rel="noopener noreferrer">Staking FA</a>.
 </blockquote>
 
-## Chunk-Only Validators
+## Block & Chunk producers
+The top 100 validators are responsible for producing and validating blocks, as well as producing chunks. Under normal circumstances, each validator is assigned to a single shard, for which it produces chunks.
 
-The Chunk-Only Producer is a more accessible role with lower hardware and token requirements. This new role will allow the network's validator number to grow, creating more opportunities to earn rewards and secure the NEAR Ecosystem.
+Block & Chunk producers are guaranteed a minimum annual reward of 4.5%. If less than 100% of the network’s tokens are staked, validators have the potential to earn even higher annual rewards.
 
-[Chunk-Only Producers](https://pages.near.org/papers/the-official-near-white-paper/#economics) are solely responsible for [producing chunks](https://pages.near.org/papers/nightshade/#nightshade) (parts of the block from a shard, see [Nightshade](https://near.org/papers/nightshade/) for more detail) in one shard (a partition on the network). Because Chunk-Only Producers only need to validate one shard, they can run the validator node on a 8-Core CPU, with 16GB of RAM, and 500 GB SSD of storage.
+## Chunk Validators
 
-Like Validators, Chunk-Only Producers will receive, at minimum, 4.5% annual rewards. If less than 100% of the tokens on the network is staked, Chunk-Only Producers stand to earn even more annual rewards. For more details about the Validator’s economics, please check out [NEAR’s Economics Explained](https://near.org/blog/near-protocol-economics/).
+[Note] Block & Chunk producers also serve as chunk validators.
+
+Non-top 100 validators take on the role of chunk validators, which has lower hardware and staking requirements, making it more accessible. This role helps expand the network's validator set, increasing opportunities to earn rewards and strengthen the security of the NEAR ecosystem.
+
+Chunk validators do not track shards. Their responsibilities are focused solely on validating and endorsing chunks.
+
+Like block and chunk producers, chunk validators are guaranteed a minimum of 4.5% annual rewards. If less than 100% of the network’s tokens are staked, chunk validators may earn even higher rewards. For more details on validator economics, check out [NEAR’s Economics Explained](https://near.org/blog/near-protocol-economics/).
 
 ## Dedicated Validator Documentation Site
 
@@ -59,5 +66,5 @@ If you'd like to further explore Validators and Nodes in general, you can visit 
 
 No. We have handled the potential damages to the network on the protocol level. For example, we have a lot of limiters that constrain how much data you can pass into a function call or how much compute you can do in one function call, etc.
 
-That said, smart contract developers will need to be responsible for their own dApps, as there is no stage gate or approval process. All vulnerability can only damage the smart contract itself. Luckily, updating smart contracts is very smooth on NEAR, so vulnerabilities can be updated/patched to an account in ways that cannot be done on other blockchains.
+That said, smart contract developers will need to be responsible for their own dApps, as there is no stage gate or approval process. All vulnerabilities can only damage the smart contract itself. Luckily, updating smart contracts is very smooth on NEAR, so vulnerabilities can be updated/patched to an account in ways that cannot be done on other blockchains.
 </blockquote>
