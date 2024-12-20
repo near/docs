@@ -250,6 +250,27 @@ const sidebar = {
       "Primitives & Standards": [
         "build/primitives/ft",
         "build/primitives/nft",
+        {
+          type: 'category',
+          label: 'NFT Tutorials',
+          items: [
+            {
+              "type": "link",
+              "label": "Minting NFTs",
+              "href": "/tutorials/nfts/minting-nfts"
+            },
+            {
+              "type": "link",
+              "label": "NFT Zero to Hero (JS)",
+              "href": "/tutorials/nfts/js/introduction"
+            },
+            {
+              "type": "link",
+              "label": "NFT Zero to Hero (Rust)",
+              "href": "/tutorials/nfts/introduction"
+            },
+          ]
+        },
         "build/primitives/linkdrop",
         "build/primitives/oracles",
         "build/primitives/dao",
