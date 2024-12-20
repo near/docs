@@ -126,11 +126,11 @@ This way, we can effectively **attach an NFT to a function call**.
 
 The function will first assert that the caller attached exactly 1 yocto for security purposes. It will then transfer the NFT using `internal_transfer` and start the cross contract call. It will call the method `nft_on_transfer` on the `receiver_id`'s contract, and create a promise to call back `nft_resolve_transfer` with the result. This is a very common workflow when dealing with [cross contract calls](../../2.build/2.smart-contracts/anatomy/crosscontract.md).
 
-As dictated by the core standard, the function we are calling (`nft_on_transfer`) needs to return a boolean stating whether or not you should return the NFT to it's original owner.
+As dictated by the core standard, the function we are calling (`nft_on_transfer`) needs to return a boolean stating whether or not you should return the NFT to its original owner.
 
 <Github language="rust" start="146" end="201" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-basic/src/nft_core.rs" />
 
-If `nft_on_transfer` returned true or the called failed, you should send the token back to it's original owner. On the contrary, if false was returned, no extra logic is needed.
+If `nft_on_transfer` returned true or the called failed, you should send the token back to its original owner. On the contrary, if false was returned, no extra logic is needed.
 
 As for the return value of our function `nft_resolve_transfer`, the standard dictates that the function should return a boolean indicating whether or not the receiver successfully received the token or not.
 
