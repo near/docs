@@ -148,7 +148,7 @@ const config = {
               type: 'html',
               value: '<hr/> <small class="subtitle"> Essentials </small>',
             },
-            { label: 'NEAR API', to: '/tools/near-api-js/quick-reference' },
+            { label: 'NEAR API', to: '/tools/near-api' },
             { label: 'NEAR SDK', to: '/tools/sdk' },
             { label: 'NEAR CLI', to: '/tools/near-cli' },
             {
