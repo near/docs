@@ -405,8 +405,8 @@ Finally, if you are new to Rust and want to dive into smart contract development
 
 At the time of this writing, this example works with the following versions:
 
-- cargo: `cargo 1.54.0 (5ae8d74b3 2021-06-22)`
-- rustc: `rustc 1.54.0 (a178d0322 2021-07-26)`
-- near-cli: `2.1.1`
+- cargo: `cargo 1.83.0 (5ffbef321 2024-10-29)`
+- rustc: `rustc 1.83.0 (90b35a623 2024-11-26)`
+- near-cli-rs: `0.16.1`
 
 :::
