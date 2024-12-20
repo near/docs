@@ -138,19 +138,21 @@ self.owner_by_id.insert(&token_id, &owner_id);
 To build your contract run the following command in your terminal which builds your contract using Rust's `cargo`.
 
 ```bash
-./scripts/build.sh
+cargo near build
 ```
 
 This will generate WASM binaries into your `res/` directory. This WASM file is the smart contract we'll be deploying onto the NEAR blockchain.
 
-> **Tip:** If you run into errors make sure you have [Rust installed](/build/smart-contracts/quickstart#prerequisites) and are in the root directory of the NFT example.
+:::tip
+If you run into errors make sure you have [Rust installed](/build/smart-contracts/quickstart#prerequisites) and are in the root directory of the NFT example.
+:::
 
 ### Testing the contract {#testing-the-contract}
 
 Written in the smart contract there are pre-written tests that you can run. Run the following command in your terminal to perform these simple tests to verify that your contract code is working.
 
 ```bash
-cargo test -- --nocapture
+cargo test
 ```
 
 > **Note:** the more complex simulation tests aren't performed with this command but you can find them in `tests/sim`.
@@ -399,14 +401,12 @@ Finally, if you are new to Rust and want to dive into smart contract development
 
 **_Happy minting!_** 🪙
 
-## Blockcraft - a Practical Extension
-
-If you'd like to learn how to use Minecraft to mint NFTs and copy/paste builds across different worlds while storing all your data on-chain, be sure to check out our [Minecraft tutorial](/tutorials/nfts/minecraft-nfts)
-
-## Versioning for this article {#versioning-for-this-article}
+:::note Versioning for this article
 
 At the time of this writing, this example works with the following versions:
 
-- cargo: `cargo 1.54.0 (5ae8d74b3 2021-06-22)`
-- rustc: `rustc 1.54.0 (a178d0322 2021-07-26)`
-- near-cli: `2.1.1`
+- cargo: `cargo 1.83.0 (5ffbef321 2024-10-29)`
+- rustc: `rustc 1.83.0 (90b35a623 2024-11-26)`
+- near-cli-rs: `0.16.1`
+
+:::
