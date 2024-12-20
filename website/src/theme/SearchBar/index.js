@@ -15,6 +15,7 @@ import {
 import Translate from '@docusaurus/Translate';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import translations from '@theme/SearchTranslations';
+import debounce from 'lodash.debounce';
 
 let DocSearchModal = null;
 
@@ -133,7 +134,40 @@ function DocSearch({ contextualSearch, externalUrlRegex, ...props }) {
         'docusaurus',
         siteMetadata.docusaurusVersion,
       );
-      return searchClient;
+      const debouncedSearch = debounce(async (requests, resolve) => {
+
+        // const requestForApi = requests.map((request) => request.query);
+
+        // Change url to your api
+        // const response = await fetch('http://localhost:3001/angolia', {
+        //   method: 'POST',
+        //   headers: {
+        //     'Content-Type': 'application/json',
+        //   },
+        //   body: JSON.stringify(requestForApi),
+        // });
+
+        // const apiData = await response.json();
+
+        // const requestsForAngolia = requests.map((request) => ({
+        //   ...request,
+        //   query: apiData.message,
+        // }));
+
+        // Change requests to requestsForAngolia
+        const results = await searchClient.search(requests);
+
+        resolve(results);
+      }, 300);
+
+      const enhancedClient = {
+        ...searchClient,
+        search: (requests) =>
+          new Promise((resolve) => {
+            debouncedSearch(requests, resolve);
+          }),
+      };
+      return enhancedClient;
     },
     [siteMetadata.docusaurusVersion],
   );
