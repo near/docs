@@ -261,12 +261,12 @@ const sidebar = {
             },
             {
               "type": "link",
-              "label": "NFT Zero to Hero (JS)",
+              "label": "NFT Contract (JS)",
               "href": "/tutorials/nfts/js/introduction"
             },
             {
               "type": "link",
-              "label": "NFT Zero to Hero (Rust)",
+              "label": "NFT Contract (Rust)",
               "href": "/tutorials/nfts/introduction"
             },
           ]
