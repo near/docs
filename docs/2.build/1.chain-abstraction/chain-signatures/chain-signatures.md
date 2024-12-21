@@ -59,7 +59,7 @@ Chain Signatures use [`derivation paths`](/concepts/abstraction/chain-signatures
 
 - The NEAR address (e.g., `example.near`, `example.testnet`, etc.)
 - A derivation path (a string such as `ethereum-1`, `ethereum-2`, etc.)
-- The MPC service's public key (see the tip bellow for the MPC service public keys)
+- The MPC service's public key (see the tip below for the MPC service public keys)
 
 We provide code to derive the address, as it's a complex process that involves multiple steps of hashing and encoding:
 
