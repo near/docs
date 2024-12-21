@@ -95,7 +95,7 @@ _Creating a project using `create-near-app`_
 This will generate a project with the following structure:
 
 ```bash
-├── sandbox-test    # sanbox testing
+├── sandbox-test    # sandbox testing
 │   └── main.ava.js
 ├── src             # contract's code
 │   └── contract.ts
