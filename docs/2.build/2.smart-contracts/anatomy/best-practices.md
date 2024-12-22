@@ -19,7 +19,7 @@ overflow-checks = true
 Try to validate the input, context, state and access using `require!` before taking any actions. The earlier you panic, the more [gas](https://docs.near.org/concepts/protocol/gas) you will save for the caller.
 
 ```rust
-#[nearn]
+#[near]
 impl Contract {
     pub fn set_fee(&mut self, new_fee: Fee) {
         require!(env::predecessor_account_id() == self.owner_id, "Owner's method");
