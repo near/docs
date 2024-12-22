@@ -108,7 +108,7 @@ Select Turn On Lights
 
 Select the lights of your choosing but I will simply do all lights. 
 
-If you haven't already create and connect your Hue Account
+If you haven't already created and connected your Hue Account
 
 <img width="40%" src="/docs/pagoda/webhook14.png" />
 
