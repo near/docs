@@ -42,7 +42,7 @@ Let's start by building both the finished FT contract and the marketplace contra
 
 
 ```bash
-cd market-contract && cargo near build && cd ..
+cd market-contract && cargo near build non-reproducible-wasm && cd ..
 ```
 
 This will install the dependencies for the marketplace contract as well as the FT contract. Note that there's also `ft-tutorial/out` directory with pre-build nft contract wasm file which you'll use to place the NFTs for sale.
@@ -174,7 +174,7 @@ Now that you *hopefully* have a good understanding of how the marketplace contra
 The first thing you'll want to do is deploy a new FT, NFT, and marketplace contract.
 
 ```bash
-cd market-contract && cargo near build && cd ..
+cd market-contract && cargo near build non-reproducible-wasm && cd ..
 ```
 
 To deploy the FT contract and export an environment variable, run the following command:
@@ -613,6 +613,6 @@ At the time of this writing, this example works with the following versions:
 
 - rustc: `1.77.1`
 - near-sdk-rs: `5.1.0` (with enabled `legacy` feature)
-- cargo-near: `0.6.1`
+- cargo-near: `0.13.2`
 - near-cli: `4.0.13`
 :::
