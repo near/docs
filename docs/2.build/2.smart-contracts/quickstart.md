@@ -289,7 +289,7 @@ When you are ready to create a build of the contract run a one-line command depe
   
   :::info
 
-  If you encounter issues with Docker you can use the `--no-docker` flag to skip creating a reproducible build
+  If you encounter issues with Docker you can use the `non-reproducible-wasm` option to skip creating a reproducible build
 
   :::
 
@@ -319,7 +319,7 @@ Having our account created, we can now deploy the contract:
   <TabItem value="full" label="Full">
 
   ```bash
-  near contract deploy <created-account> use-file ./target/wasm32-unknown-unknown/release/hello.wasm without-init-call network-config testnet sign-with-keychain send
+  near contract deploy <created-account> use-file ./target/near/hello.wasm without-init-call network-config testnet sign-with-keychain send
   ```
 
   </TabItem>
@@ -334,7 +334,7 @@ Having our account created, we can now deploy the contract:
   <TabItem value="short" label="Short">
 
   ```bash
-  near deploy <created-account> ./target/wasm32-unknown-unknown/release/<generated-file>.wasm
+  near deploy <created-account> ./target/near/<generated-file>.wasm
   ```
 
   </TabItem>
@@ -342,7 +342,7 @@ Having our account created, we can now deploy the contract:
   <TabItem value="full" label="Full">
 
   ```bash
-  near contract deploy <created-account> use-file ./target/wasm32-unknown-unknown/release/<generated-file>.wasm without-init-call network-config testnet sign-with-keychain send
+  near contract deploy <created-account> use-file ./target/near/<generated-file>.wasm without-init-call network-config testnet sign-with-keychain send
   ```
 
   </TabItem>
