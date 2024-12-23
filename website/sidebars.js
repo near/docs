@@ -99,7 +99,6 @@ const sidebar = {
             'build/chain-abstraction/chain-signatures/chain-signatures',
             {
               "Implementing Contract Logic": [
-                "build/chain-abstraction/chain-signatures/chain-signatures-contract/overview",
                 {
                   "Controlling Existing NEAR Accounts": [
                     "build/chain-abstraction/chain-signatures/chain-signatures-contract/controlling-near-accounts/introduction",
