@@ -118,7 +118,7 @@ echo $FT_CONTRACT_ID
 Verify that the correct account ID is printed in the terminal. If everything looks correct you can now deploy your contract. For simplicity, let's call the default metadata initialization function you wrote earlier so that you don't have to type the metadata manually in the CLI. In the root of your FT project run the following command to deploy your smart contract.
 
 ```bash
-cargo near deploy $FT_CONTRACT_ID with-init-call new_default_meta json-args '{"owner_id": "'$FT_CONTRACT_ID'", "total_supply": "0"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
+cargo near deploy build-non-reproducible-wasm $FT_CONTRACT_ID with-init-call new_default_meta json-args '{"owner_id": "'$FT_CONTRACT_ID'", "total_supply": "0"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
 ```
 
 At this point, the contract should have been deployed to your account and initialized.

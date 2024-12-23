@@ -188,7 +188,7 @@ Go into the directory containing the smart contract (`cd contract-ts` or `cd con
 ```bash
 cargo near build
 
-cargo near deploy <accountId>
+cargo near deploy build-non-reproducible-wasm <accountId>
 ```
 
 :::tip

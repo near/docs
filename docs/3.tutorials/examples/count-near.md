@@ -185,7 +185,7 @@ Go into the directory containing the smart contract (`cd contract-ts` or `cd con
 ```bash
 cargo near build
 
-cargo near deploy <accountId>
+cargo near deploy build-non-reproducible-wasm <accountId>
 ```
 :::tip
 To interact with your contract from the [frontend](#frontend), simply replace the value of the `testnet` key in the `config.js` file.

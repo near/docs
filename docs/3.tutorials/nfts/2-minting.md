@@ -251,7 +251,7 @@ Verify that the correct account ID is printed in the terminal. If everything loo
 In the root of your NFT project run the following command to deploy your smart contract and answer questions:
 
 ```bash
-cargo near deploy $NFT_CONTRACT_ID
+cargo near deploy build-non-reproducible-wasm $NFT_CONTRACT_ID
 
 > Select the need for initialization: with-init-call     - Add an initialize
 > What is the name of the function? new_default_meta
@@ -267,7 +267,7 @@ cargo near deploy $NFT_CONTRACT_ID
 You don't need to answer these questions every time. If you look at the results you will find the message `Here is the console command if you ever need to re-run it again`. The next line is the command which you may use instead of answering to interactive questions:
 
 ```bash
-cargo near deploy $NFT_CONTRACT_ID with-init-call new_default_meta json-args '{"owner_id": "'$NFT_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
+cargo near deploy build-non-reproducible-wasm $NFT_CONTRACT_ID with-init-call new_default_meta json-args '{"owner_id": "'$NFT_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
 ```
 
 You've just deployed and initialized the contract with some default metadata and set your account ID as the owner. At this point, you're ready to call your first view function.

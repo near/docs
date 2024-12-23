@@ -182,7 +182,7 @@ To deploy the FT contract and export an environment variable, run the following 
 ```bash
 export FT_CONTRACT=<new-ft-account-id>
 near create-account $FT_CONTRACT --useFaucet
-cd 5.transfers/ && cargo near deploy $FT_CONTRACT with-init-call new_default_meta json-args '{"owner_id": "'$FT_CONTRACT'", "total_supply": "1000000000000000000000000000"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send && cd ../
+cd 5.transfers/ && cargo near deploy build-non-reproducible-wasm $FT_CONTRACT with-init-call new_default_meta json-args '{"owner_id": "'$FT_CONTRACT'", "total_supply": "1000000000000000000000000000"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send && cd ../
 ```
 
 Next, you'll deploy the NFT and marketplace contracts.
@@ -196,7 +196,7 @@ near deploy $NFT_CONTRACT out/nft-contract.wasm
 ```bash
 export MARKETPLACE_CONTRACT=<new-marketplace-account-id>
 near create-account $MARKETPLACE_CONTRACT --useFaucet
-cd market-contract/ && cargo near deploy $MARKETPLACE_CONTRACT with-init-call new json-args '{"owner_id": "'$MARKETPLACE_CONTRACT'", "ft_id": "'$FT_CONTRACT'"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send && cd ../
+cd market-contract/ && cargo near deploy build-non-reproducible-wasm $MARKETPLACE_CONTRACT with-init-call new json-args '{"owner_id": "'$MARKETPLACE_CONTRACT'", "ft_id": "'$FT_CONTRACT'"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send && cd ../
 ```
 
 Check and see if your environment variables are all correct by running the following command. Each output should be different.
