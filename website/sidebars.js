@@ -322,6 +322,7 @@ const sidebar = {
     {
       "Advanced Contracts": [
         "tutorials/examples/factory",
+        "tutorials/examples/near-drop",
         "tutorials/examples/advanced-xcc",
         "tutorials/examples/update-contract-migrate-state",
       ]
