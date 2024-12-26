@@ -9,152 +9,217 @@ import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 A near-drop is a smart contract that allows users to create NEAR/FT/NFT drop and claim created drops by another user using a PublicKey.
 
-We have two factory examples:
+Particularly, it shows:
 
-1. [**Token Factory**](https://github.com/near-examples/token-factory): A factory that creates [fungible tokens](../fts/0-intro.md) contracts.
-2. [**A Generic Factory**](https://github.com/near-examples/factory-rust): A factory that creates [donation contracts](./donation.md), but allows to change the contract it deploys.
-
-:::info
-In this page we will focus on the Donation factory, to learn more about the token factory visit its repository.
-:::
+1. How to create a NEAR drop.
+2. How to create a FT drop.
+3. How to create a NFT drop.
+4. How to claim a drop for an existing account.
+5. How to claim a drop for a new account.
 
 ---
 
-## Generic Factory
+### Contract State
 
-The [Generic Factory](https://github.com/near-examples/factory-rust/) presents a contract factory that:
+- `top_level_account` - that account is used to create new accounts. It has to have `create_account` method.
+- `drop_id_by_key` - that LookupMap structure contains relations between `PublicKey` and `DropId`. `PublicKey` is used to claim drop. `DropId` is a unique identificator by which you can get drop's data like amount of tokens to drop, FT or NFT contract, etc.
+- `drop_by_id` - that LookupMap structure contains relations between `DropId` and actual drop data - `Drop`.
 
-1. Creates sub-accounts of itself and deploys its contract on them (`create_factory_subaccount_and_deploy`).
-2. Can change the stored contract using the `update_stored_contract` method.
+<Github fname="contract.ts"
+      url="https://github.com/near-examples/near-drop/blob/update/src/lib.rs"
+      start="26" end="30" />
+
+---
+
+### Drop Types
+
+There are 3 types of drops, which differ in what the user will receive when he claims the corresponding drop - NEAR, fungible tokens (FTs) or non-fungible tokens (NFTs).
 
 <CodeTabs>
   <Language value="rust" language="rust">
-    <Github fname="deploy.rs"
-            url="https://github.com/near-examples/factory-rust/blob/main/src/deploy.rs"
-            start="14" end="66" />
-    <Github fname="manager.rs"
-            url="https://github.com/near-examples/factory-rust/blob/main/src/manager.rs"
-            start="5" end="19" />
+    <Github fname="drop_types.rs"
+            url="https://github.com/near-examples/near-drop/blob/update/src/drop_types.rs"
+            start="8" end="16" />
+    <Github fname="near_drop.rs"
+            url="https://github.com/near-examples/near-drop/blob/update/src/near_drop.rs"
+            start="9" end="16" />
+    <Github fname="ft_drop.rs"
+            url="https://github.com/near-examples/near-drop/blob/update/src/ft_drop.rs"
+            start="16" end="24" />
+    <Github fname="nft_drop.rs"
+            url="https://github.com/near-examples/near-drop/blob/update/src/nft_drop.rs"
+            start="15" end="22" />
   </Language>
 </CodeTabs>
 
 ---
 
-## Quickstart
+### Create a drop
 
-1. Make sure you have installed [rust](https://www.rust-lang.org/).
-2. Install the [`NEAR CLI`](/tools/near-cli#installation)
+Creating drop functions looks very similar, the main difference is in the structures used to store the drop data.
 
-<hr className="subsection" />
-
-### Build and Deploy the Factory
-
-You can automatically compile and deploy the contract in the NEAR testnet by running:
-
-```bash
-./deploy.sh
-```
-
-Once finished, check the `neardev/dev-account` file to find the address in which the contract was deployed:
-
-```bash
-cat ./neardev/dev-account
-# e.g. dev-1659899566943-21539992274727
-```
-
-<hr className="subsection" />
-
-### Deploy the Stored Contract Into a Sub-Account
-
-`create_factory_subaccount_and_deploy` will create a sub-account of the factory and deploy the
-stored contract on it.
-
-```bash
-near call <factory-account> create_factory_subaccount_and_deploy '{ "name": "sub", "beneficiary": "<account-to-be-beneficiary>"}' --deposit 1.24 --accountId <account-id> --gas 300000000000000
-```
-
-This will create the `sub.<factory-account>`, which will have a `donation` contract deployed on it:
-
-```bash
-near view sub.<factory-account> get_beneficiary
-# expected response is: <account-to-be-beneficiary>
-```
-
-<hr className="subsection" />
-
-### Update the Stored Contract
-
-`update_stored_contract` enables to change the compiled contract that the factory stores.
-
-The method is interesting because it has no declared parameters, and yet it takes
-an input: the new contract to store as a stream of bytes.
-
-To use it, we need to transform the contract we want to store into its `base64`
-representation, and pass the result as input to the method:
-
-```bash
-# Use near-cli to update stored contract
-export BYTES=`cat ./src/to/new-contract/contract.wasm | base64`
-near call <factory-account> update_stored_contract "$BYTES" --base64 --accountId <factory-account> --gas 30000000000000
-```
-
-> This works because the arguments of a call can be either a `JSON` object or a `String Buffer`
+<CodeTabs>
+  <Language value="rust" language="rust">
+    <Github fname="create_near_drop"
+            url="https://github.com/near-examples/near-drop/blob/update/src/lib.rs"
+            start="44" end="85" />
+    <Github fname="create_ft_drop"
+            url="https://github.com/near-examples/near-drop/blob/update/src/lib.rs"
+            start="87" end="126" />
+    <Github fname="create_nft_drop"
+            url="https://github.com/near-examples/near-drop/blob/update/src/lib.rs"
+            start="128" end="157" />
+  </Language>
+</CodeTabs>
 
 ---
 
-## Factories - Concepts & Limitations
+### Claim a drop
 
-Factories are an interesting concept, here we further explain some of their implementation aspects,
-as well as their limitations.
+In order to claim drop claiming methods have to be called by near-drop contract and signed with a corresponding `PublicKey`. There are two ways to claim a drop: claim for an existing account and claim for a new account. In last case claimer account will be created.
 
-<hr className="subsection" />
+When a drop is claimed, its `counter` decreases by 1 and corresponding relation between `PublicKey` and `DropId` removing from the contract state (`drop_id_by_key` collection).
 
-### Automatically Creating Accounts
+When all drops are claimed (`counter` == 0), relation between `DropId` and `Drop` removing from the `drop_by_id` collection as well.
 
-NEAR accounts can only create sub-accounts of itself, therefore, the `factory` can only create and
-deploy contracts on its own sub-accounts.
+<hr class="subsection" />
 
-This means that the factory:
+#### Claim for an existing account
 
-1. **Can** create `sub.factory.testnet` and deploy a contract on it.
-2. **Cannot** create sub-accounts of the `predecessor`.
-3. **Can** create new accounts (e.g. `account.testnet`), but **cannot** deploy contracts on them.
+<CodeTabs>
+  <Language value="rust" language="rust">
+    <Github fname="claim_for"
+            url="https://github.com/near-examples/near-drop/blob/update/src/claim.rs"
+            start="11" end="14" />
+    <Github fname="internal_claim"
+            url="https://github.com/near-examples/near-drop/blob/update/src/claim.rs"
+            start="61" end="86" />
+  </Language>
+</CodeTabs>
 
-It is important to remember that, while `factory.testnet` can create `sub.factory.testnet`, it has
-no control over it after its creation.
+<hr class="subsection" />
 
-<hr className="subsection" />
+#### Claim for a new account
 
-### The Update Method
+<CodeTabs>
+  <Language value="rust" language="rust">
+    <Github fname="create_account_and_claim"
+            url="https://github.com/near-examples/near-drop/blob/update/src/claim.rs"
+            start="16" end="43" />
+    <Github fname="resolve_account_create"
+            url="https://github.com/near-examples/near-drop/blob/update/src/claim.rs"
+            start="45" end="59" />
+    <Github fname="internal_claim"
+            url="https://github.com/near-examples/near-drop/blob/update/src/claim.rs"
+            start="61" end="86" />
+  </Language>
+</CodeTabs>
 
-The `update_stored_contracts` has a very short implementation:
+---
 
-```rust
-#[private]
-pub fn update_stored_contract(&mut self) {
-  self.code = env::input().expect("Error: No input").to_vec();
-}
+### Testing the Contract
+
+The contract readily includes a sandbox testing to validate its functionality. To execute the tests, run the following command:
+
+<Tabs groupId="code-tabs">
+  <TabItem value="rust" label="🦀 Rust">
+  
+  ```bash
+  cargo test
+  ```
+
+  </TabItem>
+</Tabs>
+
+:::tip
+The `integration tests` use a sandbox to create NEAR users and simulate interactions with the contract.
+:::
+
+---
+
+### Deploying the Contract to the NEAR network
+
+In order to deploy the contract you will need to create a NEAR account.
+
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  # Create a new account pre-funded by a faucet
+  near create-account <accountId> --useFaucet
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+  ```bash
+  # Create a new account pre-funded by a faucet
+  near account create-account sponsor-by-faucet-service <my-new-dev-account>.testnet autogenerate-new-keypair save-to-keychain network-config testnet create
+  ```
+  </TabItem>
+</Tabs>
+
+Then build and deploy the contract:
+
+```bash
+cargo near build
+
+cargo near deploy <accountId> with-init-call new json-args '{"top_level_account": "testnet"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
 ```
 
-On first sight it looks like the method takes no input parameters, but we can see that its only
-line of code reads from `env::input()`. What is happening here is that `update_stored_contract`
-**bypasses** the step of **deserializing the input**.
+---
 
-You could implement `update_stored_contract(&mut self, new_code: Vec<u8>)`,
-which takes the compiled code to store as a `Vec<u8>`, but that would trigger the contract to:
+### CLI: Interacting with the Contract
 
-1. Deserialize the `new_code` variable from the input.
-2. Sanitize it, making sure it is correctly built.
+To interact with the contract through the console, you can use the following commands:
 
-When dealing with big streams of input data (as is the compiled `wasm` file to be stored), this process
-of deserializing/checking the input ends up **consuming the whole GAS** for the transaction.
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+  
+  ```bash
+  # create a NEAR drop
+  near call <account-id> create_near_drop '{"drop_id": "1", "public_keys": ["ed25519:AvBVZDQrg8pCpEDFUpgeLYLRGUW8s5h57NGhb1Tc4H5q", "ed25519:4FMNvbvU4epP3HL9mRRefsJ2tMECvNLfAYDa9h8eUEa4"], "amount_per_drop": "10000000000000000000000"}' --accountId <account-id> --deposit 1 --gas 300000000000000
+
+  # create a FT drop
+  near call <account-id> create_ft_drop '{"drop_id": "1", "public_keys": ["ed25519:HcwvxZXSCX341Pe4vo9FLTzoRab9N8MWGZ2isxZjk1b8", "ed25519:5oN7Yk7FKQMKpuP4aroWgNoFfVDLnY3zmRnqYk9fuEvR"], "amount_per_drop": "1", "ft_contract": "<ft-contract-account-id>"}' --accountId <account-id> --gas 300000000000000
+
+  # create a NFT drop
+  near call <account-id> create_nft_drop '{"drop_id": "1", "public_key": "ed25519:HcwvxZXSCX341Pe4vo9FLTzoRab9N8MWGZ2isxZjk1b8", "nft_contract": "<nft-contract-account-id>"}' --accountId <account-id> --gas 300000000000000
+  
+  # claim to an existing account
+  near call <account-id> claim_for '{"account_id": "<claimer-account-id>"}' --accountId <account-id> --privateKey <private-key>
+
+  # claim to a new account
+  near call <account-id> create_account_and_claim '{"account_id": "<claimer-account-id>"}' --accountId <account-id> --privateKey <private-key>
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+  
+  ```bash
+  # create a NEAR drop
+  near contract call-function as-transaction <account-id> create_near_drop json-args '{"drop_id": "1", "public_keys": ["ed25519:AvBVZDQrg8pCpEDFUpgeLYLRGUW8s5h57NGhb1Tc4H5q", "ed25519:4FMNvbvU4epP3HL9mRRefsJ2tMECvNLfAYDa9h8eUEa4"], "amount_per_drop": "10000000000000000000000"}' prepaid-gas '300.0 Tgas' attached-deposit '1 NEAR' sign-as <account-id> network-config testnet sign-with-keychain send
+
+  # create a FT drop
+  near contract call-function as-transaction <account-id> create_ft_drop json-args '{"drop_id": "1", "public_keys": ["ed25519:HcwvxZXSCX341Pe4vo9FLTzoRab9N8MWGZ2isxZjk1b8", "ed25519:5oN7Yk7FKQMKpuP4aroWgNoFfVDLnY3zmRnqYk9fuEvR"], "amount_per_drop": "1", "ft_contract": "<ft-contract-account-id>"}' prepaid-gas '300.0 Tgas' attached-deposit '0 NEAR' sign-as <account-id> network-config testnet sign-with-keychain send
+
+  # create a NFT drop
+  near contract call-function as-transaction <account-id> create_nft_drop json-args '{"drop_id": "1", "public_key": "ed25519:HcwvxZXSCX341Pe4vo9FLTzoRab9N8MWGZ2isxZjk1b8", "nft_contract": "<nft-contract-account-id>"}' prepaid-gas '300.0 Tgas' attached-deposit '0 NEAR' sign-as <account-id> network-config testnet sign-with-keychain send
+
+  # claim to an existing account
+  near contract call-function as-transaction <account-id> claim_for json-args '{"account_id": "<claimer-account-id>"}' prepaid-gas '30.0 Tgas' attached-deposit '0 NEAR' sign-as <account-id> network-config testnet sign-with-plaintext-private-key --signer-public-key ed25519:AvBVZDQrg8pCpEDFUpgeLYLRGUW8s5h57NGhb1Tc4H5q --signer-private-key ed25519:3yVFxYtyk7ZKEMshioC3BofK8zu2q6Y5hhMKHcV41p5QchFdQRzHYUugsoLtqV3Lj4zURGYnHqMqt7zhZZ2QhdgB send
+
+  # claim to a new account
+  near contract call-function as-transaction <account-id> create_account_and_claim json-args '{"account_id": "<claimer-account-id>"}' prepaid-gas '300.0 Tgas' attached-deposit '0 NEAR' sign-as <account-id> network-config testnet sign-with-plaintext-private-key --signer-public-key ed25519:4FMNvbvU4epP3HL9mRRefsJ2tMECvNLfAYDa9h8eUEa4 --signer-private-key ed25519:2xZcegrZvP52VrhehvApnx4McL85hcSBq1JETJrjuESC6v6TwTcr4VVdzxaCReyMCJvx9V4X1ppv8cFFeQZ6hJzU send
+  ```
+  </TabItem>
+</Tabs>
 
 :::note Versioning for this article
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `4.0.13`
-- node: `18.19.1`
-- rustc: `1.77.0`
+- near-cli: `0.17.0`
+- rustc: `1.82.0`
 
 :::
