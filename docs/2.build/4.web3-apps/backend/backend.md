@@ -64,6 +64,29 @@ Once the user has signed the challenge, the wallet will call the `callbackUrl` w
 const naj = require('near-api-js')
 const js_sha256 = require("js-sha256")
 
+class Payload {
+    constructor({ message, nonce, recipient, callbackUrl }) {
+        // The tag's value is a hardcoded value as per
+        // defined in the NEP [NEP413](https://github.com/near/NEPs/blob/master/neps/nep-0413.md)
+        this.tag = 2147484061;
+        this.message = message;
+        this.nonce = nonce;
+        this.recipient = recipient;
+        if (callbackUrl) { this.callbackUrl = callbackUrl }
+    }
+}
+
+const payloadSchema = {
+    struct: {
+      tag: "u32",
+      message: "string",
+      nonce: { array: { type: "u8", len: 32 } },
+      recipient: "string",
+      // Must be of type { option: "string" }
+      callbackUrl: { option: "string" },
+    },
+  };
+
 export async function authenticate({ accountId, publicKey, signature }) {
   // A user is correctly authenticated if:
   // - The key used to sign belongs to the user and is a Full Access Key
