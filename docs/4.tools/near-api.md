@@ -625,6 +625,12 @@ A call function changes the contract's state and requires a signer/keypair.
     start="37" end="49" />
 
   </TabItem>
+  <TabItem value="python" label="🐍 Python">
+
+  ```python
+  await account.function_call("usn.near", "ft_transfer", {"receiver_id": "bob.near", "amount": "1000000000000000000000000"})
+  ```
+  </TabItem>
 </Tabs>
 
 <hr class="subsection" />
@@ -671,6 +677,24 @@ Transactions can be sent in parallel to the network, so you don't have to wait f
     start="23" end="55" />
 
   </TabItem>
+  <TabItem value="python" label="🐍 Python">
+
+  ```python
+  import asyncio
+  from py_near.account import Account
+
+  account = Account(account_id="example-account.testnet", private_key="ed25519:...", rpc_addr="https://rpc.testnet.pagoda.co")
+  await account.startup()
+
+  # Prepare the transactions
+  tx1 = account.function_call("guestbook.near-examples.testnet", "add_message", { "text": "Hello, world!" })
+  tx2 = account.function_call("counter.near-examples.testnet", "increment", {})
+
+  # Send the transactions simultaneously
+  const transactionsResults = await asyncio.gather(tx1, tx2)
+  ```
+
+  </TabItem>
 </Tabs>
 
 <hr class="subsection" />
@@ -695,6 +719,20 @@ You can deploy a contract from a compiled WASM file.
     url="https://github.com/PiVortex/near-api-examples/tree/main/rust/examples/contract_interaction.rs#L54-L61"
     start="54" end="61" />
 
+  </TabItem>
+  <TabItem value="python" label="🐍 Python">
+
+  ```python
+  import asyncio
+  from py_near.account import Account
+
+  account = Account(account_id="example-account.testnet", private_key="ed25519:...", rpc_addr="https://rpc.testnet.pagoda.co")
+  await account.startup()
+
+  with open("contract.wasm", "rb") as f:
+    contract_code = f.read()
+  await account.deploy_contract(contract_code)
+  ```
   </TabItem>
 </Tabs>
 
@@ -721,6 +759,18 @@ View functions are read-only functions that don't change the state of the contra
     start="22" end="33" />
 
   </TabItem>
+  <TabItem value="python" label="🐍 Python">
+
+  ```python
+  view_call_result = await account.view_function("guestbook.near-examples.testnet", "total_messages", {})
+  # If args are required, they can be passed in like this in the 3rd argument:
+  # {
+  #   "from_index": "0",
+  #   "limit": "10"
+  # }
+  print(view_call_result)
+  ```
+  </TabItem>
 </Tabs>
 
 ---
@@ -746,6 +796,12 @@ List all the access keys for an account.
     start="22" end="22" />
 
   </TabItem>
+  <TabItem value="python" label="🐍 Python">
+
+  ```python
+  keys = await account.get_access_key_list()
+  ```
+  </TabItem>
 </Tabs>
 
 <hr class="subsection" />
@@ -768,6 +824,12 @@ Add a new [full access key](../1.concepts/protocol/access-keys.md#full-access-ke
     url="https://github.com/PiVortex/near-api-examples/tree/main/rust/examples/keys.rs#L22-L39"
     start="22" end="39" />
 
+  </TabItem>
+  <TabItem value="python" label="🐍 Python">
+
+  ```python
+  keys = await account.add_full_access_public_key("5X9WvUbRV3aSd9Py1LK7HAndqoktZtcgYdRjMt86SxMj")
+  ```
   </TabItem>
 </Tabs>
 
@@ -792,6 +854,18 @@ Add a new [function call key](../1.concepts/protocol/access-keys.md#function-cal
     start="43" end="62" />
 
   </TabItem>
+  <TabItem value="python" label="🐍 Python">
+
+  ```python
+  await account.add_public_key(
+    "5X9WvUbRV3aSd9Py1LK7HAndqoktZtcgYdRjMt86SxMj",
+    "example-contract.testnet", # Contract this key is allowed to call
+    ["example_method"], # Methods this key is allowed to call (optional)
+    0.25 * NEAR # Gas allowance key can use to call methods (optional)
+  )
+  ```
+  </TabItem>
+
 </Tabs>
 
 <hr class="subsection" />
@@ -814,6 +888,12 @@ When deleting an access key, you need to specify the public key of the key you w
     url="https://github.com/PiVortex/near-api-examples/tree/main/rust/examples/keys.rs#L67-L72"
     start="67" end="72" />
 
+  </TabItem>
+  <TabItem value="python" label="🐍 Python">
+
+  ```python
+  await account.delete_public_key("5X9WvUbRV3aSd9Py1LK7HAndqoktZtcgYdRjMt86SxMj")
+  ```
   </TabItem>
 </Tabs>
 
