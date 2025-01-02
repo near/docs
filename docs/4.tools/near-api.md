@@ -140,7 +140,9 @@ These examples are references to code snippets, feel free to explore the full co
   </TabItem>
 </Tabs>
 
-### Signers 
+<hr class="subsection" />
+
+### Key Handlers: Stores & Signers 
 
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
@@ -148,7 +150,7 @@ These examples are references to code snippets, feel free to explore the full co
   To sign transactions you'll need to a `KeyStore` with valid keypairs.
 
   <Tabs>
-  <TabItem value="browser" label="Using Browser" default>
+  <TabItem value="browser" label="Browser" default>
 
   `BrowserLocalStorageKeyStore` can only be used in the browser, it uses the browser's local storage to store the keys.
 
@@ -160,7 +162,7 @@ These examples are references to code snippets, feel free to explore the full co
   ```
 
   </TabItem>
-  <TabItem value="dir" label="Using the Credentials Directory">
+  <TabItem value="dir" label="Credentials Path">
 
   `UnencryptedFileSystemKeyStore` can be used is used to load keys from the legacy credentials directory used by the NEAR CLI.
 
@@ -169,7 +171,7 @@ These examples are references to code snippets, feel free to explore the full co
     start="11" end="13" />
 
   </TabItem>
-  <TabItem value="file" label="Using a File">
+  <TabItem value="file" label="File">
 
   Keystores can be created by loading a private key from a json file.
 
@@ -178,7 +180,7 @@ These examples are references to code snippets, feel free to explore the full co
     start="10" end="16" />
 
   </TabItem>
-  <TabItem value="key" label="Using a Private Key String">
+  <TabItem value="key" label="Private Key">
 
   Keystores can be created by using a private key string.
 
@@ -189,7 +191,7 @@ These examples are references to code snippets, feel free to explore the full co
     start="10" end="12" />
 
   </TabItem>
-  <TabItem value="seed" label="Using a Seed Phrase">
+  <TabItem value="seed" label="Seed Phrase">
 
   Keystores can be created by using a seed phrase. To parse the seed phrase into a private key, the `near-seed-phrase` library is needed.
 
@@ -212,7 +214,7 @@ These examples are references to code snippets, feel free to explore the full co
   To sign transactions you'll need to create a `Signer` that holds a valid keypair.
 
   <Tabs>
-  <TabItem value="keystore" label="Using the Keystore" default>
+  <TabItem value="keystore" label="Keystore" default>
 
   Signers can be created using the Keystore that is also used as the standard for saving keys with the NEAR CLI.
 
@@ -221,7 +223,7 @@ These examples are references to code snippets, feel free to explore the full co
     start="12" end="18" />
 
   </TabItem>
-  <TabItem value="dir" label="Using the Credentials Directory">
+  <TabItem value="dir" label="Credentials Path">
 
   Signers can be created using the credentials directory which is the legacy option for saving keys with the NEAR CLI.
 
@@ -230,7 +232,7 @@ These examples are references to code snippets, feel free to explore the full co
     start="10" end="13" />
 
   </TabItem>
-  <TabItem value="file" label="Using a File">
+  <TabItem value="file" label="File">
 
   Signers can be created by loading a public and private key from a file.
 
@@ -239,7 +241,7 @@ These examples are references to code snippets, feel free to explore the full co
     start="12" end="13" />
 
   </TabItem>
-  <TabItem value="key" label="Using a Private Key String">
+  <TabItem value="key" label="Private Key">
 
   Signers can be created by using a private key string.
 
@@ -250,7 +252,7 @@ These examples are references to code snippets, feel free to explore the full co
     start="13" end="14" />
 
   </TabItem>
-  <TabItem value="seed" label="Using Seed Phrase">
+  <TabItem value="seed" label="Seed Phrase">
 
   Signers can be created by using a seed phrase.
 
@@ -374,12 +376,12 @@ Returns the authorized apps of an account. This is a list of contracts that the 
 
 ### Create an Account {#create-account}
 
+In order to create .near or .testnet accounts, you need to make a function call to the top-level-domain account (i.e. `near` or `testnet`), calling `create_account`. In this example we generate a new public key for the account by generating a random private key.
+
+The deposit determines the initial balance of the account.
+
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
-
-  In order to create .near or .testnet accounts, you need to make a function call to the top-level-domain account (i.e. `near` or `testnet`), calling `create_account`. In this example we generate a new public key for the account by generating a random private key.
-
-  The deposit determines the initial balance of the account.
 
   <Github fname="create-account.js" language="javascript"
     url="https://github.com/PiVortex/near-api-examples/tree/main/javascript/examples/create-account.js#L24-L39"
@@ -398,10 +400,6 @@ Returns the authorized apps of an account. This is a list of contracts that the 
 
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
-
-  In this example we create a .testnet account with a random keypair.
-
-  The deposit determines the initial balance of the account.
 
   <Github fname="create_account.rs" language="rust"
     url="https://github.com/PiVortex/near-api-examples/tree/main/rust/examples/create_account.rs#L32-L49"
@@ -425,12 +423,12 @@ Returns the authorized apps of an account. This is a list of contracts that the 
 
 ### Create a Sub-Account {#create-sub-account}
 
+Accounts can create sub-accounts of themselves, which are useful for creating separate accounts for different purposes. It is important to remark that the parent account has no control over any of its sub-accounts.
+
+The deposit determines the initial balance of the account.
+
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
-
-  For creating a sub-account (sub.example-account.testnet) the API provides specific method. 
-
-  The deposit determines the initial balance of the account.
 
   <Github fname="create-account.js" language="javascript"
     url="https://github.com/PiVortex/near-api-examples/tree/main/javascript/examples/create-account.js#L45-L56"
@@ -438,10 +436,6 @@ Returns the authorized apps of an account. This is a list of contracts that the 
 
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
-
-  The process for creating a sub-account (sub.example-account.testnet) is the same as creating a .testnet account, but with an account id that is a sub-account of the parent account.
-
-  The deposit determines the initial balance of the account.
 
   <Github fname="create_account.rs" language="rust"
     url="https://github.com/PiVortex/near-api-examples/tree/main/rust/examples/create_account.rs#L65-L82"
@@ -454,7 +448,7 @@ Returns the authorized apps of an account. This is a list of contracts that the 
 
 ### Delete Account {#delete-account}
 
-When deleting an account, you need to specify a beneficiary account id. This is the account that will receive the remaining NEAR balance of the account being deleted. Remember that no other assets will to transferred to the beneficiary, so you should transfer all your FTs, NFTs, etc. to another account before deleting.
+When deleting an account, you need to specify a beneficiary account id. This is the account that will receive the remaining NEAR balance of the account being deleted. 
 
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
@@ -472,6 +466,18 @@ When deleting an account, you need to specify a beneficiary account id. This is 
 
   </TabItem>
 </Tabs>
+
+:::warning
+
+Only NEAR tokens will be transferred to the beneficiary, so you should transfer all your FTs, NFTs, etc. to another account before deleting.
+
+:::
+
+:::danger
+
+If the beneficiary account does not exist, the NEAR tokens will be burned
+
+:::
 
 ---
 
@@ -508,8 +514,6 @@ A call function changes the contract's state and requires a signer/keypair.
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
 
-  You need to specify the account id of the contract you want to call, the method you want to call, and optionally the arguments for the method, the amount of gas you want to allocate for the call, and the deposit you want to send with the call.
-
   <Github fname="contract-interaction.js" language="javascript"
     url="https://github.com/PiVortex/near-api-examples/tree/main/javascript/examples/contract-interaction.js#L65-L73"
     start="65" end="73" />
@@ -517,13 +521,9 @@ A call function changes the contract's state and requires a signer/keypair.
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
 
-  To call a function on a contract, you need to create a `Contract` object.
-
   <Github fname="contract_interaction.rs" language="rust"
     url="https://github.com/PiVortex/near-api-examples/tree/main/rust/examples/contract_interaction.rs#L23-L24"
     start="23" end="24" />
-
-  You need to specify the account id of the contract you want to call, the method you want to call, the deposit you want to send with the call, and optionally the arguments for the method, the amount of gas you want to allocate for the call.
 
   <Github fname="contract_interaction.rs" language="rust"
     url="https://github.com/PiVortex/near-api-examples/tree/main/rust/examples/contract_interaction.rs#L37-L49"
@@ -611,8 +611,6 @@ View functions are read-only functions that don't change the state of the contra
 
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
-
-  To call a view function a json provider is used instead of the connection object. You can copy the `viewContract` function into your own code.
 
   <Github fname="contract-interaction.js" language="javascript"
     url="https://github.com/PiVortex/near-api-examples/tree/main/javascript/examples/contract-interaction.js#L23-L62"
