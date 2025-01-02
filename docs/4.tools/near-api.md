@@ -486,6 +486,14 @@ The deposit determines the initial balance of the account.
   </details>
 
   </TabItem>
+  <TabItem value="python" label="🐍 Python">
+  
+    ```python
+    await account.function_call("testnet", "create_account", {"new_account_id": "example-account.testnet", "new_public_key": "ed25519:..."}, "30000000000000", 1 * NEAR)
+    ```
+
+  </TabItem>
+
 </Tabs>
 
 <hr class="subsection" />
