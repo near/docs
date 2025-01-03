@@ -2,7 +2,7 @@
 id: access-keys
 title: Access Keys
 ---
-In all blockchains, users control their accounts by holding a [`private key`](](https://en.wikipedia.org/wiki/Public-key_cryptography) (a secret only they know) and using it to sign [transactions](./transactions.md).
+In all blockchains, users control their accounts by holding a [`private key`](https://en.wikipedia.org/wiki/Public-key_cryptography) (a secret only they know) and using it to sign [transactions](./transactions.md).
 
 ![img](@site/static/docs/assets/welcome-pages/access-keys.png)
 
