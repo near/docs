@@ -158,7 +158,7 @@ cargo near build
 </Tabs>
 
 ```bash
-cargo near deploy $NEAR_ACCT with-init-call new json-args '{"owner_id": "'$NEAR_ACCT'", "creator_account": "testnet"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
+cargo near deploy build-non-reproducible-wasm $NEAR_ACCT with-init-call new json-args '{"owner_id": "'$NEAR_ACCT'", "creator_account": "testnet"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
 ```
 
 <Tabs groupId="cli-tabs">

@@ -222,7 +222,7 @@ Verify that the correct account ID is printed in the terminal. If everything loo
 In the root of your NFT project run the following command to deploy your smart contract.
 
 ```bash
-cargo near deploy $NFT_CONTRACT_ID
+cargo near deploy build-non-reproducible-wasm $NFT_CONTRACT_ID
 ```
 
 At this point, the contract should have been deployed to your account and you're ready to move onto testing and minting NFTs.

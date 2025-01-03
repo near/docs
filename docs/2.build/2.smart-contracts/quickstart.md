@@ -435,6 +435,6 @@ At the time of this writing, this example works with the following versions:
 - node: `20.18.0`
 - rustc: `1.81.0`
 - near-cli-rs: `0.15.1`
-- cargo-near: `0.10.1`
+- cargo-near: `0.13.2`
 
 :::

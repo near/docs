@@ -187,7 +187,7 @@ Let's deploy the contract (to the subaccount we created) and then check this aga
 Ensure that in your command line application, you're in the directory that contains the `Cargo.toml` file, then run:
 
 ```bash
-cargo near deploy crossword.friend.testnet without-init-call network-config testnet sign-with-keychain send
+cargo near deploy build-non-reproducible-wasm crossword.friend.testnet without-init-call network-config testnet sign-with-keychain send
 ```
 
 Congratulations, you've deployed the smart contract! Note that NEAR CLI will output a link to [NEAR Explorer](https://nearblocks.io/) where you can inspect details of the transaction.

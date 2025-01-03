@@ -48,7 +48,7 @@ Let's move over to the `enumeration.rs` file and implement that logic:
 Now that you've implemented the necessary logic for `nft_tokens_for_owner`, it's time to build and re-deploy the contract to your account. Using the cargo-near, deploy the contract as you did in the previous tutorial:
 
 ```bash
-cargo near deploy $NFT_CONTRACT_ID without-init-call network-config testnet sign-with-keychain send
+cargo near deploy build-non-reproducible-wasm $NFT_CONTRACT_ID without-init-call network-config testnet sign-with-keychain send
 ```
 
 Once the contract has been redeployed, let's test and see if the state migrated correctly by running a simple view function:
