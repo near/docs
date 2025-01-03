@@ -187,10 +187,10 @@ To interact with the contract through the console, you can use the following com
   near call <account-id> create_nft_drop '{"drop_id": "1", "public_key": "ed25519:HcwvxZXSCX341Pe4vo9FLTzoRab9N8MWGZ2isxZjk1b8", "nft_contract": "<nft-contract-account-id>"}' --accountId <account-id> --gas 300000000000000
   
   # claim to an existing account
-  near call <account-id> claim_for '{"account_id": "<claimer-account-id>"}' --accountId <account-id> --privateKey <private-key>
+  # see the full version
 
   # claim to a new account
-  near call <account-id> create_account_and_claim '{"account_id": "<claimer-account-id>"}' --accountId <account-id> --privateKey <private-key>
+  # see the full version
   ```
   </TabItem>
 
