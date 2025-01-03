@@ -250,6 +250,27 @@ const sidebar = {
       "Primitives & Standards": [
         "build/primitives/ft",
         "build/primitives/nft",
+        {
+          type: 'category',
+          label: 'NFT Tutorials',
+          items: [
+            {
+              "type": "link",
+              "label": "Minting NFTs",
+              "href": "/tutorials/nfts/minting-nfts"
+            },
+            {
+              "type": "link",
+              "label": "NFT Contract (JS)",
+              "href": "/tutorials/nfts/js/introduction"
+            },
+            {
+              "type": "link",
+              "label": "NFT Contract (Rust)",
+              "href": "/tutorials/nfts/introduction"
+            },
+          ]
+        },
         "build/primitives/linkdrop",
         "build/primitives/oracles",
         "build/primitives/dao",
@@ -400,13 +421,6 @@ const sidebar = {
     {
       "Non-Fungible Tokens (NFT)": [
         "tutorials/nfts/minting-nfts",
-        "tutorials/nfts/minting-nft-frontend",
-        "tutorials/nfts/minecraft-nfts",
-        {
-          "type": "link",
-          "label": "Building a Frontend",
-          "href": "https://github.com/near-examples/nft-tutorial-frontend"
-        },
         {
           "type": "html",
           "value": "<hr/>"

@@ -56,7 +56,7 @@ The easiest way to create and handle NFTs is by using one of the existing commun
 ---
 
 ## Deploying a NFT Contract
-If you want to deploy your own NFT contract, you can create one using our [reference implementation](https://github.com/near-examples/NFT) 
+If you want to deploy your own NFT contract, you can create one using our [reference implementation](https://github.com/near-examples/NFT)
 
 Simply personalize it and deploy it to your account.
 
@@ -159,7 +159,7 @@ In both cases, it is necessary to invoke the `nft_transfer` method, indicating t
     <CLITransferNFT />
   </TabItem>
   <TabItem value="📄 Contract" label="📄 Contract">
-    <SmartContractTransferNFT />  
+    <SmartContractTransferNFT />
   </TabItem>
 </Tabs>
 
@@ -240,9 +240,9 @@ Basic NFT contracts following [the NEP-171 and NEP-177 standards](https://nomico
 
 For this purpose, there are ecosystem apps such as [Paras](https://paras.id/) or [Mintbase](https://www.mintbase.xyz/), that use dedicated marketplace contracts.
 
-In order to put a NFT for a sale on a marketplace you need to do two actions: 
+In order to put a NFT for a sale on a marketplace you need to do two actions:
 
-1. Cover data storage costs in the marketplace contract. 
+1. Cover data storage costs in the marketplace contract.
 2. Approve the marketplace to sell the NFT in your NFT contract.
 
 <br />
@@ -284,10 +284,14 @@ For this purpose, there are ecosystem apps such as [Paras](https://paras.id/) or
 
 ---
 
+## Tutorials
+
+- [NFT Tutorial](/tutorials/nfts/js/introduction) _Zero to Hero_ (JavaScript SDK) - a set of tutorials that cover how to create a NFT contract using JavaScript.
+- [NFT Tutorial](/tutorials/nfts/introduction) _Zero to Hero_ (Rust SDK) - a set of tutorials that cover how to create a NFT contract using Rust.
+
+
 ## Additional Resources
 
-1. [NFT Tutorial](/tutorials/nfts/js/introduction) (NEAR examples, JavaScript SDK) - a set of tutorials that cover how to create a NFT contract using JavaScript.
-2. [NFT Tutorial](/tutorials/nfts/introduction) (NEAR examples, Rust SDK) - a set of tutorials that cover how to create a NFT contract using Rust.
 3. [NFT Tutorial by Keypom](https://github.com/keypom/nft-tutorial-series) (a fork of the NEAR example tutorial).
 4. [Paras API documentation](https://parashq.github.io/).
 5. [Mintbase API documentation](https://docs.mintbase.xyz/dev/mintbase-graph).
