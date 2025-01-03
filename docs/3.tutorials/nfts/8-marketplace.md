@@ -398,7 +398,7 @@ You should now have a solid understanding of NFTs and marketplaces on NEAR. Feel
 At the time of this writing, this example works with the following versions:
 
 - rustc: `1.77.1`
-- near-cli-rs: `0.11.0`
+- near-cli-rs: `0.17.0`
 - cargo-near `0.6.1`
 - NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
 
