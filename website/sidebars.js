@@ -505,6 +505,13 @@ const sidebar = {
         }
       ]
     },
+    {
+      "Multi-Chain DAO Governance": [
+        "tutorials/multichain-dao/introduction",
+        "tutorials/multichain-dao/signing",
+        "tutorials/multichain-dao/relaying",
+      ]
+    },
   ],
   "tools": [
     "tools/welcome",
