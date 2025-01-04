@@ -6,12 +6,12 @@ title: Address (Account ID)
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-NEAR accounts are identified by a unique address, which take one of two forms:
-1. [**Implicit addresses**](#implicit-address), which are 64 characters long (e.g. `fb9243ce...`)
-2. [**Named addresses**](#named-address), which are simpler to remember and act as domains (e.g. `alice.near`)
+NEAR accounts are identified by a unique address, which takes one of two forms:
+1. [**Implicit address**](#implicit-address), which are 64 characters long (e.g. `fb9243ce...`)
+2. [**Named address**](#named-address), which act as domains (e.g. `alice.near`)
 
 :::tip Searching to create an account?
-You have multiple ways to create an account, you can [sign-up using your email](https://dev.near.org/signup) (note: email-based accounts currently have limited ability to transfer funds or sign transactions), get a mobile wallet through [telegram](https://web.telegram.org/k/#@herewalletbot), or create a [web wallet](https://app.mynearwallet.com).
+You have multiple ways to create an account, you can [sign-up using your email](https://dev.near.org/signup), get a mobile wallet through [telegram](https://web.telegram.org/k/#@herewalletbot), or create a [web wallet](https://wallet.meteorwallet.app/wallet).
 :::
 
 ---
@@ -24,7 +24,13 @@ For example:
 - Corresponds to the public key: `ed25519:CQLP1o1F3Jbdttek3GoRJYhzfT...`
 - And controls the account: `a96ad3cb539b653e4b869bd7cf26590690e8971...`
 
-Implicit accounts always *exist*, and thus do not need to be created. However, in order to use the account you will still need to fund it with NEAR tokens (or get somebody to pay the gas for your transaction).
+Implicit accounts always *exist*, and thus do not need to be created. However, in order to use the account you will still need to fund it with NEAR tokens (or get a relayer to pay your transaction's [gas](./gas.md)).
+
+:::tip
+
+In NEAR, you can delete the private key of an implicit account, which effectively locks the account and prevents anyone to control it
+
+:::
 
 <details>
 
@@ -46,9 +52,9 @@ near account create-account fund-later use-auto-generation save-to-folder ~/.nea
 ---
 
 ## Named Address
-In NEAR, users can register **named accounts** (e.g. `bob.near`) which are simpler to share and remember.
+Users can register **named accounts** (e.g. `bob.near`) which are easy to remember and share.
 
-Another advantage of named accounts is that they can create **sub-accounts** of themselves, effectively working as domains:
+An awesome feature of named accounts is that they can create **sub-accounts** of themselves, effectively working as domains:
 
 1. The [`registrar`](https://nearblocks.io/address/registrar) account can create top-level accounts (e.g. `near`, `sweat`, `kaiching`).
 2. The `near` account can create sub-accounts such as `bob.near` or `alice.near`

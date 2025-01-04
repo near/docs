@@ -267,7 +267,7 @@ cargo near build
 It's time to deploy the contract, initialize it and mint the total supply. Let's create an initial supply of 1000 `gtNEAR`. Since it has 24 decimal places, you should put `1000` followed by 24 zeros in the total supply field.
 
 ```bash
-cargo near deploy $EVENTS_FT_CONTRACT_ID with-init-call new_default_meta json-args '{"owner_id": "'$EVENTS_FT_CONTRACT_ID'", "total_supply": "1000000000000000000000000000"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
+cargo near deploy build-non-reproducible-wasm $EVENTS_FT_CONTRACT_ID with-init-call new_default_meta json-args '{"owner_id": "'$EVENTS_FT_CONTRACT_ID'", "total_supply": "1000000000000000000000000000"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
 ```
 
 You can check to see if everything went through properly by looking at the output in your CLI:
@@ -385,6 +385,7 @@ At the time of this writing, this example works with the following versions:
 
 - rustc: `1.77.1`
 - near-sdk-rs: `5.1.0` (with enabled `legacy` feature)
+- cargo-near: `0.13.2`
 - cargo-near: `0.6.1`
-- near-cli-rs: `0.11.0`
+- near-cli-rs: `0.17.0`
 :::

@@ -207,7 +207,7 @@ Next, you'll deploy this contract to the network.
 Using the cargo-near, deploy and initialize the contract as you did in the previous tutorials:
 
 ```bash
-cargo near deploy $EVENTS_NFT_CONTRACT_ID with-init-call new_default_meta json-args '{"owner_id": "'$EVENTS_NFT_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
+cargo near deploy build-non-reproducible-wasm $EVENTS_NFT_CONTRACT_ID with-init-call new_default_meta json-args '{"owner_id": "'$EVENTS_NFT_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
 ```
 
 <hr class="subsection" />
@@ -296,7 +296,7 @@ In the [next tutorial](8-marketplace.md), you'll look at the basics of a marketp
 At the time of this writing, this example works with the following versions:
 
 - rustc: `1.77.1`
-- near-cli-rs: `0.11.0`
+- near-cli-rs: `0.17.0`
 - cargo-near `0.6.1`
 - NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
 - Events standard: [NEP297 extension](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event), version `1.1.0`

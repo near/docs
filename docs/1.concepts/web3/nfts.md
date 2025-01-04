@@ -478,7 +478,7 @@ If we need read-level access only, we can simply use the [REST API](https://docs
 * In case of a Functional Call key, it can be obtained from the wallet and used directly by the client.
 * In case of a Full Access key, the user should be redirected to the wallet to approve a transaction.
 
-A [JavaScript API](/tools/near-api-js/quick-reference) exists to cover all of these scenarios. It has all of the necessary functionality to integrate Web/Node.JS applications with blockchain. This SDK is a perfect choice for the Web-based clients, but it’s not suitable for desktop or mobile based clients. Other libraries can be used for them:
+A [JavaScript API](../../4.tools/near-api.md) exists to cover all of these scenarios. It has all of the necessary functionality to integrate Web/Node.JS applications with blockchain. This SDK is a perfect choice for the Web-based clients, but it’s not suitable for desktop or mobile based clients. Other libraries can be used for them:
 
 
 

@@ -39,7 +39,7 @@ You can view the list of currently active validators on platforms like [NEAR-STA
 
 We don't need GPU support as we are a POS chain and we require very little compute power.
 
-You can read more about our consensus strategy on our <a href="https://github.com/near/wiki/blob/master/Archive/validators/about.md" target="_blank" rel="noopener noreferrer">Validator Quickstart</a> and <a href="https://github.com/near/wiki/blob/master/Archive/validators/faq.md" target="_blank" rel="noopener noreferrer">Staking FA</a>.
+You can read more about our consensus strategy on our <a href="https://github.com/near/wiki/blob/master/Archive/validators/about.md" target="_blank" rel="noopener noreferrer">Validator Quickstart</a> and <a href="https://github.com/near/wiki/blob/master/Archive/validators/faq.md" target="_blank" rel="noopener noreferrer">Staking FAQ</a>.
 </blockquote>
 
 ## Block & Chunk producers
