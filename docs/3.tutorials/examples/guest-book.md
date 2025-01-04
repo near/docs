@@ -25,7 +25,7 @@ You have two options to start the Guest book Example.
 2. Clone the repository locally and use it from your computer.
 
 | Codespaces                                                                                                                        | Clone locally                                             |
-| --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
+|-----------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------|
 | [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/near-examples/guest-book-examples) | 🌐 `https://github.com/near-examples/guest-book-examples` |
 
 ---
@@ -183,11 +183,25 @@ In order to deploy the contract you will need to create a NEAR account.
 
 Go into the directory containing the smart contract (`cd contract-ts` or `cd contract-rs`), build and deploy it:
 
-```bash
-cargo near build
+<Tabs groupId="code-tabs">
 
-cargo near deploy <accountId>
-```
+  <TabItem value="js" label="🌐 JavaScript">
+
+    ```bash
+    npm run build
+    near deploy <accountId> ./build/guest_book.wasm
+    ```
+
+  </TabItem>
+  <TabItem value="rust" label="🦀 Rust">
+  
+  ```bash
+  cargo near deploy build-non-reproducible-wasm <accountId>
+  ```
+
+  </TabItem>
+
+</Tabs>
 
 :::tip
 To interact with your contract from the [frontend](#frontend), simply replace the variable `CONTRACT_NAME` in the `index.js` file.

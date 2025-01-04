@@ -248,8 +248,40 @@ const sidebar = {
     "build/primitives/what-is",
     {
       "Primitives & Standards": [
-        "build/primitives/ft",
-        "build/primitives/nft",
+        {
+          type: 'category',
+          label: 'Fungible Tokens (FT)',
+          items: [
+            "build/primitives/ft",
+            {
+              "type": "link",
+              "label": "Tutorial: Zero to Hero (Rust) ↗",
+              "href": "/tutorials/fts/introduction"
+            },
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Non Fungible Tokens (NFT)',
+          items: [
+            "build/primitives/nft",
+            {
+              "type": "link",
+              "label": "Tutorial: Minting NFTs ↗",
+              "href": "/tutorials/nfts/minting-nfts"
+            },
+            {
+              "type": "link",
+              "label": "Tutorial: Zero to Hero (JS) ↗",
+              "href": "/tutorials/nfts/js/introduction"
+            },
+            {
+              "type": "link",
+              "label": "Tutorial: Zero to Hero (Rust) ↗",
+              "href": "/tutorials/nfts/introduction"
+            },
+          ]
+        },
         "build/primitives/linkdrop",
         "build/primitives/oracles",
         "build/primitives/dao",
@@ -400,13 +432,6 @@ const sidebar = {
     {
       "Non-Fungible Tokens (NFT)": [
         "tutorials/nfts/minting-nfts",
-        "tutorials/nfts/minting-nft-frontend",
-        "tutorials/nfts/minecraft-nfts",
-        {
-          "type": "link",
-          "label": "Building a Frontend",
-          "href": "https://github.com/near-examples/nft-tutorial-frontend"
-        },
         {
           "type": "html",
           "value": "<hr/>"
@@ -516,28 +541,7 @@ const sidebar = {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Developer Tools </small></b></span>"
     },
-    {
-      "type": "category",
-      "label": "JavaScript API",
-      "items": [
-        "tools/near-api-js/quick-reference",
-        "tools/near-api-js/wallet",
-        "tools/near-api-js/account",
-        "tools/near-api-js/contract",
-        "tools/near-api-js/utils",
-        "tools/near-api-js/faq",
-        {
-          "type": "link",
-          "label": "Handling Passphrases",
-          "href": "https://github.com/near/near-seed-phrase"
-        },
-        {
-          "type": "link",
-          "label": "Type Docs",
-          "href": "https://near.github.io/near-api-js"
-        }
-      ]
-    },
+    "tools/near-api",
     "tools/sdk",
     "tools/near-cli",
     {
@@ -555,13 +559,9 @@ const sidebar = {
       "type": "category",
       "label": "Wallets",
       "items": [
+        "tools/wallets",
         "tools/wallet-selector",
         "tools/ethereum-wallets",
-        {
-          "type": "link",
-          "label": "Remix IDE Plugin",
-          "href": "https://docs.welldonestudio.io/code/getting-started"
-        }
       ]
     },
     {
@@ -572,7 +572,20 @@ const sidebar = {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Ecosystem Tools </small></b></span>"
     },
-    "tools/wallets",
+    {
+      "type": "category",
+      "label": "Data APIs",
+      "items": [
+        'tools/ecosystem-apis/fastnear-api',
+        'tools/ecosystem-apis/nearblocks-api',
+        'tools/ecosystem-apis/pikespeak-api',
+      ]
+    },
+    {
+      "type": "link",
+      "label": "Remix IDE Plugin",
+      "href": "https://docs.welldonestudio.io/code/getting-started"
+    },
     {
       "type": "link",
       "label": "Testnet Faucet",
@@ -583,7 +596,6 @@ const sidebar = {
       "label": "Keypom",
       "href": "https://keypom.xyz/"
     },
-    'tools/fastnear-api',
     "tools/explorer",
     "tools/indexing"
   ],
