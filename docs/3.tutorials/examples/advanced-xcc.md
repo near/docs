@@ -289,9 +289,25 @@ In order to deploy the contract you will need to create a NEAR account.
 
 Go into the directory containing the smart contract (`cd contract-advanced-ts` or `cd contract-advanced-rs`), build and deploy it:
 
-```bash
-cargo near deploy build-non-reproducible-wasm <accountId> with-init-call new json-args '{"hello_account":"hello.near-example.testnet","guestbook_account":"guestbook_account.near-example.testnet","counter_account":"counter_account.near-example.testnet"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
-```
+<Tabs groupId="code-tabs">
+
+  <TabItem value="js" label="🌐 JavaScript">
+
+    ```bash
+    npm run build
+    near deploy <accountId> ./build/cross_contract.wasm --initFunction new --initArgs '{"hello_account":"hello.near-example.testnet","guestbook_account":"guestbook_account.near-example.testnet","counter_account":"counter_account.near-example.testnet"}'
+    ```
+
+  </TabItem>
+  <TabItem value="rust" label="🦀 Rust">
+  
+  ```bash
+  cargo near deploy build-non-reproducible-wasm <accountId> with-init-call new json-args '{"hello_account":"hello.near-example.testnet","guestbook_account":"guestbook_account.near-example.testnet","counter_account":"counter_account.near-example.testnet"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
+  ```
+
+  </TabItem>
+
+</Tabs>
 
 <hr class="subsection" />
 

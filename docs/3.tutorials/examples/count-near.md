@@ -116,7 +116,7 @@ The contract presents 4 methods: `get_num`, `increment`, `decrement`, and `reset
   <Language value="js" language="ts">
     <Github fname="contract.ts"
             url="https://github.com/near-examples/counters/blob/main/contract-ts/src/contract.ts"
-            start="3" end="29" />
+            start="3" end="33" />
   </Language>
   <Language value="rust" language="rust">
     <Github fname="lib.rs"
@@ -182,12 +182,30 @@ In order to deploy the contract you will need to create a NEAR account.
 
 Go into the directory containing the smart contract (`cd contract-ts` or `cd contract-rs`), build and deploy it:
 
-```bash
-cargo near deploy build-non-reproducible-wasm <accountId>
-```
+<Tabs groupId="code-tabs">
+
+  <TabItem value="js" label="🌐 JavaScript">
+
+    ```bash
+    npm run build
+    near deploy <accountId> ./build/counter.wasm
+    ```
+
+  </TabItem>
+  <TabItem value="rust" label="🦀 Rust">
+  
+  ```bash
+  cargo near deploy build-non-reproducible-wasm <accountId>
+  ```
+
+  </TabItem>
+
+</Tabs>
+
 :::tip
 To interact with your contract from the [frontend](#frontend), simply replace the value of the `testnet` key in the `config.js` file.
 :::
+
 
 <hr class="subsection" />
 
