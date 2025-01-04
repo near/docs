@@ -248,25 +248,36 @@ const sidebar = {
     "build/primitives/what-is",
     {
       "Primitives & Standards": [
-        "build/primitives/ft",
-        "build/primitives/nft",
         {
           type: 'category',
-          label: 'NFT Tutorials',
+          label: 'Fungible Tokens (FT)',
           items: [
+            "build/primitives/ft",
             {
               "type": "link",
-              "label": "Minting NFTs",
+              "label": "Tutorial: Zero to Hero (Rust) ↗",
+              "href": "/tutorials/fts/introduction"
+            },
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Non Fungible Tokens (NFT)',
+          items: [
+            "build/primitives/nft",
+            {
+              "type": "link",
+              "label": "Tutorial: Minting NFTs ↗",
               "href": "/tutorials/nfts/minting-nfts"
             },
             {
               "type": "link",
-              "label": "NFT Contract (JS)",
+              "label": "Tutorial: Zero to Hero (JS) ↗",
               "href": "/tutorials/nfts/js/introduction"
             },
             {
               "type": "link",
-              "label": "NFT Contract (Rust)",
+              "label": "Tutorial: Zero to Hero (Rust) ↗",
               "href": "/tutorials/nfts/introduction"
             },
           ]
