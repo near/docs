@@ -3,9 +3,10 @@ id: count-near
 title: Count on NEAR
 ---
 
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs";
+import {CodeTabs, Language, Github} from '@site/src/components/codetabs';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import MovingForwardSupportSection from '@site/src/components/MovingForwardSupportSection';
 
 Our counter example is a friendly decentralized app that stores a number and exposes methods to `increment`,
 `decrement`, and `reset` it.
@@ -115,7 +116,7 @@ The contract presents 4 methods: `get_num`, `increment`, `decrement`, and `reset
   <Language value="js" language="ts">
     <Github fname="contract.ts"
             url="https://github.com/near-examples/counters/blob/main/contract-ts/src/contract.ts"
-            start="3" end="29" />
+            start="3" end="33" />
   </Language>
   <Language value="rust" language="rust">
     <Github fname="lib.rs"
@@ -181,14 +182,30 @@ In order to deploy the contract you will need to create a NEAR account.
 
 Go into the directory containing the smart contract (`cd contract-ts` or `cd contract-rs`), build and deploy it:
 
-```bash
-cargo near build
+<Tabs groupId="code-tabs">
 
-cargo near deploy <accountId>
-```
+  <TabItem value="js" label="🌐 JavaScript">
+
+    ```bash
+    npm run build
+    near deploy <accountId> ./build/counter.wasm
+    ```
+
+  </TabItem>
+  <TabItem value="rust" label="🦀 Rust">
+  
+  ```bash
+  cargo near deploy build-non-reproducible-wasm <accountId>
+  ```
+
+  </TabItem>
+
+</Tabs>
+
 :::tip
 To interact with your contract from the [frontend](#frontend), simply replace the value of the `testnet` key in the `config.js` file.
 :::
+
 
 <hr class="subsection" />
 
@@ -291,6 +308,8 @@ If you're using your own account, replace `counter.near-examples.testnet` with y
 A nice way to learn is by trying to expand the contract. Modify it by adding a parameter to `increment` and `decrement`,
 so the user can choose by how much to change the value. For this, you will need to use knowledge from the [anatomy](../../2.build/2.smart-contracts/anatomy/anatomy.md)
 and [storage](../../2.build/2.smart-contracts/anatomy/storage.md) sections.
+
+<MovingForwardSupportSection />
 
 :::note Versioning for this article
 

@@ -40,6 +40,10 @@ body {
     content: "";
 }
 
+code {
+    padding: 0 0.2rem;
+}
+
 hr {
     height: 1px;
     border-radius: 0;
@@ -465,4 +469,8 @@ div[class^="announcementBar_"] {
 
 #__blog-post-container img {
     width: 100%;
+}
+
+.moving-forward__support-title {
+    margin-top: 10px !important;
 }

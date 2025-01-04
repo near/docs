@@ -877,7 +877,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
 
 ### Receipt by ID {#receipt-by-id}
 
-> Fetches a receipt by it's ID (as is, without a status or execution outcome)
+> Fetches a receipt by its ID (as is, without a status or execution outcome)
 
 - method: `EXPERIMENTAL_receipt`
 - params:

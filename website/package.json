@@ -9,10 +9,7 @@
     "build:preview": "docusaurus build --locale en",
     "swizzle": "docusaurus swizzle",
     "docusaurus": "docusaurus",
-    "fetch-changelog": "node ./src/utils/getChangelogs.js && npm run docusaurus download-remote-near-changelog",
-    "crowdin": "crowdin",
-    "crowdin:upload": "docusaurus write-translations && crowdin upload",
-    "crowdin:download": "crowdin download"
+    "fetch-changelog": "node ./src/utils/getChangelogs.js && npm run docusaurus download-remote-near-changelog"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.5.2",
@@ -31,7 +28,6 @@
     "wait-on": "^5.2.0"
   },
   "dependencies": {
-    "@crowdin/cli": "^4.2.0",
     "@docusaurus/core": "^3.5.2",
     "@docusaurus/plugin-ideal-image": "^3.5.2",
     "@docusaurus/plugin-sitemap": "^3.5.2",

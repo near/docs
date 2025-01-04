@@ -4,6 +4,7 @@ title: AI Assistant
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import MovingForwardSupportSection from '@site/src/components/MovingForwardSupportSection';
 
 Welcome! In this guide, you'll discover an AI chatbot that can interact with the NEAR ecosystem
 
@@ -192,4 +193,4 @@ A lot of things could be built by leveraging this PoC, some ideas could be:
 - An AI trader reacting to on-chain or off-chain events to buy/sell some tokens with its wallet
 - The only limit is your imagination!
 
-Happy coding! 🚀
+<MovingForwardSupportSection />

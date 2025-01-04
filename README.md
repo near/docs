@@ -11,13 +11,13 @@
 ## NEAR Protocol - scalable and usable blockchain
 
 [![Discord](https://img.shields.io/discord/490367152054992913.svg)](http://near.chat)
-[![CI](https://github.com/near/docs/actions/workflows/build-docs.yml/badge.svg)](https://github.com/near/docs/actions/workflows/build-docs.yml)
+[![CI](https://github.com/near/docs/actions/workflows/build-check.yml/badge.svg)](https://github.com/near/docs/actions/workflows/build-check.yml)
 
 This is the repository for the official documentation of NEAR Protocol, a user-friendly and carbon-neutral blockchain, built from the ground up to be performant, secure, and infinitely scalable.
 
 ## Quick start
 
-Check out the following links
+Check out the following links:
 
 - Deployed, live documentation: https://docs.near.org
 - Example applications: https://github.com/near-examples
@@ -25,9 +25,9 @@ Check out the following links
 
 ## Contributing
 
-NEAR uses [Docusaurus](https://docusaurus.io) for documentation.  Please refer to their documentation for details on major structural contributions to the documentation.
+NEAR uses [Docusaurus](https://docusaurus.io) for documentation. Please refer to their documentation for details on major structural contributions to the documentation.
 
-For simple content changes you have 2 options
+For simple content changes you have 2 options:
 
 - [Submit an issue](https://github.com/near/docs/issues)
 - [Submit a pull request](https://github.com/near/docs/pulls) *(we prefer PRs of course)*
@@ -43,7 +43,7 @@ This is the fastest way to submit content changes directly from the page where y
 
 ### The typical PR
 
-This is the standard fork-branch-commit workflow for submitting pull requests to open source repositories
+This is the standard fork-branch-commit workflow for submitting pull requests to open-source repositories:
 
 1. Fork this repo to your own GitHub account (or just clone it directly if you are currently a member of NEAR)
 
@@ -112,13 +112,7 @@ If you found a broken link from a Google search, please request to remove it fro
 
 ## Check for broken links
 
-Before opening a pull request, please check for broken links:
-
-```bash
-yarn test
-```
-
-or if you are in the `./website` directory:
+Before opening a pull request, please check for broken links by navigating to `./website` directory and run:
 
 ```bash
 yarn full-test

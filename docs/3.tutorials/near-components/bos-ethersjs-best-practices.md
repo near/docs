@@ -156,7 +156,7 @@ const loadTokensData = () => {
   });
 
   tokens.map((tokenId) => {
-    const tokenData = loadCoingeckData(tokenId);
+    const tokenData = loadCoingeckoData(tokenId);
     // save balance of every token to the state
     State.update({ [tokenId]: { ...tokenData, ...state[tokenId] } });
   });

@@ -148,7 +148,7 @@ const config = {
               type: 'html',
               value: '<hr/> <small class="subtitle"> Essentials </small>',
             },
-            { label: 'NEAR API', to: '/tools/near-api-js/quick-reference' },
+            { label: 'NEAR API', to: '/tools/near-api' },
             { label: 'NEAR SDK', to: '/tools/sdk' },
             { label: 'NEAR CLI', to: '/tools/near-cli' },
             {
@@ -184,7 +184,7 @@ const config = {
             },
             {
               type: 'html',
-              value: '<hr/><div class="subtitle"> Support </dib>',
+              value: '<hr/><div class="subtitle"> Support </div>',
             },
             {
               href: 'https://discord.gg/GZ7735Xjce',
@@ -196,7 +196,7 @@ const config = {
             },
             {
               type: 'html',
-              value: '<hr /><div class="subtitle"> Education </dib>',
+              value: '<hr /><div class="subtitle"> Education </div>',
             },
             {
               href: 'https://agorapp.dev/catalog/course?difficulty=&chains=near',
@@ -208,7 +208,7 @@ const config = {
             },
             {
               type: 'html',
-              value: '<hr /><div class="subtitle"> Other Docs </dib>',
+              value: '<hr /><div class="subtitle"> Other Docs </div>',
             },
             {
               href: 'https://github.com/near/NEPs',
@@ -234,10 +234,6 @@ const config = {
           activeBaseRegex: '/api/rpc',
         },
         { label: 'Blog', to: '/blog', activeBaseRegex: '/blog', position: 'right' },
-        {
-          type: 'localeDropdown',
-          position: 'right',
-        },
       ],
     },
     footer: {
@@ -251,7 +247,7 @@ const config = {
       // The application ID provided by Algolia
       appId: '0LUM67N2P2',
       // Public API key: it is safe to commit it
-      apiKey: '50a400220b38e2d4bef996c7d0ed4b90',
+      apiKey: '41e2feb6ffa0d3450ca9d0a0c1826c1c',
       indexName: 'near',
       // Optional: see doc section below
       contextualSearch: true,
@@ -279,15 +275,6 @@ const config = {
       //... other Algolia params
       placeholder: 'Search the Docs...',
       insights: true,
-    },
-  },
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'ko', 'vi', 'zh-CN'],
-    localeConfigs: {
-      'zh-CN': {
-        label: '简体中文',
-      },
     },
   },
 };
