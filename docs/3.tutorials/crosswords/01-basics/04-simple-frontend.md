@@ -11,7 +11,7 @@ import nearReactFriends from '/docs/assets/crosswords/near-and-react--dakila.nea
 
 # Add a simple frontend
 
-This will be the final section in this chapter, where we'll add a simple frontend using React and [`near-api-js`](https://docs.near.org/tools/near-api-js/quick-reference) to communicate with the smart contract.
+This will be the final section in this chapter, where we'll add a simple frontend using React and [`near-api-js`](../../../4.tools/near-api.md) to communicate with the smart contract.
 
 <figure>
     <img src={nearReactFriends} alt="Two characters hanging out, NEAR and React. Art created by dakila.near" width="600"/>
@@ -126,7 +126,7 @@ Create fresh account if you wish, which is good practice:
 Deploy the contract:
 
 ```bash
-cargo near deploy crossword.friend.testnet with-init-call new json-args '{"solution": "69c2feb084439956193f4c21936025f14a5a5a78979d67ae34762e18a7206a0f"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
+cargo near deploy build-non-reproducible-wasm crossword.friend.testnet with-init-call new json-args '{"solution": "69c2feb084439956193f4c21936025f14a5a5a78979d67ae34762e18a7206a0f"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
 ```
 
 Return to the project root and start the React app:

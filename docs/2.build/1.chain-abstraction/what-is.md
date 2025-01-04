@@ -15,17 +15,6 @@ To help on this task, NEAR Protocol provides services that allow to **create** a
 
 ---
 
-## Fast-Auth: Email onboarding
-One of the first barriers that new users face when entering the world of Web3 is the need to create a crypto wallet. This generally implies the need to choose a wallet, create and store a recovery phrase, and obtain deposit funds to start using the account.
-
-With FastAuth, users only need to provide an email address to create a NEAR account. Using the same email address the user will be able to use their account across applications and devices.
-
-:::info
-FastAuth accounts are kept safe through multi-party computation (MPC) on a decentralized network. This means that the user's private key is never stored in a single location, and thus it is never exposed to any single party.
-:::
-
-<hr subclass="subsection" />
-
 ## Relayers: Cover gas fees
 Allowing users to start using a dApp without having to acquire funds is a powerful tool to increase user adoption. NEAR Protocol provides a service that allows developers to subsidize gas fees for their users.
 
@@ -44,6 +33,17 @@ NEAR Protocol provides a multi-chain signature service that allows users to use 
 
 :::info
 Multi-chain signatures work by combining **smart contracts** that produce signatures, with indexers that listen for these signatures, and relayers that submit the transactions to other networks. This allows users to hold assets and use applications in **any** network, only needing to have a single NEAR account.
+:::
+
+<hr subclass="subsection" />
+
+## Fast-Auth: Email onboarding
+One of the first barriers that new users face when entering the world of Web3 is the need to create a crypto wallet. This generally implies the need to choose a wallet, create and store a recovery phrase, and obtain deposit funds to start using the account.
+
+With FastAuth, users only need to provide an email address to create a NEAR account. Using the same email address the user will be able to use their account across applications and devices.
+
+:::warning
+FastAuth is being deprecated, stay tuned for updates
 :::
 
 ---

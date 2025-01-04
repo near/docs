@@ -29,12 +29,12 @@ While your user interface layer will remain centralized, the backend layer—inc
 
 When building a frontend that can connect with the NEAR blockchain using standard web2 tooling will require you to import two dependencies:
 
-- [NEAR API JS](../../4.tools/near-api-js/quick-reference.md) - A JavaScript API tool that allows frontend clients the ability to view and retrieve data directly from the blockchain.
+- [NEAR API JS](../../4.tools/near-api.md) - A JavaScript API tool that allows frontend clients the ability to view and retrieve data directly from the blockchain.
 - [Wallet Selector](../../4.tools/wallet-selector.md) - Wallet integration tool allowing developers to choose which wallets are supported and allows users to choose which wallet they would like to connect with.
 
 :::tip
 
-[Checkout this article](integrate-contracts.md) to learn how to integrate smart contracts to your frontend, using [Wallet Selector](../../4.tools/wallet-selector.md) and [NEAR API JS](../../4.tools/near-api-js/quick-reference.md).
+[Checkout this article](integrate-contracts.md) to learn how to integrate smart contracts to your frontend, using [Wallet Selector](../../4.tools/wallet-selector.md) and [NEAR API JS](../../4.tools/near-api.md).
 
 :::
 
