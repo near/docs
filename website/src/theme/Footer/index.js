@@ -329,7 +329,7 @@ function Footer() {
                   className="footer-menu list-reset mt-5 text-16 md:text-16"
                 >
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/tools/near-api-js/quick-reference">
+                    <a href="/tools/near-api">
                       API
                     </a>
                   </li>
