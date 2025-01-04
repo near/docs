@@ -184,9 +184,7 @@ In order to deploy the contract you will need to create a NEAR account.
 Go into the directory containing the smart contract (`cd contract-ts` or `cd contract-rs`), build and deploy it:
 
 ```bash
-cargo near build
-
-cargo near deploy <accountId>
+cargo near deploy build-non-reproducible-wasm <accountId>
 ```
 
 :::tip

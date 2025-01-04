@@ -168,9 +168,7 @@ In order to deploy the contract you will need to create a NEAR account.
 Go into the directory containing the smart contract (`cd contract-advanced-ts` or `cd contract-advanced-rs`), build and deploy it:
 
 ```bash
-cargo near build
-
-cargo near deploy <accountId> with-init-call new json-args '{"hello_account":"hello.near-example.testnet"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
+cargo near deploy build-non-reproducible-wasm <accountId> with-init-call new json-args '{"hello_account":"hello.near-example.testnet"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
 ```
 
 <hr class="subsection" />
