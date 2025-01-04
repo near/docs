@@ -316,7 +316,7 @@ echo $NFT_CONTRACT_ID
 This should return your `<accountId>`. The next step is to initialize the contract with some default metadata.
 
 ```bash
-cargo near deploy $NFT_CONTRACT_ID with-init-call new_default_meta json-args '{"owner_id": "'$NFT_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
+cargo near deploy build-non-reproducible-wasm $NFT_CONTRACT_ID with-init-call new_default_meta json-args '{"owner_id": "'$NFT_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
 ```
 
 If you now query for the metadata of the contract, it should return our default metadata.
@@ -716,7 +716,7 @@ Thank you so much for going through this journey with us! I wish you all the bes
 At the time of this writing, this example works with the following versions:
 
 - rustc: `1.77.1`
-- near-cli-rs: `0.11.0`
+- near-cli-rs: `0.17.0`
 - cargo-near `0.6.1`
 - NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
 

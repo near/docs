@@ -330,4 +330,4 @@ NEAR API JS does not limit itself to simply calling methods in a contract. In fa
 - **[Create batch transactions](https://github.com/near/near-api-js/tree/master/packages/cookbook/transactions/batch-transactions.ts)**: this enables to link multiple [actions](../../1.concepts/protocol/transaction-anatomy.md#actions) (e.g. multiple function calls). If one of the transactions fails, then they are all reverted.
 - **[Create accounts](https://github.com/near/near-api-js/tree/master/packages/cookbook/accounts/create-testnet-account.ts)**: deploy accounts for your users!
 
-Check the [cookbook](/tools/near-api-js/cookbook) to learn how to supercharge your web-app.
+Check the [NEAR API](../../4.tools/near-api.md) section to learn how to supercharge your web-app.
