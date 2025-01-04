@@ -31,7 +31,7 @@ There have been several incidents of this and it continues to be an issue.
 
 ## How?
 
-We're doing to do something unique — and frankly unusual — with our crossword puzzle. We're going to use function-call access keys in a new way.
+We're going to do something unique — and frankly unusual — with our crossword puzzle. We're going to use function-call access keys in a new way.
 
 Our crossword puzzle smart contract will add a function-call access key to itself. The private key is derived from the solution, used as a seed phrase.
 
@@ -45,7 +45,7 @@ A seed phrase is a series of words (usually 12 or 24 words) that create a privat
 Seed phrases typically use a [BIP-30 wordlist](https://github.com/bitcoin/bips/blob/master/bip-0039/bip-0039-wordlists.md), but *they do not need to* use a wordlist or have a certain number of words. As long as the words create entropy, a crossword puzzle solution can act as a deterministic seed phrase.
 :::
 
-So when we add a new puzzle, we'll use the `AddKey` Action to add a limited, function-call access key can that *only* call the `submit_solution` method.
+So when we add a new puzzle, we'll use the `AddKey` Action to add a limited, function-call access key that can *only* call the `submit_solution` method.
 
 The first user to solve the puzzle will essentially "discover" the private key and call that method. Think of it like a safe that contains a function-call access key.
 

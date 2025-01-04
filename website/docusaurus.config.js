@@ -149,7 +149,7 @@ const config = {
               type: 'html',
               value: '<hr/> <small class="subtitle"> Essentials </small>',
             },
-            { label: 'NEAR API', to: '/tools/near-api-js/quick-reference' },
+            { label: 'NEAR API', to: '/tools/near-api' },
             { label: 'NEAR SDK', to: '/tools/sdk' },
             { label: 'NEAR CLI', to: '/tools/near-cli' },
             {
@@ -252,7 +252,7 @@ const config = {
       // The application ID provided by Algolia
       appId: '0LUM67N2P2',
       // Public API key: it is safe to commit it
-      apiKey: '50a400220b38e2d4bef996c7d0ed4b90',
+      apiKey: '41e2feb6ffa0d3450ca9d0a0c1826c1c',
       indexName: 'near',
       // Optional: see doc section below
       contextualSearch: true,

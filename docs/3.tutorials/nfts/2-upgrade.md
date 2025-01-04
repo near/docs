@@ -48,7 +48,7 @@ Let's move over to the `enumeration.rs` file and implement that logic:
 Now that you've implemented the necessary logic for `nft_tokens_for_owner`, it's time to build and re-deploy the contract to your account. Using the cargo-near, deploy the contract as you did in the previous tutorial:
 
 ```bash
-cargo near deploy $NFT_CONTRACT_ID without-init-call network-config testnet sign-with-keychain send
+cargo near deploy build-non-reproducible-wasm $NFT_CONTRACT_ID without-init-call network-config testnet sign-with-keychain send
 ```
 
 Once the contract has been redeployed, let's test and see if the state migrated correctly by running a simple view function:
@@ -152,7 +152,7 @@ In the [next tutorial](3-enumeration.md), you'll implement the remaining functio
 At the time of this writing, this example works with the following versions:
 
 - rustc: `1.77.1`
-- near-cli-rs: `0.11.0`
+- near-cli-rs: `0.17.0`
 - cargo-near `0.6.1`
 - NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
 

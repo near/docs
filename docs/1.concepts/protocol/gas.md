@@ -198,25 +198,8 @@ Notice that the fee comes from the gas burned during the function execution, and
 
 ## Estimating Costs for a Call
 
-:::warning
-This section will soon be moved from here to the [build documentation](../../2.build/2.smart-contracts/anatomy/environment.md).
-:::
-
 If you're developing a smart contract, you might want to estimate how much gas a function call will consume. This is useful to estimate limits for your function and avoid running into out-of-gas errors.
 
 One of the most accurate ways to estimate gas costs is by running your function in `testnet`. To know exactly how much gas a specific part of your function uses, you can use the `used_gas` method from our SDK.
 
 Another option is to use `Sandbox Testing` (available in [Rust](https://github.com/near/workspaces-rs/tree/main/examples/src) and [JavaScript](https://github.com/near/workspaces-js)), which simulates the NEAR network. There you can access the gas burnt after each function call.
-
-Finally, you can obtain gas cost estimates for a given function call using `api.gasbuddy.tech`. This API is experimental and may be removed in the future. One can obtain a gas cost estimate for a given function call by sending a POST request to `https://api.gasbuddy.tech/profile` with the following JSON body:
-
-```json
-{
-  "contract_id": "<your-contract-account-id>",
-  "method": "<your-contract-method-name>",
-  "args": {
-    "arg1": "value1",
-    "arg2": "value2"
-  }
-}
-```
