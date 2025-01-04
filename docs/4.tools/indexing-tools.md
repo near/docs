@@ -14,7 +14,7 @@ Here's a quick overview of Indexer projects on the NEAR ecosystem:
 
 - [Indexer.xyz Multichain Indexer](https://indexer.xyz/): Indexer.xyz is an application layer that you can build your NFT or DeFi applications entirely on top of. In addition to raw transaction indexing, Indexer.xyz provides you with a standardized GraphQL API layer to easily tap into transactions across contracts and chains.
 
-- [Pagoda NEAR Lake](https://docs.pagoda.co/near-lake): with this fully managed solution by [Pagoda Inc.](https://pagoda.co), you don't need to run your own NEAR Lake Nodes and AWS S3 buckets.
+- [Pagoda NEAR Lake](https://docs.pagoda.co/near-lake): with this fully managed solution by [Pagoda Inc.](https://www.pagoda.co), you don't need to run your own NEAR Lake Nodes and AWS S3 buckets.
 
 - [The Graph](https://thegraph.com/docs/en/cookbook/near/): development tools to process blockchain events and make the resulting data easily available via a GraphQL API, known individually as a subgraph. [Graph Node](https://github.com/graphprotocol/graph-node) is able to process NEAR events, which means that NEAR developers can build subgraphs to index their smart contracts.
 

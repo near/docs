@@ -16,7 +16,7 @@ You can find the Lake Indexer source code in [this GitHub repository](https://gi
 
 :::tip
 
-[Pagoda Inc.](https://pagoda.co) runs NEAR Lake nodes to store the data in JSON format on AWS S3.
+[Pagoda Inc.](https://www.pagoda.co) runs NEAR Lake nodes to store the data in JSON format on AWS S3.
 There is no need to run your own NEAR Lake unless you have specific reasons to do that.
 
 :::

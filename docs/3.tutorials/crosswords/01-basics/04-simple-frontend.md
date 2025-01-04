@@ -11,7 +11,7 @@ import nearReactFriends from '/docs/assets/crosswords/near-and-react--dakila.nea
 
 # Add a simple frontend
 
-This will be the final section in this chapter, where we'll add a simple frontend using React and [`near-api-js`](https://docs.near.org/tools/near-api-js/quick-reference) to communicate with the smart contract.
+This will be the final section in this chapter, where we'll add a simple frontend using React and [`near-api-js`](../../../4.tools/near-api.md) to communicate with the smart contract.
 
 <figure>
     <img src={nearReactFriends} alt="Two characters hanging out, NEAR and React. Art created by dakila.near" width="600"/>
