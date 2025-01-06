@@ -2,6 +2,9 @@
 id: backend-login
 title: Authenticate NEAR Users 
 ---
+
+import {Github} from "@site/src/components/codetabs"
+
 Recently NEAR has approved a new standard that, among other things, enables users to authenticate into a backend service.
 
 The basic idea is that the user will sign a challenge with their NEAR wallet, and the backend will verify the signature. If the signature is valid, then the user is authenticated.
