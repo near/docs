@@ -195,7 +195,7 @@ This call will return:
 ```
 
 :::info
-Find a code example about quering storage status on [this link](https://github.com/crustio/crust-demo/blob/main/near/src/index.ts#L144-L147).
+Find a code example about querying storage status on [this link](https://github.com/crustio/crust-demo/blob/main/near/src/index.ts#L144-L147).
 :::
 
 #### 4. Add file prepaid
