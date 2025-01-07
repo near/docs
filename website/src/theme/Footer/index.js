@@ -17,6 +17,7 @@ function Footer() {
 
   return (
     <footer className="footer">
+      <div id="google_translate_element"></div>
       <div>
       <div className="container relative text-white pb-40 md:pb-100 pt-100">
         <div className="row">

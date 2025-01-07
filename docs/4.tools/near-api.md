@@ -905,6 +905,22 @@ When deleting an access key, you need to specify the public key of the key you w
 
 ---
 
+## Validate Message Signatures
+
+Users can sign messages using the `wallet-selector` `signMessage` method, which returns a signature. This signature can be verified using the following code:
+
+<Tabs groupId="api">
+  <TabItem value="js" label="🌐 JavaScript">
+
+    <Github fname="authenticate.js" language="javascript"
+      url="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/verify-signature/authentication.js" />
+
+  </TabItem>
+</Tabs>
+
+---
+
+
 ## Utilities
 
 ### NEAR to yoctoNEAR {#near-to-yoctonear}

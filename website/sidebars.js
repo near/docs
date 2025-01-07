@@ -406,7 +406,7 @@ const sidebar = {
           ]
         },
         {
-          "Using Primitves": [
+          "Using Primitives": [
             "tutorials/auction/winning-an-nft",
             "tutorials/auction/bidding-with-fts",
             "tutorials/auction/updating-the-frontend",
