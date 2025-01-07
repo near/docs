@@ -89,7 +89,7 @@ http post https://near-testnet.api.pagoda.co/rpc/v1/ jsonrpc=2.0 id=dontcare met
 All of the queries listed in this documentation page can be called using [`near-api-js`](https://github.com/near/near-api-js).
 
 :::tip
-For `near-api-js` installation and setup please refer to `near-api-js` [quick reference documentation](https://docs.near.org/tools/near-api-js/quick-reference#install).
+For `near-api-js` installation and setup please refer to `near-api-js` [quick reference documentation](../../4.tools/near-api.md).
 :::
 
 Add the following code to get started:
@@ -126,7 +126,7 @@ getState(ACCOUNT_ID);
 ```
 
 :::info
-All JavaScript code snippets require a `near` object. For examples of how to instantiate, [click here](https://docs.near.org/tools/near-api-js/quick-reference#connect).
+All JavaScript code snippets require a `near` object. For examples of how to instantiate, [click here](../../4.tools/near-api.md#connecting-to-near-connect).
 :::
 
 ## Rust Setup

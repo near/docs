@@ -110,7 +110,7 @@ Ready to start? Let's jump to the [The Auction Contract](./1.1-basic.md) and beg
 - near-cli: `0.12.0`
 - rustc: `1.78.0`
 - cargo: `1.80.1`
-- cargo-near: `0.6.2`
+- cargo-near: `0.13.2`
 - rustc: `1.78.0`
 - node: `21.6.1`
         

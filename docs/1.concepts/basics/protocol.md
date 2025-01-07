@@ -3,12 +3,13 @@ id: protocol
 title: What is NEAR?
 ---
 
-NEAR is a **user-friendly** and [**carbon-neutral**](https://near.org/blog/near-climate-neutral-product/) blockchain, built to be [fast, secure, and able to grow without limits](https://www.leewayhertz.com/comparison-of-blockchain-protocols#Parallel-comparison-of-various-blockchain-networks).
+NEAR is a **user-friendly** and [**carbon-neutral**](https://near.org/blog/near-climate-neutral-product/) blockchain, built to be [fast, secure, and infinitely scalable](https://www.leewayhertz.com/comparison-of-blockchain-protocols#Parallel-comparison-of-various-blockchain-networks).
 
 ![img](@site/static/docs/assets/welcome-pages/protocol.png)
 
+In technical terms, NEAR is a [layer one](https://coinmarketcap.com/academy/glossary/layer-1-blockchain), [sharded](https://near.org/blog/near-launches-nightshade-sharding-paving-the-way-for-mass-adoption), [proof-of-stake](https://en.wikipedia.org/wiki/Proof_of_stake) blockchain built with usability in mind.
 
-NEAR is the **blockchain for everyone**.
+In simpler terms, NEAR is the **blockchain for everyone**.
 
 <details>
 
@@ -36,14 +37,14 @@ NEAR is a technical marvel, offering built-in features such as named accounts an
 2. Simple sign-up: make an account using [email](https://dev.near.org/signup) or [telegram](https://web.telegram.org/k/#@herewalletbot)
 3. Transactions are **fast** _(~1.3s transactions)_ and **cheap** _(< 1¢ in fees)_
 4. You don't need to buy crypto thanks to **built-in account abstraction**
-5. [Access Keys](../protocol/access-keys.md) make it safe and easy to use.
+5. [Access Keys](../protocol/access-keys.md) make it safe and easy to use
 6. Control accounts on **other chains** thanks to [chain signatures](../abstraction/chain-signatures.md)
 
 ### 🛡️ Battle-Tested
 
-1. 4 years of **100% uptime** with more than [**800M** transactions](https://pikespeak.ai/near-world/overview) processed
-2. NEAR has sustained peaks of [>13M transactions](https://pikespeak.ai/near-world/overview) in a day
-3. In March 2024, the top three monthly [dApps](https://dappradar.com/rankings?range=30d), based on unique active wallets, were built on NEAR:
+1. 4 years of **100% uptime** and [**3 Billion** transactions](https://pikespeak.ai/near-world/overview) processed
+2. NEAR has sustained peaks of [>13M transactions](https://pikespeak.ai/near-world/overview) in a single day
+3. NEAR is home to decentralized apps with [millions of users](https://dappradar.com/rankings?range=30d):
     - [Kai-ching](https://cosmose.ai/)
     - [Sweat](https://sweateconomy.com/)
     - [Hot Wallet](https://t.me/herewalletbot/)
