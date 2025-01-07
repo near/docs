@@ -39,7 +39,6 @@ Imagine a place where you can build Web3 apps with the simplicity of Web2. Imagi
             "Quickstart ✨": "/build/web3-apps/quickstart",
             "Create an AI Assistant 🤖✨": "/build/web3-apps/ai/ai-assistant",
             "Use a Contract in Your Frontend": "/build/web3-apps/integrate-contracts",
-            "Social Components (BOS)": "/build/near-components/what-is",
           }}
     />
     <Card img={require("@site/static/docs/assets/welcome-pages/contracts.png").default}

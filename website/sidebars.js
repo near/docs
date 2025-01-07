@@ -204,25 +204,6 @@ const sidebar = {
           link: { type: 'doc', id: 'build/web3-apps/frontend' },
           items: [
             "build/web3-apps/integrate-contracts",
-            "build/web3-apps/chain-hosted-ui",
-            {
-              "Social Components (BOS)": [
-                "build/near-components/what-is",
-                "build/near-components/dev-environment",
-                {
-                  "Anatomy of a Component": [
-                    "build/near-components/anatomy/state",
-                    "build/near-components/anatomy/web-methods",
-                    "build/near-components/anatomy/builtin-components",
-                    "build/near-components/anatomy/near",
-                    "build/near-components/anatomy/social",
-                    "build/near-components/anatomy/notifications",
-                  ]
-                },
-                "build/near-components/bos-gateway",
-                "build/web3-apps/integrate-components",
-              ]
-            }
           ]
         },
         {
@@ -348,7 +329,6 @@ const sidebar = {
         "tutorials/examples/donation",
         "tutorials/examples/xcc",
         "tutorials/examples/coin-flip",
-        "build/web3-apps/chain-hosted-ui-tutorial",
       ]
     },
     {
@@ -402,19 +382,6 @@ const sidebar = {
           ]
         },
         "tutorials/auction/auction-factory",
-      ]
-    },
-    {
-      "Components": [
-        "tutorials/near-components/bos-loader",
-        "tutorials/near-components/interaction",
-        "tutorials/near-components/ds-components",
-        "tutorials/near-components/using-iframes",
-        "tutorials/near-components/blog-posts",
-        "tutorials/near-components/push-notifications",
-        "tutorials/near-components/ethers-js",
-        "tutorials/near-components/ethers-js-best-practices",
-        "tutorials/near-components/lido",
       ]
     },
     {
@@ -544,17 +511,6 @@ const sidebar = {
     "tools/near-api",
     "tools/sdk",
     "tools/near-cli",
-    {
-      "type": "category",
-      "label": "BOS Web Editors",
-      "items": [
-        {
-          "type": "link",
-          "label": "Jutsu Web Editor",
-          "href": "https://near.jutsu.ai/"
-        }
-      ]
-    },
     {
       "type": "category",
       "label": "Wallets",

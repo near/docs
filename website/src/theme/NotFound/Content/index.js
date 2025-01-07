@@ -52,7 +52,6 @@ export default function NotFoundContent({ className }) {
                     Build awesome applications on NEAR
                     <ul className='margin-vert--sm'>
                       <a href="/build/smart-contracts/what-is"><li>Smart Contracts</li></a>
-                      <a href="/build/near-components/what-is"><li>NEAR Components</li></a>
                       <a href="/build/web3-apps/what-is"><li>Web3 Applications</li></a>
                       <a href="/build/chain-abstraction/meta-transactions"><li>Relayers</li></a>
                       <a href="/build/chain-abstraction/chain-signatures"><li>Multi-Chain Signatures</li></a>
