@@ -11,23 +11,25 @@ A near-drop is a smart contract that allows users to create NEAR/FT/NFT drop and
 
 Particularly, it shows:
 
-1. How to create a NEAR drop.
-2. How to create a FT drop.
-3. How to create a NFT drop.
-4. How to claim a drop for an existing account.
-5. How to claim a drop for a new account.
+1. How to calculate storage costs
+2. How to create a NEAR drop.
+3. How to create a FT drop.
+4. How to create a NFT drop.
+5. How to claim a drop for an existing account.
+6. How to claim a drop for a new account.
 
 ---
 
 ### Contract State
 
 - `top_level_account` - that account is used to create new accounts. It has to have `create_account` method.
+- `next_drop_id` - that id will be assigned to the next created drop.
 - `drop_id_by_key` - that LookupMap structure contains relations between `PublicKey` and `DropId`. `PublicKey` is used to claim drop. `DropId` is a unique identificator by which you can get drop's data like amount of tokens to drop, FT or NFT contract, etc.
 - `drop_by_id` - that LookupMap structure contains relations between `DropId` and actual drop data - `Drop`.
 
 <Github fname="contract.ts"
       url="https://github.com/near-examples/near-drop/blob/update/src/lib.rs"
-      start="26" end="30" />
+      start="26" end="31" />
 
 ---
 
@@ -62,13 +64,13 @@ Creating drop functions looks very similar, the main difference is in the struct
   <Language value="rust" language="rust">
     <Github fname="create_near_drop"
             url="https://github.com/near-examples/near-drop/blob/update/src/lib.rs"
-            start="44" end="85" />
+            start="46" end="68" />
     <Github fname="create_ft_drop"
             url="https://github.com/near-examples/near-drop/blob/update/src/lib.rs"
-            start="87" end="126" />
+            start="70" end="91" />
     <Github fname="create_nft_drop"
             url="https://github.com/near-examples/near-drop/blob/update/src/lib.rs"
-            start="128" end="157" />
+            start="93" end="105" />
   </Language>
 </CodeTabs>
 
@@ -93,7 +95,7 @@ When all drops are claimed (`counter` == 0), relation between `DropId` and `Drop
             start="11" end="14" />
     <Github fname="internal_claim"
             url="https://github.com/near-examples/near-drop/blob/update/src/claim.rs"
-            start="61" end="86" />
+            start="58" end="85" />
   </Language>
 </CodeTabs>
 
@@ -105,13 +107,13 @@ When all drops are claimed (`counter` == 0), relation between `DropId` and `Drop
   <Language value="rust" language="rust">
     <Github fname="create_account_and_claim"
             url="https://github.com/near-examples/near-drop/blob/update/src/claim.rs"
-            start="16" end="43" />
+            start="16" end="41" />
     <Github fname="resolve_account_create"
             url="https://github.com/near-examples/near-drop/blob/update/src/claim.rs"
-            start="45" end="59" />
+            start="43" end="56" />
     <Github fname="internal_claim"
             url="https://github.com/near-examples/near-drop/blob/update/src/claim.rs"
-            start="61" end="86" />
+            start="58" end="85" />
   </Language>
 </CodeTabs>
 
@@ -178,13 +180,13 @@ To interact with the contract through the console, you can use the following com
   
   ```bash
   # create a NEAR drop
-  near call <account-id> create_near_drop '{"drop_id": "1", "public_keys": ["ed25519:AvBVZDQrg8pCpEDFUpgeLYLRGUW8s5h57NGhb1Tc4H5q", "ed25519:4FMNvbvU4epP3HL9mRRefsJ2tMECvNLfAYDa9h8eUEa4"], "amount_per_drop": "10000000000000000000000"}' --accountId <account-id> --deposit 1 --gas 300000000000000
+  near call <account-id> create_near_drop '{"public_keys": ["ed25519:AvBVZDQrg8pCpEDFUpgeLYLRGUW8s5h57NGhb1Tc4H5q", "ed25519:4FMNvbvU4epP3HL9mRRefsJ2tMECvNLfAYDa9h8eUEa4"], "amount_per_drop": "10000000000000000000000"}' --accountId <account-id> --deposit 1 --gas 300000000000000
 
   # create a FT drop
-  near call <account-id> create_ft_drop '{"drop_id": "1", "public_keys": ["ed25519:HcwvxZXSCX341Pe4vo9FLTzoRab9N8MWGZ2isxZjk1b8", "ed25519:5oN7Yk7FKQMKpuP4aroWgNoFfVDLnY3zmRnqYk9fuEvR"], "amount_per_drop": "1", "ft_contract": "<ft-contract-account-id>"}' --accountId <account-id> --gas 300000000000000
+  near call <account-id> create_ft_drop '{"public_keys": ["ed25519:HcwvxZXSCX341Pe4vo9FLTzoRab9N8MWGZ2isxZjk1b8", "ed25519:5oN7Yk7FKQMKpuP4aroWgNoFfVDLnY3zmRnqYk9fuEvR"], "amount_per_drop": "1", "ft_contract": "<ft-contract-account-id>"}' --accountId <account-id> --gas 300000000000000
 
   # create a NFT drop
-  near call <account-id> create_nft_drop '{"drop_id": "1", "public_key": "ed25519:HcwvxZXSCX341Pe4vo9FLTzoRab9N8MWGZ2isxZjk1b8", "nft_contract": "<nft-contract-account-id>"}' --accountId <account-id> --gas 300000000000000
+  near call <account-id> create_nft_drop '{"public_key": "ed25519:HcwvxZXSCX341Pe4vo9FLTzoRab9N8MWGZ2isxZjk1b8", "nft_contract": "<nft-contract-account-id>"}' --accountId <account-id> --gas 300000000000000
   
   # claim to an existing account
   # see the full version
@@ -198,13 +200,13 @@ To interact with the contract through the console, you can use the following com
   
   ```bash
   # create a NEAR drop
-  near contract call-function as-transaction <account-id> create_near_drop json-args '{"drop_id": "1", "public_keys": ["ed25519:AvBVZDQrg8pCpEDFUpgeLYLRGUW8s5h57NGhb1Tc4H5q", "ed25519:4FMNvbvU4epP3HL9mRRefsJ2tMECvNLfAYDa9h8eUEa4"], "amount_per_drop": "10000000000000000000000"}' prepaid-gas '300.0 Tgas' attached-deposit '1 NEAR' sign-as <account-id> network-config testnet sign-with-keychain send
+  near contract call-function as-transaction <account-id> create_near_drop json-args '{"public_keys": ["ed25519:AvBVZDQrg8pCpEDFUpgeLYLRGUW8s5h57NGhb1Tc4H5q", "ed25519:4FMNvbvU4epP3HL9mRRefsJ2tMECvNLfAYDa9h8eUEa4"], "amount_per_drop": "10000000000000000000000"}' prepaid-gas '300.0 Tgas' attached-deposit '1 NEAR' sign-as <account-id> network-config testnet sign-with-keychain send
 
   # create a FT drop
-  near contract call-function as-transaction <account-id> create_ft_drop json-args '{"drop_id": "1", "public_keys": ["ed25519:HcwvxZXSCX341Pe4vo9FLTzoRab9N8MWGZ2isxZjk1b8", "ed25519:5oN7Yk7FKQMKpuP4aroWgNoFfVDLnY3zmRnqYk9fuEvR"], "amount_per_drop": "1", "ft_contract": "<ft-contract-account-id>"}' prepaid-gas '300.0 Tgas' attached-deposit '0 NEAR' sign-as <account-id> network-config testnet sign-with-keychain send
+  near contract call-function as-transaction <account-id> create_ft_drop json-args '{"public_keys": ["ed25519:HcwvxZXSCX341Pe4vo9FLTzoRab9N8MWGZ2isxZjk1b8", "ed25519:5oN7Yk7FKQMKpuP4aroWgNoFfVDLnY3zmRnqYk9fuEvR"], "amount_per_drop": "1", "ft_contract": "<ft-contract-account-id>"}' prepaid-gas '300.0 Tgas' attached-deposit '0 NEAR' sign-as <account-id> network-config testnet sign-with-keychain send
 
   # create a NFT drop
-  near contract call-function as-transaction <account-id> create_nft_drop json-args '{"drop_id": "1", "public_key": "ed25519:HcwvxZXSCX341Pe4vo9FLTzoRab9N8MWGZ2isxZjk1b8", "nft_contract": "<nft-contract-account-id>"}' prepaid-gas '300.0 Tgas' attached-deposit '0 NEAR' sign-as <account-id> network-config testnet sign-with-keychain send
+  near contract call-function as-transaction <account-id> create_nft_drop json-args '{"public_key": "ed25519:HcwvxZXSCX341Pe4vo9FLTzoRab9N8MWGZ2isxZjk1b8", "nft_contract": "<nft-contract-account-id>"}' prepaid-gas '300.0 Tgas' attached-deposit '0 NEAR' sign-as <account-id> network-config testnet sign-with-keychain send
 
   # claim to an existing account
   near contract call-function as-transaction <account-id> claim_for json-args '{"account_id": "<claimer-account-id>"}' prepaid-gas '30.0 Tgas' attached-deposit '0 NEAR' sign-as <account-id> network-config testnet sign-with-plaintext-private-key --signer-public-key ed25519:AvBVZDQrg8pCpEDFUpgeLYLRGUW8s5h57NGhb1Tc4H5q --signer-private-key ed25519:3yVFxYtyk7ZKEMshioC3BofK8zu2q6Y5hhMKHcV41p5QchFdQRzHYUugsoLtqV3Lj4zURGYnHqMqt7zhZZ2QhdgB send
