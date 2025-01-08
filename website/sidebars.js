@@ -88,14 +88,9 @@ const sidebar = {
           ]
         },
         {
-          "type": "category",
-          "label": "Chain Signatures",
-          "link": {
-            "type": "doc",
-            "id": "build/chain-abstraction/chain-signatures/getting-started"
-          },
-          "items": [
+          "Chain Signatures": [
             "concepts/abstraction/chain-signatures",
+            "build/chain-abstraction/chain-signatures/getting-started",
             'build/chain-abstraction/chain-signatures/chain-signatures',
             // 'build/chain-abstraction/nft-chain-keys',
           ]
