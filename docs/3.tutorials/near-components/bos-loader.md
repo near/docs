@@ -5,7 +5,7 @@ title: BOS Loader
 
 # BOS Loader
 
-In this article you'll learn how to develop, test, and deploy BOS components using CLI tools. You can use this workflow to tap into the colaboration, pull-request, and other GitHub benefits while still deploying components to the BOS. 
+In this article you'll learn how to develop, test, and deploy BOS components using CLI tools. You can use this workflow to tap into the collaboration, pull-request, and other GitHub benefits while still deploying components to the BOS. 
 
 [BOS Component Loader](https://github.com/near/bos-loader) serves a local directory of component files as a JSON payload properly formatted to be plugged into a BOS `redirectMap`. When paired with a viewer configured to call out to this loader, it enables local component development.
 
