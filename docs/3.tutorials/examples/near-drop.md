@@ -27,9 +27,9 @@ Particularly, it shows:
 - `drop_id_by_key` - that LookupMap structure contains relations between `PublicKey` and `DropId`. `PublicKey` is used to claim drop. `DropId` is a unique identificator by which you can get drop's data like amount of tokens to drop, FT or NFT contract, etc.
 - `drop_by_id` - that LookupMap structure contains relations between `DropId` and actual drop data - `Drop`.
 
-<Github fname="contract.ts"
+<Github fname="lib.rs"
       url="https://github.com/near-examples/near-drop/blob/update/src/lib.rs"
-      start="26" end="31" />
+      start="22" end="29" />
 
 ---
 
@@ -64,13 +64,13 @@ Creating drop functions looks very similar, the main difference is in the struct
   <Language value="rust" language="rust">
     <Github fname="create_near_drop"
             url="https://github.com/near-examples/near-drop/blob/update/src/lib.rs"
-            start="46" end="68" />
+            start="44" end="66" />
     <Github fname="create_ft_drop"
             url="https://github.com/near-examples/near-drop/blob/update/src/lib.rs"
-            start="70" end="91" />
+            start="68" end="89" />
     <Github fname="create_nft_drop"
             url="https://github.com/near-examples/near-drop/blob/update/src/lib.rs"
-            start="93" end="105" />
+            start="91" end="103" />
   </Language>
 </CodeTabs>
 
