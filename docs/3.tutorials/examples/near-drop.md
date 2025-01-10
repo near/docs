@@ -200,19 +200,19 @@ To interact with the contract through the console, you can use the following com
   
   ```bash
   # create a NEAR drop
-  near contract call-function as-transaction <account-id> create_near_drop json-args '{"public_keys": ["ed25519:AvBVZDQrg8pCpEDFUpgeLYLRGUW8s5h57NGhb1Tc4H5q", "ed25519:4FMNvbvU4epP3HL9mRRefsJ2tMECvNLfAYDa9h8eUEa4"], "amount_per_drop": "10000000000000000000000"}' prepaid-gas '300.0 Tgas' attached-deposit '1 NEAR' sign-as <account-id> network-config testnet sign-with-keychain send
+  near contract call-function as-transaction <account-id> create_near_drop json-args '{"public_keys": ["ed25519:AvBVZDQrg8pCpEDFUpgeLYLRGUW8s5h57NGhb1Tc4H5q", "ed25519:4FMNvbvU4epP3HL9mRRefsJ2tMECvNLfAYDa9h8eUEa4"], "amount_per_drop": "10000000000000000000000"}' prepaid-gas '100.0 Tgas' attached-deposit '1 NEAR' sign-as <account-id> network-config testnet sign-with-keychain send
 
   # create a FT drop
-  near contract call-function as-transaction <account-id> create_ft_drop json-args '{"public_keys": ["ed25519:HcwvxZXSCX341Pe4vo9FLTzoRab9N8MWGZ2isxZjk1b8", "ed25519:5oN7Yk7FKQMKpuP4aroWgNoFfVDLnY3zmRnqYk9fuEvR"], "amount_per_drop": "1", "ft_contract": "<ft-contract-account-id>"}' prepaid-gas '300.0 Tgas' attached-deposit '0 NEAR' sign-as <account-id> network-config testnet sign-with-keychain send
+  near contract call-function as-transaction <account-id> create_ft_drop json-args '{"public_keys": ["ed25519:HcwvxZXSCX341Pe4vo9FLTzoRab9N8MWGZ2isxZjk1b8", "ed25519:5oN7Yk7FKQMKpuP4aroWgNoFfVDLnY3zmRnqYk9fuEvR"], "amount_per_drop": "1", "ft_contract": "<ft-contract-account-id>"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as <account-id> network-config testnet sign-with-keychain send
 
   # create a NFT drop
-  near contract call-function as-transaction <account-id> create_nft_drop json-args '{"public_key": "ed25519:HcwvxZXSCX341Pe4vo9FLTzoRab9N8MWGZ2isxZjk1b8", "nft_contract": "<nft-contract-account-id>"}' prepaid-gas '300.0 Tgas' attached-deposit '0 NEAR' sign-as <account-id> network-config testnet sign-with-keychain send
+  near contract call-function as-transaction <account-id> create_nft_drop json-args '{"public_key": "ed25519:HcwvxZXSCX341Pe4vo9FLTzoRab9N8MWGZ2isxZjk1b8", "nft_contract": "<nft-contract-account-id>"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as <account-id> network-config testnet sign-with-keychain send
 
   # claim to an existing account
   near contract call-function as-transaction <account-id> claim_for json-args '{"account_id": "<claimer-account-id>"}' prepaid-gas '30.0 Tgas' attached-deposit '0 NEAR' sign-as <account-id> network-config testnet sign-with-plaintext-private-key --signer-public-key ed25519:AvBVZDQrg8pCpEDFUpgeLYLRGUW8s5h57NGhb1Tc4H5q --signer-private-key ed25519:3yVFxYtyk7ZKEMshioC3BofK8zu2q6Y5hhMKHcV41p5QchFdQRzHYUugsoLtqV3Lj4zURGYnHqMqt7zhZZ2QhdgB send
 
   # claim to a new account
-  near contract call-function as-transaction <account-id> create_account_and_claim json-args '{"account_id": "<claimer-account-id>"}' prepaid-gas '300.0 Tgas' attached-deposit '0 NEAR' sign-as <account-id> network-config testnet sign-with-plaintext-private-key --signer-public-key ed25519:4FMNvbvU4epP3HL9mRRefsJ2tMECvNLfAYDa9h8eUEa4 --signer-private-key ed25519:2xZcegrZvP52VrhehvApnx4McL85hcSBq1JETJrjuESC6v6TwTcr4VVdzxaCReyMCJvx9V4X1ppv8cFFeQZ6hJzU send
+  near contract call-function as-transaction <account-id> create_account_and_claim json-args '{"account_id": "<claimer-account-id>"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as <account-id> network-config testnet sign-with-plaintext-private-key --signer-public-key ed25519:4FMNvbvU4epP3HL9mRRefsJ2tMECvNLfAYDa9h8eUEa4 --signer-private-key ed25519:2xZcegrZvP52VrhehvApnx4McL85hcSBq1JETJrjuESC6v6TwTcr4VVdzxaCReyMCJvx9V4X1ppv8cFFeQZ6hJzU send
   ```
   </TabItem>
 </Tabs>
