@@ -18,11 +18,41 @@ Using those tools you will implement the following flow:
 2. Ask the user to **sign-in** using a NEAR wallet.
 2. **Call methods** in the contract.
 
-### Naxios
+
+:::warning NEAR BOS
+
+  The project known as NEAR Blockchain Operating System (NEAR BOS) has been deprecated, but you can find its documentation on [this link](https://deprecated-near.github.io/legacy-docs/components/what-is)
+
+:::
+
+<details>
+
+<summary> Alternatives to `near-api-js` </summary>
 
 You can optionally use [Naxios](https://wpdas.gitbook.io/naxios). A promise-based NEAR Contract and NEAR Wallet Client for browser.
 
 Naxios was designed to facilitate the React / Next.js integration with NEAR Blockchain and avoid the boilerplate of setting up a wallet and contract.
+
+</details>
+
+
+<details markdown="1">
+
+<summary> Decentralized Frontend Solutions </summary>
+
+If you need full decentralization of your entire stack, this option is ideal. However, consider the possible technical constraints, such as the absence of server-side rendering or meta frameworks like Next.js.
+
+Although the ecosystem for developing decentralized frontends is still maturing, here are some notable projects for you to evaluate and consider:
+
+| Name                                                                                      | <div align="center">Description</div>                                                                                                          |
+|-------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
+| [**IPFS**](https://docs.ipfs.tech/how-to/websites-on-ipfs/single-page-website/)           | A peer-to-peer hypermedia protocol designed to preserve and grow humanity's knowledge by making the web upgradeable, resilient, and more open. |
+| [**Fleek**](https://docs.fleek.co/tutorials/hosting/)                                     | Hosts websites on IPFS with a user-friendly interface and continuous deployment from popular repositories.                                     |
+| [**Arweave**](https://www.arweave.org/build)                                              | Arweave lets you build quickly and simply with permanent storage. You can store anything from files to fully decentralized web applications.   |
+| [**Web4**](https://web4.near.page/)                                                       | Web4 is a new way to distribute decentralized apps on NEAR Protocol. Deploy single WASM smart contract to deploy an entire web application.    |
+| [**B.O.S. Components**](https://deprecated-near.github.io/legacy-docs/components/what-is) | An experimental platform that allows users to build and deploy multi-chain decentralized UI experiences.                                       |
+
+</details>
 
 ---
 
