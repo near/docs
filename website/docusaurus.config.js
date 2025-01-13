@@ -161,8 +161,6 @@ const config = {
               type: 'html',
               value: '<hr/> <small class="subtitle"> IDEs </small>',
             },
-            { label: 'VSCode Extension ', href: 'https://marketplace.visualstudio.com/items?itemName=near-protocol.near-discovery-ide' },
-            { label: 'BOS Web IDE (Jutsu)', href: 'https://jutsu.ai/editor' },
             {
               label: 'Remix IDE Plugin',
               href: 'https://docs.welldonestudio.io/code/getting-started',
