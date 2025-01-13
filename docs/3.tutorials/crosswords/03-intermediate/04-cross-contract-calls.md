@@ -190,7 +190,7 @@ In the above snippet, there's one difference from the callback we saw in `claim_
 
 ## Callbacks
 
-The way that the callback works is that you start with the `Self::ext()` and pass in the current acount ID using `env::current_account_id()`. This is essentially saying that you want to call a function that lives on the current account ID.
+The way that the callback works is that you start with the `Self::ext()` and pass in the current account ID using `env::current_account_id()`. This is essentially saying that you want to call a function that lives on the current account ID.
 
 You then have a couple of config options that each start with `.with_*`:
 
