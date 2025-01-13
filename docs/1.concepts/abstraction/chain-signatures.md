@@ -12,6 +12,51 @@ This unlocks the next level of blockchain interoperability by giving ownership o
 ![chain-signatures](/docs/assets/welcome-pages/chain-signatures-overview.png)
 _Diagram of a chain signature in NEAR_
 
+## Benefits
+
+Integration with Chain Signatures brings many benefits to Web3 developers:
+
+- Single Account, Multi-Chain Operations: Developers can manage interactions with external blockchains from one NEAR account. This simplifies key management and reduces the need for multiple wallets or addresses, enhancing user experience and security.
+
+- Reduced Overhead in Cross-Chain Development: Chain Signatures eliminate the complexity of managing transactions across different blockchains. Developers can write smart contracts on NEAR that directly sign for cross-chain transactions, cutting down on code redundancy and potential points of failure.
+
+- Secure Transaction Signing: Using [Multi-Party Computation (MPC)](#multi-party-computation-service), developers gain access to a decentralized signing process for multi-chain transactions. This means no single entity controls the signing key, reducing risks associated with centralized custodianship.
+
+:::tip
+
+Keep in mind that Chain Signatures is a “one way” solution to sign and execute outbound transactions happening on other blockchains.
+If you're looking to access states on external blockchains, you should check out Omnibridge.
+
+:::
+
+## Interoperability
+
+NEAR's chain abstraction stack allows developers to leverage powerful interoperability options across different blockchains. Developers can execute their business logic and deploy smart contracts on NEAR’s scalable blockchain infrastructure, while maintaining control over external accounts (such as Bitcoin, Ethereum, Base) and assets natively.
+
+This integrated approach combines external blockchain assets with NEAR’s scalability, enabling the development of native dApps that offer superior performance and an optimized user experience. By combining the strengths of different ecosystems, NEAR Protocol unlocks an array of transformative possibilities without compromising on decentralization or scalability.
+
+## Use Cases
+
+The Chain Signatures architecture provides a decentralized method to interact with multiple blockchains from one NEAR account. With Chain Signatures, blockchain use cases expands to new levels.
+
+### Bitcoin DeFi
+
+Developers can build decentralized finance (DeFi) applications on NEAR, such as decentralized exchanges (DEXs), lending platforms, or yield farming protocols, while directly leveraging Bitcoin liquidity. The business logic resides on NEAR, while BTC is used for actual payments.
+
+#### Examples
+
+- Atomic Swaps: Facilitate trustless, instant exchanges between Bitcoin and other cryptocurrencies, enhancing liquidity and reducing counterparty risk.
+- Receive Bitcoin payments with a native transfer to a Chain Signature derived account.
+- Use Chain Signatures to control the payment flow and execute Bitcoin transactions, such as locking or transferring assets.
+- Use smart contracts on NEAR to encapsulate business logic such as interest calculations, borrowing, order processing, reward distribution, and repayments.
+
+### Cross-Chain NFT Platforms
+
+Developers can create a NFT marketplace on NEAR where users purchase NFTs using external cryptocurrencies such as Bitcoin. The marketplace could handle:
+
+- BTC payments via Chain Signatures and Omnibridge.
+- NFT minting and trading logic on NEAR. (_NFTs could also be minted on multiple blockchains thanks to Chain Signatures_)
+
 ---
 
 ## How It Works
@@ -20,7 +65,7 @@ Controlling accounts and their assets on other blockchain platforms is made poss
 
 1. [**Derivation Paths**](#derivation-paths-one-account-multiple-chains) - A deterministic way to derive foreign addresses from one NEAR account
 2. [**Multichain Smart Contract**](#multichain-smart-contract) - Receives requests to sign a transaction for other blockchains
-3. [**Multiparty Computation Service**](#multi-party-computation-service) Third-party service providing signatures to the contract
+3. [**Multiparty Computation Service**](#multi-party-computation-service) - Third-party service providing signatures to the contract
 
 <hr class="subsection" />
 
@@ -60,6 +105,9 @@ After a request is made, the `sign` method will [yield execution](/blog/yield-re
 
 Once the signature is ready, the contract resumes computation and returns it to the user. This signature is a valid signed transaction that can be readily sent to the target blockchain to be executed.
 
+![Chain Signatures](/docs/assets/chain-abstract-2.png)
+_Chain signatures smart contract flow_
+
 <hr class="subsection" />
 
 ### Multi-Party Computation Service
@@ -76,11 +124,11 @@ This service continuously listens for signature requests (i.e. users calling the
 :::info A Custom MPC Service
 Generally, MPC signing services work by sharing a master key, which needs to be re-created each time a node joins or leaves.
 
-NEAR's MPC service allows for nodes to safely join and leave, without needing to re-derive a master key
+NEAR's MPC service allows for nodes to safely join and leave, without needing to re-derive a master key.
 :::
 
 :::tip
-Want to learn more about the mathematics that enable MPC? [**Check this awesome article**](https://www.zellic.io/blog/mpc-from-scratch/)
+Want to learn more about the mathematics that enable MPC? [**Check this awesome article**](https://www.zellic.io/blog/mpc-from-scratch/).
 :::
 
 ---

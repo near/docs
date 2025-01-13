@@ -219,11 +219,6 @@ function Footer() {
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/build/near-components/what-is">
-                      Components
-                    </a>
-                  </li>
-                  <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
                     <a href="/build/web3-apps/what-is">
                       Web3 Apps
                     </a>
@@ -268,11 +263,6 @@ function Footer() {
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
                     <a href="/tutorials/fts/introduction">
                       FTs
-                    </a>
-                  </li>
-                  <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/tutorials/near-components/bos-loader">
-                      Components
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
@@ -357,11 +347,6 @@ function Footer() {
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
                     <a href="/build/chain-abstraction/what-is">
                       Relayers
-                    </a>
-                  </li>
-                  <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://jutsu.ai/editor" target="_blank" rel="noopener noreferrer">
-                      Justu IDE
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
