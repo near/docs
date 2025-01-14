@@ -7,9 +7,9 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs";
 
-The idea behind `chain abstraction` is quite simple: **blockchain** technology should be **abstracted away** from the user experience. In other words, people should **not realize** when they are **using a blockchain**, nor **which blockchain** they are using.
-
 ![img](/docs/assets/welcome-pages/chain-abstraction-landing.png)
+
+> `Chain abstraction` is about **abstracting away** the complexities of **blockchain technology** from end-user experiences while maintaining its benefits. Users should not have to worry about which blockchain they are using or whether they are using one at all. NEAR Protocol advances this vision by introducing a framework that transcends single-platform development, enabling applications to control assets across any blockchain. 
 
 To help on this task, NEAR Protocol provides services that allow to **create** and **recover accounts** using **email addresses**, use the account **without acquiring funds**, and **control accounts** in **other chains**. The combination of these services allows to create a **seamless** user experience, in which users can use blockchain-based applications without realizing they are using a blockchain.
 
