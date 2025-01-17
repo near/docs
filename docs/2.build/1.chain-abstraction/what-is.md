@@ -2,31 +2,69 @@
 id: what-is
 title: What is Chain Abstraction?
 ---
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs";
 
 ![img](/docs/assets/welcome-pages/chain-abstraction-landing.png)
 
-> `Chain abstraction` is about **abstracting away** the complexities of **blockchain technology** from end-user experiences while maintaining its benefits. Users should not have to worry about which blockchain they are using or whether they are using one at all. NEAR Protocol advances this vision by introducing a framework that transcends single-platform development, enabling applications to control assets across any blockchain. 
+`Chain abstraction` is about **abstracting away** the complexities of **blockchain technology** from end-user experiences while maintaining its benefits. Users should not have to worry about which blockchain they are using or whether they are using one at all. NEAR Protocol advances this vision by introducing a framework that transcends single-platform development, enabling applications to control assets across any blockchain.
 
-To help on this task, NEAR Protocol provides services that allow to **create** and **recover accounts** using **email addresses**, use the account **without acquiring funds**, and **control accounts** in **other chains**. The combination of these services allows to create a **seamless** user experience, in which users can use blockchain-based applications without realizing they are using a blockchain.
-
-As an example, this would allow users to collect NFTs across different chains, without ever needing to explicitly create an account or acquire crypto. All with just a single login.
-
+:::info Example
+As an example, using Chain Abstraction a web app could allow users to collect NFTs across different chains, without users ever needing to explicitly create a blockchain account or acquire crypto tokens.
+:::
 
 ## Chain Abstraction: The Holistic View
 
-NEAR's ecosystem vision is to facilitate interactions across all blockchain networks and the larger internet. This transformative approach aims at enhancing the user experience and developer capabilities through advanced technologies, specifically in the realm of decentralized finance (DeFi) and artificial intelligence (AI).
+The chain abstraction framework allows to create a **seamless** user experience, in which users can use blockchain-based applications without realizing they are using a blockchain.
 
-Central to this vision is the concept of **chain abstraction**, which is designed to provide seamless access to a wider range of crypto assets, smart contracts, and blockchain states. This is achieved through a trio of key technologies: the intent layer, [chain signatures](chain-signatures/chain-signatures.md), and the [omnibridge](#).
+To achieve this goal and enable hassle-free access to a wider range of crypto assets, smart contracts, and blockchain states, the chain abstraction framework leverages a trio of key technologies: the [intent layer](#intent-layer), [chain signatures](#chain-signatures), and the [omnibridge](#omnibridge).
+
+You can see how these technologies interact together in the following high-level diagram:
 
 ![Chain Abstraction Stack](/docs/assets/chain-abstract-1.png)
+_Chain Abstraction Stack high-level diagram_
  
-- The intent layer serves as a foundational framework for user requests.
-- [Chain signatures](chain-signatures/chain-signatures.md) empower smart contracts to sign transactions across different assets and chains.
-- [Omnibridge](#) facilitates communication and state transitions between various blockchains, ensuring that transactions are executed smoothly.
+- The [intent layer](#intent-layer) serves as a foundational framework for user requests.
+- [Chain signatures](#chain-signatures) empower smart contracts to sign transactions across different assets and chains.
+- [Omnibridge](#omnibridge) facilitates communication and state transitions between various blockchains, ensuring that transactions are executed smoothly.
+
+### Intent layer
+
+In NEAR, an intent can be thought of as a high-level declaration of what a user wants to achieve on the blockchain. Solvers are active market participants that fill in the intents issued by users.
+The intent layer provides a message bus for communication between solvers and users.
+
+In summary, the intent layer allow users to express what they want to accomplish (their intention) while the network figures out the best way to make it happen.
+Developers building on NEAR can use intents to create more user-friendly interactions, as it abstracts some of the complexities of directly interacting with smart contracts.
+
+NEAR intents work by:
+- Expressing needs: Define your `intent`.
+- Network response: NEAR finds the optimal solution. (Solvers)
+- Seamless execution: Tasks are completed when parameters are met.
+- Collaboration: Agents work together if needed.
+
+:::info Example
+A user creates a wishlist, and let NEAR Intents find the item, add it to the cart, and pay for it as soon as it goes on sale.
+:::
+
+### Chain Signatures
+
+By using [Multi-Party Computation (MPC)](../../1.concepts/abstraction/chain-signatures.md#multi-party-computation-service), Chain Signatures enables accounts and smart contracts on the NEAR blockchain to sign and execute transactions on external chains, such as Bitcoin, Ethereum, and Base.
+
+This allows dApps built on NEAR to interact with Bitcoin’s UTXO model, enabling advanced functionality like asset transfers or decentralized finance (DeFi) protocols.
+
+:::tip
+To learn more about Chain Signatures, the concepts, and how to implement it, check these articles:
+- [What are Chain Signatures?](../../1.concepts/abstraction/chain-signatures.md)
+- [Getting started with Chain Signatures](chain-signatures/getting-started.md)
+- [Implementing Chain Signatures](chain-signatures/chain-signatures.md)
+:::
+
+### OmniBridge
+
+The [OmniBridge](https://github.com/Near-One/omni-bridge) is a multi-chain asset bridge that facilitates secure and efficient asset transfers between different blockchain networks, leveraging NEAR Multi-Party Computation (MPC) and Chain Signatures technology.
+
+OmniBridge acts as an aggregator of various message passing layers and light clients, enabling NEAR smart contracts to access states on external blockchains including Bitcoin, Ethereum, and Solana.
 
 ---
 
