@@ -194,10 +194,7 @@ const sidebar = {
       "Building Web3 Applications": [
         "build/web3-apps/quickstart",
         {
-          type: 'category',
-          label: 'Frontends',
-          link: { type: 'doc', id: 'build/web3-apps/frontend' },
-          items: [
+          "Frontends": [
             "build/web3-apps/integrate-contracts",
           ]
         },
