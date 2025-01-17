@@ -51,7 +51,7 @@ A user creates a wishlist, and let NEAR Intents find the item, add it to the car
 
 By using [Multi-Party Computation (MPC)](../../1.concepts/abstraction/chain-signatures.md#multi-party-computation-service), Chain Signatures enables accounts and smart contracts on the NEAR blockchain to sign and execute transactions on external chains, such as Bitcoin, Ethereum, and Base.
 
-This allows dApps built on NEAR to interact with Bitcoin’s UTXO model, enabling advanced functionality like asset transfers or decentralized finance (DeFi) protocols.
+For example, this allows a dApp built on NEAR to interact with Bitcoin’s UTXO model, enabling advanced functionality like asset transfers or decentralized finance (DeFi) protocols.
 
 :::tip
 To learn more about Chain Signatures, the concepts, and how to implement it, check these articles:
@@ -84,28 +84,14 @@ Multi-chain signatures work by combining **smart contracts** that produce signat
 
 ## Applications
 
-Thanks to significant advancements in the cryptocurrency space, including cross-chain interactions, account management, and the raise of AI applications, truly innovative projects are being developed in the NEAR ecosystem:
+Thanks to significant advancements in the cryptocurrency space, including cross-chain interactions, account management, and the raise of AI applications, truly innovative projects are being developed in the NEAR ecosystem.
 
 ### Bitcoin Use Cases
 
-   - **Bitcoin Lending**: improve the ability to borrow against Bitcoin held on the Layer 1 blockchain through chain signatures, making it easier to connect wallets and interact with lending protocols.
-   - **Trading**: enable issuing and trading assets on Bitcoin, though current experiences are limited. The integration of chain signatures aims to streamline this process.
-   - **Restaking**: support liquid stake tokens and restaking capabilities.
-
-### Cross-Chain Protocols
-
-   - Designing protocols that are agnostic to different blockchain environments. This enables users to swap assets between chains without needing to deploy multiple versions of a protocol.
-   - Examples include projects like **Omnilane** and **Thesis**, which allow flexible asset swaps and margin-based protocols across various chains, enhancing liquidity and capital usage.
-
-### Account Abstraction
-
-   - The development of account abstraction has led to the creation of wallet systems, like those integrated into applications such as **HOT Wallet**, which can manage assets across multiple blockchains.
-   - An example is a wallet that enables users to conduct transactions and swaps, showcasing seamless interaction with various decentralized applications (dApps) through unified balance management.
-
-### AI-Driven Autonomous Agents
-
-   - The potential for creating persistent AI agents that leverage decentralized technologies, which can operate independently on the blockchain.
-   - These agents would utilize multi-party computation technology to interact with users and the network in a secure, decentralized manner.
+- [BitcoinFi](https://medium.com/@ProximityFi/building-bitcoin-native-dapps-with-nears-abstraction-stack-fb4aeb448eee#df89)
+- [Payment Gateways for Merchants](https://medium.com/@ProximityFi/building-bitcoin-native-dapps-with-nears-abstraction-stack-fb4aeb448eee#0c38)
+- [Cross-Chain NFT Platforms](https://medium.com/@ProximityFi/building-bitcoin-native-dapps-with-nears-abstraction-stack-fb4aeb448eee#521b)
+- [Bitcoin Custody Solutions](https://medium.com/@ProximityFi/building-bitcoin-native-dapps-with-nears-abstraction-stack-fb4aeb448eee#6a7c)
 
 ### Relayers: Cover gas fees
 
@@ -116,19 +102,3 @@ This concept, known as "Account Abstraction" in other chains, is a **built-in fe
 :::tip
 In NEAR the relayers simply attach NEAR to cover gas fees, and pass the transaction to the network. There, the transaction is executed as if the **user had sent it**.
 :::
-
-<!--
-
-### Fast-Auth: Email onboarding
-
-One of the first barriers that new users face when entering the world of Web3 is the need to create a crypto wallet. This generally implies the need to choose a wallet, create and store a recovery phrase, and obtain deposit funds to start using the account.
-
-With FastAuth, users only need to provide an email address to create a NEAR account. Using the same email address the user will be able to use their account across applications and devices.
-
-:::warning
-FastAuth is being deprecated, stay tuned for updates
-:::
-
-<hr subclass="subsection" />
-
--->
