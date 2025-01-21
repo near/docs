@@ -8,20 +8,23 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {Github, Language} from "@site/src/components/codetabs"
 
-The NEAR API is a set of libraries that allow you to interact with the NEAR blockchain. You can use it to create accounts, send tokens, deploy contracts, and more. 
+The NEAR API is a set of libraries that allow you to interact with the NEAR blockchain. You can use it to in frontend and backend applications to:
 
-The API is available in multiple languages, including:
+- Call functions on a deployed contract
+- Query information about an account
+- Create NEAR accounts
+- Send Tokens such as NEAR, FTs, and NFTs
+- Create, Add and Delete Account Keys
+- Deploy a contract
+
+Our API is available in multiple languages, including:
 - JavaScript: [`near-api-js`](https://github.com/near/near-api-js)
 - Rust: [`near-api-rs`](https://github.com/near/near-api-rs)
 - Python: [`py-near`](https://github.com/pvolnov/py-near)
 
-For example, you could use [`near-api-js`](https://github.com/near/near-api-js) to create web applications or backend services written in node.js servers.
-
 :::tip Wallet Integration
 To allow users to login into your web application using a wallet you will need the `wallet-selector`. Read more in our [Web Frontend integration](/build/web3-apps/integrate-contracts) article
 :::
-
-These examples are references to code snippets, feel free to explore the full code examples in context by clicking `See full example on GitHub` below each example.
 
 ---
 

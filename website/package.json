@@ -43,6 +43,7 @@
     "docusaurus-plugin-sass": "^0.2.5",
     "gleap": "^13.7.3",
     "https-browserify": "^1.0.0",
+    "lodash": "^4.17.21",
     "monaco-editor": "^0.44.0",
     "near-api-js": "^2.1.4",
     "near-social-vm": "github:NearSocial/VM#2.5.5",
@@ -54,7 +55,6 @@
     "react-is": "^18.2.0",
     "react-monaco-editor": "^0.54.0",
     "sass": "^1.69.5",
-    "url": "^0.11.3",
-    "lodash": "^4.17.21"
+    "url": "^0.11.3"
   }
 }

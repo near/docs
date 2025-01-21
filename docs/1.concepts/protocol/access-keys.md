@@ -2,14 +2,18 @@
 id: access-keys
 title: Access Keys
 ---
-In all blockchains, users control their accounts by holding a [`private key`](https://en.wikipedia.org/wiki/Public-key_cryptography) (a secret only they know) and using it to sign [transactions](./transactions.md).
+
+In most blockchains, users control their accounts by holding a single [`private key`](https://en.wikipedia.org/wiki/Public-key_cryptography) (a secret only they know) and using it to sign [transactions](./transactions.md).
 
 ![img](@site/static/docs/assets/welcome-pages/access-keys.png)
 
-NEAR accounts present the **unique** feature of being able to hold **multiple Access Keys**, each with its **own set of permissions**. We distinguish two types of Keys:
+In NEAR we distinguish two types of Access Keys:
 
 1. `Full-Access Keys`: Have full control over the account, and should **never be shared**
 2. `Function-Call Keys`: Can only sign calls for specific contracts, and are **meant to be shared**
+
+Every account in NEAR can hold **multiple keys**, and keys can be added or removed, allowing a
+fine-grained control over the account's permissions.
 
 ---
 
