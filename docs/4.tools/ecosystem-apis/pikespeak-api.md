@@ -1,38 +1,34 @@
 ---
-id: pikespeak-api
-title: Pikespeak API
-sidebar_label: Pikespeak API
+id: pikespeak
+title: Pikespeak
 ---
 
-[Pikespeak](https://pikespeak.ai) offers an enterprise-grade API where you can fetch blockchain events and aggregated analytics on wallets, validators, delegators, money transfers, dApps activity, and more.
+[Pikespeak](https://pikespeak.ai) allows you to fetch blockchain events and aggregated analytics on wallets, validators, delegators, money transfers, dApps activity, and more.
 
-## Overview
+Use case includes:
+- Querying account balances
+- Querying the most active wallets
+- Querying historic account events
 
-Pikespeak is a Data & Analytics solution built on NEAR Protocol.
-Since inception, Pikespeak has recorded over 1 billion on-chain events and generated over 40 data points for more than 60 million accounts. Actionable data that can supercharge Web3 projects, allowing them to take action.
-The solution provides:
+:::tip Documentation
 
-- Dashboards and visualizations of the most fundamental Web3 use cases;
-- An API with 50+ endpoints to consume live, historical data, and insights in a programmatic way.
+You can find the complete API endpoint list in [this page](https://doc.pikespeak.ai/)
 
+:::
+
+---
 
 ## Endpoints
 
 To access the Pikespeak API you'll need to [register and create an account](https://pikespeak.ai/plans). Once you're registered, under the [`My Account`](https://pikespeak.ai/myaccount) page you can get your API key.
 
-You can find the complete API endpoint list in [this page](https://doc.pikespeak.ai/).
-You can access the REST APIs using [cURL](http://curl.se), or any HTTP client.
-
 - Mainnet: `https://api.pikespeak.ai`
 
-:::tip More info
-
-Check the [API documentation](https://doc.pikespeak.ai/) for more information about the Pikespeak API.
-:::
+---
 
 ## Examples
 
-- Account balance for `root.near`:
+Check the account balance for `root.near`:
 
 ```sh
 curl -X 'GET' \
@@ -58,9 +54,9 @@ curl -X 'GET' \
 
 </details>
 
----
+<hr className="subsection" />
 
-- Most active wallets NEAR senders:
+Most active wallets NEAR senders:
 
 ```sh
 curl -X 'GET' \
@@ -96,9 +92,9 @@ curl -X 'GET' \
 
 </details>
 
----
+<hr className="subsection" />
 
-- Get historic account events for `keypom.near`:
+Get historic account events for `keypom.near`:
 
 ```sh
 curl -X 'GET' \

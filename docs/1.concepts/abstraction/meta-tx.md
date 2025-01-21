@@ -159,23 +159,20 @@ but will fail on Bob's shard.
 
 ---
 
-## Function access keys in meta transactions
+## Function Call Access Keys in Meta Transactions
 
-Function access keys can limit the allowance, the receiving contract, and the
-contract methods. The allowance limitation acts slightly strange with meta
+[Function Call Access Keys](../protocol/access-keys.md#function-call-keys-function-call-keys)
+are limited to signing transactions for specific methods on a specific contract.
+
+
+Additionally, they can have an allowance, which limits the amount of tokens that
+can be spent on GAS fees. This limit however can be circumvented by using meta
 transactions.
 
-But first, both the methods and the receiver will be checked as expected. That
-is, when the delegate action is unwrapped on Alice's shard, the access key is
-loaded from the DB and compared to the function call. If the receiver or method
-is not allowed, the function call action fails.
+When a `DelegateAction` is processed in the network, the access key of the sender
+is checked against the receiver and the methods called. If the access key is allowed to
+make the call, the action is executed.
 
-For allowance, however, there is no check. All costs have been covered by the
-relayer. Hence, even if the allowance of the key is insufficient to make the call
-directly, indirectly through meta transaction it will still work.
-
-This behavior is in the spirit of allowance limiting how much financial
-resources the user can use from a given account. But if someone were to limit a
-function access key to one trivial action by setting a very small allowance,
-that is circumventable by going through a relayer. An interesting twist that
-comes with the addition of meta transactions.
+The allowance however is not checked, as all costs have been covered by the
+relayer. Hence, the action will be executed even if the allowance is insufficient
+to cover the costs.

@@ -1,17 +1,4 @@
 const sidebar = {
-  "concepts": [
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> From Web 2 to Web 3 </small></b></span>"
-    },
-    [
-      "concepts/web3/intro",
-      "concepts/web3/basics",
-      "concepts/web3/near",
-      "concepts/web3/economics",
-      "concepts/web3/nfts"
-    ]
-  ],
   "build": [
     "build/welcome",
     {
@@ -196,6 +183,7 @@ const sidebar = {
         {
           "Frontends": [
             "build/web3-apps/integrate-contracts",
+            "build/web3-apps/ethereum-wallets"
           ]
         },
         {
@@ -276,7 +264,7 @@ const sidebar = {
         "build/data-infrastructure/big-query",
         {
           "Lake Framework": [
-            "concepts/advanced/near-lake-framework",
+            "build/data-infrastructure/lake-framework/near-lake-framework",
             "build/data-infrastructure/lake-framework/near-lake",
             "build/data-infrastructure/lake-framework/near-lake-state-changes-indexer",
             "build/data-infrastructure/lake-framework/migrating-to-near-lake-framework",
@@ -503,15 +491,26 @@ const sidebar = {
     "tools/near-api",
     "tools/sdk",
     "tools/near-cli",
+    "tools/wallet-selector",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Data Tools </small></b></span>"
+    },
+    "tools/explorer",
     {
       "type": "category",
-      "label": "Wallets",
+      "label": "Data APIs",
       "items": [
-        "tools/wallets",
-        "tools/wallet-selector",
-        "tools/ethereum-wallets",
+        'tools/ecosystem-apis/fastnear',
+        'tools/ecosystem-apis/nearblocks',
+        'tools/ecosystem-apis/pikespeak',
       ]
     },
+    "tools/indexing",
     {
       "type": "html",
       "value": "<hr/>"
@@ -521,31 +520,30 @@ const sidebar = {
       "value": "<span class='menu__link'><b><small> Ecosystem Tools </small></b></span>"
     },
     {
-      "type": "category",
-      "label": "Data APIs",
-      "items": [
-        'tools/ecosystem-apis/fastnear-api',
-        'tools/ecosystem-apis/nearblocks-api',
-        'tools/ecosystem-apis/pikespeak-api',
-      ]
-    },
-    {
-      "type": "link",
-      "label": "Remix IDE Plugin",
-      "href": "https://docs.welldonestudio.io/code/getting-started"
-    },
-    {
       "type": "link",
       "label": "Testnet Faucet",
       "href": "https://near-faucet.io/"
     },
     {
       "type": "link",
+      "label": "Developer Portal",
+      "href": "https://dev.near.org/"
+    },
+    {
+      "type": "link",
+      "label": "NEAR Catalog",
+      "href": "https://app.nearcatalog.xyz/"
+    },
+    {
+      "type": "link",
       "label": "Keypom",
       "href": "https://keypom.xyz/"
     },
-    "tools/explorer",
-    "tools/indexing"
+    {
+      "type": "link",
+      "label": "Remix IDE Plugin",
+      "href": "https://docs.welldonestudio.io/code/getting-started"
+    },
   ],
   "api": [
     "api/rpc/introduction",
