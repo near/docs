@@ -54,9 +54,7 @@ When we used the `near login` command in the [previous chapter](../01-basics/01-
 
 ### Function-call access keys
 
-Function-call access keys are sometimes called "limited access keys" because they aren't as powerful as the full access keys.
-
-A Function-call access key will specify:
+Function-call access keys will specify:
 
 - What contract it's allowed to call
 - What method name(s) it's allowed to call (you can also specify all functions)

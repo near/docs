@@ -79,7 +79,7 @@ const wallet = new Wallet({
 });
 ```
 
-This example additionally includes the option to login with `Metamask` and other `EVM wallets`. Further information on how to add EVM wallets to your application can be found in the [Ethereum Wallets on NEAR documentation](../../4.tools/ethereum-wallets.md).
+This example additionally includes the option to login with `Metamask` and other `EVM wallets`. Further information on how to add EVM wallets to your application can be found in the [Ethereum Wallets on NEAR documentation](./ethereum-wallets.md).
 
 <details>
 <summary>What is the wallet selector?</summary>

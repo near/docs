@@ -1,16 +1,7 @@
 ---
-sidebar_label: "Lake Framework"
+id: near-lake-framework
+sidebar_label: "NEAR Lake Framework"
 ---
-
-# NEAR Lake Framework
-
-:::note GitHub repo
-
-https://github.com/near/near-lake-framework/
-
-:::
-
-## Description
 
 NEAR Lake Framework is an ecosystem of library companions to [NEAR Lake](/build/data-infrastructure/lake-framework/near-lake). They allow you to build your own indexer that subscribes to the stream of blocks from the [NEAR Lake](/build/data-infrastructure/lake-framework/near-lake) data source and create your own logic to process the NEAR Protocol data in the programming languages of your choice (at the moment, there are implementations in [Python](http://pypi.org/project/near-lake-framework), [JavaScript](https://www.npmjs.com/package/near-lake-framework), and [Rust](https://crates.io/crates/near-lake-framework)).
 
@@ -22,14 +13,20 @@ Please, read the post [here](https://gov.near.org/t/announcement-near-lake-frame
 
 :::
 
+:::note GitHub repo
 
-## How does it compare to [NEAR Indexer Framework](near-indexer-framework.md)?
+https://github.com/near/near-lake-framework/
+
+:::
+
+
+## How does it compare to [NEAR Indexer Framework](https://github.com/near/nearcore/tree/master/chain/indexer)?
 
 Feature | Indexer Framework | Lake Framework
 ------- | ----------------- | --------------
 Allows to follow the blocks and transactions in the NEAR Protocol | **Yes** | **Yes**<br />(but only mainnet and testnet networks)
 Decentralized | **Yes** | No<br />(Pagoda Inc dumps the blocks to AWS S3)
-Reaction time (end-to-end) | [minimum 3.8s (estimated average 5-7s)](near-indexer-framework.md#limitations) | [minimum 3.9s (estimated average 6-8s)](#limitations)
+Reaction time (end-to-end) | minimum 3.8s (estimated average 5-7s) | [minimum 3.9s (estimated average 6-8s)](#limitations)
 Reaction time (framework overhead only) | 0.1s | 0.2-2.2s
 Estimated cost of infrastructure | [$500+/mo](https://near-nodes.io/rpc/hardware-rpc) | [**$20/mo**](#what-is-the-cost-of-running-a-custom-indexer-based-on-near-lake)
 Ease of maintenance | Advanced<br />(need to follow every nearcore upgrade, and sync state) | **Easy**<br />(deploy once and forget)
@@ -40,9 +37,9 @@ Programming languages that a custom indexer can be implemented with | Rust only 
 
 ## Limitations
 
-Lake Framework relies on the data being dumped to AWS S3 from [NEAR Lake Indexer](https://github.com/near/near-lake-indexer) which is based on [NEAR Indexer Framework](near-indexer-framework.md). Thus, Lake Framework is centralized around AWS S3 storage and also around maintainers of NEAR Lake Indexer nodes (Pagoda Inc). This is the tradeoff you might still want to take given all the other benefits mentioned above.
+Lake Framework relies on the data being dumped to AWS S3 from [NEAR Lake Indexer](https://github.com/near/near-lake-indexer) which is based on [NEAR Indexer Framework](https://github.com/near/nearcore/tree/master/chain/indexer). Thus, Lake Framework is centralized around AWS S3 storage and also around maintainers of NEAR Lake Indexer nodes (Pagoda Inc). This is the tradeoff you might still want to take given all the other benefits mentioned above.
 
-Indexers based on the Lake Framework inherit [the latency characteristics of Indexer Framework](near-indexer-framework.md#limitations) and extra latency of dumping to and reading from AWS S3, which is estimated to add at least 50ms delay while writing to S3, and 50ms on polling and reading from S3 (to make the polling cost-efficient, we default to polling only every 2s, so in the worst case you may observe an additional 2-second latency). Thus, Lake Framework adds 0.1-2.1s latency on top of Indexer Framework. Yet, again, most of the latency is there due to the finalization delay and both Indexer Framework and Lake Framework add quite a minimum overhead.
+Indexers based on the Lake Framework inherit [the latency characteristics of Indexer Framework](https://github.com/near/nearcore/tree/master/chain/indexer) and extra latency of dumping to and reading from AWS S3, which is estimated to add at least 50ms delay while writing to S3, and 50ms on polling and reading from S3 (to make the polling cost-efficient, we default to polling only every 2s, so in the worst case you may observe an additional 2-second latency). Thus, Lake Framework adds 0.1-2.1s latency on top of Indexer Framework. Yet, again, most of the latency is there due to the finalization delay and both Indexer Framework and Lake Framework add quite a minimum overhead.
 
 ## What is the cost of running a custom indexer based on NEAR Lake?
 

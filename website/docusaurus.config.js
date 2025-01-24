@@ -90,14 +90,14 @@ const config = {
   ],
   themeConfig: {
     image: 'docs/assets/welcome-pages/protocol.png',
-    announcementBar: {
-      id: 'id-0010',
-      content:
-        '🎉 Ethereum Wallets are here! Read more in our <a href="/blog/hello-ethereum-wallets">blogpost</a> and check our <a href="/tools/ethereum-wallets">tutorial to update your app</a> 🎉',
-      backgroundColor: '#fcfbfa',
-      textColor: '#333',
-      isCloseable: true,
-    },
+    // announcementBar: {
+    //   id: 'id-0010',
+    //   content:
+    //     '🎉 Ethereum Wallets are here! Read more in our <a href="/blog/hello-ethereum-wallets">blogpost</a> and check our <a href="/tools/ethereum-wallets">tutorial to update your app</a> 🎉',
+    //   backgroundColor: '#fcfbfa',
+    //   textColor: '#333',
+    //   isCloseable: true,
+    // },
     prism: {
       additionalLanguages: [
         'rust',
@@ -152,19 +152,14 @@ const config = {
             { label: 'NEAR API', to: '/tools/near-api' },
             { label: 'NEAR SDK', to: '/tools/sdk' },
             { label: 'NEAR CLI', to: '/tools/near-cli' },
-            {
-              type: 'html',
-              value: '<hr/> <small class="subtitle"> Wallet Integration </small>',
-            },
             { label: 'Wallet Selector', to: '/tools/wallet-selector' },
             {
               type: 'html',
-              value: '<hr/> <small class="subtitle"> IDEs </small>',
+              value: '<hr/> <small class="subtitle"> Data Services </small>',
             },
-            {
-              label: 'Remix IDE Plugin',
-              href: 'https://docs.welldonestudio.io/code/getting-started',
-            },
+            { label: 'Explorers', to: '/tools/explorer' },
+            { label: 'Data APIs', to: '/tools/ecosystem-apis/fastnear' },
+            { label: 'Indexers', to: '/tools/indexing' },
           ],
         },
         {
