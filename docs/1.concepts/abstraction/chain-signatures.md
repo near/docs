@@ -67,6 +67,9 @@ Controlling accounts and their assets on other blockchain platforms is made poss
 2. [**Multichain Smart Contract**](#multichain-smart-contract) - Receives requests to sign a transaction for other blockchains
 3. [**Multiparty Computation Service**](#multi-party-computation-service) - Third-party service providing signatures to the contract
 
+![Chain Signatures](/docs/assets/chain-abstract-2.png)
+_Chain signatures flow_
+
 <hr class="subsection" />
 
 ### Derivation Paths: One Account, Multiple Chains
@@ -104,9 +107,6 @@ For example, a user could request a signature to `send 0.1 ETH to 0x060f1...` **
 After a request is made, the `sign` method will [yield execution](/blog/yield-resume) waiting while the [MPC signing service](#multi-party-computation-service-mpc) signs the transaction.
 
 Once the signature is ready, the contract resumes computation and returns it to the user. This signature is a valid signed transaction that can be readily sent to the target blockchain to be executed.
-
-![Chain Signatures](/docs/assets/chain-abstract-2.png)
-_Chain signatures smart contract flow_
 
 <hr class="subsection" />
 

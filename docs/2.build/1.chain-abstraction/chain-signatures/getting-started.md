@@ -3,11 +3,11 @@ id: getting-started
 title: Getting Started with Chain Signatures
 ---
 
-Chain Signatures is a groundbreaking technology built on NEAR that enables all accounts, including smart contracts, to sign and execute transactions across multiple blockchains.  
+Chain Signatures is a groundbreaking technology built on NEAR that enables all accounts, including smart contracts, to sign and execute transactions across multiple blockchains.
 
 ![img](https://pages.near.org/wp-content/uploads/2024/02/acct-abstraction-blog-1.png)
 
-This innovation leverages Multi-Party Computation (MPC) and a distributed network of node operators to create joint signatures from arbitrary payloads, allowing NEAR users to control external blockchain accounts.
+This innovation leverages Multi-Party Computation (MPC) and a distributed network of node operators to create joint signatures from arbitrary payloads, allowing NEAR accounts to control external blockchain accounts.
 
 Chain Signatures enhances blockchain interoperability, giving ownership of diverse assets, cross-chain accounts, and data to a single NEAR account.
 
@@ -16,6 +16,9 @@ Chain Signatures enhances blockchain interoperability, giving ownership of diver
 ## How does it work?
 
 When a NEAR account - could be a user or a **smart contract** - wants to interact with a foreign blockchain, it just need to follow four simple steps.
+
+![Chain Signatures](/docs/assets/chain-abstract-2.png)
+_Chain signatures flow_
 
 #### 1. Deriving Foreign Addresses
 
@@ -38,11 +41,19 @@ Notice that, since the foreign address is derived from the NEAR account name, it
 
 The client constructs the foreign transaction to be signed, which varies depending on the target blockchain
 
+:::tip
+
+Library to construct transactions for different chains inside Near contracts and Rust clients.
+
+https://github.com/near/omni-transaction-rs
+
+:::
+
 #### 3. Requesting the Signature
 
 A NEAR account or contract calls the sign method of the MPC smart contract ([v1.signer](https://nearblocks.io/address/v1.signer)) to sign the transaction and waits while our MPC service generates the signature
 
-#### 4. Relaying the Signature  
+#### 4. Relaying the Signature
 
 Once the signature is ready, the client reconstructs the signed transaction using the signature and broadcasts it to the destination blockchain
 
@@ -58,35 +69,35 @@ Using Chain Signatures, developers can build cross-chain DeFi applications with 
 
 Chain Signatures can be used to build a wide range of applications that leverage blockchain interoperability. Here are some examples:
 
-1. **DeFi on Bitcoin (and other chain without smart contracts)**  
-   * Chain signatures allow NEAR smart contract to program assets on Bitcoin  
-   * Build lending, swaps, runes launchpads, passkey-based Bitcoin wallets, and more  
-2. **Chain agnostic applications**  
-   * Since chain signatures can sign transactions for all blockchains, developers can support every single chain with just one smart contract  
-   * Multichain DEXs, lending protocols, oracles, derivatives, and more  
-3. **Multichain account abstraction**   
-   * Users can control assets on all chains with just their NEAR account, and can utilize account abstraction features on any chain including passkeys, key rotation, etc  
-   * Using the multichain gas relayer, users can pay for gas fees on any chain using USDC  
-4. **Privacy**  
-   * Chain signatures can be used to encrypt and decrypt information in a programmatic way  
+1. **DeFi on Bitcoin (and other chain without smart contracts)**
+   * Chain signatures allow NEAR smart contract to program assets on Bitcoin
+   * Build lending, swaps, runes launchpads, passkey-based Bitcoin wallets, and more
+2. **Chain agnostic applications**
+   * Since chain signatures can sign transactions for all blockchains, developers can support every single chain with just one smart contract
+   * Multichain DEXs, lending protocols, oracles, derivatives, and more
+3. **Multichain account abstraction**
+   * Users can control assets on all chains with just their NEAR account, and can utilize account abstraction features on any chain including passkeys, key rotation, etc
+   * Using the multichain gas relayer, users can pay for gas fees on any chain using USDC
+4. **Privacy**
+   * Chain signatures can be used to encrypt and decrypt information in a programmatic way
    * This enables privacy applications, and even decrypting information based on ownership of assets/NFTs
 
 ---
 
 ## How to Get Started?
 
-1. **Familiarize Yourself with Chain Signatures:**  
-   * Understand the [basics of Chain Signatures](https://docs.near.org/concepts/abstraction/chain-signatures) and how they simplify blockchain interactions.  
-   * Review the technical [explainer](https://near.org/blog/unlocking-web3-usability-with-account-aggregation).  
-2. **Explore the Use Cases:**  
-   * Review [examples of use cases for Chain Signatures](https://pages.near.org/blog/unlocking-multichain-web3-with-near-chain-signatures/), such as Multichain DAO, Multichain NFT Minter, and Bitcoin Runes Airdrop.  
-3. **Access Resources and Documentation:**  
-   * Visit the [Chain Signatures documentation](https://docs.near.org/build/chain-abstraction/chain-signatures) for detailed technical information and code snippets.  
-   * Check out the [Linktree for Chain Signatures](https://linktr.ee/chainsignatures) for various resources, including demos and tutorials.  
-4. **Try the Demos:**  
-   * Use the [command-line-based demo](https://github.com/near-examples/chainsig-script) to derive accounts and send transactions on Bitcoin, Ethereum, Doge, and Ripple.  
-   * Check out the [web app demo](https://github.com/near-examples/near-multichain/tree/main).  
-5. **Engage with the Community:**  
+1. **Familiarize Yourself with Chain Signatures:**
+   * Understand the [basics of Chain Signatures](https://docs.near.org/concepts/abstraction/chain-signatures) and how they simplify blockchain interactions.
+   * Review the technical [explainer](https://near.org/blog/unlocking-web3-usability-with-account-aggregation).
+2. **Explore the Use Cases:**
+   * Review [examples of use cases for Chain Signatures](https://pages.near.org/blog/unlocking-multichain-web3-with-near-chain-signatures/), such as Multichain DAO, Multichain NFT Minter, and Bitcoin Runes Airdrop.
+3. **Access Resources and Documentation:**
+   * Visit the [Chain Signatures documentation](https://docs.near.org/build/chain-abstraction/chain-signatures) for detailed technical information and code snippets.
+   * Check out the [Linktree for Chain Signatures](https://linktr.ee/chainsignatures) for various resources, including demos and tutorials.
+4. **Try the Demos:**
+   * Use the [command-line-based demo](https://github.com/near-examples/chainsig-script) to derive accounts and send transactions on Bitcoin, Ethereum, Doge, and Ripple.
+   * Check out the [web app demo](https://github.com/near-examples/near-multichain/tree/main).
+5. **Engage with the Community:**
    * Join the [Chain Abstraction developers’ channel on Telegram](https://t.me/chain\_abstraction) to connect with other developers and get support.
 
 ---
