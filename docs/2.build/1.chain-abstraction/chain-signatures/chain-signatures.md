@@ -82,7 +82,7 @@ We recommend hardcoding the derivation paths in your application to ensure the s
 
 :::tip
 
-Here you can find MPC public service public keys:
+Here you can find MPC service public keys:
 
 - **v1.signer-prod.testnet** ([testnet](https://testnet.nearblocks.io/address/v1.signer-prod.testnet)): `secp256k1:4NfTiv3UsGahebgTaHyD9vF8KYKMBnfd6kh94mK6xv8fGBiJB8TBtFMP5WWXz6B89Ac1fbpzPwAvoyQebemHFwx3`
 
