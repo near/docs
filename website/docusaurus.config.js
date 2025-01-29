@@ -16,6 +16,7 @@ const config = {
   scripts: [
     'https://buttons.github.io/buttons.js',
     'https://use.fontawesome.com/221fd444f5.js',
+    'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit',
   ],
   stylesheets: [
     'https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Source+Code+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap',
@@ -89,14 +90,14 @@ const config = {
   ],
   themeConfig: {
     image: 'docs/assets/welcome-pages/protocol.png',
-    announcementBar: {
-      id: 'id-0010',
-      content:
-        '🎉 Ethereum Wallets are here! Read more in our <a href="/blog/hello-ethereum-wallets">blogpost</a> and check our <a href="/tools/ethereum-wallets">tutorial to update your app</a> 🎉',
-      backgroundColor: '#fcfbfa',
-      textColor: '#333',
-      isCloseable: true,
-    },
+    // announcementBar: {
+    //   id: 'id-0010',
+    //   content:
+    //     '🎉 Ethereum Wallets are here! Read more in our <a href="/blog/hello-ethereum-wallets">blogpost</a> and check our <a href="/tools/ethereum-wallets">tutorial to update your app</a> 🎉',
+    //   backgroundColor: '#fcfbfa',
+    //   textColor: '#333',
+    //   isCloseable: true,
+    // },
     prism: {
       additionalLanguages: [
         'rust',
@@ -148,24 +149,17 @@ const config = {
               type: 'html',
               value: '<hr/> <small class="subtitle"> Essentials </small>',
             },
-            { label: 'NEAR API', to: '/tools/near-api-js/quick-reference' },
+            { label: 'NEAR API', to: '/tools/near-api' },
             { label: 'NEAR SDK', to: '/tools/sdk' },
             { label: 'NEAR CLI', to: '/tools/near-cli' },
-            {
-              type: 'html',
-              value: '<hr/> <small class="subtitle"> Wallet Integration </small>',
-            },
             { label: 'Wallet Selector', to: '/tools/wallet-selector' },
             {
               type: 'html',
-              value: '<hr/> <small class="subtitle"> IDEs </small>',
+              value: '<hr/> <small class="subtitle"> Data Services </small>',
             },
-            { label: 'VSCode Extension ', href: 'https://marketplace.visualstudio.com/items?itemName=near-protocol.near-discovery-ide' },
-            { label: 'BOS Web IDE (Jutsu)', href: 'https://jutsu.ai/editor' },
-            {
-              label: 'Remix IDE Plugin',
-              href: 'https://docs.welldonestudio.io/code/getting-started',
-            },
+            { label: 'Explorers', to: '/tools/explorer' },
+            { label: 'Data APIs', to: '/tools/ecosystem-apis/fastnear' },
+            { label: 'Indexers', to: '/tools/indexing' },
           ],
         },
         {
@@ -184,7 +178,7 @@ const config = {
             },
             {
               type: 'html',
-              value: '<hr/><div class="subtitle"> Support </dib>',
+              value: '<hr/><div class="subtitle"> Support </div>',
             },
             {
               href: 'https://discord.gg/GZ7735Xjce',
@@ -196,7 +190,7 @@ const config = {
             },
             {
               type: 'html',
-              value: '<hr /><div class="subtitle"> Education </dib>',
+              value: '<hr /><div class="subtitle"> Education </div>',
             },
             {
               href: 'https://agorapp.dev/catalog/course?difficulty=&chains=near',
@@ -208,7 +202,7 @@ const config = {
             },
             {
               type: 'html',
-              value: '<hr /><div class="subtitle"> Other Docs </dib>',
+              value: '<hr /><div class="subtitle"> Other Docs </div>',
             },
             {
               href: 'https://github.com/near/NEPs',
@@ -234,6 +228,10 @@ const config = {
           activeBaseRegex: '/api/rpc',
         },
         { label: 'Blog', to: '/blog', activeBaseRegex: '/blog', position: 'right' },
+        {
+          type: 'html', position: 'right',
+          value: '<a class="navbar__link false" href="#" onclick="google.translate.TranslateElement({pageLanguage: \'en\', includedLanguages: \'af,sq,am,en,fa,ar,ps,ja,zh-CN,hy,az,eu,be,bn,bs,bg,ca,ceb,ny,zh-TW,co,hr,cs,da,nl,eo,et,tl,fi,fr,fy,gl,ka,de,el,gu,ht,ha,haw,iw,hi,hmn,hu,is,ig,id,ga,it,jw,kn,kk,km,ko,ku,ky,lo,la,lv,lt,lb,mk,mg,ms,ml,mt,mi,mr,mn,my,ne,no,pl,pt,pa,ro,ru,sm,gd,sr,st,sn,sd,si,sk,sl,so,es,su,sw,sv,tg,ta,te,th,tr,uk,ur,uz,vi,cy,xh,yi,yo,zu\'}, \'google_translate_element\');"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" style="vertical-align: text-bottom"><path fill="currentColor" d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"></path></svg></a>',
+        },
       ],
     },
     footer: {
@@ -247,7 +245,7 @@ const config = {
       // The application ID provided by Algolia
       appId: '0LUM67N2P2',
       // Public API key: it is safe to commit it
-      apiKey: '50a400220b38e2d4bef996c7d0ed4b90',
+      apiKey: '41e2feb6ffa0d3450ca9d0a0c1826c1c',
       indexName: 'near',
       // Optional: see doc section below
       contextualSearch: true,

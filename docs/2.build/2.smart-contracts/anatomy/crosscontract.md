@@ -40,10 +40,16 @@ While making your contract, it is likely that you will want to query information
 <Language value="rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/lib.rs"
-            start="22" end="51" />
-            <Github fname="external.rs"
-            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/external.rs"
-            start="2" end="12" />
+            start="1" end="29" />
+    <Github fname="external_contract.rs"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/external_contract.rs"
+            start="1" end="8" />
+    <Github fname="high_level.rs"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/high_level.rs"
+            start="8" end="37" />
+    <Github fname="low_level.rs"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/low_level.rs"
+            start="7" end="39" />
 
 </Language>
 
@@ -65,10 +71,16 @@ Calling another contract passing information is also a common scenario. Below yo
 <Language value="rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/lib.rs"
-            start="53" end="80" />
-    <Github fname="external.rs"
-            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/external.rs"
-            start="2" end="12" />
+            start="1" end="29" />
+    <Github fname="external_contract.rs"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/external_contract.rs"
+            start="1" end="8" />
+    <Github fname="high_level.rs"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/high_level.rs"
+            start="39" end="66" />
+    <Github fname="low_level.rs"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/low_level.rs"
+            start="41" end="72" />
 
 </Language>
 
@@ -117,7 +129,7 @@ To create a cross-contract call with a callback, create two promises and use the
   </TabItem>
   <TabItem value="rs" label="🦀 Rust">
 
-    There is a helper macro that allows you to make cross-contract calls with the syntax `#[ext_contract(...)]`. It takes a Rust Trait and converts it to a module with static methods. Each of these static methods takes positional arguments defined by the Trait, then the `receiver_id`, the attached deposit and the amount of gas and returns a new `Promise`.
+    There is a helper macro that allows you to make cross-contract calls with the syntax `#[ext_contract(...)]`. It takes a Rust Trait and converts it to a module with static methods. Each of these static methods takes positional arguments defined by the Trait, then the `receiver_id`, the attached deposit and the amount of gas and returns a new `Promise`. *That's the high-level way to make cross-contract calls.*
 
     ```rust
     #[ext_contract(external_trait)]
@@ -135,6 +147,31 @@ To create a cross-contract call with a callback, create two promises and use the
       .with_attached_deposit(DEPOSIT)
       .with_static_gas(GAS)
       .callback_name(arguments)
+    );
+
+    ```
+
+    <hr class="subsection" />
+
+    There is another way to achieve the same result. You can create a new `Promise` without using a helper macro. *It's the low-level way to make cross-contract calls.*
+
+    ```rust
+    let arguments = json!({ "foo": "bar" })
+        .to_string()
+        .into_bytes();
+
+    let promise = Promise::new("external_address").function_call(
+        "function_name".to_owned(),
+        arguments,
+        DEPOSIT,
+        GAS
+    );
+
+    promise.then(
+        // Create a promise to callback query_greeting_callback
+        Self::ext(env::current_account_id())
+            .with_static_gas(GAS)
+            .callback_name(),
     );
 
     ```
@@ -179,9 +216,9 @@ In the callback function you will have access to the result, which will contain 
 
 <Language value="rust" language="rust">
 
-  <Github fname="lib.rs"
-          url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/lib.rs"
-          start="37" end="51" />
+  <Github fname="high_level.rs"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/high_level.rs"
+            start="23" end="37" />
 
 </Language>
 
@@ -247,14 +284,14 @@ An important property of batch calls is that they **act as a unit**: they execut
 
   <Github fname="batch_actions" language="js"
         url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/batch_actions.ts"
-        start="7" end="17" />
+        start="5" end="17" />
 
   </TabItem>
   <TabItem value="rs" label="🦀 Rust">
 
   <Github fname="lib.ts" language="rust"
         url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/batch_actions.rs"
-        start="14" end="19" />
+        start="8" end="20" />
 
   </TabItem>
 </Tabs>

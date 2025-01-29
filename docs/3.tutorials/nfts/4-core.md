@@ -126,11 +126,11 @@ This way, we can effectively **attach an NFT to a function call**.
 
 The function will first assert that the caller attached exactly 1 yocto for security purposes. It will then transfer the NFT using `internal_transfer` and start the cross contract call. It will call the method `nft_on_transfer` on the `receiver_id`'s contract, and create a promise to call back `nft_resolve_transfer` with the result. This is a very common workflow when dealing with [cross contract calls](../../2.build/2.smart-contracts/anatomy/crosscontract.md).
 
-As dictated by the core standard, the function we are calling (`nft_on_transfer`) needs to return a boolean stating whether or not you should return the NFT to it's original owner.
+As dictated by the core standard, the function we are calling (`nft_on_transfer`) needs to return a boolean stating whether or not you should return the NFT to its original owner.
 
 <Github language="rust" start="146" end="201" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-basic/src/nft_core.rs" />
 
-If `nft_on_transfer` returned true or the called failed, you should send the token back to it's original owner. On the contrary, if false was returned, no extra logic is needed.
+If `nft_on_transfer` returned true or the called failed, you should send the token back to its original owner. On the contrary, if false was returned, no extra logic is needed.
 
 As for the return value of our function `nft_resolve_transfer`, the standard dictates that the function should return a boolean indicating whether or not the receiver successfully received the token or not.
 
@@ -145,7 +145,7 @@ With that finished, you've now successfully added the necessary logic to allow u
 Using cargo-near, deploy the contract as you did in the previous tutorials:
 
 ```bash
-cargo near deploy $NFT_CONTRACT_ID without-init-call network-config testnet sign-with-keychain send
+cargo near deploy build-non-reproducible-wasm $NFT_CONTRACT_ID without-init-call network-config testnet sign-with-keychain send
 ```
 
 :::tip
@@ -249,7 +249,7 @@ In the [next tutorial](5-approval.md), you'll learn about the approval managemen
 At the time of this writing, this example works with the following versions:
 
 - rustc: `1.77.1`
-- near-cli-rs: `0.11.0`
+- near-cli-rs: `0.17.0`
 - cargo-near `0.6.1`
 - NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
 - Enumeration standard: [NEP181](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration), version `1.0.0`

@@ -2,14 +2,18 @@
 id: access-keys
 title: Access Keys
 ---
-In all blockchains, users control their accounts by holding a `private key` (a secret only they know) and using it to sign [transactions](./transactions.md).
+
+In most blockchains, users control their accounts by holding a single [`private key`](https://en.wikipedia.org/wiki/Public-key_cryptography) (a secret only they know) and using it to sign [transactions](./transactions.md).
 
 ![img](@site/static/docs/assets/welcome-pages/access-keys.png)
 
-NEAR accounts present the **unique** feature of being able to hold multiple [Access Keys](https://en.wikipedia.org/wiki/Public-key_cryptography), each with its **own set of permissions**. We distinguish two types of Keys:
+In NEAR we distinguish two types of Access Keys:
 
 1. `Full-Access Keys`: Have full control over the account, and should **never be shared**
-2. `Function-Call Keys`: Can sign calls to specific contract, and are **meant to be shared**
+2. `Function-Call Keys`: Can only sign calls for specific contracts, and are **meant to be shared**
+
+Every account in NEAR can hold **multiple keys**, and keys can be added or removed, allowing a
+fine-grained control over the account's permissions.
 
 ---
 
@@ -25,22 +29,24 @@ As the name suggests, `Full-Access` keys have full control of an account, meanin
 You should never share your `Full-Access`, otherwise you are giving **total control over the account**.
 
 :::tip
-The **first** Full-Access Key of an account is added when the account is **created**
+[Implicit accounts](./account-id.md#implicit-address) already have a `Full-Access Key` by default, while for [`named accounts`](./account-id.md#named-address) their first `Full-Access Key` is added on creation
 :::
 
 ---
 
 ## Function-Call Keys {#function-call-keys}
 
-`Function-Call` keys can only sign transactions calling a **specific contract**, and do **not allow** to **attach NEAR tokens** to the call. They are defined by three attributes:
-1. `receiver_id`: The **contract** which the key allows to call. No other contract can be called using this key
-2. `method_names` (Optional): The contract's **methods** the key allows to call. If omitted, all methods can be called
-3. `allowance` (Optional): The **amount of NEAR** allowed to be spent on [gas](gas.md). If omitted, the key can consume **unlimited** as gas
+`Function-Call` keys can only sign transactions calling a **specific contract**, and do **not allow** to **attach NEAR tokens** to the call.
 
-Function-Call keys have the main purpose of being shared, so third-parties can make contract calls in your name. This is useful in [multiple scenarios as we will see below](#benefits-of-function-call-keys).
+They are defined by three attributes:
+1. `receiver_id`: The **only contract** which the key allows to call, no other contract can be called with this key
+2. `method_names` (Optional): The contract's **methods** the key allows to call. If omitted, all contract's methods can be called
+3. `allowance` (Optional): The **amount of NEAR** allowed to be spent on [gas](gas.md). If omitted, the key can consume **unlimited** gas
+
+`Function Call Keys` are meant to be shared with applications, so third-parties can make contract calls in your name. This is useful in [multiple scenarios as we will see below](#benefits-of-function-call-keys).
 
 :::tip 
-`Function-Call` keys are secure to share, as they only permit calls to a specific contract and prohibit NEAR token transfers.
+`Function-Call` keys are secure to share, as they only permit calls to a specific contract and prohibit NEAR token transfers
 :::
 
 ---
@@ -62,11 +68,19 @@ Sharing this key is safe for the user, because even in the case of somebody stea
 
 ### Simple Onboarding
 
-Another common use-case of `Function-Call` keys is to simplify the **onboarding** process for new users. It works as follows:
+Another common use-case of `Function-Call` keys is to simplify the **onboarding** process for new users.
 
-First create a contract that has a method called `create_account`. This method should only be callable by the contract itself and, when executed, should create a new account and transfer some tokens to it.
+It works as follows:
 
-You can then create multiple `Function-Call` in the contract's account, that only allow to call `create_account`. Drop these keys to your friends, so they can call the method, and easily create an account with some tokens.
+1. Create a contract that has a method called `create_account`
+    - This method should only be callable by the contract itself and
+    - When executed, the method should create a new account and transfer some tokens to it
+
+2. Add multiple `Function Call Keys` in the contract's account, that **only allow to call `create_account`**
+
+3. Give these keys to your friends! They will be able to call the method, and easily create an account with some tokens
+
+Your main account and your funds will never be at risk, as the keys can only be used to call the `create_account` method.
 
 :::tip
 This is the basic principle behind [NEAR Drops](../../2.build/5.primitives/linkdrop.md), a way to distribute assets to a large number of users

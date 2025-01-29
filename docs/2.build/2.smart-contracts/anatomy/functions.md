@@ -82,7 +82,7 @@ State changing functions are marked with the `@call` decorator.
 
 <Block highlights='{"rust": "37,64"}' fname="auction">
 
-#### `mut &self`
+#### `&mut self`
 State changing functions are those that take a **mutable** reference to `self` in Rust.
 
 </Block>
@@ -132,7 +132,7 @@ These functions are marked as `private` in the contract's code, and can only be 
 <Block highlights='{"js": "15"}' fname="auction">
 
 #### `decorator({privateFunction: true})`
-Private functions are marked by setting `privateFunction: true` in the `@call` or `@initialization` decorators.
+Private functions are marked by setting `privateFunction: true` in the `@call` or `@initialize` decorators.
 
 </Block>
 
@@ -258,7 +258,7 @@ const SOME_VALUE: u64 = 8;
 
 #[near]
 impl MyContractStructure {
-  fn internal_helper(mut &self, params... ){
+  fn internal_helper(&mut self, params... ){
     // this function cannot be called from the outside
   }
 

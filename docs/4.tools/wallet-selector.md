@@ -1,19 +1,40 @@
-# Wallet Selector
+---
+id: wallet-selector
+title: Wallet Selector
+sidebar_label: NEAR Wallet Selector
+---
 
-An easy-to-navigate modal that allows users to select their preferred wallet to easily interact with the NEAR protocol.
-
-Launched in March 2022 by the NEAR Foundation, this simple modal will appear whenever users are given the option to “Connect Wallet” to the NEAR blockchain.
+The [Wallet Selector](https://github.com/near/wallet-selector) is a `JS`/`TS` library that lets users connect to your application using their preferred wallet. 
 
 ![Preview](/docs/assets/wallet-selector-preview.png)
 *Initial screen of [Wallet Selector](https://near.github.io/wallet-selector/)*
 
+<details>
+<summary> List of NEAR Wallets </summary>
+
+Here is a list of user-friendly wallets that support the NEAR blockchain, you can find more at the [NEAR Wallets](https://wallet.near.org/) page.
+
+- [HERE Wallet](https://www.herewallet.app/): Non-custodial mobile wallet with a friendly user interface and advanced features.
+
+- [Meteor Wallet](https://wallet.meteorwallet.app/): Both a browser and extension wallet, with advanced NFT features.
+
+- [Mintbase Wallet](https://wallet.mintbase.xyz/): A passkey meta-transaction, browser wallet, with advanced NFT and AI features. If you're looking to integrate Mintbase Wallet into your applications, [check this tutorial](https://docs.mintbase.xyz/wallet/integrating-mintbase-wallet) to get started.
+
+- [MyNearWallet](https://mynearwallet.com/): A browser based wallet that offers the same UI and features of `wallet.near.org`.
+
+- [NEAR Mobile](https://nearmobile.app/): A non-custodial wallet that is easy to use and well designed to manage your crypto wherever you go.
+
+- [Nightly Wallet](https://wallet.nightly.app/download): A mobile and extension wallet, with support for multiple ecosystems.
+
+- [Sender Wallet](https://sender.org/): Security-audited mobile & extension wallet with 1M+ users, supporting NEAR & Aurora.
+
+- [WELLDONE Wallet](https://welldonestudio.io/): A multi-chain extension wallet that gives you control over all your assets from a single platform.
+
+</details>
+
 ---
 
-## Framework agnostic
-
-[React](https://reactjs.org/) / [Next.js](https://nextjs.org/) and [Angular](https://angular.io/) variations of the [Guest Book](https://github.com/near-examples/guest-book-examples/) dApp can be found in the [`examples`](https://github.com/near/wallet-selector/tree/main/examples) directory. Developers can use these to gain a concrete understanding of how to integrate NEAR Wallet Selector into their own dApp.
-
-### Unlocking the wallet ecosystem
+## Unlocking the wallet ecosystem
 
 Wallet Selector makes it easy for users to interact with dApps by providing an abstraction over various wallets and wallet types within the NEAR ecosystem.
 
@@ -23,20 +44,14 @@ You can check the current list of supported wallets in the [README.md](https://g
 
 :::
 
-Thanks to NEAR’s open and inclusive approach, other wallet developers can contribute to the NEAR ecosystem by following the documentation and instructions on the [NEAR Github repository](https://github.com/near/wallet-selector) on how to add a new wallets to the Wallet Selector.
-
-:::tip
-
-To learn more on how to include new wallets for Wallet Selector you can check the listing criteria for third party wallets on this [link](https://github.com/near/wallet-selector/blob/main/CONTRIBUTING.md#listing-criteria-for-third-party-wallet-on-wallet-selector).
-
-:::
+---
 
 ## Install
 
 The easiest way to use NEAR Wallet Selector is to install the core package from the NPM registry, some packages may require near-api-js v0.44.2 or above check them at packages.
 
 ```bash
-npm install near-api-js@^0.44.2
+npm install near-api-js
 ```
 
 ```bash
@@ -61,6 +76,8 @@ npm install \
   @near-wallet-selector/default-wallets \
   @near-wallet-selector/coin98-wallet
 ```
+
+---
 
 ## Setup Wallet Selector
 
@@ -99,11 +116,11 @@ import "@near-wallet-selector/modal-ui/styles.css"
 
 :::
 
-## API Reference
+---
+
+## Reference
 
 The API reference of the selector can be found [`here`](https://github.com/near/wallet-selector/blob/main/packages/core/docs/api/selector.md)
-
-## Wallet API
 
 ### Sign in
 

@@ -184,7 +184,7 @@ Add the following to your newly created `internal.rs` file.
 You may notice more functions in the `internal.rs` file than we need for now. You may ignore them, we'll come back to them later.
 :::
 
-Let's now quickly move to the `lib.rs` file and make the functions we just created invokable in other files. We'll add the internal crates and mod the file as shown below:
+Let's now quickly move to the `lib.rs` file and make the functions we just created invocable in other files. We'll add the internal crates and mod the file as shown below:
 
 <Github language="rust" start="10" end="23" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-basic/src/lib.rs" />
 
@@ -251,7 +251,7 @@ Verify that the correct account ID is printed in the terminal. If everything loo
 In the root of your NFT project run the following command to deploy your smart contract and answer questions:
 
 ```bash
-cargo near deploy $NFT_CONTRACT_ID
+cargo near deploy build-non-reproducible-wasm $NFT_CONTRACT_ID
 
 > Select the need for initialization: with-init-call     - Add an initialize
 > What is the name of the function? new_default_meta
@@ -267,7 +267,7 @@ cargo near deploy $NFT_CONTRACT_ID
 You don't need to answer these questions every time. If you look at the results you will find the message `Here is the console command if you ever need to re-run it again`. The next line is the command which you may use instead of answering to interactive questions:
 
 ```bash
-cargo near deploy $NFT_CONTRACT_ID with-init-call new_default_meta json-args '{"owner_id": "'$NFT_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
+cargo near deploy build-non-reproducible-wasm $NFT_CONTRACT_ID with-init-call new_default_meta json-args '{"owner_id": "'$NFT_CONTRACT_ID'"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
 ```
 
 You've just deployed and initialized the contract with some default metadata and set your account ID as the owner. At this point, you're ready to call your first view function.
@@ -433,7 +433,7 @@ In the [next tutorial](2-upgrade.md), you'll find out how to deploy a patch fix 
 At the time of this writing, this example works with the following versions:
 
 - rustc: `1.77.1`
-- near-cli-rs: `0.11.0`
+- near-cli-rs: `0.17.0`
 - cargo-near `0.6.1`
 - NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
 - Metadata standard: [NEP177](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata), version `2.1.0`

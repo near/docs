@@ -17,6 +17,7 @@ function Footer() {
 
   return (
     <footer className="footer">
+      <div id="google_translate_element"></div>
       <div>
       <div className="container relative text-white pb-40 md:pb-100 pt-100">
         <div className="row">
@@ -218,11 +219,6 @@ function Footer() {
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/build/near-components/what-is">
-                      Components
-                    </a>
-                  </li>
-                  <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
                     <a href="/build/web3-apps/what-is">
                       Web3 Apps
                     </a>
@@ -267,11 +263,6 @@ function Footer() {
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
                     <a href="/tutorials/fts/introduction">
                       FTs
-                    </a>
-                  </li>
-                  <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/tutorials/near-components/bos-loader">
-                      Components
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
@@ -329,7 +320,7 @@ function Footer() {
                   className="footer-menu list-reset mt-5 text-16 md:text-16"
                 >
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/tools/near-api-js/quick-reference">
+                    <a href="/tools/near-api">
                       API
                     </a>
                   </li>
@@ -356,11 +347,6 @@ function Footer() {
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
                     <a href="/build/chain-abstraction/what-is">
                       Relayers
-                    </a>
-                  </li>
-                  <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://jutsu.ai/editor" target="_blank" rel="noopener noreferrer">
-                      Justu IDE
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
