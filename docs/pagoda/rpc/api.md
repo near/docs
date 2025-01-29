@@ -286,7 +286,7 @@ This endpoint returns detailed information on the NFT
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[NftResponse](#schemanftresponse)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[NftResponse](#nftresponse)|
 |500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|See the inner `code` value to get more details|None|
 
 <aside class="warning">
@@ -535,7 +535,7 @@ This endpoint returns the transaction history for the given NFT and `timestamp`/
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[HistoryResponse](#schemahistoryresponse)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[HistoryResponse](#historyresponse)|
 |500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|See the inner `code` value to get more details|None|
 
 <aside class="warning">
@@ -779,7 +779,7 @@ For the given `account_id` and `timestamp` or `block_height`, this endpoint retu
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[NftCountsResponse](#schemanftcountsresponse)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[NftCountsResponse](#nftcountsresponse)|
 |500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|See the inner `code` value to get more details|None|
 
 <aside class="warning">
@@ -1030,7 +1030,7 @@ This endpoint returns the list of NFTs with full details for the given `account_
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[NftsResponse](#schemanftsresponse)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[NftsResponse](#nftsresponse)|
 |500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|See the inner `code` value to get more details|None|
 
 <aside class="warning">
@@ -1259,7 +1259,7 @@ This endpoint returns the metadata for a given NFT contract and `timestamp`/`blo
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[MetadataResponse](#schemametadataresponse)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[MetadataResponse](#metadataresponse)|
 |500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|See the inner `code` value to get more details|None|
 
 <aside class="warning">
@@ -1490,7 +1490,7 @@ This endpoint returns the NEAR balance of the given `account_id`
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[NearBalanceResponse](#schemanearbalanceresponse)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[NearBalanceResponse](#nearbalanceresponse)|
 |500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|See the inner `code` value to get more details|None|
 
 <aside class="warning">
@@ -1737,7 +1737,7 @@ This endpoint returns the history of operations with NEAR coins
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[HistoryResponse](#schemahistoryresponse)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[HistoryResponse](#historyresponse)|
 |500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|See the inner `code` value to get more details|None|
 
 <aside class="warning">
@@ -1982,7 +1982,7 @@ This endpoint returns all the countable coin balances (including NEAR, fungible 
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[CoinBalancesResponse](#schemacoinbalancesresponse)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[CoinBalancesResponse](#coinbalancesresponse)|
 |500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|See the inner `code` value to get more details|None|
 
 <aside class="warning">
@@ -2223,7 +2223,7 @@ This endpoint returns all the countable coin balances of the given `account_id`,
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[CoinBalancesResponse](#schemacoinbalancesresponse)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[CoinBalancesResponse](#coinbalancesresponse)|
 |500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|See the inner `code` value to get more details|None|
 
 <aside class="warning">
@@ -2474,7 +2474,7 @@ This endpoint returns the history of coin operations (FT, other standards)
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[HistoryResponse](#schemahistoryresponse)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[HistoryResponse](#historyresponse)|
 |500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|See the inner `code` value to get more details|None|
 
 <aside class="warning">
@@ -2706,7 +2706,7 @@ This endpoint returns the metadata for a given FT contract and `timestamp`/`bloc
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[FtContractMetadataResponse](#schemaftcontractmetadataresponse)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[FtContractMetadataResponse](#ftcontractmetadataresponse)|
 |500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|See the inner `code` value to get more details|None|
 
 <aside class="warning">

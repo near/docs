@@ -187,7 +187,7 @@ value returned by each call, or an error message.
 
 ### Multiple Calls - Same Result Type
 
-This example is a particular case of the previous one ([Calling Multiple Contracts](#2-calling-multiple-contracts)).
+This example is a particular case of the previous one ([Calling Multiple Contracts](#calling-multiple-contracts)).
 It simply showcases a different way to check the results by directly accessing the `promise_result` array.
 
 In this case, we call multiple contracts that will return the same type:
