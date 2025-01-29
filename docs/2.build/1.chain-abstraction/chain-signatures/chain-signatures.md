@@ -78,9 +78,11 @@ We provide code to derive the address, as it's a complex process that involves m
 
 </Tabs>
 
+We recommend hardcoding the derivation paths in your application to ensure the signature request is made to the correct account
+
 :::tip
 
-We recommend hardcoding the derivation paths in your application to ensure the signature request is made to the correct account
+Here you can find MPC public service public keys:
 
 - **v1.signer-prod.testnet** (testnet): `secp256k1:4NfTiv3UsGahebgTaHyD9vF8KYKMBnfd6kh94mK6xv8fGBiJB8TBtFMP5WWXz6B89Ac1fbpzPwAvoyQebemHFwx3`
 
