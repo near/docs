@@ -5,7 +5,7 @@ sidebar_label: Migrating to NEAR Lake framework
 # Migrating to NEAR Lake Framework
 
 
-We encourage everyone who don't have a hard requirement to use [NEAR Indexer Framework](/concepts/advanced/near-indexer-framework) consider the migration to [NEAR Lake Framework](/build/data-infrastructure/lake-framework/near-lake-framework).
+We encourage everyone who don't have a hard requirement to use [NEAR Indexer Framework](https://github.com/near/nearcore/tree/master/chain/indexer) consider the migration to [NEAR Lake Framework](/build/data-infrastructure/lake-framework/near-lake-framework).
 
 In this tutorial we'll show you how to migrate the project using [indexer-tx-watcher-example](https://github.com/near-examples/indexer-tx-watcher-example) as a showcase.
 
@@ -308,7 +308,7 @@ async fn main() -> Result<(), tokio::io::Error> {
         .collect();
 ```
 
-Now we can call `listen_blocks` function we have used before in our indexer while it was built on top of [NEAR Indexer Framework](/concepts/advanced/near-indexer-framework). And return `Ok(())` so our `main()` would be happy.
+Now we can call `listen_blocks` function we have used before in our indexer while it was built on top of [NEAR Indexer Framework](https://github.com/near/nearcore/tree/master/chain/indexer). And return `Ok(())` so our `main()` would be happy.
 
 
 ### Final async main with NEAR Lake Framework stream
