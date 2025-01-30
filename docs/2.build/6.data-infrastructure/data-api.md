@@ -122,6 +122,6 @@ curl https://api.fastnear.com/v1/account/root.near/full
 
 :::info More info
 
-Find more information about the FastNear API in their [services page](https://fastnear.com/services)
+Find more information about the FastNear API on their [documentation page](https://docs.fastnear.com/)
 
 :::
