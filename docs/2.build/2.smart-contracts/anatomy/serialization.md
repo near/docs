@@ -79,22 +79,23 @@ languages readily implement a JSON (de)serializer.
 Let's look at this example, written only for educational purposes:
 
 ```rust
-#[derive(Serialize)]
-#[serde(crate = "near_sdk::serde")]
+#[near(serializers = [json])]
 pub struct A {
   pub a_number: i32,
   pub b_number: u128
 }
 
-#[derive(Serialize)]
-#[serde(crate = "near_sdk::serde")]
+#[near(serializers = [json])]
 pub struct B {
   pub success: bool,
   pub other_number: i32
 }
 
 pub fn method(&self, struct_a: A): B {
-  return B{true, 0}
+  B {
+     success: true,
+     other_number: 0
+  }
 }
 ```
 

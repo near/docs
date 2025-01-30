@@ -287,7 +287,7 @@ Hurray! At this point, your NFT contract is fully complete and the events standa
 
 ## Conclusion
 
-Today you went through the [events standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event) and implemented the necessary logic in your smart contract. You created events for [minting](#logging-minted-tokens) and [transferring](#logging-transfers) NFTs. You then deployed and [tested](#initialization-and-minting) your changes by minting and transferring NFTs.
+Today you went through the [events standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event) and implemented the necessary logic in your smart contract. You created events for [minting](#logging-minted-tokens) and [transferring](#logging-transfers) NFTs. You then deployed and tested your changes by [minting](#minting) and [transferring](#transferring) NFTs.
 
 In the [next tutorial](8-marketplace.md), you'll look at the basics of a marketplace contract and how it was built.
 
