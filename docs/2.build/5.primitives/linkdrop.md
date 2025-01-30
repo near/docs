@@ -215,7 +215,7 @@ near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_pe
 
   <TabItem value="Lantstool" label={<LantstoolLabel/>}>
     <p>Try it out on [Lantstool](https://app.lantstool.dev/import/gh/lantstool/examples.near-protocol/main/docs/2.build/5.primitives/linkdrop/create-near-drop.json)</p>
-    <Github language="json"url="https://github.com/lantstool/examples.near-protocol/blob/main/docs/2.build/5.primitives/linkdrop/create-near-drop.json"  />
+    <Github language="json" url="https://github.com/lantstool/examples.near-protocol/blob/main/docs/2.build/5.primitives/linkdrop/create-near-drop.json"  />
   </TabItem>
 </Tabs>
 
