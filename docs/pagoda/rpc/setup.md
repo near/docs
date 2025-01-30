@@ -126,7 +126,7 @@ getState(ACCOUNT_ID);
 ```
 
 :::info
-All JavaScript code snippets require a `near` object. For examples of how to instantiate, [click here](../../4.tools/near-api.md#connecting-to-near-connect).
+All JavaScript code snippets require a `near` object. For examples of how to instantiate, [click here](../../4.tools/near-api.md#connect).
 :::
 
 ## Rust Setup
