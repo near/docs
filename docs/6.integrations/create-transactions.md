@@ -289,7 +289,7 @@ const publicKey = keyPair.getPublicKey();
 
 - A unique number or `nonce` is required for each transaction signed with an access key.
 - To ensure a unique number is created for each transaction, the current `nonce` should be queried and then incremented by 1.
-- Current nonce can be retrieved using the `provider` we [created earlier](#setting-up-a-connection-to-near).
+- Current nonce can be retrieved using the `provider` we [created earlier](#setting-up-a-connection-to-near-1).
 
 ```js
 const accessKey = await provider.query(
