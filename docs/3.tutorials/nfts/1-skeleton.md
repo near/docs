@@ -65,7 +65,7 @@ Here is a brief description of what each source file is responsible for:
 | [mint.rs](#mintrs)               | Contains token minting logic                                                    |
 | [nft_core.rs](#nft_corers)       | Core logic that allows you to transfer NFTs between users.                      |
 | [royalty.rs](#royaltyrs)         | Contains payout-related functions                                               |
-| [events.rs](#events)             | Contains events related structures                                              |
+| [events.rs](#eventsrs)             | Contains events related structures                                              |
 
 :::tip
 Explore the code in our [GitHub repository](https://github.com/near-examples/nft-tutorial/).

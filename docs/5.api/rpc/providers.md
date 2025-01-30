@@ -19,7 +19,7 @@ If you want to use a custom RPC provider with NEAR Wallet Selector, [check this 
 | -------------------------------------------------------------------------- | ------------------------------------------------------------ |
 | [NEAR.org (deprecated)](setup.md)                                          | `https://rpc.mainnet.near.org`                               |
 | [1RPC](https://docs.1rpc.io/overview/about-1rpc)                           | `https://1rpc.io/near`                                       |
-| [All That Node](https://docs.allthatnode.com/protocols/near/)              | `https://near-mainnet-rpc.allthatnode.com:3030`              |
+| [All That Node](https://www.allthatnode.com/protocol/near.dsrv)            | `https://near-mainnet-rpc.allthatnode.com:3030`              |
 | [ankr.com](https://www.ankr.com/docs/rpc-service/chains/chains-list/#near) | `https://rpc.ankr.com/near`                                  |
 | [BlockPI Network](https://blockpi.io)                                      | `https://near.blockpi.network/v1/rpc/public`                 |
 | [dRPC](https://drpc.org/)                                                  | `https://near.drpc.org`                                      |
