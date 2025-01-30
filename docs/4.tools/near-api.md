@@ -117,7 +117,7 @@ To allow users to login into your web application using a wallet you will need t
   <TabItem value="js" label="🌐 JavaScript">
 
   The object returned from `connect` is your entry-point for all commands in the API.
-  To transactions you'll need a [`KeyStore`](#signers).
+  To transactions you'll need a [`KeyStore`](#key-handlers-stores--signers).
 
   <Github fname="send-tokens.js" language="javascript"
     url="https://github.com/PiVortex/near-api-examples/tree/main/javascript/examples/send-tokens.js#L17-L22"

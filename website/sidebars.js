@@ -567,36 +567,6 @@ const sidebar = {
     "api/rpc/transactions",
     "api/rpc/maintenance-windows",
   ],
-  "pagoda": [
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> PAGODA CONSOLE </small></b></span>"
-    },
-    {
-      "Pagoda RPC": [
-        "pagoda/rpc/intro",
-        "pagoda/rpc/get-keys",
-        "pagoda/rpc/setup",
-        "pagoda/rpc/stats",
-      ]
-    },
-    {
-      "Enhanced API": [
-        "pagoda/rpc/api",
-      ]
-    },
-    {
-      "Alerts & Triggers": [
-        "pagoda/alerts/intro",
-        "pagoda/alerts/setup",
-        "pagoda/alerts/webhooks",
-      ]
-    },
-  ],
   "exchanges": [
     {
       "Integration": [

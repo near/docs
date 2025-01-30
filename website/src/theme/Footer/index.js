@@ -191,11 +191,6 @@ function Footer() {
                       Runtime
                     </a>
                   </li>
-                  <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/concepts/web3/intro">
-                      Web3 Intro
-                    </a>
-                  </li>
                 </ul>
               </div>
               <div className="col sm:w-1/3 mt-50">
@@ -442,11 +437,6 @@ function Footer() {
                     >
                       Startup Accelerator
                     </a>
-                  </li>
-                  <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                  <a href="https://wiki.near.org" target="_blank" rel="noopener noreferrer">
-                    Wiki
-                  </a>
                   </li>
                   <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-6804">
                     <a href="https://gov.near.org" target="_blank" rel="noopener noreferrer">Forum</a>

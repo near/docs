@@ -78,13 +78,15 @@ We provide code to derive the address, as it's a complex process that involves m
 
 </Tabs>
 
-:::tip
-
 We recommend hardcoding the derivation paths in your application to ensure the signature request is made to the correct account
 
-- **v1.signer-prod.testnet** (testnet): `secp256k1:4NfTiv3UsGahebgTaHyD9vF8KYKMBnfd6kh94mK6xv8fGBiJB8TBtFMP5WWXz6B89Ac1fbpzPwAvoyQebemHFwx3`
+:::tip
 
-- **v1.signer** (mainnet): `secp256k1:3tFRbMqmoa6AAALMrEFAYCEoHcqKxeW38YptwowBVBtXK1vo36HDbUWuR6EZmoK4JcH6HDkNMGGqP1ouV7VZUWya`
+Here you can find MPC service public keys:
+
+- **v1.signer-prod.testnet** ([testnet](https://testnet.nearblocks.io/address/v1.signer-prod.testnet)): `secp256k1:4NfTiv3UsGahebgTaHyD9vF8KYKMBnfd6kh94mK6xv8fGBiJB8TBtFMP5WWXz6B89Ac1fbpzPwAvoyQebemHFwx3`
+
+- **v1.signer** ([mainnet](https://nearblocks.io/address/v1.signer)): `secp256k1:3tFRbMqmoa6AAALMrEFAYCEoHcqKxeW38YptwowBVBtXK1vo36HDbUWuR6EZmoK4JcH6HDkNMGGqP1ouV7VZUWya`
 
 :::
 
