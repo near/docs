@@ -191,11 +191,6 @@ function Footer() {
                       Runtime
                     </a>
                   </li>
-                  <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/concepts/web3/intro">
-                      Web3 Intro
-                    </a>
-                  </li>
                 </ul>
               </div>
               <div className="col sm:w-1/3 mt-50">
