@@ -3,7 +3,7 @@ id: fastnear
 title: FastNEAR
 ---
 
-[FastNEAR](https://fastnear.com/services) allows to easily query the NEAR blockchain to get an account's assets, map keys into account IDs, explore a block's transactions, etc.
+[FastNEAR](https://fastnear.com/) allows to easily query the NEAR blockchain to get an account's assets, map keys into account IDs, explore a block's transactions, etc.
 
 Possible use cases include:
 - Querying all assets of an account (including fungible and non-fungible tokens)

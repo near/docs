@@ -438,11 +438,6 @@ function Footer() {
                       Startup Accelerator
                     </a>
                   </li>
-                  <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                  <a href="https://wiki.near.org" target="_blank" rel="noopener noreferrer">
-                    Wiki
-                  </a>
-                  </li>
                   <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-6804">
                     <a href="https://gov.near.org" target="_blank" rel="noopener noreferrer">Forum</a>
                   </li>
