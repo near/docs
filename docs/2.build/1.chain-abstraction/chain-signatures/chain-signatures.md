@@ -193,7 +193,7 @@ In Ethereum, the signature is formatted by concatenating the `r`, `s`, and `v` v
 <TabItem value="₿ Bitcoin">
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/services/bitcoin.js"
-      start="86" end="99" />
+      start="120" end="172" />
 
 In Bitcoin, the signature is formatted by concatenating the `r` and `s` values returned by the contract.
 
@@ -218,7 +218,7 @@ Once we have reconstructed the signature, we can relay it to the corresponding n
 <TabItem value="₿ Bitcoin">
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/services/bitcoin.js"
-      start="120" end="133" />
+      start="189" end="202" />
 
 </TabItem>
 
