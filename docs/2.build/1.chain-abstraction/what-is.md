@@ -22,7 +22,7 @@ To achieve this goal and enable hassle-free access to a wider range of crypto as
 
 You can see how these technologies interact together in the following high-level diagram:
 
-![Chain Abstraction Stack](/docs/assets/chain-abstract-1.png)
+![Chain Abstraction Stack](/docs/assets/chain-abstract-1.svg)
 _Chain Abstraction Stack high-level diagram_
  
 - The [intent layer](#intent-layer) serves as a foundational framework for user requests.
