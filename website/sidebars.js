@@ -79,6 +79,17 @@ const sidebar = {
             "concepts/abstraction/chain-signatures",
             "build/chain-abstraction/chain-signatures/getting-started",
             'build/chain-abstraction/chain-signatures/chain-signatures',
+            {
+              "Implementing Contract Logic": [
+                {
+                  "Controlling Existing NEAR Accounts": [
+                    "build/chain-abstraction/chain-signatures/chain-signatures-contract/controlling-near-accounts/introduction",
+                    "build/chain-abstraction/chain-signatures/chain-signatures-contract/controlling-near-accounts/contract",
+                    "build/chain-abstraction/chain-signatures/chain-signatures-contract/controlling-near-accounts/scripts",
+                  ]
+                },
+              ]
+            },
             // 'build/chain-abstraction/nft-chain-keys',
           ]
         },
