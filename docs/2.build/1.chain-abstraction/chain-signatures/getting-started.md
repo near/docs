@@ -43,9 +43,7 @@ The client constructs the foreign transaction to be signed, which varies dependi
 
 :::tip
 
-Library to construct transactions for different chains inside Near contracts and Rust clients.
-
-https://github.com/near/omni-transaction-rs
+You can use the [Omni Transaction](https://github.com/near/omni-transaction-rs) Rust library to build transactions easily for different blockchains (like Bitcoin and Ethereum) inside NEAR contracts and Rust clients.
 
 :::
 
