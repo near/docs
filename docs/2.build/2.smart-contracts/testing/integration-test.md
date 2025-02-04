@@ -1,7 +1,6 @@
 ---
 id: integration-test
 title: Integration Tests
-#sidebar_label: 🥼 Integration Test
 ---
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 import Tabs from '@theme/Tabs';
@@ -33,10 +32,9 @@ NEAR Workspaces allows you to write tests once, and run them either on `testnet`
 <Tabs groupId="code-tabs">
   <TabItem value="rust" label="🦀 Rust" default>
 
-  ```rust
-  let sandbox = near_workspaces::sandbox().await?;
-  let account = sandbox.dev_create_account().await?;
-  ```
+  <Github fname="basics.rs" language="rust"
+      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
+      start="15" end="19" />
 
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
@@ -67,16 +65,9 @@ NEAR Workspaces allows you to write tests once, and run them either on `testnet`
 <Tabs groupId="code-tabs">
   <TabItem value="rust" label="🦀 Rust" default>
 
-  ```rust
-  let sandbox = near_workspaces::sandbox().await?;
-  let root = sandbox.root_account().unwrap();
-  let alice = root
-        .create_subaccount("alice")
-        .initial_balance(NearToken::from_near(1))
-        .transact()
-        .await?
-        .into_result()?;
-  ```
+  <Github fname="basics.rs" language="rust"
+      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
+      start="31" end="44" />
 
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
@@ -107,14 +98,9 @@ NEAR Workspaces allows you to write tests once, and run them either on `testnet`
 <Tabs groupId="code-tabs">
   <TabItem value="rust" label="🦀 Rust" default>
 
-  ```rust
-  let sandbox = near_workspaces::sandbox().await?;
-
-  let account_id = "test-account".parse().unwrap();
-  let secret_key = SecretKey::from_random(KeyType::ED25519);
-
-  let account = Account::from_secret_key(account_id, secret_key, &sandbox);
-  ```
+  <Github fname="basics.rs" language="rust"
+      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
+      start="53" end="60" />
 
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
@@ -148,7 +134,18 @@ NEAR Workspaces allows you to write tests once, and run them either on `testnet`
 
 ### Using Credentials From File
 
-Loading creadentials from the local disk.
+<Tabs groupId="code-tabs">
+  <TabItem value="rust" label="🦀 Rust" default>
+
+  <Github fname="basics.rs" language="rust"
+      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
+      start="69" end="73" />
+
+  </TabItem>
+  <TabItem value="js" label="🌐 JavaScript">
+
+  </TabItem>
+</Tabs>
 
 ---
 
@@ -159,9 +156,9 @@ Loading creadentials from the local disk.
 <Tabs groupId="code-tabs">
   <TabItem value="rust" label="🦀 Rust" default>
 
-  ```rust
-  let contract_wasm = near_workspaces::compile_project("./").await?;
-  ```
+  <Github fname="basics.rs" language="rust"
+      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
+      start="82" end="87" />
 
   :::tip
   You don't need to assert compiling process everytime. You can use `?` operator to get the result as `Vec<u8>` without dealing with `Result<Vec<u8>>, Error>` type. That way you can directly use this vector to deploy the wasm file into account. Your test will still fail if compiling process fails.
@@ -199,16 +196,9 @@ Loading creadentials from the local disk.
 <Tabs groupId="code-tabs">
   <TabItem value="rust" label="🦀 Rust" default>
 
-  ```rust
-  let artifact_path = "target/near/hello_rs.wasm";
-
-  let contract_wasm = std::fs::read(artifact_path)
-      .expect(format!("Could not read WASM file from {}", artifact_path).as_str());
-
-  let sandbox = near_workspaces::sandbox().await?;
-  let contract = sandbox.dev_deploy(&contract_wasm).await?;
-  ```
-
+  <Github fname="basics.rs" language="rust"
+      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
+      start="94" end="101" />
 
   :::tip
   The same as in the case of compilation wasm from code, you don't need to assert reading file process everytime. You can use `expect` method to get the reading file result as `Vec<u8>` and provide error message as a parameter. Your test will still fail if compiling process fails.
@@ -249,10 +239,9 @@ Loading creadentials from the local disk.
 <Tabs groupId="code-tabs">
   <TabItem value="rust" label="🦀 Rust" default>
 
-  ```rust
-  let sandbox = near_workspaces::sandbox().await?;
-  let contract = sandbox.dev_deploy(&contract_wasm).await?;
-  ```
+  <Github fname="basics.rs" language="rust"
+      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
+      start="108" end="114" />
 
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
@@ -286,11 +275,9 @@ Loading creadentials from the local disk.
 <Tabs groupId="code-tabs">
   <TabItem value="rust" label="🦀 Rust" default>
 
-  ```rust
-  let sandbox = near_workspaces::sandbox().await?;
-  let account = sandbox.dev_create_account().await?;
-  let contract = account.deploy(&contract_wasm).await?.unwrap();
-  ```
+  <Github fname="basics.rs" language="rust"
+      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
+      start="126" end="133" />
 
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
@@ -322,6 +309,33 @@ Loading creadentials from the local disk.
 
 Show contract's logs.
 
+<Tabs groupId="code-tabs">
+  <TabItem value="rust" label="🦀 Rust" default>
+
+  Use `println` method when you want to see debug information from your code.
+
+  <Github fname="basics.rs" language="rust"
+      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
+      start="15" end="19" />
+
+  </TabItem>
+  <TabItem value="js" label="🌐 JavaScript">
+
+  ```js
+  const balance = await account.balance();
+
+  console.log('balance: ', balance);
+  // balance:  {
+  //   total: <BN: 52b7d2dcc80cd2e4000000>,
+  //   stateStaked: <BN: 62a992e53a0af00000>,
+  //   staked: <BN: 0>,
+  //   available: <BN: 52b77033352798d9100000>
+  // }
+  ```
+
+  </TabItem>
+</Tabs>
+
 ---
 
 ## Account Balance
@@ -329,13 +343,9 @@ Show contract's logs.
 <Tabs groupId="code-tabs">
   <TabItem value="rust" label="🦀 Rust" default>
 
-  ```rust
-  let account_details = account
-      .view_account()
-      .await
-      .expect("Account has to have some balance");
-  // AccountDetails { balance: NearToken { inner: 100000000000000000000000 }, locked: NearToken { inner: 0 }, code_hash: 11111111111111111111111111111111, storage_usage: 182, storage_paid_at: 0 }
-  ```
+  <Github fname="basics.rs" language="rust"
+      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
+      start="148" end="154" />
 
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
@@ -362,85 +372,35 @@ Check an account's balance, explaining how users also expend money on gas.
 
 ---
 
-## Spooning Contracts
+## Transactions
 
-[Spooning a blockchain](https://coinmarketcap.com/alexandria/glossary/spoon-blockchain) is copying the data from one network into a different network. NEAR Workspaces makes it easy to copy data from Mainnet or Testnet contracts into your local Sandbox environment:
+### Call
+
+Make a call, showing how to deserialize the result.
 
 <Tabs groupId="code-tabs">
+  <TabItem value="rust" label="🦀 Rust" default>
 
-<TabItem value="rust" label="🦀 Rust" default>
+  <Github fname="basics.rs" language="rust"
+      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
+      start="163" end="175" />
 
-Specify the contract name from `testnet` you want to be pulling, and a specific block ID referencing back to a specific time. (Just in case the contract you're referencing has been changed or updated)
+  </TabItem>
+  <TabItem value="js" label="🌐 JavaScript">
 
-```rust
-const CONTRACT_ACCOUNT: &str = "contract_account_name_on_testnet.testnet";
-const BLOCK_HEIGHT: BlockHeight = 12345;
-```
+  ```js
+  test('changes the greeting', async (t) => {
+    const { root, contract } = t.context.accounts;
+    await root.call(contract, 'set_greeting', { greeting: 'Howdy' });
+    
+    // ...
+  });
+  ```
 
-Create a function called `pull_contract` which will pull the contract's `.wasm` file from the chain and deploy it onto your local sandbox. You'll have to re-initialize it with all the data to run tests.
-
-```rust
-async fn pull_contract(owner: &Account, worker: &Worker<Sandbox>) -> anyhow::Result<Contract> {
-    let testnet = workspaces::testnet_archival();
-    let contract_id: AccountId = CONTRACT_ACCOUNT.parse()?;
-```
-
-This next line will actually pull down the relevant contract from testnet and set an initial balance on it with 1000 NEAR.
-
-```rust
-    let contract = worker
-        .import_contract(&contract_id, &testnet)
-        .initial_balance(parse_near!("1000 N"))
-        .block_height(BLOCK_HEIGHT)
-        .transact()
-        .await?;
-```
-
-Following that you'll have to init the contract again with your metadata.
-This is because the contract's data is too big for the RPC service to pull down. (limits are set to 50Mb)
-
-```rust
-    owner
-        .call(&worker, contract.id(), "init_method_name")
-        .args_json(serde_json::json!({
-            "arg1": value1,
-            "arg2": value2,
-        }))?
-        .transact()
-        .await?;
-    Ok(contract)
-}
-```
-
-</TabItem>
-
-<TabItem value="js" label="🌐 JavaScript">
-
-```ts
-const refFinance = await root.importContract({
-  mainnetContract: 'v2.ref-finance.near',
-  blockId: 50_000_000,
-  withData: true,
-});
-```
-
-This would copy the Wasm bytes and contract state from [v2.ref-finance.near](https://nearblocks.io/address/v2.ref-finance.near) to your local blockchain as it existed at block `50_000_000`. This makes use of Sandbox's special [patch state](#patch-state-on-the-fly) feature to keep the contract name the same, even though the top level account might not exist locally (note that this means it only works in Sandbox testing mode). You can then interact with the contract in a deterministic way the same way you interact with all other accounts created with near-workspaces.
-
-:::note
-
-`withData` will only work out-of-the-box if the contract's data is 50kB or less. This is due to the default configuration of RPC servers; see [the "Heads Up" note here](/api/rpc/contracts#view-contract-state).
-
-:::
-
-See a [TypeScript example of spooning](https://github.com/near/workspaces-js/blob/main/__tests__/05.spoon-contract-to-sandbox.ava.ts) contracts.
-
-</TabItem>
-
+  </TabItem>
 </Tabs>
 
----
-
-## Transactions
+<hr class="subsection" />
 
 ### View
 
@@ -449,20 +409,9 @@ Make a view, showing how to deserialize the result.
 <Tabs groupId="code-tabs">
   <TabItem value="rust" label="🦀 Rust" default>
 
-  ```rust
-  let sandbox = near_workspaces::sandbox().await?;
-  let ft_wasm = near_workspaces::compile_project("./tests/contracts/ft").await?;
-  let ft_contract = sandbox.dev_deploy(&ft_wasm).await?;
-
-  let account_ft_balance = ft_contract
-      .call("ft_balance_of")
-      .args_json((account.id(),))
-      .view()
-      .await?
-  // ViewResultDetails { result: [34, 49, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 34], logs: [] }
-      .json::<String>()?;
-  // "1000000000000000000000000"
-  ```
+  <Github fname="basics.rs" language="rust"
+      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
+      start="184" end="207" />
 
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
@@ -480,142 +429,103 @@ Make a view, showing how to deserialize the result.
   </TabItem>
 </Tabs>
 
-<hr class="subsection" />
-
-### Call
-
-Make a call, showing how to deserialize the result.
-
-<Tabs groupId="code-tabs">
-  <TabItem value="rust" label="🦀 Rust" default>
-
-  ```rust
-  let create_drop_result_1 = creator
-      .call(contract.id(), "create_ft_drop")
-      .args_json(json!({"public_keys": public_keys, "ft_contract": ft_contract.id(), "amount_per_drop": amount_per_drop}))
-      .deposit(NearToken::from_millinear(407))
-      .gas(ONE_HUNDRED_TGAS)
-      .transact()
-      .await?;
-  // ExecutionFinalResult { total_gas_burnt: NearGas { inner: 3656217148497 }, transaction: ExecutionOutcome { transaction_hash: 3BkCgtVY439XK2VZb27mjkeFoYD8wFBgpcqoG676RuaV, block_hash: 8pSnipmGTkJwmqoyRAZ4vk2ArRZmXS5Px5qQowcCgHnr, logs: [], receipt_ids: [FyZzrThqEJUdi7YmFK2p9LyD7a1Xp8v5ojREHpBG2EUa], gas_burnt: NearGas { inner: 316737936130 }, tokens_burnt: NearToken { inner: 31673793613000000000 }, executor_id: AccountId("creator.test.near"), status: SuccessReceiptId(FyZzrThqEJUdi7YmFK2p9LyD7a1Xp8v5ojREHpBG2EUa) }, receipts: [ExecutionOutcome { transaction_hash: FyZzrThqEJUdi7YmFK2p9LyD7a1Xp8v5ojREHpBG2EUa, block_hash: 77dYZjU1hLFijdf9R8GDaJZp8RT8ob3xN1Qed6NaY32S, logs: [], receipt_ids: [JE8MUvyoSRGzqtSbEqxRYmDu55dQf34meBnvDkRjNsF6, vEEZU67c8C9HMFeaJ3hAE1b3RaS3RbY8CYegh4eHgSD, 4z7a4oXZCzU6rMiGF83KCHZkKjfYXT3pUD8uqesFXf12], gas_burnt: NearGas { inner: 2236404450782 }, tokens_burnt: NearToken { inner: 223640445078200000000 }, executor_id: AccountId("contract.test.near"), status: SuccessValue('0') }, ExecutionOutcome { transaction_hash: JE8MUvyoSRGzqtSbEqxRYmDu55dQf34meBnvDkRjNsF6, block_hash: 4Mm4khnZ5gxdxhL2Ef9GVScnskejd88mCNjzJ4mnWJhu, logs: [], receipt_ids: [Gw83uCCSn5sjN7dieJrkpNCh9LvK2jhVYaYbw2uKS2g1], gas_burnt: NearGas { inner: 223182562500 }, tokens_burnt: NearToken { inner: 22318256250000000000 }, executor_id: AccountId("creator.test.near"), status: SuccessValue('') }, ExecutionOutcome { transaction_hash: Gw83uCCSn5sjN7dieJrkpNCh9LvK2jhVYaYbw2uKS2g1, block_hash: 5vicDRWNzF3jtxpwLxDCmqT7X6zr1YgbhQSqgGGUHrS8, logs: [], receipt_ids: [], gas_burnt: NearGas { inner: 223182562500 }, tokens_burnt: NearToken { inner: 0 }, executor_id: AccountId("creator.test.near"), status: SuccessValue('') }, ExecutionOutcome { transaction_hash: vEEZU67c8C9HMFeaJ3hAE1b3RaS3RbY8CYegh4eHgSD, block_hash: 4Mm4khnZ5gxdxhL2Ef9GVScnskejd88mCNjzJ4mnWJhu, logs: [], receipt_ids: [GxUPsdqNke6eGAvVqL56drm1qWBMbsXG8f7Qq4QK961p], gas_burnt: NearGas { inner: 210344511585 }, tokens_burnt: NearToken { inner: 21034451158500000000 }, executor_id: AccountId("contract.test.near"), status: SuccessValue('') }, ExecutionOutcome { transaction_hash: GxUPsdqNke6eGAvVqL56drm1qWBMbsXG8f7Qq4QK961p, block_hash: 5vicDRWNzF3jtxpwLxDCmqT7X6zr1YgbhQSqgGGUHrS8, logs: [], receipt_ids: [], gas_burnt: NearGas { inner: 223182562500 }, tokens_burnt: NearToken { inner: 0 }, executor_id: AccountId("creator.test.near"), status: SuccessValue('') }, ExecutionOutcome { transaction_hash: 4z7a4oXZCzU6rMiGF83KCHZkKjfYXT3pUD8uqesFXf12, block_hash: 4Mm4khnZ5gxdxhL2Ef9GVScnskejd88mCNjzJ4mnWJhu, logs: [], receipt_ids: [], gas_burnt: NearGas { inner: 223182562500 }, tokens_burnt: NearToken { inner: 0 }, executor_id: AccountId("creator.test.near"), status: SuccessValue('') }], status: SuccessValue('0') }
-  assert!(create_drop_result_1.is_success());
-
-  let drop_id: serde_json::Value = create_drop_result_1.json().unwrap();
-  // Number(0)
-  ```
-
-  </TabItem>
-  <TabItem value="js" label="🌐 JavaScript">
-
-  ```js
-  test('changes the greeting', async (t) => {
-    const { root, contract } = t.context.accounts;
-    await root.call(contract, 'set_greeting', { greeting: 'Howdy' });
-    
-    // ...
-  });
-  ```
-
-  </TabItem>
-</Tabs>
-
 ---
 
 ## Patch State on the Fly
 
 In Sandbox-mode, you can add or modify any contract state, contract code, account or access key with `patchState`.
 
-:::tip
-
 You can alter contract code, accounts, and access keys using normal transactions via the `DeployContract`, `CreateAccount`, and `AddKey` [actions](https://nomicon.io/RuntimeSpec/Actions#addkeyaction). But this limits you to altering your own account or sub-account. `patchState` allows you to perform these operations on any account.
-
-:::
-
-Keep in mind that you cannot perform arbitrary mutation on contract state with transactions since transactions can only include contract calls that mutate state in a contract-programmed way. For example, with an NFT contract, you can perform some operation with NFTs you have ownership of, but you cannot manipulate NFTs that are owned by other accounts since the smart contract is coded with checks to reject that. This is the expected behavior of the NFT contract. However, you may want to change another person's NFT for a test setup. This is called "arbitrary mutation on contract state" and can be done with `patchState`:
 
 <Tabs groupId="code-tabs">
 
-<TabItem value="rust" label="🦀 Rust" default>
+  <TabItem value="rust" label="🦀 Rust" default>
 
-```rust
-    // Grab STATE from the testnet status_message contract. This contract contains the following data:
-    //   get_status(dev-20211013002148-59466083160385) => "hello from testnet"
-    let (testnet_contract_id, status_msg) = {
-        let worker = workspaces::testnet().await?;
-        let contract_id: AccountId = TESTNET_PREDEPLOYED_CONTRACT_ID
-            .parse()
-            .map_err(anyhow::Error::msg)?;
-        let mut state_items = worker.view_state(&contract_id, None).await?;
-        let state = state_items.remove(b"STATE".as_slice()).unwrap();
-        let status_msg = StatusMessage::try_from_slice(&state)?;
-        (contract_id, status_msg)
-    };
-    info!(target: "spooning", "Testnet: {:?}", status_msg);
-    // Create our sandboxed environment and grab a worker to do stuff in it:
-    let worker = workspaces::sandbox().await?;
-    // Deploy with the following status_message state: sandbox_contract_id => "hello from sandbox"
-    let sandbox_contract = deploy_status_contract(&worker, "hello from sandbox").await?;
-    // Patch our testnet STATE into our local sandbox:
-    worker
-        .patch_state(
-            sandbox_contract.id(),
-            "STATE".as_bytes(),
-            &status_msg.try_to_vec()?,
-        )
-        .await?;
-    // Now grab the state to see that it has indeed been patched:
-    let status: String = sandbox_contract
-        .view(
-            &worker,
-            "get_status",
-            serde_json::json!({
-                "account_id": testnet_contract_id,
-            })
-            .to_string()
-            .into_bytes(),
-        )
-        .await?
-        .json()?;
-    info!(target: "spooning", "New status patched: {:?}", status);
-    assert_eq!(&status, "hello from testnet");
-```
+  <Github fname="basics.rs" language="rust"
+      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
+      start="230" end="236" />
 
-</TabItem>
+  ```rust
+      // Grab STATE from the testnet status_message contract. This contract contains the following data:
+      //   get_status(dev-20211013002148-59466083160385) => "hello from testnet"
+      let (testnet_contract_id, status_msg) = {
+          let worker = workspaces::testnet().await?;
+          let contract_id: AccountId = TESTNET_PREDEPLOYED_CONTRACT_ID
+              .parse()
+              .map_err(anyhow::Error::msg)?;
+          let mut state_items = worker.view_state(&contract_id, None).await?;
+          let state = state_items.remove(b"STATE".as_slice()).unwrap();
+          let status_msg = StatusMessage::try_from_slice(&state)?;
+          (contract_id, status_msg)
+      };
+      info!(target: "spooning", "Testnet: {:?}", status_msg);
+      // Create our sandboxed environment and grab a worker to do stuff in it:
+      let worker = workspaces::sandbox().await?;
+      // Deploy with the following status_message state: sandbox_contract_id => "hello from sandbox"
+      let sandbox_contract = deploy_status_contract(&worker, "hello from sandbox").await?;
+      // Patch our testnet STATE into our local sandbox:
+      worker
+          .patch_state(
+              sandbox_contract.id(),
+              "STATE".as_bytes(),
+              &status_msg.try_to_vec()?,
+          )
+          .await?;
+      // Now grab the state to see that it has indeed been patched:
+      let status: String = sandbox_contract
+          .view(
+              &worker,
+              "get_status",
+              serde_json::json!({
+                  "account_id": testnet_contract_id,
+              })
+              .to_string()
+              .into_bytes(),
+          )
+          .await?
+          .json()?;
+      info!(target: "spooning", "New status patched: {:?}", status);
+      assert_eq!(&status, "hello from testnet");
+  ```
 
-<TabItem value="js" label="🌐 JavaScript">
+  </TabItem>
 
-```js
-    const {contract, ali} = t.context.accounts;
-    // Contract must have some state for viewState & patchState to work
-    await ali.call(contract, 'set_status', {message: 'hello'});
-    // Get state
-    const state = await contract.viewState();
-    // Get raw value
-    const statusMessage = state.get('STATE', {schema, type: StatusMessage});
-    // Update contract state
-    statusMessage.records.push(
-      new BorshRecord({k: 'alice.near', v: 'hello world'}),
-    );
-    // Serialize and patch state back to runtime
-    await contract.patchState(
-      'STATE',
-      borsh.serialize(schema, statusMessage),
-    );
-    // Check again that the update worked
-    const result = await contract.view('get_status', {
-      account_id: 'alice.near',
-    });
-    t.is(result, 'hello world');
-```
+  <TabItem value="js" label="🌐 JavaScript">
 
-To see a complete example of how to do this, see the [patch-state test](https://github.com/near/workspaces-js/blob/main/__tests__/02.patch-state.ava.ts).
+  ```js
+      const {contract, ali} = t.context.accounts;
+      // Contract must have some state for viewState & patchState to work
+      await ali.call(contract, 'set_status', {message: 'hello'});
+      // Get state
+      const state = await contract.viewState();
+      // Get raw value
+      const statusMessage = state.get('STATE', {schema, type: StatusMessage});
+      // Update contract state
+      statusMessage.records.push(
+        new BorshRecord({k: 'alice.near', v: 'hello world'}),
+      );
+      // Serialize and patch state back to runtime
+      await contract.patchState(
+        'STATE',
+        borsh.serialize(schema, statusMessage),
+      );
+      // Check again that the update worked
+      const result = await contract.view('get_status', {
+        account_id: 'alice.near',
+      });
+      t.is(result, 'hello world');
+  ```
 
-</TabItem>
+  To see a complete example of how to do this, see the [patch-state test](https://github.com/near/workspaces-js/blob/main/__tests__/02.patch-state.ava.ts).
+
+  </TabItem>
 
 </Tabs>
 
+:::note
 As an alternative to `patchState`, you can stop the node, dump state at genesis, edit the genesis, and restart the node.
 This approach is more complex to do and also cannot be performed without restarting the node.
+:::
 
 ---
 
@@ -624,33 +534,23 @@ This approach is more complex to do and also cannot be performed without restart
 `workspaces` offers support for forwarding the state of the blockchain to the future. This means contracts which require time sensitive data do not need to sit and wait the same amount of time for blocks on the sandbox to be produced. We can simply just call `worker.fast_forward` to get us further in time:
 
 <Tabs groupId="code-tabs">
-<TabItem value="rust" label="🦀 Rust" default>
+  <TabItem value="rust" label="🦀 Rust" default>
 
-```rust
-#[tokio::test]
-async fn test_contract() -> anyhow::Result<()> {
-    let worker = workspaces::sandbox().await?;
-    let contract = worker.dev_deploy(WASM_BYTES);
-    let blocks_to_advance = 10000;
-    worker.fast_forward(blocks_to_advance);
-    // Now, "do_something_with_time" will be in the future and can act on future time-related state.
-    contract.call(&worker, "do_something_with_time")
-        .transact()
-        .await?;
-}
-```
+  <Github fname="basics.rs" language="rust"
+      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
+      start="252" end="272" />
 
-_[See the full example on Github](https://github.com/near/workspaces-rs/blob/main/examples/src/fast_forward.rs)._
+  _[See the full example on Github](https://github.com/near/workspaces-rs/blob/main/examples/src/fast_forward.rs)._
 
-</TabItem>
+  </TabItem>
 
-<TabItem value="js" label="🌐 JavaScript">
+  <TabItem value="js" label="🌐 JavaScript">
 
-  <Github fname="fast-forward.ava.ts" language="js"
-          url="https://github.com/near/near-workspaces-js/blob/main/__tests__/09.fast-forward.ava.ts"
-          start="33" end="53" />
+    <Github fname="fast-forward.ava.ts" language="js"
+            url="https://github.com/near/near-workspaces-js/blob/main/__tests__/09.fast-forward.ava.ts"
+            start="33" end="53" />
 
-</TabItem>
+  </TabItem>
 
 </Tabs>
 
@@ -665,36 +565,40 @@ NEAR Workspaces is set up so that you can write tests once and run them against 
 * If something seems off in Sandbox mode, you can compare it to testnet
 
 <Tabs groupId="code-tabs">
-<TabItem value="rust" label="🦀 Rust" default>
+  <TabItem value="rust" label="🦀 Rust" default>
 
-    ```rust
-    #[tokio::main]
-    async fn main() -> anyhow::Result<()> {
-      // create a testnet sandbox
-      let sandbox = near_workspaces::testnet().await?;
+  <Github fname="basics.rs" language="rust"
+      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
+      start="279" end="304" />
 
-      let testnet_account = Account::from_secret_key("<account>.testnet".parse().unwrap(), "ed25519:...".parse().unwrap(), &sandbox);
+      ```rust
+      #[tokio::main]
+      async fn main() -> anyhow::Result<()> {
+        // create a testnet sandbox
+        let sandbox = near_workspaces::testnet().await?;
 
-      // Create a random root account
-      let random_id = Utc::now().timestamp().to_string();
-      let root = testnet_account
-          .create_subaccount(&random_id)
-          .initial_balance(NearToken::from_near(50))
-          .transact()
-          .await?
-          .unwrap();
+        let testnet_account = Account::from_secret_key("<account>.testnet".parse().unwrap(), "ed25519:...".parse().unwrap(), &sandbox);
 
-      // Create accounts
-      let alice = create_subaccount(&root, "alice", TEN_NEAR).await?;
-      let bob = create_subaccount(&root, "bob", TEN_NEAR).await?;
-      let auctioneer = create_subaccount(&root, "auctioneer", TEN_NEAR).await?;
-      let contract_account = create_subaccount(&root, "contract", TEN_NEAR).await?;
-    }
-    ```
+        // Create a random root account
+        let random_id = Utc::now().timestamp().to_string();
+        let root = testnet_account
+            .create_subaccount(&random_id)
+            .initial_balance(NearToken::from_near(50))
+            .transact()
+            .await?
+            .unwrap();
 
-:::tip
-If you don't want to create a new account on each iteration, you can simply import multiple accounts using `Account::from_secret_key`
-:::
+        // Create accounts
+        let alice = create_subaccount(&root, "alice", TEN_NEAR).await?;
+        let bob = create_subaccount(&root, "bob", TEN_NEAR).await?;
+        let auctioneer = create_subaccount(&root, "auctioneer", TEN_NEAR).await?;
+        let contract_account = create_subaccount(&root, "contract", TEN_NEAR).await?;
+      }
+      ```
+
+  :::tip
+  If you don't want to create a new account on each iteration, you can simply import multiple accounts using `Account::from_secret_key`
+  :::
 
   </TabItem>
 
@@ -770,6 +674,50 @@ If you don't want to create a new account on each iteration, you can simply impo
     ```
 
   </TabItem>
+
+</Tabs>
+
+---
+
+## Spooning Contracts
+
+[Spooning a blockchain](https://coinmarketcap.com/alexandria/glossary/spoon-blockchain) is copying the data from one network into a different network. NEAR Workspaces makes it easy to copy data from Mainnet or Testnet contracts into your local Sandbox environment:
+
+<Tabs groupId="code-tabs">
+
+  <TabItem value="rust" label="🦀 Rust" default>
+
+  Specify the contract name from `testnet` you want to be pulling, and a specific block ID referencing back to a specific time. (Just in case the contract you're referencing has been changed or updated)
+
+  Create a function called `pull_contract` which will pull the contract's `.wasm` file from the chain and deploy it onto your local sandbox. You'll have to re-initialize it with all the data to run tests. This is because the contract's data is too big for the RPC service to pull down. (limits are set to 50Mb)
+
+  <Github fname="basics.rs" language="rust"
+      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
+      start="330" end="352" />
+
+  </TabItem>
+
+<TabItem value="js" label="🌐 JavaScript">
+
+```ts
+const refFinance = await root.importContract({
+  mainnetContract: 'v2.ref-finance.near',
+  blockId: 50_000_000,
+  withData: true,
+});
+```
+
+This would copy the Wasm bytes and contract state from [v2.ref-finance.near](https://nearblocks.io/address/v2.ref-finance.near) to your local blockchain as it existed at block `50_000_000`. This makes use of Sandbox's special [patch state](#patch-state-on-the-fly) feature to keep the contract name the same, even though the top level account might not exist locally (note that this means it only works in Sandbox testing mode). You can then interact with the contract in a deterministic way the same way you interact with all other accounts created with near-workspaces.
+
+:::note
+
+`withData` will only work out-of-the-box if the contract's data is 50kB or less. This is due to the default configuration of RPC servers; see [the "Heads Up" note here](/api/rpc/contracts#view-contract-state).
+
+:::
+
+See a [TypeScript example of spooning](https://github.com/near/workspaces-js/blob/main/__tests__/05.spoon-contract-to-sandbox.ava.ts) contracts.
+
+</TabItem>
 
 </Tabs>
 
