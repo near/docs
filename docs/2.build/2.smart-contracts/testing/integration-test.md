@@ -67,7 +67,7 @@ NEAR Workspaces allows you to write tests once, and run them either on `testnet`
 
   <Github fname="basics.rs" language="rust"
       url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
-      start="31" end="44" />
+      start="31" end="45" />
 
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
@@ -100,7 +100,7 @@ NEAR Workspaces allows you to write tests once, and run them either on `testnet`
 
   <Github fname="basics.rs" language="rust"
       url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
-      start="53" end="60" />
+      start="54" end="61" />
 
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
@@ -139,7 +139,7 @@ NEAR Workspaces allows you to write tests once, and run them either on `testnet`
 
   <Github fname="basics.rs" language="rust"
       url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
-      start="69" end="73" />
+      start="70" end="74" />
 
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
@@ -158,7 +158,7 @@ NEAR Workspaces allows you to write tests once, and run them either on `testnet`
 
   <Github fname="basics.rs" language="rust"
       url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
-      start="82" end="87" />
+      start="83" end="88" />
 
   :::tip
   You don't need to assert compiling process everytime. You can use `?` operator to get the result as `Vec<u8>` without dealing with `Result<Vec<u8>>, Error>` type. That way you can directly use this vector to deploy the wasm file into account. Your test will still fail if compiling process fails.
@@ -198,7 +198,7 @@ NEAR Workspaces allows you to write tests once, and run them either on `testnet`
 
   <Github fname="basics.rs" language="rust"
       url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
-      start="94" end="101" />
+      start="95" end="102" />
 
   :::tip
   The same as in the case of compilation wasm from code, you don't need to assert reading file process everytime. You can use `expect` method to get the reading file result as `Vec<u8>` and provide error message as a parameter. Your test will still fail if compiling process fails.
@@ -241,7 +241,7 @@ NEAR Workspaces allows you to write tests once, and run them either on `testnet`
 
   <Github fname="basics.rs" language="rust"
       url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
-      start="108" end="114" />
+      start="109" end="115" />
 
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
@@ -277,7 +277,7 @@ NEAR Workspaces allows you to write tests once, and run them either on `testnet`
 
   <Github fname="basics.rs" language="rust"
       url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
-      start="126" end="133" />
+      start="127" end="134" />
 
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
@@ -345,7 +345,7 @@ Show contract's logs.
 
   <Github fname="basics.rs" language="rust"
       url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
-      start="148" end="154" />
+      start="146" end="155" />
 
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
@@ -383,7 +383,7 @@ Make a call, showing how to deserialize the result.
 
   <Github fname="basics.rs" language="rust"
       url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
-      start="163" end="175" />
+      start="164" end="176" />
 
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
@@ -411,7 +411,7 @@ Make a view, showing how to deserialize the result.
 
   <Github fname="basics.rs" language="rust"
       url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
-      start="184" end="207" />
+      start="185" end="209" />
 
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
@@ -443,7 +443,7 @@ You can alter contract code, accounts, and access keys using normal transactions
 
   <Github fname="basics.rs" language="rust"
       url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
-      start="230" end="236" />
+      start="218" end="239" />
 
   ```rust
       // Grab STATE from the testnet status_message contract. This contract contains the following data:
@@ -538,7 +538,7 @@ This approach is more complex to do and also cannot be performed without restart
 
   <Github fname="basics.rs" language="rust"
       url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
-      start="252" end="272" />
+      start="248" end="272" />
 
   _[See the full example on Github](https://github.com/near/workspaces-rs/blob/main/examples/src/fast_forward.rs)._
 
@@ -597,7 +597,7 @@ NEAR Workspaces is set up so that you can write tests once and run them against 
       ```
 
   :::tip
-  If you don't want to create a new account on each iteration, you can simply import multiple accounts using `Account::from_secret_key`
+  If you can create a new account on each iteration as well.
   :::
 
   </TabItem>
@@ -693,7 +693,7 @@ NEAR Workspaces is set up so that you can write tests once and run them against 
 
   <Github fname="basics.rs" language="rust"
       url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
-      start="330" end="352" />
+      start="331" end="353" />
 
   </TabItem>
 
