@@ -82,6 +82,12 @@ const sidebar = {
             // 'build/chain-abstraction/nft-chain-keys',
           ]
         },
+        {
+          "Intents Layer": [
+            "concepts/intents/overview",
+            "concepts/intents/faq",
+          ]
+        },
         'build/chain-abstraction/fastauth-sdk',
         "build/chain-abstraction/data-availability",
       ]
