@@ -14,18 +14,9 @@ Chain abstraction makes blockchain technology invisible to end users while prese
 
 With chain abstraction, both users and developers can seamlessly interact across multiple blockchains without dealing with the underlying complexity. This means a single application can work with Bitcoin, Ethereum, or any other blockchain, while maintaining a simple, unified experience.
 
-## Overview
-
-NEAR's chain abstraction framework consists of three core technologies that work together to create seamless cross-chain experiences:
-
-1. **Intent Layer**: A system where users simply declare what they want to achieve (like "buy this NFT"), and the network figures out how to make it happen.
-
-2. **Chain Signatures**: Enables NEAR smart contracts to securely sign and execute transactions on other blockchains (like Bitcoin or Ethereum).
-
-3. **OmniBridge**: Connects different blockchain networks together, allowing assets and data to flow between them.
-
 :::info Example
 Imagine a digital art marketplace where users can purchase NFTs that exist on different blockchains (Ethereum, Solana, etc.). With chain abstraction, users don't need to:
+
 - Create multiple blockchain wallets
 - Buy different cryptocurrencies for gas fees
 - Understand which blockchain their NFT lives on
@@ -33,34 +24,56 @@ Imagine a digital art marketplace where users can purchase NFTs that exist on di
 They simply browse, click, and buy - the complexity is handled behind the scenes.
 :::
 
-## How It Works
+## Overview
 
-Here's how these technologies work together:
+NEAR's chain abstraction framework consists of three core technologies that work together to create seamless cross-chain experiences:
+
+1. [**Intent / Solver Layer**](#intent--solver-layer): A decentralized system where users express desired outcomes (like "swap Token A for Token B at the best price") without specifying technical details. A network of solvers then competes to fulfill these intents optimally, handling complex cross-chain operations behind the scenes.
+
+2. **Chain Signatures**: Enables NEAR smart contracts to securely sign and execute transactions on other blockchains (like Bitcoin or Ethereum), allowing cross-chain interactions.
+
+3. **OmniBridge**: Connects different blockchain networks together, allowing assets and data to flow between them, ensuring transactions are executed smoothly across chains.
 
 ![Chain Abstraction Stack](/docs/assets/chain-abstract-1.svg)
 _Chain Abstraction Stack high-level diagram_
 
-- The [intent layer](#intent-layer) serves as a foundational framework for user requests.
-- [Chain signatures](#chain-signatures) empower smart contracts to sign transactions across different assets and chains.
-- [Omnibridge](#omnibridge) facilitates communication and state transitions between various blockchains, ensuring that transactions are executed smoothly.
+### Intent / Solver Layer
 
-### Intent layer
+The Intent / Solver Layer (aka [NEAR Intents](https://pages.near.org/blog/introducing-near-intents/)) are a new type of transaction that allow information, requests, assets, and actions to be exchanged between AI agents, services, and end users.
 
-In NEAR, an intent can be thought of as a high-level declaration of what a user wants to achieve on the blockchain. Solvers are active market participants that fill in the intents issued by users.
-The intent layer provides a message bus for communication between solvers and users.
+This represents a paradigm shift in how users and AI agents interact with blockchain networks. Instead of directly executing complex transactions across multiple chains, users simply declare what they want to achieve, and the network determines how to make it happen.
 
-In summary, the intent layer allow users to express what they want to accomplish (their intention) while the network figures out the best way to make it happen.
-Developers building on NEAR can use intents to create more user-friendly interactions, as it abstracts some of the complexities of directly interacting with smart contracts.
+Here's how it works:
 
-NEAR intents work by:
-
-- Expressing needs: Define your `intent`.
-- Network response: NEAR finds the optimal solution. (Solvers)
-- Seamless execution: Tasks are completed when parameters are met.
-- Collaboration: Agents work together if needed.
+1. **Users/Agents Submit Intents**: Express desired outcomes without specifying the technical details (e.g., "Get the best price for my Bitcoin across all DEXs and CEXs")
+2. **Solver Network Competes**: A decentralized network of solvers (both AI agents and traditional market makers) compete to fulfill these intents optimally
+3. **Cross-Chain Execution**: The best solution is automatically executed, potentially spanning multiple chains and services
 
 :::info Example
-A user creates a wishlist, and let NEAR Intents find the item, add it to the cart, and pay for it as soon as it goes on sale.
+Instead of a user having to:
+
+1. Bridge assets between chains
+2. Find the best trading venues
+3. Execute multiple transactions
+4. Handle different wallet requirements
+
+They simply submit an intent: "Swap Token A for Token B at the best price"
+The Intent Layer handles all complexity across Web2 and Web3 behind the scenes.
+:::
+
+For developers, the Intent Layer provides:
+
+- A unified framework for building cross-chain applications
+- Access to both AI agents and traditional solvers for transaction optimization
+- Built-in liquidity aggregation across DeFi and CeFi
+- Support for complex use cases beyond simple swaps, including:
+  - Cross-chain stablecoin operations
+  - DeFi programmability for non-smart contract assets
+  - Account-based trading (AccountFi)
+  - AI agent interactions and negotiations
+
+:::info
+NEAR Intents are designed to power both traditional DeFi operations and the emerging AI economy, creating a unified transaction framework for Web2 and Web3 interactions.
 :::
 
 ### Chain Signatures
