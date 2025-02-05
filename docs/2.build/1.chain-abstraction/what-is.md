@@ -8,110 +8,122 @@ import {CodeTabs, Language, Github} from "@site/src/components/codetabs";
 
 ![img](/docs/assets/welcome-pages/chain-abstraction-landing.png)
 
-`Chain abstraction` is about **abstracting away** the complexities of **blockchain technology** from end-user experiences while maintaining its benefits. Users should not have to worry about which blockchain they are using or whether they are using one at all. NEAR Protocol advances this vision by introducing a framework that transcends single-platform development, enabling applications to control assets across any blockchain.
+# What is Chain Abstraction?
+
+Blockchain development today faces a critical challenge: users need to understand complex blockchain concepts, manage multiple wallets, and deal with different networks just to use basic applications. Chain abstraction solves this by making blockchain technology invisible to end users while preserving all of the underlying benefits.
+
+## Why Chain Abstraction Matters
+
+For **developers**, chain abstraction means:
+
+- Building cross-chain applications without managing multiple blockchain integrations
+- Focusing on application logic instead of blockchain complexity
+- Reaching users regardless of their preferred blockchain network
+
+For **users**, it means:
+
+- Using blockchain applications as easily as traditional web apps
+- No need to understand which blockchain they're interacting with or if they are even using one
+- A seamless experience across different networks and tokens
 
 :::info Example
-As an example, using Chain Abstraction a web app could allow users to collect NFTs across different chains, without users ever needing to explicitly create a blockchain account or acquire crypto tokens.
+Imagine building a digital art marketplace where users can purchase NFTs from different blockchains (Ethereum, Solana, etc.). Without chain abstraction, you'd need to:
+
+- Implement multiple blockchain connections
+- Handle different wallet types
+- Manage cross-chain transfers
+- Build complex UIs to explain blockchain concepts
+
+With chain abstraction, both you and your users just focus on the core experience: browsing and trading art. All blockchain complexity is handled automatically behind the scenes.
 :::
 
-## Chain Abstraction: The Holistic View
+## Overview
 
-The chain abstraction framework allows to create a **seamless** user experience, in which users can use blockchain-based applications without realizing they are using a blockchain.
+NEAR's chain abstraction framework consists of three core technologies that work together to create seamless cross-chain experiences:
 
-To achieve this goal and enable hassle-free access to a wider range of crypto assets, smart contracts, and blockchain states, the chain abstraction framework leverages a trio of key technologies: the [intent layer](#intent-layer), [chain signatures](#chain-signatures), and the [omnibridge](#omnibridge).
+1. [**Intent / Solver Layer**](#intent--solver-layer): A decentralized system where users express desired outcomes (like "swap Token A for Token B at the best price") without specifying technical details. A network of solvers then competes to fulfill these intents optimally, handling complex cross-chain operations behind the scenes.
 
-You can see how these technologies interact together in the following high-level diagram:
+2. [**Chain Signatures**](#chain-signatures): Enables NEAR accounts, including smart contracts, to sign and execute transactions on other blockchains (like Bitcoin or Ethereum), allowing cross-chain interactions.
 
-![Chain Abstraction Stack](/docs/assets/chain-abstract-1.svg)
-_Chain Abstraction Stack high-level diagram_
- 
-- The [intent layer](#intent-layer) serves as a foundational framework for user requests.
-- [Chain signatures](#chain-signatures) empower smart contracts to sign transactions across different assets and chains.
-- [Omnibridge](#omnibridge) facilitates communication and state transitions between various blockchains, ensuring that transactions are executed smoothly.
+3. [**OmniBridge**](#omnibridge): A trustless multi-chain asset bridge that combines Chain Signatures for cross-chain transaction execution with a verification layer allowing NEAR smart contracts to confirm transactions on foreign chains. This creates a fully trustless system where NEAR can both initiate and verify cross-chain operations.
 
-### Intent layer
+### Intent / Solver Layer
 
-In NEAR, an intent can be thought of as a high-level declaration of what a user wants to achieve on the blockchain. Solvers are active market participants that fill in the intents issued by users.
-The intent layer provides a message bus for communication between solvers and users.
+The Intent / Solver Layer (aka [NEAR Intents](https://pages.near.org/blog/introducing-near-intents/)) is a new type of transaction that allows information, requests, assets, and actions to be exchanged between users, services, and AI agents.
 
-In summary, the intent layer allow users to express what they want to accomplish (their intention) while the network figures out the best way to make it happen.
-Developers building on NEAR can use intents to create more user-friendly interactions, as it abstracts some of the complexities of directly interacting with smart contracts.
+This represents a paradigm shift in how users and AI agents interact with blockchain networks. Instead of directly executing complex transactions across multiple chains, users simply declare what they want to achieve, and the network determines how to make it happen.
 
-NEAR intents work by:
-- Expressing needs: Define your `intent`.
-- Network response: NEAR finds the optimal solution. (Solvers)
-- Seamless execution: Tasks are completed when parameters are met.
-- Collaboration: Agents work together if needed.
+Here's how it works:
+
+1. **Users/Agents Submit Intents**: Express desired outcomes without specifying the technical details (e.g., "Get the best price for my Bitcoin across all DEXs and CEXs")
+2. **Solver Network Competes**: A decentralized network of solvers (both AI agents and traditional market makers) compete to fulfill these intents optimally
+3. **Cross-Chain Execution**: The best solution is automatically executed, potentially spanning multiple chains and services
 
 :::info Example
-A user creates a wishlist, and let NEAR Intents find the item, add it to the cart, and pay for it as soon as it goes on sale.
+Instead of a user having to:
+
+1. Bridge assets between chains
+2. Find the best trading venues
+3. Execute multiple transactions
+4. Handle different wallet requirements
+
+They simply submit an intent: "Swap Token A for Token B at the best price"
+The Intent Layer handles all complexity across Web2 and Web3 behind the scenes.
+:::
+
+For developers, the Intent Layer provides:
+
+- A unified framework for building cross-chain applications
+- Access to both AI agents and traditional solvers for transaction optimization
+- Built-in liquidity aggregation across DeFi and CeFi
+- Support for complex use cases beyond simple swaps, including:
+  - Cross-chain stablecoin operations
+  - DeFi programmability for non-smart contract assets
+  - Account-based trading (AccountFi)
+  - AI agent interactions and negotiations
+
+:::info
+NEAR Intents are designed to power both traditional DeFi operations and the emerging AI economy, creating a unified transaction framework for Web2 and Web3 interactions.
 :::
 
 ### Chain Signatures
 
-By using [Multi-Party Computation (MPC)](../../1.concepts/abstraction/chain-signatures.md#multi-party-computation-service), Chain Signatures enables accounts and smart contracts on the NEAR blockchain to sign and execute transactions on external chains, such as Bitcoin, Ethereum, and Base.
+Chain Signatures enable NEAR accounts, including smart contracts, to sign and execute transactions across many blockchain protocols. By using [Multi-Party Computation (MPC)](../../1.concepts/abstraction/chain-signatures.md#multi-party-computation-service), this technology allows a single NEAR account to control accounts and assets on external chains like Bitcoin, Ethereum, and Base.
 
-For example, this allows a dApp built on NEAR to interact with Bitcoin’s UTXO model, enabling advanced functionality like asset transfers or decentralized finance (DeFi) protocols.
+Key benefits include:
+
+- Single Account, Multi-Chain Operations: Manage multiple blockchain interactions from one NEAR account
+- Reduced Development Overhead: Write smart contracts on NEAR that directly sign cross-chain transactions
+- Secure Transaction Signing: Leverage decentralized MPC for trustless signature generation
+
+For example, this enables dApps built on NEAR to interact with Bitcoin's UTXO model or Ethereum's account model, powering use cases like cross-chain DeFi protocols, atomic swaps, and NFT marketplaces.
 
 :::tip
 To learn more about Chain Signatures, the concepts, and how to implement it, check these articles:
+
 - [What are Chain Signatures?](../../1.concepts/abstraction/chain-signatures.md)
 - [Getting started with Chain Signatures](chain-signatures/getting-started.md)
 - [Implementing Chain Signatures](chain-signatures/chain-signatures.md)
+
 :::
 
 ### OmniBridge
 
-The [OmniBridge](https://github.com/Near-One/omni-bridge) is a multi-chain asset bridge that facilitates secure and efficient asset transfers between different blockchain networks, leveraging NEAR Multi-Party Computation (MPC) and Chain Signatures technology.
+The [OmniBridge](https://github.com/Near-One/omni-bridge) extends NEAR's chain abstraction capabilities by combining two key elements: Chain Signatures for cross-chain transaction execution, and a verification layer that allows NEAR smart contracts to confirm the state and transactions on foreign chains. This creates a trustless bridge where NEAR contracts can both initiate and verify cross-chain operations.
 
-OmniBridge acts as an aggregator of various message passing layers and light clients, enabling NEAR smart contracts to access states on external blockchains including Bitcoin, Ethereum, and Solana.
+1. **Chain Signatures Integration**:
+   - NEAR smart contracts can generate derivation addresses on other blockchains
+   - These contracts can directly sign and execute transactions on external chains
 
----
+2. **State Verification Layer (Omniprover)**:
+   - Allows NEAR smart contracts to verify the state and transactions on foreign chains
+   - Supports different verification methods based on the target chain (e.g., light client proofs)
+   - Ensures trustless verification of incoming transfers and state changes from external chains
+   - For example, when receiving assets from Ethereum, NEAR contracts can verify the deposit actually occurred
 
-## Multi-chain signatures: One account, multiple chains
+3. **Decentralized Relayer Network**:
+   - Open participation model for relayers
+   - Trustless and incentivized system
+   - Ensures efficient transaction processing and state updates across chains
 
-Currently, users and applications are siloed in different chains. This means that a user needs to create a new account for each chain they want to use. This is not only cumbersome for the user, but also for the developer who needs to maintain different codebases for each chain.
-
-NEAR Protocol provides a multi-chain signature service that allows users to use their NEAR Account to sign transactions in **other chains**. This means that a user can use the same account to interact with **Ethereum**, **Binance Smart Chain**, **Avalanche**, and **NEAR**.
-
-![Chain Signatures](/docs/assets/chain-abstract-2.png)
-
-:::info
-Multi-chain signatures work by combining **smart contracts** that produce signatures, with indexers that listen for these signatures, and relayers that submit the transactions to other networks. This allows users to hold assets and use applications in **any** network, only needing to have a single NEAR account.
-:::
-
----
-
-## Applications
-
-Thanks to significant advancements in the cryptocurrency space, including cross-chain interactions, account management, and the raise of AI applications, truly innovative projects are being developed in the NEAR ecosystem.
-
-### Bitcoin Use Cases
-
-By combining chain abstraction technologies, NEAR acts as a bridge to Bitcoin, where developers can harness Bitcoin’s security and decentralization alongside NEAR’s scalability and smart contract capabilities.
-
-A simple architecture for Bitcoin chain abstraction would include:
-- **Business logic on NEAR:** developers write smart contracts on NEAR, leveraging its high throughput, low fees, and comprehensive developer tooling.
-- **Bitcoin integration with Chain Signatures:** the smart contract sends a signature request to the NEAR blockchain, where the Chain Signatures module signs Bitcoin transactions securely. Then, the signed transaction is relayed to the Bitcoin network.
-- **User Experience:** Users interact with the dApp through a single account. Additionally, gas fees can be subsidized using [NEAR relayers](#relayers-cover-gas-fees), ensuring smooth onboarding.
-
-:::info Use cases
-
-Check [Proximity](https://www.proximity.dev/)'s list of Bitcoin use cases using NEAR Chain Abstraction:
-
-- [BitcoinFi](https://medium.com/@ProximityFi/building-bitcoin-native-dapps-with-nears-abstraction-stack-fb4aeb448eee#df89)
-- [Payment Gateways for Merchants](https://medium.com/@ProximityFi/building-bitcoin-native-dapps-with-nears-abstraction-stack-fb4aeb448eee#0c38)
-- [Cross-Chain NFT Platforms](https://medium.com/@ProximityFi/building-bitcoin-native-dapps-with-nears-abstraction-stack-fb4aeb448eee#521b)
-- [Bitcoin Custody Solutions](https://medium.com/@ProximityFi/building-bitcoin-native-dapps-with-nears-abstraction-stack-fb4aeb448eee#6a7c)
-
-:::
-
-### Relayers: Cover gas fees
-
-Allowing users to start using a dApp without having to acquire funds is a powerful tool to increase user adoption. NEAR Protocol provides a service that allows developers to subsidize gas fees for their users.
-
-This concept, known as "Account Abstraction" in other chains, is a **built-in feature** in NEAR. User can wrap transactions in messages known as **meta-transaction**, that any other account can relay to the network.
-
-:::tip
-In NEAR the relayers simply attach NEAR to cover gas fees, and pass the transaction to the network. There, the transaction is executed as if the **user had sent it**.
-:::
+This architecture creates a fully trustless bridge by combining NEAR's ability to execute transactions on foreign chains (via Chain Signatures) with the capability to independently verify the results of those transactions (via Omniprover).
