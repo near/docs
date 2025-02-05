@@ -7,7 +7,7 @@ import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import { Github } from "@site/src/components/codetabs"
-import { LantstoolLabel } from '@site/src/components/LantstoolLabel/LantstoolLabel';
+import { LantstoolLabel } from '@site/src/components/lantstool/LantstoolLabel/LantstoolLabel';
 
 Linkdrops allow users to distribute assets and onboard people to Web3 apps through a simple web link.
 
