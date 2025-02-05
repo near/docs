@@ -8,23 +8,36 @@ import {CodeTabs, Language, Github} from "@site/src/components/codetabs";
 
 ![img](/docs/assets/welcome-pages/chain-abstraction-landing.png)
 
-`Chain abstraction` is about **abstracting away** the complexities of **blockchain technology** from end-user experiences while maintaining its benefits. Users should not have to worry about which blockchain they are using or whether they are using one at all. NEAR Protocol advances this vision by introducing a framework that transcends single-platform development, enabling applications to control assets across any blockchain.
+# What is Chain Abstraction?
+
+Chain abstraction makes blockchain technology invisible to end users while preserving all its benefits. The goal is simple: users should be able to interact with blockchain applications as easily as they do with traditional web applications.
+
+## Overview
+
+NEAR's chain abstraction framework consists of three core technologies that work together to create seamless cross-chain experiences:
+
+1. **Intent Layer**: A system where users simply declare what they want to achieve (like "buy this NFT"), and the network figures out how to make it happen.
+
+2. **Chain Signatures**: Enables NEAR smart contracts to securely sign and execute transactions on other blockchains (like Bitcoin or Ethereum).
+
+3. **OmniBridge**: Connects different blockchain networks together, allowing assets and data to flow between them.
 
 :::info Example
-As an example, using Chain Abstraction a web app could allow users to collect NFTs across different chains, without users ever needing to explicitly create a blockchain account or acquire crypto tokens.
+Imagine a digital art marketplace where users can purchase NFTs that exist on different blockchains (Ethereum, Solana, etc.). With chain abstraction, users don't need to:
+- Create multiple blockchain wallets
+- Buy different cryptocurrencies for gas fees
+- Understand which blockchain their NFT lives on
+
+They simply browse, click, and buy - the complexity is handled behind the scenes.
 :::
 
-## Chain Abstraction: The Holistic View
+## How It Works
 
-The chain abstraction framework allows to create a **seamless** user experience, in which users can use blockchain-based applications without realizing they are using a blockchain.
-
-To achieve this goal and enable hassle-free access to a wider range of crypto assets, smart contracts, and blockchain states, the chain abstraction framework leverages a trio of key technologies: the [intent layer](#intent-layer), [chain signatures](#chain-signatures), and the [omnibridge](#omnibridge).
-
-You can see how these technologies interact together in the following high-level diagram:
+Here's how these technologies work together:
 
 ![Chain Abstraction Stack](/docs/assets/chain-abstract-1.svg)
 _Chain Abstraction Stack high-level diagram_
- 
+
 - The [intent layer](#intent-layer) serves as a foundational framework for user requests.
 - [Chain signatures](#chain-signatures) empower smart contracts to sign transactions across different assets and chains.
 - [Omnibridge](#omnibridge) facilitates communication and state transitions between various blockchains, ensuring that transactions are executed smoothly.
@@ -38,6 +51,7 @@ In summary, the intent layer allow users to express what they want to accomplish
 Developers building on NEAR can use intents to create more user-friendly interactions, as it abstracts some of the complexities of directly interacting with smart contracts.
 
 NEAR intents work by:
+
 - Expressing needs: Define your `intent`.
 - Network response: NEAR finds the optimal solution. (Solvers)
 - Seamless execution: Tasks are completed when parameters are met.
@@ -51,7 +65,7 @@ A user creates a wishlist, and let NEAR Intents find the item, add it to the car
 
 By using [Multi-Party Computation (MPC)](../../1.concepts/abstraction/chain-signatures.md#multi-party-computation-service), Chain Signatures enables accounts and smart contracts on the NEAR blockchain to sign and execute transactions on external chains, such as Bitcoin, Ethereum, and Base.
 
-For example, this allows a dApp built on NEAR to interact with Bitcoin’s UTXO model, enabling advanced functionality like asset transfers or decentralized finance (DeFi) protocols.
+For example, this allows a dApp built on NEAR to interact with Bitcoin's UTXO model, enabling advanced functionality like asset transfers or decentralized finance (DeFi) protocols.
 
 :::tip
 To learn more about Chain Signatures, the concepts, and how to implement it, check these articles:
@@ -88,7 +102,7 @@ Thanks to significant advancements in the cryptocurrency space, including cross-
 
 ### Bitcoin Use Cases
 
-By combining chain abstraction technologies, NEAR acts as a bridge to Bitcoin, where developers can harness Bitcoin’s security and decentralization alongside NEAR’s scalability and smart contract capabilities.
+By combining chain abstraction technologies, NEAR acts as a bridge to Bitcoin, where developers can harness Bitcoin's security and decentralization alongside NEAR's scalability and smart contract capabilities.
 
 A simple architecture for Bitcoin chain abstraction would include:
 - **Business logic on NEAR:** developers write smart contracts on NEAR, leveraging its high throughput, low fees, and comprehensive developer tooling.
