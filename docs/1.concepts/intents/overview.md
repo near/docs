@@ -120,8 +120,8 @@ The proper time to migrate to fully sharded architecture would be at the point w
    4. Base
    5. Solana
    6. TON
-2. Support for ft\_transfer\_call() with \`msg\` field (active deposit option)
+2. Support for `ft_transfer_call()` with `msg` field (active deposit option)
 3. Passive deposit functionality
    1. NEAR-side smart-contract which will own a bunch of depositing addresses
-   2. A protocol of correspondence of type of bridging (ft\_transfer or ft\_transfer\_call) with all the necessary parameters and the derivation path for a specific deposit address (say, derivation=hash(type, params)
+   2. A protocol of correspondence of type of bridging (`ft_transfer` or `ft_transfer_call`) with all the necessary parameters and the derivation path for a specific deposit address (say, derivation=hash(type, params)
 

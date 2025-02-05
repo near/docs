@@ -85,6 +85,8 @@ const sidebar = {
         {
           "Intents Layer": [
             "concepts/intents/overview",
+            "concepts/intents/solver-relay",
+            "concepts/intents/defuse-sdk",
             "concepts/intents/faq",
           ]
         },
