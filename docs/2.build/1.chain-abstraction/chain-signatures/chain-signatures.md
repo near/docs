@@ -166,7 +166,7 @@ For bitcoin, all UTXOs are signed independently and then combined into a single 
 
   In this example, we attach a deposit of 0.05 $NEAR for the signature request. The transaction may fail if the network is congested since the deposit required by the MPC service scales linearly with the number of pending requests, from 1 yoctoNEAR to a maximum of 0.65 $NEAR. Any unused deposit will be refunded and if the signature fails, the user will be refunded the full deposit.
 
-  As an alternative, the MPC contract provides an [`experimantal_signature_deposit()`](https://github.com/near/mpc/blob/develop/API.md#experimantal_signature_deposit) method to check the current deposit required.
+  As an alternative, the MPC contract provides an [`experimental_signature_deposit()`](https://github.com/near/mpc/blob/develop/API.md#experimantal_signature_deposit) method to check the current deposit required.
   Keep in mind that this could provide an unreliable value, since the amount will likely change between the time of the check and the time of the request.
 
 </details>
