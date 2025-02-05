@@ -114,26 +114,3 @@ The [OmniBridge](https://github.com/Near-One/omni-bridge) extends NEAR's chain a
    - Ensures efficient transaction processing and state updates across chains
 
 This architecture creates a fully trustless bridge by combining NEAR's ability to execute transactions on foreign chains (via Chain Signatures) with the capability to independently verify the results of those transactions (via Omniprover).
-
----
-
-### Bitcoin Use Cases
-
-By combining chain abstraction technologies, NEAR acts as a bridge to Bitcoin, where developers can harness Bitcoin's security and decentralization alongside NEAR's scalability and smart contract capabilities.
-
-A simple architecture for Bitcoin chain abstraction would include:
-
-- **Business logic on NEAR:** developers write smart contracts on NEAR, leveraging its high throughput, low fees, and comprehensive developer tooling.
-- **Bitcoin integration with Chain Signatures:** the smart contract sends a signature request to the NEAR blockchain, where the Chain Signatures module signs Bitcoin transactions securely. Then, the signed transaction is relayed to the Bitcoin network.
-- **User Experience:** Users interact with the dApp through a single account. Additionally, gas fees can be subsidized using [NEAR relayers](#relayers-cover-gas-fees), ensuring smooth onboarding.
-
-:::info Use cases
-
-Check [Proximity](https://www.proximity.dev/)'s list of Bitcoin use cases using NEAR Chain Abstraction:
-
-- [BitcoinFi](https://medium.com/@ProximityFi/building-bitcoin-native-dapps-with-nears-abstraction-stack-fb4aeb448eee#df89)
-- [Payment Gateways for Merchants](https://medium.com/@ProximityFi/building-bitcoin-native-dapps-with-nears-abstraction-stack-fb4aeb448eee#0c38)
-- [Cross-Chain NFT Platforms](https://medium.com/@ProximityFi/building-bitcoin-native-dapps-with-nears-abstraction-stack-fb4aeb448eee#521b)
-- [Bitcoin Custody Solutions](https://medium.com/@ProximityFi/building-bitcoin-native-dapps-with-nears-abstraction-stack-fb4aeb448eee#6a7c)
-
-:::
