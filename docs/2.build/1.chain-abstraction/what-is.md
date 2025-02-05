@@ -122,6 +122,7 @@ This architecture creates a fully trustless bridge by combining NEAR's ability t
 By combining chain abstraction technologies, NEAR acts as a bridge to Bitcoin, where developers can harness Bitcoin's security and decentralization alongside NEAR's scalability and smart contract capabilities.
 
 A simple architecture for Bitcoin chain abstraction would include:
+
 - **Business logic on NEAR:** developers write smart contracts on NEAR, leveraging its high throughput, low fees, and comprehensive developer tooling.
 - **Bitcoin integration with Chain Signatures:** the smart contract sends a signature request to the NEAR blockchain, where the Chain Signatures module signs Bitcoin transactions securely. Then, the signed transaction is relayed to the Bitcoin network.
 - **User Experience:** Users interact with the dApp through a single account. Additionally, gas fees can be subsidized using [NEAR relayers](#relayers-cover-gas-fees), ensuring smooth onboarding.
@@ -135,14 +136,4 @@ Check [Proximity](https://www.proximity.dev/)'s list of Bitcoin use cases using 
 - [Cross-Chain NFT Platforms](https://medium.com/@ProximityFi/building-bitcoin-native-dapps-with-nears-abstraction-stack-fb4aeb448eee#521b)
 - [Bitcoin Custody Solutions](https://medium.com/@ProximityFi/building-bitcoin-native-dapps-with-nears-abstraction-stack-fb4aeb448eee#6a7c)
 
-:::
-
-### Relayers: Cover gas fees
-
-Allowing users to start using a dApp without having to acquire funds is a powerful tool to increase user adoption. NEAR Protocol provides a service that allows developers to subsidize gas fees for their users.
-
-This concept, known as "Account Abstraction" in other chains, is a **built-in feature** in NEAR. User can wrap transactions in messages known as **meta-transaction**, that any other account can relay to the network.
-
-:::tip
-In NEAR the relayers simply attach NEAR to cover gas fees, and pass the transaction to the network. There, the transaction is executed as if the **user had sent it**.
 :::
