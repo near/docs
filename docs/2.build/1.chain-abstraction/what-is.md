@@ -10,7 +10,9 @@ import {CodeTabs, Language, Github} from "@site/src/components/codetabs";
 
 # What is Chain Abstraction?
 
-Chain abstraction makes blockchain technology invisible to end users while preserving all its benefits. The goal is simple: users should be able to interact with blockchain applications as easily as they do with traditional web applications.
+Chain abstraction makes blockchain technology invisible to end users while preserving all its benefits. The goal is simple: users should be able to interact with blockchain applications as easily as they do with traditional web applications, regardless of which blockchain network they're using.
+
+With chain abstraction, both users and developers can seamlessly interact across multiple blockchains without dealing with the underlying complexity. This means a single application can work with Bitcoin, Ethereum, or any other blockchain, while maintaining a simple, unified experience.
 
 ## Overview
 
