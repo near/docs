@@ -5,6 +5,8 @@ title: Access Keys
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import { LantstoolLabel } from '@site/src/components/lantstool/LantstoolLabel/LantstoolLabel';
+import { TryOutOnLantstool } from '@site/src/components/lantstool/TryOutOnLantstool';
 
 The RPC API enables you to retrieve information about an account's access keys.
 
@@ -68,6 +70,10 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 ```
 
 </TabItem>
+
+  <TabItem value="Lantstool" label={<LantstoolLabel/>}>
+    <TryOutOnLantstool path="docs/5.api/rpc/get-account-key.json" />
+  </TabItem>
 </Tabs>
 
 <details>
@@ -285,6 +291,10 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 ```
 
 </TabItem>
+
+  <TabItem value="Lantstool" label={<LantstoolLabel/>}>
+    <TryOutOnLantstool path="docs/5.api/rpc/get-account-keys.json" />
+  </TabItem>
 </Tabs>
 
 <details>
@@ -614,6 +624,10 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 ```
 
 </TabItem>
+
+  <TabItem value="Lantstool" label={<LantstoolLabel/>}>
+    <TryOutOnLantstool path="docs/5.api/rpc/get-changes-for-account-key.json" />
+  </TabItem>
 </Tabs>
 
 <details>
@@ -797,6 +811,10 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 ```
 
 </TabItem>
+
+  <TabItem value="Lantstool" label={<LantstoolLabel/>}>
+    <TryOutOnLantstool path="docs/5.api/rpc/get-changes-for-account-keys.json" />
+  </TabItem>
 </Tabs>
 
 <details>
