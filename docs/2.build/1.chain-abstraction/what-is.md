@@ -78,9 +78,14 @@ NEAR Intents are designed to power both traditional DeFi operations and the emer
 
 ### Chain Signatures
 
-By using [Multi-Party Computation (MPC)](../../1.concepts/abstraction/chain-signatures.md#multi-party-computation-service), Chain Signatures enables accounts and smart contracts on the NEAR blockchain to sign and execute transactions on external chains, such as Bitcoin, Ethereum, and Base.
+Chain Signatures enable NEAR accounts, including smart contracts, to sign and execute transactions across many blockchain protocols. By using [Multi-Party Computation (MPC)](../../1.concepts/abstraction/chain-signatures.md#multi-party-computation-service), this technology allows a single NEAR account to control accounts and assets on external chains like Bitcoin, Ethereum, and Base.
 
-For example, this allows a dApp built on NEAR to interact with Bitcoin's UTXO model, enabling advanced functionality like asset transfers or decentralized finance (DeFi) protocols.
+Key benefits include:
+- Single Account, Multi-Chain Operations: Manage multiple blockchain interactions from one NEAR account
+- Reduced Development Overhead: Write smart contracts on NEAR that directly sign cross-chain transactions
+- Secure Transaction Signing: Leverage decentralized MPC for trustless signature generation
+
+For example, this enables dApps built on NEAR to interact with Bitcoin's UTXO model or Ethereum's account model, powering use cases like cross-chain DeFi protocols, atomic swaps, and NFT marketplaces.
 
 :::tip
 To learn more about Chain Signatures, the concepts, and how to implement it, check these articles:
