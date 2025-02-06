@@ -18,7 +18,7 @@ However, using Solver Relay is recommended for speed optimization goals.
 
 ## **OpenAPI Specification**
 
-[OpenAPI JSON](../.gitbook/assets/solver-relay.openapi.json)
+[OpenAPI JSON](/docs/assets/intents/solver-relay.openapi.json)
 
 
 ## Frontend JSON-RPC Endpoint
