@@ -87,6 +87,8 @@ const sidebar = {
             "concepts/intents/overview",
             "concepts/intents/solver-relay",
             "concepts/intents/defuse-sdk",
+            "concepts/intents/solvers",
+            "concepts/intents/poa-bridge",
             "concepts/intents/faq",
           ]
         },
