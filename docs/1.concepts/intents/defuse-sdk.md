@@ -121,3 +121,19 @@ export default function MyApp() {
   )
 }
 ```
+
+## Deposit
+
+Overview of deposit process
+
+This page provides a detailed overview of the deposit process within the Defuse protocol. It outlines both desktop and mobile user flows, covering wallet connection, deposit address generation, and successful transaction confirmation, including QR code scanning for mobile users.
+
+![diagram](/docs/assets/intents/Deposit.png)
+
+## Withdraw
+
+Overview of the withdrawal process
+
+This page outlines the withdrawal process within the Defuse protocol, detailing the steps for connecting wallets, selecting tokens, and handling multichain assets. It includes a visual chart to simplify the user flow for both desktop and mobile interactions.
+
+![diagram](/docs/assets/intents/Withdraw.png)

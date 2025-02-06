@@ -30,7 +30,7 @@ description: Source code and deployment for the verifier smart contract
 
 ### Deployment
 
-The smart contract for NEAR Intents protocol is deployed at [`intents.near`](https://nearblocks.io/address/intents.near)&#x20;
+The smart contract for NEAR Intents protocol is deployed at [`intents.near`](https://nearblocks.io/address/intents.near)
 
 There is no `testnet` deployment.
 
@@ -48,9 +48,7 @@ An off chain message bus used for communication and sending `permits` between so
 
 On the diagram "Solver Bus" is called "Solver Relay" and "Verifier" is part of Defuse Smart contracts :)
 
-<img src="../.gitbook/assets/solver-relay-v2-user-docs.jpg" alt="" />
-
-
+![Solver Bus diagram](/docs/assets/intents/solver-relay-v2-user-docs.jpg)
 
 ## Architecture
 
@@ -73,7 +71,7 @@ Scalability. All the systems should be scalable, including on-chain contracts. N
 description: Deposited assets
 
 
-<img src="../.gitbook/assets/off-chain-arch-4 (4).png" alt="" />
+[![Flow](/docs/assets/intents/off-chain-arch-4.png)](/docs/assets/intents/off-chain-arch-4.png)
 
 <p>Intent flow for deposited assets</p>
 

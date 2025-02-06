@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 
 The PoA Bridge is a solution for transferring asset tokens between blockchain network and NEAR Intents. This service is designed as an alternative to the OmniBridge. It will help users take full advantage of the NEAR Intents protocol's capabilities for interacting with multi-chain financial products.
 
-<img src=".gitbook/assets/poa-bridge-user-docs.jpg" alt="" />
+![bridge diagram](/docs/assets/intents/poa-bridge-user-docs.jpg)
 
 ***
 
