@@ -39,21 +39,9 @@ NEAR Workspaces allows you to write tests once, and run them either on `testnet`
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
 
-  ```js
-  import anyTest from 'ava';
-  import { Worker } from 'near-workspaces';
-
-  const test = anyTest;
-
-  test.beforeEach(async t => {
-    const worker = await Worker.init();
-    const root = worker.rootAccount;
-
-    const user = await root.devCreateAccount();
-    
-    // ...
-  });
-  ```
+  <Github fname="main.ava.js" language="js"
+      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+      start="49" end="69" />
 
   </TabItem>
 </Tabs>
@@ -72,21 +60,9 @@ NEAR Workspaces allows you to write tests once, and run them either on `testnet`
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
 
-  ```js
-  import anyTest from 'ava';
-  import { Worker } from 'near-workspaces';
-
-  const test = anyTest;
-
-  test.beforeEach(async t => {
-    const worker = await Worker.init();
-    const root = worker.rootAccount;
-
-    const contract = await root.createSubAccount('test-account');
-    
-    // ...
-  });
-  ```
+  <Github fname="main.ava.js" language="js"
+      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+      start="75" end="95" />
 
   </TabItem>
 </Tabs>
@@ -105,27 +81,9 @@ NEAR Workspaces allows you to write tests once, and run them either on `testnet`
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
 
-  ```js
-  import anyTest from 'ava';
-  import { KeyPair, Worker } from 'near-workspaces';
-
-  const test = anyTest;
-
-  test.beforeEach(async t => {
-    const worker = t.context.worker = await Worker.init();
-    const root = worker.rootAccount;
-
-    const account_id = "test-account.test.near";
-    const keyPair = KeyPair.fromRandom("ED25519");
-
-    const account = await root.createAccount(account_id, {
-      keyPair,
-      initialBalance: "100000000000000000000000",
-    });
-
-    // ...
-  });
-  ```
+  <Github fname="main.ava.js" language="js"
+      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+      start="101" end="128" />
 
   </TabItem>
 </Tabs>
@@ -143,6 +101,10 @@ NEAR Workspaces allows you to write tests once, and run them either on `testnet`
 
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
+
+  <Github fname="main.ava.js" language="js"
+      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+      start="134" end="161" />
 
   </TabItem>
 </Tabs>
@@ -246,24 +208,9 @@ NEAR Workspaces allows you to write tests once, and run them either on `testnet`
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
 
-  ```js
-  import anyTest from 'ava';
-  import { KeyPair, Worker } from 'near-workspaces';
-
-  const test = anyTest;
-
-  test.beforeEach(async t => {
-    const worker = t.context.worker = await Worker.init();
-    const root = worker.rootAccount;
-
-    const account_id = "test-account.test.near";
-    const keyPair = KeyPair.fromRandom("ED25519");
-
-    const contract = await root.devDeploy(pathToWasm);
-
-    // ...
-  });
-  ```
+  <Github fname="main.ava.js" language="js"
+      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+      start="167" end="188" />
 
   </TabItem>
 </Tabs>
@@ -282,23 +229,9 @@ NEAR Workspaces allows you to write tests once, and run them either on `testnet`
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
 
-  ```js
-  import anyTest from 'ava';
-  import { KeyPair, Worker } from 'near-workspaces';
-
-  const test = anyTest;
-
-  test.beforeEach(async t => {
-    const worker = t.context.worker = await Worker.init();
-    const root = worker.rootAccount;
-
-    const contract = await root.createSubAccount('test-account');
-
-    await contract.deploy(pathToWasm);
-
-    // ...
-  });
-  ```
+  <Github fname="main.ava.js" language="js"
+      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+      start="17" end="23" />
 
   </TabItem>
 </Tabs>
@@ -320,6 +253,8 @@ Show contract's logs.
 
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
+
+  Use `console.log` method when you want to see debug information from your code.
 
   ```js
   const balance = await account.balance();
@@ -350,33 +285,18 @@ Show contract's logs.
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
 
-  ```js
-  const worker = await Worker.init();
-  const root = worker.rootAccount;
-
-  const account = await root.createSubAccount('test-account');
-  const balance = await account.balance();
-
-  // balance:  {
-  //   total: <BN: 52b7d2dcc80cd2e4000000>,
-  //   stateStaked: <BN: 62a992e53a0af00000>,
-  //   staked: <BN: 0>,
-  //   available: <BN: 52b77033352798d9100000>
-  // }
-  ```
+  <Github fname="main.ava.js" language="js"
+      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+      start="194" end="205" />
 
   </TabItem>
 </Tabs>
-
-Check an account's balance, explaining how users also expend money on gas.
 
 ---
 
 ## Transactions
 
 ### Call
-
-Make a call, showing how to deserialize the result.
 
 <Tabs groupId="code-tabs">
   <TabItem value="rust" label="🦀 Rust" default>
@@ -388,14 +308,9 @@ Make a call, showing how to deserialize the result.
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
 
-  ```js
-  test('changes the greeting', async (t) => {
-    const { root, contract } = t.context.accounts;
-    await root.call(contract, 'set_greeting', { greeting: 'Howdy' });
-    
-    // ...
-  });
-  ```
+  <Github fname="main.ava.js" language="js"
+      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+      start="42" end="43" />
 
   </TabItem>
 </Tabs>
@@ -403,8 +318,6 @@ Make a call, showing how to deserialize the result.
 <hr class="subsection" />
 
 ### View
-
-Make a view, showing how to deserialize the result.
 
 <Tabs groupId="code-tabs">
   <TabItem value="rust" label="🦀 Rust" default>
@@ -416,15 +329,9 @@ Make a view, showing how to deserialize the result.
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
 
-  ```js
-  test('returns the default greeting', async (t) => {
-    const { contract } = t.context.accounts;
-    const greeting = await contract.view('get_greeting', {});
-    // Hello
-
-    t.is(greeting, 'Hello');
-  });
-  ```
+  <Github fname="main.ava.js" language="js"
+      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+      start="36" end="37" />
 
   </TabItem>
 </Tabs>
@@ -445,76 +352,13 @@ You can alter contract code, accounts, and access keys using normal transactions
       url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
       start="218" end="239" />
 
-  ```rust
-      // Grab STATE from the testnet status_message contract. This contract contains the following data:
-      //   get_status(dev-20211013002148-59466083160385) => "hello from testnet"
-      let (testnet_contract_id, status_msg) = {
-          let worker = workspaces::testnet().await?;
-          let contract_id: AccountId = TESTNET_PREDEPLOYED_CONTRACT_ID
-              .parse()
-              .map_err(anyhow::Error::msg)?;
-          let mut state_items = worker.view_state(&contract_id, None).await?;
-          let state = state_items.remove(b"STATE".as_slice()).unwrap();
-          let status_msg = StatusMessage::try_from_slice(&state)?;
-          (contract_id, status_msg)
-      };
-      info!(target: "spooning", "Testnet: {:?}", status_msg);
-      // Create our sandboxed environment and grab a worker to do stuff in it:
-      let worker = workspaces::sandbox().await?;
-      // Deploy with the following status_message state: sandbox_contract_id => "hello from sandbox"
-      let sandbox_contract = deploy_status_contract(&worker, "hello from sandbox").await?;
-      // Patch our testnet STATE into our local sandbox:
-      worker
-          .patch_state(
-              sandbox_contract.id(),
-              "STATE".as_bytes(),
-              &status_msg.try_to_vec()?,
-          )
-          .await?;
-      // Now grab the state to see that it has indeed been patched:
-      let status: String = sandbox_contract
-          .view(
-              &worker,
-              "get_status",
-              serde_json::json!({
-                  "account_id": testnet_contract_id,
-              })
-              .to_string()
-              .into_bytes(),
-          )
-          .await?
-          .json()?;
-      info!(target: "spooning", "New status patched: {:?}", status);
-      assert_eq!(&status, "hello from testnet");
-  ```
-
   </TabItem>
 
   <TabItem value="js" label="🌐 JavaScript">
 
-  ```js
-      const {contract, ali} = t.context.accounts;
-      // Contract must have some state for viewState & patchState to work
-      await ali.call(contract, 'set_status', {message: 'hello'});
-      // Get state
-      const state = await contract.viewState();
-      // Get raw value
-      const statusMessage = state.get('STATE', {schema, type: StatusMessage});
-      // Update contract state
-      statusMessage.records.push(
-        new BorshRecord({k: 'alice.near', v: 'hello world'}),
-      );
-      // Serialize and patch state back to runtime
-      await contract.patchState(
-        'STATE',
-        borsh.serialize(schema, statusMessage),
-      );
-      // Check again that the update worked
-      const result = await contract.view('get_status', {
-        account_id: 'alice.near',
-      });
-      t.is(result, 'hello world');
-  ```
+  <Github fname="main.ava.js" language="js"
+      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+      start="211" end="222" />
 
   To see a complete example of how to do this, see the [patch-state test](https://github.com/near/workspaces-js/blob/main/__tests__/02.patch-state.ava.ts).
 
@@ -546,9 +390,9 @@ This approach is more complex to do and also cannot be performed without restart
 
   <TabItem value="js" label="🌐 JavaScript">
 
-    <Github fname="fast-forward.ava.ts" language="js"
-            url="https://github.com/near/near-workspaces-js/blob/main/__tests__/09.fast-forward.ava.ts"
-            start="33" end="53" />
+  <Github fname="main.ava.js" language="js"
+      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+      start="228" end="248" />
 
   </TabItem>
 
@@ -570,31 +414,6 @@ NEAR Workspaces is set up so that you can write tests once and run them against 
   <Github fname="basics.rs" language="rust"
       url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
       start="279" end="304" />
-
-      ```rust
-      #[tokio::main]
-      async fn main() -> anyhow::Result<()> {
-        // create a testnet sandbox
-        let sandbox = near_workspaces::testnet().await?;
-
-        let testnet_account = Account::from_secret_key("<account>.testnet".parse().unwrap(), "ed25519:...".parse().unwrap(), &sandbox);
-
-        // Create a random root account
-        let random_id = Utc::now().timestamp().to_string();
-        let root = testnet_account
-            .create_subaccount(&random_id)
-            .initial_balance(NearToken::from_near(50))
-            .transact()
-            .await?
-            .unwrap();
-
-        // Create accounts
-        let alice = create_subaccount(&root, "alice", TEN_NEAR).await?;
-        let bob = create_subaccount(&root, "bob", TEN_NEAR).await?;
-        let auctioneer = create_subaccount(&root, "auctioneer", TEN_NEAR).await?;
-        let contract_account = create_subaccount(&root, "contract", TEN_NEAR).await?;
-      }
-      ```
 
   :::tip
   If you can create a new account on each iteration as well.
@@ -672,6 +491,12 @@ NEAR Workspaces is set up so that you can write tests once and run them against 
     // .near-credentials/workspaces/testnet/<your-account>.testnet.json
     {"account_id":"<your-account>.testnet","public_key":"ed25519:...","private_key":"ed25519:..."}
     ```
+
+  Example:
+  
+  <Github fname="main.ava.js" language="js"
+    url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+    start="252" end="263" />
 
   </TabItem>
 
@@ -760,9 +585,16 @@ In most cases we will want to test complex methods involving multiple users and 
 
 ---
 
-## Additional Media
+## Additional Resources
 
-#### Test Driven Design Using Workspaces and AVA {#test-driven-design}
+### Advanced Examples
+
+- [Rust](https://github.com/near/near-workspaces-rs/tree/main/examples)
+- [JavaScript](https://github.com/near/near-workspaces-js/tree/main/__tests__)
+
+<hr class="subsection" />
+
+### Test Driven Design Using Workspaces and AVA {#test-driven-design}
 
 The video below walks through how to apply TDD with Workspaces and AVA for a simple contract:
 
