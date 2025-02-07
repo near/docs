@@ -83,7 +83,7 @@ const sidebar = {
           ]
         },
         {
-          "Intents Layer": [
+          "NEAR Intents": [
             "concepts/intents/overview",
             "concepts/intents/architecture",
             "concepts/intents/poa-bridge",

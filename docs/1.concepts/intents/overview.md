@@ -1,11 +1,11 @@
 ---
 id: overview
-title: Intents Layer
+title: NEAR Intents
 sidebar_label: Overview
 ---
 
 In NEAR, an **intent** can be thought of as a high-level declaration of what a user wants to achieve on the blockchain. Solvers are active market participants that fill in the intents issued by users.
-The NEAR Intents Layer provides a message bus for communication between solvers and users.
+The NEAR Intents provides a message bus for communication between solvers and users.
 
 In summary, the intents layer allow users to express what they want to accomplish (their intention) while the network figures out the best way to make it happen.
 Developers building on NEAR can use intents to create more user-friendly interactions, as it abstracts some of the complexities of directly interacting with smart contracts.
