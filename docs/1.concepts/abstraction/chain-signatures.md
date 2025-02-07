@@ -101,7 +101,7 @@ This contract has a `sign` method that takes two parameters:
 For example, a user could request a signature to `send 0.1 ETH to 0x060f1...` **(transaction)** using the `ethereum-1` account **(path)**.
 
 
-After a request is made, the `sign` method will [yield execution](/blog/yield-resume) waiting while the [MPC signing service](#multi-party-computation-service-mpc) signs the transaction.
+After a request is made, the `sign` method will [yield execution](/blog/yield-resume) waiting while the [MPC signing service](#multi-party-computation-service) signs the transaction.
 
 Once the signature is ready, the contract resumes computation and returns it to the user. This signature is a valid signed transaction that can be readily sent to the target blockchain to be executed.
 

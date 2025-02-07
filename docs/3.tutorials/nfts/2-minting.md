@@ -420,7 +420,7 @@ In this tutorial, you went through the basics of setting up and understand the l
 
 You first looked at [what it means](#what-does-minting-mean) to mint NFTs and how to break down the problem into more feasible chunks. You then started modifying the skeleton contract chunk by chunk starting with solving the problem of [storing information / state](#storing-information) on the contract. You then looked at what to put in the [metadata and token information](#metadata-and-token-info). Finally, you looked at the logic necessary for [minting NFTs](#minting-logic).
 
-After the contract was written, it was time to deploy to the blockchain. You [deployed the contract](#deploy-the-contract) and [initialized it](#initialize-contract). Finally, you [minted your very first NFT](#minting-our-first-nft) and saw that some changes are needed before you can view it in the wallet.
+After the contract was written, it was time to deploy to the blockchain. You [deployed and initialized the contract](#deploy-the-contract). Finally, you [minted your very first NFT](#minting-our-first-nft) and saw that some changes are needed before you can view it in the wallet.
 
 ---
 
