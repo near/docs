@@ -33,14 +33,14 @@ NEAR Workspaces allows you to write tests once, and run them either on `testnet`
   <TabItem value="rust" label="🦀 Rust" default>
 
   <Github fname="basics.rs" language="rust"
-      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
       start="15" end="19" />
 
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
 
   <Github fname="main.ava.js" language="js"
-      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
       start="49" end="69" />
 
   </TabItem>
@@ -54,14 +54,14 @@ NEAR Workspaces allows you to write tests once, and run them either on `testnet`
   <TabItem value="rust" label="🦀 Rust" default>
 
   <Github fname="basics.rs" language="rust"
-      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
       start="31" end="45" />
 
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
 
   <Github fname="main.ava.js" language="js"
-      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
       start="75" end="95" />
 
   </TabItem>
@@ -75,14 +75,14 @@ NEAR Workspaces allows you to write tests once, and run them either on `testnet`
   <TabItem value="rust" label="🦀 Rust" default>
 
   <Github fname="basics.rs" language="rust"
-      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
       start="54" end="61" />
 
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
 
   <Github fname="main.ava.js" language="js"
-      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
       start="101" end="128" />
 
   </TabItem>
@@ -96,14 +96,14 @@ NEAR Workspaces allows you to write tests once, and run them either on `testnet`
   <TabItem value="rust" label="🦀 Rust" default>
 
   <Github fname="basics.rs" language="rust"
-      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
       start="70" end="74" />
 
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
 
   <Github fname="main.ava.js" language="js"
-      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
       start="134" end="161" />
 
   </TabItem>
@@ -119,7 +119,7 @@ NEAR Workspaces allows you to write tests once, and run them either on `testnet`
   <TabItem value="rust" label="🦀 Rust" default>
 
   <Github fname="basics.rs" language="rust"
-      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
       start="83" end="88" />
 
   :::tip
@@ -159,7 +159,7 @@ NEAR Workspaces allows you to write tests once, and run them either on `testnet`
   <TabItem value="rust" label="🦀 Rust" default>
 
   <Github fname="basics.rs" language="rust"
-      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
       start="95" end="102" />
 
   :::tip
@@ -202,14 +202,14 @@ NEAR Workspaces allows you to write tests once, and run them either on `testnet`
   <TabItem value="rust" label="🦀 Rust" default>
 
   <Github fname="basics.rs" language="rust"
-      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
       start="109" end="115" />
 
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
 
   <Github fname="main.ava.js" language="js"
-      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
       start="167" end="188" />
 
   </TabItem>
@@ -223,14 +223,14 @@ NEAR Workspaces allows you to write tests once, and run them either on `testnet`
   <TabItem value="rust" label="🦀 Rust" default>
 
   <Github fname="basics.rs" language="rust"
-      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
       start="127" end="134" />
 
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
 
   <Github fname="main.ava.js" language="js"
-      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
       start="17" end="23" />
 
   </TabItem>
@@ -248,7 +248,7 @@ Show contract's logs.
   Use `println` method when you want to see debug information from your code.
 
   <Github fname="basics.rs" language="rust"
-      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
       start="15" end="19" />
 
   </TabItem>
@@ -279,14 +279,14 @@ Show contract's logs.
   <TabItem value="rust" label="🦀 Rust" default>
 
   <Github fname="basics.rs" language="rust"
-      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
       start="146" end="155" />
 
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
 
   <Github fname="main.ava.js" language="js"
-      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
       start="194" end="205" />
 
   </TabItem>
@@ -302,14 +302,14 @@ Show contract's logs.
   <TabItem value="rust" label="🦀 Rust" default>
 
   <Github fname="basics.rs" language="rust"
-      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
       start="164" end="176" />
 
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
 
   <Github fname="main.ava.js" language="js"
-      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
       start="42" end="43" />
 
   </TabItem>
@@ -323,14 +323,14 @@ Show contract's logs.
   <TabItem value="rust" label="🦀 Rust" default>
 
   <Github fname="basics.rs" language="rust"
-      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
       start="185" end="209" />
 
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
 
   <Github fname="main.ava.js" language="js"
-      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
       start="36" end="37" />
 
   </TabItem>
@@ -349,7 +349,7 @@ You can alter contract code, accounts, and access keys using normal transactions
   <TabItem value="rust" label="🦀 Rust" default>
 
   <Github fname="basics.rs" language="rust"
-      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
       start="218" end="239" />
 
   </TabItem>
@@ -357,7 +357,7 @@ You can alter contract code, accounts, and access keys using normal transactions
   <TabItem value="js" label="🌐 JavaScript">
 
   <Github fname="main.ava.js" language="js"
-      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
       start="211" end="222" />
 
   To see a complete example of how to do this, see the [patch-state test](https://github.com/near/workspaces-js/blob/main/__tests__/02.patch-state.ava.ts).
@@ -381,7 +381,7 @@ This approach is more complex to do and also cannot be performed without restart
   <TabItem value="rust" label="🦀 Rust" default>
 
   <Github fname="basics.rs" language="rust"
-      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
       start="248" end="272" />
 
   _[See the full example on Github](https://github.com/near/workspaces-rs/blob/main/examples/src/fast_forward.rs)._
@@ -391,7 +391,7 @@ This approach is more complex to do and also cannot be performed without restart
   <TabItem value="js" label="🌐 JavaScript">
 
   <Github fname="main.ava.js" language="js"
-      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
       start="228" end="248" />
 
   </TabItem>
@@ -412,7 +412,7 @@ NEAR Workspaces is set up so that you can write tests once and run them against 
   <TabItem value="rust" label="🦀 Rust" default>
 
   <Github fname="basics.rs" language="rust"
-      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
       start="279" end="304" />
 
   :::tip
@@ -429,7 +429,7 @@ NEAR Workspaces is set up so that you can write tests once and run them against 
 
     <summary> 1. Setting the `Worker` network to `testnet` </summary>
 
-    When creating Worker set network to `testnet` and pass your master account:
+    When creating Worker set network to `testnet` and pass your master account (an account for which you have the private key):
 
     ```ts
     const worker = await Worker.init({
@@ -445,11 +445,12 @@ NEAR Workspaces is set up so that you can write tests once and run them against 
 
     <summary> 2. Setting environment variables </summary>
 
-    Set the `NEAR_WORKSPACES_NETWORK` and `TESTNET_MASTER_ACCOUNT_ID` environment variables when running your tests:
+    Set the `NEAR_WORKSPACES_NETWORK` and `TESTNET_MASTER_ACCOUNT_ID` (an account for which you have the private key) environment variables when running your tests:
 
     ```bash
     NEAR_WORKSPACES_NETWORK=testnet TESTNET_MASTER_ACCOUNT_ID=<your master account Id> node test.js
     ```
+
     If you set this environment variables and pass `{network: 'testnet', testnetMasterAccountId: <masterAccountId>}` to `Worker.init`, the config object takes precedence.
 
     </details>
@@ -471,6 +472,8 @@ NEAR Workspaces is set up so that you can write tests once and run them against 
         TESTNET_MASTER_ACCOUNT_ID: '<masterAccountId>',
     };
     ```
+
+    Where the master account is an account for which you have the private key.
 
     The [near-workspaces/ava.testnet.config.cjs](https://github.com/near/workspaces-js/blob/main/ava.testnet.config.cjs) import sets the `NEAR_WORKSPACES_NETWORK` environment variable for you. A benefit of this approach is that you can then easily ignore files that should only run in Sandbox mode.
 
@@ -495,7 +498,7 @@ NEAR Workspaces is set up so that you can write tests once and run them against 
   Example:
   
   <Github fname="main.ava.js" language="js"
-    url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+    url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
     start="252" end="263" />
 
   </TabItem>
@@ -517,7 +520,7 @@ NEAR Workspaces is set up so that you can write tests once and run them against 
   Create a function called `pull_contract` which will pull the contract's `.wasm` file from the chain and deploy it onto your local sandbox. You'll have to re-initialize it with all the data to run tests. This is because the contract's data is too big for the RPC service to pull down. (limits are set to 50Mb)
 
   <Github fname="basics.rs" language="rust"
-      url="https://github.com/garikbesson/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
       start="331" end="353" />
 
   </TabItem>
