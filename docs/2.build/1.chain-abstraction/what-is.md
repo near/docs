@@ -41,15 +41,15 @@ With chain abstraction, both you and your users just focus on the core experienc
 
 NEAR's chain abstraction framework consists of three core technologies that work together to create seamless cross-chain experiences:
 
-1. [**Intent / Solver Layer**](#intent--solver-layer): A decentralized system where users express desired outcomes (like "swap Token A for Token B at the best price") without specifying technical details. A network of solvers then competes to fulfill these intents optimally, handling complex cross-chain operations behind the scenes.
+1. [**NEAR Intents**](#NEAR-Intents): A decentralized system where users express desired outcomes (like "swap Token A for Token B at the best price") without specifying technical details. A network of solvers then competes to fulfill these intents optimally, handling complex cross-chain operations behind the scenes.
 
 2. [**Chain Signatures**](#chain-signatures): Enables NEAR accounts, including smart contracts, to sign and execute transactions on other blockchains (like Bitcoin or Ethereum), allowing cross-chain interactions.
 
 3. [**OmniBridge**](#omnibridge): A trustless multi-chain asset bridge that combines Chain Signatures for cross-chain transaction execution with a verification layer allowing NEAR smart contracts to confirm transactions on foreign chains. This creates a fully trustless system where NEAR can both initiate and verify cross-chain operations.
 
-### Intent / Solver Layer
+### NEAR Intents
 
-The Intent / Solver Layer (aka [NEAR Intents](https://pages.near.org/blog/introducing-near-intents/)) is a new type of transaction that allows information, requests, assets, and actions to be exchanged between users, services, and AI agents.
+The NEAR Intents is a new type of transaction that allows information, requests, assets, and actions to be exchanged between users, services, and AI agents.
 
 This represents a paradigm shift in how users and AI agents interact with blockchain networks. Instead of directly executing complex transactions across multiple chains, users simply declare what they want to achieve, and the network determines how to make it happen.
 
