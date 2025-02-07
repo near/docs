@@ -85,10 +85,11 @@ const sidebar = {
         {
           "Intents Layer": [
             "concepts/intents/overview",
-            "concepts/intents/solver-relay",
-            "concepts/intents/defuse-sdk",
-            "concepts/intents/solvers",
+            "concepts/intents/architecture",
             "concepts/intents/poa-bridge",
+            "build/chain-abstraction/intents/solver-relay",
+            "build/chain-abstraction/intents/intents-sdk",
+            "build/chain-abstraction/intents/solvers",
             "concepts/intents/faq",
           ]
         },

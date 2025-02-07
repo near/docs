@@ -1,5 +1,6 @@
 ---
-description: Build a dapp
+id: intents-sdk
+sidebar_label: Intents SDK
 ---
 
 # SDK
@@ -8,57 +9,12 @@ description: Build a dapp
 SDK is under heavy development and the API is highly unstable.
 :::
 
-### High Level Architecture
+## High Level Architecture
 
 The Defuse Protocol SDK is built on two core components that work together to provide a robust and flexible solution for cross-chain asset swaps:
 
-#### 1. State Machines (XState)
-
-Our swap logic is driven by three core state machines, implemented using XState:
-
-* **Deposit Machine:** Manages the entire deposit process from initiation to completion.
-* **Swap Machine:** Manages the entire swap process from initiation to completion.
-* **Withdraw Machine:** Manages the entire withdrawal process from initiation to completion.
-
-These state machines are framework-agnostic and can be used on both client and server sides. They provide a clear and predictable flow for complex cross-chain swap operations, handling various states, transitions, and edge cases.
-
-Key benefits of using state machines:
-
-* Clear visualization of the swap process
-* Easier management of complex logic and edge cases
-* Improved testability and maintainability
-* Framework-agnostic implementation
-
-
-
-**Deposit Machine Chart**
-
-[design](https://stately.ai/registry/editor/embed/8675c51c-3db8-471c-87b4-71331e02e51c?machineId=06cd9c41-9736-41b8-a783-c1f78f420349&mode=design)
-
-<figure><img src="../.gitbook/assets/deposit-ui.png" alt="" /><figcaption><p>Deposit Machine</p></figcaption></figure>
-
-**Swap Machine Chart**
-
-[design](https://stately.ai/registry/editor/embed/8675c51c-3db8-471c-87b4-71331e02e51c?machineId=f396c943-2595-4fdd-b245-32a06d3b85a1)
-
-<figure><img src="../.gitbook/assets/swap-ui.png" alt="" /><figcaption><p>Swap machine</p></figcaption></figure>
-
-**Withdraw Machine Chart**
-
-[design](https://stately.ai/registry/editor/embed/8675c51c-3db8-471c-87b4-71331e02e51c?machineId=5f2320b2-484c-4d97-b966-1544f9e09248&mode=design)
-
-<figure><img src="../.gitbook/assets/withdraw-ui.png" alt="" /><figcaption><p>Withdraw Machine</p></figcaption></figure>
-
-#### 2. Defuse SDK
-
-The Defuse SDK wraps the state machine logic and provides a complete solution as React components and hooks. This layer abstracts the complexity of state management and provides a user-friendly interface for developers to integrate swap functionality into their applications.
-
-Key features of the Defuse SDK:
-
-* **React Components**: Ready-to-use components like `SwapWidget` that encapsulate the entire swap interface.
-* **Context Provider**: `SwapWidgetProvider` that manages the global state and provides necessary context to child components.
-* **Hooks**: Custom hooks that allow developers to interact with the swap logic programmatically.
-* **Theming**: Built-in theming support for easy customization.
+- [State Machines (XState)](#state-machines-xstate)
+- [Defuse SDK](#defuse-sdk)
 
 #### Architecture Diagram
 
@@ -88,6 +44,55 @@ Key features of the Defuse SDK:
 ```
 
 This architecture allows for a separation of concerns, where the core swap logic is handled by the state machines, while the SDK provides an easy-to-use interface for React applications. Developers can leverage the power of state machines for complex logic handling while enjoying the simplicity of React components for UI integration.
+
+### State Machines (XState)
+
+Our swap logic is driven by three core state machines, implemented using XState:
+
+* **Deposit Machine:** Manages the entire deposit process from initiation to completion.
+* **Swap Machine:** Manages the entire swap process from initiation to completion.
+* **Withdraw Machine:** Manages the entire withdrawal process from initiation to completion.
+
+These state machines are framework-agnostic and can be used on both client and server sides. They provide a clear and predictable flow for complex cross-chain swap operations, handling various states, transitions, and edge cases.
+
+Key benefits of using state machines:
+
+* Clear visualization of the swap process
+* Easier management of complex logic and edge cases
+* Improved testability and maintainability
+* Framework-agnostic implementation
+
+
+
+#### Deposit Machine Chart
+
+:::info Design chart
+[Deposit Machine design](https://stately.ai/registry/editor/embed/8675c51c-3db8-471c-87b4-71331e02e51c?machineId=06cd9c41-9736-41b8-a783-c1f78f420349&mode=design)
+:::
+
+#### Swap Machine Chart
+
+:::info Design chart
+[Swap Machine design](https://stately.ai/registry/editor/embed/8675c51c-3db8-471c-87b4-71331e02e51c?machineId=f396c943-2595-4fdd-b245-32a06d3b85a1)
+:::
+
+#### Withdraw Machine Chart
+
+:::info Design chart
+[Withdraw Machine design](https://stately.ai/registry/editor/embed/8675c51c-3db8-471c-87b4-71331e02e51c?machineId=5f2320b2-484c-4d97-b966-1544f9e09248&mode=design)
+:::
+
+### Defuse SDK
+
+The Defuse SDK wraps the state machine logic and provides a complete solution as React components and hooks. This layer abstracts the complexity of state management and provides a user-friendly interface for developers to integrate swap functionality into their applications.
+
+Key features of the Defuse SDK:
+
+* **React Components**: Ready-to-use components like `SwapWidget` that encapsulate the entire swap interface.
+* **Context Provider**: `SwapWidgetProvider` that manages the global state and provides necessary context to child components.
+* **Hooks**: Custom hooks that allow developers to interact with the swap logic programmatically.
+* **Theming**: Built-in theming support for easy customization.
+
 
 #### Use Defuse SDK
 
@@ -122,18 +127,17 @@ export default function MyApp() {
 }
 ```
 
-## Deposit
+## Deposit process
 
-Overview of deposit process
 
 This page provides a detailed overview of the deposit process within the Defuse protocol. It outlines both desktop and mobile user flows, covering wallet connection, deposit address generation, and successful transaction confirmation, including QR code scanning for mobile users.
 
 ![diagram](/docs/assets/intents/Deposit.png)
+_Overview of deposit process_
 
-## Withdraw
-
-Overview of the withdrawal process
+## Withdraw process
 
 This page outlines the withdrawal process within the Defuse protocol, detailing the steps for connecting wallets, selecting tokens, and handling multichain assets. It includes a visual chart to simplify the user flow for both desktop and mobile interactions.
 
 ![diagram](/docs/assets/intents/Withdraw.png)
+_Overview of the withdrawal process_

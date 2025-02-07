@@ -16,10 +16,11 @@ Defuse protocol may operate without a Solver Relay component:
 However, using Solver Relay is recommended for speed optimization goals.
 
 
-## **OpenAPI Specification**
+## OpenAPI Specification
 
-[OpenAPI JSON](/docs/assets/intents/solver-relay.openapi.json)
-
+:::tip
+Download the OpenAPI [`solver-relay.openapi.json`](/docs/assets/intents/solver-relay.openapi.json) specification file.
+:::
 
 ## Frontend JSON-RPC Endpoint
 
