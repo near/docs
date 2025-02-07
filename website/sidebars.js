@@ -87,9 +87,7 @@ const sidebar = {
             "concepts/intents/overview",
             "concepts/intents/architecture",
             "concepts/intents/poa-bridge",
-            "build/chain-abstraction/intents/solver-relay",
-            "build/chain-abstraction/intents/intents-sdk",
-            "build/chain-abstraction/intents/solvers",
+            "concepts/intents/solvers",
             "concepts/intents/faq",
           ]
         },
