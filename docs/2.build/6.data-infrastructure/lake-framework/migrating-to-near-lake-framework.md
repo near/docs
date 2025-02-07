@@ -1,5 +1,6 @@
 ---
 sidebar_label: Migrating to NEAR Lake framework
+id: migrating-to-near-lake-framework
 ---
 
 # Migrating to NEAR Lake Framework
