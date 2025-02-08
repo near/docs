@@ -32,7 +32,7 @@ Example:
 ```
 
 </TabItem>
-<TabItem value="js" label="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.status();
@@ -463,7 +463,7 @@ input: `[block number]`
 ```
 
 </TabItem>
-<TabItem value="js" label="🌐 JavaScript" label="JavaScript">
+<TabItem value="js" label="JavaScript">
 
 </TabItem>
 <TabItem value="http" label="HTTPie">

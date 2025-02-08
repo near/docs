@@ -4,8 +4,11 @@ http POST https://rpc.testnet.near.org \
   id=dontcare \
   method=query \
   params:='{
-    "request_type": "view_code",
+    "request_type": "call_function",
     "finality": "final",
-    "account_id": "guest-book.testnet"
+    "account_id": "dev-1588039999690",
+    "method_name": "get_num",
+    "args_base64": ""e30=""
   }'
 ```
+

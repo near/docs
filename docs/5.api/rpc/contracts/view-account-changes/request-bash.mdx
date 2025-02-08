@@ -1,0 +1,11 @@
+```bash
+http POST https://rpc.testnet.near.org \
+  jsonrpc=2.0 \
+  id=dontcare \
+  method=EXPERIMENTAL_changes \
+  params:='{
+    "changes_type": "account_changes",
+    "account_ids": ["your_account.testnet"],
+    "block_id": 19703467
+  }'
+```
