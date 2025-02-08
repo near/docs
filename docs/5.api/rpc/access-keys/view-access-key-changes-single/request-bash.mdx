@@ -1,0 +1,13 @@
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENTAL_changes \
+  params:='{
+    "changes_type": "single_access_key_changes",
+    "keys": [
+      {
+        "account_id": "example-acct.testnet",
+        "public_key": "ed25519:25KEc7t7MQohAJ4EDThd2vkksKkwangnuJFzcoiXj9oM"
+      }
+    ],
+    "finality": "final"
+  }'
+```

@@ -1,0 +1,24 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import { LantstoolLabel } from "@site/src/components/lantstool/LantstoolLabel/LantstoolLabel";
+import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantstool";
+import RequestJson from "./request-json.mdx";
+import RequestJs from "./request-js.mdx";
+import RequestBash from "./request-bash.mdx";
+import ResponseJson from "./response-json.mdx";
+import ErrorSchemaTable from "./error-schema-table.mdx";
+
+<Tabs>
+  <TabItem value="json" label="JSON" default>
+    <RequestJson />
+  </TabItem>
+  <TabItem value="js" label="🌐 JavaScript" label="JavaScript">
+    <RequestJs />
+  </TabItem>
+  <TabItem value="http" label="HTTPie">
+    <RequestBash />
+  </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/5.api/rpc/get-account-key.json" />
+  </TabItem>
+</Tabs>

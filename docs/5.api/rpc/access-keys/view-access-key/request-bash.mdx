@@ -1,0 +1,9 @@
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
+  params:='{
+    "request_type": "view_access_key",
+    "finality": "final",
+    "account_id": "client.chainlink.testnet",
+    "public_key": "ed25519:H9k5eiU4xXS3M4z8HzKJSLaZdqGdGwBG49o7orNC4eZW"
+  }'
+```
