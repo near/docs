@@ -19,16 +19,16 @@ Any mentions of _Defuse_ in the source code and documentation are to be replaced
 
 There are four main components that work together to fulfill intent requests:
 
-- [**Intent Creators**:](#intents) Users/Agents that create requestsfor a desired outcome.
+- [**Intent Creators**:](#intent-creation) Users/Agents that create requestsfor a desired outcome.
 - [**Solvers**:](#solvers) A decentralized network of solvers compete to fulfill request in the most optimal way.
-- [**NEAR Smart Contract**:](#near-intent-smart-contract) A smart contract on NEAR facilitates the settlement of an intent on-chain.
+- [**NEAR Smart Contract**:](#intent-creation) A smart contract on NEAR facilitates the settlement of an intent on-chain.
 - [**Bridge**:](#bridge) Enables communication between NEAR and other blockchain platforms.
 
 Here's how these components work together:
 
-1. [**Intent Creation**:](#intent) A user expresses a desired outcome (ex: Swap Token A for Token B).
+1. [**Intent Creation**:](#intent-creation) A user expresses a desired outcome (ex: Swap Token A for Token B).
 
-2. [**Solvers Compete**:](#solvers-compete) The decentralized network of solvers competes to fulfill the request.
+2. [**Solvers Compete**:](#solvers) The decentralized network of solvers competes to fulfill the request.
 
 3. [**User Receives Quote**:](#user-receives-quote) The Solver Network selects the best quote and presents it to the user/agent.
 
@@ -57,27 +57,65 @@ sequenceDiagram
     note right of User/Agent: Intent Fulfilled! ✅
 ```
 
-## Terminology
+## Intent Creation
 
-1. Intent Settlement:
-   1. [Solver Bus.](#solver-bus) an off chain message bus used for communication and sending `permits` between solvers and users. In general, specific only to a single distribution channel with solvers that may be authorized / trusted by this distribution channel. In the beginning of the project, a single shared solver bus may exist.
-   2. [Verifier](#verifier). Smart contract that verifies intents expressed as state changes (`diffs`) signed by corresponding owners (a.k.a `permits`). The combination of state changes is committed as long as the invariant (total delta is zero) was kept for each token after these changes were applied. Deployed on NEAR `mainnet`.
-2. Entities:
-   1. Distribution channels. Applications that have the users, who are interested in decentralized spot trading.
-   2. Solvers. Active market participants that fill in the intents issued by users.
+Users and AI agents can create various types of intents to interact with assets across different chains. Each intent represents a specific desired outcome while abstracting away the complexity of execution.
 
+The main intent types supported by the `intents.near` contract are:
 
-## Verifier
+1. **Swap Intent**: Exchange one token for another at the best available rate
+2. **Transfer Intent**: Move tokens between addresses or chains
+3. **FT Withdraw Intent**: Withdraw fungible tokens from the protocol
+4. **NFT Withdraw Intent**: Withdraw non-fungible tokens from the protocol
+5. **MT Withdraw Intent**: Withdraw multiple tokens in a single transaction
+6. **Native Withdraw Intent**: Withdraw native blockchain tokens (e.g., NEAR)
 
-Source code and deployment for the verifier smart contract.
+Each intent follows a standard structure that includes:
+- Source assets and amounts
+- Desired outcome parameters
+- Optional constraints (e.g., minimum output amount, deadline)
+- User signature authorizing the intent
 
-:::tip Source code
+For example, a Swap Intent might look like:
+```typescript
+{
+  type: "swap",
+  input: {
+    token: "usdc.near",
+    amount: "1000000000" // 1000 USDC (6 decimals)
+  },
+  output: {
+    token: "wrap.near",
+    minAmount: "1150000000000000000000000" // Minimum 1.15 wNEAR
+  },
+  deadline: 1703187600000
+}
+```
 
-You can find the source code of the verifier smart contract in [this GitHub repository](https://github.com/near/intents).
+## Solvers
 
-:::
+NEAR Intents uses decentralized networks of solvers to fulfill intents. Each solver network is an off-chain message bus that facilitates:
 
-### Deployment
+1. Communication between users and solvers
+2. Exchange of `permits` (signed state changes) between participants
+3. Competition between solvers to provide optimal solutions
+
+When an intent is broadcast, the solver network communicates with multiple solvers simultaneously. Each solver analyzes the intent and proposes their solution, including execution path and pricing. The solver network then aggregates these responses and selects the most optimal solution before presenting a final quote to the user or agent.
+
+Solver networks are typically specific to a single distribution channel (like a DeFi application) and may contain authorized/trusted solvers for that channel. These solvers:
+
+- Monitor for new intent broadcasts
+- Calculate optimal execution paths
+- Compete to provide the best quotes
+- Execute approved intents through the NEAR smart contract
+- Handle cross-chain coordination when needed
+
+The decentralized nature of solver networks ensures:
+- Competitive pricing through solver competition
+- Redundancy and reliability
+- Specialized solvers for different types of intents
+
+## NEAR Intent Smart Contract
 
 The smart contract for NEAR Intents protocol is deployed at [`intents.near`](https://nearblocks.io/address/intents.near).
 
@@ -85,13 +123,7 @@ The smart contract for NEAR Intents protocol is deployed at [`intents.near`](htt
 Currently there is no `testnet` deployment.
 :::
 
-## Solver Bus
-
-An off chain message bus used for communication and sending `permits` between solvers and users.
-
-![Solver Bus diagram](/docs/assets/intents/solver-relay-v2-user-docs.jpg)
-
-On the diagram "Solver Bus" is called "Solver Relay" and "Verifier" is part of NEAR Intents Smart contracts.
+## Bridge
 
 ---
 
