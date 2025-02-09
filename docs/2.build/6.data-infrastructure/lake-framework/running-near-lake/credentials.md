@@ -1,5 +1,6 @@
 ---
 sidebar_label: "Credentials"
+id: credentials
 ---
 
 # Credentials
