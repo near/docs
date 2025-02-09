@@ -54,7 +54,7 @@ After that is set up, just copy/paste the `JSON object` example snippets below i
 All of the queries listed in this documentation page can be called using [`near-api-js`](https://github.com/near/near-api-js).
 
 - For `near-api-js` installation and setup please refer to `near-api-js` [quick reference documentation](../../4.tools/near-api.md).
-- All JavaScript code snippets require a `near` object. For examples of how to instantiate, [**click here**](../../4.tools/near-api.md#connecting-to-near-connect).
+- All JavaScript code snippets require a `near` object. For examples of how to instantiate, [**click here**](../../4.tools/near-api.md#connect).
 
 ---
 ## HTTPie Setup {#httpie-setup}

@@ -161,7 +161,7 @@ but will fail on Bob's shard.
 
 ## Function Call Access Keys in Meta Transactions
 
-[Function Call Access Keys](../protocol/access-keys.md#function-call-keys-function-call-keys)
+[Function Call Access Keys](../protocol/access-keys.md#function-call-keys)
 are limited to signing transactions for specific methods on a specific contract.
 
 

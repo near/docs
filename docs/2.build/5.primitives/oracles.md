@@ -27,7 +27,7 @@ Here is a directory of third-party oracle services deployed on the NEAR blockcha
 
 | Name                                                                                                     | Creator                                 | Description                                        |
 | -------------------------------------------------------------------------------------------------------- | --------------------------------------- | -------------------------------------------------- |
-| [Price Oracle](#price-oracle)                                                                            | [NearDefi](https://github.com/NearDeFi) | Open source oracle for real-time asset pricing     |
+| [Price Oracle](#price-oracle-by-neardefi)                                                                | [NearDefi](https://github.com/NearDeFi) | Open source oracle for real-time asset pricing     |
 | [Pyth Network Oracle](#pyth-network-oracle)                                                              | [Pyth Network](https://pyth.network/)   | High-frequency, low-latency oracle for price feeds |
 | **[[Your Project Here]](https://github.com/near/docs/edit/master/docs/2.build/5.primitives/oracles.md)** | -                                       | -                                                  |
 
@@ -243,7 +243,7 @@ Although unused deposit will be refunded, you can calculate an estimate by calli
 
 > Fetches the most recent price feed stored in the Pyth Oracle contract. Is a view method, so does not require a signature or payment.
 
-- args: `price_identifier` _(unique [price feed identifier](#environment-variables))_
+- args: `price_identifier` _(unique price feed identifier)_
 - type: `object`
 - example: `{ price_identifier: 'f9c0172ba10dfa8...' }`
 

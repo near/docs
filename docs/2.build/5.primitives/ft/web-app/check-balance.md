@@ -1,7 +1,7 @@
 
 
 :::info
-Remember about fungible token precision. You may need this value to show a response of balance requests in an understandable-to-user way in your app. How to get precision value (decimals) you may find [above](#get-token-metadata).
+Remember about fungible token precision. You may need this value to show a response of balance requests in an understandable-to-user way in your app. How to get precision value (decimals) you may find [here](/build/primitives/ft/web-app/get-metadata).
 :::
 
 ```js

@@ -55,8 +55,8 @@ export function Language({ children, language, showSingleFName }) {
   }
 }
 
-export function Github({ url, start, end, language, fname, metastring }) {
-  return GitHubInternal({ url, start, end, language, fname, metastring });
+export function Github({ url, start, end, language, fname, metastring, withSourceLink }) {
+  return GitHubInternal({ url, start, end, language, fname, metastring, withSourceLink  });
 }
 
 /* AUX function */
