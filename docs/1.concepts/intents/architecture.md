@@ -1,6 +1,6 @@
 ---
 id: architecture
-title: Intents Layer
+title: NEAR intents
 sidebar_label: Architecture
 ---
 
