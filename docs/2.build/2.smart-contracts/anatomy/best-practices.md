@@ -5,6 +5,18 @@ title: "Best Practices"
 
 # Best practices
 
+Here we lay out some best practices for writing smart contracts on NEAR, such as:
+
+- [Enable overflow checks](#enable-overflow-checks)
+- [Use `require!` early](#use-require-early)
+- [Use `log!`](#use-log)
+- [Return `Promise`](#return-promise)
+- [Reuse crates from `near-sdk`](#reuse-crates-from-near-sdk)
+- [The difference between `std::panic!` and `env::panic`](#stdpanic-vs-envpanic)
+- [Use workspaces](#use-workspaces)
+
+---
+
 ## Enable overflow checks
 
 It's usually helpful to panic on integer overflow. To enable it, add the following into your `Cargo.toml` file:
