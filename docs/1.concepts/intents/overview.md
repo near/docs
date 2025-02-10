@@ -31,9 +31,9 @@ Any mentions of _Defuse_ in the source code and documentation are to be replaced
 
 2. [**Solvers Compete**:](#solvers) A off-chain decentralized network of solvers compete to fulfill the request in the most optimal way. When the solver network finds the best solution, it presents it as a quote to the originating user/agent for approval.
 
-4. [**Intent Execution**:](#intent-execution) If the quote from the Solver Network is accepted, the intent begins execution. This is done by the solver performing a contract call (`execute_intents`) to the Intents smart contract on NEAR ([`intents.near`](https://nearblocks.io/address/intents.near)) and passing the intent details. 
+4. [**Intent Execution**:](#intent-execution) If the quote from the Solver Network is accepted, the intent begins execution. This is done by the solver performing a contract call (`execute_intents`) to the Intents smart contract on NEAR ([`intents.near`](https://nearblocks.io/address/intents.near)) and passing the intent details. This contract then fullfills the request and (if needed) uses a Bridge to broadcast the intent to the destination chain. The NEAR Intent smart contract also verifies state changes and ensures the intent is settled correctly, reporting the outcome to the originating user/agent.
 
-5. [**Intent Settlement**:](#intent-settlement) The NEAR Intents contract fullfills the request and (if needed) uses a Bridge to settle an intent cross-chain. The Intent smart contract also verifies state changes and ensures the intent is settled correctly, reporting the outcome to the originating user/agent.
+Here is a sequence diagram of the intent flow:
 
 ```mermaid
 sequenceDiagram
@@ -58,6 +58,7 @@ sequenceDiagram
     note right of User/Agent: Intent Fulfilled! ✅
 ```
 
+---
 
 ## Intent Creation
 
@@ -93,6 +94,7 @@ For example, a Swap Intent might look like:
   deadline: 1703187600000
 }
 ```
+---
 
 ## Solvers
 
@@ -117,24 +119,25 @@ The decentralized nature of solver networks ensures:
 - Redundancy and reliability
 - Specialized solvers for different types of intents
 
-## NEAR Intent Smart Contract
+---
+## Intent Execution
 
-The smart contract for NEAR Intents protocol is deployed at [`intents.near`](https://nearblocks.io/address/intents.near).
+When a user accepts a quote from the Solver Network, the intent begins execution. This is done by the solver performing a contract call (`execute_intents`) to the Intents smart contract on NEAR ([`intents.near`](https://nearblocks.io/address/intents.near)) and passing the intent details. 
 
-:::warning
-Currently there is no `testnet` deployment.
-:::
-
-## Bridge
+The NEAR Intents contract fullfills the request and (if needed) uses a Bridge to settle an intent cross-chain. The Intent smart contract also verifies state changes and ensures the intent is settled correctly, reporting the outcome to the originating user/agent.
 
 ---
 
 ## Examples
 
-Below are solver and frontend reference implementations for interacting with NEAR Intents protocol:
+Here are some live examples of NEAR Intents in action:
 
-- [Defuse Frontend](https://github.com/defuse-protocol/defuse-frontend): `near-intents.org` website
-- [Defuse SDK](https://github.com/defuse-protocol/defuse-sdk): Typescript SDK powering `near-intents.org`
+- [Defuse Frontend](https://github.com/defuse-protocol/defuse-frontend): `near-intents.org` fronted sourcecode
+- [Defuse SDK](https://github.com/defuse-protocol/defuse-sdk): Typescript SDK powering `near-intents.org` [WIP]  
 - [AMM Solver](https://github.com/defuse-protocol/near-intents-amm-solver): Sample solver with AMM functionality
 - [Python Client](https://github.com/referencedev/test-intent): A Python example of interacting with the Solver Bus
--
+- [NEAR Intents AI Agent Example](https://github.com/near-examples/near-intents-agent-example): A Python example of an AI agent that uses NEAR Intents
+
+:::warning
+Currently there is no `testnet` deployment.
+:::
