@@ -1,24 +1,46 @@
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
-import { LantstoolLabel } from "@site/src/components/lantstool/LantstoolLabel/LantstoolLabel";
-import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantstool";
 import RequestJson from "./request-json.mdx";
-import RequestJs from "./request-js.mdx";
 import RequestBash from "./request-bash.mdx";
 import ResponseJson from "./response-json.mdx";
 import ErrorSchemaTable from "./error-schema-table.mdx";
+import ErrorSchemaDescription from "../../general/error-schema-description.mdx";
 
-<Tabs>
+## [deprecated] Send transaction (async) {#send-transaction-async}
+
+> Consider using [`send_tx`](/api/rpc/transactions#send-tx) instead
+
+> Sends a transaction and immediately returns transaction hash.
+
+- method: `broadcast_tx_async`
+- params: [SignedTransaction encoded in base64]
+
+Example:
+
+<Tabs groupId="code-tabs">
   <TabItem value="json" label="JSON" default>
     <RequestJson />
-  </TabItem>
-  <TabItem value="js" label="JavaScript">
-    <RequestJs />
   </TabItem>
   <TabItem value="http" label="HTTPie">
     <RequestBash />
   </TabItem>
-  <TabItem value="Lantstool" label={<LantstoolLabel />}>
-    <TryOutOnLantstool path="docs/5.api/rpc/get-account-key.json" />
-  </TabItem>
 </Tabs>
+
+<details>
+  <summary>Example response:</summary>
+  <ResponseJson />
+</details>
+
+Final transaction results can be queried using [Transaction Status](#transaction-status)
+or [NearBlocks Explorer](https://testnet.nearblocks.io/) using the above
+`result` hash returning a result similar to the example below.
+
+![NEAR-Explorer-transactionHash](/docs/assets/NEAR-Explorer-transactionHash.png)
+
+#### What could go wrong? {#what-could-go-wrong}
+
+<ErrorSchemaDescription />
+
+Here is the exhaustive list of the error variants that can be returned by `broadcast_tx_async` method:
+
+<ErrorSchemaTable />
