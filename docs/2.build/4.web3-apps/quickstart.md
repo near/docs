@@ -19,7 +19,7 @@ If you already have an application and want to integrate NEAR into it, we recomm
 ## Create NEAR App
 If you already have [Node.js](https://nodejs.org/en/download) installed, simply run:
 
-```bash 
+```bash
   npx create-near-app@latest
 ```
 
@@ -27,13 +27,24 @@ Use the interactive menu to set up:
 1. `A Web App`.
 2. `NextJs (Classic)`.
 
+<details>
+<summary> More boilerplate options from `create-near-app` </summary>
+
+Using `create-near-app` you can also set up:
+   - NextJs (App Router)
+   - Vite (React)
+   - JS/TS Smart Contract
+   - Rust Smart Contract
+
+</details>
+
 :::tip Using pnpm
 While you can use our app with any package manager, we recommend you to skip the installation step and manually install the dependencies using `pnpm i`.
 :::
 
-Once the folder is ready - and all dependencies installed - you can start the development server using `pnpm`. 
+Once the folder is ready - and all dependencies installed - you can start the development server using `pnpm`.
 
-```bash 
+```bash
 pnpm dev
 ```
 
@@ -114,7 +125,7 @@ Login if you haven't done it yet and you will see a simple form that allows you 
 We retrieve the `wallet` we initialized earlier via the `useContext` hook. The wallet allows us to interact with the smart contract through `viewMethod` and `callMethod`.
 
 - `viewMethod` is used to call functions that are read-only
-- `callMethod` is used to call functions that modify the state of the contract 
+- `callMethod` is used to call functions that modify the state of the contract
 
 <Github url="https://github.com/near-examples/hello-near-examples/blob/master/frontend/src/pages/hello-near/index.js" language="jsx" start="13" end="36" />
 

@@ -32,7 +32,7 @@ There are five steps to create a Chain Signature:
 1. [Deriving the Foreign Address](#1-deriving-the-foreign-address) - Construct the address that will be controlled on the target blockchain
 2. [Creating a Transaction](#2-creating-the-transaction) - Create the transaction or message to be signed
 3. [Requesting a Signature](#3-requesting-the-signature) - Call the NEAR `v1.signer` contract requesting it to sign the transaction
-4. [Reconstructing the Signature](#4-reconstructing-the-signature) - Reconstruct the signature from the MPC service's response
+4. [Formatting the Signature](#4-reconstructing-the-signature) - Reconstruct the signature from the MPC service's response
 5. [Relaying the Signed Transaction](#5-relaying-the-signature) - Send the signed transaction to the destination chain for execution
 
 ![chain-signatures](/docs/assets/welcome-pages/chain-signatures-overview.png)
@@ -126,6 +126,10 @@ In bitcoin, you construct a new transaction by using all the Unspent Transaction
 
 </Tabs>
 
+:::tip
+If you're a Rust developer, you can use the [Omni Transaction](https://github.com/near/omni-transaction-rs) Rust library to build transactions easily for different blockchains (like Bitcoin and Ethereum) inside NEAR contracts.
+:::
+
 ---
 
 ## 3. Requesting the Signature
@@ -162,7 +166,8 @@ For bitcoin, all UTXOs are signed independently and then combined into a single 
 
   In this example, we attach a deposit of 0.05 $NEAR for the signature request. The transaction may fail if the network is congested since the deposit required by the MPC service scales linearly with the number of pending requests, from 1 yoctoNEAR to a maximum of 0.65 $NEAR. Any unused deposit will be refunded and if the signature fails, the user will be refunded the full deposit.
 
-  The MPC contract does implement a method to check the current deposit required, however, it cannot be used reliably since the amount will likely change between the time of the check and the time of the request.
+  As an alternative, the MPC contract provides an [`experimental_signature_deposit()`](https://github.com/near/mpc/blob/develop/API.md#experimantal_signature_deposit) method to check the current deposit required.
+  Keep in mind that this could provide an unreliable value, since the amount will likely change between the time of the check and the time of the request.
 
 </details>
 
@@ -174,9 +179,9 @@ The contract will take some time to respond, as the `sign` method [yields execut
 
 ---
 
-## 4. Reconstructing the Signature
+## 4. Formatting the Signature
 
-The MPC contract will not return the signature of the transaction itself, but the elements needed to reconstruct the signature.
+The MPC contract will not return the signature of the transaction itself, but the elements needed to rebuild the signature matching the target blockchain's format.
 
 This allows the contract to generalize the signing process for multiple blockchains.
 
@@ -186,16 +191,16 @@ This allows the contract to generalize the signing process for multiple blockcha
       url="https://github.com/near-examples/near-multichain/blob/main/src/services/ethereum.js"
       start="89" end="100" />
 
-In Ethereum, the signature is reconstructed by concatenating the `r`, `s`, and `v` values returned by the contract.
+In Ethereum, the signature is formatted by concatenating the `r`, `s`, and `v` values returned by the contract.
 
 </TabItem>
 <!-- https://github.com/near-examples/near-multichain/blob/1c07d9a3de7f1f2ee93206b77832838f2892144b/src/services/bitcoin.js -->
 <TabItem value="₿ Bitcoin">
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/services/bitcoin.js"
-      start="86" end="99" />
+      start="120" end="172" />
 
-In Bitcoin, the signature is reconstructed by concatenating the `r` and `s` values returned by the contract.
+In Bitcoin, the signature is formatted by concatenating the `r` and `s` values returned by the contract.
 
 </TabItem>
 
@@ -218,7 +223,7 @@ Once we have reconstructed the signature, we can relay it to the corresponding n
 <TabItem value="₿ Bitcoin">
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/services/bitcoin.js"
-      start="120" end="133" />
+      start="189" end="202" />
 
 </TabItem>
 
