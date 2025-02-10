@@ -85,7 +85,6 @@ const sidebar = {
         {
           "Intents": [
             "concepts/intents/overview",
-            "concepts/intents/architecture",
             "concepts/intents/poa-bridge",
             "concepts/intents/solvers",
             "concepts/intents/faq",
