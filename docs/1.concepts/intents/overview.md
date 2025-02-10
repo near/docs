@@ -4,9 +4,19 @@ title: Intents
 sidebar_label: Overview
 ---
 
-In NEAR, an `intent` is a high level declaration of what a user wants to achieve. Users or AI agents express their desired outcome (like "swap Token A for Token B at the best price") without needing to specify technical implementation details. 
+In NEAR, an `intent` is a high level declaration of what a user wants to achieve. Think of it as telling the blockchain "what" you want to do, not "how" to do it. For example, instead of manually:
+- Finding the best DEX for a token swap
+- Calculating optimal routes
+- Executing multiple transactions
 
-[NEAR Intents](https://near.org/blog/introducing-near-intents/) is a new transaction framework that revolutionizes how users, services, and AI agents interact with blockchain networks. Instead of executing complex transactions directly across multiple chains, users simply declare what they want to achieve, and a network of solvers (both AI agents and traditional market participants) determines how to make it happen optimally.
+You simply express: "I want to swap Token A for Token B at the best price."
+
+[NEAR Intents](https://near.org/blog/introducing-near-intents/) is a revolutionary transaction framework that simplifies blockchain interactions for:
+- Users
+- Services
+- AI agents
+
+The key innovation is that users no longer need to handle complex cross-chain transactions themselves. Instead, they declare their desired outcome, and a specialized network of solvers (including both AI agents and traditional market participants) competes to execute that intent in the most optimal way possible.
 
 :::info
 The NEAR intents protocol and the documentation are under active development.
