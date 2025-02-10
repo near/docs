@@ -17,24 +17,13 @@ Any mentions of _Defuse_ in the source code and documentation are to be replaced
 
 ## How It Works
 
-There are four main components that work together to fulfill intent requests:
+1. [**Intent Creation**:](#intent-creation) A user or AI agent expresses a desired outcome _(ex: Swap Token A for Token B)_ and broadcasts the intent to a Solver Network of their choice.
 
-- [**Intent Creators**:](#intent-creation) Users/Agents that create requestsfor a desired outcome.
-- [**Solvers**:](#solvers) A decentralized network of solvers compete to fulfill request in the most optimal way.
-- [**NEAR Smart Contract**:](#intent-creation) A smart contract on NEAR facilitates the settlement of an intent on-chain.
-- [**Bridge**:](#bridge) Enables communication between NEAR and other blockchain platforms.
+2. [**Solvers Compete**:](#solvers) A off-chain decentralized network of solvers compete to fulfill the request in the most optimal way. When the solver network finds the best solution, it presents it as a quote to the originating user/agent for approval.
 
-Here's how these components work together:
+4. [**Intent Execution**:](#intent-execution) If the quote from the Solver Network is accepted, the intent begins execution. This is done by the solver performing a contract call (`execute_intents`) to the Intents smart contract on NEAR ([`intents.near`](https://nearblocks.io/address/intents.near)) and passing the intent details. 
 
-1. [**Intent Creation**:](#intent-creation) A user expresses a desired outcome (ex: Swap Token A for Token B).
-
-2. [**Solvers Compete**:](#solvers) The decentralized network of solvers competes to fulfill the request.
-
-3. [**User Receives Quote**:](#user-receives-quote) The Solver Network selects the best quote and presents it to the user/agent.
-
-4. [**Intent Execution**:](#intent-execution) When approved, solver initiates intent execution via the NEAR Intent Smart Contract.
-
-5. [**Intent Settlement**:](#intent-settlement) NEAR contract and Bridge settle the intent across chains and verify state changes.
+5. [**Intent Settlement**:](#intent-settlement) The NEAR Intents contract fullfills the request and (if needed) uses a Bridge to settle an intent cross-chain. The Intent smart contract also verifies state changes and ensures the intent is settled correctly, reporting the outcome to the originating user/agent.
 
 ```mermaid
 sequenceDiagram
@@ -44,6 +33,8 @@ sequenceDiagram
     participant Destination Chain
 
     User/Agent->>Solver Network: Broadcasts intent
+    note right of Solver Network: Solvers compete to <br> find the best solution
+    Solver Network-->>Solver Network: 
     Solver Network-->>User/Agent: Return quote from a solver
     User/Agent->>Solver Network: User accepts quote and <br> solver executes intent
     Solver Network->>NEAR Blockchain: Solver calls NEAR <br> Intent smart contract
@@ -56,6 +47,7 @@ sequenceDiagram
     NEAR Blockchain->>User/Agent: 
     note right of User/Agent: Intent Fulfilled! ✅
 ```
+
 
 ## Intent Creation
 
