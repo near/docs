@@ -1,0 +1,28 @@
+<table className="custom-stripe">
+  <thead>
+    <tr>
+      <th>ERROR_TYPE<br /><code>error.name</code></th>
+      <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
+      <th>Reason</th>
+      <th>Solution</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>INTERNAL_ERROR</td>
+      <td>INTERNAL_ERROR</td>
+      <td>500</td>
+      <td>Something went wrong with the node itself or overloaded</td>
+      <td>
+        <ul>
+          <li>Try again later</li>
+          <li>Send a request to a different node</li>
+          <li>
+            Check <code>error.cause.info</code> for more details
+          </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>

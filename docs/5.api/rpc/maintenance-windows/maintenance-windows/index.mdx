@@ -3,22 +3,46 @@ import TabItem from "@theme/TabItem";
 import { LantstoolLabel } from "@site/src/components/lantstool/LantstoolLabel/LantstoolLabel";
 import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantstool";
 import RequestJson from "./request-json.mdx";
-import RequestJs from "./request-js.mdx";
 import RequestBash from "./request-bash.mdx";
 import ResponseJson from "./response-json.mdx";
 import ErrorSchemaTable from "./error-schema-table.mdx";
+import ErrorSchemaDescription from "../../general/error-schema-description.mdx";
 
-<Tabs>
+## Maintenance windows {#maintenance-windows}
+
+> The maintenance windows for a specific validator are future block height
+> ranges in current epoch, in which the validator does not need produce block or chunk
+> If the provided account is not a validator, then it will return the range
+> from now to the end of the epoch.
+
+- method: `EXPERIMENTAL_maintenance_windows`
+- params:
+  - `account_id`
+
+Example:
+
+<Tabs groupId="code-tabs">
   <TabItem value="json" label="JSON" default>
     <RequestJson />
-  </TabItem>
-  <TabItem value="js" label="JavaScript">
-    <RequestJs />
   </TabItem>
   <TabItem value="http" label="HTTPie">
     <RequestBash />
   </TabItem>
-  <TabItem value="Lantstool" label={<LantstoolLabel />}>
-    <TryOutOnLantstool path="docs/5.api/rpc/get-account-key.json" />
-  </TabItem>
 </Tabs>
+
+<details>
+  <summary>Example response:</summary>
+  <p>
+    The result will be a list of future maintenance windows in current epoch.
+    For example a window `[1028, 1031]` includes 1028, 1029 and 1030.
+    <ResponseJson />
+  </p>
+</details>
+
+#### What Could Go Wrong?? {#what-could-go-wrong}
+
+<ErrorSchemaDescription />
+
+Here is the exhaustive list of the error variants that can be returned by `maintenance_windows` method:
+
+<ErrorSchemaTable />

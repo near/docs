@@ -2,23 +2,60 @@ import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import { LantstoolLabel } from "@site/src/components/lantstool/LantstoolLabel/LantstoolLabel";
 import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantstool";
-import RequestJson from "./request-json.mdx";
-import RequestJs from "./request-js.mdx";
-import RequestBash from "./request-bash.mdx";
+import EpochHashRequestJson from "./epoch-hash/request-json.mdx";
+import EpochHashRequestBash from "./epoch-hash/request-bash.mdx";
+import LatestRequestJson from "./latest/request-json.mdx";
+import LatestRequestBash from "./latest/request-bash.mdx";
 import ResponseJson from "./response-json.mdx";
 import ErrorSchemaTable from "./error-schema-table.mdx";
+import ErrorSchemaDescription from "../../general/error-schema-description.mdx";
 
-<Tabs>
+## Validation Status {#validation-status}
+
+> Queries active validators on the network returning details and the state of
+> validation on the blockchain.
+
+- method: `validators`
+- params:
+  - `epoch_id` _OR_ `[null]`
+
+**Note:**
+You can obtain the `epoch_id` from a block that belongs to a specific epoch. <br />
+If you want to retrieve the current list of validators, pass `null` as the parameter. <br />
+Additionally, you can query validators for past epochs by providing the `epoch_id`
+of the desired past epoch.
+
+`epoch_id` example:
+
+<Tabs groupId="code-tabs">
   <TabItem value="json" label="JSON" default>
-    <RequestJson />
-  </TabItem>
-  <TabItem value="js" label="JavaScript">
-    <RequestJs />
+    <EpochHashRequestJson />
   </TabItem>
   <TabItem value="http" label="HTTPie">
-    <RequestBash />
-  </TabItem>
-  <TabItem value="Lantstool" label={<LantstoolLabel />}>
-    <TryOutOnLantstool path="docs/5.api/rpc/get-account-key.json" />
+    <EpochHashRequestBash />
   </TabItem>
 </Tabs>
+
+`null` example:
+
+<Tabs groupId="code-tabs">
+  <TabItem value="json" label="JSON" default>
+    <LatestRequestJson />
+  </TabItem>
+  <TabItem value="http" label="HTTPie">
+    <LatestRequestBash />
+  </TabItem>
+</Tabs>
+
+<details>
+  <summary>Example response: </summary>
+  <ResponseJson />
+</details>
+
+#### What could go wrong? {#what-could-go-wrong-2}
+
+<ErrorSchemaDescription />
+
+Here is the exhaustive list of the error variants that can be returned by `validators` method:
+
+<ErrorSchemaTable />

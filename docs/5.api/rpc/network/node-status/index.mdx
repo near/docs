@@ -7,8 +7,19 @@ import RequestJs from "./request-js.mdx";
 import RequestBash from "./request-bash.mdx";
 import ResponseJson from "./response-json.mdx";
 import ErrorSchemaTable from "./error-schema-table.mdx";
+import ErrorSchemaDescription from "../../general/error-schema-description.mdx";
 
-<Tabs>
+## Node Status {#node-status}
+
+> Returns general status of a given node (sync status, nearcore node version,
+> protocol version, etc.), and the current set of validators.
+
+- method: `status`
+- params: `[]`
+
+Example:
+
+<Tabs groupId="code-tabs">
   <TabItem value="json" label="JSON" default>
     <RequestJson />
   </TabItem>
@@ -18,7 +29,17 @@ import ErrorSchemaTable from "./error-schema-table.mdx";
   <TabItem value="http" label="HTTPie">
     <RequestBash />
   </TabItem>
-  <TabItem value="Lantstool" label={<LantstoolLabel />}>
-    <TryOutOnLantstool path="docs/5.api/rpc/get-account-key.json" />
-  </TabItem>
 </Tabs>
+
+<details>
+  <summary>Example response: </summary>
+  <ResponseJson />
+</details>
+
+#### What could go wrong? {#what-could-go-wrong}
+
+<ErrorSchemaDescription />
+
+Here is the exhaustive list of the error variants that can be returned by `status` method:
+
+<ErrorSchemaTable />
