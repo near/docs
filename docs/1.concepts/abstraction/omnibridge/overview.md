@@ -4,7 +4,7 @@ sidebar_label: Omni Bridge
 title: Omni Bridge
 ---
 
-The [Omni Bridge](https://github.com/Near-One/omni-bridge) is a trustless multi-chain bridge that combines [Chain Signatures](chain-signatures.md) for cross-chain transaction execution with a verification layer allowing NEAR smart contracts to confirm transactions on foreign chains. This creates a fully trustless system where NEAR can both initiate and verify cross-chain operations, effectively positioning NEAR as a settlement layer for cross-chain transactions.
+The [Omni Bridge](https://github.com/Near-One/omni-bridge) is a trustless multi-chain bridge that combines [Chain Signatures](../chain-signatures.md) for cross-chain transaction execution with a verification layer allowing NEAR smart contracts to confirm transactions on foreign chains. This creates a fully trustless system where NEAR can both initiate and verify cross-chain operations, effectively positioning NEAR as a settlement layer for cross-chain transactions.
 
 Unlike traditional bridges that rely on light clients for cross-chain verification (which can be computationally expensive and slow), Omni Bridge uses NEAR's Chain Signatures - a multi-party computation (MPC) system that enables secure cross-chain message verification without the computational overhead of light client verification. This approach reduces verification times from hours to minutes and significantly reduces gas costs across all supported chains.
 
@@ -21,8 +21,9 @@ Unlike traditional bridges that rely on light clients for cross-chain verificati
 
 The Omni Bridge consists of three core components:
 
-1. **Deterministic Address Derivation**:
-   - Every NEAR account can mathematically derive addresses on other chains through derivation paths
+1. **Chain Signatures**:
+   - Omni Bridge uses [Chain Signatures](../chain-signatures.md) to derviive chain-specific address & sign messages
+   - Every NEAR account can mathematically derive nearly infinate addresses on other chains through derivation paths
    - Ensures the same NEAR account always controls the same set of addresses across all supported chains
 
 2. **Bridge Smart Contract**:
