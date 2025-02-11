@@ -16,7 +16,7 @@ You simply express: "I want to swap Token A for Token B at the best price."
 - Services
 - AI agents
 
-The key innovation is that users no longer need to handle complex cross-chain transactions themselves. Instead, they declare their desired outcome, and a specialized network of solvers (including both AI agents and traditional market participants) competes to execute that intent in the most optimal way possible.
+The key innovation is that users & developers no longer need to handle complex cross-chain transactions themselves. Instead, they declare their desired outcome, and a specialized network of solvers (including both AI agents and traditional market participants) competes to execute that intent in the most optimal way possible.
 
 :::info
 The NEAR intents protocol and the documentation are under active development.
@@ -74,26 +74,30 @@ The main intent types supported by the `intents.near` contract are:
 6. **Native Withdraw Intent**: Withdraw native blockchain tokens (e.g., NEAR)
 
 Each intent follows a standard structure that includes:
+- The NEAR account ID of the initatior
+- Type of intent they want to execute
 - Source assets and amounts
 - Desired outcome parameters
+- Unique identifiers for tracking and authentication
 - Optional constraints (e.g., minimum output amount, deadline)
-- User signature authorizing the intent
 
-For example, a Swap Intent might look like:
-```typescript
+Here is an example of a native NEAR swap intent structure ready to be broadcasted to a Solver Network:
+
+```js
 {
-  type: "swap",
-  input: {
-    token: "usdc.near",
-    amount: "1000000000" // 1000 USDC (6 decimals)
-  },
-  output: {
-    token: "wrap.near",
-    minAmount: "1150000000000000000000000" // Minimum 1.15 wNEAR
-  },
-  deadline: 1703187600000
+  intent_type: "atomic_near", // Type of intent - in this case for atomic swaps on NEAR
+  intent_creation_hash: "Hx7b2270616...", // Unique hash of the intent for authenticity
+  intent_id: "intent_1234567890", // Unique identifier for this specific intent
+  intent_initiator: "alice.near", // The NEAR account ID of the user initiating the swap
+  defuse_asset_identifier_in: "near:wrap.near",  // inpute token (what you are swapping)
+  defuse_asset_identifier_out: "near:usdc.near", // output token (what you want to receive)
+  amount_in: "1000000000000000000000000",  // Numbber of $NEAR in yoctoNEAR (1 NEAR = 10^24 yoctoNEAR)
+  amount_out_desired: "1000000"            // Number of desired USDC (6 decimals)
 }
 ```
+
+<!-- TODO: add example of a cross-chain swap intent & and where to get the asset identifiers -->
+
 ---
 
 ## Solvers
@@ -103,6 +107,7 @@ NEAR Intents uses decentralized networks of solvers to fulfill intents. Each sol
 1. Communication between users and solvers
 2. Exchange of `permits` (signed state changes) between participants
 3. Competition between solvers to provide optimal solutions
+
 
 When an intent is broadcast, the solver network communicates with multiple solvers simultaneously. Each solver analyzes the intent and proposes their solution, including execution path and pricing. The solver network then aggregates these responses and selects the most optimal solution before presenting a final quote to the user or agent.
 
