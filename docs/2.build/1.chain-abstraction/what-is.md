@@ -49,7 +49,7 @@ NEAR's chain abstraction framework consists of three core technologies that work
 
 ### NEAR Intents
 
-The [NEAR Intents](../../1.concepts/intents/overview.md) is a new type of transaction that allows information, requests, assets, and actions to be exchanged between users, services, and AI agents.
+The [NEAR Intents](../../chain-abstraction/intents/overview.md) is a new type of transaction that allows information, requests, assets, and actions to be exchanged between users, services, and AI agents.
 
 This represents a paradigm shift in how users and AI agents interact with blockchain networks. Instead of directly executing complex transactions across multiple chains, users simply declare what they want to achieve, and the network determines how to make it happen.
 
