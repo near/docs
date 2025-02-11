@@ -1,5 +1,6 @@
 ---
 sidebar_label: "Start options"
+id: lake-start-options
 ---
 
 # Extending Lake indexer with start options
