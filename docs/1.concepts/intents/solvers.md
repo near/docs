@@ -1,14 +1,12 @@
 ---
 description: Example of signing solver intent
-title: Solver example
-sidebar_label: Solver example
+title: Create a Solver
+sidebar_label: Create a Solver
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Solver example
-
-Example of how to create response for quote for solvers using TypeScript
+Here is an example of how to create solver response for quote using TypeScript:
 
 Steps:
 1. Build a message response based on the `params`

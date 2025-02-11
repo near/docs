@@ -124,6 +124,9 @@ The decentralized nature of solver networks ensures:
 - Redundancy and reliability
 - Specialized solvers for different types of intents
 
+:::tip
+See [Create a Solver](/concepts/intents/solvers) for more details on how these solvers work.
+:::
 ---
 
 ## Intent Execution

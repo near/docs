@@ -1,12 +1,13 @@
 ---
-title: Cross-chain Bridges
+id: intents-bridge
+title: Intents Bridge
+sidebar_label: Intents Bridge
 ---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Cross-chain Bridges
-
-NEAR Intents utilizes two bridges for cross-chain settlement:
+NEAR Intents utilizes multichain bridges for cross-chain settlement. Currently the following bridges are supported:
 
 1. [Omni Bridge](#omni-bridge)
 2. [PoA Bridge](#poa-bridge)
@@ -45,7 +46,7 @@ Future migration to a fully sharded architecture will occur once sharded FT stan
 
 ## PoA Bridge
 
-The PoA Bridge provides an alternative solution for transferring assets between blockchain networks and NEAR Intents.
+The Proof of Authority (PoA) Bridge provides an alternative solution for transferring assets between blockchain networks and NEAR Intents.
 
 ![bridge diagram](/docs/assets/intents/poa-bridge-user-docs.jpg)
 
@@ -57,6 +58,6 @@ The PoA Bridge provides an alternative solution for transferring assets between 
 4. **Manage Withdrawals**: Initiate and monitor withdrawals through contract or frontend
 
 
-## PoA Bridge API
+### PoA Bridge API
 
 The PoA Bridge API provides a JSON-RPC interface for managing deposits and withdrawals between supported networks and NEAR Intents. See the [official documentation](https://docs.near-intents.org/near-intents/poa-bridge) for more details.
