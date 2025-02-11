@@ -38,7 +38,7 @@ The deposit process begins once the transfer transaction on the foreign network 
 
 The next step is collecting the current tokens in storage. The result of this process will be either a `COMPLETED` or `FAILED` status. Deposits with a `FAILED` status are currently handled manually and eventually updated to the `COMPLETED` status.
 
-On EVM networks, deposits can bypass the PENDING status due to the faster processing and transfer completion times.
+On EVM networks, deposits can bypass the `PENDING` status due to faster processing and transfer completion times.
 
 The data structure for the `PENDING` and `FAILED` statuses is identical to that of the `COMPLETED` status.
 

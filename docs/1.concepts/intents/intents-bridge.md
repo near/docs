@@ -4,8 +4,6 @@ title: Intents Bridge
 sidebar_label: Intents Bridge
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 NEAR Intents utilizes multichain bridges for cross-chain settlement. Currently the following bridges are supported:
 
