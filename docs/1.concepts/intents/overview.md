@@ -106,10 +106,9 @@ NEAR Intents uses decentralized networks of solvers to fulfill intents. Each sol
 
 1. Communication between users and solvers
 2. Exchange of `permits` (signed state changes) between participants
-3. Competition between solvers to provide optimal solutions
+3. Competition between solvers to provide the best quote possible for the intent originator
 
-
-When an intent is broadcast, the solver network communicates with multiple solvers simultaneously. Each solver analyzes the intent and proposes their solution, including execution path and pricing. The solver network then aggregates these responses and selects the most optimal solution before presenting a final quote to the user or agent.
+When an intent is broadcast, the solver network communicates with multiple solvers simultaneously. Each solver analyzes the intent and proposes their solution, including execution path and pricing. The solver network then aggregates these responses and selects the most optimal solution before presenting a final quote to the intent originator.
 
 Solver networks are typically specific to a single distribution channel (like a DeFi application) and may contain authorized/trusted solvers for that channel. These solvers:
 
@@ -120,22 +119,26 @@ Solver networks are typically specific to a single distribution channel (like a 
 - Handle cross-chain coordination when needed
 
 The decentralized nature of solver networks ensures:
+
 - Competitive pricing through solver competition
 - Redundancy and reliability
 - Specialized solvers for different types of intents
 
 ---
+
 ## Intent Execution
 
 When a user accepts a quote from the Solver Network, the intent begins execution. This is done by the solver performing a contract call (`execute_intents`) to the Intents smart contract on NEAR ([`intents.near`](https://nearblocks.io/address/intents.near)) and passing the intent details. 
 
-The NEAR Intents contract fullfills the request and (if needed) uses a Bridge to settle an intent cross-chain. The Intent smart contract also verifies state changes and ensures the intent is settled correctly, reporting the outcome to the originating user/agent.
+The NEAR Intents contract fullfills the request and (if needed) uses multi-chain bridge to settle an intent cross-chain. The Intent smart contract also verifies state changes and ensures the intent is settled correctly, reporting the outcome to the originating user/agent.
+
+<!-- TODO: add link to smart contract docs -->
 
 ---
 
 ## Examples
 
-Here are some live examples of NEAR Intents in action:
+Here are examples of NEAR Intents in action. Please note that this protocol is still under development and source code is available for learning purposes.
 
 - [Defuse Frontend](https://github.com/defuse-protocol/defuse-frontend): `near-intents.org` fronted sourcecode
 - [Defuse SDK](https://github.com/defuse-protocol/defuse-sdk): Typescript SDK powering `near-intents.org` [WIP]  
