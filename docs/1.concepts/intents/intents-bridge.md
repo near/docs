@@ -16,6 +16,8 @@ NEAR Intents utilizes multichain bridges for cross-chain settlement. Currently t
 
 ## Omni Bridge
 
+<!-- TODO: incoming omnibridge docs that will be added after this PR is merged. Once those are merged update this section. -->
+
 The Omni Bridge is the primary bridge solution supporting multiple networks and deposit options. 
 
 ### Supported Networks
