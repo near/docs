@@ -110,6 +110,8 @@ NEAR Intents uses decentralized networks of solvers to fulfill intents. Each sol
 
 When an intent is broadcast, the solver network communicates with multiple solvers simultaneously. Each solver analyzes the intent and proposes their solution, including execution path and pricing. The solver network then aggregates these responses and selects the most optimal solution before presenting a final quote to the intent originator.
 
+<!-- TODO: add diagram of the solver network -->
+
 Solver networks are typically specific to a single distribution channel (like a DeFi application) and may contain authorized/trusted solvers for that channel. These solvers:
 
 - Monitor for new intent broadcasts
