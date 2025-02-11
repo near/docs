@@ -84,10 +84,10 @@ const sidebar = {
         },
         {
           "Intents": [
-            "concepts/intents/overview",
-            "concepts/intents/solvers",
-            "concepts/intents/intents-bridge",
-            "concepts/intents/faq",
+            "chain-abstraction/intents/overview",
+            "chain-abstraction/intents/solvers",
+            "chain-abstraction/intents/intents-bridge",
+            "chain-abstraction/intents/faq",
           ]
         },
         'build/chain-abstraction/fastauth-sdk',
