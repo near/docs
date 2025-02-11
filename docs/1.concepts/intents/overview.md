@@ -31,7 +31,7 @@ Any mentions of _Defuse_ in the source code and documentation are to be replaced
 
 2. [**Solvers Compete**:](#solvers) A off-chain decentralized network of solvers compete to fulfill the request in the most optimal way. When the solver network finds the best solution, it presents it as a quote to the originating user/agent for approval.
 
-4. [**Intent Execution**:](#intent-execution) If the quote from the Solver Network is accepted, the intent begins execution. This is done by the solver performing a contract call (`execute_intents`) to the Intents smart contract on NEAR ([`intents.near`](https://nearblocks.io/address/intents.near)) and passing the intent details. This contract then fullfills the request and (if needed) uses a Bridge to broadcast the intent to the destination chain. The NEAR Intent smart contract also verifies state changes and ensures the intent is settled correctly, reporting the outcome to the originating user/agent.
+4. [**Intent Execution**:](#intent-execution) If the quote from the Solver Network is accepted, the intent begins execution. This is done by the solver performing a contract call (`execute_intents`) to the Intents smart contract on NEAR ([`intents.near`](https://nearblocks.io/address/intents.near)) and passing the intent details. This contract then fullfills the request and (if needed) uses a [cross-chain bridge](/concepts/intents/intents-bridge) to broadcast the intent to the destination chain. The NEAR Intent smart contract also verifies state changes and ensures the intent is settled correctly, reporting the outcome to the originating user/agent.
 
 Here is a sequence diagram of the intent flow:
 

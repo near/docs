@@ -12,11 +12,14 @@ NEAR Intents utilizes multichain bridges for cross-chain settlement. Currently t
 1. [Omni Bridge](#omni-bridge)
 2. [PoA Bridge](#poa-bridge)
 
+---
+
 ## Omni Bridge
 
-The Omni Bridge is the primary bridge solution supporting multiple networks and deposit options.
+The Omni Bridge is the primary bridge solution supporting multiple networks and deposit options. 
 
 ### Supported Networks
+
 - Bitcoin
 - Ethereum
 - Arbitrum
@@ -44,6 +47,8 @@ Users need to deposit funds into NEAR Intents accounts to trade, which differs f
 
 Future migration to a fully sharded architecture will occur once sharded FT standards are developed.
 
+---
+
 ## PoA Bridge
 
 The Proof of Authority (PoA) Bridge provides an alternative solution for transferring assets between blockchain networks and NEAR Intents.
@@ -52,12 +57,10 @@ The Proof of Authority (PoA) Bridge provides an alternative solution for transfe
 
 ### Usage Guide
 
-1. **Check Asset Support**: Verify your token is supported using the [supported assets API](#1-get-supported-assets)
+The PoA Bridge API provides a JSON-RPC interface for managing deposits and withdrawals between supported networks and NEAR Intents. See the [official documentation](https://docs.near-intents.org/near-intents/poa-bridge) for more details.
+
+1. **Check Asset Support**: Verify your token is supported
 2. **Get Deposit Address**: Request a deposit address and transfer tokens
 3. **Monitor Deposits**: Track recent deposits via API
 4. **Manage Withdrawals**: Initiate and monitor withdrawals through contract or frontend
 
-
-### PoA Bridge API
-
-The PoA Bridge API provides a JSON-RPC interface for managing deposits and withdrawals between supported networks and NEAR Intents. See the [official documentation](https://docs.near-intents.org/near-intents/poa-bridge) for more details.
