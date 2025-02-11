@@ -1,6 +1,7 @@
 ---
-id: omnibridge
-title: OmniBridge
+id: overview
+sidebar_label: Omni Bridge
+title: Omni Bridge
 ---
 
 The [Omni Bridge](https://github.com/Near-One/omni-bridge) is a trustless multi-chain bridge that combines [Chain Signatures](chain-signatures.md) for cross-chain transaction execution with a verification layer allowing NEAR smart contracts to confirm transactions on foreign chains. This creates a fully trustless system where NEAR can both initiate and verify cross-chain operations, effectively positioning NEAR as a settlement layer for cross-chain transactions.
