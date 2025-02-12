@@ -26,7 +26,7 @@ When a token transfer happens on NEAR using `ft_transfer_call`, the token contra
 
 For more information see [Fungible Tokens](../../../2.build/5.primitives/ft.md).
 
-## How Omni Bridge works
+## Enter Chain Signatures
 
 Instead of maintaining complex light clients on destination chains, Chain Signatures introduces a fundamentally different approach based on three core components:
 
@@ -36,31 +36,13 @@ Instead of maintaining complex light clients on destination chains, Chain Signat
 
 3. **MPC Service** - A decentralized network of nodes that jointly sign transactions without ever reconstructing a full private key. The security comes from threshold cryptography - no single node or small group of nodes can create valid signatures alone.
 
+## Putting It All Together
 
-```mermaid
-sequenceDiagram
-   title: High-Level Overview of NEAR to External Chain Transfer
-   participant User
-   participant NEAR as Bridge Contract <br> NEAR
-   participant MPC as MPC Service <br> (off-chain)
-   participant Other as Destination Chain
- 
-    User->>NEAR:1. Submits transfer <br> token request
-    NEAR->>NEAR: 2. Locks tokens
-    NEAR->>MPC: 3. Request signature
-    MPC->>MPC: 3. Signs message
-    MPC-->>NEAR: 4. Return signed msg
-    NEAR->>Other: 5. Broadcast signed msg to destination chain
-    Other->>Other: 4. Mint/release tokens
-``` 
-
-### Putting It All Together
-
-Chain Signatures fundamentally changes the verification mechanism for cross-chain messages. Here's what this means in practice:
+As we've learned, Chain Signatures fundamentally changes the verification mechanism for cross-chain messages. Here's what this means in practice:
 
 The light client approach requires destination chains to verify ED25519 signatures from NEAR validators. Chain Signatures replaces this with a single MPC signature verification. Destination chains only need to verify one signature using their native signature verification schemes - typically ECDSA for EVM chains.
 
-NEP-141's transaction guarantees handle the security of token locking. A transfer creates two operations within a single transaction:
+NEP-141's transaction guarantees handle the security of token locking. A transfer creates two operations within a **single transaction**:
 1. Lock tokens and record the transfer state
 2. Request MPC signature for the destination chain
 
@@ -74,3 +56,22 @@ Adding new chains becomes a matter of implementing three standard components:
 
 While we still need light clients on NEAR for receiving transfers from other chains, this approach makes it feasible to support a wider range of chains without implementing complex verification logic on each destination chain.
 
+
+```mermaid
+sequenceDiagram
+   title: High-Level Overview of NEAR to External Chain Transfer
+   participant User as User Account
+   participant Bridge as Omni Bridge <br> Locker Contract
+   participant MPC as MPC Service <br> (off-chain)
+   participant Other as Destination Chain
+
+   note over User, Bridge: NEAR Blockchain
+ 
+    User->>Bridge:1. Submits transfer <br> token request
+    Bridge->>Bridge: 2. Locks tokens
+    Bridge->>MPC: 3. Request signature
+    MPC->>MPC: 3. Signs message
+    MPC-->>Bridge: 4. Return signed msg
+    Bridge->>Other: 5. Broadcast signed msg to destination chain
+    Other->>Other: 4. Mint/release tokens
+``` 

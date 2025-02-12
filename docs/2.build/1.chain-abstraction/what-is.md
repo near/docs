@@ -109,29 +109,26 @@ To learn more about Chain Signatures, the concepts, and how to implement it, che
 
 ### OmniBridge
 
-The [OmniBridge](../../1.concepts/abstraction/omnibridge/overview.md) is a multi-chain asset bridge that combines Chain Signatures with chain-specific verification methods to enable secure and efficient cross-chain asset transfers. Unlike traditional bridges that rely solely on light clients (which can be computationally expensive and slow), OmniBridge uses a hybrid approach that significantly reduces verification times from hours to minutes while lowering gas costs across all supported chains.
+The [OmniBridge](../../1.concepts/abstraction/omnibridge/overview.md) is a multi-chain asset bridge that combines Chain Signatures with chain-specific verification methods to enable secure and efficient cross-chain asset transfers. It consists of three core components:
 
-The bridge architecture consists of three core components:
+1. **Chain Signatures Integration**:
+   - Enables NEAR smart contracts to generate and control accounts on other blockchains
+   - Allows direct signing and execution of transactions on external chains
+   - Provides secure message signing through MPC network
 
-1. **Bridge Token Factory**:
+2. **Verification Layer**:
+   - Hybrid verification approach combining MPC signatures and light clients
+   - Chain-specific verification methods based on target chain requirements
+   - Significantly reduces verification times from hours to minutes
+   - Lowers gas costs across all supported chains
+
+3. **Bridge Token Factory**:
    - Unified contract serving as both token factory and custodian
-   - Deploys and manages bridged token contracts
-   - Handles token locking and minting through NEP-141 standard
-   - Manages both native and bridged tokens through a single interface
+   - Manages both native and bridged tokens through NEP-141 standard
+   - Handles token locking, minting, and burning operations
+   - Supports permissionless relayer network for efficient processing
 
-2. **Message Signing System**:
-   - Uses Chain Signatures' MPC network for secure cross-chain message verification
-   - Supports structured message types for transfers and token operations
-   - Eliminates need for traditional challenge periods through MPC threshold guarantees
-   - Enables permissionless relayer network for efficient transaction processing
-
-3. **Chain-Specific Verification**:
-   - Hybrid verification approach based on each chain's requirements:
-     - Ethereum/Bitcoin: Light client + Chain Signatures
-     - Solana/Base/Arbitrum: Currently using Wormhole, transitioning to Chain Signatures
-   - Progressive migration path toward full Chain Signatures integration
-
-This architecture creates a robust bridge system that combines NEAR's ability to execute transactions on foreign chains with secure verification methods, while maintaining a clear path toward increased decentralization through full Chain Signatures adoption.
+This architecture creates a robust bridge system that combines NEAR's ability to execute transactions on foreign chains with secure verification methods, while maintaining high efficiency and security through MPC threshold guarantees.
 
 :::info
 For detailed implementation information and current status, see the [OmniBridge documentation](../../1.concepts/abstraction/omnibridge/overview.md).
