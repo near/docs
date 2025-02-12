@@ -84,10 +84,10 @@ const sidebar = {
         },
         {
           "Omni Bridge": [
-            "concepts/abstraction/omnibridge/overview",
-            "concepts/abstraction/omnibridge/how-it-works",
-            "concepts/abstraction/omnibridge/implementation-details",
-            "concepts/abstraction/omnibridge/roadmap",
+            "chain-abstraction/omnibridge/overview",
+            "chain-abstraction/omnibridge/how-it-works",
+            "chain-abstraction/omnibridge/implementation-details",
+            "chain-abstraction/omnibridge/roadmap",
           ]
         },
         'build/chain-abstraction/fastauth-sdk',
