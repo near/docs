@@ -24,6 +24,23 @@ import ErrorSchemaDescription from "../../general/error-schema-description.mdx";
 - method: `gas_price`
 - params: `[block_height]`, `["block_hash"]`, or `[null]`
 
+`null` example:
+
+<Tabs groupId="code-tabs">
+  <TabItem value="json" label="JSON" default>
+    <LatestRequestJson />
+  </TabItem>
+  <TabItem value="js" label="JavaScript">
+    <LatestRequestJs />
+  </TabItem>
+  <TabItem value="http" label="HTTPie">
+    <LatestRequestBash />
+  </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/5.api/rpc/gas/get-latest-gas-price.json" />
+  </TabItem>
+</Tabs>
+
 `block_height` example:
 
 <Tabs groupId="code-tabs">
@@ -35,6 +52,9 @@ import ErrorSchemaDescription from "../../general/error-schema-description.mdx";
   </TabItem>
   <TabItem value="http" label="HTTPie">
     <BlockHeightRequestBash />
+  </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/5.api/rpc/gas/get-gas-price-by-block-height.json" />
   </TabItem>
 </Tabs>
 
@@ -50,19 +70,8 @@ import ErrorSchemaDescription from "../../general/error-schema-description.mdx";
   <TabItem value="http" label="HTTPie">
     <BlockHashRequestBash />
   </TabItem>
-</Tabs>
-
-`null` example:
-
-<Tabs groupId="code-tabs">
-  <TabItem value="json" label="JSON" default>
-    <LatestRequestJson />
-  </TabItem>
-  <TabItem value="js" label="JavaScript">
-    <LatestRequestJs />
-  </TabItem>
-  <TabItem value="http" label="HTTPie">
-    <LatestRequestBash />
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/5.api/rpc/gas/get-gas-price-by-block-hash.json" />
   </TabItem>
 </Tabs>
 
