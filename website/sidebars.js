@@ -82,7 +82,14 @@ const sidebar = {
             // 'build/chain-abstraction/nft-chain-keys',
           ]
         },
-        "concepts/abstraction/omnibridge/overview",
+        {
+          "Omni Bridge": [
+            "concepts/abstraction/omnibridge/overview",
+            "concepts/abstraction/omnibridge/how-it-works",
+            "concepts/abstraction/omnibridge/implementation-details",
+            "concepts/abstraction/omnibridge/roadmap",
+          ]
+        },
         'build/chain-abstraction/fastauth-sdk',
         "build/chain-abstraction/data-availability",
       ]

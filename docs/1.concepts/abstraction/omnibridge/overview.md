@@ -1,91 +1,30 @@
 ---
 id: overview
-sidebar_label: Omni Bridge
-title: Omni Bridge
+sidebar_label: Overview
+title: Omni Bridge Overview
 ---
 
-The [Omni Bridge](https://github.com/Near-One/omni-bridge) is a multi-chain bridge that represents a significant advancement in cross-chain communication. Traditional bridge implementations often rely on computationally expensive light clients, leading to high gas costs and long verification times. Omni Bridge takes a different approach by leveraging [Chain Signatures](../chain-signatures.md) and its decentralized [Multi-Party Computation (MPC) Service](../chain-signatures#multi-party-computation-service) to create a fully trustless system where NEAR can both initiate and verify cross-chain operations securely. This innovative architecture enables efficient asset transfers between blockchain networks while dramatically reducing verification times and lowering gas costs across all supported chains.
+The [Omni Bridge](https://github.com/Near-One/omni-bridge) is a multi-chain asset bridge that facilitates secure and efficient asset transfers between different blockchain networks. It solves key challenges in cross-chain communication by leveraging [Chain Signatures](https://docs.near.org/concepts/abstraction/chain-signatures) and its decentralized [Multi-Party Computation (MPC) service](https://docs.near.org/concepts/abstraction/chain-signatures#multi-party-computation-service) to enable trustless cross-chain asset transfers. 
 
-## Background
-
-The journey toward truly trustless cross-chain communication took a significant leap forward when the NEAR team [created the first trustless bridge with Ethereum](https://near.org/blog/the-rainbow-bridge-is-live) (Rainbow Bridge). This pioneering achievement demonstrated that completely trustless cross-chain communication was possible, marking a crucial step toward the vision of chain abstraction. However, this approach relied on implementing a NEAR light client directly on Ethereum - essentially requiring Ethereum to understand and verify NEAR's complex blockchain rules. 
-
-Omni Bridge introduces a more elegant solution using Chain Signatures. Instead of running light clients on each destination chain, it leverages Chain Signature's MPC Service to enable secure cross-chain message verification without the overhead of light client verification. This new approach reduces verification times from hours to minutes while significantly reducing gas costs across all supported chains.
-
-### Issues with Light Clients
-
-A light client is a smart contract that lets one blockchain verify events happening on another blockchain. In Rainbow Bridge's case, the Ethereum light client needs to track NEAR's blocks, verify its validators' signatures, and confirm transactions. This comes with major technical challenges: it requires storing two weeks of Ethereum block data, maintaining an updated list of NEAR validators and their stakes, and most crucially, verifying NEAR's ED25519 signatures - a process Ethereum wasn't built for. This verification is computationally expensive, making the whole process slow, costly, and ultimately a major bottleneck.
-
-For example, with Rainbow Bridge, transactions from NEAR to Ethereum take between 4 and 8 hours due to the 4-hour challenge period and block submission intervals driven by Ethereum's high gas costs.
-
-More importantly, this approach becomes increasingly impractical when connecting to multiple chains, as each chain would require its own light client implementation. Some chains, such as Bitcoin, don't even support smart contracts, making it technically infeasible to implement a NEAR light client. While we still need to support light clients of different networks on NEAR (which is significantly easier to implement), a different approach is needed for verifying NEAR state on foreign chains.
-
-### Token Standards and Cross-Chain Communication
-
-Before exploring how Chain Signatures solves these issues, it's important to understand how tokens work on NEAR. [NEP-141](https://nomicon.io/Standards/Tokens/FungibleToken/Core), NEAR's fungible token standard, has a key feature that sets it apart from Ethereum's ERC-20: built-in composability through transfer-and-call functionality.
-
-When a token transfer happens on NEAR using `ft_transfer_call`, the token contract first transfers the tokens and then automatically calls the specified `ft_on_transfer` method on the receiver contract. While these operations happen in sequence within the same transaction, the receiver contract has the ability to reject the transfer, causing the tokens to be refunded. This atomic behavior ensures the integrity and safety of bridge operations by preventing partial execution states.
-
-For more information see [Fungible Tokens](../../../2.build/5.primitives/ft.md).
-
-## How Omni Bridge works
-
-The Omni Bridge consists of two core components:
-
-1. [**Chain Signatures**](../chain-signatures.md):
-   - Omni Bridge uses to dervive chain-specific address & sign messages
-   - Every NEAR account can mathematically derive nearly infinate addresses on other chains through derivation paths
-   - Ensures the same NEAR account always controls the same set of addresses across all supported chains
-   - Uses a decentralized [MPC Service](../chain-signatures#multi-party-computation-service) to jointly sign messages
-   - MPC threshold guarantees eliminate the need for challenge periods
-
-
-2. [**Bridge Smart Contract**](https://github.com/Near-One/omni-bridge):
-   - Coordinates with the MPC network to generate secure signatures
-   - Handles token locking and requesting signatures for outbound transfers
-   - Implements the Bridge Token Factory pattern for managing both native and bridged tokens
-   - Coordinates token locking and signature requests in a single transaction
-   - Leverages NEP-141's transfer-and-call functionality for single tran
-   - Implements the Bridge Token Factory pattern for managing tokens
-   - Records transfer state and initiates MPC signature requests
-
-```mermaid
-sequenceDiagram
-   participant User
-   participant NEAR as Bridge Contract <br> NEAR
-   participant MPC as MPC Service <br> (off-chain)
-   participant Other as Destination Chain
- 
-    User->>NEAR:1. Submits transfer <br> token request
-    NEAR->>NEAR: 2. Locks tokens
-    NEAR->>MPC: 3. Request signature
-    MPC->>MPC: 3. Signs message
-    MPC-->>NEAR: 4. Return signed msg
-    NEAR->>Other: 5. Broadcast signed msg to destination chain
-    Other->>Other: 4. Mint/release tokens
-``` 
+To learn more see [How Omni Bridge Works](./how-it-works.md).
 
 ## Supported Chains
 
-Currently supported chains with their verification methods:
+Omni Bridge launches with a hybrid architecture, utilizing different verification methods based on chain-specific requirements and technical constraints. This approach allows us to support multiple chains from day one while progressively transitioning to full Chain Signatures integration.
 
-- Ethereum (Light client + Chain Signatures)
-- Bitcoin (Light client + Chain Signatures)
-- Solana (Currently Wormhole, transitioning to Chain Signatures)
-- Base (Currently Wormhole, transitioning to Chain Signatures)
-- Arbitrum (Currently Wormhole, transitioning to Chain Signatures)
+Initial launch includes:
 
-## Use Cases
+- **Ethereum** - _(Light client + Chain Signatures)_
+- **Bitcoin** - _(Light client + Chain Signatures)_
+- **Solana** - _(Currently Wormhole, transitioning to Chain Signatures)_
+- **Base** - _(Currently Wormhole, transitioning to Chain Signatures)_
+- **Arbitrum** - _(Currently Wormhole, transitioning to Chain Signatures)_
 
-- **Cross-Chain Token Transfers:** Enable fast, secure token movements between supported chains
-- **Bridge Token Factory:** Deploy and manage bridged token contracts automatically
-- **Native Token Management:** Lock and release native tokens during cross-chain transfers
-- **Cross-Chain Contract Calls:** (Coming soon) Enable complex interactions between contracts on different chains
+See [Omni Bridge Roadmap](./roadmap.md) for more details.
 
-## Learn more
-
-Proceed to the [Omni Bridge Deep Dive](omni-deep.md) to get a deeper understanding of how Omni Bridge works. We also recommend checking these GitHub repositories:
+## Resources
 
 - [Near-One/omni-bridge](https://github.com/Near-One/omni-bridge) - Omni Bridge repository
 - [Near-One/bridge-sdk-js](https://github.com/Near-One/bridge-sdk-js) - JavaScript SDK
 - [Near-One/bridge-sdk-rs](https://github.com/Near-One/bridge-sdk-rs) - Rust SDK
+
