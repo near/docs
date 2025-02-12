@@ -38,6 +38,9 @@ import ErrorSchemaTable from "./error-schema-table.mdx";
   <TabItem value="http" label="HTTPie">
     <FinalityRequestBash />
   </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/5.api/rpc/block-chunk/get-latest-block-changes.json" />
+  </TabItem>
 </Tabs>
 
 `block_height` example:
@@ -52,9 +55,12 @@ import ErrorSchemaTable from "./error-schema-table.mdx";
   <TabItem value="http" label="HTTPie">
     <BlockHeightRequestBash />
   </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/5.api/rpc/block-chunk/get-block-changes-by-block-height.json" />
+  </TabItem>
 </Tabs>
 
-`block_hash`
+`block_hash` example:
 
 <Tabs groupId="code-tabs">
   <TabItem value="json" label="JSON" default>
@@ -65,6 +71,9 @@ import ErrorSchemaTable from "./error-schema-table.mdx";
   </TabItem>
   <TabItem value="http" label="HTTPie">
     <BlockHashRequestBash />
+  </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/5.api/rpc/block-chunk/get-block-changes-by-block-hash.json" />
   </TabItem>
 </Tabs>
 

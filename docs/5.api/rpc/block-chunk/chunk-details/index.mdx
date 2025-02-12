@@ -33,6 +33,9 @@ import ErrorSchemaTable from "./error-schema-table.mdx";
   <TabItem value="http" label="HTTPie">
     <ChunkIdRequestBash />
   </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/5.api/rpc/block-chunk/get-chunk-by-chunk-id.json" />
+  </TabItem>
 </Tabs>
 
 `[block_id, shard_id]` example:
@@ -46,6 +49,9 @@ import ErrorSchemaTable from "./error-schema-table.mdx";
   </TabItem>
   <TabItem value="http" label="HTTPie">
     <BlockIdShardIdRequestBash />
+  </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/5.api/rpc/block-chunk/get-chunk-by-block-shard.json" />
   </TabItem>
 </Tabs>
 
