@@ -109,7 +109,7 @@ To learn more about Chain Signatures, the concepts, and how to implement it, che
 
 ### OmniBridge
 
-The [OmniBridge](../../1.concepts/abstraction/omnibridge/overview.md) is a multi-chain asset bridge that combines Chain Signatures with chain-specific verification methods to enable secure and efficient cross-chain asset transfers. It consists of three core components:
+The [OmniBridge](../../chain-abstraction/omnibridge/overview.md) is a multi-chain asset bridge that combines Chain Signatures with chain-specific verification methods to enable secure and efficient cross-chain asset transfers. It consists of three core components:
 
 1. **Chain Signatures Integration**:
    - Enables NEAR smart contracts to generate and control accounts on other blockchains
@@ -131,5 +131,5 @@ The [OmniBridge](../../1.concepts/abstraction/omnibridge/overview.md) is a multi
 This architecture creates a robust bridge system that combines NEAR's ability to execute transactions on foreign chains with secure verification methods, while maintaining high efficiency and security through MPC threshold guarantees.
 
 :::info
-For detailed implementation information and current status, see the [OmniBridge documentation](../../1.concepts/abstraction/omnibridge/overview.md).
+For detailed implementation information and current status, see the [OmniBridge documentation](../../chain-abstraction/omnibridge/overview.md).
 :::
