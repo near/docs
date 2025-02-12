@@ -45,7 +45,7 @@ NEAR's chain abstraction framework consists of three core technologies that work
 
 2. [**Chain Signatures**](#chain-signatures): Enables NEAR accounts, including smart contracts, to sign and execute transactions on other blockchains (like Bitcoin or Ethereum), allowing cross-chain interactions.
 
-3. [**OmniBridge**](#omnibridge): A trustless multi-chain asset bridge that combines Chain Signatures for cross-chain transaction execution with a verification layer allowing NEAR smart contracts to confirm transactions on foreign chains. This creates a fully trustless system where NEAR can both initiate and verify cross-chain operations.
+3. [**OmniBridge**](#omnibridge): A multi-chain asset bridge that combines Chain Signatures with chain-specific verification methods for secure and efficient cross-chain transfers. Using a hybrid approach of MPC-based signatures and light clients, it significantly reduces verification times from hours to minutes while lowering gas costs across supported chains. The bridge serves as both a token factory and custodian, managing native and bridged tokens through a unified interface.
 
 ### Intent / Solver Layer
 
@@ -109,21 +109,30 @@ To learn more about Chain Signatures, the concepts, and how to implement it, che
 
 ### OmniBridge
 
-The [OmniBridge](https://github.com/Near-One/omni-bridge) extends NEAR's chain abstraction capabilities by combining two key elements: Chain Signatures for cross-chain transaction execution, and a verification layer that allows NEAR smart contracts to confirm the state and transactions on foreign chains. This creates a trustless bridge where NEAR contracts can both initiate and verify cross-chain operations.
+The [OmniBridge](../../1.concepts/abstraction/omnibridge/overview.md) is a multi-chain asset bridge that combines Chain Signatures with chain-specific verification methods to enable secure and efficient cross-chain asset transfers. Unlike traditional bridges that rely solely on light clients (which can be computationally expensive and slow), OmniBridge uses a hybrid approach that significantly reduces verification times from hours to minutes while lowering gas costs across all supported chains.
 
-1. **Chain Signatures Integration**:
-   - NEAR smart contracts can generate derivation addresses on other blockchains
-   - These contracts can directly sign and execute transactions on external chains
+The bridge architecture consists of three core components:
 
-2. **State Verification Layer (Omniprover)**:
-   - Allows NEAR smart contracts to verify the state and transactions on foreign chains
-   - Supports different verification methods based on the target chain (e.g., light client proofs)
-   - Ensures trustless verification of incoming transfers and state changes from external chains
-   - For example, when receiving assets from Ethereum, NEAR contracts can verify the deposit actually occurred
+1. **Bridge Token Factory**:
+   - Unified contract serving as both token factory and custodian
+   - Deploys and manages bridged token contracts
+   - Handles token locking and minting through NEP-141 standard
+   - Manages both native and bridged tokens through a single interface
 
-3. **Decentralized Relayer Network**:
-   - Open participation model for relayers
-   - Trustless and incentivized system
-   - Ensures efficient transaction processing and state updates across chains
+2. **Message Signing System**:
+   - Uses Chain Signatures' MPC network for secure cross-chain message verification
+   - Supports structured message types for transfers and token operations
+   - Eliminates need for traditional challenge periods through MPC threshold guarantees
+   - Enables permissionless relayer network for efficient transaction processing
 
-This architecture creates a fully trustless bridge by combining NEAR's ability to execute transactions on foreign chains (via Chain Signatures) with the capability to independently verify the results of those transactions (via Omniprover).
+3. **Chain-Specific Verification**:
+   - Hybrid verification approach based on each chain's requirements:
+     - Ethereum/Bitcoin: Light client + Chain Signatures
+     - Solana/Base/Arbitrum: Currently using Wormhole, transitioning to Chain Signatures
+   - Progressive migration path toward full Chain Signatures integration
+
+This architecture creates a robust bridge system that combines NEAR's ability to execute transactions on foreign chains with secure verification methods, while maintaining a clear path toward increased decentralization through full Chain Signatures adoption.
+
+:::info
+For detailed implementation information and current status, see the [OmniBridge documentation](../../1.concepts/abstraction/omnibridge/overview.md).
+:::
