@@ -1,7 +1,6 @@
 ```js
-const response = await near.connection.provider.experimental_changes({
-  changes_type: "account_changes",
-  account_ids: ["nearkat.testnet"],
-  block_id: 19703467,
-});
+const response = await near.connection.provider.accountChanges(
+  ["contract.rpc-examples.testnet"],
+  { blockId: 187310139 },
+);
 ```

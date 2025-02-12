@@ -2,8 +2,8 @@
 const response = await near.connection.provider.query({
   request_type: "call_function",
   finality: "final",
-  account_id: "dev-1588039999690",
-  method_name: "get_num",
-  args_base64: "e30=",
+  account_id: "contract.rpc-examples.testnet",
+  method_name: "get_greeting",
+  args_base64: "",
 });
 ```
