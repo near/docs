@@ -4,49 +4,51 @@ sidebar_label: Omni Bridge
 title: Omni Bridge
 ---
 
-The [Omni Bridge](https://github.com/Near-One/omni-bridge) is a trustless multi-chain bridge that combines [Chain Signatures](../chain-signatures.md) for cross-chain transaction execution with a verification layer allowing NEAR smart contracts to confirm transactions on foreign chains. This creates a fully trustless system where NEAR can both initiate and verify cross-chain operations, effectively positioning NEAR as a settlement layer for cross-chain transactions.
+The [Omni Bridge](https://github.com/Near-One/omni-bridge) is a multi-chain bridge that represents a significant advancement in cross-chain communication. Traditional bridge implementations often rely on computationally expensive light clients, leading to high gas costs and long verification times. Omni Bridge takes a different approach by leveraging [Chain Signatures](../chain-signatures.md) and its decentralized [Multi-Party Computation (MPC) Service](../chain-signatures#multi-party-computation-service) to create a fully trustless system where NEAR can both initiate and verify cross-chain operations securely. This innovative architecture enables efficient asset transfers between blockchain networks while dramatically reducing verification times and lowering gas costs across all supported chains.
 
-Unlike traditional bridges that rely on light clients for cross-chain verification (which can be computationally expensive and slow), Omni Bridge uses NEAR's Chain Signatures - a multi-party computation (MPC) system that enables secure cross-chain message verification without the computational overhead of light client verification. This approach reduces verification times from hours to minutes and significantly reduces gas costs across all supported chains.
+## Background
 
-## Key Features
+The journey toward truly trustless cross-chain communication took a significant leap forward when the NEAR team [created the first trustless bridge with Ethereum](https://near.org/blog/the-rainbow-bridge-is-live) (Rainbow Bridge). This pioneering achievement demonstrated that completely trustless cross-chain communication was possible, marking a crucial step toward the vision of chain abstraction. However, this approach relied on implementing a NEAR light client directly on Ethereum - essentially requiring Ethereum to understand and verify NEAR's complex blockchain rules. While secure, this approach faced several significant technical challenges that led to high gas costs and long verification times. For example, with Rainbow Bridge, transactions from NEAR to Ethereum take between 4 and 8 hours due to the 4-hour challenge period and block submission intervals driven by Ethereum's high gas costs.
 
-- **Simple API:** Developers can integrate cross-chain capabilities into their applications with straightforward method calls
-- **Event Listening:** - Capable of listening for blockchain events, which aids in tracking the status of asset transfers
-- **Support for Multiple Tokens:** The SDK is equipped to handle various tokens, making it versatile for different use cases
-- **Fast Transaction Processing:**  Reduces cross-chain verification times from hours to minutes compared to traditional light client approaches
-- **Gas Efficient:** - Significantly lower gas costs across supported chains due to the Chain Signatures verification system
+More importantly, this approach becomes increasingly impractical when connecting to multiple chains, as each chain would require its own light client implementation. Some chains, such as Bitcoin, don't even support smart contracts, making it technically infeasible to implement a NEAR light client. While we still need to support light clients of different networks on NEAR (which is significantly easier to implement), a different approach is needed for verifying NEAR state on foreign chains.
 
+Omni Bridge introduces a more elegant solution using Chain Signatures. Instead of running light clients on each destination chain, it leverages Chain Signature's MPC Service to enable secure cross-chain message verification without the overhead of light client verification. This new approach reduces verification times from hours to minutes while significantly reducing gas costs across all supported chains.
 
-## Architecture
+## How it works
 
-The Omni Bridge consists of three core components:
+The Omni Bridge consists of two core components:
 
-1. **Chain Signatures**:
-   - Omni Bridge uses [Chain Signatures](../chain-signatures.md) to derviive chain-specific address & sign messages
+1. [**Chain Signatures**](../chain-signatures.md):
+   - Omni Bridge uses to dervive chain-specific address & sign messages
    - Every NEAR account can mathematically derive nearly infinate addresses on other chains through derivation paths
    - Ensures the same NEAR account always controls the same set of addresses across all supported chains
+   - Uses a decentralized [MPC Service](../chain-signatures#multi-party-computation-service) to jointly sign messages
+   - MPC threshold guarantees eliminate the need for challenge periods
 
-2. **Bridge Smart Contract**:
+
+2. [**Bridge Smart Contract**](https://github.com/Near-One/omni-bridge):
    - Coordinates with the MPC network to generate secure signatures
    - Handles token locking and requesting signatures for outbound transfers
    - Implements the Bridge Token Factory pattern for managing both native and bridged tokens
-
-3. **MPC Service**:
-   - Decentralized network of nodes that jointly sign transactions
-   - No single node can create valid signatures alone
-   - Uses threshold cryptography for security
-   - Eliminates need for challenge periods through MPC threshold guarantees
+   - Coordinates token locking and signature requests in a single transaction
+   - Leverages NEP-141's transfer-and-call functionality for single tran
+   - Implements the Bridge Token Factory pattern for managing tokens
+   - Records transfer state and initiates MPC signature requests
 
 ```mermaid
-flowchart LR
-    NEAR[NEAR Chain]
-    MPC[MPC Network]
-    Other[Destination Chain]
-    
-    NEAR -- 1. Lock tokens --> NEAR
-    NEAR -- 2. Request signature --> MPC
-    MPC -- 3. Generate signature --> Other
-    Other -- 4. Mint/release tokens --> Other
+sequenceDiagram
+   participant User
+   participant NEAR as Bridge Contract <br> NEAR
+   participant MPC as MPC Service <br> (off-chain)
+   participant Other as Destination Chain
+ 
+    User->>NEAR:1. Submits transfer <br> token request
+    NEAR->>NEAR: 2. Locks tokens
+    NEAR->>MPC: 3. Request signature
+    MPC->>MPC: 3. Signs message
+    MPC-->>NEAR: 4. Return signed msg
+    NEAR->>Other: 5. Broadcast signed msg to destination chain
+    Other->>Other: 4. Mint/release tokens
 ``` 
 
 ## Supported Chains
