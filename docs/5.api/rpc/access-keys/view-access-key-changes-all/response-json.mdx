@@ -2,37 +2,49 @@
 {
   "jsonrpc": "2.0",
   "result": {
-    "block_hash": "4kvqE1PsA6ic1LG7S5SqymSEhvjqGqumKjAxnVdNN3ZH",
+    "block_hash": "6EDgS3zF9aoBMfdHqthQTQtudt7JzdLBbkTb6Jn4wfP9",
     "changes": [
       {
         "cause": {
-          "type": "transaction_processing",
-          "tx_hash": "HshPyqddLxsganFxHHeH9LtkGekXDCuAt6axVgJLboXV"
+          "receipt_hash": "9meU2ibDyJS2ga4se7j5knsWetKrXaw5qBpwrYgN1Qeh",
+          "type": "receipt_processing"
         },
-        "type": "access_key_update",
         "change": {
-          "account_id": "example-acct.testnet",
-          "public_key": "ed25519:25KEc7t7MQohAJ4EDThd2vkksKkwangnuJFzcoiXj9oM",
           "access_key": {
-            "nonce": 1,
+            "nonce": 187309654000000,
             "permission": "FullAccess"
-          }
-        }
+          },
+          "account_id": "account.rpc-examples.testnet",
+          "public_key": "ed25519:vJBU18AtvePANmepMoY3rtV3wt1RHwqoktak82E4d2M"
+        },
+        "type": "access_key_update"
       },
       {
         "cause": {
-          "type": "receipt_processing",
-          "receipt_hash": "CetXstu7bdqyUyweRqpY9op5U1Kqzd8pq8T1kqfcgBv2"
+          "receipt_hash": "9meU2ibDyJS2ga4se7j5knsWetKrXaw5qBpwrYgN1Qeh",
+          "type": "receipt_processing"
         },
-        "type": "access_key_update",
         "change": {
-          "account_id": "example-acct.testnet",
-          "public_key": "ed25519:96pj2aVJH9njmAxakjvUMnNvdB3YUeSAMjbz9aRNU6XY",
           "access_key": {
-            "nonce": 0,
-            "permission": "FullAccess"
-          }
-        }
+            "nonce": 187309654000000,
+            "permission": {
+              "FunctionCall": {
+                "allowance": "150000000000000000000000",
+                "method_names": [
+                  "write_record",
+                  "get_record",
+                  "get_greeting",
+                  "__contract_abi",
+                  "contract_source_metadata"
+                ],
+                "receiver_id": "contract.rpc-examples.testnet"
+              }
+            }
+          },
+          "account_id": "account.rpc-examples.testnet",
+          "public_key": "ed25519:EddTahJwZpJjYPPmat7DBm1m2vdrFBzVv7e3T4hzkENd"
+        },
+        "type": "access_key_update"
       }
     ]
   },

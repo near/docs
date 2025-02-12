@@ -1,7 +1,6 @@
 ```js
-const response = await near.connection.provider.experimental_changes({
-  changes_type: "all_access_key_changes",
-  account_ids: "example-acct.testnet",
-  finality: "final",
-});
+const response = await near.connection.provider.accessKeyChanges(
+  ["account.rpc-examples.testnet"],
+  { blockId: 187309655 },
+);
 ```

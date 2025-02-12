@@ -1,8 +1,11 @@
 ```bash
-http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENTAL_changes \
+http POST https://archival-rpc.testnet.near.org \
+  jsonrpc=2.0 \
+  id=dontcare \
+  method=EXPERIMENTAL_changes \
   params:='{
     "changes_type": "all_access_key_changes",
-    "account_ids": ["example-acct.testnet"],
-    "block_id": "4kvqE1PsA6ic1LG7S5SqymSEhvjqGqumKjAxnVdNN3ZH"
+    "account_ids": ["account.rpc-examples.testnet"],
+    "block_id": 187309655
   }'
 ```

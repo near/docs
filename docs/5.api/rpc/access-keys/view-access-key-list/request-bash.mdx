@@ -1,8 +1,11 @@
 ```bash
-http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
+http POST https://rpc.testnet.near.org \
+  jsonrpc=2.0 \
+  id="dontcare" \
+  method=query \
   params:='{
     "request_type": "view_access_key_list",
     "finality": "final",
-    "account_id": "example.testnet"
+    "account_id": "account.rpc-examples.testnet"
   }'
 ```
