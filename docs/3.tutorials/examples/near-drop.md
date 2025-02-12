@@ -7,115 +7,190 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
-A near-drop is a smart contract that allows users to create NEAR/FT/NFT drop and claim created drops by another user using a PublicKey.
+NEAR Drop is a smart contract that allows users to create token drops ($NEAR, Fungible and Non-Fungible Tokens), and link them to specific private keys. Whoever has the private key can claim the drop into an existing account, or ask the contract to create a new one for them.
 
 Particularly, it shows:
 
-1. How to calculate storage costs
-2. How to create a NEAR drop.
-3. How to create a FT drop.
-4. How to create a NFT drop.
-5. How to claim a drop for an existing account.
-6. How to claim a drop for a new account.
+1. How to create a token drops (NEAR, FT and NFT)
+2. How to leverage Function Call keys for enabling amazing UX
+
+:::tip
+
+This example showcases a simplified version of the contract that both [Keypom](https://keypom.xyz/) and the [Token Drop Utility](https://dev.near.org/tools?tab=linkdrops) use to distribute tokens to users
+
+:::
 
 ---
 
-### Contract State
+## Contract Overview
 
-- `top_level_account` - that account is used to create new accounts. It has to have `create_account` method.
-- `next_drop_id` - that id will be assigned to the next created drop.
-- `drop_id_by_key` - that LookupMap structure contains relations between `PublicKey` and `DropId`. `PublicKey` is used to claim drop. `DropId` is a unique identificator by which you can get drop's data like amount of tokens to drop, FT or NFT contract, etc.
-- `drop_by_id` - that LookupMap structure contains relations between `DropId` and actual drop data - `Drop`.
+The contract exposes 3 methods to create drops of NEAR tokens, FT, and NFT. To claim the tokens, the contract exposes two methods, one to claim in an existing account, and another that will create a new account and claim the tokens into it.
 
-<Github fname="lib.rs"
-      url="https://github.com/near-examples/near-drop/blob/update/src/lib.rs"
+This contract leverages NEAR unique feature of [FunctionCall keys](../../1.concepts/protocol/access-keys.md), which allows the contract to create new accounts and claim tokens on behalf of the user.
+
+Imagine Alice want to drop some NEAR to Bob:
+
+1. Alice will call `create_near_drop` passing some NEAR amount, and a **Public** Access Key
+2. The Contract will check if Alice attached enough tokens and create the drop
+3. The Contract will add the `PublicKey` as a `FunctionCall Key` to itself, that **only allow to call the claim methods**
+4. Alice will give the `Private Key` to Bob
+5. Bob will use the Key to sign a transaction calling the `claim_for` method
+6. The Contract will check if the key is linked to a drop, and if it is, it will send the drop
+
+It is important to notice that, in step (5), Bob will be using the Contract's account to sign the transaction, and not his own account. Remember that in step (3) the contract added the key to itself, meaning that anyone with the key can call the claim methods in the name of the contract.
+
+<details>
+
+<summary>Contract's interface</summary>
+
+#### `create_near_drop(public_keys, amount_per_drop)`
+Creates `#public_keys` drops, each with `amount_per_drop` NEAR tokens on them
+
+#### `create_ft_drop(public_keys, ft_contract, amount_per_drop)`
+Creates `#public_keys` drops, each with `amount_per_drop` FT tokens, corresponding to the `ft_contract`
+
+#### `create_nft_drop(public_key, nft_contract)`
+Creates a drop with an NFT token, which will come from the `nft_contract`
+
+#### `claim_for(account_id)`
+Claims a drop, which will be sent to the existing `account_id`
+
+#### `create_account_and_claim(account_id)`
+Creates the `account_id`, and then drops the tokens into it
+
+</details>
+
+---
+
+## Contract's State
+
+We can see in the contract's state that the contract keeps track of different `PublicKeys`, and links them to a specific `DropId`, which is simply an identifier for a `Drop` (see bellow). 
+
+- `top_level_account`: The account that will be used to create new accounts, generally it will be `testnet` or `mainnet`
+- `next_drop_id`: A simple counter used to assign unique identifiers to each drop
+- `drop_id_by_key`: A `Map` between `PublicKey` and `DropId`, which allows the contract to know what drops are claimable by a given key
+- `drop_by_id`: A simple `Map` that links each `DropId` with the actual `Drop` data.
+
+<Github fname="lib.rs" language="rust"
+      url="https://github.com/near-examples/near-drop/blob/main/src/lib.rs"
       start="22" end="29" />
 
 ---
 
-### Drop Types
+## Drop Types
 
-There are 3 types of drops, which differ in what the user will receive when he claims the corresponding drop - NEAR, fungible tokens (FTs) or non-fungible tokens (NFTs).
+There are 3 types of drops, which differ in what the user will receive when they claims the corresponding drop - NEAR, fungible tokens (FTs) or non-fungible tokens (NFTs).
 
-<CodeTabs>
-  <Language value="rust" language="rust">
-    <Github fname="drop_types.rs"
-            url="https://github.com/near-examples/near-drop/blob/update/src/drop_types.rs"
-            start="8" end="16" />
-    <Github fname="near_drop.rs"
-            url="https://github.com/near-examples/near-drop/blob/update/src/near_drop.rs"
-            start="9" end="16" />
-    <Github fname="ft_drop.rs"
-            url="https://github.com/near-examples/near-drop/blob/update/src/ft_drop.rs"
-            start="16" end="24" />
-    <Github fname="nft_drop.rs"
-            url="https://github.com/near-examples/near-drop/blob/update/src/nft_drop.rs"
-            start="15" end="22" />
-  </Language>
-</CodeTabs>
+<Language value="rust" language="rust">
+<Github fname="drop_types.rs"
+  url="https://github.com/near-examples/near-drop/blob/main/src/drop_types.rs"
+  start="8" end="16" />
+<Github fname="near_drop.rs"
+  url="https://github.com/near-examples/near-drop/blob/main/src/near_drop.rs"
+  start="9" end="16" />
+<Github fname="ft_drop.rs"
+  url="https://github.com/near-examples/near-drop/blob/main/src/ft_drop.rs"
+  start="16" end="24" />
+<Github fname="nft_drop.rs"
+  url="https://github.com/near-examples/near-drop/blob/main/src/nft_drop.rs"
+  start="15" end="22" />
+</Language>
 
----
+:::info
 
-### Create a drop
+Notice that in this example implementation users cannot mix drops. This is, you can either drop NEAR tokens, or FT, or NFTs, but not a mixture of them (i.e. you cannot drop 1 NEAR token and 1 FT token in the same drop)
 
-Creating drop functions looks very similar, the main difference is in the structures used to store the drop data.
-
-<CodeTabs>
-  <Language value="rust" language="rust">
-    <Github fname="create_near_drop"
-            url="https://github.com/near-examples/near-drop/blob/update/src/lib.rs"
-            start="44" end="66" />
-    <Github fname="create_ft_drop"
-            url="https://github.com/near-examples/near-drop/blob/update/src/lib.rs"
-            start="68" end="89" />
-    <Github fname="create_nft_drop"
-            url="https://github.com/near-examples/near-drop/blob/update/src/lib.rs"
-            start="91" end="103" />
-  </Language>
-</CodeTabs>
+:::
 
 ---
 
-### Claim a drop
+## Create a drop
 
-In order to claim drop claiming methods have to be called by near-drop contract and signed with a corresponding `PublicKey`. There are two ways to claim a drop: claim for an existing account and claim for a new account. In last case claimer account will be created.
+All `create` start by checking that the user deposited enough funds to create the drop, and then proceed to add the access keys to the contract's account as [FunctionCall Keys](../../1.concepts/protocol/access-keys.md).
 
-When a drop is claimed, its `counter` decreases by 1 and corresponding relation between `PublicKey` and `DropId` removing from the contract state (`drop_id_by_key` collection).
+<Tabs>
 
-When all drops are claimed (`counter` == 0), relation between `DropId` and `Drop` removing from the `drop_by_id` collection as well.
+  <TabItem value="NEAR" label="NEAR Drop">
+    <Language value="rust" language="rust">
+      <Github fname="create_near_drop"
+        url="https://github.com/near-examples/near-drop/blob/main/src/lib.rs"
+        start="44" end="66" />
+      <Github fname="near_drop"
+        url="https://github.com/near-examples/near-drop/blob/main/src/near_drop.rs"
+        start="63" end="95" />
+    </Language>
+  </TabItem>
+  <TabItem value="FT" label="FT Drop">
+    <Language value="rust" language="rust">
+      <Github fname="create_ft_drop"
+        url="https://github.com/near-examples/near-drop/blob/main/src/lib.rs"
+        start="68" end="89" />
+      <Github fname="ft_drop"
+        url="https://github.com/near-examples/near-drop/blob/main/src/ft_drop.rs"
+        start="108" end="142" />
+    </Language>
+  </TabItem>
+  <TabItem value="NFT" label="NFT Drop">
+    <Language value="rust" language="rust">
+      <Github fname="create_nft_drop"
+        url="https://github.com/near-examples/near-drop/blob/main/src/lib.rs"
+        start="91" end="103" />
+      <Github fname="nft_drop"
+        url="https://github.com/near-examples/near-drop/blob/main/src/nft_drop.rs"
+        start="80" end="106" />
+    </Language>
+  </TabItem>
+</Tabs>
 
 <hr class="subsection" />
 
-#### Claim for an existing account
+### Storage Costs
 
-<CodeTabs>
-  <Language value="rust" language="rust">
-    <Github fname="claim_for"
-            url="https://github.com/near-examples/near-drop/blob/update/src/claim.rs"
-            start="11" end="14" />
-    <Github fname="internal_claim"
-            url="https://github.com/near-examples/near-drop/blob/update/src/claim.rs"
-            start="58" end="85" />
-  </Language>
-</CodeTabs>
+While we will not go into the details of how the storage costs are calculated, it is important to know what is being taken into account:
+
+1. The cost of storing each Drop, which will include storing all bytes associated with the `Drop` struct
+2. The cost of storing each `PublicKey -> DropId` relation in the maps
+3. Cost of storing each `PublicKey` in the account
+
+Notice that (3) is not the cost of storing the byte representation of the `PublicKey` on the state, but the cost of adding the key to the contract's account as a FunctionCall key.
+
+---
+
+## Claim a drop
+
+In order to claim drop, a user needs to sign a transaction using the `Private Key`, which is the counterpart of the `Public Key` that was added to the contract.
+
+All `Drops` have a `counter` which decreases by 1 each time a drop is claimed. This way, when all drops are claimed (`counter` == 0), we can remove all information from the Drop.
+
+There are two ways to claim a drop: claim for an existing account and claim for a new account. The main difference between them is that the first one will send the tokens to an existing account, while the second one will create a new account and send the tokens to it.
 
 <hr class="subsection" />
 
-#### Claim for a new account
-
-<CodeTabs>
-  <Language value="rust" language="rust">
-    <Github fname="create_account_and_claim"
-            url="https://github.com/near-examples/near-drop/blob/update/src/claim.rs"
-            start="16" end="41" />
-    <Github fname="resolve_account_create"
-            url="https://github.com/near-examples/near-drop/blob/update/src/claim.rs"
-            start="43" end="56" />
-    <Github fname="internal_claim"
-            url="https://github.com/near-examples/near-drop/blob/update/src/claim.rs"
-            start="58" end="85" />
-  </Language>
-</CodeTabs>
+<Tabs>
+  <TabItem value="existing" label="Existing Account">
+    <Language value="rust" language="rust">
+      <Github fname="claim_for"
+        url="https://github.com/near-examples/near-drop/blob/main/src/claim.rs"
+        start="11" end="14" />
+      <Github fname="internal_claim"
+        url="https://github.com/near-examples/near-drop/blob/main/src/claim.rs"
+        start="58" end="85" />
+    </Language>
+  </TabItem>
+  <TabItem value="new" label="New Account">
+    <Language value="rust" language="rust">
+      <Github fname="create_account_and_claim"
+        url="https://github.com/near-examples/near-drop/blob/main/src/claim.rs"
+        start="16" end="41" />
+      <Github fname="resolve_account_create"
+        url="https://github.com/near-examples/near-drop/blob/main/src/claim.rs"
+        start="43" end="56" />
+      <Github fname="internal_claim"
+        url="https://github.com/near-examples/near-drop/blob/main/src/claim.rs"
+        start="58" end="85" />
+    </Language>
+  </TabItem>
+</Tabs>
 
 ---
 
