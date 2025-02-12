@@ -25,6 +25,20 @@ If you want to retrieve the current list of validators, pass `null` as the param
 Additionally, you can query validators for past epochs by providing the `epoch_id`
 of the desired past epoch.
 
+`null` example:
+
+<Tabs groupId="code-tabs">
+  <TabItem value="json" label="JSON" default>
+    <LatestRequestJson />
+  </TabItem>
+  <TabItem value="http" label="HTTPie">
+    <LatestRequestBash />
+  </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/5.api/rpc/network/get-latest-validators.json" />
+  </TabItem>
+</Tabs>
+
 `epoch_id` example:
 
 <Tabs groupId="code-tabs">
@@ -34,16 +48,8 @@ of the desired past epoch.
   <TabItem value="http" label="HTTPie">
     <EpochHashRequestBash />
   </TabItem>
-</Tabs>
-
-`null` example:
-
-<Tabs groupId="code-tabs">
-  <TabItem value="json" label="JSON" default>
-    <LatestRequestJson />
-  </TabItem>
-  <TabItem value="http" label="HTTPie">
-    <LatestRequestBash />
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/5.api/rpc/network/get-validators-by-epoch-id.json" />
   </TabItem>
 </Tabs>
 
