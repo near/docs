@@ -58,86 +58,74 @@ Although the ecosystem for developing decentralized frontends is still maturing,
 
 
 ## Adding NEAR API JS and Wallet Selector
-As a popular framework [our examples](https://github.com/near-examples/) are based on **Next.js** so, we will go trough the steps to integrate NEAR to a default Next.js project and interact with the hello-near contract.
+As a popular framework [our examples](https://github.com/near-examples/) are based on **Next.js** so, we will go trough the steps to integrate NEAR to a default Next.js project and interact with the `hello-near` example contract.
 
-<details>
-
-<summary> Alternative frontend templates </summary>
-
-You can also choose to start from community templates such as:
-* [NEARBuilders/NEAR-Vite-Starter](https://github.com/NEARBuilders/near-vite-starter) - [TODO] Includes Vite
-* [Bitte/Next-Wallet-Starter](https://templates.mintbase.xyz/templates/starter-next) -  [TODO]
-
-</details>
-
-In order to use `near-api-js` and the `wallet-selector` you will need to first add them to your project. We will also add few of the popular wallet providers.
+Apart of `near-api-js` and the `wallet-selector` core package we will also add the optional `modal-ui` and the provided `react-hook` (more info on [wallet-selector repo](https://github.com/near/wallet-selector/)) as well as few of the popular wallet providers.
 
 ```bash
 npm install \
   near-api-js \
   @near-wallet-selector/core \
   @near-wallet-selector/modal-ui \
+  @near-wallet-selector/react-hook \ 
+  @near-wallet-selector/bitte-wallet \
   @near-wallet-selector/ledger \
   @near-wallet-selector/meteor-wallet \
-  @near-wallet-selector/nightly \
-  @near-wallet-selector/bitte-wallet 
+  @near-wallet-selector/nightly 
 ```
 :::tip
 
-The wallet selector supports multiple wallet packages to select from, [see the full list on their Repo](https://github.com/near/wallet-selector#installation-and-usage).  
+The wallet selector supports multiple wallet packages to select from, [see the full list on the Repo](https://github.com/near/wallet-selector#installation-and-usage).  
 We cover how to support Ethereum wallets in the next section: [Ethereum Wallets on Near](ethereum-wallets.md)
 :::
 
 ---
 
-## Create a Wallet Object
+## Initialize Wallet Selector
 
-In our examples, we implement a [`./wallets/near.js`](https://github.com/flmel/near-starter-nextjs/blob/main/src/wallets/near.js) module, where we abstracted the `wallet selector` into a `Wallet` object to simplify using it.
+```jsx title="_app.js"
+import { setupBitteWallet } from "@near-wallet-selector/bitte-wallet";
+import { setupLedger } from "@near-wallet-selector/ledger";
+import { setupMeteorWallet } from "@near-wallet-selector/meteor-wallet";
+import { setupNightly } from "@near-wallet-selector/nightly";
+import { WalletSelectorProvider } from "@near-wallet-selector/react-hook";
 
-To create a wallet, simply import the `Wallet` object from the module and initialize it. This `wallet` will later allow the user to call any contract on NEAR.
+const walletSelectorConfig = {
+  network: "testnet", // "mainnet"
+  // Optional: createAccessKeyFor: "hello.near-examples.testnet",
+  modules: [
+    setupBitteWallet(),
+    setupMeteorWallet(),
+    setupLedger(),
+    setupNightly()
+  ],
+}
 
-<CodeTabs>
-  <Language value="js" language="ts">
-    <Github fname="page.js"
-            url="https://github.com/flmel/near-starter-nextjs/blob/main/src/app/page.tsx"
-            start="8" end="12" />
+export default function App({ Component }) {
+  return (
+    <WalletSelectorProvider config={walletSelectorConfig}>
+      <Component {...pageProps} />
+    </WalletSelectorProvider>
+  );
+}
+```
+<details markdown="1" id="setting-customs-network">
 
-    <Github fname="near.js"
-        url="https://github.com/flmel/near-starter-nextjs/blob/main/src/wallets/near.js"
-        start="17" end="213" />
+<summary>Setting Custom RPC endpoint</summary>
 
-  </Language>
-</CodeTabs>
-
-Under the hood (check the `near` tab) you can see that we are actually setting up the wallet selector, and asking it if the user logged-in already. During the setup, we pass a hook to the wallet selector, which will be called each time a user logs in or out.
-
-<details markdown="1" id="setting-customs-rpc-endpoints">
-
-<summary> Setting customs RPC endpoints </summary>
-
-If you want to use a user-defined RPC endpoint with the Wallet Selector, you need to set up a [network options](https://github.com/near/wallet-selector/tree/main/packages/core#options) object with the custom URLs.
+If you want to use a user-defined RPC endpoint with the Wallet Selector, you can set up a [network options](https://github.com/near/wallet-selector/tree/main/packages/core#options) object with the custom URLs.
 For example:
 
-<CodeTabs>
-  <Language value="js" language="ts">
 
-```js title="index.js"
-const CONTRACT_ADDRESS = process.env.CONTRACT_NAME;
-
+```js
 const my_network = {
-    networkId: "my-custom-network",
-    nodeUrl: "https://rpc.custom-rpc.com",
-    helperUrl: "https://helper.custom-helper.com",
-    explorerUrl: "https://custom-explorer.com",
-    indexerUrl: "https://api.custom-indexer.com",
-  };
-
-const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS, network: my_network });
+  networkId: "my-custom-network",
+  nodeUrl: "https://rpc.custom-rpc.com",
+  helperUrl: "https://helper.custom-helper.com",
+  explorerUrl: "https://custom-explorer.com",
+  indexerUrl: "https://api.custom-indexer.com",
+};
 ```
-
-</Language>
-
-</CodeTabs>
 
 :::tip
 
@@ -147,10 +135,10 @@ You can find the entire Wallet Selector [API reference here](https://github.com/
 
 </details>
 
-#### Function Call Key
-When instantiating the wallet you can choose if you want to **create a [Function-Call Key](/concepts/protocol/access-keys#function-call-keys)**.
+#### Optional: `createAccessKeyFor`
+When initializing the wallet-selector you can choose to **create a [Function-Call Key](/concepts/protocol/access-keys#function-call-keys)** using the `createAccessKeyFor` parameter.
 
-If you create the key, your dApp will be able to **automatically sign non-payable transactions** on behalf of the user for contract specified.
+By creating this key, your dApp will be able to **automatically sign non-payable transactions** on behalf of the user for specified contract.
 
 ---
 
@@ -160,19 +148,11 @@ Once the wallet is up we can start calling view methods, i.e. the methods that p
 
 Because of their read-only nature, view methods are **free** to call, and do **not require** the user to be **logged in**.
 
-<CodeTabs>
-  <Language value="js" language="ts">
+  <Language value="js" language="jsx">
     <Github fname="index.js"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/hello-near/index.js"
-            start="12" end="25" />
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/hello-near/index.js" start="19" end="20" />
+  </Language>
 
-    <Github fname="near.js"
-        url="https://github.com/flmel/near-starter-nextjs/blob/main/src/wallets/near.js"
-        start="76" end="96" />
-
-</Language>
-
-</CodeTabs>
 
 The snippet above shows how we call view methods in our examples. Switch to the `near-wallet` tab to see under the hood: we are actually making a **direct call to the RPC** using `near-api-js`.
 
@@ -191,31 +171,34 @@ In order to interact with non-view methods it is necessary for the user to first
 Signing in is as simple as requesting the `wallet` object to `signIn`, the same simplicity applies to signing out.
 
 <CodeTabs>
-  <Language value="js" language="js">
+  <Language value="js" language="jsx">
     <Github fname="navigation.js"
-            url="https://github.com/flmel/near-starter-nextjs/blob/main/src/app/components/navigation.js"
-            start="6" end="30" />
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/components/navigation.js"
+            start="9" end="38" />
 
-    <Github fname="near.js"
-            url="https://github.com/flmel/near-starter-nextjs/blob/main/src/wallets/near.js"
-            start="60" end="74" />
+    <Github fname="_app.js"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/_app.js"
+            start="43" end="46" />
 
   </Language>
 </CodeTabs>
 
-When the user clicks the login button, they will be asked to select a wallet and use it to log in.
+When the user clicks the `login` button, they will be asked to select a wallet and use it to log in.
 
 <hr className="subsection" />
 
 ### Function Call Key
 
-If you instantiated the `Wallet` passing an account for the `createAccessKeyFor` parameter, then the wallet will create a [Function-Call Key](/concepts/protocol/access-keys#function-call-keys) and store it in the web's local storage.
+If you instantiated the `Wallet Selector` passing an account id for the `createAccessKeyFor` parameter, then the wallet will create a [Function-Call Key](/concepts/protocol/access-keys#function-call-keys) and store it in the web's local storage.
 
-```jsx
-const wallet: Wallet = new Wallet({
-  createAccessKeyFor: HelloNearContract,
-  networkId: NetworkId,
-});
+```js
+const walletSelectorConfig = {
+  network: "testnet", // "mainnet"
+  createAccessKeyFor: "hello.near-examples.testnet",
+  modules: [
+  ...
+  ],
+}
 ```
 
 By default, such key enables to expend a maximum of `0.25Ⓝ` on GAS calling methods in **the specified** contract **without prompting** the user to sign them.
@@ -237,13 +220,8 @@ Once the user logs in they can start calling `change methods`. Programmatically,
 <CodeTabs>
   <Language value="js" language="js">
     <Github fname="index.js"
-            url="https://github.com/flmel/near-starter-nextjs/blob/main/src/app/page.tsx"
-            start="37" end="41" />
-
-    <Github fname="near.js"
-        url="https://github.com/flmel/near-starter-nextjs/blob/main/src/wallets/near.js"
-        start="98" end="124" />
-
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/hello-near/index.js"
+            start="26" end="39" />
 </Language>
 
 </CodeTabs>
