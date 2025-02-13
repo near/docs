@@ -1,0 +1,12 @@
+```bash
+http POST https://rpc.testnet.near.org \
+  jsonrpc=2.0 \
+  id=dontcare \
+  method=query \
+  params:='{
+    "request_type": "view_state",
+    "finality": "final",
+    "account_id": "contract.rpc-examples.testnet",
+    "prefix_base64": ""
+  }'
+```

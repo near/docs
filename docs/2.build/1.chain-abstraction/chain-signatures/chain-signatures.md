@@ -32,7 +32,7 @@ There are five steps to create a Chain Signature:
 1. [Deriving the Foreign Address](#1-deriving-the-foreign-address) - Construct the address that will be controlled on the target blockchain
 2. [Creating a Transaction](#2-creating-the-transaction) - Create the transaction or message to be signed
 3. [Requesting a Signature](#3-requesting-the-signature) - Call the NEAR `v1.signer` contract requesting it to sign the transaction
-4. [Formatting the Signature](#4-reconstructing-the-signature) - Reconstruct the signature from the MPC service's response
+4. [Formatting the Signature](#4-formatting-the-signature) - Reconstruct the signature from the MPC service's response
 5. [Relaying the Signed Transaction](#5-relaying-the-signature) - Send the signed transaction to the destination chain for execution
 
 ![chain-signatures](/docs/assets/welcome-pages/chain-signatures-overview.png)
