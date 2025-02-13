@@ -1,0 +1,46 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import RequestJson from "./request-json.mdx";
+import RequestBash from "./request-bash.mdx";
+import ResponseJson from "./response-json.mdx";
+import ErrorSchemaTable from "./error-schema-table.mdx";
+import ErrorSchemaDescription from "../../general/error-schema-description.mdx";
+
+## Send transaction {#send-tx}
+
+> Sends transaction.
+> Returns the guaranteed execution status and the results the blockchain can provide at the moment.
+
+- method: `send_tx`
+- params:
+  - `signed_tx_base64`: SignedTransaction encoded in base64
+  - [Optional] `wait_until`: the required minimal execution level.
+    The default value is `EXECUTED_OPTIMISTIC`.
+    [Read more here](#tx-status-result).
+
+Using `send_tx` with `wait_until = NONE` is equal to legacy `broadcast_tx_async` method. <br />
+Using `send_tx` with finality `wait_until = EXECUTED_OPTIMISTIC` is equal to legacy `broadcast_tx_commit` method.
+
+Example:
+
+<Tabs groupId="code-tabs">
+  <TabItem value="json" label="JSON" default>
+    <RequestJson />
+  </TabItem>
+  <TabItem value="http" label="HTTPie">
+    <RequestBash />
+  </TabItem>
+</Tabs>
+
+<details>
+  <summary>Example response: </summary>
+  <ResponseJson />
+</details>
+
+#### What could go wrong? {#what-could-go-wrong-send-tx}
+
+<ErrorSchemaDescription />
+
+Here is the exhaustive list of the error variants that can be returned by `broadcast_tx_commit` method:
+
+<ErrorSchemaTable />
