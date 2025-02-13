@@ -3,9 +3,9 @@ id: network
 title: Network
 ---
 
-import NodeStatus from './network/node-status/index.mdx';
-import NetworkInfo from './network/network-info/index.mdx';
-import ValidationStatus from './network/validation-status/index.mdx';
+import NodeStatus from '@site/src/components/docs/5.api/rpc/network/node-status/index.mdx';
+import NetworkInfo from '@site/src/components/docs/5.api/rpc/network/network-info/index.mdx';
+import ValidationStatus from '@site/src/components/docs/5.api/rpc/network/validation-status/index.mdx';
 
 The RPC API enables you to query status information for nodes and validators.
 
