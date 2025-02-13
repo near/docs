@@ -1,0 +1,44 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import { LantstoolLabel } from "@site/src/components/lantstool/LantstoolLabel/LantstoolLabel";
+import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantstool";
+import RequestJson from "./request-json.mdx";
+import RequestBash from "./request-bash.mdx";
+import ResponseJson from "./response-json.mdx";
+import ErrorSchemaDescription from "../../_general/error-schema-description.mdx";
+import ErrorSchemaTable from "./error-schema-table.mdx";
+
+## Receipt by ID {#receipt-by-id}
+
+> Fetches a receipt by its ID (as is, without a status or execution outcome)
+
+- method: `EXPERIMENTAL_receipt`
+- params:
+  - `receipt_id` _(see [NearBlocks Explorer](https://testnet.nearblocks.io) for a valid receipt id)_
+
+Example:
+
+<Tabs groupId="code-tabs">
+  <TabItem value="json" label="JSON" default>
+    <RequestJson />
+  </TabItem>
+  <TabItem value="http" label="HTTPie">
+    <RequestBash/>
+  </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/5.api/rpc/transactions/get-receipt.json" />
+  </TabItem>
+</Tabs>
+
+<details>
+  <summary>Example response:</summary>
+  <ResponseJson />
+</details>
+
+#### What could go wrong? {#what-could-go-wrong-4}
+
+<ErrorSchemaDescription />
+
+Here is the exhaustive list of the error variants that can be returned by `EXPERIMENTAL_receipt` method:
+
+<ErrorSchemaTable />

@@ -1,0 +1,11 @@
+```bash
+http POST https://archival-rpc.testnet.near.org \
+  jsonrpc=2.0 \
+  id=dontcare \
+  method=tx \
+  params:='{
+    "tx_hash": "7AfonAhbK4ZbdBU9VPcQdrTZVZBXE25HmZAMEABs9To1",
+    "sender_account_id": "rpc-examples.testnet",
+    "wait_until": "FINAL"
+  }'
+```
