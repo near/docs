@@ -54,6 +54,10 @@ Infrastructure development focuses on reliability and usability. An expanded rel
 - Security analysis
 - Developer tools
 
+- [Near-One/omni-bridge](https://github.com/Near-One/omni-bridge) - Omni Bridge repository
+- [Near-One/bridge-sdk-js](https://github.com/Near-One/bridge-sdk-js) - JavaScript SDK
+- [Near-One/bridge-sdk-rs](https://github.com/Near-One/bridge-sdk-rs) - Rust SDK
+
 The code is open source and we welcome contributions from the community. Whether you're interested in adding support for new chains, optimizing performance, or building developer tools, there's room for meaningful contribution.
 
 Bridge infrastructure is a fundamental component of a multi-chain future. Through Chain Signatures, we're creating a more efficient, secure, and scalable approach to cross-chain communication. Join us in building it.

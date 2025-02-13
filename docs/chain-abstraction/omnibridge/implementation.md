@@ -122,6 +122,7 @@ The user starts by calling the token contract with:
 * Amount to transfer
 * Destination chain and address
 * Fee preferences (whether to pay fees in the token being transferred or in NEAR)
+* Fees are minted on NEAR side for relayers
 
 #### 2. Token Lock
 
@@ -146,7 +147,6 @@ The Bridge Token Factory on the destination chain:
 
 * Verifies the MPC signature
 * Mints equivalent tokens
-* Fees are minted on NEAR side for relayers
 
 ---
 
@@ -215,6 +215,7 @@ Relayers are permissionless infrastructure operators who monitor for bridge even
 * Steal funds
 * Censor transactions (users can self-relay)
 * Front-run transactions for profit
+* Do not create additional security assumptions
 
 :::info
 The relayer's role is purely operational - executing valid transfers and collecting predetermined fees. Multiple relayers can operate simultaneously, creating competition for faster execution and lower fees.
