@@ -10,27 +10,27 @@ import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-import BOSGetDAOList from "./dao/bos/get-dao-list.md"
-import BOSGetProposalList from "./dao/bos/get-proposal-list.md"
-import BOSCreateDAO from "./dao/bos/create-dao.md"
-import BOSCreateProposal from "./dao/bos/create-proposal.md"
-import BOSVoteForProposal from "./dao/bos/vote-for-proposal.md"
+import BOSGetDAOList from "@site/src/components/docs/primitives/dao/bos/get-dao-list.md"
+import BOSGetProposalList from "@site/src/components/docs/primitives/dao/bos/get-proposal-list.md"
+import BOSCreateDAO from "@site/src/components/docs/primitives/dao/bos/create-dao.md"
+import BOSCreateProposal from "@site/src/components/docs/primitives/dao/bos/create-proposal.md"
+import BOSVoteForProposal from "@site/src/components/docs/primitives/dao/bos/vote-for-proposal.md"
 
-import WebAppGetDAOList from "./dao/web-app/get-dao-list.md"
-import WebAppGetProposalList from "./dao/web-app/get-proposal-list.md"
-import WebAppCreateDAO from "./dao/web-app/create-dao.md"
-import WebAppCreateProposal from "./dao/web-app/create-proposal.md"
-import WebAppVoteForProposal from "./dao/web-app/vote-for-proposal.md"
+import WebAppGetDAOList from "@site/src/components/docs/primitives/dao/web-app/get-dao-list.md"
+import WebAppGetProposalList from "@site/src/components/docs/primitives/dao/web-app/get-proposal-list.md"
+import WebAppCreateDAO from "@site/src/components/docs/primitives/dao/web-app/create-dao.md"
+import WebAppCreateProposal from "@site/src/components/docs/primitives/dao/web-app/create-proposal.md"
+import WebAppVoteForProposal from "@site/src/components/docs/primitives/dao/web-app/vote-for-proposal.md"
 
-import CLIGetDAOList from "./dao/near-cli/get-dao-list.md"
-import CLIGetProposalList from "./dao/near-cli/get-proposal-list.md"
-import CLICreateDAO from "./dao/near-cli/create-dao.md"
-import CLICreateProposal from "./dao/near-cli/create-proposal.md"
-import CLIVoteForProposal from "./dao/near-cli/vote-for-proposal.md"
+import CLIGetDAOList from "@site/src/components/docs/primitives/dao/near-cli/get-dao-list.md"
+import CLIGetProposalList from "@site/src/components/docs/primitives/dao/near-cli/get-proposal-list.md"
+import CLICreateDAO from "@site/src/components/docs/primitives/dao/near-cli/create-dao.md"
+import CLICreateProposal from "@site/src/components/docs/primitives/dao/near-cli/create-proposal.md"
+import CLIVoteForProposal from "@site/src/components/docs/primitives/dao/near-cli/vote-for-proposal.md"
 
-import SmartContractCreateDAO from "./dao/smart-contract/create-dao.md"
-import SmartContractCreateProposal from "./dao/smart-contract/create-proposal.md"
-import SmartContractVoteForProposal from "./dao/smart-contract/vote-for-proposal.md"
+import SmartContractCreateDAO from "@site/src/components/docs/primitives/dao/smart-contract/create-dao.md"
+import SmartContractCreateProposal from "@site/src/components/docs/primitives/dao/smart-contract/create-proposal.md"
+import SmartContractVoteForProposal from "@site/src/components/docs/primitives/dao/smart-contract/vote-for-proposal.md"
 
 Decentralized Autonomous Organizations (DAOs) are self-organized groups that form around common purposes. Membership, decision making, and funding are coordinated by publicly voting on proposals through a smart contract.
 
@@ -65,7 +65,7 @@ You can also create a DAO by interacting with the `sputnik-dao` contract.
 <hr className="subsection" />
 
 ### Voting policy
-Currently, DAOs support two different types of [voting policies](https://github.com/near-daos/sputnik-dao-contract#voting-policy): `TokenWeight`, and `RoleWeight`. 
+Currently, DAOs support two different types of [voting policies](https://github.com/near-daos/sputnik-dao-contract#voting-policy): `TokenWeight`, and `RoleWeight`.
 
 When the vote policy is `TokenWeight`, the council votes using [tokens](ft.md). The weigh of a vote is the proportion of tokens used for voting over the token's total supply.
 
