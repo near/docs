@@ -6,6 +6,13 @@ title: Implementation Details
 
 The Omni Bridge is a sophisticated cross-chain bridge infrastructure that enables secure and efficient token transfers between NEAR Protocol and various other blockchain networks. This document provides a detailed technical overview of the bridge's architecture, covering its core components, security model, and operational mechanisms. By leveraging a combination of Multi-Party Computation (MPC), chain-specific light clients, and a permissionless relayer network, the bridge achieves a robust balance of security, decentralization, and user experience.
 
+For referece code implementations, see:
+
+- [Bridge SDK JS](https://github.com/near-one/bridge-sdk-js) Omni Bridge implementation in JavaScript
+- [Bridge SDK Rust](https://github.com/near-one/bridge-sdk-rs) Omni Bridge implementation in Rust
+
+---
+
 ## The Bridge Token Factory Pattern
 
 At the core of Omni Bridge is the Bridge Token Factory contract on NEAR that serves as both a token factory and custodian. This unified contract handles both native tokens from the source chain and bridged tokens created by the factory itself. This design simplifies maintenance and reduces complexity compared to having separate contracts.

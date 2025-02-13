@@ -75,3 +75,8 @@ sequenceDiagram
     Bridge->>Other: 5. Broadcast signed msg to destination chain
     Other->>Other: 4. Mint/release tokens
 ```
+
+To get started building with Omni Bridge, see:
+
+- [Bridge SDK JS](https://github.com/near-one/bridge-sdk-js) Omni Bridge implementation in JavaScript
+- [Bridge SDK Rust](https://github.com/near-one/bridge-sdk-rs) Omni Bridge implementation in Rust
