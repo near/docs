@@ -123,7 +123,7 @@ The decentralized nature of solver networks ensures:
 - Specialized solvers for different types of intents
 
 :::tip
-See [Create a Solver](/concepts/intents/solvers) for more details on how these solvers work.
+See [Create a Solver](solvers.md) for more details on how these solvers work.
 :::
 ---
 

@@ -14,7 +14,7 @@ Steps:
 3. Serialize the intent
 4. Sign the message
 
-Here `params`  has same type as what you receive from a relay in the [**"quote"** event](solver-relay.md#2-receive-quote-requests):
+Here `params`  has same type as what you receive from a relay in the [**"quote"** event](https://docs.near-intents.org/near-intents/solver-bus/api#solver-ws-endpoint):
 
 
 ```typescript

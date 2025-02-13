@@ -16,7 +16,7 @@ NEAR Intents utilizes multichain bridges for cross-chain settlement. Currently t
 
 <!-- TODO: incoming omnibridge docs that will be added after this PR is merged. Once those are merged update this section. -->
 
-The Omni Bridge is the primary bridge solution supporting multiple networks and deposit options. 
+The [Omni Bridge](../omnibridge/overview.md) is the primary bridge solution supporting multiple networks and deposit options.
 
 ### Supported Networks
 
@@ -57,7 +57,7 @@ The Proof of Authority (PoA) Bridge provides an alternative solution for transfe
 
 ### Usage Guide
 
-The PoA Bridge API provides a JSON-RPC interface for managing deposits and withdrawals between supported networks and NEAR Intents. See the [official documentation](https://docs.near-intents.org/near-intents/poa-bridge) for more details.
+The PoA Bridge API provides a JSON-RPC interface for managing deposits and withdrawals between supported networks and NEAR Intents. See the [official documentation](https://docs.near-intents.org/near-intents/poa-bridge#json-rpc-endpoint) for more details.
 
 1. **Check Asset Support**: Verify your token is supported
 2. **Get Deposit Address**: Request a deposit address and transfer tokens
