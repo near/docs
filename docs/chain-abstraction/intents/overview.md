@@ -40,7 +40,6 @@ sequenceDiagram
     participant User/Agent
     participant Solver Network
     participant NEAR Blockchain
-    participant Destination Chain
 
     User/Agent->>Solver Network: Broadcasts intent
     note right of Solver Network: Solvers compete to <br> find the best solution
@@ -48,11 +47,8 @@ sequenceDiagram
     Solver Network-->>User/Agent: Return quote from a solver
     User/Agent->>Solver Network: User accepts quote and <br> solver executes intent
     Solver Network->>NEAR Blockchain: Solver calls NEAR <br> Intent smart contract
-    note over NEAR Blockchain, Destination Chain: Bridge facilitates <br> cross chain communication
-    NEAR Blockchain-->>Destination Chain: Transaction(s) broadcasted <br> to destination chain
 
 
-    Destination Chain->>NEAR Blockchain: Transaction(s) completes
     note over NEAR Blockchain: NEAR smart contract <br> verifies and settles intent
     NEAR Blockchain->>User/Agent: 
     note right of User/Agent: Intent Fulfilled! ✅
