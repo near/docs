@@ -9,23 +9,23 @@ import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-import BOSGetPrice from "./dex/bos/get-price.md"
-import BOSSwap from "./dex/bos/swap.md"
-import BOSGetPools from "./dex/bos/get-pools.md"
-import BOSGetDepositBalances from "./dex/bos/get-deposit-balances.md"
+import BOSGetPrice from "@site/src/components/docs/primitives/dex/bos/get-price.md"
+import BOSSwap from "@site/src/components/docs/primitives/dex/bos/swap.md"
+import BOSGetPools from "@site/src/components/docs/primitives/dex/bos/get-pools.md"
+import BOSGetDepositBalances from "@site/src/components/docs/primitives/dex/bos/get-deposit-balances.md"
 
-import WebAppGetPrice from "./dex/web-app/get-price.md"
-import WebAppSwap from "./dex/web-app/swap.md"
-import WebAppGetPools from "./dex/web-app/get-pools.md"
-import WebAppGetDepositBalances from "./dex/web-app/get-deposit-balances.md"
+import WebAppGetPrice from "@site/src/components/docs/primitives/dex/web-app/get-price.md"
+import WebAppSwap from "@site/src/components/docs/primitives/dex/web-app/swap.md"
+import WebAppGetPools from "@site/src/components/docs/primitives/dex/web-app/get-pools.md"
+import WebAppGetDepositBalances from "@site/src/components/docs/primitives/dex/web-app/get-deposit-balances.md"
 
-import CLISwap from "./dex/near-cli/swap.md"
-import CLIGetPools from "./dex/near-cli/get-pools.md"
-import CLIGetDepositBalances from "./dex/near-cli/get-deposit-balances.md"
+import CLISwap from "@site/src/components/docs/primitives/dex/near-cli/swap.md"
+import CLIGetPools from "@site/src/components/docs/primitives/dex/near-cli/get-pools.md"
+import CLIGetDepositBalances from "@site/src/components/docs/primitives/dex/near-cli/get-deposit-balances.md"
 
-import SmartContractSwap from "./dex/smart-contract/swap.md"
-import SmartContractGetPools from "./dex/smart-contract/get-pools.md"
-import SmartContractGetDepositBalances from "./dex/smart-contract/get-deposit-balances.md"
+import SmartContractSwap from "@site/src/components/docs/primitives/dex/smart-contract/swap.md"
+import SmartContractGetPools from "@site/src/components/docs/primitives/dex/smart-contract/get-pools.md"
+import SmartContractGetDepositBalances from "@site/src/components/docs/primitives/dex/smart-contract/get-deposit-balances.md"
 
 A Decentralized Exchange (DEX) is an application that allows users to trade tokens (native & fungible tokens) through smart contracts.
 

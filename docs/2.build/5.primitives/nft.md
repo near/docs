@@ -9,28 +9,28 @@ import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-import BOSMintNFT from "./nft/bos/mint.md"
-import BOSBuyNFT from "./nft/bos/buy.md"
-import BOSQueryNFT from "./nft/bos/query.md"
-import BOSTransferNFT from "./nft/bos/transfer.md"
-import BOSListNFTForSale from "./nft/bos/list-for-sale.md"
+import BOSMintNFT from "@site/src/components/docs/primitives/nft/bos/mint.md"
+import BOSBuyNFT from "@site/src/components/docs/primitives/nft/bos/buy.md"
+import BOSQueryNFT from "@site/src/components/docs/primitives/nft/bos/query.md"
+import BOSTransferNFT from "@site/src/components/docs/primitives/nft/bos/transfer.md"
+import BOSListNFTForSale from "@site/src/components/docs/primitives/nft/bos/list-for-sale.md"
 
-import WebAppMintNFT from "./nft/web-app/mint.md"
-import WebAppBuyNFT from "./nft/web-app/buy.md"
-import WebAppQueryNFT from "./nft/web-app/query.md"
-import WebAppTransferNFT from "./nft/web-app/transfer.md"
-import WebAppListNFTForSale from "./nft/web-app/list-for-sale.md"
+import WebAppMintNFT from "@site/src/components/docs/primitives/nft/web-app/mint.md"
+import WebAppBuyNFT from "@site/src/components/docs/primitives/nft/web-app/buy.md"
+import WebAppQueryNFT from "@site/src/components/docs/primitives/nft/web-app/query.md"
+import WebAppTransferNFT from "@site/src/components/docs/primitives/nft/web-app/transfer.md"
+import WebAppListNFTForSale from "@site/src/components/docs/primitives/nft/web-app/list-for-sale.md"
 
-import CLIMintNFT from "./nft/near-cli/mint.md"
-import CLIBuyNFT from "./nft/near-cli/buy.md"
-import CLIQueryNFT from "./nft/near-cli/query.md"
-import CLITransferNFT from "./nft/near-cli/transfer.md"
-import CLIListNFTForSale from "./nft/near-cli/list-for-sale.md"
+import CLIMintNFT from "@site/src/components/docs/primitives/nft/near-cli/mint.md"
+import CLIBuyNFT from "@site/src/components/docs/primitives/nft/near-cli/buy.md"
+import CLIQueryNFT from "@site/src/components/docs/primitives/nft/near-cli/query.md"
+import CLITransferNFT from "@site/src/components/docs/primitives/nft/near-cli/transfer.md"
+import CLIListNFTForSale from "@site/src/components/docs/primitives/nft/near-cli/list-for-sale.md"
 
-import SmartContractMintNFT from "./nft/smart-contract/mint.md"
-import SmartContractBuyNFT from "./nft/smart-contract/buy.md"
-import SmartContractQueryNFT from "./nft/smart-contract/query.md"
-import SmartContractTransferNFT from "./nft/smart-contract/transfer.md"
+import SmartContractMintNFT from "@site/src/components/docs/primitives/nft/smart-contract/mint.md"
+import SmartContractBuyNFT from "@site/src/components/docs/primitives/nft/smart-contract/buy.md"
+import SmartContractQueryNFT from "@site/src/components/docs/primitives/nft/smart-contract/query.md"
+import SmartContractTransferNFT from "@site/src/components/docs/primitives/nft/smart-contract/transfer.md"
 
 In contrast with fungible tokens, non-fungible tokens (NFT) are unitary and therefore unique. This makes NFTs ideal to represent ownership of assets such as a piece of digital content, or a ticket for an event.
 
