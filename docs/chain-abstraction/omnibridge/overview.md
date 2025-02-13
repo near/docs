@@ -6,7 +6,9 @@ title: Omni Bridge Overview
 
 The [Omni Bridge](https://github.com/Near-One/omni-bridge) is a multi-chain asset bridge that facilitates secure and efficient asset transfers between different blockchain networks. It solves key challenges in cross-chain communication by leveraging [Chain Signatures](https://docs.near.org/concepts/abstraction/chain-signatures) and its decentralized [Multi-Party Computation (MPC) service](https://docs.near.org/concepts/abstraction/chain-signatures#multi-party-computation-service) to enable trustless cross-chain asset transfers. 
 
+:::tip
 To learn more see [How Omni Bridge Works](./how-it-works.md).
+:::
 
 ## Supported Chains
 
@@ -20,7 +22,9 @@ Initial launch includes:
 - **Base** - _(Currently Wormhole, transitioning to Chain Signatures)_
 - **Arbitrum** - _(Currently Wormhole, transitioning to Chain Signatures)_
 
+:::info
 See [Omni Bridge Roadmap](./roadmap.md) for more details.
+:::
 
 ## Resources
 

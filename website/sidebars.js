@@ -83,6 +83,14 @@ const sidebar = {
           ]
         },
         {
+          "Intents": [
+            "chain-abstraction/intents/overview",
+            "chain-abstraction/intents/solvers",
+            "chain-abstraction/intents/intents-bridge",
+            "chain-abstraction/intents/faq",
+          ]
+        },
+        {
           "Omni Bridge": [
             "chain-abstraction/omnibridge/overview",
             "chain-abstraction/omnibridge/how-it-works",
