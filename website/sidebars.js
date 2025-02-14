@@ -509,6 +509,7 @@ const sidebar = {
     "tools/sdk",
     "tools/near-cli",
     "tools/wallet-selector",
+    'tools/clear-state',
     {
       "type": "html",
       "value": "<hr/>"
