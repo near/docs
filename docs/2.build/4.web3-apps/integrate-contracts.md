@@ -62,6 +62,8 @@ As a popular framework [our examples](https://github.com/near-examples/) are bas
 
 Apart of `near-api-js` and the `wallet-selector` core package we will also add the optional `modal-ui` and the provided `react-hook` (more info on [wallet-selector repo](https://github.com/near/wallet-selector/)) as well as few of the popular wallet providers.
 
+If you preffer to explore full code example, you can check the [hello-near-example](https://github.com/near-examples/hello-near-examples/tree/main/frontend) repository.
+
 ```bash
 npm install \
   near-api-js \
@@ -144,7 +146,7 @@ By creating this key, your dApp will be able to **automatically sign non-payable
 
 ## Calling View Methods
 
-Once the wallet is up we can start calling view methods, i.e. the methods that perform read-only operations.
+Once the wallet-selector is up we can start calling view methods, i.e. the methods that perform read-only operations.
 
 Because of their read-only nature, view methods are **free** to call, and do **not require** the user to be **logged in**.
 
@@ -154,7 +156,7 @@ Because of their read-only nature, view methods are **free** to call, and do **n
   </Language>
 
 
-The snippet above shows how we call view methods in our examples. Switch to the `near-wallet` tab to see under the hood: we are actually making a **direct call to the RPC** using `near-api-js`.
+The snippet above shows how we call view methods in our examples. Under the hood: we are actually making a **direct call to the RPC** using `near-api-js`.
 
 :::tip
 
@@ -168,7 +170,7 @@ View methods have by default 200 TGAS for execution
 
 In order to interact with non-view methods it is necessary for the user to first sign in using a NEAR wallet.
 
-Signing in is as simple as requesting the `wallet` object to `signIn`, the same simplicity applies to signing out.
+We can request the user sign in if `signedAccountId` is not present, the same simplicity applies to signing out.
 
 <CodeTabs>
   <Language value="js" language="jsx">
@@ -189,7 +191,7 @@ When the user clicks the `login` button, they will be asked to select a wallet a
 
 ### Function Call Key
 
-If you instantiated the `Wallet Selector` passing an account id for the `createAccessKeyFor` parameter, then the wallet will create a [Function-Call Key](/concepts/protocol/access-keys#function-call-keys) and store it in the web's local storage.
+If you instantiated the `wallet-selector` passing an account id for the `createAccessKeyFor` parameter, then the wallet will create a [Function-Call Key](/concepts/protocol/access-keys#function-call-keys) and store it in the web's local storage.
 
 ```js
 const walletSelectorConfig = {
@@ -226,11 +228,11 @@ Once the user logs in they can start calling `change methods`. Programmatically,
 
 </CodeTabs>
 
-Under the hood (see `near-wallet` tab) we can see that we are actually asking the **wallet** to **sign a Function-Call transaction** for us.
+Under the hood we are asking the **signedAccountId** to **sign a Function-Call transaction** for us.
 
 :::tip
 
-Remember that you can use the `wallet` to call methods in **any** contract. If you did not ask for a function key to be created, the user will simply be prompted to confirm the transaction.
+Remember that you can use the `callFunction` to call methods in **any** contract. If you did not ask for a function call key to be created, the user will simply be prompted to confirm the transaction.
 
 :::
 
@@ -238,54 +240,84 @@ Remember that you can use the `wallet` to call methods in **any** contract. If y
 
 ## Sending Multiple Transactions
 
-The Wallet class also exposes a method that can be used to send multiple transactions.
+The wallet-selector hook also exposes a method that can be used to send multiple transactions.
 
 <CodeTabs>
   <Language value="js" language="js">
+  ```js
+  ...
+  const { signAndSendTransactions } = useWalletSelector();
 
-    <Github fname="near.js"
-            url="https://github.com/flmel/near-starter-nextjs/blob/main/src/wallets/near.js"
-            start="171" end="180" />
-
-</Language>
-
+  const txs = await signAndSendTransactions({
+      transactions: [{
+          receiverId: "hello.near-examples.testnet",
+          actions: [{
+              type: "FunctionCall",
+              params: {
+                  methodName: "set_greeting",
+                  args: {
+                      greeting: "Hello World"
+                  },
+                  gas: THIRTY_TGAS,
+                  deposit: NO_DEPOSIT
+              }
+          }]
+      }
+      ...
+      ]
+  });
+  ```
+  </Language>
 </CodeTabs>
 
-Transactions can either be sent as multiple separate  transactions simultaneously or as a batch transaction made up of actions where if one of the actions fails, they are all reverted. An example of both can be seen [here](https://docs.near.org/tutorials/examples/frontend-multiple-contracts#dispatching-multiple-transactions)
+Transactions can either be sent as multiple separate transactions simultaneously or as a batch transaction made up of actions where if one of the actions fails, they are all reverted. An example of both can be seen [here](https://docs.near.org/tutorials/examples/frontend-multiple-contracts#dispatching-multiple-transactions)
+
+---
+## Signing Messages
+
+
+<CodeTabs>
+  <Language value="js" language="js">
+  ```js
+  ...
+  const { signMessage } = useWalletSelector();
+
+  const sign = await signMessage({ message, recipient, nonce });
+
+  ```
+  </Language>
+</CodeTabs>
 
 ---
 
 ## Querying Account Balance
 
-By calling the `getBalance` method the user can get the balance of the account that is currently logged in.
+By calling the `getBalance` method the user can get the balance of a given account.
 
-<CodeTabs>
-  <Language value="js" language="js">
+ <Language value="js" language="js">
+ ```js
+  ...
+  const { getBalance } = useWalletSelector();
 
-    <Github fname="near.js"
-            url="https://github.com/flmel/near-starter-nextjs/blob/main/src/wallets/near.js"
-            start="144" end="169" />
-
+  const balance = await getBalance("account.testnet");
+```
 </Language>
 
-</CodeTabs>
 
 ---
 
 ## Get Access Keys
 
-The final method the Wallet class exposes is `getAccessKeys` which is used to return an object of all the access keys on the account that is currently logged in.
+The final method the the wallet selector hooks exposes is `getAccessKeys` which is used to return an object of all the access keys on the account that is currently logged in.
 
-<CodeTabs>
-  <Language value="js" language="js">
+<Language value="js" language="js">
+```js
+...
+const { getAccessKeys } = useWalletSelector();
 
-    <Github fname="near.js"
-            url="https://github.com/flmel/near-starter-nextjs/blob/main/src/wallets/near.js"
-            start="182" end="200" />
-
+const keys = await getAccessKeys("account.testnet");
+```
 </Language>
-
-</CodeTabs>
 
 ---
 
@@ -310,7 +342,7 @@ If the contract returns a `Balance` instead of a `U128`, you will get a "scienti
 
 ```js
 function formatAmount(amount) {
-  let formatted = amount.toLocaleString('fullwide', { useGrouping: false })
+  let formatted = amount.toLocaleString("fullwide", { useGrouping: false })
   formatted = utils.format.formatNearAmount(formatted)
 
   return Math.floor(formatted * 100) / 100
