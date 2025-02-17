@@ -367,8 +367,8 @@ Check the [NEAR API](../../4.tools/near-api.md) section to learn how to supercha
 
 At the time of this writing, this example works with the following versions:
 
-- next: `15.1.6`
+- next: `15.0.3`
 - near-api-js: `^5.0.1`
-- wllet-selector/core: `^8.9.16`
+- wllet-selector/core: `^8.10.0`
 
 :::
