@@ -82,6 +82,22 @@ const sidebar = {
             // 'build/chain-abstraction/nft-chain-keys',
           ]
         },
+        {
+          "Intents": [
+            "chain-abstraction/intents/overview",
+            "chain-abstraction/intents/solvers",
+            "chain-abstraction/intents/intents-bridge",
+            "chain-abstraction/intents/faq",
+          ]
+        },
+        {
+          "Omni Bridge": [
+            "chain-abstraction/omnibridge/overview",
+            "chain-abstraction/omnibridge/how-it-works",
+            "chain-abstraction/omnibridge/implementation-details",
+            "chain-abstraction/omnibridge/roadmap",
+          ]
+        },
         'build/chain-abstraction/fastauth-sdk',
         "build/chain-abstraction/data-availability",
       ]
@@ -314,6 +330,7 @@ const sidebar = {
     {
       "Advanced Contracts": [
         "tutorials/examples/factory",
+        "tutorials/examples/near-drop",
         "tutorials/examples/advanced-xcc",
         "tutorials/examples/update-contract-migrate-state",
       ]

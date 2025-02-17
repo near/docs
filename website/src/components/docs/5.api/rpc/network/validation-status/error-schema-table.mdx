@@ -1,0 +1,63 @@
+<table>
+  <thead>
+    <tr>
+      <th>ERROR_TYPE<br /><code>error.name</code></th>
+      <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
+      <th>Reason</th>
+      <th>Solution</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>HANDLER_ERROR</td>
+      <td>UNKNOWN_EPOCH</td>
+      <td>200</td>
+      <td>An epoch for the provided block can't be found in a database</td>
+      <td>
+        <ul>
+          <li>Check that the requested block is legit</li>
+          <li>
+            If the block had been produced more than 5 epochs ago, try to send
+            your request to an archival node
+          </li>
+          <li>
+            Check that the requested block is the last block of some epoch
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>REQUEST_VALIDATION_ERROR</td>
+      <td>PARSE_ERROR</td>
+      <td>400</td>
+      <td>
+        Passed arguments can't be parsed by JSON RPC server (missing arguments,
+        wrong format, etc.)
+      </td>
+      <td>
+        <ul>
+          <li>Check the arguments passed and pass the correct ones</li>
+          <li>
+            Check <code>error.cause.info</code> for more details
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>INTERNAL_ERROR</td>
+      <td>INTERNAL_ERROR</td>
+      <td>500</td>
+      <td>Something went wrong with the node itself or overloaded</td>
+      <td>
+        <ul>
+          <li>Try again later</li>
+          <li>Send a request to a different node</li>
+          <li>
+            Check <code>error.cause.info</code> for more details
+          </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>

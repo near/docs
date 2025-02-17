@@ -1,0 +1,12 @@
+```bash
+http POST https://archival-rpc.testnet.near.org \
+  jsonrpc=2.0 \
+  id=dontcare \
+  method=EXPERIMENTAL_changes \
+  params:='{
+    "changes_type": "data_changes",
+    "account_ids": ["contract.rpc-examples.testnet"],
+    "key_prefix_base64": "",
+    "block_id": 187310139
+  }'
+```
