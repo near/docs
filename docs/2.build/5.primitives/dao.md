@@ -32,11 +32,11 @@ import SmartContractCreateDAO from "@site/src/components/docs/primitives/dao/sma
 import SmartContractCreateProposal from "@site/src/components/docs/primitives/dao/smart-contract/create-proposal.md"
 import SmartContractVoteForProposal from "@site/src/components/docs/primitives/dao/smart-contract/vote-for-proposal.md"
 
-Decentralized Autonomous Organizations (DAOs) are self-organized groups that form around common purposes. Membership, decision making, and funding are coordinated by publicly voting on proposals through a smart contract.
+Decentralized Autonomous Organizations (DAOs) are self-organized groups that form around common purposes. Membership, decision-making, and funding are coordinated by publicly voting on proposals through a smart contract.
 
 ![dao](/docs/primitives/dao.png)
 
-In contrast with [FT](ft.md) and [NFT](nft.md), DAO contract's are not standardized. Because of this, in this page we will use as
+In contrast with [FT](ft.md) and [NFT](nft.md), DAO contract's are not standardized. Because of this, on this page we will use as
 reference the [Astra dao](https://dev.near.org/astraplusplus.ndctools.near/widget/home?page=daos) [contract](https://github.com/near-daos/sputnik-dao-contract). The main concepts covered here should
 easily generalizable to other DAO implementations.
 
@@ -164,5 +164,5 @@ These snippet will enable your users to cast a vote for proposal of a particular
 
 ## Additional Resources
 
-1. [AstroDAO UI](https://astrodao.com/) - the web app built on top of the Sputnik DAO Contract. Allows users to create and manage DAOs.
+1. [NEAR Treasury](https://neartreasury.com/) - a Treasury management web app built on top of the Sputnik DAO Contract. Allows users to create and manage treasury funds with ease.
 2. [List of DAOs as a NEAR component](https://dev.near.org/onboarder.near/widget/DAOSocialSearch)
