@@ -66,13 +66,13 @@ We provide code to derive the address, as it's a complex process that involves m
 <Tabs groupId="code-tabs">
   <TabItem value="Ξ Ethereum">
     <Github language="js"
-      url="https://github.com/near-examples/near-multichain/blob/main/src/services/ethereum.js" start="18" end="21" />
+      url="https://github.com/near-examples/near-multichain/blob/aafcfe27f89d000e5abf94580dd4a7aaecb09fa7/src/services/ethereum.js" start="18" end="21" />
 
 </TabItem>
 
 <TabItem value="₿ Bitcoin">
     <Github language="js"
-      url="https://github.com/near-examples/near-multichain/blob/main/src/services/bitcoin.js" start="17" end="25" />
+      url="https://github.com/near-examples/near-multichain/blob/aafcfe27f89d000e5abf94580dd4a7aaecb09fa7/src/services/bitcoin.js" start="17" end="25" />
 
 </TabItem>
 
@@ -108,7 +108,7 @@ Constructing the transaction to be signed (transaction, message, data, etc.) var
 <Tabs groupId="code-tabs">
   <TabItem value="Ξ Ethereum">
     <Github language="js"
-      url="https://github.com/near-examples/near-multichain/blob/main/src/services/ethereum.js"
+      url="https://github.com/near-examples/near-multichain/blob/aafcfe27f89d000e5abf94580dd4a7aaecb09fa7/src/services/ethereum.js"
       start="47" end="73" />
 
 In Ethereum, constructing the transaction is simple since you only need to specify the address of the receiver and how much you want to send.
@@ -117,7 +117,7 @@ In Ethereum, constructing the transaction is simple since you only need to speci
 
 <TabItem value="₿ Bitcoin">
     <Github language="js"
-      url="https://github.com/near-examples/near-multichain/blob/main/src/services/bitcoin.js"
+      url="https://github.com/near-examples/near-multichain/blob/aafcfe27f89d000e5abf94580dd4a7aaecb09fa7/src/services/bitcoin.js"
       start="41" end="53" />
 
 In bitcoin, you construct a new transaction by using all the Unspent Transaction Outputs (UTXOs) of the account as input, and then specify the output address and amount you want to send.
@@ -144,14 +144,14 @@ The method requires two parameters:
 <Tabs groupId="code-tabs">
   <TabItem value="Ξ Ethereum">
     <Github language="js"
-      url="https://github.com/near-examples/near-multichain/blob/main/src/services/ethereum.js"
+      url="https://github.com/near-examples/near-multichain/blob/aafcfe27f89d000e5abf94580dd4a7aaecb09fa7/src/services/ethereum.js"
       start="75" end="87" />
 
 </TabItem>
 
   <TabItem value="₿ Bitcoin">
     <Github language="js"
-      url="https://github.com/near-examples/near-multichain/blob/main/src/services/bitcoin.js"
+      url="https://github.com/near-examples/near-multichain/blob/aafcfe27f89d000e5abf94580dd4a7aaecb09fa7/src/services/bitcoin.js"
       start="55" end="118" />
 
 For bitcoin, all UTXOs are signed independently and then combined into a single transaction.
@@ -188,16 +188,16 @@ This allows the contract to generalize the signing process for multiple blockcha
 <Tabs groupId="code-tabs">
   <TabItem value="Ξ Ethereum">
     <Github language="js"
-      url="https://github.com/near-examples/near-multichain/blob/main/src/services/ethereum.js"
+      url="https://github.com/near-examples/near-multichain/blob/aafcfe27f89d000e5abf94580dd4a7aaecb09fa7/src/services/ethereum.js"
       start="89" end="100" />
 
 In Ethereum, the signature is formatted by concatenating the `r`, `s`, and `v` values returned by the contract.
 
 </TabItem>
-<!-- https://github.com/near-examples/near-multichain/blob/1c07d9a3de7f1f2ee93206b77832838f2892144b/src/services/bitcoin.js -->
+
 <TabItem value="₿ Bitcoin">
     <Github language="js"
-      url="https://github.com/near-examples/near-multichain/blob/main/src/services/bitcoin.js"
+      url="https://github.com/near-examples/near-multichain/blob/aafcfe27f89d000e5abf94580dd4a7aaecb09fa7/src/services/bitcoin.js"
       start="120" end="172" />
 
 In Bitcoin, the signature is formatted by concatenating the `r` and `s` values returned by the contract.
@@ -215,14 +215,14 @@ Once we have reconstructed the signature, we can relay it to the corresponding n
 <Tabs groupId="code-tabs">
   <TabItem value="Ξ Ethereum">
     <Github language="js"
-      url="https://github.com/near-examples/near-multichain/blob/main/src/services/ethereum.js"
+      url="https://github.com/near-examples/near-multichain/blob/aafcfe27f89d000e5abf94580dd4a7aaecb09fa7/src/services/ethereum.js"
       start="109" end="115" />
 
 </TabItem>
-<!-- https://github.com/near-examples/near-multichain/blob/1c07d9a3de7f1f2ee93206b77832838f2892144b/src/services/bitcoin.js -->
+
 <TabItem value="₿ Bitcoin">
     <Github language="js"
-      url="https://github.com/near-examples/near-multichain/blob/main/src/services/bitcoin.js"
+      url="https://github.com/near-examples/near-multichain/blob/aafcfe27f89d000e5abf94580dd4a7aaecb09fa7/src/services/bitcoin.js"
       start="189" end="202" />
 
 </TabItem>
