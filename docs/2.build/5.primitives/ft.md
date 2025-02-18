@@ -79,7 +79,7 @@ On initialization you will define the token's metadata such as its name (e.g. Et
 To initialize a FT contract you will need to deploy it and then call the `new` method defining the token's metadata.
 
 <Tabs groupId="code-tabs">
-  <TabItem value="🖥️ Cargo-NEAR" label="🖥️ Cargo-NEAR">
+  <TabItem value="🖥️ CLI" label="🖥️ CLI">
     <CargoNearCreateTokenManually />
   </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
