@@ -29,11 +29,10 @@ import CLISendToken from "@site/src/components/docs/primitives/ft/near-cli/send.
 import CLIRegister from "@site/src/components/docs/primitives/ft/near-cli/register.md"
 import CLIAttachTokenToCall from "@site/src/components/docs/primitives/ft/near-cli/attach-to-call.md"
 import CLICreateToken from "@site/src/components/docs/primitives/ft/near-cli/create.md"
+import CLICreateTokenManually from "@site/src/components/docs/primitives/ft/near-cli/create-manually.md"
 
 import SmartContractSendToken from "@site/src/components/docs/primitives/ft/smart-contract/send.md"
 import SmartContractAttachTokenToCall from "@site/src/components/docs/primitives/ft/smart-contract/attach-to-call.md"
-
-import CargoNearCreateTokenManually from "@site/src/components/docs/primitives/ft/cargo-near/create-manually.md"
 
 import { LantstoolLabel } from "@site/src/components/lantstool/LantstoolLabel/LantstoolLabel";
 import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantstool";
@@ -74,13 +73,13 @@ The FT you create will live in the account `<your_token_symbol>.tkn.primitives.n
 
 You can also create a fungible token by deploying and initializing a [canonical FT contract](https://github.com/near-examples/FT).
 
-On initialization you will define the token's metadata such as its name (e.g. Ethereum), symbol (e.g. ETH) and total supply (e.g. 10M). You will also define an `owner`, which will own the tokens **total supply**.
+On initialization, you will define the token's metadata such as its name (e.g. Ethereum), symbol (e.g. ETH) and total supply (e.g. 10M). You will also define an `owner`, which will own the tokens **total supply**.
 
 To initialize a FT contract you will need to deploy it and then call the `new` method defining the token's metadata.
 
 <Tabs groupId="code-tabs">
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
-    <CargoNearCreateTokenManually />
+    <CLICreateTokenManually />
   </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
     <TryOutOnLantstool path="docs/2.build/5.primitives/ft/create-ft-manually.json" />
