@@ -100,13 +100,11 @@ flowchart TD
     
     MPCSign --> Chain{Destination Chain}
     
-    Chain -->|Ethereum| EVMBridge[EVM Bridge Contract]
     Chain -->|Bitcoin| BTCBridge[Bitcoin Script]
-    Chain -->|Other| WormBridge[Wormhole Bridge]
+    Chain -->|Other| OtherBridge[Verify MPC Signature]
     
-    EVMBridge --> Mint[Mint/Release Tokens]
-    BTCBridge --> Mint
-    WormBridge --> Mint
+    BTCBridge --> Mint[Mint/Release Tokens]
+    OtherBridge --> Mint
     
     Mint --> End[Transfer Complete]
 ```
