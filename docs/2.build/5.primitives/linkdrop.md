@@ -7,7 +7,8 @@ import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import { Github } from "@site/src/components/codetabs"
-import { LantstoolLabel } from '@site/src/components/lantstool/LantstoolLabel/LantstoolLabel';
+import { LantstoolLabel } from "@site/src/components/lantstool/LantstoolLabel/LantstoolLabel";
+import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantstool";
 
 Linkdrops allow users to distribute assets and onboard people to Web3 apps through a simple web link.
 
@@ -213,9 +214,8 @@ near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_pe
 
   </TabItem>
 
-  <TabItem value="Lantstool" label={<LantstoolLabel/>}>
-    <p>Try it out on [Lantstool](https://app.lantstool.dev/import/gh/lantstool/examples.near-protocol/main/docs/2.build/5.primitives/linkdrop/create-near-drop.json)</p>
-    <Github language="json" url="https://github.com/lantstool/examples.near-protocol/blob/main/docs/2.build/5.primitives/linkdrop/create-near-drop.json"  />
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/linkdrop/create-near-drop.json" />
   </TabItem>
 </Tabs>
 
@@ -306,9 +306,8 @@ near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_pe
 
   </TabItem>
 
-    <TabItem value="Lantstool" label={<LantstoolLabel/>}>
-        <p>Try it out on [Lantstool](https://app.lantstool.dev/import/gh/lantstool/examples.near-protocol/main/docs/2.build/5.primitives/linkdrop/create-nft-drop.json)</p>
-        <Github language="json" url="https://github.com/lantstool/examples.near-protocol/blob/main/docs/2.build/5.primitives/linkdrop/create-nft-drop.json" />
+    <TabItem value="Lantstool" label={<LantstoolLabel />}>
+        <TryOutOnLantstool path="docs/2.build/5.primitives/linkdrop/create-nft-drop.json" />
     </TabItem>
 </Tabs>
 
@@ -372,9 +371,8 @@ near call nft.primitives.near nft_transfer_call '{"receiver_id": "v2.keypom.near
 
   </TabItem>
 
-  <TabItem value="Lantstool" label={<LantstoolLabel/>}>
-      <p>Try it out on [Lantstool](https://app.lantstool.dev/import/gh/lantstool/examples.near-protocol/main/docs/2.build/5.primitives/linkdrop/transfer-nft-to-v2keypomnear.json)</p>
-      <Github language="json" url="https://github.com/lantstool/examples.near-protocol/blob/main/docs/2.build/5.primitives/linkdrop/transfer-nft-to-v2keypomnear.json" />
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/linkdrop/transfer-nft-to-v2keypomnear.json" />
   </TabItem>
 </Tabs>
 
@@ -467,10 +465,9 @@ near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_pe
 
   </TabItem>
 
-    <TabItem value="Lantstool" label={<LantstoolLabel/>}>
-        <p>Try it out on [Lantstool](https://app.lantstool.dev/import/gh/lantstool/examples.near-protocol/main/docs/2.build/5.primitives/linkdrop/create-ft-drop.json)</p>
-        <Github language="json" url="https://github.com/lantstool/examples.near-protocol/blob/main/docs/2.build/5.primitives/linkdrop/create-ft-drop.json" />
-    </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/linkdrop/create-ft-drop.json" />
+  </TabItem>
 </Tabs>
 
 #### 2. Transferring FT
@@ -533,9 +530,8 @@ near call ft.primitives.near ft_transfer '{"receiver_id": "v2.keypom.near", "amo
 
   </TabItem>
 
-  <TabItem value="Lantstool" label={<LantstoolLabel/>}>
-      <p>Try it out on [Lantstool](https://app.lantstool.dev/import/gh/lantstool/examples.near-protocol/main/docs/2.build/5.primitives/linkdrop/transfer-ft-to-v2keypomnear.json)</p>
-      <Github language="json" url="https://github.com/lantstool/examples.near-protocol/blob/main/docs/2.build/5.primitives/linkdrop/transfer-ft-to-v2keypomnear.json" />
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/linkdrop/transfer-ft-to-v2keypomnear.json" />
   </TabItem>
 </Tabs>
 
@@ -654,9 +650,8 @@ near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_pe
 
   </TabItem>
 
-  <TabItem value="Lantstool" label={<LantstoolLabel/>}>
-      <p>Try it out on [Lantstool](https://app.lantstool.dev/import/gh/lantstool/examples.near-protocol/main/docs/2.build/5.primitives/linkdrop/create-function-call-drop.json)</p>
-      <Github language="json" url="https://github.com/lantstool/examples.near-protocol/blob/main/docs/2.build/5.primitives/linkdrop/create-function-call-drop.json" />
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/linkdrop/create-function-call-drop.json" />
   </TabItem>
 </Tabs>
 
