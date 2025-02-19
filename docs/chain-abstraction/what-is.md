@@ -49,7 +49,7 @@ NEAR's chain abstraction framework consists of three core technologies that work
 
 ### NEAR Intents
 
-[NEAR Intents](../../chain-abstraction/intents/overview.md) are a new transaction type that allows information, requests, assets, and actions to be exchanged between users, services, and AI agents.
+[NEAR Intents](intents/overview.md) are a new transaction type that allows information, requests, assets, and actions to be exchanged between users, services, and AI agents.
 
 This represents a paradigm shift in how users and AI agents interact with blockchain networks. Instead of directly executing complex transactions across multiple chains, users simply declare what they want to achieve, and the network determines how to make it happen.
 
@@ -88,7 +88,7 @@ NEAR Intents are designed to power both traditional DeFi operations and the emer
 
 ### Chain Signatures
 
-Chain Signatures enable NEAR accounts, including smart contracts, to sign and execute transactions across many blockchain protocols. By using [Multi-Party Computation (MPC)](../../1.concepts/abstraction/chain-signatures.md#multi-party-computation-service), this technology allows a single NEAR account to control accounts and assets on external chains like Bitcoin, Ethereum, and Base.
+Chain Signatures enable NEAR accounts, including smart contracts, to sign and execute transactions across many blockchain protocols. By using [Multi-Party Computation (MPC)](chain-signatures.md#multi-party-computation-service), this technology allows a single NEAR account to control accounts and assets on external chains like Bitcoin, Ethereum, and Base.
 
 Key benefits include:
 
@@ -101,15 +101,15 @@ For example, this enables dApps built on NEAR to interact with Bitcoin's UTXO mo
 :::tip
 To learn more about Chain Signatures, the concepts, and how to implement it, check these articles:
 
-- [What are Chain Signatures?](../../1.concepts/abstraction/chain-signatures.md)
+- [What are Chain Signatures?](chain-signatures.md)
 - [Getting started with Chain Signatures](chain-signatures/getting-started.md)
-- [Implementing Chain Signatures](chain-signatures/chain-signatures.md)
+- [Implementing Chain Signatures](chain-signatures/implementation.md)
 
 :::
 
 ### OmniBridge
 
-The [OmniBridge](../../chain-abstraction/omnibridge/overview.md) is a multi-chain asset bridge that combines Chain Signatures with chain-specific verification methods to enable secure and efficient cross-chain asset transfers. It consists of three core components:
+The [OmniBridge](omnibridge/overview.md) is a multi-chain asset bridge that combines Chain Signatures with chain-specific verification methods to enable secure and efficient cross-chain asset transfers. It consists of three core components:
 
 1. **Chain Signatures Integration**:
    - Enables NEAR smart contracts to generate and control accounts on other blockchains
@@ -131,5 +131,5 @@ The [OmniBridge](../../chain-abstraction/omnibridge/overview.md) is a multi-chai
 This architecture creates a robust bridge system that combines NEAR's ability to execute transactions on foreign chains with secure verification methods, while maintaining high efficiency and security through MPC threshold guarantees.
 
 :::info
-For detailed implementation information and current status, see the [OmniBridge documentation](../../chain-abstraction/omnibridge/overview.md).
+For detailed implementation information and current status, see the [OmniBridge documentation](omnibridge/overview.md).
 :::
