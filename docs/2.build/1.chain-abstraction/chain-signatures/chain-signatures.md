@@ -200,7 +200,7 @@ This allows the contract to generalize the signing process for multiple blockcha
 In Ethereum, the signature is formatted by concatenating the `r`, `s`, and `v` values returned by the contract.
 
 </TabItem>
-<!-- https://github.com/near-examples/near-multichain/blob/1c07d9a3de7f1f2ee93206b77832838f2892144b/src/services/bitcoin.js -->
+
 <TabItem value="₿ Bitcoin">
         <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx"
@@ -225,7 +225,7 @@ Once we have reconstructed the signature, we can relay it to the corresponding n
       start="150" end="150" />
 
 </TabItem>
-<!-- https://github.com/near-examples/near-multichain/blob/1c07d9a3de7f1f2ee93206b77832838f2892144b/src/services/bitcoin.js -->
+
 <TabItem value="₿ Bitcoin">
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx"
