@@ -29,9 +29,13 @@ import CLISendToken from "@site/src/components/docs/primitives/ft/near-cli/send.
 import CLIRegister from "@site/src/components/docs/primitives/ft/near-cli/register.md"
 import CLIAttachTokenToCall from "@site/src/components/docs/primitives/ft/near-cli/attach-to-call.md"
 import CLICreateToken from "@site/src/components/docs/primitives/ft/near-cli/create.md"
+import CLICreateTokenManually from "@site/src/components/docs/primitives/ft/near-cli/create-manually.md"
 
 import SmartContractSendToken from "@site/src/components/docs/primitives/ft/smart-contract/send.md"
 import SmartContractAttachTokenToCall from "@site/src/components/docs/primitives/ft/smart-contract/attach-to-call.md"
+
+import { LantstoolLabel } from "@site/src/components/lantstool/LantstoolLabel/LantstoolLabel";
+import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantstool";
 
 Besides the native NEAR token, NEAR accounts have access to a [multitude of tokens](https://guide.ref.finance/developers-1/cli-trading#query-whitelisted-tokens) to use throughout the ecosystem. Moreover, it is even possible for users to create their own fungible tokens.
 
@@ -56,6 +60,9 @@ You can create an FT using the toolbox on [Dev Portal](https://dev.near.org/tool
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
     <CLICreateToken />
   </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/ft/create-ft-via-factory.json" />
+  </TabItem>
 </Tabs>
 
 The FT you create will live in the account `<your_token_symbol>.tkn.primitives.near` (e.g. `test.tkn.primitives.near`).
@@ -66,13 +73,19 @@ The FT you create will live in the account `<your_token_symbol>.tkn.primitives.n
 
 You can also create a fungible token by deploying and initializing a [canonical FT contract](https://github.com/near-examples/FT).
 
-On initialization you will define the token's metadata such as its name (e.g. Ethereum), symbol (e.g. ETH) and total supply (e.g. 10M). You will also define an `owner`, which will own the tokens **total supply**.
+On initialization, you will define the token's metadata such as its name (e.g. Ethereum), symbol (e.g. ETH) and total supply (e.g. 10M). You will also define an `owner`, which will own the tokens **total supply**.
 
 To initialize a FT contract you will need to deploy it and then call the `new` method defining the token's metadata.
 
-```bash
-cargo near deploy build-non-reproducible-wasm <account-id> with-init-call new json-args '{"owner_id": "<owner-account>", "total_supply": "1000000000000000", "metadata": { "spec": "ft-1.0.0", "name": "Example Token Name", "symbol": "EXLT", "decimals": 8 }}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
-```
+<Tabs groupId="code-tabs">
+  <TabItem value="🖥️ CLI" label="🖥️ CLI">
+    <CLICreateTokenManually />
+  </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/ft/create-ft-manually.json" />
+  </TabItem>
+</Tabs>
+
 
 :::tip
 Check the [Contract Wizard](https://dev.near.org/contractwizard.near/widget/ContractWizardUI) to create a personalized FT contract!.
@@ -93,6 +106,9 @@ You can query the FT's metadata by calling the `ft_metadata`.
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
     <CLIGetMetadata />
   </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/ft/query-ft-metadata.json" />
+  </TabItem>
 </Tabs>
 
 ---
@@ -109,6 +125,9 @@ To know how many coins a user has you will need to query the method `ft_balance_
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
     <CLICheckBalance />
+  </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/ft/check-ft-balance.json" />
   </TabItem>
 </Tabs>
 
@@ -128,6 +147,9 @@ By calling this `storage_deposit` the user can register themselves or **register
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
     <CLIRegister />
+  </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/ft/register-user.json" />
   </TabItem>
 </Tabs>
 
@@ -154,6 +176,9 @@ To send FT to another account you will use the `ft_transfer` method, indicating 
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
     <CLISendToken />
   </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/ft/transfer-tokens.json" />
+  </TabItem>
   <TabItem value="📄 Contract"  label="📄 Contract"  default>
     <SmartContractSendToken />
   </TabItem>
@@ -175,6 +200,9 @@ Let's assume that you need to deposit FTs on Ref Finance.
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
     <CLIAttachTokenToCall />
+  </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/ft/attach-ft-to-call.json" />
   </TabItem>
   <TabItem value="📄 Contract"  label="📄 Contract"  default>
     <SmartContractAttachTokenToCall />
