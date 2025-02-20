@@ -335,12 +335,12 @@ function Footer() {
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/build/chain-abstraction/fastauth-sdk">
+                    <a href="/chain-abstraction/fastauth-sdk">
                       FastAuth
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/build/chain-abstraction/what-is">
+                    <a href="/chain-abstraction/relayers">
                       Relayers
                     </a>
                   </li>
