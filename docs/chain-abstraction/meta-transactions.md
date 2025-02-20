@@ -1,7 +1,7 @@
 ---
-id: meta-transactions
+id: meta-transactions-relayer
 title: Building a Meta Transaction Relayer
-sidebar_label: Meta Transaction Relayers
+sidebar_label: Building a Relayer
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -195,13 +195,13 @@ Check the [Use cases section](#use-cases) for example configuration files corres
 
 You can follow these steps to set up your local Relayer server development environment:
 
-1. [Install Rust for NEAR Development](../2.smart-contracts/quickstart.md#prerequisites)
-2. If you don't have a NEAR account, [create one](../../1.concepts/protocol/account-model.md)
+1. [Install Rust for NEAR Development](../2.build/2.smart-contracts/quickstart.md#prerequisites)
+2. If you don't have a NEAR account, [create one](../1.concepts/protocol/account-model.md)
 3. With the account from step 2, create a JSON file in this directory in the format
    ```js
    [{"account_id":"example.testnet","public_key":"ed25519:98GtfFzez3opomVpwa7i4m3nptHtc7Ha514XHMWszLtQ","private_key":"ed25519:YWuyKVQHE3rJQYRC3pRGV56o1qEtA1PnMYPDEtroc5kX4A4mWrJwF7XkzGe7JWNMABbtY4XFDBJEzgLyfPkwpzC"}]
    ```
-   using a [Full Access Key](../../1.concepts/protocol/access-keys.md#full-access-keys) from an account that has enough NEAR to cover the gas costs of transactions your server will be relaying. Usually, this will be a copy of the json file found in the `.near-credentials` directory.
+   using a [Full Access Key](../1.concepts/protocol/access-keys.md#full-access-keys) from an account that has enough NEAR to cover the gas costs of transactions your server will be relaying. Usually, this will be a copy of the json file found in the `.near-credentials` directory.
 4. Update values in `config.toml`
 5. Open up the `port` from `config.toml` in your machine's network settings
 6. Run the server using `cargo run`.

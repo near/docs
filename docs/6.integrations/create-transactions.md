@@ -18,7 +18,7 @@ At the core, all transactions require the following:
 - `actions` _( [[click here]](/concepts/protocol/transaction-anatomy#actions) for supported arguments)_
 - `blockHash` _(a current block hash (within 24hrs) to prove the transaction was recently created)_
 
-See [Transaction Class](https://near.github.io/near-api-js/classes/near_api_js.transaction.Transaction.html) for a more in depth outline.
+See [Transaction Class](https://near.github.io/near-api-js/classes/near-api-js.transaction.Transaction.html) for a more in depth outline.
 
 ---
 
@@ -289,7 +289,7 @@ const publicKey = keyPair.getPublicKey();
 
 - A unique number or `nonce` is required for each transaction signed with an access key.
 - To ensure a unique number is created for each transaction, the current `nonce` should be queried and then incremented by 1.
-- Current nonce can be retrieved using the `provider` we [created earlier](#setting-up-a-connection-to-near-1).
+- Current nonce can be retrieved using the `provider` we [created earlier](#setting-up-a-connection-to-near).
 
 ```js
 const accessKey = await provider.query(
@@ -394,7 +394,7 @@ const signedTransaction = new nearAPI.transactions.SignedTransaction({
 Final step is to encode and send the transaction.
 
 - First we serialize transaction into [Borsh](https://borsh.io/), and store the result as `signedSerializedTx`. _(required for all transactions)_
-- Then we send the transaction via [RPC call](/api/rpc/introduction) using the `sendJsonRpc()` method nested inside [`near`](#setting-up-connection-to-near-1).
+- Then we send the transaction via [RPC call](/api/rpc/introduction) using the `sendJsonRpc()` method nested inside [`near`](#setting-up-a-connection-to-near).
 
 ```js
 // encodes transaction to serialized Borsh (required for all transactions)

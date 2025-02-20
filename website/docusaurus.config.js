@@ -31,8 +31,9 @@ const config = {
     REACT_APP_PUBLIC_POSTHOG_HOST: process.env.REACT_APP_PUBLIC_POSTHOG_HOST
   },
   themes: ['@saucelabs/theme-github-codeblock', '@docusaurus/theme-mermaid'],
-  onBrokenLinks: 'log',
-  onBrokenMarkdownLinks: 'log',
+  onBrokenLinks: 'warn',
+  onBrokenMarkdownLinks: 'throw',
+  onBrokenAnchors: 'throw',
   presets: [
     [
       '@docusaurus/preset-classic',

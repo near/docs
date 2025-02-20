@@ -22,7 +22,7 @@ _Chain signatures flow_
 
 #### 1. Deriving Foreign Addresses
 
-Chain Signatures uses [derivation paths](../../../1.concepts/abstraction/chain-signatures.md#derivation-paths-one-account-multiple-chains) to represent accounts on foreign blockchains
+Chain Signatures uses [derivation paths](../chain-signatures.md#derivation-paths-one-account-multiple-chains) to represent accounts on foreign blockchains
 
 The NEAR account’s name and the derivation path are used to mathematically derive a unique address for the user on the foreign blockchain
 

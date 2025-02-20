@@ -1,5 +1,5 @@
 ---
-id: chain-signatures
+id: implementation
 title: Implementing Chain Signatures
 ---
 
@@ -55,7 +55,7 @@ If you want to try things out, these are the smart contracts available on `testn
 
 ## 1. Deriving the Foreign Address
 
-Chain Signatures use [`derivation paths`](/concepts/abstraction/chain-signatures#derivation-paths-one-account-multiple-chains) to represent accounts on the target blockchain. The external address to be controlled can be deterministically derived from:
+Chain Signatures use [`derivation paths`](../chain-signatures.md#derivation-paths-one-account-multiple-chains) to represent accounts on the target blockchain. The external address to be controlled can be deterministically derived from:
 
 - The NEAR address (e.g., `example.near`, `example.testnet`, etc.)
 - A derivation path (a string such as `ethereum-1`, `ethereum-2`, etc.)
@@ -112,7 +112,7 @@ Constructing the transaction to be signed (transaction, message, data, etc.) var
   <!-- In Ethereum, constructing the transaction is simple since you only need to specify the address of the receiver, and any necessary data for the transaction. -->
       <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/FunctionCall.jsx"
-      start="30" end="39" 
+      start="30" end="39"
       fname="FunctionCall.jsx"/>
        <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/Transfer.jsx"
@@ -236,7 +236,7 @@ Once we have reconstructed the signature, we can relay it to the corresponding n
 </Tabs>
 
 :::info
-⭐️ For a deep dive into the concepts of Chain Signatures see [What are Chain Signatures?](/concepts/abstraction/chain-signatures)
+⭐️ For a deep dive into the concepts of Chain Signatures see [What are Chain Signatures?](../chain-signatures.md)
 
 ⭐️ For complete examples of a NEAR account performing Eth transactions:
 

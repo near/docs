@@ -58,7 +58,7 @@ In the example visualized above, the payment is done using $FT. Together with
 the transfer to John, Alice also adds an action to pay 0.1 $FT to the relayer.
 The relayer checks the content of the `SignedDelegateAction` and only processes
 it if this payment is included as the first action. In this way, the relayer
-will be paid in the same transaction as John. 
+will be paid in the same transaction as John.
 
 :::warning Keep in mind
 The payment to the relayer is still not guaranteed. It could be that
@@ -84,12 +84,12 @@ atomicity guarantee and no roll-back mechanism.
 
 <hr class="subsection" />
 
-### Accounts must be initialized 
+### Accounts must be initialized
 
 Any transaction, including meta transactions, must use NONCEs to avoid replay
 attacks. The NONCE must be chosen by Alice and compared to a NONCE stored on
 chain. This NONCE is stored on the access key information that gets initialized
-when creating an account. 
+when creating an account.
 
 ---
 
@@ -161,7 +161,7 @@ but will fail on Bob's shard.
 
 ## Function Call Access Keys in Meta Transactions
 
-[Function Call Access Keys](../protocol/access-keys.md#function-call-keys)
+[Function Call Access Keys](../1.concepts/protocol/access-keys.md#function-call-keys)
 are limited to signing transactions for specific methods on a specific contract.
 
 

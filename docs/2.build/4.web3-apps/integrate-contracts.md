@@ -253,7 +253,7 @@ If the method invoked returned a result, you can use the transaction hash to ret
 const txHash = new URLSearchParams(window.location.search).get('transactionHashes');
 ```
 
-Assuming you created the `near` object as in the [example above](#connecting-to-a-contract), then you query the result by utilizing:
+Assuming you created the `near` object as in the [example above](#calling-change-methods), then you query the result by utilizing:
 
 <CodeTabs>
   <Language value="js" language="js">
