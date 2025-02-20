@@ -113,7 +113,7 @@ export default function App({ Component }) {
 ```
 <details markdown="1" id="setting-customs-network">
 
-<summary>Setting Custom RPC endpoint</summary>
+<summary>Setting Custom RPC endpoints</summary>
 
 If you want to use a user-defined RPC endpoint with the Wallet Selector, you can set up a [network options](https://github.com/near/wallet-selector/tree/main/packages/core#options) object with the custom URLs.
 For example:
