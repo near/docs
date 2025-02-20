@@ -41,7 +41,7 @@ With chain abstraction, both you and your users just focus on the core experienc
 
 NEAR's chain abstraction framework consists of three core technologies that work together to create seamless cross-chain experiences:
 
-1. [**NEAR Intents**](#NEAR-Intents): A decentralized system where users express desired outcomes (like "swap Token A for Token B at the best price") without specifying technical details. A network of solvers then competes to fulfill these intents optimally, handling complex cross-chain operations behind the scenes.
+1. [**NEAR Intents**](#near-intents): A decentralized system where users express desired outcomes (like "swap Token A for Token B at the best price") without specifying technical details. A network of solvers then competes to fulfill these intents optimally, handling complex cross-chain operations behind the scenes.
 
 2. [**Chain Signatures**](#chain-signatures): Enables NEAR accounts, including smart contracts, to sign and execute transactions on other blockchains (like Bitcoin or Ethereum), allowing cross-chain interactions.
 
