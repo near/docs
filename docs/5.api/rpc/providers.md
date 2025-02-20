@@ -9,7 +9,7 @@ balancing.
 
 :::tip
 
-If you want to use a custom RPC provider with NEAR Wallet Selector, [check this example](../../2.build/4.web3-apps/integrate-contracts.md#setting-custom-rpc-endpoints).
+If you want to use a custom RPC provider with NEAR Wallet Selector, [check this example](../../2.build/4.web3-apps/integrate-contracts.md#setting-customs-rpc-endpoints).
 
 :::
 

@@ -69,15 +69,15 @@ npm install \
   near-api-js \
   @near-wallet-selector/core \
   @near-wallet-selector/modal-ui \
-  @near-wallet-selector/react-hook \ 
+  @near-wallet-selector/react-hook \
   @near-wallet-selector/bitte-wallet \
   @near-wallet-selector/ledger \
   @near-wallet-selector/meteor-wallet \
-  @near-wallet-selector/nightly 
+  @near-wallet-selector/nightly
 ```
 :::tip
 
-The wallet selector supports multiple wallet packages to select from, [see the full list on the Repo](https://github.com/near/wallet-selector#installation-and-usage).  
+The wallet selector supports multiple wallet packages to select from, [see the full list on the Repo](https://github.com/near/wallet-selector#installation-and-usage).
 We cover how to support Ethereum wallets in the next section: [Ethereum Wallets on Near](ethereum-wallets.md)
 :::
 
@@ -111,9 +111,9 @@ export default function App({ Component }) {
   );
 }
 ```
-<details markdown="1" id="setting-customs-network">
+<details markdown="1" id="setting-customs-rpc-endpoints">
 
-<summary>Setting Custom RPC endpoints</summary>
+<summary>Setting custom RPC endpoints</summary>
 
 If you want to use a user-defined RPC endpoint with the Wallet Selector, you can set up a [network options](https://github.com/near/wallet-selector/tree/main/packages/core#options) object with the custom URLs.
 For example:
