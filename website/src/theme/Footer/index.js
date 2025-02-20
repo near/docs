@@ -177,7 +177,7 @@ function Footer() {
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/build/chain-abstraction/what-is">
+                    <a href="/chain-abstraction/what-is">
                       Chain Abstraction
                     </a>
                   </li>
@@ -204,7 +204,7 @@ function Footer() {
                   className="footer-menu list-reset mt-5 text-16 md:text-16"
                 >
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/build/chain-abstraction/what-is">
+                    <a href="/chain-abstraction/what-is">
                       Chain Abstraction
                     </a>
                   </li>
@@ -224,8 +224,8 @@ function Footer() {
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/build/chain-abstraction/data-availability">
-                      Data Availability
+                    <a href="/chain-abstraction/intents/overview">
+                      Intents
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
@@ -335,12 +335,12 @@ function Footer() {
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/build/chain-abstraction/fastauth-sdk">
+                    <a href="/chain-abstraction/fastauth-sdk">
                       FastAuth
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/build/chain-abstraction/what-is">
+                    <a href="/chain-abstraction/relayers">
                       Relayers
                     </a>
                   </li>

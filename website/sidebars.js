@@ -64,21 +64,21 @@ const sidebar = {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Chain Abstraction ✨ </small></b></span>"
     },
-    'build/chain-abstraction/what-is',
+    'chain-abstraction/what-is',
     {
       "Chain Abstraction Services": [
         {
           "Meta Transactions": [
-            "concepts/abstraction/meta-transactions",
-            "concepts/abstraction/relayers",
-            "build/chain-abstraction/meta-transactions",
+            "chain-abstraction/meta-transactions",
+            "chain-abstraction/relayers",
+            "chain-abstraction/meta-transactions-relayer",
           ]
         },
         {
           "Chain Signatures": [
-            "concepts/abstraction/chain-signatures",
-            "build/chain-abstraction/chain-signatures/getting-started",
-            'build/chain-abstraction/chain-signatures/chain-signatures',
+            "chain-abstraction/chain-signatures",
+            "chain-abstraction/chain-signatures/getting-started",
+            'chain-abstraction/chain-signatures/implementation',
             // 'build/chain-abstraction/nft-chain-keys',
           ]
         },
@@ -98,8 +98,8 @@ const sidebar = {
             "chain-abstraction/omnibridge/roadmap",
           ]
         },
-        'build/chain-abstraction/fastauth-sdk',
-        "build/chain-abstraction/data-availability",
+        'chain-abstraction/fastauth-sdk',
+        "chain-abstraction/data-availability",
       ]
     },
     {
@@ -509,6 +509,7 @@ const sidebar = {
     "tools/sdk",
     "tools/near-cli",
     "tools/wallet-selector",
+    'tools/clear-state',
     {
       "type": "html",
       "value": "<hr/>"

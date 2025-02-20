@@ -25,10 +25,10 @@ Imagine a place where you can build Web3 apps with the simplicity of Web2. Imagi
           title="Chain Abstraction"
           text="Forget about the chain, focus on usability"
           links={{
-            "What is Chain Abstraction?": "/build/chain-abstraction/what-is",
-            "Chain Signatures ✨": "/build/chain-abstraction/chain-signatures",
-            "Meta-transactions": "/build/chain-abstraction/meta-transactions",
-            "FastAuth (Email login)": "/build/chain-abstraction/fastauth-sdk", 
+            "What is Chain Abstraction?": "/chain-abstraction/what-is",
+            "Chain Signatures ✨": "/chain-abstraction/chain-signatures",
+            "Meta-transactions": "/chain-abstraction/meta-transactions",
+            "NEAR Intents": "/chain-abstraction/intents/overview",
           }}
     />
     <Card img={require("@site/static/docs/assets/welcome-pages/examples-landing.png").default}
