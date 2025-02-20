@@ -11,7 +11,7 @@ To integrate NEAR to your frontend, you will leverage two tools:
 1. `Wallet Selector`: Enables the user to select their preferred NEAR wallet in your dApp.
 2. `NEAR API JS`: A suite of tools to interact with the NEAR RPC.
 
-Using those tools you will implement the following flow:
+Using those tools, you will implement the following flow:
 
 1. **Setup** a wallet selector.
 1. Load the wallet selector **on start-up**.
@@ -40,7 +40,7 @@ Naxios was designed to facilitate the React / Next.js integration with NEAR Bloc
 
 <summary> Decentralized Frontend Solutions </summary>
 
-If you need full decentralization of your entire stack, this option is ideal. However, consider the possible technical constraints, such as the absence of server-side rendering or meta frameworks like Next.js.
+This option is ideal if you need full decentralization of your entire stack. However, consider possible technical constraints, such as the absence of server-side rendering or meta frameworks like Next.js.
 
 Although the ecosystem for developing decentralized frontends is still maturing, here are some notable projects for you to evaluate and consider:
 
@@ -58,11 +58,11 @@ Although the ecosystem for developing decentralized frontends is still maturing,
 
 
 ## Adding NEAR API JS and Wallet Selector
-As a popular framework [our examples](https://github.com/near-examples/) are based on **Next.js** so, we will go trough the steps to integrate NEAR to a default Next.js project and interact with the `hello-near` example contract.
+As a popular framework [our examples](https://github.com/near-examples/) are based on **Next.js** so, we will go through the steps to integrate NEAR to a default Next.js project and interact with the `hello-near` example contract.
 
 Apart of `near-api-js` and the `wallet-selector` core package we will also add the optional `modal-ui` and the provided `react-hook` (more info on [wallet-selector repo](https://github.com/near/wallet-selector/)) as well as few of the popular wallet providers.
 
-If you preffer to explore full code example, you can check the [hello-near-example](https://github.com/near-examples/hello-near-examples/tree/main/frontend) repository.
+If you prefer to explore the complete code example, you can check the [hello-near-example](https://github.com/near-examples/hello-near-examples/tree/main/frontend) repository.
 
 ```bash
 npm install \
@@ -138,7 +138,8 @@ You can find the entire Wallet Selector [API reference here](https://github.com/
 </details>
 
 #### Optional: `createAccessKeyFor`
-When initializing the wallet-selector you can choose to **create a [Function-Call Key](/concepts/protocol/access-keys#function-call-keys)** using the `createAccessKeyFor` parameter.
+
+When initializing the wallet-selector, you can choose to **create a [Function-Call Key](/concepts/protocol/access-keys#function-call-keys)** using the `createAccessKeyFor` parameter.
 
 By creating this key, your dApp will be able to **automatically sign non-payable transactions** on behalf of the user for specified contract.
 
@@ -146,7 +147,7 @@ By creating this key, your dApp will be able to **automatically sign non-payable
 
 ## Calling View Methods
 
-Once the wallet-selector is up we can start calling view methods, i.e. the methods that perform read-only operations.
+Once the wallet-selector is up, we can start calling view methods, i.e., the methods that perform read-only operations.
 
 Because of their read-only nature, view methods are **free** to call, and do **not require** the user to be **logged in**.
 
@@ -228,7 +229,7 @@ Once the user logs in they can start calling `change methods`. Programmatically,
 
 </CodeTabs>
 
-Under the hood we are asking the **signedAccountId** to **sign a Function-Call transaction** for us.
+Under the hood, we are asking the **signedAccountId** to **sign a Function-Call transaction** for us.
 
 :::tip
 
@@ -323,7 +324,7 @@ const keys = await getAccessKeys("account.testnet");
 
 ## Handling Data Types
 
-When calling methods in a contract, or receiving results from them, you will need to correctly encode/decode parameters. For this, it is important to know how the contracts encode timestamps (u64) and deposit amounts (u128).
+When calling methods in a contract or receiving results from them, you will need to encode/decode parameters correctly. For this, it is important to know how the contracts encode timestamps (u64) and deposit amounts (u128).
 
 ##### Time
 
@@ -357,7 +358,7 @@ function formatAmount(amount) {
 
 NEAR API JS does not limit itself to simply calling methods in a contract. In fact, you can use it to transform your web-app into a rich user experience. While we will not cover these topics in depth, it is important for you to know that with NEAR API JS you can also:
 
-- **[Sign and verify messages](./backend/backend.md)**: this is very useful to prove that a message was created by the user.
+- **[Sign and verify messages](./backend/backend.md)**: this is very useful for proving that a message was created by the user.
 - **[Create batch transactions](https://github.com/near/near-api-js/tree/master/packages/cookbook/transactions/batch-transactions.ts)**: this enables to link multiple [actions](../../1.concepts/protocol/transaction-anatomy.md#actions) (e.g. multiple function calls). If one of the transactions fails, then they are all reverted.
 - **[Create accounts](https://github.com/near/near-api-js/tree/master/packages/cookbook/accounts/create-testnet-account.ts)**: deploy accounts for your users!
 
