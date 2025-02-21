@@ -3,7 +3,7 @@ id: relayers
 title: Relayers
 ---
 
-A relayer is a simple web service that receives signed transactions from NEAR users, and relays them to the network while attaching tokens to sponsor their GAS expenses. This can be useful to create applications in which the users are not required to purchase NEAR in order to be able to transact. In this document we present a high-level overview on how relayers work. Please check the [build a relayer](../../2.build/1.chain-abstraction/meta-transactions.md) page if you want to learn how to build your own relayer.
+A relayer is a simple web service that receives signed transactions from NEAR users, and relays them to the network while attaching tokens to sponsor their GAS expenses. This can be useful to create applications in which the users are not required to purchase NEAR in order to be able to transact. In this document we present a high-level overview on how relayers work. Please check the [build a relayer](meta-transactions.md) page if you want to learn how to build your own relayer.
 
 ---
 

@@ -38,7 +38,7 @@ NEAR is a technical marvel, offering built-in features such as named accounts an
 3. Transactions are **fast** _(~1.3s transactions)_ and **cheap** _(< 1¢ in fees)_
 4. You don't need to buy crypto thanks to **built-in account abstraction**
 5. [Access Keys](../protocol/access-keys.md) make it safe and easy to use
-6. Control accounts on **other chains** thanks to [chain signatures](../abstraction/chain-signatures.md)
+6. Control accounts on **other chains** thanks to [chain signatures](../../chain-abstraction/chain-signatures.md)
 
 ### 🛡️ Battle-Tested
 

@@ -11,7 +11,7 @@ allowing the code to be changed.
 
 Contract's can be updated in two ways:
 
-1. **Through tools** such as [NEAR CLI](../../../4.tools/cli.md) or the 
+1. **Through tools** such as [NEAR CLI](../../../4.tools/cli.md) or the
    [NEAR API](../../../4.tools/near-api.md) (if you hold
    the account's
    [full access key](../../../1.concepts/protocol/access-keys.md)).
@@ -244,7 +244,7 @@ state, removes the `payments` vector and adds the information to the
 </CodeTabs>
 
 Notice that `migrate` is actually an
-[initialization method](/build/smart-contracts/anatomy/storage#initializing-the-state)
+[initialization method](../anatomy/storage.md)
 that **ignores** the existing state (`[#init(ignore_state)]`), thus being able
 to execute and rewrite the state.
 
