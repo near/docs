@@ -2,3 +2,4 @@
 # Owners are automatically requested for review for PRs that changes code
 # that they own.
 * @bucanero
+/chain-abstraction/omnibridge/* @r-near @karim-en
