@@ -189,7 +189,7 @@ console.log(result);
 
 ## Depositing from Different Chains
 
-Deposits and withdrawals from other chains into NEAR FTs are handled by the bridging service - Omni-bridge.
+Deposits and withdrawals from other chains into NEAR FTs are handled by the bridging service - [Omni-Bridge](../../chain-abstraction/omnibridge/overview.md).
 
 Since deposits involve the OmniBridge, ensure that the asset you are transferring is supported. To retrieve the full list of supported assets, use the following endpoint:
 
@@ -284,4 +284,4 @@ Keep in mind that the received `address` is unique for each `account_id`. **DO N
 
 After successfully depositing your tokens, query your balance again using the same method described above to confirm the deposit was successful. This time, the response should return non-zero values.
 
-The next step is to swap them for another asset. Continue to the next chapter to learn how.
+The next step is to swap them for another asset. Continue to [the next chapter](2-swap.mdx) to learn how.

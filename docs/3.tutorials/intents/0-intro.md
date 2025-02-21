@@ -16,6 +16,6 @@ the multichain bridge OmniBridge, visit the official
 
 In this tutorial, you will learn how to:
 
-- Deposit tokens from different chains (NEAR, EVM-compatible, Solana)
-- Execute a swap using the NEAR Intents protocol
-- Withdraw funds back to the destination chain if needed (NEAR, EVM-compatible, Solana)
+- [Deposit tokens](1-deposit.mdx) from different chains (NEAR, EVM-compatible, Solana)
+- [Execute a swap](2-swap.mdx) using the NEAR Intents protocol
+- [Withdraw funds](3-withdraw.mdx) back to the destination chain if needed (NEAR, EVM-compatible, Solana)
