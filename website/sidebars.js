@@ -494,6 +494,14 @@ const sidebar = {
         }
       ]
     },
+    {
+      "Integrate with NEAR Intents": [
+        "tutorials/intents/introduction",
+        "tutorials/intents/deposit",
+        "tutorials/intents/swap",
+        "tutorials/intents/withdraw",
+      ]
+    },
   ],
   "tools": [
     "tools/welcome",
