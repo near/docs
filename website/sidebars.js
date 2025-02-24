@@ -480,8 +480,9 @@ const sidebar = {
     {
       "Multi-Chain DAO Governance": [
         "tutorials/multichain-dao/introduction",
+        "tutorials/multichain-dao/request",
         "tutorials/multichain-dao/signing",
-        "tutorials/multichain-dao/relaying",
+        "tutorials/multichain-dao/voting",
       ]
     },
   ],
