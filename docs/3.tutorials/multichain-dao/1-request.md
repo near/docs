@@ -10,11 +10,18 @@ The Abstract DAO contract works as an intermediary between decentralized organiz
 
 Join us as we explore how to create a request in the Abstract DAO contract, that will be later used to derive signatures for foreign EVM chains. 
 
+:::tip
+We have deployed the Abstract DAO in two environments:
+
+1. Testnet: `abstract-dao.testnet`
+2. Dev (unstable): `dev.abstract-dao.testnet`
+:::
+
 ---
 
 ## Ethereum Function Call
 
-Imagine that our organization agreed on changing a value in a simple [counter we deployed on Ethereum](https://ethscan.io/address/0xe2a01146FFfC8432497ae49A7a6cBa5B9Abd71A3), and now want to leave this intent in the Abstract DAO.
+Imagine that our organization agreed on changing a value in a simple [counter we deployed on Sepolia Ethereum](https://sepolia.etherscan.io/address/0xe2a01146FFfC8432497ae49A7a6cBa5B9Abd71A3), and now want to leave this intent in the Abstract DAO.
 
 For this, we will call the **`register_signature_request`** function on Abstract Dao saying: 
 
@@ -81,19 +88,15 @@ The `transaction_payload` contains all the information on the transaction that w
   - `nonce`: The transaction nonce, used to ensure uniqueness
   - `function_data`: (optional) Defines the function that will be called on the recipient's contract, including:
     - `function_abi`: The ABI of the function being called
-    - `arguments`: The input arguments for the function, encoded appropriately (e.g. integers are `base64`)
-    <!-- TODO: Can we add a link explaining how to encode parameters??? -->
+    - `arguments`: The input arguments for the function, all ABI encoded (e.g. integers are `base64`)
 
 There are a couple important points to notice about this `transaction_payload`:
 
-#### Readable Payload
-The parameters make it easy for anyone to quickly understand what transaction will be executed externally. Moreover, this makes it easier for DAO members to understand exactly what is being voted.
+- **Readable Payload:** The parameters make it easy for anyone to quickly understand what transaction will be executed externally. The Abstract DAO is designed to be transparent and easy to audit, abstracting away the complexity of creating the transaction.
 
-#### We Are Setting a Nonce
-By setting the nonce, we make sure that the transaction will only be valid once, as future transactions will need higher `nonces`
+- **We Are Setting a Nonce:** By setting the nonce, we make sure that the transaction will only be valid once, as future transactions will need higher `nonces`
 
-#### We Are Not Setting the GAS
-Gas prices are expected to vary wildly across EVMs, for which it makes no sense to setup a fixed gas amount and gas price for all the networks, for this is that we use the last parameter `allowed_account`
+- **We Are Not Setting the GAS:** Gas prices are expected to vary wildly across EVMs, for which it makes no sense to setup a fixed gas amount and gas price for all the networks, for this is that we use the last parameter `allowed_account`
 
 <hr class="subsection" />
 

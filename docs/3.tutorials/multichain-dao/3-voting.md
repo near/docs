@@ -25,6 +25,10 @@ near create-account <accountId> --useFaucet
 near deploy <accountId> multisig2.wasm
 ```
 
+:::tip
+  See the github repository for instructions on how to [initialize the multisig contract](https://github.com/near/core-contracts/tree/master/multisig2)
+:::
+
 ---
 
 ## Creating a Request on the Multisig Contract
@@ -93,4 +97,4 @@ Replace provided `request_id` with value retrieved from the response when creati
 
 Once the request has received enough confirmations, it will be automatically executed. At this point, the signature request is successfully registered on the Multi-Chain DAO Governance Contract.
 
-Now, the allowed account (specified in the request) can generate signatures for the transaction just as we saw in the [previous section](./2-signing.md.
+Now, the allowed account (specified in the request) can generate signatures for the transaction just as we saw in the [previous section](./2-signing.md).

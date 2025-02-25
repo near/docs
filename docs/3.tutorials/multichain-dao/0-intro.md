@@ -7,17 +7,18 @@ sidebar_label: Introduction
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-It is common for multi-chain organizations to deploy copies of a same smart contract across multiple EVM chains, which need to be kept in sync.
+Many multi-chain organizations deploy copies of a same smart contract across multiple EVM chains, which need to be kept in sync.
 
-Generally, this is tackled by handling multiple DAOs (one per chain), where the same action is voted simultaneously on every chain. This process is not only time-consuming, but also very expensive and error-prone.
+Generally, this is tackled by handling multiple DAOs - one per chain - where the same action is voted simultaneously, a process that is not only time-consuming, but also very expensive and error-prone.
+
+![multi chain flow](/docs/assets/tutorials/abstract-dao/multi-dao-flow.png)
 
 To solve this, we have built the [Abstract DAO](https://github.com/nearuaguild/abstract-dao), which enables organizations to **vote once** in NEAR, and then **execute the same action** across **multiple chains**.
 
-:::tip
-Currently, there're 2 environments:
+![multi chain flow](/docs/assets/tutorials/abstract-dao/near-dao-flow.png)
 
-1. Testnet: `abstract-dao.testnet`
-2. Dev (unstable): `dev.abstract-dao.testnet`
+:::warning
+Abstract DAO is an example, and as such it has not been audited, use it at your own risk
 :::
 
 ---
