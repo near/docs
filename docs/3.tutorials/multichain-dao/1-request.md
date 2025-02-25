@@ -75,7 +75,7 @@ The parameter `derivation seed number` will be used to derive which external add
 For example, if we register a request from the address `...` using the derivation path `0` we will obtain control the `0x...` account.
 
 :::tip
-Learn more about derivation paths [here](../../1.concepts/abstraction/chain-signatures.md)
+Learn more about derivation paths [here](../../chain-abstraction/chain-signatures.md)
 :::
 
 <hr class="subsection" />
