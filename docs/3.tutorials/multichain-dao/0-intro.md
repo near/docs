@@ -7,7 +7,7 @@ sidebar_label: Introduction
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Many multi-chain organizations deploy copies of a same smart contract across multiple EVM chains, which need to be kept in sync.
+Many multi-chain organizations deploy copies of the same smart contract across multiple EVM chains, which need to be kept in sync.
 
 Generally, this is tackled by handling multiple DAOs - one per chain - where the same action is voted simultaneously, a process that is not only time-consuming, but also very expensive and error-prone.
 
@@ -18,14 +18,14 @@ To solve this, we have built the [Abstract DAO](https://github.com/nearuaguild/a
 ![multi chain flow](/docs/assets/tutorials/abstract-dao/near-dao-flow.png)
 
 :::warning
-Abstract DAO is an example, and as such it has not been audited, use it at your own risk
+Abstract DAO is an example, and as such it has not been audited, use it at your own risk.
 :::
 
 ---
 
 ### How It Works?
 
-The [Abstract DAO](https://github.com/nearuaguild/abstract-dao) acts as an intermediary between a NEAR DAOs and the EVM chains.
+The [Abstract DAO](https://github.com/nearuaguild/abstract-dao) acts as an intermediary between NEAR DAOs and the EVM chains.
 
 The process of voting and executing an action looks like this:
 
@@ -40,9 +40,9 @@ The process of voting and executing an action looks like this:
 The result is a drastically simplified governance process (one vote, one confirmation) and the ability to sign and execute transactions across multiple chains in a coordinated manner.
 
 :::tip Handling Gas
-Since Gas price can vary widely across chains, the gas price of the transaction is not set until the signatures is generated
+Since Gas prices can vary widely across chains, the transaction's gas price is not set until the signatures are generated.
 
-This means that the "allowed account" will be the one in charge of setting the gas price for each transaction being signed
+This means that the "allowed account" will be in charge of setting the gas price for each transaction being signed.
 :::
 
 
@@ -50,13 +50,13 @@ This means that the "allowed account" will be the one in charge of setting the g
 
 ## Prerequisites
 
-To complete this tutorial successfully, you will need [Near CLI](/tools/near-cli#installation) to be installed, and have a general understanding on how [Chain Signatures](/build/chain-abstraction/chain-signatures/getting-started) work.
+To complete this tutorial successfully, you will need [Near CLI](../../4.tools/cli.md#installation) to be installed, and have a general understanding of how [Chain Signatures](../../chain-abstraction/chain-signatures/getting-started.md) work.
 
 ---
 
 ## Next steps
 
-Ready to start? Let's jump to the first step, in which we will understand how the Abstract DAO contract works
+Ready to start? Let's jump to the first step, in which we will understand how the Abstract DAO contract works.
 
 ---
 
