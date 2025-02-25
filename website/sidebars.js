@@ -500,7 +500,7 @@ const sidebar = {
         "tutorials/multichain-dao/request",
         "tutorials/multichain-dao/signing",
         "tutorials/multichain-dao/voting"
-        ]
+      ]
     },
     {
       "Integrate with NEAR Intents": [
