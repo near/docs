@@ -11,7 +11,7 @@ To integrate NEAR to your frontend, you will leverage two tools:
 1. `Wallet Selector`: Enables the user to select their preferred NEAR wallet in your dApp.
 2. `NEAR API JS`: A suite of tools to interact with the NEAR RPC.
 
-Using those tools you will implement the following flow:
+Using those tools, you will implement the following flow:
 
 1. **Setup** a wallet selector.
 1. Load the wallet selector **on start-up**.
@@ -40,7 +40,7 @@ Naxios was designed to facilitate the React / Next.js integration with NEAR Bloc
 
 <summary> Decentralized Frontend Solutions </summary>
 
-If you need full decentralization of your entire stack, this option is ideal. However, consider the possible technical constraints, such as the absence of server-side rendering or meta frameworks like Next.js.
+This option is ideal if you need full decentralization of your entire stack. However, consider possible technical constraints, such as the absence of server-side rendering or meta frameworks like Next.js.
 
 Although the ecosystem for developing decentralized frontends is still maturing, here are some notable projects for you to evaluate and consider:
 
@@ -56,70 +56,78 @@ Although the ecosystem for developing decentralized frontends is still maturing,
 
 ---
 
+
 ## Adding NEAR API JS and Wallet Selector
+As a popular framework [our examples](https://github.com/near-examples/) are based on **Next.js** so, we will go through the steps to integrate NEAR to a default Next.js project and interact with the `hello-near` example contract.
 
-In order to use `near-api-js` and the `wallet-selector` you will need to first add them to your project.
+Apart of `near-api-js` and the `wallet-selector` core package we will also add the optional `modal-ui` and the provided `react-hook` (more info on [wallet-selector repo](https://github.com/near/wallet-selector/)) as well as few of the popular wallet providers.
 
-The wallet selector has multiple wallet packages to select from, [see in their website](https://github.com/near/wallet-selector#installation-and-usage).
+If you prefer to explore the complete code example, you can check the [hello-near-example](https://github.com/near-examples/hello-near-examples/tree/main/frontend) repository.
 
 ```bash
 npm install \
   near-api-js \
   @near-wallet-selector/core \
-  @near-wallet-selector/my-near-wallet \
+  @near-wallet-selector/modal-ui \
+  @near-wallet-selector/react-hook \
+  @near-wallet-selector/bitte-wallet \
   @near-wallet-selector/ledger \
-  @near-wallet-selector/modal-ui
+  @near-wallet-selector/meteor-wallet \
+  @near-wallet-selector/nightly
 ```
+:::tip
+
+The wallet selector supports multiple wallet packages to select from, [see the full list on the Repo](https://github.com/near/wallet-selector#installation-and-usage).
+We cover how to support Ethereum wallets in the next section: [Ethereum Wallets on Near](ethereum-wallets.md)
+:::
+
 ---
 
-## Create a Wallet Object
+## Initialize Wallet Selector
 
-In our examples, we implement a [`./wallets/near.js`](https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/near.js) module, where we abstracted the `wallet selector` into a `Wallet` object to simplify using it.
+```jsx title="_app.js"
+import { setupBitteWallet } from "@near-wallet-selector/bitte-wallet";
+import { setupLedger } from "@near-wallet-selector/ledger";
+import { setupMeteorWallet } from "@near-wallet-selector/meteor-wallet";
+import { setupNightly } from "@near-wallet-selector/nightly";
+import { WalletSelectorProvider } from "@near-wallet-selector/react-hook";
 
-To create a wallet, simply import the `Wallet` object from the module and initialize it. This `wallet` will later allow the user to call any contract in NEAR.
+const walletSelectorConfig = {
+  network: "testnet", // "mainnet"
+  // Optional: createAccessKeyFor: "hello.near-examples.testnet",
+  modules: [
+    setupBitteWallet(),
+    setupMeteorWallet(),
+    setupLedger(),
+    setupNightly()
+  ],
+}
 
-<CodeTabs>
-  <Language value="js" language="ts">
-    <Github fname="_app.js"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/_app.js"
-            start="7" end="23" />
-
-    <Github fname="near.js"
-        url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/near.js"
-        start="22" end="218" />
-
-  </Language>
-</CodeTabs>
-
-Under the hood (check the `near` tab) you can see that we are actually setting up the wallet selector, and asking it if the user logged-in already. During the setup, we pass a hook to the wallet selector, which will be called each time a user logs in or out.
-
+export default function App({ Component }) {
+  return (
+    <WalletSelectorProvider config={walletSelectorConfig}>
+      <Component {...pageProps} />
+    </WalletSelectorProvider>
+  );
+}
+```
 <details markdown="1" id="setting-customs-rpc-endpoints">
 
-<summary> Setting customs RPC endpoints </summary>
+<summary>Setting custom RPC endpoints</summary>
 
-If you want to use a user-defined RPC endpoint with the Wallet Selector, you need to set up a [network options](https://github.com/near/wallet-selector/tree/main/packages/core#options) object with the custom URLs.
+If you want to use a user-defined RPC endpoint with the Wallet Selector, you can set up a [network options](https://github.com/near/wallet-selector/tree/main/packages/core#options) object with the custom URLs.
 For example:
 
-<CodeTabs>
-  <Language value="js" language="ts">
 
-```js title="index.js"
-const CONTRACT_ADDRESS = process.env.CONTRACT_NAME;
-
+```js
 const my_network = {
-    networkId: "my-custom-network",
-    nodeUrl: "https://rpc.custom-rpc.com",
-    helperUrl: "https://helper.custom-helper.com",
-    explorerUrl: "https://custom-explorer.com",
-    indexerUrl: "https://api.custom-indexer.com",
-  };
-
-const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS, network: my_network });
+  networkId: "my-custom-network",
+  nodeUrl: "https://rpc.custom-rpc.com",
+  helperUrl: "https://helper.custom-helper.com",
+  explorerUrl: "https://custom-explorer.com",
+  indexerUrl: "https://api.custom-indexer.com",
+};
 ```
-
-</Language>
-
-</CodeTabs>
 
 :::tip
 
@@ -129,34 +137,27 @@ You can find the entire Wallet Selector [API reference here](https://github.com/
 
 </details>
 
-#### Function Call Key
-When instantiating the wallet you can choose if you want to **create a [FunctionCall Key](/concepts/protocol/access-keys#function-call-keys)**.
+#### Optional: `createAccessKeyFor`
 
-If you create the key, your dApp will be able to **automatically sign non-payable transactions** for the user on the specified contract.
+When initializing the wallet-selector, you can choose to **create a [Function-Call Key](/concepts/protocol/access-keys#function-call-keys)** using the `createAccessKeyFor` parameter.
+
+By creating this key, your dApp will be able to **automatically sign non-payable transactions** on behalf of the user for specified contract.
 
 ---
 
 ## Calling View Methods
 
-Once the wallet is up we can start calling view methods, i.e. the methods that perform read-only operations.
+Once the wallet-selector is up, we can start calling view methods, i.e., the methods that perform read-only operations.
 
 Because of their read-only nature, view methods are **free** to call, and do **not require** the user to be **logged in**.
 
-<CodeTabs>
-  <Language value="js" language="ts">
+  <Language value="js" language="jsx">
     <Github fname="index.js"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/hello-near/index.js"
-            start="12" end="25" />
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/hello-near/index.js" start="19" end="20" />
+  </Language>
 
-    <Github fname="near.js"
-        url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/near.js"
-        start="83" end="103" />
 
-</Language>
-
-</CodeTabs>
-
-The snippet above shows how we call view methods in our examples. Switch to the `near-wallet` tab to see under the hood: we are actually making a **direct call to the RPC** using `near-api-js`.
+The snippet above shows how we call view methods in our examples. Under the hood: we are actually making a **direct call to the RPC** using `near-api-js`.
 
 :::tip
 
@@ -170,34 +171,37 @@ View methods have by default 200 TGAS for execution
 
 In order to interact with non-view methods it is necessary for the user to first sign in using a NEAR wallet.
 
-Signing in is as simple as requesting the `wallet` object to `signIn`, the same simplicity applies to signing out.
+We can request the user sign in if `signedAccountId` is not present, the same simplicity applies to signing out.
 
 <CodeTabs>
-  <Language value="js" language="js">
-    <Github fname="index.js"
+  <Language value="js" language="jsx">
+    <Github fname="navigation.js"
             url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/components/navigation.js"
-            start="9" end="23" />
+            start="9" end="38" />
 
-    <Github fname="near.js"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/near.js"
-            start="67" end="81" />
+    <Github fname="_app.js"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/_app.js"
+            start="43" end="46" />
 
   </Language>
 </CodeTabs>
 
-When the user clicks the login button, they will be asked to select a wallet and use it to log in.
+When the user clicks the `login` button, they will be asked to select a wallet and use it to log in.
 
 <hr className="subsection" />
 
 ### Function Call Key
 
-If you instantiated the `Wallet` passing an account for the `createAccessKeyFor` parameter, then the wallet will create a [FunctionCall Key](/concepts/protocol/access-keys#function-call-keys) and store it in the web's local storage.
+If you instantiated the `wallet-selector` passing an account id for the `createAccessKeyFor` parameter, then the wallet will create a [Function-Call Key](/concepts/protocol/access-keys#function-call-keys) and store it in the web's local storage.
 
-```jsx
-const wallet = new Wallet({
-  createAccessKeyFor: HelloNearContract,
-  networkId: NetworkId,
-});
+```js
+const walletSelectorConfig = {
+  network: "testnet", // "mainnet"
+  createAccessKeyFor: "hello.near-examples.testnet",
+  modules: [
+  ...
+  ],
+}
 ```
 
 By default, such key enables to expend a maximum of `0.25Ⓝ` on GAS calling methods in **the specified** contract **without prompting** the user to sign them.
@@ -206,7 +210,7 @@ If, on the contrary, you do not create an access key, then the user will be aske
 
 :::tip
 
-Please notice that this only applies to **non-payable** methods, if you attach money to any call the user will **always** be redirected to the wallet to confirm the transaction.
+Please notice that this only applies to **non-payable** methods, if you attach deposit to any call the user will **always** be redirected to the wallet to confirm the transaction.
 
 :::
 
@@ -214,122 +218,119 @@ Please notice that this only applies to **non-payable** methods, if you attach m
 
 ## Calling Change Methods
 
-Once the user logs in they can start calling change methods. Programmatically, calling change methods is similar to calling view methods, only that now you can attach money to the call, and specify how much GAS you want to use.
+Once the user logs in they can start calling `change methods`. Programmatically, calling `change methods` is similar to calling `view methods`, only that now you can attach deposit to the call, and specify how much GAS you want to use.
 
 <CodeTabs>
   <Language value="js" language="js">
     <Github fname="index.js"
             url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/hello-near/index.js"
-            start="33" end="33" />
-
-    <Github fname="near.js"
-        url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/near.js"
-        start="105" end="134" />
-
+            start="26" end="39" />
 </Language>
 
 </CodeTabs>
 
-Under the hood (see `near-wallet` tab) we can see that we are actually asking the **wallet** to **sign a FunctionCall transaction** for us.
+Under the hood, we are asking the **signedAccountId** to **sign a Function-Call transaction** for us.
 
 :::tip
 
-Remember that you can use the `wallet` to call methods in **any** contract. If you did not ask for a function key to be created, the user will simply be prompted to confirm the transaction.
+Remember that you can use the `callFunction` to call methods in **any** contract. If you did not ask for a function call key to be created, the user will simply be prompted to confirm the transaction.
 
 :::
 
 <hr className="subsection" />
 
-### Wallet Redirection
-
-When calling a change call with **attached deposit** (or any change call if no function call key was created), then the user will be prompted to sign the transaction in the wallet.
-
-If using a web wallet, as opposed to an extension, the user will be redirected to the wallet's website to sign the transaction.
-After accepting, the user will be brought back to your application, with the resulting transaction hash being passed as part of the URL (i.e. `your-website.com/?transactionHashes=...`).
-
-If the method invoked returned a result, you can use the transaction hash to retrieve the result from the network. You can fetch the transaction hash via:
-
-```jsx
-const txHash = new URLSearchParams(window.location.search).get('transactionHashes');
-```
-
-Assuming you created the `near` object as in the [example above](#connecting-to-a-contract), then you query the result by utilizing:
-
-<CodeTabs>
-  <Language value="js" language="js">
-
-    <Github fname="near.js"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/near.js"
-            start="136" end="149" />
-
-</Language>
-
-</CodeTabs>
-
----
-
 ## Sending Multiple Transactions
 
-The Wallet class also exposes a method that can be used to send multiple transactions.
+The wallet-selector hook also exposes a method that can be used to send multiple transactions.
 
 <CodeTabs>
   <Language value="js" language="js">
+  ```js
+  ...
+  const { signAndSendTransactions } = useWalletSelector();
 
-    <Github fname="near.js"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/near.js"
-            start="177" end="186" />
-
-</Language>
-
+  const txs = await signAndSendTransactions({
+      transactions: [{
+          receiverId: "hello.near-examples.testnet",
+          actions: [{
+              type: "FunctionCall",
+              params: {
+                  methodName: "set_greeting",
+                  args: {
+                      greeting: "Hello World"
+                  },
+                  gas: THIRTY_TGAS,
+                  deposit: NO_DEPOSIT
+              }
+          }]
+      }
+      ...
+      ]
+  });
+  ```
+  </Language>
 </CodeTabs>
 
-Transactions can either be sent as multiple separate  transactions simultaneously or as a batch transaction made up of actions where if one of the actions fails, they are all reverted. An example of both can be seen [here](https://docs.near.org/tutorials/examples/frontend-multiple-contracts#dispatching-multiple-transactions)
+Transactions can either be sent as multiple separate transactions simultaneously or as a batch transaction made up of actions where if one of the actions fails, they are all reverted. An example of both can be seen [here](https://docs.near.org/tutorials/examples/frontend-multiple-contracts#dispatching-multiple-transactions)
+
+---
+## Signing Messages
+
+
+<CodeTabs>
+  <Language value="js" language="js">
+  ```js
+  ...
+  const { signMessage } = useWalletSelector();
+
+  const sign = await signMessage({ message, recipient, nonce });
+
+  ```
+  </Language>
+</CodeTabs>
 
 ---
 
 ## Querying Account Balance
 
-By calling the `getBalance` method the user can get the balance of the account that is currently logged in.
+By calling the `getBalance` method the user can get the balance of a given account.
 
-<CodeTabs>
-  <Language value="js" language="js">
+ <Language value="js" language="js">
+ ```js
+  ...
+  const { getBalance } = useWalletSelector();
 
-    <Github fname="near.js"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/near.js"
-            start="151" end="175" />
-
+  const balance = await getBalance("account.testnet");
+```
 </Language>
 
-</CodeTabs>
 
 ---
 
 ## Get Access Keys
 
-The final method the Wallet class exposes is `getAccessKeys` which is used to return an object of all the access keys on the account that is currently logged in.
+The final method the the wallet selector hooks exposes is `getAccessKeys` which is used to return an object of all the access keys on the account that is currently logged in.
 
-<CodeTabs>
-  <Language value="js" language="js">
+<Language value="js" language="js">
+```js
+...
+const { getAccessKeys } = useWalletSelector();
 
-    <Github fname="near.js"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/near.js"
-            start="188" end="206" />
-
+const keys = await getAccessKeys("account.testnet");
+```
 </Language>
-
-</CodeTabs>
 
 ---
 
 ## Handling Data Types
 
-When calling methods in a contract, or receiving results from them, you will need to correctly encode/decode parameters. For this, it is important to know how the contracts encode timestamps (u64) and money amounts (u128).
+When calling methods in a contract or receiving results from them, you will need to encode/decode parameters correctly. For this, it is important to know how the contracts encode timestamps (u64) and deposit amounts (u128).
 
 ##### Time
 
 The block timestamp in a smart contract is encoded using nanoseconds (i.e. 19 digits: `1655373910837593990`). In contrast, `Date.now()` from javascript returns a timestamp in milliseconds (i.e 13 digits: `1655373910837`). Make sure to convert between milliseconds and nanoseconds to properly handle time variables.
 
-##### Money
+##### Deposits
 
 Smart contracts speak in yocto NEAR, where 1Ⓝ = 10^24yocto, and the values are always encoded as `strings`.
 
@@ -342,8 +343,9 @@ If the contract returns a `Balance` instead of a `U128`, you will get a "scienti
 
 ```js
 function formatAmount(amount) {
-  let formatted = amount.toLocaleString('fullwide', { useGrouping: false })
+  let formatted = amount.toLocaleString("fullwide", { useGrouping: false })
   formatted = utils.format.formatNearAmount(formatted)
+
   return Math.floor(formatted * 100) / 100
 }
 ```
@@ -356,8 +358,18 @@ function formatAmount(amount) {
 
 NEAR API JS does not limit itself to simply calling methods in a contract. In fact, you can use it to transform your web-app into a rich user experience. While we will not cover these topics in depth, it is important for you to know that with NEAR API JS you can also:
 
-- **[Sign and verify messages](./backend/backend.md)**: this is very useful to prove that a message was created by the user.
+- **[Sign and verify messages](./backend/backend.md)**: this is very useful for proving that a message was created by the user.
 - **[Create batch transactions](https://github.com/near/near-api-js/tree/master/packages/cookbook/transactions/batch-transactions.ts)**: this enables to link multiple [actions](../../1.concepts/protocol/transaction-anatomy.md#actions) (e.g. multiple function calls). If one of the transactions fails, then they are all reverted.
 - **[Create accounts](https://github.com/near/near-api-js/tree/master/packages/cookbook/accounts/create-testnet-account.ts)**: deploy accounts for your users!
 
 Check the [NEAR API](../../4.tools/near-api.md) section to learn how to supercharge your web-app.
+
+:::note Versioning for this article
+
+At the time of this writing, this example works with the following versions:
+
+- next: `15.0.3`
+- near-api-js: `^5.0.1`
+- wllet-selector/core: `^8.10.0`
+
+:::

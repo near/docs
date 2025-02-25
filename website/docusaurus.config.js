@@ -31,8 +31,9 @@ const config = {
     REACT_APP_PUBLIC_POSTHOG_HOST: process.env.REACT_APP_PUBLIC_POSTHOG_HOST
   },
   themes: ['@saucelabs/theme-github-codeblock', '@docusaurus/theme-mermaid'],
-  onBrokenLinks: 'log',
-  onBrokenMarkdownLinks: 'log',
+  onBrokenLinks: 'warn',
+  onBrokenMarkdownLinks: 'throw',
+  onBrokenAnchors: 'throw',
   presets: [
     [
       '@docusaurus/preset-classic',
@@ -227,6 +228,10 @@ const config = {
           label: 'RPC',
           activeBaseRegex: '/api/rpc',
         },
+        {
+          href: 'https://docs.near.ai',
+          label: 'NEAR AI',
+        },
         { label: 'Blog', to: '/blog', activeBaseRegex: '/blog', position: 'right' },
         {
           type: 'html', position: 'right',
@@ -236,7 +241,7 @@ const config = {
     },
     footer: {
       links: [],
-      copyright: 'Copyright © 2023 NEAR Protocol',
+      copyright: 'Copyright © 2025 NEAR Protocol',
       logo: {
         src: 'img/near_logo.svg',
       },

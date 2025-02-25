@@ -64,26 +64,42 @@ const sidebar = {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Chain Abstraction ✨ </small></b></span>"
     },
-    'build/chain-abstraction/what-is',
+    'chain-abstraction/what-is',
     {
       "Chain Abstraction Services": [
         {
           "Meta Transactions": [
-            "concepts/abstraction/meta-transactions",
-            "concepts/abstraction/relayers",
-            "build/chain-abstraction/meta-transactions",
+            "chain-abstraction/meta-transactions",
+            "chain-abstraction/relayers",
+            "chain-abstraction/meta-transactions-relayer",
           ]
         },
         {
           "Chain Signatures": [
-            "concepts/abstraction/chain-signatures",
-            "build/chain-abstraction/chain-signatures/getting-started",
-            'build/chain-abstraction/chain-signatures/chain-signatures',
+            "chain-abstraction/chain-signatures",
+            "chain-abstraction/chain-signatures/getting-started",
+            'chain-abstraction/chain-signatures/implementation',
             // 'build/chain-abstraction/nft-chain-keys',
           ]
         },
-        'build/chain-abstraction/fastauth-sdk',
-        "build/chain-abstraction/data-availability",
+        {
+          "Intents": [
+            "chain-abstraction/intents/overview",
+            "chain-abstraction/intents/solvers",
+            "chain-abstraction/intents/intents-bridge",
+            "chain-abstraction/intents/faq",
+          ]
+        },
+        {
+          "Omni Bridge": [
+            "chain-abstraction/omnibridge/overview",
+            "chain-abstraction/omnibridge/how-it-works",
+            "chain-abstraction/omnibridge/implementation-details",
+            "chain-abstraction/omnibridge/roadmap",
+          ]
+        },
+        'chain-abstraction/fastauth-sdk',
+        "chain-abstraction/data-availability",
       ]
     },
     {
@@ -314,6 +330,7 @@ const sidebar = {
     {
       "Advanced Contracts": [
         "tutorials/examples/factory",
+        "tutorials/examples/near-drop",
         "tutorials/examples/advanced-xcc",
         "tutorials/examples/update-contract-migrate-state",
       ]
@@ -482,7 +499,15 @@ const sidebar = {
         "tutorials/multichain-dao/introduction",
         "tutorials/multichain-dao/request",
         "tutorials/multichain-dao/signing",
-        "tutorials/multichain-dao/voting",
+        "tutorials/multichain-dao/voting"
+        ]
+    },
+    {
+      "Integrate with NEAR Intents": [
+        "tutorials/intents/introduction",
+        "tutorials/intents/deposit",
+        "tutorials/intents/swap",
+        "tutorials/intents/withdraw",
       ]
     },
   ],
@@ -500,6 +525,7 @@ const sidebar = {
     "tools/sdk",
     "tools/near-cli",
     "tools/wallet-selector",
+    'tools/clear-state',
     {
       "type": "html",
       "value": "<hr/>"
@@ -573,36 +599,6 @@ const sidebar = {
     "api/rpc/network",
     "api/rpc/transactions",
     "api/rpc/maintenance-windows",
-  ],
-  "pagoda": [
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> PAGODA CONSOLE </small></b></span>"
-    },
-    {
-      "Pagoda RPC": [
-        "pagoda/rpc/intro",
-        "pagoda/rpc/get-keys",
-        "pagoda/rpc/setup",
-        "pagoda/rpc/stats",
-      ]
-    },
-    {
-      "Enhanced API": [
-        "pagoda/rpc/api",
-      ]
-    },
-    {
-      "Alerts & Triggers": [
-        "pagoda/alerts/intro",
-        "pagoda/alerts/setup",
-        "pagoda/alerts/webhooks",
-      ]
-    },
   ],
   "exchanges": [
     {

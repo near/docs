@@ -35,7 +35,7 @@ The repository comes with many different folders. Each folder represents a diffe
 
 | File                             | Description                                                                      |
 | -------------------------------- | -------------------------------------------------------------------------------- |
-| [ft_core.rs](#corers)       | Contains the logic for transferring and controlling FTs. This file represents the implementation of the [core](https://nomicon.io/Standards/Tokens/FungibleToken/Core) standard. |              |
+| [ft_core.rs](#ft_corers)       | Contains the logic for transferring and controlling FTs. This file represents the implementation of the [core](https://nomicon.io/Standards/Tokens/FungibleToken/Core) standard. |              |
 | [lib.rs](#librs)                 | Holds the smart contract initialization functions and dictates what information is kept on-chain.                               |
 | [metadata.rs](#metadatars)       | Defines the metadata structure. This file represents the implementation of the [metadata](https://nomicon.io/Standards/Tokens/FungibleToken/Metadata) extension of the standard.                                      |
 | [storage.rs](#storagers)               | Contains the logic for registration and storage.  This file represents the implementation of the [storage management](https://nomicon.io/Standards/StorageManagement) standard.                                                   |

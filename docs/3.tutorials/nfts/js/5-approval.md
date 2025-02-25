@@ -523,15 +523,15 @@ With the testing finished, you've successfully implemented the approvals extensi
 
 Today you went through a lot of logic to implement the [approvals extension](https://nomicon.io/Standards/Tokens/NonFungibleToken/ApprovalManagement) so let's break down exactly what you did.
 
-First, you explored the [basic approach](#basic-solution) of how to solve the problem. You then went through and discovered some of the [problems](/tutorials/nfts/js/approvals#the-problem) with that solution and learned how to [fix it](#the-solution).
+First, you explored the [basic approach](#allow-an-account-to-transfer-your-nft) of how to solve the problem. You then went through and discovered some of the [problems](/tutorials/nfts/js/approvals#the-problem) with that solution and learned how to [fix it](#the-solution).
 
-After understanding what you should do to implement the approvals extension, you started to [modify](#expanding-json-and-token) the JsonToken and Token structs in the contract. You then implemented the logic for [approving accounts](#approving-accounts) and saw how [marketplaces](#marketplace-integrations) are integrated.
+After understanding what you should do to implement the approvals extension, you started to [modify](#expanding-the-token-and-jsontoken-structs) the JsonToken and Token structs in the contract. You then implemented the logic for [approving accounts](#approving-accounts) and saw how [marketplaces](#marketplace-integrations) are integrated.
 
-After implementing the logic behind approving accounts, you went and [changed the restrictions](#changing-restrictions) needed to transfer NFTs. The last step you did to finalize the approving logic was to go back and edit the [nft_core](#nft-core-changes) files to be compatible with the new changes.
+After implementing the logic behind approving accounts, you went and [changed the restrictions](#changing-the-restrictions-for-transferring-nfts) needed to transfer NFTs. The last step you did to finalize the approving logic was to go back and edit the [nft_core](#changes-to-nft_corets) files to be compatible with the new changes.
 
 At this point, everything was implemented in order to allow accounts to be approved and you extended the functionality of the [core standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core) to allow for approved accounts to transfer tokens.
 
-You implemented a view method to [check](#check-if-account-approved) if an account is approved and to finish the coding portion of the tutorial, you implemented the logic necessary to [revoke an account](#revoke-account) as well as [revoke all accounts](#revoke-all-accounts).
+You implemented a view method to [check](#check-if-an-account-is-approved) if an account is approved and to finish the coding portion of the tutorial, you implemented the logic necessary to [revoke an account](#revoke-an-account) as well as [revoke all accounts](#revoke-all-accounts).
 
 After this, the contract code was finished and it was time to move onto testing where you created a [subaccount](#creating-sub-account) and tested the [approving](/tutorials/nfts/js/approvals#approving-an-account) and [transferring](#transferring-the-nft) for your NFTs.
 
