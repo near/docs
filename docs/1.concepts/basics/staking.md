@@ -197,3 +197,11 @@ near call <my_validator> withdraw '{"amount": "100000000000000000000000000"}' --
 
 ---
 
+## Tools and Resources
+
+- Supported wallets for staking and managing your tokens:
+  - [Ecosystem Wallets](https://wallet.near.org/)
+- To explore validators and staking pools:
+  - [NearBlocks](https://nearblocks.io/)
+  - [Pikespeak](https://pikespeak.ai/)
+  - [NEAR Staking](https://near-staking.com/)
