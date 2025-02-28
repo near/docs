@@ -52,13 +52,12 @@ export default function NotFoundContent({ className }) {
                     Build awesome applications on NEAR
                     <ul className='margin-vert--sm'>
                       <a href="/build/smart-contracts/what-is"><li>Smart Contracts</li></a>
-                      <a href="/build/near-components/what-is"><li>NEAR Components</li></a>
                       <a href="/build/web3-apps/what-is"><li>Web3 Applications</li></a>
                       <a href="/build/chain-abstraction/meta-transactions"><li>Relayers</li></a>
                       <a href="/build/chain-abstraction/chain-signatures"><li>Multi-Chain Signatures</li></a>
                       <a href="/build/primitives/what-is"><li>Primitives (FT, NFT, ...)</li></a>
                       <a href="/build/data-infrastructure/what-is"><li>Indexers & Data Solutions</li></a>
-                      <a href="/build/chain-abstraction/data-availability"> Data Availability .</a>
+                      <a href="/build/chain-abstraction/data-availability"><li>Data Availability</li></a>
                     </ul>
                   </div>
                 </div>

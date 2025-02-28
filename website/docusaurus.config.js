@@ -31,8 +31,9 @@ const config = {
     REACT_APP_PUBLIC_POSTHOG_HOST: process.env.REACT_APP_PUBLIC_POSTHOG_HOST
   },
   themes: ['@saucelabs/theme-github-codeblock', '@docusaurus/theme-mermaid'],
-  onBrokenLinks: 'log',
-  onBrokenMarkdownLinks: 'log',
+  onBrokenLinks: 'warn',
+  onBrokenMarkdownLinks: 'throw',
+  onBrokenAnchors: 'throw',
   presets: [
     [
       '@docusaurus/preset-classic',
@@ -90,14 +91,14 @@ const config = {
   ],
   themeConfig: {
     image: 'docs/assets/welcome-pages/protocol.png',
-    announcementBar: {
-      id: 'id-0010',
-      content:
-        '🎉 Ethereum Wallets are here! Read more in our <a href="/blog/hello-ethereum-wallets">blogpost</a> and check our <a href="/tools/ethereum-wallets">tutorial to update your app</a> 🎉',
-      backgroundColor: '#fcfbfa',
-      textColor: '#333',
-      isCloseable: true,
-    },
+    // announcementBar: {
+    //   id: 'id-0010',
+    //   content:
+    //     '🎉 Ethereum Wallets are here! Read more in our <a href="/blog/hello-ethereum-wallets">blogpost</a> and check our <a href="/tools/ethereum-wallets">tutorial to update your app</a> 🎉',
+    //   backgroundColor: '#fcfbfa',
+    //   textColor: '#333',
+    //   isCloseable: true,
+    // },
     prism: {
       additionalLanguages: [
         'rust',
@@ -152,21 +153,14 @@ const config = {
             { label: 'NEAR API', to: '/tools/near-api' },
             { label: 'NEAR SDK', to: '/tools/sdk' },
             { label: 'NEAR CLI', to: '/tools/near-cli' },
-            {
-              type: 'html',
-              value: '<hr/> <small class="subtitle"> Wallet Integration </small>',
-            },
             { label: 'Wallet Selector', to: '/tools/wallet-selector' },
             {
               type: 'html',
-              value: '<hr/> <small class="subtitle"> IDEs </small>',
+              value: '<hr/> <small class="subtitle"> Data Services </small>',
             },
-            { label: 'VSCode Extension ', href: 'https://marketplace.visualstudio.com/items?itemName=near-protocol.near-discovery-ide' },
-            { label: 'BOS Web IDE (Jutsu)', href: 'https://jutsu.ai/editor' },
-            {
-              label: 'Remix IDE Plugin',
-              href: 'https://docs.welldonestudio.io/code/getting-started',
-            },
+            { label: 'Explorers', to: '/tools/explorer' },
+            { label: 'Data APIs', to: '/tools/ecosystem-apis/fastnear' },
+            { label: 'Indexers', to: '/tools/indexing' },
           ],
         },
         {
@@ -234,6 +228,10 @@ const config = {
           label: 'RPC',
           activeBaseRegex: '/api/rpc',
         },
+        {
+          href: 'https://docs.near.ai',
+          label: 'NEAR AI',
+        },
         { label: 'Blog', to: '/blog', activeBaseRegex: '/blog', position: 'right' },
         {
           type: 'html', position: 'right',
@@ -243,7 +241,7 @@ const config = {
     },
     footer: {
       links: [],
-      copyright: 'Copyright © 2023 NEAR Protocol',
+      copyright: 'Copyright © 2025 NEAR Protocol',
       logo: {
         src: 'img/near_logo.svg',
       },

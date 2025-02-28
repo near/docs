@@ -396,7 +396,7 @@ To view tokens owned by an account you can call the NFT contract with the follow
 This basic example illustrates all the required steps to deploy an NFT smart contract, store media files on IPFS,
 and start minting your own non-fungible tokens.
 
-Now that you're familiar with the process, you can check out our [NFT Example](https://examples.near.org/NFT) and learn more about the smart contract code and how you can transfer minted tokens to other accounts.
+Now that you're familiar with the process, you can check out our [NFT Example](0-intro.md) and learn more about the smart contract code and how you can transfer minted tokens to other accounts.
 Finally, if you are new to Rust and want to dive into smart contract development, our [Quick-start guide](../../2.build/2.smart-contracts/quickstart.md) is a great place to start.
 
 **_Happy minting!_** 🪙

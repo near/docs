@@ -25,10 +25,10 @@ Imagine a place where you can build Web3 apps with the simplicity of Web2. Imagi
           title="Chain Abstraction"
           text="Forget about the chain, focus on usability"
           links={{
-            "What is Chain Abstraction?": "/build/chain-abstraction/what-is",
-            "Chain Signatures ✨": "/build/chain-abstraction/chain-signatures",
-            "Meta-transactions": "/build/chain-abstraction/meta-transactions",
-            "FastAuth (Email login)": "/build/chain-abstraction/fastauth-sdk", 
+            "What is Chain Abstraction?": "/chain-abstraction/what-is",
+            "Chain Signatures ✨": "/chain-abstraction/chain-signatures",
+            "Meta-transactions": "/chain-abstraction/meta-transactions",
+            "NEAR Intents": "/chain-abstraction/intents/overview",
           }}
     />
     <Card img={require("@site/static/docs/assets/welcome-pages/examples-landing.png").default}
@@ -39,7 +39,6 @@ Imagine a place where you can build Web3 apps with the simplicity of Web2. Imagi
             "Quickstart ✨": "/build/web3-apps/quickstart",
             "Create an AI Assistant 🤖✨": "/build/web3-apps/ai/ai-assistant",
             "Use a Contract in Your Frontend": "/build/web3-apps/integrate-contracts",
-            "Social Components (BOS)": "/build/near-components/what-is",
           }}
     />
     <Card img={require("@site/static/docs/assets/welcome-pages/contracts.png").default}
@@ -71,7 +70,7 @@ Imagine a place where you can build Web3 apps with the simplicity of Web2. Imagi
             "What is Data Infrastructure?": "/build/data-infrastructure/what-is",
             "BigQuery": "/build/data-infrastructure/big-query",
             "Data APIs": "/build/data-infrastructure/data-apis",
-            "Lake Framework": "/concepts/advanced/near-lake-framework",
+            "Lake Framework": "/build/data-infrastructure/lake-framework/near-lake-framework",
           }}
     />
 </Container>

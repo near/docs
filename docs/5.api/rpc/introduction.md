@@ -16,6 +16,13 @@ tools such as [near-api](../../4.tools/near-api.md) are just abstractions making
 
 There are multiple [RPC providers which you can choose from](./providers.md). These providers will work as intermediaries to help you interact with the NEAR network.
 
+## Node Snapshots
+
+If you're looking for node snapshots  in order to set up a validator node or RPC, you can download the latest NEAR blockchain state from:
+
+- [Allnodes](https://www.publicnode.com/snapshots#near)
+- [FastNEAR](https://docs.fastnear.com/docs/snapshots)
+
 <hr className="subsection" />
 
 ## NEAR RPC - Quick Links

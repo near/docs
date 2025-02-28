@@ -177,7 +177,7 @@ function Footer() {
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/build/chain-abstraction/what-is">
+                    <a href="/chain-abstraction/what-is">
                       Chain Abstraction
                     </a>
                   </li>
@@ -189,11 +189,6 @@ function Footer() {
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
                     <a href="/concepts/basics/runtime">
                       Runtime
-                    </a>
-                  </li>
-                  <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/concepts/web3/intro">
-                      Web3 Intro
                     </a>
                   </li>
                 </ul>
@@ -209,18 +204,13 @@ function Footer() {
                   className="footer-menu list-reset mt-5 text-16 md:text-16"
                 >
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/build/chain-abstraction/what-is">
+                    <a href="/chain-abstraction/what-is">
                       Chain Abstraction
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
                     <a href="/build/smart-contracts/what-is">
                       Smart Contracts
-                    </a>
-                  </li>
-                  <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/build/near-components/what-is">
-                      Components
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
@@ -234,8 +224,8 @@ function Footer() {
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/build/chain-abstraction/data-availability">
-                      Data Availability
+                    <a href="/chain-abstraction/intents/overview">
+                      Intents
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
@@ -268,11 +258,6 @@ function Footer() {
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
                     <a href="/tutorials/fts/introduction">
                       FTs
-                    </a>
-                  </li>
-                  <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/tutorials/near-components/bos-loader">
-                      Components
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
@@ -350,18 +335,13 @@ function Footer() {
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/build/chain-abstraction/fastauth-sdk">
+                    <a href="/chain-abstraction/fastauth-sdk">
                       FastAuth
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/build/chain-abstraction/what-is">
+                    <a href="/chain-abstraction/relayers">
                       Relayers
-                    </a>
-                  </li>
-                  <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="https://jutsu.ai/editor" target="_blank" rel="noopener noreferrer">
-                      Justu IDE
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
@@ -457,11 +437,6 @@ function Footer() {
                     >
                       Startup Accelerator
                     </a>
-                  </li>
-                  <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                  <a href="https://wiki.near.org" target="_blank" rel="noopener noreferrer">
-                    Wiki
-                  </a>
                   </li>
                   <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-6804">
                     <a href="https://gov.near.org" target="_blank" rel="noopener noreferrer">Forum</a>

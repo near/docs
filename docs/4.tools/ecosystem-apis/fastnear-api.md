@@ -1,74 +1,40 @@
 ---
-id: fastnear-api
-title: FastNEAR API
-sidebar_label: FastNEAR API
+id: fastnear
+title: FastNEAR
 ---
 
-[FastNEAR](https://fastnear.com/) provides high-performance infrastructure enabling seamless blockchain interactions.
+[FastNEAR](https://fastnear.com/) allows to easily query the NEAR blockchain to get an account's assets, map keys into account IDs, explore a block's transactions, etc.
 
-## Overview
+Possible use cases include:
+- Querying all assets of an account (including fungible and non-fungible tokens)
+- Querying the last block produced
+- Mapping Public Key to Account ID
+- Mapping Full Access Public Key to Account ID
+- Knowing a user's staking pools (validators)
+- Querying the top holders of a token
 
-[FastNEAR](https://fastnear.com/) exposes low-latency APIs for wallets and explorers. Their API allows you to easily query the NEAR blockchain to get an account's assets, map keys into account IDs, explore a block's transactions, etc.
+:::tip Documentation
 
-:::info More info
+[Click here](https://github.com/fastnear/fastnear-api-server-rs?tab=readme-ov-file#api-v1) to see the complete list of endpoints and usage examples
 
-Find more information about the FastNear API in their [services page](https://fastnear.com/services).
-
-:::
-
-## RPC implementation
-
-[Fast-Near](https://github.com/fastnear/fast-near) aims to provide the fastest RPC implementation for NEAR Protocol using high-performance storage backends:
- - in-memory storage in [Redis](https://redis.io/).
- - SSD optimized storage using [LMDB](https://www.symas.com/lmdb).
-
-It is optimized for `view` call performance and ease of deploy and scaling.
-
-
-:::note About data sync
-FastNear doesn't sync with the NEAR blockchain on its own. Data needs to be loaded either from [NEAR Lake](https://github.com/near/near-lake-indexer) or from [Near State Indexer](https://github.com/vgrichina/near-state-indexer).
 :::
 
 ---
 
 ## Endpoints
 
-The [FastNEAR API server](https://github.com/fastnear/fastnear-api-server-rs) provides a low-latency RPC API for wallets and explorers.
+The [FastNEAR Server](https://github.com/fastnear/fastnear-api-server-rs) provides a low-latency endpoint for wallets and explorers.
 
 - Mainnet: `https://api.fastnear.com`
 - Testnet: `https://test.api.fastnear.com`
 
-#### Public Key
-
-- Public Key to Account ID mapping.
-- Full Access Public Key to Account ID mapping.
-- Any Public Key to Account ID mapping.
-
-#### Account ID
-
-- Account ID to delegated staking pools (validators).
-- Account ID to fungible tokens (FT contracts).
-- Account ID to non-fungible tokens (NFT contracts).
-
-#### Token ID
-
-- Token ID to top 100 accounts by balance (for FT contracts).
-
-
-:::tip V1 API
-
-[Click here](https://github.com/fastnear/fastnear-api-server-rs?tab=readme-ov-file#api-v1) to see the complete list of API endpoints and usage examples.
-
-:::
+---
 
 ## Examples
 
-### [Blockchain Data](https://github.com/fastnear/neardata-server/)
-
-- Query last block produced
+### [Query last block produced](https://github.com/fastnear/neardata-server/)
 
 ```bash
-# Query last block produced
 curl https://mainnet.neardata.xyz/v0/last_block/final
 ```
 
@@ -90,9 +56,9 @@ curl https://mainnet.neardata.xyz/v0/last_block/final
 
 </details>
 
-### [User Queries](https://github.com/fastnear/fastnear-api-server-rs)
+<hr className="subsection"/>
 
-- Query user's FTs
+### [Query User's Balance](https://github.com/fastnear/fastnear-api-server-rs)
 
 ```bash
 # Query user's FTs
@@ -108,9 +74,7 @@ curl https://api.fastnear.com/v1/account/root.near/ft
 
 </details>
 
----
-
-- Query user's NFTs
+<hr className="subsection"/>
 
 ```sh
 # Query user's NFTs
@@ -126,9 +90,7 @@ curl https://api.fastnear.com/v1/account/root.near/nft
 
 </details>
 
----
-
-- Query all user's assets
+<hr className="subsection"/>
 
 ```sh
 # Query all user's assets

@@ -6,7 +6,9 @@ hide_table_of_contents: false
 import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
+import { Github } from "@site/src/components/codetabs"
+import { LantstoolLabel } from "@site/src/components/lantstool/LantstoolLabel/LantstoolLabel";
+import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantstool";
 
 Linkdrops allow users to distribute assets and onboard people to Web3 apps through a simple web link.
 
@@ -132,7 +134,6 @@ Key pair with ed25519:33Vn9VtNEtWQPPd1f4jf5HzJ5weLcvGHU8oz7o5UnPqy public key fo
 </TabItem>
 
 <TabItem value="Keypom API" label="Keypom API">
-
 ```bash
 export NUMBER_OF_DROPS=2
 
@@ -142,7 +143,11 @@ curl https://keypom.sctuts.com/keypair/$NUMBER_OF_DROPS/rootEntrophy
 </TabItem>
 
 </Tabs>
+</TabItem>
 
+  <TabItem value="Lantstool" label={<LantstoolLabel/>}>
+    <p>Generate a new key on [Lantstool](https://app.lantstool.dev/)</p>
+    ![lantstool](/docs/assets/lantstool/lantstool-near_protocol-utils-key_generator.png)
   </TabItem>
 </Tabs>
 
@@ -207,6 +212,10 @@ _The `Wallet` object comes from our [quickstart template](https://github.com/nea
 near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_per_use": "10000000000000000000000"}' --depositYocto 23000000000000000000000 --gas 100000000000000 --accountId bob.near
 ```
 
+  </TabItem>
+
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/linkdrop/create-near-drop.json" />
   </TabItem>
 </Tabs>
 
@@ -296,6 +305,10 @@ near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_pe
 ```
 
   </TabItem>
+
+    <TabItem value="Lantstool" label={<LantstoolLabel />}>
+        <TryOutOnLantstool path="docs/2.build/5.primitives/linkdrop/create-nft-drop.json" />
+    </TabItem>
 </Tabs>
 
 #### 2. Transferring the NFT
@@ -356,6 +369,10 @@ _The `Wallet` object comes from our [quickstart template](https://github.com/nea
 near call nft.primitives.near nft_transfer_call '{"receiver_id": "v2.keypom.near", "token_id": <YOUR TOKEN ID>, "msg": <YOUR DROP ID>}' --depositYocto 1 --gas 100000000000000 --accountId bob.near
 ```
 
+  </TabItem>
+
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/linkdrop/transfer-nft-to-v2keypomnear.json" />
   </TabItem>
 </Tabs>
 
@@ -447,6 +464,10 @@ near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_pe
 ```
 
   </TabItem>
+
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/linkdrop/create-ft-drop.json" />
+  </TabItem>
 </Tabs>
 
 #### 2. Transferring FT
@@ -507,6 +528,10 @@ _The `Wallet` object comes from our [quickstart template](https://github.com/nea
 near call ft.primitives.near ft_transfer '{"receiver_id": "v2.keypom.near", "amount": "1"}' --depositYocto 1 --gas 100000000000000 --accountId bob.near
 ```
 
+  </TabItem>
+
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/linkdrop/transfer-ft-to-v2keypomnear.json" />
   </TabItem>
 </Tabs>
 
@@ -623,6 +648,10 @@ _The `Wallet` object comes from our [quickstart template](https://github.com/nea
 near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_per_use": "10000000000000000000000", "fcData": {"methods": [[{"receiverId": "nft.primitives.near","methodName": "nft_mint","args": {"token_id": "1", "metadata": {"title": "My NFT drop","description": "","media": ""}, "accountIdField": "receiver_id", "attachedDeposit": "10000000000000000000000"}]]}}' --depositYocto 23000000000000000000000 --gas 100000000000000 --accountId bob.near
 ```
 
+  </TabItem>
+
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/linkdrop/create-function-call-drop.json" />
   </TabItem>
 </Tabs>
 

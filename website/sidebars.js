@@ -1,17 +1,4 @@
 const sidebar = {
-  "concepts": [
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> From Web 2 to Web 3 </small></b></span>"
-    },
-    [
-      "concepts/web3/intro",
-      "concepts/web3/basics",
-      "concepts/web3/near",
-      "concepts/web3/economics",
-      "concepts/web3/nfts"
-    ]
-  ],
   "build": [
     "build/welcome",
     {
@@ -77,42 +64,42 @@ const sidebar = {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Chain Abstraction ✨ </small></b></span>"
     },
-    'build/chain-abstraction/what-is',
+    'chain-abstraction/what-is',
     {
       "Chain Abstraction Services": [
         {
           "Meta Transactions": [
-            "concepts/abstraction/meta-transactions",
-            "concepts/abstraction/relayers",
-            "build/chain-abstraction/meta-transactions",
+            "chain-abstraction/meta-transactions",
+            "chain-abstraction/relayers",
+            "chain-abstraction/meta-transactions-relayer",
           ]
         },
         {
-          "type": "category",
-          "label": "Chain Signatures",
-          "link": {
-            "type": "doc",
-            "id": "build/chain-abstraction/chain-signatures/getting-started"
-          },
-          "items": [
-            "concepts/abstraction/chain-signatures",
-            'build/chain-abstraction/chain-signatures/chain-signatures',
-            {
-              "Implementing Contract Logic": [
-                {
-                  "Controlling Existing NEAR Accounts": [
-                    "build/chain-abstraction/chain-signatures/chain-signatures-contract/controlling-near-accounts/introduction",
-                    "build/chain-abstraction/chain-signatures/chain-signatures-contract/controlling-near-accounts/contract",
-                    "build/chain-abstraction/chain-signatures/chain-signatures-contract/controlling-near-accounts/scripts",
-                  ]
-                },
-              ]
-            },
+          "Chain Signatures": [
+            "chain-abstraction/chain-signatures",
+            "chain-abstraction/chain-signatures/getting-started",
+            'chain-abstraction/chain-signatures/implementation',
             // 'build/chain-abstraction/nft-chain-keys',
           ]
         },
-        'build/chain-abstraction/fastauth-sdk',
-        "build/chain-abstraction/data-availability",
+        {
+          "Intents": [
+            "chain-abstraction/intents/overview",
+            "chain-abstraction/intents/solvers",
+            "chain-abstraction/intents/intents-bridge",
+            "chain-abstraction/intents/faq",
+          ]
+        },
+        {
+          "Omni Bridge": [
+            "chain-abstraction/omnibridge/overview",
+            "chain-abstraction/omnibridge/how-it-works",
+            "chain-abstraction/omnibridge/implementation-details",
+            "chain-abstraction/omnibridge/roadmap",
+          ]
+        },
+        'chain-abstraction/fastauth-sdk',
+        "chain-abstraction/data-availability",
       ]
     },
     {
@@ -210,30 +197,9 @@ const sidebar = {
       "Building Web3 Applications": [
         "build/web3-apps/quickstart",
         {
-          type: 'category',
-          label: 'Frontends',
-          link: { type: 'doc', id: 'build/web3-apps/frontend' },
-          items: [
+          "Frontends": [
             "build/web3-apps/integrate-contracts",
-            "build/web3-apps/chain-hosted-ui",
-            {
-              "Social Components (BOS)": [
-                "build/near-components/what-is",
-                "build/near-components/dev-environment",
-                {
-                  "Anatomy of a Component": [
-                    "build/near-components/anatomy/state",
-                    "build/near-components/anatomy/web-methods",
-                    "build/near-components/anatomy/builtin-components",
-                    "build/near-components/anatomy/near",
-                    "build/near-components/anatomy/social",
-                    "build/near-components/anatomy/notifications",
-                  ]
-                },
-                "build/near-components/bos-gateway",
-                "build/web3-apps/integrate-components",
-              ]
-            }
+            "build/web3-apps/ethereum-wallets"
           ]
         },
         {
@@ -314,7 +280,7 @@ const sidebar = {
         "build/data-infrastructure/big-query",
         {
           "Lake Framework": [
-            "concepts/advanced/near-lake-framework",
+            "build/data-infrastructure/lake-framework/near-lake-framework",
             "build/data-infrastructure/lake-framework/near-lake",
             "build/data-infrastructure/lake-framework/near-lake-state-changes-indexer",
             "build/data-infrastructure/lake-framework/migrating-to-near-lake-framework",
@@ -359,12 +325,12 @@ const sidebar = {
         "tutorials/examples/donation",
         "tutorials/examples/xcc",
         "tutorials/examples/coin-flip",
-        "build/web3-apps/chain-hosted-ui-tutorial",
       ]
     },
     {
       "Advanced Contracts": [
         "tutorials/examples/factory",
+        "tutorials/examples/near-drop",
         "tutorials/examples/advanced-xcc",
         "tutorials/examples/update-contract-migrate-state",
       ]
@@ -413,19 +379,6 @@ const sidebar = {
           ]
         },
         "tutorials/auction/auction-factory",
-      ]
-    },
-    {
-      "Components": [
-        "tutorials/near-components/bos-loader",
-        "tutorials/near-components/interaction",
-        "tutorials/near-components/ds-components",
-        "tutorials/near-components/using-iframes",
-        "tutorials/near-components/blog-posts",
-        "tutorials/near-components/push-notifications",
-        "tutorials/near-components/ethers-js",
-        "tutorials/near-components/ethers-js-best-practices",
-        "tutorials/near-components/lido",
       ]
     },
     {
@@ -541,6 +494,22 @@ const sidebar = {
         }
       ]
     },
+    {
+      "Multi-Chain DAO Governance": [
+        "tutorials/multichain-dao/introduction",
+        "tutorials/multichain-dao/request",
+        "tutorials/multichain-dao/signing",
+        "tutorials/multichain-dao/voting"
+      ]
+    },
+    {
+      "Integrate with NEAR Intents": [
+        "tutorials/intents/introduction",
+        "tutorials/intents/deposit",
+        "tutorials/intents/swap",
+        "tutorials/intents/withdraw",
+      ]
+    },
   ],
   "tools": [
     "tools/welcome",
@@ -555,26 +524,27 @@ const sidebar = {
     "tools/near-api",
     "tools/sdk",
     "tools/near-cli",
+    "tools/wallet-selector",
+    'tools/clear-state',
     {
-      "type": "category",
-      "label": "BOS Web Editors",
-      "items": [
-        {
-          "type": "link",
-          "label": "Jutsu Web Editor",
-          "href": "https://near.jutsu.ai/"
-        }
-      ]
+      "type": "html",
+      "value": "<hr/>"
     },
     {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Data Tools </small></b></span>"
+    },
+    "tools/explorer",
+    {
       "type": "category",
-      "label": "Wallets",
+      "label": "Data APIs",
       "items": [
-        "tools/wallets",
-        "tools/wallet-selector",
-        "tools/ethereum-wallets",
+        'tools/ecosystem-apis/fastnear',
+        'tools/ecosystem-apis/nearblocks',
+        'tools/ecosystem-apis/pikespeak',
       ]
     },
+    "tools/indexing",
     {
       "type": "html",
       "value": "<hr/>"
@@ -584,31 +554,30 @@ const sidebar = {
       "value": "<span class='menu__link'><b><small> Ecosystem Tools </small></b></span>"
     },
     {
-      "type": "category",
-      "label": "Data APIs",
-      "items": [
-        'tools/ecosystem-apis/fastnear-api',
-        'tools/ecosystem-apis/nearblocks-api',
-        'tools/ecosystem-apis/pikespeak-api',
-      ]
-    },
-    {
-      "type": "link",
-      "label": "Remix IDE Plugin",
-      "href": "https://docs.welldonestudio.io/code/getting-started"
-    },
-    {
       "type": "link",
       "label": "Testnet Faucet",
       "href": "https://near-faucet.io/"
     },
     {
       "type": "link",
+      "label": "Developer Portal",
+      "href": "https://dev.near.org/"
+    },
+    {
+      "type": "link",
+      "label": "NEAR Catalog",
+      "href": "https://app.nearcatalog.xyz/"
+    },
+    {
+      "type": "link",
       "label": "Keypom",
       "href": "https://keypom.xyz/"
     },
-    "tools/explorer",
-    "tools/indexing"
+    {
+      "type": "link",
+      "label": "Remix IDE Plugin",
+      "href": "https://docs.welldonestudio.io/code/getting-started"
+    },
   ],
   "api": [
     "api/rpc/introduction",
@@ -630,36 +599,6 @@ const sidebar = {
     "api/rpc/network",
     "api/rpc/transactions",
     "api/rpc/maintenance-windows",
-  ],
-  "pagoda": [
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> PAGODA CONSOLE </small></b></span>"
-    },
-    {
-      "Pagoda RPC": [
-        "pagoda/rpc/intro",
-        "pagoda/rpc/get-keys",
-        "pagoda/rpc/setup",
-        "pagoda/rpc/stats",
-      ]
-    },
-    {
-      "Enhanced API": [
-        "pagoda/rpc/api",
-      ]
-    },
-    {
-      "Alerts & Triggers": [
-        "pagoda/alerts/intro",
-        "pagoda/alerts/setup",
-        "pagoda/alerts/webhooks",
-      ]
-    },
   ],
   "exchanges": [
     {

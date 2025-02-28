@@ -18,7 +18,7 @@ At the core, all transactions require the following:
 - `actions` _( [[click here]](/concepts/protocol/transaction-anatomy#actions) for supported arguments)_
 - `blockHash` _(a current block hash (within 24hrs) to prove the transaction was recently created)_
 
-See [Transaction Class](https://near.github.io/near-api-js/classes/near_api_js.transaction.Transaction.html) for a more in depth outline.
+See [Transaction Class](https://near.github.io/near-api-js/classes/near-api-js.transaction.Transaction.html) for a more in depth outline.
 
 ---
 
@@ -394,7 +394,7 @@ const signedTransaction = new nearAPI.transactions.SignedTransaction({
 Final step is to encode and send the transaction.
 
 - First we serialize transaction into [Borsh](https://borsh.io/), and store the result as `signedSerializedTx`. _(required for all transactions)_
-- Then we send the transaction via [RPC call](/api/rpc/introduction) using the `sendJsonRpc()` method nested inside [`near`](#setting-up-connection-to-near).
+- Then we send the transaction via [RPC call](/api/rpc/introduction) using the `sendJsonRpc()` method nested inside [`near`](#setting-up-a-connection-to-near).
 
 ```js
 // encodes transaction to serialized Borsh (required for all transactions)

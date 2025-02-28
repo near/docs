@@ -7,9 +7,12 @@ import TabItem from '@theme/TabItem';
 
 The NEAR [Command Line Interface](https://github.com/near/near-cli-rs) (CLI) is a tool that enables to interact with the NEAR network directly from the shell. Among other things, the NEAR CLI enables you to:
 
-- Login with a NEAR account
+- Create a new NEAR account
+- Query information about an account
+- Send Tokens such as NEAR, FTs, and NFTs
+- Create, Add and Delete Account Keys
 - Deploy a contract
-- Interact and query information from a deployed contract
+- Call functions on a deployed contract
 
 ---
 

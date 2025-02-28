@@ -1,0 +1,62 @@
+<table>
+  <thead>
+    <tr>
+      <th>ERROR_TYPE<br /><code>error.name</code></th>
+      <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Status Code</th>
+      <th>Reason</th>
+      <th>Solution</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>HANDLER_ERROR</td>
+      <td>UNKNOWN_RECEIPT</td>
+      <td>200</td>
+      <td>
+        The receipt with the given <code>receipt_id</code> was never observed on
+        the node
+      </td>
+      <td>
+        <ul>
+          <li>
+            Check the provided <code>receipt_id</code> is correct
+          </li>
+          <li>Send a request on a different node</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>REQUEST_VALIDATION_ERROR</td>
+      <td>PARSE_ERROR</td>
+      <td>400</td>
+      <td>
+        Passed arguments can't be parsed by JSON RPC server (missing arguments,
+        wrong format, etc.)
+      </td>
+      <td>
+        <ul>
+          <li>Check the arguments passed and pass the correct ones</li>
+          <li>
+            Check <code>error.cause.info</code> for more details
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>INTERNAL_ERROR</td>
+      <td>INTERNAL_ERROR</td>
+      <td>500</td>
+      <td>Something went wrong with the node itself or overloaded</td>
+      <td>
+        <ul>
+          <li>Try again later</li>
+          <li>Send a request to a different node</li>
+          <li>
+            Check <code>error.cause.info</code> for more details
+          </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
