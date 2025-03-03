@@ -36,38 +36,6 @@ In order to create any kind of drop, you need to first generate key pairs. You w
 - You will give the `private` part of the key to the user you want to receive the drop.
 
 <Tabs groupId="code-tabs">
-<Tabs className="file-tabs">
-
-<TabItem value="Keypom API" label="Keypom API">
-
-```js
-const dropsNumber = "2";
-const keysGeneratorUrl = "https://keypom.sctuts.com/keypair/";
-const rootEntrophy = "my-password"; //If not provided, the keypair will be completely random. see: https://docs.keypom.xyz/docs/next/keypom-sdk/Core/modules
-asyncFetch(keysGeneratorUrl + dropsNumber + "/" + rootEntrophy).then((res) => {
-  const keyPairs = JSON.parse(res.body);
-  const pubKeys = [];
-  const privKeys = [];
-
-  keyPairs.forEach((e) => {
-    pubKeys.push(e.pub);
-    privKeys.push(e.priv);
-  });
-
-  const obj = {
-    publicKeys: pubKeys,
-    privKeys: privKeys,
-  };
-
-  State.update(obj);
-});
-```
-
-</TabItem>
-
-</Tabs>
-
-  </TabItem>
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
 <Tabs className="file-tabs">
@@ -213,7 +181,6 @@ To create an NFT drop, you will call the `create_drop` method, now passing a `nf
 The contract will then create a drop and **return the numerical ID** that identifies it.
 
 <Tabs groupId="code-tabs">
-
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
 ```js
@@ -323,7 +290,8 @@ To create a FT drop you will call the `create_drop` method, now passing a `ftDat
 The contract will then create a drop and **return the numerical ID** that identifies it.
 
 <Tabs groupId="code-tabs">
-    <TabItem value="🌐 WebApp" label="🌐 WebApp">
+  <TabItem value="🌐 WebApp" label="🌐 WebApp">
+
 ```js
 import { Wallet } from './near-wallet';
 
@@ -352,12 +320,16 @@ await wallet.callMethod({
   gas: "100000000000000",
 });
 ```
+
 _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/near.js)_
+
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
+
 ```bash
 near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_per_use": "10000000000000000000000", "ftData": {"contractId": "ft.primitives.near","senderId": "bob.near", "amount": "1"}}}' --depositYocto 23000000000000000000000 --gas 100000000000000 --accountId bob.near
 ```
+
   </TabItem>
 
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
