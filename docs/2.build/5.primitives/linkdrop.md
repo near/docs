@@ -36,8 +36,6 @@ In order to create any kind of drop, you need to first generate key pairs. You w
 - You will give the `private` part of the key to the user you want to receive the drop.
 
 <Tabs groupId="code-tabs">
-  <TabItem value="⚛️ Component" label="⚛️ Component" default>
-
 <Tabs className="file-tabs">
 
 <TabItem value="Keypom API" label="Keypom API">
@@ -160,27 +158,6 @@ To create a $NEAR drop you will ask the contract to create a drop (`create_drop`
 The contract will create a drop and **return the numerical ID** that identifies it.
 
 <Tabs groupId="code-tabs">
-  <TabItem value="⚛️ Component" label="⚛️ Component" default>
-
-```js
-const keypomContract = "v2.keypom.near";
-const dropAmount = "10000000000000000000000";
-
-Near.call([
-  {
-    contractName: keypomContract,
-    methodName: "create_drop",
-    args: {
-      public_keys: state.publicKeys,
-      deposit_per_use: dropAmount,
-    },
-    deposit: "23000000000000000000000", // state.publicKeys.length * dropAmount + 3000000000000000000000,
-    gas: "100000000000000",
-  },
-]);
-```
-
-  </TabItem>
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
 ```js
@@ -236,35 +213,7 @@ To create an NFT drop, you will call the `create_drop` method, now passing a `nf
 The contract will then create a drop and **return the numerical ID** that identifies it.
 
 <Tabs groupId="code-tabs">
-  <TabItem value="⚛️ Component" label="⚛️ Component" default>
 
-```js
-const accountId = context.accountId ?? props.accountId;
-const keypomContract = "v2.keypom.near";
-const nftContract = "nft.primitives.near";
-const dropAmount = "10000000000000000000000";
-
- Near.call([
-  {
-    contractName: keypomContract,
-    methodName: "create_drop",
-    args: {
-      public_keys: state.publicKeys,
-      deposit_per_use: dropAmount,
-      nft: {
-        // Who will be sending the NFTs to the Keypom contract
-        sender_id: accountId,
-        // NFT Contract Id that the tokens will come from
-        contract_id: nftContract,
-      },
-    },
-    deposit: "23000000000000000000000" // state.publicKeys.length * dropAmount + 3000000000000000000000,
-    gas: "100000000000000",
-  },
-]);
-```
-
-  </TabItem>
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
 ```js
@@ -316,25 +265,6 @@ near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_pe
 Having the Drop ID, you now need to transfer the NFT to the linkdrop contract, specifying to which drop you want to add it.
 
 <Tabs groupId="code-tabs">
-  <TabItem value="⚛️ Component" label="⚛️ Component" default>
-
-```js
-const nftTokenId = "1";
-
-Near.call([{
-  contractName: nftContract,
-  methodName: 'nft_transfer_call',
-  args: {
-    receiver_id: keypomContract,
-    token_id: nftTokenId,
-    msg: dropId.toString()
-  },
-  deposit: "1",
-  gas: "300000000000000"
-}]);
-```
-
-  </TabItem>
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
 ```js
@@ -393,78 +323,6 @@ To create a FT drop you will call the `create_drop` method, now passing a `ftDat
 The contract will then create a drop and **return the numerical ID** that identifies it.
 
 <Tabs groupId="code-tabs">
-  <TabItem value="⚛️ Component" label="⚛️ Component" default>
-
-```js
-const keypomContract = "v2.keypom.near";
-const ftContract = "ft.primitives.near";
-const dropAmount = "10000000000000000000000";
-
-Near.call([
-  {
-    contractName: keypomContract,
-    methodName: "create_drop",
-    args: {
-      public_keys: state.publicKeys,
-      deposit_per_use: dropAmount,
-      ftData: {
-	    	contractId: ftContract,
-	    	senderId: accountId,
-	    	// This balance per use is balance of human readable FTs per use.
-	    	amount: "1"
-        // Alternatively, you could use absoluteAmount, which is dependant on the decimals value of the FT
-        // ex. if decimals of an ft = 8, then 1 FT token would be absoluteAmount = 100000000
-	    },
-    },
-    deposit: "23000000000000000000000", // state.publicKeys.length * dropAmount + 3000000000000000000000,
-    gas: "100000000000000"
-  },
-]);
-```
-
-  </TabItem>
-  <TabItem value="🌐 WebApp" label="🌐 WebApp">
-
-```js
-import { Wallet } from './near-wallet';
-
-const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
-const FT_CONTRACT_ADDRESS = "ft.primitives.near";
-const DROP_AMOUNT = "10000000000000000000000";
-
-const wallet = new Wallet({ createAccessKeyFor: KEYPOM_CONTRACT_ADDRESS });
-
-await wallet.callMethod({
-  method: "create_drop",
-  contractId: KEYPOM_CONTRACT_ADDRESS,
-  args: {
-    public_keys: state.publicKeys,
-    deposit_per_use: DROP_AMOUNT,
-    ftData: {
-      contractId: FT_CONTRACT_ADDRESS,
-      senderId: accountId, // TODO How to get account id
-      // This balance per use is balance of human readable FTs per use.
-      amount: "1"
-      // Alternatively, you could use absoluteAmount, which is dependant on the decimals value of the FT
-      // ex. if decimals of an ft = 8, then 1 FT token would be absoluteAmount = 100000000
-    },
-  },
-  deposit: "23000000000000000000000" // state.publicKeys.length * dropAmount + 3000000000000000000000,
-  gas: "100000000000000",
-});
-```
-
-_The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/near.js)_
-
-  </TabItem>
-  <TabItem value="🖥️ CLI" label="🖥️ CLI">
-
-```bash
-near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_per_use": "10000000000000000000000", "ftData": {"contractId": "ft.primitives.near","senderId": "bob.near", "amount": "1"}}}' --depositYocto 23000000000000000000000 --gas 100000000000000 --accountId bob.near
-```
-
-  </TabItem>
-
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
     <TryOutOnLantstool path="docs/2.build/5.primitives/linkdrop/create-ft-drop.json" />
   </TabItem>
@@ -479,24 +337,6 @@ To transfer FTs to an account, you need to first [register](./ft#registering-a-u
 :::
 
 <Tabs groupId="code-tabs">
-  <TabItem value="⚛️ Component" label="⚛️ Component" default>
-
-```js
-Near.call([
-  {
-    contractName: ftContract,
-    methodName: "ft_transfer",
-    args: {
-      receiver_id: keypomContract,
-      amount: "1",
-    },
-    deposit: "1",
-    gas: "300000000000000",
-  },
-]);
-```
-
-  </TabItem>
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
 ```js
@@ -545,53 +385,6 @@ Function call drops can be thought as the abstract version of other drops: you c
 :::
 
 <Tabs groupId="code-tabs">
-  <TabItem value="⚛️ Component" label="⚛️ Component" default>
-
-```js
-const accountId = context.accountId ?? props.accountId;
-const keypomContract = "v2.keypom.near";
-const nftContract = "nft.primitives.near";
-const nftTokenId = "1";
-const dropAmount = "10000000000000000000000";
-
-Near.call([
-  {
-    contractName: keypomContract,
-    methodName: "create_drop",
-    args: {
-      public_keys: state.publicKeys,
-      deposit_per_use: dropAmount,
-      fcData: {
-        // 2D array of function calls. In this case, there is 1 function call to make for a key use
-        // By default, if only one array of methods is present, this array of function calls will be used for all key uses
-        methods: [
-          // Array of functions for Key use 1.
-            [{
-              receiverId: nftContract,
-              methodName: "nft_mint",
-              args: JSON.stringify({
-              // Change this token_id if it already exists -> check explorer transaction
-                  token_id: nftTokenId,
-                  metadata: {
-                    title: "My NFT drop",
-                    description: "",
-                    media: "",
-                  }
-              }),
-              accountIdField: "receiver_id",
-              // Attached deposit for when the receiver makes this function call
-              attachedDeposit: "10000000000000000000000"
-            }]
-        ]
-      }
-    },
-    deposit: "23000000000000000000000", // state.publicKeys.length * dropAmount + 3000000000000000000000,
-    gas: "100000000000000",
-  },
-]);
-```
-
-  </TabItem>
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
 ```js
