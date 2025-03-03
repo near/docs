@@ -97,7 +97,7 @@ See the examples below for more details.
 2. The transaction is transformed into one receipt
 3. The account is created, but the transfer fails because `bob.near` does not have enough balance
 4. The whole process is reverted (i.e. no account is created)
-5. The transaction is marked as successful ⛔
+5. The transaction is marked as failed ⛔
 
 #### Example: Calling a Function
 1. `bob.near` creates a transaction to call the function `cross-call` in `contract.near`
