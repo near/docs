@@ -51,9 +51,6 @@ In order for a contract to be considered a FT-contract it has to follow the [**N
 You can create an FT using the toolbox on [Dev Portal](https://dev.near.org/tools). The FT Tool is a token factory, you can interact with it through graphical interface, or by making calls to its contract.
 
 <Tabs groupId="code-tabs">
-  <TabItem value="⚛️ Component" label="⚛️ Component" default>
-    <BOSCreateToken />
-  </TabItem>
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
     <WebAppCreateToken />
   </TabItem>
@@ -97,9 +94,6 @@ Check the [Contract Wizard](https://dev.near.org/contractwizard.near/widget/Cont
 You can query the FT's metadata by calling the `ft_metadata`.
 
 <Tabs groupId="code-tabs">
-  <TabItem value="⚛️ Component" label="⚛️ Component" default>
-    <BOSGetMetadata />
-  </TabItem>
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
     <WebAppGetMetadata />
   </TabItem>
@@ -117,9 +111,6 @@ You can query the FT's metadata by calling the `ft_metadata`.
 To know how many coins a user has you will need to query the method `ft_balance_of`.
 
 <Tabs groupId="code-tabs">
-  <TabItem value="⚛️ Component" label="⚛️ Component" default>
-    <BOSCheckBalance />
-  </TabItem>
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
     <WebAppCheckBalance />
   </TabItem>
@@ -139,9 +130,6 @@ In order for an user to own and transfer tokens they need to first **register** 
 By calling this `storage_deposit` the user can register themselves or **register other users**.
 
 <Tabs groupId="code-tabs">
-  <TabItem value="⚛️ Component" label="⚛️ Component" default>
-    <BOSRegister />
-  </TabItem>
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
     <WebAppRegister />
   </TabItem>
@@ -167,9 +155,6 @@ After a user calls the `storage_deposit` the FT will appear in their Wallets.
 To send FT to another account you will use the `ft_transfer` method, indicating the receiver and the amount of FT you want to send.
 
 <Tabs groupId="code-tabs">
-  <TabItem value="⚛️ Component" label="⚛️ Component" default>
-    <BOSSendToken />
-  </TabItem>
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
     <WebAppSendToken />
   </TabItem>
@@ -192,9 +177,6 @@ Natively, only NEAR tokens (Ⓝ) can be attached to a function calls. However, t
 Let's assume that you need to deposit FTs on Ref Finance.
 
 <Tabs groupId="code-tabs">
-  <TabItem value="⚛️ Component" label="⚛️ Component" default>
-    <BOSAttachTokenToCall />
-  </TabItem>
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
     <WebAppAttachTokenToCall />
   </TabItem>
