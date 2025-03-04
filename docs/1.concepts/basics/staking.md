@@ -39,7 +39,7 @@ When you delegate NEAR tokens to a staking pool:
 
 :::tip Key Considerations
 
-- **Rewards**: Staking rewards are distributed at the end of each epoch and depend on the total stake in the network and the validator's performance.
+- **Rewards**: Staking rewards are distributed at the end of each epoch and depend on the total stake in the network and the validator's performance. (note: an epoch is approximately 12 hours)
 - **Commission**: Validators charge a commission on rewards, so choose one with a fair rate.
 - **Liquidity**: Staked tokens are locked and cannot be transferred until unstaked and withdrawn.
 - **Validator Performance**: If a validator underperforms (e.g., goes offline), they may be slashed, reducing your rewards.
@@ -162,7 +162,7 @@ near view <my_validator> get_staking_key '{}'
 
 ## Withdrawing staked tokens
 
-To withdraw your staked tokens, first you need to "un-delegate" them from your validator. Your tokens will enter a 2-3 epoch (approximately 48 hours) unbonding period before they can be withdrawn.
+To withdraw your staked tokens, first you need to "un-delegate" them from your validator. Your tokens will enter a 4 epoch (approximately 48 hours) unbonding period before they can be withdrawn.
 Once they're unlocked, you can execute the withdrawal, and once the transaction is processed, your funds will be available in your account.
 
 ### Unstaking using CLI
