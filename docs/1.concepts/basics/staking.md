@@ -88,6 +88,16 @@ near call <my_validator> deposit '{}' --accountId <user-account.near> --amount 1
 near call <my_validator> stake '{"amount": "100000000000000000000000000"}' --accountId <user-account.near>
 ```
 
+:::tip Interactive CLI
+
+If you want to manage your staking actions with an interactive CLI, use this command and follow the prompts on your screen:
+
+```sh
+near staking delegation
+```
+
+:::
+
 4. Confirm Delegation:
 
 Once the transaction is confirmed, your tokens are delegated to the staking pool.
