@@ -259,6 +259,7 @@ const sidebar = {
             },
           ]
         },
+        "concepts/basics/staking",
         "build/primitives/linkdrop",
         "build/primitives/oracles",
         "build/primitives/dao",
