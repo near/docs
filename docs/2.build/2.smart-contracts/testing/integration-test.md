@@ -245,11 +245,31 @@ Show contract's logs.
 <Tabs groupId="code-tabs">
   <TabItem value="rust" label="🦀 Rust" default>
 
-  Use `println` method when you want to see debug information from your code.
+  You can use `println` or `dbg!` when you want to see information from your code.
 
   <Github fname="basics.rs" language="rust"
       url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
       start="15" end="19" />
+
+  In Rust, the output from your code is captured by default and not displayed in the terminal. In order to see the output, you have to use the `--nocapture` flag
+
+    eg. `cargo test -- --nocapture`
+
+    If you want to access the contracts logs, you can find them in the `tx_outcome.logs()` Vec.
+
+    ```rust
+    let tx_outcome = user_account
+            .call(contract.id(), "set_greeting")
+            .args_json(json!({"greeting": "Hello World!"}))
+            .transact()
+            .await?;
+        assert!(tx_outcome.is_success());
+
+        dbg!(tx_outcome.logs());
+        // [tests/test_basics.rs:29:5] tx_outcome.logs() = [
+        //     "Saving greeting: Hello World!",
+        // ]
+    ```
 
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
@@ -496,7 +516,7 @@ NEAR Workspaces is set up so that you can write tests once and run them against 
     ```
 
   Example:
-  
+
   <Github fname="main.ava.js" language="js"
     url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
     start="252" end="263" />
