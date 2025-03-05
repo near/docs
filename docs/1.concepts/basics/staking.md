@@ -181,7 +181,7 @@ near call <my_validator> unstake '{"amount": "100000000000000000000000000"}' --a
 near view <my_validator> get_account_unstaked_balance '{"account_id": "<user-account.near>"}'
 ```
 
-3. After 3 epochs, check if you can withdraw:
+3. After 4 epochs, check if you can withdraw:
 
 ```sh
 near view <my_validator> is_account_unstaked_balance_available '{"account_id": "<user-account.near>"}'
