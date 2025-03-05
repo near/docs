@@ -45,6 +45,37 @@ The NEAR [Command Line Interface](https://github.com/near/near-cli-rs) (CLI) is 
   </TabItem>
 </Tabs>
 
+### Validator Extension
+
+If you want to interact with [NEAR Validators](https://pages.near.org/papers/economics-in-sharded-blockchain/#validators) from command line, you can also install the optional [NEAR Validator CLI Extension](https://github.com/near-cli-rs/near-validator-cli-rs):
+
+<Tabs>
+  <TabItem value="npm">
+
+  ```bash
+  npm install -g near-validator
+  ```
+  </TabItem>
+  <TabItem value="Cargo">
+
+  ```bash
+  $ cargo install near-validator
+  ```
+  </TabItem>
+  <TabItem value="Mac and Linux (binaries)">
+
+  ```bash
+  curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near-cli-rs/near-validator-cli-rs/releases/latest/download/near-validator-installer.sh | sh
+  ```
+  </TabItem>
+  <TabItem value="Windows (binaries)">
+
+  ```bash
+  irm https://github.com/near-cli-rs/near-validator-cli-rs/releases/latest/download/near-validator-installer.ps1 | iex
+  ```
+  </TabItem>
+</Tabs>
+
 ---
 
 ## Configuration file
