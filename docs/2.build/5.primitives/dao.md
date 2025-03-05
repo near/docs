@@ -48,9 +48,6 @@ The simplest way to create and interact with a DAO is to go through the [AstraDA
 You can also create a DAO by interacting with the `sputnik-dao` contract.
 
 <Tabs groupId="code-tabs">
-  <TabItem value="⚛️ Component" label="⚛️ Component" default>
-    <BOSCreateDAO />
-  </TabItem>
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
     <WebAppCreateDAO />
   </TabItem>
@@ -85,9 +82,6 @@ The ratio indicates that you need a proportion of people/tokens to approve the p
 Query the list of DAOs existing in Sputnik Dao.
 
 <Tabs groupId="code-tabs">
-  <TabItem value="⚛️ Component" label="⚛️ Component" default>
-    <BOSGetDAOList />
-  </TabItem>
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
     <WebAppGetDAOList />
   </TabItem>
@@ -103,9 +97,6 @@ Query the list of DAOs existing in Sputnik Dao.
 These snippets will enable you to query the proposals existing in a particular DAO.
 
 <Tabs groupId="code-tabs">
-  <TabItem value="⚛️ Component" label="⚛️ Component" default>
-    <BOSGetProposalList />
-  </TabItem>
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
     <WebAppGetProposalList />
   </TabItem>
@@ -121,9 +112,6 @@ These snippets will enable you to query the proposals existing in a particular D
 Create a proposal so other users can vote in favor or against it.
 
 <Tabs groupId="code-tabs">
-  <TabItem value="⚛️ Component" label="⚛️ Component" default>
-    <BOSCreateProposal />
-  </TabItem>
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
     <WebAppCreateProposal />
   </TabItem>
@@ -146,9 +134,6 @@ By default, only **council members** can create proposals.
 These snippet will enable your users to cast a vote for proposal of a particular DAO.
 
 <Tabs groupId="code-tabs">
-  <TabItem value="⚛️ Component" label="⚛️ Component" default>
-    <BOSVoteForProposal />
-  </TabItem>
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
     <WebAppVoteForProposal />
   </TabItem>
