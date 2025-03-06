@@ -249,6 +249,36 @@ Implements a [vector/array](https://en.wikipedia.org/wiki/Array_data_structure) 
     <Github fname="vector.rs" language="rust"
             url="https://github.com/near-examples/storage-examples/blob/main/collections-rs/legacy/src/vector.rs" start="6" end="31"/>
   </TabItem>
+  <TabItem value="python" label="🐍 Python">
+```python
+from near_sdk_py import view, call
+from near_sdk_py.collections import Vector
+
+class VectorExample:
+    def __init__(self):
+        # Create a Vector with prefix "v"
+        self.my_vector = Vector("v")
+        
+    @call
+    def add_number(self, number):
+        # Append a value to the vector
+        self.my_vector.append(number)
+        return len(self.my_vector)
+        
+    @view
+    def get_number(self, index):
+        # Get a value at specific index
+        try:
+            return self.my_vector[index]
+        except Exception:
+            return None
+            
+    @view
+    def get_all_numbers(self):
+        # Convert entire vector to a list
+        return [num for num in self.my_vector]
+```
+  </TabItem>
 </Tabs>
 
 <hr className="subsection" />
@@ -267,6 +297,36 @@ Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) w
     <Github fname="lookup_map.rs" language="rust"
           url="https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/lookup_map.rs" start="4" end="22"/>
   </TabItem>
+  <TabItem value="python" label="🐍 Python">
+```python
+from near_sdk_py import view, call
+from near_sdk_py.collections import LookupMap
+
+class LookupMapExample:
+    def __init__(self):
+        # Create a LookupMap with prefix "m"
+        self.balances = LookupMap("m")
+        
+    @call
+    def set_balance(self, account_id, amount):
+        # Set a value for a key
+        self.balances[account_id] = amount
+        return True
+        
+    @view
+    def get_balance(self, account_id):
+        # Get a value for a key with a default
+        return self.balances.get(account_id, 0)
+        
+    @call
+    def remove_balance(self, account_id):
+        # Remove a key
+        if account_id in self.balances:
+            del self.balances[account_id]
+            return True
+        return False
+```
+  </TabItem>
 </Tabs>
 
 <hr className="subsection" />
@@ -284,6 +344,40 @@ Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) w
   <TabItem value="rust" label="🦀 Rust">
     <Github fname="iterable_map.rs" language="rust"
           url="https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/iterable_map.rs" start="4" end="29"/>
+  </TabItem>
+  <TabItem value="python" label="🐍 Python">
+```python
+from near_sdk_py import view, call
+from near_sdk_py.collections import UnorderedMap
+
+class UnorderedMapExample:
+    def __init__(self):
+        # Create an UnorderedMap with prefix "um"
+        self.user_data = UnorderedMap("um")
+        
+    @call
+    def set_user_data(self, account_id, data):
+        # Set a value for a key
+        self.user_data[account_id] = data
+        return True
+        
+    @view
+    def get_user_data(self, account_id):
+        # Get a value for a key
+        try:
+            return self.user_data[account_id]
+        except Exception:
+            return None
+        
+    @view
+    def list_all_users(self):
+        # Iterate through keys and values
+        return {
+            "keys": self.user_data.keys(),
+            "values": self.user_data.values(),
+            "items": self.user_data.items()
+        }
+```
   </TabItem>
 </Tabs>
 
@@ -304,6 +398,38 @@ Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type)) which
       <Github fname="lookup_set.rs" language="rust"
         url="https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/lookup_set.rs" start="4" end="18"/>
   </TabItem>
+  
+  <TabItem value="python" label="🐍 Python">
+```python
+from near_sdk_py import view, call
+from near_sdk_py.collections import LookupSet
+
+class LookupSetExample:
+    def __init__(self):
+        # Create a LookupSet with prefix "s"
+        self.whitelist = LookupSet("s")
+        
+    @call
+    def add_to_whitelist(self, account_id):
+        # Add a value to the set
+        self.whitelist.add(account_id)
+        return True
+        
+    @view
+    def is_whitelisted(self, account_id):
+        # Check if a value exists in the set
+        return account_id in self.whitelist
+        
+    @call
+    def remove_from_whitelist(self, account_id):
+        # Remove a value from the set
+        try:
+            self.whitelist.remove(account_id)
+            return True
+        except Exception:
+            return False
+```
+  </TabItem>
 
 </Tabs>
 
@@ -323,6 +449,39 @@ Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) w
     <Github fname="iterable_set.rs" language="rust"
           url="https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/iterable_set.rs" start="4" end="26"/>
   </TabItem>
+  <TabItem value="python" label="🐍 Python">
+```python
+from near_sdk_py import view, call
+from near_sdk_py.collections import UnorderedSet
+
+class UnorderedSetExample:
+    def __init__(self):
+        # Create an UnorderedSet with prefix "us"
+        self.owners = UnorderedSet("us")
+        
+    @call
+    def register_owner(self, account_id):
+        # Add a value to the set
+        self.owners.add(account_id)
+        return True
+        
+    @view
+    def is_owner(self, account_id):
+        # Check if a value exists in the set
+        return account_id in self.owners
+        
+    @view
+    def list_all_owners(self):
+        # Get all values as a list
+        return self.owners.values()
+        
+    @call
+    def remove_owner(self, account_id):
+        # Try to remove a value if it exists
+        self.owners.discard(account_id)
+        return True
+```
+  </TabItem>
 </Tabs>
 
 <hr className="subsection" />
@@ -335,6 +494,42 @@ An ordered equivalent of Map. The underlying implementation is based on an [AVL]
   <TabItem value="rust" label="🦀 Rust">
     <Github fname="tree.rs" language="rust"
           url="https://github.com/near-examples/storage-examples/blob/main/collections-rs/legacy/src/tree.rs" start="6" end="24"/>
+  </TabItem>
+  <TabItem value="python" label="🐍 Python">
+```python
+from near_sdk_py import view, call
+from near_sdk_py.collections import TreeMap
+
+class TreeMapExample:
+    def __init__(self):
+        # Create a TreeMap with prefix "tm"
+        self.scores = TreeMap("tm")
+        
+    @call
+    def add_score(self, user_id, score):
+        # Set score for a user
+        self.scores[user_id] = score
+        return True
+        
+    @view
+    def get_top_scores(self, limit=10):
+        # Get top scores using ordered keys
+        # This returns highest scores first
+        top_users = []
+        max_key = self.scores.max_key()
+        current_key = max_key
+        count = 0
+        
+        while current_key is not None and count < limit:
+            top_users.append({
+                "user": current_key,
+                "score": self.scores[current_key]
+            })
+            current_key = self.scores.floor_key(current_key - 1)  # Get next highest key
+            count += 1
+            
+        return top_users
+```
   </TabItem>
 </Tabs>
 
@@ -375,12 +570,62 @@ When nesting SDK collections, be careful to **use different prefixes** for all c
   :::
 
   </TabItem>
+  
+  <TabItem value="python" label="🐍 Python">
+```python
+from near_sdk_py import view, call
+from near_sdk_py.collections import UnorderedMap, Vector
+from near_sdk_py.collections import create_prefix_guard
+
+class NestedCollectionsExample:
+    def __init__(self):
+        # Main map of users to their assets
+        self.user_assets = UnorderedMap("users")
+        
+    @call
+    def add_asset(self, user_id, asset_id, metadata):
+        # Get or create the user's assets vector with a unique prefix
+        if user_id not in self.user_assets:
+            # Create a prefix guard to ensure unique prefixes for this user
+            prefix = f"assets:{user_id}"
+            # Create a new vector for this user's assets
+            self.user_assets[user_id] = Vector(prefix)
+            
+        # Add the asset to the user's assets vector
+        user_assets = self.user_assets[user_id]
+        user_assets.append({
+            "asset_id": asset_id,
+            "metadata": metadata
+        })
+        
+        # Update the vector in the map
+        self.user_assets[user_id] = user_assets
+        return True
+        
+    @view
+    def get_user_assets(self, user_id):
+        if user_id not in self.user_assets:
+            return []
+            
+        # Get all assets for the user
+        user_assets = self.user_assets[user_id]
+        return [asset for asset in user_assets]
+```
+  :::tip
+
+  In Python, we create unique prefixes for nested collections by including the parent's identifier in the prefix string. The SDK also provides a `create_prefix_guard` utility to help manage prefixes.
+
+  :::
+
+  </TabItem>
 </Tabs>
 
 
 ---
 
 ## Error prone patterns
+
+Because the values are not kept in memory and are lazily loaded from storage, it's important to make sure if a collection is replaced or removed, that the storage is cleared. In addition, it is important that if the collection is modified, the collection itself is updated in state because most collections will store some metadata.
 
 Because the values are not kept in memory and are lazily loaded from storage, it's important to make sure if a collection is replaced or removed, that the storage is cleared. In addition, it is important that if the collection is modified, the collection itself is updated in state because most collections will store some metadata.
 

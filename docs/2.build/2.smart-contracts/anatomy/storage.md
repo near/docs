@@ -15,9 +15,9 @@ It is important to know that the account's **code** and account's **storage** ar
 
 <hr class="subsection" />
 
-<ExplainCode languages="js,rust" >
+<ExplainCode languages="js,rust,python" >
 
-<Block highlights='{"js": "3-6,10-13"}' fname="auction">
+<Block highlights='{"js": "3-6,10-13", "python": "3-6,10-14"}' fname="auction">
 
     ### Defining the State
     The attributes of the `class` marked as the contract define the data that will be stored.
@@ -45,7 +45,7 @@ It is important to know that the account's **code** and account's **storage** ar
 
 </Block>
 
-<Block highlights='{"js":"", "rust": ""}' fname="auction" type='info'>
+<Block highlights='{"js":"", "rust": "", "python": ""}' fname="auction" type='info'>
 
 :::warning
 
@@ -57,7 +57,7 @@ It currently costs ~**1Ⓝ** to store **100KB** of data.
 
 </Block>
 
-<Block highlights='{"js": "", "rust": ""}' fname="auction" >
+<Block highlights='{"js": "", "rust": "", "python": ""}' fname="auction" >
 
     ### Initializing the State
     After the contract is deployed, its state is empty and needs to be initialized with
@@ -69,7 +69,7 @@ It currently costs ~**1Ⓝ** to store **100KB** of data.
 
 </Block>
 
-<Block highlights='{"js": "8,15-20"}' fname="auction">
+<Block highlights='{"js": "8,15-20", "python": "16-30"}' fname="auction">
 
     ### I. Initialization Functions
     An option to initialize the state is to create an `initialization` function, which needs to be called before executing any other function.
@@ -80,11 +80,11 @@ It currently costs ~**1Ⓝ** to store **100KB** of data.
 
 </Block>
 
-<Block highlights='{"js": "10-13"}' fname="auction" type='info'>
+<Block highlights='{"python": "15-30", "js": "10-13"}' fname="auction" type='info'>
 
 :::warning
 
-In TS/JS you still **must** set default values for the attributes, so the SDK can infer their types.
+In Python, you need to manage the state initialization explicitly. The SDK doesn't enforce that initialization happens before other methods are called - you'll need to add your own checks if required.
 
 :::
 
@@ -101,7 +101,7 @@ In TS/JS you still **must** set default values for the attributes, so the SDK ca
 
 </Block>
 
-<Block highlights='{"js": "5"}' fname="hello">
+<Block highlights='{"js": "5", "python": "6-7"}' fname="hello">
 
     ### II. Default State
     Another option to initialize the state is to set default values for the attributes of the class.
@@ -127,7 +127,7 @@ In TS/JS you still **must** set default values for the attributes, so the SDK ca
 
 </Block>
 
-<Block highlights='{"js": "", "rust":""}' fname="hello">
+<Block highlights='{"js": "", "rust":"", "python": ""}' fname="hello">
 
     ### Lifecycle of the State
     When a function is called, the contract's state is loaded from the storage and put into memory.
@@ -138,7 +138,17 @@ In TS/JS you still **must** set default values for the attributes, so the SDK ca
 
 </Block>
 
-<Block highlights='{"js": "", "rust":""}' fname="hello" type='info'>
+<Block highlights='{"python": "5-17"}' fname="hello">
+
+    ### Manual Storage in Python
+    
+    In Python, the contract's state isn't automatically persisted. You need to explicitly use the Storage API or collections to save and load state.
+    
+    For instance, in the Hello World example, we can use instance attributes for in-memory state, but if we want to persist them between calls, we would need to use the Storage API.
+
+</Block>
+
+<Block highlights='{"js": "", "rust":"", "python": ""}' fname="hello" type='info'>
 
 :::warning State and Code
 
@@ -167,5 +177,72 @@ Make sure to read the [updating a contract](../release/upgrade.md) if you run in
 <File language="rust" fname="hello"
     url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
     start="2" end="32" />
+
+<File language="python" fname="auction">
+from near_sdk_py import view, call, init, Storage, Context
+from near_sdk_py.collections import UnorderedMap
+import time
+
+class Auction:
+    def __init__(self):
+        # State variables
+        self.auction_end = 0  # End time in milliseconds
+        self.highest_bid = {
+            "account_id": "",
+            "amount": 0
+        }
+        # Collections for persistent storage
+        self.bidders = UnorderedMap("b")
+        
+    @init
+    def initialize(self, duration_minutes):
+        """
+        Initialize the auction with a specified duration in minutes
+        """
+        # Calculate end time from current time plus duration
+        current_time_ms = time.time() * 1000
+        self.auction_end = current_time_ms + (duration_minutes * 60 * 1000)
+        
+        # Store the auction end time in persistent storage
+        Storage.set_json("auction_end", self.auction_end)
+        
+        # Initialize empty highest bid
+        Storage.set_json("highest_bid", self.highest_bid)
+        
+        return {
+            "auction_end": self.auction_end
+        }
+</File>
+
+<File language="python" fname="hello">
+from near_sdk_py import view, call, Storage
+
+class HelloNear:
+    def __init__(self):
+        # This is in-memory state
+        self.greeting = "Hello"
+        
+        # For persistent storage, we would use the Storage API:
+        # if not Storage.has("greeting"):
+        #     Storage.set_json("greeting", "Hello")
+    
+    @view
+    def get_greeting(self):
+        # For persistent storage, we would get:
+        # return Storage.get_json("greeting")
+        
+        # Using in-memory state for simplicity:
+        return self.greeting
+        
+    @call
+    def set_greeting(self, message):
+        # Update in-memory state
+        self.greeting = message
+        
+        # For persistent storage:
+        # Storage.set_json("greeting", message)
+        
+        return self.greeting
+</File>
 
 </ExplainCode>

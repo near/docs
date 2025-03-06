@@ -10,9 +10,9 @@ import {ExplainCode, Block, File} from '@site/src/components/CodeExplainer/code-
 
 Let's illustrate the basic anatomy of a simple "Hello World" contract. The code on this page comes from our [Hello NEAR repository](https://github.com/near-examples/hello-near-examples) on GitHub.
 
-<ExplainCode languages="js,rust" >
+<ExplainCode languages="js,rust,python" >
 
-<Block highlights='{"js": "1", "rust": "1"}' fname="hello-near">
+<Block highlights='{"js": "1", "rust": "1", "python": "1-2"}' fname="hello-near">
 
     ### Importing the SDK
     All contracts will import the **NEAR SDK**, enabling them to [access the execution environment](./environment.md), [call other contracts](./crosscontract.md), [transfer tokens](./actions.md), and much more.
@@ -21,7 +21,7 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
 
 </Block>
 
-<Block highlights='{"js": "5-22", "rust":"5-7,20-31"}' fname="hello-near">
+<Block highlights='{"js": "5-22", "rust":"5-7,20-31", "python": "5-17"}' fname="hello-near">
 
     ### Contract's Main Structure
     The contract is described through a structure:
@@ -41,6 +41,16 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
     4. If the contract needs to be initialized (we will cover this later)
 
     **Note:** Only one class can be decorated with the `@NearBindgen` decorator
+
+</Block>
+
+<Block highlights='{"python": "5"}' fname="hello-near">
+
+    ### Python Class Structure
+    
+    In Python, we use a class to define our contract. Unlike JavaScript or Rust, there isn't a specific decorator for the class itself. Instead, each method that should be exposed to the blockchain is decorated with the appropriate decorator (`@view`, `@call`, or `@init`).
+    
+    The contract's state is managed through instance variables and can be persisted using the Storage API or collections.
 
 </Block>
 
@@ -76,7 +86,7 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
 
 </Block>
 
-<Block highlights='{"js": "5", "rust": "6,10-16"}' fname="hello-near">
+<Block highlights='{"js": "5", "rust": "6,10-16", "python": "6-7"}' fname="hello-near">
 
     ### Storage (State)
     We call the data stored in the contract [the contract's state](./storage.md).
@@ -93,7 +103,16 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
 
 </Block>
 
-<Block highlights='{"js": "12-14", "rust": "22-24"}' fname="hello-near">
+<Block highlights='{"python": "15-17"}' fname="hello-near">
+
+    ### Method Decorators
+    
+    In Python, contract methods are decorated with `@view`, `@call`, or `@init` to define how they can be accessed.
+    These decorators handle input parsing and serializing return values automatically.
+
+</Block>
+
+<Block highlights='{"js": "12-14", "rust": "22-24", "python": "10-11"}' fname="hello-near">
 
     ### Read Only Functions
     Contract's functions can be read-only, meaning they don't modify the state. Calling them is free for everyone, and does not require to have a NEAR account.
@@ -102,7 +121,7 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
 
 </Block>
 
-<Block highlights='{"js": "17-20", "rust": "27-30"}' fname="hello-near">
+<Block highlights='{"js": "17-20", "rust": "27-30", "python": "13-14"}' fname="hello-near">
 
     ### State Mutating Functions
     Functions that modify the state or call other contracts are considered state mutating functions. It is necessary to have a NEAR account to call them, as they require a transaction to be sent to the network.
@@ -118,5 +137,27 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
 <File language="rust" fname="hello-near"
     url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
     start="2" end="32" />
+
+<File language="python" fname="hello-near">
+# Import the necessary components from the NEAR SDK
+from near_sdk_py import view, call, init, Storage
+
+# Define contract class
+class HelloNear:
+    def __init__(self):
+        # Initialize state with default greeting
+        self.greeting = "Hello"
+    
+    @view
+    def get_greeting(self):
+        """Returns the current greeting"""
+        return self.greeting
+    
+    @call
+    def set_greeting(self, message):
+        """Sets a new greeting"""
+        self.greeting = message
+        return self.greeting
+</File>
 
 </ExplainCode>
