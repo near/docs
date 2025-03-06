@@ -78,15 +78,45 @@ near login
 
 2. Deposit tokens to the `<my_validator>` staking pool:
 
+<Tabs groupId="cli-commands">
+  <TabItem value="Full">
+
 ```sh
-near call <my_validator> deposit '{}' --accountId <user-account.near> --amount 100
+near staking delegation solops2.testnet deposit-and-stake '1 NEAR' 01node.poolv1.near network-config mainnet sign-with-keychain
 ```
 
+```sh
+near contract call-function as-transaction my_validator deposit json-args {} prepaid-gas '30.0 Tgas' attached-deposit '100 NEAR' sign-as user-account.near network-config testnet sign-with-keychain send
+```
+
+  </TabItem>
+  <TabItem value="Short">
+
+```sh
+near call <my_validator> deposit '{}' --accountId <user-account.near> --deposit 100
+```
+
+  </TabItem>
+</Tabs>
+
 3. Stake the deposited tokens by calling the `stake` method:
+
+<Tabs groupId="cli-commands">
+  <TabItem value="Full">
+
+```sh
+near staking delegation solops2.testnet stake '1 NEAR' 01node.poolv1.near network-config mainnet sign-with-legacy-keychain
+```
+
+  </TabItem>
+  <TabItem value="Short">
 
 ```sh
 near call <my_validator> stake '{"amount": "100000000000000000000000000"}' --accountId <user-account.near>
 ```
+
+  </TabItem>
+</Tabs>
 
 :::tip Interactive CLI
 
@@ -102,9 +132,22 @@ near staking delegation
 
 Once the transaction is confirmed, your tokens are delegated to the staking pool.
 
+<Tabs groupId="cli-commands">
+  <TabItem value="Full">
+
+```sh
+near staking delegation <user-account.near> view-balance <my_validator> network-config mainnet now
+```
+
+  </TabItem>
+  <TabItem value="Short">
+
 ```sh
 near view <my_validator> get_account_staked_balance '{"account_id": "<user-account.near>"}'
 ```
+
+  </TabItem>
+</Tabs>
 
 :::info Using a wallet to check your staked tokens
 
@@ -121,17 +164,43 @@ The rewards are typically distributed periodically, and you will be able to see 
 
 To check your total balance on the `<my_validator>` pool:
 
+<Tabs groupId="cli-commands">
+  <TabItem value="Full">
+
+```sh
+near staking delegation <user-account.near> view-balance <my_validator> network-config mainnet now
+```
+
+  </TabItem>
+  <TabItem value="Short">
+
 ```sh
 near view <my_validator> get_account_total_balance '{"account_id": "<user-account.near>"}'
 ```
+
+  </TabItem>
+</Tabs>
 
 #### User staked balance
 
 To check your staked balance on the `<my_validator>` pool:
 
+<Tabs groupId="cli-commands">
+  <TabItem value="Full">
+
+```sh
+near staking delegation <user-account.near> view-balance <my_validator> network-config mainnet now
+```
+
+  </TabItem>
+  <TabItem value="Short">
+
 ```sh
 near view <my_validator> get_account_staked_balance '{"account_id": "<user-account.near>"}'
 ```
+
+  </TabItem>
+</Tabs>
 
 <details>
 <summary>Staking pool balances</summary>
@@ -181,29 +250,81 @@ To un-delegate the tokens:
 
 1. First execute the `unstake` method on the `<my_validator>` contract:
 
+<Tabs groupId="cli-commands">
+  <TabItem value="Full">
+
+```sh
+near staking delegation solops2.testnet unstake '1 NEAR' 01node.poolv1.near network-config mainnet sign-with-keychain
+```
+
+  </TabItem>
+  <TabItem value="Short">
+
 ```sh
 near call <my_validator> unstake '{"amount": "100000000000000000000000000"}' --accountId <user-account.near>
 ```
 
+  </TabItem>
+</Tabs>
+
 2. Check the unstaked balance for your `<user-account.near>` account:
+
+<Tabs groupId="cli-commands">
+  <TabItem value="Full">
+
+```sh
+near staking delegation <user-account.near> view-balance <my_validator> network-config mainnet now
+```
+
+  </TabItem>
+  <TabItem value="Short">
 
 ```sh
 near view <my_validator> get_account_unstaked_balance '{"account_id": "<user-account.near>"}'
 ```
 
+  </TabItem>
+</Tabs>
+
 3. After 4 epochs, check if you can withdraw:
+
+<Tabs groupId="cli-commands">
+  <TabItem value="Full">
+
+```sh
+near contract call-function as-read-only 01node.poolv1.near is_account_unstaked_balance_available json-args '{"account_id": "<user-account.near>"}' network-config mainnet now
+```
+
+  </TabItem>
+  <TabItem value="Short">
 
 ```sh
 near view <my_validator> is_account_unstaked_balance_available '{"account_id": "<user-account.near>"}'
 ```
 
+  </TabItem>
+</Tabs>
+
 If the Validator's response is `true`, then your tokens are ready for the last step.
 
 4. Finally, withdraw the unstaked tokens:
 
+<Tabs groupId="cli-commands">
+  <TabItem value="Full">
+
+```sh
+near staking delegation solops2.testnet withdraw '1 NEAR' 01node.poolv1.near network-config mainnet sign-with-keychain
+```
+
+  </TabItem>
+  <TabItem value="Short">
+
 ```sh
 near call <my_validator> withdraw '{"amount": "100000000000000000000000000"}' --accountId <user-account.near>
 ```
+
+  </TabItem>
+</Tabs>
 
 ---
 
