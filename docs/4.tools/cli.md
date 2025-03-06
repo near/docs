@@ -572,3 +572,55 @@ This will allow you to change or modify the network connections for your CLI.
 :::important
 We provide examples only of the most used commands. If you want to explore all options provided by `near-cli` use [the interactive mode](#interactive-mode).
 :::
+
+---
+
+## Validators
+
+:::tip
+To use these commands, you **must** install the CLI [validator extension](#validator-extension).
+:::
+
+You can use the following commands to interact with the blockchain and view validator stats. There are three reports used to monitor validator status:
+
+### Proposals
+
+A proposal by a validator indicates they would like to enter the validator set, in order for a proposal to be accepted it must meet the minimum seat price.
+
+<Tabs groupId="cli-commands">
+  <TabItem value="Full">
+
+```sh
+near-validator proposals network-config mainnet
+```
+
+  </TabItem>
+</Tabs>
+
+### Current Validators
+
+This shows a list of active validators in the current epoch, the number of blocks produced, number of blocks expected, and online rate. Used to monitor if a validator is having issues.
+
+<Tabs groupId="cli-commands">
+  <TabItem value="Full">
+
+```sh
+near-validator validators network-config mainnet now
+```
+
+  </TabItem>
+</Tabs>
+
+### Next Validators
+
+This shows validators whose proposal was accepted one epoch ago, and that will enter the validator set in the next epoch.
+
+<Tabs groupId="cli-commands">
+  <TabItem value="Full">
+
+```sh
+near-validator validators network-config mainnet next
+```
+
+  </TabItem>
+</Tabs>
