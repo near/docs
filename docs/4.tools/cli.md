@@ -583,6 +583,10 @@ To use these commands, you **must** install the CLI [validator extension](#valid
 
 You can use the following commands to interact with the blockchain and view validator stats. There are three reports used to monitor validator status:
 
+- [Proposals](#proposals)
+- [Current validators](#current-validators)
+- [Next validators](#next-validators)
+
 ### Proposals
 
 A proposal by a validator indicates they would like to enter the validator set, in order for a proposal to be accepted it must meet the minimum seat price.
@@ -620,6 +624,52 @@ This shows validators whose proposal was accepted one epoch ago, and that will e
 
 ```sh
 near-validator validators network-config mainnet next
+```
+
+  </TabItem>
+</Tabs>
+
+### Staking
+
+For validators, there's also an option to stake NEAR tokens without deploying a staking pool smart contract.
+
+#### View validator stake
+
+To view the validator's stake on the last block, you need to enter in the terminal command line:
+
+<Tabs groupId="cli-commands">
+  <TabItem value="Full">
+
+```sh
+near-validator staking view-stake examples.testnet network-config testnet now
+```
+
+  </TabItem>
+</Tabs>
+
+#### Stake directly without a staking pool
+
+To stake the amount you must enter in the terminal command line:
+
+<Tabs groupId="cli-commands">
+  <TabItem value="Full">
+
+```sh
+near-validator staking stake-proposal examples.testnet ed25519:AiEo5xepXjY7ChihZJ6AsfoDAaUowhPgvQp997qnFuRP '1500 NEAR' network-config testnet sign-with-keychain send
+```
+
+  </TabItem>
+</Tabs>
+
+#### Unstake directly without a staking pool
+
+To unstake you must enter in the terminal command line:
+
+<Tabs groupId="cli-commands">
+  <TabItem value="Full">
+
+```sh
+near-validator staking unstake-proposal examples.testnet ed25519:AiEo5xepXjY7ChihZJ6AsfoDAaUowhPgvQp997qnFuRP network-config testnet sign-with-keychain send
 ```
 
   </TabItem>
