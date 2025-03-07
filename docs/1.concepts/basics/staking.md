@@ -53,6 +53,13 @@ Before delegating, you need to choose a validator (a node that participates in s
 Once you select a validator and the stake transaction is confirmed, your tokens are delegated to the staking pool.
 You will start earning staking rewards after the next epoch (approximately 12 hours).
 
+:::info Delegation without a staking pool
+
+For validators, there's also an option to stake NEAR tokens without deploying a staking pool smart contract.
+Check [this section](../../4.tools/cli.md#staking) to learn how to stake using the [`near-validator`](../../4.tools/cli.md#validator-extension) CLI.
+
+:::
+
 ### Selecting a Staking Pool
 
 Use [NearBlocks](https://nearblocks.io/node-explorer), [Pikespeak](https://pikespeak.ai/validators/overview) or [Near Staking](https://near-staking.com/) to find a validator and their staking pool.
