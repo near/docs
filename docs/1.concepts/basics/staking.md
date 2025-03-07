@@ -73,6 +73,12 @@ Look for validators with a good track record, uptime, and reasonable commission 
 
 :::
 
+If you prefer, you can get the list of current validators by using the [`near-validator`](../../4.tools/cli.md#validator-extension) CLI:
+
+```sh
+near-validator validators network-config mainnet now
+```
+
 ### Staking using CLI
 
 Once you have chosen a validator you want to delegate your tokens to, follow these steps to stake them using the NEAR CLI:
