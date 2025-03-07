@@ -138,26 +138,5 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
     url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
     start="2" end="32" />
 
-<File language="python" fname="hello-near">
-# Import the necessary components from the NEAR SDK
-from near_sdk_py import view, call, init, Storage
-
-# Define contract class
-class HelloNear:
-    def __init__(self):
-        # Initialize state with default greeting
-        self.greeting = "Hello"
-    
-    @view
-    def get_greeting(self):
-        """Returns the current greeting"""
-        return self.greeting
-    
-    @call
-    def set_greeting(self, message):
-        """Sets a new greeting"""
-        self.greeting = message
-        return self.greeting
-</File>
-
+<File language="python" fname="hello-near" url="https://github.com/r-near/near-py-examples/blob/main/hello-near.py" start="2" end="32" />
 </ExplainCode>
