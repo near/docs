@@ -72,18 +72,28 @@ Once you have chosen a validator you want to delegate your tokens to, follow the
 
 1. Connect your wallet to the CLI and ensure you have NEAR tokens to delegate.
 
+<Tabs groupId="cli-commands">
+  <TabItem value="Full">
+
+```sh
+near account import-account using-web-wallet network-config mainnet
+```
+
+  </TabItem>
+  <TabItem value="Short">
+
 ```sh
 near login
 ```
+
+  </TabItem>
+</Tabs>
+
 
 2. Deposit tokens to the `<my_validator>` staking pool:
 
 <Tabs groupId="cli-commands">
   <TabItem value="Full">
-
-```sh
-near staking delegation <user-account.near> deposit-and-stake '1 NEAR' <my_validator> network-config mainnet sign-with-keychain
-```
 
 ```sh
 near contract call-function as-transaction <my_validator> deposit json-args {} prepaid-gas '30.0 Tgas' attached-deposit '100 NEAR' sign-as <user-account.near> network-config testnet sign-with-keychain send
@@ -105,7 +115,7 @@ near call <my_validator> deposit '{}' --accountId <user-account.near> --deposit 
   <TabItem value="Full">
 
 ```sh
-near staking delegation <user-account.near> stake '1 NEAR' <my_validator> network-config mainnet sign-with-keychain
+near staking delegation <user-account.near> stake '100 NEAR' <my_validator> network-config mainnet sign-with-keychain
 ```
 
   </TabItem>
