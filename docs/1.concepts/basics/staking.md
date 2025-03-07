@@ -82,11 +82,11 @@ near login
   <TabItem value="Full">
 
 ```sh
-near staking delegation solops2.testnet deposit-and-stake '1 NEAR' 01node.poolv1.near network-config mainnet sign-with-keychain
+near staking delegation <user-account.near> deposit-and-stake '1 NEAR' <my_validator> network-config mainnet sign-with-keychain
 ```
 
 ```sh
-near contract call-function as-transaction my_validator deposit json-args {} prepaid-gas '30.0 Tgas' attached-deposit '100 NEAR' sign-as user-account.near network-config testnet sign-with-keychain send
+near contract call-function as-transaction <my_validator> deposit json-args {} prepaid-gas '30.0 Tgas' attached-deposit '100 NEAR' sign-as <user-account.near> network-config testnet sign-with-keychain send
 ```
 
   </TabItem>
@@ -105,7 +105,7 @@ near call <my_validator> deposit '{}' --accountId <user-account.near> --deposit 
   <TabItem value="Full">
 
 ```sh
-near staking delegation solops2.testnet stake '1 NEAR' 01node.poolv1.near network-config mainnet sign-with-legacy-keychain
+near staking delegation <user-account.near> stake '1 NEAR' <my_validator> network-config mainnet sign-with-keychain
 ```
 
   </TabItem>
@@ -254,7 +254,7 @@ To un-delegate the tokens:
   <TabItem value="Full">
 
 ```sh
-near staking delegation solops2.testnet unstake '1 NEAR' 01node.poolv1.near network-config mainnet sign-with-keychain
+near staking delegation <user-account.near> unstake '1 NEAR' <my_validator> network-config mainnet sign-with-keychain
 ```
 
   </TabItem>
@@ -292,7 +292,7 @@ near view <my_validator> get_account_unstaked_balance '{"account_id": "<user-acc
   <TabItem value="Full">
 
 ```sh
-near contract call-function as-read-only 01node.poolv1.near is_account_unstaked_balance_available json-args '{"account_id": "<user-account.near>"}' network-config mainnet now
+near contract call-function as-read-only <my_validator> is_account_unstaked_balance_available json-args '{"account_id": "<user-account.near>"}' network-config mainnet now
 ```
 
   </TabItem>
@@ -313,7 +313,7 @@ If the Validator's response is `true`, then your tokens are ready for the last s
   <TabItem value="Full">
 
 ```sh
-near staking delegation solops2.testnet withdraw '1 NEAR' 01node.poolv1.near network-config mainnet sign-with-keychain
+near staking delegation <user-account.near> withdraw '1 NEAR' <my_validator> network-config mainnet sign-with-keychain
 ```
 
   </TabItem>
