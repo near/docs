@@ -14,7 +14,7 @@ Smart contracts expose functions so users can interact with them. There are diff
 
 <ExplainCode languages="js,rust,python">
 
-<Block highlights='{"js": "16-20,23-42,45-50,53-55,58-60", "rust": "24-34,37-62,64-75,77-79,81-83", "python": "10-12,14-22,24-32,34-36,38-40"}' fname="auction">
+<Block highlights='{"js": "16-20,23-42,45-50,53-55,58-60", "rust": "24-34,37-62,64-75,77-79,81-83", "python": "10,31,64,89,94"}' fname="auction">
 
 ### Contract's Interface
 
@@ -45,7 +45,7 @@ impl MyTrait for MyContractStructure {
 
 </Block>
 
-<Block highlights='{"js":"15-20", "rust": "22-34", "python": "14-22"}' fname="auction">
+<Block highlights='{"js":"15-20", "rust": "22-34", "python": "9-28"}' fname="auction">
 
 ### Initialization Functions
 A contract can opt to have an initialization function. If present, this function must be called before any other to [initialize the contract](./storage.md).
@@ -66,14 +66,14 @@ The initialization function is marked with the `#[init]` macro.
 
 </Block>
 
-<Block highlights='{"python": "14"}' fname="auction">
+<Block highlights='{"python": "9"}' fname="auction">
 
 #### `@init`
 The initialization function is marked with the `@init` decorator in Python.
 
 </Block>
 
-<Block highlights='{"js":"22-42,44-50", "rust": "37-62,64-75", "python": "24-32"}' fname="auction">
+<Block highlights='{"js":"22-42,44-50", "rust": "37-62,64-75", "python": "31-61,64-86"}' fname="auction">
 
 ### State Changing Functions
 The functions that modify the [state](./storage.md) or perform [actions](./actions.md) need to be called by a user with a NEAR account, since a transaction is required to execute them.
@@ -94,7 +94,7 @@ State changing functions are those that take a **mutable** reference to `self` i
 
 </Block>
 
-<Block highlights='{"python": "24"}' fname="auction">
+<Block highlights='{"python": "30,63"}' fname="auction">
 
 #### `@call`
 State changing functions are marked with the `@call` decorator in Python.
@@ -111,7 +111,7 @@ The SDK provides [contextual information](./environment.md), such as which accou
 
 </Block>
 
-<Block highlights='{"js":"52-55,57-60", "rust": "77-79,81-83", "python": "34-36,38-40"}' fname="auction">
+<Block highlights='{"js":"52-55,57-60", "rust": "77-79,81-83", "python": "89-91,94-96"}' fname="auction">
 
 ### Read-Only Functions
 Contract's functions can be read-only, meaning they don't modify the state. Calling them is free for everyone, and does not require to have a NEAR account.
@@ -132,14 +132,14 @@ Read-only functions are those that take an **immutable** reference to `self` in 
 
 </Block>
 
-<Block highlights='{"python": "34,38"}' fname="auction">
+<Block highlights='{"python": "88,93"}' fname="auction">
 
 #### `@view`
 Read-only functions are marked with the `@view` decorator in Python.
 
 </Block>
 
-<Block highlights='{"js":"15", "rust": "23", "python": "14-22"}' fname="auction">
+<Block highlights='{"js":"15", "rust": "23", "python": "2"}' fname="auction">
 
 ### Private Functions
 Many times you will want to have functions that **are exposed** as part of the contract's interface, but **should not be called directly** by users.
@@ -164,14 +164,14 @@ Private functions are marked using the `#[private]` macro in Rust.
 
 </Block>
 
-<Block highlights='{"python": "25"}' fname="auction">
+<Block highlights='{"python": "2"}' fname="auction">
 
 #### Private Functions in Python
 In Python, you can create callbacks by using the `@callback` decorator, which is designed specifically for handling cross-contract call results. For general private functions that should only be called by the contract, you can use validation inside the function to check that the caller is the contract itself.
 
 </Block>
 
-<Block highlights='{"js":"22,28", "rust": "36,45", "python": "24"}' fname="auction">
+<Block highlights='{"js":"22,28", "rust": "36,45", "python": "30"}' fname="auction">
 
 ### Payable Functions
 By default, functions will panic if the user attaches NEAR Tokens to the call. Functions that accept NEAR Tokens must be marked as `payable`.
@@ -194,7 +194,7 @@ Payable functions are marked using the `#[payable]` macro in Rust.
 
 </Block>
 
-<Block highlights='{"python": "24"}' fname="auction">
+<Block  fname="auction">
 
 #### Handling payments in Python
 In Python, you need to check the deposit manually using the Context API. There isn't a specific decorator for payable functions, so you'll need to verify the deposit amount in your function code.
@@ -223,7 +223,7 @@ To create internal private methods in a Rust contract, do not declare them as pu
 
 </Block>
 
-<Block highlights='{"python": "3-5"}' fname="example">
+<Block highlights='{"python": "2-5"}' fname="example">
 
 ### Internal Functions
 All the functions we covered so far are part of the interface, meaning they can be called by an external actor.
@@ -260,8 +260,7 @@ To create internal private methods in a Python contract, simply define normal me
 
 </Block>
 
-
-<Block highlights='{"rust": "9-11,13-15", "python": "11-13"}' fname="example">
+<Block highlights='{"rust": "9-11,13-15", "python": "12-15"}' fname="example">
 
 ### Pure Functions
 Pure functions are a special kind of function that do not require to access data from the state.
@@ -274,72 +273,7 @@ They are useful to return hardcoded values on the contract.
 
 <File language="rust" fname="auction" url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs" start="2" end="84" />
 
-<File language="python" fname="auction">
-from near_sdk_py import view, call, init, Context, Log
-import time
-
-class Auction:
-    def __init__(self):
-        # Initialize state variables
-        self.auction_end = 0  # Time when auction ends
-        self.highest_bid = {
-            "account_id": "",
-            "amount": 0
-        }
-    
-    @init
-    def initialize(self, duration_minutes):
-        """
-        Initializes the auction with a duration in minutes.
-        
-        This function must be called first.
-        """
-        current_time_ms = time.time() * 1000
-        self.auction_end = current_time_ms + (duration_minutes * 60 * 1000)
-        return {"auction_end": self.auction_end}
-    
-    @call
-    def place_bid(self):
-        """
-        Places a bid in the auction.
-        
-        The bid amount is taken from the attached deposit.
-        """
-        deposit = Context.attached_deposit()
-        predecessor = Context.predecessor_account_id()
-        
-        current_time_ms = time.time() * 1000
-        if current_time_ms > self.auction_end:
-            raise Exception("Auction has ended")
-            
-        if deposit <= self.highest_bid["amount"]:
-            raise Exception("Bid is not higher than current highest bid")
-            
-        # Update highest bid
-        self.highest_bid = {
-            "account_id": predecessor,
-            "amount": deposit
-        }
-        
-        Log.info(f"New highest bid: {deposit} from {predecessor}")
-        return self.highest_bid
-    
-    @view
-    def get_highest_bid(self):
-        """Returns the current highest bid information"""
-        return self.highest_bid
-    
-    @view
-    def get_auction_status(self):
-        """Returns the current auction status"""
-        current_time_ms = time.time() * 1000
-        return {
-            "ended": current_time_ms > self.auction_end,
-            "end_time": self.auction_end,
-            "current_time": current_time_ms,
-            "highest_bid": self.highest_bid
-        }
-</File>
+<File language="python" fname="auction" url="https://github.com/r-near/near-py-examples/blob/main/auction.py" start="2" end="140" />
 
 <CodeBlock language="js" fname="example">
 
@@ -395,12 +329,12 @@ class Contract:
         # This function cannot be called from the outside
         # as it has no decorator
         pass
-        
+
+    @call
     def validate_owner(self):
-        # Another internal helper
         if Context.predecessor_account_id() != self.owner_id:
             raise Exception("Only the owner can call this method")
-    
+
     @view
     def get_static_value(self):
         # This function returns a hardcoded value
