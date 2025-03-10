@@ -510,6 +510,13 @@ const sidebar = {
         "tutorials/intents/withdraw",
       ]
     },
+    {
+      "Controlling Near accounts": [
+        "tutorials/controlling-near-accounts/introduction",
+        "tutorials/controlling-near-accounts/setup",
+        "tutorials/controlling-near-accounts/transfer",
+      ]
+    }
   ],
   "tools": [
     "tools/welcome",
