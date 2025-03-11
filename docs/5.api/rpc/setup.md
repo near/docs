@@ -23,7 +23,7 @@ In order to use the RPC API you will need to setup the correct RPC endpoints.
 <hr className="subsection" />
 
 ## Querying Historical Data
-Querying historical data (older than 5 [epochs](../../1.concepts/basics/epoch.md) or ~2.5 days), you may get responses that the data is not available anymore. In that case, archival RPC nodes will come to your rescue:
+Querying historical data (older than 5 [epochs](../../protocol/network/epoch.md) or ~2.5 days), you may get responses that the data is not available anymore. In that case, archival RPC nodes will come to your rescue:
 
 - mainnet `https://archival-rpc.mainnet.near.org`
 - testnet `https://archival-rpc.testnet.near.org`

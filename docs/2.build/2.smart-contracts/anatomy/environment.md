@@ -130,7 +130,7 @@ The `timestamp` attribute represents the approximated **UNIX timestamp** in **na
 
 ### Current Epoch
 
-The NEAR blockchain groups blocks in [Epochs](../../../1.concepts/basics/epoch.md). The `current_epoch` attribute measures how many epochs have passed so far. It is very useful to coordinate with other contracts that measure time in epochs, such as the [validators](../../../1.concepts/basics/validators.md).
+The NEAR blockchain groups blocks in [Epochs](../../../protocol/network/epoch.md). The `current_epoch` attribute measures how many epochs have passed so far. It is very useful to coordinate with other contracts that measure time in epochs, such as the [validators](../../../protocol/network/validators.md).
 
 ### Block Index
 

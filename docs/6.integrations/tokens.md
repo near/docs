@@ -150,7 +150,7 @@ Decoded result in this case is:
 
 To follow this guide, please check the [step by step instructions](/integrations/create-transactions#low-level----create-a-transaction) on how to create a transaction first.
 
-In order to send a fungible token to an account, the receiver must have a storage deposit. This is because each smart contract on NEAR must account for storage used, and each account on a fungible token contract is a key-value pair, taking up a small amount of storage. For more information, please see [how storage works in NEAR](/concepts/storage/storage-staking). To check if account has deposited the storage for this FT do the following:
+In order to send a fungible token to an account, the receiver must have a storage deposit. This is because each smart contract on NEAR must account for storage used, and each account on a fungible token contract is a key-value pair, taking up a small amount of storage. For more information, please see [how storage works in NEAR](/protocol/storage/storage-staking). To check if account has deposited the storage for this FT do the following:
 
 Get storage balance of the account. `storage_balance_of` function returns the amount of deposited storage or `null` if there is no deposit.
   - using NEAR CLI:

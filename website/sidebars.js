@@ -38,20 +38,23 @@ const sidebar = {
           ]
         },
         {
-          "Tokens": ["concepts/basics/tokens", "concepts/basics/token-loss"]
+          "Tokens": [
+             "protocol/network/tokens",
+             "protocol/network/token-loss"
+          ]
         },
         {
           "Storage": [
-            "concepts/storage/storage-staking",
-            "concepts/storage/storage-solutions"
+            "protocol/storage/storage-staking",
+            "protocol/storage/storage-solutions"
           ]
         },
         {
           "Network": [
-            "concepts/basics/validators",
-            "concepts/basics/networks",
-            "concepts/basics/epoch",
-            "concepts/basics/runtime",
+            "protocol/network/validators",
+            "protocol/network/networks",
+            "protocol/network/epoch",
+            "protocol/network/runtime",
           ]
         },
       ]
@@ -259,7 +262,7 @@ const sidebar = {
             },
           ]
         },
-        "concepts/basics/staking",
+        "protocol/network/staking",
         "build/primitives/linkdrop",
         "build/primitives/oracles",
         "build/primitives/dao",

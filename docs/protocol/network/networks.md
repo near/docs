@@ -6,9 +6,9 @@ sidebar_label: Networks
 
 NEAR Protocol operates on several networks each operating with their own independent validators and unique state. These networks are as follows:
 
-- [`mainnet`](/concepts/basics/networks#mainnet)
-- [`testnet`](/concepts/basics/networks#testnet)
-- [`localnet`](/concepts/basics/networks#localnet)
+- [`mainnet`](/protocol/network/networks#mainnet)
+- [`testnet`](/protocol/network/networks#testnet)
+- [`localnet`](/protocol/network/networks#localnet)
 
 ## Mainnet {#mainnet}
 

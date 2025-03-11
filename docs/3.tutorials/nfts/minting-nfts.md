@@ -43,7 +43,7 @@ The [InterPlanetary File System](https://ipfs.io/) (IPFS) is a protocol and peer
 
 ### Uploading the image {#uploading-the-image}
 
-To upload the NFT image, you should use a [decentralized storage](/concepts/storage/storage-solutions) provider such as IPFS.
+To upload the NFT image, you should use a [decentralized storage](/protocol/storage/storage-solutions) provider such as IPFS.
 
 :::note
 This example uses IPFS, but you could use a different solution like Filecoin, Arweave, or a regular centralized Web2 hosting.

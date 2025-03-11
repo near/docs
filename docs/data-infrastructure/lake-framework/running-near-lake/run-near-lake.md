@@ -132,7 +132,7 @@ $ aws s3 --no-sign-request cp --no-sign-request --recursive s3://near-protocol-p
 
 It's not necessary but in order to index everything in the network it is better to do it from the genesis.
 `nearcore` node is running in non-archival mode by default. That means that the node keeps data only
-for [5 last epochs](https://docs.near.org/concepts/basics/epoch). In order to index data from the genesis
+for [5 last epochs](https://docs.near.org/protocol/network/epoch). In order to index data from the genesis
 you need to turn the node in archival mode.
 
 To do it you need to update `config.json` located in `--home-dir` (by default it is `~/.near`).

@@ -486,7 +486,7 @@ There are two scenarios in which you can use the `delete_account` action:
 </Tabs>
 
 :::warning Token Loss
-If the beneficiary account does not exist the funds will be [**dispersed among validators**](../../../1.concepts/basics/token-loss.md).
+If the beneficiary account does not exist the funds will be [**dispersed among validators**](../../../protocol/network/token-loss.md).
 :::
 
 :::warning Token Loss
