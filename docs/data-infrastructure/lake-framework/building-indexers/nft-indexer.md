@@ -171,7 +171,7 @@ async function handleStreamerMessage(
 
 ## Events and where to catch them
 
-First of all let's find out where we can catch the Events. We hope you are familiar with how the [Data Flow in NEAR Blockchain](/concepts/data-flow/near-data-flow), but let's revise our knowledge:
+First of all let's find out where we can catch the Events. We hope you are familiar with how the [Data Flow in NEAR Blockchain](/protocol/data-flow/near-data-flow), but let's revise our knowledge:
 - Mint an NFT is an action in an NFT contract (doesn't matter which one)
 - Actions are located in a [Receipt](/data-infrastructure/lake-data-structures/receipt)
 - A result of the Receipt execution is [ExecutionOutcome](/data-infrastructure/lake-data-structures/execution-outcome)

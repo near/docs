@@ -33,8 +33,8 @@ const sidebar = {
         },
         {
           "Data Flow": [
-            "concepts/data-flow/near-data-flow",
-            "concepts/data-flow/token-transfer-flow"
+            "protocol/data-flow/near-data-flow",
+            "protocol/data-flow/token-transfer-flow"
           ]
         },
         {
