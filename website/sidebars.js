@@ -15,20 +15,20 @@ const sidebar = {
         {
           type: 'category',
           label: 'Accounts / Contracts',
-          link: { type: 'doc', id: 'concepts/protocol/account-model' },
+          link: { type: 'doc', id: 'protocol/account-model' },
           items: [
-            "concepts/protocol/account-id",
-            "concepts/protocol/access-keys",
+            "protocol/account-id",
+            "protocol/access-keys",
           ]
         },
         {
           type: 'category',
           label: 'Transactions',
-          link: { type: 'doc', id: 'concepts/protocol/transactions' },
+          link: { type: 'doc', id: 'protocol/transactions' },
           items: [
-            "concepts/protocol/transaction-anatomy",
-            "concepts/protocol/gas",
-            "concepts/protocol/transaction-execution",
+            "protocol/transaction-anatomy",
+            "protocol/gas",
+            "protocol/transaction-execution",
           ]
         },
         {

@@ -277,7 +277,7 @@ operation if necessary.
 
 You can call multiple functions in the same external contract, which is known as a **batch call**.
 
-An important property of batch calls is that they **act as a unit**: they execute in the same [receipt](/concepts/protocol/transaction-execution#receipts--finality), and if **any function fails**, then they **all get reverted**.
+An important property of batch calls is that they **act as a unit**: they execute in the same [receipt](/protocol/transaction-execution#receipts--finality), and if **any function fails**, then they **all get reverted**.
 
 <Tabs>
   <TabItem value="js" label="🌐 JavaScript">

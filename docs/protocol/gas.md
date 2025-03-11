@@ -12,7 +12,7 @@ On every transaction the NEAR network charges a tiny fee known as **gas**. This 
 3. **Incentivize developers** by giving contracts 30% of the gas they burn while executing
 4. Implement a **wall time** by capping transactions to `300Tgas` (~`300ms` of compute time)
 
-Gas in NEAR is computed on [**gas units**](/concepts/protocol/gas#gas-units) and charged using $NEAR tokens based on the network's [**gas price**](/concepts/protocol/gas#gas-price).
+Gas in NEAR is computed on [**gas units**](/protocol/gas#gas-units) and charged using $NEAR tokens based on the network's [**gas price**](/protocol/gas#gas-price).
 
 :::tip Did you know?
 In NEAR, attaching extra gas to a transaction does **not** make it faster. Actions cost a fixed amount of gas, and any extra gas attached is simply sent back to the user

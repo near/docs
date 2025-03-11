@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 
 ## Introduction {#introduction}
 
-Please see the [documentation for accounts](/concepts/protocol/account-model) for basic information.
+Please see the [documentation for accounts](/protocol/account-model) for basic information.
 
 - For exchanges, NEAR supports [implicit account](https://nomicon.io/DataStructures/Account.html#implicit-account-ids) creation which allows the creation of accounts without paying for transactions.
 - You can create an implicit account by following the steps in [this guide](/integrations/implicit-accounts).

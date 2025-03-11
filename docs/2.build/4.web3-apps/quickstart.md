@@ -89,7 +89,7 @@ Our app's template is defined at `./src/pages/_app.js`. It does two things:
 
 <Github url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/_app.js" language="jsx" start="22" end="48" />
 
-When initializing the wallet-selector you can choose to **create a [Function-Call Key](../../1.concepts/protocol/access-keys.md)** using the `createAccessKeyFor` parameter. This allows the application to sign `non-payable` methods on behalf of the user so they are not required to manually sign each transaction.
+When initializing the wallet-selector you can choose to **create a [Function-Call Key](../../protocol/access-keys.md)** using the `createAccessKeyFor` parameter. This allows the application to sign `non-payable` methods on behalf of the user so they are not required to manually sign each transaction.
 
 ```jsx
 const walletSelectorConfig = {

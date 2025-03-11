@@ -26,7 +26,7 @@ This example showcases a simplified version of the contract that both [Keypom](h
 
 The contract exposes 3 methods to create drops of NEAR tokens, FT, and NFT. To claim the tokens, the contract exposes two methods, one to claim in an existing account, and another that will create a new account and claim the tokens into it.
 
-This contract leverages NEAR unique feature of [FunctionCall keys](../../1.concepts/protocol/access-keys.md), which allows the contract to create new accounts and claim tokens on behalf of the user.
+This contract leverages NEAR unique feature of [FunctionCall keys](../../protocol/access-keys.md), which allows the contract to create new accounts and claim tokens on behalf of the user.
 
 Imagine Alice want to drop some NEAR to Bob:
 
@@ -106,7 +106,7 @@ Notice that in this example implementation users cannot mix drops. This is, you 
 
 ## Create a drop
 
-All `create` start by checking that the user deposited enough funds to create the drop, and then proceed to add the access keys to the contract's account as [FunctionCall Keys](../../1.concepts/protocol/access-keys.md).
+All `create` start by checking that the user deposited enough funds to create the drop, and then proceed to add the access keys to the contract's account as [FunctionCall Keys](../../protocol/access-keys.md).
 
 <Tabs>
 

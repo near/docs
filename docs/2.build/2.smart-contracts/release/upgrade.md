@@ -14,7 +14,7 @@ Contract's can be updated in two ways:
 1. **Through tools** such as [NEAR CLI](../../../4.tools/cli.md) or the
    [NEAR API](../../../4.tools/near-api.md) (if you hold
    the account's
-   [full access key](../../../1.concepts/protocol/access-keys.md)).
+   [full access key](../../../protocol/access-keys.md)).
 2. **Programmatically**, by implementing a method that
    [takes the new code and deploys it](#programmatic-update).
 

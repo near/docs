@@ -13,9 +13,9 @@ In this article we're going to have a look at the same data flow, but in detail 
 
 You may be asking what was missing in the previous explanation. The short answer is: **Gas Refunds** or simply **Refunds**.
 
-If you don't know what **Gas** is, please [first read the article about Gas](https://docs.near.org/concepts/protocol/gas) from our docs.
+If you don't know what **Gas** is, please [first read the article about Gas](https://docs.near.org/protocol/gas) from our docs.
 
-As for *Refunds*, here's a quote from the [Gas](https://docs.near.org/concepts/protocol/gas) article:
+As for *Refunds*, here's a quote from the [Gas](https://docs.near.org/protocol/gas) article:
 
 > Attach extra gas; get refunded!
 >
@@ -25,7 +25,7 @@ As for *Refunds*, here's a quote from the [Gas](https://docs.near.org/concepts/p
 >
 > ...
 >
-> *From NEAR Protocol docs [Gas. Attach extra gas; get refunded!](https://docs.near.org/concepts/protocol/gas#attach-extra-gas-get-refunded)*
+> *From NEAR Protocol docs [Gas. Attach extra gas; get refunded!](https://docs.near.org/protocol/gas#attach-extra-gas-get-refunded)*
 
 
 :::note What refunds mean in terms of data flow

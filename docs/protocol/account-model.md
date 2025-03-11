@@ -4,7 +4,7 @@ title: NEAR Accounts
 sidebar_label: Overview
 ---
 
-Users participate in the NEAR ecosystem through their NEAR accounts. These accounts are identified by a [unique address](./account-id.md), can optionally hold a [smart contract](../../2.build/2.smart-contracts/what-is.md), and are controlled through [Access Keys](./access-keys.md).
+Users participate in the NEAR ecosystem through their NEAR accounts. These accounts are identified by a [unique address](./account-id.md), can optionally hold a [smart contract](../2.build/2.smart-contracts/what-is.md), and are controlled through [Access Keys](./access-keys.md).
 
 By signing [transactions](./transactions.md) with their account, users can:
 
@@ -19,7 +19,7 @@ You have multiple ways to create an account, you can [sign-up using your email](
 
 ---
 
-## Account Model Overview 
+## Account Model Overview
 
 Let's take a closer look at the different elements that compose the NEAR account model.
 
@@ -36,8 +36,8 @@ NEAR accounts can have multiple [keys](access-keys.md), each with their own set 
 - You can easily swap keys if one gets compromised
 - You can use keys as authorization tokens for third-party applications
 
-#### [Simple to Develop Smart Contracts](../../2.build/2.smart-contracts/what-is.md)
-NEAR accounts can optionally hold an application - known as a [smart contract](../../2.build/2.smart-contracts/what-is.md) - which can be written in Javascript or Rust.
+#### [Simple to Develop Smart Contracts](../2.build/2.smart-contracts/what-is.md)
+NEAR accounts can optionally hold an application - known as a [smart contract](../2.build/2.smart-contracts/what-is.md) - which can be written in Javascript or Rust.
 
 ---
 

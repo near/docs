@@ -139,7 +139,7 @@ You can find the entire Wallet Selector [API reference here](https://github.com/
 
 #### Optional: `createAccessKeyFor`
 
-When initializing the wallet-selector, you can choose to **create a [Function-Call Key](/concepts/protocol/access-keys#function-call-keys)** using the `createAccessKeyFor` parameter.
+When initializing the wallet-selector, you can choose to **create a [Function-Call Key](/protocol/access-keys#function-call-keys)** using the `createAccessKeyFor` parameter.
 
 By creating this key, your dApp will be able to **automatically sign non-payable transactions** on behalf of the user for specified contract.
 
@@ -192,7 +192,7 @@ When the user clicks the `login` button, they will be asked to select a wallet a
 
 ### Function Call Key
 
-If you instantiated the `wallet-selector` passing an account id for the `createAccessKeyFor` parameter, then the wallet will create a [Function-Call Key](/concepts/protocol/access-keys#function-call-keys) and store it in the web's local storage.
+If you instantiated the `wallet-selector` passing an account id for the `createAccessKeyFor` parameter, then the wallet will create a [Function-Call Key](/protocol/access-keys#function-call-keys) and store it in the web's local storage.
 
 ```js
 const walletSelectorConfig = {
@@ -359,7 +359,7 @@ function formatAmount(amount) {
 NEAR API JS does not limit itself to simply calling methods in a contract. In fact, you can use it to transform your web-app into a rich user experience. While we will not cover these topics in depth, it is important for you to know that with NEAR API JS you can also:
 
 - **[Sign and verify messages](./backend/backend.md)**: this is very useful for proving that a message was created by the user.
-- **[Create batch transactions](https://github.com/near/near-api-js/tree/master/packages/cookbook/transactions/batch-transactions.ts)**: this enables to link multiple [actions](../../1.concepts/protocol/transaction-anatomy.md#actions) (e.g. multiple function calls). If one of the transactions fails, then they are all reverted.
+- **[Create batch transactions](https://github.com/near/near-api-js/tree/master/packages/cookbook/transactions/batch-transactions.ts)**: this enables to link multiple [actions](../../protocol/transaction-anatomy.md#actions) (e.g. multiple function calls). If one of the transactions fails, then they are all reverted.
 - **[Create accounts](https://github.com/near/near-api-js/tree/master/packages/cookbook/accounts/create-testnet-account.ts)**: deploy accounts for your users!
 
 Check the [NEAR API](../../4.tools/near-api.md) section to learn how to supercharge your web-app.

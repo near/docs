@@ -140,7 +140,7 @@ The `block_index` represents the index of the block in which this transaction wi
 
 ## Gas
 
-Your contract has a **limited number of computational resources** to use on each call. Such resources are measured in [Gas](/concepts/protocol/gas).
+Your contract has a **limited number of computational resources** to use on each call. Such resources are measured in [Gas](/protocol/gas).
 
 Gas can be thought of as wall time, where 1 PetaGas (1_000 TGas) is ~1 second of compute time.
 
@@ -160,7 +160,7 @@ During [cross-contract calls](./crosscontract.md) always make sure the callback 
 
 :::tip
 
-If you already [estimated the Gas](../../../1.concepts/protocol/gas.md#estimating-costs-for-a-call) a method needs, you can ensure it never runs out of Gas by using `assert`
+If you already [estimated the Gas](../../../protocol/gas.md#estimating-costs-for-a-call) a method needs, you can ensure it never runs out of Gas by using `assert`
 
 <Tabs className="language-tabs" groupId="code-tabs">
 <TabItem value="rust" label="🦀 Rust">

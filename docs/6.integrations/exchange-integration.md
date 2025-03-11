@@ -13,7 +13,7 @@ sidebar_label: Exchange Integration
 
 ### Transaction Reference Links {#transaction-reference-links}
 
- - [Basics](/concepts/protocol/transactions)
+ - [Basics](/protocol/transactions)
  - [Specifications](https://nomicon.io/RuntimeSpec/Transactions)
  - [Constructing Transactions](/integrations/create-transactions)
 

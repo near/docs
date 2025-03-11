@@ -648,7 +648,7 @@ A call function changes the contract's state and requires a signer/keypair.
 
 ### Batch Actions
 
-You can send multiple [actions](../1.concepts/protocol/transaction-anatomy.md#actions) in a batch to a single receiver. If one action fails then the entire batch of actions will be reverted.
+You can send multiple [actions](../protocol/transaction-anatomy.md#actions) in a batch to a single receiver. If one action fails then the entire batch of actions will be reverted.
 
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
@@ -817,7 +817,7 @@ List all the access keys for an account.
 
 ### Add Full Access Key {#add-full-access-key}
 
-Add a new [full access key](../1.concepts/protocol/access-keys.md#full-access-keys) to an account. Here we generate a random keypair, alternatively you can use a keypair from a seed phrase.
+Add a new [full access key](../protocol/access-keys.md#full-access-keys) to an account. Here we generate a random keypair, alternatively you can use a keypair from a seed phrase.
 
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
@@ -846,7 +846,7 @@ Add a new [full access key](../1.concepts/protocol/access-keys.md#full-access-ke
 
 ### Add Function Call Key {#add-function-call-key}
 
-Add a new [function call key](../1.concepts/protocol/access-keys.md#function-call-keys) to an account. When adding the key you should specify the contract id the key can call, an array of methods the key is allowed to call, and the allowance in gas for the key.
+Add a new [function call key](../protocol/access-keys.md#function-call-keys) to an account. When adding the key you should specify the contract id the key can call, an array of methods the key is allowed to call, and the allowance in gas for the key.
 
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">

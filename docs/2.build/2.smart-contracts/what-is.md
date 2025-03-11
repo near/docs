@@ -24,7 +24,7 @@ Do not worry if you don't know how smart-contract blockchains work. As a develop
 ---
 
 ## Where do contracts live?
-Smart Contracts are deployed into [**NEAR accounts**](../../1.concepts/protocol/account-model.md). Any NEAR account can hold a contract, needing to pay for the **contract's code** and the **data it stores**. 
+Smart Contracts are deployed into [**NEAR accounts**](../../protocol/account-model.md). Any NEAR account can hold a contract, needing to pay for the **contract's code** and the **data it stores**.
 
 Once in an account, anyone can interact with the contract. Thanks to the underlying network structure, executing code from a contract is both **fast** (avg. 1.4s finality) and **cheap**. Moreover, **read-only** operations are **free for everyone**.
 
@@ -37,7 +37,7 @@ Storing 100kb costs 1Ⓝ, so deploying a contract generally costs only a few $NE
 ## What can they do?
 
 Smart contracts have **complete control over the account**, and thus can perform **any action on its behalf**. For example, contracts can:
-- Transfer $NEAR Tokens 
+- Transfer $NEAR Tokens
 - Call methods on other contracts
 - Create new accounts and deploy contracts on them
 - Update their own code
@@ -45,7 +45,7 @@ Smart contracts have **complete control over the account**, and thus can perform
 Besides, smart contracts can store data in the account's storage. This allows contracts to create almost any type of application, from simple games to complex financial systems.
 
 :::danger What contracts cannot do
-- Smart contracts cannot **access the internet**, so they cannot make HTTP requests or access external data 
+- Smart contracts cannot **access the internet**, so they cannot make HTTP requests or access external data
 - Smart contracts cannot **execute automatically**, they need to be called by an external account
 :::
 
@@ -92,7 +92,7 @@ We envision that in the future, more languages will be supported and the support
 ---
 
 ## Contract primitives
-Contract primitives such as FT, NFT, and DAOs are fundamental building blocks that can be combined to create awesome user experiences such as reward tokens, decision-making tools, and marketplaces. 
+Contract primitives such as FT, NFT, and DAOs are fundamental building blocks that can be combined to create awesome user experiences such as reward tokens, decision-making tools, and marketplaces.
 
 :::tip
 

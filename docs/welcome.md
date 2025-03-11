@@ -16,9 +16,9 @@ Imagine a place where you can build Web3 apps with the simplicity of Web2. Imagi
           text="Learn what NEAR is and how it works"
           links={{
             "What is NEAR?": "/concepts/basics/protocol",
-            "Named Accounts": "/concepts/protocol/account-id",
-            "Access Keys": "/concepts/protocol/access-keys",
-            "Transactions": "/concepts/protocol/transactions"
+            "Named Accounts": "/protocol/account-id",
+            "Access Keys": "/protocol/access-keys",
+            "Transactions": "/protocol/transactions"
           }}
     />
     <Card img={require("@site/static/docs/assets/welcome-pages/chain-abstraction-landing.png").default}
