@@ -9,7 +9,7 @@ const sidebar = {
       "type": "html",
       "value": "<span class='menu__link'><b><small> NEAR Protocol </small></b></span>"
     },
-    "concepts/basics/protocol",
+    "protocol/basics",
     {
       "Understand the Protocol": [
         {
