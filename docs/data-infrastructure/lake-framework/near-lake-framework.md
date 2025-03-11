@@ -3,7 +3,7 @@ id: near-lake-framework
 sidebar_label: "NEAR Lake Framework"
 ---
 
-NEAR Lake Framework is an ecosystem of library companions to [NEAR Lake](/build/data-infrastructure/lake-framework/near-lake). They allow you to build your own indexer that subscribes to the stream of blocks from the [NEAR Lake](/build/data-infrastructure/lake-framework/near-lake) data source and create your own logic to process the NEAR Protocol data in the programming languages of your choice (at the moment, there are implementations in [Python](http://pypi.org/project/near-lake-framework), [JavaScript](https://www.npmjs.com/package/near-lake-framework), and [Rust](https://crates.io/crates/near-lake-framework)).
+NEAR Lake Framework is an ecosystem of library companions to [NEAR Lake](/data-infrastructure/lake-framework/near-lake). They allow you to build your own indexer that subscribes to the stream of blocks from the [NEAR Lake](/data-infrastructure/lake-framework/near-lake) data source and create your own logic to process the NEAR Protocol data in the programming languages of your choice (at the moment, there are implementations in [Python](http://pypi.org/project/near-lake-framework), [JavaScript](https://www.npmjs.com/package/near-lake-framework), and [Rust](https://crates.io/crates/near-lake-framework)).
 
 :::tip NEAR Lake Framework announcement
 
@@ -31,7 +31,7 @@ Reaction time (framework overhead only) | 0.1s | 0.2-2.2s
 Estimated cost of infrastructure | [$500+/mo](https://near-nodes.io/rpc/hardware-rpc) | [**$20/mo**](#what-is-the-cost-of-running-a-custom-indexer-based-on-near-lake)
 Ease of maintenance | Advanced<br />(need to follow every nearcore upgrade, and sync state) | **Easy**<br />(deploy once and forget)
 How long will it take to start? | days (on mainnet/testnet) | **seconds**
-Ease of local development | Advanced<br />(localnet is a good option, but testing on testnet/mainnet is too heavy) | **Easy**<br />(see [tutorials](/build/data-infrastructure/lake-framework/near-lake-state-changes-indexer))
+Ease of local development | Advanced<br />(localnet is a good option, but testing on testnet/mainnet is too heavy) | **Easy**<br />(see [tutorials](/data-infrastructure/lake-framework/near-lake-state-changes-indexer))
 Programming languages that a custom indexer can be implemented with | Rust only | **Any**<br />(currently, helper packages are released in [Python](http://pypi.org/project/near-lake-framework), [JavaScript](https://www.npmjs.com/package/near-lake-framework), and [Rust](https://crates.io/crates/near-lake-framework))
 
 
@@ -78,6 +78,6 @@ Note, the price depends on the number of shards.
 
 :::note Tutorials
 
-See [Tutorials page](/build/data-infrastructure/lake-framework/near-lake-state-changes-indexer)
+See [Tutorials page](/data-infrastructure/lake-framework/near-lake-state-changes-indexer)
 
 :::

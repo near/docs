@@ -6,7 +6,7 @@ id: migrating-to-near-lake-framework
 # Migrating to NEAR Lake Framework
 
 
-We encourage everyone who don't have a hard requirement to use [NEAR Indexer Framework](https://github.com/near/nearcore/tree/master/chain/indexer) consider the migration to [NEAR Lake Framework](/build/data-infrastructure/lake-framework/near-lake-framework).
+We encourage everyone who don't have a hard requirement to use [NEAR Indexer Framework](https://github.com/near/nearcore/tree/master/chain/indexer) consider the migration to [NEAR Lake Framework](/data-infrastructure/lake-framework/near-lake-framework).
 
 In this tutorial we'll show you how to migrate the project using [indexer-tx-watcher-example](https://github.com/near-examples/indexer-tx-watcher-example) as a showcase.
 
@@ -84,7 +84,7 @@ near-lake-framework = "0.4.0"
 
 ## Change the clap configs
 
-Currently we have structure `Opts` that has a subcommand with `Run` and `Init` command. Since [NEAR Lake Framework](/build/data-infrastructure/lake-framework/near-lake-framework) doesn't need `data` and config files we don't need `Init` at all. So we need to combine some structures into `Opts` itself.
+Currently we have structure `Opts` that has a subcommand with `Run` and `Init` command. Since [NEAR Lake Framework](/data-infrastructure/lake-framework/near-lake-framework) doesn't need `data` and config files we don't need `Init` at all. So we need to combine some structures into `Opts` itself.
 
 ```rust title=src/config.rs
 ...
@@ -272,7 +272,7 @@ async fn main() -> Result<(), tokio::io::Error> {
 
 ```
 
-Let's cast `LakeConfig` from `Opts` and instantiate [NEAR Lake Framework](/build/data-infrastructure/lake-framework/near-lake-framework)'s `stream`
+Let's cast `LakeConfig` from `Opts` and instantiate [NEAR Lake Framework](/data-infrastructure/lake-framework/near-lake-framework)'s `stream`
 
 ```rust title=src/main.rs
 #[tokio::main]
@@ -342,7 +342,7 @@ We're done. That's pretty much entire `main()` function. Drop the old one if you
 
 ## Changes in other function related to data types
 
-Along with [NEAR Lake Framework](/build/data-infrastructure/lake-framework/near-lake-framework) release we have extracted the structures created for indexers into a separate crate. This was done in order to avoid dependency on `nearcore` as now you can depend on a separate crate that is already [published on crates.io](https://crates.io/crates/near-indexer-primitives) or on NEAR Lake Framework that exposes that crate.
+Along with [NEAR Lake Framework](/data-infrastructure/lake-framework/near-lake-framework) release we have extracted the structures created for indexers into a separate crate. This was done in order to avoid dependency on `nearcore` as now you can depend on a separate crate that is already [published on crates.io](https://crates.io/crates/near-indexer-primitives) or on NEAR Lake Framework that exposes that crate.
 
 ### `listen_blocks`
 
@@ -395,7 +395,7 @@ fn is_tx_receiver_watched(
 
 ## Conclusion
 
-And now we have a completely migrated to [NEAR Lake Framework](/build/data-infrastructure/lake-framework/near-lake-framework) indexer.
+And now we have a completely migrated to [NEAR Lake Framework](/data-infrastructure/lake-framework/near-lake-framework) indexer.
 
 We are posting the complete diffs for the reference
 

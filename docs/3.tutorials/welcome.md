@@ -22,7 +22,7 @@ Explore our collection of Examples and Tutorials
   </Column>
   <Column title="Popular Tutorials">
     <Feature url="/tutorials/nfts/minting-nfts" title="NFT Mint" subtitle="Mint an NFT without using code" image="frontend-bos.png" />
-    <Feature url="/build/data-infrastructure/lake-framework/building-indexers/nft-indexer" title="Events (NEAR Lake)"
+    <Feature url="/data-infrastructure/lake-framework/building-indexers/nft-indexer" title="Events (NEAR Lake)"
              subtitle="Use our Data Lake to listen for events" image="monitor.png" />
   </Column>
   <Column title="From Zero to Hero">

@@ -8,7 +8,7 @@ id: lake-start-options
 
 ## The End
 
-This tutorial ends with the example code of the simple indexer built on top of [NEAR Lake Framework](/build/data-infrastructure/lake-framework/near-lake-framework) that can start:
+This tutorial ends with the example code of the simple indexer built on top of [NEAR Lake Framework](/data-infrastructure/lake-framework/near-lake-framework) that can start:
 - from specified block height (out of the box)
   ```bash
   ./target/release/indexer mainnet from-block 65359506
@@ -35,11 +35,11 @@ There is another important side - the maintenance. This involves:
 
 Almost in all of the above cases you might want to start or restart your indexer not only from the specific block you need to provide, but from the block it was stopped, or from the latest final block in the network.
 
-[NEAR Lake Framework](/build/data-infrastructure/lake-framework/near-lake-framework) doesn't provide such options. Actually, we didn't empower the library with these options to start indexer intentionally.
+[NEAR Lake Framework](/data-infrastructure/lake-framework/near-lake-framework) doesn't provide such options. Actually, we didn't empower the library with these options to start indexer intentionally.
 
 :::info Intent
 
-We want to keep [NEAR Lake Framework](/build/data-infrastructure/lake-framework/near-lake-framework) crate in the narrowest possible way. The goal for the library is to do a single job and allow it to be empowered with any features but outside of the crate itself
+We want to keep [NEAR Lake Framework](/data-infrastructure/lake-framework/near-lake-framework) crate in the narrowest possible way. The goal for the library is to do a single job and allow it to be empowered with any features but outside of the crate itself
 
 :::
 

@@ -67,10 +67,10 @@ Imagine a place where you can build Web3 apps with the simplicity of Web2. Imagi
           title="Data Infrastructure"
           text="Easily extract and analyze on-chain data"
           links={{
-            "What is Data Infrastructure?": "/build/data-infrastructure/what-is",
-            "BigQuery": "/build/data-infrastructure/big-query",
-            "Data APIs": "/build/data-infrastructure/data-apis",
-            "Lake Framework": "/build/data-infrastructure/lake-framework/near-lake-framework",
+            "What is Data Infrastructure?": "/data-infrastructure/what-is",
+            "BigQuery": "/data-infrastructure/big-query",
+            "Data APIs": "/data-infrastructure/data-apis",
+            "Lake Framework": "/data-infrastructure/lake-framework/near-lake-framework",
           }}
     />
 </Container>

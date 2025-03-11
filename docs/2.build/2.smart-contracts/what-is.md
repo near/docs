@@ -74,7 +74,7 @@ The development flow can be summarized as follows:
 - [**Test**](./testing/introduction.md): Our Sandbox enables to simulate interactions with one or multiple contracts in a realistic environment.
 - [**Deploy**](./release/deploy.md): After making sure the contract is secure, developers can deploy the contract into their accounts.
 - [**Use**](https://mynearwallet.com): Any user can interact with the contract through their NEAR Wallet.
-- [**Monitor**](../6.data-infrastructure/what-is.md): The contract's activity can be monitored through simple APIs.
+- [**Monitor**](../../data-infrastructure/what-is.md): The contract's activity can be monitored through simple APIs.
 
 #### Supported Languages
 During the whole cycle, developers can choose between [JavaScript](https://www.learn-js.org/) and [Rust](https://www.rust-lang.org/), allowing them to use their favorite language at each step of their journey.
