@@ -275,6 +275,7 @@ const sidebar = {
       "value": "<span class='menu__link'><b><small> Data Infrastructure </small></b></span>"
     },
     "data-infrastructure/what-is",
+    "data-infrastructure/indexers",
     {
       "NEAR Data Infrastructure": [
         "data-infrastructure/data-apis",
