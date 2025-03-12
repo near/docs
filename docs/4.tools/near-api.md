@@ -23,7 +23,7 @@ Our API is available in multiple languages, including:
 - Python: [`py-near`](https://github.com/pvolnov/py-near)
 
 :::tip Wallet Integration
-To allow users to login into your web application using a wallet you will need the `wallet-selector`. Read more in our [Web Frontend integration](/build/web3-apps/integrate-contracts) article
+To allow users to login into your web application using a wallet you will need the `wallet-selector`. Read more in our [Web Frontend integration](/web3-apps/integrate-contracts) article
 :::
 
 ---

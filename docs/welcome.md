@@ -35,10 +35,10 @@ Imagine a place where you can build Web3 apps with the simplicity of Web2. Imagi
           title="Web3 Applications"
           text="Supercharge your App using NEAR"
           links={{
-            "What are Web3 Applications?": "/build/web3-apps/what-is",
-            "Quickstart ✨": "/build/web3-apps/quickstart",
-            "Create an AI Assistant 🤖✨": "/build/web3-apps/ai/ai-assistant",
-            "Use a Contract in Your Frontend": "/build/web3-apps/integrate-contracts",
+            "What are Web3 Applications?": "/web3-apps/what-is",
+            "Quickstart ✨": "/web3-apps/quickstart",
+            "Create an AI Assistant 🤖✨": "/web3-apps/ai/ai-assistant",
+            "Use a Contract in Your Frontend": "/web3-apps/integrate-contracts",
           }}
     />
     <Card img={require("@site/static/docs/assets/welcome-pages/contracts.png").default}

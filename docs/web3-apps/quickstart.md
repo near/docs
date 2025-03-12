@@ -60,7 +60,7 @@ Make sure you are using **node >= v18**, you can easily switch versions using `n
 <hr className="subsection" />
 :::info Info: Community Starter Templates
 
-  These are some community templates that you can use to start quickstart your project. Reffer to their pages for more information:
+  These are some community templates that you can use to start quickstart your project. Refer to their pages for more information:
  * [Bitte Templates](https://templates.mintbase.xyz) - A `collection` of templates from [Bitte](https://www.bitte.ai/) and [MintBase](https://mintbase.xyz)
  * [NEARBuilders/near-vite-starter](https://github.com/NEARBuilders/near-vite-starter) - `Vite`, `TypeScript`, `Tanstack`, `Tailwind`,`Playwright`
 
@@ -84,12 +84,12 @@ Go ahead and sign in with your NEAR account. If you don't have one, you can crea
 
 Our app's template is defined at `./src/pages/_app.js`. It does two things:
 
-1. Initializes a [wallet selector](../../4.tools/wallet-selector.md), and stores it in context so other components can access it later.
+1. Initializes a [wallet selector](../4.tools/wallet-selector.md), and stores it in context so other components can access it later.
 2. Renders the navigation menu and the page's content.
 
 <Github url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/_app.js" language="jsx" start="22" end="48" />
 
-When initializing the wallet-selector you can choose to **create a [Function-Call Key](../../protocol/access-keys.md)** using the `createAccessKeyFor` parameter. This allows the application to sign `non-payable` methods on behalf of the user so they are not required to manually sign each transaction.
+When initializing the wallet-selector you can choose to **create a [Function-Call Key](../protocol/access-keys.md)** using the `createAccessKeyFor` parameter. This allows the application to sign `non-payable` methods on behalf of the user so they are not required to manually sign each transaction.
 
 ```jsx
 const walletSelectorConfig = {

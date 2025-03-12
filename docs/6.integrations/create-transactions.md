@@ -4,7 +4,7 @@ title: Create Transactions
 sidebar_label: Create a Transaction
 ---
 
-To construct & process transactions you will need our API JavaScript library: [`near-api-js`](/build/web3-apps/integrate-contracts). There are many ways to create transactions but for this example we'll show you two ways to create a simple token transfer transaction.
+To construct & process transactions you will need our API JavaScript library: [`near-api-js`](/web3-apps/integrate-contracts). There are many ways to create transactions but for this example we'll show you two ways to create a simple token transfer transaction.
 
 - [HIGH LEVEL](#high-level----create-a-transaction) - _easiest way to create a transaction_
 - [LOW LEVEL](#low-level----create-a-transaction) - _performs the exact same transaction as above, but deconstructs the entire process for those curious about each step_

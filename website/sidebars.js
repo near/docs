@@ -195,24 +195,24 @@ const sidebar = {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Web3 Apps (Frontend, AI, ...) </small></b></span>"
     },
-    "build/web3-apps/what-is",
+    "web3-apps/what-is",
     {
       "Building Web3 Applications": [
-        "build/web3-apps/quickstart",
+        "web3-apps/quickstart",
         {
           "Frontends": [
-            "build/web3-apps/integrate-contracts",
-            "build/web3-apps/ethereum-wallets"
+            "web3-apps/integrate-contracts",
+            "web3-apps/ethereum-wallets"
           ]
         },
         {
           "Backend": [
-            "build/web3-apps/backend/backend-login",
+            "web3-apps/backend/backend-login",
           ]
         },
         {
           "Artificial Intelligence (AI)": [
-            "build/web3-apps/ai/ai-assistant",
+            "web3-apps/ai/ai-assistant",
           ]
         }
       ]
