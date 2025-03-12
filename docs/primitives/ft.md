@@ -58,7 +58,7 @@ You can create an FT using the toolbox on [Dev Portal](https://dev.near.org/tool
     <CLICreateToken />
   </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
-    <TryOutOnLantstool path="docs/2.build/5.primitives/ft/create-ft-via-factory.json" />
+    <TryOutOnLantstool path="docs/primitives/ft/create-ft-via-factory.json" />
   </TabItem>
 </Tabs>
 
@@ -79,7 +79,7 @@ To initialize a FT contract you will need to deploy it and then call the `new` m
     <CLICreateTokenManually />
   </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
-    <TryOutOnLantstool path="docs/2.build/5.primitives/ft/create-ft-manually.json" />
+    <TryOutOnLantstool path="docs/primitives/ft/create-ft-manually.json" />
   </TabItem>
 </Tabs>
 
@@ -101,7 +101,7 @@ You can query the FT's metadata by calling the `ft_metadata`.
     <CLIGetMetadata />
   </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
-    <TryOutOnLantstool path="docs/2.build/5.primitives/ft/query-ft-metadata.json" />
+    <TryOutOnLantstool path="docs/primitives/ft/query-ft-metadata.json" />
   </TabItem>
 </Tabs>
 
@@ -118,7 +118,7 @@ To know how many coins a user has you will need to query the method `ft_balance_
     <CLICheckBalance />
   </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
-    <TryOutOnLantstool path="docs/2.build/5.primitives/ft/check-ft-balance.json" />
+    <TryOutOnLantstool path="docs/primitives/ft/check-ft-balance.json" />
   </TabItem>
 </Tabs>
 
@@ -137,7 +137,7 @@ By calling this `storage_deposit` the user can register themselves or **register
     <CLIRegister />
   </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
-    <TryOutOnLantstool path="docs/2.build/5.primitives/ft/register-user.json" />
+    <TryOutOnLantstool path="docs/primitives/ft/register-user.json" />
   </TabItem>
 </Tabs>
 
@@ -162,7 +162,7 @@ To send FT to another account you will use the `ft_transfer` method, indicating 
     <CLISendToken />
   </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
-    <TryOutOnLantstool path="docs/2.build/5.primitives/ft/transfer-tokens.json" />
+    <TryOutOnLantstool path="docs/primitives/ft/transfer-tokens.json" />
   </TabItem>
   <TabItem value="📄 Contract"  label="📄 Contract"  default>
     <SmartContractSendToken />
@@ -184,7 +184,7 @@ Let's assume that you need to deposit FTs on Ref Finance.
     <CLIAttachTokenToCall />
   </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
-    <TryOutOnLantstool path="docs/2.build/5.primitives/ft/attach-ft-to-call.json" />
+    <TryOutOnLantstool path="docs/primitives/ft/attach-ft-to-call.json" />
   </TabItem>
   <TabItem value="📄 Contract"  label="📄 Contract"  default>
     <SmartContractAttachTokenToCall />
@@ -262,4 +262,4 @@ impl FungibleTokenReceiver for Contract {
 1. [NEP-141 and NEP-148 standards](https://nomicon.io/Standards/Tokens/FungibleToken/)
 2. [FT Event Standards](https://nomicon.io/Standards/Tokens/FungibleToken/Event)
 3. [FT reference implementation](https://github.com/near-examples/FT)
-4. [Fungible Tokens 101](../../3.tutorials/fts/0-intro.md) - a set of tutorials that cover how to create a FT contract using Rust.
+4. [Fungible Tokens 101](../3.tutorials/fts/0-intro.md) - a set of tutorials that cover how to create a FT contract using Rust.

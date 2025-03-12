@@ -96,6 +96,6 @@ Contract primitives such as FT, NFT, and DAOs are fundamental building blocks th
 
 :::tip
 
-Check our section on [primitives](../2.build/5.primitives/what-is.md) to learn more about them
+Check our section on [primitives](../primitives/what-is.md) to learn more about them
 
 :::

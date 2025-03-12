@@ -29,7 +29,7 @@ Here is a directory of third-party oracle services deployed on the NEAR blockcha
 | -------------------------------------------------------------------------------------------------------- | --------------------------------------- | -------------------------------------------------- |
 | [Price Oracle](#price-oracle-by-neardefi)                                                                | [NearDefi](https://github.com/NearDeFi) | Open source oracle for real-time asset pricing     |
 | [Pyth Network Oracle](#pyth-network-oracle)                                                              | [Pyth Network](https://pyth.network/)   | High-frequency, low-latency oracle for price feeds |
-| **[[Your Project Here]](https://github.com/near/docs/edit/master/docs/2.build/5.primitives/oracles.md)** | -                                       | -                                                  |
+| **[[Your Project Here]](https://github.com/near/docs/edit/master/docs/primitives/oracles.md)** | -                                       | -                                                  |
 
 ---
 

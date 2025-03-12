@@ -55,12 +55,12 @@ Imagine a place where you can build Web3 apps with the simplicity of Web2. Imagi
           title="Primitives"
           text="FTs, NFTs, and everything your app needs"
           links={{
-            "What are Primitives?": "/build/primitives/what-is",
-            "Fungible Tokens (FT)": "/build/primitives/ft",
-            "Non-Fungible Tokens (NFT)": "/build/primitives/nft",
-            "Autonomous Organizations": "/build/primitives/dao",
-            "Decentralized Exchanges": "/build/primitives/dex",
-            "Linkdrops": "/build/primitives/linkdrop",
+            "What are Primitives?": "/primitives/what-is",
+            "Fungible Tokens (FT)": "/primitives/ft",
+            "Non-Fungible Tokens (NFT)": "/primitives/nft",
+            "Autonomous Organizations": "/primitives/dao",
+            "Decentralized Exchanges": "/primitives/dex",
+            "Linkdrops": "/primitives/linkdrop",
           }}
     />
     <Card img={require("@site/static/docs/assets/welcome-pages/data-lake-landing.png").default}

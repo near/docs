@@ -225,14 +225,14 @@ const sidebar = {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Primitives (FT, NFT, ...) </small></b></span>"
     },
-    "build/primitives/what-is",
+    "primitives/what-is",
     {
       "Primitives & Standards": [
         {
           type: 'category',
           label: 'Fungible Tokens (FT)',
           items: [
-            "build/primitives/ft",
+            "primitives/ft",
             {
               "type": "link",
               "label": "Tutorial: Zero to Hero (Rust) ↗",
@@ -244,7 +244,7 @@ const sidebar = {
           type: 'category',
           label: 'Non Fungible Tokens (NFT)',
           items: [
-            "build/primitives/nft",
+            "primitives/nft",
             {
               "type": "link",
               "label": "Tutorial: Minting NFTs ↗",
@@ -263,10 +263,10 @@ const sidebar = {
           ]
         },
         "protocol/network/staking",
-        "build/primitives/linkdrop",
-        "build/primitives/oracles",
-        "build/primitives/dao",
-        "build/primitives/dex",
+        "primitives/linkdrop",
+        "primitives/oracles",
+        "primitives/dao",
+        "primitives/dex",
       ]
     },
     {
