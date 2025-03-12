@@ -76,9 +76,6 @@ Check the [Contract Wizard](https://dev.near.org/contractwizard.near/widget/Cont
 To create a new NFT (a.k.a. minting it) you will call the `nft_mint` method passing as arguments the metadata that defines the NFT.
 
 <Tabs groupId="code-tabs">
-  <TabItem value="⚛️ Component" label="⚛️ Component" default>
-    <BOSMintNFT />
-  </TabItem>
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
     <WebAppMintNFT />
   </TabItem>
@@ -126,9 +123,6 @@ You might have noticed that one of the parameters is a structure called royaltie
 You can query the NFT's information and metadata by calling the `nft_token`.
 
 <Tabs groupId="code-tabs">
-  <TabItem value="⚛️ Component" label="⚛️ Component" default>
-    <BOSQueryNFT />
-  </TabItem>
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
     <WebAppQueryNFT />
   </TabItem>
@@ -149,9 +143,6 @@ In both cases, it is necessary to invoke the `nft_transfer` method, indicating t
 
 
 <Tabs groupId="code-tabs">
-  <TabItem value="⚛️ Component" label="⚛️ Component" default>
-    <BOSTransferNFT />
-  </TabItem>
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
     <WebAppTransferNFT />
   </TabItem>
@@ -248,9 +239,6 @@ In order to put a NFT for a sale on a marketplace you need to do two actions:
 <br />
 
 <Tabs groupId="code-tabs">
-  <TabItem value="⚛️ Component" label="⚛️ Component" default>
-    <BOSListNFTForSale />
-  </TabItem>
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
     <WebAppListNFTForSale />
   </TabItem>
@@ -268,9 +256,6 @@ Basic NFT contracts following [the NEP-171 and NEP-177 standards](https://nomico
 For this purpose, there are ecosystem apps such as [Paras](https://paras.id/) or [Mintbase](https://www.mintbase.xyz/), that use dedicated marketplace contracts.
 
 <Tabs groupId="code-tabs">
-  <TabItem value="⚛️ Component" label="⚛️ Component" default>
-    <BOSBuyNFT />
-  </TabItem>
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
     <WebAppBuyNFT />
   </TabItem>
